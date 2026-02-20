@@ -1,0 +1,62 @@
+{
+  "controls": {
+    "previous": "Öňki sertifikat",
+    "next": "Indiki sertifikat",
+    "play": "Awtomatiki oýnat",
+    "pause": "Awtomatiki oýnatmany duruz",
+    "goToSlide": "Slaýda git"
+  },
+  "events": {
+    "event1": {
+      "title": "UniAdmire talyp ýarmarkasy",
+      "location": "Karaçi, Pakistan",
+      "date": "2025-nji ýylyň 15-17-nji marty",
+      "description": "Pakistanly talyplary halkara uniwersitetler we stipendiýa mümkinçilikleri bilen baglanyşdyrmak",
+      "images": {
+        "image1": {
+          "alt": "Uniwersitet wekilleri talyplar bilen gürleşýär",
+          "caption": "Halkara uniwersitet wekilleri ýerli talyplar bilen duşuşýar"
+        },
+        "image2": {
+          "alt": "Ýarmarkadaky maglumat köşkleri",
+          "caption": "Maglumat köşklerinde bilim mümkinçiliklerini öwrenýän talyplar"
+        },
+        "image3": {
+          "alt": "Sylaglamak dabarasy",
+          "caption": "Gatnaşyjy edaralaryň ykrar edilmegi dabarasy"
+        },
+        "image4": {
+          "alt": "Panel diskussiýasy",
+          "caption": "Halkara bilim tendensiýalaryny ara alyp maslahatlaşýan bilermenler topary"
+        },
+        "image5": {
+          "alt": "Okuwçylara maslahat beriş sessiýasy",
+          "caption": "Uniwersitetiň kabul ediş işgärleri bilen ýüzbe-ýüz maslahat beriş"
+        }
+      }
+    },
+    "event2": {
+      "title": "Fil Dişi Kenarynyň Bilim Ýarmarkasy",
+      "location": "Abidjan, Kot-d'Iwuar",
+      "date": "2025-nji ýylyň 20-22-nji ýanwary",
+      "description": "Günbatar Afrikaly okuwçylary halkara uniwersitetler bilen baglanyşdyrmak",
+      "images": {
+        "image1": {
+          "alt": "Bilim ýarmarkasyna giriş",
+          "caption": "Kot-d'Iwuar bilim ýarmarkasynyň esasy girelgesi"
+        },
+        "image2": {
+          "alt": "Maglumat köşklerinde okuwçylar",
+          "caption": "Ýerli okuwçylar halkara bilim mümkinçiliklerini öwrenýärler"
+        },
+        "image3": {
+          "alt": "Panel diskussiýasy",
+          "caption": "Bilim boýunça bilermenler stipendiýa maksatnamalary barada gürrüň edýärler"
+        }
+      }
+    }
+  },
+  "background": {
+    "watermark": "CERTIFICATIONS"
+  }
+}

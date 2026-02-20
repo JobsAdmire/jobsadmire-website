@@ -1,0 +1,131 @@
+{
+  "navigation": {
+    "package": "بسته",
+    "home": "خانه"
+  },
+  "hero": {
+    "title": {
+      "line1": "سفر خود را",
+      "line2": "امروز آغاز کنید"
+    },
+    "description": "به راحتی برای نیازهای سفر خود، درخواست دعوت‌نامه‌های رسمی الکترونیکی را ثبت کنید. چه برای گردشگری، چه برای تجارت یا کنفرانس/سمینارها، Jobs Admire فرآیند ویزای شما را ساده می‌کند."
+  },
+  "form": {
+    "iAmFrom": "من از",
+    "iLiveIn": "من در",
+    "invitationFor": "دعوت‌نامه برای",
+    "selectCountry": "کشور را انتخاب کنید",
+    "selectDestination": "مقصد را انتخاب کنید",
+    "searchCountries": "جستجوی کشورها...",
+    "loadingCountries": "در حال بارگذاری کشورها...",
+    "noCountriesFound": "کشوری یافت نشد",
+    "findNow": "اکنون پیدا کن"
+  },
+  "packages": {
+    "title": "یک بسته خدماتی را انتخاب کنید",
+    "description": "از میان بسته‌های خدمات جامع ما که برای تحقق رویاهای سفر شما طراحی شده‌اند، انتخاب کنید. ما پردازش سریع، نرخ‌های رقابتی و راهنمایی متخصص را برای اطمینان از موفقیت و بدون استرس بودن درخواست ویزای شما ارائه می‌دهیم.",
+    "showingPackagesFor": "نمایش بسته‌ها برای:",
+    "packageFor": "بسته برای",
+    "selectedCountry": "کشور انتخاب شده",
+    "recommended": "توصیه شده",
+    "save": "ذخیره",
+    "getStarted": "شروع کنید",
+    "needHelp": "نیاز به کمک در انتخاب دارید؟",
+    "contactExperts": "با کارشناسان ما تماس بگیرید",
+    "processingTime48Hours": "زمان پردازش دعوت‌نامه 48 ساعت است",
+    "documentationProcessingTime48Hours": "زمان پردازش اسناد 48 ساعت است",
+    "features": {
+      "fastProcessing": "پردازش سریع",
+      "hours96Valid": "96 ساعت اعتبار",
+      "airportTransit": "ترانزیت فرودگاهی",
+      "days14Valid": "14 روز اعتبار",
+      "days30Valid": "30 روز اعتبار",
+      "touristBusiness": "توریستی | تجاری",
+      "touristBusinesss": "Tourist | Business",
+      "singleEntry": "یک بار ورود",
+      "singleMultipleEntry": "یک بار ورود | چند بار ورود"
+    }
+  },
+  "alerts": {
+    "selectAllFields": "لطفاً تمام فیلدهای مورد نیاز را انتخاب کنید"
+  },
+  "errors": {
+    "failedToLoadCountries": "بارگذاری کشورها با شکست مواجه شد"
+  },
+  "visaApplication": {
+    "stepTitles": {
+      "step1": "Location Information",
+      "step2": "Requirements & Confirmation",
+      "step3": "Documents Upload",
+      "step4": "Personal Details",
+      "step5": "Review & Submit Application"
+    },
+    "submitFailed": "Failed to send email",
+    "errors": {
+      "fromCountry": "Please select your origin country",
+      "toCountry": "Please select the country you live in",
+      "toCountrySame": "Origin and destination countries must be different",
+      "hasValidPassport": "Please confirm you have a valid passport",
+      "hasPictureHeadshot": "Please confirm you have a picture/headshot",
+      "confirmNoActiveApplication": "Please confirm no active application",
+      "confirmGovernmentDiscretion": "Please acknowledge government discretion",
+      "passportDocument": "Please upload your passport document",
+      "pictureHeadshot": "Please upload your picture/headshot",
+      "firstName": "First name is required",
+      "lastName": "Last name is required",
+      "phoneNumber": "Phone number is required",
+      "email": "Email is required",
+      "passportNumber": "Passport number is required",
+      "profession": "Profession is required",
+      "travelDate": "Travel date is required",
+      "travelToDate": "Return date is required",
+      "travelPurpose": "Travel purpose is required",
+      "emailInvalid": "Please enter a valid email address",
+      "phoneInvalid": "Please enter a valid phone number",
+      "travelDatePast": "Travel date cannot be in the past",
+      "travelToDateAfter": "Return date must be after travel date",
+      "travelerNameRequired": "Traveler {{index}} name is required",
+      "travelerPhoneRequired": "Traveler {{index}} phone is required"
+    },
+    "placeholders": {
+      "searchCountries": "Search countries...",
+      "selectCountry": "Select country",
+      "firstName": "First name",
+      "lastName": "Last Name",
+      "phoneNumber": "Phone Number",
+      "email": "Email address",
+      "from": "From",
+      "liveIn": "Live in",
+      "passportNumber": "Passport number",
+      "profession": "Profession",
+      "dateFormat": "mm/dd/yyyy",
+      "travelPurpose": "Travel purpose",
+      "numberOfTravellers": "Number of Travellers",
+      "fullName": "Full Name"
+    },
+    "labels": {
+      "applicationDetails": "Application Details",
+      "submitApplication": "Submit Application",
+      "transitVisa": "TRANSIT VISA",
+      "transitVisaShort": "Transit Visa",
+      "notProvided": "Not provided",
+      "notUploaded": "Not uploaded",
+      "price": "Price:",
+      "submitting": "Submitting...",
+      "uploadDocumentsTitle": "Please Upload the Following Documents",
+      "acceptedFormats": "Accepted Formats:",
+      "acceptedFormatsValue": "PDF, JPG or PNG",
+      "details": "Details",
+      "review": "Review",
+      "next": "Next",
+      "visaFor": "VISA FOR:",
+      "currency": "USD"
+    }
+  },
+  "packageTypes": {
+    "individualTouristInvitation": "Individual Tourist Invitation",
+    "individualBusinessInvitation": "Individual Business Invitation",
+    "familyTouristInvitation": "Family Tourist Invitation",
+    "singleEntry": "Single Entry"
+  }
+}

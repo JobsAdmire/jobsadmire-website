@@ -1,0 +1,324 @@
+{
+  "immigrationservices": {
+    "hero": {
+      "badge": "Mga mapagkakatiwalaang serbisyo sa imigrasyon",
+      "headline": {
+        "prefix": "Simulan ang Iyong",
+        "suffix": "May Patnubay ng Eksperto"
+      },
+      "animatedWords": [
+        "Bagong Buhay",
+        "Bagong Bansa",
+        "Bagong Simula",
+        "Mas Magandang Kinabukasan",
+        "Bagong Simula",
+        "Buhay Pangarap"
+      ],
+      "description": "Mula sa mga aplikasyon ng visa hanggang sa permanenteng paninirahan, gagabayan ka ng aming mga ekspertong consultant sa imigrasyon sa bawat hakbang na may personalized na suporta na iniayon para sa mga bihasang propesyonal.",
+      "cta": {
+        "text": "Libreng Konsultasyon"
+      }
+    },
+    "showcase": {
+      "title": "Mga Serbisyo sa Imigrasyon",
+      "subtitle": "Propesyonal na tulong para sa pandaigdigang paglipat",
+      "process": {
+        "title": "Kumpletong Proseso ng Imigrasyon",
+        "subtitle": "Suporta mula sa dulo hanggang dulo para sa iyong paglalakbay"
+      },
+      "services": [
+        {
+          "icon": "Teksto ng File",
+          "title": "Dokumentasyon",
+          "description": "Paghahanda ng aplikasyon",
+          "gradient": "bg-gradient-to-r mula-sky-500 hanggang-blue-600"
+        },
+        {
+          "icon": "Panangga",
+          "title": "Suportang Legal",
+          "description": "Patnubay ng eksperto",
+          "gradient": "bg-gradient-to-r mula-lila-500 hanggang indigo-600"
+        },
+        {
+          "icon": "Orasan",
+          "title": "Mabilis na Track",
+          "description": "Mabilis na pagproseso",
+          "gradient": "bg-gradient-to-r mula-emerald-500 hanggang-teal-600"
+        },
+        {
+          "icon": "Mga Gumagamit",
+          "title": "Suporta sa Pamilya",
+          "description": "Kumpletong tulong",
+          "gradient": "bg-gradient-to-r mula-kahel-500 hanggang-pula-600"
+        }
+      ],
+      "stats": [
+        {
+          "label": "Antas ng Tagumpay",
+          "color": "text-sky-600",
+          "value": "98%"
+        },
+        {
+          "label": "Mga Kasong Hinawakan",
+          "color": "teksto-asul-600",
+          "value": "5000+"
+        },
+        {
+          "label": "Mga Taon ng Karanasan",
+          "color": "teksto-indigo-600",
+          "value": "25"
+        }
+      ]
+    }
+  },
+  "evaluation": {
+    "title": "Suriin ang Iyong Sarili",
+    "description": "Ang paglipat ay isang direktang teknikal na pamamaraan. Sinusuri ng aming mga espesyalista ang iyong profile upang gabayan ka sa paggawa ng matalinong pagpili. Kasama sa ulat ang:",
+    "services": [
+      {
+        "icon": "Koreo",
+        "title": "Kard ng Iskor",
+        "description": "Detalyadong pagtatasa ng iyong mga puntos sa pagiging karapat-dapat at marka ng migrasyon"
+      },
+      {
+        "icon": "Mga Setting",
+        "title": "Profile ng Bansa",
+        "description": "Mga rekomendasyon para sa bansang iniayon batay sa iyong karanasan at mga serbisyo sa imigrasyon mula sa Pakistan (kung naaangkop)"
+      },
+      {
+        "icon": "Mga Gumagamit",
+        "title": "Profile ng Trabaho",
+        "description": "Pagsusuri ng pangangailangan ng iyong propesyon sa mga potensyal na destinasyon"
+      },
+      {
+        "icon": "Teksto ng File",
+        "title": "Listahan ng Dokumentasyon",
+        "description": "Komprehensibong checklist ng mga kinakailangang dokumento para sa iyong aplikasyon"
+      },
+      {
+        "icon": "DollarSign",
+        "title": "Pagtatantya ng Gastos at Oras",
+        "description": "Detalyadong paglalahad ng mga gastos at takdang panahon para sa iyong paglipat"
+      }
+    ],
+    "cta": {
+      "text": "Magpa-evaluate",
+      "subtitle": "Simulan ang iyong pagsusuri ngayon at makatanggap ng komprehensibong ulat sa loob ng 48 oras. Gagabayan ka ng aming mga eksperto sa bawat hakbang ng proseso."
+    }
+  },
+  "globalmigration": {
+    "badge": "PANDAIGDIGANG MIGRASYON",
+    "introduction": {
+      "prefix": "Ayon sa United Nations Department of Economic and Social Affairs (UNDESA), tinatayang mayroong",
+      "highlight": "232 milyong internasyonal na migrante sa buong mundo",
+      "suffix": "."
+    },
+    "reasons": {
+      "title": "Mga Dahilan para sa Imigrasyon",
+      "description": {
+        "part1": "Ang mga tao ay lumilipat sa ibang bansa para sa iba't ibang dahilan tulad ng trabaho, pag-aaral, mas magandang kalidad ng buhay, o pagpapalawak ng mga abot-tanaw.",
+        "highlight1": "mga serbisyo sa konsultasyon sa imigrasyon",
+        "part2": "tulungan ang mga bihasang manggagawa at mga naghahanap ng trabaho",
+        "highlight2": "permanenteng paninirahan sa pamamagitan ng mga bihasang trabaho",
+        "part3": "."
+      },
+      "items": [
+        {
+          "icon": "Nagte-trendUp",
+          "text": "Nadagdagang potensyal na kita",
+          "description": "Isa sa tatlong pangunahing salik na nag-uudyok sa mga indibidwal na naghahangad na bumuo ng bagong buhay sa ibang bansa."
+        },
+        {
+          "icon": "Briefcase",
+          "text": "Mas maraming oportunidad sa trabaho",
+          "description": "Isa sa tatlong pangunahing salik na nag-uudyok sa mga indibidwal na naghahangad na bumuo ng bagong buhay sa ibang bansa."
+        },
+        {
+          "icon": "Puso",
+          "text": "Mas mahusay na pangangalagang pangkalusugan at edukasyon",
+          "description": "Isa sa tatlong pangunahing salik na nag-uudyok sa mga indibidwal na naghahangad na bumuo ng bagong buhay sa ibang bansa."
+        }
+      ]
+    },
+    "definition": "Ang isang internasyonal na migrante ay isang taong naninirahan sa labas ng bansang kanilang sinilangan. Sa pagtawid ng mga hangganan upang maghanap ng trabaho, edukasyon, at mga bagong pananaw, ang isang migrante ay pangunahing hinihimok ng mga bagong oportunidad at mas maayos na kabuhayan."
+  },
+  "migrationopportunities": {
+    "title": {
+      "prefix": "Ilipat",
+      "highlight": "Pagkakataon"
+    },
+    "cards": {
+      "countries": {
+        "title": "Bansa",
+        "items": [
+          {
+            "name": "Lumipat sa Australia",
+            "id": 1
+          },
+          {
+            "name": "Lumipat sa Canada",
+            "id": 2
+          },
+          {
+            "name": "Lumipat sa New Zealand",
+            "id": 3
+          },
+          {
+            "name": "Lumipat sa Alemanya",
+            "id": 4
+          },
+          {
+            "name": "Lumipat sa Estados Unidos",
+            "id": 5
+          }
+        ]
+      },
+      "prVisas": {
+        "title": "Mga PR Visa",
+        "items": [
+          {
+            "name": "Visa para sa Permanenteng Residente ng Australia",
+            "id": 1
+          },
+          {
+            "name": "Visa para sa Permanenteng Residente ng Canada",
+            "id": 2
+          },
+          {
+            "name": "Visa para sa Residente ng New Zealand",
+            "id": 3
+          },
+          {
+            "name": "Pahintulot na Manatili nang Walang Katiyakan sa UK",
+            "id": 4
+          }
+        ]
+      },
+      "workVisas": {
+        "title": "Mga Visa sa Trabaho",
+        "items": [
+          {
+            "name": "Visa sa Paggawa sa Canada",
+            "id": 1
+          },
+          {
+            "name": "Visa sa Paggawa ng Australia",
+            "id": 2
+          },
+          {
+            "name": "Visa para sa mga Bihasang Manggagawa sa UK",
+            "id": 3
+          },
+          {
+            "name": "Kard ng Oportunidad sa Alemanya",
+            "id": 4
+          },
+          {
+            "name": "Estados Unidos H-1B",
+            "id": 5
+          },
+          {
+            "name": "Visa para sa Naghahanap ng Trabaho sa Portugal",
+            "id": 6
+          },
+          {
+            "name": "Permit sa Paninirahan sa Sweden",
+            "id": 7
+          }
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "icon": "Tahanan",
+        "text": "Mataas na pamantayan ng pamumuhay"
+      },
+      {
+        "icon": "Briefcase",
+        "text": "Napakahusay na balanse sa trabaho at buhay"
+      },
+      {
+        "icon": "Nagte-trendUp",
+        "text": "Kumita ng 5 beses na mas malaki kaysa sa iyong kasalukuyang suweldo"
+      },
+      {
+        "icon": "Globo",
+        "text": "Milyun-milyong oportunidad sa trabaho sa iba't ibang sektor"
+      },
+      {
+        "icon": "Gantimpala",
+        "text": "Mas magagandang oportunidad sa karera"
+      },
+      {
+        "icon": "GraduationCap",
+        "text": "LIBRENG edukasyon para sa inyong mga anak"
+      },
+      {
+        "icon": "Puso",
+        "text": "Mga benepisyo sa pangangalagang pangkalusugan at panlipunan"
+      },
+      {
+        "icon": "Kompas",
+        "text": "Mga benepisyo sa pagreretiro"
+      }
+    ]
+  },
+  "immigrationjourney": {
+    "header": {
+      "title": "Ang Iyong Paglalakbay sa Imigrasyon – Hakbang-hakbang",
+      "description": {
+        "part1": "Kamakailan lamang, ang migrasyon ay naging pangarap na ng lahat ng gustong manirahan sa ibang bansa. Naghahanap ka man ng",
+        "highlight1": "mga serbisyo sa imigrasyon para sa trabaho sa ibang bansa",
+        "part2": "o",
+        "highlight2": "imigrasyon para sa pag-unlad ng karera",
+        "part3": "ang aming",
+        "highlight3": "suporta sa imigrasyon na nakabatay sa trabaho",
+        "part4": "tinitiyak na handa ka nang mabuti."
+      }
+    },
+    "steps": [
+      {
+        "icon": "Maghanap",
+        "title": "Pagtatanong",
+        "description": "Maligayang pagdating! Ang iyong paglalakbay sa imigrasyon ay nagsisimula rito sa isang personalized na konsultasyon."
+      },
+      {
+        "icon": "Mga Gumagamit",
+        "title": "Pagpapayo ng Eksperto",
+        "description": "Nag-aalok ang aming mga espesyalista ng mga serbisyo sa konsultasyon sa imigrasyon batay sa iyong mga kwalipikasyon at layunin."
+      },
+      {
+        "icon": "ClipboardCheck",
+        "title": "Pagiging Karapat-dapat",
+        "description": "Suriin ang iyong pagiging kwalipikado para sa imigrasyon sa mga partikular na bansa at rehiyon sa pamamagitan ng aming gabay sa proseso ng imigrasyon."
+      },
+      {
+        "icon": "Teksto ng File",
+        "title": "Dokumentasyon",
+        "description": "Ang lahat ng iyong mga dokumento ay pagsasama-samahin upang makabuo ng isang matibay na aplikasyon na may suporta sa konsultasyon sa visa at imigrasyon."
+      },
+      {
+        "icon": "BarChart4",
+        "title": "Pagproseso",
+        "description": "Suporta sa bawat hakbang habang naghahain at sinusubaybayan ang iyong aplikasyon, tinitiyak ang mabilis na suporta sa work visa at relocation."
+      }
+    ],
+    "whyChoose": {
+      "title": "Bakit Piliin ang Aming Mga Serbisyo sa Migrasyon",
+      "services": [
+        {
+          "title": "Personalized na Pamamaraan",
+          "description": "Gumagawa kami ng mga pasadyang estratehiya sa imigrasyon batay sa iyong natatanging profile at mga layunin sa pandaigdigang paglipat."
+        },
+        {
+          "title": "Patnubay ng Eksperto",
+          "description": "Ang aming pangkat ay binubuo ng mga sertipikadong consultant sa imigrasyon na may mga taon ng karanasan sa mga programa sa imigrasyon ng mga skilled worker."
+        },
+        {
+          "title": "Mataas na Rate ng Tagumpay",
+          "description": "95% ng aming mga aplikasyon ay naaaprubahan sa unang pagsusumite, salamat sa aming mga serbisyo sa imigrasyon na nakatuon sa karera sa buong mundo."
+        }
+      ]
+    }
+  }
+}

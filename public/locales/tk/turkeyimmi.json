@@ -1,0 +1,1313 @@
+{
+  "turkeyHeroSection": {
+    "badge": "Eksklýuziw Syýahatlar",
+    "title": "Indiki başdan geçirmeleriňizi açyň",
+    "description": "Islegleriňize laýyk gelýän ýokary hilli syýahat paketlerimiz bilen ajaýyp ýerleri başdan geçiriň we ýatdan çykmajak ýatlamalary dörediň.",
+    "currentlyViewing": {
+      "label": "Häzirki wagtda görkezilýär"
+    },
+    "buttons": {
+      "explore": "Häzir öwren",
+      "viewAll": "Ähli ugurlary görkez"
+    },
+    "destinationCounter": "Barmaly ýer {häzirki}/{jemi}",
+    "destinations": [
+      {
+        "img": "/images/ihs.png",
+        "name": "Stambul",
+        "country": "Türkiýe"
+      },
+      {
+        "img": "/images/ihi.png",
+        "name": "Izmir",
+        "country": "Türkiýe"
+      },
+      {
+        "img": "/images/iha.png",
+        "name": "Antalýa",
+        "country": "Türkiýe"
+      },
+      {
+        "img": "/images/ihan.png",
+        "name": "Ankara",
+        "country": "Türkiýe"
+      },
+      {
+        "img": "/images/ihb.png",
+        "name": "Bursa",
+        "country": "Türkiýe"
+      }
+    ],
+    "accessibility": {
+      "exploreButton": "Häzir ýerleri öwreniň",
+      "viewAllButton": "Elýeterli ähli ugurlary görkez",
+      "destinationImage": "Barmaly ýeri görkez: {name}",
+      "featuredDestination": "Görkezilen ýeriň suraty",
+      "carouselControl": "{Number} barmaly ýere git"
+    },
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "turkeyTableOfContents": {
+    "title": "Mazmuny",
+    "subtitle": "Bölümler boýunça gezelenç",
+    "currentlyReading": "Häzirki wagtda okaýar",
+    "sectionsCount": "Öwrenilmeli {count} bölüm",
+    "sections": [
+      {
+        "title": "Türkiýe barada faktlar",
+        "id": 1
+      },
+      {
+        "title": "Türkiýä göçmek üçin wiza mümkinçilikleri",
+        "id": 2
+      },
+      {
+        "title": "Türkiýä göçmek üçin talaplar",
+        "id": 3
+      },
+      {
+        "title": "Türkiýede daşary ýurtly hökmünde işe girmek",
+        "id": 4
+      },
+      {
+        "title": "ABŞ-dan Türkiýä göçmek",
+        "id": 5
+      },
+      {
+        "title": "Beýik Britaniýadan Türkiýä göçmek",
+        "id": 6
+      },
+      {
+        "title": "Türkiýä göçmegiň bahasy näçe?",
+        "id": 7
+      },
+      {
+        "title": "Öý haýwanlary bilen Türkiýä göçmek",
+        "id": 8
+      }
+    ],
+    "quickNavigation": {
+      "title": "Çalt nawigasiýa",
+      "footer": "{count} bölümleriň içinden aýlaň"
+    },
+    "accessibility": {
+      "toggleMenu": "Nawigasiýa menýusyny aç/ýap",
+      "sectionButton": "Bölüme geç: {title}",
+      "quickNavigation": "Çalt nawigasiýa menýusy",
+      "quickNavSection": "Çalt gidiş: {title}"
+    }
+  },
+  "turkeyFactsCard": {
+    "title": "Türkiýe barada gyzykly maglumatlar",
+    "description": "Bu owadan ýurduň özboluşly medeni mirasyny açyň. Türkiýe dünýä täsir eden baý taryhy we dürli medeni elementleri hödürleýär.",
+    "navigation": {
+      "title": "Faktlary öwreniň",
+      "previous": "Öňki fakt",
+      "next": "Indiki fakt"
+    },
+    "allFacts": {
+      "title": "Türkiýe baradaky ähli maglumatlar"
+    },
+    "facts": [
+      {
+        "title": "Stambul iki kontinentde ýerleşýär",
+        "description": "Ol Bosfor bogazy bilen bölünen Ýewropada we Aziýada ýerleşýän dünýäde ýeke-täk uly şäherdir.",
+        "icon": "😉"
+      },
+      {
+        "title": "Troýanyň öýi",
+        "description": "Gomeriň “Iliada” poemasy bilen meşhur bolan gadymy Troýa şäheri Türkiýäniň günbatarynda ýerleşýär.",
+        "icon": "🏛️"
+      },
+      {
+        "title": "Aýaz babanyň doglan ýeri",
+        "description": "Aýaz babanyň rowaýatyna ylham beren<strong>Sent Nikolas</strong> häzirki Türkiýäniň Patara şäherinde doguldy.",
+        "icon": "🎅"
+      },
+      {
+        "title": "Türk kofesi ÝUNESKO-nyň sanawyna girizildi",
+        "description": "Türk kofesi medeni taýdan şeýle möhümdir welin, ÝUNESKO tarapyndan maddy däl medeni miras hökmünde ykrar edildi.",
+        "icon": "☕"
+      },
+      {
+        "title": "Laleler Türkiýeden gelip çykan",
+        "description": "Laleler köplenç Niderlandlar bilen baglanyşykly bolsa-da, aslynda Osman imperiýasynda ösdürilip ýetişdirilipdir we Ýewropa Türkiýeden getirilipdir.",
+        "icon": "🌷"
+      }
+    ],
+    "accessibility": {
+      "factButton": "Fakty saýlaň: {title}",
+      "previousFact": "Öňki fakta geç",
+      "nextFact": "Indiki fakta geç"
+    }
+  },
+  "turkeyJobGuide": {
+    "header": {
+      "icon": "🇹🇷",
+      "title": "Türkiýede daşary ýurtly hökmünde işe girmek",
+      "subtitle": "Doly gollanma",
+      "description": "Türkiýäniň janly medeniýeti, Ýewropa bilen Aziýanyň arasyndaky strategik ýerleşişi we ösýän ykdysadyýeti ony iş gözleýän daşary ýurtlylar üçin özüne çekiji ýere öwürýär. Şeýle-de bolsa, daşary ýurtly hökmünde Türkiýede iş tapmak üçin iş bazaryny, iş wizasynyň düzgünlerini we medeni garaşmalary düýpli düşünmek gerek.",
+      "subDescription": "Daşary ýurt raýaty hökmünde Türkiýede işe ýerleşmäge kömek etjek giňişleýin gollanma."
+    },
+    "navigation": {
+      "title": "Gollanmanyň mazmuny"
+    },
+    "sections": [
+      {
+        "id": "iş bazary",
+        "icon": "🔍",
+        "title": "Türkiýäniň iş bazaryny düşünmek",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Türkiýe dürli pudaklarda mümkinçilikleri hödürleýär, ýöne käbir pudaklar daşary ýurtly işçiler üçin has elýeterli we myhmansöýer.</p><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Daşary ýurtlylar üçin isleg bildirilýän pudaklar:</h3><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-6\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Syýahatçylyk we myhmanhanaçylyk</span><p class=\"text-sm text-gray-600\">Myhmanhanalar, syýahatçylyk agentlikleri, tur operatorlary</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Bilim</span><p class=\"text-sm text-gray-600\">Iňlis dili mugallymlar, halkara mekdepler</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Tehnologiýa we programma üpjünçiligi</span><p class=\"text-sm text-gray-600\">Ösüp çykmak, IT hyzmatlary</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Gurluşyk we inženerçilik</span><p class=\"text-sm text-gray-600\">Taslama dolandyryşy, ýöriteleşdirilen rollar</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Import-Eksport we Söwda</span><p class=\"text-sm text-gray-600\">Halkara söwda, logistika</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Saglyk we lukmançylyk hyzmatlary</span><p class=\"text-sm text-gray-600\">Ýöriteleşdirilen hünärmenler</p></li></ul><p class=\"text-gray-700\">Dili bilmek size bäsdeşlik artykmaçlygyny berýär, ýöne iňlis dilinde iş orunlary, esasanam köpmilletli kompaniýalarda ýa-da tehnologiýa startaplarynda elýeterlidir.</p></div>"
+      },
+      {
+        "id": "kanuny talaplar",
+        "icon": "🗂️",
+        "title": "Kanuny talaplar: Iş rugsatnamasy we wiza",
+        "content": "<div><div class=\"mb-6\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">1-nji ädim: Iş teklibini almak</h3><p class=\"text-gray-700 mb-4\">Türkiýede kanuny taýdan işläp başlamazdan ozal, ilki bilen türk iş berijisinden resmi iş teklibini almaly. Käbir ýurtlardan tapawutlylykda, hemaýatkär bolmazdan umumy iş rugsatnamasyna ýüz tutup bolmaýar.</p></div><div class=\"mb-6\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">2-nji ädim: Iş wizasyna ýüz tutmak</h3><p class=\"text-gray-700 mb-4\">Iş teklibiňiz bolandan soň:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Öz ýurduňyzdaky Türkiýäniň konsullygynda/ilinhanasynda iş wizasyna ýüz tutýarsyňyz.</li><li>Iş berijiňiz şol bir wagtyň özünde Türkiýäniň Zähmet we Sosial Howpsuzlyk ministrligi arkaly iş rugsatnamasyna ýüz tutýar.</li></ul></div><div class=\"bg-sky-50 p-4 rounded-md border border-sky-100 mb-4\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Zerur resminamalar:</h3><ul class=\"list-disc pl-6 mb-2 text-gray-700\"><li>Güýçli pasport</li><li>Iş şertnamasy</li><li>Bilim derejeleri</li><li>Pasport ölçegli suratlar</li><li>Doly wiza arzasy</li><li>Iş berijiň hemaýatkärlik resminamalary</li></ul></div><p class=\"text-gray-700\">Tassyklamadan soň, size iş wizasy berler we işe başlamak üçin Türkiýä girip bilersiňiz.</p></div>"
+      },
+      {
+        "id": "iş mümkinçilikleri",
+        "icon": "🏢",
+        "title": "Türkiýede iş mümkinçiliklerini tapmak",
+        "content": "<div><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Iň gowy iş portallary:</h3><div class=\"grid grid-cols-2 md:grid-cols-3 gap-3 mb-6\"><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Kariyer.net</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Yenibiris.com</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Secretcv.com</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Secretcv.com</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Jooble Turkey</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">LinkedIn</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Aýna gapy</a></div><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Hünärmen maslahatlary:</h3><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Türkiýedäki HR hünärmenleri bilen aragatnaşyk saklamak üçin LinkedIn ulanyň.</li><li>Iş orunlaryny dil talaplaryna görä süzüň (meselem, iňlis dilinde gepleýän rollar).</li><li>Halkara iş orunlaryna ýöriteleşen işe kabul ediş agentliklerini göz öňünde tutuň.</li></ul></div>"
+      },
+      {
+        "id": "iňlis dilini öwretmek",
+        "icon": "🧑‍🏫",
+        "title": "Türkiýede iňlis dilini öwretmek",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Türkiýede daşary ýurtlylar üçin iň köp ulanylýan işleriň biri iňlis dilini öwretmekdir.</p><div class=\"flex flex-col md:flex-row gap-6 mb-6\"><div class=\"flex-1 bg-white p-4 rounded-md border border-sky-100\"><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Işläp biljek ýeriňiz:</h3><ul class=\"list-disc pl-6 text-gray-700\"><li>Hususy dil mekdepleri</li><li>Uniwersitetler</li><li>Halkara mekdepler</li><li>Onlaýn repetitorlyk platformalary</li></ul></div><div class=\"flex-1 bg-white p-4 rounded-md border border-sky-100\"><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Talaplar:</h3><ul class=\"list-disc pl-6 text-gray-700\"><li>Bakalawr derejesi</li><li>TEFL/TESOL/CELTA güwänamasy</li><li>Iňlis diliniň ene dili ýa-da erkinligi</li></ul></div></div><p class=\"text-gray-700\">Käbir mekdepler wiza hemaýatkärligini we ýaşaýyş jaýyny hem hödürleýärler.</p></div>"
+      },
+      {
+        "id": "iş rugsatnamasy",
+        "icon": "🧾",
+        "title": "Iş rugsatnamasynyň möhleti we täzelenmegi",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Ilkinji iş rugsatnamalary, adatça, <strong>1 ýyl</strong> möhlete güýjünde bolýar.</p><p>Olary ilkinji täzelenmede <strong>2 ýyl</strong> we ondan soň <strong>3 ýyl</strong> möhlete täzeläp bolýar.</p><p>5 ýyl üznüksiz işläniňizden soň, uzak möhletli ýaşamak rugsatnamasyna ýüz tutup bilersiňiz.</p></div>"
+      },
+      {
+        "id": "freelancer",
+        "icon": "🧑‍💼",
+        "title": "Daşary ýurtlylar Türkiýede erkin ýa-da uzakdan işleýän işlerde işläp bilerlermi?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Tehniki taýdan, degişli rugsatnama bolmazdan, Türkiýede halkara müşderiler üçin kanuny taýdan frilanser bolup ýa-da uzakdan işläp bolmaýar. Şeýle-de bolsa, köp daşary ýurtlylar gysga möhletli ýaşamak rugsatnamasy boýunça uzakdan işleýärler ýa-da özbaşdak işgär hökmünde hasaba alynýarlar, bu bolsa aşakdakylary öz içine alýan çylşyrymly gurluşy öz içine alýar:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Türk kompaniýasyny açmak</li><li>Salgyt belgisini almak</li><li>Iş wizasyna ýa-da telekeçilik rugsatnamasyna ýüz tutmak</li></ul></div>"
+      },
+      {
+        "id": "dil",
+        "icon": "💬",
+        "title": "Dil päsgelçilikleri: Türk dili zerurmy?",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Köp hünär işleri azyndan <strong>esasy türk dili başarnyklaryny</strong> talap edýär.</p><p>Şeýle-de bolsa, tehnologiýa, syýahatçylyk we bilim pudaklary köplenç <strong>diňe iňlis dili</strong> bilen işlemäge mümkinçilik berýär.</p><p>Türk dilini öwrenmek integrasiýany gowulandyrýar we iş mümkinçilikleriňizi artdyrýar.</p></div>"
+      },
+      {
+        "id": "tor ulgamy",
+        "icon": "👥",
+        "title": "Türkiýede tor ulgamy",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Türkiýede aragatnaşyk güýçli. Gatnaşyň:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Ekspat duşuşyklary</li><li>Pudaga degişli seminarlar</li><li>LinkedIn çäreleri we Türkiýäniň Söwda-senagat palatasynyň ýygnaklary</li></ul><p class=\"text-gray-700\">Şahsy tanyşdyryşlar we teklipler köplenç sowuk aragatnaşyklardan has köp agramlydyr.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Türkiýede iş tapmak üçin soňky barlag sanawy"
+    },
+    "checklist": [
+      "Öz terjimehalyňyzy kämilleşdiriň we ony türk formatlaryna uýgunlaşdyryň",
+      "Daşary ýurtlylary işe almaga ygtyýarly kompaniýalara ýüz tutuň",
+      "Wiza işleri üçin zerur resminamalary taýýarlaň",
+      "Türkçe esasy sözlemleri öwreniň",
+      "Türkiýäniň zähmet kanuny boýunça öz hukuklaryňyzy düşüniň"
+    ],
+    "conclusion": {
+      "icon": "✈️",
+      "title": "Türkiýede işlemäge taýynmy?",
+      "description": "Daşary ýurtly hökmünde Türkiýede işe girmek dogry çemeleşme, taýýarlyk we sabyrlylyk bilen doly mümkin. Karýera üýtgeşmesini, halkara tejribesini ýa-da uzak möhletli göçmegi gözleýän bolsaňyzam, Türkiýe mümkinçiliklere we medeniýete baý özboluşly gurşawy hödürleýär."
+    },
+    "accessibility": {
+      "sectionToggle": "Bölümi aç/ýap: {title}"
+    }
+  },
+  "turkeyMovingCostsGuide": {
+    "title": "Türkiýä göçmegiň bahasy näçe?",
+    "description": "Türkiýä göçmek Günbataryň köp ýurtlary bilen deňeşdirilende elýeterli bolup biler. Bu ýerde Türkiýä göçmegiňiziň mümkin bolan çykdajylarynyň jikme-jik beýany berilýär.",
+    "costSections": [
+      {
+        "id": "wiza-rezidentlik",
+        "icon": "🛂",
+        "title": "Wiza we ýaşamak üçin rugsatnama",
+        "amount": "100–600 dollar",
+        "details": "Kart, saglyk ätiýaçlandyrmasy, wiza tölegi öz içine alýar",
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "ýaşaýyş jaýy",
+        "icon": "🏠",
+        "title": "Ýaşaýyş jaýy",
+        "amount": "Ilkinji töleg 600–1200 dollar",
+        "details": "1–2 aýlyk girew + birinji aýlyk kärende tölegi",
+        "color": "bg-sky-600",
+        "subItems": {
+          "0": {
+            "title": "Şäher merkezi (aýlyk)",
+            "amount": "300–500 dollar"
+          },
+          "1": {
+            "title": "Kenarýaka/şäher sebitleri (aýlyk)",
+            "amount": "200–400 dollar"
+          }
+        }
+      },
+      {
+        "id": "iberiş",
+        "icon": "📦",
+        "title": "Eltip bermek (Isleg boýunça)",
+        "amount": "2000–4000 dollar",
+        "details": "Kiçi konteýner. Köp daşary ýurtlylar çykdajylary tygşytlamak üçin ýerli mebelleri satyn almagy makul bilýärler.",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "kommunal hyzmatlar",
+        "icon": "💡",
+        "title": "Kommunal hyzmatlar we internet gurnama",
+        "amount": "50–150 dollar",
+        "details": "Depozitler we gurnama tölegleri",
+        "color": "bg-sky-500",
+        "subItems": {
+          "0": {
+            "title": "Aýlyk tölegler",
+            "amount": "30–60 dollar"
+          }
+        }
+      },
+      {
+        "id": "her gün",
+        "icon": "🛒",
+        "title": "Gündelik çykdajylar",
+        "amount": "Aýda 230–350 dollar",
+        "color": "bg-sky-600",
+        "subItems": {
+          "0": {
+            "title": "Azyk önümleri",
+            "amount": "Aýda 200–300 dollar"
+          },
+          "1": {
+            "title": "Jemgyýetçilik ulagy",
+            "amount": "Aýda 10–30 dollar"
+          },
+          "2": {
+            "title": "Mobil we internet",
+            "amount": "~$20/aý"
+          }
+        }
+      }
+    ],
+    "totalBudget": {
+      "icon": "🔢",
+      "title": "Jemi baha (Ýeke syýahatçy)",
+      "categories": [
+        {
+          "title": "Eltip bermesiz",
+          "amount": "1200–2500 dollar",
+          "description": "Wiza, ýaşaýyş jaýynyň girewi, ilkinji aýlyk kärende tölegi we gurnama çykdajylaryny öz içine alýar"
+        },
+        {
+          "title": "Eltip bermek bilen",
+          "amount": "3500–6000+ dollar",
+          "description": "Ähli çykdajylary we kiçi konteýner zatlary ibermegi öz içine alýar"
+        }
+      ]
+    },
+    "moneySavingTips": {
+      "icon": "💰",
+      "title": "Pul tygşytlamak boýunça maslahatlar",
+      "tips": [
+        {
+          "title": "Mebelleri ýerli ýerden satyn alyň",
+          "description": "Türk mebelleri elýeterli we elýeterlidir. Diňe eltip bermek üçin zerur zatlary göz öňünde tutuň."
+        },
+        {
+          "title": "Ýerleşýän ýeriňizi akylly saýlaň",
+          "description": "Stambul ýaly iri şäherlerden daşardaky ýerlerde ýaşaýyş jaýlary 30-50% arzan bolup biler."
+        },
+        {
+          "title": "Syýahat Çyra",
+          "description": "Her bir goşmaça çemodan uçuşlarda 50-100 dollara düşüp biler. Diňe gerek zatlaryňyzy alyň."
+        },
+        {
+          "title": "Möwsümleýin wagty göz öňünde tutuň",
+          "description": "Gyş aýlarynda köplenç kwartiralar arzan bolýar we syýahatçylar az bolýar."
+        }
+      ]
+    },
+    "conclusion": "Türkiýä göçmegiň bahasy beýleki Ýewropa ýa-da Demirgazyk Amerikanyň ýerlerine göçmek bilen deňeşdirilende has elýeterlidir. Dogry meýilnamalaşdyrmak we býujet düzmek bilen, Türkiýä göçmegiňizi hem rahat, hem-de ykdysady taýdan amatly edip bilersiňiz.",
+    "accessibility": {
+      "toggleSection": "{title} bölüminiň jikme-jiklikleri üçin aç/ýap"
+    }
+  },
+  "usTurkeyGuide": {
+    "header": {
+      "icon": "🇺🇸➡️🇹🇷",
+      "title": "ABŞ-dan Türkiýä göçmek",
+      "subtitle": "Bilmeli zatlaryň hemmesi",
+      "description": "Baý medeniýeti, gözel kenarýakalary we ýaşaýyş çykdajylarynyň arzanlygy bilen daşary ýurtlarda ýaşamagy arzuw edýärsiňizmi? Türkiýe pensiýa çykmak, uzakdan işlemek ýa-da başdan geçirmek üçin täze durmuş ýörelgesini gözleýän amerikanlar üçin barha köp esasy ýere öwrülýär.",
+      "subDescription": "Türkiýä göçmegi meýilleşdirýän ABŞ raýatlary üçin wiza mümkinçiliklerinden medeni maslahatlara çenli ähli zady öz içine alýan doly gollanma şu ýerde."
+    },
+    "quickNavigation": {
+      "title": "Çalt nawigasiýa"
+    },
+    "sections": [
+      {
+        "id": "näme üçin-hindi",
+        "icon": "📌",
+        "title": "Näme üçin Türkiýä göçmeli?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Amerikalylar Türkiýä köp sebäpler üçin çekilýärler:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Ýaşaýyş üçin elýeterli çykdajylar</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Ortaýer deňzi durmuş ýörelgesi we ýumşak howa</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Ortaýer deňzi durmuş ýörelgesi we ýumşak howa</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Baý taryh we dünýä belli aşhanalar</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Ýerli medeniýeti garşylamak</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Ýewropa bilen Aziýanyň arasyndaky strategik ýerleşiş</span></li></ul><p class=\"text-gray-700\">Iş, okuw, pensiýa ýa-da diňe durmuşyň haýal depgininden lezzet almak üçin göçýän bolsaňyz, Türkiýe daşary ýurtlylar üçin dürli mümkinçilikleri hödürleýär.</p></div>"
+      },
+      {
+        "id": "wiza mümkinçilikleri",
+        "icon": "🛂",
+        "title": "ABŞ raýatlary üçin wiza mümkinçilikleri",
+        "content": "<div><p class=\"text-gray-700 mb-4\">ABŞ raýaty hökmünde Türkiýä 90 günlük syýahatçylyk wizasy bilen girip bilersiňiz, ýöne uzak möhletli ýaşamak üçin aşakdakylaryň biri gerek bolar:</p><div class=\"space-y-4\"><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">1. Gysga möhletli ýaşamak üçin rugsatnama</h3><ul class=\"text-gray-700 space-y-1\"><li>• Sanly göçme çarwalar, uzakdan işleýänler we ilkinji gezek daşary ýurtlara çykanlar üçin amatly</li><li>• 1 ýyla çenli möhlet bilen güýje girýär, täzelenip bilner</li><li>• Ýaşaýyş jaýynyň, maliýe serişdeleriniň we saglyk ätiýaçlandyrmasynyň subutnamasy talap edilýär</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">2. Talyp wizasy we ýaşamak üçin rugsatnama</h3><ul class=\"text-gray-700 space-y-1\"><li>• Uniwersitet ýa-da dil kurslaryna gatnaýanlar üçin</li><li>• Okuwa kabul edilendigini we maliýe goldawyny tassyklaýan resminama talap edilýär</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">3. Iş wizasy</h3><ul class=\"text-gray-700 space-y-1\"><li>• Türkiýeli iş berijiden iş teklibini almaly</li><li>• Iş beriji siziň iş rugsatnamaňyzy maliýeleşdirer</li><li>• Tassyklamadan soň, ABŞ-daky Türkiýäniň konsullygynda iş wizasy üçin ýüz tutup bilersiňiz</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">4. Maşgala üçin ýaşaýyş rugsatnamasy</h3><ul class=\"text-gray-700 space-y-1\"><li>• Türkiýe raýatlarynyň ýa-da daşary ýurtly raýatlaryň är-aýallary ýa-da çagalary üçin</li><li>• 2 ýyla çenli güýjünde</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">5. Pensiýa ýa-da emläk esasynda ýaşamak</h3><p class=\"text-gray-700\">Türkiýede emläk satyn almak (ýaşaýyş üçin iň pes baha ýok) sizi gysga möhletli ýaşaýyş rugsatnamasyna hukukly edýär</p></div></div></div>"
+      },
+      {
+        "id": "zerur resminamalar",
+        "icon": "🧾",
+        "title": "Göçmek üçin zerur resminamalar",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Ýaşamak üçin rugsatnama almak üçin adatça aşakdakylar gerek bolar:</p><div class=\"bg-sky-50 p-5 rounded-lg border border-sky-100\"><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>ABŞ-nyň ygtyýarly pasporty (azyndan 6 aý möhletli)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Türkiýäniň salgyt güwänamasynyň belgisi</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Ýaşaýyş jaýyň subutnamasy (kärende şertnamasy ýa-da resminamasy)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Saglyk ätiýaçlandyrmasy (ýerli ýa-da hususy)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Pasport suratlary (biometriki)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Ýeterlik serişdäni görkezýän bank hasabatlary</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Ýaşamak üçin rugsatnama üçin doldurylan arza formasy</span></li></ul></div></div>"
+      },
+      {
+        "id": "meşhur şäherler",
+        "icon": "🏙️",
+        "title": "Amerikanlaryň köpüsi Türkiýede nirede ýaşaýar?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Amerikan ekspatlarynyň arasynda iň meşhur şäherleriň käbiri:</p><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4 mb-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🏖️</span>Antaliýa</h3><ul class=\"text-gray-700 space-y-1\"><li>• Güneşli howasy, kenarýakalary we elýeterli ýaşaýyşy bolan kenarýaka şäheri</li><li>• Pensiýa çykanlar we sanly göçmenler üçin ajaýyp</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🌆</span>Stambul</h3><ul class=\"text-gray-700 space-y-1\"><li>• Ykdysady we medeni paýtagt</li><li>• Hünärmenler, talyplar we şäher durmuşyny isleýänler üçin ideal</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🎓</span>Ankara</h3><ul class=\"text-gray-700 space-y-1\"><li>• Türkiýäniň paýtagty, Stambuldan has sessiz, ýöne köp mümkinçilikleri bar</li><li>• Has köp býurokratik we diplomatik karýera mümkinçilikleri</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🏝️</span>Izmir</h3><ul class=\"text-gray-700 space-y-1\"><li>• Progressiw atmosfera eýe bolan rahat Egeý kenarýaka şäheri</li><li>• Ýaş daşary ýurtlylar we telekeçiler arasynda meşhur</li></ul></div></div></div>"
+      },
+      {
+        "id": "ýaşaýyş çykdajylary",
+        "icon": "💸",
+        "title": "Ýaşaýyş çykdajylaryny deňeşdirmek: Türkiýe bilen ABŞ",
+        "content": "<div><div class=\"overflow-x-auto mb-4\"><table class=\"min-w-full bg-white border border-sky-200 rounded-lg\"><thead><tr class=\"bg-sky-100\"><th class=\"py-3 px-4 text-left border-b border-sky-200\">Çykdajylar</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">Türkiýe (ortaça)</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">ABŞ (ortaça)</th></tr></thead><tbody><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Kärende (1BR şäher merkezi)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">Aýda $300–$600</td><td class=\"py-3 px-4 border-b border-sky-100\">$1,500–$2,000</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Internet (aýlyk)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$10–$20</td><td class=\"py-3 px-4 border-b border-sky-100\">$50–$70</td></tr><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Daşarda naharlanmak (2 adam üçin)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$15–$30</td><td class=\"py-3 px-4 border-b border-sky-100\">$50–$100</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Ulag</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">Aýda $10–$20</td><td class=\"py-3 px-4 border-b border-sky-100\">$70–$150</td></tr></tbody></table></div><p class=\"text-gray-700\">Türkiýe uzakdan işleýänler we pensiýa çykanlar üçin has az ýaşaýyş çykdajylaryny hödürleýär.</p></div>"
+      },
+      {
+        "id": "saglygy goraýyş",
+        "icon": "🩺",
+        "title": "Türkiýede Saglygy goraýyş",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Türkiýede güýçli döwlet saglygy goraýyş ulgamy (SGK) bar we hususy saglygy goraýyş hyzmaty ýokary hilli we elýeterlidir. Ýaşamak üçin rugsatnama almaga dalaşgärler üçin ilki bilen hususy ätiýaçlandyryş talap edilýär.</p><p>Kanuni taýdan işe alnandan soň, köp bejergileri we dermanlary öz içine alýan döwlet saglygy goraýyş ätiýaçlandyrmasyna (SGK) hukuk gazanarsyňyz.</p></div>"
+      },
+      {
+        "id": "dil",
+        "icon": "🗣️",
+        "title": "Dil we medeni maslahatlar",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Şäher ýerlerinde ýaşaýan köp türkler iňlis dilinde gürleşse-de, resmi dil türk dilidir.</p><p>Esasy türk dilini öwrenmek integrasiýa we gündelik durmuşa kömek edýär.</p><p>Ýerli däp-dessurlary, esasanam konserwatiw sebitlerde geýim we jemgyýetçilik özüni alyp barşy babatda hormat goýuň.</p><p>Türkler myhmansöýerligi bilen tanalýar - olary çaý ýa-da nahara çagyrmak adaty zat.</p></div>"
+      },
+      {
+        "id": "hereket etmek",
+        "icon": "📦",
+        "title": "ABŞ-dan göçürmek we ibermek",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Türkiýede göçürmek boýunça ýöriteleşen halkara göçürijileri göz öňünde tutuň.</p><p>Eger ýaşamak üçin rugsatnama alýan bolsaňyz, öý hojalyk harytlary adatça salgytsyz getirilip bilner.</p><p>Öý haýwanlaryny sanjym ýazgylary we mikroçipler bilen import edip bolýar — täzelenen düzgünleri barlaň.</p></div>"
+      },
+      {
+        "id": "bank işi",
+        "icon": "🏦",
+        "title": "Bankçylyk we maliýe",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Pasportyňyzy, salgyt belgiňizi we salgyňyzy ulanyp, Türkiýäniň bank hasabyny açyp bilersiňiz.</p><p>Köp daşary ýurtlylar ABŞ-nyň bank hasabyny saklaýarlar we pul geçirmek üçin Wise ýa-da Revolut ulanýarlar.</p><p>Walýuta: Türk lirasy (TRY). ABŞ dollary çäkli ýerlerde kabul edilýär, ýöne köp ulanylmaýar.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Türkiýä göçýän amerikanlar üçin soňky barlag sanawy"
+    },
+    "checklist": [
+      {
+        "text": "Ýaşamak üçin rugsatnama ýa-da iş wizasy üçin ýüz tutuň",
+        "fullWidth": false
+      },
+      {
+        "text": "Howpsuz ýaşaýyş jaýy (gysga möhletli ýa-da uzak möhletli)",
+        "fullWidth": false
+      },
+      {
+        "text": "Türkiýäniň salgyt belgisini alyň",
+        "fullWidth": false
+      },
+      {
+        "text": "Hususy saglyk ätiýaçlandyrmasyny satyn alyň",
+        "fullWidth": false
+      },
+      {
+        "text": "Esasy türkçe sözlemleri öwreniň",
+        "fullWidth": false
+      },
+      {
+        "text": "Bank we mobil hyzmatlaryny gurnaň",
+        "fullWidth": false
+      },
+      {
+        "text": "Destek üçin daşary ýurtly jemgyýetlere we Facebook toparlaryna goşulyň",
+        "fullWidth": true
+      }
+    ],
+    "conclusion": {
+      "icon": "✈️",
+      "title": "Netije: ABŞ-dan Türkiýä göçmek peýdalymy?",
+      "description": "Köp amerikanlylar üçin Türkiýe ABŞ-daky ýaşaýşa baýlaşdyryjy, elýeterli we janly alternatiwa hödürleýär. Dogry taýýarlyk, kanuny ädimler we açyk pikirli garaýyş bilen Türkiýä göçmek täze gyzykly sahypanyň başlangyjy bolup biler."
+    },
+    "accessibility": {
+      "sectionToggle": "Bölümi aç/ýap: {title}"
+    }
+  },
+  "movingWithPets": {
+    "title": "Öý haýwanlary bilen Türkiýä göçmek",
+    "description": "Tüýli dostuňyzy Türkiýä getirmek mümkin, ýöne bu prosesiň rahat geçmegi üçin belli bir düzgünlere eýermeli bolarsyňyz. Öý haýwanlaryňyz bilen Türkiýä göçmek barada bilmeli zatlar.",
+    "navigation": {
+      "title": "Öý haýwanlary üçin syýahat gollanmasy",
+      "sections": [
+        {
+          "id": "talaplar",
+          "icon": "✅",
+          "title": "Esasy talaplar"
+        },
+        {
+          "id": "aeroport",
+          "icon": "🛬",
+          "title": "Howa menzilinde"
+        },
+        {
+          "id": "syýahat etmek",
+          "icon": "✈️",
+          "title": "Syýahat opsiýalary"
+        },
+        {
+          "id": "gelenden soň",
+          "icon": "🏠",
+          "title": "Gelişden soň"
+        },
+        {
+          "id": "öý haýwanlaryna rugsat berilýär",
+          "icon": "🐶",
+          "title": "Öý haýwanlaryna rugsat berilýän hindi"
+        }
+      ]
+    },
+    "sections": {
+      "requirements": {
+        "items": [
+          {
+            "title": "Mikroçip",
+            "content": "Haýwanyňyz ISO 11784/11785 standartyna laýyk gelýän çip bilen mikroçiplenmelidir."
+          },
+          {
+            "title": "Guduzlama garşy waksinasiýa",
+            "content": "Syýahatdan azyndan 30 gün öň we soňky 12 aýyň dowamynda <span class=\"font-medium\">berilmelidir."
+          },
+          {
+            "title": "Saglyk güwänamasy",
+            "type": "sanaw",
+            "listItems": {
+              "0": "• Ygtyýarly weterinar tarapyndan berlen we ýurduňyzdaky resmi edara tarapyndan tassyklanan (ABŞ-da USDA ýa-da Beýik Britaniýada DEFRA ýaly).",
+              "1": "• Türkiýä gelmezden <span class=\"font-medium\">10 gün öň</span> berilmeli."
+            }
+          },
+          {
+            "title": "Lent gurçuklary we keneleri bejermek",
+            "content": "Syýahatdan soň 5 günüň dowamynda ýerine ýetirilýär.",
+            "note": "(hemişe hökmany däl, ýöne maslahat berilýär)"
+          }
+        ]
+      },
+      "airport": {
+        "description": "Siz öý haýwanyňyz bilen gümrükden geçersiňiz.",
+        "documentsTitle": "Çap edilen resminamalary, şol sanda:",
+        "documents": [
+          "Mikroçipiň subutnamasy",
+          "Waksinasiýa ýazgylary",
+          "Saglyk sertifikaty",
+          "Haýwan pasporty (Eger ÝB/Beýik Britaniýadan gelse)"
+        ]
+      },
+      "traveling": {
+        "options": [
+          {
+            "icon": "🐱",
+            "ariaLabel": "kiçi öý haýwany",
+            "title": "Kabinada (kiçi haýwanlar)",
+            "description": "Howaýollarynyň köpüsinde göteriji uçar bilen birlikde 8 kg-dan az agramdaky haýwanlara rugsat berilýär."
+          },
+          {
+            "icon": "🐕",
+            "ariaLabel": "uly öý haýwany",
+            "title": "Ýük",
+            "description": "Uly haýwanlar ýük hökmünde uçmaly."
+          },
+          {
+            "icon": "💰",
+            "ariaLabel": "çykdajy",
+            "title": "Çykdajylar",
+            "description": "150–1000 dollar, awiakompaniýa we ululygyna baglylykda."
+          }
+        ],
+        "warning": "Talaplar we çykdajylar dürli-dürli bolup bilýändigi üçin, haýwanlar bilen bagly syýasatyňyz barada hemişe awiakompaniýaňyz bilen habarlaşyň."
+      },
+      "afterArrival": {
+        "intro": [
+          "Ähli resminamalar düzgünli bolsa, karantine goýulmagyň zerurlygy ýok.",
+          "Öý haýwanyňyzy ýerli weterinar lukmana ýazdyrmak maslahat berilýär."
+        ],
+        "recommendedSteps": {
+          "title": "Maslahat berilýän ilkinji ädimler",
+          "items": [
+            "Ýerli weterinar lukmany tapyň we öý haýwanyňyzy tanyşdyryň",
+            "Öý haýwanyňyza yzygiderli gerek bolan islendik dermanlary satyn alyň",
+            "Haýwanyňyzyň boýnuny täze türk salgysyňyz we telefon belgiňiz bilen täzeläň"
+          ]
+        }
+      },
+      "petFriendly": {
+        "description": "Türkiýäniň şäherlerinde, esasanam kenarýaka şäherlerinde, öý haýwanlaryna rugsat berilýär. Weterinar lukmanlaryň bahasy elýeterli we öý haýwanlary üçin zerur zatlar giňden elýeterlidir.",
+        "features": [
+          {
+            "icon": "🏥",
+            "title": "Weterinariýa hyzmaty",
+            "description": "Weterinar lukmana baryp görmek takmynan 100-300 TL (5-15 dollar) bolýar, bu bolsa yzygiderli idegi örän elýeterli edýär."
+          },
+          {
+            "icon": "🏞️",
+            "title": "Itler üçin seýilgähler we plýažlar",
+            "description": "Kenarýaka sebitleriniň köpüsinde itler üçin amatly plýažlar bar, uly şäherlerde bolsa haýwanlar üçin niýetlenen ýöriteleşdirilen seýilgähler bar."
+          },
+          {
+            "icon": "🥫",
+            "title": "Öý haýwanlary üçin enjamlar",
+            "description": "Öý haýwanlary üçin iýmit we zerur zatlar supermarketlerde, öý haýwanlary dükanlarynda we internet arkaly satuwçylarda bar."
+          },
+          {
+            "icon": "🏨",
+            "title": "Öý haýwanlary üçin amatly jaýlar",
+            "description": "Köp myhmanhanalar we kärende jaýlar öý haýwanlaryny kabul edýär, ýöne öňünden tassyklamagy hemişe maslahat berýär."
+          }
+        ]
+      }
+    },
+    "checklist": {
+      "title": "Öý haýwanlarynyň syýahatynyň barlag sanawy",
+      "items": [
+        "Syýahatdan azyndan 2 aý öň weterinar barlagyny belläň",
+        "Mikroçipiň ISO standartlaryna laýyk gelýändigini barlaň",
+        "Guduzlama garşy sanjymyň täzelenendigine göz ýetiriň (syýahatdan azyndan 30 gün öň)",
+        "Gidenden soň 10 günüň dowamynda saglyk şahadatnamasyny alyň",
+        "Howaýollaryndan öý haýwanlary üçin amatly ulag bronlaň",
+        "Howaýollary tarapyndan tassyklanan haýwan daşaýjysyny satyn alyň",
+        "Syýahat wagtynda ähli resminamalaryň nusgalaryny alyň we olary özüňiz bilen saklaň"
+      ]
+    },
+    "conclusion": {
+      "title": "Haýwanyňyzyň täze başdan geçirmesi sizi garaşýar!",
+      "description": "Dogry taýýarlyk bilen, öý haýwanyňyzy Türkiýä getirmek aňsat tejribe bolup biler. Türkiýäniň öý haýwanlary üçin amatly gurşawy tüýlü dostuňyzyň täze Ortaýer deňzi öýüne çalt öwrenişmegine kömek eder."
+    },
+    "accessibility": {
+      "sectionButton": "{title} bölümine geç"
+    }
+  },
+  "relocationRequirements": {
+    "title": "Türkiýä göçmek üçin esasy talaplar",
+    "description": "Iş, okuw, pensiýa çykmak ýa-da durmuş ýörelgesini üýtgetmek üçin Türkiýede ýerleşmegi meýilleşdirýän bolsaňyz, taýýarlamaly bolýan anyk ädimler we resminamalar bar. Bu ýerde Türkiýä kanuny we rahat göçmegiň esasy talaplarynyň doly beýany berilýär.",
+    "navigation": {
+      "title": "Çalt nawigasiýa",
+      "expandAll": "Hemmesini ýaýmak",
+      "collapseAll": "Hemmesini ýygna"
+    },
+    "sections": [
+      {
+        "id": "pasport",
+        "icon": "🛂",
+        "title": "Güýçli pasport",
+        "shortTitle": "Pasport",
+        "content": {
+          "0": {
+            "type": "abzas",
+            "text": "Pasportyňyz Türkiýede meýilleşdirilen wagtyňyzdan soň azyndan 6 aý möhlet bilen güýjünde bolmaly. Käbir milletler, esasanam uzak möhletli rugsatnamalar üçin ýüz tutýan bolsaňyz, has uzak möhletli güýjüni talap edip bilerler."
+          }
+        }
+      },
+      {
+        "id": "wiza",
+        "icon": "📝",
+        "title": "Giriş wizasy (eger gerek bolsa)",
+        "shortTitle": "Wiza",
+        "content": {
+          "0": {
+            "type": "abzas",
+            "text": "Siziň raýatlygyňyza baglylykda size gerek bolup biler:"
+          },
+          "1": {
+            "type": "sanaw",
+            "listType": "tertipsiz",
+            "items": {
+              "0": "Syýahatçylyk wizasy (bir ýa-da köp girişli)",
+              "1": "Elektron wiza (hukukly ýurtlar üçin internet arkaly elýeterli)",
+              "2": "Ýa-da gysga möhletli saparlar üçin hiç hili wiza berilmeýär (wizasyz ýurtlar)"
+            }
+          },
+          "2": {
+            "type": "abzas",
+            "text": "Eger 90 günden köp galmagy meýilleşdirýän bolsaňyz, Türkiýede bolanyňyzdan soň ýaşamak üçin rugsatnama almaga ýüz tutmalysyňyz."
+          }
+        }
+      },
+      {
+        "id": "adres",
+        "icon": "🏠",
+        "title": "Türkçe adresi",
+        "shortTitle": "Salgy",
+        "content": {
+          "0": {
+            "type": "abzas",
+            "text": "Islendik ýaşamak rugsadyna ýüz tutmak üçin Türkiýede hemişelik ýa-da wagtlaýyn salgyňyz bolmaly:"
+          },
+          "1": {
+            "type": "sanaw",
+            "listType": "tertipsiz",
+            "items": {
+              "0": "Kärende şertnamasy (notarial tassyklanan)",
+              "1": "Emläge eýeçilik hukugy (emläge eýeçilik hukugy baradaky resminama)",
+              "2": "Myhmanhana bronlamalary (diňe gysga möhletli rugsatnamalar üçin)"
+            }
+          },
+          "2": {
+            "type": "abzas",
+            "text": "Ähli salgylar ýerli ilat müdirliginde (Nüfus Müdürlüğü) bellige alynmaly."
+          }
+        }
+      },
+      {
+        "id": "maliýe",
+        "icon": "💵",
+        "title": "Maliýe durnuklylygynyň subutnamasy",
+        "shortTitle": "Maliýe",
+        "content": {
+          "0": {
+            "type": "abzas",
+            "text": "Türkiýede özüňizi üpjün edip biljekdigiňizi görkezmeli bolarsyňyz. Mukdar üýtgeýär, ýöne umumy çaklama şeýle:"
+          },
+          "1": {
+            "type": "sanaw",
+            "listType": "tertipsiz",
+            "items": {
+              "0": "Adam başyna aýda azyndan 500 dollar",
+              "1": "Bank hasabatlary, pensiýa kagyzlary, girdeji tassyklaýjy resminamalar ýa-da hemaýatkär resminamalary kabul edilýär"
+            }
+          }
+        }
+      },
+      {
+        "id": "ätiýaçlandyryş",
+        "icon": "🩺",
+        "title": "Saglyk ätiýaçlandyryşy",
+        "shortTitle": "Ätiýaçlandyryş",
+        "content": {
+          "0": {
+            "type": "abzas",
+            "text": "Ýaşamak üçin rugsatnamalaryň köpüsi üçin ygtybarly saglyk ätiýaçlandyrmasy hökmanydyr:"
+          },
+          "1": {
+            "type": "sanaw",
+            "listType": "tertipsiz",
+            "items": {
+              "0": "iş bilen üpjün edilen bolsa, Türkiýäniň SGK (döwlet ätiýaçlandyrmasy)",
+              "1": "Öz maliýeleşdirýän ýa-da pensiýa çykan bolsa, hususy türk ätiýaçlandyryşy",
+              "2": "Daşary ýurtly talyplar üçin talyp saglyk meýilnamalary"
+            }
+          }
+        }
+      },
+      {
+        "id": "salgyt belgisi",
+        "icon": "🧾",
+        "title": "Salgyt belgisi (Salgyt belgisi)",
+        "shortTitle": "Salgyt belgisi",
+        "content": {
+          "0": {
+            "type": "abzas",
+            "text": "Kärende şertnamalaryna gol çekmezden, bank hasabyny açmazdan ýa-da rugsatnamalar üçin ýüz tutmazdan ozal, Türkiýäniň salgyt belgisini almaly. Ol mugt we ýerli salgyt edaralarynda (Vergi Dairesi) ýa-da internet arkaly elýeterlidir."
+          }
+        }
+      },
+      {
+        "id": "suratlar",
+        "icon": "🖼️",
+        "title": "Biometrik suratlar",
+        "shortTitle": "Suratlar",
+        "content": {
+          "0": {
+            "type": "abzas",
+            "text": "Soňky 6 aýyň dowamynda düşürilen biometrik suratlar aşakdakylar üçin talap edilýär:"
+          },
+          "1": {
+            "type": "sanaw",
+            "listType": "tertipsiz",
+            "items": {
+              "0": "Ýaşamak üçin rugsatnama kartlary",
+              "1": "Wiza üçin arzalar",
+              "2": "Döwlet bellige alyşlary"
+            }
+          },
+          "2": {
+            "type": "abzas",
+            "text": "Maslahat berilýän ölçeg: 50x60 mm, ak fon bilen."
+          }
+        }
+      },
+      {
+        "id": "resminamalar",
+        "icon": "📄",
+        "title": "Terjime edilen we notarial tassyklanan resminamalar (eger bar bolsa)",
+        "shortTitle": "Resminamalar",
+        "content": {
+          "0": {
+            "type": "abzas",
+            "text": "Käbir resminamalar, esasanam, aşakdaky resminamalara ýüz tutýan bolsaňyz, türk diline terjime edilip, notarial tassyklanmaly:"
+          },
+          "1": {
+            "type": "sanaw",
+            "listType": "tertipsiz",
+            "items": {
+              "0": "Iş rugsatnamalary",
+              "1": "Maşgala birleşmesi",
+              "2": "Raýatlyk"
+            }
+          },
+          "2": {
+            "type": "sanaw",
+            "title": "Mysallar:",
+            "listType": "tertipsiz",
+            "items": {
+              "0": "Nika şahadatnamasy",
+              "1": "Çagalar üçin dogluş şahadatnamalary",
+              "2": "Akademiki diplomlar ýa-da iş şahadatnamalary"
+            }
+          }
+        }
+      },
+      {
+        "id": "ýaşamak üçin rugsatnama",
+        "icon": "🏢",
+        "title": "Ýaşamak üçin rugsatnama arzasy (uzak wagtlap ýaşamak üçin)",
+        "shortTitle": "Ýaşamak üçin rugsatnama",
+        "content": {
+          "0": {
+            "type": "abzas",
+            "text": "Eger siz 90 günden köp galmagy meýilleşdirýän bolsaňyz:"
+          },
+          "1": {
+            "type": "basgançaklar",
+            "steps": {
+              "0": "Göç İdaresi (Migrasiýa Dolandyryş Müdirligi) arkaly onlaýn arza beriň",
+              "1": "Ýerli immigrasiýa edarasynda duşuşyk belläň",
+              "2": "Ähli resminamalary alyp geliň we söhbetdeşlige gatnaşyň"
+            }
+          }
+        }
+      },
+      {
+        "id": "bellige alyş",
+        "icon": "🌐",
+        "title": "Salgyňyzy bellige alyň we ýaşaýyş kartyny alyň",
+        "shortTitle": "Registrasiýa",
+        "content": {
+          "0": {
+            "type": "abzas",
+            "text": "Tassyklanylandan soň:"
+          },
+          "1": {
+            "type": "sanaw",
+            "listType": "tertipsiz",
+            "items": {
+              "0": "Size poçta arkaly iberilýän ýaşaýyş karty (ikamet kartı) berler.",
+              "1": "Salgyňyzy 20 günüň dowamynda Nüfus Müdürlüğünde bellige almalysyňyz."
+            }
+          }
+        }
+      }
+    ],
+    "bonus": {
+      "icon": "🗣️",
+      "title": "Bonus: Esasy türk dilini öwreniň",
+      "description": "Kanuny talap bolmasa-da, türk diliniň esasyny öwrenmek geçişiňizi ep-esli ýeňilleşdirip biler. Bu aşakdakylara kömek edýär:",
+      "benefits": [
+        "Ýerli býurokratiýa",
+        "Öýleri kireýine bermek",
+        "Söwda we jemgyýetçilik gatnaşyklary"
+      ]
+    },
+    "summary": {
+      "title": "Esasy netijeler",
+      "description": "Türkiýä üstünlikli göçmek üçin şu möhüm zatlary ýadyňyzda saklaň:",
+      "keyPoints": [
+        "Güýçli pasport (6+ aý)",
+        "Degişli wiza ýa-da rugsatnama",
+        "Resmi türk salgysy",
+        "Maliýe durnuklylygynyň subutnamasy",
+        "Güýçli saglyk ätiýaçlandyrmasy",
+        "Türkiýäniň salgyt belgisi",
+        "Biometrik suratlar taýýar",
+        "Zerur bolanda terjime edilen resminamalar"
+      ]
+    },
+    "accessibility": {
+      "sectionButton": "{title} bölümini aç/ýap"
+    }
+  },
+  "ukToTurkeyGuide": {
+    "title": "Beýik Britaniýadan Türkiýä göçmek",
+    "subtitle": "Bilmeli zatlaryňyz",
+    "description": "Türkiýe has rahat durmuş ýörelgesini, arzan ýaşaýyş çykdajylaryny we ýylyň dowamynda gün şöhlesini gözleýän britaniýaly daşary ýurtlylar üçin meşhur ýere öwrüldi. Pensiýa çykmagy, uzakdan işlemegi ýa-da daşary ýurtda täze bir sahypa başlamagy meýilleşdirýän bolsaňyz, bu gollanma Beýik Britaniýadan Türkiýä göçüp geleniňizde hakykatdanam göz öňünde tutmaly ähli zatlary öz içine alýar.",
+    "navigation": {
+      "title": "Çalt nawigasiýa",
+      "sections": [
+        {
+          "id": "näme üçinHereket",
+          "icon": "🧳",
+          "title": "Britaniýalylar näme üçin Türkiýä göçýärler?"
+        },
+        {
+          "id": "Giriş Talaplary",
+          "icon": "🛂",
+          "title": "Giriş talaplary we wiza düzgünleri"
+        },
+        {
+          "id": "uzak möhletli galmak",
+          "icon": "🏠",
+          "title": "Beýik Britaniýanyň raýatlary üçin uzak möhletli galmak mümkinçilikleri"
+        },
+        {
+          "id": "emläk",
+          "icon": "🏘️",
+          "title": "Emlägi satyn almak ýa-da kireýine almak"
+        },
+        {
+          "id": "çykdajylar üçin ýaşaýyş",
+          "icon": "💷",
+          "title": "Ýaşaýyş çykdajylaryny deňeşdirmek"
+        },
+        {
+          "id": "saglygy goraýyş",
+          "icon": "🏥",
+          "title": "Saglygy goraýyş ulgamyna elýeterlilik"
+        },
+        {
+          "id": "gündelik durmuş",
+          "icon": "📱",
+          "title": "Gündelik durmuş düzedişleri"
+        },
+        {
+          "id": "hereket edýän logistika",
+          "icon": "🛫",
+          "title": "Beýik Britaniýadan Logistikany göçürmek"
+        },
+        {
+          "id": "kynçylyklar",
+          "icon": "🧾",
+          "title": "Garaşylmaly real kynçylyklar"
+        },
+        {
+          "id": "daşary ýurtly jemgyýetler",
+          "icon": "👥",
+          "title": "Britaniýaly ekspat jemgyýetleri"
+        }
+      ]
+    },
+    "sections": {
+      "whyMove": {
+        "description": "Häzirki wagtda müňlerçe britan raýaty, esasanam Fethiýe, Antalýa, Stambul we Bodrum ýaly şäherlerde Türkiýäni öz öýleri hasaplaýar. Bu çagyryşda aşakdakylar bar:",
+        "reasons": [
+          "Beýik Britaniýa bilen deňeşdirilende ýaşaýyş çykdajylarynyň has pes bolmagy",
+          "Ortaýer deňziniň howasy we kenarýaka ýaşaýyş",
+          "Mähirli myhmansöýerlik we güýçli daşary ýurtly jemgyýetler",
+          "Emläk eýeçiligi mümkinçilikleri",
+          "Durmuşyň has haýal, has rahat tempi"
+        ],
+        "postBrexitNote": "Şeýle-de bolsa, Brexitden soň göçmek öňküden has köp meýilnamalaşdyrmagy we resminama işlerini öz içine alýar."
+      },
+      "entryRequirements": {
+        "touristEntry": {
+          "title": "Syýahatçy girişi",
+          "description": "Beýik Britaniýanyň raýatlary 180 günüň dowamynda 90 güne çenli wizasyz Türkiýä baryp bilerler. Emma has uzak wagtlap galmagy ýa-da hemişelik göçmegi meýilleşdirýän bolsaňyz, ýaşamak üçin rugsatnama almaga ýüz tutmaly."
+        }
+      },
+      "longTermStay": {
+        "options": [
+          {
+            "title": "1. Gysga möhletli ýaşamaga rugsat (Ikamet)",
+            "description": "<span class=\"font-medium\">1 ýyl möhlet bilen güýje girýär we täzelenip bilner</span><br/>Sanly çarwalar, emläk eýeleri we pensiýa çykanlar arasynda giňden ýaýran",
+            "requirementsTitle": "Size gerek bolar:",
+            "requirements": {
+              "0": "Güýçli pasport",
+              "1": "Türkiýäniň salgyt belgisi",
+              "2": "Ýaşaýyş jaýyny tassyklaýan resminama (kärende şertnamasy ýa-da emläk şahadatnamasy)",
+              "3": "Ýeterlik pul serişdelerini görkezýän bank hasabatlary",
+              "4": "Ýerli ýa-da halkara saglyk ätiýaçlandyrmasy"
+            }
+          },
+          {
+            "title": "2. Iş rugsatnamasy we wiza",
+            "steps": {
+              "0": "Size türk kompaniýasyndan iş teklibi gerek",
+              "1": "Iş beriji siziň adyňyzdan iş rugsatnamasyny almak üçin ýüz tutýar",
+              "2": "Tassyklamadan soň, siz Beýik Britaniýadaky Türkiýäniň konsullygy arkaly iş wizasyna ýüz tutýarsyňyz"
+            }
+          },
+          {
+            "title": "3. Maşgala üçin ýaşamak üçin rugsatnama",
+            "steps": {
+              "0": "Türk är-aýalyna ýa-da maşgala agzasyna goşulýanlar üçin",
+              "1": "2 ýyla çenli möhlet bilen geçerli"
+            }
+          },
+          {
+            "title": "4. Talyplaryň ýaşaýyş rugsatnamasy",
+            "description": "Eger siz Türkiýäniň uniwersitetinde okaýan bolsaňyz ýa-da uzak möhletli dil kursuna gatnaşýan bolsaňyz"
+          }
+        ]
+      },
+      "property": {
+        "facts": [
+          "Daşary ýurtlylar, şol sanda Beýik Britaniýanyň raýatlary, Türkiýede kanuny taýdan emläk satyn alyp bilerler",
+          "Ýaşamak üçin rugsatnama almak üçin minimal baha talap edilmeýär",
+          "Iňlis alyjylary üçin meşhur ýerler: Fethiýe, Antalýa, Kusadasi, Bodrum, Alanya",
+          "Kärendesine almak elýeterlidir: ýerleşýän ýerine baglylykda aýda 200–500 funt sterlinge kwartiralar tapyp bilersiňiz"
+        ],
+        "tip": "<strong>Maslahat:</strong> Şertnamalara gol çekeniňizde ýa-da emläk satyn alanyňyzda hemişe abraýly agent ýa-da aklawçy bilen işleşiň."
+      },
+      "costLiving": {
+        "table": {
+          "headers": {
+            "expense": "Çykdajylar",
+            "turkey": "Türkiýe (ortaça)",
+            "uk": "Beýik Britaniýa (ortaça)"
+          },
+          "rows": [
+            {
+              "expense": "Kireýine (1 otagly kwartira)",
+              "turkey": "200–400 funt sterling",
+              "uk": "800–1200 funt sterling"
+            },
+            {
+              "expense": "Kommunal hyzmatlar",
+              "turkey": "aýda 30–70 funt",
+              "uk": "£150+/aý"
+            },
+            {
+              "expense": "Restoranda nahar",
+              "turkey": "3–6 funt",
+              "uk": "10–25 funt sterling"
+            },
+            {
+              "expense": "Ulag bileti",
+              "turkey": "aýda 10–20 funt sterling",
+              "uk": "£60–£120/aý"
+            }
+          ]
+        },
+        "conclusion": "Türkiýede, esasanam uly şäherlerden daşarda, funt sterling has uzaklara gidýär."
+      },
+      "healthcare": {
+        "points": [
+          "Ýaşamak üçin rugsatnama almak isleýänler üçin hususy saglyk ätiýaçlandyrmasy talap edilýär",
+          "Işe gireniňizden soň, köp bejergileri öz içine alýan SGK (döwlet ätiýaçlandyrmasy) üçin hukukly bolýarsyňyz",
+          "Hususy saglygy goraýyş hyzmatlary elýeterlidir we köp hassahanalar halkara akkreditasiýasyna eýe",
+          "Britaniýaly daşary ýurtlylaryň köpüsi has çeýelik üçin halkara saglyk ätiýaçlandyrmasyny saýlaýarlar"
+        ]
+      },
+      "dailyLife": {
+        "aspects": [
+          {
+            "title": "Dil päsgelçilik",
+            "description": "Resmi dil türk dilidir. Syýahatçylyk we daşary ýurtly ýerlerde iňlis dili gepleşilýär, ýöne türk diliniň esaslaryny öwrenmek maslahat berilýär."
+          },
+          {
+            "title": "Sürüş",
+            "description": "Beýik Britaniýanyň sürüjilik şahadatnamalary 6 aý möhlet bilen güýjünde. Şondan soň, siz Türkiýäniň sürüjilik şahadatnamasyny almaly."
+          },
+          {
+            "title": "Walýuta",
+            "description": "Türk lirasy (TRY) — walýuta kurslary üýtgeýär, ýöne baha artykmaçlyklary henizem Beýik Britaniýa funt sterlinginiň peýdasyna bolýar."
+          },
+          {
+            "title": "Bank işi",
+            "description": "Pasport we ýerli salgysyňyzy tassyklaýan resminama bilen Türkiýäniň bank hasabyny açyp bilersiňiz. Onlaýn bank hyzmatlary giňden ulanylýar."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "points": [
+          "Ýaşamak üçin rugsatnamany alanyňyzdan soň 6 aýyň dowamynda şahsy zatlaryňyzy salgytsyz getirip bilersiňiz",
+          "Beýik Britaniýadan Türkiýe çenli göçürişlerde tejribesi bolan halkara göçürijiler maslahat berilýär",
+          "Öý haýwanlaryna rugsat berilýär, ýöne olar mikroçipli bolmaly we guduzlyk sertifikaty bilen birlikde täze sanjymlary bolmaly."
+        ]
+      },
+      "challenges": {
+        "challenges": [
+          {
+            "title": "Býurokratiýa",
+            "description": "Ýaşamak üçin rugsatnama almak işleri şäherleriň arasynda haýal we deňsiz bolup biler"
+          },
+          {
+            "title": "Walýuta kursunyň üýtgewsizligi",
+            "description": "Walýutanyň pese gaçmagy tygşytlamalara ýa-da pensiýalara täsir edip biler"
+          },
+          {
+            "title": "Medeni tapawutlar",
+            "description": "Durmuş üýtgeşmeleri, sosial kadalar we ýerli depginde açyk pikirli boluň"
+          },
+          {
+            "title": "Oba durmuşy bilen şäher durmuşy",
+            "description": "Oba ýerlerinde iňlis dilinde gepleýänleriň sany az we döwrebap amatlyklar az bolup biler"
+          }
+        ]
+      },
+      "expatCommunities": {
+        "description": "Türkiýäniň uly Britaniýa jemgyýetleri bar, esasanam:",
+        "locations": [
+          "Fethiýe",
+          "Didim",
+          "Bodrum",
+          "Marmaris",
+          "Antalýa"
+        ],
+        "support": "Size has rahat ýerleşmäge kömek etjek Facebook toparlaryny, ýerli duşuşyklary we Britaniýa tarapyndan dolandyrylýan kärhanalary taparsyňyz."
+      }
+    },
+    "checklist": {
+      "title": "Türkiýä göçmezden öň gutarnykly barlag sanawy",
+      "items": [
+        "Dogry ýaşaýyş rugsatnamasyny ýa-da wizany almak üçin ýüz tutuň",
+        "Türk salgyt belgisini alyň (Vergi Numarasy)",
+        "Ýaşaýyş ýerini we ýerli SIM-kartany gurnaň",
+        "Hususy saglyk ätiýaçlandyrmasyny alyň",
+        "Esasy türkçe sözlemleri öwreniň",
+        "Goldaw we täzelenmeler üçin daşary ýurtly toparlara goşulyň",
+        "Göçmegiňiz barada Beýik Britaniýanyň häkimiýetlerine (HMRC, NHS we ş.m.) habar beriň"
+      ]
+    },
+    "conclusion": {
+      "title": "Netije: Beýik Britaniýadan Türkiýä göçmegiň manysy barmy?",
+      "description": "Eger siz has haýal, güneşli durmuş ýörelgesini isleýän bolsaňyz we kagyz işlerini we medeni tapawutlary dolandyryp bilýän bolsaňyz, Türkiýe ýaşamak üçin örän peýdaly ýerdir. Arzan çykdajylar we ýokary ýaşaýyş hili bilen köp britaniýalylar Türkiýäniň uzak möhletli syýahat üçin ajaýyp ýerdigini görýärler."
+    },
+    "accessibility": {
+      "sectionButton": "{title} bölümine geç"
+    }
+  },
+  "visaGuide": {
+    "title": "Türkiýä göçmek üçin wiza we ýaşamak mümkinçilikleri",
+    "description": "Türkiýä göçmek üçin galmak maksadyňyza esaslanyp, dogry wizany saýlamaly. Türkiýe işçiler, talyplar, pensionerler, işewürler we sanly göçmenler üçin wiza we ýaşamak üçin rugsatnamanyň birnäçe wariantlaryny hödürleýär.",
+    "labels": {
+      "bestFor": "Iň gowysy",
+      "requirements": "Talaplar",
+      "process": "Proses",
+      "benefits": "Peýdalar",
+      "options": "Opsiýalar",
+      "validity": "Güýçlilik",
+      "renewable": "Täzelenýän",
+      "yes": "Hawa",
+      "no": "Ýok",
+      "more": "has köp"
+    },
+    "controls": {
+      "expandAll": "Hemmesini ýaýmak",
+      "collapseAll": "Hemmesini ýygna"
+    },
+    "compare": {
+      "enable": "Wizalary deňeşdiriň",
+      "exit": "Deňeşdirme Rejiminden Çyk",
+      "select": "Saýlaň",
+      "selected": "Saýlanan",
+      "table": {
+        "title": "Wiza deňeşdirmesi",
+        "headers": {
+          "type": "Wiza görnüşi",
+          "validity": "Güýçlilik",
+          "renewable": "Täzelenýän",
+          "bestFor": "Iň gowysy"
+        }
+      }
+    },
+    "visas": [
+      {
+        "id": "gysga möhletli",
+        "icon": "🏠",
+        "title": "Gysga möhletli ýaşamaga rugsat (İkamet İzni)",
+        "subtitle": "Daşary ýurtlylar üçin iň meşhur",
+        "validity": "1 ýyl",
+        "bestFor": {
+          "0": "Sanly göçmenler",
+          "1": "Uzakdan işleýänler",
+          "2": "Emläk eýeleri",
+          "3": "90 günden köp wagtlap galýan syýahatçylar",
+          "4": "Uzak möhletli galmak mümkinçiliklerini öwrenýän adamlar"
+        },
+        "requirements": {
+          "0": "Güýçli pasport we wiza",
+          "1": "Maliýe mümkinçilikleriniň subutnamasy (aýda takmynan 500 dollar)",
+          "2": "Türk salgysy (kärende şertnamasy ýa-da eýeçilik şahadatnamasy)",
+          "3": "Hususy saglyk ätiýaçlandyrmasy",
+          "4": "Biometrik suratlar"
+        },
+        "renewable": true
+      },
+      {
+        "id": "talyp",
+        "icon": "🎓",
+        "title": "Talyp wizasy we ýaşamak üçin rugsatnama",
+        "subtitle": "Akademiki işler üçin",
+        "validity": "Okuwlaryň dowamlylygy",
+        "bestFor": {
+          "0": "Türkiýäniň uniwersitetlerine talyplar kabul edildi",
+          "1": "Dil mekdebiniň okuwçylary"
+        },
+        "requirements": {
+          "0": "Ykrar edilen türk edarasyndan kabul haty",
+          "1": "Ýeterlik serişdäniň subutnamasy",
+          "2": "Saglyk ätiýaçlandyrmasy",
+          "3": "Türkçe adresi"
+        },
+        "process": {
+          "0": "Siziň ýurduňyzdaky Türkiýäniň ilçihanasyndan/konsullygyndan talyp wizasyna ýüz tutuň",
+          "1": "Geleniňizden soň, talyp ýaşamak üçin rugsatnama almak üçin ýüz tutuň"
+        },
+        "renewable": true
+      },
+      {
+        "id": "iş",
+        "icon": "💼",
+        "title": "Iş wizasy we iş rugsatnamasy",
+        "subtitle": "Işleýän hünärmenler üçin",
+        "validity": "1-2 ýyl",
+        "bestFor": {
+          "0": "Türkiýäniň kompaniýasynda işleýän daşary ýurtlylar",
+          "1": "Iş teklipleri bolan daşary ýurtlylar",
+          "2": "Iňlis dili mugallymlary, inženerler, saglygy goraýyş işgärleri"
+        },
+        "requirements": {
+          "0": "Resmi türk iş berijisinden iş teklibi",
+          "1": "Güýçli pasport",
+          "2": "Iş şertnamasy",
+          "3": "Bilim resminamalary (terjime edilen we notarial tassyklanan)"
+        },
+        "process": {
+          "0": "Iş beriji siziň adyňyzdan Türkiýäniň Zähmet ministrligine ýüz tutýar",
+          "1": "Siz Türkiýäniň ilçihanasynda iş wizasy üçin ýüz tutýarsyňyz",
+          "2": "Gelşiňizden soň, siz iş üçin ýaşamak üçin rugsatnama alýarsyňyz"
+        },
+        "renewable": true
+      },
+      {
+        "id": "maşgala",
+        "icon": "👨‍👩‍👧‍👦",
+        "title": "Maşgala ýaşamak üçin rugsatnama",
+        "subtitle": "Maşgala birleşmegi üçin",
+        "validity": "2 ýyla çenli",
+        "bestFor": {
+          "0": "Türkiýe raýatlarynyň är-aýallary",
+          "1": "Türkiýe raýatlarynyň çagalary",
+          "2": "Daşary ýurtly raýatlaryň maşgala agzalary"
+        },
+        "requirements": {
+          "0": "Maşgala gatnaşyklaryny tassyklaýan resminama (nika/dogum şahadatnamasy)",
+          "1": "Türkçe adresi",
+          "2": "Hemaýatkärden alnan girdejiniň subutnamasy",
+          "3": "Saglyk ätiýaçlandyrmasy"
+        },
+        "renewable": true
+      },
+      {
+        "id": "emläk",
+        "icon": "🏘️",
+        "title": "Emläge eýeçilik etmek üçin ýaşaýyş rugsatnamasy",
+        "subtitle": "Gozgalmaýan emläk maýadarlary üçin",
+        "validity": "1 ýyl",
+        "bestFor": {
+          "0": "Türkiýede gozgalmaýan emlägi bolan daşary ýurtlular",
+          "1": "Emläk maýadarlary",
+          "2": "Gozgalmaýan emläk telekeçileri"
+        },
+        "requirements": {
+          "0": "Siziň adyňyza Tapu (eýeçilik şahadatnamasy)",
+          "1": "Metropoliten sebitlerinde emlägiň iň pes bahasy takmynan 75,000 dollar (sebite görä tapawutlanyp biler)",
+          "2": "Girdejiniň subutnamasy",
+          "3": "Saglyk ätiýaçlandyrmasy"
+        },
+        "benefits": {
+          "0": "Her ýyl täzelenip bilner",
+          "1": "Uzak möhletli ýaşamaga ýa-da raýatlyga alyp baryp biler"
+        },
+        "renewable": true
+      },
+      {
+        "id": "raýatlyk",
+        "icon": "🇹🇷",
+        "title": "Maýa goýum arkaly Türkiýäniň raýatlygy",
+        "subtitle": "Raýatlyga çalt ýol",
+        "validity": "Hemişelik",
+        "bestFor": {
+          "0": "Maýadarlar we telekeçiler",
+          "1": "Baý baý şahslar",
+          "2": "Biznes eýeleri"
+        },
+        "options": {
+          "0": "Iň az 400,000 dollara deň bolan gozgalmaýan emlägi satyn alyň",
+          "1": "Türkiýäniň bankyna 500,000 dollar goýum goýuň",
+          "2": "Türkiýäniň azyndan 50 raýaty üçin iş orunlaryny dörediň"
+        },
+        "benefits": {
+          "0": "3-6 aýyň içinde raýatlygy çaltlaşdyrmak",
+          "1": "Pasport we ses bermek ýaly doly hukuklar"
+        },
+        "renewable": false
+      },
+      {
+        "id": "uzak möhletli",
+        "icon": "🌟",
+        "title": "Uzak möhletli ýaşamak üçin rugsatnama",
+        "subtitle": "Müddetsiz galmak mümkinçiligi",
+        "validity": "Belli däl",
+        "bestFor": {
+          "0": "Türkiýede azyndan 8 ýyl yzly-yzyna ýaşan daşary ýurtlylar",
+          "1": "Hemişelik statusyny gözleýän uzak möhletli ýaşaýjylar"
+        },
+        "requirements": {
+          "0": "Jenaýatçylykly ýazgy ýok",
+          "1": "Uzak möhletli girdeji we ýaşaýyş jaýynyň subutnamasy",
+          "2": "Soňky 3 ýylyň dowamynda sosial kömek garaşlylygy ýok"
+        },
+        "renewable": false
+      }
+    ],
+    "summary": {
+      "title": "Tiz salgylanmalar",
+      "tips": [
+        {
+          "title": "Ir başlaň",
+          "description": "Wiza üçin arza bermek prosesini meýilleşdirilen göçme senesinden azyndan 3-6 aý öň başlaň."
+        },
+        {
+          "title": "Resminamalary taýýarlamak",
+          "description": "Ähli resminamalaryň terjime edilendigini, notarial tassyklanandygyny we zerur bolanda apostil goýlandygyny üpjün ediň."
+        },
+        {
+          "title": "Maliýe meýilnamalaşdyryş",
+          "description": "Arza bermezden öň birnäçe aýlap bank hasabyňyzda ýeterlik serişde saklaň."
+        },
+        {
+          "title": "Saglyk ätiýaçlandyryşy",
+          "description": "Islendik ýaşamak üçin rugsatnama almak üçin ýüz tutmazdan öň, ygtybarly saglyk ätiýaçlandyrmasyny üpjün ediň."
+        },
+        {
+          "title": "Salgy bellige alyş",
+          "description": "Ýaşamak üçin rugsatnama almak üçin ýüz tutmazdan öň, Türkiýäniň bellige alnan salgysyňyz bolmaly."
+        },
+        {
+          "title": "Hünärmen kömegi",
+          "description": "Çylşyrymly işler üçin aklawçy ýa-da immigrasiýa boýunça maslahatçy işe almagy göz öňünde tutuň."
+        }
+      ]
+    }
+  }
+}

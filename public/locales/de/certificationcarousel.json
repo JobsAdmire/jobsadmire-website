@@ -1,0 +1,62 @@
+{
+  "controls": {
+    "previous": "Vorheriges Zertifikat",
+    "next": "Nächstes Zertifikat",
+    "play": "Autoplay abspielen",
+    "pause": "Autoplay anhalten",
+    "goToSlide": "Zum Dia gehen"
+  },
+  "events": {
+    "event1": {
+      "title": "UniAdmire Studentenmesse",
+      "location": "Karatschi, Pakistan",
+      "date": "15. bis 17. März 2025",
+      "description": "Vermittlung von Kontakten zwischen pakistanischen Studenten und internationalen Universitäten und Stipendienmöglichkeiten",
+      "images": {
+        "image1": {
+          "alt": "Vertreter der Universität im Gespräch mit Studenten",
+          "caption": "Treffen von Vertretern internationaler Universitäten mit einheimischen Studenten"
+        },
+        "image2": {
+          "alt": "Infostände auf der Messe",
+          "caption": "Schüler erkunden Bildungsmöglichkeiten an Informationsständen"
+        },
+        "image3": {
+          "alt": "Preisverleihung",
+          "caption": "Anerkennungszeremonie für teilnehmende Institutionen"
+        },
+        "image4": {
+          "alt": "Podiumsdiskussion",
+          "caption": "Expertenrunde diskutiert über internationale Bildungstrends"
+        },
+        "image5": {
+          "alt": "Beratung für Studenten",
+          "caption": "Persönliche Beratung mit den Verantwortlichen für die Hochschulzulassung"
+        }
+      }
+    },
+    "event2": {
+      "title": "Bildungsmesse Elfenbeinküste",
+      "location": "Abidjan, Elfenbeinküste",
+      "date": "20-22. Januar 2025",
+      "description": "Verbindung von westafrikanischen Studenten mit internationalen Universitäten",
+      "images": {
+        "image1": {
+          "alt": "Eingang zur Bildungsmesse",
+          "caption": "Haupteingang der Bildungsmesse der Elfenbeinküste"
+        },
+        "image2": {
+          "alt": "Studenten an Infoständen",
+          "caption": "Lokale Studenten erkunden internationale Bildungsmöglichkeiten"
+        },
+        "image3": {
+          "alt": "Podiumsdiskussion",
+          "caption": "Bildungsexperten diskutieren über Stipendienprogramme"
+        }
+      }
+    }
+  },
+  "background": {
+    "watermark": "CERTIFICATIONS"
+  }
+}

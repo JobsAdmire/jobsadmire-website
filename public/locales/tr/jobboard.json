@@ -1,0 +1,171 @@
+{
+  "hero": {
+    "title": "Hayalinizdeki İşi Bulun",
+    "subtitle": "Tutkularınıza, becerilerinize ve kariyer hedeflerinize uygun fırsatları keşfedin",
+    "search": {
+      "jobPlaceholder": "İş unvanı, beceriler veya anahtar kelimeler...",
+      "locationPlaceholder": "Şehir, ülke veya uzak...",
+      "buttonText": "İş Arama"
+    },
+    "popular": {
+      "label": "Popüler:",
+      "tags": [
+        "Uzaktan Kumanda",
+        "Teknik",
+        "Pazarlama",
+        "Tasarım",
+        "Finans"
+      ]
+    }
+  },
+  "stats": {
+    "jobs": {
+      "count": "10,580+",
+      "label": "İş İlanları"
+    },
+    "candidates": {
+      "count": "8.8M+",
+      "label": "Adaylar"
+    },
+    "countries": {
+      "count": "120+",
+      "label": "Ülkeler"
+    },
+    "successRate": {
+      "count": "95%",
+      "label": "Başarı Oranı"
+    }
+  },
+  "categories": {
+    "title": "Fırsatları Keşfedin",
+    "tabs": [
+      {
+        "key": "hepsi",
+        "label": "Tüm İş İlanları"
+      },
+      {
+        "key": "özellikli",
+        "label": "Öne Çıkanlar"
+      },
+      {
+        "key": "son zamanlarda",
+        "label": "Yakın zamanda"
+      },
+      {
+        "key": "uzak",
+        "label": "Uzaktan Kumanda"
+      },
+      {
+        "key": "TEKNOLOJİ",
+        "label": "Teknik"
+      },
+      {
+        "key": "pazarlama",
+        "label": "Pazarlama"
+      }
+    ]
+  },
+  "filters": {
+    "title": "Filtreler",
+    "clearAll": "Tümünü temizle",
+    "jobType": {
+      "title": "İş Türü",
+      "options": [
+        {
+          "id": "Tam Zamanlı",
+          "value": "full_time",
+          "label": "Tam Zamanlı"
+        },
+        {
+          "id": "partTime",
+          "value": "part_time",
+          "label": "Yarı Zamanlı"
+        },
+        {
+          "id": "sözleşme",
+          "value": "sözleşme",
+          "label": "Sözleşme"
+        },
+        {
+          "id": "uzak",
+          "value": "uzak",
+          "label": "Uzaktan Kumanda"
+        }
+      ]
+    },
+    "experience": {
+      "title": "Deneyim Seviyesi",
+      "options": [
+        {
+          "id": "Giriş",
+          "label": "Giriş Seviyesi"
+        },
+        {
+          "id": "orta",
+          "label": "Orta Seviye"
+        },
+        {
+          "id": "üst düzey",
+          "label": "Üst Düzey"
+        },
+        {
+          "id": "yönetici",
+          "label": "Yönetici"
+        }
+      ]
+    },
+    "salary": {
+      "title": "Maaş Aralığı",
+      "min": "$0",
+      "max": "$100k+"
+    },
+    "datePosted": {
+      "title": "Gönderildiği Tarih",
+      "options": [
+        {
+          "id": "herhangi bir",
+          "label": "Her zaman"
+        },
+        {
+          "id": "gün",
+          "label": "Son 24 saat"
+        },
+        {
+          "id": "hafta",
+          "label": "Geçtiğimiz hafta"
+        },
+        {
+          "id": "ay",
+          "label": "Geçtiğimiz ay"
+        }
+      ]
+    },
+    "applyButton": "Filtreleri Uygula"
+  },
+  "jobListings": {
+    "title": "Mevcut İşler",
+    "showing": "Gösteriliyor",
+    "opportunities": "fırsatlar",
+    "sortBy": {
+      "label": "Sırala:",
+      "options": [
+        "En İlgili",
+        "En Yeni",
+        "En Yüksek Maaş",
+        "En Popüler"
+      ]
+    }
+  },
+  "jobCard": {
+    "featured": "Öne Çıkanlar",
+    "new": "Yeni",
+    "requirements": "Gereksinimler:",
+    "benefits": "Avantajlar:",
+    "viewDetails": "Detayları görüntüle",
+    "hideDetails": "Ayrıntıları gizle",
+    "applyNow": "Şimdi Başvur"
+  },
+  "cta": {
+    "postJob": "İş İlanı Gönder"
+  }
+}

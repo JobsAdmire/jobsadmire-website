@@ -1,0 +1,54 @@
+{
+  "header": {
+    "badge": "China Residence Permit Process",
+    "title": {
+      "yourStepByStep": "Your step-by-step path to",
+      "chinaResidencePermit": "China residence permit",
+      "success": "success"
+    },
+    "description": "We simplify the complex China visa process with our proven 4-step approach, ensuring your application meets all Chinese immigration requirements."
+  },
+  "stages": {
+    "consultation": {
+      "title": "Initial consultation and assessment",
+      "description": "Our China immigration specialists evaluate your eligibility and provide detailed information about China residence permit requirements and visa options."
+    },
+    "documentPreparation": {
+      "title": "Document preparation and review",
+      "description": "We guide you through gathering all required documents, ensuring they meet Chinese immigration standards and are properly authenticated and notarized."
+    },
+    "applicationSubmission": {
+      "title": "Application submission and tracking",
+      "description": "Our legal team submits your China residence permit application and provides ongoing support throughout the PSB (Public Security Bureau) processing."
+    },
+    "permitApproval": {
+      "title": "Residence permit approval and registration",
+      "description": "We assist with the final steps including medical examination, temporary residence registration, and ensure you receive your China residence permit."
+    }
+  },
+  "images": {
+    "greatWall": {
+      "alt": "Great Wall of China",
+      "location": "Great Wall",
+      "description": "Ancient wonder of China"
+    },
+    "shanghai": {
+      "alt": "Shanghai Skyline",
+      "location": "Shanghai",
+      "description": "Modern financial hub"
+    },
+    "forbiddenCity": {
+      "alt": "Forbidden City Beijing",
+      "location": "Beijing",
+      "description": "Imperial palace complex"
+    },
+    "temple": {
+      "alt": "Traditional Chinese Temple",
+      "location": "Traditional China",
+      "description": "Cultural heritage sites"
+    }
+  },
+  "floatingBadge": {
+    "permitsProcessing": "Permits Processing"
+  }
+}

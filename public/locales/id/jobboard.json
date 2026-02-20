@@ -1,0 +1,171 @@
+{
+  "hero": {
+    "title": "Temukan Pekerjaan Impian Anda",
+    "subtitle": "Temukan peluang yang sesuai dengan minat, keterampilan, dan tujuan karir Anda.",
+    "search": {
+      "jobPlaceholder": "Judul pekerjaan, keterampilan, atau kata kunci...",
+      "locationPlaceholder": "Kota, pedesaan, atau tempat terpencil...",
+      "buttonText": "Cari Pekerjaan"
+    },
+    "popular": {
+      "label": "Populer:",
+      "tags": [
+        "Terpencil",
+        "Teknologi",
+        "Pemasaran",
+        "Desain",
+        "Keuangan"
+      ]
+    }
+  },
+  "stats": {
+    "jobs": {
+      "count": "10.580+",
+      "label": "Daftar Lowongan Kerja"
+    },
+    "candidates": {
+      "count": "8,8 juta+",
+      "label": "Kandidat"
+    },
+    "countries": {
+      "label": "Negara-negara",
+      "count": "120+"
+    },
+    "successRate": {
+      "label": "Tingkat Keberhasilan",
+      "count": "95%"
+    }
+  },
+  "categories": {
+    "title": "Jelajahi Peluang",
+    "tabs": [
+      {
+        "key": "semua",
+        "label": "Semua Pekerjaan"
+      },
+      {
+        "key": "unggulan",
+        "label": "Unggulan"
+      },
+      {
+        "key": "terkini",
+        "label": "Terkini"
+      },
+      {
+        "key": "terpencil",
+        "label": "Terpencil"
+      },
+      {
+        "key": "teknologi",
+        "label": "Teknologi"
+      },
+      {
+        "key": "pemasaran",
+        "label": "Pemasaran"
+      }
+    ]
+  },
+  "filters": {
+    "title": "Filter",
+    "clearAll": "Hapus semua",
+    "jobType": {
+      "title": "Jenis Pekerjaan",
+      "options": [
+        {
+          "id": "Penuh Waktu",
+          "value": "penuh waktu",
+          "label": "Penuh Waktu"
+        },
+        {
+          "id": "paruh waktu",
+          "value": "paruh waktu",
+          "label": "Paruh Waktu"
+        },
+        {
+          "id": "kontrak",
+          "value": "kontrak",
+          "label": "Kontrak"
+        },
+        {
+          "id": "terpencil",
+          "value": "terpencil",
+          "label": "Terpencil"
+        }
+      ]
+    },
+    "experience": {
+      "title": "Tingkat Pengalaman",
+      "options": [
+        {
+          "id": "pintu masuk",
+          "label": "Tingkat Pemula"
+        },
+        {
+          "id": "pertengahan",
+          "label": "Tingkat Menengah"
+        },
+        {
+          "id": "senior",
+          "label": "Tingkat Senior"
+        },
+        {
+          "id": "eksekutif",
+          "label": "Eksekutif"
+        }
+      ]
+    },
+    "salary": {
+      "title": "Kisaran Gaji",
+      "min": "$0",
+      "max": "Lebih dari $100.000"
+    },
+    "datePosted": {
+      "title": "Tanggal Diposting",
+      "options": [
+        {
+          "id": "setiap",
+          "label": "Kapan pun"
+        },
+        {
+          "id": "hari",
+          "label": "24 jam terakhir"
+        },
+        {
+          "id": "pekan",
+          "label": "Minggu lalu"
+        },
+        {
+          "id": "bulan",
+          "label": "Bulan lalu"
+        }
+      ]
+    },
+    "applyButton": "Terapkan Filter"
+  },
+  "jobListings": {
+    "title": "Lowongan Pekerjaan yang Tersedia",
+    "showing": "Menampilkan",
+    "opportunities": "peluang",
+    "sortBy": {
+      "label": "Urutkan berdasarkan:",
+      "options": [
+        "Paling Relevan",
+        "Terbaru",
+        "Gaji Tertinggi",
+        "Paling Populer"
+      ]
+    }
+  },
+  "jobCard": {
+    "featured": "Unggulan",
+    "new": "Baru",
+    "requirements": "Persyaratan:",
+    "benefits": "Manfaat:",
+    "viewDetails": "Lihat detailnya",
+    "hideDetails": "Sembunyikan detail",
+    "applyNow": "Daftar Sekarang"
+  },
+  "cta": {
+    "postJob": "Pasang Lowongan Kerja"
+  }
+}

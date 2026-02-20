@@ -1,0 +1,1817 @@
+{
+  "hero": {
+    "badge": {
+      "text": "Elýeterli täze mümkinçilikler"
+    },
+    "title": {
+      "findTheDream": "Arzuwyňy tap",
+      "forYourself": "Özüň üçin"
+    },
+    "animatedWords": [
+      "Iş",
+      "Topar",
+      "Karýera",
+      "Gabat gelmek",
+      "Zehin",
+      "Işgärler",
+      "Rol",
+      "Wezipe",
+      "Hünär",
+      "Mümkinçilik",
+      "Iş bilen üpjünçilik"
+    ],
+    "subtitle": "Işgärleri işe alýp ýa-da iş gözläp ýörkäňiz, iň gowy zehinleri dogry mümkinçilikler bilen baglanyşdyryň!",
+    "search": {
+      "jobPlaceholder": "Wezipe ady ýa-da açar sözler",
+      "locationPlaceholder": "Ýerleşýän ýeri ýa-da uzakdan",
+      "loadingText": "Iş maglumatlary ýüklenýär...",
+      "errorText": "Iş maglumatlaryny ýüklemek başa barmady",
+      "retryButton": "Gaýtadan synanyşyň",
+      "moreResults": "has köp netije...",
+      "searchButton": "Gözleg mümkinçilikleri"
+    },
+    "features": {
+      "jobRecruitment": {
+        "title": "Işe kabul etmek",
+        "description": "Dünýäde iň gowy zehinleri tapyň"
+      },
+      "immigrationServices": {
+        "title": "Immigrasiýa hyzmatlary",
+        "description": "Hünärmen wiza kömegi"
+      },
+      "hrSolutions": {
+        "title": "HR çözgütleri",
+        "description": "HR dolandyryşynyň dolylygy"
+      }
+    },
+    "services": {
+      "sectionTitle": "Siziň üçin näme edip bileris?",
+      "sectionSubtitle": "Hyzmatyňyzy saýlaň we maksatlaryňyza ýetmäge kömek etmäge rugsat beriň",
+      "study": {
+        "label": "Okuw",
+        "description": "Talyp wizasy we bilim"
+      },
+      "migrate": {
+        "label": "Göç",
+        "description": "Ýaşamak üçin rugsatnama we raýatlyk"
+      },
+      "work": {
+        "label": "Iş",
+        "description": "Iş rugsatnamalary we iş orunlary"
+      },
+      "visit": {
+        "label": "E-Çakylyk",
+        "description": "Iş we syýahatçylyk wizasy"
+      },
+      "consultation": {
+        "title": "Näme gerekdigini bilmeýärsiňizmi?",
+        "subtitle": "Ekspertleriň görkezmesi elýeterli",
+        "button": "Mugt maslahat alyň →"
+      }
+    },
+    "stats": {
+      "visaSuccess": {
+        "title": "Wiza üstünliginiň derejesi",
+        "subtitle": "Subut edilen iş tejribesi",
+        "percentage": "98%"
+      },
+      "partners": {
+        "title": "Kompaniýanyň hyzmatdaşlary",
+        "subtitle": "Global tor",
+        "count": "500+"
+      }
+    }
+  },
+  "jobsInDemand": {
+    "title": "Isleg bildirilýän iş orunlary",
+    "description": "Internetde 100+ boş iş orunlarynyň ählisini gözläň. Öz şahsy aýlyk hakyňyzyň çaklamasyny alyň. Dünýä boýunça 30+ kompaniýa barada synlary okaň.",
+    "showingJobs": "Görkezilýär",
+    "jobs": "iş orunlary",
+    "featured": "Görkezilen mümkinçilik",
+    "company": "Kompaniýa",
+    "position": "Wezipe",
+    "location": "Ýerleşýän ýeri",
+    "salaryRange": "Aýlyk hakynyň aralygy",
+    "experience": "Tejribe",
+    "saveForLater": "Soňrak üçin saklaň",
+    "viewDetails": "Jikme-jiklikleri görkez",
+    "noJobsFound": "Iş tapylmady",
+    "tryAdjusting": "Gözleg ýa-da süzgüç kriteriýalaryňyzy düzedip görüň",
+    "clearAllFilters": "Ähli süzgüçleri arassala",
+    "seeMoreJobs": "Başga iş orunlaryny gör"
+  },
+  "meta": {
+    "title": "Iň gowy iş we karýera mümkinçiligini tapyň | JobsAdmire",
+    "description": "Wiza goldawy bilen hünärmenleri ideal toparlar, wezipeler we halkara mümkinçilikleri bilen baglanyşdyrýan global platforma bolan JobsAdmire bilen arzuwyňyzdaky işi tapyň.",
+    "keywords": "Iň gowy iş we karýera mümkinçiligini tapyň, JobsAdme, iş orunlary, karýera, işe kabul etmek, wiza goldawy, halkara iş orunlary",
+    "ogTitle": "Iň gowy iş we karýera mümkinçiligini tapyň | JobsAdmire",
+    "ogDescription": "Wiza goldawy bilen hünärmenleri ideal toparlar, wezipeler we halkara mümkinçilikleri bilen baglanyşdyrýan global platforma bolan JobsAdmire bilen arzuwyňyzdaky işi tapyň."
+  },
+  "popularCategories": {
+    "badge": "Öwrenmek",
+    "title": "Meşhur kategoriýalar",
+    "description": "Myhmanhana dolandyryjysyndan başlap, kabulhana işgärinden başlap, IT müdirine çenli her bir hünärmen iş mümkinçilikleriniň sanawyny, gözleýän wezipäňize laýyklykda aýlyk haklarynyň çaklamalaryny görüp we dünýäniň dürli künjeklerinde ýerleşýän kompaniýalaryň synlaryny okap, maglumat alyp biler.",
+    "exploreJobs": "Iş orunlaryny öwreniň",
+    "categories": {
+      "factoryWorker": "Zawod",
+      "healthcare": "Saglygy goraýyş",
+      "informationTechnology": "Oba hojalygy",
+      "tourismHospitality": "Syýahatçylyk",
+      "engineeringConstruction": "Gurluşyk",
+      "businessServices": "Biznes hyzmatlary"
+    }
+  },
+  "immigrationCarousel": {
+    "header": {
+      "title": "Global immigrasiýa ugurlary",
+      "description": "Arzuw edýän ýeriňize barýan ýokary hilli immigrasiýa ýollaryny öwreniň"
+    },
+    "navigation": {
+      "previous": "Öňki slaýd",
+      "next": "Indiki slaýd",
+      "goToSlide": "{{number}} slaýda geç",
+      "pause": "Awtomatiki oýnatmany duruz",
+      "play": "Awtomatiki oýnat",
+      "pauseText": "Durdurma",
+      "playText": "Oýna"
+    },
+    "common": {
+      "clients": "müşderiler",
+      "rating": "Reýting"
+    },
+    "services": {
+      "canada": {
+        "title": "Kanada göçüp geliň",
+        "subtitle": "Ekspres Giriş we Welaýat Maksatnamalary",
+        "description": "Kanadanyň Ekspres Giriş ulgamy, Welaýat dalaşgär maksatnamalary we maşgala hemaýatkärligi ýollary arkaly hemişelik ýaşamak üçin gözleg geçiriň.",
+        "category": "Hemişelik ýaşaýyş jaýy",
+        "buttonText": "🍁 Kanada arzuwyňyzy başlaň"
+      },
+      "uk": {
+        "title": "Beýik Britaniýa göçüp geliň",
+        "subtitle": "Hünärmen işçi we global zehin wizalary",
+        "description": "Beýik Britaniýanyň bal esasyndaky immigrasiýa ulgamyna hünärli işçi wizalary, global zehin ugurlary we maşgala birleşme ýollary arkaly giriň.",
+        "category": "Iş we okuw wizalary",
+        "buttonText": "Beýik Britaniýanyň mümkinçiliklerini açyň"
+      },
+      "usa": {
+        "title": "ABŞ-a göçüp geliň",
+        "subtitle": "Ýaşyl kartlar we iş wizalary",
+        "description": "Iş bilen üpjünçilik esasynda ýaşyl kartlar, maşgala immigrasiýasy we maýadar wiza maksatnamalary arkaly Amerikan arzuwyna ýetiň.",
+        "category": "Ýaşyl kart hyzmatlary",
+        "buttonText": "🗽 Amerikan arzuwynyň yzyndan ylgaň"
+      },
+      "australia": {
+        "title": "Awstraliýa göçüp geliň",
+        "subtitle": "Hünärmen migrasiýa we döwlet dalaşgärligi",
+        "description": "Hünärmen garaşsyz wizalar, ştat dalaşgärlikleri we iş berijileriň hemaýatkärlik maksatnamalary arkaly Awstraliýanyň hemişelik ýaşaýşyny üpjün ediň.",
+        "category": "Ballara esaslanýan ulgam",
+        "buttonText": "Awstraliýaly syýahatyňyzy başlaň"
+      },
+      "turkey": {
+        "title": "Türkiýä göç",
+        "subtitle": "Ýaşamak üçin rugsatnamalar we maýa goýum ýollary",
+        "description": "Türkiýede ýaşamak üçin emläk maýa goýumlary, iş rugsatnamalary ýa-da maşgalanyň gaýtadan birleşmegi arkaly çalt raýatlyk mümkinçilikleri bilen rugsatnamany gazanyň.",
+        "category": "Maýa goýum we ýaşaýyş jaýy",
+        "buttonText": "Türk rezidensiýasyny öwreniň"
+      }
+    }
+  },
+  "serviceBanner": {
+    "default": {
+      "serviceLabel": "Hünärmen hyzmatlary",
+      "title": "Karýeraňyzy üýtgetmäge taýynmy?",
+      "description": "Biziň hünärmen maslahatlarymyz we toplumlaýyn goldaw hyzmatlarymyz bilen karýerasyny üstünlikli ösdüren müňlerçe hünärmene goşulyň.",
+      "buttonText": "Şu gün başlaň"
+    },
+    "variants": {
+      "recruitment": {
+        "serviceLabel": "Işe kabul etmek",
+        "title": "Arzuwyňyzdaky işi şu gün tapyň",
+        "description": "Dünýäniň iň gowy iş berijileri bilen habarlaşyň we başarnyklaryňyza we islegleriňize laýyk gelýän mümkinçilikleri açyň.",
+        "buttonText": "Iş orunlaryna göz aýlaň"
+      },
+      "immigration": {
+        "serviceLabel": "Immigrasiýa hyzmatlary",
+        "title": "Global mümkinçiliklere açylýan derwezeňiz",
+        "description": "Hünärmenleriň ýolbaşçylygynda çylşyrymly immigrasiýa proseslerinde hereket ediň we daşary ýurtlarda işlemek arzuwlaryňyza ýetiň.",
+        "buttonText": "Immigrasiýa prosesini başlaň"
+      },
+      "resume": {
+        "serviceLabel": "Rezüme ýazmak",
+        "title": "Hünärmen rezýumesi bilen tapawutlanyň",
+        "description": "Pudak bilermenleri tarapyndan taýýarlanan ATS-optimizirlenen rezýumeleri bilen menejerleri işe alyp, ünsüňi çekiň.",
+        "buttonText": "Öz Rezyumemi Döret"
+      },
+      "coaching": {
+        "serviceLabel": "Söhbetdeşlik boýunça tälim beriş",
+        "title": "Indiki söhbetdeşligiňizi özleşdiriň",
+        "description": "Pudak hünärmenlerinden şahsylaşdyrylan tälim bilen özüne ynam we söhbetdeşlik başarnyklaryny dörediň.",
+        "buttonText": "Kitap boýunça tälim beriş sessiýasy"
+      },
+      "visa": {
+        "serviceLabel": "Wiza goldawy",
+        "title": "Wiza üçin arzaňyzy ýeňilleşdiriň",
+        "description": "Iş, okuw ýa-da syýahat wizalary üçin resminamalar we arza bermek prosesleri boýunça hünärmen kömegini alyň.",
+        "buttonText": "Wiza üçin ýüz tutuň"
+      },
+      "skills": {
+        "serviceLabel": "Ukyplary ösdürmek",
+        "title": "Hünär başarnyklaryňyzy ýokarlandyryň",
+        "description": "Bilermenler tarapyndan işlenip düzülen pudaga degişli okuw maksatnamalary bilen bäsdeşlige ukyply boluň.",
+        "buttonText": "Kurslary öwreniň"
+      }
+    }
+  },
+  "testimonials": {
+    "header": {
+      "badge": "SENAGAT ÝOLBAŞÇYLARY TARAPYNDAN YNAMLANÝAR",
+      "title": "Üstünlik hekaýalary",
+      "description": "Ajaýyp hyzmatlarymyzy we düşünjelerimizi başdan geçiren kanagatlanan müşderilerimiziň pikirlerini diňläň."
+    },
+    "stats": {
+      "years": "Ýyllar",
+      "hires": "Işe alýar",
+      "retention": "Saklamak",
+      "support": "Goldaw"
+    },
+    "testimonialsList": [
+      {
+        "author": "Selin Ýylmaz",
+        "position": "Adam Kaynaklary Müdüri",
+        "company": "AdamKaynagym Ajansı",
+        "text": "Biz bir İK ajansı olarak güvenilir ortaklar arıoruz. JobsAdmire, ihtiyaç duyduğumuz adayları zamanında we kaliteli киde sağladı. “Ekip iletişimi çok güçlü ve” alım sürecizi gerçekten kolaýlaştırdı.",
+        "highlight": "Medeniýet laýyk gelýär"
+      },
+      {
+        "author": "Burak Demirtaş",
+        "position": "Direktor",
+        "company": "Anadolu HR Çözümleri",
+        "text": "Birçok platformasy çalıştık fakat JobsAdmire farklı. İŞKUR ruhsatı ile yasal olarak güvenilir, belgeleri düzenleme konusunda destekçi we tamamen şeffaf çalışıorlar. İşe alım ihtiyaçlarımızı Gonül rahatlığıyla onlara devrediyoruz",
+        "highlight": "Senagat tejribesi"
+      },
+      {
+        "author": "Mehmet Kaýa,",
+        "position": "Fabrika Sahibi",
+        "company": "Kaýa Metal Sanaýy",
+        "text": "Kaynakçı we makine operatörleri bulmakta zorlanıyorduk. JobsAdmire birkaç gün bo ğitimli adaylarla bizi buluşturdu. Bu hizmet bize zaman we maliyet açısından büyük fayda sağladı.",
+        "highlight": "Ýokary hilli dalaşgärler"
+      },
+      {
+        "author": "Muhammad Faýsal",
+        "position": "Sahib",
+        "company": "“Faisal Tekstil” Pvt. Ltd.",
+        "text": "Tekstil fabrikam iç sü sürekli işçi ihtiyacımız oluyor. JobsAdmire bu konuda güvenilir bir partnýor oldu. Hem vasıfly hem de vasıfsız işçileri zamanında sağladılar, üretimde artık aksama yaşamıyoruz.",
+        "highlight": "Howpsuzlyga gönükdirilen"
+      },
+      {
+        "author": "Ali Raza",
+        "position": "Çalışan",
+        "company": "Antalýa dynç alyş myhmanhanalary",
+        "text": "IşlerAdmire aracılığıyla bir otelde Amat ererleştirildim. Çalyşma izni ve belgeler konusunda adım adım bana yardımcı oldylar. İŞKUR lisanslı oldukları için kendimi güvende hissediyorum.",
+        "highlight": "Iş-durmuş deňagramlylygy"
+      },
+      {
+        "author": "Hüseýin Çelik",
+        "position": "Inşaat Işçisi",
+        "company": "Senagat çözgütleri",
+        "text": "Şanşaat işiki abak sürekli düzensiz işlere çalışıordum. JobsAdmire, yasas yasal sözлешmeli we düzenli maaşl bir bir girdim diýýär. Çşçiye saygı gösteriyorlar, kimsenin hakky yemiyorlar.",
+        "highlight": "Uzak möhletli hyzmatdaşlyk"
+      }
+    ]
+  },
+  "navbar": {
+    "location": "Antalýa, Türkiýe",
+    "workingHours": "Duşenbe-Anna 9:00-18:00",
+    "home": "Öý",
+    "about": "Biz barada",
+    "services": "Hyzmatlar",
+    "jobs": "Elýeterli iş orunlary",
+    "visa": "Wiza çakylyklary",
+    "residencePermit": "Ýaşamak üçin rugsatnama",
+    "contact": "Aragatnaşyk",
+    "blog": "Blog",
+    "cv": "Rezyume generatory",
+    "resumeGenerator": "Rezyume generatory",
+    "search": "Gözleg",
+    "register": "Registrasiýa",
+    "login": "Giriş",
+    "toggleMenu": "Menýuny aç/ýap",
+    "closeSearch": "Gözlegi ýap",
+    "searchTitle": "Işleri we hyzmatlary gözläň",
+    "searchPlaceholder": "Işleri, hyzmatlary gözläň...",
+    "searchButton": "Gözleg",
+    "popularSearches": "Meşhur gözlegler",
+    "closeMenu": "Menýuny ýap",
+    "candidateHRCompanies": "Kandidat we HR kompaniýalary",
+    "jobProvider": "Iş üpjün ediji",
+    "partnerWithUs": "Biz bilen hyzmatdaşlyk ediň",
+    "recruitmentAgency": "Işe kabul ediş agentligi",
+    "megaMenu": {
+      "hero": {
+        "title": "Hünärmen hyzmatlary",
+        "description": "Karýera we immigrasiýa zerurlyklaryňyz üçin toplumlaýyn çözgütler",
+        "button": "Ähli hyzmatlary görkez"
+      },
+      "recruitmentServices": {
+        "title": "Işe kabul ediş hyzmatlary",
+        "items": {
+          "resumeService": {
+            "title": "Rezyume hyzmaty",
+            "description": "Professional rezyume ýazmak"
+          },
+          "globalJobPlacement": {
+            "title": "Global iş orunlaryny ýerleşdirmek",
+            "description": "Halkara iş mümkinçilikleri"
+          },
+          "interviewCoaching": {
+            "title": "Söhbetdeşlik boýunça tälim beriş",
+            "description": "Hünärmen söhbetdeşlige taýýarlyk"
+          },
+          "careerCounselling": {
+            "title": "Karýera boýunça maslahat beriş",
+            "description": "Hünärmen karýera boýunça görkezme"
+          },
+          "visaRelocation": {
+            "title": "Wiza we göçüriş",
+            "description": "Wiza we göçmek üçin goldaw"
+          }
+        }
+      },
+      "skillServices": {
+        "title": "Hyzmatlar",
+        "items": {
+          "skillDevelopment": {
+            "title": "Ukyplary ösdürmek",
+            "description": "Hünär ussatlygy boýunça okuw"
+          },
+          "remoteWork": {
+            "title": "Uzakdan işlemek",
+            "description": "Uzakdan iş mümkinçilikleri"
+          },
+          "talentAcquisition": {
+            "title": "Zehinli adamlaryň tapylmagy",
+            "description": "Strategik işe alma çözgütleri"
+          },
+          "immigration": {
+            "title": "Immigrasiýa hyzmatlary",
+            "description": "Immigrasiýa kömegi"
+          },
+          "jobsRecruitment": {
+            "title": "Iş orunlaryny işe almak",
+            "description": "Işe kabul etmek üçin çözgütler"
+          }
+        }
+      },
+      "immigration": {
+        "title": "Türkiýäniň ýaşamak üçin rugsatnamasy",
+        "items": {
+          "turkey": {
+            "title": "Türkiýede ýaşamak üçin rugsatnama",
+            "description": "Türkiýede ýaşamak üçin rugsatnama hyzmatlary"
+          },
+          "workPermit": {
+            "title": "Iş rugsatnamasy",
+            "description": "Iş rugsatnamaňyzy alyň"
+          },
+          "citizenship": {
+            "title": "Türkiýe raýatlygy",
+            "description": "Türkiýäniň raýatlyk gullugy"
+          },
+          "visaInvitations": {
+            "title": "Wiza çakylyklary",
+            "description": "Wiza hyzmatlary"
+          },
+          "hireWorkers": {
+            "title": "Işçileri işe alyň",
+            "description": "Işçi güýjüni işe almak üçin çözgütler"
+          },
+          "companyRegistration": {
+            "title": "Kompaniýanyň bellige alynmagy",
+            "description": "Kompaniýa bellige alyň"
+          },
+          "dubai": {
+            "title": "Dubaýda ýaşamak üçin rugsatnama",
+            "description": "Dubaýda ýaşamak üçin rugsatnama hyzmatlary"
+          },
+          "china": {
+            "title": "Hytaýda ýaşamak üçin rugsatnama",
+            "description": "Hytaýda ýaşamak üçin rugsatnama hyzmatlary"
+          },
+          "kazakhstan": {
+            "title": "Gazagystanyň ýaşamak üçin rugsatnamasy",
+            "description": "Gazagystanyň ýaşamak üçin rugsatnama hyzmatlary"
+          },
+          "albania": {
+            "title": "Albaniýada ýaşamak üçin rugsatnama",
+            "description": "Albaniýada ýaşamak üçin rugsatnama hyzmatlary"
+          }
+        }
+      },
+      "visaFiling": {
+        "title": "Visa elektron çakylygy",
+        "items": {
+          "turkey": {
+            "title": "Türkiýe wizasy",
+            "description": "Türkiýäniň wiza hyzmatlary"
+          },
+          "dubai": {
+            "title": "Dubaý wizasy",
+            "description": "Dubaý wiza hyzmatlary"
+          },
+          "kazakhstan": {
+            "title": "Gazagystanyň wizasy",
+            "description": "Gazagystanyň wiza hyzmatlary"
+          },
+          "albania": {
+            "title": "Albaniýa wizasy",
+            "description": "Albaniýa wiza hyzmatlary"
+          },
+          "portugal": {
+            "title": "Portugaliýa wizasy",
+            "description": "Portugaliýanyň wiza hyzmatlary"
+          }
+        }
+      }
+    },
+    "residenceDropdown": {
+      "title": "Ýaşamak üçin rugsatnama hyzmatlary",
+      "items": {
+        "turkey": {
+          "title": "Türkiýede ýaşamak üçin rugsatnama",
+          "description": "Türkiýede ýaşamak üçin rugsatnama hyzmatlary",
+          "href": "/immigrasiýa/Türkiýede ýaşamak üçin rugsatnama"
+        },
+        "dubai": {
+          "title": "Dubaýda ýaşamak üçin rugsatnama",
+          "description": "Dubaýda ýaşamak üçin rugsatnama hyzmatlary",
+          "href": "/immigrasiýa/dubaýda ýaşamak üçin rugsatnama"
+        },
+        "china": {
+          "title": "Hytaýda ýaşamak üçin rugsatnama",
+          "description": "Hytaýda ýaşamak üçin rugsatnama hyzmatlary",
+          "href": "/immigrasiýa/hytaýda ýaşamak üçin rugsatnama"
+        },
+        "kazakhstan": {
+          "title": "Gazagystanyň ýaşamak üçin rugsatnamasy",
+          "description": "Gazagystanyň ýaşamak üçin rugsatnama hyzmatlary",
+          "href": "/immigrasiýa/gazagystanda ýaşamak üçin rugsatnama"
+        },
+        "albania": {
+          "title": "Albaniýada ýaşamak üçin rugsatnama",
+          "description": "Albaniýada ýaşamak üçin rugsatnama hyzmatlary",
+          "href": "/immigrasiýa/albaniýada ýaşamak üçin rugsatnama"
+        }
+      }
+    },
+    "popularSearchItems": {
+      "remoteJobs": "Uzakdan iş orunlary",
+      "softwareDeveloper": "Programma üpjünçiligini işläp düzüji",
+      "dataAnalyst": "Maglumat Analitiki",
+      "projectManager": "Taslama müdiri"
+    },
+    "mobile": {
+      "servicesIntro": "Hünärmen hyzmatlarymyzyň giň gerimini öwreniň",
+      "connectWithUs": "Sosial mediada biziň bilen habarlaşyň",
+      "premiumServices": {
+        "title": "Premium hyzmatlar",
+        "description": "Ileri tutulýan goldaw we kepillendirilen netijeleri alyň",
+        "button": "Premium-a täzeläň",
+        "features": {
+          "prioritySupport": "Ilkinji derejeli goldaw",
+          "guaranteedResults": "Kepillendirilen netijeler"
+        }
+      }
+    }
+  },
+  "footer": {
+    "brand": {
+      "tagline": "Zehinli mümkinçilikleri mümkinçilik bilen baglanyşdyrmak",
+      "description": "Innowasion HR çözgütleri we şahsylaşdyrylan işe alyş hyzmatlary arkaly karýera we işewürlik mümkinçiliklerini giňeltmek.",
+      "downloadProfile": "Kompaniýanyň profilini göçürip alyň"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    },
+    "featuredServices": {
+      "servicesLabel": "Hyzmatlar",
+      "tabs": {
+        "findJobs": {
+          "title": "Iş tap",
+          "features": {
+            "searchVacancies": "Boş iş orunlaryny gözläň",
+            "createProfile": "Profil dörediň",
+            "applyTracking": "Yzarlaýyşy ulanyň",
+            "careerAdvice": "Karýera boýunça maslahatlar"
+          }
+        },
+        "hireTalent": {
+          "title": "Talanty işe alyň",
+          "features": {
+            "postJobOpenings": "Açyk iş orunlaryndan soň",
+            "resumeDatabase": "Rezyume maglumatlar bazasy",
+            "recruitmentSolutions": "Işe kabul etmek üçin çözgütler",
+            "hrConsulting": "HR boýunça maslahat beriş"
+          }
+        },
+        "partnerWithUs": {
+          "title": "Biz bilen hyzmatdaşlyk ediň",
+          "features": {
+            "jobSeeker": "Siz iş gözleýänmi?",
+            "employer": "Siz iş berijimi?",
+            "recruitmentAgency": "Siz işe alyş agentligimi?",
+            "hrConsultant": "Siz HR boýunça maslahatçymy?"
+          }
+        }
+      }
+    },
+    "navigation": {
+      "jobsAdmire": {
+        "title": "Işlere haýran galmak",
+        "links": {
+          "aboutUs": "Biz barada",
+          "contactUs": "Biz bilen habarlaşyň",
+          "blog": "Blog",
+          "companyCertifications": "Kompaniýanyň sertifikatlary"
+        }
+      },
+      "resources": {
+        "title": "Resurslar",
+        "links": {
+          "residencePermitInfo": "Ýaşamak üçin rugsatnama maglumatlary",
+          "invitationLetterRequest": "Çakylyk haty üçin haýyş"
+        }
+      },
+      "jobProviders": {
+        "title": "Iş üpjün edijiler",
+        "links": {
+          "findJobs": "Iş tap",
+          "resumeGenerator": "Rezyume generatory",
+          "resumeService": "Rezyume hyzmaty",
+          "companyRegistration": "Kompaniýanyň bellige alynmagy"
+        }
+      },
+      "jobSeekers": {
+        "title": "Iş gözleýänler",
+        "links": {
+          "browseJobs": "Iş orunlaryna göz aýlaň",
+          "cvBuilder": "CV Gurujysy",
+          "career": "Karýera",
+          "jobsRecruitment": "Iş orunlaryny işe almak",
+          "resumeService": "Rezyume hyzmaty"
+        }
+      },
+      "employers": {
+        "title": "Iş berijiler",
+        "links": {
+          "postJob": "Iş ýerleşdiriň",
+          "findCandidates": "Kandidatlary tapyň",
+          "hrConsulting": "HR boýunça maslahat beriş",
+          "premiumServices": "Premium hyzmatlar",
+          "immigration": "Immigrasiýa"
+        }
+      },
+      "company": {
+        "title": "Kompaniýa",
+        "links": {
+          "aboutUs": "Biz barada",
+          "blog": "Blog",
+          "contactUs": "Biz bilen habarlaşyň",
+          "certifications": "Sertifikatlar"
+        }
+      },
+      "newLabel": "NEW"
+    },
+    "mapSection": {
+      "title": "Bizi Kartada tapyň",
+      "email": "E-poçta"
+    },
+    "newsletter": {
+      "title": "Iş bildirişleri we täzelenmeler",
+      "placeholder": "E-poçtaňyzy giriziň",
+      "subscribe": "Abuna ýazylyň",
+      "success": "Abuna ýazylanyňyz üçin sag boluň!"
+    },
+    "globalPresence": {
+      "title": "Global Barlyk",
+      "viewAll": "Ähli ýerleri görkez",
+      "locations": {
+        "turkey": {
+          "city": "Türkiýe",
+          "address": "Tahylpazary, Adnan Menderes Blv. Erkal A Blok No: 7 İç Kapı No: 6, 07040 Muratpaşa Antalýa, Türkiye",
+          "phone": "+90 555 827 65 85"
+        },
+        "pakistan": {
+          "city": "Pakistan",
+          "address": "1207-nji ofis, Kaşif merkezi, Mehran myhmanhanasynyň golaýynda, Esasy Şahrah e Faýsal, Karaçi.",
+          "phone": "+90 552 529 68 64"
+        },
+        "azerbaijan": {
+          "city": "Azerbaýjan",
+          "address": "Nizami küçəsi 203, AF biznes öýi 7- ci mərtəbə",
+          "phone": "+994 70 950 78 79"
+        },
+        "kazakhstan": {
+          "city": "Gazagystan",
+          "address": "Tiz wagtda"
+        }
+      }
+    },
+    "contacts": {
+      "turkey": {
+        "country": "Türkiýe",
+        "city": "Antalýa",
+        "address": "Tahylpazary, Adnan Menderes Blv. Erkal Apt Blok No: 7 İç Kapı No: 6, 07040 Muratpaşa / Antalýa",
+        "hours": "Duşenbe-Anna: 9:00-18:00",
+        "phone": "+90 501 124 03 40",
+        "email": "info@jobsadmire.com"
+      },
+      "pakistan": {
+        "country": "Pakistan",
+        "city": "Karaçi",
+        "address": "1207-nji ofis, Kaşif merkezi, Mehran myhmanhanasynyň golaýynda, Esasy Şahrah e Faýsal",
+        "hours": "Duşenbe-Anna: 9:00-17:00",
+        "phone": "0213 5682889",
+        "email": "info@jobsadmire.com"
+      }
+    },
+    "certification": {
+      "companyName": "Işler Admire Özel İstihdam Bürosu Sanayi Ve Ticaret Limited Şirket",
+      "description": "Türkiýäniň Iş bilen üpjünçilik agentliginiň 19.09.2024 senesindäki 1730 belgili rugsatnamasy bilen işleýär. 4904 belgili kanuna laýyklykda, iş gözleýänlerden töleg almak gadagandyr. Şikaýatlaryňyz üçin Stambulyň İŞKUR welaýat müdirliginiň Kadyköý hyzmat merkezine ýüz tutup bilersiňiz. IşKur Tel: 0216 418 34 55 Eğitim mah. 1.Açıkgöz köçesi. №3 KADIKÖY/ISTANBUL"
+    },
+    "copyright": {
+      "text": "Awtorlyk hukugy © {{ýyl}} Işler ADMİRE ÖZEL İSTİHDAM BÜROSU SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+      "taxNo": "Salgyt belgisi: 48422122"
+    },
+    "legal": {
+      "privacy": "Gizlinlik syýasaty",
+      "terms": "Hyzmat şertleri",
+      "cookies": "Kuki sazlamalary"
+    }
+  },
+  "servicesCarousel": {
+    "header": {
+      "badge": "Hünärmen hyzmatlary",
+      "title": "Hünärmen Hyzmatlarymyz",
+      "description": "Karýera meýilnamalaşdyryşdan başlap, global işe ýerleşdirmäge çenli, biz siziň karýera ösüşiňizi çaltlandyrmak we halkara mümkinçiliklerine gapylary açmak üçin niýetlenen doly hünär hyzmatlaryny hödürleýäris."
+    },
+    "navigation": {
+      "previous": "Öňki slaýd",
+      "next": "Indiki slaýd",
+      "goTo": "Git",
+      "autoPlay": "Awto",
+      "play": "Oýna",
+      "pause": "Awtomatiki oýnatmany duruz",
+      "resume": "Awtomatiki oýnatmagy dowam etdiriň",
+      "counter": "-nyň"
+    },
+    "services": {
+      "resumeWriting": {
+        "title": "Professional Rezyume Ýazmak",
+        "subtitle": "ATS-iň optimizirlenen karýera resminamalary",
+        "description": "Awtomatlaşdyrylan ulgamlary aýlanyp geçýän we işe alyjylaryň ünsüni özüne çekýän professional taýýarlanan rezyumeler bilen karýera taryhyňyzy özgerdiň. Biziň tejribeli ýazyjylarymyz 80-den gowrak pudakdaky işe alyjy menejerleriniň näme gözleýändigini bilýärler we rezyumeňiziň mümkinçiliklere ýol açýandygyny üpjün edýärler.",
+        "features": [
+          "ATS-optimallaşdyrylan mazmun",
+          "Pudaga degişli ýazuw işleri",
+          "Söhbetdeşligiň üstünliklilik derejesi 98.4%",
+          "4 günlük iş tertibi"
+        ],
+        "ctaPrimary": "Öz Rezyumemi Döret"
+      },
+      "globalJobPlacement": {
+        "title": "Global iş orunlaryny ýerleşdirmek",
+        "subtitle": "Halkara karýera mümkinçilikleri",
+        "description": "Giň halkara ulgamymyz arkaly dünýäniň öňdebaryjy iş berijileri bilen habarlaşyň. Biz tejribeli hünärmenleri daşary ýurtlardaky mümkinçilikler bilen utgaşdyrýarys we arzuw edýän ýeriňizde işe ýerleşmäge çenli hemmetaraplaýyn goldaw berýäris.",
+        "features": [
+          "Global Iş Beriji Tory",
+          "Wiza goldawy goşulandyr",
+          "Medeni integrasiýa kömegi",
+          "Çalt işleniş"
+        ],
+        "ctaPrimary": "Global iş orunlaryny tapyň"
+      },
+      "interviewCoaching": {
+        "title": "Söhbetdeşlik boýunça tälim beriş",
+        "subtitle": "Islendik söhbetdeşlik formatyny özleşdiriň",
+        "description": "Pudak bilermenlerinden şahsylaşdyrylan interwýu tälimçiligi bilen berk ynam dörediň. Synag interwýulary bilen tejribe alyň, jikme-jik pikir alyň we özüni alyp barş, tehniki we ýolbaşçy interwýularda üstünlik gazanmak üçin subut edilen strategiýalary öwreniň.",
+        "features": [
+          "Synag söhbetdeşlik sessiýalary",
+          "Şahsylaşdyrylan seslenme",
+          "Pudaga degişli tälimçilik",
+          "Özüne ynamy ösdürmek"
+        ],
+        "ctaPrimary": "Kitap boýunça tälim beriş"
+      },
+      "careerCounselling": {
+        "title": "Karýera boýunça maslahat beriş",
+        "subtitle": "Strategik Karýera Ösüşi",
+        "description": "Giňişleýin baha beriş gurallary we hünärmen maslahatlary bilen ideal karýera ýoluňyzy tapyň. Sertifikatlaşdyrylan maslahatçylarymyz hünär geljegiňiz barada maglumatly kararlar kabul etmek üçin güýçli taraplaryňyzy, gyzyklanmalaryňyzy we maksatlaryňyzy utgaşdyrmaga kömek edýär.",
+        "features": [
+          "Karýera bahalandyrma gurallary",
+          "Şahsylaşdyrylan ösüş meýilnamalary",
+          "Ekspert maslahatçylar",
+          "Maksada gönükdirilen ýol görkeziji"
+        ],
+        "ctaPrimary": "Baha bermäge başlaň"
+      },
+      "visaSupport": {
+        "title": "Wiza goldaw hyzmatlary",
+        "subtitle": "Immigrasiýa prosesiniň bökdençsizligi",
+        "description": "Hünärmenleriň görkezmesi we giňişleýin resminama goldawy bilen çylşyrymly wiza arzalaryny çözüň. Immigrasiýa boýunça hünärmenlerimiz siziň arzalaryňyzyň dünýäde iş, okuw ýa-da hemişelik ýaşamak üçin wizalar üçin ähli talaplara laýyk gelýändigini kepillendirýärler.",
+        "features": [
+          "Resminamalary taýýarlamak",
+          "Arza işlenilýär",
+          "Ilçihananyň goldawy",
+          "Yzyndan kömek"
+        ],
+        "ctaPrimary": "Wiza üçin ýüz tutuň"
+      },
+      "skillDevelopment": {
+        "title": "Ukyplary ösdürmek boýunça okuw",
+        "subtitle": "Pudaga taýýar hünär başarnyklary",
+        "description": "Pudak hünärmenleri tarapyndan işlenip düzülen amaly, işe gönükdirilen okuw maksatnamalary bilen karýeraňyzy ösdüriň. Tehniki başarnyklardan ýumşak başarnyklara çenli, biziň giňişleýin okuwlarymyz sizi şu günki bäsdeşlikli iş bazaryna tejribe arkaly taýýarlaýar.",
+        "features": [
+          "Pudaga degişli okuw maksatnamasy",
+          "Amaly taslamalar",
+          "Sertifikatlaşdyrylan mugallymlar",
+          "Işe ýerleşdirmek boýunça goldaw"
+        ],
+        "ctaPrimary": "Kurslary öwreniň"
+      },
+      "remoteWork": {
+        "title": "Uzakdan işlemek mümkinçilikleri",
+        "subtitle": "Global uzakdan karýera girişi",
+        "description": "Barlag edilen global iş berijilerden saýlanan mümkinçilikler bilen uzakdan işlemek azatlygyny açyň. Biz zehinli hünärmenleri dürli pudaklarda kanuny uzakdan işleýän wezipeler bilen baglanyşdyrýarys, iş bilen durmuşyň deňagramlylygyny we halkara girdeji mümkinçiligini üpjün edýäris.",
+        "features": [
+          "Tassyklanan uzakdan işleýän işler",
+          "Global mümkinçilikler",
+          "Çeýe tertipleme",
+          "Iş-durmuş deňagramlylygy"
+        ],
+        "ctaPrimary": "Uzakdan iş tapyň"
+      },
+      "talentAcquisition": {
+        "title": "Zehinli adamlaryň tapylmagy",
+        "subtitle": "Strategik işe alyş çözgütleri",
+        "description": "Biziň giňişleýin zehinli işgärleri işe almak hyzmatlarymyz bilen işe almak prosesiňizi ýeňilleşdiriň. Biz guramalara ulgamlaýyn prosesler we innowasion çeşme gözleme usullary arkaly ýokary hilli dalaşgärleri netijeli çekmäge, baha bermäge we işe almaga kömek edýäris.",
+        "features": [
+          "Başdan-aýak işe alyş",
+          "Kandidatlary saýlamak",
+          "Söhbetdeşligi utgaşdyrmak",
+          "Işe kabul etmek üçin goldaw"
+        ],
+        "ctaPrimary": "Talanty işe alyň"
+      },
+      "immigrationConsultation": {
+        "title": "Immigrasiýa boýunça maslahat",
+        "subtitle": "Göçmek üçin doly goldaw",
+        "description": "Hemişelik ýaşamak we dünýä boýunça göçmek üçin giňişleýin immigrasiýa kömegi bilen durmuşyňyzy özgerdiň. Sertifikatlaşdyrylan maslahatçylarymyz bütin dünýäde hünärli işçi maksatnamalary üçin şahsylaşdyrylan strategiýalary we doly resminama goldawyny hödürleýärler.",
+        "features": [
+          "Hemişelik ýaşaýyş jaýy",
+          "Hünärmen işçi maksatnamalary",
+          "Maşgala immigrasiýasy",
+          "Hasaplaşyk goldawy"
+        ],
+        "ctaPrimary": "Immigrasiýa başlaň"
+      },
+      "jobRecruitment": {
+        "title": "Işe kabul etmek hyzmatlary",
+        "subtitle": "Hünärmen işe alma çözgütleri",
+        "description": "Işe kabul etmek üçin giňişleýin platformamyz arkaly indiki karýera mümkinçiligiňiz bilen baglanyşyň. Biz dürli pudaklarda şahsylaşdyrylan iş saýlama we işe kabul etmek goldawyny hödürläp, zehinli hünärmenler bilen öňdebaryjy iş berijileriň arasyndaky boşlugy köprü edýäris.",
+        "features": [
+          "Işi deňeşdirmek algoritmi",
+          "Senagat tejribesi",
+          "Çalt ýerleşdiriş prosesi",
+          "Karýera boýunça görkezme"
+        ],
+        "ctaPrimary": "Iş orunlaryna ýüz tutuň"
+      }
+    }
+  },
+  "stats": {
+    "jobFulfillment": {
+      "label": "Işiň ýerine ýetirilmegi",
+      "subtitle": "Geçen çärýekden bäri"
+    },
+    "branches": {
+      "label": "Şahalar",
+      "subtitle": "Iri şäherleriň arasynda"
+    },
+    "yearsExperience": {
+      "label": "Ýyllyk tejribe",
+      "subtitle": "Senagat tejribesi"
+    },
+    "happyClients": {
+      "label": "Bagtly müşderiler",
+      "subtitle": "98% kanagatlanma bilen"
+    }
+  },
+  "features": {
+    "targetedRecruitment": {
+      "title": "Maksatly işe alyş",
+      "description": "Kandidatlaryň iş talaplaryna takyk gabat gelmegi."
+    },
+    "performanceTracking": {
+      "title": "Iş netijelerini yzarlamak",
+      "description": "Işe kabul etmegiň üstünligini ölçemek üçin ösen ölçegler."
+    },
+    "qualityAssurance": {
+      "title": "Hiliň kepilligi",
+      "description": "Tanyşdyrmazdan öň ähli dalaşgärleriň jikme-jik barlagdan geçirilmegi."
+    }
+  },
+  "whatsapp": {
+    "title": "Işler haýran galdyrýar",
+    "ariaLabel": "WhatsApp-da söhbetdeşlik"
+  },
+  "labels": {
+    "footer": {
+      "logoAlt": "Iş portalynyň logotipi",
+      "paymentAmex": "Amerikan Ekspresi",
+      "paymentApplePay": "Apple Pay",
+      "paymentMastercard": "Mastercard",
+      "paymentVisa": "Wiza",
+      "paymentGooglePay": "Google Pay",
+      "certificationAlt": "İŞKUR güwänamasy"
+    },
+    "visa": {
+      "translationError": "Terjime ýalňyşlygy",
+      "unableToLoad": "{{locale}} ýerli standart üçin artykmaçlyklar bölümini ýükläp bolmaýar",
+      "unableToLoadTranslations": "{{locale}} üçin terjimeleri ýükläp bolmaýar",
+      "checkTranslationFiles": "Terjime faýllaryňyzy barlaň."
+    },
+    "disclaimer": {
+      "dismissAria": "Jogapkärçilikden boýun gaçyrmak",
+      "title": "Möhüm jogapkärçilikden boýun gaçyrmak",
+      "body": "“JobsAdmire” garaşsyz immigrasiýa maslahat beriş gullugydyr. Biz hiç bir döwlet edarasy bilen baglanyşykly däl ýa-da olaryň tarapyndan goldanylmaýar. Biz wiza ýa-da ýaşamak üçin rugsatnama bermeýäris; biz diňe maslahat we kömek berýäris.",
+      "dismissButton": "Ýatyrmak"
+    },
+    "login": {
+      "logoAlt": "Logotip",
+      "welcomeTitle": "Hoş geldiňiz",
+      "welcomeSubtitle": "Web sahypasyna",
+      "userLoginHeading": "Ulanyjynyň girişi",
+      "agency": "Agentlik",
+      "jobProvider": "Iş üpjün ediji",
+      "candidate": "Kandidat",
+      "username": "Ulanyjy ady",
+      "password": "Parol",
+      "rememberMe": "Meni ýatda sakla",
+      "forgotPassword": "Paroly ýatdan çykardyňyzmy?",
+      "loginButton": "Giriş",
+      "placeholderUsername": "Ulanyjy ady",
+      "placeholderPassword": "Parol"
+    },
+    "applyOnline": {
+      "title": "Uganda wizasy üçin arza",
+      "subtitle": "Syýahatçylyk wizasy üçin arzaňyzy iki ýönekeý ädimde dolduryň",
+      "stepApplication": "Programma",
+      "stepPayment": "Töleg",
+      "applicationDetails": "Arzanyň jikme-jiklikleri",
+      "paymentDetails": "Töleg maglumatlary",
+      "visaTypeLabel": "Uganda üçin 90 güne çenli syýahat üçin elektron wiza",
+      "visaTypeDescription": "Bir gezeklik giriş (90 günlük galmak), 3 iş gününiň işlenilmegi bilen",
+      "visaTypeSelectLabel": "Gerekli wiza toparyny we möhletini saýlaň *",
+      "visaTypeTourist": "90 güne çenli syýahat üçin elektron wiza",
+      "visaTypeBusiness": "90 güne çenli iş elektron wizasy",
+      "visaTypeTransit": "Tranzit elektron wizasy 7 güne çenli",
+      "governmentFee": "Hökümet tölegi",
+      "saveAndContinue": "Sakla we dowam et",
+      "return": "Yzyna gaýtarmak",
+      "submitOrder": "Sargydy tabşyryň",
+      "termsAgreement": "Men şuňa razylaşýaryn",
+      "termsOfService": "Hyzmat şertleri",
+      "privacyStatement": "Gizlinlik beýannamasy",
+      "termsAgreementEnd": "we meniň beren ähli maglumatlarymyň we resminamalaryň meniň bilimim boýunça dogrudygyny, takykdygyny we dolydygyny tassyklaýaryn.",
+      "email": "E-poçta",
+      "phone": "Telefon",
+      "citizenship": "Raýatlyk",
+      "entryDate": "Giriş senesi",
+      "firstName": "Ady",
+      "lastName": "Familiýa",
+      "cardholderName": "Kart eýesiniň ady",
+      "cardNumber": "Kart belgisi",
+      "expiry": "AA/ÝÝ",
+      "footerCopyright": "© 2025 Uganda wiza hyzmatlary. Ähli hukuklar goralandyr.",
+      "placeholderFirstName": "hamza",
+      "placeholderLastName": "ali",
+      "placeholderCardholder": "hamza ali",
+      "placeholderCardNumber": "Kart nomeri",
+      "placeholderExpiry": "AA/ÝÝ",
+      "feeBreakdownTitle": "Tölegleriň bölünişi",
+      "visaService": "Wiza hyzmaty",
+      "embassyFee": "Ilçihana tölegi",
+      "serviceFee": "Hyzmat tölegi",
+      "total": "Jemi",
+      "months": {
+        "jan": "Ýan",
+        "feb": "Fewral",
+        "mar": "Mart",
+        "apr": "Aprel",
+        "may": "Maý",
+        "jun": "Iýun",
+        "jul": "Iýul",
+        "aug": "Awgust",
+        "sep": "Sentýabr",
+        "oct": "Oktýabr",
+        "nov": "Noýabr",
+        "dec": "Dekabr"
+      },
+      "cvc": "CVC",
+      "placeholderEmail": "hamzahefz7885@gmail.com",
+      "placeholderPhone": "03172105055",
+      "placeholderCvc": "CVC"
+    },
+    "jobRecruitment": {
+      "metaTitle": "Işe kabul etmek hyzmatlary | Hünärmen işe kabul etmek çözgütleri – JobsAdmire",
+      "metaDescription": "JobsAdmire-iň iş gözleýän hyzmatlary bilen biznesiňiz üçin dogry zehinleri tapyň. Biz ähli ululykdaky we pudakdaky kompaniýalar üçin ýöriteleşdirilen işe alma çözgütlerini hödürleýäris.",
+      "metaKeywords": "Global iş orunlaryny ýerleşdirmek hyzmatlary, daşary ýurtlarda hünärmen goldawy bilen işlemek – JobsAdmire",
+      "ogTitle": "Açyk Grafik Adyňyz",
+      "ogDescription": "Açyk Grafik düşündirişiňiz",
+      "bannerTitle": "Işe almak prosesiňizi özgerdiň",
+      "bannerDescription": "Işgärleri işe almagyňyzy toplumlaýyn çözgütlerimiz bilen ýeňilleşdirýäris. Biz guramalara ähli pudaklarda we iş derejelerinde hünärli dalaşgärleri çalt we netijeli tapmaga kömek edýäris.",
+      "bannerButtonText": "Işgärleri işe almaga başlaň",
+      "bannerServiceLabel": "IŞE ALMAK BOÝUNÇA EKSPERTLER"
+    },
+    "turkeyCitizenship": {
+      "currentCitizenship": "Häzirki raýatlyk"
+    },
+    "blogCards": {
+      "searchPlaceholder": "Makalalary, temalary ýa-da tegleri gözläň...",
+      "searchAriaLabel": "Gözleg",
+      "enterYourEmail": "E-poçtaňyzy giriziň",
+      "newsletterCloseAria": "Habarlar býulleteniniň açylýan popupyny ýap",
+      "backToTopAria": "Ýokarky sahypa gaýdyp",
+      "subscriberAlt": "Abonent",
+      "subscribeSuccess": "Habarlar býulletenimize abuna ýazylanyňyz üçin sag boluň!",
+      "enterValidEmail": "Dogry e-poçta salgysyny giriziň",
+      "categories": {
+        "careerAdvice": "Karýera boýunça maslahatlar",
+        "jobInterviews": "Iş söhbetdeşlikleri",
+        "resumeTips": "Rezüme boýunça maslahatlar",
+        "remoteWork": "Uzakdan işlemek",
+        "industryInsights": "Senagat maglumatlary"
+      },
+      "loadMore": "Has köp ýükle"
+    },
+    "candidateForm": {
+      "personalInfo": "Şahsy maglumatlar",
+      "professional": "Hünärmen",
+      "documents": "Resminamalar",
+      "jobCategoryTourism": "Syýahatçylyk we myhmanhanaçylyk",
+      "jobCategoryFactory": "Zawod",
+      "jobCategoryConstruction": "Gurluşyk",
+      "jobCategoryAgriculture": "Oba hojalygy",
+      "name": "At",
+      "surname": "Familiýa",
+      "motherName": "Ejeň ady",
+      "fatherName": "Kakasynyň ady",
+      "email": "E-poçta",
+      "phone": "Telefon",
+      "dob": "Doglan senesi",
+      "gender": "Jyns",
+      "height": "Boýy",
+      "weight": "Agram",
+      "address": "Salgy",
+      "country": "Ýurt",
+      "city": "Şäher",
+      "state": "Döwlet",
+      "placeOfBirth": "Doglan ýeri",
+      "workerAbroadResidenceAddress": "Daşary ýurtly işgäriň ýaşaýan ýeriniň salgysy",
+      "passportNumber": "Pasport belgisi",
+      "videoLink": "Wideo baglanyşyk",
+      "candidateLanguage": "Kandidat dili",
+      "otherLanguages": "Başga diller",
+      "description": "Beýany",
+      "workspace": "Iş meýdany",
+      "password": "Parol",
+      "jobCategory": "Iş kategoriýasy",
+      "title": "Ady",
+      "organization": "Gurama",
+      "startDate": "Başlangyç senesi",
+      "endDate": "Gutaryş senesi",
+      "reference": "Salgylanma",
+      "placeholderName": "Adyňyzy giriziň",
+      "placeholderSurname": "Familiýaňyzy giriziň",
+      "placeholderEmail": "E-poçtaňyzy giriziň",
+      "placeholderPhone": "Telefony giriziň",
+      "placeholderAddress": "Salgyny giriziň",
+      "placeholderCountry": "Ýurdy saýlaň",
+      "placeholderCity": "Şähere giriň",
+      "placeholderState": "Ştaty giriziň",
+      "placeholderPassport": "Pasport nomerini giriziň",
+      "placeholderVideoLink": "Wideonyň URL-ini giriziň",
+      "placeholderDescription": "Beýany giriziň",
+      "selectGender": "Jynsy saýlaň",
+      "submit": "Iber",
+      "addProject": "Taslama goş",
+      "addExperience": "Tejribe goşuň",
+      "addQualification": "Kwalifikasiýa goşuň",
+      "addSkill": "Ukyp goşuň",
+      "profilePhoto": "Profil suraty",
+      "resumeFile": "Rezüme",
+      "passportFile": "Pasport",
+      "fullBodyPhoto": "Bütin beden suraty",
+      "biometricPhoto": "Biometrik surat",
+      "uploadPhoto": "Suraty ýükle",
+      "changePhoto": "Suraty üýtget",
+      "validationRequired": "Bu meýdan hökmanydyr",
+      "successMessage": "Arza üstünlikli iberildi",
+      "weightKg": "Agramy (kg) *",
+      "heightCm": "Boýy (sm) *",
+      "placeholderWeight": "Agramy giriziň",
+      "placeholderHeight": "Boýy giriziň",
+      "uploadFullBodyPhoto": "Bütin beden suratyny ýükle *",
+      "supportedFormats": "Goldalýan formatlar: JPEG, JPG, PNG (Maks. 5MB)",
+      "factorySkills": "Zawodyň başarnyklary",
+      "yearsOfExperience": "Köpýyllyk tejribe",
+      "constructionSkills": "Gurluşyk başarnyklary",
+      "agricultureSkills": "Oba hojalyk başarnyklary",
+      "placeholderFactorySkills": "mysal üçin, Maşyn işlemegi, Hiliň gözegçiligi",
+      "placeholderExperience": "Köp ýyllyk tejribe",
+      "placeholderConstructionSkills": "mysal üçin, agaç ussaçylygy, daş işleri, elektrik işleri",
+      "placeholderAgricultureSkills": "mysal üçin, Ekerançylyk, Hasyl ýygnamak",
+      "stateRequired": "Ştat talap edilýär",
+      "placeOfBirthRequired": "Doglan ýeri hökmanydyr",
+      "weightRequired": "Syýahatçylyk kategoriýasy üçin agram gerek",
+      "heightRequired": "Syýahatçylyk kategoriýasy üçin boý talap edilýär",
+      "passportNumberRequired": "Pasport belgisi talap edilýär",
+      "passportScanRequired": "Pasport skanirlemesi gerek",
+      "firstName": "Ady",
+      "lastName": "Familiýa",
+      "personalInfoTitle": "Şahsy maglumatlar",
+      "locationInfoTitle": "Ýerleşýän ýeriň maglumaty",
+      "currentAddress": "Häzirki salgy *",
+      "stateProvince": "Welaýat/Welaýat *",
+      "professionalInfoTitle": "Hünär maglumatlary",
+      "documentInfoTitle": "Resminama maglumatlary",
+      "specificInformation": "Anyk Maglumat",
+      "placeholderFirstName": "Adyňyzy giriziň",
+      "placeholderLastName": "Familiýaňyzy giriziň",
+      "placeholderMotherName": "Ejeňiziň adyny giriziň",
+      "placeholderFatherName": "Kakaň adyny giriziň",
+      "genderMale": "Erkek",
+      "genderFemale": "Aýal",
+      "placeholderCurrentAddress": "Häzirki salgyňyzy doly giriziň",
+      "placeholderStateProvince": "Ştat/Welaýat",
+      "placeholderPlaceOfBirth": "Doglan ýeriňizi giriziň",
+      "placeholderWorkerAbroad": "Eger gerek bolsa, daşary ýurtdaky ýaşaýan ýeriňizi giriziň",
+      "selectProfession": "Öz hünäriňizi saýlaň",
+      "createPassword": "Parol dörediň *",
+      "placeholderCreatePassword": "Howpsuz parol dörediň",
+      "passwordLoginHint": "(Ol biziň CRM portalymyza girmek üçin ulanylar.)",
+      "placeholderCandidateLanguage": "mysal üçin, iňlis, ispan",
+      "placeholderOtherLanguages": "mysal üçin, fransuz, nemes (vergül bilen bölünen)",
+      "additionalDescription": "Goşmaça düşündiriş",
+      "placeholderAdditionalDescription": "Bu ýerde goşmaça degişli maglumatlary, başarnyklary ýa-da tejribäni beriň.",
+      "resumeCvFile": "Rezyume/CV faýly *",
+      "passportScanFile": "Pasport skanirleme faýly *",
+      "supportedFormatsProfile": "Goldalýan formatlar: JPEG, JPG, PNG (Maks. 5MB)",
+      "supportedFormatsResume": "Goldalýan formatlar: PDF, DOC, DOCX (Maksimum 2MB)",
+      "supportedFormatsPassport": "Goldalýan formatlar: JPEG, JPG, PNG, PDF (Maks. 5MB)",
+      "supportedFormatsBiometric": "Goldalýan formatlar: JPEG, JPG, PNG (Maks. 5MB)",
+      "supportedFormatsVideo": "Goldalýan formatlar: MP4, MOV, AVI (Maksimum 50MB)",
+      "selectedFile": "Saýlanan:",
+      "videoFile": "Wideo faýly",
+      "placeholderVideoLinkExample": "mysal üçin, YouTube ýa-da Vimeo baglanyşygy",
+      "formTitle": "Kandidatlaryň hasaba alyş formasy",
+      "formSubtitle": "Maglumatlaryňyzy iberiň we toparymyza goşulyň!",
+      "previous": "Öňki",
+      "nextStep": "Indiki ädim",
+      "submitting": "Iberilýär...",
+      "submitApplication": "Arza tabşyryň",
+      "dobRequired": "Doglan senesi hökmanydyr",
+      "genderRequired": "Jynsy talap edilýär",
+      "workerAbroadResidenceRequired": "Daşary ýurtdaky işgäriň ýaşaýan ýeriniň salgysy talap edilýär",
+      "jobCategoryRequired": "Iş kategoriýasy hökmanydyr",
+      "candidateLanguageRequired": "Kandidat dilini bilmek hökmanydyr",
+      "fullBodyPhotoRequiredTourism": "Syýahatçylyk kategoriýasy üçin bedeniň doly suraty talap edilýär",
+      "profilePhotoRequired": "Profil suraty hökmanydyr",
+      "resumeRequired": "Rezyume gerek",
+      "profilePhotoMaxSize": "Profil suraty 5MB-dan az bolmaly",
+      "resumeMaxSize": "Rezüme 2MB-dan az bolmaly",
+      "passportScanMaxSize": "Pasport skanirlemesi 5MB-dan az bolmaly",
+      "fullBodyPhotoMaxSize": "Bedeniň doly suraty 5MB-dan az bolmaly",
+      "biometricPhotoMaxSize": "Biometrik surat 5MB-dan az bolmaly",
+      "videoMaxSize": "Wideo 50MB-dan az bolmaly",
+      "fixErrorsIntro": "Aşakdaky ýalňyşlyklary düzediň:\n\n",
+      "selectValidJobCategory": "Dogry iş kategoriýasyny saýlaň",
+      "fileSizeErrorsIntro": "Faýl ölçegindäki ýalňyşlyklar:\n\n",
+      "submitFailed": "Arza tabşyryp bolmady. Internet baglanyşygyňyzy barlaň we gaýtadan synanyşyň.",
+      "errorPrefix": "Ýalňyşlyk:",
+      "unknownError": "Näbelli ýalňyşlyk ýüze çykdy",
+      "errorSubmittingApplication": "Arza tabşyrmakda ýalňyşlyk:\n\n",
+      "referenceForm": {
+        "title": "Hünärmen salgylanmalary",
+        "subtitle": "Hünärmen salgylanmalaryňyzy we aragatnaşyklaryňyzy goşuň",
+        "addReference": "Salgylanma goşuň",
+        "noteTitle": "Bellik: Ilki bilen işe dalaşgäriň maglumatlaryny dörediň",
+        "noteDescription": "Salgylanmalaryň dogry tassyklanmagyny üpjün etmek üçin ähli zerur meýdançalary dolduryň",
+        "referenceNumber": "Salgylanma #{{nomer}}",
+        "removeReference": "Salgylanmany aýyr",
+        "organizationDetails": "Guramanyň jikme-jiklikleri",
+        "titleLabel": "Ady *",
+        "titlePlaceholder": "Wezipesiniň ady ýa-da wezipesi",
+        "organizationLabel": "Gurama *",
+        "organizationPlaceholder": "Kompaniýanyň ýa-da guramanyň ady",
+        "employmentPeriod": "Iş döwri",
+        "startDateLabel": "Başlangyç senesi *",
+        "endDateLabel": "Gutaryş senesi *",
+        "locationDetails": "Ýerleşýän ýeriň jikme-jiklikleri",
+        "countryLabel": "Ýurt *",
+        "countryPlaceholder": "Ýurt",
+        "stateLabel": "Ştat *",
+        "statePlaceholder": "Ştat/Welaýat",
+        "cityLabel": "Şäher *",
+        "cityPlaceholder": "Şäher",
+        "contactInformation": "Aragatnaşyk maglumatlary",
+        "contactPerson": "Aragatnaşyk şahsy",
+        "contactPersonPlaceholder": "Aragatnaşyk şahsynyň ady",
+        "phoneNumber": "Telefon nomeri",
+        "emailAddress": "E-poçta salgysy",
+        "resetForm": "Formany täzeden düzelt",
+        "saveReferences": "Salgylanmalary saklaň",
+        "phonePlaceholder": "+1 (555) 123-4567",
+        "emailPlaceholder": "contact@company.com"
+      },
+      "experienceForm": {
+        "projects": "Taslamalar",
+        "projectsSubtitle": "Taslamalaryňyzyň jikme-jikliklerini goşuň",
+        "addProject": "Taslama goş",
+        "projectNumber": "Taslama #{{nomer}}",
+        "experienceCandidateJobs": "Tejribeli dalaşgärleriň işleri",
+        "experienceCandidateJobsSubtitle": "Tejribäňizdäki dalaşgärleriň iş orunlary barada maglumatlary goşuň",
+        "addExperienceCandidateJob": "Işe dalaşgär hökmünde tejribe goşuň",
+        "experienceCandidateJobNumber": "Tejribe dalaşgäriniň işi #{{number}}",
+        "qualifications": "Kwalifikasiýalar",
+        "qualificationsSubtitle": "Kwalifikasiýaňyzyň maglumatlaryny goşuň",
+        "addQualification": "Kwalifikasiýa goşuň",
+        "qualificationNumber": "Kwalifikasiýa #{{nomer}}",
+        "skills": "Ukyplar",
+        "skillsSubtitle": "Ukyplaryňyzyň maglumatlaryny goşuň",
+        "addSkill": "Ukyp goşuň",
+        "skillNumber": "Ukyp #{{san}}",
+        "typeLabel": "Görnüş *",
+        "selectType": "Görnüşi saýlaň",
+        "typeTechnical": "Tehniki başarnyklar",
+        "typeSoft": "Ýumşak başarnyklar",
+        "typeLanguage": "Dil başarnyklary",
+        "typeCertification": "Sertifikatlaşdyrma",
+        "titleLabel": "Ady *",
+        "titlePlaceholder": "{{item}} adyny giriziň",
+        "organizationLabel": "Gurama *",
+        "organizationPlaceholder": "Guramanyň/Kompaniýanyň ady",
+        "startDateLabel": "Başlangyç senesi *",
+        "endDateLabel": "Gutaryş senesi *",
+        "referenceLabel": "Salgylanma",
+        "referencePlaceholder": "Salgylanmaly adam/aragatnaşyk",
+        "saveExperience": "Tejribäni saklaň"
+      },
+      "placeholderPhoneExample": "+1 (555) 123-4567",
+      "placeholderEmailExample": "your.email@example.com"
+    },
+    "referenceForm": {
+      "firstName": "Ady",
+      "lastName": "Familiýa",
+      "email": "E-poçta",
+      "phone": "Telefon",
+      "gender": "Jyns",
+      "password": "Parol",
+      "confirmPassword": "Paroly tassykla",
+      "placeholderFirstName": "Adyňyzy giriziň",
+      "placeholderLastName": "Familiýaňyzy giriziň",
+      "placeholderEmail": "E-poçtaňyzy giriziň",
+      "placeholderPhone": "Telefony giriziň",
+      "placeholderPassword": "Paroly giriziň",
+      "placeholderConfirmPassword": "Paroly tassykla",
+      "passwordsDoNotMatch": "Parollar gabat gelmeýär",
+      "accountCreatedSuccess": "Hasabyňyz üstünlikli döredildi.",
+      "verifyEmailTo": "E-poçtaňyzy tassyklaň",
+      "loginToDashboard": "dolandyryş paneline giriň",
+      "submitted": "Iberildi",
+      "submit": "Iber"
+    },
+    "agencyMentorForm": {
+      "requestSubmittedSuccess": "Siziň haýyşyňyz üstünlikli iberildi, biz ony gözden geçirip, size jogap bereris"
+    },
+    "residenceHero": {
+      "nameRequired": "At gerek",
+      "emailRequired": "E-poçta gerek",
+      "phoneRequired": "Telefon gerek"
+    },
+    "testimonials": {
+      "previousAria": "Öňki",
+      "nextAria": "Indiki",
+      "leftArrow": "çep ok",
+      "rightArrow": "sag ok"
+    },
+    "blog": {
+      "previousAria": "Öňki blog",
+      "nextAria": "Indiki blog",
+      "curatingTitle": "Ajaýyp mazmuny döretmek",
+      "loadingInsights": "Iň soňky bilim maglumatlarymyzy ýükleýäris...",
+      "unableToLoadContent": "Mazmuny ýükläp bolmaýar",
+      "tryAgain": "Gaýtadan synanyşyň",
+      "comingSoon": "Tiz wagtda",
+      "comingSoonDescription": "Ajaýyp blog mazmuny ýolda! Ylham beriji bilim maglumatlary üçin tiz wagtda ýene göz aýlaň.",
+      "premiumBadge": "✨ Ýokary hilli bilim mazmuny",
+      "titleEducational": "Bilim",
+      "titleInsights": "Maglumatlar",
+      "discoverTransformative": "Özgertiji zatlary açyň",
+      "expertCareerGuidance": "hünärmen karýera boýunça görkezme",
+      "cuttingEdgeResources": "öňdebaryjy bilim serişdeleri",
+      "thatAccelerate": "bu siziň akademiki ýoluňyzy çaltlaşdyrar",
+      "latestUpdates": "Soňky täzelenmeler",
+      "expertInsights": "Ekspertleriň pikirleri",
+      "careerGuidance": "Karýera boýunça görkezme",
+      "readFullArticle": "Doly makalany okaň",
+      "featured": "Görkezilen",
+      "exploreAllArticles": "Ähli makalalary öwreniň",
+      "goToBlog": "{{number}} bloguna giriň",
+      "autoPlaying": "Awtomatiki oýnatma",
+      "paused": "Duralga goýuldy"
+    },
+    "templates": {
+      "resumeTemplates": "Rezüme şablonlary",
+      "newResume": "+ Täze Rezyume",
+      "searchTemplates": "Şablonlary gözläň...",
+      "favorites": "Halanlary",
+      "recent": "Soňky",
+      "categories": "Kategoriýalar",
+      "noTemplatesFound": "Şablon tapylmady",
+      "tryAdjustingSearch": "Gözlegiňizi ýa-da süzgüçleriňizi düzedip görüň",
+      "addToFavorites": "Halanlara goş",
+      "removeFromFavorites": "Halanlardan aýyr",
+      "editAria": "Redaktirle",
+      "deleteAria": "Poz",
+      "shareAria": "Paýlaş",
+      "comingSoon": "Tiz wagtda",
+      "selectATemplate": "Şablon saýlaň",
+      "downloadPdf": "PDF göçürip alyň",
+      "editResume": "Rezümeni redaktirläň",
+      "selectTemplateToPreview": "Öz reýumeňizi deslapky gözden geçirmek üçin çepden şablon saýlaň",
+      "all": "Hemmesi"
+    },
+    "visaPage": {
+      "visaStatus": "Wiza statusy",
+      "processingTime": "Işläp taýýarlamak wagty",
+      "validity": "Güýçlilik",
+      "visaFees": "Wiza tölegleri",
+      "selectCountry": "Ýurdy saýlaň",
+      "selectDestination": "Barmaly ýeri saýlaň",
+      "liveChat": "Janly söhbetdeşlik",
+      "whatsApp": "WhatsApp",
+      "clickToCall": "Jaň etmek üçin basyň",
+      "callUsFree": "Bize MUGT jaň ediň",
+      "visa": "wiza",
+      "businessVisa": "Iş wizasy",
+      "studentVisa": "Talyp wizasy",
+      "workVisa": "Iş wizasy",
+      "transitVisa": "Tranzit wizasy",
+      "visaRequirementsFor": "{{citizen}} raýatlary üçin {{destination}} wiza talaplary",
+      "completeGuide": "Wiza talaplary, resminamalary we arza bermek prosesi boýunça doly gollanma",
+      "visaRequired": "Wiza talap edilýär",
+      "visaNotRequired": "Wiza talap edilmeýär",
+      "tourismBusiness": "Syýahatçylyk we Biznes",
+      "workImmigration": "Iş we immigrasiýa",
+      "availableVisaTypes": "Elýeterli wiza görnüşleri",
+      "additionalRequirements": "Goşmaça talaplar",
+      "biometricsRequired": "Biometrika talap edilýär",
+      "biometricsNotRequired": "Biometrika talap edilmeýär",
+      "interviewRequired": "Söhbetdeşlik gerek",
+      "interviewNotRequired": "Söhbetdeşlik hökman däl",
+      "fillOutApplication": "{{destination}} syýahatçylyk üçin elektron wiza arzasyny onlaýn dolduryň",
+      "getStarted": "Başlaň",
+      "provideDigitalCopies": "Aşakdaky resminamalaryň sanly nusgalaryny beriň:",
+      "requiredDocumentsForEntry": "Giriş üçin zerur resminamalar:",
+      "applyForVisa": "{{destination}} wiza üçin onlaýn ýüz tutuň",
+      "passportControl": "Pasport gözegçiligi",
+      "travelVisaRequirements": "Syýahat wizasy talaplary",
+      "journeyBegins": "Käwagt müň mil uzaklykdaky syýahat wiza bilen başlaýar.",
+      "checkDestination": "Barmaly ýeriňizi barlaň we dünýäniň islendik ýerinde wiza üçin onlaýn ýüz tutuň.",
+      "forCitizensOf": "raýatlary üçin",
+      "travelingTo": "syýahat edýär",
+      "checkRequirements": "Talaplary barlaň",
+      "weHelpYou": "Biz size talaplary düşünmäge, dogry resminamalary ýygnamaga we söhbetdeşlige taýýarlanmaga kömek edýäris.",
+      "yourTravelDestination": "Syýahat ýeriňiz",
+      "visaType": "Wiza görnüşi",
+      "touristVisaConvenient": "Syýahatçy wizasy (amatly)",
+      "yourCitizenship": "Siziň raýatlygyňyz",
+      "livingIn": "ýaşamak",
+      "applyNow": "Häzir ýüz tutuň",
+      "backToSearch": "Gözlege gaýdyp barmak"
+    },
+    "registerCompany": {
+      "title": "Kompaniýa hökmünde bellige alyň",
+      "companyName": "Kompaniýanyň ady",
+      "companyEmail": "Kompaniýanyň e-poçtasy",
+      "phoneNumber": "Telefon nomeri",
+      "websiteUrl": "Web sahypasynyň URL-i",
+      "industrySector": "Senagat pudagy",
+      "companySize": "Kompaniýanyň ululygy",
+      "companyAddress": "Kompaniýanyň salgysy",
+      "country": "Ýurt",
+      "city": "Şäher",
+      "fullAddress": "Doly salgy",
+      "hrContactPerson": "HR / Aragatnaşyk şahsy",
+      "fullName": "Doly ady",
+      "position": "Wezipe",
+      "emailAddress": "E-poçta salgysy",
+      "recruitmentPreferences": "Işe almak üçin ileri tutulýan ugurlar",
+      "jobCategoriesHiring": "Iş kategoriýalary işe alýar",
+      "preferredNationalities": "Saýlanan dalaşgärleriň raýatlygy (isleg boýunça)",
+      "jobTypesOffered": "Hödürlenýän iş görnüşleri (degişlileriniň ählisini saýlaň)",
+      "documentsUpload": "Resminamalary ýüklemek",
+      "companyRegistrationDocument": "Kompaniýanyň bellige alyş resminamasy",
+      "optionalRecommended": "(Isleg boýunça, ýöne maslahat berilýär)",
+      "licenseIfAny": "Lisenziýa (bar bolsa)",
+      "clickToUpload": "Ýüklemek üçin basyň ýa-da süýräp taşlaň",
+      "pdfDocMax": "PDF, DOC, DOCX (Maksimum 5MB)",
+      "accountInformation": "Hasap Maglumaty",
+      "username": "Ulanyjy ady",
+      "password": "Parol",
+      "confirmPassword": "Paroly tassykla",
+      "placeholderCompanyName": "Kompaniýanyň adyny giriziň",
+      "selectIndustry": "Senagaty saýlaň",
+      "selectCompanySize": "Kompaniýanyň ululygyny saýlaň",
+      "employees1_10": "1-10 işgär",
+      "employees11_50": "11-50 işgär",
+      "employees51_200": "51-200 işgär",
+      "employees201Plus": "201+ işgär",
+      "placeholderCountry": "Ýurdy giriziň",
+      "placeholderCity": "Şähere giriň",
+      "placeholderAddress": "Doly salgyny giriziň",
+      "placeholderFullName": "Doly adyňyzy giriziň",
+      "placeholderPosition": "mysal üçin, HR menejeri",
+      "placeholderJobCategories": "mysal üçin, programma üpjünçiligini işläp düzmek, marketing, satuw, müşderi hyzmaty",
+      "placeholderNationalities": "mysal üçin, islendik, ABŞ, Kanada, Ýewropa Bileleşigi",
+      "placeholderUsername": "Ulanyjy adyny saýlaň",
+      "placeholderPassword": "Paroly giriziň",
+      "placeholderConfirmPassword": "Paroly tassykla",
+      "submitButton": "Kompaniýa bellige alyň",
+      "fullTime": "Doly wagt",
+      "partTime": "Ýarym günlük",
+      "contract": "Şertnama",
+      "remote": "Uzakdan",
+      "internship": "Stažýorlyk",
+      "industryTechnology": "Tehnologiýa",
+      "industryHealthcare": "Saglygy goraýyş",
+      "industryFinance": "Maliýe",
+      "industryEducation": "Bilim",
+      "industryManufacturing": "Önümçilik",
+      "industryRetail": "Söwda",
+      "industryConstruction": "Gurluşyk",
+      "industryTransportation": "Ulag",
+      "industryEnergy": "Energiýa",
+      "industryOther": "Başga",
+      "placeholderEmail": "company@example.com",
+      "placeholderPhone": "+1 (555) 123-4567",
+      "placeholderWebsite": "https://www.company.com",
+      "placeholderHrEmail": "hr@company.com"
+    },
+    "registerCandidate": {
+      "title": "Hasabyňyzy dörediň",
+      "subtitle": "Platformamyza goşulyň we indiki karýera mümkinçiligiňizi açyň",
+      "personalInformation": "Şahsy maglumatlar",
+      "fullName": "Doly ady",
+      "emailAddress": "E-poçta salgysy",
+      "phoneNumber": "Telefon nomeri",
+      "optional": "(Isleg boýunça)",
+      "preferredCountry": "Saýlanan ýurt",
+      "jobInformation": "Iş barada maglumat",
+      "desiredJobTitle": "Islenýän wezipe ady",
+      "generateProfileSummary": "Profiliň gysgaça mazmunyny dörediň",
+      "generating": "Döredilýär...",
+      "profileSummary": "Profiliň gysgaça mazmuny",
+      "accountSecurity": "Hasap howpsuzlygy",
+      "password": "Parol",
+      "confirmPassword": "Paroly tassykla",
+      "resumeUpload": "Rezüme ýüklemek",
+      "optionalInformation": "Goşmaça maglumat",
+      "highestQualification": "Iň ýokary hünär derejesi",
+      "yearsOfExperience": "Köpýyllyk tejribe",
+      "agreeTerms": "Men razylaşýaryn",
+      "termsAndConditions": "Şertler we düzgünler",
+      "needVisaHelp": "Wiza/iş/ýaşaýyş rugsatnamasy bilen kömek isleýärin",
+      "submitButton": "Hasap döret",
+      "alreadyHaveAccount": "Eýýäm hasabyňyz barmy?",
+      "signInHere": "Bu ýere giriň",
+      "placeholderFullName": "Doly adyňyzy giriziň",
+      "selectCountry": "Ýurt saýlaň",
+      "placeholderJobTitle": "mysal üçin, programma üpjünçiliginiň inženeri",
+      "placeholderProfileSummary": "Hünär tejribäňiz we arzuwlaryňyz barada gysgaça maglumat...",
+      "placeholderPassword": "Güýçli parol dörediň",
+      "placeholderConfirmPassword": "Parolyňyzy tassyklaň",
+      "resumeUploadedSuccess": "üstünlikli ýüklendi!",
+      "dragDropResume": "Öz reýumeňizi şu ýere süýräp goýuň ýa-da gözden geçirmek üçin basyň",
+      "pdfDocOnly": "Diňe PDF, DOC ýa-da DOCX faýllary (Maksimum 5MB)",
+      "selectQualification": "Kwalifikasiýany saýlaň",
+      "highSchool": "Orta mekdep",
+      "bachelors": "Bakalawr derejesi",
+      "masters": "Magistr derejesi",
+      "phd": "Doktorlyk derejesi",
+      "other": "Başga",
+      "selectExperience": "Tejribäni saýlaň",
+      "experience0_1": "0-1 ýyl",
+      "experience2_5": "2-5 ýyl",
+      "experience6_10": "6-10 ýyl",
+      "experience11_15": "11-15 ýyl",
+      "experience15Plus": "15+ ýyl",
+      "fileTypeError": "Faýl görnüşindäki ýalňyşlyk",
+      "fileTypeErrorMessage": "PDF ýa-da DOC faýlyny ýükläň.",
+      "generationFailed": "Nesil başartmady",
+      "generationFailedMessage": "Gysgaça maglumat döredip bolmady. Gaýtadan synanyşyň.",
+      "apiError": "API ýalňyşlygy",
+      "apiErrorMessage": "Gemini API-a birikmek başartmady. Toruňyzy barlaň.",
+      "placeholderEmail": "your.email@example.com",
+      "placeholderPhone": "+1 (555) 123-4567",
+      "ok": "OK"
+    },
+    "profile": {
+      "loadingProfile": "Profil ýüklenýär...",
+      "backToCandidates": "Kandidatlara gaýdyp gelmek",
+      "location": "Ýerleşýän ýeri",
+      "experience": "Tejribe",
+      "age": "Ýaş",
+      "contact": "Aragatnaşyk",
+      "resume": "Rezüme",
+      "readyToConnect": "Baglanyşmaga taýynmy?",
+      "startConversation": "Söhbetdeşligi başlaň",
+      "recentlyJoined": "Ýakynda goşuldy",
+      "greatVisibility": "Görünüş ajaýyp!",
+      "overview": "Umumy syn",
+      "experienceTab": "Tejribe",
+      "education": "Bilim",
+      "portfolio": "Portfolio",
+      "technicalSkills": "Tehniki başarnyklar",
+      "areasOfExpertise": "Hünärmenlik ugurlary",
+      "aboutName": "{{name}} barada",
+      "profileLinkCopied": "Profil baglanyşygy bufere göçürildi!",
+      "getInTouch": "Mümkinçilikleri ara alyp maslahatlaşmak we olaryň tejribesi barada has giňişleýin maglumat almak üçin {{name}} bilen habarlaşyň.",
+      "quickStats": "Çalt statistikalar",
+      "skills": "Ukyplar",
+      "certifications": "Sertifikatlar",
+      "profileActivity": "Profil işjeňligi",
+      "profileCreated": "Profil döredildi",
+      "profileViews": "Profil Görülmeleri {{count}}",
+      "skillsUpdated": "Ukyplar täzelendi",
+      "portfolioOptimized": "Portfolio optimizirlenen",
+      "topSkills": "Iň gowy başarnyklar",
+      "recruiterTips": "Işe alyjylar üçin maslahatlar"
+    },
+    "humanResource": {
+      "understand": "Düşünmek",
+      "understandDescription": "Biz HR çözgütlerini döretmek üçin guramaňyzyň özboluşly medeniýetini, kynçylyklaryny we maksatlaryny düşünmekden başlaýarys.",
+      "understandBullet1": "Guramaçylyk taýdan giňişleýin baha bermek",
+      "understandBullet2": "Gyzyklanýan taraplar bilen söhbetdeşlikler",
+      "understandBullet3": "Maglumatlara esaslanýan seljerme",
+      "implement": "Ýerine ýetirmek",
+      "implementDescription": "Biziň hünärmenler toparymyz siziň aýratyn zerurlyklaryňyzy kanagatlandyrmak üçin niýetlenen HR strategiýalaryny we maksatnamalaryny amala aşyrýar.",
+      "implementBullet1": "HR çözgütleri",
+      "implementBullet2": "Üýtgeşmeleri dolandyrmak goldawy",
+      "implementBullet3": "Bar bolan ulgamlar bilen üznüksiz integrasiýa",
+      "optimize": "Optimizirlemek",
+      "optimizeDescription": "Biz yzygiderli kämilleşdirmegi we girdejililigi ýokarlandyrmak üçin HR prosesleriňizi yzygiderli ölçäp, kämilleşdirip we optimizirleýäris.",
+      "optimizeBullet1": "Yzygiderli iş netijeleriniň synlary",
+      "optimizeBullet2": "Üznüksiz pikir alyşma aýlawy",
+      "optimizeBullet3": "Netijelere esaslanýan strategik düzedişler",
+      "industriesWeServe": "Hyzmat edýän pudaklarymyz",
+      "industriesWeServeDescription": "Biziň HR boýunça tejribämiz dürli pudaklarda öz içine alýar, her biriniň özüne mahsus işçi güýjüniň kynçylyklary bar"
+    },
+    "submitResume": {
+      "step1Title": "Rezümeni ýükle",
+      "step1Description": "Karýera hekaýaňyzy paýlaşyň",
+      "step2Title": "AI analizi",
+      "step2Description": "Biz siziň başarnyklaryňyzy seljerýäris",
+      "step3Title": "Deňlikleri alyň",
+      "step3Description": "Kämil işleri tapyň",
+      "metricActiveJobs": "Aktiw iş orunlary",
+      "metricSuccessStories": "Üstünlik hekaýalary",
+      "metricTopCompanies": "Iň gowy kompaniýalar",
+      "metricMatchAccuracy": "Deňleşme Takyklygy",
+      "feature1Title": "Akylly AI deňleşdirmesi",
+      "feature1Description": "Siziň özboluşly karýera profiliňizi düşünýän we maksatlaryňyza doly laýyk gelýän mümkinçilikler bilen sizi utgaşdyrýan ösen algoritmler.",
+      "feature2Title": "Akylly iş tapmak",
+      "feature2Description": "Ýokary derejeli iş berijileriň we ajaýyp zehinleri gözleýän täze kompaniýalaryň eksklýuziw ulgamymyzdan gizlin mümkinçilikleri açyň.",
+      "feature3Title": "Real wagt bildirişleri",
+      "feature3Description": "Siziň şertleriňize laýyk gelýän täze iş orunlary peýda bolanda derrew duýduryş alyň. Arzuwyňyzdaky mümkinçiligi hiç haçan sypdyrmaň.",
+      "feature4Title": "Gizlinlik goragy",
+      "feature4Description": "Şahsy maglumatyňyz şifrlenen we howpsuz. Biz karýeraňyzy ösdürmäge kömek edip, şahsy durmuşyňyza hormat goýýarys."
+    },
+    "partnerRegister": {
+      "heroTitle1": "Karýeraňyzy başlaň",
+      "heroTitle2": "Türkiýede syýahat",
+      "heroSubtitle": "Türkiýede arzuwlaryndaky işlerini tapan ýüzlerçe hünärmene goşulyň. Biz wiza resmileşdirmesinden başlap, işe ýerleşdirmege çenli ähli zady edýäris - dalaşgärler üçin düýbünden mugt.",
+      "registerNow": "Häzir hasaba alyň - Mugt!",
+      "jobsPlaced": "Ýerleşdirilen iş orunlary",
+      "visaSuccessRate": "Wiza üstünliginiň derejesi",
+      "countriesServed": "Hyzmat edilen ýurtlar",
+      "freeToJoin": "Goşulmak mugt",
+      "forCandidates": "Kandidatlar üçin",
+      "whyWorkInTurkey": "Näme üçin Türkiýede işlemek gerek?",
+      "whyWorkInTurkeyDescription": "Türkiýäniň halkara hünärmenlerine hödürleýän ajaýyp mümkinçiliklerini we durmuşyny öwreniň.",
+      "howItWorks": "Nähili işleýär",
+      "howItWorksDescription": "Biziň ýönekeý 4 ädimli prosesimiz sizi Türkiýede işe girmek üçin arza tabşyrmakdan başlap alyp barýar.",
+      "whatWeProvide": "Biz nämeleri üpjün edýäris",
+      "whatWeProvideDescription": "Türkiýä üstünlikli karýera üçin gerek bolan ähli zatlar.",
+      "benefit1Title": "Mugt wiza işlemesi",
+      "benefit1Description": "Size mugt wiza we iş rugsatnamasy boýunça doly kömek",
+      "benefit2Title": "Ýaşaýyş jaý goldawy",
+      "benefit2Description": "Iş ýeriňiziň golaýynda amatly ýaşaýyş jaýyny tapmaga kömek ediň",
+      "benefit3Title": "Bäsdeşlikli aýlyklar",
+      "benefit3Description": "Türkiýäniň zähmet standartlaryna laýyklykda adalatly aýlyk haklary",
+      "benefit4Title": "Hukuk goragy",
+      "benefit4Description": "Doly hukuk goldawy we işçileriň hukuklaryny goramak",
+      "processStep1Title": "Doly profil",
+      "processStep1Description": "Jikme-jik arzaňyzy we resminamalaryňyzy tabşyryň",
+      "processStep2Title": "Işi deňeşdirmek",
+      "processStep2Description": "Biz sizi Türkiýede laýyk iş berijiler bilen ylalaşdyrýarys",
+      "processStep3Title": "Resminamalar",
+      "processStep3Description": "Biz ähli wiza arzalaryny taýýarlaýarys we tabşyrýarys",
+      "processStep4Title": "Türkiýä syýahat",
+      "processStep4Description": "Türkiýede täze karýera ýoluňyza başlaň",
+      "fact1Title": "Ösýän ykdysadyýet",
+      "fact1Fact": "JIÖ-niň ösüşi 5,6%",
+      "fact1Description": "Güýçli ykdysady ösüş täze iş orunlaryny döredýär",
+      "fact2Title": "Dürli işçi güýji",
+      "fact2Fact": "500 müňden gowrak daşary ýurtly",
+      "fact2Description": "Türkiýede işleýän uly halkara jemgyýeti",
+      "fact3Title": "Durmuşyň hili",
+      "fact3Fact": "Baý medeniýet",
+      "fact3Description": "Iş we durmuş deňagramlylygy ajaýyp bolan owadan ýurt",
+      "fact4Title": "Strategik ýerleşýän ýeri",
+      "fact4Fact": "Ýewropa we Aziýa",
+      "fact4Description": "Iki yklymy birleşdirýän ajaýyp ýer",
+      "createYourProfile": "Profiliňizi dörediň",
+      "createYourProfileDescription": "Türkiýede iň gowy iş mümkinçiliklerine laýyk gelmek üçin hasaba alnyşyňyzy tamamlaň. Bu düýbünden mugt!",
+      "personalInformation": "Şahsy maglumatlar",
+      "firstName": "Ady *",
+      "lastName": "Familiýa *",
+      "dateOfBirth": "Doglan senesi *",
+      "gender": "Jyns",
+      "nationality": "Milleti *",
+      "placeholderFirstName": "Adyňyzy giriziň",
+      "placeholderLastName": "Familiýaňyzy giriziň",
+      "placeholderNationality": "mysal üçin, Pakistanly, Bangladeşli",
+      "selectGender": "Jynsy saýlaň",
+      "male": "Erkek",
+      "female": "Aýal",
+      "other": "Başga",
+      "registrationSuccess": "Hasaba alyş üstünlikli tabşyryldy! Biz siziň profiliňizi gözden geçirip, 3-5 iş gününiň dowamynda mümkin bolan iş mümkinçilikleri bilen siziň bilen habarlaşarys.",
+      "placeholderCurrentCountry": "Häzirki wagtda nirede ýaşaýarsyňyz",
+      "placeholderCurrentCity": "Häzirki şäheriňiz",
+      "placeholderPhone": "+92 xxx xxx xxxx",
+      "selectStatus": "Status saýlaň",
+      "single": "Ýeke",
+      "married": "Öýlenen",
+      "divorced": "Aýrylyşan",
+      "widowed": "Dul galan",
+      "selectNumber": "Nomer saýlaň",
+      "children4Plus": "4 ýa-da ondan köp",
+      "placeholderJobTitle": "mysal üçin, Maşyn Operatory, Programma Üpjünçisi",
+      "industryExperience": "Senagat tejribesi",
+      "industryExperienceRequired": "Senagat tejribesi talap edilýär",
+      "selectIndustry": "Senagaty saýlaň",
+      "industryManufacturing": "Önümçilik",
+      "industryConstruction": "Gurluşyk",
+      "industryTechnology": "Tehnologiýa/IT",
+      "industryHealthcare": "Saglygy goraýyş",
+      "industryHospitality": "Myhmansöýerlik",
+      "industryEducation": "Bilim",
+      "industryAgriculture": "Oba hojalygy",
+      "industryLogistics": "Logistika/Transport",
+      "industryRetail": "Bölek söwda/Satuw",
+      "industrySecurity": "Howpsuzlyk",
+      "industryOther": "Başga",
+      "selectExperience": "Tejribäni saýlaň",
+      "experience0_1": "0-1 ýyl",
+      "experience1_3": "1-3 ýyl",
+      "experience3_5": "3-5 ýyl",
+      "experience5_10": "5-10 ýyl",
+      "experience10Plus": "10+ ýyl",
+      "placeholderSalary": "meselem, 500 $,, 000 50,000, € 1000",
+      "expectedSalary": "Garaşylýan aýlyk",
+      "selectSalaryRange": "Aýlyk hakynyň aralygyny saýlaň",
+      "salary17000_20000": "17,000 - 20,000 TL",
+      "salary20000_25000": "20,000 - 25,000 TL",
+      "salary25000_30000": "25,000 - 30,000 TL",
+      "salary30000_40000": "30,000 - 40,000 TL",
+      "salary40000Plus": "40,000+ TL",
+      "availabilityDate": "Elýeterlilik",
+      "selectAvailability": "Elýeterliligi saýlaň",
+      "availabilityImmediately": "Derrew",
+      "availability1Month": "1 aýyň içinde",
+      "availability2Months": "2 aýyň içinde",
+      "availability3Months": "3 aýyň içinde",
+      "availabilityFlexible": "Çeýe",
+      "educationLevel": "Bilim derejesi",
+      "educationLevelRequired": "Bilim derejesi talap edilýär",
+      "selectEducationLevel": "Bilim derejesini saýlaň",
+      "educationPrimary": "Başlangyç mekdep",
+      "educationSecondary": "Orta mekdep",
+      "educationHighSchool": "Orta mekdep",
+      "educationDiploma": "Diplom",
+      "educationBachelors": "Bakalawr derejesi",
+      "educationMasters": "Magistr derejesi",
+      "educationPhD": "Doktorlyk derejesi",
+      "educationOther": "Başga",
+      "skills": "Ukyplar",
+      "placeholderSkills": "mysal üçin, kebşirlemek, awtoulag sürmek, aşpezlik etmek",
+      "turkishLevel": "Türk derejesi",
+      "englishLevel": "Iňlis dili derejesi",
+      "selectLevel": "Derejäni saýlaň",
+      "levelBasic": "Esasy",
+      "levelIntermediate": "Orta derejeli",
+      "levelAdvanced": "Ösen",
+      "levelFluent": "Erkin gepleýän",
+      "passportNumber": "Pasport belgisi",
+      "placeholderPassport": "Pasport nomerini giriziň",
+      "motivation": "Motiwasiýa haty",
+      "placeholderMotivation": "Näme üçin Türkiýede işlemek isleýärsiňiz?",
+      "hearAboutUs": "Biz barada nädip eşitdiňiz?",
+      "selectHearAboutUs": "Opsiýany saýlaň",
+      "hearAboutGoogle": "Google",
+      "hearAboutFacebook": "Facebook",
+      "hearAboutFriend": "Dost/Ýollanma",
+      "hearAboutOther": "Başga",
+      "fieldOfStudy": "Okuw ugry",
+      "placeholderFieldOfStudy": "mysal üçin, Mehaniki Inženerçilik, Kompýuter Ylymlary",
+      "universityInstitution": "Uniwersitet/edara",
+      "placeholderUniversity": "Mekdebiňiziň/uniwersitetiňiziň ady",
+      "graduationYear": "Okuwy gutarýan ýyl",
+      "additionalCertifications": "Goşmaça güwänamalar",
+      "placeholderAdditionalCertifications": "Tamamlan islendik hünär güwänamalaryňyzy, kurslaryňyzy ýa-da okuwlaryňyzy sanap geçiň",
+      "skillsAndLanguages": "Ukyplar we Diller",
+      "professionalSkills": "Hünär başarnyklary",
+      "placeholderProfessionalSkills": "Esasy başarnyklaryňyzy, programma üpjünçiligi baradaky bilimleriňizi, maşyn tejribäňizi we ş.m. sanap geçiň.",
+      "languagesYouSpeak": "Siziň gepleýän dilleriňiz",
+      "turkishLanguageLevel": "Türk dili derejesi",
+      "englishLanguageLevel": "Iňlis dili derejesi",
+      "noTurkish": "Türkçe ýok",
+      "noEnglish": "Iňlis dili ýok",
+      "nativeFluent": "Ýerli/Erkin gepleýän",
+      "documentsAndLegal": "Resminamalar we hukuk maglumatlary",
+      "placeholderPassportNumber": "Pasport belgiňiz",
+      "passportExpiryDate": "Pasportyň möhleti gutarýar",
+      "criminalRecordStatus": "Jenaýatçylykly ýazgylaryň ýagdaýy",
+      "healthStatus": "Saglyk ýagdaýy",
+      "cleanRecord": "Arassa ýazgy",
+      "minorOffenses": "Kiçi jenaýatlar",
+      "preferNotToSay": "Aýtmazlygy makul bilýärin",
+      "excellent": "Ajaýyp",
+      "good": "Gowy",
+      "fair": "Adalatly",
+      "haveMedicalConditions": "Medisina şertleriňiz bar",
+      "hasWorkedAbroad": "Men öň daşary ýurtlarda işledim",
+      "relocationPreferences": "Göçüriş sazlamalary",
+      "relocationType": "Göçmegiň görnüşi",
+      "accommodationPreference": "Ýaşaýyş jaýynyň islegi",
+      "selectPreference": "Saýlamalary saýlaň",
+      "temporary": "Wagtlaýyn (1-2 ýyl)",
+      "longTerm": "Uzak möhletli (3-5 ýyl)",
+      "permanentRelocation": "Hemişelik göçüriş",
+      "flexible": "Çeýe",
+      "companyProvided": "Kompaniýa tarapyndan üpjün edildi",
+      "ownArrangement": "Öz tertipleme",
+      "sharedAccommodation": "Umumy ýaşaýyş jaýy",
+      "familyAccommodation": "Maşgala üçin ýerleşdirilen ýer",
+      "placeholderEmail": "your.email@example.com",
+      "children0": "0",
+      "children1": "1",
+      "children2": "2",
+      "children3": "3",
+      "placeholderGraduationYear": "2020"
+    },
+    "general": {
+      "jobsAdmireLogo": "JobsAdmire logotipi",
+      "selectLanguageAria": "Dil saýlaň",
+      "partnersSectionDescription": "Bize ynam bildiren hyzmatdaşlarymyza çuňňur minnetdar. Siziň ynamyňyz we berk goldawyňyz biziň umumy üstünligimiziň esasyny düzýär.",
+      "bannerImageAlt": "Banner suraty",
+      "profileAlt": "Profil",
+      "bannerAlt": "Banner suraty",
+      "noDataAvailable": "Maglumat elýeterli däl",
+      "whyChooseUsAlt": "Näme üçin bizi saýlaýarys",
+      "getStartedToday": "Şu gün başlaň",
+      "phone": "Telefon",
+      "email": "E-poçta",
+      "address": "Salgy",
+      "contact": "Aragatnaşyk",
+      "aboutMe": "Men barada",
+      "skills": "Ukyplar",
+      "achievements": "Üstünlikler",
+      "experience": "Tejribe",
+      "education": "Bilim",
+      "projects": "Taslamalar",
+      "references": "Salgylanmalar",
+      "contactMe": "Men bilen habarlaşyň",
+      "jobExperience": "Iş tejribesi",
+      "proSkills": "Hünär başarnyklary",
+      "resumeBuilder": "Rezüme gurujysy",
+      "chooseTemplate": "Şablon saýlaň",
+      "updateResume": "Özgeçmişiňizi täzeläň!",
+      "generatePdf": "PDF görnüşinde dörediň",
+      "generatingPdf": "Döredilýär...",
+      "ukFlagAlt": "Beýik Britaniýanyň baýdagy",
+      "pawAndHeartAria": "penje we ýürek",
+      "pawAndAustraliaAria": "penje we Awstraliýa",
+      "cropPreviewAlt": "Kesmegiň deslapky görnüşi",
+      "previewAlt": "Öňünden syn",
+      "removeReference": "Salgylanmany aýyr",
+      "selectSortOrder": "Tertipleme tertibini saýlaň"
+    },
+    "search": {
+      "degree": "Dereje",
+      "allDegrees": "Ähli derejeler",
+      "noDegreeFound": "Dereje tapylmady",
+      "university": "Uniwersitet",
+      "allUniversities": "Ähli uniwersitetler",
+      "loadingUniversities": "Uniwersitetler ýüklenýär...",
+      "noUniversityFound": "Uniwersitet tapylmady",
+      "program": "Programma",
+      "allPrograms": "Ähli programmalar",
+      "loadingPrograms": "Programmalar ýüklenýär...",
+      "pleaseSelectUniversity": "Uniwersitet saýlaň",
+      "noProgramFound": "Programma tapylmady",
+      "country": "Ýurt",
+      "allCountries": "Ähli ýurtlar",
+      "city": "Şäher",
+      "allCities": "Ähli şäherler",
+      "searchIn": "{{entityName}}-de gözläň"
+    },
+    "filters": {
+      "openFilter": "Filtri açyň",
+      "closeFilter": "Filtri ýap",
+      "sortBy": "Tertiplemek boýunça:",
+      "noFilters": "Filtr ýok",
+      "clear": "Arassa"
+    },
+    "performance": {
+      "stats": {
+        "jobFulfillment": "Işiň ýerine ýetirilmegi",
+        "sinceLastQuarter": "Geçen çärýekden bäri",
+        "branches": "Şahalar",
+        "acrossMajorCities": "Iri şäherleriň arasynda",
+        "yearsExperience": "Ýyllyk tejribe",
+        "industryExpertise": "Senagat tejribesi",
+        "happyClients": "Bagtly müşderiler",
+        "withSatisfaction": "98% kanagatlanma bilen"
+      },
+      "features": {
+        "targetedRecruitment": "Maksatly işe alyş",
+        "targetedRecruitmentDesc": "Kandidatlaryň iş talaplaryna takyk gabat gelmegi.",
+        "performanceTracking": "Iş netijelerini yzarlamak",
+        "performanceTrackingDesc": "Işe kabul etmegiň üstünligini ölçemek üçin ösen ölçegler.",
+        "qualityAssurance": "Hiliň kepilligi",
+        "qualityAssuranceDesc": "Tanyşdyrmazdan öň ähli dalaşgärleriň jikme-jik barlagdan geçirilmegi."
+      },
+      "growth": {
+        "trajectory": "ÖSÜŞ TRAÝEKTORIÝASY",
+        "title": "Ýyldan-ýyla yzygiderli ösüş",
+        "description": "Biziň ölçeglerimiz ähli esasy görkezijiler boýunça netijeliligiň yzygiderli ýokarlanýandygyny görkezýär. Biz öz gerimimizi giňeltmegimizi we hyzmatlarymyzy kämilleşdirmegi dowam etdirýäris."
+      },
+      "metrics": {
+        "title": "Netijelilik ölçegleri",
+        "subtitle": "Jikme-jik analitik wizualizasiýa",
+        "jobSuccessRate": "Işde üstünlik gazanmak derejesi",
+        "clientRetention": "Müşderi saklamak",
+        "candidateSatisfaction": "Kandidatlaryň kanagatlanmagy"
+      }
+    },
+    "jobs": {
+      "all": "Hemmesi",
+      "marketing": "Marketing",
+      "development": "Ösüş",
+      "fulltime": "Doly wagt",
+      "parttime": "Ýarym wagt",
+      "contract": "Şertnama",
+      "freelance": "Freelancer",
+      "seo": "SEO"
+    },
+    "blogDetail": {
+      "loadingBlog": "Blog ýüklenýär...",
+      "errorLoadingBlog": "Blogy ýüklemekde ýalňyşlyk",
+      "backToBlogs": "Bloglara gaýdyp barmak",
+      "blogNotFound": "Blog tapylmady",
+      "blogNotFoundMessage": "Gözleýän bloguňyz tapylmady.",
+      "save": "Sakla",
+      "share": "Paýlaş",
+      "linkCopied": "Baglanyşyk bufere göçürildi!",
+      "introduction": "Giriş",
+      "conclusion": "Netije",
+      "thankYouMessage": "Bu makalany okandygyňyz üçin sag boluň. Onuň maglumatly we gymmatly bolandygyny umyt edýäris.",
+      "writtenBy": "Ýazan:",
+      "publishedOn": "Neşir edilen senesi",
+      "tableOfContents": "Mazmuny",
+      "content": "Mazmun",
+      "stayUpdated": "Habardar boluň",
+      "newsletterDescription": "Iň soňky stipendiýa mümkinçiliklerini poçtaňyza alyň",
+      "subscribe": "Abuna ýazylyň",
+      "relatedArticles": "Baglanyşykly makalalar",
+      "moreArticlesAbout": "Hakda has köp makalalar",
+      "viewAllBlogPosts": "Ähli blog ýazgylaryny görkez",
+      "minRead": "iň az okalan"
+    }
+  }
+}

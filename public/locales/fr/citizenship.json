@@ -1,0 +1,194 @@
+{
+  "header": {
+    "badge": "Le premier cabinet de conseil en matière de citoyenneté en Turquie",
+    "title": {
+      "line1": "Débloquez votre",
+      "line2": "L'avenir de la Turquie"
+    },
+    "subtitle": "Transformez votre vie grâce à la citoyenneté turque. Des conseils d'experts, des résultats probants et un parcours sans encombre vers votre nouvelle nationalité.",
+    "buttons": {
+      "startJourney": "Commencez votre voyage",
+      "scheduleConsultation": "Planifier une consultation"
+    }
+  },
+  "form": {
+    "title": "Obtenez une consultation gratuite",
+    "fields": {
+      "name": {
+        "label": "Nom complet *",
+        "placeholder": "Votre nom complet"
+      },
+      "email": {
+        "label": "Courriel *",
+        "placeholder": "your.email@domain.com"
+      },
+      "phone": {
+        "label": "Téléphone",
+        "placeholder": "+1 (555) 000-0000"
+      },
+      "pathway": {
+        "label": "Voie d'accès privilégiée",
+        "placeholder": "Sélectionner une voie d'accès",
+        "options": {
+          "investment": "Parcours d'investissement"
+        }
+      },
+      "message": {
+        "label": "Parlez-nous de votre situation",
+        "placeholder": "Faites-nous part de vos objectifs, de votre calendrier et de vos questions spécifiques..."
+      }
+    },
+    "submitButton": "Obtenir une consultation gratuite",
+    "disclaimer": "Consultation gratuite - Réponse dans les 24 heures - Sans engagement"
+  },
+  "sections": {
+    "pathways": {
+      "title": "Parcours de citoyenneté",
+      "subtitle": "Plusieurs voies d'accès à la citoyenneté turque, chacune conçue pour des circonstances différentes",
+      "popularBadge": "Les plus populaires"
+    },
+    "benefits": {
+      "title": "Avantages de la citoyenneté turque",
+      "subtitle": "Débloquer un monde d'opportunités et de privilèges",
+      "items": [
+        "Voyage sans visa dans plus de 110 pays dans le monde",
+        "Droit illimité de vivre et de travailler en Turquie",
+        "Plein accès au système de santé turc",
+        "Des possibilités de formation de premier ordre",
+        "Droits de propriété illimités",
+        "Liberté totale de création d'entreprise",
+        "Candidature à l'UE Avantages de l'adhésion",
+        "La double nationalité est légalement autorisée"
+      ]
+    },
+    "process": {
+      "title": "Notre processus éprouvé",
+      "subtitle": "Un parcours simplifié et transparent vers la citoyenneté turque, avec des conseils d'experts à chaque étape",
+      "stepIndicator": "Étape {actuelle} de {total}"
+    },
+    "services": {
+      "title": "Nos services",
+      "subtitle": "Un soutien complet tout au long de votre parcours",
+      "items": [
+        {
+          "title": "Gestion complète de la demande",
+          "description": "Préparation et soumission de bout en bout"
+        },
+        {
+          "title": "Vérification des documents",
+          "description": "Services professionnels d'authentification"
+        },
+        {
+          "title": "Services de traduction",
+          "description": "Traduction certifiée et authentification"
+        },
+        {
+          "title": "Consultation juridique",
+          "description": "Conseils d'experts en matière d'immigration"
+        },
+        {
+          "title": "Aide à l'investissement",
+          "description": "Aide à la sélection des biens"
+        },
+        {
+          "title": "Liaison avec le gouvernement",
+          "description": "Communication directe avec l'autorité"
+        },
+        {
+          "title": "Suivi des candidatures",
+          "description": "Suivi des progrès en temps réel"
+        },
+        {
+          "title": "Soutien après l'obtention de la citoyenneté",
+          "description": "Poursuite de l'assistance après l'approbation"
+        }
+      ]
+    },
+    "contact": {
+      "title": "Prêt à commencer ?",
+      "subtitle": "Faites le premier pas vers la citoyenneté turque grâce à nos conseils d'experts. Évaluation gratuite, conseils personnalisés et tarifs transparents.",
+      "features": {
+        "consultation": "Consultation gratuite de 30 minutes",
+        "response": "Réponse dans les 24 heures",
+        "assessment": "Évaluation sans obligation"
+      },
+      "submitButton": "Commencez votre voyage"
+    }
+  },
+  "citizenshipTypes": {
+    "investment": {
+      "title": "Citoyenneté par l'investissement",
+      "description": "Accéder rapidement à la citoyenneté turque grâce à un investissement immobilier stratégique",
+      "requirements": [
+        "Investissement immobilier d'au moins 400 000",
+        "Conserver le bien pendant 3 ans",
+        "Casier judiciaire vierge",
+        "Couverture de l'assurance maladie"
+      ],
+      "timeframe": "3-6 mois"
+    },
+    "birth": {
+      "title": "Citoyenneté de naissance",
+      "description": "Revendiquer la nationalité turque grâce à un héritage familial documenté",
+      "requirements": [
+        "Parent(s) ou grands-parents turcs",
+        "Actes de naissance officiels",
+        "Preuve de l'ascendance turque",
+        "Documents d'identité valides"
+      ],
+      "timeframe": "2-4 mois"
+    },
+    "marriage": {
+      "title": "Citoyenneté par mariage",
+      "description": "Obtenir la citoyenneté par le mariage avec des citoyens turcs",
+      "requirements": [
+        "Mariage de plus de 3 ans avec un citoyen turc",
+        "Connaissance de base de la langue turque",
+        "Vérification des antécédents en matière de sécurité",
+        "Preuve de stabilité financière"
+      ],
+      "timeframe": "4-8 mois"
+    },
+    "naturalization": {
+      "title": "Naturalisation",
+      "description": "Obtenir la citoyenneté en s'engageant à résider à long terme",
+      "requirements": [
+        "Plus de 5 ans de résidence continue",
+        "Langue turque avancée",
+        "Casier judiciaire vierge",
+        "Preuve d'intégration économique"
+      ],
+      "timeframe": "6-12 mois"
+    }
+  },
+  "processSteps": {
+    "consultation": {
+      "title": "Consultation initiale",
+      "description": "Évaluation gratuite de l'éligibilité et recommandation de parcours",
+      "detail": "Évaluation par un expert de votre situation unique afin de déterminer la meilleure voie d'accès à la citoyenneté"
+    },
+    "documentation": {
+      "title": "Préparation des documents",
+      "description": "Collecte et vérification complètes de la documentation",
+      "detail": "Collecte complète de documents avec authentification et traduction professionnelles"
+    },
+    "filing": {
+      "title": "Dépôt de la demande",
+      "description": "Dépôt d'une demande officielle auprès du gouvernement",
+      "detail": "Soumission transparente aux autorités turques d'un dossier de demande complet"
+    },
+    "review": {
+      "title": "Examen de la transformation",
+      "description": "Examen par le gouvernement et vérification des antécédents",
+      "detail": "Processus d'examen approfondi avec suivi et mises à jour continus"
+    },
+    "approval": {
+      "title": "Approbation finale",
+      "description": "Approbation de la citoyenneté et programmation de la cérémonie",
+      "detail": "Achèvement de la procédure avec les documents officiels de citoyenneté"
+    }
+  },
+  "alerts": {
+    "thankYouMessage": "Nous vous remercions de votre demande ! Nous vous contacterons dans les 24 heures."
+  }
+}

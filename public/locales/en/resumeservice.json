@@ -1,0 +1,288 @@
+{
+    "resumeservice": {
+      "hero": {
+        "headline": {
+          "prefix": "Land Your",
+          "suffix": "With Expert Resume"
+        },
+        "animatedWords": [
+          "Dream Job",
+          "Career",
+          "Interview", 
+          "Position",
+          "Opportunity",
+          "Success"
+        ],
+        "description": "Professional resume writing services that get results. Our certified writers create ATS-optimized resumes that land interviews at top companies.",
+        "cta": {
+          "text": "Build Professional Resume"
+        }
+      },
+      "showcase": {
+        "title": "Professional Resume Services",
+        "subtitle": "Transform your career with expertly crafted resumes",
+        "features": [
+          {
+            "text": "ATS Optimized",
+            "color": "bg-green-500"
+          },
+          {
+            "text": "Expert Writers",
+            "color": "bg-blue-500"
+          },
+          {
+            "text": "Fast Delivery",
+            "color": "bg-purple-500"
+          },
+          {
+            "text": "Interview Ready",
+            "color": "bg-emerald-500"
+          }
+        ]
+      },
+      "expertSection": {
+        "headline": {
+          "start": "Connect with an",
+          "expert": "expert",
+          "who": "who",
+          "understands": "understands",
+          "your": "your",
+          "position": "position"
+        },
+        "description": "Knowing what recruiters want to see on your resume matters. We carefully select our experts from specialized HR talent pools and collaborate with organizations like the NRWA, ensuring your writer has as much industry knowledge as you do.",
+        "benefits": [
+          "Personalized consultation with industry experts",
+          "ATS-optimized resume formats",
+          "100% satisfaction guarantee"
+        ],
+        "processLink": {
+          "text": "Our process",
+          "description": "includes a personalized consultation to help us understand your career goals. By engaging with Resumeble's"
+        },
+        "serviceLink": {
+          "text": "professional resume writing service",
+          "description": "you can quickly stand out from the crowd."
+        },
+        "cta": {
+          "text": "Get Your Resume Now"
+        },
+        "image": {
+          "src": "/images/girl.png",
+          "alt": "Professional resume expert"
+        }
+      },
+      "serviceProcess": {
+        "title": {
+          "prefix": "How Our",
+          "highlight": "Professional Resume Service",
+          "suffix": "Works"
+        },
+        "cards": [
+          {
+            "iconKey": "search",
+            "title": "Beyond ATS keywords",
+            "description": "Getting your resume past automated HR systems is only step 1 of the process. At Resumeble, we write for the finish line, so decision makers - not just computers - can see you're a good fit. This is where our resume optimization for ATS really works to your advantage.",
+            "linkText": "Learn about ATS"
+          },
+          {
+            "iconKey": "fileText",
+            "title": "Individualized Approach",
+            "description": "Your resume deserves more than buzzwords and templates. At Resumeble, you'll work one-on-one with a resume writer and a sectoral expert to uncover the hidden, marketable skills you have today. We provide tailored resumes for different industries and specialize in resume writing help that brings out your unique value.",
+            "linkText": "Learn about hiring"
+          },
+          {
+            "iconKey": "checkCircle",
+            "title": "Interview & job guarantee",
+            "description": "98.4% of our clients land the interviews they want, so we're confident enough to offer interview and job guarantees. Whether you're seeking an online resume writing service or searching for a resume writing service near me, we're here until you get where you need to go.",
+            "linkText": "Learn about our guarantees"
+          }
+        ]
+      },
+      "instantChange": {
+        "headline": {
+          "prefix": "See an",
+          "instant": "instant change",
+          "middle": "in",
+          "highlight": "interest",
+          "suffix": "from employers"
+        },
+        "description": "If you are concerned that a career gap or lack of experience is forcing HR to dismiss your resume outright, work with our professional resume writing service — 98.4% of our clients have secured interviews and received job offers shortly after using our service. We'll help you address that gap in employment and highlight transferable skills that make you an attractive candidate. From resume and cover letter service options to affordable professional resume writing services, we've got everything covered.",
+        "expertBox": {
+          "title": "Our expert resume writers use:",
+          "features": [
+            {
+              "iconKey": "target",
+              "text": "A strategic approach to resume optimization for ATS"
+            },
+            {
+              "iconKey": "users",
+              "text": "Language that grabs the attention of recruiters, highlighting job-winning resume tips"
+            },
+            {
+              "iconKey": "award",
+              "text": "Content that prompts hiring managers to reach out — even if you're reentering the workforce"
+            }
+          ]
+        },
+        "cta": {
+          "text": "Read Our Success Stories"
+        },
+        "image": {
+          "src": "/images/t.png",
+          "alt": "Job Interview"
+        }
+      },
+      "comparison": {
+        "header": {
+          "badge": "Why choose Jobsadmire?",
+          "title": {
+            "prefix": "Here's how",
+            "highlight": "Jobsadmire stacks up",
+            "suffix": "against other resume writing services:"
+          },
+          "description": "We've analyzed the top services to show you why Jobsadmire stands out from the competition in quality, speed, and results. Whether you need a resume writing service with quick delivery or want to get hired faster with expert resume writing, we deliver outcomes that matter."
+        },
+        "theirWay": {
+          "title": "Their way:",
+          "items": [
+            {
+              "iconKey": "clock",
+              "text": "Up to 30 days for a draft"
+            },
+            {
+              "iconKey": "fileText",
+              "text": "Usually work from templates"
+            },
+            {
+              "iconKey": "x",
+              "text": "Try to beat ATS with buzzwords"
+            },
+            {
+              "iconKey": "x",
+              "text": "Copy & paste job descriptions"
+            },
+            {
+              "iconKey": "x",
+              "text": "Resistant to feedback"
+            },
+            {
+              "iconKey": "x",
+              "text": "AI-generated writing"
+            },
+            {
+              "iconKey": "x",
+              "text": "Charge extra for bonus collateral"
+            }
+          ],
+          "result": {
+            "title": "The Result?",
+            "description": "Longer job search, fewer interviews, and generic resumes that fail to stand out."
+          }
+        },
+        "ourWay": {
+          "badge": "Recommended",
+          "title": "The Jobsadmire way:",
+          "items": [
+            {
+              "iconKey": "zap",
+              "text": "Get your first draft in",
+              "highlight": "4 days",
+              "postText": ""
+            },
+            {
+              "iconKey": "award",
+              "text": "Totally",
+              "highlight": "unique",
+              "postText": "and never templatized"
+            },
+            {
+              "iconKey": "star",
+              "text": "ATS naturally",
+              "highlight": "Beats",
+              "postText": ""
+            },
+            {
+              "iconKey": "users",
+              "text": "True experts in",
+              "highlight": "80+ industries",
+              "postText": ""
+            },
+            {
+              "iconKey": "check",
+              "text": "Get the final say on",
+              "highlight": "all",
+              "postText": "edits"
+            },
+            {
+              "iconKey": "shield",
+              "text": "Real",
+              "highlight": "human",
+              "postText": "writers"
+            },
+            {
+              "iconKey": "fileText",
+              "text": "included",
+              "highlight": "Cover letters & profiles",
+              "postText": ""
+            }
+          ],
+          "result": {
+            "title": "The Result?",
+            "description": "Faster job placement, higher interview rates, and a resume that truly showcases your unique value."
+          }
+        }
+      },
+      "hrSection": {
+        "headline": {
+          "prefix": "Our resume writers",
+          "understand": "understand",
+          "what": "what",
+          "hrManagers": "HR managers",
+          "in": "in",
+          "sectors": "over 80 sectors",
+          "lookFor": "look for,",
+          "enabling": "enabling them to fast-track applications",
+          "from": "from",
+          "atsApproved": "\"ATS-approved\"",
+          "to": "to",
+          "interviewBooked": "\"interview booked.\""
+        },
+        "description": "They stay updated with the latest industry trends and hiring practices to ensure your resume meets the highest standards. You can trust our resume writing service to craft a compelling, tailored resume that highlights your strengths and sets you apart from the competition.",
+        "resumeSections": [
+          {
+            "position": "right",
+            "type": "positive",
+            "comment": "HR wants to see this!"
+          },
+          {
+            "position": "left",
+            "type": "positive",
+            "comment": "Yes - this is 100% worth mentioning"
+          },
+          {
+            "position": "right",
+            "type": "negative",
+            "comment": "This is not relevant for senior IT roles"
+          },
+          {
+            "position": "left",
+            "type": "negative",
+            "comment": "Re-wrote this part to capture your personality"
+          },
+          {
+            "position": "right",
+            "type": "positive",
+            "comment": "ATS will pick this up instantly"
+          },
+          {
+            "position": "left",
+            "type": "positive",
+            "comment": "Decision makers look for this word!"
+          }
+        ],
+        "cta": {
+          "text": "Get Your Resume Now"
+        }
+      }
+    }
+  }

@@ -1,0 +1,173 @@
+{
+  "header": {
+    "badge": "راهکار شماره ۱ تامین نیروی انسانی در ترکیه",
+    "title_prefix": "نیروی باکیفیت جذب کنید",
+    "title_suffix": "برای کسب‌وکار خود",
+    "description": "برای کارکنان ارزیابی‌شده و آماده به کار با JobsAdmire شریک شوید. ما جذب، ویزا و تمام اسناد قانونی را بر عهده می‌گیریم.",
+    "contact_button": "تماس",
+    "heroImageAlt": "Business professionals"
+  },
+  "form": {
+    "title": "ثبت‌نام شریک",
+    "subtitle": "شرکت خود را ثبت کنید تا جذب نیروی باکیفیت را آغاز کنید. تیم ما ظرف ۲۴ ساعت با شما تماس می‌گیرد.",
+    "company_info": {
+      "title": "اطلاعات شرکت",
+      "company_name": "نام شرکت *",
+      "company_name_placeholder": "نام شرکت خود را وارد کنید",
+      "company_name_error": "نام شرکت الزامی است",
+      "company_type": "نوع شرکت *",
+      "company_type_placeholder": "نوع شرکت را انتخاب کنید",
+      "company_type_error": "نوع شرکت الزامی است",
+      "types": {
+        "corporation": "شرکت سهامی (A.Ş.)",
+        "limited_company": "شرکت با مسئولیت محدود (Ltd.)",
+        "partnership": "شراکت",
+        "sole_proprietorship": "مالکیت انفرادی",
+        "branch_office": "شعبه",
+        "other": "سایر"
+      },
+      "industry_type": "نوع صنعت *",
+      "industry_type_placeholder": "صنعت را انتخاب کنید",
+      "industry_type_error": "نوع صنعت الزامی است",
+      "industries": {
+        "manufacturing": "کارخانه",
+        "construction": "کشاورزی",
+        "technology": "گردشگری",
+        "healthcare": "ساخت و ساز",
+        "other": "سایر"
+      },
+      "established_year": "سال تأسیس",
+      "established_year_placeholder": "2020"
+    },
+    "contact_info": {
+      "title": "اطلاعات تماس",
+      "contact_person": "شخص تماس *",
+      "contact_person_placeholder": "نام و نام خانوادگی",
+      "contact_person_error": "شخص تماس الزامی است",
+      "position": "سمت/عنوان",
+      "position_placeholder": "مدیر منابع انسانی، مدیرعامل، و غیره",
+      "email": "آدرس ایمیل *",
+      "email_placeholder": "company@example.com",
+      "email_required": "ایمیل الزامی است",
+      "email_invalid": "ایمیل نامعتبر است",
+      "phone": "شماره تلفن *",
+      "phone_placeholder": "+98 xxx xxx xx xx",
+      "phone_required": "شماره تلفن الزامی است",
+      "company_address": "آدرس شرکت",
+      "company_address_placeholder": "آدرس کامل محل کسب‌وکار",
+      "city": "شهر *",
+      "city_placeholder": "استانبول، آنکارا، و...",
+      "city_required": "شهر الزامی است",
+      "province": "استان *",
+      "province_placeholder": "استان را انتخاب کنید",
+      "province_required": "استان الزامی است",
+      "provinces": {
+        "istanbul": "Istanbul",
+        "ankara": "Ankara",
+        "izmir": "Izmir",
+        "bursa": "Bursa",
+        "antalya": "Antalya",
+        "adana": "Adana",
+        "konya": "Konya",
+        "gaziantep": "Gaziantep",
+        "kayseri": "Kayseri",
+        "other": "سایر"
+      },
+      "postal_code": "کد پستی",
+      "postal_code_placeholder": "34000",
+      "website": "وب‌سایت شرکت",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "legal_info": {
+      "title": "جزئیات حقوقی و ثبت",
+      "tax_number": "شماره مالیاتی *",
+      "tax_number_placeholder": "شماره مالیاتی را وارد کنید",
+      "tax_number_error": "شماره مالیاتی الزامی است",
+      "trade_registry_number": "شماره ثبت تجاری",
+      "trade_registry_number_placeholder": "شماره ثبت تجاری را وارد کنید"
+    },
+    "staffing_requirements": {
+      "title": "نیازهای نیروی انسانی",
+      "specific_job_positions": "عناوین شغلی مشخص",
+      "specific_job_positions_placeholder": "مثلاً: اپراتور دستگاه، جوشکار، توسعه‌دهنده نرم‌افزار و...",
+      "salary_range": "بازه حقوق (ماهانه)",
+      "salary_range_placeholder": "22,000TL-25,000TL",
+      "preferred_nationalities": "ملیت‌های ترجیحی",
+      "preferred_nationalities_placeholder": "مثلاً: فرقی ندارد، پاکستان، بنگلادش، اوکراین و...",
+      "language_requirements": "الزامات زبانی",
+      "language_requirements_placeholder": "نیاز زبانی را انتخاب کنید",
+      "languages": {
+        "none": "نیاز خاصی نیست",
+        "basic_turkish": "ترکی استانبولی پایه",
+        "intermediate_turkish": "ترکی استانبولی متوسط",
+        "fluent_turkish": "ترکی استانبولی روان",
+        "english": "انگلیسی الزامی است",
+        "turkish_english": "ترکی استانبولی + انگلیسی"
+      },
+      "work_experience": "سابقه کار موردنیاز",
+      "work_experience_placeholder": "سطح تجربه را انتخاب کنید",
+      "experience_levels": {
+        "entry_level": "سطح مبتدی (۰–۱ سال)",
+        "junior": "جونیور (۱–۳ سال)",
+        "mid_level": "میانی (۳–۵ سال)",
+        "senior": "ارشد (۵+ سال)",
+        "expert": "متخصص (۱۰+ سال)"
+      },
+      "additional_requirements": "الزامات اضافی یا یادداشت‌ها",
+      "additional_requirements_placeholder": "هر مهارت خاص، گواهینامه یا سایر الزامات برای موقعیت‌ها..."
+    },
+    "company_description": {
+      "title": "درباره شرکت شما",
+      "label": "توضیحات شرکت",
+      "placeholder": "درباره شرکت، فعالیت‌ها، محیط کاری، فرهنگ سازمانی و این‌که چرا کارکنان باید به تیم شما بپیوندند برای ما بنویسید..."
+    },
+    "legal_agreements": {
+      "title": "توافق‌نامه‌های قانونی",
+      "agree_terms_prefix": "با",
+      "terms_link": "شرایط و ضوابط",
+      "agree_terms_suffix": "موافقم و متوجه تعهدات قانونی برای استخدام از طریق JobsAdmire هستم. *",
+      "terms_error": "باید با شرایط و ضوابط موافقت کنید",
+      "agree_privacy_prefix": "تأیید می‌کنم که",
+      "privacy_link": "سیاست حریم خصوصی",
+      "agree_privacy_suffix": "را خوانده و پذیرفته‌ام و با پردازش داده‌های شرکت برای خدمات جذب موافقم. *",
+      "privacy_error": "باید با سیاست حریم خصوصی موافقت کنید"
+    },
+    "submit": {
+      "button": "ارسال درخواست",
+      "submitting": "در حال ارسال...",
+      "success_message": "ثبت‌نام با موفقیت ارسال شد! تیم ما ظرف ۲۴ ساعت برای بررسی نیازهای استخدامی با شما تماس خواهد گرفت.",
+      "footer_message": "تیم ما درخواست شما را بررسی کرده و ظرف ۲۴ ساعت برای بررسی نیازهای نیروی انسانی با شما تماس خواهد گرفت."
+    }
+  },
+  "industries_served": {
+    "title": "صنایعی که پوشش می‌دهیم",
+    "subtitle": "ما در تمام صنایع اصلی ترکیه نیروی کار ماهر تأمین می‌کنیم",
+    "items": {
+      "factory": {
+        "name": "کارخانه",
+        "desc": "تولید و ساخت"
+      },
+      "agriculture": {
+        "name": "کشاورزی",
+        "desc": "زراعت و کشت"
+      },
+      "tourism": {
+        "name": "گردشگری",
+        "desc": "میهمان‌داری و خدمات"
+      },
+      "construction": {
+        "name": "ساخت و ساز",
+        "desc": "ساختمان و زیرساخت"
+      }
+    }
+  },
+  "support": {
+    "title": "به کمک نیاز دارید؟",
+    "description": "تیم اختصاصی ما آماده است تا به شما در یافتن نیروی مناسب برای کسب‌وکارتان کمک کند. ما از جذب تا استقرار کارکنان، پشتیبانی کامل ارائه می‌دهیم.",
+    "email": "info@jobsadmire.com",
+    "phone": "+90 501 124 03 40",
+    "support_24_7": "پشتیبانی 24/7",
+    "business_hours": "ساعات کاری: دوشنبه تا جمعه، 9:00 تا 18:00 (به وقت ترکیه)",
+    "response_time": "در ساعات کاری ظرف 2 ساعت پاسخ می‌دهیم"
+  }
+}

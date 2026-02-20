@@ -1,0 +1,253 @@
+{
+    "globaljob": {
+      "hero": {
+        "headline": {
+          "prefix": "Find Your",
+          "suffix": "Abroad"
+        },
+        "animatedWords": [
+          "Dream Job",
+          "Career",
+          "Opportunity", 
+          "Position",
+          "Future",
+          "Success"
+        ],
+        "description": "Connect with top global employers through our international job placement services. From personalized job matching to visa support - we make your global career dreams reality.",
+        "cta": {
+          "text": "Find Global Opportunities"
+        }
+      },
+      "showcase": {
+        "title": "Global Job Placement",
+        "subtitle": "Your gateway to international career opportunities",
+        "worldMap": {
+          "countries": "200+ Countries",
+          "description": "Global job opportunities waiting for you"
+        },
+        "benefits": [
+          {
+            "iconKey": "briefcase",
+            "title": "Job Matching",
+            "description": "Perfect role finder",
+            "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+          },
+          {
+            "iconKey": "users",
+            "title": "Visa Support",
+            "description": "Complete assistance",
+            "gradient": "bg-gradient-to-r from-blue-500 to-sky-600"
+          },
+          {
+            "iconKey": "mapPin",
+            "title": "Relocation",
+            "description": "Smooth transition",
+            "gradient": "bg-gradient-to-r from-purple-500 to-indigo-600"
+          },
+          {
+            "iconKey": "externalLink",
+            "title": "Network",
+            "description": "Global connections",
+            "gradient": "bg-gradient-to-r from-orange-500 to-red-600"
+          }
+        ]
+      },
+      "section": {
+        "header": {
+          "badge": "TRUSTED BY COMPANIES WORLDWIDE",
+          "title": {
+            "prefix": "Global Job",
+            "highlight": "Placement"
+          },
+          "description": "It's time for you to make an impactful impression on employers with a professionally designed resume. We tailor each resume to align with your goals and the expectations of your desired industry, increasing your chances of success with global recruitment services."
+        },
+        "journey": {
+          "title": "Your Professional Journey Starts Here",
+          "features": [
+            {
+              "title": "Personalized Resume Crafting",
+              "description": "A CV is not just your work history. We tailor each resume to highlight your transferable skills and align with industry expectations—especially for abroad jobs for professionals."
+            },
+            {
+              "title": "Global Employer Connections",
+              "description": "Our vast network of top global companies hiring international talent ensures your skills are matched with international career opportunities that match your aspirations."
+            },
+            {
+              "title": "Career Advancement Support",
+              "description": "We don't just help you land a job – we partner with you to build a career path that grows with your skills and aspirations, offering step-by-step support to get a job abroad."
+            }
+          ],
+          "cta": {
+            "text": "Explore Our Services"
+          }
+        },
+        "testimonials": {
+          "title": "Success Stories",
+          "reviews": [
+            {
+              "comment": "\"We struggled to find skilled workers until we partnered with Jobs Admire. Their platform provided us with reliable candidates who fit our needs perfectly.\"",
+              "name": "Mehmet K.",
+              "role": "Business Owner",
+              "initials": "MK"
+            },
+            {
+              "comment": "\"Jobs Admire helped me find a stable job in a well-known factory. The process was smooth, and their team guided me at every step. Now I have a secure income!\"",
+              "name": "Ahmed R.",
+              "role": "Placement Recipient",
+              "initials": "AR"
+            }
+          ]
+        },
+        "contact": {
+          "title": "Let's Connect",
+          "subtitle": "Take the first step toward your global career",
+          "form": {
+            "name": {
+              "label": "Your Name*",
+              "placeholder": "Enter your name"
+            },
+            "email": {
+              "label": "Email Address*",
+              "placeholder": "Enter your email address"
+            },
+            "message": {
+              "label": "Message*",
+              "placeholder": "Enter your message"
+            },
+            "submit": "Submit"
+          }
+        }
+      },
+      "careerHorizons": {
+        "header": {
+          "badge": "Global Career Solutions",
+          "title": {
+            "prefix": "Expanding Your",
+            "highlight": "Career Horizons"
+          },
+          "description": "Finding the right job in a competitive global market can be challenging. At JobsAdmire, we connect talented professionals with worldwide employment opportunities, helping you secure rewarding roles that align with your skills, experience, and career goals. Whether you're from Pakistan, India, or the Philippines, our global job placement from Pakistan and other regions gives every professional a fair chance to succeed."
+        },
+        "worldMap": {
+          "title": "Global Network",
+          "locations": [
+            { "id": 1, "name": "New York", "color": "#3B82F6", "size": 6, "delay": 0 },
+            { "id": 2, "name": "London", "color": "#10B981", "size": 8, "delay": 2 },
+            { "id": 3, "name": "Tokyo", "color": "#8B5CF6", "size": 7, "delay": 1 },
+            { "id": 4, "name": "Singapore", "color": "#F59E0B", "size": 6, "delay": 3 },
+            { "id": 5, "name": "Sydney", "color": "#EF4444", "size": 7, "delay": 4 },
+            { "id": 6, "name": "Berlin", "color": "#6366F1", "size": 5, "delay": 5 }
+          ]
+        },
+        "hiring": {
+          "title": {
+            "prefix": "Seamless Hiring,",
+            "highlight": "Anywhere in the World"
+          },
+          "description": "Whether you're seeking employment in a new country or advancing within your industry, our overseas job consultancy services provide expert guidance, international workforce placement, and tailored job search strategies.",
+          "benefits": [
+            {
+              "iconKey": "fileText",
+              "title": "Resume optimization",
+              "description": "Tailored for local markets with industry-specific keywords to ensure success in jobs for international candidates."
+            },
+            {
+              "iconKey": "mic",
+              "title": "Interview preparation",
+              "description": "Coaching sessions with cultural insights for your target location to stand out in international job placement for professionals."
+            },
+            {
+              "iconKey": "globe",
+              "title": "Visa assistance",
+              "description": "Expert guidance through the visa and relocation process to secure work abroad opportunities for Filipinos, Indians, and Pakistani professionals."
+            }
+          ],
+          "fastTrack": {
+            "title": "Fast-Track Process",
+            "description": "Our streamlined approach ensures you can transition to your new role quickly and efficiently."
+          },
+          "cta": {
+            "text": "Explore Our Services"
+          }
+        },
+        "features": {
+          "title": "What Sets Us Apart",
+          "subtitle": "Our comprehensive approach ensures you have all the support you need throughout your career journey",
+          "items": [
+            {
+              "iconKey": "target",
+              "title": "Personalized Strategy",
+              "description": "Customized career roadmap based on your unique goals and the job placement abroad for skilled workers.",
+              "color": "text-[#38B6FF]"
+            },
+            {
+              "iconKey": "barChart4",
+              "title": "Industry Insights",
+              "description": "Expert knowledge of market trends and skills in demand helps us deliver global hiring solutions.",
+              "color": "text-[#38B6FF]"
+            },
+            {
+              "iconKey": "trendingUp",
+              "title": "Global Connections",
+              "description": "Access to an extensive network of international employers looking for professionals just like you.",
+              "color": "text-[#38B6FF]"
+            }
+          ]
+        },
+        "jobSeekers": {
+          "title": "For Job Seekers",
+          "premiumService": "Premium Service",
+          "learnMore": "Learn More About",
+          "services": [
+            {
+              "id": 0,
+              "iconKey": "user",
+              "title": "Career Guidance",
+              "description": "Our professionals are here to advise you on how to find a job overseas and support your international career journey.",
+              "color": "text-[#38B6FF]",
+              "bgColor": "bg-emerald-50",
+              "borderColor": "border-[#38B6FF]",
+              "gradientFrom": "from-emerald-50",
+              "gradientTo": "to-[#38B6FF]0",
+              "accentColor": "bg-[#38B6FF]"
+            },
+            {
+              "id": 1,
+              "iconKey": "fileText",
+              "title": "Resume Building",
+              "description": "Our specialists will help you create an eye-catching resume that stands out to employers through our work abroad job assistance.",
+              "color": "text-[#38B6FF]",
+              "bgColor": "bg-blue-50",
+              "borderColor": "border-[#38B6FF]",
+              "gradientFrom": "from-blue-50",
+              "gradientTo": "to-[#38B6FF]",
+              "accentColor": "bg-[#38B6FF]"
+            },
+            {
+              "id": 2,
+              "iconKey": "search",
+              "title": "Assessment",
+              "description": "We evaluate your qualifications and match you with the top global jobs for international candidates.",
+              "color": "text-[#38B6FF]",
+              "bgColor": "bg-indigo-50",
+              "borderColor": "border-[#38B6FF]",
+              "gradientFrom": "from-indigo-50",
+              "gradientTo": "to-[#38B6FF]",
+              "accentColor": "bg-[#38B6FF]"
+            },
+            {
+              "id": 3,
+              "iconKey": "mic",
+              "title": "Interview Preparation",
+              "description": "Our professionals will train you for every type of interview to ensure you succeed and stand out in international job placement programs.",
+              "color": "text-[#38B6FF]",
+              "bgColor": "bg-purple-50",
+              "borderColor": "border-[#38B6FF]",
+              "gradientFrom": "from-[#38B6FF]",
+              "gradientTo": "to-[#38B6FF]",
+              "accentColor": "bg-purple-500"
+            }
+          ]
+        }
+      }
+    }
+  }

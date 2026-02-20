@@ -1,0 +1,374 @@
+{
+  "skilldevelopment": {
+    "hero": {
+      "badge": "Hünär başarnyklaryny ösdürmek boýunça okuw",
+      "headline": {
+        "prefix": "Özüňizi ösdüriň",
+        "suffix": "Ertirki iş üçin"
+      },
+      "animatedWords": [
+        "Ukyplar",
+        "Hünärmenlik",
+        "Bilim",
+        "Ukyplar",
+        "Talantlar",
+        "Ussatlyk"
+      ],
+      "description": "Işe gönükdirilen okuw maksatnamalarymyz we hünär kämilleşdiriş kurslarymyz amaly we isleg bildirilýän başarnyklary hödürleýär. Hünärmenleriň ýolbaşçylygyndaky başarnyklary ösdürmek boýunça sapaklar sizi şu günki bäsdeşlikli iş bazarynda üstünlik gazanmaga taýýarlaýar.",
+      "cta": {
+        "text": "Okuw maksatnamalaryny öwreniň"
+      }
+    },
+    "showcase": {
+      "title": "Ukyplary ösdürmek",
+      "subtitle": "Ertirki başarnyklaryňyzy şu gün ösdüriň",
+      "learning": {
+        "title": "Interaktiw öwrenmek",
+        "subtitle": "Hünärmenleriň ýolbaşçylygynda amaly okuw"
+      },
+      "categories": [
+        {
+          "icon": "Kod",
+          "title": "Tehniki başarnyklar",
+          "description": "Programmirleme we IT",
+          "gradient": "asman-500-den-blue-600-e bg-gradient-dan-r-a"
+        },
+        {
+          "icon": "Çyra",
+          "title": "Döredijilik",
+          "description": "Dizayn we media",
+          "gradient": "bg-gradient-dan-r-a-purple-500-den-indigo-600-a"
+        },
+        {
+          "icon": "Nyşana",
+          "title": "Biznes",
+          "description": "Menejment we maliýe",
+          "gradient": "bg-gradient-to-r from-zumrud-500 to-temiz-600"
+        },
+        {
+          "icon": "TrenddeUp",
+          "title": "Ýumşak başarnyklar",
+          "description": "Aragatnaşyk we Liderlik",
+          "gradient": "bg-gradient-to-r-a-apelsin-500-den-gyzyl-600-e"
+        }
+      ],
+      "stats": [
+        {
+          "label": "Okuw maksatnamalary",
+          "color": "tekst-sky-600",
+          "value": "150+"
+        },
+        {
+          "label": "Okuwçylar taýýarlandy",
+          "color": "tekst-gök-600",
+          "value": "5000+"
+        },
+        {
+          "label": "Işe ýerleşdirmek",
+          "color": "tekst-indigo-600",
+          "value": "90%"
+        }
+      ]
+    }
+  },
+  "skilldevpage": {
+    "hero": {
+      "badge": "HÜNÄR UKYPLARYNY ÖSDÜRMEK",
+      "title": {
+        "prefix": "Näme üçin bizi saýlaýarys",
+        "highlight": "Ukyplary ösdürmek maksatnamalary?"
+      },
+      "description": "Işe taýýar bolmak üçin niýetlenen pudaga degişli okuw maksatnamalary bilen karýeraňyzy özgerdiň. Biziň giňişleýin başarnyklary ösdürmek kurslarymyz arkaly karýerasyny ösdüren müňlerçe hünärmene goşulyň.",
+      "cta": {
+        "primary": "Okuw maksatnamalaryny öwreniň",
+        "secondary": "Maslahat beriş tertibini düzüň"
+      }
+    },
+    "stats": [
+      {
+        "label": "Okuw maksatnamalary",
+        "icon": "Kitap Açyk",
+        "value": "500+"
+      },
+      {
+        "value": "15 müň+",
+        "label": "Okuwçylar taýýarlandy",
+        "icon": "Ulanyjylar"
+      },
+      {
+        "label": "Işe ýerleşdirme derejesi",
+        "icon": "TrenddeUp",
+        "value": "95%"
+      },
+      {
+        "label": "Senagat hyzmatdaşlary",
+        "icon": "Bina",
+        "value": "200+"
+      }
+    ],
+    "benefits": {
+      "title": {
+        "prefix": "Programmalarymyzy näme döredýär",
+        "highlight": "Ajaýyp"
+      },
+      "description": "Biziň toplumlaýyn çemeleşmämiz hakyky dünýä programmalary bilen iň gowy okuw tejribesini almagyňyzy üpjün edýär",
+      "items": [
+        {
+          "icon": "Bina",
+          "title": "Pudaga degişli okuw maksatnamasy",
+          "description": "Pudak hünärmenleri we iş berijiler bilen hyzmatdaşlykda işlenip düzülen okuw modullary isleg bildirilýän başarnyk okuw maksatnamalary arkaly iň degişli we döwrebap başarnyklary almagyňyzy üpjün edýär.",
+          "color": "tekst-[#38B6FF]",
+          "bgColor": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Ulanyjylar",
+          "title": "Tejribeli tälimçiler we mentorlar",
+          "description": "Karýera ösüş üçin okuw berýän, öz ugurlarynda hakyky dünýä tejribesi bolan hünärli mugallymlardan öwreniň.",
+          "color": "tekst-zumrud-600",
+          "bgColor": "bg-zumrud-50"
+        },
+        {
+          "icon": "Nyşana",
+          "title": "Amaly öwrenmek",
+          "description": "Biz diňe bir tälim almagyň çäksiz, eýsem zerur ýumşak başarnyklara we tehniki okuwa ygarar ýaly, amaly, taslama esasly öwrenmäge üns berýäris.",
+          "color": "tekst-gyrmyzy-600",
+          "bgColor": "bg-purple-50"
+        },
+        {
+          "icon": "Sagat",
+          "title": "Çeýe öwrenmek mümkinçilikleri",
+          "description": "Onlaýn, ýüzbe-ýüz ýa-da gibrid — isleg bildirilýän başarnyklar üçin onlaýn we oflaýn okuw sapaklary üçin öz tertibiňize we öwrenmek usulyňyza iň laýyk gelýän usuly saýlaň.",
+          "color": "tekst-mämişi-600",
+          "bgColor": "bg-apelsin-50"
+        },
+        {
+          "icon": "Portfel",
+          "title": "Karýera goldawy",
+          "description": "Iş ýerine taýýarlyk okuwy we karýera kämilleşdiriş seminarlarymyzyň bir bölegi hökmünde rezýume düzmek, iş gözlemek strategiýalary we söhbetdeşlige taýýarlyk görmek boýunça görkezmeleri alyň.",
+          "color": "tekst-indigo-600",
+          "bgColor": "bg-indigo-50"
+        }
+      ]
+    },
+    "trainingAreas": {
+      "title": {
+        "prefix": "Okuw meýdançalary",
+        "highlight": "Biz örtük"
+      },
+      "description": "Biziň maksatnamalarymyz dürli karýera isleglerini kanagatlandyrmak üçin ýokary isleg bildirilýän ugurlaryň giň toplumyny öz içine alýar",
+      "programLabel": "Hünärmen taýýarlaýyş maksatnamasy",
+      "skillsLabel": "Öwrenjek esasy başarnyklaryňyz:",
+      "highlightsLabel": "Programmanyň esasy aýratynlyklary:",
+      "enrollButton": "Hasaba alyn",
+      "programText": "Programma",
+      "highlights": [
+        "Senagatda ykrar edilen sertifikat",
+        "Amaly taslama portfeli",
+        "Karýera ýerleşmekde kömek",
+        "Çeýe okuw tertibi"
+      ],
+      "items": [
+        {
+          "title": "Maglumat tehnologiýalary (IT) we programma üpjünçiligini işläp düzmek",
+          "description": "Sanly başarnyklary taýýarlamak başlangyçlarymyz tarapyndan goldanylýan programmirleme dilleri, web işläp düzmek, maglumat ylmy, programma işläp düzmek, kiberhowpsuzlyk we başgalar.",
+          "icon": "Kod",
+          "color": "tekst-[#38B6FF]",
+          "bgColor": "bg-[#38B6FF]/10",
+          "accentColor": "bg-[#38B6FF]",
+          "skills": {
+            "0": "Python",
+            "1": "JavaScript",
+            "2": "Reaksiýa bildirmek",
+            "3": "Maglumat ylmy",
+            "4": "Kiberhowpsuzlyk",
+            "5": "Bulut Hasaplama"
+          },
+          "id": 0
+        },
+        {
+          "title": "Sanly marketing",
+          "description": "SEO, sosial media marketingi, e-poçta marketingi, mazmun döretmek, Google Ads we analitika.",
+          "icon": "TrenddeUp",
+          "color": "tekst-zumrud-600",
+          "bgColor": "bg-zumrud-50",
+          "accentColor": "bg-zumrud-600",
+          "skills": {
+            "0": "SEO",
+            "1": "Sosial media",
+            "2": "Google Reklamalary",
+            "3": "Kontent marketingi",
+            "4": "Analitika",
+            "5": "E-poçta marketingi"
+          },
+          "id": 1
+        },
+        {
+          "title": "Biznes we telekeçilik",
+          "description": "Biznes meýilnamalaşdyryş, taslama dolandyryşy, liderlik we maliýe sowatlylygy.",
+          "icon": "Bina",
+          "color": "tekst-gyrmyzy-600",
+          "bgColor": "bg-purple-50",
+          "accentColor": "bg-purple-600",
+          "skills": {
+            "0": "Biznes meýilnamalaşdyryş",
+            "1": "Taslama dolandyryşy",
+            "2": "Liderlik",
+            "3": "Maliýe sowatlylygy",
+            "4": "Strategiýa",
+            "5": "Operasiýalar"
+          },
+          "id": 2
+        },
+        {
+          "title": "Aragatnaşyk we ýumşak başarnyklar",
+          "description": "Jemgyýetçilik öňünde çykyş etmek, professional ýazuw, toparlaýyn iş, emosional intellekt we iş ýerindäki etiket.",
+          "icon": "MessageSquare",
+          "color": "tekst-mämişi-600",
+          "bgColor": "bg-apelsin-50",
+          "accentColor": "bg-apelsin-600",
+          "skills": {
+            "0": "Jemgyýetçilik öňünde çykyş etmek",
+            "1": "Professional ýazuw",
+            "2": "Topar işi",
+            "3": "Duýgusal intellekt",
+            "4": "Liderlik",
+            "5": "Gepleşikler"
+          },
+          "id": 3
+        },
+        {
+          "title": "Hünär we tehniki başarnyklar",
+          "description": "Mehaniki, elektrik we kompýuter kömegi bilen dizaýn (CAD) ýaly hünärler we amaly hünärler.",
+          "icon": "Galkan",
+          "color": "tekst-indigo-600",
+          "bgColor": "bg-indigo-50",
+          "accentColor": "bg-indigo-600",
+          "skills": {
+            "0": "Mehaniki inženerçilik",
+            "1": "Elektrik ulgamlary",
+            "2": "CAD dizaýny",
+            "3": "Önümçilik",
+            "4": "Hiliň gözegçiligi",
+            "5": "Howpsuzlyk standartlary"
+          },
+          "id": 4
+        }
+      ]
+    },
+    "targetAudience": {
+      "title": "Kim goşulyp biler?",
+      "description": "Biziň maksatnamalarymyz dürli karýera tapgyrlarynda dürli okuwçylar üçin niýetlenendir",
+      "items": [
+        {
+          "title": "Soňky uçurymlar",
+          "description": "Pakistanda täze gutardyş okuwçylary üçin hünär derejesini ýokarlandyrmak maksatnamalary gözlenilýär",
+          "icon": "Bitiriş Kap",
+          "color": "tekst-[#38B6FF]"
+        },
+        {
+          "title": "Işleýän hünärmenler",
+          "description": "Ukyp boşluklaryny seljermek we hünär derejesini ýokarlandyrmak arkaly iş başarnyklaryny ýa-da geçiş karýeralaryny kämilleşdirmäge çalyşmak",
+          "icon": "Portfel",
+          "color": "tekst-zumrud-600"
+        },
+        {
+          "title": "Telekeçiler",
+          "description": "Biznes bilimine we telekeçilik başarnyklaryna mätäçlik",
+          "icon": "Çyra",
+          "color": "tekst-gyrmyzy-600"
+        },
+        {
+          "title": "Iş gözleýänler",
+          "description": "Iş gözleýänler üçin elýeterli karýera okuw maksatnamalary arkaly bäsdeşlik artykmaçlygyna ymtylmak",
+          "icon": "Nyşana",
+          "color": "tekst-mämişi-600"
+        },
+        {
+          "title": "Guramalar",
+          "description": "Işgärlerini korporatiw başarnyk okuw sapaklary bilen öwretmek isleýärler",
+          "icon": "Bina",
+          "color": "tekst-indigo-600"
+        }
+      ]
+    },
+    "approach": {
+      "title": {
+        "prefix": "Biziň",
+        "highlight": "Öwrenmek usuly"
+      },
+      "description": "JobsAdmire-de biz üstünligi üpjün etmek üçin niýetlenen öwrenjä gönükdirilen we netijä gönükdirilen okuw modelini yzarlaýarys.",
+      "points": [
+        {
+          "title": "Gatnaşyk",
+          "description": "Okuwçylaryň işjeň gatnaşmagyny üpjün edýän interaktiw sapaklar",
+          "icon": "Ulanyjylar"
+        },
+        {
+          "title": "Baha beriş",
+          "description": "Ösüşi ölçemek üçin wiktorinalar we hakyky dünýä taslamalary",
+          "icon": "BarChart3"
+        },
+        {
+          "title": "Baha beriş",
+          "description": "Tassyklamak üçin sertifikatlar we amaly synaglar",
+          "icon": "Sylag"
+        },
+        {
+          "title": "Baglanyşyk",
+          "description": "Hakyky tejribe üçin iş mümkinçilikleri we stažýorlyk",
+          "icon": "Globus"
+        }
+      ]
+    },
+    "certification": {
+      "title": {
+        "prefix": "Sertifikatlaşdyrma",
+        "suffix": "Ýerleşdiriş kömegi"
+      },
+      "description": "Okuwy üstünlikli tamamlandan soň, gatnaşyjylar öz rezýumelerini kämilleşdirmek üçin ykrar edilen sertifikatlary alýarlar. Öňdebaryjy kompaniýalar we iş platformalary bilen hyzmatdaşlygymyz bize işe ýerleşdirmekde kömek bermäge, okuwçylary hakyky iş mümkinçilikleri bilen baglanyşdyrmaga mümkinçilik berýär.",
+      "features": [
+        "Senagatda ykrar edilen sertifikatlar",
+        "Hünär taýdan ösüş üçin iň gowy başarnyklary ösdürmek kurslary",
+        "Pakistanda başarnyklary ösdürmek boýunça okuwlar",
+        "Pakistanly ýaşlar üçin iş tälimi"
+      ],
+      "cta": "Sertifikatlaşdyrma programmalaryna serediň"
+    },
+    "form": {
+      "title": "Şu gün başlaň",
+      "fields": {
+        "name": "Doly ady",
+        "email": "E-poçta salgysy",
+        "training": "Gyzyklanýan okuw zolagy"
+      },
+      "placeholders": {
+        "name": "Doly adyňyzy giriziň",
+        "email": "E-poçtaňyzy giriziň",
+        "training": "Türgenleşik zolagyny saýlaň"
+      },
+      "options": [
+        {
+          "value": "ony",
+          "label": "IT we programma üpjünçiligini işläp düzmek"
+        },
+        {
+          "value": "marketing",
+          "label": "Sanly marketing"
+        },
+        {
+          "value": "iş",
+          "label": "Biznes we telekeçilik"
+        },
+        {
+          "value": "aragatnaşyk",
+          "label": "Aragatnaşyk we ýumşak başarnyklar"
+        },
+        {
+          "value": "tehniki",
+          "label": "Hünär we tehniki başarnyklar"
+        }
+      ],
+      "submit": "Maglumat soraň"
+    }
+  }
+}

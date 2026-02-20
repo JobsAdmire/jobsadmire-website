@@ -1,0 +1,91 @@
+{
+  "contact": {
+    "brand": {
+      "name": "JobsAdmire",
+      "title": "Simulan natin ang iyong paglalakbay nang magkasama",
+      "description": "Nasasabik kaming tulungan kang makamit ang iyong mga layunin sa karera. Makipag-ugnayan sa amin at gawin ang unang hakbang."
+    },
+    "contactInfo": [
+      {
+        "label": "Mga Kumpanya ng Kandidato at HR",
+        "value": "+90 501 124 03 40"
+      },
+      {
+        "label": "Tagapagbigay ng Trabaho",
+        "value": "+90 553 383 2549"
+      },
+      {
+        "label": "Mag-email sa amin sa",
+        "value": "info@jobsadmire.com"
+      },
+      {
+        "label": "Bisitahin ang aming opisina",
+        "value": "Antalya, Turkey"
+      },
+      {
+        "label": "Mga oras ng negosyo",
+        "value": "Lunes-Biyernes, 9:00 AM - 6:00 PM"
+      }
+    ],
+    "form": {
+      "progress": {
+        "step1": "Personal na Impormasyon",
+        "step2": "Mensahe"
+      },
+      "step1": {
+        "title": "Makipag-ugnayan",
+        "subtitle": "Simulan natin ang isang usapan"
+      },
+      "step2": {
+        "title": "Sabihin sa amin ang higit pa",
+        "subtitle": "Nandito kami para makinig"
+      },
+      "fields": {
+        "name": {
+          "label": "Ang Iyong Pangalan",
+          "placeholder": "Ang iyong pangalan"
+        },
+        "email": {
+          "label": "Email Address",
+          "placeholder": "Email address"
+        },
+        "phone": {
+          "label": "Numero ng Telepono",
+          "placeholder": "Numero ng telepono"
+        },
+        "subject": {
+          "label": "Paksa",
+          "placeholder": "Paksa"
+        },
+        "message": {
+          "label": "Ang Iyong Mensahe",
+          "placeholder": "Ang iyong mensahe"
+        }
+      },
+      "validation": {
+        "nameRequired": "Kinakailangan ang pangalan",
+        "nameMinLength": "Dapat ay hindi bababa sa 2 karakter ang pangalan",
+        "emailRequired": "Kinakailangan ang email",
+        "emailInvalid": "Mangyaring maglagay ng wastong email address",
+        "phoneInvalid": "Mangyaring maglagay ng wastong numero ng telepono",
+        "subjectRequired": "Kinakailangan ang paksa",
+        "subjectMinLength": "Ang paksa ay dapat na hindi bababa sa 3 karakter",
+        "messageRequired": "Kinakailangan ang mensahe",
+        "messageMinLength": "Ang mensahe ay dapat na hindi bababa sa 10 karakter"
+      },
+      "buttons": {
+        "continue": "Magpatuloy",
+        "back": "Balik",
+        "send": "Ipadala",
+        "sending": "Nagpapadala..."
+      },
+      "notification": "Aabisuhan ka namin kapag nasuri na namin ang iyong mensahe."
+    },
+    "success": {
+      "title": "Salamat!",
+      "message": "Matagumpay na naipadala ang iyong mensahe.",
+      "followUp": "Babalikan ka namin sa lalong madaling panahon.",
+      "sendAnother": "Magpadala ng Isa Pang Mensahe"
+    }
+  }
+}

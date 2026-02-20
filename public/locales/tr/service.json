@@ -1,0 +1,204 @@
+{
+  "header": {
+    "title": "Hizmetlerimiz",
+    "subtitle": "Kapsamlı kariyer hizmetlerimiz aracılığıyla profesyonelleri dünya çapındaki fırsatlarla buluşturmak"
+  },
+  "viewSelector": {
+    "grid": "Izgara",
+    "masonry": "Duvarcılık",
+    "carousel": "Atlıkarınca"
+  },
+  "card": {
+    "viewPage": "Sayfa Görüntüle",
+    "viewDetails": "Detayları Görüntüle"
+  },
+  "carousel": {
+    "previousSlide": "Önceki slayt",
+    "nextSlide": "Sonraki slayt",
+    "goToSlide": "Slayta git"
+  },
+  "modal": {
+    "close": "Kapat",
+    "overview": "Genel Bakış",
+    "keyFeatures": "Temel Özellikler",
+    "technologies": "Teknolojileri",
+    "visitServicePage": "Hizmet Sayfasını Ziyaret Edin",
+    "stats": {
+      "projects": "Projeler",
+      "satisfaction": "Memnuniyet",
+      "support": "Destek"
+    }
+  },
+  "services": {
+    "resumeService": {
+      "title": "Özgeçmiş Hizmeti",
+      "description": "Madde işaretleri oluşturmaktan otomatik biçimlendirmeye kadar, özgeçmiş oluşturucumuz hızlı ve zahmetsizce profesyonel bir özgeçmiş hazırlamanıza yardımcı olacaktır.",
+      "longDesc": "Profesyonel özgeçmiş yazma hizmetimiz, iş arayanların benzersiz niteliklerini vurgulayan ve mülakat fırsatlarını artıran etkili, ATS dostu özgeçmişler oluşturmalarına yardımcı olur. Her özgeçmişi belirli sektörlere ve pozisyonlara göre uyarlıyoruz.",
+      "features": [
+        "ATS Optimizasyonu",
+        "Sektöre Özel Formatlar",
+        "Anahtar Kelime Geliştirme",
+        "Profesyonel İnceleme"
+      ],
+      "technologies": [
+        "Özgeçmiş Şablonları",
+        "ATS Araçları",
+        "Tasarım Yazılımı",
+        "İçerik Stratejisi"
+      ]
+    },
+    "globalJobPlacement": {
+      "title": "Küresel İşe Yerleştirme",
+      "description": "Kişiselleştirilmiş iş eşleştirmeden vize desteğine kadar, profesyonelleri dünyanın dört bir yanındaki en iyi işverenlerle sorunsuz ve verimli bir şekilde buluşturuyoruz.",
+      "longDesc": "Küresel işe yerleştirme hizmetimiz, yetenekli profesyonelleri uluslararası kariyer fırsatlarıyla buluşturarak iş eşleştirmeden taşınma lojistiğine ve kültürel hazırlığa kadar her şeyi ele alır.",
+      "features": [
+        "İşveren Ortaklıkları",
+        "Vize Yardımı",
+        "Yer Değiştirme Desteği",
+        "Mülakat Hazırlığı"
+      ],
+      "technologies": [
+        "İş Eşleştirme Algoritması",
+        "Küresel Veritabanı",
+        "Vize İşlemleri",
+        "Yer Değiştirme Araçları"
+      ]
+    },
+    "interviewCoaching": {
+      "title": "Mülakat Koçluğu",
+      "description": "Sahte mülakatlardan kişiselleştirilmiş geri bildirimlere kadar kapsamlı mülakat koçluğumuz, profesyonellerin hayallerindeki işlere güvenle girmelerine yardımcı olur.",
+      "longDesc": "Mülakat koçluğumuz, özelleştirilmiş uygulama oturumları, ayrıntılı geri bildirimler ve belirli rollere ve sektörlere göre uyarlanmış stratejilerle adayları her mülakat formatında başarılı olmaya hazırlar.",
+      "features": [
+        "Sahte Mülakatlar",
+        "Sektöre Özel Eğitim",
+        "Beden Dili Koçluğu",
+        "Soru Hazırlama"
+      ],
+      "technologies": [
+        "Video Analizi",
+        "Yapay Zeka Geri Bildirimi",
+        "Mülakat Simülasyonu",
+        "Kişisel Koçluk"
+      ]
+    },
+    "careerCounselling": {
+      "title": "Kariyer Danışmanlığı",
+      "description": "Kariyer değerlendirmelerinden kişiselleştirilmiş gelişim planlarına kadar kapsamlı danışmanlığımız, profesyonellerin mükemmel yollarını güvenle bulmalarına yardımcı olur.",
+      "longDesc": "Kariyer danışmanlığı hizmetimiz, her aşamadaki profesyonellerin güçlü yönlerini belirlemelerine, uygun kariyer yollarını keşfetmelerine ve profesyonel hedeflerine ulaşmak için uygulanabilir planlar geliştirmelerine yardımcı olur.",
+      "features": [
+        "Kariyer Değerlendirmesi",
+        "Güç Analizi",
+        "Hedef Belirleme",
+        "Sektör İçgörüleri"
+      ],
+      "technologies": [
+        "Kişilik Testleri",
+        "Beceri Değerlendirmesi",
+        "Kariyer Haritalama",
+        "Kalkınma Planlaması"
+      ]
+    },
+    "visaRelocation": {
+      "title": "Vize ve Yer Değiştirme",
+      "description": "Vize başvurularından yeni evinize yerleşmeye kadar kapsamlı taşınma hizmetlerimiz yeni bir ülkeye güvenle geçiş yapmanıza yardımcı olur.",
+      "longDesc": "Vize ve yer değiştirme hizmetlerimiz, belgelerin hazırlanmasından kalacak yer bulmaya ve yeni ortamınıza yerleşmeye kadar tüm göçmenlik süreci boyunca kapsamlı destek sağlar.",
+      "features": [
+        "Vize Başvurusu",
+        "Belge Hazırlama",
+        "Konut Yardımı",
+        "Yerel Entegrasyon"
+      ],
+      "technologies": [
+        "Göçmenlik Veritabanı",
+        "Belge Yönetimi",
+        "Konut Ağı",
+        "Yer Değiştirme Planlaması"
+      ]
+    },
+    "skillDevelopment": {
+      "title": "Beceri Geliştirme",
+      "description": "Yeni başlayanlar için atölye çalışmalarından uzman sertifikasyonuna kadar, beceri geliştirme programlarımız profesyonellerin yarının fırsatları için talep edilen becerilerde uzmanlaşmalarını sağlar.",
+      "longDesc": "Beceri geliştirme programlarımız, kariyer ilerlemesini artırmak için özelleştirilmiş öğrenme yolları, pratik projeler ve sertifika hazırlığı ile yüksek talep gören becerilerde hedefli eğitim sunar.",
+      "features": [
+        "Özelleştirilmiş Öğrenme",
+        "Uygulamalı Projeler",
+        "Sertifikasyon Hazırlığı",
+        "Uzman Mentorluk"
+      ],
+      "technologies": [
+        "E-Öğrenim Platformu",
+        "Proje Simülasyonu",
+        "Değerlendirme Araçları",
+        "Sertifika Programları"
+      ]
+    },
+    "remoteWorkOpportunities": {
+      "title": "Uzaktan Çalışma Olanakları",
+      "description": "Uzaktan iş eşleştirmeden ev ofis kurulum rehberliğine kadar, profesyonellerin özel çözümlerle sanal işyerinde gelişmelerine yardımcı oluyoruz.",
+      "longDesc": "Uzaktan çalışma hizmetimiz, profesyonelleri kaliteli uzaktan çalışma pozisyonlarıyla buluşturma, sanal çalışma araçları konusunda rehberlik sağlama ve verimli ev ofis ortamları oluşturmaya yardımcı olma konusunda uzmanlaşmıştır.",
+      "features": [
+        "Uzaktan İş Eşleştirme",
+        "Sanal İşbirliği",
+        "Ev Ofis Kurulumu",
+        "İş-Yaşam Dengesi"
+      ],
+      "technologies": [
+        "Uzaktan İş Platformu",
+        "Sanal Araçlar",
+        "Üretkenlik Yazılımı",
+        "Dijital İletişim"
+      ]
+    },
+    "talentAcquisition": {
+      "title": "Yetenek Kazanımı",
+      "description": "İdeal adayların belirlenmesinden sorunsuz işe alıma kadar, yetenek edinme platformumuz kuruluşların verimli bir şekilde yüksek performanslı ekipler oluşturmasına yardımcı olur.",
+      "longDesc": "Yetenek kazanımı hizmetimiz, özelleştirilmiş işe alım stratejileri, aday değerlendirmesi ve verimli işe alım süreçleri ile kuruluşların en iyi yetenekleri belirlemelerine, çekmelerine ve elde tutmalarına yardımcı olur.",
+      "features": [
+        "Hedefli İşe Alım",
+        "Aday Tarama",
+        "Beceri Değerlendirmesi",
+        "İşe Alım Desteği"
+      ],
+      "technologies": [
+        "ATS Platformu",
+        "Değerlendirme Araçları",
+        "Mülakat Yönetimi",
+        "Onboarding Sistemi"
+      ]
+    },
+    "immigration": {
+      "title": "Göçmenlik",
+      "description": "Uzman göçmenlik danışmanlarımız, vize başvurularından kalıcı oturma iznine kadar sürecin her adımında kişiselleştirilmiş destekle size rehberlik edecektir.",
+      "longDesc": "Göçmenlik danışmanlarımız, tüm göçmenlik yollarında uzman rehberlik sağlar, karmaşık belgeleri ele alır, başvuru hazırlığı yapar ve göçmenlik yolculuğunuz boyunca sürekli destek sunar.",
+      "features": [
+        "Vize Değerlendirmesi",
+        "Başvuru Hazırlığı",
+        "Yasal Destek",
+        "Durum Takibi"
+      ],
+      "technologies": [
+        "Göçmenlik Veritabanı",
+        "Belge Doğrulama",
+        "Uygulama Yönetimi",
+        "Yasal Kaynaklar"
+      ]
+    },
+    "jobRecruitment": {
+      "title": "İşe Alım",
+      "description": "Aday bulmadan nihai yerleştirmeye kadar kapsamlı işe alım hizmetlerimiz, işletmelerin küresel olarak en iyi yetenekleri hassas ve verimli bir şekilde bulmalarına yardımcı olur.",
+      "longDesc": "İşe alım hizmetimiz, mükemmel eşleşmeleri sağlamak için gelişmiş tarama süreçlerini ve küresel yetenek ağlarını kullanarak işverenleri çeşitli sektörlerdeki nitelikli adaylarla buluşturmada uzmanlaşmıştır.",
+      "features": [
+        "Küresel Yetenek Temini",
+        "İleri Düzey Tarama",
+        "Sektör Uzmanlığı",
+        "Hızlı Yerleştirme"
+      ],
+      "technologies": [
+        "İşe Alım Platformu",
+        "Aday Veritabanı",
+        "Tarama Araçları",
+        "Eşleştirme Algoritması"
+      ]
+    }
+  }
+}

@@ -1,0 +1,2067 @@
+{
+  "heroSection": {
+    "badge": "Eksklýuziw Syýahatlar",
+    "title": "Indiki başdan geçirmeleriňizi açyň",
+    "description": "Islegleriňize laýyk gelýän ýokary hilli syýahat paketlerimiz bilen ajaýyp ýerleri başdan geçiriň we ýatdan çykmajak ýatlamalary dörediň.",
+    "currentlyViewing": "Häzirki wagtda görkezilýär",
+    "featuredAlt": "Görkezilen ýer",
+    "destinationCounter": "Barmaly ýer {häzirki}/{jemi}",
+    "controlsAria": "{index} barmaly ýere git",
+    "buttons": {
+      "explore": "Häzir öwren",
+      "viewAll": "Ähli ugurlary görkez"
+    },
+    "destinations": [
+      {
+        "img": "/images/Sidney.png",
+        "name": "Sidneý",
+        "country": "Awstraliýa"
+      },
+      {
+        "img": "/images/Melbourne.png",
+        "name": "Melburn",
+        "country": "Awstraliýa"
+      },
+      {
+        "img": "/images/Brisbane.png",
+        "name": "Brisben",
+        "country": "Awstraliýa"
+      },
+      {
+        "img": "/images/Pert.png",
+        "name": "Pert",
+        "country": "Awstraliýa"
+      },
+      {
+        "img": "/images/Adelaide.png",
+        "name": "Adelaida",
+        "country": "Awstraliýa"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableOfContents": {
+    "header": {
+      "title": "Mazmuny",
+      "subtitle": "Bölümler boýunça gezelenç"
+    },
+    "status": {
+      "currentlyReading": "Häzirki wagtda okaýar"
+    },
+    "footer": {
+      "sectionsCount": "Öwrenilmeli {count} bölüm"
+    },
+    "accessibility": {
+      "toggleMenu": "Nawigasiýa menýusyny aç/ýap"
+    },
+    "sections": [
+      {
+        "title": "Türkiýe barada faktlar",
+        "id": 1
+      },
+      {
+        "title": "Türkiýä göçmek üçin wiza mümkinçilikleri",
+        "id": 2
+      },
+      {
+        "title": "Türkiýä göçmek üçin talaplar",
+        "id": 3
+      },
+      {
+        "title": "Türkiýede daşary ýurtly hökmünde işe girmek",
+        "id": 4
+      },
+      {
+        "title": "ABŞ-dan Türkiýä göçmek",
+        "id": 5
+      },
+      {
+        "title": "Beýik Britaniýadan Türkiýä göçmek",
+        "id": 6
+      },
+      {
+        "title": "Türkiýä göçmegiň bahasy näçe?",
+        "id": 7
+      },
+      {
+        "title": "Öý haýwanlary bilen Türkiýä göçmek",
+        "id": 8
+      }
+    ]
+  },
+  "australiaFacts": {
+    "description": "Ajaýyp landşafty, haýwanat dünýäsi we medeni dürlüligi bilen tanalýan özboluşly yklym-ýurt bolan Awstraliýanyň haýran galdyryjy aýratynlyklaryny öwreniň.",
+    "navigation": {
+      "title": "Faktlary öwreniň",
+      "previous": "Öňki fakt",
+      "next": "Indiki fakt"
+    },
+    "allFacts": {
+      "title": "Awstraliýa barada ähli maglumatlar"
+    },
+    "accessibility": {
+      "factButton": "{title} baradaky fakty görkez",
+      "previousFact": "Öňki fakta geç",
+      "nextFact": "Indiki fakta geç"
+    },
+    "facts": [
+      {
+        "title": "Ada materigi",
+        "description": "Awstraliýa hem ýurt, hem-de yklymdyr — gury ýer meýdany boýunça dünýäde altynjy orunda durýan ýurt.",
+        "emoji": "🌏",
+        "id": 1
+      },
+      {
+        "title": "Özboluşly haýwanat dünýäsi",
+        "description": "Ol başga hiç ýerde duş gelmeýän haýwanlaryň, meselem, kengurularyň, koalalaryň we ördek guşlaryň öýi.",
+        "emoji": "🦘",
+        "id": 2
+      },
+      {
+        "title": "Beýik Barýer Rifi",
+        "description": "Kwinslend kenarynda ýerleşýän bu ýer dünýäde iň uly mercan rif ulgamy bolup, kosmosdan hem görünýär.",
+        "emoji": "🌊",
+        "id": 3
+      },
+      {
+        "title": "Köp medeniýetli ilat",
+        "description": "Awstraliýalylaryň 30% -den gowragy daşary ýurtlarda doguldy, bu bolsa ony dünýäniň iň köp dürli ýurtlarynyň birine öwürdi.",
+        "emoji": "🌍",
+        "id": 4
+      },
+      {
+        "title": "Resmi dil ýok",
+        "description": "Iňlis dili de-fakto dil bolsa-da, Awstraliýanyň kanun boýunça resmi dili ýok.",
+        "emoji": "🗣️",
+        "id": 5
+      }
+    ],
+    "statistics": {
+      "title": "Awstraliýa sanlar boýunça",
+      "items": [
+        {
+          "icon": "📏",
+          "label": "Umumy meýdan",
+          "value": "7,7 million km²",
+          "description": "Dünýäniň 6-njy iň uly ýurdy"
+        },
+        {
+          "icon": "👥",
+          "label": "Ilat",
+          "value": "25,7 million",
+          "description": "2023-nji ýyldan başlap"
+        },
+        {
+          "icon": "🏙️",
+          "label": "Paýtagt",
+          "value": "Kanberra",
+          "description": "Sidneý ýa-da Melburn däl!"
+        },
+        {
+          "icon": "💰",
+          "label": "Walýuta",
+          "value": "Awstraliýa dollary",
+          "description": "AUD"
+        },
+        {
+          "icon": "🕐",
+          "label": "Wagt zolaklary",
+          "value": "3 esasy zolak",
+          "description": "AWST, ACST, AEST"
+        },
+        {
+          "icon": "🗺️",
+          "label": "Ştatlar we territoriýalar",
+          "value": "Jemi 8",
+          "description": "6 ştat + 2 territoriýa"
+        }
+      ]
+    },
+    "didYouKnow": {
+      "title": "Bilýärdiňizmi?",
+      "items": [
+        "Awstraliýada beýleki ýurtlara garanyňda zäherli ýylanlaryň görnüşleri has köp",
+        "Beýik Barýer Rifi 1500-den gowrak balyk görnüşiniň öýidir",
+        "Melburn Kanberradan öň, 1901-1927-nji ýyllar aralygynda Awstraliýanyň paýtagty bolupdyr",
+        "Awstraliýa, şol bir wagtyň özünde materik bolan ýeke-täk ýurtdur",
+        "Ýurtda 10,000-den gowrak kenar bar - siz 27 ýylyň dowamynda her gün olaryň birine baryp bilersiňiz!",
+        "Awstraliýa Saud Arabystanyna düýe eksport edýär (Awstraliýada 1 milliondan gowrak ýabany düýe bar)"
+      ]
+    }
+  },
+  "movingCosts": {
+    "description": "Awstraliýa göçmegiň umumy bahasy ýagdaýyňyza baglylykda üýtgeýär, ýöne aşak göçüp baranyňyzda duçar boljak çykdajylaryňyzyň umumy beýany şu ýerde.",
+    "costSections": [
+      {
+        "id": "uçuşlar",
+        "icon": "✈️",
+        "title": "Uçuşlar",
+        "amount": "800–2000 ABŞ dollary",
+        "details": "Gelip çykyşyna we möwsümine baglylykda bir taraply, ekonom klass",
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "wiza tölegleri",
+        "icon": "🛂",
+        "title": "Wiza tölegleri",
+        "amount": "$710–$8,850 AUD",
+        "details": "Wiza görnüşine baglylykda dürli-dürli bolýar",
+        "color": "bg-sky-600",
+        "subItems": {
+          "0": {
+            "title": "Hünärmen wizasy",
+            "amount": "4000–4500 AUD dollary"
+          },
+          "1": {
+            "title": "Hyzmatdaş wizasy",
+            "amount": "8,850 AUD dollary"
+          },
+          "2": {
+            "title": "Talyp wizasy",
+            "amount": "710 AUD dollar"
+          },
+          "3": {
+            "title": "Iş dynç alyş wizasy",
+            "amount": "495 AUD dollar"
+          }
+        }
+      },
+      {
+        "id": "iberiş",
+        "icon": "📦",
+        "title": "Ýük daşamak üçin zatlar",
+        "amount": "2000–7000 ABŞ dollary",
+        "details": "Konteýneriň ululygyna we aralygyna baglylykda",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "ýaşaýyş jaýy",
+        "icon": "🏠",
+        "title": "Ilkinji ýaşaýyş jaýy",
+        "amount": "1500–3000 AUD dollary",
+        "details": "Kiçi kwartira üçin girew tölegi + 1 aýlyk kireý tölegi",
+        "color": "bg-sky-500",
+        "subItems": {
+          "0": {
+            "title": "Sidneý/Melburn (aýlyk)",
+            "amount": "1800–2500 AUD dollary"
+          },
+          "1": {
+            "title": "Brisben/Pert (aýlyk)",
+            "amount": "1500–2000 AUD dollary"
+          },
+          "2": {
+            "title": "Sebitleýin sebitler (aýlyk)",
+            "amount": "1000–1500 AUD dollary"
+          }
+        }
+      },
+      {
+        "id": "beýleki çykdajylar",
+        "icon": "🧾",
+        "title": "Başga çykdajylar",
+        "amount": "500–1500 ABŞ dollary",
+        "details": "Saglyk barlaglary, ätiýaçlandyryş, resminamalaryň terjimesi we ş.m.",
+        "color": "bg-sky-600",
+        "subItems": {
+          "0": {
+            "title": "Saglyk ätiýaçlandyrmasy",
+            "amount": "Aýda 100–200 AUD"
+          },
+          "1": {
+            "title": "Dokument terjimesi",
+            "amount": "50–200 AUD dollar"
+          },
+          "2": {
+            "title": "Ulag gurluşy",
+            "amount": "200–500 AUD dollar"
+          },
+          "3": {
+            "title": "Ilkinji azyk önümleri we üpjünçilik serişdeleri",
+            "amount": "200–400 AUD dollar"
+          }
+        }
+      }
+    ],
+    "totalCost": {
+      "title": "Çaklanylýan jemi (Ýeke adam üçin)",
+      "approaches": [
+        {
+          "title": "Býujet çemeleşmesi",
+          "amount": "8,000–12,000 ABŞ dollary",
+          "description": "Minimal eltip bermek, arzan şäher, iş dynç alyş ýa-da talyp wizasy"
+        },
+        {
+          "title": "Giňişleýin hereket",
+          "amount": "15,000–20,000 ABŞ dollary",
+          "description": "Doly iberiş, esasy şäher, hünärmen ýa-da hyzmatdaş wizasy"
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Pul tygşytlamak boýunça maslahatlar",
+      "tips": [
+        {
+          "title": "Sebitleýin sebitleri göz öňünde tutuň",
+          "description": "Sidneý we Melburn ýaly iri şäherleriň daşynda ýaşamak jaý çykdajylarynda 30-40% tygşytlamaga mümkinçilik berýär."
+        },
+        {
+          "title": "Eltip bermeden öň sat",
+          "description": "Eltip bermek çykdajylary ýokary — uly mebelleri satmagy we Awstraliýada satyn almagy göz öňünde tutuň."
+        },
+        {
+          "title": "Uçuşlary strategik taýdan bronlaň",
+          "description": "Awiabiletlerde 30% çenli tygşytlamak üçin möwsümde (maý ýa-da oktýabr) uçuň."
+        },
+        {
+          "title": "Ilki bilen dynç alyşda işleýärin",
+          "description": "Eger mümkinçilik bolsa, gymmatrak wizalara ýüz tutmazdan öň, Işçi Baýramçylyk wizasy bilen başlaň."
+        }
+      ]
+    },
+    "additionalConsiderations": {
+      "title": "Goşmaça göz öňünde tutulýan zatlar",
+      "items": [
+        {
+          "label": "Walýuta üýtgemeleri",
+          "description": "Öz ýurduňyzyň walýutasy bolan AUD we USD arasyndaky alyş-çalyş kurslary umumy çykdajylaryňyza düýpli täsir edip biler."
+        },
+        {
+          "label": "Maşgala ululygy",
+          "description": "Maşgala agzalarynyň her biri üçin umumy bahanyň takmynan 30-50% -ni goşuň."
+        },
+        {
+          "label": "Öý haýwanlary",
+          "description": "Karantin şertleriniň berkligi sebäpli öý haýwanlaryny Awstraliýa getirmek her bir haýwan üçin 2000-4000 dollara düşüp biler."
+        },
+        {
+          "label": "Iş gözlemek döwri",
+          "description": "Eger kepillendirilen işiňiz ýok bolsa, iş gözläp ýörkäňiz, 1-3 aýlyk ýaşaýyş çykdajylary üçin býujet düzüň."
+        }
+      ]
+    },
+    "calculator": {
+      "title": "Çykdajylary meýilleşdirmek faktorlary",
+      "description": "Göçme býujetini meýilleşdirýän wagtyňyz şu esasy faktorlary göz öňünde tutuň:",
+      "factors": [
+        {
+          "icon": "📍",
+          "title": "Barmaly şäher",
+          "description": "Sidneý we Melburn şäherleri sebit sebitlerine garanyňda 40-50% gymmatrak",
+          "impact": "Çykdajylara ýokary täsir"
+        },
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "title": "Maşgala ölçegi",
+          "description": "Her bir goşmaça adam umumy çykdajylaryň 30-50% -ni goşýar",
+          "impact": "Esasy çykdajy faktory"
+        },
+        {
+          "icon": "⏰",
+          "title": "Wagt çyzgysy",
+          "description": "Howlukmaç göçürişler meýilleşdirilen göçürişlerden 20-30% gymmat",
+          "impact": "Ortaça täsir"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Göçmegiň çykdajylarynyň wagt çyzgysy",
+      "phases": [
+        {
+          "timeframe": "12-18 aý mundan öň",
+          "title": "Ilkinji meýilnamalaşdyryş we wiza üçin ýüz tutmak",
+          "description": "Ylmy barlaglar, wiza üçin ýüz tutmak, başarnyklaryň bahalandyrylmagy",
+          "estimatedCost": "2,000-5,000 AUD dollary"
+        },
+        {
+          "timeframe": "6-12 aý mundan öň",
+          "title": "Resminamalar we taýýarlyk",
+          "description": "Saglyk barlaglary, polisiýa rugsatnamalary, resminamalaryň terjimesi",
+          "estimatedCost": "500-1500 AUD dollar"
+        },
+        {
+          "timeframe": "3-6 aý mundan öň",
+          "title": "Logistika we bronlama",
+          "description": "Uçuş bronlamalary, ugratma çäreleri, wagtlaýyn ýaşaýyş jaýy",
+          "estimatedCost": "3,000-8,000 ABŞ dollary"
+        },
+        {
+          "timeframe": "1-3 aý öň",
+          "title": "Soňky taýýarlyklar",
+          "description": "Ätiýaçlandyryş, soňky tölegler, soňky minutdaky ylalaşyklar",
+          "estimatedCost": "1,000-3,000 AUD dollary"
+        },
+        {
+          "timeframe": "Geliş bilen",
+          "title": "Hasaplaşyk çykdajylary",
+          "description": "Ýaşaýyş jaýyna girew goýmak, ilkinji satyn alyşlar, ulag üpjünçiligi",
+          "estimatedCost": "2,000-5,000 AUD dollary"
+        }
+      ]
+    },
+    "conclusion": "Awstraliýa göçmek uly maýa goýum bolsa-da, köp daşary ýurtlylar ýaşaýyşyň ýokary hilini, güýçli ykdysadyýeti we owadan daşky gurşawy öz çykdajylaryna mynasyp hasaplaýarlar. Dogry meýilnamalaşdyrmak we býujet düzmek täze durmuşyňyza aşaky tarapa rahat geçmegi üpjün etmäge kömek eder."
+  },
+  "jobGuide": {
+    "subtitle": "Doly gollanma",
+    "description": "Awstraliýa hünärli daşary ýurtly işçiler üçin köp mümkinçilikleri hödürleýär, ýöne iş tapmak üçin taýýarlyk görmek we wiza hem-de iş beriji talaplaryny ýerine ýetirmek gerek.",
+    "navigation": {
+      "title": "Gollanmanyň mazmuny"
+    },
+    "accessibility": {
+      "sectionButton": "{title} baradaky bölümi görüň"
+    },
+    "sections": [
+      {
+        "id": "işlemek hukugy",
+        "icon": "✅",
+        "title": "1. Işlemek hukugy",
+        "content": {
+          "description": "Size iş wizasy gerek. Umumy wariantlar:",
+          "visaOptions": {
+            "0": "<strong>Wagtlaýyn hünär ýetmezçiligi (TSS) wizasy (482-nji kiçi klas)</strong>",
+            "1": "<strong>Hünärmen garaşsyz wiza (189-njy kiçi synp)</strong>",
+            "2": "<strong>Iş dynç alyş wizasy (417/462 kiçi klas)</strong> – ýaş ulular (18–30/35 ýaş) üçin"
+          },
+          "conclusion": "Her wizanyň dürli talaplary, möhletleri we şertleri bar. Siziň ýagdaýyňyza iň laýyk gelýän wizany gözden geçiriň."
+        }
+      },
+      {
+        "id": "başarnyklar-kwalifikasiýalar",
+        "icon": "🧠",
+        "title": "2. Ukyplar we hünär derejeleri",
+        "content": {
+          "requirements": {
+            "0": "Siziň hünäriňiz Awstraliýanyň <strong>Hünärmen hünärleriniň sanawynda (SOL)</strong> bolmaly",
+            "1": "Awstraliýanyň ygtyýarly edarasy tarapyndan hünär derejäňizi ykrar etdiriň",
+            "2": "Iňlis dilini bilmek (IELTS, PTE we ş.m.) talap edilip bilner"
+          },
+          "popularFields": {
+            "title": "Daşary ýurtly işçiler üçin meşhur ugurlar:",
+            "fields": {
+              "0": {
+                "title": "Saglygy goraýyş",
+                "description": "Lukmanlar, şepagat uýalary, gartaşan adamlara hyzmat edýän işgärler"
+              },
+              "1": {
+                "title": "IT we tehnologiýa",
+                "description": "Programma üpjünçiligini işläp düzüjiler, kiberhowpsuzlyk boýunça bilermenler"
+              },
+              "2": {
+                "title": "Inženerçilik",
+                "description": "Raýat, mehaniki, elektrik inženerleri"
+              },
+              "3": {
+                "title": "Hünärmenler",
+                "description": "Elektrikçiler, santehnikler, agaç ussalary"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "iş gözlemek",
+        "icon": "💻",
+        "title": "3. Iş gözlemek boýunça maslahatlar",
+        "content": {
+          "description": "Awstraliýada iş tapmak strategik çemeleşmäni talap edýär:",
+          "jobPortals": {
+            "title": "Iň gowy iş portallary:",
+            "portals": {
+              "0": "Gözle",
+              "1": "Hakykatdan-da Awstraliýa",
+              "2": "LinkedIn",
+              "3": "CareerOne",
+              "4": "Jora",
+              "5": "Etik işler"
+            }
+          },
+          "proTips": {
+            "title": "Hünärmen maslahatlary:",
+            "tips": {
+              "0": "<strong>Seek</strong>, <strong>Indeed Australia</strong> we <strong>LinkedIn</strong> ýaly platformalary ulanyň",
+              "1": "Kompaniýalara gönüden-göni ýa-da işe kabul ediş agentlikleri arkaly ýüz tutuň",
+              "2": "Öz terjimehalyňyzy Awstraliýa standartlaryna laýyklaşdyryň",
+              "3": "Öz pudagyňyzdaky hünärmenler bilen aragatnaşyk saklaň",
+              "4": "Has gowy mümkinçilikler üçin hünär ýetmezçiligi bolan sebitleýin ýerleri göz öňünde tutuň"
+            }
+          }
+        }
+      },
+      {
+        "id": "hemaýatkärlik",
+        "icon": "🤝",
+        "title": "4. Hemaýatkärlik",
+        "content": {
+          "description": "Käbir iş berijiler, esasanam saglygy goraýyş, maglumat tehnologiýalary, inženerçilik we söwda pudaklarynda hünärli işgärleri maliýeleşdirýärler. Şeýle hem, bu size wiza almaga kömek edýär.",
+          "types": {
+            "0": {
+              "title": "Iş beriji dalaşgärligi hödürlemek shemasy:",
+              "points": {
+                "0": "Iş berijiler sizi hemişelik ýaşamak üçin hödürläp bilerler",
+                "1": "Siz başarnyklara we hünär talaplaryna laýyk gelmeli",
+                "2": "Adatça azyndan 3 ýyllyk iş tejribesi talap edilýär"
+              }
+            },
+            "1": {
+              "title": "TSS wizasy üçin hemaýatkärlik:",
+              "points": {
+                "0": "2-4 ýyl möhletli wagtlaýyn wezipe",
+                "1": "Hemişelik ýaşamaga getirip biler",
+                "2": "Iş beriji ýerli zehinleri tapyp bilmeýändigini subut etmeli"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "resminamalar",
+        "icon": "📄",
+        "title": "5. Gerekli resminamalar",
+        "content": {
+          "requiredDocuments": {
+            "0": "Rezüme (CV)",
+            "1": "hat",
+            "2": "Kwalifikasiýalar",
+            "3": "Salgylanmalar",
+            "4": "Wiza/iş hukuklarynyň tassyklanmasy"
+          },
+          "resumeTips": {
+            "title": "Awstraliýa Rezüme Maslahatlary:",
+            "tips": {
+              "0": "Gysgaça ýazyň (iň köp 2-3 sahypa)",
+              "1": "Hünärmen gysgaça mazmunyny goşuň",
+              "2": "Diňe jogapkärçiliklere däl, eýsem üstünlikleriň üstünde duruň",
+              "3": "Surat gerek däl (käbir Ýewropa ýurtlaryndan tapawutlylykda)",
+              "4": "Eminleriň sanawyny ýazyň ýa-da \"Talap boýunça salgylanmalar elýeterlidir\" diýip ýazyň"
+            }
+          }
+        }
+      },
+      {
+        "id": "awstraliýaly iş ýeri",
+        "icon": "🏢",
+        "title": "6. Awstraliýanyň iş ýeri medeniýetini düşünmek",
+        "content": {
+          "description": "Awstraliýanyň iş ýeri medeniýetiniň käbir özboluşly aýratynlyklary bar:",
+          "characteristics": {
+            "0": "<strong>Ýönekeý, ýöne professional</strong> - Awstraliýalylar, adatça, resmi däl, ýöne işe çynlakaý çemeleşýärler",
+            "1": "<strong>Iş-durmuş deňagramlylygy</strong> - Iş berijileriň köpüsi şahsy wagta hormat goýýarlar we çeýe şertleri hödürleýärler",
+            "2": "<strong>Göni aragatnaşyk</strong> - Awstraliýalylar aragatnaşykda gönümel bolýarlar",
+            "3": "<strong>Topara gönükdirilen</strong> - Hyzmatdaşlyk we toparlaýyn iş ýokary baha berilýär",
+            "4": "<strong>\"Uzyn göňür sindromy\"</strong> - Aşa köp öz-özüni mahabatlandyrmaga negatiw garalyp bilner"
+          }
+        }
+      },
+      {
+        "id": "aýlykdan garaşylýan zatlar",
+        "icon": "💰",
+        "title": "7. Aýlyk haklaryna garaşylýan zatlar we iş şertleri",
+        "content": {
+          "description": "Awstraliýada ýaşaýyş derejesi ýokary we aýlyk haklary bäsdeşlige ukyply.",
+          "keyFactsIntro": "Esasy maglumatlar:",
+          "keyFacts": {
+            "0": "Iň pes aýlyk haklary dünýäde iň ýokarylaryň biridir",
+            "1": "Standart iş hepdesi 38 sagat",
+            "2": "4 hepdelik ýyllyk rugsat standartdyr",
+            "3": "10 günlük tölegli şahsy/kesel rugsaty",
+            "4": "Iş berijilerden pensiýa tölegi (häzirki wagtda 11%)"
+          },
+          "conclusion": "Bäsdeşlikli aýlyk haklarynyň aralygyny düşünmek üçin hünäriňiz üçin senagat standartlaryny öwreniň."
+        }
+      }
+    ],
+    "successStories": {
+      "title": "Üstünlik hekaýalary",
+      "stories": [
+        {
+          "flag": "🇮🇳",
+          "profession": "Programma üpjünçiliginiň inženeri",
+          "origin": "Mumbaýdan Melburna",
+          "story": "Hünärmen wizasy bilen geleninden soň 3 aýyň içinde tehnologiýa startapynda iş tapdym.",
+          "outcome": "Häzir ýylda 95,000 Awstraliýa dollary gazanýar"
+        },
+        {
+          "flag": "🇵🇭",
+          "profession": "Bellige alnan hemşire",
+          "origin": "Maniladan Sidneýe çenli",
+          "story": "Işçi dynç alyş wizasy bilen işlänimden soň hassahana tarapyndan hemaýatkärlik edildi.",
+          "outcome": "18 aýyň dowamynda hemişelik ýaşamak üçin rugsat berilýär"
+        },
+        {
+          "flag": "🇬🇧",
+          "profession": "Söwda elektrikçisi",
+          "origin": "Londondan Perte çenli",
+          "story": "Internet arkaly iş portallary we ýerli hünärmenler bilen aragatnaşyk arkaly iş tapdym.",
+          "outcome": "2 ýylyň içinde öz elektrik biznesini başladym"
+        },
+        {
+          "flag": "🇩🇪",
+          "profession": "Raýat inženeri",
+          "origin": "Berlinden Brisbana",
+          "story": "Kwalifikasiýany ykrar etmek 6 aý wagt aldy, ýöne iri gurluşyk firmasynda iş ornuny gazandy.",
+          "outcome": "50 milliondan gowrak Awstraliýa dollary bolan infrastruktura taslamalaryny dolandyrmak"
+        }
+      ]
+    },
+    "industryInsights": {
+      "title": "Senagat iş bazarynyň maglumatlary",
+      "insights": [
+        {
+          "category": "Saglygy goraýyş",
+          "metric": "Iş orunlarynyň ösüşi",
+          "value": "+15.2%",
+          "description": "Geljekki 5 ýylda ösüşe garaşylýar"
+        },
+        {
+          "category": "Tehnologiýa",
+          "metric": "Ortaça aýlyk",
+          "value": "95,000 Awstraliýa dollary",
+          "description": "Hünärmenler üçin"
+        },
+        {
+          "category": "Hünärmenler",
+          "metric": "Ukyplaryň ýetmezçiligi",
+          "value": "Kritiki",
+          "description": "Ähli ştatlarda ýokary isleg"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Awstraliýada iş tapmak üçin soňky barlag sanawy",
+      "items": [
+        "Siziň hünäriňiziň hünärli hünärleriň sanawynda bardygyny ýa-da ýokdugyny barlaň",
+        "Awstraliýanyň degişli edarasy tarapyndan hünär derejäňiziň bahalandyrylmagyny alyň",
+        "Gerek bolsa, iňlis dilini bilmek synagyndan geçiň",
+        "Öz terjimehalyňyzy Awstraliýa formatyna täzeläň",
+        "Wiza talaplaryny we arza bermek proseslerini öwreniň"
+      ]
+    },
+    "conclusion": {
+      "title": "Awstraliýada işlemäge taýynmy?",
+      "description": "Degişli taýýarlyk we degişli hünär derejeleri bilen Awstraliýada daşary ýurtly hökmünde iş tapmak mümkin. Ýurduň güýçli ykdysadyýeti, ýokary hilli ýaşaýyş we köp medeniýetli gurşaw ony halkara tejribesini we karýera ösüşini gözleýän hünärmenler üçin özüne çekiji ýere öwürýär."
+    }
+  },
+  "usToAustraliaGuide": {
+    "subtitle": "Bilmeli zatlaryň hemmesi",
+    "description": "Köp amerikanlylar iş, okuw ýa-da ýaşaýyş durmuşyny üýtgetmek üçin Awstraliýa göçýärler. Medeniýetler meňzeş bolsa-da, göz öňünde tutulmaly möhüm hukuk we amaly ädimler bar.",
+    "navigation": {
+      "title": "Çalt nawigasiýa"
+    },
+    "accessibility": {
+      "sectionButton": "{title} bölümine geç"
+    },
+    "sections": [
+      {
+        "id": "näme üçin-awstraliýa",
+        "icon": "📌",
+        "title": "Näme üçin Awstraliýa göçmeli?",
+        "content": {
+          "description": "Amerikalylar Awstraliýa köp sebäplere görä gyzyklanýarlar:",
+          "reasons": {
+            "0": "Ýaşaýşyň ýokary hili",
+            "1": "Güýçli ykdysadyýet we iş mümkinçilikleri",
+            "2": "Ählumumy saglygy goraýyş ulgamy (Medicare)",
+            "3": "Owadan kenarýaka we açyk howada ýaşamak üçin ýaşaýyş durmuşy",
+            "4": "Amerikan durmuş ýörelgesi bilen medeni meňzeşlikler"
+          },
+          "conclusion": "Karýera ösüş, bilim almak ýa-da durmuş ýörelgesini üýtgetmek üçin göçýän bolsaňyzam, Awstraliýa öýde köp sanly tanyş rahatlyklar bilen iňlis dilinde gepleýän gurşawy hödürleýär."
+        }
+      },
+      {
+        "id": "wiza mümkinçilikleri",
+        "icon": "✈️",
+        "title": "ABŞ raýatlary üçin wiza mümkinçilikleri",
+        "content": {
+          "description": "Amerikalylar Awstraliýa göçmezden öň wiza almaly. Umumy görnüşlerine aşakdakylar girýär:",
+          "visaTypes": {
+            "0": {
+              "title": "Hünärmen Garaşsyz Wiza (189-njy kiçi synp)",
+              "points": {
+                "0": "Ýokary isleg bildirilýän ugurlardaky hünärmenler üçin",
+                "1": "Ýaşy, başarnyklary, bilimi we tejribesini bahalandyrýan bal esasly ulgam",
+                "2": "Hemişelik ýaşamak ýoly",
+                "3": "Sponsor gerek däl"
+              }
+            },
+            "1": {
+              "title": "Iş beriji tarapyndan maliýeleşdirilýän wiza (482-nji kiçi klas)",
+              "points": {
+                "0": "Awstraliýaly iş berijiden iş teklibi talap edilýär",
+                "1": "Wagtlaýyn (2-4 ýyl), hemişelik ýaşamak mümkinçiligi bilen",
+                "2": "Iş beriji size hemaýat bermeli"
+              }
+            },
+            "2": {
+              "title": "Hyzmatdaş/Är-aýal wizasy",
+              "points": {
+                "0": "Awstraliýaly hyzmatdaşa goşulýanlar üçin",
+                "1": "Öýlenen ýa-da de-fakto gatnaşyklar üçin wariantlary öz içine alýar",
+                "2": "Hemişelik ýaşamaga eltýär"
+              }
+            },
+            "3": {
+              "title": "Talyp wizasy (500-nji kiçi klas)",
+              "points": {
+                "0": "Awstraliýanyň okuw jaýlarynda okamak üçin",
+                "1": "Okuw wagtynda iş wagty çäklendirilen",
+                "2": "Okuwy gutarandan soňky iş wizalaryna mümkinçilik berýän ýollar"
+              }
+            },
+            "4": {
+              "title": "Iş dynç alyş wizasy (462-nji kiçi klas)",
+              "description": "18-30 ýaş aralygyndaky amerikanlylar üçin elýeterlidir, Awstraliýada 12 aýa çenli işlemek we syýahat etmek mümkinçiligini berýär."
+            }
+          }
+        }
+      },
+      {
+        "id": "zerur resminamalar",
+        "icon": "🛂",
+        "title": "Esasy talaplar",
+        "content": {
+          "description": "Awstraliýa wizasyna ýüz tutanyňyzda, adatça size şu aşakdakylar gerek bolar:",
+          "requirements": {
+            "0": "Güýçli pasport",
+            "1": "Iňlis dilini bilýändigiňizi subut edýän resminama (käbir wizalar üçin)",
+            "2": "Saglyk barlaglary we polisiýanyň rugsatnamasy",
+            "3": "Ukyplary/bilim bahalandyrmasy (hünärmen wizalary üçin)",
+            "4": "Serişdäniň subutnamasy (talyp we wagtlaýyn wizalar üçin)",
+            "5": "Biometrik maglumatlar",
+            "6": "Doldurylan wiza arzalary formalary"
+          },
+          "note": "Wizanyň görnüşine görä anyk talaplar üýtgeýär, şonuň üçin iň täze maglumatlar üçin hemişe Awstraliýanyň Içeri işler ministrliginiň web sahypasyny barlaň."
+        }
+      },
+      {
+        "id": "meşhur şäherler",
+        "icon": "🏙️",
+        "title": "Amerikalylaryň köpüsi Awstraliýada nirede ýaşaýar?",
+        "content": {
+          "description": "Amerikalylar, adatça, Awstraliýanyň şu meşhur şäherlerinde ýerleşýärler:",
+          "cities": {
+            "0": {
+              "name": "Sidneý",
+              "icon": "🌊",
+              "highlights": {
+                "0": "Awstraliýanyň meşhur ýadygärlikleri bolan iň uly şäheri",
+                "1": "Güýçli maliýe, tehnologiýa we döredijilik pudaklary",
+                "2": "Owadan kenarýakalar we port ýaşaýyş durmuşy"
+              }
+            },
+            "1": {
+              "name": "Melburn",
+              "icon": "🎭",
+              "highlights": {
+                "0": "Gülläp ösýän sungat sahnasy bolan medeni paýtagt",
+                "1": "Dünýäniň iň ýaşamak üçin amatly şäherleriniň arasynda yzygiderli orun alýar",
+                "2": "Ajaýyp iýmit, kofe we sport çäreleri"
+              }
+            },
+            "2": {
+              "name": "Brisben",
+              "icon": "☀️",
+              "highlights": {
+                "0": "Güneşli, subtropiki howa",
+                "1": "Sidneý ýa-da Melburndan has elýeterli",
+                "2": "Iş bazarynyň ösmegi bilen rahat durmuş ýörelgesi"
+              }
+            },
+            "3": {
+              "name": "Pert",
+              "icon": "🌄",
+              "highlights": {
+                "0": "Günbatar kenarda ýerleşýän izolýasiýa edilen, ýöne janly şäher",
+                "1": "Güýçli magdançylyk we baýlyklar pudagy",
+                "2": "Owadan kenarýaka we Ortaýer deňzi howasy"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "ýaşaýyş çykdajylary",
+        "icon": "💰",
+        "title": "Göçmegiň we ýaşamagyň bahasy",
+        "content": {
+          "description": "Ilkinji çykdajylar uçuşlara, iberişlere, wiza töleglerine we ýaşaýyş jaýyna baglylykda 5000–15000 ABŞ dollary aralygynda bolup biler.",
+          "conclusion": "Awstraliýada ýaşamagyň bahasy ABŞ-nyň iri şäherleri bilen deňeşdirilip bilner, ýöne saglygy goraýyş çykdajylary, adatça, Medicare ulgamynyň kömegi bilen has pes."
+        }
+      },
+      {
+        "id": "saglygy goraýyş",
+        "icon": "🩺",
+        "title": "Awstraliýada saglygy goraýyş",
+        "content": {
+          "paragraphs": {
+            "0": {
+              "type": "tekst",
+              "content": "Awstraliýada mugt ýa-da subsidiýa berilýän lukmançylyk kömegini üpjün edýän Medicare atly ählumumy saglygy goraýyş ulgamy bar."
+            },
+            "1": {
+              "type": "sanaw",
+              "intro": "Hemişelik ýaşaýjy ýa-da raýat hökmünde siz aşakdakylary öz içine alýan Medicare kartyny alarys:",
+              "items": {
+                "0": "Döwlet hassahanalarynda mugt bejergi",
+                "1": "Lukmana berilýän lukman saparlary",
+                "2": "Reseptli dermanlaryň köpüsi arzanladyş bilen"
+              }
+            },
+            "2": {
+              "type": "tekst",
+              "content": "Awstraliýalylaryň köpüsi goşmaça ätiýaçlandyryş, garaşmak wagtyny gysgaltmak we hususy hassahana bejergisi üçin hususy saglyk ätiýaçlandyrmasyny hem satyn alýarlar."
+            },
+            "3": {
+              "type": "tekst",
+              "content": "Wagtlaýyn wiza eýeleri, adatça, wizalarynyň şerti hökmünde hususy saglyk ätiýaçlandyrmasyny düzmeli."
+            }
+          }
+        }
+      },
+      {
+        "id": "durmuş ýörelgesi",
+        "icon": "🏡",
+        "title": "Ýaşaýyş ýörelgeleriniň tapawutlary",
+        "content": {
+          "differences": {
+            "0": "<strong>Ýokary hilli ýaşaýyş, jemgyýetçilik saglygy goraýyş (Medicare) we işçileriň güýçli hukuklary</strong>",
+            "1": "Sidneý ýa-da Melburn ýaly iri şäherlerde ýaşaýyş çykdajylary ýokary bolup biler",
+            "2": "Ulag sürmek ýoluň <strong>çep tarapynda</strong> amala aşyrylýar",
+            "3": "Her ýyl has köp rugsat (standart 4 hepde) we iş bilen durmuşyň arasyndaky deňagramlylygyň gowulanmagy",
+            "4": "Ähli ölçegler üçin ulanylýan metrik ulgam",
+            "5": "Dürli mekdep senenamasy (ýyl adatça fewraldan dekabra çenli dowam edýär)",
+            "6": "Güýçli kofe medeniýeti we özboluşly iýmit sahnasy"
+          },
+          "note": "Medeniýetler meňzeş bolsa-da, amerikanlar köplenç slengde, ýumorda we awstraliýalylaryň işe we durmuşa bolan has rahat garaýşynda tapawutlary belleýärler."
+        }
+      },
+      {
+        "id": "hereket etmek",
+        "icon": "📦",
+        "title": "ABŞ-dan göçürmek we ibermek",
+        "content": {
+          "sections": {
+            "0": {
+              "title": "Eltip bermek opsiýalary:",
+              "items": {
+                "0": "<strong>Deňiz ýük daşamalary:</strong> Uly ýük daşamalar üçin iň tygşytly (kiçi kwartira üçin 3000-7000 dollar)",
+                "1": "Howa ýük daşamalary: Çalt, ýöne gymmatrak (zerur zatlar üçin 1500-3000 dollar)",
+                "2": "<strong>Eltip bermek üçin konteýnerler:</strong> Näçe ýük getirýändigiňize baglylykda 20 fut ýa-da 40 fut wariantlary"
+              }
+            },
+            "1": {
+              "title": "Möhüm pikirler:",
+              "items": {
+                "0": "Awstraliýada berk biohowpsuzlyk kanunlary bar - ibermezden öň zatlary düýpli arassalaň",
+                "1": "Elektrik enjamlaryna adapterler gerek (Awstraliýa I görnüşli wilkalary bilen 230V ulanýar)",
+                "2": "Awstraliýada uly mebelleri satmagy we täzesini satyn almagy göz öňünde tutuň",
+                "3": "Öý haýwanlaryny import etmek üçin birnäçe aý öňünden taýýarlyk gerek (waksinalar, mikroçipler, rugsatnamalar)"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "bank işi",
+        "icon": "🏦",
+        "title": "Bankçylyk we maliýe",
+        "content": {
+          "intro": "Awstraliýada maliýeňizi düzüň:",
+          "points": {
+            "0": "Siz gelmezden 3 aý öň Awstraliýa bank hasabyny açyp bilersiňiz",
+            "1": "Esasy banklaryň arasynda Commonwealth Bank, ANZ, Westpac we NAB bar.",
+            "2": "Size pasportyňyz, wiza resminamaňyz we salgysyňyzy tassyklaýan resminama gerek bolar",
+            "3": "ABŞ dollaryny AUD-a öwürmek üçin Wise ýaly halkara pul geçirim hyzmatlaryny göz öňünde tutuň",
+            "4": "Awstraliýanyň salgyt ýyly 1-nji iýuldan 30-njy iýuna çenli dowam edýär",
+            "5": "Kanuny taýdan işlemek üçin size Salgyt Faýl Nomeri (TFN) gerek bolar"
+          },
+          "conclusion": "Walýuta: Awstraliýa dollary (AUD). Kredit kartlary giňden kabul edilýär we kontaktsiz töleg örän giňden ýaýrandyr."
+        }
+      }
+    ],
+    "costComparison": {
+      "headers": {
+        "expense": "Çykdajylar",
+        "australia": "Awstraliýa (ortaça)",
+        "usa": "ABŞ (ortaça)"
+      },
+      "rows": [
+        {
+          "expense": "Kärende (şäher merkezinde 1 ýatak otagy)",
+          "australia": "Aýda 1200–1800 dollar",
+          "usa": "1500–2000 dollar"
+        },
+        {
+          "expense": "Kommunal hyzmatlar (aýlyk)",
+          "australia": "150–200 dollar",
+          "usa": "150–200 dollar"
+        },
+        {
+          "expense": "Daşarda naharlanmak (2 adamlyk)",
+          "australia": "60–100 dollar",
+          "usa": "50–100 dollar"
+        },
+        {
+          "expense": "Ulag",
+          "australia": "Aýda 100–150 dollar",
+          "usa": "70–150 dollar"
+        }
+      ]
+    },
+    "stateComparison": {
+      "title": "ABŞ-nyň Ştatlary Awstraliýanyň Ştatlary bilen deňeşdirilýär",
+      "comparisons": [
+        {
+          "ausIcon": "🦘",
+          "usIcon": "🗽",
+          "comparison": "NSW - Nýu-Ýork",
+          "description": "Ilat dykyzlygy we şäher ýaşaýyş durmuşynyň meňzeşligi"
+        },
+        {
+          "ausIcon": "☕",
+          "usIcon": "😉",
+          "comparison": "Wiktoriýa Kaliforniýa bilen",
+          "description": "Dürli ilatly medeni merkezler"
+        },
+        {
+          "ausIcon": "🌴",
+          "usIcon": "🌴",
+          "comparison": "Kwinslend Florida bilen deňeşdirildi",
+          "description": "Tropiki howa şertleri we syýahatçylyk pudaklary"
+        },
+        {
+          "ausIcon": "⛏️",
+          "usIcon": "🤠",
+          "comparison": "WA - Tehas",
+          "description": "Magdan ykdysadyýeti bolan baý tebigy serişdelere baý döwletler"
+        },
+        {
+          "ausIcon": "🍷",
+          "usIcon": "🍷",
+          "comparison": "SA - Napa jülgesi",
+          "description": "Ortaýer deňzi howasy bolan şerap sebitleri"
+        },
+        {
+          "ausIcon": "🏔️",
+          "usIcon": "🏔️",
+          "comparison": "Tasmaniýa we Wermont",
+          "description": "Sowuk howa we tebigy gözellik"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Göçmegiň wagty: Gitmezden 12 aý öň",
+      "phases": [
+        {
+          "timeframe": "12 aý öň",
+          "title": "Ylmy-barlag we meýilnamalaşdyryş",
+          "description": "Wiza mümkinçiliklerini öwreniň, hünär derejelerini bahalaň, gerek bolsa, başarnyk bahalandyrmalaryny başlaň"
+        },
+        {
+          "timeframe": "9-10 aý mundan öň",
+          "title": "Wiza üçin arza",
+          "description": "Wiza üçin arza tabşyryň, zerur resminamalary ýygnaň, saglyk barlaglaryndan geçiň"
+        },
+        {
+          "timeframe": "6-8 aý mundan öň",
+          "title": "Iş gözlemek we taýýarlamak",
+          "description": "Işe kabul etmek üçin arzalary başlaň, awstraliýaly hünärmenler bilen aragatnaşyk saklaň, şäherleri öwreniň"
+        },
+        {
+          "timeframe": "3-4 aý mundan öň",
+          "title": "Logistika meýilnamalaşdyryş",
+          "description": "Uçuşlary bronlaň, ýük daşamagy gurnaň, wagtlaýyn ýaşaýyş jaýyny üpjün ediň"
+        },
+        {
+          "timeframe": "1-2 aý öň",
+          "title": "Soňky taýýarlyklar",
+          "description": "Awstraliýa bank hasabyny açyň, ätiýaçlandyryşy düzüň, göçmegiň jikme-jikliklerini gutaryň"
+        },
+        {
+          "timeframe": "Geliş bilen",
+          "title": "Ýerleşýän ýer",
+          "description": "TFN we Medicare üçin ýüz tutuň, hemişelik ýaşaýyş jaýyny tapyň, ýerli hyzmatlara ýazylyň"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Awstraliýa göçýän amerikanlar üçin soňky barlag sanawy",
+      "items": [
+        "Degişli wiza üçin gözleg geçirip, ýüz tutuň",
+        "Saglyk barlaglaryndan we polisiýa rugsatnamasyndan geçiň",
+        "Eşýalaryň daşalmagyny ýa-da saklanmagyny guraň",
+        "Awstraliýanyň bank hasabyny açyň",
+        "Howpsuz ýaşaýyş jaýy (wagtlaýyn ýa-da hemişelik)",
+        "Saglyk ätiýaçlandyryşyny düzediň",
+        "Salgyt resminamasynyň belgisi (TFN) we Medicare karty üçin ýüz tutuň (eger degişli bolsa)"
+      ]
+    },
+    "conclusion": {
+      "title": "Netije: ABŞ-dan Awstraliýa göçmek peýdalymy?",
+      "description": "Köp amerikanlylar üçin Awstraliýa tanyş medeniýetiň we täze tejribeleriň özüne çekiji deňagramlylygyny, ajaýyp ýaşaýyş hilini, güýçli işçi goragyny we owadan tebigy gurşawy hödürleýär. Göçmek ünsli meýilnamalaşdyrmagy we uly deslapky çykdajylary talap etse-de, köp daşary ýurtlylar geçişi peýdaly hasaplaýarlar, iş-durmuş deňagramlylygy we täze mümkinçilikleri has gowy edýärler."
+    }
+  },
+  "australiaRequirements": {
+    "description": "Eger siz Awstraliýa göçmegi meýilleşdirýän bolsaňyz, onda ýerine ýetirmeli esasy talaplar:",
+    "navigation": {
+      "title": "Çalt nawigasiýa",
+      "expandAll": "Hemmesini ýaýmak",
+      "collapseAll": "Hemmesini ýygna"
+    },
+    "accessibility": {
+      "sectionButton": "{title} bölümini aç/ýap"
+    },
+    "sections": [
+      {
+        "id": "wiza",
+        "icon": "🛂",
+        "title": "Güýçli wiza",
+        "shortTitle": "Wiza",
+        "content": {
+          "0": {
+            "type": "abzas",
+            "text": "Awstraliýa girmezden ozal degişli wizany — meselem, hünärli, talyp, hyzmatdaş ýa-da hemaýatkärlik edilen iş wizasyny — almak üçin ýüz tutmaly we almaly."
+          }
+        }
+      },
+      {
+        "id": "saglyk häsiýeti",
+        "icon": "🔍",
+        "title": "Saglyk we häsiýet barlaglary",
+        "shortTitle": "Saglyk barlagy",
+        "content": {
+          "0": {
+            "type": "sanaw",
+            "items": {
+              "0": "Wizaňyza baglylykda lukmançylyk barlagy talap edilip bilner.",
+              "1": "Soňky 10 ýylyň dowamynda 12+ aý ýaşan ýurtlaryňyzdan polisiýa rugsatnamasy</strong>.",
+              "2": "Siziň agyr jenaýat ýazgyňyz bolmaly däl."
+            }
+          }
+        }
+      },
+      {
+        "id": "serişdeler",
+        "icon": "💵",
+        "title": "Serişdeleriň subutnamasy",
+        "shortTitle": "Serişdeler",
+        "content": {
+          "0": {
+            "type": "abzas",
+            "text": "Käbir wiza görnüşleri (meselem, talyp ýa-da hünär wizalary) geleniňizde öz maliýe taýdan üpjün edip biljekdigiňizi subut etmegi talap edýär."
+          }
+        }
+      },
+      {
+        "id": "iňlis dili",
+        "icon": "🗣️",
+        "title": "Iňlis dilini bilmek",
+        "shortTitle": "Iňlis dili",
+        "content": {
+          "0": {
+            "type": "abzas",
+            "text": "Wizalaryň köpüsinde, esasanam hünär we talyp wizalary üçin, iňlis dilini bilýändigiňizi subut edýän resminama (IELTS, TOEFL ýa-da deňeşdirip boljak resminama) talap edilýär."
+          }
+        }
+      },
+      {
+        "id": "başarnyklar",
+        "icon": "📋",
+        "title": "Ukyplaryň bahalandyrylmagy",
+        "shortTitle": "Ukyplar",
+        "content": {
+          "0": {
+            "type": "abzas",
+            "text": "Hünärmen migrasiýa wizalary üçin hünäriňize degişli Awstraliýa edarasy tarapyndan hünär derejäňiziň bahalandyrylmagyny almalysyňyz."
+          }
+        }
+      },
+      {
+        "id": "syýahat",
+        "icon": "✈️",
+        "title": "Syýahat resminamalary",
+        "shortTitle": "Resminamalar",
+        "content": {
+          "0": {
+            "type": "sanaw",
+            "items": {
+              "0": "Güýjli pasport",
+              "1": "Syýahat ätiýaçlandyrmasy (maslahat berilýär)"
+            }
+          }
+        }
+      }
+    ],
+    "additionalRequirements": {
+      "title": "Wiza görnüşine görä goşmaça talaplar",
+      "items": [
+        {
+          "icon": "🎓",
+          "title": "Talyp wizalary",
+          "description": "Okuwa kabul edilmegiň tassyklanmasy (CoE), Daşary ýurtly talyplaryň saglyk ätiýaçlandyrmasy (OSHC), wagtlaýyn giriş üçin hakyky şertler",
+          "note": "Doly wagtly okuwy dowam etdirmeli"
+        },
+        {
+          "icon": "💼",
+          "title": "Iş wizalary",
+          "description": "Tassyklanan iş berijiden iş teklibi, degişli iş tejribesi, hünär sanawynda hünär",
+          "note": "Iş berijiniň hemaýatkärligi talap edilýär"
+        },
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "title": "Maşgala wizalary",
+          "description": "Gatnaşyk subutnamalary, hemaýatkär talaplary, maliýe goldawy boýunça borçnamalar",
+          "note": "Işläp taýýarlamak wagty dürli-dürli"
+        },
+        {
+          "icon": "🏠",
+          "title": "Maýadar wizalary",
+          "description": "Minimal maýa goýum çäkleri, iş tejribesi, ştata dalaşgärlik",
+          "note": "Ýokary maliýe talaplary"
+        }
+      ]
+    },
+    "visaTypes": {
+      "title": "Wiza görnüşleriniň umumy maglumatlaryna salgylanmak",
+      "types": [
+        {
+          "icon": "🎯",
+          "name": "Hünärmen Garaşsyz (189)",
+          "description": "Ballara esaslanýan hemişelik wiza",
+          "duration": "Hemişelik",
+          "difficulty": "Ýokary"
+        },
+        {
+          "icon": "🤝",
+          "name": "Iş beriji tarapyndan goldanylýar (482)",
+          "description": "Sponsorlyk bilen wagtlaýyn iş wizasy",
+          "duration": "2-4 ýyl",
+          "difficulty": "Orta"
+        },
+        {
+          "icon": "🎓",
+          "name": "Talyp (500)",
+          "description": "Awstraliýanyň okuw jaýlarynda okamak",
+          "duration": "Okuw döwri",
+          "difficulty": "Pes"
+        },
+        {
+          "icon": "💑",
+          "name": "Hyzmatdaş (820/801)",
+          "description": "Är-aýal/de-fakto hyzmatdaşlar üçin",
+          "duration": "Hemişelik",
+          "difficulty": "Orta"
+        },
+        {
+          "icon": "🌟",
+          "name": "Iş dynç alyşy (417)",
+          "description": "Ýaşlar üçin iş we syýahat",
+          "duration": "1 ýyl",
+          "difficulty": "Pes"
+        },
+        {
+          "icon": "💰",
+          "name": "Biznes innowasiýalary (188)",
+          "description": "Telekeçiler we maýadarlar üçin",
+          "duration": "4 ýyl",
+          "difficulty": "Ýokary"
+        }
+      ]
+    },
+    "tips": {
+      "title": "Möhüm maslahatlar",
+      "items": [
+        "Käbir wizalaryň işlenilmegi birnäçe aýa çekmegi mümkin bolany üçin, wiza üçin arza bermegiňizi ir başlaň",
+        "Ähli möhüm resminamalaryňyzy tertipli we sanly nusgada saklaň",
+        "Awstraliýanyň Içeri işler ministrliginiň web sahypasynda wizaňyzyň görnüşi üçin anyk talaplary öwreniň",
+        "Çylşyrymly işler üçin professional migrasiýa maslahatyny almagy göz öňünde tutuň",
+        "Işläp gutarma wagtlaryny yzygiderli barlaň, sebäbi olar üýtgedilip bilner",
+        "Ähli resminamalaryň iňlis dilinde däl bolsa, terjime edilip tassyklanandygyny üpjün ediň"
+      ]
+    },
+    "summary": {
+      "title": "Çalt barlag sanawy",
+      "description": "Awstraliýa wizasyna üstünlikli ýüz tutmak üçin şu esasy talaplary ýadyňyzda saklaň:",
+      "keyPoints": [
+        "Güýçli pasport (6+ aý)",
+        "Degişli wiza üçin arza",
+        "Saglyk we häsiýet barlaglary",
+        "Iňlis dilini bilýändigiňizi subut edýän resminama",
+        "Maliýe subutnamalary",
+        "Ukyplaryň bahalandyrylmagy (zerur bolsa)",
+        "Syýahat ätiýaçlandyrmasy",
+        "Ähli resminamalar tassyklanyldy"
+      ]
+    }
+  },
+  "australiaVisaGuide": {
+    "description": "Eger siz Awstraliýa göçmegi meýilleşdirýän bolsaňyz, size degişli wiza gerek bolar. Galmagyň maksadyna esaslanýan iň köp duş gelýän wariantlar:",
+    "labels": {
+      "idealFor": "Ideal üçin",
+      "duration": "Dowamlylyk",
+      "pathway": "Ýol",
+      "visaTypes": "Wiza görnüşleri",
+      "requirements": "Talaplar",
+      "benefits": "Peýdalar",
+      "processingTime": "Işläp taýýarlamak wagty"
+    },
+    "controls": {
+      "expandAll": "Hemmesini ýaýmak",
+      "collapseAll": "Hemmesini ýygna"
+    },
+    "compare": {
+      "enable": "Wizalary deňeşdiriň",
+      "exit": "Deňeşdirme Rejiminden Çyk",
+      "select": "Saýlaň",
+      "selected": "Saýlanan",
+      "table": {
+        "title": "Wiza deňeşdirmesi",
+        "headers": {
+          "type": "Wiza görnüşi",
+          "duration": "Dowamlylyk",
+          "pathway": "Ýol",
+          "idealFor": "Üçin ideal"
+        }
+      }
+    },
+    "visas": [
+      {
+        "id": "hünärli migrasiýa",
+        "icon": "🎯",
+        "title": "Hünärmen migrasiýa wizalary",
+        "category": "Hünärmen wizalary",
+        "idealFor": "Isleg bildirilýän başarnyklara eýe bolan hünärmenler",
+        "duration": "Hemişelik",
+        "pathway": "Hemişelik",
+        "visaTypes": {
+          "0": {
+            "name": "Hünärmen Garaşsyz Wiza",
+            "description": "Ballara esaslanýar; iş teklibi gerek däl",
+            "subclass": "189"
+          },
+          "1": {
+            "name": "Hünärmen dalaşgärlik wizasy",
+            "description": "Awstraliýanyň ştaty ýa-da territoriýasyndan dalaşgär görkezilmegi talap edilýär",
+            "subclass": "190"
+          },
+          "2": {
+            "name": "Hünärmenlik boýunça iş üçin sebitleýin wiza",
+            "description": "Sebit Awstraliýada ýaşamak we işlemek üçin; döwlet ýa-da maşgala goldawy gerek",
+            "subclass": "491"
+          }
+        },
+        "requirements": {
+          "0": "Görkezilen hünär üçin başarnyklaryň bahalandyrylmagy",
+          "1": "Iňlis dilini bilmek",
+          "2": "45 ýaşdan kiçi",
+          "3": "Ballaryň synag çägine ýetmek (häzirki wagtda 65 bal)",
+          "4": "Saglyk we häsiýet talaplary"
+        },
+        "benefits": {
+          "0": "Hemişelik ýaşamak ýoly",
+          "1": "Awstraliýanyň islendik ýerinde işläň we okaň",
+          "2": "Medicare-e giriş",
+          "3": "4 ýyldan soň raýatlyga ýol"
+        },
+        "processingTime": "Köp arzalar üçin 8-12 aý"
+      },
+      {
+        "id": "iş beriji tarapyndan maliýeleşdirilýär",
+        "icon": "🤝",
+        "title": "Iş beriji tarapyndan maliýeleşdirilýän wizalar",
+        "category": "Iş wizalary",
+        "idealFor": "Awstraliýaly iş berijiden iş teklibi alan adamlar",
+        "duration": "2-4 ýyl",
+        "pathway": "Wagtlaýyndan hemişelik",
+        "visaTypes": {
+          "0": {
+            "name": "Wagtlaýyn hünär ýetmezçiligi wizasy",
+            "description": "Hemaýatkärlik talap edilýär we 2–4 ýyl möhlet bilen geçerlidir",
+            "subclass": "482"
+          },
+          "1": {
+            "name": "Iş beriji dalaşgärligi hödürlemek shemasy",
+            "description": "Tassyklanan iş beriji tarapyndan hödürlenen hünärli işçiler üçin hemişelik wiza",
+            "subclass": "186"
+          }
+        },
+        "requirements": {
+          "0": "Tassyklanan Awstraliýa iş berijisinden iş teklibi",
+          "1": "Degişli başarnyklar we kwalifikasiýalar",
+          "2": "Iňlis dilini bilmek",
+          "3": "Saglyk we häsiýet talaplary",
+          "4": "Degişli hünärli hünärleriň sanawynda hünär"
+        },
+        "benefits": {
+          "0": "Awstraliýada işe girmegiň gönümel ýoly",
+          "1": "Maşgala agzalary hemra bolup bilerler",
+          "2": "Hemişelik ýaşamaga ýol",
+          "3": "Bal synagy gerek däl"
+        },
+        "processingTime": "TSS üçin 3-6 aý, ENS üçin 8-12 aý"
+      },
+      {
+        "id": "talyp",
+        "icon": "🎓",
+        "title": "Talyp wizasy",
+        "category": "Bilim wizasy",
+        "idealFor": "Awstraliýanyň bilim edarasynda okaýanlar",
+        "duration": "Okuw döwri + 1-4 ýyl",
+        "pathway": "Wagtlaýyn",
+        "visaTypes": {
+          "0": {
+            "name": "Talyp wizasy",
+            "description": "Awstraliýanyň okuw jaýlarynda okamak üçin. Okuw wagtynda bölekleýin iş wagtyna rugsat berilýär",
+            "subclass": "500"
+          }
+        },
+        "requirements": {
+          "0": "Okuwa kabul edilmegiň tassyklanmasy (CoE)",
+          "1": "Hakyky wagtlaýyn giriş (GTE) talaby",
+          "2": "Iňlis dilini bilmek",
+          "3": "Maliýe mümkinçilikleri",
+          "4": "Daşary ýurtly talyplaryň saglygyny goramak üçin ätiýaçlandyryş (OSHC)"
+        },
+        "benefits": {
+          "0": "Dünýä derejesindäki okuw jaýlarynda okamak",
+          "1": "Iki hepdede 48 sagada çenli işle",
+          "2": "Okuwdan soňky iş wizalaryna ýol",
+          "3": "Awstraliýa medeniýetini başdan geçiriň"
+        },
+        "processingTime": "Köp arzalar üçin 4-8 hepde"
+      },
+      {
+        "id": "maşgala hyzmatdaşy",
+        "icon": "👨‍👩‍👧‍👦",
+        "title": "Maşgala we hyzmatdaş wizalary",
+        "category": "Maşgala wizalary",
+        "idealFor": "Awstraliýada maşgalasy ýa-da hyzmatdaşy bolanlar",
+        "duration": "Hemişelik",
+        "pathway": "Hemişelik",
+        "visaTypes": {
+          "0": {
+            "name": "Hyzmatdaş wizasy (Onshore)",
+            "subclass": "820/801",
+            "description": "Awstraliýa raýatlarynyň ýa-da hemişelik ýaşaýjylaryň är-aýallary ýa-da de-fakto hyzmatdaşlary üçin"
+          },
+          "1": {
+            "name": "Hyzmatdaş wizasy (Offşor)",
+            "subclass": "309/100",
+            "description": "Awstraliýanyň daşyndan ýüz tutýan är-aýallar ýa-da de-fakto hyzmatdaşlar üçin"
+          },
+          "2": {
+            "name": "Ene-ata we çaga wizalary",
+            "subclass": "Dürli",
+            "description": "Awstraliýa raýatlarynyň ýa-da PR eýeleriniň ýakyn maşgala agzalary üçin"
+          }
+        },
+        "requirements": {
+          "0": "Hakyky gatnaşyk subutnamasy",
+          "1": "Sponsor Awstraliýanyň raýaty/PR bolmaly",
+          "2": "Saglyk we häsiýet talaplary",
+          "3": "Maliýe goldaw borçnamasy",
+          "4": "Ýeterlik saglyk ätiýaçlandyrmasy"
+        },
+        "benefits": {
+          "0": "Hemişelik ýaşamak",
+          "1": "Iş we okuw hukuklary",
+          "2": "Medicare we sosial hyzmatlara elýeterlilik",
+          "3": "Raýatlyga ýetmegiň ýoly"
+        },
+        "processingTime": "Hyzmatdaş wizalary üçin 12-24 aý"
+      },
+      {
+        "id": "biznes-maýa goýum",
+        "icon": "💼",
+        "title": "Işewürlik we maýa goýum wizalary",
+        "category": "Iş wizalary",
+        "idealFor": "Awstraliýada maýa goýmak ýa-da biznes alyp barmak isleýän şahslar",
+        "duration": "4 ýyl",
+        "pathway": "Wagtlaýyndan hemişelik",
+        "visaTypes": {
+          "0": {
+            "name": "Biznes innowasiýalary we maýa goýum wizasy",
+            "description": "Soňra hemişelik ýaşamaga (888-nji kiçi klas) alyp barýar",
+            "subclass": "188"
+          }
+        },
+        "requirements": {
+          "0": "Üstünlikli biznes ýa-da maýa goýum geçmişi",
+          "1": "Ýaş, iňlis dili we saglyk talaplaryna laýyk gelmek",
+          "2": "Minimal arassa işewürlik we şahsy aktiwler",
+          "3": "Ştat ýa-da territoriýa dalaşgärligi",
+          "4": "Awstraliýada biznesi/maýa goýumlaryny dowam etdirmek borjy"
+        },
+        "benefits": {
+          "0": "Hemişelik ýaşamaga ýol",
+          "1": "Durnukly ykdysadyýetde iş mümkinçilikleri",
+          "2": "Awstraliýa bazaryna giriş",
+          "3": "Çagalar üçin ýokary hilli bilim"
+        },
+        "processingTime": "Ilkinji wiza üçin 8-12 aý"
+      }
+    ],
+    "helper": {
+      "title": "Haýsy wiza size laýyk gelýär?",
+      "scenarios": [
+        {
+          "icon": "🎯",
+          "situation": "Men ussat hünärmen",
+          "description": "Siz isleg bildirilýän hünär boýunça hünär derejäňize eýe",
+          "recommendation": "Hünärmen migrasiýa wizalaryny göz öňünde tutuň (189/190/491)"
+        },
+        {
+          "icon": "💼",
+          "situation": "Meniň iş teklibim bar",
+          "description": "Awstraliýaly iş beriji sizi işe almak isleýär",
+          "recommendation": "Iş beriji tarapyndan maliýeleşdirilýän wizalara ýüz tutuň (482/186)"
+        },
+        {
+          "icon": "🎓",
+          "situation": "Men okamak isleýärin",
+          "description": "Siz Awstraliýada bilim almagy meýilleşdirýärsiňiz",
+          "recommendation": "Iş hukuklary bilen talyp wizasy (500)"
+        },
+        {
+          "icon": "💕",
+          "situation": "Meniň Awstraliýada maşgalam bar",
+          "description": "Siz awstraliýaly bilen durmuş guran ýa-da onuň bilen hyzmatdaşlyk edýän",
+          "recommendation": "Hyzmatdaş wizasy (820/801 ýa-da 309/100)"
+        },
+        {
+          "icon": "🏢",
+          "situation": "Men biznes açmak isleýärin",
+          "description": "Siziň iş tejribäňiz we maýa goýum kapitalyňyz bar",
+          "recommendation": "Biznes innowasiýa wizasy (188)"
+        },
+        {
+          "icon": "🌟",
+          "situation": "Men ýaş we syýahat etmek isleýärin",
+          "description": "Siz 18-30 ýaş aralygynda, hukukly ýurtdan",
+          "recommendation": "Iş dynç alyş wizasy (417/462)"
+        }
+      ]
+    },
+    "processingTimes": {
+      "title": "Häzirki işleniş wagtlary",
+      "averageTime": "Ortaça wagt",
+      "disclaimer": "Işläp çykarmak üçin wagtlar takmynan hasaplanýar we şahsy ýagdaýlara we arzanyň dolylygyna baglylykda üýtgeýär.",
+      "visaTypes": [
+        {
+          "type": "Hünärmen Garaşsyz (189)",
+          "time": "8-12 aý",
+          "note": "Hünär we ballara bagly"
+        },
+        {
+          "type": "Iş beriji tarapyndan goldanylýar (482)",
+          "time": "3-6 aý",
+          "note": "Doly resminamalar bilen has çalt"
+        },
+        {
+          "type": "Talyp (500)",
+          "time": "4-8 hepde",
+          "note": "Iň ýokary wagtlar has uzyn bolup biler"
+        },
+        {
+          "type": "Hyzmatdaş (820/801)",
+          "time": "12-24 aý",
+          "note": "Çylşyrymly işler has köp wagt alýar"
+        },
+        {
+          "type": "Biznes (188)",
+          "time": "8-12 aý",
+          "note": "Döwlet dalaşgärligine dalaşgärlik wagty goşýar"
+        },
+        {
+          "type": "Iş dynç alyşy (417)",
+          "time": "1-4 hepde",
+          "note": "Adatça çalt işlenip düzülýär"
+        }
+      ]
+    }
+  },
+  "ukToAustraliaGuide": {
+    "subtitle": "Bilmeli zatlaryňyz",
+    "description": "Beýik Britaniýadan Awstraliýa göçmek medeni meňzeşlikler, umumy dil we berk ykdysady gatnaşyklar sebäpli meşhurdyr. Şeýle-de bolsa, göçmek üçin meýilnama we dogry wiza gerek. Bu gollanmada aşaky göçmek barada bilmeli ähli zatlar beýan edilýär.",
+    "navigation": {
+      "title": "Çalt nawigasiýa"
+    },
+    "accessibility": {
+      "sectionButton": "{title} bölümine geç"
+    },
+    "sections": [
+      {
+        "id": "näme üçin göçmeli",
+        "icon": "🧳",
+        "title": "Näme üçin Awstraliýa göçmeli?",
+        "content": {
+          "description": "Beýik Britaniýadan Awstraliýa göçmek medeni meňzeşlikler, umumy dil we berk ykdysady gatnaşyklar sebäpli meşhurdyr. Şeýle-de bolsa, göçmek üçin meýilnama we dogry wiza gerek.",
+          "reasons": {
+            "0": "Meňzeş medeniýet we umumy dil",
+            "1": "Güýçli ykdysady mümkinçilikler",
+            "2": "Ýokary hilli ýaşaýyş we açyk howada ýaşaýş",
+            "3": "Has gowy howa we owadan tebigatlar",
+            "4": "Britaniýaly daşary ýurtly jemgyýetleri döredildi"
+          },
+          "conclusion": "Bu göçüş, esasanam wiza we iş mümkinçilikleri babatda ünsli meýilnamalaşdyrmagy talap edýär."
+        }
+      },
+      {
+        "id": "wiza talaplary",
+        "icon": "🛂",
+        "title": "Wiza talaplary",
+        "content": {
+          "description": "Beýik Britaniýanyň raýatlaryna Awstraliýada ýaşamak, işlemek ýa-da okamak üçin wiza gerek. Meşhur wariantlar:",
+          "visaTypes": {
+            "0": {
+              "title": "Hünärmen Garaşsyz Wiza (189-njy kiçi synp)",
+              "description": "Hemaýatkärlige mätäç bolmadyk, ýokary isleg bildirilýän hünärlerde işleýän işçiler üçin",
+              "keyPointsTitle": "Esasy nokatlar:",
+              "keyPoints": {
+                "0": "Ukyplary bahalandyrmakda ýeterlik bal toplamaly",
+                "1": "Sponsor gerek däl",
+                "2": "Hemişelik ýaşamak ýoly",
+                "3": "45 ýaşdan kiçi bolmaly"
+              }
+            },
+            "1": {
+              "title": "Hünärmen dalaşgärlik wizasy (190-njy kiçi klas)",
+              "description": "Döwlet tarapyndan hödürlenen we has çalt işleniş wagty bilen",
+              "keyPoints": {
+                "0": "Awstraliýanyň ştatyndan ýa-da territoriýasyndan dalaşgär görkezilmegi talap edilýär",
+                "1": "Ştat dalaşgärligi üçin goşmaça ballar",
+                "2": "Dalaşgär hökmünde dalaşgär ..."
+              }
+            },
+            "2": {
+              "title": "Iş beriji tarapyndan maliýeleşdirilýän wiza (482-nji kiçi klas)",
+              "description": "Awstraliýa kompaniýasyndan iş teklibi talap edilýär",
+              "keyPoints": {
+                "0": "Wagtlaýyn hünär ýetmezçiligi wizasy",
+                "1": "Iş beriji tassyklanan hemaýatkär bolmaly",
+                "2": "Wezipe hünär ussatlarynyň sanawynda bolmaly",
+                "3": "Belli bir möhletden soň hemişelik ýaşamaga getirip biler"
+              }
+            },
+            "3": {
+              "title": "Iş dynç alyş wizasy (417-nji kiçi klas)",
+              "description": "18-35 ýaş aralygyndakylar üçin, 3 ýyla çenli güýje girýär",
+              "keyPoints": {
+                "0": "Ilki başda 12 aý",
+                "1": "Sebitleýin işler bilen iki gezek uzaldylyp bilner",
+                "2": "Bir iş beriji bilen 6 aýa çenli işlemäge rugsat berýär",
+                "3": "Awstraliýany işe başlamazdan öň tejribe etmegiň gowy usuly"
+              }
+            },
+            "4": {
+              "title": "Hyzmatdaş ýa-da maşgala wizalary",
+              "description": "Eger Awstraliýada ýakyn garyndaşlaryňyz ýa-da hyzmatdaşyňyz bar bolsa",
+              "keyPoints": {
+                "0": "Ousr-aýal ýa-da de-fakto hyzmatdaşlar üçin hyzmatdaş wizasy",
+                "1": "Awstraliýa raýatlarynyň ene-atalary üçin ene-ata wizalary",
+                "2": "Garaşly çagalar üçin çaga wizalary"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "beýleki talaplar",
+        "icon": "🧾",
+        "title": "Başga talaplar",
+        "content": {
+          "requirements": {
+            "0": "Beýik Britaniýanyň ygtyýarly pasporty",
+            "1": "Saglyk barlaglary we häsiýet (polisiýa) şahadatnamasy",
+            "2": "Iňlis dilini bilýändigiňizi subut edýän resminama (käbir wizalar üçin)",
+            "3": "Ukyplaryň ýa-da derejäniň ykrar edilmegi (eger hünärli wiza ugurlary boýunça ýüz tutsaňyz)",
+            "4": "Serişdäniň subutnamasy (esasanam wagtlaýyn ýa-da talyp wizalary üçin)"
+          },
+          "tip": "<strong>Maslahat:</strong> Bu resminamalary ir ýygnamaga başlaň, sebäbi käbir resminamalary (meselem, polisiýa şahadatnamalaryny) almak birnäçe hepde gerek bolup biler."
+        }
+      },
+      {
+        "id": "çykdajyny üýtgedýän",
+        "icon": "💰",
+        "title": "Göçmegiň bahasy",
+        "content": {
+          "description": "Wiza töleglerini, uçar gatnawlaryny, ýaşaýyş jaý goýumlaryny we ilkinji ýaşaýyş çykdajylaryny öz içine alýan 5,000–12,000 funt sterlinge çenli pul harçlamagyňyzy garaşyň.",
+          "tip": "<strong>Maslahat:</strong> Wiza üçin köp arzalar üçin ilki bilen özüňizi üpjün etmek üçin ýeterlik serişdeňiziň bardygyny subut etmek gerek. Bank hasabatlaryny görkezmäge taýýar boluň."
+        }
+      },
+      {
+        "id": "durmuş ýörelgesi",
+        "icon": "🌏",
+        "title": "Durmuş ýörelgesi barada bellikler",
+        "content": {
+          "aspects": {
+            "0": {
+              "title": "Howa",
+              "description": "Howa şertleri dürli-dürli bolýar; Sidneý we Pert ýaly şäherlerde ýazlar yssy bolýar, Melburn bolsa \"bir günde dört möwsüm\" bilen tanalýar. Demirgazyk sebitler tropiki, Tasmaniýa bolsa sowuk."
+            },
+            "1": {
+              "title": "Iş medeniýeti",
+              "description": "Awstraliýada iş medeniýeti rahat, ýöne ýokary hünär standartlary saklanýar. Iş we durmuş deňagramlylygyna gymmatly baha berilýär, köp kärhanalar Beýik Britaniýadan has ir ýapylýar."
+            },
+            "2": {
+              "title": "Saglygy goraýyş",
+              "description": "Döwlet saglygy goraýyş (Medicare) hyzmaty siz ýaşaýjy bolanyňyzdan soň elýeterlidir. Wagtlaýyn wiza eýeleri üçin hususy saglyk ätiýaçlandyrmasy möhüm we köplenç hökmanydyr."
+            },
+            "3": {
+              "title": "Ýaşaýyş çykdajylary",
+              "description": "Sidneý we Melburn ýaly iri şäherlerde, esasanam ýaşaýyş jaýlary üçin ýaşaýyş çykdajylary ýokary. Sebitleýin ýerlerde has elýeterli wariantlar bar, ýöne amatlyklar az."
+            }
+          }
+        }
+      },
+      {
+        "id": "meşhur şäherler",
+        "icon": "🏙️",
+        "title": "Beýik Britaniýadan daşary ýurtlara gidenler üçin meşhur şäherler",
+        "content": {
+          "description": "Awstraliýanyň britaniýaly daşary ýurtlylar üçin meşhur bolan birnäçe şäherleri bar:",
+          "cities": {
+            "0": {
+              "name": "Sidneý",
+              "description": "Awstraliýanyň ajaýyp ýadygärlikleri, owadan kenarlary we janly medeni keşbi bolan iň uly şäheri. Ýaşaýyş çykdajylary iň ýokary, ýöne ajaýyp iş mümkinçilikleri."
+            },
+            "1": {
+              "name": "Melburn",
+              "description": "Ýewropa öwüşginli medeni paýtagt, sungat, kofe medeniýeti we sport çäreleri bilen tanalýar. Sidneýdäki ýaly howa üýtgeýän, ýöne ýaşaýyş jaýlarynyň bahasy biraz arzan."
+            },
+            "2": {
+              "name": "Brisben",
+              "description": "Sidneý ýa-da Melburna garanyňda ösýän ykdysadyýet we has elýeterli ýaşaýyş jaýlary bolan subtropiki howa. Gold Coast we Sunshine Coast şäherlerine golaý rahat ýaşaýyş."
+            },
+            "3": {
+              "name": "Pert",
+              "description": "Iň sünnetli paýtagt şäheri, owadan kenarýakalary we güýçli magdan senagaty. Has izolýasiýa edilen, ýöne ajaýyp ýaşaýyş hilini we güýçli Beýik Britaniýanyň daşary ýurtly jemgyýetini hödürleýär."
+            },
+            "4": {
+              "name": "Adelaida",
+              "description": "Elýeterli ýaşaýyş jaýlary we rahat ýaşaýyş depgini. Şerap sebitleri, festiwallar we maşgala üçin amatly gurşaw bilen tanalýar."
+            },
+            "5": {
+              "name": "Altyn kenar",
+              "description": "Ajaýyp kenarýakalary, ýyly howasy we syýahatçylyk pudagy bilen Beýik Britaniýanyň daşary ýurtly ilaty arasynda meşhur. Ösýän ykdysadyýeti bilen rahat durmuş ýörelgesi."
+            }
+          }
+        }
+      },
+      {
+        "id": "amaly maslahatlar",
+        "icon": "💡",
+        "title": "Amaly maslahatlar",
+        "content": {
+          "tips": {
+            "0": "Mümkin bolsa, gelmezden öň Awstraliýada bank hasabyny açyň",
+            "1": "Salgytlaryň netijelerini öwreniň - Beýik Britaniýa bilen Awstraliýanyň arasynda salgyt ylalaşygy bar",
+            "2": "Göçmegiňiziň wagtyny tomsuň iň gyzgyn döwründen (dekabr-fewral) daşary wagta goýmagy göz öňünde tutuň",
+            "3": "Barmaly şäheriňiz üçin daşary ýurtlylaryň Facebook toparlaryna goşulyň",
+            "4": "Täzelenmeler üçin Beýik Britaniýa hökümetiniň Daşary ýurtlarda ýaşamak gullugyna ýazylyň"
+          },
+          "mainTip": "<strong>Maslahat:</strong> Wiza üçin arza bermek prosesine öňünden başlaň - käbir wizalaryň işlenilmegi 6-12 aý wagt alyp biler."
+        }
+      }
+    ],
+    "costTable": {
+      "headers": {
+        "category": "Çykdajy kategoriýasy",
+        "cost": "Çaklanylýan çykdajy (£)"
+      },
+      "rows": [
+        {
+          "category": "Wiza üçin tölegler",
+          "cost": "1,000–4,000 funt sterling"
+        },
+        {
+          "category": "Uçuşlar (bir taraplaýyn)",
+          "cost": "600–1200 funt sterling"
+        },
+        {
+          "category": "Eşýalary daşamak",
+          "cost": "1500–3000 funt sterling"
+        },
+        {
+          "category": "Ilkinji ýerleşmek",
+          "cost": "1,000–2,000 funt sterling"
+        },
+        {
+          "category": "Ýaşaýyş çykdajylary (ilkinji aý)",
+          "cost": "1,000–1,500 funt sterling"
+        },
+        {
+          "category": "Gyssagly ýagdaýlar üçin serişde",
+          "cost": "1,000–2,000 funt sterling"
+        }
+      ]
+    },
+    "comparison": {
+      "title": "Beýik Britaniýa bilen Awstraliýanyň arasynda çalt deňeşdirme",
+      "aspects": [
+        {
+          "icon": "🌡️",
+          "category": "Howa",
+          "uk": "Salgyn, ýagyşly, 4 möwsüm",
+          "australia": "Yssy, güneşli, ýumşak gyşlar"
+        },
+        {
+          "icon": "💰",
+          "category": "Ýaşaýyş çykdajylary",
+          "uk": "Londonda ýokary, beýleki ýerlerde ortaça",
+          "australia": "Sidneý/Melburnda ýokary, başga ýerlerde has pes"
+        },
+        {
+          "icon": "🏠",
+          "category": "Ýaşaýyş jaýy",
+          "uk": "Kiçi giňişlikler, köne jaýlar",
+          "australia": "Uly giňişlikler, döwrebap jaýlar"
+        },
+        {
+          "icon": "🏥",
+          "category": "Saglygy goraýyş",
+          "uk": "NHS (ulanylanda mugt)",
+          "australia": "Medicare (NHS-e meňzeş)"
+        },
+        {
+          "icon": "💼",
+          "category": "Iş medeniýeti",
+          "uk": "Uzak wagt, has resmi",
+          "australia": "Iş-durmuş deňagramlylygyny gowulandyrmak"
+        },
+        {
+          "icon": "🌍",
+          "category": "Ýerleşýän ýeri",
+          "uk": "Ýewropa golaý",
+          "australia": "Aziýadan daşda, ýöne oňa ýakyn"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Göçmegiň wagty: Gitmezden 12 aý öň",
+      "phases": [
+        {
+          "timeframe": "12 aý öň",
+          "title": "Ylmy-barlag we meýilnamalaşdyryş",
+          "description": "Wiza mümkinçiliklerini öwreniň, hünär derejelerini bahalaň, maksatly şäherleri saýlaň"
+        },
+        {
+          "timeframe": "9-10 aý mundan öň",
+          "title": "Wiza üçin arza",
+          "description": "Wiza üçin arza tabşyryň, başarnyklaryň bahalandyrylmagyny tamamlaň, resminamalary ýygnaň"
+        },
+        {
+          "timeframe": "6-8 aý mundan öň",
+          "title": "Iş gözlemek",
+          "description": "Işe kabul etmek üçin arzalary başlaň, awstraliýaly hünärmenler bilen aragatnaşyk saklaň"
+        },
+        {
+          "timeframe": "3-4 aý mundan öň",
+          "title": "Göçmek üçin tertipler",
+          "description": "Uçuşlary bronlaň, ýük daşamagy gurnaň, wagtlaýyn ýaşaýyş jaýyny üpjün ediň"
+        },
+        {
+          "timeframe": "1-2 aý öň",
+          "title": "Soňky taýýarlyklar",
+          "description": "Awstraliýa bank hasabyny açyň, ätiýaçlandyryşy düzüň, Beýik Britaniýanyň häkimiýetlerine habar beriň"
+        },
+        {
+          "timeframe": "Geliş bilen",
+          "title": "Ýerleşýän ýer",
+          "description": "Hemişelik ýaşaýyş jaýyny tapyň, Medicare-de hasaba duruň, ýerli hyzmatlary ýola goýuň"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Awstraliýa göçmezden öň gutarnykly barlag sanawy",
+      "items": [
+        "Degişli wizany üpjün ediň",
+        "Uçuşlary we iberişi bronlaň",
+        "Wagtlaýyn ýaşaýyş jaýyny gurnaň",
+        "Awstraliýa bank hasabyny açyň",
+        "Saglyk ätiýaçlandyrmasyny gurnaň",
+        "HMRC bilen salgyt ýagdaýyny täzeläň",
+        "Göçmegiňiz barada Beýik Britaniýanyň häkimiýetlerine (NHS, pensiýa, geňeş we ş.m.) habar beriň"
+      ]
+    },
+    "conclusion": {
+      "title": "Awstraliýa göçmek size laýykmy?",
+      "description": "Ajaýyp tebigaty, güýçli ykdysadyýeti we açyk howadaky durmuş ýörelgesi bilen Awstraliýa Beýik Britaniýanyň daşary ýurtlylary üçin ajaýyp ýaşaýyş derejesini hödürleýär. Öýünden uzaklyk we ýaşaýyş çykdajylary kyn bolup bilse-de, köp adamlar göçüp gelmegiň gün şöhlesi, giňişlik we ýerasty mümkinçilikler üçin peýdalydygyny görýärler."
+    }
+  },
+  "petsToAustralia": {
+    "description": "Öý haýwanlaryňyzy Awstraliýa getirmek mümkin, ýöne berk biohowpsuzlyk düzgünleri sebäpli giňişleýin meýilnamalaşdyrmagy talap edýär. Awstraliýanyň berk karantin ulgamy onuň özboluşly ekosistemasyny daşary ýurt kesellerinden we zyýankeşlerinden goraýar.",
+    "navigation": {
+      "title": "Öý haýwanlary üçin syýahat gollanmasy"
+    },
+    "accessibility": {
+      "sectionButton": "{title} baradaky bölümi görüň"
+    },
+    "sections": [
+      {
+        "id": "esasy talaplar",
+        "icon": "✅",
+        "title": "Esasy talaplar",
+        "content": {
+          "requirements": {
+            "0": {
+              "title": "Ýaragly öý haýwanlary",
+              "description": "Awstraliýa diňe käbir haýwanlara girmäge rugsat berilýär:",
+              "list": {
+                "0": "Itler (Pitbul Terrier ýaly käbir tohumlardan başga)",
+                "1": "Pişikler (F1-F4 nesilleriniň Sawanna pişiklerinden başga)",
+                "2": "Beýleki öý haýwanlaryna, adatça, rugsat berilmeýär"
+              }
+            },
+            "1": {
+              "title": "Tassyklanan gelip çykyş ýurdy",
+              "description": "Haýwanyňyz tassyklanan ýurtdan bolmaly. Beýik Britaniýa 3-nji kategoriýadaky ýurt hökmünde klassifikasiýa edilýär, bu bolsa anyk talaplary kesgitleýär."
+            },
+            "2": {
+              "title": "Mikroçipleme",
+              "description": "Haýwanyňyza islendik sanjymdan ýa-da gan barlaglaryndan öň ISO standartlaryna laýyk gelýän mikroçip goýulmaly."
+            },
+            "3": {
+              "title": "Guduzlama garşy waksinasiýa we barlag",
+              "description": "Guduzlama garşy sanjymdan soň Guduzlama Neýtrallaşdyryjy Antitel Titr Testi (RNATT) talap edilýär.",
+              "highlight": "RNATT Awstraliýa girmezden azyndan 180 gün öň ýerine ýetirilmeli."
+            },
+            "4": {
+              "title": "Import üçin rugsatnama",
+              "description": "Siz Awstraliýanyň Oba hojalyk, suw we daşky gurşaw ministrliginden import rugsatnamasyny almalysyňyz.",
+              "highlight": "Syýahatdan azyndan <span class=\"font-medium\">42 gün öň</span> ýüz tutuň."
+            },
+            "5": {
+              "title": "Goşmaça bejergiler",
+              "description": "Syýahatdan soňky birnäçe günüň içinde öý haýwanyňyza goşmaça bejergi gerek bolar:",
+              "list": {
+                "0": "Daşarky parazitler (keneler we bürgeler)",
+                "1": "Içki parazitler (gurçuklar)",
+                "2": "Başga ýörite synaglar we bejeriş usullary"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "wagt tertibi",
+        "icon": "📅",
+        "title": "Wagt çyzgysy we meýilnamalaşdyryş",
+        "content": {
+          "description": "Öý haýwanlaryny Awstraliýa getirmek üçin azyndan 7-8 aýlyk taýýarlyk gerek.",
+          "phases": {
+            "0": {
+              "timeframe": "Syýahatdan 7+ aý öň",
+              "tasks": {
+                "0": "Haýwanyňyzyň import üçin laýyklygyny tassyklaň",
+                "1": "Mikroçipiň ISO standartlaryna laýyk gelýändigine göz ýetiriň",
+                "2": "Guduzlama garşy sanjymlary barlaň/täzeläň",
+                "3": "RNATT gan analizini ýazyň (gelmezden azyndan 180 gün öň geçirilmeli)"
+              }
+            },
+            "1": {
+              "timeframe": "Syýahatdan 2-3 aý öň",
+              "tasks": {
+                "0": "Import rugsatnamasy üçin ýüz tutuň (syýahatdan azyndan 42 gün öň)",
+                "1": "Melburnda karantin üçin niýetlenen ýer",
+                "2": "Haýwanlary daşamagy tassyklanan daşaýjy bilen guraň"
+              }
+            },
+            "2": {
+              "timeframe": "Syýahatdan 10-30 gün öň",
+              "tasks": {
+                "0": "Weterinar barlaglarynyň gutardyşyny tamamlaň",
+                "1": "Zerur bolan parazit bejergilerini beriň",
+                "2": "Hökümet weterinarlary tarapyndan tassyklanan resmi saglyk şahadatnamalaryny alyň",
+                "3": "IATA standartlaryna laýyklykda syýahat gutusyny taýýarlaň"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "karantin",
+        "icon": "🔒",
+        "title": "Karantin prosesi",
+        "content": {
+          "warning": "Awstraliýa girýän ähli öý haýwanlary, gelip çykyş ýurduna garamazdan, hökmany karantin döwrüni tamamlamaly<strong>",
+          "keyInfo": {
+            "0": {
+              "icon": "📍",
+              "title": "Giriş Nokady",
+              "description": "Melburn Awstraliýa girýän haýwanlar üçin ýeke-täk giriş portydyr. Haýwanyňyz Melburn howa menziline uçmaly."
+            },
+            "1": {
+              "icon": "⏱️",
+              "title": "Dowamlylyk",
+              "description": "Hökümetiň karantin edarasynda azyndan <span class=\"font-medium\">10 gün</span> bolmaly. Saglyk meseleleri ýüze çyksa, bu möhlet uzaldylyp bilner."
+            }
+          },
+          "details": {
+            "0": {
+              "title": "Karantin edarasy",
+              "description": "Melburndaky girişden soňky karantin (PEQ) edarasy ähli import edilen haýwanlaryň galýan ýeridir. Ol aşakdakylary üpjün edýär:",
+              "list": {
+                "0": "• Howa gözegçiligi bolan esasy ithanalar/pişikhanalar",
+                "1": "• Yzygiderli iýmitlendirme we esasy ideg",
+                "2": "• Weterinar barlaglary we bejergiler",
+                "3": "• Karantin döwründe <span class=\"font-medium\">Ziýarat etmäge rugsat berilmeýär</span>"
+              }
+            },
+            "1": {
+              "title": "Karantinden soň",
+              "description": "Öý haýwanyňyz karantini üstünlikli tamamlandan soň, siz:",
+              "list": {
+                "0": "• Olary Melburndaky desgadan alyň",
+                "1": "• Soňky nokadyňyza çenli içerki ulag gatnawyny gurnaň",
+                "2": "• Öý haýwanyňyzy täze öýüňizde ýerli häkimiýetlerde hasaba alyň"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "çykdajylar",
+        "icon": "💰",
+        "title": "Çaklanylýan çykdajylar",
+        "content": {
+          "description": "Jemi çykdajylar ýerleşýän ýeriňiz we öý haýwanyňyzyň ululygyna baglylykda her öý haýwany üçin 3000 dollardan 7000 AUD-a çenli bolup biler.",
+          "tip": "<strong>Maslahat:</strong> Öý haýwanlaryny daşamak boýunça professional hyzmatdan peýdalanmak bu işi has ýeňilleşdirip biler, ýöne has gymmat. Olar resminama işleri we logistika işlerini ýerine ýetirerler."
+        }
+      },
+      {
+        "id": "öý haýwanlary",
+        "icon": "🐶",
+        "title": "Awstraliýada öý haýwanlarynyň durmuşy",
+        "content": {
+          "description": "Awstraliýa haýwanlary söýýän ýurt bolup, öý haýwanlaryna ideg etmekde ýokary standartlara we öý haýwanlary üçin amatly ýerleriň köp bolmagyna eýedir.",
+          "aspects": {
+            "0": {
+              "icon": "🏥",
+              "title": "Weterinariýa hyzmaty",
+              "description": "Ýokary hilli weterinariýa hyzmaty tutuş ýurt boýunça elýeterlidir. Weterinar lukmanyna ýyllyk baryp görmek adatça 200-400 AUD dollaryna, öý haýwanlarynyň ätiýaçlandyrmasy bolsa aýda 20-60 dollardan başlap elýeterlidir."
+            },
+            "1": {
+              "icon": "📝",
+              "title": "Registrasiýa",
+              "description": "Öý haýwanlary ýerli geňeşlerde hasaba alynmalydyr. Hasaba alyş tölegleri dürli-dürli bolýar, ýöne adatça ýylda 30-150 AUD dollary, jynsy aýrylan öý haýwanlary üçin bolsa arzanladyşlar bar."
+            },
+            "2": {
+              "icon": "🏞️",
+              "title": "Seýilgähler we plýažlar",
+              "description": "Käbir ýurtlardaky düzgünler has berk bolsa-da, köp sanly bellenen zynjyrsyz ýerler bar. Ähli kenarlarda öý haýwanlary bilen üpjün etmek mümkin däl, şonuň üçin ýerli düzgünleri barlaň."
+            },
+            "3": {
+              "icon": "🏠",
+              "title": "Ýaşaýyş jaýy",
+              "description": "Öý haýwanlary üçin amatly kireý jaýlaryny tapmak kyn bolup biler. Öý haýwanlaryny kabul edýän kireý jaýlaryny kireýine almak üçin öý haýwany üçin kepillik (adatça 200-500 AUD dollary) tölemegi garaşyň."
+            }
+          },
+          "warning": "<strong>Möhüm:</strong> Awstraliýanyň özboluşly haýwanat dünýäsi we ekosistemalary bar. Ýerli haýwanlary, esasanam tokaýlyklaryň ýa-da gorag zolaklarynyň golaýyndaky ýerlerde goramak üçin itler we pişikler gözegçilikde saklanmalydyr."
+        }
+      }
+    ],
+    "costTable": {
+      "headers": {
+        "expense": "Çykdajylar",
+        "cost": "Çaklanylýan çykdajy (AUD)"
+      },
+      "rows": [
+        {
+          "expense": "Weterinariýa taýýarlygy (waksinasiýalar, barlaglar, bejergiler)",
+          "cost": "800–1500 dollar"
+        },
+        {
+          "expense": "Import rugsatnamasy",
+          "cost": "480 dollar"
+        },
+        {
+          "expense": "Uçuş biletleri",
+          "cost": "800–2500 dollar"
+        },
+        {
+          "expense": "Karantin tölegleri",
+          "cost": "1200–2000 dollar"
+        },
+        {
+          "expense": "Haýwanlary daşamak hyzmatynyň tölegleri (isleg boýunça)",
+          "cost": "500–1500 dollar"
+        },
+        {
+          "expense": "Karantinden soň içerki ulag",
+          "cost": "200–500 dollar"
+        }
+      ]
+    },
+    "breedRestrictions": {
+      "title": "Çäklendirilen haýwan tohumlary",
+      "note": "Bu tohumlara Awstraliýa girmäge hiç hili ýagdaýda rugsat berilmeýär.",
+      "categories": [
+        {
+          "type": "Gadagan edilen it tohumlary",
+          "breeds": {
+            "0": "Amerikan Pit Bul Terrieri",
+            "1": "Perro de Presa Canario",
+            "2": "Dogo Argentino",
+            "3": "Fila Brasileiro",
+            "4": "Ýapon Tosa",
+            "5": "Bularyň islendik çakyşdyrylan görnüşleri"
+          }
+        },
+        {
+          "type": "Gadagan edilen pişik tohumlary",
+          "breeds": {
+            "0": "Sawanna pişikleri (F1, F2, F3, F4 nesiller)",
+            "1": "Bengal pişikleri (F1, F2, F3 nesiller)",
+            "2": "Çazi pişikleri (F1, F2, F3 nesiller)",
+            "3": "Daş puma pişikleri",
+            "4": "Ýabany pişikler bilen islendik çakyşdyrylan itler"
+          }
+        }
+      ]
+    },
+    "professionalServices": {
+      "title": "Öý haýwanlaryny professional daşamak hyzmatlary",
+      "services": [
+        {
+          "icon": "🚚",
+          "name": "Doly hyzmatly ulag",
+          "description": "Ähli resminamalar bilen birlikde gapydan gapya çenli doly hyzmat",
+          "cost": "3000–6000 AUD dollary"
+        },
+        {
+          "icon": "📋",
+          "name": "Diňe resminamalar",
+          "description": "Rugsatnamalar, saglyk şahadatnamalary we resminamalar bilen kömek",
+          "cost": "800–1500 AUD dollar"
+        },
+        {
+          "icon": "✈️",
+          "name": "Uçuş bronlamasy",
+          "description": "Öý haýwanlarynyň uçuşlaryny bronlamak we utgaşdyrmak üçin ýöriteleşdirilen",
+          "cost": "300–800 AUD dollar"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Awstraliýa öý haýwanlaryny import etmek boýunça barlag sanawy",
+      "items": [
+        "Öý haýwanyňyzyň Awstraliýa import etmäge hukugynyň bardygyny barlaň",
+        "Mikroçipiň ISO standartlaryna laýyk gelýändigine göz ýetiriň",
+        "Guduzlama garşy sanjym we RNATT gan barlagyny (syýahatdan azyndan 180 gün öň) belläp goýuň",
+        "Import rugsatnamasy üçin ýüz tutuň (syýahatdan azyndan 42 gün öň)",
+        "Melburnda karantin merkezinde ýerleşýän ýeri bronlaň",
+        "Haýwanlara rugsat berilýän halkara gatnawyny gurnaň",
+        "Uçmazdan öň saglyk şahadatnamalaryny we bejergileri tamamlaň"
+      ]
+    },
+    "conclusion": {
+      "title": "Öý haýwanyňyz üçin aşakda täze durmuş",
+      "description": "Öý haýwanlaryňyzy Awstraliýa getirmek uly meýilnamalaşdyrmagy, wagt we maliýe maýa goýumlaryny talap etse-de, tüýli maşgala agzaňyzyň täze öýüňize goşulmagynyň sylagy ony peýdaly edýär. Öý haýwanyňyz giriş talaplaryny üstünlikli ýerine ýetirenden soň, Awstraliýa ajaýyp weterinariýa hyzmatlaryny we öý haýwanlaryny söýýän jemgyýeti hödürleýär."
+    }
+  }
+}

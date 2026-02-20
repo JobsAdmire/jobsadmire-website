@@ -1,0 +1,54 @@
+{
+  "header": {
+    "badge": "Procédure d'obtention d'un permis de séjour en Chine",
+    "title": {
+      "yourStepByStep": "Votre chemin pas à pas vers",
+      "chinaResidencePermit": "Permis de séjour en Chine",
+      "success": "succès"
+    },
+    "description": "Nous simplifions la procédure complexe d'obtention d'un visa pour la Chine grâce à notre approche éprouvée en quatre étapes, qui garantit que votre demande répond à toutes les exigences de l'immigration chinoise."
+  },
+  "stages": {
+    "consultation": {
+      "title": "Consultation et évaluation initiales",
+      "description": "Nos spécialistes de l'immigration en Chine évaluent votre éligibilité et vous fournissent des informations détaillées sur les conditions d'obtention du permis de séjour en Chine et sur les possibilités de visa."
+    },
+    "documentPreparation": {
+      "title": "Préparation et examen des documents",
+      "description": "Nous vous aidons à rassembler tous les documents requis, en veillant à ce qu'ils soient conformes aux normes d'immigration chinoises et à ce qu'ils soient correctement authentifiés et notariés."
+    },
+    "applicationSubmission": {
+      "title": "Soumission et suivi des demandes",
+      "description": "Notre équipe juridique soumet votre demande de permis de résidence en Chine et vous apporte un soutien continu tout au long du processus de traitement par le PSB (Bureau de la sécurité publique)."
+    },
+    "permitApproval": {
+      "title": "Approbation et enregistrement du permis de séjour",
+      "description": "Nous vous aidons à franchir les dernières étapes, y compris l'examen médical, l'enregistrement de la résidence temporaire et veillons à ce que vous receviez votre permis de séjour en Chine."
+    }
+  },
+  "images": {
+    "greatWall": {
+      "alt": "Grande Muraille de Chine",
+      "location": "Grande Muraille",
+      "description": "Ancienne merveille de la Chine"
+    },
+    "shanghai": {
+      "alt": "L'horizon de Shanghai",
+      "location": "Shanghai",
+      "description": "Un centre financier moderne"
+    },
+    "forbiddenCity": {
+      "alt": "Cité interdite Pékin",
+      "location": "Pékin",
+      "description": "Complexe du palais impérial"
+    },
+    "temple": {
+      "alt": "Temple chinois traditionnel",
+      "location": "Chine traditionnelle",
+      "description": "Sites du patrimoine culturel"
+    }
+  },
+  "floatingBadge": {
+    "permitsProcessing": "Traitement des permis"
+  }
+}

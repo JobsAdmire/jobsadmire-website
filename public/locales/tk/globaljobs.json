@@ -1,0 +1,289 @@
+{
+  "globaljob": {
+    "hero": {
+      "headline": {
+        "prefix": "Özüňizi tapyň",
+        "suffix": "Daşary ýurtlarda"
+      },
+      "animatedWords": [
+        "Arzuw işi",
+        "Karýera",
+        "Mümkinçilik",
+        "Wezipe",
+        "Geljek",
+        "Üstünlik"
+      ],
+      "description": "Halkara iş orunlaryny ýerleşdirmek hyzmatlarymyz arkaly dünýäniň öňdebaryjy iş berijileri bilen habarlaşyň. Şahsylaşdyrylan iş orunlaryny saýlamakdan başlap, wiza goldawyna çenli - biz siziň global karýera arzuwlaryňyzy hakykata öwürýäris.",
+      "cta": {
+        "text": "Global mümkinçilikleri tapyň"
+      }
+    },
+    "showcase": {
+      "title": "Global iş orunlaryny ýerleşdirmek",
+      "subtitle": "Halkara karýera mümkinçiliklerine açylýan derwezeňiz",
+      "worldMap": {
+        "countries": "200+ ýurt",
+        "description": "Sizi global iş mümkinçilikleri garaşýar"
+      },
+      "benefits": [
+        {
+          "iconKey": "portfel",
+          "title": "Işi deňeşdirmek",
+          "description": "Kämil rol gözleýji",
+          "gradient": "bg-gradient-to-r from-zumrud-500 to-temiz-600"
+        },
+        {
+          "iconKey": "ulanyjylar",
+          "title": "Wiza goldawy",
+          "description": "Doly kömek",
+          "gradient": "bg-gradient-to-r from-blue-500 to-asman-600"
+        },
+        {
+          "iconKey": "mapPin",
+          "title": "Göçmek",
+          "description": "Ýumşak geçiş",
+          "gradient": "bg-gradient-dan-r-a-purple-500-den-indigo-600-a"
+        },
+        {
+          "iconKey": "daşarky baglanyşyk",
+          "title": "Tor",
+          "description": "Global baglanyşyklar",
+          "gradient": "bg-gradient-to-r-a-apelsin-500-den-gyzyl-600-e"
+        }
+      ]
+    },
+    "section": {
+      "header": {
+        "badge": "Dünýä boýunça kompaniýalar tarapyndan ynamdar",
+        "title": {
+          "prefix": "Global iş",
+          "highlight": "Ýerleşdiriş"
+        },
+        "description": "Hünärmençilik taýdan taýýarlanan rezyume bilen iş berijilerde täsirli täsir galdyrmagyň wagty geldi. Biz her bir rezyumeni maksatlaryňyza we isleýän pudagyňyzyň garaşmalaryna laýyk getirip, global işe alyş hyzmatlary bilen üstünlik gazanmak mümkinçiligiňizi artdyrýarys."
+      },
+      "journey": {
+        "title": "Siziň hünär syýahatyňyz şu ýerden başlaýar",
+        "features": [
+          {
+            "title": "Şahsylaşdyrylan Rezyume Döretmek",
+            "description": "CV diňe iş taryhyňyz däl. Biz her bir rezyumeni siziň geçirip boljak başarnyklaryňyzy görkezmek we pudagyň garaşýan zatlaryna, esasanam daşary ýurtlarda hünärmenler üçin iş orunlaryna laýyk getirmek üçin taýýarlaýarys."
+          },
+          {
+            "title": "Global Iş Beriji Aragatnaşyklary",
+            "description": "Halkara zehinli işgärleri işe alýan öňdebaryjy global kompaniýalaryň giň ulgamymyz, siziň başarnyklaryňyzy islegleriňize laýyk gelýän halkara karýera mümkinçilikleri bilen utgaşdyrmagy üpjün edýär."
+          },
+          {
+            "title": "Karýera ösüşini goldamak",
+            "description": "Biz size diňe iş tapmaga kömek bermän, eýsem, daşary ýurtda iş tapmak üçin ädimme-ädim goldaw berip, başarnyklaryňyz we islegleriňiz bilen ösýän karýera ýoluny gurmak üçin siziň bilen hyzmatdaşlyk edýäris."
+          }
+        ],
+        "cta": {
+          "text": "Hyzmatlarymyzy öwreniň"
+        }
+      },
+      "testimonials": {
+        "title": "Üstünlik hekaýalary",
+        "reviews": [
+          {
+            "comment": "\"Biz \"Jobs Admire\" bilen hyzmatdaşlyk edýänçämiz hünärli işçileri tapmakda kynçylyk çekdik. Olaryň platformasy bize zerurlyklarymyza doly laýyk gelýän ygtybarly dalaşgärleri hödürledi.\"",
+            "name": "Mehmet K.",
+            "role": "Biznes eýesi",
+            "initials": "MK"
+          },
+          {
+            "comment": "\"Jobs Admire maňa belli bir zawodda durnukly iş tapmaga kömek etdi. Bu proses gowy geçdi we olaryň topary meni her ädimde ýol görkezdi. Indi meniň ygtybarly girdejim bar!\"",
+            "name": "Ahmed R.",
+            "role": "Ýerleşdiriş Alyjysy",
+            "initials": "AR"
+          }
+        ]
+      },
+      "contact": {
+        "title": "Geliň, baglanyşyk guralyň",
+        "subtitle": "Global karýeraňyza tarap ilkinji ädimi ädiň",
+        "form": {
+          "name": {
+            "label": "Siziň adyňyz*",
+            "placeholder": "Adyňyzy giriziň"
+          },
+          "email": {
+            "label": "E-poçta salgysy*",
+            "placeholder": "E-poçta salgyňyzy giriziň"
+          },
+          "message": {
+            "label": "Habar*",
+            "placeholder": "Habaryňyzy giriziň"
+          },
+          "submit": "Iber"
+        }
+      }
+    },
+    "careerHorizons": {
+      "header": {
+        "badge": "Global Karýera Çözgütleri",
+        "title": {
+          "prefix": "Siziň giňeltmegiňiz",
+          "highlight": "Karýera mümkinçilikleri"
+        },
+        "description": "Bäsdeşlikli global bazarda dogry iş tapmak kyn bolup biler. JobsAdmire-de biz zehinli hünärmenleri dünýä boýunça iş mümkinçilikleri bilen baglanyşdyrýarys we başarnyklaryňyza, tejribäňize we karýera maksatlaryňyza laýyk gelýän sylagly wezipeleri gazanmaga kömek edýäris. Pakistandan, Hindistandan ýa-da Filippinlerden bolsaňyzam, Pakistandan we beýleki sebitlerden global iş orunlarymyz her bir hünärmene üstünlik gazanmak üçin adalatly mümkinçilik berýär."
+      },
+      "worldMap": {
+        "title": "Global Tor",
+        "locations": [
+          {
+            "name": "Nýu-Ýork",
+            "id": 1,
+            "color": "#3B82F6",
+            "size": 6,
+            "delay": 0
+          },
+          {
+            "name": "London",
+            "id": 2,
+            "color": "#10B981",
+            "size": 8,
+            "delay": 2
+          },
+          {
+            "name": "Tokio",
+            "id": 3,
+            "color": "#8B5CF6",
+            "size": 7,
+            "delay": 1
+          },
+          {
+            "name": "Singapur",
+            "id": 4,
+            "color": "#F59E0B",
+            "size": 6,
+            "delay": 3
+          },
+          {
+            "name": "Sidneý",
+            "id": 5,
+            "color": "#EF4444",
+            "size": 7,
+            "delay": 4
+          },
+          {
+            "name": "Berlin",
+            "id": 6,
+            "color": "#6366F1",
+            "size": 5,
+            "delay": 5
+          }
+        ]
+      },
+      "hiring": {
+        "title": {
+          "prefix": "Kynçylyksyz işe alma,",
+          "highlight": "Dünýäniň islendik ýerinde"
+        },
+        "description": "Täze ýurtda iş gözleýän bolsaňyz ýa-da pudagyňyzda ösüş edýän bolsaňyz, daşary ýurtlarda iş bilen üpjünçilik boýunça maslahat beriş hyzmatlarymyz hünärmen maslahatlaryny, halkara işçi güýjüni işe ýerleşdirmegi we iş gözleg strategiýalaryny hödürleýär.",
+        "benefits": [
+          {
+            "iconKey": "faýlText",
+            "title": "Rezüme optimizasiýasy",
+            "description": "Halkara dalaşgärleriň iş orunlarynda üstünlik gazanmagyny üpjün etmek üçin pudaga degişli açar sözler bilen ýerli bazarlar üçin taýýarlanyldy."
+          },
+          {
+            "iconKey": "mikrofon",
+            "title": "Söhbetdeşlige taýýarlyk",
+            "description": "Halkara derejesinde hünärmenler üçin iş orunlarynda tapawutlanmak üçin maksatly ýerleşýän ýeriňiz üçin medeni düşünjeleri öz içine alýan tälim beriş sessiýalary."
+          },
+          {
+            "iconKey": "globus",
+            "title": "Wiza kömegi",
+            "description": "Filippinliler, hindililer we pakistanly hünärmenler üçin daşary ýurtlarda iş mümkinçiliklerini üpjün etmek üçin wiza we göçmek prosesinde hünärmenlerden maslahat."
+          }
+        ],
+        "fastTrack": {
+          "title": "Çalt yzarlaýyş prosesi",
+          "description": "Biziň ýönekeýleşdirilen çemeleşmegimiz täze wezipäňize çalt we netijeli geçmegiňizi üpjün edýär."
+        },
+        "cta": {
+          "text": "Hyzmatlarymyzy öwreniň"
+        }
+      },
+      "features": {
+        "title": "Bizi tapawutlandyrýan zatlar",
+        "subtitle": "Biziň toplumlaýyn çemeleşmämiz, karýera ýoluňyzda zerur bolan ähli goldawy üpjün edýär",
+        "items": [
+          {
+            "iconKey": "nyşana",
+            "title": "Şahsylaşdyrylan strategiýa",
+            "description": "Siziň özboluşly maksatlaryňyza we hünärli işçiler üçin daşary ýurtlarda işe ýerleşdirilmegine esaslanýan karýera ýol kartasy.",
+            "color": "tekst-[#38B6FF]"
+          },
+          {
+            "iconKey": "barChart4",
+            "title": "Senagat maglumatlary",
+            "description": "Bazar meýilleri we isleg bildirilýän başarnyklar baradaky hünärmen bilimi bize global işe alyş çözgütlerini hödürlemäge kömek edýär.",
+            "color": "tekst-[#38B6FF]"
+          },
+          {
+            "iconKey": "trendUp",
+            "title": "Global baglanyşyklar",
+            "description": "Siziň ýaly hünärmenleri gözleýän halkara iş berijileriniň giň ulgamyna giriş.",
+            "color": "tekst-[#38B6FF]"
+          }
+        ]
+      },
+      "jobSeekers": {
+        "title": "Iş gözleýänler üçin",
+        "premiumService": "Premium hyzmat",
+        "learnMore": "Hakda has köp öwreniň",
+        "services": [
+          {
+            "iconKey": "ulanyjy",
+            "title": "Karýera boýunça görkezme",
+            "description": "Biziň hünärmenlerimiz daşary ýurtlarda iş tapmak we halkara karýera ýoluňyzy goldamak boýunça size maslahat bermäge taýýar.",
+            "color": "tekst-[#38B6FF]",
+            "bgColor": "bg-zumrud-50",
+            "borderColor": "serhet-[#38B6FF]",
+            "gradientFrom": "zumrud-50-den",
+            "gradientTo": "to-[#38B6FF]0",
+            "accentColor": "bg-[#38B6FF]",
+            "id": 0
+          },
+          {
+            "iconKey": "faýlText",
+            "title": "Rezyume gurmak",
+            "description": "Biziň hünärmenlerimiz daşary ýurtlarda iş bilen üpjünçilik hyzmaty arkaly iş berijileriň ünsüni çekýän göze ilýän rezýume döretmäge kömek ederler.",
+            "color": "tekst-[#38B6FF]",
+            "bgColor": "bg-blue-50",
+            "borderColor": "serhet-[#38B6FF]",
+            "gradientFrom": "gök-50-den",
+            "gradientTo": "to-[#38B6FF]",
+            "accentColor": "bg-[#38B6FF]",
+            "id": 1
+          },
+          {
+            "iconKey": "gözleg",
+            "title": "Baha beriş",
+            "description": "Biz siziň hünär derejäňizi bahalandyrýarys we sizi halkara dalaşgärler üçin iň gowy global iş orunlary bilen utgaşdyrýarys.",
+            "color": "tekst-[#38B6FF]",
+            "bgColor": "bg-indigo-50",
+            "borderColor": "serhet-[#38B6FF]",
+            "gradientFrom": "indigo-50-den",
+            "gradientTo": "to-[#38B6FF]",
+            "accentColor": "bg-[#38B6FF]",
+            "id": 2
+          },
+          {
+            "iconKey": "mikrofon",
+            "title": "Söhbetdeşlige taýýarlyk",
+            "description": "Biziň hünärmenlerimiz halkara iş orunlaryna ýerleşdirmek maksatnamalarynda üstünlik gazanmagyňyzy we tapawutlanmagyňyzy üpjün etmek üçin sizi her bir söhbetdeşlik görnüşine taýýarlaýarlar.",
+            "color": "tekst-[#38B6FF]",
+            "bgColor": "bg-purple-50",
+            "borderColor": "serhet-[#38B6FF]",
+            "gradientFrom": "[#38B6FF]-den",
+            "gradientTo": "to-[#38B6FF]",
+            "accentColor": "bg-purple-500",
+            "id": 3
+          }
+        ]
+      }
+    }
+  }
+}

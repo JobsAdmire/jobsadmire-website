@@ -1,0 +1,2067 @@
+{
+  "heroSection": {
+    "badge": "Voyages exclusifs",
+    "title": "Découvrez votre prochaine aventure",
+    "description": "Découvrez des destinations à couper le souffle et créez des souvenirs inoubliables grâce à nos forfaits de voyage haut de gamme adaptés à vos désirs.",
+    "currentlyViewing": "En cours de visualisation",
+    "featuredAlt": "Destination à l'honneur",
+    "destinationCounter": "Destination {actuelle}/{total}",
+    "controlsAria": "Aller à la destination {index}",
+    "buttons": {
+      "explore": "Explorer maintenant",
+      "viewAll": "Voir toutes les destinations"
+    },
+    "destinations": [
+      {
+        "img": "/images/Sydney.png",
+        "name": "Sydney",
+        "country": "Australie"
+      },
+      {
+        "img": "/images/Melbourne.png",
+        "name": "Melbourne",
+        "country": "Australie"
+      },
+      {
+        "img": "/images/Brisbane.png",
+        "name": "Brisbane",
+        "country": "Australie"
+      },
+      {
+        "img": "/images/Perth.png",
+        "name": "Perth",
+        "country": "Australie"
+      },
+      {
+        "img": "/images/Adelaide.png",
+        "name": "Adélaïde",
+        "country": "Australie"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableOfContents": {
+    "header": {
+      "title": "Table des matières",
+      "subtitle": "Naviguer dans les sections"
+    },
+    "status": {
+      "currentlyReading": "Lecture en cours"
+    },
+    "footer": {
+      "sectionsCount": "{count} sections à explorer"
+    },
+    "accessibility": {
+      "toggleMenu": "Menu de navigation"
+    },
+    "sections": [
+      {
+        "title": "Faits concernant la Turquie",
+        "id": 1
+      },
+      {
+        "title": "Options de visa pour s'installer en Turquie",
+        "id": 2
+      },
+      {
+        "title": "Conditions à remplir pour s'installer en Turquie",
+        "id": 3
+      },
+      {
+        "title": "Obtenir un emploi en Turquie en tant qu'étranger",
+        "id": 4
+      },
+      {
+        "title": "Déménager des États-Unis vers la Turquie",
+        "id": 5
+      },
+      {
+        "title": "Déménager en Turquie depuis le Royaume-Uni",
+        "id": 6
+      },
+      {
+        "title": "Quel est le coût d'un déménagement en Turquie ?",
+        "id": 7
+      },
+      {
+        "title": "Déménager avec des animaux de compagnie en Turquie",
+        "id": 8
+      }
+    ]
+  },
+  "australiaFacts": {
+    "description": "Explorez les caractéristiques fascinantes de l'Australie, un continent-pays unique connu pour ses paysages remarquables, sa faune et sa diversité culturelle.",
+    "navigation": {
+      "title": "Explorer les faits",
+      "previous": "Fait précédent",
+      "next": "Fait suivant"
+    },
+    "allFacts": {
+      "title": "Tous les faits sur l'Australie"
+    },
+    "accessibility": {
+      "factButton": "Voir les faits concernant {titre}",
+      "previousFact": "Aller au fait précédent",
+      "nextFact": "Aller au fait suivant"
+    },
+    "facts": [
+      {
+        "title": "Île continent",
+        "description": "L'Australie est à la fois un pays et un continent - le sixième plus grand pays du monde en termes de superficie.",
+        "emoji": "🌏",
+        "id": 1
+      },
+      {
+        "title": "Une faune unique",
+        "description": "Il abrite des animaux que l'on ne trouve nulle part ailleurs, comme les kangourous, les koalas et l'ornithorynque.",
+        "emoji": "🦘",
+        "id": 2
+      },
+      {
+        "title": "Grande Barrière de Corail",
+        "description": "Situé au large de la côte du Queensland, il s'agit du plus grand système de récifs coralliens au monde, visible depuis l'espace.",
+        "emoji": "🌊",
+        "id": 3
+      },
+      {
+        "title": "Population multiculturelle",
+        "description": "Plus de 30 % des Australiens sont nés à l'étranger, ce qui en fait l'un des pays les plus diversifiés au monde.",
+        "emoji": "🌍",
+        "id": 4
+      },
+      {
+        "title": "Pas de langue officielle",
+        "description": "Si l'anglais est la langue de facto, l'Australie n'a pas de langue officielle en vertu de la loi.",
+        "emoji": "🗣️",
+        "id": 5
+      }
+    ],
+    "statistics": {
+      "title": "L'Australie en chiffres",
+      "items": [
+        {
+          "icon": "📏",
+          "label": "Surface totale",
+          "value": "7,7 millions de km²",
+          "description": "6ème pays le plus grand du monde"
+        },
+        {
+          "icon": "👥",
+          "label": "Population",
+          "value": "25,7 millions d'euros",
+          "description": "A partir de 2023"
+        },
+        {
+          "icon": "🏙️",
+          "label": "Le capital",
+          "value": "Canberra",
+          "description": "Ni Sydney ni Melbourne !"
+        },
+        {
+          "icon": "💰",
+          "label": "Monnaie",
+          "value": "Dollar australien",
+          "description": "AUD"
+        },
+        {
+          "icon": "🕐",
+          "label": "Fuseaux horaires",
+          "value": "3 zones principales",
+          "description": "AWST, ACST, AEST"
+        },
+        {
+          "icon": "🗺️",
+          "label": "États et territoires",
+          "value": "8 total",
+          "description": "6 États + 2 territoires"
+        }
+      ]
+    },
+    "didYouKnow": {
+      "title": "Le saviez-vous ?",
+      "items": [
+        "L'Australie compte plus d'espèces de serpents venimeux que n'importe quel autre pays.",
+        "La Grande Barrière de Corail abrite plus de <strong>1 500 espèces de poissons</strong>.",
+        "Melbourne a été la capitale de l'Australie de 1901 à 1927, avant Canberra.",
+        "L'Australie est le seul pays qui soit également un continent.",
+        "Le pays compte plus de <strong>10 000 plages</strong> - vous pourriez en visiter une chaque jour pendant 27 ans !",
+        "L'Australie exporte des chameaux vers l'Arabie saoudite (il y a plus d'un million de chameaux sauvages en Australie)."
+      ]
+    }
+  },
+  "movingCosts": {
+    "description": "Le coût total d'un déménagement en Australie varie en fonction de votre situation, mais voici une ventilation générale des dépenses auxquelles vous serez confronté(e) lors de votre installation dans ce pays.",
+    "costSections": [
+      {
+        "id": "vols",
+        "icon": "✈️",
+        "title": "Vols",
+        "amount": "800 $ - 2 000 $ US",
+        "details": "Aller simple, en classe économique, selon l'origine et la saison",
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "frais de visa",
+        "icon": "🛂",
+        "title": "Frais de visa",
+        "amount": "710 $ - 8 850 $ AUD.",
+        "details": "Variations importantes en fonction du type de visa",
+        "color": "bg-sky-600",
+        "subItems": [
+          {
+            "title": "Visa pour personnes qualifiées",
+            "amount": "4 000 $ - 4 500 $ AUD."
+          },
+          {
+            "title": "Visa de partenaire",
+            "amount": "8 850 $ AUD"
+          },
+          {
+            "title": "Visa étudiant",
+            "amount": "710 AUD"
+          },
+          {
+            "title": "Visa Vacances-Travail",
+            "amount": "495 AUD"
+          }
+        ]
+      },
+      {
+        "id": "expédition",
+        "icon": "📦",
+        "title": "Expédition des biens",
+        "amount": "2 000 À 7 000 DOLLARS AMÉRICAINS",
+        "details": "En fonction de la taille du conteneur et de la distance",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "logement",
+        "icon": "🏠",
+        "title": "Logement initial",
+        "amount": "1 500 $ - 3 000 $ AUD",
+        "details": "Caution + 1 mois de loyer pour un appartement modeste",
+        "color": "bg-sky-500",
+        "subItems": [
+          {
+            "title": "Sydney/Melbourne (mensuel)",
+            "amount": "1 800 $ - 2 500 $ AUD."
+          },
+          {
+            "title": "Brisbane/Perth (mensuel)",
+            "amount": "1 500 $ - 2 000 $ AUD"
+          },
+          {
+            "title": "Zones régionales (mensuel)",
+            "amount": "1 000 $ - 1 500 $ AUD."
+          }
+        ]
+      },
+      {
+        "id": "autres coûts",
+        "icon": "🧾",
+        "title": "Autres coûts",
+        "amount": "500 $ - 1 500 $ US",
+        "details": "Contrôles de santé, assurances, traduction de documents, etc.",
+        "color": "bg-sky-600",
+        "subItems": [
+          {
+            "title": "Assurance maladie",
+            "amount": "100-$200 AUD/mois"
+          },
+          {
+            "title": "Traduction de documents",
+            "amount": "50 $ - 200 $ AUD"
+          },
+          {
+            "title": "Mise en place du transport",
+            "amount": "200-$500 AUD"
+          },
+          {
+            "title": "Premières provisions et fournitures",
+            "amount": "200-$400 AUD"
+          }
+        ]
+      }
+    ],
+    "totalCost": {
+      "title": "Total estimé (personne seule)",
+      "approaches": [
+        {
+          "title": "Approche budgétaire",
+          "amount": "8 000 À 12 000 DOLLARS AMÉRICAINS",
+          "description": "Frais de port réduits, ville moins chère, vacances-travail ou visa d'étudiant"
+        },
+        {
+          "title": "Déménagement complet",
+          "amount": "15 000 À 20 000 DOLLARS AMÉRICAINS",
+          "description": "Expédition complète, grande ville, visa de travailleur qualifié ou de partenaire"
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Conseils pour économiser de l'argent",
+      "tips": [
+        {
+          "title": "Tenir compte des zones régionales",
+          "description": "Vivre en dehors des grandes villes comme Sydney et Melbourne permet d'économiser 30 à 40 % sur le coût du logement."
+        },
+        {
+          "title": "Vendre avant d'expédier",
+          "description": "Les frais d'expédition sont élevés - envisagez de vendre des meubles volumineux et d'acheter en Australie."
+        },
+        {
+          "title": "Réserver des vols de manière stratégique",
+          "description": "Prenez l'avion pendant la saison intermédiaire (mai ou octobre) pour économiser jusqu'à 30 % sur le prix du billet d'avion."
+        },
+        {
+          "title": "Vacances-travail d'abord",
+          "description": "Si vous êtes éligible, commencez par un visa Vacances-Travail avant de demander des visas plus onéreux."
+        }
+      ]
+    },
+    "additionalConsiderations": {
+      "title": "Autres considérations",
+      "items": [
+        {
+          "label": "Fluctuations des taux de change",
+          "description": "Les taux de change entre votre monnaie nationale, l'AUD, et l'USD peuvent avoir un impact significatif sur vos coûts totaux."
+        },
+        {
+          "label": "Taille de la famille",
+          "description": "Ajoutez environ 30 à 50 % au devis total pour chaque membre supplémentaire de la famille."
+        },
+        {
+          "label": "Animaux de compagnie",
+          "description": "L'importation d'animaux de compagnie en Australie peut coûter entre 2 000 et 4 000 dollars par animal en raison des exigences strictes en matière de quarantaine."
+        },
+        {
+          "label": "Période de recherche d'emploi",
+          "description": "Prévoyez un budget de 1 à 3 mois de frais de subsistance pendant votre recherche d'emploi si vous n'avez pas d'emploi assuré."
+        }
+      ]
+    },
+    "calculator": {
+      "title": "Facteurs de planification des coûts",
+      "description": "Tenez compte de ces facteurs clés lorsque vous planifiez votre budget de déménagement :",
+      "factors": [
+        {
+          "icon": "📍",
+          "title": "Ville de destination",
+          "description": "Sydney et Melbourne sont 40 à 50 % plus chers que les zones régionales",
+          "impact": "Impact élevé sur les coûts"
+        },
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "title": "Taille de la famille",
+          "description": "Chaque personne supplémentaire augmente le coût total de 30 à 50 %.",
+          "impact": "Facteur de coût important"
+        },
+        {
+          "icon": "⏰",
+          "title": "Chronologie",
+          "description": "Les déménagements précipités coûtent 20 à 30 % de plus que les déménagements planifiés",
+          "impact": "Impact modéré"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Calendrier des frais de déménagement",
+      "phases": [
+        {
+          "timeframe": "12 à 18 mois avant",
+          "title": "Planification initiale et demande de visa",
+          "description": "Recherche, demande de visa, évaluation des compétences",
+          "estimatedCost": "2 000 À 5 000 $ AUD."
+        },
+        {
+          "timeframe": "6-12 mois avant",
+          "title": "Documentation et préparation",
+          "description": "Contrôles sanitaires, contrôles de police, traductions de documents",
+          "estimatedCost": "500 $ - 1 500 $ AUD"
+        },
+        {
+          "timeframe": "3-6 mois avant",
+          "title": "Logistique et réservations",
+          "description": "Réservations de vols, arrangements maritimes, hébergement temporaire",
+          "estimatedCost": "3 000 À 8 000 DOLLARS AMÉRICAINS"
+        },
+        {
+          "timeframe": "1-3 mois avant",
+          "title": "Préparatifs finaux",
+          "description": "Assurances, paiements finaux, arrangements de dernière minute",
+          "estimatedCost": "1 000 À 3 000 $ AUD."
+        },
+        {
+          "timeframe": "À l'arrivée",
+          "title": "Frais de règlement",
+          "description": "Dépôt de garantie, achats initiaux, mise en place du transport",
+          "estimatedCost": "2 000 À 5 000 $ AUD."
+        }
+      ]
+    },
+    "conclusion": "Bien que s'installer en Australie représente un investissement important, de nombreux expatriés estiment que la qualité de vie élevée, l'économie solide et l'environnement magnifique en valent la peine. Une planification et une budgétisation adéquates vous aideront à assurer une transition en douceur vers votre nouvelle vie en Australie."
+  },
+  "jobGuide": {
+    "subtitle": "Un guide complet",
+    "description": "L'Australie offre de nombreuses possibilités aux travailleurs étrangers qualifiés, mais pour trouver un emploi, il faut se préparer et répondre aux exigences des employeurs et des visas.",
+    "navigation": {
+      "title": "Contenu du guide"
+    },
+    "accessibility": {
+      "sectionButton": "Voir la section concernant {titre}"
+    },
+    "sections": [
+      {
+        "id": "droit au travail",
+        "icon": "✅",
+        "title": "1. Le droit au travail",
+        "content": {
+          "description": "Vous avez besoin d'un visa de travail valide. Options courantes :",
+          "visaOptions": [
+            "<strong>Visa de pénurie temporaire de compétences (TSS) (sous-classe 482)</strong>",
+            "<strong>Visa indépendant pour travailleurs qualifiés (sous-classe 189)</strong>",
+            "<strong>Visa Vacances-Travail (sous-classe 417/462)</strong> - pour les jeunes adultes (18-30/35 ans)"
+          ],
+          "conclusion": "Chaque visa a des exigences, des durées et des conditions différentes. Veillez à rechercher celui qui correspond le mieux à votre situation."
+        }
+      },
+      {
+        "id": "compétences-qualifications",
+        "icon": "🧠",
+        "title": "2. Compétences et qualifications",
+        "content": {
+          "requirements": [
+            "Votre profession doit figurer sur la <strong>Skilled Occupation List (SOL)</strong> australienne.",
+            "Faire reconnaître vos <strong>qualifications</strong> par une autorité australienne",
+            "La maîtrise de l'anglais (IELTS, PTE, etc.) peut être exigée."
+          ],
+          "popularFields": {
+            "title": "Domaines populaires pour les travailleurs étrangers :",
+            "fields": [
+              {
+                "title": "Soins de santé",
+                "description": "Médecins, infirmières, personnel soignant"
+              },
+              {
+                "title": "Technologies de l'information et de la communication",
+                "description": "Développeurs de logiciels, experts en cybersécurité"
+              },
+              {
+                "title": "Ingénierie",
+                "description": "Ingénieurs civils, mécaniques et électriques"
+              },
+              {
+                "title": "Métiers qualifiés",
+                "description": "Electriciens, plombiers, charpentiers"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "recherche d'emploi",
+        "icon": "💻",
+        "title": "3. Conseils pour la recherche d'emploi",
+        "content": {
+          "description": "La recherche d'un emploi en Australie nécessite une approche stratégique :",
+          "jobPortals": {
+            "title": "Principaux portails d'emploi :",
+            "portals": [
+              "Rechercher",
+              "En effet, l'Australie",
+              "LinkedIn",
+              "CareerOne",
+              "Jora",
+              "Emplois éthiques"
+            ]
+          },
+          "proTips": {
+            "title": "Conseils de pro :",
+            "tips": [
+              "Utilisez des plateformes telles que <strong>Seek</strong>, <strong>Indeed Australia</strong> et <strong>LinkedIn</strong>.",
+              "Postuler directement auprès des entreprises ou par l'intermédiaire d'agences de recrutement",
+              "Adaptez votre CV aux normes australiennes",
+              "Réseauter avec des professionnels de votre secteur d'activité",
+              "Envisager des zones régionales avec des pénuries de compétences pour de meilleures opportunités"
+            ]
+          }
+        }
+      },
+      {
+        "id": "parrainage",
+        "icon": "🤝",
+        "title": "4. Le parrainage",
+        "content": {
+          "description": "Certains employeurs parrainent des travailleurs qualifiés, en particulier dans les secteurs de la santé, de l'informatique, de l'ingénierie et des métiers. Le parrainage vous aide à obtenir un visa.",
+          "types": [
+            {
+              "title": "Régime de désignation des employeurs :",
+              "points": [
+                "Les employeurs peuvent proposer votre candidature à la résidence permanente",
+                "Les candidats doivent satisfaire aux exigences en matière de compétences et de qualifications",
+                "Une expérience professionnelle d'au moins 3 ans est généralement requise"
+              ]
+            },
+            {
+              "title": "Parrainage du visa TSS :",
+              "points": [
+                "Poste temporaire de 2 à 4 ans",
+                "Peut conduire à la résidence permanente",
+                "L'employeur doit prouver qu'il ne peut pas trouver de talents locaux"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "documents",
+        "icon": "📄",
+        "title": "5. Documents nécessaires",
+        "content": {
+          "requiredDocuments": [
+            "Curriculum vitae (CV)",
+            "Lettre de motivation",
+            "Qualifications",
+            "Références",
+            "Confirmation du visa/droit de travail"
+          ],
+          "resumeTips": {
+            "title": "Conseils pour les CV australiens :",
+            "tips": [
+              "Soyez concis (2 à 3 pages maximum)",
+              "Inclure un résumé professionnel",
+              "Mettre l'accent sur les réalisations, et pas seulement sur les responsabilités",
+              "Aucune photo n'est exigée (contrairement à certains pays européens)",
+              "Dressez la liste des personnes de référence ou indiquez \"Références disponibles sur demande\"."
+            ]
+          }
+        }
+      },
+      {
+        "id": "lieu de travail australien",
+        "icon": "🏢",
+        "title": "6. Comprendre la culture du lieu de travail en Australie",
+        "content": {
+          "description": "La culture du travail en Australie présente des caractéristiques uniques :",
+          "characteristics": [
+            "<strong>Décontracté mais professionnel</strong> - Les Australiens sont généralement décontractés mais prennent le travail au sérieux.",
+            "<strong>Equilibre entre vie professionnelle et vie privée</strong> - La plupart des employeurs respectent le temps personnel et proposent des arrangements flexibles.",
+            "<strong>Communication directe</strong> - Les Australiens ont tendance à être directs dans leur communication.",
+            "<strong>Orientation vers l'équipe</strong> - La collaboration et le travail d'équipe sont très appréciés.",
+            "<strong>\"Syndrome du grand pavot\"</strong> - L'autopromotion excessive peut être perçue négativement."
+          ]
+        }
+      },
+      {
+        "id": "attentes salariales",
+        "icon": "💰",
+        "title": "7. Attentes salariales et conditions de travail",
+        "content": {
+          "description": "L'Australie offre un niveau de vie élevé et des salaires compétitifs.",
+          "keyFactsIntro": "Faits marquants :",
+          "keyFacts": [
+            "Le salaire minimum est l'un des plus élevés au monde",
+            "La semaine de travail normale est de 38 heures",
+            "4 semaines de congés annuels sont la norme",
+            "10 jours de congés personnels/maladie rémunérés",
+            "Cotisations de retraite versées par les employeurs (actuellement 11 %)"
+          ],
+          "conclusion": "Étudiez les normes du secteur pour votre profession afin de comprendre les fourchettes de salaires compétitives."
+        }
+      }
+    ],
+    "successStories": {
+      "title": "Histoires de réussite",
+      "stories": [
+        {
+          "flag": "🇮🇳",
+          "profession": "Ingénieur logiciel",
+          "origin": "De Mumbai à Melbourne",
+          "story": "J'ai trouvé un emploi dans une start-up technologique dans les trois mois suivant mon arrivée avec un visa qualifié.",
+          "outcome": "Il gagne aujourd'hui 95 000 AUD par an"
+        },
+        {
+          "flag": "🇵🇭",
+          "profession": "Infirmière diplômée",
+          "origin": "De Manille à Sydney",
+          "story": "J'ai été parrainé par un hôpital après avoir travaillé avec un visa Vacances-Travail.",
+          "outcome": "La résidence permanente est accordée en 18 mois"
+        },
+        {
+          "flag": "🇬🇧",
+          "profession": "Électricien professionnel",
+          "origin": "De Londres à Perth",
+          "story": "Il a trouvé du travail par le biais de portails d'emploi en ligne et de réseaux avec des commerçants locaux.",
+          "outcome": "Création de sa propre entreprise d'électricité en 2 ans"
+        },
+        {
+          "flag": "🇩🇪",
+          "profession": "Ingénieur civil",
+          "origin": "De Berlin à Brisbane",
+          "story": "La reconnaissance de la qualification a pris 6 mois, mais a permis d'obtenir un poste dans une grande entreprise de construction.",
+          "outcome": "Gestion de projets d'infrastructure d'une valeur de plus de 50 millions de dollars australiens"
+        }
+      ]
+    },
+    "industryInsights": {
+      "title": "Aperçu du marché de l'emploi dans l'industrie",
+      "insights": [
+        {
+          "category": "Soins de santé",
+          "metric": "Croissance de l'emploi",
+          "value": "+15.2%",
+          "description": "Croissance prévue pour les 5 prochaines années"
+        },
+        {
+          "category": "Technologie",
+          "metric": "Salaire moyen",
+          "value": "95 000 AUD",
+          "description": "Pour les professionnels qualifiés"
+        },
+        {
+          "category": "Métiers qualifiés",
+          "metric": "Pénurie de compétences",
+          "value": "Critique",
+          "description": "Forte demande dans tous les États"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Liste de contrôle finale pour l'obtention d'un emploi en Australie",
+      "items": [
+        "Vérifiez si votre profession figure sur la liste des professions qualifiées.",
+        "Faites évaluer vos qualifications par l'autorité australienne compétente",
+        "Passer un test d'aptitude à l'anglais si nécessaire",
+        "Mettez votre CV au format australien",
+        "Rechercher les exigences en matière de visa et les procédures de demande"
+      ]
+    },
+    "conclusion": {
+      "title": "Prêt à travailler en Australie ?",
+      "description": "Avec une bonne préparation et les qualifications adéquates, il est possible de trouver un emploi en Australie en tant qu'étranger. L'économie solide du pays, sa qualité de vie élevée et son environnement multiculturel en font une destination attrayante pour les professionnels à la recherche d'une expérience internationale et d'une évolution de carrière."
+    }
+  },
+  "usToAustraliaGuide": {
+    "subtitle": "Tout ce qu'il faut savoir",
+    "description": "De nombreux Américains s'installent en Australie pour travailler, étudier ou changer de mode de vie. Bien que les cultures soient similaires, il y a des étapes juridiques et pratiques importantes à prendre en compte.",
+    "navigation": {
+      "title": "Navigation rapide"
+    },
+    "accessibility": {
+      "sectionButton": "Naviguer vers {titre} section"
+    },
+    "sections": [
+      {
+        "id": "pourquoi-australie",
+        "icon": "📌",
+        "title": "Pourquoi s'installer en Australie ?",
+        "content": {
+          "description": "Les Américains sont attirés par l'Australie pour de nombreuses raisons :",
+          "reasons": [
+            "Une qualité de vie élevée",
+            "Une économie forte et des opportunités d'emploi",
+            "Système de santé universel (Medicare)",
+            "Belles plages et mode de vie en plein air",
+            "Similitudes culturelles avec le mode de vie américain"
+          ],
+          "conclusion": "Que vous déménagiez pour faire avancer votre carrière, suivre des études ou changer de mode de vie, l'Australie offre un environnement anglophone avec de nombreux conforts familiers."
+        }
+      },
+      {
+        "id": "options de visa",
+        "icon": "✈️",
+        "title": "Options de visa pour les citoyens américains",
+        "content": {
+          "description": "Les Américains doivent obtenir un visa avant de s'installer en Australie. Les types de visa les plus courants sont les suivants :",
+          "visaTypes": [
+            {
+              "title": "Visa indépendant qualifié (sous-classe 189)",
+              "points": [
+                "Pour les professionnels dans des domaines très demandés",
+                "Système de points évaluant l'âge, les compétences, l'éducation et l'expérience",
+                "Parcours de résidence permanente",
+                "Pas de parrainage nécessaire"
+              ]
+            },
+            {
+              "title": "Visa parrainé par l'employeur (sous-classe 482)",
+              "points": [
+                "Avoir reçu une offre d'emploi d'un employeur australien",
+                "Temporaire (2-4 ans) avec possibilité d'accès à la résidence permanente",
+                "L'employeur doit vous parrainer"
+              ]
+            },
+            {
+              "title": "Visa de partenaire/conjoint",
+              "points": [
+                "Pour ceux qui rejoignent un partenaire australien",
+                "Inclut des options pour les partenaires mariés ou les relations de fait",
+                "Permet d'obtenir le statut de résident permanent"
+              ]
+            },
+            {
+              "title": "Visa étudiant (sous-classe 500)",
+              "points": [
+                "Pour étudier dans un établissement australien",
+                "Permet de limiter les heures de travail pendant les études",
+                "Possibilité d'obtenir un visa de travail après l'obtention du diplôme"
+              ]
+            },
+            {
+              "title": "Visa Vacances-Travail (catégorie 462)",
+              "description": "Disponible pour les Américains âgés de 18 à 30 ans, il permet de travailler et de voyager jusqu'à 12 mois en Australie."
+            }
+          ]
+        }
+      },
+      {
+        "id": "documents requis",
+        "icon": "🛂",
+        "title": "Exigences clés",
+        "content": {
+          "description": "Pour demander un visa australien, vous aurez généralement besoin des éléments suivants",
+          "requirements": [
+            "Passeport en cours de validité",
+            "Preuve de la maîtrise de l'anglais (pour certains visas)",
+            "Contrôles de santé et autorisations de police",
+            "Évaluation des compétences et de l'éducation (pour les visas qualifiés)",
+            "Justificatif de ressources (pour les visas d'étudiant et les visas temporaires)",
+            "Données biométriques",
+            "Formulaires de demande de visa complétés"
+          ],
+          "note": "Les exigences spécifiques varient en fonction du type de visa. Il convient donc de toujours consulter le site web du ministère australien de l'intérieur pour obtenir les informations les plus récentes."
+        }
+      },
+      {
+        "id": "villes populaires",
+        "icon": "🏙️",
+        "title": "Où vivent la plupart des Américains en Australie ?",
+        "content": {
+          "description": "Les Américains ont tendance à s'installer dans ces villes australiennes populaires :",
+          "cities": [
+            {
+              "name": "Sydney",
+              "icon": "🌊",
+              "highlights": [
+                "La plus grande ville d'Australie avec ses monuments emblématiques",
+                "Des industries financières, technologiques et créatives fortes",
+                "De belles plages et un style de vie portuaire"
+              ]
+            },
+            {
+              "name": "Melbourne",
+              "icon": "🎭",
+              "highlights": [
+                "Capitale culturelle avec une scène artistique florissante",
+                "Constamment classée parmi les villes les plus agréables à vivre au monde",
+                "Bonne cuisine, café et événements sportifs"
+              ]
+            },
+            {
+              "name": "Brisbane",
+              "icon": "☀️",
+              "highlights": [
+                "Climat subtropical ensoleillé",
+                "Plus abordable que Sydney ou Melbourne",
+                "Un mode de vie détendu avec un marché de l'emploi en pleine expansion"
+              ]
+            },
+            {
+              "name": "Perth",
+              "icon": "🌄",
+              "highlights": [
+                "Ville isolée mais dynamique de la côte ouest",
+                "Un secteur minier et des ressources solides",
+                "Belles plages et climat méditerranéen"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "coût de la vie",
+        "icon": "💰",
+        "title": "Coût du déménagement et de la vie",
+        "content": {
+          "description": "Les coûts initiaux peuvent varier de 5 000 à 15 000 dollars américains, en fonction des vols, des frais d'expédition, des frais de visa et du logement.",
+          "conclusion": "Le coût de la vie en Australie est comparable à celui des grandes villes américaines, bien que les frais de santé soient généralement moins élevés grâce au système Medicare."
+        }
+      },
+      {
+        "id": "soins de santé",
+        "icon": "🩺",
+        "title": "Soins de santé en Australie",
+        "content": {
+          "paragraphs": [
+            {
+              "type": "texte",
+              "content": "L'Australie dispose d'un système de santé universel appelé Medicare, qui donne accès à des soins médicaux gratuits ou subventionnés."
+            },
+            {
+              "type": "liste",
+              "intro": "En tant que résident permanent ou citoyen, vous recevrez une carte Medicare qui vous couvrira :",
+              "items": [
+                "Traitement gratuit dans les hôpitaux publics",
+                "Visites médicales subventionnées",
+                "La plupart des médicaments sur ordonnance à prix réduit"
+              ]
+            },
+            {
+              "type": "texte",
+              "content": "De nombreux Australiens souscrivent également une assurance maladie privée pour bénéficier d'une couverture supplémentaire, de délais d'attente plus courts et de traitements hospitaliers privés."
+            },
+            {
+              "type": "texte",
+              "content": "Les titulaires de visas temporaires doivent généralement souscrire une assurance maladie privée pour obtenir leur visa."
+            }
+          ]
+        }
+      },
+      {
+        "id": "mode de vie",
+        "icon": "🏡",
+        "title": "Différences de mode de vie",
+        "content": {
+          "differences": [
+            "<strong>Qualité de vie élevée, soins de santé publics (Medicare) et droits des travailleurs renforcés</strong>",
+            "<strong>Le coût de la vie peut être élevé dans les grandes villes</strong> comme Sydney ou Melbourne.",
+            "La conduite se fait sur le <strong>côté gauche</strong> de la route",
+            "Plus de congés annuels (la norme est de 4 semaines) et un meilleur équilibre entre vie professionnelle et vie privée",
+            "Système métrique utilisé pour toutes les mesures",
+            "Calendrier scolaire différent (l'année va généralement de février à décembre)",
+            "Une culture du café plus forte et une scène gastronomique unique"
+          ],
+          "note": "Bien que les cultures soient similaires, les Américains notent souvent des différences dans l'argot, l'humour et l'attitude plus détendue des Australiens à l'égard du travail et de la vie."
+        }
+      },
+      {
+        "id": "en mouvement",
+        "icon": "📦",
+        "title": "Déménagement et expédition depuis les États-Unis",
+        "content": {
+          "sections": [
+            {
+              "title": "Options d'expédition :",
+              "items": [
+                "<strong>Fret maritime:</strong> Plus économique pour les envois importants (3 000 à 7 000 dollars pour un petit appartement).",
+                "<strong>Fret aérien:</strong> Plus rapide mais plus cher (1 500 à 3 000 dollars pour les articles de première nécessité)",
+                "<strong>Conteneurs d'expédition:</strong> Options de 20 pieds ou 40 pieds en fonction de la quantité que vous apportez."
+              ]
+            },
+            {
+              "title": "Considérations importantes :",
+              "items": [
+                "L'Australie dispose de lois strictes en matière de biosécurité - nettoyez soigneusement les articles avant de les expédier.",
+                "Les appareils électriques nécessitent des adaptateurs (l'Australie utilise 230 V avec des prises de type I).",
+                "Envisager de vendre des meubles volumineux et d'en acheter de nouveaux en Australie",
+                "L'importation d'un animal de compagnie nécessite une préparation des mois à l'avance (vaccins, puces électroniques, permis)."
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "banque",
+        "icon": "🏦",
+        "title": "Banque et finances",
+        "content": {
+          "intro": "Établir ses finances en Australie :",
+          "points": [
+            "Vous pouvez ouvrir un compte bancaire australien jusqu'à 3 mois avant votre arrivée.",
+            "Les principales banques sont la Commonwealth Bank, l'ANZ, la Westpac et la NAB.",
+            "Vous aurez besoin de votre passeport, de votre visa et d'un justificatif de domicile.",
+            "Envisager des services de transfert d'argent international comme Wise pour convertir des USD en AUD.",
+            "L'année fiscale australienne s'étend du 1er juillet au 30 juin.",
+            "Vous aurez besoin d'un numéro de dossier fiscal (TFN) pour travailler légalement."
+          ],
+          "conclusion": "Monnaie : Dollar australien (AUD). Les cartes de crédit sont largement acceptées et le paiement sans contact est très courant."
+        }
+      }
+    ],
+    "costComparison": {
+      "headers": {
+        "expense": "Dépenses",
+        "australia": "Australie (moyenne)",
+        "usa": "États-Unis (moyenne)"
+      },
+      "rows": [
+        {
+          "expense": "Location (1BR centre ville)",
+          "australia": "1 200 $ - 1 800 $/mois",
+          "usa": "$1,500-$2,000"
+        },
+        {
+          "expense": "Services publics (mensuels)",
+          "australia": "$150-$200",
+          "usa": "$150-$200"
+        },
+        {
+          "expense": "Repas au restaurant (pour 2 personnes)",
+          "australia": "$60-$100",
+          "usa": "$50-$100"
+        },
+        {
+          "expense": "Transport",
+          "australia": "100-150 $/mois",
+          "usa": "$70-$150"
+        }
+      ]
+    },
+    "stateComparison": {
+      "title": "États américains vs États australiens",
+      "comparisons": [
+        {
+          "ausIcon": "🦘",
+          "usIcon": "🗽",
+          "comparison": "NSW vs New York",
+          "description": "Densité de population et mode de vie urbain similaires"
+        },
+        {
+          "ausIcon": "☕",
+          "usIcon": "🌉",
+          "comparison": "Victoria vs Californie",
+          "description": "Des pôles culturels avec des populations diversifiées"
+        },
+        {
+          "ausIcon": "🌴",
+          "usIcon": "🌴",
+          "comparison": "Queensland vs Floride",
+          "description": "Climats tropicaux et industries du tourisme"
+        },
+        {
+          "ausIcon": "⛏️",
+          "usIcon": "🤠",
+          "comparison": "WA vs Texas",
+          "description": "États riches en ressources et dotés d'une économie minière"
+        },
+        {
+          "ausIcon": "🍷",
+          "usIcon": "🍷",
+          "comparison": "SA vs Napa Valley",
+          "description": "Régions viticoles au climat méditerranéen"
+        },
+        {
+          "ausIcon": "🏔️",
+          "usIcon": "🏔️",
+          "comparison": "Tasmanie vs Vermont",
+          "description": "Climats plus frais et beauté naturelle"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Calendrier du déménagement : 12 mois avant le départ",
+      "phases": [
+        {
+          "timeframe": "12 mois avant",
+          "title": "Recherche et planification",
+          "description": "Rechercher des options de visa, évaluer les qualifications, commencer les évaluations de compétences si nécessaire."
+        },
+        {
+          "timeframe": "9-10 mois avant",
+          "title": "Demande de visa",
+          "description": "Soumettre la demande de visa, rassembler les documents requis, effectuer les contrôles de santé"
+        },
+        {
+          "timeframe": "6-8 mois avant",
+          "title": "Recherche d'emploi et préparation",
+          "description": "Commencez à postuler à un emploi, créez des réseaux avec des professionnels australiens, recherchez des villes."
+        },
+        {
+          "timeframe": "3-4 mois avant",
+          "title": "Planification logistique",
+          "description": "Réserver des vols, organiser le transport, trouver un logement temporaire"
+        },
+        {
+          "timeframe": "1-2 mois avant",
+          "title": "Préparatifs finaux",
+          "description": "Ouvrir un compte bancaire en Australie, souscrire une assurance, régler les détails du déménagement"
+        },
+        {
+          "timeframe": "À l'arrivée",
+          "title": "Règlement",
+          "description": "Demander le TFN et l'assurance maladie, trouver un logement permanent, s'inscrire aux services locaux"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Liste de contrôle finale pour les Américains qui déménagent en Australie",
+      "items": [
+        "Recherche et demande de visa approprié",
+        "Passer des examens de santé et obtenir un certificat de police",
+        "Organiser l'expédition ou le stockage des biens",
+        "Ouvrir un compte bancaire en Australie",
+        "Logement sécurisé (temporaire ou permanent)",
+        "Souscrire une couverture d'assurance maladie",
+        "Demander un numéro de dossier fiscal (TFN) et une carte d'assurance maladie (si éligible)"
+      ]
+    },
+    "conclusion": {
+      "title": "Conclusion : Cela vaut-il la peine de quitter les États-Unis pour s'installer en Australie ?",
+      "description": "Pour de nombreux Américains, l'Australie offre un équilibre attrayant entre culture familière et nouvelles expériences, avec une excellente qualité de vie, de solides protections pour les travailleurs et de magnifiques environnements naturels. Bien que le déménagement nécessite une planification minutieuse et des coûts initiaux importants, de nombreux expatriés trouvent la transition gratifiante, avec un meilleur équilibre entre vie professionnelle et vie privée et de nouvelles opportunités."
+    }
+  },
+  "australiaRequirements": {
+    "description": "Si vous envisagez de vous installer en Australie, voici les principales conditions à remplir :",
+    "navigation": {
+      "title": "Navigation rapide",
+      "expandAll": "Tout développer",
+      "collapseAll": "Réduire tout"
+    },
+    "accessibility": {
+      "sectionButton": "Toggle {title} section"
+    },
+    "sections": [
+      {
+        "id": "visa",
+        "icon": "🛂",
+        "title": "Visa valide",
+        "shortTitle": "Visa",
+        "content": [
+          {
+            "type": "paragraphe",
+            "text": "Vous devez demander et obtenir un visa approprié avant d'entrer en Australie - par exemple un visa de travail qualifié, un visa d'étudiant, un visa de partenaire ou un visa de travail parrainé."
+          }
+        ]
+      },
+      {
+        "id": "santé-caractère",
+        "icon": "🔍",
+        "title": "Contrôles de santé et de moralité",
+        "shortTitle": "Bilan de santé",
+        "content": [
+          {
+            "type": "liste",
+            "items": [
+              "<strong>Un examen médical</strong> peut être exigé en fonction de votre visa.",
+              "<strong>Homologation de police</strong> dans les pays où vous avez vécu plus de 12 mois au cours des 10 dernières années.",
+              "Vous ne devez pas avoir de casier judiciaire grave."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fonds",
+        "icon": "💵",
+        "title": "Preuve de fonds",
+        "shortTitle": "Fonds",
+        "content": [
+          {
+            "type": "paragraphe",
+            "text": "Certains types de visas (par exemple, les visas d'étudiant ou de travailleur qualifié) exigent la preuve que vous pouvez subvenir à vos besoins financiers à l'arrivée."
+          }
+        ]
+      },
+      {
+        "id": "anglais",
+        "icon": "🗣️",
+        "title": "Compétences en anglais",
+        "shortTitle": "Anglais",
+        "content": [
+          {
+            "type": "paragraphe",
+            "text": "La plupart des visas exigent une preuve de connaissance de l'anglais (IELTS, TOEFL ou équivalent), en particulier pour les visas de travailleurs qualifiés et d'étudiants."
+          }
+        ]
+      },
+      {
+        "id": "compétences",
+        "icon": "📋",
+        "title": "Évaluation des compétences",
+        "shortTitle": "Compétences",
+        "content": [
+          {
+            "type": "paragraphe",
+            "text": "Pour les visas de migration qualifiée, vous devez faire évaluer vos qualifications par une autorité australienne compétente pour votre profession."
+          }
+        ]
+      },
+      {
+        "id": "voyage",
+        "icon": "✈️",
+        "title": "Documents de voyage",
+        "shortTitle": "Documents",
+        "content": [
+          {
+            "type": "liste",
+            "items": [
+              "Un passeport en cours de validité",
+              "Assurance voyage (recommandée)"
+            ]
+          }
+        ]
+      }
+    ],
+    "additionalRequirements": {
+      "title": "Exigences supplémentaires par type de visa",
+      "items": [
+        {
+          "icon": "🎓",
+          "title": "Visas étudiants",
+          "description": "Confirmation d'inscription (CoE), assurance maladie pour les étudiants étrangers (OSHC), critères d'admission temporaire authentique",
+          "note": "Doit poursuivre des études à temps plein"
+        },
+        {
+          "icon": "💼",
+          "title": "Visas de travail",
+          "description": "Offre d'emploi d'un employeur agréé, expérience professionnelle pertinente, profession figurant sur la liste des professions qualifiées",
+          "note": "Parrainage de l'employeur requis"
+        },
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "title": "Visas familiaux",
+          "description": "Preuves de relations, exigences du sponsor, engagements de soutien financier",
+          "note": "Les délais de traitement varient"
+        },
+        {
+          "icon": "🏠",
+          "title": "Visas d'investisseur",
+          "description": "Seuils minimaux d'investissement, expérience professionnelle, nomination par l'État",
+          "note": "Exigences financières élevées"
+        }
+      ]
+    },
+    "visaTypes": {
+      "title": "Référence rapide pour les types de visa les plus courants",
+      "types": [
+        {
+          "icon": "🎯",
+          "name": "Indépendants qualifiés (189)",
+          "description": "Visa permanent à points",
+          "duration": "Permanent",
+          "difficulty": "Haut"
+        },
+        {
+          "icon": "🤝",
+          "name": "Parrainé par l'employeur (482)",
+          "description": "Visa de travail temporaire avec parrainage",
+          "duration": "2-4 ans",
+          "difficulty": "Moyen"
+        },
+        {
+          "icon": "🎓",
+          "name": "Étudiant (500)",
+          "description": "Étudier dans des établissements australiens",
+          "duration": "Période d'étude",
+          "difficulty": "Faible"
+        },
+        {
+          "icon": "💑",
+          "name": "Partenaire (820/801)",
+          "description": "Pour les conjoints/partenaires de fait",
+          "duration": "Permanent",
+          "difficulty": "Moyen"
+        },
+        {
+          "icon": "🌟",
+          "name": "Congé ouvrable (417)",
+          "description": "Travailler et voyager pour les jeunes",
+          "duration": "1 an",
+          "difficulty": "Faible"
+        },
+        {
+          "icon": "💰",
+          "name": "Innovation commerciale (188)",
+          "description": "Pour les entrepreneurs et les investisseurs",
+          "duration": "4 ans",
+          "difficulty": "Haut"
+        }
+      ]
+    },
+    "tips": {
+      "title": "Conseils importants",
+      "items": [
+        "Commencez votre demande de visa à l'avance, car le traitement de certains visas peut prendre plusieurs mois.",
+        "Gardez tous vos documents importants organisés et sauvegardés numériquement",
+        "Recherchez les conditions spécifiques à votre type de visa sur le site Internet du ministère australien de l'intérieur (Australian Department of Home Affairs)",
+        "Envisager d'obtenir des conseils professionnels en matière de migration pour les cas complexes",
+        "Vérifiez régulièrement les délais de traitement car ils peuvent changer",
+        "Veiller à ce que tous les documents soient traduits et certifiés s'ils ne sont pas rédigés en anglais."
+      ]
+    },
+    "summary": {
+      "title": "Liste de contrôle rapide",
+      "description": "N'oubliez pas ces conditions essentielles pour que votre demande de visa australien soit couronnée de succès :",
+      "keyPoints": [
+        "Passeport en cours de validité (6 mois et plus)",
+        "Demande de visa appropriée",
+        "Contrôles de santé et de caractère",
+        "Preuve de la maîtrise de l'anglais",
+        "Preuves financières",
+        "Évaluation des compétences (si nécessaire)",
+        "Assurance voyage",
+        "Tous les documents sont certifiés"
+      ]
+    }
+  },
+  "australiaVisaGuide": {
+    "description": "Si vous envisagez de vous installer en Australie, vous aurez besoin du visa adéquat. Voici les options les plus courantes en fonction de l'objet de votre séjour :",
+    "labels": {
+      "idealFor": "Idéal pour",
+      "duration": "La durée",
+      "pathway": "Voie d'accès",
+      "visaTypes": "Types de visa",
+      "requirements": "Exigences",
+      "benefits": "Avantages",
+      "processingTime": "Délai de traitement"
+    },
+    "controls": {
+      "expandAll": "Tout développer",
+      "collapseAll": "Réduire tout"
+    },
+    "compare": {
+      "enable": "Comparer les visas",
+      "exit": "Quitter le mode de comparaison",
+      "select": "Sélectionner",
+      "selected": "Sélectionné",
+      "table": {
+        "title": "Comparaison des visas",
+        "headers": {
+          "type": "Type de visa",
+          "duration": "Durée de l'accord",
+          "pathway": "Voie d'accès",
+          "idealFor": "Idéal pour"
+        }
+      }
+    },
+    "visas": [
+      {
+        "id": "migration qualifiée",
+        "icon": "🎯",
+        "title": "Visas de migration qualifiée",
+        "category": "Visas professionnels",
+        "idealFor": "Des professionnels aux compétences recherchées",
+        "duration": "Permanent",
+        "pathway": "Permanent",
+        "visaTypes": [
+          {
+            "name": "Visa indépendant qualifié",
+            "description": "Basé sur des points ; aucune offre d'emploi n'est nécessaire",
+            "subclass": "189"
+          },
+          {
+            "name": "Visa pour les personnes qualifiées",
+            "description": "Nécessité d'une nomination par un État ou un territoire australien",
+            "subclass": "190"
+          },
+          {
+            "name": "Visa régional de travail qualifié",
+            "description": "Pour vivre et travailler dans la région de l'Australie ; un parrainage de l'État ou de la famille est nécessaire.",
+            "subclass": "491"
+          }
+        ],
+        "requirements": [
+          "Évaluation des compétences pour la profession désignée",
+          "Maîtrise de la langue anglaise",
+          "Âge inférieur à 45 ans",
+          "Atteindre le seuil du test de points (actuellement 65 points)",
+          "Exigences en matière de santé et de moralité"
+        ],
+        "benefits": [
+          "Parcours de résidence permanente",
+          "Travailler et étudier partout en Australie",
+          "Accès à l'assurance maladie",
+          "Accès à la citoyenneté après 4 ans"
+        ],
+        "processingTime": "8-12 mois pour la plupart des applications"
+      },
+      {
+        "id": "parrainé par l'employeur",
+        "icon": "🤝",
+        "title": "Visas parrainés par l'employeur",
+        "category": "Visas de travail",
+        "idealFor": "Personnes ayant reçu une offre d'emploi d'un employeur australien",
+        "duration": "2-4 ans",
+        "pathway": "De temporaire à permanent",
+        "visaTypes": [
+          {
+            "name": "Visa temporaire pour pénurie de main-d'œuvre",
+            "description": "Un parrainage est nécessaire et la durée de validité est de 2 à 4 ans.",
+            "subclass": "482"
+          },
+          {
+            "name": "Régime de désignation des employeurs",
+            "description": "Visa permanent pour les travailleurs qualifiés désignés par un employeur agréé",
+            "subclass": "186"
+          }
+        ],
+        "requirements": [
+          "Offre d'emploi d'un employeur australien agréé",
+          "Compétences et qualifications pertinentes",
+          "Maîtrise de la langue anglaise",
+          "Exigences en matière de santé et de moralité",
+          "Profession figurant sur la liste des professions qualifiées"
+        ],
+        "benefits": [
+          "Accès direct à l'emploi en Australie",
+          "Les membres de la famille peuvent accompagner",
+          "Voie d'accès à la résidence permanente",
+          "Aucun test de points n'est requis"
+        ],
+        "processingTime": "3-6 mois pour le SCT, 8-12 mois pour l'ENS"
+      },
+      {
+        "id": "étudiant",
+        "icon": "🎓",
+        "title": "Visa étudiant",
+        "category": "Visa pour études",
+        "idealFor": "Les personnes inscrites dans un établissement d'enseignement australien",
+        "duration": "Période d'étude + 1-4 ans",
+        "pathway": "Temporaire",
+        "visaTypes": [
+          {
+            "name": "Visa étudiant",
+            "description": "Pour étudier dans des établissements australiens. Permet de travailler à temps partiel tout en étudiant",
+            "subclass": "500"
+          }
+        ],
+        "requirements": [
+          "Confirmation d'inscription (CoE)",
+          "Exigence relative aux véritables entrées temporaires (GTE)",
+          "Maîtrise de la langue anglaise",
+          "Capacité financière",
+          "Assurance maladie pour les étudiants étrangers (OSHC)"
+        ],
+        "benefits": [
+          "Étudier dans des établissements de renommée mondiale",
+          "Travailler jusqu'à 48 heures par quinzaine",
+          "Voie d'accès aux visas de travail après l'obtention d'un diplôme",
+          "Découvrir la culture australienne"
+        ],
+        "processingTime": "4-8 semaines pour la plupart des applications"
+      },
+      {
+        "id": "partenaire familial",
+        "icon": "👨‍👩‍👧‍👦",
+        "title": "Visas de famille et de partenaire",
+        "category": "Visas familiaux",
+        "idealFor": "Ceux qui ont de la famille ou un partenaire en Australie",
+        "duration": "Permanent",
+        "pathway": "Permanent",
+        "visaTypes": [
+          {
+            "name": "Visa de partenaire (Onshore)",
+            "subclass": "820/801",
+            "description": "Pour les conjoints ou partenaires de fait de citoyens australiens ou de résidents permanents"
+          },
+          {
+            "name": "Visa de partenaire (Offshore)",
+            "subclass": "309/100",
+            "description": "Pour les conjoints ou les partenaires de fait qui déposent leur demande depuis l'extérieur de l'Australie"
+          },
+          {
+            "name": "Visas pour parents et enfants",
+            "subclass": "Divers",
+            "description": "Pour les membres de la famille proche d'un citoyen australien ou d'un titulaire d'une carte de résident permanent"
+          }
+        ],
+        "requirements": [
+          "Preuve d'une relation authentique",
+          "Le sponsor doit être citoyen australien/PR",
+          "Exigences en matière de santé et de moralité",
+          "Engagement de soutien financier",
+          "Une assurance maladie adéquate"
+        ],
+        "benefits": [
+          "Résidence permanente",
+          "Droits au travail et aux études",
+          "Accès à l'assurance maladie et aux services sociaux",
+          "Parcours vers la citoyenneté"
+        ],
+        "processingTime": "12-24 mois pour les visas de partenaires"
+      },
+      {
+        "id": "entreprise-investissement",
+        "icon": "💼",
+        "title": "Visas d'affaires et d'investissement",
+        "category": "Visas d'affaires",
+        "idealFor": "Personnes souhaitant investir ou gérer une entreprise en Australie",
+        "duration": "4 ans",
+        "pathway": "De temporaire à permanent",
+        "visaTypes": [
+          {
+            "name": "Visa pour l'innovation et l'investissement des entreprises",
+            "description": "Conduit à la résidence permanente (sous-classe 888) plus tard",
+            "subclass": "188"
+          }
+        ],
+        "requirements": [
+          "Expérience réussie dans le domaine des affaires ou de l'investissement",
+          "Répondre aux exigences en matière d'âge, d'anglais et de santé",
+          "Actifs nets minimaux de l'entreprise et des particuliers",
+          "Nomination d'un État ou d'un territoire",
+          "Engagement à maintenir l'activité/l'investissement en Australie"
+        ],
+        "benefits": [
+          "Voie d'accès à la résidence permanente",
+          "Opportunités commerciales dans une économie stable",
+          "Accès au marché australien",
+          "Une éducation de qualité pour les enfants"
+        ],
+        "processingTime": "8-12 mois pour le visa initial"
+      }
+    ],
+    "helper": {
+      "title": "Quel visa vous convient le mieux ?",
+      "scenarios": [
+        {
+          "icon": "🎯",
+          "situation": "Je suis un professionnel qualifié",
+          "description": "Vous avez des qualifications dans une profession très demandée",
+          "recommendation": "Envisager des visas de migration qualifiée (189/190/491)"
+        },
+        {
+          "icon": "💼",
+          "situation": "J'ai une offre d'emploi",
+          "description": "Un employeur australien souhaite vous embaucher",
+          "recommendation": "Demande de visa parrainé par l'employeur (482/186)"
+        },
+        {
+          "icon": "🎓",
+          "situation": "Je veux étudier",
+          "description": "Vous envisagez de poursuivre des études en Australie",
+          "recommendation": "Visa d'étudiant (500) avec droit de travail"
+        },
+        {
+          "icon": "💕",
+          "situation": "J'ai de la famille en Australie",
+          "description": "Vous êtes marié(e) ou pacsé(e) avec un(e) Australien(ne)",
+          "recommendation": "Visa de partenaire (820/801 ou 309/100)"
+        },
+        {
+          "icon": "🏢",
+          "situation": "Je veux créer une entreprise",
+          "description": "Vous disposez d'une expérience professionnelle et d'un capital d'investissement",
+          "recommendation": "Visa pour l'innovation commerciale (188)"
+        },
+        {
+          "icon": "🌟",
+          "situation": "Je suis jeune et je veux voyager",
+          "description": "Vous avez entre 18 et 30 ans et vous êtes originaire d'un pays éligible",
+          "recommendation": "Visa Vacances-Travail (417/462)"
+        }
+      ]
+    },
+    "processingTimes": {
+      "title": "Délais de traitement actuels",
+      "averageTime": "Durée moyenne",
+      "disclaimer": "Les délais de traitement sont des estimations et peuvent varier en fonction des circonstances individuelles et du caractère complet de la demande.",
+      "visaTypes": [
+        {
+          "type": "Indépendants qualifiés (189)",
+          "time": "8-12 mois",
+          "note": "Dépend de la profession et des points"
+        },
+        {
+          "type": "Parrainé par l'employeur (482)",
+          "time": "3-6 mois",
+          "note": "Plus rapide grâce à une documentation complète"
+        },
+        {
+          "type": "Étudiant (500)",
+          "time": "4-8 semaines",
+          "note": "Les heures de pointe peuvent être plus longues"
+        },
+        {
+          "type": "Partenaire (820/801)",
+          "time": "12-24 mois",
+          "note": "Les affaires complexes prennent plus de temps"
+        },
+        {
+          "type": "Entreprises (188)",
+          "time": "8-12 mois",
+          "note": "La nomination par l'État prend du temps"
+        },
+        {
+          "type": "Congé ouvrable (417)",
+          "time": "1-4 semaines",
+          "note": "Traitement généralement rapide"
+        }
+      ]
+    }
+  },
+  "ukToAustraliaGuide": {
+    "subtitle": "Ce qu'il faut savoir",
+    "description": "Le déménagement du Royaume-Uni vers l'Australie est populaire en raison de similitudes culturelles, d'une langue commune et de liens économiques solides. Toutefois, ce déménagement nécessite une certaine planification et l'obtention d'un visa adéquat. Ce guide présente tout ce qu'il faut savoir pour s'installer en Australie.",
+    "navigation": {
+      "title": "Navigation rapide"
+    },
+    "accessibility": {
+      "sectionButton": "Naviguer vers {titre} section"
+    },
+    "sections": [
+      {
+        "id": "pourquoi déménager",
+        "icon": "🧳",
+        "title": "Pourquoi s'installer en Australie ?",
+        "content": {
+          "description": "Le déménagement du Royaume-Uni vers l'Australie est populaire en raison de similitudes culturelles, d'une langue commune et de liens économiques solides. Toutefois, ce déménagement nécessite une certaine planification et l'obtention du visa adéquat.",
+          "reasons": [
+            "Culture similaire et langue commune",
+            "Des opportunités économiques fortes",
+            "Une meilleure qualité de vie et un mode de vie en plein air",
+            "Meilleur temps et beaux paysages",
+            "Communautés d'expatriés britanniques établies"
+          ],
+          "conclusion": "Le déménagement nécessite une planification minutieuse, notamment en ce qui concerne les visas et les possibilités d'emploi."
+        }
+      },
+      {
+        "id": "exigences en matière de visa",
+        "icon": "🛂",
+        "title": "Exigences en matière de visa",
+        "content": {
+          "description": "Les citoyens britanniques ont besoin d'un visa pour vivre, travailler ou étudier en Australie. Les options les plus courantes sont les suivantes :",
+          "visaTypes": [
+            {
+              "title": "Visa indépendant qualifié (sous-classe 189)",
+              "description": "Pour les travailleurs exerçant des professions très demandées, sans obligation de parrainage",
+              "keyPointsTitle": "Points clés :",
+              "keyPoints": [
+                "Doit obtenir suffisamment de points à l'évaluation des compétences",
+                "Pas de parrainage nécessaire",
+                "Parcours de résidence permanente",
+                "Doit être âgé de moins de 45 ans"
+              ]
+            },
+            {
+              "title": "Visa pour personnes qualifiées désignées (sous-classe 190)",
+              "description": "Nomination par l'État avec des délais de traitement plus courts",
+              "keyPoints": [
+                "Nécessite la nomination d'un État ou d'un territoire australien",
+                "Points supplémentaires pour la nomination par l'État",
+                "Peut nécessiter l'engagement de vivre dans l'État de nomination"
+              ]
+            },
+            {
+              "title": "Visa parrainé par l'employeur (sous-classe 482)",
+              "description": "Requiert une offre d'emploi de la part d'une entreprise australienne",
+              "keyPoints": [
+                "Visa temporaire pour pénurie de main-d'œuvre",
+                "L'employeur doit être un sponsor agréé",
+                "Le poste doit figurer sur la liste des professions qualifiées",
+                "Peut conduire à la résidence permanente après une certaine période"
+              ]
+            },
+            {
+              "title": "Visa Vacances-Travail (sous-classe 417)",
+              "description": "Pour les 18-35 ans, valable jusqu'à 3 ans",
+              "keyPoints": [
+                "Initialement 12 mois",
+                "Peut être prolongé deux fois avec un travail régional",
+                "Permet de travailler avec un seul employeur pendant une période maximale de 6 mois",
+                "Un bon moyen de découvrir l'Australie avant de s'engager"
+              ]
+            },
+            {
+              "title": "Visas de partenaire ou de famille",
+              "description": "Si vous avez des parents proches ou un partenaire en Australie",
+              "keyPoints": [
+                "Visa de partenaire pour les conjoints ou les partenaires de fait",
+                "Visas parentaux pour les parents de citoyens australiens",
+                "Visas pour enfants à charge"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "autres exigences",
+        "icon": "🧾",
+        "title": "Autres exigences",
+        "content": {
+          "requirements": [
+            "Passeport britannique en cours de validité",
+            "Contrôles sanitaires et certificat de moralité (police)",
+            "Preuve de la maîtrise de l'anglais (pour certains visas)",
+            "Reconnaissance des compétences ou des diplômes (en cas de demande de visa pour travailleurs qualifiés)",
+            "Preuve de ressources (en particulier pour les visas temporaires ou d'étudiant)"
+          ],
+          "tip": "<Conseil:</strong> Commencez à rassembler ces documents à l'avance, car certains d'entre eux (comme les certificats de police) peuvent prendre plusieurs semaines à obtenir."
+        }
+      },
+      {
+        "id": "déplacement des coûts",
+        "icon": "💰",
+        "title": "Coût du déménagement",
+        "content": {
+          "description": "Comptez entre 5 000 et 12 000 £, y compris les frais de visa, les vols, les dépôts de garantie pour le logement et les frais de subsistance initiaux.",
+          "tip": "<Astuce:</strong>De nombreuses demandes de visa exigent la preuve que vous disposez de suffisamment d'argent pour subvenir à vos besoins dans un premier temps. Préparez-vous à présenter des relevés bancaires."
+        }
+      },
+      {
+        "id": "mode de vie",
+        "icon": "🌏",
+        "title": "Notes sur le mode de vie",
+        "content": {
+          "aspects": [
+            {
+              "title": "Climat",
+              "description": "Le climat varie considérablement : des villes comme Sydney et Perth connaissent des étés chauds, tandis que Melbourne est connue pour ses \"quatre saisons en un jour\". Les régions du nord sont tropicales, tandis que la Tasmanie est plus fraîche."
+            },
+            {
+              "title": "Culture du travail",
+              "description": "L'Australie a une culture du travail décontractée, mais maintient des normes professionnelles élevées. L'équilibre entre vie professionnelle et vie privée est valorisé, de nombreuses entreprises fermant leurs portes plus tôt qu'au Royaume-Uni."
+            },
+            {
+              "title": "Soins de santé",
+              "description": "Les soins de santé publics (Medicare) sont accessibles dès que vous devenez résident. Pour les détenteurs de visas temporaires, une assurance maladie privée est indispensable et souvent obligatoire."
+            },
+            {
+              "title": "Coût de la vie",
+              "description": "Les grandes villes comme Sydney et Melbourne ont un coût de la vie élevé, en particulier pour le logement. Les régions offrent des options plus abordables mais moins de commodités."
+            }
+          ]
+        }
+      },
+      {
+        "id": "villes populaires",
+        "icon": "🏙️",
+        "title": "Villes populaires pour les expatriés britanniques",
+        "content": {
+          "description": "L'Australie compte plusieurs villes très prisées par les expatriés britanniques :",
+          "cities": [
+            {
+              "name": "Sydney",
+              "description": "La plus grande ville d'Australie avec ses monuments emblématiques, ses plages magnifiques et sa scène culturelle dynamique. Le coût de la vie y est le plus élevé, mais les possibilités d'emploi y sont excellentes."
+            },
+            {
+              "name": "Melbourne",
+              "description": "Capitale culturelle aux accents européens, connue pour ses arts, sa culture du café et ses événements sportifs. Climat plus variable mais coût du logement légèrement inférieur à celui de Sydney."
+            },
+            {
+              "name": "Brisbane",
+              "description": "Climat subtropical, économie en croissance et logements plus abordables qu'à Sydney ou Melbourne. Mode de vie décontracté à proximité de la Gold Coast et de la Sunshine Coast."
+            },
+            {
+              "name": "Perth",
+              "description": "Capitale la plus ensoleillée avec de belles plages et une forte industrie minière. Plus isolée, elle offre une excellente qualité de vie et une forte communauté d'expatriés britanniques."
+            },
+            {
+              "name": "Adélaïde",
+              "description": "Logements plus abordables et rythme de vie plus détendu. Connue pour ses régions viticoles, ses festivals et son environnement familial."
+            },
+            {
+              "name": "Côte d'or",
+              "description": "Populaire auprès des expatriés britanniques pour ses plages magnifiques, son climat chaud et son industrie du tourisme. Mode de vie décontracté et économie en croissance."
+            }
+          ]
+        }
+      },
+      {
+        "id": "conseils pratiques",
+        "icon": "💡",
+        "title": "Conseils pratiques",
+        "content": {
+          "tips": [
+            "Ouvrir un compte bancaire australien avant l'arrivée, si possible.",
+            "Recherche des implications fiscales - il existe un accord fiscal entre le Royaume-Uni et l'Australie.",
+            "Pensez à programmer votre déménagement en dehors de la période estivale (décembre-février).",
+            "Rejoignez les groupes Facebook d'expatriés de votre ville de destination",
+            "S'inscrire auprès du service Living Abroad du gouvernement britannique pour recevoir des mises à jour"
+          ],
+          "mainTip": "<Conseil:</strong> Commencez votre procédure de demande de visa bien à l'avance - le traitement de certains visas peut prendre de 6 à 12 mois."
+        }
+      }
+    ],
+    "costTable": {
+      "headers": {
+        "category": "Catégorie de dépenses",
+        "cost": "Coût estimé (£)"
+      },
+      "rows": [
+        {
+          "category": "Frais de demande de visa",
+          "cost": "£1,000-£4,000"
+        },
+        {
+          "category": "Vols (aller simple)",
+          "cost": "£600-£1,200"
+        },
+        {
+          "category": "Expédition des biens",
+          "cost": "£1,500-£3,000"
+        },
+        {
+          "category": "Hébergement initial",
+          "cost": "£1,000-£2,000"
+        },
+        {
+          "category": "Frais de subsistance (premier mois)",
+          "cost": "£1,000-£1,500"
+        },
+        {
+          "category": "Fonds d'urgence",
+          "cost": "£1,000-£2,000"
+        }
+      ]
+    },
+    "comparison": {
+      "title": "Comparaison rapide entre le Royaume-Uni et l'Australie",
+      "aspects": [
+        {
+          "icon": "🌡️",
+          "category": "Climat",
+          "uk": "Frais, pluvieux, 4 saisons",
+          "australia": "Hivers chauds, ensoleillés et doux"
+        },
+        {
+          "icon": "💰",
+          "category": "Coût de la vie",
+          "uk": "Élevée à Londres, modérée ailleurs",
+          "australia": "Élevée à Sydney/Melbourne, plus faible ailleurs"
+        },
+        {
+          "icon": "🏠",
+          "category": "Logement",
+          "uk": "Espaces réduits, bâtiments plus anciens",
+          "australia": "Des espaces plus grands, des maisons modernes"
+        },
+        {
+          "icon": "🏥",
+          "category": "Soins de santé",
+          "uk": "NHS (gratuit au point d'utilisation)",
+          "australia": "Medicare (similaire au NHS)"
+        },
+        {
+          "icon": "💼",
+          "category": "Culture du travail",
+          "uk": "Heures plus longues, plus formelles",
+          "australia": "Meilleur équilibre entre vie professionnelle et vie privée"
+        },
+        {
+          "icon": "🌍",
+          "category": "Localisation",
+          "uk": "Près de l'Europe",
+          "australia": "Isolé mais proche de l'Asie"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Calendrier du déménagement : 12 mois avant le départ",
+      "phases": [
+        {
+          "timeframe": "12 mois avant",
+          "title": "Recherche et planification",
+          "description": "Recherche de visas, évaluation des qualifications, choix des villes cibles"
+        },
+        {
+          "timeframe": "9-10 mois avant",
+          "title": "Demande de visa",
+          "description": "Soumettre la demande de visa, compléter l'évaluation des compétences, rassembler les documents"
+        },
+        {
+          "timeframe": "6-8 mois avant",
+          "title": "Recherche d'emploi",
+          "description": "Commencer à postuler à un emploi, nouer des contacts avec des professionnels australiens"
+        },
+        {
+          "timeframe": "3-4 mois avant",
+          "title": "Dispositions relatives aux déménagements",
+          "description": "Réserver des vols, organiser le transport, trouver un logement temporaire"
+        },
+        {
+          "timeframe": "1-2 mois avant",
+          "title": "Préparatifs finaux",
+          "description": "Ouverture d'un compte bancaire en Australie, souscription d'une assurance, notification aux autorités britanniques"
+        },
+        {
+          "timeframe": "À l'arrivée",
+          "title": "Règlement",
+          "description": "Trouver un logement permanent, s'inscrire à l'assurance maladie, mettre en place des services locaux"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Liste de contrôle finale avant de déménager en Australie",
+      "items": [
+        "Obtenir le visa approprié",
+        "Réserver des vols et des expéditions",
+        "Organiser un hébergement temporaire",
+        "Ouvrir un compte bancaire en Australie",
+        "Organiser l'assurance maladie",
+        "Mise à jour du statut fiscal auprès du HMRC",
+        "Informer les autorités britanniques (NHS, pension, conseil municipal, etc.) de votre déménagement"
+      ]
+    },
+    "conclusion": {
+      "title": "Le déménagement en Australie est-il fait pour vous ?",
+      "description": "Avec ses paysages époustouflants, son économie solide et son mode de vie en plein air, l'Australie offre une excellente qualité de vie aux expatriés britanniques. Bien que l'éloignement du pays et le coût de la vie puissent être difficiles à supporter, nombreux sont ceux qui estiment que le soleil, l'espace et les possibilités offertes par l'Australie valent la peine d'être vécus."
+    }
+  },
+  "petsToAustralia": {
+    "description": "Il est possible d'emmener ses animaux de compagnie en Australie, mais cela nécessite une planification approfondie en raison des règles strictes en matière de biosécurité. Le système de quarantaine rigoureux de l'Australie protège son écosystème unique contre les maladies et les parasites étrangers.",
+    "navigation": {
+      "title": "Guide de voyage pour animaux de compagnie"
+    },
+    "accessibility": {
+      "sectionButton": "Voir la section concernant {titre}"
+    },
+    "sections": [
+      {
+        "id": "exigences clés",
+        "icon": "✅",
+        "title": "Exigences clés",
+        "content": {
+          "requirements": [
+            {
+              "title": "Animaux éligibles",
+              "description": "Seuls certains animaux sont autorisés à entrer en Australie :",
+              "list": [
+                "Chiens (à l'exception de certaines races comme le Pit Bull Terrier)",
+                "Chats (à l'exception des chats de race Savannah des générations F1 à F4)",
+                "Les autres animaux ne sont généralement pas autorisés"
+              ]
+            },
+            {
+              "title": "Approuvé Pays d'origine",
+              "description": "Votre animal doit provenir d'un pays agréé. Le Royaume-Uni est classé dans la catégorie 3, ce qui implique des exigences spécifiques."
+            },
+            {
+              "title": "Microchip",
+              "description": "Votre animal doit être équipé d'une puce électronique conforme à la norme ISO avant toute vaccination ou analyse sanguine."
+            },
+            {
+              "title": "Vaccination et dépistage de la rage",
+              "description": "Une vaccination contre la rage suivie d'un test de titre d'anticorps neutralisant la rage (RNATT) est nécessaire.",
+              "highlight": "Le RNATT doit être effectué <span class=\"font-medium\">au moins 180 jours avant l'entrée</span> en Australie."
+            },
+            {
+              "title": "Permis d'importation",
+              "description": "Vous devez obtenir un permis d'importation auprès du ministère australien de l'agriculture, de l'eau et de l'environnement.",
+              "highlight": "Faites votre demande au moins <span class=\"font-medium\">42 jours avant le voyage</span>."
+            },
+            {
+              "title": "Traitements complémentaires",
+              "description": "Dans les jours qui suivent le voyage, votre animal aura besoin de traitements supplémentaires :",
+              "list": [
+                "Parasites externes (tiques et puces)",
+                "Parasites internes (vers)",
+                "Autres tests et traitements spécifiques"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "calendrier",
+        "icon": "📅",
+        "title": "Calendrier et planification",
+        "content": {
+          "description": "L'arrivée d'animaux domestiques en Australie nécessite une préparation d'au moins 7 à 8 mois.",
+          "phases": [
+            {
+              "timeframe": "7+ mois avant le voyage",
+              "tasks": [
+                "Vérifier l'éligibilité de votre animal à l'importation",
+                "S'assurer que la puce est conforme à la norme ISO",
+                "Vérification/mise à jour de la vaccination contre la rage",
+                "Prévoir un test sanguin RNATT (à effectuer au moins 180 jours avant l'arrivée)"
+              ]
+            },
+            {
+              "timeframe": "2-3 mois avant le voyage",
+              "tasks": [
+                "Demander un permis d'importation (au moins 42 jours avant le voyage)",
+                "Réserver un espace pour une installation de quarantaine à Melbourne",
+                "Organiser le transport de l'animal par un transporteur agréé"
+              ]
+            },
+            {
+              "timeframe": "10-30 jours avant le voyage",
+              "tasks": [
+                "Effectuer les examens vétérinaires finaux",
+                "Administrer les traitements antiparasitaires nécessaires",
+                "Obtenir des certificats de santé officiels approuvés par le vétérinaire du gouvernement.",
+                "Préparer la caisse de voyage conformément aux normes IATA"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "quarantaine",
+        "icon": "🔒",
+        "title": "Processus de quarantaine",
+        "content": {
+          "warning": "Tous les animaux de compagnie entrant en Australie <strong>doivent</strong> subir une période de quarantaine obligatoire, quel que soit leur pays d'origine.",
+          "keyInfo": [
+            {
+              "icon": "📍",
+              "title": "Point d'entrée",
+              "description": "Melbourne est le <span class=\"font-medium\">seul port d'entrée</span> pour les animaux de compagnie entrant en Australie. Votre animal doit atterrir à l'aéroport de Melbourne."
+            },
+            {
+              "icon": "⏱️",
+              "title": "La durée",
+              "description": "Au moins <span class=\"font-medium\">10 jours</span> dans l'installation de quarantaine du gouvernement. Cette période peut être prolongée en cas de problèmes de santé."
+            }
+          ],
+          "details": [
+            {
+              "title": "Installation de quarantaine",
+              "description": "L'installation Post Entry Quarantine (PEQ) de Melbourne est le lieu de séjour de tous les animaux importés. Elle fournit :",
+              "list": [
+                "- Chenils/chatteries de base avec climatisation",
+                "- Alimentation régulière et soins de base",
+                "- Inspections et traitements vétérinaires",
+                "- <span class=\"font-medium\">Aucune visite n'est autorisée</span> pendant la période de quarantaine"
+              ]
+            },
+            {
+              "title": "Après la quarantaine",
+              "description": "Une fois que votre animal a passé la quarantaine avec succès, vous pouvez.. :",
+              "list": [
+                "- Les récupérer à l'établissement de Melbourne",
+                "- Organiser le transport intérieur jusqu'à votre destination finale",
+                "- Enregistrez votre animal de compagnie auprès des autorités locales de votre nouveau domicile."
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "coûts",
+        "icon": "💰",
+        "title": "Coûts estimés",
+        "content": {
+          "description": "Le coût total peut varier de 3 000 à 7 000 dollars australiens par animal, en fonction de votre lieu de résidence et de la taille de l'animal.",
+          "tip": "<Conseil:</strong> Le recours à un service professionnel de transport d'animaux de compagnie peut simplifier considérablement le processus, même s'il est plus onéreux. Ils s'occuperont des formalités administratives et de la logistique."
+        }
+      },
+      {
+        "id": "vie des animaux",
+        "icon": "🐶",
+        "title": "La vie des animaux de compagnie en Australie",
+        "content": {
+          "description": "L'Australie est un pays qui aime les animaux, avec des normes élevées en matière de soins aux animaux et de nombreux espaces adaptés aux animaux de compagnie.",
+          "aspects": [
+            {
+              "icon": "🏥",
+              "title": "Soins vétérinaires",
+              "description": "Des soins vétérinaires de haute qualité sont disponibles dans tout le pays. Les visites annuelles chez le vétérinaire coûtent généralement entre 200 et 400 dollars australiens. Une assurance pour animaux de compagnie est disponible à partir de 20 à 60 dollars par mois."
+            },
+            {
+              "icon": "📝",
+              "title": "Inscription",
+              "description": "Les animaux domestiques doivent être enregistrés auprès des conseils locaux. Les frais d'enregistrement varient, mais sont généralement de 30 à 150 dollars australiens par an, avec des réductions pour les animaux désexués."
+            },
+            {
+              "icon": "🏞️",
+              "title": "Parcs et plages",
+              "description": "Il existe de nombreuses zones désignées pour les animaux sans laisse, mais les règles sont plus strictes que dans certains pays. Toutes les plages ne sont pas adaptées aux animaux de compagnie, il convient donc de vérifier la réglementation locale."
+            },
+            {
+              "icon": "🏠",
+              "title": "Logement",
+              "description": "Il peut être difficile de trouver des locations acceptant les animaux de compagnie. Il faut s'attendre à payer une caution (généralement de 200 à 500 dollars australiens) pour les locations qui acceptent les animaux."
+            }
+          ],
+          "warning": "<strong>Important:</strong> L'Australie possède une faune et des écosystèmes uniques. Les chiens et les chats doivent être tenus sous contrôle afin de protéger les animaux indigènes, en particulier dans les régions proches du bush ou des zones de conservation."
+        }
+      }
+    ],
+    "costTable": {
+      "headers": {
+        "expense": "Dépenses",
+        "cost": "Coût estimé (AUD)"
+      },
+      "rows": [
+        {
+          "expense": "Préparation vétérinaire (vaccinations, tests, traitements)",
+          "cost": "$800-$1,500"
+        },
+        {
+          "expense": "Permis d'importation",
+          "cost": "$480"
+        },
+        {
+          "expense": "Billets d'avion",
+          "cost": "$800-$2,500"
+        },
+        {
+          "expense": "Frais de quarantaine",
+          "cost": "$1,200-$2,000"
+        },
+        {
+          "expense": "Frais de transport des animaux de compagnie (facultatif)",
+          "cost": "$500-$1,500"
+        },
+        {
+          "expense": "Transport intérieur après la quarantaine",
+          "cost": "$200-$500"
+        }
+      ]
+    },
+    "breedRestrictions": {
+      "title": "Races d'animaux de compagnie interdites",
+      "note": "Ces races sont interdites d'entrée en Australie, quelles que soient les circonstances.",
+      "categories": [
+        {
+          "type": "Races de chiens interdites",
+          "breeds": [
+            "Pit Bull Terrier Américain",
+            "Perro de Presa Canario",
+            "Dogue argentin",
+            "Fila Brasileiro",
+            "Tosa japonais",
+            "Et tous les croisements de ces"
+          ]
+        },
+        {
+          "type": "Races de chats interdites",
+          "breeds": [
+            "Chats de Savannah (générations F1, F2, F3, F4)",
+            "Chats du Bengale (générations F1, F2, F3)",
+            "Chausie cats (générations F1, F2, F3)",
+            "Chats couguars en pierre",
+            "Et tous les croisements avec des chats sauvages"
+          ]
+        }
+      ]
+    },
+    "professionalServices": {
+      "title": "Services professionnels de transport d'animaux",
+      "services": [
+        {
+          "icon": "🚚",
+          "name": "Service complet de transport",
+          "description": "Service complet de porte à porte, y compris toutes les formalités administratives",
+          "cost": "3 000 À 6 000 $ AUD."
+        },
+        {
+          "icon": "📋",
+          "name": "Documentation uniquement",
+          "description": "Aide pour les permis, les certificats de santé et les formalités administratives",
+          "cost": "800 $ - 1 500 $ AUD."
+        },
+        {
+          "icon": "✈️",
+          "name": "Réservation de vols",
+          "description": "Réservation et coordination de vols spécialisés pour les animaux de compagnie",
+          "cost": "300-$800 AUD"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Liste de contrôle pour l'importation d'animaux de compagnie en Australie",
+      "items": [
+        "Vérifier que votre animal de compagnie peut être importé en Australie",
+        "S'assurer que la puce est conforme à la norme ISO",
+        "Prévoir la vaccination contre la rage et le test sanguin RNATT (au moins 180 jours avant le voyage).",
+        "Demande de permis d'importation (au moins 42 jours avant le voyage)",
+        "Réserver un hébergement dans une installation de quarantaine à Melbourne",
+        "Organiser des transports internationaux adaptés aux animaux de compagnie",
+        "Finaliser les certificats de santé et les traitements avant le départ"
+      ]
+    },
+    "conclusion": {
+      "title": "Une nouvelle vie pour votre animal de compagnie",
+      "description": "Bien qu'emmener des animaux de compagnie en Australie nécessite une planification importante, du temps et un investissement financier, la récompense de voir le membre de votre famille à fourrure vous rejoindre dans votre nouvelle maison en vaut la peine. L'Australie offre d'excellents soins vétérinaires et une communauté aimant les animaux de compagnie, une fois que votre animal a passé avec succès les conditions d'entrée."
+    }
+  }
+}

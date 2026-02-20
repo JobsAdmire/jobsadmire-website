@@ -1,0 +1,911 @@
+{
+  "heroSection": {
+    "badge": "Eksklýuziw Syýahatlar",
+    "title": "Indiki başdan geçirmeleriňizi açyň",
+    "description": "Islegleriňize laýyk gelýän ýokary hilli syýahat paketlerimiz bilen ajaýyp ýerleri başdan geçiriň we ýatdan çykmajak ýatlamalary dörediň.",
+    "currentlyViewing": {
+      "label": "Häzirki wagtda görkezilýär"
+    },
+    "buttons": {
+      "explore": "Häzir öwren",
+      "viewAll": "Ähli ugurlary görkez"
+    },
+    "destinationCounter": "Barmaly ýer {häzirki}/{jemi}",
+    "destinations": [
+      {
+        "img": "/images/ihusn.png",
+        "name": "Nýu-Ýork şäheri, Nýu-Ýork",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihuslos.png",
+        "name": "Los Anjeles, Kaliforniýa",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihuch.png",
+        "name": "Çikago, Illinoýs",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihusen.png",
+        "name": "San-Fransisko, Kaliforniýa",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihumiami.png",
+        "name": "Maýami, Florida",
+        "country": "USA"
+      }
+    ],
+    "accessibility": {
+      "exploreButton": "Häzir ýerleri öwreniň",
+      "viewAllButton": "Elýeterli ähli ugurlary görkez",
+      "destinationImage": "Barmaly ýeri görkez: {name}",
+      "featuredDestination": "Görkezilen ýeriň suraty",
+      "carouselControl": "{Number} barmaly ýere git"
+    },
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableOfContents": {
+    "title": "Mazmuny",
+    "subtitle": "Bölümler boýunça gezelenç",
+    "currentlyReading": "Häzirki wagtda okaýar",
+    "sectionsCount": "Öwrenilmeli {count} bölüm",
+    "sections": [
+      {
+        "title": "🇺🇸 ABŞ barada gyzykly we täsin maglumatlar",
+        "id": 1
+      },
+      {
+        "title": "ABŞ-a göçmek üçin wiza mümkinçilikleri",
+        "id": 2
+      },
+      {
+        "title": "ABŞ-a göçmek üçin talaplar",
+        "id": 3
+      },
+      {
+        "title": "ABŞ-da daşary ýurtly hökmünde işe girmek",
+        "id": 4
+      },
+      {
+        "title": "Türkiýeden ABŞ-a göçmek",
+        "id": 5
+      },
+      {
+        "title": "Beýik Britaniýadan ABŞ-a göçmek",
+        "id": 6
+      },
+      {
+        "title": "ABŞ-a göçmegiň bahasy näçe?",
+        "id": 7
+      },
+      {
+        "title": "ABŞ-a öý haýwanlary bilen göçmek",
+        "id": 8
+      }
+    ],
+    "quickNavigation": {
+      "title": "Çalt nawigasiýa",
+      "footer": "{count} bölümleriň içinden aýlaň"
+    },
+    "accessibility": {
+      "toggleMenu": "Nawigasiýa menýusyny aç/ýap",
+      "sectionButton": "Bölüme geç: {title}",
+      "quickNavigation": "Çalt nawigasiýa menýusy",
+      "quickNavSection": "Çalt gidiş: {title}"
+    }
+  },
+  "factsCard": {
+    "description": "Amerikanyň Birleşen Ştatlarynyň ajaýyp aýratynlyklaryny we üstünliklerini açyň. ABŞ dünýä derejesinde geografik, ykdysady, medeni we innowasion taýdan ajaýyp ähmiýete eýedir.",
+    "navigation": {
+      "title": "Faktlary öwreniň",
+      "previous": "Öňki fakt",
+      "next": "Indiki fakt"
+    },
+    "allFacts": {
+      "title": "ABŞ barada ähli maglumatlar"
+    },
+    "facts": [
+      {
+        "title": "Üçünji uly ýurt",
+        "description": "ABŞ ýer meýdany we ilat sany boýunça Russiýadan/Kanadadan (meýdany) we Hytaýdan/Hindistandan (ilaty) soň üçünji uly ýurtdur.",
+        "iconKey": "karta",
+        "emoji": "🗺️",
+        "id": 1
+      },
+      {
+        "title": "50 ştat we 1 federal okrug",
+        "description": "Ol 50 ştatdan we paýtagt bolan, ýöne ştat däl Waşingtondan ybarat.",
+        "iconKey": "baýdak",
+        "emoji": "🏛️",
+        "id": 2
+      },
+      {
+        "title": "Dünýäniň iň uly ykdysadyýeti",
+        "description": "Häzirki wagtda Birleşen Ştatlar tehnologiýa, maliýe, saglygy goraýyş we güýmenje pudagy bilen dolandyrylýan<strong>dünýäde iň uly ykdysadyýete</strong> eýedir.",
+        "iconKey": "bina",
+        "emoji": "💰",
+        "id": 3
+      },
+      {
+        "title": "Medeni dürlülik",
+        "description": "Ol medeniýet taýdan iň köpdürlüligi bolan ýurtlaryň biri bolup, 350-den gowrak dilde gepleşilýär we Ýer ýüzüniň ähli ýurtlaryndan diýen ýaly jemgyýetler ýaşaýar.",
+        "iconKey": "globus",
+        "emoji": "🌎",
+        "id": 4
+      },
+      {
+        "title": "Innowasiýalar şu ýerden başlandy",
+        "description": "ABŞ internet, uçar, çyra we iPhone ýaly köp sanly oýlap tapyşlaryň öýi.",
+        "iconKey": "lampa",
+        "emoji": "💡",
+        "id": 5
+      }
+    ],
+    "accessibility": {
+      "factButton": "Fakty saýlaň: {title}",
+      "previousFact": "Öňki fakta geç",
+      "nextFact": "Indiki fakta geç"
+    }
+  },
+  "movingCostsGuide": {
+    "title": "ABŞ-a göçmegiň bahasy näçe?",
+    "description": "ABŞ-na göçmek gyzykly bolup biler, ýöne munuň üçin birnäçe çykdajylary meýilleşdirmeli. ABŞ-na göçýän wagtyňyz garaşyp biljek çykdajylaryňyzyň jikme-jik beýany şu ýerde.",
+    "costSections": [
+      {
+        "id": "wiza-immigrasiýa",
+        "icon": "🛂",
+        "title": "Wiza we immigrasiýa tölegleri",
+        "amount": "160 dollardan 5000 dollara çenli",
+        "details": "Wiza üçin arzalar, ýaşyl kart, isleg boýunça aklawçy tölegleri",
+        "color": "bg-blue-500",
+        "subItems": {
+          "0": {
+            "title": "Immigrasiýa däl wiza (H-1B, F-1)",
+            "amount": "160–205 dollar"
+          },
+          "1": {
+            "title": "Ýaşyl kart (immigrant wizasy)",
+            "amount": "$1,200–$1,760"
+          },
+          "2": {
+            "title": "Aklawçynyň tölegleri (isleg boýunça)",
+            "amount": "1500–5000 dollar"
+          }
+        }
+      },
+      {
+        "id": "uçuş",
+        "icon": "✈️",
+        "title": "Uçuş biletleri",
+        "amount": "500–1200 dollar",
+        "details": "Ýerleşýän ýerine we bronlama wagtyna baglylykda bir taraplaýyn uçuş",
+        "color": "bg-blue-600"
+      },
+      {
+        "id": "iberiş",
+        "icon": "📦",
+        "title": "Ýük daşamak üçin zatlar",
+        "amount": "500–7000 dollar",
+        "details": "Göwrüme we iberiş usulyna baglydyr",
+        "color": "bg-blue-700",
+        "subItems": {
+          "0": {
+            "title": "Kiçi ýük (diňe gutularda)",
+            "amount": "500–1500 dollar"
+          },
+          "1": {
+            "title": "Doly konteýner (20 fut/40 fut)",
+            "amount": "3000–7000 dollar"
+          }
+        }
+      },
+      {
+        "id": "ýaşaýyş jaýy",
+        "icon": "🏠",
+        "title": "Ilkinji ýerleşmek",
+        "amount": "1000–4000 dollar",
+        "details": "Ilkinji aý üçin kärende tölegi + girew tölegi (şähere görä üýtgeýär)",
+        "color": "bg-blue-500",
+        "subItems": {
+          "0": {
+            "title": "Wagtlaýyn myhmanhana/Airbnb",
+            "amount": "Bir gije üçin 80–200 dollar"
+          }
+        }
+      },
+      {
+        "id": "ätiýaçlandyryş",
+        "icon": "🏥",
+        "title": "Saglyk ätiýaçlandyryşy",
+        "amount": "Aýda 300–700 dollar",
+        "details": "Köp wiza görnüşleri üçin talap edilýär",
+        "color": "bg-blue-600",
+        "subItems": {
+          "0": {
+            "title": "Maşgala ätiýaçlandyrmasy",
+            "amount": "Has gymmat"
+          }
+        }
+      },
+      {
+        "id": "beýleki",
+        "icon": "📝",
+        "title": "Beýleki çykdajylar",
+        "amount": "$520–$1,080+/aý",
+        "color": "bg-blue-500",
+        "subItems": {
+          "0": {
+            "title": "SSN arzasy",
+            "amount": "Mugt"
+          },
+          "1": {
+            "title": "Sürüjilik şahadatnamasy",
+            "amount": "20–80 dollar"
+          },
+          "2": {
+            "title": "Azyk önümleri we ulag",
+            "amount": "Aýda 500–1000 dollar"
+          }
+        }
+      }
+    ],
+    "totalBudget": {
+      "icon": "🔢",
+      "title": "Çaklanylýan umumy býujet",
+      "categories": [
+        {
+          "title": "Ýeke adam",
+          "amount": "5000–10000 dollar",
+          "description": "Wiza töleglerini, ilkinji ýaşaýyş jaýyny, ulag we esasy gurnama çykdajylaryny öz içine alýar"
+        },
+        {
+          "title": "Dört adamlyk maşgala",
+          "amount": "10,000–25,000+ dollar",
+          "description": "Wiza, iberiş we ýaşaýyş jaýy ýaly ähli maşgala çykdajylaryny öz içine alýar"
+        }
+      ]
+    },
+    "moneySavingTips": {
+      "icon": "💰",
+      "title": "Pul tygşytlamak boýunça maslahatlar",
+      "tips": [
+        {
+          "title": "Ýerleşýän ýeri üns bilen göz öňünde tutuň",
+          "description": "Ýaşaýyş jaýlarynyň bahasy şäherler boýunça düýpli tapawutlanýar. Kiçi şäherleri ýa-da şäher töweregindäki etraplary göz öňünde tutuň."
+        },
+        {
+          "title": "Uçuşlary ir bronlaň",
+          "description": "Uçuşlary 2-3 aý öňünden bronlamak ýüzlerçe dollary tygşytlap biler."
+        },
+        {
+          "title": "Seçimli iberiş",
+          "description": "ABŞ-da täzesini satyn almak bilen deňeşdirilende, eltip bermegiň näme gymmatdygyny göz öňünde tutuň."
+        },
+        {
+          "title": "Ätiýaçlandyryş meýilnamalaryny deňeşdiriň",
+          "description": "Saglyk ätiýaçlandyryşynyň çykdajylary dürli-dürli bolup biler; dogry meýilnamany tapmak üçin wagt sarp ediň."
+        }
+      ]
+    },
+    "conclusion": "Siziň gutarnykly bahasyňyz wizaňyzyň görnüşine, göçýän ýeriňize we ABŞ-daky barmaly ýeriňize baglydyr. Dogry meýilnamalaşdyrmak we býujet düzmek bilen, ABŞ-na göçmegiňizi hem rahat, hem-de ykdysady taýdan amatly edip bilersiňiz.",
+    "accessibility": {
+      "toggleSection": "{title} bölüminiň jikme-jiklikleri üçin aç/ýap"
+    }
+  },
+  "requirementsGuide": {
+    "tabs": {
+      "all": "Ähli talaplar",
+      "essential": "Esasy talaplar",
+      "recommended": "Maslahat berilýär",
+      "after-arrival": "Gelişden soň"
+    },
+    "categoryLabels": {
+      "essential": "Gerekli",
+      "recommended": "Maslahat berilýär",
+      "afterArrival": "Gelişden soň"
+    },
+    "requirements": [
+      {
+        "title": "Dogry wiza ýa-da ýaşyl kart alyň",
+        "description": "ABŞ-da ýaşamak üçin tassyklanan wizaňyz ýa-da \"Green Card\" (hemişelik ýaşaýjy statusy) bolmaly.",
+        "details": {
+          "0": "Maşgala esasynda immigrant wizasy",
+          "1": "Iş üçin wiza (H-1B, L-1 we ş.m.)",
+          "2": "Talyp wizasy (F-1)",
+          "3": "\"Green Card\" lotereýasy (Dürlülik wizasy maksatnamasy)"
+        },
+        "tip": "Wiza üçin arzaňyzy ýurduňyzdaky ABŞ-nyň ilçihanasynda ýa-da konsullygynda tabşyryň. Işläp çykaryş wagty hepdelerden aýlara çenli üýtgeýär.",
+        "iconKey": "faýlText",
+        "category": "zerur",
+        "id": 1
+      },
+      {
+        "title": "Güýçli pasport",
+        "description": "Pasportyňyz giriş üçin niýetlenen seneňizden azyndan 6 aý möhlet bilen güýjünde bolmaly.",
+        "details": {
+          "0": "Eger wizanyň möhleti gutarýan bolsa, wiza üçin ýüz tutmazdan öň ony täzeläň."
+        },
+        "iconKey": "kitap açyk",
+        "category": "zerur",
+        "id": 2,
+        "tip": ""
+      },
+      {
+        "title": "Tassyklanan lukmançylyk barlagy",
+        "description": "Immigrasiýa wizalary üçin hökmany lukmançylyk barlagyndan geçmek zerurdyr.",
+        "details": {
+          "0": "Muny ABŞ-nyň ilçihanasy tarapyndan tassyklanan lukman etmeli.",
+          "1": "Siz inçekesel ýaly keseller üçin barlagdan geçersiňiz we esasy sanjymlaryň subutnamasyny görkezmeli bolarsyňyz."
+        },
+        "tip": "Bahasy: Ýurda baglylykda takmynan 200–400 dollar.",
+        "iconKey": "stetoskop",
+        "category": "zerur",
+        "id": 3
+      },
+      {
+        "title": "Waksinasiýa we saglyk ýazgylary",
+        "description": "Waksinalaryň doly ýazgysyny getiriň.",
+        "details": {
+          "0": "Gyzamyk, Tepki, Gyzylja (MMR)",
+          "1": "Poliomielit",
+          "2": "Tetanus",
+          "3": "Gripp (grip möwsüminde)",
+          "4": "COVID-19 (USCIS-iň iň soňky görkezmesine laýyklykda)"
+        },
+        "iconKey": "şpris",
+        "category": "zerur",
+        "id": 4,
+        "tip": ""
+      },
+      {
+        "title": "Maliýe subutnamasy ýa-da hemaýatkärlik",
+        "description": "ABŞ hökümetine maliýe taýdan garaşly bolmajagyňyzy subut etmeli:",
+        "details": {
+          "0": "Iş wizasy: Iş teklibi haty we aýlyk haklarynyň maglumatlary.",
+          "1": "Maşgala wizasy: Sponsor I-864 formasyny (Goldaw kagyzy) doldurmaly we bellenen derejeden ýokary girdejisini görkezmeli.",
+          "2": "Talyp wizasy: azyndan bir okuw ýyly üçin okuw töleginiň we ýaşaýyş çykdajylarynyň subutnamasy."
+        },
+        "iconKey": "dollarSign",
+        "category": "zerur",
+        "id": 5,
+        "tip": ""
+      },
+      {
+        "title": "Arassa jenaýat ýazgysy",
+        "description": "Kiçi düzgün bozmalar, adatça, sizi diskwalýasiýa etmeýär, ýöne agyr jenaýat ýazgylary wizanyň ret edilmegine sebäp bolup biler.",
+        "details": {
+          "0": "Arka plan barlaglary prosesiň bir bölegidir."
+        },
+        "iconKey": "galkanCheck",
+        "category": "zerur",
+        "id": 6,
+        "tip": ""
+      },
+      {
+        "title": "Iňlis dili başarnyklary (Amaly)",
+        "description": "Hemişe hökman däl, ýöne iş we gündelik durmuş üçin <strong>berk maslahat berilýär</strong>.",
+        "details": {
+          "0": "Käbir wizalar (meselem, H-1B) hünär derejesini talap edýär.",
+          "1": "Eger raýatlyga soňra ýüz tutsaňyz, iňlis dili we raýatlyk bilimi talap edilýär."
+        },
+        "iconKey": "messageSquare",
+        "category": "maslahat berilýär",
+        "id": 7,
+        "tip": ""
+      },
+      {
+        "title": "Gelişden soň beýleki amaly talaplar",
+        "description": "ABŞ-da bolanyňyzdan soň, size şu aşakdakylar gerek bolar:",
+        "details": {
+          "0": "Sosial Howpsuzlyk Belgisi (SSN) üçin ýüz tutuň",
+          "1": "ABŞ-da bank hasabyny açyň",
+          "2": "Sürüjilik şahadatnamasyny ýa-da şahsyýetnamany alyň",
+          "3": "Jaý tapyň (kärendesine ýa-da satyn alyň)",
+          "4": "Saglyk ätiýaçlandyrmasyny satyn alyň (ABŞ-nyň saglygy goraýyş hyzmaty hususy we gymmat)"
+        },
+        "iconKey": "kredit karty",
+        "category": "gelenden soň",
+        "id": 8,
+        "tip": ""
+      }
+    ],
+    "importantReminder": {
+      "title": "Möhüm ýatlatma",
+      "description": "Immigrasiýa talaplary wagtyň geçmegi bilen üýtgeýär. Bu gollanma häzirki maglumatlara esaslanýar, ýöne göçmezden öň iň soňky talaplary ABŞ-nyň Döwlet Departamenti ýa-da ABŞ-nyň Raýatlyk we Immigrasiýa Hyzmatlary (USCIS) bilen hemişe barlaň.",
+      "lastUpdated": "Soňky täzelenme: 2025-nji ýylyň maý aýy"
+    },
+    "accessibility": {
+      "tabButton": "{label} goýmasyna geç"
+    }
+  },
+  "migrationGuide": {
+    "header": {
+      "sourceFlag": "🇹🇷",
+      "destinationFlag": "🇺🇸",
+      "title": "Türkiýeden ABŞ-a göçmek",
+      "description": "Türkiýeden ABŞ-na göçmek durmuşy üýtgedýän mümkinçilik bolup biler, ýöne bu üçin degişli meýilnama we kanuny proseduralar gerek. Bilmeli zatlaryňyz:",
+      "decorativeIcon": "🗽"
+    },
+    "sections": [
+      {
+        "title": "Dogry wiza görnüşini saýlaň",
+        "description": "Ilkinji ädimiňiz göçmegiň sebäbine esaslanyp, dogry ABŞ wizasyny almakdyr:",
+        "items": {
+          "0": {
+            "title": "Maşgala esasynda wiza",
+            "description": "Eger siziň ýakyn maşgala agzalaryňyz ABŞ raýatlary ýa-da hemişelik ýaşaýjylar bolsa.",
+            "iconKey": "ulanyjylar"
+          },
+          "1": {
+            "title": "Iş wizasy (H-1B, L-1, O-1)",
+            "description": "Eger size ABŞ-da iş teklip edilse",
+            "iconKey": "portfel"
+          },
+          "2": {
+            "title": "Talyp wizasy (F-1)",
+            "description": "Eger siz ABŞ-nyň kollejinde ýa-da uniwersitetinde okamak isleýän bolsaňyz.",
+            "iconKey": "gutardyşKap"
+          },
+          "3": {
+            "title": "Dürli milletlere degişli wiza (Green Card lotereýasy)",
+            "description": "Türkiýe dalaşgär bolup biler — ýyllyk lotereýa döwründe ýüz tutup bilersiňiz.",
+            "iconKey": "garyşdyrmak"
+          },
+          "4": {
+            "title": "Maýadar wizasy (E-2)",
+            "description": "ABŞ-nyň biznesine uly möçberde maýa goýýan türk raýatlary üçin.",
+            "iconKey": "dollarSign"
+          }
+        },
+        "id": 1
+      },
+      {
+        "title": "Wiza söhbetdeşligine taýýarlanyň",
+        "description": "Siziň sebitiňize baglylykda, ABŞ-nyň Ankaradaky ilçihanasyna ýa-da Stambuldaky konsullygyna ýüz tutuň. Size gerek bolar:",
+        "items": {
+          "0": {
+            "title": "Güýçli pasport",
+            "description": "Pasportyňyzyň meýilleşdirilen saparyňyzdan soň azyndan 6 aý möhletde güýjündedigini üpjün ediň.",
+            "iconKey": "faýlText"
+          },
+          "1": {
+            "title": "Wiza üçin arza",
+            "description": "DS-160 formasy ýa-da degişli immigrant formasy.",
+            "iconKey": "faýlText"
+          },
+          "2": {
+            "title": "Goldaw beriji resminamalar",
+            "description": "Maliýe, bilim, iş teklibi we ş.m.",
+            "iconKey": "faýlText"
+          },
+          "3": {
+            "title": "Lukmançylyk barlagy we sanjym ýazgylary",
+            "description": "Ygtyýarly lukman bilen doly lukmançylyk barlagyndan geçiň.",
+            "iconKey": "faýlText"
+          }
+        },
+        "id": 2
+      },
+      {
+        "title": "Saglyk ätiýaçlandyryşy we ýaşaýyş çykdajylary",
+        "items": {
+          "0": {
+            "title": "Hususy saglyk ätiýaçlandyrmasy",
+            "description": "ABŞ mugt saglygy goraýyş hyzmatlaryny hödürlemeýär — siz <strong>hususy saglyk ätiýaçlandyrmasyny</strong> satyn almaly bolarsyňyz.",
+            "iconKey": "faýlText"
+          },
+          "1": {
+            "title": "Ýaşaýyş çykdajylarynyň ýokary bolmagy",
+            "description": "Ýaşaýyş çykdajylary Türkiýeden ýokary. Kärende, saglygy goraýyş we ulag hyzmatlary has gymmat, esasanam Nýu-Ýork, Los-Anjeles ýa-da San-Fransisko ýaly şäherlerde.",
+            "iconKey": "bina"
+          }
+        },
+        "id": 3,
+        "description": ""
+      },
+      {
+        "title": "Medeni we durmuş ýörelgeleriniň tapawutlary",
+        "items": {
+          "0": {
+            "title": "Türk jemgyýetleri",
+            "description": "ABŞ köpdürlüdir, esasanam Nýu-Ýork, Çikago we Los Anjeles ýaly şäherlerde köp sanly türk jemgyýetleri bar.",
+            "iconKey": "globus"
+          },
+          "1": {
+            "title": "Başgaça durmuş ýörelgesi",
+            "description": "Gündelik durmuş Türkiýe bilen deňeşdirilende has<strong>indiwidualistik we çalt depginli</strong> bolup biler.",
+            "iconKey": "globus"
+          }
+        },
+        "id": 4,
+        "description": ""
+      },
+      {
+        "title": "ABŞ-a gelenden soň",
+        "description": "Geleniňizden soň, şu aşakdakylary ýerine ýetiriň:",
+        "items": {
+          "0": {
+            "title": "Sosial Howpsuzlyk Belgisi (SSN) üçin ýüz tutuň",
+            "description": "Bu ABŞ-da işlemek we salgytlary tölemek üçin möhümdir.",
+            "iconKey": "faýlText"
+          },
+          "1": {
+            "title": "Bank hasabyny açyň",
+            "description": "Bu size gündelik maliýe amallary üçin gerek bolar.",
+            "iconKey": "kredit karty"
+          },
+          "2": {
+            "title": "Sürüjilik şahadatnamasyny alyň",
+            "description": "ABŞ-nyň köp ýerlerinde jemgyýetçilik ulaglary çäklendirilen.",
+            "iconKey": "kredit karty"
+          },
+          "3": {
+            "title": "Ýaşaýyş jaýyny tapyň",
+            "description": "ABŞ ulgamlaryna (bilim, iş, ulag) uýgunlaşmak.",
+            "iconKey": "mapPin"
+          }
+        },
+        "id": 5
+      }
+    ],
+    "navigation": {
+      "previous": "Öňki",
+      "next": "Indiki"
+    },
+    "footer": {
+      "sourceFlag": "🇹🇷",
+      "destinationFlag": "🇺🇸",
+      "disclaimer": "Immigrasiýa talaplarynyň üýtgedilip biljekdigini ýadyňyzdan çykarmaň. Iň täze maglumatlar üçin hemişe <strong>ABŞ-nyň Türkiýedäki ilçihanasyna</strong> ýa-da <strong>USCIS</strong> bilen habarlaşyň."
+    },
+    "accessibility": {
+      "sectionButton": "Bölüme geç: {title}",
+      "previousButton": "Öňki bölüme geç: {title}",
+      "nextButton": "Indiki bölüme geç: {title}"
+    }
+  },
+  "petsGuide": {
+    "header": {
+      "icons": [
+        "🐶",
+        "🐱",
+        "🦜"
+      ],
+      "title": "ABŞ-a öý haýwanlary bilen göçmek",
+      "description": "Haýwanyňyzy ABŞ-a getirmek mümkin, ýöne siz belli bir düzgünlere eýermeli bolarsyňyz:"
+    },
+    "sections": {
+      "requirements": {
+        "icon": "✅",
+        "title": "Esasy talaplar"
+      },
+      "arrival": {
+        "icon": "🛬",
+        "title": "Gelişde"
+      },
+      "tips": {
+        "icon": "💡",
+        "title": "Peýdaly maslahatlar"
+      }
+    },
+    "requirements": [
+      {
+        "id": "guduzlama",
+        "icon": "💉",
+        "title": "Guduzlama garşy waksinasiýa",
+        "description": "<strong>Itler üçin hökmanydyr</strong>; pişikler üçin maslahat berilýär"
+      },
+      {
+        "id": "saglyk",
+        "icon": "📋",
+        "title": "Saglyk güwänamasy",
+        "description": "Ygtyýarly weterinar tarapyndan berilýär (adatça syýahatdan <strong>10 günüň</strong> içinde)"
+      },
+      {
+        "id": "mikroçip",
+        "icon": "📱",
+        "title": "Mikroçip",
+        "description": "Kanun tarapyndan talap edilmeýär, ýöne <strong>gaty maslahat berilýär</strong>"
+      },
+      {
+        "id": "awiakompaniýa",
+        "icon": "✈️",
+        "title": "Öý haýwanlaryna rugsat berilýän awiakompaniýa bronlamasy",
+        "description": "<strong>Gapjygyň ölçegi, resminamalary we tölegleri üçin daşaýjynyň düzgünlerine eýeriň</strong>"
+      }
+    ],
+    "arrivalInfo": [
+      {
+        "id": "barlag",
+        "title": "Barlag",
+        "description": "Öý haýwanlary giriş portunda barlanyp bilner",
+        "icon": "👁️"
+      },
+      {
+        "id": "karantin",
+        "title": "Karantin ýok",
+        "description": "Köp ýurtlardan (<strong>Beýik Britaniýadan we Türkiýeden</strong>) gelen öý haýwanlary üçin, eger resminamalar doly bolsa",
+        "icon": "🏠"
+      }
+    ],
+    "tips": [
+      "Göçmezden azyndan 4-6 hepde öň bu prosesi başlaň",
+      "Barmaly ýeriňizdäki ştatda goşmaça giriş talaplarynyň bardygyny ýa-da ýokdugyny barlaň",
+      "Ilkinji birnäçe aý üçin öý haýwanyňyzyň dermanlaryndan ýeterlik derejede alyň",
+      "Birnäçe haýwan bilen syýahat edýän bolsaňyz, öý haýwanlaryny daşamak hyzmatlaryny göz öňünde tutuň"
+    ],
+    "footer": {
+      "disclaimer": "Syýahata çykmazdan öň iň täze talaplar üçin hemişe USDA APHIS we barmaly ýeriňizdäki ştatyň weterinariýa edarasy bilen habarlaşyň."
+    }
+  },
+  "moveRequirements": {
+    "requirements": [
+      {
+        "title": "Güýçli Visa ýa-da Green Card",
+        "description": "Maksadyňyza (meselem, iş, maşgala, okuw) esaslanyp, dogry wiza görnüşini almalysyňyz.",
+        "note": "Immigrasiýa wizalary hemişelik göçmek üçin talap edilýär.",
+        "iconKey": "faýlText",
+        "id": 1
+      },
+      {
+        "title": "Güýçli pasport",
+        "description": "Pasportyňyz niýetlenilen saparyňyzdan soň azyndan 6 aý möhletde güýjünde bolmaly.",
+        "iconKey": "kitap açyk",
+        "id": 2,
+        "note": ""
+      },
+      {
+        "title": "Lukmançylyk barlagy",
+        "description": "Immigrasiýa wizalarynyň köpüsi üçin talap edilýär.",
+        "note": "Ygtyýarly lukman tarapyndan ýerine ýetirilmeli.",
+        "iconKey": "stetoskop",
+        "id": 3
+      },
+      {
+        "title": "Waksinasiýa ýazgylary",
+        "description": "Immigrasiýa üçin sanjymlaryň subutnamasy (meselem, MMR, COVID-19, gepatit) gerek.",
+        "iconKey": "şpris",
+        "id": 4,
+        "note": ""
+      },
+      {
+        "title": "Maliýe goldawynyň subutnamasy",
+        "description": "<strong>Jemgyýetçilik tölegi</strong> bolmazlygyňyzy subut etmek üçin bank hasabatlaryny, iş tekliplerini ýa-da hemaýatkäri görkezmeli bolmagyňyz mümkin.",
+        "iconKey": "dollarSign",
+        "id": 5,
+        "note": ""
+      },
+      {
+        "title": "Arassa jenaýat ýazgysy",
+        "description": "Geçmiş barlaglary immigrasiýa prosesiniň bir bölegidir.",
+        "note": "Agyr düzgün bozmalar wizanyň ret edilmegine</strong> sebäp bolup biler.",
+        "iconKey": "galkanCheck",
+        "id": 6
+      },
+      {
+        "title": "Iňlis dili başarnyklary (maslahat berilýär)",
+        "description": "Wizanyň ähli görnüşleri üçin hökmany däl, ýöne iňlis dilini bilmek gündelik durmuşda, işde we bilimde uly kömek edýär.",
+        "iconKey": "messageSquare",
+        "id": 7,
+        "note": ""
+      }
+    ],
+    "importantNote": {
+      "title": "Möhüm bellik",
+      "description": "Immigrasiýa talaplary üýtgedilip bilner. Göçmezden öň, ABŞ-nyň Döwlet Departamentinden ýa-da ABŞ-nyň Raýatlyk we Immigrasiýa Gulluklaryndan (USCIS) iň soňky maglumatlary hemişe barlaň."
+    }
+  },
+  "ukUsGuide": {
+    "header": {
+      "icon": "🇬🇧➡️🇺🇸",
+      "title": "Beýik Britaniýadan ABŞ-a göçmek",
+      "subtitle": "Bilmeli zatlaryňyz",
+      "description": "Beýik Britaniýadan ABŞ-na göçmek meýilnamalaşdyrmagy, kanuny resminamalary taýýarlamagy we Atlantik ummanynyň beýleki taraplarynda durmuşyň nähili tapawutlanýandygyny düşünmegi talap edýän möhüm ädimdir. Iş mümkinçilikleri, maşgala bilen bolmak ýa-da täze başdan geçirmeler üçin göçýän bolsaňyz, bu gollanma transatlantik göçmegiňiziň möhüm taraplaryny öz içine alýar."
+    },
+    "quickNavigation": {
+      "title": "Çalt nawigasiýa"
+    },
+    "sections": [
+      {
+        "id": "wiza talaplary",
+        "icon": "🛂",
+        "title": "Wiza talaplary",
+        "content": "<p class=\"text-gray-700 mb-4\">Beýik Britaniýanyň raýaty hökmünde ABŞ-na uzak möhletli göçmek üçin wiza gerek bolar. Umumy wariantlar aşakdakylary öz içine alýar:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span><strong>Iş wizalary (H-1B, L-1, O-1)</strong> – Hünärmenler, başga iş orunlaryna geçişler ýa-da adatdan daşary ukyplar üçin</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span><strong>Maşgala esasyndaky ýaşyl kart</strong> – Eger ABŞ raýaty bolan ýakyn garyndaşlaryňyz bar bolsa</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span><strong>Talyp wizasy (F-1)</strong> – Eger siz ABŞ-da okaýan bolsaňyz</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span><strong>Maýadar wizasy (E-2)</strong> – ABŞ-nyň biznesine maýa goýýan Beýik Britaniýanyň raýatlary üçin</span></li></ul><p class=\"text-gray-700\">Wiza ýüz tutmak prosesi ünsli meýilnamalaşdyrmagy talap edýär, sebäbi wizanyň käbir görnüşleri üçin ret edilme derejesi ýokary bolup biler.</p>"
+      },
+      {
+        "id": "arza bermek prosesi",
+        "icon": "📋",
+        "title": "Wiza üçin ýüz tutmak prosesi",
+        "content": "<div class=\"mb-4\"><p class=\"text-gray-700 mb-4\">Wiza üçin ýüz tutmak prosesi birnäçe ädimden ybarat:</p><ul class=\"text-gray-700 space-y-2 pl-4\"><li>• ABŞ-nyň Döwlet departamenti arkaly onlaýn ýüz tutuň</li><li>• ABŞ-nyň <strong>Döwlet gullugynda söhbetdeşlik belläp bilersiňiz. Londondaky Ilçihana</strong> ýa-da <strong>Belfastdaky Konsullyk</strong></li><li>• Zerur resminamalary taýýarlaň:</li></ul><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm mt-3\"><h4 class=\"font-medium text-sky-600 mb-2\">Zerur resminamalary:</h4><ul class=\"text-gray-700 space-y-1 pl-4\"><li>• Güýjüniň dowam edýän pasport</li><li>• Wiza üçin arza formasy</li><li>• Lukmançylyk barlagynyň netijeleri</li><li>• Maliýe maglumatlarynyň subutnamasy</li><li>• Zerur bolsa, hemaýatkär/iş teklibi resminamalary</li><li>• Bilim şahadatnamalary (käbir wizalar üçin)</li></ul></div></div>"
+      },
+      {
+        "id": "saglygy goraýyş",
+        "icon": "🏥",
+        "title": "Saglygy goraýyş we ätiýaçlandyryş",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Beýik Britaniýanyň Milli Saglyk Gullugyndan tapawutlylykda, ABŞ-nyň saglygy goraýyş ulgamy esasan hususydyr we gymmat bolup biler</p><p>Siz <strong>hususy saglyk ätiýaçlandyrmasyny</strong> satyn almaly bolarsyňyz — aýlyk çykdajylar adam başyna 300–700+ dollar aralygynda bolup biler</strong></p><p>Köp iş berijiler saglyk ätiýaçlandyrmasyny ýeňillikler paketleriniň bir bölegi hökmünde hödürleýärler</p><p>Ilkinji ýylda adatdan daşary ýagdaýlarda watana gaýdyp gelmegi öz içine alýan ätiýaçlandyrmany göz öňünde tutuň</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Maslahat:</strong> Gelmezden öň saglyk ätiýaçlandyrmasynyň wariantlaryny öwrenmäge başlaň we ABŞ-da ilkinji günden başlap ätiýaçlandyrmaňyzyň bardygyna göz ýetiriň</span></p></div></div>"
+      },
+      {
+        "id": "ýaşaýyş çykdajylary",
+        "icon": "💷",
+        "title": "Ýaşaýyş çykdajylaryny deňeşdirmek",
+        "content": "<div><div class=\"overflow-x-auto mb-4\"><table class=\"min-w-full bg-white border border-sky-200 rounded-lg\"><thead><tr class=\"bg-sky-100\"><th class=\"py-3 px-4 text-left border-b border-sky-200\">Çykdajylar</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">Amerikan Birleşen Ştatlary (ortaça)</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">Beýik Britaniýa (ortaça)</th></tr></thead><tbody><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Kärende (1 ýatak otagly kwartira)</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$1,200–$3,000</td><td class=\"py-3 px-4 border-b border-sky-100\">£800–£1,200</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Saglygy goraýyş</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">Aýda $300–$700</td><td class=\"py-3 px-4 border-b border-sky-100\">NHS (salgytlar bilen maliýeleşdirilýär)</td></tr><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Restoranda nahar</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$15–$30</td><td class=\"py-3 px-4 border-b border-sky-100\">£10–£25</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Ulag</td><td class=\"py-3 px-4 border-b border-sky-100 text-yellow-600\">Aýda $70–$100 (üýtgäp durýar)</td><td class=\"py-3 px-4 border-b border-sky-100\">Aýda £60–£120</td></tr></tbody></table></div><p class=\"text-gray-700\">Ýaşaýyş çykdajylary ýerleşýän ýerine görä düýpli üýtgeýär. Nýu-Ýork, San-Fransisko we Los-Anjeles ýaly iri şäherler Beýik Britaniýanyň London ýaly köp şäherlerinden has gymmat.</p></div>"
+      },
+      {
+        "id": "ýaşaýyş jaýy",
+        "icon": "🏘️",
+        "title": "Ýaşaýyş jaý tapmak",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>ABŞ-nyň kärende bazary, esasanam bäsdeş şäherlerde çalt üýtgeýär</p><p>Köp jaý eýeleri üçin kredit barlagy talap edilýär, bu bolsa täze gelenler üçin kyn bolup biler</p><p>Ilkinji gezek geleniňizde, ýerleşýänçäňiz gysga möhletli kärendeleri göz öňünde tutuň</p><p>Meşhur kärende gözleg web sahypalary: Zillow, Apartments.com, Trulia, Realtor.com</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Maslahat:</strong> ABŞ-nyň kredit taryhynyň ýoklugyny ýeňip geçmek üçin Beýik Britaniýanyň jaý eýelerinden teklip hatlaryny we girdejiňiziň subutnamasyny getiriň.</span></p></div></div>"
+      },
+      {
+        "id": "bank işi",
+        "icon": "💳",
+        "title": "Bank we maliýe",
+        "content": "<div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Bank hasabyny açmak</h3><p class=\"text-gray-700\">Size pasportyňyz, wizaňyz, salgyňyzy tassyklaýan resminamaňyz we mümkin bolsa, Sosial Howpsuzlyk Belgiňiz (SSN) gerek bolar.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Kredit taryhy</h3><p class=\"text-gray-700\">Beýik Britaniýanyň kredit taryhyňyz ABŞ-na geçirilmeýär. Kredit taryhyňyzy başdan başlamaly bolarsyňyz.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium\" text-sky-700 mb-2\">Salgyt meseleleri</h3><p class=\"text-gray-700\">Beýik Britaniýanyň daşary ýurtlysy hökmünde, salgyt şertnamalary iki gezek salgyt salynmagynyň öňüni almaga kömek etse-de, iki ýurtda hem salgyt deklarasiýalaryny tabşyrmaly bolarsyňyz.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Pul geçirimleri</h3><p class=\"text-gray-700\">Beýik Britaniýa bilen ABŞ-nyň arasynda pul geçirlende has gowy walýuta kurslary üçin banklaryň ýerine ýöriteleşdirilen walýuta hyzmatlaryny göz öňünde tutuň.</p></div></div></div>"
+      },
+      {
+        "id": "gündelik durmuş",
+        "icon": "📱",
+        "title": "Gündelik durmuş düzedişleri",
+        "content": "<div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Sürüjilik</h3><p class=\"text-gray-700\">Siz sag tarapda sürýärsiňiz. Köp ştatlar size Beýik Britaniýanyň sürüjilik şahadatnamasy bilen 3 aýa çenli sürmäge rugsat berýär, şondan soň size döwlet şahadatnamasy gerek bolar.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Çaý pul bermek medeniýeti</h3><p class=\"text-gray-700\">Restoranlarda, taksilerde we dürli hyzmatlarda (15-20%) çaý pul bermek garaşylýar. Hyzmat işgärleri girdejileriniň bir bölegi hökmünde çaýpula daýanýarlar.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Ölçeg ulgamy</h3><p class=\"text-gray-700\">ABŞ köp zatlar üçin (mil, funt, Farengeýt) imperiýa ölçeglerini ulanýar, bu bolsa düzeltmeleri talap edip biler.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Mobil telefonlar</h3><p class=\"text-gray-700\">Esasy operatorlaryň arasynda AT&T, Verizon we T-Mobile bar. Gelşiňizde ýerli SIM kart ýa-da meýilnama almagy göz öňünde tutuň.</p></div></div></div>"
+      },
+      {
+        "id": "iş medeniýeti",
+        "icon": "💼",
+        "title": "Iş medeniýetiniň tapawutlary",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>ABŞ Iş medeniýeti köplenç aşakdakylary öz içine alýar:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Dynç alyş günleriniň azlygy (adatça Beýik Britaniýanyň 20-25-ine garşy 10-15 gün)</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Has göni aragatnaşyk stilleri</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Has göni aragatnaşyk stilleri</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600\"> mr-2\">•</span><span>Networking ýokary baha berilýär we köplenç garaşylýar</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Iş-durmuş deňagramlylygy kompaniýa görä düýpli üýtgeýär</span></li></ul></div>"
+      },
+      {
+        "id": "göçüriş logistikasy",
+        "icon": "🛫",
+        "title": "Göçüriş logistikasy",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>ABŞ-a halkara göçmegiň çykdajylary göwrümine baglylykda 2,000-10,000 funt sterling aralygynda üýtgeýär</p><p>Uly mebel önümlerini ibermegi ýa-da satmagy göz öňünde tutuň (ABŞ-nyň öýleriniň köplenç dürli ölçegleri bolýar)</p><p>Gümrük resmileşdirmesi üçin iberilen zatlaryň jikme-jik sanawy talap edilýär</p><p>Öý haýwanlary ABŞ-na girip biler, ýöne saglyk we sanjym talaplaryna laýyk gelmelidir</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Maslahat:</strong> Elektronika üçin, ABŞ 110-120V ulanýanlygy sebäpli (Beýik Britaniýanyňky bilen deňeşdirilende) wolt gabat gelýänligini barlaň 230-240V).</span></p></div></div>"
+      },
+      {
+        "id": "ýerleşmek",
+        "icon": "📝",
+        "title": "Gelişden soň ýerleşmek",
+        "content": "<div><div class=\"space-y-4\"><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">1. Sosial Howpsuzlyk Belgisini (SSN) alyň</h3><p class=\"text-gray-700 mb-2\"><span class=\"font-medium\">Iş we köp hyzmatlar üçin zerur</span><br/>Pasportyňyz we wizaňyz bilen ýerli Sosial Howpsuzlyk Administrasiýasynyň edarasyna baryň</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">2. Ştat şahsyýetnamasyny ýa-da sürüjilik şahadatnamasyny alyň</h3><p class=\"text-gray-700 mb-2\">Ştatyňyzyň Awtomobiller departamentine (DMV) ýa-da deň derejeli edara baryň</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">3. Kommunal hyzmatlary gurnaň</h3><p class=\"text-gray-700 mb-2\">Elektrik, suw, gaz, internet we galyndylary ýygnamak hyzmatlaryny gurnaň</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">4. Beýik Britaniýanyň konsullygynda hasaba alynyň</h3><p class=\"text-gray-700 mb-2\">Gyssagly ýagdaýlar üçin hökmany däl, ýöne maslahat berilýär</p></div></div></div>"
+      },
+      {
+        "id": "daşary ýurtly jemgyýetler",
+        "icon": "👥",
+        "title": "Britaniýaly ekspat jemgyýetleri",
+        "content": "<div><p class=\"text-gray-700 mb-4\">ABŞ-nyň köp şäherlerinde, esasanam:</p><div class=\"grid grid-cols-2 md:grid-cols-5 gap-2 mb-4\"><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Nýu-Ýork</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Los Anjeles</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Çikago</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Boston</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">San-Fransisko</div></div><p class=\"text-gray-700\">Britaniýalylary taparsyňyz publar, sosial klublar we Facebook toparlary, şeýle hereketi eden beýleki adamlardan ýerli maslahat almak we aragatnaşyk saklamak üçin gymmatly bolup biler.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "ABŞ-a göçmezden öň gutarnykly barlag sanawy",
+      "items": [
+        {
+          "text": "Wizaňyzy ýa-da ýaşyl kartyňyzy howpsuzlaşdyryň",
+          "fullWidth": false
+        },
+        {
+          "text": "Saglyk ätiýaçlandyryşyny düzediň",
+          "fullWidth": false
+        },
+        {
+          "text": "Barmaly şäheriňizde ýaşaýyş jaýlaryny gözläň",
+          "fullWidth": false
+        },
+        {
+          "text": "Eşýalaryň daşalmagyny gurnaň",
+          "fullWidth": false
+        },
+        {
+          "text": "HMRC we beýleki Beýik Britaniýanyň häkimiýetlerine habar beriň",
+          "fullWidth": false
+        },
+        {
+          "text": "Walýuta çalşygy we başga pul geçirimleri üçin meýilnama",
+          "fullWidth": false
+        },
+        {
+          "text": "Iki ýurduň salgyt borçlaryny öwreniň",
+          "fullWidth": true
+        }
+      ]
+    },
+    "conclusion": {
+      "icon": "🎯",
+      "title": "Netije: ABŞ-a göçmek size laýykmy?",
+      "description": "Birleşen Ştatlara göçmek ägirt uly mümkinçilikleri hödürleýär, ýöne uly kynçylyklar bilen hem baglydyr. Wiza prosesi uzak wagtlap dowam edip biler, saglygy goraýyş çykdajylary ýokary we amerikan medeniýetine uýgunlaşmak wagt talap edýär. Şeýle-de bolsa, köp britaniýaly daşary ýurtlylar karýera mümkinçiliklerini, dürli tebigaty we durmuş ýörelgesini geçiş döwrüne mynasyp hasaplaýarlar."
+    },
+    "checklist": [
+      {
+        "text": "Wizaňyzy ýa-da ýaşyl kartyňyzy howpsuzlaşdyryň",
+        "fullWidth": false
+      },
+      {
+        "text": "Saglyk ätiýaçlandyryşyny düzediň",
+        "fullWidth": false
+      },
+      {
+        "text": "Barmaly şäheriňizde ýaşaýyş jaýlaryny gözläň",
+        "fullWidth": false
+      },
+      {
+        "text": "Eşýalaryň daşalmagyny gurnaň",
+        "fullWidth": false
+      },
+      {
+        "text": "HMRC we beýleki Beýik Britaniýanyň häkimiýetlerine habar beriň",
+        "fullWidth": false
+      },
+      {
+        "text": "Walýuta çalşygy we başga pul geçirimleri üçin meýilnama",
+        "fullWidth": false
+      },
+      {
+        "text": "Iki ýurduň salgyt borçlaryny öwreniň",
+        "fullWidth": true
+      }
+    ],
+    "accessibility": {
+      "sectionToggle": "Bölümi aç/ýap: {title}"
+    }
+  },
+  "visaOptions": {
+    "labels": {
+      "examples": "Mysallar:",
+      "note": "Bellik:"
+    },
+    "visaTypes": [
+      {
+        "id": "maşgala",
+        "title": "1. Maşgala esasyndaky wizalar",
+        "description": "ABŞ raýatlarynyň ýa-da hemişelik ýaşaýjylaryň ýanýoldaşlary, çagalary, ene-atalary ýa-da dogan-garyndaşlary üçin.",
+        "examples": {
+          "0": "IR-1 (Äri-aýal)",
+          "1": "F-2A (Maşgala islegi)"
+        },
+        "iconKey": "ulanyjylar"
+      },
+      {
+        "id": "iş bilen üpjünçilik",
+        "title": "2. Iş bilen baglanyşykly wizalar",
+        "description": "Hünärmenler, işçiler we maýadarlar üçin<strong>.",
+        "examples": {
+          "0": "H-1B: Ýöriteleşdirilen hünärler boýunça hünärli işçiler",
+          "1": "<strong>L-1:</strong> Kompaniýanyň içinde geçirim",
+          "2": "<strong>EB-2/EB-3:</strong> Iş bilen üpjünçilik esasynda ýaşyl kartlar",
+          "3": "<strong>O-1:</strong> Adaty bolmadyk başarnyklary bolan şahslar üçin"
+        },
+        "iconKey": "portfel"
+      },
+      {
+        "id": "talyp",
+        "title": "3. Talyp wizasy (F-1)",
+        "description": "ABŞ-nyň akkreditasiýa edilen okuw jaýlarynda okaýan halkara talyplar üçin.",
+        "examples": {
+          "0": "Okuwy gutarandan soň kampusda ýarym günlük işlemek we <strong>isleg boýunça amaly okuw (OPT)</strong> geçmek mümkinçiligini berýär."
+        },
+        "iconKey": "gutardyşKap"
+      },
+      {
+        "id": "maýadar",
+        "title": "4. Maýadar wizasy (E-2 / EB-5)",
+        "description": "Birleşen Ştatlara maýa goýmak isleýänler üçin<strong>.",
+        "examples": {
+          "0": "<strong>E-2:</strong> ABŞ-nyň biznesine uly möçberde maýa goýýan şertnama baglaşan ýurtlaryň raýatlary üçin.",
+          "1": "<strong>EB-5:</strong> ABŞ-da <strong>800,000 dollardan gowrak</strong> maýa goýýan we iş orunlaryny döredýänler üçin ýaşyl kart."
+        },
+        "iconKey": "dollarSign"
+      },
+      {
+        "id": "dürlülik",
+        "title": "5. Grin Kart Lotereýasy (Dürlülik Wizasy Maksatnamasy)",
+        "description": "ABŞ hökümetiniň tötänleýin saýlama arkaly hukukly ýurtlardan gelen adamlara hemişelik ýaşamak hukugyny hödürleýän maksatnamasy.",
+        "iconKey": "garyşdyrmak"
+      }
+    ]
+  }
+}

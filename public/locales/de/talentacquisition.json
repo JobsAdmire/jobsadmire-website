@@ -1,0 +1,304 @@
+{
+  "talentacquisition": {
+    "hero": {
+      "badge": "Strategische Dienstleistungen zur Talentgewinnung",
+      "headline": {
+        "prefix": "finden finden",
+        "suffix": "Für Ihr Unternehmen"
+      },
+      "animatedWords": [
+        "Top-Talente",
+        "Beste Mannschaft",
+        "Richtige Leute",
+        "Perfekte Passform",
+        "Starspieler",
+        "Traumteam"
+      ],
+      "description": "Optimieren Sie die Personalbeschaffung, um die besten Talente für Ihr Unternehmen zu gewinnen. End-to-End-Rekrutierungs- und Talent-Sourcing-Lösungen, die auf die individuellen Bedürfnisse Ihres Unternehmens zugeschnitten sind.",
+      "cta": {
+        "text": "Start Talentakquise"
+      }
+    },
+    "showcase": {
+      "title": "Talentakquise",
+      "subtitle": "Strategische Personalbeschaffung für Ihren Erfolg",
+      "talentPool": {
+        "title": "Zugang zum Talentpool",
+        "subtitle": "Kontaktaufnahme mit qualifizierten Bewerbern"
+      },
+      "services": [
+        {
+          "icon": "Suche",
+          "title": "Beschaffung",
+          "description": "Entdeckung von Bewerbern",
+          "gradient": "bg-gradient-to-r von-himmel-500 zu-blau-600"
+        },
+        {
+          "icon": "Ziel",
+          "title": "Screening",
+          "description": "Bewertung der Qualität",
+          "gradient": "bg-gradient-to-r von-violett-500 nach-indigo-600"
+        },
+        {
+          "icon": "UserCheck",
+          "title": "Passend dazu",
+          "description": "Perfekte Passform finden",
+          "gradient": "bg-gradient-to-r von-emerald-500 bis-teal-600"
+        },
+        {
+          "icon": "Auszeichnung",
+          "title": "Onboarding",
+          "description": "Reibungslose Integration",
+          "gradient": "bg-gradient-to-r von-orange-500 nach-rot-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "300+",
+          "label": "Bediente Unternehmen",
+          "color": "text-himmel-600"
+        },
+        {
+          "value": "85%",
+          "label": "Erfolgsquote",
+          "color": "text-blau-600"
+        },
+        {
+          "label": "Tage Durchschnittsmiete",
+          "color": "text-indigo-600",
+          "value": "30"
+        }
+      ]
+    }
+  },
+  "talentacquisitionsection1": {
+    "process": {
+      "title": {
+        "prefix": "Unser umfassendes",
+        "highlight": "Prozess der Talentakquise"
+      },
+      "description": "Wir folgen einem systematischen, transparenten Prozess, um außergewöhnliche Einstellungsergebnisse zu erzielen",
+      "steps": [
+        {
+          "icon": "Ziel",
+          "title": "Personalplanung und Arbeitsplatzanalyse",
+          "description": "Wir arbeiten eng mit Ihrem HR-Team und Ihrer Geschäftsleitung zusammen, um den Bedarf an Arbeitskräften, die Unternehmenskultur und die Stellenanforderungen zu verstehen.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10",
+          "id": 1
+        },
+        {
+          "icon": "Netzwerk",
+          "title": "Beschaffung und Öffentlichkeitsarbeit",
+          "description": "Wir nutzen unser umfangreiches Netzwerk, Stellenportale, soziale Medien und innovative Sourcing-Techniken, um eine Vielzahl qualifizierter Bewerber anzuziehen.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-blau-500",
+          "bgLight": "bg-blau-500/10",
+          "id": 2
+        },
+        {
+          "icon": "Filter",
+          "title": "Screening und Bewertung",
+          "description": "Wir führen ein gründliches Screening mit Lebensläufen, Vorstellungsgesprächen, Kompetenzbewertungen und Verhaltensbeurteilungen durch, um die am besten geeigneten Bewerber in die engere Auswahl zu nehmen.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10",
+          "id": 3
+        },
+        {
+          "icon": "Kalender",
+          "title": "Interview-Koordination",
+          "description": "Verwaltung der Terminplanung und der Kommunikation zwischen den Bewerbern und Ihren Personalverantwortlichen, um einen reibungslosen Ablauf der Vorstellungsgespräche zu gewährleisten.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-blau-600",
+          "bgLight": "bg-blau-600/10",
+          "id": 4
+        },
+        {
+          "icon": "UserCheck",
+          "title": "Auswahl & Angebotsverwaltung",
+          "description": "Unterstützung bei der Entscheidungsfindung und der Ausarbeitung von wettbewerbsfähigen Stellenangeboten, die den Marktstandards und den Erwartungen der Bewerber entsprechen.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10",
+          "id": 5
+        },
+        {
+          "icon": "BenutzerPlus",
+          "title": "Onboarding-Unterstützung",
+          "description": "Erleichterung des Onboarding-Prozesses, damit sich neue Mitarbeiter nahtlos in Ihr Unternehmen integrieren können, durch unsere Unterstützung bei der Personalbeschaffung und beim Onboarding.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-blau-500",
+          "bgLight": "bg-blau-500/10",
+          "id": 6
+        }
+      ]
+    },
+    "flow": {
+      "title": "Rationalisierter Prozessablauf",
+      "description": "Von der Planung bis zum Onboarding - wir haben alles für Sie",
+      "stepLabel": "Schritt"
+    },
+    "cta": "Beginnen Sie Ihre Reise zur Talentakquise"
+  },
+  "talentacquisitionsection2": {
+    "whyPartner": {
+      "badge": "VORTEILE DER PARTNERSCHAFT",
+      "title": {
+        "prefix": "Warum eine Partnerschaft mit",
+        "highlight": "JobsAdmire",
+        "suffix": "für die Talentakquise?"
+      },
+      "reasons": [
+        {
+          "icon": "Auszeichnung",
+          "title": "Branchenübergreifende Kompetenz",
+          "description": "Unsere Personalvermittler sind auf verschiedene Sektoren spezialisiert und gewährleisten so branchenspezifische Kenntnisse und die Qualität der Bewerber.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Datenbank",
+          "title": "Zugang zu Spitzenkräften",
+          "description": "Wir verfügen über eine umfangreiche Datenbank und einen Talentpool, um Kandidaten schnell mit Ihren Anforderungen abgleichen zu können.",
+          "color": "bg-blau-500",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Einstellungen",
+          "title": "Maßgeschneiderte Lösungen",
+          "description": "Flexible Einstellungslösungen für Unternehmen, die auf Ihre Unternehmensgröße, Kultur und Einstellungsziele abgestimmt sind.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Zap",
+          "title": "Technologiegetriebener Ansatz",
+          "description": "Nutzung fortschrittlicher Applicant Tracking Systems (ATS) und Datenanalysen für eine effiziente Personalbeschaffung.",
+          "color": "bg-blau-600",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Benutzer",
+          "title": "Fokus auf Vielfalt und Inklusion",
+          "description": "Wir unterstützen Sie beim Aufbau vielfältiger Teams, die Innovation und Erfolg fördern.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Schild",
+          "title": "Qualitätsgarantie",
+          "description": "Wir bieten Ersatzgarantien und laufende Unterstützung, um eine erfolgreiche langfristige Vermittlung zu gewährleisten.",
+          "color": "bg-blue-700",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        }
+      ]
+    },
+    "benefits": {
+      "title": "Vorteile unseres Talent Acquisition Service",
+      "subtitle": "Messbare Ergebnisse, die Ihr Unternehmen voranbringen",
+      "items": [
+        {
+          "icon": "Uhr",
+          "title": "Geringere Zeit bis zur Einstellung und geringere Kosten pro Einstellung",
+          "color": "text-[#38B6FF]"
+        },
+        {
+          "icon": "TrendingUp",
+          "title": "Verbesserte Qualität der Einstellungen und Bindungsquoten",
+          "color": "text-[#38B6FF]"
+        },
+        {
+          "icon": "Stern",
+          "title": "Verbessertes Employer Branding und Bewerbererlebnis",
+          "color": "text-[#38B6FF]"
+        },
+        {
+          "icon": "BarChart3",
+          "title": "Skalierbare Personalbeschaffungslösungen für wachsende Unternehmen",
+          "color": "text-[#38B6FF]"
+        },
+        {
+          "icon": "Ziel",
+          "title": "Strategische Personalplanung im Einklang mit Ihren Unternehmenszielen",
+          "color": "text-[#38B6FF]"
+        }
+      ],
+      "stats": [
+        {
+          "value": "50%",
+          "label": "Schnellerer Einstellungsprozess",
+          "color": "text-[#38B6FF]"
+        },
+        {
+          "value": "30%",
+          "label": "Kostenreduzierung",
+          "color": "text-blau-500"
+        },
+        {
+          "value": "95%",
+          "label": "Kundenzufriedenheit",
+          "color": "text-[#38B6FF]"
+        }
+      ]
+    },
+    "whoBenefits": {
+      "title": {
+        "prefix": "Wer kann",
+        "highlight": "Nutzen?"
+      },
+      "description": "Unsere Dienstleistungen zur Talentakquise sind für Unternehmen aller Größen und Branchen geeignet",
+      "audience": [
+        {
+          "icon": "Rakete",
+          "title": "Startups",
+          "description": "die ihre ersten Teams aufbauen wollen",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]"
+        },
+        {
+          "icon": "TrendingUp",
+          "title": "Wachsende Unternehmen",
+          "description": "Bedarf an skalierbaren Einstellungslösungen",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]"
+        },
+        {
+          "icon": "Gebäude",
+          "title": "Unternehmen",
+          "description": "Suche nach Fach- oder Führungskräften",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]"
+        },
+        {
+          "icon": "Einstellungen",
+          "title": "HR-Abteilungen",
+          "description": "Optimierung der Arbeitsabläufe bei der Personalbeschaffung",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]"
+        },
+        {
+          "icon": "Benutzer",
+          "title": "Vielfältige Organisationen",
+          "description": "Engagement für Initiativen zur Förderung von Vielfalt und Integration",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]"
+        },
+        {
+          "icon": "Ziel",
+          "title": "Personalvermittlungsagenturen",
+          "description": "Ausweitung ihrer Fähigkeiten bei der Talentbeschaffung",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]"
+        }
+      ]
+    }
+  }
+}

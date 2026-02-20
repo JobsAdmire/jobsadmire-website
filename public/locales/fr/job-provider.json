@@ -1,0 +1,173 @@
+{
+  "header": {
+    "heroImageAlt": "Professionnels des entreprises",
+    "badge": "La première solution de recrutement en Turquie",
+    "title_prefix": "Obtenir un personnel de qualité",
+    "title_suffix": "Pour votre entreprise",
+    "description": "Faites appel à JobsAdmire pour obtenir des employés présélectionnés et prêts à travailler. Nous nous occupons du recrutement, des visas et de toute la documentation légale.",
+    "contact_button": "Contact"
+  },
+  "form": {
+    "title": "Inscription des partenaires",
+    "subtitle": "Enregistrez votre entreprise pour commencer à recruter du personnel de qualité. Notre équipe vous contactera dans les 24 heures.",
+    "company_info": {
+      "title": "Informations sur l'entreprise",
+      "company_name": "Nom de l'entreprise *",
+      "company_name_placeholder": "Saisissez le nom de votre entreprise",
+      "company_name_error": "Le nom de l'entreprise est requis",
+      "company_type": "Type d'entreprise *",
+      "company_type_placeholder": "Sélectionner le type d'entreprise",
+      "company_type_error": "Le type d'entreprise est requis",
+      "types": {
+        "corporation": "Corporation (A.Ş.)",
+        "limited_company": "Société à responsabilité limitée (SARL)",
+        "partnership": "Partenariat",
+        "sole_proprietorship": "Entreprise individuelle",
+        "branch_office": "Succursale",
+        "other": "Autres"
+      },
+      "industry_type": "Type d'industrie *",
+      "industry_type_placeholder": "Sélectionner un secteur d'activité",
+      "industry_type_error": "Le type d'industrie est requis",
+      "industries": {
+        "manufacturing": "Usine",
+        "construction": "Agriculture",
+        "technology": "Tourisme",
+        "healthcare": "La construction",
+        "other": "Autres"
+      },
+      "established_year": "Année de création",
+      "established_year_placeholder": "2020"
+    },
+    "contact_info": {
+      "title": "Informations sur le contact",
+      "contact_person": "Personne de contact *",
+      "contact_person_placeholder": "Nom complet",
+      "contact_person_error": "La personne de contact est requise",
+      "position": "Poste/Titre",
+      "position_placeholder": "Directeur des ressources humaines, directeur général, etc.",
+      "email": "Adresse électronique *",
+      "email_required": "L'adresse électronique est requise",
+      "email_invalid": "L'adresse électronique n'est pas valide",
+      "phone": "Numéro de téléphone *",
+      "phone_placeholder": "+90 xxx xxx xx xx",
+      "phone_required": "Le numéro de téléphone est requis",
+      "company_address": "Adresse de l'entreprise",
+      "company_address_placeholder": "Adresse complète de l'entreprise",
+      "city": "Ville *",
+      "city_placeholder": "Istanbul, Ankara, etc.",
+      "city_required": "La ville est requise",
+      "province": "Province *",
+      "province_placeholder": "Sélectionner une province",
+      "province_required": "La province est requise",
+      "provinces": {
+        "istanbul": "Istanbul",
+        "ankara": "Ankara",
+        "izmir": "Izmir",
+        "bursa": "Bursa",
+        "antalya": "Antalya",
+        "adana": "Adana",
+        "konya": "Konya",
+        "gaziantep": "Gaziantep",
+        "kayseri": "Kayseri",
+        "other": "Autres"
+      },
+      "postal_code": "Code postal",
+      "website": "Site web de l'entreprise",
+      "email_placeholder": "company@example.com",
+      "postal_code_placeholder": "34000",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "legal_info": {
+      "title": "Détails juridiques et d'enregistrement",
+      "tax_number": "Numéro d'identification fiscale *",
+      "tax_number_placeholder": "Saisir le numéro de taxe",
+      "tax_number_error": "Le numéro d'identification fiscale est requis",
+      "trade_registry_number": "Numéro du registre du commerce",
+      "trade_registry_number_placeholder": "Saisir le numéro du registre du commerce"
+    },
+    "staffing_requirements": {
+      "title": "Besoins en personnel",
+      "specific_job_positions": "Postes spécifiques",
+      "specific_job_positions_placeholder": "par exemple, opérateur de machine, soudeur, développeur de logiciels, etc.",
+      "salary_range": "Fourchette de salaire (mensuel)",
+      "salary_range_placeholder": "22 000 TL-25 000 TL",
+      "preferred_nationalities": "Nationalités préférées",
+      "preferred_nationalities_placeholder": "par exemple, Any, Pakistan, Bangladesh, Ukraine, etc.",
+      "language_requirements": "Exigences linguistiques",
+      "language_requirements_placeholder": "Sélectionner la langue requise",
+      "languages": {
+        "none": "Pas d'exigence spécifique",
+        "basic_turkish": "Turc de base",
+        "intermediate_turkish": "Turc intermédiaire",
+        "fluent_turkish": "Turc courant",
+        "english": "Anglais requis",
+        "turkish_english": "Turc + anglais"
+      },
+      "work_experience": "Expérience professionnelle requise",
+      "work_experience_placeholder": "Sélectionner le niveau d'expérience",
+      "experience_levels": {
+        "entry_level": "Niveau d'entrée (0-1 ans)",
+        "junior": "Junior (1-3 ans)",
+        "mid_level": "Niveau intermédiaire (3-5 ans)",
+        "senior": "Senior (5+ ans)",
+        "expert": "Expert (10+ ans)"
+      },
+      "additional_requirements": "Exigences ou notes supplémentaires",
+      "additional_requirements_placeholder": "Compétences spécifiques, certifications ou autres exigences pour les postes..."
+    },
+    "company_description": {
+      "title": "À propos de votre entreprise",
+      "label": "Description de l'entreprise",
+      "placeholder": "Parlez-nous de votre entreprise, de vos activités, de votre environnement de travail, de votre culture d'entreprise et des raisons pour lesquelles les travailleurs souhaiteraient rejoindre votre équipe..."
+    },
+    "legal_agreements": {
+      "title": "Accords juridiques",
+      "agree_terms_prefix": "J'accepte les",
+      "terms_link": "Conditions générales d'utilisation",
+      "agree_terms_suffix": "et comprendre les obligations légales liées à l'embauche de travailleurs par l'intermédiaire de JobsAdmire. *",
+      "terms_error": "Vous devez accepter les conditions générales",
+      "agree_privacy_prefix": "Je reconnais que j'ai lu et que j'accepte la",
+      "privacy_link": "Politique de confidentialité",
+      "agree_privacy_suffix": "et consentir au traitement des données de l'entreprise pour les services de recrutement. *",
+      "privacy_error": "Vous devez accepter la politique de confidentialité"
+    },
+    "submit": {
+      "button": "Soumettre la demande",
+      "submitting": "Soumettre...",
+      "success_message": "L'inscription a été envoyée avec succès ! Notre équipe vous contactera dans les 24 heures pour discuter de vos besoins en matière de recrutement.",
+      "footer_message": "Notre équipe examinera votre candidature et vous contactera dans les 24 heures pour discuter de vos besoins en personnel."
+    }
+  },
+  "industries_served": {
+    "title": "Industries que nous servons",
+    "subtitle": "Nous fournissons des travailleurs qualifiés dans tous les principaux secteurs d'activité en Turquie",
+    "items": {
+      "factory": {
+        "name": "Usine",
+        "desc": "Fabrication et production"
+      },
+      "agriculture": {
+        "name": "Agriculture",
+        "desc": "Agriculture et culture"
+      },
+      "tourism": {
+        "name": "Tourisme",
+        "desc": "Hôtellerie et services"
+      },
+      "construction": {
+        "name": "La construction",
+        "desc": "Bâtiment et infrastructure"
+      }
+    }
+  },
+  "support": {
+    "title": "Besoin d'aide ?",
+    "description": "Notre équipe dévouée est prête à vous aider à trouver le personnel adéquat pour votre entreprise. Nous fournissons une assistance complète, du recrutement au placement des employés.",
+    "support_24_7": "Assistance 24/7",
+    "business_hours": "Heures d'ouverture : Du lundi au vendredi, de 9h00 à 18h00 (heure de Turquie)",
+    "response_time": "Nous répondons dans un délai de 2 heures pendant les heures de bureau",
+    "email": "info@jobsadmire.com",
+    "phone": "+90 501 124 03 40"
+  }
+}

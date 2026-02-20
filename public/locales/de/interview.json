@@ -1,0 +1,171 @@
+{
+  "interview": {
+    "hero": {
+      "badge": "Professionelles Interview-Coaching",
+      "headline": {
+        "prefix": "Meistern Sie Ihr",
+        "suffix": "Mit Experten-Coaching"
+      },
+      "animatedWords": [
+        "Interview",
+        "Vertrauen",
+        "Erfolg",
+        "Leistung",
+        "Fertigkeiten",
+        "Exzellenz"
+      ],
+      "description": "Von Probevorstellungsgesprächen bis hin zu persönlichem Feedback - unser umfassender Coaching-Service für Vorstellungsgespräche hilft Berufstätigen, ihren Traumjob selbstbewusst zu finden.",
+      "cta": {
+        "text": "Beginnen Sie Ihre Vorbereitung"
+      }
+    },
+    "showcase": {
+      "title": "Interview-Coaching",
+      "subtitle": "Fachkundige Anleitung für ein erfolgreiches Vorstellungsgespräch",
+      "mockInterview": {
+        "title": "Probeinterviews",
+        "subtitle": "Praxis mit Branchenexperten"
+      },
+      "features": [
+        {
+          "iconKey": "messageSquare",
+          "title": "Verhaltenstipps",
+          "description": "Situationsbezogene Fragen und Antworten",
+          "gradient": "bg-gradient-to-r von-himmel-500 zu-blau-600"
+        },
+        {
+          "iconKey": "target",
+          "title": "Technisch",
+          "description": "Bewertung der Fähigkeiten",
+          "gradient": "bg-gradient-to-r von-violett-500 nach-indigo-600"
+        },
+        {
+          "iconKey": "clock",
+          "title": "Timing",
+          "description": "Antwortstrategie",
+          "gradient": "bg-gradient-to-r von-emerald-500 bis-teal-600"
+        },
+        {
+          "iconKey": "award",
+          "title": "Rückmeldung",
+          "description": "Fachliche Analyse",
+          "gradient": "bg-gradient-to-r von-orange-500 nach-rot-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "95%",
+          "label": "Erfolgsquote",
+          "color": "text-himmel-600"
+        },
+        {
+          "value": "500+",
+          "label": "Betreute Kunden",
+          "color": "text-blau-600"
+        },
+        {
+          "value": "4.9★",
+          "label": "Bewertung",
+          "color": "text-indigo-600"
+        }
+      ]
+    },
+    "serviceSection": {
+      "header": {
+        "title": "Ist dieser Dienst das Richtige für Sie?",
+        "description": "Unser Online-Interview-Coaching hat Fachleuten in allen Karrierestufen geholfen, ihre Traumjobs zu finden, insbesondere denjenigen, die ein Interview-Coaching in Pakistan oder Hilfe bei der Vorbereitung auf ein Bewerbungsgespräch für pakistanische Arbeitssuchende suchen."
+      },
+      "successStory": {
+        "label": "Erfolgsgeschichte",
+        "badge": "25% Gehaltserhöhung",
+        "client": {
+          "name": "Sarmad Saleem",
+          "position": "Software-Ingenieur, Toronto"
+        },
+        "testimonial": "\"Nach meinem Umzug nach Kanada hatte ich mit Ängsten vor Bewerbungsgesprächen zu kämpfen. Das Coaching half mir, meine Erfahrungen klar und selbstbewusst zu artikulieren. Wir haben Sarmad dabei geholfen, seinen Zieljob mit einem um 25 % höheren Angebot innerhalb von vier Monaten nach der Einwanderung zu bekommen.\"",
+        "readMore": "Mehr lesen"
+      },
+      "testimonial": {
+        "label": "ERFOLGSGESCHICHTE",
+        "quote": "CareerTuners unterstützte mich mit einem Interview-Coaching, das dazu führte, dass ich in meinem Unternehmen eine Beförderung erhielt.",
+        "client": {
+          "name": "Meena Ansari",
+          "position": "Gewerblicher Schadensregulierer"
+        }
+      },
+      "questions": {
+        "title": "Bedenken Sie diese Fragen:",
+        "items": [
+          "Ist es Ihnen unangenehm zu erklären, warum Sie Ihre derzeitige Stelle aufgeben wollen?",
+          "Ertappen Sie sich bei Vorstellungsgesprächen dabei, dass Sie abschweifen?",
+          "Machen Sie sich Gedanken darüber, wie Sie \"rote Fahnen\" in Ihrem Lebenslauf ansprechen können?"
+        ],
+        "conclusion": "Wenn Sie einen dieser Punkte bejahen, ist unser Bewerbungscoaching genau das Richtige für Sie."
+      },
+      "benefits": {
+        "title": "Unser Coaching wird Sie dazu befähigen:",
+        "items": [
+          {
+            "iconKey": "messageCircle",
+            "text": "Selbstbewusst auf schwierige Fragen antworten."
+          },
+          {
+            "iconKey": "user",
+            "text": "Einen guten ersten Eindruck hinterlassen und Gespräche positiv abschließen"
+          },
+          {
+            "iconKey": "trendingUp",
+            "text": "Gespräche über Joblücken, Jobwechsel oder andere potenzielle Hürden mit Leichtigkeit bewältigen"
+          }
+        ]
+      },
+      "cta": {
+        "text": "Buchen Sie Ihre Coaching-Sitzung noch heute"
+      }
+    }
+  },
+  "interviewTimeline": {
+    "badge": "UNSER BEWÄHRTER PROZESS",
+    "title": "Wie es funktioniert",
+    "subtitle": "Unsere fachkundigen Coaches führen Sie durch diese drei einfachen Schritte zur professionellen Vorbereitung auf ein Vorstellungsgespräch:",
+    "steps": [
+      {
+        "iconKey": "fileText",
+        "title": "Wir erstellen ein individuelles Testinterview",
+        "description": "Der erste Schritt besteht darin, uns einige Informationen über Sie zu geben, einschließlich Ihres Lebenslaufs und einer Stellenausschreibung, an der Sie interessiert sind. Dieser Schritt hilft uns, Ihre Sitzung auf die Art der Stelle, die Branche und die üblichen Herausforderungen im <strong>Bewerbungstraining</strong> abzustimmen.",
+        "accentColor": "sky-400",
+        "highlightColor": "Himmel-100",
+        "id": 1,
+        "number": "01"
+      },
+      {
+        "iconKey": "userCheck",
+        "title": "Zeit, Ihren Coach zu treffen",
+        "description": "Ihr Coach wird speziell auf der Grundlage Ihrer Branche, Funktion und Erfahrung ausgewählt. Sie gehen mit Ihrem Coach ein Probevorstellungsgespräch durch und erhalten dann maßgeschneidertes Feedback, wie Sie Ihre Antworten verfeinern und sich während des Gesprächs von anderen abheben können. Unser <strong>1-on-1-Interview-Coaching</strong> konzentriert sich darauf, verhaltensorientierte Vorstellungsgespräche zu meistern und etwaige Herausforderungen zu überwinden.",
+        "accentColor": "Himmel-500",
+        "highlightColor": "Himmel-100",
+        "id": 2,
+        "number": "02"
+      },
+      {
+        "iconKey": "video",
+        "title": "Übung macht den Meister",
+        "description": "Nach Ihrer Coaching-Sitzung erhalten Sie eine Aufzeichnung Ihres Vorstellungsgesprächs zusammen mit spezifischem Feedback und einem individuellen Aktionsplan, um sicherzustellen, dass Sie für ein Vorstellungsgespräch gerüstet sind. Dies ist besonders hilfreich für diejenigen, die ein <strong>Vorstellungsgesprächs-Coaching für Hochschulabsolventen</strong> suchen oder für Berufstätige, die ein <strong>Karriere-Coaching für Vorstellungsgespräche</strong> benötigen.",
+        "accentColor": "Himmel-600",
+        "highlightColor": "Himmel-100",
+        "id": 3,
+        "number": "03"
+      }
+    ],
+    "cta": {
+      "title": "Sind Sie bereit, Ihr nächstes Vorstellungsgespräch zu meistern?",
+      "subtitle": "Schließen Sie sich Tausenden von erfolgreichen Bewerbern an, die ihren Traumjob gefunden haben",
+      "buttonText": "Buchen Sie Ihr Interview-Coaching",
+      "link": "/Kontakt-uns"
+    },
+    "accessibility": {
+      "stepLabel": "Schritt {Nummer}: {Titel}",
+      "ctaLabel": "Interview-Coaching-Sitzung buchen"
+    }
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "talentacquisition": {
+    "hero": {
+      "badge": "Services d'acquisition stratégique de talents",
+      "headline": {
+        "prefix": "Trouver le",
+        "suffix": "Pour votre organisation"
+      },
+      "animatedWords": [
+        "Les meilleurs talents",
+        "Meilleure équipe",
+        "Les bonnes personnes",
+        "Un ajustement parfait",
+        "Joueurs vedettes",
+        "L'équipe de rêve"
+      ],
+      "description": "Rationalisez le recrutement afin d'obtenir les meilleurs talents pour votre organisation. Des solutions complètes de recrutement et de recherche de talents adaptées aux besoins spécifiques de votre entreprise.",
+      "cta": {
+        "text": "Démarrer l'acquisition de talents"
+      }
+    },
+    "showcase": {
+      "title": "Acquisition de talents",
+      "subtitle": "Un recrutement stratégique pour votre réussite",
+      "talentPool": {
+        "title": "Accès à la réserve de talents",
+        "subtitle": "Entrer en contact avec des candidats qualifiés"
+      },
+      "services": [
+        {
+          "icon": "Recherche",
+          "title": "Sourcing",
+          "description": "Découverte des candidats",
+          "gradient": "bg-gradient-to-r du ciel-500 au bleu-600"
+        },
+        {
+          "icon": "Cible",
+          "title": "Dépistage",
+          "description": "Évaluation de la qualité",
+          "gradient": "bg-gradient-to-r de-violet-500 à-indigo-600"
+        },
+        {
+          "icon": "Contrôle de l'utilisateur",
+          "title": "Correspondance",
+          "description": "Une recherche d'ajustement parfaite",
+          "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+        },
+        {
+          "icon": "Prix",
+          "title": "Embarquement",
+          "description": "Intégration harmonieuse",
+          "gradient": "bg-gradient-to-r de-orange-500 à-rouge-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "300+",
+          "label": "Entreprises desservies",
+          "color": "texte-ciel-600"
+        },
+        {
+          "value": "85%",
+          "label": "Taux de réussite",
+          "color": "texte-bleu-600"
+        },
+        {
+          "label": "Jours Location moyenne",
+          "color": "texte-indigo-600",
+          "value": "30"
+        }
+      ]
+    }
+  },
+  "talentacquisitionsection1": {
+    "process": {
+      "title": {
+        "prefix": "Notre approche globale",
+        "highlight": "Processus d'acquisition des talents"
+      },
+      "description": "Nous suivons un processus systématique et transparent pour obtenir des résultats exceptionnels en matière de recrutement.",
+      "steps": [
+        {
+          "icon": "Cible",
+          "title": "Planification des effectifs et analyse des emplois",
+          "description": "Nous collaborons étroitement avec votre équipe RH et votre direction pour comprendre vos besoins en main-d'œuvre, la culture de votre entreprise et les exigences de votre poste.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "texte-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10",
+          "id": 1
+        },
+        {
+          "icon": "Réseau",
+          "title": "Sourcing & Outreach",
+          "description": "Grâce à notre vaste réseau, aux portails de l'emploi, aux médias sociaux et à des techniques de recherche innovantes, nous attirons un large éventail de candidats qualifiés.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "texte-bleu-500",
+          "bgLight": "bg-bleu-500/10",
+          "id": 2
+        },
+        {
+          "icon": "Filtre",
+          "title": "Dépistage et évaluation",
+          "description": "Nous procédons à une sélection rigoureuse à l'aide de CV, d'entretiens, d'évaluations des compétences et d'évaluations comportementales afin de sélectionner les candidats les plus aptes.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "texte-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10",
+          "id": 3
+        },
+        {
+          "icon": "Calendrier",
+          "title": "Coordination des entretiens",
+          "description": "Gérer la programmation et la communication entre les candidats et vos responsables du recrutement afin de garantir une expérience d'entretien sans heurts.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "texte-bleu-600",
+          "bgLight": "bg-bleu-600/10",
+          "id": 4
+        },
+        {
+          "icon": "Contrôle de l'utilisateur",
+          "title": "Sélection et gestion des offres",
+          "description": "Aider à la prise de décision et proposer des offres d'emploi compétitives conformes aux normes du marché et aux attentes des candidats.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "texte-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10",
+          "id": 5
+        },
+        {
+          "icon": "UserPlus",
+          "title": "Soutien à l'intégration",
+          "description": "Faciliter le processus d'intégration pour aider les nouvelles recrues à s'intégrer harmonieusement dans votre organisation grâce à notre assistance en matière de recrutement et d'intégration.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "texte-bleu-500",
+          "bgLight": "bg-bleu-500/10",
+          "id": 6
+        }
+      ]
+    },
+    "flow": {
+      "title": "Rationalisation des processus",
+      "description": "De la planification à l'intégration, nous avons tout prévu.",
+      "stepLabel": "Étape"
+    },
+    "cta": "Commencez votre parcours d'acquisition de talents"
+  },
+  "talentacquisitionsection2": {
+    "whyPartner": {
+      "badge": "AVANTAGES DU PARTENARIAT",
+      "title": {
+        "prefix": "Pourquoi s'associer à",
+        "highlight": "JobsAdmire",
+        "suffix": "pour l'acquisition de talents ?"
+      },
+      "reasons": [
+        {
+          "icon": "Prix",
+          "title": "Expertise dans tous les secteurs",
+          "description": "Nos recruteurs sont spécialisés dans différents secteurs, ce qui garantit une connaissance spécifique de l'industrie et la qualité des candidats.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "texte-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Base de données",
+          "title": "Accès aux meilleurs talents",
+          "description": "Nous disposons d'une vaste base de données et d'un vivier de talents qui nous permettent de faire correspondre rapidement les candidats à vos besoins.",
+          "color": "bg-bleu-500",
+          "textColor": "texte-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Paramètres",
+          "title": "Solutions personnalisées",
+          "description": "Des solutions de recrutement flexibles pour les entreprises, conçues en fonction de la taille de votre entreprise, de votre culture et de vos objectifs de recrutement.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "texte-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Zap",
+          "title": "Une approche axée sur la technologie",
+          "description": "Utiliser des systèmes avancés de suivi des candidats (ATS) et des analyses de données pour un recrutement efficace.",
+          "color": "bg-bleu-600",
+          "textColor": "texte-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Utilisateurs",
+          "title": "Priorité à la diversité et à l'inclusion",
+          "description": "Nous vous aidons à constituer des équipes diversifiées qui favorisent l'innovation et la réussite.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "texte-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Bouclier",
+          "title": "Garantie de qualité",
+          "description": "Nous fournissons des garanties de remplacement et une assistance continue pour assurer la réussite des placements à long terme.",
+          "color": "bg-bleu-700",
+          "textColor": "texte-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        }
+      ]
+    },
+    "benefits": {
+      "title": "Avantages de notre service d'acquisition de talents",
+      "subtitle": "Des résultats mesurables qui font progresser votre entreprise",
+      "items": [
+        {
+          "icon": "Horloge",
+          "title": "Réduction du délai d'embauche et du coût par embauche",
+          "color": "texte-[#38B6FF]"
+        },
+        {
+          "icon": "TrendingUp",
+          "title": "Amélioration de la qualité des recrutements et des taux de rétention",
+          "color": "texte-[#38B6FF]"
+        },
+        {
+          "icon": "Étoile",
+          "title": "Amélioration de l'image de marque de l'employeur et de l'expérience du candidat",
+          "color": "texte-[#38B6FF]"
+        },
+        {
+          "icon": "BarChart3",
+          "title": "Des solutions de recrutement évolutives pour les entreprises en croissance",
+          "color": "texte-[#38B6FF]"
+        },
+        {
+          "icon": "Cible",
+          "title": "Planification stratégique des effectifs en fonction des objectifs de l'entreprise",
+          "color": "texte-[#38B6FF]"
+        }
+      ],
+      "stats": [
+        {
+          "value": "50%",
+          "label": "Processus d'embauche plus rapide",
+          "color": "texte-[#38B6FF]"
+        },
+        {
+          "value": "30%",
+          "label": "Réduction des coûts",
+          "color": "texte-bleu-500"
+        },
+        {
+          "value": "95%",
+          "label": "Satisfaction des clients",
+          "color": "texte-[#38B6FF]"
+        }
+      ]
+    },
+    "whoBenefits": {
+      "title": {
+        "prefix": "Qui peut",
+        "highlight": "Bénéfices ?"
+      },
+      "description": "Nos services d'acquisition de talents sont conçus pour des organisations de toutes tailles et de tous secteurs.",
+      "audience": [
+        {
+          "icon": "Fusée",
+          "title": "Startups",
+          "description": "Chercher à constituer leurs premières équipes",
+          "color": "bg-[#38B6FF]",
+          "textColor": "texte-[#38B6FF]"
+        },
+        {
+          "icon": "TrendingUp",
+          "title": "Entreprises en croissance",
+          "description": "Besoin de solutions d'embauche évolutives",
+          "color": "bg-[#38B6FF]",
+          "textColor": "texte-[#38B6FF]"
+        },
+        {
+          "icon": "Bâtiment",
+          "title": "Entreprises",
+          "description": "Recherche de talents spécialisés ou de cadres",
+          "color": "bg-[#38B6FF]",
+          "textColor": "texte-[#38B6FF]"
+        },
+        {
+          "icon": "Paramètres",
+          "title": "Départements RH",
+          "description": "Optimiser les flux de recrutement",
+          "color": "bg-[#38B6FF]",
+          "textColor": "texte-[#38B6FF]"
+        },
+        {
+          "icon": "Utilisateurs",
+          "title": "Diverses organisations",
+          "description": "Engagé dans des initiatives de diversité et d'inclusion",
+          "color": "bg-[#38B6FF]",
+          "textColor": "texte-[#38B6FF]"
+        },
+        {
+          "icon": "Cible",
+          "title": "Agences de recrutement",
+          "description": "Développer leurs capacités de recherche de talents",
+          "color": "bg-[#38B6FF]",
+          "textColor": "texte-[#38B6FF]"
+        }
+      ]
+    }
+  }
+}

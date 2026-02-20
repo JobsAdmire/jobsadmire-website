@@ -1,0 +1,911 @@
+{
+  "heroSection": {
+    "badge": "Mga Eksklusibong Paglalakbay",
+    "title": "Tuklasin ang Iyong Susunod na Pakikipagsapalaran",
+    "description": "Damhin ang mga nakamamanghang destinasyon at lumikha ng mga di-malilimutang alaala gamit ang aming mga premium na travel package na iniayon sa iyong mga pangarap.",
+    "currentlyViewing": {
+      "label": "Kasalukuyang Pinapanood"
+    },
+    "buttons": {
+      "explore": "Mag-explore Ngayon",
+      "viewAll": "Tingnan ang Lahat ng Destinasyon"
+    },
+    "destinationCounter": "Destinasyon {kasalukuyan}/{kabuuan}",
+    "destinations": [
+      {
+        "img": "/mga imahe/ihusn.png",
+        "name": "Lungsod ng New York, New York",
+        "country": "USA"
+      },
+      {
+        "img": "/mga imahe/ihuslos.png",
+        "name": "Los Angeles, California",
+        "country": "USA"
+      },
+      {
+        "img": "/mga imahe/ihuch.png",
+        "name": "Chicago, Illinois",
+        "country": "USA"
+      },
+      {
+        "img": "/mga imahe/ihusen.png",
+        "name": "San Francisco, California",
+        "country": "USA"
+      },
+      {
+        "img": "/mga imahe/ihumiami.png",
+        "name": "Miami, Florida",
+        "country": "USA"
+      }
+    ],
+    "accessibility": {
+      "exploreButton": "Galugarin ang mga destinasyon ngayon",
+      "viewAllButton": "Tingnan ang lahat ng available na destinasyon",
+      "destinationImage": "Tingnan ang destinasyon: {name}",
+      "featuredDestination": "Itinatampok na larawan ng destinasyon",
+      "carouselControl": "Pumunta sa destinasyon {number}"
+    },
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableOfContents": {
+    "title": "Talaan ng mga Nilalaman",
+    "subtitle": "Mag-navigate sa mga seksyon",
+    "currentlyReading": "Kasalukuyang nagbabasa",
+    "sectionsCount": "{count} na mga seksyon na maaaring tuklasin",
+    "sections": [
+      {
+        "title": "🇺🇸 Nakakatuwa at Nakakatuwang Katotohanan Tungkol sa USA",
+        "id": 1
+      },
+      {
+        "title": "Mga Opsyon sa Visa para sa Paglipat sa Estados Unidos",
+        "id": 2
+      },
+      {
+        "title": "Mga Kinakailangan para sa Paglipat sa Estados Unidos",
+        "id": 3
+      },
+      {
+        "title": "Pagkuha ng Trabaho sa Estados Unidos bilang isang Dayuhan",
+        "id": 4
+      },
+      {
+        "title": "Paglipat patungong US mula sa Turkey",
+        "id": 5
+      },
+      {
+        "title": "Paglipat patungong US mula sa UK",
+        "id": 6
+      },
+      {
+        "title": "Magkano ang magagastos sa paglipat sa Estados Unidos?",
+        "id": 7
+      },
+      {
+        "title": "Paglipat kasama ang mga alagang hayop patungong USA",
+        "id": 8
+      }
+    ],
+    "quickNavigation": {
+      "title": "Mabilis na Nabigasyon",
+      "footer": "Mag-scroll sa mga seksyong {count}"
+    },
+    "accessibility": {
+      "toggleMenu": "I-toggle ang menu ng nabigasyon",
+      "sectionButton": "Mag-navigate sa seksyon: {title}",
+      "quickNavigation": "Mabilis na menu ng nabigasyon",
+      "quickNavSection": "Mabilis na pag-navigate papunta sa: {title}"
+    }
+  },
+  "factsCard": {
+    "description": "Tuklasin ang mga kahanga-hangang katangian at tagumpay ng Estados Unidos ng Amerika. Ipinagmamalaki ng Estados Unidos ang hindi kapani-paniwalang kahalagahang heograpikal, pang-ekonomiya, pangkultura, at makabago sa pandaigdigang entablado.",
+    "navigation": {
+      "title": "Galugarin ang mga Katotohanan",
+      "previous": "Nakaraang Katotohanan",
+      "next": "Susunod na Katotohanan"
+    },
+    "allFacts": {
+      "title": "Lahat ng Katotohanan Tungkol sa Estados Unidos"
+    },
+    "facts": [
+      {
+        "title": "Pangatlong Pinakamalaking Bansa",
+        "description": "Ang Estados Unidos ang pangatlong pinakamalaking bansa sa lawak ng lupa at populasyon, kasunod ng Russia/Canada (lawak) at China/India (populasyon).",
+        "iconKey": "mapa",
+        "emoji": "🗺️",
+        "id": 1
+      },
+      {
+        "title": "50 Estado at 1 Distrito Pederal",
+        "description": "Ito ay binubuo ng 50 estado at Washington, D.C., na siyang kabisera ngunit hindi isang estado.",
+        "iconKey": "bandila",
+        "emoji": "🏛️",
+        "id": 2
+      },
+      {
+        "title": "Pinakamalaking Ekonomiya sa Mundo",
+        "description": "Sa ngayon, ang Estados Unidos ang may pinakamalaking ekonomiya sa mundo, na pinapatakbo ng teknolohiya, pananalapi, pangangalagang pangkalusugan, at libangan.",
+        "iconKey": "gusali",
+        "emoji": "💰",
+        "id": 3
+      },
+      {
+        "title": "Pagkakaiba-iba ng Kultura",
+        "description": "Isa ito sa mga bansang may pinakamaraming kultura, na may mahigit 350 wikang sinasalita at mga komunidad mula sa halos bawat bansa sa Mundo.",
+        "iconKey": "globo",
+        "emoji": "🌎",
+        "id": 4
+      },
+      {
+        "title": "Dito Nagmula ang mga Inobasyon",
+        "description": "Ang Estados Unidos ay tahanan ng maraming imbensyon — kabilang ang internet, eroplano, bombilya, at iPhone.",
+        "iconKey": "bombilya",
+        "emoji": "💡",
+        "id": 5
+      }
+    ],
+    "accessibility": {
+      "factButton": "Piliin ang katotohanan: {title}",
+      "previousFact": "Pumunta sa nakaraang katotohanan",
+      "nextFact": "Pumunta sa susunod na katotohanan"
+    }
+  },
+  "movingCostsGuide": {
+    "title": "Magkano ang Gastos sa Paglipat sa Estados Unidos?",
+    "description": "Maaaring maging kapana-panabik ang paglipat sa Estados Unidos, ngunit may kasama itong ilang mga gastos na dapat mong planuhin. Narito ang isang detalyadong pagsusuri ng mga gastusin na maaari mong asahan kapag lumipat sa Estados Unidos.",
+    "costSections": [
+      {
+        "id": "visa-imigrasyon",
+        "icon": "🛂",
+        "title": "Mga Bayarin sa Visa at Imigrasyon",
+        "amount": "$160–$5,000+",
+        "details": "Mga aplikasyon para sa visa, green card, opsyonal na bayad sa abogado",
+        "color": "bg-blue-500",
+        "subItems": {
+          "0": {
+            "title": "Visa para sa mga hindi imigrante (H-1B, F-1)",
+            "amount": "$160–$205"
+          },
+          "1": {
+            "title": "Green Card (visa ng imigrante)",
+            "amount": "$1,200–$1,760"
+          },
+          "2": {
+            "title": "Mga Bayarin sa Abogado (opsyonal)",
+            "amount": "$1,500–$5,000"
+          }
+        }
+      },
+      {
+        "id": "paglipad",
+        "icon": "✈️",
+        "title": "Mga Tiket sa Paglipad",
+        "amount": "$500–$1,200",
+        "details": "One-way na flight depende sa lokasyon at oras ng pag-book",
+        "color": "bg-blue-600"
+      },
+      {
+        "id": "pagpapadala",
+        "icon": "📦",
+        "title": "Mga Gamit sa Pagpapadala",
+        "amount": "$500–$7,000",
+        "details": "Depende sa dami at paraan ng pagpapadala",
+        "color": "bg-blue-700",
+        "subItems": {
+          "0": {
+            "title": "Maliit na kargamento (mga kahon lamang)",
+            "amount": "$500–$1,500"
+          },
+          "1": {
+            "title": "Buong lalagyan (20ft/40ft)",
+            "amount": "$3,000–$7,000"
+          }
+        }
+      },
+      {
+        "id": "tirahan",
+        "icon": "🏠",
+        "title": "Paunang Akomodasyon",
+        "amount": "$1,000–$4,000",
+        "details": "Renta sa unang buwan + deposito (nag-iiba depende sa lungsod)",
+        "color": "bg-blue-500",
+        "subItems": {
+          "0": {
+            "title": "Pansamantalang hotel/Airbnb",
+            "amount": "$80–$200 kada gabi"
+          }
+        }
+      },
+      {
+        "id": "seguro",
+        "icon": "🏥",
+        "title": "Seguro sa Kalusugan",
+        "amount": "$300–$700/buwan",
+        "details": "Kinakailangan para sa karamihan ng mga uri ng visa",
+        "color": "bg-blue-600",
+        "subItems": {
+          "0": {
+            "title": "Saklaw ng pamilya",
+            "amount": "Mas mahal"
+          }
+        }
+      },
+      {
+        "id": "iba pa",
+        "icon": "📝",
+        "title": "Iba pang mga Gastos",
+        "amount": "$520–$1,080+/buwan",
+        "color": "bg-blue-500",
+        "subItems": {
+          "0": {
+            "title": "Aplikasyon ng SSN",
+            "amount": "Libre"
+          },
+          "1": {
+            "title": "Lisensya sa pagmamaneho",
+            "amount": "$20–$80"
+          },
+          "2": {
+            "title": "Mga grocery at transportasyon",
+            "amount": "$500–$1,000/buwan"
+          }
+        }
+      }
+    ],
+    "totalBudget": {
+      "icon": "🔢",
+      "title": "Tinatayang Kabuuang Badyet",
+      "categories": [
+        {
+          "title": "Isang Tao",
+          "amount": "$5,000–$10,000",
+          "description": "Kasama ang mga bayarin sa visa, panimulang pabahay, transportasyon at mga pangunahing gastos sa pag-set up"
+        },
+        {
+          "title": "Pamilya ng Apat",
+          "amount": "$10,000–$25,000+",
+          "description": "Kasama ang lahat ng gastusin para sa buong pamilya kabilang ang visa, pagpapadala, at akomodasyon"
+        }
+      ]
+    },
+    "moneySavingTips": {
+      "icon": "💰",
+      "title": "Mga Tip sa Pagtitipid ng Pera",
+      "tips": [
+        {
+          "title": "Isaalang-alang nang Maingat ang Lokasyon",
+          "description": "Malaki ang pagkakaiba-iba ng mga gastos sa pabahay sa iba't ibang lungsod. Isaalang-alang ang mas maliliit na lungsod o mga suburb."
+        },
+        {
+          "title": "Mag-book ng mga Flight nang Maaga",
+          "description": "Ang pag-book ng mga flight nang 2-3 buwan nang maaga ay maaaring makatipid ng daan-daang dolyar."
+        },
+        {
+          "title": "Ipadala Nang Mapili",
+          "description": "Isaalang-alang kung ano ang sulit ipadala kumpara sa pagbili ng bago sa USA."
+        },
+        {
+          "title": "Paghambingin ang mga Plano ng Seguro",
+          "description": "Ang mga gastos sa segurong pangkalusugan ay maaaring mag-iba nang malaki; maglaan ng oras sa paghahanap ng tamang plano."
+        }
+      ]
+    },
+    "conclusion": "Ang iyong huling gastos ay lubos na nakadepende sa uri ng iyong visa, kung saan ka lilipat, at sa iyong destinasyon sa U.S. Sa pamamagitan ng wastong pagpaplano at pagbabadyet, magagawa mong maging maayos at matipid ang iyong paglipat sa Estados Unidos.",
+    "accessibility": {
+      "toggleSection": "I-toggle ang mga detalye para sa seksyong {title}"
+    }
+  },
+  "requirementsGuide": {
+    "tabs": {
+      "all": "Lahat ng Kinakailangan",
+      "essential": "Mga Mahahalagang Pangangailangan",
+      "recommended": "Inirerekomenda",
+      "after-arrival": "Pagkatapos ng Pagdating"
+    },
+    "categoryLabels": {
+      "essential": "Kinakailangan",
+      "recommended": "Inirerekomenda",
+      "afterArrival": "Pagkatapos ng Pagdating"
+    },
+    "requirements": [
+      {
+        "title": "Kunin ang Tamang Visa o Green Card",
+        "description": "Dapat ay mayroon kang aprubadong visa o Green Card (permanent resident status) para manirahan sa U.S.",
+        "details": {
+          "0": "Visa ng imigrante na nakabatay sa pamilya",
+          "1": "Visa na nakabatay sa trabaho (H-1B, L-1, atbp.)",
+          "2": "Visa ng mag-aaral (F-1)",
+          "3": "Loterya ng Green Card (Programa ng Diversity Visa)"
+        },
+        "tip": "Simulan ang iyong aplikasyon para sa visa sa embahada o konsulado ng Estados Unidos sa iyong bansa. Ang oras ng pagproseso ay nag-iiba mula linggo hanggang buwan.",
+        "iconKey": "fileText",
+        "category": "mahalaga",
+        "id": 1
+      },
+      {
+        "title": "Balidong Pasaporte",
+        "description": "Ang iyong pasaporte ay dapat na balido nang hindi bababa sa 6 na buwan lampas sa iyong nilalayong petsa ng pagpasok.",
+        "details": {
+          "0": "I-renew ito bago mag-apply ng visa kung malapit na itong mag-expire."
+        },
+        "iconKey": "bookOpen",
+        "category": "mahalaga",
+        "id": 2,
+        "tip": ""
+      },
+      {
+        "title": "Inaprubahang Medikal na Pagsusuri",
+        "description": "Kinakailangan ang mandatoryong medikal na eksaminasyon para sa mga immigrant visa.",
+        "details": {
+          "0": "Dapat itong gawin ng isang doktor na inaprubahan ng embahada ng Estados Unidos.",
+          "1": "Ikaw ay susuriin para sa mga sakit tulad ng tuberculosis at kinakailangang magpakita ng patunay ng mga pangunahing bakuna."
+        },
+        "tip": "Gastos: Humigit-kumulang $200–$400 depende sa bansa.",
+        "iconKey": "istetoskopyo",
+        "category": "mahalaga",
+        "id": 3
+      },
+      {
+        "title": "Mga Rekord ng Pagbabakuna at Kalusugan",
+        "description": "Magdala ng kumpletong talaan ng mga bakuna.",
+        "details": {
+          "0": "Tigdas, Beke, Rubella (MMR)",
+          "1": "Polio",
+          "2": "Tetano",
+          "3": "Trangkaso (sa panahon ng trangkaso)",
+          "4": "COVID-19 (ayon sa pinakabagong gabay ng USCIS)"
+        },
+        "iconKey": "hiringgilya",
+        "category": "mahalaga",
+        "id": 4,
+        "tip": ""
+      },
+      {
+        "title": "Patunay sa Pananalapi o Pag-sponsor",
+        "description": "Kailangan mong patunayan na hindi ka magiging umaasa sa gobyerno ng Estados Unidos sa aspetong pinansyal:",
+        "details": {
+          "0": "Employment visa: Liham ng alok ng trabaho at mga detalye ng suweldo.",
+          "1": "Visa ng pamilya: Dapat maghain ang sponsor ng Form I-864 (Affidavit of Support) at magpakita ng kita na higit sa itinakdang antas.",
+          "2": "Visa ng mag-aaral: Patunay ng bayad sa matrikula at mga gastusin sa pamumuhay para sa kahit isang taon ng akademiko."
+        },
+        "iconKey": "dollarSign",
+        "category": "mahalaga",
+        "id": 5,
+        "tip": ""
+      },
+      {
+        "title": "Malinis na Rekord ng Kriminal",
+        "description": "Ang mga maliliit na paglabag ay kadalasang hindi nagdidiskwalipika sa iyo, ngunit ang mga seryosong rekord ng kriminal ay maaaring magresulta sa pagtanggi sa iyong visa.",
+        "details": {
+          "0": "Ang mga background check ay bahagi ng proseso."
+        },
+        "iconKey": "kalasagCheck",
+        "category": "mahalaga",
+        "id": 6,
+        "tip": ""
+      },
+      {
+        "title": "Mga Kasanayan sa Wikang Ingles (Praktikal)",
+        "description": "Hindi palaging kinakailangan, ngunit <strong>lubos na inirerekomenda</strong> para sa trabaho at pang-araw-araw na buhay.",
+        "details": {
+          "0": "Ang ilang mga visa (tulad ng H-1B) ay umaasa sa kahusayan.",
+          "1": "Kung mag-aaplay para sa pagkamamamayan sa ibang pagkakataon, kinakailangan ang kaalaman sa Ingles at sibika."
+        },
+        "iconKey": "messageSquare",
+        "category": "inirerekomenda",
+        "id": 7,
+        "tip": ""
+      },
+      {
+        "title": "Iba Pang Praktikal na Pangangailangan Pagkatapos ng Pagdating",
+        "description": "Kapag nasa U.S. na, kakailanganin mong:",
+        "details": {
+          "0": "Mag-apply para sa Social Security Number (SSN)",
+          "1": "Magbukas ng bank account sa U.S.",
+          "2": "Kumuha ng lisensya sa pagmamaneho o ID",
+          "3": "Maghanap ng pabahay (upahan o bilhin)",
+          "4": "Bumili ng health insurance (pribado at mahal ang pangangalagang pangkalusugan sa U.S.)"
+        },
+        "iconKey": "credit card",
+        "category": "pagkatapos ng pagdating",
+        "id": 8,
+        "tip": ""
+      }
+    ],
+    "importantReminder": {
+      "title": "Mahalagang Paalala",
+      "description": "Maaaring magbago ang mga kinakailangan sa imigrasyon sa paglipas ng panahon. Ang gabay na ito ay batay sa kasalukuyang impormasyon, ngunit palaging beripikahin ang mga pinakabagong kinakailangan sa Kagawaran ng Estado ng Estados Unidos o sa Mga Serbisyo ng Pagkamamamayan at Imigrasyon ng Estados Unidos (USCIS) bago magpatuloy sa iyong paglipat.",
+      "lastUpdated": "Huling na-update: Mayo 2025"
+    },
+    "accessibility": {
+      "tabButton": "Lumipat sa tab na {label}"
+    }
+  },
+  "migrationGuide": {
+    "header": {
+      "sourceFlag": "🇹🇷",
+      "destinationFlag": "🇺🇸",
+      "title": "Paglipat patungong US mula sa Turkey",
+      "description": "Ang paglipat mula Turkey patungong Estados Unidos ay maaaring maging isang pagkakataon na makapagpapabago ng buhay, ngunit nangangailangan ito ng wastong pagpaplano at mga legal na pamamaraan. Narito ang mga kailangan mong malaman:",
+      "decorativeIcon": "🗽"
+    },
+    "sections": [
+      {
+        "title": "Piliin ang Tamang Uri ng Visa",
+        "description": "Ang unang hakbang mo ay ang pagkuha ng tamang U.S. visa batay sa dahilan ng iyong paglipat:",
+        "items": {
+          "0": {
+            "title": "Visa na Nakabatay sa Pamilya",
+            "description": "Kung mayroon kang malalapit na kapamilya na mga mamamayan ng U.S. o mga permanenteng residente.",
+            "iconKey": "mga gumagamit"
+          },
+          "1": {
+            "title": "Visa para sa Pagtatrabaho (H-1B, L-1, O-1)",
+            "description": "Kung inalok ka ng trabaho sa U.S.",
+            "iconKey": "maleta"
+          },
+          "2": {
+            "title": "Visa ng Estudyante (F-1)",
+            "description": "Kung plano mong mag-aral sa isang kolehiyo o unibersidad sa Estados Unidos.",
+            "iconKey": "graduationcap"
+          },
+          "3": {
+            "title": "Diversity Visa (Green Card Lottery)",
+            "description": "Kwalipikado ang Turkey — maaari kang mag-apply sa panahon ng taunang lottery window.",
+            "iconKey": "pagbabalanse"
+          },
+          "4": {
+            "title": "Visa ng Mamumuhunan (E-2)",
+            "description": "Para sa mga mamamayang Turko na namumuhunan nang malaki sa isang negosyo sa U.S.",
+            "iconKey": "dollarSign"
+          }
+        },
+        "id": 1
+      },
+      {
+        "title": "Maghanda para sa Panayam sa Visa",
+        "description": "Mag-apply sa Embahada ng Estados Unidos sa Ankara o Konsulado sa Istanbul, depende sa iyong rehiyon. Kakailanganin mo:",
+        "items": {
+          "0": {
+            "title": "Balidong pasaporte",
+            "description": "Tiyaking ang iyong pasaporte ay may bisa nang hindi bababa sa 6 na buwan lampas sa iyong planong pananatili.",
+            "iconKey": "fileText"
+          },
+          "1": {
+            "title": "Aplikasyon ng Visa",
+            "description": "Form DS-160 o naaangkop na form para sa imigrante.",
+            "iconKey": "fileText"
+          },
+          "2": {
+            "title": "Mga sumusuportang dokumento",
+            "description": "Pinansyal, edukasyon, alok na trabaho, atbp.",
+            "iconKey": "fileText"
+          },
+          "3": {
+            "title": "Mga rekord ng medikal na pagsusuri at pagbabakuna",
+            "description": "Kumpletuhin ang medikal na pagsusuri sa isang aprubadong doktor.",
+            "iconKey": "fileText"
+          }
+        },
+        "id": 2
+      },
+      {
+        "title": "Seguro sa Kalusugan at mga Gastos sa Pamumuhay",
+        "items": {
+          "0": {
+            "title": "Pribadong segurong pangkalusugan",
+            "description": "Hindi nag-aalok ang U.S. ng libreng pangangalagang pangkalusugan — kakailanganin mong bumili ng pribadong health insurance.",
+            "iconKey": "fileText"
+          },
+          "1": {
+            "title": "Mas mataas na halaga ng pamumuhay",
+            "description": "Mas mataas ang halaga ng pamumuhay kaysa sa Turkey. Mas mahal ang upa, pangangalagang pangkalusugan, at transportasyon, lalo na sa mga lungsod tulad ng New York, LA, o San Francisco.",
+            "iconKey": "gusali"
+          }
+        },
+        "id": 3,
+        "description": ""
+      },
+      {
+        "title": "Mga Pagkakaiba sa Kultura at Pamumuhay",
+        "items": {
+          "0": {
+            "title": "mga komunidad ng Turko",
+            "description": "Ang Estados Unidos ay magkakaiba, na may maraming komunidad ng mga Turko, lalo na sa mga lungsod tulad ng New York, Chicago, at Los Angeles.",
+            "iconKey": "globo"
+          },
+          "1": {
+            "title": "Iba't ibang pamumuhay",
+            "description": "Ang pang-araw-araw na buhay ay maaaring mas indibidwal at mabilis kumpara sa Turkey.",
+            "iconKey": "globo"
+          }
+        },
+        "id": 4,
+        "description": ""
+      },
+      {
+        "title": "Pagkatapos ng Pagdating sa U.S.",
+        "description": "Pagdating mo, siguraduhing:",
+        "items": {
+          "0": {
+            "title": "Mag-apply para sa Social Security Number (SSN)",
+            "description": "Mahalaga ito para sa pagtatrabaho at paghahain ng mga buwis sa U.S.",
+            "iconKey": "fileText"
+          },
+          "1": {
+            "title": "Magbukas ng bank account",
+            "description": "Kakailanganin mo ito para sa pang-araw-araw na transaksyong pinansyal.",
+            "iconKey": "credit card"
+          },
+          "2": {
+            "title": "Kumuha ng lisensya sa pagmamaneho",
+            "description": "Limitado ang pampublikong transportasyon sa maraming lugar sa U.S.",
+            "iconKey": "credit card"
+          },
+          "3": {
+            "title": "Maghanap ng matutuluyan",
+            "description": "At umangkop sa mga sistema ng U.S. (edukasyon, trabaho, transportasyon).",
+            "iconKey": "mapPin"
+          }
+        },
+        "id": 5
+      }
+    ],
+    "navigation": {
+      "previous": "Nakaraan",
+      "next": "Susunod"
+    },
+    "footer": {
+      "sourceFlag": "🇹🇷",
+      "destinationFlag": "🇺🇸",
+      "disclaimer": "Tandaan na maaaring magbago ang mga kinakailangan sa imigrasyon. Palaging sumangguni sa <strong>Embahada ng Estados Unidos sa Turkey</strong> o <strong>USCIS</strong> para sa pinakabagong impormasyon."
+    },
+    "accessibility": {
+      "sectionButton": "Pumunta sa seksyon: {title}",
+      "previousButton": "Pumunta sa nakaraang seksyon: {title}",
+      "nextButton": "Pumunta sa susunod na seksyon: {title}"
+    }
+  },
+  "petsGuide": {
+    "header": {
+      "icons": [
+        "🐶",
+        "🐱",
+        "🦜"
+      ],
+      "title": "Paglipat kasama ang mga alagang hayop sa Estados Unidos",
+      "description": "Posibleng dalhin ang iyong alagang hayop sa U.S., ngunit kakailanganin mong sundin ang mga partikular na patakaran:"
+    },
+    "sections": {
+      "requirements": {
+        "icon": "✅",
+        "title": "Mga Pangunahing Kinakailangan"
+      },
+      "arrival": {
+        "icon": "🛬",
+        "title": "Pagdating"
+      },
+      "tips": {
+        "icon": "💡",
+        "title": "Mga Nakatutulong na Tip"
+      }
+    },
+    "requirements": [
+      {
+        "id": "rabis",
+        "icon": "💉",
+        "title": "Pagbabakuna sa Rabies",
+        "description": "<strong>Mandatory para sa mga aso</strong>; lubos na inirerekomenda para sa mga pusa"
+      },
+      {
+        "id": "kalusugan",
+        "icon": "📋",
+        "title": "Sertipiko ng Kalusugan",
+        "description": "Inisyu ng isang lisensyadong beterinaryo (karaniwan ay sa loob ng 10 araw mula sa paglalakbay)"
+      },
+      {
+        "id": "microchip",
+        "icon": "📱",
+        "title": "Microchip",
+        "description": "Hindi kinakailangan ng batas, ngunit <strong>lubos na inirerekomenda</strong>"
+      },
+      {
+        "id": "eroplano",
+        "icon": "✈️",
+        "title": "Pag-book ng Airline na Pwedeng Alagang Hayop",
+        "description": "Sundin ang mga patakaran ng carrier para sa <strong>laki ng kahon, mga dokumento, at mga bayarin</strong>"
+      }
+    ],
+    "arrivalInfo": [
+      {
+        "id": "inspeksyon",
+        "title": "Inspeksyon",
+        "description": "Maaaring suriin ang mga alagang hayop sa daungan ng pasukan",
+        "icon": "👁️"
+      },
+      {
+        "id": "quarantine",
+        "title": "Walang Kuwarentenas",
+        "description": "Para sa mga alagang hayop mula sa karamihan ng mga bansa (kabilang ang UK at Turkey), kung kumpleto ang mga papeles",
+        "icon": "🏠"
+      }
+    ],
+    "tips": [
+      "Simulan ang proseso nang hindi bababa sa 4-6 na linggo bago ang iyong paglipat",
+      "Suriin kung ang iyong patutunguhang estado ay may mga karagdagang kinakailangan sa pagpasok",
+      "Magdala ng sapat na gamot ng iyong alagang hayop para sa mga unang ilang buwan",
+      "Isaalang-alang ang mga serbisyo sa transportasyon ng alagang hayop kung naglalakbay kasama ang maraming hayop"
+    ],
+    "footer": {
+      "disclaimer": "Palaging sumangguni sa USDA APHIS at sa beterinaryo ng iyong destinasyon para sa mga pinakabagong kinakailangan bago maglakbay."
+    }
+  },
+  "moveRequirements": {
+    "requirements": [
+      {
+        "title": "Balidong Visa o Green Card",
+        "description": "Dapat mong makuha ang tamang uri ng visa batay sa iyong layunin (hal., trabaho, pamilya, pag-aaral).",
+        "note": "Kinakailangan ang mga immigrant visa para sa permanenteng paglipat.",
+        "iconKey": "fileText",
+        "id": 1
+      },
+      {
+        "title": "Balidong Pasaporte",
+        "description": "Ang iyong pasaporte ay dapat na balido nang hindi bababa sa 6 na buwan lampas sa iyong nilalayong pananatili.",
+        "iconKey": "bookOpen",
+        "id": 2,
+        "note": ""
+      },
+      {
+        "title": "Medikal na Pagsusuri",
+        "description": "Kinakailangan para sa karamihan ng mga *immigrant visa*.",
+        "note": "Dapat gawin ng isang aprubadong manggagamot.",
+        "iconKey": "istetoskopyo",
+        "id": 3
+      },
+      {
+        "title": "Mga Rekord ng Pagbabakuna",
+        "description": "Kinakailangan ang patunay ng pagbabakuna (hal., MMR, COVID-19, hepatitis) para sa imigrasyon.",
+        "iconKey": "hiringgilya",
+        "id": 4,
+        "note": ""
+      },
+      {
+        "title": "Patunay ng Suportang Pinansyal",
+        "description": "Maaaring kailanganin mong magpakita ng mga bank statement, alok ng trabaho, o isang sponsor upang patunayan na hindi ka magiging isang *public charge*.",
+        "iconKey": "dollarSign",
+        "id": 5,
+        "note": ""
+      },
+      {
+        "title": "Malinis na Rekord ng Kriminal",
+        "description": "Ang mga background check ay bahagi ng proseso ng imigrasyon.",
+        "note": "Ang mga mabibigat na pagkakasala ay maaaring humantong sa pagtanggi sa visa.",
+        "iconKey": "kalasagCheck",
+        "id": 6
+      },
+      {
+        "title": "Mga Kasanayan sa Ingles (Inirerekomenda)",
+        "description": "Hindi mandatoryo para sa lahat ng uri ng visa, ngunit ang pag-alam sa Ingles ay malaking tulong sa pang-araw-araw na buhay, trabaho, at edukasyon.",
+        "iconKey": "messageSquare",
+        "id": 7,
+        "note": ""
+      }
+    ],
+    "importantNote": {
+      "title": "Mahalagang Paalala",
+      "description": "Maaaring magbago ang mga kinakailangan sa imigrasyon. Palaging beripikahin ang pinakabagong impormasyon mula sa Kagawaran ng Estado ng Estados Unidos o sa Mga Serbisyo ng Pagkamamamayan at Imigrasyon ng Estados Unidos (USCIS) bago magpatuloy sa iyong paglipat."
+    }
+  },
+  "ukUsGuide": {
+    "header": {
+      "icon": "🇬🇧➡️🇺🇸",
+      "title": "Paglipat patungong US mula sa UK",
+      "subtitle": "Ang Kailangan Mong Malaman",
+      "description": "Ang paglipat mula sa UK patungong Estados Unidos ay isang mahalagang hakbang na nangangailangan ng pagpaplano, legal na dokumentasyon, at pag-unawa sa kung paano naiiba ang buhay sa kabila ng Atlantiko. Lumilipat ka man para sa mga oportunidad sa trabaho, makasama ang pamilya, o para sa isang bagong pakikipagsapalaran, saklaw ng gabay na ito ang mahahalagang aspeto ng iyong transatlantikong paglipat."
+    },
+    "quickNavigation": {
+      "title": "Mabilis na Nabigasyon"
+    },
+    "sections": [
+      {
+        "id": "mga kinakailangan sa visa",
+        "icon": "🛂",
+        "title": "Mga Kinakailangan sa Visa",
+        "content": "<p class=\"text-gray-700 mb-4\">Bilang isang mamamayan ng UK, kakailanganin mo ng visa para makalipat sa U.S. nang pangmatagalan. Kabilang sa mga karaniwang opsyon ang:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span><strong>Mga Employment Visa (H-1B, L-1, O-1)</strong> – Para sa mga bihasang propesyonal, mga transferee, o mga pambihirang kakayahan</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span><strong>Family-Based Green Card</strong> – Kung mayroon kang mga agarang kamag-anak na mamamayan ng U.S.</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span><strong>Student Visa (F-1)</strong> – Kung nag-aaral ka sa U.S.</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span><strong>Investor Visa (E-2)</strong> – Para sa mga mamamayan ng UK na namumuhunan sa isang negosyo sa U.S.</span></li></ul><p class=\"text-gray-700\">Ang proseso ng aplikasyon ng visa ay nangangailangan ng maingat na pagpaplano, dahil ang mga rate ng pagtanggi ay maaaring mataas para sa ilang mga uri ng visa.</p>"
+      },
+      {
+        "id": "proseso ng aplikasyon",
+        "icon": "📋",
+        "title": "Proseso ng Pag-aaplay ng Visa",
+        "content": "<div class=\"mb-4\"><p class=\"text-gray-700 mb-4\">Ang proseso ng aplikasyon para sa visa ay may ilang hakbang:</p><ul class=\"text-gray-700 space-y-2 pl-4\"><li>• Mag-apply online sa pamamagitan ng U.S. Department of State</li><li>• Mag-iskedyul ng panayam sa U.S. Embahada sa London</strong> o <strong>Konsulado sa Belfast</strong></li><li>• Ihanda ang mga kinakailangang dokumento:</li></ul><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm mt-3\"><h4 class=\"font-medium text-sky-600 mb-2\">Mga Kinakailangang Dokumento:</h4><ul class=\"text-gray-700 space-y-1 pl-4\"><li>• Balidong pasaporte</li><li>• Pormularyo ng aplikasyon para sa visa</li><li>• Mga resulta ng medikal na pagsusuri</li><li>• Patunay ng pananalapi</li><li>• Dokumentasyon ng sponsor/alok ng trabaho kung kinakailangan</li><li>• Mga sertipiko sa edukasyon (para sa ilang partikular na visa)</li></ul></div></div>"
+      },
+      {
+        "id": "pangangalagang pangkalusugan",
+        "icon": "🏥",
+        "title": "Pangangalagang Pangkalusugan at Seguro",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Hindi tulad ng NHS ng UK, ang pangangalagang pangkalusugan sa U.S. ay pangunahing pribado at maaaring magastos</p><p>Kakailanganin mong bumili ng <strong>pribadong health insurance</strong> — ang buwanang gastos ay maaaring mula $300–$700+ bawat tao</strong></p><p>Maraming employer ang nag-aalok ng health insurance bilang bahagi ng mga pakete ng benepisyo</p><p>Isaalang-alang ang insurance na sumasaklaw sa emergency repatriation sa unang taon</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Tip:</strong> Simulan ang pagsasaliksik ng mga opsyon sa health insurance bago ka dumating, at tiyaking mayroon kang coverage mula sa unang araw sa U.S.</span></p></div></div>"
+      },
+      {
+        "id": "pamumuhay na may gastos",
+        "icon": "💷",
+        "title": "Paghahambing ng Halaga ng Pamumuhay",
+        "content": "<div><div class=\"overflow-x-auto mb-4\"><table class=\"min-w-full bg-white border border-sky-200 rounded-lg\"><thead><tr class=\"bg-sky-100\"><th class=\"py-3 px-4 text-left border-b border-sky-200\">Gastos</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">Estados Unidos (average)</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">UK (average)</th></tr></thead><tbody><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Renta (apartment na may 1 kwarto)</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$1,200–$3,000</td><td class=\"py-3 px-4 border-b border-sky-100\">£800–£1,200</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Pangangalagang pangkalusugan</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$300–$700/buwan</td><td class=\"py-3 px-4 border-b border-sky-100\">NHS (pinopondohan ng buwis)</td></tr><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Pagkain sa restawran</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$15–$30</td><td class=\"py-3 px-4 border-b border-sky-100\">£10–£25</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Transportasyon</td><td class=\"py-3 px-4 border-b border-sky-100 text-yellow-600\">$70–$100/buwan (nag-iiba-iba)</td><td class=\"py-3 px-4 border-b border-sky-100\">£60–£120/buwan</td></tr></tbody></table></div><p class=\"text-gray-700\">Ang halaga ng pamumuhay ay lubhang nag-iiba-iba depende sa lokasyon. Ang mga pangunahing lungsod tulad ng New York, San Francisco, at Los Angeles ay mas mahal nang malaki kaysa sa karamihan ng mga lungsod sa UK kabilang ang London."
+      },
+      {
+        "id": "pabahay",
+        "icon": "🏘️",
+        "title": "Paghahanap ng Pabahay",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Mabilis ang paggalaw ng merkado ng pag-upa sa U.S., lalo na sa mga lungsod na mapagkumpitensya</p><p>Karamihan sa mga may-ari ng lupa ay nangangailangan ng pagsusuri ng kredito, na maaaring maging mahirap para sa mga bagong dating</p><p>Isaalang-alang ang mga panandaliang pag-upa kapag una kang dumating hanggang sa ikaw ay manirahan</p><p>Mga sikat na website para sa paghahanap ng pag-upa: Zillow, Apartments.com, Trulia, Realtor.com</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Tip:</strong> Magdala ng mga reference letter mula sa mga may-ari ng lupa sa UK at patunay ng kita upang makatulong na malampasan ang kakulangan ng credit history sa U.S.</span></p></div></div>"
+      },
+      {
+        "id": "pagbabangko",
+        "icon": "💳",
+        "title": "Pagbabangko at Pananalapi",
+        "content": "<div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Pagbubukas ng bank account</h3><p class=\"text-gray-700\">Kakailanganin mo ang iyong pasaporte, visa, patunay ng address, at posibleng ang iyong Social Security Number (SSN).</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Kasaysayan ng kredito</h3><p class=\"text-gray-700\">Hindi ililipat sa U.S. ang iyong kasaysayan ng kredito sa UK. Kakailanganin mong bumuo ng kredito mula sa simula.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Mga pagsasaalang-alang sa buwis</h3><p class=\"text-gray-700\">Bilang isang expat sa UK, kakailanganin mong maghain ng mga tax return sa parehong bansa, bagama't nakakatulong ang mga kasunduan sa buwis na maiwasan ang dobleng pagbubuwis.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Mga paglilipat ng pera</h3><p class=\"text-gray-700\">Isaalang-alang ang mga espesyalisadong serbisyo sa forex kaysa sa mga bangko para sa mas mahusay na mga rate ng palitan kapag naglilipat ng pera sa pagitan ng UK at US.</p></div></div></div>"
+      },
+      {
+        "id": "pang-araw-araw na buhay",
+        "icon": "📱",
+        "title": "Mga Pagsasaayos sa Pang-araw-araw na Buhay",
+        "content": "<div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Pagmamaneho</h3><p class=\"text-gray-700\">Magmamaneho ka sa kanang bahagi. Karamihan sa mga estado ay nagpapahintulot sa iyo na magmaneho gamit ang iyong lisensya sa UK nang hanggang 3 buwan, pagkatapos nito ay kakailanganin mo ng lisensya mula sa estado.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Kultura ng pagbibigay ng tip</h3><p class=\"text-gray-700\">Inaasahang magbibigay ng tip (15-20%) sa mga restawran, para sa mga taxi, at iba't ibang serbisyo. Umaasa ang mga kawani ng serbisyo sa mga tip bilang bahagi ng kanilang kita.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Sistema ng pagsukat</h3><p class=\"text-gray-700\">Gumagamit ang U.S. ng mga imperyal na sukat para sa karamihan ng mga bagay (milya, libra, Fahrenheit), na maaaring mangailangan ng pagsasaayos.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Mga mobile phone</h3><p class=\"text-gray-700\">Kabilang sa mga pangunahing carrier ang AT&T, Verizon, at T-Mobile. Isaalang-alang ang pagkuha ng lokal na SIM card o plano pagdating.</p></div></div></div>"
+      },
+      {
+        "id": "kultura ng trabaho",
+        "icon": "💼",
+        "title": "Mga Pagkakaiba sa Kultura ng Trabaho",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>U.S. Kadalasang kinabibilangan ng kultura ng trabaho ang:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Mas kaunting araw ng bakasyon (karaniwang 10-15 araw kumpara sa 20-25 sa UK)</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Mas direktang istilo ng komunikasyon</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Ang networking ay lubos na pinahahalagahan at kadalasang inaasahan</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Ang balanse sa trabaho at buhay ay lubhang nag-iiba ayon sa kumpanya</span></li></ul></div>"
+      },
+      {
+        "id": "logistikong pang-paglipat",
+        "icon": "🛫",
+        "title": "Paglipat ng Logistika",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Ang mga internasyonal na gastos sa paglipat sa U.S. ay mula £2,000-£10,000 depende sa dami</p><p>Isaalang-alang kung magpapadala o magbebenta ng mas malalaking muwebles (ang mga bahay sa U.S. ay kadalasang may iba't ibang sukat)</p><p>Ang customs clearance ay nangangailangan ng detalyadong imbentaryo ng mga ipinadalang item</p><p>Maaaring makapasok ang mga alagang hayop sa U.S. ngunit dapat matugunan ang mga kinakailangan sa kalusugan at pagbabakuna</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Tip:</strong> Para sa mga electronics, suriin ang compatibility ng boltahe dahil ang U.S. ay gumagamit ng 110-120V (kumpara sa UK) 230-240V).</span></p></div></div>"
+      },
+      {
+        "id": "paninirahan",
+        "icon": "📝",
+        "title": "Pag-aayos Pagkatapos ng Pagdating",
+        "content": "<div><div class=\"space-y-4\"><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">1. Kumuha ng Social Security Number (SSN)</h3><p class=\"text-gray-700 mb-2\"><span class=\"font-medium\">Kinakailangan para sa trabaho at maraming serbisyo</span><br/>Bisitahin ang iyong lokal na tanggapan ng Social Security Administration dala ang iyong pasaporte at visa</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">2. Kumuha ng State ID o Lisensya sa Pagmamaneho</h3><p class=\"text-gray-700 mb-2\">Bisitahin ang Department of Motor Vehicles (DMV) ng iyong estado o katumbas na ahensya</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">3. I-set up ang mga Utility</h3><p class=\"text-gray-700 mb-2\">Ayusin ang mga serbisyo sa pagkolekta ng kuryente, tubig, gas, internet, at basura</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">4. Magrehistro sa Konsulado ng UK</h3><p class=\"text-gray-700 mb-2\">Opsyonal ngunit inirerekomenda para sa mga abiso sa emerhensiya</p></div></div></div>"
+      },
+      {
+        "id": "mga komunidad ng mga expat",
+        "icon": "👥",
+        "title": "Mga Komunidad ng mga British Expat",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Ang U.S. ay may malalaking komunidad ng mga British expatriate sa maraming lungsod, lalo na sa:</p><div class=\"grid grid-cols-2 md:grid-cols-5 gap-2 mb-4\"><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">New York</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Los Angeles</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Chicago</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Boston</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">San Francisco</div></div><p class=\"text-gray-700\">Makakakita ka ng mga British pub, social club, at Facebook group na maaaring maging napakahalaga para sa networking at pagkuha ng lokal na payo mula sa iba na gumawa ng parehong hakbang.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Pangwakas na Checklist Bago Lumipat sa US",
+      "items": [
+        {
+          "text": "I-secure ang iyong visa o green card",
+          "fullWidth": false
+        },
+        {
+          "text": "Ayusin ang saklaw ng segurong pangkalusugan",
+          "fullWidth": false
+        },
+        {
+          "text": "Magsaliksik ng pabahay sa lungsod na iyong pupuntahan",
+          "fullWidth": false
+        },
+        {
+          "text": "Ayusin ang pagpapadala ng mga gamit",
+          "fullWidth": false
+        },
+        {
+          "text": "Abisuhan ang HMRC at iba pang mga awtoridad sa UK",
+          "fullWidth": false
+        },
+        {
+          "text": "Plano para sa pagpapalit at paglilipat ng pera",
+          "fullWidth": false
+        },
+        {
+          "text": "Magsaliksik ng mga obligasyon sa buwis sa parehong bansa",
+          "fullWidth": true
+        }
+      ]
+    },
+    "conclusion": {
+      "icon": "🎯",
+      "title": "Konklusyon: Angkop ba para sa Iyo ang Paglipat sa US?",
+      "description": "Ang paglipat sa Estados Unidos ay nag-aalok ng napakalaking mga oportunidad ngunit may kaakibat na malalaking hamon. Ang proseso ng visa ay maaaring mahaba, mataas ang mga gastos sa pangangalagang pangkalusugan, at ang pag-aangkop sa kulturang Amerikano ay nangangailangan ng oras. Gayunpaman, maraming mga British expatriates ang natagpuang sulit ang paglipat sa mga oportunidad sa karera, magkakaibang tanawin, at pamumuhay."
+    },
+    "checklist": [
+      {
+        "text": "I-secure ang iyong visa o green card",
+        "fullWidth": false
+      },
+      {
+        "text": "Ayusin ang saklaw ng segurong pangkalusugan",
+        "fullWidth": false
+      },
+      {
+        "text": "Magsaliksik ng pabahay sa lungsod na iyong pupuntahan",
+        "fullWidth": false
+      },
+      {
+        "text": "Ayusin ang pagpapadala ng mga gamit",
+        "fullWidth": false
+      },
+      {
+        "text": "Abisuhan ang HMRC at iba pang mga awtoridad sa UK",
+        "fullWidth": false
+      },
+      {
+        "text": "Plano para sa pagpapalit at paglilipat ng pera",
+        "fullWidth": false
+      },
+      {
+        "text": "Magsaliksik ng mga obligasyon sa buwis sa parehong bansa",
+        "fullWidth": true
+      }
+    ],
+    "accessibility": {
+      "sectionToggle": "I-toggle ang seksyon: {title}"
+    }
+  },
+  "visaOptions": {
+    "labels": {
+      "examples": "Mga Halimbawa:",
+      "note": "Paalala:"
+    },
+    "visaTypes": [
+      {
+        "id": "pamilya",
+        "title": "1. Mga Visa na Nakabatay sa Pamilya",
+        "description": "Para sa mga asawa, anak, magulang, o kapatid ng mga mamamayan ng U.S. o mga permanenteng residente.",
+        "examples": {
+          "0": "IR-1 (Asawa)",
+          "1": "F-2A (Kagustuhan ng Pamilya)"
+        },
+        "iconKey": "mga gumagamit"
+      },
+      {
+        "id": "trabaho",
+        "title": "2. Mga Visa na Nakabatay sa Trabaho",
+        "description": "Para sa mga bihasang propesyonal, manggagawa, at mamumuhunan.",
+        "examples": {
+          "0": "H-1B: Mga bihasang manggagawa sa mga espesyal na trabaho",
+          "1": "<strong>L-1:</strong> Paglilipat sa loob ng kumpanya",
+          "2": "<strong>EB-2/EB-3:</strong> Mga green card na nakabatay sa trabaho",
+          "3": "<strong>O-1:</strong> Para sa mga indibidwal na may pambihirang kakayahan"
+        },
+        "iconKey": "maleta"
+      },
+      {
+        "id": "estudyante",
+        "title": "3. Visa ng Estudyante (F-1)",
+        "description": "Para sa mga internasyonal na mag-aaral na pumapasok sa mga akreditadong institusyon ng U.S.",
+        "examples": {
+          "0": "Pinapayagan ang part-time na trabaho sa loob ng kampus at opsyonal na praktikal na pagsasanay (OPT) pagkatapos ng graduation."
+        },
+        "iconKey": "graduationcap"
+      },
+      {
+        "id": "mamumuhunan",
+        "title": "4. Visa ng Mamumuhunan (E-2 / EB-5)",
+        "description": "Para sa mga naghahangad na mamuhunan sa Estados Unidos.",
+        "examples": {
+          "0": "<strong>E-2:</strong> Para sa mga mamamayan ng mga bansang may kasunduan na namumuhunan ng malaking halaga sa isang negosyo sa U.S.",
+          "1": "<strong>EB-5:</strong> Green card para sa mga namumuhunan ng <strong>$800,000+</strong> at lumilikha ng mga trabaho sa U.S."
+        },
+        "iconKey": "dollarSign"
+      },
+      {
+        "id": "pagkakaiba-iba",
+        "title": "5. Green Card Lottery (Programa ng Diversity Visa)",
+        "description": "Isang programa ng gobyerno ng Estados Unidos na nag-aalok ng permanenteng paninirahan sa mga tao mula sa mga karapat-dapat na bansa sa pamamagitan ng random na pagpili.",
+        "iconKey": "pagbabalanse"
+      }
+    ]
+  }
+}

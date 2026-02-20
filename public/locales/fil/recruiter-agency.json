@@ -1,0 +1,233 @@
+{
+  "header": {
+    "heroImageAlt": "Mga propesyonal sa pangangalap ng trabaho",
+    "program_title": "Programa ng Sertipikadong Kasosyo sa Pagrerekrut",
+    "main_title_prefix": "Makipagsosyo sa Nangunguna",
+    "main_title_suffix": "Mga Ahensya ng Pangangalap",
+    "description": "Nakikipagtulungan kami sa mga mapagkakatiwalaang ahensya ng recruitment upang ikonekta ang mga negosyo sa mga kwalipikado at pre-screened na propesyonal sa iba't ibang industriya. Sumali sa aming network at palawakin ang iyong abot gamit ang maaasahang mga hiring partnership.",
+    "contact_us": "Makipag-ugnayan sa Amin",
+    "verified_candidates": "Mga Na-verify na Kandidato",
+    "pre_screened": "Paunang Nasuri"
+  },
+  "form": {
+    "title": "Pagpaparehistro ng Kasosyo sa Pagrerekrut",
+    "subtitle": "Kumpletuhin ang form na ito upang simulan ang pagkuha ng mga kwalipikadong kawani sa pamamagitan ng JobsAdmire",
+    "company_info": {
+      "title": "Impormasyon ng Kumpanya",
+      "company_name": "Pangalan ng Kumpanya *",
+      "company_name_placeholder": "Ilagay ang pangalan ng iyong kumpanya",
+      "company_name_error": "Kinakailangan ang pangalan ng kumpanya",
+      "contact_person": "Taong Makikipag-ugnayan *",
+      "contact_person_placeholder": "Buong pangalan ng taong makikipag-ugnayan",
+      "contact_person_error": "Kinakailangan ang taong makontak",
+      "company_type": "Uri ng Kumpanya *",
+      "company_type_placeholder": "Pumili ng uri ng kumpanya",
+      "company_type_error": "Kinakailangan ang uri ng kumpanya",
+      "types": {
+        "manufacturing": "Paggawa/Pabrika",
+        "agriculture": "Agrikultura",
+        "tourism": "Turismo at Pagtanggap sa mga Biyaya",
+        "construction": "Konstruksyon",
+        "retail": "Tingian at Serbisyo",
+        "other": "Iba pa"
+      },
+      "years_in_business": "Mga Taon sa Negosyo",
+      "years_placeholder": "Pumili ng mga taon",
+      "years_options": {
+        "1_2": "1-2 taon",
+        "3_5": "3-5 taon",
+        "6_10": "6-10 taon",
+        "10_plus": "10+ taon"
+      },
+      "license_number": "Numero ng Lisensya sa Negosyo",
+      "license_placeholder": "Ilagay ang numero ng lisensya",
+      "employees_count": "Kasalukuyang Bilang ng mga Empleyado",
+      "employees_placeholder": "Pumili ng saklaw",
+      "employees_options": {
+        "1_10": "1-10 empleyado",
+        "11_50": "11-50 empleyado",
+        "51_100": "51-100 empleyado",
+        "100_plus": "100+ empleyado"
+      }
+    },
+    "contact_info": {
+      "title": "Impormasyon sa Pakikipag-ugnayan",
+      "email": "Email Address *",
+      "email_required": "Kinakailangan ang email",
+      "email_invalid": "Hindi wasto ang email",
+      "phone": "Numero ng Telepono *",
+      "phone_placeholder": "+90 xxx xxx xx xx",
+      "phone_required": "Kinakailangan ang numero ng telepono",
+      "country": "Bansa *",
+      "country_placeholder": "Ilagay ang iyong bansa",
+      "country_required": "Kinakailangan ang bansa",
+      "city": "Lungsod *",
+      "city_placeholder": "Ilagay ang iyong lungsod",
+      "city_required": "Kinakailangan ang lungsod",
+      "address": "Address ng Negosyo",
+      "address_placeholder": "Ilagay ang kumpletong address ng iyong negosyo",
+      "website": "Website ng Kumpanya",
+      "email_placeholder": "company@example.com",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "staffing_needs": {
+      "title": "Mga Kinakailangan sa Tauhan",
+      "types_needed": "Mga Uri ng Tauhan na Kinakailangan",
+      "types_placeholder": "Piliin ang iyong nais na posisyon",
+      "positions": {
+        "housekeeping": "Pag-aalaga ng bahay",
+        "waiter": "Waiter/Weytress",
+        "waiter_assistant": "Katulong ng Waiter",
+        "receptionist": "Resepsiyonista",
+        "guest_relations": "Relasyon sa Panauhin",
+        "bellboy": "Bellboy",
+        "animator": "Animator / Tagapag-ugnay ng Aktibidad",
+        "kitchen_assistant": "Katulong sa Kusina",
+        "specialized_worker": "Espesyalisadong Manggagawa ng Kasanayan",
+        "cnc_operator": "Operator ng CNC",
+        "packing_worker": "Manggagawa sa Pag-iimpake",
+        "tailor": "Sastre",
+        "forklift_operator": "Operator ng Forklift",
+        "material_handler": "Tagapangasiwa ng Materyal",
+        "fruit_picker": "Tagapitas ng Prutas/Gulay",
+        "greenhouse_worker": "Manggagawa sa Greenhouse",
+        "packing_sorting": "Mga Kawani sa Pag-iimpake at Pag-uuri",
+        "irrigation": "Katulong sa Irigasyon / Pagtatanim",
+        "animal_husbandry": "Pag-aalaga ng Hayop (Pagawaan ng Gatas/Pagsasaka)",
+        "general_labourer": "Pangkalahatang Manggagawa",
+        "painter": "Pintor",
+        "electrician": "Elektrisyan",
+        "tile_fixer": "Tagaayos ng Tile"
+      },
+      "industry_focus": "Pangunahing Pokus sa Industriya",
+      "industry_placeholder": "Piliin ang iyong industriya",
+      "industries": {
+        "factory": "Pabrika",
+        "agriculture": "Agrikultura",
+        "tourism": "Turismo",
+        "construction": "Konstruksyon"
+      },
+      "description_label": "Sabihin sa Amin ang Tungkol sa Iyong mga Pangangailangan sa Pagtatrabaho",
+      "description_placeholder": "Ilarawan ang iyong kumpanya, ang kasalukuyang pangangailangan sa mga tauhan, bilang ng mga posisyong pupunan, mga kinakailangang kasanayan, at anumang mga partikular na kinakailangan..."
+    },
+    "legal": {
+      "title": "Kasunduan sa Batas",
+      "agree_terms_prefix": "Sumasang-ayon ako sa",
+      "terms_link": "Mga Tuntunin at Kundisyon",
+      "agree_terms_suffix": "at maunawaan ang mga kinakailangan at obligasyon ng pakikipagsosyo. *",
+      "terms_error": "Dapat kang sumang-ayon sa mga tuntunin at kundisyon",
+      "agree_privacy_prefix": "Kinikilala ko na nabasa ko na at sumasang-ayon ako sa",
+      "privacy_link": "Patakaran sa Pagkapribado",
+      "agree_privacy_suffix": "at mga pamamaraan sa paghawak ng datos. *",
+      "privacy_error": "Dapat kang sumang-ayon sa patakaran sa privacy"
+    },
+    "submit": {
+      "button": "Isumite ang Aplikasyon",
+      "submitting": "Isinusumite...",
+      "success_message": "Matagumpay na naisumite ang aplikasyon! Susuriin namin ang iyong aplikasyon at makikipag-ugnayan sa iyo sa loob ng 2-3 araw ng negosyo.",
+      "footer_message": "Susuriin namin ang iyong aplikasyon at makikipag-ugnayan sa iyo sa loob ng 2–3 araw ng negosyo."
+    }
+  },
+  "why_partner": {
+    "title": "Bakit Makikipagsosyo sa JobsAdmire?",
+    "subtitle": "Ikinokonekta namin ang mga negosyo sa mga kwalipikadong manggagawa at inaasikaso ang lahat ng komplikasyon ng internasyonal na recruitment.",
+    "items": {
+      "global_network": {
+        "title": "Pandaigdigang Network ng Pangangalap",
+        "description": "Magkaroon ng access sa malawak na internasyonal na pool ng mga talento at kumonekta sa mga beripikadong employer na naghahanap ng mga kwalipikadong kandidato sa iba't ibang industriya."
+      },
+      "trusted_brand": {
+        "title": "Pinagkakatiwalaang Tatak at Pagsunod sa Batas",
+        "description": "Makipagsosyo sa isang lisensyadong recruitment agency na kinikilala para sa mga operasyon na transparent, etikal, at sumusunod sa mga patakaran ng gobyerno."
+      },
+      "ai_driven": {
+        "title": "Plataporma ng Pagkuha ng mga Trabaho na Pinapatakbo ng AI",
+        "description": "Gamitin ang aming matatalinong tool sa recruitment para sa pagsubaybay sa kandidato, pamamahala ng aplikasyon, at maayos na komunikasyon sa mga kliyente."
+      },
+      "end_to_end": {
+        "title": "Suporta mula sa Dulo hanggang Dulo",
+        "description": "Mula sa paghahanap ng kandidato hanggang sa tulong sa visa at dokumentasyon, inaasikaso namin ang bawat hakbang upang matiyak ang maayos na pagkuha at onboarding."
+      },
+      "commission": {
+        "title": "Kaakit-akit na Istruktura ng Komisyon",
+        "description": "Kumita ng mga kompetitibong komisyon at paulit-ulit na insentibo para sa bawat matagumpay na pagkakalagay sa trabaho sa pamamagitan ng aming programang pakikipagtulungan sa mga recruiter."
+      },
+      "dedicated_team": {
+        "title": "Dedikadong Koponan ng Pakikipagtulungan",
+        "description": "Tumanggap ng patuloy na suporta, gabay, at mga update mula sa aming pangkat ng kasosyo upang matulungan kang mapalago ang iyong tagumpay sa recruitment."
+      }
+    }
+  },
+  "industry_expertise": {
+    "title": "Mga Industriya na Pinaglilingkuran Namin",
+    "subtitle": "Nagbibigay kami ng mga kwalipikadong kawani sa mga pangunahing industriya sa Turkey",
+    "items": {
+      "factory": {
+        "title": "Pabrika",
+        "description": "Mga manggagawa sa linya ng paggawa at produksyon"
+      },
+      "agriculture": {
+        "title": "Agrikultura",
+        "description": "Mga manggagawa sa bukid at mga espesyalista sa agrikultura"
+      },
+      "tourism": {
+        "title": "Turismo",
+        "description": "Mga kawani ng hotel, mga gabay, at mga manggagawa sa hospitality"
+      },
+      "construction": {
+        "title": "Konstruksyon",
+        "description": "Mga tagapagtayo, inhinyero, at manggagawa sa konstruksyon"
+      }
+    }
+  },
+  "platform_features": {
+    "title": "Ang Aming Plataporma ng Pangangalap",
+    "subtitle": "Pinasimpleng teknolohiya at suporta ng eksperto upang mahanap ang tamang tauhan para sa iyong negosyo",
+    "items": {
+      "verified_candidates": {
+        "title": "Mga Na-verify na Kandidato",
+        "description": "Ang lahat ng mga kandidato ay paunang nasuri at beripikado"
+      },
+      "quick_placement": {
+        "title": "Mabilis na Paglalagay",
+        "description": "Karaniwang oras ng paglalagay ay 2-3 linggo"
+      },
+      "document_processing": {
+        "title": "Pagproseso ng Dokumento",
+        "description": "Kami ang bahala sa lahat ng work permit at legal na papeles"
+      },
+      "ongoing_support": {
+        "title": "Patuloy na Suporta",
+        "description": "Patuloy na suporta pagkatapos ng pagkakalagay"
+      }
+    }
+  },
+  "benefits": {
+    "title": "Mga Benepisyo ng Pakikipagsosyo",
+    "subtitle": "Sumali sa daan-daang negosyong nakikipagtulungan na sa JobsAdmire",
+    "items": {
+      "talent_pool": {
+        "title": "Paunang Nasuring Talent Pool",
+        "description": "Mag-access ng mga kwalipikadong kandidato na handang magtrabaho sa Turkey"
+      },
+      "fast_process": {
+        "title": "Mabilis na Proseso ng Pagrerekrut",
+        "description": "Mabilis na punan ang mga posisyon gamit ang aming pinasimpleng sistema ng pagkuha ng empleyado"
+      },
+      "legal_compliance": {
+        "title": "Pagsunod sa Batas",
+        "description": "Kami ang bahala sa lahat ng work permit at dokumento ng visa"
+      },
+      "industry_matching": {
+        "title": "Pagtutugma na Partikular sa Industriya",
+        "description": "Kumuha ng mga kandidatong akma sa iyong mga partikular na pangangailangan sa industriya"
+      }
+    }
+  },
+  "contact_footer": {
+    "title": "Handa Ka Na Bang Buuin ang Iyong Koponan?",
+    "description": "May mga katanungan tungkol sa aming mga serbisyo sa recruitment? Ang aming dedikadong koponan ay handang tumulong sa iyo na mahanap ang perpektong kawani para sa iyong negosyo.",
+    "business_hours": "Mga Oras ng Negosyo: Lunes - Biyernes, 9:00 AM - 6:00 PM (Oras sa Turkey)",
+    "response_time": "Karaniwang Oras ng Pagtugon: Sa loob ng 2 oras sa oras ng negosyo"
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "header": {
+    "title": "Layanan Kami",
+    "subtitle": "Menghubungkan para profesional dengan peluang di seluruh dunia melalui layanan karir komprehensif kami."
+  },
+  "viewSelector": {
+    "grid": "Jaringan",
+    "masonry": "Batu bata",
+    "carousel": "Korsel"
+  },
+  "card": {
+    "viewPage": "Lihat Halaman",
+    "viewDetails": "Lihat Detail"
+  },
+  "carousel": {
+    "previousSlide": "Slide sebelumnya",
+    "nextSlide": "Slide berikutnya",
+    "goToSlide": "Lanjutkan ke slide"
+  },
+  "modal": {
+    "close": "Menutup",
+    "overview": "Ringkasan",
+    "keyFeatures": "Fitur Utama",
+    "technologies": "Teknologi",
+    "visitServicePage": "Kunjungi Halaman Layanan",
+    "stats": {
+      "projects": "Proyek",
+      "satisfaction": "Kepuasan",
+      "support": "Mendukung"
+    }
+  },
+  "services": {
+    "resumeService": {
+      "title": "Layanan Pembuatan Resume",
+      "description": "Mulai dari membuat poin-poin penting hingga pemformatan otomatis, pembuat resume kami akan membantu Anda membuat resume profesional dengan cepat dan mudah.",
+      "longDesc": "Layanan penulisan resume profesional kami membantu para pencari kerja membuat resume yang berdampak, ramah ATS (Applicant Tracking System), yang menyoroti kualifikasi unik mereka dan meningkatkan peluang wawancara. Kami menyesuaikan setiap resume dengan industri dan posisi tertentu.",
+      "features": [
+        "Optimasi ATS",
+        "Format Khusus Industri",
+        "Peningkatan Kata Kunci",
+        "Ulasan Profesional"
+      ],
+      "technologies": [
+        "Templat Resume",
+        "Alat ATS",
+        "Perangkat Lunak Desain",
+        "Strategi Konten"
+      ]
+    },
+    "globalJobPlacement": {
+      "title": "Penempatan Kerja Global",
+      "description": "Mulai dari pencocokan pekerjaan yang dipersonalisasi hingga dukungan visa, kami menghubungkan para profesional dengan perusahaan-perusahaan terbaik di seluruh dunia—dengan mudah dan efisien.",
+      "longDesc": "Layanan penempatan kerja global kami menghubungkan para profesional berbakat dengan peluang karier internasional, menangani segala hal mulai dari pencocokan pekerjaan hingga logistik relokasi dan persiapan budaya.",
+      "features": [
+        "Kemitraan dengan Pemberi Kerja",
+        "Bantuan Visa",
+        "Dukungan Relokasi",
+        "Persiapan Wawancara"
+      ],
+      "technologies": [
+        "Algoritma Pencocokan Pekerjaan",
+        "Basis Data Global",
+        "Pemrosesan Visa",
+        "Alat Relokasi"
+      ]
+    },
+    "interviewCoaching": {
+      "title": "Pelatihan Wawancara",
+      "description": "Mulai dari simulasi wawancara hingga umpan balik yang dipersonalisasi, pelatihan wawancara komprehensif kami membantu para profesional mendapatkan pekerjaan impian mereka dengan percaya diri.",
+      "longDesc": "Pelatihan wawancara kami mempersiapkan kandidat untuk unggul dalam format wawancara apa pun dengan sesi latihan yang disesuaikan, umpan balik terperinci, dan strategi yang dirancang khusus untuk peran dan industri tertentu.",
+      "features": [
+        "Simulasi Wawancara",
+        "Pelatihan Khusus Industri",
+        "Pelatihan Bahasa Tubuh",
+        "Persiapan Pertanyaan"
+      ],
+      "technologies": [
+        "Analisis Video",
+        "Umpan Balik AI",
+        "Simulasi Wawancara",
+        "Pelatihan Pribadi"
+      ]
+    },
+    "careerCounselling": {
+      "title": "Konseling Karier",
+      "description": "Mulai dari penilaian karier hingga rencana pengembangan pribadi, konseling komprehensif kami membantu para profesional menemukan jalan yang tepat dengan penuh percaya diri.",
+      "longDesc": "Layanan konseling karier kami membantu para profesional di semua tingkatan untuk mengidentifikasi kekuatan mereka, mengeksplorasi jalur karier yang sesuai, dan mengembangkan rencana yang dapat ditindaklanjuti untuk mencapai tujuan profesional mereka.",
+      "features": [
+        "Penilaian Karier",
+        "Analisis Kekuatan",
+        "Penetapan Tujuan",
+        "Wawasan Industri"
+      ],
+      "technologies": [
+        "Tes Kepribadian",
+        "Penilaian Keterampilan",
+        "Pemetaan Karier",
+        "Perencanaan Pembangunan"
+      ]
+    },
+    "visaRelocation": {
+      "title": "Visa & Relokasi",
+      "description": "Mulai dari pengurusan visa hingga menetap di rumah baru Anda, layanan relokasi komprehensif kami membantu Anda bertransisi ke negara baru dengan percaya diri.",
+      "longDesc": "Layanan visa dan relokasi kami memberikan dukungan komprehensif melalui seluruh proses imigrasi, mulai dari persiapan dokumen hingga pencarian akomodasi dan menetap di lingkungan baru Anda.",
+      "features": [
+        "Permohonan Visa",
+        "Persiapan Dokumen",
+        "Bantuan Perumahan",
+        "Integrasi Lokal"
+      ],
+      "technologies": [
+        "Basis Data Imigrasi",
+        "Manajemen Dokumen",
+        "Jaringan Perumahan",
+        "Perencanaan Relokasi"
+      ]
+    },
+    "skillDevelopment": {
+      "title": "Pengembangan Keterampilan",
+      "description": "Mulai dari lokakarya untuk pemula hingga sertifikasi ahli, program pengembangan keterampilan kami memberdayakan para profesional untuk menguasai keterampilan yang dibutuhkan untuk peluang di masa depan.",
+      "longDesc": "Program pengembangan keterampilan kami menawarkan pelatihan yang terarah pada keterampilan yang sangat dibutuhkan, dengan jalur pembelajaran yang disesuaikan, proyek praktis, dan persiapan sertifikasi untuk meningkatkan kemajuan karier.",
+      "features": [
+        "Pembelajaran yang Disesuaikan",
+        "Proyek Praktik Langsung",
+        "Persiapan Sertifikasi",
+        "Pendampingan Ahli"
+      ],
+      "technologies": [
+        "Platform E-Learning",
+        "Simulasi Proyek",
+        "Alat Penilaian",
+        "Program Sertifikasi"
+      ]
+    },
+    "remoteWorkOpportunities": {
+      "title": "Peluang Kerja Jarak Jauh",
+      "description": "Mulai dari pencocokan pekerjaan jarak jauh hingga panduan pengaturan kantor rumah, kami membantu para profesional berkembang di tempat kerja virtual dengan solusi yang disesuaikan.",
+      "longDesc": "Layanan kerja jarak jauh kami khusus menghubungkan para profesional dengan posisi kerja jarak jauh berkualitas, memberikan panduan tentang alat kerja virtual, dan membantu membangun lingkungan kantor rumah yang produktif.",
+      "features": [
+        "Pencocokan Pekerjaan Jarak Jauh",
+        "Kolaborasi Virtual",
+        "Pengaturan Kantor Rumah",
+        "Keseimbangan Kehidupan Kerja"
+      ],
+      "technologies": [
+        "Platform Pekerjaan Jarak Jauh",
+        "Alat Virtual",
+        "Perangkat Lunak Produktivitas",
+        "Komunikasi Digital"
+      ]
+    },
+    "talentAcquisition": {
+      "title": "Akuisisi Talenta",
+      "description": "Mulai dari mengidentifikasi kandidat ideal hingga proses orientasi yang lancar, platform akuisisi talenta kami membantu organisasi membangun tim berkinerja tinggi secara efisien.",
+      "longDesc": "Layanan akuisisi talenta kami membantu organisasi mengidentifikasi, menarik, dan mempertahankan talenta terbaik dengan strategi rekrutmen yang disesuaikan, penilaian kandidat, dan proses orientasi yang efisien.",
+      "features": [
+        "Rekrutmen Terarah",
+        "Penyaringan Kandidat",
+        "Penilaian Keterampilan",
+        "Dukungan Orientasi"
+      ],
+      "technologies": [
+        "Platform ATS",
+        "Alat Penilaian",
+        "Manajemen Wawancara",
+        "Sistem Orientasi"
+      ]
+    },
+    "immigration": {
+      "title": "Imigrasi",
+      "description": "Mulai dari permohonan visa hingga izin tinggal tetap, konsultan imigrasi ahli kami akan memandu Anda melalui setiap langkah proses dengan dukungan yang dipersonalisasi.",
+      "longDesc": "Konsultan imigrasi kami memberikan panduan ahli tentang semua jalur imigrasi, menangani dokumentasi yang kompleks, persiapan aplikasi, dan menawarkan dukungan berkelanjutan sepanjang perjalanan imigrasi Anda.",
+      "features": [
+        "Penilaian Visa",
+        "Persiapan Aplikasi",
+        "Dukungan Hukum",
+        "Pelacakan Status"
+      ],
+      "technologies": [
+        "Basis Data Imigrasi",
+        "Verifikasi Dokumen",
+        "Manajemen Aplikasi",
+        "Sumber Daya Hukum"
+      ]
+    },
+    "jobRecruitment": {
+      "title": "Perekrutan Pekerjaan",
+      "description": "Mulai dari pencarian kandidat hingga penempatan akhir, layanan rekrutmen komprehensif kami membantu bisnis menemukan talenta terbaik secara global dengan tepat dan efisien.",
+      "longDesc": "Layanan perekrutan kerja kami berspesialisasi dalam menghubungkan perusahaan dengan kandidat yang berkualitas di berbagai industri, menggunakan proses penyaringan tingkat lanjut dan jaringan talenta global untuk memastikan kecocokan yang sempurna.",
+      "features": [
+        "Pencarian Bakat Global",
+        "Pemeriksaan Lanjutan",
+        "Keahlian Industri",
+        "Penempatan Cepat"
+      ],
+      "technologies": [
+        "Platform Rekrutmen",
+        "Basis Data Kandidat",
+        "Alat Penyaringan",
+        "Algoritma Pencocokan"
+      ]
+    }
+  }
+}

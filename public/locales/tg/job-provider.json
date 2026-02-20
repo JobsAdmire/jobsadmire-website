@@ -1,0 +1,173 @@
+{
+  "header": {
+    "heroImageAlt": "Мутахассисони тиҷоратӣ",
+    "badge": "Роҳи ҳалли №1 барои ҷалби кормандон дар Туркия",
+    "title_prefix": "Кормандони босифатро ба даст оред",
+    "title_suffix": "Барои тиҷорати шумо",
+    "description": "Бо JobsAdmire шарикӣ кунед. Барои кормандони пешакӣ интихобшуда ва омода барои кор баҳо диҳед. Мо ба ҷалби кормандон, раводид ва ҳама ҳуҷҷатҳои ҳуқуқӣ машғулем.",
+    "contact_button": "Тамос"
+  },
+  "form": {
+    "title": "Бақайдгирии шарик",
+    "subtitle": "Барои оғози киро кардани кормандони босифат ширкати худро сабти ном кунед. Дастаи мо дар давоми 24 соат бо шумо тамос хоҳад гирифт.",
+    "company_info": {
+      "title": "Маълумот дар бораи ширкат",
+      "company_name": "Номи ширкат *",
+      "company_name_placeholder": "Номи ширкати худро ворид кунед",
+      "company_name_error": "Номи ширкат ҳатмист",
+      "company_type": "Навъи ширкат *",
+      "company_type_placeholder": "Навъи ширкатро интихоб кунед",
+      "company_type_error": "Навъи ширкат ҳатмист",
+      "types": {
+        "corporation": "Корпоратсия (A.Ş.)",
+        "limited_company": "Ҷамъияти дорои масъулияти маҳдуд (ҶДММ)",
+        "partnership": "Шарикӣ",
+        "sole_proprietorship": "Соҳибкории инфиродӣ",
+        "branch_office": "Филиал",
+        "other": "Дигар"
+      },
+      "industry_type": "Навъи саноат *",
+      "industry_type_placeholder": "Соҳаро интихоб кунед",
+      "industry_type_error": "Навъи саноат ҳатмист",
+      "industries": {
+        "manufacturing": "Завод",
+        "construction": "Кишоварзӣ",
+        "technology": "Сайёҳӣ",
+        "healthcare": "Сохтмон",
+        "other": "Дигар"
+      },
+      "established_year": "Соли таъсисёбӣ",
+      "established_year_placeholder": "2020"
+    },
+    "contact_info": {
+      "title": "Маълумот барои тамос",
+      "contact_person": "Масъули Тамос *",
+      "contact_person_placeholder": "Номи пурра",
+      "contact_person_error": "Шахси тамосӣ лозим аст",
+      "position": "Вазифа/Унвон",
+      "position_placeholder": "Менеҷери захираҳои инсонӣ, директори генералӣ ва ғайра.",
+      "email": "Суроғаи имэйл *",
+      "email_required": "Почтаи электронӣ лозим аст",
+      "email_invalid": "Почтаи электронӣ нодуруст аст",
+      "phone": "Рақами мобилӣ *",
+      "phone_placeholder": "+90 xxx xxx xx xx",
+      "phone_required": "Рақами телефон лозим аст",
+      "company_address": "Суроғаи ширкат",
+      "company_address_placeholder": "Суроғаи пурраи тиҷорат",
+      "city": "Шаҳр *",
+      "city_placeholder": "Истанбул, Анқара ва ғайра",
+      "city_required": "Шаҳр ҳатмист",
+      "province": "Вилоят *",
+      "province_placeholder": "Вилоятро интихоб кунед",
+      "province_required": "Вилоят ҳатмист",
+      "provinces": {
+        "istanbul": "Истанбул",
+        "ankara": "Анқара",
+        "izmir": "Измир",
+        "bursa": "Бурса",
+        "antalya": "Анталия",
+        "adana": "Адана",
+        "konya": "Кония",
+        "gaziantep": "Газиантеп",
+        "kayseri": "Кайсерӣ",
+        "other": "Дигар"
+      },
+      "postal_code": "Рамзи почта",
+      "website": "Вебсайти ширкат",
+      "email_placeholder": "company@example.com",
+      "postal_code_placeholder": "34000",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "legal_info": {
+      "title": "Тафсилоти ҳуқуқӣ ва бақайдгирӣ",
+      "tax_number": "Рақами андоз *",
+      "tax_number_placeholder": "Рақами андозро ворид кунед",
+      "tax_number_error": "Рақами андоз лозим аст",
+      "trade_registry_number": "Рақами бақайдгирии тиҷорат",
+      "trade_registry_number_placeholder": "Рақами бақайдгирии тиҷоратро ворид кунед"
+    },
+    "staffing_requirements": {
+      "title": "Талабот ба кормандон",
+      "specific_job_positions": "Вазифаҳои мушаххаси корӣ",
+      "specific_job_positions_placeholder": "масалан, оператори дастгоҳ, кафшергар, таҳиягари нармафзор ва ғайра.",
+      "salary_range": "Диапазони музди меҳнат (моҳона)",
+      "salary_range_placeholder": "22,000TL-25,000TL",
+      "preferred_nationalities": "Миллатҳои бартарӣдошта",
+      "preferred_nationalities_placeholder": "масалан, Ҳар як, Покистон, Бангладеш, Украина ва ғайра.",
+      "language_requirements": "Талаботи забонӣ",
+      "language_requirements_placeholder": "Талаботи забонро интихоб кунед",
+      "languages": {
+        "none": "Талаботи мушаххасе нест",
+        "basic_turkish": "Асосҳои туркӣ",
+        "intermediate_turkish": "Туркӣ миёна",
+        "fluent_turkish": "Забони туркии равон",
+        "english": "Забони англисӣ ҳатмист",
+        "turkish_english": "Туркӣ + англисӣ"
+      },
+      "work_experience": "Таҷрибаи корӣ зарур аст",
+      "work_experience_placeholder": "Сатҳи таҷрибаро интихоб кунед",
+      "experience_levels": {
+        "entry_level": "Сатҳи ибтидоӣ (0-1 сол)",
+        "junior": "Хурдсол (1-3 сол)",
+        "mid_level": "Сатҳи миёна (3-5 сол)",
+        "senior": "Калонсол (аз 5 сола боло)",
+        "expert": "Мутахассис (аз 10 сол боло)"
+      },
+      "additional_requirements": "Талабот ё Эзоҳҳои иловагӣ",
+      "additional_requirements_placeholder": "Ҳама гуна малакаҳои мушаххас, сертификатсия ё дигар талабот барои вазифаҳо..."
+    },
+    "company_description": {
+      "title": "Дар бораи ширкати шумо",
+      "label": "Тавсифи ширкат",
+      "placeholder": "Дар бораи ширкати худ, фаъолиятҳои тиҷоратии худ, муҳити корӣ, фарҳанги ширкат ва чаро коргарон мехоҳанд ба дастаи шумо ҳамроҳ шаванд, ба мо нақл кунед..."
+    },
+    "legal_agreements": {
+      "title": "Созишномаҳои ҳуқуқӣ",
+      "agree_terms_prefix": "Ман розӣ ҳастам",
+      "terms_link": "Шарту Шароит",
+      "agree_terms_suffix": "ва ӯҳдадориҳои қонуниро барои киро кардани коргарон тавассути JobsAdmire дарк кунед. *",
+      "terms_error": "Шумо бояд бо шартҳо ва қоидаҳо розӣ шавед",
+      "agree_privacy_prefix": "Ман эътироф мекунам, ки бо он хондаам ва розӣ ҳастам",
+      "privacy_link": "Сиёсати Корбурди Маълумоти Шахсӣ",
+      "agree_privacy_suffix": "ва розигӣ ба коркарди маълумоти ширкат барои хидматрасонии ҷалби кормандон. *",
+      "privacy_error": "Шумо бояд бо сиёсати махфият розӣ шавед"
+    },
+    "submit": {
+      "button": "Ариза пешниҳод кунед",
+      "submitting": "Фиристодан...",
+      "success_message": "Бақайдгирӣ бомуваффақият пешниҳод карда шуд! Дастаи мо дар давоми 24 соат бо шумо тамос хоҳад гирифт, то ниёзҳои шуморо дар бораи кироя баррасӣ кунад.",
+      "footer_message": "Гурӯҳи мо дархости шуморо баррасӣ мекунад ва дар давоми 24 соат бо шумо тамос мегирад, то ниёзҳои шуморо ба кормандон муҳокима кунад."
+    }
+  },
+  "industries_served": {
+    "title": "Соҳаҳое, ки мо хизмат мерасонем",
+    "subtitle": "Мо дар ҳама соҳаҳои муҳими Туркия коргарони баландихтисосро пешниҳод менамоем",
+    "items": {
+      "factory": {
+        "name": "Завод",
+        "desc": "Истеҳсолот ва истеҳсолот"
+      },
+      "agriculture": {
+        "name": "Кишоварзӣ",
+        "desc": "Кишоварзӣ ва зироаткорӣ"
+      },
+      "tourism": {
+        "name": "Сайёҳӣ",
+        "desc": "Меҳмоннавозӣ ва хизматрасонӣ"
+      },
+      "construction": {
+        "name": "Сохтмон",
+        "desc": "Бино ва инфрасохтор"
+      }
+    }
+  },
+  "support": {
+    "title": "Ба кӯмак ниёз доред?",
+    "description": "Дастаи содиқи мо омода аст ба шумо дар ёфтани кормандони мувофиқ барои тиҷорати шумо кумак кунад. Мо дастгирии пурраро аз ҷалби кормандон то ҷойгиркунии кормандон пешниҳод менамоем.",
+    "support_24_7": "Дастгирии шабонарӯзӣ",
+    "business_hours": "Соатҳои корӣ: Душанбе - Ҷумъа, аз соати 9:00 то 18:00 (вақти Туркия)",
+    "response_time": "Мо дар давоми 2 соат дар вақти корӣ посух медиҳем",
+    "email": "info@jobsadmire.com",
+    "phone": "+90 501 124 03 40"
+  }
+}

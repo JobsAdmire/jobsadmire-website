@@ -1,0 +1,161 @@
+{
+  "loading": "در حال بارگذاری جزئیات شغل...",
+  "notifications": {
+    "resume_uploaded": "رزومه با موفقیت آپلود شد!",
+    "application_submitted": {
+      "title": "درخواست ارسال شد!",
+      "message": "از علاقه‌مندی شما به موقعیت {{title}} سپاسگزاریم. تیم ما درخواست شما را بررسی کرده و به‌زودی با شما تماس خواهد گرفت.",
+      "close": "بستن"
+    }
+  },
+  "application_modal": {
+    "title": "درخواست برای {{title}}",
+    "subtitle": "درخواست خود را در زیر تکمیل کنید",
+    "progress": "پیشرفت درخواست",
+    "form": {
+      "full_name": "نام و نام خانوادگی *",
+      "full_name_placeholder": "نام خود را وارد کنید",
+      "email": "آدرس ایمیل *",
+      "email_placeholder": "name@example.com",
+      "phone": "شماره تلفن *",
+      "phone_placeholder": "+98 912 123 4567",
+      "location": "موقعیت فعلی *",
+      "location_placeholder": "شهر، کشور",
+      "linkedin": "پروفایل لینکدین",
+      "linkedin_placeholder": "https://linkedin.com/in/username",
+      "portfolio": "آدرس پورتفولیو",
+      "portfolio_placeholder": "https://yourportfolio.com",
+      "cover_message": "پیام پوششی",
+      "cover_message_placeholder": "چرا به این موقعیت علاقه‌مند هستید؟",
+      "upload_resume": "آپلود رزومه *",
+      "click_to_upload": "برای آپلود رزومه کلیک کنید",
+      "file_types": "(PDF، DOC یا DOCX)",
+      "cancel": "انصراف",
+      "submit": "ارسال درخواست",
+      "application_closed": "درخواست‌ها بسته است",
+      "terms_agreement": "با ارسال درخواست، با <1>شرایط و ضوابط</1> ما موافقت می‌کنید"
+    }
+  },
+  "share_modal": {
+    "title": "اشتراک‌گذاری این شغل",
+    "subtitle": "این فرصت را با شبکه خود به اشتراک بگذارید",
+    "facebook": "فیسبوک",
+    "twitter": "توییتر",
+    "linkedin": "لینکدین",
+    "whatsapp": "واتساپ",
+    "copy_link": "کپی",
+    "copied": "کپی شد!"
+  },
+  "header": {
+    "status_open": "باز",
+    "status_closed": "بسته",
+    "posted": "تاریخ انتشار",
+    "save_job": "ذخیره شغل",
+    "saved": "ذخیره شد",
+    "share": "اشتراک‌گذاری",
+    "apply_now": "همین حالا اقدام کنید",
+    "application_closed": "درخواست‌ها بسته است"
+  },
+  "quick_info": {
+    "currency": "ارز",
+    "salary": "حقوق",
+    "type": "نوع"
+  },
+  "tabs": {
+    "job_description": "توضیحات شغل",
+    "requirements": "الزامات",
+    "details": "جزئیات"
+  },
+  "tab_content": {
+    "description": {
+      "overview": "مرور کلی شغل",
+      "employment_type": "نوع استخدام",
+      "work_location": "محل کار"
+    },
+    "requirements": {
+      "title": "الزامات و صلاحیت‌ها",
+      "what_we_looking_for": "دنبال چه می‌گردیم",
+      "professional_experience": "تجربه حرفه‌ای",
+      "communication_skills": "مهارت‌های ارتباطی",
+      "team_collaboration": "همکاری تیمی",
+      "growth_mindset": "ذهنیت رشد"
+    },
+    "details": {
+      "job_information": "اطلاعات شغل",
+      "job_type": "نوع شغل:",
+      "location": "مکان:",
+      "posted": "منتشر شده:",
+      "status": "وضعیت:",
+      "quota_full": "ظرفیت تکمیل",
+      "open_for_applications": "باز برای درخواست‌ها",
+      "compensation": "جبران خدمات",
+      "currency": "ارز:",
+      "salary": "حقوق:",
+      "why_join": "چرا به {{title}} بپیوندیم؟",
+      "career_growth": "رشد شغلی",
+      "career_growth_desc": "فرصت‌های پیشرفت",
+      "great_location": "موقعیت عالی",
+      "great_location_desc": "کار در {{location}}",
+      "competitive_package": "پکیج رقابتی",
+      "competitive_package_desc": "حقوق و مزایای جذاب",
+      "professional_growth": "رشد حرفه‌ای",
+      "professional_growth_desc": "فرصت‌های یادگیری مستمر"
+    }
+  },
+  "cta": {
+    "title": "آماده پیوستن به تیم ما هستید؟",
+    "subtitle": "گام بعدی را در مسیر شغلی خود با {{title}} بردارید. ما به دنبال افراد پرشوری هستیم که می‌خواهند تأثیرگذار باشند.",
+    "apply_now": "همین حالا اقدام کنید",
+    "application_closed": "درخواست‌ها بسته است"
+  },
+  "contact": {
+    "title": "به کمک برای درخواست خود نیاز دارید؟",
+    "subtitle": "تیم منابع انسانی ما برای کمک به شما حاضر است",
+    "live_chat": {
+      "title": "پشتیبانی چت زنده",
+      "subtitle": "میانگین زمان پاسخ: ۵ دقیقه"
+    },
+    "email": {
+      "title": "ایمیل به تیم منابع انسانی",
+      "subtitle": "info@jobsadmire.com"
+    }
+  },
+  "fallback": {
+    "title_not_available": "عنوان شغل در دسترس نیست",
+    "location_not_available": "مکان در دسترس نیست",
+    "description_not_available": "<p>توضیحات شغل در دسترس نیست.</p>",
+    "requirement_not_available": "<p>الزامات در دسترس نیست.</p>",
+    "date_not_available": "تاریخ در دسترس نیست",
+    "error_loading": "خطا در بارگذاری شغل",
+    "unable_to_load_desc": "<p>امکان بارگذاری توضیحات شغل وجود ندارد. لطفاً بعداً دوباره تلاش کنید.</p>",
+    "unable_to_load_req": "<p>امکان بارگذاری الزامات وجود ندارد. لطفاً بعداً دوباره تلاش کنید.</p>"
+  },
+  "hero": {
+    "badge": "FEATURED POSITION",
+    "titleLine1": "Senior Software",
+    "titleLine2": "Engineer",
+    "companyName": "TechVision Inc",
+    "subtitle": "Join our innovative team to build cutting-edge solutions that transform industries. We're looking for talented engineers who are passionate about creating impactful technology.",
+    "ctaPrimary": "Request Consultation",
+    "ctaShare": "Share Job",
+    "salaryRange": "Salary Range",
+    "location": "Location",
+    "experience": "Experience",
+    "tabOverview": "Overview",
+    "tabRequirements": "Requirements",
+    "tabBenefits": "Benefits",
+    "industry": "Software Development",
+    "locationValue": "Remote (US Based)",
+    "locationStatValue": "Remote",
+    "salaryLabel": "Salary",
+    "teamSizeLabel": "Team Size",
+    "teamSizeValue": "15-20 Engineers",
+    "employmentLabel": "Employment",
+    "employmentValue": "Full-time",
+    "postedLabel": "Posted",
+    "postedValue": "March 15, 2025",
+    "requiredSkills": "Required Skills",
+    "readyToJoin": "Ready to join our team?",
+    "applicationTime": "5 minute application"
+  }
+}

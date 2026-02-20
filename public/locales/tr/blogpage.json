@@ -1,0 +1,83 @@
+{
+  "categories": {
+    "all": "Tümü",
+    "careerTips": "Kariyer İpuçları",
+    "immigrationGuide": "Göçmenlik Rehberi",
+    "jobSearch": "İş Arama",
+    "workVisa": "Çalışma Vizesi",
+    "successStories": "Başarı Hikayeleri"
+  },
+  "trendingTags": {
+    "remoteJobs": "Uzaktan İşler",
+    "workVisa": "Çalışma Vizesi",
+    "immigration": "Göçmenlik",
+    "careerGrowth": "Kariyer Gelişimi",
+    "jobInterview": "İş Görüşmesi",
+    "resumeTips": "Özgeçmiş İpuçları"
+  },
+  "loading": {
+    "title": "Kariyer İçgörüleri Yükleniyor",
+    "description": "En son iş piyasası trendlerini ve göçmenlik rehberlerini hazırlamak..."
+  },
+  "error": {
+    "title": "İçerik Yüklenemiyor",
+    "description": "En son kariyer içgörülerini yüklerken sorun yaşıyoruz. Lütfen tekrar deneyin.",
+    "retryButton": "Yeniden Yükleme"
+  },
+  "header": {
+    "badge": "Küresel Kariyer Fırsatlarına Açılan Kapınız",
+    "title": {
+      "part1": "Navigasyonunuzu",
+      "part2": "Kariyer Yolculuğu"
+    },
+    "subtitle": "Sektör profesyonellerinden iş arama, çalışma vizeleri, göçmenlik süreçleri ve kariyer ilerleme stratejileri hakkında uzman görüşlerini keşfedin.",
+    "searchPlaceholder": "İş ipuçları, vize rehberleri, kariyer tavsiyeleri için arama yapın...",
+    "searchButton": "Arama",
+    "popularTopics": "Popüler Konular:"
+  },
+  "featuredArticle": {
+    "title": {
+      "part1": "Öne Çıkanlar",
+      "part2": "Makale"
+    },
+    "defaultTag": "Öne Çıkanlar",
+    "minRead": "dakika okuma",
+    "anonymous": "Anonim",
+    "careerExpert": "Kariyer Uzmanı",
+    "readFullArticle": "Makalenin Tamamını Oku"
+  },
+  "latestInsights": {
+    "title": {
+      "part1": "En son",
+      "part2": "İçgörüler"
+    },
+    "defaultTag": "Makale",
+    "min": "min",
+    "anonymous": "Anonim",
+    "readMore": "Daha fazla bilgi edinin"
+  },
+  "emptyState": {
+    "title": "Makale Bulunamadı",
+    "description": "\"{searchTerm}\" ile eşleşen herhangi bir makale bulamadık. Farklı anahtar kelimelerle aramayı deneyin veya kategorilerimizi keşfedin.",
+    "clearSearch": "Temiz Arama"
+  },
+  "loadMore": {
+    "button": "Daha Fazla Makale Yükle"
+  },
+  "newsletter": {
+    "title": "Kariyerinizde Bir Adım Önde Olun",
+    "description": "İş fırsatları, vize güncellemeleri ve kariyer gelişim stratejileri hakkında haftalık bilgiler edinin.",
+    "emailLabel": "E-posta Adresi",
+    "emailPlaceholder": "E-posta adresinizi girin",
+    "subscribeButton": "Şimdi Abone Olun",
+    "privacyNote": "Gizliliğiniz korunmaktadır. İstediğiniz zaman aboneliğinizi iptal edin.",
+    "features": {
+      "careerTips": "Haftalık Kariyer İpuçları",
+      "visaUpdates": "Vize Güncellemeleri",
+      "jobAlerts": "İş Uyarıları"
+    }
+  },
+  "alerts": {
+    "subscriptionSuccess": "Abone olduğunuz için teşekkür ederiz!"
+  }
+}

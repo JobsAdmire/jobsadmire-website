@@ -1,0 +1,107 @@
+{
+  "hero": {
+    "title": "شغل رویایی خود را پیدا کنید",
+    "subtitle": "فرصت‌هایی را کشف کنید که با اشتیاق، مهارت‌ها و اهداف شغلی شما مطابقت دارند",
+    "search": {
+      "jobPlaceholder": "عنوان شغلی، مهارت‌ها یا کلمات کلیدی...",
+      "locationPlaceholder": "شهر، کشور یا دورکاری...",
+      "buttonText": "جستجوی مشاغل"
+    },
+    "popular": {
+      "label": "محبوب:",
+      "tags": ["دورکاری", "فناوری", "بازاریابی", "طراحی", "مالی"]
+    }
+  },
+  "stats": {
+    "jobs": {
+      "count": "10,580+",
+      "label": "آگهی‌های شغلی"
+    },
+    "candidates": {
+      "count": "8.8M+",
+      "label": "نامزدها"
+    },
+    "countries": {
+      "count": "120+",
+      "label": "کشورها"
+    },
+    "successRate": {
+      "count": "95%",
+      "label": "نرخ موفقیت"
+    }
+  },
+  "categories": {
+    "title": "فرصت‌ها را کاوش کنید",
+    "tabs": [
+      { "key": "all", "label": "همه مشاغل" },
+      { "key": "featured", "label": "ویژه" },
+      { "key": "recent", "label": "جدیدترین" },
+      { "key": "remote", "label": "دورکاری" },
+      { "key": "tech", "label": "فناوری" },
+      { "key": "marketing", "label": "بازاریابی" }
+    ]
+  },
+  "filters": {
+    "title": "فیلترها",
+    "clearAll": "پاک کردن همه",
+    "jobType": {
+      "title": "نوع شغل",
+      "options": [
+        { "id": "fullTime", "value": "full_time", "label": "تمام وقت" },
+        { "id": "partTime", "value": "part_time", "label": "پاره وقت" },
+        { "id": "contract", "value": "contract", "label": "قراردادی" },
+        { "id": "remote", "value": "remote", "label": "دورکاری" }
+      ]
+    },
+    "experience": {
+      "title": "سطح تجربه",
+      "options": [
+        { "id": "entry", "label": "سطح ورودی" },
+        { "id": "mid", "label": "سطح متوسط" },
+        { "id": "senior", "label": "سطح ارشد" },
+        { "id": "executive", "label": "مدیر اجرایی" }
+      ]
+    },
+    "salary": {
+      "title": "محدوده حقوق",
+      "min": "0 دلار",
+      "max": "100 هزار دلار+"
+    },
+    "datePosted": {
+      "title": "تاریخ ارسال",
+      "options": [
+        { "id": "any", "label": "هر زمان" },
+        { "id": "day", "label": "24 ساعت گذشته" },
+        { "id": "week", "label": "هفته گذشته" },
+        { "id": "month", "label": "ماه گذشته" }
+      ]
+    },
+    "applyButton": "اعمال فیلترها"
+  },
+  "jobListings": {
+    "title": "مشاغل موجود",
+    "showing": "نمایش",
+    "opportunities": "فرصت‌ها",
+    "sortBy": {
+      "label": "مرتب‌سازی بر اساس:",
+      "options": [
+        "مرتبط‌ترین",
+        "جدیدترین",
+        "بالاترین حقوق",
+        "محبوب‌ترین"
+      ]
+    }
+  },
+  "jobCard": {
+    "featured": "ویژه",
+    "new": "جدید",
+    "requirements": "الزامات:",
+    "benefits": "مزایا:",
+    "viewDetails": "مشاهده جزئیات",
+    "hideDetails": "پنهان کردن جزئیات",
+    "applyNow": "اکنون درخواست دهید"
+  },
+  "cta": {
+    "postJob": "ارسال شغل"
+  }
+}

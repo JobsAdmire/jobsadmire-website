@@ -1,0 +1,2067 @@
+{
+  "heroSection": {
+    "badge": "Mga Eksklusibong Paglalakbay",
+    "title": "Tuklasin ang Iyong Susunod na Pakikipagsapalaran",
+    "description": "Damhin ang mga nakamamanghang destinasyon at lumikha ng mga di-malilimutang alaala gamit ang aming mga premium na travel package na iniayon sa iyong mga pangarap.",
+    "currentlyViewing": "Kasalukuyang Pinapanood",
+    "featuredAlt": "Itinatampok na destinasyon",
+    "destinationCounter": "Destinasyon {kasalukuyan}/{kabuuan}",
+    "controlsAria": "Pumunta sa destinasyon {index}",
+    "buttons": {
+      "explore": "Mag-explore Ngayon",
+      "viewAll": "Tingnan ang Lahat ng Destinasyon"
+    },
+    "destinations": [
+      {
+        "img": "/mga imahe/Sydney.png",
+        "name": "Sydney",
+        "country": "Australya"
+      },
+      {
+        "img": "/mga imahe/Melbourne.png",
+        "name": "Melbourne",
+        "country": "Australya"
+      },
+      {
+        "img": "/mga imahe/Brisbane.png",
+        "name": "Brisbane",
+        "country": "Australya"
+      },
+      {
+        "img": "/mga imahe/Perth.png",
+        "name": "Perth",
+        "country": "Australya"
+      },
+      {
+        "img": "/mga imahe/Adelaide.png",
+        "name": "Adelaide",
+        "country": "Australya"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableOfContents": {
+    "header": {
+      "title": "Talaan ng mga Nilalaman",
+      "subtitle": "Mag-navigate sa mga seksyon"
+    },
+    "status": {
+      "currentlyReading": "Kasalukuyang nagbabasa"
+    },
+    "footer": {
+      "sectionsCount": "{count} na mga seksyon na maaaring tuklasin"
+    },
+    "accessibility": {
+      "toggleMenu": "I-toggle ang menu ng nabigasyon"
+    },
+    "sections": [
+      {
+        "title": "Mga Katotohanan Tungkol sa Turkey",
+        "id": 1
+      },
+      {
+        "title": "Mga Opsyon sa Visa para sa Paglipat sa Turkey",
+        "id": 2
+      },
+      {
+        "title": "Mga Kinakailangan para sa Paglipat sa Turkey",
+        "id": 3
+      },
+      {
+        "title": "Pagkuha ng Trabaho sa Turkey bilang isang Dayuhan",
+        "id": 4
+      },
+      {
+        "title": "Paglipat patungong Turkey mula sa US",
+        "id": 5
+      },
+      {
+        "title": "Paglipat patungong Turkey mula sa UK",
+        "id": 6
+      },
+      {
+        "title": "Magkano ang magagastos sa paglipat sa Turkey?",
+        "id": 7
+      },
+      {
+        "title": "Paglipat kasama ang mga alagang hayop sa Turkey",
+        "id": 8
+      }
+    ]
+  },
+  "australiaFacts": {
+    "description": "Galugarin ang mga kamangha-manghang katangian ng Australia, isang natatanging kontinente-bansang kilala sa kahanga-hangang tanawin, wildlife, at pagkakaiba-iba ng kultura.",
+    "navigation": {
+      "title": "Galugarin ang mga Katotohanan",
+      "previous": "Nakaraang Katotohanan",
+      "next": "Susunod na Katotohanan"
+    },
+    "allFacts": {
+      "title": "Lahat ng Katotohanan Tungkol sa Australia"
+    },
+    "accessibility": {
+      "factButton": "Tingnan ang mga katotohanan tungkol sa {title}",
+      "previousFact": "Pumunta sa nakaraang katotohanan",
+      "nextFact": "Pumunta sa susunod na katotohanan"
+    },
+    "facts": [
+      {
+        "title": "Kontinente ng Isla",
+        "description": "Ang Australia ay parehong isang bansa at isang kontinente — ang pang-anim na pinakamalaking bansa sa mundo ayon sa lawak ng lupain.",
+        "emoji": "🌏",
+        "id": 1
+      },
+      {
+        "title": "Mga Natatanging Hayop",
+        "description": "Ito ay tahanan ng mga hayop na hindi matatagpuan saanman, tulad ng mga kangaroo, koala, at platypus.",
+        "emoji": "🦘",
+        "id": 2
+      },
+      {
+        "title": "Dakilang Barrier Reef",
+        "description": "Matatagpuan sa baybayin ng Queensland, ito ang pinakamalaking sistema ng coral reef sa mundo at makikita mula sa kalawakan.",
+        "emoji": "🌊",
+        "id": 3
+      },
+      {
+        "title": "Populasyong Multikultural",
+        "description": "Mahigit 30% ng mga Australyano ay ipinanganak sa ibang bansa, kaya isa ito sa mga bansang may pinakamaraming pagkakaiba-iba sa buong mundo.",
+        "emoji": "🌍",
+        "id": 4
+      },
+      {
+        "title": "Walang Opisyal na Wika",
+        "description": "Bagama't Ingles ang de facto na wika, ang Australia ay walang opisyal na wika ayon sa batas.",
+        "emoji": "🗣️",
+        "id": 5
+      }
+    ],
+    "statistics": {
+      "title": "Australia ayon sa mga Numero",
+      "items": [
+        {
+          "icon": "📏",
+          "label": "Kabuuang Lawak",
+          "value": "7.7 milyong km²",
+          "description": "Ika-6 na pinakamalaking bansa sa mundo"
+        },
+        {
+          "icon": "👥",
+          "label": "Populasyon",
+          "value": "25.7 milyon",
+          "description": "Simula noong 2023"
+        },
+        {
+          "icon": "🏙️",
+          "label": "Kapital",
+          "value": "Canberra",
+          "description": "Hindi Sydney o Melbourne!"
+        },
+        {
+          "icon": "💰",
+          "label": "Pera",
+          "value": "Dolyar ng Australia",
+          "description": "AUD"
+        },
+        {
+          "icon": "🕐",
+          "label": "Mga Time Zone",
+          "value": "3 pangunahing sona",
+          "description": "AWST, ACST, AEST"
+        },
+        {
+          "icon": "🗺️",
+          "label": "Mga Estado at Teritoryo",
+          "value": "8 kabuuan",
+          "description": "6 na estado + 2 teritoryo"
+        }
+      ]
+    },
+    "didYouKnow": {
+      "title": "Alam Mo Ba?",
+      "items": [
+        "Ang Australia ay may mas maraming uri ng makamandag na ahas kaysa sa ibang bansa",
+        "Ang Great Barrier Reef ay tahanan ng mahigit 1,500 uri ng isda",
+        "Ang Melbourne ay ang kabisera ng Australia mula 1901-1927, bago ang Canberra",
+        "Ang Australia ang tanging bansa na isa ring kontinente",
+        "Ang bansa ay may mahigit 10,000 na dalampasigan - maaari mong bisitahin ang isa araw-araw sa loob ng 27 taon!",
+        "Nagluluwas ang Australia ng mga kamelyo sa Saudi Arabia (mayroong mahigit 1 milyong ligaw na kamelyo sa Australia)"
+      ]
+    }
+  },
+  "movingCosts": {
+    "description": "Ang kabuuang gastos sa paglipat sa Australia ay nag-iiba batay sa iyong sitwasyon, ngunit narito ang pangkalahatang pagsusuri ng mga gastusin na iyong makakaharap kapag lumipat ka sa Australia.",
+    "costSections": [
+      {
+        "id": "mga paglipad",
+        "icon": "✈️",
+        "title": "Mga Paglipad",
+        "amount": "$800–$2,000 USD",
+        "details": "One-way, economy class, depende sa pinagmulan at panahon",
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "mga bayarin sa visa",
+        "icon": "🛂",
+        "title": "Mga Bayarin sa Visa",
+        "amount": "$710–$8,850 AUD",
+        "details": "Malaki ang pagkakaiba-iba depende sa uri ng visa",
+        "color": "bg-sky-600",
+        "subItems": {
+          "0": {
+            "title": "Visa na may kasanayan",
+            "amount": "$4,000–$4,500 AUD"
+          },
+          "1": {
+            "title": "Visa ng kasosyo",
+            "amount": "$8,850 AUD"
+          },
+          "2": {
+            "title": "Visa ng estudyante",
+            "amount": "$710 AUD"
+          },
+          "3": {
+            "title": "Visa para sa Paggawa at Bakasyon",
+            "amount": "$495 AUD"
+          }
+        }
+      },
+      {
+        "id": "pagpapadala",
+        "icon": "📦",
+        "title": "Mga Gamit sa Pagpapadala",
+        "amount": "$2,000–$7,000 USD",
+        "details": "Depende sa laki at distansya ng lalagyan",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "pabahay",
+        "icon": "🏠",
+        "title": "Paunang Pabahay",
+        "amount": "$1,500–$3,000 AUD",
+        "details": "Deposito sa upa + 1 buwang upa para sa isang maliit na apartment",
+        "color": "bg-sky-500",
+        "subItems": {
+          "0": {
+            "title": "Sydney/Melbourne (buwanan)",
+            "amount": "$1,800–$2,500 AUD"
+          },
+          "1": {
+            "title": "Brisbane/Perth (buwanan)",
+            "amount": "$1,500–$2,000 AUD"
+          },
+          "2": {
+            "title": "Mga rehiyonal na lugar (buwan-buwan)",
+            "amount": "$1,000–$1,500 AUD"
+          }
+        }
+      },
+      {
+        "id": "iba pang mga gastos",
+        "icon": "🧾",
+        "title": "Iba pang mga Gastos",
+        "amount": "$500–$1,500 USD",
+        "details": "Mga pagsusuri sa kalusugan, insurance, pagsasalin ng dokumento, atbp.",
+        "color": "bg-sky-600",
+        "subItems": {
+          "0": {
+            "title": "Seguro sa kalusugan",
+            "amount": "$100–$200 AUD/buwan"
+          },
+          "1": {
+            "title": "Pagsasalin ng dokumento",
+            "amount": "$50–$200 AUD"
+          },
+          "2": {
+            "title": "Pag-setup ng transportasyon",
+            "amount": "$200–$500 AUD"
+          },
+          "3": {
+            "title": "Mga paunang grocery at suplay",
+            "amount": "$200–$400 AUD"
+          }
+        }
+      }
+    ],
+    "totalCost": {
+      "title": "Tinatayang Kabuuan (Isang Tao)",
+      "approaches": [
+        {
+          "title": "Pamamaraan sa Badyet",
+          "amount": "$8,000–$12,000 USD",
+          "description": "Minimal na pagpapadala, mas murang city, working holiday o student visa"
+        },
+        {
+          "title": "Komprehensibong Paglipat",
+          "amount": "$15,000–$20,000 USD",
+          "description": "Buong pagpapadala, pangunahing lungsod, visa ng mga bihasang empleyado o partner"
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Mga Tip sa Pagtitipid ng Pera",
+      "tips": [
+        {
+          "title": "Isaalang-alang ang mga Rehiyonal na Lugar",
+          "description": "Ang paninirahan sa labas ng mga pangunahing lungsod tulad ng Sydney at Melbourne ay maaaring makatipid ng 30-40% sa mga gastos sa pabahay."
+        },
+        {
+          "title": "Ibenta Bago ang Pagpapadala",
+          "description": "Mataas ang gastos sa pagpapadala—isaalang-alang ang pagbebenta ng malalaking muwebles at pagbili sa Australia."
+        },
+        {
+          "title": "Mag-book ng mga Flight nang Madiskarteng",
+          "description": "Lumipad tuwing shoulder season (Mayo o Oktubre) para makatipid ng hanggang 30% sa pamasahe sa eroplano."
+        },
+        {
+          "title": "Paggawa ng Bakasyon Una",
+          "description": "Kung kwalipikado, magsimula sa Working Holiday visa bago mag-apply para sa mas mahal na visa."
+        }
+      ]
+    },
+    "additionalConsiderations": {
+      "title": "Mga Karagdagang Pagsasaalang-alang",
+      "items": [
+        {
+          "label": "Mga pagbabago-bago ng pera",
+          "description": "Ang mga halaga ng palitan sa pagitan ng iyong sariling pera, ang AUD, at USD, ay maaaring makaapekto nang malaki sa iyong kabuuang gastos."
+        },
+        {
+          "label": "Laki ng pamilya",
+          "description": "Magdagdag ng humigit-kumulang 30-50% pa sa kabuuang pagtatantya para sa bawat karagdagang miyembro ng pamilya."
+        },
+        {
+          "label": "Mga Alagang Hayop",
+          "description": "Ang pagdadala ng mga alagang hayop sa Australia ay maaaring magkahalaga ng $2,000-$4,000 bawat hayop dahil sa mahigpit na mga kinakailangan sa kuwarentenas."
+        },
+        {
+          "label": "Panahon ng paghahanap ng trabaho",
+          "description": "Magbadyet para sa 1-3 buwang gastusin habang naghahanap ng trabaho kung wala kang siguradong trabaho."
+        }
+      ]
+    },
+    "calculator": {
+      "title": "Mga Salik sa Pagpaplano ng Gastos",
+      "description": "Isaalang-alang ang mga pangunahing salik na ito kapag pinaplano ang iyong badyet sa paglipat:",
+      "factors": [
+        {
+          "icon": "📍",
+          "title": "Lungsod ng Destinasyon",
+          "description": "Ang Sydney at Melbourne ay 40-50% na mas mahal kaysa sa mga rehiyonal na lugar",
+          "impact": "Mataas na epekto sa mga gastos"
+        },
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "title": "Laki ng Pamilya",
+          "description": "Ang bawat karagdagang tao ay nagdaragdag ng 30-50% sa kabuuang gastos",
+          "impact": "Pangunahing salik sa gastos"
+        },
+        {
+          "icon": "⏰",
+          "title": "Takdang Panahon",
+          "description": "Ang mga minamadaling paglipat ay nagkakahalaga ng 20-30% na mas mahal kaysa sa mga planong paglipat",
+          "impact": "Katamtamang epekto"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Timeline ng Gastos sa Paglipat",
+      "phases": [
+        {
+          "timeframe": "12-18 buwan bago",
+          "title": "Paunang Pagpaplano at Aplikasyon ng Visa",
+          "description": "Pananaliksik, aplikasyon sa visa, pagtatasa ng kasanayan",
+          "estimatedCost": "$2,000-$5,000 AUD"
+        },
+        {
+          "timeframe": "6-12 buwan bago",
+          "title": "Dokumentasyon at Paghahanda",
+          "description": "Mga pagsusuri sa kalusugan, mga clearance ng pulisya, mga pagsasalin ng dokumento",
+          "estimatedCost": "$500-$1,500 AUD"
+        },
+        {
+          "timeframe": "3-6 na buwan bago",
+          "title": "Logistika at Pag-book",
+          "description": "Pag-book ng flight, pagsasaayos ng pagpapadala, pansamantalang akomodasyon",
+          "estimatedCost": "$3,000-$8,000 USD"
+        },
+        {
+          "timeframe": "1-3 buwan bago",
+          "title": "Mga Pangwakas na Paghahanda",
+          "description": "Seguro, mga huling bayad, mga kaayusan sa huling minuto",
+          "estimatedCost": "$1,000-$3,000 AUD"
+        },
+        {
+          "timeframe": "Pagdating",
+          "title": "Mga Gastos sa Pagbabayad",
+          "description": "Deposito sa pabahay, mga unang pagbili, pag-aayos ng transportasyon",
+          "estimatedCost": "$2,000-$5,000 AUD"
+        }
+      ]
+    },
+    "conclusion": "Bagama't ang paglipat sa Australia ay kumakatawan sa isang malaking pamumuhunan, maraming mga expat ang nasusumpungan ang mataas na kalidad ng buhay, malakas na ekonomiya, at magandang kapaligiran na sulit sa gastos. Ang wastong pagpaplano at pagbabadyet ay makakatulong upang matiyak ang isang maayos na paglipat sa iyong bagong buhay sa Australia."
+  },
+  "jobGuide": {
+    "subtitle": "Isang Kumpletong Gabay",
+    "description": "Maraming oportunidad ang Australia para sa mga bihasang dayuhang manggagawa, ngunit ang pagkuha ng trabaho ay nangangailangan ng paghahanda at pagtugon sa mga kinakailangan ng visa at employer.",
+    "navigation": {
+      "title": "Mga Nilalaman ng Gabay"
+    },
+    "accessibility": {
+      "sectionButton": "Tingnan ang seksyon tungkol sa {title}"
+    },
+    "sections": [
+      {
+        "id": "karapatang magtrabaho",
+        "icon": "✅",
+        "title": "1. Karapatan sa Paggawa",
+        "content": {
+          "description": "Kailangan mo ng balidong work visa. Mga karaniwang opsyon:",
+          "visaOptions": {
+            "0": "<strong>Visa para sa Pansamantalang Kakulangan sa Kasanayan (TSS) (subclass 482)</strong>",
+            "1": "<strong>Skilled Independent Visa (subclass 189)</strong>",
+            "2": "<strong>Working Holiday Visa (subclass 417/462)</strong> – para sa mga kabataang nasa hustong gulang (18–30/35 taong gulang)"
+          },
+          "conclusion": "Ang bawat visa ay may iba't ibang mga kinakailangan, tagal, at kundisyon. Siguraduhing saliksikin ang pinakaangkop sa iyong sitwasyon."
+        }
+      },
+      {
+        "id": "mga kwalipikasyon sa kasanayan",
+        "icon": "🧠",
+        "title": "2. Mga Kasanayan at Kwalipikasyon",
+        "content": {
+          "requirements": {
+            "0": "Ang iyong propesyon ay dapat nasa *Skilled Occupation List* (SOL) ng Australia.",
+            "1": "Ipa-kilala ang iyong mga kwalipikasyon ng isang awtoridad sa Australia",
+            "2": "Maaaring kailanganin ang kahusayan sa wikang Ingles (IELTS, PTE, atbp.)"
+          },
+          "popularFields": {
+            "title": "Mga Sikat na Larangan para sa mga Dayuhang Manggagawa:",
+            "fields": {
+              "0": {
+                "title": "Pangangalagang pangkalusugan",
+                "description": "Mga doktor, nars, at mga manggagawa sa pangangalaga sa matatanda"
+              },
+              "1": {
+                "title": "IT at Teknolohiya",
+                "description": "Mga developer ng software, mga eksperto sa cybersecurity"
+              },
+              "2": {
+                "title": "Inhinyeriya",
+                "description": "Mga inhinyero sibil, mekanikal, at elektrikal"
+              },
+              "3": {
+                "title": "Mga Bihasang Trabaho",
+                "description": "Mga elektrisyan, tubero, karpintero"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "paghahanap ng trabaho",
+        "icon": "💻",
+        "title": "3. Mga Tip sa Paghahanap ng Trabaho",
+        "content": {
+          "description": "Ang paghahanap ng trabaho sa Australia ay nangangailangan ng isang estratehikong pamamaraan:",
+          "jobPortals": {
+            "title": "Mga Nangungunang Portal ng Trabaho:",
+            "portals": {
+              "0": "Maghanap",
+              "1": "Tunay ngang Australya",
+              "2": "LinkedIn",
+              "3": "CareerOne",
+              "4": "Jora",
+              "5": "Mga Trabahong Etikal"
+            }
+          },
+          "proTips": {
+            "title": "Mga Tip sa Propesyonal:",
+            "tips": {
+              "0": "Gumamit ng mga platform tulad ng <strong>Seek</strong>, <strong>Indeed Australia</strong>, at <strong>LinkedIn</strong>",
+              "1": "Mag-apply nang direkta sa mga kumpanya o sa pamamagitan ng mga recruitment agency",
+              "2": "Iayon ang iyong resume sa mga pamantayan ng Australia",
+              "3": "Makipag-network sa mga propesyonal sa iyong industriya",
+              "4": "Isaalang-alang ang mga rehiyonal na lugar na may kakulangan sa kasanayan para sa mas magagandang oportunidad"
+            }
+          }
+        }
+      },
+      {
+        "id": "pag-iisponsor",
+        "icon": "🤝",
+        "title": "4. Pag-iisponsor",
+        "content": {
+          "description": "Ang ilang mga employer ay nag-iisponsor ng mga skilled worker — lalo na sa pangangalagang pangkalusugan, IT, engineering, at mga trade trade. Ang pag-iisponsor ay makakatulong sa iyo na makakuha ng visa.",
+          "types": {
+            "0": {
+              "title": "Iskedyul ng Nominasyon ng Employer:",
+              "points": {
+                "0": "Maaari kang magmungkahi ng mga employer para sa permanenteng paninirahan",
+                "1": "Dapat mong matugunan ang mga kinakailangan sa kasanayan at kwalipikasyon",
+                "2": "Karaniwang nangangailangan ng hindi bababa sa 3 taong karanasan sa trabaho"
+              }
+            },
+            "1": {
+              "title": "Pag-sponsor ng TSS Visa:",
+              "points": {
+                "0": "Pansamantalang posisyon sa loob ng 2-4 na taon",
+                "1": "Maaaring humantong sa permanenteng paninirahan",
+                "2": "Dapat patunayan ng employer na hindi sila makahanap ng lokal na talento"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "mga dokumento",
+        "icon": "📄",
+        "title": "5. Mga Dokumentong Kinakailangan",
+        "content": {
+          "requiredDocuments": {
+            "0": "Resume (CV)",
+            "1": "Liham ng pabalat",
+            "2": "Mga Kwalipikasyon",
+            "3": "Mga Sanggunian",
+            "4": "Pagkumpirma ng visa/karapatan sa trabaho"
+          },
+          "resumeTips": {
+            "title": "Mga Tip sa Resume sa Australia:",
+            "tips": {
+              "0": "Panatilihing maigsi (hindi hihigit sa 2-3 pahina)",
+              "1": "Magsama ng isang propesyonal na buod",
+              "2": "Tumutok sa mga nagawa, hindi lamang sa mga responsibilidad",
+              "3": "Hindi kailangan ng litrato (hindi tulad ng ilang bansang Europeo)",
+              "4": "Ilista ang mga referee o sabihin ang \"May mga reperensyang makukuha kapag hiniling\""
+            }
+          }
+        }
+      },
+      {
+        "id": "lugar ng trabaho sa Australia",
+        "icon": "🏢",
+        "title": "6. Pag-unawa sa Kultura sa Lugar ng Trabaho ng Australia",
+        "content": {
+          "description": "Ang kultura ng lugar ng trabaho sa Australia ay may ilang natatanging katangian:",
+          "characteristics": {
+            "0": "<strong>Kaswal ngunit propesyonal</strong> - Ang mga Australyano ay karaniwang impormal ngunit sineseryoso ang trabaho",
+            "1": "Balanse sa trabaho at buhay - Karamihan sa mga employer ay nirerespeto ang personal na oras at nag-aalok ng mga flexible na kaayusan",
+            "2": "Direktang komunikasyon - Ang mga Australyano ay may posibilidad na maging prangka sa kanilang komunikasyon",
+            "3": "<strong>Nakatuon sa pangkat</strong> - Lubos na pinahahalagahan ang pakikipagtulungan at pagtutulungan",
+            "4": "\"Tall poppy syndrome\" - Ang labis na pag-promote sa sarili ay maaaring tingnan nang negatibo"
+          }
+        }
+      },
+      {
+        "id": "mga inaasahan sa suweldo",
+        "icon": "💰",
+        "title": "7. Mga Inaasahang Sweldo at Kondisyon sa Paggawa",
+        "content": {
+          "description": "Mataas ang pamantayan ng pamumuhay ng Australia at may mga kompetitibong suweldo.",
+          "keyFactsIntro": "Mga pangunahing katotohanan:",
+          "keyFacts": {
+            "0": "Ang minimum na sahod ay kabilang sa pinakamataas sa mundo",
+            "1": "Ang karaniwang linggo ng trabaho ay 38 oras",
+            "2": "Karaniwan ang 4 na linggong taunang bakasyon",
+            "3": "10 araw na bayad na personal/sick leave",
+            "4": "Kontribusyon sa superannuation (pagreretiro) mula sa mga employer (kasalukuyang 11%)"
+          },
+          "conclusion": "Magsaliksik ng mga pamantayan ng industriya para sa iyong propesyon upang maunawaan ang mga mapagkumpitensyang saklaw ng suweldo."
+        }
+      }
+    ],
+    "successStories": {
+      "title": "Mga Kwento ng Tagumpay",
+      "stories": [
+        {
+          "flag": "🇮🇳",
+          "profession": "Inhinyero ng Software",
+          "origin": "Mula Mumbai hanggang Melbourne",
+          "story": "Nakakuha ng trabaho sa isang tech startup sa loob ng 3 buwan mula sa pagdating gamit ang isang skilled visa.",
+          "outcome": "Kumikita na ngayon ng AUD 95,000 taun-taon"
+        },
+        {
+          "flag": "🇵🇭",
+          "profession": "Rehistradong Nars",
+          "origin": "Mula Maynila hanggang Sydney",
+          "story": "Natanggap ang sponsor ng isang ospital matapos magtrabaho gamit ang Working Holiday visa.",
+          "outcome": "Permanenteng paninirahan na ipinagkakaloob sa loob ng 18 buwan"
+        },
+        {
+          "flag": "🇬🇧",
+          "profession": "Elektrisyan sa Trabaho",
+          "origin": "Mula London hanggang Perth",
+          "story": "Nakahanap ng trabaho sa pamamagitan ng mga online job portal at pakikipag-network sa mga lokal na manggagawa.",
+          "outcome": "Nagsimula ng sariling negosyo sa kuryente sa loob ng 2 taon"
+        },
+        {
+          "flag": "🇩🇪",
+          "profession": "Inhinyero Sibil",
+          "origin": "Mula Berlin hanggang Brisbane",
+          "story": "Ang pagkilala sa kwalipikasyon ay tumagal ng anim na buwan, ngunit nakakuha ng trabaho sa isang malaking kompanya ng konstruksyon.",
+          "outcome": "Pamamahala ng mga proyektong imprastraktura na nagkakahalaga ng AUD 50M+"
+        }
+      ]
+    },
+    "industryInsights": {
+      "title": "Mga Pananaw sa Pamilihan ng Trabaho sa Industriya",
+      "insights": [
+        {
+          "category": "Pangangalagang pangkalusugan",
+          "metric": "Paglago ng Trabaho",
+          "value": "+15.2%",
+          "description": "Tinatayang paglago sa susunod na 5 taon"
+        },
+        {
+          "category": "Teknolohiya",
+          "metric": "Karaniwang Sweldo",
+          "value": "AUD 95,000",
+          "description": "Para sa mga bihasang propesyonal"
+        },
+        {
+          "category": "Mga Bihasang Trabaho",
+          "metric": "Kakulangan sa Kasanayan",
+          "value": "Kritikal",
+          "description": "Mataas na demand sa lahat ng estado"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Pangwakas na Checklist para sa Pagkuha ng Trabaho sa Australia",
+      "items": [
+        "Suriin kung ang iyong trabaho ay nasa Skilled Occupation List",
+        "Ipasuri ang iyong mga kwalipikasyon sa kinauukulang awtoridad ng Australia",
+        "Kumuha ng pagsusulit sa kahusayan sa Ingles kung kinakailangan",
+        "I-update ang iyong resume sa format na Australyano",
+        "Mga kinakailangan sa visa para sa pananaliksik at mga proseso ng aplikasyon"
+      ]
+    },
+    "conclusion": {
+      "title": "Handa ka na bang magtrabaho sa Australia?",
+      "description": "Sa pamamagitan ng wastong paghahanda at tamang mga kwalipikasyon, makakamit ang paghahanap ng trabaho sa Australia bilang isang dayuhan. Ang malakas na ekonomiya ng bansa, mataas na kalidad ng buhay, at multikultural na kapaligiran ay ginagawa itong isang kaakit-akit na destinasyon para sa mga propesyonal na naghahanap ng internasyonal na karanasan at paglago ng karera."
+    }
+  },
+  "usToAustraliaGuide": {
+    "subtitle": "Lahat ng Kailangan Mong Malaman",
+    "description": "Maraming Amerikano ang lumilipat sa Australia para sa trabaho, pag-aaral, o pagbabago ng pamumuhay. Bagama't magkakatulad ang mga kultura, may mahahalagang legal at praktikal na hakbang na dapat isaalang-alang.",
+    "navigation": {
+      "title": "Mabilis na Nabigasyon"
+    },
+    "accessibility": {
+      "sectionButton": "Mag-navigate sa seksyong {title}"
+    },
+    "sections": [
+      {
+        "id": "bakit-australia",
+        "icon": "📌",
+        "title": "Bakit Lumipat sa Australia?",
+        "content": {
+          "description": "Maraming dahilan kung bakit naaakit ang mga Amerikano sa Australia:",
+          "reasons": {
+            "0": "Mataas na kalidad ng buhay",
+            "1": "Malakas na ekonomiya at mga oportunidad sa trabaho",
+            "2": "Sistemang pangkalusugang pandaigdigan (Medicare)",
+            "3": "Magagandang dalampasigan at pamumuhay sa labas",
+            "4": "Pagkakatulad ng kultura sa pamumuhay ng mga Amerikano"
+          },
+          "conclusion": "Lumilipat ka man para sa pag-unlad sa karera, edukasyon, o pagbabago sa pamumuhay, nag-aalok ang Australia ng kapaligirang nagsasalita ng Ingles na may maraming pamilyar na kaginhawahan ng tahanan."
+        }
+      },
+      {
+        "id": "mga opsyon sa visa",
+        "icon": "✈️",
+        "title": "Mga Opsyon sa Visa para sa mga Mamamayan ng US",
+        "content": {
+          "description": "Dapat kumuha ng visa ang mga Amerikano bago lumipat sa Australia. Kabilang sa mga karaniwang uri ang:",
+          "visaTypes": {
+            "0": {
+              "title": "Skilled Independent Visa (subclass 189)",
+              "points": {
+                "0": "Para sa mga propesyonal sa mga larangang mataas ang demand",
+                "1": "Sistemang nakabatay sa puntos na sumusuri sa edad, kasanayan, edukasyon, at karanasan",
+                "2": "Landas para sa permanenteng paninirahan",
+                "3": "Hindi kailangan ng sponsor"
+              }
+            },
+            "1": {
+              "title": "Visa na Inisponsor ng Employer (subclass 482)",
+              "points": {
+                "0": "Nangangailangan ng alok ng trabaho mula sa isang employer sa Australia",
+                "1": "Pansamantala (2-4 na taon) na may potensyal na landas patungo sa permanenteng paninirahan",
+                "2": "Dapat kang isponsoran ng employer"
+              }
+            },
+            "2": {
+              "title": "Visa para sa Kapareha/Asawa",
+              "points": {
+                "0": "Para sa mga sumasali sa isang kasosyong Australyano",
+                "1": "May kasamang mga opsyon para sa mga mag-asawa o mga de facto na relasyon",
+                "2": "Humahantong sa permanenteng paninirahan"
+              }
+            },
+            "3": {
+              "title": "Visa ng Estudyante (subklase 500)",
+              "points": {
+                "0": "Para sa pag-aaral sa mga institusyong Australyano",
+                "1": "Pinapayagan ang limitadong oras ng trabaho habang nag-aaral",
+                "2": "Mga posibleng landas patungo sa mga visa sa trabaho pagkatapos ng pagtatapos"
+              }
+            },
+            "4": {
+              "title": "Visa para sa Paggawa ng Bakasyon (subclass 462)",
+              "description": "Magagamit para sa mga Amerikanong may edad 18-30, na nagpapahintulot ng hanggang 12 buwang trabaho at paglalakbay sa Australia"
+            }
+          }
+        }
+      },
+      {
+        "id": "mga kinakailangang dokumento",
+        "icon": "🛂",
+        "title": "Mga Pangunahing Kinakailangan",
+        "content": {
+          "description": "Kapag nag-aaplay para sa isang Australian visa, karaniwang kakailanganin mo ang:",
+          "requirements": {
+            "0": "Balidong pasaporte",
+            "1": "Patunay ng kahusayan sa Ingles (para sa ilang partikular na visa)",
+            "2": "Mga pagsusuri sa kalusugan at clearance ng pulisya",
+            "3": "Pagtatasa ng kasanayan/edukasyon (para sa mga skilled visa)",
+            "4": "Patunay ng pondo (para sa mga visa pang-estudyante at pansamantalang visa)",
+            "5": "Datos na biometriko",
+            "6": "Mga nakumpletong form ng aplikasyon para sa visa"
+          },
+          "note": "Ang mga partikular na kinakailangan ay nag-iiba depende sa uri ng visa, kaya palaging tingnan ang website ng Australian Department of Home Affairs para sa pinakabagong impormasyon."
+        }
+      },
+      {
+        "id": "mga sikat na lungsod",
+        "icon": "🏙️",
+        "title": "Saan Nakatira ang Karamihan sa mga Amerikano sa Australia?",
+        "content": {
+          "description": "Ang mga Amerikano ay may posibilidad na manirahan sa mga sikat na lungsod na ito sa Australia:",
+          "cities": {
+            "0": {
+              "name": "Sydney",
+              "icon": "🌊",
+              "highlights": {
+                "0": "Pinakamalaking lungsod sa Australia na may mga iconic na landmark",
+                "1": "Malakas na industriya ng pananalapi, teknolohiya, at malikhaing",
+                "2": "Magagandang dalampasigan at pamumuhay sa daungan"
+              }
+            },
+            "1": {
+              "name": "Melbourne",
+              "icon": "🎭",
+              "highlights": {
+                "0": "Kabisera ng kultura na may maunlad na eksena ng sining",
+                "1": "Patuloy na niraranggo bilang isa sa mga pinaka-maaaring tirahang lungsod sa mundo",
+                "2": "Masarap na pagkain, kape, at mga kaganapang pampalakasan"
+              }
+            },
+            "2": {
+              "name": "Brisbane",
+              "icon": "☀️",
+              "highlights": {
+                "0": "Maaraw, subtropikal na klima",
+                "1": "Mas abot-kaya kaysa sa Sydney o Melbourne",
+                "2": "Relaks na pamumuhay na may lumalaking merkado ng trabaho"
+              }
+            },
+            "3": {
+              "name": "Perth",
+              "icon": "🌄",
+              "highlights": {
+                "0": "Nakahiwalay ngunit masiglang lungsod sa kanlurang baybayin",
+                "1": "Malakas na sektor ng pagmimina at mga mapagkukunan",
+                "2": "Magagandang dalampasigan at klima ng Mediterranean"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "gastos sa pamumuhay",
+        "icon": "💰",
+        "title": "Gastos ng Paglipat at Pamumuhay",
+        "content": {
+          "description": "Ang mga paunang gastos ay maaaring mula $5,000–$15,000 USD, depende sa mga flight, pagpapadala, mga bayarin sa visa, at pabahay.",
+          "conclusion": "Ang halaga ng pamumuhay sa Australia ay maihahambing sa mga pangunahing lungsod sa US, bagama't ang mga gastos sa pangangalagang pangkalusugan ay karaniwang mas mababa salamat sa sistema ng Medicare."
+        }
+      },
+      {
+        "id": "pangangalagang pangkalusugan",
+        "icon": "🩺",
+        "title": "Pangangalagang Pangkalusugan sa Australia",
+        "content": {
+          "paragraphs": {
+            "0": {
+              "type": "teksto",
+              "content": "Ang Australia ay may isang unibersal na sistema ng pangangalagang pangkalusugan na tinatawag na Medicare, na nagbibigay ng access sa libre o subsidized na pangangalagang medikal."
+            },
+            "1": {
+              "type": "listahan",
+              "intro": "Bilang isang permanenteng residente o mamamayan, makakatanggap ka ng Medicare card na sumasaklaw sa:",
+              "items": {
+                "0": "Libreng paggamot sa mga pampublikong ospital",
+                "1": "Mga pagbisita sa doktor na may subsidiya",
+                "2": "Karamihan sa mga gamot na may reseta sa mas mababang halaga"
+              }
+            },
+            "2": {
+              "type": "teksto",
+              "content": "Maraming Australyano rin ang bumibili ng pribadong health insurance para sa karagdagang saklaw, mas maikling oras ng paghihintay, at pribadong paggamot sa ospital."
+            },
+            "3": {
+              "type": "teksto",
+              "content": "Ang mga may hawak ng pansamantalang visa ay karaniwang kailangang kumuha ng pribadong health insurance bilang kondisyon ng kanilang visa."
+            }
+          }
+        }
+      },
+      {
+        "id": "pamumuhay",
+        "icon": "🏡",
+        "title": "Mga Pagkakaiba sa Pamumuhay",
+        "content": {
+          "differences": {
+            "0": "<strong>Mataas na kalidad ng buhay, pampublikong pangangalagang pangkalusugan (Medicare), at matibay na karapatan ng mga manggagawa</strong>",
+            "1": "<strong>Maaaring mataas ang halaga ng pamumuhay sa mga pangunahing lungsod</strong> tulad ng Sydney o Melbourne",
+            "2": "Ang pagmamaneho ay nasa kaliwang bahagi ng kalsada",
+            "3": "Mas maraming taunang bakasyon (4 na linggo ang karaniwan) at mas maayos na balanse sa trabaho at buhay",
+            "4": "Sistemang metriko na ginagamit para sa lahat ng pagsukat",
+            "5": "Iba't ibang kalendaryo ng paaralan (karaniwang mula Pebrero hanggang Disyembre ang taon)",
+            "6": "Mas malakas na kultura ng kape at kakaibang tanawin ng pagkain"
+          },
+          "note": "Bagama't magkakatulad ang mga kultura, madalas na napapansin ng mga Amerikano ang mga pagkakaiba sa balbal, katatawanan, at mas relaks na saloobin ng mga Australyano tungo sa trabaho at buhay."
+        }
+      },
+      {
+        "id": "gumagalaw",
+        "icon": "📦",
+        "title": "Paglipat at Pagpapadala mula sa US",
+        "content": {
+          "sections": {
+            "0": {
+              "title": "Mga Opsyon sa Pagpapadala:",
+              "items": {
+                "0": "<strong>Kargamento sa dagat:</strong> Pinaka-matipid para sa malalaking kargamento ($3,000-$7,000 para sa isang maliit na apartment)",
+                "1": "<strong>Kargamento sa himpapawid:</strong> Mas mabilis ngunit mas mahal ($1,500-$3,000 para sa mga mahahalagang bagay)",
+                "2": "Mga lalagyan ng kargamento: Mga opsyon na 20ft o 40ft depende sa dami ng iyong dadalhin"
+              }
+            },
+            "1": {
+              "title": "Mahahalagang Pagsasaalang-alang:",
+              "items": {
+                "0": "Mahigpit ang mga batas sa biosecurity ng Australia - lubusang linisin ang mga item bago ipadala",
+                "1": "Ang mga kagamitang elektrikal ay nangangailangan ng mga adaptor (ang Australia ay gumagamit ng 230V na may mga plug na type I)",
+                "2": "Isaalang-alang ang pagbebenta ng malalaking muwebles at pagbili ng bago sa Australia",
+                "3": "Ang pag-angkat ng alagang hayop ay nangangailangan ng paghahanda ilang buwan nang maaga (mga bakuna, microchip, permit)"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "pagbabangko",
+        "icon": "🏦",
+        "title": "Pagbabangko at Pananalapi",
+        "content": {
+          "intro": "Pagsasaayos ng iyong pananalapi sa Australia:",
+          "points": {
+            "0": "Maaari kang magbukas ng bank account sa Australia hanggang 3 buwan bago dumating",
+            "1": "Kabilang sa mga pangunahing bangko ang Commonwealth Bank, ANZ, Westpac, at NAB",
+            "2": "Kakailanganin mo ang iyong pasaporte, mga dokumento ng visa, at patunay ng address",
+            "3": "Isaalang-alang ang mga internasyonal na serbisyo sa pagpapadala ng pera tulad ng Wise para sa pag-convert ng USD patungong AUD",
+            "4": "Ang taon ng buwis sa Australia ay tumatakbo mula Hulyo 1 hanggang Hunyo 30",
+            "5": "Kakailanganin mo ng Tax File Number (TFN) para legal na makapagtrabaho"
+          },
+          "conclusion": "Pera: Dolyar ng Australia (AUD). Malawakang tinatanggap ang mga credit card, at karaniwan ang contactless payment."
+        }
+      }
+    ],
+    "costComparison": {
+      "headers": {
+        "expense": "Gastos",
+        "australia": "Australya (average)",
+        "usa": "Estados Unidos (average)"
+      },
+      "rows": [
+        {
+          "expense": "Upa (1BR sa sentro ng lungsod)",
+          "australia": "$1,200–$1,800/buwan",
+          "usa": "$1,500–$2,000"
+        },
+        {
+          "expense": "Mga Utility (buwanang)",
+          "australia": "$150–$200",
+          "usa": "$150–$200"
+        },
+        {
+          "expense": "Kainan sa labas (para sa 2 tao)",
+          "australia": "$60–$100",
+          "usa": "$50–$100"
+        },
+        {
+          "expense": "Transportasyon",
+          "australia": "$100–$150/buwan",
+          "usa": "$70–$150"
+        }
+      ]
+    },
+    "stateComparison": {
+      "title": "Mga Estado ng US vs Mga Estado ng Australia",
+      "comparisons": [
+        {
+          "ausIcon": "🦘",
+          "usIcon": "🗽",
+          "comparison": "NSW laban sa New York",
+          "description": "Magkatulad na densidad ng populasyon at pamumuhay sa lungsod"
+        },
+        {
+          "ausIcon": "☕",
+          "usIcon": "🌉",
+          "comparison": "Victoria laban sa California",
+          "description": "Mga sentro ng kultura na may magkakaibang populasyon"
+        },
+        {
+          "ausIcon": "🌴",
+          "usIcon": "🌴",
+          "comparison": "Queensland laban sa Florida",
+          "description": "Mga klimang tropikal at industriya ng turismo"
+        },
+        {
+          "ausIcon": "⛏️",
+          "usIcon": "🤠",
+          "comparison": "WA laban sa Texas",
+          "description": "Mga estadong mayaman sa yamang-yaman na may mga ekonomiyang nagmimina"
+        },
+        {
+          "ausIcon": "🍷",
+          "usIcon": "🍷",
+          "comparison": "SA laban sa Napa Valley",
+          "description": "Mga rehiyon ng alak na may klimang Mediteraneo"
+        },
+        {
+          "ausIcon": "🏔️",
+          "usIcon": "🏔️",
+          "comparison": "Tasmania laban sa Vermont",
+          "description": "Mas malamig na klima at likas na kagandahan"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Timeline ng Paglipat: 12 Buwan Bago ang Pag-alis",
+      "phases": [
+        {
+          "timeframe": "12 buwan bago",
+          "title": "Pananaliksik at Pagpaplano",
+          "description": "Magsaliksik ng mga opsyon sa visa, suriin ang mga kwalipikasyon, simulan ang mga pagtatasa ng kasanayan kung kinakailangan"
+        },
+        {
+          "timeframe": "9-10 buwan bago",
+          "title": "Aplikasyon sa Visa",
+          "description": "Magsumite ng aplikasyon para sa visa, tipunin ang mga kinakailangang dokumento, at kumpletuhin ang mga health checkup"
+        },
+        {
+          "timeframe": "6-8 buwan bago",
+          "title": "Paghahanap at Paghahanda ng Trabaho",
+          "description": "Magsimula ng mga aplikasyon sa trabaho, makipag-ugnayan sa mga propesyonal sa Australia, at magsaliksik ng mga lungsod"
+        },
+        {
+          "timeframe": "3-4 na buwan bago",
+          "title": "Pagpaplano ng Logistika",
+          "description": "Mag-book ng mga flight, mag-ayos ng pagpapadala, at kumuha ng pansamantalang tirahan"
+        },
+        {
+          "timeframe": "1-2 buwan bago",
+          "title": "Mga Pangwakas na Paghahanda",
+          "description": "Magbukas ng bank account sa Australia, mag-ayos ng insurance, at tapusin ang mga detalye ng paglipat"
+        },
+        {
+          "timeframe": "Pagdating",
+          "title": "Paninirahan",
+          "description": "Mag-apply para sa TFN at Medicare, maghanap ng permanenteng pabahay, magparehistro para sa mga lokal na serbisyo"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Pangwakas na Checklist para sa mga Amerikanong Lumilipat sa Australia",
+      "items": [
+        "Magsaliksik at mag-apply para sa angkop na visa",
+        "Magpa-check up ng kalusugan at kumuha ng police clearance",
+        "Ayusin ang pagpapadala o pag-iimbak ng mga gamit",
+        "Magbukas ng bank account sa Australia",
+        "Ligtas na tirahan (pansamantala o permanente)",
+        "Ayusin ang saklaw ng segurong pangkalusugan",
+        "Mag-apply para sa Tax File Number (TFN) at Medicare card (kung kwalipikado)"
+      ]
+    },
+    "conclusion": {
+      "title": "Konklusyon: Sulit ba ang Paglipat sa Australia mula sa US?",
+      "description": "Para sa maraming Amerikano, ang Australia ay nag-aalok ng kaakit-akit na balanse ng pamilyar na kultura at mga bagong karanasan, na may mahusay na kalidad ng buhay, matibay na proteksyon ng mga manggagawa, at magagandang likas na kapaligiran. Bagama't ang paglipat ay nangangailangan ng maingat na pagpaplano at malaking paunang gastos, maraming mga expat ang nakakahanap ng kapaki-pakinabang na transisyon, na may mas mahusay na balanse sa trabaho-buhay at mga bagong pagkakataon."
+    }
+  },
+  "australiaRequirements": {
+    "description": "Kung nagpaplano kang lumipat sa Australia, narito ang mga pangunahing kinakailangan na dapat mong matugunan:",
+    "navigation": {
+      "title": "Mabilis na Nabigasyon",
+      "expandAll": "Palawakin Lahat",
+      "collapseAll": "I-collapse Lahat"
+    },
+    "accessibility": {
+      "sectionButton": "I-toggle ang seksyong {title}"
+    },
+    "sections": [
+      {
+        "id": "bisa",
+        "icon": "🛂",
+        "title": "Balidong Visa",
+        "shortTitle": "Bisa",
+        "content": {
+          "0": {
+            "type": "talata",
+            "text": "Dapat kang mag-aplay at kumuha ng naaangkop na visa bago pumasok sa Australia — tulad ng isang skilled, student, partner, o sponsored work visa."
+          }
+        }
+      },
+      {
+        "id": "katangian ng kalusugan",
+        "icon": "🔍",
+        "title": "Mga Pagsusuri sa Kalusugan at Karakter",
+        "shortTitle": "Pagsusuri sa Kalusugan",
+        "content": {
+          "0": {
+            "type": "listahan",
+            "items": {
+              "0": "Maaaring kailanganin ang medikal na pagsusuri depende sa iyong visa.",
+              "1": "*Police clearance* mula sa mga bansang tinirhan mo nang mahigit 12 buwan sa nakalipas na 10 taon.",
+              "2": "Hindi ka dapat magkaroon ng malubhang rekord ng kriminal."
+            }
+          }
+        }
+      },
+      {
+        "id": "pondo",
+        "icon": "💵",
+        "title": "Patunay ng mga Pondo",
+        "shortTitle": "Mga Pondo",
+        "content": {
+          "0": {
+            "type": "talata",
+            "text": "Ang ilang uri ng visa (hal., student o skilled visa) ay nangangailangan ng ebidensya na kaya mong suportahan ang iyong sarili sa pinansyal na aspeto pagdating mo."
+          }
+        }
+      },
+      {
+        "id": "Ingles",
+        "icon": "🗣️",
+        "title": "Kahusayan sa Ingles",
+        "shortTitle": "Ingles",
+        "content": {
+          "0": {
+            "type": "talata",
+            "text": "Karamihan sa mga visa ay nangangailangan ng patunay ng kasanayan sa Ingles (IELTS, TOEFL, o katumbas nito) — lalo na para sa mga skilled at student visa."
+          }
+        }
+      },
+      {
+        "id": "mga kasanayan",
+        "icon": "📋",
+        "title": "Pagtatasa ng Kasanayan",
+        "shortTitle": "Mga Kasanayan",
+        "content": {
+          "0": {
+            "type": "talata",
+            "text": "Para sa mga skilled migration visa, dapat mong ipasuri ang iyong mga kwalipikasyon sa isang awtoridad sa Australia na may kaugnayan sa iyong propesyon."
+          }
+        }
+      },
+      {
+        "id": "paglalakbay",
+        "icon": "✈️",
+        "title": "Mga Dokumento sa Paglalakbay",
+        "shortTitle": "Mga Dokumento",
+        "content": {
+          "0": {
+            "type": "listahan",
+            "items": {
+              "0": "Isang balidong pasaporte",
+              "1": "Seguro sa paglalakbay (inirerekomenda)"
+            }
+          }
+        }
+      }
+    ],
+    "additionalRequirements": {
+      "title": "Mga Karagdagang Kinakailangan ayon sa Uri ng Visa",
+      "items": [
+        {
+          "icon": "🎓",
+          "title": "Mga Visa ng Estudyante",
+          "description": "Kumpirmasyon ng Pagpapatala (CoE), Overseas Student Health Cover (OSHC), mga pamantayan para sa tunay na pansamantalang pagpasok",
+          "note": "Dapat panatilihin ang buong-panahong pag-aaral"
+        },
+        {
+          "icon": "💼",
+          "title": "Mga Visa sa Trabaho",
+          "description": "Alok ng trabaho mula sa aprubadong employer, kaugnay na karanasan sa trabaho, trabaho sa listahan ng mga bihasang empleyado",
+          "note": "Kinakailangan ang pag-sponsor ng employer"
+        },
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "title": "Mga Visa ng Pamilya",
+          "description": "Ebidensya ng relasyon, mga kinakailangan ng sponsor, mga pangako sa suportang pinansyal",
+          "note": "Nag-iiba-iba ang mga oras ng pagproseso"
+        },
+        {
+          "icon": "🏠",
+          "title": "Mga Visa ng Mamumuhunan",
+          "description": "Mga minimum na limitasyon sa pamumuhunan, karanasan sa negosyo, nominasyon ng estado",
+          "note": "Mataas na mga kinakailangan sa pananalapi"
+        }
+      ]
+    },
+    "visaTypes": {
+      "title": "Mabilisang Sanggunian para sa Mga Karaniwang Uri ng Visa",
+      "types": [
+        {
+          "icon": "🎯",
+          "name": "Mahusay na Malayang Pagiging Mapag-isa (189)",
+          "description": "Permanenteng visa na nakabatay sa puntos",
+          "duration": "Permanente",
+          "difficulty": "Mataas"
+        },
+        {
+          "icon": "🤝",
+          "name": "Sinusuportahan ng Employer (482)",
+          "description": "Pansamantalang visa sa trabaho na may sponsorship",
+          "duration": "2-4 na taon",
+          "difficulty": "Katamtaman"
+        },
+        {
+          "icon": "🎓",
+          "name": "Estudyante (500)",
+          "description": "Pag-aaral sa mga institusyong Australyano",
+          "duration": "Panahon ng pag-aaral",
+          "difficulty": "Mababa"
+        },
+        {
+          "icon": "💑",
+          "name": "Kasosyo (820/801)",
+          "description": "Para sa mga asawa/de facto partner",
+          "duration": "Permanente",
+          "difficulty": "Katamtaman"
+        },
+        {
+          "icon": "🌟",
+          "name": "Bakasyon sa Paggawa (417)",
+          "description": "Trabaho at paglalakbay para sa mga kabataan",
+          "duration": "1 taon",
+          "difficulty": "Mababa"
+        },
+        {
+          "icon": "💰",
+          "name": "Inobasyon sa Negosyo (188)",
+          "description": "Para sa mga negosyante at mamumuhunan",
+          "duration": "4 na taon",
+          "difficulty": "Mataas"
+        }
+      ]
+    },
+    "tips": {
+      "title": "Mga Mahalagang Tip",
+      "items": [
+        "Simulan nang maaga ang proseso ng iyong aplikasyon sa visa dahil ang ilang mga visa ay maaaring abutin ng ilang buwan upang maproseso",
+        "Panatilihing organisado at digital na naka-backup ang lahat ng iyong mahahalagang dokumento",
+        "Saliksikin ang mga partikular na kinakailangan para sa iyong uri ng visa sa website ng Australian Department of Home Affairs.",
+        "Isaalang-alang ang pagkuha ng propesyonal na payo sa migrasyon para sa mga kumplikadong kaso",
+        "Regular na suriin ang mga oras ng pagproseso dahil maaari itong magbago",
+        "Siguraduhing ang lahat ng dokumento ay naisalin at sertipikado kung hindi sa Ingles"
+      ]
+    },
+    "summary": {
+      "title": "Mabilisang Checklist",
+      "description": "Tandaan ang mga mahahalagang kinakailangan na ito para sa isang matagumpay na aplikasyon ng visa sa Australia:",
+      "keyPoints": [
+        "Balidong pasaporte (6+ na buwan)",
+        "Angkop na aplikasyon para sa visa",
+        "Mga pagsusuri sa kalusugan at karakter",
+        "Patunay ng kahusayan sa Ingles",
+        "Ebidensya sa pananalapi",
+        "Pagtatasa ng Kasanayan (kung kinakailangan)",
+        "Seguro sa paglalakbay",
+        "Lahat ng dokumento ay sertipikado"
+      ]
+    }
+  },
+  "australiaVisaGuide": {
+    "description": "Kung nagpaplano kang lumipat sa Australia, kakailanganin mo ang tamang visa. Narito ang mga pinakakaraniwang opsyon batay sa iyong layunin ng pananatili:",
+    "labels": {
+      "idealFor": "Mainam para sa",
+      "duration": "Tagal",
+      "pathway": "Landas",
+      "visaTypes": "Mga Uri ng Visa",
+      "requirements": "Mga Kinakailangan",
+      "benefits": "Mga Benepisyo",
+      "processingTime": "Oras ng Pagproseso"
+    },
+    "controls": {
+      "expandAll": "Palawakin Lahat",
+      "collapseAll": "I-collapse Lahat"
+    },
+    "compare": {
+      "enable": "Paghambingin ang mga Visa",
+      "exit": "Lumabas sa Mode ng Paghahambing",
+      "select": "Piliin",
+      "selected": "Napili",
+      "table": {
+        "title": "Paghahambing ng Visa",
+        "headers": {
+          "type": "Uri ng Visa",
+          "duration": "Tagal",
+          "pathway": "Landas",
+          "idealFor": "Mainam Para sa"
+        }
+      }
+    },
+    "visas": [
+      {
+        "id": "migrasyong may kasanayan",
+        "icon": "🎯",
+        "title": "Mga Visa para sa Skilled Migration",
+        "category": "Mga Propesyonal na Visa",
+        "idealFor": "Mga propesyonal na may mga kasanayang in-demand",
+        "duration": "Permanente",
+        "pathway": "Permanente",
+        "visaTypes": {
+          "0": {
+            "name": "Skilled Independent Visa",
+            "description": "Batay sa puntos; hindi kailangan ng alok ng trabaho",
+            "subclass": "189"
+          },
+          "1": {
+            "name": "Skilled Nominated Visa",
+            "description": "Nangangailangan ng nominasyon mula sa isang estado o teritoryo ng Australia",
+            "subclass": "190"
+          },
+          "2": {
+            "name": "Rehiyonal na Visa para sa Bihasang Trabaho",
+            "description": "Para sa paninirahan at pagtatrabaho sa rehiyonal na Australia; kailangan ang sponsorship ng estado o pamilya",
+            "subclass": "491"
+          }
+        },
+        "requirements": {
+          "0": "Pagtatasa ng kasanayan para sa hinirang na trabaho",
+          "1": "Kahusayan sa wikang Ingles",
+          "2": "Edad na wala pang 45 taong gulang",
+          "3": "Hangganan ng pagsubok para sa mga puntos na naabot (kasalukuyang 65 puntos)",
+          "4": "Mga kinakailangan sa kalusugan at karakter"
+        },
+        "benefits": {
+          "0": "Landas para sa permanenteng paninirahan",
+          "1": "Magtrabaho at mag-aral kahit saan sa Australia",
+          "2": "Pag-access sa Medicare",
+          "3": "Landas tungo sa pagkamamamayan pagkatapos ng 4 na taon"
+        },
+        "processingTime": "8-12 buwan para sa karamihan ng mga aplikasyon"
+      },
+      {
+        "id": "inisponsor ng employer",
+        "icon": "🤝",
+        "title": "Mga Visa na Inisponsor ng Employer",
+        "category": "Mga Visa sa Trabaho",
+        "idealFor": "Mga taong may alok na trabaho mula sa isang employer sa Australia",
+        "duration": "2-4 na taon",
+        "pathway": "Pansamantala hanggang Permanente",
+        "visaTypes": {
+          "0": {
+            "name": "Pansamantalang Visa para sa Kakulangan ng Kasanayan",
+            "description": "Nangangailangan ng sponsorship at may bisa sa loob ng 2–4 na taon",
+            "subclass": "482"
+          },
+          "1": {
+            "name": "Iskemang Nominasyon ng Employer",
+            "description": "Permanenteng visa para sa mga bihasang manggagawa na hinirang ng isang aprubadong employer",
+            "subclass": "186"
+          }
+        },
+        "requirements": {
+          "0": "Alok ng trabaho mula sa aprubadong employer sa Australia",
+          "1": "Mga kaugnay na kasanayan at kwalipikasyon",
+          "2": "Kahusayan sa wikang Ingles",
+          "3": "Mga kinakailangan sa kalusugan at karakter",
+          "4": "Trabaho sa listahan ng mga kaugnay na trabahong may kasanayan"
+        },
+        "benefits": {
+          "0": "Direktang landas sa pagtatrabaho sa Australia",
+          "1": "Maaaring sumama ang mga miyembro ng pamilya",
+          "2": "Landas tungo sa permanenteng paninirahan",
+          "3": "Hindi kailangan ng puntos na pagsusulit"
+        },
+        "processingTime": "3-6 na buwan para sa TSS, 8-12 buwan para sa ENS"
+      },
+      {
+        "id": "estudyante",
+        "icon": "🎓",
+        "title": "Visa ng Estudyante",
+        "category": "Visa sa Edukasyon",
+        "idealFor": "Ang mga naka-enroll sa isang institusyong pang-edukasyon sa Australia",
+        "duration": "Panahon ng pag-aaral + 1-4 na taon",
+        "pathway": "Pansamantala",
+        "visaTypes": {
+          "0": {
+            "name": "Visa ng Estudyante",
+            "description": "Para sa pag-aaral sa mga institusyong Australyano. Pinapayagan ang part-time na trabaho habang nag-aaral",
+            "subclass": "500"
+          }
+        },
+        "requirements": {
+          "0": "Kumpirmasyon ng Pagpapatala (CoE)",
+          "1": "Kinakailangan sa Tunay na Pansamantalang Pumasok (GTE)",
+          "2": "Kahusayan sa wikang Ingles",
+          "3": "Kakayahang pinansyal",
+          "4": "Saklaw sa Kalusugan ng mga Mag-aaral sa Ibang Bansa (OSHC)"
+        },
+        "benefits": {
+          "0": "Mag-aral sa mga institusyong may mataas na kalidad sa mundo",
+          "1": "Magtrabaho nang hanggang 48 oras kada dalawang linggo",
+          "2": "Landas para sa mga visa sa trabaho pagkatapos ng pagtatapos",
+          "3": "Damhin ang kulturang Australyano"
+        },
+        "processingTime": "4-8 na linggo para sa karamihan ng mga aplikasyon"
+      },
+      {
+        "id": "kapareha sa pamilya",
+        "icon": "👨‍👩‍👧‍👦",
+        "title": "Mga Visa para sa Pamilya at Kasosyo",
+        "category": "Mga Visa ng Pamilya",
+        "idealFor": "Mga may pamilya o kapareha sa Australia",
+        "duration": "Permanente",
+        "pathway": "Permanente",
+        "visaTypes": {
+          "0": {
+            "name": "Visa para sa Kasosyo (Onshore)",
+            "subclass": "820/801",
+            "description": "Para sa mga asawa o de facto partner ng mga mamamayan o permanenteng residente ng Australia"
+          },
+          "1": {
+            "name": "Visa ng Kasosyo (Labas-Bayan)",
+            "subclass": "309/100",
+            "description": "Para sa mga asawa o de facto partner na nag-aaplay mula sa labas ng Australia"
+          },
+          "2": {
+            "name": "Mga Visa ng Magulang at Anak",
+            "subclass": "Iba't ibang",
+            "description": "Para sa mga malalapit na miyembro ng pamilya ng mga mamamayang Australyano o mga may hawak ng PR"
+          }
+        },
+        "requirements": {
+          "0": "Tunay na ebidensya ng relasyon",
+          "1": "Ang sponsor ay dapat mamamayan ng Australia/PR",
+          "2": "Mga kinakailangan sa kalusugan at karakter",
+          "3": "Pangako sa suportang pinansyal",
+          "4": "Sapat na segurong pangkalusugan"
+        },
+        "benefits": {
+          "0": "Permanenteng paninirahan",
+          "1": "Mga karapatan sa trabaho at pag-aaral",
+          "2": "Pag-access sa Medicare at mga serbisyong panlipunan",
+          "3": "Landas tungo sa pagkamamamayan"
+        },
+        "processingTime": "12-24 na buwan para sa mga visa ng partner"
+      },
+      {
+        "id": "pamumuhunan sa negosyo",
+        "icon": "💼",
+        "title": "Mga Visa para sa Negosyo at Pamumuhunan",
+        "category": "Mga Visa sa Negosyo",
+        "idealFor": "Mga indibidwal na naghahangad na mamuhunan o magpatakbo ng negosyo sa Australia",
+        "duration": "4 na taon",
+        "pathway": "Pansamantala hanggang Permanente",
+        "visaTypes": {
+          "0": {
+            "name": "Visa para sa Inobasyon sa Negosyo at Pamumuhunan",
+            "description": "Humahantong sa permanenteng paninirahan (subclass 888) sa ibang pagkakataon",
+            "subclass": "188"
+          }
+        },
+        "requirements": {
+          "0": "Matagumpay na karanasan sa negosyo o pamumuhunan",
+          "1": "Matugunan ang mga kinakailangan sa edad, Ingles, at kalusugan",
+          "2": "Minimum na netong ari-arian ng negosyo at personal na ari-arian",
+          "3": "Nominasyon ng estado o teritoryo",
+          "4": "Pangako na mapanatili ang negosyo/pamumuhunan sa Australia"
+        },
+        "benefits": {
+          "0": "Landas tungo sa permanenteng paninirahan",
+          "1": "Mga oportunidad sa negosyo sa matatag na ekonomiya",
+          "2": "Pag-access sa merkado ng Australia",
+          "3": "De-kalidad na edukasyon para sa mga bata"
+        },
+        "processingTime": "8-12 buwan para sa unang visa"
+      }
+    ],
+    "helper": {
+      "title": "Aling Visa ang Tama para sa Iyo?",
+      "scenarios": [
+        {
+          "icon": "🎯",
+          "situation": "Ako ay isang bihasang propesyonal",
+          "description": "Mayroon kang mga kwalipikasyon sa isang trabahong in-demand",
+          "recommendation": "Isaalang-alang ang mga Skilled Migration Visa (189/190/491)"
+        },
+        {
+          "icon": "💼",
+          "situation": "Mayroon akong alok na trabaho",
+          "description": "Gusto kang kunin ng isang employer sa Australia",
+          "recommendation": "Mag-apply para sa mga Employer-Sponsored Visa (482/186)"
+        },
+        {
+          "icon": "🎓",
+          "situation": "Gusto kong mag-aral",
+          "description": "Plano mong ipagpatuloy ang iyong pag-aaral sa Australia",
+          "recommendation": "Visa ng Estudyante (500) na may mga karapatan sa trabaho"
+        },
+        {
+          "icon": "💕",
+          "situation": "May pamilya ako sa Australia",
+          "description": "Ikaw ay kasal o karelasyon ng isang Australyano",
+          "recommendation": "Visa para sa Kasosyo (820/801 o 309/100)"
+        },
+        {
+          "icon": "🏢",
+          "situation": "Gusto kong magsimula ng negosyo",
+          "description": "Mayroon kang karanasan sa negosyo at kapital na pamumuhunan",
+          "recommendation": "Visa para sa Inobasyon sa Negosyo (188)"
+        },
+        {
+          "icon": "🌟",
+          "situation": "Bata pa ako at gusto kong maglakbay",
+          "description": "Ikaw ay 18-30 taong gulang mula sa isang kwalipikadong bansa",
+          "recommendation": "Visa para sa Paggawa at Bakasyon (417/462)"
+        }
+      ]
+    },
+    "processingTimes": {
+      "title": "Kasalukuyang Oras ng Pagproseso",
+      "averageTime": "Karaniwang Oras",
+      "disclaimer": "Ang mga oras ng pagproseso ay mga pagtatantya lamang at maaaring mag-iba batay sa mga indibidwal na pangyayari at pagkakumpleto ng aplikasyon.",
+      "visaTypes": [
+        {
+          "type": "Mahusay na Malayang Pagiging Mapag-isa (189)",
+          "time": "8-12 buwan",
+          "note": "Depende sa trabaho at mga puntos"
+        },
+        {
+          "type": "Sinusuportahan ng Employer (482)",
+          "time": "3-6 na buwan",
+          "note": "Mas mabilis na may kumpletong dokumentasyon"
+        },
+        {
+          "type": "Estudyante (500)",
+          "time": "4-8 na linggo",
+          "note": "Maaaring mas matagal ang mga oras ng peak"
+        },
+        {
+          "type": "Kasosyo (820/801)",
+          "time": "12-24 na buwan",
+          "note": "Mas matagal ang mga kumplikadong kaso"
+        },
+        {
+          "type": "Negosyo (188)",
+          "time": "8-12 buwan",
+          "note": "Nagdagdag ng oras ang nominasyon ng estado"
+        },
+        {
+          "type": "Bakasyon sa Paggawa (417)",
+          "time": "1-4 na linggo",
+          "note": "Karaniwang mabilis na napoproseso"
+        }
+      ]
+    }
+  },
+  "ukToAustraliaGuide": {
+    "subtitle": "Ang Kailangan Mong Malaman",
+    "description": "Ang paglipat mula sa UK patungong Australia ay popular dahil sa mga pagkakatulad sa kultura, iisang wika, at matibay na ugnayang pang-ekonomiya. Gayunpaman, ang paglipat ay nangangailangan ng pagpaplano at tamang visa. Saklaw ng gabay na ito ang lahat ng kailangan mong malaman tungkol sa paglipat sa Australia.",
+    "navigation": {
+      "title": "Mabilis na Nabigasyon"
+    },
+    "accessibility": {
+      "sectionButton": "Mag-navigate sa seksyong {title}"
+    },
+    "sections": [
+      {
+        "id": "bakit-lumipat",
+        "icon": "🧳",
+        "title": "Bakit Lumipat sa Australia?",
+        "content": {
+          "description": "Ang paglipat mula sa UK patungong Australia ay popular dahil sa mga pagkakatulad sa kultura, iisang wika, at matibay na ugnayang pang-ekonomiya. Gayunpaman, ang paglipat ay nangangailangan ng pagpaplano at tamang visa.",
+          "reasons": {
+            "0": "Magkatulad na kultura at ibinahaging wika",
+            "1": "Malakas na mga oportunidad sa ekonomiya",
+            "2": "Mas mataas na kalidad ng buhay at pamumuhay sa labas",
+            "3": "Mas magandang panahon at magagandang tanawin",
+            "4": "Mga itinatag na komunidad ng mga expat na British"
+          },
+          "conclusion": "Ang hakbang na ito ay nangangailangan ng maingat na pagpaplano, lalo na tungkol sa mga visa at mga opsyon sa trabaho."
+        }
+      },
+      {
+        "id": "mga kinakailangan sa visa",
+        "icon": "🛂",
+        "title": "Mga Kinakailangan sa Visa",
+        "content": {
+          "description": "Ang mga mamamayan ng UK ay nangangailangan ng visa upang manirahan, magtrabaho, o mag-aral sa Australia. Kabilang sa mga sikat na opsyon ang:",
+          "visaTypes": {
+            "0": {
+              "title": "Skilled Independent Visa (subclass 189)",
+              "description": "Para sa mga manggagawa sa mga trabahong mataas ang demand nang hindi nangangailangan ng sponsorship",
+              "keyPointsTitle": "Mga pangunahing punto:",
+              "keyPoints": {
+                "0": "Dapat makakuha ng sapat na puntos sa pagtatasa ng kasanayan",
+                "1": "Hindi kailangan ng sponsor",
+                "2": "Landas para sa permanenteng paninirahan",
+                "3": "Dapat ay wala pang 45 taong gulang"
+              }
+            },
+            "1": {
+              "title": "Skilled Nominated Visa (subclass 190)",
+              "description": "Nominado ng estado na may mas mabilis na oras ng pagproseso",
+              "keyPoints": {
+                "0": "Nangangailangan ng nominasyon mula sa isang estado o teritoryo ng Australia",
+                "1": "Mga karagdagang puntos para sa nominasyon ng estado",
+                "2": "Maaaring mangailangan ng pangakong manirahan sa estadong hinirang"
+              }
+            },
+            "2": {
+              "title": "Visa na Inisponsor ng Employer (subclass 482)",
+              "description": "Nangangailangan ng alok ng trabaho mula sa isang kompanyang Australyano",
+              "keyPoints": {
+                "0": "Pansamantalang visa para sa kakulangan ng kasanayan",
+                "1": "Dapat na aprubadong sponsor ang employer",
+                "2": "Dapat nasa listahan ng mga bihasang trabaho ang posisyon",
+                "3": "Maaaring humantong sa permanenteng paninirahan pagkatapos ng isang takdang panahon"
+              }
+            },
+            "3": {
+              "title": "Visa para sa Paggawa ng Bakasyon (subclass 417)",
+              "description": "Para sa mga may edad 18–35, may bisa hanggang 3 taon",
+              "keyPoints": {
+                "0": "Sa simula ay 12 buwan",
+                "1": "Maaaring palawigin nang dalawang beses gamit ang gawaing panrehiyon",
+                "2": "Pinapayagan ang pagtatrabaho sa isang employer nang hanggang 6 na buwan",
+                "3": "Magandang paraan para maranasan ang Australia bago mag-commit"
+              }
+            },
+            "4": {
+              "title": "Mga Visa para sa Kasosyo o Pamilya",
+              "description": "Kung mayroon kang malalapit na kamag-anak o kapareha sa Australia",
+              "keyPoints": {
+                "0": "Partner visa para sa mga asawa o de facto partner",
+                "1": "Mga visa ng magulang para sa mga magulang ng mga mamamayang Australyano",
+                "2": "Mga visa ng bata para sa mga batang umaasa"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "iba pang mga kinakailangan",
+        "icon": "🧾",
+        "title": "Iba pang mga Kinakailangan",
+        "content": {
+          "requirements": {
+            "0": "Balidong pasaporte ng UK",
+            "1": "Mga pagsusuri sa kalusugan at sertipiko ng karakter (pulisya)",
+            "2": "Patunay ng kahusayan sa Ingles (para sa ilang mga visa)",
+            "3": "Pagkilala sa mga kasanayan o degree (kung nag-aaplay sa ilalim ng mga ruta ng skilled visa)",
+            "4": "Patunay ng pondo (lalo na para sa mga pansamantalang o student visa)"
+          },
+          "tip": "<strong>Tip:</strong> Simulan nang maaga ang pagkolekta ng mga dokumentong ito, dahil ang ilan (tulad ng mga sertipiko ng pulisya) ay maaaring tumagal ng ilang linggo bago makuha."
+        }
+      },
+      {
+        "id": "paglipat ng gastos",
+        "icon": "💰",
+        "title": "Gastos ng Paglipat",
+        "content": {
+          "description": "Asahan ang paggastos ng £5,000–£12,000, kasama na ang mga bayarin sa visa, mga flight, mga deposito sa pabahay, at mga panimulang gastusin sa pamumuhay.",
+          "tip": "<strong>Tip:</strong> Maraming aplikasyon para sa visa ang nangangailangan ng patunay na mayroon kang sapat na pondo para suportahan ang iyong sarili sa simula. Maghanda na magpakita ng mga bank statement."
+        }
+      },
+      {
+        "id": "pamumuhay",
+        "icon": "🌏",
+        "title": "Mga Tala sa Pamumuhay",
+        "content": {
+          "aspects": {
+            "0": {
+              "title": "Klima",
+              "description": "Malaki ang pagkakaiba-iba ng klima; ang mga lungsod tulad ng Sydney at Perth ay may mainit na tag-araw, habang ang Melbourne ay kilala sa \"apat na panahon sa isang araw.\" Ang mga hilagang rehiyon ay tropikal, habang ang Tasmania ay mas malamig."
+            },
+            "1": {
+              "title": "Kultura ng Trabaho",
+              "description": "Ang Australia ay may relaks na kultura sa trabaho ngunit pinapanatili ang mataas na propesyonal na pamantayan. Pinahahalagahan ang balanse sa pagitan ng trabaho at buhay, kung saan maraming negosyo ang mas maagang nagsasara kaysa sa UK."
+            },
+            "2": {
+              "title": "Pangangalagang pangkalusugan",
+              "description": "Maa-access ang pampublikong pangangalagang pangkalusugan (Medicare) kapag ikaw ay naging residente na. Para sa mga may hawak ng pansamantalang visa, ang pribadong health insurance ay mahalaga at kadalasang mandatory."
+            },
+            "3": {
+              "title": "Gastos ng Pamumuhay",
+              "description": "Mataas ang mga gastusin sa pamumuhay sa mga pangunahing lungsod tulad ng Sydney at Melbourne, lalo na sa pabahay. Ang mga rehiyonal na lugar ay nag-aalok ng mas abot-kayang mga opsyon ngunit mas kaunting mga pasilidad."
+            }
+          }
+        }
+      },
+      {
+        "id": "mga sikat na lungsod",
+        "icon": "🏙️",
+        "title": "Mga Sikat na Lungsod para sa mga Expat sa UK",
+        "content": {
+          "description": "Ang Australia ay may ilang mga lungsod na popular sa mga British expats:",
+          "cities": {
+            "0": {
+              "name": "Sydney",
+              "description": "Ang pinakamalaking lungsod ng Australia na may mga kilalang landmark, magagandang dalampasigan, at masiglang kultural na tanawin. Pinakamataas na halaga ng pamumuhay ngunit mahusay na mga oportunidad sa trabaho."
+            },
+            "1": {
+              "name": "Melbourne",
+              "description": "Kabisera ng kultura na may kakaibang istilo ng Europa, kilala sa sining, kultura ng kape, at mga kaganapang pampalakasan. Mas pabago-bago ang panahon ngunit bahagyang mas mababa ang gastos sa pabahay kaysa sa Sydney."
+            },
+            "2": {
+              "name": "Brisbane",
+              "description": "Klimang sub-tropikal na may lumalagong ekonomiya at mas abot-kayang pabahay kaysa sa Sydney o Melbourne. Relaks na pamumuhay na malapit sa Gold Coast at Sunshine Coast."
+            },
+            "3": {
+              "name": "Perth",
+              "description": "Ang pinaka-sunny na kabisera na may magagandang dalampasigan at malakas na industriya ng pagmimina. Mas liblib ngunit nag-aalok ng mahusay na kalidad ng buhay at malakas na komunidad ng mga expat sa UK."
+            },
+            "4": {
+              "name": "Adelaide",
+              "description": "Mas abot-kayang pabahay at relaks na takbo ng buhay. Kilala sa mga rehiyon ng alak, mga pagdiriwang, at kapaligirang pampamilya."
+            },
+            "5": {
+              "name": "Baybaying Ginto",
+              "description": "Sikat sa mga expat sa UK dahil sa mga nakamamanghang dalampasigan, mainit na klima, at industriya ng turismo. Relaks na pamumuhay na may lumalagong ekonomiya."
+            }
+          }
+        }
+      },
+      {
+        "id": "mga praktikal na tip",
+        "icon": "💡",
+        "title": "Mga Praktikal na Tip",
+        "content": {
+          "tips": {
+            "0": "Mag-set up ng Australian bank account bago dumating kung maaari",
+            "1": "Pananaliksik tungkol sa mga implikasyon sa buwis - mayroong kasunduan sa buwis sa pagitan ng UK at Australia",
+            "2": "Isaalang-alang ang pag-iskedyul ng iyong paglipat sa labas ng kasagsagan ng tag-araw (Disyembre-Pebrero)",
+            "3": "Sumali sa mga expat Facebook group para sa iyong destinasyong lungsod",
+            "4": "Magrehistro sa serbisyo ng Living Abroad ng gobyerno ng UK para sa mga update"
+          },
+          "mainTip": "<strong>Tip:</strong> Simulan nang maaga ang proseso ng iyong aplikasyon ng visa - ang ilang visa ay maaaring tumagal ng 6-12 buwan upang maproseso."
+        }
+      }
+    ],
+    "costTable": {
+      "headers": {
+        "category": "Kategorya ng Gastos",
+        "cost": "Tinatayang Gastos (£)"
+      },
+      "rows": [
+        {
+          "category": "Mga bayarin sa aplikasyon ng visa",
+          "cost": "£1,000–£4,000"
+        },
+        {
+          "category": "Mga flight (one-way)",
+          "cost": "£600–£1,200"
+        },
+        {
+          "category": "Pagpapadala ng mga gamit",
+          "cost": "£1,500–£3,000"
+        },
+        {
+          "category": "Paunang akomodasyon",
+          "cost": "£1,000–£2,000"
+        },
+        {
+          "category": "Mga gastusin sa pamumuhay (unang buwan)",
+          "cost": "£1,000–£1,500"
+        },
+        {
+          "category": "Pondo para sa emerhensiya",
+          "cost": "£1,000–£2,000"
+        }
+      ]
+    },
+    "comparison": {
+      "title": "Mabilisang Paghahambing ng UK vs Australia",
+      "aspects": [
+        {
+          "icon": "🌡️",
+          "category": "Klima",
+          "uk": "Malamig, maulan, 4 na panahon",
+          "australia": "Mainit, maaraw, banayad na taglamig"
+        },
+        {
+          "icon": "💰",
+          "category": "Gastos ng Pamumuhay",
+          "uk": "Mataas sa London, katamtaman sa ibang lugar",
+          "australia": "Mataas sa Sydney/Melbourne, mas mababa sa ibang lugar"
+        },
+        {
+          "icon": "🏠",
+          "category": "Pabahay",
+          "uk": "Mas maliliit na espasyo, mas lumang mga gusali",
+          "australia": "Mas malalaking espasyo, modernong mga bahay"
+        },
+        {
+          "icon": "🏥",
+          "category": "Pangangalagang pangkalusugan",
+          "uk": "NHS (libre sa oras ng paggamit)",
+          "australia": "Medicare (katulad ng NHS)"
+        },
+        {
+          "icon": "💼",
+          "category": "Kultura ng Trabaho",
+          "uk": "Mas mahabang oras, mas pormal",
+          "australia": "Mas mahusay na balanse sa trabaho at buhay"
+        },
+        {
+          "icon": "🌍",
+          "category": "Lokasyon",
+          "uk": "Malapit sa Europa",
+          "australia": "Nakahiwalay ngunit malapit sa Asya"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Timeline ng Paglipat: 12 Buwan Bago ang Pag-alis",
+      "phases": [
+        {
+          "timeframe": "12 buwan bago",
+          "title": "Pananaliksik at Pagpaplano",
+          "description": "Magsaliksik ng mga opsyon sa visa, suriin ang mga kwalipikasyon, pumili ng mga target na lungsod"
+        },
+        {
+          "timeframe": "9-10 buwan bago",
+          "title": "Aplikasyon sa Visa",
+          "description": "Magsumite ng aplikasyon para sa visa, kumpletuhin ang pagtatasa ng kasanayan, at mangalap ng mga dokumento"
+        },
+        {
+          "timeframe": "6-8 buwan bago",
+          "title": "Paghahanap ng Trabaho",
+          "description": "Simulan ang mga aplikasyon sa trabaho, makipag-ugnayan sa mga propesyonal sa Australia"
+        },
+        {
+          "timeframe": "3-4 na buwan bago",
+          "title": "Mga Kaayusan sa Paglipat",
+          "description": "Mag-book ng mga flight, mag-ayos ng pagpapadala, at kumuha ng pansamantalang tirahan"
+        },
+        {
+          "timeframe": "1-2 buwan bago",
+          "title": "Mga Pangwakas na Paghahanda",
+          "description": "Magbukas ng bank account sa Australia, mag-ayos ng insurance, at ipaalam sa mga awtoridad ng UK"
+        },
+        {
+          "timeframe": "Pagdating",
+          "title": "Paninirahan",
+          "description": "Maghanap ng permanenteng pabahay, magparehistro sa Medicare, mag-set up ng mga lokal na serbisyo"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Pangwakas na Checklist Bago Lumipat sa Australia",
+      "items": [
+        "Kumuha ng angkop na visa",
+        "Mag-book ng mga flight at pagpapadala",
+        "Mag-ayos ng pansamantalang tirahan",
+        "Mag-set up ng bank account sa Australia",
+        "Ayusin ang segurong pangkalusugan",
+        "I-update ang katayuan ng buwis gamit ang HMRC",
+        "Ipaalam sa mga awtoridad ng UK (NHS, pensiyon, konseho, atbp.) ang tungkol sa iyong paglipat"
+      ]
+    },
+    "conclusion": {
+      "title": "Angkop ba para sa Iyo ang Paglipat sa Australia?",
+      "description": "Dahil sa nakamamanghang tanawin, matibay na ekonomiya, at pamumuhay sa labas, ang Australia ay nag-aalok ng mahusay na kalidad ng buhay para sa mga expat sa UK. Bagama't maaaring maging mahirap ang distansya mula sa bahay at ang halaga ng pamumuhay, marami ang nakakahanap ng sulit na paglipat dahil sa sikat ng araw, espasyo, at mga oportunidad sa bansa."
+    }
+  },
+  "petsToAustralia": {
+    "description": "Posibleng dalhin ang iyong mga alagang hayop sa Australia, ngunit nangangailangan ito ng malawakang pagpaplano dahil sa mahigpit na mga patakaran sa biosecurity. Pinoprotektahan ng mahigpit na sistema ng kuwarentenas ng Australia ang natatanging ecosystem nito mula sa mga dayuhang sakit at peste.",
+    "navigation": {
+      "title": "Gabay sa Paglalakbay ng Alagang Hayop"
+    },
+    "accessibility": {
+      "sectionButton": "Tingnan ang seksyon tungkol sa {title}"
+    },
+    "sections": [
+      {
+        "id": "mga kinakailangan sa susi",
+        "icon": "✅",
+        "title": "Mga Pangunahing Kinakailangan",
+        "content": {
+          "requirements": {
+            "0": {
+              "title": "Mga Kwalipikadong Alagang Hayop",
+              "description": "Tanging ilang mga hayop lamang ang pinapayagang makapasok sa Australia:",
+              "list": {
+                "0": "Mga aso (hindi kasama ang ilang mga lahi tulad ng Pit Bull Terrier)",
+                "1": "Mga pusa (hindi kasama ang mga pusang Savannah ng henerasyong F1-F4)",
+                "2": "Ang ibang mga alagang hayop ay karaniwang hindi pinapayagan"
+              }
+            },
+            "1": {
+              "title": "Inaprubahang Bansang Pinagmulan",
+              "description": "Ang iyong alagang hayop ay dapat na nagmumula sa isang aprubadong bansa. Ang UK ay inuri bilang isang bansang nasa Kategorya 3, na siyang nagtatakda ng mga partikular na kinakailangan."
+            },
+            "2": {
+              "title": "Pag-microchip",
+              "description": "Dapat lagyan ng microchip ang iyong alagang hayop gamit ang isang ISO-compliant microchip bago ang anumang pagbabakuna o pagsusuri sa dugo."
+            },
+            "3": {
+              "title": "Pagbabakuna at Pagsusuri sa Rabies",
+              "description": "Kinakailangan ang pagbabakuna laban sa rabies na susundan ng Rabies Neutralizing Antibody Titre Test (RNATT).",
+              "highlight": "Dapat gawin ang RNATT <span class=\"font-medium\">nang hindi bababa sa 180 araw bago pumasok</span> sa Australia."
+            },
+            "4": {
+              "title": "Pahintulot sa Pag-angkat",
+              "description": "Dapat kang kumuha ng permit sa pag-import mula sa Australian Department of Agriculture, Water and the Environment.",
+              "highlight": "Mag-apply nang hindi bababa sa <span class=\"font-medium\">42 araw bago ang paglalakbay</span>."
+            },
+            "5": {
+              "title": "Mga Karagdagang Paggamot",
+              "description": "Sa loob ng ilang araw ng paglalakbay, kakailanganin ng iyong alagang hayop ng karagdagang mga paggamot para sa:",
+              "list": {
+                "0": "Mga panlabas na parasito (mga garapata at pulgas)",
+                "1": "Mga panloob na parasito (bulate)",
+                "2": "Iba pang mga partikular na pagsusuri at paggamot"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "takdang panahon",
+        "icon": "📅",
+        "title": "Timeline at Pagpaplano",
+        "content": {
+          "description": "Ang pagdadala ng mga alagang hayop sa Australia ay nangangailangan ng <span class=\"font-medium\">hindi bababa sa 7-8 buwan</span> ng paghahanda.",
+          "phases": {
+            "0": {
+              "timeframe": "7+ Buwan Bago ang Paglalakbay",
+              "tasks": {
+                "0": "I-verify ang pagiging kwalipikado ng iyong alagang hayop para sa pag-import",
+                "1": "Tiyaking ang microchip ay sumusunod sa ISO",
+                "2": "Suriin/i-update ang bakuna laban sa rabies",
+                "3": "Mag-iskedyul ng pagsusuri sa dugo ng RNATT (dapat gawin nang hindi bababa sa 180 araw bago dumating)"
+              }
+            },
+            "1": {
+              "timeframe": "2-3 Buwan Bago ang Paglalakbay",
+              "tasks": {
+                "0": "Mag-apply para sa import permit (hindi bababa sa 42 araw bago ang paglalakbay)",
+                "1": "Mag-book ng espasyo para sa pasilidad ng kuwarentenas sa Melbourne",
+                "2": "Ayusin ang transportasyon ng alagang hayop kasama ang isang aprubadong carrier"
+              }
+            },
+            "2": {
+              "timeframe": "10-30 Araw Bago ang Paglalakbay",
+              "tasks": {
+                "0": "Kumpletuhin ang mga pangwakas na pagsusuri sa beterinaryo",
+                "1": "Magbigay ng mga kinakailangang paggamot para sa parasito",
+                "2": "Kumuha ng mga opisyal na sertipiko sa kalusugan na inaprubahan ng beterinaryo ng gobyerno",
+                "3": "Ihanda ang travel crate ayon sa mga pamantayan ng IATA"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "quarantine",
+        "icon": "🔒",
+        "title": "Proseso ng Kuwarentenas",
+        "content": {
+          "warning": "Ang lahat ng mga alagang hayop na papasok sa Australia ay dapat sumailalim sa mandatory quarantine period, anuman ang bansang pinagmulan.",
+          "keyInfo": {
+            "0": {
+              "icon": "📍",
+              "title": "Punto ng Pagpasok",
+              "description": "Ang Melbourne ang <span class=\"font-medium\">tanging daungan ng pagpasok</span> para sa mga alagang hayop na pumapasok sa Australia. Ang iyong alagang hayop ay dapat lumipad papunta sa Melbourne Airport."
+            },
+            "1": {
+              "icon": "⏱️",
+              "title": "Tagal",
+              "description": "Hindi bababa sa <span class=\"font-medium\">10 araw</span> sa pasilidad ng kuwarentenas ng gobyerno. Maaari itong pahabain kung may lumitaw na mga problema sa kalusugan."
+            }
+          },
+          "details": {
+            "0": {
+              "title": "Pasilidad para sa quarantine",
+              "description": "Ang pasilidad ng Post Entry Quarantine (PEQ) sa Melbourne ang siyang lugar kung saan nananatili ang lahat ng inaangkat na hayop. Nagbibigay ito ng:",
+              "list": {
+                "0": "• Mga pangunahing kulungan ng aso/kulungan ng aso na may kontrol sa klima",
+                "1": "• Regular na pagpapakain at pangunahing pangangalaga",
+                "2": "• Mga inspeksyon at paggamot sa beterinaryo",
+                "3": "• <span class=\"font-medium\">Hindi pinapayagan ang pagbisita</span> habang naka-quarantine"
+              }
+            },
+            "1": {
+              "title": "Pagkatapos ng Kuwarentenas",
+              "description": "Kapag matagumpay na natapos ng iyong alagang hayop ang kuwarentenas, maaari kang:",
+              "list": {
+                "0": "• Kunin sila mula sa pasilidad sa Melbourne",
+                "1": "• Ayusin ang transportasyong domestiko papunta sa iyong huling destinasyon",
+                "2": "• Irehistro ang iyong alagang hayop sa mga lokal na awtoridad sa iyong bagong tahanan"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "mga gastos",
+        "icon": "💰",
+        "title": "Tinatayang Gastos",
+        "content": {
+          "description": "Ang kabuuang gastos ay maaaring mula $3,000 – $7,000 AUD bawat alagang hayop, depende sa iyong lokasyon at laki ng alagang hayop.",
+          "tip": "<strong>Tip:</strong> Ang paggamit ng isang propesyonal na serbisyo sa transportasyon ng alagang hayop ay maaaring gawing mas simple ang proseso, bagama't mas mahal. Sila ang bahala sa mga papeles at logistik."
+        }
+      },
+      {
+        "id": "buhay ng alagang hayop",
+        "icon": "🐶",
+        "title": "Buhay ng Alagang Hayop sa Australia",
+        "content": {
+          "description": "Ang Australia ay isang bansang mapagmahal sa mga hayop na may matataas na pamantayan para sa pangangalaga ng alagang hayop at maraming lugar na pinapayagan ang mga alagang hayop.",
+          "aspects": {
+            "0": {
+              "icon": "🏥",
+              "title": "Pangangalaga sa Beterinaryo",
+              "description": "Mayroong mataas na kalidad na pangangalagang beterinaryo na makukuha sa buong bansa. Ang taunang pagbisita sa beterinaryo ay karaniwang nagkakahalaga ng $200-400 AUD, at ang insurance para sa alagang hayop ay mula $20-60/buwan."
+            },
+            "1": {
+              "icon": "📝",
+              "title": "Pagpaparehistro",
+              "description": "Dapat nakarehistro ang mga alagang hayop sa mga lokal na konseho. Nag-iiba-iba ang mga bayarin sa pagpaparehistro ngunit karaniwang $30-150 AUD taun-taon, na may mga diskwento para sa mga alagang hayop na tinanggalan ng kasarian."
+            },
+            "2": {
+              "icon": "🏞️",
+              "title": "Mga Parke at Dalampasigan",
+              "description": "Maraming itinalagang lugar na walang tali, bagama't mas mahigpit ang mga patakaran kaysa sa ilang bansa. Hindi lahat ng dalampasigan ay pinapayagan ang mga alagang hayop, kaya suriin ang mga lokal na regulasyon."
+            },
+            "3": {
+              "icon": "🏠",
+              "title": "Pabahay",
+              "description": "Maaaring maging mahirap ang paghahanap ng mga paupahang tumatanggap ng mga alagang hayop. Asahan ang pagbabayad ng pet bond (karaniwan ay $200-500 AUD) para sa mga paupahang tumatanggap ng mga alagang hayop."
+            }
+          },
+          "warning": "Mahalaga: Ang Australia ay may natatanging mga hayop at ecosystem. Ang mga aso at pusa ay dapat kontrolin upang protektahan ang mga katutubong hayop, lalo na sa mga lugar na malapit sa mga bush o conservation zone."
+        }
+      }
+    ],
+    "costTable": {
+      "headers": {
+        "expense": "Gastos",
+        "cost": "Tinatayang Gastos (AUD)"
+      },
+      "rows": [
+        {
+          "expense": "Paghahanda sa beterinaryo (mga pagbabakuna, pagsusuri, paggamot)",
+          "cost": "$800–$1,500"
+        },
+        {
+          "expense": "Permit sa pag-import",
+          "cost": "$480"
+        },
+        {
+          "expense": "Pamasahe sa eroplano",
+          "cost": "$800–$2,500"
+        },
+        {
+          "expense": "Mga bayarin sa kuwarentenas",
+          "cost": "$1,200–$2,000"
+        },
+        {
+          "expense": "Mga bayarin sa serbisyo ng transportasyon ng alagang hayop (opsyonal)",
+          "cost": "$500–$1,500"
+        },
+        {
+          "expense": "Transportasyong domestiko pagkatapos ng kuwarentenas",
+          "cost": "$200–$500"
+        }
+      ]
+    },
+    "breedRestrictions": {
+      "title": "Mga Limitadong Lahi ng Alagang Hayop",
+      "note": "Ang mga lahing ito ay ipinagbabawal na pumasok sa Australia sa anumang pagkakataon.",
+      "categories": [
+        {
+          "type": "Mga Ipinagbabawal na Lahi ng Aso",
+          "breeds": {
+            "0": "Amerikanong Pit Bull Terrier",
+            "1": "Perro de Presa Canario",
+            "2": "Dogo Argentina",
+            "3": "Fila Brasileiro",
+            "4": "Tosa ng Hapon",
+            "5": "At anumang mga pinaghalong lahi ng mga ito"
+          }
+        },
+        {
+          "type": "Mga Ipinagbabawal na Lahi ng Pusa",
+          "breeds": {
+            "0": "Mga pusang Savannah (mga henerasyong F1, F2, F3, F4)",
+            "1": "Mga pusang Bengal (mga henerasyong F1, F2, F3)",
+            "2": "Chausie cats (F1, F2, F3 na henerasyon)",
+            "3": "Mga pusang cougar na bato",
+            "4": "At anumang mga halimuyak na may mga pusang ligaw"
+          }
+        }
+      ]
+    },
+    "professionalServices": {
+      "title": "Mga Propesyonal na Serbisyo sa Paghahatid ng Alagang Hayop",
+      "services": [
+        {
+          "icon": "🚚",
+          "name": "Transportasyong Kumpleto sa Serbisyo",
+          "description": "Kumpletong serbisyo mula pinto hanggang pinto kasama ang lahat ng papeles",
+          "cost": "$3,000–$6,000 AUD"
+        },
+        {
+          "icon": "📋",
+          "name": "Dokumentasyon Lamang",
+          "description": "Tulong sa mga permit, sertipiko ng kalusugan, at mga papeles",
+          "cost": "$800–$1,500 AUD"
+        },
+        {
+          "icon": "✈️",
+          "name": "Pag-book ng Flight",
+          "description": "Espesyal na pag-book at koordinasyon ng flight ng alagang hayop",
+          "cost": "$300–$800 AUD"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Checklist para sa Pag-angkat ng Alagang Hayop sa Australia",
+      "items": [
+        "Tiyaking karapat-dapat ang iyong alagang hayop para sa pag-import sa Australia",
+        "Tiyaking ang microchip ay sumusunod sa ISO",
+        "Mag-iskedyul ng pagbabakuna laban sa rabies at pagsusuri ng dugo para sa RNATT (hindi bababa sa 180 araw bago ang paglalakbay)",
+        "Mag-apply para sa import permit (hindi bababa sa 42 araw bago ang paglalakbay)",
+        "Mag-book ng tirahan sa pasilidad ng kuwarentenas sa Melbourne",
+        "Mag-ayos ng internasyonal na transportasyon na pinapayagan ang mga alagang hayop",
+        "I-finalize ang mga health certificate at treatment bago umalis"
+      ]
+    },
+    "conclusion": {
+      "title": "Isang Bagong Buhay sa Ilalim ng Mundo para sa Iyong Alagang Hayop",
+      "description": "Bagama't ang pagdadala ng mga alagang hayop sa Australia ay nangangailangan ng malaking pagpaplano, oras, at pamumuhunan sa pananalapi, ang gantimpala ng pagkakaroon ng iyong mabalahibong miyembro ng pamilya na sumama sa iyo sa iyong bagong tahanan ay ginagawang sulit ito. Nag-aalok ang Australia ng mahusay na pangangalaga sa beterinaryo at isang komunidad na mapagmahal sa alagang hayop kapag matagumpay na nalampasan ng iyong alagang hayop ang mga kinakailangan sa pagpasok."
+    }
+  }
+}

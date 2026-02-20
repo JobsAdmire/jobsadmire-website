@@ -1,0 +1,1313 @@
+{
+  "turkeyHeroSection": {
+    "badge": "Voyages exclusifs",
+    "title": "Découvrez votre prochaine aventure",
+    "description": "Découvrez des destinations à couper le souffle et créez des souvenirs inoubliables grâce à nos forfaits de voyage haut de gamme adaptés à vos désirs.",
+    "currentlyViewing": {
+      "label": "En cours de visualisation"
+    },
+    "buttons": {
+      "explore": "Explorer maintenant",
+      "viewAll": "Voir toutes les destinations"
+    },
+    "destinationCounter": "Destination {actuelle}/{total}",
+    "destinations": [
+      {
+        "img": "/images/ihs.png",
+        "name": "Istanbul",
+        "country": "Turquie"
+      },
+      {
+        "img": "/images/ihi.png",
+        "name": "Izmir",
+        "country": "Turquie"
+      },
+      {
+        "img": "/images/iha.png",
+        "name": "Antalya",
+        "country": "Turquie"
+      },
+      {
+        "img": "/images/ihan.png",
+        "name": "Ankara",
+        "country": "Turquie"
+      },
+      {
+        "img": "/images/ihb.png",
+        "name": "Bursa",
+        "country": "Turquie"
+      }
+    ],
+    "accessibility": {
+      "exploreButton": "Explorer les destinations maintenant",
+      "viewAllButton": "Voir toutes les destinations disponibles",
+      "destinationImage": "Afficher la destination : {nom}",
+      "featuredDestination": "Image de la destination",
+      "carouselControl": "Aller à la destination {numéro}"
+    },
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "turkeyTableOfContents": {
+    "title": "Table des matières",
+    "subtitle": "Naviguer dans les sections",
+    "currentlyReading": "Lecture en cours",
+    "sectionsCount": "{count} sections à explorer",
+    "sections": [
+      {
+        "title": "Faits concernant la Turquie",
+        "id": 1
+      },
+      {
+        "title": "Options de visa pour s'installer en Turquie",
+        "id": 2
+      },
+      {
+        "title": "Conditions à remplir pour s'installer en Turquie",
+        "id": 3
+      },
+      {
+        "title": "Obtenir un emploi en Turquie en tant qu'étranger",
+        "id": 4
+      },
+      {
+        "title": "Déménager des États-Unis vers la Turquie",
+        "id": 5
+      },
+      {
+        "title": "Déménager en Turquie depuis le Royaume-Uni",
+        "id": 6
+      },
+      {
+        "title": "Quel est le coût d'un déménagement en Turquie ?",
+        "id": 7
+      },
+      {
+        "title": "Déménager avec des animaux de compagnie en Turquie",
+        "id": 8
+      }
+    ],
+    "quickNavigation": {
+      "title": "Navigation rapide",
+      "footer": "Faire défiler {count} sections"
+    },
+    "accessibility": {
+      "toggleMenu": "Menu de navigation",
+      "sectionButton": "Naviguer vers la section : {titre}",
+      "quickNavigation": "Menu de navigation rapide",
+      "quickNavSection": "Naviguer rapidement vers : {titre}"
+    }
+  },
+  "turkeyFactsCard": {
+    "title": "Faits fascinants sur la Turquie",
+    "description": "Découvrez le patrimoine culturel unique de ce magnifique pays. La Turquie offre une histoire riche et des éléments culturels divers qui ont influencé le monde.",
+    "navigation": {
+      "title": "Explorer les faits",
+      "previous": "Fait précédent",
+      "next": "Fait suivant"
+    },
+    "allFacts": {
+      "title": "Tous les faits sur la Turquie"
+    },
+    "facts": [
+      {
+        "title": "Istanbul se trouve sur deux continents",
+        "description": "C'est la seule grande ville au monde qui se trouve à la fois en Europe et en Asie, divisée par le détroit du Bosphore.",
+        "icon": "🌉"
+      },
+      {
+        "title": "Accueil de Troie",
+        "description": "La ville antique de <strong>Troy</strong>, rendue célèbre par l'Iliade d'Homère, est située dans l'ouest de la Turquie.",
+        "icon": "🏛️"
+      },
+      {
+        "title": "Lieu de naissance du Père Noël",
+        "description": "<Saint Nicolas, qui a inspiré la légende du Père Noël, est né à Patara, une ville de l'actuelle Turquie.",
+        "icon": "🎅"
+      },
+      {
+        "title": "Le café turc est inscrit sur la liste de l'UNESCO",
+        "description": "Le café turc a une telle importance culturelle qu'il est reconnu par l'UNESCO comme patrimoine culturel immatériel.",
+        "icon": "☕"
+      },
+      {
+        "title": "Les tulipes sont originaires de Turquie",
+        "description": "Souvent associées aux Pays-Bas, les tulipes étaient à l'origine cultivées dans l'<strong>Empire ottoman</strong> et introduites en Europe depuis la Turquie.",
+        "icon": "🌷"
+      }
+    ],
+    "accessibility": {
+      "factButton": "Sélectionner le fait : {titre}",
+      "previousFact": "Aller au fait précédent",
+      "nextFact": "Aller au fait suivant"
+    }
+  },
+  "turkeyJobGuide": {
+    "header": {
+      "icon": "🇹🇷",
+      "title": "Obtenir un emploi en Turquie en tant qu'étranger",
+      "subtitle": "Un guide complet",
+      "description": "La culture dynamique de la Turquie, sa situation stratégique entre l'Europe et l'Asie et son économie en pleine croissance en font une destination attrayante pour les expatriés à la recherche d'un emploi. Toutefois, en tant qu'étranger, décrocher un emploi en Turquie nécessite une bonne compréhension du marché du travail, de la réglementation relative aux visas de travail et des attentes culturelles.",
+      "subDescription": "Voici un guide complet pour vous aider à trouver un emploi en Turquie en tant que ressortissant étranger."
+    },
+    "navigation": {
+      "title": "Contenu du guide"
+    },
+    "sections": [
+      {
+        "id": "marché du travail",
+        "icon": "🔍",
+        "title": "Comprendre le marché du travail turc",
+        "content": "<div><p class=\"text-gray-700 mb-4\">La Turquie offre des opportunités dans divers secteurs, mais certaines industries sont plus accessibles et plus accueillantes pour les travailleurs étrangers.</p><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Secteurs en demande pour les étrangers:</h3><ul class=\"grid grid-cols-1 md :grid-cols-2 gap-3 mb-6\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Tourisme et hôtellerie</span><p class=\"text-sm text-gray-600\">Hôtels, agences de voyage, tours opérateurs</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Éducation</span><p class=\"text-sm text-gray-600\">Professeurs d'anglais, écoles internationales</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Technologie et logiciels</span><p class=\"text-sm text-gray-600\">Développement, services informatiques</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Construction et ingénierie</span><p class=\"text-sm text-gray-600\">Gestion de projet, rôles spécialisés</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Import-Export & Commerce</span><p class=\"text-sm text-gray-600\">Commerce international, logistique</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Santé et services médicaux</span><p class=\"text-sm text-gray-600\">Professionnels spécialisés</p></li></ul><p class=\"text-gray-700\">Connaître la langue vous donne un avantage concurrentiel, mais des emplois anglophones sont disponibles, notamment dans les entreprises multinationales ou les start-ups technologiques.</p></div>"
+      },
+      {
+        "id": "exigences juridiques",
+        "icon": "🗂️",
+        "title": "Exigences légales : Permis de travail et visa",
+        "content": "<div><div class=\"mb-6\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Étape 1 : obtenir une offre d'emploi</h3><p class=\"text-gray-700 mb-4\">Avant de pouvoir travailler légalement en Turquie, vous devez d'abord recevoir une offre d'emploi officielle d'un employeur turc. Contrairement à certains pays, vous ne pouvez pas demander un permis de travail général sans sponsor.</p></div><div class=\"mb-6\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Étape 2 : demande de visa de travail</h3><p class=\"text-gray-700 mb-4\">Une fois que vous avez reçu une offre d'emploi:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Vous demandez un visa de travail au consulat/à l'ambassade de Turquie dans votre pays d'origine.</li><li>Votre employeur demande simultanément un permis de travail auprès du ministère turc du travail et de la sécurité sociale.</li></ul></div><div class=\"bg-sky-50 p-4 rounded-md border border-sky-100 mb-4\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Documents requis :</h3><ul class=\"list-disc pl-6 mb-2 text-gray-700\"><li>Passeport valide</li><li>Contrat de travail</li><li>Diplômes</li><li>Photos d'identité</li><li>Formulaire de demande de visa dûment rempli</li><li>Documents de parrainage de l'employeur</li></ul></div><p class=\"text-gray-700\">Une fois votre demande approuvée, vous recevrez un visa de travail, vous recevrez un visa de travail et pourrez entrer en Turquie pour commencer votre travail.</p></div>"
+      },
+      {
+        "id": "Offres d'emploi",
+        "icon": "🏢",
+        "title": "Trouver des possibilités d'emploi en Turquie",
+        "content": "<div><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Top Job Portals:</h3><div class=\"grid grid-cols-2 md:grid-cols-3 gap-3 mb-6\"><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Kariyer.net</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Yenibiris.com</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Secretcv.com</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border-sky-100\">Jooble Turkey</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border-sky-100\">LinkedIn</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover :bg-sky-50 border border-sky-100\">Glassdoor</a></div><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Conseils pro:</h3><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Utilisez LinkedIn pour entrer en contact avec des professionnels des ressources humaines en Turquie.</li><li>Filtrez les offres d'emploi en fonction des exigences linguistiques (par ex, les postes en anglais).</li><li>Considérez les agences de recrutement spécialisées dans les placements internationaux.</li></ul></div>"
+      },
+      {
+        "id": "enseignement-anglais",
+        "icon": "🧑‍🏫",
+        "title": "Enseigner l'anglais en Turquie",
+        "content": "<div><p class=\"text-gray-700 mb-4\">L'un des emplois les plus courants pour les étrangers en Turquie est l'enseignement de l'anglais.</p><div class=\"flex flex-col md:flex-row gap-6 mb-6\"><div class=\"flex-1 bg-white p-4 rounded-md border border-sky-100\"><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Où vous pouvez travailler :</h3><ul class=\"list-disc pl-6 text-gray-700\"><li>Écoles de langues privées</li><li>Universités</li><li>Écoles internationales</li><li>Plateformes de tutorat en ligne</li></ul></div><div class=\"flex-1 bg-white p-4 rounded-md border border-sky-100\"><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Exigences :</h3><ul class=\"list-disc pl-6 text-gray-700\"><li>Bachelor's degree</li><li>TEFL/TESOL/CELTA certification</li><li>Native or fluent English proficiency</li></ul></div></div><p class=\"text-gray-700\">Certaines écoles offrent également un parrainage de visa et un hébergement.</p></div>"
+      },
+      {
+        "id": "permis de travail",
+        "icon": "🧾",
+        "title": "Validité et renouvellement du permis de travail",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Les permis de travail initiaux sont généralement valables pour <strong>1 an</strong>.</p><p>Ils peuvent être renouvelés pour <strong>2 ans</strong> lors du premier renouvellement et <strong>3 ans</strong> par la suite.</p><p>Après <strong>5 ans</strong> de travail continu, vous pouvez demander un permis de séjour de longue durée.</p></div>"
+      },
+      {
+        "id": "indépendant",
+        "icon": "🧑‍💼",
+        "title": "Les étrangers peuvent-ils travailler en freelance ou à distance en Turquie ?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Techniquement, vous ne pouvez pas légalement travailler en freelance ou à distance pour des clients internationaux en Turquie sans un permis en bonne et due forme. Toutefois, de nombreux expatriés travaillent à distance en vertu d'un permis de séjour de courte durée ou s'enregistrent en tant qu'indépendants, ce qui implique une procédure complexe comprenant:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>L'ouverture d'une société turque</li><li>L'obtention d'un numéro fiscal</li><li>La demande d'un visa d'affaires ou d'un permis d'entrepreneur</li></ul></div>"
+      },
+      {
+        "id": "langue",
+        "icon": "💬",
+        "title": "Barrière linguistique : Le turc est-il nécessaire ?",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>De nombreux emplois professionnels exigent au moins des <strong>compétences de base en turc</strong>.</p><p>Toutefois, les secteurs de la technologie, du tourisme et de l'éducation vous permettent souvent de travailler avec <strong>l'anglais uniquement</strong>.</p><p>L'apprentissage du turc améliore l'intégration et booste vos perspectives d'emploi.</p></div>"
+      },
+      {
+        "id": "la mise en réseau",
+        "icon": "👥",
+        "title": "Travailler en réseau en Turquie",
+        "content": "<div><p class=\"text-gray-700 mb-4\">En Turquie, le réseautage est puissant. Assistez à:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>des rencontres d'expatriés</li><li>des séminaires sectoriels</li><li>des événementsLinkedIn et des réunions de la chambre de commerce turque</li></ul><p class=\"text-gray-700\">Les présentations personnelles et les recommandations ont souvent plus de poids que les candidatures spontanées.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Liste de contrôle finale pour l'obtention d'un emploi en Turquie"
+    },
+    "checklist": [
+      "Polir son CV et l'adapter aux formats turcs",
+      "S'adresser aux entreprises autorisées à embaucher des étrangers",
+      "Préparer les documents nécessaires au traitement des demandes de visa",
+      "Apprendre quelques phrases de base en turc",
+      "Comprendre vos droits en vertu du droit du travail turc"
+    ],
+    "conclusion": {
+      "icon": "✈️",
+      "title": "Prêt à travailler en Turquie ?",
+      "description": "Obtenir un emploi en Turquie en tant qu'étranger est tout à fait possible en adoptant la bonne approche, en se préparant et en faisant preuve de patience. Que vous soyez à la recherche d'un changement de carrière, d'une expérience internationale ou d'une installation à long terme, la Turquie offre un environnement unique, riche en opportunités et en culture."
+    },
+    "accessibility": {
+      "sectionToggle": "Toggle section : {titre}"
+    }
+  },
+  "turkeyMovingCostsGuide": {
+    "title": "Quel est le coût d'un déménagement en Turquie ?",
+    "description": "Déménager en Turquie peut être abordable par rapport à de nombreux pays occidentaux. Voici une ventilation détaillée des coûts auxquels vous pouvez vous attendre en déménageant en Turquie.",
+    "costSections": [
+      {
+        "id": "visa-résidence",
+        "icon": "🛂",
+        "title": "Visa et permis de séjour",
+        "amount": "$100-$600",
+        "details": "Comprend la carte, l'assurance maladie, les frais de visa",
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "logement",
+        "icon": "🏠",
+        "title": "Logement",
+        "amount": "600 à 1 200 $ d'avance",
+        "details": "1 à 2 mois de caution + premier mois de loyer",
+        "color": "bg-sky-600",
+        "subItems": [
+          {
+            "title": "Centre ville (mensuel)",
+            "amount": "$300-$500"
+          },
+          {
+            "title": "Zones côtières/urbaines (mensuel)",
+            "amount": "$200-$400"
+          }
+        ]
+      },
+      {
+        "id": "expédition",
+        "icon": "📦",
+        "title": "Expédition (facultatif)",
+        "amount": "$2,000-$4,000",
+        "details": "Petit conteneur. De nombreux expatriés préfèrent acheter des meubles locaux pour réduire les coûts.",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "services publics",
+        "icon": "💡",
+        "title": "Utilitaires et configuration Internet",
+        "amount": "$50-$150",
+        "details": "Dépôts et frais d'installation",
+        "color": "bg-sky-500",
+        "subItems": [
+          {
+            "title": "Factures mensuelles",
+            "amount": "$30-$60"
+          }
+        ]
+      },
+      {
+        "id": "tous les jours",
+        "icon": "🛒",
+        "title": "Coûts quotidiens",
+        "amount": "230 à 350 $ par mois",
+        "color": "bg-sky-600",
+        "subItems": [
+          {
+            "title": "Épicerie",
+            "amount": "200 $ - 300 $/mois"
+          },
+          {
+            "title": "Transports publics",
+            "amount": "10-30 $/mois"
+          },
+          {
+            "title": "Mobile et internet",
+            "amount": "~20$/mois"
+          }
+        ]
+      }
+    ],
+    "totalBudget": {
+      "icon": "🔢",
+      "title": "Estimation totale (voyageur seul)",
+      "categories": [
+        {
+          "title": "Sans frais de port",
+          "amount": "$1,200-$2,500",
+          "description": "Comprend le visa, le dépôt de garantie, le premier mois de loyer et les frais d'installation."
+        },
+        {
+          "title": "Avec expédition",
+          "amount": "$3,500-$6,000+",
+          "description": "Comprend tous les coûts plus l'expédition d'un petit conteneur d'effets personnels."
+        }
+      ]
+    },
+    "moneySavingTips": {
+      "icon": "💰",
+      "title": "Conseils pour économiser de l'argent",
+      "tips": [
+        {
+          "title": "Acheter des meubles localement",
+          "description": "Les meubles turcs sont abordables et facilement disponibles. N'envisagez que l'expédition de l'essentiel."
+        },
+        {
+          "title": "Choisissez judicieusement votre lieu d'implantation",
+          "description": "Les zones situées en dehors des grandes villes comme Istanbul peuvent être 30 à 50 % moins chères pour le logement."
+        },
+        {
+          "title": "Voyager léger",
+          "description": "Chaque valise supplémentaire peut coûter entre 50 et 100 dollars sur les vols. N'apportez que ce dont vous avez besoin."
+        },
+        {
+          "title": "Tenir compte du calendrier saisonnier",
+          "description": "Pendant les mois d'hiver, les appartements sont souvent moins chers et les touristes moins nombreux."
+        }
+      ]
+    },
+    "conclusion": "Le coût d'un déménagement en Turquie est relativement abordable par rapport à d'autres destinations européennes ou nord-américaines. En planifiant et en établissant un budget adéquat, vous pouvez faire en sorte que votre déménagement en Turquie soit à la fois facile et économique.",
+    "accessibility": {
+      "toggleSection": "Basculer les détails pour {titre} section"
+    }
+  },
+  "usTurkeyGuide": {
+    "header": {
+      "icon": "🇺🇸➡️🇹🇷",
+      "title": "Déménager des États-Unis vers la Turquie",
+      "subtitle": "Tout ce qu'il faut savoir",
+      "description": "Vous rêvez d'une vie à l'étranger avec une culture riche, des côtes pittoresques et un coût de la vie moins élevé ? La Turquie devient de plus en plus une destination de choix pour les Américains à la recherche d'un nouveau mode de vie, que ce soit pour la retraite, le travail à distance ou l'aventure.",
+      "subDescription": "Voici un guide complet à l'intention des citoyens américains qui envisagent de s'installer en Turquie, couvrant tous les aspects de la question, des possibilités de visa aux conseils culturels."
+    },
+    "quickNavigation": {
+      "title": "Navigation rapide"
+    },
+    "sections": [
+      {
+        "id": "pourquoi-turquie",
+        "icon": "📌",
+        "title": "Pourquoi s'installer en Turquie ?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Les Américains sont attirés par la Turquie pour de nombreuses raisons:</p><ul class=\"grid grid-cols-1 md :grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Coût de la vie abordable</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Mode de vie méditerranéen et climat doux</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Riche histoire et cuisine de renommée mondiale</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Culture locale accueillante</span></li><li class=\"bg-blanc p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Situation stratégique entre l'Europe et l'Asie</span></li></ul><p class=\"text-gray-700\">Que vous déménagiez pour le travail, pour le travail, les études, la retraite ou simplement pour profiter d'un rythme de vie plus lent, la Turquie offre diverses options aux expatriés.</p></div>"
+      },
+      {
+        "id": "options de visa",
+        "icon": "🛂",
+        "title": "Options de visa pour les citoyens américains",
+        "content": "<div><p class=\"text-gray-700 mb-4\">En tant que citoyen américain, vous pouvez entrer en Turquie avec un visa touristique de 90 jours, mais pour un séjour de longue durée, vous aurez besoin de l'un des documents suivants:</p><div class=\"space-y-4\"><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">1. Permis de séjour de courte durée</h3><ul class=\"text-gray-700 space-y-1\"><li>- Idéal pour les nomades numériques, les travailleurs à distance et les nouveaux expatriés</li><li>- Valable pour une durée maximale d'un an, renouvelable</li><li>- Nécessite une preuve d'hébergement, des moyens financiers et une assurance maladie valide</li><li>, des moyens financiers et une assurance maladie valide</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">2. Visa d'étudiant et permis de séjour</h3><ul class=\"text-gray-700 space-y-1\"><li>- Pour ceux qui suivent des cours universitaires ou des cours de langue</li><li>- Nécessite une preuve d'inscription et un soutien financier</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">3. Visa de travail</h3><ul class=\"text-gray-700 space-y-1\"><li>- Vous devez obtenir une offre d'emploi d'un employeur turc</li><li>- L'employeur parrainera votre permis de travail</li><li>- Après approbation, vous pouvez demander un visa de travail au consulat turc aux États-Unis</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">4. Permis de séjour familial</h3><ul class=\"text-gray-700 space-y-1\"><li>- Pour les conjoints ou les enfants de citoyens turcs ou de résidents étrangers</li><li>- Valable jusqu'à 2 ans</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">5. Retraite ou séjour fondé sur la propriété</h3><p class=\"text-gray-700\">L'achat d'une propriété en Turquie (pas de valeur minimale pour la résidence) vous donne droit à un permis de séjour de courte durée</p></div></div></div></div>."
+      },
+      {
+        "id": "documents requis",
+        "icon": "🧾",
+        "title": "Documents requis pour la relocalisation",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Vous aurez généralement besoin des éléments suivants pour demander un permis de séjour:</p><div class=\"bg-sky-50 p-5 rounded-lg border border-sky-100\"><ul class=\"grid grid-cols-1 md :grid-cols-2 gap-4\"><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Passeport américain valide (avec au moins 6 mois de validité)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Numéro d'identification fiscale turque</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Preuve d'hébergement (contrat de location ou acte de propriété)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Assurance maladie (locale ou privée)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Photos d'identité (biométrique)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Relevés bancaires attestant de fonds suffisants</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Formulaire de demande de permis de séjour dûment rempli</span></li></ul></div></div>"
+      },
+      {
+        "id": "villes populaires",
+        "icon": "🏙️",
+        "title": "Où vivent la plupart des Américains en Turquie ?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Certaines des villes les plus populaires parmi les expatriés américains sont:</p><div class=\"grid grid-cols-1 md :grid-cols-2 gap-4 mb-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🏖️</span>Antalya</h3><ul class=\"text-gray-700 space-y-1\"><li>- Ville côtière avec un temps ensoleillé, des plages, et une vie abordable</li><li>- Idéale pour les retraités et les nomades numériques</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🌆</span>Istanbul</h3><ul class=\"text-gray-700 space-y-1\"><li>- Capitale économique et culturelle</li><li>- Idéal pour les professionnels, étudiants, et ceux qui veulent un style de vie urbain</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🎓</span>Ankara</h3><ul class=\"text-gray-700 space-y-1\"><li>- La capitale de la Turquie, plus calme qu'Istanbul mais offrant de nombreuses possibilités</li><li>- Plus de possibilités de carrières bureaucratiques et diplomatiques</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🏝️</span>Izmir</h3><ul class=\"text-gray-700 space-y-1\"><li>- Ville côtière égéenne décontractée à l'ambiance progressiste</li><li>- Populaire auprès des jeunes expatriés et des entrepreneurs</li></ul></div></div></div></div>"
+      },
+      {
+        "id": "coût de la vie",
+        "icon": "💸",
+        "title": "Comparaison du coût de la vie : Turquie vs États-Unis",
+        "content": "<div><div class=\"overflow-x-auto mb-4\"><table class=\"min-w-full bg-white border border-sky-200 rounded-lg\"><thead><tr class=\"bg-sky-100\"><th class=\"py-3 px-4 text-left border-b border-sky-200\">Dépenses</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">Turquie (moy.)</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">USA (moy.)</th></thead><tbody><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Loyer (1BR centre ville)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">300-$600/mois</td><td class=\"py-3 px-4 border-b border-sky-100\">1,500-$2,000</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Internet (mensuel)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">10-$20</td><td class=\"py-3 px-4 border-b border-sky-100\">50-70$</td></tr><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Dîner au restaurant (pour 2)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">15-30$</td><td class=\"py-3 px-4 border-b border-sky-100\">50-100$</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Transport</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">10-20$/mois</td><td class=\"py-3 px-4 border-b border-sky-100\">70-150$</td></tr></tbody></table></div><p class=\"text-gray-700\">La Turquie offre un coût de la vie nettement inférieur, la Turquie offre un coût de la vie nettement moins élevé, ce qui la rend attrayante pour les travailleurs à distance et les retraités.</p></div>"
+      },
+      {
+        "id": "soins de santé",
+        "icon": "🩺",
+        "title": "Soins de santé en Turquie",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>La Turquie dispose d'un solide système de santé publique (SGK), et les soins de santé privés sont de grande qualité et abordables. Pour les demandeurs de permis de séjour, une assurance privée est exigée au départ.</p><p>Une fois que vous aurez un emploi légal, vous pourrez bénéficier de l'assurance maladie publique (SGK), qui couvre la plupart des traitements et des médicaments.</p></div>"
+      },
+      {
+        "id": "langue",
+        "icon": "🗣️",
+        "title": "Conseils linguistiques et culturels",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Le turc est la langue officielle, bien que de nombreux Turcs des zones urbaines parlent anglais.</p><p>Apprendre des rudiments de turc facilite l'intégration et la vie quotidienne.</p><p>Respectez les coutumes locales, notamment en ce qui concerne l'habillement et le comportement en public dans les régions conservatrices.</p><p>Les Turcs sont connus pour leur hospitalité - il est courant d'être invité à prendre le thé ou à manger.</p></div>"
+      },
+      {
+        "id": "en mouvement",
+        "icon": "📦",
+        "title": "Déménagement et expédition depuis les États-Unis",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Considérez les déménageurs internationaux spécialisés dans les déménagements en Turquie.</p><p>Les biens ménagers peuvent généralement entrer en franchise de droits si vous obtenez un permis de séjour.</p><p>Les animaux domestiques peuvent être importés avec des carnets de vaccination et des puces électroniques - vérifiez les réglementations mises à jour.</p></div>"
+      },
+      {
+        "id": "banque",
+        "icon": "🏦",
+        "title": "Banque et finances",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Vous pouvez ouvrir un compte bancaire turc en utilisant votre passeport, votre numéro de taxe et votre adresse.</p><p>De nombreux expatriés possèdent un compte bancaire américain et utilisent Wise ou Revolut pour les virements.</p><p>Monnaie : Lire turque (TRY). Les dollars américains sont acceptés dans un nombre limité d'endroits mais ne sont pas couramment utilisés.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Dernière liste de contrôle pour les Américains qui s'installent en Turquie"
+    },
+    "checklist": [
+      {
+        "text": "Demander un permis de séjour ou un visa de travail",
+        "fullWidth": false
+      },
+      {
+        "text": "Logement sécurisé (à court ou à long terme)",
+        "fullWidth": false
+      },
+      {
+        "text": "Obtenir un numéro fiscal turc",
+        "fullWidth": false
+      },
+      {
+        "text": "Souscrire une assurance maladie privée",
+        "fullWidth": false
+      },
+      {
+        "text": "Apprendre des phrases clés en turc",
+        "fullWidth": false
+      },
+      {
+        "text": "Mise en place de services bancaires et mobiles",
+        "fullWidth": false
+      },
+      {
+        "text": "Rejoindre les communautés d'expatriés et les groupes Facebook pour obtenir du soutien",
+        "fullWidth": true
+      }
+    ],
+    "conclusion": {
+      "icon": "✈️",
+      "title": "Conclusion : Cela vaut-il la peine de quitter les États-Unis pour s'installer en Turquie ?",
+      "description": "Pour de nombreux Américains, la Turquie offre une alternative enrichissante, abordable et dynamique à la vie aux États-Unis. Avec une bonne préparation, des démarches légales et une attitude ouverte, s'installer en Turquie peut être le début d'un nouveau chapitre passionnant."
+    },
+    "accessibility": {
+      "sectionToggle": "Toggle section : {titre}"
+    }
+  },
+  "movingWithPets": {
+    "title": "Déménager avec des animaux de compagnie en Turquie",
+    "description": "Il est tout à fait possible d'emmener votre ami à fourrure en Turquie, mais vous devrez suivre des règles spécifiques pour que tout se passe bien. Voici ce qu'il faut savoir pour s'installer en Turquie avec son animal de compagnie.",
+    "navigation": {
+      "title": "Guide de voyage pour animaux de compagnie",
+      "sections": [
+        {
+          "id": "exigences",
+          "icon": "✅",
+          "title": "Exigences clés"
+        },
+        {
+          "id": "aéroport",
+          "icon": "🛬",
+          "title": "À l'aéroport"
+        },
+        {
+          "id": "voyage",
+          "icon": "✈️",
+          "title": "Options de voyage"
+        },
+        {
+          "id": "après l'arrivée",
+          "icon": "🏠",
+          "title": "Après l'arrivée"
+        },
+        {
+          "id": "pour les animaux de compagnie",
+          "icon": "🐶",
+          "title": "La Turquie amie des animaux"
+        }
+      ]
+    },
+    "sections": {
+      "requirements": {
+        "items": [
+          {
+            "title": "Puce électronique",
+            "content": "Votre animal doit être muni d'une puce électronique conforme aux normes ISO 11784/11785."
+          },
+          {
+            "title": "Vaccination contre la rage",
+            "content": "Doit être administré <span class=\"font-medium\">au moins 30 jours</span> avant le voyage et au cours des <span class=\"font-medium\">12 derniers mois</span>."
+          },
+          {
+            "title": "Certificat de santé",
+            "type": "liste",
+            "listItems": [
+              "- Délivré par un vétérinaire agréé et approuvé par l'autorité officielle de votre pays (comme l'USDA aux États-Unis ou le DEFRA au Royaume-Uni).",
+              "- Doit être délivré dans les <span class=\"font-medium\">10 jours</span> avant l'arrivée en Turquie."
+            ]
+          },
+          {
+            "title": "Traitement contre le ver solitaire et les tiques",
+            "content": "Effectué dans les 5 jours précédant le voyage.",
+            "note": "(pas toujours nécessaire mais recommandé)"
+          }
+        ]
+      },
+      "airport": {
+        "description": "Vous traverserez des <span class=\"font-medium\">douanes avec votre animal</span>.",
+        "documentsTitle": "Apportez des documents imprimés, notamment",
+        "documents": [
+          "Protection contre les microprocesseurs",
+          "Carnet de vaccination",
+          "Certificat de santé",
+          "Passeport pour animaux de compagnie (si l'animal provient de l'UE/du Royaume-Uni)"
+        ]
+      },
+      "traveling": {
+        "options": [
+          {
+            "icon": "🐱",
+            "ariaLabel": "petit animal de compagnie",
+            "title": "En cabine (petits animaux)",
+            "description": "La plupart des compagnies aériennes autorisent les animaux de compagnie de moins de 8 kg, caisse de transport comprise."
+          },
+          {
+            "icon": "🐕",
+            "ariaLabel": "grand animal de compagnie",
+            "title": "Cargo",
+            "description": "Les animaux de plus grande taille doivent être transportés par avion."
+          },
+          {
+            "icon": "💰",
+            "ariaLabel": "coût",
+            "title": "Coûts",
+            "description": "150 à 1 000 dollars en fonction de la compagnie aérienne et de la taille."
+          }
+        ],
+        "warning": "Renseignez-vous toujours auprès de votre compagnie aérienne pour connaître sa politique en matière d'animaux de compagnie, car les exigences et les coûts peuvent varier considérablement."
+      },
+      "afterArrival": {
+        "intro": [
+          "Aucune quarantaine n'est requise si tous les documents sont en règle.",
+          "Il est recommandé d'enregistrer votre animal auprès d'un vétérinaire local."
+        ],
+        "recommendedSteps": {
+          "title": "Premiers pas recommandés",
+          "items": [
+            "Trouvez un vétérinaire local et présentez votre animal",
+            "Acheter les médicaments dont votre animal a régulièrement besoin",
+            "Mettez à jour le collier de votre animal avec votre nouvelle adresse et votre nouveau numéro de téléphone en Turquie."
+          ]
+        }
+      },
+      "petFriendly": {
+        "description": "Les villes turques sont accueillantes pour les animaux de compagnie, en particulier dans les villes côtières. Les vétérinaires sont abordables et les produits pour animaux de compagnie sont largement disponibles.",
+        "features": [
+          {
+            "icon": "🏥",
+            "title": "Soins vétérinaires",
+            "description": "Les visites chez le vétérinaire coûtent environ 100-300 TL (5-15 $), ce qui rend les soins réguliers très abordables."
+          },
+          {
+            "icon": "🏞️",
+            "title": "Parcs et plages pour chiens",
+            "description": "De nombreuses régions côtières ont des plages adaptées aux chiens, et les grandes villes ont des parcs réservés aux animaux de compagnie."
+          },
+          {
+            "icon": "🥫",
+            "title": "Fournitures pour animaux de compagnie",
+            "description": "Les aliments et les fournitures pour animaux de compagnie sont disponibles dans les supermarchés, les animaleries et les sites de vente en ligne."
+          },
+          {
+            "icon": "🏨",
+            "title": "Hébergement pour animaux de compagnie",
+            "description": "De nombreux hôtels et immeubles de location acceptent les animaux de compagnie, mais il faut toujours confirmer à l'avance."
+          }
+        ]
+      }
+    },
+    "checklist": {
+      "title": "Liste de contrôle pour les voyages d'animaux de compagnie",
+      "items": [
+        "Prévoir une visite chez le vétérinaire au moins 2 mois avant le voyage",
+        "Vérifier que la puce est conforme à la norme ISO",
+        "S'assurer que la vaccination contre la rage est à jour (au moins 30 jours avant le voyage).",
+        "Obtenir un certificat de santé dans les 10 jours précédant le départ",
+        "Réserver auprès de la compagnie aérienne un moyen de transport adapté aux animaux",
+        "Acheter une cage de transport approuvée par les compagnies aériennes",
+        "Obtenez des copies de tous les documents et gardez-les avec vous pendant le voyage."
+      ]
+    },
+    "conclusion": {
+      "title": "La nouvelle aventure de votre animal de compagnie l'attend !",
+      "description": "Avec une bonne préparation, emmener votre animal de compagnie en Turquie peut être une expérience sans problème. L'environnement accueillant de la Turquie pour les animaux de compagnie aidera votre ami à fourrure à s'adapter rapidement à son nouveau foyer méditerranéen."
+    },
+    "accessibility": {
+      "sectionButton": "Naviguer vers {titre} section"
+    }
+  },
+  "relocationRequirements": {
+    "title": "Exigences essentielles pour s'installer en Turquie",
+    "description": "Que vous envisagiez de vous installer en Turquie pour le travail, les études, la retraite ou un changement de mode de vie, vous devez vous préparer à certaines démarches et à certains documents. Voici une présentation complète des conditions essentielles à remplir pour s'installer en Turquie en toute légalité et sans encombre.",
+    "navigation": {
+      "title": "Navigation rapide",
+      "expandAll": "Développer tout",
+      "collapseAll": "Réduire tout"
+    },
+    "sections": [
+      {
+        "id": "passeport",
+        "icon": "🛂",
+        "title": "Passeport en cours de validité",
+        "shortTitle": "Passeport",
+        "content": [
+          {
+            "type": "paragraphe",
+            "text": "Votre passeport doit être valable au moins 6 mois après la date prévue de votre séjour en Turquie. Certaines nationalités peuvent exiger une validité plus longue, notamment en cas de demande de permis de longue durée."
+          }
+        ]
+      },
+      {
+        "id": "visa",
+        "icon": "📝",
+        "title": "Visa d'entrée (si nécessaire)",
+        "shortTitle": "Visa",
+        "content": [
+          {
+            "type": "paragraphe",
+            "text": "En fonction de votre nationalité, vous pouvez avoir besoin"
+          },
+          {
+            "type": "liste",
+            "listType": "non ordonné",
+            "items": [
+              "Un visa touristique (à entrée unique ou multiple)",
+              "Un visa électronique (disponible en ligne pour les pays éligibles)",
+              "Ou pas de visa du tout pour les séjours de courte durée (pays exemptés de visa)"
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "text": "Si vous prévoyez de rester plus de 90 jours, vous devez demander un permis de séjour une fois en Turquie."
+          }
+        ]
+      },
+      {
+        "id": "adresse",
+        "icon": "🏠",
+        "title": "Adresse en turc",
+        "shortTitle": "Adresse",
+        "content": [
+          {
+            "type": "paragraphe",
+            "text": "Pour demander un permis de séjour, vous devez avoir une adresse permanente ou temporaire en Turquie :"
+          },
+          {
+            "type": "liste",
+            "listType": "non ordonné",
+            "items": [
+              "Contrat de location (notarié)",
+              "Propriété (titre de propriété)",
+              "Réservations d'hôtel (uniquement pour les permis de courte durée)"
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "text": "Toutes les adresses doivent être enregistrées auprès de la direction locale de la population (Nüfus Müdürlüğü)."
+          }
+        ]
+      },
+      {
+        "id": "financière",
+        "icon": "💵",
+        "title": "Preuve de stabilité financière",
+        "shortTitle": "Finances",
+        "content": [
+          {
+            "type": "paragraphe",
+            "text": "Vous devez prouver que vous pouvez subvenir à vos besoins en Turquie. Le montant varie, mais on peut l'estimer de manière générale :"
+          },
+          {
+            "type": "liste",
+            "listType": "non ordonné",
+            "items": [
+              "Minimum 500 $ par mois et par personne",
+              "Les relevés bancaires, les bulletins de pension, les justificatifs de revenus ou les documents du sponsor sont acceptés."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "assurance",
+        "icon": "🩺",
+        "title": "Assurance maladie",
+        "shortTitle": "Assurance",
+        "content": [
+          {
+            "type": "paragraphe",
+            "text": "Une assurance maladie valide est obligatoire pour la plupart des permis de séjour :"
+          },
+          {
+            "type": "liste",
+            "listType": "non ordonné",
+            "items": [
+              "SGK turque (assurance publique) si elle est employée",
+              "Assurance turque privée pour les travailleurs indépendants ou les retraités",
+              "Régimes d'assurance maladie pour les étudiants étrangers"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "numéro de taxe",
+        "icon": "🧾",
+        "title": "Numéro d'impôt (Vergi Numarası)",
+        "shortTitle": "Numéro d'identification fiscale",
+        "content": [
+          {
+            "type": "paragraphe",
+            "text": "Avant de signer des contrats de location, d'ouvrir un compte bancaire ou de demander des permis, vous devez obtenir un numéro fiscal turc. Ce numéro est gratuit et peut être obtenu dans les bureaux locaux des impôts (Vergi Dairesi) ou en ligne."
+          }
+        ]
+      },
+      {
+        "id": "photos",
+        "icon": "🖼️",
+        "title": "Photos biométriques",
+        "shortTitle": "Photos",
+        "content": [
+          {
+            "type": "paragraphe",
+            "text": "Des photos biométriques récentes (prises au cours des 6 derniers mois) sont requises pour :"
+          },
+          {
+            "type": "liste",
+            "listType": "non ordonné",
+            "items": [
+              "Cartes de séjour",
+              "Demandes de visa",
+              "Enregistrements gouvernementaux"
+            ]
+          },
+          {
+            "type": "paragraphe",
+            "text": "Taille recommandée : 50x60 mm, sur fond blanc."
+          }
+        ]
+      },
+      {
+        "id": "documents",
+        "icon": "📄",
+        "title": "Documents traduits et notariés (le cas échéant)",
+        "shortTitle": "Documents",
+        "content": [
+          {
+            "type": "paragraphe",
+            "text": "Certains documents doivent être traduits en turc et notariés, en particulier si vous faites une demande d'asile :"
+          },
+          {
+            "type": "liste",
+            "listType": "non ordonné",
+            "items": [
+              "Permis de travail",
+              "Regroupement familial",
+              "Citoyenneté"
+            ]
+          },
+          {
+            "type": "liste",
+            "title": "Exemples :",
+            "listType": "non ordonné",
+            "items": [
+              "Acte de mariage",
+              "Actes de naissance des enfants",
+              "Diplômes universitaires ou titres professionnels"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "permis de séjour",
+        "icon": "🏢",
+        "title": "Demande de permis de séjour (pour les longs séjours)",
+        "shortTitle": "Permis de séjour",
+        "content": [
+          {
+            "type": "paragraphe",
+            "text": "Si vous avez l'intention de rester plus de 90 jours :"
+          },
+          {
+            "type": "étapes",
+            "steps": [
+              "Postuler en ligne via le Göç İdaresi (Direction de la gestion des migrations)",
+              "Prenez rendez-vous avec votre bureau local de l'immigration",
+              "Apporter tous les documents et se présenter à l'entretien"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "enregistrement",
+        "icon": "🌐",
+        "title": "Enregistrez votre adresse et obtenez une carte de séjour",
+        "shortTitle": "Inscription",
+        "content": [
+          {
+            "type": "paragraphe",
+            "text": "Une fois approuvée :"
+          },
+          {
+            "type": "liste",
+            "listType": "non ordonné",
+            "items": [
+              "Vous recevrez une carte de séjour (ikamet kartı) par courrier.",
+              "Vous devez faire enregistrer votre adresse auprès du Nüfus Müdürlüğü dans un délai de 20 jours."
+            ]
+          }
+        ]
+      }
+    ],
+    "bonus": {
+      "icon": "🗣️",
+      "title": "Bonus : Apprendre les rudiments du turc",
+      "description": "Bien qu'il ne s'agisse pas d'une obligation légale, l'apprentissage des rudiments du turc peut grandement faciliter votre transition. Cela vous aidera à.. :",
+      "benefits": [
+        "Bureaucratie locale",
+        "Location de logements",
+        "Shopping et socialisation"
+      ]
+    },
+    "summary": {
+      "title": "Principaux enseignements",
+      "description": "N'oubliez pas ces points essentiels pour réussir votre déménagement en Turquie :",
+      "keyPoints": [
+        "Passeport en cours de validité (6 mois et plus)",
+        "Visa ou permis approprié",
+        "Adresse enregistrée en Turquie",
+        "Preuve de stabilité financière",
+        "Assurance maladie en cours de validité",
+        "Numéro d'identification fiscale turc",
+        "Photos biométriques prêtes",
+        "Documents traduits si nécessaire"
+      ]
+    },
+    "accessibility": {
+      "sectionButton": "Toggle {title} section"
+    }
+  },
+  "ukToTurkeyGuide": {
+    "title": "Déménager en Turquie depuis le Royaume-Uni",
+    "subtitle": "Ce qu'il faut savoir",
+    "description": "La Turquie est devenue une destination populaire pour les expatriés britanniques à la recherche d'un mode de vie plus décontracté, d'un coût de la vie moins élevé et de soleil toute l'année. Que vous envisagiez de prendre votre retraite, de travailler à distance ou d'entamer un nouveau chapitre à l'étranger, ce guide couvre tout ce que vous devez envisager de manière réaliste lorsque vous vous installez en Turquie depuis le Royaume-Uni.",
+    "navigation": {
+      "title": "Navigation rapide",
+      "sections": [
+        {
+          "id": "whyMove",
+          "icon": "🧳",
+          "title": "Pourquoi les Britanniques s'installent-ils en Turquie ?"
+        },
+        {
+          "id": "conditions d'entrée",
+          "icon": "🛂",
+          "title": "Conditions d'entrée et règles relatives aux visas"
+        },
+        {
+          "id": "séjour de longue durée",
+          "icon": "🏠",
+          "title": "Options de séjour de longue durée pour les citoyens britanniques"
+        },
+        {
+          "id": "propriété",
+          "icon": "🏘️",
+          "title": "Acheter ou louer un bien immobilier"
+        },
+        {
+          "id": "coût de la vie",
+          "icon": "💷",
+          "title": "Comparaison du coût de la vie"
+        },
+        {
+          "id": "soins de santé",
+          "icon": "🏥",
+          "title": "Accès aux soins de santé"
+        },
+        {
+          "id": "vie quotidienne",
+          "icon": "📱",
+          "title": "Adaptations à la vie quotidienne"
+        },
+        {
+          "id": "logistique du déménagement",
+          "icon": "🛫",
+          "title": "Logistique des déménagements depuis le Royaume-Uni"
+        },
+        {
+          "id": "défis",
+          "icon": "🧾",
+          "title": "Des défis réalistes à relever"
+        },
+        {
+          "id": "Communautés d'expatriés",
+          "icon": "👥",
+          "title": "Communautés d'expatriés britanniques"
+        }
+      ]
+    },
+    "sections": {
+      "whyMove": {
+        "description": "Des milliers de ressortissants britanniques ont élu domicile en Turquie, notamment dans des villes comme Fethiye, Antalya, Istanbul et Bodrum. L'appel comprend :",
+        "reasons": [
+          "Coût de la vie moins élevé qu'au Royaume-Uni",
+          "Climat méditerranéen et vie côtière",
+          "Une hospitalité chaleureuse et de fortes communautés d'expatriés",
+          "Possibilités d'accès à la propriété",
+          "Un rythme de vie plus lent et plus détendu"
+        ],
+        "postBrexitNote": "Cependant, après le Brexit, la relocalisation implique plus de planification et de paperasserie qu'auparavant."
+      },
+      "entryRequirements": {
+        "touristEntry": {
+          "title": "Entrée des touristes",
+          "description": "Les citoyens britanniques peuvent se rendre en Turquie sans visa pour une durée maximale de 90 jours sur une période de 180 jours. Mais si vous prévoyez de rester plus longtemps ou de vous installer définitivement, vous devez demander un permis de séjour."
+        }
+      },
+      "longTermStay": {
+        "options": [
+          {
+            "title": "1. Permis de séjour de courte durée (Ikamet)",
+            "description": "<span class=\"font-medium\">Valide pour 1 an et renouvelable</span><br/>Commandé par les nomades numériques, les propriétaires et les retraités.",
+            "requirementsTitle": "Vous aurez besoin de.. :",
+            "requirements": [
+              "Passeport en cours de validité",
+              "Numéro d'identification fiscale turc",
+              "Preuve d'hébergement (contrat de location ou acte de propriété)",
+              "Relevés bancaires indiquant que les fonds sont suffisants",
+              "Assurance maladie locale ou internationale"
+            ]
+          },
+          {
+            "title": "2. Permis de travail et visa",
+            "steps": [
+              "Vous avez besoin d'une offre d'emploi d'une entreprise turque",
+              "L'employeur demande le permis de travail en votre nom.",
+              "Une fois la demande approuvée, vous devez demander un visa de travail auprès du consulat turc au Royaume-Uni."
+            ]
+          },
+          {
+            "title": "3. Permis de séjour familial",
+            "steps": [
+              "Pour ceux qui rejoignent un conjoint ou un membre de la famille turc",
+              "Valable jusqu'à 2 ans"
+            ]
+          },
+          {
+            "title": "4. Permis de séjour étudiant",
+            "description": "Si vous étudiez dans une université turque ou suivez un cours de langue de longue durée"
+          }
+        ]
+      },
+      "property": {
+        "facts": [
+          "Les étrangers, y compris les citoyens britanniques, peuvent légalement acheter des biens immobiliers en Turquie.",
+          "Aucune valeur minimale n'est exigée pour l'obtention d'un permis de séjour.",
+          "Régions populaires pour les acheteurs britanniques : Fethiye, Antalya, Kusadasi, Bodrum, Alanya",
+          "Les loyers sont abordables : vous pouvez trouver des appartements pour 200 à 500 £/mois, selon l'emplacement."
+        ],
+        "tip": "<strong>Conseil:</strong>Toujours travailler avec un agent ou un avocat de bonne réputation lors de la signature d'un contrat ou de l'achat d'un bien immobilier."
+      },
+      "costLiving": {
+        "table": {
+          "headers": {
+            "expense": "Dépenses",
+            "turkey": "Turquie (moyenne)",
+            "uk": "Royaume-Uni (moyenne)"
+          },
+          "rows": [
+            {
+              "expense": "Location (appartement à 1 lit)",
+              "turkey": "£200-£400",
+              "uk": "£800-£1,200"
+            },
+            {
+              "expense": "Utilitaires",
+              "turkey": "30-£70/mois",
+              "uk": "150+ £/mois"
+            },
+            {
+              "expense": "Repas au restaurant",
+              "turkey": "£3-£6",
+              "uk": "£10-£25"
+            },
+            {
+              "expense": "Carte de transport",
+              "turkey": "£10-£20/mois",
+              "uk": "60-£120/mois"
+            }
+          ]
+        },
+        "conclusion": "Votre livre s'étend beaucoup plus loin en Turquie, surtout en dehors des grandes villes."
+      },
+      "healthcare": {
+        "points": [
+          "Les demandeurs de permis de séjour doivent souscrire une assurance maladie privée",
+          "Une fois employé, vous pouvez bénéficier de la SGK (assurance publique), qui couvre la plupart des traitements.",
+          "Les soins de santé privés sont abordables et de nombreux hôpitaux sont accrédités au niveau international.",
+          "De nombreux expatriés britanniques optent pour une assurance maladie internationale afin de bénéficier d'une plus grande flexibilité"
+        ]
+      },
+      "dailyLife": {
+        "aspects": [
+          {
+            "title": "Barrière linguistique",
+            "description": "Le turc est la langue officielle. L'anglais est parlé dans les zones touristiques et d'expatriation, mais il est fortement recommandé d'apprendre des rudiments de turc."
+          },
+          {
+            "title": "Conduite",
+            "description": "Les permis britanniques sont valables 6 mois. Après cette période, vous devez obtenir un permis de conduire turc."
+          },
+          {
+            "title": "Monnaie",
+            "description": "Livre turque (TRY) - les taux de change fluctuent, mais les avantages en termes de coûts sont toujours en faveur de la livre sterling."
+          },
+          {
+            "title": "Banque",
+            "description": "Vous pouvez ouvrir un compte bancaire turc avec un passeport et un justificatif de domicile. Les services bancaires en ligne sont largement utilisés."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "points": [
+          "Vous pouvez apporter des effets personnels en franchise de droits dans les 6 mois suivant l'obtention de votre permis de séjour.",
+          "Les déménageurs internationaux ayant de l'expérience dans les déménagements entre le Royaume-Uni et la Turquie sont recommandés.",
+          "Les animaux domestiques sont les bienvenus, mais ils doivent être munis d'une puce électronique et leurs vaccins doivent être à jour, y compris le certificat de vaccination contre la rage."
+        ]
+      },
+      "challenges": {
+        "challenges": [
+          {
+            "title": "Bureaucratie",
+            "description": "Les procédures de délivrance des permis de séjour peuvent être lentes et incohérentes d'une ville à l'autre"
+          },
+          {
+            "title": "Volatilité des taux de change",
+            "description": "La dépréciation de la monnaie peut avoir un impact sur l'épargne ou les pensions"
+          },
+          {
+            "title": "Différences culturelles",
+            "description": "Faire preuve d'ouverture d'esprit face aux changements de mode de vie, aux normes sociales et au rythme local."
+          },
+          {
+            "title": "Vie rurale et vie urbaine",
+            "description": "Les zones rurales peuvent avoir moins d'anglophones et de commodités modernes."
+          }
+        ]
+      },
+      "expatCommunities": {
+        "description": "La Turquie compte d'importantes communautés britanniques, en particulier dans les villes :",
+        "locations": [
+          "Fethiye",
+          "Didim",
+          "Bodrum",
+          "Marmaris",
+          "Antalya"
+        ],
+        "support": "Vous trouverez des groupes Facebook, des rencontres locales et des entreprises gérées par des Britanniques pour vous aider à vous installer plus facilement."
+      }
+    },
+    "checklist": {
+      "title": "Liste de contrôle finale avant de déménager en Turquie",
+      "items": [
+        "Demander le permis de séjour ou le visa adéquat",
+        "Obtenir un numéro fiscal turc (Vergi Numarası)",
+        "Organiser l'hébergement et la carte SIM locale",
+        "Obtenir une assurance maladie privée",
+        "Apprendre des phrases de base en turc",
+        "Rejoindre des groupes d'expatriés pour bénéficier d'un soutien et de mises à jour",
+        "Informer les autorités britanniques (HMRC, NHS, etc.) de votre déménagement"
+      ]
+    },
+    "conclusion": {
+      "title": "Conclusion : Cela vaut-il la peine de quitter le Royaume-Uni pour s'installer en Turquie ?",
+      "description": "Si vous recherchez un mode de vie plus lent et plus ensoleillé et que vous êtes en mesure de gérer les formalités administratives et les différences culturelles, la Turquie est un pays où il fait bon vivre. Avec des coûts réduits et une qualité de vie élevée, de nombreux Britanniques considèrent la Turquie comme une destination idéale à long terme."
+    },
+    "accessibility": {
+      "sectionButton": "Naviguer vers {titre} section"
+    }
+  },
+  "visaGuide": {
+    "title": "Visa et options de résidence pour s'installer en Turquie",
+    "description": "Pour s'installer en Turquie, il faut choisir le bon visa en fonction de l'objectif de votre séjour. La Turquie propose plusieurs options de visa et de permis de séjour pour les travailleurs, les étudiants, les retraités, les hommes d'affaires et les nomades numériques.",
+    "labels": {
+      "bestFor": "Meilleur pour",
+      "requirements": "Exigences",
+      "process": "Processus",
+      "benefits": "Avantages",
+      "options": "Options",
+      "validity": "Validité",
+      "renewable": "Renouvelables",
+      "yes": "Oui",
+      "no": "Non",
+      "more": "plus"
+    },
+    "controls": {
+      "expandAll": "Tout développer",
+      "collapseAll": "Réduire tout"
+    },
+    "compare": {
+      "enable": "Comparer les visas",
+      "exit": "Quitter le mode de comparaison",
+      "select": "Sélectionner",
+      "selected": "Sélectionné",
+      "table": {
+        "title": "Comparaison des visas",
+        "headers": {
+          "type": "Type de visa",
+          "validity": "Validité",
+          "renewable": "Renouvelables",
+          "bestFor": "Meilleur pour"
+        }
+      }
+    },
+    "visas": [
+      {
+        "id": "à court terme",
+        "icon": "🏠",
+        "title": "Permis de séjour de courte durée (İkamet İzni)",
+        "subtitle": "Les plus populaires pour les expatriés",
+        "validity": "1 an",
+        "bestFor": [
+          "Nomades numériques",
+          "Travailleurs à distance",
+          "Propriétaires de biens immobiliers",
+          "Touristes séjournant plus de 90 jours",
+          "Personnes explorant les possibilités de séjour à long terme"
+        ],
+        "requirements": [
+          "Passeport et visa en cours de validité",
+          "Preuve des moyens financiers (environ 500 $/mois)",
+          "Adresse turque (contrat de location ou titre de propriété)",
+          "Assurance maladie privée",
+          "Photos biométriques"
+        ],
+        "renewable": true
+      },
+      {
+        "id": "étudiant",
+        "icon": "🎓",
+        "title": "Visa étudiant et permis de séjour",
+        "subtitle": "Pour les études",
+        "validity": "Durée des études",
+        "bestFor": [
+          "Étudiants acceptés dans les universités turques",
+          "Étudiants des écoles de langues"
+        ],
+        "requirements": [
+          "Lettre d'acceptation d'un établissement turc reconnu",
+          "Preuve de fonds suffisants",
+          "Assurance maladie",
+          "Adresse en Turquie"
+        ],
+        "process": [
+          "Demandez un visa d'étudiant à l'ambassade/consulat turc de votre pays.",
+          "À l'arrivée, demander un permis de séjour pour étudiants"
+        ],
+        "renewable": true
+      },
+      {
+        "id": "travail",
+        "icon": "💼",
+        "title": "Visa et permis de travail",
+        "subtitle": "Pour les professionnels salariés",
+        "validity": "1 à 2 ans",
+        "bestFor": [
+          "Étrangers employés par une entreprise turque",
+          "Expats avec offres d'emploi",
+          "Professeurs d'anglais, ingénieurs, professionnels de la santé"
+        ],
+        "requirements": [
+          "Offre d'emploi d'un employeur turc enregistré",
+          "Passeport en cours de validité",
+          "Contrat de travail",
+          "Documents scolaires (traduits et notariés)"
+        ],
+        "process": [
+          "L'employeur s'adresse au ministère turc du travail en votre nom.",
+          "Vous demandez un visa de travail à l'ambassade de Turquie",
+          "Après votre arrivée, vous recevez un permis de séjour pour le travail"
+        ],
+        "renewable": true
+      },
+      {
+        "id": "famille",
+        "icon": "👨‍👩‍👧‍👦",
+        "title": "Permis de séjour familial",
+        "subtitle": "Pour le regroupement familial",
+        "validity": "Jusqu'à 2 ans",
+        "bestFor": [
+          "Conjoints de citoyens turcs",
+          "Enfants de citoyens turcs",
+          "Membres de la famille des résidents étrangers"
+        ],
+        "requirements": [
+          "Preuve des liens familiaux (acte de mariage/de naissance)",
+          "Adresse en Turquie",
+          "Preuve de revenus du sponsor",
+          "Assurance maladie"
+        ],
+        "renewable": true
+      },
+      {
+        "id": "propriété",
+        "icon": "🏘️",
+        "title": "Propriété Permis de séjour",
+        "subtitle": "Pour les investisseurs immobiliers",
+        "validity": "1 an",
+        "bestFor": [
+          "Étrangers propriétaires de biens immobiliers en Turquie",
+          "Investisseurs immobiliers",
+          "Entrepreneurs immobiliers"
+        ],
+        "requirements": [
+          "Tapu (titre de propriété) à votre nom",
+          "Valeur minimale de la propriété d'environ 75 000 $ dans les zones métropolitaines (peut varier selon les régions)",
+          "Preuve de revenus",
+          "Assurance maladie"
+        ],
+        "benefits": [
+          "Renouvelable annuellement",
+          "Peut conduire à un séjour de longue durée ou à la citoyenneté"
+        ],
+        "renewable": true
+      },
+      {
+        "id": "la citoyenneté",
+        "icon": "🇹🇷",
+        "title": "Citoyenneté turque par investissement",
+        "subtitle": "Procédure accélérée d'obtention de la citoyenneté",
+        "validity": "Permanent",
+        "bestFor": [
+          "Investisseurs et entrepreneurs",
+          "Personnes fortunées",
+          "Propriétaires d'entreprises"
+        ],
+        "options": [
+          "Acheter un bien immobilier d'une valeur d'au moins 400 000",
+          "Déposer 500 000 dollars dans une banque turque",
+          "Créer des emplois pour au moins 50 citoyens turcs"
+        ],
+        "benefits": [
+          "Citoyenneté accélérée en 3 à 6 mois",
+          "Tous les droits, y compris le passeport et le droit de vote"
+        ],
+        "renewable": false
+      },
+      {
+        "id": "à long terme",
+        "icon": "🌟",
+        "title": "Permis de séjour de longue durée",
+        "subtitle": "Option de séjour indéfini",
+        "validity": "Indéfinie",
+        "bestFor": [
+          "Les étrangers qui ont vécu en Turquie pendant au moins 8 années consécutives",
+          "Résidents de longue durée souhaitant obtenir le statut de résident permanent"
+        ],
+        "requirements": [
+          "Pas de casier judiciaire",
+          "Preuve de revenus et de logement à long terme",
+          "Aucune dépendance à l'égard de l'aide sociale au cours des trois dernières années"
+        ],
+        "renewable": false
+      }
+    ],
+    "summary": {
+      "title": "Conseils de référence rapide",
+      "tips": [
+        {
+          "title": "Commencer tôt",
+          "description": "Entamez la procédure de demande de visa au moins 3 à 6 mois avant la date prévue de votre déménagement."
+        },
+        {
+          "title": "Préparation des documents",
+          "description": "Veiller à ce que tous les documents soient traduits, notariés et apostillés comme il se doit."
+        },
+        {
+          "title": "Planification financière",
+          "description": "Conservez des fonds suffisants sur votre compte bancaire pendant plusieurs mois avant la demande."
+        },
+        {
+          "title": "Assurance maladie",
+          "description": "Avant de demander un permis de séjour, il faut s'assurer d'avoir une couverture d'assurance maladie valide."
+        },
+        {
+          "title": "Enregistrement des adresses",
+          "description": "Vous devez avoir une adresse turque enregistrée avant de demander un permis de séjour."
+        },
+        {
+          "title": "Aide professionnelle",
+          "description": "Envisagez de faire appel à un avocat ou à un consultant en immigration pour les cas complexes."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,171 @@
+{
+  "interview": {
+    "hero": {
+      "badge": "Mga serbisyo sa propesyonal na coaching sa panayam",
+      "headline": {
+        "prefix": "Paghusayin ang Iyong",
+        "suffix": "Gamit ang Ekspertong Pagtuturo"
+      },
+      "animatedWords": [
+        "Panayam",
+        "Kumpiyansa",
+        "Tagumpay",
+        "Pagganap",
+        "Mga Kasanayan",
+        "Kahusayan"
+      ],
+      "description": "Mula sa mga mock interview session hanggang sa personalized na feedback, ang aming komprehensibong mga serbisyo sa interview coaching ay tumutulong sa mga propesyonal na makamit ang kanilang mga pangarap na trabaho nang may kumpiyansa.",
+      "cta": {
+        "text": "Simulan ang Iyong Paghahanda"
+      }
+    },
+    "showcase": {
+      "title": "Pagtuturo sa Panayam",
+      "subtitle": "Patnubay ng eksperto para sa tagumpay ng panayam",
+      "mockInterview": {
+        "title": "Mga Kunwaring Panayam",
+        "subtitle": "Magsanay kasama ang mga eksperto sa industriya"
+      },
+      "features": [
+        {
+          "iconKey": "messageSquare",
+          "title": "Pang-asal",
+          "description": "Tanong at Sagot batay sa sitwasyon",
+          "gradient": "bg-gradient-to-r mula-sky-500 hanggang-blue-600"
+        },
+        {
+          "iconKey": "target",
+          "title": "Teknikal",
+          "description": "Pagtatasa ng mga kasanayan",
+          "gradient": "bg-gradient-to-r mula-lila-500 hanggang indigo-600"
+        },
+        {
+          "iconKey": "orasan",
+          "title": "Pagtatakda ng oras",
+          "description": "Istratehiya sa pagtugon",
+          "gradient": "bg-gradient-to-r mula-emerald-500 hanggang-teal-600"
+        },
+        {
+          "iconKey": "parangal",
+          "title": "Feedback",
+          "description": "Pagsusuri ng eksperto",
+          "gradient": "bg-gradient-to-r mula-kahel-500 hanggang-pula-600"
+        }
+      ],
+      "stats": [
+        {
+          "label": "Antas ng Tagumpay",
+          "color": "text-sky-600",
+          "value": "95%"
+        },
+        {
+          "label": "Mga Kliyenteng Tinuruan",
+          "color": "teksto-asul-600",
+          "value": "500+"
+        },
+        {
+          "value": "4.9★",
+          "label": "Rating",
+          "color": "teksto-indigo-600"
+        }
+      ]
+    },
+    "serviceSection": {
+      "header": {
+        "title": "Angkop ba para sa Iyo ang Serbisyong Ito?",
+        "description": "Ang aming online interview coaching ay nakatulong sa mga propesyonal sa lahat ng yugto ng kanilang karera na makamit ang kanilang mga pangarap na trabaho, lalo na sa mga naghahanap ng mga serbisyo sa interview coaching sa Pakistan o tulong sa paghahanda para sa interbyu para sa mga naghahanap ng trabahong Pakistani."
+      },
+      "successStory": {
+        "label": "Kwento ng Tagumpay",
+        "badge": "25% Pagtaas ng Sweldo",
+        "client": {
+          "name": "Sarmad Saleem",
+          "position": "Inhinyero ng Software, Toronto"
+        },
+        "testimonial": "\"Nahihirapan ako sa pagkabalisa sa interbyu pagkatapos kong lumipat sa Canada. Nakatulong sa akin ang coaching na maipahayag nang malinaw at may kumpiyansa ang aking karanasan. Natulungan namin si Sarmad na makuha ang kanyang target na trabaho na may 25% na mas mataas na alok sa loob ng apat na buwan mula sa aking imigrasyon.\"",
+        "readMore": "Magbasa Pa"
+      },
+      "testimonial": {
+        "label": "KWENTO NG TAGUMPAY",
+        "quote": "Tinulungan ako ng CareerTuners sa interview coaching na nagresulta sa aking pagkakatanggap ng promosyon sa trabaho sa loob ng aking kumpanya.",
+        "client": {
+          "name": "Meena Ansari",
+          "position": "Tagapag-ayos ng mga Komersyal na Claim"
+        }
+      },
+      "questions": {
+        "title": "Isaalang-alang ang mga tanong na ito:",
+        "items": [
+          "Hindi ka ba mapakali sa pagpapaliwanag kung bakit mo gustong umalis sa kasalukuyan mong trabaho?",
+          "Nararamdaman mo ba ang iyong sarili na nagmamadali habang nasa mga panayam?",
+          "Nag-aalala ka ba tungkol sa pagtugon sa mga \"red flags\" sa iyong resume?"
+        ],
+        "conclusion": "Kung oo ang sagot mo sa alinman sa mga ito, ang aming interview coaching ay para sa iyo."
+      },
+      "benefits": {
+        "title": "Ang aming coaching ay magbibigay sa iyo ng mga sumusunod na kasanayan:",
+        "items": [
+          {
+            "iconKey": "mensaheBilog",
+            "text": "Sagutin nang may kumpiyansa ang mga mahihirap na tanong."
+          },
+          {
+            "iconKey": "gumagamit",
+            "text": "Magkaroon ng malakas na unang impresyon at tapusin ang mga panayam nang positibo"
+          },
+          {
+            "iconKey": "nagte-trendUp",
+            "text": "Madaling harapin ang mga talakayan tungkol sa mga kakulangan sa trabaho, paglipat-lipat ng trabaho, o iba pang potensyal na balakid"
+          }
+        ]
+      },
+      "cta": {
+        "text": "Mag-book ng Iyong Coaching Session Ngayon"
+      }
+    }
+  },
+  "interviewTimeline": {
+    "badge": "ANG AMING NASUBUKAN NA PROSESO",
+    "title": "Paano ito gumagana",
+    "subtitle": "Gagabayan ka ng aming mga ekspertong coach sa tatlong simpleng hakbang na ito para sa propesyonal na tulong sa paghahanda para sa panayam:",
+    "steps": [
+      {
+        "iconKey": "fileText",
+        "title": "Gumagawa kami ng pasadyang panayam sa pagsusulit",
+        "description": "Ang unang hakbang ay ang pagbabahagi ng ilang impormasyon tungkol sa iyo, kabilang ang iyong resume at isang job posting na interesado kang kunin. Ang hakbang na ito ay makakatulong sa amin na iayon ang iyong sesyon batay sa uri ng trabaho, industriya, at mga karaniwang hamon sa serbisyo ng pagsasanay sa job interview.",
+        "accentColor": "langit-400",
+        "highlightColor": "langit-100",
+        "id": 1,
+        "number": "01"
+      },
+      {
+        "iconKey": "userCheck",
+        "title": "Oras na para makilala ang iyong coach",
+        "description": "Ang iyong coach ay partikular na pinipili batay sa iyong industriya, tungkulin, at karanasan. Sasailalim ka sa isang mock interview session kasama ang iyong coach at pagkatapos ay makakakuha ng mga angkop na feedback kung paano mo mapapabuti ang iyong mga tugon at maiiba ang iyong sarili sa panahon ng interbyu. Ang aming *1-on-1 interview coaching* ay nakatuon sa pag-master ng mga behavioral interview at pagtagumpayan ang anumang mga hamong maaaring iyong kaharapin.",
+        "accentColor": "langit-500",
+        "highlightColor": "langit-100",
+        "id": 2,
+        "number": "02"
+      },
+      {
+        "iconKey": "bidyo",
+        "title": "Ang pagsasanay ay nagpapaperpekto",
+        "description": "Pagkatapos ng iyong sesyon ng coaching, makakatanggap ka ng recording ng iyong interview kasama ang mga partikular na feedback at isang custom action plan upang matiyak na handa ka na sa interview. Malaking tulong ito lalo na para sa mga naghahanap ng interview coaching para sa mga bagong graduate o mga propesyonal na nangangailangan ng career coaching para sa mga interview.",
+        "accentColor": "langit-600",
+        "highlightColor": "langit-100",
+        "id": 3,
+        "number": "03"
+      }
+    ],
+    "cta": {
+      "title": "Handa ka na bang magtagumpay sa susunod mong panayam?",
+      "subtitle": "Samahan ang libu-libong matagumpay na kandidato na nakakuha ng kanilang pangarap na trabaho",
+      "buttonText": "Mag-book ng Iyong Sesyon ng Pagtuturo para sa Panayam",
+      "link": "/makipag-ugnayan-sa-amin"
+    },
+    "accessibility": {
+      "stepLabel": "Hakbang {numero}: {pamagat}",
+      "ctaLabel": "Sesyon ng coaching para sa panayam sa libro"
+    }
+  }
+}

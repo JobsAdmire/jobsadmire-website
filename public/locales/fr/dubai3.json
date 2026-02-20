@@ -1,0 +1,37 @@
+{
+  "header": {
+    "title": "Nos contacts",
+    "subtitle": "Contactez nos bureaux dans le monde entier pour obtenir une assistance personnalisée pour votre demande de permis de séjour en Turquie."
+  },
+  "generalInquiry": {
+    "title": "Questions générales",
+    "subtitle": "Prenez contact avec nous"
+  },
+  "locations": {
+    "turkey": {
+      "country": "Turquie",
+      "city": "Antalya",
+      "address": "Tahılpazarı, Adnan Menderes Blv. Erkal Apt A Blok No : 7 İç Kapı No : 6, 07040 Muratpaşa/Antalya",
+      "hours": "Du lundi au vendredi : 9h00-18h00"
+    },
+    "pakistan": {
+      "country": "Pakistan",
+      "city": "Karachi",
+      "address": "Bureau n° 1207, Kashif Center, Near Hotel Mehran, Main Shahrah e Faisal",
+      "hours": "Du lundi au vendredi : 9h00-17h00"
+    },
+    "azerbaijan": {
+      "country": "Azerbaïdjan",
+      "city": "Bakou",
+      "address": "Nizami küçəsi 203, AF business house 7-ci mərtəbə",
+      "hours": "Du lundi au vendredi : 9h00-18h00"
+    }
+  },
+  "map": {
+    "title": "Nous trouver sur la carte",
+    "email": "Courriel"
+  },
+  "cta": {
+    "scheduleConsultation": "Planifier une consultation"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "categories": {
+    "all": "All",
+    "careerTips": "Career Tips",
+    "immigrationGuide": "Immigration Guide",
+    "jobSearch": "Job Search",
+    "workVisa": "Work Visa",
+    "successStories": "Success Stories"
+  },
+  "trendingTags": {
+    "remoteJobs": "Remote Jobs",
+    "workVisa": "Work Visa",
+    "immigration": "Immigration",
+    "careerGrowth": "Career Growth",
+    "jobInterview": "Job Interview",
+    "resumeTips": "Resume Tips"
+  },
+  "loading": {
+    "title": "Loading Career Insights",
+    "description": "Preparing the latest job market trends and immigration guides..."
+  },
+  "error": {
+    "title": "Unable to Load Content",
+    "description": "We're having trouble loading the latest career insights. Please try again.",
+    "retryButton": "Retry Loading"
+  },
+  "header": {
+    "badge": "Your Gateway to Global Career Opportunities",
+    "title": {
+      "part1": "Navigate Your",
+      "part2": "Career Journey"
+    },
+    "subtitle": "Discover expert insights on job searching, work visas, immigration processes, and career advancement strategies from industry professionals.",
+    "searchPlaceholder": "Search for job tips, visa guides, career advice...",
+    "searchButton": "Search",
+    "popularTopics": "Popular Topics:"
+  },
+  "featuredArticle": {
+    "title": {
+      "part1": "Featured",
+      "part2": "Article"
+    },
+    "defaultTag": "Featured",
+    "minRead": "min read",
+    "anonymous": "Anonymous",
+    "careerExpert": "Career Expert",
+    "readFullArticle": "Read Full Article"
+  },
+  "latestInsights": {
+    "title": {
+      "part1": "Latest",
+      "part2": "Insights"
+    },
+    "defaultTag": "Article",
+    "min": "min",
+    "anonymous": "Anonymous",
+    "readMore": "Read More"
+  },
+  "emptyState": {
+    "title": "No Articles Found",
+    "description": "We couldn't find any articles matching \"{searchTerm}\". Try searching for different keywords or explore our categories.",
+    "clearSearch": "Clear Search"
+  },
+  "loadMore": {
+    "button": "Load More Articles"
+  },
+  "newsletter": {
+    "title": "Stay Ahead in Your Career",
+    "description": "Get weekly insights on job opportunities, visa updates, and career growth strategies.",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Enter your email address",
+    "subscribeButton": "Subscribe Now",
+    "privacyNote": "Your privacy is protected. Unsubscribe anytime.",
+    "features": {
+      "careerTips": "Weekly Career Tips",
+      "visaUpdates": "Visa Updates",
+      "jobAlerts": "Job Alerts"
+    }
+  },
+  "alerts": {
+    "subscriptionSuccess": "Thank you for subscribing!"
+  }
+}

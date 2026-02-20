@@ -1,0 +1,44 @@
+{
+  "header": {
+    "title": "Nos contacts",
+    "description": "Contactez nos bureaux dans le monde entier pour obtenir une assistance personnalisée pour votre demande de permis de séjour en Turquie."
+  },
+  "generalInquiries": {
+    "title": "Questions générales",
+    "subtitle": "Prenez contact avec nous",
+    "email": "info@uniadmire.com"
+  },
+  "locations": {
+    "turkey": {
+      "country": "Turquie",
+      "city": "Antalya",
+      "address": "Tahılpazarı, Adnan Menderes Blv. Erkal Apt A Blok No : 7 İç Kapı No : 6, 07040 Muratpaşa/Antalya",
+      "hours": "Du lundi au vendredi : 9h00-18h00",
+      "phone": "+90 242 123 4567",
+      "email": "antalya@uniadmire.com"
+    },
+    "pakistan": {
+      "country": "Pakistan",
+      "city": "Karachi",
+      "address": "Bureau n° 1207, Kashif Center, Near Hotel Mehran, Main Shahrah e Faisal",
+      "hours": "Du lundi au vendredi : 9h00-17h00",
+      "phone": "+92 21 3456 7890",
+      "email": "karachi@uniadmire.com"
+    },
+    "azerbaijan": {
+      "country": "Azerbaïdjan",
+      "city": "Bakou",
+      "address": "Nizami küçəsi 203, AF business house 7-ci mərtəbə",
+      "hours": "Du lundi au vendredi : 9h00-18h00",
+      "phone": "+994 12 345 6789",
+      "email": "baku@uniadmire.com"
+    }
+  },
+  "map": {
+    "title": "Nous trouver sur la carte",
+    "emailLabel": "Courriel"
+  },
+  "cta": {
+    "scheduleConsultation": "Planifier une consultation"
+  }
+}

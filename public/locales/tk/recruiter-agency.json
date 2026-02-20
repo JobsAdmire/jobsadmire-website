@@ -1,0 +1,233 @@
+{
+  "header": {
+    "heroImageAlt": "Işe kabul etmek boýunça hünärmenler",
+    "program_title": "Sertifikatlaşdyrylan Işe Alyş Hyzmatdaşlygy Maksatnamasy",
+    "main_title_prefix": "“Leading” bilen hyzmatdaşlyk ediň",
+    "main_title_suffix": "Işe kabul ediş agentlikleri",
+    "description": "Biz dürli pudaklardaky hünärli, öňünden saýlanan hünärmenler bilen kärhanalary baglanyşdyrmak üçin ygtybarly işe kabul ediş agentlikleri bilen hyzmatdaşlyk edýäris. Biziň ulgamymyza goşulyň we ygtybarly işe kabul ediş hyzmatdaşlyklary bilen mümkinçilikleriňizi giňeldiň.",
+    "contact_us": "Biz bilen habarlaşyň",
+    "verified_candidates": "Tassyklanan dalaşgärler",
+    "pre_screened": "Öňünden gözden geçirilen"
+  },
+  "form": {
+    "title": "Işe alyş hyzmatdaşyny hasaba almak",
+    "subtitle": "JobsAdmire arkaly hünärli işgärleri işe almaga başlamak üçin şu forma dolduryň",
+    "company_info": {
+      "title": "Kompaniýa maglumatlary",
+      "company_name": "Kompaniýanyň ady *",
+      "company_name_placeholder": "Kompaniýaňyzyň adyny giriziň",
+      "company_name_error": "Kompaniýanyň ady hökmanydyr",
+      "contact_person": "Aragatnaşyk şahsy *",
+      "contact_person_placeholder": "Aragatnaşyk şahsynyň doly ady",
+      "contact_person_error": "Aragatnaşyk üçin adam gerek",
+      "company_type": "Kompaniýanyň görnüşi *",
+      "company_type_placeholder": "Kompaniýanyň görnüşini saýlaň",
+      "company_type_error": "Kompaniýanyň görnüşi hökmanydyr",
+      "types": {
+        "manufacturing": "Önümçilik/Fabrik",
+        "agriculture": "Oba hojalygy",
+        "tourism": "Syýahatçylyk we myhmanhanaçylyk",
+        "construction": "Gurluşyk",
+        "retail": "Söwda we hyzmatlar",
+        "other": "Başga"
+      },
+      "years_in_business": "Biznesde işlän ýyllary",
+      "years_placeholder": "Ýyllary saýlaň",
+      "years_options": {
+        "1_2": "1-2 ýyl",
+        "3_5": "3-5 ýyl",
+        "6_10": "6-10 ýyl",
+        "10_plus": "10+ ýyl"
+      },
+      "license_number": "Biznes ygtyýarnamasynyň belgisi",
+      "license_placeholder": "Lisenziýanyň nomerini giriziň",
+      "employees_count": "Häzirki işgärleriň sany",
+      "employees_placeholder": "Aralygy saýlaň",
+      "employees_options": {
+        "1_10": "1-10 işgär",
+        "11_50": "11-50 işgär",
+        "51_100": "51-100 işgär",
+        "100_plus": "100+ işgär"
+      }
+    },
+    "contact_info": {
+      "title": "Aragatnaşyk maglumatlary",
+      "email": "E-poçta salgysy *",
+      "email_required": "E-poçta gerek",
+      "email_invalid": "E-poçta nädogry",
+      "phone": "Telefon belgisi *",
+      "phone_placeholder": "+90 xxx xxx xx xx",
+      "phone_required": "Telefon belgisi gerek",
+      "country": "Ýurt *",
+      "country_placeholder": "Öz ýurduňyza giriň",
+      "country_required": "Ýurt talap edilýär",
+      "city": "Şäher *",
+      "city_placeholder": "Şäheriňizi giriziň",
+      "city_required": "Şäher talap edilýär",
+      "address": "Iş salgysy",
+      "address_placeholder": "Iş salgysyňyzy doly giriziň",
+      "website": "Kompaniýanyň web sahypasy",
+      "email_placeholder": "company@example.com",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "staffing_needs": {
+      "title": "Işgär talaplary",
+      "types_needed": "Zerur bolan işgärleriň görnüşleri",
+      "types_placeholder": "Islegli wezipäňizi saýlaň",
+      "positions": {
+        "housekeeping": "Öý hojalygy",
+        "waiter": "Ofisiant/Ofisiantka",
+        "waiter_assistant": "Ofisiant kömekçisi",
+        "receptionist": "Resepşn işgäri",
+        "guest_relations": "Myhman gatnaşyklary",
+        "bellboy": "Bellboy",
+        "animator": "Animator / Işjeňlik boýunça utgaşdyryjy",
+        "kitchen_assistant": "Aşhana kömekçisi",
+        "specialized_worker": "Ýöriteleşdirilen ussat işçi",
+        "cnc_operator": "CNC operatory",
+        "packing_worker": "Gaplama işçisi",
+        "tailor": "Tikiji",
+        "forklift_operator": "Forklift operatory",
+        "material_handler": "Materiallary işläp bejerýän",
+        "fruit_picker": "Miwe/Gök önümleri ýygnaýjy",
+        "greenhouse_worker": "Ýyladyşhana işçisi",
+        "packing_sorting": "Gaplamak we tertiplemek işgärleri",
+        "irrigation": "Suwaryş / Ekiş kömekçisi",
+        "animal_husbandry": "Maldarçylyk (Süýt önümleri/Fermerçilik)",
+        "general_labourer": "Umumy işçi",
+        "painter": "Suratkeş",
+        "electrician": "Elektrikçi",
+        "tile_fixer": "Kafel düzediji"
+      },
+      "industry_focus": "Esasy pudak üns merkezi",
+      "industry_placeholder": "Senagatyňyzy saýlaň",
+      "industries": {
+        "factory": "Zawod",
+        "agriculture": "Oba hojalygy",
+        "tourism": "Syýahatçylyk",
+        "construction": "Gurluşyk"
+      },
+      "description_label": "Işgärlere bolan zerurlyklaryňyz barada bize gürrüň beriň",
+      "description_placeholder": "Kompaniýaňyzy, häzirki işgärlere bolan zerurlyklaryňyzy, doldurylmaly iş orunlarynyň sanyny, talap edilýän başarnyklary we islendik anyk talaplary beýan ediň..."
+    },
+    "legal": {
+      "title": "Hukuk ylalaşygy",
+      "agree_terms_prefix": "Men razylaşýaryn",
+      "terms_link": "Şertler we düzgünler",
+      "agree_terms_suffix": "we hyzmatdaşlygyň talaplaryny we borçlaryny düşünip bilersiňiz. *",
+      "terms_error": "Şertler we düzgünler bilen ylalaşmalysyňyz",
+      "agree_privacy_prefix": "Men şu aşakdakylary okandygymy we razydygymy tassyklaýaryn",
+      "privacy_link": "Gizlinlik syýasaty",
+      "agree_privacy_suffix": "we maglumatlary işläp düzmek amallary *",
+      "privacy_error": "Gizlinlik syýasatyna razy bolmalysyňyz"
+    },
+    "submit": {
+      "button": "Arza tabşyryň",
+      "submitting": "Iberilýär...",
+      "success_message": "Arza üstünlikli iberildi! Arzaňyzy gözden geçirip, 2-3 iş gününiň dowamynda siziň bilen habarlaşarys.",
+      "footer_message": "Biz siziň arzaňyzy gözden geçirip, 2–3 iş gününiň dowamynda siziň bilen habarlaşarys."
+    }
+  },
+  "why_partner": {
+    "title": "Näme üçin JobsAdmire bilen hyzmatdaşlyk etmeli?",
+    "subtitle": "Biz kärhanalary hünärli işgärler bilen baglanyşdyrýarys we halkara işe almagyň ähli çylşyrymly meselelerini çözýäris",
+    "items": {
+      "global_network": {
+        "title": "Global Işe Alyş Tory",
+        "description": "Giň halkara zehinler gaznasyna giriş mümkinçiligini gazanyň we dürli pudaklarda hünärli dalaşgärleri gözleýän tassyklanan iş berijiler bilen habarlaşyň."
+      },
+      "trusted_brand": {
+        "title": "Ynamdar brend we kanuny laýyklyk",
+        "description": "Açyk, ahlakly we hökümete laýyk işleri üçin ykrar edilen ygtyýarly işe alyş agentligi bilen hyzmatdaşlyk ediň."
+      },
+      "ai_driven": {
+        "title": "Süni intellekt arkaly işe alma platformasy",
+        "description": "Kandidatlary yzarlamak, arzalary dolandyrmak we müşderiler bilen üznüksiz aragatnaşyk üçin akylly işe alyş gurallarymyzdan peýdalanyň."
+      },
+      "end_to_end": {
+        "title": "Başdan-aýak goldaw",
+        "description": "Kandidatlary tapmakdan başlap, wiza we resminama kömegine çenli, işe almagyň we işe kabul etmegiň aňsatlygyny üpjün etmek üçin her bir ädimi ýerine ýetirýäris."
+      },
+      "commission": {
+        "title": "Özüne çekiji komissiýa gurluşy",
+        "description": "Işe alyjylar bilen hyzmatdaşlyk maksatnamasy arkaly her bir üstünlikli işe ýerleşdiriş üçin bäsdeşlik komissiýalaryny we yzygiderli höweslendirmeleri gazanyň."
+      },
+      "dedicated_team": {
+        "title": "Bagyşlanan Hyzmatdaşlyk Topary",
+        "description": "Işe kabul etmekde üstünligiňizi artdyrmaga kömek etmek üçin hyzmatdaşlyk toparymyzdan yzygiderli goldaw, görkezme we täzelenmeleri alyň."
+      }
+    }
+  },
+  "industry_expertise": {
+    "title": "Hyzmat edýän pudaklarymyz",
+    "subtitle": "Biz Türkiýäniň esasy pudaklarynda hünärli işgärleri üpjün edýäris",
+    "items": {
+      "factory": {
+        "title": "Zawod",
+        "description": "Önümçilik we önümçilik liniýasynyň işçileri"
+      },
+      "agriculture": {
+        "title": "Oba hojalygy",
+        "description": "Ferma işçileri we oba hojalyk hünärmenleri"
+      },
+      "tourism": {
+        "title": "Syýahatçylyk",
+        "description": "Myhmanhana işgärleri, gidler we myhmanhana işgärleri"
+      },
+      "construction": {
+        "title": "Gurluşyk",
+        "description": "Gurluşykçylar, inženerler we gurluşyk işçileri"
+      }
+    }
+  },
+  "platform_features": {
+    "title": "Işe kabul etmek platformamyz",
+    "subtitle": "Biznesiňiz üçin dogry işgärleri tapmak üçin ýönekeýleşdirilen tehnologiýa we hünärmen goldawy",
+    "items": {
+      "verified_candidates": {
+        "title": "Tassyklanan dalaşgärler",
+        "description": "Ähli dalaşgärler öňünden barlanýar we tassyklanýar"
+      },
+      "quick_placement": {
+        "title": "Çalt ýerleşdiriş",
+        "description": "Ýerleşdirmegiň ortaça wagty 2-3 hepde"
+      },
+      "document_processing": {
+        "title": "Dokumentleri işläp çykarmak",
+        "description": "Biz ähli iş rugsatnamalary we kanuny resminamalary işläp düzýäris"
+      },
+      "ongoing_support": {
+        "title": "Dowam edýän goldaw",
+        "description": "Ýerleşdirilenden soň yzygiderli goldaw"
+      }
+    }
+  },
+  "benefits": {
+    "title": "Hyzmatdaşlyk peýdalary",
+    "subtitle": "JobsAdmire bilen eýýäm işleýän ýüzlerçe kärhana goşulyň",
+    "items": {
+      "talent_pool": {
+        "title": "Öňünden saýlanan zehinler topary",
+        "description": "Türkiýede işlemäge taýýar bolan dalaşgärler üçin giriş"
+      },
+      "fast_process": {
+        "title": "Çalt işe almak prosesi",
+        "description": "Biziň ýönekeýleşdirilen işe alyş ulgamymyz bilen iş orunlaryny çalt dolduryň"
+      },
+      "legal_compliance": {
+        "title": "Kanuny laýyklyk",
+        "description": "Biz ähli iş rugsatnamalary we wiza resminamalary bilen meşgullanýarys"
+      },
+      "industry_matching": {
+        "title": "Pudaga degişli deňeşdirme",
+        "description": "Siziň pudagyňyzyň aýratyn zerurlyklaryna laýyk gelýän dalaşgärleri tapyň"
+      }
+    }
+  },
+  "contact_footer": {
+    "title": "Toparyňyzy gurmaga taýynmy?",
+    "description": "Işe kabul etmek hyzmatlarymyz barada soraglaryňyz barmy? Biziň öz işine ygrarly toparymyz size işiňiz üçin iň gowy işgärleri tapmaga kömek etmäge taýýar.",
+    "business_hours": "Iş wagty: Duşenbe — Anna, sagat 9:00 — 18:00 (Türkiýe wagty)",
+    "response_time": "Ortaça jogap beriş wagty: Iş wagtynda 2 sagadyň dowamynda"
+  }
+}

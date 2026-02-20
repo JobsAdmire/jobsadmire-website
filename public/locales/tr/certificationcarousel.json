@@ -1,0 +1,62 @@
+{
+  "controls": {
+    "previous": "Önceki sertifika",
+    "next": "Sonraki sertifika",
+    "play": "Otomatik oynat",
+    "pause": "Otomatik oynatmayı duraklat",
+    "goToSlide": "Slayta git"
+  },
+  "events": {
+    "event1": {
+      "title": "UniAdmire Öğrenci Fuarı",
+      "location": "Karaçi, Pakistan",
+      "date": "15-17 Mart 2025",
+      "description": "Pakistanlı öğrencileri uluslararası üniversiteler ve burs olanaklarıyla buluşturmak",
+      "images": {
+        "image1": {
+          "alt": "Üniversite temsilcilerinin öğrencilerle konuşması",
+          "caption": "Uluslararası üniversite temsilcileri yerel öğrencilerle buluşuyor"
+        },
+        "image2": {
+          "alt": "Fuardaki bilgilendirme stantları",
+          "caption": "Öğrenciler bilgilendirme stantlarında eğitim fırsatlarını keşfediyor"
+        },
+        "image3": {
+          "alt": "Ödül töreni",
+          "caption": "Katılımcı kurumlar için tanıma töreni"
+        },
+        "image4": {
+          "alt": "Panel tartışması",
+          "caption": "Uluslararası eğitim trendlerinin tartışıldığı uzman paneli"
+        },
+        "image5": {
+          "alt": "Öğrenci danışmanlık seansı",
+          "caption": "Üniversite kabul görevlileri ile bire bir danışmanlık"
+        }
+      }
+    },
+    "event2": {
+      "title": "Fildişi Sahili Eğitim Fuarı",
+      "location": "Abidjan, Fildişi Sahili",
+      "date": "20-22 Ocak 2025",
+      "description": "Batı Afrikalı öğrencileri uluslararası üniversitelerle buluşturmak",
+      "images": {
+        "image1": {
+          "alt": "Eğitim fuarı girişi",
+          "caption": "Fildişi Sahili Eğitim Fuarı'nın ana girişi"
+        },
+        "image2": {
+          "alt": "Öğrenciler bilgilendirme stantlarında",
+          "caption": "Yerel öğrenciler uluslararası eğitim fırsatlarını araştırıyor"
+        },
+        "image3": {
+          "alt": "Panel tartışması",
+          "caption": "Eğitim uzmanları burs programlarını tartışıyor"
+        }
+      }
+    }
+  },
+  "background": {
+    "watermark": "CERTIFICATIONS"
+  }
+}

@@ -1,0 +1,304 @@
+{
+  "talentacquisition": {
+    "hero": {
+      "badge": "Mga serbisyo sa estratehikong pagkuha ng talento",
+      "headline": {
+        "prefix": "Hanapin Ang",
+        "suffix": "Para sa Iyong Organisasyon"
+      },
+      "animatedWords": [
+        "Nangungunang Talento",
+        "Pinakamahusay na Koponan",
+        "Mga Tamang Tao",
+        "Perpektong Pagkasya",
+        "Mga Bituing Manlalaro",
+        "Pangarap na Koponan"
+      ],
+      "description": "Pasimplehin ang recruitment upang makuha ang pinakamahusay na talento para sa iyong organisasyon. Mga solusyon sa end-to-end na recruitment at talent sourcing na iniayon upang matugunan ang mga natatanging pangangailangan ng iyong kumpanya.",
+      "cta": {
+        "text": "Simulan ang Pagkuha ng Talento"
+      }
+    },
+    "showcase": {
+      "title": "Pagkuha ng Talento",
+      "subtitle": "Madiskarteng recruitment para sa iyong tagumpay",
+      "talentPool": {
+        "title": "Pag-access sa Talent Pool",
+        "subtitle": "Makipag-ugnayan sa mga kwalipikadong kandidato"
+      },
+      "services": [
+        {
+          "icon": "Maghanap",
+          "title": "Pagkuha ng mga mapagkukunan",
+          "description": "Pagtuklas ng kandidato",
+          "gradient": "bg-gradient-to-r mula-sky-500 hanggang-blue-600"
+        },
+        {
+          "icon": "Target",
+          "title": "Pagsusuri",
+          "description": "Pagtatasa ng kalidad",
+          "gradient": "bg-gradient-to-r mula-lila-500 hanggang indigo-600"
+        },
+        {
+          "icon": "UserCheck",
+          "title": "Pagtutugma",
+          "description": "Paghahanap ng perpektong akma",
+          "gradient": "bg-gradient-to-r mula-emerald-500 hanggang-teal-600"
+        },
+        {
+          "icon": "Gantimpala",
+          "title": "Pag-onboard",
+          "description": "Maayos na pagsasama",
+          "gradient": "bg-gradient-to-r mula-kahel-500 hanggang-pula-600"
+        }
+      ],
+      "stats": [
+        {
+          "label": "Mga Kumpanya na Pinaglilingkuran",
+          "color": "text-sky-600",
+          "value": "300+"
+        },
+        {
+          "label": "Antas ng Tagumpay",
+          "color": "teksto-asul-600",
+          "value": "85%"
+        },
+        {
+          "label": "Karaniwang Pag-upa sa Araw",
+          "color": "teksto-indigo-600",
+          "value": "30"
+        }
+      ]
+    }
+  },
+  "talentacquisitionsection1": {
+    "process": {
+      "title": {
+        "prefix": "Ang Aming Komprehensibo",
+        "highlight": "Proseso ng Pagkuha ng Talento"
+      },
+      "description": "Sinusunod namin ang isang sistematiko at transparent na proseso upang makapaghatid ng pambihirang mga resulta sa pagkuha ng empleyado.",
+      "steps": [
+        {
+          "icon": "Target",
+          "title": "Pagpaplano ng Lakas-Paggawa at Pagsusuri ng Trabaho",
+          "description": "Malapit kaming nakikipagtulungan sa inyong HR team at management upang maunawaan ang mga pangangailangan ng inyong workforce, kultura ng kumpanya, at mga kinakailangan sa trabaho.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "teksto-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10",
+          "id": 1
+        },
+        {
+          "icon": "Network",
+          "title": "Paghahanap at Pakikipag-ugnayan",
+          "description": "Gamit ang aming malawak na network, mga job portal, social media, at mga makabagong pamamaraan sa paghahanap ng mga trabaho, nakakaakit kami ng magkakaibang grupo ng mga kwalipikadong kandidato.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "teksto-asul-500",
+          "bgLight": "bg-blue-500/10",
+          "id": 2
+        },
+        {
+          "icon": "Salain",
+          "title": "Pagsusuri at Pagtatasa",
+          "description": "Nagsasagawa kami ng masusing pagsusuri sa pamamagitan ng mga resume, panayam, pagtatasa ng kasanayan, at mga ebalwasyon sa pag-uugali upang mapili ang pinakaangkop.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "teksto-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10",
+          "id": 3
+        },
+        {
+          "icon": "Kalendaryo",
+          "title": "Koordinasyon ng Panayam",
+          "description": "Pamamahala ng iskedyul at komunikasyon sa pagitan ng mga kandidato at ng iyong mga hiring manager upang matiyak ang isang maayos na karanasan sa panayam.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "teksto-asul-600",
+          "bgLight": "bg-blue-600/10",
+          "id": 4
+        },
+        {
+          "icon": "UserCheck",
+          "title": "Pamamahala ng Pagpili at Alok",
+          "description": "Pagtulong sa paggawa ng desisyon at pagpapalawig ng mga mapagkumpitensyang alok sa trabaho na naaayon sa mga pamantayan ng merkado at mga inaasahan ng kandidato.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "teksto-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10",
+          "id": 5
+        },
+        {
+          "icon": "UserPlus",
+          "title": "Suporta sa Pag-onboard",
+          "description": "Pagpapadali sa proseso ng onboarding upang matulungan ang mga bagong empleyado na maayos na maisama sa iyong organisasyon sa pamamagitan ng aming tulong sa HR recruitment at onboarding.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "teksto-asul-500",
+          "bgLight": "bg-blue-500/10",
+          "id": 6
+        }
+      ]
+    },
+    "flow": {
+      "title": "Pinasimpleng Daloy ng Proseso",
+      "description": "Mula sa pagpaplano hanggang sa onboarding - nasasakupan ka namin",
+      "stepLabel": "Hakbang"
+    },
+    "cta": "Simulan ang Iyong Paglalakbay sa Pagkuha ng Talento"
+  },
+  "talentacquisitionsection2": {
+    "whyPartner": {
+      "badge": "MGA BENEPISYO NG PAKIKIPAGSOSYO",
+      "title": {
+        "prefix": "Bakit Makipagsosyo sa",
+        "highlight": "JobsAdmire",
+        "suffix": "para sa Pagkuha ng Talento?"
+      },
+      "reasons": [
+        {
+          "icon": "Gantimpala",
+          "title": "Kadalubhasaan sa Iba't Ibang Industriya",
+          "description": "Ang aming mga recruiter ay dalubhasa sa iba't ibang sektor, tinitiyak ang kaalaman na partikular sa industriya at kalidad ng kandidato.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "teksto-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Database",
+          "title": "Pag-access sa Nangungunang Talento",
+          "description": "Nagpapanatili kami ng malawak na database at talent pool upang mabilis na maitugma ang mga kandidato sa iyong mga pangangailangan.",
+          "color": "bg-blue-500",
+          "textColor": "teksto-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Mga Setting",
+          "title": "Mga Pasadyang Solusyon",
+          "description": "Mga flexible na solusyon sa pagkuha ng empleyado para sa mga kumpanyang idinisenyo batay sa laki, kultura, at mga layunin sa pagkuha ng empleyado ng iyong negosyo.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "teksto-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Zap",
+          "title": "Pamamaraang Pinapatakbo ng Teknolohiya",
+          "description": "Paggamit ng mga advanced na Applicant Tracking Systems (ATS) at data analytics para sa mahusay na pagkuha ng mga empleyado.",
+          "color": "bg-blue-600",
+          "textColor": "teksto-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Mga Gumagamit",
+          "title": "Tumutok sa Pagkakaiba-iba at Pagsasama",
+          "description": "Tutulungan ka naming bumuo ng magkakaibang pangkat na magtutulak ng inobasyon at tagumpay.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "teksto-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Panangga",
+          "title": "Garantiya ng Kalidad",
+          "description": "Nagbibigay kami ng mga garantiya ng kapalit at patuloy na suporta upang matiyak ang matagumpay na pangmatagalang pagkakalagay.",
+          "color": "bg-blue-700",
+          "textColor": "teksto-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        }
+      ]
+    },
+    "benefits": {
+      "title": "Mga Benepisyo ng Aming Serbisyo sa Pagkuha ng Talento",
+      "subtitle": "Mga nasusukat na resulta na magtutulak sa iyong negosyo tungo sa pag-unlad",
+      "items": [
+        {
+          "icon": "Orasan",
+          "title": "Nabawasang oras ng pag-upa at gastos kada pag-upa",
+          "color": "teksto-[#38B6FF]"
+        },
+        {
+          "icon": "Nagte-trendUp",
+          "title": "Pinahusay na kalidad ng mga empleyado at mga rate ng pagpapanatili",
+          "color": "teksto-[#38B6FF]"
+        },
+        {
+          "icon": "Bituin",
+          "title": "Pinahusay na branding ng employer at karanasan sa kandidato",
+          "color": "teksto-[#38B6FF]"
+        },
+        {
+          "icon": "BarChart3",
+          "title": "Mga solusyon sa recruitment na maaaring i-scale para sa lumalaking negosyo",
+          "color": "teksto-[#38B6FF]"
+        },
+        {
+          "icon": "Target",
+          "title": "Ang estratehikong pagpaplano ng lakas-paggawa ay naaayon sa mga layunin ng iyong negosyo",
+          "color": "teksto-[#38B6FF]"
+        }
+      ],
+      "stats": [
+        {
+          "label": "Mas Mabilis na Proseso ng Pagkuha ng Trabaho",
+          "color": "teksto-[#38B6FF]",
+          "value": "50%"
+        },
+        {
+          "label": "Pagbabawas ng Gastos",
+          "color": "teksto-asul-500",
+          "value": "30%"
+        },
+        {
+          "label": "Kasiyahan ng Kliyente",
+          "color": "teksto-[#38B6FF]",
+          "value": "95%"
+        }
+      ]
+    },
+    "whoBenefits": {
+      "title": {
+        "prefix": "Sino ang Kaya",
+        "highlight": "Benepisyo?"
+      },
+      "description": "Ang aming mga serbisyo sa pagkuha ng talento ay idinisenyo para sa mga organisasyon ng lahat ng laki at industriya",
+      "audience": [
+        {
+          "icon": "Rocket",
+          "title": "Mga Startup",
+          "description": "Naghahanap para bumuo ng kanilang mga unang koponan",
+          "color": "bg-[#38B6FF]",
+          "textColor": "teksto-[#38B6FF]"
+        },
+        {
+          "icon": "Nagte-trendUp",
+          "title": "Lumalagong mga Negosyo",
+          "description": "Nangangailangan ng mga nasusukat na solusyon sa pag-hire",
+          "color": "bg-[#38B6FF]",
+          "textColor": "teksto-[#38B6FF]"
+        },
+        {
+          "icon": "Gusali",
+          "title": "Mga Negosyo",
+          "description": "Naghahanap ng espesyalisado o ehekutibong talento",
+          "color": "bg-[#38B6FF]",
+          "textColor": "teksto-[#38B6FF]"
+        },
+        {
+          "icon": "Mga Setting",
+          "title": "Mga Departamento ng HR",
+          "description": "Layunin na i-optimize ang mga daloy ng trabaho sa recruitment",
+          "color": "bg-[#38B6FF]",
+          "textColor": "teksto-[#38B6FF]"
+        },
+        {
+          "icon": "Mga Gumagamit",
+          "title": "Iba't ibang Organisasyon",
+          "description": "Nakatuon sa mga inisyatibo ng pagkakaiba-iba at pagsasama",
+          "color": "bg-[#38B6FF]",
+          "textColor": "teksto-[#38B6FF]"
+        },
+        {
+          "icon": "Target",
+          "title": "Mga Ahensya ng Pangangalap",
+          "description": "Pagpapalawak ng kanilang mga kakayahan sa paghahanap ng talento",
+          "color": "bg-[#38B6FF]",
+          "textColor": "teksto-[#38B6FF]"
+        }
+      ]
+    }
+  }
+}

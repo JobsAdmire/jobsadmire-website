@@ -1,0 +1,276 @@
+{
+  "remotejobs": {
+    "hero": {
+      "badge": "Opportunités d'emploi à distance pour les professionnels dans le monde entier",
+      "headline": {
+        "prefix": "Embrasser",
+        "suffix": "De n'importe où"
+      },
+      "animatedWords": [
+        "Travail à distance",
+        "Liberté",
+        "Flexibilité",
+        "Équilibre",
+        "Indépendance",
+        "L'avenir"
+      ],
+      "description": "Libérez votre potentiel grâce à des emplois à distance flexibles et gratifiants. Entrez en contact avec des offres d'emploi à distance légitimes et de grande qualité dans de nombreux secteurs d'activité et trouvez l'équilibre parfait entre vie professionnelle et vie privée.",
+      "cta": {
+        "text": "Trouver des possibilités d'emploi à distance"
+      }
+    },
+    "showcase": {
+      "title": "Centre de télétravail",
+      "subtitle": "Travailler de n'importe où dans le monde",
+      "workAnywhere": {
+        "title": "Travailler n'importe où",
+        "subtitle": "Se connecter au niveau mondial, travailler au niveau local"
+      },
+      "benefits": [
+        {
+          "icon": "Horloge",
+          "title": "Flexibilité",
+          "description": "Votre emploi du temps",
+          "gradient": "bg-gradient-to-r du ciel-500 au bleu-600"
+        },
+        {
+          "icon": "Globe terrestre",
+          "title": "Mondial",
+          "description": "Équipes mondiales",
+          "gradient": "bg-gradient-to-r de-violet-500 à-indigo-600"
+        },
+        {
+          "icon": "Accueil",
+          "title": "Confort",
+          "description": "Bureau à domicile",
+          "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+        },
+        {
+          "icon": "Porte-documents",
+          "title": "Croissance",
+          "description": "Développement de carrière",
+          "gradient": "bg-gradient-to-r de-orange-500 à-rouge-600"
+        }
+      ]
+    }
+  },
+  "remoteworksection": {
+    "whyChoose": {
+      "title": {
+        "prefix": "Pourquoi choisir",
+        "highlight": "Travail à distance ?"
+      },
+      "description": "Découvrez les avantages du travail à distance qui changent la vie",
+      "benefits": [
+        {
+          "icon": "Horloge",
+          "title": "Flexibilité",
+          "description": "Travaillez quand et où vous le souhaitez en contrôlant totalement votre emploi du temps.",
+          "highlight": "des possibilités de travail flexibles"
+        },
+        {
+          "icon": "Globe terrestre",
+          "title": "Accès aux marchés mondiaux",
+          "description": "Trouver des opportunités auprès d'entreprises du monde entier sans avoir à se déplacer.",
+          "highlight": "offres d'emploi en ligne"
+        },
+        {
+          "icon": "DollarSign",
+          "title": "Économies de coûts",
+          "description": "Économiser de l'argent sur les trajets domicile-travail, les déménagements et les dépenses quotidiennes liées au travail.",
+          "highlight": ""
+        },
+        {
+          "icon": "Le cœur",
+          "title": "Équilibre entre vie professionnelle et vie privée",
+          "description": "Créez une meilleure harmonie entre votre vie professionnelle et votre vie personnelle.",
+          "highlight": "Travail à domicile"
+        },
+        {
+          "icon": "TrendingUp",
+          "title": "Amélioration des compétences",
+          "description": "Vous serez exposé à des projets internationaux et à des outils avancés de travail à distance.",
+          "highlight": "améliorer les compétences professionnelles"
+        },
+        {
+          "icon": "Utilisateurs",
+          "title": "Réseau diversifié",
+          "description": "Établir des liens avec des professionnels de différentes cultures dans le monde entier.",
+          "highlight": "réseau mondial"
+        }
+      ]
+    },
+    "whatWeOffer": {
+      "title": {
+        "prefix": "Ce que nous",
+        "highlight": "Offre"
+      },
+      "description": "Des solutions complètes pour le travail à distance",
+      "services": [
+        {
+          "icon": "Cible",
+          "title": "Offres d'emploi à distance",
+          "description": "Nous sélectionnons et vérifions les opportunités dans des secteurs tels que l'informatique, le marketing numérique, la rédaction de contenu, la conception graphique, l'assistance à la clientèle, l'assistance virtuelle, etc.",
+          "highlight": "possibilités d'emploi à distance"
+        },
+        {
+          "icon": "Porte-documents",
+          "title": "Postes à distance en freelance et à temps plein",
+          "description": "Que vous soyez à la recherche d'un travail en freelance basé sur un projet ou d'un poste à temps plein, nous avons des options qui conviennent à toutes les préférences.",
+          "highlight": "travail à distance pour les professionnels"
+        },
+        {
+          "icon": "Utilisateurs",
+          "title": "Recherche d'emploi personnalisée",
+          "description": "Nos experts vous aident à mettre en relation vos compétences, votre expérience et vos objectifs de carrière avec les entreprises qui vous conviennent.",
+          "highlight": "entreprises de recrutement à distance"
+        },
+        {
+          "icon": "Casques d'écoute",
+          "title": "Soutien à l'application",
+          "description": "De l'optimisation du CV pour les postes à distance à la préparation des entretiens, nous vous accompagnons tout au long du processus d'embauche.",
+          "highlight": ""
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Formation aux compétences pour le travail à distance",
+          "description": "Maîtriser les outils de collaboration à distance, l'étiquette de la communication et la gestion du temps pour s'épanouir dans les espaces de travail virtuels.",
+          "highlight": ""
+        }
+      ],
+      "cta": "Commencez votre carrière à distance"
+    }
+  },
+  "remoteworksection2": {
+    "whoShould": {
+      "title": {
+        "prefix": "Qui devrait explorer",
+        "highlight": "Travail à distance ?"
+      },
+      "description": "Le travail à distance ouvre des portes aux professionnels à tous les stades de leur carrière",
+      "audience": [
+        {
+          "icon": "GraduationCap",
+          "title": "Nouveaux diplômés",
+          "description": "Prêts à lancer leur carrière avec des opportunités flexibles à distance",
+          "highlight": "emplois à distance pour les professionnels pakistanais"
+        },
+        {
+          "icon": "Accueil",
+          "title": "Professionnels en activité",
+          "description": "Professionnels à la recherche d'options hybrides",
+          "highlight": "Travail à domicile"
+        },
+        {
+          "icon": "Utilisateurs",
+          "title": "Indépendants",
+          "description": "Cherche à élargir sa base de clients au niveau mondial",
+          "highlight": ""
+        },
+        {
+          "icon": "Bébé",
+          "title": "Parents au foyer",
+          "description": "Concilier les responsabilités familiales et professionnelles",
+          "highlight": ""
+        },
+        {
+          "icon": "Pièces de monnaie",
+          "title": "Gagneurs de monnaie",
+          "description": "Toute personne souhaitant gagner de l'argent en devises étrangères sans quitter son pays",
+          "highlight": ""
+        },
+        {
+          "icon": "MapPin",
+          "title": "Explorateurs à distance",
+          "description": "Les personnes qui souhaitent bénéficier d'une liberté totale en matière de localisation tout en travaillant",
+          "highlight": "le mode de vie des nomades numériques"
+        }
+      ]
+    },
+    "howToStart": {
+      "title": {
+        "prefix": "Comment obtenir",
+        "highlight": "Commencé"
+      },
+      "description": "Votre parcours vers le succès du travail à distance en 4 étapes simples",
+      "steps": [
+        {
+          "icon": "UserPlus",
+          "title": "S'inscrire à JobsAdmire",
+          "description": "Créez votre profil en mettant en valeur vos compétences et votre expérience",
+          "number": "01"
+        },
+        {
+          "icon": "Recherche",
+          "title": "Parcourir et postuler",
+          "description": "Explorez nos offres d'emploi à distance et postulez aux postes qui correspondent à votre profil.",
+          "number": "02"
+        },
+        {
+          "icon": "MessageSquare",
+          "title": "Préparation et entretien",
+          "description": "Bénéficiez de notre coaching en matière de candidature et d'entretien pour augmenter vos chances.",
+          "number": "03"
+        },
+        {
+          "icon": "Porte-documents",
+          "title": "Sécurisez votre emploi à distance",
+          "description": "Atteignez un poste à distance et profitez de la liberté de travailler depuis n'importe où.",
+          "number": "04"
+        }
+      ],
+      "form": {
+        "title": "Commencez votre voyage",
+        "subtitle": "Prêt à commencer votre carrière à distance ?",
+        "fields": {
+          "name": "Nom complet",
+          "email": "Adresse électronique",
+          "skills": "Compétences et expérience"
+        },
+        "placeholders": {
+          "name": "Saisissez votre nom complet",
+          "skills": "Parlez-nous de vos compétences...",
+          "email": "your.email@example.com"
+        },
+        "submit": "Créer un profil et commencer"
+      },
+      "cta": "Commencez votre parcours professionnel à distance"
+    },
+    "whyTrust": {
+      "title": {
+        "prefix": "Pourquoi la confiance",
+        "highlight": "JobsAdmire ?"
+      },
+      "description": "Votre partenaire fiable pour de véritables opportunités de travail à distance",
+      "points": [
+        {
+          "icon": "Prix",
+          "title": "Années d'expérience",
+          "description": "Mise en relation des demandeurs d'emploi avec des employeurs réputés dans le monde entier"
+        },
+        {
+          "icon": "Bouclier",
+          "title": "Assurance qualité",
+          "description": "Nous donnons la priorité à la transparence, à la qualité et à la réussite de votre carrière."
+        },
+        {
+          "icon": "Globe terrestre",
+          "title": "Réseau mondial",
+          "description": "Partenariats avec des entreprises de confiance dans de nombreux secteurs d'activité"
+        }
+      ],
+      "highlight": {
+        "title": {
+          "prefix": "Authentique",
+          "highlight": "Possibilités de travail à distance"
+        },
+        "features": [
+          "Offres d'emploi vérifiées émanant d'employeurs de confiance",
+          "Un soutien professionnel complet tout au long de votre parcours",
+          "Accès à des opportunités exclusives à distance"
+        ],
+        "cta": "Explorer les possibilités"
+      }
+    }
+  }
+}

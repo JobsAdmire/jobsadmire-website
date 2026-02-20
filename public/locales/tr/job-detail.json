@@ -1,0 +1,161 @@
+{
+  "hero": {
+    "badge": "ÖNE ÇIKAN POZISYON",
+    "titleLine1": "Kıdemli Yazılım",
+    "titleLine2": "Mühendis",
+    "companyName": "TechVision Inc",
+    "subtitle": "Sektörleri dönüştüren son teknoloji çözümler geliştirmek için yenilikçi ekibimize katılın. Etkili teknoloji yaratma konusunda tutkulu olan yetenekli mühendisler arıyoruz.",
+    "ctaPrimary": "Konsültasyon İsteyin",
+    "ctaShare": "İş Paylaşımı",
+    "salaryRange": "Maaş Aralığı",
+    "location": "Konum",
+    "experience": "Deneyim",
+    "tabOverview": "Genel Bakış",
+    "tabRequirements": "Gereksinimler",
+    "tabBenefits": "Avantajlar",
+    "industry": "Yazılım Geliştirme",
+    "locationValue": "Uzaktan (ABD Merkezli)",
+    "locationStatValue": "Uzaktan Kumanda",
+    "salaryLabel": "Maaş",
+    "teamSizeLabel": "Ekip Büyüklüğü",
+    "teamSizeValue": "15-20 Mühendis",
+    "employmentLabel": "İstihdam",
+    "employmentValue": "Tam zamanlı",
+    "postedLabel": "Gönderildi",
+    "postedValue": "15 Mart 2025",
+    "requiredSkills": "Gerekli Beceriler",
+    "readyToJoin": "Ekibimize katılmaya hazır mısınız?",
+    "applicationTime": "5 dakikalık uygulama"
+  },
+  "loading": "İş detayları yükleniyor...",
+  "notifications": {
+    "resume_uploaded": "Özgeçmiş başarıyla yüklendi!",
+    "application_submitted": {
+      "title": "Başvuru Gönderildi!",
+      "message": "{{title}} pozisyonuna gösterdiğiniz ilgi için teşekkür ederiz. Ekibimiz başvurunuzu inceleyecek ve en kısa sürede sizinle iletişime geçecektir.",
+      "close": "Kapat"
+    }
+  },
+  "application_modal": {
+    "title": "Başvuru için {{title}}",
+    "subtitle": "Başvurunuzu aşağıda tamamlayın",
+    "progress": "Uygulama İlerlemesi",
+    "form": {
+      "full_name": "Ad Soyad *",
+      "full_name_placeholder": "Adınızı girin",
+      "email": "E-posta Adresi *",
+      "phone": "Telefon Numarası *",
+      "location": "Mevcut Konum *",
+      "location_placeholder": "Şehir, Ülke",
+      "linkedin": "LinkedIn Profili",
+      "portfolio": "Portföy URL'si",
+      "cover_message": "Kapak Mesajı",
+      "cover_message_placeholder": "Bu pozisyonla neden ilgileniyorsunuz?",
+      "upload_resume": "Özgeçmiş Yükle *",
+      "click_to_upload": "Özgeçmişinizi yüklemek için tıklayın",
+      "file_types": "(PDF, DOC veya DOCX)",
+      "cancel": "İptal",
+      "submit": "Başvuru Gönder",
+      "application_closed": "Başvuru Kapatıldı",
+      "terms_agreement": "Başvuru yaparak <1>Şartlar ve Koşullarımızı</1> kabul etmiş olursunuz.",
+      "email_placeholder": "name@example.com",
+      "phone_placeholder": "+90 555 123 4567",
+      "linkedin_placeholder": "https://linkedin.com/in/username",
+      "portfolio_placeholder": "https://yourportfolio.com"
+    }
+  },
+  "share_modal": {
+    "title": "Bu İşi Paylaş",
+    "subtitle": "Bu fırsatı ağınızla paylaşın",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp",
+    "copy_link": "Anlaşıldı",
+    "copied": "Kopyalandı!"
+  },
+  "header": {
+    "status_open": "Açık",
+    "status_closed": "Kapalı",
+    "posted": "Gönderildi",
+    "save_job": "İşi Kaydet",
+    "saved": "Kurtarıldı",
+    "share": "Paylaş",
+    "apply_now": "Şimdi Başvur",
+    "application_closed": "Başvuru Kapatıldı"
+  },
+  "quick_info": {
+    "currency": "Para Birimi",
+    "salary": "Maaş",
+    "type": "Tip"
+  },
+  "tabs": {
+    "job_description": "İş Tanımı",
+    "requirements": "Gereksinimler",
+    "details": "Detaylar"
+  },
+  "tab_content": {
+    "description": {
+      "overview": "İşe Genel Bakış",
+      "employment_type": "İstihdam Türü",
+      "work_location": "Çalışma Yeri"
+    },
+    "requirements": {
+      "title": "Gereksinimler ve Nitelikler",
+      "what_we_looking_for": "Ne Arıyoruz",
+      "professional_experience": "Profesyonel Deneyim",
+      "communication_skills": "İletişim Becerileri",
+      "team_collaboration": "Ekip İşbirliği",
+      "growth_mindset": "Büyüme Zihniyeti"
+    },
+    "details": {
+      "job_information": "İş Bilgileri",
+      "job_type": "İş Türü",
+      "location": "Konum:",
+      "posted": "Gönderildi:",
+      "status": "Durum:",
+      "quota_full": "Kota Dolu",
+      "open_for_applications": "Başvurular için Açık",
+      "compensation": "Tazminat",
+      "currency": "Para birimi:",
+      "salary": "Maaş:",
+      "why_join": "Neden {{title}}'a Katılmalısınız?",
+      "career_growth": "Kariyer Gelişimi",
+      "career_growth_desc": "İlerleme için fırsatlar",
+      "great_location": "Harika Konum",
+      "great_location_desc": "Work in {{location}}",
+      "competitive_package": "Rekabetçi Paket",
+      "competitive_package_desc": "Cazip maaş ve yan haklar",
+      "professional_growth": "Profesyonel Gelişim",
+      "professional_growth_desc": "Sürekli öğrenme fırsatları"
+    }
+  },
+  "cta": {
+    "title": "Ekibimize Katılmaya Hazır mısınız?",
+    "subtitle": "Kariyerinizde bir sonraki adımı {{title}} ile atın. Fark yaratmak isteyen tutkulu bireyler arıyoruz.",
+    "apply_now": "Şimdi başvurun",
+    "application_closed": "Başvuru Kapatıldı"
+  },
+  "contact": {
+    "title": "Başvurunuzla İlgili Yardıma mı İhtiyacınız Var?",
+    "subtitle": "İK ekibimiz size yardımcı olmak için burada",
+    "live_chat": {
+      "title": "Canlı Sohbet Desteği",
+      "subtitle": "Ortalama yanıt süresi: 5 dakika"
+    },
+    "email": {
+      "title": "İK Ekibine E-posta Gönderin",
+      "subtitle": "info@jobsadmire.com"
+    }
+  },
+  "fallback": {
+    "title_not_available": "İş Ünvanı Mevcut Değil",
+    "location_not_available": "Konum Mevcut Değil",
+    "description_not_available": "<p>İş tanımı mevcut değil.</p>",
+    "requirement_not_available": "<p>Gereksinimler mevcut değil.</p>",
+    "date_not_available": "Tarih mevcut değil",
+    "error_loading": "İş Yüklenirken Hata Oluştu",
+    "unable_to_load_desc": "<p>İş tanımı yüklenemiyor. Lütfen daha sonra tekrar deneyin.</p>",
+    "unable_to_load_req": "<p>Gereksinimler yüklenemiyor. Lütfen daha sonra tekrar deneyin.</p>"
+  }
+}

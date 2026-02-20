@@ -1,0 +1,44 @@
+.react_select__control {
+    @apply !w-full !min-h-fit !h-10 !pl-2.5 !text-sm !items-start !border-none;
+    @apply !bg-primary-extra-light !rounded-xl;
+}
+
+.react_select__value-container {
+    @apply !py-0 !h-full ;
+}
+
+.react_select__menu {
+    @apply !text-xs;
+}
+
+.top-menu .react_select__menu {
+    @apply !top-auto !bottom-full;
+}
+
+.lg-top-menu .react_select__menu {
+    @apply lg:!top-auto lg:!bottom-full;
+}
+
+.react_select__indicators {
+    @apply !h-full;
+}
+
+.react_select__indicator-separator {
+    @apply !hidden;
+}
+
+.react_select__indicator svg {
+    @apply !w-4 !h-4 !text-gray-500;
+}
+
+.home-select .ant-select-selection-item {
+    @apply font-semibold;
+}
+
+.ant-select-item-option .ant-select-item-option-content {
+    @apply font-light;
+}
+
+.ant-select-item-option-selected:not(.ant-select-item-option-disabled) .ant-select-item-option-content {
+    @apply font-medium;
+}

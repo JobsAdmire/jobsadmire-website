@@ -1,0 +1,357 @@
+{
+  "title": "Lebenslauf Builder Pro",
+  "description": "Erstellen Sie in Minutenschnelle einen beeindruckenden professionellen Lebenslauf",
+  "steps": {
+    "personalInfo": "Persönliche Informationen",
+    "achievements": "Errungenschaften",
+    "workExperience": "Berufserfahrung",
+    "education": "Bildung",
+    "projects": "Projekte",
+    "skills": "Fertigkeiten"
+  },
+  "stepIcons": {
+    "personalInfo": "👤",
+    "achievements": "🏆",
+    "workExperience": "💼",
+    "education": "🎓",
+    "projects": "🚀",
+    "skills": "⚡"
+  },
+  "stepDescriptions": {
+    "personalInfo": "Erzählen Sie uns von sich und machen Sie einen guten ersten Eindruck",
+    "achievements": "Präsentieren Sie Ihre wichtigsten Leistungen und heben Sie sich von der Masse ab",
+    "workExperience": "Beschreiben Sie Ihren beruflichen Werdegang und Ihre Karrierehöhepunkte",
+    "education": "Nennen Sie Ihren Bildungshintergrund und Ihre akademischen Leistungen",
+    "projects": "Persönliche Projekte hervorheben, die Ihre Fähigkeiten demonstrieren",
+    "skills": "Präsentieren Sie Ihre technischen und sozialen Fähigkeiten, die Sie wertvoll machen"
+  },
+  "buttons": {
+    "back": "Zurück zu {{step}}",
+    "back_mobile": "Zurück",
+    "continue": "Weiter zu {{Schritt}}",
+    "continue_mobile": "Weiter",
+    "saveSkill": "Geschicklichkeit speichern",
+    "generateResume": "Lebenslauf generieren",
+    "saveProgress": "Fortschritt speichern",
+    "needHelp": "Brauchen Sie Hilfe?",
+    "previewResume": "Vorschau Lebenslauf",
+    "addAnotherExperience": "Ein weiteres Erlebnis hinzufügen",
+    "addAnotherEducation": "Eine weitere Ausbildung hinzufügen",
+    "addAnotherProject": "Ein weiteres Projekt hinzufügen",
+    "addAnotherSkill": "Eine weitere Fertigkeit hinzufügen",
+    "addAchievement": "Leistung hinzufügen",
+    "viewTemplates": "Vorlagen ansehen",
+    "cancel": "Abbrechen",
+    "applyCrop": "Ernte anwenden",
+    "choosePhoto": "Foto auswählen"
+  },
+  "features": {
+    "fastEasy": {
+      "icon": "⚡",
+      "title": "Schnell und einfach",
+      "description": "Erstellen Sie mit unserer intuitiven Schritt-für-Schritt-Anleitung in wenigen Minuten einen professionellen Lebenslauf."
+    },
+    "beautifulTemplates": {
+      "icon": "🎨",
+      "title": "Schöne Schablonen",
+      "description": "Wählen Sie aus unserer Sammlung von professionell gestalteten Lebenslaufvorlagen."
+    },
+    "atsOptimized": {
+      "icon": "📊",
+      "title": "ATS-optimiert",
+      "description": "Unsere Lebensläufe sind so optimiert, dass sie durch Applicant Tracking Systems laufen."
+    }
+  },
+  "proTips": {
+    "title": "Profi-Tipps: {{step}}",
+    "personalInfo": {
+      "tip1": {
+        "title": "Professionelle E-Mail",
+        "description": "Verwenden Sie eine professionelle E-Mail-Adresse, die auf Ihrem Namen basiert, und keine Spitznamen oder lustigen Adressen."
+      },
+      "tip2": {
+        "title": "Eindrucksvolle Zusammenfassung",
+        "description": "Fassen Sie sich kurz (3-5 Sätze) und heben Sie Ihre beeindruckendsten Qualifikationen und Karriereziele hervor."
+      },
+      "tip3": {
+        "title": "Professionelles Foto",
+        "description": "Wenn Sie ein Foto beifügen, verwenden Sie ein professionelles Porträtfoto mit neutralem Hintergrund und angemessener Kleidung."
+      },
+      "tip4": {
+        "title": "Kontakt Details",
+        "description": "Geben Sie nur die wichtigsten Kontaktinformationen an und stellen Sie sicher, dass alle Angaben aktuell und korrekt sind."
+      }
+    },
+    "achievements": {
+      "tip1": {
+        "title": "Ergebnisse quantifizieren",
+        "description": "Verwenden Sie Zahlen und Prozentsätze, um Ihre Erfolge zu quantifizieren (z. B. \"Umsatzsteigerung um 25 %\" statt \"Umsatzsteigerung\")."
+      },
+      "tip2": {
+        "title": "Ergebnisse vs. Verantwortlichkeiten",
+        "description": "Konzentrieren Sie sich auf Ergebnisse und Resultate statt auf die Aufzählung von Aufgaben, um sich von anderen Bewerbern abzuheben."
+      },
+      "tip3": {
+        "title": "Auszeichnungen und Anerkennungen",
+        "description": "Geben Sie relevante Auszeichnungen, Anerkennungen und Ehrungen an, die Ihr Fachwissen und Ihren Wert belegen."
+      },
+      "tip4": {
+        "title": "Aktionsverben verwenden",
+        "description": "Beginnen Sie Leistungsbeschreibungen mit aussagekräftigen Aktionsverben wie \"erreicht\", \"geführt\", \"umgesetzt\" oder \"geschaffen\"."
+      }
+    }
+  },
+  "progress": {
+    "stepsCompleted": "{{Zahl}} von 6 Schritten",
+    "currentStep": "Aktuell: Schritt {{step}} - {{Titel}}",
+    "currentStep_mobile": "Aktuell: Schritt {{step}}",
+    "progressPercentage": "{{Prozentsatz}}%"
+  },
+  "step1": {
+    "title": "PERSÖNLICHE DATEN",
+    "basicDetails": "Grundlegende Details",
+    "firstName": "Vorname",
+    "firstNamePlaceholder": "Geben Sie Ihren Vornamen ein",
+    "firstNameRequired": "Vorname ist erforderlich",
+    "middleName": "Mittlerer Name",
+    "middleNameOptional": "(fakultativ)",
+    "middleNamePlaceholder": "z.B. Herbert",
+    "lastName": "Nachname",
+    "lastNamePlaceholder": "Geben Sie Ihren Nachnamen ein",
+    "lastNameRequired": "Nachname ist erforderlich",
+    "professionalProfile": "Berufliches Profil",
+    "profilePhoto": "Profilbild",
+    "uploadInstructions": "Klicken Sie zum Hochladen und Zuschneiden Ihres Fotos",
+    "imageSizeError": "Die Dateigröße sollte weniger als 5 MB betragen.",
+    "imageTypeError": "Die Datei sollte im JPEG-, PNG- oder GIF-Format vorliegen.",
+    "designation": "Bezeichnung",
+    "designationPlaceholder": "z.B. Senior Accountant",
+    "address": "Adresse",
+    "addressPlaceholder": "Geben Sie Ihre Adresse ein",
+    "contactInformation": "Kontaktinformationen",
+    "email": "E-Mail Adresse",
+    "emailPlaceholder": "Ihre E-Mail eingeben",
+    "emailRequired": "E-Mail ist erforderlich",
+    "emailInvalid": "E-Mail ist ungültig",
+    "phone": "Telefonnummern",
+    "phonePlaceholder": "Geben Sie Ihre Rufnummer ein",
+    "phoneRequired": "Telefonnummer ist erforderlich",
+    "summary": "Professionelle Zusammenfassung",
+    "summaryPlaceholder": "Beschreiben Sie kurz Ihren beruflichen Hintergrund, Ihre Schlüsselqualifikationen und Ihre Karriereziele",
+    "summaryTip": "Eine aussagekräftige Zusammenfassung hilft Ihnen, sich abzuheben. Halten Sie sie kurz und prägnant.",
+    "cropperTitle": "Ihr Profilfoto zuschneiden",
+    "zoom": "Zoom: {{zoom}}x",
+    "preview": "Vorschau:",
+    "cropInstructions": {
+      "drag": "- Ziehen Sie das Bild, um es zu positionieren",
+      "zoom": "- Verwenden Sie den Zoom-Schieberegler zur Größenänderung",
+      "cropArea": "- Der Kreis zeigt Ihre Anbaufläche"
+    }
+  },
+  "step2": {
+    "description": "Präsentieren Sie Ihre bemerkenswerten Leistungen",
+    "noAchievements": "Noch keine Erfolge hinzugefügt. Fügen Sie Ihre erste Errungenschaft unten hinzu.",
+    "remove": "entfernen",
+    "delete": "Löschen",
+    "addNew": "Neue Errungenschaft hinzufügen",
+    "achievementTitle": "Leistung Titel",
+    "achievementTitlePlaceholder": "Titel der Leistung eingeben",
+    "date": "Datum",
+    "achievementDescription": "Beschreibung",
+    "achievementDescriptionPlaceholder": "Beschreiben Sie Ihre Leistung",
+    "title": "ACHIEVEMENTS"
+  },
+  "step3": {
+    "workExperience": "Berufserfahrung #{{index}}",
+    "jobTitle": "Titel",
+    "jobTitlePlaceholder": "Berufsbezeichnung eingeben",
+    "jobTitleRequired": "Berufsbezeichnung ist erforderlich",
+    "company": "Unternehmen / Organisation",
+    "companyPlaceholder": "Firmenname eingeben",
+    "companyRequired": "Firmenname ist erforderlich",
+    "location": "Standort",
+    "locationPlaceholder": "z. B. San Francisco, CA",
+    "startDate": "Datum des Beginns",
+    "startDateRequired": "Startdatum ist erforderlich",
+    "endDate": "Enddatum",
+    "endDateOptional": "(oder leer lassen, falls vorhanden)",
+    "endDateTip": "Leer lassen, wenn dies Ihre aktuelle Position ist",
+    "description": "Beschreibung",
+    "descriptionPlaceholder": "Beschreiben Sie Ihre Verantwortlichkeiten, Leistungen und Fähigkeiten, die Sie in dieser Funktion einsetzen",
+    "descriptionTip": "Verwenden Sie Aufzählungspunkte, um die Lesbarkeit zu verbessern. Konzentrieren Sie sich auf die Leistungen und nicht auf die Aufgaben.",
+    "title": "EXPERIENCE"
+  },
+  "step4": {
+    "educationEntry": "Bildung #{{index}}",
+    "school": "Schule",
+    "schoolPlaceholder": "Name der Schule oder Universität eingeben",
+    "schoolRequired": "Name der Schule ist erforderlich",
+    "degree": "Grad",
+    "degreePlaceholder": "z.B. Bachelor of Science",
+    "degreeRequired": "Hochschulabschluss ist erforderlich",
+    "city": "Stadt",
+    "cityPlaceholder": "z. B. Boston, MA",
+    "startDate": "Datum des Beginns",
+    "startDatePlaceholder": "mm/jjjj",
+    "startDateRequired": "Startdatum ist erforderlich",
+    "endDate": "Enddatum",
+    "endDateOptional": "(oder Gegenwart)",
+    "endDatePlaceholder": "mm/jjjj oder Gegenwart",
+    "description": "Beschreibung",
+    "descriptionOptional": "(fakultativ)",
+    "descriptionPlaceholder": "Beschreiben Sie Ihre Leistungen, Ihren Notendurchschnitt, relevante Studienleistungen usw.",
+    "descriptionTip": "Heben Sie relevante Kurse, Auszeichnungen oder außerschulische Aktivitäten im Zusammenhang mit Ihren Karrierezielen hervor.",
+    "title": "EDUCATION"
+  },
+  "step5": {
+    "projectEntry": "Projekt #{{index}}",
+    "projectName": "Name des Projekts",
+    "projectNamePlaceholder": "Projektname eingeben",
+    "projectNameRequired": "Projektname ist erforderlich",
+    "projectLink": "Projekt Link",
+    "projectLinkOptional": "(fakultativ)",
+    "projectLinkInvalid": "Link ist ungültig",
+    "description": "Beschreibung",
+    "descriptionPlaceholder": "Beschreiben Sie das Projekt, die verwendeten Technologien und Ihre Rolle",
+    "descriptionTip": "Heben Sie den Zweck, die verwendeten Technologien und Ihre spezifischen Beiträge hervor.",
+    "title": "PROJECTS",
+    "projectLinkPlaceholder": "https://example.com/project"
+  },
+  "step6": {
+    "skillsTitle": "Technische und berufliche Fertigkeiten",
+    "skillsDescription": "Fügen Sie Fähigkeiten hinzu, die für die Stellen, auf die Sie sich bewerben, relevant sind",
+    "skillPlaceholder": "z. B. JavaScript, Projektmanagement, Datenanalyse",
+    "skillRequired": "Skillname ist erforderlich",
+    "tipsTitle": "Tipps für die Auflistung von Fertigkeiten",
+    "tip1": "eine Mischung aus technischen (Hard Skills) und zwischenmenschlichen (Soft Skills) Fähigkeiten beinhalten",
+    "tip2": "Priorisieren Sie die Fähigkeiten, die in den Stellenbeschreibungen erwähnt werden, die Sie ansprechen",
+    "tip3": "Spezifische technische Kenntnisse (z. B. \"React.js\" statt nur \"JavaScript\")",
+    "title": "SKILLS"
+  },
+  "tooltip": {
+    "prefix": "Schritt {{Schritt}}: {{Titel}}",
+    "completed": "✓"
+  },
+  "alts": {
+    "cropPreviewAlt": "Erntevorschau",
+    "previewAlt": "Vorschau",
+    "profileAlt": "Profil"
+  },
+  "templateSelector": {
+    "selectTemplate": "Vorlage auswählen",
+    "selected": "✓ Ausgewählt",
+    "defaultSummary": "Platzhalter für die berufliche Zusammenfassung"
+  },
+  "sections": {
+    "skills": "Fertigkeiten",
+    "education": "Bildung",
+    "experience": "Erleben Sie",
+    "workExperience": "Berufserfahrung",
+    "professionalSkills": "Berufliche Fertigkeiten",
+    "jobExperience": "Berufserfahrung",
+    "proSkills": "Profi-Fähigkeiten",
+    "references": "Referenzen",
+    "projects": "Projekte",
+    "achievements": "Errungenschaften",
+    "contact": "Kontakt",
+    "aboutMe": "Über mich",
+    "profile": "Profil",
+    "previousEmployment": "Frühere Beschäftigung",
+    "software": "Software",
+    "languages": "Sprachen",
+    "reference": "Referenz",
+    "awards": "Auszeichnungen",
+    "contactMe": "Kontakt"
+  },
+  "fallbacks": {
+    "noSummaryAvailable": "Keine Zusammenfassung verfügbar",
+    "unnamedSkill": "Unbenannte Fähigkeit",
+    "noDataAvailable": "Keine Daten verfügbar",
+    "availableUponRequest": "Auf Anfrage erhältlich"
+  },
+  "labels": {
+    "phone": "Telefon",
+    "email": "E-Mail",
+    "address": "Adresse"
+  },
+  "actions": {
+    "generatePdf": "PDF generieren",
+    "generatingPdf": "PDF generieren..."
+  },
+  "messages": {
+    "referencesAvailableOnRequest": "Berufliche Referenzen werden auf Anfrage zur Verfügung gestellt"
+  },
+  "resumeBuilder": "Lebenslauf Builder",
+  "forms": {
+    "personalInfoTitle": "Persönliche Informationen",
+    "buildProfileSubtitle": "Erstellen Sie Ihr berufliches Profil",
+    "profilePhoto": "Profilbild",
+    "profileAlt": "Profil",
+    "changePhoto": "Foto ändern",
+    "uploadPhoto": "Foto hochladen",
+    "headshotTip": "Laden Sie ein professionelles Porträtfoto hoch. Empfohlen: 400x400px, JPG oder PNG",
+    "firstName": "Vorname",
+    "lastName": "Nachname",
+    "placeholderFirstName": "John",
+    "placeholderLastName": "Doe",
+    "emailAddress": "E-Mail Adresse",
+    "phoneNumber": "Rufnummer",
+    "placeholderEmail": "Ihre E-Mail eingeben",
+    "placeholderPhone": "Geben Sie Ihr Telefon ein",
+    "location": "Standort",
+    "placeholderLocation": "z. B. San Francisco, CA",
+    "placeholderLocationExample": "New York, NY",
+    "linkedinProfile": "LinkedIn-Profil",
+    "placeholderLinkedIn": "linkedin.com/in/johndoe",
+    "websitePortfolio": "Website/Portfolio",
+    "placeholderPortfolio": "www.johndoe.com",
+    "professionalSummary": "Professionelle Zusammenfassung",
+    "placeholderSummary": "Kurze berufliche Zusammenfassung, in der Sie Ihre wichtigsten Leistungen, Fähigkeiten und Karriereziele hervorheben...",
+    "summaryHint": "Fesselnd und prägnant formulieren",
+    "characters": "Zeichen",
+    "jobTitlePlaceholder": "Berufsbezeichnung",
+    "companyPlaceholder": "Name des Unternehmens",
+    "locationPlaceholder": "Standort",
+    "descriptionPlaceholder": "Beschreiben Sie Ihre Aufgaben und Leistungen",
+    "experienceLabel": "Erleben Sie",
+    "jobTitle": "Berufsbezeichnung",
+    "company": "Unternehmen",
+    "placeholderJobTitle": "Software-Entwickler",
+    "placeholderCompany": "Tech Company Inc.",
+    "placeholderLocationExp": "San Francisco, CA",
+    "startDate": "Datum des Beginns",
+    "endDate": "Enddatum",
+    "currentWorkHere": "Ich arbeite derzeit hier",
+    "description": "Beschreibung",
+    "addExperience": "Erfahrung hinzufügen",
+    "educationLabel": "Bildung",
+    "degreePlaceholder": "Grad",
+    "universityPlaceholder": "Name der Universität",
+    "degree": "Grad",
+    "school": "Schule",
+    "placeholderDegree": "Bachelor of Science in Informatik",
+    "placeholderSchool": "Technische Universität",
+    "placeholderLocationEdu": "Boston, MA",
+    "gpaPlaceholder": "GPA (fakultativ)",
+    "gpaOptional": "GPA (fakultativ)",
+    "placeholderGpa": "3.8/4.0",
+    "addEducation": "Bildung hinzufügen",
+    "certificationLabel": "Zertifizierung",
+    "certificationNamePlaceholder": "Name der Zertifizierung",
+    "issuerPlaceholder": "Emittent",
+    "certificationName": "Zertifizierung Name",
+    "issuingOrganization": "Ausstellende Organisation",
+    "dateObtained": "Datum der Erlangung",
+    "placeholderCertification": "AWS-zertifizierter Lösungsarchitekt",
+    "placeholderIssuer": "Amazon Webdienste",
+    "addCertification": "Zertifizierung hinzufügen",
+    "skillsPlaceholder": "JavaScript",
+    "addSkill": "Fertigkeit hinzufügen",
+    "beginner": "Anfänger",
+    "intermediate": "Zwischenbericht",
+    "advanced": "Fortgeschrittene",
+    "expert": "Experte",
+    "placeholderEmailExample": "john.doe@email.com",
+    "placeholderPhoneExample": "+1 (555) 123-4567"
+  }
+}

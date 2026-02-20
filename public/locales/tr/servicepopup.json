@@ -1,0 +1,993 @@
+{
+  "serviceOptions": {
+    "study": {
+      "label": "Program Türü",
+      "placeholder": "Eğitim programınızı seçin",
+      "options": [
+        "Lisans Derecesi",
+        "Yüksek Lisans Derecesi",
+        "Doktora Programı",
+        "Dil Kursu",
+        "Diploma Programı",
+        "Sertifika Kursu",
+        "Değişim Programı"
+      ]
+    },
+    "work": {
+      "label": "Çalışma Kategorisi",
+      "placeholder": "Çalışma vizesi türünü seçin",
+      "options": [
+        "Çalışma İzni (Sahip/Yönetici/Yatırımcı)",
+        "Yurtiçi İşe Alım ve Çalışma İzni",
+        "Yurtdışı İşe Alım & Çalışma İzni"
+      ]
+    },
+    "migrate": {
+      "label": "Göç Kategorisi",
+      "placeholder": "Geçiş türünü seçin",
+      "options": [
+        "Şirket Tescil Ltd, A.Ş., Tek Sahipli.",
+        "Yatırım Göçü",
+        "Türk Vatandaşlığı Süreci"
+      ]
+    },
+    "visit": {
+      "label": "Ziyaret Amacı",
+      "placeholder": "Ziyaret amacını seçin",
+      "options": [
+        "Bireysel Davet Mektubu",
+        "Bireysel Aile Mektubu"
+      ]
+    }
+  },
+  "formLabels": {
+    "livingIn": "İçinde Yaşamak",
+    "destinationCountry": "Hedef Ülke",
+    "currentlyLivingIn": "Şu Anda Yaşadığı Yer",
+    "destination": "Hedef",
+    "selectDestination": "Hedef seçin",
+    "selectCurrentCountry": "Geçerli ülkenizi seçin",
+    "selectDestinationForInvitation": "Davet için hedef seçin",
+    "wantsInvitationFor": "Davetiye İstiyor:",
+    "wantsToMigrateTo": "Göç Etmek İstiyor:",
+    "wantsToWorkIn": "Çalışmak İstiyor:",
+    "submitting": "Gönderiyorum..."
+  },
+  "services": {
+    "study": {
+      "title": "Yurtdışı Eğitim",
+      "subtitle": "Eğitiminizi dünyanın en iyi üniversitelerinde sürdürün",
+      "actionText": "içinde çalışma"
+    },
+    "work": {
+      "title": "Yurtdışında Çalışma",
+      "subtitle": "Kariyerinizi küresel fırsatlarla geliştirin",
+      "actionText": "içinde çalışmak"
+    },
+    "migrate": {
+      "title": "Göç",
+      "subtitle": "Ailenizle birlikte yurtdışında yeni bir hayata başlayın",
+      "actionText": "göç etmek"
+    },
+    "visit": {
+      "title": "Ziyaret Edin ve Keşfedin",
+      "subtitle": "Dünya çapındaki muhteşem destinasyonları keşfedin",
+      "actionText": "Davetiye"
+    }
+  },
+  "form": {
+    "header": {
+      "title": "Haydi Başlayalım",
+      "subtitle": "Bilgilerinizi girin ve hedeflerinize ulaşmanıza yardımcı olalım"
+    },
+    "fields": {
+      "name": {
+        "label": "Ben",
+        "placeholder": "Tam adınızı girin",
+        "suffix": "Ben şu anda"
+      },
+      "country": {
+        "label": "Vatandaşı",
+        "placeholder": "Ülkenizi Seçin"
+      }
+    },
+    "contact": {
+      "title": "İletişim Bilgileri",
+      "personalPhone": {
+        "label": "Kişisel Cep Numarası",
+        "placeholder": "Kişisel Cep Numarası"
+      },
+      "whatsappToggle": {
+        "label": "Bu numara WhatsApp'ta"
+      },
+      "whatsappNumber": {
+        "label": "WhatsApp Numarası",
+        "placeholder": "WhatsApp Numarası"
+      },
+      "email": {
+        "label": "E-posta Adresi",
+        "placeholder": "your.email@example.com"
+      },
+      "countryCodeSearch": "Ülke ara...",
+      "noResults": "Ülke bulunamadı"
+    },
+    "terms": {
+      "label": "Şartlar ve Koşulları kabul ediyorum"
+    },
+    "submitButton": "Form Gönder",
+    "consultation": {
+      "text": "Devam etmeden önce rehberliğe mi ihtiyacınız var?",
+      "linkText": "Ücretsiz Danışmanlık Alın"
+    },
+    "validation": {
+      "acceptTerms": "Lütfen hüküm ve koşulları kabul edin"
+    }
+  },
+  "countries": [
+    "Afganistan",
+    "Arnavutluk",
+    "Cezayir",
+    "Andorra",
+    "Angola",
+    "Antigua ve Barbuda",
+    "Arjantin",
+    "Ermenistan",
+    "Avustralya",
+    "Avusturya",
+    "Azerbaycan",
+    "Bahamalar",
+    "Bahreyn",
+    "Bangladeş",
+    "Barbados",
+    "Belarus",
+    "Belçika",
+    "Belize",
+    "Benin",
+    "Bhutan",
+    "Bolivya",
+    "Bosna Hersek",
+    "Botsvana",
+    "Brezilya",
+    "Brunei",
+    "Bulgaristan",
+    "Burkina Faso",
+    "Burundi",
+    "Cabo Verde",
+    "Kamboçya",
+    "Kamerun",
+    "Kanada",
+    "Orta Afrika Cumhuriyeti",
+    "Chad",
+    "Şili",
+    "Çin",
+    "Kolombiya",
+    "Komorlar",
+    "Kongo",
+    "Kosta Rika",
+    "Hırvatistan",
+    "Küba",
+    "Kıbrıs",
+    "Çek Cumhuriyeti",
+    "Danimarka",
+    "Cibuti",
+    "Dominika",
+    "Dominik Cumhuriyeti",
+    "Ekvador",
+    "Mısır",
+    "El Salvador",
+    "Ekvator Ginesi",
+    "Eritre",
+    "Estonya",
+    "Eswatini",
+    "Etiyopya",
+    "Fiji",
+    "Finlandiya",
+    "Fransa",
+    "Gabon",
+    "Gambiya",
+    "Gürcistan",
+    "Almanya",
+    "Gana",
+    "Yunanistan",
+    "Grenada",
+    "Guatemala",
+    "Gine",
+    "Gine-Bissau",
+    "Guyana",
+    "Haiti",
+    "Honduras",
+    "Macaristan",
+    "İzlanda",
+    "Hindistan",
+    "Endonezya",
+    "İran",
+    "Irak",
+    "İrlanda",
+    "İsrail",
+    "İtalya",
+    "Jamaika",
+    "Japonya",
+    "Ürdün",
+    "Kazakistan",
+    "Kenya",
+    "Kiribati",
+    "Kuveyt",
+    "Kırgızistan",
+    "Laos",
+    "Letonya",
+    "Lübnan",
+    "Lesotho",
+    "Liberya",
+    "Libya",
+    "Lihtenştayn",
+    "Litvanya",
+    "Lüksemburg",
+    "Madagaskar",
+    "Malavi",
+    "Malezya",
+    "Maldivler",
+    "Mali",
+    "Malta",
+    "Marshall Adaları",
+    "Moritanya",
+    "Mauritius",
+    "Meksika",
+    "Mikronezya",
+    "Moldova",
+    "Monako",
+    "Moğolistan",
+    "Karadağ",
+    "Fas",
+    "Mozambik",
+    "Myanmar",
+    "Namibya",
+    "Nauru",
+    "Nepal",
+    "Hollanda",
+    "Yeni Zelanda",
+    "Nikaragua",
+    "Nijer",
+    "Nijerya",
+    "Kuzey Kore",
+    "Kuzey Makedonya",
+    "Norveç",
+    "Umman",
+    "Pakistan",
+    "Palau",
+    "Panama",
+    "Papua Yeni Gine",
+    "Paraguay",
+    "Peru",
+    "Filipinler",
+    "Polonya",
+    "Portekiz",
+    "Katar",
+    "Romanya",
+    "Rusya",
+    "Ruanda",
+    "Saint Kitts ve Nevis",
+    "Saint Lucia",
+    "Saint Vincent ve Grenadinler",
+    "Samoa",
+    "San Marino",
+    "Sao Tome ve Principe",
+    "Suudi Arabistan",
+    "Senegal",
+    "Sırbistan",
+    "Seyşeller",
+    "Sierra Leone",
+    "Singapur",
+    "Slovakya",
+    "Slovenya",
+    "Solomon Adaları",
+    "Somali",
+    "Güney Afrika",
+    "Güney Kore",
+    "Güney Sudan",
+    "İspanya",
+    "Sri Lanka",
+    "Sudan",
+    "Surinam",
+    "İsveç",
+    "İsviçre",
+    "Suriye",
+    "Tayvan",
+    "Tacikistan",
+    "Tanzanya",
+    "Tayland",
+    "Doğu Timor",
+    "Togo",
+    "Tonga",
+    "Trinidad ve Tobago",
+    "Tunus",
+    "Türkiye",
+    "Türkmenistan",
+    "Tuvalu",
+    "Uganda",
+    "Ukrayna",
+    "Birleşik Arap Emirlikleri",
+    "Birleşik Krallık",
+    "Birleşik Devletler",
+    "Uruguay",
+    "Özbekistan",
+    "Vanuatu",
+    "Vatikan Şehri",
+    "Venezuela",
+    "Vietnam",
+    "Yemen",
+    "Zambiya",
+    "Zimbabve"
+  ],
+  "countryCodes": [
+    {
+      "name": "Afganistan",
+      "flag": "🇦🇫",
+      "code": "+93"
+    },
+    {
+      "name": "Arnavutluk",
+      "flag": "🇦🇱",
+      "code": "+355"
+    },
+    {
+      "name": "Cezayir",
+      "flag": "🇩🇿",
+      "code": "+213"
+    },
+    {
+      "name": "Andorra",
+      "flag": "🇦🇩",
+      "code": "+376"
+    },
+    {
+      "name": "Angola",
+      "flag": "🇦🇴",
+      "code": "+244"
+    },
+    {
+      "name": "Arjantin",
+      "flag": "🇦🇷",
+      "code": "+54"
+    },
+    {
+      "name": "Ermenistan",
+      "flag": "🇦🇲",
+      "code": "+374"
+    },
+    {
+      "name": "Avustralya",
+      "flag": "🇦🇺",
+      "code": "+61"
+    },
+    {
+      "name": "Avusturya",
+      "flag": "🇦🇹",
+      "code": "+43"
+    },
+    {
+      "name": "Azerbaycan",
+      "flag": "🇦🇿",
+      "code": "+994"
+    },
+    {
+      "name": "Bahreyn",
+      "flag": "🇧🇭",
+      "code": "+973"
+    },
+    {
+      "name": "Bangladeş",
+      "flag": "🇧🇩",
+      "code": "+880"
+    },
+    {
+      "name": "Belarus",
+      "flag": "🇧🇾",
+      "code": "+375"
+    },
+    {
+      "name": "Belçika",
+      "flag": "🇧🇪",
+      "code": "+32"
+    },
+    {
+      "name": "Belize",
+      "flag": "🇧🇿",
+      "code": "+501"
+    },
+    {
+      "name": "Benin",
+      "flag": "🇧🇯",
+      "code": "+229"
+    },
+    {
+      "name": "Bhutan",
+      "flag": "🇧🇹",
+      "code": "+975"
+    },
+    {
+      "name": "Bolivya",
+      "flag": "🇧🇴",
+      "code": "+591"
+    },
+    {
+      "name": "Bosna Hersek",
+      "flag": "🇧🇦",
+      "code": "+387"
+    },
+    {
+      "name": "Botsvana",
+      "flag": "🇧🇼",
+      "code": "+267"
+    },
+    {
+      "name": "Brezilya",
+      "flag": "🇧🇷",
+      "code": "+55"
+    },
+    {
+      "name": "Brunei",
+      "flag": "🇧🇳",
+      "code": "+673"
+    },
+    {
+      "name": "Bulgaristan",
+      "flag": "🇧🇬",
+      "code": "+359"
+    },
+    {
+      "name": "Burkina Faso",
+      "flag": "🇧🇫",
+      "code": "+226"
+    },
+    {
+      "name": "Burundi",
+      "flag": "🇧🇮",
+      "code": "+257"
+    },
+    {
+      "name": "Kamboçya",
+      "flag": "🇰🇭",
+      "code": "+855"
+    },
+    {
+      "name": "Kamerun",
+      "flag": "🇨🇲",
+      "code": "+237"
+    },
+    {
+      "name": "Kanada",
+      "code": "+1",
+      "flag": "🇨🇦"
+    },
+    {
+      "name": "Chad",
+      "flag": "🇹🇩",
+      "code": "+235"
+    },
+    {
+      "name": "Şili",
+      "flag": "🇨🇱",
+      "code": "+56"
+    },
+    {
+      "name": "Çin",
+      "flag": "🇨🇳",
+      "code": "+86"
+    },
+    {
+      "name": "Kolombiya",
+      "flag": "🇨🇴",
+      "code": "+57"
+    },
+    {
+      "name": "Kosta Rika",
+      "flag": "🇨🇷",
+      "code": "+506"
+    },
+    {
+      "name": "Hırvatistan",
+      "flag": "🇭🇷",
+      "code": "+385"
+    },
+    {
+      "name": "Küba",
+      "flag": "🇨🇺",
+      "code": "+53"
+    },
+    {
+      "name": "Kıbrıs",
+      "flag": "🇨🇾",
+      "code": "+357"
+    },
+    {
+      "name": "Çek Cumhuriyeti",
+      "flag": "🇨🇿",
+      "code": "+420"
+    },
+    {
+      "name": "Danimarka",
+      "flag": "🇩🇰",
+      "code": "+45"
+    },
+    {
+      "name": "Dominik Cumhuriyeti",
+      "code": "+1",
+      "flag": "🇩🇴"
+    },
+    {
+      "name": "Ekvador",
+      "flag": "🇪🇨",
+      "code": "+593"
+    },
+    {
+      "name": "Mısır",
+      "flag": "🇪🇬",
+      "code": "+20"
+    },
+    {
+      "name": "Estonya",
+      "flag": "🇪🇪",
+      "code": "+372"
+    },
+    {
+      "name": "Etiyopya",
+      "flag": "🇪🇹",
+      "code": "+251"
+    },
+    {
+      "name": "Fiji",
+      "flag": "🇫🇯",
+      "code": "+679"
+    },
+    {
+      "name": "Finlandiya",
+      "flag": "🇫🇮",
+      "code": "+358"
+    },
+    {
+      "name": "Fransa",
+      "flag": "🇫🇷",
+      "code": "+33"
+    },
+    {
+      "name": "Gürcistan",
+      "flag": "🇬🇪",
+      "code": "+995"
+    },
+    {
+      "name": "Almanya",
+      "flag": "🇩🇪",
+      "code": "+49"
+    },
+    {
+      "name": "Gana",
+      "flag": "🇬🇭",
+      "code": "+233"
+    },
+    {
+      "name": "Yunanistan",
+      "flag": "🇬🇷",
+      "code": "+30"
+    },
+    {
+      "name": "Guatemala",
+      "flag": "🇬🇹",
+      "code": "+502"
+    },
+    {
+      "name": "Gine",
+      "flag": "🇬🇳",
+      "code": "+224"
+    },
+    {
+      "name": "Macaristan",
+      "flag": "🇭🇺",
+      "code": "+36"
+    },
+    {
+      "name": "İzlanda",
+      "flag": "🇮🇸",
+      "code": "+354"
+    },
+    {
+      "name": "Hindistan",
+      "flag": "🇮🇳",
+      "code": "+91"
+    },
+    {
+      "name": "Endonezya",
+      "flag": "🇮🇩",
+      "code": "+62"
+    },
+    {
+      "name": "İran",
+      "flag": "🇮🇷",
+      "code": "+98"
+    },
+    {
+      "name": "Irak",
+      "flag": "🇮🇶",
+      "code": "+964"
+    },
+    {
+      "name": "İrlanda",
+      "flag": "🇮🇪",
+      "code": "+353"
+    },
+    {
+      "name": "İsrail",
+      "flag": "🇮🇱",
+      "code": "+972"
+    },
+    {
+      "name": "İtalya",
+      "flag": "🇮🇹",
+      "code": "+39"
+    },
+    {
+      "name": "Jamaika",
+      "code": "+1",
+      "flag": "🇯🇲"
+    },
+    {
+      "name": "Japonya",
+      "flag": "🇯🇵",
+      "code": "+81"
+    },
+    {
+      "name": "Ürdün",
+      "flag": "🇯🇴",
+      "code": "+962"
+    },
+    {
+      "name": "Kazakistan",
+      "code": "+7",
+      "flag": "🇰🇿"
+    },
+    {
+      "name": "Kenya",
+      "flag": "🇰🇪",
+      "code": "+254"
+    },
+    {
+      "name": "Kuveyt",
+      "flag": "🇰🇼",
+      "code": "+965"
+    },
+    {
+      "name": "Kırgızistan",
+      "flag": "🇰🇬",
+      "code": "+996"
+    },
+    {
+      "name": "Letonya",
+      "flag": "🇱🇻",
+      "code": "+371"
+    },
+    {
+      "name": "Lübnan",
+      "flag": "🇱🇧",
+      "code": "+961"
+    },
+    {
+      "name": "Libya",
+      "flag": "🇱🇾",
+      "code": "+218"
+    },
+    {
+      "name": "Litvanya",
+      "flag": "🇱🇹",
+      "code": "+370"
+    },
+    {
+      "name": "Lüksemburg",
+      "flag": "🇱🇺",
+      "code": "+352"
+    },
+    {
+      "name": "Malezya",
+      "flag": "🇲🇾",
+      "code": "+60"
+    },
+    {
+      "name": "Maldivler",
+      "flag": "🇲🇻",
+      "code": "+960"
+    },
+    {
+      "name": "Malta",
+      "flag": "🇲🇹",
+      "code": "+356"
+    },
+    {
+      "name": "Meksika",
+      "flag": "🇲🇽",
+      "code": "+52"
+    },
+    {
+      "name": "Moldova",
+      "flag": "🇲🇩",
+      "code": "+373"
+    },
+    {
+      "name": "Monako",
+      "flag": "🇲🇨",
+      "code": "+377"
+    },
+    {
+      "name": "Moğolistan",
+      "flag": "🇲🇳",
+      "code": "+976"
+    },
+    {
+      "name": "Karadağ",
+      "flag": "🇲🇪",
+      "code": "+382"
+    },
+    {
+      "name": "Fas",
+      "flag": "🇲🇦",
+      "code": "+212"
+    },
+    {
+      "name": "Myanmar",
+      "flag": "🇲🇲",
+      "code": "+95"
+    },
+    {
+      "name": "Nepal",
+      "flag": "🇳🇵",
+      "code": "+977"
+    },
+    {
+      "name": "Hollanda",
+      "flag": "🇳🇱",
+      "code": "+31"
+    },
+    {
+      "name": "Yeni Zelanda",
+      "flag": "🇳🇿",
+      "code": "+64"
+    },
+    {
+      "name": "Nijerya",
+      "flag": "🇳🇬",
+      "code": "+234"
+    },
+    {
+      "name": "Kuzey Makedonya",
+      "flag": "🇲🇰",
+      "code": "+389"
+    },
+    {
+      "name": "Norveç",
+      "flag": "🇳🇴",
+      "code": "+47"
+    },
+    {
+      "name": "Umman",
+      "flag": "🇴🇲",
+      "code": "+968"
+    },
+    {
+      "name": "Pakistan",
+      "flag": "🇵🇰",
+      "code": "+92"
+    },
+    {
+      "name": "Panama",
+      "flag": "🇵🇦",
+      "code": "+507"
+    },
+    {
+      "name": "Paraguay",
+      "flag": "🇵🇾",
+      "code": "+595"
+    },
+    {
+      "name": "Peru",
+      "flag": "🇵🇪",
+      "code": "+51"
+    },
+    {
+      "name": "Filipinler",
+      "flag": "🇵🇭",
+      "code": "+63"
+    },
+    {
+      "name": "Polonya",
+      "flag": "🇵🇱",
+      "code": "+48"
+    },
+    {
+      "name": "Portekiz",
+      "flag": "🇵🇹",
+      "code": "+351"
+    },
+    {
+      "name": "Katar",
+      "flag": "🇶🇦",
+      "code": "+974"
+    },
+    {
+      "name": "Romanya",
+      "flag": "🇷🇴",
+      "code": "+40"
+    },
+    {
+      "name": "Rusya",
+      "code": "+7",
+      "flag": "🇷🇺"
+    },
+    {
+      "name": "Ruanda",
+      "flag": "🇷🇼",
+      "code": "+250"
+    },
+    {
+      "name": "Suudi Arabistan",
+      "flag": "🇸🇦",
+      "code": "+966"
+    },
+    {
+      "name": "Senegal",
+      "flag": "🇸🇳",
+      "code": "+221"
+    },
+    {
+      "name": "Sırbistan",
+      "flag": "🇷🇸",
+      "code": "+381"
+    },
+    {
+      "name": "Singapur",
+      "flag": "🇸🇬",
+      "code": "+65"
+    },
+    {
+      "name": "Slovakya",
+      "flag": "🇸🇰",
+      "code": "+421"
+    },
+    {
+      "name": "Slovenya",
+      "flag": "🇸🇮",
+      "code": "+386"
+    },
+    {
+      "name": "Güney Afrika",
+      "flag": "🇿🇦",
+      "code": "+27"
+    },
+    {
+      "name": "Güney Kore",
+      "flag": "🇰🇷",
+      "code": "+82"
+    },
+    {
+      "name": "İspanya",
+      "flag": "🇪🇸",
+      "code": "+34"
+    },
+    {
+      "name": "Sri Lanka",
+      "flag": "🇱🇰",
+      "code": "+94"
+    },
+    {
+      "name": "Sudan",
+      "flag": "🇸🇩",
+      "code": "+249"
+    },
+    {
+      "name": "İsveç",
+      "flag": "🇸🇪",
+      "code": "+46"
+    },
+    {
+      "name": "İsviçre",
+      "flag": "🇨🇭",
+      "code": "+41"
+    },
+    {
+      "name": "Suriye",
+      "flag": "🇸🇾",
+      "code": "+963"
+    },
+    {
+      "name": "Tayvan",
+      "flag": "🇹🇼",
+      "code": "+886"
+    },
+    {
+      "name": "Tacikistan",
+      "flag": "🇹🇯",
+      "code": "+992"
+    },
+    {
+      "name": "Tanzanya",
+      "flag": "🇹🇿",
+      "code": "+255"
+    },
+    {
+      "name": "Tayland",
+      "flag": "🇹🇭",
+      "code": "+66"
+    },
+    {
+      "name": "Tunus",
+      "flag": "🇹🇳",
+      "code": "+216"
+    },
+    {
+      "name": "Türkiye",
+      "flag": "🇹🇷",
+      "code": "+90"
+    },
+    {
+      "name": "Türkmenistan",
+      "flag": "🇹🇲",
+      "code": "+993"
+    },
+    {
+      "name": "Uganda",
+      "flag": "🇺🇬",
+      "code": "+256"
+    },
+    {
+      "name": "Ukrayna",
+      "flag": "🇺🇦",
+      "code": "+380"
+    },
+    {
+      "name": "Birleşik Arap Emirlikleri",
+      "flag": "🇦🇪",
+      "code": "+971"
+    },
+    {
+      "name": "Birleşik Krallık",
+      "flag": "🇬🇧",
+      "code": "+44"
+    },
+    {
+      "name": "Birleşik Devletler",
+      "code": "+1",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Uruguay",
+      "flag": "🇺🇾",
+      "code": "+598"
+    },
+    {
+      "name": "Özbekistan",
+      "flag": "🇺🇿",
+      "code": "+998"
+    },
+    {
+      "name": "Venezuela",
+      "flag": "🇻🇪",
+      "code": "+58"
+    },
+    {
+      "name": "Vietnam",
+      "flag": "🇻🇳",
+      "code": "+84"
+    },
+    {
+      "name": "Yemen",
+      "flag": "🇾🇪",
+      "code": "+967"
+    },
+    {
+      "name": "Zambiya",
+      "flag": "🇿🇲",
+      "code": "+260"
+    },
+    {
+      "name": "Zimbabve",
+      "flag": "🇿🇼",
+      "code": "+263"
+    }
+  ]
+}

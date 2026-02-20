@@ -1,0 +1,161 @@
+{
+  "hero": {
+    "badge": "EXPONIERTE STELLUNG",
+    "titleLine1": "Leitende Software",
+    "titleLine2": "Ingenieur",
+    "companyName": "TechVision GmbH",
+    "subtitle": "Werden Sie Teil unseres innovativen Teams und entwickeln Sie innovative Lösungen, die Branchen verändern. Wir sind auf der Suche nach talentierten Ingenieuren, die sich für die Entwicklung wirkungsvoller Technologien begeistern.",
+    "ctaPrimary": "Konsultation anfordern",
+    "ctaShare": "Job teilen",
+    "salaryRange": "Gehaltsspanne",
+    "location": "Standort",
+    "experience": "Erleben Sie",
+    "tabOverview": "Übersicht",
+    "tabRequirements": "Anforderungen",
+    "tabBenefits": "Vorteile",
+    "industry": "Software-Entwicklung",
+    "locationValue": "Remote (US-basiert)",
+    "locationStatValue": "Fernbedienung",
+    "salaryLabel": "Gehalt",
+    "teamSizeLabel": "Teamgröße",
+    "teamSizeValue": "15-20 Ingenieure",
+    "employmentLabel": "Beschäftigung",
+    "employmentValue": "Vollzeit",
+    "postedLabel": "Veröffentlicht",
+    "postedValue": "März 15, 2025",
+    "requiredSkills": "Erforderliche Fertigkeiten",
+    "readyToJoin": "Sind Sie bereit, unserem Team beizutreten?",
+    "applicationTime": "5-Minuten-Anwendung"
+  },
+  "loading": "Jobdetails laden...",
+  "notifications": {
+    "resume_uploaded": "Lebenslauf erfolgreich hochgeladen!",
+    "application_submitted": {
+      "title": "Bewerbung eingereicht!",
+      "message": "Vielen Dank für Ihr Interesse an der Stelle {{Titel}}. Unser Team wird Ihre Bewerbung prüfen und sich bald mit Ihnen in Verbindung setzen.",
+      "close": "Schließen Sie"
+    }
+  },
+  "application_modal": {
+    "title": "Bewerben für {{Titel}}",
+    "subtitle": "Füllen Sie Ihre Bewerbung unten aus",
+    "progress": "Fortschritte bei der Anwendung",
+    "form": {
+      "full_name": "Vollständiger Name *",
+      "full_name_placeholder": "Geben Sie Ihren Namen ein",
+      "email": "E-Mail Adresse *",
+      "phone": "Telefonnummer *",
+      "location": "Aktueller Standort *",
+      "location_placeholder": "Stadt, Land",
+      "linkedin": "LinkedIn-Profil",
+      "portfolio": "Portfolio-URL",
+      "cover_message": "Titelbotschaft",
+      "cover_message_placeholder": "Warum sind Sie an dieser Stelle interessiert?",
+      "upload_resume": "Lebenslauf hochladen *",
+      "click_to_upload": "Klicken Sie zum Hochladen Ihres Lebenslaufs",
+      "file_types": "(PDF, DOC, oder DOCX)",
+      "cancel": "Abbrechen",
+      "submit": "Bewerbung einreichen",
+      "application_closed": "Bewerbung geschlossen",
+      "terms_agreement": "Mit Ihrer Bewerbung erklären Sie sich mit unseren <1>Geschäftsbedingungen</1> einverstanden.",
+      "email_placeholder": "name@example.com",
+      "phone_placeholder": "+90 555 123 4567",
+      "linkedin_placeholder": "https://linkedin.com/in/username",
+      "portfolio_placeholder": "https://yourportfolio.com"
+    }
+  },
+  "share_modal": {
+    "title": "Diesen Job teilen",
+    "subtitle": "Teilen Sie diese Gelegenheit mit Ihrem Netzwerk",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp",
+    "copy_link": "Kopieren",
+    "copied": "Kopiert!"
+  },
+  "header": {
+    "status_open": "Öffnen Sie",
+    "status_closed": "Geschlossen",
+    "posted": "Veröffentlicht",
+    "save_job": "Job speichern",
+    "saved": "Gerettet",
+    "share": "Teilen Sie",
+    "apply_now": "Jetzt bewerben",
+    "application_closed": "Bewerbung geschlossen"
+  },
+  "quick_info": {
+    "currency": "Währung",
+    "salary": "Gehalt",
+    "type": "Typ"
+  },
+  "tabs": {
+    "job_description": "Arbeitsbeschreibung",
+    "requirements": "Anforderungen",
+    "details": "Einzelheiten"
+  },
+  "tab_content": {
+    "description": {
+      "overview": "Job-Übersicht",
+      "employment_type": "Art der Beschäftigung",
+      "work_location": "Arbeitsort"
+    },
+    "requirements": {
+      "title": "Anforderungen & Qualifikationen",
+      "what_we_looking_for": "Was wir suchen",
+      "professional_experience": "Berufliche Erfahrung",
+      "communication_skills": "Kommunikationsfähigkeiten",
+      "team_collaboration": "Zusammenarbeit im Team",
+      "growth_mindset": "Wachstumsorientierte Denkweise"
+    },
+    "details": {
+      "job_information": "Job-Informationen",
+      "job_type": "Job-Typ:",
+      "location": "Standort:",
+      "posted": "Geschrieben:",
+      "status": "Status:",
+      "quota_full": "Kontingent voll",
+      "open_for_applications": "Offen für Bewerbungen",
+      "compensation": "Entschädigung",
+      "currency": "Währung:",
+      "salary": "Gehalt:",
+      "why_join": "Warum sollte man sich anschließen {{Titel}}?",
+      "career_growth": "Berufliches Wachstum",
+      "career_growth_desc": "Aufstiegsmöglichkeiten",
+      "great_location": "Großartige Lage",
+      "great_location_desc": "Arbeiten in {{Ort}}",
+      "competitive_package": "Wettbewerbsfähiges Paket",
+      "competitive_package_desc": "Attraktive Gehälter und Sozialleistungen",
+      "professional_growth": "Berufliches Wachstum",
+      "professional_growth_desc": "Kontinuierliche Lernmöglichkeiten"
+    }
+  },
+  "cta": {
+    "title": "Sind Sie bereit, unserem Team beizutreten?",
+    "subtitle": "Machen Sie den nächsten Schritt in Ihrer Karriere bei {{title}}. Wir suchen leidenschaftliche Menschen, die etwas bewirken wollen.",
+    "apply_now": "Jetzt bewerben",
+    "application_closed": "Bewerbung geschlossen"
+  },
+  "contact": {
+    "title": "Benötigen Sie Hilfe bei Ihrer Bewerbung?",
+    "subtitle": "Unser HR-Team ist für Sie da",
+    "live_chat": {
+      "title": "Live-Chat-Unterstützung",
+      "subtitle": "Durchschnittliche Antwortzeit: 5 Minuten"
+    },
+    "email": {
+      "title": "E-Mail HR-Team",
+      "subtitle": "info@jobsadmire.com"
+    }
+  },
+  "fallback": {
+    "title_not_available": "Stellenbezeichnung nicht verfügbar",
+    "location_not_available": "Standort nicht verfügbar",
+    "description_not_available": "<p>Stellenbeschreibung nicht verfügbar.</p>",
+    "requirement_not_available": "<p>Anforderungen nicht verfügbar.</p>",
+    "date_not_available": "Datum nicht verfügbar",
+    "error_loading": "Fehler beim Laden eines Auftrags",
+    "unable_to_load_desc": "<p>Die Stellenbeschreibung kann nicht geladen werden. Bitte versuchen Sie es später noch einmal.</p>",
+    "unable_to_load_req": "<p>Anforderungen können nicht geladen werden. Bitte versuchen Sie es später noch einmal.</p>"
+  }
+}

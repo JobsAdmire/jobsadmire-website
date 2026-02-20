@@ -1,0 +1,3108 @@
+{
+  "herosection": {
+    "badge": "Özel Yolculuklar",
+    "title": "Bir Sonraki Maceranızı Keşfedin",
+    "description": "İsteklerinize göre uyarlanmış premium seyahat paketlerimizle nefes kesici destinasyonları deneyimleyin ve unutulmaz anılar yaratın.",
+    "currentlyViewing": {
+      "label": "Şu Anda Görüntüleniyor"
+    },
+    "buttons": {
+      "primary": "Şimdi Keşfet",
+      "secondary": "Tüm Destinasyonları Görüntüle"
+    },
+    "destinationCounter": "Hedef {{current}}/{{total}}",
+    "controls": {
+      "selectDestination": "Hedefi seçin {{destination}}"
+    },
+    "destinations": [
+      {
+        "img": "/images/ihul.png",
+        "name": "Londra",
+        "alt": "İkonik simge yapılarıyla Londra şehir manzarasının güzel görünümü",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihum.png",
+        "name": "Manchester",
+        "alt": "Modern mimarisi ve tarihi binalarıyla Manchester şehir merkezi",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihub.png",
+        "name": "Birmingham",
+        "alt": "Birmingham'ın canlı şehir merkezi ve kültürel bölgeleri",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihue.png",
+        "name": "Edinburgh",
+        "alt": "Edinburgh'un tarihi kalesi ve ortaçağdan kalma eski şehri",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihuli.png",
+        "name": "Liverpool",
+        "alt": "Liverpool'un ünlü rıhtımı ve denizcilik mirası",
+        "country": "UK"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "aboutsection": {
+    "badge": "Hakkımızda",
+    "title": "Güvenilir Seyahat Ortağınız",
+    "description": "Seyahat sektöründeki 15 yılı aşkın deneyimimizle, beklentileri aşan olağanüstü yolculuklar yaratma konusunda uzmanız.",
+    "features": [
+      {
+        "title": "Uzman Rehberliği",
+        "description": "Deneyimli seyahat danışmanlarımız kişiselleştirilmiş öneriler sunmaktadır."
+      },
+      {
+        "title": "En İyi Fiyatlar",
+        "description": "Hiçbir gizli ücret olmadan rekabetçi fiyatları garanti ediyoruz."
+      },
+      {
+        "title": "7/24 Destek",
+        "description": "İçinizin rahat etmesi için 24 saat müşteri desteği."
+      }
+    ],
+    "stats": {
+      "experience": {
+        "number": "15+",
+        "label": "Yıl Tecrübe"
+      },
+      "customers": {
+        "number": "50K+",
+        "label": "Mutlu Müşteriler"
+      },
+      "destinations": {
+        "number": "200+",
+        "label": "Destinasyonlar"
+      },
+      "awards": {
+        "number": "25+",
+        "label": "Kazanılan Ödüller"
+      }
+    }
+  },
+  "servicessection": {
+    "badge": "Hizmetlerimiz",
+    "title": "Komple Seyahat Çözümleri",
+    "description": "Planlamadan uygulamaya kadar yolculuğunuzun her yönüyle ilgileniyoruz.",
+    "services": [
+      {
+        "icon": "uçak",
+        "title": "Uçuş Rezervasyonu",
+        "description": "İç ve dış hat uçuşlarında en iyi fırsatlar."
+      },
+      {
+        "icon": "Otel",
+        "title": "Otel Rezervasyonları",
+        "description": "Rakipsiz fiyatlarla lüks konaklama."
+      },
+      {
+        "icon": "araba",
+        "title": "Araç Kiralama",
+        "description": "Rahatınız için güvenilir ulaşım."
+      },
+      {
+        "icon": "rehber",
+        "title": "Tur Rehberleri",
+        "description": "Sürükleyici deneyimler için profesyonel rehberler."
+      },
+      {
+        "icon": "Sigorta",
+        "title": "Seyahat Sigortası",
+        "description": "Endişesiz seyahat için kapsamlı teminat."
+      },
+      {
+        "icon": "VİZE",
+        "title": "Vize Yardımı",
+        "description": "Eksiksiz vize işlemleri desteği."
+      }
+    ]
+  },
+  "packagessection": {
+    "badge": "Seyahat Paketleri",
+    "title": "Küratörlü Seyahat Deneyimleri",
+    "description": "Unutulmaz anılar için tasarlanmış özenle seçilmiş paketlerimizi keşfedin.",
+    "filters": {
+      "all": "Tüm Paketler",
+      "adventure": "Macera",
+      "luxury": "Lüks",
+      "cultural": "Kültürel",
+      "romantic": "Romantik"
+    },
+    "packages": [
+      {
+        "title": "Londra Kaşifi",
+        "category": "kültürel",
+        "duration": "5 Gün",
+        "price": "£1,299",
+        "originalPrice": "£1,599",
+        "image": "/images/london-package.jpg",
+        "highlights": [
+          "Big Ben",
+          "London Eye",
+          "Buckingham Sarayı",
+          "Kule Köprüsü"
+        ],
+        "description": "Londra'nın tarihi cazibesini ve modern canlılığını keşfedin.",
+        "id": 1,
+        "rating": 4.8,
+        "reviews": 324
+      },
+      {
+        "title": "İskoç Yaylaları",
+        "category": "macera",
+        "duration": "7 Gün",
+        "price": "£1,899",
+        "originalPrice": "£2,299",
+        "image": "/images/scotland-package.jpg",
+        "highlights": [
+          "Edinburgh Kalesi",
+          "Loch Ness",
+          "Skye Adası",
+          "Viski Turları"
+        ],
+        "description": "İskoçya'nın nefes kesici manzaraları arasında maceraya atılın.",
+        "id": 2,
+        "rating": 4.9,
+        "reviews": 156
+      }
+    ]
+  },
+  "testimonialssection": {
+    "badge": "Görüşler",
+    "title": "Gezginlerimiz Ne Diyor",
+    "description": "Memnun müşterilerimizin gerçek yorumlarını okuyun.",
+    "testimonials": [
+      {
+        "name": "Sarah Johnson",
+        "location": "New York, ABD",
+        "comment": "Kesinlikle harika bir deneyim! Her detay mükemmel bir şekilde planlanmıştı.",
+        "avatar": "/images/avatar1.jpg",
+        "trip": "Londra Keşif Paketi",
+        "id": 1,
+        "rating": 5
+      },
+      {
+        "name": "Michael Chen",
+        "location": "Toronto, Kanada",
+        "comment": "Scottish Highlands gezisi tüm beklentilerimizi aştı. Şiddetle tavsiye edilir!",
+        "avatar": "/images/avatar2.jpg",
+        "trip": "İskoç Yaylaları Paketi",
+        "id": 2,
+        "rating": 5
+      }
+    ]
+  },
+  "contactsection": {
+    "badge": "İletişime Geçin",
+    "title": "Bir Sonraki Maceranızı Planlayın",
+    "description": "Keşfetmeye hazır mısınız? Seyahat uzmanlarımızla bugün iletişime geçin.",
+    "form": {
+      "name": {
+        "label": "Ad Soyad",
+        "placeholder": "Tam adınızı girin"
+      },
+      "email": {
+        "label": "E-posta Adresi",
+        "placeholder": "E-posta adresinizi girin"
+      },
+      "phone": {
+        "label": "Telefon Numarası",
+        "placeholder": "Telefon numaranızı girin"
+      },
+      "destination": {
+        "label": "Tercih Edilen Destinasyon",
+        "placeholder": "Nereye gitmek istersiniz?"
+      },
+      "message": {
+        "label": "Mesaj",
+        "placeholder": "Bize seyahat planlarınızdan bahsedin..."
+      },
+      "submit": "Mesaj Gönder"
+    },
+    "contactInfo": {
+      "address": {
+        "title": "Bizi Ziyaret Edin",
+        "details": "123 Travel Street, Londra, Birleşik Krallık SW1A 1AA"
+      },
+      "phone": {
+        "title": "Bizi Arayın",
+        "details": "+44 20 7946 0958"
+      },
+      "email": {
+        "title": "Bize E-posta Gönderin",
+        "details": "info@travelco.com"
+      },
+      "hours": {
+        "title": "Ofis Saatleri",
+        "details": "Pzt-Cuma: Sabah 9:00 - Akşam 6:00"
+      }
+    }
+  },
+  "tableOfContents": {
+    "title": "İçindekiler",
+    "subtitle": "Bölümler arasında gezinme",
+    "currentlyReading": "Şu anda okuyor",
+    "sectionsCount": "{{count}} keşfedilecek bölümler",
+    "quickNavigation": "Hızlı Navigasyon",
+    "scrollText": "Scroll through {{count}} sections",
+    "sections": [
+      {
+        "title": "Birleşik Krallık Hakkında Büyüleyici Bilgiler",
+        "id": 1
+      },
+      {
+        "title": "Birleşik Krallık'a Taşınmak için Vize ve İkamet Seçenekleri",
+        "id": 2
+      },
+      {
+        "title": "Birleşik Krallık'a Taşınmak için Gerekenler",
+        "id": 3
+      },
+      {
+        "title": "Birleşik Krallık'ta Çalışmak",
+        "id": 4
+      },
+      {
+        "title": "ABD'den İngiltere'ye taşınmak",
+        "id": 5
+      },
+      {
+        "title": "Türkiye'den Birleşik Krallık'a Taşınma",
+        "id": 6
+      },
+      {
+        "title": "İngiltere'ye taşınmak ne kadara mal olur?",
+        "id": 7
+      },
+      {
+        "title": "Evcil Hayvanlarla Birleşik Krallık'a Taşınma",
+        "id": 8
+      }
+    ]
+  },
+  "facts": {
+    "title": "Birleşik Krallık Hakkında Büyüleyici Bilgiler",
+    "subtitle": "Birleşik Krallık'ı eşsiz bir destinasyon yapan özellikleri keşfedin",
+    "factsList": [
+      {
+        "title": "Zengin Tarih",
+        "description": "Sayısız tarihi simge yapı ile 1000 yılı aşkın belgelenmiş tarih."
+      },
+      {
+        "title": "Kültürel Çeşitlilik",
+        "description": "200'den fazla farklı milletten insana ev sahipliği yapmaktadır."
+      },
+      {
+        "title": "Ekonomik Güç",
+        "description": "Dünyanın en büyük ekonomilerinden ve finans merkezlerinden biri."
+      },
+      {
+        "title": "Eğitimde Mükemmellik",
+        "description": "Oxford ve Cambridge gibi dünyaca ünlü üniversitelere ev sahipliği yapmaktadır."
+      }
+    ]
+  },
+  "visa": {
+    "title": "Birleşik Krallık'a Taşınmak için Vize ve İkamet Seçenekleri",
+    "subtitle": "Durumunuz için doğru vize yolunu seçin",
+    "visaTypes": [
+      {
+        "type": "Nitelikli İşçi Vizesi",
+        "description": "Birleşik Krallık'taki bir işverenden iş teklifi alan bireyler için",
+        "requirements": [
+          "İş teklifi",
+          "İngilizce yeterliliği",
+          "Maaş eşiği"
+        ],
+        "duration": "5 yıla kadar"
+      },
+      {
+        "type": "Öğrenci Vizesi",
+        "description": "Birleşik Krallık'taki bir eğitim kurumunda tam zamanlı eğitim için",
+        "requirements": [
+          "Üniversite kabulü",
+          "Finansal kanıt",
+          "İngilizce yeterliliği"
+        ],
+        "duration": "Kurs süresi + ek süre"
+      },
+      {
+        "type": "Aile Vizesi",
+        "description": "Birleşik Krallık'ta ikamet eden aile üyelerine katılmak için",
+        "requirements": [
+          "Aile ilişkisi kanıtı",
+          "Finansal gereksinimler",
+          "İngilizce yeterliliği"
+        ],
+        "duration": "2,5 ila 5 yıl"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "Birleşik Krallık'a Taşınmak için Gerekenler",
+    "subtitle": "Karşılamanız gereken temel belgeler ve kriterler",
+    "generalRequirements": [
+      {
+        "category": "Dokümantasyon",
+        "items": [
+          "Geçerli pasaport",
+          "Vize başvurusu",
+          "Biyometrik veriler",
+          "Fotoğraflar"
+        ]
+      },
+      {
+        "category": "Finansal",
+        "items": [
+          "Banka hesap özetleri",
+          "Gelir belgesi",
+          "Sponsorluk belgeleri",
+          "Vergi kayıtları"
+        ]
+      },
+      {
+        "category": "Kişisel",
+        "items": [
+          "Tıbbi muayene",
+          "Suç geçmişi kontrolü",
+          "İngilizce yeterlilik testi",
+          "Eğitim sertifikaları"
+        ]
+      }
+    ]
+  },
+  "job": {
+    "title": "Birleşik Krallık'ta Çalışmak",
+    "subtitle": "Birleşik Krallık'ta istihdam olanakları ve çalışma kültürü",
+    "workInfo": {
+      "averageSalary": "Yıllık £35,000 - £45,000",
+      "workingHours": "Haftalık 37,5 saat standart",
+      "holidays": "28 gün asgari yıllık izin",
+      "benefits": "NHS sağlık hizmetleri, emeklilik planları, hastalık maaşı"
+    },
+    "jobSectors": [
+      {
+        "sector": "Teknoloji",
+        "demand": "Yüksek",
+        "averageSalary": "£45,000 - £80,000"
+      },
+      {
+        "sector": "Sağlık Hizmetleri",
+        "demand": "Çok Yüksek",
+        "averageSalary": "£35,000 - £70,000"
+      },
+      {
+        "sector": "Finans",
+        "demand": "Yüksek",
+        "averageSalary": "£40,000 - £90,000"
+      }
+    ]
+  },
+  "moving": {
+    "title": "ABD'den İngiltere'ye taşınmak",
+    "subtitle": "Amerikan vatandaşları için özel hususlar",
+    "process": [
+      {
+        "title": "Vizenizi Seçin",
+        "description": "Hangi Birleşik Krallık vize kategorisinin durumunuza uygun olduğunu belirleyin",
+        "step": 1
+      },
+      {
+        "title": "Belgeleri Hazırlayın",
+        "description": "Gerekli tüm belgeleri ve sertifikaları toplayın",
+        "step": 2
+      },
+      {
+        "title": "Başvuru Gönder",
+        "description": "Online başvuru yapın ve biyometrik randevuya katılın",
+        "step": 3
+      },
+      {
+        "title": "Taşınmanızı Planlayın",
+        "description": "Barınma, nakliye ve ilk yerleşimin ayarlanması",
+        "step": 4
+      }
+    ]
+  },
+  "turkeyToUk": {
+    "title": "Türkiye'den Birleşik Krallık'a Taşınma",
+    "subtitle": "Birleşik Krallık'a göç eden Türk vatandaşları için rehber",
+    "considerations": [
+      "Türk vatandaşları için vize gereklilikleri",
+      "Belge çevirisi ve apostil",
+      "Kültürel adaptasyon ipuçları",
+      "Birleşik Krallık'taki Türk toplumu"
+    ]
+  },
+  "cost": {
+    "title": "İngiltere'ye taşınmak ne kadara mal olur?",
+    "subtitle": "Birleşik Krallık göçmenliğiniz için bütçe planlaması",
+    "costs": {
+      "visa": {
+        "title": "Vize Ücretleri",
+        "amount": "£610 - £1,423",
+        "description": "Vize türüne ve süresine bağlıdır"
+      },
+      "healthcare": {
+        "title": "Sağlık Hizmetleri Ek Ücreti",
+        "amount": "Yıllık £624",
+        "description": "Göçmen Sağlığı Ek Ücreti (IHS)"
+      },
+      "moving": {
+        "title": "Taşınma Maliyetleri",
+        "amount": "£2,000 - £8,000",
+        "description": "Nakliye, uçuşlar ve ilk kurulum"
+      },
+      "living": {
+        "title": "İlk Yaşam Maliyetleri",
+        "amount": "£1,500 - £3,000",
+        "description": "İlk ay konaklama ve masraflar"
+      }
+    }
+  },
+  "pet": {
+    "title": "Evcil Hayvanlarla Birleşik Krallık'a Taşınma",
+    "subtitle": "Evcil hayvanlarınızı getirmek için gerekenler ve prosedürler",
+    "requirements": [
+      {
+        "requirement": "Evcil Hayvan Pasaportu",
+        "description": "AB evcil hayvan pasaportu veya üçüncü ülke resmi veteriner sertifikası",
+        "timeframe": "Seyahatten en az 21 gün önce"
+      },
+      {
+        "requirement": "Mikroçip",
+        "description": "Kuduz aşısı öncesi ISO 11784/11785 uyumlu mikroçip",
+        "timeframe": "Kuduz aşısından önce"
+      },
+      {
+        "requirement": "Kuduz Aşısı",
+        "description": "Mikroçiplemeden sonra uygulanan geçerli kuduz aşısı",
+        "timeframe": "Girişten 21 gün önce"
+      },
+      {
+        "requirement": "Sağlık Sertifikası",
+        "description": "Yetkili veteriner tarafından imzalanmış resmi veteriner sertifikası",
+        "timeframe": "Seyahatten sonraki 10 gün içinde"
+      }
+    ],
+    "process": [
+      {
+        "title": "Evcil Hayvanınıza Mikroçip Takın",
+        "description": "Evcil hayvanınızın ISO standardı çip ile mikroçiplendiğinden emin olun",
+        "step": 1
+      },
+      {
+        "title": "Kuduz Aşısı",
+        "description": "Kuduz aşısı yaptırın ve 21 gün bekleyin",
+        "step": 2
+      },
+      {
+        "title": "Sağlık Sertifikası",
+        "description": "Yetkili veteriner hekimden sağlık sertifikası alın",
+        "step": 3
+      },
+      {
+        "title": "Kitap Seyahati",
+        "description": "Birleşik Krallık'a evcil hayvan dostu ulaşım ayarlayın",
+        "step": 4
+      }
+    ],
+    "costs": {
+      "microchip": "£15 - £30",
+      "vaccination": "£50 - £100",
+      "healthCertificate": "£100 - £200",
+      "transportation": "£200 - £1,000",
+      "quarantine": "Ücretsiz (gereksinimler karşılanırsa)"
+    }
+  },
+  "ukInfoCard": {
+    "title": "Birleşik Krallık Hakkında Büyüleyici Bilgiler",
+    "description": "Tarihi monarşisinden nefes kesici manzaralarına ve akademik mükemmelliğine kadar Birleşik Krallık'ın zengin mirasını ve büyüleyici özelliklerini keşfedin.",
+    "didYouKnow": "Biliyor muydunuz?",
+    "cta": "Birleşik Krallık Hakkında Daha Fazlasını Keşfedin",
+    "footer": "© 2025 Birleşik Krallık Bilgi",
+    "navigation": {
+      "previous": "Önceki",
+      "next": "Sonraki",
+      "counter": "{{total}}'in {{current}}'i"
+    },
+    "facts": [
+      {
+        "title": "Antik Monarşi",
+        "content": "Birleşik Krallık, 1.000 yılı aşkın geçmişiyle dünyanın en eski monarşilerinden birine sahiptir.",
+        "detail": "İngiliz monarşisi 9. yüzyıldan beri kesintisiz olarak varlığını sürdürmektedir ve Kraliçe Elizabeth II, Kral Charles III'ten önce İngiliz tarihinde en uzun süre hüküm süren hükümdardır.",
+        "iconType": "Taç",
+        "emoji": "👑",
+        "color": "bg-indigo-500"
+      },
+      {
+        "title": "En İyi Üniversiteler",
+        "content": "Birleşik Krallık, Oxford ve Cambridge de dahil olmak üzere dünyanın en iyi üniversitelerinden bazılarına ev sahipliği yapmaktadır.",
+        "detail": "Oxford ve Cambridge, sırasıyla 11. ve 13. yüzyıllara uzanan geçmişleriyle sürekli olarak dünyanın en iyi 10 üniversitesi arasında yer almaktadır.",
+        "iconType": "mezuni̇yet",
+        "emoji": "🎓",
+        "color": "bg-emerald-500"
+      },
+      {
+        "title": "Ada Ulusu",
+        "content": "Birleşik Krallık, 7.000'den fazla küçük adaya sahip bir ada ülkesidir.",
+        "detail": "Büyük Britanya en büyük ada olmakla birlikte, Birleşik Krallık'ta Wight Adası, Anglesey ve Hebrides gibi çok sayıda başka önemli ada da bulunmaktadır.",
+        "iconType": "Dalgalar",
+        "emoji": "🏝️",
+        "color": "bg-blue-500"
+      },
+      {
+        "title": "Bilimsel Miras",
+        "content": "Aralarında Isaac Newton, Charles Darwin ve Stephen Hawking'in de bulunduğu İngiliz bilim insanları önemli katkılarda bulunmuştur.",
+        "detail": "Birleşik Krallık, yerçekiminden DNA yapısına ve kuantum fiziğine kadar çığır açan keşiflerle bilim alanında 100'den fazla Nobel Ödülü sahibi çıkarmıştır.",
+        "iconType": "ampul",
+        "emoji": "💡",
+        "color": "bg-amber-500"
+      },
+      {
+        "title": "En Yüksek Zirve",
+        "content": "En yüksek dağ İskoçya'daki Ben Nevis'tir (1.345 metre).",
+        "detail": "İskoçya'nın Highlands bölgesinde yer alan Ben Nevis, yılda 100.000'den fazla dağcının ilgisini çekmekte ve nadir bulunan alpin flora ve faunaya sahiptir.",
+        "iconType": "dağ",
+        "emoji": "🏔️",
+        "color": "bg-slate-500"
+      }
+    ]
+  },
+  "categories": {
+    "history": {
+      "title": "Tarihi Miras",
+      "description": "Birleşik Krallık'ın zengin tarihi mirasını keşfedin",
+      "facts": [
+        {
+          "title": "Ortaçağ Şatoları",
+          "description": "Birleşik Krallık'ta çoğu ortaçağdan kalma 1.500'den fazla kale bulunmaktadır.",
+          "highlight": "Windsor Kalesi dünyanın işgal altındaki en eski kalesidir."
+        },
+        {
+          "title": "Roma Mirası",
+          "description": "Hadrian Duvarı kuzey İngiltere boyunca 84 mil uzanmaktadır.",
+          "highlight": "İmparator Hadrian tarafından MS 122 yılında Roma Britanyası'nı savunmak için inşa edilmiştir."
+        },
+        {
+          "title": "Sanayi Devrimi",
+          "description": "Birleşik Krallık, 18. yüzyılda Sanayi Devrimi'nin doğduğu yer olmuştur.",
+          "highlight": "İlk buhar makinesi 1769 yılında James Watt tarafından geliştirilmiştir."
+        }
+      ]
+    },
+    "geography": {
+      "title": "Coğrafi Harikalar",
+      "description": "Çeşitli manzaraları ve doğal özellikleri keşfedin",
+      "facts": [
+        {
+          "title": "Kıyı Şeridi Uzunluğu",
+          "description": "Birleşik Krallık yaklaşık 11.000 mil uzunluğunda kıyı şeridine sahiptir.",
+          "highlight": "Birleşik Krallık'ta hiçbir nokta denize 75 milden daha uzak değildir."
+        },
+        {
+          "title": "Ulusal Parklar",
+          "description": "İngiltere, Galler ve İskoçya'da 15 Ulusal Park bulunmaktadır.",
+          "highlight": "Göller Bölgesi, 1951 yılında kurulan ilk Milli Park'tır."
+        },
+        {
+          "title": "İklim Bölgeleri",
+          "description": "Büyüklüğüne rağmen Birleşik Krallık birden fazla farklı iklim bölgesine sahiptir.",
+          "highlight": "İskoçya aynı gün içinde güney İngiltere'den 10°C daha soğuk olabilir."
+        }
+      ]
+    },
+    "culture": {
+      "title": "Kültürel Zenginlik",
+      "description": "Birleşik Krallık'ın kültürel çeşitliliği ve sanatsal katkıları",
+      "facts": [
+        {
+          "title": "Edebiyat Devleri",
+          "description": "Shakespeare, Dickens, Austen ve birçok edebi efsaneye ev sahipliği yapmıştır.",
+          "highlight": "Shakespeare bugün hala kullanılan 1.700'den fazla kelime icat etmiştir."
+        },
+        {
+          "title": "Müzik Mirası",
+          "description": "The Beatles, Queen, Led Zeppelin ve sayısız grubun doğum yeri.",
+          "highlight": "Birleşik Krallık, ABD hariç diğer tüm ülkelerden daha fazla küresel 1 numara hit üretmiştir."
+        },
+        {
+          "title": "Tiyatro Geleneği",
+          "description": "Londra'nın West End bölgesi dünyanın önde gelen tiyatro bölgelerinden biridir.",
+          "highlight": "Globe Tiyatrosu, Shakespeare'in zamanıyla aynı tarzda performanslar sunmaktadır."
+        }
+      ]
+    },
+    "science": {
+      "title": "Bilimsel Mükemmellik",
+      "description": "İngiliz beyinlerden çığır açan keşifler ve yenilikler",
+      "facts": [
+        {
+          "title": "Tıbbi Buluşlar",
+          "description": "Penisilin, aşılar ve DNA yapısı burada keşfedildi.",
+          "highlight": "Alexander Fleming penisilini 1928 yılında kazara keşfetti."
+        },
+        {
+          "title": "Fizik Öncüleri",
+          "description": "Newton'un yasaları, Darwin'in evrimi ve Hawking'in kara delikleri.",
+          "highlight": "Stephen Hawking'in 'Zamanın Kısa Tarihi' kitabı 25 milyondan fazla sattı."
+        },
+        {
+          "title": "Teknoloji İnovasyonu",
+          "description": "World Wide Web ve bilgisayarlar İngiliz kökenlidir.",
+          "highlight": "Tim Berners-Lee 1989 yılında CERN'de World Wide Web'i icat etti."
+        }
+      ]
+    }
+  },
+  "statistics": {
+    "title": "Rakamlarla Birleşik Krallık",
+    "subtitle": "Birleşik Krallık hakkında büyüleyici istatistikler",
+    "stats": [
+      {
+        "number": "66.8M",
+        "label": "Nüfus",
+        "description": "Birleşik Krallık'ın toplam nüfusu"
+      },
+      {
+        "number": "243,610",
+        "label": "Kilometre Kare",
+        "description": "Birleşik Krallık'ın toplam alanı"
+      },
+      {
+        "label": "Ülkeler",
+        "description": "İngiltere, İskoçya, Galler ve Kuzey İrlanda",
+        "number": "4"
+      },
+      {
+        "number": "100+",
+        "label": "Nobel Ödülleri",
+        "description": "Birleşik Krallık'tan Nobel Ödülü kazananlar"
+      },
+      {
+        "label": "UNESCO Alanları",
+        "description": "Birleşik Krallık'taki Dünya Mirası Alanları",
+        "number": "31"
+      },
+      {
+        "number": "1,000+",
+        "label": "Yıllar",
+        "description": "İngiliz monarşi çağı"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Birleşik Krallık Hakkında Daha Fazla Bilgi Edinin",
+    "subtitle": "İngiliz kültürü ve mirası hakkında daha fazla bilgi almak için iletişime geçin",
+    "form": {
+      "name": {
+        "label": "Ad Soyad",
+        "placeholder": "Tam adınızı girin"
+      },
+      "email": {
+        "label": "E-posta Adresi",
+        "placeholder": "E-posta adresinizi girin"
+      },
+      "interest": {
+        "label": "İlgi Alanı",
+        "placeholder": "Birleşik Krallık kültürünün en çok hangi yönü ilginizi çekiyor?"
+      },
+      "message": {
+        "label": "Mesaj",
+        "placeholder": "Bize Birleşik Krallık hakkında bilmek istediklerinizi söyleyin..."
+      },
+      "submit": "Soruşturma Gönder"
+    },
+    "contactInfo": {
+      "address": {
+        "title": "Bizi Ziyaret Edin",
+        "details": "123 British Heritage Street, Londra, Birleşik Krallık SW1A 1AA"
+      },
+      "phone": {
+        "title": "Bizi Arayın",
+        "details": "+44 20 7946 0123"
+      },
+      "email": {
+        "title": "Bize E-posta Gönderin",
+        "details": "info@ukexplorer.com"
+      },
+      "hours": {
+        "title": "Saatler",
+        "details": "Pazartesi - Cuma: Sabah 9:00 - Akşam 5:00"
+      }
+    }
+  },
+  "costsGuide": {
+    "title": "Birleşik Krallık'a Taşınmanın Maliyeti Ne Kadar?",
+    "description": "Vize ücretlerinden günlük yaşam masraflarına kadar Birleşik Krallık'a taşınırken beklemeniz gereken tüm masrafların kapsamlı bir dökümü.",
+    "sections": [
+      {
+        "id": "vize-göçmenlik",
+        "icon": "🛂",
+        "title": "Vize ve Göçmenlik",
+        "amount": "£250-£3,000",
+        "details": "Vize başvurusu, sağlık hizmeti ek ücreti, biyometri dahildir",
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "konut",
+        "icon": "🏠",
+        "title": "Konut",
+        "amount": "£1,800-£5,000 peşin",
+        "details": "1-2 aylık depozito + ilk ayın kirası + acente ücretleri",
+        "subItems": [
+          {
+            "title": "Londra (aylık)",
+            "amount": "£1,500-£2,500"
+          },
+          {
+            "title": "Büyük şehirler (aylık)",
+            "amount": "£800-£1,200"
+          },
+          {
+            "title": "Kasabalar/Kırsal alanlar (aylık)",
+            "amount": "£600-£900"
+          }
+        ],
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "nakliye",
+        "icon": "📦",
+        "title": "Nakliye (İsteğe Bağlı)",
+        "amount": "£2,000-£6,000",
+        "details": "20ft konteyner. Birçok gurbetçi mobilyalı kiralık ev kullanmakta veya yerel olarak satın almaktadır.",
+        "color": "bg-sky-800"
+      },
+      {
+        "id": "yardımcı programlar",
+        "icon": "💡",
+        "title": "Yardımcı Programlar ve İnternet Kurulumu",
+        "amount": "£100-£300",
+        "details": "Kurulum ücretleri ve depozitolar",
+        "subItems": [
+          {
+            "title": "Aylık faturalar",
+            "amount": "£150-£300"
+          },
+          {
+            "title": "Belediye vergisi (aylık)",
+            "amount": "£120-£300"
+          }
+        ],
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "her gün",
+        "icon": "🛒",
+        "title": "Günlük Maliyetler",
+        "amount": "Aylık £800-£1,500",
+        "subItems": [
+          {
+            "title": "Bakkaliye",
+            "amount": "£250-£450/ay"
+          },
+          {
+            "title": "Toplu taşıma",
+            "amount": "£150-£300/ay"
+          },
+          {
+            "title": "Mobil ve internet",
+            "amount": "£40-£80/ay"
+          },
+          {
+            "title": "Eğlence ve yemek",
+            "amount": "£200-£400/ay"
+          }
+        ],
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "bankacılık",
+        "icon": "🏦",
+        "title": "Bankacılık ve Finans",
+        "amount": "£50-£200",
+        "details": "Hesap kurulum ücretleri, uluslararası transferler",
+        "color": "bg-sky-600"
+      }
+    ],
+    "totalCosts": {
+      "title": "Toplam Tahmini Taşınma Maliyetleri",
+      "options": [
+        {
+          "title": "Bütçe Seçeneği",
+          "amount": "£3,000-£5,000",
+          "description": "Tek kişi için minimum maliyetler, Londra dışında, minimum eşya",
+          "featured": false
+        },
+        {
+          "title": "Standart Hareket",
+          "amount": "£5,000-£10,000",
+          "description": "Orta düzeyde nakliye ile tek kişi veya çift için ortalama maliyetler",
+          "featured": true
+        },
+        {
+          "title": "Aile Taşınması",
+          "amount": "£10,000-£20,000+",
+          "description": "3-4 kişilik aile dolu nakliye konteyneri ile Londra'ya taşınıyor",
+          "featured": false
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Birleşik Krallık'ta Para Tasarrufu Stratejileri",
+      "tips": [
+        {
+          "title": "Konum Önemlidir",
+          "description": "Londra dışında yaşamak konut masraflarınızı %40-60 oranında azaltabilir. Daha iyi bir değer için Manchester, Birmingham veya Glasgow gibi şehirleri düşünün."
+        },
+        {
+          "title": "Mobilyalı Konaklama",
+          "description": "Mobilyalı kiralamalar nakliye ve mobilya maliyetlerinde binlerce tasarruf sağlayabilir. Kısa süreli kiralamalar, taahhütte bulunmadan önce doğru mahalleyi bulmanızı sağlar."
+        },
+        {
+          "title": "Nakliye Tasarrufları",
+          "description": "Yıllık seyahat kartları satın alın ve bisiklet dostu şehirlerde bisiklete binmeyi düşünün. Londra'nın ulaşım maliyetleri diğer Birleşik Krallık şehirlerine göre önemli ölçüde yüksektir."
+        },
+        {
+          "title": "Bankacılık ve Döviz",
+          "description": "Yüksek banka ücretlerinden kaçınmak için uluslararası transferler için Wise veya Revolut gibi hizmetleri kullanın. Taşınmadan önce kurlar uygun olduğunda döviz bozdurun."
+        }
+      ]
+    },
+    "considerations": {
+      "title": "Birleşik Krallık'a Özgü Temel Hususlar",
+      "items": [
+        {
+          "icon": "🏥",
+          "title": "Sağlık Hizmetleri",
+          "description": "NHS'ye erişim sağlayan 6 aydan uzun süreli vizeler için başvururken Göçmenlik Sağlık Ek Ücreti (yetişkinler için yıllık 624 £) için bütçe ayırın."
+        },
+        {
+          "icon": "📱",
+          "title": "İletişim",
+          "description": "Özellikle kendi telefonunuz varsa, sözleşme yerine yalnızca SIM anlaşmalarını düşünün. Giffgaff ve Lebara gibi sağlayıcılar esnek kontratsız seçenekler sunmaktadır."
+        },
+        {
+          "icon": "🌦️",
+          "title": "Mevsimsel Maliyetler",
+          "description": "Kışın ısıtma maliyetleri önemli olabilir. Kamu hizmetlerinden tasarruf etmek için iyi yalıtıma ve enerji verimliliği derecelerine sahip konaklama yerlerini düşünün."
+        },
+        {
+          "icon": "🚗",
+          "title": "Ulaşım Planlaması",
+          "description": "Araç kullanmayı planlıyorsanız, Birleşik Krallık'ta yeni ikamet edenler için daha yüksek sigorta maliyetlerini ve büyük şehirlerdeki düşük emisyonlu bölgeler için olası ücretleri hesaba katın."
+        }
+      ]
+    },
+    "conclusion": {
+      "title": "Birleşik Krallık'a Taşınmanızın Planlanması",
+      "description": "Birleşik Krallık'a taşınmak, özellikle de Londra'ya veya diğer büyük şehirlere taşınacaksanız, önemli bir yatırım anlamına gelir. Başlangıç maliyetleri yüksek görünse de, doğru planlama ve araştırma süreci daha ekonomik bir şekilde geçirmenize yardımcı olabilir. Bulunduğunuz yeri dikkatlice değerlendirin ve diğer birçok ülkeye göre daha yüksek yaşam maliyetlerine hazır olun, ancak aynı zamanda Birleşik Krallık'ın sunduğu mükemmel kamu hizmetlerinin, sağlık hizmetlerinin ve yaşam kalitesinin tadını çıkarın."
+    }
+  },
+  "calculator": {
+    "title": "İngiltere Taşınma Maliyeti Hesaplayıcı",
+    "subtitle": "Birleşik Krallık'a taşınmanız için kişiselleştirilmiş bir fiyat teklifi alın",
+    "form": {
+      "familySize": {
+        "label": "Aile Büyüklüğü",
+        "options": [
+          "Tek kişi",
+          "Çift",
+          "Aile (3-4 kişi)",
+          "Geniş aile (5+ kişi)"
+        ]
+      },
+      "destination": {
+        "label": "Birleşik Krallık Destinasyonu",
+        "options": [
+          "Londra",
+          "Büyük şehir (Manchester, Birmingham, vb.)",
+          "Orta ölçekli şehir/kasaba",
+          "Kırsal alan"
+        ]
+      },
+      "shipping": {
+        "label": "Nakliye Gereklilikleri",
+        "options": [
+          "Nakliye yok (yerel olarak satın alın)",
+          "Kısmi nakliye (yalnızca temel ürünler)",
+          "Tam konteyner nakliyesi",
+          "Çoklu konteynerler"
+        ]
+      },
+      "visaType": {
+        "label": "Vize Türü",
+        "options": [
+          "Öğrenci Vizesi",
+          "Nitelikli İşçi Vizesi",
+          "Aile Vizesi",
+          "Yatırımcı Vizesi",
+          "Diğer"
+        ]
+      },
+      "calculate": "Tahmini Hesapla"
+    },
+    "results": {
+      "title": "Tahmini Taşınma Maliyetleriniz",
+      "breakdown": "Maliyet Dağılımı:",
+      "total": "Toplam Tahmini Maliyet:",
+      "disclaimer": "Bu, ortalama maliyetlere dayalı bir tahmindir. Gerçek maliyetler belirli koşullara, zamanlamaya ve hizmet sağlayıcılara bağlı olarak değişebilir."
+    }
+  },
+  "comparison": {
+    "title": "Birleşik Krallık Yaşam Maliyeti Karşılaştırması",
+    "subtitle": "Birleşik Krallık'taki yaşam maliyetlerini büyük küresel şehirlerle karşılaştırın",
+    "categories": [
+      {
+        "category": "Konut",
+        "london": "£2,000/ay",
+        "manchester": "900 £/ay",
+        "newyork": "£2,800/ay",
+        "paris": "£1,800/ay"
+      },
+      {
+        "category": "Bakkaliye",
+        "london": "£350/ay",
+        "manchester": "£280/ay",
+        "newyork": "£420/ay",
+        "paris": "£320/ay"
+      },
+      {
+        "category": "Nakliye",
+        "london": "£200/ay",
+        "manchester": "£80/ay",
+        "newyork": "£150/ay",
+        "paris": "£90/ay"
+      },
+      {
+        "category": "Dışarıda Yemek",
+        "london": "£300/ay",
+        "manchester": "£200/ay",
+        "newyork": "£350/ay",
+        "paris": "£280/ay"
+      }
+    ]
+  },
+  "timeline": {
+    "title": "Birleşik Krallık Taşınma Zaman Çizelgesi ve Maliyetleri",
+    "subtitle": "Taşınmanız sırasında farklı harcamalar için ne zaman bütçe ayırmalısınız?",
+    "phases": [
+      {
+        "phase": "Ön Başvuru (3-6 ay önce)",
+        "costs": "£200-£500",
+        "items": [
+          "Belge hazırlama ve çeviri",
+          "İngilizce dil testleri",
+          "Tıbbi muayeneler",
+          "Hukuki danışmanlık"
+        ]
+      },
+      {
+        "phase": "Vize Başvurusu (2-4 ay önce)",
+        "costs": "£500-£3,500",
+        "items": [
+          "Vize başvuru ücretleri",
+          "Göçmenlik Sağlık Ek Ücreti",
+          "Biyometrik randevular",
+          "Öncelikli işleme (isteğe bağlı)"
+        ]
+      },
+      {
+        "phase": "Kalkış Öncesi (1-2 ay önce)",
+        "costs": "£2,000-£8,000",
+        "items": [
+          "Nakliye ve lojistik",
+          "Seyahat düzenlemeleri",
+          "Geçici konaklama rezervasyonları",
+          "Evcil hayvan taşınması (varsa)"
+        ]
+      },
+      {
+        "phase": "Varış (İlk ay)",
+        "costs": "£2,000-£6,000",
+        "items": [
+          "Konut depozitoları ve kira",
+          "Hizmet kurulumu ve depozitolar",
+          "Banka hesabı açma",
+          "İlk yaşam giderleri"
+        ]
+      },
+      {
+        "phase": "Yerleşim (2-6 Aylar)",
+        "costs": "£1,000-£3,000",
+        "items": [
+          "Mobilya ve ev eşyaları",
+          "Yerel kayıt ve belgelendirme",
+          "Eğitim düzeni (varsa)",
+          "Toplumla bütünleşme maliyetleri"
+        ]
+      }
+    ]
+  },
+  "resources": {
+    "title": "Para Yönetimi Kaynakları",
+    "subtitle": "Birleşik Krallık'a taşınma finansmanınızı yönetmek için faydalı araçlar ve hizmetler",
+    "categories": [
+      {
+        "title": "Döviz Bozdurma",
+        "services": [
+          {
+            "name": "Wise (eski adıyla TransferWise)",
+            "description": "Düşük maliyetli uluslararası para transferleri",
+            "fees": "Transfer tutarının %0,35-2'si"
+          },
+          {
+            "name": "Revolut",
+            "description": "İyi döviz kurlarına sahip çoklu döviz hesabı",
+            "fees": "Belirli limitlere kadar ücretsiz"
+          },
+          {
+            "name": "XE Para",
+            "description": "Daha büyük transferler için rekabetçi fiyatlar",
+            "fees": "Miktara göre değişir"
+          }
+        ]
+      },
+      {
+        "title": "Bankacılık",
+        "services": [
+          {
+            "name": "Birleşik Krallık High Street Bankaları",
+            "description": "Barclays, HSBC, Lloyds gibi geleneksel bankalar",
+            "fees": "Aylık ücretler £5-£25"
+          },
+          {
+            "name": "Dijital Bankalar",
+            "description": "Monzo, Starling Bank, Revolut",
+            "fees": "Genellikle ücretsiz temel hesaplar"
+          },
+          {
+            "name": "Uluslararası Bankalar",
+            "description": "HSBC Expat, Citi International",
+            "fees": "Daha yüksek ücretler ancak küresel hizmetler"
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "disclaimer": "Tüm maliyetler tahminidir ve bireysel koşullara, piyasa koşullarına ve zamanlamaya bağlı olarak değişebilir. Kişiselleştirilmiş rehberlik için lütfen profesyonel danışmanlara danışın.",
+    "lastUpdated": "Son güncelleme: {{tarih}}",
+    "sources": "Veri kaynakları: Birleşik Krallık Hükümeti, ONS, emlak web siteleri ve göçmen anketleri."
+  },
+  "jobGuide": {
+    "header": {
+      "title": "Birleşik Krallık'ta Çalışmak",
+      "subtitle": "Uluslararası İş Arayanlar için Kapsamlı Bir Rehber",
+      "intro": {
+        "paragraph1": "Güçlü ekonomisi, çok kültürlü ortamı ve dünya standartlarındaki şehirleriyle Birleşik Krallık, kariyerinde ilerleme ve büyüme arayan uluslararası profesyoneller için en iyi destinasyon olmaya devam etmektedir.",
+        "paragraph2": "Bu rehber, yabancı uyruklu bir kişi olarak Birleşik Krallık'ta iş bulma konusunda bilmeniz gereken her şeyi, puana dayalı göçmenlik sistemini anlamaktan yerel iş piyasasında gezinmeye ve İngiliz çalışma hayatına alışmaya kadar size yol gösterir."
+      }
+    },
+    "navigation": {
+      "title": "Hızlı Navigasyon",
+      "backToAll": "Tüm Bölümlere Geri Dön"
+    },
+    "sections": [
+      {
+        "id": "iş piyasası",
+        "icon": "🔍",
+        "title": "Birleşik Krallık İş Piyasasını Anlamak",
+        "type": "iş piyasası",
+        "content": {
+          "intro": "Birleşik Krallık çeşitli sektörlerde çeşitli fırsatlar sunarken, bazı sektörler uluslararası çalışanlar için özellikle erişilebilir ve misafirperverdir.",
+          "sectorsTitle": "Yabancı Çalışanlar için Talep Gören Sektörler:",
+          "sectors": [
+            {
+              "name": "Sağlık Hizmetleri & NHS",
+              "description": "Doktorlar, hemşireler, bakıcılar, uzmanlar"
+            },
+            {
+              "name": "BT ve Teknoloji",
+              "description": "Yazılım geliştirme, siber güvenlik, veri bilimi"
+            },
+            {
+              "name": "Finans ve Bankacılık",
+              "description": "Finansal analiz, yatırım bankacılığı, fintech"
+            },
+            {
+              "name": "Eğitim",
+              "description": "Öğretim, araştırma, uluslararası okullar"
+            },
+            {
+              "name": "Mühendislik",
+              "description": "İnşaat, makine, elektrik mühendisliği"
+            },
+            {
+              "name": "Ağırlama ve Turizm",
+              "description": "Oteller, restoranlar, turizm işletmeciliği"
+            }
+          ],
+          "conclusion": "Birleşik Krallık iş piyasası İngilizce yeterliliğine yüksek değer verir ve çoğu profesyonel rol güçlü iletişim becerileri gerektirir. Londra en çeşitli fırsatları sunar, ancak Manchester, Birmingham, Edinburgh ve Bristol gibi şehirler genellikle daha düşük yaşam maliyetleri ile büyüyen iş piyasalarına sahiptir."
+        }
+      },
+      {
+        "id": "vi̇ze si̇stemi̇",
+        "icon": "🔒",
+        "title": "Birleşik Krallık Vize Sistemi: Puan Tabanlı Göçmenlik",
+        "type": "vi̇ze si̇stemi̇",
+        "content": {
+          "intro": "Birleşik Krallık, becerilere, niteliklere ve İngilizce dil yeterliliğine öncelik veren puan tabanlı bir göçmenlik sistemi uygulamaktadır.",
+          "routesTitle": "Ana Çalışma Vizesi Rotaları:",
+          "visaRoutes": [
+            {
+              "name": "Nitelikli İşçi Vizesi",
+              "description": "Birleşik Krallık'taki bir işverenden iş teklifi almış nitelikli profesyoneller için"
+            },
+            {
+              "name": "Küresel Yetenek Vizesi",
+              "description": "Akademi, araştırma, sanat veya dijital teknoloji alanlarındaki liderler veya potansiyel liderler için"
+            },
+            {
+              "name": "Sağlık ve Bakım Çalışanı Vizesi",
+              "description": "NHS iş teklifleri olan nitelikli tıp uzmanları için"
+            },
+            {
+              "name": "Yüksek Lisans Vizesi",
+              "description": "Birleşik Krallık'ta lisans eğitimini tamamlamış uluslararası öğrenciler için"
+            }
+          ],
+          "requirement": "Çoğu çalışma vizesi için başvurudan önce lisanslı bir sponsordan iş teklifi alınması gerekmektedir."
+        }
+      },
+      {
+        "id": "sponsorluk",
+        "icon": "📋",
+        "title": "İşveren Sponsorluğu Alma",
+        "type": "sponsorluk",
+        "content": {
+          "requirementsTitle": "Sponsorluk için Gerekenler:",
+          "requirements": [
+            "İş tipik olarak RQF seviye 3 (A-level eşdeğeri) veya üzerinde olmalıdır",
+            "Maaş asgari eşikleri karşılamalıdır (göreve bağlı olarak genellikle £26,200+)",
+            "İşveren, İçişleri Bakanlığı tarafından onaylanmış lisanslı bir sponsor olmalıdır",
+            "Rol, uygun meslekler listesinde yer almalıdır"
+          ],
+          "shortageList": {
+            "title": "Eksik Meslek Listesi",
+            "description": "Bu listedeki işler daha kolay vize şartlarına ve daha düşük maaş eşiklerine sahiptir. Mevcut eksik meslekler şunlardır:",
+            "occupations": [
+              "Sağlık çalışanları",
+              "Mühendisler",
+              "BT uzmanları",
+              "Bilim insanları ve araştırmacılar",
+              "Veteriner Hekimler",
+              "Mimarlar ve belirli öğretim rolleri"
+            ]
+          },
+          "proTip": {
+            "title": "Profesyonel İpucu",
+            "description": "Uluslararası çalışanlara sponsorluk geçmişi olan şirketleri hedefleyin. Büyük çok uluslu şirketler, teknoloji şirketleri ve NHS tröstleri genellikle sponsorluk süreci konusunda daha deneyimlidir.",
+            "additional": "Bir şirketin sponsorluk lisansına sahip olup olmadığını Birleşik Krallık hükümetinin web sitesinden kontrol edebilirsiniz."
+          }
+        }
+      },
+      {
+        "id": "uygulama-süreci",
+        "icon": "📝",
+        "title": "Birleşik Krallık İş Başvuru Süreci",
+        "type": "uygulama-süreci",
+        "content": {
+          "stepsTitle": "Başvuru Adımları:",
+          "steps": [
+            {
+              "title": "1. CV ve Ön Yazı",
+              "description": "Birleşik Krallık'taki işverenler, ilgili beceri ve deneyimlere odaklanan 2 sayfalık bir CV (özgeçmiş) beklemektedir. Ön yazılar kısa ve öz olmalı ve her pozisyona göre uyarlanmalıdır."
+            },
+            {
+              "title": "2. Mülakat Süreci",
+              "description": "Genellikle ilk telefon taramasını, ardından 1-2 mülakatı (uluslararası adaylar için giderek artan oranda sanal) ve muhtemelen teknik roller için değerlendirme görevlerini içerir."
+            },
+            {
+              "title": "3. İş Teklifi ve Vize Sponsorluğu",
+              "description": "Başarılı olmanız halinde, vize başvurunuz için resmi bir teklif mektubu ve Sponsorluk Belgesi alacaksınız."
+            }
+          ],
+          "cvTips": {
+            "title": "Birleşik Krallık'a Özel CV İpuçları:",
+            "tips": [
+              "Fotoğraf gerekmiyor",
+              "En üste profesyonel bir profil/özet ekleyin",
+              "Görevlerden ziyade başarılara odaklanın",
+              "İlgili nitelikleri ve sertifikaları ekleyin",
+              "Referanslar genellikle listelenmek yerine 'talep üzerine temin edilebilir' şeklinde belirtilir"
+            ]
+          }
+        }
+      },
+      {
+        "id": "iş bulma",
+        "icon": "🔎",
+        "title": "Birleşik Krallık'ta İş Olanakları Bulma",
+        "type": "iş bulma",
+        "content": {
+          "portalsTitle": "İngiltere'nin En İyi İş Portalları:",
+          "jobPortals": [
+            "Indeed İngiltere",
+            "Reed.co.uk",
+            "CV-Kütüphane",
+            "LinkedIn",
+            "Guardian İş İlanları",
+            "NHS İş İlanları"
+          ],
+          "recruitmentAgencies": {
+            "title": "İşe Alım Ajansları",
+            "description": "Uzmanlaşmış işe alım ajansları uluslararası iş arayanlar için değerli olabilir. Birçoğu belirli sektörlere veya bölgelere odaklanır ve düzenli olarak vize sponsoru olan işverenlerle ilişkileri vardır."
+          },
+          "directApplications": {
+            "title": "Doğrudan Uygulamalar",
+            "description": "Alanınızda sponsor lisansı olan şirketleri araştırın ve doğrudan kariyer sayfaları aracılığıyla başvurun. Çok uluslu şirketler genellikle uluslararası yetenekleri işe almak için yerleşik süreçlere sahiptir."
+          }
+        }
+      },
+      {
+        "id": "hayat pahalılığı",
+        "icon": "💷",
+        "title": "Birleşik Krallık'ta Yaşam Maliyetine İlişkin Hususlar",
+        "type": "hayat pahalılığı",
+        "content": {
+          "intro": "Birleşik Krallık'ta yaşam maliyetlerini anlamak, iş tekliflerini değerlendirirken ve taşınma planınızı yaparken çok önemlidir.",
+          "locations": [
+            {
+              "name": "Londra",
+              "description": "Birleşik Krallık'ın geri kalanından önemli ölçüde daha yüksek maliyetler",
+              "costs": [
+                {
+                  "category": "Kiralık",
+                  "amount": "1,500-2,500 £/ay (1 yataklı daire)"
+                },
+                {
+                  "category": "Nakliye",
+                  "amount": "140-180 £/ay"
+                },
+                {
+                  "category": "Yardımcı Programlar",
+                  "amount": "150-200 £/ay"
+                }
+              ]
+            },
+            {
+              "name": "Bölgesel Şehirler",
+              "description": "Manchester, Birmingham, Edinburgh, vb.",
+              "costs": [
+                {
+                  "category": "Kiralık",
+                  "amount": "700-1,200 £/ay (1 yataklı daire)"
+                },
+                {
+                  "category": "Nakliye",
+                  "amount": "£60-100/ay"
+                },
+                {
+                  "category": "Yardımcı Programlar",
+                  "amount": "£120-170/ay"
+                }
+              ]
+            }
+          ],
+          "additionalExpenses": {
+            "title": "Ek Giderler:",
+            "items": [
+              "Sağlık hizmetleri ek ücreti (vize başvurularında yıllık 624 £)",
+              "Belediye vergisi (mülke bağlı olarak yıllık £1,000-2,000)",
+              "TV lisansı (yıllık 159 £)",
+              "İlk taşınma masrafları ve depozitolar"
+            ]
+          }
+        }
+      },
+      {
+        "id": "sağlık hizmetleri",
+        "icon": "🏥",
+        "title": "Birleşik Krallık Sağlık Hizmetlerine Erişim",
+        "type": "sağlık hizmetleri",
+        "content": {
+          "intro": "Göçmenlik Sağlık Ek Ücretini ödeyen tüm Birleşik Krallık vize sahiplerinin Ulusal Sağlık Hizmetine (NHS) erişimi vardır.",
+          "coverage": {
+            "description": "Bu, aşağıdakiler de dahil olmak üzere kapsamlı sağlık sigortası sağlar:",
+            "includes": [
+              "GP (doktor) randevuları",
+              "Hastane tedavisi",
+              "Acil bakım",
+              "Annelik hizmetleri"
+            ]
+          },
+          "registration": "Birleşik Krallık'a vardığınızda yerel bir pratisyen hekime kaydolmanız gerekecektir. Diş bakımı ve reçeteler için ek ödeme yapmanız gerekebilir.",
+          "note": "Not: Özel sağlık sigortası isteğe bağlıdır, ancak uzmanlara ve NHS tarafından kapsanmayan ek hizmetlere daha hızlı erişim sağlayabilir."
+        }
+      },
+      {
+        "id": "ağ oluşturma",
+        "icon": "👥",
+        "title": "Birleşik Krallık'ta Ağ Kurma",
+        "type": "ağ oluşturma",
+        "content": {
+          "intro": "Profesyonel bir ağ oluşturmak Birleşik Krallık'ta iş aramak için çok önemlidir:",
+          "online": {
+            "title": "Çevrimiçi Ağ Oluşturma",
+            "platforms": [
+              "LinkedIn (Birleşik Krallık'ta iş aramak için gerekli)",
+              "Profesyonel Facebook grupları",
+              "Sektöre özel forumlar ve topluluklar",
+              "Üniversitenizden mezun ağları"
+            ]
+          },
+          "inPerson": {
+            "title": "Yüz Yüze Etkinlikler",
+            "events": [
+              "Sektörel konferanslar ve seminerler",
+              "Alanınızla ilgili Meetup.com etkinlikleri",
+              "Mesleki dernek toplantıları",
+              "Uluslararası profesyoneller için ağ oluşturma etkinlikleri"
+            ]
+          },
+          "advice": "İngiliz iş kültürü profesyonelliğe ve nezakete değer verir. Ağ kurarken, hemen iş fırsatları istemek yerine gerçek ilişkiler kurmaya odaklanın."
+        }
+      }
+    ],
+    "checklist": {
+      "title": "Birleşik Krallık İş Arama Kontrol Listeniz",
+      "beforeApplying": {
+        "title": "Başvurmadan Önce",
+        "items": [
+          "Birleşik Krallık'a özgü CV formatı ve standartlarını araştırın",
+          "Mesleğinizin Eksik Meslekler Listesinde olup olmadığını kontrol edin",
+          "Niteliklerinizin Birleşik Krallık'ta tanındığını doğrulayın",
+          "LinkedIn profilinizi İngiltere'ye özgü anahtar kelimelerle oluşturun"
+        ]
+      },
+      "duringSearch": {
+        "title": "İş Arama Süreciniz Sırasında",
+        "items": [
+          "Sponsor lisansına sahip şirketleri hedefleyin",
+          "Zaman dilimleri arasında video görüşmelerine hazırlanın",
+          "Rolünüz için tipik Birleşik Krallık maaş aralıklarını araştırın",
+          "Birleşik Krallık'taki istihdam haklarını ve sosyal yardımları anlamak"
+        ]
+      }
+    },
+    "conclusion": {
+      "title": "Birleşik Krallık Kariyer Yolculuğunuza Başlayın",
+      "description": "Yabancı uyruklu biri olarak Birleşik Krallık'ta iş bulmak hazırlık, sebat ve sabır gerektirir. Göçmenlik sisteminin belirli gereklilikleri olsa da Birleşik Krallık, sektörler arasında uluslararası yetenekleri çekmeye kararlıdır. Doğru beceriler, nitelikler ve yaklaşımla Birleşik Krallık iş piyasasında başarılı bir şekilde gezinebilir ve dünyanın en dinamik ekonomilerinden birinde ödüllendirici bir kariyer inşa edebilirsiniz."
+    }
+  },
+  "salaryGuide": {
+    "title": "Sektöre Göre Birleşik Krallık Maaş Rehberi",
+    "subtitle": "Uluslararası profesyoneller için ortalama maaşlar",
+    "industries": [
+      {
+        "sector": "Bilgi Teknolojisi",
+        "averageRange": "£35,000 - £80,000",
+        "entryLevel": "£25,000 - £35,000",
+        "experienced": "£50,000 - £80,000",
+        "senior": "£70,000 - £120,000+",
+        "hotRoles": [
+          "Yazılım Mühendisleri",
+          "Veri Bilimciler",
+          "Siber Güvenlik Uzmanları",
+          "DevOps Mühendisleri"
+        ]
+      },
+      {
+        "sector": "Sağlık Hizmetleri",
+        "averageRange": "£30,000 - £70,000",
+        "entryLevel": "£24,000 - £30,000",
+        "experienced": "£40,000 - £60,000",
+        "senior": "£60,000 - £100,000+",
+        "hotRoles": [
+          "Hemşireler",
+          "Genç Doktorlar",
+          "Uzmanlar",
+          "Sağlık Yöneticileri"
+        ]
+      },
+      {
+        "sector": "Finans ve Bankacılık",
+        "averageRange": "£40,000 - £90,000",
+        "entryLevel": "£28,000 - £40,000",
+        "experienced": "£50,000 - £80,000",
+        "senior": "£80,000 - £150,000+",
+        "hotRoles": [
+          "Finansal Analistler",
+          "Yatırım Bankacıları",
+          "Risk Yöneticileri",
+          "Uyum Görevlileri"
+        ]
+      },
+      {
+        "sector": "Mühendislik",
+        "averageRange": "£35,000 - £65,000",
+        "entryLevel": "£25,000 - £35,000",
+        "experienced": "£45,000 - £65,000",
+        "senior": "£65,000 - £100,000+",
+        "hotRoles": [
+          "İnşaat Mühendisleri",
+          "Makine Mühendisleri",
+          "Elektrik Mühendisleri",
+          "Proje Yöneticileri"
+        ]
+      }
+    ]
+  },
+  "workCulture": {
+    "title": "Birleşik Krallık Çalışma Kültürü Rehberi",
+    "subtitle": "İngiliz işyeri beklentilerini anlamak",
+    "aspects": [
+      {
+        "category": "İletişim Tarzı",
+        "description": "İngiliz iletişimi kibar, dolaylı olma eğilimindedir ve genellikle yetersiz ifadeler içerir.",
+        "tips": [
+          "'Oldukça iyi' gibi ifadeler genellikle 'mükemmel' anlamına gelir",
+          "Anlaşmazlık genellikle \"Acaba...\" gibi ifadelerle yumuşatılır.",
+          "Hava durumu hakkında konuşmak yaygın ve beklenen bir durumdur",
+          "Dakikliğe büyük değer verilir"
+        ]
+      },
+      {
+        "category": "İş-Yaşam Dengesi",
+        "description": "Birleşik Krallık'ta genel olarak iyi bir iş-yaşam dengesi ve yasal korumalar mevcuttur.",
+        "tips": [
+          "Standart çalışma haftası 37,5-40 saattir",
+          "Minimum 28 gün yıllık izin (resmi tatiller dahil)",
+          "Esnek çalışma talepleri yasal olarak korunmaktadır",
+          "Fazla mesai kültürü sektöre ve şirkete göre değişir"
+        ]
+      },
+      {
+        "category": "Hiyerarşi ve Toplantılar",
+        "description": "İngiliz işyerleri diğer birçok ülkeye göre daha az hiyerarşik olma eğilimindedir.",
+        "tips": [
+          "İlk isimler tüm seviyelerde yaygın olarak kullanılır",
+          "Toplantılar genellikle tartışma ve girdi için zaman içerir",
+          "Genellikle fikir birliği arandığından kararlar zaman alabilir",
+          "Kuyruk adabı her durumda geçerlidir"
+        ]
+      }
+    ]
+  },
+  "relocationSupport": {
+    "title": "Çalışan Yer Değiştirme Desteği",
+    "subtitle": "Birleşik Krallık'taki işverenlerden ne beklenir?",
+    "commonSupport": [
+      {
+        "type": "Vize Sponsorluğu",
+        "description": "Sponsorluk Belgesi ve vize başvuru desteği",
+        "typical": "Vasıflı işçi vizeleri için standart"
+      },
+      {
+        "type": "Yer Değiştirme Paketi",
+        "description": "Taşınma masrafları için mali yardım",
+        "typical": "Görev seviyesine bağlı olarak £2,000-£10,000"
+      },
+      {
+        "type": "Geçici Konaklama",
+        "description": "İlk haftalar için otel veya hizmet verilen daire",
+        "typical": "2-4 haftalık kapsama yaygın"
+      },
+      {
+        "type": "Ev Avcılığı Desteği",
+        "description": "Kalıcı konaklama yeri bulma konusunda yardım",
+        "typical": "Emlakçı tavsiyeleri, bölge turları"
+      },
+      {
+        "type": "Kültürel Entegrasyon",
+        "description": "Oryantasyon programları ve kültürel eğitim",
+        "typical": "Buddy sistemleri, yerel alan tanıtımları"
+      }
+    ]
+  },
+  "legalRequirements": {
+    "title": "Birleşik Krallık'ta Çalışmak için Yasal Gereklilikler",
+    "subtitle": "Temel uyumluluk bilgileri",
+    "requirements": [
+      {
+        "area": "Çalışma Hakkı",
+        "description": "Tüm çalışanlar Birleşik Krallık'ta yasal olarak çalışabileceklerini kanıtlamalıdır",
+        "documents": [
+          "Vizesi olan geçerli pasaport",
+          "Biyometrik İkamet İzni (BRP)",
+          "Çevrimiçi çalışma hakkı kontrolünden gelen kodu paylaşın"
+        ]
+      },
+      {
+        "area": "Ulusal Sigorta",
+        "description": "Vergi ve sosyal yardımlar için gerekli benzersiz numara",
+        "process": "Varıştan sonra çevrimiçi olarak veya telefonla başvurun, genellikle 2-3 hafta sürer"
+      },
+      {
+        "area": "Vergi (PAYE)",
+        "description": "Maaştan otomatik olarak kesilen gelir vergisi",
+        "rates": "Temel oran %20, Yüksek oran %40, Ek oran %45"
+      },
+      {
+        "area": "İstihdam Hakları",
+        "description": "Birleşik Krallık çalışanları güçlü yasal korumalara sahiptir",
+        "rights": [
+          "Asgari ücret koruması",
+          "Ayrımcılık karşıtı yasalar",
+          "Haksız işten çıkarma koruması (2 yıl sonra)",
+          "Yasal hastalık ödemesi"
+        ]
+      }
+    ]
+  },
+  "usToUkGuide": {
+    "header": {
+      "title": "ABD'den Birleşik Krallık'a taşınma",
+      "subtitle": "Vize başvurularından İngiliz yaşamına alışmaya kadar göletin diğer tarafına taşınmak için kapsamlı rehberiniz"
+    },
+    "navigation": {
+      "title": "İçindekiler"
+    },
+    "sections": [
+      {
+        "id": "neden-uk",
+        "icon": "🇬🇧",
+        "title": "Neden Birleşik Krallık'a Taşınmalı?",
+        "type": "neden-uk",
+        "content": {
+          "intro": "Birçok Amerikalı zorlayıcı nedenlerden dolayı yeni evleri olarak Birleşik Krallık'ı seçiyor:",
+          "reasons": [
+            "Ortak dil ve kültürel yakınlık",
+            "Dünya standartlarında sağlık hizmeti (NHS)",
+            "Zengin tarih ve kültürel olanaklar",
+            "Seyahat için Avrupa'ya açılan kapı",
+            "Mükemmel toplu taşıma",
+            "Belirli sektörlerde güçlü iş piyasası"
+          ],
+          "conclusion": "İster iş fırsatları, eğitim, ailevi nedenler ya da sadece tempo değişikliği için taşınıyor olun, Birleşik Krallık Amerikalılar için tanıdık ancak belirgin şekilde farklı bir yaşam tarzı sunuyor."
+        }
+      },
+      {
+        "id": "vi̇ze seçenekleri̇",
+        "icon": "🛂",
+        "title": "ABD Vatandaşları için Vize Seçenekleri",
+        "type": "vi̇ze seçenekleri̇",
+        "content": {
+          "intro": "ABD vatandaşı olarak İngiltere'yi 6 aya kadar vizesiz ziyaret edebilirsiniz, ancak uzun süreli yaşamak için bu vize yollarından birine ihtiyacınız olacaktır:",
+          "visaTypes": [
+            {
+              "title": "1. Nitelikli İşçi Vizesi",
+              "requirements": [
+                "Birleşik Krallık'taki bir işverenden sponsorluk lisansına sahip bir iş teklifine ihtiyacınız var",
+                "Asgari maaş gerekliliklerini karşılamalıdır (tipik olarak £26,200+, işe göre değişir)",
+                "İş gerekli beceri seviyesinde olmalıdır (genellikle RQF seviye 3 veya üzeri)",
+                "5 yıla kadar geçerlidir, 5 yıl sonra uzlaşmaya yol açabilir"
+              ]
+            },
+            {
+              "title": "2. Küresel Yetenek Vizesi",
+              "requirements": [
+                "Akademi, araştırma, sanat, kültür veya dijital teknoloji alanlarında liderler veya gelecek vaat eden bireyler için",
+                "İlgili bir Birleşik Krallık kurumunun onayını gerektirir",
+                "Sponsorluk gerekmez, çalışma vizesinden daha fazla esneklik",
+                "3-5 yıl sonra uzlaşmaya yol açabilir"
+              ]
+            },
+            {
+              "title": "3. Öğrenci Vizesi",
+              "requirements": [
+                "Birleşik Krallık eğitim kurumlarına kayıt için",
+                "Kabul mektubu, fon kanıtı ve İngilizce yeterliliği gerektirir",
+                "Eğitim sırasında sınırlı çalışma hakları",
+                "Mezuniyet rotası, mezuniyetten sonra 2 yıl çalışmaya izin verir"
+              ]
+            },
+            {
+              "title": "4. Aile Vizesi",
+              "requirements": [
+                "İngiliz vatandaşlarının veya yerleşik kişilerin partnerleri, eşleri veya çocukları için",
+                "Gerçek bir ilişkinin kanıtı ve finansal gereklilikler gerektirir",
+                "Beş yıl sonra uzlaşmaya yol açabilir"
+              ]
+            },
+            {
+              "title": "5. Birleşik Krallık Soy Vizesi",
+              "requirements": [
+                "Birleşik Krallık doğumlu bir büyükanne veya büyükbabanız varsa, yerleşime giden yolu olan bu 5 yıllık vizeye hak kazanabilirsiniz"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "gerekli belgeler",
+        "icon": "📄",
+        "title": "Yer Değiştirme İçin Gerekli Belgeler",
+        "type": "gerekli belgeler",
+        "content": {
+          "intro": "Belge gereklilikleri vize türüne göre değişmekle birlikte genellikle şunları içerir:",
+          "documents": [
+            "Geçerli ABD pasaportu (en az 6 ay geçerliliği olan)",
+            "Vize başvuru formları ve ödeme makbuzları",
+            "Biyometrik bilgiler (parmak izi ve fotoğraf)",
+            "İngilizce dil yeterliliğinin kanıtı",
+            "Yeterli fon olduğunu gösteren mali belgeler",
+            "İş teklifi ve sponsorluk belgesi (çalışma vizeleri için)",
+            "Tüberküloz (TB) test sonuçları (6 aydan fazla kalınacaksa)",
+            "Konaklama düzenlemelerinin kanıtı"
+          ],
+          "proTip": {
+            "label": "Profesyonel ipucu",
+            "text": "Bu belgeleri erkenden toplamaya başlayın, çünkü bazılarının (geçmiş kontrolleri gibi) elde edilmesi önemli ölçüde zaman alabilir."
+          }
+        }
+      },
+      {
+        "id": "popüler-şehirler",
+        "icon": "🏙️",
+        "title": "Birleşik Krallık'ta En Çok Amerikalı Nerede Yaşıyor?",
+        "type": "popüler-şehirler",
+        "content": {
+          "intro": "Birleşik Krallık'a taşınan Amerikalılar bu popüler bölgelerde kümelenme eğilimindedir:",
+          "cities": [
+            {
+              "name": "Londra",
+              "icon": "🌆",
+              "highlights": [
+                "Özellikle Kensington, Chelsea ve Notting Hill gibi bölgeler en popüler yerlerdir",
+                "Çeşitli iş olanaklarına sahip küresel finans merkezi",
+                "Canlı kültürel ortam ancak daha yüksek yaşam maliyeti"
+              ]
+            },
+            {
+              "name": "Oxford & Cambridge",
+              "icon": "📚",
+              "highlights": [
+                "Akademik ve araştırma olanaklarına sahip üniversite kentleri",
+                "Tarihi mimari ve güçlü entelektüel topluluklar",
+                "Yaşam kalitesi iyi, ancak konutlar pahalı olabilir"
+              ]
+            },
+            {
+              "name": "Manchester",
+              "icon": "🏭",
+              "highlights": [
+                "Büyüyen Amerikan göçmen topluluğu ile büyük teknoloji ve medya merkezi",
+                "Mükemmel kültürel olanaklarla Londra'dan daha uygun fiyatlı",
+                "BBC North ve MediaCityUK'e ev sahipliği yapıyor"
+              ]
+            },
+            {
+              "name": "Edinburgh",
+              "icon": "🏰",
+              "highlights": [
+                "İskoçya'nın çarpıcı mimariye ve güçlü finans sektörüne sahip başkenti",
+                "Finans, teknoloji ve eğitim sektörlerindeki Amerikalılar arasında popüler",
+                "Canlı kültürel ortamıyla mükemmel yaşam kalitesi"
+              ]
+            }
+          ],
+          "risingLocations": {
+            "title": "Yükselen Konumlar",
+            "icon": "💼",
+            "locations": [
+              {
+                "name": "Bristol",
+                "description": "Mükemmel yaşam kalitesi ile gelişen yaratıcı ve teknoloji ortamı"
+              },
+              {
+                "name": "Birmingham",
+                "description": "Büyüyen ekonomisi ve düşük yaşam maliyetleri ile giderek daha popüler hale geliyor"
+              },
+              {
+                "name": "Glasgow",
+                "description": "İskoçya'nın ekonomik ve kültürel cazibe merkezleri sunan en büyük şehri"
+              },
+              {
+                "name": "Cardiff",
+                "description": "Büyüyen iş olanakları ve düşük yaşam maliyeti ile Galler'in başkenti"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "hayat pahalılığı",
+        "icon": "💷",
+        "title": "Yaşam Maliyeti Karşılaştırması: İngiltere vs ABD",
+        "type": "hayat pahalılığı",
+        "content": {
+          "table": {
+            "headers": {
+              "expense": "Giderler",
+              "uk": "Birleşik Krallık (ort.)",
+              "usa": "ABD (ortalama)"
+            },
+            "rows": [
+              {
+                "expense": "Kiralık (1BR şehir merkezi)",
+                "uk": "£800-£1,500/ay",
+                "usa": "$1,500-$2,000",
+                "ukHighlight": false
+              },
+              {
+                "expense": "Sağlık Hizmetleri",
+                "uk": "NHS aracılığıyla çoğunlukla ücretsiz",
+                "usa": "$300-$600/ay",
+                "ukHighlight": true
+              },
+              {
+                "expense": "Kamu Hizmetleri (aylık)",
+                "uk": "£150-£200",
+                "usa": "$150-$200",
+                "ukHighlight": false
+              },
+              {
+                "expense": "Ulaşım",
+                "uk": "£65-£150/ay",
+                "usa": "$70-$150 + araba masrafları",
+                "ukHighlight": true
+              },
+              {
+                "expense": "Dışarıda yemek (2 kişilik)",
+                "uk": "£40-£80",
+                "usa": "$50-$100",
+                "ukHighlight": false
+              },
+              {
+                "expense": "Yüksek Öğrenim",
+                "uk": "9.250 £/yıl (yurt içi)",
+                "usa": "$10,000-$40,000/yıl",
+                "ukHighlight": true
+              }
+            ]
+          },
+          "conclusion": "Yaşam maliyeti Londra ve Birleşik Krallık'ın diğer bölgeleri arasında önemli farklılıklar göstermektedir. Londra'daki fiyatlar New York ve San Francisco gibi büyük ABD şehirleriyle yarışırken, Birleşik Krallık'ın diğer bölgelerinde yaşam maliyeti oldukça düşüktür."
+        }
+      },
+      {
+        "id": "sağlık hizmetleri",
+        "icon": "🏥",
+        "title": "Birleşik Krallık'ta Sağlık Hizmetleri",
+        "type": "sağlık hizmetleri",
+        "content": {
+          "intro": "Birleşik Krallık Ulusal Sağlık Hizmeti (NHS), Birleşik Krallık sakinleri için kullanım noktasında ücretsiz olan kapsamlı bir sağlık hizmeti sunmaktadır; bu da yüksek sağlık hizmeti maliyetlerine alışkın Amerikalılar için büyük bir avantajdır.",
+          "nhsAccess": {
+            "title": "Göçmenler için NHS Erişimi",
+            "points": [
+              "Altı aydan uzun süreli kalışlar için yapılan vize başvurularının çoğu Göçmenlik Sağlık Ücretinin (IHS) ödenmesini gerektirmektedir",
+              "Mevcut IHS ücreti: Yetişkin vize başvuru sahiplerinin çoğu için yıllık 1.035 £",
+              "Ödeme yapıldıktan sonra, çoğu NHS hizmetinden yararlanma hakkına sahip olursunuz (belirli diş ve optik hizmetleri hariç)",
+              "Yerleştikten sonra yerel bir Pratisyen Hekime (GP) kaydolun"
+            ]
+          },
+          "conclusion": "Özel sağlık hizmetleri de mevcuttur ve bazı işverenler yan hak olarak özel sağlık sigortası sunmaktadır."
+        }
+      },
+      {
+        "id": "DİL",
+        "icon": "🗣️",
+        "title": "Dil ve Kültürel İpuçları",
+        "type": "DİL",
+        "content": {
+          "intro": "Aynı dili paylaşıyor olsak da Amerikalıların farkında olması gereken kültürel farklılıklar var:",
+          "differences": {
+            "title": "İngiliz vs Amerikan İngilizcesi",
+            "vocabulary": {
+              "title": "Kelime Farklılıkları:",
+              "examples": [
+                "Daire → Daire",
+                "Asansör → Asansör",
+                "Kaldırım → Kaldırım",
+                "Hat → Kuyruk",
+                "Patates kızartması → Cips",
+                "Cips → Cipsler"
+              ]
+            },
+            "cultural": {
+              "title": "Kültürel Farklılıklar:",
+              "points": [
+                "İngiliz mizahı daha ironik ve kendini küçümseyici olma eğilimindedir",
+                "Kibarlık ve alttan alma son derece değerlidir",
+                "Doğrudanlık bazen kabalık olarak algılanabilir",
+                "Sıraya girme (sırada bekleme) çok ciddiye alınır"
+              ]
+            }
+          },
+          "conclusion": "İngiliz sosyal gelenekleri tanıdık gelebilir ancak genellikle ince farklılıklar gösterir. İngilizler başlangıçta daha çekingen olma eğilimindedir, ancak zamanla ısınırlar."
+        }
+      },
+      {
+        "id": "hareketli",
+        "icon": "📦",
+        "title": "ABD'den Taşınma ve Nakliye",
+        "type": "hareketli",
+        "content": {
+          "intro": "Birleşik Krallık'a fiziksel olarak taşınmanızı planlamak dikkatli bir değerlendirme gerektirir:",
+          "shipping": {
+            "title": "Nakliye Seçenekleri",
+            "options": [
+              {
+                "type": "Hava taşımacılığı",
+                "description": "Daha hızlı (5-10 gün) ancak daha pahalı"
+              },
+              {
+                "type": "Deniz taşımacılığı",
+                "description": "Daha uygun fiyatlı ancak daha yavaş (4-8 hafta)"
+              },
+              {
+                "type": "Uluslararası nakliyeciler",
+                "description": "Paketleme ve gümrük işlemleri ile tam hizmet seçenekleri mevcuttur"
+              }
+            ]
+          },
+          "customs": {
+            "title": "Gümrükle İlgili Hususlar",
+            "considerations": [
+              "Kişisel eşyalar, 6 aydan uzun süredir sahipseniz gümrüksüz olarak ithal edilebilir",
+              "Göndermeden önce İkamet Transferi (ToR) başvurusunu tamamlayın",
+              "Belirli gıdalar, bitkiler ve ilaçlar gibi bazı maddeler kısıtlanmıştır",
+              "Evcil hayvanlar için mikroçip, aşı ve evcil hayvan pasaportu gereklidir"
+            ]
+          },
+          "conclusion": "Ne getireceğinizi dikkatlice düşünün - birçok ev elektroniği voltaj dönüştürücülere ihtiyaç duyacaktır (İngiltere: 230V'a karşı ABD: 120V) ve mobilyalar tipik olarak daha küçük İngiltere evlerine sığmayabilir."
+        }
+      },
+      {
+        "id": "bankacılık",
+        "icon": "💳",
+        "title": "Bankacılık ve Finans",
+        "type": "bankacılık",
+        "content": {
+          "intro": "Birleşik Krallık'ta finansal hayatınızı kurmak önemli bir erken adımdır:",
+          "ukAccount": {
+            "title": "Birleşik Krallık Banka Hesabı Açmak",
+            "points": [
+              "Geleneksel olarak Birleşik Krallık'taki adresin kanıtlanması gerekmektedir, bu da yeni gelenler için zor bir durum yaratmaktadır",
+              "Monzo, Starling ve Revolut gibi dijital bankalar yeni gelenler için daha kolay seçenekler sunuyor",
+              "Bazı uluslararası bankalar (HSBC, Barclays) uluslararası hesap hizmetleri sunmaktadır",
+              "Gerekli belgeler: pasaport, vize, adres belgesi, iş bilgileri"
+            ]
+          },
+          "usUkFinances": {
+            "title": "ABD-İngiltere Finansmanının Yönetilmesi",
+            "points": [
+              "Devam eden ABD yükümlülükleri için ABD banka hesabınızı saklayın",
+              "Uygun maliyetli para transferleri için Wise (eski adıyla TransferWise) gibi hizmetleri değerlendirin",
+              "ABD vatandaşları, ikametgahlarına bakılmaksızın ABD vergi beyannamesi vermelidir (Yabancı Kazanılmış Gelir İstisnası mevcuttur)",
+              "ABD-İngiltere vergi anlaşması çifte vergilendirmeyi önlemeye yardımcı olur"
+            ]
+          },
+          "conclusion": "Birleşik Krallık'ta kredi geçmişi oluşturmak zaman alır, bu nedenle buna göre plan yapın. Kredi puanları uluslararası olarak transfer edilmez ve Birleşik Krallık kredi sisteminde sıfırdan başlayacaksınız."
+        }
+      }
+    ],
+    "checklist": {
+      "title": "Amerikalılar için Taşınma Öncesi Kontrol Listesi",
+      "items": [
+        "Uygun vize için çok önceden başvuruda bulunun",
+        "Göçmen Sağlığı Ek Ücretini (IHS) ödeyin",
+        "Birleşik Krallık'ta bir banka hesabı açın (veya alternatifler hazırlayın)",
+        "Tercih ettiğiniz yerde konut araştırması yapın",
+        "Uluslararası para transferi hizmeti kurun",
+        "Eşyaların nakliyesini veya depolanmasını ayarlayın",
+        "Önemli belgeleri Birleşik Krallık formatına dönüştürün",
+        "Araştırma vergisi etkileri (ABD-İngiltere)",
+        "Tavsiye ve bağlantı için göçmen topluluklarına ve forumlarına katılın"
+      ]
+    },
+    "resources": {
+      "title": "Ek Kaynaklar",
+      "categories": [
+        {
+          "title": "Resmi Bilgiler",
+          "links": [
+            "Birleşik Krallık Hükümeti Vize Bilgileri",
+            "Birleşik Krallık İçişleri Bakanlığı Yönergeleri",
+            "Birleşik Krallık'taki ABD Büyükelçiliği"
+          ]
+        },
+        {
+          "title": "Gurbetçi Toplulukları",
+          "links": [
+            "Birleşik Krallık'taki Amerikalılar Facebook Grupları",
+            "InterNations Birleşik Krallık Şubeleri",
+            "Gurbetçiler için Buluşma Grupları"
+          ]
+        },
+        {
+          "title": "Pratik Hizmetler",
+          "links": [
+            "Uluslararası Nakliye Şirketleri",
+            "Birleşik Krallık Konaklama Web Siteleri",
+            "Expat Vergi Hizmetleri"
+          ]
+        }
+      ]
+    }
+  },
+  "immigrationTimeline": {
+    "title": "ABD'den Birleşik Krallık'a Göçmenlik Zaman Çizelgesi",
+    "subtitle": "Farklı vize türleri için tipik zaman çizelgesi",
+    "visaTimelines": [
+      {
+        "visaType": "Nitelikli İşçi Vizesi",
+        "totalTime": "3-6 ay",
+        "phases": [
+          {
+            "phase": "İş Arama ve Teklif",
+            "duration": "1-4 ay",
+            "description": "Sponsorluk ile iş bulma"
+          },
+          {
+            "phase": "Vize Başvurusu",
+            "duration": "3-8 hafta",
+            "description": "Başvuru işlem süresi"
+          },
+          {
+            "phase": "Karar & Seyahat",
+            "duration": "1-2 hafta",
+            "description": "Karar alma ve seyahat planlama"
+          }
+        ]
+      },
+      {
+        "visaType": "Öğrenci Vizesi",
+        "totalTime": "2-4 ay",
+        "phases": [
+          {
+            "phase": "Üniversite Başvurusu",
+            "duration": "1-3 ay",
+            "description": "Başvuru ve kabul alma"
+          },
+          {
+            "phase": "Vize Başvurusu",
+            "duration": "3-6 hafta",
+            "description": "Öğrenci vizesi işlemleri"
+          },
+          {
+            "phase": "Hazırlık",
+            "duration": "2-4 hafta",
+            "description": "Konaklama ve seyahat düzenlemeleri"
+          }
+        ]
+      }
+    ]
+  },
+  "culturalAdaptation": {
+    "title": "Kültürel Adaptasyon Kılavuzu",
+    "subtitle": "Bir Amerikalı olarak İngiliz yaşamına alışmak",
+    "areas": [
+      {
+        "category": "Sosyal Etkileşimler",
+        "tips": [
+          "Hava durumu hakkında küçük konuşmalar gerçekten önemlidir",
+          "Sık sık özür dilemek ('üzgünüm') normaldir",
+          "Kişisel alan ve kuyruk adabı önemlidir",
+          "Bar kültürü sosyal yaşamın merkezinde yer alır"
+        ]
+      },
+      {
+        "category": "İşyeri Kültürü",
+        "tips": [
+          "Tipik ABD iş yerlerine göre daha resmi iletişim",
+          "Daha uzun öğle yemeği ve çay molaları yaygındır",
+          "Tatil/tatil süresi daha cömerttir",
+          "İş-yaşam dengesi genellikle daha iyi korunur"
+        ]
+      },
+      {
+        "category": "Günlük Yaşam",
+        "tips": [
+          "Toplu taşıma güvenilirdir ancak pahalı olabilir",
+          "Market alışverişi alışkanlıkları farklılık gösterir (daha küçük, daha sık seyahatler)",
+          "Giysi bedenleri ve ölçüleri farklıdır",
+          "Bahşiş kültürü ABD'ye göre daha az yaygındır"
+        ]
+      }
+    ]
+  },
+  "financialPlanning": {
+    "title": "Taşınmanız için Finansal Planlama",
+    "subtitle": "ABD'den Birleşik Krallık'a taşınmanız için bütçe oluşturma",
+    "categories": [
+      {
+        "stage": "Taşınma Öncesi Maliyetler",
+        "totalRange": "$3,000 - $8,000",
+        "items": [
+          {
+            "item": "Vize başvuruları ve ücretleri",
+            "cost": "$1,500 - $3,500"
+          },
+          {
+            "item": "Tıbbi muayeneler ve testler",
+            "cost": "$200 - $500"
+          },
+          {
+            "item": "Belge hazırlama ve yasal ücretler",
+            "cost": "$500 - $2,000"
+          },
+          {
+            "item": "Uçuş rezervasyonları",
+            "cost": "$800 - $2,000"
+          }
+        ]
+      },
+      {
+        "stage": "Taşınma Maliyetleri",
+        "totalRange": "$2,000 - $15,000",
+        "items": [
+          {
+            "item": "Ev eşyalarının nakliyesi",
+            "cost": "$2,000 - $8,000"
+          },
+          {
+            "item": "Geçici konaklama",
+            "cost": "$1,000 - $4,000"
+          },
+          {
+            "item": "Evcil hayvan taşınması (varsa)",
+            "cost": "$1,000 - $3,000"
+          }
+        ]
+      },
+      {
+        "stage": "Yerleşim Maliyetleri",
+        "totalRange": "$3,000 - $10,000",
+        "items": [
+          {
+            "item": "Konut depozitoları ve kira",
+            "cost": "$2,000 - $6,000"
+          },
+          {
+            "item": "İlk tefriş ve kurulum",
+            "cost": "$1,000 - $3,000"
+          },
+          {
+            "item": "İlk ay yaşam giderleri",
+            "cost": "$1,500 - $3,500"
+          }
+        ]
+      }
+    ]
+  },
+  "legalConsiderations": {
+    "title": "Amerikalılar için Yasal Hususlar",
+    "subtitle": "Birleşik Krallık'a taşınmanın önemli yasal yönleri",
+    "topics": [
+      {
+        "area": "Vergi Yükümlülükleri",
+        "description": "ABD vatandaşları, ikametgahlarına bakılmaksızın ABD vergi beyannamesi vermelidir",
+        "keyPoints": [
+          "Yabancı Kazanılmış Gelir İstisnası ~120.000$'a kadar mevcuttur",
+          "Birleşik Krallık-ABD vergi anlaşması çoğu çifte vergilendirmeyi önlüyor",
+          "Karmaşık durumlar için profesyonel vergi danışmanlığı alın",
+          "Bakiyeler 10.000 doları aşıyorsa yabancı banka hesaplarını bildirin"
+        ]
+      },
+      {
+        "area": "Oy Hakları",
+        "description": "Her iki ülkede de oy kullanma haklarınızı anlamak",
+        "keyPoints": [
+          "ABD'de oy kullanma hakkının devamsız oy pusulaları aracılığıyla korunması",
+          "Birleşik Krallık yerel seçimleri ikamet kaydının ardından yapılabilir",
+          "Brexit sonrasında kaybedilen AB vatandaşlığı bazı hakları etkiliyor",
+          "Çifte vatandaşlığın etkilerini göz önünde bulundurun"
+        ]
+      },
+      {
+        "area": "Yasal Durum",
+        "description": "Yasal statünüzü ve haklarınızı anlamak",
+        "keyPoints": [
+          "Vize koşulları çalışma ve seyahat haklarını belirliyor",
+          "Daimi ikamete giden yol vize türüne göre değişir",
+          "5+ yıl ikametten sonra İngiliz vatandaşlığı mümkün",
+          "Karmaşık durumlar için hukuki danışmanlık önerilir"
+        ]
+      }
+    ]
+  },
+  "petsToUkGuide": {
+    "header": {
+      "title": "Evcil Hayvanlarla Birleşik Krallık'a Taşınma",
+      "subtitle": "Sevgili dostlarınızı Britanya'daki yeni evlerine götürmek için eksiksiz bir rehber - gereksinimler, süreç ve yerleşme"
+    },
+    "navigation": {
+      "title": "Birleşik Krallık Evcil Hayvan Göçmenlik Rehberi"
+    },
+    "sections": [
+      {
+        "id": "Gereksinimler",
+        "icon": "✅",
+        "title": "Temel Gereksinimler",
+        "type": "Gereksinimler",
+        "content": {
+          "keyRequirements": [
+            {
+              "title": "Mikroçip",
+              "description": "Herhangi bir aşı yapılmadan önce evcil hayvanınızın ISO 11784/11785 uyumlu bir çip ile mikroçiplenmesi gerekir.",
+              "number": "1"
+            },
+            {
+              "title": "Kuduz Aşısı",
+              "description": "Seyahatten en az 21 gün önce verilmeli ve seyahat sırasında geçerli olmalıdır.",
+              "number": "2"
+            },
+            {
+              "title": "Hayvan Sağlığı Sertifikası (AHC)",
+              "description": [
+                "Birleşik Krallık'a seyahatten sonraki 10 gün içinde ülkenizdeki resmi bir veteriner tarafından düzenlenmiş olmalıdır.",
+                "Düzenlendikten sonra 4 aya kadar Birleşik Krallık'a giriş için geçerlidir.",
+                "Yalnızca AB veya Kuzey İrlanda'da düzenlenmiş bir AB Evcil Hayvan Pasaportunuz yoksa gereklidir."
+              ],
+              "number": "3"
+            },
+            {
+              "title": "Tenya Tedavisi",
+              "note": "(sadece köpekler)",
+              "description": "Köpekler Birleşik Krallık'a gelmeden 24-120 saat (1-5 gün) önce tenya için tedavi edilmelidir.",
+              "number": "4"
+            }
+          ]
+        }
+      },
+      {
+        "id": "giriş yolları",
+        "icon": "🛂",
+        "title": "Giriş Yolları",
+        "type": "giriş yolları",
+        "content": {
+          "approvedEntry": {
+            "title": "Onaylı Giriş Noktaları",
+            "description": "Evcil hayvanlar Birleşik Krallık'a yalnızca belirli onaylı yollardan girebilir.",
+            "routes": [
+              {
+                "title": "Hava Yolculuğu",
+                "description": "Heathrow, Gatwick, Manchester, Edinburgh gibi büyük havaalanları"
+              },
+              {
+                "title": "Eurotunnel",
+                "description": "Folkestone (Calais üzerinden)"
+              },
+              {
+                "title": "Feribot İskeleleri",
+                "description": "Dover, Portsmouth, Hull, Harwich"
+              },
+              {
+                "title": "Eurostar",
+                "description": "Sadece yardımcı köpeklere izin verilir"
+              }
+            ]
+          },
+          "warning": "Evcil hayvanınızla birlikte onaylanmış bir rota üzerinden gelmelisiniz, aksi takdirde evcil hayvanınız 4 aya kadar karantinaya alınabilir."
+        }
+      },
+      {
+        "id": "seyahat etmek",
+        "icon": "✈️",
+        "title": "Seyahat Seçenekleri",
+        "type": "seyahat etmek",
+        "content": {
+          "travelOptions": [
+            {
+              "icon": "🐱",
+              "ariaLabel": "küçük evcil hayvan",
+              "title": "Kabin içi",
+              "description": "Sınırlı seçenekler - Birleşik Krallık'a bağlı uçuşların çoğu, yardımcı hayvanlar dışında kabinde evcil hayvanlara izin vermez."
+            },
+            {
+              "icon": "🐕",
+              "ariaLabel": "büyük evcil hayvan",
+              "title": "Kargo Olarak",
+              "description": "Evcil hayvanların Birleşik Krallık'a uçurulmasında en yaygın yöntem. Genellikle uzman hayvan taşıma departmanları tarafından gerçekleştirilir."
+            },
+            {
+              "icon": "🚗",
+              "ariaLabel": "araba",
+              "title": "Eurotunnel/Feribot",
+              "description": "Avrupa'dan geliyorsanız popüler seçenek. Evcil hayvanlar araçlarda sahipleriyle birlikte kalabilir."
+            }
+          ],
+          "costConsiderations": {
+            "title": "Maliyet Değerlendirmeleri",
+            "costs": [
+              "Uçuşlar: Kargo taşımacılığı için £400-£800",
+              "Eurotunnel: Araç ücretine ek olarak evcil hayvan başına £20-£30",
+              "Feribotlar: Rotaya bağlı olarak evcil hayvan başına £15-£30",
+              "Sağlık Sertifikası: £100-£175"
+            ]
+          },
+          "warning": "Şartlar değişebileceğinden, evcil hayvan politikaları için her zaman kendi havayolu veya nakliye şirketinize danışın."
+        }
+      },
+      {
+        "id": "varış-süreci",
+        "icon": "🛬",
+        "title": "Varış Süreci",
+        "type": "varış-süreci",
+        "content": {
+          "intro": "Birleşik Krallık'ın yurt dışından gelen evcil hayvanlar için özel bir süreci vardır.",
+          "documentChecks": {
+            "title": "Belge Kontrolleri",
+            "items": [
+              "Mikroçip doğrulama",
+              "Hayvan Sağlığı Sertifikası",
+              "Kuduz aşısı kaydı",
+              "Tenya tedavisi (köpekler)"
+            ]
+          },
+          "processFlow": {
+            "title": "Süreç Akışı",
+            "steps": [
+              "Onaylanmış giriş noktasına varış",
+              "Evcil hayvanınızı ve belgelerinizi yetkililere sunun",
+              "Kimliği doğrulamak için evcil hayvanın mikroçipi taranacaktır",
+              "Belgeler iyice kontrol edilecektir",
+              "Her şey yolundaysa, evcil hayvanınızın girişine izin verilecektir"
+            ]
+          },
+          "warning": "Belgeler eksikse veya evcil hayvanınız iyi görünmüyorsa, masrafları size ait olmak üzere karantinaya alınabilir (4 aya kadar)."
+        }
+      },
+      {
+        "id": "varış sonrası",
+        "icon": "🏠",
+        "title": "Birleşik Krallık'ta Evcil Hayvanlarla Yaşamak",
+        "type": "varış sonrası",
+        "content": {
+          "intro": "Birleşik Krallık'a vardıktan sonra, evcil hayvanınızın sağlığı için göz önünde bulundurmanız gereken birkaç husus vardır.",
+          "livingAspects": [
+            {
+              "icon": "🏥",
+              "title": "Veteriner Bakımı",
+              "description": "Mümkün olan en kısa sürede yerel bir veterinere kaydolun. Birleşik Krallık'ta veterinerlik hizmetleri mükemmeldir ancak masraflar yüksek olabilir - evcil hayvan sigortası yaptırmanız önerilir.",
+              "cost": "Standart veteriner konsültasyonu: £30-£60"
+            },
+            {
+              "icon": "📋",
+              "title": "Kayıt",
+              "description": "Evcil hayvanınızın mikroçip bilgilerini İngiltere'deki adresinizle güncelleyin. Köpekler ayrıca yerel belediyeye kayıtlı olmalı ve iletişim bilgilerinizi içeren bir künye takmalıdır."
+            },
+            {
+              "icon": "🏞️",
+              "title": "Egzersiz ve Alanlar",
+              "description": "Birleşik Krallık'ta çok sayıda evcil hayvan dostu park ve kırsal alan bulunmaktadır. Çoğu kasabada köpekler için özel egzersiz alanları vardır, ancak köpeklerin gezdirilmesiyle ilgili yerel kuralları her zaman kontrol edin."
+            },
+            {
+              "icon": "🏠",
+              "title": "Konut",
+              "description": "Birleşik Krallık'taki kiralık evlerin birçoğunda 'evcil hayvan yok' politikası vardır, ancak bu durum değişmektedir. Bazı mülklerde daha yüksek depozito veya 'evcil hayvan kirası' ödemeye hazır olun."
+            }
+          ],
+          "firstWeekChecklist": {
+            "title": "İlk Hafta Kontrol Listesi",
+            "items": [
+              "Yerel bir veteriner muayenehanesine kaydolun",
+              "Mikroçip kaydını Birleşik Krallık adresiyle güncelleyin",
+              "Köpeğinizi yerel belediyeye kaydettirin (varsa)",
+              "Birleşik Krallık iletişim bilgilerini içeren kimlik etiketi satın alın",
+              "Evcil hayvan sigortası seçeneklerini araştırın"
+            ]
+          }
+        }
+      },
+      {
+        "id": "Kaynaklar",
+        "icon": "📚",
+        "title": "Yararlı Kaynaklar",
+        "type": "Kaynaklar",
+        "content": {
+          "officialInfo": {
+            "title": "Resmi Bilgiler",
+            "resources": [
+              {
+                "title": "Birleşik Krallık Hükümeti Evcil Hayvan Seyahat Yönergeleri",
+                "description": "Birleşik Krallık'a evcil hayvan getirmek için resmi kurallar ve gereklilikler"
+              },
+              {
+                "title": "Hayvan ve Bitki Sağlığı Ajansı (APHA)",
+                "description": "Evcil hayvan ithalatını denetleyen devlet kurumu"
+              },
+              {
+                "title": "Evcil Hayvan Seyahat Programı Yardım Hattı",
+                "description": "+44 370 241 1710 (Pazartesi - Cuma, Birleşik Krallık saatiyle sabah 8:30 - akşam 5 arası)"
+              }
+            ]
+          },
+          "petServices": {
+            "title": "Birleşik Krallık'ta Evcil Hayvan Hizmetleri",
+            "services": [
+              {
+                "category": "Evcil Hayvan Sigortası",
+                "providers": "Sağlayıcıları karşılaştırın: PetPlan, Hayvan Dostları, More Than"
+              },
+              {
+                "category": "Evcil Hayvan Malzemeleri",
+                "providers": "Pets at Home, Amazon UK, VetUK"
+              },
+              {
+                "category": "Bir Veteriner Bulun",
+                "providers": "Kraliyet Veteriner Cerrahlar Koleji: FindAVet hizmeti"
+              },
+              {
+                "category": "Evcil Hayvan Dostu Konaklama",
+                "providers": "PetsLets, Airbnb ('evcil hayvanlara izin verilir' filtresini kullanın)"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "sidebar": {
+      "checklist": {
+        "title": "Seyahat Öncesi Kontrol Listesi",
+        "items": [
+          "Evcil hayvanınıza mikroçip takın",
+          "Kuduz aşısının geçerli olduğundan emin olun",
+          "Aşılamadan sonra en az 21 gün bekleyin",
+          "Köpekleri seyahatten 1-5 gün önce tenya için tedavi edin",
+          "Seyahatten sonraki 10 gün içinde Hayvan Sağlık Sertifikası alın",
+          "Birleşik Krallık'a onaylı ulaşım rotası ayırtın",
+          "Seyahat taşıyıcısını hazırlayın (uçuyorsanız havayolu onaylı)"
+        ]
+      },
+      "faq": {
+        "title": "Sık Sorulan Sorular",
+        "questions": [
+          {
+            "question": "Evcil hayvan pasaportuna ihtiyacım var mı?",
+            "answer": "AB veya Kuzey İrlanda'da verilen AB evcil hayvan pasaportları Birleşik Krallık'a giriş için hala geçerlidir. Aksi takdirde, bir Hayvan Sağlık Sertifikasına ihtiyacınız olacaktır."
+          },
+          {
+            "question": "Karantina var mı?",
+            "answer": "Tüm gereklilikler yerine getirilirse karantinaya gerek yoktur. Gereklilikler yerine getirilmezse, evcil hayvanlar 4 aya kadar karantinada kalabilir."
+          },
+          {
+            "question": "Hangi ırklar yasaklandı?",
+            "answer": "Pit Bull Terrier, Japanese Tosa, Dogo Argentino ve Fila Brasileiro gibi bazı köpek ırkları Birleşik Krallık'ta yasaklanmıştır."
+          },
+          {
+            "question": "Egzotik evcil hayvan getirebilir miyim?",
+            "answer": "Egzotik hayvanların farklı gereksinimleri vardır. Birçoğu CITES izinleri ve özel ithalat lisansları gerektirir."
+          }
+        ]
+      }
+    }
+  },
+  "petHealthRequirements": {
+    "title": "Detaylı Sağlık Gereksinimleri",
+    "subtitle": "Menşe ülkeye göre kapsamlı sağlık ve aşılama gereklilikleri",
+    "categories": [
+      {
+        "region": "AB Ülkeleri",
+        "requirements": [
+          {
+            "requirement": "Evcil Hayvan Pasaportu",
+            "description": "AB veya Kuzey İrlanda'da düzenlenmiş AB evcil hayvan pasaportu",
+            "validity": "Güncel ve geçerli olmalıdır"
+          },
+          {
+            "requirement": "Kuduz Aşısı",
+            "description": "En az 21 günlük birincil aşılama",
+            "validity": "Üreticinin yönergelerine göre geçerlidir"
+          },
+          {
+            "requirement": "Mikroçip",
+            "description": "Aşılama öncesi ISO 11784/11785 uyumlu",
+            "validity": "Okunabilir olmalı"
+          }
+        ]
+      },
+      {
+        "region": "AB Üyesi Olmayan Ülkeler",
+        "requirements": [
+          {
+            "requirement": "Hayvan Sağlığı Sertifikası",
+            "description": "Resmi veteriner hekim tarafından 10 gün içinde düzenlenmiş",
+            "validity": "Birleşik Krallık'a giriş için 4 ay geçerlidir"
+          },
+          {
+            "requirement": "Kuduz Aşısı",
+            "description": "Seyahatten en az 21 gün önce",
+            "validity": "Seyahat sırasında güncel olmalıdır"
+          },
+          {
+            "requirement": "Kuduz Antikor Testi",
+            "description": "Belirli ülkelerden istenebilir",
+            "validity": "Yeterli antikor seviyeleri göstermelidir"
+          }
+        ]
+      }
+    ]
+  },
+  "petTransportGuide": {
+    "title": "Evcil Hayvan Taşıma Rehberi",
+    "subtitle": "Evcil hayvanların Birleşik Krallık'a taşınması hakkında ayrıntılı bilgi",
+    "transportMethods": [
+      {
+        "method": "Ticari Havayolları",
+        "suitableFor": "Köpekler ve kediler",
+        "process": [
+          "Uçuş rezervasyonunuzu yaparken evcil hayvan taşıma rezervasyonu yapın",
+          "Sağlık sertifikaları ve aşı kayıtlarının sağlanması",
+          "IATA onaylı seyahat taşıyıcısı kullanın",
+          "Kalkıştan 3-4 saat önce havaalanına varış",
+          "Evcil hayvan iklim kontrollü kargo bölümünde seyahat eder"
+        ],
+        "costs": {
+          "range": "£400-£1,200",
+          "factors": [
+            "Evcil hayvanın boyutu ve ağırlığı",
+            "Katedilen mesafe",
+            "Havayolu politikaları",
+            "Sezon (yoğun ve yoğun olmayan)"
+          ]
+        },
+        "tips": [
+          "Yer sınırlı olduğu için erken rezervasyon yaptırın",
+          "Mümkünse yoğun seyahat sezonlarından kaçının",
+          "Evcil hayvanın endişesini ve konforunu göz önünde bulundurun",
+          "Taşıyıcının uygun boyutta olduğundan emin olun"
+        ]
+      },
+      {
+        "method": "Evcil Hayvan Taşıma Hizmetleri",
+        "suitableFor": "Tüm evcil hayvanlar, özellikle değerli veya gergin hayvanlar",
+        "process": [
+          "Tam hizmet kapıdan kapıya taşıma",
+          "Tüm dokümantasyon ve lojistik işlemlerini gerçekleştirin",
+          "Nakil sırasında özel bakım sağlayın",
+          "Evcil hayvan ihtiyaçlarına göre özel seyahat düzenlemeleri"
+        ],
+        "costs": {
+          "range": "£800-£3,000+",
+          "factors": [
+            "Gerekli hizmet seviyesi",
+            "Evcil hayvan boyutu ve özel ihtiyaçları",
+            "Menşe ve varış yeri",
+            "Ek hizmetler (biniş vb.)"
+          ]
+        },
+        "tips": [
+          "Şirket kimlik bilgilerini iyice araştırın",
+          "Diğer evcil hayvan sahiplerinin yorumlarını okuyun",
+          "Şirketin lisanslı ve sigortalı olduğundan emin olun",
+          "Evcil hayvanınızın türü ile ilgili deneyimlerini sorun"
+        ]
+      }
+    ]
+  },
+  "settlingInGuide": {
+    "title": "Evcil Hayvanınızın Birleşik Krallık'a Yerleşmesi",
+    "subtitle": "Evcil hayvanınızın Britanya'daki yeni evine alışmasına yardımcı olmak",
+    "adjustmentTips": [
+      {
+        "category": "İlk Günler",
+        "tips": [
+          "Rutinleri mümkün olduğunca kendi ülkenizdekine benzer tutun",
+          "Alışmak için zaman tanıyın - evcil hayvanlar stresli olabilir",
+          "Yeni ortamları ve deneyimleri kademeli olarak tanıtın",
+          "Yeme ve uyku düzenini yakından izleyin"
+        ]
+      },
+      {
+        "category": "İklim Adaptasyonu",
+        "tips": [
+          "Birleşik Krallık'ta hava oldukça farklı olabilir - yağmura hazır olun",
+          "Bazı evcil hayvanların daha düşük sıcaklıklara alışması için zamana ihtiyacı olabilir",
+          "Uygun yatak ve barınak sağlayın",
+          "Gün ışığı saatlerindeki mevsimsel değişiklikleri göz önünde bulundurun"
+        ]
+      },
+      {
+        "category": "Sosyal Entegrasyon",
+        "tips": [
+          "Yerel evcil hayvan gruplarına ve topluluklarına katılın",
+          "Köpek parklarını ve evcil hayvan dostu mekanları kademeli olarak kullanın",
+          "Birleşik Krallık'a özgü davranışlara yardımcı olmak için eğitim sınıflarını düşünün",
+          "Ev eğitimi ayarlamaları konusunda sabırlı olun"
+        ]
+      }
+    ],
+    "ukSpecificConsiderations": [
+      {
+        "topic": "Hava Durumu ve Egzersiz",
+        "details": [
+          "Birleşik Krallık'ta sık sık yağmur yağar - evcil hayvan yağmurluklarına yatırım yapın",
+          "Kış günlerinin kısalması egzersiz rutinlerini etkiliyor",
+          "Birçok parkta köpekler için özel egzersiz alanları vardır",
+          "Plaj kısıtlamaları mevsime ve konuma göre değişir"
+        ]
+      },
+      {
+        "topic": "Konut ve Kiralamalar",
+        "details": [
+          "Birleşik Krallık'taki birçok kiralık evin evcil hayvan kabul etmeme politikası var",
+          "Evcil hayvan depozitoları genellikle £200-£500 arasında değişir",
+          "Bazı bölgelerde kiralamalarda cins kısıtlamaları vardır",
+          "Bahçe/bahçe erişimi şehir merkezlerinde daha az yaygındır"
+        ]
+      },
+      {
+        "topic": "Yasal Gereklilikler",
+        "details": [
+          "Köpekler tasma takmalı ve sahiplerinin bilgilerini içeren künye takmalıdır",
+          "Bazı bölgelerde köpeklerin halka açık yerlerde tasma takması zorunludur",
+          "Tehlikeli Köpekler Yasası belirli ırklar için geçerlidir",
+          "Evcil hayvan atıkları temizlenmelidir - cezalar uygulanır"
+        ]
+      }
+    ]
+  },
+  "costBreakdown": {
+    "title": "Tam Maliyet Dökümü",
+    "subtitle": "Evcil hayvanların Birleşik Krallık'a getirilmesiyle ilgili tüm masraflar",
+    "preTravel": {
+      "title": "Seyahat Öncesi Maliyetler",
+      "items": [
+        {
+          "item": "Mikroçipleme",
+          "cost": "£15-£30",
+          "notes": "Tek seferlik maliyet, aşılamadan önce gerekli"
+        },
+        {
+          "item": "Kuduz Aşısı",
+          "cost": "£50-£100",
+          "notes": "Seyahatten önce 21 gün beklenmelidir"
+        },
+        {
+          "item": "Hayvan Sağlığı Sertifikası",
+          "cost": "£100-£175",
+          "notes": "Seyahatten sonraki 10 gün içinde olmalı"
+        },
+        {
+          "item": "Tenya Tedavisi (köpekler)",
+          "cost": "£20-£40",
+          "notes": "Seyahatten 1-5 gün önce"
+        },
+        {
+          "item": "Seyahat Taşıyıcı",
+          "cost": "£50-£200",
+          "notes": "Hava yolculuğu için IATA onaylı"
+        }
+      ]
+    },
+    "transport": {
+      "title": "Nakliye Maliyetleri",
+      "items": [
+        {
+          "item": "Havayolu Evcil Hayvan Taşımacılığı",
+          "cost": "£400-£800",
+          "notes": "Havayoluna ve evcil hayvan boyutuna göre değişir"
+        },
+        {
+          "item": "Evcil Hayvan Taşıma Hizmeti",
+          "cost": "£800-£3,000",
+          "notes": "Tam hizmet seçeneği"
+        },
+        {
+          "item": "Eurotunnel Evcil Hayvan Ücreti",
+          "cost": "£20-£30",
+          "notes": "Artı araç taşıma maliyeti"
+        },
+        {
+          "item": "Feribot Evcil Hayvan Ücreti",
+          "cost": "£15-£30",
+          "notes": "Rotaya ve operatöre göre değişir"
+        }
+      ]
+    },
+    "postArrival": {
+      "title": "Varış Sonrası Maliyetler",
+      "items": [
+        {
+          "item": "Veteriner Kaydı/Kontrolü",
+          "cost": "£30-£60",
+          "notes": "İlk danışma görüşmesi"
+        },
+        {
+          "item": "Evcil Hayvan Sigortası",
+          "cost": "£10-£50/ay",
+          "notes": "Kapsam ve evcil hayvana göre değişir"
+        },
+        {
+          "item": "Evcil Hayvan Malzemeleri",
+          "cost": "£50-£200",
+          "notes": "Yiyecek, oyuncak, yatak takımı vb."
+        },
+        {
+          "item": "Yerel Kayıt",
+          "cost": "£15-£25",
+          "notes": "Gerekli olduğu durumlarda köpek ruhsatı"
+        }
+      ]
+    }
+  },
+  "ukrelocationrequirements": {
+    "introduction": "Birleşik Krallık'a taşınmak dikkatli bir planlama ve hazırlık gerektirir. İster iş fırsatları, eğitim, ailevi nedenler ya da sadece yaşam tarzı değişikliği için taşınıyor olun, yasal gereklilikleri anlamak çok önemlidir. Bu kılavuz, Birleşik Krallık'a başarılı bir şekilde taşınmak için bilmeniz gereken her şeyi özetlemektedir.",
+    "requirements": [
+      {
+        "title": "Geçerli Pasaport",
+        "description": "Birleşik Krallık'ta kaldığınız süre boyunca geçerli olan bir pasaportunuz olmalıdır. Pasaportunuz, 6 aya kadar ziyaret edecek vizesiz ülke vatandaşları için, kalmayı planladığınız süre boyunca geçerli olmalıdır. Vize başvuruları için pasaportunuzun genellikle vize sürenizin tamamı artı birkaç ay daha geçerli olması gerekir."
+      },
+      {
+        "title": "Uygun Vize",
+        "description": "Birleşik Krallık'ta ziyaret amacınıza bağlı olarak çeşitli vize kategorileri bulunmaktadır:",
+        "details": [
+          "Çalışma vizeleri (Vasıflı İşçi, Sağlık ve Bakım İşçisi, vb.)",
+          "Eğitim vizeleri (Öğrenci vizesi, Çocuk Öğrenci vizesi)",
+          "Aile vizeleri (Partner, Çocuk, Ebeveyn vizeleri)",
+          "Ziyaretçi vizeleri (Standart Ziyaretçi, İş Ziyaretçisi)",
+          "Yerleşim veya Süresiz Kalma İzni (ILR)"
+        ]
+      },
+      {
+        "title": "Konaklama Kanıtı",
+        "description": "Birleşik Krallık'ta nerede kalacağınıza dair kanıta ihtiyacınız olacak:",
+        "details": [
+          "Kira sözleşmesi veya mülk sahipliği belgeleri",
+          "Arkadaşlarınızla veya ailenizle kalıyorsanız ev sahibinizden mektup",
+          "İlk konaklama için otel rezervasyonları",
+          "Öğrenciler için üniversite konaklama onayı"
+        ]
+      },
+      {
+        "title": "Finansal Gereklilikler",
+        "description": "Kendinizi finansal olarak destekleyebileceğinizi göstermelisiniz:",
+        "details": [
+          "Yeterli fon olduğunu gösteren banka hesap özetleri (genellikle 3-6 ayı kapsayan)",
+          "Varsa gelir belgesi veya iş sözleşmesi",
+          "Öğrenciler için burs veya fon mektubu",
+          "Yatırım veya birikim kanıtı"
+        ],
+        "additionalInfo": "Gereken kesin miktar vize türüne ve kişisel koşullara göre değişir."
+      },
+      {
+        "title": "Sağlık Hizmeti Kapsamı",
+        "description": "Birleşik Krallık'ta sağlık hizmetlerine erişim şu yollarla yönetilmektedir:",
+        "details": [
+          "Çoğu vize başvurusunda Göçmenlik Sağlık Ek Ücreti (IHS) ödemesi",
+          "Özel sağlık sigortası (başlangıç dönemi için önerilir)",
+          "Uygun ziyaretçiler için Avrupa Sağlık Sigortası Kartı (EHIC) veya Küresel Sağlık Sigortası Kartı (GHIC)"
+        ],
+        "additionalInfo": "Geldikten sonra, mümkün olan en kısa sürede yerel bir GP'ye (Pratisyen Hekim) kaydolun."
+      },
+      {
+        "title": "Biyometrik İkamet İzni (BRP)",
+        "description": "Eğer 6 aydan daha uzun kalacaksanız:",
+        "details": [
+          "Varıştan sonra Biyometrik İkamet İzni alacaksınız",
+          "BRP'nizi Birleşik Krallık'a vardıktan sonraki 10 gün içinde almalısınız",
+          "BRP, göçmenlik statünüzün ve haklarınızın kanıtı olarak hizmet eder"
+        ]
+      },
+      {
+        "title": "Ulusal Sigorta Numarası",
+        "description": "Birleşik Krallık'ta çalışmak için gereklidir:",
+        "details": [
+          "Birleşik Krallık'a geldikten sonra çevrimiçi veya telefonla başvurun",
+          "İstihdam, vergi ve sosyal yardım amaçları için gereklidir",
+          "NI numaranızı almadan önce çalışmaya başlayabilirsiniz"
+        ]
+      },
+      {
+        "title": "Tüberküloz (TB) Test Sertifikası",
+        "description": "Belirli ülkelerin vatandaşları için gereklidir:",
+        "details": [
+          "TB testi onaylı bir merkezde yapılmalıdır",
+          "Sertifika düzenlendiği tarihten itibaren 6 ay süreyle geçerlidir",
+          "Vize başvurusunda bulunmadan önce alınmalıdır"
+        ]
+      },
+      {
+        "title": "İngilizce Dil Yeterliliği",
+        "description": "Çoğu vize kategorisi için:",
+        "details": [
+          "İngilizce dil becerisinin kanıtı (IELTS, TOEFL, vb.)",
+          "İngilizce öğretilen derece kanıt olarak kabul edilebilir",
+          "Belirli uyruklar ve vize türleri için muafiyetler mevcuttur"
+        ]
+      },
+      {
+        "title": "Banka Hesabı",
+        "description": "Birleşik Krallık'ta bir banka hesabı açmak:",
+        "details": [
+          "Adres belgesi (elektrik faturası, kira sözleşmesi)",
+          "Pasaport ve BRP",
+          "Yeni gelen biri olarak daha kolay kurulum için çevrimiçi bankaları düşünün",
+          "Bazı bankalar varıştan önce uluslararası hesap açma imkanı sunar"
+        ]
+      }
+    ],
+    "additionalConsiderations": {
+      "title": "Ek Hususlar",
+      "items": [
+        {
+          "title": "Konsey Vergi Kaydı",
+          "description": "Belediye vergisi için yerel belediyenize kaydolun. Bu, yerel hizmetler için zorunlu bir vergidir. Tam zamanlı öğrenciler için bazı muafiyetler geçerlidir."
+        },
+        {
+          "title": "Birleşik Krallık'ta Araç Kullanma",
+          "description": "Birleşik Krallık vatandaşı olmayan ehliyet sahipleri 12 aya kadar araç kullanabilir. Bundan sonra, ehliyetinizi değiştirmeniz veya Birleşik Krallık'ta ehliyet sınavına girmeniz gerekebilir."
+        },
+        {
+          "title": "Cep Telefonu ve İnternet",
+          "description": "İngiltere'de bir cep telefonu numarası ve internet bağlantısını erkenden kurun. Birçok sağlayıcı yeni gelenler için özel fırsatlar sunar."
+        },
+        {
+          "title": "İklim Hazırlığı",
+          "description": "Birleşik Krallık, serin yazları ve ılıman kışları ile ılıman bir deniz iklimine sahiptir. Uygun kıyafet ve aksesuarlar getirerek yıl boyunca yağmura karşı hazırlıklı olun."
+        }
+      ]
+    },
+    "helpResources": {
+      "title": "Taşınmanızda Yardım Alın",
+      "description": "Birleşik Krallık'a taşınmanızla ilgili resmi bilgi ve yardım için bu kaynakları değerlendirin:",
+      "resources": [
+        {
+          "title": "Birleşik Krallık Hükümeti",
+          "description": "Vize, göçmenlik ve Birleşik Krallık'a yerleşme konularında resmi rehberlik"
+        },
+        {
+          "title": "British Council",
+          "description": "Uluslararası öğrenciler ve kültürel adaptasyon için kaynaklar"
+        },
+        {
+          "title": "Citizens Advice",
+          "description": "Haklar ve sorumluluklar konusunda ücretsiz, gizli danışmanlık"
+        }
+      ]
+    },
+    "footer": {
+      "disclaimer": "Göçmenlik kurallarının sık sık değişebileceğini unutmayın. Her zaman resmi kaynaklardan en son gereklilikleri kontrol edin."
+    }
+  },
+  "ukfromturkeyguide": {
+    "navigation": {
+      "title": "Bu Kılavuzda Gezinme"
+    },
+    "accessibility": {
+      "toggleSection": "için geçiş bölümü"
+    },
+    "labels": {
+      "youllNeed": "İhtiyacın olacak:"
+    },
+    "sections": {
+      "whyMove": {
+        "title": "Türkler Neden İngiltere'ye Taşınıyor?",
+        "description": "Londra, Manchester, Birmingham ve Edinburgh gibi şehirler başta olmak üzere binlerce Türk vatandaşı artık Birleşik Krallık'ı evi olarak görüyor. Çağrı şunları içeriyor:",
+        "reasons": [
+          "Eğitim ve kariyer fırsatları",
+          "Farklı toplulukların bulunduğu çok kültürlü ortam",
+          "Güçlü sağlık ve sosyal refah sistemleri",
+          "Siyasi istikrar ve hukukun üstünlüğü",
+          "Büyük şehirlerde yerleşik Türk toplulukları"
+        ],
+        "conclusion": "Ancak, taşınmak için dikkatli bir planlama yapmak, Birleşik Krallık vize sistemini anlamak ve belirli gereklilikleri yerine getirmek gerekir."
+      },
+      "entryRequirements": {
+        "title": "Giriş Koşulları & Vize Kuralları",
+        "visitorEntry": {
+          "title": "Ziyaretçi Girişi",
+          "description": "Türk vatandaşlarının Birleşik Krallık'a girmek için 6 aya kadar kalışa izin veren bir ziyaretçi vizesine ihtiyaçları vardır. Uzun süreli kalışlar için durumunuza göre uygun bir vize başvurusunda bulunmanız gerekecektir."
+        },
+        "tip": "İşlemler birkaç hafta sürebileceğinden, Birleşik Krallık vizelerine planladığınız seyahat tarihinden çok önce başvurun."
+      },
+      "longTermStay": {
+        "title": "Türk Vatandaşları için Uzun Süreli Kalış Seçenekleri",
+        "options": [
+          {
+            "title": "1. Nitelikli İşçi Vizesi",
+            "description": "<span class=\"font-medium\">5 yıla kadar geçerlidir ve yerleşime yol açabilir</span><br/>Birleşik Krallık'taki bir işverenden sponsorluk lisansına sahip bir iş teklifi olanlar için",
+            "requirements": [
+              "Uygun maaş seviyesine sahip geçerli iş teklifi",
+              "İşverenden alınan Sponsorluk Belgesi",
+              "İngilizce dil yeterliliğinin kanıtı",
+              "Kendinizi geçindirmek için yeterli fon",
+              "Adli sicil belgesi (varsa)"
+            ]
+          },
+          {
+            "title": "2. Aile Vizesi",
+            "details": [
+              "İngiliz vatandaşı veya yerleşik kişi olan bir eşe, partnere veya aile üyesine katılmak için",
+              "Başlangıç süresi 2,5 yıl, uzatılabilir",
+              "Finansal ve konaklama gereksinimleri geçerlidir"
+            ]
+          },
+          {
+            "title": "3. Öğrenci Vizesi",
+            "details": [
+              "Birleşik Krallık'ta bir eğitim kurumuna kabul edilenler için",
+              "Süre kursun uzunluğuna bağlıdır",
+              "Öğrenim ve yaşam masrafları için fon kanıtı gereklidir"
+            ]
+          },
+          {
+            "title": "4. Yenilikçi Vizesi",
+            "description": "Yenilikçi iş fikirlerine ve en az 50.000 £ yatırım fonuna sahip girişimciler için"
+          },
+          {
+            "title": "5. Yüksek Potansiyelli Bireysel Vize",
+            "description": "En iyi küresel üniversitelerden mezun olanlar için, iş teklifi olmadan 2-3 yıl çalışma veya iş arama izni"
+          }
+        ]
+      },
+      "property": {
+        "title": "Mülk Satın Alma veya Kiralama",
+        "points": [
+          "Türk vatandaşları Birleşik Krallık'ta mülk satın alabilir, yerleşik olmayanlar için herhangi bir kısıtlama yoktur",
+          "Mortgage seçenekleri mevcuttur, ancak İngiltere'de ikamet etmeyenler için genellikle daha büyük depozitolar gerekir",
+          "Türk toplulukları için popüler bölgeler: Kuzey Londra, Manchester, Birmingham",
+          "Kiralamak daha pahalıdır: büyük şehirlerde tek yatak odalı bir daire için ayda 800-1.500 £ bekleyin"
+        ],
+        "tip": "<strong>İpucu:</strong> Mülk satın alırken bir avukat kullanın ve imzalamadan önce tüm kira sözleşmesi şartlarını anladığınızdan emin olun."
+      },
+      "costLiving": {
+        "title": "Yaşam Maliyeti Karşılaştırması",
+        "table": {
+          "headers": {
+            "expense": "Giderler",
+            "uk": "Birleşik Krallık (ort.)",
+            "turkey": "Türkiye (ortalama)"
+          },
+          "rows": [
+            {
+              "expense": "Kira (1 yataklı daire)",
+              "uk": "£800-£1,500",
+              "turkey": "£200-£400",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Yardımcı Programlar",
+              "uk": "£150+/ay",
+              "turkey": "£30-£70/ay",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Restoranda yemek",
+              "uk": "£15-£25",
+              "turkey": "£3-£8",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Ulaşım kartı",
+              "uk": "£60-£180/ay",
+              "turkey": "£10-£30/ay",
+              "ukHighlight": true
+            }
+          ]
+        },
+        "note": "Birleşik Krallık Türkiye'den çok daha pahalıdır, bu nedenle taşınmadan önce finansal planlama yapılması şarttır."
+      },
+      "healthcare": {
+        "title": "Sağlık Hizmetlerine Erişim",
+        "points": [
+          "Birleşik Krallık'ta, kullanım noktasında ücretsiz sağlık hizmeti sağlayan Ulusal Sağlık Hizmeti (NHS) vardır",
+          "Vize başvuru sahiplerinin çoğu, başvurularının bir parçası olarak Göçmenlik Sağlık Ek Ücreti ödemek zorundadır",
+          "Ek ücret şu anda çoğu vize türü için yıllık 624 £'dur",
+          "Ödeme yapıldıktan sonra, Birleşik Krallık'ta ikamet edenlere benzer NHS hizmetlerine erişiminiz olacaktır",
+          "Özel sağlık hizmeti seçenekleri mevcut ancak Türkiye'ye kıyasla pahalı"
+        ]
+      },
+      "dailyLife": {
+        "title": "Günlük Yaşam Ayarlamaları",
+        "aspects": [
+          {
+            "title": "Dil engeli",
+            "description": "İngilizce resmi dildir. İyi İngilizce becerilerine sahip olmak günlük yaşam, iş ve sosyal entegrasyon için gereklidir."
+          },
+          {
+            "title": "Sürüş",
+            "description": "Türk ehliyetleri 12 aya kadar kullanılabilir. Bu sürenin sonunda ehliyetinizi değiştirmeniz ya da Birleşik Krallık'ta ehliyet sınavına girmeniz gerekmektedir."
+          },
+          {
+            "title": "Para Birimi",
+            "description": "İngiliz Sterlini (GBP) - güçlü bir para birimi, ancak yaşam tarzınızı sürdürmek için daha fazla Türk Lirasına ihtiyacınız olacağı anlamına geliyor."
+          },
+          {
+            "title": "Bankacılık",
+            "description": "Bir banka hesabı açmak için adres ve göçmenlik durumunun kanıtlanması gerekir. Monzo veya Revolut gibi dijital bankalar başlangıçta daha kolay seçenekler olabilir."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "title": "Türkiye'den Lojistik Taşıma",
+        "points": [
+          "Kişisel eşyalarınızı Birleşik Krallık'a getirirken gümrük vergisi ve KDV ödemeniz gerekebilir",
+          "Daimi evinizi Birleşik Krallık'a taşıyorsanız İkamet Transferi yardımı uygulanabilir",
+          "Türkiye'den Birleşik Krallık'a uluslararası nakliye deniz yoluyla yaklaşık 3-5 hafta sürer",
+          "Evcil hayvanlar için mikroçip, kuduz aşısı, tenya tedavisi (köpekler için) ve Hayvan Sağlık Sertifikası gerekmektedir."
+        ]
+      },
+      "challenges": {
+        "title": "Beklenebilecek Gerçekçi Zorluklar",
+        "challenges": [
+          {
+            "title": "Hava durumu ayarı",
+            "description": "Birleşik Krallık, Türkiye'ye kıyasla daha serin, bulutlu ve sık yağmurlu bir havaya sahiptir"
+          },
+          {
+            "title": "Daha yüksek hayat pahalılığı",
+            "description": "Giderler önemli ölçüde yüksektir ve dikkatli bir bütçeleme gerektirir"
+          },
+          {
+            "title": "Kültürel farklılıklar",
+            "description": "İngiliz sosyal normlarını ve görgü kurallarını anlamak zaman alabilir"
+          },
+          {
+            "title": "Karmaşık vize sistemi",
+            "description": "Göçmenlik kurallarında gezinmek stresli ve pahalı olabilir"
+          }
+        ]
+      },
+      "turkishCommunities": {
+        "title": "Birleşik Krallık'taki Türk Toplulukları",
+        "description": "Birleşik Krallık'ta, özellikle de Birleşik Krallık'ta yerleşik Türk toplulukları bulunmaktadır:",
+        "cities": [
+          "Kuzey Londra",
+          "Manchester",
+          "Birmingham",
+          "Edinburgh",
+          "Leeds"
+        ],
+        "supportNote": "Kültür dernekleri, toplum merkezleri, Türk restoranları ve sosyal medya grupları, diğer Türklerle bağlantı kurmanıza ve geçişinizi kolaylaştırmanıza yardımcı olacaktır."
+      }
+    },
+    "checklist": {
+      "title": "Birleşik Krallık'a Taşınmadan Önce Son Kontrol Listesi",
+      "items": [
+        "Uygun vize için başvuruda bulunun ve vizeyi alın",
+        "Göçmenlik Sağlık Ek Ücretini Ödeyin",
+        "Konaklamayı önceden ayarlayın",
+        "Birleşik Krallık'ta bir banka hesabı oluşturun",
+        "Birleşik Krallık vergi sistemini ve yükümlülüklerini araştırın",
+        "Varıştan önce bir miktar döviz bozdurun",
+        "Gittiğiniz şehirdeki Türk topluluklarıyla bağlantı kurun"
+      ]
+    },
+    "conclusion": {
+      "title": "Birleşik Krallık'a Taşınmak Sizin İçin Doğru mu?",
+      "text": "Birleşik Krallık'a taşınmak eğitimde mükemmellik, kariyer fırsatları ve yüksek bir yaşam standardı sunar, ancak daha yüksek maliyetler ve kültürel ayarlamalarla birlikte gelir. Dikkatli bir planlama ve araştırma şarttır. Yeni ufuklar arayan birçok Türk vatandaşı için Birleşik Krallık'ın çok kültürlü ortamı ve yerleşik Türk toplulukları, zorluklarına rağmen burayı cazip bir yer haline getirmektedir."
+    },
+    "footer": {
+      "lastUpdated": "Son güncelleme: Mayıs 2025"
+    }
+  },
+  "ukvisaguide": {
+    "introduction": "Birleşik Krallık'a taşınmak, koşullarınıza göre uygun vizeyi seçmeyi gerektirir. Birleşik Krallık çalışanlar, öğrenciler, aile üyeleri, yatırımcılar ve girişimciler için çeşitli vize ve oturum seçenekleri sunmaktadır.",
+    "labels": {
+      "bestFor": "En iyisi:",
+      "requirements": "Gereksinimler:",
+      "benefits": "Avantajlar:",
+      "validity": "Geçerlilik:"
+    },
+    "visaTypes": [
+      {
+        "title": "Nitelikli İşçi Vizesi",
+        "bestFor": [
+          "Birleşik Krallık'taki işverenlerden iş teklifi alan profesyoneller",
+          "Eksik mesleklerde çalışan kişiler",
+          "Uzmanlaşmış alanlarda deneyimli çalışanlar"
+        ],
+        "requirements": [
+          "Birleşik Krallık'taki bir işverenden sponsorluk lisansı ile iş teklifi",
+          "RQF Seviye 3 veya üstüne eşdeğer beceri seviyesi",
+          "İngilizce dil yeterliliği (B1 seviyesi)",
+          "Asgari maaş eşiği (tipik olarak 26.200 £ veya mesleğin \"gidiş ücreti\")",
+          "Kendinizi geçindirmek için yeterli fon"
+        ],
+        "validity": "5 yıla kadar (uzatılabilir, 5 yıl sonra uzlaşma yolu)"
+      },
+      {
+        "title": "Öğrenci Vizesi",
+        "bestFor": "Birleşik Krallık üniversitelerine veya eğitim kurumlarına kabul edilen öğrenciler",
+        "requirements": [
+          "Lisanslı bir öğrenci sponsor kurumunda onaylanmış yer",
+          "İngilizce dil yeterliliği",
+          "Öğrenim ve yaşam masraflarını karşılayacak mali imkanların kanıtı",
+          "Ebeveyn/veli onayı (18 yaşın altındaysa)"
+        ],
+        "validity": "Kurs süresi artı birkaç ay (kurs uzunluğuna göre değişir)"
+      },
+      {
+        "title": "Aile Vizesi",
+        "bestFor": "İngiliz vatandaşlarının veya yerleşik kişilerin eşleri, çocukları ve bakmakla yükümlü oldukları kişiler",
+        "requirements": [
+          "Gerçek ve devam eden ilişkinin kanıtı",
+          "Asgari gelir şartının karşılanması (18.600 £ artı çocuklar için ek)",
+          "Yeterli konaklama",
+          "İngilizce dil gereksinimi (ortaklar için)"
+        ],
+        "validity": "Başlangıçta 2,5 yıl (yenilenebilir, 5 yıl sonra uzlaşma yolu)"
+      },
+      {
+        "title": "Yenilikçi Kurucu Vizesi",
+        "bestFor": "Birleşik Krallık'ta yenilikçi bir iş kuran deneyimli girişimciler",
+        "requirements": [
+          "Onaylanmış bir onaylayıcı kuruluştan onay",
+          "Uygulanabilir, yenilikçi iş planı",
+          "En az £50,000 yatırım fonu",
+          "İngilizce dil yeterliliği (B2 seviyesi)",
+          "Bakım için yeterli kişisel fon"
+        ],
+        "validity": "3 yıl (3 yıl sonra uzlaşma yolu)"
+      },
+      {
+        "title": "Küresel Yetenek Vizesi",
+        "bestFor": "Akademi, araştırma, sanat, kültür veya dijital teknoloji alanlarında liderler veya potansiyel liderler",
+        "requirements": [
+          "Alanınızla ilgili bir Birleşik Krallık kurumundan onay",
+          "Olağanüstü yetenek veya gelecek vaat ettiğinin kanıtı",
+          "Alanınızdaki başarıların sicili"
+        ],
+        "benefits": [
+          "Esnek çalışma düzenlemeleri (sponsor gerekmez)",
+          "3-5 yıl sonra uzlaşmaya giden yol",
+          "Bağımlılar size katılabilir"
+        ]
+      },
+      {
+        "title": "Yüksek Potansiyelli Bireysel Vize",
+        "bestFor": "Dünyanın en iyi üniversitelerinden yeni mezunlar",
+        "requirements": [
+          "Dünyanın en iyi üniversitelerinden birinden Birleşik Krallık lisans derecesine eşdeğer veya daha yüksek bir derece (son 5 yıl içinde)",
+          "İngilizce dil yeterliliği (B1 seviyesi)",
+          "Yeterli bakım fonu"
+        ],
+        "validity": "Lisans/yüksek lisans mezunları için 2 yıl, doktora mezunları için 3 yıl (doğrudan yerleşme yolu yok)"
+      },
+      {
+        "title": "Yatırımcı Vizesi",
+        "bestFor": "Birleşik Krallık'ta yatırım yapmak isteyen yüksek net değere sahip bireyler",
+        "requirements": [
+          "Birleşik Krallık şirketlerine minimum 2 milyon sterlin yatırım",
+          "Fonlar düzenlenmiş bir finansal kurumda tutulmalıdır",
+          "Fonlar Birleşik Krallık'ta harcanabilir olmalıdır",
+          "Birleşik Krallık banka hesabı"
+        ],
+        "validity": "Başlangıçta 3 yıl (yatırım miktarına bağlı olarak 2-5 yıl içinde çözüme giden yol)"
+      },
+      {
+        "title": "Yüksek Lisans Vizesi",
+        "bestFor": "Birleşik Krallık'ta lisans eğitimini tamamlayan uluslararası öğrenciler",
+        "requirements": [
+          "Birleşik Krallık'taki bir yükseköğretim kurumunda bir dereceyi başarıyla tamamlamış",
+          "Başvuru sırasında geçerli öğrenci vizesi",
+          "Sponsorun kurs tamamlama onayı"
+        ],
+        "validity": "Lisans ve yüksek lisans mezunları için 2 yıl, doktora mezunları için 3 yıl"
+      }
+    ],
+    "footer": {
+      "disclaimer": "Not: Birleşik Krallık göçmenlik kuralları değişebilir. En güncel bilgiler için her zaman Birleşik Krallık hükümetinin resmi web sitesini kontrol edin."
+    }
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "header": {
+    "title": "Ang Aming Mga Serbisyo",
+    "subtitle": "Pagkonekta sa mga propesyonal sa mga oportunidad sa buong mundo sa pamamagitan ng aming komprehensibong mga serbisyo sa karera"
+  },
+  "viewSelector": {
+    "grid": "Grid",
+    "masonry": "Pagmamason",
+    "carousel": "Carousel"
+  },
+  "card": {
+    "viewPage": "Tingnan ang Pahina",
+    "viewDetails": "Tingnan ang mga Detalye"
+  },
+  "carousel": {
+    "previousSlide": "Nakaraang slide",
+    "nextSlide": "Susunod na slide",
+    "goToSlide": "Pumunta sa slide"
+  },
+  "modal": {
+    "close": "Isara",
+    "overview": "Pangkalahatang-ideya",
+    "keyFeatures": "Mga Pangunahing Tampok",
+    "technologies": "Mga Teknolohiya",
+    "visitServicePage": "Bisitahin ang Pahina ng Serbisyo",
+    "stats": {
+      "projects": "Mga Proyekto",
+      "satisfaction": "Kasiyahan",
+      "support": "Suporta"
+    }
+  },
+  "services": {
+    "resumeService": {
+      "title": "Serbisyo ng Resume",
+      "description": "Mula sa pagbuo ng mga bullet point hanggang sa awtomatikong pag-format, tutulungan ka ng aming resume builder na gumawa ng isang propesyonal na resume nang mabilis at walang kahirap-hirap.",
+      "longDesc": "Ang aming propesyonal na serbisyo sa pagsulat ng resume ay tumutulong sa mga naghahanap ng trabaho na lumikha ng mga makabuluhang resume na angkop sa ATS na nagbibigay-diin sa kanilang mga natatanging kwalipikasyon at nagpapataas ng mga pagkakataon sa panayam. Iniaangkop namin ang bawat resume sa mga partikular na industriya at posisyon.",
+      "features": [
+        "Pag-optimize ng ATS",
+        "Mga Format na Partikular sa Industriya",
+        "Pagpapahusay ng Keyword",
+        "Propesyonal na Pagsusuri"
+      ],
+      "technologies": [
+        "Mga Template ng Resume",
+        "Mga Kagamitan ng ATS",
+        "Software sa Pagdisenyo",
+        "Istratehiya sa Nilalaman"
+      ]
+    },
+    "globalJobPlacement": {
+      "title": "Pandaigdigang Paglalagay ng Trabaho",
+      "description": "Mula sa personalized na pagtutugma ng trabaho hanggang sa suporta sa visa, kinokonekta namin ang mga propesyonal sa mga nangungunang employer sa buong mundo—nang walang putol at mahusay.",
+      "longDesc": "Ang aming pandaigdigang serbisyo sa paglalagay ng trabaho ay nag-uugnay sa mga mahuhusay na propesyonal sa mga internasyonal na oportunidad sa karera, na humahawak sa lahat mula sa pagtutugma ng trabaho hanggang sa logistik ng relokasyon at paghahanda sa kultura.",
+      "features": [
+        "Mga Pakikipagtulungan ng Employer",
+        "Tulong sa Visa",
+        "Suporta sa Relokasyon",
+        "Paghahanda sa Panayam"
+      ],
+      "technologies": [
+        "Algoritmo ng Pagtutugma ng Trabaho",
+        "Pandaigdigang Database",
+        "Pagproseso ng Visa",
+        "Mga Kagamitan sa Paglipat"
+      ]
+    },
+    "interviewCoaching": {
+      "title": "Pagtuturo sa Panayam",
+      "description": "Mula sa mga mock interview hanggang sa personalized na feedback, ang aming komprehensibong interview coaching ay tumutulong sa mga propesyonal na makamit ang kanilang mga pangarap na trabaho nang may kumpiyansa.",
+      "longDesc": "Inihahanda ng aming interview coaching ang mga kandidato na maging mahusay sa anumang format ng panayam gamit ang mga customized na sesyon ng pagsasanay, detalyadong feedback, at mga estratehiyang iniayon sa mga partikular na tungkulin at industriya.",
+      "features": [
+        "Mga Kunwaring Panayam",
+        "Pagsasanay na Espesipiko sa Industriya",
+        "Pagtuturo sa Wika ng Katawan",
+        "Paghahanda ng Tanong"
+      ],
+      "technologies": [
+        "Pagsusuri ng Bidyo",
+        "Feedback ng AI",
+        "Simulasyon ng Panayam",
+        "Personal na Pagtuturo"
+      ]
+    },
+    "careerCounselling": {
+      "title": "Pagpapayo sa Karera",
+      "description": "Mula sa mga pagtatasa ng karera hanggang sa mga personalized na plano sa pag-unlad, ang aming komprehensibong pagpapayo ay tumutulong sa mga propesyonal na mahanap ang kanilang perpektong landas nang may kumpiyansa.",
+      "longDesc": "Ang aming serbisyo sa pagpapayo sa karera ay tumutulong sa mga propesyonal sa lahat ng yugto na matukoy ang kanilang mga kalakasan, tuklasin ang mga angkop na landas sa karera, at bumuo ng mga planong naaaksyunan upang makamit ang kanilang mga propesyonal na layunin.",
+      "features": [
+        "Pagtatasa ng Karera",
+        "Pagsusuri ng Lakas",
+        "Pagtatakda ng Layunin",
+        "Mga Pananaw sa Industriya"
+      ],
+      "technologies": [
+        "Mga Pagsusulit sa Personalidad",
+        "Pagtatasa ng Kasanayan",
+        "Pagmamapa ng Karera",
+        "Pagpaplano ng Pag-unlad"
+      ]
+    },
+    "visaRelocation": {
+      "title": "Visa at Relokasyon",
+      "description": "Mula sa mga aplikasyon ng visa hanggang sa paninirahan sa iyong bagong tahanan, ang aming komprehensibong serbisyo sa paglipat ay tutulong sa iyo na lumipat sa isang bagong bansa nang may kumpiyansa.",
+      "longDesc": "Ang aming mga serbisyo sa visa at relokasyon ay nagbibigay ng komprehensibong suporta sa buong proseso ng imigrasyon, mula sa paghahanda ng dokumento hanggang sa paghahanap ng matutuluyan at pag-aayos sa iyong bagong kapaligiran.",
+      "features": [
+        "Aplikasyon sa Visa",
+        "Paghahanda ng Dokumento",
+        "Tulong sa Pabahay",
+        "Lokal na Integrasyon"
+      ],
+      "technologies": [
+        "Database ng Imigrasyon",
+        "Pamamahala ng Dokumento",
+        "Network ng Pabahay",
+        "Pagpaplano ng Relokasyon"
+      ]
+    },
+    "skillDevelopment": {
+      "title": "Pagpapaunlad ng Kasanayan",
+      "description": "Mula sa mga workshop para sa mga baguhan hanggang sa sertipikasyon ng mga eksperto, ang aming mga programa sa pagpapaunlad ng kasanayan ay nagbibigay-daan sa mga propesyonal na maging dalubhasa sa mga kasanayang in-demand para sa mga oportunidad sa hinaharap.",
+      "longDesc": "Nag-aalok ang aming mga programa sa pagpapaunlad ng kasanayan ng naka-target na pagsasanay sa mga kasanayang mataas ang demand, na may mga customized na landas sa pag-aaral, mga praktikal na proyekto, at paghahanda sa sertipikasyon upang mapalakas ang pag-unlad sa karera.",
+      "features": [
+        "Pasadyang Pagkatuto",
+        "Mga Proyektong Hands-on",
+        "Paghahanda para sa Sertipikasyon",
+        "Ekspertong Paggabay"
+      ],
+      "technologies": [
+        "Plataporma ng E-Learning",
+        "Simulasyon ng Proyekto",
+        "Mga Kagamitan sa Pagtatasa",
+        "Mga Programa ng Sertipikasyon"
+      ]
+    },
+    "remoteWorkOpportunities": {
+      "title": "Mga Oportunidad sa Malayuang Trabaho",
+      "description": "Mula sa remote job matching hanggang sa gabay sa pag-setup ng home office, tinutulungan namin ang mga propesyonal na umunlad sa virtual na lugar ng trabaho gamit ang mga pinasadyang solusyon.",
+      "longDesc": "Ang aming serbisyo sa remote work ay dalubhasa sa pagkonekta ng mga propesyonal sa mga de-kalidad na remote na posisyon, pagbibigay ng gabay sa mga virtual na kagamitan sa trabaho, at pagtulong sa pagtatatag ng mga produktibong kapaligiran para sa home office.",
+      "features": [
+        "Pagtutugma ng Trabaho sa Malayuang Lugar",
+        "Virtual na Kolaborasyon",
+        "Pag-setup ng Opisina sa Bahay",
+        "Balanse sa Trabaho at Buhay"
+      ],
+      "technologies": [
+        "Plataporma ng Malayuang Trabaho",
+        "Mga Virtual na Kagamitan",
+        "Software para sa Produktibidad",
+        "Komunikasyon sa Digital"
+      ]
+    },
+    "talentAcquisition": {
+      "title": "Pagkuha ng Talento",
+      "description": "Mula sa pagtukoy ng mga ideal na kandidato hanggang sa maayos na onboarding, ang aming talent acquisition platform ay tumutulong sa mga organisasyon na bumuo ng mga high-performing team nang mahusay.",
+      "longDesc": "Ang aming serbisyo sa pagkuha ng talento ay tumutulong sa mga organisasyon na matukoy, maakit, at mapanatili ang mga nangungunang talento gamit ang mga pasadyang estratehiya sa recruitment, pagtatasa ng kandidato, at mahusay na proseso ng onboarding.",
+      "features": [
+        "Naka-target na Recruitment",
+        "Pagsusuri ng Kandidato",
+        "Pagtatasa ng Kasanayan",
+        "Suporta sa Pag-onboard"
+      ],
+      "technologies": [
+        "Plataporma ng ATS",
+        "Mga Kagamitan sa Pagtatasa",
+        "Pamamahala ng Panayam",
+        "Sistema ng Pag-onboard"
+      ]
+    },
+    "immigration": {
+      "title": "Imigrasyon",
+      "description": "Mula sa mga aplikasyon ng visa hanggang sa permanenteng paninirahan, gagabayan ka ng aming mga ekspertong consultant sa imigrasyon sa bawat hakbang ng proseso nang may personalized na suporta.",
+      "longDesc": "Ang aming mga consultant sa imigrasyon ay nagbibigay ng ekspertong gabay sa lahat ng landas ng imigrasyon, humahawak ng mga kumplikadong dokumentasyon, paghahanda ng aplikasyon, at nag-aalok ng patuloy na suporta sa buong paglalakbay mo sa imigrasyon.",
+      "features": [
+        "Pagtatasa ng Visa",
+        "Paghahanda ng Aplikasyon",
+        "Suportang Legal",
+        "Pagsubaybay sa Katayuan"
+      ],
+      "technologies": [
+        "Database ng Imigrasyon",
+        "Pag-verify ng Dokumento",
+        "Pamamahala ng Aplikasyon",
+        "Mga Mapagkukunang Legal"
+      ]
+    },
+    "jobRecruitment": {
+      "title": "Pagrerekrut ng Trabaho",
+      "description": "Mula sa paghahanap ng mga kandidato hanggang sa huling pagkakalagay, ang aming komprehensibong serbisyo sa recruitment ay tumutulong sa mga negosyo na makahanap ng mga mahuhusay na talento sa buong mundo nang may katumpakan at kahusayan.",
+      "longDesc": "Ang aming serbisyo sa pangangalap ng trabaho ay dalubhasa sa pagkonekta sa mga employer sa mga kwalipikadong kandidato sa iba't ibang industriya, gamit ang mga advanced na proseso ng screening at pandaigdigang network ng mga talento upang matiyak ang perpektong mga tugma.",
+      "features": [
+        "Pandaigdigang Paghahanap ng Talento",
+        "Advanced na Pagsusuri",
+        "Kadalubhasaan sa Industriya",
+        "Mabilis na Paglalagay"
+      ],
+      "technologies": [
+        "Plataporma ng Pangangalap",
+        "Database ng Kandidato",
+        "Mga Kagamitan sa Pagsusuri",
+        "Algoritmo ng Pagtutugma"
+      ]
+    }
+  }
+}

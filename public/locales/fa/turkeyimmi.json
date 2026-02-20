@@ -1,0 +1,1296 @@
+{
+    "turkeyHeroSection": {
+      "badge": "Exclusive Journeys",
+      "title": "Discover Your Next Adventure",
+      "description": "Experience breathtaking destinations and create unforgettable memories with our premium travel packages tailored to your desires.",
+      "currentlyViewing": {
+        "label": "Currently Viewing"
+      },
+      "buttons": {
+        "explore": "Explore Now",
+        "viewAll": "View All Destinations"
+      },
+      "destinationCounter": "Destination {current}/{total}",
+      "compass": ["N", "E", "S", "W"],
+      "destinations": [
+        {
+          "img": "/images/ihs.png",
+          "name": "Istanbul",
+          "country": "Turkey"
+        },
+        {
+          "img": "/images/ihi.png",
+          "name": "Izmir",
+          "country": "Turkey"
+        },
+        {
+          "img": "/images/iha.png",
+          "name": "Antalya",
+          "country": "Turkey"
+        },
+        {
+          "img": "/images/ihan.png",
+          "name": "Ankara",
+          "country": "Turkey"
+        },
+        {
+          "img": "/images/ihb.png",
+          "name": "Bursa",
+          "country": "Turkey"
+        }
+      ],
+      "accessibility": {
+        "exploreButton": "Explore destinations now",
+        "viewAllButton": "View all available destinations",
+        "destinationImage": "View destination: {name}",
+        "featuredDestination": "Featured destination image",
+        "carouselControl": "Go to destination {number}"
+      }
+    },
+    
+        "turkeyTableOfContents": {
+          "title": "Table of Contents",
+          "subtitle": "Navigate through sections",
+          "currentlyReading": "Currently reading",
+          "sectionsCount": "{count} sections to explore",
+          "sections": [
+            {
+              "id": 1,
+              "title": "Facts About Turkey"
+            },
+            {
+              "id": 2,
+              "title": "Visa Options for Moving to Turkey"
+            },
+            {
+              "id": 3,
+              "title": "Requirements for Moving to Turkey"
+            },
+            {
+              "id": 4,
+              "title": "Getting a Job in Turkey as a Foreigner"
+            },
+            {
+              "id": 5,
+              "title": "Moving to Turkey from the US"
+            },
+            {
+              "id": 6,
+              "title": "Moving to Turkey from the UK"
+            },
+            {
+              "id": 7,
+              "title": "How much does it cost to move to Turkey?"
+            },
+            {
+              "id": 8,
+              "title": "Moving With Pets to Turkey"
+            }
+          ],
+          "quickNavigation": {
+            "title": "Quick Navigation",
+            "footer": "Scroll through {count} sections"
+          },
+          "accessibility": {
+            "toggleMenu": "Toggle navigation menu",
+            "sectionButton": "Navigate to section: {title}",
+            "quickNavigation": "Quick navigation menu",
+            "quickNavSection": "Quick navigate to: {title}"
+          }
+        },
+        
+            "turkeyFactsCard": {
+              "title": "Fascinating Facts About Turkey",
+              "description": "Discover the unique cultural heritage of this beautiful country. Turkey offers a rich history and diverse cultural elements that have influenced the world.",
+              "navigation": {
+                "title": "Explore Facts",
+                "previous": "Previous Fact",
+                "next": "Next Fact"
+              },
+              "allFacts": {
+                "title": "All Facts About Turkey"
+              },
+              "facts": [
+                {
+                  "title": "Istanbul is on two continents",
+                  "description": "It's the only major city in the world that sits in both <strong>Europe and Asia</strong>, divided by the Bosphorus Strait.",
+                  "icon": "🌉"
+                },
+                {
+                  "title": "Home of Troy",
+                  "description": "The ancient city of <strong>Troy</strong>, made famous by Homer's Iliad, is located in western Turkey.",
+                  "icon": "🏛️"
+                },
+                {
+                  "title": "Birthplace of Santa Claus",
+                  "description": "<strong>Saint Nicholas</strong>, who inspired the legend of Santa Claus, was born in Patara, a town in modern-day Turkey.",
+                  "icon": "🎅"
+                },
+                {
+                  "title": "Turkish coffee is UNESCO-listed",
+                  "description": "Turkish coffee is so culturally significant that it's recognized by <strong>UNESCO as an Intangible Cultural Heritage</strong>.",
+                  "icon": "☕"
+                },
+                {
+                  "title": "Tulips originated in Turkey",
+                  "description": "Though often associated with the Netherlands, tulips were originally cultivated in the <strong>Ottoman Empire</strong> and introduced to Europe from Turkey.",
+                  "icon": "🌷"
+                }
+              ],
+              "accessibility": {
+                "factButton": "Select fact: {title}",
+                "previousFact": "Go to previous fact",
+                "nextFact": "Go to next fact"
+              }
+            },
+          "turkeyJobGuide": {
+    "header": {
+      "icon": "🇹🇷",
+      "title": "Getting a Job in Turkey as a Foreigner",
+      "subtitle": "A Complete Guide",
+      "description": "Turkey's vibrant culture, strategic location between Europe and Asia, and growing economy make it an appealing destination for expats seeking employment. However, as a foreigner, landing a job in Turkey requires a solid understanding of the job market, work visa regulations, and cultural expectations.",
+      "subDescription": "Here's a comprehensive guide to help you get a job in Turkey as a foreign national."
+    },
+    "navigation": {
+      "title": "Guide Contents"
+    },
+    "sections": [
+      {
+        "id": "job-market",
+        "icon": "🔍",
+        "title": "Understanding the Turkish Job Market",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Turkey offers opportunities across various sectors, but certain industries are more accessible and welcoming to foreign workers.</p><h3 class=\"text-lg font-medium text-sky-600 mb-3\">In-Demand Sectors for Foreigners:</h3><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-6\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Tourism & Hospitality</span><p class=\"text-sm text-gray-600\">Hotels, travel agencies, tour operators</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Education</span><p class=\"text-sm text-gray-600\">English teachers, international schools</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Technology & Software</span><p class=\"text-sm text-gray-600\">Development, IT services</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Construction & Engineering</span><p class=\"text-sm text-gray-600\">Project management, specialized roles</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Import-Export & Trade</span><p class=\"text-sm text-gray-600\">International commerce, logistics</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Health and Medical Services</span><p class=\"text-sm text-gray-600\">Specialized professionals</p></li></ul><p class=\"text-gray-700\">Knowing the language gives you a competitive edge, but English-speaking jobs are available, particularly in multinational companies or tech startups.</p></div>"
+      },
+      {
+        "id": "legal-requirements",
+        "icon": "🗂️",
+        "title": "Legal Requirements: Work Permit and Visa",
+        "content": "<div><div class=\"mb-6\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Step 1: Secure a Job Offer</h3><p class=\"text-gray-700 mb-4\">Before you can work in Turkey legally, you must first receive a formal job offer from a Turkish employer. Unlike some countries, you cannot apply for a general work permit without a sponsor.</p></div><div class=\"mb-6\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Step 2: Work Visa Application</h3><p class=\"text-gray-700 mb-4\">Once you have a job offer:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>You apply for a work visa at the Turkish consulate/embassy in your home country.</li><li>Your employer simultaneously applies for a work permit through the Turkish Ministry of Labor and Social Security.</li></ul></div><div class=\"bg-sky-50 p-4 rounded-md border border-sky-100 mb-4\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Required Documents:</h3><ul class=\"list-disc pl-6 mb-2 text-gray-700\"><li>Valid passport</li><li>Employment contract</li><li>Educational qualifications</li><li>Passport-sized photos</li><li>Completed visa application form</li><li>Employer's sponsorship documents</li></ul></div><p class=\"text-gray-700\">Once approved, you'll be issued a work visa and can enter Turkey to start your job.</p></div>"
+      },
+      {
+        "id": "job-opportunities",
+        "icon": "🏢",
+        "title": "Finding Job Opportunities in Turkey",
+        "content": "<div><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Top Job Portals:</h3><div class=\"grid grid-cols-2 md:grid-cols-3 gap-3 mb-6\"><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Kariyer.net</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Yenibiris.com</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Secretcv.com</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Jooble Turkey</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">LinkedIn</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Glassdoor</a></div><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Pro Tips:</h3><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Use LinkedIn to connect with HR professionals in Turkey.</li><li>Filter jobs by language requirement (e.g., English-speaking roles).</li><li>Consider recruitment agencies specializing in international placements.</li></ul></div>"
+      },
+      {
+        "id": "teaching-english",
+        "icon": "🧑‍🏫",
+        "title": "Teaching English in Turkey",
+        "content": "<div><p class=\"text-gray-700 mb-4\">One of the most common jobs for foreigners in Turkey is teaching English.</p><div class=\"flex flex-col md:flex-row gap-6 mb-6\"><div class=\"flex-1 bg-white p-4 rounded-md border border-sky-100\"><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Where You Can Work:</h3><ul class=\"list-disc pl-6 text-gray-700\"><li>Private language schools</li><li>Universities</li><li>International schools</li><li>Online tutoring platforms</li></ul></div><div class=\"flex-1 bg-white p-4 rounded-md border border-sky-100\"><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Requirements:</h3><ul class=\"list-disc pl-6 text-gray-700\"><li>Bachelor's degree</li><li>TEFL/TESOL/CELTA certification</li><li>Native or fluent English proficiency</li></ul></div></div><p class=\"text-gray-700\">Some schools also offer visa sponsorship and accommodation.</p></div>"
+      },
+      {
+        "id": "work-permit",
+        "icon": "🧾",
+        "title": "Work Permit Validity & Renewal",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Initial work permits are typically valid for <strong>1 year</strong>.</p><p>They can be renewed for <strong>2 years</strong> on first renewal and <strong>3 years</strong> thereafter.</p><p>After <strong>5 years</strong> of continuous work, you may apply for a long-term residence permit.</p></div>"
+      },
+      {
+        "id": "freelance",
+        "icon": "🧑‍💼",
+        "title": "Can Foreigners Work Freelance or Remote Jobs in Turkey?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Technically, you cannot legally freelance or work remotely for international clients in Turkey without a proper permit. However, many expats do remote work under a short-term residence permit or register as self-employed, which involves a complex setup including:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Opening a Turkish company</li><li>Obtaining a tax number</li><li>Applying for a business visa or entrepreneurial permit</li></ul></div>"
+      },
+      {
+        "id": "language",
+        "icon": "💬",
+        "title": "Language Barrier: Is Turkish Necessary?",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Many professional jobs require at least <strong>basic Turkish skills</strong>.</p><p>However, tech, tourism, and education sectors often allow you to work with <strong>English only</strong>.</p><p>Learning Turkish improves integration and boosts your job prospects.</p></div>"
+      },
+      {
+        "id": "networking",
+        "icon": "👥",
+        "title": "Networking in Turkey",
+        "content": "<div><p class=\"text-gray-700 mb-4\">In Turkey, networking is powerful. Attend:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Expat meetups</li><li>Industry-specific seminars</li><li>LinkedIn events and Turkish Chamber of Commerce gatherings</li></ul><p class=\"text-gray-700\">Personal introductions and referrals often carry more weight than cold applications.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Final Checklist for Getting a Job in Turkey"
+    },
+    "checklist": [
+      "Polish your CV and adapt it to Turkish formats",
+      "Apply to companies that are authorized to hire foreigners",
+      "Prepare required documents for visa processing",
+      "Learn some basic Turkish phrases",
+      "Understand your rights under Turkish labor law"
+    ],
+    "conclusion": {
+      "icon": "✈️",
+      "title": "Ready to Work in Turkey?",
+      "description": "Getting a job in Turkey as a foreigner is entirely possible with the right approach, preparation, and patience. Whether you're looking for a career change, an international experience, or a long-term move, Turkey offers a unique environment rich in opportunity and culture."
+    },
+    "accessibility": {
+      "sectionToggle": "Toggle section: {title}"
+    }
+  },
+  
+    "turkeyMovingCostsGuide": {
+      "title": "How Much Does It Cost to Move to Turkey?",
+      "description": "Moving to Turkey can be affordable compared to many Western countries. Here's a detailed breakdown of the costs you can expect when relocating to Turkey.",
+      "costSections": [
+        {
+          "id": "visa-residence",
+          "icon": "🛂",
+          "title": "Visa & Residence Permit",
+          "amount": "$100–$600",
+          "details": "Includes card, health insurance, visa fee",
+          "color": "bg-sky-500"
+        },
+        {
+          "id": "housing",
+          "icon": "🏠",
+          "title": "Housing",
+          "amount": "$600–$1,200 upfront",
+          "details": "1–2 months' deposit + first month's rent",
+          "color": "bg-sky-600",
+          "subItems": [
+            {
+              "title": "City center (monthly)",
+              "amount": "$300–$500"
+            },
+            {
+              "title": "Coastal/town areas (monthly)",
+              "amount": "$200–$400"
+            }
+          ]
+        },
+        {
+          "id": "shipping",
+          "icon": "📦",
+          "title": "Shipping (Optional)",
+          "amount": "$2,000–$4,000",
+          "details": "Small container. Many expats prefer buying local furniture to save costs.",
+          "color": "bg-sky-700"
+        },
+        {
+          "id": "utilities",
+          "icon": "💡",
+          "title": "Utilities & Internet Setup",
+          "amount": "$50–$150",
+          "details": "Deposits & setup fees",
+          "color": "bg-sky-500",
+          "subItems": [
+            {
+              "title": "Monthly bills",
+              "amount": "$30–$60"
+            }
+          ]
+        },
+        {
+          "id": "everyday",
+          "icon": "🛒",
+          "title": "Everyday Costs",
+          "amount": "$230–$350 monthly",
+          "color": "bg-sky-600",
+          "subItems": [
+            {
+              "title": "Groceries",
+              "amount": "$200–$300/month"
+            },
+            {
+              "title": "Public transport",
+              "amount": "$10–$30/month"
+            },
+            {
+              "title": "Mobile & internet",
+              "amount": "~$20/month"
+            }
+          ]
+        }
+      ],
+      "totalBudget": {
+        "icon": "🔢",
+        "title": "Total Estimate (Solo Traveler)",
+        "categories": [
+          {
+            "title": "Without Shipping",
+            "amount": "$1,200–$2,500",
+            "description": "Includes visa, housing deposit, first month's rent, and setup costs"
+          },
+          {
+            "title": "With Shipping",
+            "amount": "$3,500–$6,000+",
+            "description": "Includes all costs plus shipping a small container of belongings"
+          }
+        ]
+      },
+      "moneySavingTips": {
+        "icon": "💰",
+        "title": "Money-Saving Tips",
+        "tips": [
+          {
+            "title": "Buy Furniture Locally",
+            "description": "Turkish furniture is affordable and readily available. Consider only shipping essentials."
+          },
+          {
+            "title": "Choose Your Location Wisely",
+            "description": "Areas outside major cities like Istanbul can be 30-50% cheaper for housing."
+          },
+          {
+            "title": "Travel Light",
+            "description": "Each extra suitcase can cost $50-100 on flights. Bring only what you need."
+          },
+          {
+            "title": "Consider Seasonal Timing",
+            "description": "Winter months often have cheaper apartments and fewer tourists."
+          }
+        ]
+      },
+      "conclusion": "The cost of moving to Turkey is relatively affordable compared to relocating to other European or North American destinations. With proper planning and budgeting, you can make your move to Turkey both smooth and economical.",
+      "accessibility": {
+        "toggleSection": "Toggle details for {title} section"
+      }
+    },
+    
+        "usTurkeyGuide": {
+          "header": {
+            "icon": "🇺🇸➡️🇹🇷",
+            "title": "Moving to Turkey from the US",
+            "subtitle": "Everything You Need to Know",
+            "description": "Dreaming of a life abroad with rich culture, scenic coastlines, and a lower cost of living? Turkey is increasingly becoming a top destination for Americans seeking a new lifestyle, whether for retirement, remote work, or adventure.",
+            "subDescription": "Here's a complete guide for US citizens planning to move to Turkey, covering everything from visa options to cultural tips."
+          },
+          "quickNavigation": {
+            "title": "Quick Navigation"
+          },
+          "sections": [
+            {
+              "id": "why-turkey",
+              "icon": "📌",
+              "title": "Why Move to Turkey?",
+              "content": "<div><p class=\"text-gray-700 mb-4\">Americans are drawn to Turkey for many reasons:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Affordable cost of living</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Mediterranean lifestyle and mild climate</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Rich history and world-famous cuisine</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Welcoming local culture</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Strategic location between Europe and Asia</span></li></ul><p class=\"text-gray-700\">Whether you're moving for work, study, retirement, or simply to enjoy a slower pace of life, Turkey offers diverse options for expats.</p></div>"
+            },
+            {
+              "id": "visa-options",
+              "icon": "🛂",
+              "title": "Visa Options for US Citizens",
+              "content": "<div><p class=\"text-gray-700 mb-4\">As a US citizen, you can enter Turkey with a 90-day tourist visa, but for long-term living, you'll need one of the following:</p><div class=\"space-y-4\"><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">1. Short-Term Residence Permit</h3><ul class=\"text-gray-700 space-y-1\"><li>• Ideal for digital nomads, remote workers, and first-time expats</li><li>• Valid for up to 1 year, renewable</li><li>• Requires proof of accommodation, financial means, and valid health insurance</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">2. Student Visa & Residence Permit</h3><ul class=\"text-gray-700 space-y-1\"><li>• For those attending university or language courses</li><li>• Requires proof of enrollment and financial support</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">3. Work Visa</h3><ul class=\"text-gray-700 space-y-1\"><li>• You must secure a job offer from a Turkish employer</li><li>• The employer will sponsor your work permit</li><li>• After approval, you can apply for a work visa at the Turkish consulate in the US</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">4. Family Residence Permit</h3><ul class=\"text-gray-700 space-y-1\"><li>• For spouses or children of Turkish citizens or foreign residents</li><li>• Valid up to 2 years</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">5. Retirement or Property-Based Stay</h3><p class=\"text-gray-700\">Buying property in Turkey (no minimum value for residence) makes you eligible for a short-term residence permit</p></div></div></div>"
+            },
+            {
+              "id": "required-documents",
+              "icon": "🧾",
+              "title": "Required Documents for Relocation",
+              "content": "<div><p class=\"text-gray-700 mb-4\">You'll typically need the following to apply for a residence permit:</p><div class=\"bg-sky-50 p-5 rounded-lg border border-sky-100\"><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Valid US passport (with at least 6 months validity)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Turkish tax ID number</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Proof of accommodation (rental contract or deed)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Health insurance (local or private)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Passport photos (biometric)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Bank statements showing sufficient funds</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Completed residence permit application form</span></li></ul></div></div>"
+            },
+            {
+              "id": "popular-cities",
+              "icon": "🏙️",
+              "title": "Where Do Most Americans Live in Turkey?",
+              "content": "<div><p class=\"text-gray-700 mb-4\">Some of the most popular cities among American expats include:</p><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4 mb-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🏖️</span>Antalya</h3><ul class=\"text-gray-700 space-y-1\"><li>• Coastal city with sunny weather, beaches, and affordable living</li><li>• Great for retirees and digital nomads</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🌆</span>Istanbul</h3><ul class=\"text-gray-700 space-y-1\"><li>• Economic and cultural capital</li><li>• Ideal for professionals, students, and those wanting an urban lifestyle</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🎓</span>Ankara</h3><ul class=\"text-gray-700 space-y-1\"><li>• Turkey's capital, quieter than Istanbul but with plenty of opportunities</li><li>• More bureaucratic and diplomatic career options</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🏝️</span>Izmir</h3><ul class=\"text-gray-700 space-y-1\"><li>• Laid-back Aegean coastal city with a progressive vibe</li><li>• Popular with younger expats and entrepreneurs</li></ul></div></div></div>"
+            },
+            {
+              "id": "cost-of-living",
+              "icon": "💸",
+              "title": "Cost of Living Comparison: Turkey vs USA",
+              "content": "<div><div class=\"overflow-x-auto mb-4\"><table class=\"min-w-full bg-white border border-sky-200 rounded-lg\"><thead><tr class=\"bg-sky-100\"><th class=\"py-3 px-4 text-left border-b border-sky-200\">Expense</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">Turkey (avg.)</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">USA (avg.)</th></tr></thead><tbody><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Rent (1BR city center)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$300–$600/month</td><td class=\"py-3 px-4 border-b border-sky-100\">$1,500–$2,000</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Internet (monthly)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$10–$20</td><td class=\"py-3 px-4 border-b border-sky-100\">$50–$70</td></tr><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Dining out (for 2)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$15–$30</td><td class=\"py-3 px-4 border-b border-sky-100\">$50–$100</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Transportation</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$10–$20/month</td><td class=\"py-3 px-4 border-b border-sky-100\">$70–$150</td></tr></tbody></table></div><p class=\"text-gray-700\">Turkey offers significantly lower living expenses, making it attractive for remote workers and retirees.</p></div>"
+            },
+            {
+              "id": "healthcare",
+              "icon": "🩺",
+              "title": "Healthcare in Turkey",
+              "content": "<div class=\"space-y-4 text-gray-700\"><p>Turkey has a strong public healthcare system (SGK), and private healthcare is high-quality and affordable. For residence permit applicants, private insurance is required initially.</p><p>Once legally employed, you'll be eligible for public health insurance (SGK), which covers most treatments and medications.</p></div>"
+            },
+            {
+              "id": "language",
+              "icon": "🗣️",
+              "title": "Language & Cultural Tips",
+              "content": "<div class=\"space-y-3 text-gray-700\"><p>Turkish is the official language, though many Turks in urban areas speak English.</p><p>Learning basic Turkish helps with integration and daily life.</p><p>Respect local customs, especially around dress and public behavior in conservative areas.</p><p>Turks are known for hospitality — it's common to be invited for tea or meals.</p></div>"
+            },
+            {
+              "id": "moving",
+              "icon": "📦",
+              "title": "Moving & Shipping from the US",
+              "content": "<div class=\"space-y-3 text-gray-700\"><p>Consider international movers that specialize in Turkey relocations.</p><p>Household goods can usually enter duty-free if you're obtaining a residence permit.</p><p>Pets can be imported with vaccination records and microchips — check updated regulations.</p></div>"
+            },
+            {
+              "id": "banking",
+              "icon": "🏦",
+              "title": "Banking & Finances",
+              "content": "<div class=\"space-y-3 text-gray-700\"><p>You can open a Turkish bank account using your passport, tax number, and address.</p><p>Many expats maintain a US bank account and use Wise or Revolut for transfers.</p><p>Currency: Turkish Lira (TRY). US Dollars are accepted in limited places but not commonly used.</p></div>"
+            }
+          ],
+          "finalChecklist": {
+            "icon": "✅",
+            "title": "Final Checklist for Americans Moving to Turkey"
+          },
+          "checklist": [
+            { "text": "Apply for a residence permit or work visa", "fullWidth": false },
+            { "text": "Secure accommodation (short or long-term)", "fullWidth": false },
+            { "text": "Get a Turkish tax number", "fullWidth": false },
+            { "text": "Purchase private health insurance", "fullWidth": false },
+            { "text": "Learn key Turkish phrases", "fullWidth": false },
+            { "text": "Set up banking and mobile services", "fullWidth": false },
+            { "text": "Join expat communities and Facebook groups for support", "fullWidth": true }
+          ],
+          "conclusion": {
+            "icon": "✈️",
+            "title": "Conclusion: Is Moving to Turkey from the US Worth It?",
+            "description": "For many Americans, Turkey offers an enriching, affordable, and vibrant alternative to life in the United States. With the right preparation, legal steps, and open-minded attitude, relocating to Turkey can be the start of an exciting new chapter."
+          },
+          "accessibility": {
+            "sectionToggle": "Toggle section: {title}"
+          }
+        },
+        
+            "movingWithPets": {
+              "title": "Moving with Pets to Turkey",
+              "description": "Bringing your furry friend to Turkey is very possible, but you'll need to follow specific rules to ensure a smooth process. Here's what to know about relocating with your pets to Turkey.",
+              "navigation": {
+                "title": "Pet Travel Guide",
+                "sections": [
+                  {
+                    "id": "requirements",
+                    "icon": "✅",
+                    "title": "Key Requirements"
+                  },
+                  {
+                    "id": "airport",
+                    "icon": "🛬",
+                    "title": "At the Airport"
+                  },
+                  {
+                    "id": "traveling",
+                    "icon": "✈️",
+                    "title": "Traveling Options"
+                  },
+                  {
+                    "id": "after-arrival",
+                    "icon": "🏠",
+                    "title": "After Arrival"
+                  },
+                  {
+                    "id": "pet-friendly",
+                    "icon": "🐶",
+                    "title": "Pet-Friendly Turkey"
+                  }
+                ]
+              },
+              "sections": {
+                "requirements": {
+                  "items": [
+                    {
+                      "title": "Microchip",
+                      "content": "Your pet must be microchipped with an ISO 11784/11785 compliant chip."
+                    },
+                    {
+                      "title": "Rabies Vaccination",
+                      "content": "Must be given <span class=\"font-medium\">at least 30 days</span> before travel and within the last <span class=\"font-medium\">12 months</span>."
+                    },
+                    {
+                      "title": "Health Certificate",
+                      "type": "list",
+                      "listItems": [
+                        "• Issued by a licensed vet and approved by the official authority in your country (like USDA in the US or DEFRA in the UK).",
+                        "• Should be issued within <span class=\"font-medium\">10 days</span> before arrival in Turkey."
+                      ]
+                    },
+                    {
+                      "title": "Tapeworm & Tick Treatment",
+                      "content": "Done within 5 days of travel.",
+                      "note": "(not always required but recommended)"
+                    }
+                  ]
+                },
+                "airport": {
+                  "description": "You'll pass through <span class=\"font-medium\">customs with your pet</span>.",
+                  "documentsTitle": "Bring printed documents, including:",
+                  "documents": [
+                    "Microchip proof",
+                    "Vaccination records",
+                    "Health certificate",
+                    "Pet passport (if coming from the EU/UK)"
+                  ]
+                },
+                "traveling": {
+                  "options": [
+                    {
+                      "icon": "🐱",
+                      "ariaLabel": "small pet",
+                      "title": "In-cabin (small pets)",
+                      "description": "Most airlines allow pets under 8 kg including carrier."
+                    },
+                    {
+                      "icon": "🐕",
+                      "ariaLabel": "large pet",
+                      "title": "Cargo",
+                      "description": "Larger animals must fly as cargo."
+                    },
+                    {
+                      "icon": "💰",
+                      "ariaLabel": "cost",
+                      "title": "Costs",
+                      "description": "$150–$1,000 depending on airline and size."
+                    }
+                  ],
+                  "warning": "Always check with your specific airline for their pet policy, as requirements and costs can vary widely."
+                },
+                "afterArrival": {
+                  "intro": [
+                    "No quarantine is required if all documents are in order.",
+                    "Registering your pet with a local vet is recommended."
+                  ],
+                  "recommendedSteps": {
+                    "title": "Recommended First Steps",
+                    "items": [
+                      "Find a local vet and introduce your pet",
+                      "Purchase any medications your pet regularly needs",
+                      "Update your pet's collar with your new Turkish address and phone number"
+                    ]
+                  }
+                },
+                "petFriendly": {
+                  "description": "Turkish cities are pet-friendly, especially in coastal towns. Vets are affordable, and pet supplies are widely available.",
+                  "features": [
+                    {
+                      "icon": "🏥",
+                      "title": "Veterinary Care",
+                      "description": "Vet visits cost approximately 100-300 TL ($5-15), making regular care very affordable."
+                    },
+                    {
+                      "icon": "🏞️",
+                      "title": "Dog Parks & Beaches",
+                      "description": "Many coastal areas have dog-friendly beaches, and larger cities have dedicated pet parks."
+                    },
+                    {
+                      "icon": "🥫",
+                      "title": "Pet Supplies",
+                      "description": "Pet food and supplies are available in supermarkets, pet shops, and online retailers."
+                    },
+                    {
+                      "icon": "🏨",
+                      "title": "Pet-Friendly Accommodations",
+                      "description": "Many hotels and rental properties accept pets, though always confirm in advance."
+                    }
+                  ]
+                }
+              },
+              "checklist": {
+                "title": "Pet Travel Checklist",
+                "items": [
+                  "Schedule a vet visit at least 2 months before travel",
+                  "Verify microchip is ISO-compliant",
+                  "Ensure rabies vaccination is up-to-date (at least 30 days before travel)",
+                  "Get health certificate within 10 days of departure",
+                  "Book pet-friendly transportation with the airline",
+                  "Buy an airline-approved pet carrier",
+                  "Get copies of all documentation and keep them with you during travel"
+                ]
+              },
+              "conclusion": {
+                "title": "Your Pet's New Adventure Awaits!",
+                "description": "With the right preparation, bringing your pet to Turkey can be a smooth experience. Turkey's welcoming environment for pets will help your furry friend adjust quickly to their new Mediterranean home."
+              },
+              "accessibility": {
+                "sectionButton": "Navigate to {title} section"
+              }
+            },
+            
+                "relocationRequirements": {
+                  "title": "Essential Requirements for Relocating to Turkey",
+                  "description": "Whether you're planning to settle in Turkey for work, study, retirement, or a lifestyle change, there are specific steps and documentation you'll need to prepare. Here's a complete breakdown of the essential requirements for relocating to Turkey legally and smoothly.",
+                  "navigation": {
+                    "title": "Quick Navigation",
+                    "expandAll": "Expand All",
+                    "collapseAll": "Collapse All"
+                  },
+                  "sections": [
+                    {
+                      "id": "passport",
+                      "icon": "🛂",
+                      "title": "Valid Passport",
+                      "shortTitle": "Passport",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "text": "Your passport must be valid for at least 6 months beyond your planned stay in Turkey. Some nationalities may require longer validity, especially if applying for long-term permits."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "visa",
+                      "icon": "📝",
+                      "title": "Entry Visa (If Required)",
+                      "shortTitle": "Visa",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "text": "Depending on your nationality, you may need:"
+                        },
+                        {
+                          "type": "list",
+                          "listType": "unordered",
+                          "items": [
+                            "A tourist visa (single or multiple entry)",
+                            "An e-Visa (available online for eligible countries)",
+                            "Or no visa at all for short visits (visa-exempt countries)"
+                          ]
+                        },
+                        {
+                          "type": "paragraph",
+                          "text": "If you plan to stay longer than 90 days, you must apply for a residence permit once you're in Turkey."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "address",
+                      "icon": "🏠",
+                      "title": "Turkish Address",
+                      "shortTitle": "Address",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "text": "To apply for any residence permit, you must have a permanent or temporary address in Turkey:"
+                        },
+                        {
+                          "type": "list",
+                          "listType": "unordered",
+                          "items": [
+                            "Rental agreement (notarized)",
+                            "Property ownership (title deed)",
+                            "Hotel bookings (for short-term permits only)"
+                          ]
+                        },
+                        {
+                          "type": "paragraph",
+                          "text": "All addresses must be registered with the local population directorate (Nüfus Müdürlüğü)."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "financial",
+                      "icon": "💵",
+                      "title": "Proof of Financial Stability",
+                      "shortTitle": "Finances",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "text": "You'll need to show you can support yourself in Turkey. The amount varies, but a general estimate is:"
+                        },
+                        {
+                          "type": "list",
+                          "listType": "unordered",
+                          "items": [
+                            "Minimum $500 per month per person",
+                            "Bank statements, pension slips, income proof, or sponsor documentation are acceptable"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "insurance",
+                      "icon": "🩺",
+                      "title": "Health Insurance",
+                      "shortTitle": "Insurance",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "text": "Valid health insurance is mandatory for most residence permits:"
+                        },
+                        {
+                          "type": "list",
+                          "listType": "unordered",
+                          "items": [
+                            "Turkish SGK (public insurance) if employed",
+                            "Private Turkish insurance if self-sponsored or retired",
+                            "Student health plans for international students"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "tax-number",
+                      "icon": "🧾",
+                      "title": "Tax Number (Vergi Numarası)",
+                      "shortTitle": "Tax Number",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "text": "Before signing rental contracts, opening a bank account, or applying for permits, you must obtain a Turkish tax number. It's free and available at local tax offices (Vergi Dairesi) or online."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "photos",
+                      "icon": "🖼️",
+                      "title": "Biometric Photos",
+                      "shortTitle": "Photos",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "text": "Recent biometric photos (taken within the last 6 months) are required for:"
+                        },
+                        {
+                          "type": "list",
+                          "listType": "unordered",
+                          "items": [
+                            "Residence permit cards",
+                            "Visa applications",
+                            "Government registrations"
+                          ]
+                        },
+                        {
+                          "type": "paragraph",
+                          "text": "Recommended size: 50x60 mm, with white background."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "documents",
+                      "icon": "📄",
+                      "title": "Translated & Notarized Documents (if applicable)",
+                      "shortTitle": "Documents",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "text": "Certain documents must be translated into Turkish and notarized, especially if you're applying for:"
+                        },
+                        {
+                          "type": "list",
+                          "listType": "unordered",
+                          "items": [
+                            "Work permits",
+                            "Family reunification",
+                            "Citizenship"
+                          ]
+                        },
+                        {
+                          "type": "list",
+                          "title": "Examples:",
+                          "listType": "unordered",
+                          "items": [
+                            "Marriage certificate",
+                            "Birth certificates for children",
+                            "Academic diplomas or job credentials"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "residence-permit",
+                      "icon": "🏢",
+                      "title": "Residence Permit Application (for long stays)",
+                      "shortTitle": "Residence Permit",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "text": "If you intend to stay longer than 90 days:"
+                        },
+                        {
+                          "type": "steps",
+                          "steps": [
+                            "Apply online via the Göç İdaresi (Directorate of Migration Management)",
+                            "Book an appointment at your local immigration office",
+                            "Bring all documents and attend the interview"
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "registration",
+                      "icon": "🌐",
+                      "title": "Register Your Address and Get a Residence Card",
+                      "shortTitle": "Registration",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "text": "Once approved:"
+                        },
+                        {
+                          "type": "list",
+                          "listType": "unordered",
+                          "items": [
+                            "You'll be issued a residence card (ikamet kartı) sent by mail",
+                            "You must register your address at the Nüfus Müdürlüğü within 20 days"
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "bonus": {
+                    "icon": "🗣️",
+                    "title": "Bonus: Learn Basic Turkish",
+                    "description": "While not a legal requirement, learning basic Turkish can greatly ease your transition. It helps with:",
+                    "benefits": [
+                      "Local bureaucracy",
+                      "Renting homes",
+                      "Shopping and socializing"
+                    ]
+                  },
+                  "summary": {
+                    "title": "Key Takeaways",
+                    "description": "Remember these essential points for a successful relocation to Turkey:",
+                    "keyPoints": [
+                      "Valid passport (6+ months)",
+                      "Appropriate visa or permit",
+                      "Registered Turkish address",
+                      "Proof of financial stability",
+                      "Valid health insurance",
+                      "Turkish tax number",
+                      "Biometric photos ready",
+                      "Documents translated if needed"
+                    ]
+                  },
+                  "accessibility": {
+                    "sectionButton": "Toggle {title} section"
+                  }
+                },
+                
+                    "ukToTurkeyGuide": {
+                      "title": "Moving to Turkey from the UK",
+                      "subtitle": "What You Need to Know",
+                      "description": "Turkey has become a popular destination for British expats seeking a more relaxed lifestyle, lower living costs, and year-round sunshine. Whether you're planning to retire, work remotely, or start a new chapter abroad, this guide covers everything you need to realistically consider when moving to Turkey from the UK.",
+                      "navigation": {
+                        "title": "Quick Navigation",
+                        "sections": [
+                          {
+                            "id": "whyMove",
+                            "icon": "🧳",
+                            "title": "Why Are Brits Moving to Turkey?"
+                          },
+                          {
+                            "id": "entryRequirements",
+                            "icon": "🛂",
+                            "title": "Entry Requirements & Visa Rules"
+                          },
+                          {
+                            "id": "longTermStay",
+                            "icon": "🏠",
+                            "title": "Long-Term Stay Options for UK Citizens"
+                          },
+                          {
+                            "id": "property",
+                            "icon": "🏘️",
+                            "title": "Buying or Renting Property"
+                          },
+                          {
+                            "id": "costLiving",
+                            "icon": "💷",
+                            "title": "Cost of Living Comparison"
+                          },
+                          {
+                            "id": "healthcare",
+                            "icon": "🏥",
+                            "title": "Healthcare Access"
+                          },
+                          {
+                            "id": "dailyLife",
+                            "icon": "📱",
+                            "title": "Daily Life Adjustments"
+                          },
+                          {
+                            "id": "movingLogistics",
+                            "icon": "🛫",
+                            "title": "Moving Logistics from the UK"
+                          },
+                          {
+                            "id": "challenges",
+                            "icon": "🧾",
+                            "title": "Realistic Challenges to Expect"
+                          },
+                          {
+                            "id": "expatCommunities",
+                            "icon": "👥",
+                            "title": "British Expat Communities"
+                          }
+                        ]
+                      },
+                      "sections": {
+                        "whyMove": {
+                          "description": "Thousands of British nationals now call Turkey home, especially in cities like Fethiye, Antalya, Istanbul, and Bodrum. The appeal includes:",
+                          "reasons": [
+                            "Lower cost of living compared to the UK",
+                            "Mediterranean climate and coastal living",
+                            "Warm hospitality and strong expat communities",
+                            "Property ownership opportunities",
+                            "Slower, more relaxed pace of life"
+                          ],
+                          "postBrexitNote": "However, post-Brexit, relocating involves more planning and paperwork than it once did."
+                        },
+                        "entryRequirements": {
+                          "touristEntry": {
+                            "title": "Tourist Entry",
+                            "description": "UK citizens can visit Turkey visa-free for up to 90 days within any 180-day period. But if you plan to stay longer or move permanently, you need to apply for a residence permit."
+                          }
+                        },
+                        "longTermStay": {
+                          "options": [
+                            {
+                              "title": "1. Short-Term Residence Permit (Ikamet)",
+                              "description": "<span class=\"font-medium\">Valid for 1 year and renewable</span><br/>Common among digital nomads, property owners, and retirees",
+                              "requirementsTitle": "You'll need:",
+                              "requirements": [
+                                "Valid passport",
+                                "Turkish Tax ID",
+                                "Proof of accommodation (rental contract or property deed)",
+                                "Bank statements showing sufficient funds",
+                                "Local or international health insurance"
+                              ]
+                            },
+                            {
+                              "title": "2. Work Permit & Visa",
+                              "steps": [
+                                "You need a job offer from a Turkish company",
+                                "The employer applies for the work permit on your behalf",
+                                "Once approved, you apply for a work visa through the Turkish consulate in the UK"
+                              ]
+                            },
+                            {
+                              "title": "3. Family Residence Permit",
+                              "steps": [
+                                "For those joining a Turkish spouse or family member",
+                                "Valid for up to 2 years"
+                              ]
+                            },
+                            {
+                              "title": "4. Student Residence Permit",
+                              "description": "If you're studying at a Turkish university or taking a long-term language course"
+                            }
+                          ]
+                        },
+                        "property": {
+                          "facts": [
+                            "Foreigners, including UK citizens, can legally buy property in Turkey",
+                            "No minimum value is required for residence permit eligibility",
+                            "Popular areas for British buyers: Fethiye, Antalya, Kusadasi, Bodrum, Alanya",
+                            "Renting is affordable: you can find apartments for £200–£500/month depending on location"
+                          ],
+                          "tip": "<strong>Tip:</strong> Always work with a reputable agent or lawyer when signing contracts or purchasing property."
+                        },
+                        "costLiving": {
+                          "table": {
+                            "headers": {
+                              "expense": "Expense",
+                              "turkey": "Turkey (avg.)",
+                              "uk": "UK (avg.)"
+                            },
+                            "rows": [
+                              {
+                                "expense": "Rent (1-bed apartment)",
+                                "turkey": "£200–£400",
+                                "uk": "£800–£1,200"
+                              },
+                              {
+                                "expense": "Utilities",
+                                "turkey": "£30–£70/month",
+                                "uk": "£150+/month"
+                              },
+                              {
+                                "expense": "Meal at restaurant",
+                                "turkey": "£3–£6",
+                                "uk": "£10–£25"
+                              },
+                              {
+                                "expense": "Transportation pass",
+                                "turkey": "£10–£20/month",
+                                "uk": "£60–£120/month"
+                              }
+                            ]
+                          },
+                          "conclusion": "Your pound stretches much further in Turkey — especially outside the big cities."
+                        },
+                        "healthcare": {
+                          "points": [
+                            "Private health insurance is required for residence permit applicants",
+                            "Once employed, you're eligible for SGK (public insurance), covering most treatments",
+                            "Private healthcare is affordable, and many hospitals are internationally accredited",
+                            "Many British expats opt for international health insurance for more flexibility"
+                          ]
+                        },
+                        "dailyLife": {
+                          "aspects": [
+                            {
+                              "title": "Language barrier",
+                              "description": "Turkish is the official language. English is spoken in tourist and expat areas but learning basic Turkish is highly recommended."
+                            },
+                            {
+                              "title": "Driving",
+                              "description": "UK licenses are valid for 6 months. After that, you must get a Turkish driving license."
+                            },
+                            {
+                              "title": "Currency",
+                              "description": "Turkish Lira (TRY) — exchange rates fluctuate, but cost advantages still favor the UK pound."
+                            },
+                            {
+                              "title": "Banking",
+                              "description": "You can open a Turkish bank account with a passport and local address proof. Online banking is widely used."
+                            }
+                          ]
+                        },
+                        "movingLogistics": {
+                          "points": [
+                            "You can bring personal belongings duty-free within 6 months of getting your residence permit",
+                            "International movers with experience in UK–Turkey relocations are recommended",
+                            "Pets are welcome, but they must be microchipped and have up-to-date vaccinations, including a rabies certificate"
+                          ]
+                        },
+                        "challenges": {
+                          "challenges": [
+                            {
+                              "title": "Bureaucracy",
+                              "description": "Residence permit processes can be slow and inconsistent between cities"
+                            },
+                            {
+                              "title": "Exchange rate volatility",
+                              "description": "Currency depreciation can impact savings or pensions"
+                            },
+                            {
+                              "title": "Cultural differences",
+                              "description": "Be open-minded about lifestyle shifts, social norms, and local pace"
+                            },
+                            {
+                              "title": "Rural vs urban life",
+                              "description": "Rural areas may have fewer English speakers and modern conveniences"
+                            }
+                          ]
+                        },
+                        "expatCommunities": {
+                          "description": "Turkey has large British communities, especially in:",
+                          "locations": [
+                            "Fethiye",
+                            "Didim",
+                            "Bodrum",
+                            "Marmaris",
+                            "Antalya"
+                          ],
+                          "support": "You'll find Facebook groups, local meetups, and British-run businesses to help you settle in more smoothly."
+                        }
+                      },
+                      "checklist": {
+                        "title": "Final Checklist Before Moving to Turkey",
+                        "items": [
+                          "Apply for the correct residence permit or visa",
+                          "Obtain a Turkish Tax Number (Vergi Numarası)",
+                          "Arrange accommodation and local SIM card",
+                          "Get private health insurance",
+                          "Learn basic Turkish phrases",
+                          "Join expat groups for support and updates",
+                          "Notify UK authorities (HMRC, NHS, etc.) about your move"
+                        ]
+                      },
+                      "conclusion": {
+                        "title": "Conclusion: Is It Worth Moving to Turkey from the UK?",
+                        "description": "If you're after a slower, sunnier lifestyle and can manage the paperwork and cultural differences, Turkey is an incredibly rewarding place to live. With lower costs and a high quality of life, many Brits are finding Turkey to be a perfect long-term destination."
+                      },
+                      "accessibility": {
+                        "sectionButton": "Navigate to {title} section"
+                      }
+                    },
+                    
+                        "visaGuide": {
+                          "title": "Visa and Residence Options for Moving to Turkey",
+                          "description": "Moving to Turkey requires choosing the right visa based on your purpose of stay. Turkey offers several visa and residence permit options for workers, students, retirees, businesspeople, and digital nomads.",
+                          "labels": {
+                            "bestFor": "Best for",
+                            "requirements": "Requirements",
+                            "process": "Process",
+                            "benefits": "Benefits",
+                            "options": "Options",
+                            "validity": "Validity",
+                            "renewable": "Renewable",
+                            "yes": "Yes",
+                            "no": "No",
+                            "more": "more"
+                          },
+                          "controls": {
+                            "expandAll": "Expand All",
+                            "collapseAll": "Collapse All"
+                          },
+                          "compare": {
+                            "enable": "Compare Visas",
+                            "exit": "Exit Compare Mode",
+                            "select": "Select",
+                            "selected": "Selected",
+                            "table": {
+                              "title": "Visa Comparison",
+                              "headers": {
+                                "type": "Visa Type",
+                                "validity": "Validity",
+                                "renewable": "Renewable",
+                                "bestFor": "Best For"
+                              }
+                            }
+                          },
+                          "visas": [
+                            {
+                              "id": "short-term",
+                              "icon": "🏠",
+                              "title": "Short-Term Residence Permit (İkamet İzni)",
+                              "subtitle": "Most popular for expats",
+                              "validity": "1 year",
+                              "renewable": true,
+                              "bestFor": [
+                                "Digital nomads",
+                                "Remote workers",
+                                "Property owners",
+                                "Tourists staying longer than 90 days",
+                                "People exploring long-term stay options"
+                              ],
+                              "requirements": [
+                                "Valid passport and visa",
+                                "Proof of financial means (approx. $500/month)",
+                                "Turkish address (rental contract or title deed)",
+                                "Private health insurance",
+                                "Biometric photos"
+                              ]
+                            },
+                            {
+                              "id": "student",
+                              "icon": "🎓",
+                              "title": "Student Visa and Residence Permit",
+                              "subtitle": "For academic pursuits",
+                              "validity": "Duration of studies",
+                              "renewable": true,
+                              "bestFor": [
+                                "Students accepted into Turkish universities",
+                                "Language school students"
+                              ],
+                              "requirements": [
+                                "Acceptance letter from a recognized Turkish institution",
+                                "Proof of sufficient funds",
+                                "Health insurance",
+                                "Turkish address"
+                              ],
+                              "process": [
+                                "Apply for a student visa from a Turkish embassy/consulate in your country",
+                                "Upon arrival, apply for a student residence permit"
+                              ]
+                            },
+                            {
+                              "id": "work",
+                              "icon": "💼",
+                              "title": "Work Visa and Work Permit",
+                              "subtitle": "For employed professionals",
+                              "validity": "1-2 years",
+                              "renewable": true,
+                              "bestFor": [
+                                "Foreigners employed by a Turkish company",
+                                "Expats with job offers",
+                                "English teachers, engineers, healthcare professionals"
+                              ],
+                              "requirements": [
+                                "Job offer from a registered Turkish employer",
+                                "Valid passport",
+                                "Work contract",
+                                "Educational documents (translated & notarized)"
+                              ],
+                              "process": [
+                                "Employer applies to the Turkish Ministry of Labor on your behalf",
+                                "You apply for a work visa at the Turkish embassy",
+                                "After arrival, you receive a residence permit for work"
+                              ]
+                            },
+                            {
+                              "id": "family",
+                              "icon": "👨‍👩‍👧‍👦",
+                              "title": "Family Residence Permit",
+                              "subtitle": "For family reunification",
+                              "validity": "Up to 2 years",
+                              "renewable": true,
+                              "bestFor": [
+                                "Spouses of Turkish citizens",
+                                "Children of Turkish citizens",
+                                "Family members of foreign residents"
+                              ],
+                              "requirements": [
+                                "Proof of family ties (marriage/birth certificate)",
+                                "Turkish address",
+                                "Proof of income from the sponsor",
+                                "Health insurance"
+                              ]
+                            },
+                            {
+                              "id": "property",
+                              "icon": "🏘️",
+                              "title": "Property Ownership Residence Permit",
+                              "subtitle": "For real estate investors",
+                              "validity": "1 year",
+                              "renewable": true,
+                              "bestFor": [
+                                "Foreigners who own real estate in Turkey",
+                                "Property investors",
+                                "Real estate entrepreneurs"
+                              ],
+                              "requirements": [
+                                "Tapu (title deed) in your name",
+                                "Minimum property value of around $75,000 in metropolitan areas (may vary by region)",
+                                "Proof of income",
+                                "Health insurance"
+                              ],
+                              "benefits": [
+                                "Renewable annually",
+                                "Can lead to long-term residence or citizenship"
+                              ]
+                            },
+                            {
+                              "id": "citizenship",
+                              "icon": "🇹🇷",
+                              "title": "Turkish Citizenship by Investment",
+                              "subtitle": "Fast-track to citizenship",
+                              "validity": "Permanent",
+                              "renewable": false,
+                              "bestFor": [
+                                "Investors and entrepreneurs",
+                                "High-net-worth individuals",
+                                "Business owners"
+                              ],
+                              "options": [
+                                "Buy real estate worth at least $400,000",
+                                "Deposit $500,000 in a Turkish bank",
+                                "Create jobs for at least 50 Turkish citizens"
+                              ],
+                              "benefits": [
+                                "Fast-track citizenship within 3–6 months",
+                                "Full rights including passport and voting"
+                              ]
+                            },
+                            {
+                              "id": "long-term",
+                              "icon": "🌟",
+                              "title": "Long-Term Residence Permit",
+                              "subtitle": "Indefinite stay option",
+                              "validity": "Indefinite",
+                              "renewable": false,
+                              "bestFor": [
+                                "Foreigners who have lived in Turkey for at least 8 consecutive years",
+                                "Long-term residents seeking permanent status"
+                              ],
+                              "requirements": [
+                                "No criminal record",
+                                "Proof of long-term income and accommodation",
+                                "No social aid dependency in the last 3 years"
+                              ]
+                            }
+                          ],
+                          "summary": {
+                            "title": "Quick Reference Tips",
+                            "tips": [
+                              {
+                                "title": "Start Early",
+                                "description": "Begin your visa application process at least 3-6 months before your planned move date."
+                              },
+                              {
+                                "title": "Document Preparation",
+                                "description": "Ensure all documents are translated, notarized, and apostilled as required."
+                              },
+                              {
+                                "title": "Financial Planning",
+                                "description": "Maintain sufficient funds in your bank account for several months before application."
+                              },
+                              {
+                                "title": "Health Insurance",
+                                "description": "Secure valid health insurance coverage before applying for any residence permit."
+                              },
+                              {
+                                "title": "Address Registration",
+                                "description": "You must have a registered Turkish address before applying for residence permits."
+                              },
+                              {
+                                "title": "Professional Help",
+                                "description": "Consider hiring a lawyer or immigration consultant for complex cases."
+                              }
+                            ]
+                          }
+                        }
+                      
+  }

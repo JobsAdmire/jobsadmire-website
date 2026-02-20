@@ -1,0 +1,171 @@
+{
+  "hero": {
+    "title": "Trouvez l'emploi de vos rêves",
+    "subtitle": "Découvrez les opportunités qui correspondent à votre passion, à vos compétences et à vos objectifs de carrière.",
+    "search": {
+      "jobPlaceholder": "Titre du poste, compétences ou mots-clés...",
+      "locationPlaceholder": "Ville, pays ou région éloignée...",
+      "buttonText": "Recherche d'emploi"
+    },
+    "popular": {
+      "label": "Populaire :",
+      "tags": [
+        "A distance",
+        "Tech",
+        "Marketing",
+        "Conception",
+        "Finances"
+      ]
+    }
+  },
+  "stats": {
+    "jobs": {
+      "count": "10,580+",
+      "label": "Offres d'emploi"
+    },
+    "candidates": {
+      "count": "8.8M+",
+      "label": "Candidats"
+    },
+    "countries": {
+      "count": "120+",
+      "label": "Pays"
+    },
+    "successRate": {
+      "count": "95%",
+      "label": "Taux de réussite"
+    }
+  },
+  "categories": {
+    "title": "Explorer les possibilités",
+    "tabs": [
+      {
+        "key": "tous",
+        "label": "Tous les emplois"
+      },
+      {
+        "key": "en vedette",
+        "label": "En vedette"
+      },
+      {
+        "key": "récente",
+        "label": "Récents"
+      },
+      {
+        "key": "à distance",
+        "label": "A distance"
+      },
+      {
+        "key": "technique",
+        "label": "Tech"
+      },
+      {
+        "key": "marketing",
+        "label": "Marketing"
+      }
+    ]
+  },
+  "filters": {
+    "title": "Filtres",
+    "clearAll": "Tout effacer",
+    "jobType": {
+      "title": "Type d'emploi",
+      "options": [
+        {
+          "id": "temps plein",
+          "value": "temps_complet",
+          "label": "Temps plein"
+        },
+        {
+          "id": "temps partiel",
+          "value": "temps_partiel",
+          "label": "Temps partiel"
+        },
+        {
+          "id": "contrat",
+          "value": "contrat",
+          "label": "Contrat"
+        },
+        {
+          "id": "à distance",
+          "value": "à distance",
+          "label": "A distance"
+        }
+      ]
+    },
+    "experience": {
+      "title": "Niveau d'expérience",
+      "options": [
+        {
+          "id": "entrée",
+          "label": "Niveau d'entrée"
+        },
+        {
+          "id": "moyen",
+          "label": "Niveau moyen"
+        },
+        {
+          "id": "senior",
+          "label": "Niveau supérieur"
+        },
+        {
+          "id": "exécutif",
+          "label": "Cadre"
+        }
+      ]
+    },
+    "salary": {
+      "title": "Fourchette des salaires",
+      "min": "$0",
+      "max": "$100k+"
+    },
+    "datePosted": {
+      "title": "Date de publication",
+      "options": [
+        {
+          "id": "tous",
+          "label": "A tout moment"
+        },
+        {
+          "id": "jour",
+          "label": "24 dernières heures"
+        },
+        {
+          "id": "semaine",
+          "label": "Semaine écoulée"
+        },
+        {
+          "id": "mois",
+          "label": "Mois écoulé"
+        }
+      ]
+    },
+    "applyButton": "Appliquer les filtres"
+  },
+  "jobListings": {
+    "title": "Emplois disponibles",
+    "showing": "Montrer",
+    "opportunities": "opportunités",
+    "sortBy": {
+      "label": "Trier par :",
+      "options": [
+        "Le plus pertinent",
+        "Le plus récent",
+        "Salaire le plus élevé",
+        "Les plus populaires"
+      ]
+    }
+  },
+  "jobCard": {
+    "featured": "En vedette",
+    "new": "Nouveau",
+    "requirements": "Exigences :",
+    "benefits": "Avantages :",
+    "viewDetails": "Voir les détails",
+    "hideDetails": "Cacher les détails",
+    "applyNow": "Postuler"
+  },
+  "cta": {
+    "postJob": "Publier un emploi"
+  }
+}

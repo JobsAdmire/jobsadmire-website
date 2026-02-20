@@ -1,0 +1,3108 @@
+{
+  "herosection": {
+    "badge": "Voyages exclusifs",
+    "title": "Découvrez votre prochaine aventure",
+    "description": "Découvrez des destinations à couper le souffle et créez des souvenirs inoubliables grâce à nos forfaits de voyage haut de gamme adaptés à vos désirs.",
+    "currentlyViewing": {
+      "label": "En cours de visualisation"
+    },
+    "buttons": {
+      "primary": "Explorer maintenant",
+      "secondary": "Voir toutes les destinations"
+    },
+    "destinationCounter": "Destination {{current}}/{total}}",
+    "controls": {
+      "selectDestination": "Sélectionnez {{destination}}"
+    },
+    "destinations": [
+      {
+        "img": "/images/ihul.png",
+        "name": "Londres",
+        "alt": "Belle vue du paysage urbain de Londres avec ses monuments emblématiques",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihum.png",
+        "name": "Manchester",
+        "alt": "Le centre ville de Manchester avec son architecture moderne et ses bâtiments historiques",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihub.png",
+        "name": "Birmingham",
+        "alt": "Le centre-ville animé de Birmingham et ses quartiers culturels",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihue.png",
+        "name": "Édimbourg",
+        "alt": "Le château historique et la vieille ville médiévale d'Édimbourg",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihuli.png",
+        "name": "Liverpool",
+        "alt": "Le célèbre front de mer et le patrimoine maritime de Liverpool",
+        "country": "UK"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "aboutsection": {
+    "badge": "A propos de nous",
+    "title": "Votre partenaire de voyage de confiance",
+    "description": "Avec plus de 15 ans d'expérience dans l'industrie du voyage, nous sommes spécialisés dans la création de voyages extraordinaires qui dépassent les attentes.",
+    "features": [
+      {
+        "title": "Conseils d'experts",
+        "description": "Nos conseillers en voyages expérimentés fournissent des recommandations personnalisées."
+      },
+      {
+        "title": "Meilleurs prix",
+        "description": "Nous garantissons des prix compétitifs sans frais cachés."
+      },
+      {
+        "title": "Assistance 24/7",
+        "description": "Une assistance à la clientèle 24 heures sur 24 pour une plus grande tranquillité d'esprit."
+      }
+    ],
+    "stats": {
+      "experience": {
+        "number": "15+",
+        "label": "Années d'expérience"
+      },
+      "customers": {
+        "number": "50K+",
+        "label": "Des clients satisfaits"
+      },
+      "destinations": {
+        "number": "200+",
+        "label": "Destinations"
+      },
+      "awards": {
+        "number": "25+",
+        "label": "Prix remportés"
+      }
+    }
+  },
+  "servicessection": {
+    "badge": "Nos services",
+    "title": "Solutions complètes pour les voyages",
+    "description": "De la planification à l'exécution, nous prenons en charge tous les aspects de votre voyage.",
+    "services": [
+      {
+        "icon": "avion",
+        "title": "Réservation de vols",
+        "description": "Meilleures offres sur les vols nationaux et internationaux."
+      },
+      {
+        "icon": "hôtel",
+        "title": "Réservations d'hôtel",
+        "description": "Hébergement de luxe à des prix imbattables."
+      },
+      {
+        "icon": "voiture",
+        "title": "Location de voitures",
+        "description": "Un transport fiable pour votre confort."
+      },
+      {
+        "icon": "guide",
+        "title": "Guides touristiques",
+        "description": "Des guides professionnels pour des expériences immersives."
+      },
+      {
+        "icon": "assurance",
+        "title": "Assurance voyage",
+        "description": "Une couverture complète pour voyager en toute sérénité."
+      },
+      {
+        "icon": "visa",
+        "title": "Aide aux visas",
+        "description": "Assistance complète pour le traitement des visas."
+      }
+    ]
+  },
+  "packagessection": {
+    "badge": "Forfaits de voyage",
+    "title": "Expériences de voyage sélectionnées",
+    "description": "Découvrez nos forfaits triés sur le volet, conçus pour des souvenirs inoubliables.",
+    "filters": {
+      "all": "Tous les forfaits",
+      "adventure": "Aventure",
+      "luxury": "Luxe",
+      "cultural": "Culturel",
+      "romantic": "Romantique"
+    },
+    "packages": [
+      {
+        "title": "Explorateur de Londres",
+        "category": "culturel",
+        "duration": "5 jours",
+        "price": "£1,299",
+        "originalPrice": "£1,599",
+        "image": "/images/london-package.jpg",
+        "highlights": [
+          "Big Ben",
+          "L'œil de Londres",
+          "Palais de Buckingham",
+          "Pont de la Tour"
+        ],
+        "description": "Découvrez le charme historique et l'effervescence moderne de Londres.",
+        "id": 1,
+        "rating": 4.8,
+        "reviews": 324
+      },
+      {
+        "title": "Hautes terres d'Écosse",
+        "category": "aventure",
+        "duration": "7 jours",
+        "price": "£1,899",
+        "originalPrice": "£2,299",
+        "image": "/images/scotland-package.jpg",
+        "highlights": [
+          "Château d'Édimbourg",
+          "Loch Ness",
+          "Île de Skye",
+          "Tournées de whisky"
+        ],
+        "description": "Aventurez-vous dans les paysages à couper le souffle de l'Écosse.",
+        "id": 2,
+        "rating": 4.9,
+        "reviews": 156
+      }
+    ]
+  },
+  "testimonialssection": {
+    "badge": "Témoignages",
+    "title": "Ce que disent nos voyageurs",
+    "description": "Lisez les commentaires authentiques de nos clients satisfaits.",
+    "testimonials": [
+      {
+        "name": "Sarah Johnson",
+        "location": "New York, États-Unis",
+        "comment": "Une expérience absolument extraordinaire ! Chaque détail était parfaitement planifié.",
+        "avatar": "/images/avatar1.jpg",
+        "trip": "Forfait d'exploration de Londres",
+        "id": 1,
+        "rating": 5
+      },
+      {
+        "name": "Michael Chen",
+        "location": "Toronto, Canada",
+        "comment": "Le voyage dans les Highlands écossais a dépassé toutes nos attentes. Nous le recommandons vivement !",
+        "avatar": "/images/avatar2.jpg",
+        "trip": "Forfait Highlands d'Écosse",
+        "id": 2,
+        "rating": 5
+      }
+    ]
+  },
+  "contactsection": {
+    "badge": "Prendre contact",
+    "title": "Planifiez votre prochaine aventure",
+    "description": "Prêt à partir à la découverte ? Contactez nos experts en voyages dès aujourd'hui.",
+    "form": {
+      "name": {
+        "label": "Nom complet",
+        "placeholder": "Saisissez votre nom complet"
+      },
+      "email": {
+        "label": "Adresse électronique",
+        "placeholder": "Saisissez votre adresse électronique"
+      },
+      "phone": {
+        "label": "Numéro de téléphone",
+        "placeholder": "Entrez votre numéro de téléphone"
+      },
+      "destination": {
+        "label": "Destination préférée",
+        "placeholder": "Où voulez-vous aller ?"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Parlez-nous de vos projets de voyage..."
+      },
+      "submit": "Envoyer un message"
+    },
+    "contactInfo": {
+      "address": {
+        "title": "Visitez-nous",
+        "details": "123 Travel Street, Londres, UK SW1A 1AA"
+      },
+      "phone": {
+        "title": "Appelez-nous",
+        "details": "+44 20 7946 0958"
+      },
+      "email": {
+        "title": "Nous envoyer un courriel",
+        "details": "info@travelco.com"
+      },
+      "hours": {
+        "title": "Heures de bureau",
+        "details": "Du lundi au vendredi : de 9h00 à 18h00"
+      }
+    }
+  },
+  "tableOfContents": {
+    "title": "Table des matières",
+    "subtitle": "Naviguer dans les sections",
+    "currentlyReading": "Lecture en cours",
+    "sectionsCount": "{{count}} sections à explorer",
+    "quickNavigation": "Navigation rapide",
+    "scrollText": "Faire défiler les sections {{count}}",
+    "sections": [
+      {
+        "title": "Faits fascinants sur le Royaume-Uni",
+        "id": 1
+      },
+      {
+        "title": "Visa et options de résidence pour déménager au Royaume-Uni",
+        "id": 2
+      },
+      {
+        "title": "Conditions à remplir pour s'installer au Royaume-Uni",
+        "id": 3
+      },
+      {
+        "title": "Travailler au Royaume-Uni",
+        "id": 4
+      },
+      {
+        "title": "Déménagement des États-Unis vers le Royaume-Uni",
+        "id": 5
+      },
+      {
+        "title": "Déménager au Royaume-Uni depuis la Turquie",
+        "id": 6
+      },
+      {
+        "title": "Quel est le coût d'un déménagement au Royaume-Uni ?",
+        "id": 7
+      },
+      {
+        "title": "Déménager avec des animaux de compagnie au Royaume-Uni",
+        "id": 8
+      }
+    ]
+  },
+  "facts": {
+    "title": "Faits fascinants sur le Royaume-Uni",
+    "subtitle": "Découvrez ce qui fait du Royaume-Uni une destination unique",
+    "factsList": [
+      {
+        "title": "Une histoire riche",
+        "description": "Plus de 1000 ans d'histoire documentée avec d'innombrables points de repère historiques."
+      },
+      {
+        "title": "Diversité culturelle",
+        "description": "Il abrite des personnes de plus de 200 nationalités différentes."
+      },
+      {
+        "title": "Le pouvoir économique",
+        "description": "L'une des plus grandes économies et l'un des plus grands centres financiers du monde."
+      },
+      {
+        "title": "Excellence en matière d'éducation",
+        "description": "Il abrite des universités de renommée mondiale comme Oxford et Cambridge."
+      }
+    ]
+  },
+  "visa": {
+    "title": "Visa et options de résidence pour déménager au Royaume-Uni",
+    "subtitle": "Choisissez la bonne voie d'accès au visa en fonction de votre situation",
+    "visaTypes": [
+      {
+        "type": "Visa pour travailleur qualifié",
+        "description": "Pour les personnes ayant reçu une offre d'emploi d'un employeur britannique",
+        "requirements": [
+          "Offre d'emploi",
+          "Maîtrise de l'anglais",
+          "Seuil salarial"
+        ],
+        "duration": "Jusqu'à 5 ans"
+      },
+      {
+        "type": "Visa étudiant",
+        "description": "Pour des études à temps plein dans un établissement d'enseignement britannique",
+        "requirements": [
+          "Acceptation de l'université",
+          "Preuve financière",
+          "Maîtrise de l'anglais"
+        ],
+        "duration": "Durée du cours + temps supplémentaire"
+      },
+      {
+        "type": "Visa familial",
+        "description": "Pour rejoindre les membres de la famille qui résident au Royaume-Uni",
+        "requirements": [
+          "Preuve de relation familiale",
+          "Exigences financières",
+          "Maîtrise de l'anglais"
+        ],
+        "duration": "2,5 à 5 ans"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "Conditions à remplir pour s'installer au Royaume-Uni",
+    "subtitle": "Documents et critères essentiels à remplir",
+    "generalRequirements": [
+      {
+        "category": "Documentation",
+        "items": [
+          "Passeport en cours de validité",
+          "Demande de visa",
+          "Données biométriques",
+          "Photos"
+        ]
+      },
+      {
+        "category": "Financier",
+        "items": [
+          "Relevés bancaires",
+          "Preuve de revenus",
+          "Documents de parrainage",
+          "Registres fiscaux"
+        ]
+      },
+      {
+        "category": "Personnel",
+        "items": [
+          "Examen médical",
+          "Vérification des antécédents judiciaires",
+          "Test d'aptitude à l'anglais",
+          "Certificats d'études"
+        ]
+      }
+    ]
+  },
+  "job": {
+    "title": "Travailler au Royaume-Uni",
+    "subtitle": "Possibilités d'emploi et culture du travail au Royaume-Uni",
+    "workInfo": {
+      "averageSalary": "35 000 £ - 45 000 £ par an",
+      "workingHours": "37,5 heures par semaine standard",
+      "holidays": "28 jours de congés annuels minimum",
+      "benefits": "Soins de santé du NHS, régimes de retraite, indemnités de maladie"
+    },
+    "jobSectors": [
+      {
+        "sector": "Technologie",
+        "demand": "Haut",
+        "averageSalary": "£45,000 - £80,000"
+      },
+      {
+        "sector": "Soins de santé",
+        "demand": "Très élevé",
+        "averageSalary": "£35,000 - £70,000"
+      },
+      {
+        "sector": "Finances",
+        "demand": "Haut",
+        "averageSalary": "£40,000 - £90,000"
+      }
+    ]
+  },
+  "moving": {
+    "title": "Déménagement des États-Unis vers le Royaume-Uni",
+    "subtitle": "Considérations particulières pour les citoyens américains",
+    "process": [
+      {
+        "title": "Choisissez votre visa",
+        "description": "Déterminer quelle catégorie de visa britannique correspond à votre situation",
+        "step": 1
+      },
+      {
+        "title": "Préparer les documents",
+        "description": "Rassembler tous les documents et certificats requis",
+        "step": 2
+      },
+      {
+        "title": "Soumettre la demande",
+        "description": "Postuler en ligne et se présenter au rendez-vous biométrique",
+        "step": 3
+      },
+      {
+        "title": "Planifiez votre déménagement",
+        "description": "Organiser le logement, l'expédition et l'installation initiale",
+        "step": 4
+      }
+    ]
+  },
+  "turkeyToUk": {
+    "title": "Déménager au Royaume-Uni depuis la Turquie",
+    "subtitle": "Guide pour les citoyens turcs qui immigrent au Royaume-Uni",
+    "considerations": [
+      "Exigences en matière de visa pour les ressortissants turcs",
+      "Traduction de documents et apostille",
+      "Conseils d'adaptation culturelle",
+      "Communauté turque au Royaume-Uni"
+    ]
+  },
+  "cost": {
+    "title": "Quel est le coût d'un déménagement au Royaume-Uni ?",
+    "subtitle": "Planification budgétaire pour votre immigration au Royaume-Uni",
+    "costs": {
+      "visa": {
+        "title": "Frais de visa",
+        "amount": "£610 - £1,423",
+        "description": "Dépend du type et de la durée du visa"
+      },
+      "healthcare": {
+        "title": "Supplément pour soins de santé",
+        "amount": "624 £ par an",
+        "description": "Surcharge sanitaire pour les immigrants (IHS)"
+      },
+      "moving": {
+        "title": "Frais de déménagement",
+        "amount": "£2,000 - £8,000",
+        "description": "Expédition, vols et installation initiale"
+      },
+      "living": {
+        "title": "Coût initial de la vie",
+        "amount": "£1,500 - £3,000",
+        "description": "Logement et dépenses du premier mois"
+      }
+    }
+  },
+  "pet": {
+    "title": "Déménager avec des animaux de compagnie au Royaume-Uni",
+    "subtitle": "Exigences et procédures relatives à l'importation d'animaux de compagnie",
+    "requirements": [
+      {
+        "requirement": "Passeport pour animaux de compagnie",
+        "description": "Passeport européen pour animaux de compagnie ou certificat vétérinaire officiel d'un pays tiers",
+        "timeframe": "Au moins 21 jours avant le voyage"
+      },
+      {
+        "requirement": "Puce électronique",
+        "description": "Puce électronique conforme aux normes ISO 11784/11785 avant la vaccination antirabique",
+        "timeframe": "Avant la vaccination antirabique"
+      },
+      {
+        "requirement": "Vaccination contre la rage",
+        "description": "Vaccination antirabique en cours de validité administrée après la pose de la micropuce",
+        "timeframe": "21 jours avant l'entrée"
+      },
+      {
+        "requirement": "Certificat de santé",
+        "description": "Certificat vétérinaire officiel signé par un vétérinaire agréé",
+        "timeframe": "Dans les 10 jours précédant le voyage"
+      }
+    ],
+    "process": [
+      {
+        "title": "La micropuce de votre animal de compagnie",
+        "description": "Veillez à ce que votre animal soit muni d'une puce électronique conforme à la norme ISO.",
+        "step": 1
+      },
+      {
+        "title": "Vaccination contre la rage",
+        "description": "Se faire vacciner contre la rage et attendre 21 jours",
+        "step": 2
+      },
+      {
+        "title": "Certificat de santé",
+        "description": "Obtenir un certificat de santé auprès d'un vétérinaire agréé",
+        "step": 3
+      },
+      {
+        "title": "Livre Voyage",
+        "description": "Organiser un transport adapté aux animaux de compagnie vers le Royaume-Uni",
+        "step": 4
+      }
+    ],
+    "costs": {
+      "microchip": "£15 - £30",
+      "vaccination": "£50 - £100",
+      "healthCertificate": "£100 - £200",
+      "transportation": "£200 - £1,000",
+      "quarantine": "Gratuit (si les conditions sont remplies)"
+    }
+  },
+  "ukInfoCard": {
+    "title": "Faits fascinants sur le Royaume-Uni",
+    "description": "Explorez le riche patrimoine et les caractéristiques fascinantes du Royaume-Uni, de sa monarchie historique à ses paysages époustouflants en passant par son excellence académique.",
+    "didYouKnow": "Le saviez-vous ?",
+    "cta": "En savoir plus sur le Royaume-Uni",
+    "footer": "2025 United Kingdom Information",
+    "navigation": {
+      "previous": "Précédent",
+      "next": "Suivant",
+      "counter": "{{current}} de {{total}}"
+    },
+    "facts": [
+      {
+        "title": "Ancienne monarchie",
+        "content": "Le Royaume-Uni possède l'une des plus anciennes monarchies du monde, vieille de plus de 1 000 ans.",
+        "detail": "La monarchie britannique existe sans interruption depuis le IXe siècle. La reine Élisabeth II est le monarque qui a régné le plus longtemps dans l'histoire britannique, avant le roi Charles III.",
+        "iconType": "couronne",
+        "emoji": "👑",
+        "color": "bg-indigo-500"
+      },
+      {
+        "title": "Principales universités",
+        "content": "Le Royaume-Uni abrite certaines des meilleures universités du monde, notamment Oxford et Cambridge.",
+        "detail": "Oxford et Cambridge, dont l'histoire remonte respectivement au XIe et au XIIIe siècle, se classent régulièrement parmi les dix premières universités du monde.",
+        "iconType": "diplôme",
+        "emoji": "🎓",
+        "color": "bg-emerald-500"
+      },
+      {
+        "title": "Nation insulaire",
+        "content": "Le Royaume-Uni est une nation insulaire qui compte plus de 7 000 petites îles.",
+        "detail": "Si la Grande-Bretagne est la plus grande île, le Royaume-Uni comprend de nombreuses autres îles notables telles que l'île de Wight, Anglesey et les Hébrides.",
+        "iconType": "vagues",
+        "emoji": "🏝️",
+        "color": "bg-bleu-500"
+      },
+      {
+        "title": "L'héritage scientifique",
+        "content": "Les scientifiques britanniques ont apporté des contributions majeures, notamment Isaac Newton, Charles Darwin et Stephen Hawking.",
+        "detail": "Le Royaume-Uni a produit plus de 100 lauréats du prix Nobel en sciences, avec des découvertes révolutionnaires allant de la gravité à la structure de l'ADN et à la physique quantique.",
+        "iconType": "ampoule",
+        "emoji": "💡",
+        "color": "bg-amber-500"
+      },
+      {
+        "title": "Pic le plus élevé",
+        "content": "La plus haute montagne est le Ben Nevis en Écosse (1 345 mètres).",
+        "detail": "Situé dans les Highlands écossais, le Ben Nevis attire chaque année plus de 100 000 grimpeurs et présente une flore et une faune alpines rares.",
+        "iconType": "montagne",
+        "emoji": "🏔️",
+        "color": "bg-slate-500"
+      }
+    ]
+  },
+  "categories": {
+    "history": {
+      "title": "Patrimoine historique",
+      "description": "Découvrez le riche héritage historique du Royaume-Uni",
+      "facts": [
+        {
+          "title": "Châteaux médiévaux",
+          "description": "Le Royaume-Uni compte plus de 1 500 châteaux, dont beaucoup remontent à l'époque médiévale.",
+          "highlight": "Le château de Windsor est le plus ancien château occupé au monde."
+        },
+        {
+          "title": "Patrimoine romain",
+          "description": "Le mur d'Hadrien s'étend sur 84 miles à travers le nord de l'Angleterre.",
+          "highlight": "Construit par l'empereur Hadrien en 122 après J.-C. pour défendre la Grande-Bretagne romaine."
+        },
+        {
+          "title": "Révolution industrielle",
+          "description": "Le Royaume-Uni a été le berceau de la révolution industrielle au XVIIIe siècle.",
+          "highlight": "La première machine à vapeur a été mise au point par James Watt en 1769."
+        }
+      ]
+    },
+    "geography": {
+      "title": "Merveilles géographiques",
+      "description": "Explorer la diversité des paysages et des caractéristiques naturelles",
+      "facts": [
+        {
+          "title": "Longueur du littoral",
+          "description": "Le Royaume-Uni compte environ 11 000 miles de côtes.",
+          "highlight": "Aucun point du Royaume-Uni n'est situé à plus de 75 miles de la mer."
+        },
+        {
+          "title": "Parcs nationaux",
+          "description": "Il existe 15 parcs nationaux en Angleterre, au Pays de Galles et en Écosse.",
+          "highlight": "Le Lake District a été le premier parc national créé en 1951."
+        },
+        {
+          "title": "Zones climatiques",
+          "description": "Malgré sa taille, le Royaume-Uni possède plusieurs zones climatiques distinctes.",
+          "highlight": "Le même jour, il peut faire 10°C de moins en Écosse que dans le sud de l'Angleterre."
+        }
+      ]
+    },
+    "culture": {
+      "title": "Richesse culturelle",
+      "description": "La diversité culturelle et les contributions artistiques du Royaume-Uni",
+      "facts": [
+        {
+          "title": "Géants de la littérature",
+          "description": "Le pays de Shakespeare, Dickens, Austen et de nombreuses légendes littéraires.",
+          "highlight": "Shakespeare a inventé plus de 1 700 mots encore utilisés aujourd'hui."
+        },
+        {
+          "title": "Patrimoine musical",
+          "description": "Lieu de naissance des Beatles, de Queen, de Led Zeppelin et d'innombrables groupes.",
+          "highlight": "Le Royaume-Uni est le pays qui a produit le plus grand nombre de succès mondiaux en première position, à l'exception des États-Unis."
+        },
+        {
+          "title": "Tradition théâtrale",
+          "description": "Le West End de Londres est l'un des plus grands quartiers de théâtre au monde.",
+          "highlight": "Le Globe Theatre propose des représentations dans le même style qu'à l'époque de Shakespeare."
+        }
+      ]
+    },
+    "science": {
+      "title": "Excellence scientifique",
+      "description": "Découvertes et innovations révolutionnaires d'esprits britanniques",
+      "facts": [
+        {
+          "title": "Percées médicales",
+          "description": "La pénicilline, les vaccins et la structure de l'ADN ont été découverts ici.",
+          "highlight": "Alexander Fleming a découvert la pénicilline accidentellement en 1928."
+        },
+        {
+          "title": "Pionniers de la physique",
+          "description": "Les lois de Newton, l'évolution de Darwin et les trous noirs de Hawking.",
+          "highlight": "L'ouvrage de Stephen Hawking \"Une brève histoire du temps\" s'est vendu à plus de 25 millions d'exemplaires."
+        },
+        {
+          "title": "Innovation technologique",
+          "description": "Le World Wide Web et les ordinateurs ont des origines britanniques.",
+          "highlight": "Tim Berners-Lee a inventé le World Wide Web au CERN en 1989."
+        }
+      ]
+    }
+  },
+  "statistics": {
+    "title": "Le Royaume-Uni en chiffres",
+    "subtitle": "Statistiques fascinantes sur le Royaume-Uni",
+    "stats": [
+      {
+        "number": "66.8M",
+        "label": "Population",
+        "description": "Population totale du Royaume-Uni"
+      },
+      {
+        "number": "243,610",
+        "label": "Kilomètres carrés",
+        "description": "Superficie totale du Royaume-Uni"
+      },
+      {
+        "label": "Pays",
+        "description": "Angleterre, Écosse, Pays de Galles et Irlande du Nord",
+        "number": "4"
+      },
+      {
+        "number": "100+",
+        "label": "Prix Nobel",
+        "description": "Les lauréats du prix Nobel originaires du Royaume-Uni"
+      },
+      {
+        "label": "Sites de l'UNESCO",
+        "description": "Sites du patrimoine mondial au Royaume-Uni",
+        "number": "31"
+      },
+      {
+        "number": "1,000+",
+        "label": "Années",
+        "description": "Âge de la monarchie britannique"
+      }
+    ]
+  },
+  "contact": {
+    "title": "En savoir plus sur le Royaume-Uni",
+    "subtitle": "Contactez-nous pour obtenir plus d'informations sur la culture et le patrimoine britanniques.",
+    "form": {
+      "name": {
+        "label": "Nom complet",
+        "placeholder": "Saisissez votre nom complet"
+      },
+      "email": {
+        "label": "Adresse électronique",
+        "placeholder": "Saisissez votre adresse électronique"
+      },
+      "interest": {
+        "label": "Domaine d'intérêt",
+        "placeholder": "Quel est l'aspect de la culture britannique qui vous intéresse le plus ?"
+      },
+      "message": {
+        "label": "Message",
+        "placeholder": "Dites-nous ce que vous aimeriez savoir sur le Royaume-Uni..."
+      },
+      "submit": "Envoyer une demande de renseignements"
+    },
+    "contactInfo": {
+      "address": {
+        "title": "Visitez-nous",
+        "details": "123 British Heritage Street, Londres, Royaume-Uni SW1A 1AA"
+      },
+      "phone": {
+        "title": "Appelez-nous",
+        "details": "+44 20 7946 0123"
+      },
+      "email": {
+        "title": "Nous envoyer un courriel",
+        "details": "info@ukexplorer.com"
+      },
+      "hours": {
+        "title": "Heures",
+        "details": "Du lundi au vendredi : de 9h00 à 17h00"
+      }
+    }
+  },
+  "costsGuide": {
+    "title": "Combien coûte un déménagement au Royaume-Uni ?",
+    "description": "Une ventilation complète de toutes les dépenses auxquelles vous devez vous attendre lorsque vous vous installez au Royaume-Uni, depuis les frais de visa jusqu'aux coûts de la vie quotidienne.",
+    "sections": [
+      {
+        "id": "visa-immigration",
+        "icon": "🛂",
+        "title": "Visa et immigration",
+        "amount": "£250-£3,000",
+        "details": "Comprend la demande de visa, le supplément pour soins de santé et les données biométriques.",
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "logement",
+        "icon": "🏠",
+        "title": "Logement",
+        "amount": "1 800 à 5 000 £ d'avance",
+        "details": "1 à 2 mois de caution + premier mois de loyer + frais d'agence",
+        "subItems": [
+          {
+            "title": "Londres (mensuel)",
+            "amount": "£1,500-£2,500"
+          },
+          {
+            "title": "Grandes villes (mensuel)",
+            "amount": "£800-£1,200"
+          },
+          {
+            "title": "Villes/zones rurales (mensuel)",
+            "amount": "£600-£900"
+          }
+        ],
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "expédition",
+        "icon": "📦",
+        "title": "Expédition (facultatif)",
+        "amount": "£2,000-£6,000",
+        "details": "Conteneur de 20 pieds. De nombreux expatriés utilisent des locations meublées ou achètent localement.",
+        "color": "bg-sky-800"
+      },
+      {
+        "id": "services publics",
+        "icon": "💡",
+        "title": "Utilitaires et configuration Internet",
+        "amount": "£100-£300",
+        "details": "Frais d'établissement et dépôts",
+        "subItems": [
+          {
+            "title": "Factures mensuelles",
+            "amount": "£150-£300"
+          },
+          {
+            "title": "Taxe d'habitation (mensuelle)",
+            "amount": "£120-£300"
+          }
+        ],
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "tous les jours",
+        "icon": "🛒",
+        "title": "Coûts quotidiens",
+        "amount": "800-£1 500 par mois",
+        "subItems": [
+          {
+            "title": "Épicerie",
+            "amount": "250-£450/mois"
+          },
+          {
+            "title": "Transports publics",
+            "amount": "150-£300/mois"
+          },
+          {
+            "title": "Mobile et internet",
+            "amount": "40-£80/mois"
+          },
+          {
+            "title": "Divertissement et restauration",
+            "amount": "200-£400/mois"
+          }
+        ],
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "banque",
+        "icon": "🏦",
+        "title": "Banque et finance",
+        "amount": "£50-£200",
+        "details": "Frais d'ouverture de compte, virements internationaux",
+        "color": "bg-sky-600"
+      }
+    ],
+    "totalCosts": {
+      "title": "Estimation totale des frais de déménagement",
+      "options": [
+        {
+          "title": "Option budgétaire",
+          "amount": "£3,000-£5,000",
+          "description": "Coûts minimums pour une personne seule, en dehors de Londres, avec un minimum d'effets personnels",
+          "featured": false
+        },
+        {
+          "title": "Déplacement standard",
+          "amount": "£5,000-£10,000",
+          "description": "Coûts moyens pour une personne seule ou un couple avec un transport modéré",
+          "featured": true
+        },
+        {
+          "title": "Déménagement de la famille",
+          "amount": "£10,000-£20,000+",
+          "description": "Une famille de 3-4 personnes déménage à Londres avec un conteneur maritime complet",
+          "featured": false
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Stratégies pour économiser de l'argent au Royaume-Uni",
+      "tips": [
+        {
+          "title": "L'emplacement est important",
+          "description": "En vivant en dehors de Londres, vous pouvez réduire vos frais de logement de 40 à 60 %. Pensez à des villes comme Manchester, Birmingham ou Glasgow pour un meilleur rapport qualité-prix."
+        },
+        {
+          "title": "Logement meublé",
+          "description": "Les locations meublées permettent d'économiser des milliers de dollars en frais de transport et de mobilier. Les locations de courte durée vous permettent de trouver le bon quartier avant de vous engager."
+        },
+        {
+          "title": "Économies de transport",
+          "description": "Achetez des cartes de transport annuelles et envisagez de faire du vélo dans les villes où les cyclistes sont les bienvenus. Les coûts de transport à Londres sont nettement plus élevés que dans les autres villes du Royaume-Uni."
+        },
+        {
+          "title": "Banque et monnaie",
+          "description": "Utilisez des services tels que Wise ou Revolut pour les virements internationaux afin d'éviter les frais bancaires élevés. Changez vos devises lorsque les taux sont favorables avant de déménager."
+        }
+      ]
+    },
+    "considerations": {
+      "title": "Considérations essentielles propres au Royaume-Uni",
+      "items": [
+        {
+          "icon": "🏥",
+          "title": "Soins de santé",
+          "description": "Prévoyez un budget pour la surtaxe de santé des immigrants (624 £ par an pour les adultes) lorsque vous demandez un visa de plus de 6 mois, ce qui vous donne accès au système de santé national."
+        },
+        {
+          "icon": "📱",
+          "title": "Communication",
+          "description": "Envisagez des offres SIM-only plutôt que des contrats, surtout si vous avez votre propre téléphone. Des fournisseurs comme giffgaff et Lebara proposent des options flexibles sans contrat."
+        },
+        {
+          "icon": "🌦️",
+          "title": "Coûts saisonniers",
+          "description": "Les coûts de chauffage en hiver peuvent être importants. Envisagez des logements bien isolés et à haut rendement énergétique afin d'économiser sur les charges."
+        },
+        {
+          "icon": "🚗",
+          "title": "Planification des transports",
+          "description": "Si vous avez l'intention de conduire, tenez compte des coûts d'assurance plus élevés pour les nouveaux résidents du Royaume-Uni et des frais potentiels pour les zones à faibles émissions dans les grandes villes."
+        }
+      ]
+    },
+    "conclusion": {
+      "title": "Planifier votre déménagement au Royaume-Uni",
+      "description": "Déménager au Royaume-Uni représente un investissement important, en particulier si vous vous installez à Londres ou dans d'autres grandes villes. Si les coûts initiaux peuvent sembler élevés, une bonne planification et des recherches approfondies peuvent vous aider à gérer le processus de manière plus économique. Réfléchissez bien à votre lieu d'installation et préparez-vous à un coût de la vie plus élevé que dans de nombreux autres pays, mais profitez également des excellents services publics, des soins de santé et de la qualité de vie que le Royaume-Uni a à offrir."
+    }
+  },
+  "calculator": {
+    "title": "Calculateur de frais de déménagement au Royaume-Uni",
+    "subtitle": "Obtenez un devis personnalisé pour votre déménagement au Royaume-Uni",
+    "form": {
+      "familySize": {
+        "label": "Taille de la famille",
+        "options": [
+          "Personne seule",
+          "Couple",
+          "Famille (3-4 personnes)",
+          "Famille nombreuse (5+ personnes)"
+        ]
+      },
+      "destination": {
+        "label": "Destination Royaume-Uni",
+        "options": [
+          "Londres",
+          "Grande ville (Manchester, Birmingham, etc.)",
+          "Ville moyenne",
+          "Zone rurale"
+        ]
+      },
+      "shipping": {
+        "label": "Exigences en matière d'expédition",
+        "options": [
+          "Pas de frais de port (achat local)",
+          "Expédition partielle (uniquement pour les produits essentiels)",
+          "Expédition de conteneurs complets",
+          "Conteneurs multiples"
+        ]
+      },
+      "visaType": {
+        "label": "Type de visa",
+        "options": [
+          "Visa étudiant",
+          "Visa pour travailleur qualifié",
+          "Visa familial",
+          "Visa d'investisseur",
+          "Autres"
+        ]
+      },
+      "calculate": "Calculer l'estimation"
+    },
+    "results": {
+      "title": "Estimation de vos frais de déménagement",
+      "breakdown": "Ventilation des coûts :",
+      "total": "Coût total estimé :",
+      "disclaimer": "Il s'agit d'une estimation basée sur des coûts moyens. Les coûts réels peuvent varier en fonction des circonstances spécifiques, du calendrier et des fournisseurs de services."
+    }
+  },
+  "comparison": {
+    "title": "Comparaison du coût de la vie au Royaume-Uni",
+    "subtitle": "Comparez le coût de la vie au Royaume-Uni avec celui des principales villes du monde",
+    "categories": [
+      {
+        "category": "Logement",
+        "london": "2 000 £/mois",
+        "manchester": "£900/mois",
+        "newyork": "2 800 £/mois",
+        "paris": "1 800 £/mois"
+      },
+      {
+        "category": "Épicerie",
+        "london": "350 €/mois",
+        "manchester": "280 £/mois",
+        "newyork": "£420/mois",
+        "paris": "320 €/mois"
+      },
+      {
+        "category": "Transport",
+        "london": "200 £/mois",
+        "manchester": "80 €/mois",
+        "newyork": "150 £/mois",
+        "paris": "90 €/mois"
+      },
+      {
+        "category": "Restauration",
+        "london": "300 £/mois",
+        "manchester": "200 £/mois",
+        "newyork": "350 €/mois",
+        "paris": "280 £/mois"
+      }
+    ]
+  },
+  "timeline": {
+    "title": "Calendrier et coûts d'un déménagement au Royaume-Uni",
+    "subtitle": "Quand prévoir un budget pour les différentes dépenses liées au déménagement",
+    "phases": [
+      {
+        "phase": "Pré-demande (3-6 mois avant)",
+        "costs": "£200-£500",
+        "items": [
+          "Préparation et traduction de documents",
+          "Tests de langue anglaise",
+          "Examens médicaux",
+          "Consultations juridiques"
+        ]
+      },
+      {
+        "phase": "Demande de visa (2-4 mois avant)",
+        "costs": "£500-£3,500",
+        "items": [
+          "Frais de demande de visa",
+          "Supplément pour soins de santé liés à l'immigration",
+          "Rendez-vous biométriques",
+          "Traitement prioritaire (optionnel)"
+        ]
+      },
+      {
+        "phase": "Pré-départ (1-2 mois avant)",
+        "costs": "£2,000-£8,000",
+        "items": [
+          "Expédition et logistique",
+          "Organisation des voyages",
+          "Réservations de logements temporaires",
+          "Transfert de l'animal de compagnie (le cas échéant)"
+        ]
+      },
+      {
+        "phase": "Arrivée (premier mois)",
+        "costs": "£2,000-£6,000",
+        "items": [
+          "Dépôts de garantie et loyers",
+          "Mise en place des services publics et dépôts",
+          "Ouverture d'un compte bancaire",
+          "Frais de subsistance initiaux"
+        ]
+      },
+      {
+        "phase": "Règlement (mois 2-6)",
+        "costs": "£1,000-£3,000",
+        "items": [
+          "Meubles et articles ménagers",
+          "Enregistrement et documentation au niveau local",
+          "Configuration de l'éducation (le cas échéant)",
+          "Coûts d'intégration communautaire"
+        ]
+      }
+    ]
+  },
+  "resources": {
+    "title": "Ressources sur la gestion de l'argent",
+    "subtitle": "Outils et services utiles pour gérer les finances de votre déménagement au Royaume-Uni",
+    "categories": [
+      {
+        "title": "Change de devises",
+        "services": [
+          {
+            "name": "Wise (anciennement TransferWise)",
+            "description": "Transferts internationaux d'argent à faible coût",
+            "fees": "0,35-2% du montant du transfert"
+          },
+          {
+            "name": "Revolut",
+            "description": "Compte multidevises avec de bons taux de change",
+            "fees": "Gratuit jusqu'à certaines limites"
+          },
+          {
+            "name": "Argent XE",
+            "description": "Tarifs compétitifs pour les transferts plus importants",
+            "fees": "Variable selon le montant"
+          }
+        ]
+      },
+      {
+        "title": "Banque",
+        "services": [
+          {
+            "name": "Banques du Royaume-Uni",
+            "description": "Les banques traditionnelles comme Barclays, HSBC, Lloyds",
+            "fees": "Frais mensuels £5-£25"
+          },
+          {
+            "name": "Banques numériques",
+            "description": "Monzo, Starling Bank, Revolut",
+            "fees": "Comptes de base souvent sans frais"
+          },
+          {
+            "name": "Banques internationales",
+            "description": "HSBC Expat, Citi International",
+            "fees": "Des frais plus élevés mais des services globaux"
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "disclaimer": "Tous les coûts sont des estimations et peuvent varier en fonction des circonstances individuelles, des conditions du marché et du calendrier. Veuillez consulter des conseillers professionnels pour obtenir des conseils personnalisés.",
+    "lastUpdated": "Dernière mise à jour : {{date}}",
+    "sources": "Sources des données : Gouvernement britannique, ONS, sites web immobiliers et enquêtes auprès des expatriés."
+  },
+  "jobGuide": {
+    "header": {
+      "title": "Travailler au Royaume-Uni",
+      "subtitle": "Un guide complet pour les demandeurs d'emploi internationaux",
+      "intro": {
+        "paragraph1": "Le Royaume-Uni, avec son économie robuste, son environnement multiculturel et ses villes de classe mondiale, reste une destination de choix pour les professionnels internationaux en quête d'avancement et de croissance de carrière.",
+        "paragraph2": "Ce guide vous présente tout ce que vous devez savoir pour trouver un emploi au Royaume-Uni en tant que ressortissant étranger, depuis la compréhension du système d'immigration à points jusqu'à la navigation sur le marché du travail local et l'intégration dans la vie professionnelle britannique."
+      }
+    },
+    "navigation": {
+      "title": "Navigation rapide",
+      "backToAll": "Retour à toutes les sections"
+    },
+    "sections": [
+      {
+        "id": "marché du travail",
+        "icon": "🔍",
+        "title": "Comprendre le marché du travail au Royaume-Uni",
+        "type": "marché du travail",
+        "content": {
+          "intro": "Le Royaume-Uni offre des opportunités variées dans divers secteurs, certains d'entre eux étant particulièrement accessibles et accueillants pour les travailleurs internationaux.",
+          "sectorsTitle": "Secteurs en demande de travailleurs étrangers :",
+          "sectors": [
+            {
+              "name": "Soins de santé et NHS",
+              "description": "Médecins, infirmières, personnel soignant, spécialistes"
+            },
+            {
+              "name": "Technologies de l'information et de la communication",
+              "description": "Développement de logiciels, cybersécurité, science des données"
+            },
+            {
+              "name": "Finance et banque",
+              "description": "Analyse financière, banque d'investissement, fintech"
+            },
+            {
+              "name": "L'éducation",
+              "description": "Enseignement, recherche, écoles internationales"
+            },
+            {
+              "name": "Ingénierie",
+              "description": "Génie civil, mécanique, électrique"
+            },
+            {
+              "name": "Hôtellerie et tourisme",
+              "description": "Hôtels, restaurants, gestion du tourisme"
+            }
+          ],
+          "conclusion": "Le marché du travail britannique accorde une grande importance à la maîtrise de l'anglais et la plupart des postes professionnels requièrent de solides compétences en communication. Londres offre les opportunités les plus diverses, mais des villes comme Manchester, Birmingham, Édimbourg et Bristol ont des marchés de l'emploi en pleine croissance et un coût de la vie souvent moins élevé."
+        }
+      },
+      {
+        "id": "système de visa",
+        "icon": "🔒",
+        "title": "Système de visa britannique : Immigration à points",
+        "type": "système de visa",
+        "content": {
+          "intro": "Le Royaume-Uni utilise un système d'immigration basé sur des points qui donne la priorité aux compétences, aux qualifications et à la maîtrise de l'anglais.",
+          "routesTitle": "Principales voies d'accès aux visas de travail :",
+          "visaRoutes": [
+            {
+              "name": "Visa pour travailleur qualifié",
+              "description": "Pour les professionnels qualifiés ayant reçu une offre d'emploi d'un employeur britannique"
+            },
+            {
+              "name": "Visa pour les talents mondiaux",
+              "description": "Pour les leaders actuels ou potentiels dans les domaines de l'université, de la recherche, des arts ou de la technologie numérique."
+            },
+            {
+              "name": "Visa de travailleur de la santé et des soins",
+              "description": "Pour les professionnels de la santé qualifiés ayant des offres d'emploi du NHS"
+            },
+            {
+              "name": "Visa pour diplômés",
+              "description": "Pour les étudiants étrangers ayant obtenu un diplôme au Royaume-Uni"
+            }
+          ],
+          "requirement": "La plupart des visas de travail requièrent une offre d'emploi d'un sponsor agréé avant la demande."
+        }
+      },
+      {
+        "id": "parrainage",
+        "icon": "📋",
+        "title": "Obtenir le parrainage d'un employeur",
+        "type": "parrainage",
+        "content": {
+          "requirementsTitle": "Conditions de parrainage :",
+          "requirements": [
+            "Le poste doit typiquement se situer au niveau 3 du RQF ou à un niveau supérieur (équivalent au niveau A).",
+            "Le salaire doit atteindre les seuils minimums (généralement 26 200 £ ou plus en fonction du poste).",
+            "L'employeur doit être un sponsor agréé par le ministère de l'intérieur.",
+            "La fonction doit figurer sur la liste des professions éligibles"
+          ],
+          "shortageList": {
+            "title": "Liste des professions en pénurie",
+            "description": "Les emplois figurant sur cette liste sont soumis à des conditions de visa plus faciles et à des seuils de salaire plus bas. Les professions actuellement en pénurie sont les suivantes",
+            "occupations": [
+              "Professionnels de la santé",
+              "Ingénieurs",
+              "Spécialistes de l'informatique",
+              "Scientifiques et chercheurs",
+              "Vétérinaires",
+              "Les architectes et certaines fonctions d'enseignement"
+            ]
+          },
+          "proTip": {
+            "title": "Conseil de pro",
+            "description": "Ciblez les entreprises qui ont l'habitude de parrainer des travailleurs internationaux. Les grandes multinationales, les entreprises technologiques et les organismes du NHS ont souvent plus d'expérience dans le processus de parrainage.",
+            "additional": "Vous pouvez vérifier si une entreprise est titulaire d'une licence de parrainage sur le site web du gouvernement britannique."
+          }
+        }
+      },
+      {
+        "id": "processus de demande",
+        "icon": "📝",
+        "title": "Processus de candidature au Royaume-Uni",
+        "type": "processus de demande",
+        "content": {
+          "stepsTitle": "Etapes de la candidature :",
+          "steps": [
+            {
+              "title": "1. CV et lettre de motivation",
+              "description": "Les employeurs britanniques attendent un CV de deux pages mettant l'accent sur les compétences et l'expérience pertinentes. Les lettres de motivation doivent être concises et adaptées à chaque poste."
+            },
+            {
+              "title": "2. Processus d'entretien",
+              "description": "Il comprend souvent une première sélection par téléphone, suivie d'un ou deux entretiens (de plus en plus souvent virtuels pour les candidats internationaux), et éventuellement des tâches d'évaluation pour les postes techniques."
+            },
+            {
+              "title": "3. Offre d'emploi et parrainage de visa",
+              "description": "Si votre candidature est retenue, vous recevrez une lettre d'offre officielle et un certificat de parrainage pour votre demande de visa."
+            }
+          ],
+          "cvTips": {
+            "title": "Conseils sur le CV au Royaume-Uni :",
+            "tips": [
+              "Aucune photo n'est requise",
+              "Inclure un profil professionnel/résumé en haut de page",
+              "Mettre l'accent sur les réalisations plutôt que sur les tâches",
+              "Inclure les qualifications et certifications pertinentes",
+              "Les références sont souvent \"disponibles sur demande\" plutôt que répertoriées."
+            ]
+          }
+        }
+      },
+      {
+        "id": "recherche d'emploi",
+        "icon": "🔎",
+        "title": "Trouver des possibilités d'emploi au Royaume-Uni",
+        "type": "recherche d'emploi",
+        "content": {
+          "portalsTitle": "Principaux portails d'emploi au Royaume-Uni :",
+          "jobPortals": [
+            "En effet, le Royaume-Uni",
+            "Reed.co.uk",
+            "CV-Bibliothèque",
+            "LinkedIn",
+            "Guardian Jobs",
+            "Emplois au sein du NHS"
+          ],
+          "recruitmentAgencies": {
+            "title": "Agences de recrutement",
+            "description": "Les agences de recrutement spécialisées peuvent s'avérer précieuses pour les demandeurs d'emploi internationaux. Nombre d'entre elles se concentrent sur des secteurs ou des régions spécifiques et entretiennent des relations avec des employeurs qui parrainent régulièrement des visas."
+          },
+          "directApplications": {
+            "title": "Applications directes",
+            "description": "Recherchez des entreprises dans votre domaine qui ont des licences de parrainage et postulez directement sur leurs pages carrières. Les entreprises multinationales ont souvent mis en place des procédures pour recruter des talents internationaux."
+          }
+        }
+      },
+      {
+        "id": "coût de la vie",
+        "icon": "💷",
+        "title": "Considérations sur le coût de la vie au Royaume-Uni",
+        "type": "coût de la vie",
+        "content": {
+          "intro": "Il est essentiel de comprendre le coût de la vie au Royaume-Uni pour évaluer les offres d'emploi et planifier votre déménagement.",
+          "locations": [
+            {
+              "name": "Londres",
+              "description": "Des coûts nettement plus élevés que dans le reste du Royaume-Uni",
+              "costs": [
+                {
+                  "category": "Loyer",
+                  "amount": "1 500-2 500 £/mois (appartement à 1 lit)"
+                },
+                {
+                  "category": "Transport",
+                  "amount": "140-180 £/mois"
+                },
+                {
+                  "category": "Utilitaires",
+                  "amount": "150-200 £/mois"
+                }
+              ]
+            },
+            {
+              "name": "Villes régionales",
+              "description": "Manchester, Birmingham, Edimbourg, etc.",
+              "costs": [
+                {
+                  "category": "Loyer",
+                  "amount": "700-1 200 £/mois (appartement à 1 lit)"
+                },
+                {
+                  "category": "Transport",
+                  "amount": "60-100 £/mois"
+                },
+                {
+                  "category": "Utilitaires",
+                  "amount": "120-170 £/mois"
+                }
+              ]
+            }
+          ],
+          "additionalExpenses": {
+            "title": "Dépenses supplémentaires :",
+            "items": [
+              "Supplément pour soins de santé (624 £ par an pour les demandes de visa)",
+              "Taxe d'habitation (1 000 à 2 000 £ par an selon le logement)",
+              "Licence TV (£159 par an)",
+              "Frais de déménagement et dépôts initiaux"
+            ]
+          }
+        }
+      },
+      {
+        "id": "soins de santé",
+        "icon": "🏥",
+        "title": "Accès aux soins de santé au Royaume-Uni",
+        "type": "soins de santé",
+        "content": {
+          "intro": "Tous les titulaires de visas britanniques qui paient la surtaxe de santé pour l'immigration ont accès au service national de santé (NHS).",
+          "coverage": {
+            "description": "Elle offre une couverture complète des soins de santé, y compris",
+            "includes": [
+              "Rendez-vous chez le médecin",
+              "Traitement hospitalier",
+              "Soins d'urgence",
+              "Services de maternité"
+            ]
+          },
+          "registration": "Vous devrez vous inscrire auprès d'un médecin généraliste local dès votre arrivée au Royaume-Uni. Les soins dentaires et les ordonnances peuvent nécessiter des paiements supplémentaires.",
+          "note": "Remarque : l'assurance maladie privée est facultative, mais elle peut permettre d'accéder plus rapidement à des spécialistes et à des services supplémentaires qui ne sont pas couverts par le système national de santé."
+        }
+      },
+      {
+        "id": "la mise en réseau",
+        "icon": "👥",
+        "title": "Mise en réseau au Royaume-Uni",
+        "type": "la mise en réseau",
+        "content": {
+          "intro": "La constitution d'un réseau professionnel est essentielle pour la recherche d'un emploi au Royaume-Uni :",
+          "online": {
+            "title": "Réseaux en ligne",
+            "platforms": [
+              "LinkedIn (essentiel pour la recherche d'emploi au Royaume-Uni)",
+              "Groupes professionnels sur Facebook",
+              "Forums et communautés spécifiques à l'industrie",
+              "Réseaux d'anciens étudiants de votre université"
+            ]
+          },
+          "inPerson": {
+            "title": "Événements en personne",
+            "events": [
+              "Conférences et séminaires de l'industrie",
+              "Événements Meetup.com liés à votre domaine",
+              "Réunions d'associations professionnelles",
+              "Événements de mise en réseau des professionnels internationaux"
+            ]
+          },
+          "advice": "La culture d'entreprise britannique valorise le professionnalisme et la courtoisie. Lorsque vous travaillez en réseau, concentrez-vous sur l'établissement de relations authentiques plutôt que de demander immédiatement des offres d'emploi."
+        }
+      }
+    ],
+    "checklist": {
+      "title": "Liste de contrôle pour la recherche d'un emploi au Royaume-Uni",
+      "beforeApplying": {
+        "title": "Avant de poser votre candidature",
+        "items": [
+          "Recherche de formats et de normes de CV spécifiques au Royaume-Uni",
+          "Vérifiez si votre profession figure sur la liste des professions en pénurie.",
+          "Vérifier que vos qualifications sont reconnues au Royaume-Uni",
+          "Établissez votre profil LinkedIn à l'aide de mots-clés spécifiques au Royaume-Uni"
+        ]
+      },
+      "duringSearch": {
+        "title": "Pendant votre recherche d'emploi",
+        "items": [
+          "Cibler les entreprises disposant d'une licence de parrainage",
+          "Se préparer à des entretiens vidéo sur plusieurs fuseaux horaires",
+          "Recherchez des fourchettes de salaires typiques au Royaume-Uni pour votre fonction",
+          "Comprendre les droits et avantages liés à l'emploi au Royaume-Uni"
+        ]
+      }
+    },
+    "conclusion": {
+      "title": "Commencez votre parcours professionnel au Royaume-Uni",
+      "description": "Trouver un emploi au Royaume-Uni en tant que ressortissant étranger demande de la préparation, de la persévérance et de la patience. Bien que le système d'immigration comporte des exigences spécifiques, le Royaume-Uni reste déterminé à attirer des talents internationaux dans tous les secteurs. Avec les compétences, les qualifications et l'approche adéquates, vous pourrez naviguer avec succès sur le marché du travail britannique et construire une carrière enrichissante dans l'une des économies les plus dynamiques du monde."
+    }
+  },
+  "salaryGuide": {
+    "title": "Guide des salaires au Royaume-Uni par secteur d'activité",
+    "subtitle": "Salaires moyens des professionnels internationaux",
+    "industries": [
+      {
+        "sector": "Technologie de l'information",
+        "averageRange": "£35,000 - £80,000",
+        "entryLevel": "£25,000 - £35,000",
+        "experienced": "£50,000 - £80,000",
+        "senior": "£70,000 - £120,000+",
+        "hotRoles": [
+          "Ingénieurs en logiciel",
+          "Scientifiques des données",
+          "Spécialistes de la cybersécurité",
+          "Ingénieurs DevOps"
+        ]
+      },
+      {
+        "sector": "Soins de santé",
+        "averageRange": "£30,000 - £70,000",
+        "entryLevel": "£24,000 - £30,000",
+        "experienced": "£40,000 - £60,000",
+        "senior": "£60,000 - £100,000+",
+        "hotRoles": [
+          "Infirmières",
+          "Médecins en herbe",
+          "Spécialistes",
+          "Responsables des soins de santé"
+        ]
+      },
+      {
+        "sector": "Finance et banque",
+        "averageRange": "£40,000 - £90,000",
+        "entryLevel": "£28,000 - £40,000",
+        "experienced": "£50,000 - £80,000",
+        "senior": "£80,000 - £150,000+",
+        "hotRoles": [
+          "Analystes financiers",
+          "Banquiers d'affaires",
+          "Gestionnaires de risques",
+          "Agents de conformité"
+        ]
+      },
+      {
+        "sector": "Ingénierie",
+        "averageRange": "£35,000 - £65,000",
+        "entryLevel": "£25,000 - £35,000",
+        "experienced": "£45,000 - £65,000",
+        "senior": "£65,000 - £100,000+",
+        "hotRoles": [
+          "Ingénieurs civils",
+          "Ingénieurs en mécanique",
+          "Ingénieurs électriciens",
+          "Chefs de projet"
+        ]
+      }
+    ]
+  },
+  "workCulture": {
+    "title": "Guide de la culture du travail au Royaume-Uni",
+    "subtitle": "Comprendre les attentes des Britanniques sur le lieu de travail",
+    "aspects": [
+      {
+        "category": "Style de communication",
+        "description": "La communication britannique a tendance à être polie, indirecte, et comprend souvent des sous-entendus.",
+        "tips": [
+          "Des expressions comme \"assez bon\" signifient souvent \"excellent",
+          "Le désaccord est souvent atténué par des phrases telles que \"Je me demande si...\".",
+          "Les conversations sur la météo sont courantes et attendues",
+          "La ponctualité est très appréciée"
+        ]
+      },
+      {
+        "category": "Équilibre entre vie professionnelle et vie privée",
+        "description": "Le Royaume-Uni maintient généralement un bon équilibre entre vie professionnelle et vie privée, avec des protections légales.",
+        "tips": [
+          "La semaine de travail normale est de 37,5 à 40 heures",
+          "Minimum 28 jours de congés annuels (y compris les jours fériés)",
+          "Les demandes de travail flexible sont légalement protégées",
+          "La culture des heures supplémentaires varie selon le secteur et l'entreprise"
+        ]
+      },
+      {
+        "category": "Hiérarchie et réunions",
+        "description": "Les lieux de travail britanniques ont tendance à être moins hiérarchisés que ceux de nombreux autres pays.",
+        "tips": [
+          "Les prénoms sont couramment utilisés à tous les niveaux",
+          "Les réunions prévoient souvent un temps de discussion et de contribution",
+          "Les décisions peuvent prendre du temps car un consensus est souvent recherché.",
+          "L'étiquette de la file d'attente s'applique dans toutes les situations"
+        ]
+      }
+    ]
+  },
+  "relocationSupport": {
+    "title": "Aide à la réinstallation des employés",
+    "subtitle": "Que peut-on attendre des employeurs britanniques ?",
+    "commonSupport": [
+      {
+        "type": "Parrainage de visa",
+        "description": "Certificat de parrainage et aide à la demande de visa",
+        "typical": "Norme pour les visas de travailleurs qualifiés"
+      },
+      {
+        "type": "Paquet de déménagement",
+        "description": "Aide financière pour les frais de déménagement",
+        "typical": "£2,000-£10,000 selon le niveau du poste"
+      },
+      {
+        "type": "Logement temporaire",
+        "description": "Hôtel ou appartement avec services pour les premières semaines",
+        "typical": "Couverture de 2 à 4 semaines"
+      },
+      {
+        "type": "Soutien à la chasse au trésor",
+        "description": "Aide à la recherche d'un logement permanent",
+        "typical": "Recommandations d'agents immobiliers, visites de la région"
+      },
+      {
+        "type": "Intégration culturelle",
+        "description": "Programmes d'orientation et formation culturelle",
+        "typical": "Systèmes de parrainage, présentations locales"
+      }
+    ]
+  },
+  "legalRequirements": {
+    "title": "Exigences légales pour travailler au Royaume-Uni",
+    "subtitle": "Informations essentielles sur la conformité",
+    "requirements": [
+      {
+        "area": "Droit au travail",
+        "description": "Tous les employés doivent prouver qu'ils peuvent légalement travailler au Royaume-Uni.",
+        "documents": [
+          "Passeport en cours de validité avec visa",
+          "Permis de séjour biométrique (BRP)",
+          "Code de partage du chèque en ligne pour le droit au travail"
+        ]
+      },
+      {
+        "area": "Assurance nationale",
+        "description": "Numéro unique requis pour les impôts et les prestations",
+        "process": "La demande se fait en ligne ou par téléphone après l'arrivée, ce qui prend généralement 2 à 3 semaines."
+      },
+      {
+        "area": "Impôt (PAYE)",
+        "description": "Impôt sur le revenu déduit automatiquement du salaire",
+        "rates": "Taux de base 20 %, taux supérieur 40 %, taux additionnel 45 %."
+      },
+      {
+        "area": "Droits de l'emploi",
+        "description": "Les salariés britanniques bénéficient de solides protections juridiques",
+        "rights": [
+          "Protection du salaire minimum",
+          "Lois anti-discrimination",
+          "Protection contre les licenciements abusifs (après 2 ans)",
+          "Indemnité légale de maladie"
+        ]
+      }
+    ]
+  },
+  "usToUkGuide": {
+    "header": {
+      "title": "Déménager des États-Unis au Royaume-Uni",
+      "subtitle": "Votre guide complet pour déménager de l'autre côté de l'océan - de la demande de visa à l'installation dans la vie britannique."
+    },
+    "navigation": {
+      "title": "Contenu"
+    },
+    "sections": [
+      {
+        "id": "why-uk",
+        "icon": "🇬🇧",
+        "title": "Pourquoi s'installer au Royaume-Uni ?",
+        "type": "why-uk",
+        "content": {
+          "intro": "De nombreux Américains choisissent de s'installer au Royaume-Uni pour des raisons impérieuses :",
+          "reasons": [
+            "Langue commune et familiarité culturelle",
+            "Soins de santé de classe mondiale (NHS)",
+            "Une histoire riche et des offres culturelles",
+            "Porte d'entrée de l'Europe pour les voyages",
+            "Excellents transports en commun",
+            "Un marché de l'emploi solide dans des secteurs spécifiques"
+          ],
+          "conclusion": "Que vous déménagiez pour des raisons professionnelles, éducatives, familiales ou simplement pour changer de rythme, le Royaume-Uni offre aux Américains un mode de vie à la fois familier et très différent."
+        }
+      },
+      {
+        "id": "options de visa",
+        "icon": "🛂",
+        "title": "Options de visa pour les citoyens américains",
+        "type": "options de visa",
+        "content": {
+          "intro": "En tant que citoyen américain, vous pouvez vous rendre au Royaume-Uni pour une durée maximale de six mois sans visa, mais pour un séjour de longue durée, vous aurez besoin de l'une de ces voies d'accès au visa :",
+          "visaTypes": [
+            {
+              "title": "1. Visa pour travailleur qualifié",
+              "requirements": [
+                "Besoin d'une offre d'emploi d'un employeur britannique avec licence de parrainage",
+                "Doit satisfaire à des exigences salariales minimales (généralement plus de 26 200 £, variable selon le poste).",
+                "L'emploi doit correspondre au niveau de compétence requis (généralement le niveau 3 du CQR ou un niveau supérieur).",
+                "Valable jusqu'à 5 ans, peut conduire à un règlement après 5 ans"
+              ]
+            },
+            {
+              "title": "2. Visa pour les talents mondiaux",
+              "requirements": [
+                "Pour les leaders ou les personnes prometteuses dans les domaines de l'université, de la recherche, des arts, de la culture ou de la technologie numérique.",
+                "Nécessite l'approbation d'un organisme britannique compétent",
+                "Pas de parrainage nécessaire, plus de flexibilité que le visa de travail",
+                "Peut conduire à un règlement après 3 à 5 ans"
+              ]
+            },
+            {
+              "title": "3. Visa étudiant",
+              "requirements": [
+                "Pour l'inscription dans les établissements d'enseignement du Royaume-Uni",
+                "Lettre d'acceptation, justificatif de ressources et maîtrise de l'anglais sont nécessaires.",
+                "Droits de travail limités pendant les études",
+                "La voie des diplômés permet de rester 2 ans après l'obtention du diplôme pour travailler."
+              ]
+            },
+            {
+              "title": "4. Visa familial",
+              "requirements": [
+                "Pour les partenaires, les conjoints ou les enfants de citoyens britanniques ou de personnes installées",
+                "Exige la preuve d'une relation authentique et des conditions financières",
+                "Peut conduire à un règlement après 5 ans"
+              ]
+            },
+            {
+              "title": "5. Visa d'ascendance britannique",
+              "requirements": [
+                "Si vous avez un grand-parent né au Royaume-Uni, vous pouvez bénéficier de ce visa de cinq ans assorti d'une voie d'accès à l'établissement."
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "documents requis",
+        "icon": "📄",
+        "title": "Documents requis pour la relocalisation",
+        "type": "documents requis",
+        "content": {
+          "intro": "Les exigences en matière de documents varient selon le type de visa, mais comprennent généralement les éléments suivants",
+          "documents": [
+            "Passeport américain en cours de validité (au moins 6 mois)",
+            "Formulaires de demande de visa et reçus de paiement",
+            "Informations biométriques (empreintes digitales et photo)",
+            "Preuve de la maîtrise de l'anglais",
+            "Documents financiers attestant de l'existence de fonds suffisants",
+            "Offre d'emploi et certificat de parrainage (pour les visas de travail)",
+            "Résultats du test de dépistage de la tuberculose (si le séjour est supérieur à 6 mois)",
+            "Preuve des dispositions prises en matière d'hébergement"
+          ],
+          "proTip": {
+            "label": "Conseil de pro",
+            "text": "Commencez à rassembler ces documents dès le début, car certains d'entre eux (comme les vérifications d'antécédents) peuvent prendre beaucoup de temps à obtenir."
+          }
+        }
+      },
+      {
+        "id": "villes populaires",
+        "icon": "🏙️",
+        "title": "Où vivent la plupart des Américains au Royaume-Uni ?",
+        "type": "villes populaires",
+        "content": {
+          "intro": "Les Américains qui s'installent au Royaume-Uni ont tendance à se regrouper dans ces régions populaires :",
+          "cities": [
+            {
+              "name": "Londres",
+              "icon": "🌆",
+              "highlights": [
+                "Destination la plus populaire, en particulier dans les quartiers de Kensington, Chelsea et Notting Hill.",
+                "Centre financier mondial offrant de nombreuses possibilités d'emploi",
+                "Une scène culturelle dynamique mais un coût de la vie plus élevé"
+              ]
+            },
+            {
+              "name": "Oxford et Cambridge",
+              "icon": "📚",
+              "highlights": [
+                "Villes universitaires offrant des possibilités d'études et de recherche",
+                "Une architecture historique et des communautés intellectuelles fortes",
+                "Bonne qualité de vie, mais le logement peut être cher"
+              ]
+            },
+            {
+              "name": "Manchester",
+              "icon": "🏭",
+              "highlights": [
+                "Grand centre technologique et médiatique avec une communauté d'expatriés américains en pleine expansion",
+                "Plus abordable que Londres, avec une excellente offre culturelle",
+                "Siège de la BBC North et de MediaCityUK"
+              ]
+            },
+            {
+              "name": "Édimbourg",
+              "icon": "🏰",
+              "highlights": [
+                "Capitale de l'Écosse à l'architecture étonnante et au secteur financier solide",
+                "Populaire auprès des Américains dans les domaines de la finance, de la technologie et de l'éducation",
+                "Excellente qualité de vie et scène culturelle dynamique"
+              ]
+            }
+          ],
+          "risingLocations": {
+            "title": "Lieux d'implantation",
+            "icon": "💼",
+            "locations": [
+              {
+                "name": "Bristol",
+                "description": "Une scène créative et technologique florissante avec une grande qualité de vie"
+              },
+              {
+                "name": "Birmingham",
+                "description": "De plus en plus populaire grâce à son économie en croissance et à son coût de la vie moins élevé"
+              },
+              {
+                "name": "Glasgow",
+                "description": "La plus grande ville d'Écosse offre des prix abordables et des attractions culturelles"
+              },
+              {
+                "name": "Cardiff",
+                "description": "Capitale galloise avec des opportunités d'emploi croissantes et un coût de la vie moins élevé"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "coût de la vie",
+        "icon": "💷",
+        "title": "Comparaison du coût de la vie : Royaume-Uni vs États-Unis",
+        "type": "coût de la vie",
+        "content": {
+          "table": {
+            "headers": {
+              "expense": "Dépenses",
+              "uk": "Royaume-Uni (moyenne)",
+              "usa": "États-Unis (moyenne)"
+            },
+            "rows": [
+              {
+                "expense": "Location (1BR centre ville)",
+                "uk": "800-£1 500/mois",
+                "usa": "$1,500-$2,000",
+                "ukHighlight": false
+              },
+              {
+                "expense": "Soins de santé",
+                "uk": "En grande partie gratuit via le NHS",
+                "usa": "300 $ - 600 $/mois",
+                "ukHighlight": true
+              },
+              {
+                "expense": "Services publics (mensuels)",
+                "uk": "£150-£200",
+                "usa": "$150-$200",
+                "ukHighlight": false
+              },
+              {
+                "expense": "Transport",
+                "uk": "65-£150/mois",
+                "usa": "70 $ - 150 $ + frais de voiture",
+                "ukHighlight": true
+              },
+              {
+                "expense": "Repas au restaurant (pour 2 personnes)",
+                "uk": "£40-£80",
+                "usa": "$50-$100",
+                "ukHighlight": false
+              },
+              {
+                "expense": "Enseignement supérieur",
+                "uk": "9 250 £/an (domestique)",
+                "usa": "10 000 à 40 000 dollars par an",
+                "ukHighlight": true
+              }
+            ]
+          },
+          "conclusion": "Le coût de la vie varie considérablement entre Londres et les autres régions du Royaume-Uni. Si les prix londoniens rivalisent avec ceux de grandes villes américaines comme New York et San Francisco, d'autres régions du Royaume-Uni offrent un coût de la vie nettement inférieur."
+        }
+      },
+      {
+        "id": "soins de santé",
+        "icon": "🏥",
+        "title": "Soins de santé au Royaume-Uni",
+        "type": "soins de santé",
+        "content": {
+          "intro": "Le National Health Service (NHS) britannique fournit des soins de santé complets et gratuits pour les résidents, ce qui constitue un avantage majeur pour les Américains habitués à des coûts de santé élevés.",
+          "nhsAccess": {
+            "title": "Accès au NHS pour les immigrés",
+            "points": [
+              "La plupart des demandes de visa pour des séjours de plus de 6 mois nécessitent le paiement de l'Immigration Health Surcharge (IHS).",
+              "Frais IHS actuels : 1 035 livres sterling par an pour la plupart des demandeurs de visa adulte.",
+              "Une fois payé, vous avez droit à la plupart des services du NHS (à l'exception de certains services dentaires et optiques).",
+              "S'inscrire auprès d'un médecin généraliste local une fois installé"
+            ]
+          },
+          "conclusion": "Des soins de santé privés sont également disponibles et certains employeurs proposent une assurance maladie privée comme avantage social."
+        }
+      },
+      {
+        "id": "langue",
+        "icon": "🗣️",
+        "title": "Conseils linguistiques et culturels",
+        "type": "langue",
+        "content": {
+          "intro": "Bien qu'ils partagent la même langue, les Américains doivent être conscients de certaines différences culturelles :",
+          "differences": {
+            "title": "Anglais britannique et anglais américain",
+            "vocabulary": {
+              "title": "Différences de vocabulaire :",
+              "examples": [
+                "Appartement → Appartement",
+                "Ascenseur → Lift",
+                "Trottoir → Chaussée",
+                "Ligne → File d'attente",
+                "Frites → Chips",
+                "Chips → Crisps"
+              ]
+            },
+            "cultural": {
+              "title": "Différences culturelles :",
+              "points": [
+                "L'humour britannique a tendance à être plus ironique et à faire preuve d'autodérision.",
+                "La politesse et la discrétion sont très appréciées",
+                "La franchise peut parfois être perçue comme de l'impolitesse",
+                "Les files d'attente sont prises très au sérieux."
+              ]
+            }
+          },
+          "conclusion": "Les coutumes sociales britanniques peuvent sembler familières, mais elles présentent souvent des différences subtiles. Les Britanniques ont tendance à être plus réservés au début, mais se réchauffent avec le temps."
+        }
+      },
+      {
+        "id": "en mouvement",
+        "icon": "📦",
+        "title": "Déménagement et expédition depuis les États-Unis",
+        "type": "en mouvement",
+        "content": {
+          "intro": "La planification de votre déménagement physique au Royaume-Uni doit être mûrement réfléchie :",
+          "shipping": {
+            "title": "Options d'expédition",
+            "options": [
+              {
+                "type": "Fret aérien",
+                "description": "Plus rapide (5-10 jours) mais plus cher"
+              },
+              {
+                "type": "Fret maritime",
+                "description": "Plus abordable mais plus lent (4-8 semaines)"
+              },
+              {
+                "type": "Déménageurs internationaux",
+                "description": "Options de service complet disponibles avec emballage et traitement douanier"
+              }
+            ]
+          },
+          "customs": {
+            "title": "Considérations douanières",
+            "considerations": [
+              "Les effets personnels peuvent être importés en franchise de droits si vous les possédez depuis plus de 6 mois.",
+              "Remplir une demande de transfert de résidence (ToR) avant l'expédition.",
+              "Certains aliments, plantes et médicaments font l'objet de restrictions.",
+              "Les animaux de compagnie doivent être munis d'une puce électronique, vaccinés et munis d'un passeport."
+            ]
+          },
+          "conclusion": "Réfléchissez bien à ce que vous allez apporter : de nombreux appareils électroniques auront besoin d'un convertisseur de tension (Royaume-Uni : 230 V contre États-Unis : 120 V), et les meubles risquent de ne pas rentrer dans les maisons britanniques, généralement plus petites."
+        }
+      },
+      {
+        "id": "banque",
+        "icon": "💳",
+        "title": "Banque et finances",
+        "type": "banque",
+        "content": {
+          "intro": "La mise en place de votre vie financière au Royaume-Uni est une première étape importante :",
+          "ukAccount": {
+            "title": "Ouverture d'un compte bancaire au Royaume-Uni",
+            "points": [
+              "Traditionnellement, la preuve d'une adresse au Royaume-Uni est exigée, ce qui crée une situation de blocage pour les nouveaux arrivants.",
+              "Les banques numériques telles que Monzo, Starling et Revolut offrent des options plus faciles pour les nouveaux arrivants.",
+              "Certaines banques internationales (HSBC, Barclays) proposent des services de comptes internationaux.",
+              "Documents requis : passeport, visa, justificatif de domicile, coordonnées professionnelles."
+            ]
+          },
+          "usUkFinances": {
+            "title": "Gestion des finances entre les États-Unis et le Royaume-Uni",
+            "points": [
+              "Conservez votre compte bancaire américain pour les obligations américaines en cours",
+              "Pensez à des services comme Wise (anciennement TransferWise) pour effectuer des transferts d'argent à moindre coût.",
+              "Les citoyens américains doivent remplir une déclaration d'impôts aux États-Unis, quel que soit leur lieu de résidence (possibilité d'exclure les revenus gagnés à l'étranger).",
+              "La convention fiscale entre les États-Unis et le Royaume-Uni permet d'éviter la double imposition"
+            ]
+          },
+          "conclusion": "L'établissement d'un historique de crédit au Royaume-Uni prend du temps, il faut donc planifier en conséquence. Les notes de crédit ne sont pas transférables à l'échelle internationale et vous repartirez de zéro dans le système de crédit britannique."
+        }
+      }
+    ],
+    "checklist": {
+      "title": "Liste de contrôle avant déménagement pour les Américains",
+      "items": [
+        "Demander le visa approprié suffisamment à l'avance",
+        "Payer la surtaxe sanitaire pour les immigrants (IHS)",
+        "Ouvrir un compte bancaire au Royaume-Uni (ou préparer d'autres solutions)",
+        "Recherche d'un logement dans le lieu de votre choix",
+        "Mise en place d'un service de transfert international d'argent",
+        "Organiser l'expédition ou le stockage des biens",
+        "Convertir des documents importants au format UK",
+        "Recherche des implications fiscales (US-UK)",
+        "Rejoignez les communautés d'expatriés et les forums pour obtenir des conseils et nouer des contacts."
+      ]
+    },
+    "resources": {
+      "title": "Ressources complémentaires",
+      "categories": [
+        {
+          "title": "Informations officielles",
+          "links": [
+            "Informations sur les visas du gouvernement britannique",
+            "Lignes directrices du ministère de l'intérieur britannique",
+            "Ambassade des États-Unis au Royaume-Uni"
+          ]
+        },
+        {
+          "title": "Communautés d'expatriés",
+          "links": [
+            "Groupes Facebook des Américains au Royaume-Uni",
+            "InterNations UK Chapitres",
+            "Groupes de rencontre pour les expatriés"
+          ]
+        },
+        {
+          "title": "Services pratiques",
+          "links": [
+            "Entreprises de déménagements internationaux",
+            "Sites web sur l'hébergement au Royaume-Uni",
+            "Services fiscaux pour les expatriés"
+          ]
+        }
+      ]
+    }
+  },
+  "immigrationTimeline": {
+    "title": "Calendrier de l'immigration des États-Unis au Royaume-Uni",
+    "subtitle": "Délais typiques pour les différents types de visas",
+    "visaTimelines": [
+      {
+        "visaType": "Visa pour travailleur qualifié",
+        "totalTime": "3-6 mois",
+        "phases": [
+          {
+            "phase": "Recherche et offre d'emploi",
+            "duration": "1-4 mois",
+            "description": "Trouver un emploi grâce au parrainage"
+          },
+          {
+            "phase": "Demande de visa",
+            "duration": "3-8 semaines",
+            "description": "Délai de traitement de la demande"
+          },
+          {
+            "phase": "Décision et voyage",
+            "duration": "1-2 semaines",
+            "description": "Réception de la décision et planification du voyage"
+          }
+        ]
+      },
+      {
+        "visaType": "Visa étudiant",
+        "totalTime": "2-4 mois",
+        "phases": [
+          {
+            "phase": "Demande d'inscription à l'université",
+            "duration": "1-3 mois",
+            "description": "Candidature et acceptation"
+          },
+          {
+            "phase": "Demande de visa",
+            "duration": "3-6 semaines",
+            "description": "Traitement des demandes de visa d'étudiant"
+          },
+          {
+            "phase": "Préparation",
+            "duration": "2-4 semaines",
+            "description": "Logement et voyages"
+          }
+        ]
+      }
+    ]
+  },
+  "culturalAdaptation": {
+    "title": "Guide d'adaptation culturelle",
+    "subtitle": "S'installer dans la vie britannique en tant qu'Américain",
+    "areas": [
+      {
+        "category": "Interactions sociales",
+        "tips": [
+          "Les petites conversations sur la météo sont vraiment importantes",
+          "Il est normal de s'excuser fréquemment (\"désolé\")",
+          "L'espace personnel et l'étiquette dans les files d'attente sont importants",
+          "La culture des bars est au cœur de la vie sociale"
+        ]
+      },
+      {
+        "category": "Culture du lieu de travail",
+        "tips": [
+          "Une communication plus formelle que sur les lieux de travail typiquement américains",
+          "Les pauses déjeuner et les pauses thé sont souvent plus longues",
+          "Les congés sont plus généreux",
+          "L'équilibre entre vie professionnelle et vie privée est généralement mieux protégé"
+        ]
+      },
+      {
+        "category": "Vie quotidienne",
+        "tips": [
+          "Les transports publics sont fiables mais peuvent être coûteux",
+          "Les habitudes d'achat diffèrent (déplacements plus petits et plus fréquents)",
+          "Les tailles et mesures des vêtements sont différentes",
+          "La culture du pourboire est moins répandue qu'aux États-Unis"
+        ]
+      }
+    ]
+  },
+  "financialPlanning": {
+    "title": "Planification financière de votre déménagement",
+    "subtitle": "Établir un budget pour votre déménagement des États-Unis au Royaume-Uni",
+    "categories": [
+      {
+        "stage": "Frais de pré-déménagement",
+        "totalRange": "$3,000 - $8,000",
+        "items": [
+          {
+            "item": "Demandes et frais de visa",
+            "cost": "$1,500 - $3,500"
+          },
+          {
+            "item": "Examens et tests médicaux",
+            "cost": "$200 - $500"
+          },
+          {
+            "item": "Préparation des documents et frais juridiques",
+            "cost": "$500 - $2,000"
+          },
+          {
+            "item": "Réservations de vols",
+            "cost": "$800 - $2,000"
+          }
+        ]
+      },
+      {
+        "stage": "Frais de déménagement",
+        "totalRange": "$2,000 - $15,000",
+        "items": [
+          {
+            "item": "Expédition d'articles ménagers",
+            "cost": "$2,000 - $8,000"
+          },
+          {
+            "item": "Logement temporaire",
+            "cost": "$1,000 - $4,000"
+          },
+          {
+            "item": "Transfert de l'animal de compagnie (le cas échéant)",
+            "cost": "$1,000 - $3,000"
+          }
+        ]
+      },
+      {
+        "stage": "Frais de règlement",
+        "totalRange": "$3,000 - $10,000",
+        "items": [
+          {
+            "item": "Dépôts de garantie et loyers",
+            "cost": "$2,000 - $6,000"
+          },
+          {
+            "item": "Aménagement initial et installation",
+            "cost": "$1,000 - $3,000"
+          },
+          {
+            "item": "Frais de subsistance du premier mois",
+            "cost": "$1,500 - $3,500"
+          }
+        ]
+      }
+    ]
+  },
+  "legalConsiderations": {
+    "title": "Considérations juridiques pour les Américains",
+    "subtitle": "Aspects juridiques importants de l'installation au Royaume-Uni",
+    "topics": [
+      {
+        "area": "Obligations fiscales",
+        "description": "Les citoyens américains doivent remplir une déclaration d'impôt aux États-Unis, quel que soit leur lieu de résidence.",
+        "keyPoints": [
+          "Exclusion des revenus gagnés à l'étranger jusqu'à ~120 000",
+          "La convention fiscale entre le Royaume-Uni et les États-Unis empêche la plupart des doubles impositions",
+          "Envisager un conseil fiscal professionnel pour les situations complexes",
+          "Déclarer les comptes bancaires étrangers si les soldes dépassent 10 000"
+        ]
+      },
+      {
+        "area": "Droits de vote",
+        "description": "Comprendre vos droits de vote dans les deux pays",
+        "keyPoints": [
+          "Maintenir les droits de vote aux États-Unis par le biais de bulletins de vote par correspondance",
+          "Les élections locales au Royaume-Uni sont possibles après l'enregistrement de la résidence",
+          "La perte de la citoyenneté européenne après le Brexit affecte certains droits",
+          "Tenir compte des implications de la double nationalité"
+        ]
+      },
+      {
+        "area": "Statut juridique",
+        "description": "Comprendre votre statut juridique et vos droits",
+        "keyPoints": [
+          "Les conditions d'obtention des visas déterminent les droits en matière de travail et de voyage",
+          "Le chemin vers la résidence permanente varie selon le type de visa",
+          "Possibilité d'obtenir la nationalité britannique après plus de 5 ans de résidence",
+          "Un conseil juridique est recommandé pour les situations complexes"
+        ]
+      }
+    ]
+  },
+  "petsToUkGuide": {
+    "header": {
+      "title": "Déménager au Royaume-Uni avec des animaux de compagnie",
+      "subtitle": "Guide complet pour amener vos compagnons bien-aimés dans leur nouveau foyer britannique - exigences, processus et installation"
+    },
+    "navigation": {
+      "title": "Guide de l'immigration des animaux de compagnie au Royaume-Uni"
+    },
+    "sections": [
+      {
+        "id": "exigences",
+        "icon": "✅",
+        "title": "Exigences clés",
+        "type": "exigences",
+        "content": {
+          "keyRequirements": [
+            {
+              "title": "Puce électronique",
+              "description": "Votre animal doit être muni d'une puce électronique conforme aux normes ISO 11784/11785 avant toute vaccination.",
+              "number": "1"
+            },
+            {
+              "title": "Vaccination contre la rage",
+              "description": "Doit être donné au moins 21 jours avant le voyage et être valide au moment du voyage.",
+              "number": "2"
+            },
+            {
+              "title": "Certificat de santé animale (CSA)",
+              "description": [
+                "Doit être délivré par un vétérinaire officiel de votre pays dans les 10 jours précédant le voyage au Royaume-Uni.",
+                "Valable pour l'entrée au Royaume-Uni jusqu'à 4 mois après l'émission.",
+                "Nécessaire uniquement si vous n'avez pas de passeport européen pour animaux de compagnie délivré dans l'UE ou en Irlande du Nord."
+              ],
+              "number": "3"
+            },
+            {
+              "title": "Traitement du ténia",
+              "note": "(chiens uniquement)",
+              "description": "Les chiens doivent être traités contre le ténia 24 à 120 heures (1 à 5 jours) avant leur arrivée au Royaume-Uni.",
+              "number": "4"
+            }
+          ]
+        }
+      },
+      {
+        "id": "routes d'entrée",
+        "icon": "🛂",
+        "title": "Routes d'entrée",
+        "type": "routes d'entrée",
+        "content": {
+          "approvedEntry": {
+            "title": "Points d'entrée agréés",
+            "description": "Les animaux de compagnie ne peuvent entrer au Royaume-Uni que par des voies spécifiques approuvées.",
+            "routes": [
+              {
+                "title": "Voyages aériens",
+                "description": "Grands aéroports comme Heathrow, Gatwick, Manchester, Edimbourg"
+              },
+              {
+                "title": "Eurotunnel",
+                "description": "Folkestone (via Calais)"
+              },
+              {
+                "title": "Ports de ferry",
+                "description": "Douvres, Portsmouth, Hull, Harwich"
+              },
+              {
+                "title": "Eurostar",
+                "description": "Seuls les chiens d'assistance sont autorisés"
+              }
+            ]
+          },
+          "warning": "Vous devez arriver avec votre animal de compagnie par un itinéraire agréé, faute de quoi votre animal peut être placé en quarantaine pendant une période pouvant aller jusqu'à 4 mois."
+        }
+      },
+      {
+        "id": "voyage",
+        "icon": "✈️",
+        "title": "Options de voyage",
+        "type": "voyage",
+        "content": {
+          "travelOptions": [
+            {
+              "icon": "🐱",
+              "ariaLabel": "petit animal de compagnie",
+              "title": "En cabine",
+              "description": "Options limitées - la plupart des vols à destination du Royaume-Uni n'autorisent pas les animaux de compagnie en cabine, à l'exception des animaux d'assistance."
+            },
+            {
+              "icon": "🐕",
+              "ariaLabel": "grand animal de compagnie",
+              "title": "En tant que cargaison",
+              "description": "Il s'agit de la méthode la plus courante pour faire venir des animaux de compagnie au Royaume-Uni. Généralement pris en charge par des services spécialisés dans le traitement des animaux."
+            },
+            {
+              "icon": "🚗",
+              "ariaLabel": "voiture",
+              "title": "Eurotunnel/Ferry",
+              "description": "Option populaire si vous venez d'Europe. Les animaux de compagnie peuvent rester avec leurs propriétaires dans les véhicules."
+            }
+          ],
+          "costConsiderations": {
+            "title": "Considérations sur les coûts",
+            "costs": [
+              "Vols : 400 à 800 £ pour le transport de marchandises",
+              "Eurotunnel : 20 à 30 livres sterling par animal, en plus des frais d'utilisation du véhicule.",
+              "Ferries : £15-£30 par animal en fonction de l'itinéraire.",
+              "Certificat de santé : £100-£175"
+            ]
+          },
+          "warning": "Renseignez-vous toujours auprès de votre compagnie aérienne ou de votre société de transport pour connaître leur politique en matière d'animaux de compagnie, car les exigences peuvent changer."
+        }
+      },
+      {
+        "id": "processus d'arrivée",
+        "icon": "🛬",
+        "title": "Procédure d'arrivée",
+        "type": "processus d'arrivée",
+        "content": {
+          "intro": "Le Royaume-Uni a mis en place une procédure spécifique pour les animaux de compagnie arrivant de l'étranger.",
+          "documentChecks": {
+            "title": "Contrôle des documents",
+            "items": [
+              "Vérification des micropuces",
+              "Certificat de santé animale",
+              "Carnet de vaccination contre la rage",
+              "Traitement contre le ténia (chiens)"
+            ]
+          },
+          "processFlow": {
+            "title": "Déroulement du processus",
+            "steps": [
+              "Arrivée au point d'entrée agréé",
+              "Présenter l'animal et les documents aux autorités",
+              "La puce électronique de l'animal sera scannée pour vérifier son identité.",
+              "Les documents seront vérifiés minutieusement",
+              "Si tout est en ordre, votre animal sera autorisé à entrer."
+            ]
+          },
+          "warning": "Si les documents sont incomplets ou si votre animal semble souffrant, il peut être placé en quarantaine à vos frais (jusqu'à 4 mois)."
+        }
+      },
+      {
+        "id": "après l'arrivée",
+        "icon": "🏠",
+        "title": "Vivre au Royaume-Uni avec des animaux de compagnie",
+        "type": "après l'arrivée",
+        "content": {
+          "intro": "Une fois au Royaume-Uni, il y a plusieurs choses à prendre en compte pour le bien-être de votre animal.",
+          "livingAspects": [
+            {
+              "icon": "🏥",
+              "title": "Soins vétérinaires",
+              "description": "Inscrivez-vous auprès d'un vétérinaire local dès que possible. Le Royaume-Uni dispose d'excellents soins vétérinaires, mais les coûts peuvent être élevés - il est recommandé de souscrire une assurance pour animaux de compagnie.",
+              "cost": "Consultation vétérinaire standard : £30-£60"
+            },
+            {
+              "icon": "📋",
+              "title": "Inscription",
+              "description": "Mettez à jour les données de la puce électronique de votre animal avec votre adresse au Royaume-Uni. Les chiens doivent également être enregistrés auprès de la mairie et porter une médaille avec vos coordonnées."
+            },
+            {
+              "icon": "🏞️",
+              "title": "Exercices et espaces",
+              "description": "Le Royaume-Uni compte de nombreux parcs et zones rurales adaptés aux animaux de compagnie. La plupart des villes disposent d'aires d'exercice réservées aux chiens, mais vérifiez toujours les règles locales concernant la tenue des chiens en laisse."
+            },
+            {
+              "icon": "🏠",
+              "title": "Logement",
+              "description": "De nombreuses locations au Royaume-Uni sont interdites aux animaux de compagnie, mais cette pratique est en train de changer. Préparez-vous à payer une caution plus élevée ou un \"loyer pour animaux\" dans certaines propriétés."
+            }
+          ],
+          "firstWeekChecklist": {
+            "title": "Liste de contrôle pour la première semaine",
+            "items": [
+              "S'inscrire auprès d'un cabinet vétérinaire local",
+              "Mise à jour de l'enregistrement de la micropuce avec l'adresse du Royaume-Uni",
+              "Enregistrer votre chien auprès de la mairie (le cas échéant)",
+              "Achat d'une étiquette d'identification avec les coordonnées du Royaume-Uni",
+              "Rechercher des options d'assurance pour les animaux de compagnie"
+            ]
+          }
+        }
+      },
+      {
+        "id": "ressources",
+        "icon": "📚",
+        "title": "Ressources utiles",
+        "type": "ressources",
+        "content": {
+          "officialInfo": {
+            "title": "Informations officielles",
+            "resources": [
+              {
+                "title": "Directives du gouvernement britannique concernant les voyages d'animaux de compagnie",
+                "description": "Règles et exigences officielles relatives à l'importation d'animaux de compagnie au Royaume-Uni"
+              },
+              {
+                "title": "Agence de santé animale et végétale (APHA)",
+                "description": "Organisme gouvernemental chargé de superviser les importations d'animaux de compagnie"
+              },
+              {
+                "title": "Ligne d'assistance du programme de voyage pour animaux de compagnie",
+                "description": "+44 370 241 1710 (du lundi au vendredi, de 8h30 à 17h, heure française)"
+              }
+            ]
+          },
+          "petServices": {
+            "title": "Services pour animaux de compagnie au Royaume-Uni",
+            "services": [
+              {
+                "category": "Assurance pour animaux de compagnie",
+                "providers": "Comparer les fournisseurs : PetPlan, Animal Friends, More Than"
+              },
+              {
+                "category": "Fournitures pour animaux de compagnie",
+                "providers": "Pets at Home, Amazon UK, VetUK"
+              },
+              {
+                "category": "Trouver un vétérinaire",
+                "providers": "Collège royal des vétérinaires : Service FindAVet"
+              },
+              {
+                "category": "Hébergement pour animaux de compagnie",
+                "providers": "PetsLets, Airbnb (utiliser le filtre \"animaux autorisés\")"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "sidebar": {
+      "checklist": {
+        "title": "Liste de contrôle avant le voyage",
+        "items": [
+          "Mettez une puce électronique à votre animal de compagnie",
+          "S'assurer que la vaccination contre la rage est en cours de validité",
+          "Attendre au moins 21 jours après la vaccination",
+          "Traiter les chiens contre le ténia 1 à 5 jours avant le voyage",
+          "Obtenir un certificat de santé animale dans les 10 jours précédant le voyage",
+          "Réserver un itinéraire de transport approuvé vers le Royaume-Uni",
+          "Préparer une pochette de voyage (approuvée par la compagnie aérienne si vous prenez l'avion)"
+        ]
+      },
+      "faq": {
+        "title": "Questions courantes",
+        "questions": [
+          {
+            "question": "Ai-je besoin d'un passeport pour mon animal de compagnie ?",
+            "answer": "Les passeports européens pour animaux de compagnie délivrés dans l'UE ou en Irlande du Nord sont toujours valables pour entrer au Royaume-Uni. Dans le cas contraire, vous devrez présenter un certificat de santé animale."
+          },
+          {
+            "question": "Y a-t-il une quarantaine ?",
+            "answer": "Aucune quarantaine n'est nécessaire si toutes les conditions sont remplies. Si les conditions ne sont pas remplies, les animaux de compagnie peuvent être soumis à une quarantaine pouvant durer jusqu'à 4 mois."
+          },
+          {
+            "question": "Quelles sont les races interdites ?",
+            "answer": "Certaines races de chiens sont interdites au Royaume-Uni, notamment le Pit Bull Terrier, le Tosa japonais, le Dogo Argentino et le Fila Brasileiro."
+          },
+          {
+            "question": "Puis-je apporter des animaux exotiques ?",
+            "answer": "Les animaux exotiques sont soumis à des exigences différentes. Beaucoup nécessitent des permis CITES et des licences d'importation spécifiques."
+          }
+        ]
+      }
+    }
+  },
+  "petHealthRequirements": {
+    "title": "Exigences détaillées en matière de santé",
+    "subtitle": "Exigences complètes en matière de santé et de vaccination par pays d'origine",
+    "categories": [
+      {
+        "region": "Pays de l'UE",
+        "requirements": [
+          {
+            "requirement": "Passeport pour animaux de compagnie",
+            "description": "Passeport européen pour animaux de compagnie délivré dans l'UE ou en Irlande du Nord",
+            "validity": "Doit être en cours de validité"
+          },
+          {
+            "requirement": "Vaccination contre la rage",
+            "description": "Primovaccination à l'âge de 21 jours au moins",
+            "validity": "Valable selon les directives du fabricant"
+          },
+          {
+            "requirement": "Puce électronique",
+            "description": "Conforme aux normes ISO 11784/11785 avant la vaccination",
+            "validity": "Doit être lisible"
+          }
+        ]
+      },
+      {
+        "region": "Pays non membres de l'UE",
+        "requirements": [
+          {
+            "requirement": "Certificat de santé animale",
+            "description": "Délivré par un vétérinaire officiel dans un délai de 10 jours",
+            "validity": "Valable 4 mois pour l'entrée au Royaume-Uni"
+          },
+          {
+            "requirement": "Vaccination contre la rage",
+            "description": "Au moins 21 jours avant le voyage",
+            "validity": "Doit être à jour au moment du voyage"
+          },
+          {
+            "requirement": "Test de détection des anticorps antirabiques",
+            "description": "Peut être exigé dans certains pays",
+            "validity": "Doit présenter des taux d'anticorps adéquats"
+          }
+        ]
+      }
+    ]
+  },
+  "petTransportGuide": {
+    "title": "Guide du transport des animaux de compagnie",
+    "subtitle": "Informations détaillées sur le transport d'animaux domestiques vers le Royaume-Uni",
+    "transportMethods": [
+      {
+        "method": "Compagnies aériennes commerciales",
+        "suitableFor": "Chiens et chats",
+        "process": [
+          "Réservez le transport de votre animal de compagnie lors de la réservation de votre vol",
+          "Fournir les certificats de santé et les carnets de vaccination",
+          "Utiliser un transporteur agréé par l'IATA",
+          "Arrivée à l'aéroport 3-4 heures avant le départ",
+          "L'animal voyage dans une soute climatisée"
+        ],
+        "costs": {
+          "range": "£400-£1,200",
+          "factors": [
+            "Taille et poids de l'animal",
+            "Distance parcourue",
+            "Politiques des compagnies aériennes",
+            "Saison (heures de pointe et heures creuses)"
+          ]
+        },
+        "tips": [
+          "Réservez tôt car le nombre de places est limité",
+          "Éviter si possible les périodes de pointe",
+          "Tenir compte de l'anxiété et du confort de l'animal",
+          "Veiller à ce que la taille du transporteur soit appropriée"
+        ]
+      },
+      {
+        "method": "Services de relocalisation d'animaux de compagnie",
+        "suitableFor": "Tous les animaux domestiques, en particulier les animaux de valeur ou nerveux",
+        "process": [
+          "Service complet de transport porte-à-porte",
+          "Traiter l'ensemble de la documentation et de la logistique",
+          "Fournir des soins spécialisés pendant le transport",
+          "Organisation de voyages sur mesure en fonction des besoins de l'animal"
+        ],
+        "costs": {
+          "range": "£800-£3,000+",
+          "factors": [
+            "Niveau de service requis",
+            "Taille de l'animal et besoins particuliers",
+            "Origine et destination",
+            "Services complémentaires (embarquement, etc.)"
+          ]
+        },
+        "tips": [
+          "Étudier minutieusement les références de l'entreprise",
+          "Lire les commentaires d'autres propriétaires d'animaux",
+          "S'assurer que l'entreprise est agréée et assurée",
+          "Demandez-leur quelle est leur expérience avec votre type d'animal."
+        ]
+      }
+    ]
+  },
+  "settlingInGuide": {
+    "title": "Installation de votre animal au Royaume-Uni",
+    "subtitle": "Aider votre animal à s'adapter à son nouveau foyer britannique",
+    "adjustmentTips": [
+      {
+        "category": "Premiers jours",
+        "tips": [
+          "Maintenir des habitudes aussi proches que possible de celles du pays d'origine",
+          "Prévoir un temps d'adaptation - les animaux peuvent être stressés",
+          "Introduire progressivement de nouveaux environnements et de nouvelles expériences",
+          "Surveiller attentivement les habitudes alimentaires et le sommeil"
+        ]
+      },
+      {
+        "category": "Adaptation au climat",
+        "tips": [
+          "Le temps au Royaume-Uni peut être très différent - préparez-vous à la pluie",
+          "Certains animaux de compagnie peuvent avoir besoin d'un certain temps pour s'adapter à des températures plus fraîches.",
+          "Fournir une litière et un abri appropriés",
+          "Tenir compte des variations saisonnières des heures de clarté"
+        ]
+      },
+      {
+        "category": "Intégration sociale",
+        "tips": [
+          "Rejoindre des groupes et des communautés locales d'animaux de compagnie",
+          "Utiliser progressivement les parcs pour chiens et les lieux accueillants pour les animaux de compagnie",
+          "Envisagez des cours de dressage pour vous aider à maîtriser les comportements propres au Royaume-Uni.",
+          "Soyez patient lors des ajustements de l'apprentissage à la maison"
+        ]
+      }
+    ],
+    "ukSpecificConsiderations": [
+      {
+        "topic": "Météo et exercice",
+        "details": [
+          "Le Royaume-Uni connaît des pluies fréquentes - investissez dans des imperméables pour animaux de compagnie",
+          "Le raccourcissement des journées d'hiver affecte les habitudes d'exercice",
+          "De nombreux parcs disposent d'aires d'exercice spécifiques pour les chiens",
+          "Les restrictions concernant les plages varient en fonction de la saison et de l'endroit"
+        ]
+      },
+      {
+        "topic": "Logement et location",
+        "details": [
+          "De nombreuses locations au Royaume-Uni ont des politiques strictes concernant les animaux de compagnie.",
+          "Les cautions pour les animaux domestiques varient généralement entre 200 et 500 livres sterling.",
+          "Dans certaines régions, les locations sont soumises à des restrictions concernant la race",
+          "L'accès aux jardins et aux cours est moins fréquent dans les centres-villes"
+        ]
+      },
+      {
+        "topic": "Exigences légales",
+        "details": [
+          "Les chiens doivent porter un collier et une médaille avec les coordonnées du propriétaire.",
+          "Certaines régions exigent que les chiens soient tenus en laisse dans les lieux publics.",
+          "La loi sur les chiens dangereux s'applique à certaines races",
+          "Les déchets d'animaux domestiques doivent être nettoyés - des amendes s'appliquent"
+        ]
+      }
+    ]
+  },
+  "costBreakdown": {
+    "title": "Ventilation complète des coûts",
+    "subtitle": "Tous les frais liés à l'importation d'animaux de compagnie au Royaume-Uni",
+    "preTravel": {
+      "title": "Coûts avant le voyage",
+      "items": [
+        {
+          "item": "Microchip",
+          "cost": "£15-£30",
+          "notes": "Coût unique, requis avant la vaccination"
+        },
+        {
+          "item": "Vaccination contre la rage",
+          "cost": "£50-£100",
+          "notes": "Doit attendre 21 jours avant de voyager"
+        },
+        {
+          "item": "Certificat de santé animale",
+          "cost": "£100-£175",
+          "notes": "Doit avoir lieu dans les 10 jours précédant le voyage"
+        },
+        {
+          "item": "Traitement contre le ténia (chiens)",
+          "cost": "£20-£40",
+          "notes": "1-5 jours avant le voyage"
+        },
+        {
+          "item": "Transporteur de voyage",
+          "cost": "£50-£200",
+          "notes": "Approuvé par l'IATA pour les voyages aériens"
+        }
+      ]
+    },
+    "transport": {
+      "title": "Frais de transport",
+      "items": [
+        {
+          "item": "Transport aérien d'animaux de compagnie",
+          "cost": "£400-£800",
+          "notes": "Varie selon la compagnie aérienne et la taille de l'animal"
+        },
+        {
+          "item": "Service de relocalisation d'animaux de compagnie",
+          "cost": "£800-£3,000",
+          "notes": "Option service complet"
+        },
+        {
+          "item": "Taxe Eurotunnel pour les animaux de compagnie",
+          "cost": "£20-£30",
+          "notes": "Plus les frais de transport du véhicule"
+        },
+        {
+          "item": "Taxe sur les animaux de compagnie Ferry",
+          "cost": "£15-£30",
+          "notes": "Varie en fonction de la route et de l'opérateur"
+        }
+      ]
+    },
+    "postArrival": {
+      "title": "Coûts postérieurs à l'arrivée",
+      "items": [
+        {
+          "item": "Enregistrement et contrôle vétérinaire",
+          "cost": "£30-£60",
+          "notes": "Première consultation"
+        },
+        {
+          "item": "Assurance pour animaux de compagnie",
+          "cost": "£10-£50/mois",
+          "notes": "Varie en fonction de la couverture et de l'animal"
+        },
+        {
+          "item": "Fournitures pour animaux de compagnie",
+          "cost": "£50-£200",
+          "notes": "Nourriture, jouets, literie, etc."
+        },
+        {
+          "item": "Enregistrement local",
+          "cost": "£15-£25",
+          "notes": "Permis de détention de chien, le cas échéant"
+        }
+      ]
+    }
+  },
+  "ukrelocationrequirements": {
+    "introduction": "S'installer au Royaume-Uni nécessite une planification et une préparation minutieuses. Que vous déménagiez pour des raisons professionnelles, éducatives, familiales ou simplement pour changer de mode de vie, il est essentiel de comprendre les exigences légales. Ce guide présente tout ce que vous devez savoir pour réussir votre déménagement au Royaume-Uni.",
+    "requirements": [
+      {
+        "title": "Passeport en cours de validité",
+        "description": "Vous devez être en possession d'un passeport valable pour toute la durée de votre séjour au Royaume-Uni. Pour les ressortissants sans visa en visite pour une durée maximale de 6 mois, votre passeport doit être valable pour la durée du séjour envisagé. Pour les demandes de visa, votre passeport doit généralement être valable pendant toute la durée de votre visa, plus quelques mois supplémentaires."
+      },
+      {
+        "title": "Visa approprié",
+        "description": "Le Royaume-Uni dispose de différentes catégories de visas en fonction de l'objet de votre visite :",
+        "details": [
+          "Visas de travail (travailleur qualifié, travailleur de la santé et des soins, etc.)",
+          "Visas d'études (visa d'étudiant, visa d'enfant étudiant)",
+          "Visas familiaux (visas de partenaire, d'enfant, de parent)",
+          "Visas de visiteur (visiteur standard, visiteur d'affaires)",
+          "Installation ou autorisation de séjourner pour une durée indéterminée (ILR)"
+        ]
+      },
+      {
+        "title": "Preuve d'hébergement",
+        "description": "Vous devrez fournir une preuve de l'endroit où vous séjournerez au Royaume-Uni :",
+        "details": [
+          "Contrat de location ou documents relatifs à la propriété",
+          "Lettre de votre hôte si vous séjournez chez des amis ou de la famille",
+          "Réservations d'hôtel pour le premier hébergement",
+          "Confirmation de logement universitaire pour les étudiants"
+        ]
+      },
+      {
+        "title": "Exigences financières",
+        "description": "Vous devez démontrer que vous pouvez subvenir à vos besoins financiers :",
+        "details": [
+          "Relevés bancaires indiquant que les fonds sont suffisants (couvrant généralement une période de 3 à 6 mois)",
+          "Preuve de revenus ou contrat de travail, le cas échéant",
+          "Lettre de bourse ou de financement pour les étudiants",
+          "Preuve d'investissement ou d'épargne"
+        ],
+        "additionalInfo": "Le montant exact requis varie en fonction du type de visa et de la situation personnelle."
+      },
+      {
+        "title": "Couverture des soins de santé",
+        "description": "L'accès aux soins de santé au Royaume-Uni est géré par l'intermédiaire de :",
+        "details": [
+          "Paiement de l'Immigration Health Surcharge (IHS) avec la plupart des demandes de visa",
+          "Assurance maladie privée (recommandée pour la période initiale)",
+          "Carte européenne d'assurance maladie (CEAM) ou carte mondiale d'assurance maladie (CMAM) pour les visiteurs éligibles."
+        ],
+        "additionalInfo": "Après votre arrivée, inscrivez-vous auprès d'un médecin généraliste local dès que possible."
+      },
+      {
+        "title": "Permis de séjour biométrique (BRP)",
+        "description": "Si le séjour est supérieur à 6 mois :",
+        "details": [
+          "Vous recevrez un permis de séjour biométrique après votre arrivée.",
+          "Vous devez récupérer votre BRP dans les 10 jours suivant votre arrivée au Royaume-Uni.",
+          "Le BRP est la preuve de votre statut d'immigrant et de vos droits."
+        ]
+      },
+      {
+        "title": "Numéro d'assurance nationale",
+        "description": "Indispensable pour travailler au Royaume-Uni :",
+        "details": [
+          "Faire une demande en ligne ou par téléphone après votre arrivée au Royaume-Uni",
+          "Obligatoire à des fins d'emploi, de fiscalité et d'avantages sociaux",
+          "Vous pouvez commencer à travailler avant d'avoir reçu votre numéro d'assurance sociale"
+        ]
+      },
+      {
+        "title": "Certificat de test de tuberculose (TB)",
+        "description": "Obligatoire pour les ressortissants de certains pays :",
+        "details": [
+          "Le test de dépistage de la tuberculose doit être effectué dans un centre agréé",
+          "Certificat valable 6 mois à partir de la date de délivrance",
+          "Doit être obtenu avant la demande de visa"
+        ]
+      },
+      {
+        "title": "Compétences en anglais",
+        "description": "Pour la plupart des catégories de visa :",
+        "details": [
+          "Preuve du niveau d'anglais (IELTS, TOEFL, etc.)",
+          "Un diplôme enseigné en anglais peut être accepté comme preuve.",
+          "Exemptions pour certaines nationalités et certains types de visas"
+        ]
+      },
+      {
+        "title": "Compte bancaire",
+        "description": "Ouvrir un compte bancaire au Royaume-Uni :",
+        "details": [
+          "Justificatif de domicile (facture d'électricité, contrat de location)",
+          "Passeport et BRP",
+          "Envisager les banques en ligne pour faciliter l'installation d'un nouvel arrivant",
+          "Certaines banques proposent l'ouverture d'un compte international avant l'arrivée"
+        ]
+      }
+    ],
+    "additionalConsiderations": {
+      "title": "Autres considérations",
+      "items": [
+        {
+          "title": "Enregistrement de l'impôt sur le revenu",
+          "description": "Inscrivez-vous auprès de votre mairie pour payer la taxe d'habitation. Il s'agit d'une taxe obligatoire pour les services locaux. Certaines exonérations s'appliquent aux étudiants à temps plein."
+        },
+        {
+          "title": "Conduire au Royaume-Uni",
+          "description": "Les titulaires d'un permis non britannique peuvent conduire pendant 12 mois maximum. Après cette période, vous devrez peut-être échanger votre permis ou passer un examen de conduite au Royaume-Uni."
+        },
+        {
+          "title": "Téléphone mobile et Internet",
+          "description": "Obtenez rapidement un numéro de téléphone mobile et une connexion internet au Royaume-Uni. De nombreux fournisseurs proposent des offres spéciales pour les nouveaux arrivants."
+        },
+        {
+          "title": "Préparation au climat",
+          "description": "Le Royaume-Uni a un climat maritime tempéré avec des étés frais et des hivers doux. Préparez-vous à la pluie tout au long de l'année en apportant des vêtements et des accessoires appropriés."
+        }
+      ]
+    },
+    "helpResources": {
+      "title": "Obtenir de l'aide pour votre déménagement",
+      "description": "Pour obtenir des informations officielles et de l'aide pour votre déménagement au Royaume-Uni, consultez les ressources suivantes :",
+      "resources": [
+        {
+          "title": "Gouvernement du Royaume-Uni",
+          "description": "Conseils officiels sur les visas, l'immigration et l'installation au Royaume-Uni"
+        },
+        {
+          "title": "British Council",
+          "description": "Ressources pour les étudiants étrangers et l'adaptation culturelle"
+        },
+        {
+          "title": "Conseil aux citoyens",
+          "description": "Conseils gratuits et confidentiels sur les droits et les responsabilités"
+        }
+      ]
+    },
+    "footer": {
+      "disclaimer": "N'oubliez pas que les règles d'immigration peuvent changer fréquemment. Vérifiez toujours les dernières exigences auprès de sources officielles."
+    }
+  },
+  "ukfromturkeyguide": {
+    "navigation": {
+      "title": "Naviguer dans ce guide"
+    },
+    "accessibility": {
+      "toggleSection": "Section à bascule pour"
+    },
+    "labels": {
+      "youllNeed": "Vous aurez besoin de.. :"
+    },
+    "sections": {
+      "whyMove": {
+        "title": "Pourquoi les Turcs s'installent-ils au Royaume-Uni ?",
+        "description": "Des milliers de ressortissants turcs vivent aujourd'hui au Royaume-Uni, notamment dans des villes comme Londres, Manchester, Birmingham et Édimbourg. L'appel comprend :",
+        "reasons": [
+          "Possibilités d'éducation et de carrière",
+          "Environnement multiculturel avec diverses communautés",
+          "Des systèmes de santé et de protection sociale solides",
+          "Stabilité politique et État de droit",
+          "Communautés turques établies dans les grandes villes"
+        ],
+        "conclusion": "Cependant, s'installer dans un autre pays nécessite une planification minutieuse, une bonne compréhension du système de visa britannique et le respect d'exigences spécifiques."
+      },
+      "entryRequirements": {
+        "title": "Conditions d'entrée et règles relatives aux visas",
+        "visitorEntry": {
+          "title": "Entrée des visiteurs",
+          "description": "Les citoyens turcs ont besoin d'un visa de visiteur pour entrer au Royaume-Uni, qui leur permet de rester jusqu'à 6 mois. Pour les séjours de longue durée, vous devrez demander un visa approprié en fonction de votre situation."
+        },
+        "tip": "Demandez les visas britanniques bien avant la date prévue de votre voyage, car le traitement peut prendre plusieurs semaines."
+      },
+      "longTermStay": {
+        "title": "Options de séjour de longue durée pour les citoyens turcs",
+        "options": [
+          {
+            "title": "1. Visa pour travailleur qualifié",
+            "description": "<span class=\"font-medium\">Valide jusqu'à 5 ans et peut mener à l'établissement</span><br/>Pour ceux qui ont une offre d'emploi d'un employeur britannique avec une licence de parrainage",
+            "requirements": [
+              "Offre d'emploi valide avec un niveau de salaire approprié",
+              "Certificat de parrainage de l'employeur",
+              "Preuve de la maîtrise de l'anglais",
+              "Des fonds suffisants pour subvenir à ses besoins",
+              "Extrait de casier judiciaire (le cas échéant)"
+            ]
+          },
+          {
+            "title": "2. Visa familial",
+            "details": [
+              "Pour rejoindre un conjoint, un partenaire ou un membre de la famille qui est un citoyen britannique ou une personne établie.",
+              "Période initiale de 2,5 ans, prorogeable",
+              "Des conditions financières et d'hébergement s'appliquent"
+            ]
+          },
+          {
+            "title": "3. Visa étudiant",
+            "details": [
+              "Pour les personnes acceptées dans un établissement d'enseignement britannique",
+              "La durée dépend de la durée du cours",
+              "Preuve de financement des frais de scolarité et des frais de subsistance requise"
+            ]
+          },
+          {
+            "title": "4. Visa d'innovateur",
+            "description": "Pour les entrepreneurs ayant des idées commerciales innovantes et disposant d'au moins 50 000 livres sterling de fonds d'investissement."
+          },
+          {
+            "title": "5. Visa individuel à haut potentiel",
+            "description": "Pour les diplômés des meilleures universités mondiales, 2 à 3 ans pour travailler ou chercher du travail sans offre d'emploi."
+          }
+        ]
+      },
+      "property": {
+        "title": "Acheter ou louer un bien immobilier",
+        "points": [
+          "Les citoyens turcs peuvent acheter des biens immobiliers au Royaume-Uni, sans restriction pour les non-résidents.",
+          "Des options hypothécaires sont disponibles mais exigent souvent des dépôts plus importants pour les non-résidents du Royaume-Uni.",
+          "Régions populaires pour les communautés turques : Nord de Londres, Manchester, Birmingham",
+          "La location est plus chère : comptez entre 800 et 1 500 livres sterling par mois pour un appartement d'une chambre dans les grandes villes."
+        ],
+        "tip": "<Conseil:</strong> Faites appel à un avocat lors de l'achat d'un bien immobilier et assurez-vous de comprendre toutes les clauses du contrat de location avant de le signer."
+      },
+      "costLiving": {
+        "title": "Comparaison du coût de la vie",
+        "table": {
+          "headers": {
+            "expense": "Dépenses",
+            "uk": "Royaume-Uni (moyenne)",
+            "turkey": "Turquie (moyenne)"
+          },
+          "rows": [
+            {
+              "expense": "Location (appartement à 1 lit)",
+              "uk": "£800-£1,500",
+              "turkey": "£200-£400",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Utilitaires",
+              "uk": "150+ £/mois",
+              "turkey": "30-£70/mois",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Repas au restaurant",
+              "uk": "£15-£25",
+              "turkey": "£3-£8",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Carte de transport",
+              "uk": "60-£180/mois",
+              "turkey": "£10-£30/mois",
+              "ukHighlight": true
+            }
+          ]
+        },
+        "note": "Le Royaume-Uni étant nettement plus cher que la Turquie, il est essentiel d'établir un plan financier avant de s'installer."
+      },
+      "healthcare": {
+        "title": "Accès aux soins de santé",
+        "points": [
+          "Le Royaume-Uni dispose du National Health Service (NHS), qui fournit des soins de santé gratuits au point d'utilisation.",
+          "La plupart des demandeurs de visa doivent payer une surtaxe de santé dans le cadre de leur demande.",
+          "Le supplément est actuellement de 624 livres sterling par an pour la plupart des types de visas.",
+          "Une fois payé, vous aurez accès aux services du NHS comme les résidents britanniques.",
+          "Des options de soins de santé privés sont disponibles, mais elles sont coûteuses par rapport à la Turquie."
+        ]
+      },
+      "dailyLife": {
+        "title": "Adaptations à la vie quotidienne",
+        "aspects": [
+          {
+            "title": "Barrière linguistique",
+            "description": "L'anglais est la langue officielle. Une bonne maîtrise de l'anglais est essentielle pour la vie quotidienne, le travail et l'intégration sociale."
+          },
+          {
+            "title": "Conduite",
+            "description": "Les permis de conduire turcs peuvent être utilisés pendant 12 mois maximum. Après cette période, vous devez l'échanger ou passer un examen de conduite au Royaume-Uni."
+          },
+          {
+            "title": "Monnaie",
+            "description": "La livre sterling (GBP) - une monnaie forte, mais qui signifie que vous aurez besoin de plus de lires turques pour maintenir votre niveau de vie."
+          },
+          {
+            "title": "Banque",
+            "description": "L'ouverture d'un compte bancaire nécessite une preuve d'adresse et de statut d'immigrant. Les banques numériques comme Monzo ou Revolut peuvent être des options plus faciles dans un premier temps."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "title": "Logistique du déménagement depuis la Turquie",
+        "points": [
+          "Vous devrez peut-être payer des droits de douane et la TVA lorsque vous apporterez des effets personnels au Royaume-Uni.",
+          "L'allègement lié au transfert de résidence peut s'appliquer si vous déménagez votre domicile permanent au Royaume-Uni.",
+          "L'expédition internationale de la Turquie vers le Royaume-Uni prend environ 3 à 5 semaines par voie maritime.",
+          "Les animaux domestiques doivent être munis d'une puce électronique, vaccinés contre la rage, traités contre le ver solitaire (pour les chiens) et faire l'objet d'un certificat de santé animale."
+        ]
+      },
+      "challenges": {
+        "title": "Des défis réalistes à relever",
+        "challenges": [
+          {
+            "title": "Adaptation aux conditions météorologiques",
+            "description": "Au Royaume-Uni, le temps est plus frais, plus nuageux et les pluies plus fréquentes qu'en Turquie."
+          },
+          {
+            "title": "Coût de la vie plus élevé",
+            "description": "Les dépenses sont nettement plus élevées, ce qui nécessite une budgétisation minutieuse."
+          },
+          {
+            "title": "Différences culturelles",
+            "description": "Il faut parfois du temps pour comprendre les normes sociales et l'étiquette britanniques."
+          },
+          {
+            "title": "Un système de visa complexe",
+            "description": "S'y retrouver dans les règles de l'immigration peut être stressant et coûteux"
+          }
+        ]
+      },
+      "turkishCommunities": {
+        "title": "Communautés turques au Royaume-Uni",
+        "description": "Le Royaume-Uni compte des communautés turques établies, en particulier au Royaume-Uni :",
+        "cities": [
+          "Nord de Londres",
+          "Manchester",
+          "Birmingham",
+          "Édimbourg",
+          "Leeds"
+        ],
+        "supportNote": "Vous trouverez des associations culturelles, des centres communautaires, des restaurants turcs et des groupes de médias sociaux qui vous aideront à nouer des liens avec d'autres Turcs et à faciliter votre transition."
+      }
+    },
+    "checklist": {
+      "title": "Dernière liste de contrôle avant de déménager au Royaume-Uni",
+      "items": [
+        "Demander et obtenir le visa approprié",
+        "Payer la surtaxe de santé des immigrés",
+        "Prévoir l'hébergement à l'avance",
+        "Ouvrir un compte bancaire au Royaume-Uni",
+        "Recherche sur le système et les obligations fiscales du Royaume-Uni",
+        "Échange de devises avant l'arrivée",
+        "Entrez en contact avec les communautés turques de votre ville de destination"
+      ]
+    },
+    "conclusion": {
+      "title": "Le Royaume-Uni est-il fait pour vous ?",
+      "text": "S'installer au Royaume-Uni offre l'excellence en matière d'éducation, des possibilités de carrière et un niveau de vie élevé, mais s'accompagne de coûts plus élevés et d'ajustements culturels. Une planification et une recherche minutieuses sont essentielles. Pour de nombreux citoyens turcs à la recherche de nouveaux horizons, l'environnement multiculturel du Royaume-Uni et les communautés turques établies en font une destination attrayante malgré les difficultés."
+    },
+    "footer": {
+      "lastUpdated": "Dernière mise à jour : Mai 2025"
+    }
+  },
+  "ukvisaguide": {
+    "introduction": "Pour s'installer au Royaume-Uni, il faut choisir le visa approprié en fonction de sa situation. Le Royaume-Uni propose différentes options de visa et de résidence pour les travailleurs, les étudiants, les membres de la famille, les investisseurs et les entrepreneurs.",
+    "labels": {
+      "bestFor": "Meilleur pour :",
+      "requirements": "Exigences :",
+      "benefits": "Avantages :",
+      "validity": "Validité :"
+    },
+    "visaTypes": [
+      {
+        "title": "Visa pour travailleur qualifié",
+        "bestFor": [
+          "Professionnels ayant reçu des offres d'emploi d'employeurs britanniques",
+          "Personnes travaillant dans des professions en pénurie",
+          "Travailleurs expérimentés dans des domaines spécialisés"
+        ],
+        "requirements": [
+          "Offre d'emploi d'un employeur britannique avec licence de parrainage",
+          "Niveau de compétence équivalent au niveau 3 du RQF ou supérieur",
+          "Maîtrise de l'anglais (niveau B1)",
+          "Seuil de salaire minimum (généralement 26 200 £ ou le \"taux courant\" de la profession)",
+          "Des fonds suffisants pour subvenir à ses besoins"
+        ],
+        "validity": "Jusqu'à 5 ans (prolongeable, chemin vers le règlement après 5 ans)"
+      },
+      {
+        "title": "Visa étudiant",
+        "bestFor": "Étudiants acceptés dans des universités ou des établissements d'enseignement du Royaume-Uni",
+        "requirements": [
+          "Place confirmée dans un établissement autorisé à parrainer des étudiants",
+          "Maîtrise de la langue anglaise",
+          "Preuve des moyens financiers pour couvrir les frais de scolarité et les frais de subsistance",
+          "Consentement des parents/tuteurs (pour les moins de 18 ans)"
+        ],
+        "validity": "Durée du cours plus quelques mois (variable selon la durée du cours)"
+      },
+      {
+        "title": "Visa familial",
+        "bestFor": "Partenaires, enfants et personnes à charge des citoyens britanniques ou des personnes installées",
+        "requirements": [
+          "Preuve de l'existence d'une relation réelle et durable",
+          "Atteindre le revenu minimum requis (18 600 £ plus un supplément pour les enfants)",
+          "Logement adéquat",
+          "Exigences linguistiques en anglais (pour les partenaires)"
+        ],
+        "validity": "2,5 ans initialement (renouvelable, voie de règlement après 5 ans)"
+      },
+      {
+        "title": "Innovateur Fondateur Visa",
+        "bestFor": "Entrepreneurs expérimentés créant une entreprise innovante au Royaume-Uni",
+        "requirements": [
+          "Approuvé par un organisme d'approbation agréé",
+          "Plan d'entreprise viable et innovant",
+          "Fonds d'investissement d'au moins 50 000 livres sterling",
+          "Maîtrise de l'anglais (niveau B2)",
+          "Fonds personnels suffisants pour l'entretien"
+        ],
+        "validity": "3 ans (possibilité de règlement après 3 ans)"
+      },
+      {
+        "title": "Visa pour les talents mondiaux",
+        "bestFor": "Leaders ou leaders potentiels dans les domaines de l'université, de la recherche, des arts, de la culture ou de la technologie numérique",
+        "requirements": [
+          "Reconnaissance d'un organisme britannique compétent dans votre domaine",
+          "Preuve d'un talent ou d'un potentiel exceptionnel",
+          "Expérience dans votre domaine d'activité"
+        ],
+        "benefits": [
+          "Modalités de travail flexibles (pas de parrainage nécessaire)",
+          "Vers un règlement après 3 à 5 ans",
+          "Les personnes à charge peuvent vous rejoindre"
+        ]
+      },
+      {
+        "title": "Visa individuel à haut potentiel",
+        "bestFor": "Jeunes diplômés des meilleures universités mondiales",
+        "requirements": [
+          "Diplôme équivalent à une licence britannique ou plus, délivré par une université internationale de premier plan (au cours des cinq dernières années).",
+          "Maîtrise de l'anglais (niveau B1)",
+          "Fonds de maintenance suffisants"
+        ],
+        "validity": "2 ans pour les titulaires d'une licence ou d'une maîtrise, 3 ans pour les titulaires d'un doctorat (pas de voie directe vers l'établissement)"
+      },
+      {
+        "title": "Visa d'investisseur",
+        "bestFor": "Personnes fortunées souhaitant investir au Royaume-Uni",
+        "requirements": [
+          "Investissement minimum de 2 millions de livres sterling dans des entreprises britanniques",
+          "Les fonds doivent être détenus dans une institution financière réglementée",
+          "Les fonds doivent être disponibles au Royaume-Uni",
+          "Compte bancaire au Royaume-Uni"
+        ],
+        "validity": "3 ans au départ (possibilité de règlement en 2 à 5 ans selon le montant de l'investissement)"
+      },
+      {
+        "title": "Visa pour diplômés",
+        "bestFor": "Étudiants étrangers ayant obtenu un diplôme au Royaume-Uni",
+        "requirements": [
+          "Avoir obtenu un diplôme auprès d'un établissement d'enseignement supérieur britannique",
+          "Visa d'étudiant en cours de validité au moment de la demande",
+          "Confirmation de l'achèvement du cours par le sponsor"
+        ],
+        "validity": "2 ans pour les titulaires d'une licence ou d'une maîtrise, 3 ans pour les titulaires d'un doctorat"
+      }
+    ],
+    "footer": {
+      "disclaimer": "Remarque : les règles d'immigration du Royaume-Uni sont susceptibles d'être modifiées. Consultez toujours le site officiel du gouvernement britannique pour obtenir les informations les plus récentes."
+    }
+  }
+}

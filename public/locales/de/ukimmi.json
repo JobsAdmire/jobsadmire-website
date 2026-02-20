@@ -1,0 +1,3108 @@
+{
+  "herosection": {
+    "badge": "Exklusive Fahrten",
+    "title": "Entdecken Sie Ihr nächstes Abenteuer",
+    "description": "Erleben Sie atemberaubende Reiseziele und schaffen Sie unvergessliche Erinnerungen mit unseren Premium-Reisepaketen, die auf Ihre Wünsche zugeschnitten sind.",
+    "currentlyViewing": {
+      "label": "Derzeitige Betrachtung"
+    },
+    "buttons": {
+      "primary": "Jetzt erforschen",
+      "secondary": "Alle Reiseziele anzeigen"
+    },
+    "destinationCounter": "Zielort {{Aktuell}}/{{Gesamt}}",
+    "controls": {
+      "selectDestination": "Wählen Sie {{Ziel}}"
+    },
+    "destinations": [
+      {
+        "img": "/images/ihul.png",
+        "name": "London",
+        "alt": "Schöner Blick auf das Londoner Stadtbild mit ikonischen Wahrzeichen",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihum.png",
+        "name": "Manchester",
+        "alt": "Manchester Stadtzentrum mit moderner Architektur und historischen Gebäuden",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihub.png",
+        "name": "Birmingham",
+        "alt": "Birminghams pulsierendes Stadtzentrum und kulturelle Viertel",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihue.png",
+        "name": "Edinburgh",
+        "alt": "Edinburghs historische Burg und mittelalterliche Altstadt",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihuli.png",
+        "name": "Liverpool",
+        "alt": "Liverpools berühmtes Hafenviertel und maritimes Erbe",
+        "country": "UK"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "aboutsection": {
+    "badge": "Über uns",
+    "title": "Ihr zuverlässiger Reisepartner",
+    "description": "Mit über 15 Jahren Erfahrung in der Reisebranche sind wir darauf spezialisiert, außergewöhnliche Reisen zu kreieren, die die Erwartungen übertreffen.",
+    "features": [
+      {
+        "title": "Beratung durch Experten",
+        "description": "Unsere erfahrenen Reiseberater geben persönliche Empfehlungen."
+      },
+      {
+        "title": "Beste Preise",
+        "description": "Wir garantieren wettbewerbsfähige Preise ohne versteckte Gebühren."
+      },
+      {
+        "title": "24/7 Unterstützung",
+        "description": "Kundenbetreuung rund um die Uhr für ein sicheres Gefühl."
+      }
+    ],
+    "stats": {
+      "experience": {
+        "number": "15+",
+        "label": "Jahre Erfahrung"
+      },
+      "customers": {
+        "number": "50K+",
+        "label": "Zufriedene Kunden"
+      },
+      "destinations": {
+        "number": "200+",
+        "label": "Reiseziele"
+      },
+      "awards": {
+        "number": "25+",
+        "label": "Gewonnene Auszeichnungen"
+      }
+    }
+  },
+  "servicessection": {
+    "badge": "Unsere Dienstleistungen",
+    "title": "Komplette Reiselösungen",
+    "description": "Von der Planung bis zur Durchführung kümmern wir uns um jeden Aspekt Ihrer Reise.",
+    "services": [
+      {
+        "icon": "Flugzeug",
+        "title": "Flug buchen",
+        "description": "Die besten Angebote für nationale und internationale Flüge."
+      },
+      {
+        "icon": "Hotel",
+        "title": "Hotel Reservierungen",
+        "description": "Luxusunterkünfte zu unschlagbaren Preisen."
+      },
+      {
+        "icon": "Auto",
+        "title": "Autovermietung",
+        "description": "Zuverlässiger Transport für Ihre Bequemlichkeit."
+      },
+      {
+        "icon": "Leitfaden",
+        "title": "Reiseleiter",
+        "description": "Professionelle Führer für eindringliche Erlebnisse."
+      },
+      {
+        "icon": "Versicherung",
+        "title": "Reiseversicherung",
+        "description": "Umfassender Versicherungsschutz für sorgenfreies Reisen."
+      },
+      {
+        "icon": "Visum",
+        "title": "Visa-Unterstützung",
+        "description": "Vollständige Unterstützung bei der Visabearbeitung."
+      }
+    ]
+  },
+  "packagessection": {
+    "badge": "Reisepakete",
+    "title": "Kuratierte Reiseerlebnisse",
+    "description": "Entdecken Sie unsere handverlesenen Pakete, die für unvergessliche Erinnerungen sorgen.",
+    "filters": {
+      "all": "Alle Pakete",
+      "adventure": "Abenteuer",
+      "luxury": "Luxus",
+      "cultural": "Kulturelles",
+      "romantic": "Romantisch"
+    },
+    "packages": [
+      {
+        "title": "London Explorer",
+        "category": "Kultur",
+        "duration": "5 Tage",
+        "price": "£1,299",
+        "originalPrice": "£1,599",
+        "image": "/Bilder/london-package.jpg",
+        "highlights": [
+          "Big Ben",
+          "London Eye",
+          "Buckingham Palast",
+          "Tower Bridge"
+        ],
+        "description": "Entdecken Sie den historischen Charme und die moderne Lebendigkeit Londons.",
+        "id": 1,
+        "rating": 4.8,
+        "reviews": 324
+      },
+      {
+        "title": "Schottische Highlands",
+        "category": "Abenteuer",
+        "duration": "7 Tage",
+        "price": "£1,899",
+        "originalPrice": "£2,299",
+        "image": "/Bilder/schottland-package.jpg",
+        "highlights": [
+          "Edinburgh Castle",
+          "Loch Ness",
+          "Isle of Skye",
+          "Whisky-Touren"
+        ],
+        "description": "Abenteuer in den atemberaubenden Landschaften Schottlands.",
+        "id": 2,
+        "rating": 4.9,
+        "reviews": 156
+      }
+    ]
+  },
+  "testimonialssection": {
+    "badge": "Testimonials",
+    "title": "Was unsere Reisenden sagen",
+    "description": "Lesen Sie authentische Bewertungen von unseren zufriedenen Kunden.",
+    "testimonials": [
+      {
+        "name": "Sarah Johnson",
+        "location": "New York, USA",
+        "comment": "Eine absolut erstaunliche Erfahrung! Jedes Detail war perfekt geplant.",
+        "avatar": "/Bilder/Avatar1.jpg",
+        "trip": "London Explorer Paket",
+        "id": 1,
+        "rating": 5
+      },
+      {
+        "name": "Michael Chen",
+        "location": "Toronto, Kanada",
+        "comment": "Die Reise in die schottischen Highlands hat alle unsere Erwartungen übertroffen. Sehr zu empfehlen!",
+        "avatar": "/Bilder/avatar2.jpg",
+        "trip": "Schottisches Hochland-Paket",
+        "id": 2,
+        "rating": 5
+      }
+    ]
+  },
+  "contactsection": {
+    "badge": "Kontakt aufnehmen",
+    "title": "Planen Sie Ihr nächstes Abenteuer",
+    "description": "Sind Sie bereit für eine Entdeckungsreise? Kontaktieren Sie noch heute unsere Reiseexperten.",
+    "form": {
+      "name": {
+        "label": "Vollständiger Name",
+        "placeholder": "Geben Sie Ihren vollständigen Namen ein"
+      },
+      "email": {
+        "label": "E-Mail Adresse",
+        "placeholder": "Ihre E-Mail eingeben"
+      },
+      "phone": {
+        "label": "Rufnummer",
+        "placeholder": "Geben Sie Ihre Rufnummer ein"
+      },
+      "destination": {
+        "label": "Bevorzugtes Ziel",
+        "placeholder": "Wohin würden Sie gerne gehen?"
+      },
+      "message": {
+        "label": "Nachricht",
+        "placeholder": "Erzählen Sie uns von Ihren Reiseplänen..."
+      },
+      "submit": "Nachricht senden"
+    },
+    "contactInfo": {
+      "address": {
+        "title": "Besuchen Sie uns",
+        "details": "123 Travel Street, London, UK SW1A 1AA"
+      },
+      "phone": {
+        "title": "Rufen Sie uns an",
+        "details": "+44 20 7946 0958"
+      },
+      "email": {
+        "title": "E-Mail",
+        "details": "info@travelco.com"
+      },
+      "hours": {
+        "title": "Bürozeiten",
+        "details": "Mo - Fr: 9:00 AM - 6:00 PM"
+      }
+    }
+  },
+  "tableOfContents": {
+    "title": "Inhaltsübersicht",
+    "subtitle": "Navigieren durch Abschnitte",
+    "currentlyReading": "Derzeit lesen",
+    "sectionsCount": "{{Anzahl}} zu erforschende Abschnitte",
+    "quickNavigation": "Schnelle Navigation",
+    "scrollText": "Durch die Abschnitte {{count}} blättern",
+    "sections": [
+      {
+        "title": "Faszinierende Fakten über das Vereinigte Königreich",
+        "id": 1
+      },
+      {
+        "title": "Visum- und Aufenthaltsoptionen für den Umzug nach Großbritannien",
+        "id": 2
+      },
+      {
+        "title": "Anforderungen für den Umzug nach UK",
+        "id": 3
+      },
+      {
+        "title": "Arbeiten im Vereinigten Königreich",
+        "id": 4
+      },
+      {
+        "title": "Umzug von den USA nach Großbritannien",
+        "id": 5
+      },
+      {
+        "title": "Umzug von der Türkei nach Großbritannien",
+        "id": 6
+      },
+      {
+        "title": "Wie viel kostet der Umzug nach Großbritannien?",
+        "id": 7
+      },
+      {
+        "title": "Umzug mit Haustieren nach UK",
+        "id": 8
+      }
+    ]
+  },
+  "facts": {
+    "title": "Faszinierende Fakten über das Vereinigte Königreich",
+    "subtitle": "Entdecken Sie, was das Vereinigte Königreich zu einem einzigartigen Reiseziel macht",
+    "factsList": [
+      {
+        "title": "Reiche Geschichte",
+        "description": "Über 1000 Jahre dokumentierte Geschichte mit unzähligen historischen Sehenswürdigkeiten."
+      },
+      {
+        "title": "Kulturelle Vielfalt",
+        "description": "Hier leben Menschen mit über 200 verschiedenen Nationalitäten."
+      },
+      {
+        "title": "Wirtschaftliche Macht",
+        "description": "Eine der größten Volkswirtschaften und Finanzzentren der Welt."
+      },
+      {
+        "title": "Exzellente Bildung",
+        "description": "Hier befinden sich weltberühmte Universitäten wie Oxford und Cambridge."
+      }
+    ]
+  },
+  "visa": {
+    "title": "Visa- und Aufenthaltsoptionen für den Umzug nach Großbritannien",
+    "subtitle": "Wählen Sie den richtigen Visumspfad für Ihre Situation",
+    "visaTypes": [
+      {
+        "type": "Visum für qualifizierte Arbeitskräfte",
+        "description": "Für Personen mit einem Stellenangebot von einem britischen Arbeitgeber",
+        "requirements": [
+          "Stellenangebot",
+          "Englisch-Kenntnisse",
+          "Gehaltsschwelle"
+        ],
+        "duration": "bis zu 5 Jahre"
+      },
+      {
+        "type": "Studentenvisum",
+        "description": "Für ein Vollzeitstudium an einer britischen Bildungseinrichtung",
+        "requirements": [
+          "Annahme durch die Universität",
+          "Finanzieller Nachweis",
+          "Englisch-Kenntnisse"
+        ],
+        "duration": "Kursdauer + zusätzliche Zeit"
+      },
+      {
+        "type": "Familienvisum",
+        "description": "Für nachziehende Familienangehörige mit Wohnsitz im Vereinigten Königreich",
+        "requirements": [
+          "Nachweis der familiären Beziehungen",
+          "Finanzielle Anforderungen",
+          "Englisch-Kenntnisse"
+        ],
+        "duration": "2,5 bis 5 Jahre"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "Anforderungen für den Umzug nach UK",
+    "subtitle": "Wichtige Dokumente und Kriterien, die Sie erfüllen müssen",
+    "generalRequirements": [
+      {
+        "category": "Dokumentation",
+        "items": [
+          "Gültiger Reisepass",
+          "Visumantrag",
+          "Biometrische Daten",
+          "Fotos"
+        ]
+      },
+      {
+        "category": "Finanzen",
+        "items": [
+          "Kontoauszüge",
+          "Einkommensnachweis",
+          "Dokumente zur Patenschaft",
+          "Steuerliche Aufzeichnungen"
+        ]
+      },
+      {
+        "category": "Persönlich",
+        "items": [
+          "Medizinische Untersuchung",
+          "Überprüfung des strafrechtlichen Hintergrunds",
+          "Prüfung der Englischkenntnisse",
+          "Bildungsabschlüsse"
+        ]
+      }
+    ]
+  },
+  "job": {
+    "title": "Arbeiten im Vereinigten Königreich",
+    "subtitle": "Beschäftigungsmöglichkeiten und Arbeitskultur im Vereinigten Königreich",
+    "workInfo": {
+      "averageSalary": "£35.000 - £45.000 jährlich",
+      "workingHours": "37,5 Stunden pro Woche Standard",
+      "holidays": "28 Tage Mindestjahresurlaub",
+      "benefits": "NHS-Gesundheitsversorgung, Rentensysteme, Krankengeld"
+    },
+    "jobSectors": [
+      {
+        "sector": "Technologie",
+        "demand": "Hoch",
+        "averageSalary": "£45,000 - £80,000"
+      },
+      {
+        "sector": "Gesundheitswesen",
+        "demand": "Sehr hoch",
+        "averageSalary": "£35,000 - £70,000"
+      },
+      {
+        "sector": "Finanzen",
+        "demand": "Hoch",
+        "averageSalary": "£40,000 - £90,000"
+      }
+    ]
+  },
+  "moving": {
+    "title": "Umzug von den USA nach Großbritannien",
+    "subtitle": "Besondere Überlegungen für amerikanische Staatsbürger",
+    "process": [
+      {
+        "title": "Wählen Sie Ihr Visum",
+        "description": "Bestimmen Sie, welche Visumskategorie für Ihre Situation geeignet ist",
+        "step": 1
+      },
+      {
+        "title": "Dokumente vorbereiten",
+        "description": "Sammeln aller erforderlichen Unterlagen und Bescheinigungen",
+        "step": 2
+      },
+      {
+        "title": "Bewerbung einreichen",
+        "description": "Online bewerben und biometrischen Termin wahrnehmen",
+        "step": 3
+      },
+      {
+        "title": "Planen Sie Ihren Umzug",
+        "description": "Vermittlung von Unterkunft, Verschiffung und erster Abrechnung",
+        "step": 4
+      }
+    ]
+  },
+  "turkeyToUk": {
+    "title": "Umzug von der Türkei nach Großbritannien",
+    "subtitle": "Leitfaden für türkische Staatsbürger, die in das Vereinigte Königreich einwandern",
+    "considerations": [
+      "Visumpflicht für türkische Staatsangehörige",
+      "Übersetzung und Apostille von Dokumenten",
+      "Tipps zur kulturellen Anpassung",
+      "Türkische Gemeinschaft im Vereinigten Königreich"
+    ]
+  },
+  "cost": {
+    "title": "Wie viel kostet der Umzug nach Großbritannien?",
+    "subtitle": "Budgetplanung für Ihre Einwanderung ins Vereinigte Königreich",
+    "costs": {
+      "visa": {
+        "title": "Visagebühren",
+        "amount": "£610 - £1,423",
+        "description": "Abhängig von der Art und Dauer des Visums"
+      },
+      "healthcare": {
+        "title": "Zuschlag für das Gesundheitswesen",
+        "amount": "624 € pro Jahr",
+        "description": "Immigration Health Surcharge (IHS)"
+      },
+      "moving": {
+        "title": "Umzugskosten",
+        "amount": "£2,000 - £8,000",
+        "description": "Versand, Flüge und Ersteinrichtung"
+      },
+      "living": {
+        "title": "Erste Lebenshaltungskosten",
+        "amount": "£1,500 - £3,000",
+        "description": "Erster Monat Unterkunft und Spesen"
+      }
+    }
+  },
+  "pet": {
+    "title": "Umzug mit Haustieren nach UK",
+    "subtitle": "Anforderungen und Verfahren für die Mitnahme von Haustieren",
+    "requirements": [
+      {
+        "requirement": "Haustier-Pass",
+        "description": "EU-Heimtierausweis oder amtliche Veterinärbescheinigung eines Drittlandes",
+        "timeframe": "Mindestens 21 Tage vor der Reise"
+      },
+      {
+        "requirement": "Mikrochip",
+        "description": "ISO 11784/11785-konformer Mikrochip vor der Tollwutimpfung",
+        "timeframe": "Vor der Tollwutimpfung"
+      },
+      {
+        "requirement": "Tollwut-Impfung",
+        "description": "Gültige Tollwutimpfung, die nach dem Mikrochippen verabreicht wurde",
+        "timeframe": "21 Tage vor der Einreise"
+      },
+      {
+        "requirement": "Gesundheitszeugnis",
+        "description": "Amtliche Veterinärbescheinigung mit Unterschrift eines ermächtigten Tierarztes",
+        "timeframe": "Innerhalb von 10 Tagen nach der Reise"
+      }
+    ],
+    "process": [
+      {
+        "title": "Mikrochip für Ihr Haustier",
+        "description": "Vergewissern Sie sich, dass Ihr Haustier mit einem Mikrochip nach ISO-Norm ausgestattet ist.",
+        "step": 1
+      },
+      {
+        "title": "Tollwut-Impfung",
+        "description": "Tollwutimpfung erhalten und 21 Tage warten",
+        "step": 2
+      },
+      {
+        "title": "Gesundheitszeugnis",
+        "description": "Gesundheitsbescheinigung eines zugelassenen Tierarztes einholen",
+        "step": 3
+      },
+      {
+        "title": "Reisen buchen",
+        "description": "Organisieren Sie einen haustierfreundlichen Transport nach Großbritannien",
+        "step": 4
+      }
+    ],
+    "costs": {
+      "microchip": "£15 - £30",
+      "vaccination": "£50 - £100",
+      "healthCertificate": "£100 - £200",
+      "transportation": "£200 - £1,000",
+      "quarantine": "Kostenlos (wenn die Voraussetzungen erfüllt sind)"
+    }
+  },
+  "ukInfoCard": {
+    "title": "Faszinierende Fakten über das Vereinigte Königreich",
+    "description": "Entdecken Sie das reiche Erbe und die faszinierenden Eigenschaften des Vereinigten Königreichs, von der historischen Monarchie bis hin zu atemberaubenden Landschaften und akademischen Spitzenleistungen.",
+    "didYouKnow": "Wussten Sie das?",
+    "cta": "Entdecken Sie mehr über das Vereinigte Königreich",
+    "footer": "© 2025 Vereinigtes Königreich Information",
+    "navigation": {
+      "previous": "Vorherige",
+      "next": "Weiter",
+      "counter": "{{aktuell}} von {{insgesamt}}"
+    },
+    "facts": [
+      {
+        "title": "Antike Monarchie",
+        "content": "Das Vereinigte Königreich ist eine der ältesten Monarchien der Welt, die über 1.000 Jahre alt ist.",
+        "detail": "Die britische Monarchie besteht ununterbrochen seit dem 9. Jahrhundert, wobei Königin Elisabeth II. vor König Karl III. die am längsten regierende Monarchin in der britischen Geschichte ist.",
+        "iconType": "Krone",
+        "emoji": "👑",
+        "color": "bg-indigo-500"
+      },
+      {
+        "title": "Top-Universitäten",
+        "content": "Das Vereinigte Königreich beherbergt einige der besten Universitäten der Welt, darunter Oxford und Cambridge.",
+        "detail": "Oxford und Cambridge, deren Geschichte bis ins 11. bzw. 13. Jahrhundert zurückreicht, gehören durchweg zu den 10 besten Universitäten der Welt.",
+        "iconType": "Graduierung",
+        "emoji": "🎓",
+        "color": "bg-emerald-500"
+      },
+      {
+        "title": "Inselstaat",
+        "content": "Das Vereinigte Königreich ist ein Inselstaat mit über 7.000 kleineren Inseln.",
+        "detail": "Großbritannien ist zwar die größte Insel, doch gehören zum Vereinigten Königreich auch zahlreiche andere bemerkenswerte Inseln wie die Isle of Wight, Anglesey und die Hebriden.",
+        "iconType": "Wellen",
+        "emoji": "🏝️",
+        "color": "bg-blau-500"
+      },
+      {
+        "title": "Wissenschaftliches Erbe",
+        "content": "Britische Wissenschaftler haben wichtige Beiträge geleistet, darunter Isaac Newton, Charles Darwin und Stephen Hawking.",
+        "detail": "Das Vereinigte Königreich hat über 100 Nobelpreisträger in den Wissenschaften hervorgebracht, mit bahnbrechenden Entdeckungen von der Schwerkraft bis zur DNA-Struktur und Quantenphysik.",
+        "iconType": "Glühbirne",
+        "emoji": "💡",
+        "color": "bg-amber-500"
+      },
+      {
+        "title": "Höchster Spitzenwert",
+        "content": "Der höchste Berg ist der Ben Nevis in Schottland (1.345 Meter).",
+        "detail": "Der in den schottischen Highlands gelegene Ben Nevis zieht jährlich über 100.000 Bergsteiger an und bietet eine seltene alpine Flora und Fauna.",
+        "iconType": "Berg",
+        "emoji": "🏔️",
+        "color": "bg-schiefer-500"
+      }
+    ]
+  },
+  "categories": {
+    "history": {
+      "title": "Historisches Erbe",
+      "description": "Entdecken Sie das reiche historische Erbe des Vereinigten Königreichs",
+      "facts": [
+        {
+          "title": "Mittelalterliche Schlösser",
+          "description": "Im Vereinigten Königreich gibt es über 1 500 Schlösser, von denen viele aus dem Mittelalter stammen.",
+          "highlight": "Windsor Castle ist das älteste bewohnte Schloss der Welt."
+        },
+        {
+          "title": "Römisches Erbe",
+          "description": "Der Hadrianswall erstreckt sich über 84 Meilen durch Nordengland.",
+          "highlight": "Erbaut von Kaiser Hadrian im Jahr 122 n. Chr. zur Verteidigung des römischen Britanniens."
+        },
+        {
+          "title": "Industrielle Revolution",
+          "description": "Das Vereinigte Königreich war im 18. Jahrhundert die Geburtsstätte der industriellen Revolution.",
+          "highlight": "Die erste Dampfmaschine wurde 1769 von James Watt entwickelt."
+        }
+      ]
+    },
+    "geography": {
+      "title": "Geografische Wunder",
+      "description": "Erkunden Sie die vielfältigen Landschaften und natürlichen Gegebenheiten",
+      "facts": [
+        {
+          "title": "Länge der Küstenlinie",
+          "description": "Das Vereinigte Königreich hat etwa 11.000 Meilen Küstenlinie.",
+          "highlight": "Kein Punkt im Vereinigten Königreich ist weiter als 75 Meilen vom Meer entfernt."
+        },
+        {
+          "title": "Nationalparks",
+          "description": "In England, Wales und Schottland gibt es 15 Nationalparks.",
+          "highlight": "Der Lake District war der erste Nationalpark, der 1951 eingerichtet wurde."
+        },
+        {
+          "title": "Klimazonen",
+          "description": "Trotz seiner Größe hat das Vereinigte Königreich mehrere unterschiedliche Klimazonen.",
+          "highlight": "In Schottland kann es am selben Tag 10°C kälter sein als in Südengland."
+        }
+      ]
+    },
+    "culture": {
+      "title": "Kultureller Reichtum",
+      "description": "Die kulturelle Vielfalt und der künstlerische Beitrag des Vereinigten Königreichs",
+      "facts": [
+        {
+          "title": "Literarische Giganten",
+          "description": "Heimat von Shakespeare, Dickens, Austen und vielen anderen literarischen Legenden.",
+          "highlight": "Shakespeare erfand über 1.700 Wörter, die noch heute verwendet werden."
+        },
+        {
+          "title": "Musikalisches Erbe",
+          "description": "Geburtsort der Beatles, Queen, Led Zeppelin und unzähliger anderer Bands.",
+          "highlight": "Das Vereinigte Königreich hat mehr weltweite Nummer-1-Hits produziert als jedes andere Land außer den USA."
+        },
+        {
+          "title": "Theater Tradition",
+          "description": "Das Londoner West End ist eines der bedeutendsten Theaterviertel der Welt.",
+          "highlight": "Das Globe Theatre bietet Aufführungen im gleichen Stil wie zu Shakespeares Zeiten."
+        }
+      ]
+    },
+    "science": {
+      "title": "Wissenschaftliche Exzellenz",
+      "description": "Bahnbrechende Entdeckungen und Innovationen britischer Köpfe",
+      "facts": [
+        {
+          "title": "Medizinische Durchbrüche",
+          "description": "Penicillin, Impfstoffe und die DNA-Struktur wurden hier entdeckt.",
+          "highlight": "Alexander Fleming entdeckte das Penicillin 1928 zufällig."
+        },
+        {
+          "title": "Physik-Pioniere",
+          "description": "Newtons Gesetze, Darwins Evolution und Hawkings schwarze Löcher.",
+          "highlight": "Stephen Hawkings \"Eine kurze Geschichte der Zeit\" wurde über 25 Millionen Mal verkauft."
+        },
+        {
+          "title": "Technologie-Innovation",
+          "description": "Das World Wide Web und die Computer haben britische Ursprünge.",
+          "highlight": "Tim Berners-Lee erfand 1989 am CERN das World Wide Web."
+        }
+      ]
+    }
+  },
+  "statistics": {
+    "title": "UK in Zahlen",
+    "subtitle": "Faszinierende Statistiken über das Vereinigte Königreich",
+    "stats": [
+      {
+        "number": "66.8M",
+        "label": "Bevölkerung",
+        "description": "Gesamtbevölkerung des Vereinigten Königreichs"
+      },
+      {
+        "number": "243,610",
+        "label": "Quadratkilometer",
+        "description": "Gesamtfläche des Vereinigten Königreichs"
+      },
+      {
+        "label": "Länder",
+        "description": "England, Schottland, Wales und Nordirland",
+        "number": "4"
+      },
+      {
+        "number": "100+",
+        "label": "Nobelpreise",
+        "description": "Nobelpreisträger aus dem Vereinigten Königreich"
+      },
+      {
+        "label": "UNESCO-Stätten",
+        "description": "Welterbestätten in Großbritannien",
+        "number": "31"
+      },
+      {
+        "number": "1,000+",
+        "label": "Jahre",
+        "description": "Zeitalter der britischen Monarchie"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Erfahren Sie mehr über das Vereinigte Königreich",
+    "subtitle": "Nehmen Sie Kontakt auf, wenn Sie weitere Informationen über die britische Kultur und das britische Erbe wünschen.",
+    "form": {
+      "name": {
+        "label": "Vollständiger Name",
+        "placeholder": "Geben Sie Ihren vollständigen Namen ein"
+      },
+      "email": {
+        "label": "E-Mail Adresse",
+        "placeholder": "Geben Sie Ihre E-Mail Adresse ein"
+      },
+      "interest": {
+        "label": "Bereich von Interesse",
+        "placeholder": "Welcher Aspekt der britischen Kultur interessiert Sie am meisten?"
+      },
+      "message": {
+        "label": "Nachricht",
+        "placeholder": "Sagen Sie uns, was Sie gerne über das Vereinigte Königreich wissen möchten..."
+      },
+      "submit": "Anfrage senden"
+    },
+    "contactInfo": {
+      "address": {
+        "title": "Besuchen Sie uns",
+        "details": "123 British Heritage Street, London, UK SW1A 1AA"
+      },
+      "phone": {
+        "title": "Rufen Sie uns an",
+        "details": "+44 20 7946 0123"
+      },
+      "email": {
+        "title": "E-Mail",
+        "details": "info@ukexplorer.com"
+      },
+      "hours": {
+        "title": "Stunden",
+        "details": "Montag - Freitag: 9:00 - 17:00 Uhr"
+      }
+    }
+  },
+  "costsGuide": {
+    "title": "Wie viel kostet ein Umzug ins Vereinigte Königreich?",
+    "description": "Eine umfassende Aufstellung aller Kosten, die Sie bei einem Umzug in das Vereinigte Königreich zu erwarten haben, von den Visagebühren bis zu den täglichen Lebenshaltungskosten.",
+    "sections": [
+      {
+        "id": "Visum-Einwanderung",
+        "icon": "🛂",
+        "title": "Visum & Einwanderung",
+        "amount": "£250-£3,000",
+        "details": "Einschließlich Visumantrag, Zuschlag für medizinische Versorgung, biometrische Daten",
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "Gehäuse",
+        "icon": "🏠",
+        "title": "Gehäuse",
+        "amount": "£1.800-£5.000 im Voraus",
+        "details": "1-2 Monatskautionen + erste Monatsmiete + Vermittlungsgebühren",
+        "subItems": [
+          {
+            "title": "London (monatlich)",
+            "amount": "£1,500-£2,500"
+          },
+          {
+            "title": "Großstädte (monatlich)",
+            "amount": "£800-£1,200"
+          },
+          {
+            "title": "Städte/Ländliche Gebiete (monatlich)",
+            "amount": "£600-£900"
+          }
+        ],
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "Versand",
+        "icon": "📦",
+        "title": "Versand (optional)",
+        "amount": "£2,000-£6,000",
+        "details": "20-Fuß-Container. Viele Auswanderer mieten Möbel oder kaufen sie vor Ort.",
+        "color": "bg-sky-800"
+      },
+      {
+        "id": "Versorgungsunternehmen",
+        "icon": "💡",
+        "title": "Dienstprogramme und Internet-Einrichtung",
+        "amount": "£100-£300",
+        "details": "Einrichtungsgebühren & Kautionen",
+        "subItems": [
+          {
+            "title": "Monatliche Rechnungen",
+            "amount": "£150-£300"
+          },
+          {
+            "title": "Gemeindesteuer (monatlich)",
+            "amount": "£120-£300"
+          }
+        ],
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "Alltag",
+        "icon": "🛒",
+        "title": "Alltägliche Kosten",
+        "amount": "£800-£1,500 monatlich",
+        "subItems": [
+          {
+            "title": "Lebensmittel",
+            "amount": "£250-£450/Monat"
+          },
+          {
+            "title": "Öffentliche Verkehrsmittel",
+            "amount": "£150-£300/Monat"
+          },
+          {
+            "title": "Handy & Internet",
+            "amount": "£40-£80/Monat"
+          },
+          {
+            "title": "Unterhaltung & Essen",
+            "amount": "£200-£400/Monat"
+          }
+        ],
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "Bankwesen",
+        "icon": "🏦",
+        "title": "Bankwesen und Finanzen",
+        "amount": "£50-£200",
+        "details": "Kontoeinrichtungsgebühren, internationale Überweisungen",
+        "color": "bg-sky-600"
+      }
+    ],
+    "totalCosts": {
+      "title": "Geschätzte Gesamtumzugskosten",
+      "options": [
+        {
+          "title": "Option Haushalt",
+          "amount": "£3,000-£5,000",
+          "description": "Mindestkosten für eine Einzelperson, außerhalb Londons, minimales Hab und Gut",
+          "featured": false
+        },
+        {
+          "title": "Standard-Bewegung",
+          "amount": "£5,000-£10,000",
+          "description": "Durchschnittliche Kosten für eine Einzelperson oder ein Paar mit moderatem Versand",
+          "featured": true
+        },
+        {
+          "title": "Umzug der Familie",
+          "amount": "£10,000-£20,000+",
+          "description": "3-4-köpfige Familie zieht mit vollem Schiffscontainer nach London",
+          "featured": false
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "UK Geld-Spar-Strategien",
+      "tips": [
+        {
+          "title": "Der Standort ist wichtig",
+          "description": "Wenn Sie außerhalb von London wohnen, können Sie Ihre Wohnkosten um 40-60 % senken. Ziehen Sie Städte wie Manchester, Birmingham oder Glasgow in Betracht, um ein besseres Preis-Leistungs-Verhältnis zu erzielen."
+        },
+        {
+          "title": "Möblierte Unterkünfte",
+          "description": "Möblierte Mietobjekte können Tausende von Transport- und Möbelkosten sparen. Kurzfristige Anmietungen ermöglichen es Ihnen, die richtige Nachbarschaft zu finden, bevor Sie sich festlegen."
+        },
+        {
+          "title": "Transport Einsparungen",
+          "description": "Kaufen Sie Jahreskarten und ziehen Sie das Fahrradfahren in fahrradfreundlichen Städten in Betracht. Die Transportkosten in London sind deutlich höher als in anderen britischen Städten."
+        },
+        {
+          "title": "Bankwesen & Währung",
+          "description": "Nutzen Sie Dienste wie Wise oder Revolut für internationale Überweisungen, um hohe Bankgebühren zu vermeiden. Tauschen Sie die Währung um, wenn die Kurse günstig sind, bevor Sie umziehen."
+        }
+      ]
+    },
+    "considerations": {
+      "title": "Wesentliche UK-spezifische Überlegungen",
+      "items": [
+        {
+          "icon": "🏥",
+          "title": "Gesundheitswesen",
+          "description": "Planen Sie die Immigration Health Surcharge (£624 pro Jahr für Erwachsene) ein, wenn Sie ein Visum für mehr als 6 Monate beantragen, damit Sie Zugang zum NHS haben."
+        },
+        {
+          "icon": "📱",
+          "title": "Kommunikation",
+          "description": "Ziehen Sie SIM-only-Angebote anstelle von Verträgen in Betracht, vor allem, wenn Sie Ihr eigenes Telefon haben. Anbieter wie giffgaff und Lebara bieten flexible vertragsfreie Optionen an."
+        },
+        {
+          "icon": "🌦️",
+          "title": "Saisonale Kosten",
+          "description": "Die Heizkosten im Winter können erheblich sein. Ziehen Sie Unterkünfte mit guter Isolierung und Energieeffizienzklassen in Betracht, um bei den Nebenkosten zu sparen."
+        },
+        {
+          "icon": "🚗",
+          "title": "Verkehrsplanung",
+          "description": "Wenn Sie vorhaben, mit dem Auto zu fahren, müssen Sie mit höheren Versicherungskosten für neue Einwohner des Vereinigten Königreichs und möglichen Gebühren für Umweltzonen in Großstädten rechnen."
+        }
+      ]
+    },
+    "conclusion": {
+      "title": "Planung Ihres Umzugs nach Großbritannien",
+      "description": "Ein Umzug in das Vereinigte Königreich stellt eine beträchtliche Investition dar, insbesondere wenn Sie nach London oder in andere Großstädte ziehen. Auch wenn die anfänglichen Kosten hoch erscheinen mögen, kann eine gute Planung und Recherche Ihnen helfen, den Prozess kostengünstig zu bewältigen. Überlegen Sie sich Ihren Wohnort sorgfältig und stellen Sie sich darauf ein, dass die Lebenshaltungskosten höher sind als in vielen anderen Ländern, aber genießen Sie auch die hervorragenden öffentlichen Dienstleistungen, das Gesundheitswesen und die Lebensqualität, die das Vereinigte Königreich zu bieten hat."
+    }
+  },
+  "calculator": {
+    "title": "UK Umzugskosten-Rechner",
+    "subtitle": "Erhalten Sie einen individuellen Kostenvoranschlag für Ihren Umzug nach Großbritannien",
+    "form": {
+      "familySize": {
+        "label": "Größe der Familie",
+        "options": [
+          "Einzelperson",
+          "Ehepaar",
+          "Familie (3-4 Personen)",
+          "Große Familie (5+ Personen)"
+        ]
+      },
+      "destination": {
+        "label": "UK Reiseziel",
+        "options": [
+          "London",
+          "Großstadt (Manchester, Birmingham, usw.)",
+          "Mittlere Stadt/Stadt",
+          "Ländliches Gebiet"
+        ]
+      },
+      "shipping": {
+        "label": "Anforderungen an den Versand",
+        "options": [
+          "Kein Versand (Kauf vor Ort)",
+          "Teilweiser Versand (nur das Wesentliche)",
+          "Vollcontainer-Versand",
+          "Mehrere Container"
+        ]
+      },
+      "visaType": {
+        "label": "Visum Typ",
+        "options": [
+          "Studentenvisum",
+          "Visum für qualifizierte Arbeitskräfte",
+          "Familienvisum",
+          "Investorenvisum",
+          "Andere"
+        ]
+      },
+      "calculate": "Kostenvoranschlag berechnen"
+    },
+    "results": {
+      "title": "Ihre geschätzten Umzugskosten",
+      "breakdown": "Kostenaufschlüsselung:",
+      "total": "Geschätzte Gesamtkosten:",
+      "disclaimer": "Dies ist eine Schätzung, die auf durchschnittlichen Kosten beruht. Die tatsächlichen Kosten können je nach den spezifischen Umständen, dem Zeitplan und den Dienstleistern variieren."
+    }
+  },
+  "comparison": {
+    "title": "Vergleich der Lebenshaltungskosten im Vereinigten Königreich",
+    "subtitle": "Vergleichen Sie die Lebenshaltungskosten in Großbritannien mit denen in anderen großen Städten weltweit",
+    "categories": [
+      {
+        "category": "Gehäuse",
+        "london": "2.000 €/Monat",
+        "manchester": "£900/Monat",
+        "newyork": "2.800 €/Monat",
+        "paris": "1.800 €/Monat"
+      },
+      {
+        "category": "Lebensmittel",
+        "london": "£350/Monat",
+        "manchester": "£280/Monat",
+        "newyork": "£420/Monat",
+        "paris": "£320/Monat"
+      },
+      {
+        "category": "Transport",
+        "london": "£200/Monat",
+        "manchester": "£80/Monat",
+        "newyork": "£150/Monat",
+        "paris": "£90/Monat"
+      },
+      {
+        "category": "Auswärts essen",
+        "london": "£300/Monat",
+        "manchester": "£200/Monat",
+        "newyork": "£350/Monat",
+        "paris": "£280/Monat"
+      }
+    ]
+  },
+  "timeline": {
+    "title": "UK Umzugszeitplan & Kosten",
+    "subtitle": "Wann Sie für verschiedene Ausgaben während Ihres Umzugs ein Budget einplanen sollten",
+    "phases": [
+      {
+        "phase": "Vorbewerbung (3-6 Monate vorher)",
+        "costs": "£200-£500",
+        "items": [
+          "Vorbereitung und Übersetzung von Dokumenten",
+          "Prüfungen der englischen Sprache",
+          "Medizinische Untersuchungen",
+          "Juristische Konsultationen"
+        ]
+      },
+      {
+        "phase": "Visumantrag (2-4 Monate vorher)",
+        "costs": "£500-£3,500",
+        "items": [
+          "Visumantragsgebühren",
+          "Gesundheitszuschlag für Einwanderer",
+          "Biometrische Ernennungen",
+          "Vorrangige Bearbeitung (fakultativ)"
+        ]
+      },
+      {
+        "phase": "Vor der Abreise (1-2 Monate vorher)",
+        "costs": "£2,000-£8,000",
+        "items": [
+          "Versand und Logistik",
+          "Reisevorbereitungen",
+          "Buchungen für vorübergehende Unterkünfte",
+          "Umsiedlung von Haustieren (falls zutreffend)"
+        ]
+      },
+      {
+        "phase": "Ankunft (erster Monat)",
+        "costs": "£2,000-£6,000",
+        "items": [
+          "Wohnungskaution und Miete",
+          "Einrichtung von Versorgungseinrichtungen und Einlagen",
+          "Eröffnung eines Bankkontos",
+          "Anfängliche Lebenshaltungskosten"
+        ]
+      },
+      {
+        "phase": "Abrechnung (Monate 2-6)",
+        "costs": "£1,000-£3,000",
+        "items": [
+          "Möbel und Haushaltsgegenstände",
+          "Lokale Registrierung und Dokumentation",
+          "Bildungseinrichtung (falls zutreffend)",
+          "Kosten für die Eingliederung in die Gemeinschaft"
+        ]
+      }
+    ]
+  },
+  "resources": {
+    "title": "Geldmanagement-Ressourcen",
+    "subtitle": "Hilfreiche Tools und Dienste für die Verwaltung Ihrer Umzugsfinanzen im Vereinigten Königreich",
+    "categories": [
+      {
+        "title": "Währungsumtausch",
+        "services": [
+          {
+            "name": "Wise (ehemals TransferWise)",
+            "description": "Kostengünstige internationale Geldüberweisungen",
+            "fees": "0,35-2% des Überweisungsbetrags"
+          },
+          {
+            "name": "Revolut",
+            "description": "Mehrwährungskonto mit guten Wechselkursen",
+            "fees": "Frei bis zu bestimmten Grenzen"
+          },
+          {
+            "name": "XE Geld",
+            "description": "Günstige Preise für größere Überweisungen",
+            "fees": "Variiert je nach Betrag"
+          }
+        ]
+      },
+      {
+        "title": "Bankwesen",
+        "services": [
+          {
+            "name": "UK High Street Banks",
+            "description": "Traditionelle Banken wie Barclays, HSBC, Lloyds",
+            "fees": "Monatliche Gebühren £5-£25"
+          },
+          {
+            "name": "Digitale Banken",
+            "description": "Monzo, Starling Bank, Revolut",
+            "fees": "Häufig gebührenfreie Basiskonten"
+          },
+          {
+            "name": "Internationale Banken",
+            "description": "HSBC Expat, Citi International",
+            "fees": "Höhere Gebühren, aber globale Dienstleistungen"
+          }
+        ]
+      }
+    ]
+  },
+  "footer": {
+    "disclaimer": "Alle Kosten sind Schätzungen und können je nach individuellen Umständen, Marktbedingungen und Zeitplan variieren. Bitte wenden Sie sich an einen professionellen Berater, um eine persönliche Beratung zu erhalten.",
+    "lastUpdated": "Zuletzt aktualisiert: {{Datum}}",
+    "sources": "Datenquellen: Regierung des Vereinigten Königreichs, ONS, Immobilien-Websites und Erhebungen über Auswanderer."
+  },
+  "jobGuide": {
+    "header": {
+      "title": "Arbeiten im Vereinigten Königreich",
+      "subtitle": "Ein umfassender Leitfaden für internationale Arbeitssuchende",
+      "intro": {
+        "paragraph1": "Das Vereinigte Königreich mit seiner robusten Wirtschaft, seinem multikulturellen Umfeld und seinen Weltklasse-Städten ist nach wie vor ein Top-Ziel für internationale Fachkräfte, die beruflich vorankommen und wachsen wollen.",
+        "paragraph2": "In diesem Leitfaden erfahren Sie alles, was Sie über die Arbeitssuche im Vereinigten Königreich als ausländischer Staatsangehöriger wissen müssen, vom Verständnis des punktebasierten Einwanderungssystems über die Navigation auf dem lokalen Arbeitsmarkt bis hin zur Eingewöhnung in das britische Arbeitsleben."
+      }
+    },
+    "navigation": {
+      "title": "Schnelle Navigation",
+      "backToAll": "Zurück zu allen Rubriken"
+    },
+    "sections": [
+      {
+        "id": "Stellenmarkt",
+        "icon": "🔍",
+        "title": "Verständnis des britischen Arbeitsmarktes",
+        "type": "Stellenmarkt",
+        "content": {
+          "intro": "Das Vereinigte Königreich bietet vielfältige Möglichkeiten in verschiedenen Sektoren, wobei bestimmte Branchen für internationale Arbeitnehmer besonders zugänglich und attraktiv sind.",
+          "sectorsTitle": "Nachgefragte Sektoren für ausländische Arbeitskräfte:",
+          "sectors": [
+            {
+              "name": "Gesundheitswesen & NHS",
+              "description": "Ärzte, Krankenschwestern, Pflegepersonal, Spezialisten"
+            },
+            {
+              "name": "IT und Technologie",
+              "description": "Softwareentwicklung, Cybersicherheit, Datenwissenschaft"
+            },
+            {
+              "name": "Finanzen und Bankwesen",
+              "description": "Finanzanalyse, Investmentbanking, Fintech"
+            },
+            {
+              "name": "Bildung",
+              "description": "Lehre, Forschung, internationale Schulen"
+            },
+            {
+              "name": "Technik",
+              "description": "Bauingenieurwesen, Maschinenbau, Elektrotechnik"
+            },
+            {
+              "name": "Gastgewerbe und Tourismus",
+              "description": "Hotels, Restaurants, Tourismusmanagement"
+            }
+          ],
+          "conclusion": "Auf dem britischen Arbeitsmarkt werden Englischkenntnisse sehr geschätzt, und die meisten beruflichen Positionen erfordern gute Kommunikationsfähigkeiten. London bietet die vielfältigsten Möglichkeiten, aber Städte wie Manchester, Birmingham, Edinburgh und Bristol haben wachsende Arbeitsmärkte mit oft niedrigeren Lebenshaltungskosten."
+        }
+      },
+      {
+        "id": "visa-system",
+        "icon": "🔒",
+        "title": "UK Visa System: Punktesystem für die Einwanderung",
+        "type": "visa-system",
+        "content": {
+          "intro": "Das Vereinigte Königreich wendet ein punktebasiertes Einwanderungssystem an, bei dem Fähigkeiten, Qualifikationen und englische Sprachkenntnisse Vorrang haben.",
+          "routesTitle": "Wichtigste Routen für Arbeitsvisa:",
+          "visaRoutes": [
+            {
+              "name": "Visum für qualifizierte Arbeitskräfte",
+              "description": "Für qualifizierte Fachkräfte mit einem Stellenangebot eines britischen Arbeitgebers"
+            },
+            {
+              "name": "Global Talent Visa",
+              "description": "Für Führungskräfte oder potenzielle Führungskräfte in den Bereichen Wissenschaft, Forschung, Kunst oder digitale Technologie"
+            },
+            {
+              "name": "Visum für Beschäftigte im Gesundheits- und Pflegebereich",
+              "description": "Für qualifizierte medizinische Fachkräfte mit NHS-Stellenangeboten"
+            },
+            {
+              "name": "Visum für Hochschulabsolventen",
+              "description": "Für internationale Studierende, die einen britischen Abschluss erworben haben"
+            }
+          ],
+          "requirement": "Für die meisten Arbeitsvisa muss vor der Beantragung ein Jobangebot von einem zugelassenen Sponsor vorliegen."
+        }
+      },
+      {
+        "id": "Sponsoring",
+        "icon": "📋",
+        "title": "Sponsoring durch den Arbeitgeber",
+        "type": "Sponsoring",
+        "content": {
+          "requirementsTitle": "Voraussetzungen für das Sponsoring:",
+          "requirements": [
+            "Die Stelle muss in der Regel mindestens dem RQF-Level 3 (A-Level-Äquivalent) entsprechen",
+            "Das Gehalt muss den Mindestanforderungen entsprechen (in der Regel £26.200+, je nach Stelle)",
+            "Der Arbeitgeber muss ein lizenzierter und vom Innenministerium zugelassener Sponsor sein.",
+            "Die Rolle sollte auf der Liste der förderfähigen Berufe stehen"
+          ],
+          "shortageList": {
+            "title": "Liste der Mangelberufe",
+            "description": "Für die Berufe auf dieser Liste gelten einfachere Visabestimmungen und niedrigere Gehaltsschwellen. Zu den aktuellen Mangelberufen gehören:",
+            "occupations": [
+              "Fachleute des Gesundheitswesens",
+              "Ingenieure",
+              "IT-Spezialisten",
+              "Wissenschaftler und Forscher",
+              "Tierärztinnen und Tierärzte",
+              "Architekten und bestimmte Lehrtätigkeiten"
+            ]
+          },
+          "proTip": {
+            "title": "Profi-Tipp",
+            "description": "Wenden Sie sich an Unternehmen, die bereits in der Vergangenheit internationale Arbeitnehmer gefördert haben. Große multinationale Unternehmen, Technologieunternehmen und NHS Trusts haben oft mehr Erfahrung mit dem Sponsoring-Prozess.",
+            "additional": "Auf der Website der britischen Regierung können Sie überprüfen, ob ein Unternehmen eine Sponsoring-Lizenz besitzt."
+          }
+        }
+      },
+      {
+        "id": "Anwendungsprozess",
+        "icon": "📝",
+        "title": "UK Bewerbungsprozess",
+        "type": "Anwendungsprozess",
+        "content": {
+          "stepsTitle": "Schritte der Bewerbung:",
+          "steps": [
+            {
+              "title": "1. Lebenslauf & Anschreiben",
+              "description": "Arbeitgeber im Vereinigten Königreich erwarten einen 2-seitigen Lebenslauf, der sich auf die relevanten Fähigkeiten und Erfahrungen konzentriert. Anschreiben sollten prägnant und auf die jeweilige Stelle zugeschnitten sein."
+            },
+            {
+              "title": "2. Interview-Prozess",
+              "description": "Dazu gehören häufig ein erstes Telefonscreening, gefolgt von 1-2 Vorstellungsgesprächen (bei internationalen Bewerbern zunehmend virtuell) und möglicherweise Assessment-Aufgaben für technische Positionen."
+            },
+            {
+              "title": "3. Stellenangebot & Visumsponsoring",
+              "description": "Wenn Sie erfolgreich sind, erhalten Sie ein förmliches Angebotsschreiben und eine Bescheinigung über die Förderung Ihres Visumantrags."
+            }
+          ],
+          "cvTips": {
+            "title": "UK-spezifische Lebenslauf-Tipps:",
+            "tips": [
+              "Kein Foto erforderlich",
+              "Fügen Sie ein berufliches Profil/eine Zusammenfassung am Anfang ein",
+              "Konzentration auf Leistungen statt auf Pflichten",
+              "Fügen Sie relevante Qualifikationen und Zertifizierungen hinzu",
+              "Referenzen sind oft nicht aufgeführt, sondern \"auf Anfrage erhältlich\"."
+            ]
+          }
+        }
+      },
+      {
+        "id": "Jobsuche",
+        "icon": "🔎",
+        "title": "Arbeitsmöglichkeiten im Vereinigten Königreich finden",
+        "type": "Jobsuche",
+        "content": {
+          "portalsTitle": "Top UK Job Portale:",
+          "jobPortals": [
+            "Tatsächlich UK",
+            "Reed.co.uk",
+            "CV-Library",
+            "LinkedIn",
+            "Guardian Jobs",
+            "NHS-Jobs"
+          ],
+          "recruitmentAgencies": {
+            "title": "Personalvermittlungsagenturen",
+            "description": "Spezialisierte Personalvermittlungsagenturen können für internationale Arbeitssuchende sehr nützlich sein. Viele konzentrieren sich auf bestimmte Branchen oder Regionen und haben Beziehungen zu Arbeitgebern, die regelmäßig Visa sponsern."
+          },
+          "directApplications": {
+            "title": "Direkte Anwendungen",
+            "description": "Recherchieren Sie nach Unternehmen in Ihrem Fachgebiet, die über eine Sponsorlizenz verfügen, und bewerben Sie sich direkt über deren Karriereseiten. Multinationale Unternehmen haben oft etablierte Verfahren für die Einstellung internationaler Talente."
+          }
+        }
+      },
+      {
+        "id": "Lebenshaltungskosten",
+        "icon": "💷",
+        "title": "Überlegungen zu den Lebenshaltungskosten in Großbritannien",
+        "type": "Lebenshaltungskosten",
+        "content": {
+          "intro": "Die Kenntnis der Lebenshaltungskosten im Vereinigten Königreich ist für die Beurteilung von Stellenangeboten und die Planung Ihres Umzugs von entscheidender Bedeutung.",
+          "locations": [
+            {
+              "name": "London",
+              "description": "Deutlich höhere Kosten als im Rest des Vereinigten Königreichs",
+              "costs": [
+                {
+                  "category": "Miete",
+                  "amount": "£1.500-2.500/Monat (1-Bett-Wohnung)"
+                },
+                {
+                  "category": "Transport",
+                  "amount": "£140-180/Monat"
+                },
+                {
+                  "category": "Versorgungsunternehmen",
+                  "amount": "£150-200/Monat"
+                }
+              ]
+            },
+            {
+              "name": "Regionale Städte",
+              "description": "Manchester, Birmingham, Edinburgh, usw.",
+              "costs": [
+                {
+                  "category": "Miete",
+                  "amount": "700-1.200 £/Monat (1-Bett-Wohnung)"
+                },
+                {
+                  "category": "Transport",
+                  "amount": "£60-100/Monat"
+                },
+                {
+                  "category": "Versorgungsunternehmen",
+                  "amount": "£120-170/Monat"
+                }
+              ]
+            }
+          ],
+          "additionalExpenses": {
+            "title": "Zusätzliche Ausgaben:",
+            "items": [
+              "Zuschlag für die Gesundheitsfürsorge (£624 pro Jahr bei der Beantragung von Visa)",
+              "Gemeindesteuer (£1.000-2.000 jährlich, je nach Immobilie)",
+              "TV-Lizenz (£159 jährlich)",
+              "Anfängliche Umzugskosten und Kautionen"
+            ]
+          }
+        }
+      },
+      {
+        "id": "Gesundheitswesen",
+        "icon": "🏥",
+        "title": "Zugang zum britischen Gesundheitswesen",
+        "type": "Gesundheitswesen",
+        "content": {
+          "intro": "Alle Inhaber eines britischen Visums, die die Immigration Health Surcharge zahlen, haben Zugang zum National Health Service (NHS).",
+          "coverage": {
+            "description": "Damit ist eine umfassende Gesundheitsversorgung gewährleistet:",
+            "includes": [
+              "Termine beim Hausarzt (Arzt)",
+              "Behandlung im Krankenhaus",
+              "Notfallversorgung",
+              "Dienstleistungen für Wöchnerinnen"
+            ]
+          },
+          "registration": "Nach Ihrer Ankunft im Vereinigten Königreich müssen Sie sich bei einer örtlichen Hausarztpraxis anmelden. Für die zahnärztliche Versorgung und Rezepte müssen Sie möglicherweise zusätzliche Zahlungen leisten.",
+          "note": "Hinweis: Eine private Krankenversicherung ist fakultativ, kann aber einen schnelleren Zugang zu Fachärzten und zusätzlichen Leistungen ermöglichen, die vom NHS nicht abgedeckt werden."
+        }
+      },
+      {
+        "id": "Vernetzung",
+        "icon": "👥",
+        "title": "Netzwerkarbeit im Vereinigten Königreich",
+        "type": "Vernetzung",
+        "content": {
+          "intro": "Der Aufbau eines beruflichen Netzwerks ist für die Arbeitssuche im Vereinigten Königreich entscheidend:",
+          "online": {
+            "title": "Online-Vernetzung",
+            "platforms": [
+              "LinkedIn (unerlässlich für die Stellensuche in Großbritannien)",
+              "Professionelle Facebook-Gruppen",
+              "Branchenspezifische Foren und Gemeinschaften",
+              "Alumni-Netzwerke Ihrer Universität"
+            ]
+          },
+          "inPerson": {
+            "title": "Persönliche Veranstaltungen",
+            "events": [
+              "Industriekonferenzen und Seminare",
+              "Meetup.com-Veranstaltungen zu Ihrem Fachgebiet",
+              "Versammlungen von Berufsverbänden",
+              "Netzwerkveranstaltungen für internationale Fachleute"
+            ]
+          },
+          "advice": "Die britische Geschäftskultur legt Wert auf Professionalität und Höflichkeit. Konzentrieren Sie sich beim Networking auf den Aufbau echter Beziehungen, anstatt sofort nach Stellenangeboten zu fragen."
+        }
+      }
+    ],
+    "checklist": {
+      "title": "Ihre Checkliste für die Stellensuche in Großbritannien",
+      "beforeApplying": {
+        "title": "Bevor Sie sich bewerben",
+        "items": [
+          "Recherchieren Sie UK-spezifische Lebenslaufformate und -standards",
+          "Prüfen Sie, ob Ihr Beruf in der Liste der Mangelberufe aufgeführt ist",
+          "Überprüfen Sie, ob Ihre Qualifikationen im Vereinigten Königreich anerkannt sind",
+          "Bauen Sie Ihr LinkedIn-Profil mit UK-spezifischen Schlüsselwörtern auf"
+        ]
+      },
+      "duringSearch": {
+        "title": "Während Ihrer Stellensuche",
+        "items": [
+          "Zielunternehmen mit Sponsorenlizenzen",
+          "Vorbereitung auf Videointerviews über Zeitzonen hinweg",
+          "Recherchieren Sie typische Gehaltsspannen im Vereinigten Königreich für Ihre Rolle",
+          "Verstehen der britischen Arbeitsrechte und Leistungen"
+        ]
+      }
+    },
+    "conclusion": {
+      "title": "Beginnen Sie Ihre UK-Karriere-Reise",
+      "description": "Als ausländischer Staatsbürger im Vereinigten Königreich Arbeit zu finden, erfordert Vorbereitung, Ausdauer und Geduld. Obwohl das Einwanderungssystem spezifische Anforderungen stellt, ist das Vereinigte Königreich nach wie vor bestrebt, internationale Talente aus allen Branchen anzuziehen. Mit den richtigen Fähigkeiten, Qualifikationen und der richtigen Herangehensweise können Sie sich erfolgreich auf dem britischen Arbeitsmarkt bewegen und eine lohnende Karriere in einer der dynamischsten Volkswirtschaften der Welt aufbauen."
+    }
+  },
+  "salaryGuide": {
+    "title": "UK-Gehaltsführer nach Branche",
+    "subtitle": "Durchschnittliche Gehälter für internationale Fachkräfte",
+    "industries": [
+      {
+        "sector": "Informationstechnologie",
+        "averageRange": "£35,000 - £80,000",
+        "entryLevel": "£25,000 - £35,000",
+        "experienced": "£50,000 - £80,000",
+        "senior": "£70,000 - £120,000+",
+        "hotRoles": [
+          "Software-Ingenieure",
+          "Datenwissenschaftler",
+          "Cybersecurity-Spezialisten",
+          "DevOps-Ingenieure"
+        ]
+      },
+      {
+        "sector": "Gesundheitswesen",
+        "averageRange": "£30,000 - £70,000",
+        "entryLevel": "£24,000 - £30,000",
+        "experienced": "£40,000 - £60,000",
+        "senior": "£60,000 - £100,000+",
+        "hotRoles": [
+          "Krankenschwestern",
+          "Assistenzärztinnen und -ärzte",
+          "Fachleute",
+          "Manager im Gesundheitswesen"
+        ]
+      },
+      {
+        "sector": "Finanzen und Bankwesen",
+        "averageRange": "£40,000 - £90,000",
+        "entryLevel": "£28,000 - £40,000",
+        "experienced": "£50,000 - £80,000",
+        "senior": "£80,000 - £150,000+",
+        "hotRoles": [
+          "Finanzanalysten",
+          "Investmentbanker",
+          "Risiko-Manager",
+          "Compliance-Beauftragte"
+        ]
+      },
+      {
+        "sector": "Technik",
+        "averageRange": "£35,000 - £65,000",
+        "entryLevel": "£25,000 - £35,000",
+        "experienced": "£45,000 - £65,000",
+        "senior": "£65,000 - £100,000+",
+        "hotRoles": [
+          "Bauingenieure",
+          "Maschinenbauingenieure",
+          "Elektroingenieure",
+          "Projektleiter"
+        ]
+      }
+    ]
+  },
+  "workCulture": {
+    "title": "Leitfaden zur Arbeitskultur in Großbritannien",
+    "subtitle": "Die Erwartungen am britischen Arbeitsplatz verstehen",
+    "aspects": [
+      {
+        "category": "Kommunikationsstil",
+        "description": "Die britische Kommunikation ist in der Regel höflich, indirekt und beinhaltet oft Understatement.",
+        "tips": [
+          "Ausdrücke wie \"ziemlich gut\" bedeuten oft \"ausgezeichnet\".",
+          "Meinungsverschiedenheiten werden oft mit Sätzen wie \"Ich frage mich, ob...\" abgemildert.",
+          "Smalltalk über das Wetter ist üblich und wird erwartet",
+          "Pünktlichkeit wird hoch geschätzt"
+        ]
+      },
+      {
+        "category": "Work-Life-Balance",
+        "description": "Im Vereinigten Königreich ist die Vereinbarkeit von Beruf und Privatleben im Allgemeinen gut und gesetzlich geschützt.",
+        "tips": [
+          "Die normale Wochenarbeitszeit beträgt 37,5-40 Stunden.",
+          "Mindestens 28 Tage Jahresurlaub (einschließlich Feiertage)",
+          "Anträge auf flexible Arbeit sind rechtlich geschützt",
+          "Überstundenkultur variiert je nach Branche und Unternehmen"
+        ]
+      },
+      {
+        "category": "Hierarchie und Sitzungen",
+        "description": "Britische Arbeitsplätze sind tendenziell weniger hierarchisch als in vielen anderen Ländern.",
+        "tips": [
+          "Vornamen sind auf allen Ebenen gebräuchlich",
+          "Die Sitzungen bieten oft Zeit für Diskussionen und Beiträge",
+          "Entscheidungen können Zeit in Anspruch nehmen, da oft ein Konsens gesucht wird.",
+          "Die Etikette in der Warteschlange gilt für alle Situationen"
+        ]
+      }
+    ]
+  },
+  "relocationSupport": {
+    "title": "Unterstützung beim Umzug von Mitarbeitern",
+    "subtitle": "Was Sie von britischen Arbeitgebern erwarten können",
+    "commonSupport": [
+      {
+        "type": "Visa-Patenschaft",
+        "description": "Bescheinigung der Patenschaft und Unterstützung bei der Beantragung eines Visums",
+        "typical": "Standard für Facharbeitervisa"
+      },
+      {
+        "type": "Umzugs-Paket",
+        "description": "Finanzielle Unterstützung für Umzugskosten",
+        "typical": "£2.000-£10.000 je nach Aufgabenbereich"
+      },
+      {
+        "type": "Vorübergehende Unterbringung",
+        "description": "Hotel oder Apartment mit Service für die ersten Wochen",
+        "typical": "2-4 Wochen Abdeckung üblich"
+      },
+      {
+        "type": "Unterstützung bei der Haussuche",
+        "description": "Unterstützung bei der Suche nach einer dauerhaften Unterkunft",
+        "typical": "Empfehlungen von Immobilienmaklern, Ortsbesichtigungen"
+      },
+      {
+        "type": "Kulturelle Integration",
+        "description": "Orientierungsprogramme und kulturelles Training",
+        "typical": "Buddy-Systeme, Einführungen in die lokale Umgebung"
+      }
+    ]
+  },
+  "legalRequirements": {
+    "title": "Rechtliche Anforderungen für die Arbeit in UK",
+    "subtitle": "Wesentliche Informationen zur Einhaltung der Vorschriften",
+    "requirements": [
+      {
+        "area": "Recht auf Arbeit",
+        "description": "Alle Mitarbeiter müssen nachweisen, dass sie legal im Vereinigten Königreich arbeiten können.",
+        "documents": [
+          "Gültiger Reisepass mit Visum",
+          "Biometrischer Aufenthaltstitel (BRP)",
+          "Freigabecode aus dem Online-Check für das Recht auf Arbeit"
+        ]
+      },
+      {
+        "area": "Nationale Versicherung",
+        "description": "Eindeutige Nummer für Steuern und Sozialleistungen erforderlich",
+        "process": "Online oder telefonisch nach der Ankunft beantragen, dauert in der Regel 2-3 Wochen"
+      },
+      {
+        "area": "Steuer (PAYE)",
+        "description": "Automatisch vom Gehalt abgezogene Einkommensteuer",
+        "rates": "Grundtarif 20%, höherer Tarif 40%, Zusatztarif 45%"
+      },
+      {
+        "area": "Rechte im Bereich Beschäftigung",
+        "description": "Arbeitnehmer im Vereinigten Königreich genießen einen starken rechtlichen Schutz",
+        "rights": [
+          "Schutz des Mindestlohns",
+          "Antidiskriminierungsgesetze",
+          "Schutz vor ungerechtfertigter Entlassung (nach 2 Jahren)",
+          "Gesetzliches Krankengeld"
+        ]
+      }
+    ]
+  },
+  "usToUkGuide": {
+    "header": {
+      "title": "Umzug von den USA nach Großbritannien",
+      "subtitle": "Ihr umfassender Leitfaden für den Umzug über den großen Teich - von der Beantragung eines Visums bis zur Eingewöhnung in das britische Leben"
+    },
+    "navigation": {
+      "title": "Inhalt"
+    },
+    "sections": [
+      {
+        "id": "warum-uk",
+        "icon": "🇬🇧",
+        "title": "Warum in das Vereinigte Königreich ziehen?",
+        "type": "warum-uk",
+        "content": {
+          "intro": "Viele Amerikaner wählen das Vereinigte Königreich aus überzeugenden Gründen als ihre neue Heimat:",
+          "reasons": [
+            "Gemeinsame Sprache und kulturelle Vertrautheit",
+            "Weltklasse-Gesundheitsversorgung (NHS)",
+            "Reiche Geschichte und kulturelles Angebot",
+            "Tor zu Europa für Reisen",
+            "Ausgezeichnete öffentliche Verkehrsmittel",
+            "Starker Arbeitsmarkt in bestimmten Sektoren"
+          ],
+          "conclusion": "Ganz gleich, ob Sie aus beruflichen Gründen, wegen der Ausbildung, aus familiären Gründen oder einfach nur wegen eines Tempowechsels umziehen, das Vereinigte Königreich bietet Amerikanern einen vertrauten und doch ganz anderen Lebensstil."
+        }
+      },
+      {
+        "id": "visa-options",
+        "icon": "🛂",
+        "title": "Visa-Optionen für US-Bürger",
+        "type": "visa-options",
+        "content": {
+          "intro": "Als US-Bürger können Sie das Vereinigte Königreich bis zu 6 Monate lang ohne Visum besuchen, aber für einen langfristigen Aufenthalt benötigen Sie eines dieser Visa:",
+          "visaTypes": [
+            {
+              "title": "1. Visum für qualifizierte Arbeitskräfte",
+              "requirements": [
+                "Benötigen ein Stellenangebot eines britischen Arbeitgebers mit Sponsoring-Lizenz",
+                "Muss die Mindestgehaltsanforderungen erfüllen (in der Regel £26.200+, variiert je nach Stelle)",
+                "Die Tätigkeit muss dem geforderten Qualifikationsniveau entsprechen (in der Regel RQF Level 3 oder höher)",
+                "Gültig für bis zu 5 Jahre, kann nach 5 Jahren zu einem Vergleich führen"
+              ]
+            },
+            {
+              "title": "2. Global Talent Visa",
+              "requirements": [
+                "Für führende oder vielversprechende Persönlichkeiten aus den Bereichen Wissenschaft, Forschung, Kunst, Kultur oder digitale Technologie",
+                "Erfordert die Anerkennung durch eine zuständige britische Stelle",
+                "Kein Sponsoring erforderlich, größere Flexibilität als Arbeitsvisum",
+                "Kann nach 3-5 Jahren zu einer Einigung führen"
+              ]
+            },
+            {
+              "title": "3. Studentenvisum",
+              "requirements": [
+                "Für die Immatrikulation in britischen Bildungseinrichtungen",
+                "Erfordert ein Zulassungsschreiben, einen Finanzierungsnachweis und Englischkenntnisse",
+                "Eingeschränkte Arbeitsrechte während des Studiums",
+                "Absolventen können nach ihrem Abschluss noch 2 Jahre arbeiten"
+              ]
+            },
+            {
+              "title": "4. Familienvisum",
+              "requirements": [
+                "Für Partner, Ehegatten oder Kinder von britischen Staatsbürgern oder niedergelassenen Personen",
+                "Erfordert den Nachweis einer echten Beziehung und finanzielle Anforderungen",
+                "Kann nach 5 Jahren zu einem Vergleich führen"
+              ]
+            },
+            {
+              "title": "5. UK Ancestry Visum",
+              "requirements": [
+                "Wenn Sie einen im Vereinigten Königreich geborenen Großelternteil haben, haben Sie möglicherweise Anspruch auf dieses 5-Jahres-Visum mit einem Weg zur Niederlassung"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "erforderliche Dokumente",
+        "icon": "📄",
+        "title": "Erforderliche Dokumente für Relocation",
+        "type": "erforderliche Dokumente",
+        "content": {
+          "intro": "Die Anforderungen an die Dokumente variieren je nach Art des Visums, umfassen aber in der Regel Folgendes:",
+          "documents": [
+            "Gültiger US-Reisepass (mit mindestens 6 Monaten Gültigkeit)",
+            "Visumantragsformulare und Zahlungsbelege",
+            "Biometrische Informationen (Fingerabdrücke und Foto)",
+            "Nachweis von Englischkenntnissen",
+            "Finanzielle Unterlagen zum Nachweis ausreichender Mittel",
+            "Stellenangebot und Sponsoring-Bescheinigung (für Arbeitsvisa)",
+            "Tuberkulose (TB) Testergebnisse (bei einem Aufenthalt von mehr als 6 Monaten)",
+            "Nachweis der Unterkunft"
+          ],
+          "proTip": {
+            "label": "Profi-Tipp",
+            "text": "Beginnen Sie frühzeitig mit dem Sammeln dieser Dokumente, da die Beschaffung einiger Dokumente (z. B. Hintergrundüberprüfungen) viel Zeit in Anspruch nehmen kann."
+          }
+        }
+      },
+      {
+        "id": "beliebte-städte",
+        "icon": "🏙️",
+        "title": "Wo leben die meisten Amerikaner im Vereinigten Königreich?",
+        "type": "beliebte-städte",
+        "content": {
+          "intro": "Amerikaner, die in das Vereinigte Königreich umziehen, neigen dazu, sich in diesen beliebten Gegenden zu konzentrieren:",
+          "cities": [
+            {
+              "name": "London",
+              "icon": "🌆",
+              "highlights": [
+                "Beliebtestes Reiseziel, insbesondere Gegenden wie Kensington, Chelsea und Notting Hill",
+                "Globales Finanzzentrum mit vielfältigen Beschäftigungsmöglichkeiten",
+                "Lebendige Kulturszene, aber höhere Lebenshaltungskosten"
+              ]
+            },
+            {
+              "name": "Oxford und Cambridge",
+              "icon": "📚",
+              "highlights": [
+                "Universitätsstädte mit akademischen und Forschungsmöglichkeiten",
+                "Historische Architektur und starke intellektuelle Gemeinschaften",
+                "Gute Lebensqualität, aber der Wohnraum kann teuer sein"
+              ]
+            },
+            {
+              "name": "Manchester",
+              "icon": "🏭",
+              "highlights": [
+                "Großes Technologie- und Medienzentrum mit wachsender amerikanischer Auswanderergemeinde",
+                "Erschwinglicher als London mit hervorragendem Kulturangebot",
+                "Sitz von BBC North und MediaCityUK"
+              ]
+            },
+            {
+              "name": "Edinburgh",
+              "icon": "🏰",
+              "highlights": [
+                "Schottlands Hauptstadt mit beeindruckender Architektur und starkem Finanzsektor",
+                "Beliebt bei Amerikanern in den Bereichen Finanzen, Technik und Bildung",
+                "Ausgezeichnete Lebensqualität mit lebendiger Kulturszene"
+              ]
+            }
+          ],
+          "risingLocations": {
+            "title": "Aufstrebende Standorte",
+            "icon": "💼",
+            "locations": [
+              {
+                "name": "Bristol",
+                "description": "Blühende Kreativ- und Technologieszene mit hoher Lebensqualität"
+              },
+              {
+                "name": "Birmingham",
+                "description": "Zunehmende Beliebtheit durch die wachsende Wirtschaft und die niedrigeren Lebenshaltungskosten"
+              },
+              {
+                "name": "Glasgow",
+                "description": "Die größte Stadt Schottlands bietet erschwingliche Preise und kulturelle Attraktionen"
+              },
+              {
+                "name": "Cardiff",
+                "description": "Walisische Hauptstadt mit wachsenden Beschäftigungsmöglichkeiten und niedrigeren Lebenshaltungskosten"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "Lebenshaltungskosten",
+        "icon": "💷",
+        "title": "Vergleich der Lebenshaltungskosten: UK vs. USA",
+        "type": "Lebenshaltungskosten",
+        "content": {
+          "table": {
+            "headers": {
+              "expense": "Ausgaben",
+              "uk": "UK (Durchschnitt)",
+              "usa": "USA (Durchschnittswert)"
+            },
+            "rows": [
+              {
+                "expense": "Miete (1BR Stadtzentrum)",
+                "uk": "£800-£1,500/Monat",
+                "usa": "$1,500-$2,000",
+                "ukHighlight": false
+              },
+              {
+                "expense": "Gesundheitswesen",
+                "uk": "Meistens kostenlos über den NHS",
+                "usa": "$300-$600/Monat",
+                "ukHighlight": true
+              },
+              {
+                "expense": "Versorgungsleistungen (monatlich)",
+                "uk": "£150-£200",
+                "usa": "$150-$200",
+                "ukHighlight": false
+              },
+              {
+                "expense": "Transport",
+                "uk": "£65-£150/Monat",
+                "usa": "$70-$150 + Autokosten",
+                "ukHighlight": true
+              },
+              {
+                "expense": "Auswärts essen gehen (für 2)",
+                "uk": "£40-£80",
+                "usa": "$50-$100",
+                "ukHighlight": false
+              },
+              {
+                "expense": "Höhere Bildung",
+                "uk": "£9.250/Jahr (Inland)",
+                "usa": "$10.000-$40.000/Jahr",
+                "ukHighlight": true
+              }
+            ]
+          },
+          "conclusion": "Die Lebenshaltungskosten unterscheiden sich erheblich zwischen London und anderen Regionen des Vereinigten Königreichs. Während die Preise in London mit denen großer US-Städte wie New York und San Francisco konkurrieren, sind die Lebenshaltungskosten in anderen Regionen des Vereinigten Königreichs wesentlich niedriger."
+        }
+      },
+      {
+        "id": "Gesundheitswesen",
+        "icon": "🏥",
+        "title": "Gesundheitswesen im Vereinigten Königreich",
+        "type": "Gesundheitswesen",
+        "content": {
+          "intro": "Der britische National Health Service (NHS) bietet eine umfassende Gesundheitsversorgung, die für die Einwohner kostenlos ist, was für Amerikaner, die an hohe Gesundheitskosten gewöhnt sind, einen großen Vorteil darstellt.",
+          "nhsAccess": {
+            "title": "NHS-Zugang für Einwanderer",
+            "points": [
+              "Bei den meisten Visumanträgen für Aufenthalte von mehr als 6 Monaten muss die Immigration Health Surcharge (IHS) bezahlt werden.",
+              "Derzeitige IHS-Gebühr: £1.035 pro Jahr für die meisten erwachsenen Visumantragsteller",
+              "Sobald Sie bezahlt haben, haben Sie Anspruch auf die meisten NHS-Leistungen (mit Ausnahme bestimmter zahnärztlicher und optischer Leistungen)",
+              "Melden Sie sich bei einem Allgemeinmediziner an, sobald Sie sich niedergelassen haben."
+            ]
+          },
+          "conclusion": "Auch eine private Gesundheitsversorgung ist möglich, und einige Arbeitgeber bieten private Krankenversicherungen als Zusatzleistung an."
+        }
+      },
+      {
+        "id": "Sprache",
+        "icon": "🗣️",
+        "title": "Tipps zu Sprache und Kultur",
+        "type": "Sprache",
+        "content": {
+          "intro": "Trotz der gemeinsamen Sprache gibt es kulturelle Unterschiede, derer sich Amerikaner bewusst sein sollten:",
+          "differences": {
+            "title": "Britisches vs. Amerikanisches Englisch",
+            "vocabulary": {
+              "title": "Unterschiede im Wortschatz:",
+              "examples": [
+                "Appartement → Wohnung",
+                "Aufzug → Lift",
+                "Bürgersteig → Gehweg",
+                "Linie → Warteschlange",
+                "Pommes frites → Chips",
+                "Chips → Chips"
+              ]
+            },
+            "cultural": {
+              "title": "Kulturelle Unterschiede:",
+              "points": [
+                "Der britische Humor ist eher ironisch und selbstironisch",
+                "Höflichkeit und Understatement werden hochgeschätzt",
+                "Direktheit kann manchmal als Unhöflichkeit empfunden werden",
+                "Schlangestehen (Warten in der Schlange) wird sehr ernst genommen"
+              ]
+            }
+          },
+          "conclusion": "Die gesellschaftlichen Gepflogenheiten in Großbritannien mögen vertraut erscheinen, weisen aber oft subtile Unterschiede auf. Die Briten sind anfangs eher zurückhaltend, werden aber mit der Zeit warmherziger."
+        }
+      },
+      {
+        "id": "Umzug",
+        "icon": "📦",
+        "title": "Umzug und Versand aus den USA",
+        "type": "Umzug",
+        "content": {
+          "intro": "Die Planung Ihres physischen Umzugs ins Vereinigte Königreich erfordert sorgfältige Überlegungen:",
+          "shipping": {
+            "title": "Versandoptionen",
+            "options": [
+              {
+                "type": "Luftfracht",
+                "description": "Schneller (5-10 Tage), aber teurer"
+              },
+              {
+                "type": "Seefracht",
+                "description": "Günstiger, aber langsamer (4-8 Wochen)"
+              },
+              {
+                "type": "Internationale Umzugsunternehmen",
+                "description": "Full-Service-Optionen mit Verpackung und Zollabwicklung verfügbar"
+              }
+            ]
+          },
+          "customs": {
+            "title": "Zollrechtliche Erwägungen",
+            "considerations": [
+              "Persönliche Gegenstände können zollfrei eingeführt werden, wenn Sie sie seit mehr als 6 Monaten besitzen.",
+              "Füllen Sie vor dem Versand einen Antrag auf Verlegung des Wohnsitzes (ToR) aus.",
+              "Einige Dinge wie bestimmte Lebensmittel, Pflanzen und Medikamente sind eingeschränkt",
+              "Haustiere benötigen Mikrochips, Impfungen und Heimtierausweise"
+            ]
+          },
+          "conclusion": "Überlegen Sie sich genau, was Sie mitnehmen möchten - viele elektronische Geräte benötigen einen Spannungswandler (UK: 230V vs. US: 120V), und Möbel passen möglicherweise nicht in die typischerweise kleineren britischen Wohnungen."
+        }
+      },
+      {
+        "id": "Bankwesen",
+        "icon": "💳",
+        "title": "Bankwesen & Finanzen",
+        "type": "Bankwesen",
+        "content": {
+          "intro": "Die Einrichtung Ihres finanziellen Lebens im Vereinigten Königreich ist ein wichtiger erster Schritt:",
+          "ukAccount": {
+            "title": "Eröffnung eines britischen Bankkontos",
+            "points": [
+              "Traditionell wird der Nachweis einer britischen Adresse verlangt, was für Neuankömmlinge eine Zwickmühle darstellt",
+              "Digitale Banken wie Monzo, Starling und Revolut bieten einfachere Optionen für Neueinsteiger",
+              "Einige internationale Banken (HSBC, Barclays) bieten internationale Kontodienste an.",
+              "Erforderliche Dokumente: Reisepass, Visum, Nachweis der Adresse, Angaben zum Arbeitsplatz"
+            ]
+          },
+          "usUkFinances": {
+            "title": "Verwaltung der US-UK-Finanzen",
+            "points": [
+              "Behalten Sie Ihr US-Bankkonto für laufende US-Verpflichtungen",
+              "Erwägen Sie Dienste wie Wise (ehemals TransferWise) für kostengünstige Geldüberweisungen",
+              "US-Bürger müssen unabhängig von ihrem Wohnsitz US-Steuererklärungen abgeben (Foreign Earned Income Exclusion verfügbar)",
+              "Das Steuerabkommen zwischen den USA und Großbritannien hilft, Doppelbesteuerung zu vermeiden"
+            ]
+          },
+          "conclusion": "Der Aufbau einer Kredithistorie im Vereinigten Königreich braucht Zeit, also planen Sie entsprechend. Kreditscores sind international nicht übertragbar, und Sie werden im britischen Kreditsystem bei Null anfangen."
+        }
+      }
+    ],
+    "checklist": {
+      "title": "Umzugsvorbereitende Checkliste für Amerikaner",
+      "items": [
+        "Beantragen Sie ein entsprechendes Visum rechtzeitig im Voraus",
+        "Zahlung der Immigration Health Surcharge (IHS)",
+        "Eröffnung eines britischen Bankkontos (oder Vorbereitung von Alternativen)",
+        "Recherchieren Sie nach Wohnraum an Ihrem bevorzugten Standort",
+        "Einrichtung eines internationalen Geldtransferdienstes",
+        "Versand oder Lagerung von Gegenständen organisieren",
+        "Wichtige Dokumente in das UK-Format konvertieren",
+        "Steuerliche Auswirkungen der Forschung (US-UK)",
+        "Schließen Sie sich Expat-Communities und Foren an, um Ratschläge und Kontakte zu erhalten"
+      ]
+    },
+    "resources": {
+      "title": "Zusätzliche Ressourcen",
+      "categories": [
+        {
+          "title": "Offizielle Informationen",
+          "links": [
+            "UK Regierung Visa Informationen",
+            "Leitlinien des britischen Innenministeriums",
+            "US-Botschaft in Großbritannien"
+          ]
+        },
+        {
+          "title": "Expat-Gemeinschaften",
+          "links": [
+            "Amerikaner in Großbritannien Facebook-Gruppen",
+            "InterNations UK-Kapitel",
+            "Meetup-Gruppen für Expats"
+          ]
+        },
+        {
+          "title": "Praktische Dienstleistungen",
+          "links": [
+            "Internationale Umzugsunternehmen",
+            "UK Unterkunft Websites",
+            "Steuerdienstleistungen für Expats"
+          ]
+        }
+      ]
+    }
+  },
+  "immigrationTimeline": {
+    "title": "Zeitleiste für die Einwanderung von den USA nach Großbritannien",
+    "subtitle": "Typischer Zeitplan für verschiedene Visumtypen",
+    "visaTimelines": [
+      {
+        "visaType": "Visum für qualifizierte Arbeitskräfte",
+        "totalTime": "3-6 Monate",
+        "phases": [
+          {
+            "phase": "Jobsuche & Angebot",
+            "duration": "1-4 Monate",
+            "description": "Mit Patenschaften eine Beschäftigung finden"
+          },
+          {
+            "phase": "Visumantrag",
+            "duration": "3-8 Wochen",
+            "description": "Bearbeitungszeit der Bewerbung"
+          },
+          {
+            "phase": "Entscheidung & Reisen",
+            "duration": "1-2 Wochen",
+            "description": "Entgegennahme der Entscheidung und Planung der Reise"
+          }
+        ]
+      },
+      {
+        "visaType": "Studentenvisum",
+        "totalTime": "2-4 Monate",
+        "phases": [
+          {
+            "phase": "Bewerbung an der Universität",
+            "duration": "1-3 Monate",
+            "description": "Antragstellung und Annahme"
+          },
+          {
+            "phase": "Visumantrag",
+            "duration": "3-6 Wochen",
+            "description": "Bearbeitung von Studentenvisa"
+          },
+          {
+            "phase": "Vorbereitung",
+            "duration": "2-4 Wochen",
+            "description": "Unterkunft und Reisevorbereitungen"
+          }
+        ]
+      }
+    ]
+  },
+  "culturalAdaptation": {
+    "title": "Leitfaden für die kulturelle Anpassung",
+    "subtitle": "Eingewöhnung in das britische Leben als Amerikaner",
+    "areas": [
+      {
+        "category": "Soziale Interaktionen",
+        "tips": [
+          "Smalltalk über das Wetter ist wirklich wichtig",
+          "Häufiges Entschuldigen ('sorry') ist normal",
+          "Persönlicher Freiraum und Etikette in der Warteschlange sind wichtig",
+          "Kneipenkultur ist ein zentraler Bestandteil des gesellschaftlichen Lebens"
+        ]
+      },
+      {
+        "category": "Kultur am Arbeitsplatz",
+        "tips": [
+          "Formalere Kommunikation als an typischen US-Arbeitsplätzen",
+          "Längere Mittagspausen und Teepausen sind üblich",
+          "Urlaub/Urlaub ist großzügiger bemessen",
+          "Die Work-Life-Balance ist im Allgemeinen besser geschützt"
+        ]
+      },
+      {
+        "category": "Das tägliche Leben",
+        "tips": [
+          "Öffentliche Verkehrsmittel sind zuverlässig, können aber teuer sein",
+          "Unterschiedliche Einkaufsgewohnheiten (kleinere, häufigere Fahrten)",
+          "Kleidungsgrößen und Maße sind unterschiedlich",
+          "Die Trinkgeldkultur ist weniger ausgeprägt als in den USA"
+        ]
+      }
+    ]
+  },
+  "financialPlanning": {
+    "title": "Finanzielle Planung für Ihren Umzug",
+    "subtitle": "Budgetierung für Ihren Umzug von den USA nach Großbritannien",
+    "categories": [
+      {
+        "stage": "Kosten vor dem Umzug",
+        "totalRange": "$3,000 - $8,000",
+        "items": [
+          {
+            "item": "Visumanträge und Gebühren",
+            "cost": "$1,500 - $3,500"
+          },
+          {
+            "item": "Medizinische Untersuchungen und Tests",
+            "cost": "$200 - $500"
+          },
+          {
+            "item": "Vorbereitung der Dokumente und Rechtskosten",
+            "cost": "$500 - $2,000"
+          },
+          {
+            "item": "Flugbuchungen",
+            "cost": "$800 - $2,000"
+          }
+        ]
+      },
+      {
+        "stage": "Umzugskosten",
+        "totalRange": "$2,000 - $15,000",
+        "items": [
+          {
+            "item": "Versand von Haushaltswaren",
+            "cost": "$2,000 - $8,000"
+          },
+          {
+            "item": "Vorübergehende Unterbringung",
+            "cost": "$1,000 - $4,000"
+          },
+          {
+            "item": "Umsiedlung von Haustieren (falls zutreffend)",
+            "cost": "$1,000 - $3,000"
+          }
+        ]
+      },
+      {
+        "stage": "Abrechnungskosten",
+        "totalRange": "$3,000 - $10,000",
+        "items": [
+          {
+            "item": "Wohnungskaution und Miete",
+            "cost": "$2,000 - $6,000"
+          },
+          {
+            "item": "Erstausstattung und Einrichtung",
+            "cost": "$1,000 - $3,000"
+          },
+          {
+            "item": "Lebenshaltungskosten im ersten Monat",
+            "cost": "$1,500 - $3,500"
+          }
+        ]
+      }
+    ]
+  },
+  "legalConsiderations": {
+    "title": "Rechtliche Erwägungen für Amerikaner",
+    "subtitle": "Wichtige rechtliche Aspekte beim Umzug in das Vereinigte Königreich",
+    "topics": [
+      {
+        "area": "Steuerliche Verpflichtungen",
+        "description": "US-Bürger müssen unabhängig von ihrem Wohnsitz US-Steuererklärungen abgeben",
+        "keyPoints": [
+          "Ausschluss von ausländischen Einkünften bis zu 120.000 $",
+          "Steuerabkommen zwischen dem Vereinigten Königreich und den USA verhindert die meisten Doppelbesteuerungen",
+          "Ziehen Sie bei komplexen Situationen eine professionelle Steuerberatung in Betracht",
+          "Melden Sie ausländische Bankkonten, wenn das Guthaben 10.000 Dollar übersteigt."
+        ]
+      },
+      {
+        "area": "Stimmrecht",
+        "description": "Ihr Wahlrecht in beiden Ländern verstehen",
+        "keyPoints": [
+          "Aufrechterhaltung des US-Wahlrechts durch Briefwahlen",
+          "Kommunalwahlen im Vereinigten Königreich nach Anmeldung des Wohnsitzes möglich",
+          "Verlust der EU-Bürgerschaft nach dem Brexit beeinträchtigt einige Rechte",
+          "Auswirkungen der doppelten Staatsbürgerschaft berücksichtigen"
+        ]
+      },
+      {
+        "area": "Rechtlicher Status",
+        "description": "Ihre Rechtsstellung und Rechte kennen",
+        "keyPoints": [
+          "Visabedingungen bestimmen Arbeits- und Reiserechte",
+          "Der Weg zum Daueraufenthalt ist je nach Visumstyp unterschiedlich",
+          "Britische Staatsbürgerschaft nach mehr als 5 Jahren Aufenthalt möglich",
+          "Rechtsberatung für komplexe Situationen empfohlen"
+        ]
+      }
+    ]
+  },
+  "petsToUkGuide": {
+    "header": {
+      "title": "Umzug mit Haustieren in das Vereinigte Königreich",
+      "subtitle": "Vollständiger Leitfaden für den Umzug Ihrer geliebten Gefährten in ihr neues britisches Zuhause - Anforderungen, Ablauf und Eingewöhnung"
+    },
+    "navigation": {
+      "title": "UK Leitfaden für die Einwanderung von Haustieren"
+    },
+    "sections": [
+      {
+        "id": "Anforderungen",
+        "icon": "✅",
+        "title": "Wichtige Anforderungen",
+        "type": "Anforderungen",
+        "content": {
+          "keyRequirements": [
+            {
+              "title": "Mikrochip",
+              "description": "Ihr Haustier muss vor jeder Impfung mit einem ISO 11784/11785-konformen Mikrochip versehen werden.",
+              "number": "1"
+            },
+            {
+              "title": "Tollwut-Impfung",
+              "description": "Muss mindestens 21 Tage vor der Reise beantragt werden und zum Zeitpunkt der Reise gültig sein.",
+              "number": "2"
+            },
+            {
+              "title": "Tiergesundheitsbescheinigung (AHC)",
+              "description": [
+                "Muss von einem amtlichen Tierarzt in Ihrem Land innerhalb von 10 Tagen vor der Einreise in das Vereinigte Königreich ausgestellt werden.",
+                "Gültig für die Einreise in das Vereinigte Königreich für bis zu 4 Monate nach der Ausstellung.",
+                "Nur erforderlich, wenn Sie keinen in der EU oder Nordirland ausgestellten EU-Heimtierausweis besitzen."
+              ],
+              "number": "3"
+            },
+            {
+              "title": "Bandwurm-Behandlung",
+              "note": "(nur Hunde)",
+              "description": "Hunde müssen 24-120 Stunden (1-5 Tage) vor ihrer Einreise ins Vereinigte Königreich gegen Bandwürmer behandelt werden.",
+              "number": "4"
+            }
+          ]
+        }
+      },
+      {
+        "id": "Einflugschneisen",
+        "icon": "🛂",
+        "title": "Einreiserouten",
+        "type": "Einflugschneisen",
+        "content": {
+          "approvedEntry": {
+            "title": "Zugelassene Eingangsstellen",
+            "description": "Haustiere dürfen nur über bestimmte zugelassene Wege in das Vereinigte Königreich einreisen.",
+            "routes": [
+              {
+                "title": "Flugreisen",
+                "description": "Große Flughäfen wie Heathrow, Gatwick, Manchester, Edinburgh"
+              },
+              {
+                "title": "Eurotunnel",
+                "description": "Folkestone (über Calais)"
+              },
+              {
+                "title": "Fährhäfen",
+                "description": "Dover, Portsmouth, Hull, Harwich"
+              },
+              {
+                "title": "Eurostar",
+                "description": "Nur Assistenzhunde erlaubt"
+              }
+            ]
+          },
+          "warning": "Sie müssen mit Ihrem Haustier über eine zugelassene Route einreisen, andernfalls kann Ihr Haustier für bis zu 4 Monate in Quarantäne genommen werden."
+        }
+      },
+      {
+        "id": "Reisen",
+        "icon": "✈️",
+        "title": "Reisemöglichkeiten",
+        "type": "Reisen",
+        "content": {
+          "travelOptions": [
+            {
+              "icon": "🐱",
+              "ariaLabel": "kleines Haustier",
+              "title": "In der Kabine",
+              "description": "Eingeschränkte Möglichkeiten - auf den meisten Flügen in das Vereinigte Königreich sind Haustiere in der Kabine nicht erlaubt, außer als Begleittiere."
+            },
+            {
+              "icon": "🐕",
+              "ariaLabel": "großes Tier",
+              "title": "Als Fracht",
+              "description": "Die häufigste Methode, um Haustiere ins Vereinigte Königreich zu fliegen. Wird in der Regel von spezialisierten Tierabfertigungsstellen durchgeführt."
+            },
+            {
+              "icon": "🚗",
+              "ariaLabel": "Auto",
+              "title": "Eurotunnel/Fähre",
+              "description": "Beliebte Option, wenn Sie aus Europa kommen. Haustiere können bei den Besitzern im Fahrzeug bleiben."
+            }
+          ],
+          "costConsiderations": {
+            "title": "Kostenüberlegungen",
+            "costs": [
+              "Flüge: £400-£800 für Frachttransport",
+              "Eurotunnel: £20-£30 pro Haustier, zusätzlich zur Fahrzeuggebühr",
+              "Fähren: £15-£30 pro Haustier, je nach Route",
+              "Gesundheitszeugnis: £100-£175"
+            ]
+          },
+          "warning": "Erkundigen Sie sich immer bei der jeweiligen Fluggesellschaft oder dem Transportunternehmen nach den Richtlinien für Haustiere, da sich die Anforderungen ändern können."
+        }
+      },
+      {
+        "id": "Eingangsprozess",
+        "icon": "🛬",
+        "title": "Ankunft Prozess",
+        "type": "Eingangsprozess",
+        "content": {
+          "intro": "Das Vereinigte Königreich hat ein spezielles Verfahren für Haustiere, die aus dem Ausland kommen.",
+          "documentChecks": {
+            "title": "Dokumentenkontrollen",
+            "items": [
+              "Mikrochip-Verifizierung",
+              "Tiergesundheitsbescheinigung",
+              "Tollwut-Impfpass",
+              "Bandwurmbehandlung (Hunde)"
+            ]
+          },
+          "processFlow": {
+            "title": "Prozessablauf",
+            "steps": [
+              "Ankunft an der zugelassenen Eingangsstelle",
+              "Legen Sie den Beamten Ihr Haustier und die Unterlagen vor",
+              "Der Mikrochip des Tieres wird zur Überprüfung der Identität gescannt.",
+              "Die Dokumente werden gründlich geprüft",
+              "Wenn alles in Ordnung ist, wird Ihr Haustier zur Einreise frei gegeben"
+            ]
+          },
+          "warning": "Wenn die Unterlagen unvollständig sind oder Ihr Haustier unpässlich erscheint, kann es auf Ihre Kosten in Quarantäne genommen werden (bis zu 4 Monate)."
+        }
+      },
+      {
+        "id": "nach der Ankunft",
+        "icon": "🏠",
+        "title": "Leben im Vereinigten Königreich mit Haustieren",
+        "type": "nach der Ankunft",
+        "content": {
+          "intro": "Sobald Sie im Vereinigten Königreich sind, müssen Sie einige Dinge für das Wohlbefinden Ihres Haustieres beachten.",
+          "livingAspects": [
+            {
+              "icon": "🏥",
+              "title": "Tierärztliche Versorgung",
+              "description": "Melden Sie sich so bald wie möglich bei einem örtlichen Tierarzt an. Im Vereinigten Königreich gibt es eine ausgezeichnete tierärztliche Versorgung, aber die Kosten können hoch sein - eine Tierversicherung wird empfohlen.",
+              "cost": "Standard-Tierarztbesuch: £30-£60"
+            },
+            {
+              "icon": "📋",
+              "title": "Anmeldung",
+              "description": "Aktualisieren Sie die Angaben zum Mikrochip Ihres Haustiers mit Ihrer britischen Adresse. Hunde müssen außerdem bei der Gemeindeverwaltung registriert sein und eine Marke mit Ihren Kontaktdaten tragen."
+            },
+            {
+              "icon": "🏞️",
+              "title": "Bewegung & Räume",
+              "description": "Im Vereinigten Königreich gibt es viele haustierfreundliche Parks und ländliche Gebiete. In den meisten Städten gibt es spezielle Hundeauslaufgebiete, aber informieren Sie sich immer über die örtlichen Vorschriften zur Leinenpflicht für Hunde."
+            },
+            {
+              "icon": "🏠",
+              "title": "Gehäuse",
+              "description": "Bei vielen Vermietungen im Vereinigten Königreich sind Haustiere verboten, aber das ändert sich. Stellen Sie sich darauf ein, dass Sie in manchen Wohnungen eine höhere Kaution oder eine \"Haustiermiete\" zahlen müssen."
+            }
+          ],
+          "firstWeekChecklist": {
+            "title": "Checkliste für die erste Woche",
+            "items": [
+              "Anmeldung bei einer örtlichen Tierarztpraxis",
+              "Aktualisierung der Mikrochip-Registrierung mit britischer Adresse",
+              "Melden Sie Ihren Hund bei der Gemeindeverwaltung an (falls zutreffend)",
+              "Kauf eines ID-Tags mit britischen Kontaktinformationen",
+              "Recherchieren Sie die Möglichkeiten der Haustierversicherung"
+            ]
+          }
+        }
+      },
+      {
+        "id": "Ressourcen",
+        "icon": "📚",
+        "title": "Nützliche Ressourcen",
+        "type": "Ressourcen",
+        "content": {
+          "officialInfo": {
+            "title": "Offizielle Informationen",
+            "resources": [
+              {
+                "title": "Richtlinien der britischen Regierung für Reisen mit Haustieren",
+                "description": "Offizielle Regeln und Anforderungen für die Einfuhr von Haustieren in das Vereinigte Königreich"
+              },
+              {
+                "title": "Agentur für Tier- und Pflanzengesundheit (APHA)",
+                "description": "Staatliche Stelle zur Überwachung von Heimtierimporten"
+              },
+              {
+                "title": "Helpline für Haustierreisen",
+                "description": "+44 370 241 1710 (Montag bis Freitag, 8:30 bis 17 Uhr britische Zeit)"
+              }
+            ]
+          },
+          "petServices": {
+            "title": "Dienstleistungen für Haustiere im Vereinigten Königreich",
+            "services": [
+              {
+                "category": "Versicherung für Haustiere",
+                "providers": "Anbieter vergleichen: PetPlan, Animal Friends, More Than"
+              },
+              {
+                "category": "Zubehör für Haustiere",
+                "providers": "Pets at Home, Amazon UK, VetUK"
+              },
+              {
+                "category": "Einen Tierarzt finden",
+                "providers": "Royal College of Veterinary Surgeons: FindAVet-Dienst"
+              },
+              {
+                "category": "Haustierfreundliche Unterkünfte",
+                "providers": "PetsLets, Airbnb (Filter \"Haustiere erlaubt\" verwenden)"
+              }
+            ]
+          }
+        }
+      }
+    ],
+    "sidebar": {
+      "checklist": {
+        "title": "Checkliste für die Reisevorbereitung",
+        "items": [
+          "Mikrochip für Ihr Haustier",
+          "Sicherstellen, dass die Tollwutimpfung gültig ist",
+          "Mindestens 21 Tage nach der Impfung warten",
+          "Hunde 1-5 Tage vor der Reise gegen Bandwürmer behandeln",
+          "Tiergesundheitsbescheinigung innerhalb von 10 Tagen vor der Reise einholen",
+          "Genehmigte Transportroute nach UK buchen",
+          "Reisegepäck vorbereiten (bei Flugreisen von der Fluggesellschaft genehmigt)"
+        ]
+      },
+      "faq": {
+        "title": "Allgemeine Fragen",
+        "questions": [
+          {
+            "question": "Brauche ich einen Heimtierausweis?",
+            "answer": "In der EU oder Nordirland ausgestellte EU-Heimtierausweise sind für die Einreise ins Vereinigte Königreich weiterhin gültig. Ansonsten benötigen Sie eine Tiergesundheitsbescheinigung."
+          },
+          {
+            "question": "Gibt es eine Quarantäne?",
+            "answer": "Eine Quarantäne ist nicht erforderlich, wenn alle Anforderungen erfüllt sind. Werden die Anforderungen nicht erfüllt, müssen die Haustiere bis zu 4 Monate in Quarantäne."
+          },
+          {
+            "question": "Welche Rassen sind verboten?",
+            "answer": "Bestimmte Hunderassen sind im Vereinigten Königreich verboten, darunter Pit Bull Terrier, Japanese Tosa, Dogo Argentino und Fila Brasileiro."
+          },
+          {
+            "question": "Kann ich exotische Haustiere mitbringen?",
+            "answer": "Für exotische Tiere gelten andere Anforderungen. Viele benötigen CITES-Genehmigungen und spezielle Einfuhrlizenzen."
+          }
+        ]
+      }
+    }
+  },
+  "petHealthRequirements": {
+    "title": "Detaillierte Gesundheitsanforderungen",
+    "subtitle": "Umfassende Gesundheits- und Impfvorschriften nach Herkunftsland",
+    "categories": [
+      {
+        "region": "EU-Länder",
+        "requirements": [
+          {
+            "requirement": "Haustier-Pass",
+            "description": "EU-Heimtierausweis, ausgestellt in der EU oder Nordirland",
+            "validity": "Muss aktuell und gültig sein"
+          },
+          {
+            "requirement": "Tollwut-Impfung",
+            "description": "Grundimmunisierung im Alter von mindestens 21 Tagen",
+            "validity": "Gültig gemäß den Richtlinien des Herstellers"
+          },
+          {
+            "requirement": "Mikrochip",
+            "description": "ISO 11784/11785-konform vor der Impfung",
+            "validity": "Muss lesbar sein"
+          }
+        ]
+      },
+      {
+        "region": "Nicht-EU-Länder",
+        "requirements": [
+          {
+            "requirement": "Tiergesundheitsbescheinigung",
+            "description": "Von einem amtlichen Tierarzt innerhalb von 10 Tagen ausgestellt",
+            "validity": "Gültig für 4 Monate für die Einreise nach Großbritannien"
+          },
+          {
+            "requirement": "Tollwut-Impfung",
+            "description": "Mindestens 21 Tage vor der Reise",
+            "validity": "Muss zum Zeitpunkt der Reise gültig sein"
+          },
+          {
+            "requirement": "Tollwut-Antikörper-Test",
+            "description": "Kann von bestimmten Ländern verlangt werden",
+            "validity": "Muss ausreichende Antikörperspiegel aufweisen"
+          }
+        ]
+      }
+    ]
+  },
+  "petTransportGuide": {
+    "title": "Leitfaden für den Transport von Haustieren",
+    "subtitle": "Ausführliche Informationen über den Transport von Haustieren in das Vereinigte Königreich",
+    "transportMethods": [
+      {
+        "method": "Kommerzielle Fluggesellschaften",
+        "suitableFor": "Hunde und Katzen",
+        "process": [
+          "Buchen Sie den Transport von Haustieren bei der Buchung Ihres Fluges",
+          "Vorlage von Gesundheitszeugnissen und Impfunterlagen",
+          "Verwenden Sie ein von der IATA zugelassenes Luftfahrtunternehmen",
+          "Ankunft am Flughafen 3-4 Stunden vor Abflug",
+          "Haustier reist im klimatisierten Frachtraum"
+        ],
+        "costs": {
+          "range": "£400-£1,200",
+          "factors": [
+            "Größe und Gewicht des Haustiers",
+            "Zurückgelegte Entfernung",
+            "Politik der Fluggesellschaften",
+            "Saison (Hauptsaison vs. Nebensaison)"
+          ]
+        },
+        "tips": [
+          "Frühzeitig buchen, da der Platz begrenzt ist",
+          "Vermeiden Sie nach Möglichkeit Hauptreisezeiten",
+          "Berücksichtigen Sie die Ängste und den Komfort des Tieres",
+          "Stellen Sie sicher, dass der Träger die richtige Größe hat."
+        ]
+      },
+      {
+        "method": "Umzugsdienste für Haustiere",
+        "suitableFor": "Alle Haustiere, insbesondere wertvolle oder nervöse Tiere",
+        "process": [
+          "Full-Service-Transport von Tür zu Tür",
+          "Erledigung der gesamten Dokumentation und Logistik",
+          "Spezielle Betreuung während des Transports",
+          "Individuelle Reisearrangements für die Bedürfnisse von Haustieren"
+        ],
+        "costs": {
+          "range": "£800-£3,000+",
+          "factors": [
+            "Erforderliches Dienstleistungsniveau",
+            "Größe des Tieres und besondere Bedürfnisse",
+            "Herkunft und Bestimmungsort",
+            "Zusätzliche Dienstleistungen (Verpflegung, etc.)"
+          ]
+        },
+        "tips": [
+          "Recherchieren Sie die Referenzen des Unternehmens gründlich",
+          "Lesen Sie Bewertungen von anderen Tierhaltern",
+          "Sicherstellen, dass das Unternehmen lizenziert und versichert ist",
+          "Fragen Sie nach ihren Erfahrungen mit Ihrem Haustier"
+        ]
+      }
+    ]
+  },
+  "settlingInGuide": {
+    "title": "Ansiedlung Ihres Haustieres im Vereinigten Königreich",
+    "subtitle": "Hilfe bei der Anpassung Ihres Haustieres an sein neues britisches Zuhause",
+    "adjustmentTips": [
+      {
+        "category": "Erste Tage",
+        "tips": [
+          "Halten Sie die Routinen so ähnlich wie möglich wie im Heimatland",
+          "Nehmen Sie sich Zeit für die Anpassung - Haustiere können gestresst sein",
+          "Schrittweise Einführung neuer Umgebungen und Erfahrungen",
+          "Beobachten Sie Ihr Ess- und Schlafverhalten genau"
+        ]
+      },
+      {
+        "category": "Klimaanpassung",
+        "tips": [
+          "Das Wetter im Vereinigten Königreich kann sehr unterschiedlich sein - bereiten Sie sich auf Regen vor",
+          "Manche Haustiere brauchen Zeit, um sich an kühlere Temperaturen zu gewöhnen",
+          "Bereitstellung von geeigneter Einstreu und Unterschlupf",
+          "Berücksichtigen Sie saisonale Veränderungen der Tageslichtstunden"
+        ]
+      },
+      {
+        "category": "Soziale Integration",
+        "tips": [
+          "Beitritt zu örtlichen Haustiergruppen und Gemeinschaften",
+          "Schrittweise Nutzung von Hundeparks und haustierfreundlichen Einrichtungen",
+          "Erwägen Sie Trainingskurse, um UK-spezifische Verhaltensweisen zu trainieren.",
+          "Seien Sie geduldig bei der Anpassung der Hausübungen"
+        ]
+      }
+    ],
+    "ukSpecificConsiderations": [
+      {
+        "topic": "Wetter und Bewegung",
+        "details": [
+          "Im Vereinigten Königreich regnet es häufig - investieren Sie in Regenmäntel für Haustiere",
+          "Kürzere Wintertage beeinträchtigen die Bewegungsroutine",
+          "Viele Parks haben spezielle Hundeauslaufzonen",
+          "Strandbeschränkungen variieren je nach Jahreszeit und Ort"
+        ]
+      },
+      {
+        "topic": "Wohnen und Vermieten",
+        "details": [
+          "Viele britische Vermietungen haben strenge Haustierverbote",
+          "Kautionen für Haustiere liegen in der Regel zwischen £200 und £500.",
+          "In einigen Gebieten gibt es Rassenbeschränkungen für Mietobjekte",
+          "Der Zugang zu Gärten/Höfen ist in Stadtzentren weniger verbreitet"
+        ]
+      },
+      {
+        "topic": "Rechtliche Anforderungen",
+        "details": [
+          "Hunde müssen ein Halsband und ein Schild mit Angaben zum Besitzer tragen.",
+          "In einigen Gebieten müssen Hunde in der Öffentlichkeit an der Leine geführt werden.",
+          "Gesetz über gefährliche Hunde gilt für bestimmte Rassen",
+          "Haustierabfälle müssen beseitigt werden - Bußgelder werden fällig"
+        ]
+      }
+    ]
+  },
+  "costBreakdown": {
+    "title": "Vollständige Kostenaufstellung",
+    "subtitle": "Alle Kosten, die bei der Einfuhr von Haustieren in das Vereinigte Königreich anfallen",
+    "preTravel": {
+      "title": "Kosten vor Reiseantritt",
+      "items": [
+        {
+          "item": "Mikrochippen",
+          "cost": "£15-£30",
+          "notes": "Einmalige Kosten, erforderlich vor der Impfung"
+        },
+        {
+          "item": "Tollwut-Impfung",
+          "cost": "£50-£100",
+          "notes": "Muss 21 Tage vor der Reise warten"
+        },
+        {
+          "item": "Tiergesundheitsbescheinigung",
+          "cost": "£100-£175",
+          "notes": "Muss innerhalb von 10 Tagen nach der Reise erfolgen"
+        },
+        {
+          "item": "Bandwurmbehandlung (Hunde)",
+          "cost": "£20-£40",
+          "notes": "1-5 Tage vor der Reise"
+        },
+        {
+          "item": "Reiseträger",
+          "cost": "£50-£200",
+          "notes": "IATA-zugelassen für Flugreisen"
+        }
+      ]
+    },
+    "transport": {
+      "title": "Transportkosten",
+      "items": [
+        {
+          "item": "Airline-Tiertransport",
+          "cost": "£400-£800",
+          "notes": "Je nach Fluggesellschaft und Größe des Tieres unterschiedlich"
+        },
+        {
+          "item": "Umzugsdienst für Haustiere",
+          "cost": "£800-£3,000",
+          "notes": "Full-Service-Option"
+        },
+        {
+          "item": "Eurotunnel-Gebühr für Haustiere",
+          "cost": "£20-£30",
+          "notes": "Zuzüglich der Kosten für den Fahrzeugtransport"
+        },
+        {
+          "item": "Fähre Haustier-Gebühr",
+          "cost": "£15-£30",
+          "notes": "Variiert je nach Strecke und Betreiber"
+        }
+      ]
+    },
+    "postArrival": {
+      "title": "Nach der Ankunft anfallende Kosten",
+      "items": [
+        {
+          "item": "Tierärztliche Registrierung/Check-up",
+          "cost": "£30-£60",
+          "notes": "Erstberatung"
+        },
+        {
+          "item": "Versicherung für Haustiere",
+          "cost": "£10-£50/Monat",
+          "notes": "Variiert je nach Versicherungsschutz und Haustier"
+        },
+        {
+          "item": "Zubehör für Haustiere",
+          "cost": "£50-£200",
+          "notes": "Futter, Spielzeug, Einstreu, usw."
+        },
+        {
+          "item": "Lokale Registrierung",
+          "cost": "£15-£25",
+          "notes": "Hundemarke, sofern erforderlich"
+        }
+      ]
+    }
+  },
+  "ukrelocationrequirements": {
+    "introduction": "Ein Umzug in das Vereinigte Königreich erfordert sorgfältige Planung und Vorbereitung. Ganz gleich, ob Sie aus beruflichen Gründen, wegen einer Ausbildung, aus familiären Gründen oder einfach wegen eines neuen Lebensstils umziehen, die Kenntnis der rechtlichen Anforderungen ist entscheidend. In diesem Leitfaden finden Sie alles, was Sie für einen erfolgreichen Umzug in das Vereinigte Königreich wissen müssen.",
+    "requirements": [
+      {
+        "title": "Gültiger Reisepass",
+        "description": "Sie müssen im Besitz eines Reisepasses sein, der für die gesamte Dauer Ihres Aufenthalts im Vereinigten Königreich gültig ist. Für Staatsangehörige ohne Visum, die sich bis zu 6 Monate im Vereinigten Königreich aufhalten, sollte Ihr Reisepass für die Dauer Ihres geplanten Aufenthalts gültig sein. Bei der Beantragung eines Visums muss Ihr Reisepass in der Regel für die gesamte Dauer Ihres Visums plus einige zusätzliche Monate gültig sein."
+      },
+      {
+        "title": "Angemessenes Visum",
+        "description": "Im Vereinigten Königreich gibt es verschiedene Visakategorien, je nachdem, zu welchem Zweck Sie einreisen:",
+        "details": [
+          "Arbeitsvisa (Facharbeiter, Gesundheits- und Pflegepersonal usw.)",
+          "Studienvisa (Studentenvisum, Kinderstudienvisum)",
+          "Familienvisa (Visa für Partner, Kinder und Eltern)",
+          "Besuchervisa (Standardvisum, Geschäftsvisum)",
+          "Niederlassung oder unbefristete Aufenthaltserlaubnis (ILR)"
+        ]
+      },
+      {
+        "title": "Nachweis der Unterkunft",
+        "description": "Sie müssen nachweisen, wo Sie sich im Vereinigten Königreich aufhalten werden:",
+        "details": [
+          "Mietvertrag oder Eigentumsurkunde",
+          "Schreiben des Gastgebers, wenn Sie bei Freunden oder in der Familie wohnen",
+          "Hotelreservierungen für die erste Unterkunft",
+          "Unterkunftsbestätigung der Universität für Studenten"
+        ]
+      },
+      {
+        "title": "Finanzielle Anforderungen",
+        "description": "Sie müssen nachweisen, dass Sie Ihren Lebensunterhalt selbst bestreiten können:",
+        "details": [
+          "Kontoauszüge, aus denen hervorgeht, dass genügend Geldmittel vorhanden sind (normalerweise für 3-6 Monate)",
+          "Ggf. Einkommensnachweis oder Arbeitsvertrag",
+          "Stipendium oder Finanzierungsschreiben für Studenten",
+          "Nachweis von Investitionen oder Ersparnissen"
+        ],
+        "additionalInfo": "Der genaue Betrag variiert je nach Art des Visums und den persönlichen Umständen."
+      },
+      {
+        "title": "Gesundheitsversorgung",
+        "description": "Der Zugang zur Gesundheitsfürsorge im Vereinigten Königreich wird durch die Behörden geregelt:",
+        "details": [
+          "Zahlung der Immigration Health Surcharge (IHS) bei den meisten Visumanträgen",
+          "Private Krankenversicherung (für die Anfangszeit empfohlen)",
+          "Europäische Krankenversicherungskarte (EHIC) oder Globale Krankenversicherungskarte (GHIC) für berechtigte Besucher"
+        ],
+        "additionalInfo": "Melden Sie sich nach Ihrer Ankunft so schnell wie möglich bei einem Allgemeinmediziner vor Ort an."
+      },
+      {
+        "title": "Biometrischer Aufenthaltstitel (BRP)",
+        "description": "Bei einem Aufenthalt von mehr als 6 Monaten:",
+        "details": [
+          "Nach der Ankunft erhalten Sie eine biometrische Aufenthaltsgenehmigung",
+          "Sie müssen Ihr BRP innerhalb von 10 Tagen nach Ihrer Ankunft im Vereinigten Königreich abholen.",
+          "Das BRP dient als Nachweis für Ihren Einwanderungsstatus und Ihre Ansprüche"
+        ]
+      },
+      {
+        "title": "Nationale Versicherungsnummer",
+        "description": "Unerlässlich für die Arbeit im Vereinigten Königreich:",
+        "details": [
+          "Bewerben Sie sich online oder telefonisch nach Ihrer Ankunft im Vereinigten Königreich",
+          "Erforderlich für Beschäftigungs-, Steuer- und Leistungszwecke",
+          "Sie können Ihre Arbeit aufnehmen, bevor Sie Ihre NI-Nummer erhalten"
+        ]
+      },
+      {
+        "title": "Tuberkulose (TB) Test Zertifikat",
+        "description": "Erforderlich für Staatsangehörige bestimmter Länder:",
+        "details": [
+          "Der TB-Test muss in einem zugelassenen Zentrum durchgeführt werden.",
+          "Das Zertifikat ist 6 Monate ab Ausstellungsdatum gültig.",
+          "Muss vor der Beantragung eines Visums erworben werden"
+        ]
+      },
+      {
+        "title": "Englische Sprachkenntnisse",
+        "description": "Für die meisten Visumkategorien:",
+        "details": [
+          "Nachweis von Englischkenntnissen (IELTS, TOEFL, usw.)",
+          "Ein in englischer Sprache erworbener Abschluss kann als Nachweis akzeptiert werden.",
+          "Ausnahmeregelungen für bestimmte Staatsangehörigkeiten und Visumarten"
+        ]
+      },
+      {
+        "title": "Bankkonto",
+        "description": "Einrichtung eines britischen Bankkontos:",
+        "details": [
+          "Adressnachweis (Stromrechnung, Mietvertrag)",
+          "Reisepass und BRP",
+          "Erwägen Sie Online-Banken, um sich als Neueinsteiger leichter zurechtzufinden",
+          "Einige Banken bieten die Eröffnung eines internationalen Kontos vor der Ankunft an."
+        ]
+      }
+    ],
+    "additionalConsiderations": {
+      "title": "Zusätzliche Überlegungen",
+      "items": [
+        {
+          "title": "Registrierung der Gemeindesteuer",
+          "description": "Melden Sie sich bei Ihrer Gemeindeverwaltung für die Gemeindesteuer an. Dies ist eine Pflichtsteuer für lokale Dienstleistungen. Für Vollzeitstudenten gelten einige Ausnahmen."
+        },
+        {
+          "title": "Autofahren im Vereinigten Königreich",
+          "description": "Inhaber eines nicht-britischen Führerscheins können bis zu 12 Monate lang fahren. Danach müssen Sie möglicherweise Ihren Führerschein umtauschen oder eine Fahrprüfung im Vereinigten Königreich ablegen."
+        },
+        {
+          "title": "Mobiltelefon & Internet",
+          "description": "Richten Sie sich frühzeitig eine britische Mobilfunknummer und eine Internetverbindung ein. Viele Anbieter bieten spezielle Angebote für Neuankömmlinge."
+        },
+        {
+          "title": "Klima-Vorbereitung",
+          "description": "Das Vereinigte Königreich hat ein gemäßigtes maritimes Klima mit kühlen Sommern und milden Wintern. Bereiten Sie sich auf das ganze Jahr über auf Regen vor, indem Sie entsprechende Kleidung und Accessoires mitbringen."
+        }
+      ]
+    },
+    "helpResources": {
+      "title": "Hilfe bei Ihrem Umzug erhalten",
+      "description": "Für offizielle Informationen und Unterstützung bei Ihrem Umzug in das Vereinigte Königreich können Sie diese Ressourcen nutzen:",
+      "resources": [
+        {
+          "title": "Britische Regierung",
+          "description": "Offizielle Leitlinien zu Visa, Einwanderung und Niederlassung im Vereinigten Königreich"
+        },
+        {
+          "title": "Britischer Rat",
+          "description": "Ressourcen für internationale Studierende und kulturelle Anpassung"
+        },
+        {
+          "title": "Bürgerberatung",
+          "description": "Kostenlose, vertrauliche Beratung über Rechte und Pflichten"
+        }
+      ]
+    },
+    "footer": {
+      "disclaimer": "Denken Sie daran, dass sich die Einwanderungsbestimmungen häufig ändern können. Informieren Sie sich immer über die neuesten Anforderungen aus offiziellen Quellen."
+    }
+  },
+  "ukfromturkeyguide": {
+    "navigation": {
+      "title": "Navigieren in diesem Leitfaden"
+    },
+    "accessibility": {
+      "toggleSection": "Umschaltbare Sektion für"
+    },
+    "labels": {
+      "youllNeed": "Das brauchen Sie:"
+    },
+    "sections": {
+      "whyMove": {
+        "title": "Warum ziehen die Türken ins Vereinigte Königreich?",
+        "description": "Tausende von türkischen Staatsangehörigen leben heute im Vereinigten Königreich, insbesondere in Städten wie London, Manchester, Birmingham und Edinburgh. Der Appell umfasst:",
+        "reasons": [
+          "Bildungs- und Karrieremöglichkeiten",
+          "Multikulturelles Umfeld mit unterschiedlichen Gemeinschaften",
+          "Starke Gesundheits- und Sozialversicherungssysteme",
+          "Politische Stabilität und Rechtsstaatlichkeit",
+          "Etablierte türkische Gemeinschaften in den Großstädten"
+        ],
+        "conclusion": "Ein Umzug erfordert jedoch eine sorgfältige Planung, die Kenntnis des britischen Visasystems und die Erfüllung bestimmter Anforderungen."
+      },
+      "entryRequirements": {
+        "title": "Einreisebestimmungen & Visabestimmungen",
+        "visitorEntry": {
+          "title": "Eintrag für Besucher",
+          "description": "Türkische Staatsbürger benötigen für die Einreise in das Vereinigte Königreich ein Besuchervisum, das einen Aufenthalt von bis zu 6 Monaten erlaubt. Für längere Aufenthalte müssen Sie ein entsprechendes Visum beantragen, das auf Ihre Lebensumstände abgestimmt ist."
+        },
+        "tip": "Beantragen Sie Ihr Visum für das Vereinigte Königreich rechtzeitig vor dem geplanten Reisetermin, da die Bearbeitung mehrere Wochen dauern kann."
+      },
+      "longTermStay": {
+        "title": "Langfristige Aufenthaltsmöglichkeiten für türkische Staatsbürger",
+        "options": [
+          {
+            "title": "1. Visum für qualifizierte Arbeitskräfte",
+            "description": "<span class=\"font-medium\">Gültig für bis zu 5 Jahre und kann zur Niederlassung führen</span><br/>Für Personen mit einem Stellenangebot eines britischen Arbeitgebers mit einer Sponsoring-Lizenz",
+            "requirements": [
+              "Gültiges Stellenangebot mit angemessenem Gehaltsniveau",
+              "Patenschaftsbescheinigung des Arbeitgebers",
+              "Nachweis von Englischkenntnissen",
+              "Ausreichende Mittel für den eigenen Lebensunterhalt",
+              "Strafregisterbescheinigung (falls zutreffend)"
+            ]
+          },
+          {
+            "title": "2. Familienvisum",
+            "details": [
+              "Für den Nachzug eines Ehegatten, Partners oder Familienmitglieds, das britischer Staatsbürger oder niedergelassener Bürger ist",
+              "Anfangszeitraum von 2,5 Jahren, verlängerbar",
+              "Es gelten finanzielle Anforderungen und Unterbringungsbedingungen"
+            ]
+          },
+          {
+            "title": "3. Studentenvisum",
+            "details": [
+              "Für diejenigen, die an einer britischen Bildungseinrichtung angenommen wurden",
+              "Dauer hängt von der Dauer des Kurses ab",
+              "Nachweis der finanziellen Mittel für Studiengebühren und Lebenshaltungskosten erforderlich"
+            ]
+          },
+          {
+            "title": "4. Innovator-Visum",
+            "description": "Für Unternehmer mit innovativen Geschäftsideen und mindestens 50.000 £ an Investitionsmitteln"
+          },
+          {
+            "title": "5. High Potential Einzelvisum",
+            "description": "Für Absolventen weltweiter Spitzenuniversitäten: 2-3 Jahre Zeit zum Arbeiten oder zur Arbeitssuche, ohne dass ein Stellenangebot vorliegt"
+          }
+        ]
+      },
+      "property": {
+        "title": "Kauf oder Miete von Immobilien",
+        "points": [
+          "Türkische Staatsbürger können im Vereinigten Königreich Immobilien kaufen, ohne Einschränkungen für Nichtansässige",
+          "Hypothekenoptionen sind verfügbar, erfordern jedoch häufig höhere Einlagen für nicht im Vereinigten Königreich ansässige Personen.",
+          "Beliebte Gebiete für türkische Gemeinschaften: Nord-London, Manchester, Birmingham",
+          "Mieten sind teurer: In den Großstädten muss man mit 800 bis 1 500 Pfund pro Monat für eine Ein-Zimmer-Wohnung rechnen."
+        ],
+        "tip": "<strong>Tipp:</strong> Lassen Sie sich beim Kauf einer Immobilie von einem Anwalt beraten und vergewissern Sie sich, dass Sie alle Mietvertragsbedingungen verstehen, bevor Sie unterschreiben."
+      },
+      "costLiving": {
+        "title": "Vergleich der Lebenshaltungskosten",
+        "table": {
+          "headers": {
+            "expense": "Ausgaben",
+            "uk": "UK (Durchschnitt)",
+            "turkey": "Türkei (Mittelwert)"
+          },
+          "rows": [
+            {
+              "expense": "Miete (1-Bett-Wohnung)",
+              "uk": "£800-£1,500",
+              "turkey": "£200-£400",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Versorgungsunternehmen",
+              "uk": "£150+/Monat",
+              "turkey": "£30-£70/Monat",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Mahlzeit im Restaurant",
+              "uk": "£15-£25",
+              "turkey": "£3-£8",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Transportpass",
+              "uk": "£60-£180/Monat",
+              "turkey": "£10-£30/Monat",
+              "ukHighlight": true
+            }
+          ]
+        },
+        "note": "Das Vereinigte Königreich ist wesentlich teurer als die Türkei, daher ist eine finanzielle Planung vor der Umsiedlung unerlässlich."
+      },
+      "healthcare": {
+        "title": "Zugang zum Gesundheitswesen",
+        "points": [
+          "Im Vereinigten Königreich gibt es den Nationalen Gesundheitsdienst (NHS), der kostenlose Gesundheitsversorgung vor Ort bietet.",
+          "Die meisten Visumantragsteller müssen bei der Beantragung einen Gesundheitszuschlag für die Einwanderung zahlen.",
+          "Der Zuschlag beträgt derzeit £ 624 pro Jahr für die meisten Visumarten",
+          "Sobald Sie bezahlt haben, haben Sie Zugang zu NHS-Diensten, die denen der Einwohner des Vereinigten Königreichs entsprechen.",
+          "Private Gesundheitsversorgung ist möglich, aber im Vergleich zur Türkei teuer."
+        ]
+      },
+      "dailyLife": {
+        "title": "Anpassungen an das tägliche Leben",
+        "aspects": [
+          {
+            "title": "Sprachbarriere",
+            "description": "Englisch ist die Amtssprache. Gute Englischkenntnisse sind für das tägliche Leben, die Arbeit und die soziale Integration unerlässlich."
+          },
+          {
+            "title": "Fahren",
+            "description": "Türkische Führerscheine können bis zu 12 Monate lang verwendet werden. Danach müssen Sie ihn umtauschen oder eine Fahrprüfung im Vereinigten Königreich ablegen."
+          },
+          {
+            "title": "Währung",
+            "description": "Britisches Pfund Sterling (GBP) - eine starke Währung, aber das bedeutet, dass Sie mehr türkische Lira benötigen, um Ihren Lebensstil aufrechtzuerhalten."
+          },
+          {
+            "title": "Bankwesen",
+            "description": "Für die Eröffnung eines Bankkontos müssen Sie Ihre Adresse und Ihren Einwanderungsstatus nachweisen. Digitale Banken wie Monzo oder Revolut können anfangs eine einfachere Option sein."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "title": "Umzugslogistik aus der Türkei",
+        "points": [
+          "Möglicherweise müssen Sie Zollgebühren und Mehrwertsteuer zahlen, wenn Sie persönliche Gegenstände in das Vereinigte Königreich mitbringen.",
+          "Wenn Sie Ihren ständigen Wohnsitz in das Vereinigte Königreich verlegen, kann eine Wohnsitzverlegung in Betracht kommen.",
+          "Der internationale Versand von der Türkei nach dem Vereinigten Königreich dauert etwa 3-5 Wochen auf dem Seeweg.",
+          "Haustiere benötigen einen Mikrochip, eine Tollwutimpfung, eine Bandwurmbehandlung (für Hunde) und ein Tiergesundheitszeugnis."
+        ]
+      },
+      "challenges": {
+        "title": "Zu erwartende realistische Herausforderungen",
+        "challenges": [
+          {
+            "title": "Anpassung an das Wetter",
+            "description": "Im Vereinigten Königreich ist das Wetter kühler, bewölkter und regnet häufiger als in der Türkei."
+          },
+          {
+            "title": "Höhere Lebenshaltungskosten",
+            "description": "Die Ausgaben sind deutlich höher und erfordern eine sorgfältige Budgetierung."
+          },
+          {
+            "title": "Kulturelle Unterschiede",
+            "description": "Es kann einige Zeit dauern, bis man die britischen gesellschaftlichen Normen und Umgangsformen versteht."
+          },
+          {
+            "title": "Komplexes Visasystem",
+            "description": "Der Umgang mit Einwanderungsbestimmungen kann stressig und teuer sein"
+          }
+        ]
+      },
+      "turkishCommunities": {
+        "title": "Türkische Gemeinschaften im Vereinigten Königreich",
+        "description": "Im Vereinigten Königreich gibt es etablierte türkische Gemeinschaften, insbesondere in:",
+        "cities": [
+          "Nord-London",
+          "Manchester",
+          "Birmingham",
+          "Edinburgh",
+          "Leeds"
+        ],
+        "supportNote": "Sie finden kulturelle Vereinigungen, Gemeindezentren, türkische Restaurants und Gruppen in den sozialen Medien, die Ihnen helfen, Kontakte zu anderen Türken zu knüpfen und Ihnen den Übergang zu erleichtern."
+      }
+    },
+    "checklist": {
+      "title": "Letzte Checkliste vor dem Umzug in das Vereinigte Königreich",
+      "items": [
+        "Beantragen und sichern Sie das entsprechende Visum",
+        "Zahlen Sie den Gesundheitszuschlag für Einwanderer",
+        "Unterkunft im Voraus organisieren",
+        "Einrichten eines britischen Bankkontos",
+        "Recherche zum britischen Steuersystem und zu den Verpflichtungen",
+        "Tauschen Sie vor Ihrer Ankunft etwas Geld um",
+        "Knüpfen Sie Kontakte zu türkischen Gemeinschaften in Ihrer Zielstadt"
+      ]
+    },
+    "conclusion": {
+      "title": "Ist ein Umzug ins Vereinigte Königreich das Richtige für Sie?",
+      "text": "Ein Umzug in das Vereinigte Königreich bietet hervorragende Bildungsmöglichkeiten, Karrierechancen und einen hohen Lebensstandard, ist jedoch mit höheren Kosten und kulturellen Anpassungen verbunden. Eine sorgfältige Planung und Recherche sind unerlässlich. Für viele türkische Staatsbürger, die neue Horizonte suchen, ist das Vereinigte Königreich mit seinem multikulturellen Umfeld und den etablierten türkischen Gemeinschaften trotz der Herausforderungen ein attraktives Ziel."
+    },
+    "footer": {
+      "lastUpdated": "Zuletzt aktualisiert: Mai 2025"
+    }
+  },
+  "ukvisaguide": {
+    "introduction": "Ein Umzug ins Vereinigte Königreich erfordert die Auswahl eines geeigneten Visums, das auf Ihre Lebensumstände abgestimmt ist. Das Vereinigte Königreich bietet verschiedene Visum- und Aufenthaltsoptionen für Arbeitnehmer, Studenten, Familienmitglieder, Investoren und Unternehmer.",
+    "labels": {
+      "bestFor": "Geeignet für:",
+      "requirements": "Anforderungen:",
+      "benefits": "Vorteile:",
+      "validity": "Die Gültigkeit:"
+    },
+    "visaTypes": [
+      {
+        "title": "Visum für qualifizierte Arbeitskräfte",
+        "bestFor": [
+          "Fachkräfte mit Stellenangeboten von britischen Arbeitgebern",
+          "Menschen, die in Mangelberufen arbeiten",
+          "Erfahrene Arbeitnehmer in spezialisierten Bereichen"
+        ],
+        "requirements": [
+          "Jobangebot eines britischen Arbeitgebers mit Sponsoring-Lizenz",
+          "Qualifikationsniveau entspricht RQF Level 3 oder höher",
+          "Englische Sprachkenntnisse (B1-Niveau)",
+          "Mindestgehaltsschwelle (in der Regel 26.200 Pfund oder der \"übliche Satz\" des Berufs)",
+          "Ausreichende Mittel für den eigenen Lebensunterhalt"
+        ],
+        "validity": "Bis zu 5 Jahre (verlängerbar, Weg zur Abrechnung nach 5 Jahren)"
+      },
+      {
+        "title": "Studentenvisum",
+        "bestFor": "Studenten, die an britischen Universitäten oder Bildungseinrichtungen angenommen wurden",
+        "requirements": [
+          "Bestätigter Studienplatz an einer zugelassenen Patenhochschule",
+          "Beherrschung der englischen Sprache",
+          "Nachweis der finanziellen Mittel zur Deckung der Studiengebühren und Lebenshaltungskosten",
+          "Zustimmung der Eltern/Erziehungsberechtigten (wenn unter 18)"
+        ],
+        "validity": "Dauer des Kurses plus einige Monate (variiert je nach Kurslänge)"
+      },
+      {
+        "title": "Familienvisum",
+        "bestFor": "Partner, Kinder und unterhaltsberechtigte Personen von britischen Staatsbürgern oder niedergelassenen Personen",
+        "requirements": [
+          "Nachweis einer echten und dauerhaften Beziehung",
+          "Erfüllung des Mindesteinkommens (£18.600 plus zusätzlich für Kinder)",
+          "Angemessene Unterkunft",
+          "Erfordernis der englischen Sprache (für Partner)"
+        ],
+        "validity": "2,5 Jahre zunächst (verlängerbar, Weg zur Abrechnung nach 5 Jahren)"
+      },
+      {
+        "title": "Innovator-Gründer Visum",
+        "bestFor": "Erfahrene Unternehmer, die ein innovatives Unternehmen im Vereinigten Königreich gründen",
+        "requirements": [
+          "Billigung durch eine anerkannte Billigungsstelle",
+          "Tragfähiger, innovativer Geschäftsplan",
+          "Mindestens 50.000 £ Investitionsmittel",
+          "Englische Sprachkenntnisse (B2-Niveau)",
+          "Ausreichende persönliche Mittel für den Unterhalt"
+        ],
+        "validity": "3 Jahre (Weg zur Abrechnung nach 3 Jahren)"
+      },
+      {
+        "title": "Global Talent Visa",
+        "bestFor": "Führungskräfte oder potenzielle Führungskräfte aus den Bereichen Wissenschaft, Forschung, Kunst, Kultur oder digitale Technologie",
+        "requirements": [
+          "Anerkennung durch eine einschlägige britische Einrichtung in Ihrem Fachgebiet",
+          "Nachweis einer außergewöhnlichen Begabung oder eines vielversprechenden Potenzials",
+          "Erfolgsbilanz in Ihrem Fachgebiet"
+        ],
+        "benefits": [
+          "Flexible Arbeitsregelungen (kein Sponsor erforderlich)",
+          "Weg zur Abrechnung nach 3-5 Jahren",
+          "Angehörige können Sie begleiten"
+        ]
+      },
+      {
+        "title": "High Potential Einzelvisum",
+        "bestFor": "Jüngste Absolventen von Spitzenuniversitäten weltweit",
+        "requirements": [
+          "Abschluss, der einem britischen Bachelor oder höher entspricht, von einer weltweit führenden Universität (innerhalb der letzten 5 Jahre)",
+          "Englische Sprachkenntnisse (B1-Niveau)",
+          "Ausreichende Mittel für die Instandhaltung"
+        ],
+        "validity": "2 Jahre für Bachelor/Master-Absolventen, 3 Jahre für Doktoranden (kein direkter Weg zur Niederlassung)"
+      },
+      {
+        "title": "Investorenvisum",
+        "bestFor": "Vermögende Privatpersonen, die im Vereinigten Königreich investieren möchten",
+        "requirements": [
+          "2 Millionen Pfund Mindestinvestitionen in britische Unternehmen",
+          "Die Gelder müssen bei einem regulierten Finanzinstitut gehalten werden",
+          "Die Mittel müssen im Vereinigten Königreich verfügbar sein.",
+          "britisches Bankkonto"
+        ],
+        "validity": "3 Jahre in der Anfangsphase (je nach Investitionshöhe 2-5 Jahre bis zur Abrechnung)"
+      },
+      {
+        "title": "Visum für Hochschulabsolventen",
+        "bestFor": "Internationale Studierende, die einen Abschluss im Vereinigten Königreich erworben haben",
+        "requirements": [
+          "Erfolgreich abgeschlossenes Studium an einer britischen Hochschuleinrichtung",
+          "Aktuelles Studentenvisum zum Zeitpunkt der Bewerbung",
+          "Bestätigung des Sponsors über den Abschluss des Kurses"
+        ],
+        "validity": "2 Jahre für Bachelor- und Masterabsolventen, 3 Jahre für Promotionsabsolventen"
+      }
+    ],
+    "footer": {
+      "disclaimer": "Hinweis: Die britischen Einwanderungsbestimmungen können sich ändern. Auf der offiziellen Website der britischen Regierung finden Sie stets die aktuellsten Informationen."
+    }
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "visarelocation": {
+    "hero": {
+      "badge": "Mga propesyonal na serbisyo sa visa at paglipat",
+      "headline": {
+        "prefix": "Lumipat Sa Iyong",
+        "suffix": "Nang may Kumpiyansa"
+      },
+      "animatedWords": [
+        "Bansa",
+        "Hinaharap",
+        "Paglalakbay",
+        "Pakikipagsapalaran",
+        "Pangarap",
+        "Destinasyon"
+      ],
+      "description": "Mula sa mga aplikasyon ng visa hanggang sa paninirahan sa iyong bagong tahanan, ang aming komprehensibong serbisyo sa visa para sa mga internasyonal na naghahanap ng trabaho ay tutulong sa iyo na lumipat sa isang bagong bansa nang may kumpiyansa.",
+      "cta": {
+        "text": "Simulan ang Iyong Paglipat"
+      }
+    },
+    "showcase": {
+      "title": "Visa at Relokasyon",
+      "subtitle": "Kumpletong suporta para sa iyong internasyonal na paglipat",
+      "journey": {
+        "title": "Kumpletong Suporta sa Paglalakbay",
+        "subtitle": "Mula visa hanggang sa pag-set up ng bagong bahay"
+      },
+      "services": [
+        {
+          "icon": "Teksto ng File",
+          "title": "Pagproseso ng Visa",
+          "description": "Suporta sa dokumento",
+          "gradient": "bg-gradient-to-r mula-sky-500 hanggang-blue-600"
+        },
+        {
+          "icon": "Briefcase",
+          "title": "Mga Permit sa Paggawa",
+          "description": "Tulong legal",
+          "gradient": "bg-gradient-to-r mula-lila-500 hanggang indigo-600"
+        },
+        {
+          "icon": "Tahanan",
+          "title": "Pabahay",
+          "description": "Paghahanap ng bahay",
+          "gradient": "bg-gradient-to-r mula-emerald-500 hanggang-teal-600"
+        },
+        {
+          "icon": "MapPin",
+          "title": "Paninirahan",
+          "description": "Lokal na integrasyon",
+          "gradient": "bg-gradient-to-r mula-kahel-500 hanggang-pula-600"
+        }
+      ],
+      "stats": [
+        {
+          "label": "Rate ng Tagumpay sa Visa",
+          "color": "text-sky-600",
+          "value": "96%"
+        },
+        {
+          "label": "Tapos na ang mga Relokasyon",
+          "color": "teksto-asul-600",
+          "value": "1200+"
+        },
+        {
+          "value": "4.9★",
+          "label": "Rating ng Kliyente",
+          "color": "teksto-indigo-600"
+        }
+      ]
+    }
+  },
+  "advantages": {
+    "title": "Mga Bentahe ng aming serbisyo",
+    "items": [
+      {
+        "icon": "Teksto ng File",
+        "text": "Ihahanda at susuriin namin ang lahat ng iyong mga dokumento alinsunod sa mga kinakailangan ng embahada kung saan ka mag-aaplay ng visa."
+      },
+      {
+        "icon": "Teksto ng File",
+        "text": "Kami ang magsusulat at magsasalin ng mga dokumento para sa iyo, para hindi ka na mag-abala pa sa paggawa nito nang mag-isa."
+      },
+      {
+        "icon": "Panangga",
+        "text": "Bibigyan ka namin ng segurong pangkalusugan ng Alemanya mula sa simula"
+      },
+      {
+        "icon": "Euro",
+        "text": "Makakatipid ka namin mula sa mga hindi kinakailangang gastos na maaaring lumitaw habang isinasagawa ang proseso."
+      },
+      {
+        "icon": "Tahanan",
+        "text": "Maaari kaming magbigay sa iyo ng isang dokumento ng tulong sa paghahanap ng matutuluyan, na maaaring mag-alis ng pangangailangang umupa ng apartment habang nagsusumite ng mga dokumento sa konsulado."
+      },
+      {
+        "icon": "DollarSign",
+        "text": "Maglalabas kami ng invoice sa Germany na maaaring ibawas sa mga buwis sa Germany at bahagyang mabayaran. Maaari kang makakuha ng hanggang 42% ng halaga nito sa paghahain ng iyong tax return sa kasalukuyang taon."
+      }
+    ],
+    "cta": {
+      "text": "Makipag-ugnayan sa amin"
+    },
+    "image": {
+      "alt": "Propesyonal na espasyo sa trabaho na may mga dokumento at konsultasyon",
+      "src": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2084&q=80"
+    }
+  },
+  "visainfo": {
+    "visaTypes": {
+      "title": "Mga uri ng visa na aming tinutulungan",
+      "items": [
+        {
+          "title": "Asul na Kard",
+          "icon": "Gantimpala"
+        },
+        {
+          "title": "Work visa para sa isang high-skilled worker",
+          "icon": "Briefcase"
+        },
+        {
+          "title": "Visa para sa karanasan sa trabaho para sa mga propesyonal sa IT",
+          "icon": "Globo"
+        },
+        {
+          "title": "Kard ng Pagkakataon (Chancenkarte)",
+          "icon": "Bituin"
+        },
+        {
+          "title": "Mga visa ng estudyante",
+          "icon": "Briefcase"
+        },
+        {
+          "title": "Visa para sa muling pagsasama-sama ng pamilya",
+          "icon": "Mga Gumagamit"
+        }
+      ]
+    },
+    "whyRelocation": {
+      "title": {
+        "prefix": "Bakit lumipat kasama ang",
+        "highlight": "Transparent",
+        "suffix": "Nagha-hire?"
+      },
+      "description": "Inirerekomenda kami ng mga tao dahil responsable at sa loob ng napagkasunduang panahon ay nakakatulong kami sa paglutas ng mga isyu sa pagkuha ng visa at paglipat sa Germany, pati na rin ang pagbibigay ng lahat ng kinakailangang serbisyo sa imigrasyon para sa mga propesyonal mula sa iisang mapagkukunan.",
+      "features": [
+        {
+          "icon": "Gantimpala",
+          "title": "Propesyonalismo",
+          "description": "Labinglimang taon na kaming naninirahan sa Alemanya at batid namin ang lahat ng mga panganib, at itinataguyod namin ang isang mahigpit na kodigo ng etika, palaging ginagampanan ang aming mga pangako."
+        },
+        {
+          "icon": "Orasan",
+          "title": "Mga taon ng karanasan",
+          "description": "Bilang mga relokador, natulungan na namin ang maraming IT at digital specialist sa paglipat sa Munich, Berlin, Stuttgart, Düsseldorf, at iba pang mga lungsod sa Germany — mula sa tulong sa dokumentasyon ng visa hanggang sa paglipat at pag-aangkop sa isang bagong lungsod."
+        },
+        {
+          "icon": "Tahanan",
+          "title": "Relokasyon na \"Turnkey\"",
+          "description": "Tumutulong kami sa lahat ng yugto: pangangalap ng mga dokumento, kung paano mag-apply para sa work visa, paglipat at integrasyon pagkatapos dumating, paghahanap ng apartment para sa panandalian at pangmatagalang panahon. Palagi kaming nakikipag-ugnayan at handang sagutin agad ang iyong mga katanungan."
+        },
+        {
+          "icon": "Mga Gumagamit",
+          "title": "Indibidwal na pamamaraan",
+          "description": "Tutulungan ka naming lumipat nang mabilis at maayos hangga't maaari, depende sa iyong sitwasyon. Tinitiyak ng aming personalized na pamamaraan ang isang mabilis at maayos na proseso ng paglipat na may kasamang konsultasyon para sa student visa kung kinakailangan."
+        }
+      ]
+    },
+    "relocationPackage": {
+      "title": "Kapag angkop ang isang pakete ng relokasyon",
+      "scenarios": [
+        {
+          "icon": "Gusali",
+          "title": "Mayroon kang alok mula sa isang kompanyang Aleman",
+          "description": "Yung mga may alok na nakalaan pero ang kompanya mismo ay walang ibinibigay na gabay sa visa para sa trabaho sa ibang bansa."
+        },
+        {
+          "icon": "Mga Gumagamit",
+          "title": "Lumilipat ka kasama ang pamilya",
+          "description": "Yaong mga lilipat sa Germany bilang mag-asawa at/o may mga anak."
+        },
+        {
+          "icon": "CheckCircle",
+          "title": "Mayroon kang isang komplikadong kaso",
+          "description": "Yaong mga naninirahan sa isang bansang limitado ang serbisyo ng visa sa Pakistan para sa pagtatrabaho sa ibang bansa, at yaong mga kailangang lumipat nang madalian."
+        },
+        {
+          "icon": "Maghanap",
+          "title": "Gusto mong kumuha ng Chancenkarte para sa paghahanap ng trabaho",
+          "description": "Sa mga gustong pumunta sa Germany nang walang alok at makahanap ng trabaho sa kanilang larangan."
+        }
+      ]
+    }
+  }
+}

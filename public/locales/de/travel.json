@@ -1,0 +1,131 @@
+{
+  "navigation": {
+    "package": "Paket",
+    "home": "Startseite"
+  },
+  "hero": {
+    "title": {
+      "line1": "Starten Sie Ihr",
+      "line2": "Reise heute"
+    },
+    "description": "Beantragen Sie mühelos offizielle elektronische Einladungen für Ihre Reisebedürfnisse. Ob für Tourismus, Geschäftsreisen oder Konferenzen/Seminare, Jobs Admire vereinfacht Ihr Visumverfahren"
+  },
+  "form": {
+    "iAmFrom": "Ich bin von",
+    "iLiveIn": "Ich wohne in",
+    "invitationFor": "Aufforderung zur",
+    "selectCountry": "Land auswählen",
+    "selectDestination": "Ziel auswählen",
+    "searchCountries": "Länder suchen...",
+    "loadingCountries": "Länder laden...",
+    "noCountriesFound": "Keine Länder gefunden",
+    "findNow": "Jetzt finden"
+  },
+  "packages": {
+    "title": "Wählen Sie ein Servicepaket",
+    "description": "Wählen Sie aus unseren umfassenden Servicepaketen, um Ihre Reiseträume zu verwirklichen. Wir bieten eine schnelle Bearbeitung, wettbewerbsfähige Preise und fachkundige Beratung, um sicherzustellen, dass Ihr Visumantrag erfolgreich und stressfrei ist.",
+    "showingPackagesFor": "Anzeigen von Paketen für:",
+    "packageFor": "Paket für",
+    "selectedCountry": "Ausgewähltes Land",
+    "recommended": "Empfohlen",
+    "save": "Speichern Sie",
+    "getStarted": "Los geht's",
+    "needHelp": "Brauchen Sie Hilfe bei der Auswahl?",
+    "contactExperts": "Kontakt zu unseren Experten",
+    "processingTime48Hours": "Die Bearbeitungszeit für Einladungen beträgt 48 Stunden.",
+    "documentationProcessingTime48Hours": "Die Bearbeitungszeit für die Dokumentation beträgt 48 Stunden.",
+    "features": {
+      "fastProcessing": "Schnelle Verarbeitung",
+      "hours96Valid": "96 Stunden gültig",
+      "airportTransit": "Flughafen-Transit",
+      "days14Valid": "14 Tage gültig",
+      "days30Valid": "30 Tage gültig",
+      "touristBusiness": "Zusätzliche Person (über 5): USD 200 pro Person",
+      "touristBusinesss": "Tourismus | Business",
+      "singleEntry": "Einzelner Eintrag",
+      "singleMultipleEntry": "Einfacher | mehrfacher Eintrag"
+    }
+  },
+  "alerts": {
+    "selectAllFields": "Bitte wählen Sie alle erforderlichen Felder aus"
+  },
+  "errors": {
+    "failedToLoadCountries": "Länder konnten nicht geladen werden"
+  },
+  "visaApplication": {
+    "stepTitles": {
+      "step1": "Informationen zum Standort",
+      "step2": "Anforderungen & Bestätigung",
+      "step3": "Dokumente hochladen",
+      "step4": "Persönliche Angaben",
+      "step5": "Antrag prüfen und einreichen"
+    },
+    "submitFailed": "E-Mail kann nicht gesendet werden",
+    "errors": {
+      "fromCountry": "Bitte wählen Sie Ihr Herkunftsland",
+      "toCountry": "Bitte wählen Sie das Land, in dem Sie leben",
+      "toCountrySame": "Herkunfts- und Bestimmungsland müssen unterschiedlich sein",
+      "hasValidPassport": "Bitte bestätigen Sie, dass Sie einen gültigen Reisepass haben",
+      "hasPictureHeadshot": "Bitte bestätigen Sie, dass Sie ein Foto/einen Schnappschuss haben",
+      "confirmNoActiveApplication": "Bitte bestätigen Sie, dass keine aktive Bewerbung vorliegt",
+      "confirmGovernmentDiscretion": "Bitte beachten Sie die Diskretion der Regierung",
+      "passportDocument": "Bitte laden Sie Ihr Reisepassdokument hoch",
+      "pictureHeadshot": "Bitte laden Sie Ihr Foto/Ihren Schnappschuss hoch",
+      "firstName": "Vorname ist erforderlich",
+      "lastName": "Nachname ist erforderlich",
+      "phoneNumber": "Telefonnummer ist erforderlich",
+      "email": "E-Mail ist erforderlich",
+      "passportNumber": "Reisepassnummer ist erforderlich",
+      "profession": "Beruf ist erforderlich",
+      "travelDate": "Reisedatum ist erforderlich",
+      "travelToDate": "Rückgabedatum ist erforderlich",
+      "travelPurpose": "Reisezweck ist erforderlich",
+      "emailInvalid": "Bitte geben Sie eine gültige E-Mail Adresse ein",
+      "phoneInvalid": "Bitte geben Sie eine gültige Telefonnummer ein",
+      "travelDatePast": "Das Reisedatum darf nicht in der Vergangenheit liegen.",
+      "travelToDateAfter": "Das Rückgabedatum muss nach dem Reisedatum liegen",
+      "travelerNameRequired": "Name des Reisenden {{index}} ist erforderlich",
+      "travelerPhoneRequired": "Telefon des Reisenden {{index}} ist erforderlich"
+    },
+    "placeholders": {
+      "searchCountries": "Länder suchen...",
+      "selectCountry": "Land auswählen",
+      "firstName": "Vornamen",
+      "lastName": "Nachname",
+      "phoneNumber": "Rufnummer",
+      "email": "E-Mail Adresse",
+      "from": "Von",
+      "liveIn": "Leben in",
+      "passportNumber": "Nummer des Reisepasses",
+      "profession": "Beruf",
+      "dateFormat": "mm/tt/jjjj",
+      "travelPurpose": "Zweck der Reise",
+      "numberOfTravellers": "Anzahl der Reisenden",
+      "fullName": "Vollständiger Name"
+    },
+    "labels": {
+      "applicationDetails": "Details zur Anwendung",
+      "submitApplication": "Bewerbung einreichen",
+      "transitVisa": "TRANSIT VISA",
+      "transitVisaShort": "Transitvisum",
+      "notProvided": "Nicht vorgesehen",
+      "notUploaded": "Nicht hochgeladen",
+      "price": "Preis:",
+      "submitting": "Einreichen...",
+      "uploadDocumentsTitle": "Bitte laden Sie die folgenden Dokumente hoch",
+      "acceptedFormats": "Akzeptierte Formate:",
+      "acceptedFormatsValue": "PDF, JPG oder PNG",
+      "details": "Einzelheiten",
+      "review": "Überprüfung",
+      "next": "Weiter",
+      "visaFor": "VISA FÜR:",
+      "currency": "USD"
+    }
+  },
+  "packageTypes": {
+    "individualTouristInvitation": "Individuelle Touristeneinladung",
+    "individualBusinessInvitation": "Individuelle Geschäftseinladung",
+    "familyTouristInvitation": "Familie Tourist Einladung",
+    "singleEntry": "Einzelner Eintrag"
+  }
+}

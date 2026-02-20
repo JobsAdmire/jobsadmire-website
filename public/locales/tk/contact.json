@@ -1,0 +1,91 @@
+{
+  "contact": {
+    "brand": {
+      "name": "Işlere haýran galmak",
+      "title": "Geliň, syýahatyňyza bilelikde başlaýaly",
+      "description": "Biz size karýera maksatlaryňyza ýetmäge kömek etmäge şatdyrys. Biz bilen habarlaşyň we ilkinji ädimi ädiň."
+    },
+    "contactInfo": [
+      {
+        "label": "Kandidat we HR kompaniýalary",
+        "value": "+90 501 124 03 40"
+      },
+      {
+        "label": "Iş üpjün ediji",
+        "value": "+90 553 383 2549"
+      },
+      {
+        "label": "Bize e-poçta arkaly iberiň",
+        "value": "info@jobsadmire.com"
+      },
+      {
+        "label": "Ofisimize baryň",
+        "value": "Antalýa, Türkiýe"
+      },
+      {
+        "label": "Iş wagty",
+        "value": "Duşenbe-Anna, sagat 9:00-dan 18:00-a çenli"
+      }
+    ],
+    "form": {
+      "progress": {
+        "step1": "Şahsy maglumatlar",
+        "step2": "Habar"
+      },
+      "step1": {
+        "title": "Habarlaşyň",
+        "subtitle": "Geliň, söhbetdeşlige başlaýaly"
+      },
+      "step2": {
+        "title": "Bize has köp gürrüň beriň",
+        "subtitle": "Biz diňlemek üçin şu ýerde"
+      },
+      "fields": {
+        "name": {
+          "label": "Siziň adyňyz",
+          "placeholder": "Siziň adyňyz"
+        },
+        "email": {
+          "label": "E-poçta salgysy",
+          "placeholder": "E-poçta salgysy"
+        },
+        "phone": {
+          "label": "Telefon nomeri",
+          "placeholder": "Telefon nomeri"
+        },
+        "subject": {
+          "label": "Tema",
+          "placeholder": "Tema"
+        },
+        "message": {
+          "label": "Siziň habaryňyz",
+          "placeholder": "Siziň habaryňyz"
+        }
+      },
+      "validation": {
+        "nameRequired": "At gerek",
+        "nameMinLength": "At azyndan 2 simwoldan ybarat bolmaly",
+        "emailRequired": "E-poçta gerek",
+        "emailInvalid": "Dogry e-poçta salgysyny giriziň",
+        "phoneInvalid": "Dogry telefon nomerini giriziň",
+        "subjectRequired": "Tema hökmanydyr",
+        "subjectMinLength": "Tema azyndan 3 simwoldan ybarat bolmaly",
+        "messageRequired": "Habar gerek",
+        "messageMinLength": "Habar azyndan 10 simwoldan ybarat bolmaly"
+      },
+      "buttons": {
+        "continue": "Dowam et",
+        "back": "Yza",
+        "send": "Iber",
+        "sending": "Iberilýär..."
+      },
+      "notification": "Habaryňyzy gözden geçirenimizden soň size habar bereris."
+    },
+    "success": {
+      "title": "Sag boluň!",
+      "message": "Siziň hatyňyz üstünlikli iberildi.",
+      "followUp": "Size mümkin boldugyça tiz wagtda jogap bereris.",
+      "sendAnother": "Başga bir habar iber"
+    }
+  }
+}

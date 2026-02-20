@@ -1,0 +1,91 @@
+{
+  "contact": {
+    "brand": {
+      "name": "JobsAdmire",
+      "title": "Let's start your journey together",
+      "description": "We're excited to help you achieve your career goals. Reach out to us and take the first step."
+    },
+    "contactInfo": [
+      {
+        "label": "Candidate & HR Companies",
+        "value": "+90 501 124 03 40"
+      },
+      {
+        "label": "Job Provider",
+        "value": "+90 553 383 2549"
+      },
+      {
+        "label": "Email us at",
+        "value": "info@jobsadmire.com"
+      },
+      {
+        "label": "Visit our office",
+        "value": "Antalya, Turkey"
+      },
+      {
+        "label": "Business hours",
+        "value": "Mon-Fri, 9:00 AM - 6:00 PM"
+      }
+    ],
+    "form": {
+      "progress": {
+        "step1": "Personal Info",
+        "step2": "Message"
+      },
+      "step1": {
+        "title": "Get in touch",
+        "subtitle": "Let's start a conversation"
+      },
+      "step2": {
+        "title": "Tell us more",
+        "subtitle": "We're here to listen"
+      },
+      "fields": {
+        "name": {
+          "label": "Your Name",
+          "placeholder": "Your name"
+        },
+        "email": {
+          "label": "Email Address",
+          "placeholder": "Email address"
+        },
+        "phone": {
+          "label": "Phone Number",
+          "placeholder": "Phone number"
+        },
+        "subject": {
+          "label": "Subject",
+          "placeholder": "Subject"
+        },
+        "message": {
+          "label": "Your Message",
+          "placeholder": "Your message"
+        }
+      },
+      "validation": {
+        "nameRequired": "Name is required",
+        "nameMinLength": "Name must be at least 2 characters",
+        "emailRequired": "Email is required",
+        "emailInvalid": "Please enter a valid email address",
+        "phoneInvalid": "Please enter a valid phone number",
+        "subjectRequired": "Subject is required",
+        "subjectMinLength": "Subject must be at least 3 characters",
+        "messageRequired": "Message is required",
+        "messageMinLength": "Message must be at least 10 characters"
+      },
+      "buttons": {
+        "continue": "Continue",
+        "back": "Back",
+        "send": "Send",
+        "sending": "Sending..."
+      },
+      "notification": "We'll notify you once we review your message."
+    },
+    "success": {
+      "title": "Thank You!",
+      "message": "Your message has been sent successfully.",
+      "followUp": "We'll get back to you as soon as possible.",
+      "sendAnother": "Send Another Message"
+    }
+  }
+}

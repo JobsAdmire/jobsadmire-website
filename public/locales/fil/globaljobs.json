@@ -1,0 +1,289 @@
+{
+  "globaljob": {
+    "hero": {
+      "headline": {
+        "prefix": "Hanapin ang Iyong",
+        "suffix": "Sa ibang bansa"
+      },
+      "animatedWords": [
+        "Pangarap na Trabaho",
+        "Karera",
+        "Pagkakataon",
+        "Posisyon",
+        "Hinaharap",
+        "Tagumpay"
+      ],
+      "description": "Kumonekta sa mga nangungunang pandaigdigang employer sa pamamagitan ng aming mga internasyonal na serbisyo sa paglalagay ng trabaho. Mula sa personalized na pagtutugma ng trabaho hanggang sa suporta sa visa - tinutupad namin ang iyong mga pangarap sa karera sa buong mundo.",
+      "cta": {
+        "text": "Maghanap ng mga Pandaigdigang Oportunidad"
+      }
+    },
+    "showcase": {
+      "title": "Pandaigdigang Paglalagay ng Trabaho",
+      "subtitle": "Ang iyong daan patungo sa mga internasyonal na oportunidad sa karera",
+      "worldMap": {
+        "countries": "200+ na Bansa",
+        "description": "Mga oportunidad sa trabaho sa buong mundo na naghihintay sa iyo"
+      },
+      "benefits": [
+        {
+          "iconKey": "maleta",
+          "title": "Pagtutugma ng Trabaho",
+          "description": "Perpektong tagahanap ng tungkulin",
+          "gradient": "bg-gradient-to-r mula-emerald-500 hanggang-teal-600"
+        },
+        {
+          "iconKey": "mga gumagamit",
+          "title": "Suporta sa Visa",
+          "description": "Kumpletong tulong",
+          "gradient": "bg-gradient-papuntang-r mula-asul-500 patungong-langit-600"
+        },
+        {
+          "iconKey": "mapPin",
+          "title": "Relokasyon",
+          "description": "Maayos na paglipat",
+          "gradient": "bg-gradient-to-r mula-lila-500 hanggang-indigo-600"
+        },
+        {
+          "iconKey": "panlabas na Link",
+          "title": "Network",
+          "description": "Mga pandaigdigang koneksyon",
+          "gradient": "bg-gradient-to-r mula-kahel-500 hanggang-pula-600"
+        }
+      ]
+    },
+    "section": {
+      "header": {
+        "badge": "PINAGKAKATIWALAAN NG MGA KOMPANYA SA BUONG MUNDO",
+        "title": {
+          "prefix": "Pandaigdigang Trabaho",
+          "highlight": "Paglalagay"
+        },
+        "description": "Panahon na para mag-iwan ka ng malaking impresyon sa mga employer gamit ang isang propesyonal na dinisenyong resume. Inaayon namin ang bawat resume upang umayon sa iyong mga layunin at inaasahan ng iyong ninanais na industriya, na nagpapataas ng iyong pagkakataong magtagumpay sa mga pandaigdigang serbisyo sa recruitment."
+      },
+      "journey": {
+        "title": "Dito Nagsisimula ang Iyong Propesyonal na Paglalakbay",
+        "features": [
+          {
+            "title": "Paggawa ng Personalized na Resume",
+            "description": "Ang CV ay hindi lamang tungkol sa iyong karanasan sa trabaho. Iniayon namin ang bawat resume upang itampok ang iyong mga kasanayang magagamit at naaayon sa mga inaasahan ng industriya—lalo na para sa mga trabaho sa ibang bansa para sa mga propesyonal."
+          },
+          {
+            "title": "Mga Koneksyon sa Pandaigdigang Employer",
+            "description": "Tinitiyak ng aming malawak na network ng mga nangungunang pandaigdigang kumpanya na kumukuha ng mga internasyonal na talento na ang iyong mga kasanayan ay naaayon sa mga internasyonal na oportunidad sa karera na tumutugma sa iyong mga mithiin."
+          },
+          {
+            "title": "Suporta sa Pagsulong ng Karera",
+            "description": "Hindi ka lang namin tinutulungan na makahanap ng trabaho – nakikipagsosyo kami sa iyo upang bumuo ng landas sa karera na lalago kasabay ng iyong mga kasanayan at mithiin, na nag-aalok ng sunud-sunod na suporta upang makakuha ng trabaho sa ibang bansa."
+          }
+        ],
+        "cta": {
+          "text": "Galugarin ang Aming mga Serbisyo"
+        }
+      },
+      "testimonials": {
+        "title": "Mga Kwento ng Tagumpay",
+        "reviews": [
+          {
+            "comment": "\"Nahirapan kaming makahanap ng mga bihasang manggagawa hanggang sa nakipagsosyo kami sa Jobs Admire. Ang kanilang plataporma ay nagbigay sa amin ng mga maaasahang kandidato na akma sa aming mga pangangailangan.\"",
+            "name": "Mehmet K.",
+            "role": "May-ari ng Negosyo",
+            "initials": "MK"
+          },
+          {
+            "comment": "\"Tinulungan ako ng Jobs Admire na makahanap ng matatag na trabaho sa isang kilalang pabrika. Naging maayos ang proseso, at ginabayan ako ng kanilang koponan sa bawat hakbang. Ngayon ay mayroon na akong siguradong kita!\"",
+            "name": "Ahmed R.",
+            "role": "Tatanggap ng Paglalagay",
+            "initials": "AR"
+          }
+        ]
+      },
+      "contact": {
+        "title": "Kumonekta Tayo",
+        "subtitle": "Gawin ang unang hakbang patungo sa iyong pandaigdigang karera",
+        "form": {
+          "name": {
+            "label": "Ang Iyong Pangalan*",
+            "placeholder": "Ilagay ang iyong pangalan"
+          },
+          "email": {
+            "label": "Email Address*",
+            "placeholder": "Ilagay ang iyong email address"
+          },
+          "message": {
+            "label": "Mensahe*",
+            "placeholder": "Ilagay ang iyong mensahe"
+          },
+          "submit": "Isumite"
+        }
+      }
+    },
+    "careerHorizons": {
+      "header": {
+        "badge": "Mga Solusyon sa Karera sa Pandaigdig",
+        "title": {
+          "prefix": "Pagpapalawak ng Iyong",
+          "highlight": "Mga Pangunahing Karera"
+        },
+        "description": "Ang paghahanap ng tamang trabaho sa isang mapagkumpitensyang pandaigdigang merkado ay maaaring maging mahirap. Sa JobsAdmire, ikinokonekta namin ang mga mahuhusay na propesyonal sa mga pandaigdigang oportunidad sa trabaho, na tumutulong sa iyong makakuha ng mga kapaki-pakinabang na tungkulin na naaayon sa iyong mga kasanayan, karanasan, at mga layunin sa karera. Ikaw man ay taga-Pakistan, India, o Pilipinas, ang aming pandaigdigang pagkakalagay sa trabaho mula sa Pakistan at iba pang mga rehiyon ay nagbibigay sa bawat propesyonal ng patas na pagkakataong magtagumpay."
+      },
+      "worldMap": {
+        "title": "Pandaigdigang Network",
+        "locations": [
+          {
+            "name": "Bagong York",
+            "id": 1,
+            "color": "#3B82F6",
+            "size": 6,
+            "delay": 0
+          },
+          {
+            "name": "London",
+            "id": 2,
+            "color": "#10B981",
+            "size": 8,
+            "delay": 2
+          },
+          {
+            "name": "Tokyo",
+            "id": 3,
+            "color": "#8B5CF6",
+            "size": 7,
+            "delay": 1
+          },
+          {
+            "name": "Singgapur",
+            "id": 4,
+            "color": "#F59E0B",
+            "size": 6,
+            "delay": 3
+          },
+          {
+            "name": "Sydney",
+            "id": 5,
+            "color": "#EF4444",
+            "size": 7,
+            "delay": 4
+          },
+          {
+            "name": "Berlin",
+            "id": 6,
+            "color": "#6366F1",
+            "size": 5,
+            "delay": 5
+          }
+        ]
+      },
+      "hiring": {
+        "title": {
+          "prefix": "Walang Tuluy-tuloy na Pagkuha ng Trabaho,",
+          "highlight": "Kahit saan sa Mundo"
+        },
+        "description": "Naghahanap ka man ng trabaho sa isang bagong bansa o sumusulong sa iyong industriya, ang aming mga serbisyo sa pagkonsulta sa trabaho sa ibang bansa ay nagbibigay ng ekspertong gabay, paglalagay ng mga manggagawa sa ibang bansa, at mga iniakmang estratehiya sa paghahanap ng trabaho.",
+        "benefits": [
+          {
+            "iconKey": "fileText",
+            "title": "Pag-optimize ng resume",
+            "description": "Iniayon para sa mga lokal na pamilihan gamit ang mga keyword na partikular sa industriya upang matiyak ang tagumpay sa mga trabaho para sa mga internasyonal na kandidato."
+          },
+          {
+            "iconKey": "mikropono",
+            "title": "Paghahanda sa panayam",
+            "description": "Mga sesyon ng coaching na may mga kaalaman tungkol sa kultura para sa iyong target na lokasyon upang maging kapansin-pansin sa mga internasyonal na posisyon para sa mga propesyonal."
+          },
+          {
+            "iconKey": "globo",
+            "title": "Tulong sa visa",
+            "description": "Patnubay ng eksperto sa proseso ng visa at relokasyon upang masiguro ang mga oportunidad sa trabaho sa ibang bansa para sa mga Pilipino, Indian, at Pakistani na propesyonal."
+          }
+        ],
+        "fastTrack": {
+          "title": "Mabilisang Proseso",
+          "description": "Tinitiyak ng aming pinasimpleng pamamaraan na mabilis at mahusay kang makakapag-transition sa iyong bagong tungkulin."
+        },
+        "cta": {
+          "text": "Galugarin ang Aming mga Serbisyo"
+        }
+      },
+      "features": {
+        "title": "Ano ang Nagpapaiba sa Atin",
+        "subtitle": "Tinitiyak ng aming komprehensibong pamamaraan na makukuha mo ang lahat ng suportang kailangan mo sa buong paglalakbay mo sa karera",
+        "items": [
+          {
+            "iconKey": "target",
+            "title": "Isinapersonal na Istratehiya",
+            "description": "Pasadyang roadmap ng karera batay sa iyong mga natatanging layunin at sa pagkakalagay sa trabaho sa ibang bansa para sa mga bihasang manggagawa.",
+            "color": "teksto-[#38B6FF]"
+          },
+          {
+            "iconKey": "barChart4",
+            "title": "Mga Pananaw sa Industriya",
+            "description": "Ang ekspertong kaalaman sa mga uso sa merkado at mga kasanayang laganap ay nakakatulong sa amin na makapaghatid ng mga pandaigdigang solusyon sa pagkuha ng empleyado.",
+            "color": "teksto-[#38B6FF]"
+          },
+          {
+            "iconKey": "nagte-trendUp",
+            "title": "Mga Pandaigdigang Koneksyon",
+            "description": "May access sa malawak na network ng mga internasyonal na employer na naghahanap ng mga propesyonal na katulad mo.",
+            "color": "teksto-[#38B6FF]"
+          }
+        ]
+      },
+      "jobSeekers": {
+        "title": "Para sa mga Naghahanap ng Trabaho",
+        "premiumService": "Premium na Serbisyo",
+        "learnMore": "Matuto Nang Higit Pa Tungkol sa",
+        "services": [
+          {
+            "iconKey": "gumagamit",
+            "title": "Gabay sa Karera",
+            "description": "Narito ang aming mga propesyonal upang payuhan ka kung paano makahanap ng trabaho sa ibang bansa at suportahan ang iyong paglalakbay sa karera sa ibang bansa.",
+            "color": "teksto-[#38B6FF]",
+            "bgColor": "bg-esmeralda-50",
+            "borderColor": "hangganan-[#38B6FF]",
+            "gradientFrom": "mula-sa-esmeralda-50",
+            "gradientTo": "sa-[#38B6FF]0",
+            "accentColor": "bg-[#38B6FF]",
+            "id": 0
+          },
+          {
+            "iconKey": "fileText",
+            "title": "Pagbuo ng Resume",
+            "description": "Tutulungan ka ng aming mga espesyalista na lumikha ng isang kapansin-pansing resume na kapansin-pansin sa mga employer sa pamamagitan ng aming tulong sa trabaho sa ibang bansa.",
+            "color": "teksto-[#38B6FF]",
+            "bgColor": "bg-blue-50",
+            "borderColor": "hangganan-[#38B6FF]",
+            "gradientFrom": "mula-sa-asul-50",
+            "gradientTo": "sa-[#38B6FF]",
+            "accentColor": "bg-[#38B6FF]",
+            "id": 1
+          },
+          {
+            "iconKey": "paghahanap",
+            "title": "Pagtatasa",
+            "description": "Sinusuri namin ang iyong mga kwalipikasyon at inihahambing ka sa mga nangungunang pandaigdigang trabaho para sa mga internasyonal na kandidato.",
+            "color": "teksto-[#38B6FF]",
+            "bgColor": "bg-indigo-50",
+            "borderColor": "hangganan-[#38B6FF]",
+            "gradientFrom": "mula-sa-indigo-50",
+            "gradientTo": "sa-[#38B6FF]",
+            "accentColor": "bg-[#38B6FF]",
+            "id": 2
+          },
+          {
+            "iconKey": "mikropono",
+            "title": "Paghahanda sa Panayam",
+            "description": "Sasanayin ka ng aming mga propesyonal para sa bawat uri ng panayam upang matiyak na magtatagumpay ka at mamumukod-tangi sa mga internasyonal na programa sa paglalagay ng trabaho.",
+            "color": "teksto-[#38B6FF]",
+            "bgColor": "bg-lila-50",
+            "borderColor": "hangganan-[#38B6FF]",
+            "gradientFrom": "mula-[#38B6FF]",
+            "gradientTo": "sa-[#38B6FF]",
+            "accentColor": "bg-lila-500",
+            "id": 3
+          }
+        ]
+      }
+    }
+  }
+}

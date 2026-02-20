@@ -1,0 +1,374 @@
+{
+  "skilldevelopment": {
+    "hero": {
+      "badge": "Schulung zur Entwicklung beruflicher Fähigkeiten",
+      "headline": {
+        "prefix": "Entwickeln Sie Ihr",
+        "suffix": "Für den Job von morgen"
+      },
+      "animatedWords": [
+        "Fertigkeiten",
+        "Fachwissen",
+        "Wissen",
+        "Fähigkeiten",
+        "Talente",
+        "Beherrschung"
+      ],
+      "description": "Unsere berufsorientierten Schulungsprogramme und beruflichen Weiterbildungskurse bieten praktische, gefragte Fähigkeiten. Von Experten geleitete Schulungen bereiten Sie darauf vor, auf dem heutigen wettbewerbsintensiven Arbeitsmarkt erfolgreich zu sein.",
+      "cta": {
+        "text": "Trainingsprogramme erkunden"
+      }
+    },
+    "showcase": {
+      "title": "Entwicklung von Fertigkeiten",
+      "subtitle": "Heute die Fähigkeiten von morgen entwickeln",
+      "learning": {
+        "title": "Interaktives Lernen",
+        "subtitle": "Praktische Ausbildung unter fachkundiger Anleitung"
+      },
+      "categories": [
+        {
+          "icon": "Code",
+          "title": "Technische Fertigkeiten",
+          "description": "Programmierung & IT",
+          "gradient": "bg-gradient-to-r von-himmel-500 zu-blau-600"
+        },
+        {
+          "icon": "Glühbirne",
+          "title": "Kreativ",
+          "description": "Gestaltung und Medien",
+          "gradient": "bg-gradient-to-r von-violett-500 nach-indigo-600"
+        },
+        {
+          "icon": "Ziel",
+          "title": "Business",
+          "description": "Management und Finanzen",
+          "gradient": "bg-gradient-to-r von-emerald-500 bis-teal-600"
+        },
+        {
+          "icon": "TrendingUp",
+          "title": "Soft Skills",
+          "description": "Kommunikation und Führung",
+          "gradient": "bg-gradient-to-r von-orange-500 nach-rot-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "150+",
+          "label": "Ausbildungsprogramme",
+          "color": "text-himmel-600"
+        },
+        {
+          "value": "5000+",
+          "label": "Ausgebildete Studenten",
+          "color": "text-blau-600"
+        },
+        {
+          "value": "90%",
+          "label": "Arbeitsvermittlung",
+          "color": "text-indigo-600"
+        }
+      ]
+    }
+  },
+  "skilldevpage": {
+    "hero": {
+      "badge": "ENTWICKLUNG BERUFLICHER FÄHIGKEITEN",
+      "title": {
+        "prefix": "Warum wählen Sie unser",
+        "highlight": "Programme zur Entwicklung von Fertigkeiten?"
+      },
+      "description": "Gestalten Sie Ihre Karriere mit branchenrelevanten Schulungsprogrammen, die Sie für den Arbeitsmarkt fit machen. Schließen Sie sich Tausenden von Fachleuten an, die ihre Karriere durch unsere umfassenden Qualifizierungskurse vorangebracht haben.",
+      "cta": {
+        "primary": "Trainingsprogramme erkunden",
+        "secondary": "Konsultation vereinbaren"
+      }
+    },
+    "stats": [
+      {
+        "value": "500+",
+        "label": "Ausbildungsprogramme",
+        "icon": "BookOpen"
+      },
+      {
+        "value": "15k+",
+        "label": "Ausgebildete Studenten",
+        "icon": "Benutzer"
+      },
+      {
+        "value": "95%",
+        "label": "Stellenvermittlungsquote",
+        "icon": "TrendingUp"
+      },
+      {
+        "value": "200+",
+        "label": "Partner aus der Industrie",
+        "icon": "Gebäude"
+      }
+    ],
+    "benefits": {
+      "title": {
+        "prefix": "Was unsere Programme auszeichnet",
+        "highlight": "Herausragend"
+      },
+      "description": "Unser umfassender Ansatz stellt sicher, dass Sie die beste Schulungserfahrung mit realen Anwendungen erhalten",
+      "items": [
+        {
+          "icon": "Gebäude",
+          "title": "Industrierelevanter Lehrplan",
+          "description": "Schulungsmodule, die in Zusammenarbeit mit Branchenexperten und Arbeitgebern entwickelt wurden, stellen sicher, dass Sie die relevantesten und aktuellsten Kenntnisse durch gefragte Qualifizierungsprogramme erwerben.",
+          "color": "text-[#38B6FF]",
+          "bgColor": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Benutzer",
+          "title": "Erfahrene Trainer & Mentoren",
+          "description": "Lernen Sie von qualifizierten Ausbildern, die über praktische Erfahrungen in ihren jeweiligen Fachgebieten verfügen und Schulungen für den beruflichen Aufstieg anbieten.",
+          "color": "text-emerald-600",
+          "bgColor": "bg-emerald-50"
+        },
+        {
+          "icon": "Ziel",
+          "title": "Praktisches Lernen",
+          "description": "Wir legen großen Wert auf praxisnahes, projektbasiertes Lernen, damit Sie nicht nur ausgebildet werden, sondern mit wichtigen Soft Skills und technischem Training für den Job gerüstet sind.",
+          "color": "text-violett-600",
+          "bgColor": "bg-violett-50"
+        },
+        {
+          "icon": "Uhr",
+          "title": "Flexible Lernoptionen",
+          "description": "Online, persönlich oder gemischt - wählen Sie den Modus, der am besten zu Ihrem Zeitplan und Ihrem Lernstil passt, für Online- und Offline-Schulungen zu gefragten Fähigkeiten.",
+          "color": "text-orange-600",
+          "bgColor": "bg-orange-50"
+        },
+        {
+          "icon": "Aktentasche",
+          "title": "Unterstützung der Karriere",
+          "description": "Lassen Sie sich im Rahmen unserer Workshops zur Vorbereitung auf den Arbeitsplatz und zur Karriereförderung bei der Erstellung von Lebensläufen, der Stellensuche und der Vorbereitung auf Vorstellungsgespräche beraten.",
+          "color": "text-indigo-600",
+          "bgColor": "bg-indigo-50"
+        }
+      ]
+    },
+    "trainingAreas": {
+      "title": {
+        "prefix": "Ausbildungsbereiche",
+        "highlight": "Wir decken"
+      },
+      "description": "Unsere Programme decken ein breites Spektrum an stark nachgefragten Bereichen ab, um die unterschiedlichsten Karrierewünsche zu erfüllen",
+      "programLabel": "Berufsausbildungsprogramm",
+      "skillsLabel": "Schlüsselqualifikationen, die Sie lernen werden:",
+      "highlightsLabel": "Höhepunkte des Programms:",
+      "enrollButton": "Einschreiben",
+      "programText": "Programm",
+      "highlights": [
+        "Von der Industrie anerkannte Zertifizierung",
+        "Praxisnahes Projektportfolio",
+        "Unterstützung bei der Arbeitsvermittlung",
+        "Flexible Lernzeiten"
+      ],
+      "items": [
+        {
+          "title": "Informationstechnologie (IT) & Softwareentwicklung",
+          "description": "Programmiersprachen, Webentwicklung, Data Science, App-Entwicklung, Cybersicherheit und vieles mehr, unterstützt durch unsere Schulungsinitiativen für digitale Kompetenzen.",
+          "icon": "Code",
+          "color": "text-[#38B6FF]",
+          "bgColor": "bg-[#38B6FF]/10",
+          "accentColor": "bg-[#38B6FF]",
+          "skills": [
+            "Python",
+            "JavaScript",
+            "Reagieren Sie",
+            "Datenwissenschaft",
+            "Cybersecurity",
+            "Cloud Computing"
+          ],
+          "id": 0
+        },
+        {
+          "title": "Digitales Marketing",
+          "description": "SEO, Social Media Marketing, E-Mail-Marketing, Erstellung von Inhalten, Google Ads und Analysen.",
+          "icon": "TrendingUp",
+          "color": "text-emerald-600",
+          "bgColor": "bg-emerald-50",
+          "accentColor": "bg-emerald-600",
+          "skills": [
+            "SEO",
+            "Soziale Medien",
+            "Google-Anzeigen",
+            "Inhaltliches Marketing",
+            "Analytik",
+            "E-Mail-Marketing"
+          ],
+          "id": 1
+        },
+        {
+          "title": "Business & Unternehmertum",
+          "description": "Unternehmensplanung, Projektmanagement, Führungsqualitäten und Finanzwissen.",
+          "icon": "Gebäude",
+          "color": "text-violett-600",
+          "bgColor": "bg-violett-50",
+          "accentColor": "bg-violett-600",
+          "skills": [
+            "Unternehmensplanung",
+            "Projektleitung",
+            "Leiterschaft",
+            "Finanzielle Allgemeinbildung",
+            "Strategie",
+            "Betrieb"
+          ],
+          "id": 2
+        },
+        {
+          "title": "Kommunikation und Soft Skills",
+          "description": "Öffentliches Reden, professionelles Schreiben, Teamarbeit, emotionale Intelligenz und Etikette am Arbeitsplatz.",
+          "icon": "MessageSquare",
+          "color": "text-orange-600",
+          "bgColor": "bg-orange-50",
+          "accentColor": "bg-orange-600",
+          "skills": [
+            "Öffentliches Reden",
+            "Professionelles Schreiben",
+            "Teamarbeit",
+            "Emotionale Intelligenz",
+            "Führung",
+            "Verhandlung"
+          ],
+          "id": 3
+        },
+        {
+          "title": "Berufliche und technische Fertigkeiten",
+          "description": "Handwerkliche und praktische Berufe wie Mechanik, Elektrotechnik und computergestütztes Design (CAD).",
+          "icon": "Schild",
+          "color": "text-indigo-600",
+          "bgColor": "bg-indigo-50",
+          "accentColor": "bg-indigo-600",
+          "skills": [
+            "Maschinenwesen",
+            "Elektrische Systeme",
+            "CAD-Konstruktion",
+            "Herstellung",
+            "Qualitätskontrolle",
+            "Sicherheitsstandards"
+          ],
+          "id": 4
+        }
+      ]
+    },
+    "targetAudience": {
+      "title": "Wer kann teilnehmen?",
+      "description": "Unsere Programme sind für verschiedene Lernende in unterschiedlichen Karrierestufen konzipiert",
+      "items": [
+        {
+          "title": "Jüngste Absolventen",
+          "description": "Suche nach Weiterbildungsprogrammen für Hochschulabsolventen in Pakistan",
+          "icon": "GraduationCap",
+          "color": "text-[#38B6FF]"
+        },
+        {
+          "title": "Berufstätige Fachkräfte",
+          "description": "Verbesserung der beruflichen Qualifikationen oder Übergang in eine andere Laufbahn durch Analyse der Qualifikationslücken und Höherqualifizierung",
+          "icon": "Aktentasche",
+          "color": "text-emerald-600"
+        },
+        {
+          "title": "Unternehmer",
+          "description": "Erforderliches geschäftliches Know-how und unternehmerische Fähigkeiten",
+          "icon": "Glühbirne",
+          "color": "text-violett-600"
+        },
+        {
+          "title": "Arbeitssuchende",
+          "description": "Wettbewerbsvorteile durch erschwingliche Berufsbildungsprogramme für Arbeitssuchende anstreben",
+          "icon": "Ziel",
+          "color": "text-orange-600"
+        },
+        {
+          "title": "Organisationen",
+          "description": "die ihre Mitarbeiter mit Schulungen für unternehmerische Fähigkeiten schulen wollen",
+          "icon": "Gebäude",
+          "color": "text-indigo-600"
+        }
+      ]
+    },
+    "approach": {
+      "title": {
+        "prefix": "Unser",
+        "highlight": "Ansatz für das Lernen"
+      },
+      "description": "Bei JobsAdmire folgen wir einem lernerzentrierten und ergebnisorientierten Schulungsmodell, das den Erfolg sicherstellen soll",
+      "points": [
+        {
+          "title": "Verlobung",
+          "description": "Interaktive Sitzungen, die die Lernenden aktiv einbeziehen",
+          "icon": "Benutzer"
+        },
+        {
+          "title": "Bewertung",
+          "description": "Quiz und reale Projekte zur Messung der Fortschritte",
+          "icon": "BarChart3"
+        },
+        {
+          "title": "Bewertung",
+          "description": "Zertifizierungen und praktische Tests zur Validierung",
+          "icon": "Auszeichnung"
+        },
+        {
+          "title": "Verbindung",
+          "description": "Jobangebote und Praktika für echte Erfahrungen",
+          "icon": "Weltkugel"
+        }
+      ]
+    },
+    "certification": {
+      "title": {
+        "prefix": "Zertifizierung",
+        "suffix": "Unterstützung bei der Platzierung"
+      },
+      "description": "Nach erfolgreichem Abschluss erhalten die Teilnehmer anerkannte Zertifizierungen, die ihren Lebenslauf aufwerten. Dank unserer Partnerschaften mit führenden Unternehmen und Jobplattformen können wir bei der Vermittlung helfen und die Lernenden mit realen Beschäftigungsmöglichkeiten in Verbindung bringen.",
+      "features": [
+        "Von der Industrie anerkannte Zertifizierungen",
+        "Die besten Kurse zur Entwicklung von Fähigkeiten für die berufliche Weiterentwicklung",
+        "Qualifizierungskurse in Pakistan",
+        "Berufsausbildung für pakistanische Jugendliche"
+      ],
+      "cta": "Zertifizierungsprogramme anzeigen"
+    },
+    "form": {
+      "title": "Beginnen Sie heute",
+      "fields": {
+        "name": "Vollständiger Name",
+        "email": "E-Mail Adresse",
+        "training": "Interessierter Ausbildungsbereich"
+      },
+      "placeholders": {
+        "name": "Geben Sie Ihren vollständigen Namen ein",
+        "email": "Ihre E-Mail eingeben",
+        "training": "Ausbildungsbereich auswählen"
+      },
+      "options": [
+        {
+          "value": "es",
+          "label": "IT & Software-Entwicklung"
+        },
+        {
+          "value": "Marketing",
+          "label": "Digitales Marketing"
+        },
+        {
+          "value": "Unternehmen",
+          "label": "Business & Unternehmertum"
+        },
+        {
+          "value": "Kommunikation",
+          "label": "Kommunikation und Soft Skills"
+        },
+        {
+          "value": "technisch",
+          "label": "Berufliche und technische Fertigkeiten"
+        }
+      ],
+      "submit": "Informationen anfordern"
+    }
+  }
+}

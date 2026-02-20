@@ -1,0 +1,374 @@
+{
+  "skilldevelopment": {
+    "hero": {
+      "badge": "Formation au développement des compétences professionnelles",
+      "headline": {
+        "prefix": "Développez votre",
+        "suffix": "Pour l'emploi de demain"
+      },
+      "animatedWords": [
+        "Compétences",
+        "Expertise",
+        "Connaissances",
+        "Capacités",
+        "Talents",
+        "Maîtrise"
+      ],
+      "description": "Nos programmes de formation axés sur l'emploi et nos cours de développement professionnel offrent des compétences pratiques et recherchées. Des sessions de développement des compétences dirigées par des experts vous préparent à prospérer sur le marché du travail compétitif d'aujourd'hui.",
+      "cta": {
+        "text": "Explorer les programmes de formation"
+      }
+    },
+    "showcase": {
+      "title": "Développement des compétences",
+      "subtitle": "Construire aujourd'hui les compétences de demain",
+      "learning": {
+        "title": "Apprentissage interactif",
+        "subtitle": "Formation pratique avec l'aide d'un expert"
+      },
+      "categories": [
+        {
+          "icon": "Code",
+          "title": "Compétences techniques",
+          "description": "Programmation et informatique",
+          "gradient": "bg-gradient-to-r du ciel-500 au bleu-600"
+        },
+        {
+          "icon": "Ampoule",
+          "title": "Créatif",
+          "description": "Conception et médias",
+          "gradient": "bg-gradient-to-r de-violet-500 à-indigo-600"
+        },
+        {
+          "icon": "Cible",
+          "title": "Entreprises",
+          "description": "Gestion et finances",
+          "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+        },
+        {
+          "icon": "TrendingUp",
+          "title": "Compétences non techniques",
+          "description": "Communication et leadership",
+          "gradient": "bg-gradient-to-r de-orange-500 à-rouge-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "150+",
+          "label": "Programmes de formation",
+          "color": "texte-ciel-600"
+        },
+        {
+          "value": "5000+",
+          "label": "Étudiants formés",
+          "color": "texte-bleu-600"
+        },
+        {
+          "value": "90%",
+          "label": "Placement professionnel",
+          "color": "texte-indigo-600"
+        }
+      ]
+    }
+  },
+  "skilldevpage": {
+    "hero": {
+      "badge": "DÉVELOPPEMENT DES COMPÉTENCES PROFESSIONNELLES",
+      "title": {
+        "prefix": "Pourquoi choisir notre",
+        "highlight": "Programmes de développement des compétences ?"
+      },
+      "description": "Transformez votre carrière grâce à des programmes de formation adaptés à l'industrie et conçus pour vous préparer à l'emploi. Rejoignez les milliers de professionnels qui ont fait progresser leur carrière grâce à nos cours complets de développement des compétences.",
+      "cta": {
+        "primary": "Explorer les programmes de formation",
+        "secondary": "Planifier une consultation"
+      }
+    },
+    "stats": [
+      {
+        "value": "500+",
+        "label": "Programmes de formation",
+        "icon": "BookOpen"
+      },
+      {
+        "value": "15k+",
+        "label": "Étudiants formés",
+        "icon": "Utilisateurs"
+      },
+      {
+        "value": "95%",
+        "label": "Taux de placement",
+        "icon": "TrendingUp"
+      },
+      {
+        "value": "200+",
+        "label": "Partenaires industriels",
+        "icon": "Bâtiment"
+      }
+    ],
+    "benefits": {
+      "title": {
+        "prefix": "Ce qui fait la force de nos programmes",
+        "highlight": "Remarquable"
+      },
+      "description": "Notre approche globale garantit que vous bénéficiez de la meilleure expérience de formation avec des applications concrètes.",
+      "items": [
+        {
+          "icon": "Bâtiment",
+          "title": "Un programme d'études adapté à l'industrie",
+          "description": "Les modules de formation sont conçus en collaboration avec des experts de l'industrie et des employeurs, ce qui vous permet d'acquérir les compétences les plus pertinentes et les plus récentes grâce à des programmes de formation axés sur les compétences les plus demandées.",
+          "color": "texte-[#38B6FF]",
+          "bgColor": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Utilisateurs",
+          "title": "Formateurs et mentors expérimentés",
+          "description": "Apprenez auprès d'instructeurs qualifiés ayant une expérience concrète dans leurs domaines respectifs et dispensant une formation pour l'avancement de la carrière.",
+          "color": "texte-emerald-600",
+          "bgColor": "bg-emerald-50"
+        },
+        {
+          "icon": "Cible",
+          "title": "Apprentissage pratique",
+          "description": "Nous mettons l'accent sur l'apprentissage pratique, basé sur des projets, afin que vous ne soyez pas simplement formé, mais que vous soyez prêt à travailler grâce à des compétences non techniques essentielles et à une formation technique.",
+          "color": "texte-violet-600",
+          "bgColor": "bg-pourpre-50"
+        },
+        {
+          "icon": "Horloge",
+          "title": "Options d'apprentissage flexibles",
+          "description": "En ligne, en personne ou hybride - choisissez le mode qui convient le mieux à votre emploi du temps et à votre style d'apprentissage pour des sessions de formation en ligne et hors ligne pour les compétences les plus demandées.",
+          "color": "texte-orange-600",
+          "bgColor": "bg-orange-50"
+        },
+        {
+          "icon": "Porte-documents",
+          "title": "Aide à la carrière",
+          "description": "Obtenez des conseils sur la rédaction d'un CV, les stratégies de recherche d'emploi et la préparation d'un entretien dans le cadre de notre formation à la préparation à l'emploi et de nos ateliers d'amélioration de la carrière.",
+          "color": "texte-indigo-600",
+          "bgColor": "bg-indigo-50"
+        }
+      ]
+    },
+    "trainingAreas": {
+      "title": {
+        "prefix": "Espaces de formation",
+        "highlight": "Nous couvrons"
+      },
+      "description": "Nos programmes couvrent un large éventail de domaines à forte demande afin de répondre aux diverses aspirations professionnelles.",
+      "programLabel": "Programme de formation professionnelle",
+      "skillsLabel": "Compétences clés que vous apprendrez :",
+      "highlightsLabel": "Points forts du programme :",
+      "enrollButton": "S'inscrire à",
+      "programText": "Programme",
+      "highlights": [
+        "Certification reconnue par l'industrie",
+        "Portefeuille de projets pratiques",
+        "Aide à l'insertion professionnelle",
+        "Calendrier d'apprentissage flexible"
+      ],
+      "items": [
+        {
+          "title": "Technologies de l'information (TI) et développement de logiciels",
+          "description": "Langages de programmation, développement web, science des données, développement d'applis, cybersécurité, et plus encore, soutenus par nos initiatives de formation aux compétences numériques.",
+          "icon": "Code",
+          "color": "texte-[#38B6FF]",
+          "bgColor": "bg-[#38B6FF]/10",
+          "accentColor": "bg-[#38B6FF]",
+          "skills": [
+            "Python",
+            "JavaScript",
+            "Réagir",
+            "Science des données",
+            "Cybersécurité",
+            "Informatique en nuage"
+          ],
+          "id": 0
+        },
+        {
+          "title": "Marketing numérique",
+          "description": "SEO, marketing des médias sociaux, marketing par courriel, création de contenu, Google Ads et analyse.",
+          "icon": "TrendingUp",
+          "color": "texte-emerald-600",
+          "bgColor": "bg-emerald-50",
+          "accentColor": "bg-emerald-600",
+          "skills": [
+            "SEO",
+            "Médias sociaux",
+            "Annonces Google",
+            "Marketing de contenu",
+            "Analyse",
+            "Marketing par courrier électronique"
+          ],
+          "id": 1
+        },
+        {
+          "title": "Affaires et entrepreneuriat",
+          "description": "Planification d'entreprise, gestion de projet, leadership et culture financière.",
+          "icon": "Bâtiment",
+          "color": "texte-violet-600",
+          "bgColor": "bg-pourpre-50",
+          "accentColor": "bg-pourpre-600",
+          "skills": [
+            "Planification des activités",
+            "Gestion de projet",
+            "Leadership",
+            "Éducation financière",
+            "Stratégie",
+            "Opérations"
+          ],
+          "id": 2
+        },
+        {
+          "title": "Communication et compétences non techniques",
+          "description": "Prise de parole en public, rédaction professionnelle, travail en équipe, intelligence émotionnelle et étiquette sur le lieu de travail.",
+          "icon": "MessageSquare",
+          "color": "texte-orange-600",
+          "bgColor": "bg-orange-50",
+          "accentColor": "bg-orange-600",
+          "skills": [
+            "Prise de parole en public",
+            "Rédaction professionnelle",
+            "Travail d'équipe",
+            "Intelligence émotionnelle",
+            "Leadership",
+            "Négociation"
+          ],
+          "id": 3
+        },
+        {
+          "title": "Compétences professionnelles et techniques",
+          "description": "Métiers et professions pratiques, notamment dans les domaines de la mécanique, de l'électricité et de la conception assistée par ordinateur (CAO).",
+          "icon": "Bouclier",
+          "color": "texte-indigo-600",
+          "bgColor": "bg-indigo-50",
+          "accentColor": "bg-indigo-600",
+          "skills": [
+            "Ingénierie mécanique",
+            "Systèmes électriques",
+            "Conception CAO",
+            "Fabrication",
+            "Contrôle de la qualité",
+            "Normes de sécurité"
+          ],
+          "id": 4
+        }
+      ]
+    },
+    "targetAudience": {
+      "title": "Qui peut s'inscrire ?",
+      "description": "Nos programmes sont conçus pour des apprenants divers à différents stades de leur carrière",
+      "items": [
+        {
+          "title": "Diplômés récents",
+          "description": "À la recherche de programmes de formation continue pour les jeunes diplômés au Pakistan",
+          "icon": "GraduationCap",
+          "color": "texte-[#38B6FF]"
+        },
+        {
+          "title": "Professionnels en activité",
+          "description": "Amélioration des compétences professionnelles ou transition de carrière grâce à l'analyse des lacunes en matière de compétences et à l'amélioration des qualifications",
+          "icon": "Porte-documents",
+          "color": "texte-emerald-600"
+        },
+        {
+          "title": "Entrepreneurs",
+          "description": "Besoin d'un savoir-faire commercial et de compétences entrepreneuriales",
+          "icon": "Ampoule",
+          "color": "texte-violet-600"
+        },
+        {
+          "title": "Demandeurs d'emploi",
+          "description": "Viser un avantage concurrentiel grâce à des programmes de formation professionnelle abordables pour les demandeurs d'emploi",
+          "icon": "Cible",
+          "color": "texte-orange-600"
+        },
+        {
+          "title": "Organisations",
+          "description": "Vous souhaitez former votre personnel à l'aide de sessions de formation aux compétences de l'entreprise",
+          "icon": "Bâtiment",
+          "color": "texte-indigo-600"
+        }
+      ]
+    },
+    "approach": {
+      "title": {
+        "prefix": "Notre",
+        "highlight": "Approche de l'apprentissage"
+      },
+      "description": "Chez JobsAdmire, nous suivons un modèle de formation centré sur l'apprenant et orienté vers les résultats, conçu pour garantir la réussite.",
+      "points": [
+        {
+          "title": "Engagement",
+          "description": "Des sessions interactives qui impliquent activement les apprenants",
+          "icon": "Utilisateurs"
+        },
+        {
+          "title": "L'évaluation",
+          "description": "Des questionnaires et des projets concrets pour mesurer les progrès accomplis",
+          "icon": "BarChart3"
+        },
+        {
+          "title": "L'évaluation",
+          "description": "Certifications et essais pratiques pour la validation",
+          "icon": "Prix"
+        },
+        {
+          "title": "Connexion",
+          "description": "Possibilités d'emploi et de stages pour une expérience réelle",
+          "icon": "Globe terrestre"
+        }
+      ]
+    },
+    "certification": {
+      "title": {
+        "prefix": "Certification",
+        "suffix": "Aide au placement"
+      },
+      "description": "À l'issue de la formation, les participants reçoivent des certifications reconnues pour étoffer leur CV. Nos partenariats avec des entreprises de premier plan et des plateformes d'emploi nous permettent d'offrir une aide au placement et de mettre les apprenants en contact avec de réelles opportunités d'emploi.",
+      "features": [
+        "Certifications reconnues par l'industrie",
+        "Les meilleurs cours de développement des compétences pour la croissance professionnelle",
+        "Cours de développement des compétences au Pakistan",
+        "Formation professionnelle pour les jeunes pakistanais"
+      ],
+      "cta": "Voir les programmes de certification"
+    },
+    "form": {
+      "title": "Commencez dès aujourd'hui",
+      "fields": {
+        "name": "Nom complet",
+        "email": "Adresse électronique",
+        "training": "Espace de formation intéressé"
+      },
+      "placeholders": {
+        "name": "Saisissez votre nom complet",
+        "email": "Saisissez votre adresse électronique",
+        "training": "Sélectionner la zone de formation"
+      },
+      "options": [
+        {
+          "value": "il",
+          "label": "Informatique et développement de logiciels"
+        },
+        {
+          "value": "marketing",
+          "label": "Marketing numérique"
+        },
+        {
+          "value": "entreprise",
+          "label": "Affaires et entrepreneuriat"
+        },
+        {
+          "value": "communication",
+          "label": "Communication et compétences non techniques"
+        },
+        {
+          "value": "technique",
+          "label": "Compétences professionnelles et techniques"
+        }
+      ],
+      "submit": "Demande d'information"
+    }
+  }
+}

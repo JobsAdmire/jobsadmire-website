@@ -1,0 +1,131 @@
+{
+  "navigation": {
+    "package": "Pakete",
+    "home": "Tahanan"
+  },
+  "hero": {
+    "title": {
+      "line1": "Simulan ang Iyong",
+      "line2": "Paglalakbay Ngayon"
+    },
+    "description": "Madaling humiling ng mga opisyal na e-imbitasyon para sa iyong mga pangangailangan sa paglalakbay. Para man sa turismo, negosyo, o kumperensya/seminar, pinapasimple ng Jobs Admire ang proseso ng iyong visa."
+  },
+  "form": {
+    "iAmFrom": "Ako ay taga-",
+    "iLiveIn": "Nakatira ako sa",
+    "invitationFor": "Imbitasyon para sa",
+    "selectCountry": "Pumili ng bansa",
+    "selectDestination": "Pumili ng destinasyon",
+    "searchCountries": "Maghanap ng mga bansa...",
+    "loadingCountries": "Naglo-load ng mga bansa...",
+    "noCountriesFound": "Walang nahanap na mga bansa",
+    "findNow": "Hanapin Ngayon"
+  },
+  "packages": {
+    "title": "Pumili ng Pakete ng Serbisyo",
+    "description": "Pumili mula sa aming komprehensibong mga pakete ng serbisyo na idinisenyo upang matupad ang iyong mga pangarap sa paglalakbay. Nag-aalok kami ng mabilis na pagproseso, mapagkumpitensyang mga rate, at gabay ng eksperto upang matiyak na ang iyong aplikasyon sa visa ay matagumpay at walang stress.",
+    "showingPackagesFor": "Ipinapakita ang mga pakete para sa:",
+    "packageFor": "Pakete Para sa",
+    "selectedCountry": "Napiling Bansa",
+    "recommended": "Inirerekomenda",
+    "save": "I-save",
+    "getStarted": "Magsimula",
+    "needHelp": "Kailangan mo ba ng tulong sa pagpili?",
+    "contactExperts": "Makipag-ugnayan sa aming mga eksperto",
+    "processingTime48Hours": "Ang oras ng pagproseso ng imbitasyon ay 48 oras",
+    "documentationProcessingTime48Hours": "Ang oras ng pagproseso ng dokumentasyon ay 48 oras",
+    "features": {
+      "fastProcessing": "Mabilis na Pagproseso",
+      "hours96Valid": "96 Oras na May Bisa",
+      "airportTransit": "Pagbibiyahe sa Paliparan",
+      "days14Valid": "14 na Araw na May Bisa",
+      "days30Valid": "30 Araw na May Bisa",
+      "touristBusiness": "Karagdagang tao (higit sa 5): USD 200 bawat tao",
+      "touristBusinesss": "Turista | Negosyo",
+      "singleEntry": "Isang Pagpasok",
+      "singleMultipleEntry": "Isahan | Maramihang Pagpasok"
+    }
+  },
+  "alerts": {
+    "selectAllFields": "Pakipili ang lahat ng kinakailangang field"
+  },
+  "errors": {
+    "failedToLoadCountries": "Nabigong i-load ang mga bansa"
+  },
+  "visaApplication": {
+    "stepTitles": {
+      "step1": "Impormasyon sa Lokasyon",
+      "step2": "Mga Kinakailangan at Kumpirmasyon",
+      "step3": "Pag-upload ng mga Dokumento",
+      "step4": "Mga Personal na Detalye",
+      "step5": "Suriin at Isumite ang Aplikasyon"
+    },
+    "submitFailed": "Nabigong magpadala ng email",
+    "errors": {
+      "fromCountry": "Mangyaring piliin ang iyong bansang pinagmulan",
+      "toCountry": "Mangyaring piliin ang bansang iyong tinitirhan",
+      "toCountrySame": "Dapat magkaiba ang mga bansang pinagmulan at destinasyon",
+      "hasValidPassport": "Pakikumpirma na mayroon kang wastong pasaporte",
+      "hasPictureHeadshot": "Pakikumpirma na mayroon kang larawan/headshot",
+      "confirmNoActiveApplication": "Pakikumpirma na walang aktibong aplikasyon",
+      "confirmGovernmentDiscretion": "Mangyaring kilalanin ang diskresyon ng gobyerno",
+      "passportDocument": "Paki-upload ang dokumento ng iyong pasaporte",
+      "pictureHeadshot": "Paki-upload ang iyong larawan/headshot",
+      "firstName": "Kinakailangan ang unang pangalan",
+      "lastName": "Kinakailangan ang apelyido",
+      "phoneNumber": "Kinakailangan ang numero ng telepono",
+      "email": "Kinakailangan ang email",
+      "passportNumber": "Kinakailangan ang numero ng pasaporte",
+      "profession": "Kinakailangan ang propesyon",
+      "travelDate": "Kinakailangan ang petsa ng paglalakbay",
+      "travelToDate": "Kinakailangan ang petsa ng pagbabalik",
+      "travelPurpose": "Kinakailangan ang layunin ng paglalakbay",
+      "emailInvalid": "Mangyaring maglagay ng wastong email address",
+      "phoneInvalid": "Mangyaring maglagay ng wastong numero ng telepono",
+      "travelDatePast": "Hindi maaaring nakaraan ang petsa ng paglalakbay",
+      "travelToDateAfter": "Ang petsa ng pagbabalik ay dapat pagkatapos ng petsa ng paglalakbay",
+      "travelerNameRequired": "Kinakailangan ang pangalan ng manlalakbay {{index}}",
+      "travelerPhoneRequired": "Kinakailangan ang telepono ng manlalakbay {{index}}"
+    },
+    "placeholders": {
+      "searchCountries": "Maghanap ng mga bansa...",
+      "selectCountry": "Pumili ng bansa",
+      "firstName": "Pangalan",
+      "lastName": "Apelyido",
+      "phoneNumber": "Numero ng Telepono",
+      "email": "Email address",
+      "from": "Mula sa",
+      "liveIn": "Tumira sa",
+      "passportNumber": "Numero ng pasaporte",
+      "profession": "Propesyon",
+      "dateFormat": "mm/dd/yyyy",
+      "travelPurpose": "Layunin sa paglalakbay",
+      "numberOfTravellers": "Bilang ng mga Manlalakbay",
+      "fullName": "Buong Pangalan"
+    },
+    "labels": {
+      "applicationDetails": "Mga Detalye ng Aplikasyon",
+      "submitApplication": "Isumite ang Aplikasyon",
+      "transitVisa": "VISA NG TRANSIT",
+      "transitVisaShort": "Visa sa Pagbibiyahe",
+      "notProvided": "Hindi ibinigay",
+      "notUploaded": "Hindi na-upload",
+      "price": "Presyo:",
+      "submitting": "Isinusumite...",
+      "uploadDocumentsTitle": "Paki-upload ang mga Sumusunod na Dokumento",
+      "acceptedFormats": "Mga Tinatanggap na Format:",
+      "acceptedFormatsValue": "PDF, JPG o PNG",
+      "details": "Mga Detalye",
+      "review": "Pagsusuri",
+      "next": "Susunod",
+      "visaFor": "VISA PARA SA:",
+      "currency": "USD"
+    }
+  },
+  "packageTypes": {
+    "individualTouristInvitation": "Indibidwal na Imbitasyon sa Turista",
+    "individualBusinessInvitation": "Indibidwal na Imbitasyon sa Negosyo",
+    "familyTouristInvitation": "Imbitasyon sa Pamilyang Turista",
+    "singleEntry": "Isang Pagpasok"
+  }
+}

@@ -1,0 +1,91 @@
+{
+  "contact": {
+    "brand": {
+      "name": "JobsAdmire",
+      "title": "Commençons ensemble votre voyage",
+      "description": "Nous sommes enthousiastes à l'idée de vous aider à atteindre vos objectifs de carrière. Prenez contact avec nous et faites le premier pas."
+    },
+    "contactInfo": [
+      {
+        "label": "Candidats et sociétés de RH",
+        "value": "+90 501 124 03 40"
+      },
+      {
+        "label": "Fournisseur d'emploi",
+        "value": "+90 553 383 2549"
+      },
+      {
+        "label": "Envoyez-nous un courriel à",
+        "value": "info@jobsadmire.com"
+      },
+      {
+        "label": "Visitez notre bureau",
+        "value": "Antalya, Turquie"
+      },
+      {
+        "label": "Heures d'ouverture",
+        "value": "Du lundi au vendredi, de 9h00 à 18h00"
+      }
+    ],
+    "form": {
+      "progress": {
+        "step1": "Informations personnelles",
+        "step2": "Message"
+      },
+      "step1": {
+        "title": "Prendre contact",
+        "subtitle": "Entamons une conversation"
+      },
+      "step2": {
+        "title": "En savoir plus",
+        "subtitle": "Nous sommes à votre écoute"
+      },
+      "fields": {
+        "name": {
+          "label": "Votre nom",
+          "placeholder": "Votre nom"
+        },
+        "email": {
+          "label": "Adresse électronique",
+          "placeholder": "Adresse électronique"
+        },
+        "phone": {
+          "label": "Numéro de téléphone",
+          "placeholder": "Numéro de téléphone"
+        },
+        "subject": {
+          "label": "Sujet",
+          "placeholder": "Sujet"
+        },
+        "message": {
+          "label": "Votre message",
+          "placeholder": "Votre message"
+        }
+      },
+      "validation": {
+        "nameRequired": "Le nom est obligatoire",
+        "nameMinLength": "Le nom doit comporter au moins 2 caractères",
+        "emailRequired": "L'adresse électronique est requise",
+        "emailInvalid": "Veuillez saisir une adresse électronique valide",
+        "phoneInvalid": "Veuillez saisir un numéro de téléphone valide",
+        "subjectRequired": "Le sujet est obligatoire",
+        "subjectMinLength": "Le sujet doit comporter au moins 3 caractères",
+        "messageRequired": "Le message est obligatoire",
+        "messageMinLength": "Le message doit comporter au moins 10 caractères"
+      },
+      "buttons": {
+        "continue": "Continuer",
+        "back": "Retour",
+        "send": "Envoyer",
+        "sending": "Envoi..."
+      },
+      "notification": "Nous vous informerons dès que nous aurons examiné votre message."
+    },
+    "success": {
+      "title": "Merci de votre attention !",
+      "message": "Votre message a été envoyé avec succès.",
+      "followUp": "Nous vous répondrons dans les plus brefs délais.",
+      "sendAnother": "Envoyer un autre message"
+    }
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "categories": {
+    "all": "Lahat",
+    "careerTips": "Mga Tip sa Karera",
+    "immigrationGuide": "Gabay sa Imigrasyon",
+    "jobSearch": "Paghahanap ng Trabaho",
+    "workVisa": "Visa sa Trabaho",
+    "successStories": "Mga Kwento ng Tagumpay"
+  },
+  "trendingTags": {
+    "remoteJobs": "Mga Trabahong Malayo",
+    "workVisa": "Visa sa Trabaho",
+    "immigration": "Imigrasyon",
+    "careerGrowth": "Paglago ng Karera",
+    "jobInterview": "Panayam sa Trabaho",
+    "resumeTips": "Mga Tip sa Resume"
+  },
+  "loading": {
+    "title": "Naglo-load ng Mga Pananaw sa Karera",
+    "description": "Paghahanda ng mga pinakabagong uso sa merkado ng trabaho at mga gabay sa imigrasyon..."
+  },
+  "error": {
+    "title": "Hindi Ma-load ang Nilalaman",
+    "description": "Nagkakaproblema kami sa paglo-load ng mga pinakabagong insight sa karera. Pakisubukang muli.",
+    "retryButton": "Subukang Muli ang Paglo-load"
+  },
+  "header": {
+    "badge": "Ang Iyong Gateway Patungo sa mga Pandaigdigang Oportunidad sa Karera",
+    "title": {
+      "part1": "Mag-navigate sa Iyong",
+      "part2": "Paglalakbay sa Karera"
+    },
+    "subtitle": "Tuklasin ang mga ekspertong pananaw sa paghahanap ng trabaho, mga work visa, mga proseso ng imigrasyon, at mga estratehiya sa pagsulong ng karera mula sa mga propesyonal sa industriya.",
+    "searchPlaceholder": "Maghanap ng mga tip sa trabaho, gabay sa visa, payo sa karera...",
+    "searchButton": "Maghanap",
+    "popularTopics": "Mga Sikat na Paksa:"
+  },
+  "featuredArticle": {
+    "title": {
+      "part1": "Itinatampok",
+      "part2": "Artikulo"
+    },
+    "defaultTag": "Itinatampok",
+    "minRead": "minutong pagbasa",
+    "anonymous": "Anonymous",
+    "careerExpert": "Eksperto sa Karera",
+    "readFullArticle": "Basahin ang Buong Artikulo"
+  },
+  "latestInsights": {
+    "title": {
+      "part1": "Pinakabago",
+      "part2": "Mga Pananaw"
+    },
+    "defaultTag": "Artikulo",
+    "min": "minuto",
+    "anonymous": "Anonymous",
+    "readMore": "Magbasa Pa"
+  },
+  "emptyState": {
+    "title": "Walang Natagpuang Artikulo",
+    "description": "Wala kaming makitang anumang artikulong tumutugma sa \"{searchTerm}\". Subukang maghanap ng iba't ibang mga keyword o galugarin ang aming mga kategorya.",
+    "clearSearch": "I-clear ang Paghahanap"
+  },
+  "loadMore": {
+    "button": "Magkarga ng Higit Pang mga Artikulo"
+  },
+  "newsletter": {
+    "title": "Manatiling Nangunguna sa Iyong Karera",
+    "description": "Kumuha ng lingguhang mga insight tungkol sa mga oportunidad sa trabaho, mga update sa visa, at mga estratehiya sa paglago ng karera.",
+    "emailLabel": "Email Address",
+    "emailPlaceholder": "Ilagay ang iyong email address",
+    "subscribeButton": "Mag-subscribe Ngayon",
+    "privacyNote": "Protektado ang iyong privacy. Mag-unsubscribe anumang oras.",
+    "features": {
+      "careerTips": "Mga Tip sa Lingguhang Karera",
+      "visaUpdates": "Mga Update sa Visa",
+      "jobAlerts": "Mga Alerto sa Trabaho"
+    }
+  },
+  "alerts": {
+    "subscriptionSuccess": "Salamat sa pag-subscribe!"
+  }
+}

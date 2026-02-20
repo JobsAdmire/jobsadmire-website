@@ -1,0 +1,204 @@
+{
+  "jobrecruitmenthero": {
+    "headline": {
+      "line1": "Talenta Terbaik, Hasil Nyata",
+      "highlight": "Rekrut dengan Lebih Cerdas",
+      "line2": "dengan JobsAdmire"
+    },
+    "description": "Platform rekrutmen berbasis AI kami menggabungkan keahlian industri yang mendalam dengan teknologi mutakhir untuk menghubungkan Anda dengan talenta luar biasa yang mendorong inovasi dan pertumbuhan.",
+    "cta": {
+      "text": "Mulai Sekarang"
+    },
+    "image": {
+      "src": "/images/rc.jpg",
+      "alt": "Layanan Rekrutmen"
+    }
+  },
+  "jobrecruitmentfull": {
+    "content": {
+      "headline": "Bangun Tim Berkinerja Tinggi dengan Talenta Terbaik — Cepat, Cerdas, dan Lancar dengan JobsAdmire",
+      "description": "Di JobsAdmire, kami membantu perusahaan rintisan visioner dan perusahaan global merekrut talenta teknis terbaik—dengan cepat dan efisien. Perekrut ahli kami memahami laju bisnis modern dan menghadirkan kandidat yang tidak hanya memenuhi deskripsi pekerjaan tetapi juga selaras dengan tujuan jangka panjang Anda. Mulai dari mengembangkan tim agile hingga mengisi peran teknologi khusus, solusi perekrutan kami dirancang untuk menyederhanakan proses perekrutan, meningkatkan produktivitas, dan mendorong pertumbuhan yang mengantarkan kesuksesan Anda.",
+      "cta": {
+        "text": "Konsultasi dengan Pakar"
+      }
+    },
+    "carousel": {
+      "firstColumn": [
+        {
+          "src": "/images/talentjr.png",
+          "alt": "Profesional dengan pakaian bisnis",
+          "name": "Sarah Johnson",
+          "role": "Pengembang Senior"
+        },
+        {
+          "src": "/images/talent2.png",
+          "alt": "Profesional teknologi",
+          "name": "Michael Chen",
+          "role": "Pemimpin Teknologi"
+        },
+        {
+          "src": "/images/talent3.png",
+          "alt": "Wanita profesional",
+          "name": "Emma Davis",
+          "role": "Manajer Produk"
+        }
+      ],
+      "secondColumn": [
+        {
+          "src": "/images/smart1.png",
+          "alt": "Profesional yang selalu tersenyum",
+          "name": "David Wilson",
+          "role": "Desainer UX",
+          "location": "Terpencil"
+        },
+        {
+          "src": "/images/smart2.png",
+          "alt": "Desainer profesional",
+          "name": "Lisa Brown",
+          "role": "Pengembang Frontend",
+          "location": "Di lokasi"
+        },
+        {
+          "src": "/images/smart3.png",
+          "alt": "Pemimpin teknologi",
+          "name": "James Miller",
+          "role": "Manajer Teknik",
+          "location": "Hibrida"
+        }
+      ],
+      "staticImage": {
+        "src": "/images/news1.jpg",
+        "alt": "Potret profesional"
+      }
+    }
+  },
+  "recruitment": {
+    "header": {
+      "title": {
+        "prefix": "Premi",
+        "highlight": "Rekrutmen",
+        "suffix": "& Solusi SDM"
+      },
+      "description": "Di JobsAdmire, kami mengkhususkan diri dalam menghubungkan talenta luar biasa dengan perusahaan inovatif. Layanan rekrutmen dan SDM komprehensif kami membantu bisnis berkembang secara efisien sekaligus memastikan kesesuaian budaya dan keterampilan yang sempurna untuk setiap posisi.",
+      "image": {
+        "alt": "Kolaborasi tim profesional di JobsAdmire",
+        "src": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      }
+    },
+    "slides": {
+      "talentAcquisition": {
+        "title": "Akuisisi Bakat & Pengayauan",
+        "subtitle": "Temukan Pasangan Ideal Anda",
+        "description": "JobsAdmire menghubungkan talenta terbaik dengan perusahaan terkemuka di seluruh dunia. Dengan akses ke lebih dari 2 juta profesional di bidang teknologi, keuangan, perawatan kesehatan, dan banyak lagi, kami membuat proses perekrutan menjadi mudah dan efisien.",
+        "steps": {
+          "requirements": "Menentukan Persyaratan & Spesifikasi Pekerjaan",
+          "sourcing": "Pencarian dan Penyaringan Kandidat",
+          "interview": "Koordinasi dan Penilaian Wawancara",
+          "selection": "Seleksi Akhir & Dukungan Orientasi"
+        },
+        "cta": "Mulai Rekrut Karyawan Hari Ini"
+      },
+      "hrDocumentation": {
+        "title": "Dokumentasi dan Kepatuhan SDM",
+        "subtitle": "Efisien & Profesional",
+        "description": "Layanan dokumentasi SDM lengkap yang memastikan kepatuhan hukum dan standar profesional. Mulai dari kontrak hingga kebijakan, kami menangani semua kebutuhan dokumentasi Anda dengan tepat dan ahli.",
+        "services": {
+          "contracts": "Kontrak Kerja & Surat Penawaran Kerja",
+          "policies": "Kebijakan & Prosedur SDM Khusus",
+          "performance": "KPI Kinerja & Sistem Evaluasi",
+          "compliance": "Kepatuhan Hukum & Perjanjian Kerahasiaan (NDA)",
+          "compensation": "Struktur Kompensasi & Tunjangan"
+        },
+        "cta": "Dapatkan Bantuan Dokumentasi"
+      },
+      "strategicConsulting": {
+        "title": "Konsultasi SDM Strategis",
+        "subtitle": "Tingkatkan Skala Tim Anda Secara Efektif",
+        "description": "Transformasikan operasional SDM Anda dengan layanan konsultasi strategis kami. Kami membantu bisnis mengoptimalkan manajemen talenta, meningkatkan tingkat retensi, dan membangun tim berkinerja tinggi.",
+        "services": {
+          "workforce": "Perencanaan dan Strategi Tenaga Kerja",
+          "teamStructure": "Optimalisasi Struktur Tim",
+          "retention": "Program Retensi Karyawan",
+          "culture": "Solusi Budaya & Keterlibatan"
+        },
+        "cta": "Jadwalkan Konsultasi"
+      }
+    }
+  },
+  "scrollingheadline": {
+    "primary": "TEMUKAN TALENTA TEKNOLOGI DENGAN JOBSADMIRE",
+    "secondary": "TALENTA TEKNOLOGI DENGAN JOBSADMIRE"
+  },
+  "jobrecruitmenthero1": {
+    "content": {
+      "headline": "Mengapa Perusahaan Terkemuka Mempercayai JobsAdmire untuk Membangun Tim Teknologi yang Unggul?",
+      "description": "JobsAdmire adalah mitra rekrutmen tepercaya bagi perusahaan teknologi papan atas dan startup yang berkembang pesat di seluruh Asia, Timur Tengah, dan Eropa. Dengan lebih dari 2.500 penempatan yang sukses secara global, kami telah membangun reputasi kami dengan menyediakan para profesional yang sangat terampil dan siap kerja yang mendorong inovasi dan hasil. Pada tahun 2024, JobsAdmire tetap menjadi platform andalan bagi organisasi yang ingin meningkatkan skala tim teknis mereka dengan cepat, tepat, dan percaya diri.",
+      "cta": "Konsultasi dengan Pakar",
+      "featureTags": [
+        "Talenta Terbaik",
+        "Perekrutan Cepat",
+        "Jangkauan Global",
+        "Solusi Khusus"
+      ]
+    },
+    "carousel": {
+      "firstColumn": {
+        "images": [
+          {
+            "src": "/images/trust1.png",
+            "alt": "Profesional dengan pakaian bisnis",
+            "name": "Sarah Chen",
+            "role": "Insinyur Perangkat Lunak Senior"
+          },
+          {
+            "src": "/images/trust2.png",
+            "alt": "Profesional teknologi",
+            "name": "Ahmed Hassan",
+            "role": "Pengembang Full Stack"
+          },
+          {
+            "src": "/images/trust6.png",
+            "alt": "Wanita profesional",
+            "name": "Maria Rodriguez",
+            "role": "Manajer Produk"
+          }
+        ]
+      },
+      "secondColumn": {
+        "images": [
+          {
+            "src": "/images/trust3.png",
+            "alt": "Profesional yang selalu tersenyum",
+            "name": "David Kim",
+            "role": "Insinyur DevOps",
+            "location": "Terpencil"
+          },
+          {
+            "src": "/images/trust4.png",
+            "alt": "Desainer profesional",
+            "name": "Emma Thompson",
+            "role": "Desainer UX/UI",
+            "location": "Di lokasi"
+          },
+          {
+            "src": "/images/trust5.png",
+            "alt": "Pemimpin teknologi",
+            "name": "Raj Patel",
+            "role": "Pemimpin Teknologi",
+            "location": "Hibrida"
+          }
+        ]
+      },
+      "joinCard": {
+        "badge": "Bergabunglah dengan Kami",
+        "title": "Kembangkan Karier Anda",
+        "description": "Jelajahi peluang di perusahaan-perusahaan terkemuka."
+      }
+    },
+    "locationLabels": {
+      "remote": "Terpencil",
+      "onsite": "Di lokasi",
+      "hybrid": "Hibrida"
+    }
+  }
+}

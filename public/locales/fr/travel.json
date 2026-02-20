@@ -1,0 +1,131 @@
+{
+  "navigation": {
+    "package": "Paquet",
+    "home": "Accueil"
+  },
+  "hero": {
+    "title": {
+      "line1": "Commencez votre",
+      "line2": "Le voyage aujourd'hui"
+    },
+    "description": "Demandez facilement des invitations électroniques officielles pour vos voyages. Qu'il s'agisse de tourisme, d'affaires ou de conférences/séminaires, Jobs Admire simplifie votre processus d'obtention de visa."
+  },
+  "form": {
+    "iAmFrom": "Je suis originaire de",
+    "iLiveIn": "Je vis à",
+    "invitationFor": "Invitation à",
+    "selectCountry": "Sélectionner un pays",
+    "selectDestination": "Sélectionner la destination",
+    "searchCountries": "Recherche de pays...",
+    "loadingCountries": "Chargement des pays...",
+    "noCountriesFound": "Aucun pays trouvé",
+    "findNow": "Trouver maintenant"
+  },
+  "packages": {
+    "title": "Sélectionnez un ensemble de services",
+    "description": "Choisissez parmi nos offres de services complètes conçues pour faire de vos rêves de voyage une réalité. Nous proposons un traitement rapide, des tarifs compétitifs et des conseils d'experts pour que votre demande de visa soit couronnée de succès et sans stress.",
+    "showingPackagesFor": "Afficher les paquets pour :",
+    "packageFor": "Paquet pour",
+    "selectedCountry": "Pays sélectionné",
+    "recommended": "Recommandé",
+    "save": "Économiser",
+    "getStarted": "Commencer",
+    "needHelp": "Besoin d'aide pour choisir ?",
+    "contactExperts": "Contactez nos experts",
+    "processingTime48Hours": "Le délai de traitement des invitations est de 48 heures",
+    "documentationProcessingTime48Hours": "Le délai de traitement de la documentation est de 48 heures",
+    "features": {
+      "fastProcessing": "Traitement rapide",
+      "hours96Valid": "96 heures Valable",
+      "airportTransit": "Transit aéroportuaire",
+      "days14Valid": "14 jours de validité",
+      "days30Valid": "30 jours de validité",
+      "touristBusiness": "Personne supplémentaire (à partir de 5) : 200 USD par personne",
+      "touristBusinesss": "Tourisme et affaires",
+      "singleEntry": "Entrée unique",
+      "singleMultipleEntry": "Entrée simple ou multiple"
+    }
+  },
+  "alerts": {
+    "selectAllFields": "Veuillez sélectionner tous les champs obligatoires"
+  },
+  "errors": {
+    "failedToLoadCountries": "Échec du chargement des pays"
+  },
+  "visaApplication": {
+    "stepTitles": {
+      "step1": "Informations sur l'emplacement",
+      "step2": "Exigences et confirmation",
+      "step3": "Téléchargement de documents",
+      "step4": "Détails personnels",
+      "step5": "Examiner et soumettre la demande"
+    },
+    "submitFailed": "Échec de l'envoi du courrier électronique",
+    "errors": {
+      "fromCountry": "Veuillez sélectionner votre pays d'origine",
+      "toCountry": "Veuillez sélectionner le pays dans lequel vous vivez",
+      "toCountrySame": "Les pays d'origine et de destination doivent être différents",
+      "hasValidPassport": "Veuillez confirmer que vous avez un passeport valide",
+      "hasPictureHeadshot": "Veuillez confirmer que vous disposez d'une photo ou d'un cliché.",
+      "confirmNoActiveApplication": "Veuillez confirmer qu'il n'y a pas de demande active",
+      "confirmGovernmentDiscretion": "Veuillez tenir compte du pouvoir discrétionnaire du gouvernement",
+      "passportDocument": "Veuillez télécharger votre passeport",
+      "pictureHeadshot": "Veuillez télécharger votre photo/photo",
+      "firstName": "Le prénom est obligatoire",
+      "lastName": "Le nom de famille est obligatoire",
+      "phoneNumber": "Le numéro de téléphone est requis",
+      "email": "L'adresse électronique est requise",
+      "passportNumber": "Le numéro de passeport est requis",
+      "profession": "La profession est requise",
+      "travelDate": "La date du voyage est requise",
+      "travelToDate": "Une date de retour est requise",
+      "travelPurpose": "Des déplacements sont nécessaires",
+      "emailInvalid": "Veuillez saisir une adresse électronique valide",
+      "phoneInvalid": "Veuillez saisir un numéro de téléphone valide",
+      "travelDatePast": "La date du voyage ne peut pas être dans le passé",
+      "travelToDateAfter": "La date de retour doit être postérieure à la date du voyage",
+      "travelerNameRequired": "Le nom du voyageur {{index}} est requis",
+      "travelerPhoneRequired": "Le téléphone du voyageur {{index}} est requis"
+    },
+    "placeholders": {
+      "searchCountries": "Recherche de pays...",
+      "selectCountry": "Sélectionner un pays",
+      "firstName": "Prénom",
+      "lastName": "Nom de famille",
+      "phoneNumber": "Numéro de téléphone",
+      "email": "Adresse électronique",
+      "from": "De",
+      "liveIn": "Vivre en",
+      "passportNumber": "Numéro de passeport",
+      "profession": "Profession",
+      "dateFormat": "mm/jj/aaaa",
+      "travelPurpose": "Objectif du voyage",
+      "numberOfTravellers": "Nombre de voyageurs",
+      "fullName": "Nom complet"
+    },
+    "labels": {
+      "applicationDetails": "Détails de l'application",
+      "submitApplication": "Soumettre la demande",
+      "transitVisa": "VISA TRANSIT",
+      "transitVisaShort": "Visa de transit",
+      "notProvided": "Non communiqué",
+      "notUploaded": "Non téléchargé",
+      "price": "Prix :",
+      "submitting": "Soumettre...",
+      "uploadDocumentsTitle": "Veuillez télécharger les documents suivants",
+      "acceptedFormats": "Formats acceptés :",
+      "acceptedFormatsValue": "PDF, JPG ou PNG",
+      "details": "Détails",
+      "review": "Révision",
+      "next": "Suivant",
+      "visaFor": "VISA POUR :",
+      "currency": "USD"
+    }
+  },
+  "packageTypes": {
+    "individualTouristInvitation": "Invitation touristique individuelle",
+    "individualBusinessInvitation": "Invitation pour les entreprises individuelles",
+    "familyTouristInvitation": "Invitation touristique familiale",
+    "singleEntry": "Entrée unique"
+  }
+}

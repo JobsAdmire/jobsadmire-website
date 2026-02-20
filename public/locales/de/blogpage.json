@@ -1,0 +1,83 @@
+{
+  "categories": {
+    "all": "Alle",
+    "careerTips": "Karriere-Tipps",
+    "immigrationGuide": "Leitfaden zur Einwanderung",
+    "jobSearch": "Jobsuche",
+    "workVisa": "Arbeitsvisum",
+    "successStories": "Erfolgsgeschichten"
+  },
+  "trendingTags": {
+    "remoteJobs": "Ferngesteuerte Jobs",
+    "workVisa": "Arbeitsvisum",
+    "immigration": "Einwanderung",
+    "careerGrowth": "Berufliches Wachstum",
+    "jobInterview": "Vorstellungsgespräch",
+    "resumeTips": "Tipps zum Lebenslauf"
+  },
+  "loading": {
+    "title": "Laden von Karriere-Insights",
+    "description": "Vorbereitung der neuesten Trends auf dem Arbeitsmarkt und Einwanderungsleitfäden..."
+  },
+  "error": {
+    "title": "Inhalt kann nicht geladen werden",
+    "description": "Wir haben Probleme beim Laden der neuesten Karriereinformationen. Bitte versuchen Sie es erneut.",
+    "retryButton": "Wiederholung des Ladevorgangs"
+  },
+  "header": {
+    "badge": "Ihr Tor zu globalen Karrieremöglichkeiten",
+    "title": {
+      "part1": "Navigieren Sie Ihr",
+      "part2": "Berufliche Laufbahn"
+    },
+    "subtitle": "Erfahren Sie von Fachleuten aus der Branche mehr über die Stellensuche, Arbeitsvisa, Einwanderungsprozesse und Strategien für den beruflichen Aufstieg.",
+    "searchPlaceholder": "Suchen Sie nach Job-Tipps, Visum-Leitfäden, Karriere-Ratschlägen...",
+    "searchButton": "Suche",
+    "popularTopics": "Beliebte Themen:"
+  },
+  "featuredArticle": {
+    "title": {
+      "part1": "Ausgewählt",
+      "part2": "Artikel"
+    },
+    "defaultTag": "Ausgewählt",
+    "minRead": "min lesen",
+    "anonymous": "Anonym",
+    "careerExpert": "Karriere-Experte",
+    "readFullArticle": "Vollständigen Artikel lesen"
+  },
+  "latestInsights": {
+    "title": {
+      "part1": "Neueste",
+      "part2": "Einblicke"
+    },
+    "defaultTag": "Artikel",
+    "min": "min",
+    "anonymous": "Anonym",
+    "readMore": "Mehr lesen"
+  },
+  "emptyState": {
+    "title": "Keine Artikel gefunden",
+    "description": "Wir konnten keine Artikel zu \"{Suchbegriff}\" finden. Versuchen Sie, nach anderen Stichworten zu suchen oder erkunden Sie unsere Kategorien.",
+    "clearSearch": "Suche löschen"
+  },
+  "loadMore": {
+    "button": "Weitere Artikel laden"
+  },
+  "newsletter": {
+    "title": "Bleiben Sie in Ihrer Karriere voran",
+    "description": "Erhalten Sie wöchentlich Einblicke in Stellenausschreibungen, Visa-Updates und Strategien zur Karriereentwicklung.",
+    "emailLabel": "E-Mail Adresse",
+    "emailPlaceholder": "Geben Sie Ihre E-Mail Adresse ein",
+    "subscribeButton": "Jetzt abonnieren",
+    "privacyNote": "Ihre Privatsphäre ist geschützt. Jederzeit abbestellen.",
+    "features": {
+      "careerTips": "Wöchentliche Karrieretipps",
+      "visaUpdates": "Visa-Updates",
+      "jobAlerts": "Job Alerts"
+    }
+  },
+  "alerts": {
+    "subscriptionSuccess": "Vielen Dank für Ihr Abonnement!"
+  }
+}

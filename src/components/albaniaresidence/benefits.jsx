@@ -1,0 +1,168 @@
+import React from 'react';
+import { useRouter } from 'next/router';
+import { Globe, Briefcase, Settings, Shield, Plane, Heart } from 'lucide-react';
+
+// Import translation files for all 7 languages
+import enTranslations from '../../../public/locales/en/albania1.json';
+import trTranslations from '../../../public/locales/tr/albania1.json';
+import frTranslations from '../../../public/locales/fr/albania1.json';
+import deTranslations from '../../../public/locales/de/albania1.json';
+import arTranslations from '../../../public/locales/ar/albania1.json';
+import ruTranslations from '../../../public/locales/ru/albania1.json';
+import faTranslations from '../../../public/locales/fa/albania1.json';
+
+// Translation function
+const getTranslations = (locale) => {
+  switch (locale) {
+    case 'tr': return trTranslations;
+    case 'fr': return frTranslations;
+    case 'de': return deTranslations;
+    case 'ar': return arTranslations;
+    case 'ru': return ruTranslations;
+    case 'fa': return faTranslations;
+    default: return enTranslations;
+  }
+};
+
+const AlbaniaResidenceBenefitsSection = () => {
+  const router = useRouter();
+  const { locale } = router;
+  const t = getTranslations(locale);
+
+  const benefits = [
+    {
+      icon: Globe,
+      title: t.benefits.legalResidency.title,
+      description: t.benefits.legalResidency.description
+    },
+    {
+      icon: Briefcase,
+      title: t.benefits.workPermit.title,
+      description: t.benefits.workPermit.description
+    },
+    {
+      icon: Settings,
+      title: t.benefits.banking.title,
+      description: t.benefits.banking.description
+    },
+    {
+      icon: Shield,
+      title: t.benefits.healthcare.title,
+      description: t.benefits.healthcare.description
+    },
+    {
+      icon: Plane,
+      title: t.benefits.euProximity.title,
+      description: t.benefits.euProximity.description
+    },
+    {
+      icon: Heart,
+      title: t.benefits.longTermResidence.title,
+      description: t.benefits.longTermResidence.description
+    }
+  ];
+
+  return (
+    <section className="py-20 bg-gradient-to-br from-sky-50 via-sky-100/30 to-blue-50 relative overflow-hidden">
+      {/* Background decorative elements */}
+      <div className="absolute inset-0 opacity-5">
+        <div className="absolute top-20 right-20 w-64 h-64 bg-sky-400 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-32 left-20 w-48 h-48 bg-blue-300 rounded-full blur-2xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+        {/* Main Benefits Card */}
+        <div className="bg-white/80 backdrop-blur-xl rounded-3xl shadow-2xl p-8 lg:p-12 border border-white/50 relative overflow-hidden">
+          
+          {/* Albania Flag Decoration */}
+          <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
+            <div className="w-full h-full bg-gradient-to-br from-sky-500 to-sky-700 relative">
+              {/* Albania Flag inspired design */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="relative w-32 h-32">
+                  {/* Double-headed eagle silhouette */}
+                  <div className="absolute top-10 left-12 w-8 h-6 bg-white opacity-60"
+                       style={{
+                         clipPath: 'polygon(50% 0%, 75% 25%, 100% 15%, 85% 50%, 100% 85%, 75% 75%, 50% 100%, 25% 75%, 0% 85%, 15% 50%, 0% 15%, 25% 25%)'
+                       }}>
+                  </div>
+                  
+                  {/* Eagle wings */}
+                  <div className="absolute top-8 left-8 w-4 h-4 bg-white opacity-50 transform -rotate-12"
+                       style={{
+                         clipPath: 'polygon(0% 100%, 25% 0%, 75% 0%, 100% 50%, 75% 100%)'
+                       }}>
+                  </div>
+                  <div className="absolute top-8 left-20 w-4 h-4 bg-white opacity-50 transform rotate-12"
+                       style={{
+                         clipPath: 'polygon(0% 50%, 25% 0%, 75% 0%, 100% 100%, 25% 100%)'
+                       }}>
+                  </div>
+                  
+                  {/* Decorative border elements */}
+                  <div className="absolute top-6 left-10 w-12 h-1 bg-white opacity-40"></div>
+                  <div className="absolute bottom-6 left-10 w-12 h-1 bg-white opacity-40"></div>
+                  <div className="absolute top-10 left-6 w-1 h-12 bg-white opacity-40"></div>
+                  <div className="absolute top-10 right-6 w-1 h-12 bg-white opacity-40"></div>
+                  
+                  {/* Small decorative stars */}
+                  <div className="absolute top-4 left-14 w-1 h-1 bg-white opacity-50 rounded-full"></div>
+                  <div className="absolute top-4 left-18 w-1 h-1 bg-white opacity-50 rounded-full"></div>
+                  <div className="absolute bottom-4 left-14 w-1 h-1 bg-white opacity-50 rounded-full"></div>
+                  <div className="absolute bottom-4 left-18 w-1 h-1 bg-white opacity-50 rounded-full"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Header */}
+          <div className="relative z-10 mb-12">
+            <h2 className="text-4xl lg:text-5xl font-bold text-sky-800 mb-4">
+              <span className="text-sky-600">{t.header.benefits}</span> {t.header.albaniaResidencePermit}
+            </h2>
+            <div className="w-24 h-1 bg-gradient-to-r from-sky-500 to-blue-600 rounded-full"></div>
+          </div>
+
+          {/* Benefits Grid */}
+          <div className="grid lg:grid-cols-2 gap-8 relative z-10">
+            {benefits.map((benefit, index) => {
+              const Icon = benefit.icon;
+              return (
+                <div 
+                  key={index}
+                  className="group flex items-start space-x-4 p-6 rounded-2xl hover:bg-white/60 transition-all duration-300 hover:shadow-lg border border-transparent hover:border-sky-100"
+                >
+                  {/* Icon */}
+                  <div className="flex-shrink-0 w-14 h-14 bg-gradient-to-br from-sky-400 to-sky-600 rounded-2xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300 shadow-lg">
+                    <Icon className="w-7 h-7 text-white" />
+                  </div>
+                  
+                  {/* Content */}
+                  <div className="flex-1 pt-1">
+                    <h3 className="text-lg font-bold text-sky-800 mb-2 leading-tight">
+                      {benefit.title}
+                    </h3>
+                    <p className="text-sky-600 text-sm leading-relaxed">
+                      {benefit.description}
+                    </p>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Bottom CTA */}
+          <div className="mt-12 text-center relative z-10">
+            <div className="inline-flex items-center px-6 py-3 bg-gradient-to-r from-sky-500 to-blue-600 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer transform hover:scale-105">
+              <Globe className="w-5 h-5 mr-2" />
+              {t.cta.getAlbaniaResidencePermit}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default AlbaniaResidenceBenefitsSection;

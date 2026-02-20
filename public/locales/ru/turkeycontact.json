@@ -1,0 +1,44 @@
+{
+  "header": {
+    "title": "Наши контакты",
+    "description": "Свяжитесь с нашими офисами по всему миру, чтобы получить индивидуальную помощь при подаче заявления на получение вида на жительство в Турции"
+  },
+  "generalInquiries": {
+    "title": "Общие вопросы",
+    "subtitle": "Свяжитесь с нами",
+    "email": "info@uniadmire.com"
+  },
+  "locations": {
+    "turkey": {
+      "country": "Турция",
+      "city": "Анталия",
+      "address": "Tahılpazarı, Adnan Menderes Blv. Erkal Apt A Blok No: 7 İç Kapı No: 6, 07040 Muratpaşa/Antalya",
+      "hours": "Пн-Пт: 9:00-18:00",
+      "phone": "+90 242 123 4567",
+      "email": "antalya@uniadmire.com"
+    },
+    "pakistan": {
+      "country": "Пакистан",
+      "city": "Карачи",
+      "address": "Офис № 1207, Кашиф Центр, рядом с отелем Мехран, Шахрах э Фейсал",
+      "hours": "Пн-Пт: 9:00-17:00",
+      "phone": "+92 21 3456 7890",
+      "email": "karachi@uniadmire.com"
+    },
+    "azerbaijan": {
+      "country": "Азербайджан",
+      "city": "Баку",
+      "address": "Nizami küçəsi 203, AF business house 7-ci mərtəbə",
+      "hours": "Пн-Пт: 9:00-18:00",
+      "phone": "+994 12 345 6789",
+      "email": "baku@uniadmire.com"
+    }
+  },
+  "map": {
+    "title": "Найти нас на карте",
+    "emailLabel": "Электронная почта"
+  },
+  "cta": {
+    "scheduleConsultation": "Запланируйте консультацию"
+  }
+}

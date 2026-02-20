@@ -1,0 +1,324 @@
+{
+  "immigrationservices": {
+    "hero": {
+      "badge": "Services d'immigration de confiance",
+      "headline": {
+        "prefix": "Commencez votre",
+        "suffix": "Avec les conseils d'un expert"
+      },
+      "animatedWords": [
+        "Nouvelle vie",
+        "Nouveau pays",
+        "Nouveau départ",
+        "Un avenir meilleur",
+        "Nouveau départ",
+        "La vie rêvée"
+      ],
+      "description": "De la demande de visa à la résidence permanente, nos consultants experts en immigration vous guident à chaque étape avec un soutien personnalisé adapté aux professionnels qualifiés.",
+      "cta": {
+        "text": "Consultation gratuite"
+      }
+    },
+    "showcase": {
+      "title": "Services d'immigration",
+      "subtitle": "Assistance professionnelle pour la relocalisation dans le monde entier",
+      "process": {
+        "title": "Processus d'immigration complet",
+        "subtitle": "Un soutien de bout en bout pour votre voyage"
+      },
+      "services": [
+        {
+          "icon": "Texte du fichier",
+          "title": "Documentation",
+          "description": "Préparation de la candidature",
+          "gradient": "bg-gradient-to-r du ciel-500 au bleu-600"
+        },
+        {
+          "icon": "Bouclier",
+          "title": "Soutien juridique",
+          "description": "Conseils d'experts",
+          "gradient": "bg-gradient-to-r de-violet-500 à-indigo-600"
+        },
+        {
+          "icon": "Horloge",
+          "title": "Voie rapide",
+          "description": "Traitement rapide",
+          "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+        },
+        {
+          "icon": "Utilisateurs",
+          "title": "Soutien aux familles",
+          "description": "Assistance complète",
+          "gradient": "bg-gradient-to-r de-orange-500 à-rouge-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "98%",
+          "label": "Taux de réussite",
+          "color": "texte-ciel-600"
+        },
+        {
+          "value": "5000+",
+          "label": "Cas traités",
+          "color": "texte-bleu-600"
+        },
+        {
+          "label": "Années d'expérience",
+          "color": "texte-indigo-600",
+          "value": "25"
+        }
+      ]
+    }
+  },
+  "evaluation": {
+    "title": "Faites-vous évaluer",
+    "description": "La migration est une procédure technique simple. Nos spécialistes évaluent votre profil pour vous aider à faire un choix éclairé. Le rapport comprend",
+    "services": [
+      {
+        "icon": "Courrier",
+        "title": "Carte de pointage",
+        "description": "Évaluation détaillée de vos points d'éligibilité et de votre score de migration"
+      },
+      {
+        "icon": "Paramètres",
+        "title": "Profil du pays",
+        "description": "Recommandations de pays sur mesure en fonction de vos antécédents et des services d'immigration du Pakistan (le cas échéant)"
+      },
+      {
+        "icon": "Utilisateurs",
+        "title": "Profil de la profession",
+        "description": "Analyse de la demande de votre profession dans les destinations potentielles"
+      },
+      {
+        "icon": "Texte du fichier",
+        "title": "Liste de documentation",
+        "description": "Liste de contrôle complète des documents requis pour votre candidature"
+      },
+      {
+        "icon": "DollarSign",
+        "title": "Estimation des coûts et des délais",
+        "description": "Ventilation détaillée des dépenses et calendrier de votre migration"
+      }
+    ],
+    "cta": {
+      "text": "Se faire évaluer",
+      "subtitle": "Commencez votre évaluation dès aujourd'hui et recevez un rapport complet dans les 48 heures. Nos experts vous guideront à chaque étape du processus."
+    }
+  },
+  "globalmigration": {
+    "badge": "MIGRATION MONDIALE",
+    "introduction": {
+      "prefix": "Selon le Département des affaires économiques et sociales des Nations unies (UNDESA), on estime que le nombre d'enfants de moins de 18 ans dans le monde est de l'ordre de 1,5 million.",
+      "highlight": "232 millions de migrants internationaux dans le monde",
+      "suffix": "."
+    },
+    "reasons": {
+      "title": "Raisons de l'immigration",
+      "description": {
+        "part1": "Les gens partent à l'étranger pour diverses raisons, telles que l'emploi, les études, une meilleure qualité de vie ou l'élargissement des horizons. Notre",
+        "highlight1": "services de consultation en matière d'immigration",
+        "part2": "aider les travailleurs qualifiés et les demandeurs d'emploi à",
+        "highlight2": "la résidence permanente grâce à des emplois qualifiés",
+        "part3": "."
+      },
+      "items": [
+        {
+          "icon": "TrendingUp",
+          "text": "Potentiel de gain accru",
+          "description": "L'un des trois principaux facteurs de motivation des personnes cherchant à construire une nouvelle vie à l'étranger."
+        },
+        {
+          "icon": "Porte-documents",
+          "text": "Plus d'opportunités d'emploi",
+          "description": "L'un des trois principaux facteurs de motivation des personnes cherchant à construire une nouvelle vie à l'étranger."
+        },
+        {
+          "icon": "Le cœur",
+          "text": "Amélioration des soins de santé et de l'éducation",
+          "description": "L'un des trois principaux facteurs de motivation des personnes cherchant à construire une nouvelle vie à l'étranger."
+        }
+      ]
+    },
+    "definition": "Un migrant international est une personne qui vit en dehors de son pays de naissance. Traversant les frontières à la recherche d'un travail, d'une éducation et de nouveaux horizons, un migrant est principalement motivé par de nouvelles opportunités et de meilleurs moyens de subsistance."
+  },
+  "migrationopportunities": {
+    "title": {
+      "prefix": "Migrer",
+      "highlight": "Opportunité"
+    },
+    "cards": {
+      "countries": {
+        "title": "Pays",
+        "items": [
+          {
+            "name": "Migrer vers l'Australie",
+            "id": 1
+          },
+          {
+            "name": "Migrer au Canada",
+            "id": 2
+          },
+          {
+            "name": "Migrer vers la Nouvelle-Zélande",
+            "id": 3
+          },
+          {
+            "name": "Migrer vers l'Allemagne",
+            "id": 4
+          },
+          {
+            "name": "Migrer aux États-Unis",
+            "id": 5
+          }
+        ]
+      },
+      "prVisas": {
+        "title": "Visas RP",
+        "items": [
+          {
+            "name": "Visa de résident permanent pour l'Australie",
+            "id": 1
+          },
+          {
+            "name": "Visa de résident permanent au Canada",
+            "id": 2
+          },
+          {
+            "name": "Visa de résident néo-zélandais",
+            "id": 3
+          },
+          {
+            "name": "Royaume-Uni : autorisation de rester sur le territoire pour une durée indéterminée",
+            "id": 4
+          }
+        ]
+      },
+      "workVisas": {
+        "title": "Visas de travail",
+        "items": [
+          {
+            "name": "Visa de travail pour le Canada",
+            "id": 1
+          },
+          {
+            "name": "Visa de travail pour l'Australie",
+            "id": 2
+          },
+          {
+            "name": "Visa pour travailleur qualifié au Royaume-Uni",
+            "id": 3
+          },
+          {
+            "name": "Carte d'opportunité pour l'Allemagne",
+            "id": 4
+          },
+          {
+            "name": "ÉTATS-UNIS H-1B",
+            "id": 5
+          },
+          {
+            "name": "Visa pour demandeur d'emploi au Portugal",
+            "id": 6
+          },
+          {
+            "name": "Permis de séjour en Suède",
+            "id": 7
+          }
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "icon": "Accueil",
+        "text": "Des niveaux de vie élevés"
+      },
+      {
+        "icon": "Porte-documents",
+        "text": "Excellent équilibre entre vie professionnelle et vie privée"
+      },
+      {
+        "icon": "TrendingUp",
+        "text": "Gagnez 5 fois plus que votre salaire actuel"
+      },
+      {
+        "icon": "Globe terrestre",
+        "text": "Des millions de possibilités d'emploi dans divers secteurs"
+      },
+      {
+        "icon": "Prix",
+        "text": "De meilleures perspectives de carrière"
+      },
+      {
+        "icon": "GraduationCap",
+        "text": "Éducation GRATUITE pour vos enfants"
+      },
+      {
+        "icon": "Le cœur",
+        "text": "Soins de santé et prestations sociales"
+      },
+      {
+        "icon": "Boussole",
+        "text": "Prestations de retraite"
+      }
+    ]
+  },
+  "immigrationjourney": {
+    "header": {
+      "title": "Votre parcours d'immigration - étape par étape",
+      "description": {
+        "part1": "Ces derniers temps, la migration est devenue un rêve pour tous ceux qui souhaitent s'installer à l'étranger. Que vous soyez à la recherche d'un",
+        "highlight1": "travailler à l'étranger services d'immigration",
+        "part2": "ou",
+        "highlight2": "l'immigration pour le développement de carrière",
+        "part3": "notre",
+        "highlight3": "aide à l'immigration fondée sur l'emploi",
+        "part4": "vous permet d'être bien préparé."
+      }
+    },
+    "steps": [
+      {
+        "icon": "Recherche",
+        "title": "Demande de renseignements",
+        "description": "Bienvenue ! Votre parcours en matière d'immigration commence ici par une consultation personnalisée."
+      },
+      {
+        "icon": "Utilisateurs",
+        "title": "Conseils d'experts",
+        "description": "Nos spécialistes proposent des services de consultation en matière d'immigration en fonction de vos qualifications et de vos objectifs."
+      },
+      {
+        "icon": "Vérification du presse-papiers",
+        "title": "Éligibilité",
+        "description": "Vérifiez votre éligibilité à l'immigration dans des pays et régions spécifiques grâce à nos conseils sur les procédures d'immigration."
+      },
+      {
+        "icon": "Texte du fichier",
+        "title": "Documentation",
+        "description": "Tous vos documents seront compilés pour créer une demande solide avec l'aide d'un consultant en visa et en immigration."
+      },
+      {
+        "icon": "BarChart4",
+        "title": "Traitement",
+        "description": "Assistance à chaque étape du dépôt et du suivi de votre demande, garantissant un soutien rapide en matière de visa de travail et de relocalisation."
+      }
+    ],
+    "whyChoose": {
+      "title": "Pourquoi choisir nos services de migration ?",
+      "services": [
+        {
+          "title": "Approche personnalisée",
+          "description": "Nous élaborons des stratégies d'immigration personnalisées en fonction de votre profil unique et de vos objectifs de relocalisation à l'étranger."
+        },
+        {
+          "title": "Conseils d'experts",
+          "description": "Notre équipe est composée de consultants en immigration certifiés ayant des années d'expérience dans les programmes d'immigration des travailleurs qualifiés."
+        },
+        {
+          "title": "Taux de réussite élevé",
+          "description": "95 % de nos demandes sont approuvées dès la première présentation, grâce à nos services d'immigration axés sur la carrière dans le monde entier."
+        }
+      ]
+    }
+  }
+}

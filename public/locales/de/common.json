@@ -1,0 +1,1817 @@
+{
+  "hero": {
+    "badge": {
+      "text": "Neue Möglichkeiten verfügbar"
+    },
+    "title": {
+      "findTheDream": "Den Traum finden",
+      "forYourself": "Für Sie selbst"
+    },
+    "animatedWords": [
+      "Job",
+      "Team",
+      "Karriere",
+      "Spiel",
+      "Talent",
+      "Personal",
+      "Rolle",
+      "Position",
+      "Beruf",
+      "Gelegenheit",
+      "Beschäftigung"
+    ],
+    "subtitle": "Bringen Sie Top-Talente mit den richtigen Möglichkeiten zusammen - egal, ob Sie jemanden einstellen oder auf Jobsuche sind!",
+    "search": {
+      "jobPlaceholder": "Jobtitel oder Schlüsselwörter",
+      "locationPlaceholder": "Standort oder Remote",
+      "loadingText": "Laden von Auftragsdaten...",
+      "errorText": "Auftragsdaten konnten nicht geladen werden",
+      "retryButton": "Wiederholung",
+      "moreResults": "mehr Ergebnisse...",
+      "searchButton": "Suchmöglichkeiten"
+    },
+    "features": {
+      "jobRecruitment": {
+        "title": "Rekrutierung",
+        "description": "Top-Talente auf der ganzen Welt finden"
+      },
+      "immigrationServices": {
+        "title": "Einwanderungsdienste",
+        "description": "Fachkundige Unterstützung bei der Visaerteilung"
+      },
+      "hrSolutions": {
+        "title": "HR-Lösungen",
+        "description": "Vollständiges HR-Management"
+      }
+    },
+    "services": {
+      "sectionTitle": "Was können wir für Sie tun?",
+      "sectionSubtitle": "Wählen Sie Ihre Dienstleistung und lassen Sie uns Ihnen helfen, Ihre Ziele zu erreichen",
+      "study": {
+        "label": "Studie",
+        "description": "Studentenvisum & Ausbildung"
+      },
+      "migrate": {
+        "label": "Migrieren Sie",
+        "description": "Aufenthaltsgenehmigung und Staatsbürgerschaft"
+      },
+      "work": {
+        "label": "Arbeit",
+        "description": "Arbeitsgenehmigungen & Jobs"
+      },
+      "visit": {
+        "label": "E-Einladung",
+        "description": "Geschäfts- und Touristenvisum"
+      },
+      "consultation": {
+        "title": "Sie sind nicht sicher, was Sie brauchen?",
+        "subtitle": "Anleitung durch Experten verfügbar",
+        "button": "Kostenlose Beratung erhalten →"
+      }
+    },
+    "stats": {
+      "visaSuccess": {
+        "percentage": "98%",
+        "title": "Erfolgsquote für Visa",
+        "subtitle": "Nachgewiesene Erfolgsbilanz"
+      },
+      "partners": {
+        "count": "500+",
+        "title": "Unternehmenspartner",
+        "subtitle": "Globales Netzwerk"
+      }
+    }
+  },
+  "jobsInDemand": {
+    "title": "Gefragte Jobs",
+    "description": "Durchsuchen Sie alle 100+ offenen Stellen im Internet. Erhalten Sie Ihre persönliche Gehaltsvorstellung. Lesen Sie Bewertungen zu über 30+ Unternehmen weltweit.",
+    "showingJobs": "anzeigen",
+    "jobs": "Arbeitsplätze",
+    "featured": "Ausgewählte Gelegenheit",
+    "company": "Unternehmen",
+    "position": "Position",
+    "location": "Standort",
+    "salaryRange": "Gehaltsspanne",
+    "experience": "Erleben Sie",
+    "saveForLater": "Für später speichern",
+    "viewDetails": "Details anzeigen",
+    "noJobsFound": "Keine Jobs gefunden",
+    "tryAdjusting": "Versuchen Sie, Ihre Such- oder Filterkriterien anzupassen",
+    "clearAllFilters": "Alle Filter löschen",
+    "seeMoreJobs": "Mehr Jobs sehen"
+  },
+  "meta": {
+    "title": "Finden Sie den perfekten Job & die perfekte Karrierechance | JobsAdmire",
+    "description": "Entdecken Sie Ihren Traumjob mit JobsAdmire - der globalen Plattform, die Fachkräfte mit den idealen Teams, Aufgaben und internationalen Möglichkeiten mit Visumsunterstützung zusammenbringt.",
+    "keywords": "Finden Sie den perfekten Job & die perfekte Karrierechance, JobsAdmire, Jobs, Karriere, Rekrutierung, Visumunterstützung, internationale Jobs",
+    "ogTitle": "Finden Sie den perfekten Job & die perfekte Karrierechance | JobsAdmire",
+    "ogDescription": "Entdecken Sie Ihren Traumjob mit JobsAdmire - der globalen Plattform, die Fachkräfte mit den idealen Teams, Aufgaben und internationalen Möglichkeiten mit Visumsunterstützung zusammenbringt."
+  },
+  "popularCategories": {
+    "badge": "Erkunden Sie",
+    "title": "Beliebte Kategorien",
+    "description": "Von Hotelmanagement über Rezeptionisten bis hin zu IT-Managern - jeder Fachmann ist herzlich eingeladen, sich die Liste der Stellenangebote und die Gehaltsvorstellungen für die von Ihnen gesuchte Rolle anzusehen und durch das Lesen von Bewertungen von Unternehmen weltweit zu lernen.",
+    "exploreJobs": "Jobs erkunden",
+    "categories": {
+      "factoryWorker": "Fabrik",
+      "healthcare": "Gesundheitswesen",
+      "informationTechnology": "Landwirtschaft",
+      "tourismHospitality": "Tourismus",
+      "engineeringConstruction": " Bauwesen",
+      "businessServices": "Dienstleistungen für Unternehmen"
+    }
+  },
+  "immigrationCarousel": {
+    "header": {
+      "title": "Globale Einwanderungsziele",
+      "description": "Erkunden Sie Premium-Einwanderungswege zu Ihrem Traumziel"
+    },
+    "navigation": {
+      "previous": "Vorheriges Dia",
+      "next": "Nächste Folie",
+      "goToSlide": "Gehe zu Folie {{Nummer}}",
+      "pause": "Autoplay anhalten",
+      "play": "Autoplay abspielen",
+      "pauseText": "Pause",
+      "playText": "Spielen"
+    },
+    "common": {
+      "clients": "Kunden",
+      "rating": "Bewertung"
+    },
+    "services": {
+      "canada": {
+        "title": "Nach Kanada einwandern",
+        "subtitle": "Express-Einreise und Provinzprogramme",
+        "description": "Navigieren Sie durch Kanadas Express-Entry-System, die Provincial Nominee Programs und die Möglichkeiten der Familienförderung, um eine dauerhafte Aufenthaltsgenehmigung zu erhalten.",
+        "category": "Dauerhafter Aufenthalt",
+        "buttonText": "🍁 Beginnen Sie Ihren kanadischen Traum"
+      },
+      "uk": {
+        "title": "Nach UK einwandern",
+        "subtitle": "Visa für qualifizierte Arbeitskräfte und globale Talente",
+        "description": "Zugang zum punktebasierten Einwanderungssystem des Vereinigten Königreichs über Visa für qualifizierte Arbeitskräfte, globale Talentrouten und Wege der Familienzusammenführung.",
+        "category": "Arbeits- und Studienvisa",
+        "buttonText": "Unlock UK Opportunities"
+      },
+      "usa": {
+        "title": "In die USA einwandern",
+        "subtitle": "Green Cards und Arbeitsvisa",
+        "description": "Verfolgen Sie den amerikanischen Traum durch Green Cards für Arbeitnehmer, Familiennachzug und Investorenvisa.",
+        "category": "Green Card Dienstleistungen",
+        "buttonText": "🗽 Jage den amerikanischen Traum"
+      },
+      "australia": {
+        "title": "Nach Australien einwandern",
+        "subtitle": "Fachkräftemigration und staatliche Nominierung",
+        "description": "Sichern Sie sich eine dauerhafte Aufenthaltsgenehmigung für Australien durch qualifizierte unabhängige Visa, staatliche Nominierungen und Arbeitgeber-Sponsoringprogramme.",
+        "category": "Punktebasiertes System",
+        "buttonText": "Beginnen Sie Ihre Aussie-Reise"
+      },
+      "turkey": {
+        "title": "In die Türkei einwandern",
+        "subtitle": "Aufenthaltsgenehmigungen und Investitionsmöglichkeiten",
+        "description": "Begründen Sie Ihren Wohnsitz in der Türkei durch Immobilieninvestitionen, Arbeitserlaubnisse oder Familienzusammenführung mit der Möglichkeit einer beschleunigten Einbürgerung.",
+        "category": "Investition & Aufenthalt",
+        "buttonText": "Entdecken Sie die türkische Residenz"
+      }
+    }
+  },
+  "serviceBanner": {
+    "default": {
+      "serviceLabel": "Professionelle Dienstleistungen",
+      "title": "Sind Sie bereit, Ihre Karriere zu verändern?",
+      "description": "Schließen Sie sich Tausenden von Fachleuten an, die ihre Karriere mit Hilfe unserer fachkundigen Beratung und umfassenden Unterstützungsleistungen erfolgreich vorangetrieben haben.",
+      "buttonText": "Beginnen Sie heute"
+    },
+    "variants": {
+      "recruitment": {
+        "serviceLabel": "Rekrutierung",
+        "title": "Finden Sie Ihren Traumjob noch heute",
+        "description": "Treten Sie mit Top-Arbeitgebern weltweit in Kontakt und entdecken Sie Möglichkeiten, die Ihren Fähigkeiten und Wünschen entsprechen.",
+        "buttonText": "Jobs durchsuchen"
+      },
+      "immigration": {
+        "serviceLabel": "Einwanderungsdienste",
+        "title": "Ihr Tor zu globalen Möglichkeiten",
+        "description": "Navigieren Sie mit fachkundiger Anleitung durch komplexe Einwanderungsprozesse und verwirklichen Sie Ihren Traum vom Arbeiten im Ausland.",
+        "buttonText": "Start Einwanderungsprozess"
+      },
+      "resume": {
+        "serviceLabel": "Lebenslauf schreiben",
+        "title": "Mit einem professionellen Lebenslauf auffallen",
+        "description": "Mit ATS-optimierten Lebensläufen, die von Branchenexperten erstellt wurden, werden Sie von Personalverantwortlichen wahrgenommen.",
+        "buttonText": "Meinen Lebenslauf erstellen"
+      },
+      "coaching": {
+        "serviceLabel": "Interview-Coaching",
+        "title": "Meistern Sie Ihr nächstes Vorstellungsgespräch",
+        "description": "Stärken Sie Ihr Selbstvertrauen und Ihre Fähigkeiten für Vorstellungsgespräche durch persönliches Coaching von Branchenexperten.",
+        "buttonText": "Coaching-Sitzung buchen"
+      },
+      "visa": {
+        "serviceLabel": "Visa-Unterstützung",
+        "title": "Vereinfachen Sie Ihren Visumantrag",
+        "description": "Holen Sie sich fachkundige Unterstützung bei der Dokumentation und Beantragung von Arbeits-, Studien- oder Reisevisa.",
+        "buttonText": "Visum beantragen"
+      },
+      "skills": {
+        "serviceLabel": "Entwicklung von Fertigkeiten",
+        "title": "Verbessern Sie Ihre beruflichen Fähigkeiten",
+        "description": "Bleiben Sie wettbewerbsfähig mit branchenrelevanten Schulungsprogrammen, die von Experten entwickelt wurden.",
+        "buttonText": "Kurse erkunden"
+      }
+    }
+  },
+  "testimonials": {
+    "header": {
+      "badge": "VERTRAUEN BEI BRANCHENFÜHRERN",
+      "title": "Erfolgsgeschichten",
+      "description": "Hören Sie von unseren zufriedenen Kunden, die unsere außergewöhnlichen Dienstleistungen und Erkenntnisse erlebt haben."
+    },
+    "stats": {
+      "years": "Jahre",
+      "hires": "Stellt ein",
+      "retention": "Vorratsspeicherung",
+      "support": "Unterstützung"
+    },
+    "testimonialsList": [
+      {
+        "author": "Selin Yılmaz",
+        "position": "İnsan Kaynakları Müdürü",
+        "company": "İnsanKaynağım Ajansı",
+        "text": "Biz bir İK ajansı olarak güvenilir ortaklar arıyoruz. JobsAdmire, ihtiyaç duyduğumuz adayları zamanında ve kaliteli şekilde sağladı. Ekip iletişimi çok güçlü ve işe alım sürecimizi gerçekten kolaylaştırdı.",
+        "highlight": "Kulturelle Passung"
+      },
+      {
+        "author": "Burak Demirtaş",
+        "position": "Direktör",
+        "company": "Anadolu HR Çözümleri",
+        "text": "Birçok platformla çalıştık fakat JobsAdmire farklı. İŞKUR ruhsatı ile yasal olarak güvenilir, belgeleri düzenleme konusunda destekçi ve tamamen şeffaf çalışıyorlar. İşe alım ihtiyaçlarımızı gönül rahatlığıyla onlara devrediyoruz",
+        "highlight": "Fachwissen über die Industrie"
+      },
+      {
+        "author": "Mehmet Kaya,",
+        "position": " Fabrika Sahibi",
+        "company": "Kaya Metall Sanayi",
+        "text": "Kaynakçı ve makine operatörleri bulmakta zorlanıyorduk. JobsAdmire birkaç gün içinde eğitimli adaylarla bizi buluşturdu. Bu hizmet bize zaman ve maliyet açısından büyük fayda sağladı.",
+        "highlight": "Hochwertige Kandidaten"
+      },
+      {
+        "author": " Muhammad Faisal",
+        "position": "Sahib",
+        "company": "Faisal Textiles Pvt. Ltd.",
+        "text": "Tekstil fabrikam için sürekli işçi ihtiyacımız oluyor. JobsAdmire bu konuda güvenilir bir partner oldu. Hem vasıflı hem de vasıfsız işçileri zamanında sağladılar, üretimde artık aksama yaşamıyoruz.",
+        "highlight": "Sicherheit im Fokus"
+      },
+      {
+        "author": "Ali Raza",
+        "position": "Çalışan",
+        "company": "Antalya Resort Hotels",
+        "text": "JobsAdmire aracılığıyla bir otelde işe yerleştirildim. Çalışma izni ve belgeler konusunda adım adım bana yardımcı oldular. İŞKUR lisanslı oldukları için kendimi güvende hissediyorum.",
+        "highlight": "Vereinbarkeit von Berufs- und Privatleben"
+      },
+      {
+        "author": "Hüseyin Çelik",
+        "position": " İnşaat İşçisi",
+        "company": "Industrielle Lösungen",
+        "text": "İnşaat işçisi olarak sürekli düzensiz işlerde çalışıyordum. JobsAdmire sayesinde yasal sözleşmeli ve düzenli maaşlı bir işe girdim. İşçiye saygı gösteriyorlar, kimsenin hakkını yemiyorlar.",
+        "highlight": "Langfristige Partnerschaft"
+      }
+    ]
+  },
+  "navbar": {
+    "location": "Antalya, Türkei",
+    "workingHours": "Mo-Fr 9AM-6PM",
+    "home": "Startseite",
+    "about": "Über uns",
+    "services": "Dienstleistungen",
+    "jobs": "Verfügbare Stellen",
+    "visa": "Visa-Einladungen",
+    "residencePermit": "Aufenthaltstitel",
+    "contact": "Kontakt",
+    "blog": "Blog",
+    "cv": "Lebenslauf-Generator",
+    "resumeGenerator": "Lebenslauf-Generator",
+    "search": "Suche",
+    "register": "Register",
+    "login": "Anmeldung",
+    "toggleMenu": "Menü umschalten",
+    "closeSearch": "Suche schließen",
+    "searchTitle": "Suche nach Jobs & Dienstleistungen",
+    "searchPlaceholder": "Suche nach Jobs, Dienstleistungen...",
+    "searchButton": "Suche",
+    "popularSearches": "Beliebte Suchanfragen",
+    "closeMenu": "Menü schließen",
+    "candidateHRCompanies": "Bewerber & HR-Unternehmen",
+    "jobProvider": "Jobanbieter",
+    "partnerWithUs": "Partner mit uns",
+    "recruitmentAgency": "Personalvermittlungsagentur",
+    "megaMenu": {
+      "hero": {
+        "title": "Professionelle Dienstleistungen",
+        "description": "Umfassende Lösungen für Ihre Karriere- und Einwanderungsbedürfnisse",
+        "button": "Alle Dienste anzeigen"
+      },
+      "recruitmentServices": {
+        "title": "Rekrutierungsdienste",
+        "items": {
+          "resumeService": {
+            "title": "Lebenslauf Service",
+            "description": "Professionelles Schreiben von Lebensläufen"
+          },
+          "globalJobPlacement": {
+            "title": "Globale Arbeitsvermittlung",
+            "description": "Internationale Arbeitsmöglichkeiten"
+          },
+          "interviewCoaching": {
+            "title": "Interview-Coaching",
+            "description": "Professionelle Vorbereitung auf Vorstellungsgespräche"
+          },
+          "careerCounselling": {
+            "title": "Berufsberatung",
+            "description": "Fachkundige Berufsberatung"
+          },
+          "visaRelocation": {
+            "title": "Visum & Umzug",
+            "description": "Unterstützung bei Visum und Umzug"
+          }
+        }
+      },
+      "skillServices": {
+        "title": "Dienstleistungen",
+        "items": {
+          "skillDevelopment": {
+            "title": "Entwicklung von Fertigkeiten",
+            "description": "Ausbildung von Fachkräften"
+          },
+          "remoteWork": {
+            "title": "Fernarbeit",
+            "description": "Möglichkeiten der Fernarbeit"
+          },
+          "talentAcquisition": {
+            "title": "Talentakquise",
+            "description": "Strategische Einstellungslösungen"
+          },
+          "immigration": {
+            "title": "Einwanderungsdienste",
+            "description": "Unterstützung bei der Einwanderung"
+          },
+          "jobsRecruitment": {
+            "title": "Jobs Rekrutierung",
+            "description": "Lösungen für die Personalbeschaffung"
+          }
+        }
+      },
+      "immigration": {
+        "title": "Türkische Aufenthaltsgenehmigung",
+        "items": {
+          "turkey": {
+            "title": "Aufenthaltsgenehmigung Türkei",
+            "description": "Dienstleistungen für die Aufenthaltsgenehmigung in der Türkei"
+          },
+          "workPermit": {
+            "title": "Arbeitsgenehmigung",
+            "description": "Erhalten Sie Ihre Arbeitserlaubnis"
+          },
+          "citizenship": {
+            "title": "Türkische Staatsbürgerschaft",
+            "description": "Türkei Staatsbürgerschaftsdienst"
+          },
+          "visaInvitations": {
+            "title": "Visa-Einladungen",
+            "description": "Visa-Dienste"
+          },
+          "hireWorkers": {
+            "title": "Arbeitskräfte einstellen",
+            "description": "Personalbeschaffungslösungen"
+          },
+          "companyRegistration": {
+            "title": "Registrierung des Unternehmens",
+            "description": "Ein Unternehmen anmelden"
+          },
+          "dubai": {
+            "title": "Aufenthaltsgenehmigung für Dubai",
+            "description": "Dienstleistungen für die Aufenthaltsgenehmigung in Dubai"
+          },
+          "china": {
+            "title": "China Aufenthaltsgenehmigung",
+            "description": "Dienstleistungen für die Aufenthaltsgenehmigung in China"
+          },
+          "kazakhstan": {
+            "title": "Aufenthaltsgenehmigung Kasachstan",
+            "description": "Dienstleistungen für die Aufenthaltsgenehmigung in Kasachstan"
+          },
+          "albania": {
+            "title": "Albanien Aufenthaltsgenehmigung",
+            "description": "Dienstleistungen für die Aufenthaltsgenehmigung in Albanien"
+          }
+        }
+      },
+      "visaFiling": {
+        "title": "Visa E-Einladung",
+        "items": {
+          "turkey": {
+            "title": "Türkei Visum",
+            "description": "Türkische Visadienste"
+          },
+          "dubai": {
+            "title": "Dubai Visum",
+            "description": "Dubai Visum Dienstleistungen"
+          },
+          "kazakhstan": {
+            "title": "Kasachstan Visum",
+            "description": "Kasachstan Visum Dienstleistungen"
+          },
+          "albania": {
+            "title": "Albanien Visum",
+            "description": "Albanische Visadienste"
+          },
+          "portugal": {
+            "title": "Portugal Visum",
+            "description": "Portugiesische Visadienstleistungen"
+          }
+        }
+      }
+    },
+    "residenceDropdown": {
+      "title": "Dienstleistungen für Aufenthaltsgenehmigungen",
+      "items": {
+        "turkey": {
+          "title": "Aufenthaltsgenehmigung Türkei",
+          "description": "Dienstleistungen für die Aufenthaltsgenehmigung in der Türkei",
+          "href": "/immigration/turkey-residence-permit"
+        },
+        "dubai": {
+          "title": "Aufenthaltsgenehmigung für Dubai",
+          "description": "Dienstleistungen für die Aufenthaltsgenehmigung in Dubai",
+          "href": "/immigration/dubai-residence-permit"
+        },
+        "china": {
+          "title": "China Aufenthaltsgenehmigung",
+          "description": "Dienstleistungen für die Aufenthaltsgenehmigung in China",
+          "href": "/immigration/china-residence-permit"
+        },
+        "kazakhstan": {
+          "title": "Aufenthaltsgenehmigung Kasachstan",
+          "description": "Dienstleistungen für die Aufenthaltsgenehmigung in Kasachstan",
+          "href": "/immigration/kazakhstan-aufenthaltsgenehmigung"
+        },
+        "albania": {
+          "title": "Albanien Aufenthaltsgenehmigung",
+          "description": "Dienstleistungen für die Aufenthaltsgenehmigung in Albanien",
+          "href": "/immigration/albanien-aufenthaltsgenehmigung"
+        }
+      }
+    },
+    "popularSearchItems": {
+      "remoteJobs": "Ferngesteuerte Jobs",
+      "softwareDeveloper": "Software-Entwickler",
+      "dataAnalyst": "Datenanalyst",
+      "projectManager": "Projektleiter"
+    },
+    "mobile": {
+      "servicesIntro": "Entdecken Sie unser umfassendes Angebot an professionellen Dienstleistungen",
+      "connectWithUs": "Verbinden Sie sich mit uns in den sozialen Medien",
+      "premiumServices": {
+        "title": "Premium-Dienste",
+        "description": "Vorrangiger Support und garantierte Ergebnisse",
+        "button": "Upgrade auf Premium",
+        "features": {
+          "prioritySupport": "Vorrangige Unterstützung",
+          "guaranteedResults": "Garantierte Ergebnisse"
+        }
+      }
+    }
+  },
+  "footer": {
+    "brand": {
+      "tagline": "Talente mit Chancen verbinden",
+      "description": "Förderung von Karrieren und Unternehmen durch innovative HR-Lösungen und personalisierte Rekrutierungsdienstleistungen.",
+      "downloadProfile": "Unternehmensprofil herunterladen"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    },
+    "featuredServices": {
+      "servicesLabel": "Dienstleistungen",
+      "tabs": {
+        "findJobs": {
+          "title": "Jobs finden",
+          "features": {
+            "searchVacancies": "Freie Stellen suchen",
+            "createProfile": "Profil erstellen",
+            "applyTracking": "Tracking anwenden",
+            "careerAdvice": "Karriere Beratung"
+          }
+        },
+        "hireTalent": {
+          "title": "Talent anheuern",
+          "features": {
+            "postJobOpenings": "Stellenausschreibungen veröffentlichen",
+            "resumeDatabase": "Lebenslauf Datenbank",
+            "recruitmentSolutions": "Lösungen für die Personalbeschaffung",
+            "hrConsulting": "HR-Beratung"
+          }
+        },
+        "partnerWithUs": {
+          "title": "Partner mit uns",
+          "features": {
+            "jobSeeker": "Sind Sie ein Arbeitssuchender?",
+            "employer": "Sind Sie ein Arbeitgeber?",
+            "recruitmentAgency": "Sind Sie ein Personalvermittler?",
+            "hrConsultant": "Sind Sie ein Personalberater?"
+          }
+        }
+      }
+    },
+    "navigation": {
+      "jobsAdmire": {
+        "title": "JobsAdmire",
+        "links": {
+          "aboutUs": "Über uns",
+          "contactUs": "Kontakt",
+          "blog": "Blog",
+          "companyCertifications": "Zertifizierungen des Unternehmens"
+        }
+      },
+      "resources": {
+        "title": "Ressourcen",
+        "links": {
+          "residencePermitInfo": "Informationen zur Aufenthaltsgenehmigung",
+          "invitationLetterRequest": "Einladungsschreiben Anfrage"
+        }
+      },
+      "jobProviders": {
+        "title": "Job-Anbieter",
+        "links": {
+          "findJobs": "Jobs finden",
+          "resumeGenerator": "Lebenslauf-Generator",
+          "resumeService": "Lebenslauf Service",
+          "companyRegistration": "Registrierung des Unternehmens"
+        }
+      },
+      "jobSeekers": {
+        "title": "Arbeitssuchende",
+        "links": {
+          "browseJobs": "Jobs durchsuchen",
+          "cvBuilder": "CV Builder",
+          "career": "Karriere",
+          "jobsRecruitment": "Jobs Rekrutierung",
+          "resumeService": "Lebenslauf Service"
+        }
+      },
+      "employers": {
+        "title": "Arbeitgeber",
+        "links": {
+          "postJob": "Job ausschreiben",
+          "findCandidates": "KandidatInnen finden",
+          "hrConsulting": "HR-Beratung",
+          "premiumServices": "Premium-Dienste",
+          "immigration": "Einwanderung"
+        }
+      },
+      "company": {
+        "title": "Unternehmen",
+        "links": {
+          "aboutUs": "Über uns",
+          "blog": "Blog",
+          "contactUs": "Kontakt",
+          "certifications": "Zertifizierungen"
+        }
+      },
+      "newLabel": "NEW"
+    },
+    "mapSection": {
+      "title": "Finden Sie uns auf der Karte",
+      "email": "E-Mail"
+    },
+    "newsletter": {
+      "title": "Job Alerts & Updates",
+      "placeholder": "Ihre E-Mail eingeben",
+      "subscribe": "Abonnieren",
+      "success": "Vielen Dank für Ihr Abonnement!"
+    },
+    "globalPresence": {
+      "title": "Globale Präsenz",
+      "viewAll": "Alle Standorte anzeigen",
+      "locations": {
+        "turkey": {
+          "city": "Türkei",
+          "address": "Tahılpazarı, Adnan Menderes Blv. Erkal Apt A Blok No: 7 İç Kapı No: 6, 07040 Muratpaşa Antalya, Türkiye",
+          "phone": " +90 555 827 65 85"
+        },
+        "pakistan": {
+          "city": "Pakistan",
+          "address": "Büro Nr. 1207, Kashif Center, Near Hotel Mehran, Main Shahrah e Faisal, Karachi.",
+          "phone": "+90 552 529 68 64"
+        },
+        "azerbaijan": {
+          "city": "Aserbaidschan",
+          "address": "Nizami küçəsi 203, AF Geschäftshaus 7- ci mərtəbə",
+          "phone": "+994 70 950 78 79"
+        },
+        "kazakhstan": {
+          "city": "Kasachstan",
+          "address": "Demnächst verfügbar"
+        }
+      }
+    },
+    "contacts": {
+      "turkey": {
+        "country": "Türkei",
+        "city": "Antalya",
+        "address": "Tahılpazarı, Adnan Menderes Blv. Erkal Apt A Blok No: 7 İç Kapı No: 6, 07040 Muratpaşa/Antalya",
+        "hours": "Mo-Fr: 9:00-18:00",
+        "phone": "+90 501 124 03 40",
+        "email": "info@jobsadmire.com"
+      },
+      "pakistan": {
+        "country": "Pakistan",
+        "city": "Karachi",
+        "address": "Büro Nr. 1207, Kashif Center, Nähe Hotel Mehran, Main Shahrah e Faisal",
+        "hours": "Mo-Fr: 9:00-17:00",
+        "phone": "0213 5682889",
+        "email": "info@jobsadmire.com"
+      }
+    },
+    "certification": {
+      "companyName": "Jobs Admire Özel İstihdam Bürosu Sanayi Ve Ticaret Limited Şirket",
+      "description": "arbeitet mit der Genehmigung Nr. 1730 vom 19.09.2024 der türkischen Arbeitsagentur. Nach dem Gesetz Nr. 4904 ist es verboten, von Arbeitsuchenden eine Gebühr zu verlangen. Mit Ihren Beschwerden können Sie sich an das Istanbuler İŞKUR Provinzialdirektion Kadıköy Service Center wenden. İşKur Tel: 0216 418 34 55 Eğitim mah. 1.Açıkgöz Straße. Nr:3 KADIKÖY/İSTANBUL"
+    },
+    "copyright": {
+      "text": "Copyright © {{year}} JOBS ADMİRE ÖZEL İSTİHDAM BÜROSU SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+      "taxNo": "Steuernummer: 48422122"
+    },
+    "legal": {
+      "privacy": "Datenschutzbestimmungen",
+      "terms": "Bedingungen der Dienstleistung",
+      "cookies": "Cookie-Einstellungen"
+    }
+  },
+  "servicesCarousel": {
+    "header": {
+      "badge": "Professionelle Dienstleistungen",
+      "title": "Unsere professionellen Dienstleistungen",
+      "description": "Von der Karriereplanung bis hin zur globalen Vermittlung bieten wir umfassende professionelle Dienstleistungen an, die Ihre berufliche Entwicklung beschleunigen und Ihnen die Türen zu internationalen Möglichkeiten öffnen."
+    },
+    "navigation": {
+      "previous": "Vorheriges Dia",
+      "next": "Nächste Folie",
+      "goTo": "Gehe zu",
+      "autoPlay": "Auto",
+      "play": "Spielen",
+      "pause": "Autoplay anhalten",
+      "resume": "Autoplay fortsetzen",
+      "counter": "von"
+    },
+    "services": {
+      "resumeWriting": {
+        "title": "Professionelles Schreiben von Lebensläufen",
+        "subtitle": "ATS-optimierte Karriere-Dokumente",
+        "description": "Gestalten Sie Ihre Karrieregeschichte mit professionell gestalteten Lebensläufen, die automatisierte Systeme umgehen und die Aufmerksamkeit der Personalverantwortlichen auf sich ziehen. Unsere Experten wissen, wonach Personalverantwortliche in mehr als 80 Branchen suchen, und sorgen dafür, dass Ihr Lebenslauf Türen zu neuen Möglichkeiten öffnet.",
+        "features": [
+          "ATS-optimierte Inhalte",
+          "Branchenspezifisches Schreiben",
+          "98,4% Erfolgsquote bei Vorstellungsgesprächen",
+          "4-tägige Bearbeitungszeit"
+        ],
+        "ctaPrimary": "Meinen Lebenslauf erstellen"
+      },
+      "globalJobPlacement": {
+        "title": "Globale Arbeitsvermittlung",
+        "subtitle": "Internationale Karrieremöglichkeiten",
+        "description": "Knüpfen Sie über unser umfangreiches internationales Netzwerk Kontakte zu Top-Arbeitgebern weltweit. Wir bringen qualifizierte Fachkräfte mit Möglichkeiten in Übersee zusammen und bieten umfassende Unterstützung von der Bewerbung bis zur Vermittlung in Ihr Traumziel.",
+        "features": [
+          "Globales Arbeitgeber-Netzwerk",
+          "Inklusive Visa-Unterstützung",
+          "Hilfe zur kulturellen Integration",
+          "Fast-Track-Verarbeitung"
+        ],
+        "ctaPrimary": "Globale Jobs finden"
+      },
+      "interviewCoaching": {
+        "title": "Interview-Coaching",
+        "subtitle": "Jedes Interviewformat meistern",
+        "description": "Schaffen Sie sich unerschütterliches Selbstvertrauen mit persönlichem Interview-Coaching von Branchenexperten. Üben Sie mit Probeinterviews, erhalten Sie detailliertes Feedback und lernen Sie bewährte Strategien, um in Verhaltens-, Fach- und Führungsgesprächen zu glänzen.",
+        "features": [
+          "Probeinterview-Sitzungen",
+          "Personalisiertes Feedback",
+          "Branchenspezifisches Coaching",
+          "Vertrauensbildung"
+        ],
+        "ctaPrimary": "Buch-Coaching"
+      },
+      "careerCounselling": {
+        "title": "Berufsberatung",
+        "subtitle": "Strategische Karriereentwicklung",
+        "description": "Entdecken Sie Ihren idealen Karriereweg mit umfassenden Bewertungsinstrumenten und fachkundiger Anleitung. Unsere zertifizierten Berater helfen Ihnen, Ihre Stärken, Interessen und Ziele in Einklang zu bringen, um fundierte Entscheidungen über Ihre berufliche Zukunft zu treffen.",
+        "features": [
+          "Tools zur Karrierebewertung",
+          "Personalisierte Entwicklungspläne",
+          "Fachkundige Betreuerinnen und Betreuer",
+          "Zielgerichtete Beratung"
+        ],
+        "ctaPrimary": "Start Bewertung"
+      },
+      "visaSupport": {
+        "title": "Visa-Unterstützungsdienste",
+        "subtitle": "Nahtloser Einwanderungsprozess",
+        "description": "Navigieren Sie durch komplexe Visumanträge mit fachkundiger Beratung und umfassender Unterstützung bei der Dokumentation. Unsere Einwanderungsspezialisten stellen sicher, dass Ihre Anträge alle Anforderungen für Arbeits-, Studien- oder Daueraufenthaltsvisa weltweit erfüllen.",
+        "features": [
+          "Vorbereitung der Dokumente",
+          "Antragsbearbeitung",
+          "Unterstützung der Botschaft",
+          "Unterstützung bei der Nachbereitung"
+        ],
+        "ctaPrimary": "Visum beantragen"
+      },
+      "skillDevelopment": {
+        "title": "Schulung zur Entwicklung von Fertigkeiten",
+        "subtitle": "Industrietaugliche berufliche Fähigkeiten",
+        "description": "Bringen Sie Ihre Karriere mit praktischen, berufsorientierten Schulungsprogrammen voran, die von Branchenexperten entwickelt wurden. Von technischen Fähigkeiten bis hin zu Soft Skills - unsere umfassenden Kurse bereiten Sie mit praxisnahem Lernen auf den heutigen wettbewerbsintensiven Arbeitsmarkt vor.",
+        "features": [
+          "Industrierelevanter Lehrplan",
+          "Praktische Projekte",
+          "Zertifizierte Ausbilder",
+          "Unterstützung bei der Arbeitsvermittlung"
+        ],
+        "ctaPrimary": "Kurse erkunden"
+      },
+      "remoteWork": {
+        "title": "Möglichkeiten der Fernarbeit",
+        "subtitle": "Globaler Fernzugriff auf die Karriere",
+        "description": "Erschließen Sie sich die Freiheit der Fernarbeit mit kuratierten Angeboten von verifizierten globalen Arbeitgebern. Wir bringen talentierte Fachkräfte mit seriösen Fernarbeitsplätzen in zahlreichen Branchen zusammen und ermöglichen so eine ausgewogene Work-Life-Balance und internationale Verdienstmöglichkeiten.",
+        "features": [
+          "Geprüfte Remote-Jobs",
+          "Globale Chancen",
+          "Flexible Terminplanung",
+          "Work-Life-Balance"
+        ],
+        "ctaPrimary": "Remote-Jobs finden"
+      },
+      "talentAcquisition": {
+        "title": "Talentakquise",
+        "subtitle": "Strategische Einstellungslösungen",
+        "description": "Optimieren Sie Ihren Einstellungsprozess mit unseren umfassenden Talentakquisitionsdiensten. Wir helfen Unternehmen dabei, durch systematische Prozesse und innovative Sourcing-Techniken effizient erstklassige Kandidaten zu gewinnen, zu bewerten und einzustellen.",
+        "features": [
+          "End-to-End-Rekrutierung",
+          "Kandidatenscreening",
+          "Interview-Koordination",
+          "Onboarding-Unterstützung"
+        ],
+        "ctaPrimary": "Talent anheuern"
+      },
+      "immigrationConsultation": {
+        "title": "Beratung zur Einwanderung",
+        "subtitle": "Vollständige Umzugsunterstützung",
+        "description": "Verändern Sie Ihr Leben mit umfassender Unterstützung bei der Einwanderung für eine dauerhafte Aufenthaltsgenehmigung und einen globalen Standortwechsel. Unsere zertifizierten Berater bieten personalisierte Strategien und umfassende Unterstützung bei der Dokumentation für Fachkräfteprogramme weltweit.",
+        "features": [
+          "Dauerhafter Wohnsitz",
+          "Programme für qualifizierte Arbeitskräfte",
+          "Einwanderung von Familien",
+          "Unterstützung bei der Abrechnung"
+        ],
+        "ctaPrimary": "Start Einwanderung"
+      },
+      "jobRecruitment": {
+        "title": "Job-Rekrutierungsdienste",
+        "subtitle": "Professionelle Rekrutierungslösungen",
+        "description": "Finden Sie Ihre nächste Karrierechance über unsere umfassende Stellenvermittlungsplattform. Wir überbrücken die Lücke zwischen talentierten Fachkräften und führenden Arbeitgebern und bieten personalisierte Stellenvermittlung und Unterstützung bei der Personalbeschaffung in verschiedenen Branchen.",
+        "features": [
+          "Job-Matching-Algorithmus",
+          "Kompetenz in der Industrie",
+          "Schnelles Platzierungsverfahren",
+          "Berufsberatung"
+        ],
+        "ctaPrimary": "Für Jobs bewerben"
+      }
+    }
+  },
+  "stats": {
+    "jobFulfillment": {
+      "label": "Auftragserfüllung",
+      "subtitle": "Seit dem letzten Quartal"
+    },
+    "branches": {
+      "label": "Zweigstellen",
+      "subtitle": "In allen Großstädten"
+    },
+    "yearsExperience": {
+      "label": "Jahre Erfahrung",
+      "subtitle": "Fachwissen über die Industrie"
+    },
+    "happyClients": {
+      "label": "Zufriedene Kunden",
+      "subtitle": "Mit 98% Zufriedenheit"
+    }
+  },
+  "features": {
+    "targetedRecruitment": {
+      "title": "Gezielte Rekrutierung",
+      "description": "Präzise Abstimmung der Bewerber auf die Stellenanforderungen."
+    },
+    "performanceTracking": {
+      "title": "Leistungsverfolgung",
+      "description": "Erweiterte Metriken zur Messung des Einstellungserfolgs."
+    },
+    "qualityAssurance": {
+      "title": "Qualitätssicherung",
+      "description": "Gründliche Prüfung aller Bewerber vor der Präsentation."
+    }
+  },
+  "whatsapp": {
+    "title": "Jobs bewundern",
+    "ariaLabel": "Chatten auf WhatsApp"
+  },
+  "labels": {
+    "footer": {
+      "logoAlt": "Jobportal-Logo",
+      "paymentAmex": "American Express",
+      "paymentApplePay": "Apple Pay",
+      "paymentMastercard": "Mastercard",
+      "paymentVisa": "Visum",
+      "paymentGooglePay": "Google Pay",
+      "certificationAlt": "İŞKUR Zertifizierung"
+    },
+    "visa": {
+      "translationError": "Übersetzungsfehler",
+      "unableToLoad": "Abschnitt Vorteile für Gebietsschema kann nicht geladen werden: {{locale}}",
+      "unableToLoadTranslations": "Übersetzungen für Gebietsschema können nicht geladen werden: {{locale}}",
+      "checkTranslationFiles": "Bitte überprüfen Sie Ihre Übersetzungsdateien."
+    },
+    "disclaimer": {
+      "dismissAria": "Haftungsausschluss ablehnen",
+      "title": "Wichtiger Haftungsausschluss",
+      "body": "JobsAdmire ist eine unabhängige Einwanderungsberatung. Wir sind weder mit einer Regierungsbehörde verbunden noch werden wir von ihr unterstützt. Wir stellen keine Visa oder Aufenthaltsgenehmigungen aus, sondern bieten lediglich Beratung und Unterstützung an.",
+      "dismissButton": "Ablehnen"
+    },
+    "login": {
+      "logoAlt": "Logo",
+      "welcomeTitle": "Willkommen",
+      "welcomeSubtitle": "Zur Website",
+      "userLoginHeading": "BENUTZER-LOGIN",
+      "agency": "Agentur",
+      "jobProvider": "Jobanbieter",
+      "candidate": "Kandidat",
+      "username": "Benutzername",
+      "password": "Passwort",
+      "rememberMe": "Erinnern Sie sich an mich",
+      "forgotPassword": "Passwort vergessen?",
+      "loginButton": "Anmeldung",
+      "placeholderUsername": "Benutzername",
+      "placeholderPassword": "Passwort"
+    },
+    "applyOnline": {
+      "title": "Uganda Visumantrag",
+      "subtitle": "Füllen Sie Ihren Antrag auf ein Touristenvisum in zwei einfachen Schritten aus",
+      "stepApplication": "Anmeldung",
+      "stepPayment": "Zahlung",
+      "applicationDetails": "Details zur Anwendung",
+      "paymentDetails": "Details zur Bezahlung",
+      "visaTypeLabel": "Touristisches E-Visum bis zu 90 Tagen für Uganda",
+      "visaTypeDescription": "Einmalige Einreise (90 Tage Aufenthalt) mit 3 Werktagen Bearbeitungszeit",
+      "visaTypeSelectLabel": "Bitte wählen Sie die gewünschte Visumgruppe und Gültigkeit *",
+      "visaTypeTourist": "Touristisches E-Visum bis zu 90 Tagen",
+      "visaTypeBusiness": "Business-E-Visum bis zu 90 Tagen",
+      "visaTypeTransit": "Transit-E-Visum für bis zu 7 Tage",
+      "governmentFee": "Staatliche Gebühr",
+      "saveAndContinue": "Speichern und fortfahren",
+      "return": "Rückkehr",
+      "submitOrder": "Bestellung abschicken",
+      "termsAgreement": "Ich erkläre mich hiermit einverstanden mit der",
+      "termsOfService": "Bedingungen der Dienstleistung",
+      "privacyStatement": "Erklärung zum Datenschutz",
+      "termsAgreementEnd": "und bestätige, dass alle Informationen und Unterlagen, die ich zur Verfügung stelle, nach bestem Wissen und Gewissen wahrheitsgemäß, genau und vollständig sind.",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "citizenship": "Staatsbürgerschaft",
+      "entryDate": "Eintragungsdatum",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "cardholderName": "Name des Karteninhabers",
+      "cardNumber": "Kartennummer",
+      "expiry": "MM/JJJ",
+      "footerCopyright": "© 2025 Uganda Visa Services. Alle Rechte vorbehalten.",
+      "placeholderFirstName": "hamza",
+      "placeholderLastName": "ali",
+      "placeholderCardholder": "hamza ali",
+      "placeholderCardNumber": "Kartennummer",
+      "placeholderExpiry": "MM/JJJ",
+      "feeBreakdownTitle": "Honoraraufschlüsselung",
+      "visaService": "Visa-Dienst",
+      "embassyFee": "Botschaftsgebühr",
+      "serviceFee": "Servicegebühr",
+      "total": "Insgesamt",
+      "months": {
+        "jan": "Jan",
+        "feb": "Februar",
+        "mar": "März",
+        "apr": "Apr.",
+        "may": "Mai",
+        "jun": "Jun",
+        "jul": "Jul",
+        "aug": "Aug",
+        "sep": "Sep",
+        "oct": "Okt.",
+        "nov": "Nov.",
+        "dec": "Dez."
+      },
+      "cvc": "CVC",
+      "placeholderEmail": "hamzahefz7885@gmail.com",
+      "placeholderPhone": "03172105055",
+      "placeholderCvc": "CVC"
+    },
+    "jobRecruitment": {
+      "metaTitle": "Job Recruitment Services | Professionelle Lösungen für die Personalbeschaffung - JobsAdmire",
+      "metaDescription": "Finden Sie die richtigen Talente für Ihr Unternehmen mit den Stellenvermittlungsdiensten von JobsAdmire. Wir bieten maßgeschneiderte Einstellungslösungen für Unternehmen aller Größen und Branchen.",
+      "metaKeywords": "Globale Stellenvermittlung, Arbeiten im Ausland mit Expertenunterstützung - JobsAdmire",
+      "ogTitle": "Ihr Open Graph-Titel",
+      "ogDescription": "Ihre Open Graph-Beschreibung",
+      "bannerTitle": "Transformieren Sie Ihren Einstellungsprozess",
+      "bannerDescription": "Optimieren Sie Ihre Personalbeschaffung mit unseren End-to-End-Lösungen. Wir helfen Unternehmen, schnell und effizient qualifizierte Bewerber für alle Branchen und Stellen zu finden.",
+      "bannerButtonText": "Rekrutierung beginnen",
+      "bannerServiceLabel": "PERSONALBESCHAFFUNGSEXPERTEN"
+    },
+    "turkeyCitizenship": {
+      "currentCitizenship": "Derzeitige Staatsangehörigkeit"
+    },
+    "blogCards": {
+      "searchPlaceholder": "Artikel, Themen oder Tags suchen...",
+      "searchAriaLabel": "Suche",
+      "enterYourEmail": "Ihre E-Mail eingeben",
+      "newsletterCloseAria": "Newsletter-Popup schließen",
+      "backToTopAria": "Zurück zum Anfang",
+      "subscriberAlt": "Abonnent",
+      "subscribeSuccess": "Vielen Dank, dass Sie sich für unseren Newsletter angemeldet haben!",
+      "enterValidEmail": "Bitte geben Sie eine gültige E-Mail Adresse ein",
+      "categories": {
+        "careerAdvice": "Karriere Beratung",
+        "jobInterviews": "Vorstellungsgespräche",
+        "resumeTips": "Tipps zum Lebenslauf",
+        "remoteWork": "Fernarbeit",
+        "industryInsights": "Einblicke in die Industrie"
+      },
+      "loadMore": "Mehr laden"
+    },
+    "candidateForm": {
+      "personalInfo": "Persönliche Informationen",
+      "professional": "Professionell",
+      "documents": "Dokumente",
+      "jobCategoryTourism": "Tourismus und Gastgewerbe",
+      "jobCategoryFactory": "Fabrik",
+      "jobCategoryConstruction": "Bauwesen",
+      "jobCategoryAgriculture": "Landwirtschaft",
+      "name": "Name",
+      "surname": "Nachname",
+      "motherName": "Name der Mutter",
+      "fatherName": "Name des Vaters",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "dob": "Geburtsdatum",
+      "gender": "Geschlecht",
+      "height": "Höhe",
+      "weight": "Gewicht",
+      "address": "Adresse",
+      "country": "Land",
+      "city": "Stadt",
+      "state": "Staat",
+      "placeOfBirth": "Ort der Geburt",
+      "workerAbroadResidenceAddress": "Wohnsitzadresse des Arbeitnehmers im Ausland",
+      "passportNumber": "Reisepassnummer",
+      "videoLink": "Video-Link",
+      "candidateLanguage": "Sprache des Bewerbers",
+      "otherLanguages": "Andere Sprachen",
+      "description": "Beschreibung",
+      "workspace": "Arbeitsbereich",
+      "password": "Passwort",
+      "jobCategory": "Job-Kategorie",
+      "title": "Titel",
+      "organization": "Organisation",
+      "startDate": "Datum des Beginns",
+      "endDate": "Enddatum",
+      "reference": "Referenz",
+      "placeholderName": "Name eingeben",
+      "placeholderSurname": "Nachname eingeben",
+      "placeholderEmail": "E-Mail eingeben",
+      "placeholderPhone": "Telefon eingeben",
+      "placeholderAddress": "Adresse eingeben",
+      "placeholderCountry": "Land auswählen",
+      "placeholderCity": "Stadt eingeben",
+      "placeholderState": "Staat eingeben",
+      "placeholderPassport": "Reisepassnummer eingeben",
+      "placeholderVideoLink": "Video-URL eingeben",
+      "placeholderDescription": "Beschreibung eingeben",
+      "selectGender": "Geschlecht auswählen",
+      "submit": "Einreichen",
+      "addProject": "Projekt hinzufügen",
+      "addExperience": "Erfahrung hinzufügen",
+      "addQualification": "Qualifizierung hinzufügen",
+      "addSkill": "Fertigkeit hinzufügen",
+      "profilePhoto": "Profilbild",
+      "resumeFile": "Lebenslauf",
+      "passportFile": "Reisepass",
+      "fullBodyPhoto": "Ganzkörperfoto",
+      "biometricPhoto": "Biometrisches Foto",
+      "uploadPhoto": "Foto hochladen",
+      "changePhoto": "Foto ändern",
+      "validationRequired": "Dieses Feld ist erforderlich",
+      "successMessage": "Antrag erfolgreich eingereicht",
+      "weightKg": "Gewicht (kg) *",
+      "heightCm": "Höhe (cm) *",
+      "placeholderWeight": "Gewicht eingeben",
+      "placeholderHeight": "Höhe eingeben",
+      "uploadFullBodyPhoto": "Ganzkörperfoto hochladen *",
+      "supportedFormats": "Unterstützte Formate: JPEG, JPG, PNG (maximal 5MB)",
+      "factorySkills": "Fabrik-Fähigkeiten",
+      "yearsOfExperience": "Jahre der Erfahrung",
+      "constructionSkills": "Baufachkenntnisse",
+      "agricultureSkills": "Landwirtschaftliche Fertigkeiten",
+      "placeholderFactorySkills": "z. B. Maschinenbedienung, Qualitätskontrolle",
+      "placeholderExperience": "Jahre der Erfahrung",
+      "placeholderConstructionSkills": "z. B. Zimmerei, Maurerhandwerk, Elektrotechnik",
+      "placeholderAgricultureSkills": "z.B., Landwirtschaft, Ernte",
+      "stateRequired": "Zustand ist erforderlich",
+      "placeOfBirthRequired": "Geburtsort ist erforderlich",
+      "weightRequired": "Gewicht ist für die Kategorie Tourismus erforderlich",
+      "heightRequired": "Höhe ist für die Kategorie Tourismus erforderlich",
+      "passportNumberRequired": "Reisepassnummer ist erforderlich",
+      "passportScanRequired": "Reisepass-Scan ist erforderlich",
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "personalInfoTitle": "Persönliche Informationen",
+      "locationInfoTitle": "Informationen zum Standort",
+      "currentAddress": "Aktuelle Adresse *",
+      "stateProvince": "Staat/Provinz *",
+      "professionalInfoTitle": "Berufliche Informationen",
+      "documentInfoTitle": "Informationen zum Dokument",
+      "specificInformation": "Spezifische Informationen",
+      "placeholderFirstName": "Geben Sie Ihren Vornamen ein",
+      "placeholderLastName": "Geben Sie Ihren Nachnamen ein",
+      "placeholderMotherName": "Name der Mutter eingeben",
+      "placeholderFatherName": "Name des Vaters eingeben",
+      "genderMale": "Männlich",
+      "genderFemale": "Weiblich",
+      "placeholderCurrentAddress": "Geben Sie Ihre vollständige aktuelle Adresse ein",
+      "placeholderStateProvince": "Staat/Provinz",
+      "placeholderPlaceOfBirth": "Geben Sie Ihren Geburtsort ein",
+      "placeholderWorkerAbroad": "Geben Sie gegebenenfalls die Adresse Ihres Wohnsitzes im Ausland an",
+      "selectProfession": "Wählen Sie Ihren Beruf",
+      "createPassword": "Passwort erstellen *",
+      "placeholderCreatePassword": "Erstellen Sie ein sicheres Passwort",
+      "passwordLoginHint": "(Damit melden Sie sich bei unserem CRM-Portal an.)",
+      "placeholderCandidateLanguage": "z.B. Englisch, Spanisch",
+      "placeholderOtherLanguages": "z.B. Französisch, Deutsch (kommagetrennt)",
+      "additionalDescription": "Zusätzliche Beschreibung",
+      "placeholderAdditionalDescription": "Geben Sie hier weitere relevante Details, Fähigkeiten oder Erfahrungen an.",
+      "resumeCvFile": "Lebenslauf/CV-Datei *",
+      "passportScanFile": "Reisepass-Scan-Datei *",
+      "supportedFormatsProfile": "Unterstützte Formate: JPEG, JPG, PNG (maximal 5MB)",
+      "supportedFormatsResume": "Unterstützte Formate: PDF, DOC, DOCX (maximal 2MB)",
+      "supportedFormatsPassport": "Unterstützte Formate: JPEG, JPG, PNG, PDF (maximal 5MB)",
+      "supportedFormatsBiometric": "Unterstützte Formate: JPEG, JPG, PNG (maximal 5MB)",
+      "supportedFormatsVideo": "Unterstützte Formate: MP4, MOV, AVI (maximal 50MB)",
+      "selectedFile": "Ausgewählt:",
+      "videoFile": "Video-Datei",
+      "placeholderVideoLinkExample": "z. B. YouTube- oder Vimeo-Link",
+      "formTitle": "Formular für die Registrierung von Bewerbern",
+      "formSubtitle": "Tragen Sie Ihre Daten ein und werden Sie Teil unseres Teams!",
+      "previous": "Vorherige",
+      "nextStep": "Nächster Schritt",
+      "submitting": "Einreichen...",
+      "submitApplication": "Bewerbung einreichen",
+      "dobRequired": "Geburtsdatum ist erforderlich",
+      "genderRequired": "Geschlecht ist erforderlich",
+      "workerAbroadResidenceRequired": "Wohnsitzadresse des Arbeitnehmers im Ausland ist erforderlich",
+      "jobCategoryRequired": "Jobkategorie ist erforderlich",
+      "candidateLanguageRequired": "Sprache des Bewerbers ist erforderlich",
+      "fullBodyPhotoRequiredTourism": "Für die Kategorie Tourismus ist ein Ganzkörperfoto erforderlich.",
+      "profilePhotoRequired": "Profilfoto ist erforderlich",
+      "resumeRequired": "Lebenslauf ist erforderlich",
+      "profilePhotoMaxSize": "Das Profilfoto muss weniger als 5 MB groß sein.",
+      "resumeMaxSize": "Lebenslauf muss kleiner als 2 MB sein",
+      "passportScanMaxSize": "Der Scan des Reisepasses muss weniger als 5 MB groß sein.",
+      "fullBodyPhotoMaxSize": "Ganzkörperfoto muss kleiner als 5 MB sein",
+      "biometricPhotoMaxSize": "Biometrisches Foto muss kleiner als 5 MB sein",
+      "videoMaxSize": "Das Video muss weniger als 50 MB groß sein.",
+      "fixErrorsIntro": "Bitte beheben Sie die folgenden Fehler:\n\n",
+      "selectValidJobCategory": "Bitte wählen Sie eine gültige Jobkategorie",
+      "fileSizeErrorsIntro": "Fehler bei der Dateigröße:\n\n",
+      "submitFailed": "Antrag konnte nicht übermittelt werden. Bitte überprüfen Sie Ihre Internetverbindung und versuchen Sie es erneut.",
+      "errorPrefix": "Fehler:",
+      "unknownError": "Unbekannter Fehler aufgetreten",
+      "errorSubmittingApplication": "Fehler beim Absenden der Bewerbung:\n\n",
+      "referenceForm": {
+        "title": "Berufliche Referenzen",
+        "subtitle": "Fügen Sie Ihre beruflichen Referenzen und Kontakte hinzu",
+        "addReference": "Referenz hinzufügen",
+        "noteTitle": "Hinweis: Bitte erstellen Sie zunächst die Bewerberdaten",
+        "noteDescription": "Füllen Sie alle erforderlichen Felder aus, um eine ordnungsgemäße Referenzvalidierung zu gewährleisten.",
+        "referenceNumber": "Referenz #{{Nummer}}",
+        "removeReference": "Referenz entfernen",
+        "organizationDetails": "Details zur Organisation",
+        "titleLabel": "Titel *",
+        "titlePlaceholder": "Berufsbezeichnung oder Position",
+        "organizationLabel": "Organisation *",
+        "organizationPlaceholder": "Name des Unternehmens oder der Organisation",
+        "employmentPeriod": "Beschäftigungsdauer",
+        "startDateLabel": "Startdatum *",
+        "endDateLabel": "Enddatum *",
+        "locationDetails": "Details zum Standort",
+        "countryLabel": "Land *",
+        "countryPlaceholder": "Land",
+        "stateLabel": "Staat *",
+        "statePlaceholder": "Staat/Provinz",
+        "cityLabel": "Stadt *",
+        "cityPlaceholder": "Stadt",
+        "contactInformation": "Kontaktinformationen",
+        "contactPerson": "Kontaktperson",
+        "contactPersonPlaceholder": "Name der Kontaktperson",
+        "phoneNumber": "Rufnummer",
+        "emailAddress": "E-Mail Adresse",
+        "resetForm": "Formular zurücksetzen",
+        "saveReferences": "Referenzen speichern",
+        "phonePlaceholder": "+1 (555) 123-4567",
+        "emailPlaceholder": "contact@company.com"
+      },
+      "experienceForm": {
+        "projects": "Projekte",
+        "projectsSubtitle": "Details zu Ihren Projekten hinzufügen",
+        "addProject": "Projekt hinzufügen",
+        "projectNumber": "Projekt #{{Nummer}}",
+        "experienceCandidateJobs": "Erfahrung Kandidat Jobs",
+        "experienceCandidateJobsSubtitle": "Fügen Sie Ihre Erfahrung Kandidaten Jobs Details",
+        "addExperienceCandidateJob": "Erfahrung hinzufügen Kandidat Job",
+        "experienceCandidateJobNumber": "Erfahrung Kandidat Job #{{Anzahl}}",
+        "qualifications": "Qualifikationen",
+        "qualificationsSubtitle": "Angaben zu Ihren Qualifikationen hinzufügen",
+        "addQualification": "Qualifizierung hinzufügen",
+        "qualificationNumber": "Qualifizierung #{{Nummer}}",
+        "skills": "Fertigkeiten",
+        "skillsSubtitle": "Details zu Ihren Fähigkeiten hinzufügen",
+        "addSkill": "Fertigkeit hinzufügen",
+        "skillNumber": "Fertigkeit #{{Anzahl}}",
+        "typeLabel": "Typ *",
+        "selectType": "Typ auswählen",
+        "typeTechnical": "Technische Fertigkeiten",
+        "typeSoft": "Soft Skills",
+        "typeLanguage": "Sprachkenntnisse",
+        "typeCertification": "Zertifizierung",
+        "titleLabel": "Titel *",
+        "titlePlaceholder": "{{Punkt}} Titel eingeben",
+        "organizationLabel": "Organisation *",
+        "organizationPlaceholder": "Organisation/Firmenname",
+        "startDateLabel": "Startdatum *",
+        "endDateLabel": "Enddatum *",
+        "referenceLabel": "Referenz",
+        "referencePlaceholder": "Referenzperson/Ansprechpartner",
+        "saveExperience": "Erfahrung speichern"
+      },
+      "placeholderPhoneExample": "+1 (555) 123-4567",
+      "placeholderEmailExample": "your.email@example.com"
+    },
+    "referenceForm": {
+      "firstName": "Vorname",
+      "lastName": "Nachname",
+      "email": "E-Mail",
+      "phone": "Telefon",
+      "gender": "Geschlecht",
+      "password": "Passwort",
+      "confirmPassword": "Bestätigen Sie Ihr Passwort",
+      "placeholderFirstName": "Vornamen eingeben",
+      "placeholderLastName": "Nachname eingeben",
+      "placeholderEmail": "E-Mail eingeben",
+      "placeholderPhone": "Telefon eingeben",
+      "placeholderPassword": "Passwort eingeben",
+      "placeholderConfirmPassword": "Bestätigen Sie das Passwort",
+      "passwordsDoNotMatch": "Passwörter stimmen nicht überein",
+      "accountCreatedSuccess": "Ihr Konto wurde erfolgreich erstellt.",
+      "verifyEmailTo": "Bitte verifizieren Sie Ihre E-Mail an",
+      "loginToDashboard": "Anmeldung auf dem Dashboard",
+      "submitted": "Eingereicht",
+      "submit": "Einreichen"
+    },
+    "agencyMentorForm": {
+      "requestSubmittedSuccess": "Ihre Anfrage wurde erfolgreich übermittelt, wir werden sie prüfen und uns bei Ihnen melden."
+    },
+    "residenceHero": {
+      "nameRequired": "Name ist erforderlich",
+      "emailRequired": "E-Mail ist erforderlich",
+      "phoneRequired": "Telefon ist erforderlich"
+    },
+    "testimonials": {
+      "previousAria": "Vorherige",
+      "nextAria": "Weiter",
+      "leftArrow": "Pfeil nach links",
+      "rightArrow": "Rechtspfeil"
+    },
+    "blog": {
+      "previousAria": "Vorheriger Blog",
+      "nextAria": "Nächster Blog",
+      "curatingTitle": "Erstaunliche Inhalte kuratieren",
+      "loadingInsights": "Laden Sie unsere neuesten pädagogischen Erkenntnisse...",
+      "unableToLoadContent": "Inhalt kann nicht geladen werden",
+      "tryAgain": "Erneut versuchen",
+      "comingSoon": "Demnächst verfügbar",
+      "comingSoonDescription": "Erstaunliche Blog-Inhalte sind auf dem Weg! Schauen Sie bald wieder vorbei, um inspirierende Bildungseinblicke zu erhalten.",
+      "premiumBadge": "✨ Premium-Bildungsinhalte",
+      "titleEducational": "Bildung",
+      "titleInsights": "Einblicke",
+      "discoverTransformative": "Entdecken Sie transformative",
+      "expertCareerGuidance": "fachkundige Berufsberatung",
+      "cuttingEdgeResources": "hochmoderne Bildungsressourcen",
+      "thatAccelerate": "die Ihre akademische Reise beschleunigen werden",
+      "latestUpdates": "Letzte Updates",
+      "expertInsights": "Experten-Einblicke",
+      "careerGuidance": "Berufsberatung",
+      "readFullArticle": "Vollständigen Artikel lesen",
+      "featured": "Ausgewählt",
+      "exploreAllArticles": "Alle Artikel erkunden",
+      "goToBlog": "Gehe zu Blog {{Nummer}}",
+      "autoPlaying": "Automatisches Abspielen",
+      "paused": "Pausiert"
+    },
+    "templates": {
+      "resumeTemplates": "Lebenslauf-Vorlagen",
+      "newResume": "+ Neuer Lebenslauf",
+      "searchTemplates": "Vorlagen suchen...",
+      "favorites": "Favoriten",
+      "recent": "Neueste",
+      "categories": "Kategorien",
+      "noTemplatesFound": "Keine Vorlagen gefunden",
+      "tryAdjustingSearch": "Versuchen Sie, Ihre Suche oder Filter anzupassen",
+      "addToFavorites": "Zu Favoriten hinzufügen",
+      "removeFromFavorites": "Aus Favoriten entfernen",
+      "editAria": "bearbeiten",
+      "deleteAria": "Löschen",
+      "shareAria": "Teilen Sie",
+      "comingSoon": "Demnächst verfügbar",
+      "selectATemplate": "Wählen Sie eine Vorlage",
+      "downloadPdf": "PDF herunterladen",
+      "editResume": "Lebenslauf bearbeiten",
+      "selectTemplateToPreview": "Wählen Sie eine Vorlage auf der linken Seite, um eine Vorschau Ihres Lebenslaufs anzuzeigen.",
+      "all": "Alle"
+    },
+    "visaPage": {
+      "visaStatus": "Visumstatus",
+      "processingTime": "Bearbeitungszeit",
+      "validity": "Gültigkeit",
+      "visaFees": "Visagebühren",
+      "selectCountry": "Land auswählen",
+      "selectDestination": "Ziel wählen",
+      "liveChat": "Live-Chat",
+      "whatsApp": "WhatsApp",
+      "clickToCall": "Zum Anrufen klicken",
+      "callUsFree": "Rufen Sie uns KOSTENLOS an",
+      "visa": "Visum",
+      "businessVisa": "Geschäftsvisum",
+      "studentVisa": "Studentenvisum",
+      "workVisa": "Arbeitsvisum",
+      "transitVisa": "Transitvisum",
+      "visaRequirementsFor": "{{Destination}} Visabestimmungen für {{Staatsangehörige}}",
+      "completeGuide": "Vollständiger Leitfaden zu Visabestimmungen, Dokumenten und Antragsverfahren",
+      "visaRequired": "Visum erforderlich",
+      "visaNotRequired": "Visum nicht erforderlich",
+      "tourismBusiness": "Tourismus & Wirtschaft",
+      "workImmigration": "Arbeit & Einwanderung",
+      "availableVisaTypes": "Verfügbare Visa-Typen",
+      "additionalRequirements": "Zusätzliche Anforderungen",
+      "biometricsRequired": "Biometrische Daten erforderlich",
+      "biometricsNotRequired": "Biometrische Daten nicht erforderlich",
+      "interviewRequired": "Interview erforderlich",
+      "interviewNotRequired": "Interview nicht erforderlich",
+      "fillOutApplication": "Füllen Sie das {{Ziel}} E-Visum für Touristen online beantragen",
+      "getStarted": "Los geht's",
+      "provideDigitalCopies": "Legen Sie digitale Kopien der folgenden Dokumente vor:",
+      "requiredDocumentsForEntry": "Erforderliche Dokumente für die Einreise:",
+      "applyForVisa": "Visum für {{Destination}} beantragen Visum Online",
+      "passportControl": "Kontrolle der Pässe",
+      "travelVisaRequirements": "Reisevisum-Anforderungen",
+      "journeyBegins": "Manchmal beginnt eine Reise von tausend Meilen mit einem Visum.",
+      "checkDestination": "Prüfen Sie Ihr Reiseziel und beantragen Sie online ein beliebiges Visum für die ganze Welt.",
+      "forCitizensOf": "für Bürger von",
+      "travelingTo": "bereisend",
+      "checkRequirements": "Anforderungen prüfen",
+      "weHelpYou": "Wir helfen Ihnen, die Anforderungen zu verstehen, die richtigen Unterlagen zusammenzustellen und sich auf das Vorstellungsgespräch vorzubereiten.",
+      "yourTravelDestination": "Ihr Reiseziel",
+      "visaType": "Art des Visums",
+      "touristVisaConvenient": "Touristenvisum (bequem)",
+      "yourCitizenship": "Ihre Staatsbürgerschaft",
+      "livingIn": "wohnhaft in",
+      "applyNow": "Jetzt bewerben",
+      "backToSearch": "Zurück zur Suche"
+    },
+    "registerCompany": {
+      "title": "Als Unternehmen registrieren",
+      "companyName": "Name des Unternehmens",
+      "companyEmail": "Unternehmen E-Mail",
+      "phoneNumber": "Rufnummer",
+      "websiteUrl": "Website-URL",
+      "industrySector": "Industrie Sektor",
+      "companySize": "Größe des Unternehmens",
+      "companyAddress": "Adresse des Unternehmens",
+      "country": "Land",
+      "city": "Stadt",
+      "fullAddress": "Vollständige Adresse",
+      "hrContactPerson": "HR / Ansprechpartner",
+      "fullName": "Vollständiger Name",
+      "position": "Position",
+      "emailAddress": "E-Mail Adresse",
+      "recruitmentPreferences": "Präferenzen bei der Einstellung",
+      "jobCategoriesHiring": "Job-Kategorien für die Einstellung von",
+      "preferredNationalities": "Bevorzugte Nationalitäten der Bewerber (fakultativ)",
+      "jobTypesOffered": "Angebotene Jobtypen (Wählen Sie alle zutreffenden aus)",
+      "documentsUpload": "Dokumente hochladen",
+      "companyRegistrationDocument": "Registrierungsdokument für Unternehmen",
+      "optionalRecommended": "(fakultativ, aber empfohlen)",
+      "licenseIfAny": "Lizenz (falls vorhanden)",
+      "clickToUpload": "Zum Hochladen klicken oder ziehen und ablegen",
+      "pdfDocMax": "PDF, DOC, DOCX (maximal 5MB)",
+      "accountInformation": "Konto-Informationen",
+      "username": "Benutzername",
+      "password": "Passwort",
+      "confirmPassword": "Bestätigen Sie Ihr Passwort",
+      "placeholderCompanyName": "Firmenname eingeben",
+      "selectIndustry": "Branche wählen",
+      "selectCompanySize": "Unternehmensgröße auswählen",
+      "employees1_10": "1-10 Mitarbeiter",
+      "employees11_50": "11-50 Mitarbeiter",
+      "employees51_200": "51-200 Beschäftigte",
+      "employees201Plus": "201+ Mitarbeiter",
+      "placeholderCountry": "Land eingeben",
+      "placeholderCity": "Stadt eingeben",
+      "placeholderAddress": "Vollständige Adresse eingeben",
+      "placeholderFullName": "Vollständigen Namen eingeben",
+      "placeholderPosition": "z.B. HR Manager",
+      "placeholderJobCategories": "z. B. Softwareentwicklung, Marketing, Vertrieb, Kundendienst",
+      "placeholderNationalities": "z. B. Beliebig, USA, Kanada, Europäische Union",
+      "placeholderUsername": "Wählen Sie einen Benutzernamen",
+      "placeholderPassword": "Passwort eingeben",
+      "placeholderConfirmPassword": "Bestätigen Sie das Passwort",
+      "submitButton": "Unternehmen registrieren",
+      "fullTime": "Vollzeit",
+      "partTime": "Teilzeit",
+      "contract": "Vertrag",
+      "remote": "Fernbedienung",
+      "internship": "Praktikum",
+      "industryTechnology": "Technologie",
+      "industryHealthcare": "Gesundheitswesen",
+      "industryFinance": "Finanzen",
+      "industryEducation": "Bildung",
+      "industryManufacturing": "Herstellung",
+      "industryRetail": "Einzelhandel",
+      "industryConstruction": "Bauwesen",
+      "industryTransportation": "Transport",
+      "industryEnergy": "Energie",
+      "industryOther": "Andere",
+      "placeholderEmail": "company@example.com",
+      "placeholderPhone": "+1 (555) 123-4567",
+      "placeholderWebsite": "https://www.company.com",
+      "placeholderHrEmail": "hr@company.com"
+    },
+    "registerCandidate": {
+      "title": "Ihr Konto erstellen",
+      "subtitle": "Treten Sie unserer Plattform bei und entdecken Sie Ihre nächste Karrierechance",
+      "personalInformation": "Persönliche Informationen",
+      "fullName": "Vollständiger Name",
+      "emailAddress": "E-Mail Adresse",
+      "phoneNumber": "Rufnummer",
+      "optional": "(fakultativ)",
+      "preferredCountry": "Bevorzugtes Land",
+      "jobInformation": "Job-Informationen",
+      "desiredJobTitle": "Gewünschte Berufsbezeichnung",
+      "generateProfileSummary": "Profilzusammenfassung generieren",
+      "generating": "Erzeugen...",
+      "profileSummary": "Profil Zusammenfassung",
+      "accountSecurity": "Konto Sicherheit",
+      "password": "Passwort",
+      "confirmPassword": "Bestätigen Sie Ihr Passwort",
+      "resumeUpload": "Lebenslauf Upload",
+      "optionalInformation": "Fakultative Informationen",
+      "highestQualification": "Höchste Qualifizierung",
+      "yearsOfExperience": "Jahre der Erfahrung",
+      "agreeTerms": "Ich akzeptiere die",
+      "termsAndConditions": "Bedingungen und Konditionen",
+      "needVisaHelp": "Ich möchte Hilfe bei Visum/Arbeits-/Aufenthaltsgenehmigung",
+      "submitButton": "Konto erstellen",
+      "alreadyHaveAccount": "Sie haben bereits ein Konto?",
+      "signInHere": "Hier anmelden",
+      "placeholderFullName": "Geben Sie Ihren vollständigen Namen ein",
+      "selectCountry": "Wählen Sie ein Land",
+      "placeholderJobTitle": "z.B., Software-Ingenieur",
+      "placeholderProfileSummary": "Eine kurze Zusammenfassung Ihres beruflichen Werdegangs und Ihrer Ziele...",
+      "placeholderPassword": "Erstellen Sie ein sicheres Passwort",
+      "placeholderConfirmPassword": "Bestätigen Sie Ihr Passwort",
+      "resumeUploadedSuccess": "erfolgreich hochgeladen!",
+      "dragDropResume": "Ziehen Sie Ihren Lebenslauf hierher, oder klicken Sie, um zu blättern",
+      "pdfDocOnly": "Nur PDF-, DOC- oder DOCX-Dateien (maximal 5 MB)",
+      "selectQualification": "Qualifikation auswählen",
+      "highSchool": "Oberschule",
+      "bachelors": "Bachelor-Abschluss",
+      "masters": "Master-Abschluss",
+      "phd": "PhD",
+      "other": "Andere",
+      "selectExperience": "Erfahrung auswählen",
+      "experience0_1": "0-1 Jahre",
+      "experience2_5": "2-5 Jahre",
+      "experience6_10": "6-10 Jahre",
+      "experience11_15": "11-15 Jahre",
+      "experience15Plus": "15+ Jahre",
+      "fileTypeError": "Dateityp-Fehler",
+      "fileTypeErrorMessage": "Bitte laden Sie eine PDF- oder DOC-Datei hoch.",
+      "generationFailed": "Generation gescheitert",
+      "generationFailedMessage": "Es konnte keine Zusammenfassung erstellt werden. Bitte versuchen Sie es erneut.",
+      "apiError": "API-Fehler",
+      "apiErrorMessage": "Die Verbindung zur Gemini-API konnte nicht hergestellt werden. Bitte überprüfen Sie Ihr Netzwerk.",
+      "placeholderEmail": "your.email@example.com",
+      "placeholderPhone": "+1 (555) 123-4567",
+      "ok": "OK"
+    },
+    "profile": {
+      "loadingProfile": "Profil laden...",
+      "backToCandidates": "Zurück zu den Kandidatinnen und Kandidaten",
+      "location": "Standort",
+      "experience": "Erleben Sie",
+      "age": "Alter",
+      "contact": "Kontakt",
+      "resume": "Lebenslauf",
+      "readyToConnect": "Bereit für eine Verbindung?",
+      "startConversation": "Konversation beginnen",
+      "recentlyJoined": "Kürzlich beigetreten",
+      "greatVisibility": "Gute Sicht!",
+      "overview": "Übersicht",
+      "experienceTab": "Erleben Sie",
+      "education": "Bildung",
+      "portfolio": "Portfolio",
+      "technicalSkills": "Technische Fertigkeiten",
+      "areasOfExpertise": "Bereiche der Expertise",
+      "aboutName": "Über {{Name}}",
+      "profileLinkCopied": "Profil-Link in die Zwischenablage kopiert!",
+      "getInTouch": "Setzen Sie sich mit {{Name}} in Verbindung, um Möglichkeiten zu besprechen und mehr über ihre Erfahrungen zu erfahren.",
+      "quickStats": "Schnellstatistiken",
+      "skills": "Fertigkeiten",
+      "certifications": "Zertifizierungen",
+      "profileActivity": "Profil Aktivität",
+      "profileCreated": "Profil erstellt",
+      "profileViews": "{{count}} Profilansichten",
+      "skillsUpdated": "Aktualisierte Fertigkeiten",
+      "portfolioOptimized": "Portfolio optimiert",
+      "topSkills": "Top-Fähigkeiten",
+      "recruiterTips": "Tipps für Recruiter"
+    },
+    "humanResource": {
+      "understand": "Verstehen Sie",
+      "understandDescription": "Wir beginnen damit, die einzigartige Kultur, die Herausforderungen und die Ziele Ihres Unternehmens zu verstehen, um maßgeschneiderte HR-Lösungen zu entwickeln.",
+      "understandBullet1": "Umfassende organisatorische Bewertung",
+      "understandBullet2": "Befragung von Interessenvertretern",
+      "understandBullet3": "Datengestützte Analyse",
+      "implement": "Umsetzung",
+      "implementDescription": "Unser Expertenteam setzt maßgeschneiderte HR-Strategien und -Programme um, die auf Ihre spezifischen Bedürfnisse zugeschnitten sind.",
+      "implementBullet1": "Maßgeschneiderte HR-Lösungen",
+      "implementBullet2": "Unterstützung beim Änderungsmanagement",
+      "implementBullet3": "Nahtlose Integration in bestehende Systeme",
+      "optimize": "Optimieren Sie",
+      "optimizeDescription": "Wir messen, verfeinern und optimieren Ihre HR-Prozesse kontinuierlich, um eine kontinuierliche Verbesserung und einen hohen ROI zu erzielen.",
+      "optimizeBullet1": "Regelmäßige Leistungsüberprüfungen",
+      "optimizeBullet2": "Kontinuierliche Rückkopplungsschleife",
+      "optimizeBullet3": "Strategische Anpassungen auf der Grundlage der Ergebnisse",
+      "industriesWeServe": "Industrien, die wir bedienen",
+      "industriesWeServeDescription": "Unsere HR-Expertise erstreckt sich über mehrere Branchen, die jeweils ihre eigenen Herausforderungen im Personalbereich haben."
+    },
+    "submitResume": {
+      "step1Title": "Lebenslauf hochladen",
+      "step1Description": "Erzählen Sie Ihre Karrieregeschichte",
+      "step2Title": "AI-Analyse",
+      "step2Description": "Wir analysieren Ihre Fähigkeiten",
+      "step3Title": "Streichhölzer holen",
+      "step3Description": "Perfekte Jobs entdecken",
+      "metricActiveJobs": "Aktive Jobs",
+      "metricSuccessStories": "Erfolgsgeschichten",
+      "metricTopCompanies": "Top-Unternehmen",
+      "metricMatchAccuracy": "Spiel-Genauigkeit",
+      "feature1Title": "Intelligentes AI-Matching",
+      "feature1Description": "Fortgeschrittene Algorithmen, die Ihr einzigartiges Karriereprofil verstehen und Sie mit Angeboten zusammenbringen, die perfekt auf Ihre Ziele abgestimmt sind.",
+      "feature2Title": "Intelligente Auftragssuche",
+      "feature2Description": "Entdecken Sie verborgene Chancen in unserem exklusiven Netzwerk von erstklassigen Arbeitgebern und Start-ups, die nach außergewöhnlichen Talenten suchen.",
+      "feature3Title": "Echtzeit-Benachrichtigungen",
+      "feature3Description": "Lassen Sie sich sofort benachrichtigen, wenn neue Stellen, die Ihren Kriterien entsprechen, frei werden. Verpassen Sie nie wieder Ihre Traumstelle.",
+      "feature4Title": "Schutz der Privatsphäre",
+      "feature4Description": "Ihre persönlichen Daten sind verschlüsselt und sicher. Wir respektieren Ihre Privatsphäre und helfen Ihnen, Ihre Karriere voranzutreiben."
+    },
+    "partnerRegister": {
+      "heroTitle1": "Starten Sie Ihre Karriere",
+      "heroTitle2": "Reise in die Türkei",
+      "heroSubtitle": "Schließen Sie sich Hunderten von Fachleuten an, die ihren Traumjob in der Türkei gefunden haben. Wir kümmern uns um alles, von der Visabearbeitung bis zur Stellenvermittlung - völlig kostenlos für die Bewerber.",
+      "registerNow": "Jetzt anmelden - kostenlos!",
+      "jobsPlaced": "Vermittelte Aufträge",
+      "visaSuccessRate": "Erfolgsquote für Visa",
+      "countriesServed": "Bediente Länder",
+      "freeToJoin": "Freier Beitritt",
+      "forCandidates": "Für Bewerberinnen und Bewerber",
+      "whyWorkInTurkey": "Warum in der Türkei arbeiten?",
+      "whyWorkInTurkeyDescription": "Entdecken Sie die unglaublichen Möglichkeiten und den Lebensstil, den die Türkei internationalen Fachkräften bietet.",
+      "howItWorks": "Wie es funktioniert",
+      "howItWorksDescription": "Unser einfaches 4-stufiges Verfahren führt Sie von der Bewerbung bis zur Arbeit in der Türkei.",
+      "whatWeProvide": "Was wir bieten",
+      "whatWeProvideDescription": "Alles, was Sie für einen erfolgreichen beruflichen Wechsel in die Türkei brauchen.",
+      "benefit1Title": "Kostenlose Visabearbeitung",
+      "benefit1Description": "Umfassende Unterstützung bei Visum und Arbeitserlaubnis, ohne dass Ihnen Kosten entstehen",
+      "benefit2Title": "Unterstützung der Unterkunft",
+      "benefit2Description": "Hilfe bei der Suche nach einer geeigneten Wohnung in der Nähe Ihres Arbeitsplatzes",
+      "benefit3Title": "Wettbewerbsfähige Gehälter",
+      "benefit3Description": "Faire Löhne nach türkischen Arbeitsstandards",
+      "benefit4Title": "Rechtsschutz",
+      "benefit4Description": "Umfassende rechtliche Unterstützung und Schutz der Arbeitnehmerrechte",
+      "processStep1Title": "Vollständiges Profil",
+      "processStep1Description": "Reichen Sie Ihre ausführliche Bewerbung und Ihre Unterlagen ein",
+      "processStep2Title": "Job-Matching",
+      "processStep2Description": "Wir bringen Sie mit geeigneten Arbeitgebern in der Türkei zusammen",
+      "processStep3Title": "Dokumentation",
+      "processStep3Description": "Wir bereiten alle Visumanträge vor und reichen sie ein",
+      "processStep4Title": "Reisen in die Türkei",
+      "processStep4Description": "Beginnen Sie Ihre neue berufliche Laufbahn in der Türkei",
+      "fact1Title": "Wachsende Wirtschaft",
+      "fact1Fact": "5,6% BIP-Wachstum",
+      "fact1Description": "Starkes Wirtschaftswachstum schafft neue Beschäftigungsmöglichkeiten",
+      "fact2Title": "Vielfältige Belegschaft",
+      "fact2Fact": "500K+ Ausländer",
+      "fact2Description": "Große internationale Gemeinschaft, die in der Türkei arbeitet",
+      "fact3Title": "Qualität des Lebens",
+      "fact3Fact": "Reiche Kultur",
+      "fact3Description": "Schönes Land mit guter Work-Life-Balance",
+      "fact4Title": "Strategischer Standort",
+      "fact4Fact": "Europa und Asien",
+      "fact4Description": "Perfekte Lage, die zwei Kontinente verbindet",
+      "createYourProfile": "Erstellen Sie Ihr Profil",
+      "createYourProfileDescription": "Füllen Sie Ihre Registrierung aus, um mit den perfekten Stellenangeboten in der Türkei zusammengebracht zu werden. Es ist völlig kostenlos!",
+      "personalInformation": "Persönliche Informationen",
+      "firstName": "Vorname *",
+      "lastName": "Nachname *",
+      "dateOfBirth": "Geburtsdatum *",
+      "gender": "Geschlecht",
+      "nationality": "Staatsangehörigkeit *",
+      "placeholderFirstName": "Geben Sie Ihren Vornamen ein",
+      "placeholderLastName": "Geben Sie Ihren Nachnamen ein",
+      "placeholderNationality": "z. B. pakistanisch, bangladeschisch",
+      "selectGender": "Geschlecht auswählen",
+      "male": "Männlich",
+      "female": "Weiblich",
+      "other": "Andere",
+      "registrationSuccess": "Registrierung erfolgreich abgeschlossen! Wir werden Ihr Profil prüfen und Sie innerhalb von 3-5 Arbeitstagen über mögliche Stellenangebote informieren.",
+      "placeholderCurrentCountry": "Wo Sie jetzt leben",
+      "placeholderCurrentCity": "Ihre aktuelle Stadt",
+      "placeholderPhone": "+92 xxx xxx xxxx",
+      "selectStatus": "Status auswählen",
+      "single": "Einzeln",
+      "married": "Verheiratet",
+      "divorced": "Geschieden",
+      "widowed": "Verwitwet",
+      "selectNumber": "Nummer auswählen",
+      "children4Plus": "4 oder mehr",
+      "placeholderJobTitle": "z. B. Maschinenbediener, Softwareentwickler",
+      "industryExperience": "Erfahrung in der Industrie",
+      "industryExperienceRequired": "Industrieerfahrung ist erforderlich",
+      "selectIndustry": "Branche wählen",
+      "industryManufacturing": "Herstellung",
+      "industryConstruction": "Bauwesen",
+      "industryTechnology": "Technik/IT",
+      "industryHealthcare": "Gesundheitswesen",
+      "industryHospitality": "Gastfreundschaft",
+      "industryEducation": "Bildung",
+      "industryAgriculture": "Landwirtschaft",
+      "industryLogistics": "Logistik/Transport",
+      "industryRetail": "Einzelhandel/Verkauf",
+      "industrySecurity": "Sicherheit",
+      "industryOther": "Andere",
+      "selectExperience": "Erfahrung auswählen",
+      "experience0_1": "0-1 Jahre",
+      "experience1_3": "1-3 Jahre",
+      "experience3_5": "3-5 Jahre",
+      "experience5_10": "5-10 Jahre",
+      "experience10Plus": "10+ Jahre",
+      "placeholderSalary": "z. B. $500, ₹50.000, €1000",
+      "expectedSalary": "Erwartetes Gehalt",
+      "selectSalaryRange": "Gehaltsspanne wählen",
+      "salary17000_20000": "17.000 - 20.000 TL",
+      "salary20000_25000": "20.000 - 25.000 TL",
+      "salary25000_30000": "25.000 - 30.000 TL",
+      "salary30000_40000": "30.000 - 40.000 TL",
+      "salary40000Plus": "40.000+ TL",
+      "availabilityDate": "Verfügbarkeit",
+      "selectAvailability": "Verfügbarkeit auswählen",
+      "availabilityImmediately": "Unmittelbar",
+      "availability1Month": "Innerhalb von 1 Monat",
+      "availability2Months": "Innerhalb von 2 Monaten",
+      "availability3Months": "Innerhalb von 3 Monaten",
+      "availabilityFlexible": "Flexibel",
+      "educationLevel": "Bildungsstand",
+      "educationLevelRequired": "Bildungsstand ist erforderlich",
+      "selectEducationLevel": "Bildungsniveau auswählen",
+      "educationPrimary": "Primarschule",
+      "educationSecondary": "Sekundarschule",
+      "educationHighSchool": "Oberschule",
+      "educationDiploma": "Diplom",
+      "educationBachelors": "Bachelor-Abschluss",
+      "educationMasters": "Master-Abschluss",
+      "educationPhD": "PhD",
+      "educationOther": "Andere",
+      "skills": "Fertigkeiten",
+      "placeholderSkills": "z. B. Schweißen, Autofahren, Kochen",
+      "turkishLevel": "Türkische Ebene",
+      "englishLevel": "Englisch Niveau",
+      "selectLevel": "Stufe wählen",
+      "levelBasic": "Grundlegend",
+      "levelIntermediate": "Zwischenbericht",
+      "levelAdvanced": "Fortgeschrittene",
+      "levelFluent": "Fließend",
+      "passportNumber": "Reisepassnummer",
+      "placeholderPassport": "Reisepassnummer eingeben",
+      "motivation": "Motivationsschreiben",
+      "placeholderMotivation": "Warum wollen Sie in der Türkei arbeiten?",
+      "hearAboutUs": "Wie haben Sie von uns erfahren?",
+      "selectHearAboutUs": "Option auswählen",
+      "hearAboutGoogle": "Google",
+      "hearAboutFacebook": "Facebook",
+      "hearAboutFriend": "Freund/Empfehlung",
+      "hearAboutOther": "Andere",
+      "fieldOfStudy": "Studienrichtung",
+      "placeholderFieldOfStudy": "z. B. Maschinenbau, Informatik",
+      "universityInstitution": "Universität/Einrichtung",
+      "placeholderUniversity": "Name Ihrer Schule/Universität",
+      "graduationYear": "Jahr der Graduierung",
+      "additionalCertifications": "Zusätzliche Zertifizierungen",
+      "placeholderAdditionalCertifications": "Führen Sie alle beruflichen Zertifizierungen, Kurse oder Schulungen auf, die Sie absolviert haben",
+      "skillsAndLanguages": "Fertigkeiten & Sprachen",
+      "professionalSkills": "Berufliche Fertigkeiten",
+      "placeholderProfessionalSkills": "Führen Sie Ihre wichtigsten Fähigkeiten, Softwarekenntnisse, Erfahrungen mit Maschinen usw. auf.",
+      "languagesYouSpeak": "Sprachen, die Sie sprechen",
+      "turkishLanguageLevel": "Türkisch Sprachlevel",
+      "englishLanguageLevel": "Englisch Sprachlevel",
+      "noTurkish": "Kein Türkisch",
+      "noEnglish": "Kein Englisch",
+      "nativeFluent": "Muttersprache/Fließend",
+      "documentsAndLegal": "Dokumente und rechtliche Informationen",
+      "placeholderPassportNumber": "Ihre Reisepassnummer",
+      "passportExpiryDate": "Gültigkeitsdatum des Reisepasses",
+      "criminalRecordStatus": "Strafrechtlicher Status",
+      "healthStatus": "Gesundheitszustand",
+      "cleanRecord": "Saubere Bilanz",
+      "minorOffenses": "Geringfügige Vergehen",
+      "preferNotToSay": "Möchte ich nicht sagen",
+      "excellent": "Ausgezeichnet",
+      "good": "Gut",
+      "fair": "Messe",
+      "haveMedicalConditions": "Medizinische Bedingungen haben",
+      "hasWorkedAbroad": "Ich habe bereits im Ausland gearbeitet",
+      "relocationPreferences": "Umzugspräferenzen",
+      "relocationType": "Umzugsart",
+      "accommodationPreference": "Unterkunft Präferenz",
+      "selectPreference": "Präferenz auswählen",
+      "temporary": "Befristet (1-2 Jahre)",
+      "longTerm": "Langfristig (3-5 Jahre)",
+      "permanentRelocation": "Dauerhafte Verlagerung",
+      "flexible": "Flexibel",
+      "companyProvided": "Vom Unternehmen bereitgestellt",
+      "ownArrangement": "Eigenes Arrangement",
+      "sharedAccommodation": "Gemeinsame Unterkunft",
+      "familyAccommodation": "Unterkunft für Familien",
+      "placeholderEmail": "your.email@example.com",
+      "children0": "0",
+      "children1": "1",
+      "children2": "2",
+      "children3": "3",
+      "placeholderGraduationYear": "2020"
+    },
+    "general": {
+      "jobsAdmireLogo": "JobsAdmire Logo",
+      "selectLanguageAria": "Sprache auswählen",
+      "partnersSectionDescription": "Wir sind unseren Partnern zutiefst dankbar für das Vertrauen, das sie uns entgegenbringen. Ihr Vertrauen und ihre unermüdliche Unterstützung sind die Grundlage für unseren gemeinsamen Erfolg.",
+      "bannerImageAlt": "Banner-Bild",
+      "profileAlt": "Profil",
+      "bannerAlt": "Banner-Bild",
+      "noDataAvailable": "Keine Daten verfügbar",
+      "whyChooseUsAlt": "Warum uns wählen",
+      "getStartedToday": "Beginnen Sie heute",
+      "phone": "Telefon",
+      "email": "E-Mail",
+      "address": "Adresse",
+      "contact": "Kontakt",
+      "aboutMe": "Über mich",
+      "skills": "Fertigkeiten",
+      "achievements": "Errungenschaften",
+      "experience": "Erleben Sie",
+      "education": "Bildung",
+      "projects": "Projekte",
+      "references": "Referenzen",
+      "contactMe": "Kontakt",
+      "jobExperience": "Berufserfahrung",
+      "proSkills": "Profi-Fähigkeiten",
+      "resumeBuilder": "Lebenslauf Builder",
+      "chooseTemplate": "Wählen Sie eine Vorlage",
+      "updateResume": "Lebenslauf aktualisieren!",
+      "generatePdf": "In PDF generieren",
+      "generatingPdf": "Erzeugen...",
+      "ukFlagAlt": "UK-Flagge",
+      "pawAndHeartAria": "Pfote und Herz",
+      "pawAndAustraliaAria": "pfote und australien",
+      "cropPreviewAlt": "Erntevorschau",
+      "previewAlt": "Vorschau",
+      "removeReference": "Referenz entfernen",
+      "selectSortOrder": "Sortierreihenfolge wählen"
+    },
+    "search": {
+      "degree": "Grad",
+      "allDegrees": "Alle Abschlüsse",
+      "noDegreeFound": "Kein Abschluss gefunden",
+      "university": "Universität",
+      "allUniversities": "Alle Universitäten",
+      "loadingUniversities": "Universitäten laden...",
+      "noUniversityFound": "Keine Universität gefunden",
+      "program": "Programm",
+      "allPrograms": "Alle Programme",
+      "loadingPrograms": "Programme laden...",
+      "pleaseSelectUniversity": "Bitte wählen Sie eine Universität",
+      "noProgramFound": "Kein Programm gefunden",
+      "country": "Land",
+      "allCountries": "Alle Länder",
+      "city": "Stadt",
+      "allCities": "Alle Städte",
+      "searchIn": "Suche in {{Einheitsname}}"
+    },
+    "filters": {
+      "openFilter": "Filter öffnen",
+      "closeFilter": "Filter schließen",
+      "sortBy": "Sortieren nach:",
+      "noFilters": "Keine Filter",
+      "clear": "Klar"
+    },
+    "performance": {
+      "stats": {
+        "jobFulfillment": "Auftragserfüllung",
+        "sinceLastQuarter": "Seit dem letzten Quartal",
+        "branches": "Zweigstellen",
+        "acrossMajorCities": "In allen Großstädten",
+        "yearsExperience": "Jahre Erfahrung",
+        "industryExpertise": "Fachwissen über die Industrie",
+        "happyClients": "Zufriedene Kunden",
+        "withSatisfaction": "Mit 98% Zufriedenheit"
+      },
+      "features": {
+        "targetedRecruitment": "Gezielte Rekrutierung",
+        "targetedRecruitmentDesc": "Präzise Abstimmung der Bewerber auf die Stellenanforderungen.",
+        "performanceTracking": "Leistungsverfolgung",
+        "performanceTrackingDesc": "Erweiterte Metriken zur Messung des Einstellungserfolgs.",
+        "qualityAssurance": "Qualitätssicherung",
+        "qualityAssuranceDesc": "Gründliche Prüfung aller Bewerber vor der Präsentation."
+      },
+      "growth": {
+        "trajectory": "WACHSTUMSKURS",
+        "title": "Beständiges Wachstum von Jahr zu Jahr",
+        "description": "Unsere Kennzahlen zeigen eine kontinuierliche Leistungsverbesserung bei allen Schlüsselindikatoren. Wir bauen unsere Reichweite weiter aus und verbessern unsere Dienstleistungen."
+      },
+      "metrics": {
+        "title": "Leistungsmetriken",
+        "subtitle": "Detaillierte analytische Visualisierung",
+        "jobSuccessRate": "Erfolgsquote im Job",
+        "clientRetention": "Kundenbindung",
+        "candidateSatisfaction": "Zufriedenheit der Bewerberinnen und Bewerber"
+      }
+    },
+    "jobs": {
+      "all": "Alle",
+      "marketing": "Marketing",
+      "development": "Entwicklung",
+      "fulltime": "Vollzeit",
+      "parttime": "Halbtags",
+      "contract": "Vertrag",
+      "freelance": "Freiberuflich",
+      "seo": "SEO"
+    },
+    "blogDetail": {
+      "loadingBlog": "Blog laden...",
+      "errorLoadingBlog": "Fehler beim Laden des Blogs",
+      "backToBlogs": "Zurück zu Blogs",
+      "blogNotFound": "Blog nicht gefunden",
+      "blogNotFoundMessage": "Der von Ihnen gesuchte Blog konnte nicht gefunden werden.",
+      "save": "Speichern Sie",
+      "share": "Teilen Sie",
+      "linkCopied": "Link in die Zwischenablage kopiert!",
+      "introduction": "Einführung",
+      "conclusion": "Schlussfolgerung",
+      "thankYouMessage": "Vielen Dank, dass Sie diesen Artikel gelesen haben. Wir hoffen, Sie fanden ihn informativ und wertvoll.",
+      "writtenBy": "Geschrieben von:",
+      "publishedOn": "Veröffentlicht am",
+      "tableOfContents": "Inhaltsübersicht",
+      "content": "Inhalt",
+      "stayUpdated": "Bleiben Sie auf dem Laufenden",
+      "newsletterDescription": "Erhalten Sie die neuesten Stipendienangebote direkt in Ihren Posteingang",
+      "subscribe": "Abonnieren",
+      "relatedArticles": "Verwandte Artikel",
+      "moreArticlesAbout": "Weitere Artikel über",
+      "viewAllBlogPosts": "Alle Blogeinträge anzeigen",
+      "minRead": "min lesen"
+    }
+  }
+}

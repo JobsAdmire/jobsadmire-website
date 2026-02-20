@@ -1,0 +1,911 @@
+{
+  "heroSection": {
+    "badge": "Exklusive Fahrten",
+    "title": "Entdecken Sie Ihr nächstes Abenteuer",
+    "description": "Erleben Sie atemberaubende Reiseziele und schaffen Sie unvergessliche Erinnerungen mit unseren Premium-Reisepaketen, die auf Ihre Wünsche zugeschnitten sind.",
+    "currentlyViewing": {
+      "label": "Derzeitige Betrachtung"
+    },
+    "buttons": {
+      "explore": "Jetzt erforschen",
+      "viewAll": "Alle Reiseziele anzeigen"
+    },
+    "destinationCounter": "Zielort {aktuell}/{Gesamt}",
+    "destinations": [
+      {
+        "img": "/images/ihusn.png",
+        "name": "New York City, New York",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihuslos.png",
+        "name": "Los Angeles, Kalifornien",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihuch.png",
+        "name": "Chicago, Illinois",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihusen.png",
+        "name": "San Francisco, Kalifornien",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihumiami.png",
+        "name": "Miami, Florida",
+        "country": "USA"
+      }
+    ],
+    "accessibility": {
+      "exploreButton": "Jetzt Reiseziele erkunden",
+      "viewAllButton": "Alle verfügbaren Ziele anzeigen",
+      "destinationImage": "Ziel anzeigen: {Name}",
+      "featuredDestination": "Bild des ausgewählten Reiseziels",
+      "carouselControl": "Gehe zu Ziel {Nummer}"
+    },
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableOfContents": {
+    "title": "Inhaltsübersicht",
+    "subtitle": "Navigieren durch Abschnitte",
+    "currentlyReading": "Derzeit lesen",
+    "sectionsCount": "{Anzahl} zu erforschende Abschnitte",
+    "sections": [
+      {
+        "title": "🇺🇸 Lustige und faszinierende Fakten über die USA",
+        "id": 1
+      },
+      {
+        "title": "Visa-Optionen für den Umzug in die USA",
+        "id": 2
+      },
+      {
+        "title": "Voraussetzungen für den Umzug in die USA",
+        "id": 3
+      },
+      {
+        "title": "Als Ausländer einen Job in den USA finden",
+        "id": 4
+      },
+      {
+        "title": "Umzug in die USA aus der Türkei",
+        "id": 5
+      },
+      {
+        "title": "Umzug in die USA aus dem Vereinigten Königreich",
+        "id": 6
+      },
+      {
+        "title": "Wie viel kostet der Umzug in die USA?",
+        "id": 7
+      },
+      {
+        "title": "Umzug mit Haustieren in die USA",
+        "id": 8
+      }
+    ],
+    "quickNavigation": {
+      "title": "Schnelle Navigation",
+      "footer": "Durch {count} Abschnitte blättern"
+    },
+    "accessibility": {
+      "toggleMenu": "Navigationsmenü umschalten",
+      "sectionButton": "Navigieren Sie zum Abschnitt: {Titel}",
+      "quickNavigation": "Menü Schnellnavigation",
+      "quickNavSection": "Schnelles Navigieren zu: {Titel}"
+    }
+  },
+  "factsCard": {
+    "description": "Entdecken Sie die bemerkenswerten Merkmale und Errungenschaften der Vereinigten Staaten von Amerika. Die USA verfügen über eine unglaubliche geografische, wirtschaftliche, kulturelle und innovative Bedeutung auf der Weltbühne.",
+    "navigation": {
+      "title": "Fakten erforschen",
+      "previous": "Vorheriger Fakt",
+      "next": "Nächste Tatsache"
+    },
+    "allFacts": {
+      "title": "Alle Fakten über die USA"
+    },
+    "facts": [
+      {
+        "title": "Drittgrößtes Land",
+        "description": "Die USA sind sowohl in Bezug auf die Fläche als auch die Bevölkerung das drittgrößte Land nach Russland/Kanada (Fläche) und China/Indien (Bevölkerung).",
+        "iconKey": "Karte",
+        "emoji": "🗺️",
+        "id": 1
+      },
+      {
+        "title": "50 Staaten und 1 Bundesdistrikt",
+        "description": "Es besteht aus <strong>50 Bundesstaaten</strong> und Washington, D.C., das die Hauptstadt, aber kein Bundesstaat ist.",
+        "iconKey": "Flagge",
+        "emoji": "🏛️",
+        "id": 2
+      },
+      {
+        "title": "Die größte Volkswirtschaft der Welt",
+        "description": "Gegenwärtig sind die Vereinigten Staaten die <strong>größte Volkswirtschaft der Welt</strong>, angetrieben von Technologie, Finanzen, Gesundheitswesen und Unterhaltung.",
+        "iconKey": "Gebäude",
+        "emoji": "💰",
+        "id": 3
+      },
+      {
+        "title": "Kulturelle Vielfalt",
+        "description": "Es ist eines der kulturell vielfältigsten Länder, in dem über <strong>350 Sprachen</strong> gesprochen werden und Gemeinschaften aus fast allen Ländern der Erde leben.",
+        "iconKey": "Weltkugel",
+        "emoji": "🌎",
+        "id": 4
+      },
+      {
+        "title": "Innovationen haben hier ihren Ursprung",
+        "description": "Die USA sind die Heimat vieler Erfindungen - darunter das <strong>Internet, das Flugzeug, die Glühbirne und das iPhone</strong>.",
+        "iconKey": "Glühbirne",
+        "emoji": "💡",
+        "id": 5
+      }
+    ],
+    "accessibility": {
+      "factButton": "Tatsache auswählen: {Titel}",
+      "previousFact": "Zum vorherigen Fakt gehen",
+      "nextFact": "Weiter zum nächsten Fakt"
+    }
+  },
+  "movingCostsGuide": {
+    "title": "Wie viel kostet ein Umzug in die USA?",
+    "description": "Ein Umzug in die Vereinigten Staaten kann aufregend sein, bringt aber auch einige Kosten mit sich, die Sie einplanen sollten. Hier finden Sie eine detaillierte Aufstellung der Kosten, die Sie bei einem Umzug in die USA erwarten können.",
+    "costSections": [
+      {
+        "id": "Visum-Einwanderung",
+        "icon": "🛂",
+        "title": "Visum & Einwanderungsgebühren",
+        "amount": "$160-$5,000+",
+        "details": "Visaanträge, Green Card, fakultative Anwaltskosten",
+        "color": "bg-blau-500",
+        "subItems": [
+          {
+            "title": "Nicht-Einwanderungsvisum (H-1B, F-1)",
+            "amount": "$160-$205"
+          },
+          {
+            "title": "Green Card (Einwanderungsvisum)",
+            "amount": "$1,200-$1,760"
+          },
+          {
+            "title": "Anwaltshonorare (fakultativ)",
+            "amount": "$1,500-$5,000"
+          }
+        ]
+      },
+      {
+        "id": "Flug",
+        "icon": "✈️",
+        "title": "Flugtickets",
+        "amount": "$500-$1,200",
+        "details": "Hin- und Rückflug je nach Ort und Buchungszeit",
+        "color": "bg-blau-600"
+      },
+      {
+        "id": "Versand",
+        "icon": "📦",
+        "title": "Versand von Habseligkeiten",
+        "amount": "$500-$7,000",
+        "details": "Abhängig von Volumen und Versandart",
+        "color": "bg-blue-700",
+        "subItems": [
+          {
+            "title": "Kleinsendung (nur Kartons)",
+            "amount": "$500-$1,500"
+          },
+          {
+            "title": "Voller Container (20ft/40ft)",
+            "amount": "$3,000-$7,000"
+          }
+        ]
+      },
+      {
+        "id": "Unterkunft",
+        "icon": "🏠",
+        "title": "Erste Unterkunft",
+        "amount": "$1,000-$4,000",
+        "details": "Erste Monatsmiete + Kaution (variiert je nach Stadt)",
+        "color": "bg-blau-500",
+        "subItems": [
+          {
+            "title": "Vorübergehendes Hotel/Airbnb",
+            "amount": "$80-$200 pro Nacht"
+          }
+        ]
+      },
+      {
+        "id": "Versicherung",
+        "icon": "🏥",
+        "title": "Krankenkasse",
+        "amount": "$300-$700/Monat",
+        "details": "Für die meisten Visumtypen erforderlich",
+        "color": "bg-blau-600",
+        "subItems": [
+          {
+            "title": "Familienversicherung",
+            "amount": "Teurer"
+          }
+        ]
+      },
+      {
+        "id": "andere",
+        "icon": "📝",
+        "title": "Sonstige Ausgaben",
+        "amount": "$520-$1.080+/Monat",
+        "color": "bg-blau-500",
+        "subItems": [
+          {
+            "title": "SSN-Antrag",
+            "amount": "Kostenlos"
+          },
+          {
+            "title": "Führerschein",
+            "amount": "$20-$80"
+          },
+          {
+            "title": "Lebensmittel und Transport",
+            "amount": "$500-$1.000/Monat"
+          }
+        ]
+      }
+    ],
+    "totalBudget": {
+      "icon": "🔢",
+      "title": "Geschätztes Gesamtbudget",
+      "categories": [
+        {
+          "title": "Einzelperson",
+          "amount": "$5,000-$10,000",
+          "description": "Beinhaltet Visagebühren, Erstunterkunft, Transport und grundlegende Einrichtungskosten"
+        },
+        {
+          "title": "Vierköpfige Familie",
+          "amount": "$10,000-$25,000+",
+          "description": "Beinhaltet alle Kosten für die gesamte Familie, einschließlich Visum, Transport und Unterkunft"
+        }
+      ]
+    },
+    "moneySavingTips": {
+      "icon": "💰",
+      "title": "Tipps zum Geldsparen",
+      "tips": [
+        {
+          "title": "Sorgfältige Prüfung des Standorts",
+          "description": "Die Wohnkosten sind von Stadt zu Stadt sehr unterschiedlich. Ziehen Sie kleinere Städte oder Vorstädte in Betracht."
+        },
+        {
+          "title": "Flüge frühzeitig buchen",
+          "description": "Wenn Sie Flüge 2-3 Monate im Voraus buchen, können Sie Hunderte von Dollar sparen."
+        },
+        {
+          "title": "Selektiv versenden",
+          "description": "Überlegen Sie, was sich im Vergleich zum Neukauf in den USA für den Versand lohnt."
+        },
+        {
+          "title": "Versicherungstypen vergleichen",
+          "description": "Die Kosten für die Krankenversicherung können sehr unterschiedlich sein; investieren Sie Zeit, um den richtigen Tarif zu finden."
+        }
+      ]
+    },
+    "conclusion": "Die endgültigen Kosten hängen stark von der Art des Visums, dem Ort, von dem aus Sie umziehen, und dem Zielort in den USA ab. Mit der richtigen Planung und Budgetierung können Sie Ihren Umzug in die Vereinigten Staaten reibungslos und kostengünstig gestalten.",
+    "accessibility": {
+      "toggleSection": "Details für {title} umschalten Abschnitt"
+    }
+  },
+  "requirementsGuide": {
+    "tabs": {
+      "all": "Alle Anforderungen",
+      "essential": "Wesentliche Anforderungen",
+      "recommended": "Empfohlen",
+      "after-arrival": "Nach der Ankunft"
+    },
+    "categoryLabels": {
+      "essential": "Erforderlich",
+      "recommended": "Empfohlen",
+      "afterArrival": "Nach der Ankunft"
+    },
+    "requirements": [
+      {
+        "title": "Das richtige Visum oder die richtige Green Card beantragen",
+        "description": "Sie müssen ein genehmigtes Visum oder eine Green Card (Daueraufenthaltsgenehmigung) haben, um in den USA zu leben.",
+        "details": [
+          "Familienbasiertes Einwanderungsvisum",
+          "Arbeitsvisum (H-1B, L-1, etc.)",
+          "Studentenvisum (F-1)",
+          "Green Card Lotterie (Diversity Visa Programm)"
+        ],
+        "tip": "Starten Sie Ihren Visumantrag bei der US-Botschaft oder dem US-Konsulat in Ihrem Land. Die Bearbeitungszeiten variieren zwischen Wochen und Monaten.",
+        "iconKey": "fileText",
+        "category": "Wesentlich",
+        "id": 1
+      },
+      {
+        "title": "Gültiger Reisepass",
+        "description": "Ihr Reisepass muss mindestens <strong>6 Monate</strong> über das geplante Einreisedatum hinaus gültig sein.",
+        "details": [
+          "Verlängern Sie es vor der Beantragung des Visums, wenn es demnächst abläuft."
+        ],
+        "iconKey": "bookOpen",
+        "category": "Wesentlich",
+        "id": 2,
+        "tip": ""
+      },
+      {
+        "title": "Zugelassene ärztliche Untersuchung",
+        "description": "Für Einwanderungsvisa ist eine ärztliche Untersuchung vorgeschrieben.",
+        "details": [
+          "Dies muss von einem von der US-Botschaft zugelassenen Arzt durchgeführt werden.",
+          "Sie werden auf Krankheiten wie Tuberkulose untersucht und müssen die wichtigsten Impfungen nachweisen."
+        ],
+        "tip": "Kosten: Je nach Land zwischen 200 und 400 $.",
+        "iconKey": "Stethoskop",
+        "category": "Wesentlich",
+        "id": 3
+      },
+      {
+        "title": "Impfungen und Gesundheitsakten",
+        "description": "Bringen Sie einen vollständigen Impfpass mit.",
+        "details": [
+          "Masern, Mumps, Röteln (MMR)",
+          "Polio",
+          "Tetanus",
+          "Grippe (während der Grippesaison)",
+          "COVID-19 (gemäß der neuesten USCIS-Anleitung)"
+        ],
+        "iconKey": "Spritze",
+        "category": "Wesentlich",
+        "id": 4,
+        "tip": ""
+      },
+      {
+        "title": "Finanzielle Nachweise oder Sponsoring",
+        "description": "Sie müssen nachweisen, dass Sie nicht in finanzielle Abhängigkeit von der US-Regierung geraten werden:",
+        "details": [
+          "Arbeitsvisum: Schreiben mit Stellenangebot und Gehaltsangaben.",
+          "Familienvisum: Der Sponsor muss das Formular I-864 (Affidavit of Support) einreichen und ein Einkommen über einer bestimmten Grenze nachweisen.",
+          "Studentenvisum: Nachweis über die Zahlung von Studiengebühren und Lebenshaltungskosten für mindestens ein Studienjahr."
+        ],
+        "iconKey": "dollarSign",
+        "category": "Wesentlich",
+        "id": 5,
+        "tip": ""
+      },
+      {
+        "title": "Sauberes Strafregister",
+        "description": "Geringfügige Verstöße führen in der Regel nicht zum Ausschluss, aber schwere Vorstrafen können zur Ablehnung des Visums führen.",
+        "details": [
+          "Hintergrundüberprüfungen sind Teil des Prozesses."
+        ],
+        "iconKey": "shieldCheck",
+        "category": "Wesentlich",
+        "id": 6,
+        "tip": ""
+      },
+      {
+        "title": "Englische Sprachkenntnisse (praktisch)",
+        "description": "Nicht immer erforderlich, aber <strong>stark empfohlen</strong> für die Arbeit und das tägliche Leben.",
+        "details": [
+          "Einige Visa (z. B. H-1B) setzen gute Kenntnisse voraus.",
+          "Bei einer späteren Beantragung der Staatsbürgerschaft sind Englisch- und Staatsbürgerkunde-Kenntnisse erforderlich."
+        ],
+        "iconKey": "messageSquare",
+        "category": "empfohlen",
+        "id": 7,
+        "tip": ""
+      },
+      {
+        "title": "Sonstige praktische Anforderungen nach der Ankunft",
+        "description": "Sobald Sie in den USA sind, müssen Sie Folgendes tun:",
+        "details": [
+          "Beantragen Sie eine Sozialversicherungsnummer (SSN)",
+          "Eröffnen Sie ein U.S. Bankkonto",
+          "Besorgen Sie sich einen Führerschein oder eine ID",
+          "Wohnraum finden (mieten oder kaufen)",
+          "eine Krankenversicherung abschließen (die Gesundheitsversorgung in den USA ist privat und teuer)"
+        ],
+        "iconKey": "Kreditkarte",
+        "category": "nach der Ankunft",
+        "id": 8,
+        "tip": ""
+      }
+    ],
+    "importantReminder": {
+      "title": "Wichtige Erinnerung",
+      "description": "Die Einwanderungsbestimmungen können sich mit der Zeit ändern. Dieser Leitfaden basiert auf aktuellen Informationen, aber überprüfen Sie immer die neuesten Anforderungen mit dem U.S. Department of State oder U.S. Citizenship and Immigration Services (USCIS), bevor Sie mit Ihrem Umzug fortfahren.",
+      "lastUpdated": "Zuletzt aktualisiert: Mai 2025"
+    },
+    "accessibility": {
+      "tabButton": "Zur Registerkarte {Label} wechseln"
+    }
+  },
+  "migrationGuide": {
+    "header": {
+      "sourceFlag": "🇹🇷",
+      "destinationFlag": "🇺🇸",
+      "title": "Umzug aus der Türkei in die USA",
+      "description": "Ein Umzug von der Türkei in die Vereinigten Staaten kann das Leben verändern, aber er erfordert eine gute Planung und rechtliche Verfahren. Hier ist, was Sie wissen müssen:",
+      "decorativeIcon": "🗽"
+    },
+    "sections": [
+      {
+        "title": "Wählen Sie den richtigen Visa-Typ",
+        "description": "Ihr erster Schritt ist die Beschaffung des richtigen US-Visums, das auf Ihrem Umzugsgrund basiert:",
+        "items": [
+          {
+            "title": "Familienbasiertes Visum",
+            "description": "Wenn Sie enge Familienangehörige haben, die <strong>U.S.-Bürger oder dauerhaft ansässig</strong> sind.",
+            "iconKey": "Benutzer"
+          },
+          {
+            "title": "Arbeitsvisum (H-1B, L-1, O-1)",
+            "description": "Wenn Ihnen eine Stelle in den USA angeboten wird.",
+            "iconKey": "Aktentasche"
+          },
+          {
+            "title": "Studentenvisum (F-1)",
+            "description": "Wenn Sie an einem US-College oder einer US-Universität studieren möchten.",
+            "iconKey": "TeilungCap"
+          },
+          {
+            "title": "Diversity-Visum (Green-Card-Lotterie)",
+            "description": "Die Türkei ist förderfähig - Sie können sich während des jährlichen Lotteriefensters bewerben.",
+            "iconKey": "mischen"
+          },
+          {
+            "title": "Investorenvisum (E-2)",
+            "description": "Für türkische Staatsangehörige, die einen <strong>beträchtlichen Betrag</strong> in ein US-Unternehmen investieren.",
+            "iconKey": "dollarSign"
+          }
+        ],
+        "id": 1
+      },
+      {
+        "title": "Vorbereitung auf das Visumgespräch",
+        "description": "Beantragen Sie den Antrag bei der US-Botschaft in Ankara oder beim Konsulat in Istanbul, je nach Region. Das brauchen Sie:",
+        "items": [
+          {
+            "title": "Gültiger Reisepass",
+            "description": "Stellen Sie sicher, dass Ihr Reisepass noch mindestens <strong>6 Monate</strong> über Ihren geplanten Aufenthalt hinaus gültig ist.",
+            "iconKey": "fileText"
+          },
+          {
+            "title": "Visumantrag",
+            "description": "Formular DS-160 oder entsprechendes Einwanderungsformular.",
+            "iconKey": "fileText"
+          },
+          {
+            "title": "Unterstützende Dokumente",
+            "description": "Finanzielles, Ausbildung, Stellenangebot, usw.",
+            "iconKey": "fileText"
+          },
+          {
+            "title": "Medizinische Untersuchung und Impfungen",
+            "description": "Vollständige medizinische Untersuchung durch einen zugelassenen Arzt.",
+            "iconKey": "fileText"
+          }
+        ],
+        "id": 2
+      },
+      {
+        "title": "Krankenversicherung und Lebenshaltungskosten",
+        "items": [
+          {
+            "title": "Private Krankenversicherung",
+            "description": "In den USA gibt es keine kostenlose Gesundheitsversorgung - Sie müssen eine <strong>private Krankenversicherung</strong> abschließen.",
+            "iconKey": "fileText"
+          },
+          {
+            "title": "Höhere Lebenshaltungskosten",
+            "description": "Die Lebenshaltungskosten sind höher als in der Türkei. Miete, Gesundheitsfürsorge und Verkehrsmittel sind teurer, vor allem in Städten wie New York, LA oder San Francisco</strong>.",
+            "iconKey": "Gebäude"
+          }
+        ],
+        "id": 3,
+        "description": ""
+      },
+      {
+        "title": "Kulturelle und Lebensstil-Unterschiede",
+        "items": [
+          {
+            "title": "Türkische Gemeinschaften",
+            "description": "Die USA sind ein vielfältiges Land mit vielen türkischen Gemeinden, vor allem in Städten wie New York, Chicago und Los Angeles</strong>.",
+            "iconKey": "Weltkugel"
+          },
+          {
+            "title": "Unterschiedlicher Lebensstil",
+            "description": "Das tägliche Leben ist im Vergleich zur Türkei eher <strong>individualistisch und schnelllebig</strong>.",
+            "iconKey": "Weltkugel"
+          }
+        ],
+        "id": 4,
+        "description": ""
+      },
+      {
+        "title": "Nach der Ankunft in den U.S.A.",
+        "description": "Wenn Sie ankommen, stellen Sie sicher, dass Sie:",
+        "items": [
+          {
+            "title": "Beantragen Sie eine Sozialversicherungsnummer (SSN)",
+            "description": "Dies ist unerlässlich, um in den USA arbeiten und Steuern zahlen zu können.",
+            "iconKey": "fileText"
+          },
+          {
+            "title": "Ein Bankkonto eröffnen",
+            "description": "Sie benötigen es für die täglichen Finanztransaktionen.",
+            "iconKey": "Kreditkarte"
+          },
+          {
+            "title": "Einen Führerschein machen",
+            "description": "In vielen Gegenden der USA sind die öffentlichen Verkehrsmittel begrenzt.",
+            "iconKey": "Kreditkarte"
+          },
+          {
+            "title": "Unterkunft finden",
+            "description": "Und sich an das amerikanische System anpassen (Bildung, Arbeit, Verkehr).",
+            "iconKey": "mapPin"
+          }
+        ],
+        "id": 5
+      }
+    ],
+    "navigation": {
+      "previous": "Vorherige",
+      "next": "Weiter"
+    },
+    "footer": {
+      "sourceFlag": "🇹🇷",
+      "destinationFlag": "🇺🇸",
+      "disclaimer": "Denken Sie daran, dass sich die Einwanderungsbedingungen ändern können. Erkundigen Sie sich bei der <strong>US-Botschaft in der Türkei</strong> oder <strong>USCIS</strong> nach den aktuellsten Informationen."
+    },
+    "accessibility": {
+      "sectionButton": "Gehe zu Abschnitt: {Titel}",
+      "previousButton": "Zum vorherigen Abschnitt gehen: {Titel}",
+      "nextButton": "Gehe zum nächsten Abschnitt: {Titel}"
+    }
+  },
+  "petsGuide": {
+    "header": {
+      "icons": [
+        "🐶",
+        "🐱",
+        "🦜"
+      ],
+      "title": "Umzug mit Haustieren in die USA",
+      "description": "Die Mitnahme Ihres Haustieres in die USA ist möglich, aber Sie müssen bestimmte Regeln beachten:"
+    },
+    "sections": {
+      "requirements": {
+        "icon": "✅",
+        "title": "Wichtige Anforderungen"
+      },
+      "arrival": {
+        "icon": "🛬",
+        "title": "Bei Ankunft"
+      },
+      "tips": {
+        "icon": "💡",
+        "title": "Hilfreiche Tipps"
+      }
+    },
+    "requirements": [
+      {
+        "id": "Tollwut",
+        "icon": "💉",
+        "title": "Tollwut-Impfung",
+        "description": "<strong>Pflicht für Hunde</strong>; dringend empfohlen für Katzen"
+      },
+      {
+        "id": "Gesundheit",
+        "icon": "📋",
+        "title": "Gesundheitszeugnis",
+        "description": "Ausgestellt von einem zugelassenen Tierarzt (normalerweise innerhalb von <strong>10 Tagen</strong> nach der Reise)"
+      },
+      {
+        "id": "Mikrochip",
+        "icon": "📱",
+        "title": "Mikrochip",
+        "description": "Nicht gesetzlich vorgeschrieben, aber <strong>sehr empfehlenswert</strong>"
+      },
+      {
+        "id": "Fluggesellschaft",
+        "icon": "✈️",
+        "title": "Haustierfreundliche Airline-Buchung",
+        "description": "Befolgen Sie die Regeln des Spediteurs für <strong>Kistengröße, Dokumente und Gebühren</strong>"
+      }
+    ],
+    "arrivalInfo": [
+      {
+        "id": "Inspektion",
+        "title": "Inspektion",
+        "description": "Haustiere können am Einreisehafen <strong>kontrolliert</strong> werden",
+        "icon": "👁️"
+      },
+      {
+        "id": "Quarantäne",
+        "title": "Keine Quarantäne",
+        "description": "Für Haustiere aus den meisten Ländern (einschließlich <strong>Vereinigtes Königreich und Türkei</strong>), wenn die Papiere vollständig sind",
+        "icon": "🏠"
+      }
+    ],
+    "tips": [
+      "Beginnen Sie mit dem Prozess mindestens 4-6 Wochen vor Ihrem Umzug",
+      "Prüfen Sie, ob Ihr Zielland zusätzliche Einreisebestimmungen hat",
+      "Bringen Sie genügend Medikamente für Ihr Haustier für die ersten Monate mit",
+      "Erwägen Sie Tiertransportdienste, wenn Sie mit mehreren Tieren reisen"
+    ],
+    "footer": {
+      "disclaimer": "Erkundigen Sie sich vor Ihrer Reise bei der <strong>USDA APHIS</strong> und dem Veterinäramt Ihres Ziellandes nach den aktuellsten Anforderungen."
+    }
+  },
+  "moveRequirements": {
+    "requirements": [
+      {
+        "title": "Gültiges Visum oder Green Card",
+        "description": "Sie müssen die richtige Visumart für Ihren Zweck (z. B. <strong>Arbeit, Familie, Studium</strong>) erhalten.",
+        "note": "Für eine dauerhafte Umsiedlung ist ein Einwanderungsvisum erforderlich.",
+        "iconKey": "fileText",
+        "id": 1
+      },
+      {
+        "title": "Gültiger Reisepass",
+        "description": "Ihr Reisepass muss mindestens <strong>6 Monate</strong> über Ihren geplanten Aufenthalt hinaus gültig sein.",
+        "iconKey": "bookOpen",
+        "id": 2,
+        "note": ""
+      },
+      {
+        "title": "Medizinische Untersuchung",
+        "description": "Für die meisten <strong>Einwanderungsvisa</strong> erforderlich.",
+        "note": "Muss von einem zugelassenen Arzt durchgeführt werden.",
+        "iconKey": "Stethoskop",
+        "id": 3
+      },
+      {
+        "title": "Aufzeichnungen über Impfungen",
+        "description": "Für die Einreise ist der Nachweis von Impfungen (z. B. <strong>MMR, COVID-19, Hepatitis</strong>) erforderlich.",
+        "iconKey": "Spritze",
+        "id": 4,
+        "note": ""
+      },
+      {
+        "title": "Nachweis der finanziellen Unterstützung",
+        "description": "Möglicherweise müssen Sie Kontoauszüge, Stellenangebote oder einen Bürgen vorlegen, um zu beweisen, dass Sie nicht zu einer <strong>öffentlichen Last</strong> werden.",
+        "iconKey": "dollarSign",
+        "id": 5,
+        "note": ""
+      },
+      {
+        "title": "Sauberes Strafregister",
+        "description": "Hintergrundprüfungen sind Teil des Einwanderungsprozesses.",
+        "note": "Schwere Verstöße können zur <strong>Visumsverweigerung</strong> führen.",
+        "iconKey": "shieldCheck",
+        "id": 6
+      },
+      {
+        "title": "Englischkenntnisse (empfohlen)",
+        "description": "Dies ist nicht für alle Visumstypen obligatorisch, aber Englischkenntnisse sind im <strong>alltäglichen Leben, im Beruf und in der Ausbildung</strong> sehr hilfreich.",
+        "iconKey": "messageSquare",
+        "id": 7,
+        "note": ""
+      }
+    ],
+    "importantNote": {
+      "title": "Wichtiger Hinweis",
+      "description": "Die Einwanderungsbestimmungen können sich ändern. Informieren Sie sich immer über die neuesten Informationen des US-Außenministeriums oder der US-Einwanderungsbehörde (USCIS), bevor Sie Ihren Umzug in Angriff nehmen."
+    }
+  },
+  "ukUsGuide": {
+    "header": {
+      "icon": "🇬🇧➡️🇺🇸",
+      "title": "Umzug aus dem Vereinigten Königreich in die USA",
+      "subtitle": "Was Sie wissen müssen",
+      "description": "Ein Umzug vom Vereinigten Königreich in die Vereinigten Staaten ist ein großer Schritt, der Planung, rechtliche Unterlagen und ein Verständnis für die Unterschiede im Leben jenseits des Atlantiks erfordert. Egal, ob Sie aus beruflichen Gründen umziehen, um mit Ihrer Familie zusammen zu sein oder um ein neues Abenteuer zu erleben - dieser Leitfaden behandelt die wichtigsten Aspekte Ihres transatlantischen Umzugs."
+    },
+    "quickNavigation": {
+      "title": "Schnelle Navigation"
+    },
+    "sections": [
+      {
+        "id": "Visabestimmungen",
+        "icon": "🛂",
+        "title": "Visa-Anforderungen",
+        "content": "<p class=\"text-gray-700 mb-4\">Als britischer Staatsbürger benötigen Sie ein Visum, um langfristig in die USA zu ziehen. Übliche Optionen sind:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span><strong>Beschäftigungsvisa (H-1B, L-1, O-1)</strong> - Für qualifizierte Fachkräfte, Transfers, oder außergewöhnliche Fähigkeiten</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span><strong>Familienbasierte Green Card</strong> - Wenn Sie direkte Verwandte haben, die U.S. </span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span><strong>Studentenvisum (F-1)</strong> - Wenn Sie in den U.S.A. studieren</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span><strong>Investorenvisum (E-2)</strong> - Für britische Bürger, die in ein U.S.-Unternehmen investieren</span></li></ul><p class=\"text-gray-700\">Die Beantragung eines Visums erfordert eine sorgfältige Planung, da die Ablehnungsquote bei bestimmten Visumstypen hoch sein kann.</p>"
+      },
+      {
+        "id": "Anwendungsprozess",
+        "icon": "📋",
+        "title": "Visumantragsverfahren",
+        "content": "<div class=\"mb-4\"><p class=\"text-gray-700 mb-4\">Der Visumsantrag umfasst mehrere Schritte:</p><ul class=\"text-gray-700 space-y-2 pl-4\"><li>- Online-Antrag über das US-Außenministerium stellen</li><li>- Termin für ein Vorstellungsgespräch in der <strong>US-Botschaft in London</strong> oder im <strong>Konsulat in Belfast</strong></li><li>- Erforderliche Unterlagen vorbereiten:</li></ul><div class=\"bg-wul><div\"></li><li>- Online-Antrag über das US-Außenministerium Botschaft in London</strong> oder <strong>Konsulat in Belfast</strong></li><li>- Erforderliche Dokumente vorbereiten:</li></ul><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm mt-3\"><h4 class=\"font-medium text-sky-600 mb-2\">Erforderliche Dokumente:</h4><ul class=\"text-gray-700 space-y-1 pl-4\"><li>- Gültiger Reisepass</li><li>- Visumantragsformular</li><li>- Ärztliche Untersuchungsergebnisse</li><li>- Nachweis der Finanzen</li><li>- Unterlagen des Sponsors/Jobangebots, falls erforderlich</li><li>- Bildungsnachweise (für bestimmte Visa)</li></ul></div></div>"
+      },
+      {
+        "id": "Gesundheitswesen",
+        "icon": "🏥",
+        "title": "Gesundheitswesen & Versicherung",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Im Gegensatz zum NHS in Großbritannien ist die Gesundheitsversorgung in den USA hauptsächlich privat und kann teuer sein. ist die Gesundheitsversorgung in den USA hauptsächlich privat und kann teuer sein</p><p>Sie müssen eine <strong>private Krankenversicherung</strong> abschließen - die monatlichen Kosten können zwischen <strong>$300-$700+ pro Person</strong></p><p>Viele Arbeitgeber bieten eine Krankenversicherung als Teil der Sozialleistungen an</p><p>Kalkulieren Sie eine Versicherung ein, die im ersten Jahr einen Rücktransport im Notfall abdeckt</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Tipp:</strong> Informieren Sie sich bereits vor Ihrer Ankunft über die Möglichkeiten einer Krankenversicherung und stellen Sie sicher, dass Sie vom ersten Tag an in den USA versichert sind.USA haben.</span></p></div></div>"
+      },
+      {
+        "id": "Lebenshaltungskosten",
+        "icon": "💷",
+        "title": "Vergleich der Lebenshaltungskosten",
+        "content": "<div><div class=\"overflow-x-auto mb-4\"><table class=\"min-w-full bg-white border border-sky-200 rounded-lg\"><thead><tr class=\"bg-sky-100\"><th class=\"py-3 px-4 text-left border-b border-sky-200\">Aufwand</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">Vereinigte Staaten (durchschnittl.)</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">UK (Durchschnitt))</th></tr></thead><tbody><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Miete (1-Bett-Wohnung)</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$1.200-$3.000</td><td class=\"py-3 px-4 border-b border-sky-100\">£800-£1,200</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Gesundheitsversorgung</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$300-$700/Monat</td><td class=\"py-3 px-4 border-b border-sky-100\">NHS (steuerfinanziert)</td></tr><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Essen im Restaurant</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$15-$30</td><td class=\"py-3 px-4 border-b border-sky-100\">£10-£25</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Transport</td><td class=\"py-3 px-4 border-b border-sky-100 text-yellow-600\">$70-$100/Monat (variiert)</td><td class=\"py-3 px-4 border-b border-sky-100\">£60-£120/Monat</td></tr></tbody></table></div><p class=\"text-gray-700\">Die Lebenshaltungskosten sind je nach Ort sehr unterschiedlich. Großstädte wie New York, San Francisco und Los Angeles sind deutlich teurer als die meisten britischen Städte, einschließlich London.</p></div>"
+      },
+      {
+        "id": "Gehäuse",
+        "icon": "🏘️",
+        "title": "Unterkunft finden",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Der US-Mietmarkt bewegt sich schnell, vor allem in umkämpften Städten</p><p>Die meisten Vermieter verlangen eine Bonitätsprüfung, was für Neuankömmlinge eine Herausforderung sein kann</p><p>Ziehen Sie bei Ihrer Ankunft Kurzzeitmieten in Betracht, bis Sie sich eingelebt haben</p><p>Beliebte Websites zur Mietsuche: Zillow, Apartments.com, Trulia, Realtor.com</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Tipp:</strong> Bringen Sie Referenzschreiben von britischen Vermietern und Einkommensnachweise mit, um das Fehlen einer US-Kreditgeschichte zu überwinden.</span></p></div></div>"
+      },
+      {
+        "id": "Bankwesen",
+        "icon": "💳",
+        "title": "Bankwesen und Finanzen",
+        "content": "<div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Eröffnung eines Bankkontos</h3><p class=\"text-gray-700\">Sie benötigen Ihren Reisepass, ein Visum, einen Adressnachweis und möglicherweise Ihre Sozialversicherungsnummer (SSN).</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Kredithistorie</h3><p class=\"text-gray-700\">Ihre britische Kredithistorie lässt sich nicht in die USA übertragen.</p></div><div class=\"bg-white p-4 rounded-lg border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Steuerliche Erwägungen</h3><p class=\"text-gray-700\">Als Auswanderer aus dem Vereinigten Königreich müssen Sie in beiden Ländern Steuererklärungen abgeben, obwohl Steuerabkommen eine Doppelbesteuerung verhindern helfen.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Geldtransfers</h3><p class=\"text-gray-700\">Wenn Sie Geld zwischen dem Vereinigten Königreich und den USA transferieren, sollten Sie für bessere Wechselkurse spezialisierte Devisendienste in Betracht ziehen und nicht Banken.</p></div></div></div>"
+      },
+      {
+        "id": "tägliches Leben",
+        "icon": "📱",
+        "title": "Anpassungen an das tägliche Leben",
+        "content": "<div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Fahren</h3><p class=\"text-gray-700\">Sie werden auf der rechten Seite fahren. In den meisten Staaten können Sie bis zu 3 Monate mit Ihrem britischen Führerschein fahren, danach brauchen Sie einen staatlichen Führerschein.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Trinkgeldkultur</h3><p class=\"text-gray-700\">Trinkgeld wird in Restaurants, für Taxis und verschiedene Dienstleistungen erwartet (15-20%). Das Servicepersonal ist auf Trinkgeld als Teil seines Einkommens angewiesen.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Maßsystem</h3><p class=\"text-gray-700\">Die USA verwenden für die meisten Dinge imperiale Maße (Meilen, Pfund, Fahrenheit), was eine Anpassung erforderlich machen kann.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Mobiltelefone</h3><p class=\"text-gray-700\">Zu den größten Anbietern gehören AT&T, Verizon und T-Mobile. Ziehen Sie in Erwägung, sich bei Ihrer Ankunft eine lokale SIM-Karte oder einen Tarif zu besorgen.</p></div></div></div>"
+      },
+      {
+        "id": "Arbeitskultur",
+        "icon": "💼",
+        "title": "Unterschiede in der Arbeitskultur",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Die Arbeitskultur in den USA umfasst häufig:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>weniger Urlaubstage (typischerweise 10-15 Tage im Vergleich zu 20-25). UK's 20-25)</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Mehr direkte Kommunikationsstile</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Netzwerkarbeit wird hoch geschätzt und oft erwartet</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Die Work-Life-Balance ist je nach Unternehmen sehr unterschiedlich</span></li></ul></div>"
+      },
+      {
+        "id": "Umzugs-Logistik",
+        "icon": "🛫",
+        "title": "Umzugslogistik",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Die Kosten für einen internationalen Umzug in die USA liegen je nach Volumen zwischen £2.000 und £10.000</p><p>Überlegen Sie, ob Sie größere Möbelstücke verschicken oder verkaufen wollen (US-Wohnungen haben oft andere Abmessungen)</p><p>Die Zollabfertigung erfordert eine detaillierte Bestandsaufnahme der verschickten Gegenstände</p><p>Haustiere können in die USA einreisen. einreisen, müssen aber die Gesundheits- und Impfvorschriften erfüllen</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Tipp:</strong> Bei Elektronik ist die Spannungskompatibilität zu prüfen, da in den U.S. 110-120V verwenden (im Gegensatz zu 230-240V in Großbritannien).</span></p></div></div>"
+      },
+      {
+        "id": "Eingewöhnung",
+        "icon": "📝",
+        "title": "Eingewöhnung nach der Ankunft",
+        "content": "<div><div class=\"space-y-4\"><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">1. Besorgen Sie sich eine Sozialversicherungsnummer (SSN)</h3><p class=\"text-gray-700 mb-2\"><span class=\"font-medium\">Benötigt für Beschäftigung und viele Dienstleistungen</span><br/>Besuchen Sie Ihr örtliches Büro der Sozialversicherungsbehörde mit Ihrem Pass und Visum</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">2. Beantragen Sie einen Ausweis oder Führerschein</h3><p class=\"text-gray-700 mb-2\">Besuchen Sie das Kraftfahrzeugamt Ihres Bundesstaates oder eine entsprechende Behörde</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">3. Versorgungseinrichtungen einrichten</h3><p class=\"text-gray-700 mb-2\">Strom, Wasser, Gas, Internet und Müllabfuhr einrichten</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">4. Registrieren Sie sich beim britischen Konsulat</h3><p class=\"text-gray-700 mb-2\">Optional, aber empfohlen für Notfälle</p></div></div></div>"
+      },
+      {
+        "id": "Expat-Gemeinschaften",
+        "icon": "👥",
+        "title": "Britische Expat-Gemeinschaften",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Die U.S.A. haben große britische Auswanderergemeinden in vielen Städten, insbesondere:</p><div class=\"grid grid-cols-2 md:grid-cols-5 gap-2 mb-4\"><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">New York</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Los Angeles</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Chicago</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Boston</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">San Francisco</div></div><p class=\"text-gray-700\">Sie finden britische Pubs, soziale Clubs und Facebook-Gruppen, die von unschätzbarem Wert sein können, um Kontakte zu knüpfen und Ratschläge von anderen zu erhalten, die den gleichen Schritt gemacht haben.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Letzte Checkliste vor dem Umzug in die USA",
+      "items": [
+        {
+          "text": "Sichern Sie sich Ihr Visum oder Ihre Green Card",
+          "fullWidth": false
+        },
+        {
+          "text": "Krankenversicherungsschutz vereinbaren",
+          "fullWidth": false
+        },
+        {
+          "text": "Wohnungssuche in Ihrer Zielstadt",
+          "fullWidth": false
+        },
+        {
+          "text": "Organisieren Sie den Versand von Habseligkeiten",
+          "fullWidth": false
+        },
+        {
+          "text": "Benachrichtigung der HMRC und anderer britischer Behörden",
+          "fullWidth": false
+        },
+        {
+          "text": "Planen Sie den Währungsumtausch und Überweisungen",
+          "fullWidth": false
+        },
+        {
+          "text": "Steuerliche Verpflichtungen in beiden Ländern recherchieren",
+          "fullWidth": true
+        }
+      ]
+    },
+    "conclusion": {
+      "icon": "🎯",
+      "title": "Schlussfolgerung: Ist ein Umzug in die USA das Richtige für Sie?",
+      "description": "Ein Umzug in die Vereinigten Staaten bietet enorme Chancen, ist aber auch mit erheblichen Herausforderungen verbunden. Das Visumverfahren kann langwierig sein, die Kosten für die medizinische Versorgung sind hoch, und die Anpassung an die amerikanische Kultur braucht Zeit. Viele britische Auswanderer finden jedoch, dass die Karrieremöglichkeiten, die vielfältigen Landschaften und der Lebensstil den Wechsel wert sind."
+    },
+    "checklist": [
+      {
+        "text": "Sichern Sie sich Ihr Visum oder Ihre Green Card",
+        "fullWidth": false
+      },
+      {
+        "text": "Krankenversicherungsschutz vereinbaren",
+        "fullWidth": false
+      },
+      {
+        "text": "Wohnungssuche in Ihrer Zielstadt",
+        "fullWidth": false
+      },
+      {
+        "text": "Organisieren Sie den Versand von Habseligkeiten",
+        "fullWidth": false
+      },
+      {
+        "text": "Benachrichtigung der HMRC und anderer britischer Behörden",
+        "fullWidth": false
+      },
+      {
+        "text": "Planen Sie den Währungsumtausch und Überweisungen",
+        "fullWidth": false
+      },
+      {
+        "text": "Steuerliche Verpflichtungen in beiden Ländern recherchieren",
+        "fullWidth": true
+      }
+    ],
+    "accessibility": {
+      "sectionToggle": "Abschnitt umschalten: {Titel}"
+    }
+  },
+  "visaOptions": {
+    "labels": {
+      "examples": "Beispiele:",
+      "note": "Anmerkung:"
+    },
+    "visaTypes": [
+      {
+        "id": "Familie",
+        "title": "1. Familienbasiertes Visum",
+        "description": "Für Ehepartner, Kinder, Eltern oder Geschwister von <strong>U.S.-Bürgern oder Personen mit ständigem Wohnsitz in den USA</strong>.",
+        "examples": [
+          "IR-1 (Ehepartner)",
+          "F-2A (Familienpräferenz)"
+        ],
+        "iconKey": "Benutzer"
+      },
+      {
+        "id": "Beschäftigung",
+        "title": "2. Beschäftigungsbasierte Visa",
+        "description": "Für <strong>Fachkräfte, Arbeitnehmer und Investoren</strong>.",
+        "examples": [
+          "<strong>H-1B:</strong> Fachkräfte in speziellen Berufen",
+          "<strong>L-1:</strong> Innerbetriebliche Übertragung",
+          "<strong>EB-2/EB-3:</strong> Beschäftigungsbasierte Green Cards",
+          "<strong>O-1:</strong> Für Personen mit außergewöhnlichen Fähigkeiten"
+        ],
+        "iconKey": "Aktentasche"
+      },
+      {
+        "id": "Studenten",
+        "title": "3. Studentenvisum (F-1)",
+        "description": "Für internationale Studierende an <strong>akkreditierten US-Einrichtungen</strong>.",
+        "examples": [
+          "Ermöglicht Teilzeitarbeit auf dem Campus und <strong>optionales Praktikum (OPT)</strong> nach dem Abschluss."
+        ],
+        "iconKey": "TeilungCap"
+      },
+      {
+        "id": "Investor",
+        "title": "4. Investorenvisum (E-2 / EB-5)",
+        "description": "Für diejenigen, die in den Vereinigten Staaten <strong>investieren wollen</strong>.",
+        "examples": [
+          "<strong>E-2:</strong> Für Bürger von Vertragsländern, die einen erheblichen Betrag in ein US-Unternehmen investieren.",
+          "<strong>EB-5:</strong> Green Card für diejenigen, die <strong>800.000$+</strong> investieren und Arbeitsplätze in den USA schaffen."
+        ],
+        "iconKey": "dollarSign"
+      },
+      {
+        "id": "Vielfalt",
+        "title": "5. Green Card Lotterie (Diversity Visa Programm)",
+        "description": "Ein Programm der US-Regierung, das Menschen aus förderungswürdigen Ländern durch Zufallsauswahl eine <strong>dauerhafte Aufenthaltsgenehmigung</strong> bietet.",
+        "iconKey": "mischen"
+      }
+    ]
+  }
+}

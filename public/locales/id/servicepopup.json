@@ -1,0 +1,993 @@
+{
+  "serviceOptions": {
+    "study": {
+      "label": "Jenis Program",
+      "placeholder": "Pilih program studi Anda",
+      "options": [
+        "Gelar Sarjana",
+        "Gelar Magister",
+        "Program Doktor",
+        "Kursus Bahasa",
+        "Program Diploma",
+        "Kursus Bersertifikat",
+        "Program Pertukaran Pelajar"
+      ]
+    },
+    "work": {
+      "label": "Kategori Pekerjaan",
+      "placeholder": "Pilih jenis visa kerja",
+      "options": [
+        "Izin Kerja (Pemilik/Direktur/Investor)",
+        "Perekrutan Domestik & Izin Kerja",
+        "Perekrutan dan Izin Kerja di Luar Negeri"
+      ]
+    },
+    "migrate": {
+      "label": "Kategori Migrasi",
+      "placeholder": "Pilih jenis migrasi",
+      "options": [
+        "Pendaftaran Perusahaan Ltd., A.Ş., Kepemilikan Tunggal.",
+        "Migrasi Investasi",
+        "Proses Kewarganegaraan Turki"
+      ]
+    },
+    "visit": {
+      "label": "Tujuan Kunjungan",
+      "placeholder": "Pilih tujuan kunjungan",
+      "options": [
+        "Surat Undangan Individu",
+        "Surat Keluarga Pribadi"
+      ]
+    }
+  },
+  "formLabels": {
+    "livingIn": "Tinggal di",
+    "destinationCountry": "Negara Tujuan",
+    "currentlyLivingIn": "Saat ini tinggal di",
+    "destination": "Tujuan",
+    "selectDestination": "Pilih tujuan",
+    "selectCurrentCountry": "Pilih negara Anda saat ini",
+    "selectDestinationForInvitation": "Pilih tujuan untuk undangan",
+    "wantsInvitationFor": "Ingin Undangan Untuk:",
+    "wantsToMigrateTo": "Ingin bermigrasi ke:",
+    "wantsToWorkIn": "Ingin bekerja di:",
+    "submitting": "Mengirimkan..."
+  },
+  "services": {
+    "study": {
+      "title": "Belajar di Luar Negeri",
+      "subtitle": "Raihlah pendidikan Anda di universitas-universitas ternama di seluruh dunia.",
+      "actionText": "sekolah di"
+    },
+    "work": {
+      "title": "Bekerja di Luar Negeri",
+      "subtitle": "Bangun karier Anda dengan peluang global.",
+      "actionText": "bekerja di"
+    },
+    "migrate": {
+      "title": "Bermigrasi",
+      "subtitle": "Mulailah hidup baru di luar negeri bersama keluarga Anda.",
+      "actionText": "bermigrasi ke"
+    },
+    "visit": {
+      "title": "Kunjungi & Jelajahi",
+      "subtitle": "Temukan destinasi menakjubkan di seluruh dunia.",
+      "actionText": "Undangan"
+    }
+  },
+  "form": {
+    "header": {
+      "title": "Mari kita mulai",
+      "subtitle": "Isi detail Anda dan kami akan membantu Anda mencapai tujuan Anda."
+    },
+    "fields": {
+      "name": {
+        "label": "Saya",
+        "placeholder": "Masukkan nama lengkap Anda",
+        "suffix": "Saat ini saya sedang"
+      },
+      "country": {
+        "label": "Warga negara",
+        "placeholder": "Pilih Negara Anda"
+      }
+    },
+    "contact": {
+      "title": "Informasi Kontak",
+      "personalPhone": {
+        "label": "Nomor Ponsel Pribadi",
+        "placeholder": "Nomor Ponsel Pribadi"
+      },
+      "whatsappToggle": {
+        "label": "Nomor ini ada di WhatsApp."
+      },
+      "whatsappNumber": {
+        "label": "Nomor WhatsApp",
+        "placeholder": "Nomor WhatsApp"
+      },
+      "email": {
+        "label": "Alamat Email",
+        "placeholder": "your.email@example.com"
+      },
+      "countryCodeSearch": "Cari negara...",
+      "noResults": "Tidak ada negara yang ditemukan"
+    },
+    "terms": {
+      "label": "Saya menerima Syarat & Ketentuan"
+    },
+    "submitButton": "Kirim Formulir",
+    "consultation": {
+      "text": "Butuh panduan sebelum melanjutkan?",
+      "linkText": "Dapatkan Konsultasi Gratis"
+    },
+    "validation": {
+      "acceptTerms": "Mohon setujui syarat dan ketentuan ini."
+    }
+  },
+  "countries": [
+    "Afganistan",
+    "Albania",
+    "Aljazair",
+    "Andorra",
+    "Angola",
+    "Antigua dan Barbuda",
+    "Argentina",
+    "Armenia",
+    "Australia",
+    "Austria",
+    "Azerbaijan",
+    "Bahama",
+    "Bahrain",
+    "Bangladesh",
+    "Barbados",
+    "Belarus",
+    "Belgia",
+    "Belize",
+    "Benin",
+    "Bhutan",
+    "Bolivia",
+    "Bosnia dan Herzegovina",
+    "Botswana",
+    "Brazil",
+    "Brunei",
+    "Bulgaria",
+    "Burkina Faso",
+    "Burundi",
+    "Cabo Verde",
+    "Kamboja",
+    "Kamerun",
+    "Kanada",
+    "Republik Afrika Tengah",
+    "Chad",
+    "Chili",
+    "Cina",
+    "Kolumbia",
+    "Komoro",
+    "Kongo",
+    "Kosta Rika",
+    "Kroasia",
+    "Kuba",
+    "Siprus",
+    "Republik Ceko",
+    "Denmark",
+    "Djibouti",
+    "Dominika",
+    "Republik Dominika",
+    "Ekuador",
+    "Mesir",
+    "El Salvador",
+    "Guinea Ekuatorial",
+    "Eritrea",
+    "Estonia",
+    "Eswatini",
+    "Etiopia",
+    "Fiji",
+    "Finlandia",
+    "Perancis",
+    "Gabon",
+    "Gambia",
+    "Georgia",
+    "Jerman",
+    "Ghana",
+    "Yunani",
+    "Granada",
+    "Guatemala",
+    "Guinea",
+    "Guinea-Bissau",
+    "Guyana",
+    "Haiti",
+    "Honduras",
+    "Hongaria",
+    "Islandia",
+    "India",
+    "Indonesia",
+    "Iran",
+    "Irak",
+    "Irlandia",
+    "Israel",
+    "Italia",
+    "Jamaika",
+    "Jepang",
+    "Yordania",
+    "Kazakhstan",
+    "Kenya",
+    "Kiribati",
+    "Kuwait",
+    "Kirgistan",
+    "Laos",
+    "Latvia",
+    "Libanon",
+    "Lesotho",
+    "Liberia",
+    "Libya",
+    "Liechtenstein",
+    "Lithuania",
+    "Luksemburg",
+    "Madagaskar",
+    "Malawi",
+    "Malaysia",
+    "Maladewa",
+    "Mali",
+    "Malta",
+    "Kepulauan Marshall",
+    "Mauritania",
+    "Mauritius",
+    "Meksiko",
+    "Mikronesia",
+    "Moldova",
+    "Monako",
+    "Mongolia",
+    "Montenegro",
+    "Maroko",
+    "Mozambik",
+    "Myanmar",
+    "Namibia",
+    "Nauru",
+    "Nepal",
+    "Belanda",
+    "Selandia Baru",
+    "Nikaragua",
+    "Niger",
+    "Nigeria",
+    "Korea Utara",
+    "Makedonia Utara",
+    "Norwegia",
+    "Oman",
+    "Pakistan",
+    "Palau",
+    "Panama",
+    "Papua Nugini",
+    "Paraguay",
+    "Peru",
+    "Filipina",
+    "Polandia",
+    "Portugal",
+    "Qatar",
+    "Rumania",
+    "Rusia",
+    "Rwanda",
+    "Saint Kitts dan Nevis",
+    "Saint Lucia",
+    "Saint Vincent dan Grenadines",
+    "Samoa",
+    "San Marino",
+    "Sao Tome dan Principe",
+    "Arab Saudi",
+    "Senegal",
+    "Serbia",
+    "Seychelles",
+    "Sierra Leone",
+    "Singapura",
+    "Slovakia",
+    "Slovenia",
+    "Kepulauan Solomon",
+    "Somalia",
+    "Afrika Selatan",
+    "Korea Selatan",
+    "Sudan Selatan",
+    "Spanyol",
+    "Sri Lanka",
+    "Sudan",
+    "Suriname",
+    "Swedia",
+    "Swiss",
+    "Suriah",
+    "Taiwan",
+    "Tajikistan",
+    "Tanzania",
+    "Thailand",
+    "Timor-Leste",
+    "Togo",
+    "Tonga",
+    "Trinidad dan Tobago",
+    "Tunisia",
+    "Turki",
+    "Turkmenistan",
+    "Tuvalu",
+    "Uganda",
+    "Ukraina",
+    "Uni Emirat Arab",
+    "Britania Raya",
+    "Amerika Serikat",
+    "Uruguay",
+    "Uzbekistan",
+    "Vanuatu",
+    "Kota Vatikan",
+    "Venezuela",
+    "Vietnam",
+    "Yaman",
+    "Zambia",
+    "Zimbabwe"
+  ],
+  "countryCodes": [
+    {
+      "name": "Afganistan",
+      "flag": "🇦🇫",
+      "code": "+93"
+    },
+    {
+      "name": "Albania",
+      "flag": "🇦🇱",
+      "code": "+355"
+    },
+    {
+      "name": "Aljazair",
+      "flag": "🇩🇿",
+      "code": "+213"
+    },
+    {
+      "name": "Andorra",
+      "flag": "🇦🇩",
+      "code": "+376"
+    },
+    {
+      "name": "Angola",
+      "flag": "🇦🇴",
+      "code": "+244"
+    },
+    {
+      "name": "Argentina",
+      "flag": "🇦🇷",
+      "code": "+54"
+    },
+    {
+      "name": "Armenia",
+      "flag": "🇦🇲",
+      "code": "+374"
+    },
+    {
+      "name": "Australia",
+      "flag": "🇦🇺",
+      "code": "+61"
+    },
+    {
+      "name": "Austria",
+      "flag": "🇦🇹",
+      "code": "+43"
+    },
+    {
+      "name": "Azerbaijan",
+      "flag": "🇦🇿",
+      "code": "+994"
+    },
+    {
+      "name": "Bahrain",
+      "flag": "🇧🇭",
+      "code": "+973"
+    },
+    {
+      "name": "Bangladesh",
+      "flag": "🇧🇩",
+      "code": "+880"
+    },
+    {
+      "name": "Belarus",
+      "flag": "🇧🇾",
+      "code": "+375"
+    },
+    {
+      "name": "Belgia",
+      "flag": "🇧🇪",
+      "code": "+32"
+    },
+    {
+      "name": "Belize",
+      "flag": "🇧🇿",
+      "code": "+501"
+    },
+    {
+      "name": "Benin",
+      "flag": "🇧🇯",
+      "code": "+229"
+    },
+    {
+      "name": "Bhutan",
+      "flag": "🇧🇹",
+      "code": "+975"
+    },
+    {
+      "name": "Bolivia",
+      "flag": "🇧🇴",
+      "code": "+591"
+    },
+    {
+      "name": "Bosnia dan Herzegovina",
+      "flag": "🇧🇦",
+      "code": "+387"
+    },
+    {
+      "name": "Botswana",
+      "flag": "🇧🇼",
+      "code": "+267"
+    },
+    {
+      "name": "Brazil",
+      "flag": "🇧🇷",
+      "code": "+55"
+    },
+    {
+      "name": "Brunei",
+      "flag": "🇧🇳",
+      "code": "+673"
+    },
+    {
+      "name": "Bulgaria",
+      "flag": "🇧🇬",
+      "code": "+359"
+    },
+    {
+      "name": "Burkina Faso",
+      "flag": "🇧🇫",
+      "code": "+226"
+    },
+    {
+      "name": "Burundi",
+      "flag": "🇧🇮",
+      "code": "+257"
+    },
+    {
+      "name": "Kamboja",
+      "flag": "🇰🇭",
+      "code": "+855"
+    },
+    {
+      "name": "Kamerun",
+      "flag": "🇨🇲",
+      "code": "+237"
+    },
+    {
+      "name": "Kanada",
+      "code": "+1",
+      "flag": "🇨🇦"
+    },
+    {
+      "name": "Chad",
+      "flag": "🇹🇩",
+      "code": "+235"
+    },
+    {
+      "name": "Chili",
+      "flag": "🇨🇱",
+      "code": "+56"
+    },
+    {
+      "name": "Cina",
+      "flag": "🇨🇳",
+      "code": "+86"
+    },
+    {
+      "name": "Kolumbia",
+      "flag": "🇨🇴",
+      "code": "+57"
+    },
+    {
+      "name": "Kosta Rika",
+      "flag": "🇨🇷",
+      "code": "+506"
+    },
+    {
+      "name": "Kroasia",
+      "flag": "🇭🇷",
+      "code": "+385"
+    },
+    {
+      "name": "Kuba",
+      "flag": "🇨🇺",
+      "code": "+53"
+    },
+    {
+      "name": "Siprus",
+      "flag": "🇨🇾",
+      "code": "+357"
+    },
+    {
+      "name": "Republik Ceko",
+      "flag": "🇨🇿",
+      "code": "+420"
+    },
+    {
+      "name": "Denmark",
+      "flag": "🇩🇰",
+      "code": "+45"
+    },
+    {
+      "name": "Republik Dominika",
+      "code": "+1",
+      "flag": "🇩🇴"
+    },
+    {
+      "name": "Ekuador",
+      "flag": "🇪🇨",
+      "code": "+593"
+    },
+    {
+      "name": "Mesir",
+      "flag": "🇪🇬",
+      "code": "+20"
+    },
+    {
+      "name": "Estonia",
+      "flag": "🇪🇪",
+      "code": "+372"
+    },
+    {
+      "name": "Etiopia",
+      "flag": "🇪🇹",
+      "code": "+251"
+    },
+    {
+      "name": "Fiji",
+      "flag": "🇫🇯",
+      "code": "+679"
+    },
+    {
+      "name": "Finlandia",
+      "flag": "🇫🇮",
+      "code": "+358"
+    },
+    {
+      "name": "Perancis",
+      "flag": "🇫🇷",
+      "code": "+33"
+    },
+    {
+      "name": "Georgia",
+      "flag": "🇬🇪",
+      "code": "+995"
+    },
+    {
+      "name": "Jerman",
+      "flag": "🇩🇪",
+      "code": "+49"
+    },
+    {
+      "name": "Ghana",
+      "flag": "🇬🇭",
+      "code": "+233"
+    },
+    {
+      "name": "Yunani",
+      "flag": "🇬🇷",
+      "code": "+30"
+    },
+    {
+      "name": "Guatemala",
+      "flag": "🇬🇹",
+      "code": "+502"
+    },
+    {
+      "name": "Guinea",
+      "flag": "🇬🇳",
+      "code": "+224"
+    },
+    {
+      "name": "Hongaria",
+      "flag": "🇭🇺",
+      "code": "+36"
+    },
+    {
+      "name": "Islandia",
+      "flag": "🇮🇸",
+      "code": "+354"
+    },
+    {
+      "name": "India",
+      "flag": "🇮🇳",
+      "code": "+91"
+    },
+    {
+      "name": "Indonesia",
+      "flag": "🇮🇩",
+      "code": "+62"
+    },
+    {
+      "name": "Iran",
+      "flag": "🇮🇷",
+      "code": "+98"
+    },
+    {
+      "name": "Irak",
+      "flag": "🇮🇶",
+      "code": "+964"
+    },
+    {
+      "name": "Irlandia",
+      "flag": "🇮🇪",
+      "code": "+353"
+    },
+    {
+      "name": "Israel",
+      "flag": "🇮🇱",
+      "code": "+972"
+    },
+    {
+      "name": "Italia",
+      "flag": "🇮🇹",
+      "code": "+39"
+    },
+    {
+      "name": "Jamaika",
+      "code": "+1",
+      "flag": "🇯🇲"
+    },
+    {
+      "name": "Jepang",
+      "flag": "🇯🇵",
+      "code": "+81"
+    },
+    {
+      "name": "Yordania",
+      "flag": "🇯🇴",
+      "code": "+962"
+    },
+    {
+      "name": "Kazakhstan",
+      "code": "+7",
+      "flag": "🇰🇿"
+    },
+    {
+      "name": "Kenya",
+      "flag": "🇰🇪",
+      "code": "+254"
+    },
+    {
+      "name": "Kuwait",
+      "flag": "🇰🇼",
+      "code": "+965"
+    },
+    {
+      "name": "Kirgistan",
+      "flag": "🇰🇬",
+      "code": "+996"
+    },
+    {
+      "name": "Latvia",
+      "flag": "🇱🇻",
+      "code": "+371"
+    },
+    {
+      "name": "Libanon",
+      "flag": "🇱🇧",
+      "code": "+961"
+    },
+    {
+      "name": "Libya",
+      "flag": "🇱🇾",
+      "code": "+218"
+    },
+    {
+      "name": "Lithuania",
+      "flag": "🇱🇹",
+      "code": "+370"
+    },
+    {
+      "name": "Luksemburg",
+      "flag": "🇱🇺",
+      "code": "+352"
+    },
+    {
+      "name": "Malaysia",
+      "flag": "🇲🇾",
+      "code": "+60"
+    },
+    {
+      "name": "Maladewa",
+      "flag": "🇲🇻",
+      "code": "+960"
+    },
+    {
+      "name": "Malta",
+      "flag": "🇲🇹",
+      "code": "+356"
+    },
+    {
+      "name": "Meksiko",
+      "flag": "🇲🇽",
+      "code": "+52"
+    },
+    {
+      "name": "Moldova",
+      "flag": "🇲🇩",
+      "code": "+373"
+    },
+    {
+      "name": "Monako",
+      "flag": "🇲🇨",
+      "code": "+377"
+    },
+    {
+      "name": "Mongolia",
+      "flag": "🇲🇳",
+      "code": "+976"
+    },
+    {
+      "name": "Montenegro",
+      "flag": "🇲🇪",
+      "code": "+382"
+    },
+    {
+      "name": "Maroko",
+      "flag": "🇲🇦",
+      "code": "+212"
+    },
+    {
+      "name": "Myanmar",
+      "flag": "🇲🇲",
+      "code": "+95"
+    },
+    {
+      "name": "Nepal",
+      "flag": "🇳🇵",
+      "code": "+977"
+    },
+    {
+      "name": "Belanda",
+      "flag": "🇳🇱",
+      "code": "+31"
+    },
+    {
+      "name": "Selandia Baru",
+      "flag": "🇳🇿",
+      "code": "+64"
+    },
+    {
+      "name": "Nigeria",
+      "flag": "🇳🇬",
+      "code": "+234"
+    },
+    {
+      "name": "Makedonia Utara",
+      "flag": "🇲🇰",
+      "code": "+389"
+    },
+    {
+      "name": "Norwegia",
+      "flag": "🇳🇴",
+      "code": "+47"
+    },
+    {
+      "name": "Oman",
+      "flag": "🇴🇲",
+      "code": "+968"
+    },
+    {
+      "name": "Pakistan",
+      "flag": "🇵🇰",
+      "code": "+92"
+    },
+    {
+      "name": "Panama",
+      "flag": "🇵🇦",
+      "code": "+507"
+    },
+    {
+      "name": "Paraguay",
+      "flag": "🇵🇾",
+      "code": "+595"
+    },
+    {
+      "name": "Peru",
+      "flag": "🇵🇪",
+      "code": "+51"
+    },
+    {
+      "name": "Filipina",
+      "flag": "🇵🇭",
+      "code": "+63"
+    },
+    {
+      "name": "Polandia",
+      "flag": "🇵🇱",
+      "code": "+48"
+    },
+    {
+      "name": "Portugal",
+      "flag": "🇵🇹",
+      "code": "+351"
+    },
+    {
+      "name": "Qatar",
+      "flag": "🇶🇦",
+      "code": "+974"
+    },
+    {
+      "name": "Rumania",
+      "flag": "🇷🇴",
+      "code": "+40"
+    },
+    {
+      "name": "Rusia",
+      "code": "+7",
+      "flag": "🇷🇺"
+    },
+    {
+      "name": "Rwanda",
+      "flag": "🇷🇼",
+      "code": "+250"
+    },
+    {
+      "name": "Arab Saudi",
+      "flag": "🇸🇦",
+      "code": "+966"
+    },
+    {
+      "name": "Senegal",
+      "flag": "🇸🇳",
+      "code": "+221"
+    },
+    {
+      "name": "Serbia",
+      "flag": "🇷🇸",
+      "code": "+381"
+    },
+    {
+      "name": "Singapura",
+      "flag": "🇸🇬",
+      "code": "+65"
+    },
+    {
+      "name": "Slovakia",
+      "flag": "🇸🇰",
+      "code": "+421"
+    },
+    {
+      "name": "Slovenia",
+      "flag": "🇸🇮",
+      "code": "+386"
+    },
+    {
+      "name": "Afrika Selatan",
+      "flag": "🇿🇦",
+      "code": "+27"
+    },
+    {
+      "name": "Korea Selatan",
+      "flag": "🇰🇷",
+      "code": "+82"
+    },
+    {
+      "name": "Spanyol",
+      "flag": "🇪🇸",
+      "code": "+34"
+    },
+    {
+      "name": "Sri Lanka",
+      "flag": "🇱🇰",
+      "code": "+94"
+    },
+    {
+      "name": "Sudan",
+      "flag": "🇸🇩",
+      "code": "+249"
+    },
+    {
+      "name": "Swedia",
+      "flag": "🇸🇪",
+      "code": "+46"
+    },
+    {
+      "name": "Swiss",
+      "flag": "🇨🇭",
+      "code": "+41"
+    },
+    {
+      "name": "Suriah",
+      "flag": "🇸🇾",
+      "code": "+963"
+    },
+    {
+      "name": "Taiwan",
+      "flag": "🇹🇼",
+      "code": "+886"
+    },
+    {
+      "name": "Tajikistan",
+      "flag": "🇹🇯",
+      "code": "+992"
+    },
+    {
+      "name": "Tanzania",
+      "flag": "🇹🇿",
+      "code": "+255"
+    },
+    {
+      "name": "Thailand",
+      "flag": "🇹🇭",
+      "code": "+66"
+    },
+    {
+      "name": "Tunisia",
+      "flag": "🇹🇳",
+      "code": "+216"
+    },
+    {
+      "name": "Turki",
+      "flag": "🇹🇷",
+      "code": "+90"
+    },
+    {
+      "name": "Turkmenistan",
+      "flag": "🇹🇲",
+      "code": "+993"
+    },
+    {
+      "name": "Uganda",
+      "flag": "🇺🇬",
+      "code": "+256"
+    },
+    {
+      "name": "Ukraina",
+      "flag": "🇺🇦",
+      "code": "+380"
+    },
+    {
+      "name": "Uni Emirat Arab",
+      "flag": "🇦🇪",
+      "code": "+971"
+    },
+    {
+      "name": "Britania Raya",
+      "flag": "🇬🇧",
+      "code": "+44"
+    },
+    {
+      "name": "Amerika Serikat",
+      "code": "+1",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Uruguay",
+      "flag": "🇺🇾",
+      "code": "+598"
+    },
+    {
+      "name": "Uzbekistan",
+      "flag": "🇺🇿",
+      "code": "+998"
+    },
+    {
+      "name": "Venezuela",
+      "flag": "🇻🇪",
+      "code": "+58"
+    },
+    {
+      "name": "Vietnam",
+      "flag": "🇻🇳",
+      "code": "+84"
+    },
+    {
+      "name": "Yaman",
+      "flag": "🇾🇪",
+      "code": "+967"
+    },
+    {
+      "name": "Zambia",
+      "flag": "🇿🇲",
+      "code": "+260"
+    },
+    {
+      "name": "Zimbabwe",
+      "flag": "🇿🇼",
+      "code": "+263"
+    }
+  ]
+}

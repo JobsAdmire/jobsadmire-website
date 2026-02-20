@@ -1,0 +1,365 @@
+{
+  "hero": {
+    "animatedWords": [
+      "Erfolg",
+      "Exzellenz",
+      "Innovation",
+      "Wachstum"
+    ],
+    "headline": {
+      "empowering": "Befähigung",
+      "through": "Durch Experte",
+      "resumeServices": "Lebenslauf Dienstleistungen"
+    },
+    "description": "Bei Jobs Admire verbinden wir Menschen mit globalen Karrieremöglichkeiten durch innovative, benutzerfreundliche Rekrutierungslösungen. Unser Ziel ist es, jeden Karriereweg mit Exzellenz zu unterstützen, von Arbeitssuchenden bis zu Arbeitgebern in allen Branchen.",
+    "cta": {
+      "ourServices": "Unsere Dienstleistungen",
+      "learnMore": "Mehr erfahren"
+    }
+  },
+  "story": {
+    "title": "Unsere Geschichte",
+    "timeline": {
+      "founded": {
+        "year": "Gegründet 2023",
+        "description": "Auftrag zur Demokratisierung der Berufe"
+      },
+      "today": {
+        "year": "Heute",
+        "description": "10K+ umgewandelte Berufe"
+      }
+    },
+    "values": {
+      "title": "Unsere Werte",
+      "clientFirst": "Kunde zuerst",
+      "excellence": "Exzellenz"
+    },
+    "stats": {
+      "resumes": {
+        "number": "10K+",
+        "label": "Lebensläufe"
+      },
+      "success": {
+        "number": "95%",
+        "label": "Erfolg"
+      },
+      "industries": {
+        "number": "50+",
+        "label": "Branchen"
+      }
+    },
+    "cta": "Unsere Geschichte"
+  },
+  "migration": {
+    "title": "Globale Studentenmigration",
+    "description": "Verbindung von Studenten weltweit mit ihren Traumzielen in über 50 Ländern",
+    "stats": {
+      "global": {
+        "number": "1000+",
+        "label": "Weltweit"
+      },
+      "southAsia": {
+        "number": "200+",
+        "label": "Südasien"
+      },
+      "otherRegions": {
+        "number": "25+",
+        "label": "Süd- und Ostasien,\nAfrika und Latein\nAmerika"
+      }
+    },
+    "map": {
+      "destinations": {
+        "northAmerica": {
+          "usa": "USA",
+          "canada": "CANADA"
+        },
+        "europe": {
+          "uk": "UK",
+          "germany": "GERMANY",
+          "france": "FRANCE"
+        },
+        "oceania": {
+          "australia": "AUSTRALIA"
+        }
+      },
+      "sources": {
+        "southAsia": {
+          "pakistan": "PAKISTAN",
+          "india": "INDIA",
+          "bangladesh": "BANGLADESH"
+        },
+        "southeastAsia": {
+          "philippines": "PHILIPPINES",
+          "indonesia": "INDONESIA"
+        },
+        "africa": {
+          "nigeria": "NIGERIA",
+          "kenya": "KENYA",
+          "ghana": "GHANA"
+        },
+        "southAmerica": {
+          "brazil": "BRAZIL",
+          "colombia": "COLOMBIA"
+        }
+      }
+    }
+  },
+  "timeline": {
+    "header": {
+      "badge": "UNTERNEHMENSMEILENSTEINE",
+      "title": {
+        "prefix": "Unser",
+        "highlight": "Erfolg",
+        "suffix": "Geschichte"
+      },
+      "description": "Erkunden Sie die wichtigsten Meilensteine und Errungenschaften, die unser Wachstum bestimmt haben"
+    },
+    "navigation": {
+      "timelineLabel": "Zeitleiste",
+      "interactiveTimeline": "Interaktive Zeitleiste",
+      "previous": "Vorherige",
+      "next": "Weiter",
+      "activeLabel": "Aktiv",
+      "milestoneCounter": "Meilenstein {aktuell} von {insgesamt}",
+      "learnMore": "Mehr erfahren"
+    },
+    "milestones": {
+      "foundation": {
+        "date": "Januar 2023 - Dezember 2023",
+        "title": "Wir eröffneten unser erstes Büro und begannen unsere Reise.",
+        "description": "Im Jahr 2023 eröffneten wir offiziell unsere Hauptniederlassung und begannen damit, innovative Lösungen zu entwickeln und ein starkes Fundament für zukünftiges Wachstum zu legen.",
+        "stats": {
+          "clientsServed": {
+            "label": "Betreute Kunden",
+            "value": "150+"
+          },
+          "projectsStarted": {
+            "label": "Begonnene Projekte",
+            "value": "20+"
+          }
+        },
+        "tags": [
+          "Stiftung",
+          "Startup",
+          "Büroeinführung"
+        ]
+      },
+      "licensing": {
+        "date": "Januar 2024 - Dezember 2024",
+        "title": "Offiziell lizenzierter und verstärkter Betrieb.",
+        "description": "Im Jahr 2024 erhielten wir unsere offizielle Geschäftslizenz, was unsere Glaubwürdigkeit untermauerte und es uns ermöglichte, unsere Aktivitäten zu erweitern und gleichzeitig die Qualität und die Einhaltung der Vorschriften für alle Dienstleistungen zu gewährleisten.",
+        "stats": {
+          "partnerships": {
+            "label": "Gegründete Partnerschaften",
+            "value": "25+"
+          },
+          "growthRate": {
+            "label": "Wachstumsrate",
+            "value": "40%"
+          }
+        },
+        "tags": [
+          "Lizenz",
+          "Betrieb",
+          "Erweiterung"
+        ]
+      },
+      "expansion": {
+        "date": "Jan 2025 - Gegenwart",
+        "title": "Expansion nach Karachi, Pakistan - neue Höhen erreichen.",
+        "description": "Im Jahr 2025 haben wir unsere Präsenz auf Karachi, Pakistan, ausgeweitet und damit einen wichtigen Meilenstein in unserem regionalen Wachstum gesetzt. Diese Expansion ermöglichte es uns, mehr Kunden zu betreuen, mit lokalen Unternehmen zusammenzuarbeiten und unsere Marktpräsenz zu stärken.",
+        "stats": {
+          "newOffices": {
+            "label": "Neue Ämter",
+            "value": "2+"
+          },
+          "regionalClients": {
+            "label": "Regionale Kunden",
+            "value": "500+"
+          }
+        },
+        "tags": [
+          "Erweiterung",
+          "Karachi",
+          "Wachstum"
+        ]
+      }
+    },
+    "future": {
+      "title": "Unsere Erfolgsgeschichte geht weiter",
+      "description": "JOBS ADMIRE erklimmt neue Höhen mit globaler Expansion, KI-gestützter Rekrutierung und erweiterten Support-Services. Wir widmen uns weiterhin der Aufgabe, Talente mit Chancen zu verbinden und so Erfolg, Innovation und Wirkung weltweit zu fördern.",
+      "cta": "Begleiten Sie uns auf unserer Reise",
+      "comingSoon": "Nächstes Mal"
+    }
+  },
+  "header": {
+    "badge": "UNTERNEHMENSMEILENSTEINE",
+    "title": {
+      "prefix": "Unser",
+      "highlight": "Erfolg",
+      "suffix": "Geschichte"
+    },
+    "description": "Erkunden Sie die wichtigsten Meilensteine und Errungenschaften, die unser Wachstum bestimmt haben"
+  },
+  "navigation": {
+    "timelineTitle": "Zeitleiste",
+    "interactiveTimeline": "Interaktive Zeitleiste",
+    "previous": "Vorherige",
+    "next": "Weiter",
+    "active": "Aktiv",
+    "milestone": "Meilenstein",
+    "of": "von",
+    "learnMore": "Mehr erfahren"
+  },
+  "timelineData": [
+    {
+      "date": "Januar 2023 - Dezember 2023",
+      "title": "Eröffnung unseres ersten Büros und Beginn unserer Reise",
+      "description": "Im Jahr 2023 eröffneten wir offiziell unsere Hauptniederlassung und begannen damit unsere Reise in Richtung Innovation und langfristiges Wachstum. In diesem Gründungsjahr wurden unsere Grundwerte und unsere strategische Ausrichtung für den künftigen Erfolg festgelegt.",
+      "iconKey": "Gebäude",
+      "color": "Himmel",
+      "stats": [
+        {
+          "label": "Betreute Kunden",
+          "value": "150+"
+        },
+        {
+          "label": "Begonnene Projekte",
+          "value": "20+"
+        }
+      ],
+      "tags": [
+        "Stiftung",
+        "Startup",
+        "Büroeinführung"
+      ],
+      "image": "/api/platzhalter/400/200"
+    },
+    {
+      "date": "Januar 2024 - Dezember 2024",
+      "title": "Offiziell zugelassene und gestärkte Betriebe",
+      "description": "Bis 2024 erhielten wir unsere offizielle Geschäftslizenz, was unsere Glaubwürdigkeit stärkte und unsere operativen Fähigkeiten erweiterte. Dieser Meilenstein ermöglichte es uns, konforme, hochwertige Dienstleistungen anzubieten und starke Partnerschaften auf dem Markt aufzubauen.",
+      "iconKey": "Schildkontrolle",
+      "color": "blau",
+      "stats": [
+        {
+          "label": "Gegründete Partnerschaften",
+          "value": "25+"
+        },
+        {
+          "label": "Wachstumsrate",
+          "value": "40%"
+        }
+      ],
+      "tags": [
+        "Lizenz",
+        "Betrieb",
+        "Erweiterung"
+      ],
+      "image": "/api/platzhalter/400/200"
+    },
+    {
+      "date": "Jan 2025 - Gegenwart",
+      "title": "Expansion nach Karachi, Pakistan - Erreichen neuer Höhepunkte",
+      "description": "Im Jahr 2025 expandierten wir nach Karatschi, Pakistan, und machten damit einen wichtigen Schritt in unserem regionalen Wachstum. Diese Expansion stärkte unser Servicenetz, verbesserte das Engagement vor Ort und ermöglichte es uns, ein breiteres Spektrum an Kunden und Branchen zu bedienen.",
+      "iconKey": "Kartenstecknadel",
+      "color": "Indigo",
+      "stats": [
+        {
+          "label": "Neue Ämter",
+          "value": "2+"
+        },
+        {
+          "label": "Regionale Kunden",
+          "value": "500+"
+        }
+      ],
+      "tags": [
+        "Erweiterung",
+        "Karachi",
+        "Wachstum"
+      ],
+      "image": "/api/platzhalter/400/200"
+    }
+  ],
+  "futureVision": {
+    "title": "Unsere Erfolgsgeschichte geht weiter",
+    "description": "JOBS ADMIRE erklimmt neue Höhen mit globaler Expansion, KI-gestützter Rekrutierung und erweiterten Support-Services. Wir widmen uns weiterhin der Aufgabe, Talente mit Chancen zu verbinden und so Erfolg, Innovation und Wirkung weltweit zu fördern.",
+    "cta": "Begleiten Sie uns auf unserer Reise",
+    "comingSoon": "Nächstes Mal"
+  },
+  "values": {
+    "header": {
+      "title": "Unsere Grundwerte",
+      "description": "Bei Jobs Admire haben wir uns verpflichtet, diese Werte bei allem, was wir tun, aufrechtzuerhalten, um einen hervorragenden Service zu gewährleisten."
+    },
+    "items": [
+      {
+        "title": "Integrität",
+        "description": "Wir verpflichten uns zu Ehrlichkeit und Transparenz in allen unseren Geschäften",
+        "image": "/Bilder/wert1.png",
+        "id": 1
+      },
+      {
+        "title": "Innovation",
+        "description": "Einbeziehung neuer Technologien und Ideen zur Verbesserung unserer Lösungen",
+        "image": "/images/valuee2.png",
+        "id": 2
+      },
+      {
+        "title": "Selbstverpflichtung",
+        "description": "Engagiert für den Erfolg unserer Kunden, Partner und Arbeitssuchenden",
+        "image": "/images/valuee3.png",
+        "id": 3
+      },
+      {
+        "title": "Exzellenz",
+        "description": "Streben nach den höchsten Standards in der Personalvermittlung und Einwanderung",
+        "image": "/images/valuee4.png",
+        "id": 4
+      },
+      {
+        "title": "Vielfalt",
+        "description": "Förderung der Chancengleichheit für Talente mit unterschiedlichem Hintergrund",
+        "image": "/images/valuee5.png",
+        "id": 5
+      },
+      {
+        "title": "Wachstum",
+        "description": "Förderung der kontinuierlichen persönlichen, beruflichen und organisatorischen Entwicklung",
+        "image": "/Bilder/valuee6.png",
+        "id": 6
+      }
+    ]
+  },
+  "whatwedo": {
+    "header": {
+      "title": "Was wir tun"
+    },
+    "tabs": {
+      "companies": {
+        "title": "Für Unternehmen",
+        "content": "JOBS ADMIRE hat es sich zur Aufgabe gemacht, Unternehmen wie dem Ihren dabei zu helfen, die besten Bewerber für jede Stelle zu finden. Wir verstehen die einzigartigen Einstellungsanforderungen Ihres Unternehmens und passen unsere Rekrutierungslösungen an diese an. Mit unserem umfassenden globalen Netzwerk bringen wir erstklassige Talente für Ihr Unternehmenswachstum hervor. Unsere zuverlässigen, lizenzierten Personalvermittlungsdienste gewährleisten einen reibungslosen und effizienten Einstellungsprozess, so dass Sie sich auf den Erfolg Ihres Unternehmens konzentrieren können.",
+        "image": "/Bilder/do3.png"
+      },
+      "recruitment": {
+        "title": "Personalvermittlungsagentur",
+        "content": "JOBS ADMIRE arbeitet mit Personalvermittlungsagenturen zusammen, um sie mit Spitzenkräften aus der ganzen Welt zusammenzubringen. Wir nutzen unser Fachwissen und unsere innovativen Rekrutierungstools, um den Einstellungsprozess zu rationalisieren und effiziente Vermittlungen zu gewährleisten. Durch die Zusammenarbeit mit uns kann Ihre Agentur ihren Talentpool stärken und Ihren Kunden einen Wettbewerbsvorteil verschaffen. Wir bieten nahtlose Rekrutierungslösungen, die auf Ihre spezifischen Bedürfnisse zugeschnitten sind, und sind damit der perfekte Partner für den Erfolg Ihrer Agentur.",
+        "image": "/Bilder/do2.png"
+      },
+      "candidates": {
+        "title": "Für Bewerberinnen und Bewerber",
+        "content": "JOBS ADMIRE hat es sich zur Aufgabe gemacht, Sie bei der Erschließung globaler Karrierechancen zu unterstützen. Unser personalisierter Job-Matching-Prozess stellt sicher, dass wir Sie bei jedem Schritt begleiten, um die richtige Stelle zu finden. Da wir Zugang zu einer Vielzahl von Stellen in Branchen wie IT, Gesundheitswesen und anderen haben, können Sie sicher sein, dass wir die perfekte Stelle für Ihre Fähigkeiten und Karrierewünsche finden werden. Vertrauen Sie darauf, dass JOBS ADMIRE Ihnen hilft, den nächsten Schritt auf Ihrem beruflichen Weg zu machen.",
+        "image": "/Bilder/do1.png"
+      }
+    },
+    "cta": {
+      "text": "Kontakt"
+    }
+  },
+  "statistics": {
+    "students": "Studenten",
+    "universities": "Universitäten",
+    "agencyMentor": "Agentur/Mentor"
+  }
+}

@@ -1,0 +1,233 @@
+{
+  "header": {
+    "heroImageAlt": "Recruitment professionals",
+    "program_title": "Certified Recruitment Partner Program",
+    "main_title_prefix": "Partner with Leading",
+    "main_title_suffix": "Recruitment Agencies",
+    "description": "We collaborate with trusted recruitment agencies to connect businesses with qualified, pre-screened professionals across various industries. Join our network and expand your reach with reliable hiring partnerships.",
+    "contact_us": "Contact Us",
+    "verified_candidates": "Verified Candidates",
+    "pre_screened": "Pre-Screened"
+  },
+  "form": {
+    "title": "Recruitment Partner Registration",
+    "subtitle": "Complete this form to start hiring qualified staff through JobsAdmire",
+    "company_info": {
+      "title": "Company Information",
+      "company_name": "Company Name *",
+      "company_name_placeholder": "Enter your company name",
+      "company_name_error": "Company name is required",
+      "contact_person": "Contact Person *",
+      "contact_person_placeholder": "Full name of contact person",
+      "contact_person_error": "Contact person is required",
+      "company_type": "Company Type *",
+      "company_type_placeholder": "Select company type",
+      "company_type_error": "Company type is required",
+      "types": {
+        "manufacturing": "Manufacturing/Factory",
+        "agriculture": "Agriculture",
+        "tourism": "Tourism & Hospitality",
+        "construction": "Construction",
+        "retail": "Retail & Services",
+        "other": "Other"
+      },
+      "years_in_business": "Years in Business",
+      "years_placeholder": "Select years",
+      "years_options": {
+        "1_2": "1-2 years",
+        "3_5": "3-5 years",
+        "6_10": "6-10 years",
+        "10_plus": "10+ years"
+      },
+      "license_number": "Business License Number",
+      "license_placeholder": "Enter license number",
+      "employees_count": "Current Number of Employees",
+      "employees_placeholder": "Select range",
+      "employees_options": {
+        "1_10": "1-10 employees",
+        "11_50": "11-50 employees",
+        "51_100": "51-100 employees",
+        "100_plus": "100+ employees"
+      }
+    },
+    "contact_info": {
+      "title": "Contact Information",
+      "email": "Email Address *",
+      "email_placeholder": "company@example.com",
+      "email_required": "Email is required",
+      "email_invalid": "Email is invalid",
+      "phone": "Phone Number *",
+      "phone_placeholder": "+90 xxx xxx xx xx",
+      "phone_required": "Phone number is required",
+      "country": "Country *",
+      "country_placeholder": "Enter your country",
+      "country_required": "Country is required",
+      "city": "City *",
+      "city_placeholder": "Enter your city",
+      "city_required": "City is required",
+      "address": "Business Address",
+      "address_placeholder": "Enter your complete business address",
+      "website": "Company Website",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "staffing_needs": {
+      "title": "Staffing Requirements",
+      "types_needed": "Types of Staff Needed",
+      "types_placeholder": "Select your desired postion",
+      "positions": {
+        "housekeeping": "Housekeeping",
+        "waiter": "Waiter/Waitress",
+        "waiter_assistant": "Waiter Assistant",
+        "receptionist": "Receptionist",
+        "guest_relations": "Guest Relations",
+        "bellboy": "Bellboy",
+        "animator": "Animator / Activity Coordinator",
+        "kitchen_assistant": "Kitchen Assistant",
+        "specialized_worker": "Specialized Skill Worker",
+        "cnc_operator": "CNC Operator",
+        "packing_worker": "Packing Worker",
+        "tailor": "Tailor",
+        "forklift_operator": "Forklift Operator",
+        "material_handler": "Material Handler",
+        "fruit_picker": "Fruit/Vegetable Picker",
+        "greenhouse_worker": "Greenhouse Worker",
+        "packing_sorting": "Packing & Sorting Staff",
+        "irrigation": "Irrigation / Planting Assistant",
+        "animal_husbandry": "Animal Husbandry (Dairy/Farming)",
+        "general_labourer": "General Labourer",
+        "painter": "Painter",
+        "electrician": "Electrician",
+        "tile_fixer": "Tile Fixer"
+      },
+      "industry_focus": "Primary Industry Focus",
+      "industry_placeholder": "Select your industry",
+      "industries": {
+        "factory": "Factory",
+        "agriculture": "Agriculture",
+        "tourism": "Tourism",
+        "construction": "Construction"
+      },
+      "description_label": "Tell Us About Your Staffing Needs",
+      "description_placeholder": "Describe your company, current staffing needs, number of positions to fill, required skills, and any specific requirements..."
+    },
+    "legal": {
+      "title": "Legal Agreement",
+      "agree_terms_prefix": "I agree to the",
+      "terms_link": "Terms and Conditions",
+      "agree_terms_suffix": "and understand the partnership requirements and obligations. *",
+      "terms_error": "You must agree to terms and conditions",
+      "agree_privacy_prefix": "I acknowledge that I have read and agree to the",
+      "privacy_link": "Privacy Policy",
+      "agree_privacy_suffix": "and data handling procedures. *",
+      "privacy_error": "You must agree to privacy policy"
+    },
+    "submit": {
+      "button": "Submit Application",
+      "submitting": "Submitting...",
+      "success_message": "Application submitted successfully! We will review your application and contact you within 2-3 business days.",
+      "footer_message": "We'll review your application and contact you within 2–3 business days."
+    }
+  },
+  "why_partner": {
+    "title": "Why Partner with JobsAdmire?",
+    "subtitle": "We connect businesses with qualified workers and handle all the complexities of international recruitment",
+    "items": {
+      "global_network": {
+        "title": "Global Recruitment Network",
+        "description": "Gain access to a vast international talent pool and connect with verified employers seeking qualified candidates across industries."
+      },
+      "trusted_brand": {
+        "title": "Trusted Brand & Legal Compliance",
+        "description": "Partner with a licensed recruitment agency recognized for transparent, ethical, and government-compliant operations."
+      },
+      "ai_driven": {
+        "title": "AI-Driven Hiring Platform",
+        "description": "Leverage our smart recruitment tools for candidate tracking, application management, and seamless communication with clients."
+      },
+      "end_to_end": {
+        "title": "End-to-End Support",
+        "description": "From candidate sourcing to visa and documentation assistance, we handle every step to ensure smooth hiring and onboarding."
+      },
+      "commission": {
+        "title": "Attractive Commission Structure",
+        "description": "Earn competitive commissions and recurring incentives for every successful placement through our recruiter partnership program."
+      },
+      "dedicated_team": {
+        "title": "Dedicated Partnership Team",
+        "description": "Receive continuous support, guidance, and updates from our partnership team to help you grow your recruitment success."
+      }
+    }
+  },
+  "industry_expertise": {
+    "title": "Industries We Serve",
+    "subtitle": "We provide qualified staff across key industries in Turkey",
+    "items": {
+      "factory": {
+        "title": "Factory",
+        "description": "Manufacturing and production line workers"
+      },
+      "agriculture": {
+        "title": "Agriculture",
+        "description": "Farm workers and agricultural specialists"
+      },
+      "tourism": {
+        "title": "Tourism",
+        "description": "Hotel staff, guides, and hospitality workers"
+      },
+      "construction": {
+        "title": "Construction",
+        "description": "Builders, engineers, and construction workers"
+      }
+    }
+  },
+  "platform_features": {
+    "title": "Our Recruitment Platform",
+    "subtitle": "Streamlined technology and expert support to find the right staff for your business",
+    "items": {
+      "verified_candidates": {
+        "title": "Verified Candidates",
+        "description": "All candidates are pre-screened and verified"
+      },
+      "quick_placement": {
+        "title": "Quick Placement",
+        "description": "Average placement time of 2-3 weeks"
+      },
+      "document_processing": {
+        "title": "Document Processing",
+        "description": "We handle all work permits and legal paperwork"
+      },
+      "ongoing_support": {
+        "title": "Ongoing Support",
+        "description": "Continuous support after placement"
+      }
+    }
+  },
+  "benefits": {
+    "title": "Partnership Benefits",
+    "subtitle": "Join hundreds of businesses already working with JobsAdmire",
+    "items": {
+      "talent_pool": {
+        "title": "Pre-Screened Talent Pool",
+        "description": "Access qualified candidates ready to work in Turkey"
+      },
+      "fast_process": {
+        "title": "Fast Recruitment Process",
+        "description": "Fill positions quickly with our streamlined hiring system"
+      },
+      "legal_compliance": {
+        "title": "Legal Compliance",
+        "description": "We handle all work permits and visa documentation"
+      },
+      "industry_matching": {
+        "title": "Industry-Specific Matching",
+        "description": "Get candidates matched to your specific industry needs"
+      }
+    }
+  },
+  "contact_footer": {
+    "title": "Ready to Build Your Team?",
+    "description": "Have questions about our recruitment services? Our dedicated team is ready to help you find the perfect staff for your business.",
+    "business_hours": "Business Hours: Monday - Friday, 9:00 AM - 6:00 PM (Turkey Time)",
+    "response_time": "Average Response Time: Within 2 hours during business hours"
+  }
+}

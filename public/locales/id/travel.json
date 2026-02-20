@@ -1,0 +1,131 @@
+{
+  "navigation": {
+    "package": "Kemasan",
+    "home": "Rumah"
+  },
+  "hero": {
+    "title": {
+      "line1": "Mulailah",
+      "line2": "Perjalanan Hari Ini"
+    },
+    "description": "Ajukan permohonan undangan elektronik resmi dengan mudah untuk kebutuhan perjalanan Anda. Baik untuk wisata, bisnis, atau konferensi/seminar, Jobs Admire menyederhanakan proses visa Anda."
+  },
+  "form": {
+    "iAmFrom": "Saya berasal dari",
+    "iLiveIn": "Saya tinggal di",
+    "invitationFor": "Undangan untuk",
+    "selectCountry": "Pilih negara",
+    "selectDestination": "Pilih tujuan",
+    "searchCountries": "Cari negara...",
+    "loadingCountries": "Memuat negara...",
+    "noCountriesFound": "Tidak ada negara yang ditemukan",
+    "findNow": "Cari Sekarang"
+  },
+  "packages": {
+    "title": "Pilih Paket Layanan",
+    "description": "Pilih dari paket layanan komprehensif kami yang dirancang untuk mewujudkan impian perjalanan Anda. Kami menawarkan proses cepat, harga kompetitif, dan panduan ahli untuk memastikan permohonan visa Anda berhasil dan tanpa stres.",
+    "showingPackagesFor": "Menampilkan paket untuk:",
+    "packageFor": "Paket Untuk",
+    "selectedCountry": "Negara yang Dipilih",
+    "recommended": "Direkomendasikan",
+    "save": "Menyimpan",
+    "getStarted": "Mulai",
+    "needHelp": "Butuh bantuan dalam memilih?",
+    "contactExperts": "Hubungi pakar kami",
+    "processingTime48Hours": "Waktu pemrosesan undangan adalah 48 jam.",
+    "documentationProcessingTime48Hours": "Waktu pemrosesan dokumen adalah 48 jam.",
+    "features": {
+      "fastProcessing": "Pemrosesan Cepat",
+      "hours96Valid": "Berlaku selama 96 jam",
+      "airportTransit": "Transit Bandara",
+      "days14Valid": "Berlaku selama 14 hari",
+      "days30Valid": "Berlaku 30 Hari",
+      "touristBusiness": "Orang tambahan (di atas 5 orang): USD 200 per orang",
+      "touristBusinesss": "Turis | Bisnis",
+      "singleEntry": "Entri Tunggal",
+      "singleMultipleEntry": "Entri Tunggal | Entri Ganda"
+    }
+  },
+  "alerts": {
+    "selectAllFields": "Silakan pilih semua kolom yang wajib diisi."
+  },
+  "errors": {
+    "failedToLoadCountries": "Gagal memuat negara"
+  },
+  "visaApplication": {
+    "stepTitles": {
+      "step1": "Informasi Lokasi",
+      "step2": "Persyaratan & Konfirmasi",
+      "step3": "Unggah Dokumen",
+      "step4": "Rincian Pribadi",
+      "step5": "Tinjau & Kirim Aplikasi"
+    },
+    "submitFailed": "Gagal mengirim email",
+    "errors": {
+      "fromCountry": "Silakan pilih negara asal Anda.",
+      "toCountry": "Silakan pilih negara tempat Anda tinggal",
+      "toCountrySame": "Negara asal dan negara tujuan harus berbeda.",
+      "hasValidPassport": "Mohon konfirmasi bahwa Anda memiliki paspor yang masih berlaku.",
+      "hasPictureHeadshot": "Mohon konfirmasi bahwa Anda memiliki foto/potret diri.",
+      "confirmNoActiveApplication": "Mohon konfirmasi tidak ada aplikasi aktif.",
+      "confirmGovernmentDiscretion": "Harap perhatikan kebijakan pemerintah.",
+      "passportDocument": "Silakan unggah dokumen paspor Anda.",
+      "pictureHeadshot": "Silakan unggah foto/potret diri Anda.",
+      "firstName": "Nama depan wajib diisi.",
+      "lastName": "Nama belakang wajib diisi.",
+      "phoneNumber": "Nomor telepon wajib diisi.",
+      "email": "Email wajib diisi.",
+      "passportNumber": "Nomor paspor diperlukan.",
+      "profession": "Profesi dibutuhkan",
+      "travelDate": "Tanggal perjalanan wajib diisi.",
+      "travelToDate": "Tanggal pengembalian wajib diisi.",
+      "travelPurpose": "Tujuan perjalanan diperlukan",
+      "emailInvalid": "Silakan masukkan alamat email yang valid.",
+      "phoneInvalid": "Silakan masukkan nomor telepon yang valid.",
+      "travelDatePast": "Tanggal perjalanan tidak boleh di masa lalu.",
+      "travelToDateAfter": "Tanggal kepulangan harus setelah tanggal perjalanan.",
+      "travelerNameRequired": "Nama pelancong {{index}} wajib diisi",
+      "travelerPhoneRequired": "Ponsel {{index}} pelancong diperlukan"
+    },
+    "placeholders": {
+      "searchCountries": "Cari negara...",
+      "selectCountry": "Pilih negara",
+      "firstName": "Nama depan",
+      "lastName": "Nama Belakang",
+      "phoneNumber": "Nomor telepon",
+      "email": "Alamat email",
+      "from": "Dari",
+      "liveIn": "Tinggal di",
+      "passportNumber": "Nomor paspor",
+      "profession": "Profesi",
+      "dateFormat": "mm/dd/yyyy",
+      "travelPurpose": "Tujuan perjalanan",
+      "numberOfTravellers": "Jumlah Pelancong",
+      "fullName": "Nama Lengkap"
+    },
+    "labels": {
+      "applicationDetails": "Rincian Aplikasi",
+      "submitApplication": "Kirim Aplikasi",
+      "transitVisa": "VISA TRANSIT",
+      "transitVisaShort": "Visa Transit",
+      "notProvided": "Tidak disediakan",
+      "notUploaded": "Belum diunggah",
+      "price": "Harga:",
+      "submitting": "Mengirimkan...",
+      "uploadDocumentsTitle": "Silakan unggah dokumen-dokumen berikut.",
+      "acceptedFormats": "Format yang diterima:",
+      "acceptedFormatsValue": "PDF, JPG atau PNG",
+      "details": "Detail",
+      "review": "Tinjauan",
+      "next": "Berikutnya",
+      "visaFor": "VISA UNTUK:",
+      "currency": "USD"
+    }
+  },
+  "packageTypes": {
+    "individualTouristInvitation": "Undangan Wisatawan Perorangan",
+    "individualBusinessInvitation": "Undangan Bisnis Perorangan",
+    "familyTouristInvitation": "Undangan Wisata Keluarga",
+    "singleEntry": "Entri Tunggal"
+  }
+}

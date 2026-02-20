@@ -1,0 +1,1728 @@
+{
+  "herosection": {
+    "badge": "Mga Eksklusibong Paglalakbay",
+    "title": "Tuklasin ang Iyong Susunod na Pakikipagsapalaran",
+    "description": "Damhin ang mga nakamamanghang destinasyon at lumikha ng mga di-malilimutang alaala gamit ang aming mga premium na travel package na iniayon sa iyong mga pangarap.",
+    "currentlyViewing": {
+      "label": "Kasalukuyang Pinapanood"
+    },
+    "buttons": {
+      "primary": "Mag-explore Ngayon",
+      "secondary": "Tingnan ang Lahat ng Destinasyon"
+    },
+    "destinationCounter": "Destinasyon {kasalukuyan}/{kabuuan}",
+    "destinations": [
+      {
+        "img": "/mga imahe/ihc.png",
+        "name": "Calgary",
+        "country": "Canada",
+        "alt": "Magandang tanawin ng Calgary, Canada"
+      },
+      {
+        "img": "/mga imahe/ihm.png",
+        "name": "Montréal",
+        "country": "Canada",
+        "alt": "Nakamamanghang tanawin ng Montreal, Canada"
+      },
+      {
+        "img": "/mga imahe/iho.png",
+        "name": "Ottawa",
+        "country": "Canada",
+        "alt": "Mga magagandang palatandaan sa Ottawa, Canada"
+      },
+      {
+        "img": "/mga imahe/iht.png",
+        "name": "Toronto",
+        "country": "Canada",
+        "alt": "Iconic na skyline ng Toronto, Canada"
+      },
+      {
+        "img": "/mga imahe/ihv.png",
+        "name": "Vancouver",
+        "country": "Canada",
+        "alt": "Nakamamanghang tanawin ng Vancouver, Canada"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableofcontents": {
+    "header": {
+      "title": "Talaan ng mga Nilalaman",
+      "subtitle": "Mag-navigate sa mga seksyon"
+    },
+    "status": {
+      "currentlyReading": "Kasalukuyang nagbabasa"
+    },
+    "footer": {
+      "sectionsCount": "{count} na mga seksyon na maaaring tuklasin"
+    },
+    "quickNav": {
+      "title": "Mabilis na Nabigasyon",
+      "buttonLabel": "Mabilis na menu ng nabigasyon",
+      "footer": "Mag-scroll sa mga seksyong {count}"
+    },
+    "accessibility": {
+      "openMenu": "Buksan ang menu ng nabigasyon",
+      "closeMenu": "Isara ang menu ng nabigasyon"
+    },
+    "sections": [
+      {
+        "title": "Mga Katotohanan Tungkol sa Canada",
+        "id": 1
+      },
+      {
+        "title": "Mga Opsyon sa Visa para sa Paglipat sa Canada",
+        "id": 2
+      },
+      {
+        "title": "Mga Mahahalagang Kinakailangan para sa Paglipat sa Canada",
+        "id": 3
+      },
+      {
+        "title": "Pagkuha ng Trabaho sa Canada bilang isang Dayuhan",
+        "id": 4
+      },
+      {
+        "title": "Paglipat sa Canada mula sa US",
+        "id": 5
+      },
+      {
+        "title": "Paglipat sa Canada mula sa UK",
+        "id": 6
+      },
+      {
+        "title": "Magkano ang magagastos sa paglipat sa Canada?",
+        "id": 7
+      },
+      {
+        "title": "Paglipat kasama ang mga alagang hayop patungong Canada",
+        "id": 8
+      }
+    ]
+  },
+  "canadafacts": {
+    "navigation": {
+      "previous": "Nakaraang Katotohanan",
+      "next": "Susunod na Katotohanan"
+    },
+    "allFactsSection": {
+      "title": "Lahat ng Katotohanan Tungkol sa Canada"
+    },
+    "accessibility": {
+      "selectFact": "Pumili ng katotohanan",
+      "goToFact": "Pumunta sa katotohanan",
+      "previousFact": "Pumunta sa nakaraang katotohanan",
+      "nextFact": "Pumunta sa susunod na katotohanan"
+    },
+    "facts": [
+      {
+        "title": "Pinakamahabang Baybayin sa Mundo",
+        "description": "Ang Canada ang may pinakamahabang baybayin sa mundo, na umaabot ng mahigit 202,080 kilometro sa kahabaan ng Karagatang Atlantiko, Pasipiko, at Artiko.",
+        "icon": "🌊"
+      },
+      {
+        "title": "Tahanan ng 20% ng Tubig-tabang ng Mundo",
+        "description": "Ang Canada ay nagtataglay ng humigit-kumulang 20% ng tubig-tabang sa mundo sa hindi mabilang na mga lawa, ilog, at glacier nito.",
+        "icon": "💧"
+      },
+      {
+        "title": "Kabisera ng Osong Polo",
+        "description": "Ang Churchill, Manitoba ay kilala bilang 'Kabisera ng Osong Polar ng Mundo' dahil ito ay nasa pangunahing ruta ng migrasyon ng mga osong polar.",
+        "icon": "🐻‍❄️"
+      },
+      {
+        "title": "Saklaw ng mga Pambansang Parke ang 8% ng Bansa",
+        "description": "Ang mga pambansang parke at reserba ng pambansang parke ng Canada ay sumasaklaw sa humigit-kumulang 8% ng bansa, na nagpapanatili ng pagkakaiba-iba ng ekolohiya.",
+        "icon": "🏞️"
+      },
+      {
+        "title": "Mga Imbentor ng Poutine",
+        "description": "Ang iconic na ulam na ito ng French fries na nilagyan ng cheese curds at gravy ay nagmula sa Quebec noong huling bahagi ng 1950s.",
+        "icon": "🍟"
+      },
+      {
+        "title": "Dalawang Opisyal na Wika",
+        "description": "Ang Canada ay may dalawang opisyal na wika: Ingles at Pranses. Humigit-kumulang 23% ng mga Canadiano ang nagsasalita ng Pranses bilang kanilang unang wika.",
+        "icon": "🗣️"
+      },
+      {
+        "title": "Kapital ng Maple Syrup",
+        "description": "Ang Canada ay gumagawa ng humigit-kumulang 71% ng maple syrup sa mundo, kung saan ang Quebec ang pinakamalaking prodyuser sa buong mundo.",
+        "icon": "🍁"
+      },
+      {
+        "title": "Pangalawa sa Pinakamalaking Bansa sa Mundo",
+        "description": "Sa lawak na 9.98 milyong kilometro kuwadrado, ang Canada ang pangalawa sa pinakamalaking bansa sa mundo ayon sa kabuuang lawak.",
+        "icon": "🗺️"
+      },
+      {
+        "title": "Tahanan ng Northern Lights",
+        "description": "Nag-aalok ang Canada ng ilan sa mga pinakamagandang pagkakataon para sa panonood ng Aurora Borealis, lalo na sa Northwest Territories at Yukon.",
+        "icon": "🌌"
+      },
+      {
+        "title": "Lipunang Multikultural",
+        "description": "Ang Canada ay tahanan ng mga taong mula sa mahigit 200 etnikong pinagmulan, kaya isa ito sa mga bansang may pinaka-multikultural na kultura sa mundo.",
+        "icon": "🌍"
+      }
+    ]
+  },
+  "canadajobguide": {
+    "tableOfContents": {
+      "title": "Mga Nilalaman ng Gabay"
+    },
+    "accessibility": {
+      "toggleSection": "I-toggle ang seksyon"
+    },
+    "sections": {
+      "jobMarket": {
+        "title": "Pag-unawa sa Pamilihan ng Trabaho sa Canada",
+        "description": "Nag-aalok ang Canada ng iba't ibang oportunidad sa trabaho sa iba't ibang sektor, kung saan maraming industriya ang aktibong naghahanap ng mga talentong internasyonal.",
+        "inDemandTitle": "Mga Sektor na In-Demand para sa mga Dayuhan:",
+        "sectors": [
+          {
+            "name": "Pangangalagang pangkalusugan",
+            "description": "Mga doktor, nars, manggagawa sa pangangalaga"
+          },
+          {
+            "name": "IT at Teknolohiya",
+            "description": "Mga inhinyero ng software, mga siyentipiko ng datos"
+          },
+          {
+            "name": "Inhinyeriya",
+            "description": "Sibil, mekanikal, elektrikal"
+          },
+          {
+            "name": "Pananalapi",
+            "description": "Pagbabangko, fintech, accounting"
+          },
+          {
+            "name": "Mga Bihasang Trabaho",
+            "description": "Mga welder, electrician, tubero"
+          },
+          {
+            "name": "Agrikultura",
+            "description": "Mga tagapamahala ng sakahan, mga agronomista"
+          }
+        ],
+        "languageNote": "Ang Canada ay may dalawang opisyal na wika: Ingles at Pranses. Mahalaga ang kahusayan sa Ingles para sa karamihan ng mga posisyon, ngunit ang bilingguwalismo ay isang kalamangan, lalo na sa mga tungkulin sa Quebec at pederal na pamahalaan."
+      },
+      "immigration": {
+        "title": "Mga Landas ng Imigrasyon sa Canada",
+        "description": "Nag-aalok ang Canada ng maraming landas sa imigrasyon para sa mga bihasang manggagawa, kung saan ang Express Entry ang pangunahing sistema.",
+        "expressEntry": {
+          "title": "Sistema ng Mabilisang Pagpasok",
+          "description": "Ang pangunahing landas para sa mga bihasang imigrante:",
+          "points": [
+            "Namamahala ng mga aplikasyon para sa Federal Skilled Worker Program, Federal Skilled Trades Program, at Canadian Experience Class",
+            "Batay sa isang Komprehensibong Sistema ng Pagraranggo (CRS) na nagbibigay ng marka sa mga kandidato",
+            "Mga puntos na iginagawad para sa edad, edukasyon, karanasan sa trabaho, kasanayan sa wika, at mga salik sa kakayahang umangkop",
+            "Ang mga regular na raffle ay nag-aanyaya sa mga kandidatong may pinakamataas na iskor na mag-aplay para sa permanenteng paninirahan"
+          ]
+        },
+        "otherPathways": {
+          "title": "Iba pang mga Landas ng Imigrasyon:",
+          "programs": [
+            {
+              "name": "Mga Programa ng Nominado ng Lalawigan (PNP)",
+              "description": "Maaaring magmungkahi ng mga kandidato ang mga probinsya upang matugunan ang mga lokal na pangangailangang pang-ekonomiya"
+            },
+            {
+              "name": "Programa sa Imigrasyon sa Atlantiko",
+              "description": "Para sa mga gustong magtrabaho sa mga probinsya ng Atlantiko"
+            },
+            {
+              "name": "Piloto ng Imigrasyon sa Kanayunan at Hilaga",
+              "description": "Para sa mas maliliit na komunidad sa labas ng mga pangunahing sentro ng lungsod"
+            },
+            {
+              "name": "Pandaigdigang Agos ng Talento",
+              "description": "Mga permit sa trabaho na mabilis na makukuha para sa mga manggagawa sa teknolohiya at mga imbentor"
+            },
+            {
+              "name": "Permit sa Trabaho Pagkatapos ng Graduation",
+              "description": "Para sa mga internasyonal na estudyante na nakapagtapos ng pag-aaral sa Canada"
+            }
+          ]
+        },
+        "conclusion": "Karamihan sa mga programa sa imigrasyon sa Canada ay humahantong sa permanenteng paninirahan, na nagbibigay-daan sa iyong magtrabaho para sa anumang employer at kalaunan ay mag-aplay para sa pagkamamamayan."
+      },
+      "jobOpportunities": {
+        "title": "Paghahanap ng mga Oportunidad sa Trabaho sa Canada",
+        "portalsTitle": "Mga Sikat na Portal ng Trabaho sa Canada:",
+        "portals": [
+          "Tunay ngang Canada",
+          "Workopolis",
+          "LinkedIn",
+          "Halimaw",
+          "Bangko sa Trabaho",
+          "Glassdoor",
+          "Eluta",
+          "ZipRecruiter"
+        ],
+        "tipsTitle": "Mga Tip sa Propesyonal:",
+        "tips": [
+          "Bisitahin ang opisyal na website ng Job Bank para sa impormasyon at mga oportunidad sa merkado ng paggawa.",
+          "Maghanap ng mga employer na may kasaysayan ng pagkuha ng mga internasyonal na talento",
+          "Iangkop ang iyong resume sa format na Canadian (karaniwan ay 1-2 pahina, na nakatuon sa mga nagawa)",
+          "Isama ang mga pagtatasa ng kredensyal sa Canada kung mayroon kang mga kwalipikasyon sa ibang bansa",
+          "Network sa pamamagitan ng mga organisasyong panlalawigan at munisipal na nagbibigay ng serbisyo sa mga imigrante"
+        ]
+      },
+      "noc": {
+        "title": "Pambansang Klasipikasyon ng Trabaho (NOC)",
+        "description": "Ginagamit ng Canada ang sistemang National Occupational Classification (NOC) upang ikategorya ang mga trabaho. Ang pag-unawa sa iyong NOC code ay mahalaga para sa imigrasyon.",
+        "categories": {
+          "title": "Mga Kategorya ng TEER:",
+          "teer": [
+            {
+              "name": "TEER 0",
+              "description": "Mga trabaho sa pamamahala"
+            },
+            {
+              "name": "TEER 1",
+              "description": "Mga trabahong nangangailangan ng mga digri sa unibersidad"
+            },
+            {
+              "name": "TEER 2",
+              "description": "Mga trabahong nangangailangan ng mga diploma sa kolehiyo o pagsasanay sa pag-aaral"
+            },
+            {
+              "name": "TEER 3",
+              "description": "Mga trabahong nangangailangan ng sekundaryang paaralan at/o pagsasanay na partikular sa trabaho"
+            },
+            {
+              "name": "TEER 4",
+              "description": "Mga trabahong nangangailangan ng maikling pagpapakita ng trabaho at walang pormal na edukasyon"
+            },
+            {
+              "name": "TEER 5",
+              "description": "Mga trabahong papasok sa antas na nangangailangan ng maikling demonstrasyon ng trabaho"
+            }
+          ]
+        },
+        "importance": {
+          "title": "Bakit Ito Mahalaga:",
+          "points": [
+            "Karamihan sa mga programa ng skilled worker ay nangangailangan ng mga trabahong TEER 0, 1, 2, o 3",
+            "Tinutukoy ang pagiging karapat-dapat para sa mga partikular na programa sa imigrasyon",
+            "Nakakaapekto sa mga puntos ng CRS sa Express Entry",
+            "Nakakatulong na mapatunayan na ang iyong karanasan sa trabaho ay tumutugma sa iyong alok na trabaho",
+            "Ginagamit upang matukoy ang umiiral na mga rate ng sahod"
+          ]
+        },
+        "findCode": "Hanapin ang iyong NOC code sa opisyal na website ng Immigration, Refugees and Citizenship Canada (IRCC)."
+      },
+      "remoteWork": {
+        "title": "Mga Opsyon sa Remote Work sa Canada",
+        "intro": "Ang remote work ay lalong nagiging karaniwan sa Canada, lalo na sa mga industriya ng teknolohiya, pananalapi, at malikhaing industriya:",
+        "points": [
+          "Para makapagtrabaho nang malayuan <span class=\"font-medium\">para sa isang kompanya sa Canada</span>, kailangan mo pa rin ng naaangkop na awtorisasyon sa pagtatrabaho",
+          "Pinapadali ng Global Talent Stream ang mas mabilis na mga permit sa trabaho para sa mga manggagawang tech, kabilang ang mga remote na trabaho",
+          "Maraming kompanya sa Canada ang nag-aalok ngayon ng permanenteng remote o hybrid na mga kaayusan",
+          "Digital Nomad Visa: Ipinakilala ng Canada ang isang bagong Digital Nomad visa noong 2024 para sa mga remote worker na nagtatrabaho sa mga dayuhang kumpanya"
+        ],
+        "taxConsiderations": {
+          "title": "Mga Pagsasaalang-alang sa Buwis:",
+          "points": [
+            "Ang pagtatrabaho sa Canada ay karaniwang ginagawa kang residente ng buwis",
+            "Maging mulat sa mga potensyal na isyu ng dobleng pagbubuwis",
+            "Ang Canada ay may mga kasunduan sa buwis sa maraming bansa",
+            "Kumonsulta sa isang propesyonal sa buwis para sa iyong partikular na sitwasyon"
+          ]
+        }
+      },
+      "teaching": {
+        "title": "Pagtuturo sa Canada",
+        "description": "Ang pagtuturo ay nag-aalok ng magagandang pagkakataon para sa mga kwalipikadong internasyonal na kandidato sa Canada.",
+        "k12": {
+          "title": "Pagtuturo ng K-12:",
+          "requirements": [
+            "Ang bawat lalawigan ay nagreregula ng sarili nitong sertipikasyon sa pagtuturo",
+            "Karaniwang nangangailangan ng Bachelor of Education o katumbas nito",
+            "Kailangang suriin ng mga awtoridad sa pagtuturo sa probinsya ang mga dayuhang kredensyal",
+            "Mataas ang pangangailangan para sa mga guro ng French immersion"
+          ]
+        },
+        "esl": {
+          "title": "Pagtuturo ng ESL:",
+          "requirements": [
+            "Karaniwang kinakailangan ang sertipikasyon ng TESL/TESOL",
+            "Mga oportunidad sa mga paaralan ng wika, mga kolehiyo sa komunidad, at mga ahensya ng paninirahan",
+            "Karaniwang kinakailangan ang bachelor's degree",
+            "Mataas ang demand sa mga lugar na may malaking populasyon ng mga imigrante"
+          ]
+        },
+        "conclusion": "Maraming probinsya ang may mga partikular na programa upang mapabilis ang sertipikasyon para sa mga kwalipikadong dayuhang guro, lalo na sa mga asignaturang may kakulangan."
+      },
+      "resumeInterview": {
+        "title": "Mga Resume at Panayam sa Canada",
+        "resume": {
+          "title": "Format ng Resume sa Canada:",
+          "points": [
+            "Tinatawag na \"resume\" sa halip na CV",
+            "Karaniwang hindi hihigit sa 1-2 pahina",
+            "Walang litrato",
+            "Walang personal na detalye tulad ng edad, katayuan sa pag-aasawa, o relihiyon",
+            "Baliktad na kronolohikal na pagkakasunod-sunod (pinakabagong karanasan muna)",
+            "Tumutok sa mga nagawa kaysa sa mga tungkulin lamang",
+            "Isama ang pagtatasa ng mga kredensyal sa Canada kung naaangkop"
+          ]
+        },
+        "interview": {
+          "title": "Mga Inaasahan sa Panayam:",
+          "expectations": [
+            "Mahalaga ang pagiging nasa oras (karaniwan ay 10-15 minutong mas maaga)",
+            "Kaswal o pormal na negosyo depende sa industriya",
+            "Maghanda para sa mga tanong tungkol sa pag-uugali (\"Sabihin mo sa akin ang tungkol sa isang pagkakataon kung kailan...\")",
+            "Masusing saliksikin ang kompanya at ang mga pinahahalagahan nito",
+            "Pinahahalagahan ng mga Canadian ang pagiging magalang, kaya maging magalang ngunit may kumpiyansa",
+            "Maghanda ng mga maalalahaning tanong tungkol sa tungkulin at kultura ng kumpanya"
+          ]
+        }
+      },
+      "networking": {
+        "title": "Networking sa Canada",
+        "description": "Mahalaga ang networking sa merkado ng trabaho sa Canada, kung saan maraming posisyon ang pinupunan bago i-advertise.",
+        "strategies": [
+          "Sumali sa mga propesyonal na asosasyon sa iyong larangan",
+          "Dumalo sa mga pagpupulong, kumperensya, at mga job fair sa industriya",
+          "Makilahok sa mga programa sa paninirahan ng mga imigrante sa probinsya",
+          "Kumonekta sa mga alumni network kung nag-aral ka sa Canada",
+          "Magboluntaryo upang makakuha ng karanasan sa Canada at bumuo ng mga koneksyon",
+          "Gumawa ng isang malakas na profile sa LinkedIn na na-optimize para sa merkado ng Canada"
+        ],
+        "resources": {
+          "title": "Mga Pangunahing Mapagkukunan para sa Pag-areglo:",
+          "list": [
+            "Mga organisasyong naglilingkod sa mga imigrante sa iyong lungsod",
+            "Mga serbisyo para sa mga bagong dating sa probinsya",
+            "Mga programa sa pagtuturo na partikular sa industriya",
+            "Mga kaganapan sa networking para sa mga internasyonal na propesyonal",
+            "Pagpapayo sa trabaho na pinopondohan ng gobyerno ng Canada"
+          ]
+        }
+      }
+    },
+    "checklist": {
+      "title": "Checklist sa Paghahanap ng Trabaho sa Canada",
+      "categories": [
+        {
+          "title": "Bago Ka Mag-apply",
+          "items": {
+            "0": "Ipasuri ang iyong mga kredensyal sa ibang bansa (ECA)",
+            "1": "I-format ang iyong resume ayon sa mga pamantayan ng Canada",
+            "2": "Tukuyin ang iyong NOC code at kategorya ng TEER",
+            "3": "Kumuha ng mga kinakailangang pagsusulit sa wika (IELTS/CELPIP/TEF)"
+          }
+        },
+        {
+          "title": "Mga Hakbang sa Imigrasyon",
+          "items": {
+            "0": "Gumawa ng profile para sa Express Entry kung kwalipikado",
+            "1": "Magsaliksik ng mga programa para sa mga nominado sa probinsya",
+            "2": "Suriin ang mga opsyon sa work permit na partikular sa employer",
+            "3": "Maghanda ng patunay ng pondo para sa pagbabayad"
+          }
+        },
+        {
+          "title": "Mga Paghahanda sa Pag-areglo",
+          "items": {
+            "0": "Pananaliksik sa gastos ng pamumuhay sa mga target na lungsod",
+            "1": "Makipag-ugnayan sa mga ahensya ng paninirahan",
+            "2": "Sumali sa mga social media group para sa mga baguhan",
+            "3": "Alamin ang tungkol sa pangangalagang pangkalusugan at mga sistemang panlipunan"
+          }
+        }
+      ]
+    }
+  },
+  "canadamovingcosts": {
+    "accessibility": {
+      "toggleSection": "I-toggle ang seksyon para sa"
+    },
+    "costSections": [
+      {
+        "id": "visa-pr",
+        "icon": "🛂",
+        "title": "Visa at Permanenteng Paninirahan",
+        "amount": "$1,500–$3,000",
+        "details": "Kasama ang mga bayarin sa aplikasyon, mga medikal na eksaminasyon, mga pagsusulit sa wika",
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "pabahay",
+        "icon": "🏠",
+        "title": "Pabahay",
+        "amount": "$2,000–$5,000 paunang bayad",
+        "details": "Renta sa una at huling buwan + deposito sa seguridad",
+        "subItems": {
+          "0": {
+            "title": "Mga pangunahing lungsod (buwan-buwan)",
+            "amount": "$1,500–$3,000"
+          },
+          "1": {
+            "title": "Mas maliliit na lungsod/bayan (buwan-buwan)",
+            "amount": "$800–$1,500"
+          }
+        },
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "pagpapadala",
+        "icon": "📦",
+        "title": "Pagpapadala (Opsyonal)",
+        "amount": "$5,000–$10,000",
+        "details": "Maliit hanggang katamtamang laki ng lalagyan. Isaalang-alang ang mga lokal na opsyon sa muwebles upang mabawasan ang mga gastos.",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "transportasyon",
+        "icon": "🚗",
+        "title": "Transportasyon",
+        "amount": "$500–$5,000",
+        "details": "Pass sa pampublikong transportasyon o pagbili ng segunda-manong sasakyan",
+        "subItems": {
+          "0": {
+            "title": "Buwanang pass sa transportasyon",
+            "amount": "$90–$150"
+          },
+          "1": {
+            "title": "Segunda-manong kotse",
+            "amount": "$5,000–$15,000"
+          },
+          "2": {
+            "title": "Seguro sa kotse (buwanang)",
+            "amount": "$150–$300"
+          }
+        },
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "mga kagamitan",
+        "icon": "💡",
+        "title": "Mga Utility at Pag-setup ng Internet",
+        "amount": "$200–$400",
+        "details": "Mga bayarin sa koneksyon at mga deposito",
+        "subItems": {
+          "0": {
+            "title": "Buwanang mga kagamitan",
+            "amount": "$150–$300"
+          },
+          "1": {
+            "title": "Internet (buwan-buwan)",
+            "amount": "$60–$100"
+          },
+          "2": {
+            "title": "Cellphone (buwan-buwan)",
+            "amount": "$50–$100"
+          }
+        },
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "pangangalagang pangkalusugan",
+        "icon": "🏥",
+        "title": "Saklaw ng Pangangalagang Pangkalusugan",
+        "amount": "$0–$900",
+        "details": "Nag-iiba-iba depende sa probinsya. Ang ilan ay may mga panahon ng paghihintay para sa pampublikong pangangalagang pangkalusugan.",
+        "subItems": {
+          "0": {
+            "title": "Pribadong seguro (buwanang panahon ng paghihintay)",
+            "amount": "$75–$150"
+          }
+        },
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "araw-araw",
+        "icon": "🛒",
+        "title": "Mga Gastos sa Araw-araw",
+        "amount": "$800–$1,500 buwan-buwan",
+        "subItems": {
+          "0": {
+            "title": "Mga Grocery",
+            "amount": "$400–$800/buwan"
+          },
+          "1": {
+            "title": "Kainan sa labas",
+            "amount": "$200–$400/buwan"
+          },
+          "2": {
+            "title": "Libangan",
+            "amount": "$100–$300/buwan"
+          }
+        },
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "taglamig",
+        "icon": "❄️",
+        "title": "Mga Pangunahing Kagamitan sa Taglamig",
+        "amount": "$500–$1,000",
+        "details": "Mga damit pangtaglamig, bota, aksesorya",
+        "color": "bg-sky-500"
+      }
+    ],
+    "totalCosts": {
+      "title": "Kabuuang Tinatayang Gastos",
+      "categories": [
+        {
+          "title": "Paunang Pag-setup (Walang Pagpapadala)",
+          "amount": "$5,000–$10,000",
+          "description": "Kasama ang mga bayarin sa visa, pabahay para sa unang buwan, mga deposito, gamit pangtaglamig, at mga pangunahing gastos sa pag-setup"
+        },
+        {
+          "title": "Paunang Pag-setup (Kasama ang Pagpapadala)",
+          "amount": "$10,000–$20,000+",
+          "description": "Kasama ang lahat ng pangunahing gastos kasama ang mga lalagyan ng pagpapadala ng mga gamit sa bahay"
+        },
+        {
+          "title": "Buwanang Gastos (Tinatayang)",
+          "amount": "$2,000–$4,500",
+          "description": "Kasama ang upa, mga kagamitan, mga grocery, transportasyon, at iba pang regular na gastusin"
+        }
+      ]
+    },
+    "regionalCosts": {
+      "title": "Mga Pagkakaiba-iba ng Gastos sa Rehiyon",
+      "categories": [
+        {
+          "title": "Mataas na Gastos",
+          "cities": {
+            "0": "Toronto",
+            "1": "Vancouver",
+            "2": "Victoria"
+          }
+        },
+        {
+          "title": "Katamtamang Gastos",
+          "cities": {
+            "0": "Calgary",
+            "1": "Montréal",
+            "2": "Ottawa"
+          }
+        },
+        {
+          "title": "Mas Mababang Gastos",
+          "cities": {
+            "0": "Winnipeg",
+            "1": "Lungsod ng Quebec",
+            "2": "Halifax"
+          }
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Mga Istratehiya sa Pagtitipid ng Gastos",
+      "tips": [
+        {
+          "title": "Isaalang-alang ang mga Pangalawang Lungsod",
+          "description": "Ang paninirahan sa Montreal, Calgary o Ottawa sa halip na sa Toronto o Vancouver ay maaaring makabawas sa mga gastos sa pabahay ng 30-40%."
+        },
+        {
+          "title": "Bumili ng Muwebles sa Canada",
+          "description": "Bumili ng mga muwebles nang lokal sa IKEA, mga tindahan ng segunda-mano, o Facebook Marketplace sa halip na ipadala."
+        },
+        {
+          "title": "Pampublikong Transportasyon",
+          "description": "Sa mga pangunahing lungsod, mas matipid ang paggamit ng pampublikong transportasyon kaysa sa pagmamay-ari ng kotse."
+        },
+        {
+          "title": "Dumating sa Tagsibol/Tag-init",
+          "description": "Ang paglipat sa panahon ng mas maiinit na buwan ay nakakabawas ng agarang pangangailangan para sa mamahaling kagamitan sa taglamig."
+        }
+      ]
+    },
+    "conclusion": "Ang paglipat sa Canada ay nangangailangan ng malaking paunang puhunan, ngunit nagbibigay ito ng access sa mataas na kalidad ng buhay, pangkalahatang pangangalagang pangkalusugan, at mga oportunidad sa ekonomiya. Sa pamamagitan ng wastong pagpaplano at pagbabadyet, ang iyong paglipat sa buhay sa Canada ay maaaring maging matagumpay at kapakipakinabang."
+  },
+  "ustocanadaguide": {
+    "navigation": {
+      "title": "Tumalon sa Seksyon"
+    },
+    "accessibility": {
+      "toggleSection": "I-toggle ang seksyon para sa"
+    },
+    "sections": {
+      "whyCanada": {
+        "title": "Bakit Lumipat sa Canada?",
+        "description": "Maraming Amerikano ang pumipili sa Canada bilang kanilang bagong tahanan dahil sa mga nakakahimok na dahilan:",
+        "reasons": [
+          "Sistema ng pangangalagang pangkalusugan sa pangkalahatan",
+          "Mataas na kalidad ng buhay at kaligtasan",
+          "Magagandang likas na tanawin",
+          "Pagkakaiba-iba ng kultura at pagiging inklusibo",
+          "Malakas na sistema ng suporta sa lipunan",
+          "Malapit sa US para sa mga bumibisitang pamilya"
+        ],
+        "conclusion": "Lumilipat ka man para sa mga propesyonal na oportunidad, edukasyon, mga kadahilanang pampamilya, o naghahanap ng pagbabago sa pamumuhay, ang Canada ay nag-aalok ng pamilyar ngunit kakaibang mga karanasan para sa mga Amerikano."
+      },
+      "immigrationOptions": {
+        "title": "Mga Opsyon sa Imigrasyon para sa mga Mamamayan ng US",
+        "description": "Bilang isang mamamayan ng Estados Unidos, mayroon kang ilang mga paraan upang lumipat sa Canada:",
+        "options": [
+          {
+            "title": "1. Sistema ng Mabilisang Pagpasok",
+            "points": {
+              "0": "Sistemang nakabatay sa puntos para sa mga bihasang manggagawa",
+              "1": "Sinusuri ang edad, edukasyon, karanasan sa trabaho, kasanayan sa wika",
+              "2": "Sistemang mapagkumpitensya na may ranggo at mga imbitasyon",
+              "3": "Landas tungo sa permanenteng paninirahan"
+            }
+          },
+          {
+            "title": "2. Mga Programa ng Nominado sa Lalawigan (PNP)",
+            "points": {
+              "0": "Ang mga probinsya at teritoryo ay nagnomina ng mga kandidato batay sa mga lokal na pangangailangan",
+              "1": "Kadalasang mas mabilis kaysa sa mga pederal na programa para sa mga kasanayang in-demand",
+              "2": "Ang bawat lalawigan ay may mga partikular na daluyan at pangangailangan",
+              "3": "Maaaring humantong sa permanenteng paninirahan"
+            }
+          },
+          {
+            "title": "3. Pahintulot sa Pag-aaral",
+            "points": {
+              "0": "Para sa pagpapatala sa mga itinalagang institusyon sa Canada",
+              "1": "Nangangailangan ng sulat ng pagtanggap, patunay ng pondo, at malinis na rekord",
+              "2": "May kasamang limitadong mga pahintulot sa trabaho",
+              "3": "Magagamit ang permit sa trabaho pagkatapos ng pagtatapos"
+            }
+          },
+          {
+            "title": "4. Pag-sponsor ng Pamilya",
+            "points": {
+              "0": "Para sa mga asawa, kapareha, anak, o magulang ng mga mamamayan/PR ng Canada",
+              "1": "Dapat matugunan ng sponsor ang mga kinakailangan sa kita",
+              "2": "Humahantong sa permanenteng paninirahan"
+            }
+          },
+          {
+            "title": "5. Permit sa Paggawa ng NAFTA/USMCA",
+            "points": {
+              "0": "Pansamantalang mga permit sa trabaho para sa mga kwalipikadong propesyon",
+              "1": "Dapat mayroong alok na trabaho mula sa employer sa Canada",
+              "2": "Medyo diretsong proseso ng aplikasyon",
+              "3": "Maaaring maging isang hakbang patungo sa permanenteng mga landas ng imigrasyon"
+            }
+          }
+        ]
+      },
+      "requiredDocuments": {
+        "title": "Mga Kinakailangang Dokumento para sa Imigrasyon",
+        "description": "Ang mga kinakailangan sa dokumento ay nag-iiba depende sa landas ng imigrasyon, ngunit karaniwang kasama ang:",
+        "documents": [
+          "Balidong pasaporte ng US",
+          "Mga form ng aplikasyon sa imigrasyon",
+          "Patunay ng kahusayan sa wika (Ingles/Pranses)",
+          "Pagtatasa ng kredensyal sa edukasyon",
+          "Mga sanggunian at patunay ng karanasan sa trabaho",
+          "Mga sertipiko ng clearance ng pulisya",
+          "Mga resulta ng medikal na pagsusuri",
+          "Patunay ng pondo para suportahan ang iyong sarili"
+        ],
+        "tip": {
+          "label": "Tip mula sa mga propesyonal:",
+          "text": "Simulan nang maaga ang pagkolekta ng mga dokumentong ito. Ang mga pagtatasa sa edukasyon, mga pagsusulit sa wika, at mga sertipiko ng pulisya ay maaaring abutin ng ilang linggo bago makuha."
+        }
+      },
+      "popularCities": {
+        "title": "Mga Sikat na Lungsod sa Canada para sa mga Amerikanong Expat",
+        "description": "Kadalasang pinipili ng mga Amerikanong lumilipat sa Canada ang mga sikat na lugar na ito:",
+        "mainCities": [
+          {
+            "name": "Toronto",
+            "icon": "🌆",
+            "highlights": {
+              "0": "Pinakamalaking lungsod at sentrong pinansyal ng Canada",
+              "1": "Napakaraming pagkakaiba-iba na may malakas na merkado ng trabaho",
+              "2": "Masiglang kultura at eksena ng libangan",
+              "3": "Mas mataas na halaga ng pamumuhay ngunit mas maraming oportunidad"
+            }
+          },
+          {
+            "name": "Vancouver",
+            "icon": "🏞️",
+            "highlights": {
+              "0": "Banayad na klima at nakamamanghang likas na kagandahan",
+              "1": "Malakas na industriya ng teknolohiya at pelikula",
+              "2": "Pamumuhay sa labas na may mga bundok at karagatan",
+              "3": "Mataas na halaga ng pabahay ngunit mataas na kalidad ng buhay"
+            }
+          },
+          {
+            "name": "Ottawa",
+            "icon": "🏛️",
+            "highlights": {
+              "0": "Kabisera ng Canada na may matatag na mga trabaho sa gobyerno",
+              "1": "Abot-kayang pabahay kumpara sa Toronto/Vancouver",
+              "2": "Mataas na antas ng pamumuhay at kaligtasan",
+              "3": "Lungsod na bilingguwal na may mga atraksyong kultural"
+            }
+          },
+          {
+            "name": "Montréal",
+            "icon": "🏛️",
+            "highlights": {
+              "0": "Kagandahang Europeo na may kaginhawahan sa Hilagang Amerika",
+              "1": "Mas mababang halaga ng pamumuhay kumpara sa ibang pangunahing lungsod",
+              "2": "Mayaman na kultura, pagkain, at sining",
+              "3": "Nagsasalita ng Pranses ngunit malawak na naiintindihan ang Ingles"
+            }
+          }
+        ],
+        "emergingOptions": {
+          "title": "Mga Umuusbong na Opsyon",
+          "cities": [
+            {
+              "name": "Halifax",
+              "description": "Pamumuhay sa baybayin ng Atlantiko na may lumalaking eksena ng teknolohiya"
+            },
+            {
+              "name": "Calgary",
+              "description": "Malakas na ekonomiya, malapit sa Rockies, mas mababang buwis"
+            },
+            {
+              "name": "Waterloo",
+              "description": "Sentro ng teknolohiya na may mga unibersidad at inobasyon"
+            },
+            {
+              "name": "Victoria",
+              "description": "Banayad na klima at relaks na pamumuhay sa isla"
+            }
+          ]
+        }
+      },
+      "costOfLiving": {
+        "title": "Paghahambing ng Halaga ng Pamumuhay: Canada vs USA",
+        "table": {
+          "headers": {
+            "expense": "Gastos",
+            "canada": "Canada (average)",
+            "usa": "Estados Unidos (average)"
+          },
+          "rows": [
+            {
+              "expense": "Upa (1BR sa sentro ng lungsod)",
+              "canada": "C$1,300–$2,000/buwan",
+              "usa": "$1,500–$2,500/buwan"
+            },
+            {
+              "expense": "Pangangalagang pangkalusugan",
+              "canada": "Karamihan ay sakop ng mga planong panlalawigan",
+              "usa": "$300–$600/buwan",
+              "canadaHighlight": true
+            },
+            {
+              "expense": "Mga Utility (buwanang)",
+              "canada": "C$150–$200",
+              "usa": "$150–$200"
+            },
+            {
+              "expense": "Transportasyon",
+              "canada": "C$100–$150/buwan",
+              "usa": "$100–$150 + gastusin sa kotse"
+            },
+            {
+              "expense": "Kainan sa labas (para sa 2 tao)",
+              "canada": "C$60–$100",
+              "usa": "$50–$100"
+            },
+            {
+              "expense": "Matrikula sa Unibersidad",
+              "canada": "C$7,000–$20,000/taon",
+              "usa": "$10,000–$40,000/taon",
+              "canadaHighlight": true
+            },
+            {
+              "expense": "Buwis sa Kita",
+              "canada": "Karaniwang mas mataas",
+              "usa": "Karaniwang mas mababa"
+            }
+          ]
+        },
+        "note": "Ang halaga ng pamumuhay ay lubhang nag-iiba-iba sa pagitan ng mga lungsod. Ang Vancouver at Toronto ang pinakamahal, maihahambing sa mga pangunahing lungsod sa US, habang ang ibang mga rehiyon sa Canada ay nag-aalok ng mas abot-kayang pamumuhay."
+      },
+      "healthcare": {
+        "title": "Pangangalagang Pangkalusugan sa Canada",
+        "description": "Ang unibersal na sistema ng pangangalagang pangkalusugan ng Canada ay isang pangunahing atraksyon para sa mga Amerikano. Ang bawat lalawigan ay nangangasiwa ng sarili nitong plano sa pangangalagang pangkalusugan, na sumasaklaw sa karamihan ng mahahalagang serbisyong medikal.",
+        "newcomersInfo": {
+          "title": "Pangangalagang Pangkalusugan para sa mga Baguhan",
+          "points": [
+            "Maaaring mag-aplay agad ang mga permanenteng residente para sa health insurance sa probinsya.",
+            "May mga panahon ng paghihintay ang ilang probinsya (hanggang 3 buwan) - inirerekomenda ang pribadong seguro sa panahong ito",
+            "Ang pagiging kwalipikado para sa mga pansamantalang residente (mga permit sa pagtatrabaho/pag-aaral) ay nag-iiba ayon sa probinsya",
+            "Hindi lahat ng serbisyo ay sakop (dentista, paningin, mga gamot na may reseta)"
+          ]
+        },
+        "privateInsurance": "May pribadong health insurance na magagamit at inirerekomenda upang madagdagan ang saklaw ng probinsya para sa mga serbisyong hindi kasama tulad ng pangangalaga sa ngipin, mga gamot na may reseta, at pangangalaga sa paningin."
+      },
+      "language": {
+        "title": "Mga Tip sa Wika at Kultura",
+        "description": "Sa kabila ng maraming pagkakatulad, ang kulturang Canadian ay may kanya-kanyang natatanging katangian:",
+        "details": {
+          "title": "Mga Nuances ng Ingles at Kultura ng Canada",
+          "terms": {
+            "title": "Mga Termino sa Ingles ng Canada:",
+            "examples": [
+              "Palikuran (hindi palikuran)",
+              "Toque (sumbrero pangtaglamig)",
+              "Loonie ($1 barya), Toonie ($2 barya)",
+              "Soda (hindi soda)",
+              "Hidro (kuryente)",
+              "Doble-doble (kape na may 2 krema, 2 asukal)"
+            ]
+          },
+          "cultural": {
+            "title": "Mga Pagkakaiba sa Kultura:",
+            "points": [
+              "Mas tahimik ang mga Canadian sa simula",
+              "Malakas na pagbibigay-diin sa pagiging magalang at pagiging inklusibo",
+              "Ipinagdiriwang at niyayakap ang multikulturalismo",
+              "Hindi gaanong komprontasyong istilo ng komunikasyon",
+              "Mga kaugalian sa pagbibigay ng tip na katulad ng sa US (15-20%)"
+            ]
+          }
+        },
+        "frenchNote": "Ang Pranses ay isang opisyal na wika kasama ng Ingles. Bagama't karamihan sa Canada ay pangunahing nagsasalita ng Ingles, ang Quebec ay pangunahing Pranses, at maraming serbisyong pederal ang bilingguwal."
+      },
+      "moving": {
+        "title": "Paglipat at Paglipat sa Iba't Ibang Bansa",
+        "description": "Ang pagpaplano ng iyong pisikal na paglipat patawid sa hangganan ay nangangailangan ng paghahanda:",
+        "belongings": {
+          "title": "Paglilipat ng Iyong mga Gamit",
+          "points": [
+            {
+              "label": "Mga kalakal at personal na epekto",
+              "description": "Maaaring i-import nang walang duty kung may wastong dokumentasyon"
+            },
+            {
+              "label": "Mga kinakailangang form",
+              "description": "Dokumento sa Accounting ng mga Personal na Epekto (Form B4) at detalyadong listahan ng imbentaryo"
+            },
+            {
+              "label": "Mga kompanya ng paglipat",
+              "description": "Pumili ng mga may karanasan sa mga relokasyon mula US patungong Canada"
+            },
+            {
+              "label": "Mga pinaghihigpitang item",
+              "description": "Ang ilang mga pagkain, halaman, at baril ay pinaghihigpitan o ipinagbabawal"
+            }
+          ]
+        },
+        "vehicles": {
+          "title": "Pagdadala ng mga Sasakyan",
+          "points": [
+            "Dapat matugunan ng mga sasakyan ang mga pamantayan sa kaligtasan at emisyon ng Canada",
+            "Ang proseso ng pag-import ay nangangailangan ng mga form, inspeksyon, at mga posibleng pagbabago",
+            "Kasama sa gastos ang bayad sa RIV, mga buwis, at posibleng tungkulin",
+            "Isaalang-alang ang pagbebenta ng sasakyan sa US at pagbili na lang sa Canada"
+          ]
+        },
+        "note": "Isaalang-alang nang mabuti kung ano ang dapat dalhin. Gumagamit ang Canada ng metric system at may 120V na kuryente tulad ng US, kaya karamihan sa mga elektronikong kagamitan ay gagana nang walang converter."
+      },
+      "banking": {
+        "title": "Pagbabangko at Pananalapi",
+        "description": "Ang pag-aayos ng iyong buhay pinansyal sa Canada ay dapat maging isang prayoridad:",
+        "bankingInfo": {
+          "title": "Pagbabangko sa Canada",
+          "points": [
+            "Mga pangunahing bangko: RBC, TD, Scotiabank, BMO, CIBC",
+            "Mga pakete ng pagbabangko para sa mga baguhan na may mas mababang mga kinakailangan",
+            "Mga kinakailangang dokumento: mga papeles ng imigrasyon, pasaporte, patunay ng address",
+            "Isaalang-alang ang pagbubukas ng account bago dumating sa pamamagitan ng mga opsyon sa cross-border banking"
+          ]
+        },
+        "financialConsiderations": {
+          "title": "Mga Konsiderasyong Pinansyal",
+          "points": [
+            "Ang mga mamamayan ng US ay dapat maghain ng mga buwis sa US anuman ang tirahan",
+            "Ang kasunduan sa buwis ng Canada-US ay nakakatulong upang maiwasan ang dobleng pagbubuwis",
+            "Isaalang-alang ang mga serbisyong tulad ng Wise o OFX para sa mga paglilipat ng pera",
+            "Hindi nalilipat ang credit history - bumuo ng credit history sa Canada",
+            "Ang mga Canadian retirement account (RRSP, TFSA) ay may mga implikasyon sa buwis sa US"
+          ]
+        },
+        "recommendation": "Inirerekomenda ang pagpapanatili ng mga ugnayan sa pagbabangko sa US para sa mga patuloy na obligasyong pinansyal sa US. Isaalang-alang ang pakikipagtulungan sa isang cross-border tax professional upang ma-optimize ang iyong sitwasyon sa pananalapi."
+      }
+    },
+    "checklist": {
+      "title": "Checklist Bago ang Paglipat para sa mga Amerikano",
+      "items": [
+        "Tukuyin ang iyong landas sa imigrasyon",
+        "Kumuha ng mga pagsusulit sa wika kung kinakailangan (IELTS/CELPIP)",
+        "Kumuha ng Pagtatasa ng Kredensyal sa Edukasyon (ECA)",
+        "Mag-ayos para sa pagbabangko sa iba't ibang bansa",
+        "Magsaliksik ng mga opsyon sa saklaw ng pangangalagang pangkalusugan",
+        "Gumawa ng detalyadong imbentaryo ng mga gamit",
+        "Kumonsulta sa isang propesyonal sa buwis na tumatawid sa iba't ibang bansa",
+        "Magsaliksik tungkol sa pabahay sa iyong target na lungsod",
+        "Sumali sa mga online na komunidad at forum ng mga expat sa Canada"
+      ]
+    },
+    "resources": {
+      "title": "Mga Nakatutulong na Mapagkukunan",
+      "categories": [
+        {
+          "title": "Opisyal na Impormasyon",
+          "items": {
+            "0": "Imigrasyon, mga Refugee at Pagkamamamayan sa Canada",
+            "1": "Mga Programa sa Imigrasyong Panlalawigan",
+            "2": "Embahada at Konsulado ng Estados Unidos sa Canada"
+          }
+        },
+        {
+          "title": "Mga Komunidad ng Expat",
+          "items": {
+            "0": "Mga Grupo sa Facebook ng mga Amerikano sa Canada",
+            "1": "Mga Kabanata ng InterNations Canada",
+            "2": "Mga asosasyon ng mga bagong dating na partikular sa lungsod"
+          }
+        },
+        {
+          "title": "Mga Praktikal na Serbisyo",
+          "items": {
+            "0": "Mga kompanya ng paglipat na tumatawid sa hangganan",
+            "1": "Mga website ng pabahay (Realtor.ca, Kijiji)",
+            "2": "Mga espesyalista sa buwis na tumatawid sa hangganan"
+          }
+        }
+      ]
+    },
+    "finalTips": {
+      "title": "Mga Pangwakas na Tip para sa mga Bagong Canadian",
+      "categories": [
+        {
+          "title": "Pagsisimula",
+          "tips": {
+            "0": "Mag-apply agad para sa iyong Social Insurance Number (SIN) pagdating",
+            "1": "Magparehistro para sa panlalawigang segurong pangkalusugan sa lalong madaling panahon kung kwalipikado",
+            "2": "Isaalang-alang ang pansamantalang matutuluyan habang naghahanap ng bahay"
+          }
+        },
+        {
+          "title": "Mga Tip sa Pagsasama",
+          "tips": {
+            "0": "Yakapin ang taglamig ng Canada gamit ang wastong damit at mga aktibidad",
+            "1": "Gumamit ng mga serbisyo sa paninirahan na magagamit ng mga bagong dating",
+            "2": "Maging matiyaga sa pagbuo ng credit history at pagpapatibay ng iyong sarili"
+          }
+        }
+      ],
+      "conclusion": "Naghihintay na ang iyong bagong pakikipagsapalaran sa Canada! Sa pamamagitan ng wastong pagpaplano at paghahanda, ang iyong paglipat mula sa US patungong Canada ay maaaring maging isang kapana-panabik at kapaki-pakinabang na karanasan."
+    }
+  },
+  "movingwithpets": {
+    "navigation": {
+      "title": "Gabay sa Nabigasyon"
+    },
+    "accessibility": {
+      "toggleSection": "I-toggle ang seksyon para sa"
+    },
+    "sections": {
+      "requirements": {
+        "title": "Mga Kinakailangan sa Pagpasok",
+        "steps": [
+          {
+            "title": "Microchip",
+            "description": "Dapat may nakatanim na microchip na may pamantayang ISO (11784/11785) ang lahat ng alagang hayop."
+          },
+          {
+            "title": "Pagbabakuna sa Rabies",
+            "description": "Dapat mabakunahan ang mga alagang hayop laban sa rabies <span class=\"font-medium\">nang hindi bababa sa 30 araw</span> bago pumasok at ang bakuna ay dapat <span class=\"font-medium\">wasto pagdating</span>."
+          },
+          {
+            "title": "Sertipiko ng Beterinaryo",
+            "details": {
+              "0": "Dapat ay inisyu ng isang lisensyadong beterinaryo sa iyong bansang pinagmulan.",
+              "1": "Dapat iendorso ng awtoridad ng gobyerno (tulad ng USDA sa US).",
+              "2": "Dapat ibigay sa loob ng <span class=\"font-medium\">14 na araw</span> bago pumasok sa Canada."
+            }
+          }
+        ],
+        "importantNote": {
+          "title": "Mahalagang Paalala",
+          "text": "Hindi tulad ng maraming bansa, ang Canada ay <span class=\"font-medium\">hindi nangangailangan</span> ng kuwarentenas para sa mga alagang hayop na nakakatugon sa lahat ng kinakailangan sa dokumentasyon."
+        }
+      },
+      "dogSpecific": {
+        "title": "Mga Panuntunan na Partikular sa Aso",
+        "breedRestrictions": {
+          "title": "Mga Restriksyon sa Lahi",
+          "description": "May mga paghihigpit ang Canada sa ilang partikular na lahi ng aso na itinuturing na agresibo. Nag-iiba ang mga regulasyong ito ayon sa probinsya at munisipalidad.",
+          "restrictedTitle": "Pinaghihigpitan sa Ilang Lugar:",
+          "breeds": [
+            "Mga Pit Bull Terrier",
+            "Mga Staffordshire Bull Terrier",
+            "Amerikanong Staffordshire Terrier",
+            "Mga Rottweiler (sa ilang lugar)"
+          ],
+          "note": "Kung ang iyong aso ay kabilang sa isang lahi na maaaring may limitadong pahintulot, makipag-ugnayan sa iyong partikular na probinsya at lungsod na pupuntahan."
+        },
+        "commercialDogs": {
+          "title": "Mga Komersyal na Aso (Mababa sa 8 Buwan)",
+          "description": "Ang mga asong wala pang 8 buwang gulang na inangkat para sa mga layuning pangkomersyo (pagpaparami, pagpapakita, muling pagbebenta) ay may mga karagdagang kinakailangan. Ang mga asong ito ay nangangailangan ng permit sa pag-import mula sa Canadian Food Inspection Agency."
+        }
+      },
+      "catSpecific": {
+        "title": "Mga Panuntunan na Tukoy sa Pusa",
+        "goodNews": "Magandang balita! Medyo simple lang ang mga kinakailangan ng Canada para sa pag-angkat ng mga pusa kumpara sa maraming ibang bansa.",
+        "basicRequirements": {
+          "title": "Mga Pangunahing Kinakailangan para sa mga Pusa",
+          "requirements": [
+            "Microchip (pamantayan ng ISO)",
+            "Pagbabakuna laban sa rabies (hindi bababa sa 30 araw bago pumasok)",
+            "Sertipiko sa kalusugan ng beterinaryo"
+          ]
+        },
+        "noBreedRestrictions": "Hindi tulad ng mga aso, walang mga paghihigpit sa lahi para sa mga pusa sa Canada."
+      },
+      "travelOptions": {
+        "title": "Mga Opsyon sa Paglalakbay",
+        "options": [
+          {
+            "title": "Paglalakbay sa loob ng cabin",
+            "description": "Maaaring sumakay sa cabin ang mga alagang hayop na wala pang 8-10 kg (kasama ang carrier). Dapat magkasya ang carrier sa ilalim ng upuan sa harap mo.",
+            "fee": "Bayad: CAD $50-125 bawat biyahe",
+            "icon": "🧳",
+            "ariaLabel": "kubo"
+          },
+          {
+            "title": "Mga Bagaheng Naka-check in",
+            "description": "Maaaring magbiyahe bilang checked baggage ang mga alagang hayop na masyadong malaki para sa cabin ngunit wala pang 32 kg.",
+            "fee": "Bayad: CAD $100-250 bawat biyahe",
+            "icon": "🧴",
+            "ariaLabel": "naka-check in na bagahe"
+          },
+          {
+            "title": "Kargamento sa Himpapawid",
+            "description": "Ang mga napakalaking alagang hayop o ang mga naglalakbay sa mga rutang walang allowance para sa alagang hayop ay dapat isakay bilang kargamento.",
+            "fee": "Bayad: CAD $400-1,000+ bawat biyahe",
+            "icon": "📦",
+            "ariaLabel": "kargamento"
+          }
+        ],
+        "warning": "Palaging mag-book sa airline nang maaga dahil limitado ang mga lugar para sa mga alagang hayop. May iba't ibang patakaran at paghihigpit ang mga airline, lalo na para sa mga lahi ng asong may snub-nose na maaaring ipinagbabawal dahil sa mga problema sa paghinga."
+      },
+      "afterArrival": {
+        "title": "Pagkatapos ng Pagdating",
+        "atTheBorder": {
+          "title": "Sa Hangganan",
+          "description": "Pagdating, susuriin ng isang opisyal ng Canada Border Services Agency (CBSA) ang mga dokumento ng iyong alagang hayop. Siguraduhing:",
+          "steps": [
+            "Ideklara ang iyong alagang hayop sa mga opisyal ng customs",
+            "Ihanda ang lahat ng orihinal na dokumento nang madali",
+            "Maging handa para sa posibleng inspeksyon ng iyong alagang hayop"
+          ]
+        },
+        "firstWeekChecklist": {
+          "title": "Checklist sa Unang Linggo",
+          "items": [
+            {
+              "title": "1. Maghanap ng Lokal na Beterinaryo",
+              "description": "Mag-iskedyul ng check-up sa loob ng unang buwan."
+            },
+            {
+              "title": "2. Magparehistro sa Munisipalidad",
+              "description": "Maraming lungsod sa Canada ang nangangailangan ng paglilisensya para sa mga alagang hayop."
+            },
+            {
+              "title": "3. I-update ang Impormasyon ng Microchip",
+              "description": "Baguhin ang address sa iyong bagong address sa Canada."
+            },
+            {
+              "title": "4. Seguro sa Alagang Hayop",
+              "description": "Isaalang-alang ang pagkuha ng insurance sa alagang hayop sa Canada."
+            }
+          ]
+        }
+      },
+      "canadianClimate": {
+        "title": "Klima ng Canada",
+        "description": "Ang klima ng Canada ay lubhang nag-iiba-iba depende sa rehiyon at panahon. Ito ay isang mahalagang konsiderasyon para sa mga alagang hayop, lalo na sa mga nagmumula sa mas maiinit na klima.",
+        "seasons": [
+          {
+            "title": "Mga Paghahanda sa Taglamig",
+            "icon": "❄️",
+            "tips": {
+              "0": "Pangtunaw ng yelo na ligtas sa alagang hayop para sa mga daanan",
+              "1": "Mga bota para protektahan ang mga paa mula sa asin at yelo",
+              "2": "Mga amerikana/sweater para sa mga lahing maikli ang buhok",
+              "3": "Limitadong oras sa labas sa matinding lamig"
+            }
+          },
+          {
+            "title": "Mga Pagsasaalang-alang sa Tag-init",
+            "icon": "☀️",
+            "tips": {
+              "0": "Huwag kailanman iwan ang mga alagang hayop sa mga nakaparadang sasakyan",
+              "1": "Bantayan ang mga sintomas ng heatstroke",
+              "2": "Pag-iwas sa garapata at pulgas",
+              "3": "Pag-access sa malinis na tubig at lilim"
+            }
+          }
+        ],
+        "warning": "<strong>Babala:</strong> Ang mga lahing Brachycephalic (patag ang mukha) tulad ng Bulldogs, Pugs, at Persian cats ay maaaring mahirapan sa matinding temperatura. Gumawa ng karagdagang pag-iingat sa mga lahing ito."
+      },
+      "petFriendly": {
+        "title": "Canada na Pwedeng Alagang Hayop",
+        "description": "Ang Canada sa pangkalahatan ay napaka-friendly sa mga alagang hayop, na may mahusay na pangangalaga sa beterinaryo at maraming mga lugar na pinapayagan ang mga alagang hayop.",
+        "aspects": [
+          {
+            "title": "Pangangalaga sa Beterinaryo",
+            "icon": "🏥",
+            "description": "Mataas ang kalidad ngunit maaaring magastos. Ang karaniwang pagpapatingin ay nagkakahalaga ng CAD $75-150.",
+            "additionalInfo": "Ang halaga ng pet insurance ay humigit-kumulang CAD $25-80 kada buwan."
+          },
+          {
+            "title": "Mga Parke at Libangan",
+            "icon": "🏞️",
+            "description": "Karamihan sa mga lungsod ay may mga itinalagang parke para sa mga aso na hindi tinalian ng tali at mga trail na pinapayagan ang mga alagang hayop.",
+            "additionalInfo": "May mga partikular na patakaran ang mga pambansang parke para sa mga alagang hayop - suriin muna bago bumisita."
+          },
+          {
+            "title": "Mga Kagamitan para sa Alagang Hayop",
+            "icon": "🥫",
+            "description": "Kabilang sa mga pangunahing kadena ang PetSmart, Canadian Tire, at Pet Valu. Kasama sa mga online na opsyon ang Amazon.ca at Chewy.ca."
+          },
+          {
+            "title": "Pabahay na Pwedeng Alagang Hayop",
+            "icon": "🏨",
+            "description": "May ilang paupahang ari-arian na naghihigpit sa mga alagang hayop. Maghanap ng mga designasyong \"pet-friendly\" kapag naghahanap ng bahay.",
+            "additionalInfo": "Karaniwan ang mga deposito ng alagang hayop (CAD $200-500)."
+          }
+        ]
+      }
+    },
+    "checklist": {
+      "title": "Checklist sa Paglalakbay ng Alagang Hayop",
+      "items": [
+        "Tiyaking natutugunan ng iyong alagang hayop ang mga kinakailangan sa pagpasok sa Canada (hindi bababa sa 3 buwan bago ang paglalakbay)",
+        "Tiyaking ang microchip ay sumusunod sa mga pamantayan ng ISO",
+        "Mag-iskedyul ng pagbabakuna laban sa rabies (hindi bababa sa 30 araw bago ang paglalakbay)",
+        "Mag-book ng transportasyon na pinapayagan ang mga alagang hayop",
+        "Bumili ng pet carrier na inaprubahan ng airline at iangkop ang iyong alagang hayop dito",
+        "Kumuha ng sertipiko sa kalusugan ng beterinaryo (sa loob ng 14 na araw mula sa paglalakbay)",
+        "Magdala ng mga mahahalagang gamit ng alagang hayop (pagkain, gamot, mga gamit na pampalusog)",
+        "Gumawa ng mga kopya ng lahat ng dokumentasyon at itago ang mga ito sa iyo"
+      ]
+    }
+  },
+  "relocationrequirements": {
+    "introduction": "Tinatanggap ng Canada ang libu-libong bagong dating bawat taon sa pamamagitan ng iba't ibang landas ng imigrasyon. Nagpaplano ka man na magtrabaho, mag-aral, sumama sa pamilya, o magretiro sa Canada, ang pag-unawa sa mga pangunahing kinakailangan ay makakatulong upang matiyak ang isang matagumpay na paglipat. Narito ang mga kailangan mong malaman.",
+    "requirements": [
+      {
+        "icon": "🛂",
+        "title": "Balidong Pasaporte",
+        "description": "Dapat na balido ang iyong pasaporte sa buong panahon ng iyong planong pananatili sa Canada. Para sa mga aplikasyon para sa permanenteng paninirahan, siguraduhing hindi mawawalan ng bisa ang iyong pasaporte sa panahon ng pagproseso, na maaaring tumagal ng ilang buwan o kahit na mga taon."
+      },
+      {
+        "icon": "📝",
+        "title": "Katayuan sa Imigrasyon",
+        "description": "Tukuyin ang iyong landas sa imigrasyon:",
+        "details": {
+          "0": "Mabilis na Pagpasok (Pederal na Bihasang Manggagawa, Pederal na Bihasang Trabaho, Klase ng Karanasan sa Canada)",
+          "1": "Mga Programa ng Nominado ng Lalawigan (PNP)",
+          "2": "Pag-sponsor ng Pamilya",
+          "3": "Mga Pahintulot sa Pag-aaral",
+          "4": "Mga Permit sa Paggawa (nakabatay sa LMIA, CUSMA/NAFTA, IEC)",
+          "5": "Visa ng Bisita (Pansamantalang Resident Visa) o eTA"
+        }
+      },
+      {
+        "icon": "💵",
+        "title": "Patunay ng mga Pondo",
+        "description": "Para sa karamihan ng mga programa sa imigrasyon, kakailanganin mong patunayan na mayroon kang sapat na pondo upang suportahan ang iyong sarili at ang iyong pamilya:",
+        "details": {
+          "0": "Ang Express Entry ay nangangailangan ng patunay ng mga pondo sa pagbabayad (nag-iiba ayon sa laki ng pamilya, ina-update taun-taon)",
+          "1": "Dapat ipakita ng mga estudyante ang mga bayarin sa matrikula kasama ang mga gastusin sa pamumuhay (humigit-kumulang $10,000 CAD bawat taon)",
+          "2": "Ang mga pahayag ng bangko, mga account sa pamumuhunan, o isang liham mula sa iyong bangko ay katanggap-tanggap na patunay"
+        }
+      },
+      {
+        "icon": "🩺",
+        "title": "Medikal na Pagsusuri",
+        "description": "Karamihan sa mga aplikante ay kailangang sumailalim sa isang medikal na pagsusuri ng isang doktor na inaprubahan ng IRCC:",
+        "details": {
+          "0": "Kinakailangan para sa mga aplikasyon para sa permanenteng paninirahan",
+          "1": "Kinakailangan para sa mga pansamantalang residente na naninirahan nang higit sa 6 na buwan",
+          "2": "Dapat kumpletuhin ng isang itinalagang panel physician"
+        }
+      },
+      {
+        "icon": "🔍",
+        "title": "Mga Pagsusuri sa Kaligiran",
+        "description": "Karaniwan para sa lahat ng aplikasyon ang mga pagsusuri sa seguridad at kriminal na background:",
+        "details": {
+          "0": "Mga sertipiko ng clearance ng pulisya mula sa mga bansang iyong tinirhan nang mahigit 6 na buwan",
+          "1": "Kinakailangan ang biometrics (mga fingerprint at litrato) para sa karamihan ng mga aplikante",
+          "2": "Proseso ng pagsusuri sa seguridad"
+        }
+      },
+      {
+        "icon": "🗣️",
+        "title": "Kahusayan sa Wika",
+        "description": "Ang kakayahan sa wikang Ingles o Pranses ay mahalaga para sa karamihan ng mga programa sa imigrasyon:",
+        "details": {
+          "0": "IELTS o CELPIP para sa Ingles",
+          "1": "TEF o TCF para sa Pranses",
+          "2": "Mga partikular na antas ng CLB (Canadian Language Benchmark) na kinakailangan depende sa programa"
+        }
+      },
+      {
+        "icon": "🎓",
+        "title": "Pagtatasa ng mga Kredensyal sa Edukasyon (ECA)",
+        "description": "Kung natapos mo ang iyong edukasyon sa labas ng Canada:",
+        "details": {
+          "0": "Ipasuri ang iyong mga kredensyal sa isang organisasyong inaprubahan ng IRCC",
+          "1": "Tiyaking ang iyong degree, diploma, o sertipiko ay katumbas ng mga pamantayan ng Canada",
+          "2": "Ang ECA ay mandatory para sa Express Entry at marami pang ibang programa sa imigrasyon"
+        }
+      },
+      {
+        "icon": "🏠",
+        "title": "Mga Plano sa Pabahay",
+        "description": "Bagama't hindi kinakailangan para sa karamihan ng mga aplikasyon, mahalaga ang pagkakaroon ng mga plano sa pabahay:",
+        "details": {
+          "0": "Pansamantalang tuluyan pagdating (mga hotel, panandaliang paupahan)",
+          "1": "Magsaliksik ng mga pamilihan ng paupahan sa iyong lungsod na pupuntahan",
+          "2": "Unawain ang mga kinakailangan sa pagpapaupa (mga pagsusuri sa kredito, mga sanggunian, mga deposito)"
+        }
+      },
+      {
+        "icon": "💼",
+        "title": "Mga Paghahanda sa Trabaho",
+        "description": "Para sa mga nagpaplanong magtrabaho sa Canada:",
+        "details": {
+          "0": "Magsaliksik tungkol sa merkado ng trabaho sa Canada sa iyong larangan",
+          "1": "Maghanda ng resume at cover letter na istilo ng Canada",
+          "2": "Makipag-network sa mga propesyonal sa iyong industriya",
+          "3": "Suriin kung ang iyong propesyon ay kinokontrol at nangangailangan ng paglilisensya sa Canada"
+        }
+      },
+      {
+        "icon": "⚕️",
+        "title": "Seguro sa Kalusugan",
+        "description": "Pangunahing pampubliko ang pangangalagang pangkalusugan sa Canada, ngunit nag-iiba-iba depende sa probinsya:",
+        "details": {
+          "0": "Ang segurong pangkalusugan sa probinsya ay nangangailangan ng panahon ng paghihintay (karaniwan ay 3 buwan)",
+          "1": "Bumili ng pribadong health insurance para masakop ang gap period",
+          "2": "Unawain kung ano ang sakop at kung ano ang wala sa inyong probinsya"
+        }
+      }
+    ],
+    "postArrival": {
+      "title": "Mga Hakbang Pagkatapos ng Pagdating",
+      "timeframes": [
+        {
+          "period": "Unang Linggo",
+          "tasks": {
+            "0": "Mag-apply para sa Social Insurance Number (SIN)",
+            "1": "Magbukas ng bank account sa Canada",
+            "2": "Kumuha ng lokal na numero ng telepono",
+            "3": "Mag-apply para sa health insurance sa probinsya"
+          }
+        },
+        {
+          "period": "Unang Buwan",
+          "tasks": {
+            "0": "Maghanap ng permanenteng tirahan",
+            "1": "Magparehistro ng mga bata para sa paaralan",
+            "2": "Kumuha ng lisensya sa pagmamaneho o ID",
+            "3": "Kumonekta sa mga serbisyo sa paninirahan"
+          }
+        }
+      ]
+    }
+  },
+  "uktocanadaguide": {
+    "navigation": {
+      "title": "Mabilis na Nabigasyon"
+    },
+    "accessibility": {
+      "toggleSection": "I-toggle ang seksyon para sa"
+    },
+    "sections": {
+      "whyMove": {
+        "title": "Bakit Lumilipat ang mga Briton sa Canada?",
+        "description": "Libu-libong mamamayang Briton ang nanirahan sa Canada, lalo na sa mga lungsod tulad ng Toronto, Vancouver, Montreal, at Calgary. Kabilang sa mga apela ang:",
+        "reasons": [
+          "Mataas na kalidad ng buhay na may mahusay na mga sistemang panlipunan",
+          "Iba't ibang likas na tanawin at mga aktibidad sa labas",
+          "Magkatulad na kultura at pamilyar na wika",
+          "Malakas na ekonomiya na may mga oportunidad sa karera",
+          "Lipunang multikultural na may mga komunidad na mapagkaibigan"
+        ],
+        "conclusion": "Pagkatapos ng Brexit, maraming Briton ang nagsasaliksik ng mga opsyon sa labas ng Europa, at ang sistema ng imigrasyon ng Canada ay nag-aalok ng ilang mga landas."
+      },
+      "entryRequirements": {
+        "title": "Mga Kinakailangan sa Pagpasok at Mga Panuntunan sa Visa",
+        "touristEntry": {
+          "title": "Pasukan ng Turista",
+          "description": "Ang mga mamamayan ng UK ay maaaring bumisita sa Canada nang hanggang 6 na buwan gamit ang Electronic Travel Authorization (eTA), na nagkakahalaga ng CAD $7. Gayunpaman, para sa permanenteng relokasyon, kakailanganin mong mag-apply sa pamamagitan ng isa sa mga pathway ng imigrasyon ng Canada."
+        }
+      },
+      "immigrationPathways": {
+        "title": "Mga Landas ng Imigrasyon para sa mga Mamamayan ng UK",
+        "pathways": [
+          {
+            "title": "1. Sistema ng Mabilisang Pagpasok",
+            "description": "<span class=\"font-medium\">Pangunahing landas ng imigrasyon sa Canada para sa mga bihasang manggagawa</span><br/>Sistema na nakabatay sa puntos na nagraranggo ng mga kandidato batay sa mga salik tulad ng edad, edukasyon, karanasan sa trabaho, at mga kasanayan sa wika",
+            "subProgramsTitle": "Tatlong programa sa ilalim ng Express Entry:",
+            "subPrograms": {
+              "0": "Programa ng Pederal na Bihasang Manggagawa",
+              "1": "Programa ng Pederal na Kasanayan sa Trabaho",
+              "2": "Klase ng Karanasan sa Canada (para sa mga may karanasan sa trabaho sa Canada)"
+            }
+          },
+          {
+            "title": "2. Mga Programa ng Nominado sa Lalawigan (PNP)",
+            "details": {
+              "0": "Ang bawat lalawigan ay may kanya-kanyang daluyan ng imigrasyon",
+              "1": "Kadalasang mas mabilis kaysa sa Express Entry para sa mga may kasanayang kailangan sa mga partikular na probinsya",
+              "2": "Ang ilang probinsya ay may mga inisyatibo sa recruitment na partikular sa UK"
+            }
+          },
+          {
+            "title": "3. Mga Permit sa Paggawa",
+            "details": {
+              "0": "Ang mga permit sa trabaho na partikular sa employer ay nangangailangan ng alok ng trabaho mula sa isang employer sa Canada.",
+              "1": "May mga open work permit na makukuha sa pamamagitan ng mga espesyal na programa tulad ng Working Holiday (IEC)",
+              "2": "Maaaring mag-aplay para sa IEC working holiday visas ang mga mamamayan ng UK na may edad 18-30."
+            }
+          },
+          {
+            "title": "4. Pag-sponsor ng Pamilya",
+            "description": "Kung mayroon kang asawa, karelasyon sa bahay, o malapit na kapamilya na isang mamamayan ng Canada o permanenteng residente"
+          }
+        ]
+      },
+      "property": {
+        "title": "Pagbili o Pagrenta ng Ari-arian",
+        "points": [
+          "Bilang isang hindi residente, maaari kang bumili ng ari-arian sa halos lahat ng bahagi ng Canada na may ilang mga paghihigpit sa ilang mga probinsya.",
+          "Ang pagbabawal sa mga dayuhang mamimili sa 2023 ay may mga eksepsiyon para sa mga permanenteng residente at mga may work permit.",
+          "Mga sikat na lugar para sa mga British expat: Toronto, Vancouver, Montreal, Calgary, Halifax",
+          "Iba-iba ang pamilihan ng paupahan: asahan ang pagbabayad ng CAD $1,500-$3,000+ para sa isang 1-silid-tulugan na apartment sa mga pangunahing lungsod"
+        ],
+        "tip": "<strong>Tip:</strong> Maingat na saliksikin ang mga lokasyon – ang mga presyo ng ari-arian sa Toronto at Vancouver ay mas mataas nang malaki kaysa sa ibang mga rehiyon."
+      },
+      "costLiving": {
+        "title": "Paghahambing ng Halaga ng Pamumuhay",
+        "table": {
+          "headers": {
+            "expense": "Gastos",
+            "canada": "Canada (average)",
+            "uk": "UK (average)"
+          },
+          "rows": [
+            {
+              "expense": "Upa (apartment na may 1 kwarto)",
+              "canada": "CAD $1,200–$2,500",
+              "uk": "£800–£1,200"
+            },
+            {
+              "expense": "Mga Utility",
+              "canada": "CAD $150–$250/buwan",
+              "uk": "£150+/buwan"
+            },
+            {
+              "expense": "Pagkain sa restawran",
+              "canada": "CAD $20–$35",
+              "uk": "£10–£25"
+            },
+            {
+              "expense": "Pass sa transportasyon",
+              "canada": "CAD $80–$150/buwan",
+              "uk": "£60–£120/buwan"
+            }
+          ]
+        },
+        "note": "Bagama't ang pangkalahatang mga gastos ay katulad sa UK, ang mga ito ay lubhang nag-iiba sa pagitan ng mga rehiyon. Ang mga probinsya ng Atlantiko at mga rural na lugar ay nag-aalok ng mas abot-kayang pamumuhay."
+      },
+      "healthcare": {
+        "title": "Pag-access sa Pangangalagang Pangkalusugan",
+        "points": [
+          "Ang Canada ay may universal public healthcare (Medicare) na pinopondohan sa pamamagitan ng mga buwis",
+          "Bilang isang permanenteng residente, ikaw ay karapat-dapat para sa pangangalagang pangkalusugan ng probinsya pagkatapos ng isang panahon ng paghihintay (karaniwan ay 3 buwan)",
+          "Sa panahon ng paghihintay, mahalaga ang pansamantalang pribadong segurong pangkalusugan",
+          "Ang bawat probinsya ay namamahala sa sarili nitong sistema ng pangangalagang pangkalusugan na may kaunting pagkakaiba-iba sa saklaw",
+          "Ang ilang serbisyo tulad ng pangangalaga sa ngipin, paningin, at mga gamot na may reseta ay maaaring mangailangan ng pribadong insurance"
+        ]
+      },
+      "weather": {
+        "title": "Panahon at Klima",
+        "seasons": [
+          {
+            "title": "Taglamig (Nobyembre-Marso)",
+            "description": "Mas malamig nang malaki kaysa sa UK na may temperaturang mula -30°C hanggang 0°C depende sa rehiyon. Karaniwan ang pagniyebe sa halos buong bansa, maliban sa baybaying BC."
+          },
+          {
+            "title": "Tag-init (Hunyo-Setyembre)",
+            "description": "Mas mainit kaysa sa UK na may temperaturang karaniwang nasa pagitan ng 20°C at 30°C. Maaaring mataas ang halumigmig sa mga probinsya sa silangang."
+          }
+        ],
+        "regionalVariations": {
+          "title": "Mga Baryasyong Panrehiyon",
+          "description": "Ang Vancouver ay may banayad at maulang klima na katulad ng sa UK. Ang Toronto at Montreal ay nakararanas ng mainit na tag-araw at malamig na taglamig. Ang Prairies ay may matinding pagkakaiba-iba ng temperatura. Ang mga hilagang teritoryo ay may napakahaba at malupit na taglamig."
+        }
+      },
+      "dailyLife": {
+        "title": "Mga Pagsasaayos sa Pang-araw-araw na Buhay",
+        "aspects": [
+          {
+            "title": "Wika",
+            "description": "Ang Ingles ay isang opisyal na wika sa buong Canada (maliban sa Quebec). Ang Pranses ay isa ring opisyal na wika, at nangingibabaw sa Quebec kung saan ang kahusayan sa Pranses ay lubos na kapaki-pakinabang."
+          },
+          {
+            "title": "Pagmamaneho",
+            "description": "Maaaring pansamantalang gamitin ang mga lisensya sa UK (nag-iiba-iba depende sa probinsya), ngunit kakailanganin mo itong palitan ng lisensya mula sa probinsya. Ang mga Canadian ay nagmamaneho sa kanang bahagi ng kalsada."
+          },
+          {
+            "title": "Pera",
+            "description": "Dolyar ng Canada (CAD) — pabago-bago ang mga halaga ng palitan, ngunit ang mga presyo ay karaniwang maihahambing sa UK."
+          },
+          {
+            "title": "Pagbabangko",
+            "description": "Nag-aalok ang mga malalaking bangko ng mga pakete para sa mga baguhan na may mga pagpapawalang-bisa sa bayarin. Kakailanganin mo ng patunay ng address at pagkakakilanlan para makapagbukas ng account. Hindi nalilipat ang credit history, kaya mahalaga ang pagpapalakas ng kredito."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "title": "Paglipat ng Logistika mula sa UK",
+        "points": [
+          "Ang pagpapadala ng mga gamit sa bahay sa Canada ay tumatagal ng 4-8 na linggo sa pamamagitan ng kargamento sa dagat",
+          "Maaaring i-import ang mga personal na gamit nang walang duty na may detalyadong imbentaryo at patunay ng paninirahan.",
+          "Mas madaling i-import ang mga kotseng mahigit 15 taong gulang; dapat matugunan ng mga mas bagong sasakyan ang mga pamantayan ng Canada",
+          "Kailangan ng mga alagang hayop ng mga microchip, bakuna laban sa rabies, at mga sertipiko sa kalusugan; hindi kinakailangan ang kuwarentenas kung natutugunan ang mga kundisyon"
+        ]
+      },
+      "challenges": {
+        "title": "Mga Makatotohanang Hamon na Aasahan",
+        "challenges": [
+          {
+            "title": "Pagsasaayos sa taglamig",
+            "description": "Ang tindi at haba ng mga taglamig sa Canada ay maaaring maging mahirap para sa mga Briton"
+          },
+          {
+            "title": "Malayo sa pamilya",
+            "description": "Ang mga byaheng may mahigit 7 oras ay nagpapababa ng dalas ng pagbisita sa bahay"
+          },
+          {
+            "title": "Pagbuo ng kasaysayan ng kredito",
+            "description": "Hindi naililipat ang credit history sa UK, kaya mahirap ang paunang paghiram"
+          },
+          {
+            "title": "Akreditasyong propesyonal",
+            "description": "Ang ilang kwalipikasyon sa UK ay maaaring mangailangan ng muling sertipikasyon sa Canada"
+          }
+        ]
+      },
+      "britishCommunities": {
+        "title": "Mga Komunidad ng mga British Expat",
+        "description": "Ang Canada ay may malaking komunidad ng mga British expat sa:",
+        "cities": [
+          "Toronto",
+          "Vancouver",
+          "Calgary",
+          "Victoria",
+          "Halifax"
+        ],
+        "supportNote": "Ang mga online forum, mga grupo sa Facebook tulad ng \"Brits in Canada,\" at mga kaganapan sa komunidad ay ginagawang mas madali ang pakikipag-ugnayan sa iba pang mga expat sa UK na maaaring magbigay ng payo at suporta."
+      }
+    },
+    "checklist": {
+      "title": "Mahalagang Checklist Bago Lumipat sa Canada",
+      "items": [
+        "Kumuha ng angkop na katayuan sa imigrasyon o permit sa pagtatrabaho",
+        "Kunin ang Social Insurance Number (SIN) pagdating",
+        "Bumili ng travel at inisyal na health insurance",
+        "Magbukas ng bank account sa Canada",
+        "Pananaliksikin ang proseso ng pagpaparehistro sa pangangalagang pangkalusugan ng probinsya",
+        "Bumili ng angkop na damit para sa panahon ng Canada",
+        "Ipaalam sa mga awtoridad ng UK (HMRC, mga tagapagbigay ng pensiyon, atbp.) ang tungkol sa iyong paglipat sa ibang bansa"
+      ]
+    },
+    "conclusion": {
+      "title": "Angkop ba para sa Iyo ang Paglipat sa Canada?",
+      "text": "Nag-aalok ang Canada ng mataas na antas ng pamumuhay, nakamamanghang likas na kagandahan, at matibay na sistemang panlipunan, kaya isa itong kaakit-akit na destinasyon para sa mga expat sa UK. Bagama't nangangailangan ng maingat na pagpaplano ang proseso ng imigrasyon at nangangailangan ng pagsasaayos ang panahon sa taglamig, maraming Briton ang nakakahanap ng sulit na pagbabago para sa kalidad ng buhay, mga oportunidad sa karera, at malugod na pagtanggap sa multikultural na lipunan na ibinibigay ng Canada."
+    },
+    "footer": {
+      "disclaimer": "Huling na-update ang gabay: Mayo 2025 • Maaaring magbago ang impormasyon • Palaging suriin ang mga opisyal na mapagkukunan ng gobyerno"
+    }
+  },
+  "canadavisaguide": {
+    "introduction": "Nag-aalok ang Canada ng maraming landas para sa mga imigrante, kabilang ang mga manggagawa, estudyante, pamilya, at mga negosyante. Ang bawat programa ay idinisenyo upang suportahan ang paglago ng ekonomiya ng Canada habang tinatanggap ang mga bagong dating mula sa buong mundo.",
+    "labels": {
+      "bestFor": "Pinakamahusay para sa:",
+      "programs": "Mga Programa:",
+      "requirements": "Mga Kinakailangan:",
+      "process": "Proseso:",
+      "types": "Mga Uri:",
+      "eligibleMembers": "Mga kwalipikadong miyembro ng pamilya:",
+      "sponsorRequirements": "Mga kinakailangan sa pag-sponsor:",
+      "benefits": "Mga Benepisyo:",
+      "tfwpRequirements": "Mga Kinakailangan sa TFWP:",
+      "impBenefits": "Mga Benepisyo ng IMP:",
+      "startupRequirements": "Mga Kinakailangan sa Start-up Visa:",
+      "notablePNPs": "Mga Kilalang PNP:"
+    },
+    "mainPrograms": [
+      {
+        "title": "1. Sistema ng Mabilisang Pagpasok",
+        "bestFor": {
+          "0": "Mga bihasang manggagawa na may karanasan sa trabaho",
+          "1": "Mga propesyonal na may mas mataas na edukasyon",
+          "2": "Kahusayan sa wika sa Ingles/Pranses"
+        },
+        "programs": {
+          "0": "Programa ng Pederal na Bihasang Manggagawa",
+          "1": "Programa ng Pederal na Kasanayan sa Trabaho",
+          "2": "Klase ng Karanasan sa Canada"
+        },
+        "requirements": {
+          "0": "Minimum na 1 taong karanasan sa trabahong may kasanayan",
+          "1": "Pagsusulit sa wika (CLB 7+ para sa FSWP)",
+          "2": "Pagtatasa ng kredensyal sa edukasyon",
+          "3": "Patunay ng pondo (~$13,000+ para sa isang tao)"
+        }
+      },
+      {
+        "title": "2. Mga Programa ng Nominado sa Lalawigan (PNP)",
+        "bestFor": {
+          "0": "Mga manggagawang may kasanayang naaayon sa mga pangangailangan ng probinsya",
+          "1": "Mga may koneksyon sa mga partikular na probinsya",
+          "2": "Mga kandidatong maaaring hindi kwalipikado para sa Express Entry"
+        },
+        "process": {
+          "0": "Mag-apply nang direkta sa isang probinsya o sa pamamagitan ng Express Entry",
+          "1": "Tumanggap ng nominasyong panlalawigan",
+          "2": "Mag-apply para sa permanenteng paninirahan sa pederal na antas"
+        },
+        "notablePNPs": {
+          "0": "British Columbia PNP",
+          "1": "Programa ng Nominado para sa Imigrante sa Ontario",
+          "2": "Programa sa Imigrasyon ng Alberta Advantage",
+          "3": "Programa ng Nominado sa Panlalawigan ng Manitoba"
+        }
+      },
+      {
+        "title": "3. Mga Pahintulot sa Pag-aaral",
+        "bestFor": "Tinatanggap ang mga internasyonal na estudyante sa mga itinalagang institusyong pang-edukasyon",
+        "requirements": {
+          "0": "Liham ng pagtanggap mula sa isang DLI",
+          "1": "Patunay ng suportang pinansyal (~$10,000/taon + matrikula)",
+          "2": "Malinis na rekord ng kriminal",
+          "3": "Medikal na pagsusuri (kung kinakailangan)",
+          "4": "Balak na umalis ng Canada pagkatapos ng pag-aaral"
+        },
+        "benefits": {
+          "0": "Magtrabaho nang hanggang 20 oras/linggo habang nag-aaral",
+          "1": "Buong-panahong trabaho sa mga nakatakdang pahinga",
+          "2": "Pagiging karapat-dapat para sa Permit sa Trabaho Pagkatapos ng Graduation",
+          "3": "Landas patungo sa permanenteng paninirahan"
+        }
+      },
+      {
+        "title": "4. Mga Permit sa Paggawa",
+        "types": {
+          "0": "Programa para sa Pansamantalang Dayuhang Manggagawa (TFWP)",
+          "1": "Programa sa Pandaigdigang Mobilidad (IMP)",
+          "2": "Permit sa Pagtatrabaho Pagkatapos ng Graduation (PGWP)",
+          "3": "Mga bukas na permit sa trabaho para sa mga asawa"
+        },
+        "tfwpRequirements": {
+          "0": "Alok ng trabaho mula sa employer sa Canada",
+          "1": "Pagtatasa ng Epekto sa Pamilihan ng Paggawa (LMIA)",
+          "2": "Patunay ng mga kwalipikasyon"
+        },
+        "impBenefits": {
+          "0": "Mga permit sa trabaho na hindi sakop ng LMIA",
+          "1": "Kasama ang mga paglilipat sa loob ng kumpanya",
+          "2": "Mga kasunduang internasyonal (CUSMA, CETA)"
+        }
+      },
+      {
+        "title": "5. Pag-sponsor ng Pamilya",
+        "bestFor": "Mga miyembro ng pamilya ng mga mamamayan ng Canada o permanenteng residente",
+        "eligibleMembers": {
+          "0": "Asawa o karelasyon sa karaniwang batas",
+          "1": "Mga batang umaasa",
+          "2": "Mga magulang at lolo't lola",
+          "3": "Iba pang mga kamag-anak (sa ilalim ng mga partikular na programa)"
+        },
+        "sponsorRequirements": {
+          "0": "Mamamayan ng Canada o permanenteng residente",
+          "1": "18 taong gulang o mas matanda",
+          "2": "Matugunan ang mga kinakailangan sa minimum na kita",
+          "3": "Pumirma ng pangako upang suportahan sa pananalapi"
+        }
+      },
+      {
+        "title": "6. Imigrasyon sa Negosyo",
+        "bestFor": {
+          "0": "Mga negosyante",
+          "1": "Mga mamumuhunan",
+          "2": "Mga taong may sariling trabaho"
+        },
+        "programs": {
+          "0": "Programa ng Visa para sa Pagsisimula",
+          "1": "Programa para sa mga Taong May Sariling Trabaho",
+          "2": "Mga programa sa negosyo ng probinsya"
+        },
+        "startupRequirements": {
+          "0": "Suporta mula sa itinalagang organisasyon",
+          "1": "Kahusayan sa wika (CLB 5+)",
+          "2": "Sapat na pondo para sa pagbabayad",
+          "3": "Aktibong pamamahala ng negosyo sa Canada"
+        }
+      }
+    ],
+    "additionalOptions": {
+      "title": "Mga Karagdagang Opsyon",
+      "programs": [
+        {
+          "title": "Programa sa Imigrasyon sa Atlantiko",
+          "description": "Dinisenyo para sa mga bihasang manggagawa at mga nagtapos sa ibang bansa na gustong manirahan at magtrabaho sa New Brunswick, Nova Scotia, Prince Edward Island, o Newfoundland and Labrador.",
+          "requirement": "Nangangailangan ng alok ng trabaho mula sa itinalagang employer sa Atlantic Canada"
+        },
+        {
+          "title": "Piloto ng Imigrasyon sa Kanayunan at Hilaga",
+          "description": "Programang pinapatnubayan ng komunidad na tumutulong sa mga bihasang dayuhang manggagawa na magkaroon ng permanenteng paninirahan habang sinusuportahan ang mas maliliit at rural na mga komunidad.",
+          "requirement": "Makukuha sa mga piling komunidad sa buong Canada"
+        },
+        {
+          "title": "Mga Programa ng Tagapag-alaga",
+          "description": "Mga landas para sa mga tagapag-alaga na nagbibigay ng pangangalaga sa mga bata, matatanda, o mga may pangangailangang medikal upang maging permanenteng residente.",
+          "requirement": "Kinakailangan ang 2 taong karanasan sa trabaho sa Canada"
+        },
+        {
+          "title": "Mga Programa ng Humanitarian at Refugee",
+          "description": "Proteksyon para sa mga refugee, mga naghahanap ng asylum, at iba pa na nangangailangan ng tulong humanitarian.",
+          "requirement": "Kasama ang Programa ng mga Refugee na Tinutulungan ng Gobyerno at Pribadong Pag-sponsor"
+        }
+      ]
+    },
+    "importantConsiderations": {
+      "title": "Mahahalagang Pagsasaalang-alang",
+      "considerations": [
+        {
+          "title": "Mga Oras ng Pagproseso",
+          "description": "Malaki ang pagkakaiba-iba depende sa programa at dami ng aplikante. Ang Express Entry ay maaaring kasing bilis ng 6 na buwan, habang ang family sponsorship ay maaaring tumagal ng 12+ na buwan."
+        },
+        {
+          "title": "Mga Bayarin sa Aplikasyon",
+          "description": "Isaalang-alang ang parehong bayarin ng gobyerno at mga potensyal na gastos sa consultant. Ang mga bayarin sa aplikasyon sa PR ay humigit-kumulang $1,325 CAD bawat nasa hustong gulang."
+        },
+        {
+          "title": "Mga Pondo ng Pag-aayos",
+          "description": "Karamihan sa mga programa ay nangangailangan ng patunay ng pondo para sa pagbabayad. Ang halaga ay nag-iiba batay sa laki ng pamilya at mga kinakailangan ng programa."
+        }
+      ]
+    }
+  }
+}

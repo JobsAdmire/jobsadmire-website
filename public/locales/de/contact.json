@@ -1,0 +1,91 @@
+{
+  "contact": {
+    "brand": {
+      "name": "JobsAdmire",
+      "title": "Lassen Sie uns Ihre Reise gemeinsam beginnen",
+      "description": "Wir freuen uns darauf, Sie bei der Verwirklichung Ihrer beruflichen Ziele zu unterstützen. Sprechen Sie uns an und machen Sie den ersten Schritt."
+    },
+    "contactInfo": [
+      {
+        "label": "Bewerber & HR-Unternehmen",
+        "value": "+90 501 124 03 40"
+      },
+      {
+        "label": "Jobanbieter",
+        "value": "+90 553 383 2549"
+      },
+      {
+        "label": "E-Mail an",
+        "value": "info@jobsadmire.com"
+      },
+      {
+        "label": "Besuchen Sie unser Büro",
+        "value": "Antalya, Türkei"
+      },
+      {
+        "label": "Geschäftszeiten",
+        "value": "Mo-Fr, 9:00 - 18:00 Uhr"
+      }
+    ],
+    "form": {
+      "progress": {
+        "step1": "Persönliche Informationen",
+        "step2": "Nachricht"
+      },
+      "step1": {
+        "title": "Kontakt aufnehmen",
+        "subtitle": "Lassen Sie uns ein Gespräch beginnen"
+      },
+      "step2": {
+        "title": "Erzählen Sie uns mehr",
+        "subtitle": "Wir sind hier, um zuzuhören"
+      },
+      "fields": {
+        "name": {
+          "label": "Ihr Name",
+          "placeholder": "Ihr Name"
+        },
+        "email": {
+          "label": "E-Mail Adresse",
+          "placeholder": "E-Mail Adresse"
+        },
+        "phone": {
+          "label": "Rufnummer",
+          "placeholder": "Rufnummer"
+        },
+        "subject": {
+          "label": "Thema",
+          "placeholder": "Thema"
+        },
+        "message": {
+          "label": "Ihre Nachricht",
+          "placeholder": "Ihre Nachricht"
+        }
+      },
+      "validation": {
+        "nameRequired": "Name ist erforderlich",
+        "nameMinLength": "Der Name muss aus mindestens 2 Zeichen bestehen",
+        "emailRequired": "E-Mail ist erforderlich",
+        "emailInvalid": "Bitte geben Sie eine gültige E-Mail Adresse ein",
+        "phoneInvalid": "Bitte geben Sie eine gültige Telefonnummer ein",
+        "subjectRequired": "Thema ist erforderlich",
+        "subjectMinLength": "Der Betreff muss aus mindestens 3 Zeichen bestehen",
+        "messageRequired": "Nachricht ist erforderlich",
+        "messageMinLength": "Die Nachricht muss mindestens 10 Zeichen lang sein."
+      },
+      "buttons": {
+        "continue": "Weiter",
+        "back": "Zurück",
+        "send": "Senden Sie",
+        "sending": "Ich schicke..."
+      },
+      "notification": "Wir werden Sie benachrichtigen, sobald wir Ihre Nachricht geprüft haben."
+    },
+    "success": {
+      "title": "Ich danke Ihnen!",
+      "message": "Ihre Nachricht wurde erfolgreich gesendet.",
+      "followUp": "Wir werden uns so schnell wie möglich bei Ihnen melden.",
+      "sendAnother": "Weitere Nachricht senden"
+    }
+  }
+}

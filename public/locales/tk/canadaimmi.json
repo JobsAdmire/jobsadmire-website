@@ -1,0 +1,1728 @@
+{
+  "herosection": {
+    "badge": "Eksklýuziw Syýahatlar",
+    "title": "Indiki başdan geçirmeleriňizi açyň",
+    "description": "Islegleriňize laýyk gelýän ýokary hilli syýahat paketlerimiz bilen ajaýyp ýerleri başdan geçiriň we ýatdan çykmajak ýatlamalary dörediň.",
+    "currentlyViewing": {
+      "label": "Häzirki wagtda görkezilýär"
+    },
+    "buttons": {
+      "primary": "Häzir öwren",
+      "secondary": "Ähli ugurlary görkez"
+    },
+    "destinationCounter": "Barmaly ýer {häzirki}/{jemi}",
+    "destinations": [
+      {
+        "img": "/images/ihc.png",
+        "name": "Kalgari",
+        "country": "Kanada",
+        "alt": "Kanadanyň Kalgari şäheriniň ajaýyp görnüşi"
+      },
+      {
+        "img": "/images/ihm.png",
+        "name": "Monreal",
+        "country": "Kanada",
+        "alt": "Kanadanyň ajaýyp Monreal şäher keşbi"
+      },
+      {
+        "img": "/images/iho.png",
+        "name": "Ottawa",
+        "country": "Kanada",
+        "alt": "Ottawanyň gözel ýerleri, Kanada"
+      },
+      {
+        "img": "/images/iht.png",
+        "name": "Toronto",
+        "country": "Kanada",
+        "alt": "Torontonyň ajaýyp asman çyzygy, Kanada"
+      },
+      {
+        "img": "/images/ihv.png",
+        "name": "Wankuwer",
+        "country": "Kanada",
+        "alt": "Wankuweriň ajaýyp tebigaty, Kanada"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableofcontents": {
+    "header": {
+      "title": "Mazmuny",
+      "subtitle": "Bölümler boýunça gezelenç"
+    },
+    "status": {
+      "currentlyReading": "Häzirki wagtda okaýar"
+    },
+    "footer": {
+      "sectionsCount": "Öwrenilmeli {count} bölüm"
+    },
+    "quickNav": {
+      "title": "Çalt nawigasiýa",
+      "buttonLabel": "Çalt nawigasiýa menýusy",
+      "footer": "{count} bölümleriň içinden aýlaň"
+    },
+    "accessibility": {
+      "openMenu": "Nawigasiýa menýusyny açyň",
+      "closeMenu": "Nawigasiýa menýusyny ýap"
+    },
+    "sections": [
+      {
+        "title": "Kanada barada faktlar",
+        "id": 1
+      },
+      {
+        "title": "Kanada göçmek üçin wiza mümkinçilikleri",
+        "id": 2
+      },
+      {
+        "title": "Kanada göçmek üçin esasy talaplar",
+        "id": 3
+      },
+      {
+        "title": "Kanadada daşary ýurtly hökmünde işe girmek",
+        "id": 4
+      },
+      {
+        "title": "ABŞ-dan Kanada göçmek",
+        "id": 5
+      },
+      {
+        "title": "Beýik Britaniýadan Kanada göçmek",
+        "id": 6
+      },
+      {
+        "title": "Kanada göçmegiň bahasy näçe?",
+        "id": 7
+      },
+      {
+        "title": "Kanada öý haýwanlary bilen göçmek",
+        "id": 8
+      }
+    ]
+  },
+  "canadafacts": {
+    "navigation": {
+      "previous": "Öňki fakt",
+      "next": "Indiki fakt"
+    },
+    "allFactsSection": {
+      "title": "Kanada barada ähli maglumatlar"
+    },
+    "accessibility": {
+      "selectFact": "Fakty saýlaň",
+      "goToFact": "Hakykata geç",
+      "previousFact": "Öňki fakta geç",
+      "nextFact": "Indiki fakta geç"
+    },
+    "facts": [
+      {
+        "title": "Dünýäniň iň uzyn kenarýaka zolagy",
+        "description": "Kanada dünýäde iň uzyn kenarýaka zolagyna eýedir, onuň uzynlygy Atlantik, Ýuwaş ummanlary we Arktika ummanlary boýunça 202,080 kilometrden gowrak.",
+        "icon": "🌊"
+      },
+      {
+        "title": "Dünýäniň süýji suwunyň 20% -i ýerleşýär",
+        "description": "Kanada dünýäniň süýji suwunyň takmynan 20% -ini öz sansyz köllerinde, derýalarynda we buzluklarynda saklaýar.",
+        "icon": "💧"
+      },
+      {
+        "title": "Ak Aýy paýtagty",
+        "description": "Çerçill, Manitoba ak aýylaryň esasy göç ýolunyň ugrunda ýerleşýändigi üçin \"Dünýäniň Ak Aýysynyň Paýtagty\" hökmünde tanalýar.",
+        "icon": "🐻‍❄️"
+      },
+      {
+        "title": "Milli seýilgähler ýurduň 8% -ni eýeleýär",
+        "description": "Kanadanyň milli seýilgähleri we milli seýilgäh goraghanalary ekologiýa dürlüligini gorap saklamak bilen ýurduň takmynan 8% -ni eýeleýär.",
+        "icon": "🏞️"
+      },
+      {
+        "title": "Putiniň oýlap tapyjylary",
+        "description": "Pendirli krevetka we sous bilen örtülen bu meşhur fransuz kartoşkasynyň tagamy 1950-nji ýyllaryň ahyrynda Kwebekde döräpdir.",
+        "icon": "🍟"
+      },
+      {
+        "title": "Iki resmi dil",
+        "description": "Kanadada iki resmi dil bar: iňlis we fransuz dilleri. Kanadalylaryň takmynan 23% -i fransuz dilini ene dili hökmünde ulanýarlar.",
+        "icon": "🗣️"
+      },
+      {
+        "title": "Akçaagaj siropy paýtagty",
+        "description": "Kanada dünýädäki akçaagaj siropunyň takmynan 71% -ni öndürýär, Kwebek bolsa dünýäde iň uly önüm öndüriji bolup durýar.",
+        "icon": "🍁"
+      },
+      {
+        "title": "Dünýäniň ikinji uly ýurdy",
+        "description": "Kanada 9,98 million inedördül kilometr meýdany bilen dünýäde umumy meýdany boýunça ikinji orny eýeleýär.",
+        "icon": "🗺️"
+      },
+      {
+        "title": "Demirgazyk çyralarynyň öýi",
+        "description": "Kanada, esasanam Demirgazyk-Günbatar Territoriýalarynda we Ýukonda, Aurora Borealis üçin iň gowy tomaşa mümkinçilikleriniň käbirini hödürleýär.",
+        "icon": "🌌"
+      },
+      {
+        "title": "Köp medeniýetli jemgyýet",
+        "description": "Kanada 200-den gowrak etnik gelip çykyşly adamlaryň ýaşaýan ýeri bolup, ony dünýäde iň köp medeniýetli ýurtlaryň birine öwürýär.",
+        "icon": "🌍"
+      }
+    ]
+  },
+  "canadajobguide": {
+    "tableOfContents": {
+      "title": "Gollanmanyň mazmuny"
+    },
+    "accessibility": {
+      "toggleSection": "Bölümi aç/ýap"
+    },
+    "sections": {
+      "jobMarket": {
+        "title": "Kanadanyň iş bazaryny düşünmek",
+        "description": "Kanada dürli pudaklarda dürli iş mümkinçiliklerini hödürleýär, birnäçe pudaklar bolsa halkara hünärmenlerini işjeň gözleýär.",
+        "inDemandTitle": "Daşary ýurtlylar üçin isleg bildirilýän pudaklar:",
+        "sectors": [
+          {
+            "name": "Saglygy goraýyş",
+            "description": "Lukmanlar, şepagat uýalary, ideg işgärleri"
+          },
+          {
+            "name": "IT we tehnologiýa",
+            "description": "Programma üpjünçiligi inženerleri, maglumat alymlary"
+          },
+          {
+            "name": "Inženerçilik",
+            "description": "Raýat, mehaniki, elektrik"
+          },
+          {
+            "name": "Maliýe",
+            "description": "Bank işi, fintech, buhgalteriýa hasabatlylygy"
+          },
+          {
+            "name": "Hünärmenler",
+            "description": "Kebşirleýjiler, elektrikçiler, santehnikler"
+          },
+          {
+            "name": "Oba hojalygy",
+            "description": "Ferma müdirleri, agronomlar"
+          }
+        ],
+        "languageNote": "Kanadada iki resmi dil bar: iňlis we fransuz dilleri. Iňlis dilini bilmek köp wezipeler üçin möhümdir, ýöne iki dilli bolmak, esasanam Kwebekde we federal hökümet wezipelerinde artykmaçlykdyr."
+      },
+      "immigration": {
+        "title": "Kanadanyň immigrasiýa ýollary",
+        "description": "Kanada hünärli işçiler üçin köp sanly immigrasiýa ýollaryny hödürleýär, esasy ulgam bolsa “Express Entry” bolup durýar.",
+        "expressEntry": {
+          "title": "Ekspres Giriş Ulgamy",
+          "description": "Hünärmen immigrantlar üçin esasy ýol:",
+          "points": [
+            "Federal Hünärmen Işçi Maksatnamasy, Federal Hünärmen Hünärler Maksatnamasy we Kanada Tejribe Dersi üçin arzalary dolandyrýar",
+            "Kandidatlara baha berýän toplumlaýyn reýting ulgamyna (CRS) esaslanýar",
+            "Ýaş, bilim, iş tejribesi, dil başarnyklary we uýgunlaşma faktorlary üçin berilýän ballar",
+            "Yzygiderli çekişlikler iň ýokary bal alan dalaşgärleri hemişelik ýaşamak üçin ýüz tutmaga çagyrýar"
+          ]
+        },
+        "otherPathways": {
+          "title": "Beýleki immigrasiýa ýollary:",
+          "programs": [
+            {
+              "name": "Welaýat dalaşgärlik maksatnamalary (PNP)",
+              "description": "Welaýatlar ýerli ykdysady zerurlyklary kanagatlandyrmak üçin dalaşgärleri hödürläp bilerler"
+            },
+            {
+              "name": "Atlantik immigrasiýa maksatnamasy",
+              "description": "Atlantik welaýatlarynda işlemek isleýänler üçin"
+            },
+            {
+              "name": "Oba we Demirgazyk immigrasiýa synagy",
+              "description": "Iri şäher merkezleriniň daşyndaky kiçi jemgyýetler üçin"
+            },
+            {
+              "name": "Global Talant akymy",
+              "description": "Tehnologiýa işgärleri we innowatorlar üçin çalt iş rugsatnamalary"
+            },
+            {
+              "name": "Aspiranturadan soňky iş rugsatnamasy",
+              "description": "Kanadada okuwyny tamamlan halkara talyplar üçin"
+            }
+          ]
+        },
+        "conclusion": "Kanadanyň immigrasiýa maksatnamalarynyň köpüsi hemişelik ýaşamaga getirýär, bu bolsa size islendik iş berijide işlemek we ahyrsoňy raýatlyga ýüz tutmak mümkinçiligini berýär."
+      },
+      "jobOpportunities": {
+        "title": "Kanadada iş mümkinçiliklerini tapmak",
+        "portalsTitle": "Kanadanyň meşhur iş portallary:",
+        "portals": [
+          "Hakykatdanam Kanada",
+          "Workopolis",
+          "LinkedIn",
+          "Haýwan",
+          "Iş Banky",
+          "Aýna gapy",
+          "Eluta",
+          "ZipRecruiter"
+        ],
+        "tipsTitle": "Hünärmen maslahatlary:",
+        "tips": [
+          "Zähmet bazary baradaky maglumatlar we mümkinçilikler üçin resmi Job Bank web sahypasyna göz aýlaň",
+          "Halkara zehinli işgärleri işe almak tejribesi bolan iş berijileri gözläň",
+          "Öz terjimehalyňyzy Kanada formatyna uýgunlaşdyryň (adatça 1-2 sahypa, üstünliklere gönükdirilen)",
+          "Daşary ýurt hünär derejäňiz bar bolsa, Kanadanyň güwänamalarynyň bahalandyrylmagyny hem goşuň",
+          "Welaýat we şäher immigrant hyzmatlary guramalary arkaly aragatnaşyk"
+        ]
+      },
+      "noc": {
+        "title": "Milli hünär klassifikasiýa (MKK)",
+        "description": "Kanada iş orunlaryny kategoriýalaşdyrmak üçin Milli hünär klassifikasiýasyny (MOC) ulanýar. Immigrasiýa üçin MOK kodyňyzy düşünmek örän möhümdir.",
+        "categories": {
+          "title": "TEER kategoriýalary:",
+          "teer": [
+            {
+              "name": "TEER 0",
+              "description": "Dolandyryş işleri"
+            },
+            {
+              "name": "TEER 1",
+              "description": "Uniwersitet diplomyny talap edýän hünärler"
+            },
+            {
+              "name": "TEER 2",
+              "description": "Ýokary okuw diplomyny ýa-da şägirtlik okuwyny talap edýän hünärler"
+            },
+            {
+              "name": "TEER 3",
+              "description": "Orta mekdebi we/ýa-da hünäre degişli okuwy talap edýän kärler"
+            },
+            {
+              "name": "TEER 4",
+              "description": "Gysga möhletli iş görkezmesini we resmi bilim almagyň gerek däldigini talap edýän kärler"
+            },
+            {
+              "name": "TEER 5",
+              "description": "Gysga möhletli iş görkezmesini talap edýän başlangyç derejeli hünärler"
+            }
+          ]
+        },
+        "importance": {
+          "title": "Näme üçin möhüm:",
+          "points": [
+            "Köp hünärli işçi programmalary TEER 0, 1, 2 ýa-da 3 hünärlerini talap edýär",
+            "Aýratyn immigrasiýa maksatnamalaryna laýyklygy kesgitleýär",
+            "Ekspres Girişde CRS ballaryna täsir edýär",
+            "Iş tejribäňiziň iş teklibiňize laýyk gelýändigini barlamaga kömek edýär",
+            "Häzirki aýlyk haklaryny kesgitlemek üçin ulanylýar"
+          ]
+        },
+        "findCode": "NOC kodyňyzy Kanadanyň resmi Immigrasiýa, Bosgunlar we Raýatlyk (IRCC) web sahypasyndan tapyň."
+      },
+      "remoteWork": {
+        "title": "Kanadada uzakdan işlemek mümkinçilikleri",
+        "intro": "Kanadada uzakdan işlemek, esasanam tehnologiýa, maliýe we döredijilik pudaklarynda barha köp ýaýrady:",
+        "points": [
+          "Kanadaly kompaniýa üçin uzakdan işlemek üçin <span class=\"font-medium\">, size henizem degişli iş rugsatnamasy gerek",
+          "Global Talent Stream tehnologiýa işgärleri üçin, şol sanda uzakdan işleýän işgärler üçin has çalt iş rugsatlaryny ýeňilleşdirýär",
+          "Kanadaly kompaniýalaryň köpüsi häzir uzakdan ýa-da gibrid tertipleri hödürleýärler",
+          "Sanly Köçe Wizasy: Kanada 2024-nji ýylda daşary ýurt kompaniýalarynda işleýän uzakdan işleýän işçiler üçin täze Sanly Köçe wizasyny girizdi"
+        ],
+        "taxConsiderations": {
+          "title": "Salgyt meseleleri:",
+          "points": [
+            "Kanadada işlemek, adatça, sizi salgyt rezidenti edýär",
+            "Iki gezek salgyt salmak bilen bagly mümkin bolan meselelerden habardar boluň",
+            "Kanadanyň köp ýurtlar bilen salgyt şertnamalary bar",
+            "Siziň anyk ýagdaýyňyz üçin salgyt hünärmeni bilen maslahatlaşyň"
+          ]
+        }
+      },
+      "teaching": {
+        "title": "Kanadada mugallymçylyk",
+        "description": "Mugallymçylyk Kanadada hünärli halkara dalaşgärler üçin gowy mümkinçilikleri hödürleýär.",
+        "k12": {
+          "title": "K-12 Okuwy:",
+          "requirements": [
+            "Her welaýat öz mugallymçylyk sertifikatlaşdyrmasyny düzgünleşdirýär",
+            "Umuman, bakalawr ýa-da deň derejeli bilim talap edilýär",
+            "Daşary ýurt şahadatnamalarynyň welaýat mugallymçylyk edaralary tarapyndan bahalandyrylmagy zerurdyr",
+            "Fransuz dilini öwrenýän mugallymlara uly isleg bildirilýär"
+          ]
+        },
+        "esl": {
+          "title": "ESL mugallymçylygy:",
+          "requirements": [
+            "Adatça TESL/TESOL sertifikaty talap edilýär",
+            "Dil mekdeplerinde, jemgyýetçilik kollejlerinde we ýerleşiş agentliklerinde mümkinçilikler",
+            "Adatça bakalawr derejesi talap edilýär",
+            "Immigrantlaryň köp ýaşaýan ýerlerinde isleg ýokary"
+          ]
+        },
+        "conclusion": "Köp welaýatlarda, esasanam ýetmezçilik edýän dersler boýunça daşary ýurtly mugallymlar üçin sertifikatlaşdyrmagy çaltlaşdyrmak üçin ýörite maksatnamalar bar."
+      },
+      "resumeInterview": {
+        "title": "Kanadaly Rezyumeler we Söhbetdeşlikler",
+        "resume": {
+          "title": "Kanadaly Rezyume Formaty:",
+          "points": [
+            "CV däl-de, \"rezyume\" diýlip atlandyrylýar",
+            "Adatça iň köp 1-2 sahypa",
+            "Surat ýok",
+            "Ýaş, maşgala ýagdaýy ýa-da dini ýaly şahsy maglumatlar ýok",
+            "Ters hronologik tertipde (iň soňky tejribe ilki bilen)",
+            "Diňe borçlara däl-de, üstünliklere üns beriň",
+            "Eger degişli bolsa, Kanadanyň ygtyýarlyklarynyň bahalandyrmasyny goşuň"
+          ]
+        },
+        "interview": {
+          "title": "Söhbetdeşlikden garaşylýan zatlar:",
+          "expectations": [
+            "Wagtynda bolmak möhümdir (10-15 minut ir gelmek adaty zat)",
+            "Pudaga baglylykda iş görnüşindäki gündelik ýa-da resmi iş görnüşi",
+            "Özüni alyp barş soraglaryna taýýarlanyň (\"Maňa haçan ... bolandygy barada gürrüň beriň\")",
+            "Kompaniýa we onuň gymmatlyklaryny düýpli öwreniň",
+            "Kanadalylar sypaýylyga gymmat berýärler, şonuň üçin sypaýy, ýöne ynamly boluň",
+            "Kompaniýanyň roly we medeniýeti barada oýlanyşykly soraglary taýýarlaň"
+          ]
+        }
+      },
+      "networking": {
+        "title": "Kanadada tor ulgamy",
+        "description": "Kanadanyň iş bazarynda aragatnaşyk saklamak örän möhümdir, sebäbi köp iş orunlary yglan edilmezden öň doldurylýar.",
+        "strategies": [
+          "Öz uguryňyzdaky professional birleşiklerine goşulyň",
+          "Senagat duşuşyklaryna, konferensiýalaryna we iş ýarmarkalaryna gatnaşyň",
+          "Welaýat immigrantlaryny ýerleşdirmek maksatnamalaryna gatnaşyň",
+          "Kanadada okan bolsaňyz, uçurymlaryň ulgamlary bilen baglanyşyň",
+          "Kanada tejribesini gazanmak we gatnaşyklar gurmak üçin meýletinçi boluň",
+          "Kanada bazary üçin optimizirlenen güýçli LinkedIn profilini dörediň"
+        ],
+        "resources": {
+          "title": "Esasy hasaplaşyk çeşmeleri:",
+          "list": [
+            "Siziň şäheriňizdäki immigrantlara hyzmat edýän guramalar",
+            "Welaýat täze gelenler üçin hyzmatlar",
+            "Pudaga degişli mentorlyk maksatnamalary",
+            "Halkara hünärmenleri üçin aragatnaşyk çäreleri",
+            "Kanadanyň hökümeti tarapyndan maliýeleşdirilýän iş bilen üpjünçilik boýunça maslahat beriş"
+          ]
+        }
+      }
+    },
+    "checklist": {
+      "title": "Kanadaly iş gözleg sanawy",
+      "categories": [
+        {
+          "title": "Arza bermezden öň",
+          "items": {
+            "0": "Daşary ýurt şahadatnamalaryňyzy bahalandyryň (ECA)",
+            "1": "Öz rezyumenizi Kanada standartlaryna laýyklykda formatlaň",
+            "2": "NOC kodyňyzy we TEER kategoriýaňyzy kesgitläň",
+            "3": "Talap edilýän dil synaglaryndan geçiň (IELTS/CELPIP/TEF)"
+          }
+        },
+        {
+          "title": "Immigrasiýa ädimleri",
+          "items": {
+            "0": "Eger laýyk bolsa, Express Entry profilini dörediň",
+            "1": "Welaýat dalaşgärleriniň programmalaryny öwreniň",
+            "2": "Iş beriji üçin iş rugsatnamasynyň opsiýalaryny barlaň",
+            "3": "Hasaplaşmak üçin serişdeleriň subutnamasyny taýýarlaň"
+          }
+        },
+        {
+          "title": "Ýerleşige taýýarlyk görmek",
+          "items": {
+            "0": "Maksatly şäherlerde ýaşaýyş çykdajylaryny öwreniň",
+            "1": "Hasaplaşyk agentlikleri bilen baglanyşyň",
+            "2": "Täze gelenler üçin sosial media toparlaryna goşulyň",
+            "3": "Saglygy goraýyş we sosial ulgamlar barada öwreniň"
+          }
+        }
+      ]
+    }
+  },
+  "canadamovingcosts": {
+    "accessibility": {
+      "toggleSection": "Bölümi aç/ýap"
+    },
+    "costSections": [
+      {
+        "id": "wiza-pr",
+        "icon": "🛂",
+        "title": "Wiza we hemişelik ýaşamak üçin rugsatnama",
+        "amount": "1500–3000 dollar",
+        "details": "Ariza töleglerini, lukmançylyk barlaglaryny, dil synaglaryny öz içine alýar",
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "ýaşaýyş jaýy",
+        "icon": "🏠",
+        "title": "Ýaşaýyş jaýy",
+        "amount": "Ilkinji töleg 2000–5000 dollar",
+        "details": "Ilkinji we soňky aýyň kärende tölegi + kepillik goýumy",
+        "subItems": {
+          "0": {
+            "title": "Iri şäherler (aýlyk)",
+            "amount": "1500–3000 dollar"
+          },
+          "1": {
+            "title": "Kiçi şäherler/şäherler (aýlyk)",
+            "amount": "800–1500 dollar"
+          }
+        },
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "iberiş",
+        "icon": "📦",
+        "title": "Eltip bermek (Isleg boýunça)",
+        "amount": "5000–10000 dollar",
+        "details": "Kiçi we orta ölçegli gaplar. Çykdajylary azaltmak üçin ýerli mebel wariantlaryny göz öňünde tutuň.",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "ulag",
+        "icon": "🚗",
+        "title": "Ulag",
+        "amount": "500–5000 dollar",
+        "details": "Jemgyýetçilik ulagynyň bileti ýa-da ulanylan awtoulag satyn almak",
+        "subItems": {
+          "0": {
+            "title": "Aýlyk ulag bileti",
+            "amount": "90–150 dollar"
+          },
+          "1": {
+            "title": "Ulanylan awtoulag",
+            "amount": "5000–15000 dollar"
+          },
+          "2": {
+            "title": "Awtomobil ätiýaçlandyrmasy (aýlyk)",
+            "amount": "150–300 dollar"
+          }
+        },
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "kommunal hyzmatlar",
+        "icon": "💡",
+        "title": "Kommunal hyzmatlar we internet gurnama",
+        "amount": "200–400 dollar",
+        "details": "Baglanyşyk tölegleri we goýumlar",
+        "subItems": {
+          "0": {
+            "title": "Aýlyk kommunal hyzmatlar",
+            "amount": "150–300 dollar"
+          },
+          "1": {
+            "title": "Internet (aýlyk)",
+            "amount": "60–100 dollar"
+          },
+          "2": {
+            "title": "Jübi telefon (aýlyk)",
+            "amount": "50–100 dollar"
+          }
+        },
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "saglygy goraýyş",
+        "icon": "🏥",
+        "title": "Saglygy goraýyş hyzmatlary",
+        "amount": "$0–$900",
+        "details": "Welaýatlara görä üýtgeýär. Käbirlerinde döwlet saglygy goraýyş gullugy üçin garaşma döwri bar.",
+        "subItems": {
+          "0": {
+            "title": "Hususy ätiýaçlandyryş (garaşmak döwründe aýlyk)",
+            "amount": "75–150 dollar"
+          }
+        },
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "her gün",
+        "icon": "🛒",
+        "title": "Gündelik çykdajylar",
+        "amount": "Aýda 800–1500 dollar",
+        "subItems": {
+          "0": {
+            "title": "Azyk önümleri",
+            "amount": "Aýda 400–800 dollar"
+          },
+          "1": {
+            "title": "Daşarda naharlanmak",
+            "amount": "Aýda 200–400 dollar"
+          },
+          "2": {
+            "title": "Güýmenje",
+            "amount": "Aýda 100–300 dollar"
+          }
+        },
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "gyş",
+        "icon": "❄️",
+        "title": "Gyşky zerur zatlar",
+        "amount": "500–1000 dollar",
+        "details": "Gyşky geýimler, ädikler, aksessuarlar",
+        "color": "bg-sky-500"
+      }
+    ],
+    "totalCosts": {
+      "title": "Jemi çaklanylýan çykdajylar",
+      "categories": [
+        {
+          "title": "Ilkinji gurnama (eltip bermesiz)",
+          "amount": "5000–10000 dollar",
+          "description": "Wiza tölegleri, ilkinji aýyň ýaşaýyş jaýy, goýumlar, gyşky enjamlar we esasy gurnama çykdajylary öz içine alýar"
+        },
+        {
+          "title": "Ilkinji gurnama (eltip bermek bilen)",
+          "amount": "10,000–20,000+ dollar",
+          "description": "Ähli esasy çykdajylary, şeýle hem öý hojalyk zatlarynyň konteýnerlerini öz içine alýar"
+        },
+        {
+          "title": "Aýlyk çykdajylar (Takmynan)",
+          "amount": "$2,000–$4,500",
+          "description": "Kärende tölegi, kommunal hyzmatlar, azyk önümleri, ulag we beýleki yzygiderli çykdajylary öz içine alýar"
+        }
+      ]
+    },
+    "regionalCosts": {
+      "title": "Sebitleýin baha üýtgeşmeleri",
+      "categories": [
+        {
+          "title": "Ýokary baha",
+          "cities": {
+            "0": "Toronto",
+            "1": "Wankuwer",
+            "2": "Wiktoriýa"
+          }
+        },
+        {
+          "title": "Orta baha",
+          "cities": {
+            "0": "Kalgari",
+            "1": "Monreal",
+            "2": "Ottawa"
+          }
+        },
+        {
+          "title": "Arzan baha",
+          "cities": {
+            "0": "Winnipeg",
+            "1": "Kwebek şäheri",
+            "2": "Halifax"
+          }
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Çykdajylary tygşytlamagyň strategiýalary",
+      "tips": [
+        {
+          "title": "Ikinji derejeli şäherleri göz öňünde tutuň",
+          "description": "Toronto ýa-da Wankuwerde däl-de, Monrealda, Kalgaride ýa-da Ottawada ýaşamak jaý çykdajylaryny 30-40% azaldyp biler."
+        },
+        {
+          "title": "Kanadada mebel satyn alyň",
+          "description": "Eltip bermegiň ýerine mebelleri ýerli IKEA-dan, ikinji el dükanlaryndan ýa-da Facebook Marketplace-den satyn alyň."
+        },
+        {
+          "title": "Jemgyýetçilik ulaglary",
+          "description": "Iri şäherlerde jemgyýetçilik ulaglaryndan peýdalanmak awtoulag eýe bolmakdan has tygşytlydyr."
+        },
+        {
+          "title": "Bahar/Tomusda geliň",
+          "description": "Ýyly aýlarda göçmek gymmat gyşky enjamlara bolan derrew zerurlygy azaldýar."
+        }
+      ]
+    },
+    "conclusion": "Kanada göçmek üçin başlangyç maýa goýumlarynyň uly möçberi gerek, ýöne ýokary hilli durmuş, umumy saglygy goraýyş we ykdysady mümkinçiliklere elýeterlilik üpjün edilýär. Dogry meýilnamalaşdyrmak we býujet düzmek bilen, Kanada durmuşyna geçişiňiz üstünlikli we peýdaly bolup biler."
+  },
+  "ustocanadaguide": {
+    "navigation": {
+      "title": "Bölüme geç"
+    },
+    "accessibility": {
+      "toggleSection": "Bölümi aç/ýap"
+    },
+    "sections": {
+      "whyCanada": {
+        "title": "Näme üçin Kanada göçmeli?",
+        "description": "Köp amerikanlar Kanadany özleriniň täze öýi hökmünde saýlaýarlar, sebäbi olar aşakdaky sebäplere esaslanýar:",
+        "reasons": [
+          "Ählumumy saglygy goraýyş ulgamy",
+          "Ýokary hilli ýaşaýyş we howpsuzlyk",
+          "Gözel tebigy peýzažlar",
+          "Medeni dürlüligi we inkluziwlik",
+          "Güýçli sosial goldaw ulgamlary",
+          "Maşgala myhmanlary üçin ABŞ-a golaýlyk"
+        ],
+        "conclusion": "Hünär mümkinçilikleri, bilim, maşgala sebäpleri ýa-da durmuş ýörelgesini üýtgetmek üçin başga ýere göçýän bolsaňyzam, Kanada amerikanlar üçin tanyş, ýöne tapawutly tejribeleri hödürleýär."
+      },
+      "immigrationOptions": {
+        "title": "ABŞ raýatlary üçin immigrasiýa mümkinçilikleri",
+        "description": "ABŞ raýaty hökmünde Kanada göçüp gelmegiň birnäçe ýoly bar:",
+        "options": [
+          {
+            "title": "1. Ekspres Giriş Ulgamy",
+            "points": {
+              "0": "Hünärmen işçiler üçin ballara esaslanýan ulgam",
+              "1": "Ýaşyny, bilimini, iş tejribesini, dil başarnyklaryny baha berýär",
+              "2": "Reýting we çakylyklar bilen bäsdeşlik ulgamy",
+              "3": "Hemişelik ýaşamaga ýol"
+            }
+          },
+          {
+            "title": "2. Welaýat dalaşgärleriniň maksatnamalary (PNP)",
+            "points": {
+              "0": "Welaýat we territoriýalar ýerli zerurlyklara esaslanyp dalaşgärleri hödürleýärler",
+              "1": "Köplenç isleg bildirilýän hünärler üçin federal maksatnamalardan has çalt",
+              "2": "Her welaýatyň özüne mahsus akymlary we talaplary bar",
+              "3": "Hemişelik ýaşamaga getirip biler"
+            }
+          },
+          {
+            "title": "3. Okuw rugsatnamasy",
+            "points": {
+              "0": "Kanadanyň bellenen okuw jaýlaryna girmek üçin",
+              "1": "Kabul haty, serişdeleriň subutnamasy we arassa ýazgy talap edilýär",
+              "2": "Çäklendirilen iş rugsatlaryny öz içine alýar",
+              "3": "Okuwy tamamlandan soň iş rugsatnamasy elýeterlidir"
+            }
+          },
+          {
+            "title": "4. Maşgala hemaýatkärligi",
+            "points": {
+              "0": "Kanada raýatlarynyň/PR-laryň är-aýallary, hyzmatdaşlary, çagalary ýa-da ene-atalary üçin",
+              "1": "Sponsor girdeji talaplaryna laýyk gelmelidir",
+              "2": "Hemişelik ýaşamaga alyp barýar"
+            }
+          },
+          {
+            "title": "5. NAFTA/USMCA Iş Rugsady",
+            "points": {
+              "0": "Laýyk hünärler üçin wagtlaýyn iş rugsatnamalary",
+              "1": "Kanadaly iş berijiden iş teklibi bolmaly",
+              "2": "Nisbeten ýönekeý arza bermek prosesi",
+              "3": "Hemişelik immigrasiýa ýollaryna ädim bolup biler"
+            }
+          }
+        ]
+      },
+      "requiredDocuments": {
+        "title": "Immigrasiýa üçin zerur resminamalar",
+        "description": "Resminama talaplary immigrasiýa ýoluna görä üýtgeýär, ýöne adatça aşakdakylary öz içine alýar:",
+        "documents": [
+          "ABŞ-nyň ygtyýarly pasporty",
+          "Immigrasiýa üçin arza formalary",
+          "Dil başarnygyňyzyň subutnamasy (iňlis/fransuz dili)",
+          "Bilim şahadatnamasynyň bahalandyrylmagy",
+          "Iş tejribesine salgylanmalar we subutnamalar",
+          "Polisiýa rugsatnamasynyň şahadatnamalary",
+          "Lukmançylyk barlaglarynyň netijeleri",
+          "Özüňizi goldamak üçin serişdeleriň subutnamasy"
+        ],
+        "tip": {
+          "label": "Hünärmen maslahaty:",
+          "text": "Bu resminamalary ir ýygnamaga başlaň. Bilim bahalandyrmalaryny, dil synaglaryny we polisiýa şahadatnamalaryny almak birnäçe hepde gerek bolup biler."
+        }
+      },
+      "popularCities": {
+        "title": "Amerikaly ekspatlar üçin meşhur Kanada şäherleri",
+        "description": "Kanada göçüp barýan amerikanlar köplenç şu meşhur ýerleri saýlaýarlar:",
+        "mainCities": [
+          {
+            "name": "Toronto",
+            "icon": "🌆",
+            "highlights": {
+              "0": "Kanadanyň iň uly şäheri we maliýe merkezi",
+              "1": "Güýçli iş bazary bilen örän dürli-dürli",
+              "2": "Janly medeniýet we güýmenje sahnasy",
+              "3": "Ýaşaýyş çykdajylary ýokary, ýöne has köp mümkinçilikler"
+            }
+          },
+          {
+            "name": "Wankuwer",
+            "icon": "🏞️",
+            "highlights": {
+              "0": "Ýumşak howa we ajaýyp tebigy gözellik",
+              "1": "Güýçli tehnologiýa we kino senagatlary",
+              "2": "Daglar we okean bilen açyk howada durmuş ýörelgesi",
+              "3": "Jaýyň gymmatlygy, ýöne ýaşaýyş hiliniň ýokarylygy"
+            }
+          },
+          {
+            "name": "Ottawa",
+            "icon": "🏛️",
+            "highlights": {
+              "0": "Kanadanyň paýtagty durnukly hökümet iş orunlary bilen",
+              "1": "Toronto/Wankuwer bilen deňeşdirilende elýeterli ýaşaýyş jaýlary",
+              "2": "Ýokary ýaşaýyş derejesi we howpsuzlyk",
+              "3": "Medeni gözel ýerleri bolan iki dilli şäher"
+            }
+          },
+          {
+            "name": "Monreal",
+            "icon": "🏛️",
+            "highlights": {
+              "0": "Demirgazyk Amerikanyň amatlylygy bilen Ýewropanyň gözelligi",
+              "1": "Beýleki iri şäherlere garanyňda ýaşaýyş çykdajylarynyň arzanlygy",
+              "2": "Baý medeniýet, iýmit we sungat dünýäsi",
+              "3": "Fransuz dilinde gepleýän, ýöne iňlis dilinde giňden düşünilýän"
+            }
+          }
+        ],
+        "emergingOptions": {
+          "title": "Täze dörän mümkinçilikler",
+          "cities": [
+            {
+              "name": "Halifax",
+              "description": "Atlantik kenaryndaky durmuş ýörelgesi we ösýän tehnologiýa dünýäsi"
+            },
+            {
+              "name": "Kalgari",
+              "description": "Güýçli ykdysadyýet, Rokki daglaryna golaýlyk, pes salgytlar"
+            },
+            {
+              "name": "Waterloo",
+              "description": "Uniwersitetler we innowasiýa bilen tehnologiýa merkezi"
+            },
+            {
+              "name": "Wiktoriýa",
+              "description": "Ýumşak howa we rahat ada ýaşaýyş durmuşy"
+            }
+          ]
+        }
+      },
+      "costOfLiving": {
+        "title": "Ýaşaýyş çykdajylaryny deňeşdirmek: Kanada we ABŞ",
+        "table": {
+          "headers": {
+            "expense": "Çykdajylar",
+            "canada": "Kanada (ortaça)",
+            "usa": "ABŞ (ortaça)"
+          },
+          "rows": [
+            {
+              "expense": "Kärende (şäher merkezinde 1 ýatak otagy)",
+              "canada": "Aýda 1300–2000 Kanada dollary",
+              "usa": "Aýda 1500–2500 dollar"
+            },
+            {
+              "expense": "Saglygy goraýyş",
+              "canada": "Esasan welaýat meýilnamalary bilen üpjün edilýär",
+              "usa": "Aýda 300–600 dollar",
+              "canadaHighlight": true
+            },
+            {
+              "expense": "Kommunal hyzmatlar (aýlyk)",
+              "canada": "150–200 Kanada dollary",
+              "usa": "150–200 dollar"
+            },
+            {
+              "expense": "Ulag",
+              "canada": "Aýda 100–150 Kanada dollary",
+              "usa": "100–150 dollar + awtoulag çykdajylary"
+            },
+            {
+              "expense": "Daşarda naharlanmak (2 adamlyk)",
+              "canada": "60–100 Kanada dollary",
+              "usa": "50–100 dollar"
+            },
+            {
+              "expense": "Uniwersitetiň okuw tölegi",
+              "canada": "Ýylda 7000–20000 Kanada dollary",
+              "usa": "Ýylda 10,000–40,000 dollar",
+              "canadaHighlight": true
+            },
+            {
+              "expense": "Girdeji salgydy",
+              "canada": "Umuman, has ýokary",
+              "usa": "Umuman has pes"
+            }
+          ]
+        },
+        "note": "Ýaşaýyş çykdajylary şäherler boýunça düýpli tapawutlanýar. Wankuwer we Toronto iň gymmat, ABŞ-nyň esasy şäherleri bilen deňeşdirip bolýar, beýleki Kanada sebitleri bolsa has elýeterli ýaşaýyş mümkinçiliklerini hödürleýär."
+      },
+      "healthcare": {
+        "title": "Kanadada saglygy goraýyş",
+        "description": "Kanadanyň umumy saglygy goraýyş ulgamy amerikanlar üçin uly özüne çekiji zatdyr. Her welaýat öz saglygy goraýyş meýilnamasyny dolandyrýar we iň möhüm lukmançylyk hyzmatlaryny öz içine alýar.",
+        "newcomersInfo": {
+          "title": "Täze gelenler üçin saglygy goraýyş",
+          "points": [
+            "Hemişelik ýaşaýjylar welaýat saglyk ätiýaçlandyrmasyna derrew ýüz tutup bilerler",
+            "Käbir welaýatlarda garaşmak möhleti bar (3 aýa çenli) - bu döwürde hususy ätiýaçlandyryş maslahat berilýär",
+            "Wagtlaýyn ýaşaýjylaryň (iş/okuw rugsatnamalary) hukugy welaýatlara görä üýtgeýär",
+            "Ähli hyzmatlar (stomatologiýa, görme, resept boýunça berilýän dermanlar) göz öňünde tutulmaýar."
+          ]
+        },
+        "privateInsurance": "Hususy saglyk ätiýaçlandyrmasy elýeterlidir we diş bejergisi, resept boýunça berilýän dermanlar we göz bejergisi ýaly hyzmatlar üçin welaýat ätiýaçlandyrmasynyň goşmaçasy hökmünde maslahat berilýär."
+      },
+      "language": {
+        "title": "Dil we medeni maslahatlar",
+        "description": "Köp meňzeşliklere garamazdan, Kanada medeniýetiniň özüne mahsus aýratynlyklary bar:",
+        "details": {
+          "title": "Kanadaly iňlis dili we medeni nuksanslar",
+          "terms": {
+            "title": "Kanadaly iňlis diliniň şertleri:",
+            "examples": [
+              "Hajathana (hajathana däl)",
+              "Toke (gyşky şlýapa)",
+              "Luni (1 dollar), Tuni (2 dollar)",
+              "Gazly içgiler (gazly içgiler däl)",
+              "Gidro (elektrik)",
+              "Iki esse (2 gaýmakly, 2 şekerli kofe)"
+            ]
+          },
+          "cultural": {
+            "title": "Medeni tapawutlar:",
+            "points": [
+              "Kanadalylar ilki başda has köp saklanýarlar",
+              "Sypaýylyga we hemmeleriň arasynda umumylyga uly üns berilýär",
+              "Köp medeniýetlilik dabaralanýar we kabul edilýär",
+              "Az gapma-garşylykly aragatnaşyk stili",
+              "ABŞ-daky ýaly çaýpul töleg gümrükleri (15-20%)"
+            ]
+          }
+        },
+        "frenchNote": "Fransuz dili iňlis dili bilen birlikde resmi dildir. Kanadanyň köp bölegi esasan iňlis dilinde gürleýän bolsa-da, Kwebek esasan fransuz dilinde gürleýär we köp federal gulluklar iki dilde işleýär."
+      },
+      "moving": {
+        "title": "Göçmek we serhetüsti göçürmek",
+        "description": "Serhetden fiziki geçişiňizi meýilleşdirmek üçin taýýarlyk gerek:",
+        "belongings": {
+          "title": "Eşýalaryňyzy göçürmek",
+          "points": [
+            {
+              "label": "Harytlar we şahsy zatlar",
+              "description": "Degişli resminamalar bilen salgytsyz import edilip bilner"
+            },
+            {
+              "label": "Gerekli formalar",
+              "description": "Şahsy Eşýalaryň Hasapçylyk Resminamasy (B4 Formasy) we jikme-jik inwentar sanawy"
+            },
+            {
+              "label": "Göçýän kompaniýalar",
+              "description": "ABŞ-Kanada göçmek tejribesi bolanlary saýlaň"
+            },
+            {
+              "label": "Çäklendirilen zatlar",
+              "description": "Käbir iýmitler, ösümlikler, ýaraglar çäklendirilen ýa-da gadagan edilen"
+            }
+          ]
+        },
+        "vehicles": {
+          "title": "Ulaglary getirmek",
+          "points": [
+            "Ulaglar Kanadanyň howpsuzlyk we zyýanly gazlaryň çykarylyşy standartlaryna laýyk gelmelidir",
+            "Import prosesi formalary, barlaglary we mümkin bolan üýtgetmeleri talap edýär",
+            "Baha RIV tölegini, salgytlary we mümkin bolan paçlary öz içine alýar",
+            "ABŞ awtoulagyny satyp, Kanadada satyn almagy göz öňünde tutuň"
+          ]
+        },
+        "note": "Nämeleri getirmelidigini üns bilen göz öňünde tutuň. Kanada metrik ulgamy ulanýar we ABŞ ýaly 120V elektrik energiýasyna eýedir, şonuň üçin elektron enjamlaryň köpüsi konwertorlarsyz işleýär."
+      },
+      "banking": {
+        "title": "Bankçylyk we maliýe",
+        "description": "Kanadada maliýe durmuşyňyzy ýola goýmak ileri tutulýan ugur bolmaly:",
+        "bankingInfo": {
+          "title": "Kanadada bankçylyk",
+          "points": [
+            "Esasy banklar: RBC, TD, Scotiabank, BMO, CIBC",
+            "Täze gelenler üçin arzanladyş talaplary bilen bank paketleri elýeterlidir",
+            "Gerekli resminamalar: immigrasiýa resminamalary, pasport, salgysyny tassyklaýan resminama",
+            "Serhetara bank hyzmatlary arkaly gelmezden öň hasap açmagy göz öňünde tutuň"
+          ]
+        },
+        "financialConsiderations": {
+          "title": "Maliýe meseleleri",
+          "points": [
+            "ABŞ raýatlary ýaşaýan ýerine garamazdan ABŞ salgytlaryny tölemeli",
+            "Kanada bilen ABŞ-nyň salgyt şertnamasy iki gezek salgyt salynmagynyň öňüni almaga kömek edýär",
+            "Walýuta geçirimleri üçin Wise ýa-da OFX ýaly hyzmatlary göz öňünde tutuň",
+            "Kredit taryhy başga ýere geçmeýär - Kanadanyň kredit taryhyny dörediň",
+            "Kanadanyň pensiýa hasaplarynyň (RRSP, TFSA) ABŞ-nyň salgytlaryna täsiri bar"
+          ]
+        },
+        "recommendation": "ABŞ-nyň maliýe borçlaryny dowam etdirmek üçin ABŞ-nyň bank gatnaşyklaryny saklamak maslahat berilýär. Maliýe ýagdaýyňyzy optimizirlemek üçin serhetüsti salgyt hünärmeni bilen işleşmegi göz öňünde tutuň."
+      }
+    },
+    "checklist": {
+      "title": "Amerikalylar üçin göçmezden öňki barlag sanawy",
+      "items": [
+        "Immigrasiýa ýoluňyzy kesgitläň",
+        "Zerur bolsa, dil synaglaryndan geçiň (IELTS/CELPIP)",
+        "Bilim güwänamasynyň bahalandyrylmagyny (ECA) alyň",
+        "Serhetara bank hyzmatlaryny gurnaň",
+        "Saglygy goraýyş ätiýaçlandyryş mümkinçiliklerini öwreniň",
+        "Eşýalaryň jikme-jik sanawyny dörediň",
+        "Serhetara salgyt hünärmeni bilen maslahatlaşyň",
+        "Maksatly şäheriňizde ýaşaýyş jaýlaryny gözläň",
+        "Kanadaly daşary ýurtly jemgyýetlere we forumlara onlaýn goşulyň"
+      ]
+    },
+    "resources": {
+      "title": "Peýdaly çeşmeler",
+      "categories": [
+        {
+          "title": "Resmi Maglumat",
+          "items": {
+            "0": "Kanadanyň immigrasiýa, bosgunlar we raýatlygy",
+            "1": "Welaýat immigrasiýa maksatnamalary",
+            "2": "ABŞ-nyň Kanadadaky ilçihanasy we konsullyklary"
+          }
+        },
+        {
+          "title": "Daşary ýurtly jemgyýetler",
+          "items": {
+            "0": "Kanadadaky amerikanlar Facebook toparlary",
+            "1": "InterNations Kanada bölümleri",
+            "2": "Şähere mahsus täze gelenler birleşikleri"
+          }
+        },
+        {
+          "title": "Amaly hyzmatlar",
+          "items": {
+            "0": "Serhetüsti göçüriş kompaniýalary",
+            "1": "Websitesaşaýyş jaý web sahypalary (Realtor.ca, Kijiji)",
+            "2": "Serhetara salgyt boýunça hünärmenler"
+          }
+        }
+      ]
+    },
+    "finalTips": {
+      "title": "Täze kanadalylar üçin soňky maslahatlar",
+      "categories": [
+        {
+          "title": "Başlamak",
+          "tips": {
+            "0": "Gelşiňiz bilen derrew Sosial Ätiýaçlandyryş Belgiňizi (SIN) almak üçin ýüz tutuň",
+            "1": "Welaýat saglyk ätiýaçlandyrmasyna degişli bolan badyna ýazylyň",
+            "2": "Öý gözläp ýörkäňiz, wagtlaýyn ýaşamak üçin ýer göz öňünde tutuň"
+          }
+        },
+        {
+          "title": "Integrasiýa boýunça maslahatlar",
+          "tips": {
+            "0": "Kanadanyň gyşyny degişli geýimler we işler bilen garşylaň",
+            "1": "Täze gelenler üçin elýeterli hasaplaşyk hyzmatlaryndan peýdalanyň",
+            "2": "Kredit taryhyny döretmekde we özüňizi berkitmekde sabyrly boluň"
+          }
+        }
+      ],
+      "conclusion": "Kanadaly täze başdan geçirmeleriňiz sizi garaşýar! Degişli meýilnamalaşdyrmak we taýýarlyk görmek bilen, ABŞ-dan Kanada geçişiňiz gyzykly we peýdaly tejribe bolup biler."
+    }
+  },
+  "movingwithpets": {
+    "navigation": {
+      "title": "Nawigasiýa gollanmasy"
+    },
+    "accessibility": {
+      "toggleSection": "Bölümi aç/ýap"
+    },
+    "sections": {
+      "requirements": {
+        "title": "Giriş talaplary",
+        "steps": [
+          {
+            "title": "Mikroçip",
+            "description": "Ähli öý haýwanlaryna ISO standartyna (11784/11785) laýyk gelýän mikroçip implantasiýa edilmelidir."
+          },
+          {
+            "title": "Guduzlama garşy waksinasiýa",
+            "description": "Öý haýwanlary girmezden azyndan 30 gün öň guduz keseline garşy sanjym edilmeli we sanjym gelenden soň güýje girmeli."
+          },
+          {
+            "title": "Weterinariýa güwänamasy",
+            "details": {
+              "0": "Siziň ýurduňyzdaky ygtyýarly weterinar lukman tarapyndan berilmeli.",
+              "1": "Hökümet edarasy (meselem, ABŞ-da USDA) tarapyndan tassyklanmaly.",
+              "2": "Kanada girmezden <span class=\"font-medium\">14 günüň dowamynda</span> berilmeli."
+            }
+          }
+        ],
+        "importantNote": {
+          "title": "Möhüm bellik",
+          "text": "Köp ýurtlardan tapawutlylykda, Kanada ähli resminama talaplaryna laýyk gelýän öý haýwanlary üçin karantin talap etmeýär."
+        }
+      },
+      "dogSpecific": {
+        "title": "Itlere mahsus düzgünler",
+        "breedRestrictions": {
+          "title": "Tohum çäklendirmeleri",
+          "description": "Kanadada agressiw hasaplanýan käbir it tohumlaryna çäklendirmeler bar. Bu düzgünler welaýat we şäher häkimligine görä üýtgeýär.",
+          "restrictedTitle": "Käbir sebitlerde çäklendirilen:",
+          "breeds": [
+            "Pitbul Terrierleri",
+            "Staffordshire Bull Terriers",
+            "Amerikan Staffordşir Terýerleri",
+            "Rottweilerler (käbir ýerlerde)"
+          ],
+          "note": "Eger itiňiz çäklendirilen tohuma degişli bolsa, ony öz welaýatyňyz we şäheriňiz bilen anyklaň."
+        },
+        "commercialDogs": {
+          "title": "Söwda üçin niýetlenen itler (8 aýdan kiçi)",
+          "description": "Söwda maksatlary üçin (köpeltmek, görkezmek, gaýtadan satmak) import edilen 8 aýdan kiçi itler üçin goşmaça talaplar bar. Bu itler üçin Kanadanyň Azyk barlag agentliginden import rugsady gerek."
+        }
+      },
+      "catSpecific": {
+        "title": "Pişiklere mahsus düzgünler",
+        "goodNews": "Gowy habar! Kanadanyň pişikleri import etmek üçin talaplary beýleki köp ýurtlar bilen deňeşdirilende deňeşdirme boýunça ýönekeý.",
+        "basicRequirements": {
+          "title": "Pişikler üçin esasy talaplar",
+          "requirements": [
+            "Mikroçip (ISO standarty)",
+            "Guduzlama garşy waksinasiýa (girişden azyndan 30 gün öň)",
+            "Weterinariýa saglyk güwänamasy"
+          ]
+        },
+        "noBreedRestrictions": "Itlerden tapawutlylykda, Kanadada pişikler üçin jynsy çäklendirmeler ýok."
+      },
+      "travelOptions": {
+        "title": "Syýahat opsiýalary",
+        "options": [
+          {
+            "title": "Kabinada syýahat",
+            "description": "8-10 kg agramyndaky haýwanlar (daşaýjy bilen birlikde) salonda gezip bilerler. Daşaýjy öňüňizdäki oturgyjyň aşagyna ýerleşmeli.",
+            "fee": "Töleg: Her tarapa 50-125 Kanada dollary",
+            "icon": "🧳",
+            "ariaLabel": "kabina"
+          },
+          {
+            "title": "Bellige alnan bagaž",
+            "description": "Kabin üçin gaty uly, ýöne agramy 32 kg-dan az bolan haýwanlar bellige alnan goş hökmünde daşalyp bilner.",
+            "fee": "Töleg: Her tarapa 100-250 Kanada dollary",
+            "icon": "🧴",
+            "ariaLabel": "bellige alnan goş"
+          },
+          {
+            "title": "Howa ýükleri",
+            "description": "Örän uly öý haýwanlary ýa-da öý haýwanlaryna rugsat berilmeýän ugurlarda syýahat edýänler ýük hökmünde gitmeli.",
+            "fee": "Töleg: Her tarapa 400-1000+ Kanada dollary",
+            "icon": "📦",
+            "ariaLabel": "ýük"
+          }
+        ],
+        "warning": "Haýwanlar üçin ýerler çäkli bolany üçin, awiakompaniýa bilen hemişe öňünden bronlaň. Howaýollarynyň dürli syýasatlary we çäklendirmeleri bar, esasanam dem alyş meseleleri sebäpli gadagan edilip bilinýän burny gysga tohumly haýwanlar üçin."
+      },
+      "afterArrival": {
+        "title": "Gelişden soň",
+        "atTheBorder": {
+          "title": "Serhetde",
+          "description": "Kanada Serhet Hyzmatlary Agentliginiň (CBSA) işgäri geleniňizde, öý haýwanyňyzyň resminamalaryna göz aýlar. Şu aşakdakylary ýerine ýetiriň:",
+          "steps": [
+            "Öý haýwanyňyzy gümrük işgärlerine mälim ediň",
+            "Ähli asyl resminamalary elýeterli ediň",
+            "Öý haýwanyňyzyň mümkin bolan barlagyna taýýar boluň"
+          ]
+        },
+        "firstWeekChecklist": {
+          "title": "Birinji hepde barlag sanawy",
+          "items": [
+            {
+              "title": "1. Ýerli weterinar tapyň",
+              "description": "Ilkinji aýyň dowamynda barlagy belläň."
+            },
+            {
+              "title": "2. Şäher häkimliginde hasaba duruň",
+              "description": "Kanadanyň köp şäherlerinde öý haýwanlaryna rugsatnama talap edilýär."
+            },
+            {
+              "title": "3. Mikroçip maglumatlaryny täzeläň",
+              "description": "Salgyňyzy täze Kanada salgyňyza üýtgediň."
+            },
+            {
+              "title": "4. Öý haýwanlarynyň ätiýaçlandyrmasy",
+              "description": "Kanadaly öý haýwanlary üçin ätiýaçlandyryş almagy göz öňünde tutuň."
+            }
+          ]
+        }
+      },
+      "canadianClimate": {
+        "title": "Kanadanyň howasy",
+        "description": "Kanadanyň howasy sebitlere we möwsümlere görä düýpli üýtgeýär. Bu, esasanam ýyly howa şertlerinden gelýän öý haýwanlary üçin möhüm meseledir.",
+        "seasons": [
+          {
+            "title": "Gyşky taýýarlyklar",
+            "icon": "❄️",
+            "tips": {
+              "0": "Ýollarda haýwanlar üçin howpsuz buz erediji",
+              "1": "Penjeleri duzdan we buzdan goramak üçin ädikler",
+              "2": "Gysga tüýli itler üçin paltolar/sweterler",
+              "3": "Aşa sowuk howada açyk howada wagt çäkli"
+            }
+          },
+          {
+            "title": "Tomusky meseleler",
+            "icon": "☀️",
+            "tips": {
+              "0": "Haýwanlary hiç haçan awtoulagyň içinde goýmaň",
+              "1": "Yssy urma alamatlaryna üns beriň",
+              "2": "Kene we bürge garşy göreşiň öňüni almak",
+              "3": "Süýji suwa we kölege elýeterlilik"
+            }
+          }
+        ],
+        "warning": "<strong>Duýduryş:</strong> Buldoglar, Puglar we pars pişikleri ýaly brahisefalik (ýassy ýüzli) pişikler temperatura üýtgeşikligi bilen göreşip bilerler. Bu pişikler bilen aýratyn seresaply boluň."
+      },
+      "petFriendly": {
+        "title": "Öý haýwanlaryna amatly Kanada",
+        "description": "Kanada, umuman alanyňda, öý haýwanlaryna örän amatly, ajaýyp weterinariýa hyzmaty we öý haýwanlaryna amatly köp ýerler bar.",
+        "aspects": [
+          {
+            "title": "Weterinariýa hyzmaty",
+            "icon": "🏥",
+            "description": "Ýokary hilli, ýöne gymmat bolup biler. Ortaça barlagyň bahasy 75-150 Kanada dollary.",
+            "additionalInfo": "Öý haýwanlaryny ätiýaçlandyryş aýda takmynan 25-80 Kanada dollaryna barabar bolýar."
+          },
+          {
+            "title": "Seýilgähler we dynç alyş ýerleri",
+            "icon": "🏞️",
+            "description": "Şäherleriň köpüsinde itler üçin niýetlenen, boglanmadyk seýilgähler we öý haýwanlary üçin amatly ýodalar bar.",
+            "additionalInfo": "Milli seýilgählerde haýwanlar bilen bagly aýratyn düzgünler bar - barmazdan öň barlap görüň."
+          },
+          {
+            "title": "Öý haýwanlary üçin enjamlar",
+            "icon": "🥫",
+            "description": "Esasy dükanlar PetSmart, Canadian Tire we Pet Valu-ny öz içine alýar. Onlaýn wariantlara Amazon.ca we Chewy.ca girýär."
+          },
+          {
+            "title": "Öý haýwanlaryna amatly ýaşaýyş jaýy",
+            "icon": "🏨",
+            "description": "Käbir kärende jaýlarynda öý haýwanlary saklamak gadagandyr. Öý gözläniňizde \"öý haýwanlary üçin amatly\" diýen alamatlara üns beriň.",
+            "additionalInfo": "Öý haýwanlaryna goýum goýmak adaty zat (200-500 Kanada dollary)."
+          }
+        ]
+      }
+    },
+    "checklist": {
+      "title": "Öý haýwanlarynyň syýahatynyň barlag sanawy",
+      "items": [
+        "Haýwanyňyzyň Kanadanyň giriş talaplaryna laýyk gelýändigini barlaň (syýahatdan azyndan 3 aý öň)",
+        "Mikroçipiň ISO standartlaryna laýyk gelýändigine göz ýetiriň",
+        "Guduzlama garşy sanjym planlaşdyryň (syýahatdan azyndan 30 gün öň)",
+        "Öý haýwanlaryna rugsat berilýän ulagy bronlaň",
+        "Howaýollary tarapyndan tassyklanan haýwan daşaýjysyny satyn alyň we haýwanyňyzy oňa öwrenişdiriň",
+        "Weterinariýa saglyk şahadatnamasyny alyň (syýahatdan soň 14 günüň dowamynda)",
+        "Öý haýwanlary üçin zerur zatlary (iýmit, derman, rahatlyk üçin zerur zatlary) ýygnaň",
+        "Ähli resminamalaryň nusgalaryny ýasaň we olary özüňiz bilen saklaň"
+      ]
+    }
+  },
+  "relocationrequirements": {
+    "introduction": "Kanada her ýyl dürli immigrasiýa ýollary arkaly müňlerçe täze gelenleri garşylaýar. Kanadada işlemek, okamak, maşgala agzalaryna goşulmak ýa-da pensiýa çykmak meýilleşdirýän bolsaňyz, esasy talaplary düşünmek üstünlikli göçmegi üpjün etmäge kömek eder. Bilmeli zatlaryňyz şu ýerde.",
+    "requirements": [
+      {
+        "icon": "🛂",
+        "title": "Güýçli pasport",
+        "description": "Pasportyňyz Kanadada meýilleşdirilen wagtyňyzda güýjünde bolmaly. Hemişelik ýaşamak üçin arzalar üçin, pasportyňyzyň möhleti birnäçe aý ýa-da hatda ýyllap dowam edip biljek işleniş wagtynda möhleti gutarmajakdygyna göz ýetiriň."
+      },
+      {
+        "icon": "📝",
+        "title": "Immigrasiýa statusy",
+        "description": "Immigrasiýa ýoluňyzy kesgitläň:",
+        "details": {
+          "0": "Ekspres Giriş (Federal Hünärmen Işgär, Federal Hünärmenler, Kanada Tejribe Syny)",
+          "1": "Welaýat dalaşgärlik maksatnamalary (PNP)",
+          "2": "Maşgala hemaýatkärligi",
+          "3": "Okuw rugsatnamalary",
+          "4": "Iş rugsatnamalary (LMIA esasynda, CUSMA/NAFTA, IEC)",
+          "5": "Myhman wizasy (Wagtlaýyn ýaşaýjy wizasy) ýa-da eTA"
+        }
+      },
+      {
+        "icon": "💵",
+        "title": "Serişdeleriň subutnamasy",
+        "description": "Immigrasiýa programmalarynyň köpüsi üçin özüňizi we maşgalaňyzy üpjün etmek üçin ýeterlik serişdeňiziň bardygyny subut etmeli bolarsyňyz:",
+        "details": {
+          "0": "Ekspress giriş töleg serişdeleriniň tassyklanmagyny talap edýär (maşgala ululygyna görä üýtgeýär, her ýyl täzelenýär)",
+          "1": "Okuwçylar okuw töleglerini we ýaşaýyş çykdajylaryny (ýyllyk takmynan 10,000 Kanada dollary) görkezmeli.",
+          "2": "Bank hasabatlary, maýa goýum hasaplary ýa-da bankyňyzdan gelen hat kabul ederlikli subutnama bolup biler"
+        }
+      },
+      {
+        "icon": "🩺",
+        "title": "Lukmançylyk barlagy",
+        "description": "Dalaşgärleriň köpüsi IRCC tarapyndan tassyklanan lukmanyň lukmançylyk barlagyndan geçmelidir:",
+        "details": {
+          "0": "Hemişelik ýaşamak üçin arzalar üçin talap edilýär",
+          "1": "6 aýdan köp wagtlap ýaşaýan wagtlaýyn ýaşaýjylar üçin zerurdyr",
+          "2": "Bellenen lukman tarapyndan doldurylmaly"
+        }
+      },
+      {
+        "icon": "🔍",
+        "title": "Arka plan barlaglary",
+        "description": "Howpsuzlyk we jenaýatçylyk geçmişini barlamak ähli programmalar üçin standartdyr:",
+        "details": {
+          "0": "6+ aý ýaşan ýurtlaryňyzdan polisiýa rugsatnamasynyň güwänamalary",
+          "1": "Köp dalaşgärlerden biometrik maglumatlar (barmak yzlary we surat) talap edilýär",
+          "2": "Howpsuzlyk barlag prosesi"
+        }
+      },
+      {
+        "icon": "🗣️",
+        "title": "Dil başarnygy",
+        "description": "Immigrasiýa maksatnamalarynyň köpüsi üçin iňlis ýa-da fransuz dilini bilmek örän möhümdir:",
+        "details": {
+          "0": "Iňlis dili üçin IELTS ýa-da CELPIP",
+          "1": "Fransuz dili üçin TEF ýa-da TCF",
+          "2": "Programma baglylykda talap edilýän belli bir CLB (Kanada diliniň ölçeg derejesi) derejeleri"
+        }
+      },
+      {
+        "icon": "🎓",
+        "title": "Bilim şahadatnamalarynyň bahalandyrylmagy (ECA)",
+        "description": "Eger siz bilimiňizi Kanadanyň daşynda tamamlan bolsaňyz:",
+        "details": {
+          "0": "Ygtyýarnamalaryňyzy IRCC tarapyndan tassyklanan gurama tarapyndan bahalandyryň",
+          "1": "Derejäňiziň, diplomyňyzyň ýa-da güwänamaňyzyň Kanada standartlaryna deňdigini barlaň",
+          "2": "ECA Express Entry we beýleki köp immigrasiýa maksatnamalary üçin hökmanydyr"
+        }
+      },
+      {
+        "icon": "🏠",
+        "title": "Ýaşaýyş jaý meýilnamalary",
+        "description": "Köp programmalar üçin talap edilmese-de, ýaşaýyş jaý meýilnamalarynyň bolmagy möhümdir:",
+        "details": {
+          "0": "Gelende wagtlaýyn ýaşaýyş jaýy (myhmanhanalar, gysga möhletli kärendeler)",
+          "1": "Barmaly şäheriňizdäki kärende bazarlaryny öwreniň",
+          "2": "Lizing talaplaryny düşüniň (kredit barlaglary, teklipler, goýumlar)"
+        }
+      },
+      {
+        "icon": "💼",
+        "title": "Işe kabul etmek üçin taýýarlyklar",
+        "description": "Kanadada işlemek isleýänler üçin:",
+        "details": {
+          "0": "Öz ugryňyzdaky Kanadanyň iş bazaryny öwreniň",
+          "1": "Kanadaly usuldaky rezýume we goşmaça hatlary taýýarlaň",
+          "2": "Öz pudagyňyzdaky hünärmenler bilen aragatnaşyk saklaň",
+          "3": "Hünäriňiziň düzgünleşdirilip, Kanadanyň ygtyýarnamasyny talap edýändigini barlaň"
+        }
+      },
+      {
+        "icon": "⚕️",
+        "title": "Saglyk ätiýaçlandyryşy",
+        "description": "Kanadada saglygy goraýyş, esasan, döwlet tarapyndan üpjün edilýär, ýöne welaýatlara görä tapawutlanýar:",
+        "details": {
+          "0": "Welaýat saglyk ätiýaçlandyrmasy garaşmak möhletini talap edýär (adatça 3 aý)",
+          "1": "Aralyk döwrüni örtmek üçin hususy saglyk ätiýaçlandyrmasyny satyn alyň",
+          "2": "Welaýatyňyzda nämeleriň göz öňünde tutulýandygyny we nämeleriň göz öňünde tutulmaýandygyny düşüniň"
+        }
+      }
+    ],
+    "postArrival": {
+      "title": "Gelişden soňky ädimler",
+      "timeframes": [
+        {
+          "period": "Ilkinji hepde",
+          "tasks": {
+            "0": "Sosial ätiýaçlandyryş belgisine (SIN) ýüz tutuň",
+            "1": "Kanada bank hasabyny açyň",
+            "2": "Ýerli telefon nomerini alyň",
+            "3": "Welaýat saglyk ätiýaçlandyrmasy üçin ýüz tutuň"
+          }
+        },
+        {
+          "period": "Ilkinji aý",
+          "tasks": {
+            "0": "Hemişelik ýaşaýyş jaýyny tapyň",
+            "1": "Çagalary mekdebe ýazdyryň",
+            "2": "Sürüjilik şahadatnamasyny ýa-da şahsyýetnamany alyň",
+            "3": "Hasaplaşyk hyzmatlary bilen baglanyşyň"
+          }
+        }
+      ]
+    }
+  },
+  "uktocanadaguide": {
+    "navigation": {
+      "title": "Çalt nawigasiýa"
+    },
+    "accessibility": {
+      "toggleSection": "Bölümi aç/ýap"
+    },
+    "sections": {
+      "whyMove": {
+        "title": "Britaniýalylar näme üçin Kanada göçýärler?",
+        "description": "Müňlerçe Britaniýa raýaty, esasanam Toronto, Wankuwer, Monreal we Kalgari ýaly şäherlerde Kanadany öz öýlerine öwürdiler. Bu çagyryşda aşakdakylar bar:",
+        "reasons": [
+          "Ajaýyp sosial ulgamlar bilen ýokary hilli durmuş",
+          "Dürli tebigy landşaftlar we açyk howada geçirilýän çäreler",
+          "Meňzeş medeniýet we tanyş dil",
+          "Karýera mümkinçilikleri bolan güýçli ykdysadyýet",
+          "Myhmansöýer jemgyýetleri bolan köp medeniýetli jemgyýet"
+        ],
+        "conclusion": "Brexitden soň, köp britaniýalylar Ýewropadan daşarda mümkinçilikleri öwrenýärler we Kanadanyň immigrasiýa ulgamy birnäçe ýoly hödürleýär."
+      },
+      "entryRequirements": {
+        "title": "Giriş talaplary we wiza düzgünleri",
+        "touristEntry": {
+          "title": "Syýahatçy girişi",
+          "description": "Beýik Britaniýanyň raýatlary Kanadada 6 aýa çenli elektron syýahat ygtyýarnamasy (eTA) bilen baryp bilerler, bu ygtyýarnamanyň bahasy 7 Kanada dollarydyr. Şeýle-de bolsa, hemişelik göçmek üçin Kanadanyň immigrasiýa ýollarynyň biri arkaly ýüz tutmaly bolarsyňyz."
+        }
+      },
+      "immigrationPathways": {
+        "title": "Beýik Britaniýanyň raýatlary üçin immigrasiýa ýollary",
+        "pathways": [
+          {
+            "title": "1. Ekspres Giriş Ulgamy",
+            "description": "<span class=\"font-medium\">Kanadanyň hünärli işçiler üçin esasy immigrasiýa ýoly</span><br/>Dalaşgärleriň ýaşy, bilimi, iş tejribesi we dil başarnyklary ýaly faktorlara esaslanyp bahalandyrylýan bal esasly ulgam",
+            "subProgramsTitle": "Ekspress Giriş boýunça üç programma:",
+            "subPrograms": {
+              "0": "Federal hünärli işçi maksatnamasy",
+              "1": "Federal Hünärmenler Maksatnamasy",
+              "2": "Kanada tejribe sapagy (Kanada iş tejribesi bolanlar üçin)"
+            }
+          },
+          {
+            "title": "2. Welaýat dalaşgärleriniň maksatnamalary (PNP)",
+            "details": {
+              "0": "Her welaýatyň özüne mahsus immigrasiýa akymlary bar",
+              "1": "Köplenç belli bir welaýatlarda zerur bolan başarnyklary bolanlar üçin Express Entry-den has çalt",
+              "2": "Käbir welaýatlarda Beýik Britaniýanyň özüne mahsus işe alma başlangyçlary bar"
+            }
+          },
+          {
+            "title": "3. Iş rugsatnamalary",
+            "details": {
+              "0": "Iş beriji üçin ýörite iş rugsatnamalary üçin Kanadaly iş berijiden iş teklibi talap edilýär",
+              "1": "Iş dynç alyşy (IEC) ýaly ýörite maksatnamalar arkaly elýeterli açyk iş rugsatnamalary",
+              "2": "18-30 ýaş aralygyndaky Beýik Britaniýanyň raýatlary IEC iş dynç alyş wizasyna ýüz tutup bilerler"
+            }
+          },
+          {
+            "title": "4. Maşgala hemaýatkärligi",
+            "description": "Eger siziň Kanada raýaty ýa-da hemişelik ýaşaýjysy bolan ýanýoldaşyňyz, umumy hukukly ýoldaşyňyz ýa-da ýakyn maşgala agzaňyz bar bolsa"
+          }
+        ]
+      },
+      "property": {
+        "title": "Emlägi satyn almak ýa-da kireýine almak",
+        "points": [
+          "Ýaşaýjy däl hökmünde, siz Kanadanyň köp böleginde käbir welaýatlarda käbir çäklendirmeler bilen emläk satyn alyp bilersiňiz.",
+          "2023-nji ýyldaky daşary ýurtly satyn alyjylara girizilen gadagançylykda hemişelik ýaşaýanlar we iş rugsatnamasy bolanlar üçin istisnalar bar",
+          "Britaniýaly ekspatlar üçin meşhur ýerler: Toronto, Wankuwer, Monreal, Kalgari, Halifaks",
+          "Kärende bazarlary dürli-dürli: iri şäherlerde 1 otagly kwartira üçin 1500-3000+ Kanada dollary tölemegi göz öňünde tutuň"
+        ],
+        "tip": "<strong>Maslahat:</strong> Ýerleşýän ýerleri üns bilen gözläň – Toronto we Wankuwer şäherlerinde emläk bahalary beýleki sebitlere garanyňda has ýokary."
+      },
+      "costLiving": {
+        "title": "Ýaşaýyş çykdajylaryny deňeşdirmek",
+        "table": {
+          "headers": {
+            "expense": "Çykdajylar",
+            "canada": "Kanada (ortaça)",
+            "uk": "Beýik Britaniýa (ortaça)"
+          },
+          "rows": [
+            {
+              "expense": "Kireýine (1 otagly kwartira)",
+              "canada": "Kanada dollary 1200–2500 dollar",
+              "uk": "800–1200 funt sterling"
+            },
+            {
+              "expense": "Kommunal hyzmatlar",
+              "canada": "Kanada dollary aýda 150–250 dollar",
+              "uk": "£150+/aý"
+            },
+            {
+              "expense": "Restoranda nahar",
+              "canada": "Kanada dollary 20–35 dollar",
+              "uk": "10–25 funt sterling"
+            },
+            {
+              "expense": "Ulag bileti",
+              "canada": "Kanada dollary aýda 80–150 dollar",
+              "uk": "£60–£120/aý"
+            }
+          ]
+        },
+        "note": "Umumy çykdajylar Beýik Britaniýanyňky bilen meňzeş bolsa-da, olar sebitler boýunça düýpli tapawutlanýar. Atlantik welaýatlary we oba ýerleri has elýeterli ýaşaýyş mümkinçiliklerini hödürleýär."
+      },
+      "healthcare": {
+        "title": "Saglygy goraýyş elýeterliligi",
+        "points": [
+          "Kanadada salgytlar arkaly maliýeleşdirilýän umumy jemgyýetçilik saglygy goraýyş ulgamy (Medicare) bar",
+          "Hemişelik ýaşaýjy hökmünde, garaşmak döwründen soň (adatça 3 aý) welaýat saglygy goraýyş hyzmatlaryndan peýdalanmaga hukukly bolarsyňyz.",
+          "Garaşmak döwründe wagtlaýyn hususy saglyk ätiýaçlandyrmasy möhümdir",
+          "Her welaýat öz saglygy goraýyş ulgamyny dolandyrýar, bu ulgamda ätiýaçlandyryşda kiçi tapawutlar bar.",
+          "Stomatologiýa, göz bejergisi we resept boýunça berilýän dermanlar ýaly käbir hyzmatlar üçin hususy ätiýaçlandyryş talap edilip bilner"
+        ]
+      },
+      "weather": {
+        "title": "Howa we howa",
+        "seasons": [
+          {
+            "title": "Gyş (noýabr-mart)",
+            "description": "Beýik Britaniýadan has sowuk, temperatura sebite baglylykda -30°C-den 0°C-e çenli üýtgeýär. Gar ýurduň köp böleginde köp duş gelýär, kenarýaka Britaniýa Kolumbiýasyndan başga-da."
+          },
+          {
+            "title": "Tomus (iýun-sentýabr)",
+            "description": "Beýik Britaniýadan has ýyly, temperatura adatça 20°C we 30°C aralygynda. Gündogar welaýatlarda çyglylyk ýokary bolup biler."
+          }
+        ],
+        "regionalVariations": {
+          "title": "Sebitleýin üýtgeşmeler",
+          "description": "Wankuweriň howasy Beýik Britaniýanyňky ýaly ýumşak, ýagyşly. Toronto we Monrealda yssy ýazlar we sowuk gyşlar bolýar. Çöllüklerde temperatura üýtgeşiklikleri örän ýokary. Demirgazyk territoriýalarda gyşlar örän uzyn we berk bolýar."
+        }
+      },
+      "dailyLife": {
+        "title": "Gündelik durmuş düzedişleri",
+        "aspects": [
+          {
+            "title": "Dil",
+            "description": "Iňlis dili Kanadanyň ähli ýerinde (Kwebekden başga) resmi dildir. Fransuz dili hem resmi dildir we Kwebekde fransuz dilini bilmek örän peýdalydyr."
+          },
+          {
+            "title": "Sürüş",
+            "description": "Beýik Britaniýanyň sürüjilik şahadatnamalary wagtlaýyn ulanylyp bilner (welaýatlara görä üýtgeýär), ýöne ony welaýat şahadatnamasyna çalşyrmaly bolarsyňyz. Kanadalylar ýoluň sag tarapyndan sürüp barýarlar."
+          },
+          {
+            "title": "Walýuta",
+            "description": "Kanada dollary (CAD) — walýuta kurslary üýtgeýär, ýöne çykdajylar, umuman, Beýik Britaniýa bilen deňeşdirilip bilner."
+          },
+          {
+            "title": "Bank işi",
+            "description": "Iri banklar täze gelenlere töleglerden boşatma bilen paketleri hödürleýärler. Hasap açmak üçin size salgysyňyzy we şahsyýetiňizi tassyklaýan resminama gerek bolar. Kredit taryhy geçmeýär, şonuň üçin karzy döretmek möhüm bolar."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "title": "Beýik Britaniýadan Logistikany göçürmek",
+        "points": [
+          "Deňiz ýük daşamagy arkaly öý hojalyk harytlaryny Kanada daşamak 4-8 hepde wagt alýar",
+          "Şahsy zatlary jikme-jik sanaw we ýaşaýan ýeriňizi tassyklaýan resminama bilen salgytsyz import edip bolýar",
+          "15 ýyldan uly awtoulaglary import etmek has aňsat; täze awtoulaglar Kanada standartlaryna laýyk gelmelidir",
+          "Öý haýwanlaryna mikroçipler, guduzlama garşy sanjymlar we saglyk şahadatnamalary gerek; şertler ýerine ýetirilen halatynda karantin talap edilmeýär"
+        ]
+      },
+      "challenges": {
+        "title": "Garaşylmaly real kynçylyklar",
+        "challenges": [
+          {
+            "title": "Gyşky sazlama",
+            "description": "Kanadanyň gyşynyň agyrlygy we dowamlylygy britaniýalylar üçin kyn bolup biler"
+          },
+          {
+            "title": "Maşgaladan uzaklyk",
+            "description": "7+ sagatlyk uçuşlar öýe baryp-gelmegi azaldýar"
+          },
+          {
+            "title": "Kredit taryhyny gurmak",
+            "description": "Beýik Britaniýanyň kredit taryhy başga ýere geçirilmeýär, bu bolsa ilkinji karz almagy kynlaşdyrýar"
+          },
+          {
+            "title": "Hünär akkreditasiýasy",
+            "description": "Beýik Britaniýanyň käbir hünär derejeleri üçin Kanadada gaýtadan sertifikatlaşdyrma gerek bolup biler"
+          }
+        ]
+      },
+      "britishCommunities": {
+        "title": "Britaniýaly ekspat jemgyýetleri",
+        "description": "Kanadada şu ýerlerde uly möçberli britaniýaly ekspat jemgyýetleri bar:",
+        "cities": [
+          "Toronto",
+          "Wankuwer",
+          "Kalgari",
+          "Wiktoriýa",
+          "Halifax"
+        ],
+        "supportNote": "Onlaýn forumlar, \"Kanadadaky britaniýalylar\" ýaly Facebook toparlary we jemgyýetçilik çäreleri maslahat we goldaw berip biljek beýleki Beýik Britaniýadan daşary ýurtlara çykanlar bilen aragatnaşyk saklamagy ýeňilleşdirýär."
+      }
+    },
+    "checklist": {
+      "title": "Kanada göçmezden öň zerur barlag sanawy",
+      "items": [
+        "Degişli immigrasiýa statusyny ýa-da iş rugsatnamasyny almak",
+        "Gelende sosial ätiýaçlandyryş nomerini (SIN) alyň",
+        "Syýahat we ilkinji saglyk ätiýaçlandyrmasyny satyn alyň",
+        "Kanada bank hasabyny açyň",
+        "Welaýat saglygy goraýyş ulgamynda hasaba alyş prosesini öwreniň",
+        "Kanadanyň howa şertlerine laýyk geýim satyn alyň",
+        "Daşary ýurda göçmegiňiz barada Beýik Britaniýanyň häkimiýetlerine (HMRC, pensiýa üpjün edijileri we ş.m.) habar beriň"
+      ]
+    },
+    "conclusion": {
+      "title": "Kanada göçmek size laýykmy?",
+      "text": "Kanada ýokary ýaşaýyş derejesini, ajaýyp tebigy gözelligini we güýçli sosial ulgamlaryny hödürleýär, bu bolsa ony Beýik Britaniýanyň daşary ýurtlylary üçin özüne çekiji ýer edýär. Immigrasiýa prosesi ünsli meýilnamalaşdyrmagy talap edýän we gyşky howa şertlerine uýgunlaşmaly bolsa-da, köp britaniýalylar bu geçişi durmuşyň hili, karýera mümkinçilikleri we Kanadanyň hödürleýän myhmansöýer köpmilletli jemgyýeti üçin peýdaly hasaplaýarlar."
+    },
+    "footer": {
+      "disclaimer": "Gollanma soňky gezek täzelendi: 2025-nji ýylyň maý aýy • Maglumat üýtgedilip bilner • Resmi hökümet çeşmelerini hemişe barlaň"
+    }
+  },
+  "canadavisaguide": {
+    "introduction": "Kanada işçiler, talyplar, maşgalalar we işewürler ýaly immigrantlar üçin köp sanly ýollary hödürleýär. Her bir maksatnama dünýäniň dürli künjeginden täze gelenleri garşylamak bilen birlikde Kanadanyň ykdysady ösüşini goldamak üçin niýetlenendir.",
+    "labels": {
+      "bestFor": "Iň gowysy:",
+      "programs": "Programmalar:",
+      "requirements": "Talaplar:",
+      "process": "Proses:",
+      "types": "Görnüşler:",
+      "eligibleMembers": "Şertlere laýyk maşgala agzalary:",
+      "sponsorRequirements": "Sponsoryň talaplary:",
+      "benefits": "Peýdalary:",
+      "tfwpRequirements": "TFWP talaplary:",
+      "impBenefits": "IMP-iň peýdalary:",
+      "startupRequirements": "Başlangyç wiza talaplary:",
+      "notablePNPs": "Belli PNP-ler:"
+    },
+    "mainPrograms": [
+      {
+        "title": "1. Ekspres Giriş Ulgamy",
+        "bestFor": {
+          "0": "Iş tejribesi bolan hünärli işgärler",
+          "1": "Ýokary bilimli hünärmenler",
+          "2": "Iňlis/Fransuz dillerini bilmek"
+        },
+        "programs": {
+          "0": "Federal hünärli işçi maksatnamasy",
+          "1": "Federal Hünärmenler Maksatnamasy",
+          "2": "Kanada tejribesi synpy"
+        },
+        "requirements": {
+          "0": "Iň az 1 ýyllyk hünär tejribesi",
+          "1": "Dil synagy (FSWP üçin CLB 7+)",
+          "2": "Bilim şahadatnamasynyň bahalandyrylmagy",
+          "3": "Serişdäniň subutnamasy (ýeke adam üçin ~13,000 dollardan gowrak)"
+        }
+      },
+      {
+        "title": "2. Welaýat dalaşgärleriniň maksatnamalary (PNP)",
+        "bestFor": {
+          "0": "Welaýat zerurlyklaryna laýyk gelýän hünär başarnyklary bolan işçiler",
+          "1": "Belli bir welaýatlar bilen baglanyşygy bolanlar",
+          "2": "Ekspress Giriş üçin talaplara laýyk gelmeýän dalaşgärler"
+        },
+        "process": {
+          "0": "Welaýatda ýa-da Ekspress Giriş arkaly gönüden-göni ýüz tutuň",
+          "1": "Welaýat dalaşgärligini alyň",
+          "2": "Federal derejede hemişelik ýaşamak üçin ýüz tutuň"
+        },
+        "notablePNPs": {
+          "0": "Britaniýa Kolumbiýasynyň PNP",
+          "1": "Ontario immigrant dalaşgärlik maksatnamasy",
+          "2": "Alberta artykmaçlykly immigrasiýa maksatnamasy",
+          "3": "Manitoba welaýat dalaşgär programmasy"
+        }
+      },
+      {
+        "title": "3. Okuw rugsatnamalary",
+        "bestFor": "Daşary ýurtly talyplar bellenen okuw jaýlaryna kabul edildi",
+        "requirements": {
+          "0": "DLI-den kabul ediş haty",
+          "1": "Maliýe goldawynyň subutnamasy (ýyllyk ~10,000 dollar + okuw tölegi)",
+          "2": "Arassa jenaýat ýazgylary",
+          "3": "Saglyk barlagy (zerur bolsa)",
+          "4": "Okuwdan soň Kanadadan gitmek niýeti"
+        },
+        "benefits": {
+          "0": "Okuw döwründe hepdede 20 sagada çenli işlemeli",
+          "1": "Bellenen arakesmeler wagtynda doly wagtly iş",
+          "2": "Okuwy gutarandan soňky iş rugsatnamasyna laýyklyk",
+          "3": "Hemişelik ýaşamaga ýol"
+        }
+      },
+      {
+        "title": "4. Iş rugsatnamalary",
+        "types": {
+          "0": "Wagtlaýyn Daşary ýurtly işçi maksatnamasy (TFWP)",
+          "1": "Halkara Mobillik Maksatnamasy (IMP)",
+          "2": "Aspiranturadan soňky iş rugsatnamasy (PGWP)",
+          "3": "Är-aýal üçin açyk iş rugsatnamalary"
+        },
+        "tfwpRequirements": {
+          "0": "Kanadaly iş berijiden iş teklibi",
+          "1": "Zähmet bazarynyň täsiriniň bahalandyrylmagy (LMIA)",
+          "2": "Kwalifikasiýanyň subutnamasy"
+        },
+        "impBenefits": {
+          "0": "LMIA-dan boşadylan iş rugsatnamalary",
+          "1": "Kompaniýanyň içinde geçirilýän transferleri öz içine alýar",
+          "2": "Halkara ylalaşyklary (CUSMA, CETA)"
+        }
+      },
+      {
+        "title": "5. Maşgala hemaýatkärligi",
+        "bestFor": "Kanada raýatlarynyň ýa-da hemişelik ýaşaýjylaryň maşgala agzalary",
+        "eligibleMembers": {
+          "0": "Äri ýa-da umumy hukukly ýoldaş",
+          "1": "Garaşly çagalar",
+          "2": "Ata-eneler we ene-atalar",
+          "3": "Beýleki garyndaşlary (ýörite maksatnamalar boýunça)"
+        },
+        "sponsorRequirements": {
+          "0": "Kanada raýaty ýa-da hemişelik ýaşaýjy",
+          "1": "18 ýaş ýa-da ondan uly",
+          "2": "Minimal girdeji talaplaryna laýyk gelmek",
+          "3": "Maliýe taýdan goldaw bermek üçin şertnama baglaşyň"
+        }
+      },
+      {
+        "title": "6. Işewür immigrasiýa",
+        "bestFor": {
+          "0": "Telekeçiler",
+          "1": "Maýadarlar",
+          "2": "Özbaşdak iş bilen meşgullanýanlar"
+        },
+        "programs": {
+          "0": "Başlangyç wiza maksatnamasy",
+          "1": "Özbaşdak Işgärler Maksatnamasy",
+          "2": "Welaýat biznes maksatnamalary"
+        },
+        "startupRequirements": {
+          "0": "Bellenen guramanyň goldawy",
+          "1": "Dil başarnygy (CLB 5+)",
+          "2": "Ýeterlik hasaplaşyk serişdeleri",
+          "3": "Kanadada biznesiň işjeň dolandyrylyşy"
+        }
+      }
+    ],
+    "additionalOptions": {
+      "title": "Goşmaça opsiýalar",
+      "programs": [
+        {
+          "title": "Atlantik immigrasiýa maksatnamasy",
+          "description": "Nýu-Bransuikde, Nowa Şotlandiýada, Şazada Eduard adasynda ýa-da Nýufaundlend we Labradorda ýaşamak we işlemek isleýän hünärli işçiler we halkara derejeli uçurymlar üçin niýetlenen.",
+          "requirement": "Atlantik Kanadada bellenen iş berijiden iş teklibi talap edilýär"
+        },
+        {
+          "title": "Oba we Demirgazyk immigrasiýa synagy",
+          "description": "Kiçi, oba jemgyýetlerini goldaýan, hünärli daşary ýurtly işçilere hemişelik ýaşamaga kömek edýän jemgyýetçilik tarapyndan dolandyrylýan maksatnama.",
+          "requirement": "Kanadanyň dürli ýerlerinde saýlanan jemgyýetlerde elýeterli"
+        },
+        {
+          "title": "Idegçiler üçin programmalar",
+          "description": "Çagalara, gartaşan adamlara ýa-da lukmançylyk zerurlyklary bolan adamlara ideg edýän idegçileriň hemişelik ýaşaýjy bolmagy üçin ýollar.",
+          "requirement": "Kanadada 2 ýyllyk iş tejribesi talap edilýär"
+        },
+        {
+          "title": "Gumanitar we Bosgunlar Maksatnamalary",
+          "description": "Bosgunlaryň, gaçybatalga gözleýänleriň we ynsanperwer kömege mätäç beýleki adamlaryň goragy.",
+          "requirement": "Hökümet tarapyndan kömek edilýän bosgunlar maksatnamasyny we hususy hemaýaty öz içine alýar"
+        }
+      ]
+    },
+    "importantConsiderations": {
+      "title": "Möhüm pikirler",
+      "considerations": [
+        {
+          "title": "Işleniş wagtlary",
+          "description": "Programma we dalaşgärleriň sanyna görä dürli-dürli bolýar. Ekspress giriş 6 aýa çenli çalt bolup biler, maşgala sponsorlygy bolsa 12+ aýa çenli wagt alyp biler."
+        },
+        {
+          "title": "Ariza tölegleri",
+          "description": "Döwlet töleglerini we mümkin bolan maslahatçy çykdajylaryny göz öňünde tutuň. PR arzasynyň tölegleri her bir ululykdaky adam üçin takmynan 1325 Kanada dollarydyr."
+        },
+        {
+          "title": "Hasaplaşyk Gaznalary",
+          "description": "Programmalaryň köpüsi töleg üçin serişdeleriň tassyklanmagyny talap edýär. Mukdar maşgalanyň ululygyna we maksatnamanyň talaplaryna baglylykda üýtgeýär."
+        }
+      ]
+    }
+  }
+}

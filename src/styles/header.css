@@ -1,0 +1,199 @@
+.radar {
+    --main-color: #51bae7;
+    --main-color-light: #91d9f740;
+    --main-color-dark: #2bb8f5;
+    --white: #ffffff;
+
+    opacity: 0.75;
+}
+
+.radar-fading-circles {
+    opacity: 0.1;
+    background-color: var(--white);
+    background-blend-mode: multiply;
+    background-image: radial-gradient(circle at center center, var(--main-color), var(--white)),
+    repeating-radial-gradient(circle at center center, var(--main-color), var(--main-color) 40px, transparent 80px, transparent 40px);
+}
+
+.radar-grid {
+    opacity: 0.3;
+    background: repeating-radial-gradient(circle at center center, transparent, transparent 78px, var(--main-color) 79px, transparent 80px),
+    linear-gradient(-72deg, transparent 49.95%, var(--main-color) 50%, transparent 50.05%),
+    linear-gradient(-54deg, transparent 49.95%, var(--main-color) 50%, transparent 50.05%),
+    linear-gradient(-36deg, transparent 49.95%, var(--main-color) 50%, transparent 50.05%),
+    linear-gradient(-18deg, transparent 49.95%, var(--main-color) 50%, transparent 50.05%),
+    linear-gradient(0deg, transparent 49.95%, var(--main-color) 50%, transparent 50.05%),
+    linear-gradient(18deg, transparent 49.95%, var(--main-color) 50%, transparent 50.05%),
+    linear-gradient(36deg, transparent 49.95%, var(--main-color) 50%, transparent 50.05%),
+    linear-gradient(54deg, transparent 49.95%, var(--main-color) 50%, transparent 50.05%),
+    linear-gradient(72deg, transparent 49.95%, var(--main-color) 50%, transparent 50.05%),
+    linear-gradient(90deg, transparent 49.95%, var(--main-color) 50%, transparent 50.05%);
+}
+
+.radar-spinner {
+    inset: 0;
+    rotate: 90deg;
+    background-image: conic-gradient(transparent 85%, var(--main-color-light) 90%, var(--main-color-light) 99.9%, var(--main-color-dark) 100%);
+    animation: spin 24s linear infinite;
+}
+
+.radar-dot {
+    width: fit-content;
+    height: fit-content;
+    animation-duration: 24s;
+    animation-timing-function: cubic-bezier(0, 1, 0.2, 1);
+    animation-iteration-count: infinite;
+}
+
+.radar-dot.dot1 {
+    animation-name: blink1;
+}
+
+.radar-dot.dot2 {
+    animation-name: blink2;
+}
+
+.radar-dot.dot3 {
+    animation-name: blink3;
+}
+
+.radar-dot.dot4 {
+    animation-name: blink4;
+}
+
+.radar-dot.dot5 {
+    animation-name: blink5;
+}
+
+.radar-dot.dot6 {
+    animation-name: blink6;
+}
+
+.radar-dot-outer {
+    height: 10px;
+    width: 10px;
+    display: flex;
+    position: relative;
+}
+
+.radar-dot-inner-ping {
+    position: absolute;
+    display: inline-flex;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-color);
+    opacity: 0.75;
+}
+
+.radar-dot-inner-ping.ping2 {
+    animation: ping2 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.radar-dot-inner-ping.ping3 {
+    animation: ping3 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+.radar-dot-inner-pulse {
+    position: relative;
+    display: inline-flex;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-color);
+}
+
+
+
+
+@keyframes spin {
+    to {
+        transform: rotate(1turn);
+    }
+}
+
+@keyframes blink1 {
+    0%, 5% {
+        opacity: 0;
+    }
+    15%, 25% {
+        opacity: 1;
+    }
+    35%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes blink2 {
+    0%, 15% {
+        opacity: 0;
+    }
+    25%, 35% {
+        opacity: 1;
+    }
+    45%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes blink3 {
+    0%, 20% {
+        opacity: 0;
+    }
+    30%, 40% {
+        opacity: 1;
+    }
+    50%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes blink4 {
+    0%, 30% {
+        opacity: 0;
+    }
+    40%, 50% {
+        opacity: 1;
+    }
+    60%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes blink5 {
+    0%, 40% {
+        opacity: 0;
+    }
+    50%, 60% {
+        opacity: 1;
+    }
+    70%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes blink6 {
+    0%, 45% {
+        opacity: 0;
+    }
+    55%, 65% {
+        opacity: 1;
+    }
+    75%, 100% {
+        opacity: 0;
+    }
+}
+
+@keyframes ping2 {
+    75%, 100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+
+@keyframes ping3 {
+    75%, 100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}

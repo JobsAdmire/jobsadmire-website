@@ -1,0 +1,304 @@
+{
+  "talentacquisition": {
+    "hero": {
+      "badge": "Stratejik yetenek kazanımı hizmetleri",
+      "headline": {
+        "prefix": "Bul",
+        "suffix": "Kuruluşunuz İçin"
+      },
+      "animatedWords": [
+        "Üst Düzey Yetenek",
+        "En İyi Takım",
+        "Doğru İnsanlar",
+        "Mükemmel Uyum",
+        "Yıldız Oyuncular",
+        "Rüya Takım"
+      ],
+      "description": "Kuruluşunuz için en iyi yetenekleri güvence altına almak için işe alımı kolaylaştırın. Şirketinizin benzersiz ihtiyaçlarını karşılamak için uyarlanmış uçtan uca işe alım ve yetenek bulma çözümleri.",
+      "cta": {
+        "text": "Yetenek Edinmeye Başlayın"
+      }
+    },
+    "showcase": {
+      "title": "Yetenek Kazanımı",
+      "subtitle": "Başarınız için stratejik işe alım",
+      "talentPool": {
+        "title": "Yetenek Havuzuna Erişim",
+        "subtitle": "Nitelikli adaylarla bağlantı kurun"
+      },
+      "services": [
+        {
+          "icon": "Arama",
+          "title": "Kaynak Kullanımı",
+          "description": "Aday keşfi",
+          "gradient": "bg-gradient-to-r from-sky-500 to-blue-600"
+        },
+        {
+          "icon": "Hedef",
+          "title": "Tarama",
+          "description": "Kalite değerlendirmesi",
+          "gradient": "bg-gradient-to-r from-purple-500 to-indigo-600"
+        },
+        {
+          "icon": "KullanıcıKontrolü",
+          "title": "Eşleştirme",
+          "description": "Mükemmel uyum bulma",
+          "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+        },
+        {
+          "icon": "Ödül",
+          "title": "İşe Alım",
+          "description": "Sorunsuz entegrasyon",
+          "gradient": "bg-gradient-to-r from-orange-500 to-red-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "300+",
+          "label": "Hizmet Verilen Şirketler",
+          "color": "text-sky-600"
+        },
+        {
+          "value": "85%",
+          "label": "Başarı Oranı",
+          "color": "text-blue-600"
+        },
+        {
+          "label": "Ortalama Kiralama Günleri",
+          "color": "text-indigo-600",
+          "value": "30"
+        }
+      ]
+    }
+  },
+  "talentacquisitionsection1": {
+    "process": {
+      "title": {
+        "prefix": "Bizim Kapsamlı",
+        "highlight": "Yetenek Kazanımı Süreci"
+      },
+      "description": "Olağanüstü işe alım sonuçları sunmak için sistematik ve şeffaf bir süreç izliyoruz",
+      "steps": [
+        {
+          "icon": "Hedef",
+          "title": "İşgücü Planlaması ve İş Analizi",
+          "description": "İşgücü ihtiyaçlarınızı, şirket kültürünüzü ve iş gerekliliklerinizi anlamak için İK ekibiniz ve yönetiminizle yakın işbirliği içinde çalışıyoruz.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10",
+          "id": 1
+        },
+        {
+          "icon": "Şebeke",
+          "title": "Kaynak Bulma ve Erişim",
+          "description": "Geniş ağımızdan, iş portallarından, sosyal medyadan ve yenilikçi kaynak bulma tekniklerinden yararlanarak, çeşitli nitelikli aday havuzunu cezbediyoruz.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-blue-500",
+          "bgLight": "bg-blue-500/10",
+          "id": 2
+        },
+        {
+          "icon": "Filtre",
+          "title": "Tarama ve Değerlendirme",
+          "description": "Özgeçmişler, mülakatlar, beceri değerlendirmeleri ve davranışsal değerlendirmeler yoluyla kapsamlı bir eleme gerçekleştirerek en uygun kişileri kısa listeye alıyoruz.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10",
+          "id": 3
+        },
+        {
+          "icon": "Takvim",
+          "title": "Mülakat Koordinasyonu",
+          "description": "Sorunsuz bir mülakat deneyimi sağlamak için adaylar ve işe alım yöneticileriniz arasındaki zamanlama ve iletişimi yönetmek.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-blue-600",
+          "bgLight": "bg-blue-600/10",
+          "id": 4
+        },
+        {
+          "icon": "KullanıcıKontrolü",
+          "title": "Seçim ve Teklif Yönetimi",
+          "description": "Piyasa standartlarına ve aday beklentilerine uygun, rekabetçi iş tekliflerinin kararlaştırılmasına ve sunulmasına yardımcı olmak.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10",
+          "id": 5
+        },
+        {
+          "icon": "UserPlus",
+          "title": "İşe Alım Desteği",
+          "description": "İK işe alım ve işe alım desteğimiz aracılığıyla yeni işe alınanların kuruluşunuza sorunsuz bir şekilde entegre olmasına yardımcı olmak için işe alım sürecini kolaylaştırmak.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-blue-500",
+          "bgLight": "bg-blue-500/10",
+          "id": 6
+        }
+      ]
+    },
+    "flow": {
+      "title": "Kolaylaştırılmış Süreç Akışı",
+      "description": "Planlamadan işe alıştırmaya kadar her şeyi düşündük",
+      "stepLabel": "Adım"
+    },
+    "cta": "Yetenek Kazanımı Yolculuğunuza Başlayın"
+  },
+  "talentacquisitionsection2": {
+    "whyPartner": {
+      "badge": "ORTAKLIK AVANTAJLARI",
+      "title": {
+        "prefix": "Neden İş Ortaklığı",
+        "highlight": "JobsAdmire",
+        "suffix": "Yetenek Kazanımı için?"
+      },
+      "reasons": [
+        {
+          "icon": "Ödül",
+          "title": "Sektörler Arası Uzmanlık",
+          "description": "İşe alım uzmanlarımız çeşitli sektörlerde uzmanlaşarak sektöre özgü bilgi ve aday kalitesi sağlar.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Veritabanı",
+          "title": "En İyi Yeteneklere Erişim",
+          "description": "Adayları gereksinimlerinizle hızlı bir şekilde eşleştirmek için kapsamlı bir veritabanı ve yetenek havuzu tutuyoruz.",
+          "color": "bg-blue-500",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Ayarlar",
+          "title": "Özel Çözümler",
+          "description": "İşletmenizin büyüklüğüne, kültürüne ve işe alım hedeflerinize göre tasarlanmış şirketler için esnek işe alım çözümleri.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Zap",
+          "title": "Teknoloji Odaklı Yaklaşım",
+          "description": "Verimli işe alım için gelişmiş Başvuru Takip Sistemlerini (ATS) ve veri analitiğini kullanmak.",
+          "color": "bg-blue-600",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Kullanıcılar",
+          "title": "Çeşitlilik ve Kapsayıcılığa Odaklanın",
+          "description": "İnovasyonu ve başarıyı teşvik eden çeşitliliğe sahip ekipler kurmanıza yardımcı oluyoruz.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Kalkan",
+          "title": "Kalite Garantisi",
+          "description": "Başarılı uzun vadeli yerleştirmeler sağlamak için değiştirme garantileri ve sürekli destek sağlıyoruz.",
+          "color": "bg-blue-700",
+          "textColor": "text-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        }
+      ]
+    },
+    "benefits": {
+      "title": "Yetenek Kazanımı Hizmetimizin Faydaları",
+      "subtitle": "İşinizi ileriye taşıyan ölçülebilir sonuçlar",
+      "items": [
+        {
+          "icon": "Saat",
+          "title": "Azaltılmış işe alım süresi ve işe alım başına maliyet",
+          "color": "text-[#38B6FF]"
+        },
+        {
+          "icon": "TrendingUp",
+          "title": "İşe alım kalitesinde ve elde tutma oranlarında artış",
+          "color": "text-[#38B6FF]"
+        },
+        {
+          "icon": "Yıldız",
+          "title": "Geliştirilmiş işveren markası ve aday deneyimi",
+          "color": "text-[#38B6FF]"
+        },
+        {
+          "icon": "BarChart3",
+          "title": "Büyüyen işletmeler için ölçeklenebilir işe alım çözümleri",
+          "color": "text-[#38B6FF]"
+        },
+        {
+          "icon": "Hedef",
+          "title": "İş hedeflerinizle uyumlu stratejik işgücü planlaması",
+          "color": "text-[#38B6FF]"
+        }
+      ],
+      "stats": [
+        {
+          "value": "50%",
+          "label": "Daha Hızlı İşe Alım Süreci",
+          "color": "text-[#38B6FF]"
+        },
+        {
+          "value": "30%",
+          "label": "Maliyet Azaltma",
+          "color": "text-blue-500"
+        },
+        {
+          "value": "95%",
+          "label": "Müşteri Memnuniyeti",
+          "color": "text-[#38B6FF]"
+        }
+      ]
+    },
+    "whoBenefits": {
+      "title": {
+        "prefix": "Kim Yapabilir",
+        "highlight": "Fayda mı?"
+      },
+      "description": "Yetenek kazanımı hizmetlerimiz her büyüklükteki ve sektördeki kuruluşlar için tasarlanmıştır",
+      "audience": [
+        {
+          "icon": "Roket",
+          "title": "Girişimler",
+          "description": "İlk ekiplerini kurmak isteyen",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]"
+        },
+        {
+          "icon": "TrendingUp",
+          "title": "Büyüyen İşletmeler",
+          "description": "Ölçeklenebilir işe alım çözümlerine ihtiyaç duyulması",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]"
+        },
+        {
+          "icon": "Bina",
+          "title": "Şirketler",
+          "description": "Uzman veya yönetici yetenek arayışı",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]"
+        },
+        {
+          "icon": "Ayarlar",
+          "title": "İK Departmanları",
+          "description": "İşe alım iş akışlarını optimize etmeyi hedeflemek",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]"
+        },
+        {
+          "icon": "Kullanıcılar",
+          "title": "Çeşitli Kuruluşlar",
+          "description": "Çeşitlilik ve kapsayıcılık girişimlerine bağlı",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]"
+        },
+        {
+          "icon": "Hedef",
+          "title": "İşe Alım Ajansları",
+          "description": "Yetenek kaynaklarını genişletmek",
+          "color": "bg-[#38B6FF]",
+          "textColor": "text-[#38B6FF]"
+        }
+      ]
+    }
+  }
+}

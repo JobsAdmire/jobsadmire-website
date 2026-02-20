@@ -1,0 +1,911 @@
+{
+  "heroSection": {
+    "badge": "Voyages exclusifs",
+    "title": "Découvrez votre prochaine aventure",
+    "description": "Découvrez des destinations à couper le souffle et créez des souvenirs inoubliables grâce à nos forfaits de voyage haut de gamme adaptés à vos désirs.",
+    "currentlyViewing": {
+      "label": "En cours de visualisation"
+    },
+    "buttons": {
+      "explore": "Explorer maintenant",
+      "viewAll": "Voir toutes les destinations"
+    },
+    "destinationCounter": "Destination {actuelle}/{total}",
+    "destinations": [
+      {
+        "img": "/images/ihusn.png",
+        "name": "New York City, New York",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihuslos.png",
+        "name": "Los Angeles, Californie",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihuch.png",
+        "name": "Chicago, Illinois",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihusen.png",
+        "name": "San Francisco, Californie",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihumiami.png",
+        "name": "Miami, Floride",
+        "country": "USA"
+      }
+    ],
+    "accessibility": {
+      "exploreButton": "Explorer les destinations maintenant",
+      "viewAllButton": "Voir toutes les destinations disponibles",
+      "destinationImage": "Afficher la destination : {nom}",
+      "featuredDestination": "Image de la destination",
+      "carouselControl": "Aller à la destination {numéro}"
+    },
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableOfContents": {
+    "title": "Table des matières",
+    "subtitle": "Naviguer dans les sections",
+    "currentlyReading": "Lecture en cours",
+    "sectionsCount": "{count} sections à explorer",
+    "sections": [
+      {
+        "title": "🇺🇸 Faits amusants et fascinants sur les États-Unis",
+        "id": 1
+      },
+      {
+        "title": "Options de visa pour déménager aux États-Unis",
+        "id": 2
+      },
+      {
+        "title": "Conditions à remplir pour déménager aux États-Unis",
+        "id": 3
+      },
+      {
+        "title": "Obtenir un emploi aux États-Unis en tant qu'étranger",
+        "id": 4
+      },
+      {
+        "title": "Déménager aux États-Unis depuis la Turquie",
+        "id": 5
+      },
+      {
+        "title": "Déménager du Royaume-Uni aux États-Unis",
+        "id": 6
+      },
+      {
+        "title": "Quel est le coût d'un déménagement aux États-Unis ?",
+        "id": 7
+      },
+      {
+        "title": "Déménager avec des animaux de compagnie aux États-Unis",
+        "id": 8
+      }
+    ],
+    "quickNavigation": {
+      "title": "Navigation rapide",
+      "footer": "Faire défiler {count} sections"
+    },
+    "accessibility": {
+      "toggleMenu": "Menu de navigation",
+      "sectionButton": "Naviguer vers la section : {titre}",
+      "quickNavigation": "Menu de navigation rapide",
+      "quickNavSection": "Naviguer rapidement vers : {titre}"
+    }
+  },
+  "factsCard": {
+    "description": "Découvrez les caractéristiques et les réalisations remarquables des États-Unis d'Amérique. Les États-Unis ont une importance géographique, économique, culturelle et innovante incroyable sur la scène mondiale.",
+    "navigation": {
+      "title": "Explorer les faits",
+      "previous": "Fait précédent",
+      "next": "Fait suivant"
+    },
+    "allFacts": {
+      "title": "Tous les faits sur les États-Unis"
+    },
+    "facts": [
+      {
+        "title": "Troisième pays par ordre d'importance",
+        "description": "Les États-Unis sont le troisième pays en termes de superficie et de population, après la Russie/Canada (superficie) et la Chine/Inde (population).",
+        "iconKey": "carte",
+        "emoji": "🗺️",
+        "id": 1
+      },
+      {
+        "title": "50 États et 1 district fédéral",
+        "description": "Il est composé de <strong>50 États</strong> et de Washington, D.C., qui est la capitale mais n'est pas un État.",
+        "iconKey": "drapeau",
+        "emoji": "🏛️",
+        "id": 2
+      },
+      {
+        "title": "La plus grande économie du monde",
+        "description": "À l'heure actuelle, les États-Unis ont la <strong>plus grande économie du monde</strong>, tirée par la technologie, la finance, les soins de santé et le divertissement.",
+        "iconKey": "bâtiment",
+        "emoji": "💰",
+        "id": 3
+      },
+      {
+        "title": "Diversité culturelle",
+        "description": "C'est l'un des pays les plus diversifiés sur le plan culturel, avec plus de <strong>350 langues parlées</strong> et des communautés originaires de presque tous les pays du monde.",
+        "iconKey": "globe terrestre",
+        "emoji": "🌎",
+        "id": 4
+      },
+      {
+        "title": "Les innovations sont nées ici",
+        "description": "Les États-Unis sont à l'origine de nombreuses inventions, dont l'Internet, l'avion, l'ampoule électrique et l'iPhone</strong>.",
+        "iconKey": "ampoule",
+        "emoji": "💡",
+        "id": 5
+      }
+    ],
+    "accessibility": {
+      "factButton": "Sélectionner le fait : {titre}",
+      "previousFact": "Aller au fait précédent",
+      "nextFact": "Aller au fait suivant"
+    }
+  },
+  "movingCostsGuide": {
+    "title": "Quel est le coût d'un déménagement aux États-Unis ?",
+    "description": "Déménager aux États-Unis peut être passionnant, mais cela s'accompagne de plusieurs coûts que vous devez prévoir. Voici une ventilation détaillée des dépenses auxquelles vous pouvez vous attendre en déménageant aux États-Unis.",
+    "costSections": [
+      {
+        "id": "visa-immigration",
+        "icon": "🛂",
+        "title": "Frais de visa et d'immigration",
+        "amount": "$160-$5,000+",
+        "details": "Demande de visa, carte verte, frais d'avocat facultatifs",
+        "color": "bg-bleu-500",
+        "subItems": [
+          {
+            "title": "Visa de non-immigrant (H-1B, F-1)",
+            "amount": "$160-$205"
+          },
+          {
+            "title": "Carte verte (visa d'immigrant)",
+            "amount": "$1,200-$1,760"
+          },
+          {
+            "title": "Frais d'avocat (facultatif)",
+            "amount": "$1,500-$5,000"
+          }
+        ]
+      },
+      {
+        "id": "vol",
+        "icon": "✈️",
+        "title": "Billets d'avion",
+        "amount": "$500-$1,200",
+        "details": "Vol aller simple en fonction du lieu et de l'heure de réservation",
+        "color": "bg-bleu-600"
+      },
+      {
+        "id": "expédition",
+        "icon": "📦",
+        "title": "Expédition des biens",
+        "amount": "$500-$7,000",
+        "details": "Dépend du volume et de la méthode d'expédition",
+        "color": "bg-bleu-700",
+        "subItems": [
+          {
+            "title": "Petits envois (boîtes uniquement)",
+            "amount": "$500-$1,500"
+          },
+          {
+            "title": "Conteneur complet (20ft/40ft)",
+            "amount": "$3,000-$7,000"
+          }
+        ]
+      },
+      {
+        "id": "hébergement",
+        "icon": "🏠",
+        "title": "Hébergement initial",
+        "amount": "$1,000-$4,000",
+        "details": "Premier mois de loyer + caution (variable selon la ville)",
+        "color": "bg-bleu-500",
+        "subItems": [
+          {
+            "title": "Hôtel temporaire/Airbnb",
+            "amount": "80 à 200 dollars par nuit"
+          }
+        ]
+      },
+      {
+        "id": "l'assurance",
+        "icon": "🏥",
+        "title": "Assurance maladie",
+        "amount": "300 $ - 700 $/mois",
+        "details": "Obligatoire pour la plupart des types de visas",
+        "color": "bg-bleu-600",
+        "subItems": [
+          {
+            "title": "Couverture familiale",
+            "amount": "Plus cher"
+          }
+        ]
+      },
+      {
+        "id": "autres",
+        "icon": "📝",
+        "title": "Autres dépenses",
+        "amount": "520 $ - 1 080 $ et plus par mois",
+        "color": "bg-bleu-500",
+        "subItems": [
+          {
+            "title": "Demande de SSN",
+            "amount": "Gratuit"
+          },
+          {
+            "title": "Permis de conduire",
+            "amount": "$20-$80"
+          },
+          {
+            "title": "Épicerie et transport",
+            "amount": "500 $ - 1 000 $/mois"
+          }
+        ]
+      }
+    ],
+    "totalBudget": {
+      "icon": "🔢",
+      "title": "Estimation du budget total",
+      "categories": [
+        {
+          "title": "Personne seule",
+          "amount": "$5,000-$10,000",
+          "description": "Comprend les frais de visa, le logement initial, le transport et les coûts d'installation de base."
+        },
+        {
+          "title": "Famille de quatre personnes",
+          "amount": "$10,000-$25,000+",
+          "description": "Comprend tous les coûts pour l'ensemble de la famille, y compris les visas, le transport et l'hébergement."
+        }
+      ]
+    },
+    "moneySavingTips": {
+      "icon": "💰",
+      "title": "Conseils pour économiser de l'argent",
+      "tips": [
+        {
+          "title": "Réfléchir attentivement à l'emplacement",
+          "description": "Le coût du logement varie considérablement d'une ville à l'autre. Envisagez des villes plus petites ou des banlieues."
+        },
+        {
+          "title": "Réservez votre vol à l'avance",
+          "description": "Réserver un vol 2 à 3 mois à l'avance permet d'économiser des centaines d'euros."
+        },
+        {
+          "title": "Expédier de manière sélective",
+          "description": "Réfléchissez à ce qui vaut la peine d'être expédié ou d'être acheté neuf aux États-Unis."
+        },
+        {
+          "title": "Comparer les régimes d'assurance",
+          "description": "Les coûts de l'assurance maladie peuvent varier considérablement ; investissez du temps pour trouver le bon plan."
+        }
+      ]
+    },
+    "conclusion": "Le coût final dépend fortement du type de visa, de l'endroit d'où vous déménagez et de votre destination aux États-Unis. Avec une planification et une budgétisation adéquates, vous pouvez faire en sorte que votre déménagement aux États-Unis soit à la fois facile et économique.",
+    "accessibility": {
+      "toggleSection": "Basculer les détails pour {titre} section"
+    }
+  },
+  "requirementsGuide": {
+    "tabs": {
+      "all": "Toutes les exigences",
+      "essential": "Exigences essentielles",
+      "recommended": "Recommandé",
+      "after-arrival": "Après l'arrivée"
+    },
+    "categoryLabels": {
+      "essential": "Exigée",
+      "recommended": "Recommandé",
+      "afterArrival": "Après l'arrivée"
+    },
+    "requirements": [
+      {
+        "title": "Obtenir le bon visa ou la bonne carte verte",
+        "description": "Vous devez être en possession d'un visa approuvé ou d'une carte verte (statut de résident permanent) pour vivre aux États-Unis.",
+        "details": [
+          "Visa d'immigrant fondé sur la famille",
+          "Visa basé sur l'emploi (H-1B, L-1, etc.)",
+          "Visa d'étudiant (F-1)",
+          "Loterie de cartes vertes (programme de visas de diversité)"
+        ],
+        "tip": "Introduisez votre demande de visa auprès de l'ambassade ou du consulat des États-Unis dans votre pays. Les délais de traitement varient de quelques semaines à quelques mois.",
+        "iconKey": "fileText",
+        "category": "essentiel",
+        "id": 1
+      },
+      {
+        "title": "Passeport en cours de validité",
+        "description": "Votre passeport doit être valable au moins <strong>6 mois</strong> après la date d'entrée prévue.",
+        "details": [
+          "Renouvelez-la avant de demander le visa si elle est sur le point d'expirer."
+        ],
+        "iconKey": "bookOpen",
+        "category": "essentiel",
+        "id": 2,
+        "tip": ""
+      },
+      {
+        "title": "Examen médical agréé",
+        "description": "Un examen médical obligatoire est requis pour les visas d'immigrant.",
+        "details": [
+          "Elle doit être effectuée par un médecin agréé par l'ambassade des États-Unis.",
+          "Vous serez soumis à un dépistage de maladies telles que la tuberculose et devrez présenter la preuve des principaux vaccins."
+        ],
+        "tip": "Coût : Environ 200 à 400 dollars selon les pays.",
+        "iconKey": "stéthoscope",
+        "category": "essentiel",
+        "id": 3
+      },
+      {
+        "title": "Vaccination et carnet de santé",
+        "description": "Apporter un carnet de vaccination complet.",
+        "details": [
+          "Rougeole, oreillons, rubéole (ROR)",
+          "Polio",
+          "Tétanos",
+          "Grippe (pendant la saison grippale)",
+          "COVID-19 (selon les dernières directives de l'USCIS)"
+        ],
+        "iconKey": "seringue",
+        "category": "essentiel",
+        "id": 4,
+        "tip": ""
+      },
+      {
+        "title": "Preuve financière ou parrainage",
+        "description": "Vous devez prouver que vous ne deviendrez pas financièrement dépendant du gouvernement américain :",
+        "details": [
+          "Visa pour l'emploi : Lettre d'offre d'emploi et détails du salaire.",
+          "Visa familial : Le parrain doit remplir le formulaire I-864 (Affidavit of Support) et justifier d'un revenu supérieur à un certain seuil.",
+          "Visa d'étudiant : Preuve du paiement des frais de scolarité et des frais de subsistance pour au moins une année universitaire."
+        ],
+        "iconKey": "signe du dollar",
+        "category": "essentiel",
+        "id": 5,
+        "tip": ""
+      },
+      {
+        "title": "Casier judiciaire vierge",
+        "description": "Les infractions mineures n'entraînent généralement pas de disqualification, mais les casiers judiciaires graves peuvent entraîner un refus de visa.",
+        "details": [
+          "La vérification des antécédents fait partie du processus."
+        ],
+        "iconKey": "vérification du bouclier",
+        "category": "essentiel",
+        "id": 6,
+        "tip": ""
+      },
+      {
+        "title": "Compétences linguistiques en anglais (pratique)",
+        "description": "Pas toujours nécessaire, mais <strongly recommended</strong> pour le travail et la vie quotidienne.",
+        "details": [
+          "Certains visas (comme le H-1B) exigent des compétences.",
+          "En cas de demande de citoyenneté ultérieure, des connaissances en anglais et en instruction civique sont requises."
+        ],
+        "iconKey": "messageSquare",
+        "category": "recommandé",
+        "id": 7,
+        "tip": ""
+      },
+      {
+        "title": "Autres exigences pratiques après l'arrivée",
+        "description": "Une fois aux États-Unis, vous devrez :",
+        "details": [
+          "Demander un numéro de sécurité sociale (SSN)",
+          "Ouvrir un compte bancaire aux États-Unis",
+          "Obtenir un permis de conduire ou une carte d'identité",
+          "Trouver un logement (location ou achat)",
+          "souscrire une assurance maladie (les soins de santé aux États-Unis sont privés et coûteux)"
+        ],
+        "iconKey": "carte de crédit",
+        "category": "après l'arrivée",
+        "id": 8,
+        "tip": ""
+      }
+    ],
+    "importantReminder": {
+      "title": "Rappel important",
+      "description": "Les exigences en matière d'immigration peuvent changer au fil du temps. Ce guide est basé sur des informations actuelles, mais vérifiez toujours les exigences les plus récentes auprès du département d'État américain ou des services de citoyenneté et d'immigration des États-Unis (USCIS) avant de procéder à votre déménagement.",
+      "lastUpdated": "Dernière mise à jour : Mai 2025"
+    },
+    "accessibility": {
+      "tabButton": "Passer à l'onglet {label}"
+    }
+  },
+  "migrationGuide": {
+    "header": {
+      "sourceFlag": "🇹🇷",
+      "destinationFlag": "🇺🇸",
+      "title": "Déménager aux États-Unis depuis la Turquie",
+      "description": "Déménager de Turquie aux États-Unis peut être une occasion de changer de vie, mais cela nécessite une planification adéquate et des procédures légales. Voici ce que vous devez savoir :",
+      "decorativeIcon": "🗽"
+    },
+    "sections": [
+      {
+        "title": "Choisir le bon type de visa",
+        "description": "La première étape consiste à obtenir le visa américain approprié en fonction de la raison de votre déménagement :",
+        "items": [
+          {
+            "title": "Visa familial",
+            "description": "Si vous avez des membres de votre famille proche qui sont <strong>citoyens américains ou résidents permanents</strong>.",
+            "iconKey": "utilisateurs"
+          },
+          {
+            "title": "Visa de travail (H-1B, L-1, O-1)",
+            "description": "Si l'on vous propose un emploi aux États-Unis",
+            "iconKey": "porte-documents"
+          },
+          {
+            "title": "Visa étudiant (F-1)",
+            "description": "Si vous prévoyez d'étudier dans un établissement d'enseignement supérieur américain.",
+            "iconKey": "bonnet de fin d'études"
+          },
+          {
+            "title": "Visa de diversité (loterie de la carte verte)",
+            "description": "La Turquie est éligible - vous pouvez faire votre demande pendant la fenêtre de loterie annuelle.",
+            "iconKey": "mélanger"
+          },
+          {
+            "title": "Visa d'investisseur (E-2)",
+            "description": "Pour les ressortissants turcs qui investissent un montant substantiel dans une entreprise américaine.",
+            "iconKey": "signe du dollar"
+          }
+        ],
+        "id": 1
+      },
+      {
+        "title": "Se préparer à l'entretien pour le visa",
+        "description": "Déposez votre demande auprès de l'ambassade des États-Unis à Ankara ou du consulat à Istanbul, selon votre région. Vous aurez besoin de",
+        "items": [
+          {
+            "title": "Passeport en cours de validité",
+            "description": "Assurez-vous que votre passeport est valide pour au moins <strong>6 mois</strong> après la date prévue de votre séjour.",
+            "iconKey": "fileText"
+          },
+          {
+            "title": "Demande de visa",
+            "description": "Le formulaire DS-160 ou le formulaire d'immigration approprié.",
+            "iconKey": "fileText"
+          },
+          {
+            "title": "Documents d'appui",
+            "description": "Financière, éducative, offre d'emploi, etc.",
+            "iconKey": "fileText"
+          },
+          {
+            "title": "Examen médical et carnet de vaccination",
+            "description": "Examen médical complet auprès d'un médecin agréé.",
+            "iconKey": "fileText"
+          }
+        ],
+        "id": 2
+      },
+      {
+        "title": "Assurance maladie et coût de la vie",
+        "items": [
+          {
+            "title": "Assurance maladie privée",
+            "description": "Les États-Unis n'offrent pas de soins de santé gratuits - vous devrez souscrire une <strong>assurance maladie privée</strong>.",
+            "iconKey": "fileText"
+          },
+          {
+            "title": "Coût de la vie plus élevé",
+            "description": "Le coût de la vie est plus élevé qu'en Turquie. Les loyers, les soins de santé et les transports sont plus chers, en particulier dans des villes comme <strong>New York, LA ou San Francisco</strong>.",
+            "iconKey": "bâtiment"
+          }
+        ],
+        "id": 3,
+        "description": ""
+      },
+      {
+        "title": "Différences culturelles et de mode de vie",
+        "items": [
+          {
+            "title": "Communautés turques",
+            "description": "Les États-Unis sont très diversifiés et comptent de nombreuses communautés turques, notamment dans des villes comme New York, Chicago et Los Angeles.",
+            "iconKey": "globe terrestre"
+          },
+          {
+            "title": "Un mode de vie différent",
+            "description": "La vie quotidienne peut être plus <strong>individualiste et plus rapide</strong> qu'en Turquie.",
+            "iconKey": "globe terrestre"
+          }
+        ],
+        "id": 4,
+        "description": ""
+      },
+      {
+        "title": "Après l'arrivée aux États-Unis",
+        "description": "Dès votre arrivée, veillez à :",
+        "items": [
+          {
+            "title": "Demander un numéro de sécurité sociale (SSN)",
+            "description": "C'est essentiel pour travailler et déclarer ses impôts aux États-Unis.",
+            "iconKey": "fileText"
+          },
+          {
+            "title": "Ouvrir un compte bancaire",
+            "description": "Vous en aurez besoin pour vos transactions financières quotidiennes.",
+            "iconKey": "carte de crédit"
+          },
+          {
+            "title": "Obtenir un permis de conduire",
+            "description": "Les transports publics sont limités dans de nombreuses régions des États-Unis.",
+            "iconKey": "carte de crédit"
+          },
+          {
+            "title": "Trouver un logement",
+            "description": "Et s'adapter aux systèmes américains (éducation, travail, transport).",
+            "iconKey": "mapPin"
+          }
+        ],
+        "id": 5
+      }
+    ],
+    "navigation": {
+      "previous": "Précédent",
+      "next": "Suivant"
+    },
+    "footer": {
+      "sourceFlag": "🇹🇷",
+      "destinationFlag": "🇺🇸",
+      "disclaimer": "N'oubliez pas que les conditions d'immigration peuvent changer. Vérifiez toujours auprès de l'ambassade des États-Unis en Turquie ou de l'USCIS pour obtenir les informations les plus récentes."
+    },
+    "accessibility": {
+      "sectionButton": "Aller à la section : {titre}",
+      "previousButton": "Aller à la section précédente : {titre}",
+      "nextButton": "Aller à la section suivante : {titre}"
+    }
+  },
+  "petsGuide": {
+    "header": {
+      "icons": [
+        "🐶",
+        "🐱",
+        "🦜"
+      ],
+      "title": "Déménager avec des animaux de compagnie aux États-Unis",
+      "description": "Il est possible d'emmener son animal de compagnie aux États-Unis, mais il faut respecter certaines règles :"
+    },
+    "sections": {
+      "requirements": {
+        "icon": "✅",
+        "title": "Exigences clés"
+      },
+      "arrival": {
+        "icon": "🛬",
+        "title": "À l'arrivée"
+      },
+      "tips": {
+        "icon": "💡",
+        "title": "Conseils utiles"
+      }
+    },
+    "requirements": [
+      {
+        "id": "la rage",
+        "icon": "💉",
+        "title": "Vaccination contre la rage",
+        "description": "<strong>Obligatoire pour les chiens</strong> ; fortement recommandé pour les chats"
+      },
+      {
+        "id": "la santé",
+        "icon": "📋",
+        "title": "Certificat de santé",
+        "description": "Délivré par un vétérinaire agréé (généralement dans les <strong>10 jours</strong> du voyage)"
+      },
+      {
+        "id": "puce électronique",
+        "icon": "📱",
+        "title": "Puce électronique",
+        "description": "Non requis par la loi, mais <strong>hautement recommandé</strong>."
+      },
+      {
+        "id": "compagnie aérienne",
+        "icon": "✈️",
+        "title": "Réservation de billets d'avion pour animaux de compagnie",
+        "description": "Respectez les règles du transporteur en ce qui concerne la taille des caisses, les documents et les frais</strong>."
+      }
+    ],
+    "arrivalInfo": [
+      {
+        "id": "contrôle",
+        "title": "L'inspection",
+        "description": "Les animaux domestiques peuvent être <strong>inspectés au port d'entrée</strong>.",
+        "icon": "👁️"
+      },
+      {
+        "id": "quarantaine",
+        "title": "Pas de quarantaine",
+        "description": "Pour les animaux domestiques provenant de la plupart des pays (y compris le Royaume-Uni et la Turquie), si les documents sont complets",
+        "icon": "🏠"
+      }
+    ],
+    "tips": [
+      "Commencez la procédure au moins 4 à 6 semaines avant votre déménagement.",
+      "Vérifiez si l'État de destination impose des conditions d'entrée supplémentaires",
+      "Apportez une quantité suffisante de médicaments pour les premiers mois.",
+      "Envisager des services de transport d'animaux si vous voyagez avec plusieurs animaux"
+    ],
+    "footer": {
+      "disclaimer": "Avant de partir en voyage, vérifiez toujours les exigences les plus récentes auprès de l'USDA APHIS</strong> et de l'office vétérinaire de votre pays de destination."
+    }
+  },
+  "moveRequirements": {
+    "requirements": [
+      {
+        "title": "Visa ou carte verte en cours de validité",
+        "description": "Vous devez obtenir le type de visa approprié en fonction de votre objectif (par exemple, <strong>travail, famille, études</strong>).",
+        "note": "Les visas d'immigrant sont nécessaires pour une réinstallation permanente.",
+        "iconKey": "fileText",
+        "id": 1
+      },
+      {
+        "title": "Passeport en cours de validité",
+        "description": "Votre passeport doit être valable au moins <strong>6 mois</strong> après la date prévue de votre séjour.",
+        "iconKey": "bookOpen",
+        "id": 2,
+        "note": ""
+      },
+      {
+        "title": "Examen médical",
+        "description": "Requis pour la plupart des <strong>visas d'immigrant</strong>.",
+        "note": "Doit être effectué par un médecin agréé.",
+        "iconKey": "stéthoscope",
+        "id": 3
+      },
+      {
+        "title": "Carnet de vaccination",
+        "description": "La preuve des vaccinations (par exemple, <strong>MMR, COVID-19, hépatite</strong>) est nécessaire pour l'immigration.",
+        "iconKey": "seringue",
+        "id": 4,
+        "note": ""
+      },
+      {
+        "title": "Preuve de soutien financier",
+        "description": "Vous devrez peut-être présenter des relevés bancaires, des offres d'emploi ou un parrain pour prouver que vous ne deviendrez pas une <strong>charge publique</strong>.",
+        "iconKey": "signe du dollar",
+        "id": 5,
+        "note": ""
+      },
+      {
+        "title": "Casier judiciaire vierge",
+        "description": "La vérification des antécédents fait partie de la procédure d'immigration.",
+        "note": "Les infractions graves peuvent entraîner un refus de visa.",
+        "iconKey": "vérification du bouclier",
+        "id": 6
+      },
+      {
+        "title": "Compétences en anglais (recommandé)",
+        "description": "La connaissance de l'anglais n'est pas obligatoire pour tous les types de visas, mais elle est très utile dans la vie quotidienne, l'emploi et l'éducation.",
+        "iconKey": "messageSquare",
+        "id": 7,
+        "note": ""
+      }
+    ],
+    "importantNote": {
+      "title": "Note importante",
+      "description": "Les exigences en matière d'immigration peuvent changer. Vérifiez toujours les informations les plus récentes auprès du département d'État américain ou des services de citoyenneté et d'immigration des États-Unis (USCIS) avant de procéder à votre déménagement."
+    }
+  },
+  "ukUsGuide": {
+    "header": {
+      "icon": "🇬🇧➡️🇺🇸",
+      "title": "Déménager du Royaume-Uni aux États-Unis",
+      "subtitle": "Ce qu'il faut savoir",
+      "description": "Déménager du Royaume-Uni aux États-Unis est une étape importante qui nécessite de la planification, des documents juridiques et une bonne compréhension des différences de vie de part et d'autre de l'Atlantique. Que vous déménagiez pour des raisons professionnelles, pour rejoindre votre famille ou pour vivre une nouvelle aventure, ce guide couvre les aspects essentiels de votre déménagement transatlantique."
+    },
+    "quickNavigation": {
+      "title": "Navigation rapide"
+    },
+    "sections": [
+      {
+        "id": "exigences en matière de visa",
+        "icon": "🛂",
+        "title": "Exigences en matière de visa",
+        "content": "</p> <p class=\"text-gray-700 mb-4\">En tant que citoyen britannique, vous aurez besoin d'un visa pour vous installer durablement aux États-Unis. Les options les plus courantes sont les suivantes:</p><ul class=\"grid grid-cols-1 md :grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span><strong>Visas d'emploi (H-1B, L-1, O-1)</strong> - Pour les professionnels qualifiés, les transferts, ou des capacités extraordinaires</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span><strong>Carte verte basée sur la famille</strong> - Si vous avez des parents immédiats qui sont U.S. citoyens américains</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span><strong>Visa d'étudiant (F-1)</strong> - Si vous étudiez aux États-Unis.</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span><strong>Visa d'investisseur (E-2)</strong> - Pour les citoyens britanniques qui investissent dans une entreprise américaine.États-Unis</span></li></ul><p class=\"text-gray-700\">Le processus de demande de visa nécessite une planification minutieuse, car les taux de rejet peuvent être élevés pour certains types de visa.</p>"
+      },
+      {
+        "id": "processus de demande",
+        "icon": "📋",
+        "title": "Procédure de demande de visa",
+        "content": "<div class=\"mb-4\"><p class=\"text-gray-700 mb-4\">La procédure de demande de visa comporte plusieurs étapes:</p><ul class=\"text-gray-700 space-y-2 pl-4\"><li>- Faire une demande en ligne via le Département d'Etat américain</li><li>- Prendre rendez-vous pour un entretien à l'ambassade des Etats-Unis à Londres</strong> ou au consulat de Belfast</strong><li>. Ambassade des États-Unis à Londres</strong> ou <strong>Consulat à Belfast</strong></li><li>- Préparer les documents requis:</li></ul><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm mt-3\"><h4 class=\"font-medium text-sky-600 mb-2\">Documents requis :</h4><ul class=\"text-gray-700 space-y-1 pl-4\"><li>- Passeport en cours de validité</li><li>- Formulaire de demande de visa</li><li>- Résultats de l'examen médical</li><li>- Preuve de situation financière</li><li>- Documents relatifs au parrainage/à l'offre d'emploi si nécessaire</li><li>- Certificats d'études (pour certains visas)</li></ul></div></div>"
+      },
+      {
+        "id": "soins de santé",
+        "icon": "🏥",
+        "title": "Soins de santé et assurance",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>A la différence du NHS britannique, les soins de santé américains sont essentiellement privés et peuvent être coûteux</p><p>Vous devrez souscrire une assurance maladie privée. est essentiellement privé et peut être coûteux</p><p>Vous devrez souscrire une <strong>assurance maladie privée</strong> - les coûts mensuels peuvent aller de <strong>300 $ à 700 $+ par personne</strong></p><p>De nombreux employeurs proposent une assurance maladie dans le cadre des avantages sociaux</p><p>Envisagez une assurance qui couvre le rapatriement d'urgence la première année</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Conseil :</strong>Commencez à rechercher des options d'assurance maladie avant votre arrivée et assurez-vous d'être couvert dès le premier jour aux États-Unis.S.</span></p></div></div>"
+      },
+      {
+        "id": "coût de la vie",
+        "icon": "💷",
+        "title": "Comparaison du coût de la vie",
+        "content": "<div><div class=\"overflow-x-auto mb-4\"><table class=\"min-w-full bg-white border border-sky-200 rounded-lg\"><thead><tr class=\"bg-sky-100\"><th class=\"py-3 px-4 text-left border-b border-sky-200\">Dépenses</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">États-Unis (moy.)</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">Royaume-Uni (moy.)</th></thead><tbody><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Loyer (appartement à 1 lit)</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">1,200-$3,000</td><td class=\"py-3 px-4 border-b border-sky-100\">£800-£1,200</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Santé</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">300-$700/mois</td><td class=\"py-3 px-4 border-b border-sky-100\">SNHS (financé par les impôts)</td></tr><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Repas au restaurant</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">15-30$</td><td class=\"py-3 px-4 border-b border-sky-100\">£10-£25</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Transport</td><td class=\"py-3 px-4 border-b border-sky-100 text-yellow-600\">70-$100/mois (variable)</td><td class=\"py-3 px-4 border-b border-sky-100\">£60-£120/mois</td></tr></tbody></table></div><p class=\"text-gray-700\">Le coût de la vie varie considérablement d'un endroit à l'autre. Les grandes villes comme New York, San Francisco et Los Angeles sont nettement plus chères que la plupart des villes britanniques, y compris Londres."
+      },
+      {
+        "id": "logement",
+        "icon": "🏘️",
+        "title": "Trouver un logement",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Le marché locatif américain évolue rapidement, en particulier dans les villes compétitives</p><p>La plupart des propriétaires exigent une vérification de la solvabilité, ce qui peut être difficile pour les nouveaux arrivants</p><p>Envisagez des locations à court terme dès votre arrivée et jusqu'à ce que vous soyez installé</p><p>Sites Web populaires de recherche de logements : Zillow, Apartments.com, Trulia, Realtor.com</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Conseil:</strong>Apportez des lettres de référence de propriétaires britanniques et une preuve de revenu pour pallier l'absence d'antécédents de crédit aux États-Unis.</span></p></div></div>."
+      },
+      {
+        "id": "banque",
+        "icon": "💳",
+        "title": "Banque et finance",
+        "content": "<div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Ouvrir un compte bancaire</h3><p class=\"text-gray-700\">Vous aurez besoin de votre passeport, de votre visa, d'un justificatif de domicile et éventuellement de votre numéro de sécurité sociale (SSN).</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Antécédents de crédit</h3><p class=\"text-gray-700\">Vos antécédents de crédit au Royaume-Uni ne sont pas transférables aux États-Unis.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Fiscalité</h3><p class=\"text-gray-700\">En tant qu'expatrié britannique, vous devrez remplir des déclarations d'impôts dans les deux pays, bien que les conventions fiscales permettent d'éviter la double imposition.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Transferts d'argent</h3><p class=\"text-gray-700\">Considérez les services de change spécialisés plutôt que les banques pour obtenir de meilleurs taux de change lorsque vous transférez de l'argent entre le Royaume-Uni et les États-Unis.</p></div></div></div></div>."
+      },
+      {
+        "id": "vie quotidienne",
+        "icon": "📱",
+        "title": "Adaptations à la vie quotidienne",
+        "content": "<div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Conduite</h3><p class=\"text-gray-700\">Vous conduirez à droite. La plupart des États vous autorisent à conduire avec votre permis britannique pendant une période maximale de trois mois, après quoi vous devrez obtenir un permis de l'État.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Culture du pourboire</h3><p class=\"text-gray-700\">Le pourboire est attendu (15-20 %) dans les restaurants, pour les taxis et pour divers services. Le personnel de service compte sur les pourboires pour compléter ses revenus.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Système de mesure</h3><p class=\"text-gray-700\">Les États-Unis utilisent des mesures impériales pour la plupart des choses (par exemple, la taille d'une voiture). utilisent des mesures impériales pour la plupart des choses (miles, livres, Fahrenheit), ce qui peut nécessiter un ajustement.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Téléphones mobiles</h3><p class=\"text-gray-700\">Les principaux opérateurs sont AT&T, Verizon et T-Mobile. Pensez à vous procurer une carte SIM locale ou un forfait à votre arrivée.</p></div></div></div></div>"
+      },
+      {
+        "id": "culture du travail",
+        "icon": "💼",
+        "title": "Différences de culture professionnelle",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>La culture du travail aux États-Unis comprend souvent :</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Moins de jours de vacances (généralement 10-15 jours contre 20-25 au Royaume-Uni)</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\"><span><span>Moins de jours de vacances (généralement 10-15 jours contre 20-25 au Royaume-Uni) Royaume-Uni 20-25)</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Des styles de communication plus directs</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Le réseautage est très apprécié et souvent attendu</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>L'équilibre entre vie professionnelle et vie privée varie considérablement selon les entreprises</span></li></ul></div>"
+      },
+      {
+        "id": "logistique du déménagement",
+        "icon": "🛫",
+        "title": "Logistique du déménagement",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Les frais de déménagement international vers les États-Unis varient entre 2 000 et 10 000 livres sterling en fonction du volume</p><p>Réfléchissez à la possibilité d'expédier ou de vendre des meubles de grande taille (les maisons américaines ont souvent des dimensions différentes)</p><p>Le dédouanement exige un inventaire détaillé des articles expédiés</p><p>Les animaux de compagnie peuvent entrer aux États-Unis, mais doivent répondre à des exigences en matière de santé et de vaccination</p><p>Les animaux de compagnie peuvent entrer aux États-Unis. mais doivent répondre à des critères de santé et de vaccination</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Conseil:</strong>Pour les appareils électroniques, vérifiez la compatibilité de la tension, car les États-Unis utilisent une tension de 110-120 V (voir l'encadré).Unis utilisent 110-120V (contre 230-240V au Royaume Uni).</span></p></div></div>"
+      },
+      {
+        "id": "s'installer",
+        "icon": "📝",
+        "title": "S'installer après l'arrivée",
+        "content": "<div><div class=\"space-y-4\"><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">1. Obtenir un numéro de sécurité sociale (SSN)</h3><p class=\"text-gray-700 mb-2\"><span class=\"font-medium\">Nécessaire pour l'emploi et de nombreux services</span><br/>Venez au bureau local de l'administration de la sécurité sociale avec votre passeport et votre visa</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">2. Obtenir une carte d'identité ou un permis de conduire</h3><p class=\"text-gray-700 mb-2\">Venez au Department of Motor Vehicles (DMV) de votre État ou à un organisme équivalent</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">3. Mettre en place les services publics</h3><p class=\"text-gray-700 mb-2\">Régler les services d'électricité, d'eau, de gaz, d'Internet et de collecte des déchets</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">4. Enregistrez-vous auprès du consulat du Royaume-Uni</h3><p class=\"text-gray-700 mb-2\">Facultatif mais recommandé pour les notifications d'urgence</p></div></div></div></div>"
+      },
+      {
+        "id": "communautés d'expatriés",
+        "icon": "👥",
+        "title": "Communautés d'expatriés britanniques",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Les États-Unis comptent d'importantes communautés d'expatriés britanniques dans de nombreuses villes. comptent d'importantes communautés d'expatriés britanniques dans de nombreuses villes, en particulier:</p><div class=\"grid grid-cols-2 md :grid-cols-5 gap-2 mb-4\"><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">New York</div><div class=\"bg-white p-2 rounded-md text-center border-sky-100\">Los Angeles</div><div class=\"bg-white p-2 rounded-md text-center border-sky-100\">Chicago</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Boston</div><div class=\"bg-white p-2 rounded-md text-center border-sky-100\">San Francisco</div></div><p class=\"text-gray-700\">Vous trouverez des pubs britanniques, Vous trouverez des pubs britanniques, des clubs sociaux et des groupes Facebook qui peuvent s'avérer très utiles pour nouer des contacts et obtenir des conseils locaux de la part d'autres personnes qui ont fait le même choix.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Dernière liste de contrôle avant de déménager aux États-Unis",
+      "items": [
+        {
+          "text": "Obtenir un visa ou une carte verte",
+          "fullWidth": false
+        },
+        {
+          "text": "Souscrire une couverture d'assurance maladie",
+          "fullWidth": false
+        },
+        {
+          "text": "Recherche d'un logement dans la ville de destination",
+          "fullWidth": false
+        },
+        {
+          "text": "Organiser l'expédition des biens",
+          "fullWidth": false
+        },
+        {
+          "text": "Notifier le HMRC et les autres autorités britanniques",
+          "fullWidth": false
+        },
+        {
+          "text": "Prévoir les opérations de change et les transferts",
+          "fullWidth": false
+        },
+        {
+          "text": "Recherche des obligations fiscales dans les deux pays",
+          "fullWidth": true
+        }
+      ]
+    },
+    "conclusion": {
+      "icon": "🎯",
+      "title": "Conclusion : Déménager aux États-Unis est-il la bonne solution pour vous ?",
+      "description": "S'installer aux États-Unis offre d'immenses possibilités, mais s'accompagne de défis importants. La procédure d'obtention d'un visa peut être longue, le coût des soins de santé est élevé et l'adaptation à la culture américaine prend du temps. Toutefois, de nombreux expatriés britanniques estiment que les perspectives de carrière, la diversité des paysages et le mode de vie valent bien la transition."
+    },
+    "checklist": [
+      {
+        "text": "Obtenir un visa ou une carte verte",
+        "fullWidth": false
+      },
+      {
+        "text": "Souscrire une couverture d'assurance maladie",
+        "fullWidth": false
+      },
+      {
+        "text": "Recherche d'un logement dans la ville de destination",
+        "fullWidth": false
+      },
+      {
+        "text": "Organiser l'expédition des biens",
+        "fullWidth": false
+      },
+      {
+        "text": "Notifier le HMRC et les autres autorités britanniques",
+        "fullWidth": false
+      },
+      {
+        "text": "Prévoir les opérations de change et les transferts",
+        "fullWidth": false
+      },
+      {
+        "text": "Recherche des obligations fiscales dans les deux pays",
+        "fullWidth": true
+      }
+    ],
+    "accessibility": {
+      "sectionToggle": "Toggle section : {titre}"
+    }
+  },
+  "visaOptions": {
+    "labels": {
+      "examples": "Exemples :",
+      "note": "Remarque :"
+    },
+    "visaTypes": [
+      {
+        "id": "famille",
+        "title": "1. Visas familiaux",
+        "description": "Pour les conjoints, les enfants, les parents ou les frères et sœurs de <strong>citoyens américains ou de résidents permanents</strong>.",
+        "examples": [
+          "IR-1 (Conjoint)",
+          "F-2A (préférence familiale)"
+        ],
+        "iconKey": "utilisateurs"
+      },
+      {
+        "id": "l'emploi",
+        "title": "2. Visas basés sur l'emploi",
+        "description": "Pour les <strong>professionnels qualifiés, les travailleurs et les investisseurs</strong>.",
+        "examples": [
+          "<strong>H-1B:</strong> Travailleurs qualifiés dans des professions spécialisées",
+          "<strong>L-1:</strong>Transfert intra-entreprise",
+          "<strong>EB-2/EB-3:</strong> Cartes vertes basées sur l'emploi",
+          "<strong>O-1:</strong>Pour les personnes ayant des capacités extraordinaires"
+        ],
+        "iconKey": "porte-documents"
+      },
+      {
+        "id": "étudiant",
+        "title": "3. Visa d'étudiant (F-1)",
+        "description": "Pour les étudiants étrangers inscrits dans des établissements américains accrédités.",
+        "examples": [
+          "Permet de travailler à temps partiel sur le campus et de suivre une formation pratique facultative (OPT) après l'obtention du diplôme."
+        ],
+        "iconKey": "bonnet de fin d'études"
+      },
+      {
+        "id": "investisseur",
+        "title": "4. Visa d'investisseur (E-2 / EB-5)",
+        "description": "Pour ceux qui cherchent à <strong>investir aux États-Unis</strong>.",
+        "examples": [
+          "<E-2:</strong> Pour les citoyens des pays signataires du traité qui investissent un montant substantiel dans une entreprise américaine.",
+          "<strong>EB-5:</strong> Carte verte pour ceux qui investissent <strong>800 000+$</strong> et créent des emplois aux États-Unis."
+        ],
+        "iconKey": "signe du dollar"
+      },
+      {
+        "id": "la diversité",
+        "title": "5. Loterie de cartes vertes (programme de visas de diversité)",
+        "description": "Programme du gouvernement américain offrant une <strong>résidence permanente</strong> aux personnes des pays éligibles par le biais d'une sélection aléatoire.",
+        "iconKey": "mélanger"
+      }
+    ]
+  }
+}

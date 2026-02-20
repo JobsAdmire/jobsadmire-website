@@ -1,0 +1,171 @@
+{
+  "interview": {
+    "hero": {
+      "badge": "Layanan pelatihan wawancara profesional",
+      "headline": {
+        "prefix": "Kuasai Anda",
+        "suffix": "Dengan Bimbingan dari Pakar"
+      },
+      "animatedWords": [
+        "Wawancara",
+        "Kepercayaan diri",
+        "Kesuksesan",
+        "Pertunjukan",
+        "Keterampilan",
+        "Keunggulan"
+      ],
+      "description": "Mulai dari sesi simulasi wawancara hingga umpan balik yang dipersonalisasi, layanan pelatihan wawancara komprehensif kami membantu para profesional mendapatkan pekerjaan impian mereka dengan percaya diri.",
+      "cta": {
+        "text": "Mulailah Persiapan Anda"
+      }
+    },
+    "showcase": {
+      "title": "Pelatihan Wawancara",
+      "subtitle": "Bimbingan ahli untuk kesuksesan wawancara",
+      "mockInterview": {
+        "title": "Simulasi Wawancara",
+        "subtitle": "Berlatih bersama para ahli industri."
+      },
+      "features": [
+        {
+          "iconKey": "pesanKotak",
+          "title": "Perilaku",
+          "description": "Tanya Jawab Berbasis Situasi",
+          "gradient": "gradien latar belakang ke r dari langit 500 ke biru 600"
+        },
+        {
+          "iconKey": "target",
+          "title": "Teknis",
+          "description": "Penilaian keterampilan",
+          "gradient": "gradien bg ke r dari ungu 500 ke nila 600"
+        },
+        {
+          "iconKey": "jam",
+          "title": "Pengaturan waktu",
+          "description": "Strategi respons",
+          "gradient": "gradien bg ke r dari zamrud 500 ke teal 600"
+        },
+        {
+          "iconKey": "menghadiahkan",
+          "title": "Masukan",
+          "description": "Analisis ahli",
+          "gradient": "gradien bg ke r dari oranye 500 ke merah 600"
+        }
+      ],
+      "stats": [
+        {
+          "label": "Tingkat Keberhasilan",
+          "color": "teks-langit-600",
+          "value": "95%"
+        },
+        {
+          "label": "Klien yang Dibimbing",
+          "color": "teks biru-600",
+          "value": "500+"
+        },
+        {
+          "value": "4,9★",
+          "label": "Peringkat",
+          "color": "teks-indigo-600"
+        }
+      ]
+    },
+    "serviceSection": {
+      "header": {
+        "title": "Apakah Layanan Ini Tepat untuk Anda?",
+        "description": "Pelatihan wawancara online kami telah membantu para profesional di semua tahapan karier mendapatkan pekerjaan impian mereka, terutama mereka yang mencari layanan pelatihan wawancara di Pakistan atau bantuan persiapan wawancara untuk pencari kerja di Pakistan."
+      },
+      "successStory": {
+        "label": "Kisah Sukses",
+        "badge": "Kenaikan Gaji 25%",
+        "client": {
+          "name": "Sarmad Saleem",
+          "position": "Insinyur Perangkat Lunak, Toronto"
+        },
+        "testimonial": "\"Saya mengalami kecemasan saat wawancara setelah pindah ke Kanada. Pelatihan ini membantu saya mengartikulasikan pengalaman saya dengan jelas dan percaya diri. Kami membantu Sarmad mendapatkan pekerjaan impiannya dengan tawaran gaji 25% lebih tinggi dalam waktu empat bulan setelah imigrasi.\"",
+        "readMore": "Baca selengkapnya"
+      },
+      "testimonial": {
+        "label": "KISAH SUKSES",
+        "quote": "CareerTuners membantu saya dengan pelatihan wawancara yang menghasilkan promosi jabatan di perusahaan saya.",
+        "client": {
+          "name": "Meena Ansari",
+          "position": "Penilai Klaim Komersial"
+        }
+      },
+      "questions": {
+        "title": "Pertimbangkan pertanyaan-pertanyaan berikut:",
+        "items": [
+          "Apakah Anda merasa tidak nyaman menjelaskan mengapa Anda ingin meninggalkan pekerjaan Anda saat ini?",
+          "Apakah Anda sering berbicara ng rambling saat wawancara?",
+          "Apakah Anda khawatir tentang mengatasi \"tanda bahaya\" pada resume Anda?"
+        ],
+        "conclusion": "Jika Anda menjawab ya untuk salah satu pertanyaan ini, pelatihan wawancara kami dirancang untuk Anda."
+      },
+      "benefits": {
+        "title": "Pelatihan kami akan membekali Anda untuk:",
+        "items": [
+          {
+            "iconKey": "Lingkaran pesan",
+            "text": "Jawablah pertanyaan-pertanyaan sulit dengan percaya diri."
+          },
+          {
+            "iconKey": "pengguna",
+            "text": "Berikan kesan pertama yang kuat dan akhiri wawancara dengan positif."
+          },
+          {
+            "iconKey": "tren naik",
+            "text": "Tangani diskusi tentang jeda pekerjaan, sering berpindah pekerjaan, atau hambatan potensial lainnya dengan mudah."
+          }
+        ]
+      },
+      "cta": {
+        "text": "Pesan Sesi Pelatihan Anda Hari Ini"
+      }
+    }
+  },
+  "interviewTimeline": {
+    "badge": "PROSES KAMI YANG TERBUKTI",
+    "title": "Cara kerjanya",
+    "subtitle": "Pelatih ahli kami akan memandu Anda melalui tiga langkah sederhana ini untuk mendapatkan bantuan persiapan wawancara profesional:",
+    "steps": [
+      {
+        "iconKey": "teks file",
+        "title": "Kami membuat wawancara tes khusus.",
+        "description": "Langkah pertama adalah berbagi beberapa informasi latar belakang tentang diri Anda, termasuk resume dan lowongan pekerjaan yang ingin Anda lamar. Langkah ini membantu kami menyesuaikan sesi pelatihan berdasarkan jenis pekerjaan, industri, dan tantangan umum dalam <strong>layanan pelatihan wawancara kerja</strong>.",
+        "accentColor": "pesawat langit 400",
+        "highlightColor": "langit-100",
+        "id": 1,
+        "number": "01"
+      },
+      {
+        "iconKey": "Pemeriksaan pengguna",
+        "title": "Saatnya bertemu dengan pelatih Anda.",
+        "description": "Pelatih Anda dipilih secara khusus berdasarkan industri, peran, dan pengalaman Anda. Anda akan menjalani sesi wawancara simulasi dengan pelatih Anda dan kemudian mendapatkan umpan balik yang disesuaikan tentang cara menyempurnakan jawaban Anda dan membedakan diri Anda selama wawancara. Pelatihan wawancara 1 lawan 1 kami berfokus pada penguasaan wawancara perilaku dan mengatasi tantangan apa pun yang mungkin Anda hadapi.",
+        "accentColor": "langit-500",
+        "highlightColor": "langit-100",
+        "id": 2,
+        "number": "02"
+      },
+      {
+        "iconKey": "video",
+        "title": "Latihan membuat sempurna.",
+        "description": "Setelah sesi pelatihan Anda, Anda akan menerima rekaman wawancara Anda beserta umpan balik spesifik dan rencana tindakan khusus untuk memastikan Anda siap menghadapi wawancara. Ini sangat membantu bagi mereka yang mencari <strong>pelatihan wawancara untuk lulusan baru</strong> atau para profesional yang membutuhkan pendekatan <strong>pelatihan karier untuk wawancara</strong>.",
+        "accentColor": "langit-600",
+        "highlightColor": "langit-100",
+        "id": 3,
+        "number": "03"
+      }
+    ],
+    "cta": {
+      "title": "Siap untuk sukses dalam wawancara Anda berikutnya?",
+      "subtitle": "Bergabunglah dengan ribuan kandidat sukses yang telah mendapatkan pekerjaan impian mereka.",
+      "buttonText": "Pesan Sesi Pelatihan Wawancara Anda",
+      "link": "/Hubungi kami"
+    },
+    "accessibility": {
+      "stepLabel": "Langkah {nomor}: {judul}",
+      "ctaLabel": "Sesi pelatihan wawancara pemesanan buku"
+    }
+  }
+}

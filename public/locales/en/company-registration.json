@@ -1,0 +1,224 @@
+{
+  "meta": {
+    "title": "Register Your Company in Turkey | Professional Company Registration Services",
+    "description": "Professional company registration services in Turkey. Fast, efficient, and hassle-free setup for Limited Company, Joint Stock Company, and Sole Proprietorship. Expert guidance from start to finish."
+  },
+  "hero": {
+    "title": "Register Your Company in Turkey",
+    "subtitle": "Let us handle your complete company registration process in Turkey. Professional, efficient, and hassle-free service from start to finish."
+  },
+  "benefits": {
+    "fastProcessing": {
+      "title": "Fast Processing",
+      "description": "7-10 business days completion"
+    },
+    "legalSupport": {
+      "title": "Full Legal Support",
+      "description": "Expert lawyers handling your case"
+    },
+    "dedicatedTeam": {
+      "title": "Dedicated Team",
+      "description": "Personal consultant throughout process"
+    },
+    "allInclusive": {
+      "title": "All Inclusive",
+      "description": "Complete documentation service"
+    }
+  },
+  "companyTypes": {
+    "title": "Choose Your Company Type",
+    "subtitle": "Select the most suitable company structure for your business needs in Turkey",
+    "types": {
+      "limited": {
+        "title": "Limited Company (Ltd)",
+        "description": "Most popular choice for foreign investors and entrepreneurs"
+      },
+      "jointStock": {
+        "title": "Joint Stock Company",
+        "description": "Suitable for larger businesses and public offerings"
+      },
+      "soleProprietorship": {
+        "title": "Sole Proprietorship",
+        "description": "Individual business ownership"
+      }
+    }
+  },
+  "registrationProcess": {
+    "title": "Registration Process",
+    "subtitle": "Simple and transparent 6-step process",
+    "steps": {
+      "consultation": {
+        "step": 1,
+        "title": "Consultation",
+        "description": "Free initial consultation to understand your needs"
+      },
+      "documentPreparation": {
+        "step": 2,
+        "title": "Document Preparation",
+        "description": "We prepare all required documents and applications"
+      },
+      "tradeRegistry": {
+        "step": 3,
+        "title": "Trade Registry",
+        "description": "Registration with Turkish Trade Registry"
+      },
+      "taxOffice": {
+        "step": 4,
+        "title": "Tax Office",
+        "description": "Tax registration and obtaining tax number"
+      },
+      "bankAccount": {
+        "step": 5,
+        "title": "Bank Account",
+        "description": "Assistance with opening corporate bank account"
+      },
+      "finalization": {
+        "step": 6,
+        "title": "Finalization",
+        "description": "Complete setup and handover of all documents"
+      }
+    }
+  },
+  "requiredDocuments": {
+    "title": "Required Documents",
+    "documents": {
+      "passportCopies": "Valid passport copies of shareholders",
+      "proofOfAddress": "Proof of address (utility bill or rental agreement)",
+      "companyNameProposals": "Company name proposals (3 options)",
+      "companyActivity": "Company activity description",
+      "shareDistribution": "Share distribution agreement",
+      "articlesOfAssociation": "Articles of association",
+      "signatureDeclarations": "Signature declarations"
+    },
+    "note": {
+      "label": "Note:",
+      "text": "All documents must be translated to Turkish by a certified translator. We can assist you with translation services."
+    }
+  },
+  "turkeyBenefits": {
+    "title": "Benefits of Opening a Company in Turkey",
+    "subtitle": "Discover why Turkey is an ideal destination for entrepreneurs and foreign investors",
+    "items": {
+      "strategicLocation": {
+        "title": "Strategic Geographic Location",
+        "description": "Bridge between Europe and Asia, offering access to markets of over 1.5 billion consumers in surrounding regions."
+      },
+      "foreignOwnership": {
+        "title": "100% Foreign Ownership",
+        "description": "Foreign investors can own 100% of their company without a local partner, enjoying equal rights as Turkish citizens."
+      },
+      "taxAdvantages": {
+        "title": "Tax Advantages & Incentives",
+        "description": "Competitive corporate tax rates, VAT exemptions, and special incentives for priority sectors and investments."
+      },
+      "residencePermit": {
+        "title": "Residence Permit Eligibility",
+        "description": "Company owners and key employees automatically qualify for residence permits, facilitating long-term stay in Turkey."
+      },
+      "fastRegistration": {
+        "title": "Fast & Simple Registration",
+        "description": "Streamlined company formation process with minimal bureaucracy, completed in 7–10 business days."
+      },
+      "growingEconomy": {
+        "title": "Growing Economy",
+        "description": "Turkey's dynamic economy ranks among the world's largest, with strong growth in technology, manufacturing, and services."
+      }
+    },
+    "cta": {
+      "title": "Ready to Leverage These Benefits?",
+      "subtitle": "Start your business journey in Turkey with our expert guidance and comprehensive support.",
+      "button": "Get Started"
+    }
+  },
+  "whyChooseUs": {
+    "title": "Why Choose Our Services?",
+    "subtitle": "We handle the entire company registration process for you, making it simple and stress-free.",
+    "items": {
+      "expertGuidance": {
+        "title": "Expert Guidance",
+        "description": "Professional legal and business consultants with years of experience in Turkish corporate law."
+      },
+      "endToEndService": {
+        "title": "End-to-End Service",
+        "description": "From initial consultation to final registration, we manage every step of the process for you."
+      },
+      "fastEfficient": {
+        "title": "Fast & Efficient",
+        "description": "Streamlined process ensuring your company is registered quickly without unnecessary delays."
+      }
+    },
+    "cta": {
+      "title": "Ready to Start Your Business in Turkey?",
+      "subtitle": "Contact us today for a free consultation. Our team will guide you through every step and answer all your questions.",
+      "button": "Get Free Consultation",
+      "phone": "+90 501 124 03 40",
+      "email": "info@jobsadmire.com"
+    }
+  },
+  "contactForm": {
+    "title": "Schedule Your Free Consultation",
+    "subtitle": "Fill out the form below and our team will contact you within 24 hours to discuss your company registration needs.",
+    "fields": {
+      "fullName": {
+        "label": "Full Name",
+        "placeholder": "John Doe",
+        "required": "Full name is required"
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "john@example.com",
+        "required": "Email address is required",
+        "invalid": "Invalid email format"
+      },
+      "phone": {
+        "label": "Phone Number",
+        "placeholder": "+90 XXX XXX XX XX",
+        "required": "Phone number is required"
+      },
+      "companyType": {
+        "label": "Preferred Company Type",
+        "placeholder": "Select type (optional)",
+        "options": {
+          "limited": "Limited Company (Ltd)",
+          "joint": "Joint Stock Company",
+          "sole": "Sole Proprietorship",
+          "unsure": "Not sure yet"
+        }
+      },
+      "message": {
+        "label": "Tell Us About Your Business Plans",
+        "placeholder": "Share details about your business, industry, timeline, or any questions..."
+      }
+    },
+    "buttons": {
+      "submit": "Request Free Consultation",
+      "submitting": "Submitting..."
+    },
+    "submitButton": "Request Free Consultation",
+    "submitting": "Submitting...",
+    "successMessage": "Thank you for your consultation request! Our team will contact you within 24 hours.",
+    "errorMessage": "Something went wrong. Please try again later.",
+    "privacyNote": "By submitting this form, you agree to be contacted by our team regarding your inquiry."
+  },
+  "faq": {
+    "title": "Frequently Asked Questions",
+    "items": {
+      "duration": {
+        "question": "How long does the registration process take?",
+        "answer": "The entire process typically takes 7–10 business days from document submission to company registration completion."
+      },
+      "foreigners": {
+        "question": "Can foreigners register a company in Turkey?",
+        "answer": "Yes, foreign nationals can establish any type of company in Turkey with the same rights and obligations as Turkish citizens."
+      },
+      "presence": {
+        "question": "Do I need to be in Turkey during registration?",
+        "answer": "Not necessarily. We can handle the process with a power of attorney, though visiting for bank account opening is recommended."
+      },
+      "obligations": {
+        "question": "What are the ongoing obligations after registration?",
+        "answer": "Companies must file annual tax returns, maintain accounting records, and fulfill social security obligations for employees."
+      }
+    }
+  }
+}

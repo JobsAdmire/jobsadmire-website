@@ -1,0 +1,357 @@
+{
+  "title": "Resume Builder Pro",
+  "description": "Create a stunning professional resume in minutes",
+  "steps": {
+    "personalInfo": "Personal Information",
+    "achievements": "Achievements",
+    "workExperience": "Work Experience",
+    "education": "Education",
+    "projects": "Projects",
+    "skills": "Skills"
+  },
+  "stepIcons": {
+    "personalInfo": "👤",
+    "achievements": "🏆",
+    "workExperience": "💼",
+    "education": "🎓",
+    "projects": "🚀",
+    "skills": "⚡"
+  },
+  "stepDescriptions": {
+    "personalInfo": "Tell us about yourself and make a great first impression",
+    "achievements": "Showcase your key accomplishments and stand out from the crowd",
+    "workExperience": "Detail your professional journey and career highlights",
+    "education": "Share your educational background and academic achievements",
+    "projects": "Highlight personal projects that demonstrate your skills",
+    "skills": "Showcase your technical and soft skills that make you valuable"
+  },
+  "buttons": {
+    "back": "Back to {{step}}",
+    "back_mobile": "Back",
+    "continue": "Continue to {{step}}",
+    "continue_mobile": "Continue",
+    "saveSkill": "Save Skill",
+    "generateResume": "Generate Resume",
+    "saveProgress": "Save Progress",
+    "needHelp": "Need Help?",
+    "previewResume": "Preview Resume",
+    "addAnotherExperience": "Add Another Experience",
+    "addAnotherEducation": "Add Another Education",
+    "addAnotherProject": "Add Another Project",
+    "addAnotherSkill": "Add Another Skill",
+    "addAchievement": "Add Achievement",
+    "viewTemplates": "View Templates",
+    "cancel": "Cancel",
+    "applyCrop": "Apply Crop",
+    "choosePhoto": "Choose Photo"
+  },
+  "features": {
+    "fastEasy": {
+      "icon": "⚡",
+      "title": "Fast & Easy",
+      "description": "Create a professional resume in minutes with our intuitive step-by-step process."
+    },
+    "beautifulTemplates": {
+      "icon": "🎨",
+      "title": "Beautiful Templates",
+      "description": "Choose from our collection of professionally designed resume templates."
+    },
+    "atsOptimized": {
+      "icon": "📊",
+      "title": "ATS Optimized",
+      "description": "Our resumes are optimized to pass through Applicant Tracking Systems."
+    }
+  },
+  "proTips": {
+    "title": "Pro Tips: {{step}}",
+    "personalInfo": {
+      "tip1": {
+        "title": "Professional Email",
+        "description": "Use a professional email address based on your name rather than nicknames or funny addresses."
+      },
+      "tip2": {
+        "title": "Impactful Summary",
+        "description": "Keep your summary concise (3-5 sentences) and highlight your most impressive qualifications and career goals."
+      },
+      "tip3": {
+        "title": "Professional Photo",
+        "description": "If including a photo, use a professional headshot with neutral background and appropriate attire."
+      },
+      "tip4": {
+        "title": "Contact Details",
+        "description": "Include only essential contact information and ensure all details are current and accurate."
+      }
+    },
+    "achievements": {
+      "tip1": {
+        "title": "Quantify Results",
+        "description": "Use numbers and percentages to quantify your achievements (e.g., \"Increased sales by 25%\" rather than \"Increased sales\")."
+      },
+      "tip2": {
+        "title": "Results vs. Responsibilities",
+        "description": "Focus on outcomes and results rather than listing job responsibilities to stand out from other candidates."
+      },
+      "tip3": {
+        "title": "Awards & Recognition",
+        "description": "Include relevant awards, recognitions, and honors that demonstrate your expertise and value."
+      },
+      "tip4": {
+        "title": "Use Action Verbs",
+        "description": "Start achievement descriptions with powerful action verbs like \"achieved,\" \"led,\" \"implemented,\" or \"created.\""
+      }
+    }
+  },
+  "progress": {
+    "stepsCompleted": "{{count}} of 6 steps",
+    "currentStep": "Current: Step {{step}} - {{title}}",
+    "currentStep_mobile": "Current: Step {{step}}",
+    "progressPercentage": "{{percentage}}%"
+  },
+  "step1": {
+    "title": "PERSONAL INFORMATION",
+    "basicDetails": "Basic Details",
+    "firstName": "First Name",
+    "firstNamePlaceholder": "Enter your first name",
+    "firstNameRequired": "First name is required",
+    "middleName": "Middle Name",
+    "middleNameOptional": "(optional)",
+    "middleNamePlaceholder": "e.g. Herbert",
+    "lastName": "Last Name",
+    "lastNamePlaceholder": "Enter your last name",
+    "lastNameRequired": "Last name is required",
+    "professionalProfile": "Professional Profile",
+    "profilePhoto": "Profile Photo",
+    "uploadInstructions": "Click to upload and crop your photo",
+    "imageSizeError": "File size should be less than 5MB",
+    "imageTypeError": "File should be JPEG, PNG, or GIF",
+    "designation": "Designation",
+    "designationPlaceholder": "e.g. Senior Accountant",
+    "address": "Address",
+    "addressPlaceholder": "Enter your address",
+    "contactInformation": "Contact Information",
+    "email": "Email Address",
+    "emailPlaceholder": "Enter your email",
+    "emailRequired": "Email is required",
+    "emailInvalid": "Email is invalid",
+    "phone": "Phone Numbers",
+    "phonePlaceholder": "Enter your phone number",
+    "phoneRequired": "Phone number is required",
+    "summary": "Professional Summary",
+    "summaryPlaceholder": "Briefly describe your professional background, key skills, and career goals",
+    "summaryTip": "A strong summary helps you stand out. Keep it concise and impactful.",
+    "cropperTitle": "Crop Your Profile Photo",
+    "zoom": "Zoom: {{zoom}}x",
+    "preview": "Preview:",
+    "cropInstructions": {
+      "drag": "• Drag the image to position it",
+      "zoom": "• Use the zoom slider to resize",
+      "cropArea": "• The circle shows your crop area"
+    }
+  },
+  "step2": {
+    "title": "ACHIEVEMENTS",
+    "description": "Showcase your notable accomplishments",
+    "noAchievements": "No achievements added yet. Add your first achievement below.",
+    "remove": "Remove",
+    "delete": "Delete",
+    "addNew": "Add New Achievement",
+    "achievementTitle": "Achievement Title",
+    "achievementTitlePlaceholder": "Enter achievement title",
+    "date": "Date",
+    "achievementDescription": "Description",
+    "achievementDescriptionPlaceholder": "Describe your achievement"
+  },
+  "step3": {
+    "title": "EXPERIENCE",
+    "workExperience": "Work Experience #{{index}}",
+    "jobTitle": "Title",
+    "jobTitlePlaceholder": "Enter job title",
+    "jobTitleRequired": "Job title is required",
+    "company": "Company / Organization",
+    "companyPlaceholder": "Enter company name",
+    "companyRequired": "Company name is required",
+    "location": "Location",
+    "locationPlaceholder": "e.g. San Francisco, CA",
+    "startDate": "Start Date",
+    "startDateRequired": "Start date is required",
+    "endDate": "End Date",
+    "endDateOptional": "(or leave empty if current)",
+    "endDateTip": "Leave empty if this is your current position",
+    "description": "Description",
+    "descriptionPlaceholder": "Describe your responsibilities, achievements, and skills used in this role",
+    "descriptionTip": "Use bullet points for better readability. Focus on accomplishments rather than duties."
+  },
+  "step4": {
+    "title": "EDUCATION",
+    "educationEntry": "Education #{{index}}",
+    "school": "School",
+    "schoolPlaceholder": "Enter school or university name",
+    "schoolRequired": "School name is required",
+    "degree": "Degree",
+    "degreePlaceholder": "e.g. Bachelor of Science",
+    "degreeRequired": "Degree is required",
+    "city": "City",
+    "cityPlaceholder": "e.g. Boston, MA",
+    "startDate": "Start Date",
+    "startDatePlaceholder": "mm/yyyy",
+    "startDateRequired": "Start date is required",
+    "endDate": "End Date",
+    "endDateOptional": "(or Present)",
+    "endDatePlaceholder": "mm/yyyy or Present",
+    "description": "Description",
+    "descriptionOptional": "(optional)",
+    "descriptionPlaceholder": "Describe your achievements, GPA, relevant coursework, etc.",
+    "descriptionTip": "Highlight relevant courses, honors, or extracurricular activities related to your career goals."
+  },
+  "step5": {
+    "title": "PROJECTS",
+    "projectEntry": "Project #{{index}}",
+    "projectName": "Project Name",
+    "projectNamePlaceholder": "Enter project name",
+    "projectNameRequired": "Project name is required",
+    "projectLink": "Project Link",
+    "projectLinkOptional": "(optional)",
+    "projectLinkPlaceholder": "https://example.com/project",
+    "projectLinkInvalid": "Link is invalid",
+    "description": "Description",
+    "descriptionPlaceholder": "Describe the project, technologies used, and your role",
+    "descriptionTip": "Highlight the purpose, technologies used, and your specific contributions."
+  },
+  "step6": {
+    "title": "SKILLS",
+    "skillsTitle": "Technical & Professional Skills",
+    "skillsDescription": "Add skills relevant to the positions you're applying for",
+    "skillPlaceholder": "e.g. JavaScript, Project Management, Data Analysis",
+    "skillRequired": "Skill name is required",
+    "tipsTitle": "Tips for Listing Skills",
+    "tip1": "Include a mix of technical (hard) skills and interpersonal (soft) skills",
+    "tip2": "Prioritize skills mentioned in the job descriptions you're targeting",
+    "tip3": "Be specific with technical skills (e.g., \"React.js\" instead of just \"JavaScript\")"
+  },
+  "tooltip": {
+    "prefix": "Step {{step}}: {{title}}",
+    "completed": "✓ "
+  },
+  "alts": {
+    "cropPreviewAlt": "Crop preview",
+    "previewAlt": "Preview",
+    "profileAlt": "Profile"
+  },
+  "templateSelector": {
+    "selectTemplate": "Select Template",
+    "selected": "✓ Selected",
+    "defaultSummary": "Professional summary placeholder"
+  },
+  "sections": {
+    "skills": "Skills",
+    "education": "Education",
+    "experience": "Experience",
+    "workExperience": "Work Experience",
+    "professionalSkills": "Professional Skills",
+    "jobExperience": "Job Experience",
+    "proSkills": "Pro Skills",
+    "references": "References",
+    "projects": "Projects",
+    "achievements": "Achievements",
+    "contact": "Contact",
+    "aboutMe": "About Me",
+    "profile": "Profile",
+    "previousEmployment": "Previous Employment",
+    "software": "Software",
+    "languages": "Languages",
+    "reference": "Reference",
+    "awards": "Awards",
+    "contactMe": "Contact Me"
+  },
+  "fallbacks": {
+    "noSummaryAvailable": "No summary available",
+    "unnamedSkill": "Unnamed skill",
+    "noDataAvailable": "No data available",
+    "availableUponRequest": "Available upon request"
+  },
+  "labels": {
+    "phone": "Phone",
+    "email": "Email",
+    "address": "Address"
+  },
+  "actions": {
+    "generatePdf": "Generate PDF",
+    "generatingPdf": "Generating PDF..."
+  },
+  "messages": {
+    "referencesAvailableOnRequest": "Professional references will be provided upon request"
+  },
+  "resumeBuilder": "Resume Builder",
+  "forms": {
+    "personalInfoTitle": "Personal Information",
+    "buildProfileSubtitle": "Build your professional profile",
+    "profilePhoto": "Profile Photo",
+    "profileAlt": "Profile",
+    "changePhoto": "Change Photo",
+    "uploadPhoto": "Upload Photo",
+    "headshotTip": "Upload a professional headshot. Recommended: 400x400px, JPG or PNG",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "placeholderFirstName": "John",
+    "placeholderLastName": "Doe",
+    "emailAddress": "Email Address",
+    "phoneNumber": "Phone Number",
+    "placeholderEmail": "Enter your email",
+    "placeholderPhone": "Enter your phone",
+    "placeholderEmailExample": "john.doe@email.com",
+    "placeholderPhoneExample": "+1 (555) 123-4567",
+    "location": "Location",
+    "placeholderLocation": "e.g. San Francisco, CA",
+    "placeholderLocationExample": "New York, NY",
+    "linkedinProfile": "LinkedIn Profile",
+    "placeholderLinkedIn": "linkedin.com/in/johndoe",
+    "websitePortfolio": "Website/Portfolio",
+    "placeholderPortfolio": "www.johndoe.com",
+    "professionalSummary": "Professional Summary",
+    "placeholderSummary": "Brief professional summary highlighting your key achievements, skills, and career objectives...",
+    "summaryHint": "Make it compelling and concise",
+    "characters": "characters",
+    "jobTitlePlaceholder": "Job title",
+    "companyPlaceholder": "Company name",
+    "locationPlaceholder": "Location",
+    "descriptionPlaceholder": "Describe your responsibilities and achievements",
+    "experienceLabel": "Experience",
+    "jobTitle": "Job Title",
+    "company": "Company",
+    "placeholderJobTitle": "Software Developer",
+    "placeholderCompany": "Tech Company Inc.",
+    "placeholderLocationExp": "San Francisco, CA",
+    "startDate": "Start Date",
+    "endDate": "End Date",
+    "currentWorkHere": "I currently work here",
+    "description": "Description",
+    "addExperience": "Add Experience",
+    "educationLabel": "Education",
+    "degreePlaceholder": "Degree",
+    "universityPlaceholder": "University name",
+    "degree": "Degree",
+    "school": "School",
+    "placeholderDegree": "Bachelor of Science in Computer Science",
+    "placeholderSchool": "University of Technology",
+    "placeholderLocationEdu": "Boston, MA",
+    "gpaPlaceholder": "GPA (optional)",
+    "gpaOptional": "GPA (optional)",
+    "placeholderGpa": "3.8/4.0",
+    "addEducation": "Add Education",
+    "certificationLabel": "Certification",
+    "certificationNamePlaceholder": "Certification name",
+    "issuerPlaceholder": "Issuer",
+    "certificationName": "Certification Name",
+    "issuingOrganization": "Issuing Organization",
+    "dateObtained": "Date Obtained",
+    "placeholderCertification": "AWS Certified Solutions Architect",
+    "placeholderIssuer": "Amazon Web Services",
+    "addCertification": "Add Certification",
+    "skillsPlaceholder": "JavaScript",
+    "addSkill": "Add Skill",
+    "beginner": "Beginner",
+    "intermediate": "Intermediate",
+    "advanced": "Advanced",
+    "expert": "Expert"
+  }
+}

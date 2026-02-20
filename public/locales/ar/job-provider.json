@@ -1,0 +1,173 @@
+{
+  "header": {
+    "heroImageAlt": "المتخصصون في مجال الأعمال",
+    "badge": "حل التوظيف رقم 1 في تركيا",
+    "title_prefix": "احصل على موظفين ذوي جودة عالية",
+    "title_suffix": "لأعمالك التجارية",
+    "description": "اشترك مع جوبز أدماير للحصول على موظفين تم فحصهم مسبقاً وجاهزين للعمل. نحن نتعامل مع التوظيف والتأشيرات وجميع الوثائق القانونية.",
+    "contact_button": "اتصل بنا"
+  },
+  "form": {
+    "title": "تسجيل الشركاء",
+    "subtitle": "سجّل شركتك لبدء تعيين موظفين ذوي كفاءة عالية. سيتصل بك فريقنا في غضون 24 ساعة.",
+    "company_info": {
+      "title": "معلومات الشركة",
+      "company_name": "اسم الشركة*",
+      "company_name_placeholder": "أدخل اسم شركتك",
+      "company_name_error": "اسم الشركة مطلوب",
+      "company_type": "نوع الشركة*",
+      "company_type_placeholder": "اختر نوع الشركة",
+      "company_type_error": "نوع الشركة مطلوب",
+      "types": {
+        "corporation": "شركة (A.Ş.)",
+        "limited_company": "الشركة المحدودة (المحدودة)",
+        "partnership": "الشراكة",
+        "sole_proprietorship": "الملكية الفردية",
+        "branch_office": "المكتب الفرعي",
+        "other": "أخرى"
+      },
+      "industry_type": "نوع الصناعة*",
+      "industry_type_placeholder": "اختر الصناعة",
+      "industry_type_error": "نوع الصناعة مطلوب",
+      "industries": {
+        "manufacturing": "المصنع",
+        "construction": "الزراعة",
+        "technology": "السياحة",
+        "healthcare": "الإنشاءات",
+        "other": "أخرى"
+      },
+      "established_year": "سنة التأسيس",
+      "established_year_placeholder": "2020"
+    },
+    "contact_info": {
+      "title": "معلومات الاتصال",
+      "contact_person": "الشخص الذي يمكن الاتصال به*",
+      "contact_person_placeholder": "الاسم الكامل",
+      "contact_person_error": "مطلوب مسؤول الاتصال",
+      "position": "المنصب/المسمى الوظيفي",
+      "position_placeholder": "مدير الموارد البشرية، الرئيس التنفيذي، إلخ.",
+      "email": "عنوان البريد الإلكتروني*",
+      "email_required": "البريد الإلكتروني مطلوب",
+      "email_invalid": "البريد الإلكتروني غير صالح",
+      "phone": "رقم الهاتف*",
+      "phone_placeholder": "+90 +90 xxx xxx xxx xxx xxx xxx xx",
+      "phone_required": "رقم الهاتف مطلوب",
+      "company_address": "عنوان الشركة",
+      "company_address_placeholder": "عنوان العمل الكامل",
+      "city": "المدينة*",
+      "city_placeholder": "اسطنبول، أنقرة، إلخ.",
+      "city_required": "المدينة مطلوبة",
+      "province": "المقاطعة *",
+      "province_placeholder": "اختر المقاطعة",
+      "province_required": "المقاطعة مطلوبة",
+      "provinces": {
+        "istanbul": "إسطنبول",
+        "ankara": "أنقرة",
+        "izmir": "إزمير",
+        "bursa": "بورصة",
+        "antalya": "أنطاليا",
+        "adana": "أضنة",
+        "konya": "قونية",
+        "gaziantep": "غازي عنتاب",
+        "kayseri": "قيصري",
+        "other": "أخرى"
+      },
+      "postal_code": "الرمز البريدي",
+      "website": "الموقع الإلكتروني للشركة",
+      "email_placeholder": "company@example.com",
+      "postal_code_placeholder": "34000",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "legal_info": {
+      "title": "التفاصيل القانونية والتسجيل",
+      "tax_number": "الرقم الضريبي*",
+      "tax_number_placeholder": "أدخل الرقم الضريبي",
+      "tax_number_error": "الرقم الضريبي مطلوب",
+      "trade_registry_number": "رقم السجل التجاري",
+      "trade_registry_number_placeholder": "أدخل رقم السجل التجاري"
+    },
+    "staffing_requirements": {
+      "title": "متطلبات التوظيف",
+      "specific_job_positions": "المناصب الوظيفية المحددة",
+      "specific_job_positions_placeholder": "على سبيل المثال، مشغِّل ماكينة، عامل لحام، مطور برمجيات، إلخ.",
+      "salary_range": "نطاق الراتب (شهرياً)",
+      "salary_range_placeholder": "22,000 طن متري - 25,000 طن متري",
+      "preferred_nationalities": "الجنسيات المفضلة",
+      "preferred_nationalities_placeholder": "على سبيل المثال، أي، باكستان، بنغلاديش، أوكرانيا، إلخ.",
+      "language_requirements": "المتطلبات اللغوية",
+      "language_requirements_placeholder": "تحديد متطلبات اللغة",
+      "languages": {
+        "none": "لا توجد متطلبات محددة",
+        "basic_turkish": "اللغة التركية الأساسية",
+        "intermediate_turkish": "اللغة التركية المتوسطة",
+        "fluent_turkish": "إتقان اللغة التركية بطلاقة",
+        "english": "اللغة الإنجليزية مطلوبة",
+        "turkish_english": "التركية + الإنجليزية"
+      },
+      "work_experience": "الخبرة العملية المطلوبة",
+      "work_experience_placeholder": "اختر مستوى الخبرة",
+      "experience_levels": {
+        "entry_level": "مستوى المبتدئين (0-1 سنة)",
+        "junior": "مبتدئ (1-3 سنوات)",
+        "mid_level": "المستوى المتوسط (3-5 سنوات)",
+        "senior": "كبير (5 سنوات فأكثر)",
+        "expert": "خبير (10 سنوات فأكثر)"
+      },
+      "additional_requirements": "المتطلبات أو الملاحظات الإضافية",
+      "additional_requirements_placeholder": "أي مهارات محددة، أو شهادات، أو متطلبات أخرى للوظائف..."
+    },
+    "company_description": {
+      "title": "نبذة عن شركتك",
+      "label": "وصف الشركة",
+      "placeholder": "أخبرنا عن شركتك، وأنشطتك التجارية، وبيئة عملك، وثقافة شركتك، ولماذا يرغب العاملون في الانضمام إلى فريقك..."
+    },
+    "legal_agreements": {
+      "title": "الاتفاقيات القانونية",
+      "agree_terms_prefix": "أوافق على",
+      "terms_link": "الشروط والأحكام",
+      "agree_terms_suffix": "وفهم الالتزامات القانونية لتوظيف العمال من خلال JobsAdmire. *",
+      "terms_error": "يجب أن توافق على الشروط والأحكام",
+      "agree_privacy_prefix": "I acknowledge that I have read and agree to the",
+      "privacy_link": "Privacy Policy",
+      "agree_privacy_suffix": "and consent to the processing of company data for recruitment services. *",
+      "privacy_error": "You must agree to privacy policy"
+    },
+    "submit": {
+      "button": "Submit Application",
+      "submitting": "Submitting...",
+      "success_message": "Registration submitted successfully! Our team will contact you within 24 hours to discuss your hiring needs.",
+      "footer_message": "Our team will review your application and contact you within 24 hours to discuss your staffing needs."
+    }
+  },
+  "industries_served": {
+    "title": "Industries We Serve",
+    "subtitle": "We provide skilled workers across all major industries in Turkey",
+    "items": {
+      "factory": {
+        "name": "Factory",
+        "desc": "Manufacturing & Production"
+      },
+      "agriculture": {
+        "name": "Agriculture",
+        "desc": "Farming & Cultivation"
+      },
+      "tourism": {
+        "name": "Tourism",
+        "desc": "Hospitality & Services"
+      },
+      "construction": {
+        "name": "Construction",
+        "desc": "Building & Infrastructure"
+      }
+    }
+  },
+  "support": {
+    "title": "Need Assistance?",
+    "description": "Our dedicated team is ready to help you find the right staff for your business. We provide complete support from recruitment to employee placement.",
+    "support_24_7": "24/7 Support",
+    "business_hours": "Business Hours: Monday - Friday, 9:00 AM - 6:00 PM (Turkey Time)",
+    "response_time": "We respond within 2 hours during business hours",
+    "email": "info@jobsadmire.com",
+    "phone": "+90 501 124 03 40"
+  }
+}

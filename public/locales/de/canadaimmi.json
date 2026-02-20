@@ -1,0 +1,1728 @@
+{
+  "herosection": {
+    "badge": "Exklusive Fahrten",
+    "title": "Entdecken Sie Ihr nächstes Abenteuer",
+    "description": "Erleben Sie atemberaubende Reiseziele und schaffen Sie unvergessliche Erinnerungen mit unseren Premium-Reisepaketen, die auf Ihre Wünsche zugeschnitten sind.",
+    "currentlyViewing": {
+      "label": "Derzeitige Betrachtung"
+    },
+    "buttons": {
+      "primary": "Jetzt erforschen",
+      "secondary": "Alle Reiseziele anzeigen"
+    },
+    "destinationCounter": "Zielort {aktuell}/{Gesamt}",
+    "destinations": [
+      {
+        "img": "/images/ihc.png",
+        "name": "Calgary",
+        "country": "Kanada",
+        "alt": "Schöne Aussicht auf Calgary, Kanada"
+      },
+      {
+        "img": "/images/ihm.png",
+        "name": "Montreal",
+        "country": "Kanada",
+        "alt": "Atemberaubendes Stadtbild von Montreal, Kanada"
+      },
+      {
+        "img": "/images/iho.png",
+        "name": "Ottawa",
+        "country": "Kanada",
+        "alt": "Wahrzeichen von Ottawa, Kanada"
+      },
+      {
+        "img": "/images/iht.png",
+        "name": "Toronto",
+        "country": "Kanada",
+        "alt": "Die ikonische Skyline von Toronto, Kanada"
+      },
+      {
+        "img": "/images/ihv.png",
+        "name": "Vancouver",
+        "country": "Kanada",
+        "alt": "Atemberaubende Kulisse von Vancouver, Kanada"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableofcontents": {
+    "header": {
+      "title": "Inhaltsübersicht",
+      "subtitle": "Navigieren durch Abschnitte"
+    },
+    "status": {
+      "currentlyReading": "Derzeit lesen"
+    },
+    "footer": {
+      "sectionsCount": "{Anzahl} zu erforschende Abschnitte"
+    },
+    "quickNav": {
+      "title": "Schnelle Navigation",
+      "buttonLabel": "Menü Schnellnavigation",
+      "footer": "Durch {count} Abschnitte blättern"
+    },
+    "accessibility": {
+      "openMenu": "Navigationsmenü öffnen",
+      "closeMenu": "Navigationsmenü schließen"
+    },
+    "sections": [
+      {
+        "title": "Fakten über Kanada",
+        "id": 1
+      },
+      {
+        "title": "Visa-Optionen für den Umzug nach Kanada",
+        "id": 2
+      },
+      {
+        "title": "Grundlegende Anforderungen für die Umsiedlung nach Kanada",
+        "id": 3
+      },
+      {
+        "title": "Als Ausländer einen Job in Kanada finden",
+        "id": 4
+      },
+      {
+        "title": "Umzug nach Kanada aus den USA",
+        "id": 5
+      },
+      {
+        "title": "Umzug nach Kanada aus dem Vereinigten Königreich",
+        "id": 6
+      },
+      {
+        "title": "Wie viel kostet der Umzug nach Kanada?",
+        "id": 7
+      },
+      {
+        "title": "Umzug mit Haustieren nach Kanada",
+        "id": 8
+      }
+    ]
+  },
+  "canadafacts": {
+    "navigation": {
+      "previous": "Vorheriger Fakt",
+      "next": "Nächste Tatsache"
+    },
+    "allFactsSection": {
+      "title": "Alle Fakten über Kanada"
+    },
+    "accessibility": {
+      "selectFact": "Tatsache auswählen",
+      "goToFact": "Zu den Fakten",
+      "previousFact": "Zum vorherigen Fakt gehen",
+      "nextFact": "Weiter zum nächsten Fakt"
+    },
+    "facts": [
+      {
+        "title": "Die längste Küstenlinie der Welt",
+        "description": "Kanada hat mit 202.080 Kilometern entlang des Atlantiks, des Pazifiks und des Arktischen Ozeans die längste Küstenlinie der Welt.",
+        "icon": "🌊"
+      },
+      {
+        "title": "Heimat von 20 % des weltweiten Süßwasservorkommens",
+        "description": "Kanada verfügt mit seinen zahllosen Seen, Flüssen und Gletschern über etwa 20 % des weltweiten Süßwasservorkommens.",
+        "icon": "💧"
+      },
+      {
+        "title": "Eisbär-Kapital",
+        "description": "Churchill, Manitoba, ist als \"Eisbären-Hauptstadt der Welt\" bekannt, da die Stadt an einer wichtigen Eisbären-Wanderroute liegt.",
+        "icon": "🐻‍❄️"
+      },
+      {
+        "title": "Nationalparks bedecken 8 % des Landes",
+        "description": "Kanadas Nationalparks und Nationalparkreservate bedecken etwa 8 % des Landes und bewahren die ökologische Vielfalt.",
+        "icon": "🏞️"
+      },
+      {
+        "title": "Die Erfinder der Poutine",
+        "description": "Dieses kultige Gericht aus Pommes frites mit Cheese Curds und Bratensoße hat seinen Ursprung in den späten 1950er Jahren in Quebec.",
+        "icon": "🍟"
+      },
+      {
+        "title": "Zwei Amtssprachen",
+        "description": "Kanada hat zwei Amtssprachen: Englisch und Französisch. Etwa 23 % der Kanadier sprechen Französisch als ihre Muttersprache.",
+        "icon": "🗣️"
+      },
+      {
+        "title": "Ahornsirup-Hauptstadt",
+        "description": "Kanada produziert etwa 71 % des weltweiten Ahornsirups, wobei Quebec der weltweit größte Produzent ist.",
+        "icon": "🍁"
+      },
+      {
+        "title": "Das zweitgrößte Land der Welt",
+        "description": "Mit einer Fläche von 9,98 Millionen Quadratkilometern ist Kanada flächenmäßig das zweitgrößte Land der Welt.",
+        "icon": "🗺️"
+      },
+      {
+        "title": "Heimat der Nordlichter",
+        "description": "Kanada bietet einige der besten Möglichkeiten zur Beobachtung der Aurora Borealis, insbesondere in den Northwest Territories und Yukon.",
+        "icon": "🌌"
+      },
+      {
+        "title": "Multikulturelle Gesellschaft",
+        "description": "In Kanada leben Menschen aus über 200 ethnischen Gruppen, was es zu einem der multikulturellsten Länder der Welt macht.",
+        "icon": "🌍"
+      }
+    ]
+  },
+  "canadajobguide": {
+    "tableOfContents": {
+      "title": "Leitfaden Inhalt"
+    },
+    "accessibility": {
+      "toggleSection": "Abschnitt umschalten"
+    },
+    "sections": {
+      "jobMarket": {
+        "title": "Verständnis des kanadischen Arbeitsmarktes",
+        "description": "Kanada bietet vielfältige Beschäftigungsmöglichkeiten in verschiedenen Sektoren, wobei mehrere Branchen aktiv nach internationalen Talenten suchen.",
+        "inDemandTitle": "Gefragte Sektoren für Ausländer:",
+        "sectors": [
+          {
+            "name": "Gesundheitswesen",
+            "description": "Ärzte, Krankenschwestern, Pflegepersonal"
+          },
+          {
+            "name": "IT und Technologie",
+            "description": "Software-Ingenieure, Datenwissenschaftler"
+          },
+          {
+            "name": "Technik",
+            "description": "Bauwesen, Mechanik, Elektrotechnik"
+          },
+          {
+            "name": "Finanzen",
+            "description": "Bankwesen, Fintech, Rechnungswesen"
+          },
+          {
+            "name": "Handwerksberufe",
+            "description": "Schweißer, Elektriker, Installateure"
+          },
+          {
+            "name": "Landwirtschaft",
+            "description": "Betriebsleiter, Agronomen"
+          }
+        ],
+        "languageNote": "Kanada hat zwei Amtssprachen: Englisch und Französisch. Englischkenntnisse sind für die meisten Stellen unabdingbar, Zweisprachigkeit ist jedoch von Vorteil, insbesondere in Quebec und bei der Bundesverwaltung."
+      },
+      "immigration": {
+        "title": "Wege der kanadischen Einwanderung",
+        "description": "Kanada bietet mehrere Einwanderungswege für qualifizierte Arbeitskräfte an, wobei der Express Entry das wichtigste System ist.",
+        "expressEntry": {
+          "title": "Express-Einreise-System",
+          "description": "Der wichtigste Weg für qualifizierte Einwanderer:",
+          "points": [
+            "Verwaltet Anträge für das Federal Skilled Worker Program, das Federal Skilled Trades Program und die Canadian Experience Class",
+            "Basierend auf einem Comprehensive Ranking System (CRS), das die Bewerber bewertet",
+            "Punktevergabe für Alter, Bildung, Berufserfahrung, Sprachkenntnisse und Anpassungsfähigkeit",
+            "Regelmäßige Auslosungen laden die besten Bewerber zur Beantragung eines Daueraufenthalts ein"
+          ]
+        },
+        "otherPathways": {
+          "title": "Andere Wege der Zuwanderung:",
+          "programs": [
+            {
+              "name": "Nominee-Programme der Provinzen (PNP)",
+              "description": "Provinzen können Kandidaten nominieren, die den lokalen wirtschaftlichen Bedürfnissen entsprechen"
+            },
+            {
+              "name": "Atlantisches Einwanderungsprogramm",
+              "description": "Für diejenigen, die in den atlantischen Provinzen arbeiten möchten"
+            },
+            {
+              "name": "Pilotprojekt zur Einwanderung in ländliche und nördliche Gebiete",
+              "description": "Für kleinere Gemeinden außerhalb der großen städtischen Zentren"
+            },
+            {
+              "name": "Global Talent Stream",
+              "description": "Schnellere Arbeitserlaubnis für Tech-Fachkräfte und Innovatoren"
+            },
+            {
+              "name": "Arbeitserlaubnis nach Abschluss des Studiums",
+              "description": "Für internationale Studierende, die ihr Studium in Kanada abgeschlossen haben"
+            }
+          ]
+        },
+        "conclusion": "Die meisten kanadischen Einwanderungsprogramme führen zu einer Daueraufenthaltsgenehmigung, die es Ihnen erlaubt, für jeden Arbeitgeber zu arbeiten und schließlich die Staatsbürgerschaft zu beantragen."
+      },
+      "jobOpportunities": {
+        "title": "Arbeitsmöglichkeiten in Kanada finden",
+        "portalsTitle": "Beliebte kanadische Jobportale:",
+        "portals": [
+          "In der Tat Kanada",
+          "Workopolis",
+          "LinkedIn",
+          "Monster",
+          "Job Bank",
+          "Glassdoor",
+          "Eluta",
+          "ZipRecruiter"
+        ],
+        "tipsTitle": "Profi-Tipps:",
+        "tips": [
+          "Informieren Sie sich auf der offiziellen Website der Job Bank über den Arbeitsmarkt und die Beschäftigungsmöglichkeiten",
+          "Suche nach Arbeitgebern, die in der Vergangenheit internationale Talente einstellten",
+          "Passen Sie Ihren Lebenslauf an das kanadische Format an (in der Regel 1-2 Seiten, mit Schwerpunkt auf den Leistungen)",
+          "Fügen Sie Bewertungen kanadischer Zeugnisse bei, wenn Sie über ausländische Qualifikationen verfügen.",
+          "Netzwerk über provinziale und kommunale Organisationen für Zuwanderer"
+        ]
+      },
+      "noc": {
+        "title": "Nationale Berufsklassifikation (NOC)",
+        "description": "Kanada verwendet das System der National Occupational Classification (NOC), um Berufe zu kategorisieren. Die Kenntnis Ihres NOC-Codes ist für die Einwanderung entscheidend.",
+        "categories": {
+          "title": "TEER-Kategorien:",
+          "teer": [
+            {
+              "name": "TEER 0",
+              "description": "Management-Berufe"
+            },
+            {
+              "name": "TEER 1",
+              "description": "Berufe, die einen Hochschulabschluss erfordern"
+            },
+            {
+              "name": "TEER 2",
+              "description": "Berufe, die einen Hochschulabschluss oder eine Lehrlingsausbildung erfordern"
+            },
+            {
+              "name": "TEER 3",
+              "description": "Berufe, die eine weiterführende Schule und/oder eine berufsspezifische Ausbildung erfordern"
+            },
+            {
+              "name": "TEER 4",
+              "description": "Berufe, die eine kurze Arbeitsvorführung und keine formale Ausbildung erfordern"
+            },
+            {
+              "name": "TEER 5",
+              "description": "Einstiegsberufe, die einen kurzen Arbeitsnachweis erfordern"
+            }
+          ]
+        },
+        "importance": {
+          "title": "Warum das wichtig ist:",
+          "points": [
+            "Die meisten Facharbeiterprogramme erfordern die Berufe TEER 0, 1, 2, oder 3",
+            "Bestimmt die Anspruchsberechtigung für bestimmte Einwanderungsprogramme",
+            "Beeinflusst CRS-Punkte bei Express Entry",
+            "Hilft zu überprüfen, ob Ihre Berufserfahrung mit dem Stellenangebot übereinstimmt",
+            "Zur Bestimmung der vorherrschenden Lohnsätze"
+          ]
+        },
+        "findCode": "Sie finden Ihren NOC-Code auf der offiziellen Website von Immigration, Refugees and Citizenship Canada (IRCC)."
+      },
+      "remoteWork": {
+        "title": "Fernarbeitsoptionen in Kanada",
+        "intro": "Fernarbeit ist in Kanada immer häufiger anzutreffen, insbesondere in der Technologie-, Finanz- und Kreativbranche:",
+        "points": [
+          "Für die Arbeit aus der Ferne <span class=\"font-medium\">für ein kanadisches Unternehmen</span> benötigen Sie eine entsprechende Arbeitsgenehmigung",
+          "Der Global Talent Stream erleichtert eine schnellere Arbeitserlaubnis für Tech-Arbeitskräfte, auch bei Fernarbeit",
+          "Viele kanadische Unternehmen bieten jetzt permanente Remote- oder Hybridlösungen an.",
+          "Visum für digitale Nomaden: Kanada führt 2024 ein neues Visum für digitale Nomaden ein, die von ausländischen Unternehmen beschäftigt werden"
+        ],
+        "taxConsiderations": {
+          "title": "Steuerliche Erwägungen:",
+          "points": [
+            "Wenn Sie in Kanada arbeiten, sind Sie im Allgemeinen steuerlich ansässig.",
+            "Beachten Sie mögliche Doppelbesteuerungsprobleme",
+            "Kanada hat mit vielen Ländern Steuerabkommen abgeschlossen",
+            "Konsultieren Sie einen Steuerberater für Ihre spezielle Situation"
+          ]
+        }
+      },
+      "teaching": {
+        "title": "Unterricht in Kanada",
+        "description": "Der Lehrerberuf bietet gute Chancen für qualifizierte internationale Bewerber in Kanada.",
+        "k12": {
+          "title": "K-12 Unterricht:",
+          "requirements": [
+            "Jedes Bundesland regelt seine eigene Lehrbefähigung",
+            "Erfordert in der Regel einen Bachelor of Education oder einen gleichwertigen Abschluss",
+            "Ausländische Zeugnisse müssen von den Landesschulbehörden geprüft werden",
+            "Lehrer für Französisch als Fremdsprache sind sehr gefragt"
+          ]
+        },
+        "esl": {
+          "title": "ESL-Unterricht:",
+          "requirements": [
+            "TESL/TESOL-Zertifizierung in der Regel erforderlich",
+            "Möglichkeiten in Sprachschulen, Volkshochschulen und Siedlungsagenturen",
+            "Bachelor-Abschluss in der Regel erforderlich",
+            "Die Nachfrage ist in Gebieten mit einem hohen Anteil an Zuwanderern hoch"
+          ]
+        },
+        "conclusion": "Viele Provinzen haben spezielle Programme, um die Zulassung qualifizierter ausländischer Lehrer zu beschleunigen, insbesondere in Fächern, in denen ein Mangel herrscht."
+      },
+      "resumeInterview": {
+        "title": "Kanadische Lebensläufe und Interviews",
+        "resume": {
+          "title": "Kanadisches Lebenslauf-Format:",
+          "points": [
+            "Wird als \"Lebenslauf\" und nicht als CV bezeichnet",
+            "In der Regel maximal 1-2 Seiten",
+            "Kein Foto",
+            "Keine persönlichen Angaben wie Alter, Familienstand oder Religion",
+            "Umgekehrte chronologische Reihenfolge (die jüngste Erfahrung zuerst)",
+            "Konzentrieren Sie sich auf Ihre Leistungen und nicht nur auf Ihre Pflichten",
+            "Ggf. kanadische Zeugnisbewertung einbeziehen"
+          ]
+        },
+        "interview": {
+          "title": "Erwartungen an das Vorstellungsgespräch:",
+          "expectations": [
+            "Pünktlichkeit ist unerlässlich (10-15 Minuten zu früh ist Standard)",
+            "Business Casual oder Business Formal, je nach Branche",
+            "Bereiten Sie sich auf verhaltensbezogene Fragen vor (\"Erzählen Sie mir von einer Zeit, als...\")",
+            "Recherchieren Sie das Unternehmen und seine Werte gründlich",
+            "Kanadier schätzen Höflichkeit, also seien Sie höflich, aber selbstbewusst",
+            "Bereiten Sie durchdachte Fragen über die Rolle und die Unternehmenskultur vor."
+          ]
+        }
+      },
+      "networking": {
+        "title": "Netzwerkarbeit in Kanada",
+        "description": "Networking ist auf dem kanadischen Arbeitsmarkt von entscheidender Bedeutung, da viele Stellen besetzt werden, bevor sie ausgeschrieben werden.",
+        "strategies": [
+          "Treten Sie Berufsverbänden in Ihrem Bereich bei",
+          "Teilnahme an Branchentreffs, Konferenzen und Jobmessen",
+          "Teilnahme an Programmen zur Ansiedlung von Einwanderern auf Provinzebene",
+          "Verbindung zu Alumni-Netzwerken, wenn Sie in Kanada studiert haben",
+          "Freiwilligenarbeit, um Erfahrungen in Kanada zu sammeln und Kontakte zu knüpfen",
+          "Erstellen Sie ein starkes LinkedIn-Profil, das für den kanadischen Markt optimiert ist"
+        ],
+        "resources": {
+          "title": "Wichtige Ressourcen für die Abrechnung:",
+          "list": [
+            "Organisationen, die sich für Zuwanderer einsetzen, in Ihrer Stadt",
+            "Dienste für Neuankömmlinge auf Provinzebene",
+            "Branchenspezifische Mentorenprogramme",
+            "Networking-Veranstaltungen für internationale Fachleute",
+            "Von der kanadischen Regierung finanzierte Arbeitsberatung"
+          ]
+        }
+      }
+    },
+    "checklist": {
+      "title": "Checkliste für die kanadische Jobsuche",
+      "categories": [
+        {
+          "title": "Bevor Sie sich bewerben",
+          "items": [
+            "Lassen Sie Ihre ausländischen Zeugnisse bewerten (ECA)",
+            "Formatieren Sie Ihren Lebenslauf nach kanadischen Standards",
+            "Bestimmen Sie Ihren NOC-Code und Ihre TEER-Kategorie",
+            "Ablegen der erforderlichen Sprachtests (IELTS/CELPIP/TEF)"
+          ]
+        },
+        {
+          "title": "Schritte zur Einwanderung",
+          "items": [
+            "Erstellen Sie ein Express-Entry-Profil, wenn Sie dazu berechtigt sind",
+            "Recherchieren Sie die Nominierungsprogramme der Provinzen",
+            "Prüfen Sie die arbeitgeberspezifischen Arbeitsgenehmigungsoptionen",
+            "Nachweis der Mittel für die Abrechnung vorbereiten"
+          ]
+        },
+        {
+          "title": "Vorbereitungen für die Abrechnung",
+          "items": [
+            "Recherchieren Sie die Lebenshaltungskosten in den Zielstädten",
+            "Verbindung zu Ansiedlungsagenturen",
+            "Treten Sie sozialen Mediengruppen für Neueinsteiger bei",
+            "Lernen Sie die Gesundheits- und Sozialsysteme kennen"
+          ]
+        }
+      ]
+    }
+  },
+  "canadamovingcosts": {
+    "accessibility": {
+      "toggleSection": "Umschaltbare Sektion für"
+    },
+    "costSections": [
+      {
+        "id": "visa-pr",
+        "icon": "🛂",
+        "title": "Visum und ständiger Wohnsitz",
+        "amount": "$1,500-$3,000",
+        "details": "Einschließlich Anmeldegebühren, ärztliche Untersuchungen, Sprachtests",
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "Gehäuse",
+        "icon": "🏠",
+        "title": "Gehäuse",
+        "amount": "$2.000-$5.000 im Voraus",
+        "details": "Erste und letzte Monatsmiete + Kaution",
+        "subItems": [
+          {
+            "title": "Großstädte (monatlich)",
+            "amount": "$1,500-$3,000"
+          },
+          {
+            "title": "Kleinere Städte/Gemeinden (monatlich)",
+            "amount": "$800-$1,500"
+          }
+        ],
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "Versand",
+        "icon": "📦",
+        "title": "Versand (optional)",
+        "amount": "$5,000-$10,000",
+        "details": "Kleiner bis mittlerer Container. Erwägen Sie lokale Möbeloptionen, um die Kosten zu senken.",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "Transport",
+        "icon": "🚗",
+        "title": "Transport",
+        "amount": "$500-$5,000",
+        "details": "Fahrkarte für den öffentlichen Nahverkehr oder Kauf eines Gebrauchtwagens",
+        "subItems": [
+          {
+            "title": "Monatskarte für den Nahverkehr",
+            "amount": "$90-$150"
+          },
+          {
+            "title": "Gebrauchtwagen",
+            "amount": "$5,000-$15,000"
+          },
+          {
+            "title": "Autoversicherung (monatlich)",
+            "amount": "$150-$300"
+          }
+        ],
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "Versorgungsunternehmen",
+        "icon": "💡",
+        "title": "Dienstprogramme & Internet-Einrichtung",
+        "amount": "$200-$400",
+        "details": "Anschlussgebühren und Kautionen",
+        "subItems": [
+          {
+            "title": "Monatliche Nebenkosten",
+            "amount": "$150-$300"
+          },
+          {
+            "title": "Internet (monatlich)",
+            "amount": "$60-$100"
+          },
+          {
+            "title": "Mobiltelefon (monatlich)",
+            "amount": "$50-$100"
+          }
+        ],
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "Gesundheitswesen",
+        "icon": "🏥",
+        "title": "Gesundheitsversorgung",
+        "amount": "$0-$900",
+        "details": "Je nach Provinz unterschiedlich. In einigen gibt es Wartezeiten für die öffentliche Gesundheitsversorgung.",
+        "subItems": [
+          {
+            "title": "Privatversicherung (monatlich während der Wartezeit)",
+            "amount": "$75-$150"
+          }
+        ],
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "Alltag",
+        "icon": "🛒",
+        "title": "Alltägliche Kosten",
+        "amount": "$800-$1.500 monatlich",
+        "subItems": [
+          {
+            "title": "Lebensmittel",
+            "amount": "$400-$800/Monat"
+          },
+          {
+            "title": "Auswärts essen",
+            "amount": "$200-$400/Monat"
+          },
+          {
+            "title": "Unterhaltung",
+            "amount": "$100-$300/Monat"
+          }
+        ],
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "Winter",
+        "icon": "❄️",
+        "title": "Winter-Essentials",
+        "amount": "$500-$1,000",
+        "details": "Winterkleidung, Stiefel, Accessoires",
+        "color": "bg-sky-500"
+      }
+    ],
+    "totalCosts": {
+      "title": "Geschätzte Gesamtkosten",
+      "categories": [
+        {
+          "title": "Ersteinrichtung (ohne Versand)",
+          "amount": "$5,000-$10,000",
+          "description": "Beinhaltet Visagebühren, Unterkunft für den ersten Monat, Kaution, Winterausrüstung und grundlegende Einrichtungskosten"
+        },
+        {
+          "title": "Ersteinrichtung (mit Versand)",
+          "amount": "$10,000-$20,000+",
+          "description": "Beinhaltet alle Grundkosten plus Versandcontainer für Hausrat"
+        },
+        {
+          "title": "Monatliche Ausgaben (ungefähr)",
+          "amount": "$2,000-$4,500",
+          "description": "Beinhaltet Miete, Nebenkosten, Lebensmittel, Transport und andere regelmäßige Ausgaben"
+        }
+      ]
+    },
+    "regionalCosts": {
+      "title": "Regionale Kostenunterschiede",
+      "categories": [
+        {
+          "title": "Hohe Kosten",
+          "cities": [
+            "Toronto",
+            "Vancouver",
+            "Victoria"
+          ]
+        },
+        {
+          "title": "Mittlere Kosten",
+          "cities": [
+            "Calgary",
+            "Montreal",
+            "Ottawa"
+          ]
+        },
+        {
+          "title": "Niedrigere Kosten",
+          "cities": [
+            "Winnipeg",
+            "Quebec-Stadt",
+            "Halifax"
+          ]
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Strategien zur Kosteneinsparung",
+      "tips": [
+        {
+          "title": "Sekundärstädte in Betracht ziehen",
+          "description": "Wer in Montreal, Calgary oder Ottawa statt in Toronto oder Vancouver lebt, kann seine Wohnkosten um 30-40 % senken."
+        },
+        {
+          "title": "Möbel in Kanada kaufen",
+          "description": "Kaufen Sie Möbel vor Ort bei IKEA, in Secondhand-Läden oder auf Facebook Marketplace, anstatt sie zu versenden."
+        },
+        {
+          "title": "Öffentliche Verkehrsmittel",
+          "description": "In Großstädten ist die Nutzung öffentlicher Verkehrsmittel wesentlich wirtschaftlicher als der Besitz eines Autos."
+        },
+        {
+          "title": "Ankunft im Frühjahr/Sommer",
+          "description": "Ein Umzug in den wärmeren Monaten verringert den unmittelbaren Bedarf an teurer Winterausrüstung."
+        }
+      ]
+    },
+    "conclusion": "Ein Umzug nach Kanada erfordert erhebliche Anfangsinvestitionen, bietet aber Zugang zu hoher Lebensqualität, universeller Gesundheitsversorgung und wirtschaftlichen Möglichkeiten. Mit der richtigen Planung und Budgetierung kann Ihr Übergang ins kanadische Leben erfolgreich und lohnend sein."
+  },
+  "ustocanadaguide": {
+    "navigation": {
+      "title": "Zum Abschnitt springen"
+    },
+    "accessibility": {
+      "toggleSection": "Umschaltbare Sektion für"
+    },
+    "sections": {
+      "whyCanada": {
+        "title": "Warum nach Kanada ziehen?",
+        "description": "Viele Amerikaner wählen Kanada aus überzeugenden Gründen als ihre neue Heimat:",
+        "reasons": [
+          "Universelles Gesundheitssystem",
+          "Hohe Lebensqualität und Sicherheit",
+          "Schöne Naturlandschaften",
+          "Kulturelle Vielfalt und Inklusivität",
+          "Starke soziale Unterstützungssysteme",
+          "Nähe zu den USA für Familienbesuche"
+        ],
+        "conclusion": "Ganz gleich, ob Sie aus beruflichen Gründen, wegen der Ausbildung, aus familiären Gründen oder wegen einer Änderung des Lebensstils umziehen, Kanada bietet Amerikanern vertraute und doch ganz andere Erfahrungen."
+      },
+      "immigrationOptions": {
+        "title": "Einwanderungsmöglichkeiten für US-Bürger",
+        "description": "Als US-Bürger haben Sie mehrere Möglichkeiten, nach Kanada einzuwandern:",
+        "options": [
+          {
+            "title": "1. Express Entry System",
+            "points": [
+              "Punktesystem für Fachkräfte",
+              "Bewertet Alter, Ausbildung, Berufserfahrung, Sprachkenntnisse",
+              "Wettbewerbssystem mit Rangfolge und Einladungen",
+              "Weg zum Daueraufenthalt"
+            ]
+          },
+          {
+            "title": "2. Nominee-Programme der Provinzen (PNP)",
+            "points": [
+              "Provinzen und Territorien nominieren Kandidaten auf der Grundlage der lokalen Bedürfnisse",
+              "Oft schneller als Bundesprogramme für gefragte Qualifikationen",
+              "Jedes Bundesland hat spezifische Ströme und Anforderungen",
+              "Kann zu dauerhaftem Aufenthalt führen"
+            ]
+          },
+          {
+            "title": "3. Studiengenehmigung",
+            "points": [
+              "Für die Immatrikulation an ausgewiesenen kanadischen Einrichtungen",
+              "Erforderlich sind ein Zulassungsbescheid, ein Nachweis über Geldmittel und ein sauberes Führungszeugnis.",
+              "Beinhaltet eingeschränkte Arbeitsgenehmigungen",
+              "Arbeitserlaubnis nach Abschluss des Studiums möglich"
+            ]
+          },
+          {
+            "title": "4. Familienpatenschaft",
+            "points": [
+              "Für Ehegatten, Partner, Kinder oder Eltern von kanadischen Staatsbürgern/PRs",
+              "Sponsor muss Einkommensanforderungen erfüllen",
+              "Führt zu einem dauerhaften Aufenthalt"
+            ]
+          },
+          {
+            "title": "5. NAFTA/USMCA Arbeitsgenehmigung",
+            "points": [
+              "Befristete Arbeitserlaubnis für zulässige Berufe",
+              "Muss ein Stellenangebot von einem kanadischen Arbeitgeber haben",
+              "Relativ unkompliziertes Bewerbungsverfahren",
+              "Kann ein Sprungbrett zu dauerhaften Einwanderungsmöglichkeiten sein"
+            ]
+          }
+        ]
+      },
+      "requiredDocuments": {
+        "title": "Erforderliche Dokumente für die Einwanderung",
+        "description": "Die Anforderungen an die Dokumente variieren je nach Einwanderungsweg, umfassen aber in der Regel Folgendes:",
+        "documents": [
+          "Gültiger US-Reisepass",
+          "Antragsformulare für die Einwanderung",
+          "Nachweis von Sprachkenntnissen (Englisch/Französisch)",
+          "Bewertung von Bildungsabschlüssen",
+          "Referenzen und Nachweise der Berufserfahrung",
+          "Polizeiliches Führungszeugnis",
+          "Ergebnisse der medizinischen Untersuchung",
+          "Nachweis von Mitteln zur Bestreitung des Lebensunterhalts"
+        ],
+        "tip": {
+          "label": "Profi-Tipp:",
+          "text": "Beginnen Sie frühzeitig mit der Beschaffung dieser Dokumente. Die Beschaffung von Bildungsgutachten, Sprachtests und polizeilichen Bescheinigungen kann mehrere Wochen dauern."
+        }
+      },
+      "popularCities": {
+        "title": "Beliebte kanadische Städte für amerikanische Auswanderer",
+        "description": "Amerikaner, die nach Kanada umziehen, entscheiden sich häufig für diese beliebten Gebiete:",
+        "mainCities": [
+          {
+            "name": "Toronto",
+            "icon": "🌆",
+            "highlights": [
+              "Kanadas größte Stadt und Finanzzentrum",
+              "Äußerst vielfältig mit starkem Stellenmarkt",
+              "Lebendige Kultur- und Unterhaltungsszene",
+              "Höhere Lebenshaltungskosten, aber mehr Möglichkeiten"
+            ]
+          },
+          {
+            "name": "Vancouver",
+            "icon": "🏞️",
+            "highlights": [
+              "Mildes Klima und atemberaubende Naturschönheiten",
+              "Starke Technologie- und Filmindustrie",
+              "Lebensstil im Freien mit Bergen und Meer",
+              "Hohe Wohnkosten, aber hohe Lebensqualität"
+            ]
+          },
+          {
+            "name": "Ottawa",
+            "icon": "🏛️",
+            "highlights": [
+              "Kanadas Hauptstadt mit stabilen Arbeitsplätzen in der Regierung",
+              "Erschwinglicher Wohnraum im Vergleich zu Toronto/Vancouver",
+              "Hoher Lebensstandard und Sicherheit",
+              "Zweisprachige Stadt mit kulturellen Attraktionen"
+            ]
+          },
+          {
+            "name": "Montréal",
+            "icon": "🏛️",
+            "highlights": [
+              "Europäischer Charme mit nordamerikanischem Komfort",
+              "Niedrigere Lebenshaltungskosten als in anderen Großstädten",
+              "Reiche Kultur-, Essens- und Kunstszene",
+              "Französischsprachig, aber Englisch wird weitgehend verstanden"
+            ]
+          }
+        ],
+        "emergingOptions": {
+          "title": "Aufkommende Optionen",
+          "cities": [
+            {
+              "name": "Halifax",
+              "description": "Lifestyle an der Atlantikküste mit wachsender Tech-Szene"
+            },
+            {
+              "name": "Calgary",
+              "description": "Starke Wirtschaft, Nähe zu den Rocky Mountains, niedrigere Steuern"
+            },
+            {
+              "name": "Waterloo",
+              "description": "Technologiezentrum mit Universitäten und Innovation"
+            },
+            {
+              "name": "Victoria",
+              "description": "Mildes Klima und entspanntes Inselleben"
+            }
+          ]
+        }
+      },
+      "costOfLiving": {
+        "title": "Vergleich der Lebenshaltungskosten: Kanada vs. USA",
+        "table": {
+          "headers": {
+            "expense": "Ausgaben",
+            "canada": "Kanada (Durchschnittswert)",
+            "usa": "USA (Durchschnittswert)"
+          },
+          "rows": [
+            {
+              "expense": "Miete (1BR Stadtzentrum)",
+              "canada": "C$1.300-$2.000/Monat",
+              "usa": "$1.500-$2.500/Monat"
+            },
+            {
+              "expense": "Gesundheitswesen",
+              "canada": "Größtenteils durch provinziale Pläne abgedeckt",
+              "usa": "$300-$600/Monat",
+              "canadaHighlight": true
+            },
+            {
+              "expense": "Versorgungsleistungen (monatlich)",
+              "canada": "C$150-$200",
+              "usa": "$150-$200"
+            },
+            {
+              "expense": "Transport",
+              "canada": "C$100-$150/Monat",
+              "usa": "$100-$150 + Autokosten"
+            },
+            {
+              "expense": "Auswärts essen gehen (für 2)",
+              "canada": "C$60-$100",
+              "usa": "$50-$100"
+            },
+            {
+              "expense": "Studiengebühren",
+              "canada": "C$7.000-$20.000/Jahr",
+              "usa": "$10.000-$40.000/Jahr",
+              "canadaHighlight": true
+            },
+            {
+              "expense": "Einkommensteuer",
+              "canada": "Im Allgemeinen höher",
+              "usa": "Im Allgemeinen niedriger"
+            }
+          ]
+        },
+        "note": "Die Lebenshaltungskosten sind von Stadt zu Stadt sehr unterschiedlich. Vancouver und Toronto sind die teuersten, vergleichbar mit den großen US-Städten, während andere kanadische Regionen ein erschwinglicheres Leben bieten."
+      },
+      "healthcare": {
+        "title": "Gesundheitswesen in Kanada",
+        "description": "Das universelle Gesundheitssystem Kanadas ist für Amerikaner sehr attraktiv. Jede Provinz verwaltet ihren eigenen Gesundheitsplan, der die meisten wesentlichen medizinischen Leistungen abdeckt.",
+        "newcomersInfo": {
+          "title": "Gesundheitsversorgung für Neuankömmlinge",
+          "points": [
+            "Personen mit ständigem Wohnsitz können sofort eine Krankenversicherung auf Provinzebene beantragen",
+            "In einigen Provinzen gibt es Wartezeiten (bis zu 3 Monate) - während dieser Zeit wird eine private Versicherung empfohlen",
+            "Befristete Aufenthaltsgenehmigungen (Arbeits-/Studiengenehmigungen) sind je nach Provinz unterschiedlich.",
+            "Nicht alle Leistungen sind abgedeckt (zahnärztliche Leistungen, Sehkraft, verschreibungspflichtige Medikamente)"
+          ]
+        },
+        "privateInsurance": "Private Krankenversicherungen sind verfügbar und werden empfohlen, um den Versicherungsschutz der Provinz für nicht eingeschlossene Leistungen wie z. B. zahnärztliche Versorgung, verschreibungspflichtige Medikamente und Sehhilfen zu ergänzen."
+      },
+      "language": {
+        "title": "Tipps zu Sprache und Kultur",
+        "description": "Trotz vieler Ähnlichkeiten hat die kanadische Kultur ihre ganz eigenen Merkmale:",
+        "details": {
+          "title": "Kanadisches Englisch und kulturelle Nuancen",
+          "terms": {
+            "title": "Kanadisch-englische Begriffe:",
+            "examples": [
+              "Waschraum (nicht Toilette)",
+              "Toque (Wintermütze)",
+              "Loonie (1-Dollar-Münze), Toonie (2-Dollar-Münze)",
+              "Pop (keine Limonade)",
+              "Wasserkraft (Strom)",
+              "Double-double (Kaffee mit 2 Sahne, 2 Zucker)"
+            ]
+          },
+          "cultural": {
+            "title": "Kulturelle Unterschiede:",
+            "points": [
+              "Kanadier sind anfangs eher zurückhaltend",
+              "Starke Betonung von Höflichkeit und Inklusivität",
+              "Multikulturalität wird gefeiert und begrüßt",
+              "Weniger konfrontativer Kommunikationsstil",
+              "Trinkgeldgewohnheiten ähnlich wie in den USA (15-20%)"
+            ]
+          }
+        },
+        "frenchNote": "Französisch ist neben Englisch eine offizielle Sprache. Während der größte Teil Kanadas überwiegend englischsprachig ist, ist Quebec überwiegend französischsprachig, und viele Bundesbehörden sind zweisprachig."
+      },
+      "moving": {
+        "title": "Umzug und grenzüberschreitende Umsiedlung",
+        "description": "Die Planung Ihres physischen Umzugs über die Grenze erfordert Vorbereitung:",
+        "belongings": {
+          "title": "Umzug Ihrer Habseligkeiten",
+          "points": [
+            {
+              "label": "Waren und persönliche Gegenstände",
+              "description": "Kann bei ordnungsgemäßer Dokumentation zollfrei eingeführt werden"
+            },
+            {
+              "label": "Erforderliche Formulare",
+              "description": "Buchungsbeleg für persönliche Gegenstände (Formular B4) und detaillierte Inventarliste"
+            },
+            {
+              "label": "Umzugsunternehmen",
+              "description": "Wählen Sie jemanden, der Erfahrung mit Umzügen zwischen den USA und Kanada hat"
+            },
+            {
+              "label": "Eingeschränkte Artikel",
+              "description": "Bestimmte Lebensmittel, Pflanzen und Schusswaffen sind eingeschränkt oder verboten"
+            }
+          ]
+        },
+        "vehicles": {
+          "title": "Fahrzeuge mitbringen",
+          "points": [
+            "Die Fahrzeuge müssen die kanadischen Sicherheits- und Emissionsstandards erfüllen.",
+            "Importprozess erfordert Formulare, Inspektion und mögliche Änderungen",
+            "Die Kosten beinhalten die RIV-Gebühr, Steuern und eventuelle Abgaben.",
+            "Erwägen Sie den Verkauf eines US-Fahrzeugs und den Kauf in Kanada"
+          ]
+        },
+        "note": "Überlegen Sie sorgfältig, was Sie mitnehmen möchten. Kanada verwendet das metrische System und hat wie die USA eine 120-Volt-Stromversorgung, sodass die meisten elektronischen Geräte ohne Konverter funktionieren."
+      },
+      "banking": {
+        "title": "Bankwesen & Finanzen",
+        "description": "Die Gestaltung Ihres finanziellen Lebens in Kanada sollte eine Priorität sein:",
+        "bankingInfo": {
+          "title": "Bankwesen in Kanada",
+          "points": [
+            "Große Banken: RBC, TD, Scotiabank, BMO, CIBC",
+            "Bankpakete für Neueinsteiger mit reduzierten Anforderungen verfügbar",
+            "Erforderliche Dokumente: Einwanderungspapiere, Reisepass, Adressnachweis",
+            "Erwägen Sie die Eröffnung eines Kontos vor der Ankunft durch grenzüberschreitende Bankoptionen"
+          ]
+        },
+        "financialConsiderations": {
+          "title": "Finanzielle Erwägungen",
+          "points": [
+            "US-Bürger müssen unabhängig von ihrem Wohnsitz US-Steuern zahlen",
+            "Steuerabkommen zwischen Kanada und den USA hilft, Doppelbesteuerung zu vermeiden",
+            "Erwägen Sie Dienste wie Wise oder OFX für Währungsüberweisungen",
+            "Kreditgeschichte wird nicht übertragen - bauen Sie eine kanadische Kreditgeschichte auf",
+            "Kanadische Rentenkonten (RRSP, TFSA) haben steuerliche Auswirkungen in den USA"
+          ]
+        },
+        "recommendation": "Für die laufenden finanziellen Verpflichtungen in den USA wird empfohlen, US-Bankbeziehungen aufrechtzuerhalten. Ziehen Sie die Zusammenarbeit mit einem Steuerberater in Betracht, um Ihre finanzielle Situation zu optimieren."
+      }
+    },
+    "checklist": {
+      "title": "Umzugsvorbereitende Checkliste für Amerikaner",
+      "items": [
+        "Bestimmen Sie Ihren Weg zur Einwanderung",
+        "Bei Bedarf Sprachprüfungen ablegen (IELTS/CELPIP)",
+        "Bewertung von Bildungsabschlüssen (ECA)",
+        "Vermittlung von grenzüberschreitenden Bankgeschäften",
+        "Recherchieren Sie die Optionen für die Gesundheitsversorgung",
+        "Erstellen Sie ein detailliertes Inventar Ihrer Besitztümer",
+        "Konsultieren Sie einen Experten für grenzüberschreitende Steuern",
+        "Wohnungssuche in Ihrer Zielstadt",
+        "Werden Sie Mitglied in kanadischen Expat-Gemeinschaften und Online-Foren"
+      ]
+    },
+    "resources": {
+      "title": "Hilfreiche Ressourcen",
+      "categories": [
+        {
+          "title": "Offizielle Informationen",
+          "items": [
+            "Einwanderung, Flüchtlinge und Staatsbürgerschaft Kanada",
+            "Einwanderungsprogramme der Provinzen",
+            "Botschaften und Konsulate von US in Kanada"
+          ]
+        },
+        {
+          "title": "Expat-Gemeinschaften",
+          "items": [
+            "Amerikaner in Kanada Facebook-Gruppen",
+            "InterNations-Kanada-Kapitel",
+            "Stadtspezifische Vereinigungen für Neuankömmlinge"
+          ]
+        },
+        {
+          "title": "Praktische Dienstleistungen",
+          "items": [
+            "Grenzüberschreitende Umzugsunternehmen",
+            "Websites zum Thema Wohnen (Realtor.ca, Kijiji)",
+            "Grenzüberschreitende Steuerspezialisten"
+          ]
+        }
+      ]
+    },
+    "finalTips": {
+      "title": "Letzte Tipps für Neukanadier",
+      "categories": [
+        {
+          "title": "Erste Schritte",
+          "tips": [
+            "Beantragen Sie Ihre Sozialversicherungsnummer (SIN) sofort nach Ihrer Ankunft",
+            "Melden Sie sich bei der Krankenkasse der Provinz an, sobald Sie Anspruch darauf haben.",
+            "Erwägen Sie eine vorübergehende Unterkunft während der Wohnungssuche"
+          ]
+        },
+        {
+          "title": "Tipps zur Integration",
+          "tips": [
+            "Genießen Sie den kanadischen Winter mit der richtigen Kleidung und Aktivitäten",
+            "Nutzung der für Neuankömmlinge verfügbaren Niederlassungsdienste",
+            "Seien Sie geduldig beim Aufbau einer Kreditgeschichte und bei der Etablierung Ihrer Person"
+          ]
+        }
+      ],
+      "conclusion": "Ihr neues kanadisches Abenteuer wartet auf Sie! Mit der richtigen Planung und Vorbereitung kann Ihr Wechsel von den USA nach Kanada zu einer aufregenden und lohnenden Erfahrung werden."
+    }
+  },
+  "movingwithpets": {
+    "navigation": {
+      "title": "Anleitung zur Navigation"
+    },
+    "accessibility": {
+      "toggleSection": "Umschaltbare Sektion für"
+    },
+    "sections": {
+      "requirements": {
+        "title": "Zugangsvoraussetzungen",
+        "steps": [
+          {
+            "title": "Mikrochip",
+            "description": "Allen Haustieren muss ein Mikrochip nach ISO-Norm (11784/11785) implantiert sein."
+          },
+          {
+            "title": "Tollwut-Impfung",
+            "description": "Haustiere müssen <span class=\"font-medium\">mindestens 30 Tage</span> vor der Einreise gegen Tollwut geimpft werden, und der Impfstoff muss <span class=\"font-medium\">bei der Ankunft gültig sein</span>."
+          },
+          {
+            "title": "Tierärztliche Bescheinigung",
+            "details": [
+              "Muss von einem zugelassenen Tierarzt in Ihrem Heimatland ausgestellt sein.",
+              "Sie sollten von einer Regierungsbehörde (z. B. dem USDA in den USA) bestätigt werden.",
+              "Muss innerhalb von <span class=\"font-medium\">14 Tagen</span> vor der Einreise nach Kanada ausgestellt werden."
+            ]
+          }
+        ],
+        "importantNote": {
+          "title": "Wichtiger Hinweis",
+          "text": "Anders als in vielen anderen Ländern ist in Kanada keine Quarantäne für Haustiere erforderlich, die alle Dokumentationsanforderungen erfüllen."
+        }
+      },
+      "dogSpecific": {
+        "title": "Hundespezifische Regeln",
+        "breedRestrictions": {
+          "title": "Rassebeschränkungen",
+          "description": "In Kanada gibt es Beschränkungen für bestimmte Hunderassen, die als aggressiv gelten. Diese Vorschriften sind je nach Provinz und Gemeinde unterschiedlich.",
+          "restrictedTitle": "In einigen Gebieten eingeschränkt:",
+          "breeds": [
+            "Pit Bull Terrier",
+            "Staffordshire Bullterrier",
+            "American Staffordshire Terrier",
+            "Rottweiler (in einigen Gebieten)"
+          ],
+          "note": "Wenn Ihr Hund zu einer Rasse gehört, für die möglicherweise Beschränkungen gelten, erkundigen Sie sich bei der Provinz und der Stadt Ihres Reiseziels."
+        },
+        "commercialDogs": {
+          "title": "Gebrauchshunde (unter 8 Monaten)",
+          "description": "Für Hunde unter 8 Monaten, die zu kommerziellen Zwecken (Zucht, Ausstellung, Weiterverkauf) eingeführt werden, gelten zusätzliche Anforderungen. Diese Hunde benötigen eine Einfuhrgenehmigung der Canadian Food Inspection Agency."
+        }
+      },
+      "catSpecific": {
+        "title": "Katzenspezifische Regeln",
+        "goodNews": "Gute Nachrichten! Kanada hat im Vergleich zu vielen anderen Ländern relativ einfache Anforderungen für die Einfuhr von Katzen.",
+        "basicRequirements": {
+          "title": "Grundlegende Anforderungen für Katzen",
+          "requirements": [
+            "Mikrochip (ISO-Norm)",
+            "Tollwutimpfung (mindestens 30 Tage vor der Einreise)",
+            "Tierärztliche Gesundheitsbescheinigung"
+          ]
+        },
+        "noBreedRestrictions": "Im Gegensatz zu Hunden gibt es in Kanada keine Rassenbeschränkungen für Katzen."
+      },
+      "travelOptions": {
+        "title": "Reiseoptionen",
+        "options": [
+          {
+            "title": "Reisen in der Kabine",
+            "description": "Haustiere unter 8-10 kg (einschließlich Tragetasche) dürfen in der Kabine reisen. Der Transportbehälter muss unter den Sitz vor Ihnen passen.",
+            "fee": "Gebühr: CAD $50-125 pro Strecke",
+            "icon": "🧳",
+            "ariaLabel": "Kabine"
+          },
+          {
+            "title": "Aufgegebenes Gepäck",
+            "description": "Haustiere, die zu groß für die Kabine sind, aber weniger als 32 kg wiegen, können als aufgegebenes Gepäck reisen.",
+            "fee": "Gebühr: CAD $100-250 pro Strecke",
+            "icon": "🧴",
+            "ariaLabel": "aufgegebenes Reisegepäck"
+          },
+          {
+            "title": "Luftfracht",
+            "description": "Sehr große Haustiere oder solche, die auf Strecken reisen, auf denen Haustiere nicht erlaubt sind, müssen als Fracht befördert werden.",
+            "fee": "Gebühr: CAD $400-1.000+ pro Strecke",
+            "icon": "📦",
+            "ariaLabel": "Fracht"
+          }
+        ],
+        "warning": "Buchen Sie immer rechtzeitig bei der Fluggesellschaft, da die Plätze für Haustiere begrenzt sind. Die Fluggesellschaften haben unterschiedliche Richtlinien und Beschränkungen, insbesondere für stupsnasige Rassen, die aus Gründen der Atmung verboten sein können."
+      },
+      "afterArrival": {
+        "title": "Nach der Ankunft",
+        "atTheBorder": {
+          "title": "An der Grenze",
+          "description": "Bei der Ankunft wird ein Beamter der Canada Border Services Agency (CBSA) die Dokumente Ihres Haustieres prüfen. Achten Sie darauf:",
+          "steps": [
+            "Melden Sie Ihr Haustier bei den Zollbeamten an",
+            "Halten Sie alle Originaldokumente griffbereit",
+            "Seien Sie auf eine mögliche Kontrolle Ihres Haustiers vorbereitet"
+          ]
+        },
+        "firstWeekChecklist": {
+          "title": "Checkliste für die erste Woche",
+          "items": [
+            {
+              "title": "1. Finden Sie einen Tierarzt vor Ort",
+              "description": "Vereinbaren Sie einen Kontrolltermin innerhalb des ersten Monats."
+            },
+            {
+              "title": "2. Anmeldung bei der Stadtverwaltung",
+              "description": "Viele kanadische Städte verlangen die Zulassung von Haustieren."
+            },
+            {
+              "title": "3. Mikrochip-Informationen aktualisieren",
+              "description": "Ändern Sie Ihre Adresse auf Ihre neue kanadische Adresse."
+            },
+            {
+              "title": "4. Haustierversicherung",
+              "description": "Erwägen Sie den Abschluss einer kanadischen Haustierversicherung."
+            }
+          ]
+        }
+      },
+      "canadianClimate": {
+        "title": "Kanadisches Klima",
+        "description": "Das Klima in Kanada ist je nach Region und Jahreszeit sehr unterschiedlich. Dies ist ein wichtiger Aspekt für Haustiere, insbesondere für solche, die aus wärmeren Klimazonen kommen.",
+        "seasons": [
+          {
+            "title": "Vorbereitungen für den Winter",
+            "icon": "❄️",
+            "tips": [
+              "Haustierfreundlicher Eisschmelzer für Gehwege",
+              "Füßlinge zum Schutz der Pfoten vor Salz und Eis",
+              "Mäntel/Pullover für kurzhaarige Rassen",
+              "Begrenzte Zeit im Freien bei extremer Kälte"
+            ]
+          },
+          {
+            "title": "Überlegungen zum Sommer",
+            "icon": "☀️",
+            "tips": [
+              "Lassen Sie niemals Haustiere in geparkten Autos zurück",
+              "Achten Sie auf die Symptome eines Hitzeschlags",
+              "Zecken- und Flohprävention",
+              "Zugang zu frischem Wasser und Schatten"
+            ]
+          }
+        ],
+        "warning": "<strong>Warnung:</strong> Brachycephale (flachgesichtige) Rassen wie Bulldoggen, Möpse und Perserkatzen können mit extremen Temperaturen zu kämpfen haben. Treffen Sie bei diesen Rassen besondere Vorsichtsmaßnahmen."
+      },
+      "petFriendly": {
+        "title": "Haustierfreundliches Kanada",
+        "description": "Kanada ist im Allgemeinen sehr haustierfreundlich und bietet eine hervorragende tierärztliche Versorgung und viele haustierfreundliche Orte.",
+        "aspects": [
+          {
+            "title": "Tierärztliche Versorgung",
+            "icon": "🏥",
+            "description": "Hohe Qualität, kann aber teuer sein. Ein durchschnittlicher Check-up kostet 75-150 CAD.",
+            "additionalInfo": "Eine Versicherung für Haustiere kostet etwa 25-80 CAD pro Monat."
+          },
+          {
+            "title": "Parks und Erholung",
+            "icon": "🏞️",
+            "description": "In den meisten Städten gibt es ausgewiesene Parks für Hunde, die nicht angeleint werden dürfen, und haustierfreundliche Wanderwege.",
+            "additionalInfo": "In den Nationalparks gelten besondere Vorschriften für Haustiere - informieren Sie sich vor Ihrem Besuch."
+          },
+          {
+            "title": "Zubehör für Haustiere",
+            "icon": "🥫",
+            "description": "Zu den großen Ketten gehören PetSmart, Canadian Tire und Pet Valu. Zu den Online-Optionen gehören Amazon.ca und Chewy.ca."
+          },
+          {
+            "title": "Haustierfreundliches Wohnen",
+            "icon": "🏨",
+            "description": "In einigen Mietobjekten sind Haustiere verboten. Achten Sie bei der Wohnungssuche auf die Kennzeichnung \"haustierfreundlich\".",
+            "additionalInfo": "Haustierkautionen sind üblich (CAD $200-500)."
+          }
+        ]
+      }
+    },
+    "checklist": {
+      "title": "Checkliste für Haustierreisen",
+      "items": [
+        "Überprüfen Sie, ob Ihr Haustier die kanadischen Einreisebestimmungen erfüllt (mindestens 3 Monate vor der Reise)",
+        "Sicherstellen, dass der Mikrochip der ISO-Norm entspricht",
+        "Tollwutimpfung vorsehen (mindestens 30 Tage vor der Reise)",
+        "Haustierfreundliche Transporte buchen",
+        "Kaufen Sie eine von der Fluggesellschaft zugelassene Transportbox für Ihr Haustier und gewöhnen Sie es daran.",
+        "Besorgen Sie sich ein tierärztliches Gesundheitszeugnis (innerhalb von 14 Tagen vor der Reise)",
+        "Packen Sie das Nötigste für Ihr Haustier ein (Futter, Medikamente, Komfortartikel)",
+        "Fertigen Sie Kopien aller Unterlagen an und bewahren Sie diese bei sich auf."
+      ]
+    }
+  },
+  "relocationrequirements": {
+    "introduction": "Kanada nimmt jedes Jahr Tausende von Neuankömmlingen auf verschiedenen Wegen der Einwanderung auf. Ganz gleich, ob Sie in Kanada arbeiten, studieren, zu Ihrer Familie ziehen oder sich zur Ruhe setzen möchten, die Kenntnis der wichtigsten Voraussetzungen wird Ihnen helfen, Ihren Umzug erfolgreich zu gestalten. Hier ist, was Sie wissen müssen.",
+    "requirements": [
+      {
+        "icon": "🛂",
+        "title": "Gültiger Reisepass",
+        "description": "Ihr Reisepass muss für die Dauer Ihres geplanten Aufenthalts in Kanada gültig sein. Achten Sie bei Anträgen auf Daueraufenthalt darauf, dass Ihr Reisepass während der Bearbeitungszeit, die mehrere Monate oder sogar Jahre dauern kann, nicht abläuft."
+      },
+      {
+        "icon": "📝",
+        "title": "Einwanderungsstatus",
+        "description": "Bestimmen Sie Ihren Weg der Einwanderung:",
+        "details": [
+          "Express Entry (Federal Skilled Worker, Federal Skilled Trades, Canadian Experience Class)",
+          "Nominee-Programme der Provinzen (PNP)",
+          "Familienpatenschaft",
+          "Studiengenehmigungen",
+          "Arbeitsgenehmigungen (LMIA-basiert, CUSMA/NAFTA, IEC)",
+          "Besuchervisum (Visum für einen vorübergehenden Aufenthalt) oder eTA"
+        ]
+      },
+      {
+        "icon": "💵",
+        "title": "Nachweis der Mittel",
+        "description": "Für die meisten Einwanderungsprogramme müssen Sie nachweisen, dass Sie über ausreichende finanzielle Mittel verfügen, um sich und Ihre Familie zu versorgen:",
+        "details": [
+          "Für die Expresseinreise ist ein Nachweis über Siedlungsgelder erforderlich (je nach Familiengröße unterschiedlich, jährlich aktualisiert)",
+          "Studenten müssen Studiengebühren und Lebenshaltungskosten nachweisen (ca. 10.000 CAD pro Jahr)",
+          "Kontoauszüge, Anlagekonten oder ein Schreiben Ihrer Bank sind akzeptable Nachweise."
+        ]
+      },
+      {
+        "icon": "🩺",
+        "title": "Medizinische Untersuchung",
+        "description": "Die meisten Bewerber müssen sich einer medizinischen Untersuchung durch einen vom IRCC zugelassenen Arzt unterziehen:",
+        "details": [
+          "Erforderlich für Anträge auf Daueraufenthalt",
+          "Erforderlich für vorübergehend Ansässige, die sich länger als 6 Monate aufhalten",
+          "Muss von einem benannten Vertragsarzt ausgefüllt werden"
+        ]
+      },
+      {
+        "icon": "🔍",
+        "title": "Hintergrund-Checks",
+        "description": "Sicherheitsüberprüfungen und Überprüfungen des strafrechtlichen Hintergrunds sind Standard für alle Bewerbungen:",
+        "details": [
+          "Polizeiliche Führungszeugnisse aus Ländern, in denen Sie seit mehr als 6 Monaten leben",
+          "Biometrische Daten (Fingerabdrücke und Foto) sind für die meisten Bewerber erforderlich",
+          "Prozess der Sicherheitsüberprüfung"
+        ]
+      },
+      {
+        "icon": "🗣️",
+        "title": "Sprachkenntnisse",
+        "description": "Die Beherrschung der englischen oder französischen Sprache ist für die meisten Einwanderungsprogramme entscheidend:",
+        "details": [
+          "IELTS oder CELPIP für Englisch",
+          "TEF oder TCF für Französisch",
+          "Je nach Studiengang sind bestimmte CLB-Niveaus (Canadian Language Benchmark) erforderlich"
+        ]
+      },
+      {
+        "icon": "🎓",
+        "title": "Bewertung von Bildungsnachweisen (ECA)",
+        "description": "Wenn Sie Ihre Ausbildung außerhalb Kanadas abgeschlossen haben:",
+        "details": [
+          "Lassen Sie Ihre Zeugnisse von einer IRCC-zugelassenen Organisation prüfen",
+          "Prüfen Sie, ob Ihr Abschluss, Ihr Diplom oder Ihr Zertifikat den kanadischen Standards entspricht.",
+          "ECA ist obligatorisch für Express Entry und viele andere Einwanderungsprogramme"
+        ]
+      },
+      {
+        "icon": "🏠",
+        "title": "Gehäuse-Pläne",
+        "description": "Obwohl dies für die meisten Anträge nicht erforderlich ist, ist die Vorlage von Wohnungsplänen unerlässlich:",
+        "details": [
+          "Vorübergehende Unterbringung bei der Ankunft (Hotels, Kurzzeitmieten)",
+          "Recherchieren Sie die Mietmärkte in Ihrer Zielstadt",
+          "Verständnis der Leasinganforderungen (Kreditprüfung, Referenzen, Kaution)"
+        ]
+      },
+      {
+        "icon": "💼",
+        "title": "Vorbereitungen für die Beschäftigung",
+        "description": "Für diejenigen, die in Kanada arbeiten möchten:",
+        "details": [
+          "Recherchieren Sie den kanadischen Stellenmarkt in Ihrem Fachgebiet",
+          "Lebenslauf und Bewerbungsschreiben im kanadischen Stil vorbereiten",
+          "Netzwerk mit Fachleuten aus Ihrer Branche",
+          "Prüfen Sie, ob Ihr Beruf reglementiert ist und eine kanadische Lizenz erfordert"
+        ]
+      },
+      {
+        "icon": "⚕️",
+        "title": "Krankenkasse",
+        "description": "Die Gesundheitsversorgung in Kanada ist in erster Linie öffentlich, variiert jedoch je nach Provinz:",
+        "details": [
+          "Die Krankenversicherung der Provinz erfordert eine Wartezeit (normalerweise 3 Monate).",
+          "Abschluss einer privaten Krankenversicherung für die Zeit der Lücke",
+          "Verstehen Sie, was in Ihrem Bundesland abgedeckt ist und was nicht"
+        ]
+      }
+    ],
+    "postArrival": {
+      "title": "Schritte nach dem Eintreffen",
+      "timeframes": [
+        {
+          "period": "Erste Woche",
+          "tasks": [
+            "Beantragung der Sozialversicherungsnummer (SIN)",
+            "Eröffnung eines kanadischen Bankkontos",
+            "Besorgen Sie sich eine lokale Rufnummer",
+            "Beantragen Sie eine Krankenversicherung auf Provinzebene"
+          ]
+        },
+        {
+          "period": "Erster Monat",
+          "tasks": [
+            "Dauerhafte Unterkunft finden",
+            "Kinder für die Schule anmelden",
+            "Erwerb eines Führerscheins oder einer ID",
+            "Verbindung mit Abwicklungsdiensten"
+          ]
+        }
+      ]
+    }
+  },
+  "uktocanadaguide": {
+    "navigation": {
+      "title": "Schnelle Navigation"
+    },
+    "accessibility": {
+      "toggleSection": "Umschaltbare Sektion für"
+    },
+    "sections": {
+      "whyMove": {
+        "title": "Warum ziehen die Briten nach Kanada?",
+        "description": "Tausende britische Staatsangehörige haben Kanada zu ihrer Heimat gemacht, insbesondere in Städten wie Toronto, Vancouver, Montreal und Calgary. Die Attraktivität umfasst:",
+        "reasons": [
+          "Hohe Lebensqualität mit hervorragenden Sozialsystemen",
+          "Vielfältige Naturlandschaften und Outdoor-Aktivitäten",
+          "Ähnliche Kultur und vertraute Sprache",
+          "Starke Wirtschaft mit Karrierechancen",
+          "Multikulturelle Gesellschaft mit einladenden Gemeinschaften"
+        ],
+        "conclusion": "Nach dem Brexit suchen viele Briten nach Optionen außerhalb Europas, und das kanadische Einwanderungssystem bietet mehrere Möglichkeiten."
+      },
+      "entryRequirements": {
+        "title": "Einreisebestimmungen & Visabestimmungen",
+        "touristEntry": {
+          "title": "Touristischer Eintrag",
+          "description": "Bürger des Vereinigten Königreichs können Kanada mit einer elektronischen Reisegenehmigung (eTA) für bis zu 6 Monate besuchen, die 7 CAD kostet. Für einen dauerhaften Aufenthalt müssen Sie jedoch einen der kanadischen Einwanderungswege nutzen."
+        }
+      },
+      "immigrationPathways": {
+        "title": "Einwanderungswege für britische Staatsbürger",
+        "pathways": [
+          {
+            "title": "1. Express Entry System",
+            "description": "<span class=\"font-medium\">Kanadas wichtigster Einwanderungsweg für qualifizierte Arbeitskräfte</span><br/>Punktesystem, bei dem Bewerber anhand von Faktoren wie Alter, Ausbildung, Berufserfahrung und Sprachkenntnissen eingestuft werden",
+            "subProgramsTitle": "Drei Programme im Rahmen von Express Entry:",
+            "subPrograms": [
+              "Bundesprogramm für qualifizierte Arbeitskräfte",
+              "Bundesprogramm für Handwerker",
+              "Canadian Experience Class (für Personen mit kanadischer Berufserfahrung)"
+            ]
+          },
+          {
+            "title": "2. Nominee-Programme der Provinzen (PNP)",
+            "details": [
+              "Jede Provinz hat ihre eigenen Einwanderungsströme",
+              "Oftmals schneller als Express Entry für Personen, deren Qualifikationen in bestimmten Provinzen benötigt werden",
+              "Einige Provinzen haben UK-spezifische Einstellungsinitiativen"
+            ]
+          },
+          {
+            "title": "3. Arbeitsgenehmigungen",
+            "details": [
+              "Für arbeitgeberspezifische Arbeitsgenehmigungen ist ein Stellenangebot eines kanadischen Arbeitgebers erforderlich.",
+              "Offene Arbeitsgenehmigungen durch spezielle Programme wie Working Holiday (IEC)",
+              "Britische Staatsbürger im Alter von 18-30 Jahren können IEC-Visa für Arbeitsaufenthalte beantragen"
+            ]
+          },
+          {
+            "title": "4. Familienpatenschaft",
+            "description": "Wenn Sie einen Ehepartner, Lebensgefährten oder ein enges Familienmitglied haben, das kanadischer Staatsbürger oder ständiger Einwohner ist"
+          }
+        ]
+      },
+      "property": {
+        "title": "Kauf oder Miete von Immobilien",
+        "points": [
+          "Als Nichtansässiger können Sie in den meisten Teilen Kanadas Immobilien erwerben, mit einigen Einschränkungen in bestimmten Provinzen",
+          "Das 2023 geltende Verbot für ausländische Käufer sieht Ausnahmen für Personen mit ständigem Wohnsitz und Arbeitserlaubnis vor",
+          "Beliebte Gebiete für britische Auswanderer: Toronto, Vancouver, Montreal, Calgary, Halifax",
+          "Die Mietmärkte sind sehr unterschiedlich: In den Großstädten müssen Sie für eine 1-Zimmer-Wohnung CAD $1.500-$3.000+ bezahlen."
+        ],
+        "tip": "<strong>Tipp:</strong> Recherchieren Sie sorgfältig die Standorte - die Immobilienpreise in Toronto und Vancouver sind deutlich höher als in anderen Regionen."
+      },
+      "costLiving": {
+        "title": "Vergleich der Lebenshaltungskosten",
+        "table": {
+          "headers": {
+            "expense": "Ausgaben",
+            "canada": "Kanada (Durchschnittswert)",
+            "uk": "UK (Durchschnitt)"
+          },
+          "rows": [
+            {
+              "expense": "Miete (1-Bett-Wohnung)",
+              "canada": "CAD $1.200-$2.500",
+              "uk": "£800-£1,200"
+            },
+            {
+              "expense": "Versorgungsunternehmen",
+              "canada": "CAD $150-$250/Monat",
+              "uk": "£150+/Monat"
+            },
+            {
+              "expense": "Mahlzeit im Restaurant",
+              "canada": "CAD $20-$35",
+              "uk": "£10-£25"
+            },
+            {
+              "expense": "Transportpass",
+              "canada": "CAD $80-$150/Monat",
+              "uk": "£60-£120/Monat"
+            }
+          ]
+        },
+        "note": "Während die Gesamtkosten ähnlich hoch sind wie im Vereinigten Königreich, gibt es zwischen den Regionen erhebliche Unterschiede. In den atlantischen Provinzen und den ländlichen Gebieten ist das Leben erschwinglicher."
+      },
+      "healthcare": {
+        "title": "Zugang zum Gesundheitswesen",
+        "points": [
+          "Kanada hat eine allgemeine öffentliche Gesundheitsversorgung (Medicare), die durch Steuern finanziert wird.",
+          "Als ständiger Einwohner haben Sie nach einer Wartezeit (in der Regel 3 Monate) Anspruch auf medizinische Versorgung in der Provinz.",
+          "Während der Wartezeit ist eine vorübergehende private Krankenversicherung unerlässlich",
+          "Jede Provinz verwaltet ihr eigenes Gesundheitssystem mit leichten Unterschieden in der Abdeckung",
+          "Für einige Leistungen wie zahnärztliche Versorgung, Sehhilfen und verschreibungspflichtige Medikamente ist eine private Versicherung erforderlich."
+        ]
+      },
+      "weather": {
+        "title": "Wetter und Klima",
+        "seasons": [
+          {
+            "title": "Winter (Nov-März)",
+            "description": "Deutlich kälter als im Vereinigten Königreich mit Temperaturen zwischen -30°C und 0°C je nach Region. Schnee ist im größten Teil des Landes üblich, wobei die Küstenregion BC die Ausnahme bildet."
+          },
+          {
+            "title": "Sommer (Juni-Sept.)",
+            "description": "Wärmer als im Vereinigten Königreich mit Temperaturen zwischen 20°C und 30°C. Die Luftfeuchtigkeit kann in den östlichen Provinzen hoch sein."
+          }
+        ],
+        "regionalVariations": {
+          "title": "Regionale Variationen",
+          "description": "In Vancouver herrscht ein mildes, regnerisches Klima ähnlich wie in Großbritannien. In Toronto und Montreal sind die Sommer heiß und die Winter kalt. In den Prärien herrschen extreme Temperaturschwankungen. Die nördlichen Gebiete haben sehr lange, harte Winter."
+        }
+      },
+      "dailyLife": {
+        "title": "Anpassungen an das tägliche Leben",
+        "aspects": [
+          {
+            "title": "Sprache",
+            "description": "Englisch ist Amtssprache in ganz Kanada (außer in Quebec). Französisch ist ebenfalls eine Amtssprache, vor allem in Québec, wo Französischkenntnisse von großem Vorteil sind."
+          },
+          {
+            "title": "Fahren",
+            "description": "Der britische Führerschein kann vorübergehend verwendet werden (je nach Provinz unterschiedlich), aber Sie müssen ihn gegen einen Führerschein der Provinz umtauschen. Kanadier fahren auf der rechten Seite der Straße."
+          },
+          {
+            "title": "Währung",
+            "description": "Kanadischer Dollar (CAD) - die Wechselkurse schwanken, aber die Kosten sind im Allgemeinen mit denen im Vereinigten Königreich vergleichbar."
+          },
+          {
+            "title": "Bankwesen",
+            "description": "Große Banken bieten Einsteigerpakete an, bei denen die Gebühren erlassen werden. Für die Eröffnung eines Kontos benötigen Sie einen Adressnachweis und einen Ausweis. Die Kreditvergangenheit wird nicht übertragen, daher ist es wichtig, einen Kredit aufzubauen."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "title": "Umzugslogistik aus dem Vereinigten Königreich",
+        "points": [
+          "Der Versand von Haushaltswaren nach Kanada dauert per Seefracht 4-8 Wochen.",
+          "Persönliche Gegenstände können mit einem detaillierten Inventar und einem Nachweis des Wohnsitzes zollfrei eingeführt werden",
+          "Autos, die älter als 15 Jahre sind, können leichter eingeführt werden; neuere Fahrzeuge müssen die kanadischen Normen erfüllen",
+          "Haustiere benötigen Mikrochips, Tollwutimpfungen und Gesundheitsbescheinigungen; wenn die Bedingungen erfüllt sind, ist keine Quarantäne erforderlich"
+        ]
+      },
+      "challenges": {
+        "title": "Zu erwartende realistische Herausforderungen",
+        "challenges": [
+          {
+            "title": "Anpassung an den Winter",
+            "description": "Die Strenge und Länge des kanadischen Winters kann für Briten eine Herausforderung sein"
+          },
+          {
+            "title": "Entfernung zur Familie",
+            "description": "Flüge von mehr als 7 Stunden machen Besuche zu Hause seltener"
+          },
+          {
+            "title": "Aufbau einer Kreditgeschichte",
+            "description": "Die britische Kredithistorie ist nicht übertragbar, was die erste Kreditaufnahme erschwert"
+          },
+          {
+            "title": "Berufliche Akkreditierung",
+            "description": "Einige britische Qualifikationen müssen in Kanada möglicherweise neu zertifiziert werden."
+          }
+        ]
+      },
+      "britishCommunities": {
+        "title": "Britische Expat-Gemeinschaften",
+        "description": "In Kanada gibt es beträchtliche britische Auswanderergemeinden:",
+        "cities": [
+          "Toronto",
+          "Vancouver",
+          "Calgary",
+          "Victoria",
+          "Halifax"
+        ],
+        "supportNote": "Online-Foren, Facebook-Gruppen wie \"Brits in Canada\" und Gemeinschaftsveranstaltungen erleichtern den Kontakt zu anderen britischen Auswanderern, die Rat und Unterstützung bieten können."
+      }
+    },
+    "checklist": {
+      "title": "Wichtige Checkliste vor dem Umzug nach Kanada",
+      "items": [
+        "Sicherung eines angemessenen Einwanderungsstatus oder einer Arbeitserlaubnis",
+        "Beschaffung der Sozialversicherungsnummer (SIN) bei der Ankunft",
+        "Abschluss einer Reise- und Erstkrankenversicherung",
+        "Eröffnung eines kanadischen Bankkontos",
+        "Recherchieren Sie das Registrierungsverfahren für das Gesundheitswesen auf Provinzebene",
+        "Kaufen Sie geeignete Kleidung für das kanadische Wetter",
+        "Benachrichtigung der britischen Behörden (HMRC, Rentenversicherungsträger usw.) über Ihren Umzug ins Ausland"
+      ]
+    },
+    "conclusion": {
+      "title": "Ist eine Umsiedlung nach Kanada das Richtige für Sie?",
+      "text": "Kanada bietet einen hohen Lebensstandard, atemberaubende Naturschönheiten und starke Sozialsysteme, was es zu einem attraktiven Ziel für britische Auswanderer macht. Der Einwanderungsprozess erfordert zwar eine sorgfältige Planung und das Winterwetter ist gewöhnungsbedürftig, aber viele Briten finden, dass sich der Wechsel aufgrund der Lebensqualität, der Karrieremöglichkeiten und der gastfreundlichen multikulturellen Gesellschaft in Kanada lohnt."
+    },
+    "footer": {
+      "disclaimer": "Leitfaden zuletzt aktualisiert: Mai 2025 - Informationen können sich ändern - Prüfen Sie immer offizielle Regierungsquellen"
+    }
+  },
+  "canadavisaguide": {
+    "introduction": "Kanada bietet zahlreiche Möglichkeiten für Einwanderer, darunter Arbeitnehmer, Studenten, Familien und Geschäftsleute. Jedes Programm ist darauf ausgerichtet, das Wirtschaftswachstum Kanadas zu fördern und gleichzeitig Neuankömmlinge aus der ganzen Welt willkommen zu heißen.",
+    "labels": {
+      "bestFor": "Am besten geeignet für:",
+      "programs": "Programme:",
+      "requirements": "Anforderungen:",
+      "process": "Prozess:",
+      "types": "Typen:",
+      "eligibleMembers": "Anspruchsberechtigte Familienangehörige:",
+      "sponsorRequirements": "Anforderungen des Sponsors:",
+      "benefits": "Vorteile:",
+      "tfwpRequirements": "TFWP-Anforderungen:",
+      "impBenefits": "IMP-Vorteile:",
+      "startupRequirements": "Visumanforderungen für Existenzgründer:",
+      "notablePNPs": "Bemerkenswerte PNPs:"
+    },
+    "mainPrograms": [
+      {
+        "title": "1. Express Entry System",
+        "bestFor": [
+          "Fachkräfte mit Berufserfahrung",
+          "Fachkräfte mit Hochschulbildung",
+          "Sprachkenntnisse in Englisch/Französisch"
+        ],
+        "programs": [
+          "Bundesprogramm für qualifizierte Arbeitskräfte",
+          "Bundesfacharbeiterprogramm",
+          "Kanadische Erfahrung Klasse"
+        ],
+        "requirements": [
+          "Mindestens 1 Jahr qualifizierte Berufserfahrung",
+          "Sprachtest (CLB 7+ für FSWP)",
+          "Bewertung von Bildungsabschlüssen",
+          "Nachweis von Geldmitteln (~$13.000+ für eine Einzelperson)"
+        ]
+      },
+      {
+        "title": "2. Nominee-Programme der Provinzen (PNP)",
+        "bestFor": [
+          "Arbeitskräfte, deren Qualifikationen den Bedürfnissen der Provinz entsprechen",
+          "Personen mit Verbindungen zu bestimmten Provinzen",
+          "Kandidaten, die sich nicht für Express Entry qualifizieren können"
+        ],
+        "process": [
+          "Bewerben Sie sich direkt bei einer Provinz oder über Express Entry",
+          "Nominierung durch die Provinz erhalten",
+          "Daueraufenthalt auf Bundesebene beantragen"
+        ],
+        "notablePNPs": [
+          "Britisch-Kolumbien PNP",
+          "Ontario Einwanderer-Nominee-Programm",
+          "Alberta Advantage Einwanderungsprogramm",
+          "Manitoba Provincial Nominee Program"
+        ]
+      },
+      {
+        "title": "3. Studiengenehmigungen",
+        "bestFor": "Internationale Studierende, die an bestimmten Bildungseinrichtungen angenommen wurden",
+        "requirements": [
+          "Annahmeschreiben eines DLI",
+          "Nachweis finanzieller Unterstützung (~$10.000/Jahr + Studiengebühren)",
+          "Sauberes Strafregister",
+          "Ärztliche Untersuchung (falls erforderlich)",
+          "Absicht, Kanada nach dem Studium zu verlassen"
+        ],
+        "benefits": [
+          "Arbeit bis zu 20 Stunden/Woche während des Studiums",
+          "Vollzeitarbeit während der geplanten Pausen",
+          "Anspruch auf eine Arbeitsgenehmigung nach Abschluss des Studiums",
+          "Weg zum Daueraufenthalt"
+        ]
+      },
+      {
+        "title": "4. Arbeitsgenehmigungen",
+        "types": [
+          "Programm für befristete ausländische Arbeitskräfte (TFWP)",
+          "Internationales Mobilitätsprogramm (IMP)",
+          "Arbeitsgenehmigung nach Abschluss des Studiums (PGWP)",
+          "Offene Arbeitserlaubnis für Ehegatten"
+        ],
+        "tfwpRequirements": [
+          "Stellenangebot eines kanadischen Arbeitgebers",
+          "Bewertung der Auswirkungen auf den Arbeitsmarkt (LMIA)",
+          "Qualifikationsnachweis"
+        ],
+        "impBenefits": [
+          "LMIA-befreite Arbeitsgenehmigungen",
+          "Einschließlich konzerninterner Transfers",
+          "Internationale Abkommen (CUSMA, CETA)"
+        ]
+      },
+      {
+        "title": "5. Familienpatenschaft",
+        "bestFor": "Familienangehörige von kanadischen Staatsbürgern oder Personen mit ständigem Wohnsitz in Kanada",
+        "eligibleMembers": [
+          "Ehepartner oder Lebensgefährte",
+          "Unterhaltsberechtigte Kinder",
+          "Eltern und Großeltern",
+          "Andere Verwandte (im Rahmen spezifischer Programme)"
+        ],
+        "sponsorRequirements": [
+          "Kanadischer Staatsbürger oder ständiger Einwohner",
+          "18 Jahre oder älter",
+          "Mindesteinkommensanforderungen erfüllen",
+          "Unterschreiben Sie die Verpflichtung zur finanziellen Unterstützung"
+        ]
+      },
+      {
+        "title": "6. Business Immigration",
+        "bestFor": [
+          "Unternehmer",
+          "Investoren",
+          "Selbstständig Erwerbstätige"
+        ],
+        "programs": [
+          "Start-up-Visum-Programm",
+          "Programm für Selbstständige",
+          "Programme für Unternehmen auf Provinzebene"
+        ],
+        "startupRequirements": [
+          "Unterstützung durch eine bestimmte Organisation",
+          "Sprachkenntnisse (CLB 5+)",
+          "Ausreichende Abwicklungsmittel",
+          "Aktive Verwaltung des Geschäfts in Kanada"
+        ]
+      }
+    ],
+    "additionalOptions": {
+      "title": "Zusätzliche Optionen",
+      "programs": [
+        {
+          "title": "Atlantisches Einwanderungsprogramm",
+          "description": "Konzipiert für Fachkräfte und internationale Hochschulabsolventen, die in New Brunswick, Nova Scotia, Prince Edward Island oder Neufundland und Labrador leben und arbeiten möchten.",
+          "requirement": "Erfordert ein Stellenangebot von einem bestimmten Arbeitgeber in Atlantik-Kanada"
+        },
+        {
+          "title": "Pilotprojekt zur Einwanderung in ländliche und nördliche Gebiete",
+          "description": "Ein gemeindeorientiertes Programm, das ausländischen Fachkräften zu einem dauerhaften Aufenthalt verhilft und gleichzeitig kleinere, ländliche Gemeinden unterstützt.",
+          "requirement": "Verfügbar in ausgewählten Gemeinden in ganz Kanada"
+        },
+        {
+          "title": "Programme für Betreuer",
+          "description": "Wege für Pflegekräfte, die Kinder, ältere Menschen oder Menschen mit medizinischen Bedürfnissen betreuen, um dauerhafte Einwohner zu werden.",
+          "requirement": "2 Jahre Berufserfahrung in Kanada erforderlich"
+        },
+        {
+          "title": "Humanitäre und Flüchtlingsprogramme",
+          "description": "Schutz für Flüchtlinge, Asylbewerber und andere, die humanitäre Hilfe benötigen.",
+          "requirement": "Einschließlich staatlich unterstütztes Flüchtlingsprogramm und private Patenschaft"
+        }
+      ]
+    },
+    "importantConsiderations": {
+      "title": "Wichtige Überlegungen",
+      "considerations": [
+        {
+          "title": "Bearbeitungszeiten",
+          "description": "Je nach Programm und Anzahl der Bewerber sehr unterschiedlich. Express Entry kann bis zu 6 Monate dauern, während Familiensponsoring mehr als 12 Monate dauern kann."
+        },
+        {
+          "title": "Anmeldegebühren",
+          "description": "Berücksichtigen Sie sowohl die staatlichen Gebühren als auch mögliche Beraterkosten. Die Gebühren für einen PR-Antrag betragen etwa 1.325 CAD pro Erwachsenem."
+        },
+        {
+          "title": "Abwicklungsfonds",
+          "description": "Für die meisten Programme ist ein Nachweis der finanziellen Mittel erforderlich. Der Betrag variiert je nach Familiengröße und Programmanforderungen."
+        }
+      ]
+    }
+  }
+}

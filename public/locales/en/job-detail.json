@@ -1,0 +1,161 @@
+{
+  "hero": {
+    "badge": "FEATURED POSITION",
+    "titleLine1": "Senior Software",
+    "titleLine2": "Engineer",
+    "companyName": "TechVision Inc",
+    "subtitle": "Join our innovative team to build cutting-edge solutions that transform industries. We're looking for talented engineers who are passionate about creating impactful technology.",
+    "ctaPrimary": "Request Consultation",
+    "ctaShare": "Share Job",
+    "salaryRange": "Salary Range",
+    "location": "Location",
+    "experience": "Experience",
+    "tabOverview": "Overview",
+    "tabRequirements": "Requirements",
+    "tabBenefits": "Benefits",
+    "industry": "Software Development",
+    "locationValue": "Remote (US Based)",
+    "locationStatValue": "Remote",
+    "salaryLabel": "Salary",
+    "teamSizeLabel": "Team Size",
+    "teamSizeValue": "15-20 Engineers",
+    "employmentLabel": "Employment",
+    "employmentValue": "Full-time",
+    "postedLabel": "Posted",
+    "postedValue": "March 15, 2025",
+    "requiredSkills": "Required Skills",
+    "readyToJoin": "Ready to join our team?",
+    "applicationTime": "5 minute application"
+  },
+  "loading": "Loading job details...",
+  "notifications": {
+    "resume_uploaded": "Resume uploaded successfully!",
+    "application_submitted": {
+      "title": "Application Submitted!",
+      "message": "Thank you for your interest in the {{title}} position. Our team will review your application and contact you soon.",
+      "close": "Close"
+    }
+  },
+  "application_modal": {
+    "title": "Apply for {{title}}",
+    "subtitle": "Complete your application below",
+    "progress": "Application Progress",
+    "form": {
+      "full_name": "Full Name *",
+      "full_name_placeholder": "Enter your name",
+      "email": "Email Address *",
+      "email_placeholder": "name@example.com",
+      "phone": "Phone Number *",
+      "phone_placeholder": "+90 555 123 4567",
+      "location": "Current Location *",
+      "location_placeholder": "City, Country",
+      "linkedin": "LinkedIn Profile",
+      "linkedin_placeholder": "https://linkedin.com/in/username",
+      "portfolio": "Portfolio URL",
+      "portfolio_placeholder": "https://yourportfolio.com",
+      "cover_message": "Cover Message",
+      "cover_message_placeholder": "Why are you interested in this position?",
+      "upload_resume": "Upload Resume *",
+      "click_to_upload": "Click to upload your resume",
+      "file_types": "(PDF, DOC, or DOCX)",
+      "cancel": "Cancel",
+      "submit": "Submit Application",
+      "application_closed": "Application Closed",
+      "terms_agreement": "By applying, you agree to our <1>Terms & Conditions</1>"
+    }
+  },
+  "share_modal": {
+    "title": "Share This Job",
+    "subtitle": "Share this opportunity with your network",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp",
+    "copy_link": "Copy",
+    "copied": "Copied!"
+  },
+  "header": {
+    "status_open": "Open",
+    "status_closed": "Closed",
+    "posted": "Posted",
+    "save_job": "Save Job",
+    "saved": "Saved",
+    "share": "Share",
+    "apply_now": "Apply Now",
+    "application_closed": "Application Closed"
+  },
+  "quick_info": {
+    "currency": "Currency",
+    "salary": "Salary",
+    "type": "Type"
+  },
+  "tabs": {
+    "job_description": "Job Description",
+    "requirements": "Requirements",
+    "details": "Details"
+  },
+  "tab_content": {
+    "description": {
+      "overview": "Job Overview",
+      "employment_type": "Employment Type",
+      "work_location": "Work Location"
+    },
+    "requirements": {
+      "title": "Requirements & Qualifications",
+      "what_we_looking_for": "What We're Looking For",
+      "professional_experience": "Professional Experience",
+      "communication_skills": "Communication Skills",
+      "team_collaboration": "Team Collaboration",
+      "growth_mindset": "Growth Mindset"
+    },
+    "details": {
+      "job_information": "Job Information",
+      "job_type": "Job Type:",
+      "location": "Location:",
+      "posted": "Posted:",
+      "status": "Status:",
+      "quota_full": "Quota Full",
+      "open_for_applications": "Open for Applications",
+      "compensation": "Compensation",
+      "currency": "Currency:",
+      "salary": "Salary:",
+      "why_join": "Why Join {{title}}?",
+      "career_growth": "Career Growth",
+      "career_growth_desc": "Opportunities for advancement",
+      "great_location": "Great Location",
+      "great_location_desc": "Work in {{location}}",
+      "competitive_package": "Competitive Package",
+      "competitive_package_desc": "Attractive salary and benefits",
+      "professional_growth": "Professional Growth",
+      "professional_growth_desc": "Continuous learning opportunities"
+    }
+  },
+  "cta": {
+    "title": "Ready to Join Our Team?",
+    "subtitle": "Take the next step in your career with {{title}}. We're looking for passionate individuals who want to make a difference.",
+    "apply_now": "Apply Now",
+    "application_closed": "Application Closed"
+  },
+  "contact": {
+    "title": "Need Help with Your Application?",
+    "subtitle": "Our HR team is here to assist you",
+    "live_chat": {
+      "title": "Live Chat Support",
+      "subtitle": "Average response time: 5 minutes"
+    },
+    "email": {
+      "title": "Email HR Team",
+      "subtitle": "info@jobsadmire.com"
+    }
+  },
+  "fallback": {
+    "title_not_available": "Job Title Not Available",
+    "location_not_available": "Location Not Available",
+    "description_not_available": "<p>Job description not available.</p>",
+    "requirement_not_available": "<p>Requirements not available.</p>",
+    "date_not_available": "Date not available",
+    "error_loading": "Error Loading Job",
+    "unable_to_load_desc": "<p>Unable to load job description. Please try again later.</p>",
+    "unable_to_load_req": "<p>Unable to load requirements. Please try again later.</p>"
+  }
+}

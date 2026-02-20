@@ -1,0 +1,911 @@
+{
+  "heroSection": {
+    "badge": "Perjalanan Eksklusif",
+    "title": "Temukan Petualangan Anda Selanjutnya",
+    "description": "Rasakan keindahan destinasi yang menakjubkan dan ciptakan kenangan tak terlupakan dengan paket wisata premium kami yang disesuaikan dengan keinginan Anda.",
+    "currentlyViewing": {
+      "label": "Sedang Dilihat"
+    },
+    "buttons": {
+      "explore": "Jelajahi Sekarang",
+      "viewAll": "Lihat Semua Destinasi"
+    },
+    "destinationCounter": "Tujuan {saat ini}/{total}",
+    "destinations": [
+      {
+        "img": "/images/ihusn.png",
+        "name": "Kota New York, New York",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihuslos.png",
+        "name": "Los Angeles, California",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihuch.png",
+        "name": "Chicago, Illinois",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihusen.png",
+        "name": "San Francisco, California",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihumiami.png",
+        "name": "Miami, Florida",
+        "country": "USA"
+      }
+    ],
+    "accessibility": {
+      "exploreButton": "Jelajahi destinasi sekarang",
+      "viewAllButton": "Lihat semua destinasi yang tersedia",
+      "destinationImage": "Lihat tujuan: {nama}",
+      "featuredDestination": "Gambar destinasi unggulan",
+      "carouselControl": "Pergi ke tujuan {nomor}"
+    },
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableOfContents": {
+    "title": "Daftar isi",
+    "subtitle": "Navigasi melalui bagian-bagian",
+    "currentlyReading": "Saat ini sedang membaca",
+    "sectionsCount": "{count} bagian untuk dijelajahi",
+    "sections": [
+      {
+        "title": "🇺🇸 Fakta Menarik dan Seru Tentang Amerika Serikat",
+        "id": 1
+      },
+      {
+        "title": "Opsi Visa untuk Pindah ke Amerika Serikat",
+        "id": 2
+      },
+      {
+        "title": "Persyaratan untuk Pindah ke Amerika Serikat",
+        "id": 3
+      },
+      {
+        "title": "Mendapatkan Pekerjaan di Amerika Serikat sebagai Warga Negara Asing",
+        "id": 4
+      },
+      {
+        "title": "Pindah ke AS dari Turki",
+        "id": 5
+      },
+      {
+        "title": "Pindah ke AS dari Inggris",
+        "id": 6
+      },
+      {
+        "title": "Berapa biaya untuk pindah ke Amerika Serikat?",
+        "id": 7
+      },
+      {
+        "title": "Pindah ke Amerika Serikat Bersama Hewan Peliharaan",
+        "id": 8
+      }
+    ],
+    "quickNavigation": {
+      "title": "Navigasi Cepat",
+      "footer": "Gulir melalui {count} bagian"
+    },
+    "accessibility": {
+      "toggleMenu": "Alihkan menu navigasi",
+      "sectionButton": "Navigasi ke bagian: {judul}",
+      "quickNavigation": "Menu navigasi cepat",
+      "quickNavSection": "Navigasi cepat ke: {judul}"
+    }
+  },
+  "factsCard": {
+    "description": "Temukan fitur dan pencapaian luar biasa dari Amerika Serikat. AS memiliki signifikansi geografis, ekonomi, budaya, dan inovatif yang luar biasa di panggung dunia.",
+    "navigation": {
+      "title": "Jelajahi Fakta",
+      "previous": "Fakta Sebelumnya",
+      "next": "Fakta Selanjutnya"
+    },
+    "allFacts": {
+      "title": "Semua Fakta Tentang Amerika Serikat"
+    },
+    "facts": [
+      {
+        "title": "Negara Terbesar Ketiga",
+        "description": "Amerika Serikat adalah negara terbesar ketiga baik dari segi luas wilayah maupun populasi, setelah Rusia/Kanada (luas wilayah) dan Tiongkok/India (populasi).",
+        "iconKey": "peta",
+        "emoji": "🗺️",
+        "id": 1
+      },
+      {
+        "title": "50 Negara Bagian & 1 Distrik Federal",
+        "description": "Wilayah ini terdiri dari 50 negara bagian dan Washington, D.C., yang merupakan ibu kota tetapi bukan sebuah negara bagian.",
+        "iconKey": "bendera",
+        "emoji": "🏛️",
+        "id": 2
+      },
+      {
+        "title": "Ekonomi Terbesar di Dunia",
+        "description": "Saat ini, Amerika Serikat memiliki perekonomian terbesar di dunia, yang didorong oleh teknologi, keuangan, perawatan kesehatan, dan hiburan.",
+        "iconKey": "bangunan",
+        "emoji": "💰",
+        "id": 3
+      },
+      {
+        "title": "Keragaman Budaya",
+        "description": "Ini adalah salah satu negara dengan keragaman budaya terbesar, dengan lebih dari 350 bahasa yang digunakan dan komunitas dari hampir setiap negara di dunia.",
+        "iconKey": "bola dunia",
+        "emoji": "🌎",
+        "id": 4
+      },
+      {
+        "title": "Inovasi Berasal dari Sini",
+        "description": "Amerika Serikat adalah rumah bagi banyak penemuan — termasuk <strong>internet, pesawat terbang, bola lampu, dan iPhone</strong>.",
+        "iconKey": "bola lampu",
+        "emoji": "💡",
+        "id": 5
+      }
+    ],
+    "accessibility": {
+      "factButton": "Pilih fakta: {judul}",
+      "previousFact": "Kembali ke fakta sebelumnya",
+      "nextFact": "Lanjut ke fakta berikutnya"
+    }
+  },
+  "movingCostsGuide": {
+    "title": "Berapa Biaya Pindah ke Amerika Serikat?",
+    "description": "Pindah ke Amerika Serikat bisa jadi hal yang menyenangkan, tetapi juga disertai beberapa biaya yang perlu Anda rencanakan. Berikut rincian pengeluaran yang dapat Anda perkirakan saat pindah ke AS.",
+    "costSections": [
+      {
+        "id": "visa imigrasi",
+        "icon": "🛂",
+        "title": "Biaya Visa & Imigrasi",
+        "amount": "$160–$5.000+",
+        "details": "Permohonan visa, kartu hijau, biaya pengacara opsional",
+        "color": "bg-biru-500",
+        "subItems": {
+          "0": {
+            "title": "Visa non-imigran (H-1B, F-1)",
+            "amount": "$160–$205"
+          },
+          "1": {
+            "title": "Kartu Hijau (visa imigran)",
+            "amount": "$1.200–$1.760"
+          },
+          "2": {
+            "title": "Biaya Pengacara (opsional)",
+            "amount": "$1.500–$5.000"
+          }
+        }
+      },
+      {
+        "id": "penerbangan",
+        "icon": "✈️",
+        "title": "Tiket Pesawat",
+        "amount": "$500–$1.200",
+        "details": "Penerbangan satu arah tergantung lokasi dan waktu pemesanan.",
+        "color": "bg-biru-600"
+      },
+      {
+        "id": "pengiriman",
+        "icon": "📦",
+        "title": "Mengirim Barang-barang",
+        "amount": "$500–$7.000",
+        "details": "Tergantung pada volume dan metode pengiriman.",
+        "color": "bg-biru-700",
+        "subItems": {
+          "0": {
+            "title": "Pengiriman kecil (hanya kotak)",
+            "amount": "$500–$1.500"
+          },
+          "1": {
+            "title": "Kontainer penuh (20 kaki/40 kaki)",
+            "amount": "$3.000–$7.000"
+          }
+        }
+      },
+      {
+        "id": "akomodasi",
+        "icon": "🏠",
+        "title": "Akomodasi Awal",
+        "amount": "$1.000–$4.000",
+        "details": "Sewa bulan pertama + deposit (bervariasi tergantung kota)",
+        "color": "bg-biru-500",
+        "subItems": {
+          "0": {
+            "title": "Hotel/Airbnb sementara",
+            "amount": "$80–$200 per malam"
+          }
+        }
+      },
+      {
+        "id": "asuransi",
+        "icon": "🏥",
+        "title": "Asuransi Kesehatan",
+        "amount": "$300–$700/bulan",
+        "details": "Diperlukan untuk sebagian besar jenis visa",
+        "color": "bg-biru-600",
+        "subItems": {
+          "0": {
+            "title": "Liputan keluarga",
+            "amount": "Lebih mahal"
+          }
+        }
+      },
+      {
+        "id": "lainnya",
+        "icon": "📝",
+        "title": "Biaya Lainnya",
+        "amount": "$520–$1.080+/bulan",
+        "color": "bg-biru-500",
+        "subItems": {
+          "0": {
+            "title": "Aplikasi SSN",
+            "amount": "Bebas"
+          },
+          "1": {
+            "title": "SIM",
+            "amount": "$20–$80"
+          },
+          "2": {
+            "title": "Bahan makanan & transportasi",
+            "amount": "$500–$1.000/bulan"
+          }
+        }
+      }
+    ],
+    "totalBudget": {
+      "icon": "🔢",
+      "title": "Perkiraan Total Anggaran",
+      "categories": [
+        {
+          "title": "Orang Lajang",
+          "amount": "$5.000–$10.000",
+          "description": "Termasuk biaya visa, akomodasi awal, transportasi, dan biaya pengaturan dasar."
+        },
+        {
+          "title": "Keluarga Berempat",
+          "amount": "$10.000–$25.000+",
+          "description": "Termasuk semua biaya untuk seluruh keluarga, termasuk visa, pengiriman barang, dan akomodasi."
+        }
+      ]
+    },
+    "moneySavingTips": {
+      "icon": "💰",
+      "title": "Tips Menghemat Uang",
+      "tips": [
+        {
+          "title": "Pertimbangkan Lokasi dengan Cermat",
+          "description": "Biaya perumahan sangat bervariasi antar kota. Pertimbangkan kota-kota kecil atau daerah pinggiran kota."
+        },
+        {
+          "title": "Pesan Penerbangan Lebih Awal",
+          "description": "Memesan tiket pesawat 2-3 bulan sebelumnya dapat menghemat ratusan dolar."
+        },
+        {
+          "title": "Pengiriman Selektif",
+          "description": "Pertimbangkan apa yang lebih baik dikirim daripada membeli baru di AS."
+        },
+        {
+          "title": "Bandingkan Paket Asuransi",
+          "description": "Biaya asuransi kesehatan dapat sangat bervariasi; luangkan waktu untuk menemukan rencana yang tepat."
+        }
+      ]
+    },
+    "conclusion": "Biaya akhir Anda sangat bergantung pada jenis visa Anda, dari mana Anda pindah, dan tujuan Anda di AS. Dengan perencanaan dan penganggaran yang tepat, Anda dapat membuat kepindahan Anda ke Amerika Serikat menjadi lancar dan ekonomis.",
+    "accessibility": {
+      "toggleSection": "Tampilkan/Tutup detail untuk bagian {title}"
+    }
+  },
+  "requirementsGuide": {
+    "tabs": {
+      "all": "Semua Persyaratan",
+      "essential": "Persyaratan Penting",
+      "recommended": "Direkomendasikan",
+      "after-arrival": "Setelah Tiba"
+    },
+    "categoryLabels": {
+      "essential": "Diperlukan",
+      "recommended": "Direkomendasikan",
+      "afterArrival": "Setelah Tiba"
+    },
+    "requirements": [
+      {
+        "title": "Dapatkan Visa atau Kartu Hijau yang Tepat",
+        "description": "Anda harus memiliki visa yang disetujui atau Kartu Hijau (status penduduk tetap) untuk tinggal di AS.",
+        "details": {
+          "0": "Visa imigran berbasis keluarga",
+          "1": "Visa berbasis pekerjaan (H-1B, L-1, dll.)",
+          "2": "Visa pelajar (F-1)",
+          "3": "Undian Kartu Hijau (Program Visa Keanekaragaman)"
+        },
+        "tip": "Ajukan permohonan visa Anda di kedutaan atau konsulat AS di negara Anda. Waktu pemrosesan bervariasi dari beberapa minggu hingga beberapa bulan.",
+        "iconKey": "teks file",
+        "category": "penting",
+        "id": 1
+      },
+      {
+        "title": "Paspor yang sah",
+        "description": "Paspor Anda harus berlaku setidaknya <strong>6 bulan</strong> setelah tanggal masuk yang Anda rencanakan.",
+        "details": {
+          "0": "Perpanjanglah sebelum mengajukan visa jika masa berlakunya hampir habis."
+        },
+        "iconKey": "Buka buku",
+        "category": "penting",
+        "id": 2,
+        "tip": ""
+      },
+      {
+        "title": "Pemeriksaan Medis yang Disetujui",
+        "description": "Pemeriksaan medis wajib diperlukan untuk visa imigran.",
+        "details": {
+          "0": "Hal ini harus dilakukan oleh dokter yang disetujui oleh kedutaan besar AS.",
+          "1": "Anda akan menjalani pemeriksaan untuk penyakit seperti tuberkulosis dan diminta untuk menunjukkan bukti vaksinasi penting."
+        },
+        "tip": "Biaya: Sekitar $200–$400 tergantung negara.",
+        "iconKey": "stetoskop",
+        "category": "penting",
+        "id": 3
+      },
+      {
+        "title": "Vaksinasi & Catatan Kesehatan",
+        "description": "Bawalah catatan vaksinasi lengkap.",
+        "details": {
+          "0": "Campak, Gondok, Rubella (MMR)",
+          "1": "Polio",
+          "2": "Tetanus",
+          "3": "Influenza (selama musim flu)",
+          "4": "COVID-19 (berdasarkan panduan USCIS terbaru)"
+        },
+        "iconKey": "jarum suntik",
+        "category": "penting",
+        "id": 4,
+        "tip": ""
+      },
+      {
+        "title": "Bukti Keuangan atau Sponsor",
+        "description": "Anda perlu membuktikan bahwa Anda tidak akan bergantung secara finansial pada pemerintah AS:",
+        "details": {
+          "0": "Visa kerja: Surat penawaran kerja dan rincian gaji.",
+          "1": "Visa keluarga: Sponsor harus mengajukan Formulir I-864 (Surat Pernyataan Dukungan) dan menunjukkan pendapatan di atas tingkat yang ditetapkan.",
+          "2": "Visa pelajar: Bukti pembayaran uang kuliah dan biaya hidup untuk setidaknya satu tahun akademik."
+        },
+        "iconKey": "tanda dolar",
+        "category": "penting",
+        "id": 5,
+        "tip": ""
+      },
+      {
+        "title": "Catatan Kriminal Bersih",
+        "description": "Pelanggaran ringan biasanya tidak akan mendiskualifikasi Anda, tetapi catatan kriminal yang serius dapat mengakibatkan penolakan visa.",
+        "details": {
+          "0": "Pemeriksaan latar belakang adalah bagian dari proses tersebut."
+        },
+        "iconKey": "shieldCheck",
+        "category": "penting",
+        "id": 6,
+        "tip": ""
+      },
+      {
+        "title": "Keterampilan Bahasa Inggris (Praktik)",
+        "description": "Tidak selalu diperlukan, tetapi sangat disarankan untuk pekerjaan dan kehidupan sehari-hari.",
+        "details": {
+          "0": "Beberapa visa (seperti H-1B) mensyaratkan kemampuan teknis.",
+          "1": "Jika mengajukan permohonan kewarganegaraan di kemudian hari, pengetahuan bahasa Inggris dan kewarganegaraan diperlukan."
+        },
+        "iconKey": "pesanKotak",
+        "category": "direkomendasikan",
+        "id": 7,
+        "tip": ""
+      },
+      {
+        "title": "Persyaratan Praktis Lainnya Setelah Kedatangan",
+        "description": "Setelah tiba di AS, Anda perlu melakukan hal-hal berikut:",
+        "details": {
+          "0": "Ajukan permohonan Nomor Jaminan Sosial (SSN)",
+          "1": "Buka rekening bank AS",
+          "2": "Dapatkan surat izin mengemudi atau kartu identitas.",
+          "3": "Cari tempat tinggal (sewa atau beli)",
+          "4": "Beli asuransi kesehatan (layanan kesehatan AS bersifat swasta dan mahal)"
+        },
+        "iconKey": "Kartu kredit",
+        "category": "setelah kedatangan",
+        "id": 8,
+        "tip": ""
+      }
+    ],
+    "importantReminder": {
+      "title": "Pengingat Penting",
+      "description": "Persyaratan imigrasi dapat berubah dari waktu ke waktu. Panduan ini didasarkan pada informasi terkini, tetapi selalu verifikasi persyaratan terbaru dengan Departemen Luar Negeri AS atau Layanan Kewarganegaraan dan Imigrasi AS (USCIS) sebelum melanjutkan kepindahan Anda.",
+      "lastUpdated": "Terakhir diperbarui: Mei 2025"
+    },
+    "accessibility": {
+      "tabButton": "Beralih ke tab {label}"
+    }
+  },
+  "migrationGuide": {
+    "header": {
+      "sourceFlag": "🇹🇷",
+      "destinationFlag": "🇺🇸",
+      "title": "Pindah ke AS dari Turki",
+      "description": "Pindah dari Turki ke Amerika Serikat bisa menjadi peluang yang mengubah hidup, tetapi hal itu membutuhkan perencanaan yang tepat dan prosedur hukum yang benar. Berikut yang perlu Anda ketahui:",
+      "decorativeIcon": "🗽"
+    },
+    "sections": [
+      {
+        "title": "Pilih Jenis Visa yang Tepat",
+        "description": "Langkah pertama Anda adalah mendapatkan visa AS yang tepat berdasarkan alasan kepindahan Anda:",
+        "items": {
+          "0": {
+            "title": "Visa Berbasis Keluarga",
+            "description": "Jika Anda memiliki anggota keluarga dekat yang merupakan warga negara AS atau penduduk tetap.",
+            "iconKey": "pengguna"
+          },
+          "1": {
+            "title": "Visa Kerja (H-1B, L-1, O-1)",
+            "description": "Jika Anda ditawari pekerjaan di AS.",
+            "iconKey": "tas kantor"
+          },
+          "2": {
+            "title": "Visa Pelajar (F-1)",
+            "description": "Jika Anda berencana untuk belajar di perguruan tinggi atau universitas di Amerika Serikat.",
+            "iconKey": "Topi Wisuda"
+          },
+          "3": {
+            "title": "Visa Keanekaragaman (Undian Kartu Hijau)",
+            "description": "Turki memenuhi syarat — Anda dapat mendaftar selama periode undian tahunan.",
+            "iconKey": "acak"
+          },
+          "4": {
+            "title": "Visa Investor (E-2)",
+            "description": "Bagi warga negara Turki yang menginvestasikan sejumlah besar uang di bisnis AS.",
+            "iconKey": "tanda dolar"
+          }
+        },
+        "id": 1
+      },
+      {
+        "title": "Persiapan untuk Wawancara Visa",
+        "description": "Ajukan permohonan di Kedutaan Besar AS di Ankara atau Konsulat di Istanbul, tergantung wilayah Anda. Anda akan membutuhkan:",
+        "items": {
+          "0": {
+            "title": "Paspor yang masih berlaku",
+            "description": "Pastikan paspor Anda masih berlaku setidaknya <strong>6 bulan</strong> setelah masa tinggal yang direncanakan.",
+            "iconKey": "teks file"
+          },
+          "1": {
+            "title": "Permohonan visa",
+            "description": "Formulir DS-160 atau formulir imigran yang sesuai.",
+            "iconKey": "teks file"
+          },
+          "2": {
+            "title": "Dokumen pendukung",
+            "description": "Keuangan, pendidikan, tawaran pekerjaan, dll.",
+            "iconKey": "teks file"
+          },
+          "3": {
+            "title": "Catatan pemeriksaan medis dan vaksinasi",
+            "description": "Lakukan pemeriksaan medis lengkap dengan dokter yang terakreditasi.",
+            "iconKey": "teks file"
+          }
+        },
+        "id": 2
+      },
+      {
+        "title": "Asuransi Kesehatan & Biaya Hidup",
+        "items": {
+          "0": {
+            "title": "Asuransi kesehatan swasta",
+            "description": "Amerika Serikat tidak menawarkan layanan kesehatan gratis — Anda perlu membeli <strong>asuransi kesehatan swasta</strong>.",
+            "iconKey": "teks file"
+          },
+          "1": {
+            "title": "Biaya hidup yang lebih tinggi",
+            "description": "Biaya hidup lebih tinggi daripada di Turki. Sewa, perawatan kesehatan, dan transportasi lebih mahal, terutama di kota-kota seperti New York, Los Angeles, atau San Francisco.",
+            "iconKey": "bangunan"
+          }
+        },
+        "id": 3,
+        "description": ""
+      },
+      {
+        "title": "Perbedaan Budaya & Gaya Hidup",
+        "items": {
+          "0": {
+            "title": "Komunitas Turki",
+            "description": "Amerika Serikat adalah negara yang beragam, dengan banyak komunitas Turki, terutama di kota-kota seperti New York, Chicago, dan Los Angeles.",
+            "iconKey": "bola dunia"
+          },
+          "1": {
+            "title": "Gaya hidup yang berbeda",
+            "description": "Kehidupan sehari-hari mungkin lebih <strong>individualistis dan serba cepat</strong> dibandingkan dengan Turki.",
+            "iconKey": "bola dunia"
+          }
+        },
+        "id": 4,
+        "description": ""
+      },
+      {
+        "title": "Setelah Tiba di AS",
+        "description": "Setelah tiba, pastikan untuk:",
+        "items": {
+          "0": {
+            "title": "Ajukan permohonan Nomor Jaminan Sosial (SSN)",
+            "description": "Ini sangat penting untuk bekerja dan membayar pajak di AS.",
+            "iconKey": "teks file"
+          },
+          "1": {
+            "title": "Buka rekening bank",
+            "description": "Anda akan membutuhkan ini untuk transaksi keuangan sehari-hari.",
+            "iconKey": "Kartu kredit"
+          },
+          "2": {
+            "title": "Dapatkan SIM",
+            "description": "Transportasi umum terbatas di banyak wilayah di AS.",
+            "iconKey": "Kartu kredit"
+          },
+          "3": {
+            "title": "Cari akomodasi",
+            "description": "Dan beradaptasi dengan sistem AS (pendidikan, pekerjaan, transportasi).",
+            "iconKey": "Pin peta"
+          }
+        },
+        "id": 5
+      }
+    ],
+    "navigation": {
+      "previous": "Sebelumnya",
+      "next": "Berikutnya"
+    },
+    "footer": {
+      "sourceFlag": "🇹🇷",
+      "destinationFlag": "🇺🇸",
+      "disclaimer": "Ingatlah bahwa persyaratan imigrasi dapat berubah. Selalu periksa dengan <strong>Kedutaan Besar AS di Turki</strong> atau <strong>USCIS</strong> untuk informasi terbaru."
+    },
+    "accessibility": {
+      "sectionButton": "Pergi ke bagian: {judul}",
+      "previousButton": "Kembali ke bagian sebelumnya: {judul}",
+      "nextButton": "Lanjut ke bagian berikutnya: {judul}"
+    }
+  },
+  "petsGuide": {
+    "header": {
+      "icons": [
+        "🐶",
+        "🐱",
+        "🦜"
+      ],
+      "title": "Pindah ke Amerika Serikat Bersama Hewan Peliharaan",
+      "description": "Membawa hewan peliharaan Anda ke AS memang memungkinkan, tetapi Anda perlu mengikuti aturan khusus:"
+    },
+    "sections": {
+      "requirements": {
+        "icon": "✅",
+        "title": "Persyaratan Utama"
+      },
+      "arrival": {
+        "icon": "🛬",
+        "title": "Saat Tiba"
+      },
+      "tips": {
+        "icon": "💡",
+        "title": "Tips Bermanfaat"
+      }
+    },
+    "requirements": [
+      {
+        "id": "rabies",
+        "icon": "💉",
+        "title": "Vaksinasi Rabies",
+        "description": "<strong>Wajib untuk anjing</strong>; sangat disarankan untuk kucing"
+      },
+      {
+        "id": "kesehatan",
+        "icon": "📋",
+        "title": "Sertifikat Kesehatan",
+        "description": "Dikeluarkan oleh dokter hewan berlisensi (biasanya dalam <strong>10 hari</strong> sebelum perjalanan)"
+      },
+      {
+        "id": "mikrochip",
+        "icon": "📱",
+        "title": "Mikrochip",
+        "description": "Tidak diwajibkan oleh hukum, tetapi sangat disarankan."
+      },
+      {
+        "id": "perusahaan penerbangan",
+        "icon": "✈️",
+        "title": "Pemesanan Tiket Pesawat Ramah Hewan Peliharaan",
+        "description": "Ikuti aturan perusahaan pengiriman terkait <strong>ukuran peti, dokumen, dan biaya</strong>"
+      }
+    ],
+    "arrivalInfo": [
+      {
+        "id": "inspeksi",
+        "title": "Inspeksi",
+        "description": "Hewan peliharaan mungkin akan diperiksa di pelabuhan masuk.",
+        "icon": "👁️"
+      },
+      {
+        "id": "karantina",
+        "title": "Tidak ada karantina",
+        "description": "Untuk hewan peliharaan dari sebagian besar negara (termasuk <strong>Inggris dan Turki</strong>), jika dokumen lengkap",
+        "icon": "🏠"
+      }
+    ],
+    "tips": [
+      "Mulailah prosesnya setidaknya 4-6 minggu sebelum kepindahan Anda.",
+      "Periksa apakah negara tujuan Anda memiliki persyaratan masuk tambahan.",
+      "Bawalah obat-obatan hewan peliharaan Anda dalam jumlah yang cukup untuk beberapa bulan pertama.",
+      "Pertimbangkan layanan transportasi hewan peliharaan jika bepergian dengan beberapa hewan."
+    ],
+    "footer": {
+      "disclaimer": "Selalu periksa dengan <strong>USDA APHIS</strong> dan kantor dokter hewan negara bagian tujuan Anda untuk mengetahui persyaratan terbaru sebelum bepergian."
+    }
+  },
+  "moveRequirements": {
+    "requirements": [
+      {
+        "title": "Visa atau Kartu Hijau yang berlaku",
+        "description": "Anda harus mendapatkan jenis visa yang tepat berdasarkan tujuan Anda (misalnya, <strong>kerja, keluarga, studi</strong>).",
+        "note": "Visa imigran diperlukan untuk relokasi permanen.",
+        "iconKey": "teks file",
+        "id": 1
+      },
+      {
+        "title": "Paspor yang sah",
+        "description": "Paspor Anda harus berlaku setidaknya <strong>6 bulan</strong> setelah masa tinggal yang Anda rencanakan.",
+        "iconKey": "Buka buku",
+        "id": 2,
+        "note": ""
+      },
+      {
+        "title": "Pemeriksaan Medis",
+        "description": "Diperlukan untuk sebagian besar visa imigran.",
+        "note": "Harus dilakukan oleh dokter yang berwenang.",
+        "iconKey": "stetoskop",
+        "id": 3
+      },
+      {
+        "title": "Catatan Vaksinasi",
+        "description": "Bukti vaksinasi (misalnya, <strong>MMR, COVID-19, hepatitis</strong>) diperlukan untuk imigrasi.",
+        "iconKey": "jarum suntik",
+        "id": 4,
+        "note": ""
+      },
+      {
+        "title": "Bukti Dukungan Keuangan",
+        "description": "Anda mungkin perlu menunjukkan rekening koran, tawaran pekerjaan, atau sponsor untuk membuktikan bahwa Anda tidak akan menjadi beban publik.",
+        "iconKey": "tanda dolar",
+        "id": 5,
+        "note": ""
+      },
+      {
+        "title": "Catatan Kriminal Bersih",
+        "description": "Pemeriksaan latar belakang merupakan bagian dari proses imigrasi.",
+        "note": "Pelanggaran serius dapat menyebabkan penolakan visa.",
+        "iconKey": "shieldCheck",
+        "id": 6
+      },
+      {
+        "title": "Kemampuan Bahasa Inggris (Disarankan)",
+        "description": "Tidak wajib untuk semua jenis visa, tetapi mengetahui bahasa Inggris sangat membantu dalam <strong>kehidupan sehari-hari, pekerjaan, dan pendidikan</strong>.",
+        "iconKey": "pesanKotak",
+        "id": 7,
+        "note": ""
+      }
+    ],
+    "importantNote": {
+      "title": "Catatan Penting",
+      "description": "Persyaratan imigrasi dapat berubah. Selalu verifikasi informasi terbaru dari Departemen Luar Negeri AS atau Layanan Kewarganegaraan dan Imigrasi AS (USCIS) sebelum melanjutkan kepindahan Anda."
+    }
+  },
+  "ukUsGuide": {
+    "header": {
+      "icon": "🇬🇧➡️🇺🇸",
+      "title": "Pindah ke AS dari Inggris",
+      "subtitle": "Yang Perlu Anda Ketahui",
+      "description": "Pindah dari Inggris ke Amerika Serikat adalah langkah besar yang membutuhkan perencanaan, dokumen legal, dan pemahaman tentang perbedaan kehidupan di seberang Atlantik. Baik Anda pindah untuk peluang kerja, untuk bersama keluarga, atau untuk petualangan baru, panduan ini mencakup aspek-aspek penting dari relokasi lintas Atlantik Anda."
+    },
+    "quickNavigation": {
+      "title": "Navigasi Cepat"
+    },
+    "sections": [
+      {
+        "id": "persyaratan visa",
+        "icon": "🛂",
+        "title": "Persyaratan Visa",
+        "content": "Sebagai warga negara Inggris, Anda memerlukan visa untuk pindah ke AS dalam jangka panjang. Opsi umum meliputi:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span><strong>Visa Kerja (H-1B, L-1, O-1)</strong> – Untuk profesional terampil, transfer, atau kemampuan luar biasa</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span><strong>Kartu Hijau Berbasis Keluarga</strong> – Jika Anda memiliki kerabat dekat yang merupakan warga negara AS</span></li><li class=\"bg-white p-3 rounded-md <span class=\"text-sky-600 mr-2\">•</span><span><strong>Visa Pelajar (F-1)</strong> – Jika Anda belajar di AS</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span><strong>Visa Investor (E-2)</strong> – Untuk warga negara Inggris yang berinvestasi di bisnis AS</span></li></ul><p class=\"text-gray-700\">Proses permohonan visa membutuhkan perencanaan yang cermat, karena tingkat penolakan bisa tinggi untuk jenis visa tertentu.</p>"
+      },
+      {
+        "id": "proses aplikasi",
+        "icon": "📋",
+        "title": "Proses Pengajuan Visa",
+        "content": "<div class=\"mb-4\"><p class=\"text-gray-700 mb-4\">Proses permohonan visa melibatkan beberapa langkah:</p><ul class=\"text-gray-700 space-y-2 pl-4\"><li>• Ajukan permohonan secara online melalui Departemen Luar Negeri AS</li><li>• Jadwalkan wawancara di <strong>AS Kedutaan Besar di London</strong> atau <strong>Konsulat di Belfast</strong></li><li>• Siapkan dokumen yang diperlukan:</li></ul><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm mt-3\"><h4 class=\"font-medium text-sky-600 mb-2\">Dokumen yang Diperlukan:</h4><ul class=\"text-gray-700 space-y-1 pl-4\"><li>• Paspor yang masih berlaku</li><li>• Formulir permohonan visa</li><li>• Hasil pemeriksaan medis</li><li>• Bukti keuangan</li><li>• Dokumen sponsor/penawaran pekerjaan jika diperlukan</li><li>• Sertifikat pendidikan (untuk visa tertentu)</li></ul></div></div>"
+      },
+      {
+        "id": "perawatan kesehatan",
+        "icon": "🏥",
+        "title": "Layanan Kesehatan & Asuransi",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Tidak seperti NHS Inggris, perawatan kesehatan AS sebagian besar bersifat swasta dan bisa mahal</p><p>Anda perlu membeli <strong>asuransi kesehatan swasta</strong> — biaya bulanan berkisar antara <strong>$300–$700+ per orang</strong></p><p>Banyak perusahaan menawarkan asuransi kesehatan sebagai bagian dari paket tunjangan</p><p>Pertimbangkan asuransi yang mencakup repatriasi darurat di tahun pertama</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Tips:</strong> Mulailah meneliti pilihan asuransi kesehatan sebelum Anda tiba, dan pastikan Anda memiliki perlindungan sejak hari pertama di Amerika Serikat</span></p></div></div>"
+      },
+      {
+        "id": "biaya hidup",
+        "icon": "💷",
+        "title": "Perbandingan Biaya Hidup",
+        "content": "<div><div class=\"overflow-x-auto mb-4\"><table class=\"min-w-full bg-white border border-sky-200 rounded-lg\"><thead><tr class=\"bg-sky-100\"><th class=\"py-3 px-4 text-left border-b border-sky-200\">Pengeluaran</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">Amerika Serikat (rata-rata)</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">Inggris Raya (rata-rata)</th></tr></thead><tbody><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Sewa (apartemen 1 kamar tidur)</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$1.200–$3.000</td><td class=\"py-3 px-4 border-b border-sky-100\">£800–£1.200</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Perawatan Kesehatan</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$300–$700/bulan</td><td class=\"py-3 px-4 border-b border-sky-100\">NHS (didanai pajak)</td></tr><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Makan di restoran</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$15–$30</td><td class=\"py-3 px-4 border-b border-sky-100\">£10–£25</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Transportasi</td><td class=\"py-3 px-4 border-b border-sky-100 text-yellow-600\">$70–$100/bulan (bervariasi)</td><td class=\"py-3 px-4 border-b border-sky-100\">£60–£120/bulan</td></tr></tbody></table></div><p class=\"text-gray-700\">Biaya hidup sangat bervariasi tergantung lokasi. Kota-kota besar seperti New York, San Francisco, dan Los Angeles jauh lebih mahal daripada sebagian besar kota di Inggris, termasuk London.</p></div>"
+      },
+      {
+        "id": "perumahan",
+        "icon": "🏘️",
+        "title": "Mencari Perumahan",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Pasar sewa di AS bergerak cepat, terutama di kota-kota yang kompetitif</p><p>Sebagian besar pemilik rumah memerlukan pengecekan kredit, yang dapat menjadi tantangan bagi pendatang baru</p><p>Pertimbangkan sewa jangka pendek saat Anda pertama kali tiba hingga Anda menetap</p><p>Situs web pencarian sewa populer: Zillow, Apartments.com, Trulia, Realtor.com</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Tips:</strong> Bawalah surat referensi dari pemilik rumah di Inggris dan bukti pendapatan untuk membantu mengatasi kurangnya riwayat kredit di AS.</span></p></div></div>"
+      },
+      {
+        "id": "perbankan",
+        "icon": "💳",
+        "title": "Perbankan & Keuangan",
+        "content": "<div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Membuka rekening bank</h3><p class=\"text-gray-700\">Anda akan membutuhkan paspor, visa, bukti alamat, dan mungkin Nomor Jaminan Sosial (SSN) Anda.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Riwayat kredit</h3><p class=\"text-gray-700\">Riwayat kredit Anda di Inggris tidak dapat ditransfer ke AS. Anda perlu membangun kredit dari awal.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Pertimbangan Pajak</h3><p class=\"text-gray-700\">Sebagai ekspatriat Inggris, Anda perlu mengajukan SPT pajak di kedua negara, meskipun perjanjian pajak membantu mencegah pajak ganda.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Transfer Uang</h3><p class=\"text-gray-700\">Pertimbangkan layanan valuta asing khusus daripada bank untuk mendapatkan nilai tukar yang lebih baik saat mentransfer uang antara Inggris dan AS.</p></div></div></div>"
+      },
+      {
+        "id": "kehidupan sehari-hari",
+        "icon": "📱",
+        "title": "Penyesuaian Kehidupan Sehari-hari",
+        "content": "<div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Mengemudi</h3><p class=\"text-gray-700\">Anda akan mengemudi di sisi kanan jalan. Sebagian besar negara bagian mengizinkan Anda mengemudi dengan SIM Inggris Anda hingga 3 bulan, setelah itu Anda memerlukan SIM negara bagian.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Budaya memberi tip</h3><p class=\"text-gray-700\">Memberi tip diharapkan (15-20%) di restoran, untuk taksi, dan berbagai layanan.</p></div> Staf layanan mengandalkan tip sebagai bagian dari penghasilan mereka.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Sistem pengukuran</h3><p class=\"text-gray-700\">AS menggunakan pengukuran imperial untuk sebagian besar hal (mil, pon, Fahrenheit), yang mungkin memerlukan penyesuaian.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Telepon seluler</h3><p class=\"text-gray-700\">Operator utama termasuk AT&T, Verizon, dan T-Mobile. Pertimbangkan untuk mendapatkan kartu SIM atau paket lokal setibanya di sana.</p></div></div></div>"
+      },
+      {
+        "id": "budaya kerja",
+        "icon": "💼",
+        "title": "Perbedaan Budaya Kerja",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>AS Budaya kerja seringkali mencakup:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Jumlah hari libur lebih sedikit (biasanya 10-15 hari dibandingkan 20-25 hari di Inggris)</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Gaya komunikasi yang lebih langsung</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Jaringan sangat dihargai dan sering diharapkan</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Keseimbangan kerja-hidup sangat bervariasi tergantung perusahaan</span></li></ul></div>"
+      },
+      {
+        "id": "logistik pindahan",
+        "icon": "🛫",
+        "title": "Logistik Pindahan",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Biaya pindah internasional ke AS berkisar antara £2.000-£10.000 tergantung volume</p><p>Pertimbangkan apakah akan mengirim atau menjual barang-barang furnitur yang lebih besar (rumah di AS seringkali memiliki dimensi yang berbeda)</p><p>Pemeriksaan bea cukai memerlukan inventaris terperinci dari barang-barang yang dikirim</p><p>Hewan peliharaan dapat masuk ke AS tetapi harus memenuhi persyaratan kesehatan dan vaksinasi</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Tips:</strong> Untuk elektronik, periksa kompatibilitas tegangan karena AS menggunakan 110-120V (dibandingkan dengan Inggris) 230-240V).</span></p></div></div>"
+      },
+      {
+        "id": "menetap",
+        "icon": "📝",
+        "title": "Beristirahat Setelah Tiba",
+        "content": "<div><div class=\"space-y-4\"><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">1. Dapatkan Nomor Jaminan Sosial (SSN)</h3><p class=\"text-gray-700 mb-2\"><span class=\"font-medium\">Diperlukan untuk pekerjaan dan banyak layanan</span><br/>Kunjungi kantor Administrasi Jaminan Sosial setempat dengan paspor dan visa Anda</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">2. Dapatkan Kartu Identitas Negara atau Surat Izin Mengemudi</h3><p class=\"text-gray-700 mb-2\">Kunjungi Departemen Kendaraan Bermotor (DMV) negara bagian Anda atau lembaga yang setara</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">3. Atur Layanan Utilitas</h3><p class=\"text-gray-700 mb-2\">Atur layanan listrik, air, gas, internet, dan pengumpulan sampah</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">4. Daftar di Konsulat Inggris</h3><p class=\"text-gray-700 mb-2\">Opsional tetapi disarankan untuk pemberitahuan darurat</p></div></div></div>"
+      },
+      {
+        "id": "komunitas ekspatriat",
+        "icon": "👥",
+        "title": "Komunitas Ekspatriat Inggris",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Amerika Serikat memiliki komunitas ekspatriat Inggris yang besar di banyak kota, khususnya:</p><div class=\"grid grid-cols-2 md:grid-cols-5 gap-2 mb-4\"><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">New York</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Los Angeles</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Chicago</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Boston</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">San Francisco</div></div><p Anda akan menemukan pub Inggris, klub sosial, dan grup Facebook yang sangat berharga untuk membangun jaringan dan mendapatkan saran lokal dari orang lain yang telah melakukan langkah yang sama.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Daftar Periksa Akhir Sebelum Pindah ke AS",
+      "items": [
+        {
+          "text": "Amankan visa atau kartu hijau Anda.",
+          "fullWidth": false
+        },
+        {
+          "text": "Atur cakupan asuransi kesehatan.",
+          "fullWidth": false
+        },
+        {
+          "text": "Telusuri informasi mengenai perumahan di kota tujuan Anda.",
+          "fullWidth": false
+        },
+        {
+          "text": "Mengatur pengiriman barang-barang",
+          "fullWidth": false
+        },
+        {
+          "text": "Beri tahu HMRC dan otoritas Inggris lainnya.",
+          "fullWidth": false
+        },
+        {
+          "text": "Rencanakan pertukaran dan transfer mata uang.",
+          "fullWidth": false
+        },
+        {
+          "text": "Teliti kewajiban pajak di kedua negara",
+          "fullWidth": true
+        }
+      ]
+    },
+    "conclusion": {
+      "icon": "🎯",
+      "title": "Kesimpulan: Apakah Pindah ke AS Tepat untuk Anda?",
+      "description": "Pindah ke Amerika Serikat menawarkan peluang yang luar biasa tetapi juga disertai tantangan yang signifikan. Proses visa bisa memakan waktu lama, biaya perawatan kesehatan tinggi, dan menyesuaikan diri dengan budaya Amerika membutuhkan waktu. Namun, banyak ekspatriat Inggris menganggap peluang karier, lanskap yang beragam, dan gaya hidup yang ditawarkan sangat sepadan dengan transisi tersebut."
+    },
+    "checklist": [
+      {
+        "text": "Amankan visa atau kartu hijau Anda.",
+        "fullWidth": false
+      },
+      {
+        "text": "Atur cakupan asuransi kesehatan.",
+        "fullWidth": false
+      },
+      {
+        "text": "Telusuri informasi mengenai perumahan di kota tujuan Anda.",
+        "fullWidth": false
+      },
+      {
+        "text": "Mengatur pengiriman barang-barang",
+        "fullWidth": false
+      },
+      {
+        "text": "Beri tahu HMRC dan otoritas Inggris lainnya.",
+        "fullWidth": false
+      },
+      {
+        "text": "Rencanakan pertukaran dan transfer mata uang.",
+        "fullWidth": false
+      },
+      {
+        "text": "Teliti kewajiban pajak di kedua negara",
+        "fullWidth": true
+      }
+    ],
+    "accessibility": {
+      "sectionToggle": "Alihkan bagian: {judul}"
+    }
+  },
+  "visaOptions": {
+    "labels": {
+      "examples": "Contoh:",
+      "note": "Catatan:"
+    },
+    "visaTypes": [
+      {
+        "id": "keluarga",
+        "title": "1. Visa Berbasis Keluarga",
+        "description": "Untuk pasangan, anak, orang tua, atau saudara kandung dari warga negara AS atau penduduk tetap.",
+        "examples": {
+          "0": "IR-1 (Pasangan)",
+          "1": "F-2A (Preferensi Keluarga)"
+        },
+        "iconKey": "pengguna"
+      },
+      {
+        "id": "pekerjaan",
+        "title": "2. Visa Berbasis Pekerjaan",
+        "description": "Untuk <strong>para profesional terampil, pekerja, dan investor</strong>.",
+        "examples": {
+          "0": "<strong>H-1B:</strong> Pekerja terampil di bidang pekerjaan khusus",
+          "1": "<strong>L-1:</strong> Transfer antar perusahaan",
+          "2": "<strong>EB-2/EB-3:</strong> Kartu hijau berbasis pekerjaan",
+          "3": "<strong>O-1:</strong> Untuk individu dengan kemampuan luar biasa"
+        },
+        "iconKey": "tas kantor"
+      },
+      {
+        "id": "murid",
+        "title": "3. Visa Pelajar (F-1)",
+        "description": "Untuk mahasiswa internasional yang kuliah di <strong>institusi terakreditasi di AS</strong>.",
+        "examples": {
+          "0": "Memungkinkan kerja paruh waktu di kampus dan <strong>pelatihan praktik opsional (OPT)</strong> setelah lulus."
+        },
+        "iconKey": "Topi Wisuda"
+      },
+      {
+        "id": "investor",
+        "title": "4. Visa Investor (E-2 / EB-5)",
+        "description": "Bagi mereka yang ingin <strong>berinvestasi di Amerika Serikat</strong>.",
+        "examples": {
+          "0": "<strong>E-2:</strong> Untuk warga negara dari negara-negara yang terikat perjanjian yang menginvestasikan sejumlah besar uang di bisnis AS.",
+          "1": "<strong>EB-5:</strong> Kartu hijau bagi mereka yang berinvestasi <strong>$800.000+</strong> dan menciptakan lapangan kerja di AS."
+        },
+        "iconKey": "tanda dolar"
+      },
+      {
+        "id": "keberagaman",
+        "title": "5. Undian Kartu Hijau (Program Visa Keanekaragaman)",
+        "description": "Sebuah program pemerintah AS yang menawarkan <strong>izin tinggal tetap</strong> kepada orang-orang dari negara-negara yang memenuhi syarat melalui seleksi acak.",
+        "iconKey": "acak"
+      }
+    ]
+  }
+}

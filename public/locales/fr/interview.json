@@ -1,0 +1,171 @@
+{
+  "interview": {
+    "hero": {
+      "badge": "Services de coaching professionnel pour les entretiens d'embauche",
+      "headline": {
+        "prefix": "Maîtrisez votre",
+        "suffix": "Avec l'aide d'un expert"
+      },
+      "animatedWords": [
+        "Interview",
+        "Confiance",
+        "Succès",
+        "Performance",
+        "Compétences",
+        "L'excellence"
+      ],
+      "description": "Des simulations d'entretien aux commentaires personnalisés, nos services complets de coaching en entretien aident les professionnels à décrocher l'emploi de leurs rêves en toute confiance.",
+      "cta": {
+        "text": "Commencez votre préparation"
+      }
+    },
+    "showcase": {
+      "title": "Coaching d'entretien",
+      "subtitle": "Des conseils d'experts pour réussir les entretiens",
+      "mockInterview": {
+        "title": "Interviews fictives",
+        "subtitle": "Pratiquer avec des experts de l'industrie"
+      },
+      "features": [
+        {
+          "iconKey": "messageSquare",
+          "title": "Comportementale",
+          "description": "Questions et réponses basées sur la situation",
+          "gradient": "bg-gradient-to-r du ciel-500 au bleu-600"
+        },
+        {
+          "iconKey": "target",
+          "title": "Technique",
+          "description": "Évaluation des compétences",
+          "gradient": "bg-gradient-to-r de-violet-500 à-indigo-600"
+        },
+        {
+          "iconKey": "clock",
+          "title": "Calendrier",
+          "description": "Stratégie de réponse",
+          "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+        },
+        {
+          "iconKey": "award",
+          "title": "Retour d'information",
+          "description": "Analyse d'experts",
+          "gradient": "bg-gradient-to-r de-orange-500 à-rouge-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "95%",
+          "label": "Taux de réussite",
+          "color": "texte-ciel-600"
+        },
+        {
+          "value": "500+",
+          "label": "Clients accompagnés",
+          "color": "texte-bleu-600"
+        },
+        {
+          "value": "4.9★",
+          "label": "Evaluation",
+          "color": "texte-indigo-600"
+        }
+      ]
+    },
+    "serviceSection": {
+      "header": {
+        "title": "Ce service vous convient-il ?",
+        "description": "Notre coaching d'entretien en ligne a aidé des professionnels à tous les stades de leur carrière à décrocher l'emploi de leurs rêves, en particulier ceux qui recherchent des services de coaching d'entretien au Pakistan ou une aide à la préparation d'entretien pour les demandeurs d'emploi pakistanais."
+      },
+      "successStory": {
+        "label": "Histoire d'une réussite",
+        "badge": "Augmentation de salaire de 25",
+        "client": {
+          "name": "Sarmad Saleem",
+          "position": "Ingénieur logiciel, Toronto"
+        },
+        "testimonial": "\"Après avoir déménagé au Canada, j'étais angoissée à l'idée de passer un entretien. Le coaching m'a aidé à articuler mon expérience de manière claire et confiante. Nous avons aidé Sarmad à décrocher l'emploi qu'il visait, avec une offre supérieure de 25 %, dans les quatre mois qui ont suivi son arrivée au Canada.",
+        "readMore": "Lire la suite"
+      },
+      "testimonial": {
+        "label": "HISTOIRE D'UN SUCCÈS",
+        "quote": "CareerTuners m'a aidé à passer des entretiens d'embauche qui m'ont permis d'obtenir une promotion au sein de mon entreprise.",
+        "client": {
+          "name": "Meena Ansari",
+          "position": "Expert en sinistres commerciaux"
+        }
+      },
+      "questions": {
+        "title": "Réfléchissez aux questions suivantes :",
+        "items": [
+          "Vous n'êtes pas à l'aise pour expliquer pourquoi vous souhaitez quitter votre emploi actuel ?",
+          "Vous arrive-t-il de divaguer pendant les entretiens ?",
+          "Vous inquiétez-vous de la présence de \"signaux d'alarme\" sur votre CV ?"
+        ],
+        "conclusion": "Si vous avez répondu oui à l'une de ces questions, notre coaching d'entretien est fait pour vous."
+      },
+      "benefits": {
+        "title": "Notre coaching vous permettra de :",
+        "items": [
+          {
+            "iconKey": "messageCircle",
+            "text": "Répondre avec assurance aux questions difficiles."
+          },
+          {
+            "iconKey": "user",
+            "text": "Faire une bonne première impression et conclure les entretiens de manière positive"
+          },
+          {
+            "iconKey": "trendingUp",
+            "text": "Aborder facilement les discussions sur les lacunes en matière d'emploi, les changements d'emploi ou d'autres obstacles potentiels."
+          }
+        ]
+      },
+      "cta": {
+        "text": "Réservez votre session de coaching dès aujourd'hui"
+      }
+    }
+  },
+  "interviewTimeline": {
+    "badge": "NOTRE PROCESSUS ÉPROUVÉ",
+    "title": "Comment cela fonctionne-t-il ?",
+    "subtitle": "Nos coachs experts vous guident à travers ces trois étapes simples pour vous aider à préparer un entretien professionnel :",
+    "steps": [
+      {
+        "iconKey": "fileText",
+        "title": "Nous construisons un entretien-test sur mesure",
+        "description": "La première étape consiste à nous donner quelques informations sur vous, notamment votre curriculum vitae et l'offre d'emploi qui vous intéresse. Cette étape nous permet d'adapter votre session en fonction du type d'emploi, du secteur d'activité et des défis courants dans le cadre du <strong>service de formation à l'entretien d'embauche</strong>.",
+        "accentColor": "ciel-400",
+        "highlightColor": "sky-100",
+        "id": 1,
+        "number": "01"
+      },
+      {
+        "iconKey": "userCheck",
+        "title": "Le temps de rencontrer votre coach",
+        "description": "Votre coach est spécifiquement sélectionné en fonction de votre secteur d'activité, de votre fonction et de votre expérience. Vous effectuerez une simulation d'entretien avec votre coach et obtiendrez ensuite un retour personnalisé sur la manière d'affiner vos réponses et de vous démarquer lors de l'entretien. Notre <strong>coaching d'entretien individuel</strong> se concentre sur la maîtrise des entretiens comportementaux et sur la manière de surmonter les difficultés auxquelles vous pourriez être confronté(e).",
+        "accentColor": "ciel-500",
+        "highlightColor": "sky-100",
+        "id": 2,
+        "number": "02"
+      },
+      {
+        "iconKey": "video",
+        "title": "C'est en forgeant qu'on devient forgeron",
+        "description": "Après votre séance de coaching, vous recevrez un enregistrement de votre entretien ainsi que des commentaires spécifiques et un plan d'action personnalisé pour vous assurer que vous êtes prêt pour l'entretien. Ceci est particulièrement utile pour ceux qui recherchent un <strong>coaching d'entretien pour les jeunes diplômés</strong> ou pour les professionnels qui ont besoin d'une approche de <strong>coaching de carrière pour les entretiens</strong>.",
+        "accentColor": "ciel-600",
+        "highlightColor": "sky-100",
+        "id": 3,
+        "number": "03"
+      }
+    ],
+    "cta": {
+      "title": "Prêt à réussir votre prochain entretien ?",
+      "subtitle": "Rejoignez les milliers de candidats qui ont décroché l'emploi de leurs rêves",
+      "buttonText": "Réservez votre session de coaching en entretien",
+      "link": "/contact-us"
+    },
+    "accessibility": {
+      "stepLabel": "Étape {numéro} : {titre}",
+      "ctaLabel": "Réserver une session de coaching en entretien"
+    }
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "jobrecruitmenthero": {
+    "headline": {
+      "line1": "Des talents de haut niveau, des résultats concrets",
+      "highlight": "Embaucher plus intelligemment",
+      "line2": "avec JobsAdmire"
+    },
+    "description": "Notre plateforme de recrutement alimentée par l'IA associe une expertise sectorielle approfondie à une technologie de pointe pour vous mettre en relation avec des talents exceptionnels qui stimulent l'innovation et la croissance.",
+    "cta": {
+      "text": "Commencer maintenant"
+    },
+    "image": {
+      "src": "/images/rc.jpg",
+      "alt": "Services de recrutement"
+    }
+  },
+  "jobrecruitmentfull": {
+    "content": {
+      "headline": "Constituer des équipes à fort impact avec les meilleurs talents - de manière rapide, intelligente et transparente avec JobsAdmire",
+      "description": "Chez JobsAdmire, nous aidons les startups visionnaires et les entreprises internationales à recruter les meilleurs talents techniques - rapidement et efficacement. Nos recruteurs experts comprennent le rythme de l'entreprise moderne et proposent des candidats qui non seulement répondent à la description du poste, mais s'alignent sur vos objectifs à long terme. Qu'il s'agisse de développer des équipes agiles ou de pourvoir des postes techniques de niche, nos solutions de recrutement sont conçues pour simplifier l'embauche, augmenter la productivité et favoriser la croissance qui est à l'origine de votre succès.",
+      "cta": {
+        "text": "Parler à un expert"
+      }
+    },
+    "carousel": {
+      "firstColumn": [
+        {
+          "src": "/images/talentjr.png",
+          "alt": "Professionnel en tenue de travail",
+          "name": "Sarah Johnson",
+          "role": "Développeur principal"
+        },
+        {
+          "src": "/images/talent2.png",
+          "alt": "Professionnel de la technologie",
+          "name": "Michael Chen",
+          "role": "Responsable technique"
+        },
+        {
+          "src": "/images/talent3.png",
+          "alt": "Femme professionnelle",
+          "name": "Emma Davis",
+          "role": "Chef de produit"
+        }
+      ],
+      "secondColumn": [
+        {
+          "src": "/images/smart1.png",
+          "alt": "Professionnel souriant",
+          "name": "David Wilson",
+          "role": "Concepteur UX",
+          "location": "A distance"
+        },
+        {
+          "src": "/images/smart2.png",
+          "alt": "Designer professionnel",
+          "name": "Lisa Brown",
+          "role": "Développeur Frontend",
+          "location": "Sur place"
+        },
+        {
+          "src": "/images/smart3.png",
+          "alt": "Leader technologique",
+          "name": "James Miller",
+          "role": "Responsable de l'ingénierie",
+          "location": "Hybride"
+        }
+      ],
+      "staticImage": {
+        "src": "/images/news1.jpg",
+        "alt": "Portrait professionnel"
+      }
+    }
+  },
+  "recruitment": {
+    "header": {
+      "title": {
+        "prefix": "Prime",
+        "highlight": "Recrutement",
+        "suffix": "& Solutions RH"
+      },
+      "description": "Chez JobsAdmire, nous sommes spécialisés dans la mise en relation de talents exceptionnels avec des entreprises innovantes. Nos services complets de recrutement et de ressources humaines aident les entreprises à évoluer efficacement tout en garantissant l'adéquation parfaite entre la culture et les compétences pour chaque poste.",
+      "image": {
+        "alt": "Collaboration au sein de l'équipe professionnelle de JobsAdmire",
+        "src": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      }
+    },
+    "slides": {
+      "talentAcquisition": {
+        "title": "Acquisition de talents et chasseurs de têtes",
+        "subtitle": "Trouvez votre bonheur",
+        "description": "JobsAdmire met en relation des talents de premier plan avec des entreprises de premier plan dans le monde entier. Avec un accès à plus de 2 millions de professionnels dans les domaines de la technologie, de la finance, de la santé et autres, nous rendons l'embauche transparente et efficace.",
+        "steps": {
+          "requirements": "Définir les exigences et les spécifications du travail",
+          "sourcing": "Recherche et sélection des candidats",
+          "interview": "Coordination des entretiens et évaluation",
+          "selection": "Sélection finale et soutien à l'intégration"
+        },
+        "cta": "Commencez à embaucher dès aujourd'hui"
+      },
+      "hrDocumentation": {
+        "title": "Documentation et conformité des RH",
+        "subtitle": "Rationalisation et professionnalisme",
+        "description": "Services complets de documentation RH garantissant la conformité légale et les normes professionnelles. Des contrats aux politiques, nous répondons à tous vos besoins de documentation avec précision et expertise.",
+        "services": {
+          "contracts": "Contrats de travail et lettres d'offre",
+          "policies": "Politiques et procédures RH personnalisées",
+          "performance": "Indicateurs de performance et systèmes d'évaluation",
+          "compliance": "Conformité juridique et accords de confidentialité",
+          "compensation": "Structure des rémunérations et des avantages"
+        },
+        "cta": "Obtenir de l'aide pour la documentation"
+      },
+      "strategicConsulting": {
+        "title": "Conseil stratégique en ressources humaines",
+        "subtitle": "Dimensionner votre équipe de manière efficace",
+        "description": "Transformez vos opérations de ressources humaines grâce à nos services de conseil stratégique. Nous aidons les entreprises à optimiser leur gestion des talents, à améliorer les taux de rétention et à constituer des équipes performantes.",
+        "services": {
+          "workforce": "Planification et stratégie en matière de main-d'œuvre",
+          "teamStructure": "Optimisation de la structure de l'équipe",
+          "retention": "Programmes de fidélisation des employés",
+          "culture": "Solutions en matière de culture et d'engagement"
+        },
+        "cta": "Planifier une consultation"
+      }
+    }
+  },
+  "scrollingheadline": {
+    "primary": "TROUVER DES TALENTS DANS LE DOMAINE DE LA TECHNOLOGIE AVEC JOBSADMIRE",
+    "secondary": "TALENTS TECHNOLOGIQUES AVEC EMPLOISADMIRE"
+  },
+  "jobrecruitmenthero1": {
+    "content": {
+      "headline": "Pourquoi les grandes entreprises font confiance à JobsAdmire pour constituer des équipes techniques performantes",
+      "description": "JobsAdmire est le partenaire de confiance en matière de recrutement pour les entreprises technologiques de premier plan et les startups à croissance rapide en Asie, au Moyen-Orient et en Europe. Avec plus de 2 500 placements réussis dans le monde, nous avons gagné notre réputation en fournissant des professionnels hautement qualifiés et prêts à l'emploi qui stimulent l'innovation et les résultats. En 2024, JobsAdmire reste la plateforme de référence pour les organisations qui cherchent à développer leurs équipes techniques avec rapidité, précision et confiance.",
+      "cta": "Parler à un expert",
+      "featureTags": [
+        "Les meilleurs talents",
+        "Embauche rapide",
+        "Portée mondiale",
+        "Solutions sur mesure"
+      ]
+    },
+    "carousel": {
+      "firstColumn": {
+        "images": [
+          {
+            "src": "/images/trust1.png",
+            "alt": "Professionnel en tenue de travail",
+            "name": "Sarah Chen",
+            "role": "Ingénieur logiciel senior"
+          },
+          {
+            "src": "/images/trust2.png",
+            "alt": "Professionnel de la technologie",
+            "name": "Ahmed Hassan",
+            "role": "Développeur Full Stack"
+          },
+          {
+            "src": "/images/trust6.png",
+            "alt": "Femme professionnelle",
+            "name": "Maria Rodriguez",
+            "role": "Chef de produit"
+          }
+        ]
+      },
+      "secondColumn": {
+        "images": [
+          {
+            "src": "/images/trust3.png",
+            "alt": "Professionnel souriant",
+            "name": "David Kim",
+            "role": "Ingénieur DevOps",
+            "location": "A distance"
+          },
+          {
+            "src": "/images/trust4.png",
+            "alt": "Designer professionnel",
+            "name": "Emma Thompson",
+            "role": "Concepteur UX/UI",
+            "location": "Sur place"
+          },
+          {
+            "src": "/images/trust5.png",
+            "alt": "Leader technologique",
+            "name": "Raj Patel",
+            "role": "Responsable technique",
+            "location": "Hybride"
+          }
+        ]
+      },
+      "joinCard": {
+        "badge": "Rejoignez-nous",
+        "title": "Développez votre carrière",
+        "description": "Explorer les possibilités offertes par les grandes entreprises"
+      }
+    },
+    "locationLabels": {
+      "remote": "A distance",
+      "onsite": "Sur place",
+      "hybrid": "Hybride"
+    }
+  }
+}

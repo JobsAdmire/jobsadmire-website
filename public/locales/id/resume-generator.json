@@ -1,0 +1,357 @@
+{
+  "title": "Pembuat Resume Profesional",
+  "description": "Buat resume profesional yang menakjubkan dalam hitungan menit.",
+  "steps": {
+    "personalInfo": "Informasi Pribadi",
+    "achievements": "Prestasi",
+    "workExperience": "Pengalaman Kerja",
+    "education": "Pendidikan",
+    "projects": "Proyek",
+    "skills": "Keterampilan"
+  },
+  "stepIcons": {
+    "personalInfo": "👤",
+    "achievements": "🏆",
+    "workExperience": "💼",
+    "education": "🎓",
+    "projects": "🚀",
+    "skills": "⚡"
+  },
+  "stepDescriptions": {
+    "personalInfo": "Ceritakan tentang diri Anda dan buat kesan pertama yang baik.",
+    "achievements": "Tunjukkan pencapaian utama Anda dan tampil menonjol di antara yang lain.",
+    "workExperience": "Uraikan perjalanan profesional dan pencapaian penting dalam karier Anda.",
+    "education": "Bagikan latar belakang pendidikan dan prestasi akademik Anda.",
+    "projects": "Tampilkan proyek-proyek pribadi yang menunjukkan keahlian Anda.",
+    "skills": "Tunjukkan kemampuan teknis dan soft skill Anda yang membuat Anda berharga."
+  },
+  "buttons": {
+    "back": "Kembali ke {{langkah}}",
+    "back_mobile": "Kembali",
+    "continue": "Lanjutkan ke {{langkah}}",
+    "continue_mobile": "Melanjutkan",
+    "saveSkill": "Simpan Keterampilan",
+    "generateResume": "Buat Resume",
+    "saveProgress": "Simpan Kemajuan",
+    "needHelp": "Butuh Bantuan?",
+    "previewResume": "Pratinjau Resume",
+    "addAnotherExperience": "Tambahkan Pengalaman Lain",
+    "addAnotherEducation": "Tambahkan Pendidikan Lainnya",
+    "addAnotherProject": "Tambahkan Proyek Lain",
+    "addAnotherSkill": "Tambahkan Keterampilan Lain",
+    "addAchievement": "Tambahkan Prestasi",
+    "viewTemplates": "Lihat Templat",
+    "cancel": "Membatalkan",
+    "applyCrop": "Terapkan Tanaman",
+    "choosePhoto": "Pilih Foto"
+  },
+  "features": {
+    "fastEasy": {
+      "icon": "⚡",
+      "title": "Cepat & Mudah",
+      "description": "Buat resume profesional dalam hitungan menit dengan proses langkah demi langkah kami yang intuitif."
+    },
+    "beautifulTemplates": {
+      "icon": "🎨",
+      "title": "Templat yang Indah",
+      "description": "Pilih dari koleksi templat resume kami yang dirancang secara profesional."
+    },
+    "atsOptimized": {
+      "icon": "📊",
+      "title": "ATS Dioptimalkan",
+      "description": "Resume kami dioptimalkan agar dapat melewati Sistem Pelacakan Pelamar (Applicant Tracking Systems)."
+    }
+  },
+  "proTips": {
+    "title": "Tips Profesional: {{step}}",
+    "personalInfo": {
+      "tip1": {
+        "title": "Email Profesional",
+        "description": "Gunakan alamat email profesional yang didasarkan pada nama Anda, bukan nama panggilan atau alamat yang aneh."
+      },
+      "tip2": {
+        "title": "Ringkasan yang Berpengaruh",
+        "description": "Buatlah ringkasan Anda ringkas (3-5 kalimat) dan soroti kualifikasi dan tujuan karir Anda yang paling mengesankan."
+      },
+      "tip3": {
+        "title": "Foto Profesional",
+        "description": "Jika menyertakan foto, gunakan foto profil profesional dengan latar belakang netral dan pakaian yang sesuai."
+      },
+      "tip4": {
+        "title": "Detail Kontak",
+        "description": "Cantumkan hanya informasi kontak yang penting dan pastikan semua detail terkini dan akurat."
+      }
+    },
+    "achievements": {
+      "tip1": {
+        "title": "Mengukur Hasil",
+        "description": "Gunakan angka dan persentase untuk mengukur pencapaian Anda (misalnya, \"Meningkatkan penjualan sebesar 25%\" daripada \"Meningkatkan penjualan\")."
+      },
+      "tip2": {
+        "title": "Hasil vs. Tanggung Jawab",
+        "description": "Fokuslah pada hasil dan pencapaian, bukan sekadar mencantumkan tanggung jawab pekerjaan untuk menonjol dari kandidat lain."
+      },
+      "tip3": {
+        "title": "Penghargaan & Pengakuan",
+        "description": "Sertakan penghargaan, pengakuan, dan kehormatan yang relevan yang menunjukkan keahlian dan nilai Anda."
+      },
+      "tip4": {
+        "title": "Gunakan Kata Kerja Aksi",
+        "description": "Awali deskripsi pencapaian dengan kata kerja tindakan yang kuat seperti \"mencapai,\" \"memimpin,\" \"menerapkan,\" atau \"menciptakan.\""
+      }
+    }
+  },
+  "progress": {
+    "stepsCompleted": "{{count}} dari 6 langkah",
+    "currentStep": "Saat ini: Langkah {{step}} - {{title}}",
+    "currentStep_mobile": "Saat ini: Langkah {{step}}",
+    "progressPercentage": "{{persentase}}%"
+  },
+  "step1": {
+    "title": "INFORMASI PRIBADI",
+    "basicDetails": "Detail Dasar",
+    "firstName": "Nama depan",
+    "firstNamePlaceholder": "Masukkan nama depan Anda",
+    "firstNameRequired": "Nama depan wajib diisi.",
+    "middleName": "Nama tengah",
+    "middleNameOptional": "(opsional)",
+    "middleNamePlaceholder": "misalnya Herbert",
+    "lastName": "Nama Belakang",
+    "lastNamePlaceholder": "Masukkan nama belakang Anda",
+    "lastNameRequired": "Nama belakang wajib diisi.",
+    "professionalProfile": "Profil Profesional",
+    "profilePhoto": "Foto Profil",
+    "uploadInstructions": "Klik untuk mengunggah dan memotong foto Anda",
+    "imageSizeError": "Ukuran file harus kurang dari 5MB.",
+    "imageTypeError": "File harus berformat JPEG, PNG, atau GIF.",
+    "designation": "Penamaan",
+    "designationPlaceholder": "Contoh: Akuntan Senior",
+    "address": "Alamat",
+    "addressPlaceholder": "Masukkan alamat Anda",
+    "contactInformation": "Informasi Kontak",
+    "email": "Alamat Email",
+    "emailPlaceholder": "Masukkan email Anda",
+    "emailRequired": "Email wajib diisi.",
+    "emailInvalid": "Email tidak valid",
+    "phone": "Nomor Telepon",
+    "phonePlaceholder": "Masukkan nomor telepon Anda",
+    "phoneRequired": "Nomor telepon wajib diisi.",
+    "summary": "Ringkasan Profesional",
+    "summaryPlaceholder": "Jelaskan secara singkat latar belakang profesional Anda, keterampilan utama, dan tujuan karir Anda.",
+    "summaryTip": "Ringkasan yang kuat membantu Anda menonjol. Buatlah ringkasan yang ringkas dan berdampak.",
+    "cropperTitle": "Pangkas Foto Profil Anda",
+    "zoom": "Zoom: {{zoom}}x",
+    "preview": "Pratinjau:",
+    "cropInstructions": {
+      "drag": "• Seret gambar untuk memposisikannya",
+      "zoom": "• Gunakan penggeser zoom untuk mengubah ukuran",
+      "cropArea": "• Lingkaran tersebut menunjukkan area tanaman Anda"
+    }
+  },
+  "step2": {
+    "description": "Tunjukkan pencapaian Anda yang luar biasa.",
+    "noAchievements": "Belum ada pencapaian yang ditambahkan. Tambahkan pencapaian pertama Anda di bawah ini.",
+    "remove": "Menghapus",
+    "delete": "Menghapus",
+    "addNew": "Tambahkan Prestasi Baru",
+    "achievementTitle": "Judul Prestasi",
+    "achievementTitlePlaceholder": "Masukkan judul pencapaian",
+    "date": "Tanggal",
+    "achievementDescription": "Keterangan",
+    "achievementDescriptionPlaceholder": "Jelaskan pencapaian Anda",
+    "title": "ACHIEVEMENTS"
+  },
+  "step3": {
+    "workExperience": "Pengalaman Kerja #{{indeks}}",
+    "jobTitle": "Judul",
+    "jobTitlePlaceholder": "Masukkan jabatan",
+    "jobTitleRequired": "Judul pekerjaan wajib diisi.",
+    "company": "Perusahaan/Organisasi",
+    "companyPlaceholder": "Masukkan nama perusahaan",
+    "companyRequired": "Nama perusahaan wajib diisi.",
+    "location": "Lokasi",
+    "locationPlaceholder": "misalnya San Francisco, CA",
+    "startDate": "Tanggal Mulai",
+    "startDateRequired": "Tanggal mulai wajib diisi.",
+    "endDate": "Tanggal Akhir",
+    "endDateOptional": "(atau biarkan kosong jika sudah terisi)",
+    "endDateTip": "Biarkan kosong jika ini adalah posisi Anda saat ini.",
+    "description": "Keterangan",
+    "descriptionPlaceholder": "Jelaskan tanggung jawab, pencapaian, dan keterampilan yang Anda gunakan dalam peran ini.",
+    "descriptionTip": "Gunakan poin-poin agar lebih mudah dibaca. Fokus pada pencapaian daripada tugas.",
+    "title": "EXPERIENCE"
+  },
+  "step4": {
+    "educationEntry": "Pendidikan #{{indeks}}",
+    "school": "Sekolah",
+    "schoolPlaceholder": "Masukkan nama sekolah atau universitas",
+    "schoolRequired": "Nama sekolah wajib diisi.",
+    "degree": "Derajat",
+    "degreePlaceholder": "contohnya Sarjana Sains",
+    "degreeRequired": "Gelar pendidikan diperlukan.",
+    "city": "Kota",
+    "cityPlaceholder": "misalnya Boston, MA",
+    "startDate": "Tanggal Mulai",
+    "startDatePlaceholder": "mm/yyyy",
+    "startDateRequired": "Tanggal mulai wajib diisi.",
+    "endDate": "Tanggal Akhir",
+    "endDateOptional": "(atau Saat Ini)",
+    "endDatePlaceholder": "mm/yyyy atau Sekarang",
+    "description": "Keterangan",
+    "descriptionOptional": "(opsional)",
+    "descriptionPlaceholder": "Jelaskan prestasi Anda, IPK, mata kuliah yang relevan, dll.",
+    "descriptionTip": "Cantumkan mata kuliah, penghargaan, atau kegiatan ekstrakurikuler yang relevan dengan tujuan karir Anda.",
+    "title": "EDUCATION"
+  },
+  "step5": {
+    "projectEntry": "Proyek #{{indeks}}",
+    "projectName": "Nama Proyek",
+    "projectNamePlaceholder": "Masukkan nama proyek",
+    "projectNameRequired": "Nama proyek wajib diisi.",
+    "projectLink": "Tautan Proyek",
+    "projectLinkOptional": "(opsional)",
+    "projectLinkInvalid": "Tautan tidak valid",
+    "description": "Keterangan",
+    "descriptionPlaceholder": "Jelaskan proyek tersebut, teknologi yang digunakan, dan peran Anda.",
+    "descriptionTip": "Jelaskan tujuan, teknologi yang digunakan, dan kontribusi spesifik Anda.",
+    "title": "PROJECTS",
+    "projectLinkPlaceholder": "https://example.com/project"
+  },
+  "step6": {
+    "skillsTitle": "Keterampilan Teknis & Profesional",
+    "skillsDescription": "Tambahkan keterampilan yang relevan dengan posisi yang Anda lamar.",
+    "skillPlaceholder": "Contoh: JavaScript, Manajemen Proyek, Analisis Data",
+    "skillRequired": "Nama keahlian wajib diisi.",
+    "tipsTitle": "Tips untuk Meningkatkan Keterampilan Membuat Daftar",
+    "tip1": "Sertakan perpaduan antara keterampilan teknis (keras) dan keterampilan interpersonal (lunak).",
+    "tip2": "Prioritaskan keterampilan yang disebutkan dalam deskripsi pekerjaan yang Anda targetkan.",
+    "tip3": "Sebutkan secara spesifik keterampilan teknis (misalnya, \"React.js\" dan bukan hanya \"JavaScript\").",
+    "title": "SKILLS"
+  },
+  "tooltip": {
+    "prefix": "Langkah {{step}}: {{title}}",
+    "completed": "✓"
+  },
+  "alts": {
+    "cropPreviewAlt": "Pratinjau pemangkasan",
+    "previewAlt": "Pratinjau",
+    "profileAlt": "Profil"
+  },
+  "templateSelector": {
+    "selectTemplate": "Pilih Templat",
+    "selected": "✓ Terpilih",
+    "defaultSummary": "Tempat penampung ringkasan profesional"
+  },
+  "sections": {
+    "skills": "Keterampilan",
+    "education": "Pendidikan",
+    "experience": "Pengalaman",
+    "workExperience": "Pengalaman Kerja",
+    "professionalSkills": "Keterampilan Profesional",
+    "jobExperience": "Pengalaman Kerja",
+    "proSkills": "Keterampilan Profesional",
+    "references": "Referensi",
+    "projects": "Proyek",
+    "achievements": "Prestasi",
+    "contact": "Kontak",
+    "aboutMe": "Tentang Saya",
+    "profile": "Profil",
+    "previousEmployment": "Riwayat Pekerjaan Sebelumnya",
+    "software": "Perangkat lunak",
+    "languages": "Bahasa",
+    "reference": "Referensi",
+    "awards": "Penghargaan",
+    "contactMe": "Hubungi saya"
+  },
+  "fallbacks": {
+    "noSummaryAvailable": "Tidak ada ringkasan yang tersedia.",
+    "unnamedSkill": "Keterampilan tanpa nama",
+    "noDataAvailable": "Tidak ada data yang tersedia",
+    "availableUponRequest": "Tersedia berdasarkan permintaan."
+  },
+  "labels": {
+    "phone": "Telepon",
+    "email": "E-mail",
+    "address": "Alamat"
+  },
+  "actions": {
+    "generatePdf": "Buat PDF",
+    "generatingPdf": "Membuat PDF..."
+  },
+  "messages": {
+    "referencesAvailableOnRequest": "Referensi profesional akan diberikan atas permintaan."
+  },
+  "resumeBuilder": "Pembuat Resume",
+  "forms": {
+    "personalInfoTitle": "Informasi Pribadi",
+    "buildProfileSubtitle": "Buat profil profesional Anda",
+    "profilePhoto": "Foto Profil",
+    "profileAlt": "Profil",
+    "changePhoto": "Ganti Foto",
+    "uploadPhoto": "Unggah Foto",
+    "headshotTip": "Unggah foto profil profesional. Disarankan: ukuran 400x400 piksel, format JPG atau PNG.",
+    "firstName": "Nama depan",
+    "lastName": "Nama Belakang",
+    "placeholderFirstName": "John",
+    "placeholderLastName": "Kelinci betina",
+    "emailAddress": "Alamat Email",
+    "phoneNumber": "Nomor telepon",
+    "placeholderEmail": "Masukkan email Anda",
+    "placeholderPhone": "Masukkan nomor telepon Anda",
+    "location": "Lokasi",
+    "placeholderLocation": "misalnya San Francisco, CA",
+    "placeholderLocationExample": "New York, NY",
+    "linkedinProfile": "Profil LinkedIn",
+    "placeholderLinkedIn": "linkedin.com/in/johndoe",
+    "websitePortfolio": "Situs web/Portofolio",
+    "placeholderPortfolio": "www.johndoe.com",
+    "professionalSummary": "Ringkasan Profesional",
+    "placeholderSummary": "Ringkasan profesional singkat yang menyoroti pencapaian utama, keterampilan, dan tujuan karir Anda...",
+    "summaryHint": "Buatlah agar menarik dan ringkas.",
+    "characters": "karakter",
+    "jobTitlePlaceholder": "Jabatan",
+    "companyPlaceholder": "Nama perusahaan",
+    "locationPlaceholder": "Lokasi",
+    "descriptionPlaceholder": "Jelaskan tanggung jawab dan pencapaian Anda.",
+    "experienceLabel": "Pengalaman",
+    "jobTitle": "Jabatan",
+    "company": "Perusahaan",
+    "placeholderJobTitle": "Pengembang Perangkat Lunak",
+    "placeholderCompany": "Perusahaan Teknologi Inc.",
+    "placeholderLocationExp": "San Francisco, California",
+    "startDate": "Tanggal Mulai",
+    "endDate": "Tanggal Akhir",
+    "currentWorkHere": "Saat ini saya bekerja di sini.",
+    "description": "Keterangan",
+    "addExperience": "Tambahkan Pengalaman",
+    "educationLabel": "Pendidikan",
+    "degreePlaceholder": "Derajat",
+    "universityPlaceholder": "Nama universitas",
+    "degree": "Derajat",
+    "school": "Sekolah",
+    "placeholderDegree": "Sarjana Sains di bidang Ilmu Komputer",
+    "placeholderSchool": "Universitas Teknologi",
+    "placeholderLocationEdu": "Boston, MA",
+    "gpaPlaceholder": "IPK (opsional)",
+    "gpaOptional": "IPK (opsional)",
+    "placeholderGpa": "3.8/4.0",
+    "addEducation": "Tambahkan Pendidikan",
+    "certificationLabel": "Sertifikasi",
+    "certificationNamePlaceholder": "Nama sertifikasi",
+    "issuerPlaceholder": "Penerbit",
+    "certificationName": "Nama Sertifikasi",
+    "issuingOrganization": "Organisasi Penerbit",
+    "dateObtained": "Tanggal Diperoleh",
+    "placeholderCertification": "Arsitek Solusi Bersertifikasi AWS",
+    "placeholderIssuer": "Amazon Web Services",
+    "addCertification": "Tambahkan Sertifikasi",
+    "skillsPlaceholder": "JavaScript",
+    "addSkill": "Tambahkan Keterampilan",
+    "beginner": "Pemula",
+    "intermediate": "Intermediat",
+    "advanced": "Canggih",
+    "expert": "Pakar",
+    "placeholderEmailExample": "john.doe@email.com",
+    "placeholderPhoneExample": "+1 (555) 123-4567"
+  }
+}

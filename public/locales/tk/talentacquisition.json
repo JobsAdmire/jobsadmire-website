@@ -1,0 +1,304 @@
+{
+  "talentacquisition": {
+    "hero": {
+      "badge": "Strategik zehinleri toplamak hyzmatlary",
+      "headline": {
+        "prefix": "Tapyň",
+        "suffix": "Siziň guramaňyz üçin"
+      },
+      "animatedWords": [
+        "Iň gowy zehinler",
+        "Iň gowy topar",
+        "Dogry adamlar",
+        "Iň gowy ölçeg",
+        "Ýyldyz oýunçylar",
+        "Arzuw topary"
+      ],
+      "description": "Guramaňyz üçin iň gowy zehinleri üpjün etmek üçin işe almagy ýeňilleşdiriň. Kompaniýaňyzyň özboluşly zerurlyklaryny kanagatlandyrmak üçin taýýarlanan doly işe alyş we zehinleri gözlemek çözgütleri.",
+      "cta": {
+        "text": "Zehinli işgärleriň tapylmagyna başlaň"
+      }
+    },
+    "showcase": {
+      "title": "Zehinli adamlaryň tapylmagy",
+      "subtitle": "Üstünligiňiz üçin strategik işe alyş",
+      "talentPool": {
+        "title": "Zehinler toparyna giriş",
+        "subtitle": "Talaplara laýyk dalaşgärler bilen habarlaşyň"
+      },
+      "services": [
+        {
+          "icon": "Gözleg",
+          "title": "Satyn alyş",
+          "description": "Kandidat tapyş",
+          "gradient": "asman-500-den-blue-600-e bg-gradient-dan-r-a"
+        },
+        {
+          "icon": "Nyşana",
+          "title": "Skrining",
+          "description": "Hil bahalandyrmasy",
+          "gradient": "bg-gradient-dan-r-a-purple-500-den-indigo-600-a"
+        },
+        {
+          "icon": "Ulanyjy barlagy",
+          "title": "Gabat gelýär",
+          "description": "Kämil gabat gelýän zady tapmak",
+          "gradient": "bg-gradient-to-r from-zumrud-500 to-temiz-600"
+        },
+        {
+          "icon": "Sylag",
+          "title": "Işe kabul edilmek",
+          "description": "Ýumşak integrasiýa",
+          "gradient": "bg-gradient-to-r-a-apelsin-500-den-gyzyl-600-e"
+        }
+      ],
+      "stats": [
+        {
+          "label": "Hyzmat edilen kompaniýalar",
+          "color": "tekst-sky-600",
+          "value": "300+"
+        },
+        {
+          "label": "Üstünlik derejesi",
+          "color": "tekst-gök-600",
+          "value": "85%"
+        },
+        {
+          "label": "Ortaça günlük kireý",
+          "color": "tekst-indigo-600",
+          "value": "30"
+        }
+      ]
+    }
+  },
+  "talentacquisitionsection1": {
+    "process": {
+      "title": {
+        "prefix": "Biziň toplumlaýyn",
+        "highlight": "Zehinleri Özleşdirmegiň Prosesi"
+      },
+      "description": "Biz işe almagyň ajaýyp netijelerini gazanmak üçin ulgamlaýyn we açyk prosesi yzarlaýarys",
+      "steps": [
+        {
+          "icon": "Nyşana",
+          "title": "Işçi güýjüni meýilleşdirmek we iş seljermesi",
+          "description": "Biz siziň işçi güýjüňiziň zerurlyklaryny, kompaniýanyň medeniýetini we iş talaplaryny düşünmek üçin HR toparyňyz we dolandyryşyňyz bilen ýakyndan hyzmatdaşlyk edýäris.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "tekst-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10",
+          "id": 1
+        },
+        {
+          "icon": "Tor",
+          "title": "Gözleg we aragatnaşyk",
+          "description": "Giň ulgamymyzy, iş portallarymyzy, sosial mediany we innowasion çeşme gözleme usullaryny ulanyp, biz dürli derejeli dalaşgärleri özüne çekýäris.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "tekst-gök-500",
+          "bgLight": "bg-blue-500/10",
+          "id": 2
+        },
+        {
+          "icon": "Süzgüç",
+          "title": "Skrining we Bahalandyrma",
+          "description": "Biz iň gowy dalaşgäri saýlamak üçin rezýumeleriň, söhbetdeşlikleriň, başarnyklaryň bahalandyrylmagynyň we özüni alyp barşyň bahalandyrylmagynyň üsti bilen düýpli barlag geçirýäris.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "tekst-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10",
+          "id": 3
+        },
+        {
+          "icon": "Kalendar",
+          "title": "Söhbetdeşligi utgaşdyrmak",
+          "description": "Söhbetdeşligiň rahat geçmegini üpjün etmek üçin dalaşgärler bilen işe alýan menejerleriňiziň arasyndaky tertibi we aragatnaşygy dolandyrmak.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "tekst-gök-600",
+          "bgLight": "bg-blue-600/10",
+          "id": 4
+        },
+        {
+          "icon": "Ulanyjy barlagy",
+          "title": "Saýlama we Teklipleri Dolandyrmak",
+          "description": "Bazar standartlaryna we dalaşgärleriň garaşmalaryna laýyk gelýän bäsdeşlikli iş tekliplerini kabul etmekde we giňeltmekde kömek bermek.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "tekst-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10",
+          "id": 5
+        },
+        {
+          "icon": "UserPlus",
+          "title": "Işe kabul etmek üçin goldaw",
+          "description": "HR işe almak we işe kabul etmek boýunça kömegimiz arkaly täze işe alnanlaryň guramaňyza sazlaşykly goşulmagyna kömek etmek üçin işe kabul edilmek prosesini ýeňilleşdirmek.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "tekst-gök-500",
+          "bgLight": "bg-blue-500/10",
+          "id": 6
+        }
+      ]
+    },
+    "flow": {
+      "title": "Proses akymynyň ýeňilleşdirilmegi",
+      "description": "Meýilnamalaşdyrmakdan başlap, işe kabul edilmäge çenli - biz size kömek ederis",
+      "stepLabel": "Ädim"
+    },
+    "cta": "Zehinlileri Özleşdirmegiň Syýahatyna Başlaň"
+  },
+  "talentacquisitionsection2": {
+    "whyPartner": {
+      "badge": "HYZMATDAŞLYKYŇ ARTYKMAÇLYKLARY",
+      "title": {
+        "prefix": "Näme üçin hyzmatdaşlyk etmeli",
+        "highlight": "Işlere haýran galmak",
+        "suffix": "Zehinleri gazanmak üçinmi?"
+      },
+      "reasons": [
+        {
+          "icon": "Sylag",
+          "title": "Pudaklar boýunça tejribe",
+          "description": "Biziň işe alyjylarymyz dürli pudaklarda ýöriteleşýärler, pudaga degişli bilimleri we dalaşgärleriň hilini üpjün edýärler.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "tekst-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Maglumat bazasy",
+          "title": "Iň gowy zehinlere elýeterlilik",
+          "description": "Biz dalaşgärleri siziň talaplaryňyza çalt laýyk getirmek üçin giň maglumat bazasyny we zehinler gaznasyny saklaýarys.",
+          "color": "bg-blue-500",
+          "textColor": "tekst-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Sazlamalar",
+          "title": "Özleşdirilen çözgütler",
+          "description": "Işewürlik ölçegiňize, medeniýetiňize we işe alma maksatlaryňyza laýyklykda döredilen kompaniýalar üçin çeýe işe alma çözgütleri.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "tekst-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Zap",
+          "title": "Tehnologiýa esaslanýan çemeleşme",
+          "description": "Netijeli işe almak üçin öňdebaryjy dalaşgärleri yzarlamak ulgamlaryny (ATS) we maglumat seljermesini ulanmak.",
+          "color": "bg-blue-600",
+          "textColor": "tekst-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Ulanyjylar",
+          "title": "Köpdürlülige we inklüziwlige ünsi jemlemek",
+          "description": "Biz size innowasiýa we üstünlik gazanmaga itergi berýän dürli toparlary döretmäge kömek edýäris.",
+          "color": "bg-[#38B6FF]",
+          "textColor": "tekst-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Galkan",
+          "title": "Hil kepilligi",
+          "description": "Biz uzak möhletli ýerleşdirişleriň üstünlikli bolmagyny üpjün etmek üçin çalşyryş kepilliklerini we dowamly goldawy berýäris.",
+          "color": "bg-blue-700",
+          "textColor": "tekst-[#38B6FF]",
+          "bgLight": "bg-[#38B6FF]/10"
+        }
+      ]
+    },
+    "benefits": {
+      "title": "Zehinli Talantlary Toplamak Hyzmatymyzyň Peýdalary",
+      "subtitle": "Biznesiňizi öňe iterýän ölçäp boljak netijeler",
+      "items": [
+        {
+          "icon": "Sagat",
+          "title": "Işe almak üçin sarp edilýän wagtyň we her bir işe almagyň bahasynyň azaldylmagy",
+          "color": "tekst-[#38B6FF]"
+        },
+        {
+          "icon": "TrenddeUp",
+          "title": "Işe alnanlaryň hiliniň we işde saklanmagyň derejesiniň ýokarlanmagy",
+          "color": "tekst-[#38B6FF]"
+        },
+        {
+          "icon": "Ýyldyz",
+          "title": "Iş beriji brendiniň we dalaşgärleriň tejribesiniň ýokarlandyrylmagy",
+          "color": "tekst-[#38B6FF]"
+        },
+        {
+          "icon": "BarChart3",
+          "title": "Ösýän kärhanalar üçin ölçeklendirilip bilinýän işe kabul ediş çözgütleri",
+          "color": "tekst-[#38B6FF]"
+        },
+        {
+          "icon": "Nyşana",
+          "title": "Işewürlik maksatlaryňyz bilen utgaşdyrylan strategik işçi güýjüni meýilleşdirmek",
+          "color": "tekst-[#38B6FF]"
+        }
+      ],
+      "stats": [
+        {
+          "label": "Çalt işe almak prosesi",
+          "color": "tekst-[#38B6FF]",
+          "value": "50%"
+        },
+        {
+          "label": "Çykdajylary azaltmak",
+          "color": "tekst-gök-500",
+          "value": "30%"
+        },
+        {
+          "label": "Müşderi kanagatlylygy",
+          "color": "tekst-[#38B6FF]",
+          "value": "95%"
+        }
+      ]
+    },
+    "whoBenefits": {
+      "title": {
+        "prefix": "Kim edip biler",
+        "highlight": "Peýdasy barmy?"
+      },
+      "description": "Biziň zehinleri işe almak hyzmatlarymyz ähli ölçegdäki we pudakdaky guramalar üçin niýetlenendir",
+      "audience": [
+        {
+          "icon": "Raketa",
+          "title": "Başlangyç kompaniýalar",
+          "description": "Ilkinji toparlaryny gurmagy göz öňünde tutýarlar",
+          "color": "bg-[#38B6FF]",
+          "textColor": "tekst-[#38B6FF]"
+        },
+        {
+          "icon": "TrenddeUp",
+          "title": "Ösýän Biznesler",
+          "description": "Ölçeglenip bilinýän işe alma çözgütlerine mätäçlik",
+          "color": "bg-[#38B6FF]",
+          "textColor": "tekst-[#38B6FF]"
+        },
+        {
+          "icon": "Bina",
+          "title": "Kärhanalar",
+          "description": "Ýöriteleşdirilen ýa-da ýolbaşçy zehinleri gözleýärin",
+          "color": "bg-[#38B6FF]",
+          "textColor": "tekst-[#38B6FF]"
+        },
+        {
+          "icon": "Sazlamalar",
+          "title": "HR bölümleri",
+          "description": "Işe kabul etmek iş akymlaryny optimizirlemäge gönükdirilen",
+          "color": "bg-[#38B6FF]",
+          "textColor": "tekst-[#38B6FF]"
+        },
+        {
+          "icon": "Ulanyjylar",
+          "title": "Dürli guramalar",
+          "description": "Köpdürlülige we inkluziw başlangyçlara ygrarly",
+          "color": "bg-[#38B6FF]",
+          "textColor": "tekst-[#38B6FF]"
+        },
+        {
+          "icon": "Nyşana",
+          "title": "Işe kabul ediş agentlikleri",
+          "description": "Olaryň zehin gözlemek mümkinçiliklerini giňeltmek",
+          "color": "bg-[#38B6FF]",
+          "textColor": "tekst-[#38B6FF]"
+        }
+      ]
+    }
+  }
+}

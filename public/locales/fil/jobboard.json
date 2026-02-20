@@ -1,0 +1,171 @@
+{
+  "hero": {
+    "title": "Hanapin ang Iyong Pangarap na Trabaho",
+    "subtitle": "Tuklasin ang mga oportunidad na tumutugma sa iyong hilig, kasanayan, at mga layunin sa karera",
+    "search": {
+      "jobPlaceholder": "Titulo ng trabaho, kasanayan o mga keyword...",
+      "locationPlaceholder": "Lungsod, bansa o liblib...",
+      "buttonText": "Maghanap ng mga Trabaho"
+    },
+    "popular": {
+      "label": "Sikat:",
+      "tags": [
+        "Malayo",
+        "Teknolohiya",
+        "Pagmemerkado",
+        "Disenyo",
+        "Pananalapi"
+      ]
+    }
+  },
+  "stats": {
+    "jobs": {
+      "count": "10,580+",
+      "label": "Mga Listahan ng Trabaho"
+    },
+    "candidates": {
+      "count": "8.8M+",
+      "label": "Mga Kandidato"
+    },
+    "countries": {
+      "label": "Mga Bansa",
+      "count": "120+"
+    },
+    "successRate": {
+      "label": "Antas ng Tagumpay",
+      "count": "95%"
+    }
+  },
+  "categories": {
+    "title": "Galugarin ang mga Oportunidad",
+    "tabs": [
+      {
+        "key": "lahat",
+        "label": "Lahat ng Trabaho"
+      },
+      {
+        "key": "itinampok",
+        "label": "Itinatampok"
+      },
+      {
+        "key": "kamakailan",
+        "label": "Kamakailan"
+      },
+      {
+        "key": "malayo",
+        "label": "Malayo"
+      },
+      {
+        "key": "teknolohiya",
+        "label": "Teknolohiya"
+      },
+      {
+        "key": "pagmemerkado",
+        "label": "Pagmemerkado"
+      }
+    ]
+  },
+  "filters": {
+    "title": "Mga Filter",
+    "clearAll": "I-clear lahat",
+    "jobType": {
+      "title": "Uri ng Trabaho",
+      "options": [
+        {
+          "id": "buong oras",
+          "value": "buong_oras",
+          "label": "Buong Oras"
+        },
+        {
+          "id": "part-time",
+          "value": "part-time",
+          "label": "Part-Time"
+        },
+        {
+          "id": "kontrata",
+          "value": "kontrata",
+          "label": "Kontrata"
+        },
+        {
+          "id": "malayo",
+          "value": "malayo",
+          "label": "Malayo"
+        }
+      ]
+    },
+    "experience": {
+      "title": "Antas ng Karanasan",
+      "options": [
+        {
+          "id": "pasukan",
+          "label": "Antas ng Pagpasok"
+        },
+        {
+          "id": "kalagitnaan",
+          "label": "Gitnang Antas"
+        },
+        {
+          "id": "nakatatanda",
+          "label": "Antas ng Senior"
+        },
+        {
+          "id": "ehekutibo",
+          "label": "Ehekutibo"
+        }
+      ]
+    },
+    "salary": {
+      "title": "Saklaw ng Sweldo",
+      "min": "$0",
+      "max": "$100k+"
+    },
+    "datePosted": {
+      "title": "Petsa ng Pag-post",
+      "options": [
+        {
+          "id": "kahit ano",
+          "label": "Anumang oras"
+        },
+        {
+          "id": "araw",
+          "label": "Nakalipas na 24 oras"
+        },
+        {
+          "id": "linggo",
+          "label": "Nakaraang linggo"
+        },
+        {
+          "id": "buwan",
+          "label": "Nakaraang buwan"
+        }
+      ]
+    },
+    "applyButton": "Ilapat ang mga Filter"
+  },
+  "jobListings": {
+    "title": "Mga Bakanteng Trabaho",
+    "showing": "Ipinapakita",
+    "opportunities": "mga pagkakataon",
+    "sortBy": {
+      "label": "Ayusin ayon sa:",
+      "options": [
+        "Pinaka-may-katuturan",
+        "Pinakabago",
+        "Pinakamataas na Sweldo",
+        "Pinakasikat"
+      ]
+    }
+  },
+  "jobCard": {
+    "featured": "Itinatampok",
+    "new": "Bago",
+    "requirements": "Mga Kinakailangan:",
+    "benefits": "Mga Benepisyo:",
+    "viewDetails": "Tingnan ang mga detalye",
+    "hideDetails": "Itago ang mga detalye",
+    "applyNow": "Mag-apply Ngayon"
+  },
+  "cta": {
+    "postJob": "Mag-post ng Trabaho"
+  }
+}

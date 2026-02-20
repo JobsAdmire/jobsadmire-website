@@ -1,0 +1,73 @@
+{
+  "header": {
+    "title": "Бартарии муҳоҷирати Туркия",
+    "subtitle": "Табдил додани орзуҳо ба маконҳои нек",
+    "description": "Хизматрасониҳои олии муҳоҷират, ки истеъдодҳои беҳтаринро бо имкониятҳои сатҳи ҷаҳонӣ дар Туркия бо 98% сатҳи муваффақият мепайванданд."
+  },
+  "stats": {
+    "successStories": "Қиссаҳои муваффақият",
+    "globalPartners": "Шарикони ҷаҳонӣ",
+    "successRate": "Сатҳи муваффақият",
+    "expertSupport": "Дастгирии коршиносон",
+    "always": "Ҳамеша"
+  },
+  "regions": {
+    "all": "Ҳама",
+    "south-asia": "Осиёи Ҷанубӣ",
+    "southeast-asia": "Осиёи Ҷанубу Шарқӣ",
+    "africa": "Африқо"
+  },
+  "countries": {
+    "source": {
+      "pakistan": {
+        "specialty": "Муҳандисӣ ва IT"
+      },
+      "india": {
+        "specialty": "Тандурустӣ ва технология"
+      },
+      "bangladesh": {
+        "specialty": "Истеҳсолот"
+      },
+      "philippines": {
+        "specialty": "Ҳамширагӣ ва нигоҳубин"
+      },
+      "nigeria": {
+        "specialty": "Нафт ва газ"
+      },
+      "sriLanka": {
+        "specialty": "Меҳмоннавозӣ"
+      }
+    }
+  },
+  "routes": {
+    "volumes": {
+      "veryHigh": "Хеле баланд",
+      "high": "Баланд",
+      "medium": "Миёна"
+    },
+    "durations": {
+      "duration1": "6-12 моҳ",
+      "duration2": "8-14 моҳ",
+      "duration3": "4-8 моҳ",
+      "duration4": "6-10 моҳ",
+      "duration5": "5-9 моҳ",
+      "duration6": "3-6 моҳ"
+    }
+  },
+  "tooltip": {
+    "volume": "Ҳаҷм",
+    "success": "Муваффақият"
+  },
+  "legend": {
+    "sourceCountries": "Кишварҳои манбаъ",
+    "destinationCountries": "Кишварҳои мақсаднок",
+    "premiumDestinations": "Маконҳои олӣ",
+    "activeMigrationRoutes": "Роҳҳои муҳоҷирати фаъол",
+    "liveActivity": "Зинда: 47 дархост коркард мешавад"
+  },
+  "successStory": {
+    "recentSuccess": "Муваффақиятҳои ахир",
+    "example": "Аҳмад К. → Канада 🇨🇦",
+    "status": "Вуруди экспресс тасдиқ карда шуд!"
+  }
+}

@@ -1,0 +1,204 @@
+{
+  "header": {
+    "title": "Unsere Dienstleistungen",
+    "subtitle": "Durch unsere umfassenden Karrieredienste werden Fachleute mit Möglichkeiten in der ganzen Welt in Kontakt gebracht."
+  },
+  "viewSelector": {
+    "grid": "Raster",
+    "masonry": "Gemäuer",
+    "carousel": "Karussell"
+  },
+  "card": {
+    "viewPage": "Seite anzeigen",
+    "viewDetails": "Details anzeigen"
+  },
+  "carousel": {
+    "previousSlide": "Vorheriges Dia",
+    "nextSlide": "Nächste Folie",
+    "goToSlide": "Zum Dia gehen"
+  },
+  "modal": {
+    "close": "Schließen Sie",
+    "overview": "Übersicht",
+    "keyFeatures": "Wesentliche Merkmale",
+    "technologies": "Technologien",
+    "visitServicePage": "Service-Seite besuchen",
+    "stats": {
+      "projects": "Projekte",
+      "satisfaction": "Zufriedenstellung",
+      "support": "Unterstützung"
+    }
+  },
+  "services": {
+    "resumeService": {
+      "title": "Lebenslauf Service",
+      "description": "Von der Erstellung von Aufzählungspunkten bis zur automatischen Formatierung hilft Ihnen unser Lebenslaufersteller, schnell und mühelos einen professionellen Lebenslauf zu erstellen.",
+      "longDesc": "Unser professioneller Schreibservice für Lebensläufe hilft Arbeitssuchenden bei der Erstellung aussagekräftiger, ATS-freundlicher Lebensläufe, die ihre einzigartigen Qualifikationen hervorheben und ihre Chancen auf ein Vorstellungsgespräch erhöhen. Wir schneiden jeden Lebenslauf auf bestimmte Branchen und Positionen zu.",
+      "features": [
+        "ATS-Optimierung",
+        "Branchenspezifische Formate",
+        "Schlüsselwort-Erweiterung",
+        "Professionelle Überprüfung"
+      ],
+      "technologies": [
+        "Lebenslauf-Vorlagen",
+        "ATS-Werkzeuge",
+        "Entwurfssoftware",
+        "Inhaltliche Strategie"
+      ]
+    },
+    "globalJobPlacement": {
+      "title": "Globale Arbeitsvermittlung",
+      "description": "Vom personalisierten Job-Matching bis hin zur Visumsunterstützung bringen wir Fachkräfte mit Top-Arbeitgebern auf der ganzen Welt zusammen - nahtlos und effizient.",
+      "longDesc": "Unser globaler Arbeitsvermittlungsdienst bringt talentierte Fachkräfte mit internationalen Karrieremöglichkeiten zusammen und kümmert sich um alles, vom Job-Matching bis zur Umzugslogistik und kulturellen Vorbereitung.",
+      "features": [
+        "Partnerschaften mit Arbeitgebern",
+        "Visa-Unterstützung",
+        "Unterstützung bei Umzügen",
+        "Vorbereitung auf das Vorstellungsgespräch"
+      ],
+      "technologies": [
+        "Job-Matching-Algorithmus",
+        "Globale Datenbank",
+        "Visabearbeitung",
+        "Umzugs-Tools"
+      ]
+    },
+    "interviewCoaching": {
+      "title": "Interview-Coaching",
+      "description": "Von Probeinterviews bis hin zu persönlichem Feedback - unser umfassendes Interview-Coaching hilft Berufstätigen, ihre Traumjobs mit Selbstvertrauen zu finden.",
+      "longDesc": "Unser Interview-Coaching bereitet die Bewerber darauf vor, in jedem Interviewformat zu glänzen - mit maßgeschneiderten Übungssitzungen, detailliertem Feedback und Strategien, die auf bestimmte Rollen und Branchen zugeschnitten sind.",
+      "features": [
+        "Probeinterviews",
+        "Branchenspezifische Ausbildung",
+        "Körpersprache-Coaching",
+        "Vorbereitung von Fragen"
+      ],
+      "technologies": [
+        "Video-Analyse",
+        "AI-Rückmeldung",
+        "Interview-Simulation",
+        "Persönliches Coaching"
+      ]
+    },
+    "careerCounselling": {
+      "title": "Berufsberatung",
+      "description": "Von der Laufbahnbeurteilung bis hin zu individuellen Entwicklungsplänen - unsere umfassende Beratung hilft Berufstätigen, ihren perfekten Weg zu finden.",
+      "longDesc": "Unser Karriereberatungsdienst hilft Berufstätigen in allen Phasen, ihre Stärken zu erkennen, geeignete Karrierewege zu erkunden und umsetzbare Pläne zu entwickeln, um ihre beruflichen Ziele zu erreichen.",
+      "features": [
+        "Bewertung der beruflichen Laufbahn",
+        "Analyse der Stärke",
+        "Zielsetzung",
+        "Einblicke in die Industrie"
+      ],
+      "technologies": [
+        "Persönlichkeitstests",
+        "Bewertung von Fähigkeiten",
+        "Karriere-Mapping",
+        "Entwicklungsplanung"
+      ]
+    },
+    "visaRelocation": {
+      "title": "Visum & Umzug",
+      "description": "Von der Beantragung eines Visums bis zum Einzug in Ihr neues Zuhause - unsere umfassenden Relocation-Services helfen Ihnen, sich in einem neuen Land zurechtzufinden.",
+      "longDesc": "Unsere Visa- und Relocation-Dienste bieten umfassende Unterstützung während des gesamten Einwanderungsprozesses, von der Vorbereitung der Dokumente über die Wohnungssuche bis hin zur Eingewöhnung in Ihre neue Umgebung.",
+      "features": [
+        "Visumantrag",
+        "Vorbereitung der Dokumente",
+        "Hilfe beim Wohnen",
+        "Lokale Integration"
+      ],
+      "technologies": [
+        "Einwanderungsdatenbank",
+        "Verwaltung von Dokumenten",
+        "Gehäuse-Netzwerk",
+        "Umzugsplanung"
+      ]
+    },
+    "skillDevelopment": {
+      "title": "Entwicklung von Fertigkeiten",
+      "description": "Von Anfängerworkshops bis hin zu Expertenzertifizierungen - unsere Qualifizierungsprogramme befähigen Fachkräfte, gefragte Fähigkeiten für die Chancen von morgen zu beherrschen.",
+      "longDesc": "Unsere Qualifizierungsprogramme bieten gezielte Schulungen für stark nachgefragte Qualifikationen mit maßgeschneiderten Lernpfaden, praktischen Projekten und Zertifizierungsvorbereitungen, die das berufliche Fortkommen fördern.",
+      "features": [
+        "Individuelles Lernen",
+        "Praktische Projekte",
+        "Vorbereitung auf die Zertifizierung",
+        "Mentoring durch Experten"
+      ],
+      "technologies": [
+        "E-Learning-Plattform",
+        "Projekt-Simulation",
+        "Bewertungsinstrumente",
+        "Zertifizierungsprogramme"
+      ]
+    },
+    "remoteWorkOpportunities": {
+      "title": "Möglichkeiten der Fernarbeit",
+      "description": "Von der Vermittlung von Fernarbeitsplätzen bis hin zur Unterstützung bei der Einrichtung von Heimarbeitsplätzen - wir helfen Fachleuten mit maßgeschneiderten Lösungen, sich am virtuellen Arbeitsplatz zu behaupten.",
+      "longDesc": "Unser Fernarbeitsservice ist darauf spezialisiert, Fachkräfte mit hochwertigen Fernarbeitsplätzen zu verbinden, sie bei der Nutzung virtueller Arbeitsmittel zu beraten und bei der Einrichtung produktiver Heimarbeitsplätze zu unterstützen.",
+      "features": [
+        "Job-Matching aus der Ferne",
+        "Virtuelle Zusammenarbeit",
+        "Home Office Einrichtung",
+        "Work-Life-Balance"
+      ],
+      "technologies": [
+        "Plattform für Fernarbeit",
+        "Virtuelle Werkzeuge",
+        "Produktivitätssoftware",
+        "Digitale Kommunikation"
+      ]
+    },
+    "talentAcquisition": {
+      "title": "Talentakquise",
+      "description": "Von der Identifizierung der idealen Kandidaten bis hin zum nahtlosen Onboarding unterstützt unsere Talentakquisitionsplattform Unternehmen beim effizienten Aufbau leistungsfähiger Teams.",
+      "longDesc": "Unser Talentakquisitionsservice unterstützt Unternehmen bei der Identifizierung, Gewinnung und Bindung von Spitzentalenten mit maßgeschneiderten Rekrutierungsstrategien, Bewerberbewertungen und effizienten Onboarding-Prozessen.",
+      "features": [
+        "Gezielte Rekrutierung",
+        "Kandidatenscreening",
+        "Bewertung von Fähigkeiten",
+        "Onboarding-Unterstützung"
+      ],
+      "technologies": [
+        "ATS-Plattform",
+        "Bewertungsinstrumente",
+        "Interview Management",
+        "Onboarding-System"
+      ]
+    },
+    "immigration": {
+      "title": "Einwanderung",
+      "description": "Von der Beantragung eines Visums bis hin zur dauerhaften Aufenthaltsgenehmigung werden Sie von unseren fachkundigen Einwanderungsberatern mit persönlicher Unterstützung durch jeden Schritt des Verfahrens geführt.",
+      "longDesc": "Unsere Einwanderungsberater bieten fachkundige Beratung zu allen Einwanderungswegen, kümmern sich um komplexe Unterlagen, bereiten Anträge vor und bieten fortlaufende Unterstützung während Ihrer gesamten Einwanderungsreise.",
+      "features": [
+        "Visa-Bewertung",
+        "Vorbereitung der Bewerbung",
+        "Juristische Unterstützung",
+        "Statusverfolgung"
+      ],
+      "technologies": [
+        "Einwanderungsdatenbank",
+        "Überprüfung von Dokumenten",
+        "Verwaltung von Anwendungen",
+        "Rechtliche Ressourcen"
+      ]
+    },
+    "jobRecruitment": {
+      "title": "Rekrutierung",
+      "description": "Von der Suche nach Kandidaten bis zur endgültigen Vermittlung helfen unsere umfassenden Rekrutierungsdienste Unternehmen, weltweit mit Präzision und Effizienz Spitzenkräfte zu finden.",
+      "longDesc": "Unser Stellenvermittlungsservice ist darauf spezialisiert, Arbeitgeber mit qualifizierten Bewerbern aus verschiedenen Branchen zusammenzubringen. Dabei nutzen wir fortschrittliche Screening-Verfahren und globale Talentnetzwerke, um perfekte Übereinstimmungen zu gewährleisten.",
+      "features": [
+        "Globale Talentbeschaffung",
+        "Fortgeschrittenes Screening",
+        "Kompetenz in der Industrie",
+        "Schnelle Platzierung"
+      ],
+      "technologies": [
+        "Plattform für Personalbeschaffung",
+        "Kandidaten-Datenbank",
+        "Screening-Tools",
+        "Abgleich-Algorithmus"
+      ]
+    }
+  }
+}

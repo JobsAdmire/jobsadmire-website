@@ -1,0 +1,194 @@
+{
+  "header": {
+    "badge": "Türkiýäniň 1-nji derejeli raýatlyk boýunça maslahat beriş gullugy",
+    "title": {
+      "line1": "Siziň açyň",
+      "line2": "Türkiýäniň geljegi"
+    },
+    "subtitle": "Türkiýe raýatlygy bilen durmuşyňyzy özgerdiň. Hünärmenleriň görkezmesi, subut edilen netijeler we täze raýatlygyňyza aňsatlyk bilen ýetmek üçin ýol.",
+    "buttons": {
+      "startJourney": "Syýahatyňyzy başlaň",
+      "scheduleConsultation": "Maslahat beriş tertibini düzüň"
+    }
+  },
+  "form": {
+    "title": "Mugt maslahatyňyzy alyň",
+    "fields": {
+      "name": {
+        "label": "Doly ady *",
+        "placeholder": "Siziň doly adyňyz"
+      },
+      "email": {
+        "label": "E-poçta *",
+        "placeholder": "your.email@domain.com"
+      },
+      "phone": {
+        "label": "Telefon",
+        "placeholder": "+1 (555) 000-0000"
+      },
+      "pathway": {
+        "label": "Saýlanan ýol",
+        "placeholder": "Ýolu saýlaň",
+        "options": {
+          "investment": "Maýa goýum ýoly"
+        }
+      },
+      "message": {
+        "label": "Ýagdaýyňyz barada bize gürrüň beriň",
+        "placeholder": "Maksatlaryňyzy, wagt çyzgylaryňyzy we islendik anyk soraglaryňyzy paýlaşyň..."
+      }
+    },
+    "submitButton": "Mugt maslahat alyň",
+    "disclaimer": "Mugt maslahat • 24 sagadyň dowamynda jogap • Borçlanma ýok"
+  },
+  "sections": {
+    "pathways": {
+      "title": "Raýatlyk ýollary",
+      "subtitle": "Türk raýatlygyna ýetmegiň dürli ýollary, her biri dürli ýagdaýlar üçin niýetlenen",
+      "popularBadge": "Iň meşhur"
+    },
+    "benefits": {
+      "title": "Türkiýe raýatlygynyň peýdalary",
+      "subtitle": "Mümkinçilikleriň we artykmaçlyklaryň dünýäsini açyň",
+      "items": [
+        "Dünýäniň 110+ ýurduna wizasyz syýahat",
+        "Türkiýede ýaşamak we işlemek üçin çäksiz hukuk",
+        "Türkiýäniň saglygy goraýyş ulgamyna doly elýeterlilik",
+        "Ýokary bilim mümkinçilikleri",
+        "Çäklendirilmedik emläk eýeçilik hukuklary",
+        "Biznes gurmak üçin doly erkinlik",
+        "ÝB-ne dalaşgärlik agzalygynyň artykmaçlyklary",
+        "Iki raýatlyga kanuny taýdan rugsat berilýär"
+      ]
+    },
+    "process": {
+      "title": "Biziň subut edilen usulymyz",
+      "subtitle": "Her ädimde hünärmenleriň görkezmesi bilen Türkiýe raýatlygyna aňsat we açyk ýol",
+      "stepIndicator": "{Jemi} ädimden {häzirki} ädim"
+    },
+    "services": {
+      "title": "Hyzmatlarymyz",
+      "subtitle": "Syýahatyňyzyň dowamynda hemmetaraplaýyn goldaw",
+      "items": [
+        {
+          "title": "Programmany doly dolandyrmak",
+          "description": "Başdan-aýak taýýarlamak we tabşyrmak"
+        },
+        {
+          "title": "Resminamanyň tassyklanmagy",
+          "description": "Hünärmen tassyklama hyzmatlary"
+        },
+        {
+          "title": "Terjime hyzmatlary",
+          "description": "Tassyklamaly terjime we notarial tassyklama"
+        },
+        {
+          "title": "Hukuk maslahaty",
+          "description": "Ekspert immigrasiýa boýunça görkezme"
+        },
+        {
+          "title": "Maýa goýum goldawy",
+          "description": "Jaý saýlamakda kömek"
+        },
+        {
+          "title": "Hökümet bilen aragatnaşyk",
+          "description": "Göni häkimiýet aragatnaşygy"
+        },
+        {
+          "title": "Programmany yzarlamak",
+          "description": "Real wagt režiminde öňegidişlikleriň gözegçiligi"
+        },
+        {
+          "title": "Raýatlykdan soňky goldaw",
+          "description": "Tassyklamadan soň hem kömek dowam edýär"
+        }
+      ]
+    },
+    "contact": {
+      "title": "Başlamaga taýynmy?",
+      "subtitle": "Biziň hünärmen maslahatymyz bilen Türkiýe raýatlygyna ilkinji ädimi ädiň. Mugt baha beriş, şahsylaşdyrylan görkezmeler we açyk bahalar.",
+      "features": {
+        "consultation": "30 minutlyk mugt maslahat",
+        "response": "24 sagadyň dowamynda jogap",
+        "assessment": "Borçnama bahalandyrylmaýar"
+      },
+      "submitButton": "Syýahatyňyzy başlaň"
+    }
+  },
+  "citizenshipTypes": {
+    "investment": {
+      "title": "Maýa goýum arkaly raýatlyk",
+      "description": "Strategik emläk maýa goýumlary arkaly türk raýatlygyny çaltlandyrmak",
+      "requirements": [
+        "Iň az 400,000 dollarlyk emläk maýa goýumy",
+        "Emlägi 3 ýyllap saklaň",
+        "Arassa jenaýat geçmişi",
+        "Saglyk ätiýaçlandyryşy"
+      ],
+      "timeframe": "3-6 aý"
+    },
+    "birth": {
+      "title": "Dogluş boýunça raýatlyk",
+      "description": "Resmileşdirilen maşgala mirasy arkaly Türkiýäniň raýatlygyny talap ediň",
+      "requirements": [
+        "Türk ene-atasy ýa-da ene-atalary",
+        "Resmi dogluş şahadatnamalary",
+        "Türk nesil daragtynyň subutnamasy",
+        "Güýçli şahsyýeti tassyklaýan resminamalar"
+      ],
+      "timeframe": "2-4 aý"
+    },
+    "marriage": {
+      "title": "Nikalaşmak arkaly raýatlyk",
+      "description": "Türkiýäniň raýatlary bilen nikalaşmak arkaly raýatlygy üpjün etmek",
+      "requirements": [
+        "Türkiýe raýaty bilen 3+ ýyl nikada bolan",
+        "Türk diliniň esasy başarnyklary",
+        "Howpsuzlyk geçmişini barlamak",
+        "Maliýe durnuklylygynyň subutnamasy"
+      ],
+      "timeframe": "4-8 aý"
+    },
+    "naturalization": {
+      "title": "Naturalizasiýa",
+      "description": "Uzak möhletli ýaşamak üçin razylyk bermek arkaly raýatlygy almak",
+      "requirements": [
+        "5+ ýyl dowamly ýaşaýyş",
+        "Ösen türk dili",
+        "Arassa jenaýat ýazgylary",
+        "Ykdysady integrasiýa subutnamasy"
+      ],
+      "timeframe": "6-12 aý"
+    }
+  },
+  "processSteps": {
+    "consultation": {
+      "title": "Ilkinji maslahat",
+      "description": "Mugt laýyklyk bahalandyrmasy we ýol teklipnamasy",
+      "detail": "Iň gowy raýatlyk ýoluny kesgitlemek üçin özboluşly ýagdaýyňyzyň ekspert bahalandyrmasy"
+    },
+    "documentation": {
+      "title": "Resminamalary taýýarlamak",
+      "description": "Dokumentasiýalary doly ýygnamak we barlamak",
+      "detail": "Hünärmen tassyklama we terjime bilen giňişleýin resminama ýygnamak"
+    },
+    "filing": {
+      "title": "Arza tabşyrmak",
+      "description": "Resmi hökümet arzasyny tabşyrmak",
+      "detail": "Doly arza toplumy bilen Türkiýäniň häkimiýetlerine üznüksiz tabşyrmak"
+    },
+    "review": {
+      "title": "Gözden geçiriliş işleri",
+      "description": "Hökümetiň gözden geçirmesi we geçmişiň barlanmagy",
+      "detail": "Yzygiderli gözegçilik we täzelenmeler bilen jikme-jik gözden geçirmek prosesi"
+    },
+    "approval": {
+      "title": "Soňky tassyklama",
+      "description": "Raýatlygy tassyklamak we dabaranyň tertibini düzmek",
+      "detail": "Resmi raýatlyk resminamalary bilen prosesiň tamamlanmagy"
+    }
+  },
+  "alerts": {
+    "thankYouMessage": "Soragyňyz üçin sag boluň! 24 sagadyň dowamynda siziň bilen habarlaşarys."
+  }
+}

@@ -1,0 +1,131 @@
+{
+  "navigation": {
+    "package": "Paket",
+    "home": "Öý"
+  },
+  "hero": {
+    "title": {
+      "line1": "Başlaň",
+      "line2": "Şu günki syýahat"
+    },
+    "description": "Syýahat zerurlyklaryňyz üçin resmi elektron çakylyklary aňsatlyk bilen sorap bilersiňiz. Syýahatçylyk, iş ýa-da konferensiýa/seminarlar üçin bolsa-da, Jobs Admire wiza prosesiňizi ýeňilleşdirýär"
+  },
+  "form": {
+    "iAmFrom": "Men şu ýerden",
+    "iLiveIn": "Men ýaşaýaryn",
+    "invitationFor": "Çakylyk",
+    "selectCountry": "Ýurdy saýlaň",
+    "selectDestination": "Barmaly ýeri saýlaň",
+    "searchCountries": "Ýurtlary gözläň...",
+    "loadingCountries": "Ýurtlar ýüklenýär...",
+    "noCountriesFound": "Hiç bir ýurt tapylmady",
+    "findNow": "Häzir tap"
+  },
+  "packages": {
+    "title": "Hyzmat Paketini Saýlaň",
+    "description": "Syýahat arzuwlaryňyzy hakykata öwürmek üçin niýetlenen giňişleýin hyzmat paketlerimizden saýlaň. Wiza arzaňyzyň üstünlikli we stresssiz bolmagyny üpjün etmek üçin biz çalt işleme, bäsdeşlikli nyrhlar we hünärmen maslahatlaryny hödürleýäris.",
+    "showingPackagesFor": "Paketler görkezilýär:",
+    "packageFor": "Paket üçin",
+    "selectedCountry": "Saýlanan ýurt",
+    "recommended": "Maslahat berilýär",
+    "save": "Sakla",
+    "getStarted": "Başlaň",
+    "needHelp": "Saýlamakda kömek gerekmi?",
+    "contactExperts": "Biziň hünärmenlerimiz bilen habarlaşyň",
+    "processingTime48Hours": "Çakylygy işläp çykarmak wagty 48 sagat",
+    "documentationProcessingTime48Hours": "Resminamalary işläp taýýarlamak wagty 48 sagat",
+    "features": {
+      "fastProcessing": "Çalt işleniş",
+      "hours96Valid": "96 sagat güýjünde",
+      "airportTransit": "Howa menziliniň tranziti",
+      "days14Valid": "14 gün güýjünde",
+      "days30Valid": "30 gün güýjünde",
+      "touristBusiness": "Goşmaça adam (5 ýaşdan ýokary): her adam üçin 200 ABŞ dollary",
+      "touristBusinesss": "Syýahatçy | Biznes",
+      "singleEntry": "Bir gezeklik giriş",
+      "singleMultipleEntry": "Bir | Köp giriş"
+    }
+  },
+  "alerts": {
+    "selectAllFields": "Ähli zerur meýdanlary saýlaň"
+  },
+  "errors": {
+    "failedToLoadCountries": "Ýurtlary ýüklemek başartmady"
+  },
+  "visaApplication": {
+    "stepTitles": {
+      "step1": "Ýerleşýän ýeriň maglumaty",
+      "step2": "Talaplar we Tassyklama",
+      "step3": "Resminamalary ýüklemek",
+      "step4": "Şahsy maglumatlar",
+      "step5": "Arzany gözden geçir we iber"
+    },
+    "submitFailed": "E-poçta iberip bolmady",
+    "errors": {
+      "fromCountry": "Gelip çykan ýurduňyzy saýlaň",
+      "toCountry": "Ýaşaýan ýurduňyzy saýlaň",
+      "toCountrySame": "Gelip çykyş we barmaly ýurtlar tapawutly bolmaly",
+      "hasValidPassport": "Siziň geçerli pasportyňyzyň bardygyny tassyklaň",
+      "hasPictureHeadshot": "Suratyňyzyň/baş suratyňyzyň bardygyny tassyklaň",
+      "confirmNoActiveApplication": "Işjeň programmanyň ýokdugyny tassyklaň",
+      "confirmGovernmentDiscretion": "Hökümetiň ygtyýarlygyny ykrar ediň",
+      "passportDocument": "Pasport resminamaňyzy ýükläň",
+      "pictureHeadshot": "Suratyňyzy/baş suratyňyzy ýükläň",
+      "firstName": "Adyňyz hökmandyr",
+      "lastName": "Familiýaňyz hökmandyr",
+      "phoneNumber": "Telefon belgisi gerek",
+      "email": "E-poçta gerek",
+      "passportNumber": "Pasport belgisi talap edilýär",
+      "profession": "Hünär talap edilýär",
+      "travelDate": "Syýahat senesi hökmanydyr",
+      "travelToDate": "Gaýtaryş senesi hökmanydyr",
+      "travelPurpose": "Syýahat maksady talap edilýär",
+      "emailInvalid": "Dogry e-poçta salgysyny giriziň",
+      "phoneInvalid": "Dogry telefon nomerini giriziň",
+      "travelDatePast": "Syýahat senesi geçmişde bolup bilmez",
+      "travelToDateAfter": "Gaýdyp gaýtmak senesi syýahat senesinden soň bolmaly",
+      "travelerNameRequired": "Syýahatçynyň {{index}} ady hökmandyr",
+      "travelerPhoneRequired": "Syýahatçynyň {{index}} telefon belgisi gerek"
+    },
+    "placeholders": {
+      "searchCountries": "Ýurtlary gözläň...",
+      "selectCountry": "Ýurdy saýlaň",
+      "firstName": "Ady",
+      "lastName": "Familiýa",
+      "phoneNumber": "Telefon nomeri",
+      "email": "E-poçta salgysy",
+      "from": "Başlangyçdan",
+      "liveIn": "Ýaşaýan ýeri",
+      "passportNumber": "Pasport belgisi",
+      "profession": "Hünär",
+      "dateFormat": "aý/gg/ýýýý",
+      "travelPurpose": "Syýahat maksady",
+      "numberOfTravellers": "Syýahatçylaryň sany",
+      "fullName": "Doly ady"
+    },
+    "labels": {
+      "applicationDetails": "Arzanyň jikme-jiklikleri",
+      "submitApplication": "Arza tabşyryň",
+      "transitVisa": "TRANSIT WIZASY",
+      "transitVisaShort": "Tranzit wizasy",
+      "notProvided": "Berilmedi",
+      "notUploaded": "Ýüklenmedi",
+      "price": "Bahasy:",
+      "submitting": "Iberilýär...",
+      "uploadDocumentsTitle": "Aşakdaky resminamalary ýükläň",
+      "acceptedFormats": "Kabul edilen formatlar:",
+      "acceptedFormatsValue": "PDF, JPG ýa-da PNG",
+      "details": "Jikme-jiklikler",
+      "review": "Syn",
+      "next": "Indiki",
+      "visaFor": "VISA ÜÇIN:",
+      "currency": "USD"
+    }
+  },
+  "packageTypes": {
+    "individualTouristInvitation": "Şahsy syýahatçy çakylygy",
+    "individualBusinessInvitation": "Şahsy işewürlik çakylygy",
+    "familyTouristInvitation": "Maşgala syýahatçy çakylygy",
+    "singleEntry": "Bir gezeklik giriş"
+  }
+}

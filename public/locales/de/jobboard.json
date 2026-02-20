@@ -1,0 +1,171 @@
+{
+  "hero": {
+    "title": "Finden Sie Ihren Traumjob",
+    "subtitle": "Entdecken Sie Möglichkeiten, die Ihrer Leidenschaft, Ihren Fähigkeiten und Ihren Karrierezielen entsprechen",
+    "search": {
+      "jobPlaceholder": "Berufsbezeichnung, Fähigkeiten oder Schlüsselwörter...",
+      "locationPlaceholder": "Stadt, Land oder abgelegen...",
+      "buttonText": "Jobs suchen"
+    },
+    "popular": {
+      "label": "Beliebt:",
+      "tags": [
+        "Fernbedienung",
+        "Tech",
+        "Marketing",
+        "Gestaltung",
+        "Finanzen"
+      ]
+    }
+  },
+  "stats": {
+    "jobs": {
+      "count": "10,580+",
+      "label": "Job-Angebote"
+    },
+    "candidates": {
+      "count": "8.8M+",
+      "label": "Kandidatinnen und Kandidaten"
+    },
+    "countries": {
+      "count": "120+",
+      "label": "Länder"
+    },
+    "successRate": {
+      "count": "95%",
+      "label": "Erfolgsquote"
+    }
+  },
+  "categories": {
+    "title": "Möglichkeiten ausloten",
+    "tabs": [
+      {
+        "key": "alle",
+        "label": "Alle Jobs"
+      },
+      {
+        "key": "vorgestellt",
+        "label": "Ausgewählt"
+      },
+      {
+        "key": "aktuelle",
+        "label": "Neueste"
+      },
+      {
+        "key": "remote",
+        "label": "Fernbedienung"
+      },
+      {
+        "key": "Technik",
+        "label": "Tech"
+      },
+      {
+        "key": "Marketing",
+        "label": "Marketing"
+      }
+    ]
+  },
+  "filters": {
+    "title": "Filter",
+    "clearAll": "Alle löschen",
+    "jobType": {
+      "title": "Job-Typ",
+      "options": [
+        {
+          "id": "Vollzeit",
+          "value": "Vollzeit",
+          "label": "Vollzeit"
+        },
+        {
+          "id": "partTime",
+          "value": "teil_zeit",
+          "label": "Halbtags"
+        },
+        {
+          "id": "Vertrag",
+          "value": "Vertrag",
+          "label": "Vertrag"
+        },
+        {
+          "id": "remote",
+          "value": "remote",
+          "label": "Fernbedienung"
+        }
+      ]
+    },
+    "experience": {
+      "title": "Erfahrungsstufe",
+      "options": [
+        {
+          "id": "Eintrag",
+          "label": "Einstiegsstufe"
+        },
+        {
+          "id": "Mitte",
+          "label": "Mittlere Ebene"
+        },
+        {
+          "id": "Senior",
+          "label": "Höhere Ebene"
+        },
+        {
+          "id": "Exekutive",
+          "label": "Exekutive"
+        }
+      ]
+    },
+    "salary": {
+      "title": "Gehaltsspanne",
+      "min": "$0",
+      "max": "$100k+"
+    },
+    "datePosted": {
+      "title": "Datum der Veröffentlichung",
+      "options": [
+        {
+          "id": "jede",
+          "label": "Jederzeit"
+        },
+        {
+          "id": "Tag",
+          "label": "Letzte 24 Stunden"
+        },
+        {
+          "id": "Woche",
+          "label": "Letzte Woche"
+        },
+        {
+          "id": "Monat",
+          "label": "Vergangener Monat"
+        }
+      ]
+    },
+    "applyButton": "Filter anwenden"
+  },
+  "jobListings": {
+    "title": "Verfügbare Stellen",
+    "showing": "anzeigen",
+    "opportunities": "Möglichkeiten",
+    "sortBy": {
+      "label": "Sortieren nach:",
+      "options": [
+        "Am relevantesten",
+        "Neuestes",
+        "Höchste Gehälter",
+        "Am beliebtesten"
+      ]
+    }
+  },
+  "jobCard": {
+    "featured": "Ausgewählt",
+    "new": "Neu",
+    "requirements": "Anforderungen:",
+    "benefits": "Vorteile:",
+    "viewDetails": "Details anzeigen",
+    "hideDetails": "Details ausblenden",
+    "applyNow": "Jetzt bewerben"
+  },
+  "cta": {
+    "postJob": "Job ausschreiben"
+  }
+}

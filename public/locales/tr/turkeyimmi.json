@@ -1,0 +1,1313 @@
+{
+  "turkeyHeroSection": {
+    "badge": "Özel Yolculuklar",
+    "title": "Bir Sonraki Maceranızı Keşfedin",
+    "description": "İsteklerinize göre uyarlanmış premium seyahat paketlerimizle nefes kesici destinasyonları deneyimleyin ve unutulmaz anılar yaratın.",
+    "currentlyViewing": {
+      "label": "Şu Anda Görüntüleniyor"
+    },
+    "buttons": {
+      "explore": "Şimdi Keşfet",
+      "viewAll": "Tüm Destinasyonları Görüntüle"
+    },
+    "destinationCounter": "Hedef {mevcut}/{toplam}",
+    "destinations": [
+      {
+        "img": "/images/ihs.png",
+        "name": "İstanbul",
+        "country": "Türkiye"
+      },
+      {
+        "img": "/images/ihi.png",
+        "name": "İzmir",
+        "country": "Türkiye"
+      },
+      {
+        "img": "/images/iha.png",
+        "name": "Antalya",
+        "country": "Türkiye"
+      },
+      {
+        "img": "/images/ihan.png",
+        "name": "Ankara",
+        "country": "Türkiye"
+      },
+      {
+        "img": "/images/ihb.png",
+        "name": "Bursa",
+        "country": "Türkiye"
+      }
+    ],
+    "accessibility": {
+      "exploreButton": "Destinasyonları şimdi keşfedin",
+      "viewAllButton": "Mevcut tüm destinasyonları görüntüleyin",
+      "destinationImage": "Hedefi görüntüle: {name}",
+      "featuredDestination": "Öne çıkan destinasyon görseli",
+      "carouselControl": "Hedef {numara}'ya git"
+    },
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "turkeyTableOfContents": {
+    "title": "İçindekiler",
+    "subtitle": "Bölümler arasında gezinme",
+    "currentlyReading": "Şu anda okuyor",
+    "sectionsCount": "keşfedilecek {say} bölümler",
+    "sections": [
+      {
+        "title": "Türkiye Hakkında Gerçekler",
+        "id": 1
+      },
+      {
+        "title": "Türkiye'ye Taşınmak için Vize Seçenekleri",
+        "id": 2
+      },
+      {
+        "title": "Türkiye'ye Taşınmak için Gerekenler",
+        "id": 3
+      },
+      {
+        "title": "Yabancı Olarak Türkiye'de İş Bulmak",
+        "id": 4
+      },
+      {
+        "title": "ABD'den Türkiye'ye Taşınma",
+        "id": 5
+      },
+      {
+        "title": "İngiltere'den Türkiye'ye Taşınma",
+        "id": 6
+      },
+      {
+        "title": "Türkiye'ye taşınmak ne kadara mal olur?",
+        "id": 7
+      },
+      {
+        "title": "Evcil Hayvanlarla Türkiye'ye Taşınma",
+        "id": 8
+      }
+    ],
+    "quickNavigation": {
+      "title": "Hızlı Navigasyon",
+      "footer": "Say} bölümleri arasında gezinme"
+    },
+    "accessibility": {
+      "toggleMenu": "Gezinti menüsünü aç / kapat",
+      "sectionButton": "Bölüme gidin: {title}",
+      "quickNavigation": "Hızlı gezinme menüsü",
+      "quickNavSection": "Hızlı gezinme: {başlık}"
+    }
+  },
+  "turkeyFactsCard": {
+    "title": "Türkiye Hakkında Büyüleyici Bilgiler",
+    "description": "Bu güzel ülkenin eşsiz kültürel mirasını keşfedin. Türkiye, dünyayı etkilemiş zengin bir tarih ve çeşitli kültürel unsurlar sunmaktadır.",
+    "navigation": {
+      "title": "Gerçekleri Keşfedin",
+      "previous": "Önceki Gerçek",
+      "next": "Sonraki Gerçek"
+    },
+    "allFacts": {
+      "title": "Türkiye Hakkında Tüm Gerçekler"
+    },
+    "facts": [
+      {
+        "title": "İstanbul iki kıta üzerinde",
+        "description": "İstanbul Boğazı'nın ikiye böldüğü <strong>Avrupa ve Asya</strong>'da yer alan dünyadaki tek büyük şehirdir.",
+        "icon": "🌉"
+      },
+      {
+        "title": "Troy'un Evi",
+        "description": "Homeros'un İlyada destanıyla ünlenen <strong>Troy</strong> antik kenti Türkiye'nin batısında yer almaktadır.",
+        "icon": "🏛️"
+      },
+      {
+        "title": "Noel Baba'nın Doğduğu Yer",
+        "description": "Noel Baba efsanesine ilham veren <strong>Aziz Nikola</strong>, günümüz Türkiye'sinde bir kasaba olan Patara'da doğmuştur.",
+        "icon": "🎅"
+      },
+      {
+        "title": "Türk kahvesi UNESCO listesinde",
+        "description": "Türk kahvesi kültürel açıdan o kadar önemlidir ki <strong>UNESCO</strong> tarafından Somut Olmayan Kültürel Miras olarak kabul edilmiştir.",
+        "icon": "☕"
+      },
+      {
+        "title": "Laleler Türkiye kökenlidir",
+        "description": "Genellikle Hollanda ile ilişkilendirilse de laleler aslen <strong>Osmanlı İmparatorluğu</strong>'nda yetiştirilmiş ve Avrupa'ya Türkiye'den getirilmiştir.",
+        "icon": "🌷"
+      }
+    ],
+    "accessibility": {
+      "factButton": "Gerçek seçin: {title}",
+      "previousFact": "Önceki gerçeğe git",
+      "nextFact": "Sonraki gerçeğe git"
+    }
+  },
+  "turkeyJobGuide": {
+    "header": {
+      "icon": "🇹🇷",
+      "title": "Yabancı Olarak Türkiye'de İş Bulmak",
+      "subtitle": "Eksiksiz Bir Kılavuz",
+      "description": "Türkiye'nin canlı kültürü, Avrupa ve Asya arasındaki stratejik konumu ve büyüyen ekonomisi, iş arayan gurbetçiler için cazip bir destinasyon haline getirmektedir. Ancak bir yabancı olarak Türkiye'de iş bulabilmek için iş piyasasını, çalışma vizesi düzenlemelerini ve kültürel beklentileri iyi anlamak gerekir.",
+      "subDescription": "İşte yabancı uyruklu biri olarak Türkiye'de iş bulmanıza yardımcı olacak kapsamlı bir rehber."
+    },
+    "navigation": {
+      "title": "Kılavuz İçeriği"
+    },
+    "sections": [
+      {
+        "id": "iş piyasası",
+        "icon": "🔍",
+        "title": "Türkiye İş Piyasasını Anlamak",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Türkiye çeşitli sektörlerde fırsatlar sunmaktadır, ancak bazı sektörler yabancı çalışanlar için daha erişilebilir ve misafirperverdir.</p><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Yabancılar İçin Talep Gören Sektörler:</h3><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-6\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Turizm ve Konaklama</span><p class=\"text-sm text-gray-600\">Oteller, seyahat acenteleri, tur operatörleri</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Eğitim</span><p class=\"text-sm text-gray-600\">İngilizce öğretmenleri, uluslararası okullar</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Teknoloji ve Yazılım</span><p class=\"text-sm text-gray-600\">Geliştirme, BT hizmetleri</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">İnşaat ve Mühendislik</span><p class=\"text-sm text-gray-600\">Proje yönetimi, uzmanlaşmış roller</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">İthalat-İhracat ve Ticaret</span><p class=\"text-sm text-gray-600\">Uluslararası ticaret, lojistik</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Sağlık ve Tıbbi Hizmetler</span><p class=\"text-sm text-gray-600\">Uzmanlaşmış profesyoneller</p></li></ul><p class=\"text-gray-700\">Dil bilmek size rekabet avantajı sağlar, ancak özellikle çok uluslu şirketlerde veya teknoloji girişimlerinde İngilizce konuşulan işler mevcuttur.</p></div>"
+      },
+      {
+        "id": "yasal-gereksinimler",
+        "icon": "🗂️",
+        "title": "Yasal Gereklilikler: Çalışma İzni ve Vize",
+        "content": "<div><div class=\"mb-6\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Adım 1: İş Teklifi Alın</h3><p class=\"text-gray-700 mb-4\">Türkiye'de yasal olarak çalışabilmeniz için öncelikle bir Türk işverenden resmi bir iş teklifi almanız gerekir. Bazı ülkelerin aksine, sponsor olmadan genel çalışma izni için başvuramazsınız.</p></div><div class=\"mb-6\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Adım 2: Çalışma Vizesi Başvurusu</h3><p class=\"text-gray-700 mb-4\">Bir iş teklifi aldıktan sonra:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Kendi ülkenizdeki Türk konsolosluğuna/büyükelçiliğine çalışma vizesi için başvurursunuz.</li><li>İşvereniniz aynı anda Çalışma ve Sosyal Güvenlik Bakanlığı aracılığıyla çalışma izni için başvuruda bulunur.</li></ul></div><div class=\"bg-sky-50 p-4 rounded-md border border-sky-100 mb-4\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">İstenen Belgeler:</h3><ul class=\"list-disc pl-6 mb-2 text-gray-700\"><li>Geçerli pasaport</li><li>İş sözleşmesi</li><li>Eğitim nitelikleri</li><li>Pasaport boyutunda fotoğraflar</li><li>Doldurulmuş vize başvuru formu</li><li>İşverenin sponsorluk belgeleri</li></ul></div><p class=\"text-gray-700\">Onaylandıktan sonra, size bir çalışma vizesi verilecek ve işinize başlamak için Türkiye'ye girebileceksiniz.</p></div>"
+      },
+      {
+        "id": "İŞ FIRSATLARI",
+        "icon": "🏢",
+        "title": "Türkiye'de İş Bulma Olanakları",
+        "content": "<div><h3 class=\"text-lg font-medium text-sky-600 mb-3\">En İyi İş Portalları:</h3><div class=\"grid grid-cols-2 md:grid-cols-3 gap-3 mb-6\"><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Kariyer.net</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Yenibiris.com</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Secretcv.com</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Jooble Türkiye</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">LinkedIn</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Glassdoor</a></div><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Pro İpuçları:</h3><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Türkiye'deki İK profesyonelleriyle bağlantı kurmak için LinkedIn'i kullanın.</li><li>İşleri dil gereksinimine göre filtreleyin (örn, İngilizce konuşulan roller).</li><li>Uluslararası yerleştirmelerde uzmanlaşmış işe alım ajanslarını göz önünde bulundurun.</li></ul></div>"
+      },
+      {
+        "id": "i̇ngi̇li̇zce öğreti̇mi̇",
+        "icon": "🧑‍🏫",
+        "title": "Türkiye'de İngilizce Öğretimi",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Türkiye'de yabancılar için en yaygın işlerden biri İngilizce öğretmenliğidir.</p><div class=\"flex flex-col md:flex-row gap-6 mb-6\"><div class=\"flex-1 bg-white p-4 rounded-md border border-sky-100\"><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Nerelerde Çalışabilirsiniz:</h3><ul class=\"list-disc pl-6 text-gray-700\"><li>Özel dil okulları</li><li>Üniversiteler</li><li>Uluslararası okullar</li><li>Online özel ders platformları</li></ul></div><div class=\"flex-1 bg-white p-4 rounded-md border border-sky-100\"><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Gereksinimler:</h3><ul class=\"list-disc pl-6 text-gray-700\"><li>Lisans derecesi</li><li>TEFL/TESOL/CELTA sertifikası</li><li>Anadil veya akıcı İngilizce yeterliliği</li></ul></div></div><p class=\"text-gray-700\">Bazı okullar vize sponsorluğu ve konaklama da sunmaktadır.</p></div>"
+      },
+      {
+        "id": "ÇALIŞMA İZNİ",
+        "icon": "🧾",
+        "title": "Çalışma İzninin Geçerliliği ve Yenilenmesi",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>İlk çalışma izinleri genellikle <strong>1 yıl</strong> için geçerlidir.</p><p>İlk yenilemede <strong>2 yıl</strong> ve daha sonra <strong>3 yıl</strong> için yenilenebilirler.</p><p>Sürekli olarak <strong>5 yıl</strong> çalıştıktan sonra, uzun süreli oturma izni için başvurabilirsiniz.</p></div>"
+      },
+      {
+        "id": "serbest",
+        "icon": "🧑‍💼",
+        "title": "Yabancılar Türkiye'de Freelance veya Uzaktan Çalışabilir mi?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Teknik olarak, uygun bir izin olmadan Türkiye'de yasal olarak serbest çalışamaz veya uluslararası müşteriler için uzaktan çalışamazsınız. Bununla birlikte, birçok gurbetçi kısa süreli oturma izni altında uzaktan çalışır veya serbest meslek sahibi olarak kaydolur, bu da aşağıdakileri içeren karmaşık bir kurulum gerektirir:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Bir Türk şirketi açmak</li><li>Vergi numarası almak</li><li>İş vizesi veya girişimcilik izni için başvurmak</li></ul></div>"
+      },
+      {
+        "id": "DİL",
+        "icon": "💬",
+        "title": "Dil Engeli: Türkçe Gerekli mi?",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Pek çok profesyonel iş en azından <strong>temel Türkçe becerileri</strong> gerektirir.</p><p>Bununla birlikte, teknoloji, turizm ve eğitim sektörleri genellikle <strong>sadece İngilizce</strong> ile çalışmanıza izin verir.</p><p>Türkçe öğrenmek entegrasyonu geliştirir ve iş beklentilerinizi artırır.</p></div>"
+      },
+      {
+        "id": "ağ oluşturma",
+        "icon": "👥",
+        "title": "Türkiye'de Ağ Oluşturma",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Türkiye'de ağ kurmak çok güçlüdür. Şunlara katılın:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Gurbetçi buluşmaları</li><li>Sektöre özel seminerler</li><li>LinkedIn etkinlikleri ve Türk Ticaret Odası toplantıları</li></ul><p class=\"text-gray-700\">Kişisel tanıştırmalar ve yönlendirmeler genellikle soğuk başvurulardan daha fazla ağırlık taşır.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Türkiye'de İş Bulmak İçin Son Kontrol Listesi"
+    },
+    "checklist": [
+      "Özgeçmişinizi cilalayın ve Türk formatlarına uyarlayın",
+      "Yabancıları işe alma yetkisi olan şirketlere başvurun",
+      "Vize işlemleri için gerekli belgeleri hazırlayın",
+      "Bazı temel Türkçe ifadeleri öğrenin",
+      "Türk iş hukuku kapsamındaki haklarınızı anlayın"
+    ],
+    "conclusion": {
+      "icon": "✈️",
+      "title": "Türkiye'de Çalışmaya Hazır mısınız?",
+      "description": "Bir yabancı olarak Türkiye'de iş bulmak doğru yaklaşım, hazırlık ve sabırla tamamen mümkündür. İster kariyer değişikliği, ister uluslararası bir deneyim ya da uzun vadeli bir taşınma arayışında olun, Türkiye fırsat ve kültür açısından zengin, eşsiz bir ortam sunmaktadır."
+    },
+    "accessibility": {
+      "sectionToggle": "Bölümü değiştir: {başlık}"
+    }
+  },
+  "turkeyMovingCostsGuide": {
+    "title": "Türkiye'ye Taşınmanın Maliyeti Ne Kadar?",
+    "description": "Türkiye'ye taşınmak birçok Batı ülkesine kıyasla ekonomik olabilir. İşte Türkiye'ye taşınırken karşılaşabileceğiniz maliyetlerin ayrıntılı bir dökümü.",
+    "costSections": [
+      {
+        "id": "vize-ikamet",
+        "icon": "🛂",
+        "title": "Vize ve Oturma İzni",
+        "amount": "$100-$600",
+        "details": "Kart, sağlık sigortası, vize ücreti dahildir",
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "konut",
+        "icon": "🏠",
+        "title": "Konut",
+        "amount": "600-1,200 dolar peşin",
+        "details": "1-2 aylık depozito + ilk ayın kirası",
+        "color": "bg-sky-600",
+        "subItems": [
+          {
+            "title": "Şehir merkezi (aylık)",
+            "amount": "$300-$500"
+          },
+          {
+            "title": "Kıyı/şehir alanları (aylık)",
+            "amount": "$200-$400"
+          }
+        ]
+      },
+      {
+        "id": "nakliye",
+        "icon": "📦",
+        "title": "Nakliye (İsteğe Bağlı)",
+        "amount": "$2,000-$4,000",
+        "details": "Küçük konteyner. Birçok gurbetçi maliyetten tasarruf etmek için yerel mobilya satın almayı tercih etmektedir.",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "yardımcı programlar",
+        "icon": "💡",
+        "title": "Yardımcı Programlar ve İnternet Kurulumu",
+        "amount": "$50-$150",
+        "details": "Depozitolar ve kurulum ücretleri",
+        "color": "bg-sky-500",
+        "subItems": [
+          {
+            "title": "Aylık faturalar",
+            "amount": "$30-$60"
+          }
+        ]
+      },
+      {
+        "id": "her gün",
+        "icon": "🛒",
+        "title": "Günlük Maliyetler",
+        "amount": "Aylık 230-350$",
+        "color": "bg-sky-600",
+        "subItems": [
+          {
+            "title": "Bakkaliye",
+            "amount": "$200-$300/ay"
+          },
+          {
+            "title": "Toplu taşıma",
+            "amount": "$10-$30/ay"
+          },
+          {
+            "title": "Mobil ve internet",
+            "amount": "~20$/ay"
+          }
+        ]
+      }
+    ],
+    "totalBudget": {
+      "icon": "🔢",
+      "title": "Toplam Tahmin (Yalnız Seyahat Eden)",
+      "categories": [
+        {
+          "title": "Kargo olmadan",
+          "amount": "$1,200-$2,500",
+          "description": "Vize, konut depozitosu, ilk ayın kirası ve kurulum masraflarını içerir"
+        },
+        {
+          "title": "Kargo ile",
+          "amount": "$3,500-$6,000+",
+          "description": "Tüm masraflar artı küçük bir konteyner dolusu eşyanın nakliyesi dahildir"
+        }
+      ]
+    },
+    "moneySavingTips": {
+      "icon": "💰",
+      "title": "Para Tasarrufu İpuçları",
+      "tips": [
+        {
+          "title": "Yerel Mobilya Satın Alın",
+          "description": "Türk mobilyaları uygun fiyatlı ve kolayca temin edilebilir. Yalnızca temel nakliye malzemelerini göz önünde bulundurun."
+        },
+        {
+          "title": "Konumunuzu Akıllıca Seçin",
+          "description": "İstanbul gibi büyük şehirlerin dışındaki bölgelerde konutlar %30-50 daha ucuz olabilir."
+        },
+        {
+          "title": "Hafif Seyahat",
+          "description": "Her bir ekstra bavul uçuşlarda 50-100 dolara mal olabilir. Sadece ihtiyacınız olanı getirin."
+        },
+        {
+          "title": "Mevsimsel Zamanlamayı Dikkate Alın",
+          "description": "Kış aylarında genellikle daha ucuz daireler ve daha az turist vardır."
+        }
+      ]
+    },
+    "conclusion": "Türkiye'ye taşınmanın maliyeti, diğer Avrupa veya Kuzey Amerika destinasyonlarına taşınmaya kıyasla nispeten daha uygundur. Doğru planlama ve bütçeleme ile Türkiye'ye taşınmanızı hem sorunsuz hem de ekonomik hale getirebilirsiniz.",
+    "accessibility": {
+      "toggleSection": "Başlık} için ayrıntıları değiştir bölüm"
+    }
+  },
+  "usTurkeyGuide": {
+    "header": {
+      "icon": "🇺🇸➡️🇹🇷",
+      "title": "ABD'den Türkiye'ye Taşınma",
+      "subtitle": "Bilmeniz Gereken Her Şey",
+      "description": "Zengin kültür, doğal kıyı şeridi ve daha düşük yaşam maliyeti ile yurtdışında bir yaşam mı hayal ediyorsunuz? Türkiye, ister emeklilik, ister uzaktan çalışma ya da macera olsun, yeni bir yaşam tarzı arayan Amerikalılar için giderek daha fazla tercih edilen bir ülke haline geliyor.",
+      "subDescription": "İşte Türkiye'ye taşınmayı planlayan ABD vatandaşları için vize seçeneklerinden kültürel ipuçlarına kadar her şeyi kapsayan eksiksiz bir rehber."
+    },
+    "quickNavigation": {
+      "title": "Hızlı Navigasyon"
+    },
+    "sections": [
+      {
+        "id": "neden-türkiye",
+        "icon": "📌",
+        "title": "Neden Türkiye'ye Taşınmalı?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Amerikalıları Türkiye'ye çeken birçok neden var:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Uygun yaşam maliyeti</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Akdeniz yaşam tarzı ve ılıman iklim</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Zengin tarih ve dünyaca ünlü mutfak</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Kucaklayıcı yerel kültür</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Avrupa ve Asya arasındaki stratejik konum</span></li></ul><p class=\"text-gray-700\">İster iş için taşınıyor olun, Eğitim, emeklilik veya sadece daha yavaş bir yaşam temposunun tadını çıkarmak için, Türkiye gurbetçiler için çeşitli seçenekler sunmaktadır.</p></div>"
+      },
+      {
+        "id": "vi̇ze seçenekleri̇",
+        "icon": "🛂",
+        "title": "ABD Vatandaşları için Vize Seçenekleri",
+        "content": "<div><p class=\"text-gray-700 mb-4\">ABD vatandaşı olarak Türkiye'ye 90 günlük turist vizesi ile girebilirsiniz, ancak uzun süreli yaşam için aşağıdakilerden birine ihtiyacınız olacaktır:</p><div class=\"space-y-4\"><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">1. Kısa Süreli Oturma İzni</h3><ul class=\"text-gray-700 space-y-1\"><li>- Dijital göçebeler, uzaktan çalışanlar ve ilk kez gidenler için idealdir</li><li>- 1 yıla kadar geçerlidir, yenilenebilir</li><li>- Konaklama kanıtı gerektirir, mali imkanlar ve geçerli sağlık sigortası</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">2. Öğrenci Vizesi ve Oturma İzni</h3><ul class=\"text-gray-700 space-y-1\"><li>- Üniversite veya dil kurslarına katılanlar için</li><li>- Kayıt ve mali destek kanıtı gerektirir</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">3. Çalışma Vizesi</h3><ul class=\"text-gray-700 space-y-1\"><li>- Bir Türk işverenden iş teklifi almalısınız</li><li>- İşveren çalışma izninize sponsor olacaktır</li><li>- Onaylandıktan sonra, ABD'deki Türk konsolosluğuna çalışma vizesi için başvurabilirsiniz</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">4. Aile İkamet İzni</h3><ul class=\"text-gray-700 space-y-1\"><li>- Türk vatandaşlarının veya yabancı uyrukluların eşleri veya çocukları için</li><li>- 2 yıla kadar geçerlidir</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">5. Emeklilik veya Mülke Dayalı Konaklama</h3><p class=\"text-gray-700\">Türkiye'de mülk satın almak (ikamet için asgari değer yoktur) sizi kısa süreli ikamet iznine uygun hale getirir</p></div></div></div>"
+      },
+      {
+        "id": "gerekli belgeler",
+        "icon": "🧾",
+        "title": "Yer Değiştirme İçin Gerekli Belgeler",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Oturum iznine başvurmak için genellikle aşağıdakilere ihtiyacınız olacaktır:</p><div class=\"bg-sky-50 p-5 rounded-lg border border-sky-100\"><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Geçerli ABD pasaportu (en az 6 ay geçerliliği olan)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Türkiye vergi kimlik numarası</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Konaklama belgesi (kira sözleşmesi veya tapu)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Sağlık sigortası (yerel veya özel)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Pasaport fotoğrafları (biyometrik)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Yeterli fonları gösteren banka ekstreleri</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Tamamlanmış oturma izni başvuru formu</span></li></ul></div></div>"
+      },
+      {
+        "id": "popüler-şehirler",
+        "icon": "🏙️",
+        "title": "Türkiye'de En Çok Amerikalı Nerede Yaşıyor?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Amerikalı gurbetçiler arasında en popüler şehirlerden bazıları şunlardır:</p><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4 mb-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🏖️</span>Antalya</h3><ul class=\"text-gray-700 space-y-1\"><li>- Güneşli havası, plajları ile sahil kenti, ve uygun fiyatlı yaşam</li><li>- Emekliler ve dijital göçebeler için harika</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🌆</span>İstanbul</h3><ul class=\"text-gray-700 space-y-1\"><li>- Ekonomik ve kültürel başkent</li><li>- Profesyoneller için ideal, Öğrenciler, ve kentsel bir yaşam tarzı isteyenler</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🎓</span>Ankara</h3><ul class=\"text-gray-700 space-y-1\"><li>- Türkiye'nin başkenti, İstanbul'dan daha sessiz ama fırsatları bol</li><li>- Bürokratik ve diplomatik kariyer seçenekleri daha fazla</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🏝️</span>İzmir</h3><ul class=\"text-gray-700 space-y-1\"><li>- İlerici bir havaya sahip rahat Ege kıyı şehri</li><li>- Genç gurbetçiler ve girişimciler arasında popüler</li></ul></div></div>"
+      },
+      {
+        "id": "hayat pahalılığı",
+        "icon": "💸",
+        "title": "Yaşam Maliyeti Karşılaştırması: Türkiye vs ABD",
+        "content": "<div><div class=\"overflow-x-auto mb-4\"><table class=\"min-w-full bg-white border border-sky-200 rounded-lg\"><thead><tr class=\"bg-sky-100\"><th class=\"py-3 px-4 text-left border-b border-sky-200\">Gider</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">Türkiye (ort.)</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">ABD (avg.)</th></tr></thead><tbody><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Kira (1BR şehir merkezi)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$300-$600/ay</td><td class=\"py-3 px-4 border-b border-sky-100\">$1,500-$2,000</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">İnternet (aylık)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$10-$20</td><td class=\"py-3 px-4 border-b border-sky-100\">$50-$70</td></tr><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Dışarıda yemek (2 kişilik)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$15-$30</td><td class=\"py-3 px-4 border-b border-sky-100\">$50-$100</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Ulaşım</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$10-$20/month</td><td class=\"py-3 px-4 border-b border-sky-100\">$70-$150</td></tr></tbody></table></div><p class=\"text-gray-700\">Türkiye'de yaşam masrafları oldukça düşüktür, Bu da onu uzaktan çalışanlar ve emekliler için cazip kılıyor.</p></div>"
+      },
+      {
+        "id": "sağlık hizmetleri",
+        "icon": "🩺",
+        "title": "Türkiye'de Sağlık Hizmetleri",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Türkiye'de güçlü bir kamu sağlık sistemi (SGK) vardır ve özel sağlık hizmetleri yüksek kaliteli ve ekonomiktir. Oturma izni başvuru sahipleri için başlangıçta özel sigorta gereklidir.</p><p>Yasal olarak çalışmaya başladığınızda, çoğu tedavi ve ilacı kapsayan kamu sağlık sigortasına (SGK) hak kazanacaksınız.</p></div>"
+      },
+      {
+        "id": "DİL",
+        "icon": "🗣️",
+        "title": "Dil ve Kültürel İpuçları",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Türkçe resmi dildir, ancak kentsel alanlarda birçok Türk İngilizce konuşmaktadır.</p><p>Temel Türkçe öğrenmek entegrasyona ve günlük yaşama yardımcı olur.</p><p>Özellikle muhafazakar bölgelerde kıyafet ve kamusal davranışlar konusunda yerel geleneklere saygı gösterin.</p><p>Türkler misafirperverlikleriyle tanınırlar - çay veya yemek için davet edilmek yaygındır.</p></div>"
+      },
+      {
+        "id": "hareketli",
+        "icon": "📦",
+        "title": "ABD'den Taşınma ve Nakliye",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Türkiye'ye taşınma konusunda uzmanlaşmış uluslararası nakliyecileri düşünün.</p><p>Ev eşyaları, oturma izni alıyorsanız genellikle gümrüksüz girebilir.</p><p>Evcil hayvanlar aşı kayıtları ve mikroçiplerle ithal edilebilir - güncel düzenlemeleri kontrol edin.</p></div>"
+      },
+      {
+        "id": "bankacılık",
+        "icon": "🏦",
+        "title": "Bankacılık ve Finans",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Pasaportunuzu, vergi numaranızı ve adresinizi kullanarak bir Türk banka hesabı açabilirsiniz.</p><p>Birçok gurbetçi bir ABD banka hesabı tutar ve transferler için Wise veya Revolut kullanır.</p><p>Para birimi: Türk Lirası (TRY). ABD Doları sınırlı yerlerde kabul edilir ancak yaygın olarak kullanılmaz.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Türkiye'ye Taşınacak Amerikalılar için Son Kontrol Listesi"
+    },
+    "checklist": [
+      {
+        "text": "Oturma izni veya çalışma vizesi için başvuruda bulunun",
+        "fullWidth": false
+      },
+      {
+        "text": "Güvenli konaklama (kısa veya uzun süreli)",
+        "fullWidth": false
+      },
+      {
+        "text": "Türk vergi numarası alın",
+        "fullWidth": false
+      },
+      {
+        "text": "Özel sağlık sigortası satın almak",
+        "fullWidth": false
+      },
+      {
+        "text": "Temel Türkçe ifadeleri öğrenin",
+        "fullWidth": false
+      },
+      {
+        "text": "Bankacılık ve mobil hizmetleri ayarlayın",
+        "fullWidth": false
+      },
+      {
+        "text": "Destek için göçmen topluluklarına ve Facebook gruplarına katılın",
+        "fullWidth": true
+      }
+    ],
+    "conclusion": {
+      "icon": "✈️",
+      "title": "Sonuç: ABD'den Türkiye'ye Taşınmaya Değer mi?",
+      "description": "Birçok Amerikalı için Türkiye, Amerika Birleşik Devletleri'ndeki yaşama zenginleştirici, uygun fiyatlı ve canlı bir alternatif sunuyor. Doğru hazırlık, yasal adımlar ve açık fikirli bir tutumla Türkiye'ye taşınmak heyecan verici yeni bir dönemin başlangıcı olabilir."
+    },
+    "accessibility": {
+      "sectionToggle": "Bölümü değiştir: {başlık}"
+    }
+  },
+  "movingWithPets": {
+    "title": "Evcil Hayvanlarla Türkiye'ye Taşınma",
+    "description": "Tüylü dostunuzu Türkiye'ye getirmek çok mümkün, ancak sorunsuz bir süreç sağlamak için belirli kurallara uymanız gerekecek. İşte evcil hayvanlarınızla Türkiye'ye taşınırken bilmeniz gerekenler.",
+    "navigation": {
+      "title": "Evcil Hayvan Seyahat Rehberi",
+      "sections": [
+        {
+          "id": "Gereksinimler",
+          "icon": "✅",
+          "title": "Temel Gereksinimler"
+        },
+        {
+          "id": "havaalanı",
+          "icon": "🛬",
+          "title": "Havaalanında"
+        },
+        {
+          "id": "seyahat etmek",
+          "icon": "✈️",
+          "title": "Seyahat Seçenekleri"
+        },
+        {
+          "id": "varış sonrası",
+          "icon": "🏠",
+          "title": "Varıştan Sonra"
+        },
+        {
+          "id": "evcil hayvan dostu",
+          "icon": "🐶",
+          "title": "Evcil Hayvan Dostu Türkiye"
+        }
+      ]
+    },
+    "sections": {
+      "requirements": {
+        "items": [
+          {
+            "title": "Mikroçip",
+            "content": "Evcil hayvanınız ISO 11784/11785 uyumlu bir çip ile mikroçiplenmiş olmalıdır."
+          },
+          {
+            "title": "Kuduz Aşısı",
+            "content": "Seyahatten <span class=\"font-medium\">en az 30 gün</span> önce ve son <span class=\"font-medium\">12 ay</span> içinde verilmiş olmalıdır."
+          },
+          {
+            "title": "Sağlık Sertifikası",
+            "type": "Liste",
+            "listItems": [
+              "- Lisanslı bir veteriner tarafından düzenlenmiş ve ülkenizdeki resmi makam tarafından onaylanmıştır (ABD'de USDA veya İngiltere'de DEFRA gibi).",
+              "- Türkiye'ye varıştan <span class=\"font-medium\">10 gün</span> önce düzenlenmelidir."
+            ]
+          },
+          {
+            "title": "Tenya ve Kene Tedavisi",
+            "content": "Seyahatten sonraki 5 gün içinde yapılır.",
+            "note": "(her zaman gerekli değildir ancak tavsiye edilir)"
+          }
+        ]
+      },
+      "airport": {
+        "description": "Evcil hayvanınızla birlikte <span class=\"font-medium\">gümrüklerden geçeceksiniz</span>.",
+        "documentsTitle": "Aşağıdakiler de dahil olmak üzere basılı belgeleri getirin:",
+        "documents": [
+          "Mikroçip kanıtı",
+          "Aşı kayıtları",
+          "Sağlık sertifikası",
+          "Evcil hayvan pasaportu (AB/İngiltere'den geliyorsa)"
+        ]
+      },
+      "traveling": {
+        "options": [
+          {
+            "icon": "🐱",
+            "ariaLabel": "küçük evcil hayvan",
+            "title": "Kabin içi (küçük evcil hayvanlar)",
+            "description": "Çoğu havayolu şirketi, taşıyıcı dahil 8 kg'ın altındaki evcil hayvanlara izin verir."
+          },
+          {
+            "icon": "🐕",
+            "ariaLabel": "büyük evcil hayvan",
+            "title": "Kargo",
+            "description": "Daha büyük hayvanlar kargo olarak uçmalıdır."
+          },
+          {
+            "icon": "💰",
+            "ariaLabel": "maliyet",
+            "title": "Maliyetler",
+            "description": "Havayoluna ve boyutuna bağlı olarak 150-1.000 $."
+          }
+        ],
+        "warning": "Gereklilikler ve maliyetler büyük ölçüde değişebileceğinden, evcil hayvan politikaları için her zaman kendi havayolu şirketinize danışın."
+      },
+      "afterArrival": {
+        "intro": [
+          "Tüm belgeler düzgünse karantinaya gerek yoktur.",
+          "Evcil hayvanınızı yerel bir veterinere kaydettirmeniz önerilir."
+        ],
+        "recommendedSteps": {
+          "title": "Önerilen İlk Adımlar",
+          "items": [
+            "Yerel bir veteriner bulun ve evcil hayvanınızı tanıtın",
+            "Evcil hayvanınızın düzenli olarak ihtiyaç duyduğu ilaçları satın alın",
+            "Evcil hayvanınızın tasmasını yeni Türkçe adresiniz ve telefon numaranızla güncelleyin"
+          ]
+        }
+      },
+      "petFriendly": {
+        "description": "Türk şehirleri, özellikle de sahil kasabaları evcil hayvan dostudur. Veterinerler uygun fiyatlıdır ve evcil hayvan malzemeleri yaygın olarak bulunur.",
+        "features": [
+          {
+            "icon": "🏥",
+            "title": "Veteriner Bakımı",
+            "description": "Veteriner ziyaretleri yaklaşık 100-300 TL (5-15 $) tutmaktadır, bu da düzenli bakımı çok ekonomik hale getirmektedir."
+          },
+          {
+            "icon": "🏞️",
+            "title": "Köpek Parkları & Plajlar",
+            "description": "Birçok kıyı bölgesinde köpek dostu plajlar ve büyük şehirlerde özel evcil hayvan parkları vardır."
+          },
+          {
+            "icon": "🥫",
+            "title": "Evcil Hayvan Malzemeleri",
+            "description": "Evcil hayvan maması ve malzemeleri süpermarketlerde, evcil hayvan dükkanlarında ve çevrimiçi perakendecilerde mevcuttur."
+          },
+          {
+            "icon": "🏨",
+            "title": "Evcil Hayvan Dostu Konaklama",
+            "description": "Birçok otel ve kiralık mülk evcil hayvan kabul etmektedir, ancak her zaman önceden teyit edin."
+          }
+        ]
+      }
+    },
+    "checklist": {
+      "title": "Evcil Hayvan Seyahat Kontrol Listesi",
+      "items": [
+        "Seyahatten en az 2 ay önce bir veteriner ziyareti planlayın",
+        "Mikroçipin ISO uyumlu olduğunu doğrulayın",
+        "Kuduz aşısının güncel olduğundan emin olun (seyahatten en az 30 gün önce)",
+        "Kalkıştan sonraki 10 gün içinde sağlık sertifikası alın",
+        "Havayolu ile evcil hayvan dostu ulaşım rezervasyonu yapın",
+        "Havayolu onaylı bir evcil hayvan taşıyıcısı satın alın",
+        "Tüm belgelerin kopyalarını alın ve seyahat sırasında yanınızda bulundurun"
+      ]
+    },
+    "conclusion": {
+      "title": "Evcil Hayvanınızın Yeni Macerası Sizi Bekliyor!",
+      "description": "Doğru hazırlıkla evcil hayvanınızı Türkiye'ye getirmek sorunsuz bir deneyim olabilir. Türkiye'nin evcil hayvanlar için misafirperver ortamı, tüylü dostunuzun yeni Akdeniz evine hızla uyum sağlamasına yardımcı olacaktır."
+    },
+    "accessibility": {
+      "sectionButton": "Başlık} bölümüne gidin bölüm"
+    }
+  },
+  "relocationRequirements": {
+    "title": "Türkiye'ye Taşınmak İçin Gerekli Şartlar",
+    "description": "Türkiye'ye iş, eğitim, emeklilik veya yaşam tarzı değişikliği için yerleşmeyi planlıyor olsanız da, hazırlamanız gereken belirli adımlar ve belgeler vardır. İşte Türkiye'ye yasal ve sorunsuz bir şekilde taşınmak için gerekli şartların eksiksiz bir dökümü.",
+    "navigation": {
+      "title": "Hızlı Navigasyon",
+      "expandAll": "Tümünü Genişlet",
+      "collapseAll": "Tümünü Daralt"
+    },
+    "sections": [
+      {
+        "id": "pasaport",
+        "icon": "🛂",
+        "title": "Geçerli Pasaport",
+        "shortTitle": "Pasaport",
+        "content": [
+          {
+            "type": "paragrafı",
+            "text": "Pasaportunuz Türkiye'de kalmayı planladığınız süreden sonra en az 6 ay geçerli olmalıdır. Bazı ülke vatandaşları, özellikle uzun süreli izin başvurularında daha uzun geçerlilik süresi talep edebilir."
+          }
+        ]
+      },
+      {
+        "id": "VİZE",
+        "icon": "📝",
+        "title": "Giriş Vizesi (Gerekiyorsa)",
+        "shortTitle": "Vize",
+        "content": [
+          {
+            "type": "paragrafı",
+            "text": "Uyruğunuza bağlı olarak ihtiyacınız olabilir:"
+          },
+          {
+            "type": "Liste",
+            "listType": "sırasız",
+            "items": [
+              "Turist vizesi (tek veya çok girişli)",
+              "Bir e-Vize (uygun ülkeler için çevrimiçi olarak mevcuttur)",
+              "Ya da kısa ziyaretler için hiç vize alınmaması (vizeden muaf ülkeler)"
+            ]
+          },
+          {
+            "type": "paragrafı",
+            "text": "Eğer 90 günden daha uzun süre kalmayı planlıyorsanız, Türkiye'ye geldiğinizde oturma izni başvurusunda bulunmalısınız."
+          }
+        ]
+      },
+      {
+        "id": "adres",
+        "icon": "🏠",
+        "title": "Türkçe Adres",
+        "shortTitle": "Adres",
+        "content": [
+          {
+            "type": "paragrafı",
+            "text": "Herhangi bir ikamet iznine başvurmak için Türkiye'de kalıcı veya geçici bir adresinizin olması gerekir:"
+          },
+          {
+            "type": "Liste",
+            "listType": "sırasız",
+            "items": [
+              "Kira sözleşmesi (noter onaylı)",
+              "Mülk sahipliği (tapu)",
+              "Otel rezervasyonları (sadece kısa süreli izinler için)"
+            ]
+          },
+          {
+            "type": "paragrafı",
+            "text": "Tüm adreslerin yerel nüfus müdürlüğüne (Nüfus Müdürlüğü) kayıtlı olması gerekmektedir."
+          }
+        ]
+      },
+      {
+        "id": "finansal",
+        "icon": "💵",
+        "title": "Finansal İstikrar Kanıtı",
+        "shortTitle": "Finans",
+        "content": [
+          {
+            "type": "paragrafı",
+            "text": "Türkiye'de kendinizi geçindirebileceğinizi göstermeniz gerekir. Miktar değişir, ancak genel bir tahmin şöyledir:"
+          },
+          {
+            "type": "Liste",
+            "listType": "sırasız",
+            "items": [
+              "Kişi başı aylık en az 500 $",
+              "Banka hesap özetleri, emekli maaş bordroları, gelir belgesi veya sponsor belgeleri kabul edilebilir"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Sigorta",
+        "icon": "🩺",
+        "title": "Sağlık Sigortası",
+        "shortTitle": "Sigorta",
+        "content": [
+          {
+            "type": "paragrafı",
+            "text": "Geçerli sağlık sigortası çoğu oturma izni için zorunludur:"
+          },
+          {
+            "type": "Liste",
+            "listType": "sırasız",
+            "items": [
+              "Çalışıyorsa Türk SGK'sı (kamu sigortası)",
+              "Kendi hesabına çalışan veya emekli ise özel Türk sigortası",
+              "Uluslararası öğrenciler için öğrenci sağlık planları"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "vergi̇ numarasi",
+        "icon": "🧾",
+        "title": "Vergi Numarası (Vergi Numarası)",
+        "shortTitle": "Vergi Numarası",
+        "content": [
+          {
+            "type": "paragrafı",
+            "text": "Kira sözleşmesi imzalamadan, banka hesabı açmadan veya izin başvurusunda bulunmadan önce bir Türk vergi numarası almanız gerekir. Bu numara ücretsizdir ve yerel vergi dairelerinden (Vergi Dairesi) veya internet üzerinden alınabilir."
+          }
+        ]
+      },
+      {
+        "id": "Fotoğraflar",
+        "icon": "🖼️",
+        "title": "Biyometrik Fotoğraflar",
+        "shortTitle": "Fotoğraflar",
+        "content": [
+          {
+            "type": "paragrafı",
+            "text": "Son biyometrik fotoğraflar (son 6 ay içinde çekilmiş) için gereklidir:"
+          },
+          {
+            "type": "Liste",
+            "listType": "sırasız",
+            "items": [
+              "Oturma izni kartları",
+              "Vize başvuruları",
+              "Devlet kayıtları"
+            ]
+          },
+          {
+            "type": "paragrafı",
+            "text": "Önerilen boyut: 50x60 mm, beyaz arka planlı."
+          }
+        ]
+      },
+      {
+        "id": "belgeler",
+        "icon": "📄",
+        "title": "Tercüme Edilmiş ve Noter Onaylı Belgeler (varsa)",
+        "shortTitle": "Belgeler",
+        "content": [
+          {
+            "type": "paragrafı",
+            "text": "Özellikle başvuruda bulunacaksanız, bazı belgelerin Türkçeye çevrilmesi ve noter onaylı olması gerekir:"
+          },
+          {
+            "type": "Liste",
+            "listType": "sırasız",
+            "items": [
+              "Çalışma izinleri",
+              "Aile birleşimi",
+              "Vatandaşlık"
+            ]
+          },
+          {
+            "type": "Liste",
+            "title": "Örnekler:",
+            "listType": "sırasız",
+            "items": [
+              "Evlilik cüzdanı",
+              "Çocuklar için doğum belgeleri",
+              "Akademik diplomalar veya iş referansları"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "ikamet-izni",
+        "icon": "🏢",
+        "title": "Oturma İzni Başvurusu (uzun süreli kalışlar için)",
+        "shortTitle": "İkamet İzni",
+        "content": [
+          {
+            "type": "paragrafı",
+            "text": "Eğer 90 günden daha uzun süre kalmayı planlıyorsanız:"
+          },
+          {
+            "type": "adımlar",
+            "steps": [
+              "Göç İdaresi aracılığıyla online başvuru yapın",
+              "Yerel göçmenlik bürosundan randevu alın",
+              "Tüm belgeleri getirin ve mülakata katılın"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "kayıt",
+        "icon": "🌐",
+        "title": "Adresinizi Kaydedin ve İkamet Kartı Alın",
+        "shortTitle": "Kayıt",
+        "content": [
+          {
+            "type": "paragrafı",
+            "text": "Onaylandıktan sonra:"
+          },
+          {
+            "type": "Liste",
+            "listType": "sırasız",
+            "items": [
+              "Size posta yoluyla gönderilen bir ikamet kartı (ikamet kartı) verilecektir",
+              "Adresinizi 20 gün içinde Nüfus Müdürlüğü'ne kaydettirmelisiniz"
+            ]
+          }
+        ]
+      }
+    ],
+    "bonus": {
+      "icon": "🗣️",
+      "title": "Bonus: Temel Türkçe Öğrenin",
+      "description": "Yasal bir zorunluluk olmasa da, temel Türkçe öğrenmek geçişinizi büyük ölçüde kolaylaştırabilir. Şunlara yardımcı olur:",
+      "benefits": [
+        "Yerel bürokrasi",
+        "Ev kiralama",
+        "Alışveriş ve sosyalleşme"
+      ]
+    },
+    "summary": {
+      "title": "Önemli Çıkarımlar",
+      "description": "Türkiye'ye başarılı bir taşınma için bu temel noktaları unutmayın:",
+      "keyPoints": [
+        "Geçerli pasaport (6+ ay)",
+        "Uygun vize veya izin belgesi",
+        "Kayıtlı Türkçe adres",
+        "Finansal istikrar kanıtı",
+        "Geçerli sağlık sigortası",
+        "Türk vergi numarası",
+        "Biyometrik fotoğraflar hazır",
+        "Gerekirse tercüme edilen belgeler"
+      ]
+    },
+    "accessibility": {
+      "sectionButton": "Toggle {title} bölüm"
+    }
+  },
+  "ukToTurkeyGuide": {
+    "title": "İngiltere'den Türkiye'ye Taşınma",
+    "subtitle": "Bilmeniz Gerekenler",
+    "description": "Türkiye, daha rahat bir yaşam tarzı, daha düşük yaşam maliyetleri ve yıl boyunca güneş ışığı arayan İngiliz gurbetçiler için popüler bir yer haline gelmiştir. İster emekli olmayı, ister uzaktan çalışmayı ya da yurtdışında yeni bir sayfa açmayı planlıyor olun, bu rehber İngiltere'den Türkiye'ye taşınırken gerçekçi bir şekilde göz önünde bulundurmanız gereken her şeyi kapsamaktadır.",
+    "navigation": {
+      "title": "Hızlı Navigasyon",
+      "sections": [
+        {
+          "id": "whyMove",
+          "icon": "🧳",
+          "title": "İngilizler Neden Türkiye'ye Taşınıyor?"
+        },
+        {
+          "id": "entryRequirements",
+          "icon": "🛂",
+          "title": "Giriş Koşulları & Vize Kuralları"
+        },
+        {
+          "id": "Uzun Süreli Konaklama",
+          "icon": "🏠",
+          "title": "Birleşik Krallık Vatandaşları için Uzun Süreli Kalış Seçenekleri"
+        },
+        {
+          "id": "mülkiyet",
+          "icon": "🏘️",
+          "title": "Mülk Satın Alma veya Kiralama"
+        },
+        {
+          "id": "maliyetYaşam",
+          "icon": "💷",
+          "title": "Yaşam Maliyeti Karşılaştırması"
+        },
+        {
+          "id": "sağlık hizmetleri",
+          "icon": "🏥",
+          "title": "Sağlık Hizmetlerine Erişim"
+        },
+        {
+          "id": "dailyLife",
+          "icon": "📱",
+          "title": "Günlük Yaşam Ayarlamaları"
+        },
+        {
+          "id": "movingLogistics",
+          "icon": "🛫",
+          "title": "İngiltere'den Lojistik Taşıma"
+        },
+        {
+          "id": "zorluklar",
+          "icon": "🧾",
+          "title": "Beklenebilecek Gerçekçi Zorluklar"
+        },
+        {
+          "id": "expatCommunities",
+          "icon": "👥",
+          "title": "İngiliz Göçmen Toplulukları"
+        }
+      ]
+    },
+    "sections": {
+      "whyMove": {
+        "description": "Binlerce İngiliz vatandaşı artık Türkiye'yi, özellikle de Fethiye, Antalya, İstanbul ve Bodrum gibi şehirleri evi olarak görüyor. Çağrı şunları içeriyor:",
+        "reasons": [
+          "Birleşik Krallık'a kıyasla daha düşük yaşam maliyeti",
+          "Akdeniz iklimi ve kıyı yaşamı",
+          "Sıcak misafirperverlik ve güçlü göçmen toplulukları",
+          "Mülk sahibi olma fırsatları",
+          "Daha yavaş, daha rahat bir yaşam temposu"
+        ],
+        "postBrexitNote": "Ancak Brexit sonrası, yer değiştirmek eskisine kıyasla daha fazla planlama ve evrak işi gerektiriyor."
+      },
+      "entryRequirements": {
+        "touristEntry": {
+          "title": "Turist Girişi",
+          "description": "Birleşik Krallık vatandaşları Türkiye'yi herhangi bir 180 günlük süre içinde 90 güne kadar vizesiz ziyaret edebilirler. Ancak daha uzun süre kalmayı veya kalıcı olarak taşınmayı planlıyorsanız, oturma izni için başvurmanız gerekir."
+        }
+      },
+      "longTermStay": {
+        "options": [
+          {
+            "title": "1. Kısa Dönem İkamet İzni (İkamet)",
+            "description": "<span class=\"font-medium\">1 yıl geçerlidir ve yenilenebilir</span><br/>Dijital göçebeler, mülk sahipleri ve emekliler arasında yaygındır",
+            "requirementsTitle": "İhtiyacın olacak:",
+            "requirements": [
+              "Geçerli pasaport",
+              "Türk Vergi Kimliği",
+              "Konaklama belgesi (kira sözleşmesi veya mülk tapusu)",
+              "Yeterli fon olduğunu gösteren banka hesap özetleri",
+              "Yerel veya uluslararası sağlık sigortası"
+            ]
+          },
+          {
+            "title": "2. Çalışma İzni ve Vize",
+            "steps": [
+              "Bir Türk şirketinden iş teklifi almanız gerekiyor",
+              "İşveren sizin adınıza çalışma izni için başvuruda bulunur",
+              "Onaylandıktan sonra, İngiltere'deki Türk konsolosluğu aracılığıyla çalışma vizesine başvurursunuz"
+            ]
+          },
+          {
+            "title": "3. Aile İkamet İzni",
+            "steps": [
+              "Türk eşi veya aile üyesi ile katılanlar için",
+              "2 yıla kadar geçerlidir"
+            ]
+          },
+          {
+            "title": "4. Öğrenci İkamet İzni",
+            "description": "Bir Türk üniversitesinde okuyorsanız veya uzun süreli bir dil kursuna katılıyorsanız"
+          }
+        ]
+      },
+      "property": {
+        "facts": [
+          "Birleşik Krallık vatandaşları da dahil olmak üzere yabancılar Türkiye'de yasal olarak mülk satın alabilirler",
+          "Oturma iznine uygunluk için asgari değer gerekmez",
+          "İngiliz alıcılar için popüler bölgeler: Fethiye, Antalya, Kuşadası, Bodrum, Alanya",
+          "Kiralar uygun fiyatlı: konuma bağlı olarak ayda 200-500 sterline daire bulabilirsiniz"
+        ],
+        "tip": "<strong>İpucu:</strong> Sözleşme imzalarken veya mülk satın alırken her zaman saygın bir acente veya avukatla çalışın."
+      },
+      "costLiving": {
+        "table": {
+          "headers": {
+            "expense": "Giderler",
+            "turkey": "Türkiye (ortalama)",
+            "uk": "Birleşik Krallık (ort.)"
+          },
+          "rows": [
+            {
+              "expense": "Kira (1 yataklı daire)",
+              "turkey": "£200-£400",
+              "uk": "£800-£1,200"
+            },
+            {
+              "expense": "Yardımcı Programlar",
+              "turkey": "£30-£70/ay",
+              "uk": "£150+/ay"
+            },
+            {
+              "expense": "Restoranda yemek",
+              "turkey": "£3-£6",
+              "uk": "£10-£25"
+            },
+            {
+              "expense": "Ulaşım kartı",
+              "turkey": "£10-£20/ay",
+              "uk": "£60-£120/ay"
+            }
+          ]
+        },
+        "conclusion": "Türkiye'de - özellikle büyük şehirlerin dışında - poundunuz çok daha fazla uzar."
+      },
+      "healthcare": {
+        "points": [
+          "Oturma izni başvuru sahipleri için özel sağlık sigortası gereklidir",
+          "İşe girdikten sonra, çoğu tedaviyi kapsayan SGK (kamu sigortası) almaya hak kazanırsınız",
+          "Özel sağlık hizmetleri uygun fiyatlıdır ve birçok hastane uluslararası akreditasyona sahiptir",
+          "Birçok İngiliz gurbetçi daha fazla esneklik için uluslararası sağlık sigortasını tercih ediyor"
+        ]
+      },
+      "dailyLife": {
+        "aspects": [
+          {
+            "title": "Dil engeli",
+            "description": "Türkçe resmi dildir. Turistik ve göçmen bölgelerinde İngilizce konuşulmaktadır, ancak temel Türkçe öğrenilmesi şiddetle tavsiye edilir."
+          },
+          {
+            "title": "Sürüş",
+            "description": "Birleşik Krallık ehliyetleri 6 ay süreyle geçerlidir. Bundan sonra Türk ehliyeti almanız gerekir."
+          },
+          {
+            "title": "Para Birimi",
+            "description": "Türk Lirası (TRY) - döviz kurları dalgalanmaktadır, ancak maliyet avantajları hala İngiliz Sterlini lehinedir."
+          },
+          {
+            "title": "Bankacılık",
+            "description": "Pasaport ve yerel adres kanıtı ile bir Türk banka hesabı açabilirsiniz. Online bankacılık yaygın olarak kullanılmaktadır."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "points": [
+          "Oturma izninizi aldıktan sonraki 6 ay içinde kişisel eşyalarınızı gümrüksüz olarak getirebilirsiniz",
+          "İngiltere-Türkiye taşınmalarında deneyimli uluslararası nakliyeciler tavsiye edilir",
+          "Evcil hayvanlar kabul edilir, ancak mikroçipli olmaları ve kuduz sertifikası da dahil olmak üzere güncel aşılara sahip olmaları gerekir"
+        ]
+      },
+      "challenges": {
+        "challenges": [
+          {
+            "title": "Bürokrasi",
+            "description": "İkamet izni süreçleri yavaş ve şehirler arasında tutarsız olabilir"
+          },
+          {
+            "title": "Döviz kuru oynaklığı",
+            "description": "Para biriminin değer kaybetmesi tasarrufları veya emekli maaşlarını etkileyebilir"
+          },
+          {
+            "title": "Kültürel farklılıklar",
+            "description": "Yaşam tarzı değişiklikleri, sosyal normlar ve yerel tempo hakkında açık fikirli olun"
+          },
+          {
+            "title": "Kırsal ve kentsel yaşam",
+            "description": "Kırsal bölgelerde İngilizce konuşanların sayısı ve modern olanaklar daha az olabilir"
+          }
+        ]
+      },
+      "expatCommunities": {
+        "description": "Türkiye'de özellikle büyük bir İngiliz topluluğu bulunmaktadır:",
+        "locations": [
+          "Fethiye",
+          "Didim",
+          "Bodrum",
+          "Marmaris",
+          "Antalya"
+        ],
+        "support": "Daha sorunsuz bir şekilde yerleşmenize yardımcı olacak Facebook grupları, yerel buluşmalar ve İngilizler tarafından işletilen işletmeler bulacaksınız."
+      }
+    },
+    "checklist": {
+      "title": "Türkiye'ye Taşınmadan Önce Son Kontrol Listesi",
+      "items": [
+        "Doğru oturma izni veya vize için başvurun",
+        "Türk Vergi Numarası (Vergi Numarası) Alın",
+        "Konaklama ve yerel SIM kart ayarlama",
+        "Özel sağlık sigortası yaptırın",
+        "Temel Türkçe ifadeleri öğrenin",
+        "Destek ve güncellemeler için göçmen gruplarına katılın",
+        "Birleşik Krallık makamlarını (HMRC, NHS, vb.) taşınmanız hakkında bilgilendirin"
+      ]
+    },
+    "conclusion": {
+      "title": "Sonuç: İngiltere'den Türkiye'ye Taşınmaya Değer mi?",
+      "description": "Daha yavaş, daha güneşli bir yaşam tarzının peşindeyseniz ve evrak işleri ve kültürel farklılıklarla başa çıkabiliyorsanız, Türkiye yaşamak için inanılmaz derecede ödüllendirici bir yerdir. Düşük maliyetler ve yüksek yaşam kalitesi ile birçok İngiliz Türkiye'yi uzun vadeli mükemmel bir destinasyon olarak görüyor."
+    },
+    "accessibility": {
+      "sectionButton": "Başlık} bölümüne gidin bölüm"
+    }
+  },
+  "visaGuide": {
+    "title": "Türkiye'ye Taşınmak için Vize ve İkamet Seçenekleri",
+    "description": "Türkiye'ye taşınmak, kalış amacınıza göre doğru vizeyi seçmeyi gerektirir. Türkiye çalışanlar, öğrenciler, emekliler, iş insanları ve dijital göçebeler için çeşitli vize ve oturma izni seçenekleri sunmaktadır.",
+    "labels": {
+      "bestFor": "İçin en iyisi",
+      "requirements": "Gereksinimler",
+      "process": "Süreç",
+      "benefits": "Avantajlar",
+      "options": "Seçenekler",
+      "validity": "Geçerlilik",
+      "renewable": "Yenilenebilir",
+      "yes": "Evet",
+      "no": "Hayır",
+      "more": "daha fazla"
+    },
+    "controls": {
+      "expandAll": "Tümünü Genişlet",
+      "collapseAll": "Tümünü Daralt"
+    },
+    "compare": {
+      "enable": "Vizeleri Karşılaştırın",
+      "exit": "Karşılaştırma Modundan Çık",
+      "select": "Seçiniz",
+      "selected": "Seçilmiş",
+      "table": {
+        "title": "Vize Karşılaştırması",
+        "headers": {
+          "type": "Vize Türü",
+          "validity": "Geçerlilik",
+          "renewable": "Yenilenebilir",
+          "bestFor": "İçin En İyisi"
+        }
+      }
+    },
+    "visas": [
+      {
+        "id": "kısa vadeli",
+        "icon": "🏠",
+        "title": "Kısa Dönem Oturma İzni (İkamet İzni)",
+        "subtitle": "Gurbetçiler için en popüler",
+        "validity": "1 yıl",
+        "bestFor": [
+          "Dijital göçebeler",
+          "Uzaktan çalışanlar",
+          "Mülk sahipleri",
+          "Turistlerin 90 günden fazla kalması",
+          "Uzun süreli konaklama seçeneklerini araştıran kişiler"
+        ],
+        "requirements": [
+          "Geçerli pasaport ve vize",
+          "Maddi imkanların kanıtı (yaklaşık 500 $/ay)",
+          "Türkçe adres (kira sözleşmesi veya tapu)",
+          "Özel sağlık sigortası",
+          "Biyometrik fotoğraflar"
+        ],
+        "renewable": true
+      },
+      {
+        "id": "öğrenci",
+        "icon": "🎓",
+        "title": "Öğrenci Vizesi ve Oturma İzni",
+        "subtitle": "Akademik çalışmalar için",
+        "validity": "Çalışmaların süresi",
+        "bestFor": [
+          "Türk üniversitelerine kabul edilen öğrenciler",
+          "Dil okulu öğrencileri"
+        ],
+        "requirements": [
+          "Tanınmış bir Türk kurumundan kabul mektubu",
+          "Yeterli fon kanıtı",
+          "Sağlık sigortası",
+          "Türkçe adres"
+        ],
+        "process": [
+          "Ülkenizdeki bir Türk büyükelçiliğinden/konsolosluğundan öğrenci vizesi için başvuruda bulunun",
+          "Varışta, öğrenci ikamet izni için başvurun"
+        ],
+        "renewable": true
+      },
+      {
+        "id": "iş",
+        "icon": "💼",
+        "title": "Çalışma Vizesi ve Çalışma İzni",
+        "subtitle": "Çalışan profesyoneller için",
+        "validity": "1-2 yıl",
+        "bestFor": [
+          "Bir Türk şirketi tarafından istihdam edilen yabancılar",
+          "İş teklifi alan gurbetçiler",
+          "İngilizce öğretmenleri, mühendisler, sağlık çalışanları"
+        ],
+        "requirements": [
+          "Kayıtlı bir Türk işverenden iş teklifi",
+          "Geçerli pasaport",
+          "İş sözleşmesi",
+          "Eğitim belgeleri (tercüme edilmiş ve noter onaylı)"
+        ],
+        "process": [
+          "İşveren sizin adınıza Türkiye Çalışma Bakanlığı'na başvurur",
+          "Türk büyükelçiliğine çalışma vizesi için başvuruyorsunuz",
+          "Varıştan sonra çalışmak için oturma izni alırsınız"
+        ],
+        "renewable": true
+      },
+      {
+        "id": "AİLE",
+        "icon": "👨‍👩‍👧‍👦",
+        "title": "Aile İkamet İzni",
+        "subtitle": "Aile birleşimi için",
+        "validity": "2 yıla kadar",
+        "bestFor": [
+          "Türk vatandaşlarının eşleri",
+          "Türk vatandaşlarının çocukları",
+          "Yurt dışında ikamet edenlerin aile üyeleri"
+        ],
+        "requirements": [
+          "Aile bağlarının kanıtı (evlilik/doğum belgesi)",
+          "Türkçe adres",
+          "Sponsorun gelir belgesi",
+          "Sağlık sigortası"
+        ],
+        "renewable": true
+      },
+      {
+        "id": "mülkiyet",
+        "icon": "🏘️",
+        "title": "Mülk Sahipliği Oturma İzni",
+        "subtitle": "Gayrimenkul yatırımcıları için",
+        "validity": "1 yıl",
+        "bestFor": [
+          "Türkiye'de gayrimenkul sahibi olan yabancılar",
+          "Mülk yatırımcıları",
+          "Gayrimenkul girişimcileri"
+        ],
+        "requirements": [
+          "Tapu (tapu senedi) sizin adınıza",
+          "Büyükşehirlerde minimum mülk değeri yaklaşık 75.000 $ (bölgeye göre değişebilir)",
+          "Gelir belgesi",
+          "Sağlık sigortası"
+        ],
+        "benefits": [
+          "Yıllık olarak yenilenebilir",
+          "Uzun süreli ikamet veya vatandaşlığa yol açabilir"
+        ],
+        "renewable": true
+      },
+      {
+        "id": "vatandaşlık",
+        "icon": "🇹🇷",
+        "title": "Yatırım Yoluyla Türk Vatandaşlığı",
+        "subtitle": "Vatandaşlığa giden hızlı yol",
+        "validity": "Daimi",
+        "bestFor": [
+          "Yatırımcılar ve girişimciler",
+          "Yüksek net değere sahip bireyler",
+          "İşletme sahipleri"
+        ],
+        "options": [
+          "En az 400.000 $ değerinde gayrimenkul satın alın",
+          "Bir Türk bankasına 500.000 dolar yatırmak",
+          "En az 50 Türk vatandaşı için istihdam yaratılması"
+        ],
+        "benefits": [
+          "3-6 ay içinde hızlı vatandaşlık",
+          "Pasaport ve oy kullanma dahil tam haklar"
+        ],
+        "renewable": false
+      },
+      {
+        "id": "uzun vadeli",
+        "icon": "🌟",
+        "title": "Uzun Dönem İkamet İzni",
+        "subtitle": "Süresiz konaklama seçeneği",
+        "validity": "Belirsiz",
+        "bestFor": [
+          "Türkiye'de kesintisiz en az 8 yıl yaşamış yabancılar",
+          "Daimi statü arayan uzun süreli mukimler"
+        ],
+        "requirements": [
+          "Sabıka kaydı yok",
+          "Uzun vadeli gelir ve konaklama kanıtı",
+          "Son 3 yıl içinde sosyal yardım bağımlılığı yok"
+        ],
+        "renewable": false
+      }
+    ],
+    "summary": {
+      "title": "Hızlı Referans İpuçları",
+      "tips": [
+        {
+          "title": "Erken Başlayın",
+          "description": "Vize başvuru sürecinize planladığınız taşınma tarihinden en az 3-6 ay önce başlayın."
+        },
+        {
+          "title": "Belge Hazırlama",
+          "description": "Tüm belgelerin gerektiği gibi tercüme edildiğinden, noter tasdikli ve apostilli olduğundan emin olun."
+        },
+        {
+          "title": "Finansal Planlama",
+          "description": "Başvurudan önceki birkaç ay boyunca banka hesabınızda yeterli para bulundurun."
+        },
+        {
+          "title": "Sağlık Sigortası",
+          "description": "Herhangi bir oturma iznine başvurmadan önce geçerli bir sağlık sigortası yaptırın."
+        },
+        {
+          "title": "Adres Kaydı",
+          "description": "Oturma iznine başvurmadan önce kayıtlı bir Türkiye adresinizin olması gerekmektedir."
+        },
+        {
+          "title": "Profesyonel Yardım",
+          "description": "Karmaşık vakalar için bir avukat veya göçmenlik danışmanı tutmayı düşünün."
+        }
+      ]
+    }
+  }
+}

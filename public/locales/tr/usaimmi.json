@@ -1,0 +1,911 @@
+{
+  "heroSection": {
+    "badge": "Özel Yolculuklar",
+    "title": "Bir Sonraki Maceranızı Keşfedin",
+    "description": "İsteklerinize göre uyarlanmış premium seyahat paketlerimizle nefes kesici destinasyonları deneyimleyin ve unutulmaz anılar yaratın.",
+    "currentlyViewing": {
+      "label": "Şu Anda Görüntüleniyor"
+    },
+    "buttons": {
+      "explore": "Şimdi Keşfet",
+      "viewAll": "Tüm Destinasyonları Görüntüle"
+    },
+    "destinationCounter": "Hedef {mevcut}/{toplam}",
+    "destinations": [
+      {
+        "img": "/images/ihusn.png",
+        "name": "New York City, New York",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihuslos.png",
+        "name": "Los Angeles, Kaliforniya",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihuch.png",
+        "name": "Chicago, Illinois",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihusen.png",
+        "name": "San Francisco, Kaliforniya",
+        "country": "USA"
+      },
+      {
+        "img": "/images/ihumiami.png",
+        "name": "Miami, Florida",
+        "country": "USA"
+      }
+    ],
+    "accessibility": {
+      "exploreButton": "Destinasyonları şimdi keşfedin",
+      "viewAllButton": "Mevcut tüm destinasyonları görüntüleyin",
+      "destinationImage": "Hedefi görüntüle: {name}",
+      "featuredDestination": "Öne çıkan destinasyon görseli",
+      "carouselControl": "Hedef {numara}'ya git"
+    },
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableOfContents": {
+    "title": "İçindekiler",
+    "subtitle": "Bölümler arasında gezinme",
+    "currentlyReading": "Şu anda okuyor",
+    "sectionsCount": "keşfedilecek {say} bölümler",
+    "sections": [
+      {
+        "title": "🇺🇸 ABD Hakkında Eğlenceli ve Büyüleyici Bilgiler",
+        "id": 1
+      },
+      {
+        "title": "ABD'ye Taşınmak için Vize Seçenekleri",
+        "id": 2
+      },
+      {
+        "title": "ABD'ye Taşınmak için Gerekenler",
+        "id": 3
+      },
+      {
+        "title": "ABD'de Yabancı Olarak İş Bulmak",
+        "id": 4
+      },
+      {
+        "title": "Türkiye'den ABD'ye Taşınma",
+        "id": 5
+      },
+      {
+        "title": "İngiltere'den ABD'ye taşınmak",
+        "id": 6
+      },
+      {
+        "title": "ABD'ye taşınmak ne kadara mal olur?",
+        "id": 7
+      },
+      {
+        "title": "Evcil Hayvanlarla ABD'ye Taşınma",
+        "id": 8
+      }
+    ],
+    "quickNavigation": {
+      "title": "Hızlı Navigasyon",
+      "footer": "Say} bölümleri arasında gezinme"
+    },
+    "accessibility": {
+      "toggleMenu": "Gezinti menüsünü aç / kapat",
+      "sectionButton": "Bölüme gidin: {title}",
+      "quickNavigation": "Hızlı gezinme menüsü",
+      "quickNavSection": "Hızlı gezinme: {başlık}"
+    }
+  },
+  "factsCard": {
+    "description": "Amerika Birleşik Devletleri'nin olağanüstü özelliklerini ve başarılarını keşfedin. ABD, dünya sahnesinde inanılmaz bir coğrafi, ekonomik, kültürel ve yenilikçi öneme sahiptir.",
+    "navigation": {
+      "title": "Gerçekleri Keşfedin",
+      "previous": "Önceki Gerçek",
+      "next": "Sonraki Gerçek"
+    },
+    "allFacts": {
+      "title": "ABD Hakkında Tüm Gerçekler"
+    },
+    "facts": [
+      {
+        "title": "Üçüncü En Büyük Ülke",
+        "description": "ABD, Rusya/Kanada (yüzölçümü) ve Çin/Hindistan'dan (nüfus) sonra hem yüzölçümü hem de nüfus bakımından üçüncü büyük ülkedir.",
+        "iconKey": "harita",
+        "emoji": "🗺️",
+        "id": 1
+      },
+      {
+        "title": "50 Eyalet ve 1 Federal Bölge",
+        "description": "<strong>50 eyalet</strong> ve başkent olan ancak bir eyalet olmayan Washington, D.C.'den oluşur.",
+        "iconKey": "bayrak",
+        "emoji": "🏛️",
+        "id": 2
+      },
+      {
+        "title": "Dünyanın En Büyük Ekonomisi",
+        "description": "Şu an itibariyle Amerika Birleşik Devletleri, teknoloji, finans, sağlık ve eğlence sektörleri tarafından yönlendirilen dünyanın <strong>en büyük ekonomisine</strong> sahiptir.",
+        "iconKey": "bina",
+        "emoji": "💰",
+        "id": 3
+      },
+      {
+        "title": "Kültürel Çeşitlilik",
+        "description": "<strong>350'den fazla dilin konuşulduğu</strong> ve dünyanın neredeyse her ülkesinden toplulukların yaşadığı, kültürel çeşitliliği en yüksek ülkelerden biridir.",
+        "iconKey": "Küre",
+        "emoji": "🌎",
+        "id": 4
+      },
+      {
+        "title": "Yenilikler Burada Ortaya Çıktı",
+        "description": "ABD, <strong>internet, uçak, ampul ve iPhone</strong> da dahil olmak üzere birçok icada ev sahipliği yapmaktadır.",
+        "iconKey": "ampul",
+        "emoji": "💡",
+        "id": 5
+      }
+    ],
+    "accessibility": {
+      "factButton": "Gerçek seçin: {title}",
+      "previousFact": "Önceki gerçeğe git",
+      "nextFact": "Sonraki gerçeğe git"
+    }
+  },
+  "movingCostsGuide": {
+    "title": "ABD'ye Taşınmanın Maliyeti Ne Kadar?",
+    "description": "Amerika Birleşik Devletleri'ne taşınmak heyecan verici olabilir, ancak planlamanız gereken çeşitli masrafları da beraberinde getirir. İşte ABD'ye taşınırken bekleyebileceğiniz masrafların ayrıntılı bir dökümü.",
+    "costSections": [
+      {
+        "id": "vize-göçmenlik",
+        "icon": "🛂",
+        "title": "Vize ve Göçmenlik Ücretleri",
+        "amount": "$160-$5,000+",
+        "details": "Vize başvuruları, yeşil kart, isteğe bağlı avukatlık ücretleri",
+        "color": "bg-blue-500",
+        "subItems": [
+          {
+            "title": "Göçmen olmayan vize (H-1B, F-1)",
+            "amount": "$160-$205"
+          },
+          {
+            "title": "Yeşil Kart (göçmen vizesi)",
+            "amount": "$1,200-$1,760"
+          },
+          {
+            "title": "Avukatlık Ücretleri (isteğe bağlı)",
+            "amount": "$1,500-$5,000"
+          }
+        ]
+      },
+      {
+        "id": "uçuş",
+        "icon": "✈️",
+        "title": "Uçak Biletleri",
+        "amount": "$500-$1,200",
+        "details": "Konum ve rezervasyon zamanına bağlı olarak tek yönlü uçuş",
+        "color": "bg-blue-600"
+      },
+      {
+        "id": "nakliye",
+        "icon": "📦",
+        "title": "Eşyaların Nakliyesi",
+        "amount": "$500-$7,000",
+        "details": "Hacme ve nakliye yöntemine bağlıdır",
+        "color": "bg-blue-700",
+        "subItems": [
+          {
+            "title": "Küçük sevkiyat (sadece kutular)",
+            "amount": "$500-$1,500"
+          },
+          {
+            "title": "Dolu konteyner (20ft/40ft)",
+            "amount": "$3,000-$7,000"
+          }
+        ]
+      },
+      {
+        "id": "konaklama",
+        "icon": "🏠",
+        "title": "İlk Konaklama",
+        "amount": "$1,000-$4,000",
+        "details": "İlk ayın kirası + depozito (şehre göre değişir)",
+        "color": "bg-blue-500",
+        "subItems": [
+          {
+            "title": "Geçici otel/Airbnb",
+            "amount": "Gecelik $80-$200"
+          }
+        ]
+      },
+      {
+        "id": "Sigorta",
+        "icon": "🏥",
+        "title": "Sağlık Sigortası",
+        "amount": "$300-$700/ay",
+        "details": "Çoğu vize türü için gereklidir",
+        "color": "bg-blue-600",
+        "subItems": [
+          {
+            "title": "Aile kapsamı",
+            "amount": "Daha pahalı"
+          }
+        ]
+      },
+      {
+        "id": "diğer",
+        "icon": "📝",
+        "title": "Diğer Giderler",
+        "amount": "$520-$1,080+/ay",
+        "color": "bg-blue-500",
+        "subItems": [
+          {
+            "title": "SSN başvurusu",
+            "amount": "Ücretsiz"
+          },
+          {
+            "title": "Ehliyet",
+            "amount": "$20-$80"
+          },
+          {
+            "title": "Bakkaliye ve ulaşım",
+            "amount": "$500-$1,000/ay"
+          }
+        ]
+      }
+    ],
+    "totalBudget": {
+      "icon": "🔢",
+      "title": "Tahmini Toplam Bütçe",
+      "categories": [
+        {
+          "title": "Tek Kişi",
+          "amount": "$5,000-$10,000",
+          "description": "Vize ücretleri, ilk konaklama, ulaşım ve temel kurulum masraflarını içerir"
+        },
+        {
+          "title": "Dört Kişilik Aile",
+          "amount": "$10,000-$25,000+",
+          "description": "Vize, nakliye ve konaklama dahil olmak üzere tüm aile için tüm masrafları içerir"
+        }
+      ]
+    },
+    "moneySavingTips": {
+      "icon": "💰",
+      "title": "Para Tasarrufu İpuçları",
+      "tips": [
+        {
+          "title": "Konumu Dikkatlice Değerlendirin",
+          "description": "Konut maliyetleri şehirler arasında büyük farklılıklar gösterir. Daha küçük şehirleri veya banliyöleri düşünün."
+        },
+        {
+          "title": "Uçuşlar için Erken Rezervasyon Yapın",
+          "description": "Uçuşları 2-3 ay önceden rezerve etmek yüzlerce dolar tasarruf sağlayabilir."
+        },
+        {
+          "title": "Seçerek Gemi",
+          "description": "ABD'de yeni satın almaya kıyasla nakliye ücretini göz önünde bulundurun."
+        },
+        {
+          "title": "Sigorta Planlarını Karşılaştırın",
+          "description": "Sağlık sigortası maliyetleri büyük farklılıklar gösterebilir; doğru planı bulmak için zaman ayırın."
+        }
+      ]
+    },
+    "conclusion": "Nihai maliyetiniz büyük ölçüde vize türünüze, nereden taşındığınıza ve ABD'deki varış noktanıza bağlıdır. Doğru planlama ve bütçeleme ile Amerika Birleşik Devletleri'ne taşınmanızı hem sorunsuz hem de ekonomik hale getirebilirsiniz.",
+    "accessibility": {
+      "toggleSection": "Başlık} için ayrıntıları değiştir bölüm"
+    }
+  },
+  "requirementsGuide": {
+    "tabs": {
+      "all": "Tüm Gereksinimler",
+      "essential": "Temel Gereklilikler",
+      "recommended": "Tavsiye edilir",
+      "after-arrival": "Varıştan Sonra"
+    },
+    "categoryLabels": {
+      "essential": "Gerekli",
+      "recommended": "Tavsiye edilir",
+      "afterArrival": "Varıştan Sonra"
+    },
+    "requirements": [
+      {
+        "title": "Doğru Vizeyi veya Yeşil Kartı Alın",
+        "description": "ABD'de yaşamak için onaylı bir vizeniz veya Yeşil Kartınız (daimi ikamet statüsü) olmalıdır.",
+        "details": [
+          "Aile temelli göçmen vizesi",
+          "İstihdam temelli vize (H-1B, L-1, vb.)",
+          "Öğrenci vizesi (F-1)",
+          "Yeşil Kart Çekilişi (Çeşitlilik Vize Programı)"
+        ],
+        "tip": "Vize başvurunuzu ülkenizdeki ABD büyükelçiliği veya konsolosluğundan başlatın. İşlem süreleri haftalar ile aylar arasında değişmektedir.",
+        "iconKey": "dosyaMetin",
+        "category": "gerekli",
+        "id": 1
+      },
+      {
+        "title": "Geçerli Pasaport",
+        "description": "Pasaportunuz, amaçladığınız giriş tarihinden sonra en az <strong>6 ay</strong> geçerli olmalıdır.",
+        "details": [
+          "Süresi dolmak üzereyse vize başvurusunda bulunmadan önce yenileyin."
+        ],
+        "iconKey": "kitapAçık",
+        "category": "gerekli",
+        "id": 2,
+        "tip": ""
+      },
+      {
+        "title": "Onaylı Tıbbi Muayene",
+        "description": "Göçmen vizeleri için zorunlu bir tıbbi muayene gereklidir.",
+        "details": [
+          "Bu işlem ABD elçiliği tarafından onaylanmış bir doktor tarafından yapılmalıdır.",
+          "Tüberküloz gibi hastalıklara karşı taranacak ve önemli aşıların kanıtlarını göstermeniz istenecektir."
+        ],
+        "tip": "Maliyet: Ülkeye bağlı olarak yaklaşık 200-400$.",
+        "iconKey": "stetoskop",
+        "category": "gerekli",
+        "id": 3
+      },
+      {
+        "title": "Aşılama ve Sağlık Kayıtları",
+        "description": "Aşıların tam bir kaydını getirin.",
+        "details": [
+          "Kızamık, Kabakulak, Kızamıkçık (MMR)",
+          "Çocuk Felci",
+          "Tetanos",
+          "Grip (grip mevsimi boyunca)",
+          "COVID-19 (en son USCIS kılavuzu itibariyle)"
+        ],
+        "iconKey": "ŞIRINGA",
+        "category": "gerekli",
+        "id": 4,
+        "tip": ""
+      },
+      {
+        "title": "Finansal Kanıt veya Sponsorluk",
+        "description": "ABD hükümetine mali açıdan bağımlı olmayacağınızı kanıtlamanız gerekir:",
+        "details": [
+          "İstihdam vizesi: İş teklif mektubu ve maaş detayları.",
+          "Aile vizesi: Sponsor Form I-864'ü (Destek Beyanı) doldurmalı ve belirli bir seviyenin üzerinde gelir göstermelidir.",
+          "Öğrenci vizesi: En az bir akademik yıl için harç ödemesi ve yaşam masraflarının kanıtı."
+        ],
+        "iconKey": "dolarİşareti",
+        "category": "gerekli",
+        "id": 5,
+        "tip": ""
+      },
+      {
+        "title": "Temiz Sabıka Kaydı",
+        "description": "Küçük suçlar genellikle sizi diskalifiye etmez, ancak ciddi sabıka kayıtları vize reddine neden olabilir.",
+        "details": [
+          "Geçmiş kontrolleri sürecin bir parçasıdır."
+        ],
+        "iconKey": "shieldCheck",
+        "category": "gerekli",
+        "id": 6,
+        "tip": ""
+      },
+      {
+        "title": "İngilizce Dil Becerileri (Pratik)",
+        "description": "Her zaman gerekli değildir, ancak iş ve günlük yaşam için <strong>şiddetle tavsiye edilir</strong>.",
+        "details": [
+          "Bazı vizeler (H-1B gibi) yeterlilik beklemektedir.",
+          "Daha sonra vatandaşlık başvurusunda bulunulacaksa, İngilizce ve yurttaşlık bilgisi gereklidir."
+        ],
+        "iconKey": "mesajKare",
+        "category": "tavsiye edilir",
+        "id": 7,
+        "tip": ""
+      },
+      {
+        "title": "Varış Sonrası Diğer Pratik Gereklilikler",
+        "description": "ABD'ye girdikten sonra yapmanız gerekenler:",
+        "details": [
+          "Sosyal Güvenlik Numarası (SSN) için başvurun",
+          "Bir ABD banka hesabı açın",
+          "Ehliyet veya kimlik alın",
+          "Konut bulun (kiralayın veya satın alın)",
+          "Sağlık sigortası satın alın (ABD'de sağlık hizmetleri özel ve pahalıdır)"
+        ],
+        "iconKey": "krediKartı",
+        "category": "varış sonrası",
+        "id": 8,
+        "tip": ""
+      }
+    ],
+    "importantReminder": {
+      "title": "Önemli Hatırlatma",
+      "description": "Göçmenlik gereklilikleri zaman içinde değişebilir. Bu kılavuz güncel bilgilere dayanmaktadır, ancak taşınma işleminize başlamadan önce her zaman ABD Dışişleri Bakanlığı veya ABD Vatandaşlık ve Göçmenlik Hizmetleri (USCIS) ile en son gereklilikleri doğrulayın.",
+      "lastUpdated": "Son güncelleme: Mayıs 2025"
+    },
+    "accessibility": {
+      "tabButton": "Etiket} sekmesine geç"
+    }
+  },
+  "migrationGuide": {
+    "header": {
+      "sourceFlag": "🇹🇷",
+      "destinationFlag": "🇺🇸",
+      "title": "Türkiye'den ABD'ye taşınmak",
+      "description": "Türkiye'den Amerika Birleşik Devletleri'ne taşınmak hayatınızı değiştirecek bir fırsat olabilir, ancak doğru planlama ve yasal prosedürler gerektirir. İşte bilmeniz gerekenler:",
+      "decorativeIcon": "🗽"
+    },
+    "sections": [
+      {
+        "title": "Doğru Vize Türünü Seçin",
+        "description": "İlk adımınız, taşınma nedeninize bağlı olarak doğru ABD vizesini almaktır:",
+        "items": [
+          {
+            "title": "Aile Temelli Vize",
+            "description": "<strong>ABD vatandaşı veya daimi ikametgah sahibi</strong> yakın aile üyeleriniz varsa.",
+            "iconKey": "kullanıcılar"
+          },
+          {
+            "title": "İstihdam Vizesi (H-1B, L-1, O-1)",
+            "description": "ABD'de bir iş teklifi alırsanız",
+            "iconKey": "evrak çantası"
+          },
+          {
+            "title": "Öğrenci Vizesi (F-1)",
+            "description": "ABD'de bir kolej veya üniversitede eğitim almayı planlıyorsanız.",
+            "iconKey": "mezuniyetKapak"
+          },
+          {
+            "title": "Çeşitlilik Vizesi (Yeşil Kart Çekilişi)",
+            "description": "Türkiye uygundur - yıllık çekiliş döneminde başvurabilirsiniz.",
+            "iconKey": "shuffle"
+          },
+          {
+            "title": "Yatırımcı Vizesi (E-2)",
+            "description": "ABD'deki bir işletmeye <strong>önemli miktarda</strong> yatırım yapan Türk vatandaşları için.",
+            "iconKey": "dolarİşareti"
+          }
+        ],
+        "id": 1
+      },
+      {
+        "title": "Vize Mülakatına Hazırlanın",
+        "description": "Bulunduğunuz bölgeye bağlı olarak Ankara'daki ABD Büyükelçiliği'ne veya İstanbul'daki Konsolosluğa başvurun. İhtiyacınız olacak:",
+        "items": [
+          {
+            "title": "Geçerli pasaport",
+            "description": "Pasaportunuzun planladığınız kalış süresinden sonra en az <strong>6 ay</strong> geçerli olduğundan emin olun.",
+            "iconKey": "dosyaMetin"
+          },
+          {
+            "title": "Vize başvurusu",
+            "description": "Form DS-160 veya uygun göçmen formu.",
+            "iconKey": "dosyaMetin"
+          },
+          {
+            "title": "Destekleyici belgeler",
+            "description": "Finansal, eğitim, iş teklifi vb.",
+            "iconKey": "dosyaMetin"
+          },
+          {
+            "title": "Tıbbi muayene ve aşı kayıtları",
+            "description": "Onaylı bir doktor tarafından eksiksiz tıbbi muayene.",
+            "iconKey": "dosyaMetin"
+          }
+        ],
+        "id": 2
+      },
+      {
+        "title": "Sağlık Sigortası ve Yaşam Maliyetleri",
+        "items": [
+          {
+            "title": "Özel sağlık sigortası",
+            "description": "ABD'de sağlık hizmetleri ücretsiz değildir - <strong>özel sağlık sigortası</strong> satın almanız gerekir.",
+            "iconKey": "dosyaMetin"
+          },
+          {
+            "title": "Daha yüksek hayat pahalılığı",
+            "description": "Yaşam maliyeti Türkiye'den daha yüksektir. Özellikle <strong>New York, LA veya San Francisco</strong> gibi şehirlerde kira, sağlık hizmetleri ve ulaşım daha pahalıdır.",
+            "iconKey": "bina"
+          }
+        ],
+        "id": 3,
+        "description": ""
+      },
+      {
+        "title": "Kültürel ve Yaşam Tarzı Farklılıkları",
+        "items": [
+          {
+            "title": "Türk toplulukları",
+            "description": "ABD'de, özellikle <strong>New York, Chicago ve Los Angeles</strong> gibi şehirlerde çok sayıda Türk topluluğu bulunmaktadır.",
+            "iconKey": "Küre"
+          },
+          {
+            "title": "Farklı yaşam tarzı",
+            "description": "Günlük yaşam Türkiye'ye kıyasla daha <strong>bireysel ve hızlı tempolu</strong> olabilir.",
+            "iconKey": "Küre"
+          }
+        ],
+        "id": 4,
+        "description": ""
+      },
+      {
+        "title": "ABD'ye Varıştan Sonra",
+        "description": "Vardığınızda, şunları yaptığınızdan emin olun:",
+        "items": [
+          {
+            "title": "Sosyal Güvenlik Numarası (SSN) için başvurun",
+            "description": "Bu, ABD'de çalışmak ve vergi beyannamesi vermek için gereklidir.",
+            "iconKey": "dosyaMetin"
+          },
+          {
+            "title": "Bir banka hesabı açın",
+            "description": "Günlük finansal işlemler için buna ihtiyacınız olacak.",
+            "iconKey": "krediKartı"
+          },
+          {
+            "title": "Ehliyet almak",
+            "description": "ABD'nin birçok bölgesinde toplu taşıma sınırlıdır.",
+            "iconKey": "krediKartı"
+          },
+          {
+            "title": "Konaklama yeri bulun",
+            "description": "Ve ABD sistemlerine (eğitim, iş, ulaşım) uyum sağlayın.",
+            "iconKey": "mapPin"
+          }
+        ],
+        "id": 5
+      }
+    ],
+    "navigation": {
+      "previous": "Önceki",
+      "next": "Sonraki"
+    },
+    "footer": {
+      "sourceFlag": "🇹🇷",
+      "destinationFlag": "🇺🇸",
+      "disclaimer": "Göçmenlik şartlarının değişebileceğini unutmayın. En güncel bilgiler için her zaman <strong>ABD Türkiye Büyükelçiliği</strong> veya <strong>USCIS</strong> ile görüşün."
+    },
+    "accessibility": {
+      "sectionButton": "Bölüme git: {title}",
+      "previousButton": "Önceki bölüme git: {title}",
+      "nextButton": "Sonraki bölüme geç: {title}"
+    }
+  },
+  "petsGuide": {
+    "header": {
+      "icons": [
+        "🐶",
+        "🐱",
+        "🦜"
+      ],
+      "title": "Evcil Hayvanlarla ABD'ye Taşınma",
+      "description": "Evcil hayvanınızı ABD'ye getirmek mümkündür, ancak belirli kurallara uymanız gerekir:"
+    },
+    "sections": {
+      "requirements": {
+        "icon": "✅",
+        "title": "Temel Gereksinimler"
+      },
+      "arrival": {
+        "icon": "🛬",
+        "title": "Varışta"
+      },
+      "tips": {
+        "icon": "💡",
+        "title": "Yararlı İpuçları"
+      }
+    },
+    "requirements": [
+      {
+        "id": "KUDUZ",
+        "icon": "💉",
+        "title": "Kuduz Aşısı",
+        "description": "<strong>Köpekler için zorunlu</strong>; kediler için şiddetle tavsiye edilir"
+      },
+      {
+        "id": "sağlık",
+        "icon": "📋",
+        "title": "Sağlık Sertifikası",
+        "description": "Lisanslı bir veteriner tarafından düzenlenmiş (genellikle seyahatten sonraki <strong>10 gün</strong> içinde)"
+      },
+      {
+        "id": "mikroçip",
+        "icon": "📱",
+        "title": "Mikroçip",
+        "description": "Kanunen zorunlu değildir, ancak <strong>şiddetle tavsiye edilir</strong>"
+      },
+      {
+        "id": "havayolu",
+        "icon": "✈️",
+        "title": "Evcil Hayvan Dostu Havayolu Rezervasyonu",
+        "description": "<strong>Kasa boyutu, belgeler ve ücretler</strong> için taşıyıcı kurallarına uyun"
+      }
+    ],
+    "arrivalInfo": [
+      {
+        "id": "DENETİM",
+        "title": "Teftiş",
+        "description": "Evcil hayvanlar giriş limanında <strong>incelenebilir</strong>",
+        "icon": "👁️"
+      },
+      {
+        "id": "KARANTİNA",
+        "title": "Karantina Yok",
+        "description": "Çoğu ülkeden gelen evcil hayvanlar için (<strong>İngiltere ve Türkiye</strong> dahil), evraklar eksiksizse",
+        "icon": "🏠"
+      }
+    ],
+    "tips": [
+      "Süreci taşınmanızdan en az 4-6 hafta önce başlatın",
+      "Gideceğiniz eyaletin ek giriş gereklilikleri olup olmadığını kontrol edin",
+      "Evcil hayvanınızın ilk birkaç ay için yeterli ilacını getirin",
+      "Birden fazla hayvanla seyahat ediyorsanız evcil hayvan taşıma hizmetlerini göz önünde bulundurun"
+    ],
+    "footer": {
+      "disclaimer": "Seyahate çıkmadan önce en güncel gereklilikler için her zaman <strong>USDA APHIS</strong> ve gideceğiniz eyaletin veterinerlik ofisine danışın."
+    }
+  },
+  "moveRequirements": {
+    "requirements": [
+      {
+        "title": "Geçerli Vize veya Yeşil Kart",
+        "description": "Amacınıza göre doğru vize türünü almalısınız (örneğin, <strong>çalışma, aile, eğitim</strong>).",
+        "note": "Kalıcı yer değiştirme için göçmen vizesi gerekmektedir.",
+        "iconKey": "dosyaMetin",
+        "id": 1
+      },
+      {
+        "title": "Geçerli Pasaport",
+        "description": "Pasaportunuz, kalış sürenizin ötesinde en az <strong>6 ay</strong> geçerli olmalıdır.",
+        "iconKey": "kitapAçık",
+        "id": 2,
+        "note": ""
+      },
+      {
+        "title": "Tıbbi Muayene",
+        "description": "Çoğu <strong>göçmen vizesi</strong> için gereklidir.",
+        "note": "Onaylı bir doktor tarafından yapılmalıdır.",
+        "iconKey": "stetoskop",
+        "id": 3
+      },
+      {
+        "title": "Aşı Kayıtları",
+        "description": "Göçmenlik için aşı kanıtı (örneğin, <strong>MMR, COVID-19, hepatit</strong>) gereklidir.",
+        "iconKey": "ŞIRINGA",
+        "id": 4,
+        "note": ""
+      },
+      {
+        "title": "Mali Destek Kanıtı",
+        "description": "<strong>Kamu yükü</strong> haline gelmeyeceğinizi kanıtlamak için banka hesap özetleri, iş teklifleri veya bir sponsor göstermeniz gerekebilir.",
+        "iconKey": "dolarİşareti",
+        "id": 5,
+        "note": ""
+      },
+      {
+        "title": "Temiz Sabıka Kaydı",
+        "description": "Özgeçmiş kontrolleri göçmenlik sürecinin bir parçasıdır.",
+        "note": "Ciddi suçlar <strong>vize reddine</strong> yol açabilir.",
+        "iconKey": "shieldCheck",
+        "id": 6
+      },
+      {
+        "title": "İngilizce Becerileri (Önerilen)",
+        "description": "Tüm vize türleri için zorunlu değildir, ancak İngilizce bilmek <strong>günlük yaşamda, işlerde ve eğitimde</strong> büyük ölçüde yardımcı olur.",
+        "iconKey": "mesajKare",
+        "id": 7,
+        "note": ""
+      }
+    ],
+    "importantNote": {
+      "title": "Önemli Not",
+      "description": "Göçmenlik şartları değişebilir. Taşınma işleminize başlamadan önce her zaman ABD Dışişleri Bakanlığı veya ABD Vatandaşlık ve Göçmenlik Hizmetleri'nden (USCIS) en son bilgileri doğrulayın."
+    }
+  },
+  "ukUsGuide": {
+    "header": {
+      "icon": "🇬🇧➡️🇺🇸",
+      "title": "İngiltere'den ABD'ye taşınmak",
+      "subtitle": "Bilmeniz Gerekenler",
+      "description": "Birleşik Krallık'tan Amerika Birleşik Devletleri'ne taşınmak, planlama, yasal belgeler ve Atlantik ötesinde yaşamın nasıl farklılaştığını anlamayı gerektiren önemli bir adımdır. İster iş fırsatları için, ister ailenizle birlikte olmak için ya da yeni bir macera için taşınıyor olun, bu kılavuz Atlantik ötesine taşınmanızın temel yönlerini kapsamaktadır."
+    },
+    "quickNavigation": {
+      "title": "Hızlı Navigasyon"
+    },
+    "sections": [
+      {
+        "id": "vi̇ze gereksi̇ni̇mleri̇",
+        "icon": "🛂",
+        "title": "Vize Gereklilikleri",
+        "content": "<p class=\"text-gray-700 mb-4\">Bir Birleşik Krallık vatandaşı olarak, ABD'ye uzun süreli taşınmak için bir vizeye ihtiyacınız olacaktır. Yaygın seçenekler şunlardır:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span><strong>İstihdam Vizeleri (H-1B, L-1, O-1)</strong> - Nitelikli profesyoneller, transferler için, veya olağanüstü yetenekler</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span><strong>Aile Temelli Yeşil Kart</strong> - ABD vatandaşı olan birinci dereceden akrabalarınız varsa.S. </span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span><strong>Öğrenci Vizesi (F-1)</strong> - ABD'de eğitim görüyorsanız.</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span><strong>Yatırımcı Vizesi (E-2)</strong> - Bir ABD şirketine yatırım yapan Birleşik Krallık vatandaşları için.ABD'de iş</span></li></ul><p class=\"text-gray-700\">Vize başvuru süreci dikkatli bir planlama gerektirir, çünkü belirli vize türleri için ret oranları yüksek olabilir.</p>"
+      },
+      {
+        "id": "uygulama-süreci",
+        "icon": "📋",
+        "title": "Vize Başvuru Süreci",
+        "content": "<div class=\"mb-4\"><p class=\"text-gray-700 mb-4\">Vize başvuru süreci birkaç adımdan oluşur:</p><ul class=\"text-gray-700 space-y-2 pl-4\"><li>- ABD Dışişleri Bakanlığı aracılığıyla çevrimiçi başvuru yapın</li><li>- <strong>ABD Londra Büyükelçiliği</strong> veya <strong>Belfast</strong> Konsolosluğu'nda bir mülakat planlayın. Londra Büyükelçiliği</strong> veya <strong>Belfast Konsolosluğu</strong></li><li>- Gerekli belgeleri hazırlayın:</li></ul><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm mt-3\"><h4 class=\"font-medium text-sky-600 mb-2\">Gerekli Belgeler:</h4><ul class=\"text-gray-700 space-y-1 pl-4\"><li>- Geçerli pasaport</li><li>- Vize başvuru formu</li><li>- Tıbbi muayene sonuçları</li><li>- Mali durum belgesi</li><li>- Gerekirse sponsor / iş teklifi belgeleri</li><li>- Eğitim sertifikaları (belirli vizeler için)</li></ul></div></div>"
+      },
+      {
+        "id": "sağlık hizmetleri",
+        "icon": "🏥",
+        "title": "Sağlık ve Sigorta",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>İngiltere'deki NHS'nin aksine, ABD'de sağlık hizmetleri öncelikle özeldir. sağlık hizmetleri öncelikle özeldir ve pahalı olabilir</p><p>Aylık maliyetler kişi başına <strong>300-700$+ arasında değişebilir</strong></p><p>Birçok işveren yan haklar paketlerinin bir parçası olarak sağlık sigortası sunar</p><p>İlk yıl acil geri dönüşü kapsayan sigortayı düşünün</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>İpucu:</strong> Gelmeden önce sağlık sigortası seçeneklerini araştırmaya başlayın ve ABD'de ilk günden itibaren kapsam dahilinde olduğunuzdan emin olun.S.</span></p></div></div>"
+      },
+      {
+        "id": "hayat pahalılığı",
+        "icon": "💷",
+        "title": "Yaşam Maliyeti Karşılaştırması",
+        "content": "<div><div class=\"overflow-x-auto mb-4\"><table class=\"min-w-full bg-white border border-sky-200 rounded-lg\"><thead><tr class=\"bg-sky-100\"><th class=\"py-3 px-4 text-left border-b border-sky-200\">Gider</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">Amerika Birleşik Devletleri (ort.)</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">UK (avg.)</th></tr></thead><tbody><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Kira (1 yataklı daire)</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$1,200-$3,000</td><td class=\"py-3 px-4 border-b border-sky-100\">£800-£1,200</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Sağlık Hizmetleri</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$300-$700/ay</td><td class=\"py-3 px-4 border-b border-sky-100\">NHS (vergi destekli)</td></tr><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Restoranda yemek</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$15-$30</td><td class=\"py-3 px-4 border-b border-sky-100\">£10-£25</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Ulaşım</td><td class=\"py-3 px-4 border-b border-sky-100 text-yellow-600\">$70-$100/ay (değişir)</td><td class=\"py-3 px-4 border-b border-sky-100\">£60-£120/ay</td></tr></tbody></table></div><p class=\"text-gray-700\">Yaşam maliyeti konuma göre önemli ölçüde değişir. New York, San Francisco ve Los Angeles gibi büyük şehirler, Londra da dahil olmak üzere Birleşik Krallık'taki çoğu şehirden önemli ölçüde daha pahalıdır.</p></div>"
+      },
+      {
+        "id": "konut",
+        "icon": "🏘️",
+        "title": "Konut Bulma",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>ABD kira piyasası, özellikle rekabetçi şehirlerde hızlı hareket eder</p><p>Çoğu ev sahibi kredi kontrolü gerektirir, bu da yeni gelenler için zor olabilir</p><p>İlk geldiğinizde yerleşene kadar kısa süreli kiralamaları düşünün</p><p>Popüler kira arama web siteleri: Zillow, Apartments.com, Trulia, Realtor.com</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>İpucu:</strong> ABD kredi geçmişi eksikliğinin üstesinden gelmek için İngiltere'deki ev sahiplerinden referans mektupları ve gelir belgesi getirin</span></p></div></div>"
+      },
+      {
+        "id": "bankacılık",
+        "icon": "💳",
+        "title": "Bankacılık ve Finans",
+        "content": "<div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Banka hesabı açma</h3><p class=\"text-gray-700\">Pasaportunuza, vizenize, adres kanıtınıza ve muhtemelen Sosyal Güvenlik Numaranıza (SSN) ihtiyacınız olacak.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Kredi geçmişi</h3><p class=\"text-gray-700\">İngiltere'deki kredi geçmişiniz ABD'ye aktarılmaz.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Vergi hususları</h3><p class=\"text-gray-700\">Bir Birleşik Krallık göçmeni olarak, vergi anlaşmaları çifte vergilendirmeyi önlemeye yardımcı olsa da, her iki ülkede de vergi beyannamesi vermeniz gerekecektir.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Para transferleri</h3><p class=\"text-gray-700\">İngiltere ve ABD arasında para transferi yaparken daha iyi döviz kurları için bankalar yerine özel forex hizmetlerini düşünün.</p></div></div>"
+      },
+      {
+        "id": "günlük yaşam",
+        "icon": "📱",
+        "title": "Günlük Yaşam Ayarlamaları",
+        "content": "<div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Sürüş</h3><p class=\"text-gray-700\">Sağ taraftan araç kullanacaksınız. Çoğu eyalet 3 aya kadar Birleşik Krallık ehliyetinizle araç kullanmanıza izin verir, daha sonra bir eyalet ehliyetine ihtiyacınız olacaktır.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\"> Bahşiş kültürü</h3><p class=\"text-gray-700\">Restoranlarda, taksilerde ve çeşitli hizmetlerde bahşiş beklenir (%15-20). Hizmet personeli gelirlerinin bir parçası olarak bahşişlere güvenir.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Ölçüm sistemi</h3><p class=\"text-gray-700\">ABD çoğu şey için İngiliz ölçülerini kullanır (mil, pound, Fahrenheit), bu da ayarlama gerektirebilir.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Cep telefonları</h3><p class=\"text-gray-700\">Başlıca operatörler arasında AT&T, Verizon ve T-Mobile bulunur. Varışta yerel bir SIM kart veya plan almayı düşünün.</p></div></div></div>"
+      },
+      {
+        "id": "iş-kültürü",
+        "icon": "💼",
+        "title": "Çalışma Kültürü Farklılıkları",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>ABD çalışma kültürü genellikle şunları içerir:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Daha az tatil günü (genellikle 10-15 gün vs. UK's 20-25)</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Daha doğrudan iletişim tarzları</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Çalışma hayatına çok değer verilir ve genellikle bu beklenir</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>İş-yaşam dengesi şirkete göre önemli ölçüde değişir</span></li></ul></div>"
+      },
+      {
+        "id": "taşinma-loji̇sti̇k",
+        "icon": "🛫",
+        "title": "Taşınma Lojistiği",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>ABD'ye uluslararası taşınma maliyetleri hacme bağlı olarak £2,000-£10,000 arasında değişmektedir</p><p>Büyük mobilya eşyalarını göndermeyi veya satmayı düşünün (ABD evleri genellikle farklı boyutlara sahiptir)</p><p>Gümrük işlemleri, gönderilen eşyaların ayrıntılı bir envanterini gerektirir</p><p>Evcil hayvanlar ABD'ye girebilir. ancak sağlık ve aşı gereksinimlerini karşılamalıdır</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>İpucu:</strong> Elektronik cihazlar için voltaj uyumluluğunu kontrol edin, çünkü ABD'de 110-120V (İngiltere'de 230-240V) kullanılmaktadır.ABD'de 110-120V kullanılır (İngiltere'de 230-240V).</span></p></div></div>"
+      },
+      {
+        "id": "yerleşme",
+        "icon": "📝",
+        "title": "Varıştan Sonra Yerleşme",
+        "content": "<div><div class=\"space-y-4\"><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">1. Sosyal Güvenlik Numarası (SSN)</h3><p class=\"text-gray-700 mb-2\"><span class=\"font-medium\">İstihdam ve birçok hizmet için gereklidir</span><br/>Pasaportunuz ve vizenizle birlikte yerel Sosyal Güvenlik İdaresi ofisinizi ziyaret edin</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">2. Eyalet Kimliği veya Sürücü Belgesi Alın</h3><p class=\"text-gray-700 mb-2\">Eyaletinizin Motorlu Taşıtlar Dairesi'ni (DMV) veya eşdeğer bir kurumu ziyaret edin</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">3. Yardımcı Programları Kurun</h3><p class=\"text-gray-700 mb-2\">Elektrik, su, gaz, internet ve atık toplama hizmetlerini ayarlayın</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">4. Birleşik Krallık Konsolosluğuna kaydolun</h3><p class=\"text-gray-700 mb-2\">İsteğe bağlı ancak acil durum bildirimleri için önerilir</p></div></div></div>"
+      },
+      {
+        "id": "gurbetçi̇ topluluklari",
+        "icon": "👥",
+        "title": "İngiliz Göçmen Toplulukları",
+        "content": "<div><p class=\"text-gray-700 mb-4\">ABD'de başta olmak üzere birçok şehirde büyük İngiliz gurbetçi toplulukları vardır:</p><div class=\"grid grid-cols-2 md:grid-cols-5 gap-2 mb-4\"><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">New York</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Los Angeles</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Chicago</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Boston</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">San Francisco</div></div><p class=\"text-gray-700\">İngiliz barları bulacaksınız, sosyal kulüpler ve Facebook grupları, ağ kurmak ve aynı hareketi yapan diğerlerinden yerel tavsiyeler almak için çok değerli olabilir.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "ABD'ye Taşınmadan Önce Son Kontrol Listesi",
+      "items": [
+        {
+          "text": "Vize veya yeşil kartınızı güvence altına alın",
+          "fullWidth": false
+        },
+        {
+          "text": "Sağlık sigortası kapsamını düzenleyin",
+          "fullWidth": false
+        },
+        {
+          "text": "Gideceğiniz şehirdeki konutları araştırın",
+          "fullWidth": false
+        },
+        {
+          "text": "Eşyaların nakliyesini organize edin",
+          "fullWidth": false
+        },
+        {
+          "text": "HMRC ve diğer Birleşik Krallık makamlarını bilgilendirin",
+          "fullWidth": false
+        },
+        {
+          "text": "Döviz bozdurma ve transferler için plan yapın",
+          "fullWidth": false
+        },
+        {
+          "text": "Her iki ülkedeki vergi yükümlülüklerini araştırın",
+          "fullWidth": true
+        }
+      ]
+    },
+    "conclusion": {
+      "icon": "🎯",
+      "title": "Sonuç: ABD'ye Taşınmak Sizin İçin Doğru mu?",
+      "description": "Amerika Birleşik Devletleri'ne taşınmak muazzam fırsatlar sunmakla birlikte önemli zorlukları da beraberinde getirir. Vize süreci uzun olabilir, sağlık masrafları yüksektir ve Amerikan kültürüne alışmak zaman alır. Bununla birlikte, birçok İngiliz gurbetçi kariyer fırsatlarını, çeşitli manzaraları ve yaşam tarzını geçişe değer bulmaktadır."
+    },
+    "checklist": [
+      {
+        "text": "Vize veya yeşil kartınızı güvence altına alın",
+        "fullWidth": false
+      },
+      {
+        "text": "Sağlık sigortası kapsamını düzenleyin",
+        "fullWidth": false
+      },
+      {
+        "text": "Gideceğiniz şehirdeki konutları araştırın",
+        "fullWidth": false
+      },
+      {
+        "text": "Eşyaların nakliyesini organize edin",
+        "fullWidth": false
+      },
+      {
+        "text": "HMRC ve diğer Birleşik Krallık makamlarını bilgilendirin",
+        "fullWidth": false
+      },
+      {
+        "text": "Döviz bozdurma ve transferler için plan yapın",
+        "fullWidth": false
+      },
+      {
+        "text": "Her iki ülkedeki vergi yükümlülüklerini araştırın",
+        "fullWidth": true
+      }
+    ],
+    "accessibility": {
+      "sectionToggle": "Bölümü değiştir: {başlık}"
+    }
+  },
+  "visaOptions": {
+    "labels": {
+      "examples": "Örnekler:",
+      "note": "Not:"
+    },
+    "visaTypes": [
+      {
+        "id": "AİLE",
+        "title": "1. Aile Temelli Vizeler",
+        "description": "<strong>ABD vatandaşlarının veya daimi ikamet edenlerin</strong> eşleri, çocukları, ebeveynleri veya kardeşleri için.",
+        "examples": [
+          "IR-1 (Eş)",
+          "F-2A (Aile Tercihi)"
+        ],
+        "iconKey": "kullanıcılar"
+      },
+      {
+        "id": "istihdam",
+        "title": "2. İstihdama Dayalı Vizeler",
+        "description": "<strong>Vasıflı profesyoneller, çalışanlar ve yatırımcılar</strong> için.",
+        "examples": [
+          "<strong>H-1B:</strong> Uzmanlık gerektiren mesleklerde vasıflı işçiler",
+          "<strong>L-1:</strong> Şirket içi transfer",
+          "<strong>EB-2/EB-3:</strong> İstihdam temelli yeşil kartlar",
+          "<strong>O-1:</strong> Olağanüstü yeteneğe sahip bireyler için"
+        ],
+        "iconKey": "evrak çantası"
+      },
+      {
+        "id": "öğrenci",
+        "title": "3. Öğrenci Vizesi (F-1)",
+        "description": "<strong>Akredite ABD kurumlarına</strong> devam eden uluslararası öğrenciler için.",
+        "examples": [
+          "Mezuniyetten sonra yarı zamanlı kampüs içi çalışmaya ve <strong>isteğe bağlı pratik eğitime (OPT)</strong> izin verir."
+        ],
+        "iconKey": "mezuniyetKapak"
+      },
+      {
+        "id": "yatırımcı",
+        "title": "4. Yatırımcı Vizesi (E-2 / EB-5)",
+        "description": "Amerika Birleşik Devletleri'nde <strong>yatırım</strong> yapmak isteyenler için.",
+        "examples": [
+          "<strong>E-2:</strong> ABD'deki bir işletmeye önemli miktarda yatırım yapan anlaşmalı ülke vatandaşları için.",
+          "<strong>EB-5:</strong> ABD'de <strong>800.000$+</strong> yatırım yapan ve istihdam yaratanlar için yeşil kart."
+        ],
+        "iconKey": "dolarİşareti"
+      },
+      {
+        "id": "çeşitlilik",
+        "title": "5. Yeşil Kart Çekilişi (Çeşitlilik Vize Programı)",
+        "description": "Uygun ülkelerden gelen kişilere rastgele seçim yoluyla <strong>sürekli oturum izni</strong> sunan bir ABD hükümet programı.",
+        "iconKey": "shuffle"
+      }
+    ]
+  }
+}

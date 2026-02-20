@@ -1,0 +1,173 @@
+{
+  "header": {
+    "heroImageAlt": "Business professionals",
+    "badge": "Turkey's #1 Staffing Solution",
+    "title_prefix": "Get Quality Staff",
+    "title_suffix": "For Your Business",
+    "description": "Partner with JobsAdmire for pre-screened, ready to work employees. We handle recruitment, visas, and all legal documentation.",
+    "contact_button": "Contact"
+  },
+  "form": {
+    "title": "Partner Registration",
+    "subtitle": "Register your company to start hiring quality staff. Our team will contact you within 24 hours.",
+    "company_info": {
+      "title": "Company Information",
+      "company_name": "Company Name *",
+      "company_name_placeholder": "Enter your company name",
+      "company_name_error": "Company name is required",
+      "company_type": "Company Type *",
+      "company_type_placeholder": "Select company type",
+      "company_type_error": "Company type is required",
+      "types": {
+        "corporation": "Corporation (A.Ş.)",
+        "limited_company": "Limited Company (Ltd.)",
+        "partnership": "Partnership",
+        "sole_proprietorship": "Sole Proprietorship",
+        "branch_office": "Branch Office",
+        "other": "Other"
+      },
+      "industry_type": "Industry Type *",
+      "industry_type_placeholder": "Select industry",
+      "industry_type_error": "Industry type is required",
+      "industries": {
+        "manufacturing": "Factory",
+        "construction": "Agriculture",
+        "technology": "Tourism",
+        "healthcare": "Construction",
+        "other": "Other"
+      },
+      "established_year": "Established Year",
+      "established_year_placeholder": "2020"
+    },
+    "contact_info": {
+      "title": "Contact Information",
+      "contact_person": "Contact Person *",
+      "contact_person_placeholder": "Full name",
+      "contact_person_error": "Contact person is required",
+      "position": "Position/Title",
+      "position_placeholder": "HR Manager, CEO, etc.",
+      "email": "Email Address *",
+      "email_placeholder": "company@example.com",
+      "email_required": "Email is required",
+      "email_invalid": "Email is invalid",
+      "phone": "Phone Number *",
+      "phone_placeholder": "+90 xxx xxx xx xx",
+      "phone_required": "Phone number is required",
+      "company_address": "Company Address",
+      "company_address_placeholder": "Complete business address",
+      "city": "City *",
+      "city_placeholder": "Istanbul, Ankara, etc.",
+      "city_required": "City is required",
+      "province": "Province *",
+      "province_placeholder": "Select province",
+      "province_required": "Province is required",
+      "provinces": {
+        "istanbul": "Istanbul",
+        "ankara": "Ankara",
+        "izmir": "Izmir",
+        "bursa": "Bursa",
+        "antalya": "Antalya",
+        "adana": "Adana",
+        "konya": "Konya",
+        "gaziantep": "Gaziantep",
+        "kayseri": "Kayseri",
+        "other": "Other"
+      },
+      "postal_code": "Postal Code",
+      "postal_code_placeholder": "34000",
+      "website": "Company Website",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "legal_info": {
+      "title": "Legal & Registration Details",
+      "tax_number": "Tax Number *",
+      "tax_number_placeholder": "Enter tax number",
+      "tax_number_error": "Tax number is required",
+      "trade_registry_number": "Trade Registry Number",
+      "trade_registry_number_placeholder": "Enter trade registry number"
+    },
+    "staffing_requirements": {
+      "title": "Staffing Requirements",
+      "specific_job_positions": "Specific Job Positions",
+      "specific_job_positions_placeholder": "e.g., Machine Operator, Welders, Software Developer, etc.",
+      "salary_range": "Salary Range (Monthly)",
+      "salary_range_placeholder": "22,000TL-25,000TL",
+      "preferred_nationalities": "Preferred Nationalities",
+      "preferred_nationalities_placeholder": "e.g., Any, Pakistan, Bangladesh, Ukraine, etc.",
+      "language_requirements": "Language Requirements",
+      "language_requirements_placeholder": "Select language requirement",
+      "languages": {
+        "none": "No specific requirement",
+        "basic_turkish": "Basic Turkish",
+        "intermediate_turkish": "Intermediate Turkish",
+        "fluent_turkish": "Fluent Turkish",
+        "english": "English Required",
+        "turkish_english": "Turkish + English"
+      },
+      "work_experience": "Work Experience Required",
+      "work_experience_placeholder": "Select experience level",
+      "experience_levels": {
+        "entry_level": "Entry Level (0-1 years)",
+        "junior": "Junior (1-3 years)",
+        "mid_level": "Mid Level (3-5 years)",
+        "senior": "Senior (5+ years)",
+        "expert": "Expert (10+ years)"
+      },
+      "additional_requirements": "Additional Requirements or Notes",
+      "additional_requirements_placeholder": "Any specific skills, certifications, or other requirements for the positions..."
+    },
+    "company_description": {
+      "title": "About Your Company",
+      "label": "Company Description",
+      "placeholder": "Tell us about your company, your business activities, work environment, company culture, and why workers would want to join your team..."
+    },
+    "legal_agreements": {
+      "title": "Legal Agreements",
+      "agree_terms_prefix": "I agree to the",
+      "terms_link": "Terms and Conditions",
+      "agree_terms_suffix": "and understand the legal obligations for hiring workers through JobsAdmire. *",
+      "terms_error": "You must agree to terms and conditions",
+      "agree_privacy_prefix": "I acknowledge that I have read and agree to the",
+      "privacy_link": "Privacy Policy",
+      "agree_privacy_suffix": "and consent to the processing of company data for recruitment services. *",
+      "privacy_error": "You must agree to privacy policy"
+    },
+    "submit": {
+      "button": "Submit Application",
+      "submitting": "Submitting...",
+      "success_message": "Registration submitted successfully! Our team will contact you within 24 hours to discuss your hiring needs.",
+      "footer_message": "Our team will review your application and contact you within 24 hours to discuss your staffing needs."
+    }
+  },
+  "industries_served": {
+    "title": "Industries We Serve",
+    "subtitle": "We provide skilled workers across all major industries in Turkey",
+    "items": {
+      "factory": {
+        "name": "Factory",
+        "desc": "Manufacturing & Production"
+      },
+      "agriculture": {
+        "name": "Agriculture",
+        "desc": "Farming & Cultivation"
+      },
+      "tourism": {
+        "name": "Tourism",
+        "desc": "Hospitality & Services"
+      },
+      "construction": {
+        "name": "Construction",
+        "desc": "Building & Infrastructure"
+      }
+    }
+  },
+  "support": {
+    "title": "Need Assistance?",
+    "description": "Our dedicated team is ready to help you find the right staff for your business. We provide complete support from recruitment to employee placement.",
+    "email": "info@jobsadmire.com",
+    "phone": "+90 501 124 03 40",
+    "support_24_7": "24/7 Support",
+    "business_hours": "Business Hours: Monday - Friday, 9:00 AM - 6:00 PM (Turkey Time)",
+    "response_time": "We respond within 2 hours during business hours"
+  }
+}

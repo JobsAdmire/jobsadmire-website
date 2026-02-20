@@ -1,0 +1,1817 @@
+{
+  "hero": {
+    "badge": {
+      "text": "Peluang baru tersedia"
+    },
+    "title": {
+      "findTheDream": "Temukan Mimpi Itu",
+      "forYourself": "Untuk Dirimu Sendiri"
+    },
+    "animatedWords": [
+      "Pekerjaan",
+      "Tim",
+      "Karier",
+      "Cocok",
+      "Bakat",
+      "Staf",
+      "Peran",
+      "Posisi",
+      "Profesi",
+      "Peluang",
+      "Pekerjaan"
+    ],
+    "subtitle": "Menghubungkan talenta terbaik dengan peluang yang tepat—baik Anda sedang merekrut atau mencari pekerjaan!",
+    "search": {
+      "jobPlaceholder": "Judul Pekerjaan atau Kata Kunci",
+      "locationPlaceholder": "Lokasi atau Jarak Jauh",
+      "loadingText": "Memuat data pekerjaan...",
+      "errorText": "Gagal memuat data pekerjaan",
+      "retryButton": "Mencoba kembali",
+      "moreResults": "lebih banyak hasil...",
+      "searchButton": "Cari Peluang"
+    },
+    "features": {
+      "jobRecruitment": {
+        "title": "Perekrutan Pekerjaan",
+        "description": "Temukan talenta terbaik di seluruh dunia."
+      },
+      "immigrationServices": {
+        "title": "Layanan Imigrasi",
+        "description": "Bantuan visa dari ahli."
+      },
+      "hrSolutions": {
+        "title": "Solusi SDM",
+        "description": "Manajemen SDM lengkap"
+      }
+    },
+    "services": {
+      "sectionTitle": "Apa yang bisa kami lakukan untuk Anda?",
+      "sectionSubtitle": "Pilih layanan Anda dan biarkan kami membantu Anda mencapai tujuan Anda.",
+      "study": {
+        "label": "Belajar",
+        "description": "Visa pelajar & pendidikan"
+      },
+      "migrate": {
+        "label": "Bermigrasi",
+        "description": "Izin Tinggal dan Kewarganegaraan"
+      },
+      "work": {
+        "label": "Bekerja",
+        "description": "Izin kerja & pekerjaan"
+      },
+      "visit": {
+        "label": "Undangan Elektronik",
+        "description": "Visa Bisnis & Turis"
+      },
+      "consultation": {
+        "title": "Tidak yakin apa yang Anda butuhkan?",
+        "subtitle": "Panduan ahli tersedia.",
+        "button": "Dapatkan konsultasi gratis →"
+      }
+    },
+    "stats": {
+      "visaSuccess": {
+        "title": "Tingkat Keberhasilan Visa",
+        "subtitle": "Rekam jejak yang terbukti",
+        "percentage": "98%"
+      },
+      "partners": {
+        "title": "Mitra Perusahaan",
+        "subtitle": "Jaringan global",
+        "count": "500+"
+      }
+    }
+  },
+  "jobsInDemand": {
+    "title": "Pekerjaan yang Banyak Dicari",
+    "description": "Cari semua lebih dari 100 posisi terbuka di web. Dapatkan perkiraan gaji pribadi Anda. Baca ulasan tentang lebih dari 30 perusahaan di seluruh dunia.",
+    "showingJobs": "Menampilkan",
+    "jobs": "pekerjaan",
+    "featured": "Kesempatan Unggulan",
+    "company": "Perusahaan",
+    "position": "Posisi",
+    "location": "Lokasi",
+    "salaryRange": "Kisaran Gaji",
+    "experience": "Pengalaman",
+    "saveForLater": "Simpan untuk nanti",
+    "viewDetails": "Lihat Detail",
+    "noJobsFound": "Tidak ada pekerjaan yang ditemukan.",
+    "tryAdjusting": "Cobalah menyesuaikan kriteria pencarian atau filter Anda.",
+    "clearAllFilters": "Hapus Semua Filter",
+    "seeMoreJobs": "Lihat Lowongan Lainnya"
+  },
+  "meta": {
+    "title": "Temukan Pekerjaan & Peluang Karier yang Sempurna | JobsAdmire",
+    "description": "Temukan pekerjaan impian Anda dengan JobsAdmire – platform global yang menghubungkan para profesional dengan tim, peran, dan peluang internasional yang ideal, serta dukungan visa.",
+    "keywords": "Temukan Pekerjaan & Peluang Karier yang Sempurna, JobsAdmire, pekerjaan, karier, rekrutmen, dukungan visa, pekerjaan internasional",
+    "ogTitle": "Temukan Pekerjaan & Peluang Karier yang Sempurna | JobsAdmire",
+    "ogDescription": "Temukan pekerjaan impian Anda dengan JobsAdmire – platform global yang menghubungkan para profesional dengan tim, peran, dan peluang internasional yang ideal, serta dukungan visa."
+  },
+  "popularCategories": {
+    "badge": "Mengeksplorasi",
+    "title": "Kategori Populer",
+    "description": "Mulai dari Manajemen Hotel, Resepsionis hingga Manajer TI, setiap profesional dipersilakan untuk melihat daftar peluang kerja, perkiraan gaji sesuai dengan peran yang Anda cari, dan belajar dengan membaca ulasan perusahaan di seluruh dunia.",
+    "exploreJobs": "Jelajahi Pekerjaan",
+    "categories": {
+      "factoryWorker": "Pabrik ",
+      "healthcare": "Perawatan kesehatan",
+      "informationTechnology": "Pertanian",
+      "tourismHospitality": "Pariwisata",
+      "engineeringConstruction": "Konstruksi",
+      "businessServices": "Layanan Bisnis"
+    }
+  },
+  "immigrationCarousel": {
+    "header": {
+      "title": "Destinasi Imigrasi Global",
+      "description": "Jelajahi jalur imigrasi premium menuju destinasi impian Anda."
+    },
+    "navigation": {
+      "previous": "Slide sebelumnya",
+      "next": "Slide berikutnya",
+      "goToSlide": "Lanjutkan ke slide {{number}}",
+      "pause": "Jeda pemutaran otomatis",
+      "play": "Putar otomatis",
+      "pauseText": "Berhenti sebentar",
+      "playText": "Bermain"
+    },
+    "common": {
+      "clients": "klien",
+      "rating": "Peringkat"
+    },
+    "services": {
+      "canada": {
+        "title": "Berimigrasi ke Kanada",
+        "subtitle": "Program Express Entry & Program Provinsi",
+        "description": "Manfaatkan sistem Express Entry Kanada, Program Nominasi Provinsi, dan jalur sponsor keluarga untuk mendapatkan izin tinggal tetap.",
+        "category": "Izin Tinggal Tetap",
+        "buttonText": "🍁 Mulailah Impian Kanada Anda"
+      },
+      "uk": {
+        "title": "Berimigrasi ke Inggris",
+        "subtitle": "Visa Pekerja Terampil & Talenta Global",
+        "description": "Akses sistem imigrasi berbasis poin Inggris melalui visa pekerja terampil, jalur talenta global, dan jalur reuni keluarga.",
+        "category": "Visa Kerja & Studi",
+        "buttonText": "Buka Peluang di Inggris"
+      },
+      "usa": {
+        "title": "Berimigrasi ke AS",
+        "subtitle": "Kartu Hijau & Visa Kerja",
+        "description": "Raih impian Amerika melalui program kartu hijau berbasis pekerjaan, imigrasi keluarga, dan visa investor.",
+        "category": "Layanan Kartu Hijau",
+        "buttonText": "🗽 Kejar Impian Amerika"
+      },
+      "australia": {
+        "title": "Berimigrasi ke Australia",
+        "subtitle": "Migrasi Tenaga Terampil & Nominasi Negara",
+        "description": "Dapatkan izin tinggal tetap Australia melalui visa independen tenaga terampil, nominasi negara bagian, dan program sponsor dari perusahaan.",
+        "category": "Sistem Berbasis Poin",
+        "buttonText": "Mulailah Perjalanan Anda di Australia"
+      },
+      "turkey": {
+        "title": "Berimigrasi ke Turki",
+        "subtitle": "Izin Tinggal & Jalur Investasi",
+        "description": "Dapatkan izin tinggal di Turki melalui investasi properti, izin kerja, atau reunifikasi keluarga dengan opsi kewarganegaraan jalur cepat.",
+        "category": "Investasi & Hunian",
+        "buttonText": "Jelajahi Program Residensi Turki"
+      }
+    }
+  },
+  "serviceBanner": {
+    "default": {
+      "serviceLabel": "Layanan Profesional",
+      "title": "Siap Mengubah Karier Anda?",
+      "description": "Bergabunglah dengan ribuan profesional yang telah berhasil memajukan karier mereka dengan bimbingan ahli dan layanan dukungan komprehensif kami.",
+      "buttonText": "Mulailah Hari Ini"
+    },
+    "variants": {
+      "recruitment": {
+        "serviceLabel": "Perekrutan Pekerjaan",
+        "title": "Temukan Pekerjaan Impian Anda Hari Ini",
+        "description": "Terhubunglah dengan perusahaan-perusahaan terkemuka di seluruh dunia dan temukan peluang yang sesuai dengan keterampilan dan aspirasi Anda.",
+        "buttonText": "Telusuri Pekerjaan"
+      },
+      "immigration": {
+        "serviceLabel": "Layanan Imigrasi",
+        "title": "Gerbang Anda Menuju Peluang Global",
+        "description": "Atasi proses imigrasi yang kompleks dengan bimbingan ahli dan raih impian Anda untuk bekerja di luar negeri.",
+        "buttonText": "Mulai Proses Imigrasi"
+      },
+      "resume": {
+        "serviceLabel": "Penulisan Resume",
+        "title": "Tampil Menonjol dengan Resume Profesional",
+        "description": "Dapatkan perhatian dari manajer perekrutan dengan resume yang dioptimalkan untuk ATS dan dibuat oleh para ahli industri.",
+        "buttonText": "Buat Resume Saya"
+      },
+      "coaching": {
+        "serviceLabel": "Pelatihan Wawancara",
+        "title": "Kuasai Wawancara Anda Berikutnya",
+        "description": "Bangun kepercayaan diri dan keterampilan wawancara dengan pelatihan personal dari para profesional di industri ini.",
+        "buttonText": "Pesan Sesi Pelatihan"
+      },
+      "visa": {
+        "serviceLabel": "Dukungan Visa",
+        "title": "Sederhanakan Permohonan Visa Anda",
+        "description": "Dapatkan bantuan ahli dalam hal dokumentasi dan proses aplikasi untuk visa kerja, studi, atau perjalanan.",
+        "buttonText": "Ajukan Visa"
+      },
+      "skills": {
+        "serviceLabel": "Pengembangan Keterampilan",
+        "title": "Tingkatkan Keterampilan Profesional Anda",
+        "description": "Tetap kompetitif dengan program pelatihan yang relevan dengan industri dan dirancang oleh para ahli.",
+        "buttonText": "Jelajahi Kursus"
+      }
+    }
+  },
+  "testimonials": {
+    "header": {
+      "badge": "DIPERCAYAI OLEH PEMIMPIN INDUSTRI",
+      "title": "Kisah Sukses",
+      "description": "Dengarkan testimoni dari klien kami yang puas yang telah merasakan layanan dan wawasan luar biasa kami."
+    },
+    "stats": {
+      "years": "Bertahun-tahun",
+      "hires": "Karyawan",
+      "retention": "Penyimpanan",
+      "support": "Mendukung"
+    },
+    "testimonialsList": [
+      {
+        "author": "Selin Yılmaz",
+        "position": "İnsan Kaynakları Müdürü",
+        "company": "İnsanKaynağım Ajansı",
+        "text": "Tidak ada yang bisa dilakukan atau tidak. JobsAdmire, ihtiyaç duyduğumuz adayları zamanında dan kaliteli şekilde sağladı. Jangan lupa untuk mematikannya dan tekan tombolnya.",
+        "highlight": "Kesesuaian budaya"
+      },
+      {
+        "author": "Burak Demirtaş",
+        "position": "Direktur",
+        "company": "Anadolu HR Çözümleri",
+        "text": "Birçok platformla çalıştık fakat JobsKagumi farklı. İŞKUR ruhsatı ile yasal olarak güvenilir, belgeleri düzenleme konusunda destekçi dan tamamen şeffaf çalışıyorlar. İşe alım ihtiyaçlarımızı gonül rahatlığıyla onlara devrediyoruz",
+        "highlight": "Keahlian industri"
+      },
+      {
+        "author": "Mehmet Kaya,",
+        "position": "Fabrika Sahibi",
+        "company": "Kaya Metal Sanayi",
+        "text": "Kaynakçı telah membuat operator menjadi lebih baik. PekerjaanKagumi birkaç gün içinde eğitimli adaylarla bizi buluşturdu. Ini mungkin merupakan hal yang sulit dan sulit untuk dilakukan.",
+        "highlight": "Kandidat berkualitas"
+      },
+      {
+        "author": "Muhammad Faisal",
+        "position": "Tuan",
+        "company": "Faisal Textiles Pvt. Ltd.",
+        "text": "Tekstil fabrikam tidak akan terpakai dan tidak dapat dilepas. JobsAdmire bu konuda güvenilir bir partner oldu. Hem vasıflı hem de vasıfsız işçileri zamanında sağladılar, uretimde artık aksama yaşamıyoruz.",
+        "highlight": "Berfokus pada keselamatan"
+      },
+      {
+        "author": "Ali Raza",
+        "position": "Çalışan",
+        "company": "Hotel Resor Antalya",
+        "text": "PekerjaanKagumi aracılığıyla bir otelde işe yerleştirildim. Ini adalah hal yang umum dan tidak dapat disangkal lagi. İŞKUR lisanslı oldukları için kendimi güvende hissediyorum.",
+        "highlight": "Keseimbangan antara pekerjaan dan kehidupan pribadi"
+      },
+      {
+        "author": "Hüseyin Çelik",
+        "position": "İnşaat İşçisi",
+        "company": "Solusi Industri",
+        "text": "Jangan lupa untuk mematikannya. JobsAdmire sayesinde yasal sözleşmeli dan düzenli maaşlı bir işe girdim. İşçiye saygı gösteriyorlar, kimsenin hakkını yemiyorlar.",
+        "highlight": "Kemitraan jangka panjang"
+      }
+    ]
+  },
+  "navbar": {
+    "location": "Antalya, Turki",
+    "workingHours": "Senin-Jumat 09.00-18.00",
+    "home": "Rumah",
+    "about": "Tentang Kami",
+    "services": "Layanan",
+    "jobs": "Lowongan Pekerjaan yang Tersedia",
+    "visa": "Undangan Visa",
+    "residencePermit": "Izin Tinggal",
+    "contact": "Kontak",
+    "blog": "Blog",
+    "cv": "Pembuat Resume",
+    "resumeGenerator": "Pembuat Resume",
+    "search": "Mencari",
+    "register": "Daftar",
+    "login": "Login",
+    "toggleMenu": "Alihkan Menu",
+    "closeSearch": "Tutup Pencarian",
+    "searchTitle": "Cari Pekerjaan & Layanan",
+    "searchPlaceholder": "Cari pekerjaan, layanan...",
+    "searchButton": "Mencari",
+    "popularSearches": "Pencarian Populer",
+    "closeMenu": "Tutup Menu",
+    "candidateHRCompanies": "Kandidat & Perusahaan SDM",
+    "jobProvider": "Penyedia Pekerjaan",
+    "partnerWithUs": "Bermitra dengan Kami",
+    "recruitmentAgency": "Agen Rekrutmen",
+    "megaMenu": {
+      "hero": {
+        "title": "Layanan Profesional",
+        "description": "Solusi komprehensif untuk kebutuhan karier dan imigrasi Anda.",
+        "button": "Lihat Semua Layanan"
+      },
+      "recruitmentServices": {
+        "title": "Layanan Rekrutmen",
+        "items": {
+          "resumeService": {
+            "title": "Layanan Pembuatan Resume",
+            "description": "Penulisan resume profesional"
+          },
+          "globalJobPlacement": {
+            "title": "Penempatan Kerja Global",
+            "description": "Peluang kerja internasional"
+          },
+          "interviewCoaching": {
+            "title": "Pelatihan Wawancara",
+            "description": "Persiapan wawancara profesional"
+          },
+          "careerCounselling": {
+            "title": "Konseling Karier",
+            "description": "Bimbingan karier dari para ahli."
+          },
+          "visaRelocation": {
+            "title": "Visa & Relokasi",
+            "description": "Bantuan visa dan relokasi"
+          }
+        }
+      },
+      "skillServices": {
+        "title": "Layanan",
+        "items": {
+          "skillDevelopment": {
+            "title": "Pengembangan Keterampilan",
+            "description": "Pelatihan keterampilan profesional"
+          },
+          "remoteWork": {
+            "title": "Kerja Jarak Jauh",
+            "description": "Peluang kerja jarak jauh"
+          },
+          "talentAcquisition": {
+            "title": "Akuisisi Talenta",
+            "description": "Solusi perekrutan strategis"
+          },
+          "immigration": {
+            "title": "Layanan Imigrasi",
+            "description": "Bantuan imigrasi"
+          },
+          "jobsRecruitment": {
+            "title": "Rekrutmen Pekerjaan",
+            "description": "Solusi perekrutan"
+          }
+        }
+      },
+      "immigration": {
+        "title": "Izin Tinggal Turki",
+        "items": {
+          "turkey": {
+            "title": "Izin Tinggal Turki",
+            "description": "Layanan izin tinggal Turki"
+          },
+          "workPermit": {
+            "title": "Izin Kerja",
+            "description": "Dapatkan izin kerja Anda"
+          },
+          "citizenship": {
+            "title": "Kewarganegaraan Turki",
+            "description": "Layanan Kewarganegaraan Turki"
+          },
+          "visaInvitations": {
+            "title": "Undangan Visa",
+            "description": "Layanan Visa"
+          },
+          "hireWorkers": {
+            "title": "Mempekerjakan Pekerja",
+            "description": "Solusi Perekrutan Tenaga Kerja"
+          },
+          "companyRegistration": {
+            "title": "Pendaftaran Perusahaan",
+            "description": "Mendaftarkan Perusahaan"
+          },
+          "dubai": {
+            "title": "Izin Tinggal Dubai",
+            "description": "Layanan izin tinggal Dubai"
+          },
+          "china": {
+            "title": "Izin Tinggal China",
+            "description": "Layanan izin tinggal di Tiongkok"
+          },
+          "kazakhstan": {
+            "title": "Izin Tinggal Kazakhstan",
+            "description": "Layanan izin tinggal Kazakhstan"
+          },
+          "albania": {
+            "title": "Izin Tinggal Albania",
+            "description": "Layanan izin tinggal Albania"
+          }
+        }
+      },
+      "visaFiling": {
+        "title": "Undangan Elektronik Visa",
+        "items": {
+          "turkey": {
+            "title": "Visa Turki",
+            "description": "Layanan visa Turki"
+          },
+          "dubai": {
+            "title": "Visa Dubai",
+            "description": "Layanan visa Dubai"
+          },
+          "kazakhstan": {
+            "title": "Visa Kazakhstan",
+            "description": "Layanan visa Kazakhstan"
+          },
+          "albania": {
+            "title": "Visa Albania",
+            "description": "Layanan visa Albania"
+          },
+          "portugal": {
+            "title": "Visa Portugal",
+            "description": "Layanan visa Portugal"
+          }
+        }
+      }
+    },
+    "residenceDropdown": {
+      "title": "Layanan Izin Tinggal",
+      "items": {
+        "turkey": {
+          "title": "Izin Tinggal Turki",
+          "description": "Layanan izin tinggal Turki",
+          "href": "/imigrasi/izin tinggal-turki"
+        },
+        "dubai": {
+          "title": "Izin Tinggal Dubai",
+          "description": "Layanan izin tinggal Dubai",
+          "href": "/imigrasi/izin tinggal-dubai"
+        },
+        "china": {
+          "title": "Izin Tinggal China",
+          "description": "Layanan izin tinggal di Tiongkok",
+          "href": "/imigrasi/izin-tinggal-china"
+        },
+        "kazakhstan": {
+          "title": "Izin Tinggal Kazakhstan",
+          "description": "Layanan izin tinggal Kazakhstan",
+          "href": "/imigrasi/izin-tinggal-kazakhstan"
+        },
+        "albania": {
+          "title": "Izin Tinggal Albania",
+          "description": "Layanan izin tinggal Albania",
+          "href": "/imigrasi/izin-tinggal-albania"
+        }
+      }
+    },
+    "popularSearchItems": {
+      "remoteJobs": "Pekerjaan Jarak Jauh",
+      "softwareDeveloper": "Pengembang Perangkat Lunak",
+      "dataAnalyst": "Analis Data",
+      "projectManager": "Manajer Proyek"
+    },
+    "mobile": {
+      "servicesIntro": "Jelajahi rangkaian lengkap layanan profesional kami.",
+      "connectWithUs": "Terhubunglah dengan kami di media sosial.",
+      "premiumServices": {
+        "title": "Layanan Premium",
+        "description": "Dapatkan dukungan prioritas dan hasil yang terjamin.",
+        "button": "Tingkatkan ke Premium",
+        "features": {
+          "prioritySupport": "Dukungan Prioritas",
+          "guaranteedResults": "Hasil Terjamin"
+        }
+      }
+    }
+  },
+  "footer": {
+    "brand": {
+      "tagline": "Menghubungkan Bakat dengan Peluang",
+      "description": "Memberdayakan karier dan bisnis melalui solusi SDM inovatif dan layanan rekrutmen yang dipersonalisasi.",
+      "downloadProfile": "Unduh Profil Perusahaan"
+    },
+    "social": {
+      "facebook": "Facebook",
+      "instagram": "Instagram",
+      "linkedin": "LinkedIn"
+    },
+    "featuredServices": {
+      "servicesLabel": "Layanan",
+      "tabs": {
+        "findJobs": {
+          "title": "Cari Pekerjaan",
+          "features": {
+            "searchVacancies": "Cari Lowongan Pekerjaan",
+            "createProfile": "Buat Profil",
+            "applyTracking": "Terapkan Pelacakan",
+            "careerAdvice": "Saran Karier"
+          }
+        },
+        "hireTalent": {
+          "title": "Rekrut Talenta",
+          "features": {
+            "postJobOpenings": "Pasang Lowongan Pekerjaan",
+            "resumeDatabase": "Basis Data Resume",
+            "recruitmentSolutions": "Solusi Rekrutmen",
+            "hrConsulting": "Konsultasi SDM"
+          }
+        },
+        "partnerWithUs": {
+          "title": "Bermitra dengan Kami",
+          "features": {
+            "jobSeeker": "Apakah Anda seorang pencari kerja?",
+            "employer": "Apakah Anda seorang pengusaha?",
+            "recruitmentAgency": "Apakah Anda sebuah agen perekrutan?",
+            "hrConsultant": "Apakah Anda seorang Konsultan SDM?"
+          }
+        }
+      }
+    },
+    "navigation": {
+      "jobsAdmire": {
+        "title": "JobsAdmire",
+        "links": {
+          "aboutUs": "Tentang Kami",
+          "contactUs": "Hubungi kami",
+          "blog": "Blog",
+          "companyCertifications": "Sertifikasi Perusahaan"
+        }
+      },
+      "resources": {
+        "title": "Sumber daya",
+        "links": {
+          "residencePermitInfo": "Informasi Izin Tinggal",
+          "invitationLetterRequest": "Permintaan Surat Undangan"
+        }
+      },
+      "jobProviders": {
+        "title": "Penyedia Pekerjaan",
+        "links": {
+          "findJobs": "Cari Pekerjaan",
+          "resumeGenerator": "Pembuat Resume",
+          "resumeService": "Layanan Pembuatan Resume",
+          "companyRegistration": "Pendaftaran Perusahaan"
+        }
+      },
+      "jobSeekers": {
+        "title": "Pencari Kerja",
+        "links": {
+          "browseJobs": "Telusuri Pekerjaan",
+          "cvBuilder": "Pembuat CV",
+          "career": "Karier",
+          "jobsRecruitment": "Rekrutmen Pekerjaan",
+          "resumeService": "Layanan Pembuatan Resume"
+        }
+      },
+      "employers": {
+        "title": "Pemberi kerja",
+        "links": {
+          "postJob": "Pasang Lowongan Kerja",
+          "findCandidates": "Cari Kandidat",
+          "hrConsulting": "Konsultasi SDM",
+          "premiumServices": "Layanan Premium",
+          "immigration": "Imigrasi"
+        }
+      },
+      "company": {
+        "title": "Perusahaan",
+        "links": {
+          "aboutUs": "Tentang Kami",
+          "blog": "Blog",
+          "contactUs": "Hubungi kami",
+          "certifications": "Sertifikasi"
+        }
+      },
+      "newLabel": "NEW"
+    },
+    "mapSection": {
+      "title": "Temukan Kami di Peta",
+      "email": "E-mail"
+    },
+    "newsletter": {
+      "title": "Pemberitahuan & Pembaruan Lowongan Kerja",
+      "placeholder": "Masukkan email Anda",
+      "subscribe": "Berlangganan",
+      "success": "Terima kasih telah berlangganan!"
+    },
+    "globalPresence": {
+      "title": "Kehadiran Global",
+      "viewAll": "Lihat semua lokasi",
+      "locations": {
+        "turkey": {
+          "city": "Turki",
+          "address": "Tahılpazarı, Adnan Menderes Blv. Erkal Apt A Blok No: 7 İç Kapı No: 6, 07040 Muratpaşa Antalya, Türkiye",
+          "phone": "+90 555 827 65 85"
+        },
+        "pakistan": {
+          "city": "Pakistan",
+          "address": "Kantor No. 1207, Kashif Center, Dekat Hotel Mehran, Jalan Utama Shahrah e Faisal, Karachi.",
+          "phone": "+90 552 529 68 64"
+        },
+        "azerbaijan": {
+          "city": "Azerbaijan",
+          "address": "Nizami küçəsi 203, rumah bisnis AF 7- ci mərtəbə",
+          "phone": "+994 70 950 78 79"
+        },
+        "kazakhstan": {
+          "city": "Kazakhstan",
+          "address": "Segera hadir"
+        }
+      }
+    },
+    "contacts": {
+      "turkey": {
+        "country": "Turki",
+        "city": "Antalya",
+        "address": "Tahılpazarı, Adnan Menderes Blv. Erkal Apt A Blok No: 7 İç Kapı No: 6, 07040 Muratpaşa/Antalya",
+        "hours": "Senin-Jumat: 09:00-18:00",
+        "phone": "+90 501 124 03 40",
+        "email": "info@jobsadmire.com"
+      },
+      "pakistan": {
+        "country": "Pakistan",
+        "city": "Karachi",
+        "address": "Kantor No. 1207, Kashif Center, Dekat Hotel Mehran, Jalan Utama Shahrah e Faisal",
+        "hours": "Senin-Jumat: 09:00-17:00",
+        "phone": "0213 5682889",
+        "email": "info@jobsadmire.com"
+      }
+    },
+    "certification": {
+      "companyName": "Pekerjaan Kagumi Özel İstihdam Bürosu Sanayi Ve Ticaret Limited Şirket",
+      "description": "Beroperasi dengan nomor izin 1730 tertanggal 19.09.2024 dari Badan Ketenagakerjaan Turki. Sesuai dengan undang-undang nomor 4904, dilarang memungut biaya dari pencari kerja. Untuk pengaduan Anda, Anda dapat mengajukan permohonan ke Direktorat Provinsi Istanbul İŞKUR Pusat Layanan Kadıköy. İşKur Telp: 0216 418 34 55 Eğitim mah. 1.Jalan Açıkgöz. No:3 KADIKÖY/İSTANBUL"
+    },
+    "copyright": {
+      "text": "Hak Cipta © {{tahun}} PEKERJAAN ADMİRE ÖZEL İSTİHDAM BÜROSU SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+      "taxNo": "Nomor Pajak: 48422122"
+    },
+    "legal": {
+      "privacy": "Kebijakan Privasi",
+      "terms": "Ketentuan Layanan",
+      "cookies": "Pengaturan Cookie"
+    }
+  },
+  "servicesCarousel": {
+    "header": {
+      "badge": "Layanan Profesional",
+      "title": "Layanan Profesional Kami",
+      "description": "Mulai dari perencanaan karier hingga penempatan global, kami menyediakan layanan profesional menyeluruh yang dirancang untuk mempercepat pertumbuhan karier Anda dan membuka pintu menuju peluang internasional."
+    },
+    "navigation": {
+      "previous": "Slide sebelumnya",
+      "next": "Slide berikutnya",
+      "goTo": "Pergi ke",
+      "autoPlay": "Mobil",
+      "play": "Bermain",
+      "pause": "Jeda pemutaran otomatis",
+      "resume": "Lanjutkan pemutaran otomatis",
+      "counter": "dari"
+    },
+    "services": {
+      "resumeWriting": {
+        "title": "Penulisan Resume Profesional",
+        "subtitle": "Dokumen Karier yang Dioptimalkan untuk ATS",
+        "description": "Ubah kisah karier Anda dengan resume yang dibuat secara profesional yang melewati sistem otomatis dan menarik perhatian perekrut. Penulis ahli kami memahami apa yang dicari oleh manajer perekrutan di lebih dari 80 industri, memastikan resume Anda membuka pintu menuju peluang.",
+        "features": [
+          "Konten yang Dioptimalkan ATS",
+          "Penulisan Khusus Industri",
+          "Tingkat Keberhasilan Wawancara 98,4%",
+          "Pengerjaan dalam 4 Hari"
+        ],
+        "ctaPrimary": "Buat Resume Saya"
+      },
+      "globalJobPlacement": {
+        "title": "Penempatan Kerja Global",
+        "subtitle": "Peluang Karir Internasional",
+        "description": "Terhubunglah dengan perusahaan-perusahaan global terkemuka melalui jaringan internasional kami yang luas. Kami menghubungkan para profesional terampil dengan peluang di luar negeri, memberikan dukungan komprehensif mulai dari proses aplikasi hingga penempatan di destinasi impian Anda.",
+        "features": [
+          "Jaringan Pemberi Kerja Global",
+          "Dukungan Visa Termasuk",
+          "Bantuan Integrasi Budaya",
+          "Pemrosesan Jalur Cepat"
+        ],
+        "ctaPrimary": "Temukan Pekerjaan Global"
+      },
+      "interviewCoaching": {
+        "title": "Pelatihan Wawancara",
+        "subtitle": "Kuasai Format Wawancara Apa Pun",
+        "description": "Bangun kepercayaan diri yang tak tergoyahkan dengan pelatihan wawancara yang dipersonalisasi dari para ahli industri. Berlatih dengan wawancara simulasi, terima umpan balik terperinci, dan pelajari strategi yang terbukti untuk unggul dalam wawancara perilaku, teknis, dan eksekutif.",
+        "features": [
+          "Sesi Simulasi Wawancara",
+          "Umpan Balik yang Dipersonalisasi",
+          "Pelatihan Khusus Industri",
+          "Membangun Kepercayaan Diri"
+        ],
+        "ctaPrimary": "Bimbingan Buku"
+      },
+      "careerCounselling": {
+        "title": "Konseling Karier",
+        "subtitle": "Pengembangan Karier Strategis",
+        "description": "Temukan jalur karier ideal Anda dengan alat penilaian komprehensif dan bimbingan ahli. Konselor bersertifikat kami membantu Anda menyelaraskan kekuatan, minat, dan tujuan Anda untuk membuat keputusan yang tepat tentang masa depan profesional Anda.",
+        "features": [
+          "Alat Penilaian Karier",
+          "Rencana Pengembangan Pribadi",
+          "Konselor Ahli",
+          "Bimbingan yang Berorientasi pada Tujuan"
+        ],
+        "ctaPrimary": "Mulai Penilaian"
+      },
+      "visaSupport": {
+        "title": "Layanan Dukungan Visa",
+        "subtitle": "Proses Imigrasi Tanpa Hambatan",
+        "description": "Atasi proses permohonan visa yang kompleks dengan panduan ahli dan dukungan dokumentasi yang komprehensif. Spesialis imigrasi kami memastikan permohonan Anda memenuhi semua persyaratan untuk visa kerja, studi, atau izin tinggal tetap di seluruh dunia.",
+        "features": [
+          "Persiapan Dokumen",
+          "Pemrosesan Aplikasi",
+          "Dukungan Kedutaan Besar",
+          "Bantuan Tindak Lanjut"
+        ],
+        "ctaPrimary": "Ajukan Visa"
+      },
+      "skillDevelopment": {
+        "title": "Pelatihan Pengembangan Keterampilan",
+        "subtitle": "Keterampilan Profesional yang Siap Digunakan di Industri",
+        "description": "Majukan karier Anda dengan program pelatihan praktis dan berorientasi kerja yang dirancang oleh para ahli industri. Mulai dari keterampilan teknis hingga keterampilan interpersonal, kursus komprehensif kami mempersiapkan Anda untuk pasar kerja yang kompetitif saat ini dengan pembelajaran langsung.",
+        "features": [
+          "Kurikulum yang Relevan dengan Industri",
+          "Proyek Praktik Langsung",
+          "Instruktur Bersertifikat",
+          "Dukungan Penempatan Kerja"
+        ],
+        "ctaPrimary": "Jelajahi Kursus"
+      },
+      "remoteWork": {
+        "title": "Peluang Kerja Jarak Jauh",
+        "subtitle": "Akses Karier Jarak Jauh Global",
+        "description": "Raih kebebasan bekerja jarak jauh dengan peluang pilihan dari perusahaan global terverifikasi. Kami menghubungkan para profesional berbakat dengan posisi kerja jarak jauh yang sah di berbagai industri, memungkinkan keseimbangan antara kehidupan kerja dan potensi penghasilan internasional.",
+        "features": [
+          "Pekerjaan Jarak Jauh Terverifikasi",
+          "Peluang Global",
+          "Penjadwalan Fleksibel",
+          "Keseimbangan Kehidupan Kerja"
+        ],
+        "ctaPrimary": "Temukan Pekerjaan Jarak Jauh"
+      },
+      "talentAcquisition": {
+        "title": "Akuisisi Talenta",
+        "subtitle": "Solusi Perekrutan Strategis",
+        "description": "Sederhanakan proses rekrutmen Anda dengan layanan akuisisi talenta komprehensif kami. Kami membantu organisasi menarik, menilai, dan merekrut kandidat berkualitas tinggi secara efisien melalui proses sistematis dan teknik pencarian yang inovatif.",
+        "features": [
+          "Rekrutmen dari Awal hingga Akhir",
+          "Penyaringan Kandidat",
+          "Koordinasi Wawancara",
+          "Dukungan Orientasi"
+        ],
+        "ctaPrimary": "Rekrut Talenta"
+      },
+      "immigrationConsultation": {
+        "title": "Konsultasi Imigrasi",
+        "subtitle": "Dukungan Relokasi Lengkap",
+        "description": "Ubah hidup Anda dengan bantuan imigrasi komprehensif untuk izin tinggal tetap dan relokasi global. Konsultan bersertifikat kami menyediakan strategi yang dipersonalisasi dan dukungan dokumentasi lengkap untuk program pekerja terampil di seluruh dunia.",
+        "features": [
+          "Izin Tinggal Tetap",
+          "Program Pekerja Terampil",
+          "Imigrasi Keluarga",
+          "Dukungan Pemukiman"
+        ],
+        "ctaPrimary": "Mulai Imigrasi"
+      },
+      "jobRecruitment": {
+        "title": "Layanan Rekrutmen Pekerjaan",
+        "subtitle": "Solusi Rekrutmen Profesional",
+        "description": "Temukan peluang karier Anda selanjutnya melalui platform rekrutmen pekerjaan komprehensif kami. Kami menjembatani kesenjangan antara para profesional berbakat dan perusahaan terkemuka, menawarkan pencocokan pekerjaan yang dipersonalisasi dan dukungan rekrutmen di berbagai industri.",
+        "features": [
+          "Algoritma Pencocokan Pekerjaan",
+          "Keahlian Industri",
+          "Proses Penempatan Cepat",
+          "Bimbingan Karier"
+        ],
+        "ctaPrimary": "Lamar Pekerjaan"
+      }
+    }
+  },
+  "stats": {
+    "jobFulfillment": {
+      "label": "Kepuasan Kerja",
+      "subtitle": "Sejak kuartal terakhir"
+    },
+    "branches": {
+      "label": "Cabang-cabang",
+      "subtitle": "Di seluruh kota-kota besar"
+    },
+    "yearsExperience": {
+      "label": "Pengalaman Kerja Bertahun-tahun",
+      "subtitle": "Keahlian industri"
+    },
+    "happyClients": {
+      "label": "Klien yang Puas",
+      "subtitle": "Dengan tingkat kepuasan 98%"
+    }
+  },
+  "features": {
+    "targetedRecruitment": {
+      "title": "Rekrutmen Terarah",
+      "description": "Pencocokan kandidat dengan persyaratan pekerjaan secara tepat."
+    },
+    "performanceTracking": {
+      "title": "Pelacakan Kinerja",
+      "description": "Metrik canggih untuk mengukur keberhasilan rekrutmen."
+    },
+    "qualityAssurance": {
+      "title": "Jaminan Mutu",
+      "description": "Penyaringan menyeluruh terhadap semua kandidat sebelum dipresentasikan."
+    }
+  },
+  "whatsapp": {
+    "title": "Pekerjaan yang Dikagumi",
+    "ariaLabel": "Ngobrol di WhatsApp"
+  },
+  "labels": {
+    "footer": {
+      "logoAlt": "Logo Portal Pekerjaan",
+      "paymentAmex": "American Express",
+      "paymentApplePay": "Apple Pay",
+      "paymentMastercard": "MasterCard",
+      "paymentVisa": "Visa",
+      "paymentGooglePay": "Google Pay",
+      "certificationAlt": "Sertifikasi İŞKUR"
+    },
+    "visa": {
+      "translationError": "Kesalahan Terjemahan",
+      "unableToLoad": "Tidak dapat memuat bagian keunggulan untuk lokal: {{locale}}",
+      "unableToLoadTranslations": "Tidak dapat memuat terjemahan untuk lokal: {{locale}}",
+      "checkTranslationFiles": "Silakan periksa file terjemahan Anda."
+    },
+    "disclaimer": {
+      "dismissAria": "Abaikan penafian",
+      "title": "Pernyataan Penafian Penting",
+      "body": "JobsAdmire adalah konsultan imigrasi independen. Kami tidak berafiliasi dengan atau didukung oleh otoritas pemerintah mana pun. Kami tidak menerbitkan visa atau izin tinggal; kami hanya menyediakan konsultasi dan bantuan.",
+      "dismissButton": "Membubarkan"
+    },
+    "login": {
+      "logoAlt": "Logo",
+      "welcomeTitle": "Selamat datang",
+      "welcomeSubtitle": "Ke situs web",
+      "userLoginHeading": "MASUK PENGGUNA",
+      "agency": "Agen",
+      "jobProvider": "Penyedia Pekerjaan",
+      "candidate": "Calon",
+      "username": "Nama belakang",
+      "password": "Kata sandi",
+      "rememberMe": "Ingatlah aku",
+      "forgotPassword": "Lupa kata sandi?",
+      "loginButton": "Login",
+      "placeholderUsername": "Nama belakang",
+      "placeholderPassword": "Kata sandi"
+    },
+    "applyOnline": {
+      "title": "Permohonan Visa Uganda",
+      "subtitle": "Selesaikan permohonan visa turis Anda dalam dua langkah mudah.",
+      "stepApplication": "Aplikasi",
+      "stepPayment": "Pembayaran",
+      "applicationDetails": "Rincian Aplikasi",
+      "paymentDetails": "Rincian Pembayaran",
+      "visaTypeLabel": "Visa turis elektronik (E-visa) hingga 90 hari ke Uganda",
+      "visaTypeDescription": "Satu kali masuk (masa tinggal 90 hari) dengan pemrosesan 3 hari kerja.",
+      "visaTypeSelectLabel": "Silakan pilih kelompok visa dan masa berlaku yang dibutuhkan *",
+      "visaTypeTourist": "Visa turis elektronik hingga 90 hari",
+      "visaTypeBusiness": "Visa elektronik bisnis hingga 90 hari",
+      "visaTypeTransit": "Visa transit elektronik hingga 7 hari",
+      "governmentFee": "Biaya pemerintah",
+      "saveAndContinue": "Simpan dan Lanjutkan",
+      "return": "Kembali",
+      "submitOrder": "Kirim Pesanan",
+      "termsAgreement": "Dengan ini saya menyetujui",
+      "termsOfService": "Ketentuan Layanan",
+      "privacyStatement": "Pernyataan Privasi",
+      "termsAgreementEnd": "dan menegaskan bahwa semua informasi dan dokumentasi yang saya berikan adalah benar, akurat, dan lengkap sesuai dengan pengetahuan saya.",
+      "email": "E-mail",
+      "phone": "Telepon",
+      "citizenship": "Kewarganegaraan",
+      "entryDate": "Tanggal Masuk",
+      "firstName": "Nama depan",
+      "lastName": "Nama Belakang",
+      "cardholderName": "Nama Pemegang Kartu",
+      "cardNumber": "Nomor Kartu",
+      "expiry": "BB/TT",
+      "footerCopyright": "© 2025 Layanan Visa Uganda. Semua hak dilindungi undang-undang.",
+      "placeholderFirstName": "Hamza",
+      "placeholderLastName": "ali",
+      "placeholderCardholder": "Hamza Ali",
+      "placeholderCardNumber": "Nomor kartu",
+      "placeholderExpiry": "BB/TT",
+      "feeBreakdownTitle": "Rincian Biaya",
+      "visaService": "Layanan Visa",
+      "embassyFee": "Biaya kedutaan",
+      "serviceFee": "Biaya layanan",
+      "total": "Total",
+      "months": {
+        "jan": "Jan",
+        "feb": "Februari",
+        "mar": "Merusak",
+        "apr": "April",
+        "may": "Mungkin",
+        "jun": "Juni",
+        "jul": "Juli",
+        "aug": "Agustus",
+        "sep": "September",
+        "oct": "Oktober",
+        "nov": "November",
+        "dec": "Desember"
+      },
+      "cvc": "CVC",
+      "placeholderEmail": "hamzahefz7885@gmail.com",
+      "placeholderPhone": "03172105055",
+      "placeholderCvc": "CVC"
+    },
+    "jobRecruitment": {
+      "metaTitle": "Layanan Rekrutmen Kerja | Solusi Perekrutan Profesional – JobsAdmire",
+      "metaDescription": "Temukan talenta yang tepat untuk bisnis Anda dengan layanan rekrutmen pekerjaan JobsAdmire. Kami menawarkan solusi perekrutan yang disesuaikan untuk perusahaan dari semua ukuran dan industri.",
+      "metaKeywords": "Layanan Penempatan Kerja Global, Bekerja di Luar Negeri dengan Dukungan Ahli – JobsAdmire",
+      "ogTitle": "Judul Open Graph Anda",
+      "ogDescription": "Deskripsi Open Graph Anda",
+      "bannerTitle": "Ubah Proses Perekrutan Anda",
+      "bannerDescription": "Sederhanakan proses rekrutmen Anda dengan solusi lengkap kami. Kami membantu organisasi menemukan kandidat yang berkualitas dengan cepat dan efisien di semua industri dan tingkatan pekerjaan.",
+      "bannerButtonText": "Mulai Merekrut",
+      "bannerServiceLabel": "PAKAR REKRUTMEN"
+    },
+    "turkeyCitizenship": {
+      "currentCitizenship": "Kewarganegaraan Saat Ini"
+    },
+    "blogCards": {
+      "searchPlaceholder": "Cari artikel, topik, atau tag...",
+      "searchAriaLabel": "Mencari",
+      "enterYourEmail": "Masukkan email Anda",
+      "newsletterCloseAria": "Tutup jendela pop-up buletin",
+      "backToTopAria": "Kembali ke atas",
+      "subscriberAlt": "Pelanggan",
+      "subscribeSuccess": "Terima kasih telah berlangganan buletin kami!",
+      "enterValidEmail": "Silakan masukkan alamat email yang valid.",
+      "categories": {
+        "careerAdvice": "Saran Karier",
+        "jobInterviews": "Wawancara Kerja",
+        "resumeTips": "Tips Membuat Resume",
+        "remoteWork": "Kerja Jarak Jauh",
+        "industryInsights": "Wawasan Industri"
+      },
+      "loadMore": "Muat Lebih Banyak"
+    },
+    "candidateForm": {
+      "personalInfo": "Informasi Pribadi",
+      "professional": "Profesional",
+      "documents": "Dokumen",
+      "jobCategoryTourism": "Pariwisata & Perhotelan",
+      "jobCategoryFactory": "Pabrik",
+      "jobCategoryConstruction": "Konstruksi",
+      "jobCategoryAgriculture": "Pertanian",
+      "name": "Nama",
+      "surname": "Nama belakang",
+      "motherName": "Nama Ibu",
+      "fatherName": "Nama Ayah",
+      "email": "E-mail",
+      "phone": "Telepon",
+      "dob": "Tanggal lahir",
+      "gender": "Jenis kelamin",
+      "height": "Tinggi",
+      "weight": "Berat",
+      "address": "Alamat",
+      "country": "Negara",
+      "city": "Kota",
+      "state": "Negara",
+      "placeOfBirth": "Tempat lahir",
+      "workerAbroadResidenceAddress": "Alamat Tempat Tinggal Pekerja di Luar Negeri",
+      "passportNumber": "Nomor Paspor",
+      "videoLink": "Tautan Video",
+      "candidateLanguage": "Bahasa Kandidat",
+      "otherLanguages": "Bahasa Lainnya",
+      "description": "Keterangan",
+      "workspace": "Ruang kerja",
+      "password": "Kata sandi",
+      "jobCategory": "Kategori Pekerjaan",
+      "title": "Judul",
+      "organization": "Organisasi",
+      "startDate": "Tanggal Mulai",
+      "endDate": "Tanggal Akhir",
+      "reference": "Referensi",
+      "placeholderName": "Masukkan nama",
+      "placeholderSurname": "Masukkan nama belakang",
+      "placeholderEmail": "Masukkan email",
+      "placeholderPhone": "Masukkan nomor telepon",
+      "placeholderAddress": "Masukkan alamat",
+      "placeholderCountry": "Pilih negara",
+      "placeholderCity": "Masuk kota",
+      "placeholderState": "Masuk ke negara bagian",
+      "placeholderPassport": "Masukkan nomor paspor",
+      "placeholderVideoLink": "Masukkan URL video",
+      "placeholderDescription": "Masukkan deskripsi",
+      "selectGender": "Pilih jenis kelamin",
+      "submit": "Kirim",
+      "addProject": "Tambahkan Proyek",
+      "addExperience": "Tambahkan Pengalaman",
+      "addQualification": "Tambahkan Kualifikasi",
+      "addSkill": "Tambahkan Keterampilan",
+      "profilePhoto": "Foto Profil",
+      "resumeFile": "Melanjutkan",
+      "passportFile": "Paspor",
+      "fullBodyPhoto": "Foto Seluruh Tubuh",
+      "biometricPhoto": "Foto Biometrik",
+      "uploadPhoto": "Unggah Foto",
+      "changePhoto": "Ganti Foto",
+      "validationRequired": "Kolom ini wajib diisi.",
+      "successMessage": "Permohonan berhasil diajukan.",
+      "weightKg": "Berat (kg) *",
+      "heightCm": "Tinggi (cm) *",
+      "placeholderWeight": "Masukkan berat badan",
+      "placeholderHeight": "Masukkan tinggi badan",
+      "uploadFullBodyPhoto": "Unggah Foto Seluruh Tubuh *",
+      "supportedFormats": "Format yang didukung: JPEG, JPG, PNG (Maksimal 5MB)",
+      "factorySkills": "Keterampilan Pabrik",
+      "yearsOfExperience": "Pengalaman Bertahun-tahun",
+      "constructionSkills": "Keterampilan Konstruksi",
+      "agricultureSkills": "Keterampilan Pertanian",
+      "placeholderFactorySkills": "misalnya, Pengoperasian Mesin, Kontrol Kualitas",
+      "placeholderExperience": "Pengalaman bertahun-tahun",
+      "placeholderConstructionSkills": "misalnya, Pertukangan kayu, Pekerjaan batu, Kelistrikan",
+      "placeholderAgricultureSkills": "misalnya, Bertani, Panen",
+      "stateRequired": "Negara bagian diwajibkan",
+      "placeOfBirthRequired": "Tempat kelahiran wajib diisi.",
+      "weightRequired": "Berat badan diperlukan untuk kategori Pariwisata.",
+      "heightRequired": "Persyaratan tinggi badan untuk kategori Pariwisata",
+      "passportNumberRequired": "Nomor Paspor diperlukan",
+      "passportScanRequired": "Pemindaian paspor diperlukan.",
+      "firstName": "Nama depan",
+      "lastName": "Nama Belakang",
+      "personalInfoTitle": "Informasi Pribadi",
+      "locationInfoTitle": "Informasi Lokasi",
+      "currentAddress": "Alamat Saat Ini *",
+      "stateProvince": "Negara Bagian/Provinsi *",
+      "professionalInfoTitle": "Informasi Profesional",
+      "documentInfoTitle": "Informasi Dokumen",
+      "specificInformation": "Informasi Spesifik",
+      "placeholderFirstName": "Masukkan nama depan Anda",
+      "placeholderLastName": "Masukkan nama belakang Anda",
+      "placeholderMotherName": "Masukkan nama ibu",
+      "placeholderFatherName": "Masukkan nama ayah",
+      "genderMale": "Pria",
+      "genderFemale": "Perempuan",
+      "placeholderCurrentAddress": "Masukkan alamat lengkap Anda saat ini.",
+      "placeholderStateProvince": "Negara Bagian/Provinsi",
+      "placeholderPlaceOfBirth": "Masukkan tempat kelahiran Anda",
+      "placeholderWorkerAbroad": "Masukkan alamat tempat tinggal Anda di luar negeri jika ada.",
+      "selectProfession": "Pilih profesi Anda",
+      "createPassword": "Buat Kata Sandi *",
+      "placeholderCreatePassword": "Buat kata sandi yang aman.",
+      "passwordLoginHint": "(Ini akan digunakan untuk masuk ke portal CRM kami.)",
+      "placeholderCandidateLanguage": "misalnya, bahasa Inggris, bahasa Spanyol",
+      "placeholderOtherLanguages": "misalnya, Prancis, Jerman (dipisahkan koma)",
+      "additionalDescription": "Deskripsi Tambahan",
+      "placeholderAdditionalDescription": "Cantumkan detail, keterampilan, atau pengalaman relevan tambahan apa pun di sini.",
+      "resumeCvFile": "Berkas Resume/CV *",
+      "passportScanFile": "Berkas Pindai Paspor *",
+      "supportedFormatsProfile": "Format yang didukung: JPEG, JPG, PNG (Maksimal 5MB)",
+      "supportedFormatsResume": "Format yang didukung: PDF, DOC, DOCX (Maksimal 2MB)",
+      "supportedFormatsPassport": "Format yang didukung: JPEG, JPG, PNG, PDF (Maksimal 5MB)",
+      "supportedFormatsBiometric": "Format yang didukung: JPEG, JPG, PNG (Maksimal 5MB)",
+      "supportedFormatsVideo": "Format yang didukung: MP4, MOV, AVI (Maksimal 50MB)",
+      "selectedFile": "Terpilih:",
+      "videoFile": "File Video",
+      "placeholderVideoLinkExample": "misalnya, tautan YouTube atau Vimeo",
+      "formTitle": "Formulir Pendaftaran Kandidat",
+      "formSubtitle": "Kirimkan detail Anda dan bergabunglah dengan tim kami!",
+      "previous": "Sebelumnya",
+      "nextStep": "Langkah Selanjutnya",
+      "submitting": "Mengirimkan...",
+      "submitApplication": "Kirim Aplikasi",
+      "dobRequired": "Tanggal lahir wajib diisi.",
+      "genderRequired": "Jenis kelamin wajib diisi.",
+      "workerAbroadResidenceRequired": "Alamat tempat tinggal pekerja di luar negeri wajib diisi.",
+      "jobCategoryRequired": "Kategori Pekerjaan diperlukan",
+      "candidateLanguageRequired": "Kemampuan berbahasa kandidat wajib dimiliki.",
+      "fullBodyPhotoRequiredTourism": "Foto seluruh tubuh diperlukan untuk kategori Pariwisata.",
+      "profilePhotoRequired": "Foto profil wajib diisi.",
+      "resumeRequired": "CV/Resume diperlukan.",
+      "profilePhotoMaxSize": "Ukuran foto profil harus kurang dari 5MB.",
+      "resumeMaxSize": "Ukuran resume harus kurang dari 2MB.",
+      "passportScanMaxSize": "Ukuran hasil pindai paspor harus kurang dari 5MB.",
+      "fullBodyPhotoMaxSize": "Foto seluruh tubuh harus berukuran kurang dari 5MB.",
+      "biometricPhotoMaxSize": "Foto biometrik harus berukuran kurang dari 5MB.",
+      "videoMaxSize": "Ukuran video harus kurang dari 50MB.",
+      "fixErrorsIntro": "Mohon perbaiki kesalahan-kesalahan berikut:\n\n",
+      "selectValidJobCategory": "Silakan pilih kategori pekerjaan yang valid.",
+      "fileSizeErrorsIntro": "Kesalahan ukuran file:\n\n",
+      "submitFailed": "Pengajuan aplikasi gagal. Silakan periksa koneksi internet Anda dan coba lagi.",
+      "errorPrefix": "Kesalahan:",
+      "unknownError": "Terjadi kesalahan yang tidak diketahui.",
+      "errorSubmittingApplication": "Terjadi kesalahan saat mengirimkan aplikasi:\n\n",
+      "referenceForm": {
+        "title": "Referensi Profesional",
+        "subtitle": "Tambahkan referensi dan kontak profesional Anda.",
+        "addReference": "Tambahkan Referensi",
+        "noteTitle": "Catatan: Harap buat detail kandidat pekerjaan terlebih dahulu.",
+        "noteDescription": "Lengkapi semua kolom yang wajib diisi untuk memastikan validasi referensi yang tepat.",
+        "referenceNumber": "Referensi #{{number}}",
+        "removeReference": "Hapus Referensi",
+        "organizationDetails": "Rincian Organisasi",
+        "titleLabel": "Judul *",
+        "titlePlaceholder": "Jabatan atau posisi",
+        "organizationLabel": "Organisasi *",
+        "organizationPlaceholder": "Nama perusahaan atau organisasi",
+        "employmentPeriod": "Periode Kerja",
+        "startDateLabel": "Tanggal Mulai *",
+        "endDateLabel": "Tanggal Akhir *",
+        "locationDetails": "Detail Lokasi",
+        "countryLabel": "Negara *",
+        "countryPlaceholder": "Negara",
+        "stateLabel": "Negara *",
+        "statePlaceholder": "Negara Bagian/Provinsi",
+        "cityLabel": "Kota *",
+        "cityPlaceholder": "Kota",
+        "contactInformation": "Informasi Kontak",
+        "contactPerson": "Kontak person",
+        "contactPersonPlaceholder": "Nama orang yang dapat dihubungi",
+        "phoneNumber": "Nomor telepon",
+        "emailAddress": "Alamat Email",
+        "resetForm": "Atur Ulang Formulir",
+        "saveReferences": "Simpan Referensi",
+        "phonePlaceholder": "+1 (555) 123-4567",
+        "emailPlaceholder": "contact@company.com"
+      },
+      "experienceForm": {
+        "projects": "Proyek",
+        "projectsSubtitle": "Tambahkan detail proyek Anda",
+        "addProject": "Tambahkan Proyek",
+        "projectNumber": "Proyek #{{number}}",
+        "experienceCandidateJobs": "Pekerjaan untuk Kandidat Berpengalaman",
+        "experienceCandidateJobsSubtitle": "Tambahkan detail pekerjaan kandidat berpengalaman Anda.",
+        "addExperienceCandidateJob": "Tambahkan Pekerjaan Kandidat Berpengalaman",
+        "experienceCandidateJobNumber": "Lowongan Kerja Kandidat Berpengalaman #{{number}}",
+        "qualifications": "Kualifikasi",
+        "qualificationsSubtitle": "Tambahkan detail kualifikasi Anda",
+        "addQualification": "Tambahkan Kualifikasi",
+        "qualificationNumber": "Kualifikasi #{{number}}",
+        "skills": "Keterampilan",
+        "skillsSubtitle": "Tambahkan detail keahlian Anda",
+        "addSkill": "Tambahkan Keterampilan",
+        "skillNumber": "Keterampilan #{{number}}",
+        "typeLabel": "Jenis *",
+        "selectType": "Pilih Jenis",
+        "typeTechnical": "Keterampilan Teknis",
+        "typeSoft": "Keterampilan Lunak",
+        "typeLanguage": "Kemampuan Bahasa",
+        "typeCertification": "Sertifikasi",
+        "titleLabel": "Judul *",
+        "titlePlaceholder": "Masukkan judul {{item}}",
+        "organizationLabel": "Organisasi *",
+        "organizationPlaceholder": "Nama Organisasi/Perusahaan",
+        "startDateLabel": "Tanggal Mulai *",
+        "endDateLabel": "Tanggal Akhir *",
+        "referenceLabel": "Referensi",
+        "referencePlaceholder": "Orang/kontak yang dapat diandalkan",
+        "saveExperience": "Simpan Pengalaman"
+      },
+      "placeholderPhoneExample": "+1 (555) 123-4567",
+      "placeholderEmailExample": "your.email@example.com"
+    },
+    "referenceForm": {
+      "firstName": "Nama depan",
+      "lastName": "Nama Belakang",
+      "email": "E-mail",
+      "phone": "Telepon",
+      "gender": "Jenis kelamin",
+      "password": "Kata sandi",
+      "confirmPassword": "Konfirmasi Kata Sandi",
+      "placeholderFirstName": "Masukkan nama depan",
+      "placeholderLastName": "Masukkan nama belakang",
+      "placeholderEmail": "Masukkan email",
+      "placeholderPhone": "Masukkan nomor telepon",
+      "placeholderPassword": "Masukkan kata sandi",
+      "placeholderConfirmPassword": "Konfirmasi kata sandi",
+      "passwordsDoNotMatch": "Kata sandi tidak cocok",
+      "accountCreatedSuccess": "Akun Anda telah berhasil dibuat.",
+      "verifyEmailTo": "Silakan verifikasi email Anda untuk",
+      "loginToDashboard": "Masuk ke dasbor",
+      "submitted": "Dikirimkan",
+      "submit": "Kirim"
+    },
+    "agencyMentorForm": {
+      "requestSubmittedSuccess": "Permintaan Anda telah berhasil dikirim, kami akan meninjaunya dan menghubungi Anda kembali."
+    },
+    "residenceHero": {
+      "nameRequired": "Nama wajib diisi.",
+      "emailRequired": "Email wajib diisi.",
+      "phoneRequired": "Telepon diperlukan"
+    },
+    "testimonials": {
+      "previousAria": "Sebelumnya",
+      "nextAria": "Berikutnya",
+      "leftArrow": "panah kiri",
+      "rightArrow": "panah kanan"
+    },
+    "blog": {
+      "previousAria": "Blog sebelumnya",
+      "nextAria": "Blog selanjutnya",
+      "curatingTitle": "Mengkurasi Konten yang Menakjubkan",
+      "loadingInsights": "Memuat wawasan pendidikan terbaru kami...",
+      "unableToLoadContent": "Tidak dapat memuat konten.",
+      "tryAgain": "Coba Lagi",
+      "comingSoon": "Segera hadir",
+      "comingSoonDescription": "Konten blog yang luar biasa akan segera hadir! Kunjungi kembali segera untuk mendapatkan wawasan pendidikan yang inspiratif.",
+      "premiumBadge": "✨ Konten Pendidikan Premium",
+      "titleEducational": "Pendidikan",
+      "titleInsights": "Wawasan",
+      "discoverTransformative": "Temukan transformasi",
+      "expertCareerGuidance": "bimbingan karir ahli",
+      "cuttingEdgeResources": "sumber daya pendidikan mutakhir",
+      "thatAccelerate": "yang akan mempercepat perjalanan akademis Anda",
+      "latestUpdates": "Pembaruan Terbaru",
+      "expertInsights": "Wawasan Pakar",
+      "careerGuidance": "Bimbingan Karier",
+      "readFullArticle": "Baca Artikel Selengkapnya",
+      "featured": "Unggulan",
+      "exploreAllArticles": "Jelajahi Semua Artikel",
+      "goToBlog": "Kunjungi blog {{number}}",
+      "autoPlaying": "Memutar otomatis",
+      "paused": "Dijeda"
+    },
+    "templates": {
+      "resumeTemplates": "Templat Resume",
+      "newResume": "+ Resume Baru",
+      "searchTemplates": "Cari templat...",
+      "favorites": "Favorit",
+      "recent": "Terkini",
+      "categories": "Kategori",
+      "noTemplatesFound": "Tidak ada templat yang ditemukan.",
+      "tryAdjustingSearch": "Cobalah menyesuaikan pencarian atau filter Anda.",
+      "addToFavorites": "Tambahkan ke favorit",
+      "removeFromFavorites": "Hapus dari favorit",
+      "editAria": "Edit",
+      "deleteAria": "Menghapus",
+      "shareAria": "Membagikan",
+      "comingSoon": "Segera hadir",
+      "selectATemplate": "Pilih Templat",
+      "downloadPdf": "Unduh PDF",
+      "editResume": "Edit Resume",
+      "selectTemplateToPreview": "Pilih templat dari sebelah kiri untuk melihat pratinjau resume Anda.",
+      "all": "Semua"
+    },
+    "visaPage": {
+      "visaStatus": "Status Visa",
+      "processingTime": "Waktu pengerjaan",
+      "validity": "Keabsahan",
+      "visaFees": "Biaya Visa",
+      "selectCountry": "Pilih Negara",
+      "selectDestination": "Pilih Tujuan",
+      "liveChat": "Obrolan langsung",
+      "whatsApp": "WhatsApp",
+      "clickToCall": "Klik untuk Menghubungi",
+      "callUsFree": "Hubungi kami GRATIS",
+      "visa": "Visa",
+      "businessVisa": "Visa bisnis",
+      "studentVisa": "Visa pelajar",
+      "workVisa": "Visa kerja",
+      "transitVisa": "Visa transit",
+      "visaRequirementsFor": "Persyaratan visa {{destination}} untuk warga negara {{citizen}}",
+      "completeGuide": "Panduan lengkap mengenai persyaratan visa, dokumen, dan proses aplikasi.",
+      "visaRequired": "Visa Diperlukan",
+      "visaNotRequired": "Visa Tidak Diperlukan",
+      "tourismBusiness": "Pariwisata & Bisnis",
+      "workImmigration": "Pekerjaan & Imigrasi",
+      "availableVisaTypes": "Jenis Visa yang Tersedia",
+      "additionalRequirements": "Persyaratan Tambahan",
+      "biometricsRequired": "Diperlukan Data Biometrik",
+      "biometricsNotRequired": "Biometrik Tidak Diperlukan",
+      "interviewRequired": "Wawancara Diperlukan",
+      "interviewNotRequired": "Wawancara Tidak Diperlukan",
+      "fillOutApplication": "Isi formulir aplikasi e-visa turis {{destination}} secara online.",
+      "getStarted": "Mulai",
+      "provideDigitalCopies": "Berikan salinan digital dari dokumen-dokumen berikut:",
+      "requiredDocumentsForEntry": "Dokumen yang dibutuhkan untuk masuk:",
+      "applyForVisa": "Ajukan Visa {{destination}} Secara Online",
+      "passportControl": "Pemeriksaan paspor",
+      "travelVisaRequirements": "Persyaratan Visa Perjalanan",
+      "journeyBegins": "Terkadang perjalanan seribu mil dimulai dengan visa.",
+      "checkDestination": "Periksa tujuan Anda dan ajukan permohonan visa secara online untuk visa apa pun di dunia.",
+      "forCitizensOf": "untuk warga negara",
+      "travelingTo": "bepergian ke",
+      "checkRequirements": "Periksa persyaratannya",
+      "weHelpYou": "Kami membantu Anda memahami persyaratan, mengumpulkan dokumen yang tepat, dan mempersiapkan diri untuk wawancara.",
+      "yourTravelDestination": "Tujuan perjalanan Anda",
+      "visaType": "Jenis visa",
+      "touristVisaConvenient": "Visa turis (praktis)",
+      "yourCitizenship": "Kewarganegaraan Anda",
+      "livingIn": "tinggal di",
+      "applyNow": "Daftar Sekarang",
+      "backToSearch": "Kembali ke pencarian"
+    },
+    "registerCompany": {
+      "title": "Mendaftar sebagai Perusahaan",
+      "companyName": "Nama perusahaan",
+      "companyEmail": "Email Perusahaan",
+      "phoneNumber": "Nomor telepon",
+      "websiteUrl": "URL situs web",
+      "industrySector": "Sektor Industri",
+      "companySize": "Ukuran Perusahaan",
+      "companyAddress": "Alamat Perusahaan",
+      "country": "Negara",
+      "city": "Kota",
+      "fullAddress": "Alamat Lengkap",
+      "hrContactPerson": "Bagian SDM / Narahubung",
+      "fullName": "Nama Lengkap",
+      "position": "Posisi",
+      "emailAddress": "Alamat Email",
+      "recruitmentPreferences": "Preferensi Rekrutmen",
+      "jobCategoriesHiring": "Kategori Pekerjaan yang Sedang Dicari",
+      "preferredNationalities": "Kewarganegaraan Kandidat yang Diutamakan (Opsional)",
+      "jobTypesOffered": "Jenis Pekerjaan yang Ditawarkan (Pilih semua yang sesuai)",
+      "documentsUpload": "Unggah Dokumen",
+      "companyRegistrationDocument": "Dokumen Pendaftaran Perusahaan",
+      "optionalRecommended": "(Opsional tetapi disarankan)",
+      "licenseIfAny": "Lisensi (jika ada)",
+      "clickToUpload": "Klik untuk mengunggah atau seret dan lepas",
+      "pdfDocMax": "PDF, DOC, DOCX (Maksimal 5MB)",
+      "accountInformation": "Informasi Akun",
+      "username": "Nama belakang",
+      "password": "Kata sandi",
+      "confirmPassword": "Konfirmasi Kata Sandi",
+      "placeholderCompanyName": "Masukkan nama perusahaan",
+      "selectIndustry": "Pilih industri",
+      "selectCompanySize": "Pilih ukuran perusahaan",
+      "employees1_10": "1-10 karyawan",
+      "employees11_50": "11-50 karyawan",
+      "employees51_200": "51-200 karyawan",
+      "employees201Plus": "201+ karyawan",
+      "placeholderCountry": "Masukkan negara",
+      "placeholderCity": "Masuk kota",
+      "placeholderAddress": "Masukkan alamat lengkap",
+      "placeholderFullName": "Masukkan nama lengkap",
+      "placeholderPosition": "misalnya, Manajer SDM",
+      "placeholderJobCategories": "misalnya, Pengembangan Perangkat Lunak, Pemasaran, Penjualan, Layanan Pelanggan",
+      "placeholderNationalities": "misalnya, Apa pun, AS, Kanada, Uni Eropa",
+      "placeholderUsername": "Pilih nama pengguna",
+      "placeholderPassword": "Masukkan kata sandi",
+      "placeholderConfirmPassword": "Konfirmasi kata sandi",
+      "submitButton": "Daftar Perusahaan",
+      "fullTime": "Penuh waktu",
+      "partTime": "Paruh waktu",
+      "contract": "Kontrak",
+      "remote": "Terpencil",
+      "internship": "Magang",
+      "industryTechnology": "Teknologi",
+      "industryHealthcare": "Perawatan kesehatan",
+      "industryFinance": "Keuangan",
+      "industryEducation": "Pendidikan",
+      "industryManufacturing": "Manufaktur",
+      "industryRetail": "Pengecer",
+      "industryConstruction": "Konstruksi",
+      "industryTransportation": "Angkutan",
+      "industryEnergy": "Energi",
+      "industryOther": "Lainnya",
+      "placeholderEmail": "company@example.com",
+      "placeholderPhone": "+1 (555) 123-4567",
+      "placeholderWebsite": "https://www.company.com",
+      "placeholderHrEmail": "hr@company.com"
+    },
+    "registerCandidate": {
+      "title": "Buat Akun Anda",
+      "subtitle": "Gabunglah dengan platform kami dan temukan peluang karier Anda selanjutnya.",
+      "personalInformation": "Informasi Pribadi",
+      "fullName": "Nama Lengkap",
+      "emailAddress": "Alamat Email",
+      "phoneNumber": "Nomor telepon",
+      "optional": "(Opsional)",
+      "preferredCountry": "Negara Pilihan",
+      "jobInformation": "Informasi Pekerjaan",
+      "desiredJobTitle": "Jabatan yang Diinginkan",
+      "generateProfileSummary": "Buat Ringkasan Profil",
+      "generating": "Sedang menghasilkan...",
+      "profileSummary": "Ringkasan Profil",
+      "accountSecurity": "Keamanan Akun",
+      "password": "Kata sandi",
+      "confirmPassword": "Konfirmasi Kata Sandi",
+      "resumeUpload": "Unggah Resume",
+      "optionalInformation": "Informasi Opsional",
+      "highestQualification": "Kualifikasi Tertinggi",
+      "yearsOfExperience": "Pengalaman Bertahun-tahun",
+      "agreeTerms": "Saya setuju dengan hal tersebut.",
+      "termsAndConditions": "syarat dan Ketentuan",
+      "needVisaHelp": "Saya butuh bantuan terkait visa/izin kerja/izin tinggal.",
+      "submitButton": "Buat Akun",
+      "alreadyHaveAccount": "Sudah punya akun?",
+      "signInHere": "Masuk di sini",
+      "placeholderFullName": "Masukkan nama lengkap Anda",
+      "selectCountry": "Pilih negara",
+      "placeholderJobTitle": "misalnya, Insinyur Perangkat Lunak",
+      "placeholderProfileSummary": "Ringkasan singkat tentang latar belakang profesional dan aspirasi Anda...",
+      "placeholderPassword": "Buat kata sandi yang kuat.",
+      "placeholderConfirmPassword": "Konfirmasikan kata sandi Anda",
+      "resumeUploadedSuccess": "Unggahan berhasil!",
+      "dragDropResume": "Seret dan lepas resume Anda di sini, atau klik untuk melihat-lihat.",
+      "pdfDocOnly": "Hanya file PDF, DOC, atau DOCX (Maksimal 5MB)",
+      "selectQualification": "Pilih kualifikasi",
+      "highSchool": "Sekolah menengah atas",
+      "bachelors": "Gelar Sarjana",
+      "masters": "Gelar Magister",
+      "phd": "PhD",
+      "other": "Lainnya",
+      "selectExperience": "Pilih pengalaman",
+      "experience0_1": "0-1 tahun",
+      "experience2_5": "2-5 tahun",
+      "experience6_10": "6-10 tahun",
+      "experience11_15": "11-15 tahun",
+      "experience15Plus": "15+ tahun",
+      "fileTypeError": "Kesalahan Tipe File",
+      "fileTypeErrorMessage": "Silakan unggah file PDF atau DOC.",
+      "generationFailed": "Generasi yang Gagal",
+      "generationFailedMessage": "Ringkasan tidak dapat dibuat. Silakan coba lagi.",
+      "apiError": "Kesalahan API",
+      "apiErrorMessage": "Gagal terhubung ke API Gemini. Harap periksa jaringan Anda.",
+      "placeholderEmail": "your.email@example.com",
+      "placeholderPhone": "+1 (555) 123-4567",
+      "ok": "OK"
+    },
+    "profile": {
+      "loadingProfile": "Sedang memuat profil...",
+      "backToCandidates": "Kembali ke Daftar Kandidat",
+      "location": "Lokasi",
+      "experience": "Pengalaman",
+      "age": "Usia",
+      "contact": "Kontak",
+      "resume": "Melanjutkan",
+      "readyToConnect": "Siap untuk terhubung?",
+      "startConversation": "Mulailah Percakapan",
+      "recentlyJoined": "Baru bergabung",
+      "greatVisibility": "Visibilitas bagus!",
+      "overview": "Ringkasan",
+      "experienceTab": "Pengalaman",
+      "education": "Pendidikan",
+      "portfolio": "Portofolio",
+      "technicalSkills": "Keterampilan Teknis",
+      "areasOfExpertise": "Bidang keahlian",
+      "aboutName": "Tentang {{name}}",
+      "profileLinkCopied": "Tautan profil telah disalin ke papan klip!",
+      "getInTouch": "Hubungi {{name}} untuk membahas peluang dan mempelajari lebih lanjut tentang pengalaman mereka.",
+      "quickStats": "Statistik Singkat",
+      "skills": "Keterampilan",
+      "certifications": "Sertifikasi",
+      "profileActivity": "Aktivitas Profil",
+      "profileCreated": "Profil telah dibuat.",
+      "profileViews": "{{count}} Tampilan Profil",
+      "skillsUpdated": "Keterampilan Diperbarui",
+      "portfolioOptimized": "Portofolio dioptimalkan",
+      "topSkills": "Keterampilan Utama",
+      "recruiterTips": "Tips untuk Perekrut"
+    },
+    "humanResource": {
+      "understand": "Memahami",
+      "understandDescription": "Kami mulai dengan memahami budaya, tantangan, dan tujuan unik organisasi Anda untuk menciptakan solusi SDM yang disesuaikan.",
+      "understandBullet1": "Penilaian organisasi yang komprehensif",
+      "understandBullet2": "Wawancara pemangku kepentingan",
+      "understandBullet3": "Analisis berbasis data",
+      "implement": "Melaksanakan",
+      "implementDescription": "Tim ahli kami menerapkan strategi dan program SDM yang disesuaikan dan dirancang untuk memenuhi kebutuhan spesifik Anda.",
+      "implementBullet1": "Solusi SDM yang disesuaikan",
+      "implementBullet2": "Dukungan manajemen perubahan",
+      "implementBullet3": "Integrasi tanpa hambatan dengan sistem yang sudah ada.",
+      "optimize": "Optimalkan",
+      "optimizeDescription": "Kami terus menerus mengukur, menyempurnakan, dan mengoptimalkan proses SDM Anda untuk mendorong peningkatan berkelanjutan dan ROI.",
+      "optimizeBullet1": "Tinjauan kinerja berkala",
+      "optimizeBullet2": "Siklus umpan balik berkelanjutan",
+      "optimizeBullet3": "Penyesuaian strategis berdasarkan hasil",
+      "industriesWeServe": "Industri yang Kami Layani",
+      "industriesWeServeDescription": "Keahlian SDM kami mencakup berbagai industri, yang masing-masing memiliki tantangan tenaga kerja yang unik."
+    },
+    "submitResume": {
+      "step1Title": "Unggah Resume",
+      "step1Description": "Bagikan kisah karier Anda",
+      "step2Title": "Analisis AI",
+      "step2Description": "Kami menganalisis keterampilan Anda",
+      "step3Title": "Dapatkan Pasangan",
+      "step3Description": "Temukan pekerjaan yang sempurna",
+      "metricActiveJobs": "Lowongan Kerja Aktif",
+      "metricSuccessStories": "Kisah Sukses",
+      "metricTopCompanies": "Perusahaan Teratas",
+      "metricMatchAccuracy": "Akurasi Pencocokan",
+      "feature1Title": "Pencocokan AI Cerdas",
+      "feature1Description": "Algoritma canggih yang memahami profil karier unik Anda dan mencocokkan Anda dengan peluang yang selaras sempurna dengan tujuan Anda.",
+      "feature2Title": "Penemuan Pekerjaan Cerdas",
+      "feature2Description": "Temukan peluang tersembunyi dari jaringan eksklusif kami yang terdiri dari perusahaan-perusahaan premium dan startup yang mencari talenta luar biasa.",
+      "feature3Title": "Notifikasi Waktu Nyata",
+      "feature3Description": "Dapatkan notifikasi instan saat posisi baru yang sesuai dengan kriteria Anda tersedia. Jangan pernah melewatkan kesempatan impian Anda lagi.",
+      "feature4Title": "Perlindungan Privasi",
+      "feature4Description": "Informasi pribadi Anda dienkripsi dan aman. Kami menghargai privasi Anda sekaligus membantu Anda memajukan karier."
+    },
+    "partnerRegister": {
+      "heroTitle1": "Mulailah Karier Anda",
+      "heroTitle2": "Perjalanan di Turki",
+      "heroSubtitle": "Bergabunglah dengan ratusan profesional yang telah menemukan pekerjaan impian mereka di Turki. Kami menangani semuanya, mulai dari pengurusan visa hingga penempatan kerja - sepenuhnya gratis untuk para kandidat.",
+      "registerNow": "Daftar Sekarang - Gratis!",
+      "jobsPlaced": "Lowongan Pekerjaan yang Ditempatkan",
+      "visaSuccessRate": "Tingkat Keberhasilan Visa",
+      "countriesServed": "Negara yang Dilayani",
+      "freeToJoin": "Bergabung Gratis",
+      "forCandidates": "Untuk Kandidat",
+      "whyWorkInTurkey": "Mengapa Bekerja di Turki?",
+      "whyWorkInTurkeyDescription": "Temukan peluang luar biasa dan gaya hidup yang ditawarkan Turki kepada para profesional internasional.",
+      "howItWorks": "Cara Kerjanya",
+      "howItWorksDescription": "Proses sederhana 4 langkah kami akan membawa Anda dari tahap pengajuan aplikasi hingga mulai bekerja di Turki.",
+      "whatWeProvide": "Apa yang Kami Sediakan",
+      "whatWeProvideDescription": "Segala yang Anda butuhkan untuk kepindahan karier yang sukses ke Turki.",
+      "benefit1Title": "Pemrosesan Visa Gratis",
+      "benefit1Description": "Bantuan lengkap untuk visa dan izin kerja tanpa biaya apa pun bagi Anda.",
+      "benefit2Title": "Dukungan Akomodasi",
+      "benefit2Description": "Bantuan untuk menemukan perumahan yang sesuai di dekat tempat kerja Anda",
+      "benefit3Title": "Gaji Kompetitif",
+      "benefit3Description": "Upah yang adil sesuai dengan standar ketenagakerjaan Turki.",
+      "benefit4Title": "Payung hukum",
+      "benefit4Description": "Dukungan hukum penuh dan perlindungan hak-hak pekerja.",
+      "processStep1Title": "Profil Lengkap",
+      "processStep1Description": "Kirimkan aplikasi dan dokumen lengkap Anda.",
+      "processStep2Title": "Pencocokan Pekerjaan",
+      "processStep2Description": "Kami akan menghubungkan Anda dengan perusahaan yang sesuai di Turki.",
+      "processStep3Title": "Dokumentasi",
+      "processStep3Description": "Kami menyiapkan dan mengirimkan semua permohonan visa.",
+      "processStep4Title": "Berwisata ke Turki",
+      "processStep4Description": "Mulailah perjalanan karier baru Anda di Turki.",
+      "fact1Title": "Pertumbuhan Ekonomi",
+      "fact1Fact": "Pertumbuhan PDB 5,6%",
+      "fact1Description": "Pertumbuhan ekonomi yang kuat menciptakan peluang kerja baru.",
+      "fact2Title": "Tenaga Kerja yang Beragam",
+      "fact2Fact": "500.000+ Warga Negara Asing",
+      "fact2Description": "Komunitas internasional yang besar bekerja di Turki.",
+      "fact3Title": "Kualitas Hidup",
+      "fact3Fact": "Budaya yang Kaya",
+      "fact3Description": "Negara yang indah dengan keseimbangan kerja dan kehidupan yang sangat baik.",
+      "fact4Title": "Lokasi Strategis",
+      "fact4Fact": "Eropa & Asia",
+      "fact4Description": "Lokasi sempurna yang menghubungkan dua benua",
+      "createYourProfile": "Buat Profil Anda",
+      "createYourProfileDescription": "Selesaikan pendaftaran Anda untuk mendapatkan peluang kerja yang tepat di Turki. Ini sepenuhnya gratis!",
+      "personalInformation": "Informasi Pribadi",
+      "firstName": "Nama Depan *",
+      "lastName": "Nama Belakang *",
+      "dateOfBirth": "Tanggal Lahir *",
+      "gender": "Jenis kelamin",
+      "nationality": "Kebangsaan *",
+      "placeholderFirstName": "Masukkan nama depan Anda",
+      "placeholderLastName": "Masukkan nama belakang Anda",
+      "placeholderNationality": "misalnya, orang Pakistan, orang Bangladesh",
+      "selectGender": "Pilih jenis kelamin",
+      "male": "Pria",
+      "female": "Perempuan",
+      "other": "Lainnya",
+      "registrationSuccess": "Pendaftaran berhasil dikirim! Kami akan meninjau profil Anda dan menghubungi Anda dalam 3-5 hari kerja dengan peluang kerja yang potensial.",
+      "placeholderCurrentCountry": "Di mana kamu tinggal sekarang",
+      "placeholderCurrentCity": "Kota Anda saat ini",
+      "placeholderPhone": "+92 xxx xxx xxxx",
+      "selectStatus": "Pilih status",
+      "single": "Lajang",
+      "married": "Telah menikah",
+      "divorced": "Cerai",
+      "widowed": "Janda/Duda",
+      "selectNumber": "Pilih nomor",
+      "children4Plus": "4 atau lebih",
+      "placeholderJobTitle": "misalnya, Operator Mesin, Pengembang Perangkat Lunak",
+      "industryExperience": "Pengalaman Industri",
+      "industryExperienceRequired": "Pengalaman di industri terkait dibutuhkan.",
+      "selectIndustry": "Pilih industri",
+      "industryManufacturing": "Manufaktur",
+      "industryConstruction": "Konstruksi",
+      "industryTechnology": "Teknologi/TI",
+      "industryHealthcare": "Perawatan kesehatan",
+      "industryHospitality": "Keramahan",
+      "industryEducation": "Pendidikan",
+      "industryAgriculture": "Pertanian",
+      "industryLogistics": "Logistik/Transportasi",
+      "industryRetail": "Penjualan Ritel/Penjualan",
+      "industrySecurity": "Keamanan",
+      "industryOther": "Lainnya",
+      "selectExperience": "Pilih pengalaman",
+      "experience0_1": "0-1 tahun",
+      "experience1_3": "1-3 tahun",
+      "experience3_5": "3-5 tahun",
+      "experience5_10": "5-10 tahun",
+      "experience10Plus": "10+ tahun",
+      "placeholderSalary": "misalnya, $500, ₹50.000, €1000",
+      "expectedSalary": "Gaji yang diharapkan",
+      "selectSalaryRange": "Pilih rentang gaji",
+      "salary17000_20000": "17.000 - 20.000 TL",
+      "salary20000_25000": "20.000 - 25.000 TL",
+      "salary25000_30000": "25.000 - 30.000 TL",
+      "salary30000_40000": "30.000 - 40.000 TL",
+      "salary40000Plus": "40.000+ TL",
+      "availabilityDate": "Tersedianya",
+      "selectAvailability": "Pilih ketersediaan",
+      "availabilityImmediately": "Langsung",
+      "availability1Month": "Dalam waktu 1 bulan",
+      "availability2Months": "Dalam waktu 2 bulan",
+      "availability3Months": "Dalam waktu 3 bulan",
+      "availabilityFlexible": "Fleksibel",
+      "educationLevel": "Tingkat Pendidikan",
+      "educationLevelRequired": "Tingkat pendidikan yang dibutuhkan",
+      "selectEducationLevel": "Pilih tingkat pendidikan",
+      "educationPrimary": "Sekolah dasar",
+      "educationSecondary": "Sekolah Menengah",
+      "educationHighSchool": "Sekolah menengah atas",
+      "educationDiploma": "Diploma",
+      "educationBachelors": "Gelar Sarjana",
+      "educationMasters": "Gelar Magister",
+      "educationPhD": "PhD",
+      "educationOther": "Lainnya",
+      "skills": "Keterampilan",
+      "placeholderSkills": "misalnya, pengelasan, mengemudi, memasak",
+      "turkishLevel": "Tingkat Turki",
+      "englishLevel": "Tingkat Bahasa Inggris",
+      "selectLevel": "Pilih level",
+      "levelBasic": "Dasar",
+      "levelIntermediate": "Intermediat",
+      "levelAdvanced": "Canggih",
+      "levelFluent": "Fasih",
+      "passportNumber": "Nomor Paspor",
+      "placeholderPassport": "Masukkan nomor paspor",
+      "motivation": "Surat Motivasi",
+      "placeholderMotivation": "Mengapa Anda ingin bekerja di Turki?",
+      "hearAboutUs": "Bagaimana Anda mengetahui tentang kami?",
+      "selectHearAboutUs": "Pilih opsi",
+      "hearAboutGoogle": "Google",
+      "hearAboutFacebook": "Facebook",
+      "hearAboutFriend": "Teman/Rekomendasi",
+      "hearAboutOther": "Lainnya",
+      "fieldOfStudy": "Bidang Studi",
+      "placeholderFieldOfStudy": "misalnya, Teknik Mesin, Ilmu Komputer",
+      "universityInstitution": "Universitas/Institusi",
+      "placeholderUniversity": "Nama sekolah/universitas Anda",
+      "graduationYear": "Tahun lulus",
+      "additionalCertifications": "Sertifikasi Tambahan",
+      "placeholderAdditionalCertifications": "Cantumkan sertifikasi profesional, kursus, atau pelatihan apa pun yang telah Anda selesaikan.",
+      "skillsAndLanguages": "Keterampilan & Bahasa",
+      "professionalSkills": "Keterampilan Profesional",
+      "placeholderProfessionalSkills": "Cantumkan keterampilan utama Anda, pengetahuan perangkat lunak, pengalaman di bidang permesinan, dll.",
+      "languagesYouSpeak": "Bahasa yang Anda Kuasai",
+      "turkishLanguageLevel": "Tingkat Bahasa Turki",
+      "englishLanguageLevel": "Tingkat Kemampuan Bahasa Inggris",
+      "noTurkish": "Tidak ada bahasa Turki",
+      "noEnglish": "Tidak ada bahasa Inggris",
+      "nativeFluent": "Penutur Asli/Fasih",
+      "documentsAndLegal": "Dokumen & Informasi Hukum",
+      "placeholderPassportNumber": "Nomor paspor Anda",
+      "passportExpiryDate": "Tanggal Kedaluwarsa Paspor",
+      "criminalRecordStatus": "Status Catatan Kriminal",
+      "healthStatus": "Status Kesehatan",
+      "cleanRecord": "Catatan Bersih",
+      "minorOffenses": "Pelanggaran Ringan",
+      "preferNotToSay": "Lebih baik tidak mengatakan",
+      "excellent": "Bagus sekali",
+      "good": "Bagus",
+      "fair": "Adil",
+      "haveMedicalConditions": "Memiliki Kondisi Medis",
+      "hasWorkedAbroad": "Saya pernah bekerja di luar negeri sebelumnya.",
+      "relocationPreferences": "Preferensi Relokasi",
+      "relocationType": "Jenis Relokasi",
+      "accommodationPreference": "Preferensi Akomodasi",
+      "selectPreference": "Pilih preferensi",
+      "temporary": "Sementara (1-2 tahun)",
+      "longTerm": "Jangka panjang (3-5 tahun)",
+      "permanentRelocation": "Relokasi permanen",
+      "flexible": "Fleksibel",
+      "companyProvided": "Disediakan oleh Perusahaan",
+      "ownArrangement": "Pengaturan Sendiri",
+      "sharedAccommodation": "Akomodasi Bersama",
+      "familyAccommodation": "Akomodasi Keluarga",
+      "placeholderEmail": "your.email@example.com",
+      "children0": "0",
+      "children1": "1",
+      "children2": "2",
+      "children3": "3",
+      "placeholderGraduationYear": "2020"
+    },
+    "general": {
+      "jobsAdmireLogo": "Logo JobsAdmire",
+      "selectLanguageAria": "Pilih Bahasa",
+      "partnersSectionDescription": "Kami sangat berterima kasih kepada para mitra kami atas kepercayaan yang telah diberikan kepada kami. Kepercayaan dan dukungan Anda yang tak tergoyahkan mendorong kesuksesan bersama kita.",
+      "bannerImageAlt": "Gambar Banner",
+      "profileAlt": "Profil",
+      "bannerAlt": "Gambar Banner",
+      "noDataAvailable": "Tidak ada data yang tersedia",
+      "whyChooseUsAlt": "Mengapa Memilih Kami?",
+      "getStartedToday": "Mulailah Hari Ini",
+      "phone": "Telepon",
+      "email": "E-mail",
+      "address": "Alamat",
+      "contact": "Kontak",
+      "aboutMe": "Tentang Saya",
+      "skills": "Keterampilan",
+      "achievements": "Prestasi",
+      "experience": "Pengalaman",
+      "education": "Pendidikan",
+      "projects": "Proyek",
+      "references": "Referensi",
+      "contactMe": "Hubungi saya",
+      "jobExperience": "Pengalaman Kerja",
+      "proSkills": "Keterampilan Profesional",
+      "resumeBuilder": "Pembuat Resume",
+      "chooseTemplate": "Pilih Templat",
+      "updateResume": "Perbarui resume Anda!",
+      "generatePdf": "Buat ke PDF",
+      "generatingPdf": "Sedang menghasilkan...",
+      "ukFlagAlt": "Bendera Inggris",
+      "pawAndHeartAria": "cakar dan hati",
+      "pawAndAustraliaAria": "cakar dan australia",
+      "cropPreviewAlt": "Pratinjau pemangkasan",
+      "previewAlt": "Pratinjau",
+      "removeReference": "Hapus Referensi",
+      "selectSortOrder": "Pilih urutan penyortiran"
+    },
+    "search": {
+      "degree": "Derajat",
+      "allDegrees": "Semua Gelar",
+      "noDegreeFound": "Tidak Ditemukan Gelar",
+      "university": "Universitas",
+      "allUniversities": "Semua Universitas",
+      "loadingUniversities": "Memuat Universitas...",
+      "noUniversityFound": "Tidak ada universitas yang ditemukan.",
+      "program": "Program",
+      "allPrograms": "Semua Program",
+      "loadingPrograms": "Memuat Program...",
+      "pleaseSelectUniversity": "Silakan pilih Universitas",
+      "noProgramFound": "Tidak ada program yang ditemukan.",
+      "country": "Negara",
+      "allCountries": "Semua Negara",
+      "city": "Kota",
+      "allCities": "Semua Kota",
+      "searchIn": "Cari di {{entityName}}"
+    },
+    "filters": {
+      "openFilter": "Filter Terbuka",
+      "closeFilter": "Tutup Filter",
+      "sortBy": "Urutkan berdasarkan:",
+      "noFilters": "Tanpa Filter",
+      "clear": "Jernih"
+    },
+    "performance": {
+      "stats": {
+        "jobFulfillment": "Kepuasan Kerja",
+        "sinceLastQuarter": "Sejak kuartal terakhir",
+        "branches": "Cabang-cabang",
+        "acrossMajorCities": "Di seluruh kota-kota besar",
+        "yearsExperience": "Pengalaman Kerja Bertahun-tahun",
+        "industryExpertise": "Keahlian industri",
+        "happyClients": "Klien yang Puas",
+        "withSatisfaction": "Dengan tingkat kepuasan 98%"
+      },
+      "features": {
+        "targetedRecruitment": "Rekrutmen Terarah",
+        "targetedRecruitmentDesc": "Pencocokan kandidat dengan persyaratan pekerjaan secara tepat.",
+        "performanceTracking": "Pelacakan Kinerja",
+        "performanceTrackingDesc": "Metrik canggih untuk mengukur keberhasilan rekrutmen.",
+        "qualityAssurance": "Jaminan Mutu",
+        "qualityAssuranceDesc": "Penyaringan menyeluruh terhadap semua kandidat sebelum dipresentasikan."
+      },
+      "growth": {
+        "trajectory": "TRAJEKTORI PERTUMBUHAN",
+        "title": "Pertumbuhan Konsisten dari Tahun ke Tahun",
+        "description": "Metrik kami menunjukkan peningkatan kinerja yang konsisten di semua indikator utama. Kami terus memperluas jangkauan dan meningkatkan layanan kami."
+      },
+      "metrics": {
+        "title": "Metrik Kinerja",
+        "subtitle": "Visualisasi analitik terperinci",
+        "jobSuccessRate": "Tingkat Keberhasilan Pekerjaan",
+        "clientRetention": "Retensi Klien",
+        "candidateSatisfaction": "Kepuasan Kandidat"
+      }
+    },
+    "jobs": {
+      "all": "Semua",
+      "marketing": "Pemasaran",
+      "development": "Perkembangan",
+      "fulltime": "Penuh Waktu",
+      "parttime": "Paruh Waktu",
+      "contract": "Kontrak",
+      "freelance": "Bekerja lepas",
+      "seo": "SEO"
+    },
+    "blogDetail": {
+      "loadingBlog": "Sedang memuat blog...",
+      "errorLoadingBlog": "Terjadi kesalahan saat memuat blog.",
+      "backToBlogs": "Kembali ke Blog",
+      "blogNotFound": "Blog Tidak Ditemukan",
+      "blogNotFoundMessage": "Blog yang Anda cari tidak dapat ditemukan.",
+      "save": "Menyimpan",
+      "share": "Membagikan",
+      "linkCopied": "Tautan disalin ke papan klip!",
+      "introduction": "Perkenalan",
+      "conclusion": "Kesimpulan",
+      "thankYouMessage": "Terima kasih telah membaca artikel ini. Kami harap Anda mendapatkan informasi yang bermanfaat dan berharga.",
+      "writtenBy": "Ditulis oleh:",
+      "publishedOn": "Diterbitkan pada",
+      "tableOfContents": "Daftar isi",
+      "content": "Isi",
+      "stayUpdated": "Tetap Terupdate",
+      "newsletterDescription": "Dapatkan informasi terbaru tentang peluang beasiswa yang dikirimkan langsung ke kotak masuk Anda.",
+      "subscribe": "Berlangganan",
+      "relatedArticles": "Artikel Terkait",
+      "moreArticlesAbout": "Artikel lainnya tentang",
+      "viewAllBlogPosts": "Lihat semua postingan blog",
+      "minRead": "bacaan singkat"
+    }
+  }
+}

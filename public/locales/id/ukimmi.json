@@ -1,0 +1,3108 @@
+{
+  "herosection": {
+    "badge": "Perjalanan Eksklusif",
+    "title": "Temukan Petualangan Anda Selanjutnya",
+    "description": "Rasakan keindahan destinasi yang menakjubkan dan ciptakan kenangan tak terlupakan dengan paket wisata premium kami yang disesuaikan dengan keinginan Anda.",
+    "currentlyViewing": {
+      "label": "Sedang Dilihat"
+    },
+    "buttons": {
+      "primary": "Jelajahi Sekarang",
+      "secondary": "Lihat Semua Destinasi"
+    },
+    "destinationCounter": "Tujuan {{current}}/{{total}}",
+    "controls": {
+      "selectDestination": "Pilih {{destination}}"
+    },
+    "destinations": [
+      {
+        "img": "/images/ihul.png",
+        "name": "London",
+        "alt": "Pemandangan indah kota London dengan landmark ikonik.",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihum.png",
+        "name": "Manchester",
+        "alt": "Pusat kota Manchester dengan arsitektur modern dan bangunan bersejarah.",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihub.png",
+        "name": "Birmingham",
+        "alt": "Kawasan pusat kota Birmingham yang dinamis dan distrik-distrik budayanya",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihue.png",
+        "name": "Edinburgh",
+        "alt": "Kastil bersejarah Edinburgh dan kota tua abad pertengahan",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihuli.png",
+        "name": "Liverpool",
+        "alt": "Kawasan tepi laut dan warisan maritim Liverpool yang terkenal.",
+        "country": "UK"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "aboutsection": {
+    "badge": "Tentang Kami",
+    "title": "Mitra Perjalanan Tepercaya Anda",
+    "description": "Dengan pengalaman lebih dari 15 tahun di industri perjalanan, kami mengkhususkan diri dalam menciptakan perjalanan luar biasa yang melampaui ekspektasi.",
+    "features": [
+      {
+        "title": "Panduan Ahli",
+        "description": "Konsultan perjalanan kami yang berpengalaman memberikan rekomendasi yang dipersonalisasi."
+      },
+      {
+        "title": "Harga Terbaik",
+        "description": "Kami menjamin harga yang kompetitif tanpa biaya tersembunyi."
+      },
+      {
+        "title": "Dukungan 24/7",
+        "description": "Layanan pelanggan 24 jam untuk ketenangan pikiran."
+      }
+    ],
+    "stats": {
+      "experience": {
+        "label": "Pengalaman Kerja Bertahun-tahun",
+        "number": "15+"
+      },
+      "customers": {
+        "number": "50 ribu+",
+        "label": "Pelanggan yang Puas"
+      },
+      "destinations": {
+        "label": "Destinasi",
+        "number": "200+"
+      },
+      "awards": {
+        "label": "Penghargaan yang Diraih",
+        "number": "25+"
+      }
+    }
+  },
+  "servicessection": {
+    "badge": "Layanan Kami",
+    "title": "Solusi Perjalanan Lengkap",
+    "description": "Dari perencanaan hingga pelaksanaan, kami menangani setiap aspek perjalanan Anda.",
+    "services": [
+      {
+        "icon": "pesawat",
+        "title": "Pemesanan Penerbangan",
+        "description": "Penawaran terbaik untuk penerbangan domestik dan internasional."
+      },
+      {
+        "icon": "hotel",
+        "title": "Reservasi Hotel",
+        "description": "Akomodasi mewah dengan harga yang tak tertandingi."
+      },
+      {
+        "icon": "mobil",
+        "title": "Sewa Mobil",
+        "description": "Transportasi yang andal untuk kenyamanan Anda."
+      },
+      {
+        "icon": "memandu",
+        "title": "Pemandu Wisata",
+        "description": "Pemandu profesional untuk pengalaman yang mendalam."
+      },
+      {
+        "icon": "asuransi",
+        "title": "Asuransi Perjalanan",
+        "description": "Perlindungan komprehensif untuk perjalanan tanpa khawatir."
+      },
+      {
+        "icon": "Visa",
+        "title": "Bantuan Visa",
+        "description": "Dukungan lengkap untuk pemrosesan visa."
+      }
+    ]
+  },
+  "packagessection": {
+    "badge": "Paket Wisata",
+    "title": "Pengalaman Perjalanan Pilihan",
+    "description": "Temukan paket-paket pilihan kami yang dirancang untuk kenangan tak terlupakan.",
+    "filters": {
+      "all": "Semua Paket",
+      "adventure": "Petualangan",
+      "luxury": "Kemewahan",
+      "cultural": "Kultural",
+      "romantic": "Romantis"
+    },
+    "packages": [
+      {
+        "title": "Penjelajah London",
+        "category": "kultural",
+        "duration": "5 Hari",
+        "price": "£1.299",
+        "originalPrice": "£1.599",
+        "image": "/images/london-package.jpg",
+        "highlights": {
+          "0": "Big Ben",
+          "1": "London Eye",
+          "2": "Istana Buckingham",
+          "3": "Jembatan Menara"
+        },
+        "description": "Jelajahi pesona bersejarah dan kemeriahan modern London.",
+        "id": 1,
+        "rating": 4.8,
+        "reviews": 324
+      },
+      {
+        "title": "Dataran Tinggi Skotlandia",
+        "category": "petualangan",
+        "duration": "7 Hari",
+        "price": "£1.899",
+        "originalPrice": "£2.299",
+        "image": "/images/scotland-package.jpg",
+        "highlights": {
+          "0": "Kastil Edinburgh",
+          "1": "Loch Ness",
+          "2": "Pulau Skye",
+          "3": "Tur Wiski"
+        },
+        "description": "Jelajahi lanskap Skotlandia yang menakjubkan.",
+        "id": 2,
+        "rating": 4.9,
+        "reviews": 156
+      }
+    ]
+  },
+  "testimonialssection": {
+    "badge": "Testimoni",
+    "title": "Apa Kata Para Pelancong Kami",
+    "description": "Baca ulasan otentik dari pelanggan kami yang puas.",
+    "testimonials": [
+      {
+        "name": "Sarah Johnson",
+        "location": "New York, Amerika Serikat",
+        "comment": "Pengalaman yang benar-benar menakjubkan! Setiap detail direncanakan dengan sempurna.",
+        "avatar": "/images/avatar1.jpg",
+        "trip": "Paket Eksplorasi London",
+        "id": 1,
+        "rating": 5
+      },
+      {
+        "name": "Michael Chen",
+        "location": "Toronto, Kanada",
+        "comment": "Perjalanan ke Dataran Tinggi Skotlandia melebihi semua harapan kami. Sangat direkomendasikan!",
+        "avatar": "/images/avatar2.jpg",
+        "trip": "Paket Wisata Dataran Tinggi Skotlandia",
+        "id": 2,
+        "rating": 5
+      }
+    ]
+  },
+  "contactsection": {
+    "badge": "Hubungi Kami",
+    "title": "Rencanakan Petualangan Anda Selanjutnya",
+    "description": "Siap untuk menjelajah? Hubungi pakar perjalanan kami hari ini.",
+    "form": {
+      "name": {
+        "label": "Nama Lengkap",
+        "placeholder": "Masukkan nama lengkap Anda"
+      },
+      "email": {
+        "label": "Alamat Email",
+        "placeholder": "Masukkan email Anda"
+      },
+      "phone": {
+        "label": "Nomor telepon",
+        "placeholder": "Masukkan nomor telepon Anda"
+      },
+      "destination": {
+        "label": "Destinasi Pilihan",
+        "placeholder": "Anda ingin pergi ke mana?"
+      },
+      "message": {
+        "label": "Pesan",
+        "placeholder": "Ceritakan tentang rencana perjalanan Anda..."
+      },
+      "submit": "Kirim Pesan"
+    },
+    "contactInfo": {
+      "address": {
+        "title": "Kunjungi Kami",
+        "details": "123 Travel Street, London, Inggris SW1A 1AA"
+      },
+      "phone": {
+        "title": "Hubungi Kami",
+        "details": "+44 20 7946 0958"
+      },
+      "email": {
+        "title": "Kirim Email kepada Kami",
+        "details": "info@travelco.com"
+      },
+      "hours": {
+        "title": "Jam Kerja Kantor",
+        "details": "Senin - Jumat: 09.00 - 18.00"
+      }
+    }
+  },
+  "tableOfContents": {
+    "title": "Daftar isi",
+    "subtitle": "Navigasi melalui bagian-bagian",
+    "currentlyReading": "Saat ini sedang membaca",
+    "sectionsCount": "{{count}} bagian untuk dijelajahi",
+    "quickNavigation": "Navigasi Cepat",
+    "scrollText": "Gulir melalui {{count}} bagian",
+    "sections": [
+      {
+        "title": "Fakta Menarik Tentang Britania Raya",
+        "id": 1
+      },
+      {
+        "title": "Opsi Visa dan Izin Tinggal untuk Pindah ke Inggris",
+        "id": 2
+      },
+      {
+        "title": "Persyaratan untuk Pindah ke Inggris",
+        "id": 3
+      },
+      {
+        "title": "Bekerja di Britania Raya",
+        "id": 4
+      },
+      {
+        "title": "Pindah ke Inggris dari AS",
+        "id": 5
+      },
+      {
+        "title": "Pindah ke Inggris dari Turki",
+        "id": 6
+      },
+      {
+        "title": "Berapa biaya untuk pindah ke Inggris?",
+        "id": 7
+      },
+      {
+        "title": "Pindah ke Inggris Bersama Hewan Peliharaan",
+        "id": 8
+      }
+    ]
+  },
+  "facts": {
+    "title": "Fakta Menarik Tentang Britania Raya",
+    "subtitle": "Temukan apa yang menjadikan Inggris sebagai destinasi yang unik.",
+    "factsList": [
+      {
+        "title": "Sejarah yang Kaya",
+        "description": "Lebih dari 1000 tahun sejarah yang terdokumentasi dengan berbagai landmark bersejarah yang tak terhitung jumlahnya."
+      },
+      {
+        "title": "Keragaman Budaya",
+        "description": "Rumah bagi orang-orang dari lebih dari 200 kewarganegaraan yang berbeda."
+      },
+      {
+        "title": "Kekuatan Ekonomi",
+        "description": "Salah satu ekonomi dan pusat keuangan terbesar di dunia."
+      },
+      {
+        "title": "Keunggulan Pendidikan",
+        "description": "Merupakan rumah bagi universitas-universitas ternama dunia seperti Oxford dan Cambridge."
+      }
+    ]
+  },
+  "visa": {
+    "title": "Opsi Visa dan Izin Tinggal untuk Pindah ke Inggris",
+    "subtitle": "Pilih jalur visa yang tepat untuk situasi Anda.",
+    "visaTypes": [
+      {
+        "type": "Visa Pekerja Terampil",
+        "description": "Bagi individu yang memiliki tawaran pekerjaan dari perusahaan di Inggris",
+        "requirements": {
+          "0": "Tawaran pekerjaan",
+          "1": "Kemampuan berbahasa Inggris",
+          "2": "Ambang batas gaji"
+        },
+        "duration": "Hingga 5 tahun"
+      },
+      {
+        "type": "Visa Pelajar",
+        "description": "Untuk studi penuh waktu di lembaga pendidikan di Inggris.",
+        "requirements": {
+          "0": "Penerimaan universitas",
+          "1": "Bukti keuangan",
+          "2": "Kemampuan berbahasa Inggris"
+        },
+        "duration": "Durasi kursus + waktu tambahan"
+      },
+      {
+        "type": "Visa Keluarga",
+        "description": "Untuk bergabung dengan anggota keluarga yang merupakan penduduk Inggris.",
+        "requirements": {
+          "0": "Bukti hubungan keluarga",
+          "1": "Persyaratan keuangan",
+          "2": "Kemampuan berbahasa Inggris"
+        },
+        "duration": "2,5 hingga 5 tahun"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "Persyaratan untuk Pindah ke Inggris",
+    "subtitle": "Dokumen dan kriteria penting yang perlu Anda penuhi",
+    "generalRequirements": [
+      {
+        "category": "Dokumentasi",
+        "items": {
+          "0": "Paspor yang masih berlaku",
+          "1": "Permohonan visa",
+          "2": "Data biometrik",
+          "3": "Foto"
+        }
+      },
+      {
+        "category": "Finansial",
+        "items": {
+          "0": "Laporan rekening bank",
+          "1": "Bukti pendapatan",
+          "2": "Dokumen sponsor",
+          "3": "Catatan pajak"
+        }
+      },
+      {
+        "category": "Pribadi",
+        "items": {
+          "0": "Pemeriksaan medis",
+          "1": "Pemeriksaan latar belakang kriminal",
+          "2": "Tes kemampuan berbahasa Inggris",
+          "3": "Sertifikat pendidikan"
+        }
+      }
+    ]
+  },
+  "job": {
+    "title": "Bekerja di Britania Raya",
+    "subtitle": "Peluang kerja dan budaya kerja di Inggris",
+    "workInfo": {
+      "averageSalary": "£35.000 - £45.000 per tahun",
+      "workingHours": "Standar 37,5 jam per minggu",
+      "holidays": "Cuti tahunan minimal 28 hari",
+      "benefits": "Layanan kesehatan NHS, skema pensiun, tunjangan sakit"
+    },
+    "jobSectors": [
+      {
+        "sector": "Teknologi",
+        "demand": "Tinggi",
+        "averageSalary": "£45.000 - £80.000"
+      },
+      {
+        "sector": "Perawatan kesehatan",
+        "demand": "Sangat Tinggi",
+        "averageSalary": "£35.000 - £70.000"
+      },
+      {
+        "sector": "Keuangan",
+        "demand": "Tinggi",
+        "averageSalary": "£40.000 - £90.000"
+      }
+    ]
+  },
+  "moving": {
+    "title": "Pindah ke Inggris dari AS",
+    "subtitle": "Pertimbangan khusus untuk warga negara Amerika",
+    "process": [
+      {
+        "title": "Pilih Visa Anda",
+        "description": "Tentukan kategori visa Inggris mana yang sesuai dengan situasi Anda.",
+        "step": 1
+      },
+      {
+        "title": "Siapkan Dokumen",
+        "description": "Kumpulkan semua dokumen dan sertifikat yang diperlukan.",
+        "step": 2
+      },
+      {
+        "title": "Kirim Aplikasi",
+        "description": "Ajukan permohonan secara online dan hadiri janji temu biometrik.",
+        "step": 3
+      },
+      {
+        "title": "Rencanakan Kepindahan Anda",
+        "description": "Mengatur perumahan, pengiriman, dan penyelesaian awal.",
+        "step": 4
+      }
+    ]
+  },
+  "turkeyToUk": {
+    "title": "Pindah ke Inggris dari Turki",
+    "subtitle": "Panduan bagi warga negara Turki yang berimigrasi ke Inggris",
+    "considerations": [
+      "Persyaratan visa untuk warga negara Turki",
+      "Penerjemahan dokumen dan apostille",
+      "Tips adaptasi budaya",
+      "Komunitas Turki di Inggris"
+    ]
+  },
+  "cost": {
+    "title": "Berapa biaya untuk pindah ke Inggris?",
+    "subtitle": "Perencanaan anggaran untuk imigrasi Anda ke Inggris",
+    "costs": {
+      "visa": {
+        "title": "Biaya Visa",
+        "amount": "£610 - £1.423",
+        "description": "Tergantung pada jenis dan durasi visa."
+      },
+      "healthcare": {
+        "title": "Biaya Tambahan Pelayanan Kesehatan",
+        "amount": "£624 per tahun",
+        "description": "Biaya Tambahan Kesehatan Imigrasi (IHS)"
+      },
+      "moving": {
+        "title": "Biaya Pindah",
+        "amount": "£2.000 - £8.000",
+        "description": "Pengiriman, penerbangan, dan pengaturan awal"
+      },
+      "living": {
+        "title": "Biaya Hidup Awal",
+        "amount": "£1.500 - £3.000",
+        "description": "Akomodasi dan biaya bulan pertama"
+      }
+    }
+  },
+  "pet": {
+    "title": "Pindah ke Inggris Bersama Hewan Peliharaan",
+    "subtitle": "Persyaratan dan prosedur untuk membawa hewan peliharaan Anda",
+    "requirements": [
+      {
+        "requirement": "Paspor Hewan Peliharaan",
+        "description": "Paspor hewan peliharaan Uni Eropa atau sertifikat veteriner resmi dari negara ketiga.",
+        "timeframe": "Setidaknya 21 hari sebelum perjalanan"
+      },
+      {
+        "requirement": "Mikrochip",
+        "description": "Mikrochip yang sesuai dengan standar ISO 11784/11785 sebelum vaksinasi rabies",
+        "timeframe": "Sebelum vaksinasi rabies"
+      },
+      {
+        "requirement": "Vaksinasi Rabies",
+        "description": "Vaksinasi rabies yang sah diberikan setelah pemasangan mikrocip.",
+        "timeframe": "21 hari sebelum masuk"
+      },
+      {
+        "requirement": "Sertifikat Kesehatan",
+        "description": "Sertifikat resmi dari dokter hewan yang ditandatangani oleh dokter hewan yang berwenang.",
+        "timeframe": "Dalam waktu 10 hari sebelum perjalanan"
+      }
+    ],
+    "process": [
+      {
+        "title": "Pasang Mikrochip pada Hewan Peliharaan Anda",
+        "description": "Pastikan hewan peliharaan Anda telah dipasangi microchip dengan chip berstandar ISO.",
+        "step": 1
+      },
+      {
+        "title": "Vaksinasi Rabies",
+        "description": "Dapatkan vaksinasi rabies dan tunggu 21 hari.",
+        "step": 2
+      },
+      {
+        "title": "Sertifikat Kesehatan",
+        "description": "Dapatkan sertifikat kesehatan dari dokter hewan yang berwenang.",
+        "step": 3
+      },
+      {
+        "title": "Pesan Perjalanan",
+        "description": "Atur transportasi ramah hewan peliharaan ke Inggris.",
+        "step": 4
+      }
+    ],
+    "costs": {
+      "microchip": "£15 - £30",
+      "vaccination": "£50 - £100",
+      "healthCertificate": "£100 - £200",
+      "transportation": "£200 - £1.000",
+      "quarantine": "Gratis (jika persyaratan terpenuhi)"
+    }
+  },
+  "ukInfoCard": {
+    "title": "Fakta Menarik Tentang Britania Raya",
+    "description": "Jelajahi warisan yang kaya dan fitur-fitur menarik dari Britania Raya, mulai dari monarki bersejarahnya hingga lanskap yang menakjubkan dan keunggulan akademisnya.",
+    "didYouKnow": "Tahukah kamu?",
+    "cta": "Temukan Lebih Banyak Tentang Inggris Raya",
+    "footer": "© 2025 Informasi Britania Raya",
+    "navigation": {
+      "previous": "Sebelumnya",
+      "next": "Berikutnya",
+      "counter": "{{current}} of {{total}}"
+    },
+    "facts": [
+      {
+        "title": "Monarki Kuno",
+        "content": "Inggris Raya memiliki salah satu monarki tertua di dunia, yang berusia lebih dari 1.000 tahun.",
+        "detail": "Monarki Inggris telah ada secara terus-menerus sejak abad ke-9, dengan Ratu Elizabeth II sebagai penguasa monarki terlama dalam sejarah Inggris sebelum Raja Charles III.",
+        "iconType": "mahkota",
+        "emoji": "👑",
+        "color": "bg-indigo-500"
+      },
+      {
+        "title": "Universitas-universitas Terbaik",
+        "content": "Inggris adalah rumah bagi beberapa universitas terbaik di dunia, termasuk Oxford dan Cambridge.",
+        "detail": "Oxford dan Cambridge secara konsisten berada di antara 10 universitas terbaik dunia, dengan sejarah yang masing-masing dimulai sejak abad ke-11 dan ke-13.",
+        "iconType": "kelulusan",
+        "emoji": "🎓",
+        "color": "bg-emerald-500"
+      },
+      {
+        "title": "Negara Kepulauan",
+        "content": "Inggris adalah negara kepulauan, dengan lebih dari 7.000 pulau kecil.",
+        "detail": "Meskipun Britania Raya adalah pulau terbesar, Inggris Raya mencakup banyak pulau penting lainnya seperti Isle of Wight, Anglesey, dan Hebrides.",
+        "iconType": "ombak",
+        "emoji": "🏝️",
+        "color": "bg-biru-500"
+      },
+      {
+        "title": "Warisan Ilmiah",
+        "content": "Para ilmuwan Inggris telah memberikan kontribusi besar, termasuk Isaac Newton, Charles Darwin, dan Stephen Hawking.",
+        "detail": "Inggris telah menghasilkan lebih dari 100 pemenang Hadiah Nobel di bidang sains, dengan penemuan-penemuan inovatif mulai dari gravitasi hingga struktur DNA dan fisika kuantum.",
+        "iconType": "bola lampu",
+        "emoji": "💡",
+        "color": "bg-amber-500"
+      },
+      {
+        "title": "Puncak Tertinggi",
+        "content": "Gunung tertinggi adalah Ben Nevis di Skotlandia (1.345 meter).",
+        "detail": "Terletak di Dataran Tinggi Skotlandia, Ben Nevis menarik lebih dari 100.000 pendaki setiap tahunnya dan menampilkan flora dan fauna pegunungan yang langka.",
+        "iconType": "gunung",
+        "emoji": "🏔️",
+        "color": "bg-slate-500"
+      }
+    ]
+  },
+  "categories": {
+    "history": {
+      "title": "Peninggalan sejarah",
+      "description": "Temukan kekayaan warisan sejarah Britania Raya.",
+      "facts": [
+        {
+          "title": "Kastil Abad Pertengahan",
+          "description": "Inggris Raya memiliki lebih dari 1.500 kastil, banyak di antaranya berasal dari zaman Abad Pertengahan.",
+          "highlight": "Kastil Windsor adalah kastil tertua yang masih dihuni di dunia."
+        },
+        {
+          "title": "Warisan Romawi",
+          "description": "Tembok Hadrian membentang sepanjang 84 mil di utara Inggris.",
+          "highlight": "Dibangun oleh Kaisar Hadrian pada tahun 122 M untuk mempertahankan Britania Romawi."
+        },
+        {
+          "title": "Revolusi Industri",
+          "description": "Inggris Raya adalah tempat kelahiran Revolusi Industri pada abad ke-18.",
+          "highlight": "Mesin uap pertama dikembangkan oleh James Watt pada tahun 1769."
+        }
+      ]
+    },
+    "geography": {
+      "title": "Keajaiban Geografis",
+      "description": "Jelajahi beragam bentang alam dan fitur alam yang ada.",
+      "facts": [
+        {
+          "title": "Panjang Garis Pantai",
+          "description": "Inggris Raya memiliki garis pantai sepanjang kurang lebih 11.000 mil.",
+          "highlight": "Tidak ada titik di Inggris yang berjarak lebih dari 75 mil dari laut."
+        },
+        {
+          "title": "Taman Nasional",
+          "description": "Terdapat 15 Taman Nasional di seluruh Inggris, Wales, dan Skotlandia.",
+          "highlight": "Lake District adalah Taman Nasional pertama yang didirikan pada tahun 1951."
+        },
+        {
+          "title": "Zona Iklim",
+          "description": "Meskipun ukurannya kecil, Inggris Raya memiliki beberapa zona iklim yang berbeda.",
+          "highlight": "Skotlandia bisa 10°C lebih dingin daripada Inggris bagian selatan pada hari yang sama."
+        }
+      ]
+    },
+    "culture": {
+      "title": "Kekayaan Budaya",
+      "description": "Keragaman budaya dan kontribusi artistik Inggris Raya",
+      "facts": [
+        {
+          "title": "Tokoh-Tokoh Besar Sastra",
+          "description": "Rumah bagi Shakespeare, Dickens, Austen, dan banyak legenda sastra lainnya.",
+          "highlight": "Shakespeare menciptakan lebih dari 1.700 kata yang masih digunakan hingga saat ini."
+        },
+        {
+          "title": "Warisan Musik",
+          "description": "Tempat kelahiran The Beatles, Queen, Led Zeppelin, dan banyak band lainnya.",
+          "highlight": "Inggris telah menghasilkan lebih banyak lagu yang menduduki peringkat #1 dunia dibandingkan negara lain mana pun kecuali AS."
+        },
+        {
+          "title": "Tradisi Teater",
+          "description": "West End London adalah salah satu distrik teater terkemuka di dunia.",
+          "highlight": "Teater Globe menawarkan pertunjukan dengan gaya yang sama seperti pada zaman Shakespeare."
+        }
+      ]
+    },
+    "science": {
+      "title": "Keunggulan Ilmiah",
+      "description": "Penemuan dan inovasi terobosan dari para pemikir Inggris.",
+      "facts": [
+        {
+          "title": "Terobosan Medis",
+          "description": "Penisilin, vaksin, dan struktur DNA ditemukan di sini.",
+          "highlight": "Alexander Fleming menemukan penisilin secara tidak sengaja pada tahun 1928."
+        },
+        {
+          "title": "Para Perintis Fisika",
+          "description": "Hukum Newton, evolusi Darwin, dan lubang hitam Hawking.",
+          "highlight": "Buku Stephen Hawking berjudul 'A Brief History of Time' terjual lebih dari 25 juta kopi."
+        },
+        {
+          "title": "Inovasi Teknologi",
+          "description": "World Wide Web dan komputer berasal dari Inggris.",
+          "highlight": "Tim Berners-Lee menciptakan World Wide Web di CERN pada tahun 1989."
+        }
+      ]
+    }
+  },
+  "statistics": {
+    "title": "Inggris Raya dalam Angka",
+    "subtitle": "Statistik menarik tentang Britania Raya",
+    "stats": [
+      {
+        "number": "66,8 juta",
+        "label": "Populasi",
+        "description": "Jumlah penduduk Britania Raya"
+      },
+      {
+        "number": "243.610",
+        "label": "Kilometer Persegi",
+        "description": "Luas total wilayah Inggris Raya"
+      },
+      {
+        "label": "Negara-negara",
+        "description": "Inggris, Skotlandia, Wales, dan Irlandia Utara",
+        "number": "4"
+      },
+      {
+        "label": "Hadiah Nobel",
+        "description": "Pemenang Hadiah Nobel dari Inggris",
+        "number": "100+"
+      },
+      {
+        "label": "Situs UNESCO",
+        "description": "Situs Warisan Dunia di Inggris",
+        "number": "31"
+      },
+      {
+        "number": "1.000+",
+        "label": "Bertahun-tahun",
+        "description": "Zaman monarki Inggris"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Pelajari Lebih Lanjut Tentang Inggris Raya",
+    "subtitle": "Hubungi kami untuk informasi lebih lanjut tentang budaya dan warisan Inggris.",
+    "form": {
+      "name": {
+        "label": "Nama Lengkap",
+        "placeholder": "Masukkan nama lengkap Anda"
+      },
+      "email": {
+        "label": "Alamat Email",
+        "placeholder": "Masukkan alamat email Anda"
+      },
+      "interest": {
+        "label": "Bidang Minat",
+        "placeholder": "Aspek budaya Inggris mana yang paling menarik minat Anda?"
+      },
+      "message": {
+        "label": "Pesan",
+        "placeholder": "Ceritakan kepada kami apa yang ingin Anda ketahui tentang Inggris Raya..."
+      },
+      "submit": "Kirim Permintaan"
+    },
+    "contactInfo": {
+      "address": {
+        "title": "Kunjungi Kami",
+        "details": "123 British Heritage Street, London, Inggris SW1A 1AA"
+      },
+      "phone": {
+        "title": "Hubungi Kami",
+        "details": "+44 20 7946 0123"
+      },
+      "email": {
+        "title": "Kirim Email kepada Kami",
+        "details": "info@ukexplorer.com"
+      },
+      "hours": {
+        "title": "Jam",
+        "details": "Senin - Jumat: 09.00 - 17.00"
+      }
+    }
+  },
+  "costsGuide": {
+    "title": "Berapa Biaya Pindah ke Inggris?",
+    "description": "Rincian lengkap semua pengeluaran yang harus Anda perkirakan saat pindah ke Inggris Raya, mulai dari biaya visa hingga biaya hidup sehari-hari.",
+    "sections": [
+      {
+        "id": "visa imigrasi",
+        "icon": "🛂",
+        "title": "Visa & Imigrasi",
+        "amount": "£250–£3.000",
+        "details": "Termasuk permohonan visa, biaya tambahan perawatan kesehatan, dan biometrik.",
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "perumahan",
+        "icon": "🏠",
+        "title": "Perumahan",
+        "amount": "Uang muka sebesar £1.800–£5.000",
+        "details": "Deposit 1-2 bulan + sewa bulan pertama + biaya agen",
+        "subItems": {
+          "0": {
+            "title": "London (bulanan)",
+            "amount": "£1.500–£2.500"
+          },
+          "1": {
+            "title": "Kota-kota besar (bulanan)",
+            "amount": "£800–£1.200"
+          },
+          "2": {
+            "title": "Kota/Daerah pedesaan (bulanan)",
+            "amount": "£600–£900"
+          }
+        },
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "pengiriman",
+        "icon": "📦",
+        "title": "Pengiriman (Opsional)",
+        "amount": "£2.000–£6.000",
+        "details": "Kontainer 20 kaki. Banyak ekspatriat menggunakan sewaan yang sudah dilengkapi perabot atau membeli secara lokal.",
+        "color": "bg-sky-800"
+      },
+      {
+        "id": "utilitas",
+        "icon": "💡",
+        "title": "Pengaturan Utilitas & Internet",
+        "amount": "£100–£300",
+        "details": "Biaya pengaturan & deposit",
+        "subItems": {
+          "0": {
+            "title": "Tagihan bulanan",
+            "amount": "£150–£300"
+          },
+          "1": {
+            "title": "Pajak dewan (bulanan)",
+            "amount": "£120–£300"
+          }
+        },
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "setiap hari",
+        "icon": "🛒",
+        "title": "Biaya Sehari-hari",
+        "amount": "£800–£1.500 per bulan",
+        "subItems": {
+          "0": {
+            "title": "Bahan makanan",
+            "amount": "£250–£450/bulan"
+          },
+          "1": {
+            "title": "Transportasi umum",
+            "amount": "£150–£300/bulan"
+          },
+          "2": {
+            "title": "Ponsel & internet",
+            "amount": "£40–£80/bulan"
+          },
+          "3": {
+            "title": "Hiburan & bersantap",
+            "amount": "£200–£400/bulan"
+          }
+        },
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "perbankan",
+        "icon": "🏦",
+        "title": "Perbankan & Keuangan",
+        "amount": "£50–£200",
+        "details": "Biaya pengaturan akun, transfer internasional",
+        "color": "bg-sky-600"
+      }
+    ],
+    "totalCosts": {
+      "title": "Total Perkiraan Biaya Pindah",
+      "options": [
+        {
+          "title": "Opsi Hemat",
+          "amount": "£3.000–£5.000",
+          "description": "Biaya minimum untuk satu orang, di luar London, barang bawaan minimal.",
+          "featured": false
+        },
+        {
+          "title": "Perpindahan Standar",
+          "amount": "£5.000–£10.000",
+          "description": "Biaya rata-rata untuk satu orang atau pasangan dengan ongkos kirim yang wajar.",
+          "featured": true
+        },
+        {
+          "title": "Keluarga Pindah",
+          "amount": "£10.000–£20.000+",
+          "description": "Keluarga beranggotakan 3-4 orang pindah ke London dengan membawa kontainer pengiriman penuh.",
+          "featured": false
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Strategi Penghematan Uang di Inggris",
+      "tips": [
+        {
+          "title": "Lokasi Itu Penting",
+          "description": "Tinggal di luar London dapat mengurangi biaya perumahan Anda sebesar 40-60%. Pertimbangkan kota-kota seperti Manchester, Birmingham, atau Glasgow untuk nilai yang lebih baik."
+        },
+        {
+          "title": "Akomodasi Berfurnished",
+          "description": "Menyewa rumah berperabot lengkap dapat menghemat ribuan dolar dalam biaya pengiriman dan furnitur. Sewa jangka pendek memungkinkan Anda untuk menemukan lingkungan yang tepat sebelum berkomitmen."
+        },
+        {
+          "title": "Penghematan Transportasi",
+          "description": "Belilah kartu perjalanan tahunan dan pertimbangkan bersepeda di kota-kota yang ramah sepeda. Biaya transportasi di London jauh lebih tinggi daripada kota-kota lain di Inggris."
+        },
+        {
+          "title": "Perbankan & Mata Uang",
+          "description": "Gunakan layanan seperti Wise atau Revolut untuk transfer internasional guna menghindari biaya bank yang tinggi. Tukarkan mata uang saat kurs menguntungkan sebelum melakukan transfer."
+        }
+      ]
+    },
+    "considerations": {
+      "title": "Pertimbangan Penting Khusus untuk Inggris Raya",
+      "items": [
+        {
+          "icon": "🏥",
+          "title": "Perawatan kesehatan",
+          "description": "Siapkan anggaran untuk Biaya Tambahan Kesehatan Imigrasi (£624 per tahun untuk orang dewasa) saat mengajukan visa yang lebih lama dari 6 bulan, yang memberi Anda akses ke NHS (National Health Service/Layanan Kesehatan Nasional)."
+        },
+        {
+          "icon": "📱",
+          "title": "Komunikasi",
+          "description": "Pertimbangkan paket SIM-only daripada kontrak, terutama jika Anda sudah memiliki ponsel sendiri. Penyedia seperti giffgaff dan Lebara menawarkan opsi tanpa kontrak yang fleksibel."
+        },
+        {
+          "icon": "🌦️",
+          "title": "Biaya Musiman",
+          "description": "Biaya pemanasan di musim dingin bisa sangat signifikan. Pertimbangkan akomodasi dengan insulasi yang baik dan peringkat efisiensi energi yang tinggi untuk menghemat biaya utilitas."
+        },
+        {
+          "icon": "🚗",
+          "title": "Perencanaan Transportasi",
+          "description": "Jika Anda berencana mengemudi, pertimbangkan biaya asuransi yang lebih tinggi untuk penduduk baru Inggris dan potensi biaya untuk zona emisi rendah di kota-kota besar."
+        }
+      ]
+    },
+    "conclusion": {
+      "title": "Merencanakan Relokasi Anda ke Inggris",
+      "description": "Pindah ke Inggris merupakan investasi yang signifikan, terutama jika pindah ke London atau kota-kota besar lainnya. Meskipun biaya awal mungkin tampak tinggi, perencanaan dan riset yang tepat dapat membantu Anda menjalani proses ini dengan lebih ekonomis. Pertimbangkan lokasi Anda dengan cermat dan persiapkan diri untuk biaya hidup yang lebih tinggi daripada di banyak negara lain, tetapi juga nikmati layanan publik, perawatan kesehatan, dan kualitas hidup yang sangat baik yang ditawarkan Inggris."
+    }
+  },
+  "calculator": {
+    "title": "Kalkulator Biaya Pindah ke Inggris",
+    "subtitle": "Dapatkan perkiraan biaya yang dipersonalisasi untuk kepindahan Anda ke Inggris.",
+    "form": {
+      "familySize": {
+        "label": "Ukuran Keluarga",
+        "options": [
+          "Orang lajang",
+          "Pasangan",
+          "Keluarga (3-4 orang)",
+          "Keluarga besar (5 orang atau lebih)"
+        ]
+      },
+      "destination": {
+        "label": "Destinasi Inggris",
+        "options": [
+          "London",
+          "Kota besar (Manchester, Birmingham, dll.)",
+          "Kota/kota menengah",
+          "Daerah pedesaan"
+        ]
+      },
+      "shipping": {
+        "label": "Persyaratan Pengiriman",
+        "options": [
+          "Tidak ada pengiriman (beli di toko lokal)",
+          "Pengiriman sebagian (hanya barang-barang penting)",
+          "Pengiriman kontainer penuh",
+          "Beberapa kontainer"
+        ]
+      },
+      "visaType": {
+        "label": "Jenis Visa",
+        "options": [
+          "Visa Pelajar",
+          "Visa Pekerja Terampil",
+          "Visa Keluarga",
+          "Visa Investor",
+          "Lainnya"
+        ]
+      },
+      "calculate": "Hitung Perkiraan"
+    },
+    "results": {
+      "title": "Perkiraan Biaya Pindahan Anda",
+      "breakdown": "Rincian Biaya:",
+      "total": "Total Estimasi Biaya:",
+      "disclaimer": "Ini adalah perkiraan berdasarkan biaya rata-rata. Biaya sebenarnya dapat bervariasi tergantung pada keadaan spesifik, waktu, dan penyedia layanan."
+    }
+  },
+  "comparison": {
+    "title": "Perbandingan Biaya Hidup di Inggris",
+    "subtitle": "Bandingkan biaya hidup di Inggris dengan kota-kota besar global.",
+    "categories": [
+      {
+        "category": "Perumahan",
+        "london": "£2.000/bulan",
+        "manchester": "£900/bulan",
+        "newyork": "£2.800/bulan",
+        "paris": "£1.800/bulan"
+      },
+      {
+        "category": "Bahan makanan",
+        "london": "£350/bulan",
+        "manchester": "£280/bulan",
+        "newyork": "£420/bulan",
+        "paris": "£320/bulan"
+      },
+      {
+        "category": "Mengangkut",
+        "london": "£200/bulan",
+        "manchester": "£80/bulan",
+        "newyork": "£150/bulan",
+        "paris": "£90/bulan"
+      },
+      {
+        "category": "Makan di Luar",
+        "london": "£300/bulan",
+        "manchester": "£200/bulan",
+        "newyork": "£350/bulan",
+        "paris": "£280/bulan"
+      }
+    ]
+  },
+  "timeline": {
+    "title": "Jadwal dan Biaya Pindahan di Inggris",
+    "subtitle": "Kapan harus menganggarkan berbagai pengeluaran selama proses pindah rumah?",
+    "phases": [
+      {
+        "phase": "Pra-Pendaftaran (3-6 bulan sebelumnya)",
+        "costs": "£200-£500",
+        "items": {
+          "0": "Persiapan dan penerjemahan dokumen",
+          "1": "Tes bahasa Inggris",
+          "2": "Pemeriksaan medis",
+          "3": "Konsultasi hukum"
+        }
+      },
+      {
+        "phase": "Pengajuan Visa (2-4 bulan sebelumnya)",
+        "costs": "£500-£3.500",
+        "items": {
+          "0": "Biaya permohonan visa",
+          "1": "Biaya Tambahan Kesehatan Imigrasi",
+          "2": "Janji temu biometrik",
+          "3": "Pemrosesan prioritas (opsional)"
+        }
+      },
+      {
+        "phase": "Pra-Keberangkatan (1-2 bulan sebelumnya)",
+        "costs": "£2.000-£8.000",
+        "items": {
+          "0": "Pengiriman dan logistik",
+          "1": "Pengaturan perjalanan",
+          "2": "Pemesanan akomodasi sementara",
+          "3": "Pemindahan hewan peliharaan (jika berlaku)"
+        }
+      },
+      {
+        "phase": "Kedatangan (Bulan pertama)",
+        "costs": "£2.000-£6.000",
+        "items": {
+          "0": "Uang jaminan dan sewa rumah",
+          "1": "Pengaturan dan deposit utilitas",
+          "2": "Pembukaan rekening bank",
+          "3": "Biaya hidup awal"
+        }
+      },
+      {
+        "phase": "Penyelesaian (Bulan ke-2 hingga ke-6)",
+        "costs": "£1.000-£3.000",
+        "items": {
+          "0": "Perabot dan perlengkapan rumah tangga",
+          "1": "Pendaftaran dan dokumentasi lokal",
+          "2": "Pengaturan pendidikan (jika ada)",
+          "3": "Biaya integrasi komunitas"
+        }
+      }
+    ]
+  },
+  "resources": {
+    "title": "Sumber Daya Manajemen Keuangan",
+    "subtitle": "Alat dan layanan bermanfaat untuk mengelola keuangan kepindahan Anda di Inggris.",
+    "categories": [
+      {
+        "title": "Penukaran mata uang",
+        "services": {
+          "0": {
+            "name": "Wise (sebelumnya TransferWise)",
+            "description": "Transfer uang internasional berbiaya rendah",
+            "fees": "0,35-2% dari jumlah transfer"
+          },
+          "1": {
+            "name": "Revolusi",
+            "description": "Rekening multi-mata uang dengan nilai tukar yang baik.",
+            "fees": "Gratis hingga batas tertentu"
+          },
+          "2": {
+            "name": "Uang XE",
+            "description": "Tarif kompetitif untuk transfer dalam jumlah besar",
+            "fees": "Bervariasi tergantung jumlahnya"
+          }
+        }
+      },
+      {
+        "title": "Perbankan",
+        "services": {
+          "0": {
+            "name": "Bank-bank di Jalan Raya Inggris",
+            "description": "Bank-bank tradisional seperti Barclays, HSBC, Lloyds",
+            "fees": "Biaya bulanan £5-£25"
+          },
+          "1": {
+            "name": "Bank Digital",
+            "description": "Monzo, Starling Bank, Revolut",
+            "fees": "Seringkali akun dasar bebas biaya"
+          },
+          "2": {
+            "name": "Bank Internasional",
+            "description": "HSBC Ekspatriat, Citi Internasional",
+            "fees": "Biaya lebih tinggi tetapi layanan global"
+          }
+        }
+      }
+    ]
+  },
+  "footer": {
+    "disclaimer": "Semua biaya adalah perkiraan dan dapat bervariasi berdasarkan keadaan individu, kondisi pasar, dan waktu. Silakan berkonsultasi dengan penasihat profesional untuk panduan yang dipersonalisasi.",
+    "lastUpdated": "Terakhir diperbarui: {{date}}",
+    "sources": "Sumber data: Pemerintah Inggris, ONS, situs web properti, dan survei ekspatriat."
+  },
+  "jobGuide": {
+    "header": {
+      "title": "Bekerja di Britania Raya",
+      "subtitle": "Panduan Komprehensif untuk Pencari Kerja Internasional",
+      "intro": {
+        "paragraph1": "Britania Raya, dengan ekonominya yang kuat, lingkungan multikultural, dan kota-kota kelas dunia, tetap menjadi tujuan utama bagi para profesional internasional yang mencari kemajuan dan pertumbuhan karier.",
+        "paragraph2": "Panduan ini akan memandu Anda melalui semua yang perlu Anda ketahui tentang mencari pekerjaan di Inggris sebagai warga negara asing, mulai dari memahami sistem imigrasi berbasis poin hingga menavigasi pasar kerja lokal dan beradaptasi dengan kehidupan kerja di Inggris."
+      }
+    },
+    "navigation": {
+      "title": "Navigasi Cepat",
+      "backToAll": "Kembali ke Semua Bagian"
+    },
+    "sections": [
+      {
+        "id": "pasar kerja",
+        "icon": "🔍",
+        "title": "Memahami Pasar Kerja Inggris",
+        "type": "pasar kerja",
+        "content": {
+          "intro": "Inggris menawarkan beragam peluang di berbagai sektor, dengan industri-industri tertentu yang sangat mudah diakses dan ramah terhadap pekerja internasional.",
+          "sectorsTitle": "Sektor-sektor yang Banyak Diminati untuk Pekerja Asing:",
+          "sectors": {
+            "0": {
+              "name": "Layanan Kesehatan & NHS",
+              "description": "Dokter, perawat, pengasuh, spesialis"
+            },
+            "1": {
+              "name": "Teknologi Informasi & Teknologi",
+              "description": "Pengembangan perangkat lunak, keamanan siber, ilmu data"
+            },
+            "2": {
+              "name": "Keuangan & Perbankan",
+              "description": "Analisis keuangan, perbankan investasi, teknologi keuangan (fintech)"
+            },
+            "3": {
+              "name": "Pendidikan",
+              "description": "Pengajaran, penelitian, sekolah internasional"
+            },
+            "4": {
+              "name": "Rekayasa",
+              "description": "Teknik sipil, teknik mesin, teknik elektro"
+            },
+            "5": {
+              "name": "Perhotelan & Pariwisata",
+              "description": "Hotel, restoran, manajemen pariwisata"
+            }
+          },
+          "conclusion": "Pasar kerja Inggris sangat menghargai kemampuan berbahasa Inggris, dan sebagian besar peran profesional membutuhkan keterampilan komunikasi yang kuat. London menawarkan peluang yang paling beragam, tetapi kota-kota seperti Manchester, Birmingham, Edinburgh, dan Bristol memiliki pasar kerja yang berkembang dengan biaya hidup yang seringkali lebih rendah."
+        }
+      },
+      {
+        "id": "sistem visa",
+        "icon": "🔒",
+        "title": "Sistem Visa Inggris: Imigrasi Berbasis Poin",
+        "type": "sistem visa",
+        "content": {
+          "intro": "Inggris menerapkan sistem imigrasi berbasis poin yang memprioritaskan keterampilan, kualifikasi, dan kemampuan berbahasa Inggris.",
+          "routesTitle": "Jalur Utama Visa Kerja:",
+          "visaRoutes": {
+            "0": {
+              "name": "Visa Pekerja Terampil",
+              "description": "Untuk para profesional yang memenuhi syarat dan memiliki tawaran pekerjaan dari perusahaan di Inggris."
+            },
+            "1": {
+              "name": "Visa Bakat Global",
+              "description": "Untuk para pemimpin atau calon pemimpin di bidang akademisi, penelitian, seni, atau teknologi digital."
+            },
+            "2": {
+              "name": "Visa Pekerja Kesehatan dan Perawatan",
+              "description": "Untuk tenaga medis profesional yang memenuhi syarat dan memiliki tawaran pekerjaan dari NHS."
+            },
+            "3": {
+              "name": "Visa Lulusan",
+              "description": "Untuk mahasiswa internasional yang telah menyelesaikan gelar di Inggris."
+            }
+          },
+          "requirement": "Sebagian besar visa kerja memerlukan tawaran pekerjaan dari sponsor berlisensi sebelum pengajuan permohonan."
+        }
+      },
+      {
+        "id": "sponsor",
+        "icon": "📋",
+        "title": "Mendapatkan Sponsor dari Perusahaan",
+        "type": "sponsor",
+        "content": {
+          "requirementsTitle": "Persyaratan untuk Mendapatkan Sponsor:",
+          "requirements": {
+            "0": "Pekerjaan biasanya harus berada pada atau di atas level RQF 3 (setara dengan A-level).",
+            "1": "Gaji harus memenuhi ambang batas minimum (biasanya £26.200+ tergantung pada peran yang diemban)",
+            "2": "Pemberi kerja harus merupakan sponsor berlisensi yang disetujui oleh Kementerian Dalam Negeri.",
+            "3": "Posisi tersebut harus tercantum dalam daftar pekerjaan yang memenuhi syarat."
+          },
+          "shortageList": {
+            "title": "Daftar Pekerjaan yang Kekurangan Tenaga Kerja",
+            "description": "Pekerjaan dalam daftar ini memiliki persyaratan visa yang lebih mudah dan ambang batas gaji yang lebih rendah. Pekerjaan yang saat ini kekurangan tenaga kerja meliputi:",
+            "occupations": {
+              "0": "Para profesional perawatan kesehatan",
+              "1": "Insinyur",
+              "2": "Spesialis TI",
+              "3": "Ilmuwan dan peneliti",
+              "4": "Dokter Hewan",
+              "5": "Arsitek dan peran pengajaran tertentu"
+            }
+          },
+          "proTip": {
+            "title": "Tips Profesional",
+            "description": "Targetkan perusahaan-perusahaan yang memiliki riwayat mensponsori pekerja internasional. Perusahaan multinasional besar, perusahaan teknologi, dan lembaga NHS (National Health Service) seringkali lebih berpengalaman dalam proses sponsorship.",
+            "additional": "Anda dapat memeriksa apakah suatu perusahaan memiliki lisensi sponsor di situs web pemerintah Inggris."
+          }
+        }
+      },
+      {
+        "id": "proses aplikasi",
+        "icon": "📝",
+        "title": "Proses Lamaran Pekerjaan di Inggris",
+        "type": "proses aplikasi",
+        "content": {
+          "stepsTitle": "Langkah-langkah Pendaftaran:",
+          "steps": {
+            "0": {
+              "title": "1. CV & Surat Lamaran",
+              "description": "Perusahaan di Inggris mengharapkan CV (resume) 2 halaman yang berfokus pada keterampilan dan pengalaman yang relevan. Surat lamaran harus ringkas dan disesuaikan dengan setiap posisi."
+            },
+            "1": {
+              "title": "2. Proses Wawancara",
+              "description": "Prosesnya seringkali mencakup penyaringan awal melalui telepon, diikuti oleh 1-2 wawancara (semakin banyak dilakukan secara virtual untuk kandidat internasional), dan mungkin tugas penilaian untuk peran teknis."
+            },
+            "2": {
+              "title": "3. Tawaran Pekerjaan & Sponsor Visa",
+              "description": "Jika berhasil, Anda akan menerima surat penawaran resmi dan Sertifikat Sponsor untuk permohonan visa Anda."
+            }
+          },
+          "cvTips": {
+            "title": "Tips CV Khusus untuk Inggris Raya:",
+            "tips": {
+              "0": "Tidak perlu foto.",
+              "1": "Sertakan profil/ringkasan profesional di bagian atas.",
+              "2": "Fokus pada pencapaian daripada kewajiban.",
+              "3": "Sertakan kualifikasi dan sertifikasi yang relevan.",
+              "4": "Referensi seringkali 'tersedia atas permintaan' dan bukan dicantumkan."
+            }
+          }
+        }
+      },
+      {
+        "id": "mencari pekerjaan",
+        "icon": "🔎",
+        "title": "Mencari Peluang Kerja di Inggris",
+        "type": "mencari pekerjaan",
+        "content": {
+          "portalsTitle": "Portal Lowongan Kerja Terbaik di Inggris:",
+          "jobPortals": {
+            "0": "Memang benar, Inggris",
+            "1": "Reed.co.uk",
+            "2": "Perpustakaan CV",
+            "3": "LinkedIn",
+            "4": "Pekerjaan Penjaga",
+            "5": "Pekerjaan NHS"
+          },
+          "recruitmentAgencies": {
+            "title": "Agen Perekrutan",
+            "description": "Lembaga perekrutan khusus dapat sangat bermanfaat bagi pencari kerja internasional. Banyak di antaranya berfokus pada industri atau wilayah tertentu dan memiliki hubungan dengan perusahaan yang secara rutin mensponsori visa."
+          },
+          "directApplications": {
+            "title": "Lamaran Langsung",
+            "description": "Telusuri perusahaan-perusahaan di bidang Anda yang memiliki lisensi sponsor dan lamar langsung melalui halaman karier mereka. Perusahaan multinasional seringkali memiliki proses yang mapan untuk merekrut talenta internasional."
+          }
+        }
+      },
+      {
+        "id": "biaya hidup",
+        "icon": "💷",
+        "title": "Pertimbangan Biaya Hidup di Inggris",
+        "type": "biaya hidup",
+        "content": {
+          "intro": "Memahami biaya hidup di Inggris sangat penting ketika mengevaluasi tawaran pekerjaan dan merencanakan kepindahan Anda.",
+          "locations": {
+            "0": {
+              "name": "London",
+              "description": "Biaya hidup jauh lebih tinggi dibandingkan wilayah Inggris lainnya.",
+              "costs": {
+                "0": {
+                  "category": "Menyewa",
+                  "amount": "£1.500-2.500/bulan (apartemen 1 kamar tidur)"
+                },
+                "1": {
+                  "category": "Mengangkut",
+                  "amount": "£140-180/bulan"
+                },
+                "2": {
+                  "category": "Utilitas",
+                  "amount": "£150-200/bulan"
+                }
+              }
+            },
+            "1": {
+              "name": "Kota-kota Regional",
+              "description": "Manchester, Birmingham, Edinburgh, dll.",
+              "costs": {
+                "0": {
+                  "category": "Menyewa",
+                  "amount": "£700-1.200/bulan (apartemen 1 kamar tidur)"
+                },
+                "1": {
+                  "category": "Mengangkut",
+                  "amount": "£60-100/bulan"
+                },
+                "2": {
+                  "category": "Utilitas",
+                  "amount": "£120-170/bulan"
+                }
+              }
+            }
+          },
+          "additionalExpenses": {
+            "title": "Biaya Tambahan:",
+            "items": {
+              "0": "Biaya tambahan perawatan kesehatan (£624 per tahun saat mengajukan visa)",
+              "1": "Pajak dewan (£1.000-2.000 per tahun tergantung properti)",
+              "2": "Lisensi TV (£159 per tahun)",
+              "3": "Biaya dan deposit relokasi awal"
+            }
+          }
+        }
+      },
+      {
+        "id": "perawatan kesehatan",
+        "icon": "🏥",
+        "title": "Mengakses Layanan Kesehatan di Inggris",
+        "type": "perawatan kesehatan",
+        "content": {
+          "intro": "Semua pemegang visa Inggris yang membayar Biaya Tambahan Kesehatan Imigrasi berhak mengakses Layanan Kesehatan Nasional (NHS).",
+          "coverage": {
+            "description": "Ini memberikan cakupan layanan kesehatan yang komprehensif termasuk:",
+            "includes": {
+              "0": "janji temu dengan dokter umum",
+              "1": "Perawatan di rumah sakit",
+              "2": "Perawatan darurat",
+              "3": "Layanan persalinan"
+            }
+          },
+          "registration": "Anda perlu mendaftar ke praktik dokter umum setempat setelah tiba di Inggris. Perawatan gigi dan resep obat mungkin memerlukan pembayaran tambahan.",
+          "note": "Catatan: Asuransi kesehatan swasta bersifat opsional tetapi dapat memberikan akses lebih cepat ke spesialis dan layanan tambahan yang tidak dicakup oleh NHS."
+        }
+      },
+      {
+        "id": "jaringan",
+        "icon": "👥",
+        "title": "Membangun jaringan di Inggris",
+        "type": "jaringan",
+        "content": {
+          "intro": "Membangun jaringan profesional sangat penting untuk mencari pekerjaan di Inggris:",
+          "online": {
+            "title": "Jaringan Online",
+            "platforms": {
+              "0": "LinkedIn (penting untuk pencarian kerja di Inggris)",
+              "1": "Grup Facebook profesional",
+              "2": "Forum dan komunitas khusus industri",
+              "3": "Jaringan alumni dari universitas Anda"
+            }
+          },
+          "inPerson": {
+            "title": "Acara Tatap Muka",
+            "events": {
+              "0": "Konferensi dan seminar industri",
+              "1": "Acara Meetup.com yang terkait dengan bidang Anda",
+              "2": "Pertemuan asosiasi profesional",
+              "3": "Acara jejaring profesional internasional"
+            }
+          },
+          "advice": "Budaya bisnis Inggris menghargai profesionalisme dan kesopanan. Saat berjejaring, fokuslah pada membangun hubungan yang tulus daripada langsung meminta kesempatan kerja."
+        }
+      }
+    ],
+    "checklist": {
+      "title": "Daftar Periksa Pencarian Kerja Anda di Inggris",
+      "beforeApplying": {
+        "title": "Sebelum Anda Melamar",
+        "items": [
+          "Teliti format dan standar CV khusus Inggris.",
+          "Periksa apakah pekerjaan Anda termasuk dalam Daftar Pekerjaan yang Kekurangan Tenaga Kerja.",
+          "Pastikan kualifikasi Anda diakui di Inggris.",
+          "Bangun profil LinkedIn Anda dengan kata kunci khusus Inggris Raya."
+        ]
+      },
+      "duringSearch": {
+        "title": "Selama Pencarian Kerja Anda",
+        "items": [
+          "Perusahaan target yang memiliki lisensi sponsor",
+          "Bersiaplah untuk wawancara video lintas zona waktu.",
+          "Telusuri kisaran gaji standar di Inggris untuk posisi Anda.",
+          "Pahami hak dan tunjangan ketenagakerjaan di Inggris."
+        ]
+      }
+    },
+    "conclusion": {
+      "title": "Mulailah Perjalanan Karier Anda di Inggris",
+      "description": "Mencari pekerjaan di Inggris sebagai warga negara asing membutuhkan persiapan, ketekunan, dan kesabaran. Meskipun sistem imigrasi memiliki persyaratan khusus, Inggris tetap berkomitmen untuk menarik talenta internasional di berbagai industri. Dengan keterampilan, kualifikasi, dan pendekatan yang tepat, Anda dapat berhasil menavigasi pasar kerja Inggris dan membangun karier yang memuaskan di salah satu ekonomi paling dinamis di dunia."
+    }
+  },
+  "salaryGuide": {
+    "title": "Panduan Gaji di Inggris menurut Industri",
+    "subtitle": "Gaji rata-rata untuk profesional internasional",
+    "industries": [
+      {
+        "sector": "Teknologi Informasi",
+        "averageRange": "£35.000 - £80.000",
+        "entryLevel": "£25.000 - £35.000",
+        "experienced": "Rp50.000.000 - Rp80.000.000",
+        "senior": "£70.000 - £120.000+",
+        "hotRoles": {
+          "0": "Insinyur Perangkat Lunak",
+          "1": "Ilmuwan Data",
+          "2": "Spesialis Keamanan Siber",
+          "3": "Insinyur DevOps"
+        }
+      },
+      {
+        "sector": "Perawatan kesehatan",
+        "averageRange": "£30.000 - £70.000",
+        "entryLevel": "£24.000 - £30.000",
+        "experienced": "£40.000 - £60.000",
+        "senior": "£60.000 - £100.000+",
+        "hotRoles": {
+          "0": "Perawat",
+          "1": "Dokter Junior",
+          "2": "Spesialis",
+          "3": "Manajer Layanan Kesehatan"
+        }
+      },
+      {
+        "sector": "Keuangan & Perbankan",
+        "averageRange": "£40.000 - £90.000",
+        "entryLevel": "£28.000 - £40.000",
+        "experienced": "Rp50.000.000 - Rp80.000.000",
+        "senior": "£80.000 - £150.000+",
+        "hotRoles": {
+          "0": "Analis Keuangan",
+          "1": "Bankir Investasi",
+          "2": "Manajer Risiko",
+          "3": "Petugas Kepatuhan"
+        }
+      },
+      {
+        "sector": "Rekayasa",
+        "averageRange": "£35.000 - £65.000",
+        "entryLevel": "£25.000 - £35.000",
+        "experienced": "£45.000 - £65.000",
+        "senior": "£65.000 - £100.000+",
+        "hotRoles": {
+          "0": "Insinyur Sipil",
+          "1": "Insinyur Mekanik",
+          "2": "Insinyur Listrik",
+          "3": "Manajer Proyek"
+        }
+      }
+    ]
+  },
+  "workCulture": {
+    "title": "Panduan Budaya Kerja Inggris",
+    "subtitle": "Memahami ekspektasi tempat kerja di Inggris",
+    "aspects": [
+      {
+        "category": "Gaya Komunikasi",
+        "description": "Cara berkomunikasi orang Inggris cenderung sopan, tidak langsung, dan sering kali mengandung pernyataan yang meremehkan.",
+        "tips": {
+          "0": "Frasa seperti 'cukup bagus' sering kali berarti 'sangat bagus'.",
+          "1": "Ketidaksepakatan sering kali diredakan dengan frasa seperti 'Saya ingin tahu apakah...'",
+          "2": "Obrolan ringan tentang cuaca adalah hal biasa dan sudah sewajarnya.",
+          "3": "Ketepatan waktu sangat dihargai."
+        }
+      },
+      {
+        "category": "Keseimbangan Kehidupan Kerja",
+        "description": "Secara umum, Inggris Raya menjaga keseimbangan yang baik antara kehidupan kerja dan kehidupan pribadi dengan perlindungan hukum.",
+        "tips": {
+          "0": "Jam kerja standar per minggu adalah 37,5-40 jam.",
+          "1": "Cuti tahunan minimal 28 hari (termasuk hari libur nasional)",
+          "2": "Permintaan pengaturan kerja fleksibel dilindungi secara hukum.",
+          "3": "Budaya lembur berbeda-beda tergantung industri dan perusahaan."
+        }
+      },
+      {
+        "category": "Hierarki & Rapat",
+        "description": "Tempat kerja di Inggris cenderung kurang hierarkis dibandingkan dengan banyak negara lain.",
+        "tips": {
+          "0": "Nama depan umumnya digunakan di semua tingkatan.",
+          "1": "Pertemuan sering kali mencakup waktu untuk diskusi dan masukan.",
+          "2": "Pengambilan keputusan mungkin membutuhkan waktu karena konsensus seringkali dicari.",
+          "3": "Tata krama antrean berlaku dalam semua situasi."
+        }
+      }
+    ]
+  },
+  "relocationSupport": {
+    "title": "Dukungan Relokasi Karyawan",
+    "subtitle": "Apa yang dapat diharapkan dari perusahaan di Inggris?",
+    "commonSupport": [
+      {
+        "type": "Sponsor Visa",
+        "description": "Sertifikat Sponsor dan dukungan pengajuan visa",
+        "typical": "Standar untuk visa pekerja terampil"
+      },
+      {
+        "type": "Paket Relokasi",
+        "description": "Bantuan keuangan untuk biaya pindah",
+        "typical": "£2.000-£10.000 tergantung pada level peran."
+      },
+      {
+        "type": "Akomodasi Sementara",
+        "description": "Hotel atau apartemen berlayanan untuk beberapa minggu pertama.",
+        "typical": "Cakupan umum selama 2-4 minggu"
+      },
+      {
+        "type": "Bantuan Pencarian Rumah",
+        "description": "Bantuan untuk menemukan tempat tinggal tetap.",
+        "typical": "Rekomendasi agen properti, tur area"
+      },
+      {
+        "type": "Integrasi Budaya",
+        "description": "Program orientasi dan pelatihan budaya",
+        "typical": "Sistem pendamping, pengenalan di area lokal"
+      }
+    ]
+  },
+  "legalRequirements": {
+    "title": "Persyaratan Hukum untuk Bekerja di Inggris",
+    "subtitle": "Informasi kepatuhan penting",
+    "requirements": [
+      {
+        "area": "Hak untuk Bekerja",
+        "description": "Semua karyawan harus membuktikan bahwa mereka berhak secara hukum untuk bekerja di Inggris.",
+        "documents": {
+          "0": "Paspor yang masih berlaku beserta visa.",
+          "1": "Izin Tinggal Biometrik (BRP)",
+          "2": "Bagikan kode dari pemeriksaan hak kerja online"
+        }
+      },
+      {
+        "area": "Asuransi Nasional",
+        "description": "Nomor unik diperlukan untuk keperluan pajak dan tunjangan.",
+        "process": "Ajukan permohonan secara online atau melalui telepon setelah tiba, biasanya memakan waktu 2-3 minggu."
+      },
+      {
+        "area": "Pajak (PAYE)",
+        "description": "Pajak penghasilan dipotong secara otomatis dari gaji.",
+        "rates": "Tarif dasar 20%, Tarif lebih tinggi 40%, Tarif tambahan 45%"
+      },
+      {
+        "area": "Hak-hak Ketenagakerjaan",
+        "description": "Karyawan di Inggris memiliki perlindungan hukum yang kuat.",
+        "rights": {
+          "0": "perlindungan upah minimum",
+          "1": "Undang-undang anti-diskriminasi",
+          "2": "Perlindungan terhadap pemecatan tidak adil (setelah 2 tahun)",
+          "3": "Tunjangan sakit wajib"
+        }
+      }
+    ]
+  },
+  "usToUkGuide": {
+    "header": {
+      "title": "Pindah dari AS ke Inggris",
+      "subtitle": "Panduan lengkap Anda untuk pindah ke luar negeri - mulai dari permohonan visa hingga beradaptasi dengan kehidupan di Inggris."
+    },
+    "navigation": {
+      "title": "Isi"
+    },
+    "sections": [
+      {
+        "id": "mengapa-uk",
+        "icon": "🇬🇧",
+        "title": "Mengapa Pindah ke Inggris?",
+        "type": "mengapa-uk",
+        "content": {
+          "intro": "Banyak warga Amerika memilih Inggris sebagai rumah baru mereka karena alasan-alasan yang kuat:",
+          "reasons": {
+            "0": "Keakraban bahasa dan budaya yang sama",
+            "1": "Pelayanan kesehatan kelas dunia (NHS)",
+            "2": "Sejarah yang kaya dan tawaran budaya yang beragam",
+            "3": "Gerbang menuju Eropa untuk berwisata",
+            "4": "Transportasi umum yang sangat baik.",
+            "5": "Pasar kerja yang kuat di sektor-sektor tertentu"
+          },
+          "conclusion": "Baik Anda pindah karena peluang kerja, pendidikan, alasan keluarga, atau sekadar untuk perubahan suasana, Inggris menawarkan gaya hidup yang familiar namun berbeda bagi warga Amerika."
+        }
+      },
+      {
+        "id": "pilihan visa",
+        "icon": "🛂",
+        "title": "Opsi Visa untuk Warga Negara AS",
+        "type": "pilihan visa",
+        "content": {
+          "intro": "Sebagai warga negara AS, Anda dapat mengunjungi Inggris hingga 6 bulan tanpa visa, tetapi untuk tinggal jangka panjang, Anda memerlukan salah satu jalur visa berikut:",
+          "visaTypes": {
+            "0": {
+              "title": "1. Visa Pekerja Terampil",
+              "requirements": {
+                "0": "Membutuhkan surat penawaran kerja dari perusahaan di Inggris yang memiliki izin sponsor.",
+                "1": "Harus memenuhi persyaratan gaji minimum (biasanya £26.200+, bervariasi tergantung pekerjaan)",
+                "2": "Pekerjaan harus sesuai dengan tingkat keahlian yang dibutuhkan (biasanya level RQF 3 atau lebih tinggi).",
+                "3": "Berlaku hingga 5 tahun, dapat berujung pada penyelesaian setelah 5 tahun."
+              }
+            },
+            "1": {
+              "title": "2. Visa Talenta Global",
+              "requirements": {
+                "0": "Untuk para pemimpin atau individu yang menjanjikan di bidang akademisi, penelitian, seni, budaya, atau teknologi digital.",
+                "1": "Membutuhkan pengesahan dari badan terkait di Inggris.",
+                "2": "Tidak memerlukan sponsor, lebih fleksibel daripada visa kerja.",
+                "3": "Dapat berujung pada penyelesaian setelah 3-5 tahun"
+              }
+            },
+            "2": {
+              "title": "3. Visa Pelajar",
+              "requirements": {
+                "0": "Untuk pendaftaran di lembaga pendidikan di Inggris",
+                "1": "Membutuhkan surat penerimaan, bukti dana, dan kemampuan berbahasa Inggris.",
+                "2": "Hak kerja terbatas selama masa studi.",
+                "3": "Jalur pascasarjana memungkinkan untuk tetap bekerja selama 2 tahun setelah lulus."
+              }
+            },
+            "3": {
+              "title": "4. Visa Keluarga",
+              "requirements": {
+                "0": "Untuk pasangan, suami/istri, atau anak-anak warga negara Inggris atau orang yang menetap di Inggris.",
+                "1": "Membutuhkan bukti hubungan yang tulus dan kemampuan finansial.",
+                "2": "Dapat berujung pada penyelesaian setelah 5 tahun"
+              }
+            },
+            "4": {
+              "title": "5. Visa Keturunan Inggris",
+              "requirements": {
+                "0": "Jika Anda memiliki kakek atau nenek yang lahir di Inggris, Anda mungkin memenuhi syarat untuk visa 5 tahun ini dengan jalur menuju status menetap."
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "dokumen yang dibutuhkan",
+        "icon": "📄",
+        "title": "Dokumen yang Diperlukan untuk Relokasi",
+        "type": "dokumen yang dibutuhkan",
+        "content": {
+          "intro": "Persyaratan dokumen berbeda-beda tergantung jenis visa, tetapi umumnya meliputi:",
+          "documents": {
+            "0": "Paspor AS yang masih berlaku (dengan masa berlaku minimal 6 bulan)",
+            "1": "Formulir permohonan visa dan bukti pembayaran",
+            "2": "Informasi biometrik (sidik jari dan foto)",
+            "3": "Bukti kemampuan berbahasa Inggris",
+            "4": "Dokumen keuangan yang menunjukkan dana yang cukup",
+            "5": "Surat penawaran kerja dan sertifikat sponsor (untuk visa kerja)",
+            "6": "Hasil tes tuberkulosis (TB) (jika menginap lebih dari 6 bulan)",
+            "7": "Bukti pengaturan akomodasi"
+          },
+          "proTip": {
+            "label": "Tips profesional",
+            "text": "Mulailah mengumpulkan dokumen-dokumen ini sejak dini, karena beberapa di antaranya (seperti pemeriksaan latar belakang) membutuhkan waktu yang cukup lama untuk diperoleh."
+          }
+        }
+      },
+      {
+        "id": "kota-kota populer",
+        "icon": "🏙️",
+        "title": "Di manakah sebagian besar warga Amerika tinggal di Inggris?",
+        "type": "kota-kota populer",
+        "content": {
+          "intro": "Warga Amerika yang pindah ke Inggris cenderung berkumpul di area-area populer berikut ini:",
+          "cities": {
+            "0": {
+              "name": "London",
+              "icon": "🌆",
+              "highlights": {
+                "0": "Destinasi paling populer, terutama daerah-daerah seperti Kensington, Chelsea, dan Notting Hill.",
+                "1": "Pusat keuangan global dengan beragam peluang kerja.",
+                "2": "Suasana budaya yang semarak tetapi biaya hidup lebih tinggi."
+              }
+            },
+            "1": {
+              "name": "Oxford & Cambridge",
+              "icon": "📚",
+              "highlights": {
+                "0": "Kota-kota universitas dengan peluang akademis dan penelitian.",
+                "1": "Arsitektur bersejarah dan komunitas intelektual yang kuat",
+                "2": "Kualitas hidup yang baik, tetapi biaya perumahan bisa mahal."
+              }
+            },
+            "2": {
+              "name": "Manchester",
+              "icon": "🏭",
+              "highlights": {
+                "0": "Pusat teknologi dan media utama dengan komunitas ekspatriat Amerika yang terus berkembang.",
+                "1": "Lebih terjangkau daripada London dengan penawaran budaya yang sangat baik.",
+                "2": "Rumah bagi BBC North dan MediaCityUK."
+              }
+            },
+            "3": {
+              "name": "Edinburgh",
+              "icon": "🏰",
+              "highlights": {
+                "0": "Ibu kota Skotlandia dengan arsitektur yang menakjubkan dan sektor keuangan yang kuat.",
+                "1": "Populer di kalangan warga Amerika di bidang keuangan, teknologi, dan pendidikan.",
+                "2": "Kualitas hidup yang sangat baik dengan suasana budaya yang dinamis."
+              }
+            }
+          },
+          "risingLocations": {
+            "title": "Lokasi yang Sedang Berkembang",
+            "icon": "💼",
+            "locations": {
+              "0": {
+                "name": "Bristol",
+                "description": "Lingkungan kreatif dan teknologi yang berkembang pesat dengan kualitas hidup yang tinggi."
+              },
+              "1": {
+                "name": "Birmingham",
+                "description": "Semakin populer karena pertumbuhan ekonominya dan biaya hidup yang lebih rendah."
+              },
+              "2": {
+                "name": "Glasgow",
+                "description": "Kota terbesar di Skotlandia yang menawarkan keterjangkauan biaya dan atraksi budaya."
+              },
+              "3": {
+                "name": "Cardiff",
+                "description": "Ibu kota Wales dengan peluang kerja yang terus berkembang dan biaya hidup yang lebih rendah."
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "biaya hidup",
+        "icon": "💷",
+        "title": "Perbandingan Biaya Hidup: Inggris vs Amerika Serikat",
+        "type": "biaya hidup",
+        "content": {
+          "table": {
+            "headers": {
+              "expense": "Pengeluaran",
+              "uk": "Inggris (rata-rata)",
+              "usa": "Amerika Serikat (rata-rata)"
+            },
+            "rows": {
+              "0": {
+                "expense": "Sewa (1 kamar tidur, pusat kota)",
+                "uk": "£800–£1.500/bulan",
+                "usa": "$1.500–$2.000",
+                "ukHighlight": false
+              },
+              "1": {
+                "expense": "Perawatan kesehatan",
+                "uk": "Sebagian besar gratis melalui NHS.",
+                "usa": "$300–$600/bulan",
+                "ukHighlight": true
+              },
+              "2": {
+                "expense": "Biaya utilitas (bulanan)",
+                "uk": "£150–£200",
+                "usa": "$150–$200",
+                "ukHighlight": false
+              },
+              "3": {
+                "expense": "Angkutan",
+                "uk": "£65–£150/bulan",
+                "usa": "$70–$150 + biaya mobil",
+                "ukHighlight": true
+              },
+              "4": {
+                "expense": "Makan di luar (untuk 2 orang)",
+                "uk": "£40–£80",
+                "usa": "$50–$100",
+                "ukHighlight": false
+              },
+              "5": {
+                "expense": "Pendidikan tinggi",
+                "uk": "£9.250/tahun (domestik)",
+                "usa": "$10.000–$40.000/tahun",
+                "ukHighlight": true
+              }
+            }
+          },
+          "conclusion": "Biaya hidup sangat bervariasi antara London dan wilayah Inggris lainnya. Meskipun harga di London setara dengan kota-kota besar AS seperti New York dan San Francisco, wilayah Inggris lainnya menawarkan biaya hidup yang jauh lebih rendah."
+        }
+      },
+      {
+        "id": "perawatan kesehatan",
+        "icon": "🏥",
+        "title": "Pelayanan kesehatan di Inggris",
+        "type": "perawatan kesehatan",
+        "content": {
+          "intro": "Layanan Kesehatan Nasional (NHS) Inggris menyediakan layanan kesehatan komprehensif yang gratis bagi penduduknya, yang merupakan keuntungan besar bagi warga Amerika yang terbiasa dengan biaya perawatan kesehatan yang tinggi.",
+          "nhsAccess": {
+            "title": "Akses NHS untuk Imigran",
+            "points": {
+              "0": "Sebagian besar permohonan visa untuk masa tinggal lebih dari 6 bulan memerlukan pembayaran Biaya Tambahan Kesehatan Imigrasi (Immigration Health Surcharge/IHS).",
+              "1": "Biaya IHS saat ini: £1.035 per tahun untuk sebagian besar pemohon visa dewasa.",
+              "2": "Setelah pembayaran dilakukan, Anda berhak atas sebagian besar layanan NHS (kecuali layanan gigi dan optik tertentu).",
+              "3": "Setelah menetap, daftarlah ke Dokter Umum (GP) setempat."
+            }
+          },
+          "conclusion": "Layanan kesehatan swasta juga tersedia dan beberapa perusahaan menawarkan asuransi kesehatan swasta sebagai tunjangan."
+        }
+      },
+      {
+        "id": "bahasa",
+        "icon": "🗣️",
+        "title": "Tips Bahasa & Budaya",
+        "type": "bahasa",
+        "content": {
+          "intro": "Meskipun memiliki bahasa yang sama, ada perbedaan budaya yang perlu diketahui oleh warga Amerika:",
+          "differences": {
+            "title": "Bahasa Inggris Britania vs Bahasa Inggris Amerika",
+            "vocabulary": {
+              "title": "Perbedaan Kosakata:",
+              "examples": {
+                "0": "Apartemen → Flat",
+                "1": "Lift → Elevator",
+                "2": "Trotoar → Jalan beraspal",
+                "3": "Antrian → Antrian",
+                "4": "Kentang goreng → Keripik",
+                "5": "Keripik → Keripik"
+              }
+            },
+            "cultural": {
+              "title": "Perbedaan Budaya:",
+              "points": {
+                "0": "Humor Inggris cenderung lebih ironis dan merendahkan diri sendiri.",
+                "1": "Kesopanan dan sikap tidak berlebihan sangat dihargai.",
+                "2": "Sikap terus terang terkadang bisa dianggap sebagai kekasaran.",
+                "3": "Mengantre (menunggu dalam barisan) dianggap sangat serius."
+              }
+            }
+          },
+          "conclusion": "Kebiasaan sosial Inggris mungkin tampak familiar, tetapi seringkali memiliki perbedaan yang halus. Orang Inggris cenderung lebih pendiam pada awalnya, tetapi akan menjadi lebih ramah seiring waktu."
+        }
+      },
+      {
+        "id": "pindah",
+        "icon": "📦",
+        "title": "Pindahan & Pengiriman dari AS",
+        "type": "pindah",
+        "content": {
+          "intro": "Merencanakan kepindahan fisik Anda ke Inggris membutuhkan pertimbangan yang cermat:",
+          "shipping": {
+            "title": "Opsi Pengiriman",
+            "options": {
+              "0": {
+                "type": "Pengiriman barang melalui udara",
+                "description": "Lebih cepat (5-10 hari) tetapi lebih mahal."
+              },
+              "1": {
+                "type": "Pengiriman barang melalui laut",
+                "description": "Lebih terjangkau tetapi lebih lambat (4-8 minggu)"
+              },
+              "2": {
+                "type": "Pindahan internasional",
+                "description": "Tersedia opsi layanan lengkap termasuk pengemasan dan penanganan bea cukai."
+              }
+            }
+          },
+          "customs": {
+            "title": "Pertimbangan Bea Cukai",
+            "considerations": {
+              "0": "Barang-barang pribadi dapat diimpor bebas bea jika Anda telah memilikinya selama lebih dari 6 bulan.",
+              "1": "Lengkapi formulir permohonan Pemindahan Tempat Tinggal (Transfer of Residence/ToR) sebelum pengiriman barang.",
+              "2": "Beberapa barang seperti makanan tertentu, tanaman, dan obat-obatan dibatasi.",
+              "3": "Hewan peliharaan memerlukan pemasangan microchip, vaksinasi, dan paspor hewan peliharaan."
+            }
+          },
+          "conclusion": "Pertimbangkan dengan cermat barang-barang yang akan dibawa—banyak peralatan elektronik rumah tangga memerlukan konverter tegangan (Inggris: 230V vs AS: 120V), dan furnitur mungkin tidak muat di rumah-rumah di Inggris yang biasanya lebih kecil."
+        }
+      },
+      {
+        "id": "perbankan",
+        "icon": "💳",
+        "title": "Perbankan & Keuangan",
+        "type": "perbankan",
+        "content": {
+          "intro": "Menata kehidupan finansial Anda di Inggris adalah langkah awal yang penting:",
+          "ukAccount": {
+            "title": "Membuka Rekening Bank di Inggris",
+            "points": {
+              "0": "Secara tradisional, diperlukan bukti alamat di Inggris, yang menciptakan situasi serba salah bagi pendatang baru.",
+              "1": "Bank digital seperti Monzo, Starling, dan Revolut menawarkan pilihan yang lebih mudah bagi pendatang baru.",
+              "2": "Beberapa bank internasional (HSBC, Barclays) menawarkan layanan rekening internasional.",
+              "3": "Dokumen yang dibutuhkan: paspor, visa, bukti alamat, rincian pekerjaan."
+            }
+          },
+          "usUkFinances": {
+            "title": "Mengelola Keuangan AS-Inggris",
+            "points": {
+              "0": "Pertahankan rekening bank AS Anda untuk kewajiban AS yang berkelanjutan.",
+              "1": "Pertimbangkan layanan seperti Wise (sebelumnya TransferWise) untuk transfer uang yang hemat biaya.",
+              "2": "Warga negara AS wajib mengajukan SPT pajak AS tanpa memandang tempat tinggal (Pengecualian Pendapatan yang Diperoleh di Luar Negeri tersedia).",
+              "3": "Perjanjian pajak AS-Inggris membantu mencegah pajak berganda."
+            }
+          },
+          "conclusion": "Membangun riwayat kredit di Inggris membutuhkan waktu, jadi rencanakan dengan baik. Skor kredit tidak dapat ditransfer secara internasional, dan Anda akan memulai dari awal dalam sistem kredit Inggris."
+        }
+      }
+    ],
+    "checklist": {
+      "title": "Daftar Periksa Pra-Pindah untuk Warga Amerika",
+      "items": [
+        "Ajukan permohonan visa yang sesuai jauh-jauh hari sebelumnya.",
+        "Bayar Biaya Tambahan Kesehatan Imigrasi (IHS)",
+        "Buka rekening bank di Inggris (atau siapkan alternatif lain)",
+        "Telusuri perumahan di lokasi pilihan Anda.",
+        "Membangun layanan transfer uang internasional",
+        "Mengatur pengiriman atau penyimpanan barang-barang",
+        "Konversikan dokumen penting ke format Inggris.",
+        "Implikasi pajak penelitian (AS-Inggris)",
+        "Bergabunglah dengan komunitas dan forum ekspatriat untuk mendapatkan saran dan menjalin koneksi."
+      ]
+    },
+    "resources": {
+      "title": "Sumber Daya Tambahan",
+      "categories": [
+        {
+          "title": "Informasi Resmi",
+          "links": {
+            "0": "Informasi Visa Pemerintah Inggris",
+            "1": "Pedoman Kementerian Dalam Negeri Inggris",
+            "2": "Kedutaan Besar AS di Inggris"
+          }
+        },
+        {
+          "title": "Komunitas Ekspatriat",
+          "links": {
+            "0": "Grup Facebook Warga Amerika di Inggris",
+            "1": "Cabang InterNations Inggris",
+            "2": "Grup Pertemuan untuk Ekspatriat"
+          }
+        },
+        {
+          "title": "Layanan Praktis",
+          "links": {
+            "0": "Perusahaan Pindahan Internasional",
+            "1": "Situs Web Akomodasi Inggris",
+            "2": "Layanan Pajak Ekspatriat"
+          }
+        }
+      ]
+    }
+  },
+  "immigrationTimeline": {
+    "title": "Garis Waktu Imigrasi AS ke Inggris",
+    "subtitle": "Garis waktu tipikal untuk berbagai jenis visa",
+    "visaTimelines": [
+      {
+        "visaType": "Visa Pekerja Terampil",
+        "totalTime": "3-6 bulan",
+        "phases": {
+          "0": {
+            "phase": "Pencarian dan Penawaran Pekerjaan",
+            "duration": "1-4 bulan",
+            "description": "Mencari pekerjaan dengan sponsor."
+          },
+          "1": {
+            "phase": "Permohonan Visa",
+            "duration": "3-8 minggu",
+            "description": "Waktu pemrosesan aplikasi"
+          },
+          "2": {
+            "phase": "Keputusan & Perjalanan",
+            "duration": "1-2 minggu",
+            "description": "Menerima keputusan dan merencanakan perjalanan"
+          }
+        }
+      },
+      {
+        "visaType": "Visa Pelajar",
+        "totalTime": "2-4 bulan",
+        "phases": {
+          "0": {
+            "phase": "Pendaftaran Universitas",
+            "duration": "1-3 bulan",
+            "description": "Mendaftar dan menerima persetujuan"
+          },
+          "1": {
+            "phase": "Permohonan Visa",
+            "duration": "3-6 minggu",
+            "description": "Pemrosesan visa pelajar"
+          },
+          "2": {
+            "phase": "Persiapan",
+            "duration": "2-4 minggu",
+            "description": "Pengaturan akomodasi dan perjalanan"
+          }
+        }
+      }
+    ]
+  },
+  "culturalAdaptation": {
+    "title": "Panduan Adaptasi Budaya",
+    "subtitle": "Beradaptasi dengan kehidupan di Inggris sebagai seorang Amerika.",
+    "areas": [
+      {
+        "category": "Interaksi Sosial",
+        "tips": {
+          "0": "Obrolan ringan tentang cuaca memang sangat penting.",
+          "1": "Sering meminta maaf ('maaf') adalah hal yang normal.",
+          "2": "Ruang pribadi dan etika mengantre itu penting.",
+          "3": "Budaya pub merupakan bagian penting dari kehidupan sosial."
+        }
+      },
+      {
+        "category": "Budaya Tempat Kerja",
+        "tips": {
+          "0": "Komunikasi yang lebih formal dibandingkan tempat kerja pada umumnya di AS.",
+          "1": "Waktu istirahat makan siang dan istirahat minum teh yang lebih panjang adalah hal yang biasa.",
+          "2": "Waktu liburan/cuti lebih banyak diberikan.",
+          "3": "Keseimbangan antara pekerjaan dan kehidupan pribadi umumnya lebih terjaga."
+        }
+      },
+      {
+        "category": "Kehidupan Sehari-hari",
+        "tips": {
+          "0": "Transportasi umum cukup andal tetapi bisa mahal.",
+          "1": "Pola belanja bahan makanan berbeda (belanja lebih sedikit, lebih sering)",
+          "2": "Ukuran dan pengukuran pakaian berbeda-beda.",
+          "3": "Budaya memberi tip tidak seluas di AS."
+        }
+      }
+    ]
+  },
+  "financialPlanning": {
+    "title": "Perencanaan Keuangan untuk Kepindahan Anda",
+    "subtitle": "Perencanaan anggaran untuk relokasi Anda dari AS ke Inggris.",
+    "categories": [
+      {
+        "stage": "Biaya Pra-Pindah",
+        "totalRange": "$3.000 - $8.000",
+        "items": {
+          "0": {
+            "item": "Permohonan visa dan biaya",
+            "cost": "$1.500 - $3.500"
+          },
+          "1": {
+            "item": "Pemeriksaan dan tes medis",
+            "cost": "$200 - $500"
+          },
+          "2": {
+            "item": "Persiapan dokumen dan biaya hukum",
+            "cost": "$500 - $2.000"
+          },
+          "3": {
+            "item": "Pemesanan penerbangan",
+            "cost": "$800 - $2.000"
+          }
+        }
+      },
+      {
+        "stage": "Biaya Pindah",
+        "totalRange": "$2.000 - $15.000",
+        "items": {
+          "0": {
+            "item": "Pengiriman barang rumah tangga",
+            "cost": "$2.000 - $8.000"
+          },
+          "1": {
+            "item": "Akomodasi sementara",
+            "cost": "$1.000 - $4.000"
+          },
+          "2": {
+            "item": "Pemindahan hewan peliharaan (jika berlaku)",
+            "cost": "$1.000 - $3.000"
+          }
+        }
+      },
+      {
+        "stage": "Biaya Penyelesaian",
+        "totalRange": "$3.000 - $10.000",
+        "items": {
+          "0": {
+            "item": "Uang jaminan dan sewa rumah",
+            "cost": "$2.000 - $6.000"
+          },
+          "1": {
+            "item": "Penataan dan penyiapan awal",
+            "cost": "$1.000 - $3.000"
+          },
+          "2": {
+            "item": "Biaya hidup bulan pertama",
+            "cost": "$1.500 - $3.500"
+          }
+        }
+      }
+    ]
+  },
+  "legalConsiderations": {
+    "title": "Pertimbangan Hukum bagi Warga Amerika",
+    "subtitle": "Aspek hukum penting terkait pindah ke Inggris",
+    "topics": [
+      {
+        "area": "Kewajiban Pajak",
+        "description": "Warga negara AS wajib mengajukan surat pemberitahuan pajak AS tanpa memandang tempat tinggal mereka.",
+        "keyPoints": {
+          "0": "Pengecualian Penghasilan yang Diperoleh di Luar Negeri tersedia hingga sekitar $120.000",
+          "1": "Perjanjian pajak Inggris-AS mencegah sebagian besar pajak berganda.",
+          "2": "Pertimbangkan untuk meminta nasihat pajak profesional untuk situasi yang kompleks.",
+          "3": "Laporkan rekening bank luar negeri jika saldonya melebihi $10.000."
+        }
+      },
+      {
+        "area": "Hak Pilih",
+        "description": "Memahami hak suara Anda di kedua negara",
+        "keyPoints": {
+          "0": "Pertahankan hak suara warga AS melalui surat suara absen.",
+          "1": "Pemilihan lokal Inggris tersedia setelah pendaftaran tempat tinggal.",
+          "2": "Kehilangan kewarganegaraan Uni Eropa setelah Brexit memengaruhi beberapa hak.",
+          "3": "Pertimbangkan implikasi kewarganegaraan ganda."
+        }
+      },
+      {
+        "area": "Status Hukum",
+        "description": "Memahami status dan hak hukum Anda",
+        "keyPoints": {
+          "0": "Ketentuan visa menentukan hak kerja dan bepergian.",
+          "1": "Jalur menuju izin tinggal tetap berbeda-beda tergantung jenis visa.",
+          "2": "Kewarganegaraan Inggris dimungkinkan setelah menetap selama 5 tahun atau lebih.",
+          "3": "Disarankan untuk meminta nasihat hukum dalam situasi yang kompleks."
+        }
+      }
+    ]
+  },
+  "petsToUkGuide": {
+    "header": {
+      "title": "Pindah ke Inggris Raya Bersama Hewan Peliharaan",
+      "subtitle": "Panduan lengkap untuk membawa hewan peliharaan kesayangan Anda ke rumah baru mereka di Inggris - persyaratan, proses, dan adaptasi."
+    },
+    "navigation": {
+      "title": "Panduan Imigrasi Hewan Peliharaan Inggris"
+    },
+    "sections": [
+      {
+        "id": "persyaratan",
+        "icon": "✅",
+        "title": "Persyaratan Utama",
+        "type": "persyaratan",
+        "content": {
+          "keyRequirements": {
+            "0": {
+              "title": "Mikrochip",
+              "description": "Hewan peliharaan Anda harus dipasangi microchip yang sesuai dengan standar ISO 11784/11785 sebelum diberikan vaksinasi apa pun.",
+              "number": "1"
+            },
+            "1": {
+              "title": "Vaksinasi Rabies",
+              "description": "Harus diberikan setidaknya 21 hari sebelum perjalanan dan harus berlaku pada saat perjalanan.",
+              "number": "2"
+            },
+            "2": {
+              "title": "Sertifikat Kesehatan Hewan (AHC)",
+              "description": {
+                "0": "Harus dikeluarkan oleh dokter hewan resmi di negara Anda dalam waktu 10 hari sebelum perjalanan ke Inggris.",
+                "1": "Berlaku untuk masuk ke Inggris hingga 4 bulan setelah diterbitkan.",
+                "2": "Hanya diperlukan jika Anda tidak memiliki Paspor Hewan Peliharaan Uni Eropa yang diterbitkan di Uni Eropa atau Irlandia Utara."
+              },
+              "number": "3"
+            },
+            "3": {
+              "title": "Pengobatan Cacing Pita",
+              "note": "(khusus anjing)",
+              "description": "Anjing harus diobati untuk cacing pita 24-120 jam (1-5 hari) sebelum tiba di Inggris.",
+              "number": "4"
+            }
+          }
+        }
+      },
+      {
+        "id": "rute masuk",
+        "icon": "🛂",
+        "title": "Rute Masuk",
+        "type": "rute masuk",
+        "content": {
+          "approvedEntry": {
+            "title": "Titik Masuk yang Disetujui",
+            "description": "Hewan peliharaan hanya dapat masuk ke Inggris melalui jalur khusus yang telah disetujui.",
+            "routes": {
+              "0": {
+                "title": "Perjalanan Udara",
+                "description": "Bandara-bandara besar seperti Heathrow, Gatwick, Manchester, Edinburgh"
+              },
+              "1": {
+                "title": "Terowongan Euro",
+                "description": "Folkestone (melalui Calais)"
+              },
+              "2": {
+                "title": "Pelabuhan Feri",
+                "description": "Dover, Portsmouth, Hull, Harwich"
+              },
+              "3": {
+                "title": "Eurostar",
+                "description": "Hanya anjing pemandu yang diperbolehkan."
+              }
+            }
+          },
+          "warning": "Anda harus tiba melalui rute yang disetujui bersama hewan peliharaan Anda, atau hewan peliharaan Anda mungkin akan dikarantina hingga 4 bulan."
+        }
+      },
+      {
+        "id": "bepergian",
+        "icon": "✈️",
+        "title": "Pilihan Perjalanan",
+        "type": "bepergian",
+        "content": {
+          "travelOptions": {
+            "0": {
+              "icon": "🐱",
+              "ariaLabel": "hewan peliharaan kecil",
+              "title": "Di dalam kabin",
+              "description": "Pilihan terbatas - sebagian besar penerbangan menuju Inggris tidak mengizinkan hewan peliharaan di dalam kabin kecuali hewan pemandu."
+            },
+            "1": {
+              "icon": "🐕",
+              "ariaLabel": "hewan peliharaan besar",
+              "title": "Sebagai Kargo",
+              "description": "Metode paling umum untuk menerbangkan hewan peliharaan ke Inggris. Biasanya ditangani oleh departemen penanganan hewan spesialis."
+            },
+            "2": {
+              "icon": "🚗",
+              "ariaLabel": "mobil",
+              "title": "Terowongan Euro/Feri",
+              "description": "Pilihan populer jika datang dari Eropa. Hewan peliharaan dapat tetap bersama pemiliknya di dalam kendaraan."
+            }
+          },
+          "costConsiderations": {
+            "title": "Pertimbangan Biaya",
+            "costs": {
+              "0": "Penerbangan: £400-£800 untuk pengangkutan kargo",
+              "1": "Eurotunnel: £20-£30 per hewan peliharaan di luar biaya kendaraan.",
+              "2": "Feri: £15-£30 per hewan peliharaan tergantung rute",
+              "3": "Sertifikat Kesehatan: £100-£175"
+            }
+          },
+          "warning": "Selalu periksa kebijakan hewan peliharaan dengan maskapai penerbangan atau perusahaan transportasi yang Anda gunakan, karena persyaratannya dapat berubah."
+        }
+      },
+      {
+        "id": "proses kedatangan",
+        "icon": "🛬",
+        "title": "Proses Kedatangan",
+        "type": "proses kedatangan",
+        "content": {
+          "intro": "Inggris memiliki proses khusus untuk hewan peliharaan yang datang dari luar negeri.",
+          "documentChecks": {
+            "title": "Pemeriksaan Dokumen",
+            "items": {
+              "0": "Verifikasi mikrochip",
+              "1": "Sertifikat Kesehatan Hewan",
+              "2": "Catatan vaksinasi rabies",
+              "3": "Pengobatan cacing pita (anjing)"
+            }
+          },
+          "processFlow": {
+            "title": "Alur Proses",
+            "steps": {
+              "0": "Tiba di titik masuk yang telah disetujui.",
+              "1": "Serahkan hewan peliharaan dan dokumen Anda kepada petugas.",
+              "2": "Mikrochip hewan peliharaan akan dipindai untuk memverifikasi identitasnya.",
+              "3": "Dokumen akan diperiksa secara menyeluruh.",
+              "4": "Jika semuanya sudah sesuai, hewan peliharaan Anda akan diizinkan masuk."
+            }
+          },
+          "warning": "Jika dokumentasi tidak lengkap atau hewan peliharaan Anda tampak tidak sehat, mereka mungkin akan dikarantina dengan biaya Anda sendiri (hingga 4 bulan)."
+        }
+      },
+      {
+        "id": "setelah kedatangan",
+        "icon": "🏠",
+        "title": "Hidup di Inggris Raya dengan Hewan Peliharaan",
+        "type": "setelah kedatangan",
+        "content": {
+          "intro": "Setelah tiba di Inggris, ada beberapa hal yang perlu dipertimbangkan demi kesejahteraan hewan peliharaan Anda.",
+          "livingAspects": {
+            "0": {
+              "icon": "🏥",
+              "title": "Perawatan Hewan",
+              "description": "Daftarkan hewan peliharaan Anda ke dokter hewan setempat sesegera mungkin. Inggris memiliki layanan perawatan hewan yang sangat baik, tetapi biayanya bisa tinggi - asuransi hewan peliharaan sangat disarankan.",
+              "cost": "Konsultasi dokter hewan standar: £30-£60"
+            },
+            "1": {
+              "icon": "📋",
+              "title": "Pendaftaran",
+              "description": "Perbarui detail microchip hewan peliharaan Anda dengan alamat Anda di Inggris. Anjing juga harus didaftarkan ke dewan lokal dan mengenakan tanda pengenal dengan detail kontak Anda."
+            },
+            "2": {
+              "icon": "🏞️",
+              "title": "Olahraga & Ruang Terbuka",
+              "description": "Inggris memiliki banyak taman dan area pedesaan yang ramah hewan peliharaan. Sebagian besar kota memiliki area khusus untuk berolahraga anjing, tetapi selalu periksa peraturan setempat tentang kewajiban mengikat anjing dengan tali."
+            },
+            "3": {
+              "icon": "🏠",
+              "title": "Perumahan",
+              "description": "Banyak properti sewaan di Inggris memiliki kebijakan 'tidak diperbolehkan hewan peliharaan', meskipun hal ini sedang berubah. Bersiaplah untuk membayar deposit yang lebih tinggi atau 'biaya sewa hewan peliharaan' di beberapa properti."
+            }
+          },
+          "firstWeekChecklist": {
+            "title": "Daftar Periksa Minggu Pertama",
+            "items": {
+              "0": "Daftarlah di praktik dokter hewan setempat.",
+              "1": "Perbarui registrasi mikrochip dengan alamat Inggris.",
+              "2": "Daftarkan anjing Anda ke dewan lokal (jika berlaku).",
+              "3": "Beli kartu identitas dengan detail kontak Inggris.",
+              "4": "Telusuri pilihan asuransi hewan peliharaan."
+            }
+          }
+        }
+      },
+      {
+        "id": "sumber daya",
+        "icon": "📚",
+        "title": "Sumber Daya yang Berguna",
+        "type": "sumber daya",
+        "content": {
+          "officialInfo": {
+            "title": "Informasi Resmi",
+            "resources": {
+              "0": {
+                "title": "Pedoman Perjalanan Hewan Peliharaan Pemerintah Inggris",
+                "description": "Aturan dan persyaratan resmi untuk membawa hewan peliharaan ke Inggris."
+              },
+              "1": {
+                "title": "Badan Kesehatan Hewan dan Tanaman (APHA)",
+                "description": "Badan pemerintah yang mengawasi impor hewan peliharaan"
+              },
+              "2": {
+                "title": "Layanan Bantuan Skema Perjalanan Hewan Peliharaan",
+                "description": "+44 370 241 1710 (Senin sampai Jumat, pukul 08.30 hingga 17.00 waktu Inggris)"
+              }
+            }
+          },
+          "petServices": {
+            "title": "Layanan Hewan Peliharaan di Inggris",
+            "services": {
+              "0": {
+                "category": "Asuransi Hewan Peliharaan",
+                "providers": "Bandingkan penyedia layanan: PetPlan, Animal Friends, More Than"
+              },
+              "1": {
+                "category": "Perlengkapan Hewan Peliharaan",
+                "providers": "Hewan Peliharaan di Rumah, Amazon UK, VetUK"
+              },
+              "2": {
+                "category": "Cari Dokter Hewan",
+                "providers": "Royal College of Veterinary Surgeons: Layanan FindAVet"
+              },
+              "3": {
+                "category": "Akomodasi Ramah Hewan Peliharaan",
+                "providers": "PetsLets, Airbnb (gunakan filter 'hewan peliharaan diperbolehkan')"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "sidebar": {
+      "checklist": {
+        "title": "Daftar Periksa Sebelum Perjalanan",
+        "items": [
+          "Pasang mikrochip pada hewan peliharaan Anda",
+          "Pastikan vaksinasi rabies Anda masih berlaku.",
+          "Tunggu setidaknya 21 hari setelah vaksinasi.",
+          "Berikan pengobatan cacing pita pada anjing 1-5 hari sebelum bepergian.",
+          "Dapatkan Sertifikat Kesehatan Hewan dalam waktu 10 hari sebelum perjalanan.",
+          "Pesan rute transportasi yang disetujui ke Inggris",
+          "Siapkan alat transportasi perjalanan (yang disetujui maskapai penerbangan jika menggunakan pesawat)."
+        ]
+      },
+      "faq": {
+        "title": "Pertanyaan Umum",
+        "questions": [
+          {
+            "question": "Apakah saya memerlukan paspor hewan peliharaan?",
+            "answer": "Paspor hewan peliharaan Uni Eropa yang diterbitkan di Uni Eropa atau Irlandia Utara masih berlaku untuk masuk ke Inggris. Jika tidak, Anda memerlukan Sertifikat Kesehatan Hewan."
+          },
+          {
+            "question": "Apakah ada karantina?",
+            "answer": "Tidak diperlukan karantina jika semua persyaratan terpenuhi. Jika persyaratan tidak terpenuhi, hewan peliharaan mungkin harus menjalani karantina hingga 4 bulan."
+          },
+          {
+            "question": "Jenis anjing apa saja yang dilarang?",
+            "answer": "Beberapa jenis anjing dilarang di Inggris, termasuk Pit Bull Terrier, Japanese Tosa, Dogo Argentino, dan Fila Brasileiro."
+          },
+          {
+            "question": "Apakah saya boleh membawa hewan peliharaan eksotis?",
+            "answer": "Hewan eksotis memiliki persyaratan yang berbeda. Banyak yang memerlukan izin CITES dan lisensi impor khusus."
+          }
+        ]
+      }
+    }
+  },
+  "petHealthRequirements": {
+    "title": "Persyaratan Kesehatan Terperinci",
+    "subtitle": "Persyaratan kesehatan dan vaksinasi komprehensif berdasarkan negara asal.",
+    "categories": [
+      {
+        "region": "Negara-negara Uni Eropa",
+        "requirements": {
+          "0": {
+            "requirement": "Paspor Hewan Peliharaan",
+            "description": "Paspor hewan peliharaan Uni Eropa yang diterbitkan di Uni Eropa atau Irlandia Utara.",
+            "validity": "Harus berlaku dan sah"
+          },
+          "1": {
+            "requirement": "Vaksinasi Rabies",
+            "description": "Vaksinasi primer minimal usia 21 hari.",
+            "validity": "Berlaku sesuai dengan pedoman produsen."
+          },
+          "2": {
+            "requirement": "Mikrochip",
+            "description": "Memenuhi standar ISO 11784/11785 sebelum vaksinasi.",
+            "validity": "Harus mudah dibaca"
+          }
+        }
+      },
+      {
+        "region": "Negara-negara Non-Uni Eropa",
+        "requirements": {
+          "0": {
+            "requirement": "Sertifikat Kesehatan Hewan",
+            "description": "Dikeluarkan oleh dokter hewan resmi dalam waktu 10 hari.",
+            "validity": "Berlaku selama 4 bulan untuk masuk ke Inggris."
+          },
+          "1": {
+            "requirement": "Vaksinasi Rabies",
+            "description": "Setidaknya 21 hari sebelum perjalanan",
+            "validity": "Harus masih berlaku pada saat perjalanan."
+          },
+          "2": {
+            "requirement": "Tes Antibodi Rabies",
+            "description": "Mungkin diperlukan dari negara-negara tertentu",
+            "validity": "Harus menunjukkan kadar antibodi yang memadai."
+          }
+        }
+      }
+    ]
+  },
+  "petTransportGuide": {
+    "title": "Panduan Transportasi Hewan Peliharaan",
+    "subtitle": "Informasi detail tentang pengangkutan hewan peliharaan ke Inggris",
+    "transportMethods": [
+      {
+        "method": "Maskapai Penerbangan Komersial",
+        "suitableFor": "Anjing dan kucing",
+        "process": {
+          "0": "Pesan jasa pengangkutan hewan peliharaan saat memesan penerbangan Anda.",
+          "1": "Sertakan sertifikat kesehatan dan catatan vaksinasi.",
+          "2": "Gunakan maskapai penerbangan yang disetujui IATA.",
+          "3": "Tiba di bandara 3-4 jam sebelum keberangkatan.",
+          "4": "Hewan peliharaan diangkut di dalam ruang kargo ber-AC."
+        },
+        "costs": {
+          "range": "£400-£1.200",
+          "factors": {
+            "0": "Ukuran dan berat hewan peliharaan",
+            "1": "Jarak tempuh",
+            "2": "Kebijakan maskapai penerbangan",
+            "3": "Musim (puncak vs di luar puncak)"
+          }
+        },
+        "tips": {
+          "0": "Pesanlah lebih awal karena tempat terbatas.",
+          "1": "Sebisa mungkin hindari musim puncak perjalanan.",
+          "2": "Pertimbangkan kecemasan dan kenyamanan hewan peliharaan Anda.",
+          "3": "Pastikan ukuran wadah pembawa sesuai."
+        }
+      },
+      {
+        "method": "Layanan Relokasi Hewan Peliharaan",
+        "suitableFor": "Semua hewan peliharaan, terutama hewan yang berharga atau penakut.",
+        "process": {
+          "0": "Layanan transportasi lengkap dari pintu ke pintu.",
+          "1": "Mengurus semua dokumentasi dan logistik.",
+          "2": "Berikan perawatan khusus selama transportasi.",
+          "3": "Pengaturan perjalanan khusus berdasarkan kebutuhan hewan peliharaan."
+        },
+        "costs": {
+          "range": "£800-£3.000+",
+          "factors": {
+            "0": "Tingkat layanan yang dibutuhkan",
+            "1": "Ukuran hewan peliharaan dan kebutuhan khusus",
+            "2": "Asal dan tujuan",
+            "3": "Layanan tambahan (penginapan, dll.)"
+          }
+        },
+        "tips": {
+          "0": "Lakukan riset menyeluruh terhadap kredibilitas perusahaan.",
+          "1": "Baca ulasan dari pemilik hewan peliharaan lainnya.",
+          "2": "Pastikan perusahaan tersebut memiliki izin dan asuransi.",
+          "3": "Tanyakan tentang pengalaman mereka dengan jenis hewan peliharaan Anda."
+        }
+      }
+    ]
+  },
+  "settlingInGuide": {
+    "title": "Menetapkan Hewan Peliharaan Anda di Inggris",
+    "subtitle": "Membantu hewan peliharaan Anda beradaptasi dengan rumah barunya di Inggris.",
+    "adjustmentTips": [
+      {
+        "category": "Hari-hari Pertama",
+        "tips": {
+          "0": "Pertahankan rutinitas sebisa mungkin mirip dengan rutinitas di negara asal.",
+          "1": "Berikan waktu untuk penyesuaian - hewan peliharaan mungkin stres.",
+          "2": "Secara bertahap memperkenalkan lingkungan dan pengalaman baru.",
+          "3": "Pantau pola makan dan tidur dengan cermat."
+        }
+      },
+      {
+        "category": "Adaptasi Iklim",
+        "tips": {
+          "0": "Cuaca di Inggris bisa sangat beragam - bersiaplah menghadapi hujan.",
+          "1": "Beberapa hewan peliharaan mungkin membutuhkan waktu untuk menyesuaikan diri dengan suhu yang lebih dingin.",
+          "2": "Sediakan alas tidur dan tempat berlindung yang sesuai.",
+          "3": "Pertimbangkan perubahan musiman pada jam siang hari."
+        }
+      },
+      {
+        "category": "Integrasi Sosial",
+        "tips": {
+          "0": "Bergabunglah dengan kelompok dan komunitas pecinta hewan peliharaan setempat.",
+          "1": "Gunakan taman anjing dan tempat-tempat ramah hewan peliharaan secara bertahap.",
+          "2": "Pertimbangkan kelas pelatihan untuk membantu mengatasi perilaku khusus di Inggris.",
+          "3": "Bersabarlah dalam melakukan penyesuaian saat melatih buang air di tempat yang tepat."
+        }
+      }
+    ],
+    "ukSpecificConsiderations": [
+      {
+        "topic": "Cuaca dan Olahraga",
+        "details": {
+          "0": "Inggris sering hujan - belilah jas hujan untuk hewan peliharaan Anda.",
+          "1": "Hari-hari musim dingin yang lebih pendek memengaruhi rutinitas olahraga.",
+          "2": "Banyak taman memiliki area khusus untuk anjing berolahraga.",
+          "3": "Pembatasan pantai berbeda-beda tergantung musim dan lokasi."
+        }
+      },
+      {
+        "topic": "Perumahan dan Sewa",
+        "details": {
+          "0": "Banyak tempat sewa di Inggris memiliki kebijakan larangan hewan peliharaan yang ketat.",
+          "1": "Uang jaminan untuk hewan peliharaan biasanya berkisar antara £200 hingga £500.",
+          "2": "Beberapa daerah memiliki pembatasan jenis ras anjing tertentu untuk penyewaan.",
+          "3": "Akses ke taman/halaman kurang umum di pusat kota."
+        }
+      },
+      {
+        "topic": "Persyaratan Hukum",
+        "details": {
+          "0": "Anjing harus mengenakan kalung dan tanda pengenal yang berisi detail pemilik.",
+          "1": "Beberapa daerah mewajibkan anjing untuk diikat dengan tali di tempat umum.",
+          "2": "Undang-Undang Anjing Berbahaya berlaku untuk ras tertentu.",
+          "3": "Kotoran hewan peliharaan harus dibersihkan - denda akan dikenakan."
+        }
+      }
+    ]
+  },
+  "costBreakdown": {
+    "title": "Rincian Biaya Lengkap",
+    "subtitle": "Semua biaya yang terkait dengan membawa hewan peliharaan ke Inggris",
+    "preTravel": {
+      "title": "Biaya Pra-Perjalanan",
+      "items": [
+        {
+          "item": "Pemasangan mikrochip",
+          "cost": "£15-£30",
+          "notes": "Biaya sekali bayar, diperlukan sebelum vaksinasi"
+        },
+        {
+          "item": "Vaksinasi Rabies",
+          "cost": "£50-£100",
+          "notes": "Harus menunggu 21 hari sebelum bepergian."
+        },
+        {
+          "item": "Sertifikat Kesehatan Hewan",
+          "cost": "£100-£175",
+          "notes": "Harus dalam kurun waktu 10 hari sebelum perjalanan."
+        },
+        {
+          "item": "Pengobatan Cacing Pita (anjing)",
+          "cost": "£20-£40",
+          "notes": "1-5 hari sebelum perjalanan"
+        },
+        {
+          "item": "Maskapai Penerbangan",
+          "cost": "£50-£200",
+          "notes": "Disetujui IATA untuk perjalanan udara"
+        }
+      ]
+    },
+    "transport": {
+      "title": "Biaya Transportasi",
+      "items": [
+        {
+          "item": "Transportasi Hewan Peliharaan Melalui Maskapai Penerbangan",
+          "cost": "£400-£800",
+          "notes": "Bervariasi tergantung maskapai penerbangan dan ukuran hewan peliharaan."
+        },
+        {
+          "item": "Layanan Relokasi Hewan Peliharaan",
+          "cost": "£800-£3.000",
+          "notes": "Opsi layanan lengkap"
+        },
+        {
+          "item": "Biaya Hewan Peliharaan Eurotunnel",
+          "cost": "£20-£30",
+          "notes": "Ditambah biaya transportasi kendaraan"
+        },
+        {
+          "item": "Biaya Hewan Peliharaan di Feri",
+          "cost": "£15-£30",
+          "notes": "Bervariasi tergantung rute dan operator."
+        }
+      ]
+    },
+    "postArrival": {
+      "title": "Biaya Setelah Kedatangan",
+      "items": [
+        {
+          "item": "Pendaftaran/Pemeriksaan Hewan Peliharaan",
+          "cost": "£30-£60",
+          "notes": "Konsultasi awal"
+        },
+        {
+          "item": "Asuransi Hewan Peliharaan",
+          "cost": "£10-£50/bulan",
+          "notes": "Bervariasi tergantung cakupan dan hewan peliharaan."
+        },
+        {
+          "item": "Perlengkapan Hewan Peliharaan",
+          "cost": "£50-£200",
+          "notes": "Makanan, mainan, perlengkapan tidur, dll."
+        },
+        {
+          "item": "Pendaftaran Lokal",
+          "cost": "£15-£25",
+          "notes": "Surat izin anjing jika diperlukan."
+        }
+      ]
+    }
+  },
+  "ukrelocationrequirements": {
+    "introduction": "Pindah ke Inggris Raya membutuhkan perencanaan dan persiapan yang cermat. Baik Anda pindah karena peluang kerja, pendidikan, alasan keluarga, atau sekadar perubahan gaya hidup, memahami persyaratan hukum sangat penting. Panduan ini menguraikan semua yang perlu Anda ketahui untuk kepindahan yang sukses ke Inggris Raya.",
+    "requirements": [
+      {
+        "title": "Paspor yang sah",
+        "description": "Anda harus memiliki paspor yang berlaku selama seluruh durasi tinggal Anda di Inggris. Bagi warga negara non-visa yang berkunjung hingga 6 bulan, paspor Anda harus berlaku selama masa tinggal yang Anda rencanakan. Untuk permohonan visa, paspor Anda biasanya harus berlaku selama seluruh durasi visa Anda ditambah beberapa bulan tambahan."
+      },
+      {
+        "title": "Visa yang Sesuai",
+        "description": "Inggris memiliki berbagai kategori visa tergantung pada tujuan kunjungan Anda:",
+        "details": {
+          "0": "Visa kerja (Pekerja Terampil, Pekerja Kesehatan dan Perawatan, dll.)",
+          "1": "Visa studi (Visa pelajar, Visa pelajar anak)",
+          "2": "Visa keluarga (Visa pasangan, anak, dan orang tua)",
+          "3": "Visa kunjungan (Visa Kunjungan Standar, Visa Kunjungan Bisnis)",
+          "4": "Izin Tinggal Tetap atau Izin Tinggal Permanen (ILR)"
+        }
+      },
+      {
+        "title": "Bukti Akomodasi",
+        "description": "Anda akan memerlukan bukti tempat Anda akan menginap di Inggris:",
+        "details": {
+          "0": "perjanjian sewa atau dokumen kepemilikan properti",
+          "1": "Surat dari tuan rumah Anda jika menginap bersama teman atau keluarga",
+          "2": "Reservasi hotel untuk akomodasi awal",
+          "3": "Konfirmasi akomodasi universitas untuk mahasiswa"
+        }
+      },
+      {
+        "title": "Persyaratan Keuangan",
+        "description": "Anda harus menunjukkan bahwa Anda mampu menghidupi diri sendiri secara finansial:",
+        "details": {
+          "0": "Laporan rekening bank yang menunjukkan dana yang cukup (biasanya mencakup 3-6 bulan)",
+          "1": "Bukti pendapatan atau kontrak kerja jika ada.",
+          "2": "Surat beasiswa atau pendanaan untuk mahasiswa",
+          "3": "Bukti investasi atau tabungan"
+        },
+        "additionalInfo": "Jumlah pasti yang dibutuhkan bervariasi tergantung jenis visa dan keadaan pribadi."
+      },
+      {
+        "title": "Cakupan Perawatan Kesehatan",
+        "description": "Akses terhadap layanan kesehatan di Inggris diatur melalui:",
+        "details": {
+          "0": "Pembayaran Biaya Tambahan Kesehatan Imigrasi (Immigration Health Surcharge/IHS) disertakan dengan sebagian besar permohonan visa.",
+          "1": "Asuransi kesehatan swasta (direkomendasikan untuk periode awal)",
+          "2": "Kartu Asuransi Kesehatan Eropa (EHIC) atau Kartu Asuransi Kesehatan Global (GHIC) untuk pengunjung yang memenuhi syarat."
+        },
+        "additionalInfo": "Setelah tiba, segeralah mendaftar ke dokter umum (GP) setempat."
+      },
+      {
+        "title": "Izin Tinggal Biometrik (BRP)",
+        "description": "Jika menginap lebih dari 6 bulan:",
+        "details": {
+          "0": "Anda akan menerima Izin Tinggal Biometrik setelah tiba.",
+          "1": "Anda harus mengambil BRP Anda dalam waktu 10 hari setelah tiba di Inggris.",
+          "2": "BRP berfungsi sebagai bukti status imigrasi dan hak Anda."
+        }
+      },
+      {
+        "title": "Nomor Asuransi Nasional",
+        "description": "Persyaratan penting untuk bekerja di Inggris:",
+        "details": {
+          "0": "Ajukan permohonan secara online atau melalui telepon setelah tiba di Inggris.",
+          "1": "Diperlukan untuk keperluan pekerjaan, pajak, dan tunjangan.",
+          "2": "Anda dapat mulai bekerja sebelum menerima nomor NI Anda."
+        }
+      },
+      {
+        "title": "Sertifikat Tes Tuberkulosis (TB)",
+        "description": "Diperlukan bagi warga negara dari negara-negara tertentu:",
+        "details": {
+          "0": "Tes TB harus dilakukan di pusat yang terakreditasi.",
+          "1": "Sertifikat berlaku selama 6 bulan sejak tanggal penerbitan.",
+          "2": "Harus diperoleh sebelum mengajukan visa"
+        }
+      },
+      {
+        "title": "Kemampuan Berbahasa Inggris",
+        "description": "Untuk sebagian besar kategori visa:",
+        "details": {
+          "0": "Bukti kemampuan berbahasa Inggris (IELTS, TOEFL, dll.)",
+          "1": "Gelar yang diperoleh melalui pengajaran dalam bahasa Inggris dapat diterima sebagai bukti.",
+          "2": "Pengecualian tersedia untuk kewarganegaraan dan jenis visa tertentu."
+        }
+      },
+      {
+        "title": "Rekening Bank",
+        "description": "Cara membuka rekening bank di Inggris:",
+        "details": {
+          "0": "Bukti alamat (tagihan listrik, perjanjian sewa)",
+          "1": "Paspor dan BRP",
+          "2": "Pertimbangkan bank online untuk pengaturan yang lebih mudah bagi pendatang baru.",
+          "3": "Beberapa bank menawarkan pembukaan rekening internasional sebelum kedatangan."
+        }
+      }
+    ],
+    "additionalConsiderations": {
+      "title": "Pertimbangan Tambahan",
+      "items": [
+        {
+          "title": "Pendaftaran Pajak Dewan",
+          "description": "Daftarlah ke dewan kota setempat untuk keperluan pajak daerah. Ini adalah pajak wajib untuk layanan lokal. Beberapa pengecualian berlaku untuk mahasiswa penuh waktu."
+        },
+        {
+          "title": "Mengemudi di Inggris",
+          "description": "Pemegang SIM non-Inggris Raya dapat mengemudi hingga 12 bulan. Setelah itu, Anda mungkin perlu menukar SIM Anda atau mengikuti ujian mengemudi Inggris Raya."
+        },
+        {
+          "title": "Telepon Seluler & Internet",
+          "description": "Segera dapatkan nomor ponsel dan koneksi internet Inggris. Banyak penyedia menawarkan penawaran khusus untuk pengguna baru."
+        },
+        {
+          "title": "Persiapan Iklim",
+          "description": "Inggris memiliki iklim maritim sedang dengan musim panas yang sejuk dan musim dingin yang ringan. Bersiaplah menghadapi hujan sepanjang tahun dengan membawa pakaian dan aksesori yang sesuai."
+        }
+      ]
+    },
+    "helpResources": {
+      "title": "Mendapatkan Bantuan untuk Kepindahan Anda",
+      "description": "Untuk informasi dan bantuan resmi terkait relokasi Anda ke Inggris, pertimbangkan sumber daya berikut:",
+      "resources": [
+        {
+          "title": "Pemerintah Inggris",
+          "description": "Panduan resmi tentang visa, imigrasi, dan menetap di Inggris."
+        },
+        {
+          "title": "Dewan Inggris",
+          "description": "Sumber daya untuk mahasiswa internasional dan adaptasi budaya"
+        },
+        {
+          "title": "Layanan Konsultasi Warga",
+          "description": "Konsultasi gratis dan rahasia mengenai hak dan tanggung jawab."
+        }
+      ]
+    },
+    "footer": {
+      "disclaimer": "Ingatlah bahwa peraturan imigrasi dapat berubah sewaktu-waktu. Selalu periksa persyaratan terbaru dari sumber resmi."
+    }
+  },
+  "ukfromturkeyguide": {
+    "navigation": {
+      "title": "Navigasi Panduan Ini"
+    },
+    "accessibility": {
+      "toggleSection": "Alihkan bagian untuk"
+    },
+    "labels": {
+      "youllNeed": "Anda akan membutuhkan:"
+    },
+    "sections": {
+      "whyMove": {
+        "title": "Mengapa Orang Turki Pindah ke Inggris?",
+        "description": "Ribuan warga negara Turki kini menjadikan Inggris sebagai rumah mereka, terutama di kota-kota seperti London, Manchester, Birmingham, dan Edinburgh. Daya tariknya meliputi:",
+        "reasons": [
+          "Kesempatan pendidikan dan karir",
+          "Lingkungan multikultural dengan komunitas yang beragam.",
+          "Sistem perawatan kesehatan dan kesejahteraan sosial yang kuat.",
+          "Stabilitas politik dan supremasi hukum",
+          "Komunitas Turki yang mapan tersebar di berbagai kota besar."
+        ],
+        "conclusion": "Namun, pindah tempat tinggal memerlukan perencanaan yang cermat, pemahaman tentang sistem visa Inggris, dan pemenuhan persyaratan tertentu."
+      },
+      "entryRequirements": {
+        "title": "Persyaratan Masuk & Aturan Visa",
+        "visitorEntry": {
+          "title": "Pintu Masuk Pengunjung",
+          "description": "Warga negara Turki memerlukan visa kunjungan untuk memasuki Inggris, yang memungkinkan masa tinggal hingga 6 bulan. Untuk masa tinggal jangka panjang, Anda perlu mengajukan visa yang sesuai berdasarkan keadaan Anda."
+        },
+        "tip": "Ajukan permohonan visa Inggris jauh-jauh hari sebelum tanggal perjalanan yang Anda rencanakan, karena prosesnya dapat memakan waktu beberapa minggu."
+      },
+      "longTermStay": {
+        "title": "Opsi Tinggal Jangka Panjang untuk Warga Negara Turki",
+        "options": [
+          {
+            "title": "1. Visa Pekerja Terampil",
+            "description": "<span class=\"font-medium\">Berlaku hingga 5 tahun dan dapat mengarah pada penetapan status kependudukan</span><br/>Bagi mereka yang memiliki tawaran pekerjaan dari perusahaan di Inggris yang memiliki lisensi sponsor",
+            "requirements": {
+              "0": "Penawaran pekerjaan yang valid dengan tingkat gaji yang sesuai.",
+              "1": "Surat Keterangan Sponsor dari perusahaan",
+              "2": "Bukti kemampuan berbahasa Inggris",
+              "3": "Dana yang cukup untuk menghidupi diri sendiri",
+              "4": "Surat keterangan catatan kriminal (jika ada)"
+            }
+          },
+          {
+            "title": "2. Visa Keluarga",
+            "details": {
+              "0": "Untuk bergabung dengan pasangan, mitra, atau anggota keluarga yang merupakan warga negara Inggris atau orang yang menetap di Inggris.",
+              "1": "Jangka waktu awal 2,5 tahun, dapat diperpanjang.",
+              "2": "Persyaratan keuangan dan akomodasi berlaku."
+            }
+          },
+          {
+            "title": "3. Visa Pelajar",
+            "details": {
+              "0": "Bagi mereka yang diterima di lembaga pendidikan di Inggris",
+              "1": "Durasi tergantung pada panjang kursus.",
+              "2": "Bukti ketersediaan dana untuk biaya kuliah dan biaya hidup diperlukan."
+            }
+          },
+          {
+            "title": "4. Visa Inovator",
+            "description": "Untuk para pengusaha dengan ide bisnis inovatif dan setidaknya £50.000 dalam dana investasi."
+          },
+          {
+            "title": "5. Visa Individu Berpotensi Tinggi",
+            "description": "Bagi lulusan dari universitas-universitas top dunia, dibutuhkan waktu 2-3 tahun untuk bekerja atau mencari pekerjaan tanpa adanya tawaran pekerjaan."
+          }
+        ]
+      },
+      "property": {
+        "title": "Membeli atau Menyewa Properti",
+        "points": [
+          "Warga negara Turki dapat membeli properti di Inggris, tanpa batasan bagi non-penduduk.",
+          "Opsi hipotek tersedia, tetapi seringkali memerlukan uang muka yang lebih besar untuk penduduk non-Inggris.",
+          "Daerah-daerah populer bagi komunitas Turki: London Utara, Manchester, Birmingham",
+          "Biaya sewa lebih mahal: perkirakan £800-£1.500 per bulan untuk apartemen satu kamar tidur di kota-kota besar."
+        ],
+        "tip": "<strong>Tips:</strong> Gunakan pengacara saat membeli properti dan pastikan Anda memahami semua ketentuan kontrak sewa sebelum menandatangani."
+      },
+      "costLiving": {
+        "title": "Perbandingan Biaya Hidup",
+        "table": {
+          "headers": {
+            "expense": "Pengeluaran",
+            "uk": "Inggris (rata-rata)",
+            "turkey": "Turki (rata-rata)"
+          },
+          "rows": [
+            {
+              "expense": "Sewa (apartemen 1 kamar tidur)",
+              "uk": "£800–£1.500",
+              "turkey": "£200–£400",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Utilitas",
+              "uk": "£150+/bulan",
+              "turkey": "£30–£70/bulan",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Makan di restoran",
+              "uk": "£15–£25",
+              "turkey": "£3–£8",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Kartu transportasi",
+              "uk": "£60–£180/bulan",
+              "turkey": "£10–£30/bulan",
+              "ukHighlight": true
+            }
+          ]
+        },
+        "note": "Inggris jauh lebih mahal daripada Turki, jadi perencanaan keuangan sangat penting sebelum pindah."
+      },
+      "healthcare": {
+        "title": "Akses Layanan Kesehatan",
+        "points": [
+          "Inggris memiliki National Health Service (NHS), yang menyediakan layanan kesehatan gratis saat dibutuhkan.",
+          "Sebagian besar pemohon visa harus membayar Biaya Tambahan Kesehatan Imigrasi sebagai bagian dari permohonan mereka.",
+          "Saat ini, biaya tambahannya adalah £624 per tahun untuk sebagian besar jenis visa.",
+          "Setelah pembayaran selesai, Anda akan memiliki akses ke layanan NHS yang serupa dengan penduduk Inggris.",
+          "Pilihan layanan kesehatan swasta tersedia, tetapi harganya mahal dibandingkan dengan Turki."
+        ]
+      },
+      "dailyLife": {
+        "title": "Penyesuaian Kehidupan Sehari-hari",
+        "aspects": [
+          {
+            "title": "Kendala bahasa",
+            "description": "Bahasa Inggris adalah bahasa resmi. Memiliki kemampuan berbahasa Inggris yang baik sangat penting untuk kehidupan sehari-hari, pekerjaan, dan integrasi sosial."
+          },
+          {
+            "title": "Penggerak",
+            "description": "Surat izin mengemudi Turki dapat digunakan hingga 12 bulan. Setelah itu, Anda harus menukarkannya atau mengikuti ujian mengemudi di Inggris."
+          },
+          {
+            "title": "Mata uang",
+            "description": "Pound Sterling Inggris (GBP) — mata uang yang kuat, tetapi berarti Anda akan membutuhkan lebih banyak Lira Turki untuk mempertahankan gaya hidup Anda."
+          },
+          {
+            "title": "Perbankan",
+            "description": "Membuka rekening bank memerlukan bukti alamat dan status imigrasi. Bank digital seperti Monzo atau Revolut mungkin menjadi pilihan yang lebih mudah pada awalnya."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "title": "Pemindahan Logistik dari Turki",
+        "points": [
+          "Anda mungkin perlu membayar bea cukai dan PPN saat membawa barang pribadi ke Inggris.",
+          "Keringanan Pajak Pemindahan Tempat Tinggal mungkin berlaku jika Anda memindahkan tempat tinggal tetap Anda ke Inggris.",
+          "Pengiriman internasional dari Turki ke Inggris membutuhkan waktu sekitar 3-5 minggu melalui jalur laut.",
+          "Hewan peliharaan memerlukan pemasangan microchip, vaksinasi rabies, pengobatan cacing pita (untuk anjing), dan Sertifikat Kesehatan Hewan."
+        ]
+      },
+      "challenges": {
+        "title": "Tantangan Realistis yang Dapat Diantisipasi",
+        "challenges": [
+          {
+            "title": "Penyesuaian cuaca",
+            "description": "Inggris memiliki cuaca yang lebih dingin, berawan, dan sering hujan dibandingkan dengan Turki."
+          },
+          {
+            "title": "Biaya hidup yang lebih tinggi",
+            "description": "Pengeluaran jauh lebih tinggi, sehingga memerlukan perencanaan anggaran yang cermat."
+          },
+          {
+            "title": "Perbedaan budaya",
+            "description": "Norma dan etiket sosial Inggris mungkin membutuhkan waktu untuk dipahami."
+          },
+          {
+            "title": "Sistem visa yang rumit",
+            "description": "Mengurus peraturan imigrasi bisa menimbulkan stres dan biaya yang mahal."
+          }
+        ]
+      },
+      "turkishCommunities": {
+        "title": "Komunitas Turki di Inggris",
+        "description": "Inggris telah memiliki komunitas Turki yang mapan, terutama di:",
+        "cities": [
+          "London Utara",
+          "Manchester",
+          "Birmingham",
+          "Edinburgh",
+          "Leeds"
+        ],
+        "supportNote": "Anda akan menemukan asosiasi budaya, pusat komunitas, restoran Turki, dan grup media sosial untuk membantu Anda terhubung dengan sesama warga Turki dan mempermudah transisi Anda."
+      }
+    },
+    "checklist": {
+      "title": "Daftar Periksa Akhir Sebelum Pindah ke Inggris",
+      "items": [
+        "Ajukan dan dapatkan visa yang sesuai.",
+        "Bayar Biaya Tambahan Kesehatan Imigrasi",
+        "Atur akomodasi terlebih dahulu.",
+        "Buka rekening bank di Inggris.",
+        "Teliti sistem dan kewajiban pajak di Inggris.",
+        "Tukarkan sebagian mata uang sebelum kedatangan.",
+        "Berinteraksilah dengan komunitas Turki di kota tujuan Anda."
+      ]
+    },
+    "conclusion": {
+      "title": "Apakah Pindah ke Inggris Tepat untuk Anda?",
+      "text": "Pindah ke Inggris menawarkan keunggulan pendidikan, peluang karier, dan standar hidup yang tinggi, tetapi juga disertai biaya yang lebih tinggi dan penyesuaian budaya. Perencanaan dan riset yang cermat sangat penting. Bagi banyak warga Turki yang mencari cakrawala baru, lingkungan multikultural Inggris dan komunitas Turki yang mapan menjadikannya tujuan yang menarik meskipun ada tantangan."
+    },
+    "footer": {
+      "lastUpdated": "Terakhir diperbarui: Mei 2025"
+    }
+  },
+  "ukvisaguide": {
+    "introduction": "Pindah ke Inggris membutuhkan pemilihan visa yang sesuai berdasarkan keadaan Anda. Inggris menawarkan berbagai pilihan visa dan izin tinggal untuk pekerja, pelajar, anggota keluarga, investor, dan pengusaha.",
+    "labels": {
+      "bestFor": "Cocok untuk:",
+      "requirements": "Persyaratan:",
+      "benefits": "Manfaat:",
+      "validity": "Keabsahan:"
+    },
+    "visaTypes": [
+      {
+        "title": "Visa Pekerja Terampil",
+        "bestFor": {
+          "0": "Para profesional yang memiliki tawaran pekerjaan dari perusahaan di Inggris.",
+          "1": "Orang-orang yang bekerja di bidang pekerjaan yang kekurangan tenaga kerja",
+          "2": "Pekerja berpengalaman di bidang khusus"
+        },
+        "requirements": {
+          "0": "Tawaran pekerjaan dari perusahaan di Inggris dengan lisensi sponsor.",
+          "1": "Tingkat keahlian setara dengan RQF Level 3 atau lebih tinggi.",
+          "2": "Kemampuan berbahasa Inggris (tingkat B1)",
+          "3": "Ambang batas gaji minimum (biasanya £26.200 atau \"tarif yang berlaku\" untuk pekerjaan tersebut)",
+          "4": "Dana yang cukup untuk menghidupi diri sendiri"
+        },
+        "validity": "Hingga 5 tahun (dapat diperpanjang, jalur menuju penyelesaian setelah 5 tahun)"
+      },
+      {
+        "title": "Visa Pelajar",
+        "bestFor": "Siswa yang diterima di universitas atau lembaga pendidikan di Inggris.",
+        "requirements": {
+          "0": "Mendapatkan tempat yang telah dikonfirmasi di lembaga sponsor siswa berlisensi.",
+          "1": "Kemampuan berbahasa Inggris",
+          "2": "Bukti kemampuan finansial untuk menutupi biaya kuliah dan biaya hidup.",
+          "3": "Persetujuan dari orang tua/wali (jika berusia di bawah 18 tahun)"
+        },
+        "validity": "Durasi kursus ditambah beberapa bulan (bervariasi tergantung lamanya kursus)"
+      },
+      {
+        "title": "Visa Keluarga",
+        "bestFor": "Pasangan, anak-anak, dan tanggungan warga negara Inggris atau orang yang menetap di Inggris.",
+        "requirements": {
+          "0": "Bukti hubungan yang tulus dan berkelanjutan",
+          "1": "Memenuhi persyaratan pendapatan minimum (£18.600 ditambah tambahan untuk anak-anak)",
+          "2": "Akomodasi yang memadai",
+          "3": "Persyaratan bahasa Inggris (untuk pasangan)"
+        },
+        "validity": "Awalnya 2,5 tahun (dapat diperpanjang, jalur menuju penyelesaian setelah 5 tahun)"
+      },
+      {
+        "title": "Visa Pendiri Inovator",
+        "bestFor": "Para wirausahawan berpengalaman mendirikan bisnis inovatif di Inggris.",
+        "requirements": {
+          "0": "Dukungan dari badan pemberi dukungan yang terakreditasi.",
+          "1": "Rencana bisnis yang layak dan inovatif.",
+          "2": "Setidaknya dana investasi sebesar £50.000",
+          "3": "Kemampuan berbahasa Inggris (tingkat B2)",
+          "4": "Dana pribadi yang cukup untuk biaya hidup"
+        },
+        "validity": "3 tahun (jalur menuju penyelesaian setelah 3 tahun)"
+      },
+      {
+        "title": "Visa Bakat Global",
+        "bestFor": "Para pemimpin atau calon pemimpin di bidang akademisi, penelitian, seni, budaya, atau teknologi digital.",
+        "requirements": {
+          "0": "Dukungan dari badan terkait di Inggris di bidang Anda.",
+          "1": "Bukti bakat atau potensi luar biasa",
+          "2": "Rekam jejak prestasi di bidang Anda"
+        },
+        "benefits": {
+          "0": "Pengaturan kerja fleksibel (tidak memerlukan sponsor)",
+          "1": "Proses menuju pemukiman setelah 3-5 tahun",
+          "2": "Anggota keluarga dapat bergabung dengan Anda."
+        }
+      },
+      {
+        "title": "Visa Individu Berpotensi Tinggi",
+        "bestFor": "Lulusan baru dari universitas-universitas global ternama",
+        "requirements": {
+          "0": "Gelar setara dengan gelar sarjana di Inggris atau lebih tinggi dari universitas global ternama (dalam 5 tahun terakhir)",
+          "1": "Kemampuan berbahasa Inggris (tingkat B1)",
+          "2": "Dana pemeliharaan yang memadai"
+        },
+        "validity": "2 tahun untuk lulusan S1/S2, 3 tahun untuk lulusan S3 (tidak ada jalur langsung menuju pemukiman)"
+      },
+      {
+        "title": "Visa Investor",
+        "bestFor": "Individu dengan kekayaan bersih tinggi yang ingin berinvestasi di Inggris.",
+        "requirements": {
+          "0": "Investasi minimum £2 juta di perusahaan-perusahaan Inggris",
+          "1": "Dana harus disimpan di lembaga keuangan yang teregulasi.",
+          "2": "Dana tersebut harus dapat digunakan di Inggris.",
+          "3": "rekening bank Inggris"
+        },
+        "validity": "Awalnya 3 tahun (proses menuju penyelesaian dalam 2-5 tahun tergantung pada jumlah investasi)"
+      },
+      {
+        "title": "Visa Lulusan",
+        "bestFor": "Mahasiswa internasional yang menyelesaikan gelar di Inggris",
+        "requirements": {
+          "0": "Berhasil menyelesaikan gelar di lembaga pendidikan tinggi di Inggris.",
+          "1": "Visa pelajar yang berlaku pada saat pengajuan permohonan",
+          "2": "Konfirmasi penyelesaian kursus dari sponsor."
+        },
+        "validity": "2 tahun untuk lulusan S1 dan S2, 3 tahun untuk lulusan S3."
+      }
+    ],
+    "footer": {
+      "disclaimer": "Catatan: Peraturan imigrasi Inggris dapat berubah sewaktu-waktu. Selalu periksa situs web resmi pemerintah Inggris untuk informasi terbaru."
+    }
+  }
+}

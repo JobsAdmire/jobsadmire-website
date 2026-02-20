@@ -1,0 +1,161 @@
+{
+  "hero": {
+    "badge": "الموضع المميز",
+    "titleLine1": "البرامج العليا",
+    "titleLine2": "مهندس",
+    "companyName": "شركة تيك فيجن",
+    "subtitle": "انضم إلى فريقنا المبتكر لبناء حلول متطورة تُحدث نقلة نوعية في الصناعات. نحن نبحث عن مهندسين موهوبين شغوفين بابتكار تكنولوجيا مؤثرة.",
+    "ctaPrimary": "طلب استشارة",
+    "ctaShare": "مشاركة الوظيفة",
+    "salaryRange": "نطاق الراتب",
+    "location": "الموقع",
+    "experience": "الخبرة",
+    "tabOverview": "لمحة عامة",
+    "tabRequirements": "المتطلبات",
+    "tabBenefits": "المزايا",
+    "industry": "تطوير البرمجيات",
+    "locationValue": "عن بُعد (مقرها الولايات المتحدة)",
+    "locationStatValue": "جهاز التحكم عن بُعد",
+    "salaryLabel": "الراتب",
+    "teamSizeLabel": "حجم الفريق",
+    "teamSizeValue": "15-20 مهندساً",
+    "employmentLabel": "التوظيف",
+    "employmentValue": "دوام كامل",
+    "postedLabel": "تم النشر",
+    "postedValue": "15 مارس 2025",
+    "requiredSkills": "المهارات المطلوبة",
+    "readyToJoin": "هل أنت مستعد للانضمام إلى فريقنا؟",
+    "applicationTime": "تطبيق لمدة 5 دقائق"
+  },
+  "loading": "تحميل تفاصيل الوظيفة...",
+  "notifications": {
+    "resume_uploaded": "تم تحميل السيرة الذاتية بنجاح!",
+    "application_submitted": {
+      "title": "تم تقديم الطلب!",
+      "message": "شكراً لاهتمامك بالوظيفة {{title}}. سيقوم فريقنا بمراجعة طلبك والاتصال بك قريباً.",
+      "close": "إغلاق"
+    }
+  },
+  "application_modal": {
+    "title": "التقدم بطلب للحصول على {{العنوان}}",
+    "subtitle": "أكمل طلبك أدناه",
+    "progress": "التقدم المحرز في التطبيق",
+    "form": {
+      "full_name": "الاسم الكامل*",
+      "full_name_placeholder": "أدخل اسمك",
+      "email": "عنوان البريد الإلكتروني*",
+      "phone": "رقم الهاتف*",
+      "location": "الموقع الحالي*",
+      "location_placeholder": "المدينة، البلد",
+      "linkedin": "الملف الشخصي على لينكد إن",
+      "portfolio": "رابط المحفظة",
+      "cover_message": "رسالة الغلاف",
+      "cover_message_placeholder": "لماذا أنت مهتم بهذا المنصب؟",
+      "upload_resume": "تحميل السيرة الذاتية*",
+      "click_to_upload": "انقر لتحميل سيرتك الذاتية",
+      "file_types": "(PDF أو DOC أو DOCX)",
+      "cancel": "إلغاء",
+      "submit": "تقديم الطلب",
+      "application_closed": "الطلب مغلق",
+      "terms_agreement": "من خلال تقديم الطلب، فإنك توافق على <1> الشروط والأحكام <1/ 1>",
+      "email_placeholder": "name@example.com",
+      "phone_placeholder": "+90 555 123 4567",
+      "linkedin_placeholder": "https://linkedin.com/in/username",
+      "portfolio_placeholder": "https://yourportfolio.com"
+    }
+  },
+  "share_modal": {
+    "title": "شارك هذه الوظيفة",
+    "subtitle": "شارك هذه الفرصة مع شبكتك",
+    "facebook": "فيسبوك",
+    "twitter": "تويتر",
+    "linkedin": "لينكد إن",
+    "whatsapp": "واتساب",
+    "copy_link": "نسخ",
+    "copied": "تم النسخ"
+  },
+  "header": {
+    "status_open": "مفتوح",
+    "status_closed": "مغلق",
+    "posted": "تم النشر",
+    "save_job": "حفظ الوظيفة",
+    "saved": "تم الحفظ",
+    "share": "شارك",
+    "apply_now": "قدم طلبك الآن",
+    "application_closed": "الطلب مغلق"
+  },
+  "quick_info": {
+    "currency": "العملة",
+    "salary": "الراتب",
+    "type": "النوع"
+  },
+  "tabs": {
+    "job_description": "الوصف الوظيفي",
+    "requirements": "المتطلبات",
+    "details": "التفاصيل"
+  },
+  "tab_content": {
+    "description": {
+      "overview": "نظرة عامة على الوظيفة",
+      "employment_type": "نوع الوظيفة",
+      "work_location": "موقع العمل"
+    },
+    "requirements": {
+      "title": "المتطلبات والمؤهلات",
+      "what_we_looking_for": "ما الذي نبحث عنه",
+      "professional_experience": "الخبرة المهنية",
+      "communication_skills": "مهارات التواصل",
+      "team_collaboration": "تعاون الفريق",
+      "growth_mindset": "عقلية النمو"
+    },
+    "details": {
+      "job_information": "معلومات عن الوظيفة",
+      "job_type": "نوع الوظيفة:",
+      "location": "الموقع:",
+      "posted": "تم النشر:",
+      "status": "الحالة:",
+      "quota_full": "الحصة الكاملة",
+      "open_for_applications": "مفتوح للتقديم",
+      "compensation": "التعويضات",
+      "currency": "العملة:",
+      "salary": "الراتب:",
+      "why_join": "لماذا تنضم إلى {{العنوان}}؟",
+      "career_growth": "النمو الوظيفي",
+      "career_growth_desc": "فرص التقدم",
+      "great_location": "موقع رائع",
+      "great_location_desc": "العمل في {{الموقع}}",
+      "competitive_package": "باقة تنافسية",
+      "competitive_package_desc": "الراتب والمزايا الجذابة",
+      "professional_growth": "النمو المهني",
+      "professional_growth_desc": "فرص التعلّم المستمر"
+    }
+  },
+  "cta": {
+    "title": "هل أنت مستعد للانضمام إلى فريقنا؟",
+    "subtitle": "اتخذ الخطوة التالية في حياتك المهنية مع {{title}}. نحن نبحث عن الأفراد المتحمسين الذين يرغبون في إحداث تغيير.",
+    "apply_now": "قدم طلبك الآن",
+    "application_closed": "الطلب مغلق"
+  },
+  "contact": {
+    "title": "هل تحتاج إلى مساعدة في طلبك؟",
+    "subtitle": "فريق الموارد البشرية لدينا هنا لمساعدتك",
+    "live_chat": {
+      "title": "دعم الدردشة المباشرة",
+      "subtitle": "متوسط زمن الاستجابة: 5 دقائق"
+    },
+    "email": {
+      "title": "البريد الإلكتروني لفريق الموارد البشرية",
+      "subtitle": "info@jobsadmire.com"
+    }
+  },
+  "fallback": {
+    "title_not_available": "المسمى الوظيفي غير متاح",
+    "location_not_available": "الموقع غير متاح",
+    "description_not_available": "<p>وصف الوظيفة غير متاح. </p>",
+    "requirement_not_available": "<p>المتطلبات غير متوفرة.</p>",
+    "date_not_available": "التاريخ غير متاح",
+    "error_loading": "خطأ في تحميل الوظيفة",
+    "unable_to_load_desc": "<p>تعذر تحميل الوصف الوظيفي. يرجى المحاولة مرة أخرى لاحقاً. </p> <p>",
+    "unable_to_load_req": "<p>تعذر تحميل المتطلبات. يرجى المحاولة مرة أخرى لاحقاً. </p> <p>"
+  }
+}

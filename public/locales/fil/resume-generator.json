@@ -1,0 +1,357 @@
+{
+  "title": "Tagabuo ng Resume Pro",
+  "description": "Gumawa ng isang kahanga-hangang propesyonal na resume sa loob lamang ng ilang minuto",
+  "steps": {
+    "personalInfo": "Personal na Impormasyon",
+    "achievements": "Mga Nakamit",
+    "workExperience": "Karanasan sa Trabaho",
+    "education": "Edukasyon",
+    "projects": "Mga Proyekto",
+    "skills": "Mga Kasanayan"
+  },
+  "stepIcons": {
+    "personalInfo": "👤",
+    "achievements": "🏆",
+    "workExperience": "💼",
+    "education": "🎓",
+    "projects": "🚀",
+    "skills": "⚡"
+  },
+  "stepDescriptions": {
+    "personalInfo": "Magkwento tungkol sa iyong sarili at magbigay ng magandang unang impresyon",
+    "achievements": "Ipakita ang iyong mga pangunahing nagawa at maging kakaiba sa karamihan",
+    "workExperience": "Detalyahin ang iyong propesyonal na paglalakbay at mga highlight sa karera",
+    "education": "Ibahagi ang iyong pinag-aralan at mga nakamit sa akademiko",
+    "projects": "I-highlight ang mga personal na proyekto na nagpapakita ng iyong mga kasanayan",
+    "skills": "Ipakita ang iyong mga teknikal at malambot na kasanayan na nagpapahalaga sa iyo"
+  },
+  "buttons": {
+    "back": "Balik sa {{hakbang}}",
+    "back_mobile": "Balik",
+    "continue": "Magpatuloy sa {{hakbang}}",
+    "continue_mobile": "Magpatuloy",
+    "saveSkill": "I-save ang Kasanayan",
+    "generateResume": "Gumawa ng Resume",
+    "saveProgress": "I-save ang Pag-usad",
+    "needHelp": "Kailangan mo ba ng tulong?",
+    "previewResume": "I-preview ang Resume",
+    "addAnotherExperience": "Magdagdag ng Isa Pang Karanasan",
+    "addAnotherEducation": "Magdagdag ng Isa Pang Edukasyon",
+    "addAnotherProject": "Magdagdag ng Isa Pang Proyekto",
+    "addAnotherSkill": "Magdagdag ng Isa Pang Kasanayan",
+    "addAchievement": "Magdagdag ng Nakamit",
+    "viewTemplates": "Tingnan ang mga Template",
+    "cancel": "Kanselahin",
+    "applyCrop": "Ilapat ang Pag-crop",
+    "choosePhoto": "Pumili ng Larawan"
+  },
+  "features": {
+    "fastEasy": {
+      "icon": "⚡",
+      "title": "Mabilis at Madali",
+      "description": "Gumawa ng propesyonal na resume sa loob lamang ng ilang minuto gamit ang aming madaling maunawaang sunud-sunod na proseso."
+    },
+    "beautifulTemplates": {
+      "icon": "🎨",
+      "title": "Magagandang Template",
+      "description": "Pumili mula sa aming koleksyon ng mga propesyonal na dinisenyong template ng resume."
+    },
+    "atsOptimized": {
+      "icon": "📊",
+      "title": "Na-optimize ang ATS",
+      "description": "Ang aming mga resume ay na-optimize upang makapasa sa Applicant Tracking Systems."
+    }
+  },
+  "proTips": {
+    "title": "Mga Tip sa Propesyonal: {{step}}",
+    "personalInfo": {
+      "tip1": {
+        "title": "Propesyonal na Email",
+        "description": "Gumamit ng propesyonal na email address batay sa iyong pangalan sa halip na mga palayaw o nakakatawang address."
+      },
+      "tip2": {
+        "title": "Buod na May Malaking Epekto",
+        "description": "Panatilihing maigsi ang iyong buod (3-5 pangungusap) at i-highlight ang iyong mga pinakakahanga-hangang kwalipikasyon at mga layunin sa karera."
+      },
+      "tip3": {
+        "title": "Propesyonal na Larawan",
+        "description": "Kung magsasama ng litrato, gumamit ng propesyonal na headshot na may neutral na background at angkop na kasuotan."
+      },
+      "tip4": {
+        "title": "Mga Detalye ng Pakikipag-ugnayan",
+        "description": "Isama lamang ang mahahalagang impormasyon sa pakikipag-ugnayan at tiyaking napapanahon at tumpak ang lahat ng detalye."
+      }
+    },
+    "achievements": {
+      "tip1": {
+        "title": "Sukatin ang mga Resulta",
+        "description": "Gumamit ng mga numero at porsyento upang masukat ang iyong mga nakamit (hal., \"Tumaas na benta ng 25%\" sa halip na \"Tumaas na benta\")."
+      },
+      "tip2": {
+        "title": "Mga Resulta vs. Mga Responsibilidad",
+        "description": "Tumutok sa mga resulta at kalalabasan sa halip na ilista ang mga responsibilidad sa trabaho para lamang mapansin mula sa ibang mga kandidato."
+      },
+      "tip3": {
+        "title": "Mga Parangal at Pagkilala",
+        "description": "Isama ang mga kaugnay na parangal, pagkilala, at karangalan na nagpapakita ng iyong kadalubhasaan at halaga."
+      },
+      "tip4": {
+        "title": "Gumamit ng mga Pandiwang Pang-aksyon",
+        "description": "Simulan ang mga paglalarawan ng tagumpay gamit ang mga makapangyarihang pandiwa ng aksyon tulad ng \"nakamit,\" \"pinangunahan,\" \"ipinatupad,\" o \"nilikha.\""
+      }
+    }
+  },
+  "progress": {
+    "stepsCompleted": "{{count}} ng 6 na hakbang",
+    "currentStep": "Kasalukuyan: Hakbang {{step}} - {{title}}",
+    "currentStep_mobile": "Kasalukuyan: Hakbang {{step}}",
+    "progressPercentage": "{{porsyento}}%"
+  },
+  "step1": {
+    "title": "PERSONAL NA IMPORMASYON",
+    "basicDetails": "Mga Pangunahing Detalye",
+    "firstName": "Pangalan",
+    "firstNamePlaceholder": "Ilagay ang iyong unang pangalan",
+    "firstNameRequired": "Kinakailangan ang unang pangalan",
+    "middleName": "Gitnang Pangalan",
+    "middleNameOptional": "(opsyonal)",
+    "middleNamePlaceholder": "hal. Herbert",
+    "lastName": "Apelyido",
+    "lastNamePlaceholder": "Ilagay ang iyong apelyido",
+    "lastNameRequired": "Kinakailangan ang apelyido",
+    "professionalProfile": "Propesyonal na Profile",
+    "profilePhoto": "Larawan sa Profile",
+    "uploadInstructions": "I-click para i-upload at i-crop ang iyong larawan",
+    "imageSizeError": "Ang laki ng file ay dapat na mas mababa sa 5MB",
+    "imageTypeError": "Dapat JPEG, PNG, o GIF ang file",
+    "designation": "Pagtatalaga",
+    "designationPlaceholder": "hal. Senior Accountant",
+    "address": "Tirahan",
+    "addressPlaceholder": "Ilagay ang iyong address",
+    "contactInformation": "Impormasyon sa Pakikipag-ugnayan",
+    "email": "Email Address",
+    "emailPlaceholder": "Ilagay ang iyong email",
+    "emailRequired": "Kinakailangan ang email",
+    "emailInvalid": "Hindi wasto ang email",
+    "phone": "Mga Numero ng Telepono",
+    "phonePlaceholder": "Ilagay ang iyong numero ng telepono",
+    "phoneRequired": "Kinakailangan ang numero ng telepono",
+    "summary": "Buod ng Propesyonal",
+    "summaryPlaceholder": "Maikling ilarawan ang iyong propesyonal na karanasan, mga pangunahing kasanayan, at mga layunin sa karera",
+    "summaryTip": "Ang isang mahusay na buod ay makakatulong sa iyo na mapansin. Panatilihin itong maigsi at makabuluhan.",
+    "cropperTitle": "I-crop ang Iyong Larawan sa Profile",
+    "zoom": "Mag-zoom: {{zoom}}x",
+    "preview": "Paunang Pagtingin:",
+    "cropInstructions": {
+      "drag": "• I-drag ang larawan upang iposisyon ito",
+      "zoom": "• Gamitin ang zoom slider para baguhin ang laki",
+      "cropArea": "• Ipinapakita ng bilog ang iyong lugar ng pagtatanim"
+    }
+  },
+  "step2": {
+    "description": "Ipakita ang iyong mga kahanga-hangang nagawa",
+    "noAchievements": "Wala pang naidagdag na mga nagawa. Idagdag ang iyong unang nagawa sa ibaba.",
+    "remove": "Alisin",
+    "delete": "Burahin",
+    "addNew": "Magdagdag ng Bagong Nakamit",
+    "achievementTitle": "Pamagat ng Nakamit",
+    "achievementTitlePlaceholder": "Ilagay ang pamagat ng tagumpay",
+    "date": "Petsa",
+    "achievementDescription": "Paglalarawan",
+    "achievementDescriptionPlaceholder": "Ilarawan ang iyong tagumpay",
+    "title": "ACHIEVEMENTS"
+  },
+  "step3": {
+    "workExperience": "Karanasan sa Trabaho #{{index}}",
+    "jobTitle": "Pamagat",
+    "jobTitlePlaceholder": "Ilagay ang titulo ng trabaho",
+    "jobTitleRequired": "Kinakailangan ang titulo ng trabaho",
+    "company": "Kumpanya / Organisasyon",
+    "companyPlaceholder": "Ilagay ang pangalan ng kumpanya",
+    "companyRequired": "Kinakailangan ang pangalan ng kumpanya",
+    "location": "Lokasyon",
+    "locationPlaceholder": "hal. San Francisco, CA",
+    "startDate": "Petsa ng Pagsisimula",
+    "startDateRequired": "Kinakailangan ang petsa ng pagsisimula",
+    "endDate": "Petsa ng Pagtatapos",
+    "endDateOptional": "(o iwanang blangko kung kasalukuyan)",
+    "endDateTip": "Iwanang blangko kung ito ang kasalukuyan mong posisyon",
+    "description": "Paglalarawan",
+    "descriptionPlaceholder": "Ilarawan ang iyong mga responsibilidad, tagumpay, at kasanayang ginamit sa tungkuling ito",
+    "descriptionTip": "Gumamit ng mga bullet point para mas madaling mabasa. Ituon ang pansin sa mga nagawa kaysa sa mga tungkulin.",
+    "title": "EXPERIENCE"
+  },
+  "step4": {
+    "educationEntry": "Edukasyon #{{index}}",
+    "school": "Paaralan",
+    "schoolPlaceholder": "Ilagay ang pangalan ng paaralan o unibersidad",
+    "schoolRequired": "Kinakailangan ang pangalan ng paaralan",
+    "degree": "Digri",
+    "degreePlaceholder": "hal. Batsilyer ng Agham",
+    "degreeRequired": "Kinakailangan ang digri",
+    "city": "Lungsod",
+    "cityPlaceholder": "hal. Boston, MA",
+    "startDate": "Petsa ng Pagsisimula",
+    "startDatePlaceholder": "mm/yyyy",
+    "startDateRequired": "Kinakailangan ang petsa ng pagsisimula",
+    "endDate": "Petsa ng Pagtatapos",
+    "endDateOptional": "(o Kasalukuyan)",
+    "endDatePlaceholder": "mm/yyyy o Kasalukuyan",
+    "description": "Paglalarawan",
+    "descriptionOptional": "(opsyonal)",
+    "descriptionPlaceholder": "Ilarawan ang iyong mga nagawa, GPA, mga kaugnay na kurso, atbp.",
+    "descriptionTip": "I-highlight ang mga kaugnay na kurso, honors, o mga ekstrakurikular na aktibidad na may kaugnayan sa iyong mga layunin sa karera.",
+    "title": "EDUCATION"
+  },
+  "step5": {
+    "projectEntry": "Proyekto #{{index}}",
+    "projectName": "Pangalan ng Proyekto",
+    "projectNamePlaceholder": "Ilagay ang pangalan ng proyekto",
+    "projectNameRequired": "Kinakailangan ang pangalan ng proyekto",
+    "projectLink": "Link ng Proyekto",
+    "projectLinkOptional": "(opsyonal)",
+    "projectLinkInvalid": "Hindi wasto ang link",
+    "description": "Paglalarawan",
+    "descriptionPlaceholder": "Ilarawan ang proyekto, mga teknolohiyang ginamit, at ang iyong tungkulin",
+    "descriptionTip": "I-highlight ang layunin, mga teknolohiyang ginamit, at ang iyong mga partikular na kontribusyon.",
+    "title": "PROJECTS",
+    "projectLinkPlaceholder": "https://example.com/project"
+  },
+  "step6": {
+    "skillsTitle": "Mga Kasanayang Teknikal at Propesyonal",
+    "skillsDescription": "Magdagdag ng mga kasanayang may kaugnayan sa mga posisyong inaaplayan mo",
+    "skillPlaceholder": "hal. JavaScript, Pamamahala ng Proyekto, Pagsusuri ng Datos",
+    "skillRequired": "Kinakailangan ang pangalan ng kasanayan",
+    "tipsTitle": "Mga Tip para sa Kasanayan sa Paglilista",
+    "tip1": "Isama ang pinaghalong teknikal (mahirap) na kasanayan at interpersonal (malambot) na kasanayan",
+    "tip2": "Unahin ang mga kasanayang nabanggit sa mga deskripsyon ng trabaho na iyong tinatarget",
+    "tip3": "Maging espesipiko sa mga teknikal na kasanayan (hal., \"React.js\" sa halip na \"JavaScript\" lamang)",
+    "title": "SKILLS"
+  },
+  "tooltip": {
+    "prefix": "Hakbang {{hakbang}}: {{pamagat}}",
+    "completed": "✓"
+  },
+  "alts": {
+    "cropPreviewAlt": "I-crop ang preview",
+    "previewAlt": "Preview",
+    "profileAlt": "Profile"
+  },
+  "templateSelector": {
+    "selectTemplate": "Pumili ng Template",
+    "selected": "✓ Napili",
+    "defaultSummary": "Placeholder ng buod para sa propesyonal na paggamit"
+  },
+  "sections": {
+    "skills": "Mga Kasanayan",
+    "education": "Edukasyon",
+    "experience": "Karanasan",
+    "workExperience": "Karanasan sa Trabaho",
+    "professionalSkills": "Mga Kasanayang Propesyonal",
+    "jobExperience": "Karanasan sa Trabaho",
+    "proSkills": "Mga Kasanayan sa Propesyonal",
+    "references": "Mga Sanggunian",
+    "projects": "Mga Proyekto",
+    "achievements": "Mga Nakamit",
+    "contact": "Makipag-ugnayan",
+    "aboutMe": "Tungkol sa Akin",
+    "profile": "Profile",
+    "previousEmployment": "Dating Trabaho",
+    "software": "Software",
+    "languages": "Mga Wika",
+    "reference": "Sanggunian",
+    "awards": "Mga Parangal",
+    "contactMe": "Makipag-ugnayan sa Akin"
+  },
+  "fallbacks": {
+    "noSummaryAvailable": "Walang buod na magagamit",
+    "unnamedSkill": "Hindi pinangalanang kasanayan",
+    "noDataAvailable": "Walang datos na magagamit",
+    "availableUponRequest": "Makukuha kapag hiniling"
+  },
+  "labels": {
+    "phone": "Telepono",
+    "email": "I-email",
+    "address": "Tirahan"
+  },
+  "actions": {
+    "generatePdf": "Bumuo ng PDF",
+    "generatingPdf": "Gumagawa ng PDF..."
+  },
+  "messages": {
+    "referencesAvailableOnRequest": "Magbibigay ng mga propesyonal na sanggunian kapag hiniling"
+  },
+  "resumeBuilder": "Tagabuo ng Resume",
+  "forms": {
+    "personalInfoTitle": "Personal na Impormasyon",
+    "buildProfileSubtitle": "Buuin ang iyong propesyonal na profile",
+    "profilePhoto": "Larawan sa Profile",
+    "profileAlt": "Profile",
+    "changePhoto": "Baguhin ang Larawan",
+    "uploadPhoto": "Mag-upload ng Larawan",
+    "headshotTip": "Mag-upload ng propesyonal na headshot. Inirerekomenda: 400x400px, JPG o PNG",
+    "firstName": "Pangalan",
+    "lastName": "Apelyido",
+    "placeholderFirstName": "Juan",
+    "placeholderLastName": "Usa",
+    "emailAddress": "Email Address",
+    "phoneNumber": "Numero ng Telepono",
+    "placeholderEmail": "Ilagay ang iyong email",
+    "placeholderPhone": "Ilagay ang iyong telepono",
+    "location": "Lokasyon",
+    "placeholderLocation": "hal. San Francisco, CA",
+    "placeholderLocationExample": "New York, NY",
+    "linkedinProfile": "Profile sa LinkedIn",
+    "placeholderLinkedIn": "linkedin.com/in/johndoe",
+    "websitePortfolio": "Website/Portfolio",
+    "placeholderPortfolio": "www.johndoe.com",
+    "professionalSummary": "Buod ng Propesyonal",
+    "placeholderSummary": "Maikling buod ng propesyon na nagbibigay-diin sa iyong mga pangunahing tagumpay, kasanayan, at layunin sa karera...",
+    "summaryHint": "Gawin itong maigsi at kaakit-akit",
+    "characters": "mga karakter",
+    "jobTitlePlaceholder": "Titulo ng trabaho",
+    "companyPlaceholder": "Pangalan ng kumpanya",
+    "locationPlaceholder": "Lokasyon",
+    "descriptionPlaceholder": "Ilarawan ang iyong mga responsibilidad at mga nagawa",
+    "experienceLabel": "Karanasan",
+    "jobTitle": "Titulo ng Trabaho",
+    "company": "Kumpanya",
+    "placeholderJobTitle": "Tagabuo ng Software",
+    "placeholderCompany": "Kompanya ng Teknolohiya Inc.",
+    "placeholderLocationExp": "San Francisco, CA",
+    "startDate": "Petsa ng Pagsisimula",
+    "endDate": "Petsa ng Pagtatapos",
+    "currentWorkHere": "Kasalukuyan akong nagtatrabaho dito",
+    "description": "Paglalarawan",
+    "addExperience": "Magdagdag ng Karanasan",
+    "educationLabel": "Edukasyon",
+    "degreePlaceholder": "Digri",
+    "universityPlaceholder": "Pangalan ng unibersidad",
+    "degree": "Digri",
+    "school": "Paaralan",
+    "placeholderDegree": "Batsilyer ng Agham sa Agham Pangkompyuter",
+    "placeholderSchool": "Unibersidad ng Teknolohiya",
+    "placeholderLocationEdu": "Boston, MA",
+    "gpaPlaceholder": "GPA (opsyonal)",
+    "gpaOptional": "GPA (opsyonal)",
+    "placeholderGpa": "3.8/4.0",
+    "addEducation": "Magdagdag ng Edukasyon",
+    "certificationLabel": "Sertipikasyon",
+    "certificationNamePlaceholder": "Pangalan ng sertipikasyon",
+    "issuerPlaceholder": "Tagapag-isyu",
+    "certificationName": "Pangalan ng Sertipikasyon",
+    "issuingOrganization": "Organisasyong Nag-isyu",
+    "dateObtained": "Petsa ng Pagkakuha",
+    "placeholderCertification": "Arkitekto ng Solusyon na Sertipikado ng AWS",
+    "placeholderIssuer": "Mga Serbisyo sa Web ng Amazon",
+    "addCertification": "Magdagdag ng Sertipikasyon",
+    "skillsPlaceholder": "JavaScript",
+    "addSkill": "Magdagdag ng Kasanayan",
+    "beginner": "Baguhan",
+    "intermediate": "Panggitna",
+    "advanced": "Maunlad",
+    "expert": "Eksperto",
+    "placeholderEmailExample": "john.doe@email.com",
+    "placeholderPhoneExample": "+1 (555) 123-4567"
+  }
+}

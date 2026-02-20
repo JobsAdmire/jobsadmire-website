@@ -1,0 +1,1817 @@
+{
+  "hero": {
+    "badge": {
+      "text": "فرصت‌های جدید موجود است"
+    },
+    "title": {
+      "findTheDream": "تحقق رویای",
+      "forYourself": "شغلی شما"
+    },
+    "animatedWords": [
+      "شغل",
+      "تیم",
+      "مسیر شغلی",
+      "همخوانی",
+      "استعداد",
+      "کارمند",
+      "نقش",
+      "موقعیت",
+      "حرفه",
+      "فرصت",
+      "استخدام"
+    ],
+    "subtitle": "اتصال استعدادهای برتر به فرصت‌های مناسب - چه کارفرما باشید و چه جویای کار!",
+    "search": {
+      "jobPlaceholder": "عنوان شغلی یا کلمات کلیدی",
+      "locationPlaceholder": "موقعیت مکانی یا دورکاری",
+      "loadingText": "در حال بارگذاری اطلاعات شغلی...",
+      "errorText": "خطا در بارگذاری اطلاعات شغلی",
+      "retryButton": "تلاش مجدد",
+      "moreResults": "نتایج بیشتر...",
+      "searchButton": "جستجوی فرصت‌ها"
+    },
+    "features": {
+      "jobRecruitment": {
+        "title": "استخدام شغلی",
+        "description": "یافتن استعدادهای برتر در سطح جهانی"
+      },
+      "immigrationServices": {
+        "title": "خدمات مهاجرت",
+        "description": "کمک‌های تخصصی ویزا"
+      },
+      "hrSolutions": {
+        "title": "راهکارهای منابع انسانی",
+        "description": "مدیریت کامل منابع انسانی"
+      }
+    },
+    "services": {
+      "sectionTitle": "چه کاری می‌توانیم برای شما انجام دهیم؟",
+      "sectionSubtitle": "خدمت مورد نظر خود را انتخاب کنید و اجازه دهید به شما در رسیدن به اهدافتان کمک کنیم",
+      "study": {
+        "label": "تحصیل",
+        "description": "ویزای دانشجویی و آموزش"
+      },
+      "migrate": {
+        "label": "مهاجرت",
+        "description": "اقامت دائم"
+      },
+      "work": {
+        "label": "کار",
+        "description": "مجوزهای کاری و مشاغل"
+      },
+      "visit": {
+        "label": "دعوت‌نامه الکترونیکی",
+        "description": "ویزای تجاری و توریستی"
+      },
+      "consultation": {
+        "title": "مطمئن نیستید به چه چیزی نیاز دارید؟",
+        "button": "دریافت مشاوره رایگان →",
+        "subtitle": "راهنمایی تخصصی در دسترس است"
+      }
+    },
+    "stats": {
+      "visaSuccess": {
+        "percentage": "98%",
+        "title": "نرخ موفقیت ویزا",
+        "subtitle": "سابقه اثبات شده"
+      },
+      "partners": {
+        "count": "500+",
+        "title": "شرکای شرکتی",
+        "subtitle": "شبکه جهانی"
+      }
+    }
+  },
+  "jobsInDemand": {
+    "title": "مشاغل مورد تقاضا",
+    "description": "تمام موقعیت‌های باز 100+ را در وب جستجو کنید. تخمین حقوق شخصی‌سازی‌شده خود را دریافت کنید. نظرات را درباره بیش از 30+ شرکت در سراسر جهان بخوانید.",
+    "showingJobs": "نمایش",
+    "jobs": "شغل",
+    "featured": "فرصت ویژه",
+    "company": "شرکت",
+    "position": "موقعیت",
+    "location": "مکان",
+    "salaryRange": "محدوده حقوق",
+    "experience": "تجربه",
+    "saveForLater": "ذخیره برای بعد",
+    "viewDetails": "مشاهده جزئیات",
+    "noJobsFound": "هیچ شغلی یافت نشد",
+    "tryAdjusting": "تنظیم معیارهای جستجو یا فیلتر خود را امتحان کنید",
+    "clearAllFilters": "پاک کردن همه فیلترها",
+    "seeMoreJobs": "مشاهده مشاغل بیشتر"
+  },
+  "meta": {
+    "title": "یافتن شغل و فرصت شغلی ایده‌آل | JobsAdmire",
+    "description": "شغل رویایی خود را با JobsAdmire کشف کنید - پلتفرم جهانی که متخصصان را با تیم‌ها، نقش‌ها و فرصت‌های بین‌المللی مناسب همراه با پشتیبانی ویزا متصل می‌کند.",
+    "keywords": "یافتن شغل و فرصت شغلی ایده‌آل, JobsAdmire, مشاغل, مسیر شغلی, استخدام, پشتیبانی ویزا, مشاغل بین‌المللی",
+    "ogTitle": "یافتن شغل و فرصت شغلی ایده‌آل | JobsAdmire",
+    "ogDescription": "شغل رویایی خود را با JobsAdmire کشف کنید - پلتفرم جهانی که متخصصان را با تیم‌ها، نقش‌ها و فرصت‌های بین‌المللی مناسب همراه با پشتیبانی ویزا متصل می‌کند."
+  },
+  "popularCategories": {
+    "badge": "کشف کنید",
+    "title": "دسته‌بندی‌های محبوب",
+    "description": "از مدیریت هتل، پذیرش تا مدیر فناوری اطلاعات، همه متخصصان می‌توانند به لیست فرصت‌های شغلی نگاه کنند، برآورد حقوق بر اساس نقشی که به دنبال آن هستید را ببینند و با خواندن نظرات شرکت‌ها در سراسر جهان بیاموزند.",
+    "exploreJobs": "کشف مشاغل",
+    "categories": {
+      "factoryWorker": "کارگر کارخانه",
+      "healthcare": "مراقبت‌های بهداشتی",
+      "informationTechnology": "فناوری اطلاعات",
+      "tourismHospitality": "گردشگری و مهمان‌نوازی",
+      "engineeringConstruction": "مهندسی و ساخت‌وساز",
+      "businessServices": "خدمات کسب‌وکار"
+    }
+  },
+  "immigrationCarousel": {
+    "header": {
+      "title": "مقاصد مهاجرتی جهانی",
+      "description": "مسیرهای ممتاز مهاجرت به مقصد رویایی خود را کشف کنید"
+    },
+    "navigation": {
+      "previous": "اسلاید قبلی",
+      "next": "اسلاید بعدی",
+      "goToSlide": "برو به اسلاید {{number}}",
+      "pause": "توقف پخش خودکار",
+      "play": "شروع پخش خودکار",
+      "pauseText": "توقف",
+      "playText": "پخش"
+    },
+    "common": {
+      "clients": "مشتریان",
+      "rating": "امتیاز"
+    },
+    "services": {
+      "canada": {
+        "title": "مهاجرت به کانادا",
+        "subtitle": "ورود سریع و برنامه‌های استانی",
+        "description": "سیستم ورود سریع کانادا، برنامه‌های نامزدی استانی و مسیرهای حمایت خانواده را برای کسب اقامت دائم طی کنید.",
+        "category": "اقامت دائم",
+        "buttonText": "🍁 آغاز رویای کانادایی شما"
+      },
+      "uk": {
+        "title": "مهاجرت به انگلیس",
+        "subtitle": "ویزای نیروی کار ماهر و استعداد جهانی",
+        "description": "از طریق ویزاهای نیروی کار ماهر، مسیرهای استعداد جهانی و مسیرهای تجدید دیدار خانواده به سیستم مهاجرت امتیازی انگلیس دسترسی پیدا کنید.",
+        "category": "ویزاهای کار و تحصیل",
+        "buttonText": "گشودن فرصت‌های انگلیس"
+      },
+      "usa": {
+        "title": "مهاجرت به آمریکا",
+        "subtitle": "کارت‌های سبز و ویزاهای کاری",
+        "description": "رویای آمریکایی را از طریق کارت‌های سبز مبتنی بر کار، مهاجرت خانوادگی و برنامه‌های ویزای سرمایه‌گذاری دنبال کنید.",
+        "category": "خدمات کارت سبز",
+        "buttonText": "🗽 تعقیب رویای آمریکایی"
+      },
+      "australia": {
+        "title": "مهاجرت به استرالیا",
+        "subtitle": "مهاجرت ماهر و نامزدی ایالتی",
+        "description": "اقامت دائم استرالیا را از طریق ویزاهای مستقل ماهر، نامزدی ایالتی و برنامه‌های حمایت کارفرما تضمین کنید.",
+        "category": "سیستم امتیازی",
+        "buttonText": "شروع سفر استرالیایی شما"
+      },
+      "turkey": {
+        "title": "مهاجرت به ترکیه",
+        "subtitle": "مجوزهای اقامت و مسیرهای سرمایه‌گذاری",
+        "description": "از طریق سرمایه‌گذاری ملکی، مجوزهای کار یا تجدید دیدار خانواده با گزینه‌های شهروندی سریع، اقامت در ترکیه را ایجاد کنید.",
+        "category": "سرمایه‌گذاری و اقامت",
+        "buttonText": "کشف اقامت ترکیه"
+      }
+    }
+  },
+  "serviceBanner": {
+    "default": {
+      "serviceLabel": "خدمات حرفه‌ای",
+      "title": "آماده تحول در مسیر شغلی خود هستید؟",
+      "description": "به هزاران متخصصی بپیوندید که با راهنمایی متخصصانه و خدمات پشتیبانی جامع ما، موفق به پیشرفت شغلی خود شده‌اند.",
+      "buttonText": "همین امروز شروع کنید"
+    },
+    "variants": {
+      "recruitment": {
+        "serviceLabel": "استخدام شغلی",
+        "title": "شغل رویایی خود را امروز پیدا کنید",
+        "description": "با کارفرمایان برتر در سراسر جهان ارتباط برقرار کنید و فرصت‌های همسو با مهارت‌ها و آرزوهای خود را کشف کنید.",
+        "buttonText": "مرور مشاغل"
+      },
+      "immigration": {
+        "serviceLabel": "خدمات مهاجرت",
+        "title": "دروازه شما به فرصت‌های جهانی",
+        "description": "با راهنمایی متخصصانه، فرآیندهای پیچیده مهاجرت را طی کنید و به رویاهای کار در خارج از کشور دست یابید.",
+        "buttonText": "شروع فرآیند مهاجرت"
+      },
+      "resume": {
+        "serviceLabel": "نویسنگی رزومه",
+        "title": "با یک رزومه حرفه‌ای متمایز شوید",
+        "description": "با رزومه‌های بهینه‌شده برای ATS که توسط متخصصان صنعت ساخته شده‌اند، توجه مدیران استخدام را جلب کنید.",
+        "buttonText": "ساخت رزومه من"
+      },
+      "coaching": {
+        "serviceLabel": "کوچینگ مصاحبه",
+        "title": "مصاحبه بعدی خود را تسخیر کنید",
+        "description": "با کوچینگ شخصی‌سازی شده از متخصصان صنعت، اعتماد به نفس و مهارت‌های مصاحبه را بسازید.",
+        "buttonText": "رزرو جلسه کوچینگ"
+      },
+      "visa": {
+        "serviceLabel": "پشتیبانی ویزا",
+        "title": "درخواست ویزای خود را ساده کنید",
+        "description": "کمک متخصصانه برای اسناد و فرآیندهای درخواست ویزاهای کاری، تحصیلی یا گردشگری دریافت کنید.",
+        "buttonText": "درخواست ویزا"
+      },
+      "skills": {
+        "serviceLabel": "توسعه مهارت",
+        "title": "مهارت‌های حرفه‌ای خود را ارتقا دهید",
+        "description": "با برنامه‌های آموزشی مرتبط با صنعت که توسط متخصصان طراحی شده‌اند، رقابتی بمانید.",
+        "buttonText": "کشف دوره‌ها"
+      }
+    }
+  },
+  "testimonials": {
+    "header": {
+      "badge": "مورد اعتماد رهبران صنعت",
+      "title": "داستان‌های موفقیت",
+      "description": "نظر مشتریان راضی ما را که خدمات و بینش‌های استثنایی ما را تجربه کرده‌اند، بشنوید."
+    },
+    "stats": {
+      "years": "سال",
+      "hires": "استخدام",
+      "retention": "نگهداری",
+      "support": "پشتیبانی"
+    },
+    "testimonialsList": [
+      {
+        "author": "احمد ر",
+        "position": "اپراتور ماشین",
+        "company": "راهکارهای فناوری",
+        "text": "Jobs Admire به من کمک کرد شغل ثابتی در یک کارخانه معروف پیدا کنم. فرآیند روان بود و تیمشان در هر مرحله راهنمایی کردند. اکنون درآمد مطمئن و آینده بهتری برای خانواده‌ام دارم. اکیداً توصیه می‌کنم!",
+        "highlight": "همخوانی فرهنگی"
+      },
+      {
+        "author": "محمد ک",
+        "position": "مالک کارخانه",
+        "company": "راهکارهای فناوری",
+        "text": "ما برای یافتن کارگران ماهر مشکل داشتیم تا اینکه با Jobs Admire همکاری کردیم. پلتفرم آنها کاندیداهای قابل اعتمادی را که کاملاً با نیازهای ما همخوانی داشتند، فراهم کرد. این بهره‌وری و کارایی ما را به طور چشمگیری بهبود بخشیده است.",
+        "highlight": "تخصص صنعتی"
+      },
+      {
+        "author": "سارا م.",
+        "position": "مدیر منابع انسانی",
+        "company": "راهکارهای فناوری",
+        "text": "یافتن استعداد مناسب در صنعت فناوری می‌تواند چالش‌برانگیز باشد، اما Jobs Admire آن را آسان کرد. ما به سرعت توسعه‌دهندگان ماهر را استخدام کردیم که زمان و تلاش ما را صرفه‌جویی کرد. پلتفرمی عالی برای تیم‌های در حال رشد!",
+        "highlight": "کاندیداهای باکیفیت"
+      },
+      {
+        "author": "دیوید ل.",
+        "position": "مدیر ساخت‌وساز",
+        "company": "صنایع BuildCorp",
+        "text": "Jobs Admire ما را با کارگران باتجربه ساخت‌وساز که پروتکل‌های ایمنی و استانداردهای کیفی را درک می‌کردند، متصل کرد. فرآیند استخدام کارآمد بود و ما روابط پایدار با کارمندان عالی ایجاد کرده‌ایم.",
+        "highlight": "تمرکز بر ایمنی"
+      },
+      {
+        "author": "ماریا گ.",
+        "position": "سرپرست انبار",
+        "company": "Logistics Pro",
+        "text": "به عنوان کسی که به ساعات کاری انعطاف‌پذیر نیاز داشت، Jobs Admire به من کمک کرد موقعیت ایده‌آل انبار را پیدا کنم. تیم نیازهای من را درک کرد و مرا با کارفرمایی هماهنگ کرد که به تعادل کار و زندگی ارزش می‌گذارد. نمی‌توانستم خوشحال‌تر باشم!",
+        "highlight": "تعادل کار و زندگی"
+      },
+      {
+        "author": "حسن ا.",
+        "position": "مدیر تولید",
+        "company": "راهکارهای صنعتی",
+        "text": "ما بیش از سه سال است که از Jobs Admire برای تأمین نیروی کارخانه تولیدی خود استفاده می‌کنیم. درک آنها از نیازهای صنعتی و توانایی یافتن تکنسین‌های ماهر استثنایی بوده است. یک شریک قابل اعتماد!",
+        "highlight": "همکاری بلندمدت"
+      }
+    ]
+  },
+  "navbar": {
+    "location": "آنتالیا، ترکیه",
+    "workingHours": "دوشنبه-جمعه 9 صبح تا 6 عصر",
+    "home": "خانه",
+    "about": "درباره ما",
+    "services": "خدمات",
+    "jobs": "مشاغل",
+    "visa": "دعوت‌نامه‌های ویزا",
+    "residencePermit": "اجازه اقامت",
+    "contact": "تماس",
+    "blog": "وبلاگ",
+    "cv": "سازنده رزومه",
+    "search": "جستجو",
+    "register": "ثبت‌نام",
+    "login": "ورود",
+    "toggleMenu": "تغییر منو",
+    "closeSearch": "بستن جستجو",
+    "searchTitle": "جستجوی مشاغل و خدمات",
+    "searchPlaceholder": "جستجو برای مشاغل، خدمات...",
+    "searchButton": "جستجو",
+    "popularSearches": "جستجوهای محبوب",
+    "closeMenu": "بستن منو",
+    "candidateHRCompanies": "نامزدها و شرکت‌های منابع انسانی",
+    "jobProvider": "ارائه‌دهنده شغل",
+    "partnerWithUs": "همکاری با ما",
+    "recruitmentAgency": "آژانس استخدام",
+    "resumeGenerator": "سازنده رزومه",
+    "megaMenu": {
+      "hero": {
+        "title": "خدمات حرفه‌ای",
+        "description": "راه‌حل‌های جامع برای نیازهای شغلی و مهاجرتی شما",
+        "button": "مشاهده همه خدمات"
+      },
+      "recruitmentServices": {
+        "title": "خدمات استخدام",
+        "items": {
+          "resumeService": {
+            "title": "خدمات رزومه",
+            "description": "نوشتن رزومه حرفه‌ای"
+          },
+          "globalJobPlacement": {
+            "title": "کاریابی جهانی",
+            "description": "فرصت‌های شغلی بین‌المللی"
+          },
+          "interviewCoaching": {
+            "title": "آموزش مصاحبه",
+            "description": "آماده‌سازی حرفه‌ای برای مصاحبه"
+          },
+          "careerCounselling": {
+            "title": "مشاوره شغلی",
+            "description": "راهنمایی شغلی متخصص"
+          },
+          "visaRelocation": {
+            "title": "ویزا و نقل مکان",
+            "description": "پشتیبانی ویزا و نقل مکان"
+          }
+        }
+      },
+      "skillServices": {
+        "title": "خدمات مهارتی",
+        "items": {
+          "skillDevelopment": {
+            "title": "توسعه مهارت",
+            "description": "آموزش مهارت‌های حرفه‌ای"
+          },
+          "remoteWork": {
+            "title": "کار از راه دور",
+            "description": "فرصت‌های شغلی از راه دور"
+          },
+          "talentAcquisition": {
+            "title": "جذب استعداد",
+            "description": "راه‌حل‌های استخدام استراتژیک"
+          },
+          "immigration": {
+            "title": "خدمات مهاجرت",
+            "description": "کمک به مهاجرت"
+          },
+          "jobsRecruitment": {
+            "title": "استخدام مشاغل",
+            "description": "راه‌حل‌های استخدام"
+          }
+        }
+      },
+      "immigration": {
+        "title": "مجوز اقامت ترکیه",
+        "items": {
+          "turkey": {
+            "title": "مجوز اقامت ترکیه",
+            "description": "خدمات مجوز اقامت ترکیه"
+          },
+          "workPermit": {
+            "title": "مجوز کار",
+            "description": "مجوز کار خود را دریافت کنید"
+          },
+          "citizenship": {
+            "title": "تابعیت ترکیه",
+            "description": "خدمات تابعیت ترکیه"
+          },
+          "visaInvitations": {
+            "title": "دعوت‌نامه‌های ویزا",
+            "description": "خدمات ویزا"
+          },
+          "hireWorkers": {
+            "title": "استخدام کارگر",
+            "description": "راه‌حل‌های تامین نیروی کار"
+          },
+          "companyRegistration": {
+            "title": "ثبت شرکت",
+            "description": "ثبت یک شرکت"
+          },
+          "dubai": {
+            "title": "مجوز اقامت دبی",
+            "description": "خدمات مجوز اقامت دبی"
+          },
+          "china": {
+            "title": "اجازه اقامت چین",
+            "description": "خدمات اجازه اقامت چین"
+          },
+          "kazakhstan": {
+            "title": "اجازه اقامت قزاقستان",
+            "description": "خدمات اجازه اقامت قزاقستان"
+          },
+          "albania": {
+            "title": "اجازه اقامت آلبانی",
+            "description": "خدمات اجازه اقامت آلبانی"
+          }
+        }
+      },
+      "visaFiling": {
+        "title": "دعوت‌نامه الکترونیکی ویزا",
+        "items": {
+          "turkey": {
+            "title": "ویزای ترکیه",
+            "description": "خدمات ویزای ترکیه"
+          },
+          "dubai": {
+            "title": "ویزای دبی",
+            "description": "خدمات ویزای دبی"
+          },
+          "kazakhstan": {
+            "title": "ویزای قزاقستان",
+            "description": "خدمات ویزای قزاقستان"
+          },
+          "albania": {
+            "title": "ویزای آلبانی",
+            "description": "خدمات ویزای آلبانی"
+          },
+          "portugal": {
+            "title": "ویزای پرتغال",
+            "description": "خدمات ویزای پرتغال"
+          }
+        }
+      }
+    },
+    "residenceDropdown": {
+      "title": "خدمات اجازه اقامت",
+      "items": {
+        "turkey": {
+          "title": "اجازه اقامت ترکیه",
+          "description": "خدمات اجازه اقامت ترکیه",
+          "href": "/immigration/turkey-residence-permit"
+        },
+        "dubai": {
+          "title": "اجازه اقامت دبی",
+          "description": "خدمات اجازه اقامت دبی",
+          "href": "/immigration/dubai-residence-permit"
+        },
+        "china": {
+          "title": "اجازه اقامت چین",
+          "description": "خدمات اجازه اقامت چین",
+          "href": "/immigration/china-residence-permit"
+        },
+        "kazakhstan": {
+          "title": "اجازه اقامت قزاقستان",
+          "description": "خدمات اجازه اقامت قزاقستان",
+          "href": "/immigration/kazakhstan-residence-permit"
+        },
+        "albania": {
+          "title": "اجازه اقامت آلبانی",
+          "description": "خدمات اجازه اقامت آلبانی",
+          "href": "/immigration/albania-residence-permit"
+        }
+      }
+    },
+    "popularSearchItems": {
+      "remoteJobs": "مشاغل از راه دور",
+      "softwareDeveloper": "توسعه‌دهنده نرم‌افزار",
+      "dataAnalyst": "تحلیل‌گر داده",
+      "projectManager": "مدیر پروژه"
+    },
+    "mobile": {
+      "servicesIntro": "مجموعه جامع خدمات حرفه‌ای ما را کاوش کنید",
+      "connectWithUs": "با ما در رسانه‌های اجتماعی ارتباط برقرار کنید",
+      "premiumServices": {
+        "title": "خدمات ویژه",
+        "description": "پشتیبانی با اولویت و نتایج تضمینی دریافت کنید",
+        "button": "ارتقا به ویژه",
+        "features": {
+          "prioritySupport": "پشتیبانی با اولویت",
+          "guaranteedResults": "نتایج تضمینی"
+        }
+      }
+    }
+  },
+  "footer": {
+    "brand": {
+      "tagline": "اتصال استعداد به فرصت",
+      "description": "توانمندسازی مشاغل و کسب‌وکارها از طریق راهکارهای نوآورانه منابع انسانی و خدمات استخدام شخصی‌سازی شده.",
+      "downloadProfile": "دانلود پروفایل شرکت"
+    },
+    "social": {
+      "facebook": "فیس‌بوک",
+      "instagram": "اینستاگرام",
+      "linkedin": "لینکدین"
+    },
+    "featuredServices": {
+      "servicesLabel": "خدمات",
+      "tabs": {
+        "findJobs": {
+          "title": "یافتن شغل",
+          "features": {
+            "searchVacancies": "جستجوی موقعیت‌های شغلی",
+            "createProfile": "ایجاد پروفایل",
+            "applyTracking": "پیگیری درخواست",
+            "careerAdvice": "مشاوره شغلی"
+          }
+        },
+        "hireTalent": {
+          "title": "استخدام استعداد",
+          "features": {
+            "postJobOpenings": "ارسال موقعیت‌های شغلی",
+            "resumeDatabase": "پایگاه داده رزومه",
+            "recruitmentSolutions": "راهکارهای استخدام",
+            "hrConsulting": "مشاوره منابع انسانی"
+          }
+        },
+        "partnerWithUs": {
+          "title": "همکاری با ما",
+          "features": {
+            "jobSeeker": "آیا شما جویای کار هستید؟",
+            "employer": "آیا شما کارفرما هستید؟",
+            "recruitmentAgency": "آیا شما آژانس استخدام هستید؟",
+            "hrConsultant": "آیا شما مشاور منابع انسانی هستید؟"
+          }
+        }
+      }
+    },
+    "navigation": {
+      "newLabel": "جدید",
+      "jobsAdmire": {
+        "title": "JobsAdmire",
+        "links": {
+          "aboutUs": "درباره ما",
+          "contactUs": "تماس با ما",
+          "blog": "بلاگ",
+          "companyCertifications": "گواهینامه‌های شرکت"
+        }
+      },
+      "resources": {
+        "title": "منابع",
+        "links": {
+          "residencePermitInfo": "اطلاعات مجوز اقامت",
+          "invitationLetterRequest": "درخواست نامه دعوت"
+        }
+      },
+      "jobProviders": {
+        "title": "ارائه‌دهندگان شغل",
+        "links": {
+          "findJobs": "یافتن شغل",
+          "resumeGenerator": "سازنده رزومه",
+          "resumeService": "خدمات رزومه",
+          "companyRegistration": "ثبت شرکت"
+        }
+      },
+      "jobSeekers": {
+        "title": "جویندگان کار",
+        "links": {
+          "browseJobs": "مرور مشاغل",
+          "cvBuilder": "سازنده رزومه",
+          "career": "مسیر شغلی",
+          "jobsRecruitment": "استخدام مشاغل",
+          "resumeService": "خدمات رزومه"
+        }
+      },
+      "employers": {
+        "title": "کارفرمایان",
+        "links": {
+          "postJob": "ارسال شغل",
+          "findCandidates": "یافتن کاندیداها",
+          "hrConsulting": "مشاوره منابع انسانی",
+          "premiumServices": "خدمات ممتاز",
+          "immigration": "مهاجرت"
+        }
+      },
+      "company": {
+        "title": "شرکت",
+        "links": {
+          "aboutUs": "درباره ما",
+          "blog": "بلاگ",
+          "contactUs": "تماس با ما",
+          "certifications": "گواهینامه‌ها"
+        }
+      }
+    },
+    "mapSection": {
+      "title": "ما را روی نقشه پیدا کنید",
+      "email": "ایمیل"
+    },
+    "newsletter": {
+      "title": "هشدارها و به‌روزرسانی‌های شغلی",
+      "placeholder": "ایمیل خود را وارد کنید",
+      "subscribe": "عضویت",
+      "success": "از عضویت شما متشکریم!"
+    },
+    "globalPresence": {
+      "title": "حضور جهانی",
+      "viewAll": "مشاهده همه مکان‌ها",
+      "locations": {
+        "turkey": {
+          "city": "ترکیه",
+          "address": "Tahılpazarı, Adnan Menderes Blv. Erkal Apt A Blok No: 7 İç Kapı No: 6, 07040 Muratpaşa Antalya, Türkiye",
+          "phone": " +90 555 827 65 85"
+        },
+        "pakistan": {
+          "city": "پاکستان",
+          "address": "Office # 1207, Kashif Center, Near Hotel Mehran, Main Shahrah e Faisal, Karachi.",
+          "phone": "+90 552 529 68 64"
+        },
+        "azerbaijan": {
+          "city": "آذربایجان",
+          "address": "Nizami küçəsi 203, AF business house 7- ci mərtəbə",
+          "phone": "+994 70 950 78 79"
+        },
+        "kazakhstan": {
+          "city": "قزاقستان",
+          "address": "به زودی"
+        }
+      }
+    },
+    "contacts": {
+      "turkey": {
+        "country": "ترکیه",
+        "city": "آنتالیا",
+        "address": "Tahılpazarı, Adnan Menderes Blv. Erkal Apt A Blok No: 7 İç Kapı No: 6, 07040 Muratpaşa/Antalya",
+        "phone": "+90 501 124 03 40",
+        "email": "info@jobsadmire.com",
+        "hours": "دوشنبه-جمعه: ۹:۰۰-۱۸:۰۰"
+      },
+      "pakistan": {
+        "country": "پاکستان",
+        "city": "کراچی",
+        "address": "Office # 1207, Kashif Center, Near Hotel Mehran, Main Shahrah e Faisal",
+        "phone": "0213 5682889",
+        "email": "info@jobsadmire.com",
+        "hours": "دوشنبه-جمعه: ۹:۰۰-۱۷:۰۰"
+      }
+    },
+    "certification": {
+      "companyName": "شرکت با مسئولیت محدود دفتر استخدام خصوصی Jobs Admire Sanayi Ve Ticaret Limited Şirket",
+      "description": "با مجوز شماره 1730 مورخ 19.09.2024 از آژانس استخدام ترکیه فعالیت می‌کند. طبق قانون شماره 4904، دریافت هزینه از جویندگان کار ممنوع است. برای شکایات خود می‌توانید به مرکز خدمات Kadıköy اداره استانی İŞKUR استانبول مراجعه کنید. İşKUR تلفن: 0216 418 34 55 Eğitim mah. خیابان 1.Açıkgöz. شماره:3 KADIKÖY/İSTANBUL"
+    },
+    "copyright": {
+      "text": "حق چاپ © {{year}} JOBS ADMİRE ÖZEL İSTİHDAM BÜROSU SANAYİ VE TİCARET LİMİTED ŞİRKETİ",
+      "taxNo": "شماره مالیات: 48422122"
+    },
+    "legal": {
+      "privacy": "سیاست حفظ حریم خصوصی",
+      "terms": "شرایط استفاده",
+      "cookies": "تنظیمات کوکی"
+    }
+  },
+  "servicesCarousel": {
+    "header": {
+      "badge": "خدمات حرفه‌ای",
+      "title": "خدمات حرفه‌ای ما",
+      "description": "از برنامه‌ریزی شغلی تا استقرار جهانی، ما خدمات حرفه‌ای سرتاسری ارائه می‌دهیم که برای تسریع رشد شغلی شما و گشودن درها به فرصت‌های بین‌المللی طراحی شده‌اند."
+    },
+    "navigation": {
+      "previous": "اسلاید قبلی",
+      "next": "اسلاید بعدی",
+      "goTo": "برو به",
+      "autoPlay": "خودکار",
+      "play": "پخش",
+      "pause": "توقف پخش خودکار",
+      "resume": "ادامه پخش خودکار",
+      "counter": "از"
+    },
+    "services": {
+      "resumeWriting": {
+        "title": "نویسنگی رزومه حرفه‌ای",
+        "subtitle": "اسناد شغلی بهینه‌شده برای ATS",
+        "description": "داستان شغلی خود را با رزومه‌های حرفه‌ای ساخته‌شده که از سیستم‌های خودکار عبور می‌کنند و توجه استخدام‌کنندگان را جلب می‌کنند، متحول کنید. نویسندگان متخصص ما می‌دانند مدیران استخدام در بیش از 80 صنعت به دنبال چه چیزی هستند و اطمینان می‌دهند که رزومه شما درها را به فرصت‌ها باز می‌کند.",
+        "features": [
+          "محتوای بهینه‌شده برای ATS",
+          "نویسنگی خاص صنعت",
+          "نرخ موفقیت مصاحبه 98.4%",
+          "زمان تحویل 4 روزه"
+        ],
+        "ctaPrimary": "ساخت رزومه من"
+      },
+      "globalJobPlacement": {
+        "title": "استخدام جهانی",
+        "subtitle": "فرصت‌های شغلی بین‌المللی",
+        "description": "از طریق شبکه گسترده بین‌المللی ما با کارفرمایان برتر جهانی ارتباط برقرار کنید. ما متخصصان ماهر را با فرصت‌های خارج از کشور هماهنگ می‌کنیم و پشتیبانی جامع از درخواست تا استقرار در مقصد رویایی شما را ارائه می‌دهیم.",
+        "features": [
+          "شبکه کارفرمایان جهانی",
+          "پشتیبانی ویزا شامل",
+          "کمک به یکپارچگی فرهنگی",
+          "پردازش سریع"
+        ],
+        "ctaPrimary": "یافتن مشاغل جهانی"
+      },
+      "interviewCoaching": {
+        "title": "کوچینگ مصاحبه",
+        "subtitle": "تسلط بر هر فرمت مصاحبه",
+        "description": "با کوچینگ مصاحبه شخصی‌سازی شده از متخصصان صنعت، اعتماد به نفس شکست‌ناپذیر بسازید. با مصاحبه‌های آزمایشی تمرین کنید، بازخورد دقیق دریافت کنید و استراتژی‌های اثبات‌شده برای عالی بودن در مصاحبه‌های رفتاری، فنی و اجرایی را بیاموزید.",
+        "features": [
+          "جلسات مصاحبه آزمایشی",
+          "بازخورد شخصی‌سازی شده",
+          "کوچینگ خاص صنعت",
+          "ساختن اعتماد به نفس"
+        ],
+        "ctaPrimary": "رزرو کوچینگ"
+      },
+      "careerCounselling": {
+        "title": "مشاوره شغلی",
+        "subtitle": "توسعه شغلی استراتژیک",
+        "description": "با ابزارهای ارزیابی جامع و راهنمایی متخصص، مسیر شغلی ایده‌آل خود را کشف کنید. مشاوران گواهی‌دار ما به شما کمک می‌کنند نقاط قوت، علایق و اهداف خود را همسو کنید تا درباره آینده حرفه‌ای خود تصمیمات آگاهانه بگیرید.",
+        "features": [
+          "ابزارهای ارزیابی شغلی",
+          "برنامه‌های توسعه شخصی‌سازی شده",
+          "مشاوران متخصص",
+          "راهنمایی هدف‌محور"
+        ],
+        "ctaPrimary": "شروع ارزیابی"
+      },
+      "visaSupport": {
+        "title": "خدمات پشتیبانی ویزا",
+        "subtitle": "فرآیند مهاجرت بی‌درز",
+        "description": "با راهنمایی متخصص و پشتیبانی جامع اسناد، درخواست‌های پیچیده ویزا را طی کنید. متخصصان مهاجرت ما اطمینان می‌دهند که درخواست‌های شما تمام الزامات ویزاهای کاری، تحصیلی یا اقامت دائم در سراسر جهان را برآورده می‌کند.",
+        "features": [
+          "تهیه اسناد",
+          "پردازش درخواست",
+          "پشتیبانی سفارت",
+          "کمک پیگیری"
+        ],
+        "ctaPrimary": "درخواست ویزا"
+      },
+      "skillDevelopment": {
+        "title": "آموزش توسعه مهارت",
+        "subtitle": "مهارت‌های حرفه‌ای آماده صنعت",
+        "description": "با برنامه‌های آموزشی عملی و شغل‌محور که توسط متخصصان صنعت طراحی شده‌اند، شغل خود را پیش ببرید. از مهارت‌های فنی تا مهارت‌های نرم، دوره‌های جامع ما شما را برای بازار کار رقابتی امروز با یادگیری عملی آماده می‌کند.",
+        "features": [
+          "برنامه درسی مرتبط با صنعت",
+          "پروژه‌های عملی",
+          "مربیان گواهی‌دار",
+          "پشتیبانی از استقرار شغلی"
+        ],
+        "ctaPrimary": "کشف دوره‌ها"
+      },
+      "remoteWork": {
+        "title": "فرصت‌های کار دورکاری",
+        "subtitle": "دسترسی به شغل دورکاری جهانی",
+        "description": "آزادی کار دورکاری را با فرصت‌های منتخب از کارفرمایان تایید‌شده جهانی باز کنید. ما متخصصان بااستعداد را با موقعیت‌های دورکاری قانونی در صنایع متعدد متصل می‌کنیم و تعادل کار و زندگی و پتانسیل درآمد بین‌المللی را ممکن می‌سازیم.",
+        "features": [
+          "مشاغل دورکاری تایید‌شده",
+          "فرصت‌های جهانی",
+          "زمان‌بندی انعطاف‌پذیر",
+          "تعادل کار و زندگی"
+        ],
+        "ctaPrimary": "یافتن مشاغل دورکاری"
+      },
+      "talentAcquisition": {
+        "title": "جذب استعداد",
+        "subtitle": "راهکارهای استخدام استراتژیک",
+        "description": "با خدمات جامع جذب استعداد ما، فرآیند استخدام خود را ساده‌سازی کنید. ما به سازمان‌ها کمک می‌کنیم تا از طریق فرآیندهای سیستماتیک و تکنیک‌های منبع‌یابی نوآورانه، کاندیداهای باکیفیت را به طور کارآمد جذب، ارزیابی و استخدام کنند.",
+        "features": [
+          "استخدام سرتاسری",
+          "غربالگری کاندیدا",
+          "هماهنگی مصاحبه",
+          "پشتیبانی از استقرار"
+        ],
+        "ctaPrimary": "استخدام استعداد"
+      },
+      "immigrationConsultation": {
+        "title": "مشاوره مهاجرت",
+        "subtitle": "پشتیبانی کامل از نقل مکان",
+        "description": "زندگی خود را با کمک مهاجرت جامع برای اقامت دائم و نقل مکان جهانی متحول کنید. مشاوران گواهی‌دار ما استراتژی‌های شخصی‌سازی شده و پشتیبانی کامل اسناد را برای برنامه‌های نیروی کار ماهر در سراسر جهان ارائه می‌دهند.",
+        "features": [
+          "اقامت دائم",
+          "برنامه‌های نیروی کار ماهر",
+          "مهاجرت خانوادگی",
+          "پشتیبانی از اسکان"
+        ],
+        "ctaPrimary": "شروع مهاجرت"
+      },
+      "jobRecruitment": {
+        "title": "خدمات استخدام شغلی",
+        "subtitle": "راهکارهای استخدام حرفه‌ای",
+        "description": "از طریق پلتفرم جامع استخدام شغلی ما با فرصت شغلی بعدی خود ارتباط برقرار کنید. ما شکاف بین متخصصان بااستعداد و کارفرمایان پیشرو را پر می‌کنیم و هماهنگی شغلی شخصی‌سازی شده و پشتیبانی استخدام را در صنایع متنوع ارائه می‌دهیم.",
+        "features": [
+          "الگوریتم هماهنگی شغلی",
+          "تخصص صنعتی",
+          "فرآیند استقرار سریع",
+          "راهنمایی شغلی"
+        ],
+        "ctaPrimary": "درخواست برای مشاغل"
+      }
+    }
+  },
+  "stats": {
+    "jobFulfillment": {
+      "label": "تکمیل شغل",
+      "subtitle": "از فصل گذشته"
+    },
+    "branches": {
+      "label": "شعبه‌ها",
+      "subtitle": "در شهرهای بزرگ"
+    },
+    "yearsExperience": {
+      "label": "سال تجربه",
+      "subtitle": "تخصص صنعتی"
+    },
+    "happyClients": {
+      "label": "مشتریان راضی",
+      "subtitle": "با 98% رضایت"
+    }
+  },
+  "features": {
+    "targetedRecruitment": {
+      "title": "استخدام هدفمند",
+      "description": "تطبیق دقیق نامزدها با الزامات شغلی."
+    },
+    "performanceTracking": {
+      "title": "ردیابی عملکرد",
+      "description": "معیارهای پیشرفته برای اندازه‌گیری موفقیت استخدام."
+    },
+    "qualityAssurance": {
+      "title": "تضمین کیفیت",
+      "description": "بررسی کامل همه نامزدها قبل از ارائه."
+    }
+  },
+  "whatsapp": {
+    "title": "Jobs Admire",
+    "ariaLabel": "چت در واتساپ"
+  },
+  "labels": {
+    "footer": {
+      "logoAlt": "لوگوی پورتال شغلی",
+      "paymentAmex": "American Express",
+      "paymentApplePay": "Apple Pay",
+      "paymentMastercard": "Mastercard",
+      "paymentVisa": "Visa",
+      "paymentGooglePay": "Google Pay",
+      "certificationAlt": "گواهینامه İŞKUR"
+    },
+    "visa": {
+      "translationError": "خطای ترجمه",
+      "unableToLoad": "امکان بارگذاری بخش مزایا برای زبان {{locale}} وجود ندارد",
+      "unableToLoadTranslations": "امکان بارگذاری ترجمه‌ها برای زبان {{locale}} وجود ندارد",
+      "checkTranslationFiles": "لطفاً فایل‌های ترجمه را بررسی کنید."
+    },
+    "disclaimer": {
+      "dismissAria": "بستن اخطار",
+      "title": "اطلاعیه مهم",
+      "body": "JobsAdmire یک مشاوره مهاجرت مستقل است. ما وابسته یا مورد تأیید هیچ مرجع دولتی نیستیم. ما ویزا یا مجوز اقامت صادر نمی‌کنیم؛ فقط مشاوره و کمک ارائه می‌دهیم.",
+      "dismissButton": "بستن"
+    },
+    "testimonials": {
+      "previousAria": "قبلی",
+      "nextAria": "بعدی",
+      "leftArrow": "فلش چپ",
+      "rightArrow": "فلش راست"
+    },
+    "blog": {
+      "previousAria": "وبلاگ قبلی",
+      "nextAria": "وبلاگ بعدی",
+      "curatingTitle": "گردآوری محتوای ارزشمند",
+      "loadingInsights": "در حال بارگذاری آخرین بینش‌های آموزشی...",
+      "unableToLoadContent": "امکان بارگذاری محتوا وجود ندارد",
+      "tryAgain": "تلاش مجدد",
+      "comingSoon": "به زودی",
+      "comingSoonDescription": "محتوای وبلاگ در راه است! به زودی برای بینش‌های آموزشی الهام‌بخش برگردید.",
+      "premiumBadge": "✨ محتوای آموزشی ویژه",
+      "titleEducational": "آموزشی",
+      "titleInsights": "بینش‌ها",
+      "discoverTransformative": "کشف",
+      "expertCareerGuidance": "راهنمایی شغلی متخصص",
+      "cuttingEdgeResources": "منابع آموزشی پیشرفته",
+      "thatAccelerate": "که مسیر تحصیلی شما را تسریع می‌کنند",
+      "latestUpdates": "آخرین به‌روزرسانی‌ها",
+      "expertInsights": "بینش‌های متخصص",
+      "careerGuidance": "راهنمایی شغلی",
+      "readFullArticle": "خواندن مقاله کامل",
+      "featured": "ویژه",
+      "exploreAllArticles": "کشف همه مقالات",
+      "goToBlog": "برو به وبلاگ {{number}}",
+      "autoPlaying": "در حال پخش خودکار",
+      "paused": "متوقف"
+    },
+    "templates": {
+      "resumeTemplates": "قالب‌های رزومه",
+      "newResume": "+ رزومه جدید",
+      "searchTemplates": "جستجوی قالب‌ها...",
+      "favorites": "علاقه‌مندی‌ها",
+      "recent": "اخیر",
+      "categories": "دسته‌بندی‌ها",
+      "noTemplatesFound": "قالبی یافت نشد",
+      "tryAdjustingSearch": "جستجو یا فیلترهای خود را تنظیم کنید",
+      "addToFavorites": "افزودن به علاقه‌مندی‌ها",
+      "removeFromFavorites": "حذف از علاقه‌مندی‌ها",
+      "editAria": "ویرایش",
+      "deleteAria": "حذف",
+      "shareAria": "اشتراک",
+      "comingSoon": "به زودی",
+      "selectATemplate": "انتخاب یک قالب",
+      "downloadPdf": "دانلود PDF",
+      "editResume": "ویرایش رزومه",
+      "selectTemplateToPreview": "قالبی از سمت چپ انتخاب کنید تا رزومه خود را پیش‌نمایش کنید",
+      "all": "همه"
+    },
+    "visaPage": {
+      "visaStatus": "وضعیت ویزا",
+      "processingTime": "زمان پردازش",
+      "validity": "اعتبار",
+      "visaFees": "هزینه ویزا",
+      "selectCountry": "انتخاب کشور",
+      "selectDestination": "انتخاب مقصد",
+      "liveChat": "چت آنلاین",
+      "whatsApp": "واتساپ",
+      "clickToCall": "کلیک برای تماس",
+      "callUsFree": "تماس رایگان با ما",
+      "visa": "ویزا",
+      "businessVisa": "ویزای تجاری",
+      "studentVisa": "ویزای دانشجویی",
+      "workVisa": "ویزای کاری",
+      "transitVisa": "ویزای ترانزیت",
+      "visaRequirementsFor": "الزامات ویزای {{destination}} برای شهروندان {{citizen}}",
+      "completeGuide": "راهنمای کامل الزامات ویزا، اسناد و فرآیند درخواست",
+      "visaRequired": "ویزا لازم است",
+      "visaNotRequired": "ویزا لازم نیست",
+      "tourismBusiness": "گردشگری و تجارت",
+      "workImmigration": "کار و مهاجرت",
+      "availableVisaTypes": "انواع ویزای موجود",
+      "additionalRequirements": "الزامات اضافی",
+      "biometricsRequired": "بیومتریک لازم است",
+      "biometricsNotRequired": "بیومتریک لازم نیست",
+      "interviewRequired": "مصاحبه لازم است",
+      "interviewNotRequired": "مصاحبه لازم نیست",
+      "fillOutApplication": "پر کردن فرم آنلاین درخواست ویزای الکترونیکی توریستی {{destination}}",
+      "getStarted": "شروع کنید",
+      "provideDigitalCopies": "کپی دیجیتال اسناد زیر را ارائه دهید:",
+      "requiredDocumentsForEntry": "اسناد لازم برای ورود:",
+      "applyForVisa": "درخواست آنلاین ویزای {{destination}}",
+      "passportControl": "کنترل گذرنامه",
+      "travelVisaRequirements": "الزامات ویزای سفر",
+      "journeyBegins": "گاهی سفر هزار مایلی با یک ویزا آغاز می‌شود.",
+      "checkDestination": "مقصد خود را بررسی کنید و آنلاین برای هر ویزایی در جهان درخواست دهید.",
+      "forCitizensOf": "برای شهروندان",
+      "travelingTo": "سفر به",
+      "checkRequirements": "بررسی الزامات",
+      "weHelpYou": "ما به شما کمک می‌کنیم الزامات را درک کنید، اسناد صحیح را جمع‌آوری کنید و برای مصاحبه آماده شوید.",
+      "yourTravelDestination": "مقصد سفر شما",
+      "visaType": "نوع ویزا",
+      "touristVisaConvenient": "ویزای توریستی (راحت)",
+      "yourCitizenship": "تابعیت شما",
+      "livingIn": "ساکن",
+      "applyNow": "همین الان درخواست دهید",
+      "backToSearch": "بازگشت به جستجو"
+    },
+    "general": {
+      "profileAlt": "پروفایل",
+      "bannerAlt": "تصویر بنر",
+      "noDataAvailable": "داده‌ای موجود نیست",
+      "whyChooseUsAlt": "چرا ما را انتخاب کنید",
+      "getStartedToday": "همین امروز شروع کنید",
+      "phone": "تلفن",
+      "email": "ایمیل",
+      "address": "آدرس",
+      "contact": "تماس",
+      "aboutMe": "درباره من",
+      "skills": "مهارت‌ها",
+      "achievements": "دستاوردها",
+      "experience": "تجربه",
+      "education": "تحصیلات",
+      "projects": "پروژه‌ها",
+      "references": "ارجاعات",
+      "contactMe": "تماس با من",
+      "jobExperience": "تجربه کاری",
+      "proSkills": "مهارت‌های حرفه‌ای",
+      "resumeBuilder": "سازنده رزومه",
+      "chooseTemplate": "انتخاب قالب",
+      "updateResume": "به‌روزرسانی رزومه!",
+      "generatePdf": "تولید PDF",
+      "ukFlagAlt": "پرچم انگلیس",
+      "pawAndHeartAria": "پنجه و قلب",
+      "pawAndAustraliaAria": "پنجه و استرالیا",
+      "cropPreviewAlt": "پیش‌نمایش برش",
+      "previewAlt": "پیش‌نمایش",
+      "removeReference": "حذف ارجاع",
+      "selectSortOrder": "انتخاب ترتیب مرتب‌سازی",
+      "jobsAdmireLogo": "لوگوی JobsAdmire",
+      "selectLanguageAria": "انتخاب زبان",
+      "partnersSectionDescription": "از شرکای خود که به ما در اتصال استعداد به فرصت در سراسر جهان کمک می‌کنند، عمیقاً سپاسگزاریم.",
+      "bannerImageAlt": "تصویر بنر",
+      "generatingPdf": "در حال تولید..."
+    },
+    "registerCompany": {
+      "title": "ثبت‌نام به عنوان شرکت",
+      "companyName": "نام شرکت",
+      "companyEmail": "ایمیل شرکت",
+      "phoneNumber": "شماره تلفن",
+      "websiteUrl": "آدرس وب‌سایت",
+      "industrySector": "بخش صنعت",
+      "companySize": "اندازه شرکت",
+      "companyAddress": "آدرس شرکت",
+      "country": "کشور",
+      "city": "شهر",
+      "fullAddress": "آدرس کامل",
+      "hrContactPerson": "منابع انسانی / شخص تماس",
+      "fullName": "نام کامل",
+      "position": "سمت",
+      "emailAddress": "آدرس ایمیل",
+      "recruitmentPreferences": "ترجیحات استخدام",
+      "jobCategoriesHiring": "دسته‌بندی‌های شغلی مورد استخدام",
+      "preferredNationalities": "تابعیت‌های ترجیحی نامزد (اختیاری)",
+      "jobTypesOffered": "انواع شغل ارائه‌شده (همه موارد مرتبط را انتخاب کنید)",
+      "documentsUpload": "بارگذاری اسناد",
+      "companyRegistrationDocument": "سند ثبت شرکت",
+      "optionalRecommended": "(اختیاری اما توصیه‌شده)",
+      "licenseIfAny": "پروانه (در صورت وجود)",
+      "clickToUpload": "کلیک برای بارگذاری یا کشیدن و رها کردن",
+      "pdfDocMax": "PDF, DOC, DOCX (حداکثر 5 مگابایت)",
+      "accountInformation": "اطلاعات حساب",
+      "username": "نام کاربری",
+      "password": "رمز عبور",
+      "confirmPassword": "تأیید رمز عبور",
+      "placeholderCompanyName": "نام شرکت را وارد کنید",
+      "placeholderEmail": "company@example.com",
+      "placeholderPhone": "+1 (555) 123-4567",
+      "placeholderWebsite": "https://www.company.com",
+      "selectIndustry": "انتخاب صنعت",
+      "selectCompanySize": "انتخاب اندازه شرکت",
+      "employees1_10": "۱ تا ۱۰ کارمند",
+      "employees11_50": "۱۱ تا ۵۰ کارمند",
+      "employees51_200": "۵۱ تا ۲۰۰ کارمند",
+      "employees201Plus": "۲۰۱+ کارمند",
+      "placeholderCountry": "کشور را وارد کنید",
+      "placeholderCity": "شهر را وارد کنید",
+      "placeholderAddress": "آدرس کامل را وارد کنید",
+      "placeholderFullName": "نام کامل را وارد کنید",
+      "placeholderPosition": "مثال: مدیر منابع انسانی",
+      "placeholderHrEmail": "hr@company.com",
+      "placeholderJobCategories": "مثال: توسعه نرم‌افزار، بازاریابی، فروش، خدمات مشتری",
+      "placeholderNationalities": "مثال: هر، آمریکا، کانادا، اتحادیه اروپا",
+      "placeholderUsername": "نام کاربری انتخاب کنید",
+      "placeholderPassword": "رمز عبور را وارد کنید",
+      "placeholderConfirmPassword": "رمز عبور را تأیید کنید",
+      "submitButton": "ثبت شرکت",
+      "fullTime": "تمام‌وقت",
+      "partTime": "پاره‌وقت",
+      "contract": "قراردادی",
+      "remote": "دورکاری",
+      "internship": "کارآموزی",
+      "industryTechnology": "فناوری",
+      "industryHealthcare": "مراقبت بهداشتی",
+      "industryFinance": "مالی",
+      "industryEducation": "آموزش",
+      "industryManufacturing": "تولید",
+      "industryRetail": "خرده‌فروشی",
+      "industryConstruction": "ساخت‌وساز",
+      "industryTransportation": "حمل‌ونقل",
+      "industryEnergy": "انرژی",
+      "industryOther": "سایر"
+    },
+    "registerCandidate": {
+      "title": "حساب کاربری خود را ایجاد کنید",
+      "subtitle": "به پلتفرم ما بپیوندید و فرصت شغلی بعدی خود را کشف کنید",
+      "personalInformation": "اطلاعات شخصی",
+      "fullName": "نام کامل",
+      "emailAddress": "آدرس ایمیل",
+      "phoneNumber": "شماره تلفن",
+      "optional": "(اختیاری)",
+      "preferredCountry": "کشور ترجیحی",
+      "jobInformation": "اطلاعات شغلی",
+      "desiredJobTitle": "عنوان شغل مورد نظر",
+      "generateProfileSummary": "تولید خلاصه پروفایل",
+      "generating": "در حال تولید...",
+      "profileSummary": "خلاصه پروفایل",
+      "accountSecurity": "امنیت حساب",
+      "password": "رمز عبور",
+      "confirmPassword": "تأیید رمز عبور",
+      "resumeUpload": "بارگذاری رزومه",
+      "optionalInformation": "اطلاعات اختیاری",
+      "highestQualification": "بالاترین مدرک تحصیلی",
+      "yearsOfExperience": "سال‌های تجربه",
+      "agreeTerms": "موافقم با",
+      "termsAndConditions": "شرایط و قوانین",
+      "needVisaHelp": "کمک برای ویزا/کار/مجوز اقامت می‌خواهم",
+      "submitButton": "ایجاد حساب",
+      "alreadyHaveAccount": "قبلاً حساب دارید؟",
+      "signInHere": "اینجا وارد شوید",
+      "placeholderFullName": "نام کامل خود را وارد کنید",
+      "placeholderEmail": "your.email@example.com",
+      "placeholderPhone": "+1 (555) 123-4567",
+      "selectCountry": "انتخاب کشور",
+      "placeholderJobTitle": "مثال: مهندس نرم‌افزار",
+      "placeholderProfileSummary": "خلاصه‌ای کوتاه از سوابق و اهداف حرفه‌ای شما...",
+      "placeholderPassword": "یک رمز عبور قوی ایجاد کنید",
+      "placeholderConfirmPassword": "رمز عبور را تأیید کنید",
+      "resumeUploadedSuccess": "با موفقیت بارگذاری شد!",
+      "dragDropResume": "رزومه را اینجا بکشید و رها کنید یا کلیک کنید",
+      "pdfDocOnly": "فقط فایل‌های PDF، DOC یا DOCX (حداکثر 5 مگابایت)",
+      "selectQualification": "انتخاب مدرک",
+      "highSchool": "دبیرستان",
+      "bachelors": "کارشناسی",
+      "masters": "کارشناسی ارشد",
+      "phd": "دکترا",
+      "other": "سایر",
+      "selectExperience": "انتخاب تجربه",
+      "experience0_1": "۰ تا ۱ سال",
+      "experience2_5": "۲ تا ۵ سال",
+      "experience6_10": "۶ تا ۱۰ سال",
+      "experience11_15": "۱۱ تا ۱۵ سال",
+      "experience15Plus": "۱۵+ سال",
+      "ok": "تأیید",
+      "fileTypeError": "خطای نوع فایل",
+      "fileTypeErrorMessage": "لطفاً یک فایل PDF یا DOC بارگذاری کنید.",
+      "generationFailed": "تولید ناموفق",
+      "generationFailedMessage": "خلاصه تولید نشد. لطفاً دوباره تلاش کنید.",
+      "apiError": "خطای API",
+      "apiErrorMessage": "اتصال به API ناموفق بود. شبکه خود را بررسی کنید."
+    },
+    "profile": {
+      "loadingProfile": "در حال بارگذاری پروفایل...",
+      "backToCandidates": "بازگشت به نامزدها",
+      "location": "موقعیت",
+      "experience": "تجربه",
+      "age": "سن",
+      "contact": "تماس",
+      "resume": "رزومه",
+      "readyToConnect": "آماده ارتباط؟",
+      "startConversation": "شروع گفتگو",
+      "recentlyJoined": "اخیراً پیوسته",
+      "greatVisibility": "دید عالی!",
+      "overview": "نمای کلی",
+      "experienceTab": "تجربه",
+      "education": "تحصیلات",
+      "portfolio": "نمونه کار",
+      "technicalSkills": "مهارت‌های فنی",
+      "areasOfExpertise": "حوزه‌های تخصص",
+      "aboutName": "درباره {{name}}",
+      "profileLinkCopied": "لینک پروفایل در کلیپبورد کپی شد!",
+      "getInTouch": "با {{name}} برای بحث درباره فرصت‌ها و آشنایی با تجربه او تماس بگیرید.",
+      "quickStats": "آمار سریع",
+      "skills": "مهارت‌ها",
+      "certifications": "گواهینامه‌ها",
+      "profileActivity": "فعالیت پروفایل",
+      "profileCreated": "پروفایل ایجاد شد",
+      "profileViews": "{{count}} بازدید پروفایل",
+      "skillsUpdated": "مهارت‌ها به‌روز شد",
+      "portfolioOptimized": "نمونه کار بهینه شد",
+      "topSkills": "مهارت‌های برتر",
+      "recruiterTips": "نکات استخدام‌کننده"
+    },
+    "humanResource": {
+      "understand": "درک",
+      "understandDescription": "با درک فرهنگ، چالش‌ها و اهداف منحصربه‌فرد سازمان شما، راهکارهای منابع انسانی سفارشی ایجاد می‌کنیم.",
+      "understandBullet1": "ارزیابی جامع سازمانی",
+      "understandBullet2": "مصاحبه با ذینفعان",
+      "understandBullet3": "تحلیل مبتنی بر داده",
+      "implement": "اجرا",
+      "implementDescription": "تیم متخصصان ما استراتژی‌ها و برنامه‌های منابع انسانی سفارشی را برای پاسخ به نیازهای خاص شما اجرا می‌کند.",
+      "implementBullet1": "راهکارهای منابع انسانی سفارشی",
+      "implementBullet2": "پشتیبانی مدیریت تغییر",
+      "implementBullet3": "یکپارچه‌سازی بی‌درز با سیستم‌های موجود",
+      "optimize": "بهینه‌سازی",
+      "optimizeDescription": "ما به طور مداوم فرآیندهای منابع انسانی شما را اندازه‌گیری، اصلاح و بهینه می‌کنیم تا بهبود و بازده سرمایه را پیش ببریم.",
+      "optimizeBullet1": "بررسی‌های منظم عملکرد",
+      "optimizeBullet2": "حلقه بازخورد مداوم",
+      "optimizeBullet3": "تنظیمات استراتژیک بر اساس نتایج",
+      "industriesWeServe": "صنایعی که خدمت می‌دهیم",
+      "industriesWeServeDescription": "تخصص منابع انسانی ما در صنایع متعدد با چالش‌های نیروی کار منحصربه‌فرد هر کدام گسترده است"
+    },
+    "submitResume": {
+      "step1Title": "بارگذاری رزومه",
+      "step1Description": "داستان شغلی خود را به اشتراک بگذارید",
+      "step2Title": "تحلیل هوش مصنوعی",
+      "step2Description": "مهارت‌های شما را تحلیل می‌کنیم",
+      "step3Title": "دریافت تطابق‌ها",
+      "step3Description": "مشاغل مناسب را کشف کنید",
+      "metricActiveJobs": "مشاغل فعال",
+      "metricSuccessStories": "داستان‌های موفقیت",
+      "metricTopCompanies": "شرکت‌های برتر",
+      "metricMatchAccuracy": "دقت تطابق",
+      "feature1Title": "تطابق هوشمند هوش مصنوعی",
+      "feature1Description": "الگوریتم‌های پیشرفته که پروفایل شغلی منحصربه‌فرد شما را درک می‌کنند و شما را با فرصت‌های همسو با اهدافتان تطابق می‌دهند.",
+      "feature2Title": "کشف هوشمند شغل",
+      "feature2Description": "فرصت‌های پنهان را از شبکه انحصاری کارفرمایان ویژه و استارتاپ‌های جویای استعداد کشف کنید.",
+      "feature3Title": "اعلان‌های لحظه‌ای",
+      "feature3Description": "با در دسترس قرار گرفتن موقعیت‌های جدید مطابق معیارهای شما، فوراً مطلع شوید. دیگر فرصت رویایی را از دست ندهید.",
+      "feature4Title": "حفاظت از حریم خصوصی",
+      "feature4Description": "اطلاعات شخصی شما رمزنگاری و امن است. در حین کمک به پیشرفت شغلی شما، به حریم خصوصی شما احترام می‌گذاریم."
+    },
+    "partnerRegister": {
+      "heroTitle1": "شروع مسیر شغلی",
+      "heroTitle2": "خود در ترکیه",
+      "heroSubtitle": "به صدها متخصصی بپیوندید که شغل رویایی خود را در ترکیه یافتند. از پردازش ویزا تا استقرار شغلی را انجام می‌دهیم - کاملاً رایگان برای نامزدها.",
+      "registerNow": "همین الان ثبت‌نام کنید - رایگان!",
+      "jobsPlaced": "شغل‌های قرار داده‌شده",
+      "visaSuccessRate": "نرخ موفقیت ویزا",
+      "countriesServed": "کشورهای تحت پوشش",
+      "freeToJoin": "عضویت رایگان",
+      "forCandidates": "برای نامزدها",
+      "whyWorkInTurkey": "چرا در ترکیه کار کنیم؟",
+      "whyWorkInTurkeyDescription": "فرصت‌ها و سبک زندگی فوق‌العاده‌ای که ترکیه به متخصصان بین‌المللی ارائه می‌دهد را کشف کنید.",
+      "howItWorks": "چگونه کار می‌کند",
+      "howItWorksDescription": "فرآیند ساده ۴ مرحله‌ای ما شما را از درخواست تا کار در ترکیه می‌رساند.",
+      "whatWeProvide": "چه ارائه می‌دهیم",
+      "whatWeProvideDescription": "همه آنچه برای انتقال شغلی موفق به ترکیه نیاز دارید.",
+      "benefit1Title": "پردازش رایگان ویزا",
+      "benefit1Description": "کمک کامل ویزا و مجوز کار بدون هیچ هزینه‌ای برای شما",
+      "benefit2Title": "پشتیبانی اسکان",
+      "benefit2Description": "کمک در یافتن مسکن مناسب نزدیک محل کار",
+      "benefit3Title": "حقوق رقابتی",
+      "benefit3Description": "دستمزد عادلانه مطابق استانداردهای کار ترکیه",
+      "benefit4Title": "حمایت قانونی",
+      "benefit4Description": "پشتیبانی حقوقی کامل و حمایت از حقوق کارگران",
+      "processStep1Title": "تکمیل پروفایل",
+      "processStep1Description": "درخواست و اسناد تفصیلی خود را ارسال کنید",
+      "processStep2Title": "تطابق شغلی",
+      "processStep2Description": "شما را با کارفرمایان مناسب در ترکیه تطابق می‌دهیم",
+      "processStep3Title": "اسناد",
+      "processStep3Description": "همه درخواست‌های ویزا را آماده و ارسال می‌کنیم",
+      "processStep4Title": "سفر به ترکیه",
+      "processStep4Description": "مسیر شغلی جدید خود را در ترکیه آغاز کنید",
+      "fact1Title": "اقتصاد در حال رشد",
+      "fact1Fact": "رشد ۵.۶٪ تولید ناخالص",
+      "fact1Description": "رشد اقتصادی قوی و ایجاد فرصت‌های شغلی جدید",
+      "fact2Title": "نیروی کار متنوع",
+      "fact2Fact": "بیش از ۵۰۰ هزار خارجی",
+      "fact2Description": "جامعه بزرگ بین‌المللی شاغل در ترکیه",
+      "fact3Title": "کیفیت زندگی",
+      "fact3Fact": "فرهنگ غنی",
+      "fact3Description": "کشور زیبا با تعادل عالی کار و زندگی",
+      "fact4Title": "موقعیت استراتژیک",
+      "fact4Fact": "اروپا و آسیا",
+      "fact4Description": "موقعیت ایده‌آل اتصال دو قاره",
+      "createYourProfile": "پروفایل خود را ایجاد کنید",
+      "createYourProfileDescription": "ثبت‌نام خود را تکمیل کنید تا با فرصت‌های شغلی مناسب در ترکیه تطابق داده شوید. کاملاً رایگان!",
+      "personalInformation": "اطلاعات شخصی",
+      "firstName": "نام *",
+      "lastName": "نام خانوادگی *",
+      "dateOfBirth": "تاریخ تولد *",
+      "gender": "جنسیت",
+      "nationality": "تابعیت *",
+      "placeholderFirstName": "نام خود را وارد کنید",
+      "placeholderLastName": "نام خانوادگی خود را وارد کنید",
+      "placeholderNationality": "مثال: پاکستانی، بنگلادشی",
+      "selectGender": "انتخاب جنسیت",
+      "male": "مرد",
+      "female": "زن",
+      "other": "سایر",
+      "registrationSuccess": "ثبت‌نام با موفقیت ارسال شد! پروفایل شما را بررسی می‌کنیم و ظرف ۳ تا ۵ روز کاری با فرصت‌های شغلی احتمالی با شما تماس می‌گیریم.",
+      "placeholderCurrentCountry": "الان کجا زندگی می‌کنید",
+      "placeholderCurrentCity": "شهر فعلی شما",
+      "placeholderPhone": "+92 xxx xxx xxxx",
+      "placeholderEmail": "your.email@example.com",
+      "selectStatus": "انتخاب وضعیت",
+      "single": "مجرد",
+      "married": "متأهل",
+      "divorced": "مطلقه",
+      "widowed": "همسر از دست داده",
+      "selectNumber": "انتخاب تعداد",
+      "children0": "۰",
+      "children1": "۱",
+      "children2": "۲",
+      "children3": "۳",
+      "children4Plus": "۴ یا بیشتر",
+      "placeholderJobTitle": "مثال: اپراتور ماشین، توسعه‌دهنده نرم‌افزار",
+      "industryExperience": "تجربه صنعتی",
+      "industryExperienceRequired": "تجربه صنعتی الزامی است",
+      "selectIndustry": "انتخاب صنعت",
+      "industryManufacturing": "تولید",
+      "industryConstruction": "ساخت‌وساز",
+      "industryTechnology": "فناوری/آیتی",
+      "industryHealthcare": "مراقبت بهداشتی",
+      "industryHospitality": "مهمان‌نوازی",
+      "industryEducation": "آموزش",
+      "industryAgriculture": "کشاورزی",
+      "industryLogistics": "لجستیک/حمل‌ونقل",
+      "industryRetail": "خرده‌فروشی/فروش",
+      "industrySecurity": "امنیت",
+      "industryOther": "سایر",
+      "selectExperience": "انتخاب تجربه",
+      "experience0_1": "۰ تا ۱ سال",
+      "experience1_3": "۱ تا ۳ سال",
+      "experience3_5": "۳ تا ۵ سال",
+      "experience5_10": "۵ تا ۱۰ سال",
+      "experience10Plus": "۱۰+ سال",
+      "placeholderSalary": "مثال: ۵۰۰ دلار، ۵۰٬۰۰۰ روپیه، ۱۰۰۰ یورو",
+      "expectedSalary": "حقوق مورد انتظار",
+      "selectSalaryRange": "انتخاب محدوده حقوق",
+      "salary17000_20000": "۱۷٬۰۰۰ - ۲۰٬۰۰۰ لیر",
+      "salary20000_25000": "۲۰٬۰۰۰ - ۲۵٬۰۰۰ لیر",
+      "salary25000_30000": "۲۵٬۰۰۰ - ۳۰٬۰۰۰ لیر",
+      "salary30000_40000": "۳۰٬۰۰۰ - ۴۰٬۰۰۰ لیر",
+      "salary40000Plus": "۴۰٬۰۰۰+ لیر",
+      "availabilityDate": "دسترسی",
+      "selectAvailability": "انتخاب دسترسی",
+      "availabilityImmediately": "فوری",
+      "availability1Month": "ظرف ۱ ماه",
+      "availability2Months": "ظرف ۲ ماه",
+      "availability3Months": "ظرف ۳ ماه",
+      "availabilityFlexible": "انعطاف‌پذیر",
+      "educationLevel": "سطح تحصیلات",
+      "educationLevelRequired": "سطح تحصیلات الزامی است",
+      "selectEducationLevel": "انتخاب سطح تحصیلات",
+      "educationPrimary": "دبستان",
+      "educationSecondary": "راهنمایی",
+      "educationHighSchool": "دبیرستان",
+      "educationDiploma": "دیپلم",
+      "educationBachelors": "کارشناسی",
+      "educationMasters": "کارشناسی ارشد",
+      "educationPhD": "دکترا",
+      "educationOther": "سایر",
+      "skills": "مهارت‌ها",
+      "placeholderSkills": "مثال: جوشکاری، رانندگی، آشپزی",
+      "turkishLevel": "سطح ترکی",
+      "englishLevel": "سطح انگلیسی",
+      "selectLevel": "انتخاب سطح",
+      "levelBasic": "مقدماتی",
+      "levelIntermediate": "متوسط",
+      "levelAdvanced": "پیشرفته",
+      "levelFluent": "روان",
+      "passportNumber": "شماره گذرنامه",
+      "placeholderPassport": "شماره گذرنامه را وارد کنید",
+      "motivation": "نامه انگیزشی",
+      "placeholderMotivation": "چرا می‌خواهید در ترکیه کار کنید؟",
+      "hearAboutUs": "چطور با ما آشنا شدید؟",
+      "selectHearAboutUs": "انتخاب گزینه",
+      "hearAboutGoogle": "گوگل",
+      "hearAboutFacebook": "فیس‌بوک",
+      "hearAboutFriend": "دوستان/معرف",
+      "hearAboutOther": "سایر",
+      "fieldOfStudy": "رشته تحصیلی",
+      "placeholderFieldOfStudy": "مثال: مهندسی مکانیک، علوم کامپیوتر",
+      "universityInstitution": "دانشگاه/مؤسسه",
+      "placeholderUniversity": "نام مدرسه/دانشگاه شما",
+      "graduationYear": "سال فارغ‌التحصیلی",
+      "placeholderGraduationYear": "۲۰۲۰",
+      "additionalCertifications": "گواهینامه‌های اضافی",
+      "placeholderAdditionalCertifications": "هر گواهینامه، دوره یا آموزش حرفه‌ای که گذرانده‌اید را فهرست کنید",
+      "skillsAndLanguages": "مهارت‌ها و زبان‌ها",
+      "professionalSkills": "مهارت‌های حرفه‌ای",
+      "placeholderProfessionalSkills": "مهارت‌های کلیدی، دانش نرم‌افزار، تجربه ماشین‌آلات و غیره را فهرست کنید",
+      "languagesYouSpeak": "زبان‌هایی که صحبت می‌کنید",
+      "turkishLanguageLevel": "سطح زبان ترکی",
+      "englishLanguageLevel": "سطح زبان انگلیسی",
+      "noTurkish": "بدون ترکی",
+      "noEnglish": "بدون انگلیسی",
+      "nativeFluent": "زبان مادری/روان",
+      "documentsAndLegal": "اسناد و اطلاعات حقوقی",
+      "placeholderPassportNumber": "شماره گذرنامه شما",
+      "passportExpiryDate": "تاریخ انقضای گذرنامه",
+      "criminalRecordStatus": "وضعیت سابقه کیفری",
+      "healthStatus": "وضعیت سلامت",
+      "cleanRecord": "سابقه پاک",
+      "minorOffenses": "جرائم جزئی",
+      "preferNotToSay": "ترجیح می‌دهم نگویم",
+      "excellent": "عالی",
+      "good": "خوب",
+      "fair": "متوسط",
+      "haveMedicalConditions": "مشکلات پزشکی دارم",
+      "hasWorkedAbroad": "قبلاً در خارج کار کرده‌ام",
+      "relocationPreferences": "ترجیحات نقل مکان",
+      "relocationType": "نوع نقل مکان",
+      "accommodationPreference": "ترجیح اسکان",
+      "selectPreference": "انتخاب ترجیح",
+      "temporary": "موقت (۱ تا ۲ سال)",
+      "longTerm": "بلندمدت (۳ تا ۵ سال)",
+      "permanentRelocation": "نقل مکان دائم",
+      "flexible": "انعطاف‌پذیر",
+      "companyProvided": "تأمین شرکت",
+      "ownArrangement": "ترتیب شخصی",
+      "sharedAccommodation": "اسکان مشترک",
+      "familyAccommodation": "اسکان خانوادگی"
+    },
+    "login": {
+      "logoAlt": "لوگو",
+      "welcomeTitle": "خوش آمدید",
+      "welcomeSubtitle": "به وب‌سایت",
+      "userLoginHeading": "ورود کاربر",
+      "agency": "آژانس",
+      "jobProvider": "ارائه‌دهنده شغل",
+      "candidate": "نامزد",
+      "username": "نام کاربری",
+      "password": "رمز عبور",
+      "rememberMe": "مرا به خاطر بسپار",
+      "loginButton": "ورود",
+      "placeholderUsername": "نام کاربری",
+      "placeholderPassword": "رمز عبور",
+      "forgotPassword": "رمز عبور را فراموش کرده‌اید؟"
+    },
+    "applyOnline": {
+      "title": "درخواست ویزای اوگاندا",
+      "subtitle": "درخواست ویزای توریستی خود را در دو مرحله ساده تکمیل کنید",
+      "stepApplication": "درخواست",
+      "stepPayment": "پرداخت",
+      "applicationDetails": "جزئیات درخواست",
+      "paymentDetails": "جزئیات پرداخت",
+      "visaTypeLabel": "ویزای الکترونیکی توریستی تا ۹۰ روز برای اوگاندا",
+      "email": "ایمیل",
+      "phone": "تلفن",
+      "citizenship": "تابعیت",
+      "entryDate": "تاریخ ورود",
+      "firstName": "نام",
+      "lastName": "نام خانوادگی",
+      "cardholderName": "نام دارنده کارت",
+      "cardNumber": "شماره کارت",
+      "expiry": "MM/YY",
+      "cvc": "CVC",
+      "footerCopyright": "© 2025 خدمات ویزای اوگاندا. تمامی حقوق محفوظ است.",
+      "placeholderEmail": "hamzahefz7885@gmail.com",
+      "placeholderPhone": "03172105055",
+      "placeholderFirstName": "hamza",
+      "placeholderLastName": "ali",
+      "placeholderCardholder": "hamza ali",
+      "placeholderCardNumber": "شماره کارت",
+      "placeholderExpiry": "MM/YY",
+      "placeholderCvc": "CVC",
+      "months": {
+        "jan": "ژانویه",
+        "feb": "فوریه",
+        "mar": "مارس",
+        "apr": "آوریل",
+        "may": "مه",
+        "jun": "ژوئن",
+        "jul": "ژوئیه",
+        "aug": "اوت",
+        "sep": "سپتامبر",
+        "oct": "اکتبر",
+        "nov": "نوامبر",
+        "dec": "دسامبر"
+      },
+      "feeBreakdownTitle": "تفکیک هزینه",
+      "visaService": "خدمات ویزا",
+      "embassyFee": "هزینه سفارت",
+      "serviceFee": "هزینه خدمات",
+      "total": "مجموع",
+      "visaTypeDescription": "ورود واحد (اقامت ۹۰ روزه) با پردازش ۳ روز کاری",
+      "visaTypeSelectLabel": "لطفاً گروه ویزا و اعتبار مورد نظر را انتخاب کنید *",
+      "visaTypeTourist": "ویزای الکترونیکی توریستی تا ۹۰ روز",
+      "visaTypeBusiness": "ویزای الکترونیکی تجاری تا ۹۰ روز",
+      "visaTypeTransit": "ویزای الکترونیکی ترانزیت تا ۷ روز",
+      "governmentFee": "هزینه دولتی",
+      "saveAndContinue": "ذخیره و ادامه",
+      "return": "بازگشت",
+      "submitOrder": "ثبت سفارش",
+      "termsAgreement": "بدین وسیله موافقم با",
+      "termsOfService": "شرایط استفاده",
+      "privacyStatement": "بیانیه حریم خصوصی",
+      "termsAgreementEnd": "و تأیید می‌کنم که تمام اطلاعات و اسنادی که ارائه می‌دهم تا آنجا که می‌دانم صحیح، دقیق و کامل است."
+    },
+    "blogCards": {
+      "searchPlaceholder": "جستجوی مقالات، موضوعات یا برچسب‌ها...",
+      "searchAriaLabel": "جستجو",
+      "enterYourEmail": "ایمیل خود را وارد کنید",
+      "newsletterCloseAria": "بستن پنجره خبرنامه",
+      "backToTopAria": "بازگشت به بالا",
+      "subscriberAlt": "مشترک",
+      "subscribeSuccess": "از عضویت شما در خبرنامه ما متشکریم!",
+      "enterValidEmail": "لطفاً یک آدرس ایمیل معتبر وارد کنید",
+      "categories": {
+        "careerAdvice": "مشاوره شغلی",
+        "jobInterviews": "مصاحبه‌های شغلی",
+        "resumeTips": "نکات رزومه",
+        "remoteWork": "کار از راه دور",
+        "industryInsights": "بینش‌های صنعتی"
+      },
+      "loadMore": "بارگذاری بیشتر"
+    },
+    "candidateForm": {
+      "personalInfo": "اطلاعات شخصی",
+      "professional": "حرفه‌ای",
+      "documents": "اسناد",
+      "jobCategoryTourism": "گردشگری و مهمان‌نوازی",
+      "jobCategoryFactory": "کارخانه",
+      "jobCategoryConstruction": "ساخت‌وساز",
+      "jobCategoryAgriculture": "کشاورزی",
+      "name": "نام",
+      "surname": "نام خانوادگی",
+      "motherName": "نام مادر",
+      "fatherName": "نام پدر",
+      "email": "ایمیل",
+      "phone": "تلفن",
+      "dob": "تاریخ تولد",
+      "gender": "جنسیت",
+      "height": "قد",
+      "weight": "وزن",
+      "address": "آدرس",
+      "country": "کشور",
+      "city": "شهر",
+      "state": "استان",
+      "placeOfBirth": "محل تولد",
+      "workerAbroadResidenceAddress": "آدرس اقامت کارگر در خارج",
+      "passportNumber": "شماره گذرنامه",
+      "videoLink": "لینک ویدیو",
+      "candidateLanguage": "زبان نامزد",
+      "otherLanguages": "سایر زبان‌ها",
+      "description": "توضیحات",
+      "workspace": "محل کار",
+      "password": "رمز عبور",
+      "jobCategory": "دسته شغلی",
+      "title": "عنوان",
+      "organization": "سازمان",
+      "startDate": "تاریخ شروع",
+      "endDate": "تاریخ پایان",
+      "reference": "ارجاع",
+      "placeholderName": "نام را وارد کنید",
+      "placeholderSurname": "نام خانوادگی را وارد کنید",
+      "placeholderEmail": "ایمیل را وارد کنید",
+      "placeholderPhone": "تلفن را وارد کنید",
+      "placeholderAddress": "آدرس را وارد کنید",
+      "placeholderCountry": "انتخاب کشور",
+      "placeholderCity": "شهر را وارد کنید",
+      "placeholderState": "استان را وارد کنید",
+      "placeholderPassport": "شماره گذرنامه را وارد کنید",
+      "placeholderVideoLink": "آدرس ویدیو را وارد کنید",
+      "placeholderDescription": "توضیحات را وارد کنید",
+      "selectGender": "انتخاب جنسیت",
+      "submit": "ارسال",
+      "addProject": "افزودن پروژه",
+      "addExperience": "افزودن تجربه",
+      "addQualification": "افزودن مدرک",
+      "addSkill": "افزودن مهارت",
+      "profilePhoto": "عکس پروفایل",
+      "resumeFile": "رزومه",
+      "passportFile": "گذرنامه",
+      "fullBodyPhoto": "عکس تمام‌قد",
+      "biometricPhoto": "عکس بیومتریک",
+      "uploadPhoto": "بارگذاری عکس",
+      "changePhoto": "تغییر عکس",
+      "validationRequired": "این فیلد الزامی است",
+      "successMessage": "درخواست با موفقیت ارسال شد",
+      "weightKg": "وزن (کیلوگرم) *",
+      "heightCm": "قد (سانتی‌متر) *",
+      "placeholderWeight": "وزن را وارد کنید",
+      "placeholderHeight": "قد را وارد کنید",
+      "uploadFullBodyPhoto": "بارگذاری عکس تمام‌قد *",
+      "supportedFormats": "فرمت‌های پشتیبانی‌شده: JPEG, JPG, PNG (حداکثر 5 مگابایت)",
+      "factorySkills": "مهارت‌های کارخانه",
+      "yearsOfExperience": "سال تجربه",
+      "constructionSkills": "مهارت‌های ساخت‌وساز",
+      "agricultureSkills": "مهارت‌های کشاورزی",
+      "placeholderFactorySkills": "مثال: بهره‌برداری ماشین، کنترل کیفیت",
+      "placeholderExperience": "سال تجربه",
+      "placeholderConstructionSkills": "مثال: نجاری، بنایی، برق",
+      "placeholderAgricultureSkills": "مثال: کشاورزی، برداشت",
+      "stateRequired": "استان الزامی است",
+      "placeOfBirthRequired": "محل تولد الزامی است",
+      "weightRequired": "وزن برای دسته گردشگری الزامی است",
+      "heightRequired": "قد برای دسته گردشگری الزامی است",
+      "passportNumberRequired": "شماره گذرنامه الزامی است",
+      "passportScanRequired": "اسکن گذرنامه الزامی است",
+      "firstName": "نام",
+      "lastName": "نام خانوادگی",
+      "personalInfoTitle": "اطلاعات شخصی",
+      "locationInfoTitle": "اطلاعات موقعیت",
+      "currentAddress": "آدرس فعلی *",
+      "stateProvince": "استان/ایالت *",
+      "professionalInfoTitle": "اطلاعات حرفه‌ای",
+      "documentInfoTitle": "اطلاعات اسناد",
+      "specificInformation": "اطلاعات خاص",
+      "placeholderFirstName": "نام خود را وارد کنید",
+      "placeholderLastName": "نام خانوادگی خود را وارد کنید",
+      "placeholderMotherName": "نام مادر را وارد کنید",
+      "placeholderFatherName": "نام پدر را وارد کنید",
+      "placeholderPhoneExample": "+1 (555) 123-4567",
+      "placeholderEmailExample": "your.email@example.com",
+      "genderMale": "مرد",
+      "genderFemale": "زن",
+      "placeholderCurrentAddress": "آدرس کامل فعلی خود را وارد کنید",
+      "placeholderStateProvince": "استان/ایالت",
+      "placeholderPlaceOfBirth": "محل تولد خود را وارد کنید",
+      "placeholderWorkerAbroad": "در صورت وجود آدرس اقامت خود در خارج را وارد کنید",
+      "selectProfession": "حرفه خود را انتخاب کنید",
+      "createPassword": "ایجاد رمز عبور *",
+      "placeholderCreatePassword": "یک رمز عبور امن ایجاد کنید",
+      "passwordLoginHint": "(برای ورود به پورتال CRM ما استفاده می‌شود.)",
+      "placeholderCandidateLanguage": "مثال: انگلیسی، اسپانیایی",
+      "placeholderOtherLanguages": "مثال: فرانسوی، آلمانی (با کاما جدا شده)",
+      "additionalDescription": "توضیحات اضافی",
+      "placeholderAdditionalDescription": "هر جزئیات، مهارت یا تجربه مرتبط اضافی را اینجا بنویسید.",
+      "resumeCvFile": "فایل رزومه/CV *",
+      "passportScanFile": "فایل اسکن گذرنامه *",
+      "supportedFormatsProfile": "فرمت‌های پشتیبانی‌شده: JPEG, JPG, PNG (حداکثر 5 مگابایت)",
+      "supportedFormatsResume": "فرمت‌های پشتیبانی‌شده: PDF, DOC, DOCX (حداکثر 2 مگابایت)",
+      "supportedFormatsPassport": "فرمت‌های پشتیبانی‌شده: JPEG, JPG, PNG, PDF (حداکثر 5 مگابایت)",
+      "supportedFormatsBiometric": "فرمت‌های پشتیبانی‌شده: JPEG, JPG, PNG (حداکثر 5 مگابایت)",
+      "supportedFormatsVideo": "فرمت‌های پشتیبانی‌شده: MP4, MOV, AVI (حداکثر 50 مگابایت)",
+      "selectedFile": "انتخاب‌شده:",
+      "videoFile": "فایل ویدیو",
+      "placeholderVideoLinkExample": "مثال: لینک یوتیوب یا ویمئو",
+      "formTitle": "فرم ثبت‌نام نامزد",
+      "formSubtitle": "اطلاعات خود را ارسال کنید و به تیم ما بپیوندید!",
+      "previous": "قبلی",
+      "nextStep": "مرحله بعد",
+      "submitting": "در حال ارسال...",
+      "submitApplication": "ارسال درخواست",
+      "dobRequired": "تاریخ تولد الزامی است",
+      "genderRequired": "جنسیت الزامی است",
+      "workerAbroadResidenceRequired": "آدرس اقامت کارگر در خارج الزامی است",
+      "jobCategoryRequired": "دسته شغلی الزامی است",
+      "candidateLanguageRequired": "زبان نامزد الزامی است",
+      "fullBodyPhotoRequiredTourism": "عکس تمام‌قد برای دسته گردشگری الزامی است",
+      "profilePhotoRequired": "عکس پروفایل الزامی است",
+      "resumeRequired": "رزومه الزامی است",
+      "profilePhotoMaxSize": "عکس پروفایل باید کمتر از 5 مگابایت باشد",
+      "resumeMaxSize": "رزومه باید کمتر از 2 مگابایت باشد",
+      "passportScanMaxSize": "اسکن گذرنامه باید کمتر از 5 مگابایت باشد",
+      "fullBodyPhotoMaxSize": "عکس تمام‌قد باید کمتر از 5 مگابایت باشد",
+      "biometricPhotoMaxSize": "عکس بیومتریک باید کمتر از 5 مگابایت باشد",
+      "videoMaxSize": "ویدیو باید کمتر از 50 مگابایت باشد",
+      "fixErrorsIntro": "لطفاً خطاهای زیر را برطرف کنید:\n\n",
+      "selectValidJobCategory": "لطفاً یک دسته شغلی معتبر انتخاب کنید",
+      "fileSizeErrorsIntro": "خطاهای اندازه فایل:\n\n",
+      "submitFailed": "ارسال درخواست ناموفق بود. اتصال اینترنت را بررسی کرده و دوباره تلاش کنید.",
+      "errorPrefix": "خطا: ",
+      "unknownError": "خطای ناشناخته رخ داد",
+      "errorSubmittingApplication": "خطا در ارسال درخواست:\n\n",
+      "referenceForm": {
+        "title": "ارجاعات حرفه‌ای",
+        "subtitle": "ارجاعات و مخاطبین حرفه‌ای خود را اضافه کنید",
+        "addReference": "افزودن ارجاع",
+        "noteTitle": "توجه: لطفاً ابتدا جزئیات نامزد شغلی را ایجاد کنید",
+        "noteDescription": "همه فیلدهای الزامی را برای اعتبارسنجی صحیح ارجاع تکمیل کنید",
+        "referenceNumber": "ارجاع #{{number}}",
+        "removeReference": "حذف ارجاع",
+        "organizationDetails": "جزئیات سازمان",
+        "titleLabel": "عنوان *",
+        "titlePlaceholder": "عنوان شغلی یا سمت",
+        "organizationLabel": "سازمان *",
+        "organizationPlaceholder": "نام شرکت یا سازمان",
+        "employmentPeriod": "دوره اشتغال",
+        "startDateLabel": "تاریخ شروع *",
+        "endDateLabel": "تاریخ پایان *",
+        "locationDetails": "جزئیات موقعیت",
+        "countryLabel": "کشور *",
+        "countryPlaceholder": "کشور",
+        "stateLabel": "استان *",
+        "statePlaceholder": "استان/ایالت",
+        "cityLabel": "شهر *",
+        "cityPlaceholder": "شهر",
+        "contactInformation": "اطلاعات تماس",
+        "contactPerson": "شخص تماس",
+        "contactPersonPlaceholder": "نام شخص تماس",
+        "phoneNumber": "شماره تلفن",
+        "phonePlaceholder": "+1 (555) 123-4567",
+        "emailAddress": "آدرس ایمیل",
+        "emailPlaceholder": "contact@company.com",
+        "resetForm": "بازنشانی فرم",
+        "saveReferences": "ذخیره ارجاعات"
+      },
+      "experienceForm": {
+        "projects": "پروژه‌ها",
+        "projectsSubtitle": "جزئیات پروژه‌های خود را اضافه کنید",
+        "addProject": "افزودن پروژه",
+        "projectNumber": "پروژه #{{number}}",
+        "experienceCandidateJobs": "مشاغل تجربه نامزد",
+        "experienceCandidateJobsSubtitle": "جزئیات مشاغل تجربه نامزد خود را اضافه کنید",
+        "addExperienceCandidateJob": "افزودن شغل تجربه نامزد",
+        "experienceCandidateJobNumber": "شغل تجربه نامزد #{{number}}",
+        "qualifications": "مدارک",
+        "qualificationsSubtitle": "جزئیات مدارک خود را اضافه کنید",
+        "addQualification": "افزودن مدرک",
+        "qualificationNumber": "مدرک #{{number}}",
+        "skills": "مهارت‌ها",
+        "skillsSubtitle": "جزئیات مهارت‌های خود را اضافه کنید",
+        "addSkill": "افزودن مهارت",
+        "skillNumber": "مهارت #{{number}}",
+        "typeLabel": "نوع *",
+        "selectType": "انتخاب نوع",
+        "typeTechnical": "مهارت‌های فنی",
+        "typeSoft": "مهارت‌های نرم",
+        "typeLanguage": "مهارت‌های زبانی",
+        "typeCertification": "گواهینامه",
+        "titleLabel": "عنوان *",
+        "titlePlaceholder": "عنوان {{item}} را وارد کنید",
+        "organizationLabel": "سازمان *",
+        "organizationPlaceholder": "نام سازمان/شرکت",
+        "startDateLabel": "تاریخ شروع *",
+        "endDateLabel": "تاریخ پایان *",
+        "referenceLabel": "ارجاع",
+        "referencePlaceholder": "شخص/تماس ارجاع",
+        "saveExperience": "ذخیره تجربه"
+      }
+    },
+    "referenceForm": {
+      "firstName": "نام",
+      "lastName": "نام خانوادگی",
+      "email": "ایمیل",
+      "phone": "تلفن",
+      "gender": "جنسیت",
+      "password": "رمز عبور",
+      "confirmPassword": "تأیید رمز عبور",
+      "placeholderFirstName": "نام را وارد کنید",
+      "placeholderLastName": "نام خانوادگی را وارد کنید",
+      "placeholderEmail": "ایمیل را وارد کنید",
+      "placeholderPhone": "تلفن را وارد کنید",
+      "placeholderPassword": "رمز عبور را وارد کنید",
+      "placeholderConfirmPassword": "رمز عبور را تأیید کنید",
+      "passwordsDoNotMatch": "رمزهای عبور مطابقت ندارند",
+      "accountCreatedSuccess": "حساب شما با موفقیت ایجاد شد.",
+      "verifyEmailTo": "لطفاً ایمیل خود را تأیید کنید تا",
+      "loginToDashboard": "وارد داشبورد شوید",
+      "submitted": "ارسال شد",
+      "submit": "ارسال"
+    },
+    "residenceHero": {
+      "nameRequired": "نام الزامی است",
+      "emailRequired": "ایمیل الزامی است",
+      "phoneRequired": "تلفن الزامی است"
+    },
+    "performance": {
+      "stats": {
+        "jobFulfillment": "تکمیل شغل",
+        "sinceLastQuarter": "از فصل گذشته",
+        "branches": "شعبه‌ها",
+        "acrossMajorCities": "در شهرهای بزرگ",
+        "yearsExperience": "سال تجربه",
+        "industryExpertise": "تخصص صنعتی",
+        "happyClients": "مشتریان راضی",
+        "withSatisfaction": "با ۹۸٪ رضایت"
+      },
+      "features": {
+        "targetedRecruitment": "استخدام هدفمند",
+        "targetedRecruitmentDesc": "تطبیق دقیق نامزدها با الزامات شغلی.",
+        "performanceTracking": "ردیابی عملکرد",
+        "performanceTrackingDesc": "معیارهای پیشرفته برای اندازه‌گیری موفقیت استخدام.",
+        "qualityAssurance": "تضمین کیفیت",
+        "qualityAssuranceDesc": "بررسی کامل همه نامزدها قبل از ارائه."
+      },
+      "growth": {
+        "trajectory": "مسیر رشد",
+        "title": "رشد پایدار سال به سال",
+        "description": "معیارهای ما بهبود مداوم عملکرد را در همه شاخص‌های کلیدی نشان می‌دهند. به گسترش دامنه و بهبود خدمات خود ادامه می‌دهیم."
+      },
+      "metrics": {
+        "title": "معیارهای عملکرد",
+        "subtitle": "نمایش تحلیلی تفصیلی",
+        "jobSuccessRate": "نرخ موفقیت شغلی",
+        "clientRetention": "نگهداری مشتری",
+        "candidateSatisfaction": "رضایت نامزد"
+      }
+    },
+    "jobs": {
+      "all": "همه",
+      "marketing": "بازاریابی",
+      "seo": "سئو",
+      "development": "توسعه",
+      "fulltime": "تمام‌وقت",
+      "parttime": "پاره‌وقت",
+      "contract": "قراردادی",
+      "freelance": "آزادکاری"
+    },
+    "jobRecruitment": {
+      "metaTitle": "خدمات استخدام شغلی | راهکارهای استخدام حرفه‌ای – JobsAdmire",
+      "metaDescription": "با خدمات استخدام JobsAdmire استعداد مناسب برای کسب‌وکار خود بیابید. راهکارهای استخدام سفارشی برای شرکت‌های در هر اندازه و صنعت ارائه می‌دهیم.",
+      "metaKeywords": "خدمات کاریابی جهانی، کار در خارج با پشتیبانی متخصص – JobsAdmire",
+      "ogTitle": "عنوان Open Graph شما",
+      "ogDescription": "توضیحات Open Graph شما",
+      "bannerTitle": "فرآیند استخدام خود را متحول کنید",
+      "bannerDescription": "با راهکارهای سرتاسری ما استخدام خود را ساده کنید. به سازمان‌ها کمک می‌کنیم کاندیدای واجد شرایط را به سرعت و کارآمد در همه صنایع و سطوح شغلی پیدا کنند.",
+      "bannerButtonText": "شروع استخدام",
+      "bannerServiceLabel": "متخصصان استخدام"
+    },
+    "turkeyCitizenship": {
+      "currentCitizenship": "تابعیت فعلی"
+    },
+    "agencyMentorForm": {
+      "requestSubmittedSuccess": "درخواست شما با موفقیت ثبت شد؛ بررسی می‌کنیم و به شما پاسخ می‌دهیم"
+    },
+    "search": {
+      "degree": "مدرک",
+      "allDegrees": "همه مدارک",
+      "noDegreeFound": "مدرکی یافت نشد",
+      "university": "دانشگاه",
+      "allUniversities": "همه دانشگاه‌ها",
+      "loadingUniversities": "در حال بارگذاری دانشگاه‌ها...",
+      "noUniversityFound": "دانشگاهی یافت نشد",
+      "program": "برنامه",
+      "allPrograms": "همه برنامه‌ها",
+      "loadingPrograms": "در حال بارگذاری برنامه‌ها...",
+      "pleaseSelectUniversity": "لطفاً یک دانشگاه انتخاب کنید",
+      "noProgramFound": "برنامه‌ای یافت نشد",
+      "country": "کشور",
+      "allCountries": "همه کشورها",
+      "city": "شهر",
+      "allCities": "همه شهرها",
+      "searchIn": "جستجو در {{entityName}}"
+    },
+    "filters": {
+      "openFilter": "باز کردن فیلتر",
+      "closeFilter": "بستن فیلتر",
+      "sortBy": "مرتب‌سازی بر اساس:",
+      "noFilters": "بدون فیلتر",
+      "clear": "پاک کردن"
+    },
+    "blogDetail": {
+      "loadingBlog": "در حال بارگذاری وبلاگ...",
+      "errorLoadingBlog": "خطا در بارگذاری وبلاگ",
+      "backToBlogs": "بازگشت به وبلاگ‌ها",
+      "blogNotFound": "وبلاگ یافت نشد",
+      "blogNotFoundMessage": "وبلاگی که به دنبال آن هستید یافت نشد.",
+      "save": "ذخیره",
+      "share": "اشتراک",
+      "linkCopied": "لینک در کلیپبورد کپی شد!",
+      "introduction": "مقدمه",
+      "conclusion": "نتیجه‌گیری",
+      "thankYouMessage": "از خواندن این مقاله متشکریم. امیدواریم آموزنده و ارزشمند بوده باشد.",
+      "writtenBy": "نویسنده:",
+      "publishedOn": "انتشار در",
+      "tableOfContents": "فهرست مطالب",
+      "content": "محتوا",
+      "stayUpdated": "به‌روز بمانید",
+      "newsletterDescription": "آخرین فرصت‌های تحصیلی را در صندوق ورودی خود دریافت کنید",
+      "subscribe": "عضویت",
+      "relatedArticles": "مقالات مرتبط",
+      "moreArticlesAbout": "مقالات بیشتر درباره",
+      "viewAllBlogPosts": "مشاهده همه پست‌های وبلاگ",
+      "minRead": "دقیقه مطالعه"
+    }
+  }
+}

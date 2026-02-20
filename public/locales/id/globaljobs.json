@@ -1,0 +1,289 @@
+{
+  "globaljob": {
+    "hero": {
+      "headline": {
+        "prefix": "Temukan milikmu",
+        "suffix": "Luar negeri"
+      },
+      "animatedWords": [
+        "Pekerjaan Impian",
+        "Karier",
+        "Peluang",
+        "Posisi",
+        "Masa depan",
+        "Kesuksesan"
+      ],
+      "description": "Terhubunglah dengan perusahaan-perusahaan global terkemuka melalui layanan penempatan kerja internasional kami. Mulai dari pencocokan pekerjaan yang dipersonalisasi hingga dukungan visa - kami mewujudkan impian karier global Anda.",
+      "cta": {
+        "text": "Temukan Peluang Global"
+      }
+    },
+    "showcase": {
+      "title": "Penempatan Kerja Global",
+      "subtitle": "Gerbang Anda menuju peluang karir internasional",
+      "worldMap": {
+        "countries": "Lebih dari 200 Negara",
+        "description": "Peluang kerja global menanti Anda."
+      },
+      "benefits": [
+        {
+          "iconKey": "tas kantor",
+          "title": "Pencocokan Pekerjaan",
+          "description": "Pencari peran yang sempurna",
+          "gradient": "gradien bg ke r dari zamrud 500 ke teal 600"
+        },
+        {
+          "iconKey": "pengguna",
+          "title": "Dukungan Visa",
+          "description": "Bantuan lengkap",
+          "gradient": "gradien latar belakang ke r dari biru 500 ke langit 600"
+        },
+        {
+          "iconKey": "Pin peta",
+          "title": "Relokasi",
+          "description": "Transisi yang mulus",
+          "gradient": "gradien bg ke r dari ungu 500 ke nila 600"
+        },
+        {
+          "iconKey": "Tautan eksternal",
+          "title": "Jaringan",
+          "description": "Koneksi global",
+          "gradient": "gradien bg ke r dari oranye 500 ke merah 600"
+        }
+      ]
+    },
+    "section": {
+      "header": {
+        "badge": "DIPERCAYAI OLEH PERUSAHAAN DI SELURUH DUNIA",
+        "title": {
+          "prefix": "Pekerjaan Global",
+          "highlight": "Penempatan"
+        },
+        "description": "Saatnya Anda memberikan kesan yang kuat kepada para pemberi kerja dengan resume yang dirancang secara profesional. Kami menyesuaikan setiap resume agar selaras dengan tujuan Anda dan harapan industri yang Anda inginkan, sehingga meningkatkan peluang keberhasilan Anda dengan layanan rekrutmen global."
+      },
+      "journey": {
+        "title": "Perjalanan Profesional Anda Dimulai di Sini",
+        "features": [
+          {
+            "title": "Pembuatan Resume yang Dipersonalisasi",
+            "description": "CV bukan hanya riwayat pekerjaan Anda. Kami menyesuaikan setiap resume untuk menyoroti keterampilan yang dapat ditransfer dan selaras dengan harapan industri—khususnya untuk pekerjaan di luar negeri bagi para profesional."
+          },
+          {
+            "title": "Koneksi Perusahaan Global",
+            "description": "Jaringan luas kami yang terdiri dari perusahaan-perusahaan global terkemuka yang merekrut talenta internasional memastikan keterampilan Anda sesuai dengan peluang karir internasional yang sesuai dengan aspirasi Anda."
+          },
+          {
+            "title": "Dukungan Pengembangan Karier",
+            "description": "Kami tidak hanya membantu Anda mendapatkan pekerjaan – kami bermitra dengan Anda untuk membangun jalur karier yang berkembang seiring dengan keterampilan dan aspirasi Anda, menawarkan dukungan langkah demi langkah untuk mendapatkan pekerjaan di luar negeri."
+          }
+        ],
+        "cta": {
+          "text": "Jelajahi Layanan Kami"
+        }
+      },
+      "testimonials": {
+        "title": "Kisah Sukses",
+        "reviews": [
+          {
+            "comment": "\"Kami kesulitan mencari pekerja terampil sampai kami bermitra dengan Jobs Admire. Platform mereka memberi kami kandidat yang andal dan sangat sesuai dengan kebutuhan kami.\"",
+            "name": "Mehmet K.",
+            "role": "Pemilik Bisnis",
+            "initials": "MK"
+          },
+          {
+            "comment": "\"Jobs Admire membantu saya menemukan pekerjaan tetap di sebuah pabrik ternama. Prosesnya lancar, dan tim mereka membimbing saya di setiap langkah. Sekarang saya memiliki penghasilan yang aman!\"",
+            "name": "Ahmed R.",
+            "role": "Penerima Penempatan",
+            "initials": "AR"
+          }
+        ]
+      },
+      "contact": {
+        "title": "Mari Terhubung",
+        "subtitle": "Ambil langkah pertama menuju karier global Anda.",
+        "form": {
+          "name": {
+            "label": "Nama Anda*",
+            "placeholder": "Masukkan nama Anda"
+          },
+          "email": {
+            "label": "Alamat Email*",
+            "placeholder": "Masukkan alamat email Anda"
+          },
+          "message": {
+            "label": "Pesan*",
+            "placeholder": "Masukkan pesan Anda"
+          },
+          "submit": "Kirim"
+        }
+      }
+    },
+    "careerHorizons": {
+      "header": {
+        "badge": "Solusi Karier Global",
+        "title": {
+          "prefix": "Memperluas Anda",
+          "highlight": "Cakupan Karier"
+        },
+        "description": "Mencari pekerjaan yang tepat di pasar global yang kompetitif bisa menjadi tantangan. Di JobsAdmire, kami menghubungkan para profesional berbakat dengan peluang kerja di seluruh dunia, membantu Anda mendapatkan peran yang memuaskan dan sesuai dengan keterampilan, pengalaman, dan tujuan karir Anda. Baik Anda berasal dari Pakistan, India, atau Filipina, penempatan kerja global kami dari Pakistan dan wilayah lain memberikan setiap profesional kesempatan yang adil untuk sukses."
+      },
+      "worldMap": {
+        "title": "Jaringan Global",
+        "locations": [
+          {
+            "name": "New York",
+            "id": 1,
+            "color": "#3B82F6",
+            "size": 6,
+            "delay": 0
+          },
+          {
+            "name": "London",
+            "id": 2,
+            "color": "#10B981",
+            "size": 8,
+            "delay": 2
+          },
+          {
+            "name": "Tokyo",
+            "id": 3,
+            "color": "#8B5CF6",
+            "size": 7,
+            "delay": 1
+          },
+          {
+            "name": "Singapura",
+            "id": 4,
+            "color": "#F59E0B",
+            "size": 6,
+            "delay": 3
+          },
+          {
+            "name": "Sydney",
+            "id": 5,
+            "color": "#EF4444",
+            "size": 7,
+            "delay": 4
+          },
+          {
+            "name": "Berlin",
+            "id": 6,
+            "color": "#6366F1",
+            "size": 5,
+            "delay": 5
+          }
+        ]
+      },
+      "hiring": {
+        "title": {
+          "prefix": "Perekrutan Tanpa Hambatan,",
+          "highlight": "Di mana pun di dunia"
+        },
+        "description": "Baik Anda mencari pekerjaan di negara baru atau ingin maju dalam industri Anda, layanan konsultasi pekerjaan luar negeri kami menyediakan panduan ahli, penempatan tenaga kerja internasional, dan strategi pencarian pekerjaan yang disesuaikan.",
+        "benefits": [
+          {
+            "iconKey": "teks file",
+            "title": "Optimalisasi resume",
+            "description": "Dirancang khusus untuk pasar lokal dengan kata kunci spesifik industri untuk memastikan keberhasilan dalam pencarian kerja bagi kandidat internasional."
+          },
+          {
+            "iconKey": "mikrofon",
+            "title": "Persiapan wawancara",
+            "description": "Sesi pelatihan dengan wawasan budaya untuk lokasi target Anda agar unggul dalam penempatan kerja internasional bagi para profesional."
+          },
+          {
+            "iconKey": "bola dunia",
+            "title": "Bantuan visa",
+            "description": "Bimbingan ahli melalui proses visa dan relokasi untuk mengamankan peluang kerja di luar negeri bagi para profesional Filipina, India, dan Pakistan."
+          }
+        ],
+        "fastTrack": {
+          "title": "Proses Jalur Cepat",
+          "description": "Pendekatan kami yang efisien memastikan Anda dapat beralih ke peran baru Anda dengan cepat dan efisien."
+        },
+        "cta": {
+          "text": "Jelajahi Layanan Kami"
+        }
+      },
+      "features": {
+        "title": "Apa yang Membedakan Kami",
+        "subtitle": "Pendekatan komprehensif kami memastikan Anda mendapatkan semua dukungan yang Anda butuhkan sepanjang perjalanan karier Anda.",
+        "items": [
+          {
+            "iconKey": "target",
+            "title": "Strategi yang Dipersonalisasi",
+            "description": "Peta jalan karier yang disesuaikan berdasarkan tujuan unik Anda dan penempatan kerja di luar negeri untuk pekerja terampil.",
+            "color": "teks-[#38B6FF]"
+          },
+          {
+            "iconKey": "Bagan batang 4",
+            "title": "Wawasan Industri",
+            "description": "Pengetahuan mendalam tentang tren pasar dan keterampilan yang dibutuhkan membantu kami memberikan solusi perekrutan global.",
+            "color": "teks-[#38B6FF]"
+          },
+          {
+            "iconKey": "tren naik",
+            "title": "Koneksi Global",
+            "description": "Akses ke jaringan luas perusahaan internasional yang mencari profesional seperti Anda.",
+            "color": "teks-[#38B6FF]"
+          }
+        ]
+      },
+      "jobSeekers": {
+        "title": "Untuk Pencari Kerja",
+        "premiumService": "Layanan Premium",
+        "learnMore": "Pelajari Lebih Lanjut Tentang",
+        "services": [
+          {
+            "iconKey": "pengguna",
+            "title": "Bimbingan Karier",
+            "description": "Para profesional kami siap memberi Anda saran tentang cara mencari pekerjaan di luar negeri dan mendukung perjalanan karier internasional Anda.",
+            "color": "teks-[#38B6FF]",
+            "bgColor": "bg-emerald-50",
+            "borderColor": "batas-[#38B6FF]",
+            "gradientFrom": "dari zamrud-50",
+            "gradientTo": "ke-[#38B6FF]0",
+            "accentColor": "bg-[#38B6FF]",
+            "id": 0
+          },
+          {
+            "iconKey": "teks file",
+            "title": "Pembuatan Resume",
+            "description": "Spesialis kami akan membantu Anda membuat resume yang menarik dan menonjol di mata perusahaan melalui layanan bantuan pencarian kerja di luar negeri kami.",
+            "color": "teks-[#38B6FF]",
+            "bgColor": "biru-bg-50",
+            "borderColor": "batas-[#38B6FF]",
+            "gradientFrom": "dari-biru-50",
+            "gradientTo": "ke-[#38B6FF]",
+            "accentColor": "bg-[#38B6FF]",
+            "id": 1
+          },
+          {
+            "iconKey": "mencari",
+            "title": "Penilaian",
+            "description": "Kami mengevaluasi kualifikasi Anda dan mencocokkan Anda dengan pekerjaan global terbaik untuk kandidat internasional.",
+            "color": "teks-[#38B6FF]",
+            "bgColor": "bg-indigo-50",
+            "borderColor": "batas-[#38B6FF]",
+            "gradientFrom": "dari indigo 50",
+            "gradientTo": "ke-[#38B6FF]",
+            "accentColor": "bg-[#38B6FF]",
+            "id": 2
+          },
+          {
+            "iconKey": "mikrofon",
+            "title": "Persiapan Wawancara",
+            "description": "Para profesional kami akan melatih Anda untuk setiap jenis wawancara guna memastikan Anda berhasil dan menonjol dalam program penempatan kerja internasional.",
+            "color": "teks-[#38B6FF]",
+            "bgColor": "bg-ungu-50",
+            "borderColor": "batas-[#38B6FF]",
+            "gradientFrom": "dari-[#38B6FF]",
+            "gradientTo": "ke-[#38B6FF]",
+            "accentColor": "bg-ungu-500",
+            "id": 3
+          }
+        ]
+      }
+    }
+  }
+}

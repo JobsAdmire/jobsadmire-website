@@ -1,0 +1,233 @@
+{
+  "header": {
+    "heroImageAlt": "İşe alım uzmanları",
+    "program_title": "Sertifikalı İşe Alım Ortağı Programı",
+    "main_title_prefix": "Liderlerle İş Ortaklığı",
+    "main_title_suffix": "İşe Alım Ajansları",
+    "description": "İşletmeleri çeşitli sektörlerdeki nitelikli, önceden taranmış profesyonellerle buluşturmak için güvenilir işe alım ajanslarıyla işbirliği yapıyoruz. Ağımıza katılın ve güvenilir işe alım ortaklıkları ile erişiminizi genişletin.",
+    "contact_us": "Bize Ulaşın",
+    "verified_candidates": "Doğrulanmış Adaylar",
+    "pre_screened": "Ön Taramalı"
+  },
+  "form": {
+    "title": "İşe Alım Ortağı Kaydı",
+    "subtitle": "JobsAdmire aracılığıyla nitelikli personeli işe almaya başlamak için bu formu doldurun",
+    "company_info": {
+      "title": "Şirket Bilgileri",
+      "company_name": "Şirket Adı *",
+      "company_name_placeholder": "Şirket adınızı girin",
+      "company_name_error": "Şirket adı gereklidir",
+      "contact_person": "İlgili Kişi *",
+      "contact_person_placeholder": "İrtibat kişisinin tam adı",
+      "contact_person_error": "İrtibat kişisi gereklidir",
+      "company_type": "Şirket Tipi *",
+      "company_type_placeholder": "Şirket türünü seçin",
+      "company_type_error": "Şirket türü gereklidir",
+      "types": {
+        "manufacturing": "İmalat/Fabrika",
+        "agriculture": "Tarım",
+        "tourism": "Turizm ve Ağırlama",
+        "construction": "İnşaat",
+        "retail": "Perakende ve Hizmetler",
+        "other": "Diğer"
+      },
+      "years_in_business": "Sektördeki Yıllar",
+      "years_placeholder": "Yılları seçin",
+      "years_options": {
+        "1_2": "1-2 yıl",
+        "3_5": "3-5 yıl",
+        "6_10": "6-10 yıl",
+        "10_plus": "10+ yıl"
+      },
+      "license_number": "İşletme Ruhsat Numarası",
+      "license_placeholder": "Lisans numarasını girin",
+      "employees_count": "Mevcut Çalışan Sayısı",
+      "employees_placeholder": "Aralık seçin",
+      "employees_options": {
+        "1_10": "1-10 çalışan",
+        "11_50": "11-50 çalışan",
+        "51_100": "51-100 çalışan",
+        "100_plus": "100+ çalışan"
+      }
+    },
+    "contact_info": {
+      "title": "İletişim Bilgileri",
+      "email": "E-posta Adresi *",
+      "email_required": "E-posta gereklidir",
+      "email_invalid": "E-posta geçersiz",
+      "phone": "Telefon Numarası *",
+      "phone_placeholder": "+90 xxx xxx xx xx",
+      "phone_required": "Telefon numarası gereklidir",
+      "country": "Ülke *",
+      "country_placeholder": "Ülkenizi girin",
+      "country_required": "Ülke gereklidir",
+      "city": "Şehir *",
+      "city_placeholder": "Şehrinizi girin",
+      "city_required": "Şehir gereklidir",
+      "address": "İş Adresi",
+      "address_placeholder": "Tam iş adresinizi girin",
+      "website": "Şirket Web Sitesi",
+      "email_placeholder": "company@example.com",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "staffing_needs": {
+      "title": "Personel Gereksinimleri",
+      "types_needed": "İhtiyaç Duyulan Personel Türleri",
+      "types_placeholder": "İstediğiniz pozisyonu seçin",
+      "positions": {
+        "housekeeping": "Kat Hizmetleri",
+        "waiter": "Garson/Garsoniçe",
+        "waiter_assistant": "Garson Asistanı",
+        "receptionist": "Resepsiyonist",
+        "guest_relations": "Misafir İlişkileri",
+        "bellboy": "Bellboy",
+        "animator": "Animatör / Etkinlik Koordinatörü",
+        "kitchen_assistant": "Mutfak Asistanı",
+        "specialized_worker": "Uzmanlaşmış Beceri Çalışanı",
+        "cnc_operator": "CNC Operatörü",
+        "packing_worker": "Paketleme İşçisi",
+        "tailor": "Terzi",
+        "forklift_operator": "Forklift Operatörü",
+        "material_handler": "Malzeme İşleyicisi",
+        "fruit_picker": "Meyve/Sebze Toplayıcı",
+        "greenhouse_worker": "Sera İşçisi",
+        "packing_sorting": "Paketleme ve Ayıklama Personeli",
+        "irrigation": "Sulama / Dikim Asistanı",
+        "animal_husbandry": "Hayvancılık (Süt Ürünleri/Çiftçilik)",
+        "general_labourer": "Genel İşçi",
+        "painter": "Ressam",
+        "electrician": "Elektrikçi",
+        "tile_fixer": "Fayans Tamircisi"
+      },
+      "industry_focus": "Birincil Endüstri Odağı",
+      "industry_placeholder": "Sektörünüzü seçin",
+      "industries": {
+        "factory": "Fabrika",
+        "agriculture": "Tarım",
+        "tourism": "Turizm",
+        "construction": "İnşaat"
+      },
+      "description_label": "Bize Personel İhtiyaçlarınızdan Bahsedin",
+      "description_placeholder": "Şirketinizi, mevcut personel ihtiyacınızı, doldurulacak pozisyon sayısını, gerekli becerileri ve herhangi bir özel gereksinimi açıklayın..."
+    },
+    "legal": {
+      "title": "Yasal Sözleşme",
+      "agree_terms_prefix": "Kabul ediyorum",
+      "terms_link": "Şartlar ve Koşullar",
+      "agree_terms_suffix": "ve ortaklık gerekliliklerini ve yükümlülüklerini anlamak. *",
+      "terms_error": "Hüküm ve koşulları kabul etmelisiniz",
+      "agree_privacy_prefix": "Bu belgeyi okuduğumu ve kabul ettiğimi onaylıyorum.",
+      "privacy_link": "Gizlilik Politikası",
+      "agree_privacy_suffix": "ve veri işleme prosedürleri. *",
+      "privacy_error": "Gizlilik politikasını kabul etmelisiniz"
+    },
+    "submit": {
+      "button": "Başvuru Gönder",
+      "submitting": "Gönderiyorum...",
+      "success_message": "Başvuru başarıyla gönderildi! Başvurunuzu inceleyeceğiz ve 2-3 iş günü içinde sizinle iletişime geçeceğiz.",
+      "footer_message": "Başvurunuzu inceleyeceğiz ve 2-3 iş günü içinde sizinle iletişime geçeceğiz."
+    }
+  },
+  "why_partner": {
+    "title": "Neden JobsAdmire ile Ortak Olmalısınız?",
+    "subtitle": "İşletmeleri nitelikli çalışanlarla buluşturuyor ve uluslararası işe alımın tüm karmaşıklıklarını ele alıyoruz",
+    "items": {
+      "global_network": {
+        "title": "Küresel İşe Alım Ağı",
+        "description": "Geniş bir uluslararası yetenek havuzuna erişim sağlayın ve farklı sektörlerde nitelikli adaylar arayan doğrulanmış işverenlerle bağlantı kurun."
+      },
+      "trusted_brand": {
+        "title": "Güvenilir Marka ve Yasal Uyumluluk",
+        "description": "Şeffaf, etik ve devletle uyumlu operasyonlarıyla tanınan lisanslı bir işe alım ajansıyla ortaklık kurun."
+      },
+      "ai_driven": {
+        "title": "Yapay Zeka Odaklı İşe Alım Platformu",
+        "description": "Aday takibi, başvuru yönetimi ve müşterilerle sorunsuz iletişim için akıllı işe alım araçlarımızdan yararlanın."
+      },
+      "end_to_end": {
+        "title": "Uçtan Uca Destek",
+        "description": "Aday bulmadan vize ve dokümantasyon desteğine kadar, sorunsuz işe alım ve işe yerleştirme sağlamak için her adımı ele alıyoruz."
+      },
+      "commission": {
+        "title": "Cazip Komisyon Yapısı",
+        "description": "İşveren ortaklık programımız aracılığıyla her başarılı yerleştirme için rekabetçi komisyonlar ve yinelenen teşvikler kazanın."
+      },
+      "dedicated_team": {
+        "title": "Özel Ortaklık Ekibi",
+        "description": "İşe alım başarınızı artırmanıza yardımcı olmak için ortaklık ekibimizden sürekli destek, rehberlik ve güncellemeler alın."
+      }
+    }
+  },
+  "industry_expertise": {
+    "title": "Hizmet Verdiğimiz Sektörler",
+    "subtitle": "Türkiye'deki kilit sektörlerde kalifiye personel sağlıyoruz",
+    "items": {
+      "factory": {
+        "title": "Fabrika",
+        "description": "İmalat ve üretim hattı çalışanları"
+      },
+      "agriculture": {
+        "title": "Tarım",
+        "description": "Çiftlik çalışanları ve tarım uzmanları"
+      },
+      "tourism": {
+        "title": "Turizm",
+        "description": "Otel personeli, rehberler ve ağırlama çalışanları"
+      },
+      "construction": {
+        "title": "İnşaat",
+        "description": "İnşaatçılar, mühendisler ve inşaat işçileri"
+      }
+    }
+  },
+  "platform_features": {
+    "title": "İşe Alım Platformumuz",
+    "subtitle": "İşletmeniz için doğru personeli bulmak için kolaylaştırılmış teknoloji ve uzman desteği",
+    "items": {
+      "verified_candidates": {
+        "title": "Doğrulanmış Adaylar",
+        "description": "Tüm adaylar önceden taranır ve doğrulanır"
+      },
+      "quick_placement": {
+        "title": "Hızlı Yerleştirme",
+        "description": "Ortalama yerleştirme süresi 2-3 hafta"
+      },
+      "document_processing": {
+        "title": "Belge İşleme",
+        "description": "Tüm çalışma izinlerini ve yasal evrak işlerini biz hallediyoruz"
+      },
+      "ongoing_support": {
+        "title": "Devam Eden Destek",
+        "description": "Yerleştirme sonrası sürekli destek"
+      }
+    }
+  },
+  "benefits": {
+    "title": "Ortaklık Avantajları",
+    "subtitle": "Halihazırda JobsAdmire ile çalışan yüzlerce işletmeye katılın",
+    "items": {
+      "talent_pool": {
+        "title": "Önceden Taranmış Yetenek Havuzu",
+        "description": "Türkiye'de çalışmaya hazır nitelikli adaylara erişin"
+      },
+      "fast_process": {
+        "title": "Hızlı İşe Alım Süreci",
+        "description": "Kolaylaştırılmış işe alım sistemimizle pozisyonları hızla doldurun"
+      },
+      "legal_compliance": {
+        "title": "Yasal Uygunluk",
+        "description": "Tüm çalışma izinlerini ve vize belgelerini biz hallediyoruz"
+      },
+      "industry_matching": {
+        "title": "Sektöre Özel Eşleştirme",
+        "description": "Özel sektör ihtiyaçlarınızla eşleşen adaylar bulun"
+      }
+    }
+  },
+  "contact_footer": {
+    "title": "Ekibinizi Kurmaya Hazır mısınız?",
+    "description": "İşe alım hizmetlerimiz hakkında sorularınız mı var? Özel ekibimiz, işletmeniz için mükemmel personeli bulmanıza yardımcı olmaya hazır.",
+    "business_hours": "Çalışma Saatleri: Pazartesi - Cuma, Sabah 9:00 - Akşam 6:00 (Türkiye Saati)",
+    "response_time": "Ortalama Yanıt Süresi: Mesai saatleri içinde 2 saat içinde"
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "categories": {
+    "all": "الكل",
+    "careerTips": "نصائح مهنية",
+    "immigrationGuide": "دليل الهجرة",
+    "jobSearch": "البحث عن وظيفة",
+    "workVisa": "تأشيرة العمل",
+    "successStories": "قصص النجاح"
+  },
+  "trendingTags": {
+    "remoteJobs": "الوظائف عن بُعد",
+    "workVisa": "تأشيرة العمل",
+    "immigration": "الهجرة",
+    "careerGrowth": "النمو الوظيفي",
+    "jobInterview": "مقابلة عمل",
+    "resumeTips": "نصائح للسيرة الذاتية"
+  },
+  "loading": {
+    "title": "تحميل رؤى مهنية",
+    "description": "إعداد أحدث اتجاهات سوق العمل وأدلة الهجرة..."
+  },
+  "error": {
+    "title": "تعذر تحميل المحتوى",
+    "description": "نواجه مشكلة في تحميل أحدث الرؤى المهنية. يرجى المحاولة مرة أخرى.",
+    "retryButton": "إعادة التحميل"
+  },
+  "header": {
+    "badge": "بوابتك إلى فرص العمل العالمية",
+    "title": {
+      "part1": "تنقّل في",
+      "part2": "الرحلة المهنية"
+    },
+    "subtitle": "اكتشف رؤى الخبراء حول البحث عن عمل، وتأشيرات العمل، وعمليات الهجرة، واستراتيجيات التقدم الوظيفي من المتخصصين في هذا المجال.",
+    "searchPlaceholder": "ابحث عن نصائح حول الوظائف، وأدلة التأشيرات، والنصائح المهنية...",
+    "searchButton": "بحث",
+    "popularTopics": "الموضوعات الشائعة:"
+  },
+  "featuredArticle": {
+    "title": {
+      "part1": "مميز",
+      "part2": "المادة"
+    },
+    "defaultTag": "مميز",
+    "minRead": "قراءة دقيقة",
+    "anonymous": "مجهول",
+    "careerExpert": "خبير مهني",
+    "readFullArticle": "قراءة المقال كاملاً"
+  },
+  "latestInsights": {
+    "title": {
+      "part1": "الأحدث",
+      "part2": "الرؤى"
+    },
+    "defaultTag": "المادة",
+    "min": "دقيقة",
+    "anonymous": "مجهول",
+    "readMore": "قراءة المزيد"
+  },
+  "emptyState": {
+    "title": "لم يتم العثور على مقالات",
+    "description": "لم نتمكن من العثور على أي مقالات تطابق \"{searchTerm}\". حاول البحث عن كلمات رئيسية مختلفة أو استكشف فئاتنا.",
+    "clearSearch": "مسح البحث"
+  },
+  "loadMore": {
+    "button": "تحميل المزيد من المقالات"
+  },
+  "newsletter": {
+    "title": "ابق متقدماً في حياتك المهنية",
+    "description": "احصل على رؤى أسبوعية حول فرص العمل وتحديثات التأشيرات واستراتيجيات النمو الوظيفي.",
+    "emailLabel": "عنوان البريد الإلكتروني",
+    "emailPlaceholder": "أدخل عنوان بريدك الإلكتروني",
+    "subscribeButton": "اشترك الآن",
+    "privacyNote": "خصوصيتك محمية. إلغاء الاشتراك في أي وقت.",
+    "features": {
+      "careerTips": "نصائح مهنية أسبوعية",
+      "visaUpdates": "تحديثات التأشيرة",
+      "jobAlerts": "تنبيهات الوظائف"
+    }
+  },
+  "alerts": {
+    "subscriptionSuccess": "شكراً لاشتراكك!"
+  }
+}

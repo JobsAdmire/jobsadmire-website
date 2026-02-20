@@ -1,0 +1,1728 @@
+{
+  "herosection": {
+    "badge": "Voyages exclusifs",
+    "title": "Découvrez votre prochaine aventure",
+    "description": "Découvrez des destinations à couper le souffle et créez des souvenirs inoubliables grâce à nos forfaits de voyage haut de gamme adaptés à vos désirs.",
+    "currentlyViewing": {
+      "label": "En cours de visualisation"
+    },
+    "buttons": {
+      "primary": "Explorer maintenant",
+      "secondary": "Voir toutes les destinations"
+    },
+    "destinationCounter": "Destination {actuelle}/{total}",
+    "destinations": [
+      {
+        "img": "/images/ihc.png",
+        "name": "Calgary",
+        "country": "Canada",
+        "alt": "Belle vue de Calgary, Canada"
+      },
+      {
+        "img": "/images/ihm.png",
+        "name": "Montréal",
+        "country": "Canada",
+        "alt": "Superbe paysage urbain de Montréal, Canada"
+      },
+      {
+        "img": "/images/iho.png",
+        "name": "Ottawa",
+        "country": "Canada",
+        "alt": "Sites pittoresques d'Ottawa, Canada"
+      },
+      {
+        "img": "/images/iht.png",
+        "name": "Toronto",
+        "country": "Canada",
+        "alt": "Ligne d'horizon emblématique de Toronto, Canada"
+      },
+      {
+        "img": "/images/ihv.png",
+        "name": "Vancouver",
+        "country": "Canada",
+        "alt": "Paysages époustouflants de Vancouver, Canada"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableofcontents": {
+    "header": {
+      "title": "Table des matières",
+      "subtitle": "Naviguer dans les sections"
+    },
+    "status": {
+      "currentlyReading": "Lecture en cours"
+    },
+    "footer": {
+      "sectionsCount": "{count} sections à explorer"
+    },
+    "quickNav": {
+      "title": "Navigation rapide",
+      "buttonLabel": "Menu de navigation rapide",
+      "footer": "Faire défiler {count} sections"
+    },
+    "accessibility": {
+      "openMenu": "Ouvrir le menu de navigation",
+      "closeMenu": "Fermer le menu de navigation"
+    },
+    "sections": [
+      {
+        "title": "Faits sur le Canada",
+        "id": 1
+      },
+      {
+        "title": "Options de visa pour déménager au Canada",
+        "id": 2
+      },
+      {
+        "title": "Exigences essentielles pour s'installer au Canada",
+        "id": 3
+      },
+      {
+        "title": "Obtenir un emploi au Canada en tant qu'étranger",
+        "id": 4
+      },
+      {
+        "title": "Déménager au Canada depuis les États-Unis",
+        "id": 5
+      },
+      {
+        "title": "Déménager au Canada depuis le Royaume-Uni",
+        "id": 6
+      },
+      {
+        "title": "Combien coûte un déménagement au Canada ?",
+        "id": 7
+      },
+      {
+        "title": "Déménager au Canada avec des animaux de compagnie",
+        "id": 8
+      }
+    ]
+  },
+  "canadafacts": {
+    "navigation": {
+      "previous": "Fait précédent",
+      "next": "Fait suivant"
+    },
+    "allFactsSection": {
+      "title": "Tous les faits sur le Canada"
+    },
+    "accessibility": {
+      "selectFact": "Sélectionner un fait",
+      "goToFact": "Aller au fait",
+      "previousFact": "Aller au fait précédent",
+      "nextFact": "Aller au fait suivant"
+    },
+    "facts": [
+      {
+        "title": "La plus longue côte du monde",
+        "description": "Le Canada possède le plus long littoral du monde, qui s'étend sur 202 080 kilomètres le long des océans Atlantique, Pacifique et Arctique.",
+        "icon": "🌊"
+      },
+      {
+        "title": "20 % de l'eau douce de la planète",
+        "description": "Le Canada contient environ 20 % de l'eau douce de la planète dans ses innombrables lacs, rivières et glaciers.",
+        "icon": "💧"
+      },
+      {
+        "title": "Polar Bear Capital",
+        "description": "Churchill, dans le Manitoba, est connue comme la \"capitale mondiale de l'ours polaire\", car elle se trouve sur une importante route de migration des ours polaires.",
+        "icon": "🐻‍❄️"
+      },
+      {
+        "title": "Les parcs nationaux couvrent 8 % du territoire",
+        "description": "Les parcs nationaux et les réserves de parcs nationaux du Canada couvrent environ 8 % du pays et préservent la diversité écologique.",
+        "icon": "🏞️"
+      },
+      {
+        "title": "Les inventeurs de la poutine",
+        "description": "Ce plat emblématique composé de frites garnies de fromage en grains et de sauce est né au Québec à la fin des années 1950.",
+        "icon": "🍟"
+      },
+      {
+        "title": "Deux langues officielles",
+        "description": "Le Canada a deux langues officielles : l'anglais et le français. Environ 23 % des Canadiens ont le français comme première langue.",
+        "icon": "🗣️"
+      },
+      {
+        "title": "Capitale du sirop d'érable",
+        "description": "Le Canada produit environ 71 % du sirop d'érable mondial, le Québec étant le premier producteur mondial.",
+        "icon": "🍁"
+      },
+      {
+        "title": "Deuxième plus grand pays du monde",
+        "description": "Avec une superficie de 9,98 millions de kilomètres carrés, le Canada est le deuxième plus grand pays du monde en termes de superficie totale.",
+        "icon": "🗺️"
+      },
+      {
+        "title": "Le pays des aurores boréales",
+        "description": "Le Canada offre certaines des meilleures possibilités d'observation des aurores boréales, en particulier dans les Territoires du Nord-Ouest et au Yukon.",
+        "icon": "🌌"
+      },
+      {
+        "title": "Société multiculturelle",
+        "description": "Le Canada abrite des personnes de plus de 200 origines ethniques, ce qui en fait l'un des pays les plus multiculturels au monde.",
+        "icon": "🌍"
+      }
+    ]
+  },
+  "canadajobguide": {
+    "tableOfContents": {
+      "title": "Contenu du guide"
+    },
+    "accessibility": {
+      "toggleSection": "Section de basculement"
+    },
+    "sections": {
+      "jobMarket": {
+        "title": "Comprendre le marché du travail canadien",
+        "description": "Le Canada offre des possibilités d'emploi diversifiées dans différents secteurs, et plusieurs industries recherchent activement des talents internationaux.",
+        "inDemandTitle": "Secteurs en demande pour les étrangers :",
+        "sectors": [
+          {
+            "name": "Soins de santé",
+            "description": "Médecins, infirmières, personnel soignant"
+          },
+          {
+            "name": "Technologies de l'information et de la communication",
+            "description": "Ingénieurs logiciels, scientifiques des données"
+          },
+          {
+            "name": "Ingénierie",
+            "description": "Civil, mécanique, électrique"
+          },
+          {
+            "name": "Finances",
+            "description": "Banque, fintech, comptabilité"
+          },
+          {
+            "name": "Métiers qualifiés",
+            "description": "Soudeurs, électriciens, plombiers"
+          },
+          {
+            "name": "Agriculture",
+            "description": "Gestionnaires d'exploitation, agronomes"
+          }
+        ],
+        "languageNote": "Le Canada a deux langues officielles : l'anglais et le français. La maîtrise de l'anglais est essentielle pour la plupart des postes, mais le bilinguisme est un avantage, en particulier au Québec et dans l'administration fédérale."
+      },
+      "immigration": {
+        "title": "Filières d'immigration au Canada",
+        "description": "Le Canada offre de multiples voies d'immigration pour les travailleurs qualifiés, l'Entrée express étant le principal système.",
+        "expressEntry": {
+          "title": "Système d'entrée express",
+          "description": "La principale voie d'accès pour les immigrants qualifiés :",
+          "points": [
+            "Gérer les demandes pour le programme fédéral des travailleurs qualifiés, le programme fédéral des métiers qualifiés et la classe de l'expérience canadienne.",
+            "Sur la base d'un système de classement complet (Comprehensive Ranking System - CRS) qui évalue les candidats",
+            "Points attribués pour l'âge, l'éducation, l'expérience professionnelle, les compétences linguistiques et les facteurs d'adaptabilité",
+            "Des tirages au sort réguliers invitent les candidats les mieux notés à demander la résidence permanente"
+          ]
+        },
+        "otherPathways": {
+          "title": "Autres voies d'immigration :",
+          "programs": [
+            {
+              "name": "Programmes de candidats des provinces (PCP)",
+              "description": "Les provinces peuvent désigner des candidats pour répondre aux besoins économiques locaux"
+            },
+            {
+              "name": "Programme d'immigration de l'Atlantique",
+              "description": "Pour ceux qui veulent travailler dans les provinces atlantiques"
+            },
+            {
+              "name": "Projet pilote sur l'immigration dans les régions rurales et nordiques",
+              "description": "Pour les petites communautés situées en dehors des grands centres urbains"
+            },
+            {
+              "name": "Filière mondiale des talents",
+              "description": "Permis de travail accélérés pour les travailleurs de la technologie et les innovateurs"
+            },
+            {
+              "name": "Permis de travail post-diplôme",
+              "description": "Pour les étudiants étrangers qui ont terminé leurs études au Canada"
+            }
+          ]
+        },
+        "conclusion": "La plupart des programmes d'immigration canadiens mènent à la résidence permanente, qui vous permet de travailler pour n'importe quel employeur et, éventuellement, de demander la citoyenneté."
+      },
+      "jobOpportunities": {
+        "title": "Trouver des possibilités d'emploi au Canada",
+        "portalsTitle": "Portails d'emploi canadiens populaires :",
+        "portals": [
+          "En effet, le Canada",
+          "Workopolis",
+          "LinkedIn",
+          "Monstre",
+          "Banque d'emplois",
+          "Glassdoor",
+          "Eluta",
+          "ZipRecruiter"
+        ],
+        "tipsTitle": "Conseils de pro :",
+        "tips": [
+          "Consultez le site officiel de l'agence pour l'emploi pour obtenir des informations sur le marché du travail et les possibilités qui s'offrent à vous.",
+          "Recherche d'employeurs ayant l'habitude de recruter des talents internationaux",
+          "Adaptez votre curriculum vitae au format canadien (généralement 1 à 2 pages, axées sur les réalisations).",
+          "Inclure les évaluations des diplômes canadiens si vous avez des qualifications étrangères.",
+          "Réseau d'organisations provinciales et municipales de services aux immigrants"
+        ]
+      },
+      "noc": {
+        "title": "Classification nationale des professions (CNP)",
+        "description": "Le Canada utilise le système de la Classification nationale des professions (CNP) pour classer les emplois. Il est essentiel de comprendre votre code CNP pour pouvoir immigrer.",
+        "categories": {
+          "title": "Catégories TEER :",
+          "teer": [
+            {
+              "name": "TEER 0",
+              "description": "Professions de gestion"
+            },
+            {
+              "name": "TEER 1",
+              "description": "Professions exigeant un diplôme universitaire"
+            },
+            {
+              "name": "TEER 2",
+              "description": "Professions exigeant un diplôme d'études supérieures ou une formation en apprentissage"
+            },
+            {
+              "name": "TEER 3",
+              "description": "Professions nécessitant un enseignement secondaire et/ou une formation professionnelle spécifique"
+            },
+            {
+              "name": "TEER 4",
+              "description": "Professions nécessitant une courte démonstration de travail et aucune formation formelle"
+            },
+            {
+              "name": "TEER 5",
+              "description": "Professions de niveau débutant nécessitant une démonstration de travail de courte durée"
+            }
+          ]
+        },
+        "importance": {
+          "title": "Pourquoi c'est important :",
+          "points": [
+            "La plupart des programmes pour travailleurs qualifiés exigent des professions TEER 0, 1, 2 ou 3.",
+            "Détermine l'éligibilité à des programmes d'immigration spécifiques",
+            "Affecte les points SIR dans le cadre de l'entrée express",
+            "Permet de vérifier que votre expérience professionnelle correspond à votre offre d'emploi",
+            "Utilisé pour déterminer les taux de salaire en vigueur"
+          ]
+        },
+        "findCode": "Trouvez votre code CNP sur le site officiel d'Immigration, Réfugiés et Citoyenneté Canada (IRCC)."
+      },
+      "remoteWork": {
+        "title": "Options de travail à distance au Canada",
+        "intro": "Le travail à distance est devenu de plus en plus courant au Canada, en particulier dans les secteurs de la technologie, de la finance et de la création :",
+        "points": [
+          "Pour travailler à distance <span class=\"font-medium\">pour une entreprise canadienne</span>, vous avez toujours besoin d'une autorisation de travail appropriée.",
+          "Le \"Global Talent Stream\" permet d'accélérer l'obtention de permis de travail pour les travailleurs du secteur technologique, y compris pour les emplois à distance.",
+          "De nombreuses entreprises canadiennes proposent désormais des contrats permanents à distance ou des contrats hybrides.",
+          "Visa de nomade numérique : Le Canada a introduit un nouveau visa de nomade numérique en 2024 pour les travailleurs à distance employés par des entreprises étrangères"
+        ],
+        "taxConsiderations": {
+          "title": "Considérations fiscales :",
+          "points": [
+            "Travailler au Canada fait généralement de vous un résident fiscal",
+            "Être conscient des problèmes potentiels de double imposition",
+            "Le Canada a conclu des conventions fiscales avec de nombreux pays",
+            "Consultez un fiscaliste pour connaître votre situation spécifique"
+          ]
+        }
+      },
+      "teaching": {
+        "title": "Enseigner au Canada",
+        "description": "L'enseignement offre de bonnes opportunités aux candidats internationaux qualifiés au Canada.",
+        "k12": {
+          "title": "Enseignement de la maternelle à la 12e année :",
+          "requirements": [
+            "Chaque province réglemente son propre système de certification des enseignants",
+            "En règle générale, une licence en sciences de l'éducation ou un diplôme équivalent est exigé.",
+            "Les diplômes étrangers doivent être évalués par les autorités provinciales chargées de l'enseignement.",
+            "Les professeurs d'immersion en français sont très demandés"
+          ]
+        },
+        "esl": {
+          "title": "Enseignement de l'anglais langue seconde :",
+          "requirements": [
+            "Certification TESL/TESOL généralement requise",
+            "Possibilités dans les écoles de langues, les collèges communautaires et les organismes d'aide à l'établissement.",
+            "Le diplôme de bachelier est généralement exigé",
+            "La demande est forte dans les régions à forte population immigrée."
+          ]
+        },
+        "conclusion": "De nombreuses provinces ont mis en place des programmes spécifiques pour accélérer la certification des enseignants étrangers qualifiés, en particulier dans les matières où il y a une pénurie."
+      },
+      "resumeInterview": {
+        "title": "CV et entretiens au Canada",
+        "resume": {
+          "title": "Format du curriculum vitae canadien :",
+          "points": [
+            "Appelé \"curriculum vitae\" plutôt que CV",
+            "Typiquement 1 à 2 pages maximum",
+            "Pas de photographie",
+            "Pas de données personnelles telles que l'âge, l'état civil ou la religion",
+            "Ordre chronologique inverse (expérience la plus récente en premier)",
+            "Mettre l'accent sur les réalisations plutôt que sur les tâches",
+            "Inclure l'évaluation des titres de compétences canadiens, le cas échéant"
+          ]
+        },
+        "interview": {
+          "title": "Attentes en matière d'entretien :",
+          "expectations": [
+            "La ponctualité est essentielle (10-15 minutes d'avance est la norme).",
+            "Affaires décontractées ou formelles en fonction du secteur d'activité",
+            "Se préparer aux questions comportementales (\"Parlez-moi d'un moment où...\")",
+            "Faire des recherches approfondies sur l'entreprise et ses valeurs",
+            "Les Canadiens apprécient la politesse, soyez donc courtois mais confiants.",
+            "Préparer des questions réfléchies sur le rôle et la culture de l'entreprise"
+          ]
+        }
+      },
+      "networking": {
+        "title": "Travailler en réseau au Canada",
+        "description": "Le travail en réseau est essentiel sur le marché du travail canadien, où de nombreux postes sont pourvus avant d'être annoncés.",
+        "strategies": [
+          "Adhérer à des associations professionnelles dans votre domaine",
+          "Participer à des réunions, des conférences et des salons de l'emploi dans le secteur.",
+          "Participer aux programmes provinciaux d'établissement des immigrants",
+          "Entrez en contact avec les réseaux d'anciens étudiants si vous avez étudié au Canada.",
+          "Faire du bénévolat pour acquérir de l'expérience au Canada et nouer des contacts",
+          "Créer un profil LinkedIn solide et optimisé pour le marché canadien"
+        ],
+        "resources": {
+          "title": "Ressources clés pour l'établissement :",
+          "list": [
+            "Organisations d'aide aux immigrés dans votre ville",
+            "Services provinciaux pour les nouveaux arrivants",
+            "Programmes de mentorat spécifiques à l'industrie",
+            "Événements de mise en réseau pour les professionnels internationaux",
+            "Conseils en matière d'emploi financés par le gouvernement canadien"
+          ]
+        }
+      }
+    },
+    "checklist": {
+      "title": "Liste de contrôle pour la recherche d'un emploi au Canada",
+      "categories": [
+        {
+          "title": "Avant de poser votre candidature",
+          "items": [
+            "Faites évaluer vos titres de compétences étrangers (ECA)",
+            "Formulez votre CV selon les normes canadiennes",
+            "Déterminez votre code CNP et votre catégorie TEER",
+            "Passer les tests linguistiques requis (IELTS/CELPIP/TEF)"
+          ]
+        },
+        {
+          "title": "Les étapes de l'immigration",
+          "items": [
+            "Créer un profil d'entrée express s'il est éligible",
+            "Recherche sur les programmes de candidats des provinces",
+            "Vérifier les possibilités de permis de travail spécifiques à l'employeur",
+            "Préparer la preuve de fonds pour le règlement"
+          ]
+        },
+        {
+          "title": "Préparation du règlement",
+          "items": [
+            "Recherche sur le coût de la vie dans les villes cibles",
+            "Entrer en contact avec les agences d'établissement",
+            "Rejoindre des groupes de médias sociaux pour les nouveaux arrivants",
+            "En savoir plus sur les systèmes de santé et les systèmes sociaux"
+          ]
+        }
+      ]
+    }
+  },
+  "canadamovingcosts": {
+    "accessibility": {
+      "toggleSection": "Section à bascule pour"
+    },
+    "costSections": [
+      {
+        "id": "visa-pr",
+        "icon": "🛂",
+        "title": "Visa et résidence permanente",
+        "amount": "$1,500-$3,000",
+        "details": "Comprend les frais de dossier, les examens médicaux et les tests linguistiques.",
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "logement",
+        "icon": "🏠",
+        "title": "Logement",
+        "amount": "2 000 à 5 000 dollars d'avance",
+        "details": "Premier et dernier mois de loyer + dépôt de garantie",
+        "subItems": [
+          {
+            "title": "Grandes villes (mensuel)",
+            "amount": "$1,500-$3,000"
+          },
+          {
+            "title": "Petites villes (mensuel)",
+            "amount": "$800-$1,500"
+          }
+        ],
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "expédition",
+        "icon": "📦",
+        "title": "Expédition (facultatif)",
+        "amount": "$5,000-$10,000",
+        "details": "Conteneurs de petite ou moyenne taille. Envisager des options de mobilier local pour réduire les coûts.",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "le transport",
+        "icon": "🚗",
+        "title": "Transport",
+        "amount": "$500-$5,000",
+        "details": "Abonnement aux transports en commun ou achat d'une voiture d'occasion",
+        "subItems": [
+          {
+            "title": "Abonnement mensuel aux transports en commun",
+            "amount": "$90-$150"
+          },
+          {
+            "title": "Voiture d'occasion",
+            "amount": "$5,000-$15,000"
+          },
+          {
+            "title": "Assurance automobile (mensuelle)",
+            "amount": "$150-$300"
+          }
+        ],
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "services publics",
+        "icon": "💡",
+        "title": "Utilitaires et configuration Internet",
+        "amount": "$200-$400",
+        "details": "Frais de connexion et dépôts",
+        "subItems": [
+          {
+            "title": "Charges mensuelles",
+            "amount": "$150-$300"
+          },
+          {
+            "title": "Internet (mensuel)",
+            "amount": "$60-$100"
+          },
+          {
+            "title": "Téléphone portable (mensuel)",
+            "amount": "$50-$100"
+          }
+        ],
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "soins de santé",
+        "icon": "🏥",
+        "title": "Couverture des soins de santé",
+        "amount": "$0-$900",
+        "details": "Cela varie d'une province à l'autre. Certaines provinces prévoient des périodes d'attente pour les soins de santé publics.",
+        "subItems": [
+          {
+            "title": "Assurance privée (mensuelle pendant le délai d'attente)",
+            "amount": "$75-$150"
+          }
+        ],
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "tous les jours",
+        "icon": "🛒",
+        "title": "Coûts quotidiens",
+        "amount": "800 $ à 1 500 $ par mois",
+        "subItems": [
+          {
+            "title": "Épicerie",
+            "amount": "400 $ - 800 $/mois"
+          },
+          {
+            "title": "Restauration",
+            "amount": "200 $ - 400 $/mois"
+          },
+          {
+            "title": "Divertissement",
+            "amount": "100-300 $/mois"
+          }
+        ],
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "l'hiver",
+        "icon": "❄️",
+        "title": "Les essentiels de l'hiver",
+        "amount": "$500-$1,000",
+        "details": "Vêtements, bottes et accessoires d'hiver",
+        "color": "bg-sky-500"
+      }
+    ],
+    "totalCosts": {
+      "title": "Coûts totaux estimés",
+      "categories": [
+        {
+          "title": "Configuration initiale (sans expédition)",
+          "amount": "$5,000-$10,000",
+          "description": "Comprend les frais de visa, le premier mois de logement, les dépôts, l'équipement d'hiver et les frais d'installation de base."
+        },
+        {
+          "title": "Configuration initiale (avec expédition)",
+          "amount": "$10,000-$20,000+",
+          "description": "Comprend tous les coûts de base, plus les conteneurs d'expédition des effets personnels."
+        },
+        {
+          "title": "Dépenses mensuelles (approximatives)",
+          "amount": "$2,000-$4,500",
+          "description": "Comprend le loyer, les services publics, l'épicerie, le transport et les autres dépenses régulières."
+        }
+      ]
+    },
+    "regionalCosts": {
+      "title": "Variations régionales des coûts",
+      "categories": [
+        {
+          "title": "Coût élevé",
+          "cities": [
+            "Toronto",
+            "Vancouver",
+            "Victoria"
+          ]
+        },
+        {
+          "title": "Coût moyen",
+          "cities": [
+            "Calgary",
+            "Montréal",
+            "Ottawa"
+          ]
+        },
+        {
+          "title": "Coût inférieur",
+          "cities": [
+            "Winnipeg",
+            "Ville de Québec",
+            "Halifax"
+          ]
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Stratégies de réduction des coûts",
+      "tips": [
+        {
+          "title": "Envisager des villes secondaires",
+          "description": "Vivre à Montréal, Calgary ou Ottawa plutôt qu'à Toronto ou Vancouver peut réduire les coûts de logement de 30 à 40 %."
+        },
+        {
+          "title": "Acheter des meubles au Canada",
+          "description": "Achetez des meubles localement chez IKEA, dans des magasins d'occasion ou sur Facebook Marketplace au lieu de les expédier."
+        },
+        {
+          "title": "Transports publics",
+          "description": "Dans les grandes villes, l'utilisation des transports en commun est beaucoup plus économique que la possession d'une voiture."
+        },
+        {
+          "title": "Arrivée au printemps/été",
+          "description": "En déménageant pendant les mois les plus chauds, vous n'aurez pas besoin d'acheter des vêtements d'hiver coûteux."
+        }
+      ]
+    },
+    "conclusion": "S'installer au Canada nécessite un investissement initial important, mais permet d'accéder à une qualité de vie élevée, à des soins de santé universels et à des opportunités économiques. Avec une planification et un budget appropriés, votre transition vers la vie canadienne peut être réussie et gratifiante."
+  },
+  "ustocanadaguide": {
+    "navigation": {
+      "title": "Aller à la section"
+    },
+    "accessibility": {
+      "toggleSection": "Section à bascule pour"
+    },
+    "sections": {
+      "whyCanada": {
+        "title": "Pourquoi déménager au Canada ?",
+        "description": "De nombreux Américains choisissent le Canada comme nouvelle patrie pour des raisons impérieuses :",
+        "reasons": [
+          "Système de santé universel",
+          "Qualité de vie et sécurité élevées",
+          "Des paysages naturels magnifiques",
+          "Diversité culturelle et inclusion",
+          "Des systèmes de soutien social solides",
+          "Proximité des États-Unis pour rendre visite à la famille"
+        ],
+        "conclusion": "Que vous vous installiez pour des raisons professionnelles, éducatives ou familiales, ou que vous souhaitiez changer de mode de vie, le Canada offre aux Américains des expériences à la fois familières et très différentes."
+      },
+      "immigrationOptions": {
+        "title": "Options d'immigration pour les citoyens américains",
+        "description": "En tant que citoyen américain, vous avez plusieurs possibilités d'immigrer au Canada :",
+        "options": [
+          {
+            "title": "1. Système d'entrée express",
+            "points": [
+              "Système de points pour les travailleurs qualifiés",
+              "Évalue l'âge, l'éducation, l'expérience professionnelle, les compétences linguistiques",
+              "Système compétitif avec classement et invitations",
+              "Voie d'accès à la résidence permanente"
+            ]
+          },
+          {
+            "title": "2. Programmes de candidats des provinces (PCP)",
+            "points": [
+              "Les provinces et les territoires désignent des candidats en fonction des besoins locaux.",
+              "Souvent plus rapide que les programmes fédéraux pour les compétences recherchées",
+              "Chaque province dispose de filières et d'exigences spécifiques",
+              "Peut conduire à la résidence permanente"
+            ]
+          },
+          {
+            "title": "3. Permis d'étude",
+            "points": [
+              "Pour l'inscription dans des établissements canadiens désignés",
+              "Lettre d'acceptation, justificatif de ressources et casier judiciaire vierge sont nécessaires.",
+              "Comprend des autorisations de travail limitées",
+              "Permis de travail post-diplôme disponible après l'obtention du diplôme"
+            ]
+          },
+          {
+            "title": "4. Parrainage familial",
+            "points": [
+              "Pour les conjoints, partenaires, enfants ou parents de citoyens canadiens/PR",
+              "Le parrain doit répondre à des critères de revenus",
+              "Permet d'obtenir le statut de résident permanent"
+            ]
+          },
+          {
+            "title": "5. Permis de travail ALENA/USMCA",
+            "points": [
+              "Permis de travail temporaire pour les professions éligibles",
+              "Avoir reçu une offre d'emploi d'un employeur canadien",
+              "Processus de candidature relativement simple",
+              "Peut être un tremplin vers les voies d'immigration permanente"
+            ]
+          }
+        ]
+      },
+      "requiredDocuments": {
+        "title": "Documents requis pour l'immigration",
+        "description": "Les exigences en matière de documents varient en fonction de la filière d'immigration, mais comprennent généralement les éléments suivants",
+        "documents": [
+          "Passeport américain en cours de validité",
+          "Formulaires de demande d'immigration",
+          "Preuve des compétences linguistiques (anglais/français)",
+          "Évaluation des diplômes",
+          "Références et preuves d'expérience professionnelle",
+          "Certificats de police",
+          "Résultats des examens médicaux",
+          "Preuve que vous disposez des fonds nécessaires pour subvenir à vos besoins"
+        ],
+        "tip": {
+          "label": "Conseil de pro :",
+          "text": "Commencez à rassembler ces documents le plus tôt possible. Les évaluations scolaires, les tests linguistiques et les certificats de police peuvent prendre plusieurs semaines à obtenir."
+        }
+      },
+      "popularCities": {
+        "title": "Villes canadiennes populaires pour les expatriés américains",
+        "description": "Les Américains qui s'installent au Canada choisissent souvent ces régions populaires :",
+        "mainCities": [
+          {
+            "name": "Toronto",
+            "icon": "🌆",
+            "highlights": [
+              "La plus grande ville et le centre financier du Canada",
+              "Extrêmement diversifié et doté d'un marché de l'emploi solide",
+              "Une culture et des divertissements dynamiques",
+              "Coût de la vie plus élevé mais plus d'opportunités"
+            ]
+          },
+          {
+            "name": "Vancouver",
+            "icon": "🏞️",
+            "highlights": [
+              "Climat doux et beauté naturelle époustouflante",
+              "Des industries technologiques et cinématographiques fortes",
+              "Mode de vie en plein air avec les montagnes et l'océan",
+              "Coût élevé du logement mais qualité de vie élevée"
+            ]
+          },
+          {
+            "name": "Ottawa",
+            "icon": "🏛️",
+            "highlights": [
+              "La capitale du Canada avec des emplois gouvernementaux stables",
+              "Logement abordable par rapport à Toronto/Vancouver",
+              "Niveau de vie et de sécurité élevé",
+              "Une ville bilingue avec des attractions culturelles"
+            ]
+          },
+          {
+            "name": "Montréal",
+            "icon": "🏛️",
+            "highlights": [
+              "Le charme de l'Europe et la commodité de l'Amérique du Nord",
+              "Coût de la vie moins élevé que dans les autres grandes villes",
+              "Riche scène culturelle, gastronomique et artistique",
+              "Francophones, mais l'anglais est largement compris"
+            ]
+          }
+        ],
+        "emergingOptions": {
+          "title": "Options émergentes",
+          "cities": [
+            {
+              "name": "Halifax",
+              "description": "Style de vie sur la côte atlantique avec une scène technologique en plein essor"
+            },
+            {
+              "name": "Calgary",
+              "description": "Économie forte, proximité des Rocheuses, impôts moins élevés"
+            },
+            {
+              "name": "Waterloo",
+              "description": "Pôle technologique avec universités et innovation"
+            },
+            {
+              "name": "Victoria",
+              "description": "Climat doux et mode de vie insulaire décontracté"
+            }
+          ]
+        }
+      },
+      "costOfLiving": {
+        "title": "Comparaison du coût de la vie : Canada vs USA",
+        "table": {
+          "headers": {
+            "expense": "Dépenses",
+            "canada": "Canada (moyenne)",
+            "usa": "États-Unis (moyenne)"
+          },
+          "rows": [
+            {
+              "expense": "Location (1BR centre ville)",
+              "canada": "1 300 à 2 000 dollars canadiens par mois",
+              "usa": "1 500 $ - 2 500 $/mois"
+            },
+            {
+              "expense": "Soins de santé",
+              "canada": "Principalement couverts par les régimes provinciaux",
+              "usa": "300 $ - 600 $/mois",
+              "canadaHighlight": true
+            },
+            {
+              "expense": "Services publics (mensuels)",
+              "canada": "C$150-$200",
+              "usa": "$150-$200"
+            },
+            {
+              "expense": "Transport",
+              "canada": "100-150 $CAN/mois",
+              "usa": "100-150 $ + frais de voiture"
+            },
+            {
+              "expense": "Repas au restaurant (pour 2 personnes)",
+              "canada": "C$60-$100",
+              "usa": "$50-$100"
+            },
+            {
+              "expense": "Frais d'inscription à l'université",
+              "canada": "7 000 à 20 000 dollars canadiens par an",
+              "usa": "10 000 à 40 000 dollars par an",
+              "canadaHighlight": true
+            },
+            {
+              "expense": "Impôt sur le revenu",
+              "canada": "Généralement plus élevé",
+              "usa": "Généralement plus faible"
+            }
+          ]
+        },
+        "note": "Le coût de la vie varie considérablement d'une ville à l'autre. Vancouver et Toronto sont les plus chères, comparables aux grandes villes américaines, tandis que d'autres régions canadiennes offrent des conditions de vie plus abordables."
+      },
+      "healthcare": {
+        "title": "Soins de santé au Canada",
+        "description": "Le système de santé universel du Canada constitue un attrait majeur pour les Américains. Chaque province administre son propre régime de soins de santé, qui couvre la plupart des services médicaux essentiels.",
+        "newcomersInfo": {
+          "title": "Soins de santé pour les nouveaux arrivants",
+          "points": [
+            "Les résidents permanents peuvent demander à bénéficier immédiatement de l'assurance maladie provinciale",
+            "Certaines provinces prévoient des périodes d'attente (jusqu'à 3 mois) - il est recommandé de souscrire une assurance privée pendant cette période.",
+            "L'éligibilité des résidents temporaires (permis de travail/études) varie selon les provinces.",
+            "Tous les services ne sont pas couverts (soins dentaires, soins de la vue, médicaments sur ordonnance)."
+          ]
+        },
+        "privateInsurance": "Une assurance maladie privée est disponible et recommandée pour compléter la couverture provinciale pour les services non inclus tels que les soins dentaires, les médicaments sur ordonnance et les soins de la vue."
+      },
+      "language": {
+        "title": "Conseils linguistiques et culturels",
+        "description": "Malgré de nombreuses similitudes, la culture canadienne a ses propres caractéristiques :",
+        "details": {
+          "title": "Anglais canadien et nuances culturelles",
+          "terms": {
+            "title": "Termes d'anglais canadien :",
+            "examples": [
+              "Toilettes (et non toilettes)",
+              "Toque (chapeau d'hiver)",
+              "Loonie (pièce de 1 $), Toonie (pièce de 2 $)",
+              "Boissons gazeuses (pas de soda)",
+              "Hydro (électricité)",
+              "Double-double (café avec 2 crèmes, 2 sucres)"
+            ]
+          },
+          "cultural": {
+            "title": "Différences culturelles :",
+            "points": [
+              "Les Canadiens ont tendance à être plus réservés au départ",
+              "L'accent est mis sur la politesse et l'inclusivité.",
+              "Le multiculturalisme est célébré et adopté",
+              "Style de communication moins conflictuel",
+              "Pourboires similaires à ceux des États-Unis (15-20%)"
+            ]
+          }
+        },
+        "frenchNote": "Le français est une langue officielle au même titre que l'anglais. Alors que la majeure partie du Canada est principalement anglophone, le Québec est majoritairement français et de nombreux services fédéraux sont bilingues."
+      },
+      "moving": {
+        "title": "Déménagement et réinstallation transfrontalière",
+        "description": "La planification d'un déménagement physique à travers la frontière nécessite une certaine préparation :",
+        "belongings": {
+          "title": "Déménager vos biens",
+          "points": [
+            {
+              "label": "Biens et effets personnels",
+              "description": "Peut être importé en franchise de droits avec la documentation appropriée"
+            },
+            {
+              "label": "Formulaires requis",
+              "description": "Document de comptabilisation des effets personnels (formulaire B4) et liste d'inventaire détaillée"
+            },
+            {
+              "label": "Entreprises de déménagement",
+              "description": "Choisissez ceux qui ont de l'expérience dans les déménagements entre les États-Unis et le Canada"
+            },
+            {
+              "label": "Postes soumis à restriction",
+              "description": "Certains aliments, plantes et armes à feu sont soumis à des restrictions ou interdits."
+            }
+          ]
+        },
+        "vehicles": {
+          "title": "Apporter des véhicules",
+          "points": [
+            "Les véhicules doivent être conformes aux normes canadiennes de sécurité et d'émission",
+            "Le processus d'importation nécessite des formulaires, des inspections et d'éventuelles modifications.",
+            "Le coût comprend la redevance RIV, les taxes et les éventuels droits de douane.",
+            "Envisager de vendre un véhicule américain et de l'acheter au Canada"
+          ]
+        },
+        "note": "Réfléchissez bien à ce que vous allez apporter. Le Canada utilise le système métrique et dispose d'une alimentation électrique de 120 V comme les États-Unis, de sorte que la plupart des appareils électroniques fonctionnent sans convertisseur."
+      },
+      "banking": {
+        "title": "Banque et finances",
+        "description": "La mise en place de votre vie financière au Canada doit être une priorité :",
+        "bankingInfo": {
+          "title": "La banque au Canada",
+          "points": [
+            "Principales banques : RBC, TD, Banque Scotia, BMO, CIBC",
+            "Des packages bancaires pour les nouveaux arrivants sont disponibles avec des exigences réduites",
+            "Documents requis : documents d'immigration, passeport, justificatif de domicile.",
+            "Envisagez d'ouvrir un compte avant votre arrivée en utilisant les options bancaires transfrontalières."
+          ]
+        },
+        "financialConsiderations": {
+          "title": "Considérations financières",
+          "points": [
+            "Les citoyens américains doivent déclarer leurs impôts aux États-Unis, quel que soit leur lieu de résidence",
+            "La convention fiscale entre le Canada et les États-Unis permet d'éviter la double imposition",
+            "Envisager des services comme Wise ou OFX pour les transferts de devises",
+            "Les antécédents en matière de crédit ne sont pas transférables - Établir des antécédents en matière de crédit au Canada",
+            "Les comptes de retraite canadiens (REER, CELI) ont des implications fiscales américaines"
+          ]
+        },
+        "recommendation": "Il est recommandé de maintenir des relations bancaires aux États-Unis pour faire face aux obligations financières américaines. Envisagez de travailler avec un spécialiste de la fiscalité transfrontalière afin d'optimiser votre situation financière."
+      }
+    },
+    "checklist": {
+      "title": "Liste de contrôle avant déménagement pour les Américains",
+      "items": [
+        "Déterminer votre parcours d'immigration",
+        "Passer des tests de langue si nécessaire (IELTS/CELPIP)",
+        "Obtenir une évaluation des diplômes (ECA)",
+        "Organiser des opérations bancaires transfrontalières",
+        "Recherche d'options de couverture des soins de santé",
+        "Dresser un inventaire détaillé des biens",
+        "Consulter un professionnel de la fiscalité transfrontalière",
+        "Recherche de logements dans la ville que vous visez",
+        "Rejoindre les communautés d'expatriés canadiens et les forums en ligne"
+      ]
+    },
+    "resources": {
+      "title": "Ressources utiles",
+      "categories": [
+        {
+          "title": "Informations officielles",
+          "items": [
+            "Immigration, Réfugiés et Citoyenneté Canada",
+            "Programmes d'immigration provinciaux",
+            "Ambassade et consulats des États-Unis au Canada"
+          ]
+        },
+        {
+          "title": "Communautés d'expatriés",
+          "items": [
+            "Groupes Facebook des Américains au Canada",
+            "Chapitres d'InterNations Canada",
+            "Associations de nouveaux arrivants spécifiques à une ville"
+          ]
+        },
+        {
+          "title": "Services pratiques",
+          "items": [
+            "Entreprises de déménagements transfrontaliers",
+            "Sites web consacrés au logement (Realtor.ca, Kijiji)",
+            "Spécialistes de la fiscalité transfrontalière"
+          ]
+        }
+      ]
+    },
+    "finalTips": {
+      "title": "Derniers conseils pour les nouveaux Canadiens",
+      "categories": [
+        {
+          "title": "Pour commencer",
+          "tips": [
+            "Demandez votre numéro d'assurance sociale (NAS) dès votre arrivée.",
+            "S'inscrire à l'assurance maladie provinciale dès que possible",
+            "Envisager un logement temporaire pendant la recherche d'un logement"
+          ]
+        },
+        {
+          "title": "Conseils d'intégration",
+          "tips": [
+            "Embrasser l'hiver canadien avec des vêtements et des activités appropriés",
+            "Utiliser les services d'installation mis à la disposition des nouveaux arrivants",
+            "Faites preuve de patience pour établir vos antécédents en matière de crédit et pour vous établir"
+          ]
+        }
+      ],
+      "conclusion": "Votre nouvelle aventure canadienne vous attend ! Avec une planification et une préparation adéquates, votre transition des États-Unis au Canada peut être une expérience passionnante et enrichissante."
+    }
+  },
+  "movingwithpets": {
+    "navigation": {
+      "title": "Guide de navigation"
+    },
+    "accessibility": {
+      "toggleSection": "Section à bascule pour"
+    },
+    "sections": {
+      "requirements": {
+        "title": "Conditions d'admission",
+        "steps": [
+          {
+            "title": "Puce électronique",
+            "description": "Tous les animaux de compagnie doivent être munis d'une puce électronique conforme à la norme ISO (11784/11785)."
+          },
+          {
+            "title": "Vaccination contre la rage",
+            "description": "Les animaux domestiques doivent être vaccinés contre la rage <span class=\"font-medium\">au moins 30 jours</span> avant leur entrée et le vaccin doit être <span class=\"font-medium\">valide à l'arrivée</span>."
+          },
+          {
+            "title": "Certificat vétérinaire",
+            "details": [
+              "Doit être délivré par un vétérinaire agréé dans votre pays d'origine.",
+              "Doit être approuvé par l'autorité gouvernementale (telle que l'USDA aux États-Unis).",
+              "Doit être délivré dans les <span class=\"font-medium\">14 jours</span> avant l'entrée au Canada."
+            ]
+          }
+        ],
+        "importantNote": {
+          "title": "Note importante",
+          "text": "Contrairement à de nombreux pays, le Canada n'exige pas la mise en quarantaine des animaux de compagnie qui satisfont à toutes les exigences en matière de documentation."
+        }
+      },
+      "dogSpecific": {
+        "title": "Règles spécifiques aux chiens",
+        "breedRestrictions": {
+          "title": "Restrictions relatives aux races",
+          "description": "Le Canada impose des restrictions à certaines races de chiens considérées comme agressives. Ces réglementations varient d'une province à l'autre et d'une municipalité à l'autre.",
+          "restrictedTitle": "Restreint dans certaines régions :",
+          "breeds": [
+            "Terriers Pit Bull",
+            "Staffordshire Bull Terriers",
+            "American Staffordshire Terriers",
+            "Rottweiler (dans certaines régions)"
+          ],
+          "note": "Si votre chien appartient à une race soumise à des restrictions, vérifiez auprès de la province et de la ville de destination."
+        },
+        "commercialDogs": {
+          "title": "Chiens de commerce (moins de 8 mois)",
+          "description": "Les chiens de moins de 8 mois importés à des fins commerciales (élevage, exposition, revente) sont soumis à des exigences supplémentaires. Ces chiens ont besoin d'un permis d'importation de l'Agence canadienne d'inspection des aliments."
+        }
+      },
+      "catSpecific": {
+        "title": "Règles spécifiques aux chats",
+        "goodNews": "Bonne nouvelle ! Le Canada a des exigences relativement simples en matière d'importation de chats par rapport à de nombreux autres pays.",
+        "basicRequirements": {
+          "title": "Exigences de base pour les chats",
+          "requirements": [
+            "Puce électronique (norme ISO)",
+            "Vaccination contre la rage (au moins 30 jours avant l'entrée)",
+            "Certificat de santé vétérinaire"
+          ]
+        },
+        "noBreedRestrictions": "Contrairement aux chiens, il n'y a pas de restriction de race pour les chats au Canada."
+      },
+      "travelOptions": {
+        "title": "Options de voyage",
+        "options": [
+          {
+            "title": "Voyage en cabine",
+            "description": "Les animaux de moins de 8 à 10 kg (y compris la cage de transport) peuvent voyager en cabine. La caisse de transport doit être placée sous le siège devant vous.",
+            "fee": "Frais : 50-125 CAD par trajet",
+            "icon": "🧳",
+            "ariaLabel": "cabine"
+          },
+          {
+            "title": "Bagages enregistrés",
+            "description": "Les animaux de compagnie trop grands pour la cabine mais pesant moins de 32 kg peuvent voyager en tant que bagages enregistrés.",
+            "fee": "Frais : 100-250 CAD par trajet",
+            "icon": "🧴",
+            "ariaLabel": "bagages enregistrés"
+          },
+          {
+            "title": "Fret aérien",
+            "description": "Les animaux de très grande taille ou ceux qui voyagent sur des itinéraires ne prévoyant pas d'autorisation pour les animaux doivent être transportés en tant que fret.",
+            "fee": "Frais : 400-1 000+ CAD pour chaque trajet",
+            "icon": "📦",
+            "ariaLabel": "cargaison"
+          }
+        ],
+        "warning": "Réservez toujours auprès de la compagnie aérienne bien à l'avance, car les places pour les animaux sont limitées. Les compagnies aériennes ont des politiques et des restrictions différentes, en particulier pour les races à nez retroussé qui peuvent être interdites en raison de problèmes respiratoires."
+      },
+      "afterArrival": {
+        "title": "Après l'arrivée",
+        "atTheBorder": {
+          "title": "À la frontière",
+          "description": "À l'arrivée, un agent de l'Agence des services frontaliers du Canada (ASFC) examinera les documents de votre animal. Veillez à :",
+          "steps": [
+            "Déclarer son animal de compagnie aux autorités douanières",
+            "Avoir tous les documents originaux à portée de main",
+            "Préparez-vous à une éventuelle inspection de votre animal de compagnie"
+          ]
+        },
+        "firstWeekChecklist": {
+          "title": "Liste de contrôle pour la première semaine",
+          "items": [
+            {
+              "title": "1. Trouver un vétérinaire local",
+              "description": "Prévoyez une visite de contrôle au cours du premier mois."
+            },
+            {
+              "title": "2. S'inscrire auprès de la municipalité",
+              "description": "De nombreuses villes canadiennes exigent la délivrance de licences pour les animaux de compagnie."
+            },
+            {
+              "title": "3. Mise à jour des informations sur la micropuce",
+              "description": "Changez d'adresse et indiquez votre nouvelle adresse au Canada."
+            },
+            {
+              "title": "4. Assurance des animaux de compagnie",
+              "description": "Envisagez de souscrire une assurance canadienne pour animaux de compagnie."
+            }
+          ]
+        }
+      },
+      "canadianClimate": {
+        "title": "Climat canadien",
+        "description": "Le climat du Canada varie considérablement d'une région à l'autre et d'une saison à l'autre. Il s'agit d'une considération importante pour les animaux de compagnie, en particulier ceux qui viennent de climats plus chauds.",
+        "seasons": [
+          {
+            "title": "Préparation à l'hiver",
+            "icon": "❄️",
+            "tips": [
+              "Fondant pour animaux de compagnie",
+              "Des chaussons pour protéger les pattes du sel et de la glace",
+              "Manteaux/weaters pour races à poils courts",
+              "Temps limité passé à l'extérieur par grand froid"
+            ]
+          },
+          {
+            "title": "Considérations estivales",
+            "icon": "☀️",
+            "tips": [
+              "Ne laissez jamais votre animal de compagnie dans une voiture en stationnement",
+              "Surveiller les symptômes d'un coup de chaleur",
+              "Prévention des tiques et des puces",
+              "Accès à l'eau douce et à l'ombre"
+            ]
+          }
+        ],
+        "warning": "<strong>Avertissement:</strong> Les races brachycéphales (à face plate) comme les bouledogues, les carlins et les chats persans peuvent avoir du mal à supporter les températures extrêmes. Prenez des précautions supplémentaires avec ces races."
+      },
+      "petFriendly": {
+        "title": "Le Canada, pays ami des animaux",
+        "description": "Le Canada est généralement très favorable aux animaux de compagnie, avec d'excellents soins vétérinaires et de nombreux espaces qui leur sont réservés.",
+        "aspects": [
+          {
+            "title": "Soins vétérinaires",
+            "icon": "🏥",
+            "description": "De haute qualité, mais qui peut être onéreuse. Un bilan de santé moyen coûte 75 à 150 dollars canadiens.",
+            "additionalInfo": "L'assurance pour animaux de compagnie coûte environ 25 à 80 dollars canadiens par mois."
+          },
+          {
+            "title": "Parcs et loisirs",
+            "icon": "🏞️",
+            "description": "La plupart des villes disposent de parcs pour chiens sans laisse et de sentiers adaptés aux animaux.",
+            "additionalInfo": "Les parcs nationaux ont des règles spécifiques concernant les animaux de compagnie - vérifiez-les avant de vous y rendre."
+          },
+          {
+            "title": "Fournitures pour animaux de compagnie",
+            "icon": "🥫",
+            "description": "Les grandes chaînes comprennent PetSmart, Canadian Tire et Pet Valu. Les options en ligne comprennent Amazon.ca et Chewy.ca."
+          },
+          {
+            "title": "Logement adapté aux animaux domestiques",
+            "icon": "🏨",
+            "description": "Certains immeubles de location interdisent les animaux de compagnie. Lors de la recherche d'un logement, vérifiez que les désignations sont compatibles avec les animaux de compagnie.",
+            "additionalInfo": "Les dépôts de garantie pour les animaux domestiques sont courants (200-500 dollars canadiens)."
+          }
+        ]
+      }
+    },
+    "checklist": {
+      "title": "Liste de contrôle pour les voyages d'animaux de compagnie",
+      "items": [
+        "Vérifiez que votre animal satisfait aux conditions d'entrée au Canada (au moins 3 mois avant le voyage).",
+        "S'assurer que la puce est conforme à la norme ISO",
+        "Prévoir la vaccination contre la rage (au moins 30 jours avant le voyage)",
+        "Réserver un transport adapté aux animaux de compagnie",
+        "Achetez une caisse de transport approuvée par les compagnies aériennes et habituez votre animal à cette caisse.",
+        "Obtenir un certificat de santé vétérinaire (dans les 14 jours précédant le voyage)",
+        "Préparer l'essentiel pour l'animal (nourriture, médicaments, articles de confort)",
+        "Faites des copies de tous les documents et conservez-les avec vous."
+      ]
+    }
+  },
+  "relocationrequirements": {
+    "introduction": "Le Canada accueille chaque année des milliers de nouveaux arrivants par le biais de différentes voies d'immigration. Que vous ayez l'intention de travailler, d'étudier, de rejoindre votre famille ou de prendre votre retraite au Canada, la compréhension des principales exigences vous aidera à réussir votre réinstallation. Voici ce que vous devez savoir.",
+    "requirements": [
+      {
+        "icon": "🛂",
+        "title": "Passeport en cours de validité",
+        "description": "Votre passeport doit être valide pour la durée du séjour prévu au Canada. Pour les demandes de résidence permanente, assurez-vous que votre passeport n'expirera pas pendant le délai de traitement, qui peut prendre plusieurs mois, voire plusieurs années."
+      },
+      {
+        "icon": "📝",
+        "title": "Statut d'immigration",
+        "description": "Déterminez votre parcours d'immigration :",
+        "details": [
+          "Entrée express (travailleur qualifié fédéral, métiers qualifiés fédéraux, classe de l'expérience canadienne)",
+          "Programmes de candidats des provinces (PCP)",
+          "Parrainage familial",
+          "Permis d'étude",
+          "Permis de travail (LMIA, CUSMA/NAFTA, IEC)",
+          "Visa de visiteur (visa de résident temporaire) ou eTA"
+        ]
+      },
+      {
+        "icon": "💵",
+        "title": "Preuve de fonds",
+        "description": "Pour la plupart des programmes d'immigration, vous devrez prouver que vous disposez de fonds suffisants pour subvenir à vos besoins et à ceux de votre famille :",
+        "details": [
+          "L'entrée express requiert une preuve de fonds d'établissement (variable selon la taille de la famille, mise à jour annuellement).",
+          "Les étudiants doivent justifier des frais de scolarité et des frais de subsistance (environ 10 000 dollars canadiens par an).",
+          "Les relevés bancaires, les comptes d'investissement ou une lettre de votre banque sont des preuves acceptables."
+        ]
+      },
+      {
+        "icon": "🩺",
+        "title": "Examen médical",
+        "description": "La plupart des demandeurs doivent passer un examen médical auprès d'un médecin agréé par IRCC :",
+        "details": [
+          "Obligatoire pour les demandes de résidence permanente",
+          "Obligatoire pour les résidents temporaires dont le séjour est supérieur à 6 mois",
+          "Doit être remplie par un médecin désigné par le panel"
+        ]
+      },
+      {
+        "icon": "🔍",
+        "title": "Vérification des antécédents",
+        "description": "Les vérifications de sécurité et d'antécédents criminels sont standard pour toutes les candidatures :",
+        "details": [
+          "Certificats de police des pays où vous avez vécu plus de 6 mois",
+          "Des données biométriques (empreintes digitales et photo) sont requises pour la plupart des demandeurs.",
+          "Processus d'enquête de sécurité"
+        ]
+      },
+      {
+        "icon": "🗣️",
+        "title": "Compétences linguistiques",
+        "description": "La maîtrise de l'anglais ou du français est essentielle pour la plupart des programmes d'immigration :",
+        "details": [
+          "IELTS ou CELPIP pour l'anglais",
+          "TEF ou TCF pour le français",
+          "Niveaux de NCLC (Niveaux de compétence linguistique canadiens) requis en fonction du programme."
+        ]
+      },
+      {
+        "icon": "🎓",
+        "title": "Évaluation des diplômes (ECA)",
+        "description": "Si vous avez terminé vos études à l'étranger :",
+        "details": [
+          "Faites évaluer vos qualifications par un organisme agréé par l'IRCC",
+          "Vérifiez que votre diplôme ou certificat est équivalent aux normes canadiennes.",
+          "L'OCE est obligatoire pour l'Entrée express et de nombreux autres programmes d'immigration."
+        ]
+      },
+      {
+        "icon": "🏠",
+        "title": "Plans de logement",
+        "description": "Bien que cela ne soit pas nécessaire pour la plupart des demandes, il est essentiel de disposer de plans de logement :",
+        "details": [
+          "Logement temporaire à l'arrivée (hôtels, locations de courte durée)",
+          "Étudier les marchés locatifs dans votre ville de destination",
+          "Comprendre les exigences en matière de location (vérifications de solvabilité, références, dépôts)"
+        ]
+      },
+      {
+        "icon": "💼",
+        "title": "Préparation à l'emploi",
+        "description": "Pour ceux qui prévoient de travailler au Canada :",
+        "details": [
+          "Étudier le marché de l'emploi canadien dans votre domaine",
+          "Préparer un curriculum vitae et une lettre de motivation de style canadien",
+          "Réseauter avec des professionnels de votre secteur d'activité",
+          "Vérifiez si votre profession est réglementée et nécessite une licence canadienne."
+        ]
+      },
+      {
+        "icon": "⚕️",
+        "title": "Assurance maladie",
+        "description": "Au Canada, les soins de santé sont essentiellement publics, mais varient d'une province à l'autre :",
+        "details": [
+          "L'assurance maladie provinciale exige un délai d'attente (généralement 3 mois).",
+          "Souscrire une assurance maladie privée pour couvrir la période de carence",
+          "Comprendre ce qui est couvert et ce qui ne l'est pas dans votre province"
+        ]
+      }
+    ],
+    "postArrival": {
+      "title": "Étapes postérieures à l'arrivée",
+      "timeframes": [
+        {
+          "period": "Première semaine",
+          "tasks": [
+            "Demande de numéro d'assurance sociale (NAS)",
+            "Ouvrir un compte bancaire canadien",
+            "Obtenir un numéro de téléphone local",
+            "Demande d'assurance maladie provinciale"
+          ]
+        },
+        {
+          "period": "Premier mois",
+          "tasks": [
+            "Trouver un logement permanent",
+            "Inscrire les enfants à l'école",
+            "Obtenir un permis de conduire ou une carte d'identité",
+            "Connexion avec les services d'aide à l'établissement"
+          ]
+        }
+      ]
+    }
+  },
+  "uktocanadaguide": {
+    "navigation": {
+      "title": "Navigation rapide"
+    },
+    "accessibility": {
+      "toggleSection": "Section à bascule pour"
+    },
+    "sections": {
+      "whyMove": {
+        "title": "Pourquoi les Britanniques s'installent-ils au Canada ?",
+        "description": "Des milliers de ressortissants britanniques ont élu domicile au Canada, en particulier dans des villes comme Toronto, Vancouver, Montréal et Calgary. L'appel comprend :",
+        "reasons": [
+          "Une qualité de vie élevée et d'excellents systèmes sociaux",
+          "Diversité des paysages naturels et des activités de plein air",
+          "Culture similaire et langue familière",
+          "Une économie forte avec des opportunités de carrière",
+          "Une société multiculturelle avec des communautés accueillantes"
+        ],
+        "conclusion": "Après le Brexit, de nombreux Britanniques explorent des options en dehors de l'Europe, et le système d'immigration du Canada offre plusieurs voies d'accès."
+      },
+      "entryRequirements": {
+        "title": "Conditions d'entrée et règles relatives aux visas",
+        "touristEntry": {
+          "title": "Entrée des touristes",
+          "description": "Les citoyens britanniques peuvent se rendre au Canada pour une durée maximale de six mois grâce à une autorisation de voyage électronique (eTA), qui coûte 7 dollars canadiens. Toutefois, pour un déménagement permanent, vous devrez faire une demande dans le cadre de l'une des filières d'immigration du Canada."
+        }
+      },
+      "immigrationPathways": {
+        "title": "Filières d'immigration pour les citoyens britanniques",
+        "pathways": [
+          {
+            "title": "1. Système d'entrée express",
+            "description": "<span class=\"font-medium\">Principale voie d'immigration du Canada pour les travailleurs qualifiés</span><br/>Système de points qui classe les candidats en fonction de facteurs tels que l'âge, l'éducation, l'expérience professionnelle et les compétences linguistiques.",
+            "subProgramsTitle": "Trois programmes dans le cadre d'Entrée express :",
+            "subPrograms": [
+              "Programme fédéral pour les travailleurs qualifiés",
+              "Programme fédéral pour les métiers qualifiés",
+              "Catégorie de l'expérience canadienne (pour les personnes ayant une expérience professionnelle au Canada)"
+            ]
+          },
+          {
+            "title": "2. Programmes de candidats des provinces (PCP)",
+            "details": [
+              "Chaque province a ses propres filières d'immigration",
+              "Souvent plus rapide que l'entrée express pour les personnes dont les compétences sont requises dans des provinces spécifiques.",
+              "Certaines provinces ont mis en place des initiatives de recrutement spécifiques au Royaume-Uni"
+            ]
+          },
+          {
+            "title": "3. Permis de travail",
+            "details": [
+              "Les permis de travail spécifiques aux employeurs requièrent une offre d'emploi de la part d'un employeur canadien.",
+              "Permis de travail ouverts disponibles dans le cadre de programmes spéciaux tels que Vacances-Travail (IEC)",
+              "Les citoyens britanniques âgés de 18 à 30 ans peuvent demander un visa vacances-travail IEC."
+            ]
+          },
+          {
+            "title": "4. Parrainage familial",
+            "description": "Si vous avez un époux, un conjoint de fait ou un membre de votre famille proche qui est citoyen canadien ou résident permanent"
+          }
+        ]
+      },
+      "property": {
+        "title": "Acheter ou louer un bien immobilier",
+        "points": [
+          "En tant que non-résident, vous pouvez acheter un bien immobilier dans la plupart des régions du Canada, avec quelques restrictions dans certaines provinces.",
+          "L'interdiction d'acheter à l'étranger en 2023 comporte des exceptions pour les résidents permanents et les titulaires d'un permis de travail.",
+          "Régions populaires pour les expatriés britanniques : Toronto, Vancouver, Montréal, Calgary, Halifax",
+          "Le marché locatif est très variable : comptez entre 1 500 et 3 000 dollars canadiens pour un appartement d'une chambre dans les grandes villes."
+        ],
+        "tip": "<Les prix de l'immobilier à Toronto et à Vancouver sont nettement plus élevés que dans d'autres régions."
+      },
+      "costLiving": {
+        "title": "Comparaison du coût de la vie",
+        "table": {
+          "headers": {
+            "expense": "Dépenses",
+            "canada": "Canada (moyenne)",
+            "uk": "Royaume-Uni (moyenne)"
+          },
+          "rows": [
+            {
+              "expense": "Location (appartement à 1 lit)",
+              "canada": "CAD $1,200-$2,500",
+              "uk": "£800-£1,200"
+            },
+            {
+              "expense": "Utilitaires",
+              "canada": "CAD $150-$250/mois",
+              "uk": "150+ £/mois"
+            },
+            {
+              "expense": "Repas au restaurant",
+              "canada": "CAD $20-$35",
+              "uk": "£10-£25"
+            },
+            {
+              "expense": "Carte de transport",
+              "canada": "CAD $80-$150/mois",
+              "uk": "60-£120/mois"
+            }
+          ]
+        },
+        "note": "Si les coûts globaux sont similaires à ceux du Royaume-Uni, ils varient considérablement d'une région à l'autre. Les provinces de l'Atlantique et les zones rurales offrent des conditions de vie plus abordables."
+      },
+      "healthcare": {
+        "title": "Accès aux soins de santé",
+        "points": [
+          "Le Canada dispose d'un système de santé public universel (Medicare) financé par les impôts.",
+          "En tant que résident permanent, vous avez droit aux soins de santé provinciaux après une période d'attente (généralement 3 mois).",
+          "Pendant la période d'attente, une assurance maladie privée temporaire est indispensable",
+          "Chaque province administre son propre système de soins de santé, avec de légères variations en termes de couverture",
+          "Certains services comme les soins dentaires, les soins de la vue et les médicaments sur ordonnance peuvent nécessiter une assurance privée."
+        ]
+      },
+      "weather": {
+        "title": "Météo et climat",
+        "seasons": [
+          {
+            "title": "Hiver (novembre-mars)",
+            "description": "Le climat est nettement plus froid qu'au Royaume-Uni, avec des températures allant de -30°C à 0°C selon les régions. La neige est fréquente dans la majeure partie du pays, à l'exception de la côte de la Colombie-Britannique."
+          },
+          {
+            "title": "Été (juin-sept)",
+            "description": "Plus chaud qu'au Royaume-Uni, avec des températures généralement comprises entre 20°C et 30°C. L'humidité peut être élevée dans les provinces orientales."
+          }
+        ],
+        "regionalVariations": {
+          "title": "Variations régionales",
+          "description": "Vancouver a un climat doux et pluvieux semblable à celui du Royaume-Uni. Toronto et Montréal connaissent des étés chauds et des hivers froids. Les Prairies connaissent des variations de température extrêmes. Les territoires du Nord connaissent des hivers très longs et rigoureux."
+        }
+      },
+      "dailyLife": {
+        "title": "Adaptations à la vie quotidienne",
+        "aspects": [
+          {
+            "title": "Langue",
+            "description": "L'anglais est une langue officielle dans tout le Canada (sauf au Québec). Le français est également une langue officielle et prédomine au Québec, où la maîtrise du français est très utile."
+          },
+          {
+            "title": "Conduite",
+            "description": "Les permis britanniques peuvent être utilisés temporairement (cela varie selon les provinces), mais vous devrez les échanger contre un permis provincial. Les Canadiens conduisent du côté droit de la route."
+          },
+          {
+            "title": "Monnaie",
+            "description": "Dollar canadien (CAD) - les taux de change fluctuent, mais les coûts sont généralement comparables à ceux du Royaume-Uni."
+          },
+          {
+            "title": "Banque",
+            "description": "Les grandes banques proposent des forfaits pour les nouveaux arrivants avec des exonérations de frais. Vous aurez besoin d'un justificatif de domicile et d'une pièce d'identité pour ouvrir un compte. Les antécédents en matière de crédit ne sont pas transférables, il est donc important de se constituer un crédit."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "title": "Logistique des déménagements depuis le Royaume-Uni",
+        "points": [
+          "L'expédition d'articles ménagers vers le Canada prend de 4 à 8 semaines par fret maritime.",
+          "Les effets personnels peuvent être importés en franchise de droits sur présentation d'un inventaire détaillé et d'une preuve de résidence.",
+          "Les voitures de plus de 15 ans sont plus faciles à importer ; les véhicules plus récents doivent répondre aux normes canadiennes.",
+          "Les animaux doivent être munis d'une puce électronique, vaccinés contre la rage et munis d'un certificat de santé ; aucune quarantaine n'est requise si les conditions sont remplies."
+        ]
+      },
+      "challenges": {
+        "title": "Des défis réalistes à relever",
+        "challenges": [
+          {
+            "title": "Adaptation à l'hiver",
+            "description": "La rigueur et la longueur des hivers canadiens peuvent être un défi pour les Britanniques."
+          },
+          {
+            "title": "Distance par rapport à la famille",
+            "description": "Les vols de plus de 7 heures réduisent la fréquence des visites à domicile"
+          },
+          {
+            "title": "Constitution d'un historique de crédit",
+            "description": "Les antécédents de crédit au Royaume-Uni ne sont pas transférés, ce qui complique l'obtention d'un premier emprunt."
+          },
+          {
+            "title": "Accréditation professionnelle",
+            "description": "Certaines qualifications britanniques peuvent nécessiter une recertification au Canada."
+          }
+        ]
+      },
+      "britishCommunities": {
+        "title": "Communautés d'expatriés britanniques",
+        "description": "Le Canada compte d'importantes communautés d'expatriés britanniques :",
+        "cities": [
+          "Toronto",
+          "Vancouver",
+          "Calgary",
+          "Victoria",
+          "Halifax"
+        ],
+        "supportNote": "Les forums en ligne, les groupes Facebook tels que \"Brits in Canada\" et les événements communautaires facilitent les contacts avec d'autres expatriés britanniques qui peuvent fournir des conseils et du soutien."
+      }
+    },
+    "checklist": {
+      "title": "Liste de contrôle essentielle avant de déménager au Canada",
+      "items": [
+        "Obtenir un statut d'immigration ou un permis de travail approprié",
+        "Obtenir le numéro d'assurance sociale (NAS) à l'arrivée",
+        "Souscrire une assurance voyage et une assurance maladie initiale",
+        "Ouvrir un compte bancaire canadien",
+        "Recherche sur la procédure provinciale d'enregistrement des soins de santé",
+        "Acheter des vêtements adaptés au climat canadien",
+        "Informer les autorités britanniques (HMRC, fournisseurs de pensions, etc.) de votre déménagement à l'étranger"
+      ]
+    },
+    "conclusion": {
+      "title": "La relocalisation au Canada vous convient-elle ?",
+      "text": "Le Canada offre un niveau de vie élevé, une beauté naturelle époustouflante et des systèmes sociaux solides, ce qui en fait une destination attrayante pour les expatriés britanniques. Bien que le processus d'immigration nécessite une planification minutieuse et qu'il faille s'adapter au climat hivernal, de nombreux Britanniques estiment que la transition en vaut la peine en raison de la qualité de vie, des possibilités de carrière et de la société multiculturelle accueillante qu'offre le Canada."
+    },
+    "footer": {
+      "disclaimer": "Dernière mise à jour du guide : Mai 2025 - Informations susceptibles d'être modifiées - Toujours vérifier les sources gouvernementales officielles"
+    }
+  },
+  "canadavisaguide": {
+    "introduction": "Le Canada offre de nombreuses possibilités d'immigration, notamment pour les travailleurs, les étudiants, les familles et les hommes et femmes d'affaires. Chaque programme est conçu pour soutenir la croissance économique du Canada tout en accueillant les nouveaux arrivants du monde entier.",
+    "labels": {
+      "bestFor": "Meilleur pour :",
+      "programs": "Les programmes :",
+      "requirements": "Exigences :",
+      "process": "Processus :",
+      "types": "Types :",
+      "eligibleMembers": "Membres de la famille éligibles :",
+      "sponsorRequirements": "Exigences en matière de parrainage :",
+      "benefits": "Avantages :",
+      "tfwpRequirements": "Exigences du PTET :",
+      "impBenefits": "Avantages de l'IMP :",
+      "startupRequirements": "Exigences en matière de visa pour les entreprises en phase de démarrage :",
+      "notablePNPs": "PNP remarquables :"
+    },
+    "mainPrograms": [
+      {
+        "title": "1. Système d'entrée express",
+        "bestFor": [
+          "Travailleurs qualifiés ayant une expérience professionnelle",
+          "Professionnels ayant fait des études supérieures",
+          "Maîtrise de l'anglais et du français"
+        ],
+        "programs": [
+          "Programme fédéral pour les travailleurs qualifiés",
+          "Programme fédéral pour les métiers qualifiés",
+          "Classe de l'expérience canadienne"
+        ],
+        "requirements": [
+          "Minimum 1 an d'expérience professionnelle qualifiée",
+          "Test de langue (CLB 7+ pour le FSWP)",
+          "Évaluation des diplômes",
+          "Preuve de fonds (~13 000 $+ pour une personne seule)"
+        ]
+      },
+      {
+        "title": "2. Programmes de candidats des provinces (PCP)",
+        "bestFor": [
+          "Des travailleurs dont les compétences correspondent aux besoins des provinces",
+          "Ceux qui ont des liens avec des provinces spécifiques",
+          "Candidats susceptibles de ne pas remplir les conditions requises pour l'entrée express"
+        ],
+        "process": [
+          "Faire une demande directement auprès d'une province ou par l'intermédiaire d'Entrée express",
+          "Recevoir une nomination provinciale",
+          "Demander la résidence permanente au niveau fédéral"
+        ],
+        "notablePNPs": [
+          "PNP de la Colombie-Britannique",
+          "Programme des candidats à l'immigration de l'Ontario",
+          "Programme d'immigration Alberta Advantage",
+          "Programme des candidats du Manitoba"
+        ]
+      },
+      {
+        "title": "3. Permis d'étude",
+        "bestFor": "Étudiants internationaux acceptés dans des établissements d'enseignement désignés",
+        "requirements": [
+          "Lettre d'acceptation d'une DLI",
+          "Preuve de soutien financier (~10 000 $/an + frais de scolarité)",
+          "Casier judiciaire vierge",
+          "Examen médical (si nécessaire)",
+          "Intention de quitter le Canada après les études"
+        ],
+        "benefits": [
+          "Travailler jusqu'à 20 heures par semaine pendant les études",
+          "Travail à temps plein pendant les pauses prévues",
+          "Admissibilité au permis de travail post-diplôme",
+          "Voie d'accès à la résidence permanente"
+        ]
+      },
+      {
+        "title": "4. Permis de travail",
+        "types": [
+          "Programme des travailleurs étrangers temporaires (PTET)",
+          "Programme de mobilité internationale (IMP)",
+          "Permis de travail post-diplôme (PGWP)",
+          "Permis de travail ouverts aux conjoints"
+        ],
+        "tfwpRequirements": [
+          "Offre d'emploi d'un employeur canadien",
+          "Évaluation de l'impact sur le marché du travail (EIMT)",
+          "Preuve des qualifications"
+        ],
+        "impBenefits": [
+          "Permis de travail exemptés de l'EIMT",
+          "Inclut les transferts intra-entreprise",
+          "Accords internationaux (CUSMA, CETA)"
+        ]
+      },
+      {
+        "title": "5. Parrainage familial",
+        "bestFor": "Membres de la famille de citoyens canadiens ou de résidents permanents",
+        "eligibleMembers": [
+          "Conjoint ou concubin",
+          "Enfants à charge",
+          "Parents et grands-parents",
+          "Autres membres de la famille (dans le cadre de programmes spécifiques)"
+        ],
+        "sponsorRequirements": [
+          "Citoyen canadien ou résident permanent",
+          "18 ans ou plus",
+          "Remplir les conditions de revenu minimum",
+          "S'engager à soutenir financièrement"
+        ]
+      },
+      {
+        "title": "6. Immigration d'affaires",
+        "bestFor": [
+          "Entrepreneurs",
+          "Investisseurs",
+          "Travailleurs indépendants"
+        ],
+        "programs": [
+          "Programme de visas pour jeunes entreprises",
+          "Programme pour les travailleurs indépendants",
+          "Programmes provinciaux pour les entreprises"
+        ],
+        "startupRequirements": [
+          "Soutien de l'organisation désignée",
+          "Compétences linguistiques (NCLC 5+)",
+          "Fonds de règlement suffisants",
+          "Gestion active des activités au Canada"
+        ]
+      }
+    ],
+    "additionalOptions": {
+      "title": "Options supplémentaires",
+      "programs": [
+        {
+          "title": "Programme d'immigration de l'Atlantique",
+          "description": "Conçu pour les travailleurs qualifiés et les diplômés internationaux qui souhaitent vivre et travailler au Nouveau-Brunswick, en Nouvelle-Écosse, à l'Île-du-Prince-Édouard ou à Terre-Neuve-et-Labrador.",
+          "requirement": "Nécessite une offre d'emploi de la part d'un employeur désigné dans le Canada atlantique"
+        },
+        {
+          "title": "Projet pilote sur l'immigration dans les régions rurales et nordiques",
+          "description": "Programme communautaire qui aide les travailleurs étrangers qualifiés à obtenir la résidence permanente tout en soutenant les petites communautés rurales.",
+          "requirement": "Disponible dans certaines communautés à travers le Canada"
+        },
+        {
+          "title": "Programmes pour les aidants",
+          "description": "Des voies d'accès pour les personnes qui s'occupent d'enfants, de personnes âgées ou de personnes ayant des besoins médicaux, afin qu'elles deviennent des résidents permanents.",
+          "requirement": "2 ans d'expérience professionnelle au Canada requis"
+        },
+        {
+          "title": "Programmes humanitaires et pour les réfugiés",
+          "description": "Protection des réfugiés, des demandeurs d'asile et des autres personnes ayant besoin d'une aide humanitaire.",
+          "requirement": "Comprend le programme d'aide gouvernementale aux réfugiés et le parrainage privé."
+        }
+      ]
+    },
+    "importantConsiderations": {
+      "title": "Considérations importantes",
+      "considerations": [
+        {
+          "title": "Délais de traitement",
+          "description": "Les délais varient considérablement en fonction du programme et du nombre de demandeurs. L'entrée express peut être aussi rapide que 6 mois, tandis que le parrainage familial peut prendre plus de 12 mois."
+        },
+        {
+          "title": "Frais de dossier",
+          "description": "Tenez compte à la fois des taxes gouvernementales et des coûts potentiels des consultants. Les frais de demande de RP s'élèvent à environ 1 325 dollars canadiens par adulte."
+        },
+        {
+          "title": "Fonds de règlement",
+          "description": "La plupart des programmes exigent une preuve de fonds pour le règlement. Le montant varie en fonction de la taille de la famille et des exigences du programme."
+        }
+      ]
+    }
+  }
+}

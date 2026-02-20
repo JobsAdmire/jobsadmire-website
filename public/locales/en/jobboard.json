@@ -1,0 +1,107 @@
+{
+  "hero": {
+    "title": "Find Your Dream Job",
+    "subtitle": "Discover opportunities that match your passion, skills, and career goals",
+    "search": {
+      "jobPlaceholder": "Job title, skills or keywords...",
+      "locationPlaceholder": "City, country or remote...",
+      "buttonText": "Search Jobs"
+    },
+    "popular": {
+      "label": "Popular:",
+      "tags": ["Remote", "Tech", "Marketing", "Design", "Finance"]
+    }
+  },
+  "stats": {
+    "jobs": {
+      "count": "10,580+",
+      "label": "Job Listings"
+    },
+    "candidates": {
+      "count": "8.8M+",
+      "label": "Candidates"
+    },
+    "countries": {
+      "count": "120+",
+      "label": "Countries"
+    },
+    "successRate": {
+      "count": "95%",
+      "label": "Success Rate"
+    }
+  },
+  "categories": {
+    "title": "Explore Opportunities",
+    "tabs": [
+      { "key": "all", "label": "All Jobs" },
+      { "key": "featured", "label": "Featured" },
+      { "key": "recent", "label": "Recent" },
+      { "key": "remote", "label": "Remote" },
+      { "key": "tech", "label": "Tech" },
+      { "key": "marketing", "label": "Marketing" }
+    ]
+  },
+  "filters": {
+    "title": "Filters",
+    "clearAll": "Clear all",
+    "jobType": {
+      "title": "Job Type",
+      "options": [
+        { "id": "fullTime", "value": "full_time", "label": "Full Time" },
+        { "id": "partTime", "value": "part_time", "label": "Part Time" },
+        { "id": "contract", "value": "contract", "label": "Contract" },
+        { "id": "remote", "value": "remote", "label": "Remote" }
+      ]
+    },
+    "experience": {
+      "title": "Experience Level",
+      "options": [
+        { "id": "entry", "label": "Entry Level" },
+        { "id": "mid", "label": "Mid Level" },
+        { "id": "senior", "label": "Senior Level" },
+        { "id": "executive", "label": "Executive" }
+      ]
+    },
+    "salary": {
+      "title": "Salary Range",
+      "min": "$0",
+      "max": "$100k+"
+    },
+    "datePosted": {
+      "title": "Date Posted",
+      "options": [
+        { "id": "any", "label": "Any time" },
+        { "id": "day", "label": "Past 24 hours" },
+        { "id": "week", "label": "Past week" },
+        { "id": "month", "label": "Past month" }
+      ]
+    },
+    "applyButton": "Apply Filters"
+  },
+  "jobListings": {
+    "title": "Available Jobs",
+    "showing": "Showing",
+    "opportunities": "opportunities",
+    "sortBy": {
+      "label": "Sort by:",
+      "options": [
+        "Most Relevant",
+        "Newest",
+        "Highest Salary",
+        "Most Popular"
+      ]
+    }
+  },
+  "jobCard": {
+    "featured": "Featured",
+    "new": "New",
+    "requirements": "Requirements:",
+    "benefits": "Benefits:",
+    "viewDetails": "View details",
+    "hideDetails": "Hide details",
+    "applyNow": "Apply Now"
+  },
+  "cta": {
+    "postJob": "Post a Job"
+  }
+}

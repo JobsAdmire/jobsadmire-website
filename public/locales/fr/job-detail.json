@@ -1,0 +1,161 @@
+{
+  "hero": {
+    "badge": "POSITION EN VEDETTE",
+    "titleLine1": "Logiciel senior",
+    "titleLine2": "Ingénieur",
+    "companyName": "TechVision Inc",
+    "subtitle": "Rejoignez notre équipe innovante pour construire des solutions de pointe qui transforment les industries. Nous recherchons des ingénieurs talentueux, passionnés par la création de technologies à fort impact.",
+    "ctaPrimary": "Demande de consultation",
+    "ctaShare": "Partager l'emploi",
+    "salaryRange": "Fourchette des salaires",
+    "location": "Localisation",
+    "experience": "Expérience",
+    "tabOverview": "Vue d'ensemble",
+    "tabRequirements": "Exigences",
+    "tabBenefits": "Avantages",
+    "industry": "Développement de logiciels",
+    "locationValue": "A distance (basé aux Etats-Unis)",
+    "locationStatValue": "A distance",
+    "salaryLabel": "Salaire",
+    "teamSizeLabel": "Taille de l'équipe",
+    "teamSizeValue": "15-20 Ingénieurs",
+    "employmentLabel": "Emploi",
+    "employmentValue": "Temps plein",
+    "postedLabel": "Affiché",
+    "postedValue": "15 mars 2025",
+    "requiredSkills": "Compétences requises",
+    "readyToJoin": "Prêt à rejoindre notre équipe ?",
+    "applicationTime": "Demande en 5 minutes"
+  },
+  "loading": "Chargement des détails de l'emploi...",
+  "notifications": {
+    "resume_uploaded": "CV téléchargé avec succès !",
+    "application_submitted": {
+      "title": "Demande soumise !",
+      "message": "Nous vous remercions de l'intérêt que vous portez au poste {{titre}}. Notre équipe examinera votre candidature et vous contactera prochainement.",
+      "close": "Fermer"
+    }
+  },
+  "application_modal": {
+    "title": "Postuler pour {{titre}}",
+    "subtitle": "Complétez votre demande ci-dessous",
+    "progress": "État d'avancement de la demande",
+    "form": {
+      "full_name": "Nom complet *",
+      "full_name_placeholder": "Entrez votre nom",
+      "email": "Adresse électronique *",
+      "phone": "Numéro de téléphone *",
+      "location": "Localisation actuelle *",
+      "location_placeholder": "Ville, Pays",
+      "linkedin": "Profil LinkedIn",
+      "portfolio": "URL du portefeuille",
+      "cover_message": "Message de couverture",
+      "cover_message_placeholder": "Pourquoi êtes-vous intéressé(e) par ce poste ?",
+      "upload_resume": "Télécharger le CV *",
+      "click_to_upload": "Cliquez pour télécharger votre CV",
+      "file_types": "(PDF, DOC, ou DOCX)",
+      "cancel": "Annuler",
+      "submit": "Soumettre la demande",
+      "application_closed": "Demande clôturée",
+      "terms_agreement": "En posant votre candidature, vous acceptez nos <1>Termes et conditions</1>",
+      "email_placeholder": "name@example.com",
+      "phone_placeholder": "+90 555 123 4567",
+      "linkedin_placeholder": "https://linkedin.com/in/username",
+      "portfolio_placeholder": "https://yourportfolio.com"
+    }
+  },
+  "share_modal": {
+    "title": "Partager cet emploi",
+    "subtitle": "Partagez cette opportunité avec votre réseau",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp",
+    "copy_link": "Copie",
+    "copied": "Copié !"
+  },
+  "header": {
+    "status_open": "Ouvrir",
+    "status_closed": "Fermé",
+    "posted": "Affiché",
+    "save_job": "Sauvegarder l'emploi",
+    "saved": "Sauvegardé",
+    "share": "Partager",
+    "apply_now": "Postuler",
+    "application_closed": "Demande clôturée"
+  },
+  "quick_info": {
+    "currency": "Monnaie",
+    "salary": "Salaire",
+    "type": "Type"
+  },
+  "tabs": {
+    "job_description": "Description de l'emploi",
+    "requirements": "Exigences",
+    "details": "Détails"
+  },
+  "tab_content": {
+    "description": {
+      "overview": "Aperçu du poste",
+      "employment_type": "Type d'emploi",
+      "work_location": "Lieu de travail"
+    },
+    "requirements": {
+      "title": "Exigences et qualifications",
+      "what_we_looking_for": "Ce que nous recherchons",
+      "professional_experience": "Expérience professionnelle",
+      "communication_skills": "Compétences en matière de communication",
+      "team_collaboration": "Collaboration d'équipe",
+      "growth_mindset": "L'état d'esprit de croissance"
+    },
+    "details": {
+      "job_information": "Informations sur l'emploi",
+      "job_type": "Type d'emploi :",
+      "location": "Localisation :",
+      "posted": "Publié :",
+      "status": "Statut :",
+      "quota_full": "Quota complet",
+      "open_for_applications": "Appel à candidatures",
+      "compensation": "Compensation",
+      "currency": "Monnaie :",
+      "salary": "Salaire :",
+      "why_join": "Pourquoi rejoindre {{title}} ?",
+      "career_growth": "Croissance de la carrière",
+      "career_growth_desc": "Possibilités d'avancement",
+      "great_location": "Excellente situation",
+      "great_location_desc": "Travailler dans {{location}}",
+      "competitive_package": "Package compétitif",
+      "competitive_package_desc": "Salaire et avantages attrayants",
+      "professional_growth": "Croissance professionnelle",
+      "professional_growth_desc": "Possibilités d'apprentissage continu"
+    }
+  },
+  "cta": {
+    "title": "Prêt à rejoindre notre équipe ?",
+    "subtitle": "Passez à l'étape suivante de votre carrière avec {{title}}. Nous recherchons des personnes passionnées qui veulent faire la différence.",
+    "apply_now": "Postuler",
+    "application_closed": "Demande clôturée"
+  },
+  "contact": {
+    "title": "Besoin d'aide pour votre demande ?",
+    "subtitle": "Notre équipe RH est là pour vous aider",
+    "live_chat": {
+      "title": "Assistance par chat en direct",
+      "subtitle": "Temps de réponse moyen : 5 minutes"
+    },
+    "email": {
+      "title": "Envoyer un courriel à l'équipe RH",
+      "subtitle": "info@jobsadmire.com"
+    }
+  },
+  "fallback": {
+    "title_not_available": "Titre du poste non disponible",
+    "location_not_available": "Lieu non disponible",
+    "description_not_available": "<p>La description du poste n'est pas disponible.</p> <p>La description du poste n'est pas disponible.",
+    "requirement_not_available": "<p>Les exigences ne sont pas disponibles.</p> <p>Les exigences ne sont pas disponibles.</p> <p>Les exigences ne sont pas disponibles.",
+    "date_not_available": "Date non disponible",
+    "error_loading": "Erreur de chargement du travail",
+    "unable_to_load_desc": "<p>Impossible de charger la description du poste. Veuillez réessayer plus tard.",
+    "unable_to_load_req": "<p>Impossible de charger les exigences. Veuillez réessayer plus tard."
+  }
+}

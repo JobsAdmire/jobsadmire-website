@@ -1,0 +1,195 @@
+{
+  "header": {
+    "badge": "Turkey's #1 Citizenship Consultancy",
+    "title": {
+      "line1": "Unlock Your",
+      "line2": "Turkish Future"
+    },
+    "subtitle": "Transform your life with Turkish citizenship. Expert guidance, proven results, and a seamless journey to your new nationality.",
+    "buttons": {
+      "startJourney": "Start Your Journey",
+      "scheduleConsultation": "Schedule Consultation"
+    }
+  },
+  "form": {
+    "title": "Get Your Free Consultation",
+    "fields": {
+      "name": {
+        "label": "Full Name *",
+        "placeholder": "Your full name"
+      },
+      "email": {
+        "label": "Email *",
+        "placeholder": "your.email@domain.com"
+      },
+      "phone": {
+        "label": "Phone",
+        "placeholder": "+1 (555) 000-0000"
+      },
+      "pathway": {
+        "label": "Preferred Pathway",
+        "placeholder": "Select pathway",
+        "options": {
+          "investment": "Investment Pathway"
+          
+        }
+      },
+      "message": {
+        "label": "Tell us about your situation",
+        "placeholder": "Share your goals, timeline, and any specific questions..."
+      }
+    },
+    "submitButton": "Get Free Consultation",
+    "disclaimer": "Free consultation • Response within 24 hours • No obligation"
+  },
+  "sections": {
+    "pathways": {
+      "title": "Citizenship Pathways",
+      "subtitle": "Multiple routes to Turkish citizenship, each designed for different circumstances",
+      "popularBadge": "Most Popular"
+    },
+    "benefits": {
+      "title": "Benefits of Turkish Citizenship",
+      "subtitle": "Unlock a world of opportunities and privileges",
+      "items": [
+        "Visa-free travel to 110+ countries worldwide",
+        "Unlimited right to live and work in Turkey",
+        "Full access to Turkish healthcare system",
+        "Premium educational opportunities",
+        "Unrestricted property ownership rights",
+        "Complete business establishment freedom",
+        "EU candidacy membership benefits",
+        "Dual citizenship legally permitted"
+      ]
+    },
+    "process": {
+      "title": "Our Proven Process",
+      "subtitle": "A streamlined, transparent journey to your Turkish citizenship with expert guidance at every step",
+      "stepIndicator": "Step {current} of {total}"
+    },
+    "services": {
+      "title": "Our Services",
+      "subtitle": "Comprehensive support throughout your journey",
+      "items": [
+        {
+          "title": "Complete Application Management",
+          "description": "End-to-end preparation and submission"
+        },
+        {
+          "title": "Document Verification",
+          "description": "Professional authentication services"
+        },
+        {
+          "title": "Translation Services",
+          "description": "Certified translation and notarization"
+        },
+        {
+          "title": "Legal Consultation",
+          "description": "Expert immigration guidance"
+        },
+        {
+          "title": "Investment Support",
+          "description": "Property selection assistance"
+        },
+        {
+          "title": "Government Liaison",
+          "description": "Direct authority communication"
+        },
+        {
+          "title": "Application Tracking",
+          "description": "Real-time progress monitoring"
+        },
+        {
+          "title": "Post-Citizenship Support",
+          "description": "Continued assistance after approval"
+        }
+      ]
+    },
+    "contact": {
+      "title": "Ready to Begin?",
+      "subtitle": "Take the first step towards Turkish citizenship with our expert consultation. Free assessment, personalized guidance, and transparent pricing.",
+      "features": {
+        "consultation": "Free 30-minute consultation",
+        "response": "Response within 24 hours",
+        "assessment": "No obligation assessment"
+      },
+      "submitButton": "Start Your Journey"
+    }
+  },
+  "citizenshipTypes": {
+    "investment": {
+      "title": "Citizenship by Investment",
+      "description": "Fast-track Turkish citizenship through strategic property investment",
+      "requirements": [
+        "Property investment of minimum $400,000",
+        "Keep property for 3 years",
+        "Clean criminal background",
+        "Health insurance coverage"
+      ],
+      "timeframe": "3-6 months"
+    },
+    "birth": {
+      "title": "Citizenship by Birth",
+      "description": "Claim Turkish citizenship through documented family heritage",
+      "requirements": [
+        "Turkish parent(s) or grandparents",
+        "Official birth certificates",
+        "Proof of Turkish ancestry",
+        "Valid identification documents"
+      ],
+      "timeframe": "2-4 months"
+    },
+    "marriage": {
+      "title": "Citizenship by Marriage",
+      "description": "Secure citizenship through marriage to Turkish citizens",
+      "requirements": [
+        "3+ years marriage to Turkish citizen",
+        "Basic Turkish language skills",
+        "Security background check",
+        "Financial stability proof"
+      ],
+      "timeframe": "4-8 months"
+    },
+    "naturalization": {
+      "title": "Naturalization",
+      "description": "Earn citizenship through long-term residency commitment",
+      "requirements": [
+        "5+ years continuous residence",
+        "Advanced Turkish language",
+        "Clean criminal record",
+        "Economic integration proof"
+      ],
+      "timeframe": "6-12 months"
+    }
+  },
+  "processSteps": {
+    "consultation": {
+      "title": "Initial Consultation",
+      "description": "Free eligibility assessment and pathway recommendation",
+      "detail": "Expert evaluation of your unique situation to determine the best citizenship pathway"
+    },
+    "documentation": {
+      "title": "Document Preparation",
+      "description": "Complete documentation collection and verification",
+      "detail": "Comprehensive document gathering with professional authentication and translation"
+    },
+    "filing": {
+      "title": "Application Filing",
+      "description": "Official government application submission",
+      "detail": "Seamless submission to Turkish authorities with complete application package"
+    },
+    "review": {
+      "title": "Processing Review",
+      "description": "Government review and background verification",
+      "detail": "Thorough review process with continuous monitoring and updates"
+    },
+    "approval": {
+      "title": "Final Approval",
+      "description": "Citizenship approval and ceremony scheduling",
+      "detail": "Completion of the process with official citizenship documentation"
+    }
+  },
+  "alerts": {
+    "thankYouMessage": "Thank you for your inquiry! We will contact you within 24 hours."
+  }
+}

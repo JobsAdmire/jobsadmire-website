@@ -1,0 +1,208 @@
+{
+  "careercounselling": {
+    "hero": {
+      "badge": "Mga serbisyo sa propesyonal na pagpapayo sa karera",
+      "headline": {
+        "prefix": "Tuklasin ang Iyong",
+        "suffix": "May Patnubay ng Eksperto"
+      },
+      "animatedWords": [
+        "Landas ng Karera",
+        "Hinaharap",
+        "Direksyon",
+        "Potensyal",
+        "Layunin",
+        "Tagumpay"
+      ],
+      "description": "Mula sa mga pagtatasa ng karera hanggang sa mga personalized na plano sa pag-unlad, ang aming komprehensibong serbisyo sa pagpapayo sa karera ay tumutulong sa mga propesyonal na mahanap ang kanilang perpektong landas nang may kumpiyansa.",
+      "cta": {
+        "text": "Simulan ang Iyong Paglalakbay"
+      }
+    },
+    "showcase": {
+      "title": "Pagpapayo sa Karera",
+      "subtitle": "Propesyonal na gabay para sa iyong paglalakbay sa karera",
+      "assessment": {
+        "title": "Pagtatasa ng Karera",
+        "description": "Tuklasin ang iyong mga kalakasan at interes"
+      },
+      "services": [
+        {
+          "title": "Pagpaplano ng Landas",
+          "description": "Madiskarteng roadmap",
+          "bgGradient": "bg-gradient-to-r mula-sky-500 hanggang-blue-600"
+        },
+        {
+          "title": "Pag-unlad ng Kasanayan",
+          "description": "Pagpaplano ng paglago",
+          "bgGradient": "bg-gradient-to-r mula-lila-500 hanggang indigo-600"
+        },
+        {
+          "title": "Paglago",
+          "description": "Pagsulong sa karera",
+          "bgGradient": "bg-gradient-to-r mula-emerald-500 hanggang-teal-600"
+        },
+        {
+          "title": "Paggabay",
+          "description": "Patnubay ng eksperto",
+          "bgGradient": "bg-gradient-to-r mula-kahel-500 hanggang-pula-600"
+        }
+      ],
+      "stats": [
+        {
+          "label": "Tagumpay sa Pagbabago ng Karera",
+          "color": "text-sky-600",
+          "value": "92%"
+        },
+        {
+          "label": "Mga Kliyenteng Ginagabayan",
+          "color": "teksto-asul-600",
+          "value": "800+"
+        },
+        {
+          "value": "4.8★",
+          "label": "Kasiyahan",
+          "color": "teksto-indigo-600"
+        }
+      ]
+    },
+    "whyChoose": {
+      "title": {
+        "prefix": "Bakit dapat pumili",
+        "highlight": "Kagalingan sa Pagbabago",
+        "suffix": "Mga klinika para sa pagpapayo sa karera?"
+      },
+      "description": "Ang Transformation Wellness Clinics ay nagbibigay sa mga indibidwal ng programa sa pagpapayo sa karera na gagabay sa kanila sa bawat aspeto ng kanilang karera, panayam, at maging sa proseso ng pagpili ng trabaho. Ang aming mga eksperto ay nagbibigay ng gabay na nakatuon sa resulta upang matulungan kang gumawa ng pinakamahusay na desisyon sa iyong buhay.",
+      "features": [
+        "Komprehensibong mga pagtatasa sa karera upang maunawaan ang iyong mga kalakasan",
+        "Mga ekspertong tagapayo na may napatunayang reputasyon",
+        "Mga personalized na plano sa karera na iniayon sa iyong mga partikular na layunin",
+        "Gabay mula sa pagpili ng karera hanggang sa tulong sa paglalagay ng trabaho"
+      ],
+      "cta": {
+        "text": "Simulan ang Iyong Paglalakbay Ngayon"
+      },
+      "image": {
+        "alt": "Tagapayo sa karera na nagsasagawa ng isang propesyonal na sesyon kasama ang kliyente"
+      }
+    },
+    "choosingCareer": {
+      "title": "Pagpili ng karera?",
+      "description": "Ang pagpili ng karera ay maaaring maging mahirap at nakakapagod. Ang isang tagapayo ay maaaring magbigay ng mahalagang impormasyon, na makakatulong upang paliitin ang iyong pokus sa pamamagitan ng pagsagot sa mga tanong tulad ng:",
+      "questions": [
+        "Anong mga aktibidad ang nakakapagbigay-kasiyahan para sa akin?",
+        "Anong mga kasanayan at kwalipikasyon ang mayroon ako?",
+        "Anu-anong mga trabaho ang maaaring makuha sa loob o labas ng bansa?",
+        "Ano ang aking kwalipikasyon?",
+        "Magkano ang magiging sapat na suweldo para sa akin?",
+        "Ano ang mga uri ng trabahong available dito sa tinitirhan ko? O ano ang mga gusto kong tumira?"
+      ]
+    },
+    "howCounsellingHelps": {
+      "title": "Paano ako matutulungan ng career counseling?",
+      "description": "Sa iyong sesyon, susuriin mo ang mga antas ng edukasyon, mga kalakasan, kasanayan, at tutukuyin ang iyong uri at interes sa personalidad. Isinasagawa ang mga pagsusulit sa kakayahan at IQ upang mas makilala ka. Ang mga landas sa karera batay sa mga katangian ng personalidad ay natutukoy sa pamamagitan ng mga kagamitan tulad ng Myers-Briggs Type Indicator.",
+      "sessionTopics": {
+        "title": "Ilan sa mga posibleng paksang tatalakayin sa sesyon ay ang mga sumusunod:",
+        "items": [
+          "Kinakailangan ang dedikasyon sa edukasyon para sa mga karera.",
+          "Ang kapaligiran sa pagtatrabaho, maaaring mabagal o mabilis, sa loob o labas ng bahay.",
+          "Kinakailangang pangako sa edukasyon para sa ilang partikular na karera.",
+          "Ang oportunidad na naghihintay sa isang partikular na karera. Ang ilan ay hindi gaanong flexible habang ang ilan ay ganoon. Halimbawa, ang mga doktor ay maaaring makapagpalit ng kanilang espesyalidad ngunit mananatili pa rin silang doktor. Gayunpaman, ang iba ay may mas malawak na kakayahang umangkop sa larangang kanilang pinipili."
+        ]
+      },
+      "professionalGuidance": {
+        "title": "Patnubay ng Propesyonal",
+        "description": "Maaari ring magbigay ng payo ang mga tagapayo tungkol sa mga paraan ng pagkamit ng promosyon o maging ang mga paraan upang makipagnegosasyon para sa suweldo."
+      }
+    },
+    "whyNeed": {
+      "title": {
+        "prefix": "Bakit mo kailangan",
+        "highlight": "pagpapayo sa karera?"
+      },
+      "description": "Ang gabay sa karera ay makakatulong sa iyo na makakuha ng mga pananaw tungkol sa kung sino ka, ang iyong napiling karera at kung paano ito mapapabuti. Ang pagpapayo sa karera ay maaaring:",
+      "benefits": [
+        {
+          "title": "Magbigay ng mga ekspertong mapagkukunan",
+          "description": "Nagbibigay ito ng access sa kaalaman at mga mapagkukunan na taglay ng isang eksperto mula sa pananaw ng isang bata at magulang. Ang saklaw, kaalaman, at mga landas na dapat tahakin nito ay napakahalaga dahil karamihan sa mga tagapag-alaga ay kulang sa ganitong uri ng kaalaman."
+        },
+        {
+          "title": "Nakakatulong sa pagpili ng tamang karera",
+          "description": "Ang mga tagapayo sa karera ay mga eksperto sa pagtatasa ng iyong mga interes, personalidad, kakayahan, at marami pang ibang aspeto. Ginagamit ang pagsusuring ito upang magmungkahi ng iba't ibang mga opsyon na pawang may kaugnayan at magagamit."
+        },
+        {
+          "title": "Nakakatulong sa pagkakaroon ng pananaw",
+          "description": "Nakakatulong ito sa konsehal na makita ang mga balakid sa kanyang landas ng karera. Makakakuha siya ng kumpiyansa sa pamamagitan ng masusing talakayan upang malampasan ang mga naturang balakid sa tulong ng isang mahusay na tagapayo."
+        },
+        {
+          "title": "Inaalis ang pagkabigo na may kaugnayan sa karera",
+          "description": "Ang kawalan ng kakayahang ilabas ang emosyon ng mga indibidwal na nahihirapang pumili ng tamang karera para sa kanila ay maaaring humantong sa mga pagbabago sa emosyon. Ang pagpapayo sa karera ay isang plataporma na nakakatulong sa pagbabawas ng mga ganitong emosyon at pag-redirect patungo sa pinakamahusay na mga opsyon."
+        }
+      ],
+      "image": {
+        "alt": "Tagapayo sa karera na nakikipag-usap sa mga mag-aaral sa isang propesyonal na setting ng konsultasyon"
+      }
+    },
+    "whoCounselor": {
+      "title": {
+        "prefix": "Sino ang isang",
+        "highlight": "Tagapayo sa Karera?"
+      },
+      "cards": [
+        {
+          "title": "Propesyonal na Kadalubhasaan",
+          "paragraphs": {
+            "0": "Ang isang tagapayo sa karera ay may kadalubhasaan sa mga pamamaraan ng pagpapayo, teorya ng pag-unlad, mga mapagkukunan ng impormasyon sa karera, at pangangasiwa ng pagtatasa.",
+            "1": "Sinusuportahan ng isang career counselor ang iyong landas sa karera. Bagama't ang terminong \"career coach\" at \"career counselor\" ay minsang ginagamit nang palitan, ang mga career counselor ay karaniwang may mas pormal na kwalipikasyon sa gabay sa karera."
+          }
+        },
+        {
+          "title": "Tungkulin at mga Responsibilidad",
+          "paragraphs": {
+            "0": "Ginagamit ng mga tagapayo sa karera ang kanilang kaalaman sa pag-unlad ng tao at pagpapayo upang makatulong sa pagdisenyo ng iyong propesyonal na landas. Nagbibigay sila ng personalized na gabay, tinutukoy ang mga kalakasan at mga aspeto para sa paglago, at tinutulungan kang malampasan ang mga transisyon sa karera nang may kumpiyansa."
+          }
+        }
+      ],
+      "cta": {
+        "text": "Mag-book ng Konsultasyon Ngayon"
+      },
+      "testimonial": {
+        "quote": "Ang mga serbisyo sa pagpapayo sa karera na ibinigay ng Transformation Wellness Clinics ay lubos na nagpabago sa aking propesyonal na landas. Ang kanilang isinapersonal na diskarte ay nakatulong sa akin na matuklasan ang mga kalakasan na hindi ko alam na mayroon ako at makahanap ng landas sa karera na tunay na naaayon sa aking mga pinahahalagahan at layunin.",
+        "name": "Samantha R.",
+        "title": "Direktor ng Marketing | Tagumpay sa Paglipat ng Karera"
+      }
+    },
+    "mainSection": {
+      "header": {
+        "title": "Mga Serbisyo sa Pagpapayo sa Karera"
+      },
+      "content": {
+        "paragraphs": [
+          "Sa pangkalahatang kahulugan, ang pagpapayo ay tumutukoy sa pagbibigay sa isang tao ng moral na suporta at gabay at paggalugad ng mga solusyon para sa mga problema. Ang mga serbisyo sa pagpapayo sa karera ay nauugnay sa isang uri ng pagpapayo na tumutulong sa mga tao sa tamang direksyon upang magbago, umalis, o ituloy ang isang karera sa mga oras ng kawalan ng katiyakan. Ito ay isang proseso na nakatuon sa pagtulong sa isang tao na maunawaan ang mga uso sa trabaho upang makagawa ng matalinong mga desisyon tungkol sa edukasyon at karera.",
+          "Nakakatulong ito sa iba't ibang problema tulad ng mahinang pamamahala ng oras, mababang konsentrasyon, at hindi pagkakasundo sa mga magulang kung aling larangan ang pipiliin. Ang pagkuha ng propesyonal na gabay sa karera mula sa mga eksperto na may praktikal na karanasan sa ganitong larangan ang pinakamahusay na paraan.",
+          "Gusto ng lahat na maging pinakamahusay sa kanilang mga hinahangad at gayundin ikaw. Nilalayon ng Transformation Wellness Clinics na gabayan ka sa buong proseso nang madali. Ang aming mga ekspertong tagapayo ay nagbibigay ng mga mapagkakatiwalaang serbisyo sa career consultant at isang hakbang na lang ang layo upang matulungan kang bumuo ng isang mas magandang kinabukasan. Tingnan natin ang mahahalagang elemento nito upang mas maunawaan."
+        ]
+      },
+      "services": [
+        {
+          "title": "Pagtatasa ng Karera",
+          "description": "Tuklasin ang iyong mga kalakasan, interes, at kakayahan sa pamamagitan ng aming komprehensibong mga kagamitan sa pagtatasa bilang bahagi ng aming mga serbisyo sa pagpapayo sa karera.",
+          "borderColor": "border-blue-500",
+          "titleColor": "teksto-asul-800"
+        },
+        {
+          "title": "Pagpaplano ng Edukasyon",
+          "description": "Kumuha ng gabay sa pagpili ng tamang landas sa edukasyon na naaayon sa iyong mga layunin sa karera sa pamamagitan ng isinapersonal na pagpaplano at pag-unlad ng karera.",
+          "borderColor": "border-green-500",
+          "titleColor": "text-green-800"
+        },
+        {
+          "title": "Istratehiya sa Paghahanap ng Trabaho",
+          "description": "Alamin ang mga epektibong pamamaraan para sa pagbuo ng resume, pag-iinterbyu, at networking sa iyong larangan, bahagi ng aming kumpletong programa sa career coaching.",
+          "borderColor": "border-purple-500",
+          "titleColor": "teksto-lila-800"
+        }
+      ]
+    }
+  }
+}

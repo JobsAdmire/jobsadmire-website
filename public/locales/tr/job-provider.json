@@ -1,0 +1,173 @@
+{
+  "header": {
+    "heroImageAlt": "İş dünyası profesyonelleri",
+    "badge": "Türkiye'nin 1 Numaralı Personel Temini Çözümü",
+    "title_prefix": "Kaliteli Personel Alın",
+    "title_suffix": "İşletmeniz İçin",
+    "description": "Önceden taranmış, çalışmaya hazır çalışanlar için JobsAdmire ile ortak olun. İşe alım, vizeler ve tüm yasal belgelerle biz ilgileniyoruz.",
+    "contact_button": "İletişim"
+  },
+  "form": {
+    "title": "Ortak Kaydı",
+    "subtitle": "Kaliteli personeli işe almaya başlamak için şirketinizi kaydedin. Ekibimiz 24 saat içinde sizinle iletişime geçecektir.",
+    "company_info": {
+      "title": "Şirket Bilgileri",
+      "company_name": "Şirket Adı *",
+      "company_name_placeholder": "Şirket adınızı girin",
+      "company_name_error": "Şirket adı gereklidir",
+      "company_type": "Şirket Tipi *",
+      "company_type_placeholder": "Şirket türünü seçin",
+      "company_type_error": "Şirket türü gereklidir",
+      "types": {
+        "corporation": "Anonim Şirketi (A.Ş.)",
+        "limited_company": "Limited Şirket (Ltd.)",
+        "partnership": "Ortaklık",
+        "sole_proprietorship": "Şahıs Şirketi",
+        "branch_office": "Şube Ofisi",
+        "other": "Diğer"
+      },
+      "industry_type": "Sanayi Tipi *",
+      "industry_type_placeholder": "Sektör seçin",
+      "industry_type_error": "Sektör tipi gereklidir",
+      "industries": {
+        "manufacturing": "Fabrika",
+        "construction": "Tarım",
+        "technology": "Turizm",
+        "healthcare": "İnşaat",
+        "other": "Diğer"
+      },
+      "established_year": "Kuruluş Yılı",
+      "established_year_placeholder": "2020"
+    },
+    "contact_info": {
+      "title": "İletişim Bilgileri",
+      "contact_person": "İlgili Kişi *",
+      "contact_person_placeholder": "Tam adınız",
+      "contact_person_error": "İrtibat kişisi gereklidir",
+      "position": "Pozisyon/Unvan",
+      "position_placeholder": "İK Müdürü, CEO, vb.",
+      "email": "E-posta Adresi *",
+      "email_required": "E-posta gereklidir",
+      "email_invalid": "E-posta geçersiz",
+      "phone": "Telefon Numarası *",
+      "phone_placeholder": "+90 xxx xxx xx xx",
+      "phone_required": "Telefon numarası gereklidir",
+      "company_address": "Şirket Adresi",
+      "company_address_placeholder": "Tam iş adresi",
+      "city": "Şehir *",
+      "city_placeholder": "İstanbul, Ankara, vb.",
+      "city_required": "Şehir gereklidir",
+      "province": "İl *",
+      "province_placeholder": "İl seçiniz",
+      "province_required": "İl gereklidir",
+      "provinces": {
+        "istanbul": "İstanbul",
+        "ankara": "Ankara",
+        "izmir": "İzmir",
+        "bursa": "Bursa",
+        "antalya": "Antalya",
+        "adana": "Adana",
+        "konya": "Konya",
+        "gaziantep": "Gaziantep",
+        "kayseri": "Kayseri",
+        "other": "Diğer"
+      },
+      "postal_code": "Posta Kodu",
+      "website": "Şirket Web Sitesi",
+      "email_placeholder": "company@example.com",
+      "postal_code_placeholder": "34000",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "legal_info": {
+      "title": "Yasal ve Tescil Detayları",
+      "tax_number": "Vergi Numarası *",
+      "tax_number_placeholder": "Vergi numarasını girin",
+      "tax_number_error": "Vergi numarası gereklidir",
+      "trade_registry_number": "Ticaret Sicil Numarası",
+      "trade_registry_number_placeholder": "Ticaret sicil numarasını girin"
+    },
+    "staffing_requirements": {
+      "title": "Personel Gereksinimleri",
+      "specific_job_positions": "Spesifik İş Pozisyonları",
+      "specific_job_positions_placeholder": "Örneğin, Makine Operatörü, Kaynakçı, Yazılım Geliştirici vb.",
+      "salary_range": "Maaş Aralığı (Aylık)",
+      "salary_range_placeholder": "22,000TL-25,000TL",
+      "preferred_nationalities": "Tercih Edilen Uyruklar",
+      "preferred_nationalities_placeholder": "Örneğin, Herhangi bir ülke, Pakistan, Bangladeş, Ukrayna, vb.",
+      "language_requirements": "Dil Gereksinimleri",
+      "language_requirements_placeholder": "Dil gereksinimini seçin",
+      "languages": {
+        "none": "Özel bir gereklilik yok",
+        "basic_turkish": "Temel Türkçe",
+        "intermediate_turkish": "Orta Seviye Türkçe",
+        "fluent_turkish": "Akıcı Türkçe",
+        "english": "İngilizce Gerekli",
+        "turkish_english": "Türkçe + İngilizce"
+      },
+      "work_experience": "Gerekli İş Deneyimi",
+      "work_experience_placeholder": "Deneyim seviyesini seçin",
+      "experience_levels": {
+        "entry_level": "Giriş Seviyesi (0-1 yıl)",
+        "junior": "Junior (1-3 yıl)",
+        "mid_level": "Orta Seviye (3-5 yıl)",
+        "senior": "Kıdemli (5+ yıl)",
+        "expert": "Uzman (10+ yıl)"
+      },
+      "additional_requirements": "Ek Gereksinimler veya Notlar",
+      "additional_requirements_placeholder": "Pozisyonlar için herhangi bir özel beceri, sertifika veya diğer gereklilikler..."
+    },
+    "company_description": {
+      "title": "Şirketiniz Hakkında",
+      "label": "Şirket Açıklaması",
+      "placeholder": "Bize şirketinizden, iş faaliyetlerinizden, çalışma ortamınızdan, şirket kültürünüzden ve çalışanların neden ekibinize katılmak isteyeceğinden bahsedin..."
+    },
+    "legal_agreements": {
+      "title": "Yasal Anlaşmalar",
+      "agree_terms_prefix": "Kabul ediyorum",
+      "terms_link": "Şartlar ve Koşullar",
+      "agree_terms_suffix": "ve JobsAdmire aracılığıyla işçi işe almak için yasal yükümlülükleri anlamak. *",
+      "terms_error": "Hüküm ve koşulları kabul etmelisiniz",
+      "agree_privacy_prefix": "Bu belgeyi okuduğumu ve kabul ettiğimi onaylıyorum.",
+      "privacy_link": "Gizlilik Politikası",
+      "agree_privacy_suffix": "ve işe alım hizmetleri için şirket verilerinin işlenmesine izin verir. *",
+      "privacy_error": "Gizlilik politikasını kabul etmelisiniz"
+    },
+    "submit": {
+      "button": "Başvuru Gönder",
+      "submitting": "Gönderiyorum...",
+      "success_message": "Kayıt başarıyla gönderildi! Ekibimiz, işe alım ihtiyaçlarınızı görüşmek üzere 24 saat içinde sizinle iletişime geçecektir.",
+      "footer_message": "Ekibimiz başvurunuzu inceleyecek ve personel ihtiyaçlarınızı görüşmek üzere 24 saat içinde sizinle iletişime geçecektir."
+    }
+  },
+  "industries_served": {
+    "title": "Hizmet Verdiğimiz Sektörler",
+    "subtitle": "Türkiye'deki tüm ana sektörlerde vasıflı çalışanlar sağlıyoruz",
+    "items": {
+      "factory": {
+        "name": "Fabrika",
+        "desc": "Üretim ve İmalat"
+      },
+      "agriculture": {
+        "name": "Tarım",
+        "desc": "Çiftçilik ve Yetiştiricilik"
+      },
+      "tourism": {
+        "name": "Turizm",
+        "desc": "Ağırlama ve Hizmetler"
+      },
+      "construction": {
+        "name": "İnşaat",
+        "desc": "Bina ve Altyapı"
+      }
+    }
+  },
+  "support": {
+    "title": "Yardıma mı ihtiyacınız var?",
+    "description": "Kendini işine adamış ekibimiz, işletmeniz için doğru personeli bulmanıza yardımcı olmaya hazırdır. İşe alımdan çalışan yerleştirmeye kadar eksiksiz destek sağlıyoruz.",
+    "support_24_7": "7/24 Destek",
+    "business_hours": "Çalışma Saatleri: Pazartesi - Cuma, Sabah 9:00 - Akşam 6:00 (Türkiye Saati)",
+    "response_time": "Mesai saatleri içinde 2 saat içinde yanıt veriyoruz",
+    "email": "info@jobsadmire.com",
+    "phone": "+90 501 124 03 40"
+  }
+}

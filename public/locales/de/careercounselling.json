@@ -1,0 +1,208 @@
+{
+  "careercounselling": {
+    "hero": {
+      "badge": "Professionelle Berufsberatungsdienste",
+      "headline": {
+        "prefix": "Entdecken Sie Ihr",
+        "suffix": "Mit fachkundiger Anleitung"
+      },
+      "animatedWords": [
+        "Beruflicher Werdegang",
+        "Zukunft",
+        "Richtung",
+        "Potenzielle",
+        "Zweck",
+        "Erfolg"
+      ],
+      "description": "Von Karrierebewertungen bis hin zu persönlichen Entwicklungsplänen - unsere umfassenden Karriereberatungsdienste helfen Berufstätigen, ihren perfekten Weg zu finden.",
+      "cta": {
+        "text": "Beginnen Sie Ihre Reise"
+      }
+    },
+    "showcase": {
+      "title": "Berufsberatung",
+      "subtitle": "Professionelle Beratung für Ihre berufliche Laufbahn",
+      "assessment": {
+        "title": "Bewertung der beruflichen Laufbahn",
+        "description": "Entdecken Sie Ihre Stärken und Interessen"
+      },
+      "services": [
+        {
+          "title": "Trassenplanung",
+          "description": "Strategischer Fahrplan",
+          "bgGradient": "bg-gradient-to-r von-himmel-500 zu-blau-600"
+        },
+        {
+          "title": "Skills Dev",
+          "description": "Planung des Wachstums",
+          "bgGradient": "bg-gradient-to-r von-violett-500 nach-indigo-600"
+        },
+        {
+          "title": "Wachstum",
+          "description": "Berufliches Fortkommen",
+          "bgGradient": "bg-gradient-to-r von-emerald-500 bis-teal-600"
+        },
+        {
+          "title": "Mentoring",
+          "description": "Fachkundige Anleitung",
+          "bgGradient": "bg-gradient-to-r von-orange-500 nach-rot-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "92%",
+          "label": "Erfolgreiche berufliche Veränderung",
+          "color": "text-himmel-600"
+        },
+        {
+          "value": "800+",
+          "label": "Geführte Kunden",
+          "color": "text-blau-600"
+        },
+        {
+          "value": "4.8★",
+          "label": "Zufriedenstellung",
+          "color": "text-indigo-600"
+        }
+      ]
+    },
+    "whyChoose": {
+      "title": {
+        "prefix": "Gründe für die Wahl",
+        "highlight": "Transformation Wellness",
+        "suffix": "Kliniken für Berufsberatung?"
+      },
+      "description": "Transformation Wellness Clinics bietet Einzelpersonen ein Karriereberatungsprogramm, das sie durch jeden Aspekt ihrer Karriere, ihres Vorstellungsgesprächs und sogar des Jobauswahlprozesses führt. Unsere Experten bieten ergebnisorientierte Beratung, damit Sie die beste Entscheidung Ihres Lebens treffen können.",
+      "features": [
+        "Umfassende Karrierebewertungen, um Ihre Stärken zu erkennen",
+        "Fachkundige Berater mit nachgewiesener Erfolgsbilanz",
+        "Personalisierte Karrierepläne, die auf Ihre spezifischen Ziele zugeschnitten sind",
+        "Beratung von der Berufswahl bis zur Unterstützung bei der Arbeitsvermittlung"
+      ],
+      "cta": {
+        "text": "Beginnen Sie Ihre Reise heute"
+      },
+      "image": {
+        "alt": "Berufsberater führt eine professionelle Sitzung mit einem Kunden durch"
+      }
+    },
+    "choosingCareer": {
+      "title": "Sie entscheiden sich für einen Beruf?",
+      "description": "Die Entscheidung für einen Beruf kann schwierig und überwältigend sein. Ein Berater kann wertvolle Informationen liefern und Ihnen dabei helfen, Ihren Fokus einzugrenzen, indem er Fragen wie diese beantwortet:",
+      "questions": [
+        "Welche Tätigkeiten sind für mich erfüllend?",
+        "Welche Fähigkeiten und Qualifikationen habe ich?",
+        "Welche Stellen sind lokal oder international verfügbar?",
+        "Was ist meine Qualifikation?",
+        "Wie viel Gehalt ist für mich angemessen?",
+        "Welche Art von Arbeitsplätzen gibt es dort, wo ich wohne? Oder wo ich leben möchte?"
+      ]
+    },
+    "howCounsellingHelps": {
+      "title": "Wie kann mir die Berufsberatung helfen?",
+      "description": "Während Ihres Gesprächs werden Sie Ihr Bildungsniveau, Ihre Stärken und Fähigkeiten erkunden und Ihren Persönlichkeitstyp und Ihre Interessen bestimmen. Es werden Eignungs- und IQ-Tests durchgeführt, um mehr über Sie zu erfahren. Mithilfe von Instrumenten wie dem Myers-Briggs-Typenindikator werden Karrierewege auf der Grundlage von Persönlichkeitsmerkmalen ermittelt.",
+      "sessionTopics": {
+        "title": "Einige mögliche Themen der Sitzung sind folgende:",
+        "items": [
+          "Für eine berufliche Laufbahn ist ein Bildungsengagement erforderlich.",
+          "Das Arbeitsumfeld kann langsam oder schnell sein, drinnen oder draußen.",
+          "Erforderlicher Bildungsaufwand für bestimmte Berufe.",
+          "Die Möglichkeiten, die sich in einem bestimmten Beruf bieten. Einige sind nicht sehr flexibel, andere schon. Ärzte zum Beispiel können vielleicht ihr Fachgebiet wechseln, aber sie bleiben Ärzte. Andere hingegen sind in dem Bereich, den sie wählen, mobiler."
+        ]
+      },
+      "professionalGuidance": {
+        "title": "Professionelle Beratung",
+        "description": "Die Berater können auch Ratschläge geben, wie man eine Beförderung erreichen kann oder wie man ein Gehalt aushandelt."
+      }
+    },
+    "whyNeed": {
+      "title": {
+        "prefix": "Warum brauchen Sie",
+        "highlight": "Berufsberatung?"
+      },
+      "description": "Die Berufsberatung kann Ihnen helfen, Erkenntnisse darüber zu gewinnen, wer Sie sind, wie Sie Ihre Berufswahl treffen und wie Sie diese verbessern können. Berufsberatung kann:",
+      "benefits": [
+        {
+          "title": "Bereitstellung von Expertenressourcen",
+          "description": "Sie ermöglicht den Zugang zu Wissen und Ressourcen, über die ein Experte aus der Sicht des Kindes und der Eltern verfügt. Der Umfang, das Wissen und die Wege, die er beschreiten kann, sind äußerst wichtig, da den meisten Erziehungsberechtigten diese Art von Wissen fehlt."
+        },
+        {
+          "title": "Hilft bei der Wahl des richtigen Berufs",
+          "description": "Berufsberater sind Experten für die Beurteilung Ihrer Interessen, Persönlichkeit, Eignung und vieler anderer Aspekte. Anhand dieser Bewertung werden verschiedene Optionen vorgeschlagen, die alle relevant und verfügbar sind."
+        },
+        {
+          "title": "Hilft bei der Gewinnung von Einsichten",
+          "description": "Er hilft dem Ratsuchenden, die Hürden auf seinem Karriereweg zu erkennen. Durch gründliche Gespräche kann er/sie Zuversicht gewinnen, solche Hürden mit Hilfe eines guten Beraters zu überwinden."
+        },
+        {
+          "title": "Beseitigung von Frustrationen im Zusammenhang mit der Karriere",
+          "description": "Wenn Menschen, die sich bei der Berufswahl schwer tun, ihren Emotionen nicht freien Lauf lassen können, kann dies zu emotionalen Veränderungen führen. Die Berufsberatung ist eine Plattform, die dabei hilft, solche Emotionen abzubauen und sich auf die besten Optionen auszurichten."
+        }
+      ],
+      "image": {
+        "alt": "Berufsberater im Gespräch mit Studenten in einem professionellen Beratungssetting"
+      }
+    },
+    "whoCounselor": {
+      "title": {
+        "prefix": "Wer ist ein",
+        "highlight": "Berufsberater?"
+      },
+      "cards": [
+        {
+          "title": "Fachliche Kompetenz",
+          "paragraphs": [
+            "Ein Berufsberater verfügt über Fachwissen in den Bereichen Beratungstechniken, Entwicklungstheorie, Berufsinformationsressourcen und Beurteilungsmanagement.",
+            "Ein Berufsberater unterstützt Sie auf Ihrem Karriereweg. Obwohl die Begriffe \"Karrierecoach\" und \"Karriereberater\" manchmal synonym verwendet werden, haben Karriereberater in der Regel eine formellere Qualifikation in der Berufsberatung."
+          ]
+        },
+        {
+          "title": "Rolle und Zuständigkeiten",
+          "paragraphs": [
+            "Berufsberater nutzen ihre Kenntnisse in der menschlichen Entwicklung und Beratung, um Sie bei der Gestaltung Ihres beruflichen Werdegangs zu unterstützen. Sie bieten individuelle Beratung, ermitteln Stärken und Wachstumsbereiche und helfen Ihnen, berufliche Veränderungen selbstbewusst zu bewältigen."
+          ]
+        }
+      ],
+      "cta": {
+        "text": "Buchen Sie noch heute ein Beratungsgespräch"
+      },
+      "testimonial": {
+        "quote": "Die Karriereberatung von Transformation Wellness Clinics hat meine berufliche Laufbahn völlig verändert. Ihr individueller Ansatz hat mir geholfen, Stärken zu entdecken, von denen ich gar nicht wusste, dass ich sie habe, und einen Karriereweg zu finden, der wirklich mit meinen Werten und Zielen übereinstimmt.",
+        "name": "Samantha R.",
+        "title": "Marketing Director | Career Transition Success"
+      }
+    },
+    "mainSection": {
+      "header": {
+        "title": "Berufsberatungsdienste"
+      },
+      "content": {
+        "paragraphs": [
+          "Im allgemeinen Sinne bedeutet Beratung, einer Person moralische Unterstützung und Anleitung zu geben und Lösungen für Probleme zu finden. Die Berufsberatung ist eine Form der Beratung, die Menschen dabei hilft, in Zeiten der Unsicherheit die richtige Richtung einzuschlagen, um die Karriere zu wechseln, zu verlassen oder fortzusetzen. Es handelt sich um einen Prozess, der sich darauf konzentriert, den Menschen zu helfen, die Arbeitstrends zu verstehen, um fundierte Entscheidungen über Bildung und Karriere zu treffen.",
+          "Sie hilft bei verschiedenen Problemen wie schlechtem Zeitmanagement, geringerer Konzentration und Meinungsverschiedenheiten mit den Eltern über die Wahl des Studienfachs. Eine professionelle Berufsberatung durch Experten, die über praktische Erfahrungen in einem solchen Bereich verfügen, ist der beste Weg dorthin.",
+          "Jeder möchte in dem, was er tut, der Beste sein, und das möchten auch Sie. Transformation Wellness Clinics hat sich zum Ziel gesetzt, Sie mit Leichtigkeit durch den gesamten Prozess zu führen. Unsere fachkundigen Berater bieten vertrauenswürdige Karriereberatungsdienste und sind nur einen Schritt davon entfernt, Ihnen zu helfen, eine bessere Zukunft aufzubauen. Schauen wir uns die wichtigsten Elemente an, um sie besser zu verstehen."
+        ]
+      },
+      "services": [
+        {
+          "title": "Bewertung der beruflichen Laufbahn",
+          "description": "Entdecken Sie Ihre Stärken, Interessen und Begabungen mit Hilfe unserer umfassenden Assessment-Tools im Rahmen unserer Berufsberatung.",
+          "borderColor": "border-blue-500",
+          "titleColor": "text-blau-800"
+        },
+        {
+          "title": "Bildungsplanung",
+          "description": "Lassen Sie sich bei der Auswahl des richtigen Bildungsweges, der mit Ihren Karrierezielen übereinstimmt, durch eine individuelle Karriereplanung und -entwicklung beraten.",
+          "borderColor": "Rand-grün-500",
+          "titleColor": "text-grün-800"
+        },
+        {
+          "title": "Strategie der Stellensuche",
+          "description": "Lernen Sie effektive Techniken für die Erstellung von Lebensläufen, Vorstellungsgesprächen und Networking in Ihrem Fachgebiet, die Teil unserer umfassenden Karriere-Coaching-Programme sind.",
+          "borderColor": "border-violett-500",
+          "titleColor": "text-violett-800"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,284 @@
+{
+    "remotejobs": {
+      "hero": {
+        "badge": "Global remote job opportunities for professionals",
+        "headline": {
+          "prefix": "Embrace",
+          "suffix": "From Anywhere"
+        },
+        "animatedWords": [
+          "Remote Work",
+          "Freedom",
+          "Flexibility", 
+          "Balance",
+          "Independence",
+          "Future"
+        ],
+        "description": "Unlock your potential with flexible and rewarding remote jobs. Connect with legitimate, high-quality remote opportunities across multiple industries and achieve the perfect work-life balance.",
+        "cta": {
+          "text": "Find Remote Opportunities"
+        }
+      },
+      "showcase": {
+        "title": "Remote Work Hub",
+        "subtitle": "Work from anywhere in the world",
+        "workAnywhere": {
+          "title": "Work Anywhere",
+          "subtitle": "Connect globally, work locally"
+        },
+        "benefits": [
+          {
+            "icon": "Clock",
+            "title": "Flexibility",
+            "description": "Your schedule",
+            "gradient": "bg-gradient-to-r from-sky-500 to-blue-600"
+          },
+          {
+            "icon": "Globe",
+            "title": "Global",
+            "description": "Worldwide teams",
+            "gradient": "bg-gradient-to-r from-purple-500 to-indigo-600"
+          },
+          {
+            "icon": "Home",
+            "title": "Comfort",
+            "description": "Home office",
+            "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+          },
+          {
+            "icon": "Briefcase",
+            "title": "Growth",
+            "description": "Career development",
+            "gradient": "bg-gradient-to-r from-orange-500 to-red-600"
+          }
+        ]
+      }
+    },
+
+    
+        "remoteworksection": {
+          "whyChoose": {
+            "title": {
+              "prefix": "Why Choose",
+              "highlight": "Remote Work?"
+            },
+            "description": "Discover the life-changing benefits of working remotely",
+            "benefits": [
+              {
+                "icon": "Clock",
+                "title": "Flexibility",
+                "description": "Work when and where you want with complete control over your schedule.",
+                "highlight": "flexible work opportunities"
+              },
+              {
+                "icon": "Globe",
+                "title": "Access to Global Markets",
+                "description": "Find opportunities from companies around the world without relocating.",
+                "highlight": "online job opportunities"
+              },
+              {
+                "icon": "DollarSign",
+                "title": "Cost Savings",
+                "description": "Save money on commuting, relocation, and daily work expenses.",
+                "highlight": ""
+              },
+              {
+                "icon": "Heart",
+                "title": "Work-Life Balance",
+                "description": "Create better harmony between your professional and personal life.",
+                "highlight": "work from home jobs"
+              },
+              {
+                "icon": "TrendingUp",
+                "title": "Skill Enhancement",
+                "description": "Gain exposure to international projects and advanced remote work tools.",
+                "highlight": "improve job skills"
+              },
+              {
+                "icon": "Users",
+                "title": "Diverse Network",
+                "description": "Build connections with professionals from different cultures worldwide.",
+                "highlight": "global networking"
+              }
+            ]
+          },
+          "whatWeOffer": {
+            "title": {
+              "prefix": "What We",
+              "highlight": "Offer"
+            },
+            "description": "Comprehensive solutions for your remote work journey",
+            "services": [
+              {
+                "icon": "Target",
+                "title": "Curated Remote Job Listings",
+                "description": "We handpick and verify opportunities in sectors such as IT, digital marketing, content writing, graphic design, customer support, virtual assistance, and more",
+                "highlight": "remote job opportunities"
+              },
+              {
+                "icon": "Briefcase",
+                "title": "Freelance & Full-Time Remote Roles",
+                "description": "Whether you're looking for project-based freelance gigs or full-time roles, we have options to suit different preferences",
+                "highlight": "remote work for professionals"
+              },
+              {
+                "icon": "Users",
+                "title": "Personalized Job Matching",
+                "description": "Our experts help match your skills, experience, and career goals with the right companies",
+                "highlight": "remote hiring companies"
+              },
+              {
+                "icon": "Headphones",
+                "title": "Application Support",
+                "description": "From resume optimization for remote roles to interview preparation, we support you throughout the hiring process",
+                "highlight": ""
+              },
+              {
+                "icon": "BookOpen",
+                "title": "Training for Remote Work Skills",
+                "description": "Gain proficiency in remote collaboration tools, communication etiquette, and time management to thrive in virtual workspaces",
+                "highlight": ""
+              }
+            ],
+            "cta": "Start Your Remote Career Journey"
+          }
+        },
+
+        
+            "remoteworksection2": {
+              "whoShould": {
+                "title": {
+                  "prefix": "Who Should Explore",
+                  "highlight": "Remote Work?"
+                },
+                "description": "Remote work opens doors for professionals at every stage of their career",
+                "audience": [
+                  {
+                    "icon": "GraduationCap",
+                    "title": "Fresh Graduates",
+                    "description": "Ready to launch their careers with flexible remote opportunities",
+                    "highlight": "remote jobs for Pakistani professionals"
+                  },
+                  {
+                    "icon": "Home",
+                    "title": "Working Professionals",
+                    "description": "Professionals seeking or hybrid options",
+                    "highlight": "work from home jobs"
+                  },
+                  {
+                    "icon": "Users",
+                    "title": "Freelancers",
+                    "description": "Looking to expand their client base globally",
+                    "highlight": ""
+                  },
+                  {
+                    "icon": "Baby",
+                    "title": "Stay-at-Home Parents",
+                    "description": "Balancing family and career responsibilities",
+                    "highlight": ""
+                  },
+                  {
+                    "icon": "Coins",
+                    "title": "Currency Earners",
+                    "description": "Anyone wishing to earn in foreign currencies without leaving their country",
+                    "highlight": ""
+                  },
+                  {
+                    "icon": "MapPin",
+                    "title": "Remote Explorers",
+                    "description": "People who want complete location freedom while working",
+                    "highlight": "digital nomad lifestyle"
+                  }
+                ]
+              },
+              "howToStart": {
+                "title": {
+                  "prefix": "How to Get",
+                  "highlight": "Started"
+                },
+                "description": "Your journey to remote work success in 4 simple steps",
+                "steps": [
+                  {
+                    "number": "01",
+                    "icon": "UserPlus",
+                    "title": "Register with JobsAdmire",
+                    "description": "Create your profile showcasing your skills and experience"
+                  },
+                  {
+                    "number": "02",
+                    "icon": "Search",
+                    "title": "Browse & Apply",
+                    "description": "Explore our curated remote jobs and apply for roles that match your profile"
+                  },
+                  {
+                    "number": "03",
+                    "icon": "MessageSquare",
+                    "title": "Prepare & Interview",
+                    "description": "Benefit from our application and interview coaching to increase your chances"
+                  },
+                  {
+                    "number": "04",
+                    "icon": "Briefcase",
+                    "title": "Secure Your Remote Job",
+                    "description": "Land a remote role and enjoy the freedom of working from anywhere"
+                  }
+                ],
+                "form": {
+                  "title": "Start Your Journey",
+                  "subtitle": "Ready to begin your remote career?",
+                  "fields": {
+                    "name": "Full Name",
+                    "email": "Email Address",
+                    "skills": "Skills & Experience"
+                  },
+                  "placeholders": {
+                    "name": "Enter your full name",
+                    "email": "your.email@example.com",
+                    "skills": "Tell us about your skills..."
+                  },
+                  "submit": "Create Profile & Get Started"
+                },
+                "cta": "Begin Your Remote Career Journey"
+              },
+              "whyTrust": {
+                "title": {
+                  "prefix": "Why Trust",
+                  "highlight": "JobsAdmire?"
+                },
+                "description": "Your reliable partner for genuine remote work opportunities",
+                "points": [
+                  {
+                    "icon": "Award",
+                    "title": "Years of Experience",
+                    "description": "Connecting job seekers with reputable employers worldwide"
+                  },
+                  {
+                    "icon": "Shield",
+                    "title": "Quality Assurance",
+                    "description": "We prioritize transparency, quality, and your career success"
+                  },
+                  {
+                    "icon": "Globe",
+                    "title": "Global Network",
+                    "description": "Partnerships with trusted companies across multiple industries"
+                  }
+                ],
+                "highlight": {
+                  "title": {
+                    "prefix": "Genuine",
+                    "highlight": "Remote Work Opportunities"
+                  },
+                  "features": [
+                    "Verified job postings from trusted employers",
+                    "Comprehensive career support throughout your journey",
+                    "Access to exclusive remote opportunities"
+                  ],
+                  "cta": "Explore Opportunities"
+                }
+              }
+            }
+          
+      
+
+
+  }

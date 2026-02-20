@@ -1,0 +1,182 @@
+{
+    "interview": {
+      "hero": {
+        "badge": "Professional interview coaching services",
+        "headline": {
+          "prefix": "Master Your",
+          "suffix": "With Expert Coaching"
+        },
+        "animatedWords": [
+          "Interview",
+          "Confidence",
+          "Success", 
+          "Performance",
+          "Skills",
+          "Excellence"
+        ],
+        "description": "From mock interview sessions to personalized feedback, our comprehensive interview coaching services help professionals land their dream jobs with confidence.",
+        "cta": {
+          "text": "Start Your Preparation"
+        }
+      },
+      "showcase": {
+        "title": "Interview Coaching",
+        "subtitle": "Expert guidance for interview success",
+        "mockInterview": {
+          "title": "Mock Interviews",
+          "subtitle": "Practice with industry experts"
+        },
+        "features": [
+          {
+            "iconKey": "messageSquare",
+            "title": "Behavioral",
+            "description": "Situation-based Q&A",
+            "gradient": "bg-gradient-to-r from-sky-500 to-blue-600"
+          },
+          {
+            "iconKey": "target",
+            "title": "Technical",
+            "description": "Skills assessment",
+            "gradient": "bg-gradient-to-r from-purple-500 to-indigo-600"
+          },
+          {
+            "iconKey": "clock",
+            "title": "Timing",
+            "description": "Response strategy",
+            "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+          },
+          {
+            "iconKey": "award",
+            "title": "Feedback",
+            "description": "Expert analysis",
+            "gradient": "bg-gradient-to-r from-orange-500 to-red-600"
+          }
+        ],
+        "stats": [
+          {
+            "value": "95%",
+            "label": "Success Rate",
+            "color": "text-sky-600"
+          },
+          {
+            "value": "500+",
+            "label": "Clients Coached",
+            "color": "text-blue-600"
+          },
+          {
+            "value": "4.9★",
+            "label": "Rating",
+            "color": "text-indigo-600"
+          }
+        ]
+      },
+      "serviceSection": {
+        "header": {
+          "title": "Is This Service Right for You?",
+          "description": "Our online interview coaching has helped professionals at all career stages land their dream jobs, especially those seeking interview coaching services in Pakistan or interview preparation help for Pakistani job seekers."
+        },
+        "successStory": {
+          "label": "Success Story",
+          "badge": "25% Salary Increase",
+          "client": {
+            "name": "Sarmad Saleem",
+            "position": "Software Engineer, Toronto"
+          },
+          "testimonial": "\"I was struggling with interview anxiety after moving to Canada. The coaching helped me articulate my experience clearly and confidently. We helped Sarmad land his target job with a 25% higher offer within four months of immigration.\"",
+          "readMore": "Read More"
+        },
+        "testimonial": {
+          "label": "SUCCESS STORY",
+          "quote": "CareerTuners assisted me with interview coaching that resulted in me getting a job promotion within my company.",
+          "client": {
+            "name": "Meena Ansari",
+            "position": "Commercial Claims Adjuster"
+          }
+        },
+        "questions": {
+          "title": "Consider these questions:",
+          "items": [
+            "Are you uneasy about explaining why you want to leave your current job?",
+            "Do you find yourself rambling during interviews?",
+            "Do you worry about addressing \"red flags\" on your resume?"
+          ],
+          "conclusion": "If you said yes to any of these, our interview coaching is designed for you."
+        },
+        "benefits": {
+          "title": "Our coaching will equip you to:",
+          "items": [
+            {
+              "iconKey": "messageCircle",
+              "text": "Confidently answer tough questions."
+            },
+            {
+              "iconKey": "user",
+              "text": "Make strong first impressions and close interviews positively"
+            },
+            {
+              "iconKey": "trendingUp",
+              "text": "Handle discussions about job gaps, job hopping, or other potential hurdles with ease"
+            }
+          ]
+        },
+        "cta": {
+          "text": "Book Your Coaching Session Today"
+        }
+      }
+    },
+
+
+
+    
+      "interviewTimeline": {
+        "badge": "OUR PROVEN PROCESS",
+        "title": "How it works",
+        "subtitle": "Our expert coaches guide you through these three simple steps to professional interview preparation help:",
+        "steps": [
+          {
+            "id": 1,
+            "number": "01",
+            "iconKey": "fileText",
+            "title": "We build a custom test interview",
+            "description": "The first step is to share some background about you, including your resume and a job posting you're interested in pursuing. This step helps us tailor your session based on the job type, industry, and common challenges in <strong>job interview training service</strong>.",
+            "accentColor": "sky-400",
+            "highlightColor": "sky-100"
+          },
+          {
+            "id": 2,
+            "number": "02", 
+            "iconKey": "userCheck",
+            "title": "Time to meet your coach",
+            "description": "Your coach is specifically selected based on your industry, role, and experience. You will run through a mock interview session with your coach and then get tailored feedback on how to refine your responses and set yourself apart during the interview. Our <strong>1-on-1 interview coaching</strong> focuses on mastering behavioral interviews and overcoming any challenges you may face.",
+            "accentColor": "sky-500",
+            "highlightColor": "sky-100"
+          },
+          {
+            "id": 3,
+            "number": "03",
+            "iconKey": "video", 
+            "title": "Practice makes perfect",
+            "description": "After your coaching session, you'll receive a recording of your interview along with specific feedback and a custom action plan to ensure you are interview-ready. This is especially helpful for those looking for <strong>interview coaching for fresh graduates</strong> or professionals needing a <strong>career coaching for interviews</strong> approach.",
+            "accentColor": "sky-600",
+            "highlightColor": "sky-100"
+          }
+        ],
+        "cta": {
+          "title": "Ready to ace your next interview?",
+          "subtitle": "Join thousands of successful candidates who landed their dream job",
+          "buttonText": "Book Your Interview Coaching Session",
+          "link": "/contact-us"
+        },
+        "accessibility": {
+          "stepLabel": "Step {number}: {title}",
+          "ctaLabel": "Book interview coaching session"
+        }
+      }
+    
+
+
+
+
+
+
+  }

@@ -1,0 +1,343 @@
+{
+    "skilldevelopment": {
+      "hero": {
+        "badge": "Professional skill development training",
+        "headline": {
+          "prefix": "Develop Your",
+          "suffix": "For Tomorrow's Job"
+        },
+        "animatedWords": [
+          "Skills",
+          "Expertise",
+          "Knowledge", 
+          "Abilities",
+          "Talents",
+          "Mastery"
+        ],
+        "description": "Our job-oriented training programs and professional development courses offer practical, in-demand skills. Expert-led skill-building sessions prepare you to thrive in today's competitive job market.",
+        "cta": {
+          "text": "Explore Training Programs"
+        }
+      },
+      "showcase": {
+        "title": "Skill Development",
+        "subtitle": "Build tomorrow's skills today",
+        "learning": {
+          "title": "Interactive Learning",
+          "subtitle": "Hands-on training with expert guidance"
+        },
+        "categories": [
+          {
+            "icon": "Code",
+            "title": "Tech Skills",
+            "description": "Programming & IT",
+            "gradient": "bg-gradient-to-r from-sky-500 to-blue-600"
+          },
+          {
+            "icon": "Lightbulb",
+            "title": "Creative",
+            "description": "Design & Media",
+            "gradient": "bg-gradient-to-r from-purple-500 to-indigo-600"
+          },
+          {
+            "icon": "Target",
+            "title": "Business",
+            "description": "Management & Finance",
+            "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+          },
+          {
+            "icon": "TrendingUp",
+            "title": "Soft Skills",
+            "description": "Communication & Leadership",
+            "gradient": "bg-gradient-to-r from-orange-500 to-red-600"
+          }
+        ],
+        "stats": [
+          {
+            "value": "150+",
+            "label": "Training Programs",
+            "color": "text-sky-600"
+          },
+          {
+            "value": "5000+",
+            "label": "Students Trained",
+            "color": "text-blue-600"
+          },
+          {
+            "value": "90%",
+            "label": "Job Placement",
+            "color": "text-indigo-600"
+          }
+        ]
+      }
+    },
+    
+        "skilldevpage": {
+          "hero": {
+            "badge": "PROFESSIONAL SKILL DEVELOPMENT",
+            "title": {
+              "prefix": "Why Choose Our",
+              "highlight": "Skill Development Programs?"
+            },
+            "description": "Transform your career with industry-relevant training programs designed to make you job-ready. Join thousands of professionals who have advanced their careers through our comprehensive skill development courses.",
+            "cta": {
+              "primary": "Explore Training Programs",
+              "secondary": "Schedule Consultation"
+            }
+          },
+          "stats": [
+            {
+              "value": "500+",
+              "label": "Training Programs",
+              "icon": "BookOpen"
+            },
+            {
+              "value": "15k+",
+              "label": "Students Trained",
+              "icon": "Users"
+            },
+            {
+              "value": "95%",
+              "label": "Job Placement Rate",
+              "icon": "TrendingUp"
+            },
+            {
+              "value": "200+",
+              "label": "Industry Partners",
+              "icon": "Building"
+            }
+          ],
+          "benefits": {
+            "title": {
+              "prefix": "What Makes Our Programs",
+              "highlight": "Outstanding"
+            },
+            "description": "Our comprehensive approach ensures you get the best training experience with real-world applications",
+            "items": [
+              {
+                "icon": "Building",
+                "title": "Industry-Relevant Curriculum",
+                "description": "Training modules designed in collaboration with industry experts and employers, ensuring you gain the most relevant and up-to-date skills through in-demand skill training programs.",
+                "color": "text-[#38B6FF]",
+                "bgColor": "bg-[#38B6FF]/10"
+              },
+              {
+                "icon": "Users",
+                "title": "Experienced Trainers & Mentors",
+                "description": "Learn from qualified instructors with real-world experience in their respective fields delivering training for career advancement.",
+                "color": "text-emerald-600",
+                "bgColor": "bg-emerald-50"
+              },
+              {
+                "icon": "Target",
+                "title": "Hands-On Learning",
+                "description": "We emphasize practical, project-based learning so that you're not just trained—you're job-ready with essential soft skills and technical training.",
+                "color": "text-purple-600",
+                "bgColor": "bg-purple-50"
+              },
+              {
+                "icon": "Clock",
+                "title": "Flexible Learning Options",
+                "description": "Online, in-person, or hybrid—choose the mode that best fits your schedule and learning style for online and offline training sessions for in-demand skills.",
+                "color": "text-orange-600",
+                "bgColor": "bg-orange-50"
+              },
+              {
+                "icon": "Briefcase",
+                "title": "Career Support",
+                "description": "Get guidance on resume building, job search strategies, and interview preparation as part of our workplace readiness training and career enhancement workshops.",
+                "color": "text-indigo-600",
+                "bgColor": "bg-indigo-50"
+              }
+            ]
+          },
+          "trainingAreas": {
+            "title": {
+              "prefix": "Training Areas",
+              "highlight": "We Cover"
+            },
+            "description": "Our programs span a wide range of high-demand domains to meet diverse career aspirations",
+            "programLabel": "Professional Training Program",
+            "skillsLabel": "Key Skills You'll Learn:",
+            "highlightsLabel": "Program Highlights:",
+            "enrollButton": "Enroll in",
+            "programText": "Program",
+            "highlights": [
+              "Industry-recognized certification",
+              "Hands-on project portfolio",
+              "Career placement assistance",
+              "Flexible learning schedule"
+            ],
+            "items": [
+              {
+                "id": 0,
+                "title": "Information Technology (IT) & Software Development",
+                "description": "Programming languages, web development, data science, app development, cybersecurity, and more, supported by our digital skills training initiatives.",
+                "icon": "Code",
+                "color": "text-[#38B6FF]",
+                "bgColor": "bg-[#38B6FF]/10",
+                "accentColor": "bg-[#38B6FF]",
+                "skills": ["Python", "JavaScript", "React", "Data Science", "Cybersecurity", "Cloud Computing"]
+              },
+              {
+                "id": 1,
+                "title": "Digital Marketing",
+                "description": "SEO, social media marketing, email marketing, content creation, Google Ads, and analytics.",
+                "icon": "TrendingUp",
+                "color": "text-emerald-600",
+                "bgColor": "bg-emerald-50",
+                "accentColor": "bg-emerald-600",
+                "skills": ["SEO", "Social Media", "Google Ads", "Content Marketing", "Analytics", "Email Marketing"]
+              },
+              {
+                "id": 2,
+                "title": "Business & Entrepreneurship",
+                "description": "Business planning, project management, leadership, and financial literacy.",
+                "icon": "Building",
+                "color": "text-purple-600",
+                "bgColor": "bg-purple-50",
+                "accentColor": "bg-purple-600",
+                "skills": ["Business Planning", "Project Management", "Leadership", "Financial Literacy", "Strategy", "Operations"]
+              },
+              {
+                "id": 3,
+                "title": "Communication & Soft Skills",
+                "description": "Public speaking, professional writing, teamwork, emotional intelligence, and workplace etiquette.",
+                "icon": "MessageSquare",
+                "color": "text-orange-600",
+                "bgColor": "bg-orange-50",
+                "accentColor": "bg-orange-600",
+                "skills": ["Public Speaking", "Professional Writing", "Teamwork", "Emotional Intelligence", "Leadership", "Negotiation"]
+              },
+              {
+                "id": 4,
+                "title": "Vocational & Technical Skills",
+                "description": "Trades and hands-on professions including mechanical, electrical, and computer-aided design (CAD).",
+                "icon": "Shield",
+                "color": "text-indigo-600",
+                "bgColor": "bg-indigo-50",
+                "accentColor": "bg-indigo-600",
+                "skills": ["Mechanical Engineering", "Electrical Systems", "CAD Design", "Manufacturing", "Quality Control", "Safety Standards"]
+              }
+            ]
+          },
+          "targetAudience": {
+            "title": "Who Can Join?",
+            "description": "Our programs are designed for diverse learners at different career stages",
+            "items": [
+              {
+                "title": "Recent Graduates",
+                "description": "Seeking upskilling programs for fresh graduates in Pakistan",
+                "icon": "GraduationCap",
+                "color": "text-[#38B6FF]"
+              },
+              {
+                "title": "Working Professionals",
+                "description": "Aiming to improve job skills or transition careers through skill gap analysis and upskilling",
+                "icon": "Briefcase",
+                "color": "text-emerald-600"
+              },
+              {
+                "title": "Entrepreneurs",
+                "description": "Needing business know-how and entrepreneurial skills",
+                "icon": "Lightbulb",
+                "color": "text-purple-600"
+              },
+              {
+                "title": "Job Seekers",
+                "description": "Aiming for competitive advantage via affordable career training programs for job seekers",
+                "icon": "Target",
+                "color": "text-orange-600"
+              },
+              {
+                "title": "Organizations",
+                "description": "Looking to train their staff with corporate skill training sessions",
+                "icon": "Building",
+                "color": "text-indigo-600"
+              }
+            ]
+          },
+          "approach": {
+            "title": {
+              "prefix": "Our",
+              "highlight": "Learning Approach"
+            },
+            "description": "At JobsAdmire, we follow a learner-centric and outcome-oriented training model designed to ensure success",
+            "points": [
+              {
+                "title": "Engagement",
+                "description": "Interactive sessions that keep learners actively involved",
+                "icon": "Users"
+              },
+              {
+                "title": "Assessment",
+                "description": "Quizzes and real-world projects to measure progress",
+                "icon": "BarChart3"
+              },
+              {
+                "title": "Evaluation",
+                "description": "Certifications and practical testing for validation",
+                "icon": "Award"
+              },
+              {
+                "title": "Connection",
+                "description": "Job opportunities and internships for real experience",
+                "icon": "Globe"
+              }
+            ]
+          },
+          "certification": {
+            "title": {
+              "prefix": "Certification",
+              "suffix": "Placement Assistance"
+            },
+            "description": "Upon successful completion, participants receive recognized certifications to boost their resumes. Our partnerships with leading companies and job platforms enable us to offer placement assistance, connecting learners with real employment opportunities.",
+            "features": [
+              "Industry-recognized certifications",
+              "Best skill development courses for professional growth",
+              "Skill development courses in Pakistan",
+              "Job training for Pakistani youth"
+            ],
+            "cta": "View Certification Programs"
+          },
+          "form": {
+            "title": "Get Started Today",
+            "fields": {
+              "name": "Full Name",
+              "email": "Email Address",
+              "training": "Interested Training Area"
+            },
+            "placeholders": {
+              "name": "Enter your full name",
+              "email": "Enter your email",
+              "training": "Select training area"
+            },
+            "options": [
+              {
+                "value": "it",
+                "label": "IT & Software Development"
+              },
+              {
+                "value": "marketing",
+                "label": "Digital Marketing"
+              },
+              {
+                "value": "business",
+                "label": "Business & Entrepreneurship"
+              },
+              {
+                "value": "communication",
+                "label": "Communication & Soft Skills"
+              },
+              {
+                "value": "technical",
+                "label": "Vocational & Technical Skills"
+              }
+            ],
+            "submit": "Request Information"
+          }
+        }
+      
+
+
+  }

@@ -1,0 +1,131 @@
+{
+  "navigation": {
+    "package": "الحزمة",
+    "home": "الصفحة الرئيسية"
+  },
+  "hero": {
+    "title": {
+      "line1": "ابدأ مشروعك",
+      "line2": "رحلة اليوم"
+    },
+    "description": "اطلب بسهولة الدعوات الإلكترونية الرسمية لتلبية احتياجات سفرك. سواء للسياحة أو العمل أو المؤتمرات/الندوات، فإن Jobs Admire يبسط لك عملية الحصول على التأشيرة"
+  },
+  "form": {
+    "iAmFrom": "أنا من",
+    "iLiveIn": "أعيش في",
+    "invitationFor": "دعوة لـ",
+    "selectCountry": "اختر البلد",
+    "selectDestination": "اختر الوجهة",
+    "searchCountries": "ابحث عن الدول...",
+    "loadingCountries": "تحميل البلدان...",
+    "noCountriesFound": "لم يتم العثور على أي دول",
+    "findNow": "ابحث الآن"
+  },
+  "packages": {
+    "title": "اختر باقة الخدمة",
+    "description": "اختر من بين باقات خدماتنا الشاملة المصممة لتحقيق أحلامك في السفر. نحن نقدم معالجة سريعة، وأسعار تنافسية، وإرشادات الخبراء لضمان نجاح طلب التأشيرة الخاص بك دون أي ضغوط.",
+    "showingPackagesFor": "عرض الحزم لـ",
+    "packageFor": "حزمة ل",
+    "selectedCountry": "الدول المختارة",
+    "recommended": "موصى به",
+    "save": "الحفظ",
+    "getStarted": "ابدأ الآن",
+    "needHelp": "هل تحتاج إلى مساعدة في الاختيار؟",
+    "contactExperts": "تواصل مع خبرائنا",
+    "processingTime48Hours": "مدة معالجة الدعوة 48 ساعة",
+    "documentationProcessingTime48Hours": "مدة معالجة الوثائق 48 ساعة",
+    "features": {
+      "fastProcessing": "المعالجة السريعة",
+      "hours96Valid": "96 ساعة صالحة",
+      "airportTransit": "النقل العابر بالمطار",
+      "days14Valid": "14 يومًا صالحًا",
+      "days30Valid": "صالح لمدة 30 يوماً",
+      "touristBusiness": "شخص إضافي (فوق 5 أشخاص): 200 دولار أمريكي للشخص الواحد",
+      "touristBusinesss": "السياحة | الأعمال",
+      "singleEntry": "دخول واحد",
+      "singleMultipleEntry": "دخول واحد | دخول متعدد"
+    }
+  },
+  "alerts": {
+    "selectAllFields": "يرجى تحديد جميع الحقول المطلوبة"
+  },
+  "errors": {
+    "failedToLoadCountries": "فشل تحميل البلدان"
+  },
+  "visaApplication": {
+    "stepTitles": {
+      "step1": "معلومات الموقع",
+      "step2": "المتطلبات والتأكيد",
+      "step3": "تحميل المستندات",
+      "step4": "التفاصيل الشخصية",
+      "step5": "مراجعة الطلب وإرساله"
+    },
+    "submitFailed": "فشل إرسال البريد الإلكتروني",
+    "errors": {
+      "fromCountry": "يرجى اختيار بلدك الأصلي",
+      "toCountry": "يرجى تحديد البلد الذي تعيش فيه",
+      "toCountrySame": "يجب أن تكون بلدان المنشأ والمقصد مختلفة",
+      "hasValidPassport": "يُرجى التأكد من أن لديك جواز سفر ساري المفعول",
+      "hasPictureHeadshot": "يُرجى تأكيد أن لديك صورة/صورة شخصية",
+      "confirmNoActiveApplication": "يرجى تأكيد عدم وجود تطبيق نشط",
+      "confirmGovernmentDiscretion": "يرجى الإقرار بتقدير الحكومة",
+      "passportDocument": "يُرجى تحميل وثيقة جواز السفر",
+      "pictureHeadshot": "يُرجى تحميل صورتك/صورتك الشخصية",
+      "firstName": "الاسم الأول مطلوب",
+      "lastName": "اسم العائلة مطلوب",
+      "phoneNumber": "رقم الهاتف مطلوب",
+      "email": "البريد الإلكتروني مطلوب",
+      "passportNumber": "مطلوب رقم جواز السفر",
+      "profession": "المهنة مطلوبة",
+      "travelDate": "تاريخ السفر مطلوب",
+      "travelToDate": "تاريخ الإرجاع مطلوب",
+      "travelPurpose": "الغرض السفر مطلوب",
+      "emailInvalid": "الرجاء إدخال عنوان بريد إلكتروني صحيح",
+      "phoneInvalid": "يُرجى إدخال رقم هاتف صحيح",
+      "travelDatePast": "لا يمكن أن يكون تاريخ السفر في الماضي",
+      "travelToDateAfter": "يجب أن يكون تاريخ العودة بعد تاريخ السفر",
+      "travelerNameRequired": "المسافر {{index}} اسم المسافر {{index}} مطلوب",
+      "travelerPhoneRequired": "هاتف المسافر {{index}} مطلوب هاتف {{index}}"
+    },
+    "placeholders": {
+      "searchCountries": "ابحث عن الدول...",
+      "selectCountry": "اختر البلد",
+      "firstName": "الاسم الأول",
+      "lastName": "الاسم العائلي",
+      "phoneNumber": "رقم الهاتف",
+      "email": "عنوان البريد الإلكتروني",
+      "from": "من",
+      "liveIn": "العيش في",
+      "passportNumber": "رقم جواز السفر",
+      "profession": "المهنة",
+      "dateFormat": "اليوم/الشهر/السنة",
+      "travelPurpose": "غرض السفر",
+      "numberOfTravellers": "عدد المسافرين",
+      "fullName": "الاسم الكامل"
+    },
+    "labels": {
+      "applicationDetails": "تفاصيل التطبيق",
+      "submitApplication": "تقديم الطلب",
+      "transitVisa": "تأشيرة المرور العابر",
+      "transitVisaShort": "تأشيرة العبور",
+      "notProvided": "غير متوفر",
+      "notUploaded": "لم يتم تحميلها",
+      "price": "السعر:",
+      "submitting": "تقديم...",
+      "uploadDocumentsTitle": "يرجى تحميل المستندات التالية",
+      "acceptedFormats": "الصيغ المقبولة:",
+      "acceptedFormatsValue": "PDF أو JPG أو PNG",
+      "details": "التفاصيل",
+      "review": "المراجعة",
+      "next": "التالي",
+      "visaFor": "التأشيرة لـ",
+      "currency": "USD"
+    }
+  },
+  "packageTypes": {
+    "individualTouristInvitation": "دعوة سياحية فردية",
+    "individualBusinessInvitation": "دعوة الأعمال الفردية",
+    "familyTouristInvitation": "دعوة عائلية سياحية عائلية",
+    "singleEntry": "دخول واحد"
+  }
+}

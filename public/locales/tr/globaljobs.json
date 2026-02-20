@@ -1,0 +1,289 @@
+{
+  "globaljob": {
+    "hero": {
+      "headline": {
+        "prefix": "Kendinizi Bulun",
+        "suffix": "Yurtdışı"
+      },
+      "animatedWords": [
+        "Rüya İş",
+        "Kariyer",
+        "Fırsat",
+        "Pozisyon",
+        "Gelecek",
+        "Başarı"
+      ],
+      "description": "Uluslararası işe yerleştirme hizmetlerimiz aracılığıyla en iyi küresel işverenlerle bağlantı kurun. Kişiselleştirilmiş iş eşleştirmeden vize desteğine kadar - küresel kariyer hayallerinizi gerçeğe dönüştürüyoruz.",
+      "cta": {
+        "text": "Küresel Fırsatlar Bulun"
+      }
+    },
+    "showcase": {
+      "title": "Küresel İşe Yerleştirme",
+      "subtitle": "Uluslararası kariyer fırsatlarına açılan kapınız",
+      "worldMap": {
+        "countries": "200+ Ülke",
+        "description": "Küresel iş fırsatları sizi bekliyor"
+      },
+      "benefits": [
+        {
+          "iconKey": "evrak çantası",
+          "title": "İş Eşleştirme",
+          "description": "Mükemmel rol bulucu",
+          "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+        },
+        {
+          "iconKey": "kullanıcılar",
+          "title": "Vize Desteği",
+          "description": "Eksiksiz yardım",
+          "gradient": "bg-gradient-to-r from-blue-500 to-sky-600"
+        },
+        {
+          "iconKey": "mapPin",
+          "title": "Yer Değiştirme",
+          "description": "Yumuşak geçiş",
+          "gradient": "bg-gradient-to-r from-purple-500 to-indigo-600"
+        },
+        {
+          "iconKey": "externalLink",
+          "title": "Şebeke",
+          "description": "Küresel bağlantılar",
+          "gradient": "bg-gradient-to-r from-orange-500 to-red-600"
+        }
+      ]
+    },
+    "section": {
+      "header": {
+        "badge": "DÜNYA ÇAPINDAKİ ŞİRKETLER TARAFINDAN GÜVENİLİR",
+        "title": {
+          "prefix": "Küresel İş",
+          "highlight": "Yerleştirme"
+        },
+        "description": "Profesyonelce tasarlanmış bir özgeçmiş ile işverenler üzerinde etkili bir izlenim bırakmanın zamanı geldi. Her özgeçmişi hedeflerinize ve istediğiniz sektörün beklentilerine uygun hale getirerek küresel işe alım hizmetleriyle başarı şansınızı artırıyoruz."
+      },
+      "journey": {
+        "title": "Profesyonel Yolculuğunuz Burada Başlıyor",
+        "features": [
+          {
+            "title": "Kişiselleştirilmiş Özgeçmiş Hazırlama",
+            "description": "Özgeçmiş sadece iş geçmişiniz değildir. Her özgeçmişi, aktarılabilir becerilerinizi vurgulayacak ve sektör beklentileriyle uyumlu olacak şekilde uyarlıyoruz - özellikle profesyoneller için yurt dışı işleri için."
+          },
+          {
+            "title": "Küresel İşveren Bağlantıları",
+            "description": "Uluslararası yetenekleri işe alan en iyi küresel şirketlerden oluşan geniş ağımız, becerilerinizin isteklerinize uygun uluslararası kariyer fırsatlarıyla eşleştirilmesini sağlar."
+          },
+          {
+            "title": "Kariyer Gelişimi Desteği",
+            "description": "Sadece bir işe girmenize yardımcı olmuyoruz - becerileriniz ve isteklerinizle birlikte büyüyen bir kariyer yolu oluşturmanız için sizinle ortaklık kuruyoruz ve yurtdışında bir işe girmeniz için adım adım destek sunuyoruz."
+          }
+        ],
+        "cta": {
+          "text": "Hizmetlerimizi Keşfedin"
+        }
+      },
+      "testimonials": {
+        "title": "Başarı Hikayeleri",
+        "reviews": [
+          {
+            "comment": "\"Jobs Admire ile ortaklık kurana kadar kalifiye işçi bulmakta zorlandık. Platformları bize ihtiyaçlarımıza mükemmel şekilde uyan güvenilir adaylar sağladı.\"",
+            "name": "Mehmet K.",
+            "role": "İşletme Sahibi",
+            "initials": "MK"
+          },
+          {
+            "comment": "\"Jobs Admire tanınmış bir fabrikada istikrarlı bir iş bulmama yardımcı oldu. Süreç sorunsuzdu ve ekipleri her adımda bana rehberlik etti. Artık güvenli bir gelirim var!\"",
+            "name": "Ahmed R.",
+            "role": "Yerleştirme Alıcısı",
+            "initials": "AR"
+          }
+        ]
+      },
+      "contact": {
+        "title": "Bağlanalım",
+        "subtitle": "Küresel kariyerinize doğru ilk adımı atın",
+        "form": {
+          "name": {
+            "label": "Adınız*",
+            "placeholder": "Adınızı girin"
+          },
+          "email": {
+            "label": "E-posta Adresi*",
+            "placeholder": "E-posta adresinizi girin"
+          },
+          "message": {
+            "label": "Mesaj*",
+            "placeholder": "Mesajınızı girin"
+          },
+          "submit": "Gönder"
+        }
+      }
+    },
+    "careerHorizons": {
+      "header": {
+        "badge": "Küresel Kariyer Çözümleri",
+        "title": {
+          "prefix": "Genişlemek",
+          "highlight": "Kariyer Ufukları"
+        },
+        "description": "Rekabetçi bir küresel pazarda doğru işi bulmak zor olabilir. JobsAdmire'da, yetenekli profesyonelleri dünya çapındaki istihdam fırsatlarıyla buluşturarak becerilerinize, deneyiminize ve kariyer hedeflerinize uygun ödüllendirici rolleri güvence altına almanıza yardımcı oluyoruz. İster Pakistan'dan, ister Hindistan'dan veya Filipinler'den olun, Pakistan ve diğer bölgelerden küresel işe yerleştirme hizmetimiz her profesyonele başarılı olmak için adil bir şans verir."
+      },
+      "worldMap": {
+        "title": "Küresel Ağ",
+        "locations": [
+          {
+            "name": "New York",
+            "id": 1,
+            "color": "#3B82F6",
+            "size": 6,
+            "delay": 0
+          },
+          {
+            "name": "Londra",
+            "id": 2,
+            "color": "#10B981",
+            "size": 8,
+            "delay": 2
+          },
+          {
+            "name": "Tokyo",
+            "id": 3,
+            "color": "#8B5CF6",
+            "size": 7,
+            "delay": 1
+          },
+          {
+            "name": "Singapur",
+            "id": 4,
+            "color": "#F59E0B",
+            "size": 6,
+            "delay": 3
+          },
+          {
+            "name": "Sidney",
+            "id": 5,
+            "color": "#EF4444",
+            "size": 7,
+            "delay": 4
+          },
+          {
+            "name": "Berlin",
+            "id": 6,
+            "color": "#6366F1",
+            "size": 5,
+            "delay": 5
+          }
+        ]
+      },
+      "hiring": {
+        "title": {
+          "prefix": "Sorunsuz İşe Alım,",
+          "highlight": "Dünyanın Herhangi Bir Yerinde"
+        },
+        "description": "İster yeni bir ülkede iş arıyor ister sektörünüzde ilerlemek istiyor olun, yurtdışı iş danışmanlığı hizmetlerimiz uzman rehberliği, uluslararası işgücü yerleştirme ve size özel iş arama stratejileri sağlar.",
+        "benefits": [
+          {
+            "iconKey": "dosyaMetin",
+            "title": "Özgeçmiş optimizasyonu",
+            "description": "Uluslararası adaylar için işlerde başarı sağlamak amacıyla sektöre özgü anahtar kelimelerle yerel pazarlara uyarlanmıştır."
+          },
+          {
+            "iconKey": "mikrofon",
+            "title": "Mülakat hazırlığı",
+            "description": "Profesyoneller için uluslararası işe yerleştirmede öne çıkmak için hedef konumunuza yönelik kültürel içgörüler içeren koçluk seansları."
+          },
+          {
+            "iconKey": "Küre",
+            "title": "Vize yardımı",
+            "description": "Filipinliler, Hintliler ve Pakistanlı profesyoneller için yurtdışında çalışma fırsatlarını güvence altına almak için vize ve yer değiştirme sürecinde uzman rehberlik."
+          }
+        ],
+        "fastTrack": {
+          "title": "Hızlı Takip Süreci",
+          "description": "Modern yaklaşımımız, yeni rolünüze hızlı ve verimli bir şekilde geçiş yapabilmenizi sağlar."
+        },
+        "cta": {
+          "text": "Hizmetlerimizi Keşfedin"
+        }
+      },
+      "features": {
+        "title": "Bizi Farklı Kılan Nedir?",
+        "subtitle": "Kapsamlı yaklaşımımız, kariyer yolculuğunuz boyunca ihtiyacınız olan tüm desteğe sahip olmanızı sağlar",
+        "items": [
+          {
+            "iconKey": "hedef",
+            "title": "Kişiselleştirilmiş Strateji",
+            "description": "Eşsiz hedeflerinize ve kalifiye çalışanlar için yurtdışındaki işe yerleştirmeye dayalı özelleştirilmiş kariyer yol haritası.",
+            "color": "text-[#38B6FF]"
+          },
+          {
+            "iconKey": "barChart4",
+            "title": "Sektör İçgörüleri",
+            "description": "Piyasa trendleri ve talep edilen beceriler hakkında uzman bilgisi, küresel işe alım çözümleri sunmamıza yardımcı olur.",
+            "color": "text-[#38B6FF]"
+          },
+          {
+            "iconKey": "trendingUp",
+            "title": "Küresel Bağlantılar",
+            "description": "Tıpkı sizin gibi profesyoneller arayan uluslararası işverenlerden oluşan geniş bir ağa erişim.",
+            "color": "text-[#38B6FF]"
+          }
+        ]
+      },
+      "jobSeekers": {
+        "title": "İş Arayanlar İçin",
+        "premiumService": "Premium Hizmet",
+        "learnMore": "Hakkında Daha Fazla Bilgi Edinin",
+        "services": [
+          {
+            "iconKey": "kullanıcı",
+            "title": "Kariyer Rehberliği",
+            "description": "Uzmanlarımız, yurtdışında nasıl iş bulabileceğiniz konusunda size tavsiyelerde bulunmak ve uluslararası kariyer yolculuğunuzu desteklemek için buradalar.",
+            "color": "text-[#38B6FF]",
+            "bgColor": "bg-emerald-50",
+            "borderColor": "border-[#38B6FF]",
+            "gradientFrom": "from-emerald-50",
+            "gradientTo": "to-[#38B6FF]0",
+            "accentColor": "bg-[#38B6FF]",
+            "id": 0
+          },
+          {
+            "iconKey": "dosyaMetin",
+            "title": "Özgeçmiş Oluşturma",
+            "description": "Uzmanlarımız, yurt dışı iş yardımımız aracılığıyla işverenler için öne çıkan göz alıcı bir özgeçmiş oluşturmanıza yardımcı olacaktır.",
+            "color": "text-[#38B6FF]",
+            "bgColor": "bg-blue-50",
+            "borderColor": "border-[#38B6FF]",
+            "gradientFrom": "from-blue-50",
+            "gradientTo": "to-[#38B6FF]",
+            "accentColor": "bg-[#38B6FF]",
+            "id": 1
+          },
+          {
+            "iconKey": "arama",
+            "title": "Değerlendirme",
+            "description": "Niteliklerinizi değerlendiriyor ve sizi uluslararası adaylar için en iyi küresel işlerle eşleştiriyoruz.",
+            "color": "text-[#38B6FF]",
+            "bgColor": "bg-indigo-50",
+            "borderColor": "border-[#38B6FF]",
+            "gradientFrom": "from-indigo-50",
+            "gradientTo": "to-[#38B6FF]",
+            "accentColor": "bg-[#38B6FF]",
+            "id": 2
+          },
+          {
+            "iconKey": "mikrofon",
+            "title": "Mülakat Hazırlığı",
+            "description": "Uzmanlarımız, uluslararası işe yerleştirme programlarında başarılı olmanızı ve öne çıkmanızı sağlamak için sizi her tür mülakat için eğitecektir.",
+            "color": "text-[#38B6FF]",
+            "bgColor": "bg-mor-50",
+            "borderColor": "border-[#38B6FF]",
+            "gradientFrom": "from-[#38B6FF]",
+            "gradientTo": "to-[#38B6FF]",
+            "accentColor": "bg-mor-500",
+            "id": 3
+          }
+        ]
+      }
+    }
+  }
+}

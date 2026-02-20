@@ -1,0 +1,204 @@
+{
+  "header": {
+    "title": "Nos services",
+    "subtitle": "Mettre les professionnels en contact avec des opportunités dans le monde entier grâce à nos services de carrière complets"
+  },
+  "viewSelector": {
+    "grid": "Grille",
+    "masonry": "Maçonnerie",
+    "carousel": "Carrousel"
+  },
+  "card": {
+    "viewPage": "Voir la page",
+    "viewDetails": "Voir les détails"
+  },
+  "carousel": {
+    "previousSlide": "Diapositive précédente",
+    "nextSlide": "Diapositive suivante",
+    "goToSlide": "Aller à la diapositive"
+  },
+  "modal": {
+    "close": "Fermer",
+    "overview": "Vue d'ensemble",
+    "keyFeatures": "Caractéristiques principales",
+    "technologies": "Technologies",
+    "visitServicePage": "Visiter la page des services",
+    "stats": {
+      "projects": "Projets",
+      "satisfaction": "Satisfaction",
+      "support": "Soutien"
+    }
+  },
+  "services": {
+    "resumeService": {
+      "title": "Service de rédaction de curriculum vitae",
+      "description": "De la génération de puces au formatage automatique, notre générateur de CV vous aidera à créer un CV professionnel rapidement et sans effort.",
+      "longDesc": "Notre service de rédaction de CV professionnels aide les demandeurs d'emploi à créer des CV percutants, adaptés aux ATS, qui mettent en valeur leurs qualifications uniques et augmentent les possibilités d'entretien. Nous adaptons chaque CV à des secteurs d'activité et à des postes spécifiques.",
+      "features": [
+        "Optimisation du SEA",
+        "Formats spécifiques à l'industrie",
+        "Amélioration des mots-clés",
+        "Examen professionnel"
+      ],
+      "technologies": [
+        "Modèles de CV",
+        "Outils ATS",
+        "Logiciel de conception",
+        "Stratégie de contenu"
+      ]
+    },
+    "globalJobPlacement": {
+      "title": "Placement à l'international",
+      "description": "De la recherche d'emploi personnalisée à l'aide à l'obtention d'un visa, nous mettons les professionnels en contact avec les meilleurs employeurs du monde entier, de manière transparente et efficace.",
+      "longDesc": "Notre service de placement mondial met en relation des professionnels talentueux avec des opportunités de carrière internationale, en s'occupant de tout, de la recherche d'emploi à la logistique de relocalisation et à la préparation culturelle.",
+      "features": [
+        "Partenariats avec les employeurs",
+        "Aide aux visas",
+        "Aide à la relocalisation",
+        "Préparation à l'entretien"
+      ],
+      "technologies": [
+        "Algorithme de mise en correspondance des emplois",
+        "Base de données mondiale",
+        "Traitement des visas",
+        "Outils de relocalisation"
+      ]
+    },
+    "interviewCoaching": {
+      "title": "Coaching d'entretien",
+      "description": "Des simulations d'entretien aux commentaires personnalisés, notre coaching complet en matière d'entretien aide les professionnels à décrocher l'emploi de leurs rêves en toute confiance.",
+      "longDesc": "Notre coaching d'entretien prépare les candidats à exceller dans n'importe quel format d'entretien grâce à des séances d'entraînement personnalisées, des commentaires détaillés et des stratégies adaptées à des rôles et à des secteurs spécifiques.",
+      "features": [
+        "Interviews fictives",
+        "Formation spécifique à l'industrie",
+        "Coaching en langage corporel",
+        "Préparation des questions"
+      ],
+      "technologies": [
+        "Analyse vidéo",
+        "Retour d'information sur l'IA",
+        "Simulation d'entretien",
+        "Coaching personnel"
+      ]
+    },
+    "careerCounselling": {
+      "title": "Orientation professionnelle",
+      "description": "Des évaluations de carrière aux plans de développement personnalisés, nos conseils complets aident les professionnels à trouver leur voie idéale en toute confiance.",
+      "longDesc": "Notre service d'orientation professionnelle aide les professionnels, à tous les stades, à identifier leurs points forts, à explorer des parcours professionnels adaptés et à élaborer des plans d'action pour atteindre leurs objectifs professionnels.",
+      "features": [
+        "Bilan de carrière",
+        "Analyse des forces",
+        "Fixation des objectifs",
+        "Aperçus de l'industrie"
+      ],
+      "technologies": [
+        "Tests de personnalité",
+        "Évaluation des compétences",
+        "Cartographie des carrières",
+        "Planification du développement"
+      ]
+    },
+    "visaRelocation": {
+      "title": "Visa et déménagement",
+      "description": "De la demande de visa à l'installation dans votre nouvelle maison, nos services complets de relocalisation vous aident à vous installer dans un nouveau pays en toute confiance.",
+      "longDesc": "Nos services de visa et de relocalisation offrent une assistance complète tout au long de la procédure d'immigration, de la préparation des documents à la recherche d'un logement et à l'installation dans votre nouvel environnement.",
+      "features": [
+        "Demande de visa",
+        "Préparation des documents",
+        "Aide au logement",
+        "Intégration locale"
+      ],
+      "technologies": [
+        "Base de données sur l'immigration",
+        "Gestion des documents",
+        "Réseau logement",
+        "Planification de la relocalisation"
+      ]
+    },
+    "skillDevelopment": {
+      "title": "Développement des compétences",
+      "description": "Des ateliers pour débutants aux certifications pour experts, nos programmes de développement des compétences permettent aux professionnels de maîtriser des compétences très demandées pour les opportunités de demain.",
+      "longDesc": "Nos programmes de développement des compétences offrent une formation ciblée sur des compétences très demandées, avec des parcours d'apprentissage personnalisés, des projets pratiques et une préparation à la certification pour favoriser l'avancement de la carrière.",
+      "features": [
+        "Apprentissage personnalisé",
+        "Projets pratiques",
+        "Préparation à la certification",
+        "Mentorat d'experts"
+      ],
+      "technologies": [
+        "Plate-forme d'apprentissage en ligne",
+        "Simulation de projet",
+        "Outils d'évaluation",
+        "Programmes de certification"
+      ]
+    },
+    "remoteWorkOpportunities": {
+      "title": "Possibilités de travail à distance",
+      "description": "De la recherche d'emploi à distance à l'installation d'un bureau à domicile, nous aidons les professionnels à s'épanouir sur leur lieu de travail virtuel grâce à des solutions sur mesure.",
+      "longDesc": "Notre service de travail à distance est spécialisé dans la mise en relation de professionnels avec des postes à distance de qualité, dans la fourniture de conseils sur les outils de travail virtuel et dans la mise en place d'environnements de travail à domicile productifs.",
+      "features": [
+        "Correspondance des emplois à distance",
+        "Collaboration virtuelle",
+        "Installation d'un bureau à domicile",
+        "Équilibre entre vie professionnelle et vie privée"
+      ],
+      "technologies": [
+        "Plate-forme d'emploi à distance",
+        "Outils virtuels",
+        "Logiciels de productivité",
+        "Communication numérique"
+      ]
+    },
+    "talentAcquisition": {
+      "title": "Acquisition de talents",
+      "description": "De l'identification des candidats idéaux à l'intégration transparente, notre plateforme d'acquisition de talents aide les organisations à constituer efficacement des équipes performantes.",
+      "longDesc": "Notre service d'acquisition de talents aide les organisations à identifier, attirer et retenir les meilleurs talents grâce à des stratégies de recrutement personnalisées, à l'évaluation des candidats et à des processus d'intégration efficaces.",
+      "features": [
+        "Recrutement ciblé",
+        "Présélection des candidats",
+        "Évaluation des compétences",
+        "Soutien à l'intégration"
+      ],
+      "technologies": [
+        "Plate-forme ATS",
+        "Outils d'évaluation",
+        "Gestion des entretiens",
+        "Système d'embarquement"
+      ]
+    },
+    "immigration": {
+      "title": "L'immigration",
+      "description": "De la demande de visa à la résidence permanente, nos consultants experts en immigration vous guideront à chaque étape du processus avec un soutien personnalisé.",
+      "longDesc": "Nos consultants en immigration fournissent des conseils d'experts sur toutes les voies d'immigration, s'occupent de la documentation complexe, de la préparation des demandes et offrent un soutien continu tout au long de votre parcours d'immigration.",
+      "features": [
+        "Évaluation des visas",
+        "Préparation de la demande",
+        "Soutien juridique",
+        "Suivi de l'état d'avancement"
+      ],
+      "technologies": [
+        "Base de données sur l'immigration",
+        "Vérification des documents",
+        "Gestion des applications",
+        "Ressources juridiques"
+      ]
+    },
+    "jobRecruitment": {
+      "title": "Recrutement",
+      "description": "De la recherche de candidats au placement final, nos services de recrutement complets aident les entreprises à trouver les meilleurs talents à l'échelle mondiale avec précision et efficacité.",
+      "longDesc": "Notre service de recrutement est spécialisé dans la mise en relation d'employeurs avec des candidats qualifiés dans divers secteurs d'activité, en utilisant des processus de sélection avancés et des réseaux mondiaux de talents pour garantir des correspondances parfaites.",
+      "features": [
+        "Recherche de talents au niveau mondial",
+        "Présélection avancée",
+        "Expertise sectorielle",
+        "Placement rapide"
+      ],
+      "technologies": [
+        "Plate-forme de recrutement",
+        "Base de données des candidats",
+        "Outils de dépistage",
+        "Algorithme de correspondance"
+      ]
+    }
+  }
+}

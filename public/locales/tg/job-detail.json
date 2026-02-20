@@ -1,0 +1,161 @@
+{
+  "hero": {
+    "badge": "МАВҚЕИ ТАЪРИХӢ",
+    "titleLine1": "Нармафзори калонсол",
+    "titleLine2": "Муҳандис",
+    "companyName": "TechVision Inc",
+    "subtitle": "Ба дастаи инноватсионии мо ҳамроҳ шавед, то роҳҳои ҳалли муосиреро эҷод кунед, ки соҳаҳоро тағйир медиҳанд. Мо муҳандисони боистеъдодеро меҷӯем, ки ба эҷоди технологияҳои таъсирбахш шавқ доранд.",
+    "ctaPrimary": "Машварат дархост кунед",
+    "ctaShare": "Корро мубодила кунед",
+    "salaryRange": "Диапазони музди меҳнат",
+    "location": "Макон",
+    "experience": "Таҷриба",
+    "tabOverview": "Шарҳи умумӣ",
+    "tabRequirements": "Талабот",
+    "tabBenefits": "Фоидаҳо",
+    "industry": "Таҳияи нармафзор",
+    "locationValue": "Дурдаст (дар ИМА ҷойгир аст)",
+    "locationStatValue": "Дурдаст",
+    "salaryLabel": "Маош",
+    "teamSizeLabel": "Андозаи даста",
+    "teamSizeValue": "15-20 муҳандис",
+    "employmentLabel": "Шуғл",
+    "employmentValue": "Вақти пурра",
+    "postedLabel": "Интишор шудааст",
+    "postedValue": "15 марти соли 2025",
+    "requiredSkills": "Маҳорати зарурӣ",
+    "readyToJoin": "Омодаед, ки ба дастаи мо ҳамроҳ шавед?",
+    "applicationTime": "Аризаи 5-дақиқаӣ"
+  },
+  "loading": "Тафсилоти кор бор карда мешавад...",
+  "notifications": {
+    "resume_uploaded": "Резюме бомуваффақият боргузорӣ шуд!",
+    "application_submitted": {
+      "title": "Дархост пешниҳод шуд!",
+      "message": "Ташаккур барои таваҷҷӯҳатон ба вазифаи {{title}}. Дастаи мо дархости шуморо баррасӣ карда, ба зудӣ бо шумо тамос хоҳад гирифт.",
+      "close": "Пӯшидан"
+    }
+  },
+  "application_modal": {
+    "title": "Барои {{title}} муроҷиат кунед",
+    "subtitle": "Аризаи худро дар зер пур кунед",
+    "progress": "Пешрафти дархост",
+    "form": {
+      "full_name": "Номи пурра *",
+      "full_name_placeholder": "Номи худро ворид кунед",
+      "email": "Суроғаи имэйл *",
+      "phone": "Рақами мобилӣ *",
+      "location": "Ҷойгиршавии ҷорӣ *",
+      "location_placeholder": "Шаҳр, деҳот",
+      "linkedin": "Профили LinkedIn",
+      "portfolio": "URL-и портфел",
+      "cover_message": "Паёми муқова",
+      "cover_message_placeholder": "Чаро шумо ба ин вазифа таваҷҷӯҳ доред?",
+      "upload_resume": "Бор кардани резюме *",
+      "click_to_upload": "Барои бор кардани резюмеи худ клик кунед",
+      "file_types": "(PDF, DOC ё DOCX)",
+      "cancel": "Бекор кардан",
+      "submit": "Ариза пешниҳод кунед",
+      "application_closed": "Ариза баста шуд",
+      "terms_agreement": "Бо дархост, шумо бо <1>Шартҳо ва қоидаҳои</1> мо розӣ мешавед",
+      "email_placeholder": "name@example.com",
+      "phone_placeholder": "+90 555 123 4567",
+      "linkedin_placeholder": "https://linkedin.com/in/username",
+      "portfolio_placeholder": "https://yourportfolio.com"
+    }
+  },
+  "share_modal": {
+    "title": "Ин корро мубодила кунед",
+    "subtitle": "Ин имкониятро бо шабакаи худ мубодила кунед",
+    "facebook": "Фейсбук",
+    "twitter": "Твиттер",
+    "linkedin": "Линкедин",
+    "whatsapp": "WhatsApp",
+    "copy_link": "Нусха",
+    "copied": "Нусхабардорӣ шуд!"
+  },
+  "header": {
+    "status_open": "Кушода",
+    "status_closed": "Баста",
+    "posted": "Интишор шудааст",
+    "save_job": "Захираи кор",
+    "saved": "Захира карда шуд",
+    "share": "Мубодила",
+    "apply_now": "Ҳоло муроҷиат кунед",
+    "application_closed": "Ариза баста шуд"
+  },
+  "quick_info": {
+    "currency": "Асъор",
+    "salary": "Маош",
+    "type": "Навъ"
+  },
+  "tabs": {
+    "job_description": "Тавсифи кор",
+    "requirements": "Талабот",
+    "details": "Тафсилот"
+  },
+  "tab_content": {
+    "description": {
+      "overview": "Шарҳи кор",
+      "employment_type": "Навъи шуғл",
+      "work_location": "Ҷойи кор"
+    },
+    "requirements": {
+      "title": "Талабот ва тахассус",
+      "what_we_looking_for": "Мо чӣ меҷӯем",
+      "professional_experience": "Таҷрибаи касбӣ",
+      "communication_skills": "Малакаҳои муошират",
+      "team_collaboration": "Ҳамкории дастаӣ",
+      "growth_mindset": "Тафаккури рушд"
+    },
+    "details": {
+      "job_information": "Маълумот дар бораи кор",
+      "job_type": "Навъи кор:",
+      "location": "Макон:",
+      "posted": "Интишор шуд:",
+      "status": "Ҳолат:",
+      "quota_full": "Квотаи пурра",
+      "open_for_applications": "Барои дархостҳо кушода аст",
+      "compensation": "Ҷубронпулӣ",
+      "currency": "Асъор:",
+      "salary": "Музди меҳнат:",
+      "why_join": "Чаро ба {{title}} ҳамроҳ шавед?",
+      "career_growth": "Рушди касбӣ",
+      "career_growth_desc": "Имкониятҳо барои пешрафт",
+      "great_location": "Макони олӣ",
+      "great_location_desc": "Кор дар {{location}}",
+      "competitive_package": "Бастаи рақобатпазир",
+      "competitive_package_desc": "Музди меҳнат ва имтиёзҳои ҷолиб",
+      "professional_growth": "Рушди касбӣ",
+      "professional_growth_desc": "Имкониятҳои омӯзиши пайваста"
+    }
+  },
+  "cta": {
+    "title": "Омодаед, ки ба дастаи мо ҳамроҳ шавед?",
+    "subtitle": "Бо {{title}} қадами ояндаро дар касбатон гузоред. Мо шахсони пуртаҷрибаеро меҷӯем, ки мехоҳанд тағйирот ворид кунанд.",
+    "apply_now": "Ҳоло муроҷиат кунед",
+    "application_closed": "Ариза баста шуд"
+  },
+  "contact": {
+    "title": "Ба кӯмак дар дархости шумо ниёз доред?",
+    "subtitle": "Гурӯҳи HR-и мо барои кӯмак ба шумо омода аст",
+    "live_chat": {
+      "title": "Дастгирии чати зинда",
+      "subtitle": "Вақти миёнаи посух: 5 дақиқа"
+    },
+    "email": {
+      "title": "Ба дастаи захираҳои инсонӣ почтаи электронӣ фиристед",
+      "subtitle": "info@jobsadmire.com"
+    }
+  },
+  "fallback": {
+    "title_not_available": "Унвони вазифа дастрас нест",
+    "location_not_available": "Ҷойгиршавӣ дастрас нест",
+    "description_not_available": "<p>Тавсифи вазифа дастрас нест.</p>",
+    "requirement_not_available": "<p>Талаботҳо дастрас нестанд.</p>",
+    "date_not_available": "Сана дастрас нест",
+    "error_loading": "Хатогии боркунии вазифа",
+    "unable_to_load_desc": "<p>Тавсифи вазифаро бор кардан ғайриимкон аст. Лутфан, баъдтар дубора кӯшиш кунед.</p>",
+    "unable_to_load_req": "<p>Талаботро бор кардан ғайриимкон аст. Лутфан, дертар дубора кӯшиш кунед.</p>"
+  }
+}

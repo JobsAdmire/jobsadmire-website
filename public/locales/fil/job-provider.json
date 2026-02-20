@@ -1,0 +1,173 @@
+{
+  "header": {
+    "heroImageAlt": "Mga propesyonal sa negosyo",
+    "badge": "Ang #1 na Solusyon sa Paghahanap ng Tauhan sa Turkey",
+    "title_prefix": "Kumuha ng mga De-kalidad na Tauhan",
+    "title_suffix": "Para sa Iyong Negosyo",
+    "description": "Makipagtulungan sa JobsAdmire para sa mga empleyadong na-pre-screen at handang magtrabaho. Kami ang bahala sa recruitment, visa, at lahat ng legal na dokumento.",
+    "contact_button": "Makipag-ugnayan"
+  },
+  "form": {
+    "title": "Pagpaparehistro ng Kasosyo",
+    "subtitle": "Irehistro ang iyong kumpanya upang magsimulang kumuha ng mga de-kalidad na kawani. Makikipag-ugnayan sa iyo ang aming koponan sa loob ng 24 oras.",
+    "company_info": {
+      "title": "Impormasyon ng Kumpanya",
+      "company_name": "Pangalan ng Kumpanya *",
+      "company_name_placeholder": "Ilagay ang pangalan ng iyong kumpanya",
+      "company_name_error": "Kinakailangan ang pangalan ng kumpanya",
+      "company_type": "Uri ng Kumpanya *",
+      "company_type_placeholder": "Pumili ng uri ng kumpanya",
+      "company_type_error": "Kinakailangan ang uri ng kumpanya",
+      "types": {
+        "corporation": "Korporasyon (A.Ş.)",
+        "limited_company": "Limitadong Kompanya (Ltd.)",
+        "partnership": "Pakikipagtulungan",
+        "sole_proprietorship": "Pagmamay-ari ng Nag-iisang Negosyo",
+        "branch_office": "Tanggapan ng Sangay",
+        "other": "Iba pa"
+      },
+      "industry_type": "Uri ng Industriya *",
+      "industry_type_placeholder": "Pumili ng industriya",
+      "industry_type_error": "Kinakailangan ang uri ng industriya",
+      "industries": {
+        "manufacturing": "Pabrika",
+        "construction": "Agrikultura",
+        "technology": "Turismo",
+        "healthcare": "Konstruksyon",
+        "other": "Iba pa"
+      },
+      "established_year": "Taon ng Pagkakatatag",
+      "established_year_placeholder": "2020"
+    },
+    "contact_info": {
+      "title": "Impormasyon sa Pakikipag-ugnayan",
+      "contact_person": "Taong Makikipag-ugnayan *",
+      "contact_person_placeholder": "Buong pangalan",
+      "contact_person_error": "Kinakailangan ang taong makontak",
+      "position": "Posisyon/Titulo",
+      "position_placeholder": "Tagapamahala ng HR, CEO, atbp.",
+      "email": "Email Address *",
+      "email_required": "Kinakailangan ang email",
+      "email_invalid": "Hindi wasto ang email",
+      "phone": "Numero ng Telepono *",
+      "phone_placeholder": "+90 xxx xxx xx xx",
+      "phone_required": "Kinakailangan ang numero ng telepono",
+      "company_address": "Address ng Kumpanya",
+      "company_address_placeholder": "Kumpletong address ng negosyo",
+      "city": "Lungsod *",
+      "city_placeholder": "Istanbul, Ankara, atbp.",
+      "city_required": "Kinakailangan ang lungsod",
+      "province": "Lalawigan *",
+      "province_placeholder": "Pumili ng probinsya",
+      "province_required": "Kinakailangan ang probinsya",
+      "provinces": {
+        "istanbul": "Istanbul",
+        "ankara": "Ankara",
+        "izmir": "Izmir",
+        "bursa": "Bursa",
+        "antalya": "Antalya",
+        "adana": "Adana",
+        "konya": "Konya",
+        "gaziantep": "Gaziantep",
+        "kayseri": "Kayseri",
+        "other": "Iba pa"
+      },
+      "postal_code": "Kodigo ng Postal",
+      "website": "Website ng Kumpanya",
+      "email_placeholder": "company@example.com",
+      "postal_code_placeholder": "34000",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "legal_info": {
+      "title": "Mga Detalye ng Legal at Pagpaparehistro",
+      "tax_number": "Numero ng Buwis *",
+      "tax_number_placeholder": "Ilagay ang numero ng buwis",
+      "tax_number_error": "Kinakailangan ang numero ng buwis",
+      "trade_registry_number": "Numero ng Rehistro ng Kalakalan",
+      "trade_registry_number_placeholder": "Ilagay ang numero ng rehistro ng kalakalan"
+    },
+    "staffing_requirements": {
+      "title": "Mga Kinakailangan sa Tauhan",
+      "specific_job_positions": "Mga Tiyak na Posisyon sa Trabaho",
+      "specific_job_positions_placeholder": "hal., Operator ng Makina, Mga Welder, Software Developer, atbp.",
+      "salary_range": "Saklaw ng Sweldo (Buwanan)",
+      "salary_range_placeholder": "22,000TL-25,000TL",
+      "preferred_nationalities": "Mga Ginustong Nasyonalidad",
+      "preferred_nationalities_placeholder": "hal., Any, Pakistan, Bangladesh, Ukraine, atbp.",
+      "language_requirements": "Mga Kinakailangan sa Wika",
+      "language_requirements_placeholder": "Piliin ang kinakailangan sa wika",
+      "languages": {
+        "none": "Walang tiyak na kinakailangan",
+        "basic_turkish": "Pangunahing Turko",
+        "intermediate_turkish": "Intermediate na Turko",
+        "fluent_turkish": "Matatas na Turko",
+        "english": "Kinakailangan ang Ingles",
+        "turkish_english": "Turko + Ingles"
+      },
+      "work_experience": "Kinakailangan ang Karanasan sa Trabaho",
+      "work_experience_placeholder": "Pumili ng antas ng karanasan",
+      "experience_levels": {
+        "entry_level": "Antas ng Pagpasok (0-1 taon)",
+        "junior": "Junior (1-3 taon)",
+        "mid_level": "Katamtamang Antas (3-5 taon)",
+        "senior": "Senior (5+ taon)",
+        "expert": "Eksperto (10+ taon)"
+      },
+      "additional_requirements": "Mga Karagdagang Kinakailangan o Tala",
+      "additional_requirements_placeholder": "Anumang mga partikular na kasanayan, sertipikasyon, o iba pang mga kinakailangan para sa mga posisyon..."
+    },
+    "company_description": {
+      "title": "Tungkol sa Iyong Kumpanya",
+      "label": "Paglalarawan ng Kumpanya",
+      "placeholder": "Ikwento mo sa amin ang tungkol sa iyong kumpanya, mga aktibidad sa negosyo, kapaligiran sa trabaho, kultura ng kumpanya, at kung bakit gugustuhin ng mga manggagawa na sumali sa iyong koponan..."
+    },
+    "legal_agreements": {
+      "title": "Mga Kasunduan sa Batas",
+      "agree_terms_prefix": "Sumasang-ayon ako sa",
+      "terms_link": "Mga Tuntunin at Kundisyon",
+      "agree_terms_suffix": "at maunawaan ang mga legal na obligasyon para sa pagkuha ng mga manggagawa sa pamamagitan ng JobsAdmire. *",
+      "terms_error": "Dapat kang sumang-ayon sa mga tuntunin at kundisyon",
+      "agree_privacy_prefix": "Kinikilala ko na nabasa ko na at sumasang-ayon ako sa",
+      "privacy_link": "Patakaran sa Pagkapribado",
+      "agree_privacy_suffix": "at pahintulot sa pagproseso ng datos ng kumpanya para sa mga serbisyo sa recruitment. *",
+      "privacy_error": "Dapat kang sumang-ayon sa patakaran sa privacy"
+    },
+    "submit": {
+      "button": "Isumite ang Aplikasyon",
+      "submitting": "Isinusumite...",
+      "success_message": "Matagumpay na naisumite ang pagpaparehistro! Makikipag-ugnayan sa iyo ang aming koponan sa loob ng 24 oras upang talakayin ang iyong mga pangangailangan sa pagkuha ng empleyado.",
+      "footer_message": "Susuriin ng aming pangkat ang iyong aplikasyon at kokontakin ka sa loob ng 24 oras upang talakayin ang iyong mga pangangailangan sa tauhan."
+    }
+  },
+  "industries_served": {
+    "title": "Mga Industriya na Pinaglilingkuran Namin",
+    "subtitle": "Nagbibigay kami ng mga bihasang manggagawa sa lahat ng pangunahing industriya sa Turkey",
+    "items": {
+      "factory": {
+        "name": "Pabrika",
+        "desc": "Paggawa at Produksyon"
+      },
+      "agriculture": {
+        "name": "Agrikultura",
+        "desc": "Pagsasaka at Paglilinang"
+      },
+      "tourism": {
+        "name": "Turismo",
+        "desc": "Pagtanggap sa mga Biyahe at Serbisyo"
+      },
+      "construction": {
+        "name": "Konstruksyon",
+        "desc": "Gusali at Imprastraktura"
+      }
+    }
+  },
+  "support": {
+    "title": "Kailangan ng Tulong?",
+    "description": "Ang aming dedikadong koponan ay handang tumulong sa paghahanap ng tamang tauhan para sa iyong negosyo. Nagbibigay kami ng kumpletong suporta mula sa recruitment hanggang sa paglalagay ng empleyado.",
+    "support_24_7": "Suporta 24/7",
+    "business_hours": "Mga Oras ng Negosyo: Lunes - Biyernes, 9:00 AM - 6:00 PM (Oras sa Turkey)",
+    "response_time": "Tumutugon kami sa loob ng 2 oras sa oras ng negosyo",
+    "email": "info@jobsadmire.com",
+    "phone": "+90 501 124 03 40"
+  }
+}

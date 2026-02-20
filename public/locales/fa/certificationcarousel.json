@@ -1,0 +1,62 @@
+{
+  "background": {
+    "watermark": "CERTIFICATIONS"
+  },
+  "controls": {
+    "previous": "Previous certificate",
+    "next": "Next certificate",
+    "play": "Play autoplay",
+    "pause": "Pause autoplay",
+    "goToSlide": "Go to slide"
+  },
+  "events": {
+    "event1": {
+      "title": "UniAdmire Student Fair",
+      "location": "Karachi, Pakistan",
+      "date": "March 15-17, 2025",
+      "description": "Connecting Pakistani students with international universities and scholarship opportunities",
+      "images": {
+        "image1": {
+          "alt": "University representatives talking to students",
+          "caption": "International university representatives meeting with local students"
+        },
+        "image2": {
+          "alt": "Information booths at the fair",
+          "caption": "Students exploring educational opportunities at information booths"
+        },
+        "image3": {
+          "alt": "Award ceremony",
+          "caption": "Recognition ceremony for participating institutions"
+        },
+        "image4": {
+          "alt": "Panel discussion",
+          "caption": "Expert panel discussing international education trends"
+        },
+        "image5": {
+          "alt": "Student counselling session",
+          "caption": "One-on-one counselling with university admissions officers"
+        }
+      }
+    },
+    "event2": {
+      "title": "Ivory Coast Education Fair",
+      "location": "Abidjan, Ivory Coast",
+      "date": "January 20-22, 2025",
+      "description": "Connecting West African students with international universities",
+      "images": {
+        "image1": {
+          "alt": "Education fair entrance",
+          "caption": "Main entrance of the Ivory Coast Education Fair"
+        },
+        "image2": {
+          "alt": "Students at information booths",
+          "caption": "Local students exploring international education opportunities"
+        },
+        "image3": {
+          "alt": "Panel discussion",
+          "caption": "Educational experts discussing scholarship programs"
+        }
+      }
+    }
+  }
+}

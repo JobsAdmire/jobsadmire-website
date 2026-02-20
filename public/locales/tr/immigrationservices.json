@@ -1,0 +1,324 @@
+{
+  "immigrationservices": {
+    "hero": {
+      "badge": "Güvenilir göçmenlik hizmetleri",
+      "headline": {
+        "prefix": "Başlayın",
+        "suffix": "Uzman Rehberliğinde"
+      },
+      "animatedWords": [
+        "Yeni Yaşam",
+        "Yeni Ülke",
+        "Yeni Başlangıç",
+        "Daha İyi Bir Gelecek",
+        "Yeni Başlangıç",
+        "Rüya Hayat"
+      ],
+      "description": "Uzman göçmenlik danışmanlarımız, vize başvurularından kalıcı oturma iznine kadar, vasıflı profesyoneller için özel olarak hazırlanmış kişiselleştirilmiş destekle her adımda size rehberlik eder.",
+      "cta": {
+        "text": "Ücretsiz Danışmanlık"
+      }
+    },
+    "showcase": {
+      "title": "Göçmenlik Hizmetleri",
+      "subtitle": "Küresel taşınma için profesyonel yardım",
+      "process": {
+        "title": "Göçmenlik Sürecinin Tamamlanması",
+        "subtitle": "Yolculuğunuz için uçtan uca destek"
+      },
+      "services": [
+        {
+          "icon": "DosyaMetin",
+          "title": "Dokümantasyon",
+          "description": "Başvuru hazırlığı",
+          "gradient": "bg-gradient-to-r from-sky-500 to-blue-600"
+        },
+        {
+          "icon": "Kalkan",
+          "title": "Yasal Destek",
+          "description": "Uzman rehberliği",
+          "gradient": "bg-gradient-to-r from-purple-500 to-indigo-600"
+        },
+        {
+          "icon": "Saat",
+          "title": "Hızlı Yol",
+          "description": "Hızlı işleme",
+          "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+        },
+        {
+          "icon": "Kullanıcılar",
+          "title": "Aile Desteği",
+          "description": "Eksiksiz yardım",
+          "gradient": "bg-gradient-to-r from-orange-500 to-red-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "98%",
+          "label": "Başarı Oranı",
+          "color": "text-sky-600"
+        },
+        {
+          "value": "5000+",
+          "label": "Ele Alınan Vakalar",
+          "color": "text-blue-600"
+        },
+        {
+          "label": "Yıl Tecrübe",
+          "color": "text-indigo-600",
+          "value": "25"
+        }
+      ]
+    }
+  },
+  "evaluation": {
+    "title": "Kendinizi Değerlendirin",
+    "description": "Taşıma işlemi basit bir teknik prosedürdür. Uzmanlarımız, bilinçli bir seçim yapmanıza rehberlik etmek için profilinizi değerlendirir. Rapor şunları içerir:",
+    "services": [
+      {
+        "icon": "Posta",
+        "title": "Puan Kartı",
+        "description": "Uygunluk puanlarınızın ve göç puanınızın ayrıntılı değerlendirmesi"
+      },
+      {
+        "icon": "Ayarlar",
+        "title": "Ülke Profili",
+        "description": "Geçmişinize ve Pakistan'daki göçmenlik hizmetlerine (ilgili ise) dayalı özel ülke önerileri"
+      },
+      {
+        "icon": "Kullanıcılar",
+        "title": "Meslek Profili",
+        "description": "Mesleğinizin potansiyel varış noktalarındaki talebinin analizi"
+      },
+      {
+        "icon": "DosyaMetin",
+        "title": "Dokümantasyon Listesi",
+        "description": "Başvurunuz için gerekli belgelerin kapsamlı kontrol listesi"
+      },
+      {
+        "icon": "DollarSign",
+        "title": "Maliyet ve Zaman Tahmini",
+        "description": "Geçişiniz için masrafların ve zaman çizelgesinin ayrıntılı dökümü"
+      }
+    ],
+    "cta": {
+      "text": "Değerlendirmeye Alın",
+      "subtitle": "Değerlendirmenizi bugün başlatın ve 48 saat içinde kapsamlı bir rapor alın. Uzmanlarımız sürecin her adımında size rehberlik edecektir."
+    }
+  },
+  "globalmigration": {
+    "badge": "KÜRESEL GÖÇ",
+    "introduction": {
+      "prefix": "Birleşmiş Milletler Ekonomik ve Sosyal İşler Dairesi'ne (UNDESA) göre, tahminen",
+      "highlight": "Dünya genelinde 232 milyon uluslararası göçmen",
+      "suffix": "."
+    },
+    "reasons": {
+      "title": "Göçmenlik Nedenleri",
+      "description": {
+        "part1": "İnsanlar iş, eğitim, daha iyi yaşam kalitesi veya ufuklarını genişletmek gibi çeşitli nedenlerle yurt dışına taşınıyor. Bizim",
+        "highlight1": "göçmenli̇k danişmanlik hi̇zmetleri̇",
+        "part2": "vasıflı çalışanlara ve iş arayanlara yardımcı olmak",
+        "highlight2": "vasıflı işler aracılığıyla kalıcı oturum izni",
+        "part3": "."
+      },
+      "items": [
+        {
+          "icon": "TrendingUp",
+          "text": "Artan kazanç potansiyeli",
+          "description": "Yurtdışında yeni bir hayat kurmak isteyen bireyleri motive eden ilk üç faktörden biri."
+        },
+        {
+          "icon": "Evrak Çantası",
+          "text": "Daha fazla iş fırsatı",
+          "description": "Yurtdışında yeni bir hayat kurmak isteyen bireyleri motive eden ilk üç faktörden biri."
+        },
+        {
+          "icon": "Kalp",
+          "text": "Daha iyi sağlık hizmetleri ve eğitim",
+          "description": "Yurtdışında yeni bir hayat kurmak isteyen bireyleri motive eden ilk üç faktörden biri."
+        }
+      ]
+    },
+    "definition": "Uluslararası göçmen, doğduğu ülkenin dışında yaşayan kişidir. İş, eğitim ve yeni ufuklar arayışıyla sınırları aşan bir göçmen, öncelikle yeni fırsatlar ve daha iyi bir geçim kaynağı peşindedir."
+  },
+  "migrationopportunities": {
+    "title": {
+      "prefix": "Göç",
+      "highlight": "Fırsat"
+    },
+    "cards": {
+      "countries": {
+        "title": "Ülke",
+        "items": [
+          {
+            "name": "Avustralya'ya göç edin",
+            "id": 1
+          },
+          {
+            "name": "Kanada'ya göç edin",
+            "id": 2
+          },
+          {
+            "name": "Yeni Zelanda'ya göç edin",
+            "id": 3
+          },
+          {
+            "name": "Almanya'ya göç edin",
+            "id": 4
+          },
+          {
+            "name": "ABD'ye göç edin",
+            "id": 5
+          }
+        ]
+      },
+      "prVisas": {
+        "title": "PR Vizeleri",
+        "items": [
+          {
+            "name": "Avustralya Daimi İkamet Vizesi",
+            "id": 1
+          },
+          {
+            "name": "Kanada Daimi İkamet Vizesi",
+            "id": 2
+          },
+          {
+            "name": "Yeni Zelanda Yerleşik Vizesi",
+            "id": 3
+          },
+          {
+            "name": "Birleşik Krallık Süresiz Kalma İzni",
+            "id": 4
+          }
+        ]
+      },
+      "workVisas": {
+        "title": "Çalışma Vizeleri",
+        "items": [
+          {
+            "name": "Kanada Çalışma Vizesi",
+            "id": 1
+          },
+          {
+            "name": "Avustralya Çalışma Vizesi",
+            "id": 2
+          },
+          {
+            "name": "Birleşik Krallık Vasıflı İşçi Vizesi",
+            "id": 3
+          },
+          {
+            "name": "Almanya Fırsat Kartı",
+            "id": 4
+          },
+          {
+            "name": "ABD H-1B",
+            "id": 5
+          },
+          {
+            "name": "Portekiz İş Arayan Vizesi",
+            "id": 6
+          },
+          {
+            "name": "İsveç Oturma İzni",
+            "id": 7
+          }
+        ]
+      }
+    },
+    "benefits": [
+      {
+        "icon": "Ev",
+        "text": "Yüksek yaşam standartları"
+      },
+      {
+        "icon": "Evrak Çantası",
+        "text": "Mükemmel iş-yaşam dengesi"
+      },
+      {
+        "icon": "TrendingUp",
+        "text": "Mevcut maaşınızdan 5 kat daha fazla gelir elde edin"
+      },
+      {
+        "icon": "Küre",
+        "text": "Çeşitli sektörlerde milyonlarca iş fırsatı"
+      },
+      {
+        "icon": "Ödül",
+        "text": "Daha iyi kariyer olanakları"
+      },
+      {
+        "icon": "MezuniyetKapağı",
+        "text": "Çocuklarınız için ÜCRETSİZ eğitim"
+      },
+      {
+        "icon": "Kalp",
+        "text": "Sağlık hizmetleri ve sosyal yardımlar"
+      },
+      {
+        "icon": "Pusula",
+        "text": "Emeklilik yardımları"
+      }
+    ]
+  },
+  "immigrationjourney": {
+    "header": {
+      "title": "Göçmenlik Yolculuğunuz - Adım Adım",
+      "description": {
+        "part1": "Son zamanlarda göç, yurt dışına yerleşmek isteyen herkes için bir hayal haline geldi. Aradığınız ister",
+        "highlight1": "yurtdışında çalışma göçmenlik hizmetleri",
+        "part2": "veya",
+        "highlight2": "kariyer gelişimi için göçmenlik",
+        "part3": "bizim",
+        "highlight3": "iş temelli göçmenlik desteği",
+        "part4": "iyi hazırlanmış olmanızı sağlar."
+      }
+    },
+    "steps": [
+      {
+        "icon": "Arama",
+        "title": "Soruşturma",
+        "description": "Hoş geldiniz! Göçmenlik yolculuğunuz burada kişiselleştirilmiş bir danışmanlık ile başlar."
+      },
+      {
+        "icon": "Kullanıcılar",
+        "title": "Uzman Danışmanlığı",
+        "description": "Uzmanlarımız, niteliklerinize ve hedeflerinize göre göçmenlik danışmanlığı hizmetleri sunmaktadır."
+      },
+      {
+        "icon": "ClipboardCheck",
+        "title": "Uygunluk",
+        "description": "Göçmenlik süreci rehberimiz aracılığıyla belirli ülke ve bölgelere göç için uygunluğunuzu kontrol edin."
+      },
+      {
+        "icon": "DosyaMetin",
+        "title": "Dokümantasyon",
+        "description": "Vize ve göçmenlik danışmanlığı desteği ile güçlü bir başvuru oluşturmak için tüm belgeleriniz derlenecektir."
+      },
+      {
+        "icon": "BarChart4",
+        "title": "İşleme",
+        "description": "Başvurunuzu yaparken ve takip ederken her adımda destek, hızlı çalışma vizesi ve yer değiştirme desteği."
+      }
+    ],
+    "whyChoose": {
+      "title": "Neden Göç Hizmetlerimizi Seçmelisiniz?",
+      "services": [
+        {
+          "title": "Kişiselleştirilmiş Yaklaşım",
+          "description": "Benzersiz profilinize ve küresel yer değiştirme hedeflerinize göre özel göçmenlik stratejileri oluşturuyoruz."
+        },
+        {
+          "title": "Uzman Rehberliği",
+          "description": "Ekibimiz, vasıflı işçi göçmenlik programlarında yılların deneyimine sahip sertifikalı göçmenlik danışmanlarından oluşmaktadır."
+        },
+        {
+          "title": "Yüksek Başarı Oranı",
+          "description": "Dünya çapındaki kariyer odaklı göçmenlik hizmetlerimiz sayesinde başvurularımızın %95'i ilk başvuruda onaylanmaktadır."
+        }
+      ]
+    }
+  }
+}

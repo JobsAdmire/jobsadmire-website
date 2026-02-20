@@ -1,0 +1,171 @@
+{
+  "hero": {
+    "title": "Arzuwyňyzdaky işi tapyň",
+    "subtitle": "Siziň höwesiňize, başarnyklaryňyza we karýera maksatlaryňyza laýyk gelýän mümkinçilikleri açyň",
+    "search": {
+      "jobPlaceholder": "Wezipe ady, başarnyklar ýa-da açar sözler...",
+      "locationPlaceholder": "Şäher, oba ýa-da uzak...",
+      "buttonText": "Iş orunlaryny gözläň"
+    },
+    "popular": {
+      "label": "Meşhur:",
+      "tags": [
+        "Uzakdan",
+        "Tehnologiýa",
+        "Marketing",
+        "Dizayn",
+        "Maliýe"
+      ]
+    }
+  },
+  "stats": {
+    "jobs": {
+      "count": "10,580+",
+      "label": "Iş sanawlary"
+    },
+    "candidates": {
+      "count": "8.8M+",
+      "label": "Kandidatlar"
+    },
+    "countries": {
+      "label": "Ýurtlar",
+      "count": "120+"
+    },
+    "successRate": {
+      "label": "Üstünlik derejesi",
+      "count": "95%"
+    }
+  },
+  "categories": {
+    "title": "Mümkinçilikleri öwreniň",
+    "tabs": [
+      {
+        "key": "hemmesi",
+        "label": "Ähli iş orunlary"
+      },
+      {
+        "key": "görkezilen",
+        "label": "Görkezilen"
+      },
+      {
+        "key": "ýakynda",
+        "label": "Soňky"
+      },
+      {
+        "key": "uzakdan",
+        "label": "Uzakdan"
+      },
+      {
+        "key": "tehnologiýa",
+        "label": "Tehnologiýa"
+      },
+      {
+        "key": "marketing",
+        "label": "Marketing"
+      }
+    ]
+  },
+  "filters": {
+    "title": "Filtrler",
+    "clearAll": "Hemmesini arassala",
+    "jobType": {
+      "title": "Işiň görnüşi",
+      "options": [
+        {
+          "id": "doly wagt",
+          "value": "doly wagt",
+          "label": "Doly wagt"
+        },
+        {
+          "id": "bölek wagt",
+          "value": "bölekleýin wagt",
+          "label": "Ýarym wagt"
+        },
+        {
+          "id": "şertnama",
+          "value": "şertnama",
+          "label": "Şertnama"
+        },
+        {
+          "id": "uzakdan",
+          "value": "uzakdan",
+          "label": "Uzakdan"
+        }
+      ]
+    },
+    "experience": {
+      "title": "Tejribe derejesi",
+      "options": [
+        {
+          "id": "giriş",
+          "label": "Giriş derejesi"
+        },
+        {
+          "id": "orta",
+          "label": "Orta dereje"
+        },
+        {
+          "id": "uly",
+          "label": "Ýokary derejeli"
+        },
+        {
+          "id": "ýerine ýetiriji",
+          "label": "Ýerine ýetiriji"
+        }
+      ]
+    },
+    "salary": {
+      "title": "Aýlyk hakynyň aralygy",
+      "min": "$0",
+      "max": "100 müň dollardan gowrak"
+    },
+    "datePosted": {
+      "title": "Ýerleşdirilen senesi",
+      "options": [
+        {
+          "id": "islendik",
+          "label": "Islendik wagt"
+        },
+        {
+          "id": "gün",
+          "label": "Geçen 24 sagat"
+        },
+        {
+          "id": "hepde",
+          "label": "Geçen hepde"
+        },
+        {
+          "id": "aý",
+          "label": "Geçen aý"
+        }
+      ]
+    },
+    "applyButton": "Filtrleri ulanyň"
+  },
+  "jobListings": {
+    "title": "Elýeterli iş orunlary",
+    "showing": "Görkezilýär",
+    "opportunities": "mümkinçilikler",
+    "sortBy": {
+      "label": "Tertiplemek boýunça:",
+      "options": [
+        "Iň degişli",
+        "Iň täze",
+        "Iň ýokary aýlyk",
+        "Iň meşhur"
+      ]
+    }
+  },
+  "jobCard": {
+    "featured": "Görkezilen",
+    "new": "Täze",
+    "requirements": "Talaplar:",
+    "benefits": "Peýdalary:",
+    "viewDetails": "Jikme-jiklikleri görkez",
+    "hideDetails": "Jikme-jiklikleri gizläň",
+    "applyNow": "Häzir ýüz tutuň"
+  },
+  "cta": {
+    "postJob": "Iş ýerleşdiriň"
+  }
+}

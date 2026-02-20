@@ -1,0 +1,131 @@
+{
+  "navigation": {
+    "package": "Баста",
+    "home": "Хона"
+  },
+  "hero": {
+    "title": {
+      "line1": "Оғози худро",
+      "line2": "Сафари имрӯза"
+    },
+    "description": "Барои ниёзҳои сафари худ ба осонӣ даъватномаҳои расмии электрониро дархост кунед. Новобаста аз он ки барои сайёҳӣ, тиҷоратӣ ё конфронс/семинарҳо истифода мешавад, Jobs Admire раванди раводиди шуморо содда мекунад."
+  },
+  "form": {
+    "iAmFrom": "Ман аз",
+    "iLiveIn": "Ман дар он зиндагӣ мекунам",
+    "invitationFor": "Даъватнома барои",
+    "selectCountry": "Кишварро интихоб кунед",
+    "selectDestination": "Макони таъинотро интихоб кунед",
+    "searchCountries": "Ҷустуҷӯи кишварҳо...",
+    "loadingCountries": "Кишварҳо бор карда мешаванд...",
+    "noCountriesFound": "Ҳеҷ кишваре ёфт нашуд",
+    "findNow": "Ҳоло ёбед"
+  },
+  "packages": {
+    "title": "Бастаи хидматрасониро интихоб кунед",
+    "description": "Аз бастаҳои ҳамаҷонибаи хидматрасонии мо, ки барои амалӣ кардани орзуҳои сафари шумо тарҳрезӣ шудаанд, интихоб кунед. Мо коркарди зуд, нархҳои рақобатпазир ва роҳнамоии коршиносонро пешниҳод менамоем, то дархости раводиди шумо бомуваффақият ва бидуни стресс анҷом дода шавад.",
+    "showingPackagesFor": "Бастаҳо барои:",
+    "packageFor": "Баста барои",
+    "selectedCountry": "Кишвари интихобшуда",
+    "recommended": "Тавсияшуда",
+    "save": "Захира кардан",
+    "getStarted": "Оғоз кунед",
+    "needHelp": "Ба кӯмак дар интихоб ниёз доред?",
+    "contactExperts": "Бо мутахассисони мо тамос гиред",
+    "processingTime48Hours": "Вақти коркарди даъватнома 48 соат аст",
+    "documentationProcessingTime48Hours": "Вақти коркарди ҳуҷҷатҳо 48 соат аст",
+    "features": {
+      "fastProcessing": "Коркарди зуд",
+      "hours96Valid": "96 соат эътибор дорад",
+      "airportTransit": "Транзити фурудгоҳ",
+      "days14Valid": "14 рӯз эътибор дорад",
+      "days30Valid": "30 рӯз эътибор дорад",
+      "touristBusiness": "Шахси иловагӣ (аз 5 боло): 200 доллари ИМА барои як нафар",
+      "touristBusinesss": "Сайёҳӣ | Тиҷорат",
+      "singleEntry": "Вуруди ягона",
+      "singleMultipleEntry": "Якка | Вуруди бисёркарата"
+    }
+  },
+  "alerts": {
+    "selectAllFields": "Лутфан, ҳамаи майдонҳои заруриро интихоб кунед"
+  },
+  "errors": {
+    "failedToLoadCountries": "Бор кардани кишварҳо ноком шуд"
+  },
+  "visaApplication": {
+    "stepTitles": {
+      "step1": "Маълумот дар бораи макон",
+      "step2": "Талабот ва тасдиқ",
+      "step3": "Ҳуҷҷатҳоро боргузорӣ кунед",
+      "step4": "Тафсилоти шахсӣ",
+      "step5": "Баррасӣ ва пешниҳоди дархост"
+    },
+    "submitFailed": "Фиристодани почтаи электронӣ ноком шуд",
+    "errors": {
+      "fromCountry": "Лутфан, кишвари пайдоиши худро интихоб кунед",
+      "toCountry": "Лутфан, кишвареро, ки дар он зиндагӣ мекунед, интихоб кунед",
+      "toCountrySame": "Кишварҳои пайдоиш ва таъинот бояд гуногун бошанд",
+      "hasValidPassport": "Лутфан, тасдиқ кунед, ки шумо шиносномаи эътиборнок доред",
+      "hasPictureHeadshot": "Лутфан, тасдиқ кунед, ки шумо акс/акс доред",
+      "confirmNoActiveApplication": "Лутфан, ягон барномаи фаъолро тасдиқ накунед",
+      "confirmGovernmentDiscretion": "Лутфан, салоҳияти ҳукуматро эътироф кунед",
+      "passportDocument": "Лутфан, ҳуҷҷати шиносномаи худро бор кунед",
+      "pictureHeadshot": "Лутфан акс/акси худро бор кунед",
+      "firstName": "Номи аввал ҳатмист",
+      "lastName": "Номи хонаводагӣ ҳатмист",
+      "phoneNumber": "Рақами телефон лозим аст",
+      "email": "Почтаи электронӣ лозим аст",
+      "passportNumber": "Рақами шиноснома лозим аст",
+      "profession": "Касб ҳатмист",
+      "travelDate": "Санаи сафар ҳатмист",
+      "travelToDate": "Санаи баргардонидан ҳатмист",
+      "travelPurpose": "Мақсади сафар ҳатмист",
+      "emailInvalid": "Лутфан нишонаи имейли амалкунандаро ворид намоед",
+      "phoneInvalid": "Лутфан, рақами телефони дурустро ворид кунед",
+      "travelDatePast": "Санаи сафар наметавонад дар гузашта бошад",
+      "travelToDateAfter": "Санаи бозгашт бояд баъд аз санаи сафар бошад",
+      "travelerNameRequired": "Номи мусофир {{index}} лозим аст",
+      "travelerPhoneRequired": "Телефони мусофир {{index}} лозим аст"
+    },
+    "placeholders": {
+      "searchCountries": "Ҷустуҷӯи кишварҳо...",
+      "selectCountry": "Кишварро интихоб кунед",
+      "firstName": "Ном",
+      "lastName": "Насаб",
+      "phoneNumber": "Рақами мобилӣ",
+      "email": "Суроғаи имэйл",
+      "from": "Аз",
+      "liveIn": "Зиндагӣ дар",
+      "passportNumber": "Рақами шиноснома",
+      "profession": "Касб",
+      "dateFormat": "мм/рр/сссс",
+      "travelPurpose": "Мақсади сафар",
+      "numberOfTravellers": "Шумораи сайёҳон",
+      "fullName": "Номи пурра"
+    },
+    "labels": {
+      "applicationDetails": "Тафсилоти дархост",
+      "submitApplication": "Ариза пешниҳод кунед",
+      "transitVisa": "ВИЗАИ ТРАНЗИТӢ",
+      "transitVisaShort": "Визаи транзитӣ",
+      "notProvided": "Пешниҳод нашудааст",
+      "notUploaded": "Боргузорӣ нашудааст",
+      "price": "Нарх:",
+      "submitting": "Фиристодан...",
+      "uploadDocumentsTitle": "Лутфан ҳуҷҷатҳои зеринро бор кунед",
+      "acceptedFormats": "Форматҳои қабулшуда:",
+      "acceptedFormatsValue": "PDF, JPG ё PNG",
+      "details": "Тафсилот",
+      "review": "Шарҳ",
+      "next": "Баъдӣ",
+      "visaFor": "ВИЗА БАРОИ:",
+      "currency": "USD"
+    }
+  },
+  "packageTypes": {
+    "individualTouristInvitation": "Даъватномаи сайёҳии инфиродӣ",
+    "individualBusinessInvitation": "Даъватномаи тиҷорати инфиродӣ",
+    "familyTouristInvitation": "Даъватномаи сайёҳии оилавӣ",
+    "singleEntry": "Вуруди ягона"
+  }
+}

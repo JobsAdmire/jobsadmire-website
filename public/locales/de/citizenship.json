@@ -1,0 +1,194 @@
+{
+  "header": {
+    "badge": "Die Nummer 1 der türkischen Staatsbürgerschaftsberatung",
+    "title": {
+      "line1": "Entriegeln Sie Ihr",
+      "line2": "Türkische Zukunft"
+    },
+    "subtitle": "Verändern Sie Ihr Leben mit der türkischen Staatsbürgerschaft. Fachkundige Beratung, bewährte Ergebnisse und eine nahtlose Reise zu Ihrer neuen Staatsangehörigkeit.",
+    "buttons": {
+      "startJourney": "Beginnen Sie Ihre Reise",
+      "scheduleConsultation": "Konsultation vereinbaren"
+    }
+  },
+  "form": {
+    "title": "Erhalten Sie Ihr kostenloses Beratungsgespräch",
+    "fields": {
+      "name": {
+        "label": "Vollständiger Name *",
+        "placeholder": "Ihr vollständiger Name"
+      },
+      "email": {
+        "label": "E-Mail *",
+        "placeholder": "your.email@domain.com"
+      },
+      "phone": {
+        "label": "Telefon",
+        "placeholder": "+1 (555) 000-0000"
+      },
+      "pathway": {
+        "label": "Bevorzugter Weg",
+        "placeholder": "Pfad auswählen",
+        "options": {
+          "investment": "Investitionspfad"
+        }
+      },
+      "message": {
+        "label": "Erzählen Sie uns von Ihrer Situation",
+        "placeholder": "Teilen Sie uns Ihre Ziele, den Zeitplan und spezielle Fragen mit..."
+      }
+    },
+    "submitButton": "Kostenlose Beratung erhalten",
+    "disclaimer": "Kostenlose Beratung - Antwort innerhalb von 24 Stunden - Unverbindlich"
+  },
+  "sections": {
+    "pathways": {
+      "title": "Wege zur Staatsbürgerschaft",
+      "subtitle": "Mehrere Wege zur türkischen Staatsbürgerschaft, die jeweils auf unterschiedliche Umstände zugeschnitten sind",
+      "popularBadge": "Am beliebtesten"
+    },
+    "benefits": {
+      "title": "Vorteile der türkischen Staatsbürgerschaft",
+      "subtitle": "Erschließen Sie sich eine Welt voller Möglichkeiten und Privilegien",
+      "items": [
+        "Visumfreies Reisen in über 110 Länder weltweit",
+        "Unbeschränktes Recht, in der Türkei zu leben und zu arbeiten",
+        "Vollständiger Zugang zum türkischen Gesundheitssystem",
+        "Erstklassige Bildungsmöglichkeiten",
+        "Uneingeschränkte Eigentumsrechte",
+        "Vollständige Freiheit der Unternehmensgründung",
+        "Vorteile einer EU-Kandidatur",
+        "Doppelte Staatsbürgerschaft rechtlich zulässig"
+      ]
+    },
+    "process": {
+      "title": "Unser bewährtes Verfahren",
+      "subtitle": "Eine schlanke, transparente Reise zu Ihrer türkischen Staatsbürgerschaft mit fachkundiger Beratung bei jedem Schritt",
+      "stepIndicator": "Schritt {Aktuell} von {Gesamt}"
+    },
+    "services": {
+      "title": "Unsere Dienstleistungen",
+      "subtitle": "Umfassende Unterstützung während Ihrer Reise",
+      "items": [
+        {
+          "title": "Vollständiges Antragsmanagement",
+          "description": "Durchgängige Vorbereitung und Einreichung"
+        },
+        {
+          "title": "Überprüfung von Dokumenten",
+          "description": "Professionelle Authentifizierungsdienste"
+        },
+        {
+          "title": "Übersetzungsdienste",
+          "description": "Beglaubigte Übersetzung und notarielle Beglaubigung"
+        },
+        {
+          "title": "Juristische Konsultation",
+          "description": "Fachkundige Beratung bei der Einwanderung"
+        },
+        {
+          "title": "Unterstützung von Investitionen",
+          "description": "Unterstützung bei der Immobilienauswahl"
+        },
+        {
+          "title": "Verbindung zur Regierung",
+          "description": "Direkte Behördenkommunikation"
+        },
+        {
+          "title": "Verfolgung der Anwendung",
+          "description": "Fortschrittsüberwachung in Echtzeit"
+        },
+        {
+          "title": "Unterstützung nach der Staatsbürgerschaft",
+          "description": "Fortgesetzte Unterstützung nach der Genehmigung"
+        }
+      ]
+    },
+    "contact": {
+      "title": "Sind Sie bereit anzufangen?",
+      "subtitle": "Machen Sie den ersten Schritt zur türkischen Staatsbürgerschaft mit unserer fachkundigen Beratung. Kostenlose Bewertung, persönliche Beratung und transparente Preise.",
+      "features": {
+        "consultation": "Kostenlose 30-minütige Beratung",
+        "response": "Antwort innerhalb von 24 Stunden",
+        "assessment": "Unverbindliche Bewertung"
+      },
+      "submitButton": "Beginnen Sie Ihre Reise"
+    }
+  },
+  "citizenshipTypes": {
+    "investment": {
+      "title": "Staatsbürgerschaft durch Investitionen",
+      "description": "Türkische Staatsbürgerschaft im Schnellverfahren durch strategische Immobilieninvestitionen",
+      "requirements": [
+        "Immobilieninvestition von mindestens 400.000 $",
+        "Eigentum 3 Jahre lang behalten",
+        "Sauberer krimineller Hintergrund",
+        "Krankenversicherungsschutz"
+      ],
+      "timeframe": "3-6 Monate"
+    },
+    "birth": {
+      "title": "Staatsbürgerschaft durch Geburt",
+      "description": "Beantragung der türkischen Staatsbürgerschaft durch dokumentiertes Familienerbe",
+      "requirements": [
+        "Türkische(r) Eltern oder Großeltern",
+        "Amtliche Geburtsurkunden",
+        "Nachweis der türkischen Abstammung",
+        "Gültige Ausweispapiere"
+      ],
+      "timeframe": "2-4 Monate"
+    },
+    "marriage": {
+      "title": "Staatsbürgerschaft durch Heirat",
+      "description": "Sicherung der Staatsbürgerschaft durch Heirat mit türkischen Staatsbürgern",
+      "requirements": [
+        "3+ Jahre Ehe mit türkischem Staatsbürger",
+        "Grundkenntnisse der türkischen Sprache",
+        "Sicherheitsüberprüfung",
+        "Nachweis der finanziellen Stabilität"
+      ],
+      "timeframe": "4-8 Monate"
+    },
+    "naturalization": {
+      "title": "Einbürgerung",
+      "description": "Erwerb der Staatsbürgerschaft durch langfristige Aufenthaltsverpflichtung",
+      "requirements": [
+        "5+ Jahre ununterbrochener Aufenthalt",
+        "Türkische Sprache für Fortgeschrittene",
+        "Sauberes Strafregister",
+        "Nachweis der wirtschaftlichen Integration"
+      ],
+      "timeframe": "6-12 Monate"
+    }
+  },
+  "processSteps": {
+    "consultation": {
+      "title": "Erstkonsultation",
+      "description": "Kostenlose Prüfung der Anspruchsberechtigung und Empfehlung eines Weges",
+      "detail": "Fachkundige Bewertung Ihrer individuellen Situation, um den besten Weg zur Staatsbürgerschaft zu finden"
+    },
+    "documentation": {
+      "title": "Vorbereitung der Dokumente",
+      "description": "Vollständige Erfassung und Überprüfung der Unterlagen",
+      "detail": "Umfassende Sammlung von Dokumenten mit professioneller Beglaubigung und Übersetzung"
+    },
+    "filing": {
+      "title": "Einreichung der Bewerbung",
+      "description": "Einreichung eines offiziellen Antrags der Regierung",
+      "detail": "Nahtlose Einreichung bei den türkischen Behörden mit vollständigem Antragspaket"
+    },
+    "review": {
+      "title": "Überprüfung der Verarbeitung",
+      "description": "Staatliche Überprüfung und Hintergrundüberprüfung",
+      "detail": "Gründlicher Überprüfungsprozess mit kontinuierlicher Überwachung und Aktualisierung"
+    },
+    "approval": {
+      "title": "Endgültige Genehmigung",
+      "description": "Genehmigung der Staatsbürgerschaft und Terminierung der Zeremonie",
+      "detail": "Abschluss des Verfahrens mit offiziellen Staatsbürgerschaftsunterlagen"
+    }
+  },
+  "alerts": {
+    "thankYouMessage": "Vielen Dank für Ihre Anfrage! Wir werden Sie innerhalb von 24 Stunden kontaktieren."
+  }
+}

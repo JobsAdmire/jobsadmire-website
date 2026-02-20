@@ -1,0 +1,204 @@
+{
+  "header": {
+    "title": "Our Services",
+    "subtitle": "Connecting professionals with opportunities worldwide through our comprehensive career services"
+  },
+  "viewSelector": {
+    "grid": "Grid",
+    "masonry": "Masonry",
+    "carousel": "Carousel"
+  },
+  "card": {
+    "viewPage": "View Page",
+    "viewDetails": "View Details"
+  },
+  "carousel": {
+    "previousSlide": "Previous slide",
+    "nextSlide": "Next slide",
+    "goToSlide": "Go to slide"
+  },
+  "modal": {
+    "close": "Close",
+    "overview": "Overview",
+    "keyFeatures": "Key Features",
+    "technologies": "Technologies",
+    "visitServicePage": "Visit Service Page",
+    "stats": {
+      "projects": "Projects",
+      "satisfaction": "Satisfaction",
+      "support": "Support"
+    }
+  },
+  "services": {
+    "resumeService": {
+      "title": "Resume Service",
+      "description": "From generating bullet points to automatic formatting, our resume builder will help you make a professional resume quickly and effortlessly.",
+      "longDesc": "Our professional resume writing service helps job seekers create impactful, ATS-friendly resumes that highlight their unique qualifications and increase interview opportunities. We tailor each resume to specific industries and positions.",
+      "features": [
+        "ATS Optimization",
+        "Industry-Specific Formats",
+        "Keyword Enhancement",
+        "Professional Review"
+      ],
+      "technologies": [
+        "Resume Templates",
+        "ATS Tools",
+        "Design Software",
+        "Content Strategy"
+      ]
+    },
+    "globalJobPlacement": {
+      "title": "Global Job Placement",
+      "description": "From personalized job matching to visa support, we connect professionals with top employers across the globe—seamlessly and efficiently.",
+      "longDesc": "Our global job placement service connects talented professionals with international career opportunities, handling everything from job matching to relocation logistics and cultural preparation.",
+      "features": [
+        "Employer Partnerships",
+        "Visa Assistance",
+        "Relocation Support",
+        "Interview Preparation"
+      ],
+      "technologies": [
+        "Job Matching Algorithm",
+        "Global Database",
+        "Visa Processing",
+        "Relocation Tools"
+      ]
+    },
+    "interviewCoaching": {
+      "title": "Interview Coaching",
+      "description": "From mock interviews to personalized feedback, our comprehensive interview coaching helps professionals land their dream jobs with confidence.",
+      "longDesc": "Our interview coaching prepares candidates to excel in any interview format with customized practice sessions, detailed feedback, and strategies tailored to specific roles and industries.",
+      "features": [
+        "Mock Interviews",
+        "Industry-Specific Training",
+        "Body Language Coaching",
+        "Question Preparation"
+      ],
+      "technologies": [
+        "Video Analysis",
+        "AI Feedback",
+        "Interview Simulation",
+        "Personal Coaching"
+      ]
+    },
+    "careerCounselling": {
+      "title": "Career Counselling",
+      "description": "From career assessments to personalized development plans, our comprehensive counselling helps professionals find their perfect path with confidence.",
+      "longDesc": "Our career counselling service helps professionals at all stages identify their strengths, explore suitable career paths, and develop actionable plans to achieve their professional goals.",
+      "features": [
+        "Career Assessment",
+        "Strength Analysis",
+        "Goal Setting",
+        "Industry Insights"
+      ],
+      "technologies": [
+        "Personality Tests",
+        "Skills Assessment",
+        "Career Mapping",
+        "Development Planning"
+      ]
+    },
+    "visaRelocation": {
+      "title": "Visa & Relocation",
+      "description": "From visa applications to settling into your new home, our comprehensive relocation services help you transition to a new country with confidence.",
+      "longDesc": "Our visa and relocation services provide comprehensive support through the entire immigration process, from document preparation to finding accommodation and settling into your new environment.",
+      "features": [
+        "Visa Application",
+        "Document Preparation",
+        "Housing Assistance",
+        "Local Integration"
+      ],
+      "technologies": [
+        "Immigration Database",
+        "Document Management",
+        "Housing Network",
+        "Relocation Planning"
+      ]
+    },
+    "skillDevelopment": {
+      "title": "Skill Development",
+      "description": "From beginner workshops to expert certification, our skill development programs empower professionals to master in-demand skills for tomorrow's opportunities.",
+      "longDesc": "Our skill development programs offer targeted training in high-demand skills, with customized learning paths, practical projects, and certification preparation to boost career advancement.",
+      "features": [
+        "Customized Learning",
+        "Hands-on Projects",
+        "Certification Prep",
+        "Expert Mentoring"
+      ],
+      "technologies": [
+        "E-Learning Platform",
+        "Project Simulation",
+        "Assessment Tools",
+        "Certification Programs"
+      ]
+    },
+    "remoteWorkOpportunities": {
+      "title": "Remote Work Opportunities",
+      "description": "From remote job matching to home office setup guidance, we help professionals thrive in the virtual workplace with tailored solutions.",
+      "longDesc": "Our remote work service specializes in connecting professionals with quality remote positions, providing guidance on virtual work tools, and helping establish productive home office environments.",
+      "features": [
+        "Remote Job Matching",
+        "Virtual Collaboration",
+        "Home Office Setup",
+        "Work-Life Balance"
+      ],
+      "technologies": [
+        "Remote Job Platform",
+        "Virtual Tools",
+        "Productivity Software",
+        "Digital Communication"
+      ]
+    },
+    "talentAcquisition": {
+      "title": "Talent Acquisition",
+      "description": "From identifying ideal candidates to seamless onboarding, our talent acquisition platform helps organizations build high-performing teams efficiently.",
+      "longDesc": "Our talent acquisition service helps organizations identify, attract, and retain top talent with customized recruitment strategies, candidate assessment, and efficient onboarding processes.",
+      "features": [
+        "Targeted Recruitment",
+        "Candidate Screening",
+        "Skill Assessment",
+        "Onboarding Support"
+      ],
+      "technologies": [
+        "ATS Platform",
+        "Assessment Tools",
+        "Interview Management",
+        "Onboarding System"
+      ]
+    },
+    "immigration": {
+      "title": "Immigration",
+      "description": "From visa applications to permanent residency, our expert immigration consultants will guide you through every step of the process with personalized support.",
+      "longDesc": "Our immigration consultants provide expert guidance on all immigration pathways, handling complex documentation, application preparation, and offering ongoing support throughout your immigration journey.",
+      "features": [
+        "Visa Assessment",
+        "Application Preparation",
+        "Legal Support",
+        "Status Tracking"
+      ],
+      "technologies": [
+        "Immigration Database",
+        "Document Verification",
+        "Application Management",
+        "Legal Resources"
+      ]
+    },
+    "jobRecruitment": {
+      "title": "Job Recruitment",
+      "description": "From sourcing candidates to final placement, our comprehensive recruitment services help businesses find top talent globally with precision and efficiency.",
+      "longDesc": "Our job recruitment service specializes in connecting employers with qualified candidates across various industries, utilizing advanced screening processes and global talent networks to ensure perfect matches.",
+      "features": [
+        "Global Talent Sourcing",
+        "Advanced Screening",
+        "Industry Expertise",
+        "Quick Placement"
+      ],
+      "technologies": [
+        "Recruitment Platform",
+        "Candidate Database",
+        "Screening Tools",
+        "Matching Algorithm"
+      ]
+    }
+  }
+}

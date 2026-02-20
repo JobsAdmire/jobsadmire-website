@@ -1,0 +1,233 @@
+{
+  "header": {
+    "heroImageAlt": "Profesional perekrutan",
+    "program_title": "Program Mitra Rekrutmen Bersertifikat",
+    "main_title_prefix": "Bermitra dengan Perusahaan Terkemuka",
+    "main_title_suffix": "Agen Perekrutan",
+    "description": "Kami berkolaborasi dengan agen perekrutan tepercaya untuk menghubungkan bisnis dengan para profesional yang berkualitas dan telah melalui proses seleksi di berbagai industri. Bergabunglah dengan jaringan kami dan perluas jangkauan Anda dengan kemitraan perekrutan yang andal.",
+    "contact_us": "Hubungi kami",
+    "verified_candidates": "Kandidat Terverifikasi",
+    "pre_screened": "Pra-seleksi"
+  },
+  "form": {
+    "title": "Pendaftaran Mitra Rekrutmen",
+    "subtitle": "Isi formulir ini untuk mulai merekrut staf yang berkualitas melalui JobsAdmire.",
+    "company_info": {
+      "title": "Informasi Perusahaan",
+      "company_name": "Nama perusahaan *",
+      "company_name_placeholder": "Masukkan nama perusahaan Anda",
+      "company_name_error": "Nama perusahaan wajib diisi.",
+      "contact_person": "Kontak person *",
+      "contact_person_placeholder": "Nama lengkap orang yang dapat dihubungi",
+      "contact_person_error": "Diperlukan narahubung.",
+      "company_type": "Jenis Perusahaan *",
+      "company_type_placeholder": "Pilih jenis perusahaan",
+      "company_type_error": "Jenis perusahaan wajib diisi.",
+      "types": {
+        "manufacturing": "Manufaktur/Pabrik",
+        "agriculture": "Pertanian",
+        "tourism": "Pariwisata & Perhotelan",
+        "construction": "Konstruksi",
+        "retail": "Ritel & Jasa",
+        "other": "Lainnya"
+      },
+      "years_in_business": "Lama Beroperasi",
+      "years_placeholder": "Pilih tahun",
+      "years_options": {
+        "1_2": "1-2 tahun",
+        "3_5": "3-5 tahun",
+        "6_10": "6-10 tahun",
+        "10_plus": "10+ tahun"
+      },
+      "license_number": "Nomor Izin Usaha",
+      "license_placeholder": "Masukkan nomor lisensi",
+      "employees_count": "Jumlah Karyawan Saat Ini",
+      "employees_placeholder": "Pilih rentang",
+      "employees_options": {
+        "1_10": "1-10 karyawan",
+        "11_50": "11-50 karyawan",
+        "51_100": "51-100 karyawan",
+        "100_plus": "100+ karyawan"
+      }
+    },
+    "contact_info": {
+      "title": "Informasi Kontak",
+      "email": "Alamat Email *",
+      "email_required": "Email wajib diisi.",
+      "email_invalid": "Email tidak valid",
+      "phone": "Nomor Telepon *",
+      "phone_placeholder": "+90 xxx xxx xx xx",
+      "phone_required": "Nomor telepon wajib diisi.",
+      "country": "Negara *",
+      "country_placeholder": "Masukkan negara Anda",
+      "country_required": "Negara wajib diisi.",
+      "city": "Kota *",
+      "city_placeholder": "Masukkan kota Anda",
+      "city_required": "Kota diperlukan",
+      "address": "Alamat Bisnis",
+      "address_placeholder": "Masukkan alamat bisnis lengkap Anda",
+      "website": "Situs Web Perusahaan",
+      "email_placeholder": "company@example.com",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "staffing_needs": {
+      "title": "Persyaratan Kepegawaian",
+      "types_needed": "Jenis Staf yang Dibutuhkan",
+      "types_placeholder": "Pilih posisi yang Anda inginkan",
+      "positions": {
+        "housekeeping": "Kebersihan",
+        "waiter": "Pelayan Pria/Wanita",
+        "waiter_assistant": "Asisten Pelayan",
+        "receptionist": "Resepsionis",
+        "guest_relations": "Hubungan Tamu",
+        "bellboy": "Pelayan",
+        "animator": "Animator / Koordinator Kegiatan",
+        "kitchen_assistant": "Asisten Dapur",
+        "specialized_worker": "Pekerja dengan Keahlian Khusus",
+        "cnc_operator": "Operator CNC",
+        "packing_worker": "Pekerja Pengemasan",
+        "tailor": "Menyesuaikan",
+        "forklift_operator": "Operator Forklift",
+        "material_handler": "Penanggung Jawab Penanganan Material",
+        "fruit_picker": "Pemetik Buah/Sayuran",
+        "greenhouse_worker": "Pekerja Rumah Kaca",
+        "packing_sorting": "Staf Pengemasan & Penyortiran",
+        "irrigation": "Asisten Irigasi / Penanaman",
+        "animal_husbandry": "Peternakan (Peternakan Sapi Perah/Pertanian)",
+        "general_labourer": "Pekerja Umum",
+        "painter": "Pelukis",
+        "electrician": "Tukang Listrik",
+        "tile_fixer": "Tukang Pasang Ubin"
+      },
+      "industry_focus": "Fokus Industri Utama",
+      "industry_placeholder": "Pilih industri Anda",
+      "industries": {
+        "factory": "Pabrik",
+        "agriculture": "Pertanian",
+        "tourism": "Pariwisata",
+        "construction": "Konstruksi"
+      },
+      "description_label": "Ceritakan kepada Kami tentang Kebutuhan Staf Anda",
+      "description_placeholder": "Jelaskan perusahaan Anda, kebutuhan staf saat ini, jumlah posisi yang perlu diisi, keterampilan yang dibutuhkan, dan persyaratan khusus lainnya..."
+    },
+    "legal": {
+      "title": "Perjanjian Hukum",
+      "agree_terms_prefix": "Saya setuju dengan hal tersebut.",
+      "terms_link": "syarat dan Ketentuan",
+      "agree_terms_suffix": "dan memahami persyaratan dan kewajiban kemitraan. *",
+      "terms_error": "Anda harus menyetujui syarat dan ketentuan.",
+      "agree_privacy_prefix": "Saya menyatakan bahwa saya telah membaca dan menyetujui hal-hal berikut ini:",
+      "privacy_link": "Kebijakan Privasi",
+      "agree_privacy_suffix": "dan prosedur penanganan data. *",
+      "privacy_error": "Anda harus menyetujui kebijakan privasi."
+    },
+    "submit": {
+      "button": "Kirim Aplikasi",
+      "submitting": "Mengirimkan...",
+      "success_message": "Permohonan berhasil diajukan! Kami akan meninjau permohonan Anda dan menghubungi Anda dalam 2-3 hari kerja.",
+      "footer_message": "Kami akan meninjau lamaran Anda dan menghubungi Anda dalam waktu 2–3 hari kerja."
+    }
+  },
+  "why_partner": {
+    "title": "Mengapa Bermitra dengan JobsAdmire?",
+    "subtitle": "Kami menghubungkan bisnis dengan pekerja yang berkualitas dan menangani semua kompleksitas perekrutan internasional.",
+    "items": {
+      "global_network": {
+        "title": "Jaringan Rekrutmen Global",
+        "description": "Dapatkan akses ke kumpulan talenta internasional yang luas dan terhubung dengan perusahaan terverifikasi yang mencari kandidat berkualitas di berbagai industri."
+      },
+      "trusted_brand": {
+        "title": "Merek Terpercaya & Kepatuhan Hukum",
+        "description": "Bekerjasamalah dengan agen perekrutan berlisensi yang dikenal karena operasionalnya yang transparan, etis, dan sesuai dengan peraturan pemerintah."
+      },
+      "ai_driven": {
+        "title": "Platform Perekrutan Berbasis AI",
+        "description": "Manfaatkan alat rekrutmen cerdas kami untuk pelacakan kandidat, manajemen lamaran, dan komunikasi yang lancar dengan klien."
+      },
+      "end_to_end": {
+        "title": "Dukungan Menyeluruh",
+        "description": "Mulai dari pencarian kandidat hingga bantuan visa dan dokumentasi, kami menangani setiap langkah untuk memastikan proses perekrutan dan orientasi berjalan lancar."
+      },
+      "commission": {
+        "title": "Struktur Komisi yang Menarik",
+        "description": "Dapatkan komisi yang kompetitif dan insentif berulang untuk setiap penempatan yang berhasil melalui program kemitraan perekrut kami."
+      },
+      "dedicated_team": {
+        "title": "Tim Kemitraan Khusus",
+        "description": "Dapatkan dukungan, bimbingan, dan pembaruan berkelanjutan dari tim kemitraan kami untuk membantu Anda meningkatkan kesuksesan rekrutmen Anda."
+      }
+    }
+  },
+  "industry_expertise": {
+    "title": "Industri yang Kami Layani",
+    "subtitle": "Kami menyediakan tenaga kerja berkualitas di berbagai industri utama di Turki.",
+    "items": {
+      "factory": {
+        "title": "Pabrik",
+        "description": "Pekerja lini manufaktur dan produksi"
+      },
+      "agriculture": {
+        "title": "Pertanian",
+        "description": "Pekerja pertanian dan spesialis pertanian"
+      },
+      "tourism": {
+        "title": "Pariwisata",
+        "description": "Staf hotel, pemandu wisata, dan pekerja perhotelan."
+      },
+      "construction": {
+        "title": "Konstruksi",
+        "description": "Tukang bangunan, insinyur, dan pekerja konstruksi"
+      }
+    }
+  },
+  "platform_features": {
+    "title": "Platform Rekrutmen Kami",
+    "subtitle": "Teknologi yang efisien dan dukungan ahli untuk menemukan staf yang tepat untuk bisnis Anda.",
+    "items": {
+      "verified_candidates": {
+        "title": "Kandidat Terverifikasi",
+        "description": "Semua kandidat telah melalui proses penyaringan dan verifikasi awal."
+      },
+      "quick_placement": {
+        "title": "Penempatan Cepat",
+        "description": "Rata-rata waktu penempatan adalah 2-3 minggu."
+      },
+      "document_processing": {
+        "title": "Pemrosesan Dokumen",
+        "description": "Kami mengurus semua izin kerja dan dokumen hukum."
+      },
+      "ongoing_support": {
+        "title": "Dukungan Berkelanjutan",
+        "description": "Dukungan berkelanjutan setelah penempatan"
+      }
+    }
+  },
+  "benefits": {
+    "title": "Manfaat Kemitraan",
+    "subtitle": "Bergabunglah dengan ratusan bisnis yang sudah bekerja sama dengan JobsAdmire.",
+    "items": {
+      "talent_pool": {
+        "title": "Kumpulan Talenta yang Telah Diseleksi Sebelumnya",
+        "description": "Akses kandidat berkualitas yang siap bekerja di Turki."
+      },
+      "fast_process": {
+        "title": "Proses Rekrutmen Cepat",
+        "description": "Isi posisi kosong dengan cepat menggunakan sistem perekrutan kami yang efisien."
+      },
+      "legal_compliance": {
+        "title": "Kepatuhan Hukum",
+        "description": "Kami mengurus semua izin kerja dan dokumen visa."
+      },
+      "industry_matching": {
+        "title": "Pencocokan Khusus Industri",
+        "description": "Dapatkan kandidat yang sesuai dengan kebutuhan spesifik industri Anda."
+      }
+    }
+  },
+  "contact_footer": {
+    "title": "Siap Membangun Tim Anda?",
+    "description": "Punya pertanyaan tentang layanan rekrutmen kami? Tim kami yang berdedikasi siap membantu Anda menemukan staf yang tepat untuk bisnis Anda.",
+    "business_hours": "Jam Operasional: Senin - Jumat, 09:00 - 18:00 (Waktu Turki)",
+    "response_time": "Waktu Respons Rata-rata: Dalam waktu 2 jam selama jam kerja."
+  }
+}

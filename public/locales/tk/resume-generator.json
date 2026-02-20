@@ -1,0 +1,357 @@
+{
+  "title": "Rezüme Gurujysy Pro",
+  "description": "Birnäçe minutda ajaýyp professional rezýume dörediň",
+  "steps": {
+    "personalInfo": "Şahsy maglumatlar",
+    "achievements": "Üstünlikler",
+    "workExperience": "Iş tejribesi",
+    "education": "Bilim",
+    "projects": "Taslamalar",
+    "skills": "Ukyplar"
+  },
+  "stepIcons": {
+    "personalInfo": "👤",
+    "achievements": "🏆",
+    "workExperience": "💼",
+    "education": "🎓",
+    "projects": "🚀",
+    "skills": "⚡"
+  },
+  "stepDescriptions": {
+    "personalInfo": "Özüňiz barada gürrüň beriň we ajaýyp ilkinji täsir galdyryň",
+    "achievements": "Esasy üstünlikleriňizi görkeziň we köpçüligiň arasynda tapawutlanyň",
+    "workExperience": "Hünär ýoluňyzy we karýeraňyzdaky möhüm wakalary jikme-jik beýan ediň",
+    "education": "Bilim tejribäňizi we akademiki üstünlikleriňizi paýlaşyň",
+    "projects": "Ukyplaryňyzy görkezýän şahsy taslamalary belläň",
+    "skills": "Sizi gymmatly edýän tehniki we ýumşak başarnyklaryňyzy görkeziň"
+  },
+  "buttons": {
+    "back": "{{step}} sahypasyna gaýdyp",
+    "back_mobile": "Yza",
+    "continue": "{{step}}-e dowam ediň",
+    "continue_mobile": "Dowam et",
+    "saveSkill": "Ukyplylygy saklaň",
+    "generateResume": "Rezyume dörediň",
+    "saveProgress": "Progressi ýatda saklaň",
+    "needHelp": "Kömek gerekmi?",
+    "previewResume": "Rezümeni synap görmek",
+    "addAnotherExperience": "Başga bir tejribe goşuň",
+    "addAnotherEducation": "Başga bir bilim goşuň",
+    "addAnotherProject": "Başga bir taslama goşuň",
+    "addAnotherSkill": "Başga bir başarnyk goşuň",
+    "addAchievement": "Üstünlik goşuň",
+    "viewTemplates": "Şablonlary görkez",
+    "cancel": "Ýatyr",
+    "applyCrop": "Kesmegi ulanyň",
+    "choosePhoto": "Surat saýlaň"
+  },
+  "features": {
+    "fastEasy": {
+      "icon": "⚡",
+      "title": "Çalt we aňsat",
+      "description": "Biziň intuitiw ädimme-ädim prosesimiz bilen birnäçe minutda professional rezyume dörediň."
+    },
+    "beautifulTemplates": {
+      "icon": "🎨",
+      "title": "Owadan şablonlar",
+      "description": "Hünärmenler tarapyndan taýýarlanan rezyume şablonlarymyzyň kolleksiýasyndan saýlaň."
+    },
+    "atsOptimized": {
+      "icon": "📊",
+      "title": "ATS optimizirlenen",
+      "description": "Biziň rezýumelerimiz dalaşgärleri yzarlamak ulgamlaryndan geçmek üçin optimizirlenen."
+    }
+  },
+  "proTips": {
+    "title": "Hünärmen maslahatlary: {{step}}",
+    "personalInfo": {
+      "tip1": {
+        "title": "Hünärmen e-poçtasy",
+        "description": "Lakamlaryňyza ýa-da gülkünç salgylaryňyza däl-de, adyňyza esaslanýan professional e-poçta salgysyny ulanyň."
+      },
+      "tip2": {
+        "title": "Täsirli gysgaça maglumat",
+        "description": "Gysgaça mazmunyňyzy gysga (3-5 jümle) saklaň we iň täsirli hünär derejäňizi we karýera maksatlaryňyzy nygtaň."
+      },
+      "tip3": {
+        "title": "Professional surat",
+        "description": "Eger surat goşsaňyz, bitarap fonly we degişli geýimli professional surat ulanyň."
+      },
+      "tip4": {
+        "title": "Aragatnaşyk maglumatlary",
+        "description": "Diňe möhüm aragatnaşyk maglumatlaryny goşuň we ähli maglumatlaryň täze we dogrudygyna göz ýetiriň."
+      }
+    },
+    "achievements": {
+      "tip1": {
+        "title": "Netijeleri san taýdan kesgitle",
+        "description": "Gazanan üstünlikleriňizi ölçemek üçin sanlary we prosentleri ulanyň (meselem, \"Satuwyň artmagy\" däl-de, \"Satuwyň 25% artmagy\")."
+      },
+      "tip2": {
+        "title": "Netijeler we jogapkärçilikler",
+        "description": "Başga dalaşgärlerden tapawutlanmak üçin iş borçlaryny sanap geçmegiň ýerine, netijelere we netijelere üns beriň."
+      },
+      "tip3": {
+        "title": "Sylaglar we ykrarnama",
+        "description": "Siziň tejribeňizi we gymmatyňyzy görkezýän degişli sylaglary, ykrarnamalary we hormatlary goşuň."
+      },
+      "tip4": {
+        "title": "Hereket işliklerini ulanyň",
+        "description": "Üstünlikleriň beýanyny \"ýetirildi\", \"ýolbaşçylyk edildi\", \"amala aşyryldy\" ýa-da \"döredildi\" ýaly güýçli hereket işlikleri bilen başlaň."
+      }
+    }
+  },
+  "progress": {
+    "stepsCompleted": "6 ädimden {{count}}",
+    "currentStep": "Häzirki: Ädim {{step}} - {{title}}",
+    "currentStep_mobile": "Häzirki: Ädim {{ädim}}",
+    "progressPercentage": "{{göterim}}%"
+  },
+  "step1": {
+    "title": "ŞAHSY MAGLUMATLAR",
+    "basicDetails": "Esasy maglumatlar",
+    "firstName": "Ady",
+    "firstNamePlaceholder": "Adyňyzy giriziň",
+    "firstNameRequired": "Adyňyz hökmandyr",
+    "middleName": "Orta ady",
+    "middleNameOptional": "(isleg boýunça)",
+    "middleNamePlaceholder": "mysal üçin, Herbert",
+    "lastName": "Familiýa",
+    "lastNamePlaceholder": "Familiýaňyzy giriziň",
+    "lastNameRequired": "Familiýaňyz hökmandyr",
+    "professionalProfile": "Hünärmen profili",
+    "profilePhoto": "Profil suraty",
+    "uploadInstructions": "Suratyňyzy ýüklemek we kesmek üçin basyň",
+    "imageSizeError": "Faýlyň ölçegi 5MB-dan az bolmaly",
+    "imageTypeError": "Faýl JPEG, PNG ýa-da GIF bolmaly",
+    "designation": "Bellenilişi",
+    "designationPlaceholder": "mysal üçin, uly buhgalter",
+    "address": "Salgy",
+    "addressPlaceholder": "Salgyňyzy giriziň",
+    "contactInformation": "Aragatnaşyk maglumatlary",
+    "email": "E-poçta salgysy",
+    "emailPlaceholder": "E-poçtaňyzy giriziň",
+    "emailRequired": "E-poçta gerek",
+    "emailInvalid": "E-poçta nädogry",
+    "phone": "Telefon belgileri",
+    "phonePlaceholder": "Telefon belgiňizi giriziň",
+    "phoneRequired": "Telefon belgisi gerek",
+    "summary": "Hünär boýunça gysgaça maglumat",
+    "summaryPlaceholder": "Hünär tejribäňizi, esasy başarnyklaryňyzy we karýera maksatlaryňyzy gysgaça beýan ediň",
+    "summaryTip": "Güýçli gysgaça maglumat size tapawutlanmaga kömek edýär. Ony gysga we täsirli ediň.",
+    "cropperTitle": "Profil suratyňyzy kesiň",
+    "zoom": "Ýakynlaşdyrmak: {{zoom}}x",
+    "preview": "Synlaýyş:",
+    "cropInstructions": {
+      "drag": "• Suraty ýerleşdirmek üçin ony süýräň",
+      "zoom": "• Ölçegini üýtgetmek üçin ulaltma slaýderini ulanyň",
+      "cropArea": "• Tegelek ekin meýdanyňyzy görkezýär"
+    }
+  },
+  "step2": {
+    "description": "Görnükli üstünlikleriňizi görkeziň",
+    "noAchievements": "Heniz hiç hili üstünlik goşulmady. Ilkinji üstünligiňizi aşakda goşuň.",
+    "remove": "Aýyr",
+    "delete": "Poz",
+    "addNew": "Täze üstünlik goşuň",
+    "achievementTitle": "Üstünlik ady",
+    "achievementTitlePlaceholder": "Üstünlik adyny giriziň",
+    "date": "Sene",
+    "achievementDescription": "Beýany",
+    "achievementDescriptionPlaceholder": "Üstünligiňizi beýan ediň",
+    "title": "ACHIEVEMENTS"
+  },
+  "step3": {
+    "workExperience": "Iş tejribesi #{{index}}",
+    "jobTitle": "Ady",
+    "jobTitlePlaceholder": "Wezipäniň adyny giriziň",
+    "jobTitleRequired": "Wezipäniň ady hökmanydyr",
+    "company": "Kompaniýa / Gurama",
+    "companyPlaceholder": "Kompaniýanyň adyny giriziň",
+    "companyRequired": "Kompaniýanyň ady hökmanydyr",
+    "location": "Ýerleşýän ýeri",
+    "locationPlaceholder": "mysal üçin, San Fransisko, Kaliforniýa",
+    "startDate": "Başlangyç senesi",
+    "startDateRequired": "Başlangyç senesi hökmanydyr",
+    "endDate": "Gutaryş senesi",
+    "endDateOptional": "(ýa-da häzirki bolsa, boş goýuň)",
+    "endDateTip": "Eger bu siziň häzirki wezipäňiz bolsa, boş goýuň",
+    "description": "Beýany",
+    "descriptionPlaceholder": "Bu wezipede ulanylan jogapkärçilikleriňizi, üstünlikleriňizi we başarnyklaryňyzy beýan ediň",
+    "descriptionTip": "Has gowy okamaga mümkinçilik bermek üçin nokatlary ulanyň. Borçlara däl-de, üstünliklere üns beriň.",
+    "title": "EXPERIENCE"
+  },
+  "step4": {
+    "educationEntry": "Bilim #{{index}}",
+    "school": "Mekdep",
+    "schoolPlaceholder": "Mekdebiň ýa-da uniwersitetiň adyny giriziň",
+    "schoolRequired": "Mekdebiň ady hökmanydyr",
+    "degree": "Dereje",
+    "degreePlaceholder": "mysal üçin, Ylymlaryň bakalawry",
+    "degreeRequired": "Dereje talap edilýär",
+    "city": "Şäher",
+    "cityPlaceholder": "mysal üçin, Boston, MA",
+    "startDate": "Başlangyç senesi",
+    "startDatePlaceholder": "mm/ýýýý",
+    "startDateRequired": "Başlangyç senesi hökmanydyr",
+    "endDate": "Gutaryş senesi",
+    "endDateOptional": "(ýa-da Häzirki)",
+    "endDatePlaceholder": "mm/ýýýý ýa-da Häzirki",
+    "description": "Beýany",
+    "descriptionOptional": "(isleg boýunça)",
+    "descriptionPlaceholder": "Üstünlikleriňizi, GPA-ňyzy, degişli okuw işleriňizi we ş.m. beýan ediň.",
+    "descriptionTip": "Karýera maksatlaryňyz bilen baglanyşykly degişli okuwlary, hormatlary ýa-da okuwdan daşary işleri belläň.",
+    "title": "EDUCATION"
+  },
+  "step5": {
+    "projectEntry": "Taslama #{{index}}",
+    "projectName": "Taslamanyň ady",
+    "projectNamePlaceholder": "Taslamanyň adyny giriziň",
+    "projectNameRequired": "Taslamanyň ady hökmanydyr",
+    "projectLink": "Taslama baglanyşygy",
+    "projectLinkOptional": "(isleg boýunça)",
+    "projectLinkInvalid": "Baglanyşyk nädogry",
+    "description": "Beýany",
+    "descriptionPlaceholder": "Taslamany, ulanylýan tehnologiýalary we öz rolyňyzy beýan ediň",
+    "descriptionTip": "Maksady, ulanylýan tehnologiýalary we goşýan aýratyn goşantlaryňyzy belläň.",
+    "title": "PROJECTS",
+    "projectLinkPlaceholder": "https://example.com/project"
+  },
+  "step6": {
+    "skillsTitle": "Tehniki we hünär başarnyklary",
+    "skillsDescription": "Dalaş edýän wezipeleriňizde degişli başarnyklary goşuň",
+    "skillPlaceholder": "mysal üçin, JavaScript, Taslama dolandyryşy, Maglumat seljermesi",
+    "skillRequired": "Ukyp ady hökmanydyr",
+    "tipsTitle": "Sanaw etmek başarnyklary üçin maslahatlar",
+    "tip1": "Tehniki (kyn) başarnyklaryň we şahsy (ýumşak) başarnyklaryň garyndysyny goşuň",
+    "tip2": "Nyşana alýan iş düşündirişiňizde agzalan başarnyklara ileri tutuň",
+    "tip3": "Tehniki başarnyklarda anyk boluň (meselem, diňe \"JavaScript\" ýerine \"React.js\")",
+    "title": "SKILLS"
+  },
+  "tooltip": {
+    "prefix": "Ädim {{step}}: {{title}}",
+    "completed": "✓"
+  },
+  "alts": {
+    "cropPreviewAlt": "Kesmegiň deslapky görnüşi",
+    "previewAlt": "Öňünden syn",
+    "profileAlt": "Profil"
+  },
+  "templateSelector": {
+    "selectTemplate": "Şablony saýlaň",
+    "selected": "✓ Saýlanan",
+    "defaultSummary": "Hünärmen gysgaça mazmunynyň ýerini tutujy"
+  },
+  "sections": {
+    "skills": "Ukyplar",
+    "education": "Bilim",
+    "experience": "Tejribe",
+    "workExperience": "Iş tejribesi",
+    "professionalSkills": "Hünär başarnyklary",
+    "jobExperience": "Iş tejribesi",
+    "proSkills": "Hünär başarnyklary",
+    "references": "Salgylanmalar",
+    "projects": "Taslamalar",
+    "achievements": "Üstünlikler",
+    "contact": "Aragatnaşyk",
+    "aboutMe": "Men barada",
+    "profile": "Profil",
+    "previousEmployment": "Öňki iş orny",
+    "software": "Programma üpjünçiligi",
+    "languages": "Diller",
+    "reference": "Salgylanma",
+    "awards": "Sylaglar",
+    "contactMe": "Men bilen habarlaşyň"
+  },
+  "fallbacks": {
+    "noSummaryAvailable": "Gysgaça maglumat ýok",
+    "unnamedSkill": "Ady görkezilmedik başarnyk",
+    "noDataAvailable": "Maglumat elýeterli däl",
+    "availableUponRequest": "Talap boýunça elýeterli"
+  },
+  "labels": {
+    "phone": "Telefon",
+    "email": "E-poçta",
+    "address": "Salgy"
+  },
+  "actions": {
+    "generatePdf": "PDF döretmek",
+    "generatingPdf": "PDF döredilýär..."
+  },
+  "messages": {
+    "referencesAvailableOnRequest": "Hünärmenleriň teklipleri talap boýunça berler"
+  },
+  "resumeBuilder": "Rezüme gurujysy",
+  "forms": {
+    "personalInfoTitle": "Şahsy maglumatlar",
+    "buildProfileSubtitle": "Hünärmen profiliňizi dörediň",
+    "profilePhoto": "Profil suraty",
+    "profileAlt": "Profil",
+    "changePhoto": "Suraty üýtget",
+    "uploadPhoto": "Suraty ýükle",
+    "headshotTip": "Professional suraty ýükle. Maslahat berilýär: 400x400px, JPG ýa-da PNG",
+    "firstName": "Ady",
+    "lastName": "Familiýa",
+    "placeholderFirstName": "Jon",
+    "placeholderLastName": "Doe",
+    "emailAddress": "E-poçta salgysy",
+    "phoneNumber": "Telefon nomeri",
+    "placeholderEmail": "E-poçtaňyzy giriziň",
+    "placeholderPhone": "Telefonyňyzy giriziň",
+    "location": "Ýerleşýän ýeri",
+    "placeholderLocation": "mysal üçin, San Fransisko, Kaliforniýa",
+    "placeholderLocationExample": "Nýu-Ýork, Nýu-Ýork",
+    "linkedinProfile": "LinkedIn profili",
+    "placeholderLinkedIn": "linkedin.com/in/johndoe",
+    "websitePortfolio": "Web sahypasy/Portfolio",
+    "placeholderPortfolio": "www.johndoe.com",
+    "professionalSummary": "Hünär boýunça gysgaça maglumat",
+    "placeholderSummary": "Esasy üstünlikleriňizi, başarnyklaryňyzy we karýera maksatlaryňyzy görkezýän gysgaça hünär gysgaça maglumat...",
+    "summaryHint": "Ony gyzykly we gysga ediň",
+    "characters": "gahrymanlar",
+    "jobTitlePlaceholder": "Wezipe ady",
+    "companyPlaceholder": "Kompaniýanyň ady",
+    "locationPlaceholder": "Ýerleşýän ýeri",
+    "descriptionPlaceholder": "Jogapkärçilikleriňizi we üstünlikleriňizi beýan ediň",
+    "experienceLabel": "Tejribe",
+    "jobTitle": "Wezipe ady",
+    "company": "Kompaniýa",
+    "placeholderJobTitle": "Programma üpjünçiligini işläp düzüji",
+    "placeholderCompany": "Tehnologiýa Kompaniýasy Inc.",
+    "placeholderLocationExp": "San-Fransisko, Kaliforniýa",
+    "startDate": "Başlangyç senesi",
+    "endDate": "Gutaryş senesi",
+    "currentWorkHere": "Men häzirki wagtda şu ýerde işleýärin",
+    "description": "Beýany",
+    "addExperience": "Tejribe goşuň",
+    "educationLabel": "Bilim",
+    "degreePlaceholder": "Dereje",
+    "universityPlaceholder": "Uniwersitetiň ady",
+    "degree": "Dereje",
+    "school": "Mekdep",
+    "placeholderDegree": "Kompýuter ylymlary boýunça bakalawr derejesi",
+    "placeholderSchool": "Tehnologiýa Uniwersiteti",
+    "placeholderLocationEdu": "Boston, MA",
+    "gpaPlaceholder": "GPA (isleg boýunça)",
+    "gpaOptional": "GPA (isleg boýunça)",
+    "placeholderGpa": "3.8/4.0",
+    "addEducation": "Bilim goşuň",
+    "certificationLabel": "Sertifikatlaşdyrma",
+    "certificationNamePlaceholder": "Sertifikat ady",
+    "issuerPlaceholder": "Çykaryjy",
+    "certificationName": "Sertifikatlaşdyrma ady",
+    "issuingOrganization": "Çykarýan gurama",
+    "dateObtained": "Alnan senesi",
+    "placeholderCertification": "AWS sertifikatlaşdyrylan çözgütler arhitektory",
+    "placeholderIssuer": "Amazon Web Hyzmatlary",
+    "addCertification": "Sertifikat goşuň",
+    "skillsPlaceholder": "JavaScript",
+    "addSkill": "Ukyp goşuň",
+    "beginner": "Başlangyç",
+    "intermediate": "Orta derejeli",
+    "advanced": "Ösen",
+    "expert": "Ekspert",
+    "placeholderEmailExample": "john.doe@email.com",
+    "placeholderPhoneExample": "+1 (555) 123-4567"
+  }
+}

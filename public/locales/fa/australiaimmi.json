@@ -1,0 +1,2072 @@
+{
+    "heroSection": {
+      "badge": "Exclusive Journeys",
+      "title": "Discover Your Next Adventure",
+      "description": "Experience breathtaking destinations and create unforgettable memories with our premium travel packages tailored to your desires.",
+      "currentlyViewing": "Currently Viewing",
+      "featuredAlt": "Featured destination",
+      "destinationCounter": "Destination {current}/{total}",
+      "controlsAria": "Go to destination {index}",
+      "buttons": {
+        "explore": "Explore Now",
+        "viewAll": "View All Destinations"
+      },
+      "compass": ["N", "E", "S", "W"],
+      "destinations": [
+        {
+          "img": "/images/Sydney.png",
+          "name": "Sydney",
+          "country": "Australia"
+        },
+        {
+          "img": "/images/Melbourne.png",
+          "name": "Melbourne",
+          "country": "Australia"
+        },
+        {
+          "img": "/images/Brisbane.png",
+          "name": "Brisbane",
+          "country": "Australia"
+        },
+        {
+          "img": "/images/Perth.png",
+          "name": "Perth",
+          "country": "Australia"
+        },
+        {
+          "img": "/images/Adelaide.png",
+          "name": "Adelaide",
+          "country": "Australia"
+        }
+      ]
+    },
+    
+        "tableOfContents": {
+          "header": {
+            "title": "Table of Contents",
+            "subtitle": "Navigate through sections"
+          },
+          "status": {
+            "currentlyReading": "Currently reading"
+          },
+          "footer": {
+            "sectionsCount": "{count} sections to explore"
+          },
+          "accessibility": {
+            "toggleMenu": "Toggle navigation menu"
+          },
+          "sections": [
+            {
+              "id": 1,
+              "title": "Facts About Turkey"
+            },
+            {
+              "id": 2,
+              "title": "Visa Options for Moving to Turkey"
+            },
+            {
+              "id": 3,
+              "title": "Requirements for Moving to Turkey"
+            },
+            {
+              "id": 4,
+              "title": "Getting a Job in Turkey as a Foreigner"
+            },
+            {
+              "id": 5,
+              "title": "Moving to Turkey from the US"
+            },
+            {
+              "id": 6,
+              "title": "Moving to Turkey from the UK"
+            },
+            {
+              "id": 7,
+              "title": "How much does it cost to move to Turkey?"
+            },
+            {
+              "id": 8,
+              "title": "Moving With Pets to Turkey"
+            }
+          ]
+        },
+        "australiaFacts": {
+    "description": "Explore the fascinating characteristics of Australia, a unique continent-country known for its remarkable landscape, wildlife, and cultural diversity.",
+    "navigation": {
+      "title": "Explore Facts",
+      "previous": "Previous Fact",
+      "next": "Next Fact"
+    },
+    "allFacts": {
+      "title": "All Facts About Australia"
+    },
+    "accessibility": {
+      "factButton": "View fact about {title}",
+      "previousFact": "Go to previous fact",
+      "nextFact": "Go to next fact"
+    },
+    "facts": [
+      {
+        "id": 1,
+        "title": "Island Continent",
+        "description": "Australia is both a country and a continent — the sixth-largest country in the world by land area.",
+        "emoji": "🌏"
+      },
+      {
+        "id": 2,
+        "title": "Unique Wildlife",
+        "description": "It's home to animals found nowhere else, like kangaroos, koalas, and the platypus.",
+        "emoji": "🦘"
+      },
+      {
+        "id": 3,
+        "title": "Great Barrier Reef",
+        "description": "Located off the Queensland coast, it's the world's largest coral reef system and can be seen from space.",
+        "emoji": "🌊"
+      },
+      {
+        "id": 4,
+        "title": "Multicultural Population",
+        "description": "Over 30% of Australians were born overseas, making it one of the most diverse countries globally.",
+        "emoji": "🌍"
+      },
+      {
+        "id": 5,
+        "title": "No Official Language",
+        "description": "While English is the de facto language, Australia has no official language by law.",
+        "emoji": "🗣️"
+      }
+    ],
+    "statistics": {
+      "title": "Australia by Numbers",
+      "items": [
+        {
+          "icon": "📏",
+          "label": "Total Area",
+          "value": "7.7 million km²",
+          "description": "World's 6th largest country"
+        },
+        {
+          "icon": "👥",
+          "label": "Population",
+          "value": "25.7 million",
+          "description": "As of 2023"
+        },
+        {
+          "icon": "🏙️",
+          "label": "Capital",
+          "value": "Canberra",
+          "description": "Not Sydney or Melbourne!"
+        },
+        {
+          "icon": "💰",
+          "label": "Currency",
+          "value": "Australian Dollar",
+          "description": "AUD"
+        },
+        {
+          "icon": "🕐",
+          "label": "Time Zones",
+          "value": "3 main zones",
+          "description": "AWST, ACST, AEST"
+        },
+        {
+          "icon": "🗺️",
+          "label": "States & Territories",
+          "value": "8 total",
+          "description": "6 states + 2 territories"
+        }
+      ]
+    },
+    "didYouKnow": {
+      "title": "Did You Know?",
+      "items": [
+        "Australia has more species of venomous snakes than any other country",
+        "The Great Barrier Reef is home to over <strong>1,500 species of fish</strong>",
+        "Melbourne was the capital of Australia from 1901-1927, before Canberra",
+        "Australia is the only country that is also a continent",
+        "The country has over <strong>10,000 beaches</strong> - you could visit one every day for 27 years!",
+        "Australia exports camels to Saudi Arabia (there are over 1 million wild camels in Australia)"
+      ]
+    }
+  },
+  
+    "movingCosts": {
+      "description": "The total cost to move to Australia varies based on your situation, but here's a general breakdown of expenses you'll encounter when relocating down under.",
+      "costSections": [
+        {
+          "id": "flights",
+          "icon": "✈️",
+          "title": "Flights",
+          "amount": "$800–$2,000 USD",
+          "details": "One-way, economy class, depending on origin and season",
+          "color": "bg-sky-500"
+        },
+        {
+          "id": "visa-fees",
+          "icon": "🛂",
+          "title": "Visa Fees",
+          "amount": "$710–$8,850 AUD",
+          "details": "Varies widely depending on visa type",
+          "color": "bg-sky-600",
+          "subItems": [
+            {
+              "title": "Skilled visa",
+              "amount": "$4,000–$4,500 AUD"
+            },
+            {
+              "title": "Partner visa",
+              "amount": "$8,850 AUD"
+            },
+            {
+              "title": "Student visa",
+              "amount": "$710 AUD"
+            },
+            {
+              "title": "Working Holiday visa",
+              "amount": "$495 AUD"
+            }
+          ]
+        },
+        {
+          "id": "shipping",
+          "icon": "📦",
+          "title": "Shipping Belongings",
+          "amount": "$2,000–$7,000 USD",
+          "details": "Depending on container size and distance",
+          "color": "bg-sky-700"
+        },
+        {
+          "id": "housing",
+          "icon": "🏠",
+          "title": "Initial Housing",
+          "amount": "$1,500–$3,000 AUD",
+          "details": "Rent deposit + 1 month rent for a modest apartment",
+          "color": "bg-sky-500",
+          "subItems": [
+            {
+              "title": "Sydney/Melbourne (monthly)",
+              "amount": "$1,800–$2,500 AUD"
+            },
+            {
+              "title": "Brisbane/Perth (monthly)",
+              "amount": "$1,500–$2,000 AUD"
+            },
+            {
+              "title": "Regional areas (monthly)",
+              "amount": "$1,000–$1,500 AUD"
+            }
+          ]
+        },
+        {
+          "id": "other-costs",
+          "icon": "🧾",
+          "title": "Other Costs",
+          "amount": "$500–$1,500 USD",
+          "details": "Health checks, insurance, document translation, etc.",
+          "color": "bg-sky-600",
+          "subItems": [
+            {
+              "title": "Health insurance",
+              "amount": "$100–$200 AUD/month"
+            },
+            {
+              "title": "Document translation",
+              "amount": "$50–$200 AUD"
+            },
+            {
+              "title": "Transport setup",
+              "amount": "$200–$500 AUD"
+            },
+            {
+              "title": "Initial groceries & supplies",
+              "amount": "$200–$400 AUD"
+            }
+          ]
+        }
+      ],
+      "totalCost": {
+        "title": "Estimated Total (Single Person)",
+        "approaches": [
+          {
+            "title": "Budget Approach",
+            "amount": "$8,000–$12,000 USD",
+            "description": "Minimal shipping, cheaper city, working holiday or student visa"
+          },
+          {
+            "title": "Comprehensive Move",
+            "amount": "$15,000–$20,000 USD",
+            "description": "Full shipping, major city, skilled or partner visa"
+          }
+        ]
+      },
+      "savingTips": {
+        "title": "Money-Saving Tips",
+        "tips": [
+          {
+            "title": "Consider Regional Areas",
+            "description": "Living outside major cities like Sydney and Melbourne can save 30-40% on housing costs."
+          },
+          {
+            "title": "Sell Before Shipping",
+            "description": "Shipping costs are high—consider selling bulky furniture and buying in Australia."
+          },
+          {
+            "title": "Book Flights Strategically",
+            "description": "Fly during shoulder season (May or October) to save up to 30% on airfare."
+          },
+          {
+            "title": "Working Holiday First",
+            "description": "If eligible, start with a Working Holiday visa before applying for more expensive visas."
+          }
+        ]
+      },
+      "additionalConsiderations": {
+        "title": "Additional Considerations",
+        "items": [
+          {
+            "label": "Currency fluctuations",
+            "description": "Exchange rates between your home currency, AUD, and USD can significantly impact your total costs."
+          },
+          {
+            "label": "Family size",
+            "description": "Add approximately 30-50% more to the total estimate for each additional family member."
+          },
+          {
+            "label": "Pets",
+            "description": "Bringing pets to Australia can cost $2,000-$4,000 per animal due to strict quarantine requirements."
+          },
+          {
+            "label": "Job search period",
+            "description": "Budget for 1-3 months of living expenses while job hunting if you don't have secured employment."
+          }
+        ]
+      },
+      "calculator": {
+        "title": "Cost Planning Factors",
+        "description": "Consider these key factors when planning your moving budget:",
+        "factors": [
+          {
+            "icon": "📍",
+            "title": "Destination City",
+            "description": "Sydney & Melbourne are 40-50% more expensive than regional areas",
+            "impact": "High impact on costs"
+          },
+          {
+            "icon": "👨‍👩‍👧‍👦",
+            "title": "Family Size",
+            "description": "Each additional person adds 30-50% to total costs",
+            "impact": "Major cost factor"
+          },
+          {
+            "icon": "⏰",
+            "title": "Timeline",
+            "description": "Rushed moves cost 20-30% more than planned relocations",
+            "impact": "Moderate impact"
+          }
+        ]
+      },
+      "timeline": {
+        "title": "Moving Cost Timeline",
+        "phases": [
+          {
+            "timeframe": "12-18 months before",
+            "title": "Initial Planning & Visa Application",
+            "description": "Research, visa application, skill assessments",
+            "estimatedCost": "$2,000-$5,000 AUD"
+          },
+          {
+            "timeframe": "6-12 months before",
+            "title": "Documentation & Preparation",
+            "description": "Health checks, police clearances, document translations",
+            "estimatedCost": "$500-$1,500 AUD"
+          },
+          {
+            "timeframe": "3-6 months before",
+            "title": "Logistics & Bookings",
+            "description": "Flight bookings, shipping arrangements, temporary accommodation",
+            "estimatedCost": "$3,000-$8,000 USD"
+          },
+          {
+            "timeframe": "1-3 months before",
+            "title": "Final Preparations",
+            "description": "Insurance, final payments, last-minute arrangements",
+            "estimatedCost": "$1,000-$3,000 AUD"
+          },
+          {
+            "timeframe": "Upon arrival",
+            "title": "Settlement Costs",
+            "description": "Housing deposit, initial purchases, transport setup",
+            "estimatedCost": "$2,000-$5,000 AUD"
+          }
+        ]
+      },
+      "conclusion": "While moving to Australia represents a significant investment, many expats find the high quality of life, strong economy, and beautiful environment well worth the cost. Proper planning and budgeting will help ensure a smooth transition to your new life down under."
+    },
+    
+        "jobGuide": {
+          "subtitle": "A Complete Guide",
+          "description": "Australia offers many opportunities for skilled foreign workers, but securing a job involves preparation and meeting visa and employer requirements.",
+          "navigation": {
+            "title": "Guide Contents"
+          },
+          "accessibility": {
+            "sectionButton": "View section about {title}"
+          },
+          "sections": [
+            {
+              "id": "right-to-work",
+              "icon": "✅",
+              "title": "1. Right to Work",
+              "content": {
+                "description": "You need a valid work visa. Common options:",
+                "visaOptions": [
+                  "<strong>Temporary Skill Shortage (TSS) Visa (subclass 482)</strong>",
+                  "<strong>Skilled Independent Visa (subclass 189)</strong>",
+                  "<strong>Working Holiday Visa (subclass 417/462)</strong> – for young adults (18–30/35 years)"
+                ],
+                "conclusion": "Each visa has different requirements, durations, and conditions. Make sure to research the one that best fits your situation."
+              }
+            },
+            {
+              "id": "skills-qualifications",
+              "icon": "🧠",
+              "title": "2. Skills & Qualifications",
+              "content": {
+                "requirements": [
+                  "Your profession must be on Australia's <strong>Skilled Occupation List (SOL)</strong>",
+                  "Have your <strong>qualifications recognized</strong> by an Australian authority",
+                  "English language proficiency (IELTS, PTE, etc.) may be required"
+                ],
+                "popularFields": {
+                  "title": "Popular Fields for Foreign Workers:",
+                  "fields": [
+                    {
+                      "title": "Healthcare",
+                      "description": "Doctors, nurses, aged care workers"
+                    },
+                    {
+                      "title": "IT & Technology",
+                      "description": "Software developers, cybersecurity experts"
+                    },
+                    {
+                      "title": "Engineering",
+                      "description": "Civil, mechanical, electrical engineers"
+                    },
+                    {
+                      "title": "Skilled Trades",
+                      "description": "Electricians, plumbers, carpenters"
+                    }
+                  ]
+                }
+              }
+            },
+            {
+              "id": "job-search",
+              "icon": "💻",
+              "title": "3. Job Search Tips",
+              "content": {
+                "description": "Finding a job in Australia requires a strategic approach:",
+                "jobPortals": {
+                  "title": "Top Job Portals:",
+                  "portals": [
+                    "Seek",
+                    "Indeed Australia",
+                    "LinkedIn",
+                    "CareerOne",
+                    "Jora",
+                    "Ethical Jobs"
+                  ]
+                },
+                "proTips": {
+                  "title": "Pro Tips:",
+                  "tips": [
+                    "Use platforms like <strong>Seek</strong>, <strong>Indeed Australia</strong>, and <strong>LinkedIn</strong>",
+                    "Apply directly to companies or via recruitment agencies",
+                    "Tailor your resume to Australian standards",
+                    "Network with professionals in your industry",
+                    "Consider regional areas with skills shortages for better opportunities"
+                  ]
+                }
+              }
+            },
+            {
+              "id": "sponsorship",
+              "icon": "🤝",
+              "title": "4. Sponsorship",
+              "content": {
+                "description": "Some employers sponsor skilled workers — especially in healthcare, IT, engineering, and trades. Sponsorship helps you get a visa.",
+                "types": [
+                  {
+                    "title": "Employer Nomination Scheme:",
+                    "points": [
+                      "Employers can nominate you for permanent residency",
+                      "You must meet skills and qualification requirements",
+                      "Usually requires at least 3 years of work experience"
+                    ]
+                  },
+                  {
+                    "title": "TSS Visa Sponsorship:",
+                    "points": [
+                      "Temporary position for 2-4 years",
+                      "Can lead to permanent residency",
+                      "Employer must prove they can't find local talent"
+                    ]
+                  }
+                ]
+              }
+            },
+            {
+              "id": "documents",
+              "icon": "📄",
+              "title": "5. Documents Needed",
+              "content": {
+                "requiredDocuments": [
+                  "Resume (CV)",
+                  "Cover letter",
+                  "Qualifications",
+                  "References",
+                  "Visa/work rights confirmation"
+                ],
+                "resumeTips": {
+                  "title": "Australian Resume Tips:",
+                  "tips": [
+                    "Keep it concise (2-3 pages maximum)",
+                    "Include a professional summary",
+                    "Focus on achievements, not just responsibilities",
+                    "No photo required (unlike some European countries)",
+                    "List referees or state \"References available upon request\""
+                  ]
+                }
+              }
+            },
+            {
+              "id": "australian-workplace",
+              "icon": "🏢",
+              "title": "6. Understanding Australian Workplace Culture",
+              "content": {
+                "description": "Australian workplace culture has some unique characteristics:",
+                "characteristics": [
+                  "<strong>Casual yet professional</strong> - Australians are generally informal but take work seriously",
+                  "<strong>Work-life balance</strong> - Most employers respect personal time and offer flexible arrangements",
+                  "<strong>Direct communication</strong> - Australians tend to be straightforward in their communication",
+                  "<strong>Team-oriented</strong> - Collaboration and teamwork are highly valued",
+                  "<strong>\"Tall poppy syndrome\"</strong> - Excessive self-promotion may be viewed negatively"
+                ]
+              }
+            },
+            {
+              "id": "salary-expectations",
+              "icon": "💰",
+              "title": "7. Salary Expectations & Working Conditions",
+              "content": {
+                "description": "Australia has a high standard of living and competitive salaries.",
+                "keyFactsIntro": "Key facts:",
+                "keyFacts": [
+                  "Minimum wage is among the highest in the world",
+                  "Standard work week is 38 hours",
+                  "4 weeks annual leave is standard",
+                  "10 days paid personal/sick leave",
+                  "Superannuation (retirement) contribution from employers (currently 11%)"
+                ],
+                "conclusion": "Research industry standards for your profession to understand competitive salary ranges."
+              }
+            }
+          ],
+          "successStories": {
+            "title": "Success Stories",
+            "stories": [
+              {
+                "flag": "🇮🇳",
+                "profession": "Software Engineer",
+                "origin": "From Mumbai to Melbourne",
+                "story": "Secured a job with a tech startup within 3 months of arrival on a skilled visa.",
+                "outcome": "Now earning AUD 95,000 annually"
+              },
+              {
+                "flag": "🇵🇭",
+                "profession": "Registered Nurse",
+                "origin": "From Manila to Sydney",
+                "story": "Got sponsored by a hospital after working on a Working Holiday visa.",
+                "outcome": "Permanent residency granted in 18 months"
+              },
+              {
+                "flag": "🇬🇧",
+                "profession": "Trade Electrician",
+                "origin": "From London to Perth",
+                "story": "Found work through online job portals and networking with local tradies.",
+                "outcome": "Started own electrical business within 2 years"
+              },
+              {
+                "flag": "🇩🇪",
+                "profession": "Civil Engineer",
+                "origin": "From Berlin to Brisbane",
+                "story": "Qualification recognition took 6 months, but secured role with major construction firm.",
+                "outcome": "Managing infrastructure projects worth AUD 50M+"
+              }
+            ]
+          },
+          "industryInsights": {
+            "title": "Industry Job Market Insights",
+            "insights": [
+              {
+                "category": "Healthcare",
+                "metric": "Job Growth",
+                "value": "+15.2%",
+                "description": "Projected growth over next 5 years"
+              },
+              {
+                "category": "Technology",
+                "metric": "Average Salary",
+                "value": "AUD 95,000",
+                "description": "For skilled professionals"
+              },
+              {
+                "category": "Skilled Trades",
+                "metric": "Skills Shortage",
+                "value": "Critical",
+                "description": "High demand across all states"
+              }
+            ]
+          },
+          "checklist": {
+            "title": "Final Checklist for Getting a Job in Australia",
+            "items": [
+              "Check if your occupation is on the Skilled Occupation List",
+              "Get your qualifications assessed by the relevant Australian authority",
+              "Take an English proficiency test if required",
+              "Update your resume to Australian format",
+              "Research visa requirements and application processes"
+            ]
+          },
+          "conclusion": {
+            "title": "Ready to Work in Australia?",
+            "description": "With proper preparation and the right qualifications, finding employment in Australia as a foreigner is achievable. The country's strong economy, high quality of life, and multicultural environment make it an attractive destination for professionals seeking international experience and career growth."
+          }
+        },
+        
+            "usToAustraliaGuide": {
+              "subtitle": "Everything You Need to Know",
+              "description": "Many Americans move to Australia for work, study, or a change in lifestyle. While the cultures are similar, there are important legal and practical steps to consider.",
+              "navigation": {
+                "title": "Quick Navigation"
+              },
+              "accessibility": {
+                "sectionButton": "Navigate to {title} section"
+              },
+              "sections": [
+                {
+                  "id": "why-australia",
+                  "icon": "📌",
+                  "title": "Why Move to Australia?",
+                  "content": {
+                    "description": "Americans are drawn to Australia for many reasons:",
+                    "reasons": [
+                      "High quality of life",
+                      "Strong economy and job opportunities",
+                      "Universal healthcare system (Medicare)",
+                      "Beautiful beaches and outdoor lifestyle",
+                      "Cultural similarities with American lifestyle"
+                    ],
+                    "conclusion": "Whether you're moving for career advancement, education, or a change in lifestyle, Australia offers an English-speaking environment with many familiar comforts of home."
+                  }
+                },
+                {
+                  "id": "visa-options",
+                  "icon": "✈️",
+                  "title": "Visa Options for US Citizens",
+                  "content": {
+                    "description": "Americans <strong>must obtain a visa</strong> before moving to Australia. Common types include:",
+                    "visaTypes": [
+                      {
+                        "title": "Skilled Independent Visa (subclass 189)",
+                        "points": [
+                          "For professionals in high-demand fields",
+                          "Points-based system evaluating age, skills, education, and experience",
+                          "Permanent residency pathway",
+                          "No sponsor needed"
+                        ]
+                      },
+                      {
+                        "title": "Employer-Sponsored Visa (subclass 482)",
+                        "points": [
+                          "Requires a job offer from an Australian employer",
+                          "Temporary (2-4 years) with potential pathway to permanent residency",
+                          "Employer must sponsor you"
+                        ]
+                      },
+                      {
+                        "title": "Partner/Spouse Visa",
+                        "points": [
+                          "For those joining an Australian partner",
+                          "Includes options for married partners or de facto relationships",
+                          "Leads to permanent residency"
+                        ]
+                      },
+                      {
+                        "title": "Student Visa (subclass 500)",
+                        "points": [
+                          "For studying at Australian institutions",
+                          "Allows limited work hours while studying",
+                          "Potential pathway to post-graduation work visas"
+                        ]
+                      },
+                      {
+                        "title": "Working Holiday Visa (subclass 462)",
+                        "description": "Available for Americans aged 18-30, allowing up to 12 months of work and travel in Australia"
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "required-documents",
+                  "icon": "🛂",
+                  "title": "Key Requirements",
+                  "content": {
+                    "description": "When applying for an Australian visa, you'll typically need:",
+                    "requirements": [
+                      "Valid passport",
+                      "English proficiency proof (for certain visas)",
+                      "Health checks and police clearance",
+                      "Skills/education assessment (for skilled visas)",
+                      "Proof of funds (for student and temporary visas)",
+                      "Biometric data",
+                      "Completed visa application forms"
+                    ],
+                    "note": "The specific requirements vary by visa type, so always check the Australian Department of Home Affairs website for the most up-to-date information."
+                  }
+                },
+                {
+                  "id": "popular-cities",
+                  "icon": "🏙️",
+                  "title": "Where Do Most Americans Live in Australia?",
+                  "content": {
+                    "description": "Americans tend to settle in these popular Australian cities:",
+                    "cities": [
+                      {
+                        "name": "Sydney",
+                        "icon": "🌊",
+                        "highlights": [
+                          "Australia's largest city with iconic landmarks",
+                          "Strong finance, tech, and creative industries",
+                          "Beautiful beaches and harbor lifestyle"
+                        ]
+                      },
+                      {
+                        "name": "Melbourne",
+                        "icon": "🎭",
+                        "highlights": [
+                          "Cultural capital with thriving arts scene",
+                          "Consistently ranked among world's most livable cities",
+                          "Great food, coffee, and sporting events"
+                        ]
+                      },
+                      {
+                        "name": "Brisbane",
+                        "icon": "☀️",
+                        "highlights": [
+                          "Sunny, subtropical climate",
+                          "More affordable than Sydney or Melbourne",
+                          "Relaxed lifestyle with growing job market"
+                        ]
+                      },
+                      {
+                        "name": "Perth",
+                        "icon": "🌄",
+                        "highlights": [
+                          "Isolated but vibrant city on the west coast",
+                          "Strong mining and resources sector",
+                          "Beautiful beaches and Mediterranean climate"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "cost-of-living",
+                  "icon": "💰",
+                  "title": "Cost of Moving & Living",
+                  "content": {
+                    "description": "Initial costs can range from <strong>$5,000–$15,000 USD</strong>, depending on flights, shipping, visa fees, and housing.",
+                    "conclusion": "The cost of living in Australia is comparable to major US cities, though healthcare costs are generally lower thanks to the Medicare system."
+                  }
+                },
+                {
+                  "id": "healthcare",
+                  "icon": "🩺",
+                  "title": "Healthcare in Australia",
+                  "content": {
+                    "paragraphs": [
+                      {
+                        "type": "text",
+                        "content": "Australia has a universal healthcare system called Medicare, which provides access to free or subsidized medical care."
+                      },
+                      {
+                        "type": "list",
+                        "intro": "As a permanent resident or citizen, you'll receive a Medicare card that covers:",
+                        "items": [
+                          "Free treatment in public hospitals",
+                          "Subsidized doctor visits",
+                          "Most prescription medications at reduced costs"
+                        ]
+                      },
+                      {
+                        "type": "text",
+                        "content": "Many Australians also purchase private health insurance for additional coverage, shorter wait times, and private hospital treatment."
+                      },
+                      {
+                        "type": "text",
+                        "content": "Temporary visa holders generally need to arrange private health insurance as a condition of their visa."
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "lifestyle",
+                  "icon": "🏡",
+                  "title": "Lifestyle Differences",
+                  "content": {
+                    "differences": [
+                      "<strong>High quality of life, public healthcare (Medicare), and strong worker rights</strong>",
+                      "<strong>Cost of living can be high in major cities</strong> like Sydney or Melbourne",
+                      "Driving is on the <strong>left side</strong> of the road",
+                      "More annual leave (4 weeks is standard) and better work-life balance",
+                      "Metric system used for all measurements",
+                      "Different school calendar (year typically runs February to December)",
+                      "Stronger coffee culture and unique food scene"
+                    ],
+                    "note": "While the cultures are similar, Americans often note differences in slang, humor, and the more relaxed Australian attitude toward work and life."
+                  }
+                },
+                {
+                  "id": "moving",
+                  "icon": "📦",
+                  "title": "Moving & Shipping from the US",
+                  "content": {
+                    "sections": [
+                      {
+                        "title": "Shipping Options:",
+                        "items": [
+                          "<strong>Sea freight:</strong> Most economical for large shipments ($3,000-$7,000 for a small apartment)",
+                          "<strong>Air freight:</strong> Faster but more expensive ($1,500-$3,000 for essential items)",
+                          "<strong>Shipping containers:</strong> 20ft or 40ft options depending on how much you're bringing"
+                        ]
+                      },
+                      {
+                        "title": "Important Considerations:",
+                        "items": [
+                          "Australia has strict biosecurity laws - thoroughly clean items before shipping",
+                          "Electrical appliances need adapters (Australia uses 230V with type I plugs)",
+                          "Consider selling large furniture and buying new in Australia",
+                          "Pet import requires preparation months in advance (vaccines, microchips, permits)"
+                        ]
+                      }
+                    ]
+                  }
+                },
+                {
+                  "id": "banking",
+                  "icon": "🏦",
+                  "title": "Banking & Finances",
+                  "content": {
+                    "intro": "Setting up your finances in Australia:",
+                    "points": [
+                      "You can open an Australian bank account up to 3 months before arriving",
+                      "Major banks include Commonwealth Bank, ANZ, Westpac, and NAB",
+                      "You'll need your passport, visa documentation, and proof of address",
+                      "Consider international money transfer services like Wise for converting USD to AUD",
+                      "The Australian tax year runs July 1 to June 30",
+                      "You'll need a Tax File Number (TFN) to work legally"
+                    ],
+                    "conclusion": "Currency: Australian Dollar (AUD). Credit cards are widely accepted, and contactless payment is very common."
+                  }
+                }
+              ],
+              "costComparison": {
+                "headers": {
+                  "expense": "Expense",
+                  "australia": "Australia (avg.)",
+                  "usa": "USA (avg.)"
+                },
+                "rows": [
+                  {
+                    "expense": "Rent (1BR city center)",
+                    "australia": "$1,200–$1,800/month",
+                    "usa": "$1,500–$2,000"
+                  },
+                  {
+                    "expense": "Utilities (monthly)",
+                    "australia": "$150–$200",
+                    "usa": "$150–$200"
+                  },
+                  {
+                    "expense": "Dining out (for 2)",
+                    "australia": "$60–$100",
+                    "usa": "$50–$100"
+                  },
+                  {
+                    "expense": "Transportation",
+                    "australia": "$100–$150/month",
+                    "usa": "$70–$150"
+                  }
+                ]
+              },
+              "stateComparison": {
+                "title": "US States vs Australian States",
+                "comparisons": [
+                  {
+                    "ausIcon": "🦘",
+                    "usIcon": "🗽",
+                    "comparison": "NSW vs New York",
+                    "description": "Similar population density and urban lifestyle"
+                  },
+                  {
+                    "ausIcon": "☕",
+                    "usIcon": "🌉",
+                    "comparison": "Victoria vs California",
+                    "description": "Cultural hubs with diverse populations"
+                  },
+                  {
+                    "ausIcon": "🌴",
+                    "usIcon": "🌴",
+                    "comparison": "Queensland vs Florida",
+                    "description": "Tropical climates and tourism industries"
+                  },
+                  {
+                    "ausIcon": "⛏️",
+                    "usIcon": "🤠",
+                    "comparison": "WA vs Texas",
+                    "description": "Resource-rich states with mining economies"
+                  },
+                  {
+                    "ausIcon": "🍷",
+                    "usIcon": "🍷",
+                    "comparison": "SA vs Napa Valley",
+                    "description": "Wine regions with Mediterranean climates"
+                  },
+                  {
+                    "ausIcon": "🏔️",
+                    "usIcon": "🏔️",
+                    "comparison": "Tasmania vs Vermont",
+                    "description": "Cooler climates and natural beauty"
+                  }
+                ]
+              },
+              "timeline": {
+                "title": "Moving Timeline: 12 Months Before Departure",
+                "phases": [
+                  {
+                    "timeframe": "12 months before",
+                    "title": "Research & Planning",
+                    "description": "Research visa options, assess qualifications, start skill assessments if needed"
+                  },
+                  {
+                    "timeframe": "9-10 months before",
+                    "title": "Visa Application",
+                    "description": "Submit visa application, gather required documents, complete health checks"
+                  },
+                  {
+                    "timeframe": "6-8 months before",
+                    "title": "Job Hunting & Preparation",
+                    "description": "Start job applications, network with Australian professionals, research cities"
+                  },
+                  {
+                    "timeframe": "3-4 months before",
+                    "title": "Logistics Planning",
+                    "description": "Book flights, arrange shipping, secure temporary accommodation"
+                  },
+                  {
+                    "timeframe": "1-2 months before",
+                    "title": "Final Preparations",
+                    "description": "Open Australian bank account, arrange insurance, finalize moving details"
+                  },
+                  {
+                    "timeframe": "Upon arrival",
+                    "title": "Settlement",
+                    "description": "Apply for TFN and Medicare, find permanent housing, register for local services"
+                  }
+                ]
+              },
+              "checklist": {
+                "title": "Final Checklist for Americans Moving to Australia",
+                "items": [
+                  "Research and apply for appropriate visa",
+                  "Get health checks and police clearance",
+                  "Arrange shipping or storage of belongings",
+                  "Open an Australian bank account",
+                  "Secure accommodation (temporary or permanent)",
+                  "Arrange health insurance coverage",
+                  "Apply for a Tax File Number (TFN) and Medicare card (if eligible)"
+                ]
+              },
+              "conclusion": {
+                "title": "Conclusion: Is Moving to Australia from the US Worth It?",
+                "description": "For many Americans, Australia offers an attractive balance of familiar culture and new experiences, with excellent quality of life, strong worker protections, and beautiful natural environments. While the move requires careful planning and significant upfront costs, many expats find the transition rewarding, with better work-life balance and new opportunities."
+              }
+            },
+            
+                "australiaRequirements": {
+                  "description": "If you're planning to move to Australia, here are the key requirements you must meet:",
+                  "navigation": {
+                    "title": "Quick Navigation",
+                    "expandAll": "Expand All",
+                    "collapseAll": "Collapse All"
+                  },
+                  "accessibility": {
+                    "sectionButton": "Toggle {title} section"
+                  },
+                  "sections": [
+                    {
+                      "id": "visa",
+                      "icon": "🛂",
+                      "title": "Valid Visa",
+                      "shortTitle": "Visa",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "text": "You must apply for and obtain an appropriate visa before entering Australia — such as a skilled, student, partner, or sponsored work visa."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "health-character",
+                      "icon": "🔍",
+                      "title": "Health & Character Checks",
+                      "shortTitle": "Health Check",
+                      "content": [
+                        {
+                          "type": "list",
+                          "items": [
+                            "<strong>Medical examination</strong> may be required depending on your visa.",
+                            "<strong>Police clearance</strong> from countries you've lived in for 12+ months in the past 10 years.",
+                            "You must not have a serious criminal record."
+                          ]
+                        }
+                      ]
+                    },
+                    {
+                      "id": "funds",
+                      "icon": "💵",
+                      "title": "Proof of Funds",
+                      "shortTitle": "Funds",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "text": "Some visa types (e.g., student or skilled visas) require evidence that you can support yourself financially upon arrival."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "english",
+                      "icon": "🗣️",
+                      "title": "English Proficiency",
+                      "shortTitle": "English",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "text": "Most visas require proof of English skills (IELTS, TOEFL, or equivalent) — especially for skilled and student visas."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "skills",
+                      "icon": "📋",
+                      "title": "Skills Assessment",
+                      "shortTitle": "Skills",
+                      "content": [
+                        {
+                          "type": "paragraph",
+                          "text": "For skilled migration visas, you must get your qualifications assessed by an Australian authority relevant to your profession."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "travel",
+                      "icon": "✈️",
+                      "title": "Travel Documents",
+                      "shortTitle": "Documents",
+                      "content": [
+                        {
+                          "type": "list",
+                          "items": [
+                            "A valid passport",
+                            "Travel insurance (recommended)"
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "additionalRequirements": {
+                    "title": "Additional Requirements by Visa Type",
+                    "items": [
+                      {
+                        "icon": "🎓",
+                        "title": "Student Visas",
+                        "description": "Confirmation of Enrollment (CoE), Overseas Student Health Cover (OSHC), genuine temporary entrant criteria",
+                        "note": "Must maintain full-time study"
+                      },
+                      {
+                        "icon": "💼",
+                        "title": "Work Visas",
+                        "description": "Job offer from approved employer, relevant work experience, occupation on skilled list",
+                        "note": "Employer sponsorship required"
+                      },
+                      {
+                        "icon": "👨‍👩‍👧‍👦",
+                        "title": "Family Visas",
+                        "description": "Relationship evidence, sponsor requirements, financial support commitments",
+                        "note": "Processing times vary"
+                      },
+                      {
+                        "icon": "🏠",
+                        "title": "Investor Visas",
+                        "description": "Minimum investment thresholds, business experience, state nomination",
+                        "note": "High financial requirements"
+                      }
+                    ]
+                  },
+                  "visaTypes": {
+                    "title": "Common Visa Types Quick Reference",
+                    "types": [
+                      {
+                        "icon": "🎯",
+                        "name": "Skilled Independent (189)",
+                        "description": "Points-based permanent visa",
+                        "duration": "Permanent",
+                        "difficulty": "High"
+                      },
+                      {
+                        "icon": "🤝",
+                        "name": "Employer Sponsored (482)",
+                        "description": "Temporary work visa with sponsorship",
+                        "duration": "2-4 years",
+                        "difficulty": "Medium"
+                      },
+                      {
+                        "icon": "🎓",
+                        "name": "Student (500)",
+                        "description": "Study at Australian institutions",
+                        "duration": "Study period",
+                        "difficulty": "Low"
+                      },
+                      {
+                        "icon": "💑",
+                        "name": "Partner (820/801)",
+                        "description": "For spouses/de facto partners",
+                        "duration": "Permanent",
+                        "difficulty": "Medium"
+                      },
+                      {
+                        "icon": "🌟",
+                        "name": "Working Holiday (417)",
+                        "description": "Work and travel for young people",
+                        "duration": "1 year",
+                        "difficulty": "Low"
+                      },
+                      {
+                        "icon": "💰",
+                        "name": "Business Innovation (188)",
+                        "description": "For entrepreneurs and investors",
+                        "duration": "4 years",
+                        "difficulty": "High"
+                      }
+                    ]
+                  },
+                  "tips": {
+                    "title": "Important Tips",
+                    "items": [
+                      "Start your visa application process early as some visas can take several months to process",
+                      "Keep all your important documents organized and digitally backed up",
+                      "Research the specific requirements for your visa type on the Australian Department of Home Affairs website",
+                      "Consider getting professional migration advice for complex cases",
+                      "Check processing times regularly as they can change",
+                      "Ensure all documents are translated and certified if not in English"
+                    ]
+                  },
+                  "summary": {
+                    "title": "Quick Checklist",
+                    "description": "Remember these essential requirements for a successful Australian visa application:",
+                    "keyPoints": [
+                      "Valid passport (6+ months)",
+                      "Appropriate visa application",
+                      "Health and character checks",
+                      "English proficiency proof",
+                      "Financial evidence",
+                      "Skills assessment (if required)",
+                      "Travel insurance",
+                      "All documents certified"
+                    ]
+                  }
+                },
+                
+                    "australiaVisaGuide": {
+                      "description": "If you're planning to move to Australia, you'll need the right visa. Here are the most common options based on your purpose of stay:",
+                      "labels": {
+                        "idealFor": "Ideal for",
+                        "duration": "Duration",
+                        "pathway": "Pathway",
+                        "visaTypes": "Visa Types",
+                        "requirements": "Requirements",
+                        "benefits": "Benefits",
+                        "processingTime": "Processing Time"
+                      },
+                      "controls": {
+                        "expandAll": "Expand All",
+                        "collapseAll": "Collapse All"
+                      },
+                      "compare": {
+                        "enable": "Compare Visas",
+                        "exit": "Exit Compare Mode",
+                        "select": "Select",
+                        "selected": "Selected",
+                        "table": {
+                          "title": "Visa Comparison",
+                          "headers": {
+                            "type": "Visa Type",
+                            "duration": "Duration",
+                            "pathway": "Pathway",
+                            "idealFor": "Ideal For"
+                          }
+                        }
+                      },
+                      "visas": [
+                        {
+                          "id": "skilled-migration",
+                          "icon": "🎯",
+                          "title": "Skilled Migration Visas",
+                          "category": "Professional Visas",
+                          "idealFor": "Professionals with in-demand skills",
+                          "duration": "Permanent",
+                          "pathway": "Permanent",
+                          "visaTypes": [
+                            {
+                              "name": "Skilled Independent Visa",
+                              "subclass": "189",
+                              "description": "Points-based; no job offer needed"
+                            },
+                            {
+                              "name": "Skilled Nominated Visa",
+                              "subclass": "190",
+                              "description": "Requires nomination by an Australian state or territory"
+                            },
+                            {
+                              "name": "Skilled Work Regional Visa",
+                              "subclass": "491",
+                              "description": "For living and working in regional Australia; state or family sponsorship needed"
+                            }
+                          ],
+                          "requirements": [
+                            "Skills assessment for nominated occupation",
+                            "English language proficiency",
+                            "Age under 45 years",
+                            "Meet points test threshold (currently 65 points)",
+                            "Health and character requirements"
+                          ],
+                          "benefits": [
+                            "Permanent residency pathway",
+                            "Work and study anywhere in Australia",
+                            "Access to Medicare",
+                            "Pathway to citizenship after 4 years"
+                          ],
+                          "processingTime": "8-12 months for most applications"
+                        },
+                        {
+                          "id": "employer-sponsored",
+                          "icon": "🤝",
+                          "title": "Employer-Sponsored Visas",
+                          "category": "Work Visas",
+                          "idealFor": "People with a job offer from an Australian employer",
+                          "duration": "2-4 years",
+                          "pathway": "Temporary to Permanent",
+                          "visaTypes": [
+                            {
+                              "name": "Temporary Skill Shortage Visa",
+                              "subclass": "482",
+                              "description": "Requires sponsorship and is valid for 2–4 years"
+                            },
+                            {
+                              "name": "Employer Nomination Scheme",
+                              "subclass": "186",
+                              "description": "Permanent visa for skilled workers nominated by an approved employer"
+                            }
+                          ],
+                          "requirements": [
+                            "Job offer from approved Australian employer",
+                            "Relevant skills and qualifications",
+                            "English language proficiency",
+                            "Health and character requirements",
+                            "Occupation on relevant skilled occupation list"
+                          ],
+                          "benefits": [
+                            "Direct pathway to work in Australia",
+                            "Family members can accompany",
+                            "Pathway to permanent residency",
+                            "No points test required"
+                          ],
+                          "processingTime": "3-6 months for TSS, 8-12 months for ENS"
+                        },
+                        {
+                          "id": "student",
+                          "icon": "🎓",
+                          "title": "Student Visa",
+                          "category": "Education Visa",
+                          "idealFor": "Those enrolled in an Australian educational institution",
+                          "duration": "Study period + 1-4 years",
+                          "pathway": "Temporary",
+                          "visaTypes": [
+                            {
+                              "name": "Student Visa",
+                              "subclass": "500",
+                              "description": "For studying at Australian institutions. Allows part-time work while studying"
+                            }
+                          ],
+                          "requirements": [
+                            "Confirmation of Enrollment (CoE)",
+                            "Genuine Temporary Entrant (GTE) requirement",
+                            "English language proficiency",
+                            "Financial capacity",
+                            "Overseas Student Health Cover (OSHC)"
+                          ],
+                          "benefits": [
+                            "Study at world-class institutions",
+                            "Work up to 48 hours per fortnight",
+                            "Pathway to post-graduation work visas",
+                            "Experience Australian culture"
+                          ],
+                          "processingTime": "4-8 weeks for most applications"
+                        },
+                        {
+                          "id": "family-partner",
+                          "icon": "👨‍👩‍👧‍👦",
+                          "title": "Family & Partner Visas",
+                          "category": "Family Visas",
+                          "idealFor": "Those with family or a partner in Australia",
+                          "duration": "Permanent",
+                          "pathway": "Permanent",
+                          "visaTypes": [
+                            {
+                              "name": "Partner Visa (Onshore)",
+                              "subclass": "820/801",
+                              "description": "For spouses or de facto partners of Australian citizens or permanent residents"
+                            },
+                            {
+                              "name": "Partner Visa (Offshore)",
+                              "subclass": "309/100",
+                              "description": "For spouses or de facto partners applying from outside Australia"
+                            },
+                            {
+                              "name": "Parent and Child Visas",
+                              "subclass": "Various",
+                              "description": "For close family members of Australian citizens or PR holders"
+                            }
+                          ],
+                          "requirements": [
+                            "Genuine relationship evidence",
+                            "Sponsor must be Australian citizen/PR",
+                            "Health and character requirements",
+                            "Financial support commitment",
+                            "Adequate health insurance"
+                          ],
+                          "benefits": [
+                            "Permanent residency",
+                            "Work and study rights",
+                            "Access to Medicare and social services",
+                            "Pathway to citizenship"
+                          ],
+                          "processingTime": "12-24 months for partner visas"
+                        },
+                        {
+                          "id": "business-investment",
+                          "icon": "💼",
+                          "title": "Business & Investment Visas",
+                          "category": "Business Visas",
+                          "idealFor": "Individuals looking to invest or run a business in Australia",
+                          "duration": "4 years",
+                          "pathway": "Temporary to Permanent",
+                          "visaTypes": [
+                            {
+                              "name": "Business Innovation and Investment Visa",
+                              "subclass": "188",
+                              "description": "Leads to permanent residency (subclass 888) later"
+                            }
+                          ],
+                          "requirements": [
+                            "Successful business or investment background",
+                            "Meet age, English, and health requirements",
+                            "Minimum net business and personal assets",
+                            "State or territory nomination",
+                            "Commitment to maintain business/investment in Australia"
+                          ],
+                          "benefits": [
+                            "Pathway to permanent residency",
+                            "Business opportunities in stable economy",
+                            "Access to Australian market",
+                            "Quality education for children"
+                          ],
+                          "processingTime": "8-12 months for initial visa"
+                        }
+                      ],
+                      "helper": {
+                        "title": "Which Visa is Right for You?",
+                        "scenarios": [
+                          {
+                            "icon": "🎯",
+                            "situation": "I'm a skilled professional",
+                            "description": "You have qualifications in an in-demand occupation",
+                            "recommendation": "Consider Skilled Migration Visas (189/190/491)"
+                          },
+                          {
+                            "icon": "💼",
+                            "situation": "I have a job offer",
+                            "description": "An Australian employer wants to hire you",
+                            "recommendation": "Apply for Employer-Sponsored Visas (482/186)"
+                          },
+                          {
+                            "icon": "🎓",
+                            "situation": "I want to study",
+                            "description": "You plan to pursue education in Australia",
+                            "recommendation": "Student Visa (500) with work rights"
+                          },
+                          {
+                            "icon": "💕",
+                            "situation": "I have family in Australia",
+                            "description": "You're married to or partnered with an Australian",
+                            "recommendation": "Partner Visa (820/801 or 309/100)"
+                          },
+                          {
+                            "icon": "🏢",
+                            "situation": "I want to start a business",
+                            "description": "You have business experience and investment capital",
+                            "recommendation": "Business Innovation Visa (188)"
+                          },
+                          {
+                            "icon": "🌟",
+                            "situation": "I'm young and want to travel",
+                            "description": "You're 18-30 from an eligible country",
+                            "recommendation": "Working Holiday Visa (417/462)"
+                          }
+                        ]
+                      },
+                      "processingTimes": {
+                        "title": "Current Processing Times",
+                        "averageTime": "Average Time",
+                        "disclaimer": "Processing times are estimates and can vary based on individual circumstances and application completeness.",
+                        "visaTypes": [
+                          {
+                            "type": "Skilled Independent (189)",
+                            "time": "8-12 months",
+                            "note": "Depends on occupation and points"
+                          },
+                          {
+                            "type": "Employer Sponsored (482)",
+                            "time": "3-6 months",
+                            "note": "Faster with complete documentation"
+                          },
+                          {
+                            "type": "Student (500)",
+                            "time": "4-8 weeks",
+                            "note": "Peak times may be longer"
+                          },
+                          {
+                            "type": "Partner (820/801)",
+                            "time": "12-24 months",
+                            "note": "Complex cases take longer"
+                          },
+                          {
+                            "type": "Business (188)",
+                            "time": "8-12 months",
+                            "note": "State nomination adds time"
+                          },
+                          {
+                            "type": "Working Holiday (417)",
+                            "time": "1-4 weeks",
+                            "note": "Usually processed quickly"
+                          }
+                        ]
+                      }
+                    },
+                    
+                        "ukToAustraliaGuide": {
+                          "subtitle": "What You Need to Know",
+                          "description": "Moving from the UK to Australia is popular due to cultural similarities, a shared language, and strong economic ties. Still, the move requires planning and the right visa. This guide covers everything you need to know about making the move down under.",
+                          "navigation": {
+                            "title": "Quick Navigation"
+                          },
+                          "accessibility": {
+                            "sectionButton": "Navigate to {title} section"
+                          },
+                          "sections": [
+                            {
+                              "id": "why-move",
+                              "icon": "🧳",
+                              "title": "Why Move to Australia?",
+                              "content": {
+                                "description": "Moving from the UK to Australia is popular due to cultural similarities, a shared language, and strong economic ties. Still, the move requires planning and the right visa.",
+                                "reasons": [
+                                  "Similar culture and shared language",
+                                  "Strong economic opportunities",
+                                  "Higher quality of life and outdoor lifestyle",
+                                  "Better weather and beautiful landscapes",
+                                  "Established British expat communities"
+                                ],
+                                "conclusion": "The move requires careful planning, especially regarding visas and employment options."
+                              }
+                            },
+                            {
+                              "id": "visa-requirements",
+                              "icon": "🛂",
+                              "title": "Visa Requirements",
+                              "content": {
+                                "description": "UK citizens need a visa to live, work, or study in Australia. Popular options include:",
+                                "visaTypes": [
+                                  {
+                                    "title": "Skilled Independent Visa (subclass 189)",
+                                    "description": "For workers in high-demand occupations without requiring sponsorship",
+                                    "keyPointsTitle": "Key points:",
+                                    "keyPoints": [
+                                      "Must score enough points on the skills assessment",
+                                      "No sponsor needed",
+                                      "Permanent residency pathway",
+                                      "Must be under 45 years old"
+                                    ]
+                                  },
+                                  {
+                                    "title": "Skilled Nominated Visa (subclass 190)",
+                                    "description": "State-nominated with faster processing times",
+                                    "keyPoints": [
+                                      "Requires nomination from an Australian state or territory",
+                                      "Extra points for state nomination",
+                                      "May require commitment to live in nominating state"
+                                    ]
+                                  },
+                                  {
+                                    "title": "Employer-Sponsored Visa (subclass 482)",
+                                    "description": "Requires a job offer from an Australian company",
+                                    "keyPoints": [
+                                      "Temporary skill shortage visa",
+                                      "Employer must be approved sponsor",
+                                      "Position must be on skilled occupation list",
+                                      "Can lead to permanent residency after certain period"
+                                    ]
+                                  },
+                                  {
+                                    "title": "Working Holiday Visa (subclass 417)",
+                                    "description": "For those aged 18–35, valid up to 3 years",
+                                    "keyPoints": [
+                                      "Initially 12 months",
+                                      "Can be extended twice with regional work",
+                                      "Allows work with one employer for up to 6 months",
+                                      "Good way to experience Australia before committing"
+                                    ]
+                                  },
+                                  {
+                                    "title": "Partner or Family Visas",
+                                    "description": "If you have close relatives or a partner in Australia",
+                                    "keyPoints": [
+                                      "Partner visa for spouses or de facto partners",
+                                      "Parent visas for parents of Australian citizens",
+                                      "Child visas for dependent children"
+                                    ]
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "id": "other-requirements",
+                              "icon": "🧾",
+                              "title": "Other Requirements",
+                              "content": {
+                                "requirements": [
+                                  "Valid UK passport",
+                                  "Health checks & character (police) certificate",
+                                  "Proof of English proficiency (for certain visas)",
+                                  "Skills or degree recognition (if applying under skilled visa routes)",
+                                  "Proof of funds (especially for temporary or student visas)"
+                                ],
+                                "tip": "<strong>Tip:</strong> Start gathering these documents early, as some (like police certificates) can take several weeks to obtain."
+                              }
+                            },
+                            {
+                              "id": "cost-moving",
+                              "icon": "💰",
+                              "title": "Cost of Moving",
+                              "content": {
+                                "description": "Expect to spend <strong>£5,000–£12,000</strong>, including visa fees, flights, housing deposits, and initial living costs.",
+                                "tip": "<strong>Tip:</strong> Many visa applications require proof that you have enough funds to support yourself initially. Be prepared to show bank statements."
+                              }
+                            },
+                            {
+                              "id": "lifestyle",
+                              "icon": "🌏",
+                              "title": "Lifestyle Notes",
+                              "content": {
+                                "aspects": [
+                                  {
+                                    "title": "Climate",
+                                    "description": "The climate varies widely; cities like Sydney and Perth have hot summers, while Melbourne is known for \"four seasons in one day.\" Northern regions are tropical, while Tasmania is cooler."
+                                  },
+                                  {
+                                    "title": "Work Culture",
+                                    "description": "Australia has a relaxed work culture but maintains high professional standards. Work-life balance is valued, with many businesses closing earlier than in the UK."
+                                  },
+                                  {
+                                    "title": "Healthcare",
+                                    "description": "Public healthcare (Medicare) is accessible once you become a resident. For temporary visa holders, private health insurance is essential and often mandatory."
+                                  },
+                                  {
+                                    "title": "Cost of Living",
+                                    "description": "Major cities like Sydney and Melbourne have high living costs, especially for housing. Regional areas offer more affordable options but fewer amenities."
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "id": "popular-cities",
+                              "icon": "🏙️",
+                              "title": "Popular Cities for UK Expats",
+                              "content": {
+                                "description": "Australia has several cities that are popular with British expats:",
+                                "cities": [
+                                  {
+                                    "name": "Sydney",
+                                    "description": "Australia's largest city with iconic landmarks, beautiful beaches, and vibrant cultural scene. Highest cost of living but excellent job opportunities."
+                                  },
+                                  {
+                                    "name": "Melbourne",
+                                    "description": "Cultural capital with European flair, known for arts, coffee culture, and sporting events. More variable weather but slightly lower housing costs than Sydney."
+                                  },
+                                  {
+                                    "name": "Brisbane",
+                                    "description": "Sub-tropical climate with growing economy and more affordable housing than Sydney or Melbourne. Relaxed lifestyle with proximity to Gold Coast and Sunshine Coast."
+                                  },
+                                  {
+                                    "name": "Perth",
+                                    "description": "Sunniest capital city with beautiful beaches and strong mining industry. More isolated but offers excellent quality of life and strong UK expat community."
+                                  },
+                                  {
+                                    "name": "Adelaide",
+                                    "description": "More affordable housing and relaxed pace of life. Known for wine regions, festivals, and family-friendly environment."
+                                  },
+                                  {
+                                    "name": "Gold Coast",
+                                    "description": "Popular with UK expats for its stunning beaches, warm climate, and tourism industry. Relaxed lifestyle with growing economy."
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "id": "practical-tips",
+                              "icon": "💡",
+                              "title": "Practical Tips",
+                              "content": {
+                                "tips": [
+                                  "Set up an Australian bank account before arrival if possible",
+                                  "Research tax implications - there's a tax agreement between UK and Australia",
+                                  "Consider timing your move outside the height of summer (December-February)",
+                                  "Join expat Facebook groups for your destination city",
+                                  "Register with the UK government's Living Abroad service for updates"
+                                ],
+                                "mainTip": "<strong>Tip:</strong> Start your visa application process well in advance - some visas can take 6-12 months to process."
+                              }
+                            }
+                          ],
+                          "costTable": {
+                            "headers": {
+                              "category": "Expense Category",
+                              "cost": "Estimated Cost (£)"
+                            },
+                            "rows": [
+                              {
+                                "category": "Visa application fees",
+                                "cost": "£1,000–£4,000"
+                              },
+                              {
+                                "category": "Flights (one-way)",
+                                "cost": "£600–£1,200"
+                              },
+                              {
+                                "category": "Shipping belongings",
+                                "cost": "£1,500–£3,000"
+                              },
+                              {
+                                "category": "Initial accommodation",
+                                "cost": "£1,000–£2,000"
+                              },
+                              {
+                                "category": "Living expenses (first month)",
+                                "cost": "£1,000–£1,500"
+                              },
+                              {
+                                "category": "Emergency fund",
+                                "cost": "£1,000–£2,000"
+                              }
+                            ]
+                          },
+                          "comparison": {
+                            "title": "UK vs Australia Quick Comparison",
+                            "aspects": [
+                              {
+                                "icon": "🌡️",
+                                "category": "Climate",
+                                "uk": "Cool, rainy, 4 seasons",
+                                "australia": "Warm, sunny, mild winters"
+                              },
+                              {
+                                "icon": "💰",
+                                "category": "Cost of Living",
+                                "uk": "High in London, moderate elsewhere",
+                                "australia": "High in Sydney/Melbourne, lower elsewhere"
+                              },
+                              {
+                                "icon": "🏠",
+                                "category": "Housing",
+                                "uk": "Smaller spaces, older buildings",
+                                "australia": "Larger spaces, modern homes"
+                              },
+                              {
+                                "icon": "🏥",
+                                "category": "Healthcare",
+                                "uk": "NHS (free at point of use)",
+                                "australia": "Medicare (similar to NHS)"
+                              },
+                              {
+                                "icon": "💼",
+                                "category": "Work Culture",
+                                "uk": "Longer hours, more formal",
+                                "australia": "Better work-life balance"
+                              },
+                              {
+                                "icon": "🌍",
+                                "category": "Location",
+                                "uk": "Close to Europe",
+                                "australia": "Isolated but close to Asia"
+                              }
+                            ]
+                          },
+                          "timeline": {
+                            "title": "Moving Timeline: 12 Months Before Departure",
+                            "phases": [
+                              {
+                                "timeframe": "12 months before",
+                                "title": "Research & Planning",
+                                "description": "Research visa options, assess qualifications, choose target cities"
+                              },
+                              {
+                                "timeframe": "9-10 months before",
+                                "title": "Visa Application",
+                                "description": "Submit visa application, complete skills assessment, gather documents"
+                              },
+                              {
+                                "timeframe": "6-8 months before",
+                                "title": "Job Hunting",
+                                "description": "Start job applications, network with Australian professionals"
+                              },
+                              {
+                                "timeframe": "3-4 months before",
+                                "title": "Moving Arrangements",
+                                "description": "Book flights, arrange shipping, secure temporary accommodation"
+                              },
+                              {
+                                "timeframe": "1-2 months before",
+                                "title": "Final Preparations",
+                                "description": "Open Australian bank account, arrange insurance, notify UK authorities"
+                              },
+                              {
+                                "timeframe": "Upon arrival",
+                                "title": "Settlement",
+                                "description": "Find permanent housing, register with Medicare, set up local services"
+                              }
+                            ]
+                          },
+                          "checklist": {
+                            "title": "Final Checklist Before Moving to Australia",
+                            "items": [
+                              "Secure appropriate visa",
+                              "Book flights and shipping",
+                              "Arrange temporary accommodation",
+                              "Set up Australian bank account",
+                              "Organize health insurance",
+                              "Update tax status with HMRC",
+                              "Notify UK authorities (NHS, pension, council, etc.) about your move"
+                            ]
+                          },
+                          "conclusion": {
+                            "title": "Is Moving to Australia Right for You?",
+                            "description": "With its stunning landscapes, strong economy, and outdoor lifestyle, Australia offers an excellent quality of life for UK expats. While the distance from home and cost of living can be challenging, many find the move well worth it for the sunshine, space, and opportunities down under."
+                          }
+                        },
+                        
+                            "petsToAustralia": {
+                              "description": "Bringing your pets to Australia is possible, but it requires extensive planning due to strict biosecurity rules. Australia's rigorous quarantine system protects its unique ecosystem from foreign diseases and pests.",
+                              "navigation": {
+                                "title": "Pet Travel Guide"
+                              },
+                              "accessibility": {
+                                "sectionButton": "View section about {title}"
+                              },
+                              "sections": [
+                                {
+                                  "id": "key-requirements",
+                                  "icon": "✅",
+                                  "title": "Key Requirements",
+                                  "content": {
+                                    "requirements": [
+                                      {
+                                        "title": "Eligible Pets",
+                                        "description": "Only certain animals are permitted entry to Australia:",
+                                        "list": [
+                                          "Dogs (excluding certain breeds like Pit Bull Terrier)",
+                                          "Cats (excluding Savannah cats of F1-F4 generations)",
+                                          "Other pets generally not allowed"
+                                        ]
+                                      },
+                                      {
+                                        "title": "Approved Country of Origin",
+                                        "description": "Your pet must be coming from an approved country. The UK is classified as a Category 3 country, which determines specific requirements."
+                                      },
+                                      {
+                                        "title": "Microchipping",
+                                        "description": "Your pet must be microchipped with an ISO-compliant microchip before any vaccinations or blood tests."
+                                      },
+                                      {
+                                        "title": "Rabies Vaccination & Testing",
+                                        "description": "A rabies vaccination followed by a Rabies Neutralising Antibody Titre Test (RNATT) is required.",
+                                        "highlight": "The RNATT must be done <span class=\"font-medium\">at least 180 days before entry</span> into Australia."
+                                      },
+                                      {
+                                        "title": "Import Permit",
+                                        "description": "You must obtain an import permit from the Australian Department of Agriculture, Water and the Environment.",
+                                        "highlight": "Apply at least <span class=\"font-medium\">42 days before travel</span>."
+                                      },
+                                      {
+                                        "title": "Additional Treatments",
+                                        "description": "Within days of travel, your pet will need additional treatments for:",
+                                        "list": [
+                                          "External parasites (ticks and fleas)",
+                                          "Internal parasites (worms)",
+                                          "Other specific tests and treatments"
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                },
+                                {
+                                  "id": "timeline",
+                                  "icon": "📅",
+                                  "title": "Timeline & Planning",
+                                  "content": {
+                                    "description": "Bringing pets to Australia requires <span class=\"font-medium\">at least 7-8 months</span> of preparation.",
+                                    "phases": [
+                                      {
+                                        "timeframe": "7+ Months Before Travel",
+                                        "tasks": [
+                                          "Verify your pet's eligibility for import",
+                                          "Ensure microchip is ISO-compliant",
+                                          "Check/update rabies vaccination",
+                                          "Schedule RNATT blood test (must be done at least 180 days before arrival)"
+                                        ]
+                                      },
+                                      {
+                                        "timeframe": "2-3 Months Before Travel",
+                                        "tasks": [
+                                          "Apply for import permit (at least 42 days before travel)",
+                                          "Book quarantine facility space in Melbourne",
+                                          "Arrange pet transport with an approved carrier"
+                                        ]
+                                      },
+                                      {
+                                        "timeframe": "10-30 Days Before Travel",
+                                        "tasks": [
+                                          "Complete final vet examinations",
+                                          "Administer required parasite treatments",
+                                          "Get official health certificates endorsed by government vet",
+                                          "Prepare travel crate according to IATA standards"
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                },
+                                {
+                                  "id": "quarantine",
+                                  "icon": "🔒",
+                                  "title": "Quarantine Process",
+                                  "content": {
+                                    "warning": "All pets entering Australia <strong>must</strong> complete a mandatory quarantine period, regardless of country of origin.",
+                                    "keyInfo": [
+                                      {
+                                        "icon": "📍",
+                                        "title": "Entry Point",
+                                        "description": "Melbourne is the <span class=\"font-medium\">only port of entry</span> for pets entering Australia. Your pet must fly into Melbourne Airport."
+                                      },
+                                      {
+                                        "icon": "⏱️",
+                                        "title": "Duration",
+                                        "description": "At least <span class=\"font-medium\">10 days</span> at the government quarantine facility. This may be extended if health issues arise."
+                                      }
+                                    ],
+                                    "details": [
+                                      {
+                                        "title": "Quarantine Facility",
+                                        "description": "The Post Entry Quarantine (PEQ) facility in Melbourne is where all imported animals stay. It provides:",
+                                        "list": [
+                                          "• Basic kennels/catteries with climate control",
+                                          "• Regular feeding and basic care",
+                                          "• Veterinary inspections and treatments",
+                                          "• <span class=\"font-medium\">No visitation allowed</span> during the quarantine period"
+                                        ]
+                                      },
+                                      {
+                                        "title": "After Quarantine",
+                                        "description": "Once your pet completes quarantine successfully, you can:",
+                                        "list": [
+                                          "• Pick them up from the facility in Melbourne",
+                                          "• Arrange domestic transport to your final destination",
+                                          "• Register your pet with local authorities at your new home"
+                                        ]
+                                      }
+                                    ]
+                                  }
+                                },
+                                {
+                                  "id": "costs",
+                                  "icon": "💰",
+                                  "title": "Estimated Costs",
+                                  "content": {
+                                    "description": "Total costs can range from <span class=\"font-medium\">$3,000 – $7,000 AUD</span> per pet, depending on your location and pet's size.",
+                                    "tip": "<strong>Tip:</strong> Using a professional pet transport service can make the process much simpler, though more expensive. They'll handle paperwork and logistics."
+                                  }
+                                },
+                                {
+                                  "id": "pet-life",
+                                  "icon": "🐶",
+                                  "title": "Pet Life in Australia",
+                                  "content": {
+                                    "description": "Australia is an animal-loving country with high standards for pet care and plenty of pet-friendly spaces.",
+                                    "aspects": [
+                                      {
+                                        "icon": "🏥",
+                                        "title": "Veterinary Care",
+                                        "description": "High-quality veterinary care is available nationwide. Annual vet visits typically cost $200-400 AUD, with pet insurance available from $20-60/month."
+                                      },
+                                      {
+                                        "icon": "📝",
+                                        "title": "Registration",
+                                        "description": "Pets must be registered with local councils. Registration fees vary but are typically $30-150 AUD annually, with discounts for desexed pets."
+                                      },
+                                      {
+                                        "icon": "🏞️",
+                                        "title": "Parks & Beaches",
+                                        "description": "Many designated off-leash areas exist, though rules are stricter than in some countries. Not all beaches are pet-friendly, so check local regulations."
+                                      },
+                                      {
+                                        "icon": "🏠",
+                                        "title": "Housing",
+                                        "description": "Finding pet-friendly rentals can be challenging. Expect to pay a pet bond (usually $200-500 AUD) for rentals that do accept pets."
+                                      }
+                                    ],
+                                    "warning": "<strong>Important:</strong> Australia has unique wildlife and ecosystems. Dogs and cats must be kept under control to protect native animals, particularly in areas near bush or conservation zones."
+                                  }
+                                }
+                              ],
+                              "costTable": {
+                                "headers": {
+                                  "expense": "Expense",
+                                  "cost": "Estimated Cost (AUD)"
+                                },
+                                "rows": [
+                                  {
+                                    "expense": "Veterinary preparation (vaccinations, tests, treatments)",
+                                    "cost": "$800–$1,500"
+                                  },
+                                  {
+                                    "expense": "Import permit",
+                                    "cost": "$480"
+                                  },
+                                  {
+                                    "expense": "Airfare",
+                                    "cost": "$800–$2,500"
+                                  },
+                                  {
+                                    "expense": "Quarantine fees",
+                                    "cost": "$1,200–$2,000"
+                                  },
+                                  {
+                                    "expense": "Pet transport service fees (optional)",
+                                    "cost": "$500–$1,500"
+                                  },
+                                  {
+                                    "expense": "Domestic transport after quarantine",
+                                    "cost": "$200–$500"
+                                  }
+                                ]
+                              },
+                              "breedRestrictions": {
+                                "title": "Restricted Pet Breeds",
+                                "note": "These breeds are prohibited from entering Australia under any circumstances.",
+                                "categories": [
+                                  {
+                                    "type": "Prohibited Dog Breeds",
+                                    "breeds": [
+                                      "American Pit Bull Terrier",
+                                      "Perro de Presa Canario",
+                                      "Dogo Argentino",
+                                      "Fila Brasileiro",
+                                      "Japanese Tosa",
+                                      "And any crossbreeds of these"
+                                    ]
+                                  },
+                                  {
+                                    "type": "Prohibited Cat Breeds",
+                                    "breeds": [
+                                      "Savannah cats (F1, F2, F3, F4 generations)",
+                                      "Bengal cats (F1, F2, F3 generations)",
+                                      "Chausie cats (F1, F2, F3 generations)",
+                                      "Stone cougar cats",
+                                      "And any crossbreeds with wild cats"
+                                    ]
+                                  }
+                                ]
+                              },
+                              "professionalServices": {
+                                "title": "Professional Pet Transport Services",
+                                "services": [
+                                  {
+                                    "icon": "🚚",
+                                    "name": "Full Service Transport",
+                                    "description": "Complete door-to-door service including all paperwork",
+                                    "cost": "$3,000–$6,000 AUD"
+                                  },
+                                  {
+                                    "icon": "📋",
+                                    "name": "Documentation Only",
+                                    "description": "Help with permits, health certificates, and paperwork",
+                                    "cost": "$800–$1,500 AUD"
+                                  },
+                                  {
+                                    "icon": "✈️",
+                                    "name": "Flight Booking",
+                                    "description": "Specialized pet flight booking and coordination",
+                                    "cost": "$300–$800 AUD"
+                                  }
+                                ]
+                              },
+                              "checklist": {
+                                "title": "Australia Pet Import Checklist",
+                                "items": [
+                                  "Verify your pet is eligible for import to Australia",
+                                  "Ensure microchip is ISO-compliant",
+                                  "Schedule rabies vaccination and RNATT blood test (at least 180 days before travel)",
+                                  "Apply for import permit (at least 42 days before travel)",
+                                  "Book quarantine facility accommodation in Melbourne",
+                                  "Arrange for pet-friendly international transportation",
+                                  "Finalize health certificates and treatments before departure"
+                                ]
+                              },
+                              "conclusion": {
+                                "title": "A New Life Down Under for Your Pet",
+                                "description": "While bringing pets to Australia requires significant planning, time, and financial investment, the reward of having your furry family member join you in your new home makes it worthwhile. Australia offers excellent veterinary care and a pet-loving community once your pet has successfully navigated the entry requirements."
+                              }
+  
+                            }
+                          
+  }

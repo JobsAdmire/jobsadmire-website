@@ -1,0 +1,2067 @@
+{
+  "heroSection": {
+    "badge": "Özel Yolculuklar",
+    "title": "Bir Sonraki Maceranızı Keşfedin",
+    "description": "İsteklerinize göre uyarlanmış premium seyahat paketlerimizle nefes kesici destinasyonları deneyimleyin ve unutulmaz anılar yaratın.",
+    "currentlyViewing": "Şu Anda Görüntüleniyor",
+    "featuredAlt": "Öne çıkan destinasyon",
+    "destinationCounter": "Hedef {mevcut}/{toplam}",
+    "controlsAria": "Hedefe git {index}",
+    "buttons": {
+      "explore": "Şimdi Keşfet",
+      "viewAll": "Tüm Destinasyonları Görüntüle"
+    },
+    "destinations": [
+      {
+        "img": "/images/Sydney.png",
+        "name": "Sidney",
+        "country": "Avustralya"
+      },
+      {
+        "img": "/images/Melbourne.png",
+        "name": "Melbourne",
+        "country": "Avustralya"
+      },
+      {
+        "img": "/images/Brisbane.png",
+        "name": "Brisbane",
+        "country": "Avustralya"
+      },
+      {
+        "img": "/images/Perth.png",
+        "name": "Perth",
+        "country": "Avustralya"
+      },
+      {
+        "img": "/images/Adelaide.png",
+        "name": "Adelaide",
+        "country": "Avustralya"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableOfContents": {
+    "header": {
+      "title": "İçindekiler",
+      "subtitle": "Bölümler arasında gezinme"
+    },
+    "status": {
+      "currentlyReading": "Şu anda okuyor"
+    },
+    "footer": {
+      "sectionsCount": "keşfedilecek {say} bölümler"
+    },
+    "accessibility": {
+      "toggleMenu": "Gezinti menüsünü aç / kapat"
+    },
+    "sections": [
+      {
+        "title": "Türkiye Hakkında Gerçekler",
+        "id": 1
+      },
+      {
+        "title": "Türkiye'ye Taşınmak için Vize Seçenekleri",
+        "id": 2
+      },
+      {
+        "title": "Türkiye'ye Taşınmak için Gerekenler",
+        "id": 3
+      },
+      {
+        "title": "Yabancı Olarak Türkiye'de İş Bulmak",
+        "id": 4
+      },
+      {
+        "title": "ABD'den Türkiye'ye Taşınma",
+        "id": 5
+      },
+      {
+        "title": "İngiltere'den Türkiye'ye Taşınma",
+        "id": 6
+      },
+      {
+        "title": "Türkiye'ye taşınmak ne kadara mal olur?",
+        "id": 7
+      },
+      {
+        "title": "Evcil Hayvanlarla Türkiye'ye Taşınma",
+        "id": 8
+      }
+    ]
+  },
+  "australiaFacts": {
+    "description": "Olağanüstü manzarası, vahşi yaşamı ve kültürel çeşitliliğiyle bilinen eşsiz bir kıta ülkesi olan Avustralya'nın büyüleyici özelliklerini keşfedin.",
+    "navigation": {
+      "title": "Gerçekleri Keşfedin",
+      "previous": "Önceki Gerçek",
+      "next": "Sonraki Gerçek"
+    },
+    "allFacts": {
+      "title": "Avustralya Hakkında Gerçekler"
+    },
+    "accessibility": {
+      "factButton": "View fact about {title}",
+      "previousFact": "Önceki gerçeğe git",
+      "nextFact": "Sonraki gerçeğe git"
+    },
+    "facts": [
+      {
+        "title": "Ada Kıtası",
+        "description": "Avustralya hem bir ülke hem de bir kıtadır - yüzölçümü bakımından dünyanın en büyük altıncı ülkesidir.",
+        "emoji": "🌏",
+        "id": 1
+      },
+      {
+        "title": "Eşsiz Vahşi Yaşam",
+        "description": "Kangurular, koalalar ve ornitorenk gibi başka hiçbir yerde bulunmayan hayvanlara ev sahipliği yapmaktadır.",
+        "emoji": "🦘",
+        "id": 2
+      },
+      {
+        "title": "Büyük Set Resifi",
+        "description": "Queensland kıyılarında bulunan bu mercan kayalığı sistemi dünyanın en büyük mercan kayalığı sistemidir ve uzaydan görülebilmektedir.",
+        "emoji": "🌊",
+        "id": 3
+      },
+      {
+        "title": "Çok Kültürlü Nüfus",
+        "description": "Avustralyalıların %30'undan fazlası denizaşırı ülkelerde doğmuştur ve bu da ülkeyi küresel olarak en fazla çeşitliliğe sahip ülkelerden biri haline getirmektedir.",
+        "emoji": "🌍",
+        "id": 4
+      },
+      {
+        "title": "Resmi Dil Yok",
+        "description": "İngilizce fiili dil olmakla birlikte, Avustralya'nın kanunen resmi bir dili yoktur.",
+        "emoji": "🗣️",
+        "id": 5
+      }
+    ],
+    "statistics": {
+      "title": "Rakamlarla Avustralya",
+      "items": [
+        {
+          "icon": "📏",
+          "label": "Toplam Alan",
+          "value": "7,7 milyon km²",
+          "description": "Dünyanın en büyük 6. ülkesi"
+        },
+        {
+          "icon": "👥",
+          "label": "Nüfus",
+          "value": "25,7 milyon",
+          "description": "2023 itibariyle"
+        },
+        {
+          "icon": "🏙️",
+          "label": "Sermaye",
+          "value": "Canberra",
+          "description": "Sydney ya da Melbourne değil!"
+        },
+        {
+          "icon": "💰",
+          "label": "Para Birimi",
+          "value": "Avustralya Doları",
+          "description": "AUD"
+        },
+        {
+          "icon": "🕐",
+          "label": "Zaman Dilimleri",
+          "value": "3 ana bölge",
+          "description": "AWST, ACST, AEST"
+        },
+        {
+          "icon": "🗺️",
+          "label": "Eyaletler ve Bölgeler",
+          "value": "8 toplam",
+          "description": "6 eyalet + 2 bölge"
+        }
+      ]
+    },
+    "didYouKnow": {
+      "title": "Biliyor muydunuz?",
+      "items": [
+        "Avustralya diğer tüm ülkelerden daha fazla zehirli yılan türüne sahiptir",
+        "Büyük Set Resifi <strong>1.500'den fazla balık türüne</strong> ev sahipliği yapmaktadır.",
+        "Melbourne, Canberra'dan önce 1901-1927 yılları arasında Avustralya'nın başkentiydi",
+        "Avustralya aynı zamanda bir kıta olan tek ülkedir",
+        "Ülkede <strong>10.000'den</strong> fazla plaj var - 27 yıl boyunca her gün birini ziyaret edebilirsiniz!",
+        "Avustralya Suudi Arabistan'a deve ihraç ediyor (Avustralya'da 1 milyondan fazla yabani deve var)"
+      ]
+    }
+  },
+  "movingCosts": {
+    "description": "Avustralya'ya taşınmanın toplam maliyeti durumunuza göre değişir, ancak aşağıda taşınırken karşılaşacağınız masrafların genel bir dökümü verilmiştir.",
+    "costSections": [
+      {
+        "id": "uçuşlar",
+        "icon": "✈️",
+        "title": "Uçuşlar",
+        "amount": "$800-$2,000 USD",
+        "details": "Tek yön, ekonomi sınıfı, menşe ve mevsime bağlı olarak",
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "vi̇ze ücretleri̇",
+        "icon": "🛂",
+        "title": "Vize Ücretleri",
+        "amount": "$710-$8,850 AUD",
+        "details": "Vize türüne bağlı olarak büyük ölçüde değişir",
+        "color": "bg-sky-600",
+        "subItems": [
+          {
+            "title": "Nitelikli vize",
+            "amount": "$4,000-$4,500 AUD"
+          },
+          {
+            "title": "Ortak vizesi",
+            "amount": "$8,850 AUD"
+          },
+          {
+            "title": "Öğrenci vizesi",
+            "amount": "$710 AUD"
+          },
+          {
+            "title": "Çalışma Tatili vizesi",
+            "amount": "$495 AUD"
+          }
+        ]
+      },
+      {
+        "id": "nakliye",
+        "icon": "📦",
+        "title": "Eşyaların Nakliyesi",
+        "amount": "$2,000-$7,000 USD",
+        "details": "Konteyner boyutuna ve mesafeye bağlı olarak",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "konut",
+        "icon": "🏠",
+        "title": "İlk Konut",
+        "amount": "$1,500-$3,000 AUD",
+        "details": "Mütevazı bir daire için kira depozitosu + 1 aylık kira",
+        "color": "bg-sky-500",
+        "subItems": [
+          {
+            "title": "Sidney/Melbourne (aylık)",
+            "amount": "$1,800-$2,500 AUD"
+          },
+          {
+            "title": "Brisbane/Perth (aylık)",
+            "amount": "$1,500-$2,000 AUD"
+          },
+          {
+            "title": "Bölgesel alanlar (aylık)",
+            "amount": "$1,000-$1,500 AUD"
+          }
+        ]
+      },
+      {
+        "id": "diğer-maliyetler",
+        "icon": "🧾",
+        "title": "Diğer Maliyetler",
+        "amount": "$500-$1,500 USD",
+        "details": "Sağlık kontrolleri, sigorta, belge çevirisi vb.",
+        "color": "bg-sky-600",
+        "subItems": [
+          {
+            "title": "Sağlık sigortası",
+            "amount": "$100-$200 AUD/ay"
+          },
+          {
+            "title": "Belge çevirisi",
+            "amount": "$50-$200 AUD"
+          },
+          {
+            "title": "Taşıma kurulumu",
+            "amount": "$200-$500 AUD"
+          },
+          {
+            "title": "İlk bakkaliye ve erzak",
+            "amount": "$200-$400 AUD"
+          }
+        ]
+      }
+    ],
+    "totalCost": {
+      "title": "Tahmini Toplam (Tek Kişi)",
+      "approaches": [
+        {
+          "title": "Bütçe Yaklaşımı",
+          "amount": "$8,000-$12,000 USD",
+          "description": "Minimum nakliye, daha ucuz şehir, çalışma tatili veya öğrenci vizesi"
+        },
+        {
+          "title": "Kapsamlı Taşınma",
+          "amount": "$15,000-$20,000 USD",
+          "description": "Tam nakliye, büyük şehir, vasıflı veya ortak vizesi"
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Para Tasarrufu İpuçları",
+      "tips": [
+        {
+          "title": "Bölgesel Alanları Düşünün",
+          "description": "Sydney ve Melbourne gibi büyük şehirlerin dışında yaşamak konut maliyetlerinde %30-40 tasarruf sağlayabilir."
+        },
+        {
+          "title": "Göndermeden Önce Sat",
+          "description": "Nakliye masrafları yüksektir - büyük mobilyaları satmayı ve Avustralya'dan satın almayı düşünün."
+        },
+        {
+          "title": "Uçuş Rezervasyonunuzu Stratejik Olarak Yapın",
+          "description": "Uçak biletlerinde %30'a kadar tasarruf etmek için ara sezonda (Mayıs veya Ekim) uçun."
+        },
+        {
+          "title": "Önce Tatil Çalışması",
+          "description": "Uygunsa, daha pahalı vizelere başvurmadan önce Çalışma Tatili vizesi ile başlayın."
+        }
+      ]
+    },
+    "additionalConsiderations": {
+      "title": "Ek Hususlar",
+      "items": [
+        {
+          "label": "Kur dalgalanmaları",
+          "description": "Kendi para biriminiz, AUD ve USD arasındaki döviz kurları toplam maliyetlerinizi önemli ölçüde etkileyebilir."
+        },
+        {
+          "label": "Aile büyüklüğü",
+          "description": "İlave her aile üyesi için toplam tahmine yaklaşık %30-50 daha fazla ekleyin."
+        },
+        {
+          "label": "Evcil Hayvanlar",
+          "description": "Avustralya'ya evcil hayvan getirmek, katı karantina gereklilikleri nedeniyle hayvan başına 2.000 ila 4.000 dolara mal olabilir."
+        },
+        {
+          "label": "İş arama dönemi",
+          "description": "Güvenli bir işiniz yoksa, iş ararken 1-3 aylık yaşam masrafları için bütçe ayırın."
+        }
+      ]
+    },
+    "calculator": {
+      "title": "Maliyet Planlama Faktörleri",
+      "description": "Taşınma bütçenizi planlarken bu temel faktörleri göz önünde bulundurun:",
+      "factors": [
+        {
+          "icon": "📍",
+          "title": "Hedef Şehir",
+          "description": "Sidney ve Melbourne bölgesel bölgelere göre %40-50 daha pahalıdır",
+          "impact": "Maliyetler üzerinde yüksek etki"
+        },
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "title": "Aile Büyüklüğü",
+          "description": "Her bir ilave kişi toplam maliyete %30-50 ekler",
+          "impact": "Başlıca maliyet faktörü"
+        },
+        {
+          "icon": "⏰",
+          "title": "Zaman Çizelgesi",
+          "description": "Aceleye getirilen taşınmalar, planlanan taşınmalara göre %20-30 daha pahalıya mal oluyor",
+          "impact": "Orta düzeyde etki"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Taşınma Maliyeti Zaman Çizelgesi",
+      "phases": [
+        {
+          "timeframe": "12-18 ay önce",
+          "title": "İlk Planlama ve Vize Başvurusu",
+          "description": "Araştırma, vize başvurusu, beceri değerlendirmeleri",
+          "estimatedCost": "$2,000-$5,000 AUD"
+        },
+        {
+          "timeframe": "6-12 ay önce",
+          "title": "Dokümantasyon ve Hazırlık",
+          "description": "Sağlık kontrolleri, polis izinleri, belge çevirileri",
+          "estimatedCost": "$500-$1,500 AUD"
+        },
+        {
+          "timeframe": "3-6 ay önce",
+          "title": "Lojistik & Rezervasyonlar",
+          "description": "Uçuş rezervasyonları, nakliye düzenlemeleri, geçici konaklama",
+          "estimatedCost": "$3,000-$8,000 USD"
+        },
+        {
+          "timeframe": "1-3 ay önce",
+          "title": "Son Hazırlıklar",
+          "description": "Sigorta, son ödemeler, son dakika düzenlemeleri",
+          "estimatedCost": "$1,000-$3,000 AUD"
+        },
+        {
+          "timeframe": "Varışta",
+          "title": "Yerleşim Maliyetleri",
+          "description": "Konut depozitosu, ilk satın alımlar, ulaşım kurulumu",
+          "estimatedCost": "$2,000-$5,000 AUD"
+        }
+      ]
+    },
+    "conclusion": "Avustralya'ya taşınmak önemli bir yatırımı temsil etse de, birçok gurbetçi yüksek yaşam kalitesini, güçlü ekonomiyi ve güzel çevreyi maliyete değer bulmaktadır. Doğru planlama ve bütçeleme, yeni hayatınıza sorunsuz bir geçiş yapmanıza yardımcı olacaktır."
+  },
+  "jobGuide": {
+    "subtitle": "Eksiksiz Bir Kılavuz",
+    "description": "Avustralya vasıflı yabancı çalışanlar için birçok fırsat sunmaktadır, ancak bir işi güvence altına almak hazırlık yapmayı ve vize ve işveren gereksinimlerini karşılamayı gerektirir.",
+    "navigation": {
+      "title": "Kılavuz İçeriği"
+    },
+    "accessibility": {
+      "sectionButton": "View section about {title}"
+    },
+    "sections": [
+      {
+        "id": "çalışma hakkı",
+        "icon": "✅",
+        "title": "1. Çalışma Hakkı",
+        "content": {
+          "description": "Geçerli bir çalışma vizesine ihtiyacınız var. Yaygın seçenekler:",
+          "visaOptions": [
+            "<strong>Geçici Beceri Eksikliği (TSS) Vizesi (alt sınıf 482)</strong>",
+            "<strong>Vasıflı Bağımsız Vize (alt sınıf 189)</strong>",
+            "<strong>Çalışma Tatili Vizesi (alt sınıf 417/462)</strong> - genç yetişkinler için (18-30/35 yaş)"
+          ],
+          "conclusion": "Her vizenin farklı gereklilikleri, süreleri ve koşulları vardır. Durumunuza en uygun olanı araştırdığınızdan emin olun."
+        }
+      },
+      {
+        "id": "beceri̇ler-yeterli̇li̇kler",
+        "icon": "🧠",
+        "title": "2. Beceriler & Nitelikler",
+        "content": {
+          "requirements": [
+            "Mesleğiniz Avustralya'nın <strong>Vasıflı Meslekler Listesi'nde (SOL)</strong> yer almalıdır",
+            "<strong>Yeterliliklerinizin</strong> bir Avustralya makamı tarafından tanınması",
+            "İngilizce dil yeterliliği (IELTS, PTE, vb.) gerekebilir"
+          ],
+          "popularFields": {
+            "title": "Yabancı Çalışanlar için Popüler Alanlar:",
+            "fields": [
+              {
+                "title": "Sağlık Hizmetleri",
+                "description": "Doktorlar, hemşireler, yaşlı bakım çalışanları"
+              },
+              {
+                "title": "BT ve Teknoloji",
+                "description": "Yazılım geliştiriciler, siber güvenlik uzmanları"
+              },
+              {
+                "title": "Mühendislik",
+                "description": "İnşaat, makine, elektrik mühendisleri"
+              },
+              {
+                "title": "Nitelikli Zanaatlar",
+                "description": "Elektrikçiler, tesisatçılar, marangozlar"
+              }
+            ]
+          }
+        }
+      },
+      {
+        "id": "iş-arama",
+        "icon": "💻",
+        "title": "3. İş Arama İpuçları",
+        "content": {
+          "description": "Avustralya'da iş bulmak stratejik bir yaklaşım gerektirir:",
+          "jobPortals": {
+            "title": "En İyi İş Portalları:",
+            "portals": [
+              "Arayın",
+              "Gerçekten Avustralya",
+              "LinkedIn",
+              "CareerOne",
+              "Jora",
+              "Etik İşler"
+            ]
+          },
+          "proTips": {
+            "title": "Profesyonel İpuçları:",
+            "tips": [
+              "<strong>Seek</strong>, <strong>Indeed Australia</strong> ve <strong>LinkedIn</strong> gibi platformları kullanın",
+              "Doğrudan şirketlere veya işe alım ajansları aracılığıyla başvurun",
+              "Özgeçmişinizi Avustralya standartlarına göre uyarlayın",
+              "Sektörünüzdeki profesyonellerle ağ kurun",
+              "Daha iyi fırsatlar için beceri eksikliği olan bölgesel alanları göz önünde bulundurun"
+            ]
+          }
+        }
+      },
+      {
+        "id": "sponsorluk",
+        "icon": "🤝",
+        "title": "4. Sponsorluk",
+        "content": {
+          "description": "Bazı işverenler özellikle sağlık, bilişim, mühendislik ve ticaret alanlarında vasıflı çalışanlara sponsor olmaktadır. Sponsorluk vize almanıza yardımcı olur.",
+          "types": [
+            {
+              "title": "İşveren Atama Programı:",
+              "points": [
+                "İşverenler sizi daimi ikamet için aday gösterebilir",
+                "Beceri ve yeterlilik gerekliliklerini karşılamalısınız",
+                "Genellikle en az 3 yıllık iş deneyimi gerektirir"
+              ]
+            },
+            {
+              "title": "TSS Vize Sponsorluğu:",
+              "points": [
+                "2-4 yıl için geçici pozisyon",
+                "Kalıcı oturma iznine yol açabilir",
+                "İşveren yerel yetenek bulamadığını kanıtlamalıdır"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "belgeler",
+        "icon": "📄",
+        "title": "5. Gerekli Belgeler",
+        "content": {
+          "requiredDocuments": [
+            "Özgeçmiş (CV)",
+            "Ön yazı",
+            "Nitelikler",
+            "Referanslar",
+            "Vize/çalışma hakları onayı"
+          ],
+          "resumeTips": {
+            "title": "Avustralya Özgeçmiş İpuçları:",
+            "tips": [
+              "Kısa ve öz tutun (en fazla 2-3 sayfa)",
+              "Profesyonel bir özet ekleyin",
+              "Sadece sorumluluklara değil, başarılara odaklanın",
+              "Fotoğraf gerekmez (bazı Avrupa ülkelerinin aksine)",
+              "Hakemleri listeleyin veya \"Referanslar istek üzerine mevcuttur\" şeklinde belirtin"
+            ]
+          }
+        }
+      },
+      {
+        "id": "avustralya-işyeri",
+        "icon": "🏢",
+        "title": "6. Avustralya İşyeri Kültürünü Anlamak",
+        "content": {
+          "description": "Avustralya işyeri kültürünün kendine has bazı özellikleri vardır:",
+          "characteristics": [
+            "<strong>Gündelik ama profesyonel</strong> - Avustralyalılar genellikle gayriresmidir ancak işlerini ciddiye alırlar",
+            "<strong>İş-yaşam dengesi</strong> - Çoğu işveren kişisel zamana saygı duyar ve esnek düzenlemeler sunar",
+            "<strong>Doğrudan iletişim</strong> - Avustralyalılar iletişimlerinde açık sözlü olma eğilimindedirler",
+            "<strong>Takım odaklı</strong> - İşbirliği ve takım çalışmasına büyük değer verilir",
+            "<strong>\"Uzun haşhaş sendromu\"</strong> - Aşırı kendini tanıtma olumsuz karşılanabilir"
+          ]
+        }
+      },
+      {
+        "id": "maaş-beklenti̇ler",
+        "icon": "💰",
+        "title": "7. Maaş Beklentileri ve Çalışma Koşulları",
+        "content": {
+          "description": "Avustralya yüksek bir yaşam standardına ve rekabetçi maaşlara sahiptir.",
+          "keyFactsIntro": "Önemli gerçekler:",
+          "keyFacts": [
+            "Asgari ücret dünyadaki en yüksek ücretler arasında",
+            "Standart çalışma haftası 38 saattir",
+            "4 haftalık yıllık izin standarttır",
+            "10 gün ücretli kişisel/hastalık izni",
+            "İşverenlerin süper emeklilik (emeklilik) katkısı (şu anda %11)"
+          ],
+          "conclusion": "Rekabetçi maaş aralıklarını anlamak için mesleğinizle ilgili endüstri standartlarını araştırın."
+        }
+      }
+    ],
+    "successStories": {
+      "title": "Başarı Hikayeleri",
+      "stories": [
+        {
+          "flag": "🇮🇳",
+          "profession": "Yazılım Mühendisi",
+          "origin": "Mumbai'den Melbourne'a",
+          "story": "Vasıflı vize ile geldikten sonraki 3 ay içinde bir teknoloji girişiminde iş buldu.",
+          "outcome": "Şimdi yıllık 95.000 AUD kazanıyor"
+        },
+        {
+          "flag": "🇵🇭",
+          "profession": "Kayıtlı Hemşire",
+          "origin": "Manila'dan Sidney'e",
+          "story": "Çalışma Tatili vizesi ile çalıştıktan sonra bir hastane tarafından sponsor olundu.",
+          "outcome": "Kalıcı oturum izni 18 ay içinde verilir"
+        },
+        {
+          "flag": "🇬🇧",
+          "profession": "Ticaret Elektrikçisi",
+          "origin": "Londra'dan Perth'e",
+          "story": "Çevrimiçi iş portalları ve yerel tüccarlarla ağ kurma yoluyla iş buldum.",
+          "outcome": "İki yıl içinde kendi elektrik işini kurdu"
+        },
+        {
+          "flag": "🇩🇪",
+          "profession": "İnşaat Mühendisi",
+          "origin": "Berlin'den Brisbane'e",
+          "story": "Yeterliliğin tanınması 6 ay sürdü, ancak büyük bir inşaat firmasında iş buldu.",
+          "outcome": "50M AUD+ değerinde altyapı projelerini yönetme"
+        }
+      ]
+    },
+    "industryInsights": {
+      "title": "Sektör İş Piyasası Analizleri",
+      "insights": [
+        {
+          "category": "Sağlık Hizmetleri",
+          "metric": "İş Büyümesi",
+          "value": "+15.2%",
+          "description": "Önümüzdeki 5 yıl içinde öngörülen büyüme"
+        },
+        {
+          "category": "Teknoloji",
+          "metric": "Ortalama Maaş",
+          "value": "95,000 AUD",
+          "description": "Yetenekli profesyoneller için"
+        },
+        {
+          "category": "Nitelikli Zanaatlar",
+          "metric": "Beceri Eksikliği",
+          "value": "Kritik",
+          "description": "Tüm eyaletlerde yüksek talep"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Avustralya'da İş Bulmak İçin Son Kontrol Listesi",
+      "items": [
+        "Mesleğinizin Nitelikli Meslekler Listesinde yer alıp almadığını kontrol edin",
+        "Yeterliliklerinizin ilgili Avustralya makamı tarafından değerlendirilmesini sağlayın",
+        "Gerekirse İngilizce yeterlilik sınavına girin",
+        "Özgeçmişinizi Avustralya formatına göre güncelleyin",
+        "Vize gerekliliklerini ve başvuru süreçlerini araştırın"
+      ]
+    },
+    "conclusion": {
+      "title": "Avustralya'da Çalışmaya Hazır mısınız?",
+      "description": "Uygun hazırlık ve doğru niteliklerle Avustralya'da yabancı olarak iş bulmak mümkündür. Ülkenin güçlü ekonomisi, yüksek yaşam kalitesi ve çok kültürlü ortamı, burayı uluslararası deneyim ve kariyer gelişimi arayan profesyoneller için cazip bir yer haline getirmektedir."
+    }
+  },
+  "usToAustraliaGuide": {
+    "subtitle": "Bilmeniz Gereken Her Şey",
+    "description": "Birçok Amerikalı iş, eğitim veya yaşam tarzında değişiklik için Avustralya'ya taşınmaktadır. Kültürler benzer olsa da, dikkate alınması gereken önemli yasal ve pratik adımlar vardır.",
+    "navigation": {
+      "title": "Hızlı Navigasyon"
+    },
+    "accessibility": {
+      "sectionButton": "Başlık} bölümüne gidin bölüm"
+    },
+    "sections": [
+      {
+        "id": "neden-avustralya",
+        "icon": "📌",
+        "title": "Neden Avustralya'ya Taşınmalı?",
+        "content": {
+          "description": "Amerikalıları Avustralya'ya çeken pek çok neden var:",
+          "reasons": [
+            "Yüksek yaşam kalitesi",
+            "Güçlü ekonomi ve iş fırsatları",
+            "Evrensel sağlık sistemi (Medicare)",
+            "Güzel plajlar ve açık hava yaşam tarzı",
+            "Amerikan yaşam tarzı ile kültürel benzerlikler"
+          ],
+          "conclusion": "İster kariyerinizde ilerlemek, ister eğitim almak ya da yaşam tarzınızı değiştirmek için taşınıyor olun, Avustralya İngilizce konuşulan bir ortam ve birçok tanıdık ev konforu sunar."
+        }
+      },
+      {
+        "id": "vi̇ze seçenekleri̇",
+        "icon": "✈️",
+        "title": "ABD Vatandaşları için Vize Seçenekleri",
+        "content": {
+          "description": "Amerikalılar Avustralya'ya taşınmadan önce <strong>vize</strong> almak zorundadır. Yaygın türleri şunlardır:",
+          "visaTypes": [
+            {
+              "title": "Nitelikli Bağımsız Vize (alt sınıf 189)",
+              "points": [
+                "Yüksek talep gören alanlardaki profesyoneller için",
+                "Yaş, beceri, eğitim ve deneyimi değerlendiren puana dayalı sistem",
+                "Daimi ikamet yolu",
+                "Sponsora gerek yok"
+              ]
+            },
+            {
+              "title": "İşveren Destekli Vize (alt sınıf 482)",
+              "points": [
+                "Avustralyalı bir işverenden iş teklifi almış olmak",
+                "Geçici (2-4 yıl) ve kalıcı oturma iznine giden potansiyel yol",
+                "İşveren size sponsor olmalıdır"
+              ]
+            },
+            {
+              "title": "Partner/Eş Vizesi",
+              "points": [
+                "Avustralyalı bir ortağa katılanlar için",
+                "Evli partnerler veya de facto ilişkiler için seçenekler içerir",
+                "Kalıcı oturma iznine yol açar"
+              ]
+            },
+            {
+              "title": "Öğrenci Vizesi (alt sınıf 500)",
+              "points": [
+                "Avustralya kurumlarında eğitim almak için",
+                "Eğitim sırasında sınırlı çalışma saatlerine izin verir",
+                "Mezuniyet sonrası çalışma vizelerine giden potansiyel yol"
+              ]
+            },
+            {
+              "title": "Çalışma Tatili Vizesi (alt sınıf 462)",
+              "description": "Avustralya'da 12 aya kadar çalışma ve seyahat imkanı sağlayan 18-30 yaş arası Amerikalılar için mevcuttur"
+            }
+          ]
+        }
+      },
+      {
+        "id": "gerekli belgeler",
+        "icon": "🛂",
+        "title": "Temel Gereksinimler",
+        "content": {
+          "description": "Avustralya vizesi için başvururken genellikle şunlara ihtiyacınız olacaktır:",
+          "requirements": [
+            "Geçerli pasaport",
+            "İngilizce yeterlilik belgesi (belirli vizeler için)",
+            "Sağlık kontrolleri ve polis izni",
+            "Beceri/eğitim değerlendirmesi (vasıflı vizeler için)",
+            "Fon kanıtı (öğrenci ve geçici vizeler için)",
+            "Biyometrik veriler",
+            "Tamamlanmış vize başvuru formları"
+          ],
+          "note": "Özel gereklilikler vize türüne göre değişmektedir, bu nedenle en güncel bilgiler için her zaman Avustralya İçişleri Bakanlığı web sitesini kontrol edin."
+        }
+      },
+      {
+        "id": "popüler-şehirler",
+        "icon": "🏙️",
+        "title": "Avustralya'da En Çok Amerikalı Nerede Yaşıyor?",
+        "content": {
+          "description": "Amerikalılar bu popüler Avustralya şehirlerine yerleşme eğilimindedir:",
+          "cities": [
+            {
+              "name": "Sidney",
+              "icon": "🌊",
+              "highlights": [
+                "Avustralya'nın ikonik simge yapılara sahip en büyük şehri",
+                "Güçlü finans, teknoloji ve yaratıcı endüstriler",
+                "Güzel plajlar ve liman yaşam tarzı"
+              ]
+            },
+            {
+              "name": "Melbourne",
+              "icon": "🎭",
+              "highlights": [
+                "Gelişen sanat ortamı ile kültür başkenti",
+                "Sürekli olarak dünyanın en yaşanabilir şehirleri arasında yer alıyor",
+                "Harika yemekler, kahve ve spor etkinlikleri"
+              ]
+            },
+            {
+              "name": "Brisbane",
+              "icon": "☀️",
+              "highlights": [
+                "Güneşli, subtropikal iklim",
+                "Sidney veya Melbourne'dan daha uygun fiyatlı",
+                "Büyüyen iş piyasası ile rahat yaşam tarzı"
+              ]
+            },
+            {
+              "name": "Perth",
+              "icon": "🌄",
+              "highlights": [
+                "Batı kıyısında izole ama canlı bir şehir",
+                "Güçlü madencilik ve kaynaklar sektörü",
+                "Güzel plajlar ve Akdeniz iklimi"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "hayat pahalılığı",
+        "icon": "💰",
+        "title": "Taşınma ve Yaşam Maliyeti",
+        "content": {
+          "description": "Başlangıç maliyetleri, uçuşlar, nakliye, vize ücretleri ve barınmaya bağlı olarak <strong>5.000-15.000 ABD Doları</strong> arasında değişebilir.",
+          "conclusion": "Avustralya'da yaşam maliyeti ABD'nin büyük şehirleriyle kıyaslanabilir, ancak Medicare sistemi sayesinde sağlık hizmetleri maliyetleri genellikle daha düşüktür."
+        }
+      },
+      {
+        "id": "sağlık hizmetleri",
+        "icon": "🩺",
+        "title": "Avustralya'da Sağlık Hizmetleri",
+        "content": {
+          "paragraphs": [
+            {
+              "type": "Metin",
+              "content": "Avustralya, ücretsiz veya sübvansiyonlu tıbbi bakıma erişim sağlayan Medicare adlı evrensel bir sağlık sistemine sahiptir."
+            },
+            {
+              "type": "Liste",
+              "intro": "Daimi ikamet eden bir kişi veya vatandaş olarak, sizi kapsayan bir Medicare kartı alacaksınız:",
+              "items": [
+                "Devlet hastanelerinde ücretsiz tedavi",
+                "Sübvansiyonlu doktor ziyaretleri",
+                "Reçeteli ilaçların çoğu indirimli fiyatlarla"
+              ]
+            },
+            {
+              "type": "Metin",
+              "content": "Birçok Avustralyalı ayrıca ek teminat, daha kısa bekleme süreleri ve özel hastane tedavisi için özel sağlık sigortası satın almaktadır."
+            },
+            {
+              "type": "Metin",
+              "content": "Geçici vize sahiplerinin genellikle vizelerinin bir koşulu olarak özel sağlık sigortası yaptırmaları gerekmektedir."
+            }
+          ]
+        }
+      },
+      {
+        "id": "yaşam tarzı",
+        "icon": "🏡",
+        "title": "Yaşam Tarzı Farklılıkları",
+        "content": {
+          "differences": [
+            "<strong>Yüksek yaşam kalitesi, kamu sağlık hizmetleri (Medicare) ve güçlü işçi hakları</strong>",
+            "<strong>Sydney veya Melbourne gibi büyük şehirlerde</strong> yaşam maliyeti yüksek olabilir",
+            "Yolun <strong>sol tarafında</strong> sürüş",
+            "Daha fazla yıllık izin (4 hafta standarttır) ve daha iyi iş-yaşam dengesi",
+            "Tüm ölçümler için kullanılan metrik sistem",
+            "Farklı okul takvimi (yıl genellikle Şubat'tan Aralık'a kadar sürer)",
+            "Daha güçlü kahve kültürü ve eşsiz yemek ortamı"
+          ],
+          "note": "Kültürler benzer olsa da, Amerikalılar genellikle argo, mizah ve Avustralya'nın işe ve hayata karşı daha rahat tutumundaki farklılıklara dikkat çekerler."
+        }
+      },
+      {
+        "id": "hareketli",
+        "icon": "📦",
+        "title": "ABD'den Taşınma ve Nakliye",
+        "content": {
+          "sections": [
+            {
+              "title": "Nakliye Seçenekleri:",
+              "items": [
+                "<strong>Deniz taşımacılığı:</strong> Büyük gönderiler için en ekonomik olanı (küçük bir daire için 3.000-7.000 $)",
+                "<strong>Hava taşımacılığı:</strong> Daha hızlı ancak daha pahalı (temel eşyalar için 1.500-3.000$)",
+                "<strong>Sevkiyat konteynerleri:</strong> Ne kadar getireceğinize bağlı olarak 20ft veya 40ft seçenekleri"
+              ]
+            },
+            {
+              "title": "Önemli Hususlar:",
+              "items": [
+                "Avustralya'da sıkı biyogüvenlik yasaları vardır - ürünleri göndermeden önce iyice temizleyin",
+                "Elektrikli cihazların adaptöre ihtiyacı vardır (Avustralya'da I tipi fişlerle 230V kullanılır)",
+                "Avustralya'da büyük mobilyaları satmayı ve yeni mobilya almayı düşünün",
+                "Evcil hayvan ithalatı aylar öncesinden hazırlık gerektirir (aşılar, mikroçipler, izinler)"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "bankacılık",
+        "icon": "🏦",
+        "title": "Bankacılık ve Finans",
+        "content": {
+          "intro": "Avustralya'da mali durumunuzu düzenlemek:",
+          "points": [
+            "Avustralya'ya gelmeden 3 ay öncesine kadar bir Avustralya banka hesabı açabilirsiniz",
+            "Başlıca bankalar arasında Commonwealth Bank, ANZ, Westpac ve NAB bulunmaktadır",
+            "Pasaportunuza, vize belgelerinize ve adres kanıtınıza ihtiyacınız olacak",
+            "USD'yi AUD'ye dönüştürmek için Wise gibi uluslararası para transferi hizmetlerini değerlendirin",
+            "Avustralya vergi yılı 1 Temmuz - 30 Haziran tarihleri arasındadır",
+            "Yasal olarak çalışmak için bir Vergi Dosya Numarasına (TFN) ihtiyacınız olacak"
+          ],
+          "conclusion": "Para Birimi: Avustralya Doları (AUD). Kredi kartları yaygın olarak kabul edilmektedir ve temassız ödeme çok yaygındır."
+        }
+      }
+    ],
+    "costComparison": {
+      "headers": {
+        "expense": "Giderler",
+        "australia": "Avustralya (ortalama)",
+        "usa": "ABD (ortalama)"
+      },
+      "rows": [
+        {
+          "expense": "Kiralık (1BR şehir merkezi)",
+          "australia": "$1,200-$1,800/ay",
+          "usa": "$1,500-$2,000"
+        },
+        {
+          "expense": "Kamu Hizmetleri (aylık)",
+          "australia": "$150-$200",
+          "usa": "$150-$200"
+        },
+        {
+          "expense": "Dışarıda yemek (2 kişilik)",
+          "australia": "$60-$100",
+          "usa": "$50-$100"
+        },
+        {
+          "expense": "Ulaşım",
+          "australia": "$100-$150/ay",
+          "usa": "$70-$150"
+        }
+      ]
+    },
+    "stateComparison": {
+      "title": "ABD Eyaletleri vs Avustralya Eyaletleri",
+      "comparisons": [
+        {
+          "ausIcon": "🦘",
+          "usIcon": "🗽",
+          "comparison": "NSW - New York",
+          "description": "Benzer nüfus yoğunluğu ve kentsel yaşam tarzı"
+        },
+        {
+          "ausIcon": "☕",
+          "usIcon": "🌉",
+          "comparison": "Victoria - Kaliforniya",
+          "description": "Farklı nüfuslara sahip kültürel merkezler"
+        },
+        {
+          "ausIcon": "🌴",
+          "usIcon": "🌴",
+          "comparison": "Queensland - Florida",
+          "description": "Tropikal iklimler ve turizm endüstrileri"
+        },
+        {
+          "ausIcon": "⛏️",
+          "usIcon": "🤠",
+          "comparison": "WA - Teksas",
+          "description": "Madencilik ekonomisine sahip kaynak zengini devletler"
+        },
+        {
+          "ausIcon": "🍷",
+          "usIcon": "🍷",
+          "comparison": "SA - Napa Vadisi",
+          "description": "Akdeniz iklimine sahip şarap bölgeleri"
+        },
+        {
+          "ausIcon": "🏔️",
+          "usIcon": "🏔️",
+          "comparison": "Tazmanya - Vermont",
+          "description": "Daha serin iklimler ve doğal güzellikler"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Taşınma Zaman Çizelgesi: Ayrılmadan 12 Ay Önce",
+      "phases": [
+        {
+          "timeframe": "12 ay önce",
+          "title": "Araştırma ve Planlama",
+          "description": "Vize seçeneklerini araştırın, nitelikleri değerlendirin, gerekirse beceri değerlendirmelerini başlatın"
+        },
+        {
+          "timeframe": "9-10 ay önce",
+          "title": "Vize Başvurusu",
+          "description": "Vize başvurusu yapın, gerekli belgeleri toplayın, sağlık kontrollerini tamamlayın"
+        },
+        {
+          "timeframe": "6-8 ay önce",
+          "title": "İş Arama ve Hazırlık",
+          "description": "İş başvurularına başlayın, Avustralyalı profesyonellerle ağ kurun, şehirleri araştırın"
+        },
+        {
+          "timeframe": "3-4 ay önce",
+          "title": "Lojistik Planlama",
+          "description": "Uçuş rezervasyonu yapın, nakliye ayarlayın, geçici konaklama sağlayın"
+        },
+        {
+          "timeframe": "1-2 ay önce",
+          "title": "Son Hazırlıklar",
+          "description": "Avustralya banka hesabı açın, sigorta ayarlayın, taşınma ayrıntılarını kesinleştirin"
+        },
+        {
+          "timeframe": "Varışta",
+          "title": "Yerleşim",
+          "description": "TFN ve Medicare için başvurun, kalıcı konut bulun, yerel hizmetlere kaydolun"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Avustralya'ya Taşınan Amerikalılar için Son Kontrol Listesi",
+      "items": [
+        "Uygun vize için araştırma ve başvuru",
+        "Sağlık kontrolleri ve polis izni alın",
+        "Eşyaların nakliyesini veya depolanmasını ayarlayın",
+        "Avustralya'da bir banka hesabı açın",
+        "Güvenli konaklama (geçici veya kalıcı)",
+        "Sağlık sigortası kapsamını düzenleyin",
+        "Vergi Dosya Numarası (TFN) ve Medicare kartı (uygunsa) için başvurun"
+      ]
+    },
+    "conclusion": {
+      "title": "Sonuç: ABD'den Avustralya'ya Taşınmaya Değer mi?",
+      "description": "Birçok Amerikalı için Avustralya, mükemmel yaşam kalitesi, güçlü işçi korumaları ve güzel doğal ortamları ile tanıdık kültür ve yeni deneyimler arasında çekici bir denge sunmaktadır. Taşınmak dikkatli bir planlama ve önemli ön maliyetler gerektirse de, birçok gurbetçi daha iyi iş-yaşam dengesi ve yeni fırsatlarla bu geçişi ödüllendirici buluyor."
+    }
+  },
+  "australiaRequirements": {
+    "description": "Avustralya'ya taşınmayı planlıyorsanız, karşılamanız gereken temel gereklilikler şunlardır:",
+    "navigation": {
+      "title": "Hızlı Navigasyon",
+      "expandAll": "Tümünü Genişlet",
+      "collapseAll": "Tümünü Daralt"
+    },
+    "accessibility": {
+      "sectionButton": "Toggle {title} bölüm"
+    },
+    "sections": [
+      {
+        "id": "VİZE",
+        "icon": "🛂",
+        "title": "Geçerli Vize",
+        "shortTitle": "Vize",
+        "content": [
+          {
+            "type": "paragrafı",
+            "text": "Avustralya'ya girmeden önce vasıflı, öğrenci, partner veya sponsorlu çalışma vizesi gibi uygun bir vizeye başvurmanız ve almanız gerekir."
+          }
+        ]
+      },
+      {
+        "id": "sağlık-karakter",
+        "icon": "🔍",
+        "title": "Sağlık ve Karakter Kontrolleri",
+        "shortTitle": "Sağlık Kontrolü",
+        "content": [
+          {
+            "type": "Liste",
+            "items": [
+              "Vizenize bağlı olarak <strong>Tıbbi muayene</strong> gerekebilir.",
+              "Son 10 yıl içinde 12 aydan fazla yaşadığınız ülkelerden <strong>Polis izni</strong>.",
+              "Ciddi bir sabıka kaydınız olmamalıdır."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "fonlar",
+        "icon": "💵",
+        "title": "Fon Kanıtı",
+        "shortTitle": "Fonlar",
+        "content": [
+          {
+            "type": "paragrafı",
+            "text": "Bazı vize türleri (örneğin, öğrenci veya vasıflı vizeler), varışta kendinizi mali olarak geçindirebileceğinize dair kanıt gerektirir."
+          }
+        ]
+      },
+      {
+        "id": "İngilizce",
+        "icon": "🗣️",
+        "title": "İngilizce Yeterlilik",
+        "shortTitle": "İngilizce",
+        "content": [
+          {
+            "type": "paragrafı",
+            "text": "Çoğu vize, özellikle vasıflı ve öğrenci vizeleri için İngilizce becerilerinin kanıtlanmasını (IELTS, TOEFL veya eşdeğeri) gerektirir."
+          }
+        ]
+      },
+      {
+        "id": "Beceriler",
+        "icon": "📋",
+        "title": "Beceri Değerlendirmesi",
+        "shortTitle": "Beceriler",
+        "content": [
+          {
+            "type": "paragrafı",
+            "text": "Nitelikli göçmenlik vizeleri için, niteliklerinizin mesleğinizle ilgili bir Avustralya makamı tarafından değerlendirilmesini sağlamalısınız."
+          }
+        ]
+      },
+      {
+        "id": "seyahat",
+        "icon": "✈️",
+        "title": "Seyahat Belgeleri",
+        "shortTitle": "Belgeler",
+        "content": [
+          {
+            "type": "Liste",
+            "items": [
+              "Geçerli bir pasaport",
+              "Seyahat sigortası (tavsiye edilir)"
+            ]
+          }
+        ]
+      }
+    ],
+    "additionalRequirements": {
+      "title": "Vize Türüne Göre Ek Gereklilikler",
+      "items": [
+        {
+          "icon": "🎓",
+          "title": "Öğrenci Vizeleri",
+          "description": "Kayıt Onayı (CoE), Yurtdışı Öğrenci Sağlık Teminatı (OSHC), gerçek geçici giriş kriterleri",
+          "note": "Tam zamanlı çalışmaya devam etmeli"
+        },
+        {
+          "icon": "💼",
+          "title": "Çalışma Vizeleri",
+          "description": "Onaylı işverenden iş teklifi, ilgili iş deneyimi, vasıflı listesindeki meslek",
+          "note": "İşveren sponsorluğu gerekli"
+        },
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "title": "Aile Vizeleri",
+          "description": "İlişki kanıtları, sponsor gereksinimleri, finansal destek taahhütleri",
+          "note": "İşlem süreleri değişiklik gösterir"
+        },
+        {
+          "icon": "🏠",
+          "title": "Yatırımcı Vizeleri",
+          "description": "Asgari yatırım eşikleri, iş deneyimi, devlet adaylığı",
+          "note": "Yüksek finansal gereksinimler"
+        }
+      ]
+    },
+    "visaTypes": {
+      "title": "Yaygın Vize Türleri Hızlı Referans",
+      "types": [
+        {
+          "icon": "🎯",
+          "name": "Nitelikli Bağımsız (189)",
+          "description": "Puana dayalı kalıcı vize",
+          "duration": "Daimi",
+          "difficulty": "Yüksek"
+        },
+        {
+          "icon": "🤝",
+          "name": "İşveren Destekli (482)",
+          "description": "Sponsorlu geçici çalışma vizesi",
+          "duration": "2-4 yıl",
+          "difficulty": "Orta"
+        },
+        {
+          "icon": "🎓",
+          "name": "Öğrenci (500)",
+          "description": "Avustralya kurumlarında eğitim",
+          "duration": "Çalışma dönemi",
+          "difficulty": "Düşük"
+        },
+        {
+          "icon": "💑",
+          "name": "Ortak (820/801)",
+          "description": "Eşler/de facto partnerler için",
+          "duration": "Daimi",
+          "difficulty": "Orta"
+        },
+        {
+          "icon": "🌟",
+          "name": "Çalışma Tatili (417)",
+          "description": "Gençler için çalışma ve seyahat",
+          "duration": "1 yıl",
+          "difficulty": "Düşük"
+        },
+        {
+          "icon": "💰",
+          "name": "İş İnovasyonu (188)",
+          "description": "Girişimciler ve yatırımcılar için",
+          "duration": "4 yıl",
+          "difficulty": "Yüksek"
+        }
+      ]
+    },
+    "tips": {
+      "title": "Önemli İpuçları",
+      "items": [
+        "Bazı vizelerin işleme alınması birkaç ay sürebileceğinden vize başvuru sürecinize erken başlayın",
+        "Tüm önemli belgelerinizi düzenli tutun ve dijital olarak yedekleyin",
+        "Avustralya İçişleri Bakanlığı web sitesinde vize türünüz için özel gereklilikleri araştırın",
+        "Karmaşık vakalar için profesyonel göç danışmanlığı almayı düşünün",
+        "İşlem süreleri değişebileceğinden düzenli olarak kontrol edin",
+        "İngilizce değilse tüm belgelerin tercüme edildiğinden ve onaylandığından emin olun"
+      ]
+    },
+    "summary": {
+      "title": "Hızlı Kontrol Listesi",
+      "description": "Başarılı bir Avustralya vizesi başvurusu için bu temel gereklilikleri unutmayın:",
+      "keyPoints": [
+        "Geçerli pasaport (6+ ay)",
+        "Uygun vize başvurusu",
+        "Sağlık ve karakter kontrolleri",
+        "İngilizce yeterlilik kanıtı",
+        "Finansal kanıtlar",
+        "Beceri değerlendirmesi (gerekliyse)",
+        "Seyahat sigortası",
+        "Tüm belgeler onaylandı"
+      ]
+    }
+  },
+  "australiaVisaGuide": {
+    "description": "Avustralya'ya taşınmayı planlıyorsanız, doğru vizeye ihtiyacınız olacaktır. İşte kalış amacınıza göre en yaygın seçenekler:",
+    "labels": {
+      "idealFor": "Şunlar için ideal",
+      "duration": "Süre",
+      "pathway": "Yol",
+      "visaTypes": "Vize Türleri",
+      "requirements": "Gereksinimler",
+      "benefits": "Avantajlar",
+      "processingTime": "İşlem Süresi"
+    },
+    "controls": {
+      "expandAll": "Tümünü Genişlet",
+      "collapseAll": "Tümünü Daralt"
+    },
+    "compare": {
+      "enable": "Vizeleri Karşılaştırın",
+      "exit": "Karşılaştırma Modundan Çık",
+      "select": "Seçiniz",
+      "selected": "Seçilmiş",
+      "table": {
+        "title": "Vize Karşılaştırması",
+        "headers": {
+          "type": "Vize Türü",
+          "duration": "Süre",
+          "pathway": "Yol",
+          "idealFor": "İçin İdeal"
+        }
+      }
+    },
+    "visas": [
+      {
+        "id": "vasıflı-göç",
+        "icon": "🎯",
+        "title": "Nitelikli Göçmen Vizeleri",
+        "category": "Profesyonel Vizeler",
+        "idealFor": "Talep gören becerilere sahip profesyoneller",
+        "duration": "Daimi",
+        "pathway": "Daimi",
+        "visaTypes": [
+          {
+            "name": "Nitelikli Bağımsız Vize",
+            "description": "Puan bazlı; iş teklifi gerekmez",
+            "subclass": "189"
+          },
+          {
+            "name": "Nitelikli Aday Vize",
+            "description": "Bir Avustralya eyaleti veya bölgesi tarafından aday gösterilmeyi gerektirir",
+            "subclass": "190"
+          },
+          {
+            "name": "Nitelikli Çalışma Bölgesel Vizesi",
+            "description": "Bölgesel Avustralya'da yaşamak ve çalışmak için; devlet veya aile sponsorluğu gerekli",
+            "subclass": "491"
+          }
+        ],
+        "requirements": [
+          "Aday gösterilen meslek için beceri değerlendirmesi",
+          "İngilizce dil yeterliliği",
+          "45 yaş altı",
+          "Puan testi eşiğini karşılayın (şu anda 65 puan)",
+          "Sağlık ve karakter gereklilikleri"
+        ],
+        "benefits": [
+          "Daimi ikamet yolu",
+          "Avustralya'nın herhangi bir yerinde çalışın ve eğitim alın",
+          "Medicare'e Erişim",
+          "Dört yıl sonra vatandaşlığa giden yol"
+        ],
+        "processingTime": "Çoğu uygulama için 8-12 ay"
+      },
+      {
+        "id": "işveren destekli",
+        "icon": "🤝",
+        "title": "İşveren Destekli Vizeler",
+        "category": "Çalışma Vizeleri",
+        "idealFor": "Avustralyalı bir işverenden iş teklifi alan kişiler",
+        "duration": "2-4 yıl",
+        "pathway": "Geçiciden Kalıcıya",
+        "visaTypes": [
+          {
+            "name": "Geçici Beceri Eksikliği Vizesi",
+            "description": "Sponsorluk gerektirir ve 2-4 yıl süreyle geçerlidir",
+            "subclass": "482"
+          },
+          {
+            "name": "İşveren Atama Programı",
+            "description": "Onaylı bir işveren tarafından aday gösterilen vasıflı çalışanlar için daimi vize",
+            "subclass": "186"
+          }
+        ],
+        "requirements": [
+          "Onaylı Avustralyalı işverenden iş teklifi",
+          "İlgili beceri ve nitelikler",
+          "İngilizce dil yeterliliği",
+          "Sağlık ve karakter gereklilikleri",
+          "İlgili vasıflı meslekler listesindeki meslek"
+        ],
+        "benefits": [
+          "Avustralya'da çalışmak için doğrudan yol",
+          "Aile üyeleri eşlik edebilir",
+          "Daimi oturum iznine giden yol",
+          "Puan testi gerekmez"
+        ],
+        "processingTime": "TSS için 3-6 ay, ENS için 8-12 ay"
+      },
+      {
+        "id": "öğrenci",
+        "icon": "🎓",
+        "title": "Öğrenci Vizesi",
+        "category": "Eğitim Vizesi",
+        "idealFor": "Avustralya'da bir eğitim kurumuna kayıtlı olanlar",
+        "duration": "Çalışma süresi + 1-4 yıl",
+        "pathway": "Geçici",
+        "visaTypes": [
+          {
+            "name": "Öğrenci Vizesi",
+            "description": "Avustralya kurumlarında eğitim almak için. Eğitim sırasında yarı zamanlı çalışmaya izin verir",
+            "subclass": "500"
+          }
+        ],
+        "requirements": [
+          "Kayıt Onayı (CoE)",
+          "Hakiki Geçici Katılımcı (GTE) gerekliliği",
+          "İngilizce dil yeterliliği",
+          "Finansal kapasite",
+          "Yurtdışı Öğrenci Sağlık Teminatı (OSHC)"
+        ],
+        "benefits": [
+          "Dünya standartlarındaki kurumlarda eğitim",
+          "İki haftada 48 saate kadar çalışma",
+          "Mezuniyet sonrası çalışma vizelerine giden yol",
+          "Avustralya kültürünü deneyimleyin"
+        ],
+        "processingTime": "Çoğu uygulama için 4-8 hafta"
+      },
+      {
+        "id": "aile-ortağı",
+        "icon": "👨‍👩‍👧‍👦",
+        "title": "Aile ve Partner Vizeleri",
+        "category": "Aile Vizeleri",
+        "idealFor": "Avustralya'da ailesi veya partneri olanlar",
+        "duration": "Daimi",
+        "pathway": "Daimi",
+        "visaTypes": [
+          {
+            "name": "Ortak Vizesi (Onshore)",
+            "subclass": "820/801",
+            "description": "Avustralya vatandaşlarının veya daimi ikamet edenlerin eşleri veya fiili partnerleri için"
+          },
+          {
+            "name": "Ortak Vizesi (Offshore)",
+            "subclass": "309/100",
+            "description": "Avustralya dışından başvuran eşler veya de facto partnerler için"
+          },
+          {
+            "name": "Ebeveyn ve Çocuk Vizeleri",
+            "subclass": "Çeşitli",
+            "description": "Avustralya vatandaşlarının veya PR sahiplerinin yakın aile üyeleri için"
+          }
+        ],
+        "requirements": [
+          "Gerçek ilişki kanıtı",
+          "Sponsor Avustralya vatandaşı/PR olmalıdır",
+          "Sağlık ve karakter gereklilikleri",
+          "Finansal destek taahhüdü",
+          "Yeterli sağlık sigortası"
+        ],
+        "benefits": [
+          "Daimi ikamet",
+          "Çalışma ve öğrenim hakları",
+          "Medicare ve sosyal hizmetlere erişim",
+          "Vatandaşlığa giden yol"
+        ],
+        "processingTime": "Partner vizeleri için 12-24 ay"
+      },
+      {
+        "id": "iş-yatırım",
+        "icon": "💼",
+        "title": "İş ve Yatırım Vizeleri",
+        "category": "Ticari Vizeler",
+        "idealFor": "Avustralya'da yatırım yapmak veya iş kurmak isteyen bireyler",
+        "duration": "4 yıl",
+        "pathway": "Geçiciden Kalıcıya",
+        "visaTypes": [
+          {
+            "name": "İş İnovasyonu ve Yatırım Vizesi",
+            "description": "Daha sonra kalıcı oturma iznine (alt sınıf 888) yol açar",
+            "subclass": "188"
+          }
+        ],
+        "requirements": [
+          "Başarılı iş veya yatırım geçmişi",
+          "Yaş, İngilizce ve sağlık gereksinimlerini karşılayın",
+          "Asgari net iş ve kişisel varlıklar",
+          "Eyalet veya bölge adaylığı",
+          "Avustralya'da iş/yatırım sürdürme taahhüdü"
+        ],
+        "benefits": [
+          "Daimi oturum iznine giden yol",
+          "İstikrarlı ekonomide iş fırsatları",
+          "Avustralya pazarına erişim",
+          "Çocuklar için kaliteli eğitim"
+        ],
+        "processingTime": "İlk vize için 8-12 ay"
+      }
+    ],
+    "helper": {
+      "title": "Hangi Vize Sizin İçin Uygun?",
+      "scenarios": [
+        {
+          "icon": "🎯",
+          "situation": "Ben yetenekli bir profesyonelim",
+          "description": "Talep gören bir meslekte niteliklere sahipsiniz",
+          "recommendation": "Nitelikli Göçmen Vizelerini (189/190/491) Değerlendirin"
+        },
+        {
+          "icon": "💼",
+          "situation": "Bir iş teklifim var.",
+          "description": "Avustralyalı bir işveren sizi işe almak istiyor",
+          "recommendation": "İşveren Destekli Vizeler için Başvurun (482/186)"
+        },
+        {
+          "icon": "🎓",
+          "situation": "Çalışmak istiyorum",
+          "description": "Avustralya'da eğitim almayı planlıyorsunuz",
+          "recommendation": "Çalışma haklarına sahip Öğrenci Vizesi (500)"
+        },
+        {
+          "icon": "💕",
+          "situation": "Avustralya'da bir ailem var.",
+          "description": "Bir Avustralyalı ile evliyseniz veya partneriniz varsa",
+          "recommendation": "Ortak Vizesi (820/801 veya 309/100)"
+        },
+        {
+          "icon": "🏢",
+          "situation": "Bir iş kurmak istiyorum",
+          "description": "İş deneyiminiz ve yatırım sermayeniz var",
+          "recommendation": "İş İnovasyonu Vizesi (188)"
+        },
+        {
+          "icon": "🌟",
+          "situation": "Gencim ve seyahat etmek istiyorum",
+          "description": "Uygun bir ülkeden 18-30 yaş arasındasınız",
+          "recommendation": "Çalışma Tatili Vizesi (417/462)"
+        }
+      ]
+    },
+    "processingTimes": {
+      "title": "Güncel İşlem Süreleri",
+      "averageTime": "Ortalama Süre",
+      "disclaimer": "İşlem süreleri tahminidir ve bireysel koşullara ve başvuru eksiksizliğine bağlı olarak değişebilir.",
+      "visaTypes": [
+        {
+          "type": "Nitelikli Bağımsız (189)",
+          "time": "8-12 ay",
+          "note": "Mesleğe ve puana göre değişir"
+        },
+        {
+          "type": "İşveren Destekli (482)",
+          "time": "3-6 ay",
+          "note": "Eksiksiz dokümantasyon ile daha hızlı"
+        },
+        {
+          "type": "Öğrenci (500)",
+          "time": "4-8 hafta",
+          "note": "Yoğun zamanlar daha uzun olabilir"
+        },
+        {
+          "type": "Ortak (820/801)",
+          "time": "12-24 ay",
+          "note": "Karmaşık vakalar daha uzun sürer"
+        },
+        {
+          "type": "İşletme (188)",
+          "time": "8-12 ay",
+          "note": "Eyalet adaylığı zaman kazandırıyor"
+        },
+        {
+          "type": "Çalışma Tatili (417)",
+          "time": "1-4 hafta",
+          "note": "Genellikle hızlı işlenir"
+        }
+      ]
+    }
+  },
+  "ukToAustraliaGuide": {
+    "subtitle": "Bilmeniz Gerekenler",
+    "description": "İngiltere'den Avustralya'ya taşınmak kültürel benzerlikler, ortak bir dil ve güçlü ekonomik bağlar nedeniyle popülerdir. Yine de taşınmak için planlama ve doğru vizeye sahip olmak gerekir. Bu kılavuz, taşınma hakkında bilmeniz gereken her şeyi kapsamaktadır.",
+    "navigation": {
+      "title": "Hızlı Navigasyon"
+    },
+    "accessibility": {
+      "sectionButton": "Başlık} bölümüne gidin bölüm"
+    },
+    "sections": [
+      {
+        "id": "neden-hareket",
+        "icon": "🧳",
+        "title": "Neden Avustralya'ya Taşınmalı?",
+        "content": {
+          "description": "İngiltere'den Avustralya'ya taşınmak kültürel benzerlikler, ortak bir dil ve güçlü ekonomik bağlar nedeniyle popülerdir. Yine de taşınmak için planlama ve doğru vizeye sahip olmak gerekir.",
+          "reasons": [
+            "Benzer kültür ve ortak dil",
+            "Güçlü ekonomik fırsatlar",
+            "Daha yüksek yaşam kalitesi ve açık hava yaşam tarzı",
+            "Daha iyi hava ve güzel manzaralar",
+            "Yerleşik İngiliz göçmen toplulukları"
+          ],
+          "conclusion": "Taşınma, özellikle vizeler ve istihdam seçenekleri konusunda dikkatli bir planlama gerektirmektedir."
+        }
+      },
+      {
+        "id": "vi̇ze gereksi̇ni̇mleri̇",
+        "icon": "🛂",
+        "title": "Vize Gereklilikleri",
+        "content": {
+          "description": "Birleşik Krallık vatandaşlarının Avustralya'da yaşamak, çalışmak veya eğitim görmek için vizeye ihtiyaçları vardır. Popüler seçenekler şunlardır:",
+          "visaTypes": [
+            {
+              "title": "Nitelikli Bağımsız Vize (alt sınıf 189)",
+              "description": "Sponsorluk gerektirmeyen yüksek talep gören mesleklerdeki çalışanlar için",
+              "keyPointsTitle": "Önemli noktalar:",
+              "keyPoints": [
+                "Beceri değerlendirmesinden yeterli puan almalıdır",
+                "Sponsora gerek yok",
+                "Daimi ikamet yolu",
+                "45 yaşın altında olmalı"
+              ]
+            },
+            {
+              "title": "Nitelikli Aday Vize (alt sınıf 190)",
+              "description": "Daha hızlı işlem süreleri ile devlet tarafından aday gösterildi",
+              "keyPoints": [
+                "Bir Avustralya eyaleti veya bölgesinden adaylık gerektirir",
+                "Eyalet adaylığı için ekstra puan",
+                "Aday gösteren eyalette yaşama taahhüdü gerektirebilir"
+              ]
+            },
+            {
+              "title": "İşveren Destekli Vize (alt sınıf 482)",
+              "description": "Avustralyalı bir şirketten iş teklifi almış olmak",
+              "keyPoints": [
+                "Geçici beceri eksikliği vizesi",
+                "İşveren onaylı sponsor olmalıdır",
+                "Pozisyon vasıflı meslekler listesinde yer almalıdır",
+                "Belirli bir süre sonra daimi ikamet hakkı sağlayabilir"
+              ]
+            },
+            {
+              "title": "Çalışma Tatili Vizesi (alt sınıf 417)",
+              "description": "18-35 yaş arası kişiler için, 3 yıla kadar geçerlidir",
+              "keyPoints": [
+                "Başlangıçta 12 ay",
+                "Bölgesel çalışma ile iki kez uzatılabilir",
+                "Tek bir işverenle 6 aya kadar çalışmaya izin verir",
+                "Taahhütte bulunmadan önce Avustralya'yı deneyimlemek için iyi bir yol"
+              ]
+            },
+            {
+              "title": "Partner veya Aile Vizeleri",
+              "description": "Avustralya'da yakın akrabalarınız veya bir partneriniz varsa",
+              "keyPoints": [
+                "Eşler veya fiili partnerler için partner vizesi",
+                "Avustralya vatandaşlarının ebeveynleri için ebeveyn vizeleri",
+                "Bakmakla yükümlü olunan çocuklar için çocuk vizeleri"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "diğer-gereksinimler",
+        "icon": "🧾",
+        "title": "Diğer Gereklilikler",
+        "content": {
+          "requirements": [
+            "Geçerli Birleşik Krallık pasaportu",
+            "Sağlık kontrolleri ve karakter (polis) sertifikası",
+            "İngilizce yeterlilik belgesi (belirli vizeler için)",
+            "Beceri veya derece denkliği (vasıflı vize rotaları kapsamında başvuruyorsanız)",
+            "Para kanıtı (özellikle geçici veya öğrenci vizeleri için)"
+          ],
+          "tip": "<strong>İpucu:</strong> Bu belgeleri erkenden toplamaya başlayın, çünkü bazılarının (polis sertifikaları gibi) alınması birkaç hafta sürebilir."
+        }
+      },
+      {
+        "id": "maliyet taşıma",
+        "icon": "💰",
+        "title": "Taşınma Maliyeti",
+        "content": {
+          "description": "Vize ücretleri, uçuşlar, konut depozitoları ve ilk yaşam masrafları dahil olmak üzere <strong>5.000£-12.000£</strong> harcama yapmayı bekleyin.",
+          "tip": "<strong>İpucu:</strong> Birçok vize başvurusu, başlangıçta kendinizi geçindirmek için yeterli paranız olduğunu kanıtlamanızı gerektirir. Banka hesap özetlerini göstermeye hazır olun."
+        }
+      },
+      {
+        "id": "yaşam tarzı",
+        "icon": "🌏",
+        "title": "Yaşam Tarzı Notları",
+        "content": {
+          "aspects": [
+            {
+              "title": "İklim",
+              "description": "İklim büyük farklılıklar gösterir; Sydney ve Perth gibi şehirlerde yazlar sıcak geçerken Melbourne \"bir günde dört mevsim\" ile bilinir. Kuzey bölgeleri tropikal iken Tazmanya daha serindir."
+            },
+            {
+              "title": "Çalışma Kültürü",
+              "description": "Avustralya'da rahat bir çalışma kültürü vardır ancak yüksek profesyonel standartlar korunur. İş-yaşam dengesine değer verilir ve birçok işletme Birleşik Krallık'a kıyasla daha erken kapanır."
+            },
+            {
+              "title": "Sağlık Hizmetleri",
+              "description": "Mukim olduğunuzda kamu sağlık hizmetlerine (Medicare) erişebilirsiniz. Geçici vize sahipleri için özel sağlık sigortası gereklidir ve genellikle zorunludur."
+            },
+            {
+              "title": "Yaşam Maliyeti",
+              "description": "Sidney ve Melbourne gibi büyük şehirlerde, özellikle konut için yüksek yaşam maliyetleri vardır. Bölgesel alanlar daha uygun fiyatlı seçenekler sunmakta ancak daha az olanak sağlamaktadır."
+            }
+          ]
+        }
+      },
+      {
+        "id": "popüler-şehirler",
+        "icon": "🏙️",
+        "title": "Birleşik Krallık'taki Gurbetçiler için Popüler Şehirler",
+        "content": {
+          "description": "Avustralya, İngiliz gurbetçiler arasında popüler olan birkaç şehre sahiptir:",
+          "cities": [
+            {
+              "name": "Sidney",
+              "description": "İkonik simge yapıları, güzel plajları ve canlı kültürel ortamıyla Avustralya'nın en büyük şehri. En yüksek yaşam maliyeti ancak mükemmel iş fırsatları."
+            },
+            {
+              "name": "Melbourne",
+              "description": "Sanat, kahve kültürü ve spor etkinlikleriyle bilinen, Avrupa havasına sahip kültür başkenti. Daha değişken hava koşulları ancak Sydney'den biraz daha düşük konut maliyetleri."
+            },
+            {
+              "name": "Brisbane",
+              "description": "Büyüyen ekonomisi ve Sydney ya da Melbourne'den daha uygun fiyatlı konutlarıyla tropikal iklim. Gold Coast ve Sunshine Coast'a yakınlığı ile rahat yaşam tarzı."
+            },
+            {
+              "name": "Perth",
+              "description": "Güzel plajları ve güçlü madencilik endüstrisi ile en güneşli başkent. Daha izole ancak mükemmel yaşam kalitesi ve güçlü Birleşik Krallık göçmen topluluğu sunuyor."
+            },
+            {
+              "name": "Adelaide",
+              "description": "Daha uygun fiyatlı konutlar ve rahat yaşam temposu. Şarap bölgeleri, festivalleri ve aile dostu ortamı ile tanınır."
+            },
+            {
+              "name": "Altın Sahili",
+              "description": "Muhteşem plajları, sıcak iklimi ve turizm endüstrisi nedeniyle Birleşik Krallık'taki gurbetçiler arasında popülerdir. Büyüyen ekonomisi ile rahat bir yaşam tarzı."
+            }
+          ]
+        }
+      },
+      {
+        "id": "pratik-ipuçları",
+        "icon": "💡",
+        "title": "Pratik İpuçları",
+        "content": {
+          "tips": [
+            "Mümkünse varıştan önce bir Avustralya banka hesabı oluşturun",
+            "Vergi etkilerini araştırın - Birleşik Krallık ve Avustralya arasında bir vergi anlaşması var",
+            "Taşınma zamanınızı yazın en yoğun olduğu dönemlerin (Aralık-Şubat) dışında tutmayı düşünün",
+            "Gideceğiniz şehir için göçmen Facebook gruplarına katılın",
+            "Güncellemeler için Birleşik Krallık hükümetinin Yurtdışında Yaşam hizmetine kaydolun"
+          ],
+          "mainTip": "<strong>İpucu:</strong> Vize başvuru sürecinizi çok önceden başlatın - bazı vizelerin işleme alınması 6-12 ay sürebilir."
+        }
+      }
+    ],
+    "costTable": {
+      "headers": {
+        "category": "Gider Kategorisi",
+        "cost": "Tahmini Maliyet (£)"
+      },
+      "rows": [
+        {
+          "category": "Vize başvuru ücretleri",
+          "cost": "£1,000-£4,000"
+        },
+        {
+          "category": "Uçuşlar (tek yön)",
+          "cost": "£600-£1,200"
+        },
+        {
+          "category": "Eşyaların nakliyesi",
+          "cost": "£1,500-£3,000"
+        },
+        {
+          "category": "İlk konaklama",
+          "cost": "£1,000-£2,000"
+        },
+        {
+          "category": "Yaşam giderleri (ilk ay)",
+          "cost": "£1,000-£1,500"
+        },
+        {
+          "category": "Acil durum fonu",
+          "cost": "£1,000-£2,000"
+        }
+      ]
+    },
+    "comparison": {
+      "title": "İngiltere ve Avustralya Hızlı Karşılaştırma",
+      "aspects": [
+        {
+          "icon": "🌡️",
+          "category": "İklim",
+          "uk": "Serin, yağmurlu, 4 mevsim",
+          "australia": "Sıcak, güneşli, ılıman kışlar"
+        },
+        {
+          "icon": "💰",
+          "category": "Yaşam Maliyeti",
+          "uk": "Londra'da yüksek, diğer yerlerde orta",
+          "australia": "Sydney/Melbourne'da yüksek, diğer yerlerde düşük"
+        },
+        {
+          "icon": "🏠",
+          "category": "Konut",
+          "uk": "Daha küçük alanlar, daha eski binalar",
+          "australia": "Daha geniş alanlar, modern evler"
+        },
+        {
+          "icon": "🏥",
+          "category": "Sağlık Hizmetleri",
+          "uk": "NHS (kullanım noktasında ücretsiz)",
+          "australia": "Medicare (NHS'ye benzer)"
+        },
+        {
+          "icon": "💼",
+          "category": "Çalışma Kültürü",
+          "uk": "Daha uzun saatler, daha resmi",
+          "australia": "Daha iyi iş-yaşam dengesi"
+        },
+        {
+          "icon": "🌍",
+          "category": "Konum",
+          "uk": "Avrupa'ya Yakın",
+          "australia": "İzole ama Asya'ya yakın"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Taşınma Zaman Çizelgesi: Ayrılmadan 12 Ay Önce",
+      "phases": [
+        {
+          "timeframe": "12 ay önce",
+          "title": "Araştırma ve Planlama",
+          "description": "Vize seçeneklerini araştırın, nitelikleri değerlendirin, hedef şehirleri seçin"
+        },
+        {
+          "timeframe": "9-10 ay önce",
+          "title": "Vize Başvurusu",
+          "description": "Vize başvurusunu gönderin, beceri değerlendirmesini tamamlayın, belgeleri toplayın"
+        },
+        {
+          "timeframe": "6-8 ay önce",
+          "title": "İş Avcılığı",
+          "description": "İş başvurularına başlayın, Avustralyalı profesyonellerle ağ kurun"
+        },
+        {
+          "timeframe": "3-4 ay önce",
+          "title": "Taşınma Düzenlemeleri",
+          "description": "Uçuş rezervasyonu yapın, nakliye ayarlayın, geçici konaklama sağlayın"
+        },
+        {
+          "timeframe": "1-2 ay önce",
+          "title": "Son Hazırlıklar",
+          "description": "Avustralya banka hesabı açın, sigorta ayarlayın, Birleşik Krallık makamlarını bilgilendirin"
+        },
+        {
+          "timeframe": "Varışta",
+          "title": "Yerleşim",
+          "description": "Kalıcı konut bulun, Medicare'e kaydolun, yerel hizmetleri ayarlayın"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Avustralya'ya Taşınmadan Önce Son Kontrol Listesi",
+      "items": [
+        "Uygun vizeyi güvence altına alın",
+        "Uçuş ve nakliye rezervasyonu yapın",
+        "Geçici konaklama ayarlayın",
+        "Avustralya banka hesabı oluşturun",
+        "Sağlık sigortasını düzenleyin",
+        "HMRC ile vergi durumunu güncelleme",
+        "Birleşik Krallık makamlarını (NHS, emeklilik, belediye, vb.) taşınmanız hakkında bilgilendirin"
+      ]
+    },
+    "conclusion": {
+      "title": "Avustralya'ya Taşınmak Sizin İçin Doğru mu?",
+      "description": "Çarpıcı manzaraları, güçlü ekonomisi ve açık hava yaşam tarzıyla Avustralya, Birleşik Krallık'ta yaşayan gurbetçiler için mükemmel bir yaşam kalitesi sunmaktadır. Evden uzaklık ve yaşam maliyeti zorlayıcı olsa da, çoğu kişi güneş ışığı, alan ve aşağıdaki fırsatlar için taşınmaya değer buluyor."
+    }
+  },
+  "petsToAustralia": {
+    "description": "Evcil hayvanlarınızı Avustralya'ya getirmek mümkündür, ancak katı biyogüvenlik kuralları nedeniyle kapsamlı bir planlama gerektirir. Avustralya'nın titiz karantina sistemi, eşsiz ekosistemini yabancı hastalıklardan ve zararlılardan korur.",
+    "navigation": {
+      "title": "Evcil Hayvan Seyahat Rehberi"
+    },
+    "accessibility": {
+      "sectionButton": "View section about {title}"
+    },
+    "sections": [
+      {
+        "id": "anahtar-gereksinimler",
+        "icon": "✅",
+        "title": "Temel Gereksinimler",
+        "content": {
+          "requirements": [
+            {
+              "title": "Uygun Evcil Hayvanlar",
+              "description": "Sadece belirli hayvanların Avustralya'ya girişine izin verilmektedir:",
+              "list": [
+                "Köpekler (Pit Bull Terrier gibi belirli ırklar hariç)",
+                "Kediler (F1-F4 nesil Savannah kedileri hariç)",
+                "Diğer evcil hayvanlara genellikle izin verilmez"
+              ]
+            },
+            {
+              "title": "Onaylı Menşe Ülke",
+              "description": "Evcil hayvanınız onaylı bir ülkeden geliyor olmalıdır. Birleşik Krallık, özel gereklilikleri belirleyen Kategori 3 ülkesi olarak sınıflandırılmıştır."
+            },
+            {
+              "title": "Mikroçipleme",
+              "description": "Herhangi bir aşı veya kan testinden önce evcil hayvanınız ISO uyumlu bir mikroçiple mikroçiplenmelidir."
+            },
+            {
+              "title": "Kuduz Aşısı ve Testi",
+              "description": "Kuduz aşısı ve ardından Kuduz Nötralize Edici Antikor Titre Testi (RNATT) gereklidir.",
+              "highlight": "RNATT, <span class=\"font-medium\">Avustralya'ya girişten</span> en az 180 gün önce yapılmalıdır."
+            },
+            {
+              "title": "İthalat İzni",
+              "description": "Avustralya Tarım, Su ve Çevre Bakanlığı'ndan ithalat izni almanız gerekmektedir.",
+              "highlight": "Seyahatten en az <span class=\"font-medium\">42 gün önce başvurun</span>."
+            },
+            {
+              "title": "Ek Tedaviler",
+              "description": "Seyahatten sonraki günler içinde evcil hayvanınızın ek tedavilere ihtiyacı olacaktır:",
+              "list": [
+                "Dış parazitler (kene ve pireler)",
+                "İç parazitler (solucanlar)",
+                "Diğer spesifik testler ve tedaviler"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "zaman çizelgesi",
+        "icon": "📅",
+        "title": "Zaman Çizelgesi ve Planlama",
+        "content": {
+          "description": "Avustralya'ya evcil hayvan getirmek <span class=\"font-medium\">en az 7-8 ay</span> hazırlık gerektirir.",
+          "phases": [
+            {
+              "timeframe": "Seyahatten 7+ Ay Önce",
+              "tasks": [
+                "Evcil hayvanınızın ithalat için uygunluğunu doğrulayın",
+                "Mikroçipin ISO uyumlu olduğundan emin olun",
+                "Kuduz aşısını kontrol edin/güncelleyin",
+                "RNATT kan testini planlayın (varıştan en az 180 gün önce yapılmalıdır)"
+              ]
+            },
+            {
+              "timeframe": "Seyahatten 2-3 Ay Önce",
+              "tasks": [
+                "İthalat izni için başvurun (seyahatten en az 42 gün önce)",
+                "Melbourne'da karantina tesisi için yer ayırtın",
+                "Onaylı bir taşıyıcı ile evcil hayvan naklini ayarlayın"
+              ]
+            },
+            {
+              "timeframe": "Seyahatten 10-30 Gün Önce",
+              "tasks": [
+                "Son veteriner muayenelerini tamamlayın",
+                "Gerekli parazit tedavilerini uygulayın",
+                "Devlet veterineri tarafından onaylanmış resmi sağlık sertifikaları alın",
+                "IATA standartlarına göre seyahat sandığı hazırlama"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "KARANTİNA",
+        "icon": "🔒",
+        "title": "Karantina Süreci",
+        "content": {
+          "warning": "Avustralya'ya giriş yapan tüm evcil hayvanlar, menşe ülkesine bakılmaksızın zorunlu bir karantina dönemini <strong>tamamlamak</strong> zorundadır.",
+          "keyInfo": [
+            {
+              "icon": "📍",
+              "title": "Giriş Noktası",
+              "description": "Melbourne, Avustralya'ya giren evcil hayvanlar için <span class=\"font-medium\">tek giriş limanıdır</span>. Evcil hayvanınız Melbourne Havalimanı'na uçmalıdır."
+            },
+            {
+              "icon": "⏱️",
+              "title": "Süre",
+              "description": "Devlet karantina tesisinde en az <span class=\"font-medium\">10 gün</span>. Sağlık sorunları ortaya çıkarsa bu süre uzatılabilir."
+            }
+          ],
+          "details": [
+            {
+              "title": "Karantina Tesisi",
+              "description": "Melbourne'deki Giriş Sonrası Karantina (PEQ) tesisi ithal edilen tüm hayvanların kaldığı yerdir. Bu tesis şunları sağlar:",
+              "list": [
+                "- İklim kontrollü temel köpek kulübeleri/karyolaları",
+                "- Düzenli beslenme ve temel bakım",
+                "- Veteriner denetimleri ve tedavileri",
+                "- <span class=\"font-medium\">Karantina süresince ziyarete izin yok</span>"
+              ]
+            },
+            {
+              "title": "Karantina Sonrası",
+              "description": "Evcil hayvanınız karantinayı başarıyla tamamladıktan sonra şunları yapabilirsiniz:",
+              "list": [
+                "- Onları Melbourne'daki tesisten alın",
+                "- Son varış noktanıza yurtiçi ulaşımınızı ayarlayın",
+                "- Evcil hayvanınızı yeni evinizdeki yerel makamlara kaydettirin"
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "id": "maliyetler",
+        "icon": "💰",
+        "title": "Tahmini Maliyetler",
+        "content": {
+          "description": "Toplam maliyetler, bulunduğunuz yere ve evcil hayvanın boyutuna bağlı olarak evcil hayvan başına <span class=\"font-medium\">$3,000 - $7,000 AUD</span> arasında değişebilir.",
+          "tip": "<strong>İpucu:</strong> Profesyonel bir evcil hayvan taşıma hizmeti kullanmak, daha pahalı olsa da süreci çok daha basit hale getirebilir. Evrak işlerini ve lojistiği onlar halledecektir."
+        }
+      },
+      {
+        "id": "evcil hayvan-yaşam",
+        "icon": "🐶",
+        "title": "Avustralya'da Evcil Hayvan Yaşamı",
+        "content": {
+          "description": "Avustralya, evcil hayvan bakımı konusunda yüksek standartlara ve çok sayıda evcil hayvan dostu alana sahip, hayvan sever bir ülkedir.",
+          "aspects": [
+            {
+              "icon": "🏥",
+              "title": "Veteriner Bakımı",
+              "description": "Yüksek kaliteli veteriner bakımı ülke çapında mevcuttur. Yıllık veteriner ziyaretleri genellikle 200-400 AUD tutarındadır ve evcil hayvan sigortası ayda 20-60 $ arasında mevcuttur."
+            },
+            {
+              "icon": "📝",
+              "title": "Kayıt",
+              "description": "Evcil hayvanlar yerel belediyelere kayıt ettirilmelidir. Kayıt ücretleri değişiklik göstermekle birlikte, genellikle yıllık 30-150 AUD'dir ve cinsiyeti belirlenmiş evcil hayvanlar için indirim uygulanır."
+            },
+            {
+              "icon": "🏞️",
+              "title": "Parklar & Plajlar",
+              "description": "Kurallar bazı ülkelere göre daha katı olsa da, birçok belirlenmiş tasmasız alan mevcuttur. Tüm plajlar evcil hayvan dostu değildir, bu nedenle yerel düzenlemeleri kontrol edin."
+            },
+            {
+              "icon": "🏠",
+              "title": "Konut",
+              "description": "Evcil hayvan dostu kiralık ev bulmak zor olabilir. Evcil hayvan kabul eden kiralamalar için evcil hayvan teminatı (genellikle 200-500 AUD) ödemeyi bekleyin."
+            }
+          ],
+          "warning": "<strong>Önemli:</strong> Avustralya eşsiz bir yaban hayatı ve ekosisteme sahiptir. Özellikle çalılık veya koruma alanlarına yakın bölgelerde yerli hayvanları korumak için köpekler ve kediler kontrol altında tutulmalıdır."
+        }
+      }
+    ],
+    "costTable": {
+      "headers": {
+        "expense": "Giderler",
+        "cost": "Tahmini Maliyet (AUD)"
+      },
+      "rows": [
+        {
+          "expense": "Veteriner hazırlığı (aşılar, testler, tedaviler)",
+          "cost": "$800-$1,500"
+        },
+        {
+          "expense": "İthalat izni",
+          "cost": "$480"
+        },
+        {
+          "expense": "Uçak bileti",
+          "cost": "$800-$2,500"
+        },
+        {
+          "expense": "Karantina ücretleri",
+          "cost": "$1,200-$2,000"
+        },
+        {
+          "expense": "Evcil hayvan taşıma hizmeti ücretleri (isteğe bağlı)",
+          "cost": "$500-$1,500"
+        },
+        {
+          "expense": "Karantina sonrası yurtiçi nakliye",
+          "cost": "$200-$500"
+        }
+      ]
+    },
+    "breedRestrictions": {
+      "title": "Kısıtlanmış Evcil Hayvan Irkları",
+      "note": "Bu ırkların Avustralya'ya girişi hiçbir koşulda yasaktır.",
+      "categories": [
+        {
+          "type": "Yasaklı Köpek Irkları",
+          "breeds": [
+            "Amerikan Pit Bull Terrier",
+            "Perro de Presa Canario",
+            "Dogo Argentino",
+            "Fila Brasileiro",
+            "Japon Tosa",
+            "Ve bunların melezleri"
+          ]
+        },
+        {
+          "type": "Yasaklı Kedi Irkları",
+          "breeds": [
+            "Savannah kedileri (F1, F2, F3, F4 nesilleri)",
+            "Bengal kedileri (F1, F2, F3 nesilleri)",
+            "Chausie kedileri (F1, F2, F3 nesilleri)",
+            "Taş puma kedileri",
+            "Ve vahşi kedilerle yapılan melezlemeler"
+          ]
+        }
+      ]
+    },
+    "professionalServices": {
+      "title": "Profesyonel Evcil Hayvan Taşıma Hizmetleri",
+      "services": [
+        {
+          "icon": "🚚",
+          "name": "Tam Hizmet Taşımacılığı",
+          "description": "Tüm evrak işleri dahil kapıdan kapıya eksiksiz hizmet",
+          "cost": "$3,000-$6,000 AUD"
+        },
+        {
+          "icon": "📋",
+          "name": "Sadece Dokümantasyon",
+          "description": "İzinler, sağlık sertifikaları ve evrak işlerinde yardım",
+          "cost": "$800-$1,500 AUD"
+        },
+        {
+          "icon": "✈️",
+          "name": "Uçuş Rezervasyonu",
+          "description": "Özel evcil hayvan uçuş rezervasyonu ve koordinasyonu",
+          "cost": "$300-$800 AUD"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Avustralya Evcil Hayvan İthalatı Kontrol Listesi",
+      "items": [
+        "Evcil hayvanınızın Avustralya'ya ithalat için uygun olduğunu doğrulayın",
+        "Mikroçipin ISO uyumlu olduğundan emin olun",
+        "Kuduz aşısı ve RNATT kan testini planlayın (seyahatten en az 180 gün önce)",
+        "İthalat izni için başvurun (seyahatten en az 42 gün önce)",
+        "Melbourne'de karantina tesisi için rezervasyon yapın",
+        "Evcil hayvan dostu uluslararası ulaşım için düzenleme yapın",
+        "Sağlık sertifikalarını ve tedavileri yola çıkmadan önce tamamlayın"
+      ]
+    },
+    "conclusion": {
+      "title": "Evcil Hayvanınız İçin Yeraltında Yeni Bir Yaşam",
+      "description": "Avustralya'ya evcil hayvan getirmek önemli bir planlama, zaman ve finansal yatırım gerektirse de, tüylü aile üyenizin yeni evinizde size katılmasının ödülü buna değer. Avustralya, evcil hayvanınız giriş koşullarını başarıyla yerine getirdikten sonra mükemmel veteriner bakımı ve evcil hayvanları seven bir topluluk sunar."
+    }
+  }
+}

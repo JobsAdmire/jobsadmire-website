@@ -1,0 +1,3108 @@
+{
+  "herosection": {
+    "badge": "Eksklýuziw Syýahatlar",
+    "title": "Indiki başdan geçirmeleriňizi açyň",
+    "description": "Islegleriňize laýyk gelýän ýokary hilli syýahat paketlerimiz bilen ajaýyp ýerleri başdan geçiriň we ýatdan çykmajak ýatlamalary dörediň.",
+    "currentlyViewing": {
+      "label": "Häzirki wagtda görkezilýär"
+    },
+    "buttons": {
+      "primary": "Häzir öwren",
+      "secondary": "Ähli ugurlary görkez"
+    },
+    "destinationCounter": "Barmaly ýer {{häzirki wagt}}/{{jemi}}",
+    "controls": {
+      "selectDestination": "{{destination}} saýlaň"
+    },
+    "destinations": [
+      {
+        "img": "/images/ihul.png",
+        "name": "London",
+        "alt": "London şäheriniň ajaýyp görnüşi we ajaýyp ýerleri",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihum.png",
+        "name": "Mançester",
+        "alt": "Mançester şäher merkezi döwrebap binagärlik we taryhy binalar bilen",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihub.png",
+        "name": "Birmingem",
+        "alt": "Birmingemiň janly şäher merkezi we medeni etraplary",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihue.png",
+        "name": "Edinburg",
+        "alt": "Edinburgyň taryhy galasy we orta asyr köne şäheri",
+        "country": "UK"
+      },
+      {
+        "img": "/images/ihuli.png",
+        "name": "Liwerpul",
+        "alt": "Liwerpulyň meşhur kenarýaka we deňiz mirasy",
+        "country": "UK"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "aboutsection": {
+    "badge": "Biz barada",
+    "title": "Ynamdar Syýahat Hyzmatdaşyňyz",
+    "description": "Syýahatçylyk pudagynda 15 ýyldan gowrak tejribämiz bilen, biz garaşylýandan has ýokary bolan adatdan daşary syýahatlary döretmäge ýöriteleşýäris.",
+    "features": [
+      {
+        "title": "Ekspertleriň görkezmesi",
+        "description": "Tejribeli syýahat maslahatçylarymyz şahsylaşdyrylan maslahatlary berýärler."
+      },
+      {
+        "title": "Iň gowy bahalar",
+        "description": "Biz hiç hili gizlin töleglersiz bäsdeşlikli bahalary kepillendirýäris."
+      },
+      {
+        "title": "24/7 goldaw",
+        "description": "Rahatlyk üçin gije-gündiz müşderi goldawy."
+      }
+    ],
+    "stats": {
+      "experience": {
+        "label": "Ýyllyk tejribe",
+        "number": "15+"
+      },
+      "customers": {
+        "number": "50 müň+",
+        "label": "Bagtly müşderiler"
+      },
+      "destinations": {
+        "label": "Barmaly ýerler",
+        "number": "200+"
+      },
+      "awards": {
+        "label": "Gazanylan baýraklar",
+        "number": "25+"
+      }
+    }
+  },
+  "servicessection": {
+    "badge": "Hyzmatlarymyz",
+    "title": "Syýahat üçin doly çözgütler",
+    "description": "Meýilnamalaşdyrmakdan başlap, ýerine ýetirişe çenli, biz siziň syýahatyňyzyň ähli taraplaryny öz üstüne alýarys.",
+    "services": [
+      {
+        "icon": "uçar",
+        "title": "Uçuş bronlamasy",
+        "description": "Ýerli we halkara uçuşlarda iň gowy teklipler."
+      },
+      {
+        "icon": "myhmanhana",
+        "title": "Myhmanhana bronlamalary",
+        "description": "Ýeňil bahadan has amatly bahadan kaşaň ýaşaýyş jaýlary."
+      },
+      {
+        "icon": "awtoulag",
+        "title": "Awtomobil kärendesi",
+        "description": "Siziň rahatlygyňyz üçin ygtybarly ulag."
+      },
+      {
+        "icon": "ýol görkeziji",
+        "title": "Syýahat ýol görkezijileri",
+        "description": "Çümdüriji tejribeler üçin professional gollanmalar."
+      },
+      {
+        "icon": "ätiýaçlandyryş",
+        "title": "Syýahat ätiýaçlandyryşy",
+        "description": "Aladasyz syýahat üçin giňişleýin ätiýaçlandyryş."
+      },
+      {
+        "icon": "wiza",
+        "title": "Wiza kömegi",
+        "description": "Wiza işleri boýunça doly goldaw."
+      }
+    ]
+  },
+  "packagessection": {
+    "badge": "Syýahat paketleri",
+    "title": "Saýlanan syýahat tejribeleri",
+    "description": "Ýatdan çykmajak ýatlamalar üçin niýetlenen el bilen saýlanan paketlerimiz bilen tanyşyň.",
+    "filters": {
+      "all": "Ähli paketler",
+      "adventure": "Başdan geçirmeler",
+      "luxury": "Lýuks",
+      "cultural": "Medeni",
+      "romantic": "Romantik"
+    },
+    "packages": [
+      {
+        "title": "London gezelençi",
+        "category": "medeni",
+        "duration": "5 gün",
+        "price": "£1,299",
+        "originalPrice": "£1,599",
+        "image": "/images/london-package.jpg",
+        "highlights": {
+          "0": "Big Ben",
+          "1": "London gözi",
+          "2": "Bukingem köşgi",
+          "3": "Tower köprüsi"
+        },
+        "description": "Londonyň taryhy gözelligini we häzirki zaman janlylygyny öwreniň.",
+        "id": 1,
+        "rating": 4.8,
+        "reviews": 324
+      },
+      {
+        "title": "Şotlandiýanyň daglyk ýerleri",
+        "category": "başdan geçirmeler",
+        "duration": "7 gün",
+        "price": "£1,899",
+        "originalPrice": "£2,299",
+        "image": "/images/scotland-package.jpg",
+        "highlights": {
+          "0": "Edinburg galasy",
+          "1": "Loh Ness",
+          "2": "Skaý adasy",
+          "3": "Wiski syýahatlary"
+        },
+        "description": "Şotlandiýanyň ajaýyp tebigaty arkaly syýahat.",
+        "id": 2,
+        "rating": 4.9,
+        "reviews": 156
+      }
+    ]
+  },
+  "testimonialssection": {
+    "badge": "Şahadatnamalar",
+    "title": "Syýahatçylarymyzyň pikirleri",
+    "description": "Kanagatlanan müşderilerimiziň hakyky synlaryny okaň.",
+    "testimonials": [
+      {
+        "name": "Sara Jonson",
+        "location": "Nýu-Ýork, ABŞ",
+        "comment": "Ajaýyp tejribe! Her bir jikme-jik zat ajaýyp meýilleşdirilipdi.",
+        "avatar": "/images/avatar1.jpg",
+        "trip": "London Explorer Paketi",
+        "id": 1,
+        "rating": 5
+      },
+      {
+        "name": "Maýkl Çen",
+        "location": "Toronto, Kanada",
+        "comment": "Şotlandiýanyň daglyk ýerlerine syýahat biziň ähli garaşýanlarymyzdan has gowy boldy. Gaty maslahat berýärin!",
+        "avatar": "/images/avatar2.jpg",
+        "trip": "Şotlandiýanyň daglyk ýerleri paketi",
+        "id": 2,
+        "rating": 5
+      }
+    ]
+  },
+  "contactsection": {
+    "badge": "Habarlaşyň",
+    "title": "Indiki başdan geçirmeňizi meýilleşdiriň",
+    "description": "Gözleg geçirmäge taýynmy? Syýahatçylyk boýunça hünärmenlerimiz bilen şu gün habarlaşyň.",
+    "form": {
+      "name": {
+        "label": "Doly ady",
+        "placeholder": "Doly adyňyzy giriziň"
+      },
+      "email": {
+        "label": "E-poçta salgysy",
+        "placeholder": "E-poçtaňyzy giriziň"
+      },
+      "phone": {
+        "label": "Telefon nomeri",
+        "placeholder": "Telefon belgiňizi giriziň"
+      },
+      "destination": {
+        "label": "Saýlanan ýer",
+        "placeholder": "Nirä gitmek isleýärsiňiz?"
+      },
+      "message": {
+        "label": "Habar",
+        "placeholder": "Syýahat meýilnamalaryňyz barada gürrüň beriň..."
+      },
+      "submit": "Habar iber"
+    },
+    "contactInfo": {
+      "address": {
+        "title": "Bizi zyýarat ediň",
+        "details": "123 Travel Street, London, Beýik Britaniýa SW1A 1AA"
+      },
+      "phone": {
+        "title": "Bize jaň ediň",
+        "details": "+44 20 7946 0958"
+      },
+      "email": {
+        "title": "Bize e-poçta iberiň",
+        "details": "info@travelco.com"
+      },
+      "hours": {
+        "title": "Ofis iş wagty",
+        "details": "Duşenbe - Anna: 9:00 - 18:00"
+      }
+    }
+  },
+  "tableOfContents": {
+    "title": "Mazmuny",
+    "subtitle": "Bölümler boýunça gezelenç",
+    "currentlyReading": "Häzirki wagtda okaýar",
+    "sectionsCount": "Öwrenilmeli {{count}} bölüm",
+    "quickNavigation": "Çalt nawigasiýa",
+    "scrollText": "{{count}} bölümleriň içinden aýlaň",
+    "sections": [
+      {
+        "title": "Beýik Britaniýa barada gyzykly maglumatlar",
+        "id": 1
+      },
+      {
+        "title": "Beýik Britaniýa göçmek üçin wiza we ýaşamak mümkinçilikleri",
+        "id": 2
+      },
+      {
+        "title": "Beýik Britaniýa göçmek üçin talaplar",
+        "id": 3
+      },
+      {
+        "title": "Beýik Britaniýada işlemek",
+        "id": 4
+      },
+      {
+        "title": "ABŞ-dan Beýik Britaniýa göçmek",
+        "id": 5
+      },
+      {
+        "title": "Türkiýeden Beýik Britaniýa göçmek",
+        "id": 6
+      },
+      {
+        "title": "Beýik Britaniýa göçmegiň bahasy näçe?",
+        "id": 7
+      },
+      {
+        "title": "Öý haýwanlary bilen Beýik Britaniýa göçmek",
+        "id": 8
+      }
+    ]
+  },
+  "facts": {
+    "title": "Beýik Britaniýa barada gyzykly maglumatlar",
+    "subtitle": "Beýik Britaniýany özboluşly bir ýere öwürýän zadyň nämedigini öwreniň",
+    "factsList": [
+      {
+        "title": "Baý taryh",
+        "description": "Sansyz taryhy ýadygärlikleri bolan 1000 ýyldan gowrak resminamalaşdyrylan taryh."
+      },
+      {
+        "title": "Medeni dürlülik",
+        "description": "200-den gowrak dürli milletlerden bolan adamlaryň öýi."
+      },
+      {
+        "title": "Ykdysady güýç",
+        "description": "Dünýäniň iň uly ykdysadyýetleriniň we maliýe merkezleriniň biri."
+      },
+      {
+        "title": "Bilimde ajaýyplyk",
+        "description": "Oksford we Kembrij ýaly dünýä belli uniwersitetleriň öýi."
+      }
+    ]
+  },
+  "visa": {
+    "title": "Beýik Britaniýa göçmek üçin wiza we ýaşamak mümkinçilikleri",
+    "subtitle": "Ýagdaýyňyz üçin dogry wiza ýoluny saýlaň",
+    "visaTypes": [
+      {
+        "type": "Hünärmen işçi wizasy",
+        "description": "Beýik Britaniýanyň iş berijisinden iş teklibi bolan şahslar üçin",
+        "requirements": {
+          "0": "Iş teklibi",
+          "1": "Iňlis dilini bilmek",
+          "2": "Aýlyk hakynyň çägi"
+        },
+        "duration": "5 ýyla çenli"
+      },
+      {
+        "type": "Talyp wizasy",
+        "description": "Beýik Britaniýanyň bilim edarasynda doly wagtly okuw üçin",
+        "requirements": {
+          "0": "Uniwersitete kabul edilmek",
+          "1": "Maliýe subutnamasy",
+          "2": "Iňlis dilini bilmek"
+        },
+        "duration": "Kurs dowamlylygy + goşmaça wagt"
+      },
+      {
+        "type": "Maşgala wizasy",
+        "description": "Beýik Britaniýanyň ýaşaýjylary bolan maşgala agzalaryna goşulmak üçin",
+        "requirements": {
+          "0": "Maşgala gatnaşygynyň subutnamasy",
+          "1": "Maliýe talaplary",
+          "2": "Iňlis dilini bilmek"
+        },
+        "duration": "2,5 ýyldan 5 ýyla çenli"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "Beýik Britaniýa göçmek üçin talaplar",
+    "subtitle": "Size laýyk gelmeli esasy resminamalar we şertler",
+    "generalRequirements": [
+      {
+        "category": "Resminamalar",
+        "items": {
+          "0": "Güýçli pasport",
+          "1": "Wiza üçin arza",
+          "2": "Biometrik maglumatlar",
+          "3": "Suratlar"
+        }
+      },
+      {
+        "category": "Maliýe",
+        "items": {
+          "0": "Bank hasabatlary",
+          "1": "Girdejiniň subutnamasy",
+          "2": "Sponsorlyk resminamalary",
+          "3": "Salgyt ýazgylary"
+        }
+      },
+      {
+        "category": "Şahsy",
+        "items": {
+          "0": "Lukmançylyk barlagy",
+          "1": "Jenaýat geçmişini barlamak",
+          "2": "Iňlis dilini bilmek synagy",
+          "3": "Bilim şahadatnamalary"
+        }
+      }
+    ]
+  },
+  "job": {
+    "title": "Beýik Britaniýada işlemek",
+    "subtitle": "Beýik Britaniýada iş mümkinçilikleri we iş medeniýeti",
+    "workInfo": {
+      "averageSalary": "Her ýyl 35,000 - 45,000 funt sterling",
+      "workingHours": "Hepdede standart 37,5 sagat",
+      "holidays": "Ýyllyk rugsat azyndan 28 gün",
+      "benefits": "NHS saglygy goraýyş, pensiýa meýilnamalary, kesel tölegleri"
+    },
+    "jobSectors": [
+      {
+        "sector": "Tehnologiýa",
+        "demand": "Ýokary",
+        "averageSalary": "£45,000 - £80,000"
+      },
+      {
+        "sector": "Saglygy goraýyş",
+        "demand": "Gaty ýokary",
+        "averageSalary": "35,000 - 70,000 funt sterling"
+      },
+      {
+        "sector": "Maliýe",
+        "demand": "Ýokary",
+        "averageSalary": "£40,000 - £90,000"
+      }
+    ]
+  },
+  "moving": {
+    "title": "ABŞ-dan Beýik Britaniýa göçmek",
+    "subtitle": "Amerikan raýatlary üçin aýratyn meseleler",
+    "process": [
+      {
+        "title": "Wizaňyzy saýlaň",
+        "description": "Siziň ýagdaýyňyza laýyk gelýän Britaniýa wizasynyň haýsy kategoriýasyny kesgitläň",
+        "step": 1
+      },
+      {
+        "title": "Resminamalary taýýarlaň",
+        "description": "Ähli zerur resminamalary we sertifikatlary ýygnaň",
+        "step": 2
+      },
+      {
+        "title": "Arza tabşyryň",
+        "description": "Onlaýn ýüz tutuň we biometrik duşuşykda gatnaşyň",
+        "step": 3
+      },
+      {
+        "title": "Göçmegiňizi meýilleşdiriň",
+        "description": "Ýaşaýyş jaýyny, iberiş işlerini we ilkinji tölegi gurnaň",
+        "step": 4
+      }
+    ]
+  },
+  "turkeyToUk": {
+    "title": "Türkiýeden Beýik Britaniýa göçmek",
+    "subtitle": "Beýik Britaniýa göçüp barýan türk raýatlary üçin gollanma",
+    "considerations": [
+      "Türkiýe raýatlary üçin wiza talaplary",
+      "Resminamalaryň terjimesi we apostil",
+      "Medeni adaptasiýa boýunça maslahatlar",
+      "Beýik Britaniýadaky türk jemgyýeti"
+    ]
+  },
+  "cost": {
+    "title": "Beýik Britaniýa göçmegiň bahasy näçe?",
+    "subtitle": "Beýik Britaniýanyň immigrasiýasy üçin býujet meýilnamalaşdyryş",
+    "costs": {
+      "visa": {
+        "title": "Wiza tölegleri",
+        "amount": "610 funt sterling - 1423 funt sterling",
+        "description": "Wizanyň görnüşine we möhletine baglydyr"
+      },
+      "healthcare": {
+        "title": "Saglygy goraýyş goşmaça tölegi",
+        "amount": "ýylda 624 funt sterling",
+        "description": "Immigrasiýa Saglyk Goşmaça Töleg (IHS)"
+      },
+      "moving": {
+        "title": "Göçmek çykdajylary",
+        "amount": "2,000 - 8,000 funt sterling",
+        "description": "Eltip bermek, uçuşlar we ilkinji gurnama"
+      },
+      "living": {
+        "title": "Ilkinji ýaşaýyş çykdajylary",
+        "amount": "1500 - 3000 funt sterling",
+        "description": "Ilkinji aýyň ýaşaýyş jaýy we çykdajylary"
+      }
+    }
+  },
+  "pet": {
+    "title": "Öý haýwanlary bilen Beýik Britaniýa göçmek",
+    "subtitle": "Öý haýwanlaryňyzy getirmek üçin talaplar we tertipler",
+    "requirements": [
+      {
+        "requirement": "Haýwan pasporty",
+        "description": "ÝB-niň öý haýwanlarynyň pasporty ýa-da üçünji ýurduň resmi weterinariýa şahadatnamasy",
+        "timeframe": "Syýahatdan azyndan 21 gün öň"
+      },
+      {
+        "requirement": "Mikroçip",
+        "description": "Guduzlama garşy sanjymdan öň ISO 11784/11785 standartyna laýyk gelýän mikroçip",
+        "timeframe": "Guduzlama garşy waksinasiýadan öň"
+      },
+      {
+        "requirement": "Guduzlama garşy waksinasiýa",
+        "description": "Mikroçip goýlandan soň berlen guduzlama garşy waksinasiýa",
+        "timeframe": "Girişden 21 gün öň"
+      },
+      {
+        "requirement": "Saglyk güwänamasy",
+        "description": "Resmi weterinariýa şahadatnamasy ygtyýarly weterinar tarapyndan gol çekildi",
+        "timeframe": "Syýahatdan soň 10 günüň içinde"
+      }
+    ],
+    "process": [
+      {
+        "title": "Haýwanyňyzy mikroçip bilen çipläň",
+        "description": "Öý haýwanyňyzyň ISO standart çipi bilen mikroçiplenendigine göz ýetiriň",
+        "step": 1
+      },
+      {
+        "title": "Guduzlama garşy waksinasiýa",
+        "description": "Guduzlama garşy sanjym alyň we 21 gün garaşyň",
+        "step": 2
+      },
+      {
+        "title": "Saglyk güwänamasy",
+        "description": "Ygtyýarly weterinardan saglyk şahadatnamasyny alyň",
+        "step": 3
+      },
+      {
+        "title": "Kitab syýahaty",
+        "description": "Beýik Britaniýa öý haýwanlary üçin amatly ulag gatnawyny gurnaň",
+        "step": 4
+      }
+    ],
+    "costs": {
+      "microchip": "15 - 30 funt",
+      "vaccination": "50 - 100 funt",
+      "healthCertificate": "100 - 200 funt sterling",
+      "transportation": "200 - 1000 funt sterling",
+      "quarantine": "Mugt (talaplar ýerine ýetirilen bolsa)"
+    }
+  },
+  "ukInfoCard": {
+    "title": "Beýik Britaniýa barada gyzykly maglumatlar",
+    "description": "Beýik Britaniýanyň baý mirasyny we täsin aýratynlyklaryny, taryhy monarhiýasyndan başlap, ajaýyp peýzažlaryna we akademiki ussatlygyna çenli öwreniň.",
+    "didYouKnow": "Bilýärdiňizmi?",
+    "cta": "Beýik Britaniýa barada has köp maglumat alyň",
+    "footer": "© 2025 Beýik Britaniýanyň maglumaty",
+    "navigation": {
+      "previous": "Öňki",
+      "next": "Indiki",
+      "counter": "{{current}} of {{total}}"
+    },
+    "facts": [
+      {
+        "title": "Gadymy monarhiýa",
+        "content": "Beýik Britaniýada dünýäniň iň gadymy monarhiýalarynyň biri bar, onuň taryhy 1000 ýyldan gowrak.",
+        "detail": "Britaniýa monarhiýasynyň IX asyrdan bäri dowamlylygy dowam edýär, şa zenan Ýelizaweta II patyşa Çarlz III-den öň Britaniýanyň taryhyndaky iň uzak wagtlap höküm süren monarh bolupdyr.",
+        "iconType": "täç",
+        "emoji": "👑",
+        "color": "bg-indigo-500"
+      },
+      {
+        "title": "Iň gowy uniwersitetler",
+        "content": "Beýik Britaniýada Oksford we Kembrij ýaly dünýäniň iň öňdebaryjy uniwersitetleriniň käbiri ýerleşýär.",
+        "detail": "Oksford we Kembrij uniwersitetleri dünýäniň iň gowy 10 uniwersitetleriniň arasynda yzygiderli orun alýarlar, olaryň taryhy degişlilikde XI we XIII asyrlara degişli.",
+        "iconType": "gutardyş",
+        "emoji": "🎓",
+        "color": "bg-zumrud-500"
+      },
+      {
+        "title": "Ada Milleti",
+        "content": "Beýik Britaniýa 7000-den gowrak kiçi adalary bolan ada döwletidir.",
+        "detail": "Beýik Britaniýa iň uly ada bolsa-da, Beýik Britaniýanyň düzümine Waýt adasy, Angleseý we Gebrid adalary ýaly başga-da köp sanly meşhur adalar girýär.",
+        "iconType": "tolkunlar",
+        "emoji": "🏝️",
+        "color": "bg-blue-500"
+      },
+      {
+        "title": "Ylmy miras",
+        "content": "Britaniýaly alymlar, şol sanda Isaak Nýuton, Çarlz Darwin we Stiwen Hoking uly goşant goşdular.",
+        "detail": "Beýik Britaniýa ylymlar boýunça 100-den gowrak Nobel baýragynyň eýesini ýetişdirdi, olar agrawitasiýadan DNK gurluşyna we kwant fizikasyna çenli täze açyşlar etdiler.",
+        "iconType": "lampa",
+        "emoji": "💡",
+        "color": "bg-amber-500"
+      },
+      {
+        "title": "Iň ýokary depe",
+        "content": "Iň beýik dag Şotlandiýadaky Ben Newisdir (1345 metr).",
+        "detail": "Şotlandiýanyň daglyk ýerlerinde ýerleşýän Ben Newis her ýyl 100 müňden gowrak alpinistleri özüne çekýär we seýrek duş gelýän alp daglarynyň ösümlik we haýwanat dünýäsine eýedir.",
+        "iconType": "dag",
+        "emoji": "🏔️",
+        "color": "bg-slate-500"
+      }
+    ]
+  },
+  "categories": {
+    "history": {
+      "title": "Taryhy miras",
+      "description": "Beýik Britaniýanyň baý taryhy mirasyny açyň",
+      "facts": [
+        {
+          "title": "Orta asyr galalary",
+          "description": "Beýik Britaniýada 1500-den gowrak gala bar, olaryň köpüsi orta asyrlara degişli.",
+          "highlight": "Windsor galasy dünýäde iň gadymy ilatly galadyr."
+        },
+        {
+          "title": "Rim mirasy",
+          "description": "Adrianyň diwary Angliýanyň demirgazyk böleginde 84 mil uzalyp gidýär.",
+          "highlight": "Rim Britaniýasyny goramak üçin 122-nji ýylda imperator Hadrian tarapyndan gurlan."
+        },
+        {
+          "title": "Senagat rewolýusiýasy",
+          "description": "Beýik Britaniýa 18-nji asyrda Senagat Rewolýusiýasynyň dörän ýeri boldy.",
+          "highlight": "Ilkinji bug hereketlendirijisi 1769-njy ýylda Jeýms Watt tarapyndan işlenip düzüldi."
+        }
+      ]
+    },
+    "geography": {
+      "title": "Geografik täsinlikler",
+      "description": "Dürli landşaftlary we tebigy aýratynlyklary öwreniň",
+      "facts": [
+        {
+          "title": "Kenarýaka uzynlygy",
+          "description": "Beýik Britaniýanyň kenarýaka zolagy takmynan 11,000 mile barabar.",
+          "highlight": "Beýik Britaniýada hiç bir nokadyň deňizden 75 milden uzaklygy ýok."
+        },
+        {
+          "title": "Milli seýilgähler",
+          "description": "Angliýada, Uelsde we Şotlandiýada 15 sany Milli seýilgäh bar.",
+          "highlight": "Köl etraby 1951-nji ýylda döredilen ilkinji milli seýilgäh boldy."
+        },
+        {
+          "title": "Howa zolaklary",
+          "description": "Beýik Britaniýanyň ululygyna garamazdan, ol ýerde birnäçe dürli howa zolaklary bar.",
+          "highlight": "Şotlandiýa şol gün Günorta Angliýadan 10°C sowuk bolup biler."
+        }
+      ]
+    },
+    "culture": {
+      "title": "Medeni baýlyk",
+      "description": "Beýik Britaniýanyň medeni dürlüligi we sungata goşan goşandy",
+      "facts": [
+        {
+          "title": "Edebi ägirler",
+          "description": "Şekspiriň, Dikkensiň, Osteniň we köp sanly edebi rowaýatlaryň öýi.",
+          "highlight": "Şekspir häzirki güne çenli ulanylýan 1700-den gowrak sözi oýlap tapdy."
+        },
+        {
+          "title": "Saz mirasy",
+          "description": "The Beatles, Queen, Led Zeppelin we san-sajaksyz toparlaryň doglan ýeri.",
+          "highlight": "Beýik Britaniýa ABŞ-dan başga islendik ýurtdan has köp dünýäde 1-nji orunda hit boldy."
+        },
+        {
+          "title": "Teatr däbi",
+          "description": "Londonyň West End etrapçasy dünýäniň iň öňdebaryjy teatr etrapçalarynyň biridir.",
+          "highlight": "“Globe” teatry Şekspiriň döwründäki ýaly stilde çykyşlar hödürleýär."
+        }
+      ]
+    },
+    "science": {
+      "title": "Ylmy ussatlyk",
+      "description": "Britaniýalylaryň aňyndan täze açyşlar we täzelikler",
+      "facts": [
+        {
+          "title": "Medisina üstünlikleri",
+          "description": "Bu ýerde penisillin, waksina we DNK gurluşy tapyldy.",
+          "highlight": "Aleksandr Fleming penisillini 1928-nji ýylda tötänleýin açdy."
+        },
+        {
+          "title": "Fizika pionerleri",
+          "description": "Nýutonyň kanunlary, Darwiniň ewolýusiýasy we Hokingiň gara deşikleri.",
+          "highlight": "Stiwen Hokingiň \"Wagtyň gysgaça taryhy\" atly kitaby 25 milliondan gowrak nusgada satyldy."
+        },
+        {
+          "title": "Tehnologiýa innowasiýalary",
+          "description": "Bütindünýä torunyň we kompýuterleriň kökleri Britaniýadan gelip çykýar.",
+          "highlight": "Tim Berners-Li 1989-njy ýylda CERN-de Bütindünýä toruny oýlap tapdy."
+        }
+      ]
+    }
+  },
+  "statistics": {
+    "title": "Sanlar boýunça Beýik Britaniýa",
+    "subtitle": "Beýik Britaniýa barada gyzykly statistikalar",
+    "stats": [
+      {
+        "number": "66.8M",
+        "label": "Ilat",
+        "description": "Beýik Britaniýanyň umumy ilaty"
+      },
+      {
+        "number": "243,610",
+        "label": "Kwadrat kilometr",
+        "description": "Beýik Britaniýanyň umumy meýdany"
+      },
+      {
+        "label": "Ýurtlar",
+        "description": "Angliýa, Şotlandiýa, Uels we Demirgazyk Irlandiýa",
+        "number": "4"
+      },
+      {
+        "label": "Nobel baýraklary",
+        "description": "Beýik Britaniýadan Nobel baýragynyň eýeleri",
+        "number": "100+"
+      },
+      {
+        "label": "ÝUNESKO-nyň ýerleri",
+        "description": "Beýik Britaniýadaky Dünýä Miraslarynyň Ýerleri",
+        "number": "31"
+      },
+      {
+        "number": "1000+",
+        "label": "Ýyllar",
+        "description": "Britaniýa monarhiýasynyň döwri"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Beýik Britaniýa barada has köp öwreniň",
+    "subtitle": "Britaniýanyň medeniýeti we mirasy barada has giňişleýin maglumat almak üçin biziň bilen habarlaşyň",
+    "form": {
+      "name": {
+        "label": "Doly ady",
+        "placeholder": "Doly adyňyzy giriziň"
+      },
+      "email": {
+        "label": "E-poçta salgysy",
+        "placeholder": "E-poçta salgyňyzy giriziň"
+      },
+      "interest": {
+        "label": "Gyzyklanma zolagy",
+        "placeholder": "Beýik Britaniýanyň medeniýetiniň haýsy tarapy sizi has köp gyzyklandyrýar?"
+      },
+      "message": {
+        "label": "Habar",
+        "placeholder": "Beýik Britaniýa barada nämeleri bilmek isleýändigiňizi bize aýdyň..."
+      },
+      "submit": "Sorag iberiň"
+    },
+    "contactInfo": {
+      "address": {
+        "title": "Bizi zyýarat ediň",
+        "details": "123 British Heritage Street, London, Beýik Britaniýa SW1A 1AA"
+      },
+      "phone": {
+        "title": "Bize jaň ediň",
+        "details": "+44 20 7946 0123"
+      },
+      "email": {
+        "title": "Bize e-poçta iberiň",
+        "details": "info@ukexplorer.com"
+      },
+      "hours": {
+        "title": "Sagatlar",
+        "details": "Duşenbe - Anna: irden sagat 9:00 - agşam sagat 5:00"
+      }
+    }
+  },
+  "costsGuide": {
+    "title": "Beýik Britaniýa göçmegiň bahasy näçe?",
+    "description": "Beýik Britaniýa göçüp geleniňizde wiza töleglerinden başlap, gündelik ýaşaýyş çykdajylaryna çenli garaşmaly ähli çykdajylaryňyzyň doly beýany.",
+    "sections": [
+      {
+        "id": "wiza-immigrasiýa",
+        "icon": "🛂",
+        "title": "Wiza we immigrasiýa",
+        "amount": "250–3000 funt sterling",
+        "details": "Wiza üçin arza, saglygy goraýyş goşmaça tölegi, biometriki maglumatlar öz içine alýar",
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "ýaşaýyş jaýy",
+        "icon": "🏠",
+        "title": "Ýaşaýyş jaýy",
+        "amount": "Ilkinji töleg 1800–5000 funt sterling",
+        "details": "1–2 aýlyk girew + birinji aý üçin kärende tölegi + agentlik tölegleri",
+        "subItems": {
+          "0": {
+            "title": "London (aýlyk)",
+            "amount": "1500–2500 funt sterling"
+          },
+          "1": {
+            "title": "Iri şäherler (aýlyk)",
+            "amount": "800–1200 funt sterling"
+          },
+          "2": {
+            "title": "Şäherler/Oba ýerleri (aýlyk)",
+            "amount": "600–900 funt sterling"
+          }
+        },
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "iberiş",
+        "icon": "📦",
+        "title": "Eltip bermek (Isleg boýunça)",
+        "amount": "2,000–6,000 funt sterling",
+        "details": "20 futlyk konteýner. Köp daşary ýurtlylar mebelli jaýlary kireýine alýarlar ýa-da ýerli ýerden satyn alýarlar.",
+        "color": "bg-sky-800"
+      },
+      {
+        "id": "kommunal hyzmatlar",
+        "icon": "💡",
+        "title": "Kommunal hyzmatlar we internet gurnama",
+        "amount": "100–300 funt sterling",
+        "details": "Gurnama tölegleri we goýumlar",
+        "subItems": {
+          "0": {
+            "title": "Aýlyk tölegler",
+            "amount": "150–300 funt sterling"
+          },
+          "1": {
+            "title": "Geňeş salgydy (aýlyk)",
+            "amount": "120–300 funt sterling"
+          }
+        },
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "her gün",
+        "icon": "🛒",
+        "title": "Gündelik çykdajylar",
+        "amount": "Aýda 800–1500 funt sterling",
+        "subItems": {
+          "0": {
+            "title": "Azyk önümleri",
+            "amount": "£250–£450/aý"
+          },
+          "1": {
+            "title": "Jemgyýetçilik ulagy",
+            "amount": "£150–£300/aý"
+          },
+          "2": {
+            "title": "Mobil we internet",
+            "amount": "aýda 40–80 funt"
+          },
+          "3": {
+            "title": "Güýmenje we nahar",
+            "amount": "Aýda 200–400 funt sterling"
+          }
+        },
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "bank işi",
+        "icon": "🏦",
+        "title": "Bank we maliýe",
+        "amount": "50–200 funt sterling",
+        "details": "Hasap açmak üçin tölegler, halkara geçirimler",
+        "color": "bg-sky-600"
+      }
+    ],
+    "totalCosts": {
+      "title": "Göçürmegiň jemi çaklanylýan çykdajylary",
+      "options": [
+        {
+          "title": "Býujet opsiýasy",
+          "amount": "3,000–5,000 funt sterling",
+          "description": "Londondan daşarda ýeke adam üçin iň az çykdajylar, iň az emläk",
+          "featured": false
+        },
+        {
+          "title": "Standart göç",
+          "amount": "5,000–10,000 funt sterling",
+          "description": "Ortaça ýük daşamak bilen ýeke adam ýa-da jübüt üçin ortaça çykdajylar",
+          "featured": true
+        },
+        {
+          "title": "Maşgala göçmek",
+          "amount": "10,000–20,000+ funt sterling",
+          "description": "3-4 adamdan ybarat maşgala doly ýük konteýnerleri bilen Londona göçýär",
+          "featured": false
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Beýik Britaniýanyň Pul Tygşytlaýyş Strategiýalary",
+      "tips": [
+        {
+          "title": "Ýerleşýän ýeriň meseleleri",
+          "description": "Londondan daşarda ýaşamak jaý çykdajylaryňyzy 40-60% azaldyp biler. Has gowy baha üçin Mançester, Birmingem ýa-da Glazgo ýaly şäherleri göz öňünde tutuň."
+        },
+        {
+          "title": "Mebelli ýaşaýyş jaýy",
+          "description": "Mebelli kärendeler daşamak we mebel çykdajylarynda müňlerçe tygşytlamaga mümkinçilik berýär. Gysga möhletli kärendeler, şertnama baglaşmazdan öň dogry etrapçany tapmaga mümkinçilik berýär."
+        },
+        {
+          "title": "Ulag tygşytlamalary",
+          "description": "Ýyllyk syýahat kartlaryny satyn alyň we welosiped üçin amatly şäherlerde welosiped sürmegi göz öňünde tutuň. Londonyň ulag çykdajylary Beýik Britaniýanyň beýleki şäherlerinden has ýokary."
+        },
+        {
+          "title": "Bankçylyk we walýuta",
+          "description": "Ýokary bank töleglerinden gaça durmak üçin halkara pul geçirimleri üçin Wise ýa-da Revolut ýaly hyzmatlary ulanyň. Göçmezden öň, amatly nyrhlar bolanda walýutany çalşyň."
+        }
+      ]
+    },
+    "considerations": {
+      "title": "Beýik Britaniýa üçin möhüm meseleler",
+      "items": [
+        {
+          "icon": "🏥",
+          "title": "Saglygy goraýyş",
+          "description": "6 aýdan köp wiza üçin ýüz tutanyňyzda, Milli Saglyk Gullugyna (NHS) elýeterliligi üpjün etmek üçin immigrasiýa saglygy üçin goşmaça töleg üçin býujet (uly ýaşlylar üçin ýylda 624 funt sterling)."
+        },
+        {
+          "icon": "📱",
+          "title": "Aragatnaşyk",
+          "description": "Esasanam öz telefonyňyz bar bolsa, şertnamalaryň ýerine diňe SIM karta arkaly berilýän şertnamalary göz öňünde tutuň. giffgaff we Lebara ýaly üpjün edijiler şertnamasyz çeýe wariantlary hödürleýärler."
+        },
+        {
+          "icon": "🌦️",
+          "title": "Möwsümleýin çykdajylar",
+          "description": "Gyşda ýyladyş çykdajylary ep-esli bolup biler. Kommunal hyzmatlary tygşytlamak üçin gowy izolýasiýa we energiýa netijeliligi derejesi bolan jaýlary göz öňünde tutuň."
+        },
+        {
+          "icon": "🚗",
+          "title": "Ulag meýilnamasy",
+          "description": "Eger awtoulag sürmegi meýilleşdirýän bolsaňyz, Beýik Britaniýanyň täze ýaşaýjylary üçin ýokary ätiýaçlandyryş çykdajylaryny we iri şäherlerdäki pes emissiýaly zolaklar üçin mümkin bolan tölegleri göz öňünde tutuň."
+        }
+      ]
+    },
+    "conclusion": {
+      "title": "Beýik Britaniýa göçmegiňizi meýilleşdirmek",
+      "description": "Beýik Britaniýa göçmek, esasanam Londona ýa-da beýleki iri şäherlere göçmek üçin uly maýa goýumdyr. Ilkinji çykdajylar ýokary bolup görünse-de, dogry meýilnamalaşdyrmak we gözleg geçirmek size bu prosessi has ykdysady taýdan netijeli ýerine ýetirmäge kömek edip biler. Ýerleşýän ýeriňizi üns bilen göz öňünde tutuň we köp beýleki ýurtlara garanyňda ýokary ýaşaýyş çykdajylaryna taýýarlanyň, şeýle hem Beýik Britaniýanyň hödürleýän ajaýyp döwlet hyzmatlaryndan, saglygy goraýyş hyzmatlaryndan we ýaşaýyş hilinden lezzet alyň."
+    }
+  },
+  "calculator": {
+    "title": "Beýik Britaniýanyň göçme çykdajylarynyň kalkulýatory",
+    "subtitle": "Beýik Britaniýa göçmegiňiz üçin şahsylaşdyrylan bahany alyň",
+    "form": {
+      "familySize": {
+        "label": "Maşgala ölçegi",
+        "options": [
+          "Ýeke adam",
+          "Jübüt",
+          "Maşgala (3-4 adam)",
+          "Uly maşgala (5+ adam)"
+        ]
+      },
+      "destination": {
+        "label": "Beýik Britaniýanyň ugry",
+        "options": [
+          "London",
+          "Esasy şäherler (Mançester, Birmingem we ş.m.)",
+          "Orta şäher/şäherçe",
+          "Oba ýeri"
+        ]
+      },
+      "shipping": {
+        "label": "Eltip bermek talaplary",
+        "options": [
+          "Eltip berme ýok (ýerli satyn alyň)",
+          "Bölekleýin eltip bermek (diňe zerur zatlar)",
+          "Doly konteýner daşamak",
+          "Köp konteýner"
+        ]
+      },
+      "visaType": {
+        "label": "Wiza görnüşi",
+        "options": [
+          "Talyp wizasy",
+          "Hünärmen işçi wizasy",
+          "Maşgala wizasy",
+          "Maýadar wizasy",
+          "Başga"
+        ]
+      },
+      "calculate": "Bahasyny hasaplaň"
+    },
+    "results": {
+      "title": "Göçmegiň çaklanylýan çykdajylaryňyz",
+      "breakdown": "Çykdajylaryň bölünişi:",
+      "total": "Jemi çaklanylýan çykdajy:",
+      "disclaimer": "Bu ortaça çykdajylara esaslanýan çaklamadyr. Hakyky çykdajylar anyk ýagdaýlara, wagta we hyzmat üpjün edijilere baglylykda üýtgeýär."
+    }
+  },
+  "comparison": {
+    "title": "Beýik Britaniýanyň ýaşaýyş çykdajylaryny deňeşdirmek",
+    "subtitle": "Beýik Britaniýanyň ýaşaýyş çykdajylaryny dünýäniň iri şäherleri bilen deňeşdiriň",
+    "categories": [
+      {
+        "category": "Ýaşaýyş jaýy",
+        "london": "Aýda 2000 funt sterling",
+        "manchester": "Aýda 900 funt sterling",
+        "newyork": "Aýda 2800 funt sterling",
+        "paris": "Aýda 1800 funt sterling"
+      },
+      {
+        "category": "Azyk önümleri",
+        "london": "Aýda 350 funt sterling",
+        "manchester": "Aýda 280 funt sterling",
+        "newyork": "Aýda £420",
+        "paris": "Aýda 320 funt sterling"
+      },
+      {
+        "category": "Ulag",
+        "london": "Aýda 200 funt sterling",
+        "manchester": "Aýda 80 funt sterling",
+        "newyork": "Aýda 150 funt sterling",
+        "paris": "Aýda 90 funt sterling"
+      },
+      {
+        "category": "Daşarda naharlanmak",
+        "london": "aýda 300 funt sterling",
+        "manchester": "Aýda 200 funt sterling",
+        "newyork": "Aýda 350 funt sterling",
+        "paris": "Aýda 280 funt sterling"
+      }
+    ]
+  },
+  "timeline": {
+    "title": "Beýik Britaniýanyň göçme wagt çyzgysy we çykdajylary",
+    "subtitle": "Göçýän wagtyňyz dürli çykdajylary haçan býujete salmaly",
+    "phases": [
+      {
+        "phase": "Öňünden ýüz tutmak (3-6 aý öňünden)",
+        "costs": "200-500 funt sterling",
+        "items": {
+          "0": "Resminamalary taýýarlamak we terjime etmek",
+          "1": "Iňlis dili synaglary",
+          "2": "Lukmançylyk barlaglary",
+          "3": "Hukuk maslahatlary"
+        }
+      },
+      {
+        "phase": "Wiza üçin arza (2-4 aý öňünden)",
+        "costs": "£500-£3,500",
+        "items": {
+          "0": "Wiza üçin tölegler",
+          "1": "Immigrasiýa saglygy üçin goşmaça töleg",
+          "2": "Biometrik duşuşyklar",
+          "3": "Ilkinji işleme (isleg boýunça)"
+        }
+      },
+      {
+        "phase": "Gitmezden öň (1-2 aý öň)",
+        "costs": "2,000-8,000 funt sterling",
+        "items": {
+          "0": "Ýük daşamak we logistika",
+          "1": "Syýahat çäreleri",
+          "2": "Wagtlaýyn ýaşaýyş jaýlaryny bronlamak",
+          "3": "Öý haýwanlarynyň başga ýere göçürilmegi (eger bar bolsa)"
+        }
+      },
+      {
+        "phase": "Geliş (Ilkinji aý)",
+        "costs": "2,000-6,000 funt sterling",
+        "items": {
+          "0": "Jaý goýumlary we kärende",
+          "1": "Kommunal hyzmatlary gurnamak we goýumlar",
+          "2": "Bank hasabyny açmak",
+          "3": "Ilkinji ýaşaýyş çykdajylary"
+        }
+      },
+      {
+        "phase": "Hasaplaşyk (2-6-njy aýlar)",
+        "costs": "1,000-3,000 funt sterling",
+        "items": {
+          "0": "Mebel we öý hojalyk zatlary",
+          "1": "Ýerli bellige alyş we resminamalar",
+          "2": "Bilim beriş ulgamy (eger bar bolsa)",
+          "3": "Jemgyýete integrasiýa çykdajylary"
+        }
+      }
+    ]
+  },
+  "resources": {
+    "title": "Pul dolandyryş serişdeleri",
+    "subtitle": "Beýik Britaniýada göçmegiň maliýesini dolandyrmak üçin peýdaly gurallar we hyzmatlar",
+    "categories": [
+      {
+        "title": "Walýuta alyş-çalyş",
+        "services": {
+          "0": {
+            "name": "Wise (öňki TransferWise)",
+            "description": "Arzan halkara pul geçirimleri",
+            "fees": "Geçirilen puluň 0,35-2% -i"
+          },
+          "1": {
+            "name": "Rewolýusiýa",
+            "description": "Gowy walýuta kurslary bolan köp walýuta hasaby",
+            "fees": "Belli bir çäklere çenli mugt"
+          },
+          "2": {
+            "name": "XE Pul",
+            "description": "Has uly transferler üçin bäsdeşlik nyrhlary",
+            "fees": "Mukdara görä üýtgeýär"
+          }
+        }
+      },
+      {
+        "title": "Bank işi",
+        "services": {
+          "0": {
+            "name": "Beýik Britaniýanyň Baş köçe banklary",
+            "description": "Barclays, HSBC, Lloyds ýaly däp bolan banklar",
+            "fees": "Aýlyk tölegler £5-£25"
+          },
+          "1": {
+            "name": "Sanly banklar",
+            "description": "Monzo, Starling Bank, Revolut",
+            "fees": "Köplenç tölegsiz esasy hasaplar"
+          },
+          "2": {
+            "name": "Halkara banklary",
+            "description": "HSBC Ekspat, Citi International",
+            "fees": "Ýokary tölegler, ýöne global hyzmatlar"
+          }
+        }
+      }
+    ]
+  },
+  "footer": {
+    "disclaimer": "Ähli çykdajylar takmynandyr we şahsy ýagdaýlara, bazar şertlerine we wagta baglylykda üýtgeýär. Şahsylaşdyrylan maslahat üçin hünärmen maslahatçylar bilen maslahatlaşyň.",
+    "lastUpdated": "Soňky täzelenme: {{date}}",
+    "sources": "Maglumat çeşmeleri: Beýik Britaniýanyň hökümeti, ONS, emläk web sahypalary we daşary ýurtlylaryň soragnamalary."
+  },
+  "jobGuide": {
+    "header": {
+      "title": "Beýik Britaniýada işlemek",
+      "subtitle": "Halkara iş gözleýänler üçin giňişleýin gollanma",
+      "intro": {
+        "paragraph1": "Beýik Britaniýa berk ykdysadyýeti, köp medeniýetli gurşawy we dünýä derejesindäki şäherleri bilen karýera ösüşini we ösüşini isleýän halkara hünärmenleri üçin iň gowy ýer bolmagynda galýar.",
+        "paragraph2": "Bu gollanma size daşary ýurtly raýat hökmünde Beýik Britaniýada iş tapmak barada bilmeli ähli zatlary, ballara esaslanýan immigrasiýa ulgamyny düşünmekden başlap, ýerli iş bazarynda hereket etmäge we Britaniýanyň iş durmuşyna gönükmäge çenli düşündirýär."
+      }
+    },
+    "navigation": {
+      "title": "Çalt nawigasiýa",
+      "backToAll": "Ähli bölümlere gaýdyp barmak"
+    },
+    "sections": [
+      {
+        "id": "iş bazary",
+        "icon": "🔍",
+        "title": "Beýik Britaniýanyň iş bazaryny düşünmek",
+        "type": "iş bazary",
+        "content": {
+          "intro": "Beýik Britaniýa dürli pudaklarda dürli mümkinçilikleri hödürleýär, käbir pudaklar halkara işçiler üçin has elýeterli we mähirli.",
+          "sectorsTitle": "Daşary ýurtly işçiler üçin isleg bildirilýän pudaklar:",
+          "sectors": {
+            "0": {
+              "name": "Saglygy goraýyş we NHS",
+              "description": "Lukmanlar, şepagat uýalary, idegçiler, hünärmenler"
+            },
+            "1": {
+              "name": "IT we tehnologiýa",
+              "description": "Programma üpjünçiligini işläp düzmek, kiberhowpsuzlyk, maglumat ylmy"
+            },
+            "2": {
+              "name": "Maliýe we bank işleri",
+              "description": "Maliýe seljermesi, maýa goýum bankçylygy, fintech"
+            },
+            "3": {
+              "name": "Bilim",
+              "description": "Mugallymçylyk, ylmy-barlag işleri, halkara mekdepler"
+            },
+            "4": {
+              "name": "Inženerçilik",
+              "description": "Raýat, mehaniki, elektrik inženerçiligi"
+            },
+            "5": {
+              "name": "Myhmanhanaçylyk we Syýahatçylyk",
+              "description": "Myhmanhanalar, restoranlar, syýahatçylyk dolandyryşy"
+            }
+          },
+          "conclusion": "Beýik Britaniýanyň iş bazary iňlis dilini bilmek ukybyna ýokary baha berýär we köp hünär wezipeleri güýçli aragatnaşyk başarnyklaryny talap edýär. London iň dürli mümkinçilikleri hödürleýär, ýöne Mançester, Birmingem, Edinburg we Bristol ýaly şäherlerde ýaşaýyş çykdajylary köplenç pes bolan ösýän iş bazarlary bar."
+        }
+      },
+      {
+        "id": "wiza ulgamy",
+        "icon": "🔒",
+        "title": "Beýik Britaniýanyň wiza ulgamy: Ballara esaslanýan immigrasiýa",
+        "type": "wiza ulgamy",
+        "content": {
+          "intro": "Beýik Britaniýada başarnyklara, hünär derejesine we iňlis dilini bilmeklige ileri tutulýan bal esasyndaky immigrasiýa ulgamy ulanylýar.",
+          "routesTitle": "Iş wizasynyň esasy ugurlary:",
+          "visaRoutes": {
+            "0": {
+              "name": "Hünärmen işçi wizasy",
+              "description": "Beýik Britaniýanyň iş berijisinden iş teklibi bolan hünärli hünärmenler üçin"
+            },
+            "1": {
+              "name": "Global Talant Wizasy",
+              "description": "Akademiýa, ylmy barlaglar, sungat ýa-da sanly tehnologiýalar ulgamyndaky ýolbaşçylar ýa-da mümkin bolan ýolbaşçylar üçin"
+            },
+            "2": {
+              "name": "Saglygy goraýyş we bejeriş işgärleri üçin wiza",
+              "description": "NHS iş teklipleri bolan hünärli lukmançylyk hünärmenleri üçin"
+            },
+            "3": {
+              "name": "Aspirantura wizasy",
+              "description": "Beýik Britaniýanyň diplomyny tamamlan halkara talyplar üçin"
+            }
+          },
+          "requirement": "Iş wizalarynyň köpüsi üçin arza bermezden öň ygtyýarly hemaýatkärden iş teklibi talap edilýär."
+        }
+      },
+      {
+        "id": "hemaýatkärlik",
+        "icon": "📋",
+        "title": "Iş berijiniň hemaýatkärligini almak",
+        "type": "hemaýatkärlik",
+        "content": {
+          "requirementsTitle": "Hemaýatkärlik üçin talaplar:",
+          "requirements": {
+            "0": "Iş adatça RQF 3 derejesinde (A derejeli ekwiwalent) ýa-da ondan ýokary bolmaly",
+            "1": "Aýlyk iň pes möçberlere laýyk gelmeli (adatça wezipä baglylykda 26,200 funt sterlingden gowrak)",
+            "2": "Iş beriji Içeri işler ministrligi tarapyndan tassyklanan ygtyýarly hemaýatkär bolmaly",
+            "3": "Rol laýyk kärleriň sanawynda bolmaly"
+          },
+          "shortageList": {
+            "title": "Kämillik derejesindäki hünärleriň sanawy",
+            "description": "Bu sanawdaky iş orunlaryna wiza talaplary ýeňilleşdirilýär we aýlyk haklarynyň çägi pes. Häzirki ýetmezçilik edýän hünärlere aşakdakylar girýär:",
+            "occupations": {
+              "0": "Saglygy goraýyş hünärmenleri",
+              "1": "Inženerler",
+              "2": "IT hünärmenleri",
+              "3": "Alymlar we gözlegçiler",
+              "4": "Weterinar lukmanlar",
+              "5": "Arhitektorlar we käbir mugallymçylyk wezipeleri"
+            }
+          },
+          "proTip": {
+            "title": "Hünärmen maslahaty",
+            "description": "Halkara işgärlerini hemaýatkärlik etmek tejribesi bolan maksatly kompaniýalar. Iri transmilli korporasiýalar, tehnologiýa kompaniýalary we NHS trastlary hemaýatkärlik prosesinde köplenç has tejribeli bolýarlar.",
+            "additional": "Kompaniýanyň hemaýatkärlik ygtyýarnamasynyň bardygyny ýa-da ýokdugyny Beýik Britaniýanyň hökümetiniň web sahypasynda barlap bilersiňiz."
+          }
+        }
+      },
+      {
+        "id": "arza bermek prosesi",
+        "icon": "📝",
+        "title": "Beýik Britaniýada işe kabul edilmek prosesi",
+        "type": "arza bermek prosesi",
+        "content": {
+          "stepsTitle": "Arza bermek ädimleri:",
+          "steps": {
+            "0": {
+              "title": "1. CV we goşmaça hat",
+              "description": "Beýik Britaniýanyň iş berijileri degişli başarnyklara we tejribelere bagyşlanan 2 sahypalyk CV (rezýume) talap edýärler. Işe kabul etmek üçin hatlar gysga we her bir wezipä laýyk bolmaly."
+            },
+            "1": {
+              "title": "2. Söhbetdeşlik prosesi",
+              "description": "Köplenç ilkinji telefon barlagyny, soňra 1-2 söhbetdeşligi (halkara dalaşgärleri üçin barha wirtual) we mümkin bolsa tehniki wezipeler üçin bahalandyrma tapşyryklaryny öz içine alýar."
+            },
+            "2": {
+              "title": "3. Iş teklibi we wiza hemaýatkärligi",
+              "description": "Eger üstünlikli bolsa, wiza üçin resmi teklip hatyny we hemaýatkärlik şahadatnamasyny alarysyňyz."
+            }
+          },
+          "cvTips": {
+            "title": "Beýik Britaniýa üçin ýörite CV maslahatlary:",
+            "tips": {
+              "0": "Surat gerek däl",
+              "1": "Ýokarda professional profili/gysgaça mazmunyny goşuň",
+              "2": "Borçlara däl-de, üstünliklere üns beriň",
+              "3": "Degişli kwalifikasiýalary we sertifikatlary goşuň",
+              "4": "Salgylanmalar köplenç sanawda görkezilmän, \"isleg boýunça elýeterlidir\"."
+            }
+          }
+        }
+      },
+      {
+        "id": "iş tapmak",
+        "icon": "🔎",
+        "title": "Beýik Britaniýada iş mümkinçiliklerini tapmak",
+        "type": "iş tapmak",
+        "content": {
+          "portalsTitle": "Beýik Britaniýanyň iň gowy iş portallary:",
+          "jobPortals": {
+            "0": "Hakykatdanam Beýik Britaniýa",
+            "1": "Reed.co.uk",
+            "2": "CV-Kitaphana",
+            "3": "LinkedIn",
+            "4": "Goragçynyň iş orunlary",
+            "5": "NHS iş orunlary"
+          },
+          "recruitmentAgencies": {
+            "title": "Işe kabul ediş agentlikleri",
+            "description": "Ýöriteleşdirilen işe kabul ediş agentlikleri halkara iş gözleýänler üçin gymmatly bolup biler. Köpleri belli bir pudaklara ýa-da sebitlere üns berýärler we wizalary yzygiderli maliýeleşdirýän iş berijiler bilen gatnaşyklary bar."
+          },
+          "directApplications": {
+            "title": "Göni ulanylyşlar",
+            "description": "Öz ugryňyzdaky hemaýatkärlik ygtyýarnamalary bolan we karýera sahypalary arkaly gönüden-göni ýüz tutýan kompaniýalary gözläň. Köpmilletli korporasiýalar köplenç halkara zehinli işgärleri işe almak üçin belli bir proseslere eýedirler."
+          }
+        }
+      },
+      {
+        "id": "ýaşaýyş çykdajylary",
+        "icon": "💷",
+        "title": "Beýik Britaniýanyň ýaşaýyş çykdajylaryny göz öňünde tutýan meseleler",
+        "type": "ýaşaýyş çykdajylary",
+        "content": {
+          "intro": "Iş tekliplerini bahalandyrmakda we göçmegi meýilleşdirmekde Beýik Britaniýanyň ýaşaýyş çykdajylaryny düşünmek örän möhümdir.",
+          "locations": {
+            "0": {
+              "name": "London",
+              "description": "Beýik Britaniýanyň galan bölegine garanyňda has ýokary çykdajylar",
+              "costs": {
+                "0": {
+                  "category": "Kärende",
+                  "amount": "Aýda 1500-2500 funt sterling (1 ýatak otagly kwartira)"
+                },
+                "1": {
+                  "category": "Ulag",
+                  "amount": "£140-180/aý"
+                },
+                "2": {
+                  "category": "Kommunal hyzmatlar",
+                  "amount": "Aýda 150-200 funt sterling"
+                }
+              }
+            },
+            "1": {
+              "name": "Sebit şäherleri",
+              "description": "Mançester, Birmingem, Edinburg we ş.m.",
+              "costs": {
+                "0": {
+                  "category": "Kärende",
+                  "amount": "Aýda 700-1200 funt sterling (1 ýatak otagly kwartira)"
+                },
+                "1": {
+                  "category": "Ulag",
+                  "amount": "Aýda 60-100 funt sterling"
+                },
+                "2": {
+                  "category": "Kommunal hyzmatlar",
+                  "amount": "aýda 120-170 funt sterling"
+                }
+              }
+            }
+          },
+          "additionalExpenses": {
+            "title": "Goşmaça çykdajylar:",
+            "items": {
+              "0": "Saglygy goraýyş üçin goşmaça töleg (wiza üçin ýüz tutanyňyzda ýylda 624 funt sterling)",
+              "1": "Geňeş salgydy (emläge baglylykda ýylda 1000-2000 funt sterling)",
+              "2": "Telewizor üçin ygtyýarnama (ýyllyk 159 funt sterling)",
+              "3": "Ilkinji göçme çykdajylary we goýumlar"
+            }
+          }
+        }
+      },
+      {
+        "id": "saglygy goraýyş",
+        "icon": "🏥",
+        "title": "Beýik Britaniýanyň Saglygy goraýyş hyzmatlaryna elýeterlilik",
+        "type": "saglygy goraýyş",
+        "content": {
+          "intro": "Immigrasiýa Saglyk Goşmaça tölegini töleýän ähli Britaniýa wiza eýeleri Milli Saglygy Goraýyş Gullugyna (NHS) elýeterlidir.",
+          "coverage": {
+            "description": "Bu aşakdakylary öz içine alýan giňişleýin saglygy goraýyş hyzmatlaryny üpjün edýär:",
+            "includes": {
+              "0": "Umumy lukmanyň (lukmanyň) kabul edilmegi",
+              "1": "Hassahanada bejergi",
+              "2": "Gyssagly kömek",
+              "3": "Göwrelilik hyzmatlary"
+            }
+          },
+          "registration": "Beýik Britaniýa geleniňizden soň ýerli umumy lukmanyň edarasynda hasaba durmaly bolarsyňyz. Stomatologiýa hyzmatlary we reseptler üçin goşmaça tölegler talap edilip bilner.",
+          "note": "Bellik: Hususy saglyk ätiýaçlandyrmasy hökmany däl, ýöne hünärmenlere we Milli Saglyk Gullugy tarapyndan üpjün edilmedik goşmaça hyzmatlara has çalt elýeterliligi üpjün edip biler."
+        }
+      },
+      {
+        "id": "tor ulgamy",
+        "icon": "👥",
+        "title": "Beýik Britaniýada tor ulgamy",
+        "type": "tor ulgamy",
+        "content": {
+          "intro": "Beýik Britaniýada iş gözlemek üçin professional ulgam gurmak örän möhümdir:",
+          "online": {
+            "title": "Onlaýn ulgam",
+            "platforms": {
+              "0": "LinkedIn (Beýik Britaniýada iş gözlemek üçin möhüm)",
+              "1": "Professional Facebook toparlary",
+              "2": "Pudaga degişli forumlar we jemgyýetler",
+              "3": "Uniwersitetiňizdäki uçurymlaryň ulgamlary"
+            }
+          },
+          "inPerson": {
+            "title": "Şahsy çäreler",
+            "events": {
+              "0": "Pudaklaýyn konferensiýalar we seminarlar",
+              "1": "Siziň uguryňyz bilen baglanyşykly Meetup.com çäreleri",
+              "2": "Hünärmen birleşikleriniň ýygnaklary",
+              "3": "Halkara hünärmenleriň aragatnaşyk çäreleri"
+            }
+          },
+          "advice": "Britaniýanyň işewürlik medeniýeti professionalizmi we sypaýylygy gymmat saýýar. Aragatnaşyk guranyňyzda, derrew iş mümkinçiliklerini soramagyň ýerine, hakyky gatnaşyklary gurmaga üns beriň."
+        }
+      }
+    ],
+    "checklist": {
+      "title": "Beýik Britaniýada iş gözleg sanawyňyz",
+      "beforeApplying": {
+        "title": "Arza bermezden öň",
+        "items": [
+          "Beýik Britaniýa üçin ýörite CV formatyny we standartlaryny öwreniň",
+          "Siziň hünäriňiziň ýetmezçilik edýän hünärleriň sanawynda bardygyny ýa-da ýokdugyny barlaň",
+          "Kwalifikasiýalaryňyzyň Beýik Britaniýada ykrar edilýändigini barlaň",
+          "LinkedIn profiliňizi Beýik Britaniýa degişli açar sözler bilen dörediň"
+        ]
+      },
+      "duringSearch": {
+        "title": "Iş gözlegiňiz wagtynda",
+        "items": [
+          "Sponsor ygtyýarnamalary bolan maksatly kompaniýalar",
+          "Wagt zolaklary boýunça wideo söhbetdeşliklere taýýarlanyň",
+          "Siziň wezipäňiz üçin Beýik Britaniýanyň adaty aýlyk haklarynyň aralygyny öwreniň",
+          "Beýik Britaniýanyň iş hukuklary we ýeňillikleri barada düşüniň"
+        ]
+      }
+    },
+    "conclusion": {
+      "title": "Beýik Britaniýada karýera syýahatyňyza başlaň",
+      "description": "Daşary ýurtly raýat hökmünde Beýik Britaniýada iş tapmak üçin taýýarlyk, yzygiderlilik we sabyr gerek. Immigrasiýa ulgamynyň aýratyn talaplary bar bolsa-da, Beýik Britaniýa dürli pudaklarda halkara zehinli işgärleri çekmäge ygrarly bolmagynda galýar. Dogry başarnyklar, hünär derejeleri we çemeleşme bilen siz Beýik Britaniýanyň iş bazarynda üstünlikli hereket edip, dünýäniň iň dinamiki ykdysadyýetleriniň birinde peýdaly karýera gurup bilersiňiz."
+    }
+  },
+  "salaryGuide": {
+    "title": "Pudaga görä Beýik Britaniýanyň aýlyk haklary boýunça gollanmasy",
+    "subtitle": "Halkara hünärmenleriniň ortaça aýlyklary",
+    "industries": [
+      {
+        "sector": "Maglumat tehnologiýasy",
+        "averageRange": "35,000 - 80,000 funt sterling",
+        "entryLevel": "25,000 - 35,000 funt sterling",
+        "experienced": "£50,000 - £80,000",
+        "senior": "£70,000 - £120,000+",
+        "hotRoles": {
+          "0": "Programma üpjünçiliginiň inženerleri",
+          "1": "Maglumat alymlary",
+          "2": "Kiberhowpsuzlyk boýunça hünärmenler",
+          "3": "DevOps Inženerleri"
+        }
+      },
+      {
+        "sector": "Saglygy goraýyş",
+        "averageRange": "£30,000 - £70,000",
+        "entryLevel": "24,000 - 30,000 funt sterling",
+        "experienced": "£40,000 - £60,000",
+        "senior": "£60,000 - £100,000+",
+        "hotRoles": {
+          "0": "Şepagat uýalary",
+          "1": "Ýaş lukmanlar",
+          "2": "Hünärmenler",
+          "3": "Saglygy goraýyş menejerleri"
+        }
+      },
+      {
+        "sector": "Maliýe we bank işleri",
+        "averageRange": "£40,000 - £90,000",
+        "entryLevel": "28,000 - 40,000 funt sterling",
+        "experienced": "£50,000 - £80,000",
+        "senior": "£80,000 - £150,000+",
+        "hotRoles": {
+          "0": "Maliýe analitikleri",
+          "1": "Maýa goýum bankirleri",
+          "2": "Risk dolandyryjylary",
+          "3": "Düzgünlere laýyklyk boýunça işgärler"
+        }
+      },
+      {
+        "sector": "Inženerçilik",
+        "averageRange": "£35,000 - £65,000",
+        "entryLevel": "25,000 - 35,000 funt sterling",
+        "experienced": "£45,000 - £65,000",
+        "senior": "65,000 funt sterlingden 100,000 funt sterlinge çenli +",
+        "hotRoles": {
+          "0": "Raýat inženerleri",
+          "1": "Mehaniki Inženerler",
+          "2": "Elektrik inženerleri",
+          "3": "Taslama menejerleri"
+        }
+      }
+    ]
+  },
+  "workCulture": {
+    "title": "Beýik Britaniýanyň Iş Medeniýeti boýunça gollanma",
+    "subtitle": "Britaniýanyň iş ýerindäki garaşmalaryny düşünmek",
+    "aspects": [
+      {
+        "category": "Aragatnaşyk stili",
+        "description": "Britaniýalylaryň aragatnaşygy, adatça, sypaýy, gytaklaýyn we köplenç az sözlemegi öz içine alýar.",
+        "tips": {
+          "0": "\"Gowy\" ýaly sözler köplenç \"gowy\" diýmegi aňladýar",
+          "1": "Ylalaşyksyzlyk köplenç \"Meniň pikirimçe...\" ýaly sözler bilen ýumşadylýar.",
+          "2": "Howa barada kiçijik gürrüňler köp duş gelýär we garaşylýar",
+          "3": "Wagtynda gelmek ýokary baha berilýär"
+        }
+      },
+      {
+        "category": "Iş-durmuş deňagramlylygy",
+        "description": "Beýik Britaniýa, adatça, kanuny goraglar bilen iş we durmuş arasyndaky gowy deňagramlylygy saklaýar.",
+        "tips": {
+          "0": "Standart iş hepdesi 37,5-40 sagat",
+          "1": "Ýyllyk azyndan 28 günlük rugsat (bank baýramçylyklaryny hem goşmak bilen)",
+          "2": "Çeýe iş talaplary kanuny taýdan goralýar",
+          "3": "Goşmaça iş wagty medeniýeti pudaklara we kompaniýalara görä üýtgeýär"
+        }
+      },
+      {
+        "category": "Ierarhiýa we Duşuşyklar",
+        "description": "Britaniýanyň iş ýerleri, adatça, beýleki köp ýurtlara garanyňda, has az iýerarhiki gurluşa eýedir.",
+        "tips": {
+          "0": "Adlar ähli derejelerde giňden ulanylýar",
+          "1": "Duşuşyklar köplenç pikir alyşmak we pikir alyşmak üçin wagt alýar",
+          "2": "Kararlar köp halatlarda ylalaşyk gazanylýandygy sebäpli wagt talap edip biler",
+          "3": "Nobat etiketi ähli ýagdaýlarda ulanylýar"
+        }
+      }
+    ]
+  },
+  "relocationSupport": {
+    "title": "Işgärleriň göçürilmegi boýunça goldaw",
+    "subtitle": "Beýik Britaniýanyň iş berijilerinden näme garaşmaly",
+    "commonSupport": [
+      {
+        "type": "Wiza hemaýatkärligi",
+        "description": "Hemaýatkärlik şahadatnamasy we wiza üçin arza bermek boýunça goldaw",
+        "typical": "Hünärmen işçi wizalary üçin standart"
+      },
+      {
+        "type": "Göçüriş Paketi",
+        "description": "Göçmek çykdajylary üçin maliýe kömegi",
+        "typical": "Rol derejesine baglylykda 2,000-10,000 funt sterling"
+      },
+      {
+        "type": "Wagtlaýyn ýaşaýyş jaýy",
+        "description": "Ilkinji hepdeler üçin myhmanhana ýa-da hyzmat edilýän kwartira",
+        "typical": "2-4 hepdelik ätiýaçlandyryş umumy"
+      },
+      {
+        "type": "Öý awlamak goldawy",
+        "description": "Hemişelik ýaşaýyş jaýyny tapmakda kömek",
+        "typical": "Emlak agentleriniň maslahatlary, sebit boýunça gezelençler"
+      },
+      {
+        "type": "Medeni integrasiýa",
+        "description": "Orýentasiýa maksatnamalary we medeni okuwlar",
+        "typical": "Dostlar ulgamlary, ýerli tanyşdyryşlar"
+      }
+    ]
+  },
+  "legalRequirements": {
+    "title": "Beýik Britaniýada işlemek üçin kanuny talaplar",
+    "subtitle": "Esasy laýyklyk maglumatlary",
+    "requirements": [
+      {
+        "area": "Işlemek hukugy",
+        "description": "Ähli işgärler Beýik Britaniýada kanuny taýdan işläp bilýändiklerini subut etmeli",
+        "documents": {
+          "0": "Wiza bilen ygtyýarly pasport",
+          "1": "Biometrik ýaşaýyş rugsatnamasy (BRP)",
+          "2": "Kody onlaýndan işe geçmek üçin paýlaşyň"
+        }
+      },
+      {
+        "area": "Milli ätiýaçlandyryş",
+        "description": "Salgyt we ýeňillikler üçin özboluşly nomer talap edilýär",
+        "process": "Gelişiňizden soň internet arkaly ýa-da telefon arkaly ýüz tutuň, adatça 2-3 hepde gerek bolýar"
+      },
+      {
+        "area": "Salgyt (PAYE)",
+        "description": "Girdeji salgydy aýlykdan awtomatiki usulda tutulýar",
+        "rates": "Esasy nyrh 20%, Ýokary nyrh 40%, Goşmaça nyrh 45%"
+      },
+      {
+        "area": "Iş hukuklary",
+        "description": "Beýik Britaniýanyň işgärleri güýçli kanuny goraglara eýedirler",
+        "rights": {
+          "0": "Iň pes aýlyk hakynyň goragy",
+          "1": "Diskriminasiýa garşy kanunlar",
+          "2": "Adalatsyz işden çykarmak goragy (2 ýyldan soň)",
+          "3": "Kanuny kesel tölegi"
+        }
+      }
+    ]
+  },
+  "usToUkGuide": {
+    "header": {
+      "title": "ABŞ-dan Beýik Britaniýa göçmek",
+      "subtitle": "Wiza üçin ýüz tutmakdan başlap, Britaniýa durmuşyna göçmäge çenli howuzuň beýleki tarapyna göçmek boýunça giňişleýin gollanmaňyz"
+    },
+    "navigation": {
+      "title": "Mazmuny"
+    },
+    "sections": [
+      {
+        "id": "näme üçin-uk",
+        "icon": "🇬🇧",
+        "title": "Näme üçin Beýik Britaniýa göçmeli?",
+        "type": "näme üçin-uk",
+        "content": {
+          "intro": "Köp amerikanlylar Beýik Britaniýany özleriniň täze öýi hökmünde saýlaýarlar, sebäbi olar:",
+          "reasons": {
+            "0": "Umumy dil we medeni tanyşlyk",
+            "1": "Dünýä derejesindäki saglygy goraýyş (NHS)",
+            "2": "Baý taryh we medeni teklipler",
+            "3": "Syýahat üçin Ýewropa geçelgesi",
+            "4": "Ajaýyp jemgyýetçilik ulagy",
+            "5": "Aýry-aýry pudaklarda güýçli iş bazary"
+          },
+          "conclusion": "Iş mümkinçilikleri, bilim, maşgala sebäpleri ýa-da diňe bir ýagdaýyň üýtgemegi üçin başga ýere göçýän bolsaňyz, Beýik Britaniýa amerikanlar üçin tanyş, ýöne aýdyň tapawutly durmuş ýörelgesini hödürleýär."
+        }
+      },
+      {
+        "id": "wiza mümkinçilikleri",
+        "icon": "🛂",
+        "title": "ABŞ raýatlary üçin wiza mümkinçilikleri",
+        "type": "wiza mümkinçilikleri",
+        "content": {
+          "intro": "ABŞ raýaty hökmünde siz Beýik Britaniýada 6 aýa çenli wizasyz baryp bilersiňiz, ýöne uzak möhletli ýaşamak üçin size şu wiza ýollarynyň biri gerek bolar:",
+          "visaTypes": {
+            "0": {
+              "title": "1. Hünärmen işçi wizasy",
+              "requirements": {
+                "0": "Beýik Britaniýanyň iş berijisinden sponsorlyk ygtyýarnamasy bolan iş teklibi gerek",
+                "1": "Iň az aýlyk talaplaryna laýyk gelmeli (adatça 26,200 funt sterlingden gowrak, işe görä üýtgeýär)",
+                "2": "Iş talap edilýän ussatlyk derejesinde bolmaly (köplenç RQF derejesi 3 ýa-da ondan ýokary)",
+                "3": "5 ýyla çenli möhlet bilen güýje girýär, 5 ýyldan soň töleg tölenmegine sebäp bolup biler"
+              }
+            },
+            "1": {
+              "title": "2. Global Talant Wizasy",
+              "requirements": {
+                "0": "Akademiýa, ylmy-barlag, sungat, medeniýet ýa-da sanly tehnologiýalar ulgamyndaky ýolbaşçylar ýa-da geljegi uly şahslar üçin",
+                "1": "Beýik Britaniýanyň degişli edarasyndan tassyklama talap edilýär",
+                "2": "Hemaýatkärlige mätäçlik ýok, iş wizasyndan has köp çeýelik",
+                "3": "3-5 ýyldan soň çözgüt tapmaga getirip biler"
+              }
+            },
+            "2": {
+              "title": "3. Talyp wizasy",
+              "requirements": {
+                "0": "Beýik Britaniýanyň bilim edaralaryna kabul edilmek üçin",
+                "1": "Kabul haty, serişdäňiziň subutnamasy we iňlis dilini bilmek talap edilýär",
+                "2": "Okuw döwründe çäkli iş hukuklary",
+                "3": "Aspirantura ýoly okuwy gutarandan soň 2 ýyl işlemek üçin galmaga mümkinçilik berýär"
+              }
+            },
+            "3": {
+              "title": "4. Maşgala wizasy",
+              "requirements": {
+                "0": "Britaniýa raýatlarynyň ýa-da oturymly adamlaryň hyzmatdaşlary, är-aýallary ýa-da çagalary üçin",
+                "1": "Hakyky gatnaşygyň we maliýe talaplarynyň subutnamasyny talap edýär",
+                "2": "5 ýyldan soň ylalaşyk gazanmaga getirip biler"
+              }
+            },
+            "4": {
+              "title": "5. Beýik Britaniýanyň Ata-baba wizasy",
+              "requirements": {
+                "0": "Eger siziň Beýik Britaniýada doglan ene-ataňyz bar bolsa, siz bu 5 ýyllyk wizany almaga hukukly bolup bilersiňiz we ol ýerde ýerleşmek mümkinçiligine eýe bolup bilersiňiz."
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "zerur resminamalar",
+        "icon": "📄",
+        "title": "Göçmek üçin zerur resminamalar",
+        "type": "zerur resminamalar",
+        "content": {
+          "intro": "Resminama talaplary wizanyň görnüşine görä üýtgeýär, ýöne adatça aşakdakylary öz içine alýar:",
+          "documents": {
+            "0": "ABŞ-nyň ygtyýarly pasporty (azyndan 6 aý möhletli)",
+            "1": "Wiza üçin arza formalary we töleg çekleri",
+            "2": "Biometrik maglumatlar (barmak yzlary we surat)",
+            "3": "Iňlis dilini bilýändigiňiziň subutnamasy",
+            "4": "Ýeterlik serişdeleri görkezýän maliýe resminamalary",
+            "5": "Iş teklibi we hemaýatkärlik şahadatnamasy (iş wizalary üçin)",
+            "6": "Inçekesel (TB) barlaglarynyň netijeleri (6 aýdan köp wagtlap saklansaňyz)",
+            "7": "Ýaşaýyş jaýyny düzmegiň subutnamasy"
+          },
+          "proTip": {
+            "label": "Hünärmen maslahaty",
+            "text": "Bu resminamalary ir ýygnamaga başlaň, sebäbi käbir resminamalary (meselem, geçmiş barlaglary) almak üçin köp wagt gerek bolup biler."
+          }
+        }
+      },
+      {
+        "id": "meşhur şäherler",
+        "icon": "🏙️",
+        "title": "Amerikanlaryň köpüsi Beýik Britaniýada nirede ýaşaýar?",
+        "type": "meşhur şäherler",
+        "content": {
+          "intro": "Beýik Britaniýa göçüp barýan amerikanlar, adatça, şu meşhur ýerlerde jemlenýärler:",
+          "cities": {
+            "0": {
+              "name": "London",
+              "icon": "🌆",
+              "highlights": {
+                "0": "Iň meşhur ýer, esasanam Kensington, Çelsi we Notting Hill ýaly ýerler",
+                "1": "Dürli iş mümkinçilikleri bolan global maliýe merkezi",
+                "2": "Janly medeni sahna, ýöne ýaşaýyş çykdajylary ýokary"
+              }
+            },
+            "1": {
+              "name": "Oksford we Kembrij",
+              "icon": "📚",
+              "highlights": {
+                "0": "Akademiki we ylmy-barlag mümkinçilikleri bolan uniwersitet şäherçeleri",
+                "1": "Taryhy arhitektura we güýçli intellektual jemgyýetler",
+                "2": "Ýaşaýyş hili gowy, ýöne ýaşaýyş jaýy gymmat bolup biler"
+              }
+            },
+            "2": {
+              "name": "Mançester",
+              "icon": "🏭",
+              "highlights": {
+                "0": "Amerikan ekspat jemgyýetiniň ösýän esasy tehnologiýa we media merkezi",
+                "1": "Londondan has elýeterli we ajaýyp medeni teklipler bilen",
+                "2": "BBC North we MediaCityUK-yň öýi"
+              }
+            },
+            "3": {
+              "name": "Edinburg",
+              "icon": "🏰",
+              "highlights": {
+                "0": "Şotlandiýanyň ajaýyp binagärligi we güýçli maliýe pudagy bilen paýtagty",
+                "1": "Maliýe, tehnologiýa we bilim pudaklarynda amerikanlar arasynda meşhur",
+                "2": "Janly medeni sahnalar bilen ajaýyp ýaşaýyş derejesi"
+              }
+            }
+          },
+          "risingLocations": {
+            "title": "Ösýän ýerler",
+            "icon": "💼",
+            "locations": {
+              "0": {
+                "name": "Bristol",
+                "description": "Ýaşaýşyň ýokary hilli bolmagy bilen gülläp ösýän döredijilik we tehnologiýa dünýäsi"
+              },
+              "1": {
+                "name": "Birmingem",
+                "description": "Ösüş edýän ykdysadyýeti we ýaşaýyş çykdajylarynyň pese gaçmagy bilen barha meşhur bolýar"
+              },
+              "2": {
+                "name": "Glazgo",
+                "description": "Şotlandiýanyň elýeterli bahadan we medeni gözellikleri hödürleýän iň uly şäheri"
+              },
+              "3": {
+                "name": "Kardiff",
+                "description": "Iş mümkinçilikleriniň artmagy we ýaşaýyş çykdajylarynyň pese gaçmagy bilen Uels paýtagty"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "ýaşaýyş çykdajylary",
+        "icon": "💷",
+        "title": "Ýaşaýyş çykdajylaryny deňeşdirmek: Beýik Britaniýa bilen ABŞ",
+        "type": "ýaşaýyş çykdajylary",
+        "content": {
+          "table": {
+            "headers": {
+              "expense": "Çykdajylar",
+              "uk": "Beýik Britaniýa (ortaça)",
+              "usa": "ABŞ (ortaça)"
+            },
+            "rows": {
+              "0": {
+                "expense": "Kärende (şäher merkezinde 1 ýatak otagy)",
+                "uk": "£800–£1,500/aý",
+                "usa": "1500–2000 dollar",
+                "ukHighlight": false
+              },
+              "1": {
+                "expense": "Saglygy goraýyş",
+                "uk": "NHS arkaly esasan mugt",
+                "usa": "Aýda 300–600 dollar",
+                "ukHighlight": true
+              },
+              "2": {
+                "expense": "Kommunal hyzmatlar (aýlyk)",
+                "uk": "150–200 funt sterling",
+                "usa": "150–200 dollar",
+                "ukHighlight": false
+              },
+              "3": {
+                "expense": "Ulag",
+                "uk": "£65–£150/aý",
+                "usa": "70–150 dollar + awtoulag çykdajylary",
+                "ukHighlight": true
+              },
+              "4": {
+                "expense": "Daşarda naharlanmak (2 adamlyk)",
+                "uk": "40–80 funt sterling",
+                "usa": "50–100 dollar",
+                "ukHighlight": false
+              },
+              "5": {
+                "expense": "Ýokary bilim",
+                "uk": "Ýyllyk £9,250 (içerki)",
+                "usa": "Ýylda 10,000–40,000 dollar",
+                "ukHighlight": true
+              }
+            }
+          },
+          "conclusion": "Londonda ýaşaýyş çykdajylary we Beýik Britaniýanyň beýleki sebitleri arasynda düýpli tapawutlanýar. Londonyň bahalary Nýu-Ýork we San-Fransisko ýaly ABŞ-nyň iri şäherleri bilen bäsleşýän bolsa-da, Beýik Britaniýanyň beýleki sebitlerinde ýaşaýyş çykdajylary has pes."
+        }
+      },
+      {
+        "id": "saglygy goraýyş",
+        "icon": "🏥",
+        "title": "Beýik Britaniýada saglygy goraýyş",
+        "type": "saglygy goraýyş",
+        "content": {
+          "intro": "Beýik Britaniýanyň Milli Saglygy Goraýyş Gullugy (NHS) ýaşaýjylar üçin mugt ulanylýan toplumlaýyn saglygy goraýyş hyzmatlaryny hödürleýär, bu bolsa saglygy goraýyş çykdajylarynyň ýokary bolmagyna öwrenişen amerikanlar üçin uly artykmaçlykdyr.",
+          "nhsAccess": {
+            "title": "Immigrantlar üçin NHS elýeterliligi",
+            "points": {
+              "0": "6 aýdan köp wagt üçin wiza arzalarynyň köpüsinde Immigrasiýa Saglyk Goşmaça Tölegini (IHS) tölemek talap edilýär.",
+              "1": "Häzirki IHS tölegi: uly ýaşly wiza üçin ýüz tutýanlaryň köpüsi üçin ýylda 1035 funt sterling",
+              "2": "Töleg geçirilenden soň, siz NHS hyzmatlarynyň köpüsinden peýdalanmaga hukukly bolarsyňyz (käbir stomatologiýa we optika hyzmatlaryndan başga)",
+              "3": "Ýerleşip bolanyňyzdan soň ýerli umumy lukmana (GP) ýazylyň"
+            }
+          },
+          "conclusion": "Hususy saglyk hyzmatlary hem elýeterlidir we käbir iş berijiler hususy saglyk ätiýaçlandyrmasyny peýda hökmünde hödürleýärler."
+        }
+      },
+      {
+        "id": "dil",
+        "icon": "🗣️",
+        "title": "Dil we medeni maslahatlar",
+        "type": "dil",
+        "content": {
+          "intro": "Dil paýlaşýandygyna garamazdan, amerikanlylaryň bilmeli medeni tapawutlary bar:",
+          "differences": {
+            "title": "Britaniýa we Amerikan iňlis dili",
+            "vocabulary": {
+              "title": "Sözlük tapawutlary:",
+              "examples": {
+                "0": "Kwartira → Kwartira",
+                "1": "Lift → Lift",
+                "2": "Pyýada ýoly → Ýol örtügi",
+                "3": "Setir → Nobat",
+                "4": "Kartoşka fri → Çipsler",
+                "5": "Çipsler → Çipsler"
+              }
+            },
+            "cultural": {
+              "title": "Medeni tapawutlar:",
+              "points": {
+                "0": "Britaniýanyň ýumory has ironiki we öz-özüni kemsitmäge meýilli bolýar",
+                "1": "Sypaýylyk we pes sözlülik ýokary baha berilýär",
+                "2": "Gönümellik käte gödeklik hökmünde kabul edilip bilner",
+                "3": "Nobata durmak (nobatda garaşmak) örän çynlakaý kabul edilýär"
+              }
+            }
+          },
+          "conclusion": "Britaniýanyň jemgyýetçilik däp-dessurlary tanyş ýaly bolup görünse-de, köplenç kiçijik tapawutlar bolýar. Britaniýalylar başda has saklanýarlar, ýöne wagtyň geçmegi bilen öwrenişýärler."
+        }
+      },
+      {
+        "id": "hereket etmek",
+        "icon": "📦",
+        "title": "ABŞ-dan göçürmek we ibermek",
+        "type": "hereket etmek",
+        "content": {
+          "intro": "Beýik Britaniýa göçmegi meýilleşdirmek üçin ünsli çemeleşme gerek:",
+          "shipping": {
+            "title": "Eltip bermek opsiýalary",
+            "options": {
+              "0": {
+                "type": "Howa ýük daşamak",
+                "description": "Çaltrak (5-10 gün), ýöne gymmatrak"
+              },
+              "1": {
+                "type": "Deňiz ýük daşamagy",
+                "description": "Arzanrak, ýöne haýalrak (4-8 hepde)"
+              },
+              "2": {
+                "type": "Halkara göçürijiler",
+                "description": "Gaplama we gümrük işleri bilen doly hyzmat mümkinçilikleri bar"
+              }
+            }
+          },
+          "customs": {
+            "title": "Gümrük meseleleri",
+            "considerations": {
+              "0": "Şahsy zatlaryňyz 6 aýdan gowrak wagt bäri eýeçilik edýän bolsaňyz, olary salgytsyz import edip bilersiňiz",
+              "1": "Ibermezden öň ýaşaýyş jaýyny başga ýere geçirmek (ToR) üçin arza dolduryň",
+              "2": "Käbir iýmitler, ösümlikler we dermanlar ýaly zatlar çäklendirilen",
+              "3": "Öý haýwanlaryna mikroçip goýmak, sanjym etmek we öý haýwanlarynyň pasportlaryny almak zerurdyr"
+            }
+          },
+          "conclusion": "Nämeleri getirmelidigini üns bilen göz öňünde tutuň - köp öý hojalyk elektron enjamlarynyň naprýaženiýe öwürijileri gerek bolar (Beýik Britaniýa: 230V we ABŞ: 120V) we mebeller, adatça, kiçi Beýik Britaniýa öýlerine sygmazlygy mümkin."
+        }
+      },
+      {
+        "id": "bank işi",
+        "icon": "💳",
+        "title": "Bankçylyk we maliýe",
+        "type": "bank işi",
+        "content": {
+          "intro": "Beýik Britaniýada maliýe durmuşyňyzy ýola goýmak möhüm ilkinji ädimdir:",
+          "ukAccount": {
+            "title": "Beýik Britaniýanyň bank hasabyny açmak",
+            "points": {
+              "0": "Adatça, täze gelenler üçin 22-nji derejeli ýagdaý döredýän Beýik Britaniýanyň salgysyny tassyklaýan resminama talap edilýär",
+              "1": "“Monzo”, “Starling” we “Revolut” ýaly sanly banklar täze gelenler üçin has aňsat mümkinçilikleri hödürleýär.",
+              "2": "Käbir halkara banklar (HSBC, Barclays) halkara hasap hyzmatlaryny hödürleýärler",
+              "3": "Gerekli resminamalar: pasport, wiza, ýaşaýan ýeriňizi tassyklaýan resminama, iş maglumatlary"
+            }
+          },
+          "usUkFinances": {
+            "title": "ABŞ-Beýik Britaniýanyň maliýesini dolandyrmak",
+            "points": {
+              "0": "ABŞ-daky dowam edýän borçlaryňyz üçin ABŞ-daky bank hasabyňyzy saklaň",
+              "1": "Pul geçirimlerini tygşytly geçirmek üçin Wise (öňki TransferWise) ýaly hyzmatlary göz öňünde tutuň",
+              "2": "ABŞ raýatlary ýaşaýan ýerine garamazdan ABŞ-nyň salgyt deklarasiýalaryny tabşyrmalydyrlar (Daşary ýurtlardan gazanylan girdeji üçin goşmaça mümkinçilik bar)",
+              "3": "ABŞ-Beýik Britaniýanyň salgyt şertnamasy iki gezek salgyt salynmagynyň öňüni almaga kömek edýär"
+            }
+          },
+          "conclusion": "Beýik Britaniýanyň kredit taryhyny döretmek wagt talap edýär, şonuň üçin degişli meýilnama düzüň. Kredit ballary halkara derejesinde geçirilmeýär we siz Beýik Britaniýanyň kredit ulgamynda başdan başlaýarsyňyz."
+        }
+      }
+    ],
+    "checklist": {
+      "title": "Amerikalylar üçin göçmezden öňki barlag sanawy",
+      "items": [
+        "Degişli wiza üçin öňünden ýüz tutuň",
+        "Immigrasiýa saglygy üçin goşmaça tölegi (IHS) tölemek",
+        "Beýik Britaniýanyň bank hasabyny açyň (ýa-da alternatiwalary taýýarlaň)",
+        "Islän ýeriňizde ýaşaýyş jaýyny gözläň",
+        "Halkara pul geçirim hyzmatyny ýola goýuň",
+        "Eşýalaryň daşalmagyny ýa-da saklanmagyny guraň",
+        "Möhüm resminamalary Beýik Britaniýanyň formatyna öwürmek",
+        "Salgyt netijelerini öwrenmek (ABŞ-Beýik Britaniýa)",
+        "Maslahat we aragatnaşyk üçin daşary ýurtly jemgyýetlere we forumlara goşulyň"
+      ]
+    },
+    "resources": {
+      "title": "Goşmaça serişdeler",
+      "categories": [
+        {
+          "title": "Resmi Maglumat",
+          "links": {
+            "0": "Beýik Britaniýanyň hökümetiniň wiza maglumatlary",
+            "1": "Beýik Britaniýanyň Içeri işler ministrliginiň düzgünleri",
+            "2": "ABŞ-nyň Beýik Britaniýadaky ilçihanasy"
+          }
+        },
+        {
+          "title": "Daşary ýurtly jemgyýetler",
+          "links": {
+            "0": "Beýik Britaniýadaky amerikanlaryň Facebook toparlary",
+            "1": "InterNations Beýik Britaniýanyň bölümleri",
+            "2": "Daşary ýurtlylar üçin duşuşyk toparlary"
+          }
+        },
+        {
+          "title": "Amaly hyzmatlar",
+          "links": {
+            "0": "Halkara göçüriş kompaniýalary",
+            "1": "Beýik Britaniýanyň ýerleşýän ýerleriniň web sahypalary",
+            "2": "Daşary ýurtly salgyt hyzmatlary"
+          }
+        }
+      ]
+    }
+  },
+  "immigrationTimeline": {
+    "title": "ABŞ-dan Beýik Britaniýa immigrasiýa wagt çyzgysy",
+    "subtitle": "Dürli wiza görnüşleri üçin adaty möhlet",
+    "visaTimelines": [
+      {
+        "visaType": "Hünärmen işçi wizasy",
+        "totalTime": "3-6 aý",
+        "phases": {
+          "0": {
+            "phase": "Iş gözlemek we teklip etmek",
+            "duration": "1-4 aý",
+            "description": "Sponsorlyk bilen iş tapmak"
+          },
+          "1": {
+            "phase": "Wiza üçin arza",
+            "duration": "3-8 hepde",
+            "description": "Arza işleniş wagty"
+          },
+          "2": {
+            "phase": "Karar we Syýahat",
+            "duration": "1-2 hepde",
+            "description": "Karar kabul etmek we syýahaty meýilleşdirmek"
+          }
+        }
+      },
+      {
+        "visaType": "Talyp wizasy",
+        "totalTime": "2-4 aý",
+        "phases": {
+          "0": {
+            "phase": "Uniwersitete arza",
+            "duration": "1-3 aý",
+            "description": "Arza bermek we kabul etmek"
+          },
+          "1": {
+            "phase": "Wiza üçin arza",
+            "duration": "3-6 hepde",
+            "description": "Talyp wizasyny işläp çykarmak"
+          },
+          "2": {
+            "phase": "Taýýarlyk",
+            "duration": "2-4 hepde",
+            "description": "Ýaşaýyş ýeri we syýahat çäreleri"
+          }
+        }
+      }
+    ]
+  },
+  "culturalAdaptation": {
+    "title": "Medeni taýdan adaptasiýa boýunça gollanma",
+    "subtitle": "Amerikan hökmünde Britaniýa durmuşyna göçüp barmak",
+    "areas": [
+      {
+        "category": "Sosial gatnaşyklar",
+        "tips": {
+          "0": "Howa barada kiçijik gürrüň etmek hakykatdanam möhümdir",
+          "1": "Ýygy-ýygydan ötünç soramak ('bagyşla') adaty zat",
+          "2": "Şahsy giňişlik we nobata durmak etiketi möhümdir",
+          "3": "Pab medeniýeti jemgyýetçilik durmuşynda möhüm orun eýeleýär"
+        }
+      },
+      {
+        "category": "Iş ýeri medeniýeti",
+        "tips": {
+          "0": "ABŞ-nyň adaty iş orunlaryndan has resmi aragatnaşyk",
+          "1": "Uzak nahar arakesmeleri we çaý arakesmeleri adaty ýagdaý",
+          "2": "Baýramçylyk/dynç alyş wagty has giňdir",
+          "3": "Iş bilen şahsy durmuşyň deňagramlylygy, umuman alanyňda, has gowy goralýar"
+        }
+      },
+      {
+        "category": "Gündelik durmuş",
+        "tips": {
+          "0": "Jemgyýetçilik ulaglary ygtybarly, ýöne gymmat bolup biler",
+          "1": "Azyk önümlerini satyn almak görnüşleri tapawutlanýar (kiçi, has köp syýahatlar)",
+          "2": "Egin-eşikleriň ölçegleri we ölçegleri dürli-dürli",
+          "3": "Çaý pul bermek medeniýeti ABŞ-dan has az ýaýran"
+        }
+      }
+    ]
+  },
+  "financialPlanning": {
+    "title": "Göçmegiňiz üçin maliýe meýilnamasy",
+    "subtitle": "ABŞ-dan Beýik Britaniýa göçmegiňiz üçin býujet düzmek",
+    "categories": [
+      {
+        "stage": "Göçmezden öňki çykdajylar",
+        "totalRange": "3000 - 8000 dollar",
+        "items": {
+          "0": {
+            "item": "Wiza üçin arzalar we tölegler",
+            "cost": "1500 dollardan 3500 dollara çenli"
+          },
+          "1": {
+            "item": "Medisina barlaglary we testler",
+            "cost": "200 - 500 dollar"
+          },
+          "2": {
+            "item": "Resminamalary taýýarlamak we hukuk tölegleri",
+            "cost": "500 dollardan 2000 dollara çenli"
+          },
+          "3": {
+            "item": "Uçuş bronlamalary",
+            "cost": "800 - 2000 dollar"
+          }
+        }
+      },
+      {
+        "stage": "Göçmek çykdajylary",
+        "totalRange": "$2,000 - $15,000",
+        "items": {
+          "0": {
+            "item": "Öý hojalyk harytlaryny daşamak",
+            "cost": "$2,000 - $8,000"
+          },
+          "1": {
+            "item": "Wagtlaýyn ýaşaýyş jaýy",
+            "cost": "1000 dollardan 4000 dollara çenli"
+          },
+          "2": {
+            "item": "Öý haýwanlarynyň başga ýere göçürilmegi (eger bar bolsa)",
+            "cost": "1000 dollardan 3000 dollara çenli"
+          }
+        }
+      },
+      {
+        "stage": "Hasaplaşyk çykdajylary",
+        "totalRange": "3000 - 10 000 dollar",
+        "items": {
+          "0": {
+            "item": "Jaý goýumlary we kärende",
+            "cost": "$2,000 - $6,000"
+          },
+          "1": {
+            "item": "Ilkinji enjamlaşdyrmak we gurnamak",
+            "cost": "1000 dollardan 3000 dollara çenli"
+          },
+          "2": {
+            "item": "Ilkinji aýyň ýaşaýyş çykdajylary",
+            "cost": "1500 dollardan 3500 dollara çenli"
+          }
+        }
+      }
+    ]
+  },
+  "legalConsiderations": {
+    "title": "Amerikalylar üçin hukuk meseleleri",
+    "subtitle": "Beýik Britaniýa göçmegiň möhüm hukuk taraplary",
+    "topics": [
+      {
+        "area": "Salgyt borçlary",
+        "description": "ABŞ raýatlary ýaşaýan ýerine garamazdan ABŞ-nyň salgyt deklarasiýalaryny tabşyrmaly",
+        "keyPoints": {
+          "0": "Daşary ýurtdan gazanylan girdeji üçin çykarylan tölegler ~120,000 dollara çenli elýeterlidir",
+          "1": "Beýik Britaniýa bilen ABŞ-nyň arasyndaky salgyt şertnamasy iki gezek salgyt salynmagynyň öňüni alýar",
+          "2": "Çylşyrymly ýagdaýlar üçin professional salgyt maslahatyny göz öňünde tutuň",
+          "3": "Daşary ýurt bank hasaplaryndaky balans 10,000 dollardan geçse, habar beriň"
+        }
+      },
+      {
+        "area": "Ses beriş hukuklary",
+        "description": "Iki ýurtda hem ses bermek hukuklaryňyzy düşünmek",
+        "keyPoints": {
+          "0": "ABŞ-nyň ses bermek hukuklaryny gaýybana ses bermek arkaly saklaň",
+          "1": "Beýik Britaniýanyň ýerli saýlawlary ýaşaýyş jaýyny bellige alandan soň mümkin",
+          "2": "Brexitden soň ÝB raýatlygynyň ýitirilmegi käbir hukuklara täsir edýär",
+          "3": "Iki raýatlygyň netijelerini göz öňünde tutuň"
+        }
+      },
+      {
+        "area": "Hukuk ýagdaýy",
+        "description": "Hukuk derejäňizi we hukuklaryňyzy düşünmek",
+        "keyPoints": {
+          "0": "Wiza şertleri iş we syýahat hukuklaryny kesgitleýär",
+          "1": "Hemişelik ýaşamak üçin ýol wizanyň görnüşine görä üýtgeýär",
+          "2": "Britaniýa raýatlygyny 5+ ýyl ýaşandan soň alyp bolýar",
+          "3": "Çylşyrymly ýagdaýlar üçin hukuk maslahaty maslahat berilýär"
+        }
+      }
+    ]
+  },
+  "petsToUkGuide": {
+    "header": {
+      "title": "Haýwanlar bilen Beýik Britaniýa göçmek",
+      "subtitle": "Söýgüli ýoldaşlaryňyzy täze Britaniýa öýüne getirmek boýunça doly gollanma - talaplar, proses we ýerleşmek"
+    },
+    "navigation": {
+      "title": "Beýik Britaniýanyň öý haýwanlarynyň immigrasiýasy boýunça gollanma"
+    },
+    "sections": [
+      {
+        "id": "talaplar",
+        "icon": "✅",
+        "title": "Esasy talaplar",
+        "type": "talaplar",
+        "content": {
+          "keyRequirements": {
+            "0": {
+              "title": "Mikroçip",
+              "description": "Haýwanyňyza islendik sanjym edilmezden öň ISO 11784/11785 standartyna laýyk gelýän çip bilen mikroçip goýulmaly.",
+              "number": "1"
+            },
+            "1": {
+              "title": "Guduzlama garşy waksinasiýa",
+              "description": "Syýahatdan azyndan 21 gün öň berilmeli we syýahat wagtynda güýjünde bolmaly.",
+              "number": "2"
+            },
+            "2": {
+              "title": "Haýwan Saglygy Sertifikaty (AHC)",
+              "description": {
+                "0": "Beýik Britaniýa syýahat edeniňizden soň 10 günüň dowamynda ýurduňyzdaky resmi weterinar tarapyndan berilmeli.",
+                "1": "Berleninden soň 4 aýa çenli Beýik Britaniýa girmek üçin ygtyýarlydyr.",
+                "2": "Diňe ÝB-de ýa-da Demirgazyk Irlandiýada berlen ÝB öý haýwanlarynyň pasporty ýok bolsa gerek."
+              },
+              "number": "3"
+            },
+            "3": {
+              "title": "Lent gurçuklaryny bejermek",
+              "note": "(diňe itler üçin)",
+              "description": "Itler Beýik Britaniýa gelmezden 24-120 sagat (1-5 gün) öň lent gurçugyna garşy bejergi almalydyr.",
+              "number": "4"
+            }
+          }
+        }
+      },
+      {
+        "id": "giriş ýollary",
+        "icon": "🛂",
+        "title": "Giriş ýollary",
+        "type": "giriş ýollary",
+        "content": {
+          "approvedEntry": {
+            "title": "Tassyklanan giriş nokatlary",
+            "description": "Öý haýwanlary Beýik Britaniýa diňe tassyklanan belli ýollar arkaly girip bilerler.",
+            "routes": {
+              "0": {
+                "title": "Howa syýahaty",
+                "description": "Hitrou, Gatwik, Mançester, Edinburg ýaly iri aeroportlar"
+              },
+              "1": {
+                "title": "Ýewrotunnel",
+                "description": "Folkestone (Kale arkaly)"
+              },
+              "2": {
+                "title": "Parom portlary",
+                "description": "Dower, Portsmut, Hull, Harwiç"
+              },
+              "3": {
+                "title": "Eurostar",
+                "description": "Diňe kömekçi itlere rugsat berilýär"
+              }
+            }
+          },
+          "warning": "Öý haýwanyňyz bilen tassyklanan ýol arkaly gelmeli, ýogsam öý haýwanyňyz 4 aýa çenli karantine alnyp bilner."
+        }
+      },
+      {
+        "id": "syýahat etmek",
+        "icon": "✈️",
+        "title": "Syýahat opsiýalary",
+        "type": "syýahat etmek",
+        "content": {
+          "travelOptions": {
+            "0": {
+              "icon": "🐱",
+              "ariaLabel": "kiçi öý haýwany",
+              "title": "Kabinanyň içinde",
+              "description": "Çäklendirilen mümkinçilikler - Beýik Britaniýa barýan uçuşlaryň köpüsinde kömekçi haýwanlardan başga haýwanlaryň salona girmegine rugsat berilmeýär."
+            },
+            "1": {
+              "icon": "🐕",
+              "ariaLabel": "uly öý haýwany",
+              "title": "Ýük hökmünde",
+              "description": "Haýwanlary Beýik Britaniýa uçurmagyň iň köp ýaýran usuly. Adatça, haýwanlary dolandyrmak boýunça ýöriteleşdirilen bölümler tarapyndan amala aşyrylýar."
+            },
+            "2": {
+              "icon": "🚗",
+              "ariaLabel": "awtoulag",
+              "title": "Ýewrotunnel/Parom",
+              "description": "Ýewropadan gelýänler üçin meşhur wariant. Öý haýwanlary eýeleri bilen awtoulaglarda galyp bilerler."
+            }
+          },
+          "costConsiderations": {
+            "title": "Çykdajylary göz öňünde tutýan zatlar",
+            "costs": {
+              "0": "Uçuşlar: ýük daşamak üçin £400-£800",
+              "1": "Ýewrotunnel: ulag töleginden başga her bir haýwan üçin 20-30 funt sterling",
+              "2": "Paromlar: ugur boýunça her bir haýwan üçin £15-£30",
+              "3": "Saglyk güwänamasy: £100-£175"
+            }
+          },
+          "warning": "Talaplar üýtgäp bilýändigi üçin, haýwanlar bilen bagly syýasatyňyz barada her zaman awiakompaniýaňyz ýa-da ulag kompaniýaňyz bilen habarlaşyň."
+        }
+      },
+      {
+        "id": "gelme prosesi",
+        "icon": "🛬",
+        "title": "Geliş prosesi",
+        "type": "gelme prosesi",
+        "content": {
+          "intro": "Beýik Britaniýada daşary ýurtlardan gelýän öý haýwanlary üçin aýratyn bir prosedura bar.",
+          "documentChecks": {
+            "title": "Dokumentleri barlamak",
+            "items": {
+              "0": "Mikroçipiň tassyklamasy",
+              "1": "Haýwanlaryň Saglygy Sertifikaty",
+              "2": "Guduzlama garşy sanjymyň ýazgylary",
+              "3": "Itlerde lent gurçuklaryna garşy bejergi"
+            }
+          },
+          "processFlow": {
+            "title": "Proses akymy",
+            "steps": {
+              "0": "Tassyklanan giriş nokadyna geliň",
+              "1": "Haýwanyňyzy we resminamalary resmilere görkeziň",
+              "2": "Haýwanyň mikroçipi şahsyýetini tassyklamak üçin skanirlener",
+              "3": "Resminamalar düýpli barlanar",
+              "4": "Eger hemme zat tertipli bolsa, öý haýwanyňyz içeri girmäge rugsat berler"
+            }
+          },
+          "warning": "Eger resminamalar doly däl bolsa ýa-da öý haýwanyňyz özüni erbet duýsa, olar siziň hasabyňyza (4 aýa çenli) karantine goýulyp bilner."
+        }
+      },
+      {
+        "id": "gelenden soň",
+        "icon": "🏠",
+        "title": "Beýik Britaniýada öý haýwanlary bilen ýaşamak",
+        "type": "gelenden soň",
+        "content": {
+          "intro": "Beýik Britaniýada bolanyňyzda, öý haýwanyňyzyň abadançylygy üçin göz öňünde tutmaly birnäçe zat bar.",
+          "livingAspects": {
+            "0": {
+              "icon": "🏥",
+              "title": "Weterinariýa hyzmaty",
+              "description": "Ýerli weterinar lukmana mümkin boldugyça tiz wagtda ýazylyň. Beýik Britaniýada weterinariýa hyzmaty ajaýyp, ýöne çykdajylar ýokary bolup biler - öý haýwanlaryny ätiýaçlandyrmak maslahat berilýär.",
+              "cost": "Standart weterinar maslahaty: £30-£60"
+            },
+            "1": {
+              "icon": "📋",
+              "title": "Registrasiýa",
+              "description": "Haýwanyňyzyň mikroçip maglumatlaryny Beýik Britaniýadaky salgysyňyz bilen täzeläň. Itler hem ýerli geňeşde hasaba alynmaly we aragatnaşyk maglumatlaryňyz ýazylan etiket dakmaly."
+            },
+            "2": {
+              "icon": "🏞️",
+              "title": "Maşk we boşluklar",
+              "description": "Beýik Britaniýada öý haýwanlary üçin amatly köp sanly seýilgähler we oba ýerleri bar. Şäherleriň köpüsinde itleri türgenleşdirmek üçin niýetlenen ýerler bar, ýöne itleri zynjyrda saklamak baradaky ýerli düzgünleri hemişe barlap duruň."
+            },
+            "3": {
+              "icon": "🏠",
+              "title": "Ýaşaýyş jaýy",
+              "description": "Beýik Britaniýadaky köp kärende jaýlarynda \"öý haýwanlaryna rugsat berilmeýär\" syýasaty bar, emma bu ýagdaý üýtgeýär. Käbir jaýlarda has ýokary goýum ýa-da \"öý haýwanlaryna kärende\" tölemäge taýýar boluň."
+            }
+          },
+          "firstWeekChecklist": {
+            "title": "Birinji hepde barlag sanawy",
+            "items": {
+              "0": "Ýerli weterinariýa klinikasynda hasaba duruň",
+              "1": "Mikroçipleriň bellige alyşyny Beýik Britaniýanyň salgysy bilen täzeläň",
+              "2": "Itiňizi ýerli geňeşde hasaba alyň (eger bar bolsa)",
+              "3": "Beýik Britaniýanyň aragatnaşyk maglumatlary bilen satyn alyş şahsyýetnamasynyň belgisi",
+              "4": "Öý haýwanlaryny ätiýaçlandyryş wariantlaryny öwreniň"
+            }
+          }
+        }
+      },
+      {
+        "id": "serişdeler",
+        "icon": "📚",
+        "title": "Peýdaly çeşmeler",
+        "type": "serişdeler",
+        "content": {
+          "officialInfo": {
+            "title": "Resmi Maglumat",
+            "resources": {
+              "0": {
+                "title": "Beýik Britaniýanyň hökümetiniň öý haýwanlarynyň syýahaty boýunça görkezmeleri",
+                "description": "Öý haýwanlaryny Beýik Britaniýa getirmek üçin resmi düzgünler we talaplar"
+              },
+              "1": {
+                "title": "Haýwanlar we Ösümlikler Saglygy Agentligi (APHA)",
+                "description": "Haýwanlaryň importyna gözegçilik edýän hökümet edarasy"
+              },
+              "2": {
+                "title": "Öý haýwanlaryna syýahat etmek üçin kömek liniýasy",
+                "description": "+44 370 241 1710 (Duşenbeden Anna gününe çenli, Beýik Britaniýa wagty bilen sagat 8:30-dan 17:00-a çenli)"
+              }
+            }
+          },
+          "petServices": {
+            "title": "Beýik Britaniýada öý haýwanlary hyzmatlary",
+            "services": {
+              "0": {
+                "category": "Öý haýwanlarynyň ätiýaçlandyryşy",
+                "providers": "Üpjün edijileri deňeşdiriň: PetPlan, Animal Friends, More Than"
+              },
+              "1": {
+                "category": "Öý haýwanlary üçin enjamlar",
+                "providers": "Öýde öý haýwanlary, Amazon UK, VetUK"
+              },
+              "2": {
+                "category": "Weterinar tapyň",
+                "providers": "Weterinariýa hirurglarynyň Korollyk kolleji: FindAVet hyzmaty"
+              },
+              "3": {
+                "category": "Öý haýwanlary üçin amatly ýaşaýyş jaýy",
+                "providers": "PetsLets, Airbnb ('öý haýwanlaryna rugsat berilýär' süzgüjini ulanyň)"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "sidebar": {
+      "checklist": {
+        "title": "Syýahatdan öňki barlag sanawy",
+        "items": [
+          "Öý haýwanyňyzy mikroçip bilen çipläň",
+          "Guduzlama garşy sanjymyň güýjündedigini üpjün ediň",
+          "Waksinadan soň azyndan 21 gün garaşyň",
+          "Syýahatdan 1-5 gün öň itleri lenta gurçugyna garşy bejeriň",
+          "Syýahatdan soň 10 günüň dowamynda haýwanlaryň saglygy baradaky güwänamany alyň",
+          "Beýik Britaniýa üçin tassyklanan ulag ýoly",
+          "Syýahatçylyk üçin niýetlenen awtoulagy taýýarlaň (uçýan bolsaňyz, awiakompaniýa tarapyndan tassyklanan)"
+        ]
+      },
+      "faq": {
+        "title": "Umumy soraglar",
+        "questions": [
+          {
+            "question": "Maňa haýwan pasporty gerekmi?",
+            "answer": "ÝB-de ýa-da Demirgazyk Irlandiýada berlen ÝB-niň haýwan pasportlary Beýik Britaniýa girmek üçin henizem güýjünde. Başgaça bolsa, size Haýwan Saglygy baradaky Sertifikat gerek bolar."
+          },
+          {
+            "question": "Karantin barmy?",
+            "answer": "Ähli talaplar ýerine ýetirilen halatynda karantine zerurlyk ýok. Eger talaplar ýerine ýetirilmese, öý haýwanlary 4 aýa çenli karantinde galyp bilerler."
+          },
+          {
+            "question": "Haýsy jynslar gadagan edildi?",
+            "answer": "Beýik Britaniýada käbir it tohumlary, şol sanda Pitbul Terýer, Ýapon Tosa, Dogo Argentino we Fila Brasileiro gadagan edilen."
+          },
+          {
+            "question": "Ekzotik haýwanlary getirip bilerinmi?",
+            "answer": "Ekzotik haýwanlaryň dürli talaplary bar. Köpüsi üçin CITES rugsatnamalary we import üçin ýörite ygtyýarnamalar gerek."
+          }
+        ]
+      }
+    }
+  },
+  "petHealthRequirements": {
+    "title": "Saglyk boýunça jikme-jik talaplar",
+    "subtitle": "Gelip çykyş ýurtlary boýunça toplumlaýyn saglyk we sanjym talaplary",
+    "categories": [
+      {
+        "region": "ÝB ýurtlary",
+        "requirements": {
+          "0": {
+            "requirement": "Haýwan pasporty",
+            "description": "ÝB-de ýa-da Demirgazyk Irlandiýada berlen ÝB-niň haýwan pasporty",
+            "validity": "Häzirki we geçerli bolmaly"
+          },
+          "1": {
+            "requirement": "Guduzlama garşy waksinasiýa",
+            "description": "Ilkinji sanjym azyndan 21 günlük ýaşda edildi",
+            "validity": "Öndürijiniň görkezmelerine laýyklykda geçerli"
+          },
+          "2": {
+            "requirement": "Mikroçip",
+            "description": "Waksinasiýadan öň ISO 11784/11785 standartlaryna laýyk gelýär",
+            "validity": "Okalyp bilinmeli"
+          }
+        }
+      },
+      {
+        "region": "ÝB-ne girmeýän ýurtlar",
+        "requirements": {
+          "0": {
+            "requirement": "Haýwanlaryň Saglygy Sertifikaty",
+            "description": "Resmi weterinar tarapyndan 10 günüň dowamynda berilýär",
+            "validity": "Beýik Britaniýa girmek üçin 4 aý möhlet bilen geçerli"
+          },
+          "1": {
+            "requirement": "Guduzlama garşy waksinasiýa",
+            "description": "Syýahatdan azyndan 21 gün öň",
+            "validity": "Syýahat wagtynda täze bolmaly"
+          },
+          "2": {
+            "requirement": "Guduzlama garşy antitel synagy",
+            "description": "Käbir ýurtlardan talap edilip bilner",
+            "validity": "Ýeterlik antitela derejesini görkezmeli"
+          }
+        }
+      }
+    ]
+  },
+  "petTransportGuide": {
+    "title": "Haýwanlary Daşamak boýunça gollanma",
+    "subtitle": "Öý haýwanlaryny Beýik Britaniýa daşamak barada jikme-jik maglumat",
+    "transportMethods": [
+      {
+        "method": "Kommersiýa awiakompaniýalary",
+        "suitableFor": "Itler we pişikler",
+        "process": {
+          "0": "Uçuşyňyzy bronlaýan wagtyňyz öý haýwanlaryňyzy daşamagy bronlaň",
+          "1": "Saglyk şahadatnamalaryny we sanjym ýazgylaryny beriň",
+          "2": "IATA tarapyndan tassyklanan syýahat operatoryny ulanyň",
+          "3": "Uçuşdan 3-4 sagat öň aeroporta gelmek",
+          "4": "Howa gözegçiligi astyndaky ýük bölüminde haýwanlaryň syýahaty"
+        },
+        "costs": {
+          "range": "400-1200 funt sterling",
+          "factors": {
+            "0": "Haýwanlaryň ululygy we agramy",
+            "1": "Geçilen aralyk",
+            "2": "Awiakompaniýalaryň syýasaty",
+            "3": "Möwsüm (ýokarky we ýokarky däl)"
+          }
+        },
+        "tips": {
+          "0": "Ýerler çäkli bolany üçin ir bronlaň",
+          "1": "Mümkin bolsa, syýahat möwsümleriniň iň ýokary derejesinden gaça duruň",
+          "2": "Öý haýwanynyň howsalasyny we rahatlygyny göz öňünde tutuň",
+          "3": "Daşaýjynyň degişli ölçegdedigini üpjün ediň"
+        }
+      },
+      {
+        "method": "Öý haýwanlaryny göçürmek hyzmatlary",
+        "suitableFor": "Ähli öý haýwanlary, esasanam gymmatly ýa-da nerw haýwanlary",
+        "process": {
+          "0": "Doly hyzmatly gapydan gapya çenli ulag",
+          "1": "Ähli resminamalary we logistikany dolandyryň",
+          "2": "Daşamak wagtynda ýöriteleşdirilen lukmançylyk kömegini beriň",
+          "3": "Haýwanlaryň zerurlyklaryna esaslanyp, ýörite syýahat çäreleri"
+        },
+        "costs": {
+          "range": "£800-£3,000+",
+          "factors": {
+            "0": "Talap edilýän hyzmat derejesi",
+            "1": "Öý haýwanlarynyň ululygy we aýratyn zerurlyklary",
+            "2": "Başlangyç we barmaly ýer",
+            "3": "Goşmaça hyzmatlar (minmek we ş.m.)"
+          }
+        },
+        "tips": {
+          "0": "Kompaniýanyň ygtyýarlyklaryny düýpli öwreniň",
+          "1": "Beýleki öý haýwanlarynyň eýeleriniň synlaryny okaň",
+          "2": "Kompaniýanyň ygtyýarnamasynyň we ätiýaçlandyrmasynyň bardygyna göz ýetiriň",
+          "3": "Öý haýwanlaryňyzyň görnüşi bilen baglanyşykly tejribesi barada soraň"
+        }
+      }
+    ]
+  },
+  "settlingInGuide": {
+    "title": "Haýwanyňyzy Beýik Britaniýada ýerleşdirmek",
+    "subtitle": "Öý haýwanlaryňyzyň täze Britaniýa öýüne uýgunlaşmagyna kömek etmek",
+    "adjustmentTips": [
+      {
+        "category": "Ilkinji günler",
+        "tips": {
+          "0": "Gündelik işleri öz ýurdundaky ýaly mümkin boldugyça dowam etdiriň",
+          "1": "Öý haýwanlary üçin stres bolup biler - olara uýgunlaşmak üçin wagt beriň",
+          "2": "Täze gurşawy we tejribeleri ýuwaş-ýuwaşdan ornaşdyryň",
+          "3": "Iýmitlenmek we uklamak tertibini ýakyndan gözegçilikde saklaň"
+        }
+      },
+      {
+        "category": "Howa şertlerine uýgunlaşmak",
+        "tips": {
+          "0": "Beýik Britaniýanyň howasy düýbünden başgaça bolup biler - ýagyşa taýýarlanyň",
+          "1": "Käbir haýwanlaryň sowuk temperatura uýgunlaşmasy üçin wagt gerek bolup biler",
+          "2": "Degişli düşek we ýaşaýyş jaýy bilen üpjün ediň",
+          "3": "Gündiz sagatlarynda möwsümleýin üýtgeşmeleri göz öňünde tutuň"
+        }
+      },
+      {
+        "category": "Sosial integrasiýa",
+        "tips": {
+          "0": "Ýerli öý haýwanlary toparlaryna we jemgyýetlerine goşulyň",
+          "1": "It seýilgählerini we öý haýwanlaryna amatly ýerleri ýuwaş-ýuwaşdan ulanyň",
+          "2": "Beýik Britaniýanyň özüne mahsus hereketlerini öwrenmäge kömek etmek üçin okuw sapaklaryny göz öňünde tutuň",
+          "3": "Öýde tälim bermekde üýtgeşmelere sabyrly boluň"
+        }
+      }
+    ],
+    "ukSpecificConsiderations": [
+      {
+        "topic": "Howa we maşk",
+        "details": {
+          "0": "Beýik Britaniýada ýygy-ýygydan ýagyş ýagýar - öý haýwanlarynyň ýagyş paltolaryna maýa goýuň",
+          "1": "Gysga gyş günleri maşk tertibine täsir edýär",
+          "2": "Köp seýilgählerde itleri türgenleşdirýän ýörite meýdançalar bar",
+          "3": "Plaž çäklendirmeleri möwsüme we ýerleşýän ýerine görä üýtgeýär"
+        }
+      },
+      {
+        "topic": "Ýaşaýyş jaýlary we kärende jaýlary",
+        "details": {
+          "0": "Beýik Britaniýada köp kireýine berilýän jaýlarda öý haýwanlaryna rugsat berilmezligi barada berk düzgünler bar",
+          "1": "Öý haýwanlaryna goýlan pullar adatça 200-500 funt sterling aralygynda bolýar",
+          "2": "Käbir ýerlerde itleri kireýine almakda jynsy çäklendirmeler bar",
+          "3": "Şäher merkezlerinde bag/howly girişi az duş gelýär"
+        }
+      },
+      {
+        "topic": "Kanuny talaplar",
+        "details": {
+          "0": "Itler eýesiniň maglumatlary ýazylan ýaka we etiket dakynmaly",
+          "1": "Käbir ýerlerde itleriň jemgyýetçilik ýerlerinde zynjyr bilen ýöremegi talap edilýär",
+          "2": "Howply itler kanuny käbir tohumlara degişlidir",
+          "3": "Öý haýwanlarynyň galyndylaryny arassalamak hökmandyr - jerime salynýar"
+        }
+      }
+    ]
+  },
+  "costBreakdown": {
+    "title": "Doly çykdajylar boýunça bölekleýin maglumat",
+    "subtitle": "Öý haýwanlaryny Beýik Britaniýa getirmek bilen baglanyşykly ähli çykdajylar",
+    "preTravel": {
+      "title": "Syýahatdan öňki çykdajylar",
+      "items": [
+        {
+          "item": "Mikroçipleme",
+          "cost": "15-30 funt sterling",
+          "notes": "Waksinasiýadan öň bir gezeklik töleg talap edilýär"
+        },
+        {
+          "item": "Guduzlama garşy waksinasiýa",
+          "cost": "£50-£100",
+          "notes": "Syýahatdan öň 21 gün garaşmaly"
+        },
+        {
+          "item": "Haýwanlaryň Saglygy Sertifikaty",
+          "cost": "100-175 funt sterling",
+          "notes": "Syýahatdan soň 10 günüň içinde bolmaly"
+        },
+        {
+          "item": "Itler üçin lent gurçuklaryny bejermek",
+          "cost": "20-40 funt sterling",
+          "notes": "Syýahatdan 1-5 gün öň"
+        },
+        {
+          "item": "Syýahat daşaýjysy",
+          "cost": "£50-£200",
+          "notes": "Howa gatnawlary üçin IATA tarapyndan tassyklanyldy"
+        }
+      ]
+    },
+    "transport": {
+      "title": "Ulag çykdajylary",
+      "items": [
+        {
+          "item": "Howaýollary Öý Haýwanlaryny Daşamak",
+          "cost": "£400-£800",
+          "notes": "Howaýollaryna we haýwanlaryň ululygyna görä üýtgeýär"
+        },
+        {
+          "item": "Öý haýwanlaryny göçürmek hyzmaty",
+          "cost": "800-3000 funt sterling",
+          "notes": "Doly hyzmat mümkinçiligi"
+        },
+        {
+          "item": "Eurotunnel öý haýwanlary üçin töleg",
+          "cost": "20-30 funt sterling",
+          "notes": "Ulag daşamak üçin çykdajylardan başga"
+        },
+        {
+          "item": "Parom haýwanlary üçin töleg",
+          "cost": "15-30 funt sterling",
+          "notes": "Ýola we operatora görä üýtgeýär"
+        }
+      ]
+    },
+    "postArrival": {
+      "title": "Gelip gelenden soňky çykdajylar",
+      "items": [
+        {
+          "item": "Weterinar hasaba alyş/tekseriş",
+          "cost": "30-60 funt sterling",
+          "notes": "Ilkinji maslahat"
+        },
+        {
+          "item": "Öý haýwanlarynyň ätiýaçlandyryşy",
+          "cost": "Aýda 10-50 funt sterling",
+          "notes": "Örtük we öý haýwanlaryna görä üýtgeýär"
+        },
+        {
+          "item": "Öý haýwanlary üçin enjamlar",
+          "cost": "£50-£200",
+          "notes": "Iýmit, oýunjaklar, düşek örtükleri we ş.m."
+        },
+        {
+          "item": "Ýerli bellige alyş",
+          "cost": "15-25 funt sterling",
+          "notes": "It ygtyýarnamasy gerek bolanda"
+        }
+      ]
+    }
+  },
+  "ukrelocationrequirements": {
+    "introduction": "Beýik Britaniýa göçmek üçin ünsli meýilnama we taýýarlyk gerek. Iş mümkinçilikleri, bilim, maşgala sebäpleri ýa-da diňe ýaşaýyş durmuşyňyzy üýtgetmek üçin göçýän bolsaňyz, kanuny talaplary düşünmek örän möhümdir. Bu gollanma Beýik Britaniýa göçmegiň üstünlikli bolmagy üçin bilmeli ähli zatlary beýan edýär.",
+    "requirements": [
+      {
+        "title": "Güýçli pasport",
+        "description": "Beýik Britaniýada bolmagyňyzyň ähli möhletinde güýjünde bolan pasportyňyz bolmaly. 6 aýa çenli wizasyz gelýän raýatlar üçin pasportyňyz niýetlenilen galmak möhletiňizde güýjünde bolmaly. Wiza üçin arzalar üçin pasportyňyz, adatça, wizaňyzyň ähli möhletinde we goşmaça birnäçe aý güýjünde bolmaly."
+      },
+      {
+        "title": "Degişli wiza",
+        "description": "Beýik Britaniýada sapar maksadyňyza baglylykda dürli wiza kategoriýalary bar:",
+        "details": {
+          "0": "Iş wizalary (Hünärmen işçi, Saglygy goraýyş we bejeriş işgäri we ş.m.)",
+          "1": "Okuw wizalary (Talyp wizasy, Çaga talyp wizasy)",
+          "2": "Maşgala wizalary (Hyzmatdaş, çaga, ene-ata wizalary)",
+          "3": "Myhman wizalary (Standart myhman, Iş sapary)",
+          "4": "Ylalaşyk ýa-da möhletsiz galmak üçin rugsat (ILR)"
+        }
+      },
+      {
+        "title": "Ýaşaýyş ýeriniň subutnamasy",
+        "description": "Beýik Britaniýada nirede galjakdygyňyzyň subutnamasy gerek bolar:",
+        "details": {
+          "0": "Kärende şertnamasy ýa-da emläk eýeçiligi resminamalary",
+          "1": "Dostlaryňyz ýa-da maşgalaňyz bilen galýan bolsaňyz, öý eýesiňizden hat",
+          "2": "Ilkinji ýerleşmek üçin myhmanhana bronlamalary",
+          "3": "Talyplar üçin uniwersitetde ýaşaýyş jaýynyň tassyklanmasy"
+        }
+      },
+      {
+        "title": "Maliýe talaplary",
+        "description": "Özüňizi maliýe taýdan üpjün edip biljekdigiňizi subut etmeli:",
+        "details": {
+          "0": "Ýeterlik serişdäni görkezýän bank hasabatlary (adatça 3-6 aý üçin)",
+          "1": "Eger bar bolsa, girdejiniň ýa-da iş şertnamasynyň subutnamasy",
+          "2": "Talyplar üçin stipendiýa ýa-da maliýe haty",
+          "3": "Maýa goýumlarynyň ýa-da tygşytlamalaryň subutnamasy"
+        },
+        "additionalInfo": "Talap edilýän anyk möçber wizanyň görnüşine we şahsy ýagdaýlara görä üýtgeýär."
+      },
+      {
+        "title": "Saglygy goraýyş hyzmatlary",
+        "description": "Beýik Britaniýada saglygy goraýyş hyzmatlaryna elýeterlilik aşakdakylar arkaly dolandyrylýar:",
+        "details": {
+          "0": "Wiza arzalarynyň köpüsinde immigrasiýa saglygy üçin goşmaça töleg (IHS) tölegi",
+          "1": "Hususy saglyk ätiýaçlandyrmasy (ilkinji döwür üçin maslahat berilýär)",
+          "2": "Hukukly myhmanlar üçin Ýewropa Saglyk Ätiýaçlandyryş Karty (EHIC) ýa-da Global Saglyk Ätiýaçlandyryş Karty (GHIC)"
+        },
+        "additionalInfo": "Geleniňizden soň, mümkin boldugyça tiz wagtda ýerli umumy lukmana (umumy tejribe lukmanyna) ýazylyň."
+      },
+      {
+        "title": "Biometrik ýaşaýyş rugsatnamasy (BRP)",
+        "description": "6 aýdan köp wagtlap galsaňyz:",
+        "details": {
+          "0": "Siz geleniňizden soň biometrik ýaşaýyş rugsatnamasyny alarysyňyz",
+          "1": "BRP-ňizi Beýik Britaniýa geleniňizden soň 10 günüň dowamynda alyp gitmeli",
+          "2": "BRP immigrasiýa statusyňyzyň we hukuklaryňyzyň subutnamasy bolup hyzmat edýär"
+        }
+      },
+      {
+        "title": "Milli ätiýaçlandyryş belgisi",
+        "description": "Beýik Britaniýada işlemek üçin zerur zatlar:",
+        "details": {
+          "0": "Beýik Britaniýa geleniňizden soň internet arkaly ýa-da telefon arkaly arza beriň",
+          "1": "Iş, salgyt we ýeňillikler maksatlary üçin zerurdyr",
+          "2": "Milli raýatyňyzyň belgilerini almazdan öň işe başlap bilersiňiz"
+        }
+      },
+      {
+        "title": "Inçekesel (TB) synagynyň güwänamasy",
+        "description": "Käbir ýurtlaryň raýatlary üçin zerur:",
+        "details": {
+          "0": "TB testi tassyklanan merkezde geçirilmelidir",
+          "1": "Sertifikat berlen senesinden başlap 6 aý möhletinde güýje girýär",
+          "2": "Wiza üçin ýüz tutmazdan öň alynmaly"
+        }
+      },
+      {
+        "title": "Iňlis dilini bilmek ukyby",
+        "description": "Wiza kategoriýalarynyň köpüsi üçin:",
+        "details": {
+          "0": "Iňlis dilini bilýändigiňizi subut edýän resminama (IELTS, TOEFL we ş.m.)",
+          "1": "Iňlis dilinde okadylýan dereje subutnama hökmünde kabul edilip bilner",
+          "2": "Käbir milletler we wiza görnüşleri üçin elýeterli boşatmalar"
+        }
+      },
+      {
+        "title": "Bank hasaby",
+        "description": "Beýik Britaniýanyň bank hasabyny açmak:",
+        "details": {
+          "0": "Salgyňyzyň subutnamasy (kommunal tölegler, kärende şertnamasy)",
+          "1": "Pasport we BRP",
+          "2": "Täze gelen hökmünde has aňsat gurnamak üçin onlaýn banklary göz öňünde tutuň",
+          "3": "Käbir banklar gelmezden öň halkara hasap açmagy hödürleýärler"
+        }
+      }
+    ],
+    "additionalConsiderations": {
+      "title": "Goşmaça göz öňünde tutulýan zatlar",
+      "items": [
+        {
+          "title": "Geňeşiň salgyt bellige alyşy",
+          "description": "Geňeş salgytlary üçin ýerli geňeşiňizde hasaba duruň. Bu ýerli hyzmatlar üçin hökmany salgytdyr. Käbir boşatmalar doly wagtly talyplar üçin hem ulanylýar."
+        },
+        {
+          "title": "Beýik Britaniýada awtoulag sürmek",
+          "description": "Beýik Britaniýanyň raýaty bolmadyk sürüjilik şahadatnamasynyň eýeleri 12 aýa çenli sürüp bilerler. Şondan soň, sürüjilik şahadatnamaňyzy çalşyrmaly ýa-da Beýik Britaniýanyň sürüjilik synagyndan geçmeli bolmagyňyz mümkin."
+        },
+        {
+          "title": "Mobil telefon we internet",
+          "description": "Beýik Britaniýanyň mobil telefon nomerini we internet baglanyşygyny irden sazlaň. Köp üpjün edijiler täze gelenler üçin ýörite teklipler hödürleýärler."
+        },
+        {
+          "title": "Howa şertlerine taýýarlyk",
+          "description": "Beýik Britaniýanyň deňiz howasy ýumşak, ýazy sowuk, gyşy bolsa ýumşak. Degişli geýimleri we aksessuarlary alyp, ýylyň dowamynda ýagyşa taýýar boluň."
+        }
+      ]
+    },
+    "helpResources": {
+      "title": "Göçmegiňiz bilen baglanyşykly kömek almak",
+      "description": "Beýik Britaniýa göçmegiňiz bilen baglanyşykly resmi maglumat we kömek üçin şu çeşmeleri göz öňünde tutuň:",
+      "resources": [
+        {
+          "title": "Beýik Britaniýanyň hökümeti",
+          "description": "Beýik Britaniýada wizalar, immigrasiýa we ýerleşmek boýunça resmi görkezmeler"
+        },
+        {
+          "title": "Britaniýa Geňeşi",
+          "description": "Halkara talyplary we medeni adaptasiýa üçin serişdeler"
+        },
+        {
+          "title": "Raýatlara maslahat",
+          "description": "Hukuklar we jogapkärçilikler boýunça mugt, gizlin maslahat"
+        }
+      ]
+    },
+    "footer": {
+      "disclaimer": "Immigrasiýa düzgünleriniň ýygy-ýygydan üýtgeýändigini ýadyňyzdan çykarmaň. Resmi çeşmelerden iň soňky talaplary hemişe barlaň."
+    }
+  },
+  "ukfromturkeyguide": {
+    "navigation": {
+      "title": "Bu gollanmada gezelenç ediň"
+    },
+    "accessibility": {
+      "toggleSection": "Bölümi aç/ýap"
+    },
+    "labels": {
+      "youllNeed": "Size gerek bolar:"
+    },
+    "sections": {
+      "whyMove": {
+        "title": "Türkler näme üçin Beýik Britaniýa göçýärler?",
+        "description": "Häzirki wagtda müňlerçe türk raýaty, esasanam London, Mançester, Birmingem we Edinburg ýaly şäherlerde Beýik Britaniýany öz öýleri hasaplaýar. Bu çagyryşda aşakdakylar bar:",
+        "reasons": [
+          "Bilim we karýera mümkinçilikleri",
+          "Dürli jemgyýetler bilen köp medeniýetli gurşaw",
+          "Güýçli saglygy goraýyş we sosial üpjünçilik ulgamlary",
+          "Syýasy durnuklylyk we kanunyň hökmürowanlygy",
+          "Iri şäherlerde döredilen türk jemgyýetleri"
+        ],
+        "conclusion": "Şeýle-de bolsa, başga ýere göçmek üçin ünsli meýilnamalaşdyrmak, Beýik Britaniýanyň wiza ulgamyny düşünmek we belli bir talaplary ýerine ýetirmek gerek."
+      },
+      "entryRequirements": {
+        "title": "Giriş talaplary we wiza düzgünleri",
+        "visitorEntry": {
+          "title": "Myhman girişi",
+          "description": "Türkiýäniň raýatlaryna Beýik Britaniýa girmek üçin myhman wizasy gerek, bu bolsa 6 aýa çenli galmaga mümkinçilik berýär. Uzak möhletli galmak üçin, ýagdaýyňyza görä degişli wiza üçin ýüz tutmaly bolarsyňyz."
+        },
+        "tip": "Beýik Britaniýa wizalary üçin meýilleşdirilen syýahat senesinden has öň ýüz tutuň, sebäbi işlenilmegi birnäçe hepde dowam edip biler."
+      },
+      "longTermStay": {
+        "title": "Türkiýäniň raýatlary üçin uzak möhletli ýaşamak mümkinçilikleri",
+        "options": [
+          {
+            "title": "1. Hünärmen işçi wizasy",
+            "description": "<span class=\"font-medium\">5 ýyla çenli möhlet bilen güýje girýär we ylalaşmaga sebäp bolup biler</span><br/>Beýik Britaniýanyň iş berijisinden iş teklibi bolan we hemaýatkärlik ygtyýarnamasy bolanlar üçin",
+            "requirements": {
+              "0": "Degişli aýlyk derejesi bilen ygtybarly iş teklibi",
+              "1": "Iş berijiden hemaýatkärlik şahadatnamasy",
+              "2": "Iňlis dilini bilýändigiňiziň subutnamasy",
+              "3": "Özüňizi üpjün etmek üçin ýeterlik serişde",
+              "4": "Jenaýatçylykly ýazgylar baradaky şahadatnama (eger bar bolsa)"
+            }
+          },
+          {
+            "title": "2. Maşgala wizasy",
+            "details": {
+              "0": "Britaniýanyň raýaty ýa-da oturymly adam bolan är-aýala, hyzmatdaşa ýa-da maşgala agzasyna goşulmak üçin",
+              "1": "Başlangyç möhlet 2,5 ýyl, uzaldylyp bilner",
+              "2": "Maliýe we ýerleşmek talaplary ulanylýar"
+            }
+          },
+          {
+            "title": "3. Talyp wizasy",
+            "details": {
+              "0": "Beýik Britaniýanyň bilim edarasyna kabul edilenler üçin",
+              "1": "Dowamlylygy okuwyň dowamlylygyna baglydyr",
+              "2": "Okuw we ýaşaýyş çykdajylary üçin serişdeleriň subutnamasy talap edilýär"
+            }
+          },
+          {
+            "title": "4. Innowator wizasy",
+            "description": "Innowasion biznes pikirleri we azyndan 50,000 funt sterling maýa goýum gaznasy bolan telekeçiler üçin"
+          },
+          {
+            "title": "5. Ýokary mümkinçilikli şahsy wiza",
+            "description": "Dünýäniň öňdebaryjy uniwersitetleriniň uçurymlary üçin iş teklibi bolmazdan 2-3 ýyl işlemek ýa-da iş gözlemek mümkinçiligi berilýär"
+          }
+        ]
+      },
+      "property": {
+        "title": "Emlägi satyn almak ýa-da kireýine almak",
+        "points": [
+          "Türkiýäniň raýatlary Beýik Britaniýada emläk satyn alyp bilerler, daşary ýurtlylar üçin hiç hili çäklendirme ýok",
+          "Ipoteka opsiýalary bar, ýöne köplenç Beýik Britaniýanyň ýaşaýjylary bolmadyk adamlar üçin has uly goýumlar talap edilýär",
+          "Türk jemgyýetleri üçin meşhur ýerler: Demirgazyk London, Mançester, Birmingem",
+          "Kärende tölegi has gymmat: iri şäherlerde bir otagly kwartira üçin aýda 800-1500 funt sterling garaşyň."
+        ],
+        "tip": "<strong>Maslahat:</strong> Emläk satyn alanyňyzda aklawçynyň kömegini ulanyň we gol çekmezden öň ähli kärende şertnamasynyň şertlerini düşünip ýetişendigiňize göz ýetiriň."
+      },
+      "costLiving": {
+        "title": "Ýaşaýyş çykdajylaryny deňeşdirmek",
+        "table": {
+          "headers": {
+            "expense": "Çykdajylar",
+            "uk": "Beýik Britaniýa (ortaça)",
+            "turkey": "Türkiýe (ortaça)"
+          },
+          "rows": [
+            {
+              "expense": "Kireýine (1 otagly kwartira)",
+              "uk": "800–1500 funt sterling",
+              "turkey": "200–400 funt sterling",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Kommunal hyzmatlar",
+              "uk": "£150+/aý",
+              "turkey": "aýda 30–70 funt",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Restoranda nahar",
+              "uk": "15–25 funt sterling",
+              "turkey": "3–8 funt sterling",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Ulag bileti",
+              "uk": "£60–£180/aý",
+              "turkey": "aýda 10–30 funt",
+              "ukHighlight": true
+            }
+          ]
+        },
+        "note": "Beýik Britaniýa Türkiýeden has gymmat, şonuň üçin göçmezden öň maliýe meýilnamalaşdyryşy möhümdir."
+      },
+      "healthcare": {
+        "title": "Saglygy goraýyş ulgamyna elýeterlilik",
+        "points": [
+          "Beýik Britaniýada Milli Saglygy Goraýyş Gullugy (NHS) bar, ol ulanylanda mugt saglygy goraýyş hyzmatlaryny hödürleýär",
+          "Wiza üçin ýüz tutýanlaryň köpüsi arzalarynyň bir bölegi hökmünde Immigrasiýa Saglyk Goşmaça tölegini tölemeli",
+          "Goşmaça töleg häzirki wagtda wiza görnüşleriniň köpüsi üçin ýylda 624 funt sterlinge deňdir",
+          "Töleg geçirilenden soň, siz Beýik Britaniýanyň ýaşaýjylaryna meňzeş NHS hyzmatlaryndan peýdalanyp bilersiňiz",
+          "Hususy saglyk hyzmatlary elýeterli, ýöne Türkiýe bilen deňeşdirilende gymmat"
+        ]
+      },
+      "dailyLife": {
+        "title": "Gündelik durmuş düzedişleri",
+        "aspects": [
+          {
+            "title": "Dil päsgelçilik",
+            "description": "Resmi dil iňlis dilidir. Gündelik durmuş, iş we sosial integrasiýa üçin gowy iňlis dili başarnyklaryna eýe bolmak möhümdir."
+          },
+          {
+            "title": "Sürüş",
+            "description": "Türkiýäniň sürüjilik şahadatnamalaryny 12 aýa çenli ulanyp bolýar. Şondan soň, ony çalşyrmaly ýa-da Beýik Britaniýanyň sürüjilik synagyndan geçmeli."
+          },
+          {
+            "title": "Walýuta",
+            "description": "Britaniýa funt sterlingi (GBP) — güýçli walýuta, ýöne durmuşyňyzy dowam etdirmek üçin has köp türk lirasyna mätäç bolarsyňyz."
+          },
+          {
+            "title": "Bank işi",
+            "description": "Bank hasabyny açmak üçin salgysyňyzy we immigrasiýa statusyňyzy tassyklaýan resminama gerek. Monzo ýa-da Revolut ýaly sanly banklar ilki başda has aňsat wariantlar bolup biler."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "title": "Türkiýeden Logistikany göçürmek",
+        "points": [
+          "Şahsy zatlaryňyzy Beýik Britaniýa getireniňizde gümrük salgydyny we GBS tölemeli bolmagyňyz mümkin",
+          "Eger hemişelik ýaşaýan ýeriňizi Beýik Britaniýa göçürýän bolsaňyz, ýaşaýyş jaýyny başga ýere geçirmek üçin ýeňillik ulanylyp bilner",
+          "Türkiýeden Beýik Britaniýa halkara ýük daşamak deňiz arkaly takmynan 3-5 hepde dowam edýär",
+          "Öý haýwanlaryna mikroçip goýmak, guduzlama garşy sanjym etmek, itler üçin lent gurçuklaryny bejermek we haýwanlaryň saglygy baradaky güwänama gerek."
+        ]
+      },
+      "challenges": {
+        "title": "Garaşylýan real kynçylyklar",
+        "challenges": [
+          {
+            "title": "Howa şertlerini sazlamak",
+            "description": "Beýik Britaniýada Türkiýe bilen deňeşdirilende howa has sowuk we bulutly, ýygy-ýygydan ýagyş ýagýar"
+          },
+          {
+            "title": "Ýaşaýyş çykdajylarynyň ýokary bolmagy",
+            "description": "Çykdajylar has ýokary, bu bolsa ünsli býujet düzmegi talap edýär"
+          },
+          {
+            "title": "Medeni tapawutlar",
+            "description": "Britaniýanyň jemgyýetçilik kadalaryny we etiketini düşünmek üçin wagt gerek bolup biler"
+          },
+          {
+            "title": "Çylşyrymly wiza ulgamy",
+            "description": "Immigrasiýa düzgünleri boýunça hereket etmek stresli we gymmat bolup biler"
+          }
+        ]
+      },
+      "turkishCommunities": {
+        "title": "Beýik Britaniýadaky türk jemgyýetleri",
+        "description": "Beýik Britaniýa, esasanam, aşakdaky ýerlerde türk jemgyýetlerini döretdi:",
+        "cities": [
+          "Demirgazyk London",
+          "Mançester",
+          "Birmingem",
+          "Edinburg",
+          "Lids"
+        ],
+        "supportNote": "Size türkler bilen aragatnaşyk saklamaga we geçiş döwrüňizi ýeňilleşdirmäge kömek etjek medeni birleşikleri, jemgyýetçilik merkezlerini, türk restoranlaryny we sosial media toparlaryny taparsyňyz."
+      }
+    },
+    "checklist": {
+      "title": "Beýik Britaniýa göçmezden öň gutarnykly barlag sanawy",
+      "items": [
+        "Degişli wiza üçin ýüz tutuň we ony üpjün ediň",
+        "Immigrasiýa saglygy üçin goşmaça tölegi töläň",
+        "Ýaşaýyş ýerini öňünden düzüň",
+        "Beýik Britaniýanyň bank hasabyny açyň",
+        "Beýik Britaniýanyň salgyt ulgamyny we borçlaryny öwreniň",
+        "Gelmezden öň käbir walýutalary çalşyň",
+        "Barmaly şäheriňizdäki türk jemgyýetleri bilen habarlaşyň"
+      ]
+    },
+    "conclusion": {
+      "title": "Beýik Britaniýa göçmek size laýykmy?",
+      "text": "Beýik Britaniýa göçmek bilimde ajaýyplygy, karýera mümkinçiliklerini we ýokary ýaşaýyş derejesini hödürleýär, ýöne has ýokary çykdajylar we medeni üýtgeşmeler bilen baglanyşyklydyr. Ünsli meýilnamalaşdyrmak we gözleg geçirmek möhümdir. Täze sepgitleri gözleýän köp türk raýatlary üçin Beýik Britaniýanyň köp medeniýetli gurşawy we ornaşan türk jemgyýetleri kynçylyklara garamazdan, ony özüne çekiji ýere öwürýär."
+    },
+    "footer": {
+      "lastUpdated": "Soňky täzelenme: 2025-nji ýylyň maý aýy"
+    }
+  },
+  "ukvisaguide": {
+    "introduction": "Beýik Britaniýa göçmek üçin ýagdaýyňyza görä degişli wizany saýlamaly. Beýik Britaniýa işçiler, talyplar, maşgala agzalary, maýadarlar we telekeçiler üçin dürli wiza we ýaşaýyş mümkinçiliklerini hödürleýär.",
+    "labels": {
+      "bestFor": "Iň gowysy:",
+      "requirements": "Talaplar:",
+      "benefits": "Peýdalary:",
+      "validity": "Güýçliligi:"
+    },
+    "visaTypes": [
+      {
+        "title": "Hünärmen işçi wizasy",
+        "bestFor": {
+          "0": "Beýik Britaniýanyň iş berijilerinden iş teklipleri alan hünärmenler",
+          "1": "Kämillikdäki işlerde işleýän adamlar",
+          "2": "Ýöriteleşdirilen ugurlarda tejribeli işgärler"
+        },
+        "requirements": {
+          "0": "Beýik Britaniýanyň iş berijisinden sponsorlyk ygtyýarnamasy bilen iş teklibi",
+          "1": "RQF 3-nji ýa-da ondan ýokary derejä deň derejeli başarnyk derejesi",
+          "2": "Iňlis dilini bilmek ukyby (B1 derejesi)",
+          "3": "Iň pes aýlyk hakynyň çägi (adatça 26,200 funt sterling ýa-da käriň \"işleýän nyrhy\")",
+          "4": "Özüňizi üpjün etmek üçin ýeterlik serişde"
+        },
+        "validity": "5 ýyla çenli (uzaldylyp bilner, 5 ýyldan soň ylalaşmak ýoly)"
+      },
+      {
+        "title": "Talyp wizasy",
+        "bestFor": "Beýik Britaniýanyň uniwersitetlerine ýa-da bilim edaralaryna kabul edilen talyplar",
+        "requirements": {
+          "0": "Ygtyýarnama berlen talyp hemaýatkärlik edarasynda tassyklanan orun",
+          "1": "Iňlis dilini bilmek",
+          "2": "Okuw we ýaşaýyş çykdajylaryny tölemek üçin maliýe mümkinçilikleriniň subutnamasy",
+          "3": "Ene-atanyň/howandaryň razylygy (18 ýaşdan kiçi bolsa)"
+        },
+        "validity": "Kursyň dowamlylygy we birnäçe aý (kursyň dowamlylygyna baglylykda üýtgeýär)"
+      },
+      {
+        "title": "Maşgala wizasy",
+        "bestFor": "Britaniýa raýatlarynyň ýa-da oturymly adamlaryň hyzmatdaşlary, çagalary we garaşly adamlary",
+        "requirements": {
+          "0": "Hakyky we dowam edýän gatnaşygyň subutnamasy",
+          "1": "Minimal girdeji talabyny ýerine ýetirmek (18,600 funt sterling we çagalar üçin goşmaça)",
+          "2": "Ýeterlik ýaşaýyş jaýy",
+          "3": "Iňlis dili talaby (hyzmatdaşlar üçin)"
+        },
+        "validity": "Ilki başda 2,5 ýyl (täzelenip bilner, 5 ýyldan soň ýerleşmäge ýol)"
+      },
+      {
+        "title": "Innowator esaslandyryjy wizasy",
+        "bestFor": "Beýik Britaniýada innowasion biznesi gurýan tejribeli telekeçiler",
+        "requirements": {
+          "0": "Tassyklanan tassyklaýjy edaranyň tassyklamasy",
+          "1": "Durmuşa ukyply, innowasion biznes meýilnamasy",
+          "2": "Iň az 50,000 funt sterling maýa goýum gaznasy",
+          "3": "Iňlis dilini bilmek ukyby (B2 derejesi)",
+          "4": "Tebigy taýdan hyzmat etmek üçin ýeterlik şahsy serişdeler"
+        },
+        "validity": "3 ýyl (3 ýyldan soň ylalaşyk ýoly)"
+      },
+      {
+        "title": "Global Talant Wizasy",
+        "bestFor": "Akademiýa, ylmy barlaglar, sungat, medeniýet ýa-da sanly tehnologiýalar ulgamynda liderler ýa-da mümkin bolan liderler",
+        "requirements": {
+          "0": "Siziň uguryňyzdaky degişli Beýik Britaniýanyň guramasy tarapyndan tassyklanma",
+          "1": "Ajaýyp zehiniň ýa-da wadanyň subutnamasy",
+          "2": "Öz ugryňyzdaky üstünlikleriň sanawyny düzüň"
+        },
+        "benefits": {
+          "0": "Iş şertleriniň çeýeligi (hemaýatkär gerek däl)",
+          "1": "3-5 ýyldan soň ýerleşmäge ýol",
+          "2": "Garaşly adamlar size goşulyp bilerler"
+        }
+      },
+      {
+        "title": "Ýokary potensially şahsy wiza",
+        "bestFor": "Dünýäniň öňdebaryjy uniwersitetleriniň ýakynda gutaran uçurymlary",
+        "requirements": {
+          "0": "Soňky 5 ýylyň dowamynda dünýäniň öňdebaryjy uniwersitetlerinden Beýik Britaniýanyň bakalawr derejesine deň ýa-da ondan ýokary dereje",
+          "1": "Iňlis dilini bilmek ukyby (B1 derejesi)",
+          "2": "Ýeterlik derejede tehniki hyzmat serişdeleri"
+        },
+        "validity": "Bakalawr/magistr gutardyşlary üçin 2 ýyl, PhD gutardyşlary üçin 3 ýyl (gönüden-göni ýerleşmek mümkinçiligi ýok)"
+      },
+      {
+        "title": "Maýadar wizasy",
+        "bestFor": "Beýik Britaniýada maýa goýmak isleýän ýokary derejeli baý şahslar",
+        "requirements": {
+          "0": "Beýik Britaniýanyň kompaniýalaryna iň az 2 million funt sterling maýa goýum",
+          "1": "Serişdeler düzgünleşdirilýän maliýe edarasynda saklanmaly",
+          "2": "Serişdeler Beýik Britaniýada bir gezeklik ulanylmaly",
+          "3": "Beýik Britaniýanyň bank hasaby"
+        },
+        "validity": "Ilki bilen 3 ýyl (maýa goýumyň möçberine baglylykda 2-5 ýylda töleg möhleti)"
+      },
+      {
+        "title": "Aspirantura wizasy",
+        "bestFor": "Beýik Britaniýada bilim derejesini tamamlan halkara talyplar",
+        "requirements": {
+          "0": "Beýik Britaniýanyň ýokary bilim berýän edarasynda diplomy üstünlikli tamamlady",
+          "1": "Arza berlen wagty häzirki talyp wizasy",
+          "2": "Kursyň tamamlanandygynyň hemaýatkär tarapyndan tassyklanmasy"
+        },
+        "validity": "Bakalawr we magistr derejelerini tamamlanlar üçin 2 ýyl, PhD derejelerini tamamlanlar üçin 3 ýyl"
+      }
+    ],
+    "footer": {
+      "disclaimer": "Bellik: Beýik Britaniýanyň immigrasiýa düzgünleri üýtgedilip bilner. Iň täze maglumatlar üçin hemişe Beýik Britaniýa hökümetiniň resmi web sahypasyny barlaň."
+    }
+  }
+}

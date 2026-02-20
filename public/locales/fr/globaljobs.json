@@ -1,0 +1,289 @@
+{
+  "globaljob": {
+    "hero": {
+      "headline": {
+        "prefix": "Trouvez votre",
+        "suffix": "A l'étranger"
+      },
+      "animatedWords": [
+        "Emploi de rêve",
+        "Carrière",
+        "Opportunité",
+        "Position",
+        "L'avenir",
+        "Succès"
+      ],
+      "description": "Entrez en contact avec les meilleurs employeurs mondiaux grâce à nos services de placement international. De la recherche d'emploi personnalisée à l'aide à l'obtention d'un visa, nous faisons de vos rêves de carrière internationale une réalité.",
+      "cta": {
+        "text": "Trouver des opportunités à l'échelle mondiale"
+      }
+    },
+    "showcase": {
+      "title": "Placement à l'international",
+      "subtitle": "Votre portail d'accès aux opportunités de carrières internationales",
+      "worldMap": {
+        "countries": "Plus de 200 pays",
+        "description": "Des opportunités d'emploi dans le monde entier vous attendent"
+      },
+      "benefits": [
+        {
+          "iconKey": "porte-documents",
+          "title": "L'appariement des emplois",
+          "description": "Le parfait découvreur de rôles",
+          "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+        },
+        {
+          "iconKey": "utilisateurs",
+          "title": "Soutien aux visas",
+          "description": "Assistance complète",
+          "gradient": "bg-gradient-to-r du bleu-500 au ciel-600"
+        },
+        {
+          "iconKey": "mapPin",
+          "title": "Déménagement",
+          "description": "Une transition en douceur",
+          "gradient": "bg-gradient-to-r de-violet-500 à-indigo-600"
+        },
+        {
+          "iconKey": "externalLink",
+          "title": "Réseau",
+          "description": "Connexions mondiales",
+          "gradient": "bg-gradient-to-r de-orange-500 à-rouge-600"
+        }
+      ]
+    },
+    "section": {
+      "header": {
+        "badge": "DES ENTREPRISES DU MONDE ENTIER LUI FONT CONFIANCE",
+        "title": {
+          "prefix": "Emploi mondial",
+          "highlight": "Placement"
+        },
+        "description": "Il est temps pour vous de faire bonne impression auprès des employeurs grâce à un CV conçu de manière professionnelle. Nous adaptons chaque CV à vos objectifs et aux attentes du secteur d'activité que vous visez, augmentant ainsi vos chances de réussite grâce à des services de recrutement globaux."
+      },
+      "journey": {
+        "title": "Votre parcours professionnel commence ici",
+        "features": [
+          {
+            "title": "Rédaction d'un CV personnalisé",
+            "description": "Un CV ne se résume pas à votre historique professionnel. Nous adaptons chaque CV pour mettre en valeur vos compétences transférables et répondre aux attentes du secteur, en particulier pour les emplois à l'étranger destinés aux professionnels."
+          },
+          {
+            "title": "Connexions avec les employeurs du monde entier",
+            "description": "Notre vaste réseau d'entreprises internationales de premier plan qui recrutent des talents internationaux garantit l'adéquation entre vos compétences et les opportunités de carrière internationale qui correspondent à vos aspirations."
+          },
+          {
+            "title": "Soutien à l'avancement de la carrière",
+            "description": "Nous ne nous contentons pas de vous aider à décrocher un emploi - nous nous associons à vous pour construire un parcours professionnel qui évolue en fonction de vos compétences et de vos aspirations, en vous offrant une assistance étape par étape pour trouver un emploi à l'étranger."
+          }
+        ],
+        "cta": {
+          "text": "Découvrez nos services"
+        }
+      },
+      "testimonials": {
+        "title": "Histoires de réussite",
+        "reviews": [
+          {
+            "comment": "\"Nous avons eu du mal à trouver des travailleurs qualifiés jusqu'à ce que nous nous associions à Jobs Admire. Leur plateforme nous a fourni des candidats fiables qui correspondaient parfaitement à nos besoins.\"",
+            "name": "Mehmet K.",
+            "role": "Propriétaire d'entreprise",
+            "initials": "MK"
+          },
+          {
+            "comment": "\"Jobs Admire m'a aidé à trouver un emploi stable dans une usine réputée. Le processus s'est déroulé sans encombre et leur équipe m'a guidé à chaque étape. Aujourd'hui, j'ai un revenu sûr !\"",
+            "name": "Ahmed R.",
+            "role": "Bénéficiaire du placement",
+            "initials": "AR"
+          }
+        ]
+      },
+      "contact": {
+        "title": "Connectons-nous",
+        "subtitle": "Faites le premier pas vers une carrière internationale",
+        "form": {
+          "name": {
+            "label": "Votre nom*",
+            "placeholder": "Entrez votre nom"
+          },
+          "email": {
+            "label": "Adresse électronique*",
+            "placeholder": "Saisissez votre adresse électronique"
+          },
+          "message": {
+            "label": "Message*",
+            "placeholder": "Saisissez votre message"
+          },
+          "submit": "Soumettre"
+        }
+      }
+    },
+    "careerHorizons": {
+      "header": {
+        "badge": "Solutions globales de carrière",
+        "title": {
+          "prefix": "Élargir votre",
+          "highlight": "Horizons de carrière"
+        },
+        "description": "Trouver le bon emploi sur un marché mondial compétitif peut s'avérer difficile. Chez JobsAdmire, nous mettons en relation des professionnels talentueux avec des opportunités d'emploi dans le monde entier, en vous aidant à obtenir des postes gratifiants qui correspondent à vos compétences, à votre expérience et à vos objectifs de carrière. Que vous soyez pakistanais, indien ou philippin, notre service de placement international depuis le Pakistan et d'autres régions donne à chaque professionnel une chance équitable de réussir."
+      },
+      "worldMap": {
+        "title": "Réseau mondial",
+        "locations": [
+          {
+            "name": "New York (en anglais)",
+            "id": 1,
+            "color": "#3B82F6",
+            "size": 6,
+            "delay": 0
+          },
+          {
+            "name": "Londres",
+            "id": 2,
+            "color": "#10B981",
+            "size": 8,
+            "delay": 2
+          },
+          {
+            "name": "Tokyo",
+            "id": 3,
+            "color": "#8B5CF6",
+            "size": 7,
+            "delay": 1
+          },
+          {
+            "name": "Singapour",
+            "id": 4,
+            "color": "#F59E0B",
+            "size": 6,
+            "delay": 3
+          },
+          {
+            "name": "Sydney",
+            "id": 5,
+            "color": "#EF4444",
+            "size": 7,
+            "delay": 4
+          },
+          {
+            "name": "Berlin",
+            "id": 6,
+            "color": "#6366F1",
+            "size": 5,
+            "delay": 5
+          }
+        ]
+      },
+      "hiring": {
+        "title": {
+          "prefix": "Un recrutement sans faille,",
+          "highlight": "Partout dans le monde"
+        },
+        "description": "Que vous soyez à la recherche d'un emploi dans un nouveau pays ou que vous souhaitiez progresser dans votre secteur d'activité, nos services de conseil en matière d'emploi à l'étranger vous offrent des conseils d'experts, un placement de main-d'œuvre internationale et des stratégies de recherche d'emploi sur mesure.",
+        "benefits": [
+          {
+            "iconKey": "fileText",
+            "title": "Optimisation du CV",
+            "description": "Adapté aux marchés locaux avec des mots-clés spécifiques à l'industrie pour garantir le succès des offres d'emploi pour les candidats internationaux."
+          },
+          {
+            "iconKey": "micro",
+            "title": "Préparation de l'entretien",
+            "description": "Des sessions de coaching avec des informations culturelles sur votre pays cible afin de vous démarquer dans le cadre d'un placement international pour les professionnels."
+          },
+          {
+            "iconKey": "globe terrestre",
+            "title": "Aide à l'obtention d'un visa",
+            "description": "Des conseils d'experts tout au long de la procédure d'obtention de visa et d'installation afin de garantir des opportunités de travail à l'étranger pour les professionnels philippins, indiens et pakistanais."
+          }
+        ],
+        "fastTrack": {
+          "title": "Procédure accélérée",
+          "description": "Notre approche rationalisée vous garantit une transition rapide et efficace vers votre nouvelle fonction."
+        },
+        "cta": {
+          "text": "Découvrez nos services"
+        }
+      },
+      "features": {
+        "title": "Ce qui nous distingue",
+        "subtitle": "Notre approche globale vous garantit tout le soutien dont vous avez besoin tout au long de votre parcours professionnel.",
+        "items": [
+          {
+            "iconKey": "cible",
+            "title": "Stratégie personnalisée",
+            "description": "Un plan de carrière personnalisé basé sur vos objectifs uniques et sur l'offre d'emploi à l'étranger pour les travailleurs qualifiés.",
+            "color": "texte-[#38B6FF]"
+          },
+          {
+            "iconKey": "barChart4",
+            "title": "Aperçu de l'industrie",
+            "description": "Notre connaissance approfondie des tendances du marché et des compétences recherchées nous permet de proposer des solutions de recrutement à l'échelle mondiale.",
+            "color": "texte-[#38B6FF]"
+          },
+          {
+            "iconKey": "tendanceHaut",
+            "title": "Connexions mondiales",
+            "description": "Accès à un vaste réseau d'employeurs internationaux à la recherche de professionnels comme vous.",
+            "color": "texte-[#38B6FF]"
+          }
+        ]
+      },
+      "jobSeekers": {
+        "title": "Pour les demandeurs d'emploi",
+        "premiumService": "Service Premium",
+        "learnMore": "En savoir plus",
+        "services": [
+          {
+            "iconKey": "utilisateur",
+            "title": "Orientation professionnelle",
+            "description": "Nos professionnels sont là pour vous conseiller sur la manière de trouver un emploi à l'étranger et vous aider dans votre parcours professionnel international.",
+            "color": "texte-[#38B6FF]",
+            "bgColor": "bg-emerald-50",
+            "borderColor": "border-[#38B6FF]",
+            "gradientFrom": "de-emerald-50",
+            "gradientTo": "à-[#38B6FF]0",
+            "accentColor": "bg-[#38B6FF]",
+            "id": 0
+          },
+          {
+            "iconKey": "fileText",
+            "title": "Création d'un curriculum vitae",
+            "description": "Nos spécialistes vous aideront à créer un CV accrocheur qui se démarquera auprès des employeurs grâce à notre aide à l'emploi à l'étranger.",
+            "color": "texte-[#38B6FF]",
+            "bgColor": "bg-bleu-50",
+            "borderColor": "border-[#38B6FF]",
+            "gradientFrom": "de-bleu-50",
+            "gradientTo": "jusqu'à [#38B6FF]",
+            "accentColor": "bg-[#38B6FF]",
+            "id": 1
+          },
+          {
+            "iconKey": "recherche",
+            "title": "L'évaluation",
+            "description": "Nous évaluons vos qualifications et vous mettons en relation avec les meilleurs emplois mondiaux pour les candidats internationaux.",
+            "color": "texte-[#38B6FF]",
+            "bgColor": "bg-indigo-50",
+            "borderColor": "border-[#38B6FF]",
+            "gradientFrom": "de-indigo-50",
+            "gradientTo": "jusqu'à [#38B6FF]",
+            "accentColor": "bg-[#38B6FF]",
+            "id": 2
+          },
+          {
+            "iconKey": "micro",
+            "title": "Préparation à l'entretien",
+            "description": "Nos professionnels vous formeront à tous les types d'entretiens pour vous permettre de réussir et de vous démarquer dans les programmes internationaux de placement.",
+            "color": "texte-[#38B6FF]",
+            "bgColor": "bg-pourpre-50",
+            "borderColor": "border-[#38B6FF]",
+            "gradientFrom": "from-[#38B6FF]",
+            "gradientTo": "jusqu'à [#38B6FF]",
+            "accentColor": "bg-pourpre-500",
+            "id": 3
+          }
+        ]
+      }
+    }
+  }
+}

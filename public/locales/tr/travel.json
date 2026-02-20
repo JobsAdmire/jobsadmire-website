@@ -1,0 +1,131 @@
+{
+  "navigation": {
+    "package": "Paket",
+    "home": "Ev"
+  },
+  "hero": {
+    "title": {
+      "line1": "Başlayın",
+      "line2": "Bugün Yolculuk"
+    },
+    "description": "Seyahat ihtiyaçlarınız için kolayca resmi e-davetiye talep edin. İster turizm, ister iş veya konferans/seminer amaçlı olsun, Jobs Admire vize sürecinizi basitleştirir"
+  },
+  "form": {
+    "iAmFrom": "Ben buralıyım.",
+    "iLiveIn": "Yaşadığım yer",
+    "invitationFor": "Davet için",
+    "selectCountry": "Ülke seçiniz",
+    "selectDestination": "Hedef seçin",
+    "searchCountries": "Ülkeleri arayın...",
+    "loadingCountries": "Ülkeler yükleniyor...",
+    "noCountriesFound": "Ülke bulunamadı",
+    "findNow": "Şimdi Bul"
+  },
+  "packages": {
+    "title": "Bir Hizmet Paketi Seçin",
+    "description": "Seyahat hayallerinizi gerçeğe dönüştürmek için tasarlanmış kapsamlı hizmet paketlerimizden birini seçin. Vize başvurunuzun başarılı ve stressiz geçmesini sağlamak için hızlı işlem, rekabetçi fiyatlar ve uzman rehberliği sunuyoruz.",
+    "showingPackagesFor": "Paketleri gösteriliyor:",
+    "packageFor": "İçin Paket",
+    "selectedCountry": "Seçilen Ülke",
+    "recommended": "Tavsiye edilir",
+    "save": "Kaydet",
+    "getStarted": "Başlayın",
+    "needHelp": "Seçmek için yardıma mı ihtiyacınız var?",
+    "contactExperts": "Uzmanlarımızla iletişime geçin",
+    "processingTime48Hours": "Davetiye işlem süresi 48 saattir",
+    "documentationProcessingTime48Hours": "Belge işlem süresi 48 saattir",
+    "features": {
+      "fastProcessing": "Hızlı İşleme",
+      "hours96Valid": "96 Saat Geçerli",
+      "airportTransit": "Havaalanı Transit",
+      "days14Valid": "14 Gün Geçerlidir",
+      "days30Valid": "30 Gün Geçerlidir",
+      "touristBusiness": "İlave kişi (5'in üzerinde): Kişi başı 200 USD",
+      "touristBusinesss": "Turist | İşletme",
+      "singleEntry": "Tek Girişli",
+      "singleMultipleEntry": "Tekli | Çoklu Giriş"
+    }
+  },
+  "alerts": {
+    "selectAllFields": "Lütfen gerekli tüm alanları seçin"
+  },
+  "errors": {
+    "failedToLoadCountries": "Ülkeler yüklenemedi"
+  },
+  "visaApplication": {
+    "stepTitles": {
+      "step1": "Konum Bilgileri",
+      "step2": "Gereksinimler ve Onay",
+      "step3": "Belge Yükleme",
+      "step4": "Kişisel Bilgiler",
+      "step5": "Başvuruyu İncele ve Gönder"
+    },
+    "submitFailed": "E-posta gönderilemedi",
+    "errors": {
+      "fromCountry": "Lütfen menşe ülkenizi seçiniz",
+      "toCountry": "Lütfen yaşadığınız ülkeyi seçin",
+      "toCountrySame": "Menşe ve varış ülkeleri farklı olmalıdır",
+      "hasValidPassport": "Lütfen geçerli bir pasaportunuz olduğunu onaylayın",
+      "hasPictureHeadshot": "Lütfen bir resminiz/ vesikalık fotoğrafınız olduğunu onaylayın",
+      "confirmNoActiveApplication": "Lütfen aktif başvuru olmadığını onaylayın",
+      "confirmGovernmentDiscretion": "Lütfen hükümetin takdir yetkisini kabul edin",
+      "passportDocument": "Lütfen pasaport belgenizi yükleyin",
+      "pictureHeadshot": "Lütfen resminizi/ vesikalık fotoğrafınızı yükleyin",
+      "firstName": "İlk isim gereklidir",
+      "lastName": "Soyadı gereklidir",
+      "phoneNumber": "Telefon numarası gereklidir",
+      "email": "E-posta gereklidir",
+      "passportNumber": "Pasaport numarası gereklidir",
+      "profession": "Meslek gereklidir",
+      "travelDate": "Seyahat tarihi gereklidir",
+      "travelToDate": "Dönüş tarihi gereklidir",
+      "travelPurpose": "Seyahat amacı gereklidir",
+      "emailInvalid": "Lütfen geçerli bir e-posta adresi girin",
+      "phoneInvalid": "Lütfen geçerli bir telefon numarası girin",
+      "travelDatePast": "Seyahat tarihi geçmişte olamaz",
+      "travelToDateAfter": "Dönüş tarihi seyahat tarihinden sonra olmalıdır",
+      "travelerNameRequired": "Gezgin {{index}} adı gereklidir",
+      "travelerPhoneRequired": "Gezgin {{index}} telefonu gereklidir"
+    },
+    "placeholders": {
+      "searchCountries": "Ülkeleri arayın...",
+      "selectCountry": "Ülke seçiniz",
+      "firstName": "İlk isim",
+      "lastName": "Soyadı",
+      "phoneNumber": "Telefon Numarası",
+      "email": "E-posta adresi",
+      "from": "Kimden",
+      "liveIn": "Canlı yayın",
+      "passportNumber": "Pasaport numarası",
+      "profession": "Meslek",
+      "dateFormat": "aa/gg/yyyy",
+      "travelPurpose": "Seyahat amacı",
+      "numberOfTravellers": "Gezgin Sayısı",
+      "fullName": "Ad Soyad"
+    },
+    "labels": {
+      "applicationDetails": "Başvuru Detayları",
+      "submitApplication": "Başvuru Gönder",
+      "transitVisa": "TRANSİT VİZE",
+      "transitVisaShort": "Transit Vize",
+      "notProvided": "Sağlanmadı",
+      "notUploaded": "Yüklenmedi",
+      "price": "Fiyat:",
+      "submitting": "Gönderiyorum...",
+      "uploadDocumentsTitle": "Lütfen Aşağıdaki Belgeleri Yükleyin",
+      "acceptedFormats": "Kabul Edilen Formatlar:",
+      "acceptedFormatsValue": "PDF, JPG veya PNG",
+      "details": "Detaylar",
+      "review": "İnceleme",
+      "next": "Sonraki",
+      "visaFor": "VİZE İÇİN:",
+      "currency": "USD"
+    }
+  },
+  "packageTypes": {
+    "individualTouristInvitation": "Bireysel Turist Davetiyesi",
+    "individualBusinessInvitation": "Bireysel İşletme Davetiyesi",
+    "familyTouristInvitation": "Aile Turist Davetiyesi",
+    "singleEntry": "Tek Girişli"
+  }
+}

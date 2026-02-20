@@ -1,0 +1,196 @@
+{
+  "visarelocation": {
+    "hero": {
+      "badge": "Professionelle Visum- und Umzugsdienste",
+      "headline": {
+        "prefix": "Umzug zu Ihrem",
+        "suffix": "Mit Zuversicht"
+      },
+      "animatedWords": [
+        "Land",
+        "Zukunft",
+        "Reise",
+        "Abenteuer",
+        "Traum",
+        "Reiseziel"
+      ],
+      "description": "Von der Beantragung eines Visums bis zur Eingewöhnung in Ihrem neuen Zuhause - unsere umfassenden Visadienstleistungen für internationale Arbeitssuchende helfen Ihnen, sich sicher in einem neuen Land zu bewegen.",
+      "cta": {
+        "text": "Starten Sie Ihren Umzug"
+      }
+    },
+    "showcase": {
+      "title": "Visum & Umzug",
+      "subtitle": "Umfassende Unterstützung für Ihren internationalen Umzug",
+      "journey": {
+        "title": "Vollständige Unterstützung bei der Reise",
+        "subtitle": "Vom Visum bis zur Einrichtung der neuen Wohnung"
+      },
+      "services": [
+        {
+          "icon": "DateiText",
+          "title": "Visabearbeitung",
+          "description": "Unterstützung von Dokumenten",
+          "gradient": "bg-gradient-to-r von-himmel-500 zu-blau-600"
+        },
+        {
+          "icon": "Aktentasche",
+          "title": "Arbeitsgenehmigungen",
+          "description": "Juristischer Beistand",
+          "gradient": "bg-gradient-to-r von-violett-500 nach-indigo-600"
+        },
+        {
+          "icon": "Startseite",
+          "title": "Gehäuse",
+          "description": "Heimatsuche",
+          "gradient": "bg-gradient-to-r von-emerald-500 bis-teal-600"
+        },
+        {
+          "icon": "MapPin",
+          "title": "Abrechnung",
+          "description": "Lokale Integration",
+          "gradient": "bg-gradient-to-r von-orange-500 nach-rot-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "96%",
+          "label": "Erfolgsquote für Visa",
+          "color": "text-himmel-600"
+        },
+        {
+          "value": "1200+",
+          "label": "Erledigte Umzüge",
+          "color": "text-blau-600"
+        },
+        {
+          "value": "4.9★",
+          "label": "Kundenbewertung",
+          "color": "text-indigo-600"
+        }
+      ]
+    }
+  },
+  "advantages": {
+    "title": "Vorteile unserer Dienstleistung",
+    "items": [
+      {
+        "icon": "DateiText",
+        "text": "Wir erstellen und prüfen alle Ihre Dokumente gemäß den Anforderungen der Botschaft, bei der Sie ein Visum beantragen werden"
+      },
+      {
+        "icon": "DateiText",
+        "text": "Wir schreiben und übersetzen Dokumente für Sie und ersparen Ihnen die Mühe, dies selbst zu tun."
+      },
+      {
+        "icon": "Schild",
+        "text": "Wir bieten Ihnen von Anfang an eine deutsche Krankenversicherung"
+      },
+      {
+        "icon": "Euro",
+        "text": "Wir können Sie vor unnötigen Kosten bewahren, die während des Prozesses entstehen können"
+      },
+      {
+        "icon": "Startseite",
+        "text": "Wir können Ihnen ein Dokument zur Verfügung stellen, das Ihnen bei der Wohnungssuche behilflich ist, so dass Sie während der Phase der Einreichung der Dokumente beim Konsulat keine Wohnung mieten müssen."
+      },
+      {
+        "icon": "DollarZeichen",
+        "text": "Wir stellen Ihnen eine deutsche Rechnung aus, die Sie in Deutschland von der Steuer absetzen und teilweise erstatten können. Sie können bis zu 42% des Wertes zurückerhalten, wenn Sie Ihre Steuererklärung für das laufende Jahr einreichen"
+      }
+    ],
+    "cta": {
+      "text": "Kontakt"
+    },
+    "image": {
+      "alt": "Professioneller Arbeitsbereich mit Dokumenten und Beratung",
+      "src": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2084&q=80"
+    }
+  },
+  "visainfo": {
+    "visaTypes": {
+      "title": "Arten von Visa, bei denen wir Ihnen helfen",
+      "items": [
+        {
+          "title": "Blaue Karte",
+          "icon": "Auszeichnung"
+        },
+        {
+          "title": "Arbeitsvisum für einen hochqualifizierten Arbeitnehmer",
+          "icon": "Aktentasche"
+        },
+        {
+          "title": "Visum für Arbeitserfahrung für IT-Fachleute",
+          "icon": "Weltkugel"
+        },
+        {
+          "title": "Opportunitätskarte (Chancenkarte)",
+          "icon": "Stern"
+        },
+        {
+          "title": "Studentenvisa",
+          "icon": "Aktentasche"
+        },
+        {
+          "title": "Visum zur Familienzusammenführung",
+          "icon": "Benutzer"
+        }
+      ]
+    },
+    "whyRelocation": {
+      "title": {
+        "prefix": "Warum Umzüge mit",
+        "highlight": "Transparent",
+        "suffix": "Einstellen?"
+      },
+      "description": "Man empfiehlt uns, weil wir verantwortungsbewusst und innerhalb des vereinbarten Zeitrahmens helfen, die Fragen der Visabeschaffung und des Umzugs nach Deutschland zu lösen und alle notwendigen Einwanderungsdienstleistungen für Fachleute aus einer Hand anbieten.",
+      "features": [
+        {
+          "icon": "Auszeichnung",
+          "title": "Professionalität",
+          "description": "Wir leben seit 15 Jahren in Deutschland und sind uns aller Fallstricke bewusst. Wir halten uns an einen strengen ethischen Kodex und halten uns immer an unsere Verpflichtungen."
+        },
+        {
+          "icon": "Uhr",
+          "title": "Jahre der Erfahrung",
+          "description": "Als Relocator haben wir zahlreiche IT- und Digitalspezialisten bei ihrem Umzug nach München, Berlin, Stuttgart, Düsseldorf und in andere deutsche Städte unterstützt - von der Hilfe bei der Visumserteilung bis hin zum Umzug und der Anpassung an eine neue Stadt."
+        },
+        {
+          "icon": "Startseite",
+          "title": "\"Schlüsselfertige\" Umsiedlung",
+          "description": "Wir helfen in allen Phasen: Beschaffung von Dokumenten, Beantragung eines Arbeitsvisums, Umzug und Integration nach der Ankunft, kurz- und langfristige Wohnungssuche. Wir sind immer in Kontakt und bereit, Ihre Fragen umgehend zu beantworten."
+        },
+        {
+          "icon": "Benutzer",
+          "title": "Individueller Ansatz",
+          "description": "Wir helfen Ihnen dabei, Ihren Umzug so schnell und reibungslos wie möglich zu gestalten, je nach Fall. Unser individueller Ansatz gewährleistet einen raschen und reibungslosen Umzugsprozess und bietet bei Bedarf Beratung zu Studentenvisa."
+        }
+      ]
+    },
+    "relocationPackage": {
+      "title": "Wann ein Relocation-Paket geeignet ist",
+      "scenarios": [
+        {
+          "icon": "Gebäude",
+          "title": "Sie haben ein Angebot von einem deutschen Unternehmen",
+          "description": "Diejenigen, die ein Angebot vorliegen haben, aber das Unternehmen selbst bietet keine Visumberatung für eine Beschäftigung im Ausland an."
+        },
+        {
+          "icon": "Benutzer",
+          "title": "Sie ziehen mit Ihrer Familie um",
+          "description": "Diejenigen, die als Paar und/oder mit Kindern nach Deutschland ziehen."
+        },
+        {
+          "icon": "ScheckKreis",
+          "title": "Sie haben einen komplizierten Fall",
+          "description": "Diejenigen, die in einem Land wohnen, in dem die Visadienste in Pakistan für die Arbeit im Ausland begrenzt sind, und diejenigen, die dringend umziehen müssen."
+        },
+        {
+          "icon": "Suche",
+          "title": "Sie möchten eine Chancenkarte für die Stellensuche erhalten",
+          "description": "Diejenigen, die ohne ein Angebot nach Deutschland kommen und einen Job in ihrem Bereich finden wollen."
+        }
+      ]
+    }
+  }
+}

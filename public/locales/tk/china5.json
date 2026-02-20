@@ -1,0 +1,54 @@
+{
+  "header": {
+    "badge": "Hytaýda ýaşamak üçin rugsatnama almak prosesi",
+    "title": {
+      "yourStepByStep": "Siziň ädimme-ädim ýoluňyz",
+      "chinaResidencePermit": "Hytaýda ýaşamak üçin rugsatnama",
+      "success": "üstünlik"
+    },
+    "description": "Biz Hytaý wizasynyň çylşyrymly prosesini subut edilen 4 ädimli çemeleşmegimiz bilen ýönekeýleşdirýäris, bu bolsa siziň arzaňyzyň Hytaýyň immigrasiýa talaplarynyň ählisine laýyk gelýändigini üpjün edýär."
+  },
+  "stages": {
+    "consultation": {
+      "title": "Ilkinji maslahat we baha beriş",
+      "description": "Hytaýyň immigrasiýa boýunça hünärmenlerimiz siziň hukuk derejäňizi bahalap, Hytaýda ýaşamak üçin rugsatnama talaplary we wiza mümkinçilikleri barada jikme-jik maglumat berýärler."
+    },
+    "documentPreparation": {
+      "title": "Resminamalary taýýarlamak we gözden geçirmek",
+      "description": "Biz size ähli zerur resminamalary ýygnamakda, olaryň Hytaýyň immigrasiýa standartlaryna laýyk gelmeginde we degişli derejede tassyklanandygynda we notarial tassyklanandygynda ýol görkezýäris."
+    },
+    "applicationSubmission": {
+      "title": "Arza tabşyrmak we yzarlamak",
+      "description": "Biziň hukuk toparymyz Hytaýda ýaşamak üçin rugsatnama almak üçin arzaňyzy tabşyrýar we PSB (Jemgyýetçilik Howpsuzlyk Býurosy) işläp çykarmak boýunça yzygiderli goldaw berýär."
+    },
+    "permitApproval": {
+      "title": "Ýaşamak üçin rugsatnamanyň tassyklanmagy we bellige alynmagy",
+      "description": "Biz lukmançylyk barlagy, wagtlaýyn ýaşaýyş üçin hasaba durmak we Hytaýda ýaşamak üçin rugsatnama almagyňyzy üpjün etmek ýaly soňky ädimlerde kömek berýäris."
+    }
+  },
+  "images": {
+    "greatWall": {
+      "alt": "Beýik Hytaý diwary",
+      "location": "Beýik diwar",
+      "description": "Hytaýyň gadymy täsinligi"
+    },
+    "shanghai": {
+      "alt": "Şanhaý asman ýoluny",
+      "location": "Şanhaý",
+      "description": "Häzirki zaman maliýe merkezi"
+    },
+    "forbiddenCity": {
+      "alt": "Gadagan edilen şäher Pekin",
+      "location": "Pekin",
+      "description": "Imperator köşk toplumy"
+    },
+    "temple": {
+      "alt": "Adaty Hytaý ybadathanasy",
+      "location": "Adaty Hytaý",
+      "description": "Medeni miras ýerleri"
+    }
+  },
+  "floatingBadge": {
+    "permitsProcessing": "Rugsatnamalaryň işlenilmegi"
+  }
+}

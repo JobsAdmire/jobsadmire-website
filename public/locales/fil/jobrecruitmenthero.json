@@ -1,0 +1,204 @@
+{
+  "jobrecruitmenthero": {
+    "headline": {
+      "line1": "Nangungunang Talento, Tunay na Resulta",
+      "highlight": "Mag-hire nang Mas Matalino",
+      "line2": "kasama ang JobsAdmire"
+    },
+    "description": "Pinagsasama ng aming AI-powered recruitment platform ang malalim na kadalubhasaan sa industriya at ang makabagong teknolohiya upang ikonekta ka sa pambihirang talento na nagtutulak ng inobasyon at paglago.",
+    "cta": {
+      "text": "Magsimula Ngayon"
+    },
+    "image": {
+      "src": "/mga imahe/rc.jpg",
+      "alt": "Mga Serbisyo sa Pagrerekrut"
+    }
+  },
+  "jobrecruitmentfull": {
+    "content": {
+      "headline": "Bumuo ng mga Koponan na May Mataas na Epekto gamit ang mga Nangungunang Talento — Mabilis, Matalino, at Walang Tuluy-tuloy gamit ang JobsAdmire",
+      "description": "Sa JobsAdmire, tinutulungan namin ang mga visionary startup at pandaigdigang kumpanya na kumuha ng mga nangungunang teknikal na talento — nang mabilis at mahusay. Nauunawaan ng aming mga ekspertong recruiter ang bilis ng modernong negosyo at naghahatid ng mga kandidato na hindi lamang nakakatugon sa deskripsyon ng trabaho kundi naaayon din sa iyong mga pangmatagalang layunin. Mula sa pagpapalawak ng mga agile team hanggang sa pagpuno ng mga niche tech role, ang aming mga solusyon sa recruitment ay idinisenyo upang gawing simple ang pagkuha ng empleyado, dagdagan ang produktibidad, at palakasin ang paglago na nagtutulak sa iyong tagumpay.",
+      "cta": {
+        "text": "Makipag-usap sa Isang Eksperto"
+      }
+    },
+    "carousel": {
+      "firstColumn": [
+        {
+          "src": "/mga imahe/talentjr.png",
+          "alt": "Propesyonal sa kasuotang pang-negosyo",
+          "name": "Sarah Johnson",
+          "role": "Senior Developer"
+        },
+        {
+          "src": "/mga imahe/talent2.png",
+          "alt": "Propesyonal sa teknolohiya",
+          "name": "Michael Chen",
+          "role": "Pinuno ng Teknolohiya"
+        },
+        {
+          "src": "/mga imahe/talent3.png",
+          "alt": "Propesyonal na babae",
+          "name": "Emma Davis",
+          "role": "Tagapamahala ng Produkto"
+        }
+      ],
+      "secondColumn": [
+        {
+          "src": "/mga imahe/smart1.png",
+          "alt": "Nakangiting propesyonal",
+          "name": "David Wilson",
+          "role": "Taga-disenyo ng UX",
+          "location": "Malayo"
+        },
+        {
+          "src": "/mga imahe/smart2.png",
+          "alt": "Propesyonal na taga-disenyo",
+          "name": "Lisa Brown",
+          "role": "Frontend Developer",
+          "location": "Nasa lugar"
+        },
+        {
+          "src": "/mga imahe/smart3.png",
+          "alt": "Lider sa teknolohiya",
+          "name": "James Miller",
+          "role": "Tagapamahala ng Inhinyeriya",
+          "location": "Hybrid"
+        }
+      ],
+      "staticImage": {
+        "src": "/mga imahe/balita1.jpg",
+        "alt": "Propesyonal na larawan"
+      }
+    }
+  },
+  "recruitment": {
+    "header": {
+      "title": {
+        "prefix": "Premium",
+        "highlight": "Pangangalap",
+        "suffix": "at Mga Solusyon sa HR"
+      },
+      "description": "Sa JobsAdmire, dalubhasa kami sa pag-uugnay ng mga natatanging talento sa mga makabagong kumpanya. Ang aming komprehensibong mga serbisyo sa recruitment at HR ay tumutulong sa mga negosyo na lumago nang mahusay habang tinitiyak ang perpektong kultural at kasanayan na akma para sa bawat posisyon.",
+      "image": {
+        "alt": "Propesyonal na pakikipagtulungan ng pangkat sa JobsAdmire",
+        "src": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+      }
+    },
+    "slides": {
+      "talentAcquisition": {
+        "title": "Talent Acquisition at Headhunting",
+        "subtitle": "Hanapin ang Iyong Perpektong Kapareha",
+        "description": "Ang JobsAdmire ay nag-uugnay sa mga mahuhusay na talento sa mga nangungunang kumpanya sa buong mundo. Dahil sa access sa mahigit 2 milyong propesyonal sa teknolohiya, pananalapi, pangangalagang pangkalusugan, at higit pa, ginagawa naming maayos at mahusay ang pagkuha ng empleyado.",
+        "steps": {
+          "requirements": "Tukuyin ang mga Kinakailangan at Espesipikasyon ng Trabaho",
+          "sourcing": "Paghahanap at Pagsusuri ng Kandidato",
+          "interview": "Koordinasyon at Pagtatasa ng Panayam",
+          "selection": "Pangwakas na Pagpili at Suporta sa Onboarding"
+        },
+        "cta": "Simulan ang Pagkuha ng Trabaho Ngayon"
+      },
+      "hrDocumentation": {
+        "title": "Dokumentasyon at Pagsunod sa HR",
+        "subtitle": "Pinasimple at Propesyonal",
+        "description": "Kumpletong serbisyo sa dokumentasyon ng HR na tinitiyak ang pagsunod sa mga legal na regulasyon at mga propesyonal na pamantayan. Mula sa mga kontrata hanggang sa mga patakaran, pinangangasiwaan namin ang lahat ng iyong pangangailangan sa dokumentasyon nang may katumpakan at kadalubhasaan.",
+        "services": {
+          "contracts": "Mga Kontrata sa Pagtatrabaho at Mga Sulat ng Alok",
+          "policies": "Mga Patakaran at Pamamaraan sa Pasadyang HR",
+          "performance": "Mga KPI ng Pagganap at Mga Sistema ng Ebalwasyon",
+          "compliance": "Pagsunod sa Batas at mga NDA",
+          "compensation": "Istruktura ng Kompensasyon at mga Benepisyo"
+        },
+        "cta": "Humingi ng Tulong sa Dokumentasyon"
+      },
+      "strategicConsulting": {
+        "title": "Pagkonsulta sa Istratehikong HR",
+        "subtitle": "Palakihin ang Iyong Koponan nang Epektibo",
+        "description": "Baguhin ang iyong mga operasyon sa HR gamit ang aming mga serbisyo sa estratehikong pagkonsulta. Tinutulungan namin ang mga negosyo na i-optimize ang kanilang pamamahala ng talento, mapabuti ang mga rate ng pagpapanatili, at bumuo ng mga pangkat na may mataas na pagganap.",
+        "services": {
+          "workforce": "Pagpaplano at Istratehiya ng Lakas-Paggawa",
+          "teamStructure": "Pag-optimize ng Istruktura ng Koponan",
+          "retention": "Mga Programa sa Pagpapanatili ng Empleyado",
+          "culture": "Mga Solusyon sa Kultura at Pakikipag-ugnayan"
+        },
+        "cta": "Mag-iskedyul ng Konsultasyon"
+      }
+    }
+  },
+  "scrollingheadline": {
+    "primary": "MAGHANAP NG TALENTO SA TEKNOLOHIYA KASAMA ANG JOBSADMIRE",
+    "secondary": "TALENTO SA TEKNOLOHIYA KASAMA ANG JOBSADMIRE"
+  },
+  "jobrecruitmenthero1": {
+    "content": {
+      "headline": "Bakit Nagtitiwala ang mga Nangungunang Kumpanya sa JobsHanga sa Pagbuo ng mga Panalong Tech Team",
+      "description": "Ang JobsAdmire ay ang mapagkakatiwalaang kasosyo sa recruitment para sa mga nangungunang kumpanya ng teknolohiya at mabilis na lumalagong mga startup sa buong Asya, Gitnang Silangan, at Europa. Dahil sa mahigit 2,500 matagumpay na placement sa buong mundo, nakamit namin ang aming reputasyon sa pamamagitan ng paghahatid ng mga propesyonal na may mataas na kasanayan at handa sa trabaho na nagtutulak ng inobasyon at mga resulta. Sa 2024, ang JobsAdmire ay nananatiling pangunahing plataporma para sa mga organisasyong naghahangad na palakihin ang kanilang mga teknikal na koponan nang may bilis, katumpakan, at kumpiyansa.",
+      "cta": "Makipag-usap sa Isang Eksperto",
+      "featureTags": [
+        "Nangungunang Talento",
+        "Mabilis na Pagkuha ng Trabaho",
+        "Pandaigdigang Pag-abot",
+        "Mga Pasadyang Solusyon"
+      ]
+    },
+    "carousel": {
+      "firstColumn": {
+        "images": [
+          {
+            "src": "/mga imahe/tiwala1.png",
+            "alt": "Propesyonal sa kasuotang pang-negosyo",
+            "name": "Sarah Chen",
+            "role": "Senior Software Engineer"
+          },
+          {
+            "src": "/mga imahe/trust2.png",
+            "alt": "Propesyonal sa teknolohiya",
+            "name": "Ahmed Hassan",
+            "role": "Full Stack Developer"
+          },
+          {
+            "src": "/mga imahe/tiwala6.png",
+            "alt": "Propesyonal na babae",
+            "name": "Maria Rodriguez",
+            "role": "Tagapamahala ng Produkto"
+          }
+        ]
+      },
+      "secondColumn": {
+        "images": [
+          {
+            "src": "/mga imahe/tiwala3.png",
+            "alt": "Nakangiting propesyonal",
+            "name": "David Kim",
+            "role": "Inhinyero ng DevOps",
+            "location": "Malayo"
+          },
+          {
+            "src": "/mga imahe/tiwala4.png",
+            "alt": "Propesyonal na taga-disenyo",
+            "name": "Emma Thompson",
+            "role": "Disenyador ng UX/UI",
+            "location": "Nasa lugar"
+          },
+          {
+            "src": "/mga imahe/tiwala5.png",
+            "alt": "Lider sa teknolohiya",
+            "name": "Raj Patel",
+            "role": "Pinuno ng Teknolohiya",
+            "location": "Hybrid"
+          }
+        ]
+      },
+      "joinCard": {
+        "badge": "Sumali sa Amin",
+        "title": "Palaguin ang Iyong Karera",
+        "description": "Galugarin ang mga oportunidad kasama ang mga nangungunang kumpanya"
+      }
+    },
+    "locationLabels": {
+      "remote": "Malayo",
+      "onsite": "Nasa lugar",
+      "hybrid": "Hybrid"
+    }
+  }
+}

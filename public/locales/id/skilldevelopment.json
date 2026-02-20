@@ -1,0 +1,374 @@
+{
+  "skilldevelopment": {
+    "hero": {
+      "badge": "Pelatihan pengembangan keterampilan profesional",
+      "headline": {
+        "prefix": "Kembangkan Diri Anda",
+        "suffix": "Untuk Pekerjaan Besok"
+      },
+      "animatedWords": [
+        "Keterampilan",
+        "Keahlian",
+        "Pengetahuan",
+        "Kemampuan",
+        "Bakat",
+        "Penguasaan"
+      ],
+      "description": "Program pelatihan berorientasi kerja dan kursus pengembangan profesional kami menawarkan keterampilan praktis yang dibutuhkan di pasar kerja. Sesi pengembangan keterampilan yang dipimpin oleh para ahli mempersiapkan Anda untuk sukses di pasar kerja yang kompetitif saat ini.",
+      "cta": {
+        "text": "Jelajahi Program Pelatihan"
+      }
+    },
+    "showcase": {
+      "title": "Pengembangan Keterampilan",
+      "subtitle": "Bangun keterampilan masa depan mulai dari hari ini.",
+      "learning": {
+        "title": "Pembelajaran Interaktif",
+        "subtitle": "Pelatihan praktik langsung dengan bimbingan ahli."
+      },
+      "categories": [
+        {
+          "icon": "Kode",
+          "title": "Keterampilan Teknologi",
+          "description": "Pemrograman & TI",
+          "gradient": "gradien latar belakang ke r dari langit 500 ke biru 600"
+        },
+        {
+          "icon": "Bola lampu",
+          "title": "Kreatif",
+          "description": "Desain & Media",
+          "gradient": "gradien bg ke r dari ungu 500 ke nila 600"
+        },
+        {
+          "icon": "Target",
+          "title": "Bisnis",
+          "description": "Manajemen & Keuangan",
+          "gradient": "gradien bg ke r dari zamrud 500 ke teal 600"
+        },
+        {
+          "icon": "Tren Naik",
+          "title": "Keterampilan Lunak",
+          "description": "Komunikasi & Kepemimpinan",
+          "gradient": "gradien bg ke r dari oranye 500 ke merah 600"
+        }
+      ],
+      "stats": [
+        {
+          "label": "Program Pelatihan",
+          "color": "teks-langit-600",
+          "value": "150+"
+        },
+        {
+          "label": "Siswa yang Dilatih",
+          "color": "teks biru-600",
+          "value": "5000+"
+        },
+        {
+          "label": "Penempatan Kerja",
+          "color": "teks-indigo-600",
+          "value": "90%"
+        }
+      ]
+    }
+  },
+  "skilldevpage": {
+    "hero": {
+      "badge": "PENGEMBANGAN KETERAMPILAN PROFESIONAL",
+      "title": {
+        "prefix": "Mengapa Memilih Kami?",
+        "highlight": "Program Pengembangan Keterampilan?"
+      },
+      "description": "Ubah karier Anda dengan program pelatihan yang relevan dengan industri dan dirancang untuk mempersiapkan Anda siap kerja. Bergabunglah dengan ribuan profesional yang telah memajukan karier mereka melalui kursus pengembangan keterampilan komprehensif kami.",
+      "cta": {
+        "primary": "Jelajahi Program Pelatihan",
+        "secondary": "Jadwalkan Konsultasi"
+      }
+    },
+    "stats": [
+      {
+        "label": "Program Pelatihan",
+        "icon": "Buka Buku",
+        "value": "500+"
+      },
+      {
+        "value": "15 ribu+",
+        "label": "Siswa yang Dilatih",
+        "icon": "Pengguna"
+      },
+      {
+        "label": "Tingkat Penempatan Kerja",
+        "icon": "Tren Naik",
+        "value": "95%"
+      },
+      {
+        "label": "Mitra Industri",
+        "icon": "Bangunan",
+        "value": "200+"
+      }
+    ],
+    "benefits": {
+      "title": {
+        "prefix": "Apa yang Membuat Program Kami Istimewa",
+        "highlight": "Luar biasa"
+      },
+      "description": "Pendekatan komprehensif kami memastikan Anda mendapatkan pengalaman pelatihan terbaik dengan aplikasi dunia nyata.",
+      "items": [
+        {
+          "icon": "Bangunan",
+          "title": "Kurikulum yang Relevan dengan Industri",
+          "description": "Modul pelatihan yang dirancang bekerja sama dengan para ahli industri dan pemberi kerja, memastikan Anda memperoleh keterampilan yang paling relevan dan terkini melalui program pelatihan keterampilan yang dibutuhkan.",
+          "color": "teks-[#38B6FF]",
+          "bgColor": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Pengguna",
+          "title": "Pelatih & Mentor Berpengalaman",
+          "description": "Belajarlah dari instruktur yang berkualitas dengan pengalaman nyata di bidangnya masing-masing yang memberikan pelatihan untuk kemajuan karier.",
+          "color": "teks-zamrud-600",
+          "bgColor": "bg-emerald-50"
+        },
+        {
+          "icon": "Target",
+          "title": "Pembelajaran Praktik Langsung",
+          "description": "Kami menekankan pembelajaran praktis berbasis proyek sehingga Anda tidak hanya dilatih—tetapi juga siap kerja dengan keterampilan lunak dan pelatihan teknis yang penting.",
+          "color": "teks ungu 600",
+          "bgColor": "bg-ungu-50"
+        },
+        {
+          "icon": "Jam",
+          "title": "Opsi Pembelajaran yang Fleksibel",
+          "description": "Daring, tatap muka, atau hibrida—pilih mode yang paling sesuai dengan jadwal dan gaya belajar Anda untuk sesi pelatihan daring dan luring guna menguasai keterampilan yang dibutuhkan.",
+          "color": "teks-oranye-600",
+          "bgColor": "bg-orange-50"
+        },
+        {
+          "icon": "Tas kantor",
+          "title": "Dukungan Karier",
+          "description": "Dapatkan panduan tentang pembuatan resume, strategi pencarian kerja, dan persiapan wawancara sebagai bagian dari pelatihan kesiapan kerja dan lokakarya peningkatan karier kami.",
+          "color": "teks-indigo-600",
+          "bgColor": "bg-indigo-50"
+        }
+      ]
+    },
+    "trainingAreas": {
+      "title": {
+        "prefix": "Area Pelatihan",
+        "highlight": "Kami Meliputi"
+      },
+      "description": "Program kami mencakup berbagai bidang yang sangat dibutuhkan untuk memenuhi beragam aspirasi karir.",
+      "programLabel": "Program Pelatihan Profesional",
+      "skillsLabel": "Keterampilan Utama yang Akan Anda Pelajari:",
+      "highlightsLabel": "Sorotan Program:",
+      "enrollButton": "Daftar di",
+      "programText": "Program",
+      "highlights": [
+        "Sertifikasi yang diakui industri",
+        "Portofolio proyek praktis",
+        "Bantuan penempatan karir",
+        "Jadwal pembelajaran yang fleksibel"
+      ],
+      "items": [
+        {
+          "title": "Teknologi Informasi (TI) & Pengembangan Perangkat Lunak",
+          "description": "Bahasa pemrograman, pengembangan web, ilmu data, pengembangan aplikasi, keamanan siber, dan banyak lagi, didukung oleh inisiatif pelatihan keterampilan digital kami.",
+          "icon": "Kode",
+          "color": "teks-[#38B6FF]",
+          "bgColor": "bg-[#38B6FF]/10",
+          "accentColor": "bg-[#38B6FF]",
+          "skills": {
+            "0": "Python",
+            "1": "JavaScript",
+            "2": "Bereaksi",
+            "3": "Ilmu Data",
+            "4": "Keamanan Siber",
+            "5": "Komputasi Awan"
+          },
+          "id": 0
+        },
+        {
+          "title": "Pemasaran Digital",
+          "description": "SEO, pemasaran media sosial, pemasaran email, pembuatan konten, Google Ads, dan analitik.",
+          "icon": "Tren Naik",
+          "color": "teks-zamrud-600",
+          "bgColor": "bg-emerald-50",
+          "accentColor": "bg-emerald-600",
+          "skills": {
+            "0": "SEO",
+            "1": "Media Sosial",
+            "2": "Google Ads",
+            "3": "Pemasaran Konten",
+            "4": "Analisis",
+            "5": "Pemasaran Email"
+          },
+          "id": 1
+        },
+        {
+          "title": "Bisnis & Kewirausahaan",
+          "description": "Perencanaan bisnis, manajemen proyek, kepemimpinan, dan literasi keuangan.",
+          "icon": "Bangunan",
+          "color": "teks ungu 600",
+          "bgColor": "bg-ungu-50",
+          "accentColor": "bg-ungu-600",
+          "skills": {
+            "0": "Perencanaan Bisnis",
+            "1": "Manajemen Proyek",
+            "2": "Kepemimpinan",
+            "3": "Literasi Keuangan",
+            "4": "Strategi",
+            "5": "Operasi"
+          },
+          "id": 2
+        },
+        {
+          "title": "Komunikasi & Keterampilan Lunak",
+          "description": "Berbicara di depan umum, penulisan profesional, kerja tim, kecerdasan emosional, dan etika di tempat kerja.",
+          "icon": "Kotak Pesan",
+          "color": "teks-oranye-600",
+          "bgColor": "bg-orange-50",
+          "accentColor": "bg-orange-600",
+          "skills": {
+            "0": "Berbicara di depan umum",
+            "1": "Penulisan Profesional",
+            "2": "Kerja sama",
+            "3": "Kecerdasan Emosional",
+            "4": "Kepemimpinan",
+            "5": "Perundingan"
+          },
+          "id": 3
+        },
+        {
+          "title": "Keterampilan Vokasional & Teknik",
+          "description": "Profesi keahlian dan praktik langsung termasuk mekanik, listrik, dan desain berbantuan komputer (CAD).",
+          "icon": "Tameng",
+          "color": "teks-indigo-600",
+          "bgColor": "bg-indigo-50",
+          "accentColor": "bg-indigo-600",
+          "skills": {
+            "0": "Teknik Mesin",
+            "1": "Sistem Kelistrikan",
+            "2": "Desain CAD",
+            "3": "Manufaktur",
+            "4": "Kontrol Kualitas",
+            "5": "Standar Keselamatan"
+          },
+          "id": 4
+        }
+      ]
+    },
+    "targetAudience": {
+      "title": "Siapa yang Bisa Bergabung?",
+      "description": "Program kami dirancang untuk beragam peserta didik di berbagai tahapan karir.",
+      "items": [
+        {
+          "title": "Lulusan Baru",
+          "description": "Mencari program peningkatan keterampilan untuk lulusan baru di Pakistan.",
+          "icon": "Topi Wisuda",
+          "color": "teks-[#38B6FF]"
+        },
+        {
+          "title": "Para Profesional yang Bekerja",
+          "description": "Bertujuan untuk meningkatkan keterampilan kerja atau transisi karier melalui analisis kesenjangan keterampilan dan peningkatan keterampilan.",
+          "icon": "Tas kantor",
+          "color": "teks-zamrud-600"
+        },
+        {
+          "title": "Pengusaha",
+          "description": "Membutuhkan pengetahuan bisnis dan keterampilan kewirausahaan.",
+          "icon": "Bola lampu",
+          "color": "teks ungu 600"
+        },
+        {
+          "title": "Pencari Kerja",
+          "description": "Bertujuan untuk meraih keunggulan kompetitif melalui program pelatihan karir yang terjangkau bagi para pencari kerja.",
+          "icon": "Target",
+          "color": "teks-oranye-600"
+        },
+        {
+          "title": "Organisasi",
+          "description": "Ingin melatih staf mereka dengan sesi pelatihan keterampilan perusahaan.",
+          "icon": "Bangunan",
+          "color": "teks-indigo-600"
+        }
+      ]
+    },
+    "approach": {
+      "title": {
+        "prefix": "Kita",
+        "highlight": "Pendekatan Pembelajaran"
+      },
+      "description": "Di JobsAdmire, kami mengikuti model pelatihan yang berpusat pada peserta didik dan berorientasi pada hasil yang dirancang untuk memastikan keberhasilan.",
+      "points": [
+        {
+          "title": "Pertunangan",
+          "description": "Sesi interaktif yang membuat peserta didik tetap terlibat secara aktif.",
+          "icon": "Pengguna"
+        },
+        {
+          "title": "Penilaian",
+          "description": "Kuis dan proyek dunia nyata untuk mengukur kemajuan",
+          "icon": "Bagan Batang 3"
+        },
+        {
+          "title": "Evaluasi",
+          "description": "Sertifikasi dan pengujian praktis untuk validasi",
+          "icon": "Menghadiahkan"
+        },
+        {
+          "title": "Koneksi",
+          "description": "Peluang kerja dan magang untuk mendapatkan pengalaman nyata.",
+          "icon": "Dunia"
+        }
+      ]
+    },
+    "certification": {
+      "title": {
+        "prefix": "Sertifikasi",
+        "suffix": "Bantuan Penempatan Kerja"
+      },
+      "description": "Setelah berhasil menyelesaikan program, peserta akan menerima sertifikasi yang diakui untuk meningkatkan resume mereka. Kemitraan kami dengan perusahaan terkemuka dan platform pekerjaan memungkinkan kami untuk menawarkan bantuan penempatan kerja, menghubungkan peserta didik dengan peluang kerja nyata.",
+      "features": [
+        "Sertifikasi yang diakui industri",
+        "Kursus pengembangan keterampilan terbaik untuk pertumbuhan profesional.",
+        "Kursus pengembangan keterampilan di Pakistan",
+        "Pelatihan kerja untuk pemuda Pakistan"
+      ],
+      "cta": "Lihat Program Sertifikasi"
+    },
+    "form": {
+      "title": "Mulailah Hari Ini",
+      "fields": {
+        "name": "Nama Lengkap",
+        "email": "Alamat Email",
+        "training": "Area Pelatihan yang Diminati"
+      },
+      "placeholders": {
+        "name": "Masukkan nama lengkap Anda",
+        "email": "Masukkan email Anda",
+        "training": "Pilih area pelatihan"
+      },
+      "options": [
+        {
+          "value": "dia",
+          "label": "Pengembangan TI & Perangkat Lunak"
+        },
+        {
+          "value": "pemasaran",
+          "label": "Pemasaran Digital"
+        },
+        {
+          "value": "bisnis",
+          "label": "Bisnis & Kewirausahaan"
+        },
+        {
+          "value": "komunikasi",
+          "label": "Komunikasi & Keterampilan Lunak"
+        },
+        {
+          "value": "teknis",
+          "label": "Keterampilan Vokasional & Teknik"
+        }
+      ],
+      "submit": "Minta Informasi"
+    }
+  }
+}

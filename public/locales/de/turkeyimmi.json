@@ -1,0 +1,1313 @@
+{
+  "turkeyHeroSection": {
+    "badge": "Exklusive Fahrten",
+    "title": "Entdecken Sie Ihr nächstes Abenteuer",
+    "description": "Erleben Sie atemberaubende Reiseziele und schaffen Sie unvergessliche Erinnerungen mit unseren Premium-Reisepaketen, die auf Ihre Wünsche zugeschnitten sind.",
+    "currentlyViewing": {
+      "label": "Derzeitige Betrachtung"
+    },
+    "buttons": {
+      "explore": "Jetzt erforschen",
+      "viewAll": "Alle Reiseziele anzeigen"
+    },
+    "destinationCounter": "Zielort {aktuell}/{Gesamt}",
+    "destinations": [
+      {
+        "img": "/images/ihs.png",
+        "name": "Istanbul",
+        "country": "Türkei"
+      },
+      {
+        "img": "/images/ihi.png",
+        "name": "Izmir",
+        "country": "Türkei"
+      },
+      {
+        "img": "/images/iha.png",
+        "name": "Antalya",
+        "country": "Türkei"
+      },
+      {
+        "img": "/images/ihan.png",
+        "name": "Ankara",
+        "country": "Türkei"
+      },
+      {
+        "img": "/images/ihb.png",
+        "name": "Bursa",
+        "country": "Türkei"
+      }
+    ],
+    "accessibility": {
+      "exploreButton": "Jetzt Reiseziele erkunden",
+      "viewAllButton": "Alle verfügbaren Ziele anzeigen",
+      "destinationImage": "Ziel anzeigen: {Name}",
+      "featuredDestination": "Bild des ausgewählten Reiseziels",
+      "carouselControl": "Gehe zu Ziel {Nummer}"
+    },
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "turkeyTableOfContents": {
+    "title": "Inhaltsübersicht",
+    "subtitle": "Navigieren durch Abschnitte",
+    "currentlyReading": "Derzeit lesen",
+    "sectionsCount": "{Anzahl} zu erforschende Abschnitte",
+    "sections": [
+      {
+        "title": "Fakten über die Türkei",
+        "id": 1
+      },
+      {
+        "title": "Visa-Optionen für den Umzug in die Türkei",
+        "id": 2
+      },
+      {
+        "title": "Voraussetzungen für den Umzug in die Türkei",
+        "id": 3
+      },
+      {
+        "title": "Als Ausländer einen Job in der Türkei finden",
+        "id": 4
+      },
+      {
+        "title": "Umzug in die Türkei aus den USA",
+        "id": 5
+      },
+      {
+        "title": "Umzug vom Vereinigten Königreich in die Türkei",
+        "id": 6
+      },
+      {
+        "title": "Wie viel kostet ein Umzug in die Türkei?",
+        "id": 7
+      },
+      {
+        "title": "Umzug mit Haustieren in die Türkei",
+        "id": 8
+      }
+    ],
+    "quickNavigation": {
+      "title": "Schnelle Navigation",
+      "footer": "Durch {count} Abschnitte blättern"
+    },
+    "accessibility": {
+      "toggleMenu": "Navigationsmenü umschalten",
+      "sectionButton": "Navigieren Sie zum Abschnitt: {Titel}",
+      "quickNavigation": "Menü Schnellnavigation",
+      "quickNavSection": "Schnelles Navigieren zu: {Titel}"
+    }
+  },
+  "turkeyFactsCard": {
+    "title": "Faszinierende Fakten über die Türkei",
+    "description": "Entdecken Sie das einzigartige kulturelle Erbe dieses schönen Landes. Die Türkei bietet eine reiche Geschichte und vielfältige kulturelle Elemente, die die Welt beeinflusst haben.",
+    "navigation": {
+      "title": "Fakten erforschen",
+      "previous": "Vorheriger Fakt",
+      "next": "Nächste Tatsache"
+    },
+    "allFacts": {
+      "title": "Alle Fakten über die Türkei"
+    },
+    "facts": [
+      {
+        "title": "Istanbul liegt auf zwei Kontinenten",
+        "description": "Sie ist die einzige Großstadt der Welt, die sowohl in <strong>Europa als auch in Asien</strong> liegt und durch die Meerenge des Bosporus getrennt ist.",
+        "icon": "🌉"
+      },
+      {
+        "title": "Heimat von Troy",
+        "description": "Die antike Stadt <strong>Troja</strong>, berühmt geworden durch Homers Ilias, liegt im Westen der Türkei.",
+        "icon": "🏛️"
+      },
+      {
+        "title": "Geburtsort des Weihnachtsmanns",
+        "description": "<strong>Der Heilige Nikolaus</strong>, der die Legende vom Weihnachtsmann inspirierte, wurde in Patara, einer Stadt in der heutigen Türkei, geboren.",
+        "icon": "🎅"
+      },
+      {
+        "title": "Türkischer Kaffee steht auf der UNESCO-Liste",
+        "description": "Türkischer Kaffee ist kulturell so bedeutend, dass er von der <strong>UNESCO als immaterielles Kulturerbe</strong> anerkannt ist.",
+        "icon": "☕"
+      },
+      {
+        "title": "Tulpen stammen ursprünglich aus der Türkei",
+        "description": "Obwohl Tulpen oft mit den Niederlanden in Verbindung gebracht werden, wurden sie ursprünglich im <strong>Osmanischen Reich</strong> angebaut und von der Türkei aus nach Europa eingeführt.",
+        "icon": "🌷"
+      }
+    ],
+    "accessibility": {
+      "factButton": "Tatsache auswählen: {Titel}",
+      "previousFact": "Zum vorherigen Fakt gehen",
+      "nextFact": "Weiter zum nächsten Fakt"
+    }
+  },
+  "turkeyJobGuide": {
+    "header": {
+      "icon": "🇹🇷",
+      "title": "Als Ausländer einen Job in der Türkei finden",
+      "subtitle": "Ein vollständiger Leitfaden",
+      "description": "Die lebendige Kultur, die strategische Lage zwischen Europa und Asien und die wachsende Wirtschaft machen die Türkei zu einem attraktiven Ziel für arbeitssuchende Expats. Um als Ausländer einen Job in der Türkei zu bekommen, muss man jedoch den Arbeitsmarkt, die Bestimmungen für Arbeitsvisa und die kulturellen Erwartungen genau kennen.",
+      "subDescription": "Hier ist ein umfassender Leitfaden, der Ihnen helfen soll, als ausländischer Staatsangehöriger einen Arbeitsplatz in der Türkei zu finden."
+    },
+    "navigation": {
+      "title": "Leitfaden Inhalt"
+    },
+    "sections": [
+      {
+        "id": "Stellenmarkt",
+        "icon": "🔍",
+        "title": "Den türkischen Arbeitsmarkt verstehen",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Die Türkei bietet Chancen in verschiedenen Sektoren, aber bestimmte Branchen sind für ausländische Arbeitskräfte leichter zugänglich und willkommener.</p><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Gefragteste Sektoren für Ausländer:</h3><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-6\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Tourismus & Gastgewerbe</span><p class=\"text-sm text-gray-600\">Hotels, Reisebüros, Reiseveranstalter</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Bildung</span><p class=\"text-sm text-gray-600\">Englischlehrer, internationale Schulen</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Technologie & Software</span><p class=\"text-sm text-gray-600\">Entwicklung, IT-Dienstleistungen</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Bau & Technik</span><p class=\"text-sm text-gray-600\">Projektleitung, spezialisierte Rollen</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Import-Export & Handel</span><p class=\"text-sm text-gray-600\">Internationaler Handel, Logistik</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Gesundheitswesen und medizinische Dienstleistungen</span><p class=\"text-sm text-gray-600\">Fachkräfte</p></li></ul><p class=\"text-gray-700\">Die Kenntnis der Sprache verschafft Ihnen einen Wettbewerbsvorteil, aber es gibt auch englischsprachige Stellen, vor allem in multinationalen Unternehmen oder Tech-Start-ups.</p></div>"
+      },
+      {
+        "id": "rechtliche-anforderungen",
+        "icon": "🗂️",
+        "title": "Rechtliche Anforderungen: Arbeitsgenehmigung und Visum",
+        "content": "<div><div class=\"mb-6\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Schritt 1: Sichern Sie sich ein Jobangebot</h3><p class=\"text-gray-700 mb-4\">Bevor Sie in der Türkei legal arbeiten können, müssen Sie zunächst ein formelles Jobangebot von einem türkischen Arbeitgeber erhalten. Anders als in anderen Ländern können Sie ohne einen Sponsor keine allgemeine Arbeitserlaubnis beantragen.</p></div><div class=\"mb-6\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Schritt 2: Beantragung des Arbeitsvisums</h3><p class=\"text-gray-700 mb-4\">Sobald Sie ein Arbeitsangebot haben:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Sie beantragen ein Arbeitsvisum beim türkischen Konsulat/Botschaft in Ihrem Heimatland.</li><li>Ihr Arbeitgeber beantragt gleichzeitig eine Arbeitserlaubnis beim türkischen Ministerium für Arbeit und soziale Sicherheit.</li></ul></div><div class=\"bg-sky-50 p-4 rounded-md border border-sky-100 mb-4\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Erforderliche Dokumente:</h3><ul class=\"list-disc pl-6 mb-2 text-gray-700\"><li>Gültiger Reisepass</li><li>Arbeitsvertrag</li><li>Ausbildungsnachweise</li><li>Fotos in Passgröße</li><li>Ausgefülltes Visumantragsformular</li><li>Unterlagen des Arbeitgebers zur Förderung</li></ul></div><p class=\"text-gray-700\">Nach der Genehmigung, werden Sie ein Arbeitsvisum erhalten und können in die Türkei einreisen, um Ihre Arbeit aufzunehmen.</p></div>"
+      },
+      {
+        "id": "Arbeitsmöglichkeiten",
+        "icon": "🏢",
+        "title": "Arbeitsmöglichkeiten in der Türkei finden",
+        "content": "<div><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Top Job Portale:</h3><div class=\"grid grid-cols-2 md:grid-cols-3 gap-3 mb-6\"><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Kariyer.net</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Yenibiris.com</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Secretcv.com</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Jooble Türkei</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">LinkedIn</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Glassdoor</a></div><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Pro Tipps:</h3><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Nutzen Sie LinkedIn, um mit Personalfachleuten in der Türkei in Kontakt zu treten.</li><li>Filtern Sie Jobs nach Sprachanforderungen (z.B., englischsprachige Stellen).</li><li>Personalvermittlungsagenturen in Betracht ziehen, die auf internationale Stellenbesetzungen spezialisiert sind.</li></ul></div>"
+      },
+      {
+        "id": "Unterricht-Englisch",
+        "icon": "🧑‍🏫",
+        "title": "Englisch unterrichten in der Türkei",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Einer der häufigsten Jobs für Ausländer in der Türkei ist Englischunterricht.</p><div class=\"flex flex-col md:flex-row gap-6 mb-6\"><div class=\"flex-1 bg-white p-4 rounded-md border border-sky-100\"><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Wo Sie arbeiten können:</h3><ul class=\"list-disc pl-6 text-gray-700\"><li>Private Sprachschulen</li><li>Universitäten</li><li>Internationale Schulen</li><li>Online-Nachhilfeplattformen</li></ul></div><div class=\"flex-1 bg-white p-4 rounded-md border border-sky-100\"><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Anforderungen:</h3><ul class=\"list-disc pl-6 text-gray-700\"><li>Bachelor-Abschluss</li><li>TEFL/TESOL/CELTA-Zertifikat</li><li>Muttersprachliche oder fließende Englischkenntnisse</li></ul></div></div><p class=\"text-gray-700\">Einige Schulen bieten auch Visumsponsoring und Unterkunft an.</p></div>"
+      },
+      {
+        "id": "Arbeitserlaubnis",
+        "icon": "🧾",
+        "title": "Gültigkeit und Erneuerung der Arbeitsgenehmigung",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Erste Arbeitserlaubnisse sind in der Regel <strong>1 Jahr</strong> gültig.</p><p>Sie können bei der ersten Verlängerung für <strong>2 Jahre</strong> und danach für <strong>3 Jahre</strong> verlängert werden.</p><p>Nach <strong>5 Jahren</strong> ununterbrochener Arbeit können Sie eine langfristige Aufenthaltserlaubnis beantragen.</p></div>"
+      },
+      {
+        "id": "Freiberuflich",
+        "icon": "🧑‍💼",
+        "title": "Können Ausländer in der Türkei freiberuflich oder per Fernzugriff arbeiten?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Technisch gesehen können Sie in der Türkei ohne eine entsprechende Genehmigung nicht freiberuflich oder aus der Ferne für internationale Kunden arbeiten. Viele Ausländer arbeiten jedoch im Rahmen einer kurzfristigen Aufenthaltsgenehmigung oder melden sich als Selbstständige an, was einen komplexen Prozess beinhaltet:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Eröffnung eines türkischen Unternehmens</li><li>Erteilung einer Steuernummer</li><li>Beantragung eines Geschäftsvisums oder einer Unternehmererlaubnis</li></ul></div>"
+      },
+      {
+        "id": "Sprache",
+        "icon": "💬",
+        "title": "Sprachbarriere: Ist Türkisch notwendig?",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Viele berufliche Tätigkeiten erfordern zumindest <strong>Grundkenntnisse der türkischen Sprache</strong>.</p><p>In den Bereichen Technik, Tourismus und Bildung ist es jedoch oft möglich, nur mit <strong>Englisch</strong> zu arbeiten.</p><p>Türkisch zu lernen verbessert die Integration und erhöht die Berufsaussichten.</p></div>"
+      },
+      {
+        "id": "Vernetzung",
+        "icon": "👥",
+        "title": "Netzwerkarbeit in der Türkei",
+        "content": "<div><p class=\"text-gray-700 mb-4\">In der Türkei ist die Vernetzung sehr wichtig. Besuchen Sie:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Expatentreffen</li><li>Branchenseminare</li><li>LinkedIn-Veranstaltungen und Treffen der türkischen Handelskammer</li></ul><p class=\"text-gray-700\">Persönliche Bekanntschaften und Empfehlungen haben oft mehr Gewicht als Kaltbewerbungen.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Abschließende Checkliste für eine Arbeitsaufnahme in der Türkei"
+    },
+    "checklist": [
+      "Polieren Sie Ihren Lebenslauf und passen Sie ihn an türkische Formate an",
+      "Bewerben Sie sich bei Unternehmen, die zur Einstellung von Ausländern berechtigt sind",
+      "Vorbereitung der erforderlichen Dokumente für die Visabearbeitung",
+      "Lernen Sie einige grundlegende türkische Redewendungen",
+      "Verstehen Sie Ihre Rechte nach türkischem Arbeitsrecht"
+    ],
+    "conclusion": {
+      "icon": "✈️",
+      "title": "Sind Sie bereit, in der Türkei zu arbeiten?",
+      "description": "Mit der richtigen Herangehensweise, Vorbereitung und Geduld ist es durchaus möglich, als Ausländer einen Job in der Türkei zu bekommen. Ganz gleich, ob Sie eine berufliche Veränderung, eine internationale Erfahrung oder einen langfristigen Umzug anstreben, die Türkei bietet ein einzigartiges Umfeld, das reich an Möglichkeiten und Kultur ist."
+    },
+    "accessibility": {
+      "sectionToggle": "Abschnitt umschalten: {Titel}"
+    }
+  },
+  "turkeyMovingCostsGuide": {
+    "title": "Wie viel kostet ein Umzug in die Türkei?",
+    "description": "Ein Umzug in die Türkei kann im Vergleich zu vielen westlichen Ländern erschwinglich sein. Hier finden Sie eine detaillierte Aufstellung der Kosten, die Sie bei einem Umzug in die Türkei erwarten können.",
+    "costSections": [
+      {
+        "id": "Visum-Residenz",
+        "icon": "🛂",
+        "title": "Visum & Aufenthaltsgenehmigung",
+        "amount": "$100-$600",
+        "details": "Beinhaltet Karte, Krankenversicherung, Visagebühr",
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "Gehäuse",
+        "icon": "🏠",
+        "title": "Gehäuse",
+        "amount": "$600-$1.200 im Voraus",
+        "details": "1-2 Monatskautionen + erste Monatsmiete",
+        "color": "bg-sky-600",
+        "subItems": [
+          {
+            "title": "Stadtzentrum (monatlich)",
+            "amount": "$300-$500"
+          },
+          {
+            "title": "Küsten-/Stadtgebiete (monatlich)",
+            "amount": "$200-$400"
+          }
+        ]
+      },
+      {
+        "id": "Versand",
+        "icon": "📦",
+        "title": "Versand (optional)",
+        "amount": "$2,000-$4,000",
+        "details": "Kleiner Container. Viele Auswanderer kaufen lieber lokale Möbel, um Kosten zu sparen.",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "Versorgungsunternehmen",
+        "icon": "💡",
+        "title": "Dienstprogramme & Internet-Einrichtung",
+        "amount": "$50-$150",
+        "details": "Kautionen und Einrichtungsgebühren",
+        "color": "bg-sky-500",
+        "subItems": [
+          {
+            "title": "Monatliche Rechnungen",
+            "amount": "$30-$60"
+          }
+        ]
+      },
+      {
+        "id": "Alltag",
+        "icon": "🛒",
+        "title": "Alltägliche Kosten",
+        "amount": "$230-$350 monatlich",
+        "color": "bg-sky-600",
+        "subItems": [
+          {
+            "title": "Lebensmittel",
+            "amount": "$200-$300/Monat"
+          },
+          {
+            "title": "Öffentliche Verkehrsmittel",
+            "amount": "$10-$30/Monat"
+          },
+          {
+            "title": "Handy & Internet",
+            "amount": "~$20/Monat"
+          }
+        ]
+      }
+    ],
+    "totalBudget": {
+      "icon": "🔢",
+      "title": "Schätzung insgesamt (Alleinreisender)",
+      "categories": [
+        {
+          "title": "Ohne Versand",
+          "amount": "$1,200-$2,500",
+          "description": "Einschließlich Visum, Wohnungskaution, erste Monatsmiete und Einrichtungskosten"
+        },
+        {
+          "title": "Mit Versand",
+          "amount": "$3,500-$6,000+",
+          "description": "Beinhaltet alle Kosten plus den Versand eines kleinen Containers mit Habseligkeiten"
+        }
+      ]
+    },
+    "moneySavingTips": {
+      "icon": "💰",
+      "title": "Tipps zum Geldsparen",
+      "tips": [
+        {
+          "title": "Möbel vor Ort kaufen",
+          "description": "Türkische Möbel sind erschwinglich und leicht erhältlich. Erwägen Sie nur den Versand des Nötigsten."
+        },
+        {
+          "title": "Wählen Sie Ihren Standort mit Bedacht",
+          "description": "In Gebieten außerhalb von Großstädten wie Istanbul kann der Wohnraum 30-50 % billiger sein."
+        },
+        {
+          "title": "Leichtes Reisen",
+          "description": "Jeder zusätzliche Koffer kann auf Flügen 50-100 Dollar kosten. Nehmen Sie nur mit, was Sie brauchen."
+        },
+        {
+          "title": "Saisonales Timing berücksichtigen",
+          "description": "In den Wintermonaten gibt es oft billigere Wohnungen und weniger Touristen."
+        }
+      ]
+    },
+    "conclusion": "Die Kosten für einen Umzug in die Türkei sind relativ erschwinglich im Vergleich zu einem Umzug in andere europäische oder nordamerikanische Länder. Mit der richtigen Planung und Budgetierung können Sie Ihren Umzug in die Türkei sowohl reibungslos als auch wirtschaftlich gestalten.",
+    "accessibility": {
+      "toggleSection": "Details für {title} umschalten Abschnitt"
+    }
+  },
+  "usTurkeyGuide": {
+    "header": {
+      "icon": "🇺🇸➡️🇹🇷",
+      "title": "Umzug in die Türkei aus den USA",
+      "subtitle": "Alles, was Sie wissen müssen",
+      "description": "Träumen Sie von einem Leben im Ausland mit reicher Kultur, malerischen Küsten und niedrigen Lebenshaltungskosten? Die Türkei wird immer mehr zu einem Top-Ziel für Amerikaner, die einen neuen Lebensstil suchen, sei es für den Ruhestand, zum Arbeiten in der Ferne oder für Abenteuer.",
+      "subDescription": "Hier finden Sie einen umfassenden Leitfaden für US-Bürger, die in die Türkei ziehen möchten, der von Visa-Optionen bis hin zu kulturellen Tipps alles abdeckt."
+    },
+    "quickNavigation": {
+      "title": "Schnelle Navigation"
+    },
+    "sections": [
+      {
+        "id": "Warum-Türkei",
+        "icon": "📌",
+        "title": "Warum in die Türkei ziehen?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Amerikaner zieht es aus vielen Gründen in die Türkei:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Erschwingliche Lebenshaltungskosten</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Mittelmeerischer Lebensstil und mildes Klima</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Reiche Geschichte und weltberühmte Küche</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Gastfreundliche lokale Kultur</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">-</span><span>Strategische Lage zwischen Europa und Asien</span></li></ul><p class=\"text-gray-700\">Ob Sie aus beruflichen Gründen umziehen, Studium, Ruhestand oder einfach nur, um ein langsameres Lebenstempo zu genießen, die Türkei bietet vielfältige Möglichkeiten für Expats.</p></div>"
+      },
+      {
+        "id": "visa-options",
+        "icon": "🛂",
+        "title": "Visa-Optionen für US-Bürger",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Als US-Bürger können Sie mit einem 90-tägigen Touristenvisum in die Türkei einreisen, aber für einen langfristigen Aufenthalt benötigen Sie eine der folgenden Möglichkeiten:</p><div class=\"space-y-4\"><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">1. Kurzfristige Aufenthaltsgenehmigung</h3><ul class=\"text-gray-700 space-y-1\"><li>- Ideal für digitale Nomaden, Fernarbeiter und erstmalige Expats</li><li>- Gültig für bis zu 1 Jahr, verlängerbar</li><li>- Erfordert den Nachweis einer Unterkunft, finanzielle Mittel und eine gültige Krankenversicherung</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">2. Studentenvisum und Aufenthaltsgenehmigung</h3><ul class=\"text-gray-700 space-y-1\"><li>- Für den Besuch einer Universität oder von Sprachkursen</li><li>- Erfordert einen Nachweis über die Immatrikulation und finanzielle Unterstützung</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">3. Arbeitsvisum</h3><ul class=\"text-gray-700 space-y-1\"><li>- Sie müssen ein Jobangebot von einem türkischen Arbeitgeber erhalten</li><li>- Der Arbeitgeber wird Ihre Arbeitserlaubnis sponsern</li><li>- Nach der Genehmigung, können Sie beim türkischen Konsulat in den USA ein Arbeitsvisum beantragen</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">4. Aufenthaltserlaubnis für Familien</h3><ul class=\"text-gray-700 space-y-1\"><li>- Für Ehegatten oder Kinder türkischer Staatsbürger oder ausländischer Einwohner</li><li>- Gültig bis zu 2 Jahren</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">5. Aufenthalt im Ruhestand oder auf dem Land</h3><p class=\"text-gray-700\">Wer in der Türkei eine Immobilie kauft (kein Mindestwert für den Aufenthalt), hat Anspruch auf eine kurzfristige Aufenthaltsgenehmigung</p></div></div></div>"
+      },
+      {
+        "id": "erforderliche Dokumente",
+        "icon": "🧾",
+        "title": "Erforderliche Dokumente für Relocation",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Für die Beantragung einer Aufenthaltsgenehmigung benötigen Sie in der Regel Folgendes:</p><div class=\"bg-sky-50 p-5 rounded-lg border border-sky-100\"><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Gültiger US-Reisepass (mit mindestens 6 Monaten Gültigkeit)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Türkische Steuer-ID-Nummer</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Unterkunftsnachweis (Mietvertrag oder Urkunde)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Krankenversicherung (lokal oder privat)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Passbilder (biometrisch)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Bankauszüge, aus denen ausreichende Geldmittel hervorgehen</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">-</span><span>Ausgefülltes Antragsformular für die Aufenthaltsgenehmigung</span></li></ul></div></div>"
+      },
+      {
+        "id": "beliebte-städte",
+        "icon": "🏙️",
+        "title": "Wo leben die meisten Amerikaner in der Türkei?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Zu den beliebtesten Städten unter amerikanischen Auswanderern gehören:</p><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4 mb-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🏖️</span>Antalya</h3><ul class=\"text-gray-700 space-y-1\"><li>- Küstenstadt mit sonnigem Wetter, Stränden, und erschwinglichem Leben</li><li>- Ideal für Rentner und digitale Nomaden</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🌆</span>Istanbul</h3><ul class=\"text-gray-700 space-y-1\"><li>- Wirtschaftliche und kulturelle Hauptstadt</li><li>- Ideal für Fachleute, Studenten, und diejenigen, die einen urbanen Lebensstil suchen</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🎓</span>Ankara</h3><ul class=\"text-gray-700 space-y-1\"><li>- Die Hauptstadt der Türkei, ruhiger als Istanbul, aber mit vielen Möglichkeiten</li><li>- Mehr bürokratische und diplomatische Karriereoptionen</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🏝️</span>Izmir</h3><ul class=\"text-gray-700 space-y-1\"><li>- Entspannte Küstenstadt an der Ägäis mit fortschrittlichem Flair</li><li>- Beliebt bei jungen Auswanderern und Unternehmern</li></ul></div></div></div>"
+      },
+      {
+        "id": "Lebenshaltungskosten",
+        "icon": "💸",
+        "title": "Vergleich der Lebenshaltungskosten: Türkei vs. USA",
+        "content": "<div><div class=\"overflow-x-auto mb-4\"><table class=\"min-w-full bg-white border border-sky-200 rounded-lg\"><thead><tr class=\"bg-sky-100\"><th class=\"py-3 px-4 text-left border-b border-sky-200\">Aufwand</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">Türkei (durchschnittl.)</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">USA (Durchschnitt))</th></tr></thead><tbody><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Miete (1BR Stadtmitte)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$300-$600/Monat</td><td class=\"py-3 px-4 border-b border-sky-100\">$1.500-$2,000</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Internet (monatlich)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$10-$20</td><td class=\"py-3 px-4 border-b border-sky-100\">$50-$70</td></tr><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Auswärts essen (für 2)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$15-$30</td><td class=\"py-3 px-4 border-b border-sky-100\">$50-$100</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Transport</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$10-$20/Monat</td><td class=\"py-3 px-4 border-b border-sky-100\">$70-$150</td></tr></tbody></table></div><p class=\"text-gray-700\">Die Türkei bietet deutlich niedrigere Lebenshaltungskosten, was sie für Fernarbeiter und Rentner attraktiv macht.</p></div>"
+      },
+      {
+        "id": "Gesundheitswesen",
+        "icon": "🩺",
+        "title": "Gesundheitswesen in der Türkei",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Die Türkei verfügt über ein starkes öffentliches Gesundheitssystem (SGK), und die private Gesundheitsversorgung ist hochwertig und erschwinglich. Für Bewerber um eine Aufenthaltsgenehmigung ist zunächst eine private Versicherung erforderlich.</p><p>Wenn Sie legal beschäftigt sind, haben Sie Anspruch auf eine öffentliche Krankenversicherung (SGK), die die meisten Behandlungen und Medikamente abdeckt.</p></div>"
+      },
+      {
+        "id": "Sprache",
+        "icon": "🗣️",
+        "title": "Tipps zu Sprache und Kultur",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Türkisch ist die Amtssprache, auch wenn viele Türken in den Städten Englisch sprechen.</p><p>Grundkenntnisse der türkischen Sprache helfen bei der Integration und im täglichen Leben.</p><p>Respektieren Sie die lokalen Bräuche, vor allem in Bezug auf Kleidung und Verhalten in der Öffentlichkeit in konservativen Gegenden.</p><p>Türken sind für ihre Gastfreundschaft bekannt - es ist üblich, zum Tee oder zum Essen eingeladen zu werden.</p></div>"
+      },
+      {
+        "id": "Umzug",
+        "icon": "📦",
+        "title": "Umzug und Versand aus den USA",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Ziehen Sie internationale Umzugsunternehmen in Betracht, die sich auf Umzüge in die Türkei spezialisiert haben.</p><p>Haushaltswaren können in der Regel zollfrei eingeführt werden, wenn Sie eine Aufenthaltsgenehmigung erhalten.</p><p>Haustiere können mit Impfpass und Mikrochip eingeführt werden - überprüfen Sie die aktuellen Bestimmungen.</p></div>"
+      },
+      {
+        "id": "Bankwesen",
+        "icon": "🏦",
+        "title": "Bankwesen & Finanzen",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Mit Ihrem Reisepass, Ihrer Steuernummer und Ihrer Adresse können Sie ein türkisches Bankkonto eröffnen.</p><p>Viele Expats unterhalten ein US-Bankkonto und nutzen Wise oder Revolut für Überweisungen.</p><p>Währung: Türkische Lira (TRY). US-Dollars werden nur an wenigen Orten akzeptiert, sind aber nicht weit verbreitet.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Letzte Checkliste für Amerikaner, die in die Türkei ziehen"
+    },
+    "checklist": [
+      {
+        "text": "Beantragen Sie eine Aufenthaltserlaubnis oder ein Arbeitsvisum",
+        "fullWidth": false
+      },
+      {
+        "text": "Sichere Unterkunft (kurz- oder langfristig)",
+        "fullWidth": false
+      },
+      {
+        "text": "Erhalten Sie eine türkische Steuernummer",
+        "fullWidth": false
+      },
+      {
+        "text": "Abschluss einer privaten Krankenversicherung",
+        "fullWidth": false
+      },
+      {
+        "text": "Lernen Sie wichtige türkische Redewendungen",
+        "fullWidth": false
+      },
+      {
+        "text": "Einrichten von Bank- und Mobilfunkdiensten",
+        "fullWidth": false
+      },
+      {
+        "text": "Schließen Sie sich Expat-Communities und Facebook-Gruppen an, um Unterstützung zu erhalten.",
+        "fullWidth": true
+      }
+    ],
+    "conclusion": {
+      "icon": "✈️",
+      "title": "Schlussfolgerung: Lohnt es sich, von den USA in die Türkei zu ziehen?",
+      "description": "Für viele Amerikaner bietet die Türkei eine bereichernde, erschwingliche und lebendige Alternative zum Leben in den Vereinigten Staaten. Mit der richtigen Vorbereitung, den richtigen rechtlichen Schritten und einer aufgeschlossenen Haltung kann ein Umzug in die Türkei der Beginn eines aufregenden neuen Kapitels sein."
+    },
+    "accessibility": {
+      "sectionToggle": "Abschnitt umschalten: {Titel}"
+    }
+  },
+  "movingWithPets": {
+    "title": "Umzug mit Haustieren in die Türkei",
+    "description": "Ihren pelzigen Freund mit in die Türkei zu nehmen ist durchaus möglich, aber Sie müssen bestimmte Regeln beachten, um einen reibungslosen Ablauf zu gewährleisten. Hier erfahren Sie, was Sie über den Umzug mit Ihren Haustieren in die Türkei wissen sollten.",
+    "navigation": {
+      "title": "Reiseführer für Haustiere",
+      "sections": [
+        {
+          "id": "Anforderungen",
+          "icon": "✅",
+          "title": "Wichtige Anforderungen"
+        },
+        {
+          "id": "Flughafen",
+          "icon": "🛬",
+          "title": "Am Flughafen"
+        },
+        {
+          "id": "Reisen",
+          "icon": "✈️",
+          "title": "Reisemöglichkeiten"
+        },
+        {
+          "id": "nach der Ankunft",
+          "icon": "🏠",
+          "title": "Nach der Ankunft"
+        },
+        {
+          "id": "Haustierfreundlich",
+          "icon": "🐶",
+          "title": "Haustierfreundliche Türkei"
+        }
+      ]
+    },
+    "sections": {
+      "requirements": {
+        "items": [
+          {
+            "title": "Mikrochip",
+            "content": "Ihr Haustier muss mit einem ISO 11784/11785-konformen Mikrochip ausgestattet sein."
+          },
+          {
+            "title": "Tollwut-Impfung",
+            "content": "Muss <span class=\"font-medium\">mindestens 30 Tage</span> vor der Reise und innerhalb der letzten <span class=\"font-medium\">12 Monate</span> erteilt worden sein."
+          },
+          {
+            "title": "Gesundheitszeugnis",
+            "type": "Liste",
+            "listItems": [
+              "- Ausgestellt von einem lizenzierten Tierarzt und genehmigt von der offiziellen Behörde Ihres Landes (wie USDA in den USA oder DEFRA im Vereinigten Königreich).",
+              "- Sollte innerhalb von <span class=\"font-medium\">10 Tagen</span> vor der Ankunft in der Türkei ausgestellt werden."
+            ]
+          },
+          {
+            "title": "Behandlung von Bandwürmern und Zecken",
+            "content": "Erledigt innerhalb von 5 Tagen nach der Reise.",
+            "note": "(nicht immer erforderlich, aber empfohlen)"
+          }
+        ]
+      },
+      "airport": {
+        "description": "Du wirst mit deinem Haustier durch <span class=\"font-medium\">Zölle gehen</span>.",
+        "documentsTitle": "Bringen Sie gedruckte Dokumente mit:",
+        "documents": [
+          "Mikrochip-geschützt",
+          "Aufzeichnungen über Impfungen",
+          "Gesundheitszeugnis",
+          "Heimtierausweis (wenn Sie aus der EU/dem Vereinigten Königreich kommen)"
+        ]
+      },
+      "traveling": {
+        "options": [
+          {
+            "icon": "🐱",
+            "ariaLabel": "kleines Haustier",
+            "title": "In-Kabine (kleine Haustiere)",
+            "description": "Die meisten Fluggesellschaften erlauben Haustiere unter 8 kg einschließlich Transportbehälter."
+          },
+          {
+            "icon": "🐕",
+            "ariaLabel": "großes Tier",
+            "title": "Fracht",
+            "description": "Größere Tiere müssen als Fracht fliegen."
+          },
+          {
+            "icon": "💰",
+            "ariaLabel": "Kosten",
+            "title": "Kosten",
+            "description": "$150-$1.000 je nach Fluggesellschaft und Größe."
+          }
+        ],
+        "warning": "Erkundigen Sie sich immer bei der jeweiligen Fluggesellschaft nach den Bestimmungen für Haustiere, da die Anforderungen und Kosten sehr unterschiedlich sein können."
+      },
+      "afterArrival": {
+        "intro": [
+          "Eine Quarantäne ist nicht erforderlich, wenn alle Dokumente in Ordnung sind.",
+          "Es wird empfohlen, Ihr Haustier bei einem örtlichen Tierarzt registrieren zu lassen."
+        ],
+        "recommendedSteps": {
+          "title": "Empfohlene erste Schritte",
+          "items": [
+            "Finden Sie einen Tierarzt in Ihrer Nähe und stellen Sie Ihr Haustier vor",
+            "Kauf von Medikamenten, die Ihr Haustier regelmäßig benötigt",
+            "Aktualisieren Sie das Halsband Ihres Haustieres mit Ihrer neuen türkischen Adresse und Telefonnummer"
+          ]
+        }
+      },
+      "petFriendly": {
+        "description": "Die türkischen Städte sind haustierfreundlich, insbesondere die Küstenstädte. Tierärzte sind erschwinglich, und Haustierbedarf ist überall erhältlich.",
+        "features": [
+          {
+            "icon": "🏥",
+            "title": "Tierärztliche Versorgung",
+            "description": "Tierarztbesuche kosten etwa 100-300 TL (5-15 $), so dass die regelmäßige Versorgung sehr erschwinglich ist."
+          },
+          {
+            "icon": "🏞️",
+            "title": "Hundeparks & Strände",
+            "description": "In vielen Küstenregionen gibt es hundefreundliche Strände, und in größeren Städten gibt es spezielle Haustierparks."
+          },
+          {
+            "icon": "🥫",
+            "title": "Zubehör für Haustiere",
+            "description": "Futter und Zubehör für Haustiere sind in Supermärkten, Zoohandlungen und im Online-Handel erhältlich."
+          },
+          {
+            "icon": "🏨",
+            "title": "Haustierfreundliche Unterkünfte",
+            "description": "Viele Hotels und Vermietungen akzeptieren Haustiere, fragen Sie aber immer vorher nach."
+          }
+        ]
+      }
+    },
+    "checklist": {
+      "title": "Checkliste für Haustierreisen",
+      "items": [
+        "Planen Sie mindestens 2 Monate vor der Reise einen Tierarztbesuch ein",
+        "Prüfen, ob der Mikrochip ISO-konform ist",
+        "Sicherstellen, dass die Tollwutimpfung auf dem neuesten Stand ist (mindestens 30 Tage vor der Reise)",
+        "Gesundheitsbescheinigung innerhalb von 10 Tagen vor der Abreise einholen",
+        "Buchen Sie einen haustierfreundlichen Transport bei der Fluggesellschaft",
+        "Kaufen Sie eine von der Fluggesellschaft zugelassene Transportbox für Ihr Haustier",
+        "Besorgen Sie sich Kopien aller Unterlagen und führen Sie diese während der Reise mit sich."
+      ]
+    },
+    "conclusion": {
+      "title": "Ein neues Abenteuer für Ihr Haustier wartet auf Sie!",
+      "description": "Mit der richtigen Vorbereitung kann die Einreise Ihres Haustieres in die Türkei zu einer reibungslosen Erfahrung werden. Die tierfreundliche Umgebung der Türkei wird Ihrem pelzigen Freund helfen, sich schnell an sein neues mediterranes Zuhause zu gewöhnen."
+    },
+    "accessibility": {
+      "sectionButton": "Navigieren Sie zu {title} Abschnitt"
+    }
+  },
+  "relocationRequirements": {
+    "title": "Grundlegende Anforderungen für die Umsiedlung in die Türkei",
+    "description": "Ganz gleich, ob Sie sich in der Türkei niederlassen wollen, um zu arbeiten, zu studieren, in den Ruhestand zu gehen oder Ihren Lebensstil zu ändern, es gibt bestimmte Schritte und Unterlagen, die Sie vorbereiten müssen. Hier finden Sie eine vollständige Aufschlüsselung der wesentlichen Anforderungen für eine legale und reibungslose Umsiedlung in die Türkei.",
+    "navigation": {
+      "title": "Schnelle Navigation",
+      "expandAll": "Alle erweitern",
+      "collapseAll": "Alle einklappen"
+    },
+    "sections": [
+      {
+        "id": "Reisepass",
+        "icon": "🛂",
+        "title": "Gültiger Reisepass",
+        "shortTitle": "Reisepass",
+        "content": [
+          {
+            "type": "Absatz",
+            "text": "Ihr Reisepass muss mindestens 6 Monate über Ihren geplanten Aufenthalt in der Türkei hinaus gültig sein. Für einige Nationalitäten kann eine längere Gültigkeit erforderlich sein, insbesondere wenn Sie eine langfristige Aufenthaltsgenehmigung beantragen."
+          }
+        ]
+      },
+      {
+        "id": "Visum",
+        "icon": "📝",
+        "title": "Einreisevisum (falls erforderlich)",
+        "shortTitle": "Visum",
+        "content": [
+          {
+            "type": "Absatz",
+            "text": "Je nach Ihrer Staatsangehörigkeit benötigen Sie möglicherweise:"
+          },
+          {
+            "type": "Liste",
+            "listType": "ungeordnet",
+            "items": [
+              "Ein Touristenvisum (einfache oder mehrfache Einreise)",
+              "Ein e-Visum (für die in Frage kommenden Länder online erhältlich)",
+              "Oder gar kein Visum für Kurzbesuche (visumfreie Länder)"
+            ]
+          },
+          {
+            "type": "Absatz",
+            "text": "Wenn Sie vorhaben, länger als 90 Tage zu bleiben, müssen Sie eine Aufenthaltsgenehmigung beantragen, sobald Sie in der Türkei sind."
+          }
+        ]
+      },
+      {
+        "id": "Adresse",
+        "icon": "🏠",
+        "title": "Türkische Adresse",
+        "shortTitle": "Adresse",
+        "content": [
+          {
+            "type": "Absatz",
+            "text": "Um eine Aufenthaltserlaubnis zu beantragen, müssen Sie eine ständige oder vorübergehende Adresse in der Türkei haben:"
+          },
+          {
+            "type": "Liste",
+            "listType": "ungeordnet",
+            "items": [
+              "Mietvertrag (notariell beglaubigt)",
+              "Immobilienbesitz (Eigentumsurkunde)",
+              "Hotelbuchungen (nur für kurzfristige Genehmigungen)"
+            ]
+          },
+          {
+            "type": "Absatz",
+            "text": "Alle Adressen müssen bei der örtlichen Bevölkerungsdirektion (Nüfus Müdürlüğü) registriert sein."
+          }
+        ]
+      },
+      {
+        "id": "Finanzen",
+        "icon": "💵",
+        "title": "Nachweis der finanziellen Stabilität",
+        "shortTitle": "Finanzen",
+        "content": [
+          {
+            "type": "Absatz",
+            "text": "Sie müssen nachweisen, dass Sie Ihren Lebensunterhalt in der Türkei bestreiten können. Der Betrag variiert, aber eine allgemeine Schätzung ist:"
+          },
+          {
+            "type": "Liste",
+            "listType": "ungeordnet",
+            "items": [
+              "Mindestens 500 $ pro Monat und Person",
+              "Bankauszüge, Rentenbelege, Einkommensnachweise oder Unterlagen des Sponsors sind zulässig"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Versicherung",
+        "icon": "🩺",
+        "title": "Krankenkasse",
+        "shortTitle": "Versicherung",
+        "content": [
+          {
+            "type": "Absatz",
+            "text": "Eine gültige Krankenversicherung ist für die meisten Aufenthaltsgenehmigungen obligatorisch:"
+          },
+          {
+            "type": "Liste",
+            "listType": "ungeordnet",
+            "items": [
+              "Türkische SGK (öffentliche Versicherung), wenn erwerbstätig",
+              "Private türkische Versicherung für Selbstzahler oder Rentner",
+              "Krankenversicherungspläne für internationale Studenten"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Steuernummer",
+        "icon": "🧾",
+        "title": "Steuernummer (Vergi Numarası)",
+        "shortTitle": "Steuernummer",
+        "content": [
+          {
+            "type": "Absatz",
+            "text": "Bevor Sie Mietverträge unterzeichnen, ein Bankkonto eröffnen oder Genehmigungen beantragen, müssen Sie eine türkische Steuernummer beantragen. Sie ist kostenlos und bei den örtlichen Finanzämtern (Vergi Dairesi) oder online erhältlich."
+          }
+        ]
+      },
+      {
+        "id": "Fotos",
+        "icon": "🖼️",
+        "title": "Biometrische Fotos",
+        "shortTitle": "Fotos",
+        "content": [
+          {
+            "type": "Absatz",
+            "text": "Aktuelle biometrische Fotos (innerhalb der letzten 6 Monate aufgenommen) sind erforderlich für:"
+          },
+          {
+            "type": "Liste",
+            "listType": "ungeordnet",
+            "items": [
+              "Aufenthaltsgenehmigungskarten",
+              "Visumanträge",
+              "Staatliche Registrierungen"
+            ]
+          },
+          {
+            "type": "Absatz",
+            "text": "Empfohlene Größe: 50x60 mm, mit weißem Hintergrund."
+          }
+        ]
+      },
+      {
+        "id": "Dokumente",
+        "icon": "📄",
+        "title": "Übersetzte und notariell beglaubigte Dokumente (falls zutreffend)",
+        "shortTitle": "Dokumente",
+        "content": [
+          {
+            "type": "Absatz",
+            "text": "Bestimmte Dokumente müssen ins Türkische übersetzt und notariell beglaubigt werden, vor allem, wenn Sie einen Antrag stellen:"
+          },
+          {
+            "type": "Liste",
+            "listType": "ungeordnet",
+            "items": [
+              "Arbeitserlaubnis",
+              "Familienzusammenführung",
+              "Staatsbürgerschaft"
+            ]
+          },
+          {
+            "type": "Liste",
+            "title": "Beispiele:",
+            "listType": "ungeordnet",
+            "items": [
+              "Heiratsurkunde",
+              "Geburtsurkunden für Kinder",
+              "Akademische Diplome oder Arbeitszeugnisse"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Aufenthaltsgenehmigung",
+        "icon": "🏢",
+        "title": "Antrag auf Aufenthaltsgenehmigung (für Langzeitaufenthalte)",
+        "shortTitle": "Aufenthaltstitel",
+        "content": [
+          {
+            "type": "Absatz",
+            "text": "Wenn Sie beabsichtigen, länger als 90 Tage zu bleiben:"
+          },
+          {
+            "type": "Schritte",
+            "steps": [
+              "Online-Antrag über die Göç İdaresi (Direktion für Migrationsverwaltung)",
+              "Buchen Sie einen Termin bei Ihrer örtlichen Einwanderungsbehörde",
+              "Bringen Sie alle Unterlagen mit und erscheinen Sie zum Vorstellungsgespräch"
+            ]
+          }
+        ]
+      },
+      {
+        "id": "Anmeldung",
+        "icon": "🌐",
+        "title": "Ihre Adresse anmelden und eine Aufenthaltskarte erhalten",
+        "shortTitle": "Anmeldung",
+        "content": [
+          {
+            "type": "Absatz",
+            "text": "Nach der Genehmigung:"
+          },
+          {
+            "type": "Liste",
+            "listType": "ungeordnet",
+            "items": [
+              "Sie bekommen eine Aufenthaltskarte (ikamet kartı) per Post zugeschickt",
+              "Sie müssen Ihre Adresse innerhalb von 20 Tagen beim Nüfus Müdürlüğü anmelden."
+            ]
+          }
+        ]
+      }
+    ],
+    "bonus": {
+      "icon": "🗣️",
+      "title": "Bonus: Lernen Sie Grundkenntnisse in Türkisch",
+      "description": "Das Erlernen von Türkisch-Grundkenntnissen ist zwar nicht gesetzlich vorgeschrieben, kann Ihnen aber den Übergang erheblich erleichtern. Es hilft bei:",
+      "benefits": [
+        "Lokale Bürokratie",
+        "Vermietung von Wohnungen",
+        "Einkaufen und Geselligkeit"
+      ]
+    },
+    "summary": {
+      "title": "Wichtigste Erkenntnisse",
+      "description": "Denken Sie an diese wesentlichen Punkte für eine erfolgreiche Umsiedlung in die Türkei:",
+      "keyPoints": [
+        "Gültiger Reisepass (mindestens 6 Monate)",
+        "Entsprechendes Visum oder Genehmigung",
+        "Eingetragene türkische Adresse",
+        "Nachweis der finanziellen Stabilität",
+        "Gültige Krankenversicherung",
+        "Türkische Steuernummer",
+        "Biometrische Fotos bereit",
+        "Bei Bedarf übersetzte Dokumente"
+      ]
+    },
+    "accessibility": {
+      "sectionButton": "Umschalten {Titel} Abschnitt"
+    }
+  },
+  "ukToTurkeyGuide": {
+    "title": "Umzug vom Vereinigten Königreich in die Türkei",
+    "subtitle": "Was Sie wissen müssen",
+    "description": "Die Türkei ist zu einem beliebten Ziel für britische Auswanderer geworden, die einen entspannten Lebensstil, niedrigere Lebenshaltungskosten und das ganze Jahr über Sonnenschein suchen. Ganz gleich, ob Sie planen, sich zur Ruhe zu setzen, in der Ferne zu arbeiten oder ein neues Kapitel im Ausland aufzuschlagen - dieser Leitfaden enthält alles, was Sie realistischerweise berücksichtigen müssen, wenn Sie aus dem Vereinigten Königreich in die Türkei ziehen.",
+    "navigation": {
+      "title": "Schnelle Navigation",
+      "sections": [
+        {
+          "id": "whyMove",
+          "icon": "🧳",
+          "title": "Warum ziehen die Briten in die Türkei?"
+        },
+        {
+          "id": "entryRequirements",
+          "icon": "🛂",
+          "title": "Einreisebestimmungen & Visabestimmungen"
+        },
+        {
+          "id": "longTermStay",
+          "icon": "🏠",
+          "title": "Langfristige Aufenthaltsmöglichkeiten für britische Bürger"
+        },
+        {
+          "id": "Eigenschaft",
+          "icon": "🏘️",
+          "title": "Kauf oder Miete von Immobilien"
+        },
+        {
+          "id": "costLiving",
+          "icon": "💷",
+          "title": "Vergleich der Lebenshaltungskosten"
+        },
+        {
+          "id": "Gesundheitswesen",
+          "icon": "🏥",
+          "title": "Zugang zum Gesundheitswesen"
+        },
+        {
+          "id": "dailyLife",
+          "icon": "📱",
+          "title": "Anpassungen an das tägliche Leben"
+        },
+        {
+          "id": "UmzugLogistik",
+          "icon": "🛫",
+          "title": "Umzugslogistik aus dem Vereinigten Königreich"
+        },
+        {
+          "id": "Herausforderungen",
+          "icon": "🧾",
+          "title": "Zu erwartende realistische Herausforderungen"
+        },
+        {
+          "id": "expatCommunities",
+          "icon": "👥",
+          "title": "Britische Expat-Gemeinschaften"
+        }
+      ]
+    },
+    "sections": {
+      "whyMove": {
+        "description": "Tausende britische Staatsangehörige nennen die Türkei heute ihr Zuhause, insbesondere in Städten wie Fethiye, Antalya, Istanbul und Bodrum. Die Attraktivität umfasst:",
+        "reasons": [
+          "Niedrigere Lebenshaltungskosten als im Vereinigten Königreich",
+          "Mediterranes Klima und Leben an der Küste",
+          "Herzliche Gastfreundschaft und starke Expat-Gemeinschaften",
+          "Möglichkeiten des Immobilienbesitzes",
+          "Langsameres, entspannteres Lebenstempo"
+        ],
+        "postBrexitNote": "Nach dem Brexit erfordert ein Umzug jedoch mehr Planung und Papierkram als früher."
+      },
+      "entryRequirements": {
+        "touristEntry": {
+          "title": "Touristischer Eintrag",
+          "description": "Bürger des Vereinigten Königreichs können die Türkei innerhalb eines Zeitraums von 180 Tagen für bis zu 90 Tage visumfrei besuchen. Wenn Sie jedoch einen längeren Aufenthalt oder einen dauerhaften Umzug planen, müssen Sie eine Aufenthaltsgenehmigung beantragen."
+        }
+      },
+      "longTermStay": {
+        "options": [
+          {
+            "title": "1. Kurzfristige Aufenthaltsgenehmigung (Ikamet)",
+            "description": "<span class=\"font-medium\">Gültig für 1 Jahr und verlängerbar</span><br/>Verbreitet bei digitalen Nomaden, Immobilienbesitzern und Rentnern",
+            "requirementsTitle": "Das brauchen Sie:",
+            "requirements": [
+              "Gültiger Reisepass",
+              "Türkische Steuer-ID",
+              "Nachweis der Unterkunft (Mietvertrag oder Eigentumsurkunde)",
+              "Kontoauszüge, aus denen hervorgeht, dass genügend Geldmittel vorhanden sind",
+              "Orts- oder Auslandskrankenversicherung"
+            ]
+          },
+          {
+            "title": "2. Arbeitsgenehmigung & Visum",
+            "steps": [
+              "Sie brauchen ein Stellenangebot von einem türkischen Unternehmen",
+              "Der Arbeitgeber beantragt die Arbeitserlaubnis in Ihrem Namen",
+              "Nach der Genehmigung beantragen Sie über das türkische Konsulat im Vereinigten Königreich ein Arbeitsvisum."
+            ]
+          },
+          {
+            "title": "3. Aufenthaltsgenehmigung für Familien",
+            "steps": [
+              "Für diejenigen, die einem türkischen Ehepartner oder Familienmitglied nachziehen",
+              "Gültig für bis zu 2 Jahre"
+            ]
+          },
+          {
+            "title": "4. Aufenthaltsgenehmigung für Studenten",
+            "description": "Wenn Sie an einer türkischen Universität studieren oder einen Langzeitsprachkurs machen"
+          }
+        ]
+      },
+      "property": {
+        "facts": [
+          "Ausländer, einschließlich britischer Staatsbürger, können legal Immobilien in der Türkei kaufen",
+          "Für die Erteilung eines Aufenthaltstitels ist kein Mindestwert erforderlich",
+          "Beliebte Gebiete für britische Käufer: Fethiye, Antalya, Kusadasi, Bodrum, Alanya",
+          "Die Miete ist erschwinglich: Sie können Wohnungen für £200-£500/Monat finden, je nach Lage."
+        ],
+        "tip": "<strong>Tipp:</strong> Arbeiten Sie immer mit einem seriösen Makler oder Anwalt zusammen, wenn Sie Verträge unterzeichnen oder eine Immobilie kaufen."
+      },
+      "costLiving": {
+        "table": {
+          "headers": {
+            "expense": "Ausgaben",
+            "turkey": "Türkei (Mittelwert)",
+            "uk": "UK (Durchschnitt)"
+          },
+          "rows": [
+            {
+              "expense": "Miete (1-Bett-Wohnung)",
+              "turkey": "£200-£400",
+              "uk": "£800-£1,200"
+            },
+            {
+              "expense": "Versorgungsunternehmen",
+              "turkey": "£30-£70/Monat",
+              "uk": "£150+/Monat"
+            },
+            {
+              "expense": "Mahlzeit im Restaurant",
+              "turkey": "£3-£6",
+              "uk": "£10-£25"
+            },
+            {
+              "expense": "Transportpass",
+              "turkey": "£10-£20/Monat",
+              "uk": "£60-£120/Monat"
+            }
+          ]
+        },
+        "conclusion": "Ihr Pfund reicht in der Türkei viel weiter - vor allem außerhalb der Großstädte."
+      },
+      "healthcare": {
+        "points": [
+          "Für Antragsteller auf eine Aufenthaltserlaubnis ist eine private Krankenversicherung erforderlich",
+          "Sobald Sie beschäftigt sind, haben Sie Anspruch auf die SGK (öffentliche Versicherung), die die meisten Behandlungen abdeckt.",
+          "Die private Gesundheitsversorgung ist erschwinglich, und viele Krankenhäuser sind international anerkannt.",
+          "Viele britische Expats entscheiden sich für eine Auslandskrankenversicherung, um mehr Flexibilität zu haben"
+        ]
+      },
+      "dailyLife": {
+        "aspects": [
+          {
+            "title": "Sprachbarriere",
+            "description": "Türkisch ist die offizielle Sprache. In den Touristen- und Expat-Gebieten wird Englisch gesprochen, aber das Erlernen von Türkisch-Grundkenntnissen ist sehr empfehlenswert."
+          },
+          {
+            "title": "Fahren",
+            "description": "Der britische Führerschein ist 6 Monate lang gültig. Danach müssen Sie einen türkischen Führerschein machen."
+          },
+          {
+            "title": "Währung",
+            "description": "Türkische Lira (TRY) - Die Wechselkurse schwanken, aber die Kostenvorteile liegen immer noch vor dem britischen Pfund."
+          },
+          {
+            "title": "Bankwesen",
+            "description": "Sie können ein türkisches Bankkonto mit einem Reisepass und dem Nachweis einer lokalen Adresse eröffnen. Onlinebanking ist weit verbreitet."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "points": [
+          "Sie können persönliche Gegenstände innerhalb von 6 Monaten nach Erhalt Ihrer Aufenthaltsgenehmigung zollfrei einführen",
+          "Internationale Umzugsunternehmen mit Erfahrung in UK-Türkei-Umzügen werden empfohlen",
+          "Haustiere sind willkommen, müssen aber mit einem Mikrochip versehen sein und über aktuelle Impfungen verfügen, einschließlich einer Bescheinigung über Tollwut."
+        ]
+      },
+      "challenges": {
+        "challenges": [
+          {
+            "title": "Bürokratie",
+            "description": "Aufenthaltsgenehmigungsverfahren können langsam und von Stadt zu Stadt uneinheitlich sein"
+          },
+          {
+            "title": "Volatilität der Wechselkurse",
+            "description": "Währungsabwertung kann sich auf Ersparnisse oder Renten auswirken"
+          },
+          {
+            "title": "Kulturelle Unterschiede",
+            "description": "Seien Sie aufgeschlossen gegenüber Veränderungen im Lebensstil, sozialen Normen und dem lokalen Tempo"
+          },
+          {
+            "title": "Leben auf dem Land und in der Stadt",
+            "description": "In ländlichen Gebieten gibt es möglicherweise weniger Englischsprachige und weniger moderne Annehmlichkeiten"
+          }
+        ]
+      },
+      "expatCommunities": {
+        "description": "In der Türkei gibt es große britische Gemeinden, vor allem in:",
+        "locations": [
+          "Fethiye",
+          "Didim",
+          "Bodrum",
+          "Marmaris",
+          "Antalya"
+        ],
+        "support": "Es gibt Facebook-Gruppen, lokale Treffen und von Briten geführte Unternehmen, die Ihnen das Einleben erleichtern."
+      }
+    },
+    "checklist": {
+      "title": "Letzte Checkliste vor dem Umzug in die Türkei",
+      "items": [
+        "Beantragen Sie die richtige Aufenthaltsgenehmigung oder das richtige Visum",
+        "Erlangung einer türkischen Steuernummer (Vergi Numarası)",
+        "Unterkunft und lokale SIM-Karte organisieren",
+        "Private Krankenversicherung abschließen",
+        "Lernen Sie grundlegende türkische Redewendungen",
+        "Treten Sie Expat-Gruppen bei, um Unterstützung und aktuelle Informationen zu erhalten",
+        "Benachrichtigung der britischen Behörden (HMRC, NHS usw.) über Ihren Umzug"
+      ]
+    },
+    "conclusion": {
+      "title": "Schlussfolgerung: Lohnt es sich, vom Vereinigten Königreich in die Türkei zu ziehen?",
+      "description": "Wenn Sie nach einem langsameren, sonnigeren Lebensstil suchen und mit dem Papierkram und den kulturellen Unterschieden klarkommen, ist die Türkei ein unglaublich lohnender Ort zum Leben. Mit niedrigeren Kosten und einer hohen Lebensqualität finden viele Briten die Türkei als perfektes langfristiges Ziel."
+    },
+    "accessibility": {
+      "sectionButton": "Navigieren Sie zu {title} Abschnitt"
+    }
+  },
+  "visaGuide": {
+    "title": "Visa- und Aufenthaltsoptionen für den Umzug in die Türkei",
+    "description": "Um in die Türkei zu ziehen, müssen Sie je nach Aufenthaltszweck das richtige Visum wählen. Die Türkei bietet verschiedene Visum- und Aufenthaltsgenehmigungsoptionen für Arbeitnehmer, Studenten, Rentner, Geschäftsleute und digitale Nomaden.",
+    "labels": {
+      "bestFor": "Am besten für",
+      "requirements": "Anforderungen",
+      "process": "Prozess",
+      "benefits": "Vorteile",
+      "options": "Optionen",
+      "validity": "Gültigkeit",
+      "renewable": "Erneuerbare Energien",
+      "yes": "Ja",
+      "no": "Nein",
+      "more": "mehr"
+    },
+    "controls": {
+      "expandAll": "Alle erweitern",
+      "collapseAll": "Alle einklappen"
+    },
+    "compare": {
+      "enable": "Visum vergleichen",
+      "exit": "Beenden des Vergleichsmodus",
+      "select": "Wählen Sie",
+      "selected": "Ausgewählte",
+      "table": {
+        "title": "Visa-Vergleich",
+        "headers": {
+          "type": "Visum Typ",
+          "validity": "Gültigkeit",
+          "renewable": "Erneuerbare Energien",
+          "bestFor": "Am besten für"
+        }
+      }
+    },
+    "visas": [
+      {
+        "id": "kurzfristig",
+        "icon": "🏠",
+        "title": "Kurzfristige Aufenthaltsgenehmigung (İkamet İzni)",
+        "subtitle": "Am beliebtesten bei Expats",
+        "validity": "1 Jahr",
+        "bestFor": [
+          "Digitale Nomaden",
+          "Entfernte Arbeitnehmer",
+          "Grundstückseigentümer",
+          "Touristen, die länger als 90 Tage bleiben",
+          "Menschen, die Optionen für einen langfristigen Aufenthalt prüfen"
+        ],
+        "requirements": [
+          "Gültiger Reisepass und Visum",
+          "Nachweis der finanziellen Mittel (ca. 500 $/Monat)",
+          "Türkische Adresse (Mietvertrag oder Eigentumsurkunde)",
+          "Private Krankenversicherung",
+          "Biometrische Fotos"
+        ],
+        "renewable": true
+      },
+      {
+        "id": "Studenten",
+        "icon": "🎓",
+        "title": "Studentenvisum und Aufenthaltsgenehmigung",
+        "subtitle": "Für akademische Zwecke",
+        "validity": "Dauer des Studiums",
+        "bestFor": [
+          "Studenten, die an türkischen Universitäten angenommen wurden",
+          "Sprachschüler"
+        ],
+        "requirements": [
+          "Zulassungsschreiben einer anerkannten türkischen Einrichtung",
+          "Nachweis ausreichender Mittel",
+          "Krankenkasse",
+          "Türkische Adresse"
+        ],
+        "process": [
+          "Beantragen Sie ein Studentenvisum bei einer türkischen Botschaft/Konsulat in Ihrem Land",
+          "Beantragen Sie bei Ihrer Ankunft eine Aufenthaltsgenehmigung für Studenten"
+        ],
+        "renewable": true
+      },
+      {
+        "id": "Arbeit",
+        "icon": "💼",
+        "title": "Arbeitsvisum und Arbeitsgenehmigung",
+        "subtitle": "Für Berufstätige",
+        "validity": "1-2 Jahre",
+        "bestFor": [
+          "Ausländer, die bei einem türkischen Unternehmen beschäftigt sind",
+          "Expats mit Stellenangeboten",
+          "Englischlehrer, Ingenieure, Fachkräfte im Gesundheitswesen"
+        ],
+        "requirements": [
+          "Stellenangebot eines registrierten türkischen Arbeitgebers",
+          "Gültiger Reisepass",
+          "Arbeitsvertrag",
+          "Bildungsdokumente (übersetzt und notariell beglaubigt)"
+        ],
+        "process": [
+          "Der Arbeitgeber stellt in Ihrem Namen einen Antrag beim türkischen Arbeitsministerium",
+          "Sie beantragen ein Arbeitsvisum bei der türkischen Botschaft",
+          "Nach der Ankunft erhalten Sie eine Aufenthaltserlaubnis zum Arbeiten"
+        ],
+        "renewable": true
+      },
+      {
+        "id": "Familie",
+        "icon": "👨‍👩‍👧‍👦",
+        "title": "Aufenthaltsgenehmigung für Familien",
+        "subtitle": "Für die Familienzusammenführung",
+        "validity": "bis zu 2 Jahren",
+        "bestFor": [
+          "Ehegatten türkischer Staatsbürger",
+          "Kinder von türkischen Staatsbürgern",
+          "Familienangehörige von Ausländern"
+        ],
+        "requirements": [
+          "Nachweis der familiären Bindungen (Heirats-/Geburtsurkunde)",
+          "Türkische Adresse",
+          "Einkommensnachweis des Sponsors",
+          "Krankenkasse"
+        ],
+        "renewable": true
+      },
+      {
+        "id": "Eigenschaft",
+        "icon": "🏘️",
+        "title": "Immobilieneigentum Aufenthaltsgenehmigung",
+        "subtitle": "Für Immobilieninvestoren",
+        "validity": "1 Jahr",
+        "bestFor": [
+          "Ausländer, die in der Türkei Immobilien besitzen",
+          "Immobilien-Investoren",
+          "Immobilien-Unternehmer"
+        ],
+        "requirements": [
+          "Tapu (Eigentumsurkunde) auf Ihren Namen",
+          "Mindestgrundstückswert von etwa 75.000 $ in Ballungsgebieten (kann je nach Region variieren)",
+          "Einkommensnachweis",
+          "Krankenkasse"
+        ],
+        "benefits": [
+          "Jährlich verlängerbar",
+          "Kann zu einem langfristigen Aufenthalt oder zur Staatsbürgerschaft führen"
+        ],
+        "renewable": true
+      },
+      {
+        "id": "Staatsbürgerschaft",
+        "icon": "🇹🇷",
+        "title": "Türkische Staatsbürgerschaft durch Investition",
+        "subtitle": "Schneller Weg zur Staatsbürgerschaft",
+        "validity": "Dauerhaft",
+        "bestFor": [
+          "Investoren und Unternehmer",
+          "Vermögende Privatpersonen",
+          "Geschäftsinhaber"
+        ],
+        "options": [
+          "Kauf einer Immobilie im Wert von mindestens 400.000 Dollar",
+          "500.000 $ bei einer türkischen Bank einzahlen",
+          "Schaffung von Arbeitsplätzen für mindestens 50 türkische Staatsbürger"
+        ],
+        "benefits": [
+          "Staatsbürgerschaft im Schnellverfahren innerhalb von 3-6 Monaten",
+          "Volle Rechte, einschließlich Reisepass und Stimmrecht"
+        ],
+        "renewable": false
+      },
+      {
+        "id": "langfristig",
+        "icon": "🌟",
+        "title": "Langfristige Aufenthaltsgenehmigung",
+        "subtitle": "Unbefristete Aufenthaltsmöglichkeit",
+        "validity": "Unbestimmt",
+        "bestFor": [
+          "Ausländer, die seit mindestens 8 Jahren ununterbrochen in der Türkei gelebt haben",
+          "Langfristig Aufenthaltsberechtigte, die einen dauerhaften Status anstreben"
+        ],
+        "requirements": [
+          "Kein Strafregister",
+          "Nachweis eines langfristigen Einkommens und einer Unterkunft",
+          "Keine Abhängigkeit von Sozialhilfe in den letzten 3 Jahren"
+        ],
+        "renewable": false
+      }
+    ],
+    "summary": {
+      "title": "Kurzreferenz-Tipps",
+      "tips": [
+        {
+          "title": "Früh beginnen",
+          "description": "Beginnen Sie mit der Beantragung Ihres Visums mindestens 3-6 Monate vor dem geplanten Umzugstermin."
+        },
+        {
+          "title": "Vorbereitung der Dokumente",
+          "description": "Stellen Sie sicher, dass alle Dokumente wie erforderlich übersetzt, notariell beglaubigt und apostilliert werden."
+        },
+        {
+          "title": "Finanzplanung",
+          "description": "Behalten Sie mehrere Monate vor der Antragstellung ausreichend Geld auf Ihrem Bankkonto."
+        },
+        {
+          "title": "Krankenkasse",
+          "description": "Schließen Sie eine gültige Krankenversicherung ab, bevor Sie einen Antrag auf eine Aufenthaltsgenehmigung stellen."
+        },
+        {
+          "title": "Adresse Registrierung",
+          "description": "Bevor Sie eine Aufenthaltsgenehmigung beantragen können, müssen Sie eine registrierte türkische Adresse haben."
+        },
+        {
+          "title": "Professionelle Hilfe",
+          "description": "Ziehen Sie in Erwägung, für komplexe Fälle einen Rechtsanwalt oder Einwanderungsberater zu beauftragen."
+        }
+      ]
+    }
+  }
+}

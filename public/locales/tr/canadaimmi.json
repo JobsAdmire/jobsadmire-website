@@ -1,0 +1,1728 @@
+{
+  "herosection": {
+    "badge": "Özel Yolculuklar",
+    "title": "Bir Sonraki Maceranızı Keşfedin",
+    "description": "İsteklerinize göre uyarlanmış premium seyahat paketlerimizle nefes kesici destinasyonları deneyimleyin ve unutulmaz anılar yaratın.",
+    "currentlyViewing": {
+      "label": "Şu Anda Görüntüleniyor"
+    },
+    "buttons": {
+      "primary": "Şimdi Keşfet",
+      "secondary": "Tüm Destinasyonları Görüntüle"
+    },
+    "destinationCounter": "Hedef {mevcut}/{toplam}",
+    "destinations": [
+      {
+        "img": "/images/ihc.png",
+        "name": "Calgary",
+        "country": "Kanada",
+        "alt": "Calgary, Kanada'nın güzel manzarası"
+      },
+      {
+        "img": "/images/ihm.png",
+        "name": "Montreal",
+        "country": "Kanada",
+        "alt": "Çarpıcı Montreal şehir manzarası, Kanada"
+      },
+      {
+        "img": "/images/iho.png",
+        "name": "Ottawa",
+        "country": "Kanada",
+        "alt": "Ottawa'nın doğal güzellikleri, Kanada"
+      },
+      {
+        "img": "/images/iht.png",
+        "name": "Toronto",
+        "country": "Kanada",
+        "alt": "İkonik Toronto silüeti, Kanada"
+      },
+      {
+        "img": "/images/ihv.png",
+        "name": "Vancouver",
+        "country": "Kanada",
+        "alt": "Nefes kesici Vancouver manzarası, Kanada"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableofcontents": {
+    "header": {
+      "title": "İçindekiler",
+      "subtitle": "Bölümler arasında gezinme"
+    },
+    "status": {
+      "currentlyReading": "Şu anda okuyor"
+    },
+    "footer": {
+      "sectionsCount": "keşfedilecek {say} bölümler"
+    },
+    "quickNav": {
+      "title": "Hızlı Navigasyon",
+      "buttonLabel": "Hızlı gezinme menüsü",
+      "footer": "Say} bölümleri arasında gezinme"
+    },
+    "accessibility": {
+      "openMenu": "Navigasyon menüsünü aç",
+      "closeMenu": "Gezinti menüsünü kapat"
+    },
+    "sections": [
+      {
+        "title": "Kanada Hakkında Gerçekler",
+        "id": 1
+      },
+      {
+        "title": "Kanada'ya Taşınmak için Vize Seçenekleri",
+        "id": 2
+      },
+      {
+        "title": "Kanada'ya Taşınmak için Gerekli Şartlar",
+        "id": 3
+      },
+      {
+        "title": "Kanada'da Yabancı Olarak İş Bulmak",
+        "id": 4
+      },
+      {
+        "title": "ABD'den Kanada'ya taşınmak",
+        "id": 5
+      },
+      {
+        "title": "İngiltere'den Kanada'ya taşınmak",
+        "id": 6
+      },
+      {
+        "title": "Kanada'ya taşınmak ne kadara mal olur?",
+        "id": 7
+      },
+      {
+        "title": "Evcil Hayvanlarla Kanada'ya Taşınma",
+        "id": 8
+      }
+    ]
+  },
+  "canadafacts": {
+    "navigation": {
+      "previous": "Önceki Gerçek",
+      "next": "Sonraki Gerçek"
+    },
+    "allFactsSection": {
+      "title": "Kanada Hakkında Tüm Gerçekler"
+    },
+    "accessibility": {
+      "selectFact": "Gerçek seçin",
+      "goToFact": "Gerçeğe git",
+      "previousFact": "Önceki gerçeğe git",
+      "nextFact": "Sonraki gerçeğe git"
+    },
+    "facts": [
+      {
+        "title": "Dünyanın En Uzun Kıyı Şeridi",
+        "description": "Kanada, Atlantik, Pasifik ve Arktik Okyanusları boyunca 202.080 kilometreden fazla uzanan dünyanın en uzun kıyı şeridine sahiptir.",
+        "icon": "🌊"
+      },
+      {
+        "title": "Dünyadaki Tatlı Suyun %20'sine Ev Sahipliği Yapıyor",
+        "description": "Kanada, sayısız göl, nehir ve buzullarında dünyadaki tatlı suyun yaklaşık %20'sini barındırmaktadır.",
+        "icon": "💧"
+      },
+      {
+        "title": "Kutup Ayısı Sermayesi",
+        "description": "Churchill, Manitoba, önemli bir kutup ayısı göç yolu üzerinde yer aldığı için 'Dünyanın Kutup Ayısı Başkenti' olarak bilinir.",
+        "icon": "🐻‍❄️"
+      },
+      {
+        "title": "Milli Parklar Ülkenin %8'ini Kaplıyor",
+        "description": "Kanada'nın milli parkları ve milli park rezervleri ülkenin yaklaşık %8'ini kapsamakta ve ekolojik çeşitliliği korumaktadır.",
+        "icon": "🏞️"
+      },
+      {
+        "title": "Poutine'in Mucitleri",
+        "description": "Patates kızartması üzerine lor peyniri ve et suyundan oluşan bu ikonik yemek 1950'lerin sonunda Quebec'te ortaya çıkmıştır.",
+        "icon": "🍟"
+      },
+      {
+        "title": "İki Resmi Dil",
+        "description": "Kanada'nın iki resmi dili vardır: İngilizce ve Fransızca. Kanadalıların yaklaşık %23'ü ana dilleri olarak Fransızca konuşmaktadır.",
+        "icon": "🗣️"
+      },
+      {
+        "title": "Akçaağaç Şurubu Başkenti",
+        "description": "Kanada dünyadaki akçaağaç şurubunun yaklaşık %71'ini üretmektedir ve Quebec dünyanın en büyük üreticisidir.",
+        "icon": "🍁"
+      },
+      {
+        "title": "Dünyanın En Büyük İkinci Ülkesi",
+        "description": "9,98 milyon kilometrekarelik yüzölçümüyle Kanada, toplam yüzölçümü bakımından dünyanın en büyük ikinci ülkesidir.",
+        "icon": "🗺️"
+      },
+      {
+        "title": "Kuzey Işıklarına Ev Sahipliği",
+        "description": "Kanada, özellikle Kuzeybatı Toprakları ve Yukon'da Aurora Borealis için en iyi görüntüleme fırsatlarından bazılarını sunmaktadır.",
+        "icon": "🌌"
+      },
+      {
+        "title": "Çok Kültürlü Toplum",
+        "description": "Kanada 200'den fazla etnik kökenden insana ev sahipliği yaparak dünyanın en çok kültürlü ülkelerinden biri haline gelmiştir.",
+        "icon": "🌍"
+      }
+    ]
+  },
+  "canadajobguide": {
+    "tableOfContents": {
+      "title": "Kılavuz İçeriği"
+    },
+    "accessibility": {
+      "toggleSection": "Bölüm değiştir"
+    },
+    "sections": {
+      "jobMarket": {
+        "title": "Kanada İş Piyasasını Anlamak",
+        "description": "Kanada, çeşitli sektörlerde çok çeşitli istihdam fırsatları sunmakta ve birçok sektör aktif olarak uluslararası yetenekler aramaktadır.",
+        "inDemandTitle": "Yabancılar için Talep Gören Sektörler:",
+        "sectors": [
+          {
+            "name": "Sağlık Hizmetleri",
+            "description": "Doktorlar, hemşireler, bakım çalışanları"
+          },
+          {
+            "name": "BT ve Teknoloji",
+            "description": "Yazılım mühendisleri, veri bilimcileri"
+          },
+          {
+            "name": "Mühendislik",
+            "description": "İnşaat, mekanik, elektrik"
+          },
+          {
+            "name": "Finans",
+            "description": "Bankacılık, fintech, muhasebe"
+          },
+          {
+            "name": "Nitelikli Zanaatlar",
+            "description": "Kaynakçılar, elektrikçiler, tesisatçılar"
+          },
+          {
+            "name": "Tarım",
+            "description": "Çiftlik yöneticileri, tarım uzmanları"
+          }
+        ],
+        "languageNote": "Kanada'nın iki resmi dili vardır: İngilizce ve Fransızca. İngilizce yeterliliği çoğu pozisyon için gereklidir, ancak özellikle Quebec ve federal hükümet rollerinde iki dillilik bir avantajdır."
+      },
+      "immigration": {
+        "title": "Kanada Göçmenlik Yolları",
+        "description": "Kanada, vasıflı çalışanlar için birden fazla göçmenlik yolu sunmakta olup, Express Entry birincil sistemdir.",
+        "expressEntry": {
+          "title": "Hızlı Giriş Sistemi",
+          "description": "Nitelikli göçmenler için ana yol:",
+          "points": [
+            "Federal Nitelikli İşçi Programı, Federal Nitelikli Esnaf Programı ve Kanada Deneyim Sınıfı için başvuruları yönetir",
+            "Adayları puanlayan Kapsamlı Sıralama Sistemine (CRS) dayanmaktadır",
+            "Yaş, eğitim, iş deneyimi, dil becerileri ve uyum faktörleri için verilen puanlar",
+            "Düzenli olarak yapılan çekilişler, en yüksek puanı alan adayları daimi ikamet başvurusunda bulunmaya davet ediyor"
+          ]
+        },
+        "otherPathways": {
+          "title": "Diğer Göçmenlik Yolları:",
+          "programs": [
+            {
+              "name": "İl Aday Programları (PNP'ler)",
+              "description": "İller yerel ekonomik ihtiyaçları karşılamak için aday gösterebilir"
+            },
+            {
+              "name": "Atlantik Göçmenlik Programı",
+              "description": "Atlantik eyaletlerinde çalışmak isteyenler için"
+            },
+            {
+              "name": "Kırsal ve Kuzey Göçmenlik Pilot Uygulaması",
+              "description": "Büyük şehir merkezlerinin dışındaki daha küçük topluluklar için"
+            },
+            {
+              "name": "Küresel Yetenek Akışı",
+              "description": "Teknoloji çalışanları ve yenilikçiler için hızlı çalışma izinleri"
+            },
+            {
+              "name": "Mezuniyet Sonrası Çalışma İzni",
+              "description": "Kanada'da eğitimini tamamlamış uluslararası öğrenciler için"
+            }
+          ]
+        },
+        "conclusion": "Kanada göçmenlik programlarının çoğu, herhangi bir işveren için çalışmanıza ve sonunda vatandaşlık başvurusunda bulunmanıza olanak tanıyan daimi ikametgahla sonuçlanır."
+      },
+      "jobOpportunities": {
+        "title": "Kanada'da İş Fırsatları Bulma",
+        "portalsTitle": "Popüler Kanada İş Portalları:",
+        "portals": [
+          "Gerçekten Kanada",
+          "Workopolis",
+          "LinkedIn",
+          "Canavar",
+          "İş Bankası",
+          "Glassdoor",
+          "Eluta",
+          "ZipRecruiter"
+        ],
+        "tipsTitle": "Profesyonel İpuçları:",
+        "tips": [
+          "İşgücü piyasası bilgileri ve fırsatları için resmi İş Bankası web sitesini kontrol edin",
+          "Uluslararası yetenekleri işe alma geçmişi olan işverenleri arayın",
+          "Özgeçmişinizi Kanada formatına uyarlayın (genellikle 1-2 sayfa, başarılara odaklanmış)",
+          "Yabancı niteliklere sahipseniz Kanada kimlik bilgileri değerlendirmelerini ekleyin",
+          "İl ve belediye göçmen hizmetleri kuruluşları aracılığıyla ağ"
+        ]
+      },
+      "noc": {
+        "title": "Ulusal Mesleki Sınıflandırma (NOC)",
+        "description": "Kanada, işleri kategorize etmek için Ulusal Mesleki Sınıflandırma (NOC) sistemini kullanmaktadır. NOC kodunuzu anlamak göçmenlik için çok önemlidir.",
+        "categories": {
+          "title": "TEER Kategorileri:",
+          "teer": [
+            {
+              "name": "TEER 0",
+              "description": "Yönetim meslekleri"
+            },
+            {
+              "name": "TEER 1",
+              "description": "Üniversite diploması gerektiren meslekler"
+            },
+            {
+              "name": "TEER 2",
+              "description": "Üniversite diploması veya çıraklık eğitimi gerektiren meslekler"
+            },
+            {
+              "name": "TEER 3",
+              "description": "Ortaokul ve/veya mesleğe özel eğitim gerektiren meslekler"
+            },
+            {
+              "name": "TEER 4",
+              "description": "Kısa süreli iş gösterimi gerektiren ve örgün eğitim gerektirmeyen meslekler"
+            },
+            {
+              "name": "TEER 5",
+              "description": "Kısa çalışma gösterimi gerektiren giriş seviyesi meslekler"
+            }
+          ]
+        },
+        "importance": {
+          "title": "Neden önemli?",
+          "points": [
+            "Çoğu vasıflı işçi programı TEER 0, 1, 2 veya 3 mesleklerini gerektirir",
+            "Belirli göçmenlik programları için uygunluğu belirler",
+            "Hızlı Giriş'teki CRS puanlarını etkiler",
+            "İş deneyiminizin iş teklifinizle eşleştiğini doğrulamaya yardımcı olur",
+            "Geçerli ücret oranlarını belirlemek için kullanılır"
+          ]
+        },
+        "findCode": "NOC kodunuzu resmi Göçmenlik, Mültecilik ve Vatandaşlık Kanada (IRCC) web sitesinde bulabilirsiniz."
+      },
+      "remoteWork": {
+        "title": "Kanada'da Uzaktan Çalışma Seçenekleri",
+        "intro": "Uzaktan çalışma Kanada'da özellikle teknoloji, finans ve yaratıcı sektörlerde giderek yaygınlaşmaktadır:",
+        "points": [
+          "Bir Kanada şirketi</span> için uzaktan <span class=\"font-medium\">çalışmak için yine de uygun çalışma iznine ihtiyacınız vardır",
+          "Küresel Yetenek Akışı, uzaktan roller de dahil olmak üzere teknoloji çalışanları için daha hızlı çalışma izinlerini kolaylaştırıyor",
+          "Birçok Kanadalı şirket artık sürekli uzaktan veya hibrit düzenlemeler sunuyor",
+          "Dijital Göçebe Vizesi: Kanada, 2024 yılında yabancı şirketler tarafından istihdam edilen uzaktan çalışanlar için yeni bir Dijital Göçebe vizesi başlattı"
+        ],
+        "taxConsiderations": {
+          "title": "Vergi Hususları:",
+          "points": [
+            "Kanada'da çalışmak sizi genellikle vergi mükellefi yapar",
+            "Potansiyel çifte vergilendirme sorunlarının farkında olun",
+            "Kanada'nın birçok ülke ile vergi anlaşması bulunmaktadır",
+            "Özel durumunuz için bir vergi uzmanına danışın"
+          ]
+        }
+      },
+      "teaching": {
+        "title": "Kanada'da Öğretmenlik",
+        "description": "Öğretmenlik, Kanada'da nitelikli uluslararası adaylar için iyi fırsatlar sunmaktadır.",
+        "k12": {
+          "title": "K-12 Öğretmenliği:",
+          "requirements": [
+            "Her eyalet kendi öğretmenlik sertifikasyonunu düzenler",
+            "Genel olarak Eğitim Lisansı veya eşdeğeri gerektirir",
+            "Yabancı kimlik belgelerinin il eğitim yetkilileri tarafından değerlendirilmesi gerekiyor",
+            "Fransızca daldırma öğretmenlerine yüksek talep var"
+          ]
+        },
+        "esl": {
+          "title": "ESL Öğretimi:",
+          "requirements": [
+            "TESL/TESOL sertifikası genellikle gereklidir",
+            "Dil okulları, toplum kolejleri ve yerleşim ajanslarındaki fırsatlar",
+            "Genellikle lisans derecesi gereklidir",
+            "Göçmen nüfusun yoğun olduğu bölgelerde talep yüksektir"
+          ]
+        },
+        "conclusion": "Birçok ilde, özellikle de öğretmen açığı olan alanlarda, nitelikli yabancı öğretmenlerin sertifikalandırılmasını hızlandırmak için özel programlar bulunmaktadır."
+      },
+      "resumeInterview": {
+        "title": "Kanada Özgeçmişleri ve Mülakatları",
+        "resume": {
+          "title": "Kanada Özgeçmiş Formatı:",
+          "points": [
+            "CV yerine \"özgeçmiş\" olarak adlandırılır",
+            "Tipik olarak maksimum 1-2 sayfa",
+            "Fotoğraf yok",
+            "Yaş, medeni durum veya din gibi kişisel bilgiler yok",
+            "Ters kronolojik sıra (en son deneyim önce)",
+            "Sadece görevlere değil, başarılara odaklanın",
+            "Varsa Kanada kimlik bilgileri değerlendirmesini ekleyin"
+          ]
+        },
+        "interview": {
+          "title": "Mülakat Beklentileri:",
+          "expectations": [
+            "Dakiklik esastır (10-15 dakika erken standarttır)",
+            "Sektöre bağlı olarak iş amaçlı gündelik veya iş amaçlı resmi",
+            "Davranışsal sorulara hazırlanın (\"Bana bir zamandan bahsedin...\")",
+            "Şirketi ve değerlerini iyice araştırın",
+            "Kanadalılar nezakete değer verir, bu nedenle nazik ama kendinden emin olun",
+            "Rol ve şirket kültürü hakkında düşünceli sorular hazırlayın"
+          ]
+        }
+      },
+      "networking": {
+        "title": "Kanada'da Ağ Oluşturma",
+        "description": "Birçok pozisyonun ilan edilmeden önce doldurulduğu Kanada iş piyasasında ağ kurmak çok önemlidir.",
+        "strategies": [
+          "Alanınızdaki profesyonel derneklere katılın",
+          "Sektör buluşmalarına, konferanslara ve iş fuarlarına katılın",
+          "İl göçmen yerleşim programlarına katılmak",
+          "Kanada'da okuduysanız mezun ağlarıyla bağlantı kurun",
+          "Kanada deneyimi kazanmak ve bağlantılar kurmak için gönüllü olun",
+          "Kanada pazarı için optimize edilmiş güçlü bir LinkedIn profili oluşturun"
+        ],
+        "resources": {
+          "title": "Önemli Yerleşim Kaynakları:",
+          "list": [
+            "Şehrinizdeki göçmenlere hizmet veren kuruluşlar",
+            "İl yeni gelenler hizmetleri",
+            "Sektöre özel mentorluk programları",
+            "Uluslararası profesyoneller için ağ kurma etkinlikleri",
+            "Kanada hükümeti tarafından finanse edilen istihdam danışmanlığı"
+          ]
+        }
+      }
+    },
+    "checklist": {
+      "title": "Kanada İş Arama Kontrol Listesi",
+      "categories": [
+        {
+          "title": "Başvurmadan Önce",
+          "items": [
+            "Yabancı kimlik bilgilerinizin değerlendirilmesini sağlayın (ECA)",
+            "Özgeçmişinizi Kanada standartlarına göre biçimlendirin",
+            "NOC kodunuzu ve TEER kategorinizi belirleyin",
+            "Gerekli dil sınavlarına girmek (IELTS/CELPIP/TEF)"
+          ]
+        },
+        {
+          "title": "Göçmenlik Adımları",
+          "items": [
+            "Uygunsa Express Entry profili oluşturun",
+            "İl aday programlarını araştırın",
+            "İşverene özel çalışma izni seçeneklerini kontrol edin",
+            "Uzlaşma için fon kanıtı hazırlayın"
+          ]
+        },
+        {
+          "title": "Yerleşim Hazırlıkları",
+          "items": [
+            "Hedef şehirlerdeki yaşam maliyetlerini araştırın",
+            "Yerleşim ajansları ile bağlantı kurun",
+            "Yeni gelenler için sosyal medya gruplarına katılın",
+            "Sağlık ve sosyal sistemler hakkında bilgi edinin"
+          ]
+        }
+      ]
+    }
+  },
+  "canadamovingcosts": {
+    "accessibility": {
+      "toggleSection": "için geçiş bölümü"
+    },
+    "costSections": [
+      {
+        "id": "visa-pr",
+        "icon": "🛂",
+        "title": "Vize ve Daimi İkamet",
+        "amount": "$1,500-$3,000",
+        "details": "Başvuru ücretleri, tıbbi sınavlar, dil testleri dahildir",
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "konut",
+        "icon": "🏠",
+        "title": "Konut",
+        "amount": "$2,000-$5,000 peşin",
+        "details": "İlk ve son ayın kirası + güvenlik depozitosu",
+        "subItems": [
+          {
+            "title": "Büyük şehirler (aylık)",
+            "amount": "$1,500-$3,000"
+          },
+          {
+            "title": "Daha küçük şehirler/kasabalar (aylık)",
+            "amount": "$800-$1,500"
+          }
+        ],
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "nakliye",
+        "icon": "📦",
+        "title": "Nakliye (İsteğe Bağlı)",
+        "amount": "$5,000-$10,000",
+        "details": "Küçük ila orta boy konteyner. Maliyetleri düşürmek için yerel mobilya seçeneklerini değerlendirin.",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "ULAŞIM",
+        "icon": "🚗",
+        "title": "Ulaşım",
+        "amount": "$500-$5,000",
+        "details": "Toplu taşıma kartı veya kullanılmış araba alımı",
+        "subItems": [
+          {
+            "title": "Aylık transit geçiş kartı",
+            "amount": "$90-$150"
+          },
+          {
+            "title": "Kullanılmış araba",
+            "amount": "$5,000-$15,000"
+          },
+          {
+            "title": "Araba sigortası (aylık)",
+            "amount": "$150-$300"
+          }
+        ],
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "yardımcı programlar",
+        "icon": "💡",
+        "title": "Yardımcı Programlar ve İnternet Kurulumu",
+        "amount": "$200-$400",
+        "details": "Bağlantı ücretleri ve depozitolar",
+        "subItems": [
+          {
+            "title": "Aylık kamu hizmetleri",
+            "amount": "$150-$300"
+          },
+          {
+            "title": "İnternet (aylık)",
+            "amount": "$60-$100"
+          },
+          {
+            "title": "Cep telefonu (aylık)",
+            "amount": "$50-$100"
+          }
+        ],
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "sağlık hizmetleri",
+        "icon": "🏥",
+        "title": "Sağlık Hizmeti Kapsamı",
+        "amount": "$0-$900",
+        "details": "Eyalete göre değişir. Bazılarında kamu sağlık hizmetleri için bekleme süreleri vardır.",
+        "subItems": [
+          {
+            "title": "Özel sigorta (bekleme süresi boyunca aylık)",
+            "amount": "$75-$150"
+          }
+        ],
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "her gün",
+        "icon": "🛒",
+        "title": "Günlük Maliyetler",
+        "amount": "Aylık 800-1,500 dolar",
+        "subItems": [
+          {
+            "title": "Bakkaliye",
+            "amount": "$400-$800/ay"
+          },
+          {
+            "title": "Dışarıda yemek",
+            "amount": "$200-$400/ay"
+          },
+          {
+            "title": "Eğlence",
+            "amount": "$100-$300/ay"
+          }
+        ],
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "KIŞ",
+        "icon": "❄️",
+        "title": "Kış İhtiyaçları",
+        "amount": "$500-$1,000",
+        "details": "Kışlık giysiler, botlar, aksesuarlar",
+        "color": "bg-sky-500"
+      }
+    ],
+    "totalCosts": {
+      "title": "Toplam Tahmini Maliyetler",
+      "categories": [
+        {
+          "title": "İlk Kurulum (Nakliye Olmadan)",
+          "amount": "$5,000-$10,000",
+          "description": "Vize ücretleri, ilk aylık konaklama, depozito, kışlık ekipman ve temel kurulum masrafları dahildir"
+        },
+        {
+          "title": "İlk Kurulum (Nakliye ile)",
+          "amount": "$10,000-$20,000+",
+          "description": "Tüm temel masraflar artı ev eşyalarının nakliye konteynerlerini içerir"
+        },
+        {
+          "title": "Aylık Giderler (Yaklaşık)",
+          "amount": "$2,000-$4,500",
+          "description": "Kira, kamu hizmetleri, bakkaliye, ulaşım ve diğer düzenli harcamaları içerir"
+        }
+      ]
+    },
+    "regionalCosts": {
+      "title": "Bölgesel Maliyet Değişimleri",
+      "categories": [
+        {
+          "title": "Yüksek Maliyet",
+          "cities": [
+            "Toronto",
+            "Vancouver",
+            "Victoria"
+          ]
+        },
+        {
+          "title": "Orta Maliyetli",
+          "cities": [
+            "Calgary",
+            "Montreal",
+            "Ottawa"
+          ]
+        },
+        {
+          "title": "Düşük Maliyet",
+          "cities": [
+            "Winnipeg",
+            "Quebec Şehri",
+            "Halifax"
+          ]
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Maliyet Tasarrufu Stratejileri",
+      "tips": [
+        {
+          "title": "İkincil Şehirleri Düşünün",
+          "description": "Toronto veya Vancouver yerine Montreal, Calgary veya Ottawa'da yaşamak konut maliyetlerini %30-40 oranında azaltabilir."
+        },
+        {
+          "title": "Kanada'da Mobilya Satın Alın",
+          "description": "Mobilyaları nakliye yerine IKEA'dan, ikinci el mağazalarından veya Facebook Marketplace'ten yerel olarak satın alın."
+        },
+        {
+          "title": "Toplu Taşıma",
+          "description": "Büyük şehirlerde toplu taşıma araçlarını kullanmak, araba sahibi olmaktan çok daha ekonomiktir."
+        },
+        {
+          "title": "İlkbahar/Yaz aylarında gelin",
+          "description": "Daha sıcak aylarda taşınmak, pahalı kışlık giysilere olan acil ihtiyacı azaltır."
+        }
+      ]
+    },
+    "conclusion": "Kanada'ya taşınmak önemli bir başlangıç yatırımı gerektirir, ancak yüksek yaşam kalitesine, evrensel sağlık hizmetlerine ve ekonomik fırsatlara erişim sağlar. Doğru planlama ve bütçeleme ile Kanada yaşamına geçişiniz başarılı ve ödüllendirici olabilir."
+  },
+  "ustocanadaguide": {
+    "navigation": {
+      "title": "Bölüme Atla"
+    },
+    "accessibility": {
+      "toggleSection": "için geçiş bölümü"
+    },
+    "sections": {
+      "whyCanada": {
+        "title": "Neden Kanada'ya Taşınmalı?",
+        "description": "Pek çok Amerikalı, zorlayıcı nedenlerden dolayı yeni evleri olarak Kanada'yı seçiyor:",
+        "reasons": [
+          "Evrensel sağlık sistemi",
+          "Yüksek yaşam kalitesi ve güvenlik",
+          "Güzel doğal manzaralar",
+          "Kültürel çeşitlilik ve kapsayıcılık",
+          "Güçlü sosyal destek sistemleri",
+          "Aile ziyareti için ABD'ye yakınlık"
+        ],
+        "conclusion": "İster profesyonel fırsatlar, eğitim, ailevi nedenler, ister yaşam tarzında bir değişiklik için taşınıyor olun, Kanada Amerikalılar için tanıdık ancak belirgin şekilde farklı deneyimler sunar."
+      },
+      "immigrationOptions": {
+        "title": "ABD Vatandaşları için Göçmenlik Seçenekleri",
+        "description": "Bir ABD vatandaşı olarak Kanada'ya göç etmek için çeşitli yollara sahipsiniz:",
+        "options": [
+          {
+            "title": "1. Hızlı Giriş Sistemi",
+            "points": [
+              "Vasıflı işçiler için puana dayalı sistem",
+              "Yaş, eğitim, iş deneyimi, dil becerilerini değerlendirir",
+              "Sıralama ve davetiyeler ile rekabetçi sistem",
+              "Daimi oturum iznine giden yol"
+            ]
+          },
+          {
+            "title": "2. İl Aday Programları (PNP)",
+            "points": [
+              "İller ve bölgeler yerel ihtiyaçlara göre aday belirler",
+              "Talep edilen beceriler için genellikle federal programlardan daha hızlı",
+              "Her ilin kendine özgü akışları ve gereksinimleri vardır",
+              "Kalıcı oturma iznine yol açabilir"
+            ]
+          },
+          {
+            "title": "3. Çalışma İzni",
+            "points": [
+              "Belirlenmiş Kanada kurumlarına kayıt için",
+              "Kabul mektubu, fon kanıtı ve temiz sicil gerektirir",
+              "Sınırlı çalışma izinleri içerir",
+              "Mezuniyet sonrası çalışma izni tamamlandıktan sonra kullanılabilir"
+            ]
+          },
+          {
+            "title": "4. Aile Sponsorluğu",
+            "points": [
+              "Kanada vatandaşlarının/PR'lerin eşleri, partnerleri, çocukları veya ebeveynleri için",
+              "Sponsor gelir gereksinimlerini karşılamalıdır",
+              "Daimi ikamete yol açar"
+            ]
+          },
+          {
+            "title": "5. NAFTA/USMCA Çalışma İzni",
+            "points": [
+              "Uygun meslekler için geçici çalışma izinleri",
+              "Kanadalı işverenden iş teklifi almış olmalı",
+              "Nispeten basit başvuru süreci",
+              "Kalıcı göçmenlik yolları için bir sıçrama tahtası olabilir"
+            ]
+          }
+        ]
+      },
+      "requiredDocuments": {
+        "title": "Göçmenlik için Gerekli Belgeler",
+        "description": "Belge gereklilikleri göçmenlik yoluna göre değişmekle birlikte tipik olarak şunları içerir:",
+        "documents": [
+          "Geçerli ABD pasaportu",
+          "Göçmenlik başvuru formları",
+          "Dil yeterlilik belgesi (İngilizce/Fransızca)",
+          "Eğitim kimlik bilgisi değerlendirmesi",
+          "İş deneyimi referansları ve kanıtları",
+          "Polis izin belgeleri",
+          "Tıbbi muayene sonuçları",
+          "Kendinizi desteklemek için fon kanıtı"
+        ],
+        "tip": {
+          "label": "Profesyonel ipucu:",
+          "text": "Bu belgeleri erkenden toplamaya başlayın. Eğitim değerlendirmeleri, dil testleri ve polis sertifikalarının alınması birkaç hafta sürebilir."
+        }
+      },
+      "popularCities": {
+        "title": "Amerikalı Gurbetçiler için Popüler Kanada Şehirleri",
+        "description": "Kanada'ya taşınan Amerikalılar genellikle bu popüler bölgeleri seçmektedir:",
+        "mainCities": [
+          {
+            "name": "Toronto",
+            "icon": "🌆",
+            "highlights": [
+              "Kanada'nın en büyük şehri ve finans merkezi",
+              "Güçlü iş piyasası ile son derece çeşitli",
+              "Canlı kültür ve eğlence ortamı",
+              "Daha yüksek yaşam maliyeti ancak daha fazla fırsat"
+            ]
+          },
+          {
+            "name": "Vancouver",
+            "icon": "🏞️",
+            "highlights": [
+              "Ilıman iklim ve çarpıcı doğal güzellikler",
+              "Güçlü teknoloji ve film endüstrileri",
+              "Dağlar ve okyanus ile açık hava yaşam tarzı",
+              "Konut maliyeti yüksek ancak yaşam kalitesi yüksek"
+            ]
+          },
+          {
+            "name": "Ottawa",
+            "icon": "🏛️",
+            "highlights": [
+              "Kanada'nın istikrarlı kamu istihdamına sahip başkenti",
+              "Toronto/Vancouver'a kıyasla uygun fiyatlı konutlar",
+              "Yüksek yaşam standardı ve güvenlik",
+              "Kültürel cazibe merkezlerine sahip iki dilli şehir"
+            ]
+          },
+          {
+            "name": "Montréal",
+            "icon": "🏛️",
+            "highlights": [
+              "Kuzey Amerika rahatlığı ile Avrupa cazibesi",
+              "Diğer büyük şehirlere göre daha düşük yaşam maliyeti",
+              "Zengin kültür, yemek ve sanat ortamı",
+              "Fransızca konuşuluyor ancak İngilizce yaygın olarak anlaşılıyor"
+            ]
+          }
+        ],
+        "emergingOptions": {
+          "title": "Ortaya Çıkan Seçenekler",
+          "cities": [
+            {
+              "name": "Halifax",
+              "description": "Büyüyen teknoloji sahnesi ile Atlantik kıyısı yaşam tarzı"
+            },
+            {
+              "name": "Calgary",
+              "description": "Güçlü ekonomi, Rockies'e yakınlık, düşük vergiler"
+            },
+            {
+              "name": "Waterloo",
+              "description": "Üniversiteler ve inovasyon ile teknoloji merkezi"
+            },
+            {
+              "name": "Victoria",
+              "description": "Ilıman iklim ve rahat ada yaşam tarzı"
+            }
+          ]
+        }
+      },
+      "costOfLiving": {
+        "title": "Yaşam Maliyeti Karşılaştırması: Kanada vs ABD",
+        "table": {
+          "headers": {
+            "expense": "Giderler",
+            "canada": "Kanada (ortalama)",
+            "usa": "ABD (ortalama)"
+          },
+          "rows": [
+            {
+              "expense": "Kiralık (1BR şehir merkezi)",
+              "canada": "C$1,300-$2,000/ay",
+              "usa": "$1,500-$2,500/ay"
+            },
+            {
+              "expense": "Sağlık Hizmetleri",
+              "canada": "Çoğunlukla il planları tarafından kapsanmaktadır",
+              "usa": "$300-$600/ay",
+              "canadaHighlight": true
+            },
+            {
+              "expense": "Kamu Hizmetleri (aylık)",
+              "canada": "C$150-$200",
+              "usa": "$150-$200"
+            },
+            {
+              "expense": "Ulaşım",
+              "canada": "C$100-$150/ay",
+              "usa": "$100-$150 + araba masrafları"
+            },
+            {
+              "expense": "Dışarıda yemek (2 kişilik)",
+              "canada": "C$60-$100",
+              "usa": "$50-$100"
+            },
+            {
+              "expense": "Üniversite Öğrenim Ücreti",
+              "canada": "C$7,000-$20,000/yıl",
+              "usa": "$10,000-$40,000/yıl",
+              "canadaHighlight": true
+            },
+            {
+              "expense": "Gelir Vergisi",
+              "canada": "Genel olarak daha yüksek",
+              "usa": "Genellikle daha düşük"
+            }
+          ]
+        },
+        "note": "Yaşam maliyeti şehirler arasında önemli farklılıklar göstermektedir. Vancouver ve Toronto, ABD'nin büyük şehirleriyle karşılaştırılabilecek en pahalı şehirlerdir; Kanada'nın diğer bölgeleri ise daha uygun fiyatlı yaşam olanakları sunmaktadır."
+      },
+      "healthcare": {
+        "title": "Kanada'da Sağlık Hizmetleri",
+        "description": "Kanada'nın evrensel sağlık sistemi Amerikalılar için önemli bir cazibe merkezidir. Her eyalet, temel tıbbi hizmetlerin çoğunu kapsayan kendi sağlık planını yönetir.",
+        "newcomersInfo": {
+          "title": "Yeni Gelenler için Sağlık Hizmetleri",
+          "points": [
+            "Daimi ikamet edenler il sağlık sigortasına hemen başvurabilirler",
+            "Bazı eyaletlerde bekleme süreleri vardır (3 aya kadar) - bu süre zarfında özel sigorta önerilir",
+            "Geçici ikamet edenlerin (çalışma/öğrenim izinleri) uygunluğu eyalete göre değişir",
+            "Tüm hizmetler kapsam dahilinde değildir (diş, görme, reçeteli ilaçlar)"
+          ]
+        },
+        "privateInsurance": "Özel sağlık sigortası mevcuttur ve diş bakımı, reçeteli ilaçlar ve görme bakımı gibi dahil edilmeyen hizmetler için il kapsamını tamamlamak üzere tavsiye edilir."
+      },
+      "language": {
+        "title": "Dil ve Kültürel İpuçları",
+        "description": "Birçok benzerliğe rağmen Kanada kültürünün kendine has özellikleri vardır:",
+        "details": {
+          "title": "Kanada İngilizcesi ve Kültürel Nüanslar",
+          "terms": {
+            "title": "Kanada İngilizcesi Terimleri:",
+            "examples": [
+              "Tuvalet (tuvalet değil)",
+              "Toque (kışlık şapka)",
+              "Loonie (1$ madeni para), Toonie (2$ madeni para)",
+              "Pop (soda değil)",
+              "Hidro (elektrik)",
+              "Double-double (2 krema, 2 şeker ile kahve)"
+            ]
+          },
+          "cultural": {
+            "title": "Kültürel Farklılıklar:",
+            "points": [
+              "Kanadalılar başlangıçta daha çekingen olma eğilimindedir",
+              "Nezaket ve kapsayıcılığa güçlü vurgu",
+              "Çok kültürlülük kutlanır ve benimsenir",
+              "Daha az çatışmacı iletişim tarzı",
+              "ABD'ye benzer bahşiş gelenekleri (%15-20)"
+            ]
+          }
+        },
+        "frenchNote": "Fransızca, İngilizcenin yanı sıra resmi bir dildir. Kanada'nın çoğu İngilizce konuşurken, Quebec ağırlıklı olarak Fransızcadır ve birçok federal hizmet iki dillidir."
+      },
+      "moving": {
+        "title": "Taşınma ve Sınır Ötesi Yer Değiştirme",
+        "description": "Sınır ötesine fiziksel taşınmanızı planlamak hazırlık gerektirir:",
+        "belongings": {
+          "title": "Eşyalarınızın Taşınması",
+          "points": [
+            {
+              "label": "Eşyalar ve kişisel eşyalar",
+              "description": "Uygun belgelerle gümrüksüz olarak ithal edilebilir"
+            },
+            {
+              "label": "Gerekli formlar",
+              "description": "Kişisel Eşya Muhasebe Belgesi (Form B4) ve ayrıntılı envanter listesi"
+            },
+            {
+              "label": "Nakliye şirketleri",
+              "description": "ABD-Kanada taşınmalarında deneyimli olanları seçin"
+            },
+            {
+              "label": "Kısıtlı ürünler",
+              "description": "Bazı gıdalar, bitkiler, ateşli silahlar kısıtlanmış veya yasaklanmıştır"
+            }
+          ]
+        },
+        "vehicles": {
+          "title": "Araçların Getirilmesi",
+          "points": [
+            "Araçlar Kanada güvenlik ve emisyon standartlarını karşılamalıdır",
+            "İthalat süreci formlar, denetim ve olası değişiklikler gerektirir",
+            "Maliyete RIV ücreti, vergiler ve olası gümrük vergisi dahildir",
+            "ABD'deki aracınızı satıp yerine Kanada'dan araç almayı düşünün"
+          ]
+        },
+        "note": "Ne getireceğinizi dikkatlice düşünün. Kanada metrik sistemi kullanır ve ABD gibi 120V elektriğe sahiptir, bu nedenle çoğu elektronik dönüştürücü olmadan çalışacaktır."
+      },
+      "banking": {
+        "title": "Bankacılık ve Finans",
+        "description": "Kanada'daki finansal yaşamınızı düzenlemek bir öncelik olmalıdır:",
+        "bankingInfo": {
+          "title": "Kanada'da Bankacılık",
+          "points": [
+            "Başlıca bankalar: RBC, TD, Scotiabank, BMO, CIBC",
+            "Azaltılmış gereksinimlerle yeni gelen bankacılık paketleri mevcuttur",
+            "Gerekli belgeler: göçmenlik belgeleri, pasaport, adres belgesi",
+            "Sınır ötesi bankacılık seçenekleri aracılığıyla varıştan önce hesap açmayı düşünün"
+          ]
+        },
+        "financialConsiderations": {
+          "title": "Finansal Hususlar",
+          "points": [
+            "ABD vatandaşları ikametgahlarına bakılmaksızın ABD vergilerini beyan etmelidir",
+            "Kanada-ABD vergi anlaşması çifte vergilendirmeyi önlemeye yardımcı oluyor",
+            "Döviz transferleri için Wise veya OFX gibi hizmetleri düşünün",
+            "Kredi geçmişi transfer edilmez - Kanada kredi geçmişi oluşturun",
+            "Kanada emeklilik hesaplarının (RRSP, TFSA) ABD vergi etkileri vardır"
+          ]
+        },
+        "recommendation": "Devam eden ABD mali yükümlülükleri için ABD bankacılık ilişkilerinin sürdürülmesi tavsiye edilir. Mali durumunuzu optimize etmek için bir sınır ötesi vergi uzmanı ile çalışmayı düşünün."
+      }
+    },
+    "checklist": {
+      "title": "Amerikalılar için Taşınma Öncesi Kontrol Listesi",
+      "items": [
+        "Göçmenlik yolunuzu belirleyin",
+        "Gerekirse dil sınavlarına girin (IELTS/CELPIP)",
+        "Eğitim Kimlik Değerlendirmesi (ECA) alın",
+        "Sınır ötesi bankacılık için düzenleme",
+        "Sağlık sigortası seçeneklerini araştırın",
+        "Eşyaların ayrıntılı bir envanterini oluşturun",
+        "Sınır ötesi vergi uzmanına danışın",
+        "Hedeflediğiniz şehirdeki konutları araştırın",
+        "Çevrimiçi Kanadalı göçmen topluluklarına ve forumlarına katılın"
+      ]
+    },
+    "resources": {
+      "title": "Yararlı Kaynaklar",
+      "categories": [
+        {
+          "title": "Resmi Bilgiler",
+          "items": [
+            "Kanada Göçmenlik, Mültecilik ve Vatandaşlık",
+            "İl Göçmenlik Programları",
+            "Kanada'daki ABD Büyükelçiliği ve Konsoloslukları"
+          ]
+        },
+        {
+          "title": "Gurbetçi Toplulukları",
+          "items": [
+            "Kanada'daki Amerikalılar Facebook Grupları",
+            "InterNations Kanada Şubeleri",
+            "Şehre özgü yeni gelenler dernekleri"
+          ]
+        },
+        {
+          "title": "Pratik Hizmetler",
+          "items": [
+            "Sınır ötesi taşıma şirketleri",
+            "Konut web siteleri (Realtor.ca, Kijiji)",
+            "Sınır ötesi vergi uzmanları"
+          ]
+        }
+      ]
+    },
+    "finalTips": {
+      "title": "Yeni Kanadalılar için Son İpuçları",
+      "categories": [
+        {
+          "title": "Başlarken",
+          "tips": [
+            "Varıştan hemen sonra Sosyal Sigorta Numaranız (SIN) için başvurun",
+            "Uygun olur olmaz il sağlık sigortasına kaydolun",
+            "Ev ararken geçici konaklamayı göz önünde bulundurun"
+          ]
+        },
+        {
+          "title": "Entegrasyon İpuçları",
+          "tips": [
+            "Kanada kışını uygun kıyafetler ve aktivitelerle kucaklayın",
+            "Yeni gelenler için mevcut olan yerleşim hizmetlerini kullanın",
+            "Kredi geçmişi oluşturma ve kendinizi kanıtlama konusunda sabırlı olun"
+          ]
+        }
+      ],
+      "conclusion": "Yeni Kanada maceranız sizi bekliyor! Doğru planlama ve hazırlık ile ABD'den Kanada'ya geçişiniz heyecan verici ve ödüllendirici bir deneyim olabilir."
+    }
+  },
+  "movingwithpets": {
+    "navigation": {
+      "title": "Navigasyon Kılavuzu"
+    },
+    "accessibility": {
+      "toggleSection": "için geçiş bölümü"
+    },
+    "sections": {
+      "requirements": {
+        "title": "Giriş Koşulları",
+        "steps": [
+          {
+            "title": "Mikroçip",
+            "description": "Tüm evcil hayvanlara ISO standardında (11784/11785) bir mikroçip takılmış olmalıdır."
+          },
+          {
+            "title": "Kuduz Aşısı",
+            "description": "Evcil hayvanlar girişten <span class=\"font-medium\">en az 30 gün</span> önce kuduz aşısı olmalıdır ve aşı varışta <span class=\"font-medium\">geçerli olmalıdır</span>."
+          },
+          {
+            "title": "Veterinerlik Sertifikası",
+            "details": [
+              "Kendi ülkenizdeki lisanslı bir veteriner hekim tarafından düzenlenmiş olmalıdır.",
+              "Hükümet yetkilisi tarafından onaylanmalıdır (ABD'de USDA gibi).",
+              "Kanada'ya girişten önceki <span class=\"font-medium\">14 gün</span> içinde düzenlenmelidir."
+            ]
+          }
+        ],
+        "importantNote": {
+          "title": "Önemli Not",
+          "text": "Birçok ülkenin aksine Kanada, <span class=\"font-medium\">tüm belge gerekliliklerini karşılayan evcil hayvanlar için karantina</span> istemez."
+        }
+      },
+      "dogSpecific": {
+        "title": "Köpeğe Özel Kurallar",
+        "breedRestrictions": {
+          "title": "Irk Kısıtlamaları",
+          "description": "Kanada'da saldırgan olduğu düşünülen bazı köpek ırklarına yönelik kısıtlamalar bulunmaktadır. Bu düzenlemeler eyalete ve belediyeye göre değişmektedir.",
+          "restrictedTitle": "Bazı Bölgelerde Kısıtlanmıştır:",
+          "breeds": [
+            "Pit Bull Teriyerleri",
+            "Staffordshire Boğa Teriyerleri",
+            "Amerikan Staffordshire Teriyerleri",
+            "Rottweiler cinsi köpekler (bazı bölgelerde)"
+          ],
+          "note": "Köpeğiniz potansiyel olarak kısıtlanmış bir cinse aitse, gideceğiniz il ve şehri kontrol edin."
+        },
+        "commercialDogs": {
+          "title": "Ticari Köpekler (8 Aydan Küçük)",
+          "description": "Ticari amaçlarla (yetiştirme, gösteri, yeniden satış) ithal edilen 8 aylıktan küçük köpeklerin ek gereksinimleri vardır. Bu köpeklerin Kanada Gıda Denetim Ajansı'ndan ithalat izni alması gerekir."
+        }
+      },
+      "catSpecific": {
+        "title": "Kedilere Özel Kurallar",
+        "goodNews": "İyi haber! Kanada, diğer birçok ülkeye kıyasla kedi ithalatı için nispeten basit gerekliliklere sahiptir.",
+        "basicRequirements": {
+          "title": "Kediler için Temel Gereksinimler",
+          "requirements": [
+            "Mikroçip (ISO standardı)",
+            "Kuduz aşısı (girişten en az 30 gün önce)",
+            "Veteriner sağlık sertifikası"
+          ]
+        },
+        "noBreedRestrictions": "Köpeklerin aksine, Kanada'da kediler için herhangi bir cins kısıtlaması yoktur."
+      },
+      "travelOptions": {
+        "title": "Seyahat Seçenekleri",
+        "options": [
+          {
+            "title": "Kabin İçi Seyahat",
+            "description": "8-10 kg'ın altındaki evcil hayvanlar (taşıyıcı dahil) kabinde seyahat edebilir. Taşıyıcı önünüzdeki koltuğun altına sığmalıdır.",
+            "fee": "Ücret: Her yön için 50-125 CAD",
+            "icon": "🧳",
+            "ariaLabel": "kabin"
+          },
+          {
+            "title": "Kontrol Edilmiş Bagaj",
+            "description": "Kabin için çok büyük ancak 32 kg'ın altındaki evcil hayvanlar check-in bagajı olarak seyahat edebilir.",
+            "fee": "Ücret: Her yön için 100-250 CAD",
+            "icon": "🧴",
+            "ariaLabel": "kontrol edi̇lmi̇ş bagaj"
+          },
+          {
+            "title": "Hava Kargo",
+            "description": "Çok büyük evcil hayvanlar veya evcil hayvan izni olmayan güzergahlarda seyahat edenler kargo olarak gitmelidir.",
+            "fee": "Ücret: Her yön için 400-1,000 CAD+",
+            "icon": "📦",
+            "ariaLabel": "kargo"
+          }
+        ],
+        "warning": "Evcil hayvan yerleri sınırlı olduğundan her zaman havayolu şirketinden çok önceden rezervasyon yaptırın. Havayollarının farklı politikaları ve kısıtlamaları vardır, özellikle de nefes alma endişeleri nedeniyle yasaklanabilecek kalkık burunlu ırklar için."
+      },
+      "afterArrival": {
+        "title": "Varıştan Sonra",
+        "atTheBorder": {
+          "title": "Sınırda",
+          "description": "Varışta, bir Kanada Sınır Hizmetleri Ajansı (CBSA) görevlisi evcil hayvanınızın belgelerini inceleyecektir. Şunları yaptığınızdan emin olun:",
+          "steps": [
+            "Evcil hayvanınızı gümrük yetkililerine beyan edin",
+            "Tüm orijinal belgeleri hazır bulundurun",
+            "Evcil hayvanınızın olası muayenesine hazırlıklı olun"
+          ]
+        },
+        "firstWeekChecklist": {
+          "title": "İlk Hafta Kontrol Listesi",
+          "items": [
+            {
+              "title": "1. Yerel Bir Veteriner Hekim Bulun",
+              "description": "İlk ay içinde bir kontrol muayenesi planlayın."
+            },
+            {
+              "title": "2. Belediyeye kayıt olun",
+              "description": "Kanada'nın birçok şehrinde evcil hayvanların ruhsatlandırılması zorunludur."
+            },
+            {
+              "title": "3. Mikroçip Bilgilerini Güncelleyin",
+              "description": "Adresi yeni Kanada adresinizle değiştirin."
+            },
+            {
+              "title": "4. Evcil Hayvan Sigortası",
+              "description": "Kanada evcil hayvan sigortası yaptırmayı düşünün."
+            }
+          ]
+        }
+      },
+      "canadianClimate": {
+        "title": "Kanada İklimi",
+        "description": "Kanada'nın iklimi bölgelere ve mevsimlere göre büyük farklılıklar gösterir. Bu durum, özellikle sıcak iklimlerden gelen evcil hayvanlar için önemli bir husustur.",
+        "seasons": [
+          {
+            "title": "Kış Hazırlıkları",
+            "icon": "❄️",
+            "tips": [
+              "Yürüyüş yolları için evcil hayvanlar için güvenli buz eritici",
+              "Patileri tuz ve buzdan korumak için patikler",
+              "Kısa tüylü ırklar için paltolar/kazaklar",
+              "Aşırı soğukta sınırlı açık hava süresi"
+            ]
+          },
+          {
+            "title": "Yaz Aylarında Dikkat Edilmesi Gerekenler",
+            "icon": "☀️",
+            "tips": [
+              "Evcil hayvanları asla park halindeki arabalarda bırakmayın",
+              "Sıcak çarpması belirtilerine dikkat edin",
+              "Kene ve pire önleme",
+              "Tatlı su ve gölgeye erişim"
+            ]
+          }
+        ],
+        "warning": "<strong>Uyarı:</strong> Bulldog, Pug ve İran kedisi gibi brakisefalik (düz yüzlü) ırklar aşırı sıcaklıklarla mücadele edebilir. Bu ırklar için ekstra önlemler alın."
+      },
+      "petFriendly": {
+        "title": "Evcil Hayvan Dostu Kanada",
+        "description": "Kanada, mükemmel veteriner bakımı ve birçok evcil hayvan dostu alanıyla genellikle evcil hayvan dostudur.",
+        "aspects": [
+          {
+            "title": "Veteriner Bakımı",
+            "icon": "🏥",
+            "description": "Yüksek kaliteli ancak pahalı olabilir. Ortalama check-up 75-150 CAD tutarındadır.",
+            "additionalInfo": "Evcil hayvan sigortasının aylık maliyeti 25-80 CAD civarındadır."
+          },
+          {
+            "title": "Parklar ve Rekreasyon",
+            "icon": "🏞️",
+            "description": "Çoğu şehirde tasmasız köpek parkları ve evcil hayvan dostu parkurlar bulunmaktadır.",
+            "additionalInfo": "Milli parkların belirli evcil hayvan kuralları vardır - ziyaret etmeden önce kontrol edin."
+          },
+          {
+            "title": "Evcil Hayvan Malzemeleri",
+            "icon": "🥫",
+            "description": "Başlıca zincirler arasında PetSmart, Canadian Tire ve Pet Valu bulunmaktadır. Çevrimiçi seçenekler arasında Amazon.ca ve Chewy.ca bulunmaktadır."
+          },
+          {
+            "title": "Evcil Hayvan Dostu Konutlar",
+            "icon": "🏨",
+            "description": "Bazı kiralık mülkler evcil hayvanları kısıtlar. Ev ararken \"evcil hayvan dostu\" tanımlamalarına bakın.",
+            "additionalInfo": "Evcil hayvan depozitoları yaygındır (200-500 CAD)."
+          }
+        ]
+      }
+    },
+    "checklist": {
+      "title": "Evcil Hayvan Seyahat Kontrol Listesi",
+      "items": [
+        "Evcil hayvanınızın Kanada'nın giriş koşullarını karşıladığını doğrulayın (seyahatten en az 3 ay önce)",
+        "Mikroçipin ISO standartlarına uygun olduğundan emin olun",
+        "Kuduz aşısını planlayın (seyahatten en az 30 gün önce)",
+        "Evcil hayvan dostu ulaşım için rezervasyon yaptırın",
+        "Havayolu onaylı evcil hayvan taşıyıcısı satın alın ve evcil hayvanınızı buna alıştırın",
+        "Veteriner sağlık sertifikası alın (seyahatten sonraki 14 gün içinde)",
+        "Evcil hayvanınızın temel ihtiyaçlarını (yiyecek, ilaç, konfor malzemeleri) yanınıza alın",
+        "Tüm belgelerin kopyalarını alın ve yanınızda bulundurun"
+      ]
+    }
+  },
+  "relocationrequirements": {
+    "introduction": "Kanada, çeşitli göçmenlik yolları aracılığıyla her yıl binlerce yeni geleni ağırlamaktadır. Kanada'da çalışmayı, okumayı, ailenize katılmayı veya emekli olmayı planlıyor olsanız da, temel gereklilikleri anlamak başarılı bir yer değiştirmeyi sağlamaya yardımcı olacaktır. İşte bilmeniz gerekenler.",
+    "requirements": [
+      {
+        "icon": "🛂",
+        "title": "Geçerli Pasaport",
+        "description": "Pasaportunuz Kanada'da kalmayı planladığınız süre boyunca geçerli olmalıdır. Daimi ikamet başvuruları için, birkaç ay hatta yıl sürebilen işlem süresi boyunca pasaportunuzun süresinin dolmayacağından emin olun."
+      },
+      {
+        "icon": "📝",
+        "title": "Göçmenlik Durumu",
+        "description": "Göçmenlik yolunuzu belirleyin:",
+        "details": [
+          "Ekspres Giriş (Federal Nitelikli İşçi, Federal Nitelikli Ticaret, Kanada Deneyim Sınıfı)",
+          "İl Aday Programları (PNP'ler)",
+          "Aile Sponsorluğu",
+          "Çalışma İzinleri",
+          "Çalışma İzinleri (LMIA tabanlı, CUSMA/NAFTA, IEC)",
+          "Ziyaretçi Vizesi (Geçici İkamet Vizesi) veya eTA"
+        ]
+      },
+      {
+        "icon": "💵",
+        "title": "Fon Kanıtı",
+        "description": "Çoğu göçmenlik programı için, kendinizi ve ailenizi geçindirmek için yeterli kaynağa sahip olduğunuzu göstermeniz gerekecektir:",
+        "details": [
+          "Ekspres Giriş, yerleşim fonlarının kanıtlanmasını gerektirir (aile büyüklüğüne göre değişir, yıllık olarak güncellenir)",
+          "Öğrenciler öğrenim ücretleri artı yaşam giderlerini göstermelidir (yılda yaklaşık 10.000 CAD)",
+          "Banka hesap özetleri, yatırım hesapları veya bankanızdan alınan bir mektup kabul edilebilir kanıtlardır"
+        ]
+      },
+      {
+        "icon": "🩺",
+        "title": "Tıbbi Muayene",
+        "description": "Başvuru sahiplerinin çoğu IRCC onaylı bir doktor tarafından sağlık muayenesinden geçirilmelidir:",
+        "details": [
+          "Daimi ikamet başvuruları için gereklidir",
+          "Geçici ikamet eden ve 6 aydan uzun süre kalan kişiler için gereklidir",
+          "Belirlenmiş bir panel doktoru tarafından doldurulmalıdır"
+        ]
+      },
+      {
+        "icon": "🔍",
+        "title": "Geçmiş Kontrolleri",
+        "description": "Güvenlik ve sabıka geçmişi kontrolleri tüm başvurular için standarttır:",
+        "details": [
+          "6+ ay boyunca yaşadığınız ülkelerden polis izin belgeleri",
+          "Çoğu başvuru sahibi için biyometri (parmak izi ve fotoğraf) gereklidir",
+          "Güvenlik tarama süreci"
+        ]
+      },
+      {
+        "icon": "🗣️",
+        "title": "Dil Yeterliliği",
+        "description": "İngilizce veya Fransızca dil becerisi çoğu göçmenlik programı için çok önemlidir:",
+        "details": [
+          "İngilizce için IELTS veya CELPIP",
+          "Fransızca için TEF veya TCF",
+          "Programa bağlı olarak gereken belirli CLB (Kanada Dil Ölçütü) seviyeleri"
+        ]
+      },
+      {
+        "icon": "🎓",
+        "title": "Eğitim Kimlik Bilgileri Değerlendirmesi (ECA)",
+        "description": "Eğitiminizi Kanada dışında tamamladıysanız:",
+        "details": [
+          "Kimlik bilgilerinizin IRCC onaylı bir kuruluş tarafından değerlendirilmesini sağlayın",
+          "Derecenizin, diplomanızın veya sertifikanızın Kanada standartlarına eşdeğer olduğunu doğrulayın",
+          "ECA, Express Entry ve diğer birçok göçmenlik programı için zorunludur"
+        ]
+      },
+      {
+        "icon": "🏠",
+        "title": "Konut Planları",
+        "description": "Çoğu başvuru için gerekli olmasa da, konut planlarına sahip olmak çok önemlidir:",
+        "details": [
+          "Varışta geçici konaklama (oteller, kısa süreli kiralamalar)",
+          "Gideceğiniz şehirdeki kiralık piyasaları araştırın",
+          "Kiralama gerekliliklerini anlamak (kredi kontrolleri, referanslar, depozitolar)"
+        ]
+      },
+      {
+        "icon": "💼",
+        "title": "İstihdam Hazırlıkları",
+        "description": "Kanada'da çalışmayı planlayanlar için:",
+        "details": [
+          "Alanınızdaki Kanada iş piyasasını araştırın",
+          "Kanada tarzı özgeçmiş ve kapak mektupları hazırlama",
+          "Sektörünüzdeki profesyonellerle ağ kurun",
+          "Mesleğinizin düzenlemeye tabi olup olmadığını ve Kanada lisansı gerektirip gerektirmediğini kontrol edin"
+        ]
+      },
+      {
+        "icon": "⚕️",
+        "title": "Sağlık Sigortası",
+        "description": "Kanada'da sağlık hizmetleri temel olarak kamuya aittir, ancak eyaletlere göre değişiklik göstermektedir:",
+        "details": [
+          "İl sağlık sigortası bir bekleme süresi gerektirir (genellikle 3 ay)",
+          "Boşluk dönemini karşılamak için özel sağlık sigortası satın almak",
+          "Bulunduğunuz eyalette nelerin kapsama girip nelerin girmediğini anlayın"
+        ]
+      }
+    ],
+    "postArrival": {
+      "title": "Varış Sonrası Adımlar",
+      "timeframes": [
+        {
+          "period": "İlk Hafta",
+          "tasks": [
+            "Sosyal Sigorta Numarası (SIN) için Başvurun",
+            "Kanada'da bir banka hesabı açın",
+            "Yerel bir telefon numarası alın",
+            "İl sağlık sigortası için başvuruda bulunun"
+          ]
+        },
+        {
+          "period": "İlk Ay",
+          "tasks": [
+            "Kalıcı konut bulun",
+            "Çocukları okula kaydettirin",
+            "Bir ehliyet veya kimlik alın",
+            "Yerleşim hizmetleri ile bağlantı kurun"
+          ]
+        }
+      ]
+    }
+  },
+  "uktocanadaguide": {
+    "navigation": {
+      "title": "Hızlı Navigasyon"
+    },
+    "accessibility": {
+      "toggleSection": "için geçiş bölümü"
+    },
+    "sections": {
+      "whyMove": {
+        "title": "İngilizler Neden Kanada'ya Taşınıyor?",
+        "description": "Binlerce İngiliz vatandaşı, özellikle Toronto, Vancouver, Montreal ve Calgary gibi şehirlerde Kanada'yı evleri haline getirmiştir. Çağrı şunları içermektedir:",
+        "reasons": [
+          "Mükemmel sosyal sistemler ile yüksek yaşam kalitesi",
+          "Çeşitli doğal manzaralar ve açık hava etkinlikleri",
+          "Benzer kültür ve tanıdık dil",
+          "Kariyer fırsatları ile güçlü ekonomi",
+          "Misafirperver topluluklara sahip çok kültürlü toplum"
+        ],
+        "conclusion": "Brexit sonrası pek çok İngiliz Avrupa dışındaki seçenekleri araştırıyor ve Kanada'nın göçmenlik sistemi çeşitli yollar sunuyor."
+      },
+      "entryRequirements": {
+        "title": "Giriş Koşulları & Vize Kuralları",
+        "touristEntry": {
+          "title": "Turist Girişi",
+          "description": "Birleşik Krallık vatandaşları, 7 CAD tutarında bir Elektronik Seyahat İzni (eTA) ile 6 aya kadar Kanada'yı ziyaret edebilirler. Ancak, kalıcı olarak yer değiştirmek için Kanada'nın göçmenlik yollarından birine başvurmanız gerekir."
+        }
+      },
+      "immigrationPathways": {
+        "title": "Birleşik Krallık Vatandaşları için Göçmenlik Yolları",
+        "pathways": [
+          {
+            "title": "1. Hızlı Giriş Sistemi",
+            "description": "<span class=\"font-medium\">Kanada'nın vasıflı işçiler için ana göçmenlik yolu</span><br/>Adayları yaş, eğitim, iş deneyimi ve dil becerileri gibi faktörlere göre sıralayan puana dayalı sistem",
+            "subProgramsTitle": "Ekspres Giriş kapsamında üç program:",
+            "subPrograms": [
+              "Federal Nitelikli İşçi Programı",
+              "Federal Nitelikli Esnaf Programı",
+              "Kanada Deneyim Sınıfı (Kanada'da iş deneyimi olanlar için)"
+            ]
+          },
+          {
+            "title": "2. İl Aday Programları (PNP'ler)",
+            "details": [
+              "Her ilin kendi göçmenlik akışları vardır",
+              "Belirli illerde ihtiyaç duyulan becerilere sahip olanlar için Express Entry'den genellikle daha hızlı",
+              "Bazı illerde Birleşik Krallık'a özgü işe alım girişimleri bulunmaktadır"
+            ]
+          },
+          {
+            "title": "3. Çalışma İzinleri",
+            "details": [
+              "İşverene özel çalışma izinleri için Kanadalı bir işverenden iş teklifi alınması gerekir",
+              "Çalışma Tatili (IEC) gibi özel programlar aracılığıyla açık çalışma izinleri",
+              "18-30 yaş arası Birleşik Krallık vatandaşları IEC çalışma tatili vizesine başvurabilir"
+            ]
+          },
+          {
+            "title": "4. Aile Sponsorluğu",
+            "description": "Kanada vatandaşı veya daimi ikamet eden bir eşiniz, nikahsız eşiniz veya yakın bir aile üyeniz varsa"
+          }
+        ]
+      },
+      "property": {
+        "title": "Mülk Satın Alma veya Kiralama",
+        "points": [
+          "Yerleşik olmayan biri olarak, bazı eyaletlerdeki bazı kısıtlamalarla birlikte Kanada'nın çoğunda mülk satın alabilirsiniz",
+          "2023 yabancı alıcı yasağının daimi ikamet edenler ve çalışma izni olanlar için istisnaları vardır",
+          "İngiliz gurbetçiler için popüler bölgeler: Toronto, Vancouver, Montreal, Calgary, Halifax",
+          "Kira piyasaları büyük farklılıklar göstermektedir: büyük şehirlerde 1 yatak odalı bir daire için 1.500$-3.000$+ CAD ödemeyi bekleyin"
+        ],
+        "tip": "<strong>İpucu:</strong> Konumları dikkatlice araştırın - Toronto ve Vancouver'daki emlak fiyatları diğer bölgelere göre önemli ölçüde yüksektir."
+      },
+      "costLiving": {
+        "title": "Yaşam Maliyeti Karşılaştırması",
+        "table": {
+          "headers": {
+            "expense": "Giderler",
+            "canada": "Kanada (ortalama)",
+            "uk": "Birleşik Krallık (ort.)"
+          },
+          "rows": [
+            {
+              "expense": "Kira (1 yataklı daire)",
+              "canada": "CAD $1,200-$2,500",
+              "uk": "£800-£1,200"
+            },
+            {
+              "expense": "Yardımcı Programlar",
+              "canada": "CAD $150-$250/ay",
+              "uk": "£150+/ay"
+            },
+            {
+              "expense": "Restoranda yemek",
+              "canada": "CAD $20-$35",
+              "uk": "£10-£25"
+            },
+            {
+              "expense": "Ulaşım kartı",
+              "canada": "CAD $80-$150/ay",
+              "uk": "£60-£120/ay"
+            }
+          ]
+        },
+        "note": "Genel maliyetler Birleşik Krallık'a benzemekle birlikte, bölgeler arasında önemli farklılıklar göstermektedir. Atlantik eyaletleri ve kırsal bölgeler daha uygun fiyatlı bir yaşam sunmaktadır."
+      },
+      "healthcare": {
+        "title": "Sağlık Hizmetlerine Erişim",
+        "points": [
+          "Kanada'da vergilerle finanse edilen evrensel kamu sağlık hizmeti (Medicare) vardır",
+          "Daimi ikamet sahibi olarak, bir bekleme süresinden sonra (genellikle 3 ay) il sağlık hizmetlerinden yararlanabilirsiniz",
+          "Bekleme süresi boyunca geçici özel sağlık sigortası şarttır",
+          "Her il, kapsam açısından küçük farklılıklar gösteren kendi sağlık sistemini yönetmektedir",
+          "Diş, görme bakımı ve reçeteli ilaçlar gibi bazı hizmetler için özel sigorta gerekebilir"
+        ]
+      },
+      "weather": {
+        "title": "Hava Durumu & İklim",
+        "seasons": [
+          {
+            "title": "Kış (Kasım-Mart)",
+            "description": "Bölgeye bağlı olarak -30°C ile 0°C arasında değişen sıcaklıklarla Birleşik Krallık'tan önemli ölçüde daha soğuktur. Kar yağışı ülkenin büyük bölümünde yaygın olup, M.Ö. kıyı kesimleri istisnadır."
+          },
+          {
+            "title": "Yaz (Haziran-Eylül)",
+            "description": "Tipik olarak 20°C ile 30°C arasındaki sıcaklıklarla Birleşik Krallık'tan daha sıcaktır. Doğu illerinde nem oranı yüksek olabilir."
+          }
+        ],
+        "regionalVariations": {
+          "title": "Bölgesel Varyasyonlar",
+          "description": "Vancouver, İngiltere'ye benzer ılıman ve yağışlı bir iklime sahiptir. Toronto ve Montreal'de sıcak yazlar ve soğuk kışlar yaşanır. Prairies aşırı sıcaklık değişimlerine sahiptir. Kuzey bölgelerinde kışlar çok uzun ve sert geçer."
+        }
+      },
+      "dailyLife": {
+        "title": "Günlük Yaşam Ayarlamaları",
+        "aspects": [
+          {
+            "title": "Dil",
+            "description": "İngilizce Kanada genelinde resmi dildir (Quebec hariç). Fransızca da resmi bir dildir ve Fransızca yeterliliğinin oldukça faydalı olduğu Quebec'te baskındır."
+          },
+          {
+            "title": "Sürüş",
+            "description": "Birleşik Krallık ehliyetleri geçici olarak kullanılabilir (eyalete göre değişir), ancak bunu bir il ehliyeti ile değiştirmeniz gerekir. Kanadalılar yolun sağ tarafından araç kullanırlar."
+          },
+          {
+            "title": "Para Birimi",
+            "description": "Kanada Doları (CAD) - döviz kurları dalgalanır, ancak maliyetler genellikle İngiltere ile karşılaştırılabilir."
+          },
+          {
+            "title": "Bankacılık",
+            "description": "Büyük bankalar ücret muafiyetli yeni gelen paketleri sunmaktadır. Bir hesap açmak için adres ve kimlik kanıtına ihtiyacınız olacaktır. Kredi geçmişi aktarılmaz, bu nedenle kredi oluşturmak önemli olacaktır."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "title": "İngiltere'den Lojistik Taşıma",
+        "points": [
+          "Ev eşyalarının Kanada'ya gönderilmesi deniz taşımacılığı ile 4-8 hafta sürer",
+          "Kişisel eşyalar, ayrıntılı bir envanter ve ikamet belgesi ile gümrüksüz olarak ithal edilebilir",
+          "15 yaşından büyük araçların ithalatı daha kolay; daha yeni araçların Kanada standartlarını karşılaması gerekiyor",
+          "Evcil hayvanların mikroçiplere, kuduz aşılarına ve sağlık sertifikalarına ihtiyacı vardır; koşullar yerine getirilirse karantina gerekmez"
+        ]
+      },
+      "challenges": {
+        "title": "Beklenebilecek Gerçekçi Zorluklar",
+        "challenges": [
+          {
+            "title": "Kış ayarı",
+            "description": "Kanada kışlarının şiddeti ve uzunluğu İngilizler için zorlayıcı olabilir"
+          },
+          {
+            "title": "Aileden uzaklık",
+            "description": "7 saatten fazla süren uçuşlar ev ziyaretlerini seyrekleştiriyor"
+          },
+          {
+            "title": "Kredi geçmişi oluşturma",
+            "description": "Birleşik Krallık'ta kredi geçmişi aktarılmaz, bu da ilk borçlanmayı zorlaştırır"
+          },
+          {
+            "title": "Profesyonel akreditasyon",
+            "description": "Bazı Birleşik Krallık yeterliliklerinin Kanada'da yeniden belgelendirilmesi gerekebilir"
+          }
+        ]
+      },
+      "britishCommunities": {
+        "title": "İngiliz Göçmen Toplulukları",
+        "description": "Kanada'da oldukça büyük bir İngiliz göçmen topluluğu bulunmaktadır:",
+        "cities": [
+          "Toronto",
+          "Vancouver",
+          "Calgary",
+          "Victoria",
+          "Halifax"
+        ],
+        "supportNote": "Çevrimiçi forumlar, \"Kanada'daki İngilizler\" gibi Facebook grupları ve topluluk etkinlikleri, tavsiye ve destek sağlayabilecek diğer Birleşik Krallık göçmenleriyle bağlantı kurmayı kolaylaştırır."
+      }
+    },
+    "checklist": {
+      "title": "Kanada'ya Taşınmadan Önce Temel Kontrol Listesi",
+      "items": [
+        "Uygun göçmenlik statüsünü veya çalışma iznini güvence altına almak",
+        "Varışta Sosyal Sigorta Numarası (SIN) alın",
+        "Seyahat ve ilk sağlık sigortası satın alın",
+        "Kanada'da bir banka hesabı açın",
+        "İl sağlık kayıt sürecini araştırın",
+        "Kanada hava koşullarına uygun kıyafetler satın alın",
+        "Birleşik Krallık makamlarını (HMRC, emeklilik sağlayıcıları, vb.) yurt dışına taşınmanız konusunda bilgilendirin"
+      ]
+    },
+    "conclusion": {
+      "title": "Kanada'ya Taşınmak Sizin İçin Doğru mu?",
+      "text": "Kanada yüksek yaşam standartları, çarpıcı doğal güzellikleri ve güçlü sosyal sistemleriyle Birleşik Krallık'ta yaşayan gurbetçiler için cazip bir destinasyondur. Göç süreci dikkatli bir planlama gerektirse ve kış havasına alışmak zaman alsa da, pek çok İngiliz Kanada'nın sunduğu yaşam kalitesi, kariyer fırsatları ve misafirperver çok kültürlü toplum için bu geçişi değerli bulmaktadır."
+    },
+    "footer": {
+      "disclaimer": "Rehber son güncellendi: Mayıs 2025 - Bilgiler değişebilir - Her zaman resmi devlet kaynaklarını kontrol edin"
+    }
+  },
+  "canadavisaguide": {
+    "introduction": "Kanada, işçiler, öğrenciler, aileler ve iş insanları dahil olmak üzere göçmenler için çok sayıda yol sunmaktadır. Her program, dünyanın dört bir yanından yeni gelenleri ağırlarken Kanada'nın ekonomik büyümesini desteklemek üzere tasarlanmıştır.",
+    "labels": {
+      "bestFor": "En iyisi:",
+      "programs": "Programlar:",
+      "requirements": "Gereksinimler:",
+      "process": "Süreç:",
+      "types": "Türleri:",
+      "eligibleMembers": "Uygun aile üyeleri:",
+      "sponsorRequirements": "Sponsor gereksinimleri:",
+      "benefits": "Avantajlar:",
+      "tfwpRequirements": "TFWP Gereklilikleri:",
+      "impBenefits": "IMP Faydaları:",
+      "startupRequirements": "Başlangıç Vizesi Gereklilikleri:",
+      "notablePNPs": "Önemli PNP'ler:"
+    },
+    "mainPrograms": [
+      {
+        "title": "1. Hızlı Giriş Sistemi",
+        "bestFor": [
+          "İş deneyimi olan vasıflı işçiler",
+          "Yüksek eğitimli profesyoneller",
+          "İngilizce/Fransızca dil yeterliliği"
+        ],
+        "programs": [
+          "Federal Nitelikli İşçi Programı",
+          "Federal Nitelikli Esnaf Programı",
+          "Kanada Deneyimi Sınıfı"
+        ],
+        "requirements": [
+          "En az 1 yıl vasıflı iş deneyimi",
+          "Dil testi (FSWP için CLB 7+)",
+          "Eğitim kimlik bilgisi değerlendirmesi",
+          "Fon kanıtı (tek kişi için ~13,000+$)"
+        ]
+      },
+      {
+        "title": "2. İl Aday Programları (PNP'ler)",
+        "bestFor": [
+          "Becerileri ilin ihtiyaçlarıyla örtüşen çalışanlar",
+          "Belirli illerle bağlantısı olanlar",
+          "Ekspres Giriş için uygun olmayabilecek adaylar"
+        ],
+        "process": [
+          "Doğrudan bir eyalete veya Hızlı Giriş yoluyla başvurun",
+          "İl adaylığı almak",
+          "Federal olarak daimi ikamet başvurusunda bulunun"
+        ],
+        "notablePNPs": [
+          "British Columbia PNP",
+          "Ontario Göçmen Aday Programı",
+          "Alberta Advantage Göçmenlik Programı",
+          "Manitoba Eyalet Aday Programı"
+        ]
+      },
+      {
+        "title": "3. Çalışma İzinleri",
+        "bestFor": "Belirlenen öğrenim kurumlarına kabul edilen uluslararası öğrenciler",
+        "requirements": [
+          "Bir DLI'dan kabul mektubu",
+          "Mali destek belgesi (~10.000$/yıl + öğrenim ücreti)",
+          "Temiz sabıka kaydı",
+          "Tıbbi muayene (gerekliyse)",
+          "Eğitimden sonra Kanada'yı terk etme niyeti"
+        ],
+        "benefits": [
+          "Çalışmalar sırasında haftada 20 saate kadar çalışma",
+          "Planlanmış molalar sırasında tam zamanlı çalışma",
+          "Mezuniyet Sonrası Çalışma İzni uygunluğu",
+          "Daimi ikamete giden yol"
+        ]
+      },
+      {
+        "title": "4. Çalışma İzinleri",
+        "types": [
+          "Geçici Yabancı İşçi Programı (TFWP)",
+          "Uluslararası Hareketlilik Programı (IMP)",
+          "Mezuniyet Sonrası Çalışma İzni (PGWP)",
+          "Eşler için açık çalışma izinleri"
+        ],
+        "tfwpRequirements": [
+          "Kanadalı işverenden iş teklifi",
+          "İşgücü Piyasası Etki Değerlendirmesi (LMIA)",
+          "Niteliklerin kanıtı"
+        ],
+        "impBenefits": [
+          "LMIA'dan muaf çalışma izinleri",
+          "Şirket içi transferleri içerir",
+          "Uluslararası anlaşmalar (CUSMA, CETA)"
+        ]
+      },
+      {
+        "title": "5. Aile Sponsorluğu",
+        "bestFor": "Kanada vatandaşlarının veya daimi ikamet edenlerin aile üyeleri",
+        "eligibleMembers": [
+          "Eş veya nikahsız partner",
+          "Bakıma muhtaç çocuklar",
+          "Ebeveynler ve büyükanne ve büyükbabalar",
+          "Diğer akrabalar (belirli programlar kapsamında)"
+        ],
+        "sponsorRequirements": [
+          "Kanada vatandaşı veya daimi ikamet eden",
+          "18 yaş ve üstü",
+          "Asgari gelir gereksinimlerini karşılayın",
+          "Finansal destek için taahhütname imzalayın"
+        ]
+      },
+      {
+        "title": "6. Ticari Göçmenlik",
+        "bestFor": [
+          "Girişimciler",
+          "Yatırımcılar",
+          "Serbest meslek sahipleri"
+        ],
+        "programs": [
+          "Start-up Vize Programı",
+          "Serbest Meslek Sahipleri Programı",
+          "İl iş programları"
+        ],
+        "startupRequirements": [
+          "Belirlenen kuruluştan destek",
+          "Dil yeterliliği (CLB 5+)",
+          "Yeterli uzlaşma fonu",
+          "Kanada'da aktif iş yönetimi"
+        ]
+      }
+    ],
+    "additionalOptions": {
+      "title": "Ek Seçenekler",
+      "programs": [
+        {
+          "title": "Atlantik Göçmenlik Programı",
+          "description": "New Brunswick, Nova Scotia, Prince Edward Island veya Newfoundland ve Labrador'da yaşamak ve çalışmak isteyen vasıflı işçiler ve uluslararası mezunlar için tasarlanmıştır.",
+          "requirement": "Atlantik Kanada'da belirlenen işverenden iş teklifi gerektirir"
+        },
+        {
+          "title": "Kırsal ve Kuzey Göçmenlik Pilot Uygulaması",
+          "description": "Vasıflı yabancı işçilerin daimi ikamet kazanmalarına yardımcı olurken daha küçük, kırsal toplulukları destekleyen toplum odaklı program.",
+          "requirement": "Kanada genelinde belirli topluluklarda mevcuttur"
+        },
+        {
+          "title": "Bakıcı Programları",
+          "description": "Çocuklara, yaşlılara veya tıbbi ihtiyaçları olanlara bakım sağlayan bakıcıların daimi ikamet sahibi olmalarına yönelik yollar.",
+          "requirement": "Kanada'da 2 yıllık iş deneyimi gerekli"
+        },
+        {
+          "title": "İnsani Yardım ve Mülteci Programları",
+          "description": "Mülteciler, sığınmacılar ve insani yardıma ihtiyaç duyan diğer kişiler için koruma.",
+          "requirement": "Devlet Destekli Mülteci Programı ve Özel Sponsorluğu İçerir"
+        }
+      ]
+    },
+    "importantConsiderations": {
+      "title": "Önemli Hususlar",
+      "considerations": [
+        {
+          "title": "İşlem Süreleri",
+          "description": "Programa ve başvuru hacmine göre büyük ölçüde değişir. Express Entry 6 ay gibi kısa bir sürede sonuçlanabilirken, aile sponsorluğu 12+ ay sürebilir."
+        },
+        {
+          "title": "Başvuru Ücretleri",
+          "description": "Hem devlet ücretlerini hem de potansiyel danışman maliyetlerini göz önünde bulundurun. Halkla İlişkiler başvuru ücretleri yetişkin başına yaklaşık 1.325 CAD'dir."
+        },
+        {
+          "title": "Uzlaşma Fonları",
+          "description": "Çoğu program, yerleşim için fon kanıtı gerektirir. Miktar, aile büyüklüğüne ve program gerekliliklerine göre değişir."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,18 @@
+# next.js
+/.next/
+/out/
+
+
+# production
+/build
+
+node_modules
+
+# Sentry Config File
+.env.sentry-build-plugin
+
+fixes
+.cursor
+.github/instructions
+/.vscode/
+/.idea/

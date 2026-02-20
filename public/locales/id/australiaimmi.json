@@ -1,0 +1,2067 @@
+{
+  "heroSection": {
+    "badge": "Perjalanan Eksklusif",
+    "title": "Temukan Petualangan Anda Selanjutnya",
+    "description": "Rasakan keindahan destinasi yang menakjubkan dan ciptakan kenangan tak terlupakan dengan paket wisata premium kami yang disesuaikan dengan keinginan Anda.",
+    "currentlyViewing": "Sedang Dilihat",
+    "featuredAlt": "Destinasi unggulan",
+    "destinationCounter": "Tujuan {saat ini}/{total}",
+    "controlsAria": "Pergi ke tujuan {indeks}",
+    "buttons": {
+      "explore": "Jelajahi Sekarang",
+      "viewAll": "Lihat Semua Destinasi"
+    },
+    "destinations": [
+      {
+        "img": "/images/Sydney.png",
+        "name": "Sydney",
+        "country": "Australia"
+      },
+      {
+        "img": "/images/Melbourne.png",
+        "name": "Melbourne",
+        "country": "Australia"
+      },
+      {
+        "img": "/images/Brisbane.png",
+        "name": "Brisbane",
+        "country": "Australia"
+      },
+      {
+        "img": "/images/Perth.png",
+        "name": "Perth",
+        "country": "Australia"
+      },
+      {
+        "img": "/images/Adelaide.png",
+        "name": "Adelaide",
+        "country": "Australia"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableOfContents": {
+    "header": {
+      "title": "Daftar isi",
+      "subtitle": "Navigasi melalui bagian-bagian"
+    },
+    "status": {
+      "currentlyReading": "Saat ini sedang membaca"
+    },
+    "footer": {
+      "sectionsCount": "{count} bagian untuk dijelajahi"
+    },
+    "accessibility": {
+      "toggleMenu": "Alihkan menu navigasi"
+    },
+    "sections": [
+      {
+        "title": "Fakta-fakta tentang Turki",
+        "id": 1
+      },
+      {
+        "title": "Opsi Visa untuk Pindah ke Turki",
+        "id": 2
+      },
+      {
+        "title": "Persyaratan untuk Pindah ke Turki",
+        "id": 3
+      },
+      {
+        "title": "Mendapatkan Pekerjaan di Turki sebagai Warga Negara Asing",
+        "id": 4
+      },
+      {
+        "title": "Pindah ke Turki dari AS",
+        "id": 5
+      },
+      {
+        "title": "Pindah ke Turki dari Inggris",
+        "id": 6
+      },
+      {
+        "title": "Berapa biaya untuk pindah ke Turki?",
+        "id": 7
+      },
+      {
+        "title": "Pindah ke Turki Bersama Hewan Peliharaan",
+        "id": 8
+      }
+    ]
+  },
+  "australiaFacts": {
+    "description": "Jelajahi karakteristik menarik dari Australia, sebuah negara-benua unik yang dikenal dengan lanskap, satwa liar, dan keragaman budayanya yang luar biasa.",
+    "navigation": {
+      "title": "Jelajahi Fakta",
+      "previous": "Fakta Sebelumnya",
+      "next": "Fakta Selanjutnya"
+    },
+    "allFacts": {
+      "title": "Semua Fakta Tentang Australia"
+    },
+    "accessibility": {
+      "factButton": "Lihat fakta tentang {title}",
+      "previousFact": "Kembali ke fakta sebelumnya",
+      "nextFact": "Lanjut ke fakta berikutnya"
+    },
+    "facts": [
+      {
+        "title": "Benua Pulau",
+        "description": "Australia adalah sebuah negara sekaligus benua — negara terbesar keenam di dunia berdasarkan luas daratan.",
+        "emoji": "🌏",
+        "id": 1
+      },
+      {
+        "title": "Satwa Liar yang Unik",
+        "description": "Tempat ini merupakan rumah bagi hewan-hewan yang tidak ditemukan di tempat lain, seperti kanguru, koala, dan platipus.",
+        "emoji": "🦘",
+        "id": 2
+      },
+      {
+        "title": "Terumbu Karang Besar",
+        "description": "Terletak di lepas pantai Queensland, ini adalah sistem terumbu karang terbesar di dunia dan dapat dilihat dari luar angkasa.",
+        "emoji": "🌊",
+        "id": 3
+      },
+      {
+        "title": "Populasi Multikultural",
+        "description": "Lebih dari 30% warga Australia lahir di luar negeri, menjadikannya salah satu negara paling beragam di dunia.",
+        "emoji": "🌍",
+        "id": 4
+      },
+      {
+        "title": "Tidak ada Bahasa Resmi",
+        "description": "Meskipun bahasa Inggris adalah bahasa de facto, Australia tidak memiliki bahasa resmi menurut hukum.",
+        "emoji": "🗣️",
+        "id": 5
+      }
+    ],
+    "statistics": {
+      "title": "Australia dalam Angka",
+      "items": [
+        {
+          "icon": "📏",
+          "label": "Luas Total",
+          "value": "7,7 juta km²",
+          "description": "Negara terbesar ke-6 di dunia"
+        },
+        {
+          "icon": "👥",
+          "label": "Populasi",
+          "value": "25,7 juta",
+          "description": "Per tahun 2023"
+        },
+        {
+          "icon": "🏙️",
+          "label": "Modal",
+          "value": "Canberra",
+          "description": "Bukan Sydney atau Melbourne!"
+        },
+        {
+          "icon": "💰",
+          "label": "Mata uang",
+          "value": "Dolar Australia",
+          "description": "AUD"
+        },
+        {
+          "icon": "🕐",
+          "label": "Zona Waktu",
+          "value": "3 zona utama",
+          "description": "AWST, ACST, AEST"
+        },
+        {
+          "icon": "🗺️",
+          "label": "Negara Bagian & Wilayah",
+          "value": "Total 8",
+          "description": "6 negara bagian + 2 wilayah"
+        }
+      ]
+    },
+    "didYouKnow": {
+      "title": "Tahukah Anda?",
+      "items": [
+        "Australia memiliki lebih banyak spesies ular berbisa daripada negara lain mana pun.",
+        "Great Barrier Reef adalah rumah bagi lebih dari 1.500 spesies ikan.",
+        "Melbourne adalah ibu kota Australia dari tahun 1901-1927, sebelum Canberra.",
+        "Australia adalah satu-satunya negara yang juga merupakan sebuah benua.",
+        "Negara ini memiliki lebih dari 10.000 pantai - Anda bisa mengunjungi satu pantai setiap hari selama 27 tahun!",
+        "Australia mengekspor unta ke Arab Saudi (ada lebih dari 1 juta unta liar di Australia)."
+      ]
+    }
+  },
+  "movingCosts": {
+    "description": "Total biaya pindah ke Australia bervariasi tergantung pada situasi Anda, tetapi berikut adalah rincian umum pengeluaran yang akan Anda temui saat pindah ke sana.",
+    "costSections": [
+      {
+        "id": "penerbangan",
+        "icon": "✈️",
+        "title": "Penerbangan",
+        "amount": "$800–$2.000 USD",
+        "details": "Tiket sekali jalan, kelas ekonomi, tergantung asal dan musim.",
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "biaya visa",
+        "icon": "🛂",
+        "title": "Biaya Visa",
+        "amount": "$710–$8.850 AUD",
+        "details": "Sangat bervariasi tergantung pada jenis visa.",
+        "color": "bg-sky-600",
+        "subItems": {
+          "0": {
+            "title": "Visa tenaga terampil",
+            "amount": "$4.000–$4.500 AUD"
+          },
+          "1": {
+            "title": "Visa pasangan",
+            "amount": "$8.850 AUD"
+          },
+          "2": {
+            "title": "Visa pelajar",
+            "amount": "$710 AUD"
+          },
+          "3": {
+            "title": "Visa Liburan Kerja",
+            "amount": "$495 AUD"
+          }
+        }
+      },
+      {
+        "id": "pengiriman",
+        "icon": "📦",
+        "title": "Mengirim Barang-barang",
+        "amount": "$2.000–$7.000 USD",
+        "details": "Tergantung pada ukuran kontainer dan jarak",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "perumahan",
+        "icon": "🏠",
+        "title": "Perumahan Awal",
+        "amount": "$1.500–$3.000 AUD",
+        "details": "Uang jaminan sewa + sewa 1 bulan untuk apartemen sederhana.",
+        "color": "bg-sky-500",
+        "subItems": {
+          "0": {
+            "title": "Sydney/Melbourne (bulanan)",
+            "amount": "$1.800–$2.500 AUD"
+          },
+          "1": {
+            "title": "Brisbane/Perth (bulanan)",
+            "amount": "$1.500–$2.000 AUD"
+          },
+          "2": {
+            "title": "Wilayah regional (bulanan)",
+            "amount": "$1.000–$1.500 AUD"
+          }
+        }
+      },
+      {
+        "id": "biaya lainnya",
+        "icon": "🧾",
+        "title": "Biaya Lainnya",
+        "amount": "$500–$1.500 USD",
+        "details": "Pemeriksaan kesehatan, asuransi, penerjemahan dokumen, dll.",
+        "color": "bg-sky-600",
+        "subItems": {
+          "0": {
+            "title": "Asuransi kesehatan",
+            "amount": "$100–$200 AUD/bulan"
+          },
+          "1": {
+            "title": "Terjemahan dokumen",
+            "amount": "$50–$200 AUD"
+          },
+          "2": {
+            "title": "Pengaturan transportasi",
+            "amount": "$200–$500 AUD"
+          },
+          "3": {
+            "title": "Persediaan dan kebutuhan pokok awal",
+            "amount": "$200–$400 AUD"
+          }
+        }
+      }
+    ],
+    "totalCost": {
+      "title": "Perkiraan Total (Satu Orang)",
+      "approaches": [
+        {
+          "title": "Pendekatan Anggaran",
+          "amount": "$8.000–$12.000 USD",
+          "description": "Pengiriman minimal, kota dengan biaya lebih murah, visa liburan kerja atau visa pelajar."
+        },
+        {
+          "title": "Pemindahan Komprehensif",
+          "amount": "$15.000–$20.000 USD",
+          "description": "Visa pengiriman penuh, kota besar, tenaga terampil atau pasangan"
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Tips Menghemat Uang",
+      "tips": [
+        {
+          "title": "Pertimbangkan Wilayah Regional",
+          "description": "Tinggal di luar kota-kota besar seperti Sydney dan Melbourne dapat menghemat biaya perumahan sebesar 30-40%."
+        },
+        {
+          "title": "Jual Sebelum Pengiriman",
+          "description": "Biaya pengiriman tinggi—pertimbangkan untuk menjual furnitur besar dan membelinya di Australia."
+        },
+        {
+          "title": "Pesan Penerbangan Secara Strategis",
+          "description": "Terbanglah selama musim peralihan (Mei atau Oktober) untuk menghemat hingga 30% biaya tiket pesawat."
+        },
+        {
+          "title": "Program Liburan Kerja Pertama",
+          "description": "Jika memenuhi syarat, mulailah dengan visa Working Holiday sebelum mengajukan visa yang lebih mahal."
+        }
+      ]
+    },
+    "additionalConsiderations": {
+      "title": "Pertimbangan Tambahan",
+      "items": [
+        {
+          "label": "Fluktuasi mata uang",
+          "description": "Nilai tukar antara mata uang negara Anda, AUD, dan USD dapat berdampak signifikan pada total biaya Anda."
+        },
+        {
+          "label": "Ukuran keluarga",
+          "description": "Tambahkan sekitar 30-50% lebih banyak ke total perkiraan untuk setiap anggota keluarga tambahan."
+        },
+        {
+          "label": "Hewan peliharaan",
+          "description": "Membawa hewan peliharaan ke Australia dapat menghabiskan biaya $2.000-$4.000 per hewan karena persyaratan karantina yang ketat."
+        },
+        {
+          "label": "periode pencarian kerja",
+          "description": "Siapkan anggaran untuk biaya hidup selama 1-3 bulan sambil mencari pekerjaan jika Anda belum memiliki pekerjaan tetap."
+        }
+      ]
+    },
+    "calculator": {
+      "title": "Faktor-faktor Perencanaan Biaya",
+      "description": "Pertimbangkan faktor-faktor penting ini saat merencanakan anggaran pindahan Anda:",
+      "factors": [
+        {
+          "icon": "📍",
+          "title": "Kota Tujuan",
+          "description": "Sydney & Melbourne 40-50% lebih mahal daripada daerah regional.",
+          "impact": "Dampak besar pada biaya"
+        },
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "title": "Ukuran Keluarga",
+          "description": "Setiap orang tambahan akan menambah 30-50% pada total biaya.",
+          "impact": "Faktor biaya utama"
+        },
+        {
+          "icon": "⏰",
+          "title": "Garis waktu",
+          "description": "Pindahan yang terburu-buru biayanya 20-30% lebih mahal daripada pindahan yang direncanakan dengan matang.",
+          "impact": "Dampak sedang"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Garis Waktu Biaya Pindah",
+      "phases": [
+        {
+          "timeframe": "12-18 bulan sebelumnya",
+          "title": "Perencanaan Awal & Pengajuan Visa",
+          "description": "Penelitian, permohonan visa, penilaian keterampilan",
+          "estimatedCost": "$2.000-$5.000 AUD"
+        },
+        {
+          "timeframe": "6-12 bulan sebelumnya",
+          "title": "Dokumentasi & Persiapan",
+          "description": "Pemeriksaan kesehatan, surat keterangan kepolisian, penerjemahan dokumen.",
+          "estimatedCost": "$500-$1.500 AUD"
+        },
+        {
+          "timeframe": "3-6 bulan sebelumnya",
+          "title": "Logistik & Pemesanan",
+          "description": "Pemesanan penerbangan, pengaturan pengiriman, akomodasi sementara",
+          "estimatedCost": "$3.000-$8.000 USD"
+        },
+        {
+          "timeframe": "1-3 bulan sebelumnya",
+          "title": "Persiapan Akhir",
+          "description": "Asuransi, pembayaran akhir, pengaturan menit-menit terakhir",
+          "estimatedCost": "$1.000-$3.000 AUD"
+        },
+        {
+          "timeframe": "Sesampainya disana",
+          "title": "Biaya Penyelesaian",
+          "description": "Uang muka rumah, pembelian awal, pengaturan transportasi",
+          "estimatedCost": "$2.000-$5.000 AUD"
+        }
+      ]
+    },
+    "conclusion": "Meskipun pindah ke Australia merupakan investasi yang signifikan, banyak ekspatriat merasa kualitas hidup yang tinggi, ekonomi yang kuat, dan lingkungan yang indah sangat sepadan dengan biayanya. Perencanaan dan penganggaran yang tepat akan membantu memastikan transisi yang lancar ke kehidupan baru Anda di Australia."
+  },
+  "jobGuide": {
+    "subtitle": "Panduan Lengkap",
+    "description": "Australia menawarkan banyak peluang bagi pekerja asing terampil, tetapi mendapatkan pekerjaan memerlukan persiapan dan pemenuhan persyaratan visa serta persyaratan dari pemberi kerja.",
+    "navigation": {
+      "title": "Daftar Isi Panduan"
+    },
+    "accessibility": {
+      "sectionButton": "Lihat bagian tentang {title}"
+    },
+    "sections": [
+      {
+        "id": "hak untuk bekerja",
+        "icon": "✅",
+        "title": "1. Hak untuk Bekerja",
+        "content": {
+          "description": "Anda memerlukan visa kerja yang sah. Pilihan umum:",
+          "visaOptions": {
+            "0": "<strong>Visa Kekurangan Keterampilan Sementara (TSS) (subkelas 482)</strong>",
+            "1": "<strong>Visa Pekerja Terampil Independen (subkelas 189)</strong>",
+            "2": "<strong>Visa Liburan Kerja (subkelas 417/462)</strong> – untuk dewasa muda (18–30/35 tahun)"
+          },
+          "conclusion": "Setiap visa memiliki persyaratan, durasi, dan ketentuan yang berbeda. Pastikan untuk meneliti visa yang paling sesuai dengan situasi Anda."
+        }
+      },
+      {
+        "id": "keterampilan-kualifikasi",
+        "icon": "🧠",
+        "title": "2. Keterampilan & Kualifikasi",
+        "content": {
+          "requirements": {
+            "0": "Profesi Anda harus tercantum dalam <strong>Daftar Pekerjaan Terampil (Skilled Occupation List/SOL)</strong> Australia.",
+            "1": "Pastikan kualifikasi Anda diakui oleh otoritas Australia.",
+            "2": "Kemampuan berbahasa Inggris (IELTS, PTE, dll.) mungkin diperlukan."
+          },
+          "popularFields": {
+            "title": "Bidang Pekerjaan Populer untuk Pekerja Asing:",
+            "fields": {
+              "0": {
+                "title": "Perawatan kesehatan",
+                "description": "Dokter, perawat, pekerja perawatan lansia"
+              },
+              "1": {
+                "title": "Teknologi Informasi & Teknologi",
+                "description": "Pengembang perangkat lunak, pakar keamanan siber"
+              },
+              "2": {
+                "title": "Rekayasa",
+                "description": "Insinyur sipil, mekanik, dan listrik."
+              },
+              "3": {
+                "title": "Keahlian Perdagangan",
+                "description": "Tukang listrik, tukang ledeng, tukang kayu"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "pencarian kerja",
+        "icon": "💻",
+        "title": "3. Tips Mencari Pekerjaan",
+        "content": {
+          "description": "Mencari pekerjaan di Australia membutuhkan pendekatan strategis:",
+          "jobPortals": {
+            "title": "Portal Lowongan Kerja Teratas:",
+            "portals": {
+              "0": "Mencari",
+              "1": "Memang benar, Australia",
+              "2": "LinkedIn",
+              "3": "CareerOne",
+              "4": "Jora",
+              "5": "Pekerjaan yang Beretika"
+            }
+          },
+          "proTips": {
+            "title": "Tips Profesional:",
+            "tips": {
+              "0": "Gunakan platform seperti Seek, Indeed Australia, dan LinkedIn.",
+              "1": "Lamar langsung ke perusahaan atau melalui agen perekrutan.",
+              "2": "Sesuaikan resume Anda dengan standar Australia.",
+              "3": "Jalinlah koneksi dengan para profesional di industri Anda.",
+              "4": "Pertimbangkan daerah-daerah regional yang mengalami kekurangan tenaga kerja terampil untuk mendapatkan peluang yang lebih baik."
+            }
+          }
+        }
+      },
+      {
+        "id": "sponsor",
+        "icon": "🤝",
+        "title": "4. Sponsorship",
+        "content": {
+          "description": "Beberapa perusahaan mensponsori pekerja terampil — terutama di bidang kesehatan, IT, teknik, dan perdagangan. Sponsorship membantu Anda mendapatkan visa.",
+          "types": {
+            "0": {
+              "title": "Skema Nominasi Pemberi Kerja:",
+              "points": {
+                "0": "Pihak pemberi kerja dapat mencalonkan Anda untuk mendapatkan izin tinggal tetap.",
+                "1": "Anda harus memenuhi persyaratan keterampilan dan kualifikasi.",
+                "2": "Biasanya membutuhkan pengalaman kerja minimal 3 tahun."
+              }
+            },
+            "1": {
+              "title": "Sponsor Visa TSS:",
+              "points": {
+                "0": "Posisi sementara untuk jangka waktu 2-4 tahun",
+                "1": "Dapat mengarah ke izin tinggal tetap.",
+                "2": "Pihak pemberi kerja harus membuktikan bahwa mereka tidak dapat menemukan tenaga kerja lokal."
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "dokumen",
+        "icon": "📄",
+        "title": "5. Dokumen yang Dibutuhkan",
+        "content": {
+          "requiredDocuments": {
+            "0": "Riwayat Hidup (CV)",
+            "1": "Surat lamaran",
+            "2": "Kualifikasi",
+            "3": "Referensi",
+            "4": "Konfirmasi visa/hak kerja"
+          },
+          "resumeTips": {
+            "title": "Tips Membuat Resume di Australia:",
+            "tips": {
+              "0": "Buatlah ringkas (maksimal 2-3 halaman)",
+              "1": "Sertakan ringkasan profesional.",
+              "2": "Fokus pada pencapaian, bukan hanya tanggung jawab.",
+              "3": "Tidak perlu foto (tidak seperti beberapa negara Eropa)",
+              "4": "Cantumkan nama pemberi referensi atau nyatakan \"Referensi tersedia atas permintaan\""
+            }
+          }
+        }
+      },
+      {
+        "id": "tempat kerja australia",
+        "icon": "🏢",
+        "title": "6. Memahami Budaya Tempat Kerja di Australia",
+        "content": {
+          "description": "Budaya tempat kerja di Australia memiliki beberapa karakteristik unik:",
+          "characteristics": {
+            "0": "<strong>Santai namun profesional</strong> - Orang Australia umumnya informal tetapi menganggap pekerjaan dengan serius",
+            "1": "<strong>Keseimbangan antara pekerjaan dan kehidupan pribadi</strong> - Sebagian besar perusahaan menghargai waktu pribadi dan menawarkan pengaturan kerja yang fleksibel",
+            "2": "<strong>Komunikasi Langsung</strong> - Orang Australia cenderung berkomunikasi secara langsung",
+            "3": "<strong>Berorientasi pada tim</strong> - Kolaborasi dan kerja tim sangat dihargai",
+            "4": "<strong>\"Sindrom bunga poppy tinggi\"</strong> - Promosi diri yang berlebihan dapat dipandang negatif"
+          }
+        }
+      },
+      {
+        "id": "ekspektasi gaji",
+        "icon": "💰",
+        "title": "7. Ekspektasi Gaji & Kondisi Kerja",
+        "content": {
+          "description": "Australia memiliki standar hidup yang tinggi dan gaji yang kompetitif.",
+          "keyFactsIntro": "Fakta-fakta penting:",
+          "keyFacts": {
+            "0": "Upah minimum termasuk yang tertinggi di dunia.",
+            "1": "Jam kerja standar per minggu adalah 38 jam.",
+            "2": "Cuti tahunan selama 4 minggu adalah standar.",
+            "3": "10 hari cuti pribadi/sakit berbayar",
+            "4": "Kontribusi dana pensiun dari pemberi kerja (saat ini 11%)"
+          },
+          "conclusion": "Telusuri standar industri untuk profesi Anda untuk memahami kisaran gaji yang kompetitif."
+        }
+      }
+    ],
+    "successStories": {
+      "title": "Kisah Sukses",
+      "stories": [
+        {
+          "flag": "🇮🇳",
+          "profession": "Insinyur Perangkat Lunak",
+          "origin": "Dari Mumbai ke Melbourne",
+          "story": "Berhasil mendapatkan pekerjaan di perusahaan rintisan teknologi dalam waktu 3 bulan setelah tiba dengan visa tenaga kerja terampil.",
+          "outcome": "Saat ini berpenghasilan AUD 95.000 per tahun"
+        },
+        {
+          "flag": "🇵🇭",
+          "profession": "Mantri kesehatan",
+          "origin": "Dari Manila ke Sydney",
+          "story": "Saya mendapat sponsor dari sebuah rumah sakit setelah bekerja dengan visa Working Holiday.",
+          "outcome": "Izin tinggal tetap diberikan dalam 18 bulan."
+        },
+        {
+          "flag": "🇬🇧",
+          "profession": "Teknisi Listrik Perdagangan",
+          "origin": "Dari London ke Perth",
+          "story": "Mendapatkan pekerjaan melalui portal lowongan kerja online dan berjejaring dengan para tukang lokal.",
+          "outcome": "Memulai bisnis kelistrikan sendiri dalam waktu 2 tahun."
+        },
+        {
+          "flag": "🇩🇪",
+          "profession": "Insinyur Sipil",
+          "origin": "Dari Berlin ke Brisbane",
+          "story": "Proses pengakuan kualifikasi memakan waktu 6 bulan, tetapi berhasil mengamankan peran di perusahaan konstruksi besar.",
+          "outcome": "Mengelola proyek infrastruktur senilai lebih dari AUD 50 juta."
+        }
+      ]
+    },
+    "industryInsights": {
+      "title": "Wawasan Pasar Kerja Industri",
+      "insights": [
+        {
+          "category": "Perawatan kesehatan",
+          "metric": "Pertumbuhan Lapangan Kerja",
+          "value": "+15,2%",
+          "description": "Proyeksi pertumbuhan selama 5 tahun ke depan"
+        },
+        {
+          "category": "Teknologi",
+          "metric": "Gaji Rata-rata",
+          "value": "AUD 95.000",
+          "description": "Untuk para profesional yang terampil"
+        },
+        {
+          "category": "Keahlian Perdagangan",
+          "metric": "Kekurangan Keterampilan",
+          "value": "Kritis",
+          "description": "Permintaan tinggi di seluruh negara bagian"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Daftar Periksa Akhir untuk Mendapatkan Pekerjaan di Australia",
+      "items": [
+        "Periksa apakah pekerjaan Anda termasuk dalam Daftar Pekerjaan Terampil.",
+        "Periksakan kualifikasi Anda ke otoritas Australia yang berwenang.",
+        "Ikuti tes kemampuan berbahasa Inggris jika diperlukan.",
+        "Perbarui resume Anda ke format Australia.",
+        "Persyaratan dan proses permohonan visa penelitian"
+      ]
+    },
+    "conclusion": {
+      "title": "Siap Bekerja di Australia?",
+      "description": "Dengan persiapan yang tepat dan kualifikasi yang sesuai, mendapatkan pekerjaan di Australia sebagai warga negara asing adalah hal yang mungkin. Perekonomian negara yang kuat, kualitas hidup yang tinggi, dan lingkungan multikultural menjadikannya tujuan yang menarik bagi para profesional yang mencari pengalaman internasional dan pertumbuhan karier."
+    }
+  },
+  "usToAustraliaGuide": {
+    "subtitle": "Semua yang Perlu Anda Ketahui",
+    "description": "Banyak warga Amerika pindah ke Australia untuk bekerja, belajar, atau perubahan gaya hidup. Meskipun budayanya serupa, ada langkah-langkah penting secara hukum dan praktis yang perlu dipertimbangkan.",
+    "navigation": {
+      "title": "Navigasi Cepat"
+    },
+    "accessibility": {
+      "sectionButton": "Navigasi ke bagian {title}"
+    },
+    "sections": [
+      {
+        "id": "mengapa-Australia",
+        "icon": "📌",
+        "title": "Mengapa Pindah ke Australia?",
+        "content": {
+          "description": "Warga Amerika tertarik ke Australia karena banyak alasan:",
+          "reasons": {
+            "0": "Kualitas hidup yang tinggi",
+            "1": "Ekonomi yang kuat dan peluang kerja",
+            "2": "Sistem perawatan kesehatan universal (Medicare)",
+            "3": "Pantai-pantai yang indah dan gaya hidup luar ruangan.",
+            "4": "Kesamaan budaya dengan gaya hidup Amerika"
+          },
+          "conclusion": "Baik Anda pindah untuk kemajuan karier, pendidikan, atau perubahan gaya hidup, Australia menawarkan lingkungan berbahasa Inggris dengan banyak kenyamanan yang familiar seperti di rumah."
+        }
+      },
+      {
+        "id": "pilihan visa",
+        "icon": "✈️",
+        "title": "Opsi Visa untuk Warga Negara AS",
+        "content": {
+          "description": "Warga Amerika <strong>harus memperoleh visa</strong> sebelum pindah ke Australia. Jenis visa yang umum meliputi:",
+          "visaTypes": {
+            "0": {
+              "title": "Visa Mandiri Terampil (subkelas 189)",
+              "points": {
+                "0": "Untuk para profesional di bidang yang sangat dibutuhkan.",
+                "1": "Sistem berbasis poin yang mengevaluasi usia, keterampilan, pendidikan, dan pengalaman.",
+                "2": "Jalur izin tinggal tetap",
+                "3": "Tidak perlu sponsor."
+              }
+            },
+            "1": {
+              "title": "Visa yang Disponsori oleh Perusahaan (subkelas 482)",
+              "points": {
+                "0": "Membutuhkan surat penawaran kerja dari perusahaan Australia.",
+                "1": "Izin tinggal sementara (2-4 tahun) dengan potensi jalur menuju izin tinggal tetap.",
+                "2": "Anda wajib menjadi sponsor dari perusahaan."
+              }
+            },
+            "2": {
+              "title": "Visa Pasangan/Suami/Istri",
+              "points": {
+                "0": "Bagi mereka yang bergabung dengan mitra Australia",
+                "1": "Termasuk pilihan untuk pasangan yang sudah menikah atau hubungan de facto.",
+                "2": "Mengarah ke izin tinggal tetap"
+              }
+            },
+            "3": {
+              "title": "Visa Pelajar (subkelas 500)",
+              "points": {
+                "0": "Untuk belajar di institusi Australia",
+                "1": "Memungkinkan jam kerja terbatas selama masa studi.",
+                "2": "Jalur potensial untuk mendapatkan visa kerja pasca-kelulusan"
+              }
+            },
+            "4": {
+              "title": "Visa Liburan Kerja (subkelas 462)",
+              "description": "Tersedia untuk warga Amerika berusia 18-30 tahun, memungkinkan hingga 12 bulan untuk bekerja dan berwisata di Australia."
+            }
+          }
+        }
+      },
+      {
+        "id": "dokumen yang dibutuhkan",
+        "icon": "🛂",
+        "title": "Persyaratan Utama",
+        "content": {
+          "description": "Saat mengajukan visa Australia, Anda biasanya memerlukan:",
+          "requirements": {
+            "0": "Paspor yang masih berlaku",
+            "1": "Bukti kemampuan berbahasa Inggris (untuk visa tertentu)",
+            "2": "Pemeriksaan kesehatan dan surat keterangan kepolisian",
+            "3": "Penilaian keterampilan/pendidikan (untuk visa tenaga terampil)",
+            "4": "Bukti dana (untuk visa pelajar dan visa sementara)",
+            "5": "Data biometrik",
+            "6": "Formulir permohonan visa yang telah diisi"
+          },
+          "note": "Persyaratan spesifik berbeda-beda tergantung jenis visa, jadi selalu periksa situs web Departemen Dalam Negeri Australia untuk informasi terbaru."
+        }
+      },
+      {
+        "id": "kota-kota populer",
+        "icon": "🏙️",
+        "title": "Di manakah sebagian besar warga Amerika tinggal di Australia?",
+        "content": {
+          "description": "Warga Amerika cenderung menetap di kota-kota populer di Australia berikut ini:",
+          "cities": {
+            "0": {
+              "name": "Sydney",
+              "icon": "🌊",
+              "highlights": {
+                "0": "Kota terbesar di Australia dengan landmark ikonik.",
+                "1": "Industri keuangan, teknologi, dan kreatif yang kuat.",
+                "2": "Pantai-pantai yang indah dan gaya hidup di pelabuhan."
+              }
+            },
+            "1": {
+              "name": "Melbourne",
+              "icon": "🎭",
+              "highlights": {
+                "0": "Ibu kota budaya dengan kancah seni yang berkembang pesat.",
+                "1": "Secara konsisten masuk dalam peringkat kota-kota paling layak huni di dunia.",
+                "2": "Makanan enak, kopi, dan acara olahraga"
+              }
+            },
+            "2": {
+              "name": "Brisbane",
+              "icon": "☀️",
+              "highlights": {
+                "0": "Iklim subtropis yang cerah",
+                "1": "Lebih terjangkau daripada Sydney atau Melbourne.",
+                "2": "Gaya hidup santai dengan pasar kerja yang berkembang."
+              }
+            },
+            "3": {
+              "name": "Perth",
+              "icon": "🌄",
+              "highlights": {
+                "0": "Kota terpencil namun dinamis di pantai barat.",
+                "1": "Sektor pertambangan dan sumber daya yang kuat",
+                "2": "Pantai-pantai yang indah dan iklim Mediterania."
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "biaya hidup",
+        "icon": "💰",
+        "title": "Biaya Pindah dan Hidup",
+        "content": {
+          "description": "Biaya awal dapat berkisar antara <strong>$5.000–$15.000 USD</strong>, tergantung pada biaya penerbangan, pengiriman, visa, dan akomodasi.",
+          "conclusion": "Biaya hidup di Australia sebanding dengan kota-kota besar di AS, meskipun biaya perawatan kesehatan umumnya lebih rendah berkat sistem Medicare."
+        }
+      },
+      {
+        "id": "perawatan kesehatan",
+        "icon": "🩺",
+        "title": "Pelayanan kesehatan di Australia",
+        "content": {
+          "paragraphs": {
+            "0": {
+              "type": "teks",
+              "content": "Australia memiliki sistem perawatan kesehatan universal yang disebut Medicare, yang menyediakan akses ke perawatan medis gratis atau bersubsidi."
+            },
+            "1": {
+              "type": "daftar",
+              "intro": "Sebagai penduduk tetap atau warga negara, Anda akan menerima kartu Medicare yang mencakup:",
+              "items": {
+                "0": "Perawatan gratis di rumah sakit umum",
+                "1": "Kunjungan dokter bersubsidi",
+                "2": "Sebagian besar obat resep dengan harga lebih murah."
+              }
+            },
+            "2": {
+              "type": "teks",
+              "content": "Banyak warga Australia juga membeli asuransi kesehatan swasta untuk perlindungan tambahan, waktu tunggu yang lebih singkat, dan perawatan di rumah sakit swasta."
+            },
+            "3": {
+              "type": "teks",
+              "content": "Pemegang visa sementara umumnya perlu mengatur asuransi kesehatan swasta sebagai syarat visa mereka."
+            }
+          }
+        }
+      },
+      {
+        "id": "gaya hidup",
+        "icon": "🏡",
+        "title": "Perbedaan Gaya Hidup",
+        "content": {
+          "differences": {
+            "0": "<strong>Kualitas hidup yang tinggi, layanan kesehatan publik (Medicare), dan hak-hak pekerja yang kuat</strong>",
+            "1": "<strong>Biaya hidup bisa tinggi di kota-kota besar seperti Sydney atau Melbourne</strong>",
+            "2": "Mengemudi dilakukan di sisi kiri jalan.",
+            "3": "Cuti tahunan lebih banyak (standar 4 minggu) dan keseimbangan kerja-hidup yang lebih baik.",
+            "4": "Sistem metrik digunakan untuk semua pengukuran.",
+            "5": "Kalender sekolah yang berbeda (tahun ajaran biasanya berlangsung dari Februari hingga Desember)",
+            "6": "Budaya kopi yang lebih kuat dan pemandangan kuliner yang unik."
+          },
+          "note": "Meskipun budayanya serupa, orang Amerika sering kali memperhatikan perbedaan dalam bahasa gaul, humor, dan sikap orang Australia yang lebih santai terhadap pekerjaan dan kehidupan."
+        }
+      },
+      {
+        "id": "pindah",
+        "icon": "📦",
+        "title": "Pindahan & Pengiriman dari AS",
+        "content": {
+          "sections": {
+            "0": {
+              "title": "Opsi Pengiriman:",
+              "items": {
+                "0": "<strong>Pengiriman barang melalui laut:</strong> Paling ekonomis untuk pengiriman dalam jumlah besar (3.000-7.000 dolar AS untuk apartemen kecil)",
+                "1": "<strong>Pengiriman barang lewat udara:</strong> Lebih cepat tetapi lebih mahal (1.500-3.000 dolar AS untuk barang-barang penting)",
+                "2": "<strong>Kontainer pengiriman:</strong> Tersedia pilihan 20 kaki atau 40 kaki, tergantung pada jumlah barang yang Anda bawa"
+              }
+            },
+            "1": {
+              "title": "Pertimbangan Penting:",
+              "items": {
+                "0": "Australia memiliki undang-undang biosekuritas yang ketat - bersihkan barang secara menyeluruh sebelum pengiriman.",
+                "1": "Peralatan listrik memerlukan adaptor (Australia menggunakan tegangan 230V dengan colokan tipe I).",
+                "2": "Pertimbangkan untuk menjual furnitur besar dan membeli yang baru di Australia.",
+                "3": "Impor hewan peliharaan memerlukan persiapan berbulan-bulan sebelumnya (vaksin, mikrocip, izin)."
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "perbankan",
+        "icon": "🏦",
+        "title": "Perbankan & Keuangan",
+        "content": {
+          "intro": "Mengatur keuangan Anda di Australia:",
+          "points": {
+            "0": "Anda dapat membuka rekening bank Australia hingga 3 bulan sebelum kedatangan.",
+            "1": "Bank-bank besar meliputi Commonwealth Bank, ANZ, Westpac, dan NAB.",
+            "2": "Anda akan membutuhkan paspor, dokumen visa, dan bukti alamat.",
+            "3": "Pertimbangkan layanan transfer uang internasional seperti Wise untuk mengkonversi USD ke AUD.",
+            "4": "Tahun pajak Australia berlangsung dari tanggal 1 Juli hingga 30 Juni.",
+            "5": "Anda memerlukan Nomor Pokok Wajib Pajak (NPWP) untuk bekerja secara legal."
+          },
+          "conclusion": "Mata uang: Dolar Australia (AUD). Kartu kredit diterima secara luas, dan pembayaran tanpa kontak sangat umum."
+        }
+      }
+    ],
+    "costComparison": {
+      "headers": {
+        "expense": "Pengeluaran",
+        "australia": "Australia (rata-rata)",
+        "usa": "Amerika Serikat (rata-rata)"
+      },
+      "rows": [
+        {
+          "expense": "Sewa (1 kamar tidur, pusat kota)",
+          "australia": "$1.200–$1.800/bulan",
+          "usa": "$1.500–$2.000"
+        },
+        {
+          "expense": "Biaya utilitas (bulanan)",
+          "australia": "$150–$200",
+          "usa": "$150–$200"
+        },
+        {
+          "expense": "Makan di luar (untuk 2 orang)",
+          "australia": "$60–$100",
+          "usa": "$50–$100"
+        },
+        {
+          "expense": "Angkutan",
+          "australia": "$100–$150/bulan",
+          "usa": "$70–$150"
+        }
+      ]
+    },
+    "stateComparison": {
+      "title": "Negara Bagian AS vs Negara Bagian Australia",
+      "comparisons": [
+        {
+          "ausIcon": "🦘",
+          "usIcon": "🗽",
+          "comparison": "NSW vs New York",
+          "description": "Kesamaan kepadatan penduduk dan gaya hidup perkotaan"
+        },
+        {
+          "ausIcon": "☕",
+          "usIcon": "🌉",
+          "comparison": "Victoria vs California",
+          "description": "Pusat budaya dengan populasi yang beragam"
+        },
+        {
+          "ausIcon": "🌴",
+          "usIcon": "🌴",
+          "comparison": "Queensland vs Florida",
+          "description": "Iklim tropis dan industri pariwisata"
+        },
+        {
+          "ausIcon": "⛏️",
+          "usIcon": "🤠",
+          "comparison": "WA vs Texas",
+          "description": "Negara-negara kaya sumber daya dengan ekonomi pertambangan"
+        },
+        {
+          "ausIcon": "🍷",
+          "usIcon": "🍷",
+          "comparison": "SA vs Napa Valley",
+          "description": "Daerah penghasil anggur dengan iklim Mediterania"
+        },
+        {
+          "ausIcon": "🏔️",
+          "usIcon": "🏔️",
+          "comparison": "Tasmania vs Vermont",
+          "description": "Iklim yang lebih sejuk dan keindahan alam"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Jadwal Kepindahan: 12 Bulan Sebelum Keberangkatan",
+      "phases": [
+        {
+          "timeframe": "12 bulan sebelumnya",
+          "title": "Penelitian & Perencanaan",
+          "description": "Telusuri opsi visa, nilai kualifikasi, dan mulai penilaian keterampilan jika diperlukan."
+        },
+        {
+          "timeframe": "9-10 bulan sebelumnya",
+          "title": "Permohonan Visa",
+          "description": "Ajukan permohonan visa, kumpulkan dokumen yang diperlukan, dan lakukan pemeriksaan kesehatan."
+        },
+        {
+          "timeframe": "6-8 bulan sebelumnya",
+          "title": "Mencari dan Mempersiapkan Pekerjaan",
+          "description": "Mulai melamar pekerjaan, berjejaring dengan para profesional Australia, teliti kota-kota"
+        },
+        {
+          "timeframe": "3-4 bulan sebelumnya",
+          "title": "Perencanaan Logistik",
+          "description": "Pesan tiket pesawat, atur pengiriman barang, dan amankan akomodasi sementara."
+        },
+        {
+          "timeframe": "1-2 bulan sebelumnya",
+          "title": "Persiapan Akhir",
+          "description": "Buka rekening bank Australia, atur asuransi, selesaikan detail kepindahan."
+        },
+        {
+          "timeframe": "Sesampainya disana",
+          "title": "Hunian",
+          "description": "Ajukan permohonan TFN dan Medicare, cari tempat tinggal tetap, daftarkan diri untuk layanan lokal."
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Daftar Periksa Akhir untuk Warga Amerika yang Pindah ke Australia",
+      "items": [
+        "Lakukan riset dan ajukan permohonan visa yang sesuai.",
+        "Lakukan pemeriksaan kesehatan dan surat keterangan kepolisian.",
+        "Mengatur pengiriman atau penyimpanan barang-barang",
+        "Buka rekening bank Australia",
+        "Akomodasi yang aman (sementara atau permanen)",
+        "Atur cakupan asuransi kesehatan.",
+        "Ajukan Nomor Pokok Wajib Pajak (NPWP) dan kartu Medicare (jika memenuhi syarat)."
+      ]
+    },
+    "conclusion": {
+      "title": "Kesimpulan: Apakah Pindah ke Australia dari AS Layak Dipertimbangkan?",
+      "description": "Bagi banyak warga Amerika, Australia menawarkan keseimbangan yang menarik antara budaya yang familiar dan pengalaman baru, dengan kualitas hidup yang sangat baik, perlindungan pekerja yang kuat, dan lingkungan alam yang indah. Meskipun kepindahan ini membutuhkan perencanaan yang cermat dan biaya awal yang signifikan, banyak ekspatriat merasa transisi ini bermanfaat, dengan keseimbangan kerja-hidup yang lebih baik dan peluang baru."
+    }
+  },
+  "australiaRequirements": {
+    "description": "Jika Anda berencana pindah ke Australia, berikut adalah persyaratan utama yang harus Anda penuhi:",
+    "navigation": {
+      "title": "Navigasi Cepat",
+      "expandAll": "Perluas Semua",
+      "collapseAll": "Ciutkan Semua"
+    },
+    "accessibility": {
+      "sectionButton": "Alihkan bagian {judul}"
+    },
+    "sections": [
+      {
+        "id": "Visa",
+        "icon": "🛂",
+        "title": "Visa yang berlaku",
+        "shortTitle": "Visa",
+        "content": {
+          "0": {
+            "type": "ayat",
+            "text": "Anda harus mengajukan dan mendapatkan visa yang sesuai sebelum memasuki Australia — seperti visa tenaga kerja terampil, visa pelajar, visa pasangan, atau visa kerja yang disponsori."
+          }
+        }
+      },
+      {
+        "id": "karakter kesehatan",
+        "icon": "🔍",
+        "title": "Pemeriksaan Kesehatan & Karakter",
+        "shortTitle": "Pemeriksaan Kesehatan",
+        "content": {
+          "0": {
+            "type": "daftar",
+            "items": {
+              "0": "<strong>Pemeriksaan medis</strong> mungkin diperlukan tergantung pada visa Anda.",
+              "1": "<strong>Surat keterangan kepolisian</strong> dari negara-negara tempat Anda tinggal selama 12 bulan atau lebih dalam 10 tahun terakhir.",
+              "2": "Anda tidak boleh memiliki catatan kriminal yang serius."
+            }
+          }
+        }
+      },
+      {
+        "id": "dana",
+        "icon": "💵",
+        "title": "Bukti Dana",
+        "shortTitle": "Dana",
+        "content": {
+          "0": {
+            "type": "ayat",
+            "text": "Beberapa jenis visa (misalnya, visa pelajar atau visa tenaga ahli) memerlukan bukti bahwa Anda dapat menghidupi diri sendiri secara finansial setelah tiba."
+          }
+        }
+      },
+      {
+        "id": "bahasa inggris",
+        "icon": "🗣️",
+        "title": "Kemampuan Bahasa Inggris",
+        "shortTitle": "Bahasa inggris",
+        "content": {
+          "0": {
+            "type": "ayat",
+            "text": "Sebagian besar visa memerlukan bukti kemampuan berbahasa Inggris (IELTS, TOEFL, atau yang setara) — terutama untuk visa tenaga terampil dan visa pelajar."
+          }
+        }
+      },
+      {
+        "id": "keterampilan",
+        "icon": "📋",
+        "title": "Penilaian Keterampilan",
+        "shortTitle": "Keterampilan",
+        "content": {
+          "0": {
+            "type": "ayat",
+            "text": "Untuk visa migrasi tenaga terampil, Anda harus mendapatkan penilaian kualifikasi dari otoritas Australia yang relevan dengan profesi Anda."
+          }
+        }
+      },
+      {
+        "id": "bepergian",
+        "icon": "✈️",
+        "title": "Dokumen Perjalanan",
+        "shortTitle": "Dokumen",
+        "content": {
+          "0": {
+            "type": "daftar",
+            "items": {
+              "0": "Paspor yang masih berlaku",
+              "1": "Asuransi perjalanan (disarankan)"
+            }
+          }
+        }
+      }
+    ],
+    "additionalRequirements": {
+      "title": "Persyaratan Tambahan berdasarkan Jenis Visa",
+      "items": [
+        {
+          "icon": "🎓",
+          "title": "Visa Pelajar",
+          "description": "Konfirmasi Pendaftaran (CoE), Asuransi Kesehatan Pelajar Luar Negeri (OSHC), kriteria pelamar sementara yang sah.",
+          "note": "Wajib mengikuti studi penuh waktu."
+        },
+        {
+          "icon": "💼",
+          "title": "Visa Kerja",
+          "description": "Surat penawaran kerja dari pemberi kerja yang disetujui, pengalaman kerja yang relevan, dan pekerjaan yang termasuk dalam daftar tenaga terampil.",
+          "note": "Diperlukan sponsor dari perusahaan."
+        },
+        {
+          "icon": "👨‍👩‍👧‍👦",
+          "title": "Visa Keluarga",
+          "description": "Bukti hubungan, persyaratan sponsor, komitmen dukungan keuangan",
+          "note": "Waktu pemrosesan bervariasi."
+        },
+        {
+          "icon": "🏠",
+          "title": "Visa Investor",
+          "description": "Ambang batas investasi minimum, pengalaman bisnis, nominasi negara bagian",
+          "note": "Persyaratan keuangan yang tinggi"
+        }
+      ]
+    },
+    "visaTypes": {
+      "title": "Panduan Singkat Jenis-Jenis Visa Umum",
+      "types": [
+        {
+          "icon": "🎯",
+          "name": "Terampil dan Mandiri (189)",
+          "description": "Visa permanen berbasis poin",
+          "duration": "Permanen",
+          "difficulty": "Tinggi"
+        },
+        {
+          "icon": "🤝",
+          "name": "Disponsori oleh Pemberi Kerja (482)",
+          "description": "Visa kerja sementara dengan sponsor.",
+          "duration": "2-4 tahun",
+          "difficulty": "Sedang"
+        },
+        {
+          "icon": "🎓",
+          "name": "Mahasiswa (500)",
+          "description": "Belajar di institusi Australia",
+          "duration": "Periode studi",
+          "difficulty": "Rendah"
+        },
+        {
+          "icon": "💑",
+          "name": "Mitra (820/801)",
+          "description": "Untuk suami/istri/pasangan de facto",
+          "duration": "Permanen",
+          "difficulty": "Sedang"
+        },
+        {
+          "icon": "🌟",
+          "name": "Liburan Kerja (417)",
+          "description": "Pekerjaan dan perjalanan untuk kaum muda",
+          "duration": "1 tahun",
+          "difficulty": "Rendah"
+        },
+        {
+          "icon": "💰",
+          "name": "Inovasi Bisnis (188)",
+          "description": "Untuk pengusaha dan investor",
+          "duration": "4 tahun",
+          "difficulty": "Tinggi"
+        }
+      ]
+    },
+    "tips": {
+      "title": "Tips Penting",
+      "items": [
+        "Mulailah proses pengajuan visa Anda lebih awal karena beberapa visa membutuhkan waktu berbulan-bulan untuk diproses.",
+        "Jaga agar semua dokumen penting Anda tertata rapi dan dicadangkan secara digital.",
+        "Telusuri persyaratan khusus untuk jenis visa Anda di situs web Departemen Dalam Negeri Australia.",
+        "Pertimbangkan untuk mendapatkan nasihat migrasi profesional untuk kasus-kasus yang kompleks.",
+        "Periksa waktu pemrosesan secara berkala karena dapat berubah.",
+        "Pastikan semua dokumen diterjemahkan dan disertifikasi jika tidak dalam bahasa Inggris."
+      ]
+    },
+    "summary": {
+      "title": "Daftar Periksa Singkat",
+      "description": "Ingatlah persyaratan penting ini untuk pengajuan visa Australia yang sukses:",
+      "keyPoints": [
+        "Paspor yang masih berlaku (6+ bulan)",
+        "Permohonan visa yang sesuai",
+        "Pemeriksaan kesehatan dan karakter",
+        "Bukti kemampuan berbahasa Inggris",
+        "Bukti keuangan",
+        "Penilaian keterampilan (jika diperlukan)",
+        "Asuransi perjalanan",
+        "Semua dokumen telah dis认证."
+      ]
+    }
+  },
+  "australiaVisaGuide": {
+    "description": "Jika Anda berencana pindah ke Australia, Anda memerlukan visa yang tepat. Berikut adalah pilihan visa yang paling umum berdasarkan tujuan kunjungan Anda:",
+    "labels": {
+      "idealFor": "Ideal untuk",
+      "duration": "Lamanya",
+      "pathway": "Jalan",
+      "visaTypes": "Jenis Visa",
+      "requirements": "Persyaratan",
+      "benefits": "Manfaat",
+      "processingTime": "Waktu pengerjaan"
+    },
+    "controls": {
+      "expandAll": "Perluas Semua",
+      "collapseAll": "Ciutkan Semua"
+    },
+    "compare": {
+      "enable": "Bandingkan Visa",
+      "exit": "Keluar dari Mode Perbandingan",
+      "select": "Memilih",
+      "selected": "Terpilih",
+      "table": {
+        "title": "Perbandingan Visa",
+        "headers": {
+          "type": "Jenis Visa",
+          "duration": "Lamanya",
+          "pathway": "Jalan",
+          "idealFor": "Ideal untuk"
+        }
+      }
+    },
+    "visas": [
+      {
+        "id": "migrasi terampil",
+        "icon": "🎯",
+        "title": "Visa Migrasi Tenaga Terampil",
+        "category": "Visa Profesional",
+        "idealFor": "Para profesional dengan keterampilan yang dibutuhkan.",
+        "duration": "Permanen",
+        "pathway": "Permanen",
+        "visaTypes": {
+          "0": {
+            "name": "Visa Mandiri Terampil",
+            "description": "Berbasis poin; tidak perlu tawaran pekerjaan.",
+            "subclass": "189"
+          },
+          "1": {
+            "name": "Visa Nominasi Tenaga Terampil",
+            "description": "Membutuhkan nominasi dari negara bagian atau wilayah Australia.",
+            "subclass": "190"
+          },
+          "2": {
+            "name": "Visa Kerja Terampil Regional",
+            "description": "Untuk tinggal dan bekerja di wilayah pedesaan Australia; diperlukan sponsor dari negara bagian atau keluarga.",
+            "subclass": "491"
+          }
+        },
+        "requirements": {
+          "0": "Penilaian keterampilan untuk pekerjaan yang dinominasikan",
+          "1": "Kemampuan berbahasa Inggris",
+          "2": "Usia di bawah 45 tahun",
+          "3": "Penuhi ambang batas tes poin (saat ini 65 poin)",
+          "4": "Persyaratan kesehatan dan karakter"
+        },
+        "benefits": {
+          "0": "Jalur izin tinggal tetap",
+          "1": "Bekerja dan belajar di mana saja di Australia.",
+          "2": "Akses ke Medicare",
+          "3": "Jalur menuju kewarganegaraan setelah 4 tahun"
+        },
+        "processingTime": "8-12 bulan untuk sebagian besar aplikasi"
+      },
+      {
+        "id": "disponsori oleh perusahaan",
+        "icon": "🤝",
+        "title": "Visa yang Disponsori oleh Perusahaan",
+        "category": "Visa Kerja",
+        "idealFor": "Orang-orang yang memiliki tawaran pekerjaan dari perusahaan Australia.",
+        "duration": "2-4 tahun",
+        "pathway": "Kontrak Sementara Menjadi Permanen",
+        "visaTypes": {
+          "0": {
+            "name": "Visa Kekurangan Keterampilan Sementara",
+            "description": "Membutuhkan sponsor dan berlaku selama 2–4 tahun.",
+            "subclass": "482"
+          },
+          "1": {
+            "name": "Skema Nominasi Pemberi Kerja",
+            "description": "Visa permanen untuk pekerja terampil yang dinominasikan oleh pemberi kerja yang disetujui.",
+            "subclass": "186"
+          }
+        },
+        "requirements": {
+          "0": "Tawaran pekerjaan dari perusahaan Australia yang terakreditasi.",
+          "1": "Keterampilan dan kualifikasi yang relevan",
+          "2": "Kemampuan berbahasa Inggris",
+          "3": "Persyaratan kesehatan dan karakter",
+          "4": "Pekerjaan yang tercantum dalam daftar pekerjaan terampil yang relevan."
+        },
+        "benefits": {
+          "0": "Jalur langsung untuk bekerja di Australia",
+          "1": "Anggota keluarga dapat menemani.",
+          "2": "Jalur menuju izin tinggal tetap",
+          "3": "Tidak diperlukan tes poin."
+        },
+        "processingTime": "3-6 bulan untuk TSS, 8-12 bulan untuk ENS"
+      },
+      {
+        "id": "murid",
+        "icon": "🎓",
+        "title": "Visa Pelajar",
+        "category": "Visa Pendidikan",
+        "idealFor": "Mereka yang terdaftar di lembaga pendidikan Australia",
+        "duration": "Masa studi + 1-4 tahun",
+        "pathway": "Sementara",
+        "visaTypes": {
+          "0": {
+            "name": "Visa Pelajar",
+            "description": "Untuk studi di institusi Australia. Memungkinkan kerja paruh waktu sambil belajar.",
+            "subclass": "500"
+          }
+        },
+        "requirements": {
+          "0": "Konfirmasi Pendaftaran (CoE)",
+          "1": "Persyaratan Peserta Sementara Asli (Genuine Temporary Entrant/GTE)",
+          "2": "Kemampuan berbahasa Inggris",
+          "3": "Kapasitas keuangan",
+          "4": "Asuransi Kesehatan Pelajar Luar Negeri (OSHC)"
+        },
+        "benefits": {
+          "0": "Belajar di institusi kelas dunia.",
+          "1": "Bekerja hingga 48 jam per dua minggu.",
+          "2": "Jalur menuju visa kerja pasca-kelulusan",
+          "3": "Rasakan budaya Australia."
+        },
+        "processingTime": "Sebagian besar aplikasi membutuhkan waktu 4-8 minggu."
+      },
+      {
+        "id": "pasangan keluarga",
+        "icon": "👨‍👩‍👧‍👦",
+        "title": "Visa Keluarga & Pasangan",
+        "category": "Visa Keluarga",
+        "idealFor": "Mereka yang memiliki keluarga atau pasangan di Australia",
+        "duration": "Permanen",
+        "pathway": "Permanen",
+        "visaTypes": {
+          "0": {
+            "name": "Visa Pasangan (Di Dalam Negeri)",
+            "subclass": "820/801",
+            "description": "Untuk pasangan suami istri atau pasangan de facto dari warga negara Australia atau penduduk tetap."
+          },
+          "1": {
+            "name": "Visa Pasangan (Luar Negeri)",
+            "subclass": "309/100",
+            "description": "Untuk pasangan suami istri atau pasangan de facto yang mengajukan permohonan dari luar Australia"
+          },
+          "2": {
+            "name": "Visa Orang Tua dan Anak",
+            "subclass": "Bermacam-macam",
+            "description": "Untuk anggota keluarga dekat warga negara Australia atau pemegang PR (Permanent Resident)."
+          }
+        },
+        "requirements": {
+          "0": "Bukti hubungan yang tulus",
+          "1": "Sponsor harus warga negara Australia/pemegang izin tinggal tetap.",
+          "2": "Persyaratan kesehatan dan karakter",
+          "3": "Komitmen dukungan keuangan",
+          "4": "Asuransi kesehatan yang memadai"
+        },
+        "benefits": {
+          "0": "Izin tinggal tetap",
+          "1": "Hak untuk bekerja dan belajar",
+          "2": "Akses ke Medicare dan layanan sosial",
+          "3": "Jalur menuju kewarganegaraan"
+        },
+        "processingTime": "12-24 bulan untuk visa pasangan"
+      },
+      {
+        "id": "investasi bisnis",
+        "icon": "💼",
+        "title": "Visa Bisnis & Investasi",
+        "category": "Visa Bisnis",
+        "idealFor": "Individu yang ingin berinvestasi atau menjalankan bisnis di Australia",
+        "duration": "4 tahun",
+        "pathway": "Kontrak Sementara Menjadi Permanen",
+        "visaTypes": {
+          "0": {
+            "name": "Visa Inovasi Bisnis dan Investasi",
+            "description": "Berujung pada izin tinggal tetap (subkelas 888) di kemudian hari",
+            "subclass": "188"
+          }
+        },
+        "requirements": {
+          "0": "Latar belakang bisnis atau investasi yang sukses",
+          "1": "Memenuhi persyaratan usia, kemampuan berbahasa Inggris, dan kesehatan.",
+          "2": "Nilai minimum aset bersih bisnis dan pribadi",
+          "3": "Nominasi negara bagian atau wilayah",
+          "4": "Komitmen untuk mempertahankan bisnis/investasi di Australia"
+        },
+        "benefits": {
+          "0": "Jalur menuju izin tinggal tetap",
+          "1": "Peluang bisnis di ekonomi yang stabil",
+          "2": "Akses ke pasar Australia",
+          "3": "Pendidikan berkualitas untuk anak-anak"
+        },
+        "processingTime": "8-12 bulan untuk visa awal"
+      }
+    ],
+    "helper": {
+      "title": "Visa Mana yang Tepat untuk Anda?",
+      "scenarios": [
+        {
+          "icon": "🎯",
+          "situation": "Saya seorang profesional yang terampil.",
+          "description": "Anda memiliki kualifikasi di bidang pekerjaan yang banyak dibutuhkan.",
+          "recommendation": "Pertimbangkan Visa Migrasi Terampil (189/190/491)"
+        },
+        {
+          "icon": "💼",
+          "situation": "Saya mendapat tawaran pekerjaan",
+          "description": "Seorang pengusaha Australia ingin mempekerjakan Anda.",
+          "recommendation": "Ajukan Visa yang Disponsori Perusahaan (482/186)"
+        },
+        {
+          "icon": "🎓",
+          "situation": "Saya ingin belajar",
+          "description": "Anda berencana untuk melanjutkan pendidikan di Australia.",
+          "recommendation": "Visa Pelajar (500) dengan hak kerja"
+        },
+        {
+          "icon": "💕",
+          "situation": "Saya punya keluarga di Australia.",
+          "description": "Anda menikah dengan atau menjalin hubungan dengan warga negara Australia.",
+          "recommendation": "Visa Pasangan (820/801 atau 309/100)"
+        },
+        {
+          "icon": "🏢",
+          "situation": "Saya ingin memulai bisnis.",
+          "description": "Anda memiliki pengalaman bisnis dan modal investasi.",
+          "recommendation": "Visa Inovasi Bisnis (188)"
+        },
+        {
+          "icon": "🌟",
+          "situation": "Saya masih muda dan ingin bepergian.",
+          "description": "Anda berusia 18-30 tahun dan berasal dari negara yang memenuhi syarat.",
+          "recommendation": "Visa Liburan Kerja (417/462)"
+        }
+      ]
+    },
+    "processingTimes": {
+      "title": "Waktu Pemrosesan Saat Ini",
+      "averageTime": "Waktu Rata-rata",
+      "disclaimer": "Waktu pemrosesan adalah perkiraan dan dapat bervariasi tergantung pada keadaan individu dan kelengkapan aplikasi.",
+      "visaTypes": [
+        {
+          "type": "Terampil dan Mandiri (189)",
+          "time": "8-12 bulan",
+          "note": "Tergantung pada pekerjaan dan poin."
+        },
+        {
+          "type": "Disponsori oleh Pemberi Kerja (482)",
+          "time": "3-6 bulan",
+          "note": "Lebih cepat dengan dokumentasi lengkap."
+        },
+        {
+          "type": "Mahasiswa (500)",
+          "time": "4-8 minggu",
+          "note": "Waktu puncak mungkin lebih lama."
+        },
+        {
+          "type": "Mitra (820/801)",
+          "time": "12-24 bulan",
+          "note": "Kasus-kasus kompleks membutuhkan waktu lebih lama."
+        },
+        {
+          "type": "Bisnis (188)",
+          "time": "8-12 bulan",
+          "note": "Nominasi negara bagian menambah waktu"
+        },
+        {
+          "type": "Liburan Kerja (417)",
+          "time": "1-4 minggu",
+          "note": "Biasanya diproses dengan cepat."
+        }
+      ]
+    }
+  },
+  "ukToAustraliaGuide": {
+    "subtitle": "Yang Perlu Anda Ketahui",
+    "description": "Pindah dari Inggris ke Australia populer karena kesamaan budaya, bahasa yang sama, dan ikatan ekonomi yang kuat. Namun, kepindahan ini membutuhkan perencanaan dan visa yang tepat. Panduan ini mencakup semua yang perlu Anda ketahui tentang pindah ke Australia.",
+    "navigation": {
+      "title": "Navigasi Cepat"
+    },
+    "accessibility": {
+      "sectionButton": "Navigasi ke bagian {title}"
+    },
+    "sections": [
+      {
+        "id": "mengapa pindah",
+        "icon": "🧳",
+        "title": "Mengapa Pindah ke Australia?",
+        "content": {
+          "description": "Pindah dari Inggris ke Australia populer karena kesamaan budaya, bahasa yang sama, dan ikatan ekonomi yang kuat. Namun, kepindahan ini tetap membutuhkan perencanaan dan visa yang tepat.",
+          "reasons": {
+            "0": "Kesamaan budaya dan bahasa",
+            "1": "Peluang ekonomi yang kuat",
+            "2": "Kualitas hidup yang lebih tinggi dan gaya hidup di luar ruangan.",
+            "3": "Cuaca lebih baik dan pemandangan indah",
+            "4": "Komunitas ekspatriat Inggris yang sudah mapan"
+          },
+          "conclusion": "Langkah ini membutuhkan perencanaan yang cermat, terutama terkait visa dan pilihan pekerjaan."
+        }
+      },
+      {
+        "id": "persyaratan visa",
+        "icon": "🛂",
+        "title": "Persyaratan Visa",
+        "content": {
+          "description": "Warga negara Inggris memerlukan visa untuk tinggal, bekerja, atau belajar di Australia. Pilihan visa yang populer meliputi:",
+          "visaTypes": {
+            "0": {
+              "title": "Visa Mandiri Terampil (subkelas 189)",
+              "description": "Untuk pekerja di bidang pekerjaan yang sangat dibutuhkan tanpa memerlukan sponsor.",
+              "keyPointsTitle": "Poin-poin penting:",
+              "keyPoints": {
+                "0": "Harus mendapatkan poin yang cukup pada penilaian keterampilan.",
+                "1": "Tidak perlu sponsor.",
+                "2": "Jalur izin tinggal tetap",
+                "3": "Harus berusia di bawah 45 tahun."
+              }
+            },
+            "1": {
+              "title": "Visa Nominasi Tenaga Terampil (subkelas 190)",
+              "description": "Dinominasikan oleh negara bagian dengan waktu pemrosesan yang lebih cepat.",
+              "keyPoints": {
+                "0": "Membutuhkan nominasi dari negara bagian atau wilayah Australia.",
+                "1": "Poin tambahan untuk nominasi negara bagian",
+                "2": "Mungkin memerlukan komitmen untuk tinggal di negara bagian yang mencalonkan."
+              }
+            },
+            "2": {
+              "title": "Visa yang Disponsori oleh Perusahaan (subkelas 482)",
+              "description": "Membutuhkan tawaran pekerjaan dari perusahaan Australia.",
+              "keyPoints": {
+                "0": "Visa sementara untuk kekurangan keterampilan",
+                "1": "Pemberi kerja harus merupakan sponsor yang disetujui.",
+                "2": "Posisi harus tercantum dalam daftar pekerjaan terampil.",
+                "3": "Dapat berujung pada izin tinggal tetap setelah jangka waktu tertentu."
+              }
+            },
+            "3": {
+              "title": "Visa Liburan Kerja (subkelas 417)",
+              "description": "Untuk mereka yang berusia 18–35 tahun, berlaku hingga 3 tahun.",
+              "keyPoints": {
+                "0": "Awalnya 12 bulan",
+                "1": "Dapat diperpanjang dua kali dengan pekerjaan regional.",
+                "2": "Memungkinkan bekerja dengan satu perusahaan hingga 6 bulan.",
+                "3": "Cara yang bagus untuk merasakan pengalaman Australia sebelum memutuskan untuk menetap."
+              }
+            },
+            "4": {
+              "title": "Visa Pasangan atau Keluarga",
+              "description": "Jika Anda memiliki kerabat dekat atau pasangan di Australia",
+              "keyPoints": {
+                "0": "Visa pasangan untuk pasangan atau pasangan de facto",
+                "1": "Visa orang tua untuk orang tua warga negara Australia",
+                "2": "Visa anak untuk anak tanggungan"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "persyaratan lainnya",
+        "icon": "🧾",
+        "title": "Persyaratan Lainnya",
+        "content": {
+          "requirements": {
+            "0": "Paspor Inggris yang masih berlaku",
+            "1": "Pemeriksaan kesehatan & sertifikat karakter (kepolisian)",
+            "2": "Bukti kemampuan berbahasa Inggris (untuk visa tertentu)",
+            "3": "Pengakuan keterampilan atau gelar (jika melamar melalui jalur visa tenaga terampil)",
+            "4": "Bukti dana (khususnya untuk visa sementara atau visa pelajar)"
+          },
+          "tip": "<strong>Tips:</strong> Mulailah mengumpulkan dokumen-dokumen ini sedini mungkin, karena beberapa di antaranya (seperti surat keterangan polisi) membutuhkan waktu beberapa minggu untuk diperoleh."
+        }
+      },
+      {
+        "id": "memindahkan biaya",
+        "icon": "💰",
+        "title": "Biaya Pindah Rumah",
+        "content": {
+          "description": "Perkirakan biaya yang dibutuhkan adalah <strong>£5.000–£12.000</strong>, termasuk biaya visa, tiket pesawat, uang muka sewa rumah, dan biaya hidup awal.",
+          "tip": "<strong>Tips:</strong> Banyak permohonan visa memerlukan bukti bahwa Anda memiliki dana yang cukup untuk menghidupi diri sendiri pada awalnya. Siapkan rekening koran untuk ditunjukkan."
+        }
+      },
+      {
+        "id": "gaya hidup",
+        "icon": "🌏",
+        "title": "Catatan Gaya Hidup",
+        "content": {
+          "aspects": {
+            "0": {
+              "title": "Iklim",
+              "description": "Iklimnya sangat beragam; kota-kota seperti Sydney dan Perth memiliki musim panas yang terik, sementara Melbourne dikenal dengan \"empat musim dalam satu hari.\" Wilayah utara beriklim tropis, sedangkan Tasmania lebih sejuk."
+            },
+            "1": {
+              "title": "Budaya Kerja",
+              "description": "Australia memiliki budaya kerja yang santai namun tetap mempertahankan standar profesional yang tinggi. Keseimbangan antara kehidupan kerja dan kehidupan pribadi sangat dihargai, dengan banyak bisnis yang tutup lebih awal daripada di Inggris."
+            },
+            "2": {
+              "title": "Perawatan kesehatan",
+              "description": "Layanan kesehatan publik (Medicare) dapat diakses setelah Anda menjadi penduduk tetap. Bagi pemegang visa sementara, asuransi kesehatan swasta sangat penting dan seringkali wajib."
+            },
+            "3": {
+              "title": "Biaya Hidup",
+              "description": "Kota-kota besar seperti Sydney dan Melbourne memiliki biaya hidup yang tinggi, terutama untuk perumahan. Daerah regional menawarkan pilihan yang lebih terjangkau tetapi fasilitasnya lebih sedikit."
+            }
+          }
+        }
+      },
+      {
+        "id": "kota-kota populer",
+        "icon": "🏙️",
+        "title": "Kota-kota Populer untuk Ekspatriat Inggris",
+        "content": {
+          "description": "Australia memiliki beberapa kota yang populer di kalangan ekspatriat Inggris:",
+          "cities": {
+            "0": {
+              "name": "Sydney",
+              "description": "Kota terbesar di Australia dengan landmark ikonik, pantai-pantai indah, dan kehidupan budaya yang semarak. Biaya hidup tertinggi tetapi peluang kerja sangat baik."
+            },
+            "1": {
+              "name": "Melbourne",
+              "description": "Ibu kota budaya dengan nuansa Eropa, terkenal dengan seni, budaya kopi, dan acara olahraga. Cuaca lebih bervariasi tetapi biaya perumahan sedikit lebih rendah daripada Sydney."
+            },
+            "2": {
+              "name": "Brisbane",
+              "description": "Iklim subtropis dengan ekonomi yang berkembang dan perumahan yang lebih terjangkau daripada Sydney atau Melbourne. Gaya hidup santai dengan kedekatan ke Gold Coast dan Sunshine Coast."
+            },
+            "3": {
+              "name": "Perth",
+              "description": "Ibu kota paling cerah dengan pantai-pantai yang indah dan industri pertambangan yang kuat. Lebih terpencil tetapi menawarkan kualitas hidup yang sangat baik dan komunitas ekspatriat Inggris yang kuat."
+            },
+            "4": {
+              "name": "Adelaide",
+              "description": "Perumahan yang lebih terjangkau dan gaya hidup yang lebih santai. Terkenal dengan daerah penghasil anggur, festival, dan lingkungan yang ramah keluarga."
+            },
+            "5": {
+              "name": "Pantai Emas",
+              "description": "Populer di kalangan ekspatriat Inggris karena pantainya yang menakjubkan, iklim yang hangat, dan industri pariwisatanya. Gaya hidup santai dengan ekonomi yang berkembang."
+            }
+          }
+        }
+      },
+      {
+        "id": "tips praktis",
+        "icon": "💡",
+        "title": "Tips Praktis",
+        "content": {
+          "tips": {
+            "0": "Jika memungkinkan, buatlah rekening bank Australia sebelum kedatangan.",
+            "1": "Teliti implikasi pajaknya - ada perjanjian pajak antara Inggris dan Australia.",
+            "2": "Pertimbangkan untuk mengatur waktu kepindahan Anda di luar puncak musim panas (Desember-Februari).",
+            "3": "Bergabunglah dengan grup Facebook ekspatriat untuk kota tujuan Anda.",
+            "4": "Daftar ke layanan Living Abroad pemerintah Inggris untuk mendapatkan informasi terbaru."
+          },
+          "mainTip": "<strong>Tips:</strong> Mulailah proses pengajuan visa Anda jauh-jauh hari sebelumnya - beberapa visa membutuhkan waktu 6-12 bulan untuk diproses."
+        }
+      }
+    ],
+    "costTable": {
+      "headers": {
+        "category": "Kategori Pengeluaran",
+        "cost": "Perkiraan Biaya (£)"
+      },
+      "rows": [
+        {
+          "category": "Biaya permohonan visa",
+          "cost": "£1.000–£4.000"
+        },
+        {
+          "category": "Penerbangan (sekali jalan)",
+          "cost": "£600–£1.200"
+        },
+        {
+          "category": "Mengirim barang-barang",
+          "cost": "£1.500–£3.000"
+        },
+        {
+          "category": "Akomodasi awal",
+          "cost": "£1.000–£2.000"
+        },
+        {
+          "category": "Biaya hidup (bulan pertama)",
+          "cost": "£1.000–£1.500"
+        },
+        {
+          "category": "Dana darurat",
+          "cost": "£1.000–£2.000"
+        }
+      ]
+    },
+    "comparison": {
+      "title": "Perbandingan Singkat Inggris vs Australia",
+      "aspects": [
+        {
+          "icon": "🌡️",
+          "category": "Iklim",
+          "uk": "Sejuk, hujan, 4 musim",
+          "australia": "Musim dingin yang hangat, cerah, dan ringan"
+        },
+        {
+          "icon": "💰",
+          "category": "Biaya Hidup",
+          "uk": "Tinggi di London, sedang di tempat lain.",
+          "australia": "Tinggi di Sydney/Melbourne, lebih rendah di tempat lain."
+        },
+        {
+          "icon": "🏠",
+          "category": "Perumahan",
+          "uk": "Ruang yang lebih kecil, bangunan yang lebih tua",
+          "australia": "Ruang yang lebih luas, rumah modern"
+        },
+        {
+          "icon": "🏥",
+          "category": "Perawatan kesehatan",
+          "uk": "NHS (gratis saat digunakan)",
+          "australia": "Medicare (mirip dengan NHS)"
+        },
+        {
+          "icon": "💼",
+          "category": "Budaya Kerja",
+          "uk": "Jam kerja lebih panjang, lebih formal.",
+          "australia": "Keseimbangan kerja-hidup yang lebih baik"
+        },
+        {
+          "icon": "🌍",
+          "category": "Lokasi",
+          "uk": "Dekat dengan Eropa",
+          "australia": "Terpencil namun dekat dengan Asia"
+        }
+      ]
+    },
+    "timeline": {
+      "title": "Jadwal Kepindahan: 12 Bulan Sebelum Keberangkatan",
+      "phases": [
+        {
+          "timeframe": "12 bulan sebelumnya",
+          "title": "Penelitian & Perencanaan",
+          "description": "Telusuri opsi visa, nilai kualifikasi, pilih kota tujuan."
+        },
+        {
+          "timeframe": "9-10 bulan sebelumnya",
+          "title": "Permohonan Visa",
+          "description": "Ajukan permohonan visa, selesaikan penilaian keterampilan, kumpulkan dokumen."
+        },
+        {
+          "timeframe": "6-8 bulan sebelumnya",
+          "title": "Mencari Pekerjaan",
+          "description": "Mulailah melamar pekerjaan, bangun jaringan dengan para profesional Australia."
+        },
+        {
+          "timeframe": "3-4 bulan sebelumnya",
+          "title": "Pengaturan Pindahan",
+          "description": "Pesan tiket pesawat, atur pengiriman barang, dan amankan akomodasi sementara."
+        },
+        {
+          "timeframe": "1-2 bulan sebelumnya",
+          "title": "Persiapan Akhir",
+          "description": "Buka rekening bank Australia, atur asuransi, beri tahu pihak berwenang Inggris."
+        },
+        {
+          "timeframe": "Sesampainya disana",
+          "title": "Hunian",
+          "description": "Cari tempat tinggal tetap, daftar ke Medicare, atur layanan lokal."
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Daftar Periksa Akhir Sebelum Pindah ke Australia",
+      "items": [
+        "Dapatkan visa yang sesuai.",
+        "Pesan penerbangan dan pengiriman barang",
+        "Atur akomodasi sementara.",
+        "Buka rekening bank Australia",
+        "Mengatur asuransi kesehatan",
+        "Perbarui status pajak Anda dengan HMRC.",
+        "Beritahukan pihak berwenang Inggris (NHS, pensiun, dewan kota, dll.) tentang kepindahan Anda."
+      ]
+    },
+    "conclusion": {
+      "title": "Apakah Pindah ke Australia Tepat untuk Anda?",
+      "description": "Dengan pemandangan yang menakjubkan, ekonomi yang kuat, dan gaya hidup luar ruangan, Australia menawarkan kualitas hidup yang sangat baik bagi ekspatriat Inggris. Meskipun jarak dari rumah dan biaya hidup dapat menjadi tantangan, banyak yang merasa kepindahan ini sangat berharga karena sinar matahari, ruang yang luas, dan peluang yang ada di sana."
+    }
+  },
+  "petsToAustralia": {
+    "description": "Membawa hewan peliharaan Anda ke Australia memang memungkinkan, tetapi membutuhkan perencanaan yang matang karena aturan biosekuriti yang ketat. Sistem karantina Australia yang ketat melindungi ekosistem uniknya dari penyakit dan hama asing.",
+    "navigation": {
+      "title": "Panduan Perjalanan Hewan Peliharaan"
+    },
+    "accessibility": {
+      "sectionButton": "Lihat bagian tentang {title}"
+    },
+    "sections": [
+      {
+        "id": "persyaratan utama",
+        "icon": "✅",
+        "title": "Persyaratan Utama",
+        "content": {
+          "requirements": {
+            "0": {
+              "title": "Hewan Peliharaan yang Memenuhi Syarat",
+              "description": "Hanya hewan-hewan tertentu yang diizinkan masuk ke Australia:",
+              "list": {
+                "0": "Anjing (tidak termasuk ras tertentu seperti Pit Bull Terrier)",
+                "1": "Kucing (tidak termasuk kucing Savannah generasi F1-F4)",
+                "2": "Hewan peliharaan lain umumnya tidak diperbolehkan."
+              }
+            },
+            "1": {
+              "title": "Negara Asal yang Disetujui",
+              "description": "Hewan peliharaan Anda harus berasal dari negara yang disetujui. Inggris diklasifikasikan sebagai negara Kategori 3, yang menetapkan persyaratan khusus."
+            },
+            "2": {
+              "title": "Pemasangan mikrochip",
+              "description": "Hewan peliharaan Anda harus dipasangi mikrocip yang sesuai dengan standar ISO sebelum vaksinasi atau tes darah apa pun."
+            },
+            "3": {
+              "title": "Vaksinasi dan Tes Rabies",
+              "description": "Vaksinasi rabies yang diikuti dengan Tes Titer Antibodi Penetral Rabies (RNATT) diperlukan.",
+              "highlight": "RNATT harus dilakukan <span class=\"font-medium\">setidaknya 180 hari sebelum masuk</span> ke Australia."
+            },
+            "4": {
+              "title": "Izin Impor",
+              "description": "Anda harus memperoleh izin impor dari Departemen Pertanian, Air, dan Lingkungan Australia.",
+              "highlight": "Ajukan permohonan setidaknya <span class=\"font-medium\">42 hari sebelum perjalanan</span>."
+            },
+            "5": {
+              "title": "Perawatan Tambahan",
+              "description": "Dalam beberapa hari setelah perjalanan, hewan peliharaan Anda akan membutuhkan perawatan tambahan untuk:",
+              "list": {
+                "0": "Parasit eksternal (kutu dan caplak)",
+                "1": "Parasit internal (cacing)",
+                "2": "Tes dan perawatan spesifik lainnya"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "garis waktu",
+        "icon": "📅",
+        "title": "Garis Waktu & Perencanaan",
+        "content": {
+          "description": "Membawa hewan peliharaan ke Australia membutuhkan persiapan setidaknya 7-8 bulan.",
+          "phases": {
+            "0": {
+              "timeframe": "7+ Bulan Sebelum Perjalanan",
+              "tasks": {
+                "0": "Verifikasi kelayakan hewan peliharaan Anda untuk diimpor.",
+                "1": "Pastikan mikrochip tersebut sesuai dengan standar ISO.",
+                "2": "Periksa/perbarui vaksinasi rabies",
+                "3": "Jadwalkan tes darah RNATT (harus dilakukan setidaknya 180 hari sebelum kedatangan)"
+              }
+            },
+            "1": {
+              "timeframe": "2-3 Bulan Sebelum Perjalanan",
+              "tasks": {
+                "0": "Ajukan permohonan izin impor (setidaknya 42 hari sebelum perjalanan)",
+                "1": "Pesan tempat di fasilitas karantina di Melbourne",
+                "2": "Atur pengangkutan hewan peliharaan dengan penyedia jasa pengangkutan yang terakreditasi."
+              }
+            },
+            "2": {
+              "timeframe": "10-30 Hari Sebelum Perjalanan",
+              "tasks": {
+                "0": "Menyelesaikan ujian akhir kedokteran hewan",
+                "1": "Berikan perawatan parasit yang diperlukan.",
+                "2": "Dapatkan sertifikat kesehatan resmi yang disahkan oleh dokter hewan pemerintah.",
+                "3": "Siapkan peti kemasan perjalanan sesuai dengan standar IATA."
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "karantina",
+        "icon": "🔒",
+        "title": "Proses Karantina",
+        "content": {
+          "warning": "Semua hewan peliharaan yang memasuki Australia <strong>harus</strong> menjalani masa karantina wajib, tanpa memandang negara asal.",
+          "keyInfo": {
+            "0": {
+              "icon": "📍",
+              "title": "Titik Masuk",
+              "description": "Melbourne adalah satu-satunya pelabuhan masuk bagi hewan peliharaan yang memasuki Australia. Hewan peliharaan Anda harus terbang ke Bandara Melbourne."
+            },
+            "1": {
+              "icon": "⏱️",
+              "title": "Lamanya",
+              "description": "Setidaknya 10 hari di fasilitas karantina pemerintah. Masa karantina ini dapat diperpanjang jika timbul masalah kesehatan."
+            }
+          },
+          "details": {
+            "0": {
+              "title": "Fasilitas karantina",
+              "description": "Fasilitas Karantina Pasca Masuk (PEQ) di Melbourne adalah tempat semua hewan impor berada. Fasilitas ini menyediakan:",
+              "list": {
+                "0": "• Kandang/tempat penitipan kucing sederhana dengan pengatur suhu ruangan",
+                "1": "• Pemberian makan secara teratur dan perawatan dasar",
+                "2": "• Pemeriksaan dan perawatan hewan",
+                "3": "• Kunjungan tidak diperbolehkan selama periode karantina"
+              }
+            },
+            "1": {
+              "title": "Setelah Karantina",
+              "description": "Setelah hewan peliharaan Anda berhasil menyelesaikan karantina, Anda dapat:",
+              "list": {
+                "0": "• Ambil barang-barang tersebut dari fasilitas di Melbourne",
+                "1": "• Atur transportasi domestik ke tujuan akhir Anda",
+                "2": "• Daftarkan hewan peliharaan Anda ke pihak berwenang setempat di tempat tinggal baru Anda."
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "biaya",
+        "icon": "💰",
+        "title": "Estimasi biaya",
+        "content": {
+          "description": "Total biaya dapat berkisar antara $3.000 – $7.000 AUD</span> per hewan peliharaan, tergantung pada lokasi dan ukuran hewan peliharaan Anda.",
+          "tip": "<strong>Tips:</strong> Menggunakan jasa transportasi hewan peliharaan profesional dapat membuat prosesnya jauh lebih mudah, meskipun lebih mahal. Mereka akan menangani dokumen dan logistik."
+        }
+      },
+      {
+        "id": "kehidupan hewan peliharaan",
+        "icon": "🐶",
+        "title": "Kehidupan Hewan Peliharaan di Australia",
+        "content": {
+          "description": "Australia adalah negara yang mencintai hewan dengan standar tinggi untuk perawatan hewan peliharaan dan banyak tempat yang ramah hewan peliharaan.",
+          "aspects": {
+            "0": {
+              "icon": "🏥",
+              "title": "Perawatan Hewan",
+              "description": "Pelayanan kesehatan hewan berkualitas tinggi tersedia di seluruh negeri. Kunjungan tahunan ke dokter hewan biasanya berharga $200-400 AUD, dengan asuransi hewan peliharaan tersedia mulai dari $20-60 per bulan."
+            },
+            "1": {
+              "icon": "📝",
+              "title": "Pendaftaran",
+              "description": "Hewan peliharaan harus didaftarkan ke dewan lokal. Biaya pendaftaran bervariasi tetapi biasanya $30-150 AUD per tahun, dengan diskon untuk hewan peliharaan yang sudah disterilkan."
+            },
+            "2": {
+              "icon": "🏞️",
+              "title": "Taman & Pantai",
+              "description": "Terdapat banyak area yang memperbolehkan anjing tanpa tali, meskipun aturannya lebih ketat daripada di beberapa negara lain. Tidak semua pantai ramah hewan peliharaan, jadi periksa peraturan setempat."
+            },
+            "3": {
+              "icon": "🏠",
+              "title": "Perumahan",
+              "description": "Mencari tempat sewa yang ramah hewan peliharaan bisa jadi sulit. Bersiaplah untuk membayar uang jaminan hewan peliharaan (biasanya $200-500 AUD) untuk tempat sewa yang menerima hewan peliharaan."
+            }
+          },
+          "warning": "<strong>Penting:</strong> Australia memiliki satwa liar dan ekosistem yang unik. Anjing dan kucing harus dikendalikan untuk melindungi hewan asli, terutama di daerah dekat hutan atau zona konservasi."
+        }
+      }
+    ],
+    "costTable": {
+      "headers": {
+        "expense": "Pengeluaran",
+        "cost": "Perkiraan Biaya (AUD)"
+      },
+      "rows": [
+        {
+          "expense": "Persiapan kedokteran hewan (vaksinasi, tes, pengobatan)",
+          "cost": "$800–$1.500"
+        },
+        {
+          "expense": "Izin impor",
+          "cost": "$480"
+        },
+        {
+          "expense": "Tiket pesawat",
+          "cost": "$800–$2.500"
+        },
+        {
+          "expense": "Biaya karantina",
+          "cost": "$1.200–$2.000"
+        },
+        {
+          "expense": "Biaya layanan transportasi hewan peliharaan (opsional)",
+          "cost": "$500–$1.500"
+        },
+        {
+          "expense": "Transportasi domestik setelah karantina",
+          "cost": "$200–$500"
+        }
+      ]
+    },
+    "breedRestrictions": {
+      "title": "Ras Hewan Peliharaan yang Dilarang",
+      "note": "Ras anjing ini dilarang masuk ke Australia dalam keadaan apa pun.",
+      "categories": [
+        {
+          "type": "Ras Anjing yang Dilarang",
+          "breeds": {
+            "0": "Anjing Pit Bull Terrier Amerika",
+            "1": "Perro de Presa Canario",
+            "2": "Dogo Argentina",
+            "3": "Fila Brasileiro",
+            "4": "Tosa Jepang",
+            "5": "Dan segala hasil persilangan dari ini"
+          }
+        },
+        {
+          "type": "Ras Kucing yang Dilarang",
+          "breeds": {
+            "0": "Kucing Savannah (generasi F1, F2, F3, F4)",
+            "1": "Kucing Bengal (generasi F1, F2, F3)",
+            "2": "Kucing Chausie (generasi F1, F2, F3)",
+            "3": "Kucing puma batu",
+            "4": "Dan semua hasil persilangan dengan kucing liar"
+          }
+        }
+      ]
+    },
+    "professionalServices": {
+      "title": "Layanan Transportasi Hewan Peliharaan Profesional",
+      "services": [
+        {
+          "icon": "🚚",
+          "name": "Layanan Transportasi Lengkap",
+          "description": "Layanan lengkap dari pintu ke pintu termasuk semua dokumen.",
+          "cost": "$3.000–$6.000 AUD"
+        },
+        {
+          "icon": "📋",
+          "name": "Hanya Dokumentasi",
+          "description": "Bantuan dalam pengurusan izin, sertifikat kesehatan, dan dokumen-dokumen lainnya.",
+          "cost": "$800–$1.500 AUD"
+        },
+        {
+          "icon": "✈️",
+          "name": "Pemesanan Penerbangan",
+          "description": "Pemesanan dan koordinasi penerbangan khusus untuk hewan peliharaan.",
+          "cost": "$300–$800 AUD"
+        }
+      ]
+    },
+    "checklist": {
+      "title": "Daftar Periksa Impor Hewan Peliharaan Australia",
+      "items": [
+        "Pastikan hewan peliharaan Anda memenuhi syarat untuk diimpor ke Australia.",
+        "Pastikan mikrochip tersebut sesuai dengan standar ISO.",
+        "Jadwalkan vaksinasi rabies dan tes darah RNATT (setidaknya 180 hari sebelum perjalanan)",
+        "Ajukan permohonan izin impor (setidaknya 42 hari sebelum perjalanan)",
+        "Pesan akomodasi fasilitas karantina di Melbourne",
+        "Atur transportasi internasional yang ramah hewan peliharaan.",
+        "Selesaikan pengurusan sertifikat kesehatan dan perawatan sebelum keberangkatan."
+      ]
+    },
+    "conclusion": {
+      "title": "Kehidupan Baru di Australia untuk Hewan Peliharaan Anda",
+      "description": "Meskipun membawa hewan peliharaan ke Australia membutuhkan perencanaan, waktu, dan investasi finansial yang signifikan, imbalan berupa kehadiran anggota keluarga berbulu Anda di rumah baru Anda membuatnya sepadan. Australia menawarkan perawatan veteriner yang sangat baik dan komunitas yang mencintai hewan peliharaan setelah hewan peliharaan Anda berhasil melewati persyaratan masuk."
+    }
+  }
+}

@@ -1,0 +1,48 @@
+{
+  "hero": {
+    "badge": "#1 Numaralı Güvenilir Arnavutluk Oturma İzni Hizmeti",
+    "title": {
+      "line1": "Sizin Geçidiniz",
+      "albania": "Arnavutluk",
+      "residency": "İkamet"
+    },
+    "description": "Hızlı, güvenilir ve yasalara uygun Arnavutluk oturma izni hizmetleri. Arnavutluk'ta yasal statülerini güvence altına alan binlerce kişiye katılın.",
+    "buttons": {
+      "getPermit": "Arnavutluk İzninizi Alın",
+      "learnMore": "Daha Fazla Bilgi"
+    }
+  },
+  "benefits": {
+    "expertGuidance": "Uzman Arnavutluk göçmenlik rehberliği",
+    "legalCompliance": "100 yasal uygunluk garantisi",
+    "fastTrackProcessing": "Hızlı izin işlemleri"
+  },
+  "form": {
+    "header": {
+      "title": "Ücretsiz Danışmanlık",
+      "subtitle": "Arnavutluk oturma izni başvurunuz için uzman tavsiyesi alın"
+    },
+    "fields": {
+      "fullName": "Ad Soyad",
+      "phoneNumber": "Telefon Numarası",
+      "emailAddress": "E-posta Adresi"
+    },
+    "buttons": {
+      "getFreeConsultation": "Ücretsiz Danışmanlık Alın",
+      "sending": "Gönderiyorum."
+    },
+    "messages": {
+      "success": "Başarılar! Yakında sizinle iletişime geçeceğiz.",
+      "error": "Mesaj gönderilirken hata oluştu. Lütfen tekrar deneyin."
+    },
+    "validation": {
+      "fillAllFields": "Lütfen tüm alanları doldurun",
+      "errorMessage": "Hata:"
+    },
+    "disclaimer": "Göndererek, Şartlarımızı ve Gizlilik Politikamızı kabul etmiş olursunuz"
+  },
+  "badge": {
+    "verifiedService": "Doğrulanmış Hizmet",
+    "trustedByClients": "5000+ müşteri tarafından güvenilir"
+  }
+}

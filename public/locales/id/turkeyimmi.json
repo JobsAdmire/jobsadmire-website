@@ -1,0 +1,1313 @@
+{
+  "turkeyHeroSection": {
+    "badge": "Perjalanan Eksklusif",
+    "title": "Temukan Petualangan Anda Selanjutnya",
+    "description": "Rasakan keindahan destinasi yang menakjubkan dan ciptakan kenangan tak terlupakan dengan paket wisata premium kami yang disesuaikan dengan keinginan Anda.",
+    "currentlyViewing": {
+      "label": "Sedang Dilihat"
+    },
+    "buttons": {
+      "explore": "Jelajahi Sekarang",
+      "viewAll": "Lihat Semua Destinasi"
+    },
+    "destinationCounter": "Tujuan {saat ini}/{total}",
+    "destinations": [
+      {
+        "img": "/images/ihs.png",
+        "name": "Istanbul",
+        "country": "Turki"
+      },
+      {
+        "img": "/images/ihi.png",
+        "name": "Izmir",
+        "country": "Turki"
+      },
+      {
+        "img": "/images/iha.png",
+        "name": "Antalya",
+        "country": "Turki"
+      },
+      {
+        "img": "/images/ihan.png",
+        "name": "Ankara",
+        "country": "Turki"
+      },
+      {
+        "img": "/images/ihb.png",
+        "name": "Bursa",
+        "country": "Turki"
+      }
+    ],
+    "accessibility": {
+      "exploreButton": "Jelajahi destinasi sekarang",
+      "viewAllButton": "Lihat semua destinasi yang tersedia",
+      "destinationImage": "Lihat tujuan: {nama}",
+      "featuredDestination": "Gambar destinasi unggulan",
+      "carouselControl": "Pergi ke tujuan {nomor}"
+    },
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "turkeyTableOfContents": {
+    "title": "Daftar isi",
+    "subtitle": "Navigasi melalui bagian-bagian",
+    "currentlyReading": "Saat ini sedang membaca",
+    "sectionsCount": "{count} bagian untuk dijelajahi",
+    "sections": [
+      {
+        "title": "Fakta-fakta tentang Turki",
+        "id": 1
+      },
+      {
+        "title": "Opsi Visa untuk Pindah ke Turki",
+        "id": 2
+      },
+      {
+        "title": "Persyaratan untuk Pindah ke Turki",
+        "id": 3
+      },
+      {
+        "title": "Mendapatkan Pekerjaan di Turki sebagai Warga Negara Asing",
+        "id": 4
+      },
+      {
+        "title": "Pindah ke Turki dari AS",
+        "id": 5
+      },
+      {
+        "title": "Pindah ke Turki dari Inggris",
+        "id": 6
+      },
+      {
+        "title": "Berapa biaya untuk pindah ke Turki?",
+        "id": 7
+      },
+      {
+        "title": "Pindah ke Turki Bersama Hewan Peliharaan",
+        "id": 8
+      }
+    ],
+    "quickNavigation": {
+      "title": "Navigasi Cepat",
+      "footer": "Gulir melalui {count} bagian"
+    },
+    "accessibility": {
+      "toggleMenu": "Alihkan menu navigasi",
+      "sectionButton": "Navigasi ke bagian: {judul}",
+      "quickNavigation": "Menu navigasi cepat",
+      "quickNavSection": "Navigasi cepat ke: {judul}"
+    }
+  },
+  "turkeyFactsCard": {
+    "title": "Fakta Menarik Tentang Turki",
+    "description": "Temukan warisan budaya unik dari negara yang indah ini. Turki menawarkan sejarah yang kaya dan beragam unsur budaya yang telah memengaruhi dunia.",
+    "navigation": {
+      "title": "Jelajahi Fakta",
+      "previous": "Fakta Sebelumnya",
+      "next": "Fakta Selanjutnya"
+    },
+    "allFacts": {
+      "title": "Semua Fakta Tentang Turki"
+    },
+    "facts": [
+      {
+        "title": "Istanbul terletak di dua benua.",
+        "description": "Ini adalah satu-satunya kota besar di dunia yang terletak di <strong>Eropa dan Asia</strong>, dipisahkan oleh Selat Bosporus.",
+        "icon": "🌉"
+      },
+      {
+        "title": "Rumah Troy",
+        "description": "Kota kuno Troya, yang terkenal berkat Iliad karya Homer, terletak di Turki bagian barat.",
+        "icon": "🏛️"
+      },
+      {
+        "title": "Tempat kelahiran Santa Claus",
+        "description": "<strong>Santo Nicholas</strong>, yang menginspirasi legenda Santa Claus, lahir di Patara, sebuah kota di Turki modern.",
+        "icon": "🎅"
+      },
+      {
+        "title": "Kopi Turki terdaftar sebagai Warisan Dunia UNESCO.",
+        "description": "Kopi Turki memiliki makna budaya yang sangat penting sehingga diakui oleh UNESCO sebagai Warisan Budaya Tak Benda.",
+        "icon": "☕"
+      },
+      {
+        "title": "Bunga tulip berasal dari Turki.",
+        "description": "Meskipun sering dikaitkan dengan Belanda, tulip awalnya dibudidayakan di Kekaisaran Ottoman dan diperkenalkan ke Eropa dari Turki.",
+        "icon": "🌷"
+      }
+    ],
+    "accessibility": {
+      "factButton": "Pilih fakta: {judul}",
+      "previousFact": "Kembali ke fakta sebelumnya",
+      "nextFact": "Lanjut ke fakta berikutnya"
+    }
+  },
+  "turkeyJobGuide": {
+    "header": {
+      "icon": "🇹🇷",
+      "title": "Mendapatkan Pekerjaan di Turki sebagai Warga Negara Asing",
+      "subtitle": "Panduan Lengkap",
+      "description": "Budaya Turki yang dinamis, lokasi strategisnya di antara Eropa dan Asia, serta perekonomiannya yang berkembang menjadikannya tujuan yang menarik bagi ekspatriat yang mencari pekerjaan. Namun, sebagai orang asing, mendapatkan pekerjaan di Turki membutuhkan pemahaman yang mendalam tentang pasar kerja, peraturan visa kerja, dan harapan budaya.",
+      "subDescription": "Berikut panduan lengkap untuk membantu Anda mendapatkan pekerjaan di Turki sebagai warga negara asing."
+    },
+    "navigation": {
+      "title": "Daftar Isi Panduan"
+    },
+    "sections": [
+      {
+        "id": "pasar kerja",
+        "icon": "🔍",
+        "title": "Memahami Pasar Kerja Turki",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Turki menawarkan peluang di berbagai sektor, tetapi industri tertentu lebih mudah diakses dan ramah terhadap pekerja asing.</p><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Sektor yang Diminati untuk Pekerja Asing:</h3><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-6\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Pariwisata & Perhotelan</span><p class=\"text-sm text-gray-600\">Hotel, agen perjalanan, operator tur</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Pendidikan</span><p class=\"text-sm Guru Bahasa Inggris, Sekolah Internasional</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Teknologi & Perangkat Lunak</span><p class=\"text-sm text-gray-600\">Pengembangan, Layanan TI</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Konstruksi & Teknik</span><p class=\"text-sm text-gray-600\">Manajemen Proyek, Peran Khusus</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Impor-Ekspor & Perdagangan</span><p class=\"text-sm text-gray-600\">Perdagangan Internasional, Logistik</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Layanan Kesehatan dan Medis</span><p class=\"text-sm text-gray-600\">Profesional Spesialis</p></li></ul><p class=\"text-gray-700\">Mengetahui bahasa memberi Anda keunggulan kompetitif, tetapi pekerjaan berbahasa Inggris tersedia, terutama di perusahaan multinasional atau startup teknologi.</p></div>"
+      },
+      {
+        "id": "persyaratan hukum",
+        "icon": "🗂️",
+        "title": "Persyaratan Hukum: Izin Kerja dan Visa",
+        "content": "<div><div class=\"mb-6\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Langkah 1: Mendapatkan Tawaran Pekerjaan</h3><p class=\"text-gray-700 mb-4\">Sebelum Anda dapat bekerja di Turki secara legal, Anda harus terlebih dahulu menerima tawaran pekerjaan resmi dari pemberi kerja Turki. Tidak seperti beberapa negara lain, Anda tidak dapat mengajukan izin kerja umum tanpa sponsor.</p></div><div class=\"mb-6\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Langkah 2: Pengajuan Visa Kerja</h3><p class=\"text-gray-700 mb-4\">Setelah Anda mendapatkan tawaran pekerjaan:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Anda mengajukan visa kerja di konsulat/kedutaan Turki di negara asal Anda.</li><li>Majikan Anda secara bersamaan mengajukan izin kerja melalui Kementerian Tenaga Kerja dan Jaminan Sosial Turki.</li></ul></div><div class=\"bg-sky-50 p-4 rounded-md border border-sky-100 mb-4\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Dokumen yang Diperlukan:</h3><ul class=\"list-disc <p class=\"text-gray-700\">Paspor yang masih berlaku</li><li>Kontrak kerja</li><li>Kualifikasi pendidikan</li><li>Foto ukuran paspor</li><li>Formulir permohonan visa yang telah diisi</li><li>Dokumen sponsor dari perusahaan</li></ul></div><p class=\"text-gray-700\">Setelah disetujui, Anda akan diberikan visa kerja dan dapat memasuki Turki untuk memulai pekerjaan Anda.</p></div>"
+      },
+      {
+        "id": "peluang kerja",
+        "icon": "🏢",
+        "title": "Mencari Peluang Kerja di Turki",
+        "content": "<div><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Portal Lowongan Kerja Teratas:</h3><div class=\"grid grid-cols-2 md:grid-cols-3 gap-3 mb-6\"><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Kariyer.net</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Yenibiris.com</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Secretcv.com</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border <a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">LinkedIn</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Glassdoor</a></div><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Tips Profesional:</h3><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Gunakan LinkedIn untuk terhubung dengan para profesional SDM di Turki.</li><li>Saring lowongan pekerjaan berdasarkan persyaratan bahasa (misalnya, peran berbahasa Inggris).</li><li>Pertimbangkan agen perekrutan yang khusus menangani penempatan internasional.</li></ul></div>"
+      },
+      {
+        "id": "pengajaran-bahasa-inggris",
+        "icon": "🧑‍🏫",
+        "title": "Mengajar Bahasa Inggris di Turki",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Salah satu pekerjaan paling umum bagi warga asing di Turki adalah mengajar bahasa Inggris.</p><div class=\"flex flex-col md:flex-row gap-6 mb-6\"><div class=\"flex-1 bg-white p-4 rounded-md border border-sky-100\"><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Tempat Anda Dapat Bekerja:</h3><ul class=\"list-disc pl-6 text-gray-700\"><li>Sekolah bahasa swasta</li><li>Universitas</li><li>Sekolah internasional</li><li>Platform bimbingan belajar daring</li></ul></div><div class=\"flex-1 bg-white p-4 rounded-md border border-sky-100\"><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Persyaratan:</h3><ul class=\"list-disc pl-6 text-gray-700\"><li>Gelar Sarjana</li><li>Sertifikasi TEFL/TESOL/CELTA</li><li>Kemampuan berbahasa Inggris tingkat penutur asli atau fasih</li></ul></div></div><p class=\"text-gray-700\">Beberapa sekolah juga menawarkan sponsor visa dan akomodasi.</p></div>"
+      },
+      {
+        "id": "izin kerja",
+        "icon": "🧾",
+        "title": "Masa Berlaku dan Perpanjangan Izin Kerja",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Izin kerja awal biasanya berlaku selama <strong>1 tahun</strong>.</p><p>Izin tersebut dapat diperpanjang selama <strong>2 tahun</strong> pada perpanjangan pertama dan <strong>3 tahun</strong> setelahnya.</p><p>Setelah <strong>5 tahun</strong> bekerja terus menerus, Anda dapat mengajukan permohonan izin tinggal jangka panjang.</p></div>"
+      },
+      {
+        "id": "bekerja lepas",
+        "icon": "🧑‍💼",
+        "title": "Apakah Warga Negara Asing Bisa Bekerja Lepas atau Jarak Jauh di Turki?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Secara teknis, Anda tidak dapat secara legal bekerja lepas atau bekerja jarak jauh untuk klien internasional di Turki tanpa izin yang sesuai. Namun, banyak ekspatriat melakukan pekerjaan jarak jauh dengan izin tinggal jangka pendek atau mendaftar sebagai wiraswasta, yang melibatkan pengaturan yang kompleks termasuk:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Mendirikan perusahaan Turki</li><li>Memperoleh nomor pajak</li><li>Mengajukan visa bisnis atau izin usaha</li></ul></div>"
+      },
+      {
+        "id": "bahasa",
+        "icon": "💬",
+        "title": "Kendala Bahasa: Apakah Bahasa Turki Diperlukan?",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Banyak pekerjaan profesional membutuhkan setidaknya <strong>kemampuan dasar bahasa Turki</strong>.</p><p>Namun, sektor teknologi, pariwisata, dan pendidikan seringkali hanya memperbolehkan Anda bekerja dengan <strong>bahasa Inggris</strong> saja.</p><p>Belajar bahasa Turki meningkatkan integrasi dan meningkatkan prospek pekerjaan Anda.</p></div>"
+      },
+      {
+        "id": "jaringan",
+        "icon": "👥",
+        "title": "Membangun jaringan di Turki",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Di Turki, jaringan sangatlah penting. Hadiri:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Pertemuan ekspatriat</li><li>Seminar khusus industri</li><li>Acara LinkedIn dan pertemuan Kamar Dagang Turki</li></ul><p class=\"text-gray-700\">Perkenalan dan referensi pribadi seringkali lebih berpengaruh daripada lamaran langsung.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Daftar Periksa Akhir untuk Mendapatkan Pekerjaan di Turki"
+    },
+    "checklist": [
+      "Perbaiki CV Anda dan sesuaikan dengan format Turki.",
+      "Lamarlah ke perusahaan-perusahaan yang berwenang mempekerjakan warga negara asing.",
+      "Siapkan dokumen-dokumen yang diperlukan untuk proses visa.",
+      "Pelajari beberapa frasa dasar bahasa Turki.",
+      "Pahami hak-hak Anda berdasarkan hukum ketenagakerjaan Turki."
+    ],
+    "conclusion": {
+      "icon": "✈️",
+      "title": "Siap Bekerja di Turki?",
+      "description": "Mendapatkan pekerjaan di Turki sebagai warga negara asing sepenuhnya mungkin dengan pendekatan, persiapan, dan kesabaran yang tepat. Baik Anda mencari perubahan karier, pengalaman internasional, atau pindah untuk jangka panjang, Turki menawarkan lingkungan unik yang kaya akan peluang dan budaya."
+    },
+    "accessibility": {
+      "sectionToggle": "Alihkan bagian: {judul}"
+    }
+  },
+  "turkeyMovingCostsGuide": {
+    "title": "Berapa Biaya Pindah ke Turki?",
+    "description": "Pindah ke Turki bisa jadi lebih terjangkau dibandingkan dengan banyak negara Barat. Berikut rincian biaya yang dapat Anda perkirakan saat pindah ke Turki.",
+    "costSections": [
+      {
+        "id": "visa-residen",
+        "icon": "🛂",
+        "title": "Visa & Izin Tinggal",
+        "amount": "$100–$600",
+        "details": "Termasuk kartu, asuransi kesehatan, dan biaya visa.",
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "perumahan",
+        "icon": "🏠",
+        "title": "Perumahan",
+        "amount": "Pembayaran di muka sebesar $600–$1.200",
+        "details": "Deposit 1-2 bulan + sewa bulan pertama",
+        "color": "bg-sky-600",
+        "subItems": {
+          "0": {
+            "title": "Pusat kota (bulanan)",
+            "amount": "$300–$500"
+          },
+          "1": {
+            "title": "Daerah pesisir/kota (bulanan)",
+            "amount": "$200–$400"
+          }
+        }
+      },
+      {
+        "id": "pengiriman",
+        "icon": "📦",
+        "title": "Pengiriman (Opsional)",
+        "amount": "$2.000–$4.000",
+        "details": "Kontainer kecil. Banyak ekspatriat lebih memilih membeli furnitur lokal untuk menghemat biaya.",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "utilitas",
+        "icon": "💡",
+        "title": "Pengaturan Utilitas & Internet",
+        "amount": "$50–$150",
+        "details": "Deposit & biaya pengaturan",
+        "color": "bg-sky-500",
+        "subItems": {
+          "0": {
+            "title": "Tagihan bulanan",
+            "amount": "$30–$60"
+          }
+        }
+      },
+      {
+        "id": "setiap hari",
+        "icon": "🛒",
+        "title": "Biaya Sehari-hari",
+        "amount": "$230–$350 per bulan",
+        "color": "bg-sky-600",
+        "subItems": {
+          "0": {
+            "title": "Bahan makanan",
+            "amount": "$200–$300/bulan"
+          },
+          "1": {
+            "title": "Transportasi umum",
+            "amount": "$10–$30/bulan"
+          },
+          "2": {
+            "title": "Ponsel & internet",
+            "amount": "~$20/bulan"
+          }
+        }
+      }
+    ],
+    "totalBudget": {
+      "icon": "🔢",
+      "title": "Perkiraan Total (Pelancong Tunggal)",
+      "categories": [
+        {
+          "title": "Tanpa Pengiriman",
+          "amount": "$1.200–$2.500",
+          "description": "Termasuk visa, uang jaminan perumahan, sewa bulan pertama, dan biaya pengaturan."
+        },
+        {
+          "title": "Dengan Pengiriman",
+          "amount": "$3.500–$6.000+",
+          "description": "Termasuk semua biaya ditambah pengiriman kontainer kecil berisi barang-barang."
+        }
+      ]
+    },
+    "moneySavingTips": {
+      "icon": "💰",
+      "title": "Tips Menghemat Uang",
+      "tips": [
+        {
+          "title": "Beli Furnitur Secara Lokal",
+          "description": "Furnitur Turki terjangkau dan mudah didapatkan. Pertimbangkan hanya mengirimkan barang-barang penting saja."
+        },
+        {
+          "title": "Pilih Lokasi Anda dengan Bijak",
+          "description": "Daerah di luar kota-kota besar seperti Istanbul bisa 30-50% lebih murah untuk biaya perumahan."
+        },
+        {
+          "title": "Bepergianlah dengan Ringan",
+          "description": "Setiap koper tambahan dapat dikenakan biaya $50-100 pada penerbangan. Bawalah hanya barang-barang yang Anda butuhkan."
+        },
+        {
+          "title": "Pertimbangkan Waktu Musiman",
+          "description": "Bulan-bulan musim dingin seringkali menawarkan apartemen yang lebih murah dan jumlah turis yang lebih sedikit."
+        }
+      ]
+    },
+    "conclusion": "Biaya pindah ke Turki relatif terjangkau dibandingkan dengan pindah ke destinasi lain di Eropa atau Amerika Utara. Dengan perencanaan dan penganggaran yang tepat, Anda dapat membuat kepindahan Anda ke Turki berjalan lancar dan ekonomis.",
+    "accessibility": {
+      "toggleSection": "Tampilkan/Tutup detail untuk bagian {title}"
+    }
+  },
+  "usTurkeyGuide": {
+    "header": {
+      "icon": "🇺🇸➡️🇹🇷",
+      "title": "Pindah ke Turki dari AS",
+      "subtitle": "Semua yang Perlu Anda Ketahui",
+      "description": "Apakah Anda bermimpi tentang kehidupan di luar negeri dengan budaya yang kaya, garis pantai yang indah, dan biaya hidup yang lebih rendah? Turki semakin menjadi tujuan utama bagi warga Amerika yang mencari gaya hidup baru, baik untuk pensiun, bekerja jarak jauh, atau berpetualang.",
+      "subDescription": "Berikut panduan lengkap untuk warga negara AS yang berencana pindah ke Turki, mencakup segala hal mulai dari pilihan visa hingga kiat-kiat budaya."
+    },
+    "quickNavigation": {
+      "title": "Navigasi Cepat"
+    },
+    "sections": [
+      {
+        "id": "mengapa kalkun",
+        "icon": "📌",
+        "title": "Mengapa Pindah ke Turki?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Orang Amerika tertarik ke Turki karena banyak alasan:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Biaya hidup yang terjangkau</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Gaya hidup Mediterania dan iklim yang sejuk</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span • Sejarah yang kaya dan kuliner terkenal di dunia."
+      },
+      {
+        "id": "pilihan visa",
+        "icon": "🛂",
+        "title": "Opsi Visa untuk Warga Negara AS",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Sebagai warga negara AS, Anda dapat memasuki Turki dengan visa turis 90 hari, tetapi untuk tinggal jangka panjang, Anda memerlukan salah satu dari berikut ini:</p><div class=\"space-y-4\"><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">1. Izin Tinggal Jangka Pendek</h3><ul class=\"text-gray-700 space-y-1\"><li>• Ideal untuk pekerja digital nomaden, pekerja jarak jauh, dan ekspatriat pemula</li><li>• Berlaku hingga 1 tahun, dapat diperpanjang</li><li>• Membutuhkan bukti akomodasi, kemampuan finansial, dan asuransi kesehatan yang valid</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">2. Visa Pelajar & Izin Tinggal</h3><ul class=\"text-gray-700 space-y-1\"><li>• Untuk mereka yang kuliah atau mengikuti kursus bahasa</li><li>• Membutuhkan bukti pendaftaran dan dukungan keuangan</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">3. Visa Kerja</h3><ul class=\"text-gray-700 space-y-1\"><li>• Anda harus mendapatkan tawaran pekerjaan dari perusahaan Turki</li><li>• Perusahaan akan mensponsori izin kerja Anda</li><li>• Setelah disetujui, Anda dapat mengajukan permohonan visa kerja di konsulat Turki di AS</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">4. Izin Tinggal Keluarga</h3><ul class=\"text-gray-700 space-y-1\"><li>• Untuk pasangan atau anak-anak warga negara Turki atau penduduk asing</li><li>• Berlaku hingga 2 tahun</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">5. Pensiun atau Tinggal Berbasis Properti</h3><p class=\"text-gray-700\">Membeli properti di Turki (tidak ada nilai minimum untuk tempat tinggal) membuat Anda memenuhi syarat untuk izin tinggal jangka pendek</p></div></div></div>"
+      },
+      {
+        "id": "dokumen yang dibutuhkan",
+        "icon": "🧾",
+        "title": "Dokumen yang Diperlukan untuk Relokasi",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Anda biasanya memerlukan hal-hal berikut untuk mengajukan izin tinggal:</p><div class=\"bg-sky-50 p-5 rounded-lg border border-sky-100\"><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Paspor AS yang masih berlaku (dengan masa berlaku minimal 6 bulan)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Nomor identitas pajak Turki</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Bukti tempat tinggal (kontrak sewa atau akta kepemilikan)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Asuransi kesehatan (lokal atau swasta)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Foto paspor (biometrik)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Rekening koran yang menunjukkan dana yang cukup</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Formulir permohonan izin tinggal yang telah diisi</span></li></ul></div></div>"
+      },
+      {
+        "id": "kota-kota populer",
+        "icon": "🏙️",
+        "title": "Di manakah sebagian besar warga Amerika tinggal di Turki?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Beberapa kota paling populer di kalangan ekspatriat Amerika meliputi:</p><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4 mb-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🏖️</span>Antalya</h3><ul class=\"text-gray-700 space-y-1\"><li>• Kota pesisir dengan cuaca cerah, pantai, dan biaya hidup terjangkau</li><li>• Cocok untuk pensiunan dan pekerja digital nomaden</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🌆</span>Istanbul</h3><ul class=\"text-gray-700 space-y-1\"><li>• Ibu kota ekonomi dan budaya</li><li>• Ideal untuk para profesional, mahasiswa, dan mereka yang menginginkan gaya hidup perkotaan</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🎓</span>Ankara</h3><ul class=\"text-gray-700 space-y-1\"><li>• Ibu kota Turki, lebih tenang daripada Istanbul tetapi dengan banyak peluang</li><li>• Karier yang lebih birokratis dan diplomatik opsi</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🏝️</span>Izmir</h3><ul class=\"text-gray-700 space-y-1\"><li>• Kota pesisir Aegean yang santai dengan suasana progresif</li><li>• Populer di kalangan ekspatriat dan pengusaha muda</li></ul></div></div></div>"
+      },
+      {
+        "id": "biaya hidup",
+        "icon": "💸",
+        "title": "Perbandingan Biaya Hidup: Turki vs Amerika Serikat",
+        "content": "<div><div class=\"overflow-x-auto mb-4\"><table class=\"min-w-full bg-white border border-sky-200 rounded-lg\"><thead><tr class=\"bg-sky-100\"><th class=\"py-3 px-4 text-left border-b border-sky-200\">Pengeluaran</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">Turki (rata-rata)</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">AS (rata-rata)</th></tr></thead><tbody><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Sewa (1 kamar tidur pusat kota)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">300–600 dolar/bulan</td><td class=\"py-3 px-4 border-b border-sky-100\">1.500–2.000 dolar</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Internet (bulanan)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">10–20 dolar</td><td class=\"py-3 px-4 border-b border-sky-100\">50–70 dolar</td></tr><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Makan di luar (untuk 2 orang)</td><td class=\"py-3 px-4 border-b <td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$15–$30</td><td class=\"py-3 px-4 border-b border-sky-100\">$50–$100</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Transportasi</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$10–$20/bulan</td><td class=\"py-3 px-4 border-b border-sky-100\">$70–$150</td></tr></tbody></table></div><p class=\"text-gray-700\">Turki menawarkan biaya hidup yang jauh lebih rendah, menjadikannya menarik bagi pekerja jarak jauh dan pensiunan.</p></div>"
+      },
+      {
+        "id": "perawatan kesehatan",
+        "icon": "🩺",
+        "title": "Pelayanan kesehatan di Turki",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Turki memiliki sistem perawatan kesehatan publik (SGK) yang kuat, dan perawatan kesehatan swasta berkualitas tinggi dan terjangkau. Bagi pemohon izin tinggal, asuransi swasta diwajibkan pada awalnya.</p><p>Setelah bekerja secara legal, Anda akan berhak atas asuransi kesehatan publik (SGK), yang mencakup sebagian besar perawatan dan obat-obatan.</p></div>"
+      },
+      {
+        "id": "bahasa",
+        "icon": "🗣️",
+        "title": "Tips Bahasa & Budaya",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Bahasa Turki adalah bahasa resmi, meskipun banyak orang Turki di daerah perkotaan berbicara bahasa Inggris.</p><p>Mempelajari bahasa Turki dasar membantu dalam integrasi dan kehidupan sehari-hari.</p><p>Hormati adat istiadat setempat, terutama mengenai pakaian dan perilaku di tempat umum di daerah konservatif.</p><p>Orang Turki dikenal ramah — Anda biasa diundang untuk minum teh atau makan.</p></div>"
+      },
+      {
+        "id": "pindah",
+        "icon": "📦",
+        "title": "Pindahan & Pengiriman dari AS",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Pertimbangkan perusahaan pindahan internasional yang khusus menangani relokasi ke Turki.</p><p>Barang-barang rumah tangga biasanya dapat masuk bebas bea jika Anda mendapatkan izin tinggal.</p><p>Hewan peliharaan dapat diimpor dengan catatan vaksinasi dan microchip — periksa peraturan terbaru.</p></div>"
+      },
+      {
+        "id": "perbankan",
+        "icon": "🏦",
+        "title": "Perbankan & Keuangan",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Anda dapat membuka rekening bank Turki menggunakan paspor, nomor pajak, dan alamat Anda.</p><p>Banyak ekspatriat memiliki rekening bank AS dan menggunakan Wise atau Revolut untuk transfer.</p><p>Mata uang: Lira Turki (TRY). Dolar AS diterima di beberapa tempat terbatas tetapi tidak umum digunakan.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Daftar Periksa Akhir untuk Warga Amerika yang Pindah ke Turki"
+    },
+    "checklist": [
+      {
+        "text": "Ajukan permohonan izin tinggal atau visa kerja.",
+        "fullWidth": false
+      },
+      {
+        "text": "Akomodasi yang aman (jangka pendek atau jangka panjang)",
+        "fullWidth": false
+      },
+      {
+        "text": "Dapatkan nomor pajak Turki",
+        "fullWidth": false
+      },
+      {
+        "text": "Membeli asuransi kesehatan swasta",
+        "fullWidth": false
+      },
+      {
+        "text": "Pelajari frasa-frasa penting dalam bahasa Turki.",
+        "fullWidth": false
+      },
+      {
+        "text": "Siapkan layanan perbankan dan seluler.",
+        "fullWidth": false
+      },
+      {
+        "text": "Bergabunglah dengan komunitas ekspatriat dan grup Facebook untuk mendapatkan dukungan.",
+        "fullWidth": true
+      }
+    ],
+    "conclusion": {
+      "icon": "✈️",
+      "title": "Kesimpulan: Apakah Pindah ke Turki dari AS Layak Dipertimbangkan?",
+      "description": "Bagi banyak warga Amerika, Turki menawarkan alternatif yang memperkaya, terjangkau, dan dinamis dibandingkan kehidupan di Amerika Serikat. Dengan persiapan yang tepat, langkah-langkah hukum yang benar, dan sikap terbuka, pindah ke Turki dapat menjadi awal dari babak baru yang menarik."
+    },
+    "accessibility": {
+      "sectionToggle": "Alihkan bagian: {judul}"
+    }
+  },
+  "movingWithPets": {
+    "title": "Pindah ke Turki Bersama Hewan Peliharaan",
+    "description": "Membawa hewan peliharaan Anda ke Turki sangat mungkin, tetapi Anda perlu mengikuti aturan khusus untuk memastikan prosesnya berjalan lancar. Berikut hal-hal yang perlu Anda ketahui tentang pindah ke Turki bersama hewan peliharaan Anda.",
+    "navigation": {
+      "title": "Panduan Perjalanan Hewan Peliharaan",
+      "sections": [
+        {
+          "id": "persyaratan",
+          "icon": "✅",
+          "title": "Persyaratan Utama"
+        },
+        {
+          "id": "bandara",
+          "icon": "🛬",
+          "title": "Di Bandara"
+        },
+        {
+          "id": "bepergian",
+          "icon": "✈️",
+          "title": "Pilihan Perjalanan"
+        },
+        {
+          "id": "setelah kedatangan",
+          "icon": "🏠",
+          "title": "Setelah Tiba"
+        },
+        {
+          "id": "ramah hewan peliharaan",
+          "icon": "🐶",
+          "title": "Turki yang Ramah Hewan Peliharaan"
+        }
+      ]
+    },
+    "sections": {
+      "requirements": {
+        "items": [
+          {
+            "title": "Mikrochip",
+            "content": "Hewan peliharaan Anda harus dipasangi microchip yang sesuai dengan standar ISO 11784/11785."
+          },
+          {
+            "title": "Vaksinasi Rabies",
+            "content": "Harus diberikan <span class=\"font-medium\">setidaknya 30 hari</span> sebelum perjalanan dan dalam <span class=\"font-medium\">12 bulan</span> terakhir."
+          },
+          {
+            "title": "Sertifikat Kesehatan",
+            "type": "daftar",
+            "listItems": {
+              "0": "• Dikeluarkan oleh dokter hewan berlisensi dan disetujui oleh otoritas resmi di negara Anda (seperti USDA di AS atau DEFRA di Inggris).",
+              "1": "• Harus diterbitkan dalam waktu <span class=\"font-medium\">10 hari</span> sebelum kedatangan di Turki."
+            }
+          },
+          {
+            "title": "Pengobatan Cacing Pita & Kutu",
+            "content": "Selesai dalam waktu 5 hari sebelum perjalanan.",
+            "note": "(tidak selalu diperlukan tetapi disarankan)"
+          }
+        ]
+      },
+      "airport": {
+        "description": "Anda akan melewati bea cukai bersama hewan peliharaan Anda.",
+        "documentsTitle": "Bawalah dokumen yang sudah dicetak, termasuk:",
+        "documents": [
+          "Bukti mikrochip",
+          "Catatan vaksinasi",
+          "Sertifikat kesehatan",
+          "Paspor hewan peliharaan (jika berasal dari Uni Eropa/Inggris)"
+        ]
+      },
+      "traveling": {
+        "options": [
+          {
+            "icon": "🐱",
+            "ariaLabel": "hewan peliharaan kecil",
+            "title": "Di dalam kabin (hewan peliharaan kecil)",
+            "description": "Sebagian besar maskapai penerbangan mengizinkan hewan peliharaan dengan berat kurang dari 8 kg termasuk kandang."
+          },
+          {
+            "icon": "🐕",
+            "ariaLabel": "hewan peliharaan besar",
+            "title": "Muatan",
+            "description": "Hewan yang lebih besar harus diterbangkan sebagai kargo."
+          },
+          {
+            "icon": "💰",
+            "ariaLabel": "biaya",
+            "title": "Biaya",
+            "description": "$150–$1.000 tergantung maskapai penerbangan dan ukuran."
+          }
+        ],
+        "warning": "Selalu periksa kebijakan hewan peliharaan dengan maskapai penerbangan Anda, karena persyaratan dan biayanya dapat sangat bervariasi."
+      },
+      "afterArrival": {
+        "intro": [
+          "Tidak diperlukan karantina jika semua dokumen lengkap.",
+          "Mendaftarkan hewan peliharaan Anda ke dokter hewan setempat sangat disarankan."
+        ],
+        "recommendedSteps": {
+          "title": "Langkah Awal yang Disarankan",
+          "items": [
+            "Temukan dokter hewan setempat dan perkenalkan hewan peliharaan Anda.",
+            "Belilah obat-obatan yang dibutuhkan hewan peliharaan Anda secara rutin.",
+            "Perbarui kalung hewan peliharaan Anda dengan alamat dan nomor telepon Turki Anda yang baru."
+          ]
+        }
+      },
+      "petFriendly": {
+        "description": "Kota-kota di Turki ramah terhadap hewan peliharaan, terutama di kota-kota pesisir. Biaya dokter hewan terjangkau, dan perlengkapan hewan peliharaan mudah didapatkan.",
+        "features": [
+          {
+            "icon": "🏥",
+            "title": "Perawatan Hewan",
+            "description": "Biaya kunjungan ke dokter hewan sekitar 100-300 TL (US$5-15), sehingga perawatan rutin menjadi sangat terjangkau."
+          },
+          {
+            "icon": "🏞️",
+            "title": "Taman dan Pantai untuk Anjing",
+            "description": "Banyak daerah pesisir memiliki pantai yang ramah anjing, dan kota-kota besar memiliki taman khusus hewan peliharaan."
+          },
+          {
+            "icon": "🥫",
+            "title": "Perlengkapan Hewan Peliharaan",
+            "description": "Makanan dan perlengkapan hewan peliharaan tersedia di supermarket, toko hewan peliharaan, dan pengecer online."
+          },
+          {
+            "icon": "🏨",
+            "title": "Akomodasi Ramah Hewan Peliharaan",
+            "description": "Banyak hotel dan properti sewaan menerima hewan peliharaan, tetapi selalu konfirmasi terlebih dahulu."
+          }
+        ]
+      }
+    },
+    "checklist": {
+      "title": "Daftar Periksa Perjalanan Hewan Peliharaan",
+      "items": [
+        "Jadwalkan kunjungan ke dokter hewan setidaknya 2 bulan sebelum perjalanan.",
+        "Verifikasi apakah mikrochip tersebut sesuai dengan standar ISO.",
+        "Pastikan vaksinasi rabies Anda masih berlaku (setidaknya 30 hari sebelum perjalanan).",
+        "Dapatkan sertifikat kesehatan dalam waktu 10 hari sebelum keberangkatan.",
+        "Pesan transportasi yang ramah hewan peliharaan melalui maskapai penerbangan.",
+        "Belilah kandang hewan peliharaan yang disetujui maskapai penerbangan.",
+        "Dapatkan salinan semua dokumen dan simpan bersama Anda selama perjalanan."
+      ]
+    },
+    "conclusion": {
+      "title": "Petualangan Baru Hewan Peliharaan Anda Menanti!",
+      "description": "Dengan persiapan yang tepat, membawa hewan peliharaan Anda ke Turki dapat menjadi pengalaman yang lancar. Lingkungan Turki yang ramah terhadap hewan peliharaan akan membantu sahabat berbulu Anda beradaptasi dengan cepat di rumah Mediterania barunya."
+    },
+    "accessibility": {
+      "sectionButton": "Navigasi ke bagian {title}"
+    }
+  },
+  "relocationRequirements": {
+    "title": "Persyaratan Penting untuk Pindah ke Turki",
+    "description": "Baik Anda berencana menetap di Turki untuk bekerja, belajar, pensiun, atau perubahan gaya hidup, ada langkah-langkah dan dokumen khusus yang perlu Anda persiapkan. Berikut adalah uraian lengkap tentang persyaratan penting untuk pindah ke Turki secara legal dan lancar.",
+    "navigation": {
+      "title": "Navigasi Cepat",
+      "expandAll": "Perluas Semua",
+      "collapseAll": "Ciutkan Semua"
+    },
+    "sections": [
+      {
+        "id": "paspor",
+        "icon": "🛂",
+        "title": "Paspor yang sah",
+        "shortTitle": "Paspor",
+        "content": {
+          "0": {
+            "type": "ayat",
+            "text": "Paspor Anda harus berlaku minimal 6 bulan setelah rencana masa tinggal Anda di Turki. Beberapa kewarganegaraan mungkin memerlukan masa berlaku yang lebih lama, terutama jika mengajukan izin tinggal jangka panjang."
+          }
+        }
+      },
+      {
+        "id": "Visa",
+        "icon": "📝",
+        "title": "Visa Masuk (Jika Diperlukan)",
+        "shortTitle": "Visa",
+        "content": {
+          "0": {
+            "type": "ayat",
+            "text": "Tergantung pada kewarganegaraan Anda, Anda mungkin memerlukan:"
+          },
+          "1": {
+            "type": "daftar",
+            "listType": "tidak teratur",
+            "items": {
+              "0": "Visa turis (sekali masuk atau beberapa kali masuk)",
+              "1": "Visa elektronik (tersedia secara online untuk negara-negara yang memenuhi syarat)",
+              "2": "Atau tanpa visa sama sekali untuk kunjungan singkat (negara bebas visa)"
+            }
+          },
+          "2": {
+            "type": "ayat",
+            "text": "Jika Anda berencana tinggal lebih dari 90 hari, Anda harus mengajukan izin tinggal begitu Anda berada di Turki."
+          }
+        }
+      },
+      {
+        "id": "alamat",
+        "icon": "🏠",
+        "title": "Alamat Turki",
+        "shortTitle": "Alamat",
+        "content": {
+          "0": {
+            "type": "ayat",
+            "text": "Untuk mengajukan izin tinggal, Anda harus memiliki alamat tetap atau sementara di Turki:"
+          },
+          "1": {
+            "type": "daftar",
+            "listType": "tidak teratur",
+            "items": {
+              "0": "Perjanjian sewa (dilegalisir notaris)",
+              "1": "Kepemilikan properti (akta kepemilikan)",
+              "2": "Pemesanan hotel (hanya untuk izin jangka pendek)"
+            }
+          },
+          "2": {
+            "type": "ayat",
+            "text": "Semua alamat harus didaftarkan di direktorat kependudukan setempat (Nüfus Müdürlüğü)."
+          }
+        }
+      },
+      {
+        "id": "finansial",
+        "icon": "💵",
+        "title": "Bukti Stabilitas Keuangan",
+        "shortTitle": "Keuangan",
+        "content": {
+          "0": {
+            "type": "ayat",
+            "text": "Anda perlu menunjukkan bahwa Anda mampu menghidupi diri sendiri di Turki. Jumlahnya bervariasi, tetapi perkiraan umumnya adalah:"
+          },
+          "1": {
+            "type": "daftar",
+            "listType": "tidak teratur",
+            "items": {
+              "0": "Minimal $500 per bulan per orang",
+              "1": "Rekening koran, slip pensiun, bukti penghasilan, atau dokumen sponsor dapat diterima."
+            }
+          }
+        }
+      },
+      {
+        "id": "asuransi",
+        "icon": "🩺",
+        "title": "Asuransi Kesehatan",
+        "shortTitle": "Asuransi",
+        "content": {
+          "0": {
+            "type": "ayat",
+            "text": "Asuransi kesehatan yang valid wajib untuk sebagian besar izin tinggal:"
+          },
+          "1": {
+            "type": "daftar",
+            "listType": "tidak teratur",
+            "items": {
+              "0": "SGK Turki (asuransi publik) jika bekerja",
+              "1": "Asuransi swasta Turki jika membiayai sendiri atau pensiunan",
+              "2": "Program kesehatan mahasiswa untuk mahasiswa internasional"
+            }
+          }
+        }
+      },
+      {
+        "id": "nomor pajak",
+        "icon": "🧾",
+        "title": "Nomor Pajak (Vergi Numarası)",
+        "shortTitle": "Nomor Pajak",
+        "content": {
+          "0": {
+            "type": "ayat",
+            "text": "Sebelum menandatangani kontrak sewa, membuka rekening bank, atau mengajukan izin, Anda harus mendapatkan nomor pajak Turki. Nomor ini gratis dan tersedia di kantor pajak setempat (Vergi Dairesi) atau secara online."
+          }
+        }
+      },
+      {
+        "id": "foto",
+        "icon": "🖼️",
+        "title": "Foto Biometrik",
+        "shortTitle": "Foto",
+        "content": {
+          "0": {
+            "type": "ayat",
+            "text": "Foto biometrik terbaru (diambil dalam 6 bulan terakhir) diperlukan untuk:"
+          },
+          "1": {
+            "type": "daftar",
+            "listType": "tidak teratur",
+            "items": {
+              "0": "Kartu izin tinggal",
+              "1": "Permohonan visa",
+              "2": "Pendaftaran pemerintah"
+            }
+          },
+          "2": {
+            "type": "ayat",
+            "text": "Ukuran yang disarankan: 50x60 mm, dengan latar belakang putih."
+          }
+        }
+      },
+      {
+        "id": "dokumen",
+        "icon": "📄",
+        "title": "Dokumen yang Diterjemahkan & Dilegalisir (jika berlaku)",
+        "shortTitle": "Dokumen",
+        "content": {
+          "0": {
+            "type": "ayat",
+            "text": "Dokumen-dokumen tertentu harus diterjemahkan ke dalam bahasa Turki dan dilegalisir, terutama jika Anda mengajukan permohonan untuk:"
+          },
+          "1": {
+            "type": "daftar",
+            "listType": "tidak teratur",
+            "items": {
+              "0": "Izin kerja",
+              "1": "Penyatuan kembali keluarga",
+              "2": "Kewarganegaraan"
+            }
+          },
+          "2": {
+            "type": "daftar",
+            "title": "Contoh:",
+            "listType": "tidak teratur",
+            "items": {
+              "0": "Akta nikah",
+              "1": "Akta kelahiran untuk anak-anak",
+              "2": "Ijazah akademik atau kualifikasi pekerjaan"
+            }
+          }
+        }
+      },
+      {
+        "id": "izin tinggal",
+        "icon": "🏢",
+        "title": "Formulir Permohonan Izin Tinggal (untuk tinggal jangka panjang)",
+        "shortTitle": "Izin Tinggal",
+        "content": {
+          "0": {
+            "type": "ayat",
+            "text": "Jika Anda bermaksud tinggal lebih dari 90 hari:"
+          },
+          "1": {
+            "type": "tangga",
+            "steps": {
+              "0": "Ajukan permohonan secara online melalui Göç İdaresi (Direktorat Manajemen Migrasi)",
+              "1": "Buat janji temu di kantor imigrasi setempat Anda.",
+              "2": "Bawalah semua dokumen dan hadiri wawancara."
+            }
+          }
+        }
+      },
+      {
+        "id": "pendaftaran",
+        "icon": "🌐",
+        "title": "Daftarkan Alamat Anda dan Dapatkan Kartu Izin Tinggal",
+        "shortTitle": "Pendaftaran",
+        "content": {
+          "0": {
+            "type": "ayat",
+            "text": "Setelah disetujui:"
+          },
+          "1": {
+            "type": "daftar",
+            "listType": "tidak teratur",
+            "items": {
+              "0": "Anda akan menerima kartu izin tinggal (ikamet kartı) yang dikirim melalui pos.",
+              "1": "Anda harus mendaftarkan alamat Anda di Nüfus Müdürlüğü dalam waktu 20 hari."
+            }
+          }
+        }
+      }
+    ],
+    "bonus": {
+      "icon": "🗣️",
+      "title": "Bonus: Pelajari Bahasa Turki Dasar",
+      "description": "Meskipun bukan persyaratan hukum, mempelajari bahasa Turki dasar dapat sangat memudahkan transisi Anda. Ini membantu dalam hal:",
+      "benefits": [
+        "Birokrasi lokal",
+        "Menyewa rumah",
+        "Berbelanja dan bersosialisasi"
+      ]
+    },
+    "summary": {
+      "title": "Poin-Poin Penting",
+      "description": "Ingatlah poin-poin penting ini untuk keberhasilan relokasi ke Turki:",
+      "keyPoints": [
+        "Paspor yang masih berlaku (6+ bulan)",
+        "Visa atau izin yang sesuai",
+        "Alamat terdaftar di Turki",
+        "Bukti stabilitas keuangan",
+        "Asuransi kesehatan yang berlaku",
+        "Nomor pajak Turki",
+        "Foto biometrik siap",
+        "Dokumen akan diterjemahkan jika diperlukan."
+      ]
+    },
+    "accessibility": {
+      "sectionButton": "Alihkan bagian {judul}"
+    }
+  },
+  "ukToTurkeyGuide": {
+    "title": "Pindah ke Turki dari Inggris",
+    "subtitle": "Yang Perlu Anda Ketahui",
+    "description": "Turki telah menjadi tujuan populer bagi ekspatriat Inggris yang mencari gaya hidup lebih santai, biaya hidup lebih rendah, dan sinar matahari sepanjang tahun. Baik Anda berencana untuk pensiun, bekerja jarak jauh, atau memulai babak baru di luar negeri, panduan ini mencakup semua hal yang perlu Anda pertimbangkan secara realistis saat pindah ke Turki dari Inggris.",
+    "navigation": {
+      "title": "Navigasi Cepat",
+      "sections": [
+        {
+          "id": "mengapa Pindah",
+          "icon": "🧳",
+          "title": "Mengapa Warga Inggris Pindah ke Turki?"
+        },
+        {
+          "id": "Persyaratan Masuk",
+          "icon": "🛂",
+          "title": "Persyaratan Masuk & Aturan Visa"
+        },
+        {
+          "id": "Tinggal Jangka Panjang",
+          "icon": "🏠",
+          "title": "Opsi Tinggal Jangka Panjang untuk Warga Negara Inggris"
+        },
+        {
+          "id": "milik",
+          "icon": "🏘️",
+          "title": "Membeli atau Menyewa Properti"
+        },
+        {
+          "id": "biaya hidup",
+          "icon": "💷",
+          "title": "Perbandingan Biaya Hidup"
+        },
+        {
+          "id": "perawatan kesehatan",
+          "icon": "🏥",
+          "title": "Akses Layanan Kesehatan"
+        },
+        {
+          "id": "Kehidupan sehari-hari",
+          "icon": "📱",
+          "title": "Penyesuaian Kehidupan Sehari-hari"
+        },
+        {
+          "id": "Logistik pindah",
+          "icon": "🛫",
+          "title": "Pemindahan Logistik dari Inggris"
+        },
+        {
+          "id": "tantangan",
+          "icon": "🧾",
+          "title": "Tantangan Realistis yang Dapat Diantisipasi"
+        },
+        {
+          "id": "Komunitas ekspatriat",
+          "icon": "👥",
+          "title": "Komunitas Ekspatriat Inggris"
+        }
+      ]
+    },
+    "sections": {
+      "whyMove": {
+        "description": "Ribuan warga negara Inggris kini menjadikan Turki sebagai rumah mereka, terutama di kota-kota seperti Fethiye, Antalya, Istanbul, dan Bodrum. Daya tariknya meliputi:",
+        "reasons": [
+          "Biaya hidup lebih rendah dibandingkan dengan Inggris.",
+          "Iklim Mediterania dan kehidupan di pesisir",
+          "Keramaahan yang hangat dan komunitas ekspatriat yang kuat",
+          "Peluang kepemilikan properti",
+          "Kehidupan yang lebih lambat dan santai."
+        ],
+        "postBrexitNote": "Namun, pasca-Brexit, pindah tempat tinggal membutuhkan lebih banyak perencanaan dan dokumen daripada sebelumnya."
+      },
+      "entryRequirements": {
+        "touristEntry": {
+          "title": "Tiket Masuk Turis",
+          "description": "Warga negara Inggris dapat mengunjungi Turki tanpa visa hingga 90 hari dalam periode 180 hari. Namun, jika Anda berencana untuk tinggal lebih lama atau pindah secara permanen, Anda perlu mengajukan izin tinggal."
+        }
+      },
+      "longTermStay": {
+        "options": [
+          {
+            "title": "1. Izin Tinggal Jangka Pendek (Ikamet)",
+            "description": "<span class=\"font-medium\">Berlaku selama 1 tahun dan dapat diperpanjang</span><br/>Umum digunakan oleh para digital nomad, pemilik properti, dan pensiunan",
+            "requirementsTitle": "Anda akan membutuhkan:",
+            "requirements": {
+              "0": "Paspor yang masih berlaku",
+              "1": "Nomor Identifikasi Pajak Turki",
+              "2": "Bukti tempat tinggal (kontrak sewa atau akta kepemilikan properti)",
+              "3": "Laporan rekening bank yang menunjukkan dana yang cukup",
+              "4": "Asuransi kesehatan lokal atau internasional"
+            }
+          },
+          {
+            "title": "2. Izin Kerja & Visa",
+            "steps": {
+              "0": "Anda memerlukan surat penawaran kerja dari perusahaan Turki.",
+              "1": "Pihak pemberi kerja akan mengajukan izin kerja atas nama Anda.",
+              "2": "Setelah disetujui, Anda mengajukan permohonan visa kerja melalui konsulat Turki di Inggris."
+            }
+          },
+          {
+            "title": "3. Izin Tinggal Keluarga",
+            "steps": {
+              "0": "Bagi mereka yang bergabung dengan pasangan atau anggota keluarga berkewarganegaraan Turki.",
+              "1": "Berlaku hingga 2 tahun"
+            }
+          },
+          {
+            "title": "4. Izin Tinggal Pelajar",
+            "description": "Jika Anda sedang belajar di universitas Turki atau mengikuti kursus bahasa jangka panjang"
+          }
+        ]
+      },
+      "property": {
+        "facts": [
+          "Warga negara asing, termasuk warga negara Inggris, dapat membeli properti secara legal di Turki.",
+          "Tidak ada nilai minimum yang dipersyaratkan untuk memenuhi syarat mendapatkan izin tinggal.",
+          "Area populer bagi pembeli Inggris: Fethiye, Antalya, Kusadasi, Bodrum, Alanya",
+          "Biaya sewa terjangkau: Anda dapat menemukan apartemen dengan harga £200–£500/bulan tergantung lokasi."
+        ],
+        "tip": "<strong>Tips:</strong> Selalu bekerja sama dengan agen atau pengacara yang bereputasi baik saat menandatangani kontrak atau membeli properti."
+      },
+      "costLiving": {
+        "table": {
+          "headers": {
+            "expense": "Pengeluaran",
+            "turkey": "Turki (rata-rata)",
+            "uk": "Inggris (rata-rata)"
+          },
+          "rows": [
+            {
+              "expense": "Sewa (apartemen 1 kamar tidur)",
+              "turkey": "£200–£400",
+              "uk": "£800–£1.200"
+            },
+            {
+              "expense": "Utilitas",
+              "turkey": "£30–£70/bulan",
+              "uk": "£150+/bulan"
+            },
+            {
+              "expense": "Makan di restoran",
+              "turkey": "£3–£6",
+              "uk": "£10–£25"
+            },
+            {
+              "expense": "Kartu transportasi",
+              "turkey": "£10–£20/bulan",
+              "uk": "£60–£120/bulan"
+            }
+          ]
+        },
+        "conclusion": "Uang pound Anda jauh lebih berharga di Turki — terutama di luar kota-kota besar."
+      },
+      "healthcare": {
+        "points": [
+          "Asuransi kesehatan swasta diperlukan bagi pemohon izin tinggal.",
+          "Setelah diterima bekerja, Anda berhak mendapatkan SGK (asuransi publik), yang mencakup sebagian besar perawatan.",
+          "Pelayanan kesehatan swasta terjangkau, dan banyak rumah sakit yang terakreditasi secara internasional.",
+          "Banyak ekspatriat Inggris memilih asuransi kesehatan internasional untuk mendapatkan fleksibilitas yang lebih besar."
+        ]
+      },
+      "dailyLife": {
+        "aspects": [
+          {
+            "title": "Kendala bahasa",
+            "description": "Bahasa Turki adalah bahasa resmi. Bahasa Inggris digunakan di daerah wisata dan ekspatriat, tetapi mempelajari bahasa Turki dasar sangat disarankan."
+          },
+          {
+            "title": "Penggerak",
+            "description": "Surat izin mengemudi Inggris berlaku selama 6 bulan. Setelah itu, Anda harus mendapatkan surat izin mengemudi Turki."
+          },
+          {
+            "title": "Mata uang",
+            "description": "Lira Turki (TRY) — nilai tukarnya berfluktuasi, tetapi keuntungan biaya masih menguntungkan poundsterling Inggris."
+          },
+          {
+            "title": "Perbankan",
+            "description": "Anda dapat membuka rekening bank Turki dengan paspor dan bukti alamat setempat. Layanan perbankan online banyak digunakan."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "points": [
+          "Anda dapat membawa barang-barang pribadi bebas bea dalam waktu 6 bulan setelah mendapatkan izin tinggal Anda.",
+          "Disarankan menggunakan jasa perusahaan pindahan internasional yang berpengalaman dalam relokasi Inggris-Turki.",
+          "Hewan peliharaan diperbolehkan, tetapi harus memiliki chip mikro dan vaksinasi terbaru, termasuk sertifikat rabies."
+        ]
+      },
+      "challenges": {
+        "challenges": [
+          {
+            "title": "Birokrasi",
+            "description": "Proses perizinan tempat tinggal bisa lambat dan tidak konsisten antar kota."
+          },
+          {
+            "title": "Volatilitas nilai tukar",
+            "description": "Depresiasi mata uang dapat berdampak pada tabungan atau pensiun."
+          },
+          {
+            "title": "Perbedaan budaya",
+            "description": "Bersikaplah terbuka terhadap perubahan gaya hidup, norma sosial, dan ritme kehidupan setempat."
+          },
+          {
+            "title": "Kehidupan pedesaan vs kehidupan perkotaan",
+            "description": "Daerah pedesaan mungkin memiliki lebih sedikit penutur bahasa Inggris dan fasilitas modern."
+          }
+        ]
+      },
+      "expatCommunities": {
+        "description": "Turki memiliki komunitas Inggris yang besar, terutama di:",
+        "locations": [
+          "Fethiye",
+          "Didim",
+          "Bodrum",
+          "Marmaris",
+          "Antalya"
+        ],
+        "support": "Anda akan menemukan grup Facebook, pertemuan lokal, dan bisnis yang dikelola oleh warga Inggris untuk membantu Anda beradaptasi dengan lebih lancar."
+      }
+    },
+    "checklist": {
+      "title": "Daftar Periksa Akhir Sebelum Pindah ke Turki",
+      "items": [
+        "Ajukan permohonan izin tinggal atau visa yang sesuai.",
+        "Dapatkan Nomor Pajak Turki (Vergi Numarası)",
+        "Atur akomodasi dan kartu SIM lokal.",
+        "Dapatkan asuransi kesehatan swasta",
+        "Pelajari frasa dasar bahasa Turki.",
+        "Bergabunglah dengan grup ekspatriat untuk mendapatkan dukungan dan informasi terbaru.",
+        "Beritahukan pihak berwenang Inggris (HMRC, NHS, dll.) tentang kepindahan Anda."
+      ]
+    },
+    "conclusion": {
+      "title": "Kesimpulan: Apakah Pindah ke Turki dari Inggris Layak Dilakukan?",
+      "description": "Jika Anda menginginkan gaya hidup yang lebih santai dan cerah, serta mampu mengurus administrasi dan perbedaan budaya, Turki adalah tempat yang sangat menyenangkan untuk ditinggali. Dengan biaya hidup yang lebih rendah dan kualitas hidup yang tinggi, banyak warga Inggris menemukan Turki sebagai tujuan jangka panjang yang sempurna."
+    },
+    "accessibility": {
+      "sectionButton": "Navigasi ke bagian {title}"
+    }
+  },
+  "visaGuide": {
+    "title": "Opsi Visa dan Izin Tinggal untuk Pindah ke Turki",
+    "description": "Pindah ke Turki membutuhkan pemilihan visa yang tepat berdasarkan tujuan tinggal Anda. Turki menawarkan beberapa pilihan visa dan izin tinggal untuk pekerja, pelajar, pensiunan, pebisnis, dan pekerja lepas digital.",
+    "labels": {
+      "bestFor": "Terbaik untuk",
+      "requirements": "Persyaratan",
+      "process": "Proses",
+      "benefits": "Manfaat",
+      "options": "Opsi",
+      "validity": "Keabsahan",
+      "renewable": "Terbarukan",
+      "yes": "Ya",
+      "no": "TIDAK",
+      "more": "lagi"
+    },
+    "controls": {
+      "expandAll": "Perluas Semua",
+      "collapseAll": "Ciutkan Semua"
+    },
+    "compare": {
+      "enable": "Bandingkan Visa",
+      "exit": "Keluar dari Mode Perbandingan",
+      "select": "Memilih",
+      "selected": "Terpilih",
+      "table": {
+        "title": "Perbandingan Visa",
+        "headers": {
+          "type": "Jenis Visa",
+          "validity": "Keabsahan",
+          "renewable": "Terbarukan",
+          "bestFor": "Terbaik untuk"
+        }
+      }
+    },
+    "visas": [
+      {
+        "id": "jangka pendek",
+        "icon": "🏠",
+        "title": "Izin Tinggal Jangka Pendek (İkamet İzni)",
+        "subtitle": "Paling populer di kalangan ekspatriat",
+        "validity": "1 tahun",
+        "bestFor": {
+          "0": "Pengembara digital",
+          "1": "Pekerja jarak jauh",
+          "2": "Pemilik properti",
+          "3": "Wisatawan yang menginap lebih dari 90 hari",
+          "4": "Orang-orang yang sedang menjajaki pilihan tinggal jangka panjang"
+        },
+        "requirements": {
+          "0": "Paspor dan visa yang masih berlaku",
+          "1": "Bukti kemampuan finansial (sekitar $500/bulan)",
+          "2": "Alamat di Turki (kontrak sewa atau akta kepemilikan)",
+          "3": "Asuransi kesehatan swasta",
+          "4": "Foto biometrik"
+        },
+        "renewable": true
+      },
+      {
+        "id": "murid",
+        "icon": "🎓",
+        "title": "Visa Pelajar dan Izin Tinggal",
+        "subtitle": "Untuk keperluan akademis",
+        "validity": "Durasi studi",
+        "bestFor": {
+          "0": "Mahasiswa yang diterima di universitas-universitas Turki",
+          "1": "Siswa sekolah bahasa"
+        },
+        "requirements": {
+          "0": "Surat penerimaan dari lembaga pendidikan Turki yang diakui.",
+          "1": "Bukti dana yang cukup",
+          "2": "Asuransi kesehatan",
+          "3": "Alamat Turki"
+        },
+        "process": {
+          "0": "Ajukan permohonan visa pelajar dari kedutaan/konsulat Turki di negara Anda.",
+          "1": "Setelah tiba, ajukan izin tinggal pelajar."
+        },
+        "renewable": true
+      },
+      {
+        "id": "bekerja",
+        "icon": "💼",
+        "title": "Visa Kerja dan Izin Kerja",
+        "subtitle": "Untuk para profesional yang bekerja",
+        "validity": "1-2 tahun",
+        "bestFor": {
+          "0": "Warga negara asing yang dipekerjakan oleh perusahaan Turki",
+          "1": "Ekspatriat dengan tawaran pekerjaan",
+          "2": "Guru bahasa Inggris, insinyur, profesional kesehatan"
+        },
+        "requirements": {
+          "0": "Tawaran pekerjaan dari perusahaan terdaftar di Turki.",
+          "1": "Paspor yang masih berlaku",
+          "2": "Kontrak kerja",
+          "3": "Dokumen pendidikan (diterjemahkan & dilegalisir)"
+        },
+        "process": {
+          "0": "Pihak pemberi kerja mengajukan permohonan ke Kementerian Tenaga Kerja Turki atas nama Anda.",
+          "1": "Anda mengajukan permohonan visa kerja di kedutaan Turki.",
+          "2": "Setelah tiba, Anda akan menerima izin tinggal untuk bekerja."
+        },
+        "renewable": true
+      },
+      {
+        "id": "keluarga",
+        "icon": "👨‍👩‍👧‍👦",
+        "title": "Izin Tinggal Keluarga",
+        "subtitle": "Untuk penyatuan kembali keluarga",
+        "validity": "Hingga 2 tahun",
+        "bestFor": {
+          "0": "Pasangan warga negara Turki",
+          "1": "Anak-anak warga negara Turki",
+          "2": "Anggota keluarga dari warga negara asing"
+        },
+        "requirements": {
+          "0": "Bukti ikatan keluarga (akta nikah/akte kelahiran)",
+          "1": "Alamat Turki",
+          "2": "Bukti pendapatan dari sponsor",
+          "3": "Asuransi kesehatan"
+        },
+        "renewable": true
+      },
+      {
+        "id": "milik",
+        "icon": "🏘️",
+        "title": "Izin Tinggal Kepemilikan Properti",
+        "subtitle": "Untuk investor properti",
+        "validity": "1 tahun",
+        "bestFor": {
+          "0": "Warga negara asing yang memiliki properti di Turki",
+          "1": "Investor properti",
+          "2": "Pengusaha real estat"
+        },
+        "requirements": {
+          "0": "Tapu (akta kepemilikan) atas nama Anda",
+          "1": "Nilai properti minimum sekitar $75.000 di wilayah metropolitan (dapat bervariasi tergantung wilayah)",
+          "2": "Bukti pendapatan",
+          "3": "Asuransi kesehatan"
+        },
+        "benefits": {
+          "0": "Dapat diperbarui setiap tahun",
+          "1": "Dapat mengarah pada izin tinggal jangka panjang atau kewarganegaraan."
+        },
+        "renewable": true
+      },
+      {
+        "id": "kewarganegaraan",
+        "icon": "🇹🇷",
+        "title": "Kewarganegaraan Turki melalui Investasi",
+        "subtitle": "Jalur cepat menuju kewarganegaraan",
+        "validity": "Permanen",
+        "bestFor": {
+          "0": "Investor dan pengusaha",
+          "1": "Individu dengan kekayaan bersih tinggi",
+          "2": "Pemilik bisnis"
+        },
+        "options": {
+          "0": "Beli properti senilai setidaknya $400.000",
+          "1": "Setor $500.000 ke bank Turki",
+          "2": "Ciptakan lapangan kerja bagi setidaknya 50 warga negara Turki."
+        },
+        "benefits": {
+          "0": "Proses kewarganegaraan dipercepat dalam 3–6 bulan.",
+          "1": "Hak penuh termasuk paspor dan hak suara"
+        },
+        "renewable": false
+      },
+      {
+        "id": "jangka panjang",
+        "icon": "🌟",
+        "title": "Izin Tinggal Jangka Panjang",
+        "subtitle": "Opsi tinggal tanpa batas waktu",
+        "validity": "Tak terbatas",
+        "bestFor": {
+          "0": "Warga negara asing yang telah tinggal di Turki setidaknya selama 8 tahun berturut-turut.",
+          "1": "Warga yang telah lama tinggal di negara tersebut dan ingin mendapatkan status penduduk tetap."
+        },
+        "requirements": {
+          "0": "Tidak memiliki catatan kriminal.",
+          "1": "Bukti pendapatan dan tempat tinggal jangka panjang",
+          "2": "Tidak bergantung pada bantuan sosial dalam 3 tahun terakhir."
+        },
+        "renewable": false
+      }
+    ],
+    "summary": {
+      "title": "Tips Referensi Cepat",
+      "tips": [
+        {
+          "title": "Mulailah Lebih Awal",
+          "description": "Mulailah proses pengajuan visa Anda setidaknya 3-6 bulan sebelum tanggal kepindahan yang direncanakan."
+        },
+        {
+          "title": "Persiapan Dokumen",
+          "description": "Pastikan semua dokumen diterjemahkan, dinotariskan, dan diberi apostille sesuai persyaratan."
+        },
+        {
+          "title": "Perencanaan Keuangan",
+          "description": "Pastikan saldo di rekening bank Anda mencukupi untuk beberapa bulan sebelum mengajukan permohonan."
+        },
+        {
+          "title": "Asuransi Kesehatan",
+          "description": "Pastikan Anda memiliki asuransi kesehatan yang valid sebelum mengajukan izin tinggal."
+        },
+        {
+          "title": "Pendaftaran Alamat",
+          "description": "Anda harus memiliki alamat terdaftar di Turki sebelum mengajukan izin tinggal."
+        },
+        {
+          "title": "Bantuan Profesional",
+          "description": "Pertimbangkan untuk menyewa pengacara atau konsultan imigrasi untuk kasus-kasus yang kompleks."
+        }
+      ]
+    }
+  }
+}

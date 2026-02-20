@@ -1,0 +1,993 @@
+{
+  "serviceOptions": {
+    "study": {
+      "label": "Programmanyň görnüşi",
+      "placeholder": "Okuw maksatnamaňyzy saýlaň",
+      "options": [
+        "Bakalawr derejesi",
+        "Magistr derejesi",
+        "Doktorlyk maksatnamasy",
+        "Dil kursy",
+        "Diplom programmasy",
+        "Sertifikat kursy",
+        "Alyş-çalyş maksatnamasy"
+      ]
+    },
+    "work": {
+      "label": "Iş kategoriýasy",
+      "placeholder": "Iş wizasynyň görnüşini saýlaň",
+      "options": [
+        "Iş rugsatnamasy (Eýesi/Direktory/Maýa goýujy)",
+        "Ýerli işe alyş we iş rugsatnamasy",
+        "Daşary ýurtlarda işe almak we iş rugsatnamasy"
+      ]
+    },
+    "migrate": {
+      "label": "Migrasiýa kategoriýasy",
+      "placeholder": "Migrasiýa görnüşini saýlaň",
+      "options": [
+        "Kompaniýanyň bellige alyş jogapkärçiligi çäklendirilen kompaniýa, A.Ş., hususy kärhana.",
+        "Maýa goýum migrasiýasy",
+        "Türk raýatlygy prosesi"
+      ]
+    },
+    "visit": {
+      "label": "Saparyň maksady",
+      "placeholder": "Saparyň maksadyny saýlaň",
+      "options": [
+        "Çakylyk haty şahsy",
+        "Maşgala barada şahsy hat"
+      ]
+    }
+  },
+  "formLabels": {
+    "livingIn": "Ýaşaýyş",
+    "destinationCountry": "Barmaly ýurt",
+    "currentlyLivingIn": "Häzirki wagtda ýaşaýan ýeri",
+    "destination": "Barmaly ýer",
+    "selectDestination": "Barmaly ýeri saýlaň",
+    "selectCurrentCountry": "Häzirki ýurduňyzy saýlaň",
+    "selectDestinationForInvitation": "Çakylyk üçin ýeri saýlaň",
+    "wantsInvitationFor": "Çakylyk isleýär:",
+    "wantsToMigrateTo": "Göçmek isleýär:",
+    "wantsToWorkIn": "Işlemek isleýär:",
+    "submitting": "Iberilýär..."
+  },
+  "services": {
+    "study": {
+      "title": "Daşary ýurtda okamak",
+      "subtitle": "Dünýäniň öňdebaryjy uniwersitetlerinde bilimiňizi dowam etdiriň",
+      "actionText": "okuwda"
+    },
+    "work": {
+      "title": "Daşary ýurtlarda işlemek",
+      "subtitle": "Karýeraňyzy global mümkinçilikler bilen guruň",
+      "actionText": "işlemek"
+    },
+    "migrate": {
+      "title": "Göç",
+      "subtitle": "Maşgalaňyz bilen daşary ýurtda täze durmuş başlaň",
+      "actionText": "göçmek"
+    },
+    "visit": {
+      "title": "Sapar we öwren",
+      "subtitle": "Dünýäniň ajaýyp ýerlerini açyň",
+      "actionText": "Çakylyk"
+    }
+  },
+  "form": {
+    "header": {
+      "title": "Geliň, başlaýaly",
+      "subtitle": "Maglumatlaryňyzy dolduryň, biz size maksatlaryňyza ýetmäge kömek ederis"
+    },
+    "fields": {
+      "name": {
+        "label": "Men",
+        "placeholder": "Doly adyňyzy giriziň",
+        "suffix": "Men häzirki wagtda"
+      },
+      "country": {
+        "label": "Raýaty",
+        "placeholder": "Öz ýurduňyzy saýlaň"
+      }
+    },
+    "contact": {
+      "title": "Aragatnaşyk maglumatlary",
+      "personalPhone": {
+        "label": "Şahsy mobil nomer",
+        "placeholder": "Şahsy mobil nomer"
+      },
+      "whatsappToggle": {
+        "label": "Bu nomer WhatsApp-da bar"
+      },
+      "whatsappNumber": {
+        "label": "WhatsApp nomeri",
+        "placeholder": "WhatsApp nomeri"
+      },
+      "email": {
+        "label": "E-poçta salgysy",
+        "placeholder": "your.email@example.com"
+      },
+      "countryCodeSearch": "Ýurdy gözläň...",
+      "noResults": "Hiç bir ýurt tapylmady"
+    },
+    "terms": {
+      "label": "Men Şertleri we Düzgünleri kabul edýärin"
+    },
+    "submitButton": "Formany tabşyryň",
+    "consultation": {
+      "text": "Dowam etmezden öň ýol görkezme gerekmi?",
+      "linkText": "Mugt maslahat alyň"
+    },
+    "validation": {
+      "acceptTerms": "Şertleri we düzgünleri kabul ediň"
+    }
+  },
+  "countries": [
+    "Owganystan",
+    "Albaniýa",
+    "Alžir",
+    "Andorra",
+    "Angola",
+    "Antigua we Barbuda",
+    "Argentina",
+    "Ermenistan",
+    "Awstraliýa",
+    "Awstriýa",
+    "Azerbaýjan",
+    "Bahamalar",
+    "Bahreýn",
+    "Bangladeş",
+    "Barbados",
+    "Belarus",
+    "Belgiýa",
+    "Beliz",
+    "Benin",
+    "Butan",
+    "Boliwiýa",
+    "Bosniýa we Gersegowina",
+    "Botswana",
+    "Braziliýa",
+    "Bruneý",
+    "Bolgariýa",
+    "Burkina-Faso",
+    "Burundi",
+    "Kabo-Werde",
+    "Kamboja",
+    "Kamerun",
+    "Kanada",
+    "Merkezi Afrika Respublikasy",
+    "Çad",
+    "Çili",
+    "Hytaý",
+    "Kolumbiýa",
+    "Komor adalary",
+    "Kongo",
+    "Kosta-Rika",
+    "Horwatiýa",
+    "Kuba",
+    "Kipr",
+    "Çehiýa Respublikasy",
+    "Daniýa",
+    "Jibuti",
+    "Dominika",
+    "Dominikan Respublikasy",
+    "Ekwador",
+    "Müsür",
+    "El Salwador",
+    "Ekwatorial Gwineýa",
+    "Eritreýa",
+    "Estoniýa",
+    "Eswatini",
+    "Efiopiýa",
+    "Fiji",
+    "Finlýandiýa",
+    "Fransiýa",
+    "Gabon",
+    "Gambiýa",
+    "Gruziýa",
+    "Germaniýa",
+    "Gana",
+    "Gresiýa",
+    "Grenada",
+    "Gwatemala",
+    "Gwineýa",
+    "Gwineýa-Bisau",
+    "Gaýana",
+    "Gaiti",
+    "Gonduras",
+    "Wengriýa",
+    "Islandiýa",
+    "Hindistan",
+    "Indoneziýa",
+    "Eýran",
+    "Yrak",
+    "Irlandiýa",
+    "Ysraýyl",
+    "Italiýa",
+    "Ýamaýka",
+    "Ýaponiýa",
+    "Iordaniýa",
+    "Gazagystan",
+    "Keniýa",
+    "Kiribati",
+    "Kuweýt",
+    "Gyrgyzystan",
+    "Laos",
+    "Latwiýa",
+    "Liwan",
+    "Lesoto",
+    "Liberiýa",
+    "Liwiýa",
+    "Lihtenşteýn",
+    "Litwa",
+    "Lýuksemburg",
+    "Madagaskar",
+    "Malawi",
+    "Malaýziýa",
+    "Maldiwler",
+    "Mali",
+    "Malta",
+    "Marşal adalary",
+    "Mawritaniýa",
+    "Mawrikiý",
+    "Meksika",
+    "Mikroneziýa",
+    "Moldowa",
+    "Monako",
+    "Mongoliýa",
+    "Çernogoriýa",
+    "Marokko",
+    "Mozambik",
+    "Mýanma",
+    "Namibiýa",
+    "Nauru",
+    "Nepal",
+    "Niderlandlar",
+    "Täze Zelandiýa",
+    "Nikaragua",
+    "Niger",
+    "Nigeriýa",
+    "Demirgazyk Koreýa",
+    "Demirgazyk Makedoniýa",
+    "Norwegiýa",
+    "Oman",
+    "Pakistan",
+    "Palau",
+    "Panama",
+    "Papua Täze Gwineýa",
+    "Paragwaý",
+    "Peru",
+    "Filippinler",
+    "Polşa",
+    "Portugaliýa",
+    "Katar",
+    "Rumyniýa",
+    "Russiýa",
+    "Ruanda",
+    "Sent-Kits we Newis",
+    "Sent-Lýusiýa",
+    "Sent-Winsent we Grenadinler",
+    "Samoa",
+    "San Marino",
+    "San-Tome we Prinsip",
+    "Saud Arabystany",
+    "Senegal",
+    "Serbiýa",
+    "Seýşel adalary",
+    "Sýerra-Leone",
+    "Singapur",
+    "Slowakiýa",
+    "Sloweniýa",
+    "Solomon adalary",
+    "Somali",
+    "Günorta Afrika",
+    "Günorta Koreýa",
+    "Günorta Sudan",
+    "Ispaniýa",
+    "Şri-Lanka",
+    "Sudan",
+    "Surinam",
+    "Şwesiýa",
+    "Şweýsariýa",
+    "Siriýa",
+    "Taýwan",
+    "Täjigistan",
+    "Tanzaniýa",
+    "Taýland",
+    "Gündogar Timor",
+    "Togo",
+    "Tonga",
+    "Trinidad we Tobago",
+    "Tunis",
+    "Türkiýe",
+    "Türkmenistan",
+    "Tuwalu",
+    "Uganda",
+    "Ukraina",
+    "Birleşen Arap Emirlikleri",
+    "Beýik Britaniýa",
+    "Birleşen Ştatlar",
+    "Urugwaý",
+    "Özbegistan",
+    "Vanuatu",
+    "Watikan şäheri",
+    "Wenesuela",
+    "Wýetnam",
+    "Ýemen",
+    "Zambiýa",
+    "Zimbabwe"
+  ],
+  "countryCodes": [
+    {
+      "name": "Owganystan",
+      "flag": "🇦🇫",
+      "code": "+93"
+    },
+    {
+      "name": "Albaniýa",
+      "flag": "🇦🇱",
+      "code": "+355"
+    },
+    {
+      "name": "Alžir",
+      "flag": "🇩�",
+      "code": "+213"
+    },
+    {
+      "name": "Andorra",
+      "flag": "🇦🇩",
+      "code": "+376"
+    },
+    {
+      "name": "Angola",
+      "flag": "🇦🇴",
+      "code": "+244"
+    },
+    {
+      "name": "Argentina",
+      "flag": "🇦🇷",
+      "code": "+54"
+    },
+    {
+      "name": "Ermenistan",
+      "flag": "🇦🇲",
+      "code": "+374"
+    },
+    {
+      "name": "Awstraliýa",
+      "flag": "🇦🇺",
+      "code": "+61"
+    },
+    {
+      "name": "Awstriýa",
+      "flag": "🇦🇹",
+      "code": "+43"
+    },
+    {
+      "name": "Azerbaýjan",
+      "flag": "🇦�",
+      "code": "+994"
+    },
+    {
+      "name": "Bahreýn",
+      "flag": "🇧🇭",
+      "code": "+973"
+    },
+    {
+      "name": "Bangladeş",
+      "flag": "🇧🇩",
+      "code": "+880"
+    },
+    {
+      "name": "Belarus",
+      "flag": "🇧🇾",
+      "code": "+375"
+    },
+    {
+      "name": "Belgiýa",
+      "flag": "🇧🇪",
+      "code": "+32"
+    },
+    {
+      "name": "Beliz",
+      "flag": "🇧🇿",
+      "code": "+501"
+    },
+    {
+      "name": "Benin",
+      "flag": "🇧🇯",
+      "code": "+229"
+    },
+    {
+      "name": "Butan",
+      "flag": "🇧🇹",
+      "code": "+975"
+    },
+    {
+      "name": "Boliwiýa",
+      "flag": "🇧🇴",
+      "code": "+591"
+    },
+    {
+      "name": "Bosniýa we Gersegowina",
+      "flag": "🇧🇦",
+      "code": "+387"
+    },
+    {
+      "name": "Botswana",
+      "flag": "🇧🇼",
+      "code": "+267"
+    },
+    {
+      "name": "Braziliýa",
+      "flag": "🇧🇷",
+      "code": "+55"
+    },
+    {
+      "name": "Bruneý",
+      "flag": "🇧🇳",
+      "code": "+673"
+    },
+    {
+      "name": "Bolgariýa",
+      "flag": "🇧🇬",
+      "code": "+359"
+    },
+    {
+      "name": "Burkina-Faso",
+      "flag": "🇧🇫",
+      "code": "+226"
+    },
+    {
+      "name": "Burundi",
+      "flag": "🇧🇮",
+      "code": "+257"
+    },
+    {
+      "name": "Kamboja",
+      "flag": "🇰🇭",
+      "code": "+855"
+    },
+    {
+      "name": "Kamerun",
+      "flag": "🇨🇲",
+      "code": "+237"
+    },
+    {
+      "name": "Kanada",
+      "code": "+1",
+      "flag": "🇨🇦"
+    },
+    {
+      "name": "Çad",
+      "flag": "🇹🇩",
+      "code": "+235"
+    },
+    {
+      "name": "Çili",
+      "flag": "🇨🇱",
+      "code": "+56"
+    },
+    {
+      "name": "Hytaý",
+      "flag": "🇨🇳",
+      "code": "+86"
+    },
+    {
+      "name": "Kolumbiýa",
+      "flag": "🇨🇴",
+      "code": "+57"
+    },
+    {
+      "name": "Kosta-Rika",
+      "flag": "🇨🇷",
+      "code": "+506"
+    },
+    {
+      "name": "Horwatiýa",
+      "flag": "🇭🇷",
+      "code": "+385"
+    },
+    {
+      "name": "Kuba",
+      "flag": "🇨🇺",
+      "code": "+53"
+    },
+    {
+      "name": "Kipr",
+      "flag": "🇨🇾",
+      "code": "+357"
+    },
+    {
+      "name": "Çehiýa Respublikasy",
+      "flag": "🇨🇿",
+      "code": "+420"
+    },
+    {
+      "name": "Daniýa",
+      "flag": "🇩🇰",
+      "code": "+45"
+    },
+    {
+      "name": "Dominikan Respublikasy",
+      "code": "+1",
+      "flag": "🇩🇴"
+    },
+    {
+      "name": "Ekwador",
+      "flag": "🇪🇨",
+      "code": "+593"
+    },
+    {
+      "name": "Müsür",
+      "flag": "🇪🇬",
+      "code": "+20"
+    },
+    {
+      "name": "Estoniýa",
+      "flag": "🇪🇪",
+      "code": "+372"
+    },
+    {
+      "name": "Efiopiýa",
+      "flag": "🇪🇹",
+      "code": "+251"
+    },
+    {
+      "name": "Fiji",
+      "flag": "🇫🇯",
+      "code": "+679"
+    },
+    {
+      "name": "Finlýandiýa",
+      "flag": "🇫🇮",
+      "code": "+358"
+    },
+    {
+      "name": "Fransiýa",
+      "flag": "🇫🇷",
+      "code": "+33"
+    },
+    {
+      "name": "Gruziýa",
+      "flag": "🇬🇪",
+      "code": "+995"
+    },
+    {
+      "name": "Germaniýa",
+      "flag": "🇩🇪",
+      "code": "+49"
+    },
+    {
+      "name": "Gana",
+      "flag": "🇬🇭",
+      "code": "+233"
+    },
+    {
+      "name": "Gresiýa",
+      "flag": "🇬🇷",
+      "code": "+30"
+    },
+    {
+      "name": "Gwatemala",
+      "flag": "🇬🇹",
+      "code": "+502"
+    },
+    {
+      "name": "Gwineýa",
+      "flag": "🇬🇳",
+      "code": "+224"
+    },
+    {
+      "name": "Wengriýa",
+      "flag": "🇭🇺",
+      "code": "+36"
+    },
+    {
+      "name": "Islandiýa",
+      "flag": "🇮🇸",
+      "code": "+354"
+    },
+    {
+      "name": "Hindistan",
+      "flag": "🇮🇳",
+      "code": "+91"
+    },
+    {
+      "name": "Indoneziýa",
+      "flag": "🇮🇩",
+      "code": "+62"
+    },
+    {
+      "name": "Eýran",
+      "flag": "🇮🇷",
+      "code": "+98"
+    },
+    {
+      "name": "Yrak",
+      "flag": "🇮🇶",
+      "code": "+964"
+    },
+    {
+      "name": "Irlandiýa",
+      "flag": "🇮🇪",
+      "code": "+353"
+    },
+    {
+      "name": "Ysraýyl",
+      "flag": "🇮🇱",
+      "code": "+972"
+    },
+    {
+      "name": "Italiýa",
+      "flag": "🇮🇹",
+      "code": "+39"
+    },
+    {
+      "name": "Ýamaýka",
+      "code": "+1",
+      "flag": "🇯🇲"
+    },
+    {
+      "name": "Ýaponiýa",
+      "flag": "🇯🇵",
+      "code": "+81"
+    },
+    {
+      "name": "Iordaniýa",
+      "flag": "🇯🇴",
+      "code": "+962"
+    },
+    {
+      "name": "Gazagystan",
+      "code": "+7",
+      "flag": "🇰�"
+    },
+    {
+      "name": "Keniýa",
+      "flag": "🇰🇪",
+      "code": "+254"
+    },
+    {
+      "name": "Kuweýt",
+      "flag": "🇰🇼",
+      "code": "+965"
+    },
+    {
+      "name": "Gyrgyzystan",
+      "flag": "🇰🇬",
+      "code": "+996"
+    },
+    {
+      "name": "Latwiýa",
+      "flag": "🇱🇻",
+      "code": "+371"
+    },
+    {
+      "name": "Liwan",
+      "flag": "🇱🇧",
+      "code": "+961"
+    },
+    {
+      "name": "Liwiýa",
+      "flag": "🇱🇾",
+      "code": "+218"
+    },
+    {
+      "name": "Litwa",
+      "flag": "🇱🇹",
+      "code": "+370"
+    },
+    {
+      "name": "Lýuksemburg",
+      "flag": "🇱🇺",
+      "code": "+352"
+    },
+    {
+      "name": "Malaýziýa",
+      "flag": "🇲🇾",
+      "code": "+60"
+    },
+    {
+      "name": "Maldiwler",
+      "flag": "🇲🇻",
+      "code": "+960"
+    },
+    {
+      "name": "Malta",
+      "flag": "🇲🇹",
+      "code": "+356"
+    },
+    {
+      "name": "Meksika",
+      "flag": "🇲🇽",
+      "code": "+52"
+    },
+    {
+      "name": "Moldowa",
+      "flag": "🇲🇩",
+      "code": "+373"
+    },
+    {
+      "name": "Monako",
+      "flag": "🇲🇨",
+      "code": "+377"
+    },
+    {
+      "name": "Mongoliýa",
+      "flag": "🇲🇳",
+      "code": "+976"
+    },
+    {
+      "name": "Çernogoriýa",
+      "flag": "🇲🇪",
+      "code": "+382"
+    },
+    {
+      "name": "Marokko",
+      "flag": "🇲🇦",
+      "code": "+212"
+    },
+    {
+      "name": "Mýanma",
+      "flag": "🇲🇲",
+      "code": "+95"
+    },
+    {
+      "name": "Nepal",
+      "flag": "🇳🇵",
+      "code": "+977"
+    },
+    {
+      "name": "Niderlandlar",
+      "flag": "🇳🇱",
+      "code": "+31"
+    },
+    {
+      "name": "Täze Zelandiýa",
+      "flag": "🇳🇿",
+      "code": "+64"
+    },
+    {
+      "name": "Nigeriýa",
+      "flag": "🇳🇬",
+      "code": "+234"
+    },
+    {
+      "name": "Demirgazyk Makedoniýa",
+      "flag": "🇲🇰",
+      "code": "+389"
+    },
+    {
+      "name": "Norwegiýa",
+      "flag": "🇳🇴",
+      "code": "+47"
+    },
+    {
+      "name": "Oman",
+      "flag": "🇴🇲",
+      "code": "+968"
+    },
+    {
+      "name": "Pakistan",
+      "flag": "🇵🇰",
+      "code": "+92"
+    },
+    {
+      "name": "Panama",
+      "flag": "🇵🇦",
+      "code": "+507"
+    },
+    {
+      "name": "Paragwaý",
+      "flag": "🇵🇾",
+      "code": "+595"
+    },
+    {
+      "name": "Peru",
+      "flag": "🇵🇪",
+      "code": "+51"
+    },
+    {
+      "name": "Filippinler",
+      "flag": "🇵🇭",
+      "code": "+63"
+    },
+    {
+      "name": "Polşa",
+      "flag": "🇵🇱",
+      "code": "+48"
+    },
+    {
+      "name": "Portugaliýa",
+      "flag": "🇵🇹",
+      "code": "+351"
+    },
+    {
+      "name": "Katar",
+      "flag": "🇶🇦",
+      "code": "+974"
+    },
+    {
+      "name": "Rumyniýa",
+      "flag": "🇷🇴",
+      "code": "+40"
+    },
+    {
+      "name": "Russiýa",
+      "code": "+7",
+      "flag": "🇷🇺"
+    },
+    {
+      "name": "Ruanda",
+      "flag": "🇷🇼",
+      "code": "+250"
+    },
+    {
+      "name": "Saud Arabystany",
+      "flag": "🇸🇦",
+      "code": "+966"
+    },
+    {
+      "name": "Senegal",
+      "flag": "🇸🇳",
+      "code": "+221"
+    },
+    {
+      "name": "Serbiýa",
+      "flag": "🇷🇸",
+      "code": "+381"
+    },
+    {
+      "name": "Singapur",
+      "flag": "🇸🇬",
+      "code": "+65"
+    },
+    {
+      "name": "Slowakiýa",
+      "flag": "🇸🇰",
+      "code": "+421"
+    },
+    {
+      "name": "Sloweniýa",
+      "flag": "🇸🇮",
+      "code": "+386"
+    },
+    {
+      "name": "Günorta Afrika",
+      "flag": "🇿🇦",
+      "code": "+27"
+    },
+    {
+      "name": "Günorta Koreýa",
+      "flag": "🇰🇷",
+      "code": "+82"
+    },
+    {
+      "name": "Ispaniýa",
+      "flag": "🇪🇸",
+      "code": "+34"
+    },
+    {
+      "name": "Şri-Lanka",
+      "flag": "🇱🇰",
+      "code": "+94"
+    },
+    {
+      "name": "Sudan",
+      "flag": "🇸🇩",
+      "code": "+249"
+    },
+    {
+      "name": "Şwesiýa",
+      "flag": "🇸🇪",
+      "code": "+46"
+    },
+    {
+      "name": "Şweýsariýa",
+      "flag": "🇨🇭",
+      "code": "+41"
+    },
+    {
+      "name": "Siriýa",
+      "flag": "🇸🇾",
+      "code": "+963"
+    },
+    {
+      "name": "Taýwan",
+      "flag": "🇹🇼",
+      "code": "+886"
+    },
+    {
+      "name": "Täjigistan",
+      "flag": "🇹🇯",
+      "code": "+992"
+    },
+    {
+      "name": "Tanzaniýa",
+      "flag": "🇹🇿",
+      "code": "+255"
+    },
+    {
+      "name": "Taýland",
+      "flag": "🇹🇭",
+      "code": "+66"
+    },
+    {
+      "name": "Tunis",
+      "flag": "🇹🇳",
+      "code": "+216"
+    },
+    {
+      "name": "Türkiýe",
+      "flag": "🇹🇷",
+      "code": "+90"
+    },
+    {
+      "name": "Türkmenistan",
+      "flag": "🇹🇲",
+      "code": "+993"
+    },
+    {
+      "name": "Uganda",
+      "flag": "🇺🇬",
+      "code": "+256"
+    },
+    {
+      "name": "Ukraina",
+      "flag": "🇺🇦",
+      "code": "+380"
+    },
+    {
+      "name": "Birleşen Arap Emirlikleri",
+      "flag": "🇦🇪",
+      "code": "+971"
+    },
+    {
+      "name": "Beýik Britaniýa",
+      "flag": "🇬🇧",
+      "code": "+44"
+    },
+    {
+      "name": "Birleşen Ştatlar",
+      "code": "+1",
+      "flag": "🇺🇸"
+    },
+    {
+      "name": "Urugwaý",
+      "flag": "🇺🇾",
+      "code": "+598"
+    },
+    {
+      "name": "Özbegistan",
+      "flag": "🇺🇿",
+      "code": "+998"
+    },
+    {
+      "name": "Wenesuela",
+      "flag": "🇻🇪",
+      "code": "+58"
+    },
+    {
+      "name": "Wýetnam",
+      "flag": "🇻🇳",
+      "code": "+84"
+    },
+    {
+      "name": "Ýemen",
+      "flag": "🇾🇪",
+      "code": "+967"
+    },
+    {
+      "name": "Zambiýa",
+      "flag": "🇿🇲",
+      "code": "+260"
+    },
+    {
+      "name": "Zimbabwe",
+      "flag": "🇿🇼",
+      "code": "+263"
+    }
+  ]
+}

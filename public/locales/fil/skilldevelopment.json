@@ -1,0 +1,374 @@
+{
+  "skilldevelopment": {
+    "hero": {
+      "badge": "Pagsasanay sa pagpapaunlad ng propesyonal na kasanayan",
+      "headline": {
+        "prefix": "Paunlarin ang Iyong",
+        "suffix": "Para sa Trabaho Bukas"
+      },
+      "animatedWords": [
+        "Mga Kasanayan",
+        "Kadalubhasaan",
+        "Kaalaman",
+        "Mga Kakayahan",
+        "Mga Talento",
+        "Kahusayan"
+      ],
+      "description": "Ang aming mga programa sa pagsasanay na nakatuon sa trabaho at mga kurso sa propesyonal na pag-unlad ay nag-aalok ng praktikal at in-demand na mga kasanayan. Ang mga sesyon ng pagpapaunlad ng kasanayan na pinangungunahan ng mga eksperto ay naghahanda sa iyo upang umunlad sa mapagkumpitensyang merkado ng trabaho ngayon.",
+      "cta": {
+        "text": "Galugarin ang mga Programa sa Pagsasanay"
+      }
+    },
+    "showcase": {
+      "title": "Pagpapaunlad ng Kasanayan",
+      "subtitle": "Buuin ang mga kasanayan para sa bukas ngayon",
+      "learning": {
+        "title": "Interaktibong Pagkatuto",
+        "subtitle": "Pagsasanay nang may gabay ng eksperto"
+      },
+      "categories": [
+        {
+          "icon": "Kodigo",
+          "title": "Mga Kasanayan sa Teknolohiya",
+          "description": "Programming at IT",
+          "gradient": "bg-gradient-to-r mula-sky-500 hanggang-blue-600"
+        },
+        {
+          "icon": "Bombilya",
+          "title": "Malikhain",
+          "description": "Disenyo at Media",
+          "gradient": "bg-gradient-to-r mula-lila-500 hanggang indigo-600"
+        },
+        {
+          "icon": "Target",
+          "title": "Negosyo",
+          "description": "Pamamahala at Pananalapi",
+          "gradient": "bg-gradient-to-r mula-emerald-500 hanggang-teal-600"
+        },
+        {
+          "icon": "Nagte-trendUp",
+          "title": "Mga Malambot na Kasanayan",
+          "description": "Komunikasyon at Pamumuno",
+          "gradient": "bg-gradient-to-r mula-kahel-500 hanggang-pula-600"
+        }
+      ],
+      "stats": [
+        {
+          "label": "Mga Programa sa Pagsasanay",
+          "color": "text-sky-600",
+          "value": "150+"
+        },
+        {
+          "label": "Mga Mag-aaral na Sinanay",
+          "color": "teksto-asul-600",
+          "value": "5000+"
+        },
+        {
+          "label": "Paglalagay ng Trabaho",
+          "color": "teksto-indigo-600",
+          "value": "90%"
+        }
+      ]
+    }
+  },
+  "skilldevpage": {
+    "hero": {
+      "badge": "PAGPAPAUNLAD NG PROPESYONAL NA KASANAYAN",
+      "title": {
+        "prefix": "Bakit Piliin ang Aming",
+        "highlight": "Mga Programa sa Pagpapaunlad ng Kasanayan?"
+      },
+      "description": "Baguhin ang iyong karera gamit ang mga programa sa pagsasanay na may kaugnayan sa industriya na idinisenyo upang maging handa ka sa trabaho. Samahan ang libu-libong mga propesyonal na sumulong sa kanilang mga karera sa pamamagitan ng aming komprehensibong mga kurso sa pagpapaunlad ng kasanayan.",
+      "cta": {
+        "primary": "Galugarin ang mga Programa sa Pagsasanay",
+        "secondary": "Mag-iskedyul ng Konsultasyon"
+      }
+    },
+    "stats": [
+      {
+        "label": "Mga Programa sa Pagsasanay",
+        "icon": "BookOpen",
+        "value": "500+"
+      },
+      {
+        "value": "15k+",
+        "label": "Mga Mag-aaral na Sinanay",
+        "icon": "Mga Gumagamit"
+      },
+      {
+        "label": "Antas ng Paglalagay ng Trabaho",
+        "icon": "Nagte-trendUp",
+        "value": "95%"
+      },
+      {
+        "label": "Mga Kasosyo sa Industriya",
+        "icon": "Gusali",
+        "value": "200+"
+      }
+    ],
+    "benefits": {
+      "title": {
+        "prefix": "Ano ang Nagpapaunlad sa Aming mga Programa",
+        "highlight": "Namumukod-tangi"
+      },
+      "description": "Tinitiyak ng aming komprehensibong pamamaraan na makukuha mo ang pinakamahusay na karanasan sa pagsasanay gamit ang mga totoong aplikasyon sa mundo",
+      "items": [
+        {
+          "icon": "Gusali",
+          "title": "Kurikulum na May Kaugnayan sa Industriya",
+          "description": "Mga modyul sa pagsasanay na idinisenyo sa pakikipagtulungan ng mga eksperto sa industriya at mga employer, na tinitiyak na makukuha mo ang mga pinaka-kaugnay at napapanahong kasanayan sa pamamagitan ng mga in-demand na programa sa pagsasanay sa kasanayan.",
+          "color": "teksto-[#38B6FF]",
+          "bgColor": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Mga Gumagamit",
+          "title": "Mga Bihasang Tagasanay at Tagapayo",
+          "description": "Matuto mula sa mga kwalipikadong instruktor na may totoong karanasan sa kani-kanilang larangan na nagbibigay ng pagsasanay para sa pagsulong sa karera.",
+          "color": "teksto-esmeralda-600",
+          "bgColor": "bg-esmeralda-50"
+        },
+        {
+          "icon": "Target",
+          "title": "Pag-aaral nang Akma",
+          "description": "Binibigyang-diin namin ang praktikal at nakabatay sa proyektong pagkatuto upang hindi ka lamang masanay—handa ka na rin sa trabaho na may mahahalagang soft skills at teknikal na pagsasanay.",
+          "color": "teksto-lila-600",
+          "bgColor": "bg-lila-50"
+        },
+        {
+          "icon": "Orasan",
+          "title": "Mga Opsyon sa Pag-aaral na May Flexibility",
+          "description": "Online, personal, o hybrid—piliin ang mode na pinakaangkop sa iyong iskedyul at istilo ng pag-aaral para sa mga online at offline na sesyon ng pagsasanay para sa mga kasanayang in-demand.",
+          "color": "teksto-kahel-600",
+          "bgColor": "bg-orange-50"
+        },
+        {
+          "icon": "Briefcase",
+          "title": "Suporta sa Karera",
+          "description": "Kumuha ng gabay sa pagbuo ng resume, mga estratehiya sa paghahanap ng trabaho, at paghahanda sa interbyu bilang bahagi ng aming pagsasanay sa kahandaan sa lugar ng trabaho at mga workshop sa pagpapahusay ng karera.",
+          "color": "teksto-indigo-600",
+          "bgColor": "bg-indigo-50"
+        }
+      ]
+    },
+    "trainingAreas": {
+      "title": {
+        "prefix": "Mga Lugar ng Pagsasanay",
+        "highlight": "Sinasaklaw Namin"
+      },
+      "description": "Ang aming mga programa ay sumasaklaw sa malawak na hanay ng mga larangan na mataas ang demand upang matugunan ang iba't ibang mga mithiin sa karera",
+      "programLabel": "Programa sa Propesyonal na Pagsasanay",
+      "skillsLabel": "Mga Pangunahing Kasanayan na Matututuhan Mo:",
+      "highlightsLabel": "Mga Pangunahing Tampok ng Programa:",
+      "enrollButton": "Mag-enroll",
+      "programText": "Programa",
+      "highlights": [
+        "Sertipikasyon na kinikilala ng industriya",
+        "Portfolio ng proyektong praktikal",
+        "Tulong sa paglalagay ng trabaho",
+        "Iskedyul ng pag-aaral na may kakayahang umangkop"
+      ],
+      "items": [
+        {
+          "title": "Teknolohiya ng Impormasyon (IT) at Pagpapaunlad ng Software",
+          "description": "Mga lengguwahe ng programming, web development, data science, app development, cybersecurity, at marami pang iba, na sinusuportahan ng aming mga inisyatibo sa pagsasanay sa mga digital skills.",
+          "icon": "Kodigo",
+          "color": "teksto-[#38B6FF]",
+          "bgColor": "bg-[#38B6FF]/10",
+          "accentColor": "bg-[#38B6FF]",
+          "skills": {
+            "0": "Python",
+            "1": "JavaScript",
+            "2": "Reaksyon",
+            "3": "Agham ng Datos",
+            "4": "Seguridad sa siber",
+            "5": "Cloud Computing"
+          },
+          "id": 0
+        },
+        {
+          "title": "Digital Marketing",
+          "description": "SEO, social media marketing, email marketing, paglikha ng nilalaman, Google Ads, at analytics.",
+          "icon": "Nagte-trendUp",
+          "color": "teksto-esmeralda-600",
+          "bgColor": "bg-esmeralda-50",
+          "accentColor": "bg-esmeralda-600",
+          "skills": {
+            "0": "SEO",
+            "1": "Social Media",
+            "2": "Mga Ad sa Google",
+            "3": "Pagmemerkado sa Nilalaman",
+            "4": "Analitika",
+            "5": "Pagmemerkado sa Email"
+          },
+          "id": 1
+        },
+        {
+          "title": "Negosyo at Pagnenegosyo",
+          "description": "Pagpaplano ng negosyo, pamamahala ng proyekto, pamumuno, at literasi sa pananalapi.",
+          "icon": "Gusali",
+          "color": "teksto-lila-600",
+          "bgColor": "bg-lila-50",
+          "accentColor": "bg-lila-600",
+          "skills": {
+            "0": "Pagpaplano ng Negosyo",
+            "1": "Pamamahala ng Proyekto",
+            "2": "Pamumuno",
+            "3": "Literasiya sa Pananalapi",
+            "4": "Istratehiya",
+            "5": "Mga Operasyon"
+          },
+          "id": 2
+        },
+        {
+          "title": "Komunikasyon at Malambot na Kasanayan",
+          "description": "Pagsasalita sa publiko, propesyonal na pagsusulat, pagtutulungan ng magkakasama, emosyonal na katalinuhan, at tuntunin ng magandang asal sa lugar ng trabaho.",
+          "icon": "MessageSquare",
+          "color": "teksto-kahel-600",
+          "bgColor": "bg-orange-50",
+          "accentColor": "bg-orange-600",
+          "skills": {
+            "0": "Pagsasalita sa Publiko",
+            "1": "Propesyonal na Pagsusulat",
+            "2": "Pagtutulungan",
+            "3": "Emosyonal na Katalinuhan",
+            "4": "Pamumuno",
+            "5": "Negosasyon"
+          },
+          "id": 3
+        },
+        {
+          "title": "Mga Kasanayang Bokasyonal at Teknikal",
+          "description": "Mga hanapbuhay at praktikal na propesyon kabilang ang mekanikal, elektrikal, at computer-aided design (CAD).",
+          "icon": "Panangga",
+          "color": "teksto-indigo-600",
+          "bgColor": "bg-indigo-50",
+          "accentColor": "bg-indigo-600",
+          "skills": {
+            "0": "Inhinyerong Mekanikal",
+            "1": "Mga Sistemang Elektrikal",
+            "2": "Disenyo ng CAD",
+            "3": "Paggawa",
+            "4": "Kontrol ng Kalidad",
+            "5": "Mga Pamantayan sa Kaligtasan"
+          },
+          "id": 4
+        }
+      ]
+    },
+    "targetAudience": {
+      "title": "Sino ang Maaaring Sumali?",
+      "description": "Ang aming mga programa ay idinisenyo para sa magkakaibang mag-aaral sa iba't ibang yugto ng karera",
+      "items": [
+        {
+          "title": "Mga Kamakailang Nagtapos",
+          "description": "Naghahanap ng mga programang pampahusay ng kasanayan para sa mga bagong nagtapos sa Pakistan",
+          "icon": "GraduationCap",
+          "color": "teksto-[#38B6FF]"
+        },
+        {
+          "title": "Mga Nagtatrabahong Propesyonal",
+          "description": "Naglalayong mapabuti ang mga kasanayan sa trabaho o mga karera sa transisyon sa pamamagitan ng pagsusuri ng kakulangan sa kasanayan at pagpapahusay ng kasanayan",
+          "icon": "Briefcase",
+          "color": "teksto-esmeralda-600"
+        },
+        {
+          "title": "Mga negosyante",
+          "description": "Nangangailangan ng kaalaman sa negosyo at kasanayan sa pagnenegosyo",
+          "icon": "Bombilya",
+          "color": "teksto-lila-600"
+        },
+        {
+          "title": "Mga Naghahanap ng Trabaho",
+          "description": "Paghangad ng kalamangan sa kompetisyon sa pamamagitan ng abot-kayang mga programa sa pagsasanay sa karera para sa mga naghahanap ng trabaho",
+          "icon": "Target",
+          "color": "teksto-kahel-600"
+        },
+        {
+          "title": "Mga Organisasyon",
+          "description": "Naghahanap na sanayin ang kanilang mga tauhan sa pamamagitan ng mga sesyon ng pagsasanay sa kasanayan sa korporasyon",
+          "icon": "Gusali",
+          "color": "teksto-indigo-600"
+        }
+      ]
+    },
+    "approach": {
+      "title": {
+        "prefix": "Ang aming",
+        "highlight": "Pamamaraan sa Pagkatuto"
+      },
+      "description": "Sa JobsAdmire, sinusunod namin ang isang modelo ng pagsasanay na nakasentro sa mag-aaral at nakatuon sa resulta na idinisenyo upang matiyak ang tagumpay.",
+      "points": [
+        {
+          "title": "Pakikipag-ugnayan",
+          "description": "Mga interaktibong sesyon na nagpapanatili sa mga mag-aaral na aktibong kasangkot",
+          "icon": "Mga Gumagamit"
+        },
+        {
+          "title": "Pagtatasa",
+          "description": "Mga pagsusulit at mga proyekto sa totoong mundo upang masukat ang progreso",
+          "icon": "BarChart3"
+        },
+        {
+          "title": "Pagsusuri",
+          "description": "Mga sertipikasyon at praktikal na pagsubok para sa pagpapatunay",
+          "icon": "Gantimpala"
+        },
+        {
+          "title": "Koneksyon",
+          "description": "Mga oportunidad sa trabaho at mga internship para sa totoong karanasan",
+          "icon": "Globo"
+        }
+      ]
+    },
+    "certification": {
+      "title": {
+        "prefix": "Sertipikasyon",
+        "suffix": "Tulong sa Paglalagay"
+      },
+      "description": "Kapag matagumpay na natapos, makakatanggap ang mga kalahok ng mga kinikilalang sertipikasyon upang mapalakas ang kanilang mga resume. Ang aming pakikipagtulungan sa mga nangungunang kumpanya at mga platform ng trabaho ay nagbibigay-daan sa amin na mag-alok ng tulong sa paglalagay ng trabaho, na nag-uugnay sa mga mag-aaral sa mga totoong oportunidad sa trabaho.",
+      "features": [
+        "Mga sertipikasyong kinikilala ng industriya",
+        "Pinakamahusay na mga kurso sa pagpapaunlad ng kasanayan para sa propesyonal na paglago",
+        "Mga kurso sa pagpapaunlad ng kasanayan sa Pakistan",
+        "Pagsasanay sa trabaho para sa mga kabataang Pakistani"
+      ],
+      "cta": "Tingnan ang mga Programa ng Sertipikasyon"
+    },
+    "form": {
+      "title": "Magsimula Ngayon",
+      "fields": {
+        "name": "Buong Pangalan",
+        "email": "Email Address",
+        "training": "Interesado na Lugar ng Pagsasanay"
+      },
+      "placeholders": {
+        "name": "Ilagay ang iyong buong pangalan",
+        "email": "Ilagay ang iyong email",
+        "training": "Pumili ng lugar ng pagsasanay"
+      },
+      "options": [
+        {
+          "value": "ito",
+          "label": "Pagpapaunlad ng IT at Software"
+        },
+        {
+          "value": "pagmemerkado",
+          "label": "Digital Marketing"
+        },
+        {
+          "value": "negosyo",
+          "label": "Negosyo at Pagnenegosyo"
+        },
+        {
+          "value": "komunikasyon",
+          "label": "Komunikasyon at Malambot na Kasanayan"
+        },
+        {
+          "value": "teknikal",
+          "label": "Mga Kasanayang Bokasyonal at Teknikal"
+        }
+      ],
+      "submit": "Humingi ng Impormasyon"
+    }
+  }
+}

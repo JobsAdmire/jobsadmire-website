@@ -1,0 +1,171 @@
+{
+  "interview": {
+    "hero": {
+      "badge": "Profesyonel mülakat koçluğu hizmetleri",
+      "headline": {
+        "prefix": "Ustalaşın",
+        "suffix": "Uzman Koçluk ile"
+      },
+      "animatedWords": [
+        "Röportaj",
+        "Güven",
+        "Başarı",
+        "Performans",
+        "Beceriler",
+        "Mükemmellik"
+      ],
+      "description": "Sahte mülakat oturumlarından kişiselleştirilmiş geri bildirimlere kadar kapsamlı mülakat koçluğu hizmetlerimiz, profesyonellerin hayallerindeki işlere güvenle girmelerine yardımcı olur.",
+      "cta": {
+        "text": "Hazırlığınıza Başlayın"
+      }
+    },
+    "showcase": {
+      "title": "Mülakat Koçluğu",
+      "subtitle": "Mülakat başarısı için uzman rehberliği",
+      "mockInterview": {
+        "title": "Sahte Mülakatlar",
+        "subtitle": "Sektör uzmanları ile pratik yapın"
+      },
+      "features": [
+        {
+          "iconKey": "messageSquare",
+          "title": "Davranışsal",
+          "description": "Duruma dayalı Soru-Cevap",
+          "gradient": "bg-gradient-to-r from-sky-500 to-blue-600"
+        },
+        {
+          "iconKey": "target",
+          "title": "Teknik",
+          "description": "Beceri değerlendirmesi",
+          "gradient": "bg-gradient-to-r from-purple-500 to-indigo-600"
+        },
+        {
+          "iconKey": "clock",
+          "title": "Zamanlama",
+          "description": "Yanıt stratejisi",
+          "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+        },
+        {
+          "iconKey": "award",
+          "title": "Geri bildirim",
+          "description": "Uzman analizi",
+          "gradient": "bg-gradient-to-r from-orange-500 to-red-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "95%",
+          "label": "Başarı Oranı",
+          "color": "text-sky-600"
+        },
+        {
+          "value": "500+",
+          "label": "Koçluk Yapılan Müşteriler",
+          "color": "text-blue-600"
+        },
+        {
+          "value": "4.9★",
+          "label": "Değerlendirme",
+          "color": "text-indigo-600"
+        }
+      ]
+    },
+    "serviceSection": {
+      "header": {
+        "title": "Bu Hizmet Sizin İçin Uygun mu?",
+        "description": "Çevrimiçi mülakat koçluğumuz, tüm kariyer aşamalarındaki profesyonellerin, özellikle Pakistan'da mülakat koçluğu hizmetleri veya Pakistanlı iş arayanlar için mülakata hazırlık yardımı arayanların hayallerindeki işlere girmelerine yardımcı oldu."
+      },
+      "successStory": {
+        "label": "Başarı Hikayesi",
+        "badge": "25 Maaş Artışı",
+        "client": {
+          "name": "Sarmad Saleem",
+          "position": "Yazılım Mühendisi, Toronto"
+        },
+        "testimonial": "\"Kanada'ya taşındıktan sonra mülakat kaygısı ile mücadele ediyordum. Koçluk, deneyimlerimi net ve özgüvenli bir şekilde ifade etmeme yardımcı oldu. Sarmad'ın göç ettikten sonraki dört ay içinde hedeflediği işe %25 daha yüksek bir teklifle girmesine yardımcı olduk.\"",
+        "readMore": "Daha fazla bilgi edinin"
+      },
+      "testimonial": {
+        "label": "BAŞARI HİKAYESİ",
+        "quote": "CareerTuners bana mülakat koçluğu konusunda yardımcı oldu ve bunun sonucunda şirketimde bir terfi aldım.",
+        "client": {
+          "name": "Meena Ansari",
+          "position": "Ticari Hasar Eksperliği"
+        }
+      },
+      "questions": {
+        "title": "Şu soruları düşünün:",
+        "items": [
+          "Mevcut işinizden neden ayrılmak istediğinizi açıklamaktan çekiniyor musunuz?",
+          "Mülakatlar sırasında kendinizi saçmalarken buluyor musunuz?",
+          "Özgeçmişinizdeki \"kırmızı bayrakları\" ele alma konusunda endişeleniyor musunuz?"
+        ],
+        "conclusion": "Bunlardan herhangi birine evet dediyseniz, mülakat koçluğumuz sizin için tasarlanmıştır."
+      },
+      "benefits": {
+        "title": "Koçluğumuz sizi şu konularda donatacaktır:",
+        "items": [
+          {
+            "iconKey": "messageCircle",
+            "text": "Zor sorulara güvenle cevap verin."
+          },
+          {
+            "iconKey": "user",
+            "text": "Güçlü ilk izlenimler yaratın ve görüşmeleri olumlu bir şekilde kapatın"
+          },
+          {
+            "iconKey": "trendingUp",
+            "text": "İş boşlukları, iş atlama veya diğer potansiyel engeller hakkındaki tartışmaları kolaylıkla ele alın"
+          }
+        ]
+      },
+      "cta": {
+        "text": "Koçluk Seansınızı Bugün Ayırtın"
+      }
+    }
+  },
+  "interviewTimeline": {
+    "badge": "KANITLANMIŞ SÜRECIMIZ",
+    "title": "Nasıl çalışır",
+    "subtitle": "Uzman koçlarımız, profesyonel mülakat hazırlığı yardımı için bu üç basit adımda size rehberlik eder:",
+    "steps": [
+      {
+        "iconKey": "fileText",
+        "title": "Özel bir test görüşmesi oluşturuyoruz",
+        "description": "İlk adım, özgeçmişiniz ve takip etmek istediğiniz bir iş ilanı da dahil olmak üzere sizinle ilgili bazı geçmişi paylaşmaktır. Bu adım, oturumunuzu iş türüne, sektöre ve <strong>iş görüşmesi eğitim hizmetindeki</strong> yaygın zorluklara göre uyarlamamıza yardımcı olur.",
+        "accentColor": "gökyüzü-400",
+        "highlightColor": "gökyüzü-100",
+        "id": 1,
+        "number": "01"
+      },
+      {
+        "iconKey": "userCheck",
+        "title": "Koçunuzla tanışma zamanı",
+        "description": "Koçunuz sektörünüze, rolünüze ve deneyiminize göre özel olarak seçilir. Koçunuzla birlikte sahte bir mülakat oturumu gerçekleştirecek ve ardından yanıtlarınızı nasıl geliştireceğiniz ve mülakat sırasında kendinizi nasıl farklılaştıracağınız konusunda size özel geri bildirim alacaksınız. <strong>Bire bir mülakat koçluğumuz</strong> davranışsal mülakatlarda ustalaşmaya ve karşılaşabileceğiniz zorlukların üstesinden gelmeye odaklanır.",
+        "accentColor": "gökyüzü-500",
+        "highlightColor": "gökyüzü-100",
+        "id": 2,
+        "number": "02"
+      },
+      {
+        "iconKey": "video",
+        "title": "Pratik yapmak mükemmelleştirir",
+        "description": "Koçluk seansınızdan sonra, mülakata hazır olmanızı sağlamak için özel geri bildirim ve özel bir eylem planı ile birlikte mülakatınızın bir kaydını alacaksınız. Bu, özellikle <strong>yeni mezunlar için mülakat koçluğu</strong> arayanlar veya <strong>mülakatlar için kariyer koçluğu</strong> yaklaşımına ihtiyaç duyan profesyoneller için yararlıdır.",
+        "accentColor": "gökyüzü-600",
+        "highlightColor": "gökyüzü-100",
+        "id": 3,
+        "number": "03"
+      }
+    ],
+    "cta": {
+      "title": "Bir sonraki mülakatınızda başarılı olmaya hazır mısınız?",
+      "subtitle": "Hayallerindeki işe giren binlerce başarılı adaya katılın",
+      "buttonText": "Mülakat Koçluğu Seansınızı Rezerve Edin",
+      "link": "/contact-us"
+    },
+    "accessibility": {
+      "stepLabel": "Adım {numara}: {başlık}",
+      "ctaLabel": "Mülakat koçluğu seansı için rezervasyon yaptırın"
+    }
+  }
+}

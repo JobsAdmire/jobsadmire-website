@@ -1,0 +1,194 @@
+{
+  "header": {
+    "badge": "Türkiye'nin 1 Numaralı Vatandaşlık Danışmanlığı",
+    "title": {
+      "line1": "Kilidinizi Açın",
+      "line2": "Türkiye'nin Geleceği"
+    },
+    "subtitle": "Türk vatandaşlığı ile hayatınızı dönüştürün. Uzman rehberliği, kanıtlanmış sonuçlar ve yeni vatandaşlığınıza sorunsuz bir yolculuk.",
+    "buttons": {
+      "startJourney": "Yolculuğunuza Başlayın",
+      "scheduleConsultation": "Konsültasyon Planlayın"
+    }
+  },
+  "form": {
+    "title": "Ücretsiz Danışmanlığınızı Alın",
+    "fields": {
+      "name": {
+        "label": "Ad Soyad *",
+        "placeholder": "Tam adınız"
+      },
+      "email": {
+        "label": "E-posta *",
+        "placeholder": "your.email@domain.com"
+      },
+      "phone": {
+        "label": "Telefon",
+        "placeholder": "+1 (555) 000-0000"
+      },
+      "pathway": {
+        "label": "Tercih Edilen Yol",
+        "placeholder": "Yol seçin",
+        "options": {
+          "investment": "Yatırım Yolu"
+        }
+      },
+      "message": {
+        "label": "Bize durumunuz hakkında bilgi verin",
+        "placeholder": "Hedeflerinizi, zaman çizelgenizi ve özel sorularınızı paylaşın..."
+      }
+    },
+    "submitButton": "Ücretsiz Danışmanlık Alın",
+    "disclaimer": "Ücretsiz danışmanlık - 24 saat içinde yanıt - Yükümlülük yok"
+  },
+  "sections": {
+    "pathways": {
+      "title": "Vatandaşlık Yolları",
+      "subtitle": "Türk vatandaşlığına giden ve her biri farklı koşullar için tasarlanmış birden fazla yol",
+      "popularBadge": "En Popüler"
+    },
+    "benefits": {
+      "title": "Türk Vatandaşlığının Faydaları",
+      "subtitle": "Fırsatlar ve ayrıcalıklarla dolu bir dünyanın kilidini açın",
+      "items": [
+        "Dünya çapında 110'dan fazla ülkeye vizesiz seyahat",
+        "Türkiye'de sınırsız yaşama ve çalışma hakkı",
+        "Türk sağlık sistemine tam erişim",
+        "Üstün eğitim fırsatları",
+        "Kısıtlanmamış mülk sahipliği hakları",
+        "Tam iş kurma özgürlüğü",
+        "AB adaylık üyeliğinin faydaları",
+        "Çifte vatandaşlığa yasal olarak izin verilmektedir"
+      ]
+    },
+    "process": {
+      "title": "Kanıtlanmış Sürecimiz",
+      "subtitle": "Her adımda uzman rehberliği ile Türk vatandaşlığınıza giden kolaylaştırılmış, şeffaf bir yolculuk",
+      "stepIndicator": "Toplam}'ın {mevcut} adımı"
+    },
+    "services": {
+      "title": "Hizmetlerimiz",
+      "subtitle": "Yolculuğunuz boyunca kapsamlı destek",
+      "items": [
+        {
+          "title": "Eksiksiz Uygulama Yönetimi",
+          "description": "Uçtan uca hazırlık ve teslim"
+        },
+        {
+          "title": "Belge Doğrulama",
+          "description": "Profesyonel kimlik doğrulama hizmetleri"
+        },
+        {
+          "title": "Çeviri Hizmetleri",
+          "description": "Yeminli tercüme ve noter tasdiki"
+        },
+        {
+          "title": "Hukuki Danışmanlık",
+          "description": "Uzman göçmenlik rehberliği"
+        },
+        {
+          "title": "Yatırım Desteği",
+          "description": "Mülk seçimi yardımı"
+        },
+        {
+          "title": "Hükümet İrtibatı",
+          "description": "Doğrudan otorite iletişimi"
+        },
+        {
+          "title": "Başvuru Takibi",
+          "description": "Gerçek zamanlı ilerleme takibi"
+        },
+        {
+          "title": "Vatandaşlık Sonrası Destek",
+          "description": "Onaydan sonra devam eden yardım"
+        }
+      ]
+    },
+    "contact": {
+      "title": "Başlamaya Hazır mısınız?",
+      "subtitle": "Uzman danışmanlığımızla Türk vatandaşlığına doğru ilk adımı atın. Ücretsiz değerlendirme, kişiselleştirilmiş rehberlik ve şeffaf fiyatlandırma.",
+      "features": {
+        "consultation": "30 dakikalık ücretsiz danışmanlık",
+        "response": "24 saat içinde yanıt",
+        "assessment": "Yükümlülük yok değerlendirme"
+      },
+      "submitButton": "Yolculuğunuza Başlayın"
+    }
+  },
+  "citizenshipTypes": {
+    "investment": {
+      "title": "Yatırım Yoluyla Vatandaşlık",
+      "description": "Stratejik mülk yatırımı ile Türk vatandaşlığına hızlı geçiş",
+      "requirements": [
+        "En az 400.000 $ tutarında mülk yatırımı",
+        "Mülkü 3 yıl boyunca saklayın",
+        "Temiz sabıka geçmişi",
+        "Sağlık sigortası kapsamı"
+      ],
+      "timeframe": "3-6 ay"
+    },
+    "birth": {
+      "title": "Doğuştan Vatandaşlık",
+      "description": "Belgelenmiş aile mirası yoluyla Türk vatandaşlığı talep edin",
+      "requirements": [
+        "Türk ebeveyn(ler) veya büyükanne ve büyükbabalar",
+        "Resmi doğum belgeleri",
+        "Türk soyundan gelindiğine dair kanıt",
+        "Geçerli kimlik belgeleri"
+      ],
+      "timeframe": "2-4 ay"
+    },
+    "marriage": {
+      "title": "Evlilik Yoluyla Vatandaşlık",
+      "description": "Türk vatandaşlarıyla evlilik yoluyla güvenli vatandaşlık",
+      "requirements": [
+        "Türk vatandaşı ile 3 yıldan fazla evlilik",
+        "Temel Türkçe dil becerileri",
+        "Güvenlik geçmiş kontrolü",
+        "Finansal istikrar kanıtı"
+      ],
+      "timeframe": "4-8 ay"
+    },
+    "naturalization": {
+      "title": "Vatandaşlığa Kabul",
+      "description": "Uzun süreli ikamet taahhüdü ile vatandaşlık kazanın",
+      "requirements": [
+        "5 yıldan fazla sürekli ikamet",
+        "İleri düzeyde Türkçe",
+        "Temiz sabıka kaydı",
+        "Ekonomik entegrasyon kanıtı"
+      ],
+      "timeframe": "6-12 ay"
+    }
+  },
+  "processSteps": {
+    "consultation": {
+      "title": "İlk Konsültasyon",
+      "description": "Ücretsiz uygunluk değerlendirmesi ve yol önerisi",
+      "detail": "En iyi vatandaşlık yolunu belirlemek için benzersiz durumunuzun uzman değerlendirmesi"
+    },
+    "documentation": {
+      "title": "Belge Hazırlama",
+      "description": "Eksiksiz belge toplama ve doğrulama",
+      "detail": "Profesyonel kimlik doğrulama ve çeviri ile kapsamlı belge toplama"
+    },
+    "filing": {
+      "title": "Başvuru Dosyalama",
+      "description": "Resmi devlet başvurusu gönderimi",
+      "detail": "Eksiksiz başvuru paketi ile Türk makamlarına sorunsuz teslim"
+    },
+    "review": {
+      "title": "İşleme İnceleme",
+      "description": "Hükümet incelemesi ve geçmiş doğrulaması",
+      "detail": "Sürekli izleme ve güncellemeler ile kapsamlı inceleme süreci"
+    },
+    "approval": {
+      "title": "Nihai Onay",
+      "description": "Vatandaşlık onayı ve tören planlaması",
+      "detail": "Resmi vatandaşlık belgeleri ile sürecin tamamlanması"
+    }
+  },
+  "alerts": {
+    "thankYouMessage": "Sorunuz için teşekkür ederiz! Sizinle 24 saat içinde iletişime geçeceğiz."
+  }
+}

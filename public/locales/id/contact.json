@@ -1,0 +1,91 @@
+{
+  "contact": {
+    "brand": {
+      "name": "JobsAdmire",
+      "title": "Mari kita mulai perjalananmu bersama",
+      "description": "Kami sangat antusias untuk membantu Anda mencapai tujuan karir Anda. Hubungi kami dan ambil langkah pertama."
+    },
+    "contactInfo": [
+      {
+        "label": "Kandidat & Perusahaan SDM",
+        "value": "+90 501 124 03 40"
+      },
+      {
+        "label": "Penyedia Pekerjaan",
+        "value": "+90 553 383 2549"
+      },
+      {
+        "label": "Kirim email kepada kami di",
+        "value": "info@jobsadmire.com"
+      },
+      {
+        "label": "Kunjungi kantor kami",
+        "value": "Antalya, Turki"
+      },
+      {
+        "label": "Jam operasional",
+        "value": "Senin-Jumat, 09.00 - 18.00"
+      }
+    ],
+    "form": {
+      "progress": {
+        "step1": "Informasi Pribadi",
+        "step2": "Pesan"
+      },
+      "step1": {
+        "title": "Hubungi kami",
+        "subtitle": "Mari kita mulai percakapan."
+      },
+      "step2": {
+        "title": "Ceritakan lebih lanjut",
+        "subtitle": "Kami di sini untuk mendengarkan."
+      },
+      "fields": {
+        "name": {
+          "label": "Nama Anda",
+          "placeholder": "Nama Anda"
+        },
+        "email": {
+          "label": "Alamat Email",
+          "placeholder": "Alamat email"
+        },
+        "phone": {
+          "label": "Nomor telepon",
+          "placeholder": "Nomor telepon"
+        },
+        "subject": {
+          "label": "Subjek",
+          "placeholder": "Subjek"
+        },
+        "message": {
+          "label": "Pesan Anda",
+          "placeholder": "Pesan Anda"
+        }
+      },
+      "validation": {
+        "nameRequired": "Nama wajib diisi.",
+        "nameMinLength": "Nama harus terdiri minimal 2 karakter.",
+        "emailRequired": "Email wajib diisi.",
+        "emailInvalid": "Silakan masukkan alamat email yang valid.",
+        "phoneInvalid": "Silakan masukkan nomor telepon yang valid.",
+        "subjectRequired": "Mata pelajaran wajib diisi",
+        "subjectMinLength": "Subjek harus terdiri minimal 3 karakter.",
+        "messageRequired": "Pesan wajib diisi.",
+        "messageMinLength": "Pesan harus terdiri minimal 10 karakter."
+      },
+      "buttons": {
+        "continue": "Melanjutkan",
+        "back": "Kembali",
+        "send": "Mengirim",
+        "sending": "Mengirim..."
+      },
+      "notification": "Kami akan memberi tahu Anda setelah kami meninjau pesan Anda."
+    },
+    "success": {
+      "title": "Terima kasih!",
+      "message": "Pesan Anda telah berhasil dikirim.",
+      "followUp": "Kami akan menghubungi Anda kembali sesegera mungkin.",
+      "sendAnother": "Kirim Pesan Lainnya"
+    }
+  }
+}

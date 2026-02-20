@@ -1,0 +1,287 @@
+{
+    "immigrationservices": {
+      "hero": {
+        "badge": "Trusted immigration services",
+        "headline": {
+          "prefix": "Start Your",
+          "suffix": "With Expert Guidance"
+        },
+        "animatedWords": [
+          "New Life",
+          "New Country",
+          "Fresh Start", 
+          "Better Future",
+          "New Beginning",
+          "Dream Life"
+        ],
+        "description": "From visa applications to permanent residency, our expert immigration consultants guide you through every step with personalized support tailored for skilled professionals.",
+        "cta": {
+          "text": "Free Consultation"
+        }
+      },
+      "showcase": {
+        "title": "Immigration Services",
+        "subtitle": "Professional assistance for global relocation",
+        "process": {
+          "title": "Complete Immigration Process",
+          "subtitle": "End-to-end support for your journey"
+        },
+        "services": [
+          {
+            "icon": "FileText",
+            "title": "Documentation",
+            "description": "Application prep",
+            "gradient": "bg-gradient-to-r from-sky-500 to-blue-600"
+          },
+          {
+            "icon": "Shield",
+            "title": "Legal Support",
+            "description": "Expert guidance",
+            "gradient": "bg-gradient-to-r from-purple-500 to-indigo-600"
+          },
+          {
+            "icon": "Clock",
+            "title": "Fast Track",
+            "description": "Quick processing",
+            "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+          },
+          {
+            "icon": "Users",
+            "title": "Family Support",
+            "description": "Complete assistance",
+            "gradient": "bg-gradient-to-r from-orange-500 to-red-600"
+          }
+        ],
+        "stats": [
+          {
+            "value": "98%",
+            "label": "Success Rate",
+            "color": "text-sky-600"
+          },
+          {
+            "value": "5000+",
+            "label": "Cases Handled",
+            "color": "text-blue-600"
+          },
+          {
+            "value": "25",
+            "label": "Years Experience",
+            "color": "text-indigo-600"
+          }
+        ]
+      }
+    },
+
+    
+        "evaluation": {
+          "title": "Get Yourself Evaluated",
+          "description": "Migration is a straightforward technical procedure. Our specialists assess your profile to guide you in making an informed choice. The report includes:",
+          "services": [
+            {
+              "icon": "Mail",
+              "title": "Score Card",
+              "description": "Detailed assessment of your eligibility points and migration score"
+            },
+            {
+              "icon": "Settings",
+              "title": "Country Profile",
+              "description": "Tailored country recommendations based on your background and immigration services from Pakistan (if relevant)"
+            },
+            {
+              "icon": "Users",
+              "title": "Occupation Profile",
+              "description": "Analysis of your profession's demand in potential destinations"
+            },
+            {
+              "icon": "FileText",
+              "title": "Documentation List",
+              "description": "Comprehensive checklist of required documents for your application"
+            },
+            {
+              "icon": "DollarSign",
+              "title": "Cost & Time Estimation",
+              "description": "Detailed breakdown of expenses and timeline for your migration"
+            }
+          ],
+          "cta": {
+            "text": "Get Evaluated",
+            "subtitle": "Start your evaluation today and receive a comprehensive report within 48 hours. Our experts will guide you through every step of the process."
+          }
+        },
+
+
+        
+            "globalmigration": {
+              "badge": "GLOBAL MIGRATION",
+              "introduction": {
+                "prefix": "According to the United Nations Department of Economic and Social Affairs (UNDESA), there were an estimated",
+                "highlight": "232 million international migrants globally",
+                "suffix": "."
+              },
+              "reasons": {
+                "title": "Reasons for Immigration",
+                "description": {
+                  "part1": "People move abroad for various reasons such as employment, studies, better quality of life, or expanding horizons. Our",
+                  "highlight1": "immigration consultation services",
+                  "part2": "help skilled workers and job seekers with",
+                  "highlight2": "permanent residency through skilled jobs",
+                  "part3": "."
+                },
+                "items": [
+                  {
+                    "icon": "TrendingUp",
+                    "text": "Increased earning potential",
+                    "description": "One of the top three motivating factors for individuals seeking to build a new life abroad."
+                  },
+                  {
+                    "icon": "Briefcase",
+                    "text": "More job opportunities",
+                    "description": "One of the top three motivating factors for individuals seeking to build a new life abroad."
+                  },
+                  {
+                    "icon": "Heart",
+                    "text": "Better healthcare and education",
+                    "description": "One of the top three motivating factors for individuals seeking to build a new life abroad."
+                  }
+                ]
+              },
+              "definition": "An international migrant is a person living outside the country they were born in. Crossing borders in search of work, education, and new horizons, a migrant is primarily driven by new opportunities and better livelihood."
+            },
+"migrationopportunities": {
+                  "title": {
+                    "prefix": "Migrate",
+                    "highlight": "Opportunity"
+                  },
+                  "cards": {
+                    "countries": {
+                      "title": "Country",
+                      "items": [
+                        { "id": 1, "name": "Migrate to Australia" },
+                        { "id": 2, "name": "Migrate to Canada" },
+                        { "id": 3, "name": "Migrate to New Zealand" },
+                        { "id": 4, "name": "Migrate to Germany" },
+                        { "id": 5, "name": "Migrate to USA" }
+                      ]
+                    },
+                    "prVisas": {
+                      "title": "PR Visas",
+                      "items": [
+                        { "id": 1, "name": "Australia Permanent Resident Visa" },
+                        { "id": 2, "name": "Canada Permanent Resident Visa" },
+                        { "id": 3, "name": "New Zealand Resident Visa" },
+                        { "id": 4, "name": "UK Indefinite Leave to Remain" }
+                      ]
+                    },
+                    "workVisas": {
+                      "title": "Work Visas",
+                      "items": [
+                        { "id": 1, "name": "Canada Work Visa" },
+                        { "id": 2, "name": "Australia Work Visa" },
+                        { "id": 3, "name": "UK Skilled Worker Visa" },
+                        { "id": 4, "name": "Germany Opportunity Card" },
+                        { "id": 5, "name": "USA H-1B" },
+                        { "id": 6, "name": "Portugal Job Seeker Visa" },
+                        { "id": 7, "name": "Sweden Residence Permit" }
+                      ]
+                    }
+                  },
+                  "benefits": [
+                    {
+                      "icon": "Home",
+                      "text": "High standards of living"
+                    },
+                    {
+                      "icon": "Briefcase",
+                      "text": "Excellent work-life balance"
+                    },
+                    {
+                      "icon": "TrendingUp",
+                      "text": "Earn 5x more income than your current salary"
+                    },
+                    {
+                      "icon": "Globe",
+                      "text": "Millions of job opportunities in various sectors"
+                    },
+                    {
+                      "icon": "Award",
+                      "text": "Better career prospects"
+                    },
+                    {
+                      "icon": "GraduationCap",
+                      "text": "FREE education for your children"
+                    },
+                    {
+                      "icon": "Heart",
+                      "text": "Healthcare & social benefits"
+                    },
+                    {
+                      "icon": "Compass",
+                      "text": "Retirement benefits"
+                    }
+                  ]
+                },
+
+
+                
+                    "immigrationjourney": {
+                      "header": {
+                        "title": "Your Immigration Journey – Step by Step",
+                        "description": {
+                          "part1": "In recent times, migration has become a dream for everyone willing to settle abroad. Whether you're looking for",
+                          "highlight1": "work abroad immigration services",
+                          "part2": "or",
+                          "highlight2": "immigration for career development",
+                          "part3": "our",
+                          "highlight3": "job-based immigration support",
+                          "part4": "ensures you're well-prepared."
+                        }
+                      },
+                      "steps": [
+                        {
+                          "icon": "Search",
+                          "title": "Inquiry",
+                          "description": "Welcome! Your immigration journey starts here with a personalized consultation."
+                        },
+                        {
+                          "icon": "Users",
+                          "title": "Expert Counselling",
+                          "description": "Our specialists offer immigration consultation services based on your qualifications and goals."
+                        },
+                        {
+                          "icon": "ClipboardCheck",
+                          "title": "Eligibility",
+                          "description": "Check your eligibility for immigration to specific countries and regions through our immigration process guidance."
+                        },
+                        {
+                          "icon": "FileText",
+                          "title": "Documentation",
+                          "description": "All your documents will be compiled to create a strong application with visa and immigration consultancy support."
+                        },
+                        {
+                          "icon": "BarChart4",
+                          "title": "Processing",
+                          "description": "Support at every step while filing and tracking your application, ensuring fast work visa and relocation support."
+                        }
+                      ],
+                      "whyChoose": {
+                        "title": "Why Choose Our Migration Services",
+                        "services": [
+                          {
+                            "title": "Personalized Approach",
+                            "description": "We create custom immigration strategies based on your unique profile and global relocation goals."
+                          },
+                          {
+                            "title": "Expert Guidance",
+                            "description": "Our team consists of certified immigration consultants with years of experience in skilled worker immigration programs."
+                          },
+                          {
+                            "title": "High Success Rate",
+                            "description": "95% of our applications are approved on the first submission, thanks to our career-focused immigration services worldwide."
+                          }
+                        ]
+                      }
+                    }
+                  
+              
+
+  }

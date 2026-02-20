@@ -1,0 +1,233 @@
+{
+  "header": {
+    "heroImageAlt": "Fachleute für Personalbeschaffung",
+    "program_title": "Zertifiziertes Partnerprogramm für Personalbeschaffung",
+    "main_title_prefix": "Partner mit führenden",
+    "main_title_suffix": "Personalvermittlungsagenturen",
+    "description": "Wir arbeiten mit vertrauenswürdigen Personalvermittlern zusammen, um Unternehmen mit qualifizierten, vorab geprüften Fachkräften aus verschiedenen Branchen zusammenzubringen. Treten Sie unserem Netzwerk bei und erweitern Sie Ihre Reichweite mit zuverlässigen Partnerschaften für Einstellungen.",
+    "contact_us": "Kontakt",
+    "verified_candidates": "Geprüfte Kandidaten",
+    "pre_screened": "Vorgeprüft"
+  },
+  "form": {
+    "title": "Registrierung als Rekrutierungspartner",
+    "subtitle": "Füllen Sie dieses Formular aus, um qualifiziertes Personal über JobsAdmire einzustellen",
+    "company_info": {
+      "title": "Informationen zum Unternehmen",
+      "company_name": "Firmenname *",
+      "company_name_placeholder": "Geben Sie den Namen Ihres Unternehmens ein",
+      "company_name_error": "Firmenname ist erforderlich",
+      "contact_person": "Kontaktperson *",
+      "contact_person_placeholder": "Vollständiger Name der Kontaktperson",
+      "contact_person_error": "Kontaktperson ist erforderlich",
+      "company_type": "Unternehmenstyp *",
+      "company_type_placeholder": "Unternehmenstyp auswählen",
+      "company_type_error": "Unternehmenstyp ist erforderlich",
+      "types": {
+        "manufacturing": "Fertigung/Fabrik",
+        "agriculture": "Landwirtschaft",
+        "tourism": "Tourismus und Gastgewerbe",
+        "construction": "Bauwesen",
+        "retail": "Einzelhandel und Dienstleistungen",
+        "other": "Andere"
+      },
+      "years_in_business": "Jahre im Geschäft",
+      "years_placeholder": "Jahre auswählen",
+      "years_options": {
+        "1_2": "1-2 Jahre",
+        "3_5": "3-5 Jahre",
+        "6_10": "6-10 Jahre",
+        "10_plus": "10+ Jahre"
+      },
+      "license_number": "Nummer der Geschäftslizenz",
+      "license_placeholder": "Lizenznummer eingeben",
+      "employees_count": "Aktuelle Anzahl der Mitarbeiter",
+      "employees_placeholder": "Bereich auswählen",
+      "employees_options": {
+        "1_10": "1-10 Mitarbeiter",
+        "11_50": "11-50 Mitarbeiter",
+        "51_100": "51-100 Beschäftigte",
+        "100_plus": "100+ Mitarbeiter"
+      }
+    },
+    "contact_info": {
+      "title": "Kontaktinformationen",
+      "email": "E-Mail Adresse *",
+      "email_required": "E-Mail ist erforderlich",
+      "email_invalid": "E-Mail ist ungültig",
+      "phone": "Telefonnummer *",
+      "phone_placeholder": "+90 xxx xxx xx xx",
+      "phone_required": "Telefonnummer ist erforderlich",
+      "country": "Land *",
+      "country_placeholder": "Geben Sie Ihr Land ein",
+      "country_required": "Land ist erforderlich",
+      "city": "Stadt *",
+      "city_placeholder": "Geben Sie Ihre Stadt ein",
+      "city_required": "Stadt ist erforderlich",
+      "address": "Geschäftsadresse",
+      "address_placeholder": "Geben Sie Ihre vollständige Geschäftsadresse an",
+      "website": "Website des Unternehmens",
+      "email_placeholder": "company@example.com",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "staffing_needs": {
+      "title": "Anforderungen an das Personal",
+      "types_needed": "Erforderliche Arten von Personal",
+      "types_placeholder": "Wählen Sie die gewünschte Position",
+      "positions": {
+        "housekeeping": "Hauswirtschaft",
+        "waiter": "Kellner/Kellnerin",
+        "waiter_assistant": "Kellnerassistentin",
+        "receptionist": "Rezeptionistin",
+        "guest_relations": "Gästebetreuung",
+        "bellboy": "Hotelpage",
+        "animator": "Animateur/Aktivitätskoordinator",
+        "kitchen_assistant": "Küchenhilfe",
+        "specialized_worker": "Spezialisierte Fachkraft",
+        "cnc_operator": "CNC-Bediener",
+        "packing_worker": "Arbeiter beim Verpacken",
+        "tailor": "Schneider",
+        "forklift_operator": "Gabelstaplerfahrer",
+        "material_handler": "Materialbearbeiter",
+        "fruit_picker": "Obst-/Gemüsepflücker",
+        "greenhouse_worker": "Gewächshaus-Arbeiter",
+        "packing_sorting": "Packen & Sortieren Personal",
+        "irrigation": "Bewässerung/Pflanzhelfer",
+        "animal_husbandry": "Tierhaltung (Molkerei/Landwirtschaft)",
+        "general_labourer": "Allgemeiner Arbeiter",
+        "painter": "Malerin",
+        "electrician": "Elektriker",
+        "tile_fixer": "Fliesenfixierer"
+      },
+      "industry_focus": "Schwerpunkt Primärindustrie",
+      "industry_placeholder": "Wählen Sie Ihre Branche",
+      "industries": {
+        "factory": "Fabrik",
+        "agriculture": "Landwirtschaft",
+        "tourism": "Tourismus",
+        "construction": "Bauwesen"
+      },
+      "description_label": "Informieren Sie uns über Ihren Personalbedarf",
+      "description_placeholder": "Beschreiben Sie Ihr Unternehmen, den aktuellen Personalbedarf, die Anzahl der zu besetzenden Stellen, die erforderlichen Qualifikationen und alle spezifischen Anforderungen..."
+    },
+    "legal": {
+      "title": "Rechtliche Vereinbarung",
+      "agree_terms_prefix": "Ich akzeptiere die",
+      "terms_link": "Bedingungen und Konditionen",
+      "agree_terms_suffix": "und verstehen die Anforderungen und Verpflichtungen der Partnerschaft. *",
+      "terms_error": "Sie müssen den Allgemeinen Geschäftsbedingungen zustimmen",
+      "agree_privacy_prefix": "Ich bestätige, dass ich die folgenden Bedingungen gelesen habe und damit einverstanden bin",
+      "privacy_link": "Datenschutzbestimmungen",
+      "agree_privacy_suffix": "und Datenverarbeitungsverfahren. *",
+      "privacy_error": "Sie müssen der Datenschutzrichtlinie zustimmen"
+    },
+    "submit": {
+      "button": "Bewerbung einreichen",
+      "submitting": "Einreichen...",
+      "success_message": "Bewerbung erfolgreich eingereicht! Wir werden Ihre Bewerbung prüfen und Sie innerhalb von 2-3 Werktagen kontaktieren.",
+      "footer_message": "Wir werden Ihren Antrag prüfen und uns innerhalb von 2-3 Werktagen mit Ihnen in Verbindung setzen."
+    }
+  },
+  "why_partner": {
+    "title": "Warum eine Partnerschaft mit JobsAdmire?",
+    "subtitle": "Wir bringen Unternehmen mit qualifizierten Arbeitskräften zusammen und kümmern uns um alle komplexen Aspekte der internationalen Personalbeschaffung",
+    "items": {
+      "global_network": {
+        "title": "Globales Rekrutierungsnetzwerk",
+        "description": "Verschaffen Sie sich Zugang zu einem riesigen internationalen Talentpool und knüpfen Sie Kontakte zu verifizierten Arbeitgebern, die branchenübergreifend nach qualifizierten Bewerbern suchen."
+      },
+      "trusted_brand": {
+        "title": "Vertrauenswürdige Marke & Rechtskonformität",
+        "description": "Arbeiten Sie mit einem zugelassenen Personalvermittler zusammen, der für seine transparente, ethische und behördenkonforme Arbeitsweise bekannt ist."
+      },
+      "ai_driven": {
+        "title": "KI-gesteuerte Einstellungsplattform",
+        "description": "Nutzen Sie unsere intelligenten Rekrutierungstools für die Bewerberverfolgung, das Bewerbungsmanagement und die nahtlose Kommunikation mit Kunden."
+      },
+      "end_to_end": {
+        "title": "End-to-End-Unterstützung",
+        "description": "Von der Kandidatensuche bis hin zur Unterstützung bei der Visumserteilung und der Dokumentation kümmern wir uns um jeden Schritt, um eine reibungslose Einstellung und Eingliederung zu gewährleisten."
+      },
+      "commission": {
+        "title": "Attraktive Provisionsstruktur",
+        "description": "Verdienen Sie wettbewerbsfähige Provisionen und wiederkehrende Anreize für jede erfolgreiche Vermittlung durch unser Recruiter-Partnerschaftsprogramm."
+      },
+      "dedicated_team": {
+        "title": "Engagiertes Partnerschaftsteam",
+        "description": "Erhalten Sie kontinuierliche Unterstützung, Beratung und Updates von unserem Partnerteam, um Ihren Rekrutierungserfolg zu steigern."
+      }
+    }
+  },
+  "industry_expertise": {
+    "title": "Industrien, die wir bedienen",
+    "subtitle": "Wir vermitteln qualifiziertes Personal für alle Schlüsselindustrien in der Türkei",
+    "items": {
+      "factory": {
+        "title": "Fabrik",
+        "description": "Arbeiter in der Fertigung und am Fließband"
+      },
+      "agriculture": {
+        "title": "Landwirtschaft",
+        "description": "Landarbeiter und landwirtschaftliche Fachkräfte"
+      },
+      "tourism": {
+        "title": "Tourismus",
+        "description": "Hotelpersonal, Fremdenführer und Mitarbeiter des Gastgewerbes"
+      },
+      "construction": {
+        "title": "Bauwesen",
+        "description": "Bauherren, Ingenieure und Bauarbeiter"
+      }
+    }
+  },
+  "platform_features": {
+    "title": "Unsere Rekrutierungsplattform",
+    "subtitle": "Optimierte Technologie und fachkundige Unterstützung bei der Suche nach dem richtigen Personal für Ihr Unternehmen",
+    "items": {
+      "verified_candidates": {
+        "title": "Geprüfte Kandidaten",
+        "description": "Alle Bewerber werden vorab geprüft und verifiziert"
+      },
+      "quick_placement": {
+        "title": "Schnelle Platzierung",
+        "description": "Durchschnittliche Vermittlungszeit von 2-3 Wochen"
+      },
+      "document_processing": {
+        "title": "Verarbeitung von Dokumenten",
+        "description": "Wir kümmern uns um alle Arbeitsgenehmigungen und rechtlichen Formalitäten"
+      },
+      "ongoing_support": {
+        "title": "Laufende Unterstützung",
+        "description": "Kontinuierliche Unterstützung nach der Vermittlung"
+      }
+    }
+  },
+  "benefits": {
+    "title": "Vorteile der Partnerschaft",
+    "subtitle": "Schließen Sie sich Hunderten von Unternehmen an, die bereits mit JobsAdmire arbeiten",
+    "items": {
+      "talent_pool": {
+        "title": "Vorausgewählter Talentpool",
+        "description": "Zugang zu qualifizierten Kandidaten, die bereit sind, in der Türkei zu arbeiten"
+      },
+      "fast_process": {
+        "title": "Schneller Rekrutierungsprozess",
+        "description": "Stellen schnell besetzen mit unserem optimierten Einstellungssystem"
+      },
+      "legal_compliance": {
+        "title": "Einhaltung von Rechtsvorschriften",
+        "description": "Wir kümmern uns um alle Arbeitsgenehmigungen und Visadokumente"
+      },
+      "industry_matching": {
+        "title": "Branchenspezifisches Matching",
+        "description": "Finden Sie Kandidaten, die Ihren spezifischen Branchenanforderungen entsprechen"
+      }
+    }
+  },
+  "contact_footer": {
+    "title": "Sind Sie bereit, Ihr Team aufzubauen?",
+    "description": "Haben Sie Fragen zu unseren Personalvermittlungsdiensten? Unser engagiertes Team ist bereit, Ihnen bei der Suche nach dem perfekten Personal für Ihr Unternehmen zu helfen.",
+    "business_hours": "Geschäftszeiten: Montag - Freitag, 9:00 - 18:00 Uhr (türkische Zeit)",
+    "response_time": "Durchschnittliche Reaktionszeit: Innerhalb von 2 Stunden während der Geschäftszeiten"
+  }
+}

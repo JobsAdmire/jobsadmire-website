@@ -1,0 +1,5 @@
+export { AccommodationService } from './accommodation-service'
+export { PartnerService } from './partner-service'
+export { StudentService } from './student-service'
+export { UniversityService } from './university-service'
+export { AuthService } from './auth-service'

@@ -1,0 +1,173 @@
+{
+  "header": {
+    "heroImageAlt": "Biznes hünärmenleri",
+    "badge": "Türkiýäniň 1-nji derejeli işgärler çözgüdi",
+    "title_prefix": "Ýokary hilli işgärleri alyň",
+    "title_suffix": "Biznesiňiz üçin",
+    "description": "JobsAdmire bilen hyzmatdaşlyk ediň. Öňünden synagdan geçen, işe taýýar işgärleriň bardygyna haýran galyň. Biz işe kabul etmek, wiza we ähli kanuny resminamalary işläp düzýäris.",
+    "contact_button": "Aragatnaşyk"
+  },
+  "form": {
+    "title": "Hyzmatdaşyň hasaba alynmagy",
+    "subtitle": "Ýokary hilli işgärleri işe almaga başlamak üçin kompaniýaňyzy hasaba alyň. Toparymyz 24 sagadyň dowamynda siziň bilen habarlaşar.",
+    "company_info": {
+      "title": "Kompaniýa maglumatlary",
+      "company_name": "Kompaniýanyň ady *",
+      "company_name_placeholder": "Kompaniýaňyzyň adyny giriziň",
+      "company_name_error": "Kompaniýanyň ady hökmanydyr",
+      "company_type": "Kompaniýanyň görnüşi *",
+      "company_type_placeholder": "Kompaniýanyň görnüşini saýlaň",
+      "company_type_error": "Kompaniýanyň görnüşi hökmanydyr",
+      "types": {
+        "corporation": "Korporasiýasy (A.Ş.)",
+        "limited_company": "Çäklendirilen Kompaniýa (ÇJ)",
+        "partnership": "Hyzmatdaşlyk",
+        "sole_proprietorship": "Ýeke-täk eýeçilik",
+        "branch_office": "Şahamça",
+        "other": "Başga"
+      },
+      "industry_type": "Senagat görnüşi *",
+      "industry_type_placeholder": "Senagaty saýlaň",
+      "industry_type_error": "Senagat görnüşi talap edilýär",
+      "industries": {
+        "manufacturing": "Zawod",
+        "construction": "Oba hojalygy",
+        "technology": "Syýahatçylyk",
+        "healthcare": "Gurluşyk",
+        "other": "Başga"
+      },
+      "established_year": "Döredilen ýyl",
+      "established_year_placeholder": "2020"
+    },
+    "contact_info": {
+      "title": "Aragatnaşyk maglumatlary",
+      "contact_person": "Aragatnaşyk şahsy *",
+      "contact_person_placeholder": "Doly ady",
+      "contact_person_error": "Aragatnaşyk üçin adam gerek",
+      "position": "Wezipe/Ady",
+      "position_placeholder": "HR menejeri, baş direktory we ş.m.",
+      "email": "E-poçta salgysy *",
+      "email_required": "E-poçta gerek",
+      "email_invalid": "E-poçta nädogry",
+      "phone": "Telefon belgisi *",
+      "phone_placeholder": "+90 xxx xxx xx xx",
+      "phone_required": "Telefon belgisi gerek",
+      "company_address": "Kompaniýanyň salgysy",
+      "company_address_placeholder": "Iş salgysynyň dolylygy",
+      "city": "Şäher *",
+      "city_placeholder": "Stambul, Ankara we ş.m.",
+      "city_required": "Şäher talap edilýär",
+      "province": "Welaýat *",
+      "province_placeholder": "Welaýat saýlaň",
+      "province_required": "Welaýat hökmandyr",
+      "provinces": {
+        "istanbul": "Stambul",
+        "ankara": "Ankara",
+        "izmir": "Izmir",
+        "bursa": "Bursa",
+        "antalya": "Antalýa",
+        "adana": "Adana",
+        "konya": "Konýa",
+        "gaziantep": "Gaziantep",
+        "kayseri": "Kaýseri",
+        "other": "Başga"
+      },
+      "postal_code": "Poçta indeksi",
+      "website": "Kompaniýanyň web sahypasy",
+      "email_placeholder": "company@example.com",
+      "postal_code_placeholder": "34000",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "legal_info": {
+      "title": "Hukuk we bellige alyş maglumatlary",
+      "tax_number": "Salgyt belgisi *",
+      "tax_number_placeholder": "Salgyt belgisini giriziň",
+      "tax_number_error": "Salgyt belgisi talap edilýär",
+      "trade_registry_number": "Söwda registri nomeri",
+      "trade_registry_number_placeholder": "Söwda registri nomerini giriziň"
+    },
+    "staffing_requirements": {
+      "title": "Işgär talaplary",
+      "specific_job_positions": "Aýratyn iş orunlary",
+      "specific_job_positions_placeholder": "mysal üçin, enjam operatory, kebşirleýji, programma üpjünçiligini işläp düzüji we ş.m.",
+      "salary_range": "Aýlyk hakynyň möçberi (aýlyk)",
+      "salary_range_placeholder": "22,000TL-25,000TL",
+      "preferred_nationalities": "Iň gowy görlen milletler",
+      "preferred_nationalities_placeholder": "mysal üçin, islendik, Pakistan, Bangladeş, Ukraina we ş.m.",
+      "language_requirements": "Dil talaplary",
+      "language_requirements_placeholder": "Dil talabyny saýlaň",
+      "languages": {
+        "none": "Aýratyn talap ýok",
+        "basic_turkish": "Türkçe esaslary",
+        "intermediate_turkish": "Orta derejeli türk dili",
+        "fluent_turkish": "Erkin türkçe",
+        "english": "Iňlis dili hökmany",
+        "turkish_english": "Türkçe + Iňlisçe"
+      },
+      "work_experience": "Iş tejribesi talap edilýär",
+      "work_experience_placeholder": "Tejribe derejesini saýlaň",
+      "experience_levels": {
+        "entry_level": "Giriş derejesi (0-1 ýyl)",
+        "junior": "Kiçi (1-3 ýaş)",
+        "mid_level": "Orta dereje (3-5 ýyl)",
+        "senior": "Uly ýaşly (5+ ýaş)",
+        "expert": "Hünärmen (10+ ýyl)"
+      },
+      "additional_requirements": "Goşmaça talaplar ýa-da bellikler",
+      "additional_requirements_placeholder": "Wezipeler üçin islendik aýratyn başarnyklar, güwänamalar ýa-da beýleki talaplar..."
+    },
+    "company_description": {
+      "title": "Kompaniýaňyz barada",
+      "label": "Kompaniýanyň düşündirişi",
+      "placeholder": "Kompaniýaňyz, iş işleriňiz, iş gurşawyňyz, kompaniýanyň medeniýeti we işçileriň näme üçin siziň toparyňyza goşulmak isleýändikleri barada gürrüň beriň..."
+    },
+    "legal_agreements": {
+      "title": "Hukuk ylalaşyklary",
+      "agree_terms_prefix": "Men razylaşýaryn",
+      "terms_link": "Şertler we düzgünler",
+      "agree_terms_suffix": "we JobsAdmire arkaly işçileri işe almagyň kanuny borçlaryny düşünip bilersiňiz. *",
+      "terms_error": "Şertler we düzgünler bilen ylalaşmalysyňyz",
+      "agree_privacy_prefix": "Men şu aşakdakylary okandygymy we razydygymy tassyklaýaryn",
+      "privacy_link": "Gizlinlik syýasaty",
+      "agree_privacy_suffix": "we işe kabul etmek hyzmatlary üçin kompaniýanyň maglumatlaryny işlemäge razylyk bermek. *",
+      "privacy_error": "Gizlinlik syýasatyna razy bolmalysyňyz"
+    },
+    "submit": {
+      "button": "Arza tabşyryň",
+      "submitting": "Iberilýär...",
+      "success_message": "Hasaba alyş üstünlikli tabşyryldy! Toparymyz işe kabul etmek zerurlyklaryňyzy ara alyp maslahatlaşmak üçin 24 sagadyň dowamynda siziň bilen habarlaşar.",
+      "footer_message": "Toparymyz siziň arzaňyzy gözden geçirer we işgärlere bolan zerurlyklaryňyzy ara alyp maslahatlaşmak üçin 24 sagadyň dowamynda siziň bilen habarlaşar."
+    }
+  },
+  "industries_served": {
+    "title": "Hyzmat edýän pudaklarymyz",
+    "subtitle": "Biz Türkiýäniň ähli esasy senagat pudaklarynda hünärli işçileri hödürleýäris",
+    "items": {
+      "factory": {
+        "name": "Zawod",
+        "desc": "Önümçilik we önümçilik"
+      },
+      "agriculture": {
+        "name": "Oba hojalygy",
+        "desc": "Ekerançylyk we ekinçilik"
+      },
+      "tourism": {
+        "name": "Syýahatçylyk",
+        "desc": "Myhmanhanaçylyk we hyzmatlar"
+      },
+      "construction": {
+        "name": "Gurluşyk",
+        "desc": "Bina we infrastruktura"
+      }
+    }
+  },
+  "support": {
+    "title": "Kömek gerekmi?",
+    "description": "Biziň öz işine ygrarly toparymyz size işiňiz üçin dogry işgärleri tapmaga kömek etmäge taýýar. Biz işe almakdan başlap, işgärleri işe ýerleşdirmäge çenli doly goldaw berýäris.",
+    "support_24_7": "24/7 goldaw",
+    "business_hours": "Iş wagty: Duşenbe — Anna, sagat 9:00 — 18:00 (Türkiýe wagty)",
+    "response_time": "Biz iş wagtynda 2 sagadyň dowamynda jogap berýäris",
+    "email": "info@jobsadmire.com",
+    "phone": "+90 501 124 03 40"
+  }
+}

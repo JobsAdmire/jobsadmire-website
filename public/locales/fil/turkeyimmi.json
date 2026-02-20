@@ -1,0 +1,1313 @@
+{
+  "turkeyHeroSection": {
+    "badge": "Mga Eksklusibong Paglalakbay",
+    "title": "Tuklasin ang Iyong Susunod na Pakikipagsapalaran",
+    "description": "Damhin ang mga nakamamanghang destinasyon at lumikha ng mga di-malilimutang alaala gamit ang aming mga premium na travel package na iniayon sa iyong mga pangarap.",
+    "currentlyViewing": {
+      "label": "Kasalukuyang Pinapanood"
+    },
+    "buttons": {
+      "explore": "Mag-explore Ngayon",
+      "viewAll": "Tingnan ang Lahat ng Destinasyon"
+    },
+    "destinationCounter": "Destinasyon {kasalukuyan}/{kabuuan}",
+    "destinations": [
+      {
+        "img": "/mga imahe/ihs.png",
+        "name": "Istanbul",
+        "country": "Turkey"
+      },
+      {
+        "img": "/mga imahe/ihi.png",
+        "name": "Izmir",
+        "country": "Turkey"
+      },
+      {
+        "img": "/mga imahe/iha.png",
+        "name": "Antalya",
+        "country": "Turkey"
+      },
+      {
+        "img": "/mga imahe/ihan.png",
+        "name": "Ankara",
+        "country": "Turkey"
+      },
+      {
+        "img": "/mga imahe/ihb.png",
+        "name": "Bursa",
+        "country": "Turkey"
+      }
+    ],
+    "accessibility": {
+      "exploreButton": "Galugarin ang mga destinasyon ngayon",
+      "viewAllButton": "Tingnan ang lahat ng available na destinasyon",
+      "destinationImage": "Tingnan ang destinasyon: {name}",
+      "featuredDestination": "Itinatampok na larawan ng destinasyon",
+      "carouselControl": "Pumunta sa destinasyon {number}"
+    },
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "turkeyTableOfContents": {
+    "title": "Talaan ng mga Nilalaman",
+    "subtitle": "Mag-navigate sa mga seksyon",
+    "currentlyReading": "Kasalukuyang nagbabasa",
+    "sectionsCount": "{count} na mga seksyon na maaaring tuklasin",
+    "sections": [
+      {
+        "title": "Mga Katotohanan Tungkol sa Turkey",
+        "id": 1
+      },
+      {
+        "title": "Mga Opsyon sa Visa para sa Paglipat sa Turkey",
+        "id": 2
+      },
+      {
+        "title": "Mga Kinakailangan para sa Paglipat sa Turkey",
+        "id": 3
+      },
+      {
+        "title": "Pagkuha ng Trabaho sa Turkey bilang isang Dayuhan",
+        "id": 4
+      },
+      {
+        "title": "Paglipat patungong Turkey mula sa US",
+        "id": 5
+      },
+      {
+        "title": "Paglipat patungong Turkey mula sa UK",
+        "id": 6
+      },
+      {
+        "title": "Magkano ang magagastos sa paglipat sa Turkey?",
+        "id": 7
+      },
+      {
+        "title": "Paglipat kasama ang mga alagang hayop sa Turkey",
+        "id": 8
+      }
+    ],
+    "quickNavigation": {
+      "title": "Mabilis na Nabigasyon",
+      "footer": "Mag-scroll sa mga seksyong {count}"
+    },
+    "accessibility": {
+      "toggleMenu": "I-toggle ang menu ng nabigasyon",
+      "sectionButton": "Mag-navigate sa seksyon: {title}",
+      "quickNavigation": "Mabilis na menu ng nabigasyon",
+      "quickNavSection": "Mabilis na pag-navigate papunta sa: {title}"
+    }
+  },
+  "turkeyFactsCard": {
+    "title": "Mga Kawili-wiling Katotohanan Tungkol sa Turkey",
+    "description": "Tuklasin ang natatanging pamana ng kultura ng magandang bansang ito. Nag-aalok ang Turkey ng mayamang kasaysayan at magkakaibang elemento ng kultura na nakaimpluwensya sa mundo.",
+    "navigation": {
+      "title": "Galugarin ang mga Katotohanan",
+      "previous": "Nakaraang Katotohanan",
+      "next": "Susunod na Katotohanan"
+    },
+    "allFacts": {
+      "title": "Lahat ng Katotohanan Tungkol sa Turkey"
+    },
+    "facts": [
+      {
+        "title": "Ang Istanbul ay nasa dalawang kontinente",
+        "description": "Ito lamang ang pangunahing lungsod sa mundo na nasa pagitan ng Europa at Asya, na hinahati ng Kipot ng Bosphorus.",
+        "icon": "🌉"
+      },
+      {
+        "title": "Tahanan ng Troy",
+        "description": "Ang sinaunang lungsod ng Troy, na pinasikat ng Iliad ni Homer, ay matatagpuan sa kanlurang Turkey.",
+        "icon": "🏛️"
+      },
+      {
+        "title": "Lugar ng kapanganakan ni Santa Claus",
+        "description": "Si San Nicolas, na nagbigay inspirasyon sa alamat ni Santa Claus, ay isinilang sa Patara, isang bayan sa modernong Turkey.",
+        "icon": "🎅"
+      },
+      {
+        "title": "Ang kape na Turko ay nakalista sa UNESCO",
+        "description": "Ang kape na Turko ay napakahalaga sa kultura kaya kinikilala ito ng UNESCO bilang isang Intangible Cultural Heritage.",
+        "icon": "☕"
+      },
+      {
+        "title": "Ang mga tulip ay nagmula sa Turkey",
+        "description": "Bagama't kadalasang iniuugnay sa Netherlands, ang mga tulip ay orihinal na itinanim sa Imperyong Ottoman at ipinakilala sa Europa mula sa Turkey.",
+        "icon": "🌷"
+      }
+    ],
+    "accessibility": {
+      "factButton": "Piliin ang katotohanan: {title}",
+      "previousFact": "Pumunta sa nakaraang katotohanan",
+      "nextFact": "Pumunta sa susunod na katotohanan"
+    }
+  },
+  "turkeyJobGuide": {
+    "header": {
+      "icon": "🇹🇷",
+      "title": "Pagkuha ng Trabaho sa Turkey bilang isang Dayuhan",
+      "subtitle": "Isang Kumpletong Gabay",
+      "description": "Ang masiglang kultura ng Turkey, estratehikong lokasyon sa pagitan ng Europa at Asya, at lumalagong ekonomiya ay ginagawa itong isang kaakit-akit na destinasyon para sa mga expat na naghahanap ng trabaho. Gayunpaman, bilang isang dayuhan, ang pagkuha ng trabaho sa Turkey ay nangangailangan ng matibay na pag-unawa sa merkado ng trabaho, mga regulasyon sa work visa, at mga inaasahan sa kultura.",
+      "subDescription": "Narito ang isang komprehensibong gabay upang matulungan kang makakuha ng trabaho sa Turkey bilang isang dayuhan."
+    },
+    "navigation": {
+      "title": "Mga Nilalaman ng Gabay"
+    },
+    "sections": [
+      {
+        "id": "pamilihan ng trabaho",
+        "icon": "🔍",
+        "title": "Pag-unawa sa Pamilihan ng Trabaho sa Turkey",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Nag-aalok ang Turkey ng mga oportunidad sa iba't ibang sektor, ngunit ang ilang mga industriya ay mas madaling ma-access at malugod na tinatanggap ng mga dayuhang manggagawa.</p><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Mga Sektor na In-Demand para sa mga Dayuhan:</h3><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-6\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Turismo at Pagtanggap ng Bisita</span><p class=\"text-sm text-gray-600\">Mga hotel, ahensya ng paglalakbay, mga operator ng paglilibot</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Edukasyon</span><p class=\"text-sm text-gray-600\">Mga guro ng Ingles, mga paaralang internasyonal</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Teknolohiya at Software</span><p class=\"text-sm text-gray-600\">Pag-unlad, mga serbisyo ng IT</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Konstruksyon at Inhinyeriya</span><p class=\"text-sm text-gray-600\">Pamamahala ng proyekto, mga espesyalisadong tungkulin</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Pag-import-Pag-export at Kalakalan</span><p class=\"text-sm text-gray-600\">Internasyonal na komersyo, logistik</p></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100\"><span class=\"font-medium\">Mga Serbisyong Pangkalusugan at Medikal</span><p class=\"text-sm text-gray-600\">Mga espesyalisadong propesyonal</p></li></ul><p class=\"text-gray-700\">Ang pag-alam sa wika ay nagbibigay sa iyo ng kalamangan sa kompetisyon, ngunit may mga trabahong maaaring gamitin sa pagsasalita ng Ingles, lalo na sa mga multinasyunal na kumpanya o mga tech startup.</p></div>"
+      },
+      {
+        "id": "mga legal na kinakailangan",
+        "icon": "🗂️",
+        "title": "Mga Kinakailangang Legal: Permit sa Paggawa at Visa",
+        "content": "<div><div class=\"mb-6\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Hakbang 1: Kumuha ng Alok ng Trabaho</h3><p class=\"text-gray-700 mb-4\">Bago ka legal na makapagtrabaho sa Turkey, kailangan mo munang makatanggap ng pormal na alok ng trabaho mula sa isang employer na Turko. Hindi tulad ng ibang mga bansa, hindi ka maaaring mag-aplay para sa isang pangkalahatang permit sa pagtatrabaho nang walang sponsor.</p></div><div class=\"mb-6\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Hakbang 2: Pag-aaplay para sa Work Visa</h3><p class=\"text-gray-700 mb-4\">Kapag mayroon ka nang alok na trabaho:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Mag-aaplay ka para sa isang work visa sa konsulado/embahada ng Turkey sa iyong sariling bansa.</li><li>Ang iyong employer ay sabay na mag-aaplay para sa isang permit sa pagtatrabaho sa pamamagitan ng Turkish Ministry of Labor and Social Security.</li></ul></div><div class=\"bg-sky-50 p-4 rounded-md border border-sky-100 mb-4\"><h3 class=\"text-lg font-medium text-sky-600 mb-2\">Mga Kinakailangang Dokumento:</h3><ul class=\"list-disc pl-6 mb-2 text-gray-700\"><li>Balitang pasaporte</li><li>Kontrata ng trabaho</li><li>Mga kwalipikasyon sa edukasyon</li><li>Mga larawan na kasinglaki ng pasaporte</li><li>Nakumpletong form ng aplikasyon para sa visa</li><li>Mga dokumento ng sponsorship ng employer</li></ul></div><p class=\"text-gray-700\">Kapag naaprubahan na, bibigyan ka ng work visa at maaari ka nang makapasok sa Turkey para simulan ang iyong trabaho.</p></div>"
+      },
+      {
+        "id": "mga oportunidad sa trabaho",
+        "icon": "🏢",
+        "title": "Paghahanap ng mga Oportunidad sa Trabaho sa Turkey",
+        "content": "<div><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Mga Nangungunang Portal ng Trabaho:</h3><div class=\"grid grid-cols-2 md:grid-cols-3 gap-3 mb-6\"><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Kariyer.net</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Yenibiris.com</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Secretcv.com</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Jooble Turkey</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">LinkedIn</a><a href=\"#\" class=\"bg-white p-3 rounded-md text-center hover:bg-sky-50 border border-sky-100\">Glassdoor</a></div><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Mga Propesyonal na Tip:</h3><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Gamitin ang LinkedIn para kumonekta sa mga propesyonal sa HR sa Turkey.</li><li>Salain ang mga trabaho ayon sa kinakailangan sa wika (hal., mga tungkuling nagsasalita ng Ingles).</li><li>Isaalang-alang ang mga ahensya ng recruitment na dalubhasa sa mga internasyonal na placement.</li></ul></div>"
+      },
+      {
+        "id": "pagtuturo ng Ingles",
+        "icon": "🧑‍🏫",
+        "title": "Pagtuturo ng Ingles sa Turkey",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Isa sa mga pinakakaraniwang trabaho para sa mga dayuhan sa Turkey ay ang pagtuturo ng Ingles.</p><div class=\"flex flex-col md:flex-row gap-6 mb-6\"><div class=\"flex-1 bg-white p-4 rounded-md border border-sky-100\"><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Kung Saan Ka Maaaring Magtrabaho:</h3><ul class=\"list-disc pl-6 text-gray-700\"><li>Mga paaralang may pribadong wika</li><li>Mga Unibersidad</li><li>Mga internasyonal na paaralan</li><li>Mga online na platform ng pagtuturo</li></ul></div><div class=\"flex-1 bg-white p-4 rounded-md border border-sky-100\"><h3 class=\"text-lg font-medium text-sky-600 mb-3\">Mga Kinakailangan:</h3><ul class=\"list-disc pl-6 text-gray-700\"><li>Digri ng Batsilyer</li><li>Sertipiko ng TEFL/TESOL/CELTA</li><li>Katutubo o matatas na kasanayan sa Ingles</li></ul></div></div><p class=\"text-gray-700\">Nag-aalok din ang ilang paaralan ng visa sponsorship at akomodasyon.</p></div>"
+      },
+      {
+        "id": "permit sa trabaho",
+        "icon": "🧾",
+        "title": "Bisa at Pag-renew ng Work Permit",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Ang mga unang work permit ay karaniwang may bisa sa loob ng <strong>1 taon</strong>.</p><p>Maaari itong i-renew sa loob ng <strong>2 taon</strong> sa unang pag-renew at <strong>3 taon</strong> pagkatapos nito.</p><p>Pagkatapos ng <strong>5 taon</strong> ng tuluy-tuloy na trabaho, maaari kang mag-aplay para sa isang pangmatagalang residence permit.</p></div>"
+      },
+      {
+        "id": "malayang trabahador",
+        "icon": "🧑‍💼",
+        "title": "Maaari bang Magtrabaho ang mga Dayuhan nang Freelance o Remote sa Turkey?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Sa teknikal na aspeto, hindi ka maaaring legal na maging freelancer o magtrabaho nang malayuan para sa mga internasyonal na kliyente sa Turkey nang walang wastong permit. Gayunpaman, maraming mga expat ang gumagawa ng remote work sa ilalim ng panandaliang residence permit o nagpaparehistro bilang self-employed, na kinabibilangan ng isang kumplikadong setup kabilang ang:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Pagbubukas ng isang kumpanyang Turkish</li><li>Pagkuha ng tax number</li><li>Pag-aaplay para sa isang business visa o entrepreneurial permit</li></ul></div>"
+      },
+      {
+        "id": "wika",
+        "icon": "💬",
+        "title": "Hadlang sa Wika: Kailangan ba ang Wikang Turko?",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Maraming propesyonal na trabaho ang nangangailangan ng kahit man lang <strong>mga pangunahing kasanayan sa Turko</strong>.</p><p>Gayunpaman, ang mga sektor ng teknolohiya, turismo, at edukasyon ay kadalasang nagbibigay-daan sa iyong magtrabaho gamit ang <strong>Ingles lamang</strong>.</p><p>Ang pag-aaral ng Turko ay nagpapabuti sa integrasyon at nagpapalakas ng iyong mga pagkakataon sa trabaho.</p></div>"
+      },
+      {
+        "id": "networking",
+        "icon": "👥",
+        "title": "Networking sa Turkey",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Sa Turkey, makapangyarihan ang networking. Dumalo sa:</p><ul class=\"list-disc pl-6 mb-4 text-gray-700\"><li>Mga pagtitipon ng mga expat</li><li>Mga seminar na partikular sa industriya</li><li>Mga kaganapan sa LinkedIn at mga pagtitipon ng Turkish Chamber of Commerce</li></ul><p class=\"text-gray-700\">Ang mga personal na pagpapakilala at mga referral ay kadalasang mas mahalaga kaysa sa mga hindi inaasahang aplikasyon.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Pangwakas na Checklist para sa Pagkuha ng Trabaho sa Turkey"
+    },
+    "checklist": [
+      "Pakinisin ang iyong CV at iakma ito sa mga format na Turko",
+      "Mag-apply sa mga kompanyang awtorisadong umupa ng mga dayuhan",
+      "Ihanda ang mga kinakailangang dokumento para sa pagproseso ng visa",
+      "Matuto ng ilang pangunahing pariralang Turko",
+      "Unawain ang iyong mga karapatan sa ilalim ng batas sa paggawa ng Turkey"
+    ],
+    "conclusion": {
+      "icon": "✈️",
+      "title": "Handa ka na bang magtrabaho sa Turkey?",
+      "description": "Ang pagkuha ng trabaho sa Turkey bilang isang dayuhan ay lubos na posible kung may tamang diskarte, paghahanda, at pasensya. Naghahanap ka man ng pagbabago sa karera, karanasan sa ibang bansa, o pangmatagalang paglipat, nag-aalok ang Turkey ng kakaibang kapaligiran na mayaman sa oportunidad at kultura."
+    },
+    "accessibility": {
+      "sectionToggle": "I-toggle ang seksyon: {title}"
+    }
+  },
+  "turkeyMovingCostsGuide": {
+    "title": "Magkano ang Gastos sa Paglipat sa Turkey?",
+    "description": "Ang paglipat sa Turkey ay maaaring abot-kaya kumpara sa maraming bansang Kanluranin. Narito ang detalyadong pagsusuri ng mga gastos na maaari mong asahan kapag lumipat sa Turkey.",
+    "costSections": [
+      {
+        "id": "visa-residence",
+        "icon": "🛂",
+        "title": "Visa at Permit sa Paninirahan",
+        "amount": "$100–$600",
+        "details": "Kasama ang card, health insurance, at bayad sa visa",
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "pabahay",
+        "icon": "🏠",
+        "title": "Pabahay",
+        "amount": "$600–$1,200 paunang bayad",
+        "details": "1–2 buwang deposito + upa sa unang buwan",
+        "color": "bg-sky-600",
+        "subItems": {
+          "0": {
+            "title": "Sentro ng lungsod (buwanan)",
+            "amount": "$300–$500"
+          },
+          "1": {
+            "title": "Mga lugar sa baybayin/bayan (buwan-buwan)",
+            "amount": "$200–$400"
+          }
+        }
+      },
+      {
+        "id": "pagpapadala",
+        "icon": "📦",
+        "title": "Pagpapadala (Opsyonal)",
+        "amount": "$2,000–$4,000",
+        "details": "Maliit na lalagyan. Mas gusto ng maraming expat na bumili ng mga lokal na muwebles para makatipid.",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "mga kagamitan",
+        "icon": "💡",
+        "title": "Mga Utility at Pag-setup ng Internet",
+        "amount": "$50–$150",
+        "details": "Mga deposito at bayarin sa pag-setup",
+        "color": "bg-sky-500",
+        "subItems": {
+          "0": {
+            "title": "Mga buwanang bayarin",
+            "amount": "$30–$60"
+          }
+        }
+      },
+      {
+        "id": "araw-araw",
+        "icon": "🛒",
+        "title": "Mga Gastos sa Araw-araw",
+        "amount": "$230–$350 buwan-buwan",
+        "color": "bg-sky-600",
+        "subItems": {
+          "0": {
+            "title": "Mga Grocery",
+            "amount": "$200–$300/buwan"
+          },
+          "1": {
+            "title": "Pampublikong transportasyon",
+            "amount": "$10–$30/buwan"
+          },
+          "2": {
+            "title": "Mobile at internet",
+            "amount": "~$20/buwan"
+          }
+        }
+      }
+    ],
+    "totalBudget": {
+      "icon": "🔢",
+      "title": "Kabuuang Tantiya (Mag-isang Manlalakbay)",
+      "categories": [
+        {
+          "title": "Walang Pagpapadala",
+          "amount": "$1,200–$2,500",
+          "description": "Kasama ang visa, deposito sa pabahay, upa sa unang buwan, at mga gastos sa pag-set up"
+        },
+        {
+          "title": "May Pagpapadala",
+          "amount": "$3,500–$6,000+",
+          "description": "Kasama na ang lahat ng gastos kasama ang pagpapadala ng isang maliit na lalagyan ng mga gamit"
+        }
+      ]
+    },
+    "moneySavingTips": {
+      "icon": "💰",
+      "title": "Mga Tip sa Pagtitipid ng Pera",
+      "tips": [
+        {
+          "title": "Bumili ng Muwebles sa Lokal na Lugar",
+          "description": "Ang mga muwebles na gawa sa Turkey ay abot-kaya at madaling mabili. Isaalang-alang lamang ang mga mahahalagang bagay sa pagpapadala."
+        },
+        {
+          "title": "Piliin nang Matalino ang Iyong Lokasyon",
+          "description": "Ang mga lugar sa labas ng mga pangunahing lungsod tulad ng Istanbul ay maaaring maging 30-50% na mas mura para sa pabahay."
+        },
+        {
+          "title": "Ilaw sa Paglalakbay",
+          "description": "Ang bawat ekstrang maleta ay maaaring magkahalaga ng $50-100 sa mga byahe. Dalhin lamang ang mga kailangan mo."
+        },
+        {
+          "title": "Isaalang-alang ang Pana-panahong Pagtatakda ng Panahon",
+          "description": "Kadalasang mas mura ang mga apartment at mas kaunti ang mga turista kapag taglamig."
+        }
+      ]
+    },
+    "conclusion": "Medyo abot-kaya ang paglipat sa Turkey kumpara sa paglipat sa ibang destinasyon sa Europa o Hilagang Amerika. Sa pamamagitan ng wastong pagpaplano at pagbabadyet, magagawa mong maging maayos at matipid ang iyong paglipat sa Turkey.",
+    "accessibility": {
+      "toggleSection": "I-toggle ang mga detalye para sa seksyong {title}"
+    }
+  },
+  "usTurkeyGuide": {
+    "header": {
+      "icon": "🇺🇸➡️🇹🇷",
+      "title": "Paglipat patungong Turkey mula sa US",
+      "subtitle": "Lahat ng Kailangan Mong Malaman",
+      "description": "Nangangarap ka ba ng buhay sa ibang bansa na may mayamang kultura, magagandang baybayin, at mas mababang halaga ng pamumuhay? Ang Turkey ay lalong nagiging pangunahing destinasyon para sa mga Amerikanong naghahanap ng bagong pamumuhay, maging para sa pagreretiro, remote work, o pakikipagsapalaran.",
+      "subDescription": "Narito ang isang kumpletong gabay para sa mga mamamayang Amerikano na nagpaplanong lumipat sa Turkey, na sumasaklaw sa lahat mula sa mga opsyon sa visa hanggang sa mga tip sa kultura."
+    },
+    "quickNavigation": {
+      "title": "Mabilis na Nabigasyon"
+    },
+    "sections": [
+      {
+        "id": "bakit-pabo",
+        "icon": "📌",
+        "title": "Bakit Lumipat sa Turkey?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Maraming dahilan kung bakit naaakit ang mga Amerikano sa Turkey:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Abot-kayang halaga ng pamumuhay</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Pamumuhay sa Mediterranean at banayad na klima</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Mayamang kasaysayan at lutuing sikat sa mundo</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Pagtanggap sa lokal na kultura</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Istratehikong lokasyon sa pagitan ng Europa at Asya</span></li></ul><p class=\"text-gray-700\">Lilipat ka man para sa trabaho, pag-aaral, pagreretiro, o para lang masiyahan sa mas mabagal na takbo ng buhay, nag-aalok ang Turkey ng iba't ibang opsyon para sa mga expat.</p></div>"
+      },
+      {
+        "id": "mga opsyon sa visa",
+        "icon": "🛂",
+        "title": "Mga Opsyon sa Visa para sa mga Mamamayan ng US",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Bilang isang mamamayan ng Estados Unidos, maaari kang makapasok sa Turkey gamit ang 90-araw na tourist visa, ngunit para sa pangmatagalang pamumuhay, kakailanganin mo ang isa sa mga sumusunod:</p><div class=\"space-y-4\"><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">1. Permit sa Panandaliang Paninirahan</h3><ul class=\"text-gray-700 space-y-1\"><li>• Mainam para sa mga digital nomad, remote worker, at mga first-time expats</li><li>• May bisa hanggang 1 taon, maaaring i-renew</li><li>• Nangangailangan ng patunay ng akomodasyon, pinansyal na kakayahan, at wastong health insurance</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">2. Visa ng Estudyante at Permit sa Paninirahan</h3><ul class=\"text-gray-700 space-y-1\"><li>• Para sa mga pumapasok sa unibersidad o mga kurso sa wika</li><li>• Nangangailangan ng patunay ng pagpapatala at suportang pinansyal</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">3. Work Visa</h3><ul class=\"text-gray-700 space-y-1\"><li>• Dapat kang kumuha ng alok ng trabaho mula sa isang Turkish employer</li><li>• Ang employer ang mag-iisponsor ng iyong work permit</li><li>• Pagkatapos ng pag-apruba, maaari ka nang mag-apply para sa work visa sa konsulado ng Turkey sa US</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">4. Permit sa Paninirahan para sa Pamilya</h3><ul class=\"text-gray-700 space-y-1\"><li>• Para sa mga asawa o anak ng mga mamamayang Turko o mga dayuhang residente</li><li>• May bisa hanggang 2 taon</li></ul></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">5. Pagreretiro o Pananatili Batay sa Ari-arian</h3><p class=\"text-gray-700\">Ang pagbili ng ari-arian sa Turkey (walang minimum na halaga para sa paninirahan) ay nagbibigay sa iyo ng karapat-dapat para sa isang panandaliang permit sa paninirahan</p></div></div></div>"
+      },
+      {
+        "id": "mga kinakailangang dokumento",
+        "icon": "🧾",
+        "title": "Mga Kinakailangang Dokumento para sa Relokasyon",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Karaniwan mong kakailanganin ang mga sumusunod upang mag-apply para sa isang permit sa paninirahan:</p><div class=\"bg-sky-50 p-5 rounded-lg border border-sky-100\"><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Balidong pasaporte ng US (na may bisa nang hindi bababa sa 6 na buwan)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Numero ng Turkish tax ID</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Patunay ng akomodasyon (kontrata ng pag-upa o (deed)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Seguro sa kalusugan (lokal o pribado)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Mga larawan ng pasaporte (biometric)</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Mga pahayag ng bangko na nagpapakita ng sapat na pondo</span></li><li class=\"flex items-start\"><span class=\"text-sky-600 font-bold mr-2\">•</span><span>Nakumpletong form ng aplikasyon para sa permit sa paninirahan</span></li></ul></div></div>"
+      },
+      {
+        "id": "mga sikat na lungsod",
+        "icon": "🏙️",
+        "title": "Saan Nakatira ang Karamihan sa mga Amerikano sa Turkey?",
+        "content": "<div><p class=\"text-gray-700 mb-4\">Ilan sa mga pinakasikat na lungsod sa mga Amerikanong expat ay kinabibilangan ng:</p><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4 mb-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🏖️</span>Antalya</h3><ul class=\"text-gray-700 space-y-1\"><li>• Lungsod sa baybayin na may maaraw na panahon, mga dalampasigan, at abot-kayang pamumuhay</li><li>• Mainam para sa mga retirado at mga digital nomad</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🌆</span>Istanbul</h3><ul class=\"text-gray-700 space-y-1\"><li>• Kapital na pang-ekonomiya at pangkultura</li><li>• Mainam para sa mga propesyonal, estudyante, at sa mga nagnanais ng urban na pamumuhay</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🎓</span>Ankara</h3><ul class=\"text-gray-700 space-y-1\"><li>• Kabisera ng Turkey, mas tahimik kaysa sa Istanbul ngunit maraming oportunidad</li><li>• Mas maraming burukrasya at diplomatikong opsyon sa karera</li></ul></div><div class=\"bg-white p-4 rounded-lg border border-sky-100 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2 flex items-center\"><span class=\"mr-2\">🏝️</span>Izmir</h3><ul class=\"text-gray-700 space-y-1\"><li>• Isang relaks na lungsod sa baybayin ng Aegean na may progresibong kapaligiran</li><li>• Sikat sa mga nakababatang expat at negosyante</li></ul></div></div></div>"
+      },
+      {
+        "id": "gastos sa pamumuhay",
+        "icon": "💸",
+        "title": "Paghahambing ng Halaga ng Pamumuhay: Turkey vs USA",
+        "content": "<div><div class=\"overflow-x-auto mb-4\"><table class=\"min-w-full bg-white border border-sky-200 rounded-lg\"><thead><tr class=\"bg-sky-100\"><th class=\"py-3 px-4 text-left border-b border-sky-200\">Gastos</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">Pabo (avg.)</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">USA (avg.)</th></tr></thead><tbody><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Renta (1BR sentro ng lungsod)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$300–$600/buwan</td><td class=\"py-3 px-4 border-b border-sky-100\">$1,500–$2,000</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Internet (buwan-buwan)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$10–$20</td><td class=\"py-3 px-4 border-b border-sky-100\">$50–$70</td></tr><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Kainan sa labas (para sa 2)</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$15–$30</td><td class=\"py-3 px-4 border-b border-sky-100\">$50–$100</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Transportasyon</td><td class=\"py-3 px-4 border-b border-sky-100 text-green-600\">$10–$20/buwan</td><td class=\"py-3 px-4 border-b border-sky-100\">$70–$150</td></tr></tbody></table></div><p class=\"text-gray-700\">Nag-aalok ang Turkey ng mas mababang gastusin sa pamumuhay, kaya naman kaakit-akit ito para sa mga manggagawang nasa malayo at mga retirado.</p></div>"
+      },
+      {
+        "id": "pangangalagang pangkalusugan",
+        "icon": "🩺",
+        "title": "Pangangalagang Pangkalusugan sa Turkey",
+        "content": "<div class=\"space-y-4 text-gray-700\"><p>Ang Turkey ay may matibay na sistema ng pampublikong pangangalagang pangkalusugan (SGK), at ang pribadong pangangalagang pangkalusugan ay mataas ang kalidad at abot-kaya. Para sa mga aplikante ng residence permit, kinakailangan muna ang pribadong insurance.</p><p>Kapag legal na ang iyong trabaho, magiging kwalipikado ka para sa pampublikong health insurance (SGK), na sumasaklaw sa karamihan ng mga paggamot at gamot.</p></div>"
+      },
+      {
+        "id": "wika",
+        "icon": "🗣️",
+        "title": "Mga Tip sa Wika at Kultura",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Turkish ang opisyal na wika, bagama't maraming Turko sa mga urban area ang nagsasalita ng Ingles.</p><p>Ang pag-aaral ng pangunahing Turkish ay nakakatulong sa integrasyon at pang-araw-araw na buhay.</p><p>Igalang ang mga lokal na kaugalian, lalo na sa pananamit at pampublikong pag-uugali sa mga konserbatibong lugar.</p><p>Kilala ang mga Turko sa pagiging maasikaso — karaniwan ang pag-imbita sa kanila para sa tsaa o pagkain.</p></div>"
+      },
+      {
+        "id": "gumagalaw",
+        "icon": "📦",
+        "title": "Paglipat at Pagpapadala mula sa US",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Isaalang-alang ang mga internasyonal na tagapaglipat na dalubhasa sa mga paglilipat sa Turkey.</p><p>Karaniwang maaaring pumasok nang walang duty ang mga gamit sa bahay kung kukuha ka ng permit sa paninirahan.</p><p>Maaaring i-import ang mga alagang hayop na may mga rekord ng pagbabakuna at mga microchip — tingnan ang mga na-update na regulasyon.</p></div>"
+      },
+      {
+        "id": "pagbabangko",
+        "icon": "🏦",
+        "title": "Pagbabangko at Pananalapi",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Maaari kang magbukas ng Turkish bank account gamit ang iyong pasaporte, numero ng buwis, at address.</p><p>Maraming expat ang may hawak ng US bank account at gumagamit ng Wise o Revolut para sa mga paglilipat.</p><p>Pera: Turkish Lira (TRY). Ang mga Dolyar ng US ay tinatanggap sa limitadong lugar ngunit hindi karaniwang ginagamit.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Pangwakas na Checklist para sa mga Amerikanong Lumilipat sa Turkey"
+    },
+    "checklist": [
+      {
+        "text": "Mag-apply para sa residence permit o work visa",
+        "fullWidth": false
+      },
+      {
+        "text": "Ligtas na tirahan (panandalian o pangmatagalan)",
+        "fullWidth": false
+      },
+      {
+        "text": "Kumuha ng numero ng buwis sa Turkey",
+        "fullWidth": false
+      },
+      {
+        "text": "Bumili ng pribadong health insurance",
+        "fullWidth": false
+      },
+      {
+        "text": "Alamin ang mga pangunahing pariralang Turko",
+        "fullWidth": false
+      },
+      {
+        "text": "Mag-set up ng mga serbisyo sa pagbabangko at mobile",
+        "fullWidth": false
+      },
+      {
+        "text": "Sumali sa mga komunidad ng mga expat at mga grupo sa Facebook para sa suporta",
+        "fullWidth": true
+      }
+    ],
+    "conclusion": {
+      "icon": "✈️",
+      "title": "Konklusyon: Sulit ba ang Paglipat sa Turkey mula sa US?",
+      "description": "Para sa maraming Amerikano, ang Turkey ay nag-aalok ng isang nakapagpapayaman, abot-kaya, at masiglang alternatibo sa buhay sa Estados Unidos. Sa pamamagitan ng tamang paghahanda, mga legal na hakbang, at bukas na pag-iisip, ang paglipat sa Turkey ay maaaring maging simula ng isang kapana-panabik na bagong kabanata."
+    },
+    "accessibility": {
+      "sectionToggle": "I-toggle ang seksyon: {title}"
+    }
+  },
+  "movingWithPets": {
+    "title": "Paglipat kasama ang mga Alagang Hayop patungong Turkey",
+    "description": "Posibleng dalhin ang iyong mabalahibong kaibigan sa Turkey, ngunit kakailanganin mong sundin ang mga partikular na patakaran upang matiyak ang maayos na proseso. Narito ang mga dapat malaman tungkol sa paglipat kasama ang iyong mga alagang hayop sa Turkey.",
+    "navigation": {
+      "title": "Gabay sa Paglalakbay ng Alagang Hayop",
+      "sections": [
+        {
+          "id": "mga kinakailangan",
+          "icon": "✅",
+          "title": "Mga Pangunahing Kinakailangan"
+        },
+        {
+          "id": "paliparan",
+          "icon": "🛬",
+          "title": "Sa Paliparan"
+        },
+        {
+          "id": "paglalakbay",
+          "icon": "✈️",
+          "title": "Mga Opsyon sa Paglalakbay"
+        },
+        {
+          "id": "pagkatapos ng pagdating",
+          "icon": "🏠",
+          "title": "Pagkatapos ng Pagdating"
+        },
+        {
+          "id": "pinapayagan ang mga alagang hayop",
+          "icon": "🐶",
+          "title": "Pabo na Pwedeng Alagang Hayop"
+        }
+      ]
+    },
+    "sections": {
+      "requirements": {
+        "items": [
+          {
+            "title": "Microchip",
+            "content": "Dapat naka-microchip ang iyong alagang hayop gamit ang isang ISO 11784/11785 compliant chip."
+          },
+          {
+            "title": "Pagbabakuna sa Rabies",
+            "content": "Dapat ibigay <span class=\"font-medium\">nang hindi bababa sa 30 araw</span> bago ang paglalakbay at sa loob ng huling <span class=\"font-medium\">12 buwan</span>."
+          },
+          {
+            "title": "Sertipiko ng Kalusugan",
+            "type": "listahan",
+            "listItems": {
+              "0": "• Inisyu ng isang lisensyadong beterinaryo at inaprubahan ng opisyal na awtoridad sa iyong bansa (tulad ng USDA sa US o DEFRA sa UK).",
+              "1": "• Dapat ibigay sa loob ng <span class=\"font-medium\">10 araw</span> bago dumating sa Turkey."
+            }
+          },
+          {
+            "title": "Paggamot sa Ulo at Garapata",
+            "content": "Natapos sa loob ng 5 araw mula sa paglalakbay.",
+            "note": "(hindi palaging kinakailangan ngunit inirerekomenda)"
+          }
+        ]
+      },
+      "airport": {
+        "description": "Dadaan ka sa <span class=\"font-medium\">mga kaugalian kasama ang iyong alagang hayop</span>.",
+        "documentsTitle": "Magdala ng mga naka-print na dokumento, kabilang ang:",
+        "documents": [
+          "Patunay ng microchip",
+          "Mga talaan ng pagbabakuna",
+          "Sertipiko sa kalusugan",
+          "Pasaporte ng alagang hayop (kung galing sa EU/UK)"
+        ]
+      },
+      "traveling": {
+        "options": [
+          {
+            "icon": "🐱",
+            "ariaLabel": "maliit na alagang hayop",
+            "title": "Sa loob ng cabin (maliliit na alagang hayop)",
+            "description": "Karamihan sa mga airline ay nagpapahintulot ng mga alagang hayop na wala pang 8 kg kasama na ang carrier."
+          },
+          {
+            "icon": "🐕",
+            "ariaLabel": "malaking alagang hayop",
+            "title": "Kargamento",
+            "description": "Ang mas malalaking hayop ay dapat lumipad bilang kargamento."
+          },
+          {
+            "icon": "💰",
+            "ariaLabel": "gastos",
+            "title": "Mga Gastos",
+            "description": "$150–$1,000 depende sa airline at laki."
+          }
+        ],
+        "warning": "Palaging sumangguni sa iyong partikular na airline para sa kanilang patakaran sa alagang hayop, dahil ang mga kinakailangan at gastos ay maaaring mag-iba nang malaki."
+      },
+      "afterArrival": {
+        "intro": [
+          "Hindi kinakailangan ang kuwarentenas kung maayos ang lahat ng mga dokumento.",
+          "Inirerekomenda na iparehistro ang iyong alagang hayop sa isang lokal na beterinaryo."
+        ],
+        "recommendedSteps": {
+          "title": "Mga Inirerekomendang Unang Hakbang",
+          "items": [
+            "Maghanap ng lokal na beterinaryo at ipakilala ang iyong alagang hayop",
+            "Bumili ng anumang gamot na regular na kailangan ng iyong alagang hayop",
+            "I-update ang kwelyo ng iyong alagang hayop gamit ang iyong bagong address at numero ng telepono sa Turkey"
+          ]
+        }
+      },
+      "petFriendly": {
+        "description": "Ang mga lungsod sa Turkey ay tumatanggap ng mga alagang hayop, lalo na sa mga bayan sa baybayin. Abot-kaya ang mga beterinaryo, at malawak ang makukuhang mga suplay para sa alagang hayop.",
+        "features": [
+          {
+            "icon": "🏥",
+            "title": "Pangangalaga sa Beterinaryo",
+            "description": "Ang pagpapatingin sa beterinaryo ay nagkakahalaga ng humigit-kumulang 100-300 TL ($5-15), kaya abot-kaya ang regular na pangangalaga."
+          },
+          {
+            "icon": "🏞️",
+            "title": "Mga Parke at Beach ng Aso",
+            "description": "Maraming lugar sa baybayin ang may mga dalampasigan na pinapayagan ang mga aso, at ang mas malalaking lungsod ay may nakalaang mga parke para sa mga alagang hayop."
+          },
+          {
+            "icon": "🥫",
+            "title": "Mga Kagamitan para sa Alagang Hayop",
+            "description": "May mga pagkain at suplay para sa alagang hayop na mabibili sa mga supermarket, pet shop, at mga online retailer."
+          },
+          {
+            "icon": "🏨",
+            "title": "Mga Akomodasyon na Tinatanggap ang Alagang Hayop",
+            "description": "Maraming hotel at paupahang ari-arian ang tumatanggap ng mga alagang hayop, bagama't palaging kumpirmahin nang maaga."
+          }
+        ]
+      }
+    },
+    "checklist": {
+      "title": "Checklist sa Paglalakbay ng Alagang Hayop",
+      "items": [
+        "Mag-iskedyul ng pagbisita sa beterinaryo nang hindi bababa sa 2 buwan bago ang biyahe",
+        "Tiyaking ang microchip ay sumusunod sa ISO",
+        "Siguraduhing napapanahon ang bakuna laban sa rabies (hindi bababa sa 30 araw bago ang paglalakbay)",
+        "Kumuha ng health certificate sa loob ng 10 araw mula sa pag-alis",
+        "Mag-book ng transportasyon na pinapayagan ang mga alagang hayop sa airline",
+        "Bumili ng pet carrier na inaprubahan ng airline",
+        "Kumuha ng mga kopya ng lahat ng dokumentasyon at itago ang mga ito habang naglalakbay"
+      ]
+    },
+    "conclusion": {
+      "title": "Naghihintay ang Bagong Pakikipagsapalaran ng Iyong Alagang Hayop!",
+      "description": "Sa pamamagitan ng tamang paghahanda, ang pagdadala ng iyong alagang hayop sa Turkey ay maaaring maging isang maayos na karanasan. Ang magiliw na kapaligiran ng Turkey para sa mga alagang hayop ay makakatulong sa iyong mabalahibong kaibigan na mabilis na makaangkop sa kanilang bagong tahanan sa Mediterranean."
+    },
+    "accessibility": {
+      "sectionButton": "Mag-navigate sa seksyong {title}"
+    }
+  },
+  "relocationRequirements": {
+    "title": "Mga Mahahalagang Kinakailangan para sa Paglipat sa Turkey",
+    "description": "Nagpaplano ka man na manirahan sa Turkey para sa trabaho, pag-aaral, pagreretiro, o pagbabago ng pamumuhay, may mga partikular na hakbang at dokumentasyon na kakailanganin mong ihanda. Narito ang kumpletong detalye ng mga mahahalagang kinakailangan para sa legal at maayos na paglipat sa Turkey.",
+    "navigation": {
+      "title": "Mabilis na Nabigasyon",
+      "expandAll": "Palawakin Lahat",
+      "collapseAll": "I-collapse Lahat"
+    },
+    "sections": [
+      {
+        "id": "pasaporte",
+        "icon": "🛂",
+        "title": "Balidong Pasaporte",
+        "shortTitle": "Pasaporte",
+        "content": {
+          "0": {
+            "type": "talata",
+            "text": "Ang iyong pasaporte ay dapat na may bisa nang hindi bababa sa 6 na buwan lampas sa iyong planong pananatili sa Turkey. Ang ilang mga nasyonalidad ay maaaring mangailangan ng mas mahabang bisa, lalo na kung nag-aaplay para sa mga pangmatagalang permit."
+          }
+        }
+      },
+      {
+        "id": "bisa",
+        "icon": "📝",
+        "title": "Visa sa Pagpasok (Kung Kinakailangan)",
+        "shortTitle": "Bisa",
+        "content": {
+          "0": {
+            "type": "talata",
+            "text": "Depende sa iyong nasyonalidad, maaaring kailanganin mo ang:"
+          },
+          "1": {
+            "type": "listahan",
+            "listType": "hindi nakaayos",
+            "items": {
+              "0": "Isang tourist visa (isa o maraming entry)",
+              "1": "Isang e-Visa (makukuha online para sa mga kwalipikadong bansa)",
+              "2": "O walang visa para sa mga maikling pagbisita (mga bansang walang visa)"
+            }
+          },
+          "2": {
+            "type": "talata",
+            "text": "Kung plano mong manatili nang higit sa 90 araw, dapat kang mag-aplay para sa residence permit kapag nasa Turkey ka na."
+          }
+        }
+      },
+      {
+        "id": "tirahan",
+        "icon": "🏠",
+        "title": "Tirahan sa Turkey",
+        "shortTitle": "Tirahan",
+        "content": {
+          "0": {
+            "type": "talata",
+            "text": "Para mag-apply para sa anumang residence permit, dapat ay mayroon kang permanenteng o pansamantalang address sa Turkey:"
+          },
+          "1": {
+            "type": "listahan",
+            "listType": "hindi nakaayos",
+            "items": {
+              "0": "Kasunduan sa pag-upa (notaryado)",
+              "1": "Pagmamay-ari ng ari-arian (kautusan ng titulo)",
+              "2": "Mga booking sa hotel (para sa mga panandaliang permit lamang)"
+            }
+          },
+          "2": {
+            "type": "talata",
+            "text": "Ang lahat ng mga address ay dapat na nakarehistro sa lokal na direktorato ng populasyon (Nüfus Müdürlüğü)."
+          }
+        }
+      },
+      {
+        "id": "pinansyal",
+        "icon": "💵",
+        "title": "Patunay ng Katatagan sa Pananalapi",
+        "shortTitle": "Pananalapi",
+        "content": {
+          "0": {
+            "type": "talata",
+            "text": "Kakailanganin mong patunayan na kaya mong suportahan ang iyong sarili sa Turkey. Nag-iiba-iba ang halaga, ngunit ang pangkalahatang pagtatantya ay:"
+          },
+          "1": {
+            "type": "listahan",
+            "listType": "hindi nakaayos",
+            "items": {
+              "0": "Minimum na $500 kada buwan kada tao",
+              "1": "Tinatanggap ang mga bank statement, pension slip, income proof, o dokumentasyon ng sponsor."
+            }
+          }
+        }
+      },
+      {
+        "id": "seguro",
+        "icon": "🩺",
+        "title": "Seguro sa Kalusugan",
+        "shortTitle": "Seguro",
+        "content": {
+          "0": {
+            "type": "talata",
+            "text": "Ang wastong health insurance ay mandatory para sa karamihan ng mga residence permit:"
+          },
+          "1": {
+            "type": "listahan",
+            "listType": "hindi nakaayos",
+            "items": {
+              "0": "Turkish SGK (pampublikong seguro) kung may trabaho",
+              "1": "Pribadong seguro sa Turkey kung self-sponsored o retirado",
+              "2": "Mga plano sa kalusugan ng estudyante para sa mga internasyonal na estudyante"
+            }
+          }
+        }
+      },
+      {
+        "id": "numero ng buwis",
+        "icon": "🧾",
+        "title": "Numero ng Buwis (Vergi Numarası)",
+        "shortTitle": "Numero ng Buwis",
+        "content": {
+          "0": {
+            "type": "talata",
+            "text": "Bago pumirma ng mga kontrata sa pag-upa, magbukas ng bank account, o mag-apply ng mga permit, kailangan mo munang kumuha ng Turkish tax number. Libre ito at makukuha sa mga lokal na tanggapan ng buwis (Vergi Dairesi) o online."
+          }
+        }
+      },
+      {
+        "id": "mga larawan",
+        "icon": "🖼️",
+        "title": "Mga Larawan ng Biometriko",
+        "shortTitle": "Mga Larawan",
+        "content": {
+          "0": {
+            "type": "talata",
+            "text": "Ang mga kamakailang biometric na litrato (na kinunan sa loob ng huling 6 na buwan) ay kinakailangan para sa:"
+          },
+          "1": {
+            "type": "listahan",
+            "listType": "hindi nakaayos",
+            "items": {
+              "0": "Mga card ng permit sa paninirahan",
+              "1": "Mga aplikasyon ng visa",
+              "2": "Mga rehistrasyon ng gobyerno"
+            }
+          },
+          "2": {
+            "type": "talata",
+            "text": "Inirerekomendang laki: 50x60 mm, na may puting background."
+          }
+        }
+      },
+      {
+        "id": "mga dokumento",
+        "icon": "📄",
+        "title": "Mga Dokumentong Isinalin at Notaryado (kung naaangkop)",
+        "shortTitle": "Mga Dokumento",
+        "content": {
+          "0": {
+            "type": "talata",
+            "text": "Ang ilang mga dokumento ay dapat isalin sa Turkish at sertipikado ng notaryo, lalo na kung nag-aaplay ka para sa:"
+          },
+          "1": {
+            "type": "listahan",
+            "listType": "hindi nakaayos",
+            "items": {
+              "0": "Mga permit sa trabaho",
+              "1": "Muling pagsasama ng pamilya",
+              "2": "Pagkamamamayan"
+            }
+          },
+          "2": {
+            "type": "listahan",
+            "title": "Mga Halimbawa:",
+            "listType": "hindi nakaayos",
+            "items": {
+              "0": "Sertipiko ng kasal",
+              "1": "Mga sertipiko ng kapanganakan para sa mga bata",
+              "2": "Mga diploma sa akademiko o kredensyal sa trabaho"
+            }
+          }
+        }
+      },
+      {
+        "id": "permit sa paninirahan",
+        "icon": "🏢",
+        "title": "Aplikasyon para sa Permit sa Paninirahan (para sa pangmatagalang pananatili)",
+        "shortTitle": "Permit sa Paninirahan",
+        "content": {
+          "0": {
+            "type": "talata",
+            "text": "Kung balak mong manatili nang higit sa 90 araw:"
+          },
+          "1": {
+            "type": "mga hakbang",
+            "steps": {
+              "0": "Mag-apply online sa pamamagitan ng Göç İdaresi (Direktorado ng Pamamahala ng Migrasyon)",
+              "1": "Mag-book ng appointment sa inyong lokal na tanggapan ng imigrasyon",
+              "2": "Dalhin ang lahat ng dokumento at dumalo sa interbyu"
+            }
+          }
+        }
+      },
+      {
+        "id": "pagpaparehistro",
+        "icon": "🌐",
+        "title": "Irehistro ang Iyong Address at Kumuha ng Residence Card",
+        "shortTitle": "Pagpaparehistro",
+        "content": {
+          "0": {
+            "type": "talata",
+            "text": "Kapag naaprubahan na:"
+          },
+          "1": {
+            "type": "listahan",
+            "listType": "hindi nakaayos",
+            "items": {
+              "0": "Bibigyan ka ng residence card (ikamet kartı) na ipapadala sa pamamagitan ng koreo",
+              "1": "Dapat mong irehistro ang iyong address sa Nüfus Müdürlüğü sa loob ng 20 araw"
+            }
+          }
+        }
+      }
+    ],
+    "bonus": {
+      "icon": "🗣️",
+      "title": "Bonus: Matuto ng Pangunahing Turko",
+      "description": "Bagama't hindi isang legal na kinakailangan, ang pag-aaral ng pangunahing wikang Turko ay lubos na makakatulong sa iyong transisyon. Makakatulong ito sa:",
+      "benefits": [
+        "Lokal na burukrasya",
+        "Pagpapaupa ng mga bahay",
+        "Pamimili at pakikisalamuha"
+      ]
+    },
+    "summary": {
+      "title": "Mga Pangunahing Puntos",
+      "description": "Tandaan ang mga mahahalagang puntong ito para sa isang matagumpay na paglipat sa Turkey:",
+      "keyPoints": [
+        "Balidong pasaporte (6+ na buwan)",
+        "Angkop na visa o permit",
+        "Rehistradong adres sa Turkey",
+        "Patunay ng katatagan sa pananalapi",
+        "May bisang segurong pangkalusugan",
+        "Numero ng buwis sa Turkey",
+        "Handa na ang mga biometric na larawan",
+        "Mga dokumentong isinalin kung kinakailangan"
+      ]
+    },
+    "accessibility": {
+      "sectionButton": "I-toggle ang seksyong {title}"
+    }
+  },
+  "ukToTurkeyGuide": {
+    "title": "Paglipat patungong Turkey mula sa UK",
+    "subtitle": "Ang Kailangan Mong Malaman",
+    "description": "Ang Turkey ay naging isang popular na destinasyon para sa mga British expat na naghahanap ng mas relaks na pamumuhay, mas mababang gastos sa pamumuhay, at maaraw na kapaligiran sa buong taon. Nagpaplano ka man na magretiro, magtrabaho nang malayuan, o magsimula ng isang bagong kabanata sa ibang bansa, sakop ng gabay na ito ang lahat ng kailangan mong isaalang-alang nang makatotohanan kapag lumilipat sa Turkey mula sa UK.",
+    "navigation": {
+      "title": "Mabilis na Nabigasyon",
+      "sections": [
+        {
+          "id": "bakitMove",
+          "icon": "🧳",
+          "title": "Bakit Lumilipat ang mga Briton sa Turkey?"
+        },
+        {
+          "id": "Mga Kinakailangan sa Pagpasok",
+          "icon": "🛂",
+          "title": "Mga Kinakailangan sa Pagpasok at Mga Panuntunan sa Visa"
+        },
+        {
+          "id": "pangmatagalang pananatili",
+          "icon": "🏠",
+          "title": "Mga Opsyon sa Pangmatagalang Pananatili para sa mga Mamamayan ng UK"
+        },
+        {
+          "id": "ari-arian",
+          "icon": "🏘️",
+          "title": "Pagbili o Pagrenta ng Ari-arian"
+        },
+        {
+          "id": "pamumuhay na may gastos",
+          "icon": "💷",
+          "title": "Paghahambing ng Halaga ng Pamumuhay"
+        },
+        {
+          "id": "pangangalagang pangkalusugan",
+          "icon": "🏥",
+          "title": "Pag-access sa Pangangalagang Pangkalusugan"
+        },
+        {
+          "id": "pang-araw-araw na Buhay",
+          "icon": "📱",
+          "title": "Mga Pagsasaayos sa Pang-araw-araw na Buhay"
+        },
+        {
+          "id": "movingLogistics",
+          "icon": "🛫",
+          "title": "Paglipat ng Logistika mula sa UK"
+        },
+        {
+          "id": "mga hamon",
+          "icon": "🧾",
+          "title": "Mga Makatotohanang Hamon na Aasahan"
+        },
+        {
+          "id": "Mga Komunidad ng mga dayuhan",
+          "icon": "👥",
+          "title": "Mga Komunidad ng mga British Expat"
+        }
+      ]
+    },
+    "sections": {
+      "whyMove": {
+        "description": "Libu-libong mamamayang Briton ang naninirahan ngayon sa Turkey, lalo na sa mga lungsod tulad ng Fethiye, Antalya, Istanbul, at Bodrum. Kabilang sa mga atraksyon ang:",
+        "reasons": [
+          "Mas mababang halaga ng pamumuhay kumpara sa UK",
+          "Klima ng Mediteraneo at pamumuhay sa baybayin",
+          "Mainit na pagtanggap at matatag na komunidad ng mga dayuhan",
+          "Mga pagkakataon sa pagmamay-ari ng ari-arian",
+          "Mas mabagal, mas relaks na takbo ng buhay"
+        ],
+        "postBrexitNote": "Gayunpaman, pagkatapos ng Brexit, ang paglipat ay nangangailangan ng mas maraming pagpaplano at papeles kaysa dati."
+      },
+      "entryRequirements": {
+        "touristEntry": {
+          "title": "Pasukan ng Turista",
+          "description": "Maaaring bumisita ang mga mamamayan ng UK sa Turkey nang walang visa nang hanggang 90 araw sa loob ng anumang 180-araw na panahon. Ngunit kung plano mong manatili nang mas matagal o lumipat nang permanente, kailangan mong mag-aplay para sa isang residence permit."
+        }
+      },
+      "longTermStay": {
+        "options": [
+          {
+            "title": "1. Short-Term Residence Permit (Ikamet)",
+            "description": "<span class=\"font-medium\">May bisa sa loob ng 1 taon at maaaring i-renew</span><br/>Karaniwan sa mga digital nomad, may-ari ng ari-arian, at mga retirado",
+            "requirementsTitle": "Kakailanganin mo:",
+            "requirements": {
+              "0": "Balidong pasaporte",
+              "1": "ID ng Buwis sa Turkey",
+              "2": "Patunay ng akomodasyon (kontrata ng pag-upa o kasulatan ng ari-arian)",
+              "3": "Mga pahayag ng bangko na nagpapakita ng sapat na pondo",
+              "4": "Lokal o internasyonal na segurong pangkalusugan"
+            }
+          },
+          {
+            "title": "2. Permit sa Paggawa at Visa",
+            "steps": {
+              "0": "Kailangan mo ng alok ng trabaho mula sa isang kumpanyang Turko",
+              "1": "Ang employer ay nag-aaplay para sa work permit para sa iyo",
+              "2": "Kapag naaprubahan na, mag-aaplay ka para sa work visa sa pamamagitan ng konsulado ng Turkey sa UK"
+            }
+          },
+          {
+            "title": "3. Permit sa Paninirahan ng Pamilya",
+            "steps": {
+              "0": "Para sa mga sumasali sa isang asawang Turko o miyembro ng pamilya",
+              "1": "May bisa hanggang 2 taon"
+            }
+          },
+          {
+            "title": "4. Permit sa Paninirahan ng Estudyante",
+            "description": "Kung ikaw ay nag-aaral sa isang unibersidad sa Turkey o kumukuha ng pangmatagalang kurso sa wika"
+          }
+        ]
+      },
+      "property": {
+        "facts": [
+          "Ang mga dayuhan, kabilang ang mga mamamayan ng UK, ay maaaring legal na bumili ng ari-arian sa Turkey",
+          "Walang kinakailangang minimum na halaga para sa pagiging kwalipikado sa permit sa paninirahan",
+          "Mga sikat na lugar para sa mga mamimiling British: Fethiye, Antalya, Kusadasi, Bodrum, Alanya",
+          "Abot-kaya ang pagrenta: makakahanap ka ng mga apartment sa halagang £200–£500/buwan depende sa lokasyon"
+        ],
+        "tip": "<strong>Tip:</strong> Palaging makipagtulungan sa isang kagalang-galang na ahente o abogado kapag pumipirma ng mga kontrata o bumibili ng ari-arian."
+      },
+      "costLiving": {
+        "table": {
+          "headers": {
+            "expense": "Gastos",
+            "turkey": "Turkey (average)",
+            "uk": "UK (average)"
+          },
+          "rows": [
+            {
+              "expense": "Upa (apartment na may 1 kwarto)",
+              "turkey": "£200–£400",
+              "uk": "£800–£1,200"
+            },
+            {
+              "expense": "Mga Utility",
+              "turkey": "£30–£70/buwan",
+              "uk": "£150+/buwan"
+            },
+            {
+              "expense": "Pagkain sa restawran",
+              "turkey": "£3–£6",
+              "uk": "£10–£25"
+            },
+            {
+              "expense": "Pass sa transportasyon",
+              "turkey": "£10–£20/buwan",
+              "uk": "£60–£120/buwan"
+            }
+          ]
+        },
+        "conclusion": "Mas malawak ang sakop ng iyong pound sa Turkey — lalo na sa labas ng malalaking lungsod."
+      },
+      "healthcare": {
+        "points": [
+          "Kinakailangan ang pribadong health insurance para sa mga aplikante ng residence permit",
+          "Kapag nagtrabaho ka na, maaari ka nang makakuha ng SGK (public insurance), na sumasaklaw sa karamihan ng mga paggamot.",
+          "Abot-kaya ang pribadong pangangalagang pangkalusugan, at maraming ospital ang may internasyonal na akreditasyon",
+          "Maraming mga British expat ang pumipili ng internasyonal na health insurance para sa higit na kakayahang umangkop"
+        ]
+      },
+      "dailyLife": {
+        "aspects": [
+          {
+            "title": "Hadlang sa wika",
+            "description": "Ang Turko ang opisyal na wika. Ingles ang sinasalita sa mga lugar ng turista at mga dayuhan ngunit lubos na inirerekomenda ang pag-aaral ng pangunahing wikang Turko."
+          },
+          {
+            "title": "Pagmamaneho",
+            "description": "Ang mga lisensya sa pagmamaneho sa UK ay may bisa sa loob ng 6 na buwan. Pagkatapos nito, kailangan mong kumuha ng lisensya sa pagmamaneho sa Turkey."
+          },
+          {
+            "title": "Pera",
+            "description": "Turkish Lira (TRY) — pabago-bago ang mga halaga ng palitan, ngunit ang mga bentahe sa presyo ay pabor pa rin sa pound ng UK."
+          },
+          {
+            "title": "Pagbabangko",
+            "description": "Maaari kang magbukas ng bank account sa Turkey gamit ang pasaporte at patunay ng lokal na address. Malawakang ginagamit ang online banking."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "points": [
+          "Maaari kang magdala ng mga personal na gamit nang walang duty sa loob ng 6 na buwan mula sa pagkuha ng iyong residence permit",
+          "Inirerekomenda ang mga internasyonal na tagapaglipat na may karanasan sa mga relokasyon mula UK patungong Turkey.",
+          "Tinatanggap ang mga alagang hayop, ngunit dapat silang naka-microchip at may mga napapanahong bakuna, kabilang ang sertipiko ng rabies."
+        ]
+      },
+      "challenges": {
+        "challenges": [
+          {
+            "title": "Burukrasya",
+            "description": "Ang mga proseso ng permit sa paninirahan ay maaaring mabagal at hindi pare-pareho sa pagitan ng mga lungsod"
+          },
+          {
+            "title": "Pabagu-bago ng halaga ng palitan",
+            "description": "Ang pagbaba ng halaga ng pera ay maaaring makaapekto sa mga ipon o pensiyon"
+          },
+          {
+            "title": "Mga pagkakaiba sa kultura",
+            "description": "Maging bukas ang isipan tungkol sa mga pagbabago sa pamumuhay, mga pamantayang panlipunan, at lokal na ritmo"
+          },
+          {
+            "title": "Buhay sa kanayunan vs buhay sa lungsod",
+            "description": "Maaaring mas kaunti ang nagsasalita ng Ingles sa mga rural na lugar at mas kakaunti ang mga gumagamit nito dahil sa mga modernong kaginhawahan."
+          }
+        ]
+      },
+      "expatCommunities": {
+        "description": "Ang Turkey ay may malalaking komunidad ng Britanya, lalo na sa:",
+        "locations": [
+          "Fethiye",
+          "Didim",
+          "Bodrum",
+          "Marmaris",
+          "Antalya"
+        ],
+        "support": "Makakakita ka ng mga grupo sa Facebook, mga lokal na meetup, at mga negosyong pinapatakbo ng mga British para matulungan kang mas maayos na mamuhay."
+      }
+    },
+    "checklist": {
+      "title": "Pangwakas na Checklist Bago Lumipat sa Turkey",
+      "items": [
+        "Mag-apply para sa tamang residence permit o visa",
+        "Kumuha ng Turkish Tax Number (Vergi Numarası)",
+        "Mag-ayos ng akomodasyon at lokal na SIM card",
+        "Kumuha ng pribadong health insurance",
+        "Matuto ng mga pangunahing pariralang Turko",
+        "Sumali sa mga expat group para sa suporta at mga update",
+        "Ipaalam sa mga awtoridad ng UK (HMRC, NHS, atbp.) ang tungkol sa iyong paglipat"
+      ]
+    },
+    "conclusion": {
+      "title": "Konklusyon: Sulit ba ang Paglipat sa Turkey mula sa UK?",
+      "description": "Kung naghahanap ka ng mas mabagal at mas masiglang pamumuhay at kaya mong ayusin ang mga papeles at pagkakaiba sa kultura, ang Turkey ay isang napakasayang lugar na tirahan. Dahil sa mas mababang gastos at mataas na kalidad ng buhay, maraming Briton ang nakakahanap ng Turkey bilang isang perpektong destinasyon sa pangmatagalang panahon."
+    },
+    "accessibility": {
+      "sectionButton": "Mag-navigate sa seksyong {title}"
+    }
+  },
+  "visaGuide": {
+    "title": "Mga Opsyon sa Visa at Paninirahan para sa Paglipat sa Turkey",
+    "description": "Ang paglipat sa Turkey ay nangangailangan ng pagpili ng tamang visa batay sa iyong layunin ng pananatili. Nag-aalok ang Turkey ng ilang opsyon sa visa at residence permit para sa mga manggagawa, estudyante, retirado, negosyante, at mga digital nomad.",
+    "labels": {
+      "bestFor": "Pinakamahusay para sa",
+      "requirements": "Mga Kinakailangan",
+      "process": "Proseso",
+      "benefits": "Mga Benepisyo",
+      "options": "Mga Pagpipilian",
+      "validity": "Bisa",
+      "renewable": "Nababagong-buhay",
+      "yes": "Oo",
+      "no": "Hindi",
+      "more": "higit pa"
+    },
+    "controls": {
+      "expandAll": "Palawakin Lahat",
+      "collapseAll": "I-collapse Lahat"
+    },
+    "compare": {
+      "enable": "Paghambingin ang mga Visa",
+      "exit": "Lumabas sa Mode ng Paghahambing",
+      "select": "Piliin",
+      "selected": "Napili",
+      "table": {
+        "title": "Paghahambing ng Visa",
+        "headers": {
+          "type": "Uri ng Visa",
+          "validity": "Bisa",
+          "renewable": "Nababagong-buhay",
+          "bestFor": "Pinakamahusay Para sa"
+        }
+      }
+    },
+    "visas": [
+      {
+        "id": "panandaliang",
+        "icon": "🏠",
+        "title": "Short-Term Residence Permit (İkamet İzni)",
+        "subtitle": "Pinakasikat para sa mga expat",
+        "validity": "1 taon",
+        "bestFor": {
+          "0": "Mga digital nomad",
+          "1": "Mga manggagawang malayo",
+          "2": "Mga may-ari ng ari-arian",
+          "3": "Mga turistang nananatili nang higit sa 90 araw",
+          "4": "Mga taong naghahanap ng mga opsyon para sa pangmatagalang pamamalagi"
+        },
+        "requirements": {
+          "0": "Balidong pasaporte at visa",
+          "1": "Patunay ng kakayahang pinansyal (humigit-kumulang $500/buwan)",
+          "2": "Tirahan sa Turkey (kontrata ng pag-upa o titulo ng lupa)",
+          "3": "Pribadong segurong pangkalusugan",
+          "4": "Mga larawang biometriko"
+        },
+        "renewable": true
+      },
+      {
+        "id": "estudyante",
+        "icon": "🎓",
+        "title": "Visa ng Estudyante at Permit sa Paninirahan",
+        "subtitle": "Para sa mga akademikong gawain",
+        "validity": "Tagal ng mga pag-aaral",
+        "bestFor": {
+          "0": "Mga estudyanteng tinatanggap sa mga unibersidad sa Turkey",
+          "1": "Mga mag-aaral sa paaralan ng wika"
+        },
+        "requirements": {
+          "0": "Liham ng pagtanggap mula sa isang kinikilalang institusyong Turko",
+          "1": "Patunay ng sapat na pondo",
+          "2": "Seguro sa kalusugan",
+          "3": "Address sa Turkey"
+        },
+        "process": {
+          "0": "Mag-apply para sa student visa mula sa isang embahada/konsulado ng Turkey sa iyong bansa",
+          "1": "Pagdating, mag-apply para sa student residence permit"
+        },
+        "renewable": true
+      },
+      {
+        "id": "trabaho",
+        "icon": "💼",
+        "title": "Visa sa Paggawa at Permit sa Paggawa",
+        "subtitle": "Para sa mga propesyonal na may trabaho",
+        "validity": "1-2 taon",
+        "bestFor": {
+          "0": "Mga dayuhang nagtatrabaho sa isang kumpanyang Turko",
+          "1": "Mga expats na may mga alok na trabaho",
+          "2": "Mga guro ng Ingles, mga inhinyero, mga propesyonal sa pangangalagang pangkalusugan"
+        },
+        "requirements": {
+          "0": "Alok ng trabaho mula sa isang rehistradong employer na Turko",
+          "1": "Balidong pasaporte",
+          "2": "Kontrata sa trabaho",
+          "3": "Mga dokumentong pang-edukasyon (isinalin at notaryado)"
+        },
+        "process": {
+          "0": "Ang employer ay nag-aaplay sa Turkish Ministry of Labor para sa iyo",
+          "1": "Mag-aaplay ka para sa work visa sa embahada ng Turkey",
+          "2": "Pagkatapos dumating, makakatanggap ka ng permit sa paninirahan para sa trabaho"
+        },
+        "renewable": true
+      },
+      {
+        "id": "pamilya",
+        "icon": "👨‍👩‍👧‍👦",
+        "title": "Permit sa Paninirahan ng Pamilya",
+        "subtitle": "Para sa muling pagsasama-sama ng pamilya",
+        "validity": "Hanggang 2 taon",
+        "bestFor": {
+          "0": "Mga asawa ng mga mamamayang Turko",
+          "1": "Mga anak ng mga mamamayang Turko",
+          "2": "Mga miyembro ng pamilya ng mga dayuhang residente"
+        },
+        "requirements": {
+          "0": "Patunay ng ugnayan ng pamilya (sertipiko ng kasal/kapanganakan)",
+          "1": "Address sa Turkey",
+          "2": "Patunay ng kita mula sa sponsor",
+          "3": "Seguro sa kalusugan"
+        },
+        "renewable": true
+      },
+      {
+        "id": "ari-arian",
+        "icon": "🏘️",
+        "title": "Permit sa Paninirahan sa Pagmamay-ari ng Ari-arian",
+        "subtitle": "Para sa mga mamumuhunan sa real estate",
+        "validity": "1 taon",
+        "bestFor": {
+          "0": "Mga dayuhang nagmamay-ari ng real estate sa Turkey",
+          "1": "Mga mamumuhunan sa ari-arian",
+          "2": "Mga negosyante sa real estate"
+        },
+        "requirements": {
+          "0": "Tapu (titulo ng titulo) sa iyong pangalan",
+          "1": "Minimum na halaga ng ari-arian na humigit-kumulang $75,000 sa mga metropolitan area (maaaring mag-iba ayon sa rehiyon)",
+          "2": "Patunay ng kita",
+          "3": "Seguro sa kalusugan"
+        },
+        "benefits": {
+          "0": "Maaaring i-renew taun-taon",
+          "1": "Maaaring humantong sa pangmatagalang paninirahan o pagkamamamayan"
+        },
+        "renewable": true
+      },
+      {
+        "id": "pagkamamamayan",
+        "icon": "🇹🇷",
+        "title": "Pagkamamamayan ng Turkey sa pamamagitan ng Pamumuhunan",
+        "subtitle": "Mabilis na landas patungo sa pagkamamamayan",
+        "validity": "Permanente",
+        "bestFor": {
+          "0": "Mga mamumuhunan at negosyante",
+          "1": "Mga indibidwal na may mataas na net worth",
+          "2": "Mga may-ari ng negosyo"
+        },
+        "options": {
+          "0": "Bumili ng real estate na nagkakahalaga ng hindi bababa sa $400,000",
+          "1": "Magdeposito ng $500,000 sa isang bangko sa Turkey",
+          "2": "Lumikha ng mga trabaho para sa hindi bababa sa 50 mamamayang Turko"
+        },
+        "benefits": {
+          "0": "Mabilis na pagkamit ng pagkamamamayan sa loob ng 3-6 na buwan",
+          "1": "Buong karapatan kabilang ang pasaporte at pagboto"
+        },
+        "renewable": false
+      },
+      {
+        "id": "pangmatagalan",
+        "icon": "🌟",
+        "title": "Permit sa Pangmatagalang Paninirahan",
+        "subtitle": "Opsyon sa pananatili nang walang katiyakan",
+        "validity": "Walang katiyakan",
+        "bestFor": {
+          "0": "Mga dayuhang nanirahan sa Turkey nang hindi bababa sa 8 magkakasunod na taon",
+          "1": "Mga pangmatagalang residente na naghahanap ng permanenteng katayuan"
+        },
+        "requirements": {
+          "0": "Walang rekord kriminal",
+          "1": "Patunay ng pangmatagalang kita at tirahan",
+          "2": "Walang pagdepende sa tulong panlipunan sa nakalipas na 3 taon"
+        },
+        "renewable": false
+      }
+    ],
+    "summary": {
+      "title": "Mga Tip sa Mabilisang Sanggunian",
+      "tips": [
+        {
+          "title": "Magsimula nang Maaga",
+          "description": "Simulan ang proseso ng aplikasyon para sa visa nang hindi bababa sa 3-6 na buwan bago ang iyong nakaplanong petsa ng paglipat."
+        },
+        {
+          "title": "Paghahanda ng Dokumento",
+          "description": "Tiyaking ang lahat ng mga dokumento ay naisalin, na-notaryo, at na-apostile kung kinakailangan."
+        },
+        {
+          "title": "Pagpaplano sa Pananalapi",
+          "description": "Magpanatili ng sapat na pondo sa iyong bank account nang ilang buwan bago mag-apply."
+        },
+        {
+          "title": "Seguro sa Kalusugan",
+          "description": "Kumuha ng wastong saklaw ng health insurance bago mag-apply para sa anumang residence permit."
+        },
+        {
+          "title": "Pagpaparehistro ng Address",
+          "description": "Dapat ay mayroon kang rehistradong tirahan sa Turkey bago mag-apply para sa mga permit sa paninirahan."
+        },
+        {
+          "title": "Tulong sa Propesyonal",
+          "description": "Isaalang-alang ang pagkuha ng abogado o consultant sa imigrasyon para sa mga kumplikadong kaso."
+        }
+      ]
+    }
+  }
+}

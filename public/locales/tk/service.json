@@ -1,0 +1,204 @@
+{
+  "header": {
+    "title": "Hyzmatlarymyz",
+    "subtitle": "Biziň toplumlaýyn karýera hyzmatlarymyz arkaly hünärmenleri dünýäniň ähli künjegindäki mümkinçilikler bilen baglanyşdyrýarys"
+  },
+  "viewSelector": {
+    "grid": "Tor",
+    "masonry": "Daş işleri",
+    "carousel": "Karusel"
+  },
+  "card": {
+    "viewPage": "Sahypany görkez",
+    "viewDetails": "Jikme-jiklikleri görkez"
+  },
+  "carousel": {
+    "previousSlide": "Öňki slaýd",
+    "nextSlide": "Indiki slaýd",
+    "goToSlide": "Slaýda git"
+  },
+  "modal": {
+    "close": "Ýap",
+    "overview": "Umumy syn",
+    "keyFeatures": "Esasy aýratynlyklar",
+    "technologies": "Tehnologiýalar",
+    "visitServicePage": "Hyzmat sahypasyna baryň",
+    "stats": {
+      "projects": "Taslamalar",
+      "satisfaction": "Kanagatlylyk",
+      "support": "Goldaw"
+    }
+  },
+  "services": {
+    "resumeService": {
+      "title": "Rezyume hyzmaty",
+      "description": "Esasy nokatlary döretmekden başlap, awtomatik formatlamaga çenli, biziň rezyume gurujymyz size professional rezyumeni çalt we aňsatlyk bilen döretmäge kömek eder.",
+      "longDesc": "Biziň professional rezyume ýazmak hyzmatymyz iş gözleýänlere özleriniň özboluşly hünär derejelerini görkezýän we söhbetdeşlik mümkinçiliklerini artdyrýan täsirli, ATS-e laýyk rezyumeleri döretmäge kömek edýär. Biz her bir rezyumeni belli pudaklara we wezipelere laýyklaşdyrýarys.",
+      "features": [
+        "ATS-iň optimizasiýasy",
+        "Pudaga degişli formatlar",
+        "Açarsözleriň kämilleşdirilmegi",
+        "Hünärmenleriň synlary"
+      ],
+      "technologies": [
+        "Rezüme şablonlary",
+        "ATS gurallary",
+        "Dizayn programma üpjünçiligi",
+        "Mazmun strategiýasy"
+      ]
+    },
+    "globalJobPlacement": {
+      "title": "Global iş orunlaryny ýerleşdirmek",
+      "description": "Şahsylaşdyrylan iş saýlamasyndan başlap, wiza goldawyna çenli, biz hünärmenleri dünýäniň iň gowy iş berijileri bilen üznüksiz we netijeli baglanyşdyrýarys.",
+      "longDesc": "Biziň global iş orunlaryny ýerleşdirmek hyzmatymyz zehinli hünärmenleri halkara karýera mümkinçilikleri bilen baglanyşdyrýar, iş orunlaryny saýlamakdan başlap, göçmek üçin logistika we medeni taýýarlyklara çenli ähli zady edýär.",
+      "features": [
+        "Iş berijiler bilen hyzmatdaşlyk",
+        "Wiza kömegi",
+        "Göçmek üçin goldaw",
+        "Söhbetdeşlige taýýarlyk"
+      ],
+      "technologies": [
+        "Işi deňeşdirmek algoritmi",
+        "Global maglumatlar bazasy",
+        "Wiza işleme",
+        "Göçürmek üçin gurallar"
+      ]
+    },
+    "interviewCoaching": {
+      "title": "Söhbetdeşlik boýunça tälim beriş",
+      "description": "Synag söhbetdeşliklerinden başlap, şahsylaşdyrylan pikir alyşmalara çenli, biziň giňişleýin söhbetdeşlik tälimçiligimiz hünärmenlere arzuwlaryndaky işlerine ynam bilen ýetmäge kömek edýär.",
+      "longDesc": "Biziň söhbetdeşlik tälimçiligimiz dalaşgärleri islendik söhbetdeşlik görnüşinde üstünlik gazanmaga taýýarlaýar, bu bolsa özleşdirilen tejribe sapaklary, jikme-jik pikir alyşmalar we belli bir rollara we pudaklara laýyk gelýän strategiýalar bilen üpjün edýär.",
+      "features": [
+        "Synag söhbetdeşlikleri",
+        "Pudaga degişli okuw",
+        "Beden dili boýunça tälim",
+        "Sorag taýýarlamak"
+      ],
+      "technologies": [
+        "Wideo Analiz",
+        "AI pikirleri",
+        "Söhbetdeşlik simulýasiýasy",
+        "Şahsy tälimçilik"
+      ]
+    },
+    "careerCounselling": {
+      "title": "Karýera boýunça maslahat beriş",
+      "description": "Karýera bahalandyrmalaryndan başlap, şahsylaşdyrylan ösüş meýilnamalaryna çenli, biziň giňişleýin maslahat beriş hyzmatymyz hünärmenlere özleriniň iň gowy ýoluny ynam bilen tapmaga kömek edýär.",
+      "longDesc": "Karýera boýunça maslahat beriş hyzmatymyz ähli tapgyrlardaky hünärmenlere özleriniň güýçli taraplaryny anyklamaga, laýyk karýera ýollaryny öwrenmäge we hünär maksatlaryna ýetmek üçin amaly meýilnamalary işläp düzmäge kömek edýär.",
+      "features": [
+        "Karýera bahalandyrmasy",
+        "Güýç seljermesi",
+        "Maksat goýmak",
+        "Senagat maglumatlary"
+      ],
+      "technologies": [
+        "Şahsyýet synaglary",
+        "Ukyplaryň bahalandyrylmagy",
+        "Karýera kartasyny düzmek",
+        "Ösüş meýilnamasy"
+      ]
+    },
+    "visaRelocation": {
+      "title": "Wiza we göçüriş",
+      "description": "Wiza üçin arzalardan başlap, täze öýüňize ýerleşmäge çenli, biziň toplumlaýyn göçüriş hyzmatlarymyz size täze ýurda ynam bilen geçmäge kömek edýär.",
+      "longDesc": "Wiza we göçmek hyzmatlarymyz resminamalary taýýarlamakdan başlap, ýaşaýyş jaýyny tapmaga we täze gurşawyňyza göçüp girmäge çenli tutuş immigrasiýa prosesinde hemmetaraplaýyn goldaw berýär.",
+      "features": [
+        "Wiza üçin arza",
+        "Resminamalary taýýarlamak",
+        "Ýaşaýyş jaý kömegi",
+        "Ýerli integrasiýa"
+      ],
+      "technologies": [
+        "Immigrasiýa maglumatlar bazasy",
+        "Resminamalary dolandyrmak",
+        "Jaý ulgamy",
+        "Göçmek meýilnamasy"
+      ]
+    },
+    "skillDevelopment": {
+      "title": "Ukyplary ösdürmek",
+      "description": "Başlangyç okuw maslahatlaryndan başlap, hünärmen sertifikatlaşdyrmaga çenli, başarnyklary ösdürmek maksatnamalarymyz hünärmenlere geljegiň mümkinçilikleri üçin zerur bolan başarnyklary özleşdirmäge mümkinçilik berýär.",
+      "longDesc": "Biziň başarnyklary ösdürmek maksatnamalarymyz karýera ösüşini höweslendirmek üçin özleşdirilen okuw ýollary, amaly taslamalar we sertifikatlaşdyrmaga taýýarlyk görmek bilen ýokary isleg bildirilýän başarnyklar boýunça maksatly okuwlary hödürleýär.",
+      "features": [
+        "Özleşdirilen öwrenmek",
+        "Amaly taslamalar",
+        "Sertifikatlaşdyrmaga taýýarlyk",
+        "Ekspert mentorlygy"
+      ],
+      "technologies": [
+        "Elektron okuw platformasy",
+        "Taslama simulýasiýasy",
+        "Baha beriş gurallary",
+        "Sertifikatlaşdyrma maksatnamalary"
+      ]
+    },
+    "remoteWorkOpportunities": {
+      "title": "Uzakdan işlemek mümkinçilikleri",
+      "description": "Uzakdan iş saýlamagyndan başlap, öý ofisini gurnamak boýunça görkezmelere çenli, biz hünärmenleriň wirtual iş ýerinde özleşdirilen çözgütler bilen ösmegine kömek edýäris.",
+      "longDesc": "Biziň uzakdan işleýän hyzmatymyz hünärmenleri ýokary hilli uzakdan işleýän wezipeler bilen baglanyşdyrmaga, wirtual iş gurallary boýunça görkezme bermäge we öndürijilikli öý ofis gurşawyny döretmäge kömek etmäge ýöriteleşýär.",
+      "features": [
+        "Uzakdan iş tapmak",
+        "Wirtual hyzmatdaşlyk",
+        "Öý ofisiniň gurluşy",
+        "Iş-durmuş deňagramlylygy"
+      ],
+      "technologies": [
+        "Uzakdan iş platformasy",
+        "Wirtual gurallar",
+        "Öndürijilik programma üpjünçiligi",
+        "Sanly aragatnaşyk"
+      ]
+    },
+    "talentAcquisition": {
+      "title": "Zehinli adamlaryň tapylmagy",
+      "description": "Ideal dalaşgärleri kesgitlemekden başlap, işgärleriň işe kabul edilmegine çenli, biziň zehinleri özleşdirmek platformamyz guramalara ýokary netijeli toparlary netijeli gurmaga kömek edýär.",
+      "longDesc": "Biziň zehinleri toplamak hyzmatymyz guramalara özleşdirilen işe alyş strategiýalary, dalaşgärleriň bahalandyrylmagy we netijeli işe kabul ediş prosesleri arkaly iň gowy zehinleri ýüze çykarmaga, çekmäge we saklamaga kömek edýär.",
+      "features": [
+        "Maksatly işe alyş",
+        "Kandidatlary saýlamak",
+        "Ukyplaryň bahalandyrylmagy",
+        "Işe kabul etmek üçin goldaw"
+      ],
+      "technologies": [
+        "ATS platformasy",
+        "Baha beriş gurallary",
+        "Söhbetdeşligi dolandyrmak",
+        "Işe kabul ediş ulgamy"
+      ]
+    },
+    "immigration": {
+      "title": "Immigrasiýa",
+      "description": "Wiza arzalaryndan başlap, hemişelik ýaşamaga çenli, biziň tejribeli immigrasiýa maslahatçylarymyz şahsy goldaw bilen size prosesiň her bir ädiminde ýol görkezerler.",
+      "longDesc": "Biziň immigrasiýa boýunça maslahatçylarymyz immigrasiýanyň ähli ýollary boýunça hünärmen görkezmelerini berýärler, çylşyrymly resminamalary işläp düzýärler, arza taýýarlaýarlar we immigrasiýa syýahatyňyzyň dowamynda yzygiderli goldaw berýärler.",
+      "features": [
+        "Wiza bahalandyrmasy",
+        "Arza taýýarlamak",
+        "Hukuk goldawy",
+        "Ýagdaý yzarlamak"
+      ],
+      "technologies": [
+        "Immigrasiýa maglumatlar bazasy",
+        "Resminamanyň tassyklanmagy",
+        "Programma dolandyryşy",
+        "Hukuk çeşmeleri"
+      ]
+    },
+    "jobRecruitment": {
+      "title": "Işe kabul etmek",
+      "description": "Kandidatlary tapmakdan başlap, soňky işe ýerleşdirmäge çenli, biziň toplumlaýyn işe alma hyzmatlarymyz kärhanalara dünýäde iň gowy zehinleri takyklyk we netijelilik bilen tapmaga kömek edýär.",
+      "longDesc": "Biziň iş orunlaryny işe almak hyzmatymyz iş berijileri dürli pudaklardaky hünärli dalaşgärler bilen baglanyşdyrmaga, kämil dalaşgärleri üpjün etmek üçin öňdebaryjy synag proseslerini we global zehin ulgamlaryny ulanmaga ýöriteleşýär.",
+      "features": [
+        "Global Talant Gözlegleri",
+        "Ösen derejeli barlag",
+        "Senagat tejribesi",
+        "Çalt ýerleşdiriş"
+      ],
+      "technologies": [
+        "Işe alyş platformasy",
+        "Kandidatlaryň maglumatlar bazasy",
+        "Skrining gurallary",
+        "Gabatlaşdyryş Algoritmi"
+      ]
+    }
+  }
+}

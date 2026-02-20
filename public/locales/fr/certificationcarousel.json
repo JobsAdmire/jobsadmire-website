@@ -1,0 +1,62 @@
+{
+  "controls": {
+    "previous": "Certificat précédent",
+    "next": "Certificat suivant",
+    "play": "Jouer en mode autoplay",
+    "pause": "Pause de la lecture automatique",
+    "goToSlide": "Aller à la diapositive"
+  },
+  "events": {
+    "event1": {
+      "title": "Salon de l'étudiant UniAdmire",
+      "location": "Karachi, Pakistan",
+      "date": "15-17 mars 2025",
+      "description": "Mise en relation des étudiants pakistanais avec des universités internationales et des possibilités de bourses d'études",
+      "images": {
+        "image1": {
+          "alt": "Des représentants de l'université s'adressent aux étudiants",
+          "caption": "Des représentants d'universités internationales rencontrent des étudiants locaux"
+        },
+        "image2": {
+          "alt": "Kiosques d'information à la foire",
+          "caption": "Les étudiants explorent les possibilités de formation offertes par les stands d'information"
+        },
+        "image3": {
+          "alt": "Cérémonie de remise des prix",
+          "caption": "Cérémonie de reconnaissance pour les institutions participantes"
+        },
+        "image4": {
+          "alt": "Débat d'experts",
+          "caption": "Panel d'experts sur les tendances internationales en matière d'éducation"
+        },
+        "image5": {
+          "alt": "Séance de conseil aux étudiants",
+          "caption": "Conseils personnalisés avec des responsables des admissions à l'université"
+        }
+      }
+    },
+    "event2": {
+      "title": "Salon de l'éducation en Côte d'Ivoire",
+      "location": "Abidjan, Côte d'Ivoire",
+      "date": "20-22 janvier 2025",
+      "description": "Mettre en relation les étudiants d'Afrique de l'Ouest avec les universités internationales",
+      "images": {
+        "image1": {
+          "alt": "Entrée du salon de l'éducation",
+          "caption": "Entrée principale du Salon de l'éducation de Côte d'Ivoire"
+        },
+        "image2": {
+          "alt": "Les étudiants aux stands d'information",
+          "caption": "Les étudiants locaux explorent les possibilités d'éducation internationale"
+        },
+        "image3": {
+          "alt": "Débat d'experts",
+          "caption": "Des experts en éducation discutent des programmes de bourses d'études"
+        }
+      }
+    }
+  },
+  "background": {
+    "watermark": "CERTIFICATIONS"
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "hero": {
+    "badge": "ОСОБОЕ ПОЛОЖЕНИЕ",
+    "titleLine1": "Старшее программное обеспечение",
+    "titleLine2": "Инженер",
+    "companyName": "TechVision Inc",
+    "subtitle": "Присоединяйтесь к нашей инновационной команде, чтобы создавать передовые решения, которые преобразуют отрасли. Мы ищем талантливых инженеров, увлеченных созданием эффективных технологий.",
+    "ctaPrimary": "Запрос на консультацию",
+    "ctaShare": "Поделиться работой",
+    "salaryRange": "Диапазон зарплат",
+    "location": "Расположение",
+    "experience": "Опыт",
+    "tabOverview": "Обзор",
+    "tabRequirements": "Требования",
+    "tabBenefits": "Преимущества",
+    "industry": "Разработка программного обеспечения",
+    "locationValue": "Удаленно (на территории США)",
+    "locationStatValue": "Удаленный",
+    "salaryLabel": "Зарплата",
+    "teamSizeLabel": "Размер команды",
+    "teamSizeValue": "15-20 инженеров",
+    "employmentLabel": "Трудоустройство",
+    "employmentValue": "Полный рабочий день",
+    "postedLabel": "Размещено",
+    "postedValue": "15 марта 2025 г.",
+    "requiredSkills": "Необходимые навыки",
+    "readyToJoin": "Готовы присоединиться к нашей команде?",
+    "applicationTime": "5-минутное применение"
+  },
+  "loading": "Loading job details...",
+  "notifications": {
+    "resume_uploaded": "Резюме успешно загружено!",
+    "application_submitted": {
+      "title": "Заявка подана!",
+      "message": "Благодарим вас за интерес к вакансии {{title}}. Наша команда рассмотрит вашу заявку и свяжется с вами в ближайшее время.",
+      "close": "Закрыть"
+    }
+  },
+  "application_modal": {
+    "title": "Подайте заявку на {{title}}",
+    "subtitle": "Заполните заявку ниже",
+    "progress": "Ход выполнения заявки",
+    "form": {
+      "full_name": "Полное имя *",
+      "full_name_placeholder": "Введите ваше имя",
+      "email": "Адрес электронной почты *",
+      "phone": "Номер телефона *",
+      "location": "Текущее местоположение *",
+      "location_placeholder": "Город, Страна",
+      "linkedin": "Профиль LinkedIn",
+      "portfolio": "URL-адрес портфолио",
+      "cover_message": "Сообщение на обложке",
+      "cover_message_placeholder": "Почему вас заинтересовала эта должность?",
+      "upload_resume": "Загрузить резюме *",
+      "click_to_upload": "Нажмите, чтобы загрузить свое резюме",
+      "file_types": "(PDF, DOC или DOCX)",
+      "cancel": "Отмена",
+      "submit": "Отправить заявку",
+      "application_closed": "Заявка закрыта",
+      "terms_agreement": "Подавая заявку, вы соглашаетесь с нашими <1>Сроками и условиями</1>.",
+      "email_placeholder": "name@example.com",
+      "phone_placeholder": "+90 555 123 4567",
+      "linkedin_placeholder": "https://linkedin.com/in/username",
+      "portfolio_placeholder": "https://yourportfolio.com"
+    }
+  },
+  "share_modal": {
+    "title": "Поделиться этой работой",
+    "subtitle": "Поделитесь этой возможностью со своей сетью",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp",
+    "copy_link": "Копировать",
+    "copied": "Скопировано!"
+  },
+  "header": {
+    "status_open": "Открыть",
+    "status_closed": "Закрытый",
+    "posted": "Размещено",
+    "save_job": "Сохранить работу",
+    "saved": "Сохранено",
+    "share": "Поделиться",
+    "apply_now": "Применить сейчас",
+    "application_closed": "Заявка закрыта"
+  },
+  "quick_info": {
+    "currency": "Валюта",
+    "salary": "Зарплата",
+    "type": "Тип"
+  },
+  "tabs": {
+    "job_description": "Описание работы",
+    "requirements": "Требования",
+    "details": "Подробности"
+  },
+  "tab_content": {
+    "description": {
+      "overview": "Обзор работы",
+      "employment_type": "Тип занятости",
+      "work_location": "Место работы"
+    },
+    "requirements": {
+      "title": "Требования и квалификация",
+      "what_we_looking_for": "Что мы ищем",
+      "professional_experience": "Профессиональный опыт",
+      "communication_skills": "Навыки общения",
+      "team_collaboration": "Сотрудничество в команде",
+      "growth_mindset": "Установка на рост"
+    },
+    "details": {
+      "job_information": "Информация о работе",
+      "job_type": "Тип работы:",
+      "location": "Расположение:",
+      "posted": "Опубликовано:",
+      "status": "Статус:",
+      "quota_full": "Полная квота",
+      "open_for_applications": "Открыт прием заявок",
+      "compensation": "Компенсация",
+      "currency": "Валюта:",
+      "salary": "Зарплата:",
+      "why_join": "Почему стоит присоединиться к {{title}}?",
+      "career_growth": "Карьерный рост",
+      "career_growth_desc": "Возможности для продвижения по службе",
+      "great_location": "Отличное расположение",
+      "great_location_desc": "Работа в {{location}}",
+      "competitive_package": "Конкурентный пакет",
+      "competitive_package_desc": "Привлекательная зарплата и льготы",
+      "professional_growth": "Профессиональный рост",
+      "professional_growth_desc": "Возможности непрерывного обучения"
+    }
+  },
+  "cta": {
+    "title": "Готовы присоединиться к нашей команде?",
+    "subtitle": "Сделайте следующий шаг в своей карьере вместе с {{title}}. Мы ищем увлеченных людей, которые хотят изменить жизнь к лучшему.",
+    "apply_now": "Применить сейчас",
+    "application_closed": "Заявка закрыта"
+  },
+  "contact": {
+    "title": "Нужна помощь с заявкой?",
+    "subtitle": "Наша команда HR готова помочь вам",
+    "live_chat": {
+      "title": "Поддержка в чате",
+      "subtitle": "Среднее время отклика: 5 минут"
+    },
+    "email": {
+      "title": "Отправить по электронной почте в отдел кадров",
+      "subtitle": "info@jobsadmire.com"
+    }
+  },
+  "fallback": {
+    "title_not_available": "Название должности недоступно",
+    "location_not_available": "Местонахождение недоступно",
+    "description_not_available": "<p>Описание работы недоступно.</p>",
+    "requirement_not_available": "<p>Требования недоступны.</p>",
+    "date_not_available": "Дата недоступна",
+    "error_loading": "Ошибка при загрузке задания",
+    "unable_to_load_desc": "<p>Невозможно загрузить описание вакансии. Пожалуйста, повторите попытку позже.</p>",
+    "unable_to_load_req": "<p>Невозможно загрузить требования. Пожалуйста, повторите попытку позже.</p>"
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "hero": {
+    "badge": "ITINATAMPOK NA POSISYON",
+    "titleLine1": "Software para sa mga Nakatatanda",
+    "titleLine2": "Inhinyero",
+    "companyName": "TechVision Inc.",
+    "subtitle": "Sumali sa aming makabagong koponan upang bumuo ng mga makabagong solusyon na magpapabago sa mga industriya. Naghahanap kami ng mga mahuhusay na inhinyero na masigasig sa paglikha ng teknolohiyang may malaking epekto.",
+    "ctaPrimary": "Humingi ng Konsultasyon",
+    "ctaShare": "Ibahagi ang Trabaho",
+    "salaryRange": "Saklaw ng Sweldo",
+    "location": "Lokasyon",
+    "experience": "Karanasan",
+    "tabOverview": "Pangkalahatang-ideya",
+    "tabRequirements": "Mga Kinakailangan",
+    "tabBenefits": "Mga Benepisyo",
+    "industry": "Pag-develop ng Software",
+    "locationValue": "Malayuang Serbisyo (Nakabase sa US)",
+    "locationStatValue": "Malayo",
+    "salaryLabel": "Suweldo",
+    "teamSizeLabel": "Laki ng Koponan",
+    "teamSizeValue": "15-20 Mga Inhinyero",
+    "employmentLabel": "Trabaho",
+    "employmentValue": "Buong-panahon",
+    "postedLabel": "Na-post",
+    "postedValue": "Marso 15, 2025",
+    "requiredSkills": "Mga Kinakailangang Kasanayan",
+    "readyToJoin": "Handa ka na bang sumali sa aming koponan?",
+    "applicationTime": "5 minutong aplikasyon"
+  },
+  "loading": "Naglo-load ng mga detalye ng trabaho...",
+  "notifications": {
+    "resume_uploaded": "Matagumpay na na-upload ang resume!",
+    "application_submitted": {
+      "title": "Naisumite na ang Aplikasyon!",
+      "message": "Salamat sa iyong interes sa posisyong {{title}}. Susuriin ng aming koponan ang iyong aplikasyon at makikipag-ugnayan sa iyo sa lalong madaling panahon.",
+      "close": "Isara"
+    }
+  },
+  "application_modal": {
+    "title": "Mag-apply para sa {{title}}",
+    "subtitle": "Kumpletuhin ang iyong aplikasyon sa ibaba",
+    "progress": "Pag-usad ng Aplikasyon",
+    "form": {
+      "full_name": "Buong Pangalan *",
+      "full_name_placeholder": "Ilagay ang iyong pangalan",
+      "email": "Email Address *",
+      "phone": "Numero ng Telepono *",
+      "location": "Kasalukuyang Lokasyon *",
+      "location_placeholder": "Lungsod, Bansa",
+      "linkedin": "Profile sa LinkedIn",
+      "portfolio": "URL ng Portfolio",
+      "cover_message": "Mensahe sa Pabalat",
+      "cover_message_placeholder": "Bakit ka interesado sa posisyong ito?",
+      "upload_resume": "Mag-upload ng Resume *",
+      "click_to_upload": "I-click para i-upload ang iyong resume",
+      "file_types": "(PDF, DOC, o DOCX)",
+      "cancel": "Kanselahin",
+      "submit": "Isumite ang Aplikasyon",
+      "application_closed": "Sarado na ang Aplikasyon",
+      "terms_agreement": "Sa pamamagitan ng pag-aaplay, sumasang-ayon ka sa aming <1>Mga Tuntunin at Kundisyon</1>",
+      "email_placeholder": "name@example.com",
+      "phone_placeholder": "+90 555 123 4567",
+      "linkedin_placeholder": "https://linkedin.com/in/username",
+      "portfolio_placeholder": "https://yourportfolio.com"
+    }
+  },
+  "share_modal": {
+    "title": "Ibahagi ang Trabahong Ito",
+    "subtitle": "Ibahagi ang pagkakataong ito sa iyong network",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp",
+    "copy_link": "Kopyahin",
+    "copied": "Kinopya!"
+  },
+  "header": {
+    "status_open": "Bukas",
+    "status_closed": "Sarado",
+    "posted": "Na-post",
+    "save_job": "I-save ang Trabaho",
+    "saved": "Na-save",
+    "share": "Ibahagi",
+    "apply_now": "Mag-apply Ngayon",
+    "application_closed": "Sarado na ang Aplikasyon"
+  },
+  "quick_info": {
+    "currency": "Pera",
+    "salary": "Suweldo",
+    "type": "Uri"
+  },
+  "tabs": {
+    "job_description": "Paglalarawan ng Trabaho",
+    "requirements": "Mga Kinakailangan",
+    "details": "Mga Detalye"
+  },
+  "tab_content": {
+    "description": {
+      "overview": "Pangkalahatang-ideya ng Trabaho",
+      "employment_type": "Uri ng Trabaho",
+      "work_location": "Lokasyon ng Trabaho"
+    },
+    "requirements": {
+      "title": "Mga Kinakailangan at Kwalipikasyon",
+      "what_we_looking_for": "Ang Hinahanap Namin",
+      "professional_experience": "Karanasan sa Propesyonal",
+      "communication_skills": "Mga Kasanayan sa Komunikasyon",
+      "team_collaboration": "Kolaborasyon ng Koponan",
+      "growth_mindset": "Pag-iisip ng Paglago"
+    },
+    "details": {
+      "job_information": "Impormasyon sa Trabaho",
+      "job_type": "Uri ng Trabaho:",
+      "location": "Lokasyon:",
+      "posted": "Nai-post:",
+      "status": "Katayuan:",
+      "quota_full": "Puno ang Quota",
+      "open_for_applications": "Bukas para sa mga Aplikasyon",
+      "compensation": "Kompensasyon",
+      "currency": "Pera:",
+      "salary": "Sweldo:",
+      "why_join": "Bakit ka dapat sumali sa {{title}}?",
+      "career_growth": "Paglago ng Karera",
+      "career_growth_desc": "Mga pagkakataon para sa pagsulong",
+      "great_location": "Magandang Lokasyon",
+      "great_location_desc": "Magtrabaho sa {{location}}",
+      "competitive_package": "Kompetitibong Pakete",
+      "competitive_package_desc": "Kaakit-akit na suweldo at mga benepisyo",
+      "professional_growth": "Propesyonal na Paglago",
+      "professional_growth_desc": "Mga pagkakataon sa patuloy na pag-aaral"
+    }
+  },
+  "cta": {
+    "title": "Handa ka na bang sumali sa aming koponan?",
+    "subtitle": "Gawin ang susunod na hakbang sa iyong karera kasama ang {{title}}. Naghahanap kami ng mga taong may masidhing hangarin na gumawa ng pagbabago.",
+    "apply_now": "Mag-apply Ngayon",
+    "application_closed": "Sarado na ang Aplikasyon"
+  },
+  "contact": {
+    "title": "Kailangan mo ba ng Tulong sa Iyong Aplikasyon?",
+    "subtitle": "Nandito ang aming HR team para tumulong sa iyo",
+    "live_chat": {
+      "title": "Suporta sa Live Chat",
+      "subtitle": "Karaniwang oras ng pagtugon: 5 minuto"
+    },
+    "email": {
+      "title": "I-email ang HR Team",
+      "subtitle": "info@jobsadmire.com"
+    }
+  },
+  "fallback": {
+    "title_not_available": "Walang Magagamit na Titulo ng Trabaho",
+    "location_not_available": "Hindi Magagamit ang Lokasyon",
+    "description_not_available": "<p>Hindi magagamit ang deskripsyon ng trabaho.</p>",
+    "requirement_not_available": "<p>Hindi magagamit ang mga kinakailangan.</p>",
+    "date_not_available": "Hindi available ang petsa",
+    "error_loading": "Error sa Paglo-load ng Trabaho",
+    "unable_to_load_desc": "<p>Hindi ma-load ang deskripsyon ng trabaho. Pakisubukang muli mamaya.</p>",
+    "unable_to_load_req": "<p>Hindi ma-load ang mga kinakailangan. Pakisubukang muli mamaya.</p>"
+  }
+}

@@ -1,0 +1,196 @@
+{
+  "visarelocation": {
+    "hero": {
+      "badge": "Profesyonel vize ve taşınma hizmetleri",
+      "headline": {
+        "prefix": "Senin",
+        "suffix": "Güvenle"
+      },
+      "animatedWords": [
+        "Ülke",
+        "Gelecek",
+        "Yolculuk",
+        "Macera",
+        "Rüya",
+        "Hedef"
+      ],
+      "description": "Vize başvurularından yeni evinize yerleşmeye kadar, uluslararası iş arayanlara yönelik kapsamlı vize hizmetlerimiz yeni bir ülkeye güvenle geçiş yapmanıza yardımcı olur.",
+      "cta": {
+        "text": "Taşınma İşleminizi Başlatın"
+      }
+    },
+    "showcase": {
+      "title": "Vize ve Yer Değiştirme",
+      "subtitle": "Uluslararası taşınmanız için eksiksiz destek",
+      "journey": {
+        "title": "Eksiksiz Yolculuk Desteği",
+        "subtitle": "Vizeden yeni ev kurulumuna"
+      },
+      "services": [
+        {
+          "icon": "DosyaMetin",
+          "title": "Vize İşlemleri",
+          "description": "Belge desteği",
+          "gradient": "bg-gradient-to-r from-sky-500 to-blue-600"
+        },
+        {
+          "icon": "Evrak Çantası",
+          "title": "Çalışma İzinleri",
+          "description": "Hukuki yardım",
+          "gradient": "bg-gradient-to-r from-purple-500 to-indigo-600"
+        },
+        {
+          "icon": "Ev",
+          "title": "Konut",
+          "description": "Ev bulma",
+          "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+        },
+        {
+          "icon": "MapPin",
+          "title": "Yerleşim",
+          "description": "Yerel entegrasyon",
+          "gradient": "bg-gradient-to-r from-orange-500 to-red-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "96%",
+          "label": "Vize Başarı Oranı",
+          "color": "text-sky-600"
+        },
+        {
+          "value": "1200+",
+          "label": "Taşınma İşlemleri Tamamlandı",
+          "color": "text-blue-600"
+        },
+        {
+          "value": "4.9★",
+          "label": "Müşteri Değerlendirmesi",
+          "color": "text-indigo-600"
+        }
+      ]
+    }
+  },
+  "advantages": {
+    "title": "Hizmetimizin Avantajları",
+    "items": [
+      {
+        "icon": "DosyaMetin",
+        "text": "Tüm belgelerinizi vize başvurusunda bulunacağınız büyükelçiliğin gerekliliklerine uygun olarak hazırlayacak ve kontrol edeceğiz"
+      },
+      {
+        "icon": "DosyaMetin",
+        "text": "Belgeleri sizin için yazıyor ve tercüme ediyoruz, sizi kendi başınıza yapma zahmetinden kurtarıyoruz"
+      },
+      {
+        "icon": "Kalkan",
+        "text": "Size en başından itibaren Alman sağlık sigortası sağlayacağız"
+      },
+      {
+        "icon": "Euro",
+        "text": "Süreç sırasında ortaya çıkabilecek gereksiz masraflardan sizi kurtarabiliriz"
+      },
+      {
+        "icon": "Ev",
+        "text": "Size, belgelerin konsolosluğa sunulması aşamasında bir daire kiralama ihtiyacını ortadan kaldırabilecek bir konaklama bulma yardım belgesi sağlayabiliriz"
+      },
+      {
+        "icon": "Dolarİşareti",
+        "text": "Almanya'daki vergilerden düşülebilen ve kısmen geri ödenebilen bir Alman faturası düzenleyeceğiz. Cari yıldaki vergi beyannamenizi doldurduktan sonra değerinin %42'sine kadarını geri alabilirsiniz"
+      }
+    ],
+    "cta": {
+      "text": "Bize ulaşın"
+    },
+    "image": {
+      "alt": "Belgeler ve danışmanlık ile profesyonel çalışma alanı",
+      "src": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2084&q=80"
+    }
+  },
+  "visainfo": {
+    "visaTypes": {
+      "title": "Size yardımcı olduğumuz vize türleri",
+      "items": [
+        {
+          "title": "Mavi Kart",
+          "icon": "Ödül"
+        },
+        {
+          "title": "Yüksek vasıflı işçi için çalışma vizesi",
+          "icon": "Evrak Çantası"
+        },
+        {
+          "title": "BT uzmanları için iş deneyimi vizesi",
+          "icon": "Küre"
+        },
+        {
+          "title": "Fırsat Kartı (Chancenkarte)",
+          "icon": "Yıldız"
+        },
+        {
+          "title": "Öğrenci vizeleri",
+          "icon": "Evrak Çantası"
+        },
+        {
+          "title": "Aile birleşimi vizesi",
+          "icon": "Kullanıcılar"
+        }
+      ]
+    },
+    "whyRelocation": {
+      "title": {
+        "prefix": "Neden taşınma ile",
+        "highlight": "Şeffaf",
+        "suffix": "İşe mi?"
+      },
+      "description": "İnsanlar bizi, vize alma ve Almanya'ya taşınma sorunlarını sorumlu bir şekilde ve kararlaştırılan zaman dilimi içinde çözmeye yardımcı olduğumuz ve profesyoneller için gerekli tüm göçmenlik hizmetlerini tek bir kaynaktan sağladığımız için tavsiye ediyor.",
+      "features": [
+        {
+          "icon": "Ödül",
+          "title": "Profesyonellik",
+          "description": "Almanya'da 15 yıldır yaşıyoruz ve tüm tuzakların farkındayız ve taahhütlerimizi her zaman yerine getirerek katı bir etik kuralını uyguluyoruz."
+        },
+        {
+          "icon": "Saat",
+          "title": "Yılların deneyimi",
+          "description": "Taşımacılar olarak çok sayıda BT ve dijital uzmanının Münih, Berlin, Stuttgart, Düsseldorf ve diğer Alman şehirlerine taşınmasına yardımcı olduk - vize belgeleri yardımından yeni bir şehre taşınma ve uyum sağlamaya kadar."
+        },
+        {
+          "icon": "Ev",
+          "title": "\"Anahtar Teslim\" Taşınma",
+          "description": "Tüm aşamalarda yardımcı oluyoruz: belgelerin toplanması, çalışma vizesine nasıl başvurulacağı, varıştan sonra taşınma ve entegrasyon, kısa ve uzun vadeli daire arama. Her zaman iletişim halindeyiz ve sorularınızı derhal yanıtlamaya hazırız."
+        },
+        {
+          "icon": "Kullanıcılar",
+          "title": "Bireysel yaklaşım",
+          "description": "Durumunuza bağlı olarak mümkün olduğunca hızlı ve sorunsuz bir şekilde taşınmanıza yardımcı oluyoruz. Kişiselleştirilmiş yaklaşımımız, gerektiğinde öğrenci vizesi danışmanlığı ile hızlı ve sorunsuz bir taşınma süreci sağlar."
+        }
+      ]
+    },
+    "relocationPackage": {
+      "title": "Bir taşınma paketi uygun olduğunda",
+      "scenarios": [
+        {
+          "icon": "Bina",
+          "title": "Bir Alman şirketinden teklif aldınız",
+          "description": "Elinde bir teklif olan ancak şirketin kendisi yurtdışı istihdam için vize rehberliği sağlamayanlar."
+        },
+        {
+          "icon": "Kullanıcılar",
+          "title": "Ailenizle birlikte taşınıyorsunuz",
+          "description": "Almanya'ya çift ve/veya çocuklu olarak taşınanlar."
+        },
+        {
+          "icon": "CheckCircle",
+          "title": "Karmaşık bir davanız var",
+          "description": "Pakistan'da yurt dışında çalışmak için vize hizmetlerinin sınırlı olduğu bir ülkede ikamet edenler ve acilen taşınması gerekenler."
+        },
+        {
+          "icon": "Arama",
+          "title": "İş aramak için bir Chancenkarte almak istiyorsunuz",
+          "description": "Almanya'ya teklif almadan gelmek ve kendi alanlarında iş bulmak isteyenler."
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "controls": {
+    "previous": "Nakaraang sertipiko",
+    "next": "Susunod na sertipiko",
+    "play": "I-play ang awtomatikong pag-play",
+    "pause": "I-pause ang autoplay",
+    "goToSlide": "Pumunta sa slide"
+  },
+  "events": {
+    "event1": {
+      "title": "UniAdmire Student Fair",
+      "location": "Karachi, Pakistan",
+      "date": "Marso 15-17, 2025",
+      "description": "Pagkonekta sa mga estudyanteng Pakistani sa mga internasyonal na unibersidad at mga oportunidad sa scholarship",
+      "images": {
+        "image1": {
+          "alt": "Mga kinatawan ng unibersidad na nakikipag-usap sa mga estudyante",
+          "caption": "Nakikipagpulong ang mga kinatawan ng mga internasyonal na unibersidad sa mga lokal na estudyante"
+        },
+        "image2": {
+          "alt": "Mga booth ng impormasyon sa perya",
+          "caption": "Mga mag-aaral na nagsasaliksik ng mga oportunidad sa edukasyon sa mga information booth"
+        },
+        "image3": {
+          "alt": "Seremonya ng paggawad ng parangal",
+          "caption": "Seremonya ng pagkilala para sa mga kalahok na institusyon"
+        },
+        "image4": {
+          "alt": "Talakayan sa panel",
+          "caption": "Panel ng eksperto na tumatalakay sa mga internasyonal na uso sa edukasyon"
+        },
+        "image5": {
+          "alt": "Sesyon ng pagpapayo sa estudyante",
+          "caption": "One-on-one counseling kasama ang mga opisyal ng admisyon sa unibersidad"
+        }
+      }
+    },
+    "event2": {
+      "title": "Perya ng Edukasyon sa Ivory Coast",
+      "location": "Abidjan, Baybaying Garing",
+      "date": "Enero 20-22, 2025",
+      "description": "Pag-uugnay ng mga estudyante sa Kanlurang Aprika sa mga internasyonal na unibersidad",
+      "images": {
+        "image1": {
+          "alt": "Pasukan sa perya ng edukasyon",
+          "caption": "Pangunahing pasukan ng Ivory Coast Education Fair"
+        },
+        "image2": {
+          "alt": "Mga estudyante sa mga information booth",
+          "caption": "Mga lokal na estudyante na nagsasaliksik ng mga oportunidad sa edukasyon sa ibang bansa"
+        },
+        "image3": {
+          "alt": "Talakayan sa panel",
+          "caption": "Mga eksperto sa edukasyon na tinatalakay ang mga programa ng scholarship"
+        }
+      }
+    }
+  },
+  "background": {
+    "watermark": "CERTIFICATIONS"
+  }
+}

@@ -1,0 +1,312 @@
+{
+    "talentacquisition": {
+      "hero": {
+        "badge": "Strategic talent acquisition services",
+        "headline": {
+          "prefix": "Find The",
+          "suffix": "For Your Organization"
+        },
+        "animatedWords": [
+          "Top Talent",
+          "Best Team",
+          "Right People", 
+          "Perfect Fit",
+          "Star Players",
+          "Dream Team"
+        ],
+        "description": "Streamline recruitment to secure the best talent for your organization. End-to-end recruitment and talent sourcing solutions tailored to meet your company's unique needs.",
+        "cta": {
+          "text": "Start Talent Acquisition"
+        }
+      },
+      "showcase": {
+        "title": "Talent Acquisition",
+        "subtitle": "Strategic recruitment for your success",
+        "talentPool": {
+          "title": "Talent Pool Access",
+          "subtitle": "Connect with qualified candidates"
+        },
+        "services": [
+          {
+            "icon": "Search",
+            "title": "Sourcing",
+            "description": "Candidate discovery",
+            "gradient": "bg-gradient-to-r from-sky-500 to-blue-600"
+          },
+          {
+            "icon": "Target",
+            "title": "Screening",
+            "description": "Quality assessment",
+            "gradient": "bg-gradient-to-r from-purple-500 to-indigo-600"
+          },
+          {
+            "icon": "UserCheck",
+            "title": "Matching",
+            "description": "Perfect fit finding",
+            "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+          },
+          {
+            "icon": "Award",
+            "title": "Onboarding",
+            "description": "Smooth integration",
+            "gradient": "bg-gradient-to-r from-orange-500 to-red-600"
+          }
+        ],
+        "stats": [
+          {
+            "value": "300+",
+            "label": "Companies Served",
+            "color": "text-sky-600"
+          },
+          {
+            "value": "85%",
+            "label": "Success Rate",
+            "color": "text-blue-600"
+          },
+          {
+            "value": "30",
+            "label": "Days Avg Hire",
+            "color": "text-indigo-600"
+          }
+        ]
+      }
+    },
+
+    
+        "talentacquisitionsection1": {
+          "process": {
+            "title": {
+              "prefix": "Our Comprehensive",
+              "highlight": "Talent Acquisition Process"
+            },
+            "description": "We follow a systematic, transparent process to deliver exceptional hiring results",
+            "steps": [
+              {
+                "id": 1,
+                "icon": "Target",
+                "title": "Workforce Planning & Job Analysis",
+                "description": "We collaborate closely with your HR team and management to understand your workforce needs, company culture, and job requirements.",
+                "color": "bg-[#38B6FF]",
+                "textColor": "text-[#38B6FF]",
+                "bgLight": "bg-[#38B6FF]/10"
+              },
+              {
+                "id": 2,
+                "icon": "Network",
+                "title": "Sourcing & Outreach",
+                "description": "Leveraging our vast network, job portals, social media, and innovative sourcing techniques, we attract a diverse pool of qualified candidates.",
+                "color": "bg-[#38B6FF]",
+                "textColor": "text-blue-500",
+                "bgLight": "bg-blue-500/10"
+              },
+              {
+                "id": 3,
+                "icon": "Filter",
+                "title": "Screening & Assessment",
+                "description": "We conduct thorough screening through resumes, interviews, skill assessments, and behavioral evaluations to shortlist the best fit.",
+                "color": "bg-[#38B6FF]",
+                "textColor": "text-[#38B6FF]",
+                "bgLight": "bg-[#38B6FF]/10"
+              },
+              {
+                "id": 4,
+                "icon": "Calendar",
+                "title": "Interview Coordination",
+                "description": "Managing the scheduling and communication between candidates and your hiring managers to ensure a smooth interview experience.",
+                "color": "bg-[#38B6FF]",
+                "textColor": "text-blue-600",
+                "bgLight": "bg-blue-600/10"
+              },
+              {
+                "id": 5,
+                "icon": "UserCheck",
+                "title": "Selection & Offer Management",
+                "description": "Assisting in decision-making and extending competitive job offers that align with market standards and candidate expectations.",
+                "color": "bg-[#38B6FF]",
+                "textColor": "text-[#38B6FF]",
+                "bgLight": "bg-[#38B6FF]/10"
+              },
+              {
+                "id": 6,
+                "icon": "UserPlus",
+                "title": "Onboarding Support",
+                "description": "Facilitating the onboarding process to help new hires integrate seamlessly into your organization through our HR recruitment and onboarding assistance.",
+                "color": "bg-[#38B6FF]",
+                "textColor": "text-blue-500",
+                "bgLight": "bg-blue-500/10"
+              }
+            ]
+          },
+          "flow": {
+            "title": "Streamlined Process Flow",
+            "description": "From planning to onboarding - we've got you covered",
+            "stepLabel": "Step"
+          },
+          "cta": "Start Your Talent Acquisition Journey"
+        },
+
+
+        
+            "talentacquisitionsection2": {
+              "whyPartner": {
+                "badge": "PARTNERSHIP ADVANTAGES",
+                "title": {
+                  "prefix": "Why Partner with",
+                  "highlight": "JobsAdmire",
+                  "suffix": "for Talent Acquisition?"
+                },
+                "reasons": [
+                  {
+                    "icon": "Award",
+                    "title": "Expertise Across Industries",
+                    "description": "Our recruiters specialize in various sectors, ensuring industry-specific knowledge and candidate quality.",
+                    "color": "bg-[#38B6FF]",
+                    "textColor": "text-[#38B6FF]",
+                    "bgLight": "bg-[#38B6FF]/10"
+                  },
+                  {
+                    "icon": "Database",
+                    "title": "Access to Top Talent",
+                    "description": "We maintain an extensive database and talent pool to quickly match candidates with your requirements.",
+                    "color": "bg-blue-500",
+                    "textColor": "text-[#38B6FF]",
+                    "bgLight": "bg-[#38B6FF]/10"
+                  },
+                  {
+                    "icon": "Settings",
+                    "title": "Customized Solutions",
+                    "description": "Flexible hiring solutions for companies designed around your business size, culture, and hiring goals.",
+                    "color": "bg-[#38B6FF]",
+                    "textColor": "text-[#38B6FF]",
+                    "bgLight": "bg-[#38B6FF]/10"
+                  },
+                  {
+                    "icon": "Zap",
+                    "title": "Technology-Driven Approach",
+                    "description": "Utilizing advanced Applicant Tracking Systems (ATS) and data analytics for efficient hiring.",
+                    "color": "bg-blue-600",
+                    "textColor": "text-[#38B6FF]",
+                    "bgLight": "bg-[#38B6FF]/10"
+                  },
+                  {
+                    "icon": "Users",
+                    "title": "Focus on Diversity & Inclusion",
+                    "description": "We help you build diverse teams that drive innovation and success.",
+                    "color": "bg-[#38B6FF]",
+                    "textColor": "text-[#38B6FF]",
+                    "bgLight": "bg-[#38B6FF]/10"
+                  },
+                  {
+                    "icon": "Shield",
+                    "title": "Quality Guarantee",
+                    "description": "We provide replacement guarantees and ongoing support to ensure successful long-term placements.",
+                    "color": "bg-blue-700",
+                    "textColor": "text-[#38B6FF]",
+                    "bgLight": "bg-[#38B6FF]/10"
+                  }
+                ]
+              },
+              "benefits": {
+                "title": "Benefits of Our Talent Acquisition Service",
+                "subtitle": "Measurable results that drive your business forward",
+                "items": [
+                  {
+                    "icon": "Clock",
+                    "title": "Reduced time-to-hire and cost-per-hire",
+                    "color": "text-[#38B6FF]"
+                  },
+                  {
+                    "icon": "TrendingUp",
+                    "title": "Improved quality of hires and retention rates",
+                    "color": "text-[#38B6FF]"
+                  },
+                  {
+                    "icon": "Star",
+                    "title": "Enhanced employer branding and candidate experience",
+                    "color": "text-[#38B6FF]"
+                  },
+                  {
+                    "icon": "BarChart3",
+                    "title": "Scalable recruitment solutions for growing businesses",
+                    "color": "text-[#38B6FF]"
+                  },
+                  {
+                    "icon": "Target",
+                    "title": "Strategic workforce planning aligned with your business objectives",
+                    "color": "text-[#38B6FF]"
+                  }
+                ],
+                "stats": [
+                  {
+                    "value": "50%",
+                    "label": "Faster Hiring Process",
+                    "color": "text-[#38B6FF]"
+                  },
+                  {
+                    "value": "30%",
+                    "label": "Cost Reduction",
+                    "color": "text-blue-500"
+                  },
+                  {
+                    "value": "95%",
+                    "label": "Client Satisfaction",
+                    "color": "text-[#38B6FF]"
+                  }
+                ]
+              },
+              "whoBenefits": {
+                "title": {
+                  "prefix": "Who Can",
+                  "highlight": "Benefit?"
+                },
+                "description": "Our talent acquisition services are designed for organizations of all sizes and industries",
+                "audience": [
+                  {
+                    "icon": "Rocket",
+                    "title": "Startups",
+                    "description": "Looking to build their initial teams",
+                    "color": "bg-[#38B6FF]",
+                    "textColor": "text-[#38B6FF]"
+                  },
+                  {
+                    "icon": "TrendingUp",
+                    "title": "Growing Businesses",
+                    "description": "Needing scalable hiring solutions",
+                    "color": "bg-[#38B6FF]",
+                    "textColor": "text-[#38B6FF]"
+                  },
+                  {
+                    "icon": "Building",
+                    "title": "Enterprises",
+                    "description": "Seeking specialized or executive talent",
+                    "color": "bg-[#38B6FF]",
+                    "textColor": "text-[#38B6FF]"
+                  },
+                  {
+                    "icon": "Settings",
+                    "title": "HR Departments",
+                    "description": "Aiming to optimize recruitment workflows",
+                    "color": "bg-[#38B6FF]",
+                    "textColor": "text-[#38B6FF]"
+                  },
+                  {
+                    "icon": "Users",
+                    "title": "Diverse Organizations",
+                    "description": "Committed to diversity and inclusion initiatives",
+                    "color": "bg-[#38B6FF]",
+                    "textColor": "text-[#38B6FF]"
+                  },
+                  {
+                    "icon": "Target",
+                    "title": "Recruitment Agencies",
+                    "description": "Expanding their talent sourcing capabilities",
+                    "color": "bg-[#38B6FF]",
+                    "textColor": "text-[#38B6FF]"
+                  }
+                ]
+              }
+            }
+          
+
+      
+  }

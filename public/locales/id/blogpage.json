@@ -1,0 +1,83 @@
+{
+  "categories": {
+    "all": "Semua",
+    "careerTips": "Tips Karier",
+    "immigrationGuide": "Panduan Imigrasi",
+    "jobSearch": "Pencarian Pekerjaan",
+    "workVisa": "Visa Kerja",
+    "successStories": "Kisah Sukses"
+  },
+  "trendingTags": {
+    "remoteJobs": "Pekerjaan Jarak Jauh",
+    "workVisa": "Visa Kerja",
+    "immigration": "Imigrasi",
+    "careerGrowth": "Pertumbuhan Karier",
+    "jobInterview": "Wawancara Kerja",
+    "resumeTips": "Tips Membuat Resume"
+  },
+  "loading": {
+    "title": "Memuat Wawasan Karier",
+    "description": "Menyusun panduan terkini tentang tren pasar kerja dan imigrasi..."
+  },
+  "error": {
+    "title": "Tidak dapat memuat konten.",
+    "description": "Kami mengalami masalah saat memuat informasi karier terbaru. Silakan coba lagi.",
+    "retryButton": "Coba lagi memuat"
+  },
+  "header": {
+    "badge": "Gerbang Anda Menuju Peluang Karier Global",
+    "title": {
+      "part1": "Navigasi Anda",
+      "part2": "Perjalanan Karier"
+    },
+    "subtitle": "Temukan wawasan ahli tentang pencarian kerja, visa kerja, proses imigrasi, dan strategi pengembangan karier dari para profesional di industri ini.",
+    "searchPlaceholder": "Cari tips kerja, panduan visa, saran karier...",
+    "searchButton": "Mencari",
+    "popularTopics": "Topik Populer:"
+  },
+  "featuredArticle": {
+    "title": {
+      "part1": "Unggulan",
+      "part2": "Artikel"
+    },
+    "defaultTag": "Unggulan",
+    "minRead": "bacaan singkat",
+    "anonymous": "Anonim",
+    "careerExpert": "Pakar Karier",
+    "readFullArticle": "Baca Artikel Selengkapnya"
+  },
+  "latestInsights": {
+    "title": {
+      "part1": "Terbaru",
+      "part2": "Wawasan"
+    },
+    "defaultTag": "Artikel",
+    "min": "menit",
+    "anonymous": "Anonim",
+    "readMore": "Baca selengkapnya"
+  },
+  "emptyState": {
+    "title": "Tidak ada artikel yang ditemukan.",
+    "description": "Kami tidak menemukan artikel yang cocok dengan \"{searchTerm}\". Coba cari dengan kata kunci lain atau jelajahi kategori kami.",
+    "clearSearch": "Hapus Pencarian"
+  },
+  "loadMore": {
+    "button": "Muat Lebih Banyak Artikel"
+  },
+  "newsletter": {
+    "title": "Tetap Unggul dalam Karier Anda",
+    "description": "Dapatkan informasi mingguan tentang peluang kerja, pembaruan visa, dan strategi pengembangan karier.",
+    "emailLabel": "Alamat Email",
+    "emailPlaceholder": "Masukkan alamat email Anda",
+    "subscribeButton": "Berlangganan Sekarang",
+    "privacyNote": "Privasi Anda terlindungi. Anda dapat berhenti berlangganan kapan saja.",
+    "features": {
+      "careerTips": "Tips Karier Mingguan",
+      "visaUpdates": "Pembaruan Visa",
+      "jobAlerts": "Pemberitahuan Lowongan Kerja"
+    }
+  },
+  "alerts": {
+    "subscriptionSuccess": "Terima kasih telah berlangganan!"
+  }
+}

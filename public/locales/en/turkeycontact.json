@@ -1,0 +1,44 @@
+{
+  "header": {
+    "title": "Our Contacts",
+    "description": "Connect with our global offices for personalized assistance with your Turkish residence permit application"
+  },
+  "generalInquiries": {
+    "title": "General Inquiries",
+    "subtitle": "Get in touch with us",
+    "email": "info@uniadmire.com"
+  },
+  "locations": {
+    "turkey": {
+      "country": "Turkey",
+      "city": "Antalya",
+      "address": "Tahılpazarı, Adnan Menderes Blv. Erkal Apt A Blok No: 7 İç Kapı No: 6, 07040 Muratpaşa/Antalya",
+      "phone": "+90 242 123 4567",
+      "email": "antalya@uniadmire.com",
+      "hours": "Mon-Fri: 9:00-18:00"
+    },
+    "pakistan": {
+      "country": "Pakistan",
+      "city": "Karachi",
+      "address": "Office # 1207, Kashif Center, Near Hotel Mehran, Main Shahrah e Faisal",
+      "phone": "+92 21 3456 7890",
+      "email": "karachi@uniadmire.com",
+      "hours": "Mon-Fri: 9:00-17:00"
+    },
+    "azerbaijan": {
+      "country": "Azerbaijan",
+      "city": "Baku",
+      "address": "Nizami küçəsi 203, AF business house 7-ci mərtəbə",
+      "phone": "+994 12 345 6789",
+      "email": "baku@uniadmire.com",
+      "hours": "Mon-Fri: 9:00-18:00"
+    }
+  },
+  "map": {
+    "title": "Find Us on Map",
+    "emailLabel": "Email"
+  },
+  "cta": {
+    "scheduleConsultation": "Schedule a Consultation"
+  }
+}

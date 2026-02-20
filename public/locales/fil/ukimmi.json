@@ -1,0 +1,3108 @@
+{
+  "herosection": {
+    "badge": "Mga Eksklusibong Paglalakbay",
+    "title": "Tuklasin ang Iyong Susunod na Pakikipagsapalaran",
+    "description": "Damhin ang mga nakamamanghang destinasyon at lumikha ng mga di-malilimutang alaala gamit ang aming mga premium na travel package na iniayon sa iyong mga pangarap.",
+    "currentlyViewing": {
+      "label": "Kasalukuyang Pinapanood"
+    },
+    "buttons": {
+      "primary": "Mag-explore Ngayon",
+      "secondary": "Tingnan ang Lahat ng Destinasyon"
+    },
+    "destinationCounter": "Destinasyon {{kasalukuyang}}/{{total}}",
+    "controls": {
+      "selectDestination": "Piliin ang {{destination}}"
+    },
+    "destinations": [
+      {
+        "img": "/mga imahe/ihul.png",
+        "name": "London",
+        "alt": "Magandang tanawin ng cityscape ng London na may mga iconic na landmark",
+        "country": "UK"
+      },
+      {
+        "img": "/mga imahe/ihum.png",
+        "name": "Manchester",
+        "alt": "Sentro ng lungsod ng Manchester na may modernong arkitektura at mga makasaysayang gusali",
+        "country": "UK"
+      },
+      {
+        "img": "/mga imahe/ihub.png",
+        "name": "Birmingham",
+        "alt": "Masiglang downtown area at mga distrito ng kultura ng Birmingham",
+        "country": "UK"
+      },
+      {
+        "img": "/mga imahe/ihue.png",
+        "name": "Edinburgh",
+        "alt": "Makasaysayang kastilyo at lumang bayan ng medyebal na Edinburgh",
+        "country": "UK"
+      },
+      {
+        "img": "/mga imahe/ihuli.png",
+        "name": "Liverpool",
+        "alt": "Ang sikat na pamana sa dalampasigan at karagatan ng Liverpool",
+        "country": "UK"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "aboutsection": {
+    "badge": "Tungkol sa Amin",
+    "title": "Ang Iyong Pinagkakatiwalaang Kasosyo sa Paglalakbay",
+    "description": "Taglay ang mahigit 15 taong karanasan sa industriya ng paglalakbay, dalubhasa kami sa paglikha ng mga pambihirang paglalakbay na higit pa sa inaasahan.",
+    "features": [
+      {
+        "title": "Patnubay ng Eksperto",
+        "description": "Ang aming mga bihasang travel consultant ay nagbibigay ng mga personalized na rekomendasyon."
+      },
+      {
+        "title": "Pinakamagandang Presyo",
+        "description": "Ginagarantiya namin ang mga kompetitibong presyo nang walang mga nakatagong bayarin."
+      },
+      {
+        "title": "Suporta 24/7",
+        "description": "Suporta sa customer na bukas 24/7 para sa kapanatagan ng loob."
+      }
+    ],
+    "stats": {
+      "experience": {
+        "label": "Mga Taon ng Karanasan",
+        "number": "15+"
+      },
+      "customers": {
+        "number": "50K+",
+        "label": "Masayang mga Kustomer"
+      },
+      "destinations": {
+        "label": "Mga Destinasyon",
+        "number": "200+"
+      },
+      "awards": {
+        "label": "Mga Parangal na Napanalunan",
+        "number": "25+"
+      }
+    }
+  },
+  "servicessection": {
+    "badge": "Ang Aming Mga Serbisyo",
+    "title": "Kumpletong Solusyon sa Paglalakbay",
+    "description": "Mula sa pagpaplano hanggang sa pagpapatupad, kami ang bahala sa bawat aspeto ng iyong paglalakbay.",
+    "services": [
+      {
+        "icon": "eroplano",
+        "title": "Pag-book ng Flight",
+        "description": "Pinakamagandang alok sa mga domestic at international flights."
+      },
+      {
+        "icon": "hotel",
+        "title": "Mga Reserbasyon sa Hotel",
+        "description": "Marangyang akomodasyon sa walang kapantay na presyo."
+      },
+      {
+        "icon": "kotse",
+        "title": "Mga Paupahang Kotse",
+        "description": "Maaasahang transportasyon para sa iyong kaginhawahan."
+      },
+      {
+        "icon": "gabay",
+        "title": "Mga Gabay sa Paglilibot",
+        "description": "Mga propesyonal na gabay para sa mga nakaka-engganyong karanasan."
+      },
+      {
+        "icon": "seguro",
+        "title": "Seguro sa Paglalakbay",
+        "description": "Komprehensibong saklaw para sa paglalakbay na walang pag-aalala."
+      },
+      {
+        "icon": "bisa",
+        "title": "Tulong sa Visa",
+        "description": "Kumpletong suporta sa pagproseso ng visa."
+      }
+    ]
+  },
+  "packagessection": {
+    "badge": "Mga Pakete sa Paglalakbay",
+    "title": "Mga Piniling Karanasan sa Paglalakbay",
+    "description": "Tuklasin ang aming mga piling pakete na idinisenyo para sa mga di-malilimutang alaala.",
+    "filters": {
+      "all": "Lahat ng Pakete",
+      "adventure": "Pakikipagsapalaran",
+      "luxury": "Luho",
+      "cultural": "Kultural",
+      "romantic": "Romantiko"
+    },
+    "packages": [
+      {
+        "title": "Manlalakbay sa London",
+        "category": "kultural",
+        "duration": "5 Araw",
+        "price": "£1,299",
+        "originalPrice": "£1,599",
+        "image": "/mga imahe/london-package.jpg",
+        "highlights": {
+          "0": "Big Ben",
+          "1": "London Eye",
+          "2": "Palasyo ng Buckingham",
+          "3": "Tulay ng Tore"
+        },
+        "description": "Galugarin ang makasaysayang alindog at modernong sigla ng London.",
+        "id": 1,
+        "rating": 4.8,
+        "reviews": 324
+      },
+      {
+        "title": "Kabundukan ng Scotland",
+        "category": "pakikipagsapalaran",
+        "duration": "7 Araw",
+        "price": "£1,899",
+        "originalPrice": "£2,299",
+        "image": "/mga imahe/skotland-package.jpg",
+        "highlights": {
+          "0": "Kastilyo ng Edinburgh",
+          "1": "Loch Ness",
+          "2": "Isla ng Skye",
+          "3": "Mga Paglilibot sa Whisky"
+        },
+        "description": "Pakikipagsapalaran sa mga nakamamanghang tanawin ng Scotland.",
+        "id": 2,
+        "rating": 4.9,
+        "reviews": 156
+      }
+    ]
+  },
+  "testimonialssection": {
+    "badge": "Mga Testimonial",
+    "title": "Ang Sinasabi ng Aming mga Manlalakbay",
+    "description": "Basahin ang mga tunay na review mula sa aming mga nasiyahang customer.",
+    "testimonials": [
+      {
+        "name": "Sarah Johnson",
+        "location": "New York, Estados Unidos",
+        "comment": "Talagang kamangha-manghang karanasan! Perpektong pinlano ang bawat detalye.",
+        "avatar": "/mga imahe/avatar1.jpg",
+        "trip": "Pakete ng London Explorer",
+        "id": 1,
+        "rating": 5
+      },
+      {
+        "name": "Michael Chen",
+        "location": "Toronto, Canada",
+        "comment": "Ang biyahe sa Scottish Highlands ay lumampas sa lahat ng aming inaasahan. Lubos na inirerekomenda!",
+        "avatar": "/mga imahe/avatar2.jpg",
+        "trip": "Pakete ng Scottish Highlands",
+        "id": 2,
+        "rating": 5
+      }
+    ]
+  },
+  "contactsection": {
+    "badge": "Makipag-ugnayan",
+    "title": "Planuhin ang Iyong Susunod na Pakikipagsapalaran",
+    "description": "Handa ka na bang mag-explore? Makipag-ugnayan sa aming mga eksperto sa paglalakbay ngayon.",
+    "form": {
+      "name": {
+        "label": "Buong Pangalan",
+        "placeholder": "Ilagay ang iyong buong pangalan"
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Ilagay ang iyong email"
+      },
+      "phone": {
+        "label": "Numero ng Telepono",
+        "placeholder": "Ilagay ang iyong numero ng telepono"
+      },
+      "destination": {
+        "label": "Ginustong Destinasyon",
+        "placeholder": "Saan mo gustong pumunta?"
+      },
+      "message": {
+        "label": "Mensahe",
+        "placeholder": "Ikwento mo sa amin ang mga plano mo sa paglalakbay..."
+      },
+      "submit": "Magpadala ng Mensahe"
+    },
+    "contactInfo": {
+      "address": {
+        "title": "Bisitahin Kami",
+        "details": "123 Travel Street, London, UK SW1A 1AA"
+      },
+      "phone": {
+        "title": "Tawagan Kami",
+        "details": "+44 20 7946 0958"
+      },
+      "email": {
+        "title": "Mag-email sa Amin",
+        "details": "info@travelco.com"
+      },
+      "hours": {
+        "title": "Mga Oras ng Opisina",
+        "details": "Lunes - Biyernes: 9:00 AM - 6:00 PM"
+      }
+    }
+  },
+  "tableOfContents": {
+    "title": "Talaan ng mga Nilalaman",
+    "subtitle": "Mag-navigate sa mga seksyon",
+    "currentlyReading": "Kasalukuyang nagbabasa",
+    "sectionsCount": "{{count}} na mga seksyon na maaaring tuklasin",
+    "quickNavigation": "Mabilis na Nabigasyon",
+    "scrollText": "Mag-scroll sa mga seksyong {{count}}",
+    "sections": [
+      {
+        "title": "Mga Kawili-wiling Katotohanan Tungkol sa United Kingdom",
+        "id": 1
+      },
+      {
+        "title": "Mga Opsyon sa Visa at Paninirahan para sa Paglipat sa UK",
+        "id": 2
+      },
+      {
+        "title": "Mga Kinakailangan para sa Paglipat sa UK",
+        "id": 3
+      },
+      {
+        "title": "Nagtatrabaho sa United Kingdom",
+        "id": 4
+      },
+      {
+        "title": "Paglipat patungong UK mula sa US",
+        "id": 5
+      },
+      {
+        "title": "Paglipat patungong UK mula sa Turkey",
+        "id": 6
+      },
+      {
+        "title": "Magkano ang magagastos sa paglipat sa UK?",
+        "id": 7
+      },
+      {
+        "title": "Paglipat kasama ang mga alagang hayop patungong UK",
+        "id": 8
+      }
+    ]
+  },
+  "facts": {
+    "title": "Mga Kawili-wiling Katotohanan Tungkol sa United Kingdom",
+    "subtitle": "Tuklasin kung bakit ang UK ay isang natatanging destinasyon",
+    "factsList": [
+      {
+        "title": "Mayaman na Kasaysayan",
+        "description": "Mahigit 1000 taon ng dokumentadong kasaysayan na may hindi mabilang na makasaysayang palatandaan."
+      },
+      {
+        "title": "Pagkakaiba-iba ng Kultura",
+        "description": "Tahanan ng mga tao mula sa mahigit 200 iba't ibang nasyonalidad."
+      },
+      {
+        "title": "Kapangyarihang Pang-ekonomiya",
+        "description": "Isa sa pinakamalaking ekonomiya at sentrong pinansyal sa mundo."
+      },
+      {
+        "title": "Kahusayan sa Edukasyon",
+        "description": "Tahanan ng mga kilalang unibersidad sa mundo tulad ng Oxford at Cambridge."
+      }
+    ]
+  },
+  "visa": {
+    "title": "Mga Opsyon sa Visa at Paninirahan para sa Paglipat sa UK",
+    "subtitle": "Piliin ang tamang paraan ng visa para sa iyong sitwasyon",
+    "visaTypes": [
+      {
+        "type": "Visa para sa Bihasang Manggagawa",
+        "description": "Para sa mga indibidwal na may alok na trabaho mula sa isang employer sa UK",
+        "requirements": {
+          "0": "Alok ng trabaho",
+          "1": "Kahusayan sa Ingles",
+          "2": "Hangganan ng suweldo"
+        },
+        "duration": "Hanggang 5 taon"
+      },
+      {
+        "type": "Visa ng Estudyante",
+        "description": "Para sa full-time na pag-aaral sa isang institusyong pang-edukasyon sa UK",
+        "requirements": {
+          "0": "Pagtanggap sa Unibersidad",
+          "1": "Patunay sa pananalapi",
+          "2": "Kahusayan sa Ingles"
+        },
+        "duration": "Tagal ng kurso + karagdagang oras"
+      },
+      {
+        "type": "Visa ng Pamilya",
+        "description": "Para sa pagsali sa mga miyembro ng pamilya na residente ng UK",
+        "requirements": {
+          "0": "Patunay ng relasyon sa pamilya",
+          "1": "Mga kinakailangan sa pananalapi",
+          "2": "Kahusayan sa Ingles"
+        },
+        "duration": "2.5 hanggang 5 taon"
+      }
+    ]
+  },
+  "requirements": {
+    "title": "Mga Kinakailangan para sa Paglipat sa UK",
+    "subtitle": "Mga mahahalagang dokumento at pamantayan na kailangan mong matugunan",
+    "generalRequirements": [
+      {
+        "category": "Dokumentasyon",
+        "items": {
+          "0": "Balidong pasaporte",
+          "1": "Aplikasyon ng Visa",
+          "2": "Datos na biometriko",
+          "3": "Mga Larawan"
+        }
+      },
+      {
+        "category": "Pananalapi",
+        "items": {
+          "0": "Mga pahayag ng bangko",
+          "1": "Patunay ng kita",
+          "2": "Mga dokumento ng pag-sponsor",
+          "3": "Mga talaan ng buwis"
+        }
+      },
+      {
+        "category": "Personal",
+        "items": {
+          "0": "Medikal na pagsusuri",
+          "1": "Pagsusuri sa background ng kriminal",
+          "2": "Pagsusulit sa kahusayan sa Ingles",
+          "3": "Mga sertipiko sa edukasyon"
+        }
+      }
+    ]
+  },
+  "job": {
+    "title": "Nagtatrabaho sa United Kingdom",
+    "subtitle": "Mga oportunidad sa trabaho at kultura ng trabaho sa UK",
+    "workInfo": {
+      "averageSalary": "£35,000 - £45,000 taun-taon",
+      "workingHours": "37.5 oras kada linggo na pamantayan",
+      "holidays": "28 araw na minimum na taunang bakasyon",
+      "benefits": "Pangangalagang pangkalusugan ng NHS, mga programa ng pensiyon, bayad sa pagkakasakit"
+    },
+    "jobSectors": [
+      {
+        "sector": "Teknolohiya",
+        "demand": "Mataas",
+        "averageSalary": "£45,000 - £80,000"
+      },
+      {
+        "sector": "Pangangalagang pangkalusugan",
+        "demand": "Napakataas",
+        "averageSalary": "£35,000 - £70,000"
+      },
+      {
+        "sector": "Pananalapi",
+        "demand": "Mataas",
+        "averageSalary": "£40,000 - £90,000"
+      }
+    ]
+  },
+  "moving": {
+    "title": "Paglipat patungong UK mula sa US",
+    "subtitle": "Mga espesyal na konsiderasyon para sa mga mamamayang Amerikano",
+    "process": [
+      {
+        "title": "Piliin ang Iyong Visa",
+        "description": "Tukuyin kung aling kategorya ng visa sa UK ang angkop sa iyong sitwasyon",
+        "step": 1
+      },
+      {
+        "title": "Maghanda ng mga Dokumento",
+        "description": "Kolektahin ang lahat ng kinakailangang dokumento at sertipiko",
+        "step": 2
+      },
+      {
+        "title": "Isumite ang Aplikasyon",
+        "description": "Mag-apply online at dumalo sa biometric appointment",
+        "step": 3
+      },
+      {
+        "title": "Planuhin ang Iyong Paglipat",
+        "description": "Ayusin ang pabahay, pagpapadala, at paunang kasunduan",
+        "step": 4
+      }
+    ]
+  },
+  "turkeyToUk": {
+    "title": "Paglipat patungong UK mula sa Turkey",
+    "subtitle": "Gabay para sa mga mamamayang Turko na lumilipat sa UK",
+    "considerations": [
+      "Mga kinakailangan sa visa para sa mga mamamayang Turko",
+      "Pagsasalin ng dokumento at apostille",
+      "Mga tip sa pag-aangkop sa kultura",
+      "Komunidad ng mga Turko sa UK"
+    ]
+  },
+  "cost": {
+    "title": "Magkano ang magagastos sa paglipat sa UK?",
+    "subtitle": "Pagpaplano ng badyet para sa iyong imigrasyon sa UK",
+    "costs": {
+      "visa": {
+        "title": "Mga Bayarin sa Visa",
+        "amount": "£610 - £1,423",
+        "description": "Depende sa uri at tagal ng visa"
+      },
+      "healthcare": {
+        "title": "Dagdag na Bayad sa Pangangalagang Pangkalusugan",
+        "amount": "£624 bawat taon",
+        "description": "Dagdag na Bayad sa Kalusugan ng Imigrasyon (IHS)"
+      },
+      "moving": {
+        "title": "Mga Gastos sa Paglipat",
+        "amount": "£2,000 - £8,000",
+        "description": "Pagpapadala, mga flight, at paunang pag-setup"
+      },
+      "living": {
+        "title": "Mga Paunang Gastos sa Pamumuhay",
+        "amount": "£1,500 - £3,000",
+        "description": "Tuluyan at mga gastusin sa unang buwan"
+      }
+    }
+  },
+  "pet": {
+    "title": "Paglipat kasama ang mga alagang hayop patungong UK",
+    "subtitle": "Mga kinakailangan at pamamaraan para sa pagdadala ng iyong mga alagang hayop",
+    "requirements": [
+      {
+        "requirement": "Pasaporte ng Alagang Hayop",
+        "description": "Pasaporte ng alagang hayop sa EU o opisyal na sertipiko ng beterinaryo mula sa ikatlong bansa",
+        "timeframe": "Hindi bababa sa 21 araw bago ang paglalakbay"
+      },
+      {
+        "requirement": "Microchip",
+        "description": "Microchip na sumusunod sa ISO 11784/11785 bago ang pagbabakuna laban sa rabies",
+        "timeframe": "Bago ang pagbabakuna laban sa rabies"
+      },
+      {
+        "requirement": "Pagbabakuna sa Rabies",
+        "description": "May bisang bakuna laban sa rabies na ibinigay pagkatapos ng microchipping",
+        "timeframe": "21 araw bago ang pagpasok"
+      },
+      {
+        "requirement": "Sertipiko ng Kalusugan",
+        "description": "Opisyal na sertipiko ng beterinaryo na nilagdaan ng awtorisadong beterinaryo",
+        "timeframe": "Sa loob ng 10 araw ng paglalakbay"
+      }
+    ],
+    "process": [
+      {
+        "title": "I-microchip ang Iyong Alagang Hayop",
+        "description": "Siguraduhing ang iyong alagang hayop ay may microchip na may ISO standard chip",
+        "step": 1
+      },
+      {
+        "title": "Pagbabakuna sa Rabies",
+        "description": "Magpabakuna ng rabies at maghintay ng 21 araw",
+        "step": 2
+      },
+      {
+        "title": "Sertipiko ng Kalusugan",
+        "description": "Kumuha ng health certificate mula sa awtorisadong beterinaryo",
+        "step": 3
+      },
+      {
+        "title": "Mag-book ng Paglalakbay",
+        "description": "Mag-ayos ng transportasyon na angkop para sa mga alagang hayop papuntang UK",
+        "step": 4
+      }
+    ],
+    "costs": {
+      "microchip": "£15 - £30",
+      "vaccination": "£50 - £100",
+      "healthCertificate": "£100 - £200",
+      "transportation": "£200 - £1,000",
+      "quarantine": "Libre (kung natugunan ang mga kinakailangan)"
+    }
+  },
+  "ukInfoCard": {
+    "title": "Mga Kawili-wiling Katotohanan Tungkol sa United Kingdom",
+    "description": "Galugarin ang mayamang pamana at kamangha-manghang mga katangian ng United Kingdom, mula sa makasaysayang monarkiya nito hanggang sa nakamamanghang mga tanawin at kahusayan sa akademya.",
+    "didYouKnow": "Alam mo ba?",
+    "cta": "Tuklasin ang Higit Pa Tungkol sa UK",
+    "footer": "© 2025 Impormasyon sa United Kingdom",
+    "navigation": {
+      "previous": "Nakaraan",
+      "next": "Susunod",
+      "counter": "{{current}} of {{total}}"
+    },
+    "facts": [
+      {
+        "title": "Sinaunang Monarkiya",
+        "content": "Ang UK ay may isa sa pinakamatandang monarkiya sa mundo, na mahigit 1,000 taon na ang nakalipas.",
+        "detail": "Ang monarkiya ng Britanya ay patuloy na umiral simula noong ika-9 na siglo, kung saan si Reyna Elizabeth II ang pinakamahabang nagharing monarko sa kasaysayan ng Britanya bago si Haring Charles III.",
+        "iconType": "korona",
+        "emoji": "👑",
+        "color": "bg-indigo-500"
+      },
+      {
+        "title": "Mga Nangungunang Unibersidad",
+        "content": "Ang UK ay tahanan ng ilan sa mga nangungunang unibersidad sa mundo, kabilang ang Oxford at Cambridge.",
+        "detail": "Ang Oxford at Cambridge ay palaging kabilang sa nangungunang 10 unibersidad sa mundo, na may mga kasaysayan na nagmula pa noong ika-11 at ika-13 siglo ayon sa pagkakabanggit.",
+        "iconType": "pagtatapos",
+        "emoji": "🎓",
+        "color": "bg-esmeralda-500"
+      },
+      {
+        "title": "Bansang Isla",
+        "content": "Ang UK ay isang bansang pulo, na may mahigit 7,000 maliliit na isla.",
+        "detail": "Bagama't ang Great Britain ang pinakamalaking isla, kabilang sa UK ang maraming iba pang kilalang isla tulad ng Isle of Wight, Anglesey, at Hebrides.",
+        "iconType": "mga alon",
+        "emoji": "🏝️",
+        "color": "bg-blue-500"
+      },
+      {
+        "title": "Pamana ng Siyentipiko",
+        "content": "Malaki ang naiambag ng mga siyentipikong Briton, kabilang na sina Isaac Newton, Charles Darwin, at Stephen Hawking.",
+        "detail": "Ang UK ay nakapagprodyus na ng mahigit 100 nagwagi ng Nobel Prize sa agham, na may mga makabagong tuklas mula sa grabidad hanggang sa istruktura ng DNA at quantum physics.",
+        "iconType": "bombilya",
+        "emoji": "💡",
+        "color": "bg-amber-500"
+      },
+      {
+        "title": "Pinakamataas na Tuktok",
+        "content": "Ang pinakamataas na bundok sa Scotland ay ang Ben Nevis (1,345 metro).",
+        "detail": "Matatagpuan sa Scottish Highlands, ang Ben Nevis ay umaakit ng mahigit 100,000 umaakyat taun-taon at nagtatampok ng mga bihirang halaman at hayop sa alpine.",
+        "iconType": "bundok",
+        "emoji": "🏔️",
+        "color": "bg-slate-500"
+      }
+    ]
+  },
+  "categories": {
+    "history": {
+      "title": "Pamana ng Kasaysayan",
+      "description": "Tuklasin ang mayamang makasaysayang pamana ng United Kingdom",
+      "facts": [
+        {
+          "title": "Mga Kastilyong Medieval",
+          "description": "Ang UK ay may mahigit 1,500 kastilyo, marami sa kanila ay mula pa noong panahon ng medyebal.",
+          "highlight": "Ang Windsor Castle ang pinakamatandang kastilyong may nakatira sa buong mundo."
+        },
+        {
+          "title": "Pamana ng mga Romano",
+          "description": "Ang Pader ni Hadrian ay umaabot ng 84 milya sa hilagang Inglatera.",
+          "highlight": "Itinayo ni Emperador Hadrian noong 122 AD upang ipagtanggol ang Romanong Britanya."
+        },
+        {
+          "title": "Rebolusyong Industriyal",
+          "description": "Ang UK ang lugar ng kapanganakan ng Rebolusyong Industriyal noong ika-18 siglo.",
+          "highlight": "Ang unang steam engine ay binuo ni James Watt noong 1769."
+        }
+      ]
+    },
+    "geography": {
+      "title": "Mga Kababalaghang Heograpiko",
+      "description": "Galugarin ang iba't ibang tanawin at likas na katangian",
+      "facts": [
+        {
+          "title": "Haba ng Baybayin",
+          "description": "Ang UK ay may humigit-kumulang 11,000 milya ng baybayin.",
+          "highlight": "Walang punto sa UK na higit sa 75 milya mula sa dagat."
+        },
+        {
+          "title": "Mga Pambansang Parke",
+          "description": "Mayroong 15 Pambansang Parke sa buong Inglatera, Wales, at Scotland.",
+          "highlight": "Ang Lake District ang unang Pambansang Parke na itinatag noong 1951."
+        },
+        {
+          "title": "Mga Sona ng Klima",
+          "description": "Sa kabila ng laki nito, ang UK ay may maraming magkakaibang sona ng klima.",
+          "highlight": "Ang Scotland ay maaaring maging 10°C na mas malamig kaysa sa timog England sa parehong araw."
+        }
+      ]
+    },
+    "culture": {
+      "title": "Kayamanan ng Kultura",
+      "description": "Ang pagkakaiba-iba ng kultura at mga kontribusyon sa sining ng UK",
+      "facts": [
+        {
+          "title": "Mga Higante sa Panitikan",
+          "description": "Tahanan nina Shakespeare, Dickens, Austen, at maraming alamat sa panitikan.",
+          "highlight": "Mahigit 1,700 salita ang naimbento ni Shakespeare na ginagamit pa rin hanggang ngayon."
+        },
+        {
+          "title": "Pamana ng Musika",
+          "description": "Lugar ng kapanganakan ng The Beatles, Queen, Led Zeppelin, at hindi mabilang na mga banda.",
+          "highlight": "Ang UK ang nakagawa ng mas maraming pandaigdigang #1 hit kaysa sa ibang bansa maliban sa US."
+        },
+        {
+          "title": "Tradisyon ng Teatro",
+          "description": "Ang West End ng London ay isa sa mga nangungunang distrito ng teatro sa mundo.",
+          "highlight": "Nag-aalok ang Globe Theatre ng mga pagtatanghal na may parehong istilo gaya ng panahon ni Shakespeare."
+        }
+      ]
+    },
+    "science": {
+      "title": "Kahusayan sa Siyensya",
+      "description": "Mga makabagong tuklas at inobasyon mula sa mga isipan ng mga Briton",
+      "facts": [
+        {
+          "title": "Mga Pagsulong sa Medikal",
+          "description": "Dito natuklasan ang penicillin, mga bakuna, at istruktura ng DNA.",
+          "highlight": "Hindi sinasadyang natuklasan ni Alexander Fleming ang penicillin noong 1928."
+        },
+        {
+          "title": "Mga Pioneer ng Pisika",
+          "description": "Ang mga batas ni Newton, ang ebolusyon ni Darwin, at ang mga black hole ni Hawking.",
+          "highlight": "Ang 'A Brief History of Time' ni Stephen Hawking ay nakapagbenta ng mahigit 25 milyong kopya."
+        },
+        {
+          "title": "Inobasyon sa Teknolohiya",
+          "description": "Ang World Wide Web at mga kompyuter ay nagmula sa Britanya.",
+          "highlight": "Inimbento ni Tim Berners-Lee ang World Wide Web sa CERN noong 1989."
+        }
+      ]
+    }
+  },
+  "statistics": {
+    "title": "UK ayon sa mga Numero",
+    "subtitle": "Mga kamangha-manghang istatistika tungkol sa United Kingdom",
+    "stats": [
+      {
+        "number": "66.8M",
+        "label": "Populasyon",
+        "description": "Kabuuang populasyon ng United Kingdom"
+      },
+      {
+        "number": "243,610",
+        "label": "Kilometro Kuwadrado",
+        "description": "Kabuuang lawak ng UK"
+      },
+      {
+        "label": "Mga Bansa",
+        "description": "Inglatera, Scotland, Wales, at Hilagang Irlanda",
+        "number": "4"
+      },
+      {
+        "label": "Mga Gantimpala ng Nobel",
+        "description": "Mga nagwagi ng Nobel Prize mula sa UK",
+        "number": "100+"
+      },
+      {
+        "label": "Mga Pook ng UNESCO",
+        "description": "Mga Pook Pamana ng Mundo sa UK",
+        "number": "31"
+      },
+      {
+        "number": "1,000+",
+        "label": "Mga Taon",
+        "description": "Panahon ng monarkiya ng Britanya"
+      }
+    ]
+  },
+  "contact": {
+    "title": "Matuto Nang Higit Pa Tungkol sa UK",
+    "subtitle": "Makipag-ugnayan para sa karagdagang impormasyon tungkol sa kultura at pamana ng Britanya",
+    "form": {
+      "name": {
+        "label": "Buong Pangalan",
+        "placeholder": "Ilagay ang iyong buong pangalan"
+      },
+      "email": {
+        "label": "Email Address",
+        "placeholder": "Ilagay ang iyong email address"
+      },
+      "interest": {
+        "label": "Larangan ng Interes",
+        "placeholder": "Anong aspeto ng kultura ng UK ang pinakanakakainteres sa iyo?"
+      },
+      "message": {
+        "label": "Mensahe",
+        "placeholder": "Sabihin sa amin ang gusto mong malaman tungkol sa UK..."
+      },
+      "submit": "Magpadala ng Katanungan"
+    },
+    "contactInfo": {
+      "address": {
+        "title": "Bisitahin Kami",
+        "details": "123 British Heritage Street, London, UK SW1A 1AA"
+      },
+      "phone": {
+        "title": "Tawagan Kami",
+        "details": "+44 20 7946 0123"
+      },
+      "email": {
+        "title": "Mag-email sa Amin",
+        "details": "info@ukexplorer.com"
+      },
+      "hours": {
+        "title": "Mga Oras",
+        "details": "Lunes - Biyernes: 9:00 AM - 5:00 PM"
+      }
+    }
+  },
+  "costsGuide": {
+    "title": "Magkano ang Gastos sa Paglipat sa UK?",
+    "description": "Isang komprehensibong pagsusuri ng lahat ng gastusin na dapat mong asahan kapag lumipat sa United Kingdom, mula sa mga bayarin sa visa hanggang sa pang-araw-araw na gastusin sa pamumuhay.",
+    "sections": [
+      {
+        "id": "visa-imigrasyon",
+        "icon": "🛂",
+        "title": "Visa at Imigrasyon",
+        "amount": "£250–£3,000",
+        "details": "Kasama ang aplikasyon sa visa, surcharge sa pangangalagang pangkalusugan, at biometrics",
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "pabahay",
+        "icon": "🏠",
+        "title": "Pabahay",
+        "amount": "£1,800–£5,000 paunang bayad",
+        "details": "1–2 buwang deposito + upa sa unang buwan + bayad sa ahensya",
+        "subItems": {
+          "0": {
+            "title": "London (buwan-buwan)",
+            "amount": "£1,500–£2,500"
+          },
+          "1": {
+            "title": "Mga pangunahing lungsod (buwan-buwan)",
+            "amount": "£800–£1,200"
+          },
+          "2": {
+            "title": "Mga Bayan/Kabukiran (buwanang)",
+            "amount": "£600–£900"
+          }
+        },
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "pagpapadala",
+        "icon": "📦",
+        "title": "Pagpapadala (Opsyonal)",
+        "amount": "£2,000–£6,000",
+        "details": "20 talampakang container. Maraming expats ang nagpapaupa ng mga muwebles o bumibili nang lokal.",
+        "color": "bg-sky-800"
+      },
+      {
+        "id": "mga kagamitan",
+        "icon": "💡",
+        "title": "Mga Utility at Pag-setup ng Internet",
+        "amount": "£100–£300",
+        "details": "Mga bayarin sa pag-setup at mga deposito",
+        "subItems": {
+          "0": {
+            "title": "Mga buwanang bayarin",
+            "amount": "£150–£300"
+          },
+          "1": {
+            "title": "Buwis sa konseho (buwanang)",
+            "amount": "£120–£300"
+          }
+        },
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "araw-araw",
+        "icon": "🛒",
+        "title": "Mga Gastos sa Araw-araw",
+        "amount": "£800–£1,500 buwan-buwan",
+        "subItems": {
+          "0": {
+            "title": "Mga Grocery",
+            "amount": "£250–£450/buwan"
+          },
+          "1": {
+            "title": "Pampublikong transportasyon",
+            "amount": "£150–£300/buwan"
+          },
+          "2": {
+            "title": "Mobile at internet",
+            "amount": "£40–£80/buwan"
+          },
+          "3": {
+            "title": "Libangan at kainan",
+            "amount": "£200–£400/buwan"
+          }
+        },
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "pagbabangko",
+        "icon": "🏦",
+        "title": "Pagbabangko at Pananalapi",
+        "amount": "£50–£200",
+        "details": "Mga bayarin sa pag-set up ng account, mga internasyonal na paglilipat",
+        "color": "bg-sky-600"
+      }
+    ],
+    "totalCosts": {
+      "title": "Kabuuang Tinatayang Gastos sa Paglipat",
+      "options": [
+        {
+          "title": "Opsyon sa Badyet",
+          "amount": "£3,000–£5,000",
+          "description": "Pinakamababang gastos para sa isang tao, sa labas ng London, kaunting gamit",
+          "featured": false
+        },
+        {
+          "title": "Karaniwang Paglipat",
+          "amount": "£5,000–£10,000",
+          "description": "Karaniwang gastos para sa isang tao o mag-asawa na may katamtamang pagpapadala",
+          "featured": true
+        },
+        {
+          "title": "Paglipat ng Pamilya",
+          "amount": "£10,000–£20,000+",
+          "description": "Isang pamilyang may 3-4 na miyembro ang lilipat sa London dala ang buong lalagyan ng mga kagamitan sa pagpapadala.",
+          "featured": false
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Mga Istratehiya sa Pagtitipid ng Pera sa UK",
+      "tips": [
+        {
+          "title": "Mahalaga ang Lokasyon",
+          "description": "Ang paninirahan sa labas ng London ay maaaring makabawas sa iyong mga gastos sa pabahay ng 40-60%. Isaalang-alang ang mga lungsod tulad ng Manchester, Birmingham, o Glasgow para sa mas murang halaga."
+        },
+        {
+          "title": "May mga kagamitang tirahan",
+          "description": "Ang mga paupahang may muwebles ay maaaring makatipid ng libu-libo sa mga gastos sa pagpapadala at muwebles. Ang mga panandaliang paupahang bahay ay nagbibigay-daan sa iyo upang mahanap ang tamang kapitbahayan bago mangako."
+        },
+        {
+          "title": "Mga Pagtitipid sa Transportasyon",
+          "description": "Bumili ng taunang travel card at isaalang-alang ang pagbibisikleta sa mga lungsod na angkop para sa bisikleta. Ang mga gastos sa transportasyon sa London ay mas mataas nang malaki kaysa sa ibang mga lungsod sa UK."
+        },
+        {
+          "title": "Pagbabangko at Pera",
+          "description": "Gumamit ng mga serbisyo tulad ng Wise o Revolut para sa mga internasyonal na paglilipat upang maiwasan ang mataas na bayarin sa bangko. Magpalit ng pera kapag paborable ang mga rate bago lumipat."
+        }
+      ]
+    },
+    "considerations": {
+      "title": "Mga Mahahalagang Pagsasaalang-alang na Partikular sa UK",
+      "items": [
+        {
+          "icon": "🏥",
+          "title": "Pangangalagang pangkalusugan",
+          "description": "Magbadyet para sa Immigration Health Surcharge (£624 kada taon para sa mga nasa hustong gulang) kapag nag-aaplay ng visa na mas mahaba sa 6 na buwan, para mabigyan ka ng access sa NHS."
+        },
+        {
+          "icon": "📱",
+          "title": "Komunikasyon",
+          "description": "Isaalang-alang ang mga alok na SIM-only sa halip na mga kontrata, lalo na kung mayroon kang sariling telepono. Ang mga provider tulad ng giffgaff at Lebara ay nag-aalok ng mga flexible na opsyon na walang kontrata."
+        },
+        {
+          "icon": "🌦️",
+          "title": "Mga Gastos na Pana-panahon",
+          "description": "Maaaring malaki ang gastos sa pagpapainit sa taglamig. Isaalang-alang ang mga akomodasyon na may mahusay na insulasyon at rating ng kahusayan sa enerhiya upang makatipid sa mga bayarin sa kuryente at tubig."
+        },
+        {
+          "icon": "🚗",
+          "title": "Pagpaplano ng Transportasyon",
+          "description": "Kung plano mong magmaneho, isaalang-alang ang mas mataas na gastos sa insurance para sa mga bagong residente ng UK at mga potensyal na singil para sa mga low-emission zone sa mga pangunahing lungsod."
+        }
+      ]
+    },
+    "conclusion": {
+      "title": "Pagpaplano ng Iyong Paglipat sa UK",
+      "description": "Ang paglipat sa UK ay kumakatawan sa isang malaking pamumuhunan, lalo na kung lilipat sa London o iba pang pangunahing lungsod. Bagama't maaaring mukhang mataas ang mga paunang gastos, ang wastong pagpaplano at pananaliksik ay makakatulong sa iyo na malampasan ang proseso nang mas matipid. Isaalang-alang nang mabuti ang iyong lokasyon at maghanda para sa mas mataas na gastos sa pamumuhay kaysa sa maraming ibang bansa, ngunit tamasahin din ang mahusay na mga serbisyong pampubliko, pangangalagang pangkalusugan, at kalidad ng buhay na inaalok ng UK."
+    }
+  },
+  "calculator": {
+    "title": "Kalkulador ng Gastos sa Paglipat sa UK",
+    "subtitle": "Kumuha ng personalized na pagtatantya para sa iyong paglipat sa UK",
+    "form": {
+      "familySize": {
+        "label": "Laki ng Pamilya",
+        "options": [
+          "Isang tao",
+          "Magkasintahan",
+          "Pamilya (3-4 na tao)",
+          "Malaking pamilya (5+ katao)"
+        ]
+      },
+      "destination": {
+        "label": "Destinasyon sa UK",
+        "options": [
+          "London",
+          "Pangunahing lungsod (Manchester, Birmingham, atbp.)",
+          "Katamtamang lungsod/bayan",
+          "Lugar sa kanayunan"
+        ]
+      },
+      "shipping": {
+        "label": "Mga Kinakailangan sa Pagpapadala",
+        "options": [
+          "Walang pagpapadala (bili sa lugar)",
+          "Bahagyang pagpapadala (mga mahahalagang bagay lamang)",
+          "Pagpapadala ng buong lalagyan",
+          "Maraming lalagyan"
+        ]
+      },
+      "visaType": {
+        "label": "Uri ng Visa",
+        "options": [
+          "Visa ng Estudyante",
+          "Visa para sa Bihasang Manggagawa",
+          "Visa ng Pamilya",
+          "Visa ng Mamumuhunan",
+          "Iba pa"
+        ]
+      },
+      "calculate": "Kalkulahin ang Tantiya"
+    },
+    "results": {
+      "title": "Ang Iyong Tinatayang Gastos sa Paglipat",
+      "breakdown": "Pagsusuri ng Gastos:",
+      "total": "Kabuuang Tinatayang Gastos:",
+      "disclaimer": "Ito ay isang pagtatantya batay sa karaniwang gastos. Ang mga aktwal na gastos ay maaaring mag-iba depende sa mga partikular na pangyayari, tiyempo, at mga tagapagbigay ng serbisyo."
+    }
+  },
+  "comparison": {
+    "title": "Paghahambing ng Halaga ng Pamumuhay sa UK",
+    "subtitle": "Paghambingin ang mga gastos sa pamumuhay sa UK sa mga pangunahing lungsod sa buong mundo",
+    "categories": [
+      {
+        "category": "Pabahay",
+        "london": "£2,000/buwan",
+        "manchester": "£900/buwan",
+        "newyork": "£2,800/buwan",
+        "paris": "£1,800/buwan"
+      },
+      {
+        "category": "Mga Grocery",
+        "london": "£350/buwan",
+        "manchester": "£280/buwan",
+        "newyork": "£420/buwan",
+        "paris": "£320/buwan"
+      },
+      {
+        "category": "Transportasyon",
+        "london": "£200/buwan",
+        "manchester": "£80/buwan",
+        "newyork": "£150/buwan",
+        "paris": "£90/buwan"
+      },
+      {
+        "category": "Kainan sa Labas",
+        "london": "£300/buwan",
+        "manchester": "£200/buwan",
+        "newyork": "£350/buwan",
+        "paris": "£280/buwan"
+      }
+    ]
+  },
+  "timeline": {
+    "title": "Timeline at Gastos ng Paglipat sa UK",
+    "subtitle": "Kailan magbabadyet para sa iba't ibang gastusin habang lumilipat",
+    "phases": [
+      {
+        "phase": "Bago ang Aplikasyon (3-6 na buwan bago)",
+        "costs": "£200-£500",
+        "items": {
+          "0": "Paghahanda at pagsasalin ng dokumento",
+          "1": "Mga pagsusulit sa wikang Ingles",
+          "2": "Mga medikal na eksaminasyon",
+          "3": "Mga konsultasyong legal"
+        }
+      },
+      {
+        "phase": "Aplikasyon para sa Visa (2-4 na buwan bago)",
+        "costs": "£500-£3,500",
+        "items": {
+          "0": "Mga bayarin sa aplikasyon ng visa",
+          "1": "Dagdag na Bayad sa Kalusugan ng Imigrasyon",
+          "2": "Mga appointment sa biometric",
+          "3": "Pagproseso ng prayoridad (opsyonal)"
+        }
+      },
+      {
+        "phase": "Bago ang Pag-alis (1-2 buwan bago)",
+        "costs": "£2,000-£8,000",
+        "items": {
+          "0": "Pagpapadala at logistik",
+          "1": "Mga kaayusan sa paglalakbay",
+          "2": "Mga pansamantalang booking ng akomodasyon",
+          "3": "Paglilipat ng alagang hayop (kung naaangkop)"
+        }
+      },
+      {
+        "phase": "Pagdating (Unang buwan)",
+        "costs": "£2,000-£6,000",
+        "items": {
+          "0": "Mga deposito sa pabahay at upa",
+          "1": "Pag-set up at mga deposito ng utility",
+          "2": "Pagbubukas ng account sa bangko",
+          "3": "Mga paunang gastos sa pamumuhay"
+        }
+      },
+      {
+        "phase": "Pag-aayos (Buwan 2-6)",
+        "costs": "£1,000-£3,000",
+        "items": {
+          "0": "Mga muwebles at gamit sa bahay",
+          "1": "Lokal na pagpaparehistro at dokumentasyon",
+          "2": "Pagsasaayos ng edukasyon (kung naaangkop)",
+          "3": "Mga gastos sa pagsasama ng komunidad"
+        }
+      }
+    ]
+  },
+  "resources": {
+    "title": "Mga Mapagkukunan sa Pamamahala ng Pera",
+    "subtitle": "Mga kapaki-pakinabang na kagamitan at serbisyo para sa pamamahala ng iyong pananalapi sa paglipat sa UK",
+    "categories": [
+      {
+        "title": "Palitan ng Pera",
+        "services": {
+          "0": {
+            "name": "Wise (dating TransferWise)",
+            "description": "Mga murang internasyonal na paglilipat ng pera",
+            "fees": "0.35-2% ng halaga ng paglilipat"
+          },
+          "1": {
+            "name": "Rebolusyon",
+            "description": "Multi-currency account na may magandang exchange rate",
+            "fees": "Libre hanggang sa ilang partikular na limitasyon"
+          },
+          "2": {
+            "name": "Pera ng XE",
+            "description": "Mga kompetitibong rate para sa mas malalaking paglilipat",
+            "fees": "Nag-iiba ayon sa dami"
+          }
+        }
+      },
+      {
+        "title": "Pagbabangko",
+        "services": {
+          "0": {
+            "name": "Mga Bangko sa High Street ng UK",
+            "description": "Mga tradisyunal na bangko tulad ng Barclays, HSBC, Lloyds",
+            "fees": "Buwanang bayarin £5-£25"
+          },
+          "1": {
+            "name": "Mga Digital na Bangko",
+            "description": "Monzo, Starling Bank, Revolut",
+            "fees": "Kadalasang walang bayad ang mga pangunahing account"
+          },
+          "2": {
+            "name": "Mga Bangko Internasyonal",
+            "description": "HSBC Expat, Citi International",
+            "fees": "Mas mataas na bayarin ngunit pandaigdigang serbisyo"
+          }
+        }
+      }
+    ]
+  },
+  "footer": {
+    "disclaimer": "Ang lahat ng gastos ay mga pagtatantya lamang at maaaring mag-iba batay sa mga indibidwal na pangyayari, kondisyon ng merkado, at tiyempo. Mangyaring kumonsulta sa mga propesyonal na tagapayo para sa personal na gabay.",
+    "lastUpdated": "Huling na-update: {{date}}",
+    "sources": "Mga mapagkukunan ng datos: Pamahalaan ng UK, ONS, mga website ng ari-arian, at mga survey ng mga expat."
+  },
+  "jobGuide": {
+    "header": {
+      "title": "Nagtatrabaho sa United Kingdom",
+      "subtitle": "Isang Komprehensibong Gabay para sa mga Internasyonal na Naghahanap ng Trabaho",
+      "intro": {
+        "paragraph1": "Ang United Kingdom, kasama ang matibay na ekonomiya, multikultural na kapaligiran, at mga lungsod na may mataas na kalidad sa buong mundo, ay nananatiling isang nangungunang destinasyon para sa mga internasyonal na propesyonal na naghahanap ng pagsulong at paglago sa karera.",
+        "paragraph2": "Ipapakita sa iyo ng gabay na ito ang lahat ng kailangan mong malaman tungkol sa paghahanap ng trabaho sa UK bilang isang dayuhan, mula sa pag-unawa sa sistema ng imigrasyon na nakabatay sa puntos hanggang sa pag-navigate sa lokal na merkado ng trabaho at pag-angkop sa buhay-trabaho sa Britanya."
+      }
+    },
+    "navigation": {
+      "title": "Mabilis na Nabigasyon",
+      "backToAll": "Balik sa Lahat ng Seksyon"
+    },
+    "sections": [
+      {
+        "id": "pamilihan ng trabaho",
+        "icon": "🔍",
+        "title": "Pag-unawa sa Pamilihan ng Trabaho sa UK",
+        "type": "pamilihan ng trabaho",
+        "content": {
+          "intro": "Nag-aalok ang UK ng iba't ibang oportunidad sa iba't ibang sektor, kung saan ang ilang industriya ay partikular na naa-access at malugod na tinatanggap ng mga internasyonal na manggagawa.",
+          "sectorsTitle": "Mga Sektor na In-Demand para sa mga Dayuhang Manggagawa:",
+          "sectors": {
+            "0": {
+              "name": "Pangangalagang Pangkalusugan at NHS",
+              "description": "Mga doktor, nars, tagapag-alaga, espesyalista"
+            },
+            "1": {
+              "name": "IT at Teknolohiya",
+              "description": "Pagbuo ng software, cybersecurity, agham ng datos"
+            },
+            "2": {
+              "name": "Pananalapi at Pagbabangko",
+              "description": "Pagsusuri sa pananalapi, pagbabangko sa pamumuhunan, fintech"
+            },
+            "3": {
+              "name": "Edukasyon",
+              "description": "Pagtuturo, pananaliksik, mga internasyonal na paaralan"
+            },
+            "4": {
+              "name": "Inhinyeriya",
+              "description": "Inhinyerong sibil, mekanikal, elektrikal"
+            },
+            "5": {
+              "name": "Pagtanggap sa mga Biyahe at Turismo",
+              "description": "Mga hotel, restawran, pamamahala ng turismo"
+            }
+          },
+          "conclusion": "Lubos na pinahahalagahan ng merkado ng trabaho sa UK ang kahusayan sa Ingles, at karamihan sa mga propesyonal na posisyon ay nangangailangan ng mahusay na kasanayan sa komunikasyon. Nag-aalok ang London ng pinakamaraming magkakaibang oportunidad, ngunit ang mga lungsod tulad ng Manchester, Birmingham, Edinburgh, at Bristol ay may lumalaking merkado ng trabaho na kadalasang mas mababa ang mga gastos sa pamumuhay."
+        }
+      },
+      {
+        "id": "sistema ng visa",
+        "icon": "🔒",
+        "title": "Sistema ng Visa sa UK: Imigrasyong Batay sa Puntos",
+        "type": "sistema ng visa",
+        "content": {
+          "intro": "Ang UK ay gumagamit ng sistemang imigrasyon na nakabatay sa puntos na inuuna ang mga kasanayan, kwalipikasyon, at kahusayan sa wikang Ingles.",
+          "routesTitle": "Mga Pangunahing Ruta ng Work Visa:",
+          "visaRoutes": {
+            "0": {
+              "name": "Visa para sa Bihasang Manggagawa",
+              "description": "Para sa mga kwalipikadong propesyonal na may alok na trabaho mula sa isang employer sa UK"
+            },
+            "1": {
+              "name": "Pandaigdigang Visa ng Talento",
+              "description": "Para sa mga lider o potensyal na lider sa akademya, pananaliksik, sining, o digital na teknolohiya"
+            },
+            "2": {
+              "name": "Visa ng Manggagawa sa Kalusugan at Pangangalaga",
+              "description": "Para sa mga kwalipikadong medikal na propesyonal na may mga alok na trabaho sa NHS"
+            },
+            "3": {
+              "name": "Visa para sa Pagtatapos",
+              "description": "Para sa mga internasyonal na estudyante na nakapagtapos ng degree sa UK"
+            }
+          },
+          "requirement": "Karamihan sa mga work visa ay nangangailangan ng alok ng trabaho mula sa isang lisensyadong sponsor bago mag-apply."
+        }
+      },
+      {
+        "id": "pag-iisponsor",
+        "icon": "📋",
+        "title": "Pagkuha ng Sponsor ng Employer",
+        "type": "pag-iisponsor",
+        "content": {
+          "requirementsTitle": "Mga Kinakailangan para sa Pag-sponsor:",
+          "requirements": {
+            "0": "Ang trabaho ay karaniwang dapat nasa o mas mataas sa RQF level 3 (katumbas ng A-level)",
+            "1": "Dapat maabot ng suweldo ang minimum na limitasyon (karaniwan ay £26,200+ depende sa posisyon)",
+            "2": "Ang employer ay dapat isang lisensyadong sponsor na inaprubahan ng Home Office",
+            "3": "Dapat nasa listahan ng mga kwalipikadong trabaho ang tungkulin"
+          },
+          "shortageList": {
+            "title": "Listahan ng mga Trabaho na Kulang",
+            "description": "Ang mga trabaho sa listahang ito ay may mas madaling mga kinakailangan sa visa at mas mababang mga limitasyon sa suweldo. Kabilang sa mga kasalukuyang kakulangan sa trabaho ang:",
+            "occupations": {
+              "0": "Mga propesyonal sa pangangalagang pangkalusugan",
+              "1": "Mga Inhinyero",
+              "2": "Mga espesyalista sa IT",
+              "3": "Mga siyentipiko at mananaliksik",
+              "4": "Mga Beterinaryo",
+              "5": "Mga arkitekto at ilang mga tungkulin sa pagtuturo"
+            }
+          },
+          "proTip": {
+            "title": "Propesyonal na Tip",
+            "description": "Mga target na kumpanyang may kasaysayan ng pag-sponsor ng mga internasyonal na manggagawa. Ang malalaking multinasyonal na korporasyon, mga kumpanya ng teknolohiya, at mga NHS trust ay kadalasang mas may karanasan sa proseso ng pag-sponsor.",
+            "additional": "Maaari mong tingnan kung ang isang kumpanya ay may hawak na lisensya sa pag-sponsor sa website ng gobyerno ng UK."
+          }
+        }
+      },
+      {
+        "id": "proseso ng aplikasyon",
+        "icon": "📝",
+        "title": "Proseso ng Aplikasyon sa Trabaho sa UK",
+        "type": "proseso ng aplikasyon",
+        "content": {
+          "stepsTitle": "Mga Hakbang sa Aplikasyon:",
+          "steps": {
+            "0": {
+              "title": "1. CV at Cover Letter",
+              "description": "Inaasahan ng mga employer sa UK ang isang 2-pahinang CV (resume) na nakatuon sa mga kaugnay na kasanayan at karanasan. Ang mga cover letter ay dapat na maigsi at angkop sa bawat posisyon."
+            },
+            "1": {
+              "title": "2. Proseso ng Panayam",
+              "description": "Kadalasang kinabibilangan ng paunang screening sa telepono, na sinusundan ng 1-2 panayam (mas nagiging virtual para sa mga internasyonal na kandidato), at posibleng mga gawain sa pagtatasa para sa mga teknikal na tungkulin."
+            },
+            "2": {
+              "title": "3. Alok ng Trabaho at Pag-sponsor ng Visa",
+              "description": "Kung magtagumpay, makakatanggap ka ng pormal na sulat ng alok at Sertipiko ng Sponsorship para sa iyong aplikasyon sa visa."
+            }
+          },
+          "cvTips": {
+            "title": "Mga Tip sa CV na Espesipiko sa UK:",
+            "tips": {
+              "0": "Hindi kailangan ng litrato",
+              "1": "Magsama ng propesyonal na profile/buod sa itaas",
+              "2": "Tumutok sa mga nagawa kaysa sa mga tungkulin",
+              "3": "Isama ang mga kaugnay na kwalipikasyon at sertipikasyon",
+              "4": "Ang mga sanggunian ay kadalasang 'makukuha kapag hiniling' sa halip na nakalista"
+            }
+          }
+        }
+      },
+      {
+        "id": "paghahanap ng trabaho",
+        "icon": "🔎",
+        "title": "Paghahanap ng mga Oportunidad sa Trabaho sa UK",
+        "type": "paghahanap ng trabaho",
+        "content": {
+          "portalsTitle": "Mga Nangungunang Portal ng Trabaho sa UK:",
+          "jobPortals": {
+            "0": "Tunay ngang UK",
+            "1": "Reed.co.uk",
+            "2": "CV-Library",
+            "3": "LinkedIn",
+            "4": "Mga Trabaho sa Tagapangalaga",
+            "5": "Mga Trabaho sa NHS"
+          },
+          "recruitmentAgencies": {
+            "title": "Mga Ahensya ng Pangangalap",
+            "description": "Ang mga espesyalisadong ahensya ng recruitment ay maaaring maging kapaki-pakinabang para sa mga internasyonal na naghahanap ng trabaho. Marami ang nakatuon sa mga partikular na industriya o rehiyon at may mga relasyon sa mga employer na regular na nag-iisponsor ng mga visa."
+          },
+          "directApplications": {
+            "title": "Mga Direktang Aplikasyon",
+            "description": "Magsaliksik ng mga kompanya sa iyong larangan na may mga lisensya sa pag-sponsor at direktang mag-apply sa pamamagitan ng kanilang mga pahina ng karera. Ang mga multinasyonal na korporasyon ay kadalasang may mga itinatag na proseso para sa pagkuha ng mga internasyonal na talento."
+          }
+        }
+      },
+      {
+        "id": "gastos sa pamumuhay",
+        "icon": "💷",
+        "title": "Mga Pagsasaalang-alang sa Gastos ng Pamumuhay sa UK",
+        "type": "gastos sa pamumuhay",
+        "content": {
+          "intro": "Napakahalagang maunawaan ang mga gastusin sa pamumuhay sa UK kapag sinusuri ang mga alok na trabaho at pinaplano ang iyong paglipat.",
+          "locations": {
+            "0": {
+              "name": "London",
+              "description": "Mas mataas ang mga gastos kumpara sa ibang bahagi ng UK",
+              "costs": {
+                "0": {
+                  "category": "Upa",
+                  "amount": "£1,500-2,500/buwan (flat na may 1 kwarto)"
+                },
+                "1": {
+                  "category": "Transportasyon",
+                  "amount": "£140-180/buwan"
+                },
+                "2": {
+                  "category": "Mga Utility",
+                  "amount": "£150-200/buwan"
+                }
+              }
+            },
+            "1": {
+              "name": "Mga Lungsod sa Rehiyon",
+              "description": "Manchester, Birmingham, Edinburgh, atbp.",
+              "costs": {
+                "0": {
+                  "category": "Upa",
+                  "amount": "£700-1,200/buwan (flat na may 1 kwarto)"
+                },
+                "1": {
+                  "category": "Transportasyon",
+                  "amount": "£60-100/buwan"
+                },
+                "2": {
+                  "category": "Mga Utility",
+                  "amount": "£120-170/buwan"
+                }
+              }
+            }
+          },
+          "additionalExpenses": {
+            "title": "Mga Karagdagang Gastos:",
+            "items": {
+              "0": "Surcharge sa pangangalagang pangkalusugan (£624 bawat taon kapag nag-aaplay ng visa)",
+              "1": "Buwis sa konseho (£1,000-2,000 taun-taon depende sa ari-arian)",
+              "2": "Lisensya sa TV (£159 taun-taon)",
+              "3": "Mga paunang gastos at deposito sa paglipat"
+            }
+          }
+        }
+      },
+      {
+        "id": "pangangalagang pangkalusugan",
+        "icon": "🏥",
+        "title": "Pag-access sa Pangangalagang Pangkalusugan sa UK",
+        "type": "pangangalagang pangkalusugan",
+        "content": {
+          "intro": "Ang lahat ng may hawak ng UK visa na nagbabayad ng Immigration Health Surcharge ay may access sa National Health Service (NHS).",
+          "coverage": {
+            "description": "Nagbibigay ito ng komprehensibong saklaw ng pangangalagang pangkalusugan kabilang ang:",
+            "includes": {
+              "0": "Mga appointment sa GP (doktor)",
+              "1": "Paggamot sa ospital",
+              "2": "Pangangalaga sa emerhensiya",
+              "3": "Mga serbisyo sa pagbubuntis"
+            }
+          },
+          "registration": "Kakailanganin mong magparehistro sa isang lokal na klinika ng doktor pagdating mo sa UK. Ang pangangalaga sa ngipin at mga reseta ay maaaring mangailangan ng karagdagang bayad.",
+          "note": "Paalala: Opsyonal ang pribadong health insurance ngunit maaaring magbigay ng mas mabilis na access sa mga espesyalista at karagdagang serbisyong hindi sakop ng NHS."
+        }
+      },
+      {
+        "id": "networking",
+        "icon": "👥",
+        "title": "Networking sa UK",
+        "type": "networking",
+        "content": {
+          "intro": "Ang pagbuo ng isang propesyonal na network ay mahalaga para sa paghahanap ng trabaho sa UK:",
+          "online": {
+            "title": "Online Networking",
+            "platforms": {
+              "0": "LinkedIn (mahalaga para sa paghahanap ng trabaho sa UK)",
+              "1": "Mga propesyonal na grupo sa Facebook",
+              "2": "Mga forum at komunidad na partikular sa industriya",
+              "3": "Mga network ng alumni mula sa iyong unibersidad"
+            }
+          },
+          "inPerson": {
+            "title": "Mga Kaganapan na Personal",
+            "events": {
+              "0": "Mga kumperensya at seminar sa industriya",
+              "1": "Mga kaganapan sa Meetup.com na may kaugnayan sa iyong larangan",
+              "2": "Mga pagtitipon ng mga propesyonal na asosasyon",
+              "3": "Mga kaganapan sa networking ng mga internasyonal na propesyonal"
+            }
+          },
+          "advice": "Pinahahalagahan ng kultura ng negosyong British ang propesyonalismo at paggalang. Kapag nakikipag-network, tumuon sa pagbuo ng mga tunay na ugnayan sa halip na agad na humingi ng mga oportunidad sa trabaho."
+        }
+      }
+    ],
+    "checklist": {
+      "title": "Ang Iyong Checklist sa Paghahanap ng Trabaho sa UK",
+      "beforeApplying": {
+        "title": "Bago Ka Mag-apply",
+        "items": [
+          "Magsaliksik ng format at pamantayan ng CV na partikular sa UK",
+          "Suriin kung ang iyong trabaho ay nasa Listahan ng mga Hanapbuhay na Kulang",
+          "Tiyaking kinikilala ang iyong mga kwalipikasyon sa UK",
+          "Buuin ang iyong LinkedIn profile gamit ang mga keyword na partikular sa UK"
+        ]
+      },
+      "duringSearch": {
+        "title": "Habang Naghahanap ka ng Trabaho",
+        "items": [
+          "Mga target na kumpanya na may mga lisensya ng sponsor",
+          "Maghanda para sa mga panayam sa video sa iba't ibang time zone",
+          "Magsaliksik ng mga karaniwang saklaw ng suweldo sa UK para sa iyong posisyon",
+          "Unawain ang mga karapatan at benepisyo sa trabaho sa UK"
+        ]
+      }
+    },
+    "conclusion": {
+      "title": "Simulan ang Iyong Paglalakbay sa Karera sa UK",
+      "description": "Ang paghahanap ng trabaho sa UK bilang isang dayuhang mamamayan ay nangangailangan ng paghahanda, pagtitiyaga, at pasensya. Bagama't may mga partikular na kinakailangan ang sistema ng imigrasyon, nananatiling nakatuon ang UK sa pag-akit ng mga internasyonal na talento sa iba't ibang industriya. Gamit ang tamang kasanayan, kwalipikasyon, at pamamaraan, matagumpay mong mapapasok ang merkado ng trabaho sa UK at makabuo ng isang kapaki-pakinabang na karera sa isa sa mga pinaka-dinamikong ekonomiya sa mundo."
+    }
+  },
+  "salaryGuide": {
+    "title": "Gabay sa Sweldo sa UK ayon sa Industriya",
+    "subtitle": "Karaniwang suweldo para sa mga internasyonal na propesyonal",
+    "industries": [
+      {
+        "sector": "Teknolohiya ng Impormasyon",
+        "averageRange": "£35,000 - £80,000",
+        "entryLevel": "£25,000 - £35,000",
+        "experienced": "£50,000 - £80,000",
+        "senior": "£70,000 - £120,000+",
+        "hotRoles": {
+          "0": "Mga Inhinyero ng Software",
+          "1": "Mga Siyentipiko ng Datos",
+          "2": "Mga Espesyalista sa Cybersecurity",
+          "3": "Mga Inhinyero ng DevOps"
+        }
+      },
+      {
+        "sector": "Pangangalagang pangkalusugan",
+        "averageRange": "£30,000 - £70,000",
+        "entryLevel": "£24,000 - £30,000",
+        "experienced": "£40,000 - £60,000",
+        "senior": "£60,000 - £100,000+",
+        "hotRoles": {
+          "0": "Mga Nars",
+          "1": "Mga Batang Doktor",
+          "2": "Mga Espesyalista",
+          "3": "Mga Tagapamahala ng Pangangalagang Pangkalusugan"
+        }
+      },
+      {
+        "sector": "Pananalapi at Pagbabangko",
+        "averageRange": "£40,000 - £90,000",
+        "entryLevel": "£28,000 - £40,000",
+        "experienced": "£50,000 - £80,000",
+        "senior": "£80,000 - £150,000+",
+        "hotRoles": {
+          "0": "Mga Analistang Pinansyal",
+          "1": "Mga Investment Banker",
+          "2": "Mga Tagapamahala ng Panganib",
+          "3": "Mga Opisyal ng Pagsunod"
+        }
+      },
+      {
+        "sector": "Inhinyeriya",
+        "averageRange": "£35,000 - £65,000",
+        "entryLevel": "£25,000 - £35,000",
+        "experienced": "£45,000 - £65,000",
+        "senior": "£65,000 - £100,000+",
+        "hotRoles": {
+          "0": "Mga Inhinyero Sibil",
+          "1": "Mga Inhinyero ng Mekanikal",
+          "2": "Mga Inhinyero ng Elektrikal",
+          "3": "Mga Tagapamahala ng Proyekto"
+        }
+      }
+    ]
+  },
+  "workCulture": {
+    "title": "Gabay sa Kultura ng Trabaho sa UK",
+    "subtitle": "Pag-unawa sa mga inaasahan sa lugar ng trabaho ng mga Briton",
+    "aspects": [
+      {
+        "category": "Estilo ng Komunikasyon",
+        "description": "Ang komunikasyon ng mga Briton ay may posibilidad na maging magalang, hindi direkta, at kadalasang may kasamang pagmamaliit.",
+        "tips": {
+          "0": "Ang mga pariralang tulad ng 'medyo maganda' ay kadalasang nangangahulugang 'mahusay'",
+          "1": "Ang hindi pagkakasundo ay kadalasang pinapahina ng mga pariralang tulad ng 'Iniisip ko kung...'",
+          "2": "Karaniwan at inaasahan ang maliliit na usapan tungkol sa panahon",
+          "3": "Lubos na pinahahalagahan ang pagiging nasa oras"
+        }
+      },
+      {
+        "category": "Balanse sa Trabaho at Buhay",
+        "description": "Sa pangkalahatan, pinapanatili ng UK ang isang mahusay na balanse sa pagitan ng trabaho at buhay-pangkabuhayan na may mga legal na proteksyon.",
+        "tips": {
+          "0": "Ang karaniwang oras ng pagtatrabaho sa isang linggo ay 37.5-40 oras",
+          "1": "Minimum na 28 araw na taunang bakasyon (kasama ang mga pista opisyal sa bangko)",
+          "2": "Ang mga kahilingan sa flexible working ay legal na protektado",
+          "3": "Nag-iiba ang kultura ng overtime ayon sa industriya at kumpanya"
+        }
+      },
+      {
+        "category": "Hierarchy at Mga Pagpupulong",
+        "description": "Ang mga lugar ng trabaho sa Britanya ay may posibilidad na hindi gaanong hirarkikal kumpara sa maraming ibang bansa.",
+        "tips": {
+          "0": "Ang mga unang pangalan ay karaniwang ginagamit sa lahat ng antas",
+          "1": "Ang mga pagpupulong ay kadalasang may kasamang oras para sa talakayan at mga input",
+          "2": "Maaaring matagalan ang mga desisyon dahil madalas na hinahangad ang pinagkasunduan",
+          "3": "Ang etiketa sa pila ay naaangkop sa lahat ng sitwasyon"
+        }
+      }
+    ]
+  },
+  "relocationSupport": {
+    "title": "Suporta sa Paglipat ng Empleyado",
+    "subtitle": "Ano ang aasahan mula sa mga employer sa UK",
+    "commonSupport": [
+      {
+        "type": "Pag-sponsor ng Visa",
+        "description": "Sertipiko ng Sponsorship at suporta sa aplikasyon ng visa",
+        "typical": "Pamantayan para sa mga visa ng skilled worker"
+      },
+      {
+        "type": "Pakete ng Relokasyon",
+        "description": "Tulong pinansyal para sa mga gastusin sa paglipat",
+        "typical": "£2,000-£10,000 depende sa antas ng tungkulin"
+      },
+      {
+        "type": "Pansamantalang Tirahan",
+        "description": "Hotel o serviced apartment para sa mga unang linggo",
+        "typical": "Karaniwang saklaw ang 2-4 na linggo"
+      },
+      {
+        "type": "Suporta sa Paghahanap ng Bahay",
+        "description": "Tulong sa paghahanap ng permanenteng tirahan",
+        "typical": "Mga rekomendasyon ng ahente ng real estate, mga paglilibot sa lugar"
+      },
+      {
+        "type": "Pagsasama ng Kultura",
+        "description": "Mga programa sa oryentasyon at pagsasanay sa kultura",
+        "typical": "Mga sistemang pangkaibigan, mga pagpapakilala sa lokal na lugar"
+      }
+    ]
+  },
+  "legalRequirements": {
+    "title": "Mga Kinakailangang Legal para sa Pagtatrabaho sa UK",
+    "subtitle": "Mahalagang impormasyon sa pagsunod",
+    "requirements": [
+      {
+        "area": "Karapatan sa Paggawa",
+        "description": "Dapat patunayan ng lahat ng empleyado na maaari silang legal na magtrabaho sa UK",
+        "documents": {
+          "0": "Balidong pasaporte na may visa",
+          "1": "Permit sa Paninirahan na Biometriko (BRP)",
+          "2": "Ibahagi ang code mula sa online na pagsuri ng karapatan sa trabaho"
+        }
+      },
+      {
+        "area": "Pambansang Seguro",
+        "description": "Kinakailangan ang natatanging numero para sa buwis at mga benepisyo",
+        "process": "Mag-apply online o sa pamamagitan ng telepono pagkarating, karaniwang tumatagal ng 2-3 linggo"
+      },
+      {
+        "area": "Buwis (PAYE)",
+        "description": "Awtomatikong ibabawas ang buwis sa kita mula sa suweldo",
+        "rates": "Pangunahing singil 20%, Mas Mataas na singil 40%, Karagdagang singil 45%"
+      },
+      {
+        "area": "Mga Karapatan sa Pagtatrabaho",
+        "description": "Ang mga empleyado sa UK ay may matibay na legal na proteksyon",
+        "rights": {
+          "0": "Proteksyon sa minimum na sahod",
+          "1": "Mga batas laban sa diskriminasyon",
+          "2": "Proteksyon sa hindi patas na pagpapaalis (pagkatapos ng 2 taon)",
+          "3": "Bayad sa pagkakasakit ayon sa batas"
+        }
+      }
+    ]
+  },
+  "usToUkGuide": {
+    "header": {
+      "title": "Paglipat mula sa US patungong UK",
+      "subtitle": "Ang iyong komprehensibong gabay sa paglipat sa kabilang panig ng lawa - mula sa mga aplikasyon ng visa hanggang sa pag-aayos sa buhay sa Britanya"
+    },
+    "navigation": {
+      "title": "Mga Nilalaman"
+    },
+    "sections": [
+      {
+        "id": "bakit-uk",
+        "icon": "🇬🇧",
+        "title": "Bakit Lumipat sa UK?",
+        "type": "bakit-uk",
+        "content": {
+          "intro": "Maraming Amerikano ang pumipili sa UK bilang kanilang bagong tahanan dahil sa mga nakakahimok na dahilan:",
+          "reasons": {
+            "0": "Ibinahaging pamilyar sa wika at kultura",
+            "1": "Pangangalagang pangkalusugan na may pandaigdigang antas (NHS)",
+            "2": "Mayaman na kasaysayan at mga handog na kultural",
+            "3": "Gateway patungong Europa para sa paglalakbay",
+            "4": "Napakahusay na pampublikong transportasyon",
+            "5": "Malakas na merkado ng trabaho sa mga partikular na sektor"
+          },
+          "conclusion": "Lumilipat ka man para sa mga oportunidad sa trabaho, edukasyon, pamilya, o para lamang sa pagbabago ng takbo ng buhay, ang UK ay nag-aalok ng pamilyar ngunit kakaibang pamumuhay para sa mga Amerikano."
+        }
+      },
+      {
+        "id": "mga opsyon sa visa",
+        "icon": "🛂",
+        "title": "Mga Opsyon sa Visa para sa mga Mamamayan ng US",
+        "type": "mga opsyon sa visa",
+        "content": {
+          "intro": "Bilang isang mamamayan ng Estados Unidos, maaari kang bumisita sa UK nang hanggang 6 na buwan nang walang visa, ngunit para sa pangmatagalang pamumuhay, kakailanganin mo ang isa sa mga sumusunod na visa path:",
+          "visaTypes": {
+            "0": {
+              "title": "1. Visa ng Bihasang Manggagawa",
+              "requirements": {
+                "0": "Kailangan mo ba ng alok ng trabaho mula sa isang employer sa UK na may lisensya sa pag-sponsor?",
+                "1": "Dapat matugunan ang mga kinakailangan sa minimum na suweldo (karaniwan ay £26,200+, nag-iiba depende sa trabaho)",
+                "2": "Ang trabaho ay dapat nasa kinakailangang antas ng kasanayan (karaniwan ay RQF level 3 o pataas)",
+                "3": "May bisa hanggang 5 taon, maaaring humantong sa pagbabayad pagkatapos ng 5 taon"
+              }
+            },
+            "1": {
+              "title": "2. Pandaigdigang Visa para sa Talento",
+              "requirements": {
+                "0": "Para sa mga lider o mga indibidwal na may potensyal sa akademya, pananaliksik, sining, kultura, o digital na teknolohiya",
+                "1": "Nangangailangan ng pag-endorso mula sa isang kaugnay na ahensya sa UK",
+                "2": "Hindi kailangan ng sponsorship, mas flexible kaysa sa work visa",
+                "3": "Maaaring humantong sa kasunduan pagkatapos ng 3-5 taon"
+              }
+            },
+            "2": {
+              "title": "3. Visa ng Estudyante",
+              "requirements": {
+                "0": "Para sa pagpapatala sa mga institusyong pang-edukasyon sa UK",
+                "1": "Nangangailangan ng sulat ng pagtanggap, patunay ng pondo, at kahusayan sa Ingles",
+                "2": "Limitadong karapatan sa trabaho habang nag-aaral",
+                "3": "Ang ruta ng pagtatapos ay nagpapahintulot sa pananatili ng 2 taon pagkatapos ng pagtatapos upang magtrabaho"
+              }
+            },
+            "3": {
+              "title": "4. Visa ng Pamilya",
+              "requirements": {
+                "0": "Para sa mga kapareha, asawa, o anak ng mga mamamayang Briton o mga taong nanirahan",
+                "1": "Nangangailangan ng patunay ng tunay na relasyon at mga kinakailangan sa pananalapi",
+                "2": "Maaaring humantong sa kasunduan pagkatapos ng 5 taon"
+              }
+            },
+            "4": {
+              "title": "5. Visa para sa mga Ninuno sa UK",
+              "requirements": {
+                "0": "Kung mayroon kang lolo't lola na ipinanganak sa UK, maaari kang maging karapat-dapat para sa 5-taong visa na ito na may pathway to settlement"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "mga kinakailangang dokumento",
+        "icon": "📄",
+        "title": "Mga Kinakailangang Dokumento para sa Relokasyon",
+        "type": "mga kinakailangang dokumento",
+        "content": {
+          "intro": "Ang mga kinakailangan sa dokumento ay nag-iiba depende sa uri ng visa, ngunit karaniwang kasama ang:",
+          "documents": {
+            "0": "Balidong pasaporte ng US (na may bisa nang hindi bababa sa 6 na buwan)",
+            "1": "Mga form ng aplikasyon para sa visa at mga resibo ng pagbabayad",
+            "2": "Impormasyong biometric (mga fingerprint at larawan)",
+            "3": "Patunay ng kahusayan sa wikang Ingles",
+            "4": "Mga dokumentong pinansyal na nagpapakita ng sapat na pondo",
+            "5": "Sertipiko ng alok ng trabaho at sponsorship (para sa mga work visa)",
+            "6": "Mga resulta ng pagsusuri sa Tuberculosis (TB) (kung mananatili nang higit sa 6 na buwan)",
+            "7": "Patunay ng mga kaayusan sa tirahan"
+          },
+          "proTip": {
+            "label": "Tip ng propesyonal",
+            "text": "Simulan nang maaga ang pagkolekta ng mga dokumentong ito, dahil ang ilan (tulad ng mga background check) ay maaaring matagalan bago makuha."
+          }
+        }
+      },
+      {
+        "id": "mga sikat na lungsod",
+        "icon": "🏙️",
+        "title": "Saan Nakatira ang Karamihan sa mga Amerikano sa UK?",
+        "type": "mga sikat na lungsod",
+        "content": {
+          "intro": "Ang mga Amerikanong lumilipat sa UK ay may posibilidad na magkumpol sa mga sikat na lugar na ito:",
+          "cities": {
+            "0": {
+              "name": "London",
+              "icon": "🌆",
+              "highlights": {
+                "0": "Pinakasikat na destinasyon, lalo na sa mga lugar tulad ng Kensington, Chelsea, at Notting Hill",
+                "1": "Pandaigdigang sentro ng pananalapi na may iba't ibang oportunidad sa trabaho",
+                "2": "Masiglang tanawing pangkultura ngunit mas mataas na halaga ng pamumuhay"
+              }
+            },
+            "1": {
+              "name": "Oxford at Cambridge",
+              "icon": "📚",
+              "highlights": {
+                "0": "Mga bayan sa unibersidad na may mga pagkakataon sa akademiko at pananaliksik",
+                "1": "Makasaysayang arkitektura at malalakas na komunidad ng mga intelektwal",
+                "2": "Magandang kalidad ng buhay, ngunit maaaring magastos ang pabahay"
+              }
+            },
+            "2": {
+              "name": "Manchester",
+              "icon": "🏭",
+              "highlights": {
+                "0": "Pangunahing sentro ng teknolohiya at media na may lumalaking komunidad ng mga Amerikanong expat",
+                "1": "Mas abot-kaya kaysa sa London na may mahusay na mga handog na kultural",
+                "2": "Tahanan ng BBC North at MediaCityUK"
+              }
+            },
+            "3": {
+              "name": "Edinburgh",
+              "icon": "🏰",
+              "highlights": {
+                "0": "Kabisera ng Scotland na may nakamamanghang arkitektura at malakas na sektor sa pananalapi",
+                "1": "Sikat sa mga Amerikano sa larangan ng pananalapi, teknolohiya, at edukasyon",
+                "2": "Napakahusay na kalidad ng buhay na may masiglang kultural na tanawin"
+              }
+            }
+          },
+          "risingLocations": {
+            "title": "Mga Lumalagong Lokasyon",
+            "icon": "💼",
+            "locations": {
+              "0": {
+                "name": "Bristol",
+                "description": "Maunlad na malikhain at teknolohikal na eksena na may mahusay na kalidad ng buhay"
+              },
+              "1": {
+                "name": "Birmingham",
+                "description": "Papataas ang popularidad dahil sa lumalagong ekonomiya at mas mababang gastos sa pamumuhay"
+              },
+              "2": {
+                "name": "Glasgow",
+                "description": "Pinakamalaking lungsod sa Scotland na nag-aalok ng abot-kayang presyo at mga atraksyong pangkultura"
+              },
+              "3": {
+                "name": "Cardiff",
+                "description": "Kabisera ng Wales na may lumalaking oportunidad sa trabaho at mas mababang halaga ng pamumuhay"
+              }
+            }
+          }
+        }
+      },
+      {
+        "id": "gastos sa pamumuhay",
+        "icon": "💷",
+        "title": "Paghahambing ng Halaga ng Pamumuhay: UK vs USA",
+        "type": "gastos sa pamumuhay",
+        "content": {
+          "table": {
+            "headers": {
+              "expense": "Gastos",
+              "uk": "UK (average)",
+              "usa": "Estados Unidos (average)"
+            },
+            "rows": {
+              "0": {
+                "expense": "Upa (1BR sa sentro ng lungsod)",
+                "uk": "£800–£1,500/buwan",
+                "usa": "$1,500–$2,000",
+                "ukHighlight": false
+              },
+              "1": {
+                "expense": "Pangangalagang pangkalusugan",
+                "uk": "Karamihan ay libre sa pamamagitan ng NHS",
+                "usa": "$300–$600/buwan",
+                "ukHighlight": true
+              },
+              "2": {
+                "expense": "Mga Utility (buwanang)",
+                "uk": "£150–£200",
+                "usa": "$150–$200",
+                "ukHighlight": false
+              },
+              "3": {
+                "expense": "Transportasyon",
+                "uk": "£65–£150/buwan",
+                "usa": "$70–$150 + gastusin sa kotse",
+                "ukHighlight": true
+              },
+              "4": {
+                "expense": "Kainan sa labas (para sa 2 tao)",
+                "uk": "£40–£80",
+                "usa": "$50–$100",
+                "ukHighlight": false
+              },
+              "5": {
+                "expense": "Mas Mataas na Edukasyon",
+                "uk": "£9,250/taon (domestikong)",
+                "usa": "$10,000–$40,000/taon",
+                "ukHighlight": true
+              }
+            }
+          },
+          "conclusion": "Malaki ang pagkakaiba-iba ng halaga ng pamumuhay sa pagitan ng London at iba pang mga rehiyon ng UK. Bagama't ang mga presyo sa London ay kapantay ng mga pangunahing lungsod sa US tulad ng New York at San Francisco, ang ibang mga rehiyon ng UK ay nag-aalok ng mas mababang halaga ng pamumuhay."
+        }
+      },
+      {
+        "id": "pangangalagang pangkalusugan",
+        "icon": "🏥",
+        "title": "Pangangalagang pangkalusugan sa UK",
+        "type": "pangangalagang pangkalusugan",
+        "content": {
+          "intro": "Ang National Health Service (NHS) ng UK ay nagbibigay ng komprehensibong pangangalagang pangkalusugan na libre sa oras na magamit ito ng mga residente, na isang malaking bentahe para sa mga Amerikanong sanay sa mataas na gastos sa pangangalagang pangkalusugan.",
+          "nhsAccess": {
+            "title": "Pag-access sa NHS para sa mga Imigrante",
+            "points": {
+              "0": "Karamihan sa mga aplikasyon para sa visa para sa mga pananatili nang higit sa 6 na buwan ay nangangailangan ng pagbabayad ng Immigration Health Surcharge (IHS)",
+              "1": "Kasalukuyang bayad sa IHS: £1,035 bawat taon para sa karamihan ng mga aplikante ng visa para sa mga nasa hustong gulang",
+              "2": "Kapag nabayaran na, may karapatan ka na sa karamihan ng mga serbisyo ng NHS (hindi kasama ang ilang serbisyo sa ngipin at optika)",
+              "3": "Magparehistro sa isang lokal na General Practitioner (GP) kapag naayos na"
+            }
+          },
+          "conclusion": "Mayroon ding pribadong pangangalagang pangkalusugan at ang ilang mga employer ay nag-aalok ng pribadong health insurance bilang isang benepisyo."
+        }
+      },
+      {
+        "id": "wika",
+        "icon": "🗣️",
+        "title": "Mga Tip sa Wika at Kultura",
+        "type": "wika",
+        "content": {
+          "intro": "Sa kabila ng pagbabahagi ng isang wika, may mga pagkakaiba sa kultura na dapat malaman ng mga Amerikano:",
+          "differences": {
+            "title": "Ingles na Briton vs. Ingles na Amerikano",
+            "vocabulary": {
+              "title": "Mga Pagkakaiba sa Bokabularyo:",
+              "examples": {
+                "0": "Apartment → Flat",
+                "1": "Elevator → Elevator",
+                "2": "Bangketa → Bangketa",
+                "3": "Linya → Pila",
+                "4": "French fries → Pritong patatas",
+                "5": "Mga Pritong Patatas → Mga Pritong Patatas"
+              }
+            },
+            "cultural": {
+              "title": "Mga Pagkakaiba sa Kultura:",
+              "points": {
+                "0": "Ang katatawanan ng mga Briton ay may posibilidad na maging mas ironic at nakakahiya sa sarili",
+                "1": "Ang pagiging magalang at payak ay lubos na pinahahalagahan",
+                "2": "Ang pagiging direkta ay minsang maituturing na kabastusan",
+                "3": "Ang pagpila (paghihintay sa pila) ay sineseryoso"
+              }
+            }
+          },
+          "conclusion": "Ang mga kaugaliang panlipunan ng mga Briton ay maaaring mukhang pamilyar ngunit kadalasan ay may mga bahagyang pagkakaiba. Ang mga Briton ay may posibilidad na mas maging tahimik sa simula ngunit nagiging mas mabait sa paglipas ng panahon."
+        }
+      },
+      {
+        "id": "gumagalaw",
+        "icon": "📦",
+        "title": "Paglipat at Pagpapadala mula sa US",
+        "type": "gumagalaw",
+        "content": {
+          "intro": "Ang pagpaplano ng iyong pisikal na paglipat sa UK ay nangangailangan ng maingat na pagsasaalang-alang:",
+          "shipping": {
+            "title": "Mga Opsyon sa Pagpapadala",
+            "options": {
+              "0": {
+                "type": "Kargamento sa himpapawid",
+                "description": "Mas mabilis (5-10 araw) ngunit mas mahal"
+              },
+              "1": {
+                "type": "Kargamento sa dagat",
+                "description": "Mas abot-kaya ngunit mas mabagal (4-8 na linggo)"
+              },
+              "2": {
+                "type": "Mga internasyonal na tagapaglipat",
+                "description": "May mga opsyon na may kumpletong serbisyo kasama ang pag-iimpake at paghawak sa customs"
+              }
+            }
+          },
+          "customs": {
+            "title": "Mga Pagsasaalang-alang sa Customs",
+            "considerations": {
+              "0": "Maaaring i-import ang mga personal na gamit nang walang duty kung pagmamay-ari mo na ang mga ito nang mahigit 6 na buwan.",
+              "1": "Kumpletuhin ang aplikasyon para sa Transfer of Residence (ToR) bago ipadala",
+              "2": "Ang ilang mga bagay tulad ng ilang mga pagkain, halaman, at gamot ay pinaghihigpitan",
+              "3": "Ang mga alagang hayop ay nangangailangan ng microchip, pagbabakuna, at mga pasaporte ng alagang hayop"
+            }
+          },
+          "conclusion": "Isaalang-alang nang mabuti kung ano ang mga dapat dalhin—maraming elektronikong kagamitan sa bahay ang mangangailangan ng mga voltage converter (UK: 230V vs US: 120V), at ang mga muwebles ay maaaring hindi magkasya sa mga karaniwang mas maliliit na tahanan sa UK."
+        }
+      },
+      {
+        "id": "pagbabangko",
+        "icon": "💳",
+        "title": "Pagbabangko at Pananalapi",
+        "type": "pagbabangko",
+        "content": {
+          "intro": "Ang pag-set up ng iyong buhay pinansyal sa UK ay isang mahalagang maagang hakbang:",
+          "ukAccount": {
+            "title": "Pagbubukas ng Bank Account sa UK",
+            "points": {
+              "0": "Ayon sa kaugalian, kinakailangan ang patunay ng address sa UK, na lumilikha ng sitwasyong catch-22 para sa mga bagong dating",
+              "1": "Nag-aalok ang mga digital na bangko tulad ng Monzo, Starling, at Revolut ng mas madaling mga opsyon para sa mga baguhan",
+              "2": "Ang ilang mga internasyonal na bangko (HSBC, Barclays) ay nag-aalok ng mga serbisyo sa internasyonal na account",
+              "3": "Mga kinakailangang dokumento: pasaporte, visa, patunay ng address, mga detalye ng trabaho"
+            }
+          },
+          "usUkFinances": {
+            "title": "Pamamahala ng Pananalapi ng US-UK",
+            "points": {
+              "0": "Panatilihin ang iyong bank account sa US para sa mga patuloy na obligasyon sa US",
+              "1": "Isaalang-alang ang mga serbisyong tulad ng Wise (dating TransferWise) para sa mga matipid na pagpapadala ng pera",
+              "2": "Ang mga mamamayan ng US ay dapat maghain ng mga tax return sa US anuman ang tirahan (Mayroon ding pagbubukod sa kita na kinita sa ibang bansa)",
+              "3": "Ang kasunduan sa buwis ng US-UK ay nakakatulong upang maiwasan ang dobleng pagbubuwis"
+            }
+          },
+          "conclusion": "Ang pagbuo ng credit history sa UK ay nangangailangan ng oras, kaya magplano nang naaayon. Ang mga credit score ay hindi nalilipat sa ibang bansa, at magsisimula ka mula sa simula sa sistema ng kredito sa UK."
+        }
+      }
+    ],
+    "checklist": {
+      "title": "Checklist Bago ang Paglipat para sa mga Amerikano",
+      "items": [
+        "Mag-apply para sa naaangkop na visa nang maaga",
+        "Magbayad ng Surcharge sa Kalusugan ng Imigrasyon (IHS)",
+        "Magbukas ng bank account sa UK (o maghanda ng mga alternatibo)",
+        "Magsaliksik ng pabahay sa iyong gustong lokasyon",
+        "Mag-set up ng internasyonal na serbisyo sa pagpapadala ng pera",
+        "Ayusin ang pagpapadala o pag-iimbak ng mga gamit",
+        "I-convert ang mahahalagang dokumento sa format na UK",
+        "Mga implikasyon sa buwis sa pananaliksik (US-UK)",
+        "Sumali sa mga komunidad at forum ng mga expat para sa payo at koneksyon"
+      ]
+    },
+    "resources": {
+      "title": "Mga Karagdagang Mapagkukunan",
+      "categories": [
+        {
+          "title": "Opisyal na Impormasyon",
+          "links": {
+            "0": "Impormasyon sa Visa ng Gobyerno ng UK",
+            "1": "Mga Alituntunin sa Tanggapan ng Tahanan ng UK",
+            "2": "Embahada ng Estados Unidos sa UK"
+          }
+        },
+        {
+          "title": "Mga Komunidad ng Expat",
+          "links": {
+            "0": "Mga Grupo sa Facebook ng mga Amerikano sa UK",
+            "1": "Mga Kabanata ng InterNations UK",
+            "2": "Mga Grupo ng Pagkikita para sa mga Expat"
+          }
+        },
+        {
+          "title": "Mga Praktikal na Serbisyo",
+          "links": {
+            "0": "Mga Internasyonal na Kumpanya ng Paglipat",
+            "1": "Mga Website ng Akomodasyon sa UK",
+            "2": "Mga Serbisyo sa Buwis para sa mga Expat"
+          }
+        }
+      ]
+    }
+  },
+  "immigrationTimeline": {
+    "title": "Timeline ng Imigrasyon ng US patungong UK",
+    "subtitle": "Karaniwang timeline para sa iba't ibang uri ng visa",
+    "visaTimelines": [
+      {
+        "visaType": "Visa para sa Bihasang Manggagawa",
+        "totalTime": "3-6 na buwan",
+        "phases": {
+          "0": {
+            "phase": "Paghahanap at Alok ng Trabaho",
+            "duration": "1-4 na buwan",
+            "description": "Paghahanap ng trabaho gamit ang sponsorship"
+          },
+          "1": {
+            "phase": "Aplikasyon sa Visa",
+            "duration": "3-8 linggo",
+            "description": "Oras ng pagproseso ng aplikasyon"
+          },
+          "2": {
+            "phase": "Desisyon at Paglalakbay",
+            "duration": "1-2 linggo",
+            "description": "Pagtanggap ng desisyon at pagpaplano ng paglalakbay"
+          }
+        }
+      },
+      {
+        "visaType": "Visa ng Estudyante",
+        "totalTime": "2-4 na buwan",
+        "phases": {
+          "0": {
+            "phase": "Aplikasyon sa Unibersidad",
+            "duration": "1-3 buwan",
+            "description": "Pag-aaplay at pagtanggap"
+          },
+          "1": {
+            "phase": "Aplikasyon sa Visa",
+            "duration": "3-6 na linggo",
+            "description": "Pagproseso ng visa ng estudyante"
+          },
+          "2": {
+            "phase": "Paghahanda",
+            "duration": "2-4 na linggo",
+            "description": "Mga kaayusan sa akomodasyon at paglalakbay"
+          }
+        }
+      }
+    ]
+  },
+  "culturalAdaptation": {
+    "title": "Gabay sa Adaptasyon sa Kultura",
+    "subtitle": "Pagsasaayos sa buhay Briton bilang isang Amerikano",
+    "areas": [
+      {
+        "category": "Mga Pakikipag-ugnayang Panlipunan",
+        "tips": {
+          "0": "Ang maliit na pag-uusap tungkol sa panahon ay tunay na mahalaga",
+          "1": "Normal lang ang madalas na paghingi ng tawad ('pasensya na')",
+          "2": "Mahalaga ang personal na espasyo at etiketa sa pagpila",
+          "3": "Ang kultura ng pub ay mahalaga sa buhay panlipunan"
+        }
+      },
+      {
+        "category": "Kultura sa Lugar ng Trabaho",
+        "tips": {
+          "0": "Mas pormal na komunikasyon kaysa sa karaniwang mga lugar ng trabaho sa US",
+          "1": "Karaniwan ang mas mahahabang pahinga sa tanghalian at tsaa",
+          "2": "Mas maluwag ang oras ng bakasyon/holiday",
+          "3": "Ang balanse sa trabaho at buhay ay karaniwang mas protektado"
+        }
+      },
+      {
+        "category": "Pang-araw-araw na Buhay",
+        "tips": {
+          "0": "Maaasahan ang pampublikong transportasyon ngunit maaaring magastos",
+          "1": "Magkakaiba ang mga gawi sa pamimili ng grocery (mas maliliit, mas madalas na biyahe)",
+          "2": "Magkakaiba ang mga sukat at sukat ng damit",
+          "3": "Hindi gaanong malawak ang kultura ng pagbibigay ng tip kumpara sa US"
+        }
+      }
+    ]
+  },
+  "financialPlanning": {
+    "title": "Pagpaplano sa Pananalapi para sa Iyong Paglipat",
+    "subtitle": "Pagbabadyet para sa iyong paglipat mula US patungong UK",
+    "categories": [
+      {
+        "stage": "Mga Gastos Bago ang Paglipat",
+        "totalRange": "$3,000 - $8,000",
+        "items": {
+          "0": {
+            "item": "Mga aplikasyon at bayarin sa visa",
+            "cost": "$1,500 - $3,500"
+          },
+          "1": {
+            "item": "Mga medikal na eksaminasyon at pagsusuri",
+            "cost": "$200 - $500"
+          },
+          "2": {
+            "item": "Paghahanda ng dokumento at mga bayarin sa legal",
+            "cost": "$500 - $2,000"
+          },
+          "3": {
+            "item": "Mga booking ng flight",
+            "cost": "$800 - $2,000"
+          }
+        }
+      },
+      {
+        "stage": "Mga Gastos sa Paglipat",
+        "totalRange": "$2,000 - $15,000",
+        "items": {
+          "0": {
+            "item": "Pagpapadala ng mga gamit sa bahay",
+            "cost": "$2,000 - $8,000"
+          },
+          "1": {
+            "item": "Pansamantalang tirahan",
+            "cost": "$1,000 - $4,000"
+          },
+          "2": {
+            "item": "Paglilipat ng alagang hayop (kung naaangkop)",
+            "cost": "$1,000 - $3,000"
+          }
+        }
+      },
+      {
+        "stage": "Mga Gastos sa Pagbabayad",
+        "totalRange": "$3,000 - $10,000",
+        "items": {
+          "0": {
+            "item": "Mga deposito sa pabahay at upa",
+            "cost": "$2,000 - $6,000"
+          },
+          "1": {
+            "item": "Paunang paglalagay at pag-aayos ng mga kagamitan",
+            "cost": "$1,000 - $3,000"
+          },
+          "2": {
+            "item": "Mga gastusin sa pamumuhay sa unang buwan",
+            "cost": "$1,500 - $3,500"
+          }
+        }
+      }
+    ]
+  },
+  "legalConsiderations": {
+    "title": "Mga Legal na Konsiderasyon para sa mga Amerikano",
+    "subtitle": "Mahahalagang legal na aspeto ng paglipat sa UK",
+    "topics": [
+      {
+        "area": "Mga Obligasyon sa Buwis",
+        "description": "Ang mga mamamayan ng US ay dapat maghain ng mga tax return ng US anuman ang tirahan",
+        "keyPoints": {
+          "0": "Maaaring isama ang kita mula sa ibang bansa hanggang ~$120,000",
+          "1": "Pinipigilan ng kasunduan sa buwis ng UK-US ang karamihan sa dobleng pagbubuwis",
+          "2": "Isaalang-alang ang propesyonal na payo sa buwis para sa mga kumplikadong sitwasyon",
+          "3": "Iulat ang mga dayuhang bank account kung ang mga balanse ay lumampas sa $10,000"
+        }
+      },
+      {
+        "area": "Mga Karapatan sa Pagboto",
+        "description": "Pag-unawa sa iyong mga karapatan sa pagboto sa parehong bansa",
+        "keyPoints": {
+          "0": "Panatilihin ang mga karapatan sa pagboto ng US sa pamamagitan ng mga absentee ballot",
+          "1": "Posible ang mga lokal na halalan sa UK pagkatapos ng pagpaparehistro ng paninirahan",
+          "2": "Nawala ang pagkamamamayan ng EU matapos ang Brexit ay nakakaapekto sa ilang karapatan",
+          "3": "Isaalang-alang ang mga implikasyon ng dual citizenship"
+        }
+      },
+      {
+        "area": "Katayuang Legal",
+        "description": "Pag-unawa sa iyong legal na katayuan at mga karapatan",
+        "keyPoints": {
+          "0": "Ang mga kondisyon ng visa ay tumutukoy sa mga karapatan sa trabaho at paglalakbay",
+          "1": "Ang landas patungo sa permanenteng paninirahan ay nag-iiba ayon sa uri ng visa",
+          "2": "Posible ang pagkamamamayang British pagkatapos ng 5+ taon ng paninirahan",
+          "3": "Inirerekomenda ang payong legal para sa mga kumplikadong sitwasyon"
+        }
+      }
+    ]
+  },
+  "petsToUkGuide": {
+    "header": {
+      "title": "Paglipat kasama ang mga Alagang Hayop patungong UK",
+      "subtitle": "Kumpletong gabay sa pagdadala ng iyong minamahal na kasama sa kanilang bagong tahanan sa Britanya - mga kinakailangan, proseso, at paninirahan dito"
+    },
+    "navigation": {
+      "title": "Gabay sa Imigrasyon ng Alagang Hayop sa UK"
+    },
+    "sections": [
+      {
+        "id": "mga kinakailangan",
+        "icon": "✅",
+        "title": "Mga Pangunahing Kinakailangan",
+        "type": "mga kinakailangan",
+        "content": {
+          "keyRequirements": {
+            "0": {
+              "title": "Microchip",
+              "description": "Dapat lagyan ng microchip ang iyong alagang hayop gamit ang ISO 11784/11785 compliant chip bago ibigay ang anumang bakuna.",
+              "number": "1"
+            },
+            "1": {
+              "title": "Pagbabakuna sa Rabies",
+              "description": "Dapat ibigay nang hindi bababa sa 21 araw bago ang paglalakbay at dapat itong balido sa oras ng paglalakbay.",
+              "number": "2"
+            },
+            "2": {
+              "title": "Sertipiko sa Kalusugan ng Hayop (AHC)",
+              "description": {
+                "0": "Dapat ibigay ng isang opisyal na beterinaryo sa inyong bansa sa loob ng 10 araw mula sa paglalakbay sa UK.",
+                "1": "May bisa para makapasok sa UK nang hanggang 4 na buwan pagkatapos mailabas.",
+                "2": "Kailangan lang kung wala kang EU Pet Passport na inisyu sa EU o Northern Ireland."
+              },
+              "number": "3"
+            },
+            "3": {
+              "title": "Paggamot sa Tapeworm",
+              "note": "(mga aso lamang)",
+              "description": "Ang mga aso ay dapat gamutin para sa tapeworm 24-120 oras (1-5 araw) bago dumating sa UK.",
+              "number": "4"
+            }
+          }
+        }
+      },
+      {
+        "id": "mga ruta ng pasukan",
+        "icon": "🛂",
+        "title": "Mga Ruta ng Pagpasok",
+        "type": "mga ruta ng pasukan",
+        "content": {
+          "approvedEntry": {
+            "title": "Mga Naaprubahang Puntos ng Pagpasok",
+            "description": "Maaari lamang makapasok ang mga alagang hayop sa UK sa pamamagitan ng mga partikular na aprubadong ruta.",
+            "routes": {
+              "0": {
+                "title": "Paglalakbay sa Himpapawid",
+                "description": "Mga pangunahing paliparan tulad ng Heathrow, Gatwick, Manchester, Edinburgh"
+              },
+              "1": {
+                "title": "Eurotunnel",
+                "description": "Folkestone (daan sa Calais)"
+              },
+              "2": {
+                "title": "Mga Daungan ng Ferry",
+                "description": "Dover, Portsmouth, Hull, Harwich"
+              },
+              "3": {
+                "title": "Eurostar",
+                "description": "Mga asong pantulong lamang ang pinapayagan"
+              }
+            }
+          },
+          "warning": "Dapat kang dumating sa pamamagitan ng isang aprubadong ruta kasama ang iyong alagang hayop o maaaring isailalim sa kuwarentenas ang iyong alagang hayop nang hanggang 4 na buwan."
+        }
+      },
+      {
+        "id": "paglalakbay",
+        "icon": "✈️",
+        "title": "Mga Opsyon sa Paglalakbay",
+        "type": "paglalakbay",
+        "content": {
+          "travelOptions": {
+            "0": {
+              "icon": "🐱",
+              "ariaLabel": "maliit na alagang hayop",
+              "title": "Sa loob ng cabin",
+              "description": "Limitadong mga opsyon - karamihan sa mga flight papuntang UK ay hindi pinapayagan ang mga alagang hayop sa cabin maliban sa mga alagang hayop."
+            },
+            "1": {
+              "icon": "🐕",
+              "ariaLabel": "malaking alagang hayop",
+              "title": "Bilang Kargamento",
+              "description": "Pinakakaraniwang paraan para sa pagpapalipad ng mga alagang hayop papuntang UK. Karaniwang inaasikaso ng mga espesyalistang departamento ng paghawak ng hayop."
+            },
+            "2": {
+              "icon": "🚗",
+              "ariaLabel": "kotse",
+              "title": "Eurotunnel/Ferry",
+              "description": "Sikat na opsyon kung galing sa Europa. Maaaring manatili ang mga alagang hayop kasama ang mga may-ari sa mga sasakyan."
+            }
+          },
+          "costConsiderations": {
+            "title": "Mga Pagsasaalang-alang sa Gastos",
+            "costs": {
+              "0": "Mga byahe: £400-£800 para sa transportasyon ng kargamento",
+              "1": "Eurotunnel: £20-£30 bawat alagang hayop bilang karagdagan sa bayad sa sasakyan",
+              "2": "Mga Ferry: £15-£30 bawat alagang hayop depende sa ruta",
+              "3": "Sertipiko sa Kalusugan: £100-£175"
+            }
+          },
+          "warning": "Palaging sumangguni sa iyong partikular na airline o kompanya ng transportasyon para sa kanilang patakaran sa alagang hayop, dahil maaaring magbago ang mga kinakailangan."
+        }
+      },
+      {
+        "id": "proseso ng pagdating",
+        "icon": "🛬",
+        "title": "Proseso ng Pagdating",
+        "type": "proseso ng pagdating",
+        "content": {
+          "intro": "Ang UK ay may partikular na proseso para sa mga alagang hayop na dumarating mula sa ibang bansa.",
+          "documentChecks": {
+            "title": "Mga Pagsusuri ng Dokumento",
+            "items": {
+              "0": "Pag-verify ng microchip",
+              "1": "Sertipiko sa Kalusugan ng Hayop",
+              "2": "Rekord ng pagbabakuna ng rabies",
+              "3": "Paggamot sa tapeworm (mga aso)"
+            }
+          },
+          "processFlow": {
+            "title": "Daloy ng Proseso",
+            "steps": {
+              "0": "Dumating sa naaprubahang pasukan",
+              "1": "Ipakita ang iyong alagang hayop at mga dokumento sa mga opisyal",
+              "2": "I-scan ang microchip ng alagang hayop upang mapatunayan ang pagkakakilanlan",
+              "3": "Susuriing mabuti ang mga dokumento",
+              "4": "Kung maayos ang lahat, papayagan nang pumasok ang iyong alagang hayop."
+            }
+          },
+          "warning": "Kung hindi kumpleto ang mga dokumento o tila may sakit ang iyong alagang hayop, maaari silang ikuwarentenas sa iyong gastos (hanggang 4 na buwan)."
+        }
+      },
+      {
+        "id": "pagkatapos ng pagdating",
+        "icon": "🏠",
+        "title": "Pamumuhay sa UK kasama ang mga Alagang Hayop",
+        "type": "pagkatapos ng pagdating",
+        "content": {
+          "intro": "Kapag nasa UK na, may ilang bagay na dapat isaalang-alang para sa kapakanan ng iyong alagang hayop.",
+          "livingAspects": {
+            "0": {
+              "icon": "🏥",
+              "title": "Pangangalaga sa Beterinaryo",
+              "description": "Magparehistro sa isang lokal na beterinaryo sa lalong madaling panahon. Ang UK ay may mahusay na pangangalaga sa beterinaryo ngunit maaaring mataas ang mga gastos - inirerekomenda ang pet insurance.",
+              "cost": "Karaniwang konsultasyon sa beterinaryo: £30-£60"
+            },
+            "1": {
+              "icon": "📋",
+              "title": "Pagpaparehistro",
+              "description": "I-update ang mga detalye ng microchip ng iyong alagang hayop gamit ang iyong address sa UK. Dapat ding nakarehistro ang mga aso sa lokal na konseho at magsuot ng tag na may mga detalye ng iyong pakikipag-ugnayan."
+            },
+            "2": {
+              "icon": "🏞️",
+              "title": "Ehersisyo at mga Espasyo",
+              "description": "Maraming parke at lugar sa kanayunan na pinapayagan ang mga alagang hayop ang UK. Karamihan sa mga bayan ay may nakalaang lugar para sa pag-eehersisyo ng aso, ngunit palaging suriin ang mga lokal na patakaran tungkol sa paglalagay ng mga tali sa mga aso."
+            },
+            "3": {
+              "icon": "🏠",
+              "title": "Pabahay",
+              "description": "Maraming paupahan sa UK ang may mga patakarang 'bawal ang mga alagang hayop', bagama't nagbabago na ito. Maghandang magbayad ng mas mataas na deposito o 'upa para sa alagang hayop' sa ilang mga ari-arian."
+            }
+          },
+          "firstWeekChecklist": {
+            "title": "Checklist sa Unang Linggo",
+            "items": {
+              "0": "Magparehistro sa isang lokal na beterinaryo",
+              "1": "I-update ang rehistrasyon ng microchip gamit ang address sa UK",
+              "2": "Irehistro ang iyong aso sa lokal na konseho (kung naaangkop)",
+              "3": "Tag ng ID ng pagbili na may mga detalye sa pakikipag-ugnayan sa UK",
+              "4": "Magsaliksik ng mga opsyon sa seguro para sa alagang hayop"
+            }
+          }
+        }
+      },
+      {
+        "id": "mga mapagkukunan",
+        "icon": "📚",
+        "title": "Mga Kapaki-pakinabang na Mapagkukunan",
+        "type": "mga mapagkukunan",
+        "content": {
+          "officialInfo": {
+            "title": "Opisyal na Impormasyon",
+            "resources": {
+              "0": {
+                "title": "Mga Alituntunin sa Paglalakbay ng Alagang Hayop ng Gobyerno ng UK",
+                "description": "Mga opisyal na tuntunin at kinakailangan para sa pagdadala ng mga alagang hayop sa UK"
+              },
+              "1": {
+                "title": "Ahensya ng Kalusugan ng Hayop at Halaman (APHA)",
+                "description": "Kagawaran ng gobyerno na nangangasiwa sa pag-angkat ng mga alagang hayop"
+              },
+              "2": {
+                "title": "Helpline ng Scheme ng Paglalakbay ng Alagang Hayop",
+                "description": "+44 370 241 1710 (Lunes hanggang Biyernes, 8:30am hanggang 5pm oras sa UK)"
+              }
+            }
+          },
+          "petServices": {
+            "title": "Mga Serbisyo sa Alagang Hayop sa UK",
+            "services": {
+              "0": {
+                "category": "Seguro sa Alagang Hayop",
+                "providers": "Paghambingin ang mga provider: PetPlan, Animal Friends, More Than"
+              },
+              "1": {
+                "category": "Mga Kagamitan para sa Alagang Hayop",
+                "providers": "Mga Alagang Hayop sa Bahay, Amazon UK, VetUK"
+              },
+              "2": {
+                "category": "Maghanap ng Beterinaryo",
+                "providers": "Royal College of Veterinary Surgeons: Serbisyong FindAVet"
+              },
+              "3": {
+                "category": "Akomodasyon na Tinatanggap ang Alagang Hayop",
+                "providers": "PetsLets, Airbnb (gamitin ang filter na 'pinapayagan ang mga alagang hayop')"
+              }
+            }
+          }
+        }
+      }
+    ],
+    "sidebar": {
+      "checklist": {
+        "title": "Checklist Bago ang Paglalakbay",
+        "items": [
+          "Lagyan ng microchip ang iyong alagang hayop",
+          "Tiyaking balido ang bakuna laban sa rabies",
+          "Maghintay nang hindi bababa sa 21 araw pagkatapos ng pagbabakuna",
+          "Gamutin ang mga aso para sa tapeworm 1-5 araw bago maglakbay",
+          "Kumuha ng Animal Health Certificate sa loob ng 10 araw mula sa paglalakbay",
+          "Mag-book ng aprubadong ruta ng transportasyon papuntang UK",
+          "Maghanda ng travel carrier (inaprubahan ng airline kung lilipad)"
+        ]
+      },
+      "faq": {
+        "title": "Mga Karaniwang Tanong",
+        "questions": [
+          {
+            "question": "Kailangan ko ba ng pasaporte para sa alagang hayop?",
+            "answer": "Ang mga pasaporte ng alagang hayop ng EU na inisyu sa EU o Northern Ireland ay balido pa rin para makapasok sa UK. Kung hindi, kakailanganin mo ng Animal Health Certificate."
+          },
+          {
+            "question": "May kuwarentenas ba?",
+            "answer": "Hindi kailangan ng kuwarentenas kung natutugunan ang lahat ng mga kinakailangan. Kung hindi matutugunan ang mga kinakailangan, maaaring maharap sa kuwarentenas ang mga alagang hayop nang hanggang 4 na buwan."
+          },
+          {
+            "question": "Anong mga lahi ang ipinagbabawal?",
+            "answer": "Ipinagbabawal ang ilang lahi ng aso sa UK, kabilang ang Pit Bull Terrier, Japanese Tosa, Dogo Argentino, at Fila Brasileiro."
+          },
+          {
+            "question": "Maaari ba akong magdala ng mga kakaibang alagang hayop?",
+            "answer": "Ang mga kakaibang hayop ay may iba't ibang pangangailangan. Marami ang nangangailangan ng mga permit ng CITES at mga partikular na lisensya sa pag-import."
+          }
+        ]
+      }
+    }
+  },
+  "petHealthRequirements": {
+    "title": "Mga Detalyadong Pangangailangan sa Kalusugan",
+    "subtitle": "Mga komprehensibong kinakailangan sa kalusugan at pagbabakuna ayon sa bansang pinagmulan",
+    "categories": [
+      {
+        "region": "Mga Bansa ng EU",
+        "requirements": {
+          "0": {
+            "requirement": "Pasaporte ng Alagang Hayop",
+            "description": "Pasaporte ng alagang hayop ng EU na inisyu sa EU o Northern Ireland",
+            "validity": "Dapat ay napapanahon at balido"
+          },
+          "1": {
+            "requirement": "Pagbabakuna sa Rabies",
+            "description": "Pangunahing pagbabakuna na hindi bababa sa 21 araw ang edad",
+            "validity": "May bisa ayon sa mga alituntunin ng tagagawa"
+          },
+          "2": {
+            "requirement": "Microchip",
+            "description": "Sumusunod sa ISO 11784/11785 bago ang pagbabakuna",
+            "validity": "Dapat mabasa"
+          }
+        }
+      },
+      {
+        "region": "Mga Bansang Hindi Kasama sa EU",
+        "requirements": {
+          "0": {
+            "requirement": "Sertipiko sa Kalusugan ng Hayop",
+            "description": "Inisyu ng opisyal na beterinaryo sa loob ng 10 araw",
+            "validity": "May bisa sa loob ng 4 na buwan para sa pagpasok sa UK"
+          },
+          "1": {
+            "requirement": "Pagbabakuna sa Rabies",
+            "description": "Hindi bababa sa 21 araw bago ang paglalakbay",
+            "validity": "Dapat ay napapanahon sa oras ng paglalakbay"
+          },
+          "2": {
+            "requirement": "Pagsusuri sa Antibody ng Rabies",
+            "description": "Maaaring kailanganin mula sa ilang partikular na bansa",
+            "validity": "Dapat magpakita ng sapat na antas ng antibody"
+          }
+        }
+      }
+    ]
+  },
+  "petTransportGuide": {
+    "title": "Gabay sa Paghahatid ng Alagang Hayop",
+    "subtitle": "Detalyadong impormasyon tungkol sa pagdadala ng mga alagang hayop papuntang UK",
+    "transportMethods": [
+      {
+        "method": "Mga Komersyal na Airline",
+        "suitableFor": "Mga aso at pusa",
+        "process": {
+          "0": "Mag-book ng transportasyon para sa alagang hayop kapag nagbu-book ng iyong flight",
+          "1": "Magbigay ng mga sertipiko sa kalusugan at mga rekord ng pagbabakuna",
+          "2": "Gumamit ng travel carrier na inaprubahan ng IATA",
+          "3": "Dumating sa paliparan 3-4 oras bago umalis",
+          "4": "Paglalakbay ng alagang hayop sa loob ng cargo hold na may kontrol sa klima"
+        },
+        "costs": {
+          "range": "£400-£1,200",
+          "factors": {
+            "0": "Laki at bigat ng alagang hayop",
+            "1": "Distansya ng nilakbay",
+            "2": "Mga patakaran sa eroplano",
+            "3": "Panahon (tugatog vs hindi tugatog)"
+          }
+        },
+        "tips": {
+          "0": "Mag-book nang maaga dahil limitado ang espasyo",
+          "1": "Iwasan ang mga peak season ng paglalakbay kung maaari",
+          "2": "Isaalang-alang ang pagkabalisa at ginhawa ng alagang hayop",
+          "3": "Tiyaking ang carrier ay may tamang sukat"
+        }
+      },
+      {
+        "method": "Mga Serbisyo sa Paglipat ng Alagang Hayop",
+        "suitableFor": "Lahat ng alagang hayop, lalo na ang mga hayop na mahalaga o kinakabahan",
+        "process": {
+          "0": "Kumpletong serbisyo ng transportasyon mula pinto hanggang pinto",
+          "1": "Pangasiwaan ang lahat ng dokumentasyon at logistik",
+          "2": "Magbigay ng espesyal na pangangalaga habang naghahatid",
+          "3": "Mga pasadyang kaayusan sa paglalakbay batay sa mga pangangailangan ng alagang hayop"
+        },
+        "costs": {
+          "range": "£800-£3,000+",
+          "factors": {
+            "0": "Antas ng serbisyong kinakailangan",
+            "1": "Laki ng alagang hayop at mga espesyal na pangangailangan",
+            "2": "Pinagmulan at patutunguhan",
+            "3": "Mga karagdagang serbisyo (pagsakay, atbp.)"
+          }
+        },
+        "tips": {
+          "0": "Masusing saliksikin ang mga kredensyal ng kumpanya",
+          "1": "Basahin ang mga review mula sa ibang mga may-ari ng alagang hayop",
+          "2": "Tiyaking ang kumpanya ay lisensyado at nakaseguro",
+          "3": "Magtanong tungkol sa kanilang karanasan sa iyong uri ng alagang hayop"
+        }
+      }
+    ]
+  },
+  "settlingInGuide": {
+    "title": "Pagpapatira ng Iyong Alagang Hayop sa UK",
+    "subtitle": "Pagtulong sa iyong alagang hayop na umangkop sa kanilang bagong tahanan sa Britanya",
+    "adjustmentTips": [
+      {
+        "category": "Mga Unang Araw",
+        "tips": {
+          "0": "Panatilihing katulad hangga't maaari ang mga nakagawian sa sariling bansa",
+          "1": "Maglaan ng oras para sa pag-aadjust - maaaring stressed ang mga alagang hayop",
+          "2": "Unti-unting nagpapakilala ng mga bagong kapaligiran at karanasan",
+          "3": "Maingat na subaybayan ang mga gawi sa pagkain at pagtulog"
+        }
+      },
+      {
+        "category": "Pag-aangkop sa Klima",
+        "tips": {
+          "0": "Maaaring ibang-iba ang panahon sa UK - maghanda para sa ulan",
+          "1": "Ang ilang mga alagang hayop ay maaaring mangailangan ng oras upang umangkop sa mas malamig na temperatura",
+          "2": "Magbigay ng angkop na higaan at tirahan",
+          "3": "Isaalang-alang ang mga pana-panahong pagbabago sa mga oras ng liwanag ng araw"
+        }
+      },
+      {
+        "category": "Pagsasama-samang Panlipunan",
+        "tips": {
+          "0": "Sumali sa mga lokal na grupo at komunidad ng alagang hayop",
+          "1": "Unti-unting gamitin ang mga parke ng aso at mga lugar na pinapayagan ang mga alagang hayop",
+          "2": "Isaalang-alang ang mga klase sa pagsasanay upang makatulong sa mga pag-uugaling partikular sa UK",
+          "3": "Maging matiyaga sa mga pagsasaayos ng house training"
+        }
+      }
+    ],
+    "ukSpecificConsiderations": [
+      {
+        "topic": "Panahon at Ehersisyo",
+        "details": {
+          "0": "Madalas umuulan sa UK - mamuhunan sa mga kapote para sa alagang hayop",
+          "1": "Ang mas maiikling araw ng taglamig ay nakakaapekto sa mga gawain sa ehersisyo",
+          "2": "Maraming parke ang may mga partikular na lugar para sa ehersisyo ng aso",
+          "3": "Nag-iiba ang mga paghihigpit sa dalampasigan ayon sa panahon at lokasyon"
+        }
+      },
+      {
+        "topic": "Pabahay at Paupahan",
+        "details": {
+          "0": "Maraming paupahan sa UK ang may mahigpit na mga patakaran na bawal ang alagang hayop",
+          "1": "Ang mga deposito para sa alagang hayop ay karaniwang mula £200-£500",
+          "2": "May mga restriksyon sa lahi sa mga paupahang lugar",
+          "3": "Hindi gaanong karaniwan ang pag-access sa hardin/bakuran sa mga sentro ng lungsod"
+        }
+      },
+      {
+        "topic": "Mga Kinakailangang Legal",
+        "details": {
+          "0": "Dapat magsuot ng kwelyo at tag ang mga aso na may mga detalye ng may-ari",
+          "1": "May mga lugar na nangangailangan ng tali para sa mga aso sa publiko",
+          "2": "Ang Batas sa mga Mapanganib na Aso ay nalalapat sa ilang partikular na lahi",
+          "3": "Dapat linisin ang dumi ng alagang hayop - may mga multa"
+        }
+      }
+    ]
+  },
+  "costBreakdown": {
+    "title": "Kumpletong Pagbabahagi ng Gastos",
+    "subtitle": "Lahat ng gastusin na kasama sa pagdadala ng mga alagang hayop sa UK",
+    "preTravel": {
+      "title": "Mga Gastos Bago ang Paglalakbay",
+      "items": [
+        {
+          "item": "Pag-microchip",
+          "cost": "£15-£30",
+          "notes": "Isang beses na gastos, kinakailangan bago ang pagbabakuna"
+        },
+        {
+          "item": "Pagbabakuna sa Rabies",
+          "cost": "£50-£100",
+          "notes": "Kailangang maghintay ng 21 araw bago maglakbay"
+        },
+        {
+          "item": "Sertipiko sa Kalusugan ng Hayop",
+          "cost": "£100-£175",
+          "notes": "Dapat ay nasa loob ng 10 araw mula sa paglalakbay"
+        },
+        {
+          "item": "Paggamot sa Tapeworm (mga aso)",
+          "cost": "£20-£40",
+          "notes": "1-5 araw bago ang paglalakbay"
+        },
+        {
+          "item": "Tagapagdala ng Paglalakbay",
+          "cost": "£50-£200",
+          "notes": "Inaprubahan ng IATA para sa paglalakbay sa himpapawid"
+        }
+      ]
+    },
+    "transport": {
+      "title": "Mga Gastos sa Transportasyon",
+      "items": [
+        {
+          "item": "Transportasyon ng Alagang Hayop sa Airline",
+          "cost": "£400-£800",
+          "notes": "Nag-iiba-iba depende sa airline at laki ng alagang hayop"
+        },
+        {
+          "item": "Serbisyo sa Paglipat ng Alagang Hayop",
+          "cost": "£800-£3,000",
+          "notes": "Opsyon na may kumpletong serbisyo"
+        },
+        {
+          "item": "Bayad sa Alagang Hayop sa Eurotunnel",
+          "cost": "£20-£30",
+          "notes": "Dagdag na gastos sa transportasyon ng sasakyan"
+        },
+        {
+          "item": "Bayad sa Alagang Hayop sa Ferry",
+          "cost": "£15-£30",
+          "notes": "Nag-iiba-iba ayon sa ruta at operator"
+        }
+      ]
+    },
+    "postArrival": {
+      "title": "Mga Gastos Pagkatapos ng Pagdating",
+      "items": [
+        {
+          "item": "Pagpaparehistro/Pagsusuri sa Beterinaryo",
+          "cost": "£30-£60",
+          "notes": "Paunang konsultasyon"
+        },
+        {
+          "item": "Seguro sa Alagang Hayop",
+          "cost": "£10-£50/buwan",
+          "notes": "Nag-iiba-iba ayon sa saklaw at alagang hayop"
+        },
+        {
+          "item": "Mga Kagamitan para sa Alagang Hayop",
+          "cost": "£50-£200",
+          "notes": "Pagkain, laruan, higaan, atbp."
+        },
+        {
+          "item": "Lokal na Pagpaparehistro",
+          "cost": "£15-£25",
+          "notes": "Lisensya sa aso kung kinakailangan"
+        }
+      ]
+    }
+  },
+  "ukrelocationrequirements": {
+    "introduction": "Ang paglipat sa United Kingdom ay nangangailangan ng maingat na pagpaplano at paghahanda. Lumilipat ka man para sa mga oportunidad sa trabaho, edukasyon, pamilya, o para lamang sa pagbabago ng pamumuhay, napakahalagang maunawaan ang mga legal na kinakailangan. Binabalangkas ng gabay na ito ang lahat ng kailangan mong malaman para sa isang matagumpay na paglipat sa UK.",
+    "requirements": [
+      {
+        "title": "Balidong Pasaporte",
+        "description": "Dapat ay mayroon kang pasaporte na may bisa sa buong tagal ng iyong pananatili sa UK. Para sa mga mamamayang walang visa na bumibisita nang hanggang 6 na buwan, ang iyong pasaporte ay dapat na may bisa sa haba ng iyong nilalayong pananatili. Para sa mga aplikasyon ng visa, ang iyong pasaporte ay karaniwang kailangang may bisa sa buong tagal ng iyong visa kasama ang ilang karagdagang buwan."
+      },
+      {
+        "title": "Angkop na Visa",
+        "description": "Ang UK ay may iba't ibang kategorya ng visa depende sa iyong layunin sa pagbisita:",
+        "details": {
+          "0": "Mga visa para sa trabaho (Skilled Worker, Health and Care Worker, atbp.)",
+          "1": "Mga visa para sa pag-aaral (Visa para sa mag-aaral, Visa para sa mag-aaral na bata)",
+          "2": "Mga visa ng pamilya (Partner, Child, Parent visa)",
+          "3": "Mga visa para sa bisita (Karaniwang Bisita, Bisita para sa Negosyo)",
+          "4": "Kasunduan o Walang Takdang Pahintulot na Manatili (ILR)"
+        }
+      },
+      {
+        "title": "Patunay ng Akomodasyon",
+        "description": "Kakailanganin mo ng ebidensya kung saan ka mananatili sa UK:",
+        "details": {
+          "0": "Mga dokumento ng kasunduan sa pag-upa o pagmamay-ari ng ari-arian",
+          "1": "Sulat mula sa iyong host kung manunuluyan kasama ang mga kaibigan o pamilya",
+          "2": "Mga reserbasyon sa hotel para sa unang akomodasyon",
+          "3": "Kumpirmasyon ng akomodasyon sa unibersidad para sa mga estudyante"
+        }
+      },
+      {
+        "title": "Mga Pangangailangan sa Pananalapi",
+        "description": "Dapat mong patunayan na kaya mong suportahan ang iyong sarili sa pinansyal na aspeto:",
+        "details": {
+          "0": "Mga pahayag ng bangko na nagpapakita ng sapat na pondo (karaniwang sumasaklaw sa 3-6 na buwan)",
+          "1": "Patunay ng kita o kontrata sa trabaho kung naaangkop",
+          "2": "Sulat ng scholarship o pondo para sa mga estudyante",
+          "3": "Patunay ng mga pamumuhunan o ipon"
+        },
+        "additionalInfo": "Ang eksaktong halagang kinakailangan ay nag-iiba depende sa uri ng visa at personal na kalagayan."
+      },
+      {
+        "title": "Saklaw ng Pangangalagang Pangkalusugan",
+        "description": "Ang pag-access sa pangangalagang pangkalusugan sa UK ay pinamamahalaan sa pamamagitan ng:",
+        "details": {
+          "0": "Bayad sa Immigration Health Surcharge (IHS) sa karamihan ng mga aplikasyon ng visa",
+          "1": "Pribadong health insurance (inirerekomenda para sa unang panahon)",
+          "2": "European Health Insurance Card (EHIC) o Global Health Insurance Card (GHIC) para sa mga kwalipikadong bisita"
+        },
+        "additionalInfo": "Pagdating, magparehistro agad sa isang lokal na GP (General Practitioner)."
+      },
+      {
+        "title": "Permit sa Paninirahan na Biometriko (BRP)",
+        "description": "Kung mananatili nang higit sa 6 na buwan:",
+        "details": {
+          "0": "Makakatanggap ka ng Biometric Residence Permit pagdating mo",
+          "1": "Dapat mong kunin ang iyong BRP sa loob ng 10 araw pagdating sa UK",
+          "2": "Ang BRP ay nagsisilbing patunay ng iyong katayuan sa imigrasyon at mga karapatan"
+        }
+      },
+      {
+        "title": "Numero ng Pambansang Seguro",
+        "description": "Mahalaga para sa pagtatrabaho sa UK:",
+        "details": {
+          "0": "Mag-apply online o sa pamamagitan ng telepono pagdating sa UK",
+          "1": "Kinakailangan para sa mga layunin ng trabaho, buwis, at mga benepisyo",
+          "2": "Maaari ka nang magsimulang magtrabaho bago mo matanggap ang iyong NI number"
+        }
+      },
+      {
+        "title": "Sertipiko ng Pagsusuri sa Tuberkulosis (TB)",
+        "description": "Kinakailangan para sa mga mamamayan ng ilang partikular na bansa:",
+        "details": {
+          "0": "Ang pagsusuri sa TB ay dapat gawin sa isang aprubadong sentro",
+          "1": "Ang sertipiko ay may bisa sa loob ng 6 na buwan mula sa petsa ng pag-isyu",
+          "2": "Dapat makuha bago mag-apply ng visa"
+        }
+      },
+      {
+        "title": "Kahusayan sa Wikang Ingles",
+        "description": "Para sa karamihan ng mga kategorya ng visa:",
+        "details": {
+          "0": "Patunay ng kakayahan sa wikang Ingles (IELTS, TOEFL, atbp.)",
+          "1": "Ang digri na itinuturo sa Ingles ay maaaring tanggapin bilang patunay",
+          "2": "May mga eksepsiyon para sa ilang partikular na nasyonalidad at uri ng visa"
+        }
+      },
+      {
+        "title": "Account sa Bangko",
+        "description": "Pag-set up ng isang bank account sa UK:",
+        "details": {
+          "0": "Patunay ng address (singil sa utility, kasunduan sa pag-upa)",
+          "1": "Pasaporte at BRP",
+          "2": "Isaalang-alang ang mga online na bangko para sa mas madaling pag-setup bilang isang baguhan",
+          "3": "May ilang bangko na nag-aalok ng pagbubukas ng international account bago dumating."
+        }
+      }
+    ],
+    "additionalConsiderations": {
+      "title": "Mga Karagdagang Pagsasaalang-alang",
+      "items": [
+        {
+          "title": "Pagpaparehistro sa Buwis ng Konseho",
+          "description": "Magparehistro sa inyong lokal na konseho para sa mga layunin ng buwis sa konseho. Ito ay isang mandatoryong buwis para sa mga lokal na serbisyo. May ilang mga eksepsiyon na nalalapat para sa mga full-time na estudyante."
+        },
+        {
+          "title": "Pagmamaneho sa UK",
+          "description": "Ang mga may hawak ng lisensyang hindi taga-UK ay maaaring magmaneho nang hanggang 12 buwan. Pagkatapos nito, maaaring kailanganin mong palitan ang iyong lisensya o kumuha ng pagsusulit sa pagmamaneho sa UK."
+        },
+        {
+          "title": "Mobile Phone at Internet",
+          "description": "Mag-set up ng mobile number at internet connection sa UK nang maaga. Maraming provider ang nag-aalok ng mga espesyal na deal para sa mga baguhan."
+        },
+        {
+          "title": "Paghahanda sa Klima",
+          "description": "Ang UK ay may katamtamang klima sa karagatan na may malamig na tag-araw at banayad na taglamig. Maghanda para sa ulan sa buong taon sa pamamagitan ng pagdadala ng angkop na damit at mga aksesorya."
+        }
+      ]
+    },
+    "helpResources": {
+      "title": "Paghingi ng Tulong sa Iyong Paglipat",
+      "description": "Para sa opisyal na impormasyon at tulong sa iyong paglipat sa UK, isaalang-alang ang mga mapagkukunang ito:",
+      "resources": [
+        {
+          "title": "Pamahalaan ng UK",
+          "description": "Opisyal na gabay sa mga visa, imigrasyon, at paninirahan sa UK"
+        },
+        {
+          "title": "Konseho ng Britanya",
+          "description": "Mga mapagkukunan para sa mga internasyonal na mag-aaral at adaptasyon sa kultura"
+        },
+        {
+          "title": "Payo ng mga Mamamayan",
+          "description": "Libre at kumpidensyal na payo tungkol sa mga karapatan at responsibilidad"
+        }
+      ]
+    },
+    "footer": {
+      "disclaimer": "Tandaan na ang mga patakaran sa imigrasyon ay maaaring magbago nang madalas. Palaging suriin ang mga pinakabagong kinakailangan mula sa mga opisyal na mapagkukunan."
+    }
+  },
+  "ukfromturkeyguide": {
+    "navigation": {
+      "title": "Mag-navigate sa Gabay na Ito"
+    },
+    "accessibility": {
+      "toggleSection": "I-toggle ang seksyon para sa"
+    },
+    "labels": {
+      "youllNeed": "Kakailanganin mo:"
+    },
+    "sections": {
+      "whyMove": {
+        "title": "Bakit Lumilipat ang mga Turko sa UK?",
+        "description": "Libu-libong mamamayang Turko ang naninirahan na ngayon sa UK, lalo na sa mga lungsod tulad ng London, Manchester, Birmingham, at Edinburgh. Kabilang sa mga apela ang:",
+        "reasons": [
+          "Mga oportunidad sa edukasyon at karera",
+          "Kapaligiran na multikultural na may magkakaibang komunidad",
+          "Matatag na sistema ng pangangalagang pangkalusugan at kapakanang panlipunan",
+          "Katatagan sa politika at pamamahala ng batas",
+          "Mga naitatag na komunidad ng Turko sa mga pangunahing lungsod"
+        ],
+        "conclusion": "Gayunpaman, ang paglipat ay nangangailangan ng maingat na pagpaplano, pag-unawa sa sistema ng visa sa UK, at pagtugon sa mga partikular na kinakailangan."
+      },
+      "entryRequirements": {
+        "title": "Mga Kinakailangan sa Pagpasok at Mga Panuntunan sa Visa",
+        "visitorEntry": {
+          "title": "Pagpasok ng Bisita",
+          "description": "Ang mga mamamayang Turko ay nangangailangan ng visitor visa upang makapasok sa UK, na nagpapahintulot ng pananatili nang hanggang 6 na buwan. Para sa mga pangmatagalang pananatili, kakailanganin mong mag-aplay para sa naaangkop na visa batay sa iyong kalagayan."
+        },
+        "tip": "Mag-apply para sa UK visa nang maaga bago ang iyong nakaplanong petsa ng paglalakbay, dahil ang pagproseso ay maaaring tumagal nang ilang linggo."
+      },
+      "longTermStay": {
+        "title": "Mga Opsyon sa Pangmatagalang Pananatili para sa mga Mamamayang Turko",
+        "options": [
+          {
+            "title": "1. Visa ng Bihasang Manggagawa",
+            "description": "<span class=\"font-medium\">May bisa hanggang 5 taon at maaaring humantong sa settlement</span><br/>Para sa mga may alok na trabaho mula sa isang employer sa UK na may lisensya sa pag-sponsor",
+            "requirements": {
+              "0": "May bisang alok na trabaho na may angkop na antas ng suweldo",
+              "1": "Sertipiko ng Pag-sponsor mula sa employer",
+              "2": "Patunay ng kahusayan sa wikang Ingles",
+              "3": "Sapat na pondo para suportahan ang iyong sarili",
+              "4": "Sertipiko ng rekord ng kriminal (kung naaangkop)"
+            }
+          },
+          {
+            "title": "2. Visa ng Pamilya",
+            "details": {
+              "0": "Para sa pagsali sa isang asawa, kapareha, o miyembro ng pamilya na isang mamamayan ng Britanya o taong nanirahan",
+              "1": "Paunang panahon na 2.5 taon, maaaring pahabain",
+              "2": "Nalalapat ang mga kinakailangan sa pananalapi at akomodasyon"
+            }
+          },
+          {
+            "title": "3. Visa ng Estudyante",
+            "details": {
+              "0": "Para sa mga natanggap sa isang institusyong pang-edukasyon sa UK",
+              "1": "Ang tagal ay depende sa haba ng kurso",
+              "2": "Kinakailangan ang patunay ng pondo para sa matrikula at mga gastusin sa pamumuhay"
+            }
+          },
+          {
+            "title": "4. Visa ng Inobator",
+            "description": "Para sa mga negosyanteng may mga makabagong ideya sa negosyo at hindi bababa sa £50,000 na pondo sa pamumuhunan"
+          },
+          {
+            "title": "5. Mataas na Potensyal na Indibidwal na Visa",
+            "description": "Para sa mga nagtapos mula sa mga nangungunang pandaigdigang unibersidad, na nagbibigay ng 2-3 taon para magtrabaho o maghanap ng trabaho nang walang alok na trabaho"
+          }
+        ]
+      },
+      "property": {
+        "title": "Pagbili o Pagrenta ng Ari-arian",
+        "points": [
+          "Maaaring bumili ng ari-arian ang mga mamamayang Turko sa UK, nang walang mga paghihigpit para sa mga hindi residente",
+          "May mga opsyon sa mortgage na magagamit ngunit kadalasan ay nangangailangan ng mas malalaking deposito para sa mga hindi residente ng UK",
+          "Mga sikat na lugar para sa mga komunidad ng Turko: Hilagang London, Manchester, Birmingham",
+          "Mas mahal ang pagrenta: asahan ang £800-£1,500/buwan para sa isang flat na may isang silid-tulugan sa mga pangunahing lungsod"
+        ],
+        "tip": "<strong>Tip:</strong> Gumamit ng abogado kapag bumibili ng ari-arian at tiyaking naiintindihan mo ang lahat ng mga tuntunin ng kontrata ng pag-upa bago pumirma."
+      },
+      "costLiving": {
+        "title": "Paghahambing ng Halaga ng Pamumuhay",
+        "table": {
+          "headers": {
+            "expense": "Gastos",
+            "uk": "UK (average)",
+            "turkey": "Turkey (average)"
+          },
+          "rows": [
+            {
+              "expense": "Upa (apartment na may 1 kwarto)",
+              "uk": "£800–£1,500",
+              "turkey": "£200–£400",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Mga Utility",
+              "uk": "£150+/buwan",
+              "turkey": "£30–£70/buwan",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Pagkain sa restawran",
+              "uk": "£15–£25",
+              "turkey": "£3–£8",
+              "ukHighlight": true
+            },
+            {
+              "expense": "Pass sa transportasyon",
+              "uk": "£60–£180/buwan",
+              "turkey": "£10–£30/buwan",
+              "ukHighlight": true
+            }
+          ]
+        },
+        "note": "Mas mahal nang malaki ang UK kaysa sa Turkey, kaya mahalaga ang pagpaplano sa pananalapi bago lumipat."
+      },
+      "healthcare": {
+        "title": "Pag-access sa Pangangalagang Pangkalusugan",
+        "points": [
+          "Ang UK ay mayroong National Health Service (NHS), na nagbibigay ng libreng pangangalagang pangkalusugan sa punto ng paggamit.",
+          "Karamihan sa mga aplikante ng visa ay kailangang magbayad ng Immigration Health Surcharge bilang bahagi ng kanilang aplikasyon.",
+          "Ang karagdagang bayad ay kasalukuyang £624 bawat taon para sa karamihan ng mga uri ng visa.",
+          "Kapag nabayaran na, magkakaroon ka ng access sa mga serbisyo ng NHS na katulad ng sa mga residente ng UK",
+          "May mga opsyon sa pribadong pangangalagang pangkalusugan na magagamit ngunit mahal kumpara sa Turkey"
+        ]
+      },
+      "dailyLife": {
+        "title": "Mga Pagsasaayos sa Pang-araw-araw na Buhay",
+        "aspects": [
+          {
+            "title": "Hadlang sa wika",
+            "description": "Ingles ang opisyal na wika. Ang pagkakaroon ng mahusay na kasanayan sa Ingles ay mahalaga para sa pang-araw-araw na buhay, trabaho, at pakikisalamuha."
+          },
+          {
+            "title": "Pagmamaneho",
+            "description": "Maaaring gamitin ang mga lisensya sa pagmamaneho sa Turkey nang hanggang 12 buwan. Pagkatapos nito, dapat mo itong palitan o kumuha ng pagsusulit sa pagmamaneho sa UK."
+          },
+          {
+            "title": "Pera",
+            "description": "British Pound Sterling (GBP) — isang malakas na pera, ngunit nangangahulugan ito na kakailanganin mo ng mas maraming Turkish Lira upang mapanatili ang iyong pamumuhay."
+          },
+          {
+            "title": "Pagbabangko",
+            "description": "Ang pagbubukas ng bank account ay nangangailangan ng patunay ng address at katayuan sa imigrasyon. Ang mga digital bank tulad ng Monzo o Revolut ay maaaring mas madaling opsyon sa simula."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "title": "Paglilipat ng Logistika mula sa Turkey",
+        "points": [
+          "Maaaring kailanganin mong magbayad ng customs duty at VAT kapag nagdadala ng mga personal na gamit sa UK",
+          "Maaaring may kaluwagan sa paglipat ng tirahan kung ililipat mo ang iyong permanenteng tahanan sa UK",
+          "Ang internasyonal na pagpapadala mula Turkey patungong UK ay tumatagal ng humigit-kumulang 3-5 linggo sa pamamagitan ng dagat",
+          "Ang mga alagang hayop ay nangangailangan ng microchipping, pagbabakuna laban sa rabies, paggamot sa tapeworm (para sa mga aso), at isang Animal Health Certificate"
+        ]
+      },
+      "challenges": {
+        "title": "Mga Makatotohanang Hamon na Aasahan",
+        "challenges": [
+          {
+            "title": "Pagsasaayos ng panahon",
+            "description": "Ang UK ay may mas malamig, mas maulap na panahon na may madalas na pag-ulan kumpara sa Turkey"
+          },
+          {
+            "title": "Mas mataas na halaga ng pamumuhay",
+            "description": "Mas mataas ang mga gastusin, kaya nangangailangan ito ng maingat na pagbabadyet"
+          },
+          {
+            "title": "Mga pagkakaiba sa kultura",
+            "description": "Ang mga pamantayan at tuntunin ng magandang asal sa lipunan ng Britanya ay maaaring mangailangan ng oras upang maunawaan"
+          },
+          {
+            "title": "Komplikadong sistema ng visa",
+            "description": "Ang pag-navigate sa mga patakaran ng imigrasyon ay maaaring maging nakaka-stress at magastos"
+          }
+        ]
+      },
+      "turkishCommunities": {
+        "title": "Mga Komunidad na Turko sa UK",
+        "description": "Ang UK ay nagtatag ng mga komunidad ng Turko, lalo na sa:",
+        "cities": [
+          "Hilagang London",
+          "Manchester",
+          "Birmingham",
+          "Edinburgh",
+          "Leeds"
+        ],
+        "supportNote": "Makakakita ka ng mga asosasyong pangkultura, mga sentro ng komunidad, mga restawrang Turko, at mga grupo sa social media upang matulungan kang kumonekta sa mga kapwa Turko at mapadali ang iyong transisyon."
+      }
+    },
+    "checklist": {
+      "title": "Pangwakas na Checklist Bago Lumipat sa UK",
+      "items": [
+        "Mag-apply at kumuha ng naaangkop na visa",
+        "Bayaran ang Surcharge sa Kalusugan ng Imigrasyon",
+        "Mag-ayos ng akomodasyon nang maaga",
+        "Mag-set up ng bank account sa UK",
+        "Magsaliksik tungkol sa sistema ng buwis at mga obligasyon sa UK",
+        "Magpalit ng pera bago dumating",
+        "Kumonekta sa mga komunidad ng Turko sa iyong lungsod na patutunguhan"
+      ]
+    },
+    "conclusion": {
+      "title": "Angkop ba para sa Iyo ang Paglipat sa UK?",
+      "text": "Ang paglipat sa UK ay nag-aalok ng kahusayan sa edukasyon, mga oportunidad sa karera, at mataas na pamantayan ng pamumuhay, ngunit may kaakibat na mas mataas na gastos at mga pagsasaayos sa kultura. Mahalaga ang maingat na pagpaplano at pananaliksik. Para sa maraming mamamayang Turko na naghahanap ng mga bagong pananaw, ang multikultural na kapaligiran ng UK at ang mga naitatag na komunidad ng Turko ay ginagawa itong isang kaakit-akit na destinasyon sa kabila ng mga hamon."
+    },
+    "footer": {
+      "lastUpdated": "Huling na-update: Mayo 2025"
+    }
+  },
+  "ukvisaguide": {
+    "introduction": "Ang paglipat sa UK ay nangangailangan ng pagpili ng naaangkop na visa batay sa iyong mga kalagayan. Nag-aalok ang UK ng iba't ibang mga opsyon sa visa at paninirahan para sa mga manggagawa, estudyante, miyembro ng pamilya, mamumuhunan, at negosyante.",
+    "labels": {
+      "bestFor": "Pinakamahusay para sa:",
+      "requirements": "Mga Kinakailangan:",
+      "benefits": "Mga Benepisyo:",
+      "validity": "Bisa:"
+    },
+    "visaTypes": [
+      {
+        "title": "Visa para sa Bihasang Manggagawa",
+        "bestFor": {
+          "0": "Mga propesyonal na may mga alok na trabaho mula sa mga employer sa UK",
+          "1": "Mga taong nagtatrabaho sa mga trabahong may kakulangan",
+          "2": "Mga bihasang manggagawa sa mga espesyalisadong larangan"
+        },
+        "requirements": {
+          "0": "Alok ng trabaho mula sa isang employer sa UK na may lisensya sa pag-sponsor",
+          "1": "Katumbas ng antas ng kasanayan sa RQF Level 3 o mas mataas pa",
+          "2": "Kahusayan sa wikang Ingles (antas B1)",
+          "3": "Pinakamababang antas ng suweldo (karaniwan ay £26,200 o ang \"going rate\" ng trabaho)",
+          "4": "Sapat na pondo para suportahan ang iyong sarili"
+        },
+        "validity": "Hanggang 5 taon (maaaring pahabain, maaaring bayaran pagkatapos ng 5 taon)"
+      },
+      {
+        "title": "Visa ng Estudyante",
+        "bestFor": "Mga estudyanteng tinatanggap sa mga unibersidad o institusyong pang-edukasyon sa UK",
+        "requirements": {
+          "0": "Nakumpirmang lugar sa isang lisensyadong institusyong sponsor ng estudyante",
+          "1": "Kahusayan sa wikang Ingles",
+          "2": "Patunay ng kakayahang pinansyal upang masakop ang matrikula at mga gastos sa pamumuhay",
+          "3": "Pahintulot mula sa mga magulang/tagapag-alaga (kung wala pang 18 taong gulang)"
+        },
+        "validity": "Tagal ng kurso kasama ang ilang buwan (nag-iiba depende sa haba ng kurso)"
+      },
+      {
+        "title": "Visa ng Pamilya",
+        "bestFor": "Mga kasosyo, anak, at dependent ng mga mamamayang Briton o mga taong nanirahan",
+        "requirements": {
+          "0": "Patunay ng tunay at matatag na relasyon",
+          "1": "Pagtugon sa minimum na kinakailangan sa kita (£18,600 kasama ang karagdagang halaga para sa mga bata)",
+          "2": "Sapat na akomodasyon",
+          "3": "Kinakailangan sa wikang Ingles (para sa mga kasosyo)"
+        },
+        "validity": "2.5 taon sa simula (maaaring i-renew, daan patungo sa settlement pagkatapos ng 5 taon)"
+      },
+      {
+        "title": "Visa ng Tagapagtatag ng Inobator",
+        "bestFor": "Mga bihasang negosyante na nagtatatag ng isang makabagong negosyo sa UK",
+        "requirements": {
+          "0": "Pag-endorso mula sa isang aprubadong lupon ng pag-endorso",
+          "1": "Mabisa at makabagong plano sa negosyo",
+          "2": "Hindi bababa sa £50,000 na mga pondo sa pamumuhunan",
+          "3": "Kahusayan sa wikang Ingles (antas B2)",
+          "4": "Sapat na personal na pondo para sa pagpapanatili"
+        },
+        "validity": "3 taon (daan patungo sa pagbabayad pagkatapos ng 3 taon)"
+      },
+      {
+        "title": "Pandaigdigang Visa ng Talento",
+        "bestFor": "Mga pinuno o potensyal na pinuno sa akademya, pananaliksik, sining, kultura, o digital na teknolohiya",
+        "requirements": {
+          "0": "Pag-endorso mula sa isang kaugnay na katawan sa UK sa iyong larangan",
+          "1": "Patunay ng pambihirang talento o pangako",
+          "2": "Rekord ng mga nagawa sa iyong larangan"
+        },
+        "benefits": {
+          "0": "Mga kaayusan sa trabaho na may kakayahang umangkop (hindi kailangan ng sponsor)",
+          "1": "Landas patungo sa paninirahan pagkatapos ng 3-5 taon",
+          "2": "Maaaring sumama sa iyo ang mga dependent"
+        }
+      },
+      {
+        "title": "Mataas na Potensyal na Indibidwal na Visa",
+        "bestFor": "Mga bagong nagtapos mula sa mga nangungunang pandaigdigang unibersidad",
+        "requirements": {
+          "0": "Digri na katumbas ng bachelor's degree sa UK o mas mataas pa mula sa isang nangungunang pandaigdigang unibersidad (sa loob ng huling 5 taon)",
+          "1": "Kahusayan sa wikang Ingles (antas B1)",
+          "2": "Sapat na pondo para sa pagpapanatili"
+        },
+        "validity": "2 taon para sa mga nagtapos ng bachelor's/master's, 3 taon para sa mga nagtapos ng PhD (walang direktang landas patungo sa paninirahan)"
+      },
+      {
+        "title": "Visa ng Mamumuhunan",
+        "bestFor": "Mga indibidwal na may mataas na net worth na naghahangad na mamuhunan sa UK",
+        "requirements": {
+          "0": "Minimum na pamumuhunan na £2 milyon sa mga kompanya sa UK",
+          "1": "Ang mga pondo ay dapat na nakaimbak sa isang regulated na institusyong pinansyal",
+          "2": "Ang mga pondo ay dapat na magagamit sa UK",
+          "3": "Account sa bangko sa UK"
+        },
+        "validity": "3 taon sa simula (ang landas patungo sa pagbabayad ay sa loob ng 2-5 taon depende sa halaga ng pamumuhunan)"
+      },
+      {
+        "title": "Visa para sa Pagtatapos",
+        "bestFor": "Mga internasyonal na estudyante na nakapagtapos ng degree sa UK",
+        "requirements": {
+          "0": "Matagumpay na natapos ang isang degree sa isang tagapagbigay ng mas mataas na edukasyon sa UK",
+          "1": "Kasalukuyang Student visa sa oras ng aplikasyon",
+          "2": "Kumpirmasyon ng sponsor sa pagkumpleto ng kurso"
+        },
+        "validity": "2 taon para sa mga nagtapos ng bachelor's at master's, 3 taon para sa mga nagtapos ng PhD"
+      }
+    ],
+    "footer": {
+      "disclaimer": "Paalala: Ang mga patakaran sa imigrasyon sa UK ay maaaring magbago. Palaging tingnan ang opisyal na website ng gobyerno ng UK para sa pinakabagong impormasyon."
+    }
+  }
+}

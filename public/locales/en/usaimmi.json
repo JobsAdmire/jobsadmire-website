@@ -1,0 +1,878 @@
+{
+    "heroSection": {
+      "badge": "Exclusive Journeys",
+      "title": "Discover Your Next Adventure",
+      "description": "Experience breathtaking destinations and create unforgettable memories with our premium travel packages tailored to your desires.",
+      "currentlyViewing": {
+        "label": "Currently Viewing"
+      },
+      "buttons": {
+        "explore": "Explore Now",
+        "viewAll": "View All Destinations"
+      },
+      "destinationCounter": "Destination {current}/{total}",
+      "compass": ["N", "E", "S", "W"],
+      "destinations": [
+        {
+          "img": "/images/ihusn.png",
+          "name": "New York City, New York",
+          "country": "USA"
+        },
+        {
+          "img": "/images/ihuslos.png",
+          "name": "Los Angeles, California",
+          "country": "USA"
+        },
+        {
+          "img": "/images/ihuch.png",
+          "name": "Chicago, Illinois",
+          "country": "USA"
+        },
+        {
+          "img": "/images/ihusen.png",
+          "name": "San Francisco, California",
+          "country": "USA"
+        },
+        {
+          "img": "/images/ihumiami.png",
+          "name": "Miami, Florida",
+          "country": "USA"
+        }
+      ],
+      "accessibility": {
+        "exploreButton": "Explore destinations now",
+        "viewAllButton": "View all available destinations",
+        "destinationImage": "View destination: {name}",
+        "featuredDestination": "Featured destination image",
+        "carouselControl": "Go to destination {number}"
+      }
+    },
+    
+        "tableOfContents": {
+          "title": "Table of Contents",
+          "subtitle": "Navigate through sections",
+          "currentlyReading": "Currently reading",
+          "sectionsCount": "{count} sections to explore",
+          "sections": [
+            {
+              "id": 1,
+              "title": "🇺🇸 Fun & Fascinating Facts About the USA"
+            },
+            {
+              "id": 2,
+              "title": "Visa Options for Moving to USA"
+            },
+            {
+              "id": 3,
+              "title": "Requirements for Moving to USA"
+            },
+            {
+              "id": 4,
+              "title": "Getting a Job in USA as a Foreigner"
+            },
+            {
+              "id": 5,
+              "title": "Moving to US from Turkey"
+            },
+            {
+              "id": 6,
+              "title": "Moving to US from the UK"
+            },
+            {
+              "id": 7,
+              "title": "How much does it cost to move to USA?"
+            },
+            {
+              "id": 8,
+              "title": "Moving With Pets to USA"
+            }
+          ],
+          "quickNavigation": {
+            "title": "Quick Navigation",
+            "footer": "Scroll through {count} sections"
+          },
+          "accessibility": {
+            "toggleMenu": "Toggle navigation menu",
+            "sectionButton": "Navigate to section: {title}",
+            "quickNavigation": "Quick navigation menu",
+            "quickNavSection": "Quick navigate to: {title}"
+          }
+        },
+        
+            "factsCard": {
+              "description": "Discover the remarkable features and achievements of the United States of America. The USA boasts incredible geographic, economic, cultural, and innovative significance on the world stage.",
+              "navigation": {
+                "title": "Explore Facts",
+                "previous": "Previous Fact",
+                "next": "Next Fact"
+              },
+              "allFacts": {
+                "title": "All Facts About the USA"
+              },
+              "facts": [
+                {
+                  "id": 1,
+                  "title": "Third Largest Country",
+                  "description": "The USA is the third largest country in both land area and population, after Russia/Canada (area) and China/India (population).",
+                  "iconKey": "map",
+                  "emoji": "🗺️"
+                },
+                {
+                  "id": 2,
+                  "title": "50 States & 1 Federal District",
+                  "description": "It's made up of <strong>50 states</strong> and Washington, D.C., which is the capital but not a state.",
+                  "iconKey": "flag",
+                  "emoji": "🏛️"
+                },
+                {
+                  "id": 3,
+                  "title": "World's Largest Economy",
+                  "description": "As of now, the United States has the <strong>largest economy in the world</strong>, driven by technology, finance, healthcare, and entertainment.",
+                  "iconKey": "building",
+                  "emoji": "💰"
+                },
+                {
+                  "id": 4,
+                  "title": "Cultural Diversity",
+                  "description": "It's one of the most culturally diverse countries, with over <strong>350 languages spoken</strong> and communities from almost every country on Earth.",
+                  "iconKey": "globe",
+                  "emoji": "🌎"
+                },
+                {
+                  "id": 5,
+                  "title": "Innovations Originated Here",
+                  "description": "The USA is home to many inventions — including the <strong>internet, airplane, lightbulb, and iPhone</strong>.",
+                  "iconKey": "lightbulb",
+                  "emoji": "💡"
+                }
+              ],
+              "accessibility": {
+                "factButton": "Select fact: {title}",
+                "previousFact": "Go to previous fact",
+                "nextFact": "Go to next fact"
+              }
+            },
+
+            
+                "movingCostsGuide": {
+                  "title": "How Much Does It Cost to Move to the USA?",
+                  "description": "Moving to the United States can be exciting, but it comes with several costs you should plan for. Here's a detailed breakdown of the expenses you can expect when relocating to the USA.",
+                  "costSections": [
+                    {
+                      "id": "visa-immigration",
+                      "icon": "🛂",
+                      "title": "Visa & Immigration Fees",
+                      "amount": "$160–$5,000+",
+                      "details": "Visa applications, green card, optional attorney fees",
+                      "color": "bg-blue-500",
+                      "subItems": [
+                        {
+                          "title": "Non-immigrant visa (H-1B, F-1)",
+                          "amount": "$160–$205"
+                        },
+                        {
+                          "title": "Green Card (immigrant visa)",
+                          "amount": "$1,200–$1,760"
+                        },
+                        {
+                          "title": "Attorney Fees (optional)",
+                          "amount": "$1,500–$5,000"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "flight",
+                      "icon": "✈️",
+                      "title": "Flight Tickets",
+                      "amount": "$500–$1,200",
+                      "details": "One-way flight depending on location and booking time",
+                      "color": "bg-blue-600"
+                    },
+                    {
+                      "id": "shipping",
+                      "icon": "📦",
+                      "title": "Shipping Belongings",
+                      "amount": "$500–$7,000",
+                      "details": "Depends on volume and shipping method",
+                      "color": "bg-blue-700",
+                      "subItems": [
+                        {
+                          "title": "Small shipment (boxes only)",
+                          "amount": "$500–$1,500"
+                        },
+                        {
+                          "title": "Full container (20ft/40ft)",
+                          "amount": "$3,000–$7,000"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "accommodation",
+                      "icon": "🏠",
+                      "title": "Initial Accommodation",
+                      "amount": "$1,000–$4,000",
+                      "details": "First month's rent + deposit (varies by city)",
+                      "color": "bg-blue-500",
+                      "subItems": [
+                        {
+                          "title": "Temporary hotel/Airbnb",
+                          "amount": "$80–$200 per night"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "insurance",
+                      "icon": "🏥",
+                      "title": "Health Insurance",
+                      "amount": "$300–$700/month",
+                      "details": "Required for most visa types",
+                      "color": "bg-blue-600",
+                      "subItems": [
+                        {
+                          "title": "Family coverage",
+                          "amount": "More expensive"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "other",
+                      "icon": "📝",
+                      "title": "Other Expenses",
+                      "amount": "$520–$1,080+/month",
+                      "color": "bg-blue-500",
+                      "subItems": [
+                        {
+                          "title": "SSN application",
+                          "amount": "Free"
+                        },
+                        {
+                          "title": "Driver's license",
+                          "amount": "$20–$80"
+                        },
+                        {
+                          "title": "Groceries & transportation",
+                          "amount": "$500–$1,000/month"
+                        }
+                      ]
+                    }
+                  ],
+                  "totalBudget": {
+                    "icon": "🔢",
+                    "title": "Estimated Total Budget",
+                    "categories": [
+                      {
+                        "title": "Single Person",
+                        "amount": "$5,000–$10,000",
+                        "description": "Includes visa fees, initial housing, transportation and basic setup costs"
+                      },
+                      {
+                        "title": "Family of Four",
+                        "amount": "$10,000–$25,000+",
+                        "description": "Includes all costs for the entire family including visas, shipping, and accommodation"
+                      }
+                    ]
+                  },
+                  "moneySavingTips": {
+                    "icon": "💰",
+                    "title": "Money-Saving Tips",
+                    "tips": [
+                      {
+                        "title": "Consider Location Carefully",
+                        "description": "Housing costs vary dramatically between cities. Consider smaller cities or suburbs."
+                      },
+                      {
+                        "title": "Book Flights Early",
+                        "description": "Booking flights 2-3 months in advance can save hundreds of dollars."
+                      },
+                      {
+                        "title": "Ship Selectively",
+                        "description": "Consider what's worth shipping vs. buying new in the USA."
+                      },
+                      {
+                        "title": "Compare Insurance Plans",
+                        "description": "Health insurance costs can vary widely; invest time in finding the right plan."
+                      }
+                    ]
+                  },
+                  "conclusion": "Your final cost depends heavily on your visa type, where you're moving from, and your destination in the U.S. With proper planning and budgeting, you can make your move to the United States both smooth and economical.",
+                  "accessibility": {
+                    "toggleSection": "Toggle details for {title} section"
+                  }
+                },
+              
+                
+                    "requirementsGuide": {
+                      "tabs": {
+                        "all": "All Requirements",
+                        "essential": "Essential Requirements", 
+                        "recommended": "Recommended",
+                        "after-arrival": "After Arrival"
+                      },
+                      "categoryLabels": {
+                        "essential": "Required",
+                        "recommended": "Recommended",
+                        "afterArrival": "After Arrival"
+                      },
+                      "requirements": [
+                        {
+                          "id": 1,
+                          "title": "Obtain the Right Visa or Green Card",
+                          "description": "You must have an approved visa or a Green Card (permanent resident status) to live in the U.S.",
+                          "details": [
+                            "Family-based immigrant visa",
+                            "Employment-based visa (H-1B, L-1, etc.)",
+                            "Student visa (F-1)",
+                            "Green Card Lottery (Diversity Visa Program)"
+                          ],
+                          "tip": "Start your visa application at the U.S. embassy or consulate in your country. Processing times vary from weeks to months.",
+                          "iconKey": "fileText",
+                          "category": "essential"
+                        },
+                        {
+                          "id": 2,
+                          "title": "Valid Passport",
+                          "description": "Your passport must be valid for at least <strong>6 months</strong> beyond your intended date of entry.",
+                          "details": [
+                            "Renew it before applying for the visa if it's about to expire."
+                          ],
+                          "tip": "",
+                          "iconKey": "bookOpen",
+                          "category": "essential"
+                        },
+                        {
+                          "id": 3,
+                          "title": "Approved Medical Examination",
+                          "description": "A mandatory medical exam is required for immigrant visas.",
+                          "details": [
+                            "This must be done by a U.S. embassy-approved physician.",
+                            "You'll be screened for diseases like tuberculosis and required to show proof of key vaccinations."
+                          ],
+                          "tip": "Cost: Around $200–$400 depending on the country.",
+                          "iconKey": "stethoscope",
+                          "category": "essential"
+                        },
+                        {
+                          "id": 4,
+                          "title": "Vaccination & Health Records",
+                          "description": "Bring a complete record of vaccinations.",
+                          "details": [
+                            "Measles, Mumps, Rubella (MMR)",
+                            "Polio",
+                            "Tetanus",
+                            "Influenza (during flu season)",
+                            "COVID-19 (as of the latest USCIS guidance)"
+                          ],
+                          "tip": "",
+                          "iconKey": "syringe",
+                          "category": "essential"
+                        },
+                        {
+                          "id": 5,
+                          "title": "Financial Proof or Sponsorship",
+                          "description": "You need to prove you won't become financially dependent on the U.S. government:",
+                          "details": [
+                            "Employment visa: Job offer letter and salary details.",
+                            "Family visa: Sponsor must file Form I-864 (Affidavit of Support) and show income above a set level.",
+                            "Student visa: Proof of tuition payment and living expenses for at least one academic year."
+                          ],
+                          "tip": "",
+                          "iconKey": "dollarSign",
+                          "category": "essential"
+                        },
+                        {
+                          "id": 6,
+                          "title": "Clean Criminal Record",
+                          "description": "Minor infractions usually don't disqualify you, but serious criminal records may result in visa denial.",
+                          "details": [
+                            "Background checks are part of the process."
+                          ],
+                          "tip": "",
+                          "iconKey": "shieldCheck",
+                          "category": "essential"
+                        },
+                        {
+                          "id": 7,
+                          "title": "English Language Skills (Practical)",
+                          "description": "Not always required, but <strong>strongly recommended</strong> for work and daily life.",
+                          "details": [
+                            "Some visas (like H-1B) expect proficiency.",
+                            "If applying for citizenship later, English and civics knowledge are required."
+                          ],
+                          "tip": "",
+                          "iconKey": "messageSquare",
+                          "category": "recommended"
+                        },
+                        {
+                          "id": 8,
+                          "title": "Other Practical Requirements After Arrival",
+                          "description": "Once in the U.S., you'll need to:",
+                          "details": [
+                            "Apply for a Social Security Number (SSN)",
+                            "Open a U.S. bank account",
+                            "Get a driver's license or ID",
+                            "Find housing (rent or buy)",
+                            "Buy health insurance (U.S. healthcare is private and expensive)"
+                          ],
+                          "tip": "",
+                          "iconKey": "creditCard",
+                          "category": "after-arrival"
+                        }
+                      ],
+                      "importantReminder": {
+                        "title": "Important Reminder",
+                        "description": "Immigration requirements can change over time. This guide is based on current information, but always verify the most recent requirements with the U.S. Department of State or U.S. Citizenship and Immigration Services (USCIS) before proceeding with your move.",
+                        "lastUpdated": "Last updated: May 2025"
+                      },
+                      "accessibility": {
+                        "tabButton": "Switch to {label} tab"
+                      }
+                    },
+
+                    
+                        "migrationGuide": {
+                          "header": {
+                            "sourceFlag": "🇹🇷",
+                            "destinationFlag": "🇺🇸",
+                            "title": "Moving to the US from Turkey",
+                            "description": "Moving from Turkey to the United States can be a life-changing opportunity, but it requires proper planning and legal procedures. Here's what you need to know:",
+                            "decorativeIcon": "🗽"
+                          },
+                          "sections": [
+                            {
+                              "id": 1,
+                              "title": "Choose the Right Visa Type",
+                              "description": "Your first step is securing the correct U.S. visa based on your reason for moving:",
+                              "items": [
+                                {
+                                  "title": "Family-Based Visa",
+                                  "description": "If you have close family members who are <strong>U.S. citizens or permanent residents</strong>.",
+                                  "iconKey": "users"
+                                },
+                                {
+                                  "title": "Employment Visa (H-1B, L-1, O-1)",
+                                  "description": "If you're offered a job in the U.S.",
+                                  "iconKey": "briefcase"
+                                },
+                                {
+                                  "title": "Student Visa (F-1)",
+                                  "description": "If you plan to study at a U.S. college or university.",
+                                  "iconKey": "graduationCap"
+                                },
+                                {
+                                  "title": "Diversity Visa (Green Card Lottery)",
+                                  "description": "Turkey is eligible — you can apply during the annual lottery window.",
+                                  "iconKey": "shuffle"
+                                },
+                                {
+                                  "title": "Investor Visa (E-2)",
+                                  "description": "For Turkish nationals who invest a <strong>substantial amount</strong> in a U.S. business.",
+                                  "iconKey": "dollarSign"
+                                }
+                              ]
+                            },
+                            {
+                              "id": 2,
+                              "title": "Prepare for the Visa Interview",
+                              "description": "Apply at the U.S. Embassy in Ankara or Consulate in Istanbul, depending on your region. You'll need:",
+                              "items": [
+                                {
+                                  "title": "Valid passport",
+                                  "description": "Ensure your passport is valid for at least <strong>6 months</strong> beyond your planned stay.",
+                                  "iconKey": "fileText"
+                                },
+                                {
+                                  "title": "Visa application",
+                                  "description": "Form DS-160 or appropriate immigrant form.",
+                                  "iconKey": "fileText"
+                                },
+                                {
+                                  "title": "Supporting documents",
+                                  "description": "Financial, educational, job offer, etc.",
+                                  "iconKey": "fileText"
+                                },
+                                {
+                                  "title": "Medical exam and vaccination records",
+                                  "description": "Complete medical examination with an approved physician.",
+                                  "iconKey": "fileText"
+                                }
+                              ]
+                            },
+                            {
+                              "id": 3,
+                              "title": "Health Insurance & Living Costs",
+                              "description": "",
+                              "items": [
+                                {
+                                  "title": "Private health insurance",
+                                  "description": "The U.S. doesn't offer free healthcare — you'll need to purchase <strong>private health insurance</strong>.",
+                                  "iconKey": "fileText"
+                                },
+                                {
+                                  "title": "Higher cost of living",
+                                  "description": "Cost of living is higher than Turkey. Rent, healthcare, and transportation are more expensive, especially in cities like <strong>New York, LA, or San Francisco</strong>.",
+                                  "iconKey": "building"
+                                }
+                              ]
+                            },
+                            {
+                              "id": 4,
+                              "title": "Cultural & Lifestyle Differences",
+                              "description": "",
+                              "items": [
+                                {
+                                  "title": "Turkish communities",
+                                  "description": "The U.S. is diverse, with many Turkish communities, especially in cities like <strong>New York, Chicago, and Los Angeles</strong>.",
+                                  "iconKey": "globe"
+                                },
+                                {
+                                  "title": "Different lifestyle",
+                                  "description": "Daily life may be more <strong>individualistic and fast-paced</strong> compared to Turkey.",
+                                  "iconKey": "globe"
+                                }
+                              ]
+                            },
+                            {
+                              "id": 5,
+                              "title": "After Arrival in the U.S.",
+                              "description": "Once you arrive, make sure to:",
+                              "items": [
+                                {
+                                  "title": "Apply for a Social Security Number (SSN)",
+                                  "description": "This is essential for working and filing taxes in the U.S.",
+                                  "iconKey": "fileText"
+                                },
+                                {
+                                  "title": "Open a bank account",
+                                  "description": "You'll need this for daily financial transactions.",
+                                  "iconKey": "creditCard"
+                                },
+                                {
+                                  "title": "Get a driver's license",
+                                  "description": "Public transportation is limited in many areas of the U.S.",
+                                  "iconKey": "creditCard"
+                                },
+                                {
+                                  "title": "Find accommodation",
+                                  "description": "And adjust to U.S. systems (education, work, transport).",
+                                  "iconKey": "mapPin"
+                                }
+                              ]
+                            }
+                          ],
+                          "navigation": {
+                            "previous": "Previous",
+                            "next": "Next"
+                          },
+                          "footer": {
+                            "sourceFlag": "🇹🇷",
+                            "destinationFlag": "🇺🇸",
+                            "disclaimer": "Remember that immigration requirements can change. Always check with the <strong>U.S. Embassy in Turkey</strong> or <strong>USCIS</strong> for the most current information."
+                          },
+                          "accessibility": {
+                            "sectionButton": "Go to section: {title}",
+                            "previousButton": "Go to previous section: {title}",
+                            "nextButton": "Go to next section: {title}"
+                          }
+                        },
+
+
+                        
+                            "petsGuide": {
+                              "header": {
+                                "icons": ["🐶", "🐱", "🦜"],
+                                "title": "Moving With Pets to the USA",
+                                "description": "Bringing your pet to the U.S. is possible, but you'll need to follow specific rules:"
+                              },
+                              "sections": {
+                                "requirements": {
+                                  "icon": "✅",
+                                  "title": "Key Requirements"
+                                },
+                                "arrival": {
+                                  "icon": "🛬",
+                                  "title": "On Arrival"
+                                },
+                                "tips": {
+                                  "icon": "💡",
+                                  "title": "Helpful Tips"
+                                }
+                              },
+                              "requirements": [
+                                {
+                                  "id": "rabies",
+                                  "icon": "💉",
+                                  "title": "Rabies Vaccination",
+                                  "description": "<strong>Mandatory for dogs</strong>; highly recommended for cats"
+                                },
+                                {
+                                  "id": "health",
+                                  "icon": "📋",
+                                  "title": "Health Certificate",
+                                  "description": "Issued by a licensed vet (usually within <strong>10 days</strong> of travel)"
+                                },
+                                {
+                                  "id": "microchip",
+                                  "icon": "📱",
+                                  "title": "Microchip",
+                                  "description": "Not required by law, but <strong>highly recommended</strong>"
+                                },
+                                {
+                                  "id": "airline",
+                                  "icon": "✈️",
+                                  "title": "Pet-friendly Airline Booking",
+                                  "description": "Follow carrier rules for <strong>crate size, documents, and fees</strong>"
+                                }
+                              ],
+                              "arrivalInfo": [
+                                {
+                                  "id": "inspection",
+                                  "title": "Inspection",
+                                  "description": "Pets may be <strong>inspected at the port of entry</strong>",
+                                  "icon": "👁️"
+                                },
+                                {
+                                  "id": "quarantine",
+                                  "title": "No Quarantine",
+                                  "description": "For pets from most countries (including the <strong>UK and Turkey</strong>), if paperwork is complete",
+                                  "icon": "🏠"
+                                }
+                              ],
+                              "tips": [
+                                "Start the process at least 4-6 weeks before your move",
+                                "Check if your destination state has additional entry requirements",
+                                "Bring enough of your pet's medication for the first few months",
+                                "Consider pet transport services if traveling with multiple animals"
+                              ],
+                              "footer": {
+                                "disclaimer": "Always check with the <strong>USDA APHIS</strong> and your destination state's veterinary office for the most up-to-date requirements before traveling."
+                              }
+                            },
+                          
+                            
+                                "moveRequirements": {
+                                  "requirements": [
+                                    {
+                                      "id": 1,
+                                      "title": "Valid Visa or Green Card",
+                                      "description": "You must obtain the correct visa type based on your purpose (e.g., <strong>work, family, study</strong>).",
+                                      "note": "Immigrant visas are required for permanent relocation.",
+                                      "iconKey": "fileText"
+                                    },
+                                    {
+                                      "id": 2,
+                                      "title": "Valid Passport",
+                                      "description": "Your passport must be valid for at least <strong>6 months</strong> beyond your intended stay.",
+                                      "note": "",
+                                      "iconKey": "bookOpen"
+                                    },
+                                    {
+                                      "id": 3,
+                                      "title": "Medical Examination",
+                                      "description": "Required for most <strong>immigrant visas</strong>.",
+                                      "note": "Must be done by an approved physician.",
+                                      "iconKey": "stethoscope"
+                                    },
+                                    {
+                                      "id": 4,
+                                      "title": "Vaccination Records",
+                                      "description": "Proof of vaccinations (e.g., <strong>MMR, COVID-19, hepatitis</strong>) is needed for immigration.",
+                                      "note": "",
+                                      "iconKey": "syringe"
+                                    },
+                                    {
+                                      "id": 5,
+                                      "title": "Proof of Financial Support",
+                                      "description": "You may need to show bank statements, job offers, or a sponsor to prove you won't become a <strong>public charge</strong>.",
+                                      "note": "",
+                                      "iconKey": "dollarSign"
+                                    },
+                                    {
+                                      "id": 6,
+                                      "title": "Clean Criminal Record",
+                                      "description": "Background checks are part of the immigration process.",
+                                      "note": "Serious offenses may lead to <strong>visa denial</strong>.",
+                                      "iconKey": "shieldCheck"
+                                    },
+                                    {
+                                      "id": 7,
+                                      "title": "English Skills (Recommended)",
+                                      "description": "Not mandatory for all visa types, but knowing English helps greatly in <strong>daily life, jobs, and education</strong>.",
+                                      "note": "",
+                                      "iconKey": "messageSquare"
+                                    }
+                                  ],
+                                  "importantNote": {
+                                    "title": "Important Note",
+                                    "description": "Immigration requirements can change. Always verify the latest information from the U.S. Department of State or U.S. Citizenship and Immigration Services (USCIS) before proceeding with your move."
+                                  }
+                                },
+                              "ukUsGuide": {
+    "header": {
+      "icon": "🇬🇧➡️🇺🇸",
+      "title": "Moving to the US from the UK",
+      "subtitle": "What You Need to Know",
+      "description": "Relocating from the UK to the United States is a major step that requires planning, legal documentation, and an understanding of how life differs across the Atlantic. Whether you're moving for work opportunities, to be with family, or for a new adventure, this guide covers the essential aspects of your transatlantic relocation."
+    },
+    "quickNavigation": {
+      "title": "Quick Navigation"
+    },
+    "sections": [
+      {
+        "id": "visa-requirements",
+        "icon": "🛂",
+        "title": "Visa Requirements",
+        "content": "<p class=\"text-gray-700 mb-4\">As a UK citizen, you'll need a visa to move to the U.S. long-term. Common options include:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span><strong>Employment Visas (H-1B, L-1, O-1)</strong> – For skilled professionals, transfers, or extraordinary abilities</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span><strong>Family-Based Green Card</strong> – If you have immediate relatives who are U.S. citizens</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span><strong>Student Visa (F-1)</strong> – If you're studying in the U.S.</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span><strong>Investor Visa (E-2)</strong> – For UK citizens investing in a U.S. business</span></li></ul><p class=\"text-gray-700\">The visa application process requires careful planning, as rejection rates can be high for certain visa types.</p>"
+      },
+      {
+        "id": "application-process",
+        "icon": "📋",
+        "title": "Visa Application Process",
+        "content": "<div class=\"mb-4\"><p class=\"text-gray-700 mb-4\">The visa application process involves several steps:</p><ul class=\"text-gray-700 space-y-2 pl-4\"><li>• Apply online via the U.S. Department of State</li><li>• Schedule an interview at the <strong>U.S. Embassy in London</strong> or <strong>Consulate in Belfast</strong></li><li>• Prepare required documents:</li></ul><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm mt-3\"><h4 class=\"font-medium text-sky-600 mb-2\">Required Documents:</h4><ul class=\"text-gray-700 space-y-1 pl-4\"><li>• Valid passport</li><li>• Visa application form</li><li>• Medical examination results</li><li>• Proof of finances</li><li>• Sponsor/job offer documentation if required</li><li>• Educational certificates (for certain visas)</li></ul></div></div>"
+      },
+      {
+        "id": "healthcare",
+        "icon": "🏥",
+        "title": "Healthcare & Insurance",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>Unlike the UK's NHS, U.S. healthcare is primarily private and can be expensive</p><p>You'll need to buy <strong>private health insurance</strong> — monthly costs can range from <strong>$300–$700+ per person</strong></p><p>Many employers offer health insurance as part of benefits packages</p><p>Consider insurance that covers emergency repatriation in the first year</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Tip:</strong> Start researching health insurance options before you arrive, and ensure you have coverage from day one in the U.S.</span></p></div></div>"
+      },
+      {
+        "id": "cost-living",
+        "icon": "💷",
+        "title": "Cost of Living Comparison",
+        "content": "<div><div class=\"overflow-x-auto mb-4\"><table class=\"min-w-full bg-white border border-sky-200 rounded-lg\"><thead><tr class=\"bg-sky-100\"><th class=\"py-3 px-4 text-left border-b border-sky-200\">Expense</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">United States (avg.)</th><th class=\"py-3 px-4 text-left border-b border-sky-200\">UK (avg.)</th></tr></thead><tbody><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Rent (1-bed apartment)</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$1,200–$3,000</td><td class=\"py-3 px-4 border-b border-sky-100\">£800–£1,200</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Healthcare</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$300–$700/month</td><td class=\"py-3 px-4 border-b border-sky-100\">NHS (tax-funded)</td></tr><tr><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Meal at restaurant</td><td class=\"py-3 px-4 border-b border-sky-100 text-red-600\">$15–$30</td><td class=\"py-3 px-4 border-b border-sky-100\">£10–£25</td></tr><tr class=\"bg-sky-50\"><td class=\"py-3 px-4 border-b border-sky-100 font-medium\">Transportation</td><td class=\"py-3 px-4 border-b border-sky-100 text-yellow-600\">$70–$100/month (varies)</td><td class=\"py-3 px-4 border-b border-sky-100\">£60–£120/month</td></tr></tbody></table></div><p class=\"text-gray-700\">Cost of living varies significantly by location. Major cities like New York, San Francisco, and Los Angeles are significantly more expensive than most UK cities including London.</p></div>"
+      },
+      {
+        "id": "housing",
+        "icon": "🏘️",
+        "title": "Finding Housing",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>The U.S. rental market moves quickly, especially in competitive cities</p><p>Most landlords require a credit check, which can be challenging for new arrivals</p><p>Consider short-term rentals when you first arrive until you're settled</p><p>Popular rental search websites: Zillow, Apartments.com, Trulia, Realtor.com</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Tip:</strong> Bring reference letters from UK landlords and proof of income to help overcome the lack of U.S. credit history.</span></p></div></div>"
+      },
+      {
+        "id": "banking",
+        "icon": "💳",
+        "title": "Banking & Finance",
+        "content": "<div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Opening a bank account</h3><p class=\"text-gray-700\">You'll need your passport, visa, proof of address, and potentially your Social Security Number (SSN).</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Credit history</h3><p class=\"text-gray-700\">Your UK credit history doesn't transfer to the U.S. You'll need to build credit from scratch.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Tax considerations</h3><p class=\"text-gray-700\">As a UK expat, you'll need to file tax returns in both countries, though tax treaties help prevent double taxation.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Money transfers</h3><p class=\"text-gray-700\">Consider specialized forex services rather than banks for better exchange rates when moving money between the UK and US.</p></div></div></div>"
+      },
+      {
+        "id": "daily-life",
+        "icon": "📱",
+        "title": "Daily Life Adjustments",
+        "content": "<div><div class=\"grid grid-cols-1 md:grid-cols-2 gap-4\"><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Driving</h3><p class=\"text-gray-700\">You'll drive on the right-hand side. Most states allow you to drive on your UK license for up to 3 months, after which you'll need a state license.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Tipping culture</h3><p class=\"text-gray-700\">Tipping is expected (15-20%) at restaurants, for taxis, and various services. Service staff rely on tips as part of their income.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Measurement system</h3><p class=\"text-gray-700\">The U.S. uses imperial measurements for most things (miles, pounds, Fahrenheit), which may require adjustment.</p></div><div class=\"bg-white p-4 rounded-lg border border-sky-100\"><h3 class=\"font-medium text-sky-700 mb-2\">Mobile phones</h3><p class=\"text-gray-700\">Major carriers include AT&T, Verizon, and T-Mobile. Consider getting a local SIM card or plan upon arrival.</p></div></div></div>"
+      },
+      {
+        "id": "work-culture",
+        "icon": "💼",
+        "title": "Work Culture Differences",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>U.S. work culture often includes:</p><ul class=\"grid grid-cols-1 md:grid-cols-2 gap-3 mb-4\"><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Fewer vacation days (typically 10-15 days vs. UK's 20-25)</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>More direct communication styles</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Networking is highly valued and often expected</span></li><li class=\"bg-white p-3 rounded-md shadow-sm border border-sky-100 flex items-center\"><span class=\"text-sky-600 mr-2\">•</span><span>Work-life balance varies significantly by company</span></li></ul></div>"
+      },
+      {
+        "id": "moving-logistics",
+        "icon": "🛫",
+        "title": "Moving Logistics",
+        "content": "<div class=\"space-y-3 text-gray-700\"><p>International moving costs to the U.S. range from £2,000-£10,000 depending on volume</p><p>Consider whether to ship or sell larger furniture items (U.S. homes often have different dimensions)</p><p>Customs clearance requires a detailed inventory of shipped items</p><p>Pets can enter the U.S. but must meet health and vaccination requirements</p><div class=\"bg-sky-50 p-4 rounded-lg border border-sky-100 mt-4\"><p class=\"flex items-start\"><span class=\"text-amber-500 font-bold text-xl mr-2\">💡</span><span><strong>Tip:</strong> For electronics, check voltage compatibility as the U.S. uses 110-120V (vs. UK's 230-240V).</span></p></div></div>"
+      },
+      {
+        "id": "settling-in",
+        "icon": "📝",
+        "title": "Settling In After Arrival",
+        "content": "<div><div class=\"space-y-4\"><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">1. Get a Social Security Number (SSN)</h3><p class=\"text-gray-700 mb-2\"><span class=\"font-medium\">Required for employment and many services</span><br/>Visit your local Social Security Administration office with your passport and visa</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">2. Obtain a State ID or Driver's License</h3><p class=\"text-gray-700 mb-2\">Visit your state's Department of Motor Vehicles (DMV) or equivalent agency</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">3. Set up Utilities</h3><p class=\"text-gray-700 mb-2\">Arrange electricity, water, gas, internet, and waste collection services</p></div><div class=\"bg-white p-4 rounded-md border-l-4 border-sky-500 shadow-sm\"><h3 class=\"text-lg font-medium text-sky-700 mb-2\">4. Register with the UK Consulate</h3><p class=\"text-gray-700 mb-2\">Optional but recommended for emergency notifications</p></div></div></div>"
+      },
+      {
+        "id": "expat-communities",
+        "icon": "👥",
+        "title": "British Expat Communities",
+        "content": "<div><p class=\"text-gray-700 mb-4\">The U.S. has large British expatriate communities in many cities, particularly:</p><div class=\"grid grid-cols-2 md:grid-cols-5 gap-2 mb-4\"><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">New York</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Los Angeles</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Chicago</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">Boston</div><div class=\"bg-white p-2 rounded-md text-center border border-sky-100\">San Francisco</div></div><p class=\"text-gray-700\">You'll find British pubs, social clubs, and Facebook groups that can be invaluable for networking and getting local advice from others who've made the same move.</p></div>"
+      }
+    ],
+    "finalChecklist": {
+      "icon": "✅",
+      "title": "Final Checklist Before Moving to the US",
+      "items": [
+        { "text": "Secure your visa or green card", "fullWidth": false },
+        { "text": "Arrange health insurance coverage", "fullWidth": false },
+        { "text": "Research housing in your destination city", "fullWidth": false },
+        { "text": "Organize shipping of belongings", "fullWidth": false },
+        { "text": "Notify HMRC and other UK authorities", "fullWidth": false },
+        { "text": "Plan for currency exchange and transfers", "fullWidth": false },
+        { "text": "Research tax obligations in both countries", "fullWidth": true }
+      ]
+    },
+    "conclusion": {
+      "icon": "🎯",
+      "title": "Conclusion: Is Moving to the US Right for You?",
+      "description": "Moving to the United States offers tremendous opportunities but comes with significant challenges. The visa process can be lengthy, healthcare costs are high, and adjusting to American culture takes time. However, many British expatriates find the career opportunities, diverse landscapes, and lifestyle well worth the transition."
+    },
+    "checklist": [
+      { "text": "Secure your visa or green card", "fullWidth": false },
+      { "text": "Arrange health insurance coverage", "fullWidth": false },
+      { "text": "Research housing in your destination city", "fullWidth": false },
+      { "text": "Organize shipping of belongings", "fullWidth": false },
+      { "text": "Notify HMRC and other UK authorities", "fullWidth": false },
+      { "text": "Plan for currency exchange and transfers", "fullWidth": false },
+      { "text": "Research tax obligations in both countries", "fullWidth": true }
+    ],
+    "accessibility": {
+      "sectionToggle": "Toggle section: {title}"
+    }
+  },
+
+
+  "visaOptions": {
+    "labels": {
+      "examples": "Examples:",
+      "note": "Note:"
+    },
+    "visaTypes": [
+      {
+        "id": "family",
+        "title": "1. Family-Based Visas",
+        "description": "For spouses, children, parents, or siblings of <strong>U.S. citizens or permanent residents</strong>.",
+        "examples": [
+          "IR-1 (Spouse)",
+          "F-2A (Family Preference)"
+        ],
+        "iconKey": "users"
+      },
+      {
+        "id": "employment",
+        "title": "2. Employment-Based Visas",
+        "description": "For <strong>skilled professionals, workers, and investors</strong>.",
+        "examples": [
+          "<strong>H-1B:</strong> Skilled workers in specialty occupations",
+          "<strong>L-1:</strong> Intra-company transfer",
+          "<strong>EB-2/EB-3:</strong> Employment-based green cards",
+          "<strong>O-1:</strong> For individuals with extraordinary ability"
+        ],
+        "iconKey": "briefcase"
+      },
+      {
+        "id": "student",
+        "title": "3. Student Visa (F-1)",
+        "description": "For international students attending <strong>accredited U.S. institutions</strong>.",
+        "examples": [
+          "Allows part-time on-campus work and <strong>optional practical training (OPT)</strong> after graduation."
+        ],
+        "iconKey": "graduationCap"
+      },
+      {
+        "id": "investor",
+        "title": "4. Investor Visa (E-2 / EB-5)",
+        "description": "For those looking to <strong>invest in the United States</strong>.",
+        "examples": [
+          "<strong>E-2:</strong> For citizens of treaty countries who invest a substantial amount in a U.S. business.",
+          "<strong>EB-5:</strong> Green card for those investing <strong>$800,000+</strong> and creating jobs in the U.S."
+        ],
+        "iconKey": "dollarSign"
+      },
+      {
+        "id": "diversity",
+        "title": "5. Green Card Lottery (Diversity Visa Program)",
+        "description": "A U.S. government program offering <strong>permanent residency</strong> to people from eligible countries through random selection.",
+        "examples": [],
+        "iconKey": "shuffle"
+      }
+    ]
+  }
+                  
+      
+  }

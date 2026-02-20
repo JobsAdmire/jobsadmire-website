@@ -1,0 +1,208 @@
+{
+  "careercounselling": {
+    "hero": {
+      "badge": "Profesyonel kariyer danışmanlığı hizmetleri",
+      "headline": {
+        "prefix": "Kendinizi Keşfedin",
+        "suffix": "Uzman Rehberliğinde"
+      },
+      "animatedWords": [
+        "Kariyer Yolu",
+        "Gelecek",
+        "Yön",
+        "Potansiyel",
+        "Amaç",
+        "Başarı"
+      ],
+      "description": "Kariyer değerlendirmelerinden kişiselleştirilmiş gelişim planlarına kadar kapsamlı kariyer danışmanlığı hizmetlerimiz, profesyonellerin mükemmel yollarını güvenle bulmalarına yardımcı olur.",
+      "cta": {
+        "text": "Yolculuğunuza Başlayın"
+      }
+    },
+    "showcase": {
+      "title": "Kariyer Danışmanlığı",
+      "subtitle": "Kariyer yolculuğunuz için profesyonel rehberlik",
+      "assessment": {
+        "title": "Kariyer Değerlendirmesi",
+        "description": "Güçlü yönlerinizi ve ilgi alanlarınızı keşfedin"
+      },
+      "services": [
+        {
+          "title": "Yol Planlama",
+          "description": "Stratejik yol haritası",
+          "bgGradient": "bg-gradient-to-r from-sky-500 to-blue-600"
+        },
+        {
+          "title": "Beceri Geliştirme",
+          "description": "Büyüme planlaması",
+          "bgGradient": "bg-gradient-to-r from-purple-500 to-indigo-600"
+        },
+        {
+          "title": "Büyüme",
+          "description": "Kariyer gelişimi",
+          "bgGradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+        },
+        {
+          "title": "Mentorluk",
+          "description": "Uzman rehberliği",
+          "bgGradient": "bg-gradient-to-r from-orange-500 to-red-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "92%",
+          "label": "Kariyer Değişikliği Başarısı",
+          "color": "text-sky-600"
+        },
+        {
+          "value": "800+",
+          "label": "Rehberlik Edilen Müşteriler",
+          "color": "text-blue-600"
+        },
+        {
+          "value": "4.8★",
+          "label": "Memnuniyet",
+          "color": "text-indigo-600"
+        }
+      ]
+    },
+    "whyChoose": {
+      "title": {
+        "prefix": "Neden seçilmeli",
+        "highlight": "Dönüşüm Sağlık",
+        "suffix": "Kariyer danışmanlığı için klinikler?"
+      },
+      "description": "Transformation Wellness Clinics, bireylere kariyer, mülakat ve hatta iş seçimi sürecinin her aşamasında rehberlik eden bir kariyer danışmanlığı programı sunmaktadır. Uzmanlarımız, hayatınızın en iyi kararını vermenize yardımcı olmak için sonuç odaklı rehberlik sağlar.",
+      "features": [
+        "Güçlü yönlerinizi anlamak için kapsamlı kariyer değerlendirmeleri",
+        "Kanıtlanmış bir geçmişe sahip uzman danışmanlar",
+        "Özel hedeflerinize göre uyarlanmış kişiselleştirilmiş kariyer planları",
+        "Kariyer seçiminden işe yerleştirme yardımına kadar rehberlik"
+      ],
+      "cta": {
+        "text": "Yolculuğunuza Bugün Başlayın"
+      },
+      "image": {
+        "alt": "Kariyer danışmanı danışanıyla profesyonel bir oturum gerçekleştiriyor"
+      }
+    },
+    "choosingCareer": {
+      "title": "Kariyer mi seçiyorsunuz?",
+      "description": "Bir kariyer seçmek zor ve bunaltıcı olabilir. Bir danışman, aşağıdaki gibi soruları yanıtlayarak odağınızı daraltmanıza yardımcı olarak değerli bilgiler sağlayabilir:",
+      "questions": [
+        "Hangi faaliyetler benim için tatmin edici?",
+        "Hangi beceri ve niteliklere sahibim?",
+        "Yerel veya uluslararası alanda hangi işler mevcut?",
+        "Niteliklerim nelerdir?",
+        "Ne kadar maaş benim için tatmin edici olacak?",
+        "Yaşadığım yerde ne tür işler var? Ya da yaşamak istediğim?"
+      ]
+    },
+    "howCounsellingHelps": {
+      "title": "Kariyer danışmanlığı bana nasıl yardımcı olabilir?",
+      "description": "Seansınız sırasında eğitim düzeylerinizi, güçlü yönlerinizi, becerilerinizi keşfedecek ve kişilik tipinizi ve ilgi alanlarınızı belirleyeceksiniz. Hakkınızda daha fazla bilgi edinmek için yetenek ve IQ testleri uygulanır. Myers-Briggs Tip Göstergesi gibi araçlar aracılığıyla kişilik özelliklerine dayalı kariyer yolları belirlenir.",
+      "sessionTopics": {
+        "title": "Oturumdaki bazı potansiyel konular aşağıdaki gibidir:",
+        "items": [
+          "Kariyer için eğitim taahhüdü gereklidir.",
+          "Çalışma ortamı, yavaş veya hızlı tempolu, iç veya dış mekanlarda olabilir.",
+          "Belirli kariyerler için gerekli eğitim taahhüdü.",
+          "Belirli bir kariyerde önünüzdeki fırsat. Bazıları çok esnek değilken bazıları esnektir. Örneğin doktorlar uzmanlık alanlarını değiştirebilirler ancak yine de doktor olmaya devam edeceklerdir. Diğerleri ise seçtikleri alanda daha fazla hareket kabiliyetine sahiptir."
+        ]
+      },
+      "professionalGuidance": {
+        "title": "Profesyonel Rehberlik",
+        "description": "Danışmanlar ayrıca terfi alma yolları ve hatta maaş pazarlığı yöntemleri konusunda da tavsiyelerde bulunabilirler."
+      }
+    },
+    "whyNeed": {
+      "title": {
+        "prefix": "Neden ihtiyacınız var?",
+        "highlight": "kariyer danışmanlığı?"
+      },
+      "description": "Kariyer rehberliği, kim olduğunuz, kariyer seçiminiz ve bunu nasıl geliştirebileceğiniz hakkında bilgi edinmenize yardımcı olabilir. Kariyer danışmanlığı şunları yapabilir:",
+      "benefits": [
+        {
+          "title": "Uzman kaynakları sağlayın",
+          "description": "Bir uzmanın sahip olduğu bilgi ve kaynaklara çocuğun ve ebeveynin bakış açısından erişim sağlar. Kapsamı, bilgisi ve izlenecek yollar son derece önemlidir, çünkü çoğu veli bu tür bir bilgiden yoksundur."
+        },
+        {
+          "title": "Doğru kariyer seçiminde yardımcı olur",
+          "description": "Kariyer danışmanları ilgi alanlarınızı, kişiliğinizi, yeteneğinizi ve diğer birçok yönünüzü değerlendirme konusunda uzmandır. Bu değerlendirme, hepsi uygun ve mevcut olan çeşitli seçenekler önermek için kullanılır."
+        },
+        {
+          "title": "İçgörü kazanmaya yardımcı olur",
+          "description": "Danışanın kariyer yolundaki engelleri görmesine yardımcı olur. İyi bir danışmanın yardımıyla bu tür engellerin üstesinden gelmek için kapsamlı bir tartışma yoluyla güven kazanabilir."
+        },
+        {
+          "title": "Kariyerle ilgili hayal kırıklıklarını ortadan kaldırır",
+          "description": "Kendileri için doğru kariyeri seçmekte zorlanan bireylerde duyguların açığa çıkmaması duygusal değişimlere yol açabilir. Kariyer danışmanlığı, bu tür duyguların azaltılmasına ve en iyi seçeneklere yönlendirilmesine yardımcı olan bir platformdur."
+        }
+      ],
+      "image": {
+        "alt": "Profesyonel danışmanlık ortamında öğrencilerle konuşan kariyer danışmanı"
+      }
+    },
+    "whoCounselor": {
+      "title": {
+        "prefix": "Kim bir",
+        "highlight": "Kariyer Danışmanı mı?"
+      },
+      "cards": [
+        {
+          "title": "Profesyonel Uzmanlık",
+          "paragraphs": [
+            "Bir kariyer danışmanı, danışmanlık teknikleri, gelişim teorisi, kariyer bilgi kaynakları ve değerlendirme yönetimi konularında uzmanlığa sahiptir.",
+            "Bir kariyer danışmanı kariyer yolunuzu destekler. \"Kariyer koçu\" ve \"kariyer danışmanı\" terimleri bazen birbirinin yerine kullanılsa da, kariyer danışmanları genellikle kariyer rehberliği konusunda daha resmi niteliklere sahiptir."
+          ]
+        },
+        {
+          "title": "Rol ve Sorumluluklar",
+          "paragraphs": [
+            "Kariyer danışmanları, profesyonel yolunuzu tasarlamanıza yardımcı olmak için insan gelişimi ve danışmanlık alanındaki bilgilerini kullanır. Kişiselleştirilmiş rehberlik sağlar, güçlü yönleri ve gelişim alanlarını belirler ve kariyer geçişlerinde güvenle ilerlemenize yardımcı olurlar."
+          ]
+        }
+      ],
+      "cta": {
+        "text": "Bugün Bir Konsültasyon Ayırtın"
+      },
+      "testimonial": {
+        "quote": "Transformation Wellness Clinics tarafından sağlanan kariyer danışmanlığı hizmetleri mesleki gidişatımı tamamen değiştirdi. Kişiselleştirilmiş yaklaşımları, sahip olduğumu bilmediğim güçlü yönlerimi keşfetmeme ve değerlerim ve hedeflerimle gerçekten uyumlu bir kariyer yolu bulmama yardımcı oldu.",
+        "name": "Samantha R.",
+        "title": "Pazarlama Direktörü | Kariyer Geçişinde Başarı"
+      }
+    },
+    "mainSection": {
+      "header": {
+        "title": "Kariyer Danışmanlığı Hizmetleri"
+      },
+      "content": {
+        "paragraphs": [
+          "Genel anlamda danışmanlık, bir kişiye manevi destek ve rehberlik sağlamak ve sorunlar için çözüm yolları araştırmak anlamına gelir. Kariyer danışmanlığı hizmetleri, insanlara belirsizlik zamanlarında kariyerlerini değiştirmek, bırakmak veya sürdürmek için doğru yönde yardımcı olan bir danışmanlık türü ile ilişkilidir. Eğitim ve kariyer hakkında bilinçli kararlar vermek için kişinin iş eğilimlerini anlamasına yardımcı olmaya odaklanan bir süreçtir.",
+          "Zayıf zaman yönetimi, düşük konsantrasyon ve hangi alanın seçileceği konusunda ebeveynlerle anlaşmazlık gibi çeşitli sorunlara yardımcı olur. Böyle bir alanda pratik deneyime sahip uzmanlardan profesyonel kariyer rehberliği almak en iyi yoldur.",
+          "Herkes uğraştığı işte en iyisi olmak ister, siz de öyle. Dönüşüm Sağlık Klinikleri tüm bu süreci kolaylıkla atlatmanızı amaçlamaktadır. Uzman danışmanlarımız güvenilir kariyer danışmanlığı hizmetleri sunar ve daha iyi bir gelecek inşa etmenize yardımcı olmak için sadece bir adım uzağınızdadır. Daha iyi anlamak için önemli unsurlarına bakalım."
+        ]
+      },
+      "services": [
+        {
+          "title": "Kariyer Değerlendirmesi",
+          "description": "Kariyer danışmanlığı hizmetlerimizin bir parçası olarak kapsamlı değerlendirme araçlarımız aracılığıyla güçlü yönlerinizi, ilgi alanlarınızı ve yeteneklerinizi keşfedin.",
+          "borderColor": "border-blue-500",
+          "titleColor": "text-blue-800"
+        },
+        {
+          "title": "Eğitim Planlaması",
+          "description": "Kişiselleştirilmiş kariyer planlama ve geliştirme yoluyla kariyer hedeflerinizle uyumlu doğru eğitim yolunu seçme konusunda rehberlik alın.",
+          "borderColor": "border-green-500",
+          "titleColor": "text-green-800"
+        },
+        {
+          "title": "İş Arama Stratejisi",
+          "description": "Eksiksiz kariyer koçluğu programlarımızın bir parçası olarak özgeçmiş oluşturma, mülakat yapma ve alanınızda ağ oluşturma için etkili teknikleri öğrenin.",
+          "borderColor": "border-purple-500",
+          "titleColor": "text-purple-800"
+        }
+      ]
+    }
+  }
+}

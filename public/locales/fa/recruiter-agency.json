@@ -1,0 +1,233 @@
+{
+  "header": {
+    "program_title": "برنامه شریک استخدامی تأییدشده",
+    "main_title_prefix": "همکاری با",
+    "main_title_suffix": "آژانس‌های پیشرو استخدام",
+    "description": "ما با آژانس‌های استخدامی مورد اعتماد همکاری می‌کنیم تا کسب‌وکارها را به متخصصان واجد شرایط و پیش‌ارزیابی‌شده در صنایع مختلف متصل کنیم. به شبکه ما بپیوندید و با شراکت‌های قابل اتکا دامنه دسترسی خود را گسترش دهید.",
+    "contact_us": "تماس با ما",
+    "verified_candidates": "داوطلبان تأییدشده",
+    "pre_screened": "پیش‌ارزیابی‌شده",
+    "heroImageAlt": "Recruitment professionals"
+  },
+  "form": {
+    "title": "ثبت‌نام شریک استخدام",
+    "subtitle": "برای آغاز جذب نیروی واجد شرایط از طریق JobsAdmire این فرم را تکمیل کنید",
+    "company_info": {
+      "title": "اطلاعات شرکت",
+      "company_name": "نام شرکت *",
+      "company_name_placeholder": "نام شرکت خود را وارد کنید",
+      "company_name_error": "نام شرکت الزامی است",
+      "contact_person": "شخص تماس *",
+      "contact_person_placeholder": "نام و نام خانوادگی شخص تماس",
+      "contact_person_error": "شخص تماس الزامی است",
+      "company_type": "نوع شرکت *",
+      "company_type_placeholder": "نوع شرکت را انتخاب کنید",
+      "company_type_error": "نوع شرکت الزامی است",
+      "types": {
+        "manufacturing": "تولید/کارخانه",
+        "agriculture": "کشاورزی",
+        "tourism": "گردشگری و مهمانداری",
+        "construction": "ساخت و ساز",
+        "retail": "خرده‌فروشی و خدمات",
+        "other": "سایر"
+      },
+      "years_in_business": "سال‌های فعالیت",
+      "years_placeholder": "انتخاب سال‌ها",
+      "years_options": {
+        "1_2": "۱–۲ سال",
+        "3_5": "۳–۵ سال",
+        "6_10": "۶–۱۰ سال",
+        "10_plus": "۱۰+ سال"
+      },
+      "license_number": "شماره مجوز کسب‌وکار",
+      "license_placeholder": "شماره مجوز را وارد کنید",
+      "employees_count": "تعداد فعلی کارکنان",
+      "employees_placeholder": "انتخاب بازه",
+      "employees_options": {
+        "1_10": "۱–۱۰ نفر",
+        "11_50": "۱۱–۵۰ نفر",
+        "51_100": "۵۱–۱۰۰ نفر",
+        "100_plus": "۱۰۰+ نفر"
+      }
+    },
+    "contact_info": {
+      "title": "اطلاعات تماس",
+      "email": "آدرس ایمیل *",
+      "email_placeholder": "company@example.com",
+      "email_required": "ایمیل الزامی است",
+      "email_invalid": "ایمیل نامعتبر است",
+      "phone": "شماره تلفن *",
+      "phone_placeholder": "+98 xxx xxx xx xx",
+      "phone_required": "شماره تلفن الزامی است",
+      "country": "کشور *",
+      "country_placeholder": "کشور خود را وارد کنید",
+      "country_required": "کشور الزامی است",
+      "city": "شهر *",
+      "city_placeholder": "شهر خود را وارد کنید",
+      "city_required": "شهر الزامی است",
+      "address": "نشانی محل کسب‌وکار",
+      "address_placeholder": "نشانی کامل محل کسب‌وکار را وارد کنید",
+      "website": "وب‌سایت شرکت",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "staffing_needs": {
+      "title": "نیازهای تأمین نیرو",
+      "types_needed": "انواع نیروی موردنیاز",
+      "types_placeholder": "سمت موردنظر را انتخاب کنید",
+      "positions": {
+        "housekeeping": "نظافت/خدمات اتاق",
+        "waiter": "پیشخدمت زن/مرد",
+        "waiter_assistant": "دستیار پیشخدمت",
+        "receptionist": "مسئول پذیرش",
+        "guest_relations": "روابط مهمان",
+        "bellboy": "بلبوی/حامل چمدان",
+        "animator": "انیماتور / هماهنگ‌کننده فعالیت",
+        "kitchen_assistant": "کمک‌آشپز",
+        "specialized_worker": "کارگر ماهر تخصصی",
+        "cnc_operator": "اپراتور CNC",
+        "packing_worker": "نیروی بسته‌بندی",
+        "tailor": "خیاط",
+        "forklift_operator": "راننده لیفتراک",
+        "material_handler": "کارگر جابجایی مواد",
+        "fruit_picker": "چیننده میوه/سبزی",
+        "greenhouse_worker": "کارگر گلخانه",
+        "packing_sorting": "بسته‌بندی و تفکیک",
+        "irrigation": "آبیاری / دستیار کاشت",
+        "animal_husbandry": "دامپروری (لبنی/زراعی)",
+        "general_labourer": "کارگر ساده",
+        "painter": "نقاش",
+        "electrician": "برق‌کار",
+        "tile_fixer": "کاشی‌کار"
+      },
+      "industry_focus": "تمرکز صنعتی اصلی",
+      "industry_placeholder": "صنعت خود را انتخاب کنید",
+      "industries": {
+        "factory": "کارخانه",
+        "agriculture": "کشاورزی",
+        "tourism": "گردشگری",
+        "construction": "ساخت و ساز"
+      },
+      "description_label": "درباره نیازهای نیروی انسانی خود بگویید",
+      "description_placeholder": "شرکت، نیازهای جاری، تعداد پست‌های موردنیاز، مهارت‌های لازم و هر الزام خاص دیگر را توضیح دهید..."
+    },
+    "legal": {
+      "title": "توافق‌نامه حقوقی",
+      "agree_terms_prefix": "با",
+      "terms_link": "شرایط و ضوابط",
+      "agree_terms_suffix": "موافقم و الزامات و تعهدات شراکت را می‌فهمم. *",
+      "terms_error": "باید با شرایط و ضوابط موافقت کنید",
+      "agree_privacy_prefix": "تأیید می‌کنم که",
+      "privacy_link": "سیاست حریم خصوصی",
+      "agree_privacy_suffix": "را خوانده‌ام و با فرآیندهای پردازش داده موافقم. *",
+      "privacy_error": "باید با سیاست حریم خصوصی موافقت کنید"
+    },
+    "submit": {
+      "button": "ارسال درخواست",
+      "submitting": "در حال ارسال...",
+      "success_message": "درخواست با موفقیت ارسال شد! درخواست شما بررسی شده و طی ۲–۳ روز کاری با شما تماس می‌گیریم.",
+      "footer_message": "درخواست شما بررسی می‌شود و طی ۲–۳ روز کاری با شما تماس خواهیم گرفت."
+    }
+  },
+  "why_partner": {
+    "title": "چرا همکاری با JobsAdmire؟",
+    "subtitle": "ما کسب‌وکارها را به نیروهای واجد شرایط متصل می‌کنیم و تمام پیچیدگی‌های استخدام بین‌المللی را مدیریت می‌کنیم",
+    "items": {
+      "global_network": {
+        "title": "شبکه جهانی استخدام",
+        "description": "به یک خزانه بزرگ استعدادهای بین‌المللی دسترسی داشته باشید و با کارفرمایان تأییدشده در صنایع مختلف ارتباط برقرار کنید."
+      },
+      "trusted_brand": {
+        "title": "برند معتبر و انطباق قانونی",
+        "description": "با یک آژانس دارای مجوز و شناخته‌شده برای عملیات شفاف، اخلاقی و مطابق با قوانین همکاری کنید."
+      },
+      "ai_driven": {
+        "title": "بستر استخدام مبتنی بر هوش مصنوعی",
+        "description": "از ابزارهای هوشمند ما برای پیگیری داوطلبان، مدیریت درخواست‌ها و ارتباط روان با مشتریان بهره ببرید."
+      },
+      "end_to_end": {
+        "title": "پشتیبانی سرتاسری",
+        "description": "از جذب تا کمک در ویزا و مدارک، هر مرحله را برای استخدام و شروع به کار بدون مشکل مدیریت می‌کنیم."
+      },
+      "commission": {
+        "title": "ساختار کمیسیون جذاب",
+        "description": "برای هر جذب موفق از طریق برنامه همکاری استخدام، کمیسیون‌های رقابتی و مشوق‌های تکرارشونده دریافت کنید."
+      },
+      "dedicated_team": {
+        "title": "تیم همکاری اختصاصی",
+        "description": "برای رشد موفقیت استخدامی خود از پشتیبانی مداوم، راهنمایی و به‌روزرسانی‌های تیم ما بهره‌مند شوید."
+      }
+    }
+  },
+  "industry_expertise": {
+    "title": "صنایعی که پوشش می‌دهیم",
+    "subtitle": "ما در صنایع کلیدی ترکیه نیروی واجد شرایط فراهم می‌کنیم",
+    "items": {
+      "factory": {
+        "title": "کارخانه",
+        "description": "کارگران تولید و خط مونتاژ"
+      },
+      "agriculture": {
+        "title": "کشاورزی",
+        "description": "کارگران مزرعه و متخصصان کشاورزی"
+      },
+      "tourism": {
+        "title": "گردشگری",
+        "description": "کارکنان هتل، راهنماها و نیروهای مهمانداری"
+      },
+      "construction": {
+        "title": "ساخت و ساز",
+        "description": "بنّایان، مهندسان و کارگران ساختمانی"
+      }
+    }
+  },
+  "platform_features": {
+    "title": "بستر استخدام ما",
+    "subtitle": "فناوری ساده‌شده و پشتیبانی کارشناسی برای یافتن نیروی مناسب",
+    "items": {
+      "verified_candidates": {
+        "title": "داوطلبان تأییدشده",
+        "description": "همه داوطلبان پیش‌ارزیابی و تأیید می‌شوند"
+      },
+      "quick_placement": {
+        "title": "استقرار سریع",
+        "description": "میانگین زمان استقرار ۲–۳ هفته"
+      },
+      "document_processing": {
+        "title": "پردازش مدارک",
+        "description": "کلیه مجوزهای کار و مدارک قانونی را ما انجام می‌دهیم"
+      },
+      "ongoing_support": {
+        "title": "پشتیبانی مستمر",
+        "description": "پشتیبانی پیوسته پس از استقرار"
+      }
+    }
+  },
+  "benefits": {
+    "title": "مزایای همکاری",
+    "subtitle": "به صدها کسب‌وکار که هم‌اکنون با JobsAdmire کار می‌کنند بپیوندید",
+    "items": {
+      "talent_pool": {
+        "title": "خزانه استعدادهای پیش‌ارزیابی‌شده",
+        "description": "دسترسی به داوطلبان واجد شرایط آماده به کار در ترکیه"
+      },
+      "fast_process": {
+        "title": "فرآیند استخدام سریع",
+        "description": "با سامانه ساده‌شده ما، جای خالی‌ها را سریع پر کنید"
+      },
+      "legal_compliance": {
+        "title": "انطباق قانونی",
+        "description": "تمام مجوزهای کار و مدارک ویزا را ما مدیریت می‌کنیم"
+      },
+      "industry_matching": {
+        "title": "انطباق ویژه صنعت",
+        "description": "داوطلبان متناسب با نیازهای خاص صنعت شما"
+      }
+    }
+  },
+  "contact_footer": {
+    "title": "برای ساختن تیم‌تان آماده‌اید؟",
+    "description": "درباره خدمات استخدام ما سوال دارید؟ تیم اختصاصی ما آماده است تا نیروی مناسب برای کسب‌وکار شما را بیابد.",
+    "business_hours": "ساعات کاری: دوشنبه تا جمعه، 9:00 تا 18:00 (به وقت ترکیه)",
+    "response_time": "میانگین زمان پاسخ: در ساعات کاری حداکثر ظرف 2 ساعت"
+  }
+}

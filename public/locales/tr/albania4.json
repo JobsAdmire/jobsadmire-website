@@ -1,0 +1,52 @@
+{
+  "header": {
+    "badge": "Arnavutluk Oturma İzni Süreci",
+    "title": {
+      "line1": "Adım adım ilerleyen yolunuz",
+      "highlight": "Arnavutluk oturma izni",
+      "line2": "başarı"
+    },
+    "description": "Kanıtlanmış 4 adımlı yaklaşımımızla karmaşık Arnavutluk vize sürecini basitleştirerek başvurunuzun tüm Arnavutluk göçmenlik gereksinimlerini karşılamasını sağlıyoruz."
+  },
+  "stages": {
+    "consultation": {
+      "title": "İlk danışma ve değerlendirme",
+      "description": "Arnavutluk göçmenlik uzmanlarımız uygunluğunuzu değerlendirir ve Arnavutluk oturma izni gereklilikleri ve vize seçenekleri hakkında ayrıntılı bilgi sağlar."
+    },
+    "documentPreparation": {
+      "title": "Belge hazırlama ve inceleme",
+      "description": "Gerekli tüm belgeleri toplayarak, Arnavutluk göçmenlik standartlarını karşıladıklarından ve uygun şekilde apostillenip onaylandıklarından emin olarak size rehberlik ediyoruz."
+    },
+    "applicationSubmission": {
+      "title": "Başvuru gönderimi ve takibi",
+      "description": "Hukuk ekibimiz Arnavutluk oturma izni başvurunuzu sunar ve İçişleri Bakanlığı işlemleri boyunca sürekli destek sağlar."
+    },
+    "permitApproval": {
+      "title": "Oturma izni onayı ve kaydı",
+      "description": "Yerel polis kaydı, biyometrik kayıt dahil olmak üzere son adımlarda yardımcı oluyor ve Arnavutluk oturma izninizi almanızı sağlıyoruz."
+    }
+  },
+  "images": {
+    "tirana": {
+      "alt": "Tiran Şehir Merkezi",
+      "location": "Tiran",
+      "description": "Arnavutluk'un başkenti"
+    },
+    "albanianRiviera": {
+      "alt": "Arnavutluk Adriyatik Kıyısı",
+      "location": "Arnavutluk Rivierası",
+      "description": "Güzel Adriyatik kıyı şeridi"
+    },
+    "historicAlbania": {
+      "alt": "Arnavutluk Kalesi",
+      "location": "Tarihi Arnavutluk",
+      "description": "Ortaçağ kaleleri ve şatoları"
+    },
+    "albanianAlps": {
+      "alt": "Arnavutluk Alpleri",
+      "location": "Arnavutluk Alpleri",
+      "description": "Dağ manzaraları ve doğa"
+    }
+  },
+  "floatingBadge": "İzin İşlemleri"
+}

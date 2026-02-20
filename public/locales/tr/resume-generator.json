@@ -1,0 +1,357 @@
+{
+  "title": "Özgeçmiş Oluşturucu Pro",
+  "description": "Dakikalar içinde çarpıcı bir profesyonel özgeçmiş oluşturun",
+  "steps": {
+    "personalInfo": "Kişisel Bilgiler",
+    "achievements": "Başarılar",
+    "workExperience": "İş Deneyimi",
+    "education": "Eğitim",
+    "projects": "Projeler",
+    "skills": "Beceriler"
+  },
+  "stepIcons": {
+    "personalInfo": "👤",
+    "achievements": "🏆",
+    "workExperience": "💼",
+    "education": "🎓",
+    "projects": "🚀",
+    "skills": "⚡"
+  },
+  "stepDescriptions": {
+    "personalInfo": "Bize kendinizden bahsedin ve harika bir ilk izlenim bırakın",
+    "achievements": "Önemli başarılarınızı sergileyin ve kalabalığın arasından sıyrılın",
+    "workExperience": "Profesyonel yolculuğunuzu ve kariyerinizde öne çıkan noktaları detaylandırın",
+    "education": "Eğitim geçmişinizi ve akademik başarılarınızı paylaşın",
+    "projects": "Becerilerinizi gösteren kişisel projelerinizi vurgulayın",
+    "skills": "Sizi değerli kılan teknik ve sosyal becerilerinizi sergileyin"
+  },
+  "buttons": {
+    "back": "Geri {{adım}}",
+    "back_mobile": "Geri",
+    "continue": "Devam et {{adım}}",
+    "continue_mobile": "Devam et",
+    "saveSkill": "Beceri Kaydet",
+    "generateResume": "Özgeçmiş Oluştur",
+    "saveProgress": "İlerlemeyi Kaydet",
+    "needHelp": "Yardıma mı ihtiyacınız var?",
+    "previewResume": "Özgeçmiş Önizleme",
+    "addAnotherExperience": "Başka Bir Deneyim Ekleyin",
+    "addAnotherEducation": "Başka Bir Eğitim Ekleyin",
+    "addAnotherProject": "Başka Bir Proje Ekleme",
+    "addAnotherSkill": "Başka Bir Beceri Ekleme",
+    "addAchievement": "Başarı Ekle",
+    "viewTemplates": "Şablonları Görüntüle",
+    "cancel": "İptal",
+    "applyCrop": "Mahsul Uygula",
+    "choosePhoto": "Fotoğraf Seçin"
+  },
+  "features": {
+    "fastEasy": {
+      "icon": "⚡",
+      "title": "Hızlı ve Kolay",
+      "description": "Sezgisel adım adım sürecimizle dakikalar içinde profesyonel bir özgeçmiş oluşturun."
+    },
+    "beautifulTemplates": {
+      "icon": "🎨",
+      "title": "Güzel Şablonlar",
+      "description": "Profesyonelce tasarlanmış özgeçmiş şablonları koleksiyonumuzdan seçim yapın."
+    },
+    "atsOptimized": {
+      "icon": "📊",
+      "title": "ATS Optimize Edildi",
+      "description": "Özgeçmişlerimiz Başvuru Takip Sistemlerinden geçecek şekilde optimize edilmiştir."
+    }
+  },
+  "proTips": {
+    "title": "Profesyonel İpuçları: {{step}}",
+    "personalInfo": {
+      "tip1": {
+        "title": "Profesyonel E-posta",
+        "description": "Takma adlar veya komik adresler yerine adınıza dayalı profesyonel bir e-posta adresi kullanın."
+      },
+      "tip2": {
+        "title": "Etkileyici Özet",
+        "description": "Özetinizi kısa tutun (3-5 cümle) ve en etkileyici niteliklerinizi ve kariyer hedeflerinizi vurgulayın."
+      },
+      "tip3": {
+        "title": "Profesyonel Fotoğraf",
+        "description": "Bir fotoğraf ekliyorsanız, nötr arka planlı ve uygun kıyafetli profesyonel bir vesikalık fotoğraf kullanın."
+      },
+      "tip4": {
+        "title": "İletişim Bilgileri",
+        "description": "Yalnızca gerekli iletişim bilgilerini ekleyin ve tüm ayrıntıların güncel ve doğru olduğundan emin olun."
+      }
+    },
+    "achievements": {
+      "tip1": {
+        "title": "Sonuçları Ölçün",
+        "description": "Başarılarınızı ölçmek için sayılar ve yüzdeler kullanın (örneğin, \"Satışları artırdı\" yerine \"Satışları %25 artırdı\")."
+      },
+      "tip2": {
+        "title": "Sonuçlar ve Sorumluluklar",
+        "description": "Diğer adaylar arasından sıyrılmak için iş sorumluluklarını listelemek yerine sonuçlara ve çıktılara odaklanın."
+      },
+      "tip3": {
+        "title": "Ödüller & Tanınma",
+        "description": "Uzmanlığınızı ve değerinizi gösteren ilgili ödülleri, takdirleri ve onurları ekleyin."
+      },
+      "tip4": {
+        "title": "Eylem Fiilleri Kullanın",
+        "description": "Başarı tanımlamalarına \"başardı\", \"liderlik etti\", \"uyguladı\" veya \"yarattı\" gibi güçlü eylem fiilleriyle başlayın."
+      }
+    }
+  },
+  "progress": {
+    "stepsCompleted": "{{sayı}} 6 adım",
+    "currentStep": "Güncel: Adım {{adım}} - {{title}}",
+    "currentStep_mobile": "Güncel: Adım {{adım}}",
+    "progressPercentage": "{{yüzde}}%"
+  },
+  "step1": {
+    "title": "KİŞİSEL BİLGİLER",
+    "basicDetails": "Temel Ayrıntılar",
+    "firstName": "İlk İsim",
+    "firstNamePlaceholder": "İlk adınızı girin",
+    "firstNameRequired": "İlk isim gereklidir",
+    "middleName": "Göbek Adı",
+    "middleNameOptional": "(isteğe bağlı)",
+    "middleNamePlaceholder": "Örneğin Herbert",
+    "lastName": "Soyadı",
+    "lastNamePlaceholder": "Soyadınızı girin",
+    "lastNameRequired": "Soyadı gereklidir",
+    "professionalProfile": "Profesyonel Profil",
+    "profilePhoto": "Profil Fotoğrafı",
+    "uploadInstructions": "Fotoğrafınızı yüklemek ve kırpmak için tıklayın",
+    "imageSizeError": "Dosya boyutu 5MB'den az olmalıdır",
+    "imageTypeError": "Dosya JPEG, PNG veya GIF olmalıdır",
+    "designation": "Tanımlama",
+    "designationPlaceholder": "örneğin Kıdemli Muhasebeci",
+    "address": "Adres",
+    "addressPlaceholder": "Adresinizi girin",
+    "contactInformation": "İletişim Bilgileri",
+    "email": "E-posta Adresi",
+    "emailPlaceholder": "E-posta adresinizi girin",
+    "emailRequired": "E-posta gereklidir",
+    "emailInvalid": "E-posta geçersiz",
+    "phone": "Telefon Numaraları",
+    "phonePlaceholder": "Telefon numaranızı girin",
+    "phoneRequired": "Telefon numarası gereklidir",
+    "summary": "Profesyonel Özet",
+    "summaryPlaceholder": "Mesleki geçmişinizi, temel becerilerinizi ve kariyer hedeflerinizi kısaca açıklayın",
+    "summaryTip": "Güçlü bir özet öne çıkmanıza yardımcı olur. Kısa ve etkili tutun.",
+    "cropperTitle": "Profil Fotoğrafınızı Kırpın",
+    "zoom": "Yakınlaştırma: {{zoom}}x",
+    "preview": "Önizleme:",
+    "cropInstructions": {
+      "drag": "- Görüntüyü konumlandırmak için sürükleyin",
+      "zoom": "- Yeniden boyutlandırmak için yakınlaştırma kaydırıcısını kullanın",
+      "cropArea": "- Daire, ekim alanınızı gösterir"
+    }
+  },
+  "step2": {
+    "description": "Kayda değer başarılarınızı sergileyin",
+    "noAchievements": "Henüz başarım eklenmedi. İlk başarınızı aşağıya ekleyin.",
+    "remove": "Kaldırmak",
+    "delete": "Silme",
+    "addNew": "Yeni Başarı Ekle",
+    "achievementTitle": "Başarı Unvanı",
+    "achievementTitlePlaceholder": "Başarı başlığını girin",
+    "date": "Tarih",
+    "achievementDescription": "Açıklama",
+    "achievementDescriptionPlaceholder": "Başarınızı tanımlayın",
+    "title": "ACHIEVEMENTS"
+  },
+  "step3": {
+    "workExperience": "İş Deneyimi #{{index}}",
+    "jobTitle": "Başlık",
+    "jobTitlePlaceholder": "İş unvanını girin",
+    "jobTitleRequired": "İş unvanı gereklidir",
+    "company": "Şirket / Organizasyon",
+    "companyPlaceholder": "Şirket adını girin",
+    "companyRequired": "Şirket adı gereklidir",
+    "location": "Konum",
+    "locationPlaceholder": "Örneğin San Francisco, CA",
+    "startDate": "Başlangıç Tarihi",
+    "startDateRequired": "Başlangıç tarihi gereklidir",
+    "endDate": "Bitiş Tarihi",
+    "endDateOptional": "(veya mevcutsa boş bırakın)",
+    "endDateTip": "Mevcut pozisyonunuz buysa boş bırakın",
+    "description": "Açıklama",
+    "descriptionPlaceholder": "Bu rolde kullandığınız sorumluluklarınızı, başarılarınızı ve becerilerinizi açıklayın",
+    "descriptionTip": "Daha iyi okunabilirlik için madde işaretleri kullanın. Görevlerden ziyade başarılara odaklanın.",
+    "title": "EXPERIENCE"
+  },
+  "step4": {
+    "educationEntry": "Eğitim #{{index}}",
+    "school": "Okul",
+    "schoolPlaceholder": "Okul veya üniversite adını girin",
+    "schoolRequired": "Okul adı gereklidir",
+    "degree": "Derece",
+    "degreePlaceholder": "Örn. Fen Bilimleri Lisansı",
+    "degreeRequired": "Diploma gereklidir",
+    "city": "Şehir",
+    "cityPlaceholder": "Örneğin Boston, MA",
+    "startDate": "Başlangıç Tarihi",
+    "startDatePlaceholder": "aa/yyyy",
+    "startDateRequired": "Başlangıç tarihi gereklidir",
+    "endDate": "Bitiş Tarihi",
+    "endDateOptional": "(veya Mevcut)",
+    "endDatePlaceholder": "aa/yyyy veya Mevcut",
+    "description": "Açıklama",
+    "descriptionOptional": "(isteğe bağlı)",
+    "descriptionPlaceholder": "Başarılarınızı, not ortalamanızı, ilgili derslerinizi vb. açıklayın.",
+    "descriptionTip": "Kariyer hedeflerinizle ilgili dersleri, onur derecelerini veya müfredat dışı etkinlikleri vurgulayın.",
+    "title": "EDUCATION"
+  },
+  "step5": {
+    "projectEntry": "Proje #{{index}}",
+    "projectName": "Proje Adı",
+    "projectNamePlaceholder": "Proje adını girin",
+    "projectNameRequired": "Proje adı gereklidir",
+    "projectLink": "Proje Bağlantısı",
+    "projectLinkOptional": "(isteğe bağlı)",
+    "projectLinkInvalid": "Bağlantı geçersiz",
+    "description": "Açıklama",
+    "descriptionPlaceholder": "Projeyi, kullanılan teknolojileri ve rolünüzü açıklayın",
+    "descriptionTip": "Amacı, kullanılan teknolojileri ve sizin özel katkılarınızı vurgulayın.",
+    "title": "PROJECTS",
+    "projectLinkPlaceholder": "https://example.com/project"
+  },
+  "step6": {
+    "skillsTitle": "Teknik ve Mesleki Beceriler",
+    "skillsDescription": "Başvurduğunuz pozisyonlarla ilgili becerilerinizi ekleyin",
+    "skillPlaceholder": "Örn. JavaScript, Proje Yönetimi, Veri Analizi",
+    "skillRequired": "Beceri adı gereklidir",
+    "tipsTitle": "Becerileri Listelemek için İpuçları",
+    "tip1": "Teknik (zor) beceriler ve kişilerarası (yumuşak) becerilerin bir karışımını içerir",
+    "tip2": "Hedeflediğiniz iş tanımlarında belirtilen becerilere öncelik verin",
+    "tip3": "Teknik beceriler konusunda spesifik olun (örneğin, sadece \"JavaScript\" yerine \"React.js\")",
+    "title": "SKILLS"
+  },
+  "tooltip": {
+    "prefix": "Adım {{adım}}: {{başlık}}",
+    "completed": "✓"
+  },
+  "alts": {
+    "cropPreviewAlt": "Mahsul önizlemesi",
+    "previewAlt": "Önizleme",
+    "profileAlt": "Profil"
+  },
+  "templateSelector": {
+    "selectTemplate": "Şablon Seçin",
+    "selected": "✓ Seçilmiş",
+    "defaultSummary": "Profesyonel özet yer tutucu"
+  },
+  "sections": {
+    "skills": "Beceriler",
+    "education": "Eğitim",
+    "experience": "Deneyim",
+    "workExperience": "İş Deneyimi",
+    "professionalSkills": "Profesyonel Beceriler",
+    "jobExperience": "İş Deneyimi",
+    "proSkills": "Profesyonel Beceriler",
+    "references": "Referanslar",
+    "projects": "Projeler",
+    "achievements": "Başarılar",
+    "contact": "İletişim",
+    "aboutMe": "Benim hakkımda",
+    "profile": "Profil",
+    "previousEmployment": "Önceki İstihdam",
+    "software": "Yazılım",
+    "languages": "Diller",
+    "reference": "Referans",
+    "awards": "Ödüller",
+    "contactMe": "Bana Ulaşın"
+  },
+  "fallbacks": {
+    "noSummaryAvailable": "Özet mevcut değil",
+    "unnamedSkill": "İsimsiz beceri",
+    "noDataAvailable": "Veri mevcut değil",
+    "availableUponRequest": "İstek üzerine temin edilebilir"
+  },
+  "labels": {
+    "phone": "Telefon",
+    "email": "E-posta",
+    "address": "Adres"
+  },
+  "actions": {
+    "generatePdf": "PDF Oluştur",
+    "generatingPdf": "PDF Oluşturma..."
+  },
+  "messages": {
+    "referencesAvailableOnRequest": "Talep üzerine profesyonel referanslar sağlanacaktır"
+  },
+  "resumeBuilder": "Özgeçmiş Oluşturucu",
+  "forms": {
+    "personalInfoTitle": "Kişisel Bilgiler",
+    "buildProfileSubtitle": "Profesyonel profilinizi oluşturun",
+    "profilePhoto": "Profil Fotoğrafı",
+    "profileAlt": "Profil",
+    "changePhoto": "Fotoğraf Değiştir",
+    "uploadPhoto": "Fotoğraf Yükle",
+    "headshotTip": "Profesyonel bir vesikalık fotoğraf yükleyin. Tavsiye edilir: 400x400px, JPG veya PNG",
+    "firstName": "İlk İsim",
+    "lastName": "Soyadı",
+    "placeholderFirstName": "John",
+    "placeholderLastName": "Doe",
+    "emailAddress": "E-posta Adresi",
+    "phoneNumber": "Telefon Numarası",
+    "placeholderEmail": "E-posta adresinizi girin",
+    "placeholderPhone": "Telefonunuzu girin",
+    "location": "Konum",
+    "placeholderLocation": "Örneğin San Francisco, CA",
+    "placeholderLocationExample": "New York, NY",
+    "linkedinProfile": "LinkedIn Profili",
+    "placeholderLinkedIn": "linkedin.com/in/johndoe",
+    "websitePortfolio": "Web Sitesi/Portföy",
+    "placeholderPortfolio": "www.johndoe.com",
+    "professionalSummary": "Profesyonel Özet",
+    "placeholderSummary": "Önemli başarılarınızı, becerilerinizi ve kariyer hedeflerinizi vurgulayan kısa mesleki özet...",
+    "summaryHint": "İlgi çekici ve kısa olsun",
+    "characters": "karakterler",
+    "jobTitlePlaceholder": "İş unvanı",
+    "companyPlaceholder": "Şirket adı",
+    "locationPlaceholder": "Konum",
+    "descriptionPlaceholder": "Sorumluluklarınızı ve başarılarınızı açıklayın",
+    "experienceLabel": "Deneyim",
+    "jobTitle": "İş Ünvanı",
+    "company": "Şirket",
+    "placeholderJobTitle": "Yazılım Geliştirici",
+    "placeholderCompany": "Tech Company Inc.",
+    "placeholderLocationExp": "San Francisco, Kaliforniya",
+    "startDate": "Başlangıç Tarihi",
+    "endDate": "Bitiş Tarihi",
+    "currentWorkHere": "Şu anda burada çalışıyorum",
+    "description": "Açıklama",
+    "addExperience": "Deneyim Ekleyin",
+    "educationLabel": "Eğitim",
+    "degreePlaceholder": "Derece",
+    "universityPlaceholder": "Üniversite adı",
+    "degree": "Derece",
+    "school": "Okul",
+    "placeholderDegree": "Bilgisayar Bilimleri Lisans Programı",
+    "placeholderSchool": "Teknoloji Üniversitesi",
+    "placeholderLocationEdu": "Boston, MA",
+    "gpaPlaceholder": "Not ortalaması (isteğe bağlı)",
+    "gpaOptional": "Not ortalaması (isteğe bağlı)",
+    "placeholderGpa": "3.8/4.0",
+    "addEducation": "Eğitim Ekle",
+    "certificationLabel": "Sertifikasyon",
+    "certificationNamePlaceholder": "Sertifika adı",
+    "issuerPlaceholder": "İhraççı",
+    "certificationName": "Sertifika Adı",
+    "issuingOrganization": "İhraç Eden Kuruluş",
+    "dateObtained": "Elde Edildiği Tarih",
+    "placeholderCertification": "AWS Sertifikalı Çözüm Mimarı",
+    "placeholderIssuer": "Amazon Web Hizmetleri",
+    "addCertification": "Sertifika Ekleme",
+    "skillsPlaceholder": "JavaScript",
+    "addSkill": "Beceri Ekle",
+    "beginner": "Başlangıç",
+    "intermediate": "Orta seviye",
+    "advanced": "Gelişmiş",
+    "expert": "Uzman",
+    "placeholderEmailExample": "john.doe@email.com",
+    "placeholderPhoneExample": "+1 (555) 123-4567"
+  }
+}

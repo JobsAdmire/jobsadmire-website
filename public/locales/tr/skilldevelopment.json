@@ -1,0 +1,374 @@
+{
+  "skilldevelopment": {
+    "hero": {
+      "badge": "Mesleki beceri geliştirme eğitimi",
+      "headline": {
+        "prefix": "Kendinizi Geliştirin",
+        "suffix": "Yarının İşi İçin"
+      },
+      "animatedWords": [
+        "Beceriler",
+        "Uzmanlık",
+        "Bilgi",
+        "Yetenekler",
+        "Yetenekler",
+        "Ustalık"
+      ],
+      "description": "İş odaklı eğitim programlarımız ve mesleki gelişim kurslarımız pratik, talep gören beceriler sunar. Uzmanlar tarafından yönetilen beceri geliştirme oturumları sizi günümüzün rekabetçi iş piyasasında başarılı olmaya hazırlar.",
+      "cta": {
+        "text": "Eğitim Programlarını Keşfedin"
+      }
+    },
+    "showcase": {
+      "title": "Beceri Geliştirme",
+      "subtitle": "Yarının becerilerini bugünden oluşturun",
+      "learning": {
+        "title": "İnteraktif Öğrenme",
+        "subtitle": "Uzman rehberliğinde uygulamalı eğitim"
+      },
+      "categories": [
+        {
+          "icon": "Kod",
+          "title": "Teknik Beceriler",
+          "description": "Programlama ve BT",
+          "gradient": "bg-gradient-to-r from-sky-500 to-blue-600"
+        },
+        {
+          "icon": "Ampul",
+          "title": "Yaratıcı",
+          "description": "Tasarım ve Medya",
+          "gradient": "bg-gradient-to-r from-purple-500 to-indigo-600"
+        },
+        {
+          "icon": "Hedef",
+          "title": "İş Dünyası",
+          "description": "Yönetim ve Finans",
+          "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+        },
+        {
+          "icon": "TrendingUp",
+          "title": "Yumuşak Beceriler",
+          "description": "İletişim ve Liderlik",
+          "gradient": "bg-gradient-to-r from-orange-500 to-red-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "150+",
+          "label": "Eğitim Programları",
+          "color": "text-sky-600"
+        },
+        {
+          "value": "5000+",
+          "label": "Eğitilen Öğrenciler",
+          "color": "text-blue-600"
+        },
+        {
+          "value": "90%",
+          "label": "İşe Yerleştirme",
+          "color": "text-indigo-600"
+        }
+      ]
+    }
+  },
+  "skilldevpage": {
+    "hero": {
+      "badge": "MESLEKİ BECERİ GELİŞİMİ",
+      "title": {
+        "prefix": "Neden Bizi Seçmelisiniz",
+        "highlight": "Beceri Geliştirme Programları?"
+      },
+      "description": "Sizi işe hazır hale getirmek için tasarlanmış sektörle ilgili eğitim programlarıyla kariyerinizi dönüştürün. Kapsamlı beceri geliştirme kurslarımız sayesinde kariyerlerini ilerleten binlerce profesyonele katılın.",
+      "cta": {
+        "primary": "Eğitim Programlarını Keşfedin",
+        "secondary": "Konsültasyon Planlayın"
+      }
+    },
+    "stats": [
+      {
+        "value": "500+",
+        "label": "Eğitim Programları",
+        "icon": "KitapAç"
+      },
+      {
+        "value": "15k+",
+        "label": "Eğitilen Öğrenciler",
+        "icon": "Kullanıcılar"
+      },
+      {
+        "value": "95%",
+        "label": "İşe Yerleştirme Oranı",
+        "icon": "TrendingUp"
+      },
+      {
+        "value": "200+",
+        "label": "Sektör Ortakları",
+        "icon": "Bina"
+      }
+    ],
+    "benefits": {
+      "title": {
+        "prefix": "Programlarımızı Program Yapan Nedir?",
+        "highlight": "Olağanüstü"
+      },
+      "description": "Kapsamlı yaklaşımımız, gerçek dünya uygulamaları ile en iyi eğitim deneyimini elde etmenizi sağlar",
+      "items": [
+        {
+          "icon": "Bina",
+          "title": "Sektörle İlgili Müfredat",
+          "description": "Sektör uzmanları ve işverenlerle işbirliği içinde tasarlanan eğitim modülleri, talep gören beceri eğitim programları aracılığıyla en uygun ve güncel becerileri kazanmanızı sağlar.",
+          "color": "text-[#38B6FF]",
+          "bgColor": "bg-[#38B6FF]/10"
+        },
+        {
+          "icon": "Kullanıcılar",
+          "title": "Deneyimli Eğitmenler ve Mentorlar",
+          "description": "Kariyer gelişimi için eğitim veren, kendi alanlarında gerçek dünya deneyimine sahip nitelikli eğitmenlerden öğrenin.",
+          "color": "text-emerald-600",
+          "bgColor": "bg-emerald-50"
+        },
+        {
+          "icon": "Hedef",
+          "title": "Uygulamalı Öğrenme",
+          "description": "Pratik, proje tabanlı öğrenmeyi vurguluyoruz, böylece sadece eğitimli değil, temel sosyal beceriler ve teknik eğitimle işe hazırsınız.",
+          "color": "text-purple-600",
+          "bgColor": "bg-mor-50"
+        },
+        {
+          "icon": "Saat",
+          "title": "Esnek Öğrenme Seçenekleri",
+          "description": "Çevrimiçi, yüz yüze veya karma - talep gören becerilere yönelik çevrimiçi ve çevrimdışı eğitim oturumları için programınıza ve öğrenme tarzınıza en uygun modu seçin.",
+          "color": "text-orange-600",
+          "bgColor": "bg-orange-50"
+        },
+        {
+          "icon": "Evrak Çantası",
+          "title": "Kariyer Desteği",
+          "description": "İşyerine hazırlık eğitimi ve kariyer geliştirme atölyelerimizin bir parçası olarak özgeçmiş oluşturma, iş arama stratejileri ve mülakat hazırlığı konularında rehberlik alın.",
+          "color": "text-indigo-600",
+          "bgColor": "bg-indigo-50"
+        }
+      ]
+    },
+    "trainingAreas": {
+      "title": {
+        "prefix": "Eğitim Alanları",
+        "highlight": "Biz Kapsıyoruz"
+      },
+      "description": "Programlarımız, çeşitli kariyer hedeflerini karşılamak için çok çeşitli yüksek talep alanlarını kapsamaktadır",
+      "programLabel": "Profesyonel Eğitim Programı",
+      "skillsLabel": "Öğreneceğiniz Temel Beceriler:",
+      "highlightsLabel": "Programın Önemli Noktaları:",
+      "enrollButton": "Kaydolun",
+      "programText": "Program",
+      "highlights": [
+        "Sektörde tanınan sertifikasyon",
+        "Uygulamalı proje portföyü",
+        "Kariyer yerleştirme yardımı",
+        "Esnek öğrenim programı"
+      ],
+      "items": [
+        {
+          "title": "Bilgi Teknolojileri (BT) & Yazılım Geliştirme",
+          "description": "Programlama dilleri, web geliştirme, veri bilimi, uygulama geliştirme, siber güvenlik ve daha fazlası, dijital beceri eğitim girişimlerimiz tarafından desteklenmektedir.",
+          "icon": "Kod",
+          "color": "text-[#38B6FF]",
+          "bgColor": "bg-[#38B6FF]/10",
+          "accentColor": "bg-[#38B6FF]",
+          "skills": [
+            "Python",
+            "JavaScript",
+            "React",
+            "Veri Bilimi",
+            "Siber Güvenlik",
+            "Bulut Bilişim"
+          ],
+          "id": 0
+        },
+        {
+          "title": "Dijital Pazarlama",
+          "description": "SEO, sosyal medya pazarlaması, e-posta pazarlaması, içerik oluşturma, Google Ads ve analitik.",
+          "icon": "TrendingUp",
+          "color": "text-emerald-600",
+          "bgColor": "bg-emerald-50",
+          "accentColor": "bg-emerald-600",
+          "skills": [
+            "SEO",
+            "Sosyal Medya",
+            "Google Reklamları",
+            "İçerik Pazarlama",
+            "Analitik",
+            "E-posta Pazarlama"
+          ],
+          "id": 1
+        },
+        {
+          "title": "İşletme ve Girişimcilik",
+          "description": "İş planlaması, proje yönetimi, liderlik ve finansal okuryazarlık.",
+          "icon": "Bina",
+          "color": "text-purple-600",
+          "bgColor": "bg-mor-50",
+          "accentColor": "bg-mor-600",
+          "skills": [
+            "İş Planlaması",
+            "Proje Yönetimi",
+            "Liderlik",
+            "Finansal Okuryazarlık",
+            "Strateji",
+            "Operasyonlar"
+          ],
+          "id": 2
+        },
+        {
+          "title": "İletişim ve Yumuşak Beceriler",
+          "description": "Topluluk önünde konuşma, profesyonel yazma, ekip çalışması, duygusal zeka ve işyeri görgü kuralları.",
+          "icon": "MessageSquare",
+          "color": "text-orange-600",
+          "bgColor": "bg-orange-50",
+          "accentColor": "bg-orange-600",
+          "skills": [
+            "Topluluk Önünde Konuşma",
+            "Profesyonel Yazarlık",
+            "Takım Çalışması",
+            "Duygusal Zeka",
+            "Liderlik",
+            "Müzakere"
+          ],
+          "id": 3
+        },
+        {
+          "title": "Mesleki ve Teknik Beceriler",
+          "description": "Mekanik, elektrik ve bilgisayar destekli tasarım (CAD) dahil olmak üzere ticaret ve uygulamalı meslekler.",
+          "icon": "Kalkan",
+          "color": "text-indigo-600",
+          "bgColor": "bg-indigo-50",
+          "accentColor": "bg-indigo-600",
+          "skills": [
+            "Makine Mühendisliği",
+            "Elektrik Sistemleri",
+            "CAD Tasarım",
+            "Üretim",
+            "Kalite Kontrol",
+            "Güvenlik Standartları"
+          ],
+          "id": 4
+        }
+      ]
+    },
+    "targetAudience": {
+      "title": "Kimler Katılabilir?",
+      "description": "Programlarımız farklı kariyer aşamalarındaki çeşitli öğrenciler için tasarlanmıştır",
+      "items": [
+        {
+          "title": "Yeni Mezunlar",
+          "description": "Pakistan'da yeni mezunlar için beceri kazandırma programları arayışı",
+          "icon": "MezuniyetKapağı",
+          "color": "text-[#38B6FF]"
+        },
+        {
+          "title": "Çalışan Profesyoneller",
+          "description": "Beceri açığı analizi ve beceri kazandırma yoluyla iş becerilerini geliştirmeyi veya kariyer geçişini amaçlamak",
+          "icon": "Evrak Çantası",
+          "color": "text-emerald-600"
+        },
+        {
+          "title": "Girişimciler",
+          "description": "İş bilgisi ve girişimcilik becerilerine ihtiyaç duyulması",
+          "icon": "Ampul",
+          "color": "text-purple-600"
+        },
+        {
+          "title": "İş Arayanlar",
+          "description": "İş arayanlar için uygun fiyatlı kariyer eğitim programları aracılığıyla rekabet avantajı hedeflemek",
+          "icon": "Hedef",
+          "color": "text-orange-600"
+        },
+        {
+          "title": "Organizasyonlar",
+          "description": "Çalışanlarını kurumsal beceri eğitimleri ile eğitmek isteyen",
+          "icon": "Bina",
+          "color": "text-indigo-600"
+        }
+      ]
+    },
+    "approach": {
+      "title": {
+        "prefix": "Bizim",
+        "highlight": "Öğrenme Yaklaşımı"
+      },
+      "description": "JobsAdmire'da, başarıyı sağlamak için tasarlanmış öğrenci merkezli ve sonuç odaklı bir eğitim modelini takip ediyoruz",
+      "points": [
+        {
+          "title": "Nişanlılık",
+          "description": "Öğrencileri aktif olarak dahil eden interaktif oturumlar",
+          "icon": "Kullanıcılar"
+        },
+        {
+          "title": "Değerlendirme",
+          "description": "İlerlemeyi ölçmek için sınavlar ve gerçek dünya projeleri",
+          "icon": "BarChart3"
+        },
+        {
+          "title": "Değerlendirme",
+          "description": "Doğrulama için sertifikalar ve uygulamalı testler",
+          "icon": "Ödül"
+        },
+        {
+          "title": "Bağlantı",
+          "description": "Gerçek deneyim için iş fırsatları ve stajlar",
+          "icon": "Küre"
+        }
+      ]
+    },
+    "certification": {
+      "title": {
+        "prefix": "Sertifikasyon",
+        "suffix": "Yerleştirme Yardımı"
+      },
+      "description": "Başarılı bir şekilde tamamlayan katılımcılar, özgeçmişlerini güçlendirmek için tanınmış sertifikalar alırlar. Önde gelen şirketler ve iş platformlarıyla olan ortaklıklarımız, yerleştirme yardımı sunmamızı ve öğrencileri gerçek istihdam fırsatlarıyla buluşturmamızı sağlar.",
+      "features": [
+        "Sektörde tanınan sertifikalar",
+        "Profesyonel gelişim için en iyi beceri geliştirme kursları",
+        "Pakistan'da beceri geliştirme kursları",
+        "Pakistanlı gençler için iş eğitimi"
+      ],
+      "cta": "Sertifika Programlarını Görüntüle"
+    },
+    "form": {
+      "title": "Bugün Başlayın",
+      "fields": {
+        "name": "Ad Soyad",
+        "email": "E-posta Adresi",
+        "training": "İlgilenilen Eğitim Alanı"
+      },
+      "placeholders": {
+        "name": "Tam adınızı girin",
+        "email": "E-posta adresinizi girin",
+        "training": "Eğitim alanını seçin"
+      },
+      "options": [
+        {
+          "value": "o",
+          "label": "BT & Yazılım Geliştirme"
+        },
+        {
+          "value": "pazarlama",
+          "label": "Dijital Pazarlama"
+        },
+        {
+          "value": "İŞ",
+          "label": "İşletme ve Girişimcilik"
+        },
+        {
+          "value": "iletişim",
+          "label": "İletişim ve Yumuşak Beceriler"
+        },
+        {
+          "value": "TEKNİK",
+          "label": "Mesleki ve Teknik Beceriler"
+        }
+      ],
+      "submit": "Bilgi Talep Edin"
+    }
+  }
+}

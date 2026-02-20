@@ -1,0 +1,268 @@
+{
+  "visarelocation": {
+    "hero": {
+      "badge": "خدمات حرفه ای ویزا و اسکان مجدد",
+      "headline": {
+        "prefix": "با اطمینان به",
+        "suffix": "خود نقل مکان کنید"
+      },
+      "animatedWords": [
+        "کشور",
+        "آینده",
+        "سفر",
+        "ماجراجویی",
+        "رویا",
+        "مقصد"
+      ],
+      "description": "از درخواست ویزا گرفته تا استقرار در خانه جدیدتان، خدمات جامع ویزای ما برای جویندگان کار بین‌المللی به شما کمک می‌کند با اطمینان به کشوری جدید نقل مکان کنید.",
+      "cta": {
+        "text": "شروع اسکان مجدد"
+      }
+    },
+    "showcase": {
+      "title": "ویزا و اسکان مجدد",
+      "subtitle": "پشتیبانی کامل برای جابجایی بین‌المللی شما",
+      "journey": {
+        "title": "پشتیبانی کامل سفر",
+        "subtitle": "از ویزا تا راه‌اندازی خانه جدید"
+      },
+      "services": [
+        {
+          "icon": "FileText",
+          "title": "پردازش ویزا",
+          "description": "پشتیبانی اسناد",
+          "gradient": "bg-gradient-to-r from-sky-500 to-blue-600"
+        },
+        {
+          "icon": "Briefcase",
+          "title": "مجوزهای کار",
+          "description": "کمک حقوقی",
+          "gradient": "bg-gradient-to-r from-purple-500 to-indigo-600"
+        },
+        {
+          "icon": "Home",
+          "title": "مسکن",
+          "description": "یافتن خانه",
+          "gradient": "bg-gradient-to-r from-emerald-500 to-teal-600"
+        },
+        {
+          "icon": "MapPin",
+          "title": "اسکان",
+          "description": "ادغام محلی",
+          "gradient": "bg-gradient-to-r from-orange-500 to-red-600"
+        }
+      ],
+      "stats": [
+        {
+          "value": "96%",
+          "label": "نرخ موفقیت ویزا",
+          "color": "text-sky-600"
+        },
+        {
+          "value": "1200+",
+          "label": "جابجایی انجام شده",
+          "color": "text-blue-600"
+        },
+        {
+          "value": "4.9★",
+          "label": "امتیاز مشتری",
+          "color": "text-indigo-600"
+        }
+      ]
+    },
+    "advantages": {
+      "title": "مزایای خدمات ما",
+      "items": [
+        {
+          "icon": "FileText",
+          "text": "ما تمام مدارک شما را مطابق با الزامات سفارتخانه‌ای که برای ویزا درخواست خواهید داد، آماده و بررسی خواهیم کرد"
+        },
+        {
+          "icon": "FileText",
+          "text": "ما اسناد را برای شما می‌نویسیم و ترجمه می‌کنیم و شما را از دردسر انجام آن توسط خودتان نجات می‌دهیم"
+        },
+        {
+          "icon": "Shield",
+          "text": "ما از همان ابتدا بیمه درمانی آلمانی را برای شما فراهم خواهیم کرد"
+        },
+        {
+          "icon": "Euro",
+          "text": "ما می‌توانیم شما را از هزینه‌های غیرضروری که ممکن است در طول فرآیند پیش بیاید نجات دهیم"
+        },
+        {
+          "icon": "Home",
+          "text": "ما می‌توانیم سندی مبنی بر کمک در یافتن محل اقامت به شما ارائه دهیم که می‌تواند نیاز به اجاره آپارتمان در مرحله ارسال مدارک به کنسولگری را از بین ببرد"
+        },
+        {
+          "icon": "DollarSign",
+          "text": "ما یک فاکتور آلمانی صادر خواهیم کرد که می‌تواند از مالیات در آلمان کسر شده و بخشی از آن بازپرداخت شود. شما می‌توانید هنگام ارائه اظهارنامه مالیاتی خود در سال جاری تا 42٪ از ارزش آن را پس بگیرید"
+        }
+      ],
+      "cta": {
+        "text": "تماس با ما"
+      },
+      "image": {
+        "src": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2084&q=80",
+        "alt": "فضای کاری حرفه‌ای با اسناد و مشاوره"
+      }
+    },
+    "visainfo": {
+      "visaTypes": {
+        "title": "انواع ویزاهایی که ما در آنها به شما کمک می کنیم",
+        "items": [
+          {
+            "title": "کارت آبی (Blue Card)",
+            "icon": "Award"
+          },
+          {
+            "title": "ویزای کار برای نیروی متخصص",
+            "icon": "Briefcase"
+          },
+          {
+            "title": "ویزای تجربه کاری برای متخصصان IT",
+            "icon": "Globe"
+          },
+          {
+            "title": "کارت فرصت (Chancenkarte)",
+            "icon": "Star"
+          },
+          {
+            "title": "ویزای دانشجویی",
+            "icon": "Briefcase"
+          },
+          {
+            "title": "ویزای پیوست به خانواده",
+            "icon": "Users"
+          }
+        ]
+      },
+      "whyRelocation": {
+        "title": {
+          "prefix": "چرا جابجایی با",
+          "highlight": "استخدام شفاف",
+          "suffix": "؟"
+        },
+        "description": "مردم ما را به این دلیل توصیه می‌کنند که ما با مسئولیت‌پذیری و در چارچوب زمانی توافق شده به حل مسائل مربوط به اخذ ویزا و نقل مکان به آلمان کمک می‌کنیم و همچنین تمام خدمات مهاجرتی لازم را برای متخصصان از یک منبع واحد ارائه می‌دهیم.",
+        "features": [
+          {
+            "icon": "Award",
+            "title": "حرفه‌ای‌گری",
+            "description": "ما 15 سال است که در آلمان زندگی می‌کنیم و از تمام مشکلات آگاه هستیم و به یک کد اخلاقی سخت پایبندیم و همیشه به تعهدات خود عمل می‌کنیم."
+          },
+          {
+            "icon": "Clock",
+            "title": "سالها تجربه",
+            "description": "ما به عنوان متخصصان جابجایی، به بسیاری از متخصصان IT و دیجیتال در نقل مکان به مونیخ، برلین، اشتوتگارت، دوسلدورف و دیگر شهرهای آلمان کمک کرده‌ایم - از کمک در مستندات ویزا تا جابجایی و سازگاری با شهر جدید."
+          },
+          {
+            "icon": "Home",
+            "title": "جابجایی «کلید در دست»",
+            "description": "ما در تمام مراحل کمک می‌کنیم: جمع‌آوری مدارک، نحوه درخواست ویزای کار، جابجایی و ادغام پس از ورود، جستجوی آپارتمان کوتاه و بلندمدت. ما همیشه در دسترس هستیم و آماده‌ایم تا به سرعت به سوالات شما پاسخ دهیم."
+          },
+          {
+            "icon": "Users",
+            "title": "رویکرد فردی",
+            "description": "بسته به مورد شما، ما به شما کمک می‌کنیم تا در سریع‌ترین و روان‌ترین زمان ممکن جابجا شوید. رویکرد شخصی ما فرآیند جابجایی سریع و یکپارچه را با مشاوره ویزای دانشجویی در صورت نیاز تضمین می‌کند."
+          }
+        ]
+      },
+      "relocationPackage": {
+        "title": "چه زمانی بسته اسکان مجدد مناسب است",
+        "scenarios": [
+          {
+            "icon": "Building",
+            "title": "شما یک پیشنهاد از یک شرکت آلمانی دارید",
+            "description": "کسانی که پیشنهاد کار در دست دارند اما خود شرکت راهنمایی ویزا برای اشتغال در خارج از کشور را ارائه نمی‌دهد."
+          },
+          {
+            "icon": "Users",
+            "title": "شما با خانواده در حال جابجایی هستید",
+            "description": "کسانی که به عنوان زوج و/یا با فرزندان به آلمان نقل مکان می‌کنند."
+          },
+          {
+            "icon": "CheckCircle",
+            "title": "شما یک پرونده پیچیده دارید",
+            "description": "کسانی که در کشوری اقامت دارند که خدمات ویزا در پاکستان برای کار در خارج از کشور محدود است، و کسانی که نیاز به جابجایی فوری دارند."
+          },
+          {
+            "icon": "Search",
+            "title": "شما می‌خواهید برای جستجوی کار یک Chancenkarte دریافت کنید",
+            "description": "کسانی که می‌خواهند بدون پیشنهاد کاری به آلمان بیایند و در رشته خود کار پیدا کنند."
+          }
+        ]
+      }
+    }
+  },
+  "advantages": {
+    "title": "Advantages of our service",
+    "items": [
+      {
+        "icon": "FileText",
+        "text": "We will prepare and check all your documents in accordance with the requirements of the embassy where you will apply for a visa"
+      },
+      {
+        "icon": "FileText",
+        "text": "We will write and translate documents for you, saving you the hassle of doing it yourself"
+      },
+      {
+        "icon": "Shield",
+        "text": "We will provide you with German health insurance from the beginning"
+      },
+      {
+        "icon": "Euro",
+        "text": "We can save you from unnecessary costs that may come up during the process"
+      },
+      {
+        "icon": "Home",
+        "text": "We can provide you with a document of assistance in finding accommodation, which can eliminate the need to rent an apartment during the stage of submitting documents to the consulate"
+      },
+      {
+        "icon": "DollarSign",
+        "text": "We will issue a German invoice that can be deducted from taxes in Germany and partially reimbursed. You can get back up to 42% of its value upon filing your tax return in the current year"
+      }
+    ],
+    "cta": {
+      "text": "Contact us"
+    },
+    "image": {
+      "src": "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2084&q=80",
+      "alt": "Professional workspace with documents and consultation"
+    }
+  },
+  "visainfo": {
+    "visaTypes": {
+      "title": "Types of visas we help you with",
+      "items": [
+        { "title": "Blue Card", "icon": "Award" },
+        { "title": "Work visa for a high-skilled worker", "icon": "Briefcase" },
+        { "title": "Work experience visa for IT professionals", "icon": "Globe" },
+        { "title": "Opportunity Card (Chancenkarte)", "icon": "Star" },
+        { "title": "Student visas", "icon": "Briefcase" },
+        { "title": "Family reunion visa", "icon": "Users" }
+      ]
+    },
+    "whyRelocation": {
+      "title": {
+        "prefix": "Why relocation with",
+        "highlight": "Transparent",
+        "suffix": "Hiring?"
+      },
+      "description": "People recommend us for the fact that we responsibly and within the agreed time frame help to resolve the issues of obtaining a visa and moving to Germany, as well as provide all the necessary immigration services for professionals from one source.",
+      "features": [
+        { "icon": "Award", "title": "Professionalism", "description": "We have been living in Germany for 15 years and we are aware of all the pitfalls, and uphold a strict code of ethics, always honoring our commitments." },
+        { "icon": "Clock", "title": "Years of experience", "description": "As relocators, we have assisted numerous IT and digital specialists in relocating to Munich, Berlin, Stuttgart, Düsseldorf, and other German cities — from visa documentation help to relocating and adapting to a new city." },
+        { "icon": "Home", "title": "«Turnkey» Relocation", "description": "We help at all stages: gathering documents, how to apply for a work visa, relocation and integration after arrival, short- and long-term apartment search. We are always in touch and ready to promptly answer your questions." },
+        { "icon": "Users", "title": "Individual approach", "description": "We assist you in relocating as fast and smoothly as possible, depending on your case. Our personalized approach ensures a swift and seamless relocation process with student visa consultancy available as needed." }
+      ]
+    },
+    "relocationPackage": {
+      "title": "When a relocation package is suitable",
+      "scenarios": [
+        { "icon": "Building", "title": "You have an offer from a German company", "description": "Those who have an offer on hand but the company itself does not provide visa guidance for overseas employment." },
+        { "icon": "Users", "title": "You are relocating with family", "description": "Those who are moving to Germany as a couple and/or with children." },
+        { "icon": "CheckCircle", "title": "You have a complicated case", "description": "Those who reside in a country where visa services in Pakistan for working abroad are limited, and those who need to move urgently." },
+        { "icon": "Search", "title": "You want to obtain a Chancenkarte for job search", "description": "Those who want to come to Germany without an offer and find a job in their field." }
+      ]
+    }
+  }
+}

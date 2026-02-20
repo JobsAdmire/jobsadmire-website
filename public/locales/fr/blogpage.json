@@ -1,0 +1,83 @@
+{
+  "categories": {
+    "all": "Tous",
+    "careerTips": "Conseils de carrière",
+    "immigrationGuide": "Guide de l'immigration",
+    "jobSearch": "Recherche d'emploi",
+    "workVisa": "Visa de travail",
+    "successStories": "Histoires de réussite"
+  },
+  "trendingTags": {
+    "remoteJobs": "Emplois à distance",
+    "workVisa": "Visa de travail",
+    "immigration": "L'immigration",
+    "careerGrowth": "Croissance de la carrière",
+    "jobInterview": "Entretien d'embauche",
+    "resumeTips": "Conseils pour le curriculum vitae"
+  },
+  "loading": {
+    "title": "Chargement de Career Insights",
+    "description": "Préparer les dernières tendances du marché de l'emploi et les guides de l'immigration..."
+  },
+  "error": {
+    "title": "Impossible de charger le contenu",
+    "description": "Nous avons des difficultés à charger les dernières informations sur les carrières. Veuillez réessayer.",
+    "retryButton": "Réessayer le chargement"
+  },
+  "header": {
+    "badge": "Votre portail d'accès aux opportunités de carrière dans le monde",
+    "title": {
+      "part1": "Naviguez dans votre",
+      "part2": "Parcours professionnel"
+    },
+    "subtitle": "Découvrez les points de vue d'experts sur la recherche d'emploi, les visas de travail, les processus d'immigration et les stratégies d'avancement de carrière de la part de professionnels du secteur.",
+    "searchPlaceholder": "Recherchez des conseils sur l'emploi, des guides sur les visas, des conseils sur les carrières...",
+    "searchButton": "Recherche",
+    "popularTopics": "Sujets populaires :"
+  },
+  "featuredArticle": {
+    "title": {
+      "part1": "En vedette",
+      "part2": "Article"
+    },
+    "defaultTag": "En vedette",
+    "minRead": "min lire",
+    "anonymous": "Anonyme",
+    "careerExpert": "Expert en carrières",
+    "readFullArticle": "Lire l'article complet"
+  },
+  "latestInsights": {
+    "title": {
+      "part1": "Dernières nouvelles",
+      "part2": "Perspectives"
+    },
+    "defaultTag": "Article",
+    "min": "min",
+    "anonymous": "Anonyme",
+    "readMore": "Lire la suite"
+  },
+  "emptyState": {
+    "title": "Aucun article trouvé",
+    "description": "Nous n'avons pas trouvé d'articles correspondant à \"{searchTerm}\". Essayez de chercher d'autres mots-clés ou explorez nos catégories.",
+    "clearSearch": "Recherche claire"
+  },
+  "loadMore": {
+    "button": "Charger plus d'articles"
+  },
+  "newsletter": {
+    "title": "Gardez une longueur d'avance dans votre carrière",
+    "description": "Recevez chaque semaine des informations sur les offres d'emploi, les mises à jour concernant les visas et les stratégies de développement de carrière.",
+    "emailLabel": "Adresse électronique",
+    "emailPlaceholder": "Saisissez votre adresse électronique",
+    "subscribeButton": "S'abonner",
+    "privacyNote": "Votre vie privée est protégée. Vous pouvez vous désabonner à tout moment.",
+    "features": {
+      "careerTips": "Conseils de carrière hebdomadaires",
+      "visaUpdates": "Mises à jour sur les visas",
+      "jobAlerts": "Alertes emploi"
+    }
+  },
+  "alerts": {
+    "subscriptionSuccess": "Merci de vous être abonné !"
+  }
+}

@@ -1,0 +1,194 @@
+{
+  "header": {
+    "badge": "Konsultan Kewarganegaraan No. 1 di Turki",
+    "title": {
+      "line1": "Buka Kunci Anda",
+      "line2": "Masa Depan Turki"
+    },
+    "subtitle": "Ubah hidup Anda dengan kewarganegaraan Turki. Bimbingan ahli, hasil yang terbukti, dan perjalanan yang lancar menuju kewarganegaraan baru Anda.",
+    "buttons": {
+      "startJourney": "Mulailah Perjalanan Anda",
+      "scheduleConsultation": "Jadwalkan Konsultasi"
+    }
+  },
+  "form": {
+    "title": "Dapatkan Konsultasi Gratis Anda",
+    "fields": {
+      "name": {
+        "label": "Nama Lengkap *",
+        "placeholder": "Nama lengkap Anda"
+      },
+      "email": {
+        "label": "Email *",
+        "placeholder": "your.email@domain.com"
+      },
+      "phone": {
+        "label": "Telepon",
+        "placeholder": "+1 (555) 000-0000"
+      },
+      "pathway": {
+        "label": "Jalur Pilihan",
+        "placeholder": "Pilih jalur",
+        "options": {
+          "investment": "Jalur Investasi"
+        }
+      },
+      "message": {
+        "label": "Ceritakan tentang situasi Anda.",
+        "placeholder": "Bagikan tujuan, jangka waktu, dan pertanyaan spesifik Anda..."
+      }
+    },
+    "submitButton": "Dapatkan Konsultasi Gratis",
+    "disclaimer": "Konsultasi gratis • Tanggapan dalam 24 jam • Tanpa kewajiban"
+  },
+  "sections": {
+    "pathways": {
+      "title": "Jalur Kewarganegaraan",
+      "subtitle": "Terdapat berbagai jalur untuk memperoleh kewarganegaraan Turki, masing-masing dirancang untuk keadaan yang berbeda.",
+      "popularBadge": "Paling Populer"
+    },
+    "benefits": {
+      "title": "Manfaat Kewarganegaraan Turki",
+      "subtitle": "Raih dunia peluang dan hak istimewa.",
+      "items": [
+        "Perjalanan bebas visa ke lebih dari 110 negara di seluruh dunia.",
+        "Hak tak terbatas untuk tinggal dan bekerja di Turki.",
+        "Akses penuh ke sistem layanan kesehatan Turki.",
+        "Kesempatan pendidikan premium",
+        "Hak kepemilikan properti tanpa batasan",
+        "Kebebasan penuh dalam mendirikan bisnis",
+        "Manfaat keanggotaan kandidat Uni Eropa",
+        "Kewarganegaraan ganda diperbolehkan secara hukum."
+      ]
+    },
+    "process": {
+      "title": "Proses Kami yang Terbukti",
+      "subtitle": "Proses perolehan kewarganegaraan Turki yang efisien dan transparan dengan bimbingan ahli di setiap langkahnya.",
+      "stepIndicator": "Langkah {saat ini} dari {total}"
+    },
+    "services": {
+      "title": "Layanan Kami",
+      "subtitle": "Dukungan komprehensif sepanjang perjalanan Anda",
+      "items": [
+        {
+          "title": "Manajemen Aplikasi Lengkap",
+          "description": "Persiapan dan pengajuan dari awal hingga akhir."
+        },
+        {
+          "title": "Verifikasi Dokumen",
+          "description": "Layanan otentikasi profesional"
+        },
+        {
+          "title": "Layanan Penerjemahan",
+          "description": "Terjemahan bersertifikat dan notaris"
+        },
+        {
+          "title": "Konsultasi Hukum",
+          "description": "Panduan imigrasi dari ahli."
+        },
+        {
+          "title": "Dukungan Investasi",
+          "description": "Bantuan pemilihan properti"
+        },
+        {
+          "title": "Penghubung Pemerintah",
+          "description": "Komunikasi langsung dengan otoritas"
+        },
+        {
+          "title": "Pelacakan Aplikasi",
+          "description": "Pemantauan kemajuan secara waktu nyata"
+        },
+        {
+          "title": "Dukungan Pasca-Kewarganegaraan",
+          "description": "Bantuan berkelanjutan setelah persetujuan"
+        }
+      ]
+    },
+    "contact": {
+      "title": "Siap untuk memulai?",
+      "subtitle": "Ambil langkah pertama menuju kewarganegaraan Turki dengan konsultasi ahli kami. Penilaian gratis, panduan yang dipersonalisasi, dan harga yang transparan.",
+      "features": {
+        "consultation": "Konsultasi gratis 30 menit",
+        "response": "Tanggapan dalam 24 jam",
+        "assessment": "Penilaian tanpa kewajiban"
+      },
+      "submitButton": "Mulailah Perjalanan Anda"
+    }
+  },
+  "citizenshipTypes": {
+    "investment": {
+      "title": "Kewarganegaraan melalui Investasi",
+      "description": "Mempercepat proses kewarganegaraan Turki melalui investasi properti strategis.",
+      "requirements": [
+        "Investasi properti minimal $400.000",
+        "Simpan properti tersebut selama 3 tahun.",
+        "Catatan kriminal bersih.",
+        "Cakupan asuransi kesehatan"
+      ],
+      "timeframe": "3-6 bulan"
+    },
+    "birth": {
+      "title": "Kewarganegaraan berdasarkan Kelahiran",
+      "description": "Ajukan kewarganegaraan Turki melalui warisan keluarga yang terdokumentasi.",
+      "requirements": [
+        "Orang tua atau kakek-nenek Turki",
+        "Akta kelahiran resmi",
+        "Bukti keturunan Turki",
+        "Dokumen identitas yang sah"
+      ],
+      "timeframe": "2-4 bulan"
+    },
+    "marriage": {
+      "title": "Kewarganegaraan melalui Pernikahan",
+      "description": "Memperoleh kewarganegaraan melalui pernikahan dengan warga negara Turki.",
+      "requirements": [
+        "Menikah selama 3+ tahun dengan warga negara Turki",
+        "Kemampuan dasar berbahasa Turki",
+        "Pemeriksaan latar belakang keamanan",
+        "Bukti stabilitas keuangan"
+      ],
+      "timeframe": "4-8 bulan"
+    },
+    "naturalization": {
+      "title": "Naturalisasi",
+      "description": "Raih kewarganegaraan melalui komitmen tempat tinggal jangka panjang.",
+      "requirements": [
+        "Tempat tinggal tetap selama 5 tahun atau lebih",
+        "Bahasa Turki tingkat lanjut",
+        "Catatan kriminal bersih",
+        "Bukti integrasi ekonomi"
+      ],
+      "timeframe": "6-12 bulan"
+    }
+  },
+  "processSteps": {
+    "consultation": {
+      "title": "Konsultasi Awal",
+      "description": "Penilaian kelayakan dan rekomendasi jalur gratis.",
+      "detail": "Evaluasi ahli atas situasi unik Anda untuk menentukan jalur kewarganegaraan terbaik."
+    },
+    "documentation": {
+      "title": "Persiapan Dokumen",
+      "description": "Pengumpulan dan verifikasi dokumen secara lengkap.",
+      "detail": "Pengumpulan dokumen komprehensif dengan otentikasi dan penerjemahan profesional."
+    },
+    "filing": {
+      "title": "Pengajuan Permohonan",
+      "description": "Pengajuan aplikasi resmi pemerintah",
+      "detail": "Pengajuan yang mudah ke pihak berwenang Turki dengan paket aplikasi lengkap."
+    },
+    "review": {
+      "title": "Tinjauan Pemrosesan",
+      "description": "Peninjauan pemerintah dan verifikasi latar belakang",
+      "detail": "Proses peninjauan menyeluruh dengan pemantauan dan pembaruan berkelanjutan."
+    },
+    "approval": {
+      "title": "Persetujuan Akhir",
+      "description": "Persetujuan kewarganegaraan dan penjadwalan upacara",
+      "detail": "Penyelesaian proses dengan dokumen kewarganegaraan resmi."
+    }
+  },
+  "alerts": {
+    "thankYouMessage": "Terima kasih atas pertanyaan Anda! Kami akan menghubungi Anda dalam waktu 24 jam."
+  }
+}

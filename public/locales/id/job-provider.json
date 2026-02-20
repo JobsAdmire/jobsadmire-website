@@ -1,0 +1,173 @@
+{
+  "header": {
+    "heroImageAlt": "Para profesional bisnis",
+    "badge": "Solusi Ketenagakerjaan No. 1 di Turki",
+    "title_prefix": "Dapatkan Staf Berkualitas",
+    "title_suffix": "Untuk Bisnis Anda",
+    "description": "Bermitra dengan JobsAdmire untuk mendapatkan karyawan yang telah diseleksi dan siap bekerja. Kami menangani perekrutan, visa, dan semua dokumen legal.",
+    "contact_button": "Kontak"
+  },
+  "form": {
+    "title": "Pendaftaran Mitra",
+    "subtitle": "Daftarkan perusahaan Anda untuk mulai merekrut staf berkualitas. Tim kami akan menghubungi Anda dalam waktu 24 jam.",
+    "company_info": {
+      "title": "Informasi Perusahaan",
+      "company_name": "Nama perusahaan *",
+      "company_name_placeholder": "Masukkan nama perusahaan Anda",
+      "company_name_error": "Nama perusahaan wajib diisi.",
+      "company_type": "Jenis Perusahaan *",
+      "company_type_placeholder": "Pilih jenis perusahaan",
+      "company_type_error": "Jenis perusahaan wajib diisi.",
+      "types": {
+        "corporation": "Perusahaan (A.Ş.)",
+        "limited_company": "Perseroan Terbatas (Ltd.)",
+        "partnership": "Kemitraan",
+        "sole_proprietorship": "Usaha Perseorangan",
+        "branch_office": "Kantor Cabang",
+        "other": "Lainnya"
+      },
+      "industry_type": "Jenis Industri *",
+      "industry_type_placeholder": "Pilih industri",
+      "industry_type_error": "Jenis industri wajib diisi.",
+      "industries": {
+        "manufacturing": "Pabrik",
+        "construction": "Pertanian",
+        "technology": "Pariwisata",
+        "healthcare": "Konstruksi",
+        "other": "Lainnya"
+      },
+      "established_year": "Tahun Pendirian",
+      "established_year_placeholder": "2020"
+    },
+    "contact_info": {
+      "title": "Informasi Kontak",
+      "contact_person": "Kontak person *",
+      "contact_person_placeholder": "Nama lengkap",
+      "contact_person_error": "Diperlukan narahubung.",
+      "position": "Posisi/Jabatan",
+      "position_placeholder": "Manajer SDM, CEO, dll.",
+      "email": "Alamat Email *",
+      "email_required": "Email wajib diisi.",
+      "email_invalid": "Email tidak valid",
+      "phone": "Nomor Telepon *",
+      "phone_placeholder": "+90 xxx xxx xx xx",
+      "phone_required": "Nomor telepon wajib diisi.",
+      "company_address": "Alamat Perusahaan",
+      "company_address_placeholder": "Alamat bisnis lengkap",
+      "city": "Kota *",
+      "city_placeholder": "Istanbul, Ankara, dll.",
+      "city_required": "Kota diperlukan",
+      "province": "Provinsi *",
+      "province_placeholder": "Pilih provinsi",
+      "province_required": "Provinsi diperlukan",
+      "provinces": {
+        "istanbul": "Istanbul",
+        "ankara": "Ankara",
+        "izmir": "Izmir",
+        "bursa": "Bursa",
+        "antalya": "Antalya",
+        "adana": "Adana",
+        "konya": "Konya",
+        "gaziantep": "Gaziantep",
+        "kayseri": "Kayseri",
+        "other": "Lainnya"
+      },
+      "postal_code": "Kode Pos",
+      "website": "Situs Web Perusahaan",
+      "email_placeholder": "company@example.com",
+      "postal_code_placeholder": "34000",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "legal_info": {
+      "title": "Rincian Hukum & Pendaftaran",
+      "tax_number": "Nomor Pajak *",
+      "tax_number_placeholder": "Masukkan nomor pajak",
+      "tax_number_error": "Nomor pajak diperlukan.",
+      "trade_registry_number": "Nomor Registrasi Perdagangan",
+      "trade_registry_number_placeholder": "Masukkan nomor registrasi perdagangan"
+    },
+    "staffing_requirements": {
+      "title": "Persyaratan Kepegawaian",
+      "specific_job_positions": "Posisi Pekerjaan Spesifik",
+      "specific_job_positions_placeholder": "misalnya, Operator Mesin, Tukang Las, Pengembang Perangkat Lunak, dll.",
+      "salary_range": "Kisaran Gaji (Bulanan)",
+      "salary_range_placeholder": "22.000TL-25.000TL",
+      "preferred_nationalities": "Kewarganegaraan yang Diutamakan",
+      "preferred_nationalities_placeholder": "misalnya, Any, Pakistan, Bangladesh, Ukraina, dll.",
+      "language_requirements": "Persyaratan Bahasa",
+      "language_requirements_placeholder": "Pilih persyaratan bahasa",
+      "languages": {
+        "none": "Tidak ada persyaratan khusus.",
+        "basic_turkish": "Bahasa Turki Dasar",
+        "intermediate_turkish": "Bahasa Turki Tingkat Menengah",
+        "fluent_turkish": "Bahasa Turki fasih",
+        "english": "Bahasa Inggris Diperlukan",
+        "turkish_english": "Bahasa Turki + Bahasa Inggris"
+      },
+      "work_experience": "Pengalaman Kerja Diperlukan",
+      "work_experience_placeholder": "Pilih tingkat pengalaman",
+      "experience_levels": {
+        "entry_level": "Tingkat Pemula (0-1 tahun)",
+        "junior": "Junior (1-3 tahun)",
+        "mid_level": "Tingkat Menengah (3-5 tahun)",
+        "senior": "Senior (5+ tahun)",
+        "expert": "Pakar (10+ tahun)"
+      },
+      "additional_requirements": "Persyaratan atau Catatan Tambahan",
+      "additional_requirements_placeholder": "Persyaratan khusus seperti keahlian, sertifikasi, atau hal lain yang dibutuhkan untuk posisi tersebut..."
+    },
+    "company_description": {
+      "title": "Tentang Perusahaan Anda",
+      "label": "Deskripsi Perusahaan",
+      "placeholder": "Ceritakan tentang perusahaan Anda, aktivitas bisnis Anda, lingkungan kerja, budaya perusahaan, dan mengapa para pekerja ingin bergabung dengan tim Anda..."
+    },
+    "legal_agreements": {
+      "title": "Perjanjian Hukum",
+      "agree_terms_prefix": "Saya setuju dengan hal tersebut.",
+      "terms_link": "syarat dan Ketentuan",
+      "agree_terms_suffix": "dan memahami kewajiban hukum dalam mempekerjakan pekerja melalui JobsAdmire. *",
+      "terms_error": "Anda harus menyetujui syarat dan ketentuan.",
+      "agree_privacy_prefix": "Saya menyatakan bahwa saya telah membaca dan menyetujui hal-hal berikut ini:",
+      "privacy_link": "Kebijakan Privasi",
+      "agree_privacy_suffix": "dan menyetujui pemrosesan data perusahaan untuk layanan perekrutan. *",
+      "privacy_error": "Anda harus menyetujui kebijakan privasi."
+    },
+    "submit": {
+      "button": "Kirim Aplikasi",
+      "submitting": "Mengirimkan...",
+      "success_message": "Pendaftaran berhasil dikirim! Tim kami akan menghubungi Anda dalam waktu 24 jam untuk membahas kebutuhan perekrutan Anda.",
+      "footer_message": "Tim kami akan meninjau lamaran Anda dan menghubungi Anda dalam waktu 24 jam untuk membahas kebutuhan staf Anda."
+    }
+  },
+  "industries_served": {
+    "title": "Industri yang Kami Layani",
+    "subtitle": "Kami menyediakan tenaga kerja terampil di semua industri utama di Turki.",
+    "items": {
+      "factory": {
+        "name": "Pabrik",
+        "desc": "Manufaktur & Produksi"
+      },
+      "agriculture": {
+        "name": "Pertanian",
+        "desc": "Pertanian & Budidaya"
+      },
+      "tourism": {
+        "name": "Pariwisata",
+        "desc": "Perhotelan & Layanan"
+      },
+      "construction": {
+        "name": "Konstruksi",
+        "desc": "Bangunan & Infrastruktur"
+      }
+    }
+  },
+  "support": {
+    "title": "Butuh Bantuan?",
+    "description": "Tim kami yang berdedikasi siap membantu Anda menemukan staf yang tepat untuk bisnis Anda. Kami menyediakan dukungan lengkap mulai dari perekrutan hingga penempatan karyawan.",
+    "support_24_7": "Dukungan 24/7",
+    "business_hours": "Jam Operasional: Senin - Jumat, 09:00 - 18:00 (Waktu Turki)",
+    "response_time": "Kami akan merespons dalam waktu 2 jam selama jam kerja.",
+    "email": "info@jobsadmire.com",
+    "phone": "+90 501 124 03 40"
+  }
+}

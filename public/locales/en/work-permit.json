@@ -1,0 +1,174 @@
+{
+  "meta": {
+    "title": "Turkish Work Permit Application | Professional Work Permit Services",
+    "description": "Get your Turkish work permit with expert guidance. Fast-track processing, legal consultation, and complete document preparation for all types of work permits in Turkey."
+  },
+  "hero": {
+    "title": {
+      "line1": "Get Your",
+      "line2": "Turkish Work Permit",
+      "line3": "Hassle-Free"
+    },
+    "subtitle": "Expert guidance for all types of Turkish work permits. Start your legal career in Turkey with our professional support.",
+    "benefits": {
+      "fastTrack": "Fast-track application processing",
+      "legalConsultation": "Expert legal consultation included",
+      "documentPreparation": "End-to-end document preparation"
+    },
+    "buttons": {
+      "applyNow": "Request Consultation",
+      "learnMore": "Learn More"
+    },
+    "permitCard": {
+      "turkeyRepublic": "TÜRKİYE CUMHURİYETİ",
+      "republicOfTurkey": "Republic of Turkey",
+      "workPermitTurkish": "ÇALIŞMA İZNİ",
+      "workPermitTR": "ÇALIŞMA İZNİ",
+      "workPermit": "WORK PERMIT",
+      "permitType": "Permit Type",
+      "permitTypeValue": "Definite",
+      "duration": "Duration",
+      "durationValue": "2 Years"
+    }
+  },
+  "workPermitTypes": {
+    "title": {
+      "part1": "Types of",
+      "part2": "Work Permits"
+    },
+    "subtitle": "Choose the right work permit type based on your employment situation",
+    "types": {
+      "indefinite": {
+        "type": "Indefinite Work Permit",
+        "description": "For employees working in Turkey for an indefinite period with no time restriction.",
+        "duration": "Unlimited"
+      },
+      "definite": {
+        "type": "Definite Work Permit",
+        "description": "For employees working temporarily in Turkey with a specific employment contract.",
+        "duration": "Up to 1-2 years"
+      },
+      "independent": {
+        "type": "Independent Work Permit",
+        "description": "For foreigners who want to work independently or start their own business in Turkey.",
+        "duration": "1-2 years"
+      },
+      "turquoiseCard": {
+        "type": "Turquoise Card",
+        "description": "Turkey's equivalent to the EU Blue Card for highly skilled professionals.",
+        "duration": "Indefinite"
+      }
+    },
+    "durationLabel": "Duration:"
+  },
+  "benefits": {
+    "title": {
+      "part1": "Benefits",
+      "part2": "of Turkey Work Permit"
+    },
+    "items": {
+      "legalEmployment": {
+        "title": "Legal Employment Rights",
+        "description": "Work legally in Turkey with full protection under Turkish labor law and social security benefits."
+      },
+      "turkishMarket": {
+        "title": "Access to Turkish Market",
+        "description": "Open doors to opportunities in Turkey's growing economy with legitimate work authorization."
+      },
+      "familyResidence": {
+        "title": "Family Residence",
+        "description": "Your family members can apply for residence permits while you hold a valid work permit."
+      },
+      "careerGrowth": {
+        "title": "Career Growth",
+        "description": "Build your professional career in Turkey with possibilities for long-term residence and citizenship."
+      },
+      "socialSecurity": {
+        "title": "Social Security",
+        "description": "Access healthcare, retirement benefits, and social insurance coverage through SGK registration."
+      },
+      "residencePermit": {
+        "title": "Residence Permit Included",
+        "description": "Work permit holders automatically receive residence permits for the duration of employment."
+      }
+    }
+  },
+  "process": {
+    "title": {
+      "part1": "Our Simple",
+      "part2": "Process"
+    },
+    "subtitle": "We handle everything from start to finish, making your work permit application smooth and stress-free",
+    "steps": {
+      "consultation": {
+        "step": "01",
+        "title": "Initial Consultation",
+        "description": "We assess your eligibility and determine the best work permit type for your situation."
+      },
+      "preparation": {
+        "step": "02",
+        "title": "Document Preparation",
+        "description": "Our team guides you through gathering and preparing all required documents and translations."
+      },
+      "submission": {
+        "step": "03",
+        "title": "Application Submission",
+        "description": "We handle the complete application process with Ministry of Labor and Immigration offices."
+      },
+      "approval": {
+        "step": "04",
+        "title": "Approval & Delivery",
+        "description": "Receive your work permit and residence permit, ready to start your legal employment in Turkey."
+      }
+    }
+  },
+  "requirements": {
+    "title": {
+      "part1": "Required",
+      "part2": "Documents"
+    },
+    "subtitle": "Everything you need to prepare for your work permit application",
+    "documents": {
+      "passport": "Valid passport (minimum 6 months validity)",
+      "employmentContract": "Employment contract or job offer letter",
+      "degree": "University degree or professional certificates",
+      "companyDocuments": "Company registration documents",
+      "healthInsurance": "Health insurance policy",
+      "photos": "Biometric photos",
+      "translations": "Apostilled/notarized document translations"
+    }
+  },
+  "cta": {
+    "title": "Ready to Start Your Journey?",
+    "subtitle": "Let our experts handle your work permit application. Get started today!",
+    "button": "Request Consultation"
+  },
+  "floatingBadge": {
+    "title": "Verified Service",
+    "clients": "5000+ Happy Clients"
+  },
+  "popup": {
+    "title": "Work Permit Application",
+    "subtitle": "Apply for Work Permit (Owner/Director/Investor)",
+    "form": {
+      "namePlaceholder": "Enter your full name",
+      "phonePlaceholder": "Enter your phone number",
+      "emailPlaceholder": "Enter your email address",
+      "citizenshipPlaceholder": "Select Current Citizenship",
+      "submitButton": "Submit Application",
+      "submitting": "Submitting...",
+      "terms": "By submitting this form, you agree to our terms and conditions"
+    },
+    "errors": {
+      "nameRequired": "Name is required",
+      "phoneRequired": "Phone is required",
+      "emailRequired": "Email is required",
+      "citizenshipRequired": "Current citizenship is required"
+    },
+    "success": "Thank you, we will contact you soon.",
+    "error": "Error: "
+  },
+  "labels": {
+    "turkeyFlagAlt": "Turkey Flag"
+  }
+}

@@ -1,0 +1,1710 @@
+{
+  "herosection": {
+    "badge": "Exclusive Journeys",
+    "title": "Discover Your Next Adventure",
+    "description": "Experience breathtaking destinations and create unforgettable memories with our premium travel packages tailored to your desires.",
+    "currentlyViewing": {
+      "label": "Currently Viewing"
+    },
+    "buttons": {
+      "primary": "Explore Now",
+      "secondary": "View All Destinations"
+    },
+    "compass": ["N", "E", "S", "W"],
+    "destinationCounter": "Destination {current}/{total}",
+    "destinations": [
+      {
+        "img": "/images/ihc.png",
+        "name": "Calgary",
+        "country": "Canada",
+        "alt": "Beautiful view of Calgary, Canada"
+      },
+      {
+        "img": "/images/ihm.png",
+        "name": "Montreal",
+        "country": "Canada",
+        "alt": "Stunning Montreal cityscape, Canada"
+      },
+      {
+        "img": "/images/iho.png",
+        "name": "Ottawa",
+        "country": "Canada",
+        "alt": "Scenic Ottawa landmarks, Canada"
+      },
+      {
+        "img": "/images/iht.png",
+        "name": "Toronto",
+        "country": "Canada",
+        "alt": "Iconic Toronto skyline, Canada"
+      },
+      {
+        "img": "/images/ihv.png",
+        "name": "Vancouver",
+        "country": "Canada",
+        "alt": "Breathtaking Vancouver scenery, Canada"
+      }
+    ]
+  },
+
+  "tableofcontents": {
+    "header": {
+      "title": "Table of Contents",
+      "subtitle": "Navigate through sections"
+    },
+    "status": {
+      "currentlyReading": "Currently reading"
+    },
+    "footer": {
+      "sectionsCount": "{count} sections to explore"
+    },
+    "quickNav": {
+      "title": "Quick Navigation",
+      "buttonLabel": "Quick navigation menu",
+      "footer": "Scroll through {count} sections"
+    },
+    "accessibility": {
+      "openMenu": "Open navigation menu",
+      "closeMenu": "Close navigation menu"
+    },
+    "sections": [
+      {
+        "id": 1,
+        "title": "Facts About Canada"
+      },
+      {
+        "id": 2,
+        "title": "Visa Options for Moving to Canada"
+      },
+      {
+        "id": 3,
+        "title": "Essential Requirements for Relocating to Canada"
+      },
+      {
+        "id": 4,
+        "title": "Getting a Job in Canada as a Foreigner"
+      },
+      {
+        "id": 5,
+        "title": "Moving to Canada from the US"
+      },
+      {
+        "id": 6,
+        "title": "Moving to Canada from the UK"
+      },
+      {
+        "id": 7,
+        "title": "How much does it cost to move to Canada?"
+      },
+      {
+        "id": 8,
+        "title": "Moving With Pets to Canada"
+      }
+    ]
+  },
+
+  "canadafacts": {
+    "navigation": {
+      "previous": "Previous Fact",
+      "next": "Next Fact"
+    },
+    "allFactsSection": {
+      "title": "All Facts About Canada"
+    },
+    "accessibility": {
+      "selectFact": "Select fact",
+      "goToFact": "Go to fact",
+      "previousFact": "Go to previous fact",
+      "nextFact": "Go to next fact"
+    },
+    "facts": [
+      {
+        "title": "World's Longest Coastline",
+        "description": "Canada has the longest coastline in the world, stretching over 202,080 kilometers along the Atlantic, Pacific, and Arctic Oceans.",
+        "icon": "🌊"
+      },
+      {
+        "title": "Home to 20% of World's Fresh Water",
+        "description": "Canada contains approximately 20% of the world's fresh water in its countless lakes, rivers, and glaciers.",
+        "icon": "💧"
+      },
+      {
+        "title": "Polar Bear Capital",
+        "description": "Churchill, Manitoba is known as the 'Polar Bear Capital of the World' as it sits on a major polar bear migration route.",
+        "icon": "🐻‍❄️"
+      },
+      {
+        "title": "National Parks Cover 8% of the Country",
+        "description": "Canada's national parks and national park reserves cover about 8% of the country, preserving ecological diversity.",
+        "icon": "🏞️"
+      },
+      {
+        "title": "Inventors of Poutine",
+        "description": "This iconic dish of French fries topped with cheese curds and gravy originated in Quebec in the late 1950s.",
+        "icon": "🍟"
+      },
+      {
+        "title": "Two Official Languages",
+        "description": "Canada has two official languages: English and French. About 23% of Canadians speak French as their first language.",
+        "icon": "🗣️"
+      },
+      {
+        "title": "Maple Syrup Capital",
+        "description": "Canada produces about 71% of the world's maple syrup, with Quebec being the largest producer globally.",
+        "icon": "🍁"
+      },
+      {
+        "title": "World's Second-Largest Country",
+        "description": "With an area of 9.98 million square kilometers, Canada is the second-largest country in the world by total area.",
+        "icon": "🗺️"
+      },
+      {
+        "title": "Home to the Northern Lights",
+        "description": "Canada offers some of the best viewing opportunities for the Aurora Borealis, especially in the Northwest Territories and Yukon.",
+        "icon": "🌌"
+      },
+      {
+        "title": "Multicultural Society",
+        "description": "Canada is home to people from over 200 ethnic origins, making it one of the most multicultural countries in the world.",
+        "icon": "🌍"
+      }
+    ]
+  },
+
+  "canadajobguide": {
+    "tableOfContents": {
+      "title": "Guide Contents"
+    },
+    "accessibility": {
+      "toggleSection": "Toggle section"
+    },
+    "sections": {
+      "jobMarket": {
+        "title": "Understanding the Canadian Job Market",
+        "description": "Canada offers diverse employment opportunities across various sectors, with several industries actively seeking international talent.",
+        "inDemandTitle": "In-Demand Sectors for Foreigners:",
+        "sectors": [
+          {
+            "name": "Healthcare",
+            "description": "Doctors, nurses, care workers"
+          },
+          {
+            "name": "IT & Technology",
+            "description": "Software engineers, data scientists"
+          },
+          {
+            "name": "Engineering",
+            "description": "Civil, mechanical, electrical"
+          },
+          {
+            "name": "Finance",
+            "description": "Banking, fintech, accounting"
+          },
+          {
+            "name": "Skilled Trades",
+            "description": "Welders, electricians, plumbers"
+          },
+          {
+            "name": "Agriculture",
+            "description": "Farm managers, agronomists"
+          }
+        ],
+        "languageNote": "Canada has two official languages: English and French. English proficiency is essential for most positions, but bilingualism is an advantage, especially in Quebec and federal government roles."
+      },
+      "immigration": {
+        "title": "Canadian Immigration Pathways",
+        "description": "Canada offers multiple immigration pathways for skilled workers, with Express Entry being the primary system.",
+        "expressEntry": {
+          "title": "Express Entry System",
+          "description": "The main pathway for skilled immigrants:",
+          "points": [
+            "Manages applications for Federal Skilled Worker Program, Federal Skilled Trades Program, and Canadian Experience Class",
+            "Based on a Comprehensive Ranking System (CRS) that scores candidates",
+            "Points awarded for age, education, work experience, language skills, and adaptability factors",
+            "Regular draws invite top-scoring candidates to apply for permanent residence"
+          ]
+        },
+        "otherPathways": {
+          "title": "Other Immigration Pathways:",
+          "programs": [
+            {
+              "name": "Provincial Nominee Programs (PNPs)",
+              "description": "Provinces can nominate candidates to meet local economic needs"
+            },
+            {
+              "name": "Atlantic Immigration Program",
+              "description": "For those wanting to work in Atlantic provinces"
+            },
+            {
+              "name": "Rural and Northern Immigration Pilot",
+              "description": "For smaller communities outside major urban centers"
+            },
+            {
+              "name": "Global Talent Stream",
+              "description": "Fast-track work permits for tech workers and innovators"
+            },
+            {
+              "name": "Post-Graduation Work Permit",
+              "description": "For international students who completed studies in Canada"
+            }
+          ]
+        },
+        "conclusion": "Most Canadian immigration programs lead to permanent residence, which allows you to work for any employer and eventually apply for citizenship."
+      },
+      "jobOpportunities": {
+        "title": "Finding Job Opportunities in Canada",
+        "portalsTitle": "Popular Canadian Job Portals:",
+        "portals": [
+          "Indeed Canada",
+          "Workopolis",
+          "LinkedIn",
+          "Monster",
+          "Job Bank",
+          "Glassdoor",
+          "Eluta",
+          "ZipRecruiter"
+        ],
+        "tipsTitle": "Pro Tips:",
+        "tips": [
+          "Check the official Job Bank website for labor market information and opportunities",
+          "Search for employers with a history of hiring international talent",
+          "Adapt your resume to Canadian format (typically 1-2 pages, focused on achievements)",
+          "Include Canadian credentials assessments if you have foreign qualifications",
+          "Network through provincial and municipal immigrant services organizations"
+        ]
+      },
+      "noc": {
+        "title": "National Occupational Classification (NOC)",
+        "description": "Canada uses the National Occupational Classification (NOC) system to categorize jobs. Understanding your NOC code is crucial for immigration.",
+        "categories": {
+          "title": "TEER Categories:",
+          "teer": [
+            {
+              "name": "TEER 0",
+              "description": "Management occupations"
+            },
+            {
+              "name": "TEER 1",
+              "description": "Occupations requiring university degrees"
+            },
+            {
+              "name": "TEER 2",
+              "description": "Occupations requiring college diplomas or apprenticeship training"
+            },
+            {
+              "name": "TEER 3",
+              "description": "Occupations requiring secondary school and/or occupation-specific training"
+            },
+            {
+              "name": "TEER 4",
+              "description": "Occupations requiring short work demonstration and no formal education"
+            },
+            {
+              "name": "TEER 5",
+              "description": "Entry level occupations requiring short work demonstration"
+            }
+          ]
+        },
+        "importance": {
+          "title": "Why It Matters:",
+          "points": [
+            "Most skilled worker programs require TEER 0, 1, 2, or 3 occupations",
+            "Determines eligibility for specific immigration programs",
+            "Affects CRS points in Express Entry",
+            "Helps verify that your work experience matches your job offer",
+            "Used to determine prevailing wage rates"
+          ]
+        },
+        "findCode": "Find your NOC code on the official Immigration, Refugees and Citizenship Canada (IRCC) website."
+      },
+      "remoteWork": {
+        "title": "Remote Work Options in Canada",
+        "intro": "Remote work has become increasingly common in Canada, especially in tech, finance, and creative industries:",
+        "points": [
+          "To work remotely <span class=\"font-medium\">for a Canadian company</span>, you still need appropriate work authorization",
+          "The Global Talent Stream facilitates faster work permits for tech workers, including remote roles",
+          "Many Canadian companies now offer permanent remote or hybrid arrangements",
+          "Digital Nomad Visa: Canada introduced a new Digital Nomad visa in 2024 for remote workers employed by foreign companies"
+        ],
+        "taxConsiderations": {
+          "title": "Tax Considerations:",
+          "points": [
+            "Working in Canada generally makes you a tax resident",
+            "Be aware of potential double taxation issues",
+            "Canada has tax treaties with many countries",
+            "Consult with a tax professional for your specific situation"
+          ]
+        }
+      },
+      "teaching": {
+        "title": "Teaching in Canada",
+        "description": "Teaching offers good opportunities for qualified international candidates in Canada.",
+        "k12": {
+          "title": "K-12 Teaching:",
+          "requirements": [
+            "Each province regulates its own teaching certification",
+            "Generally requires a Bachelor of Education or equivalent",
+            "Foreign credentials need assessment by provincial teaching authorities",
+            "French immersion teachers are in high demand"
+          ]
+        },
+        "esl": {
+          "title": "ESL Teaching:",
+          "requirements": [
+            "TESL/TESOL certification typically required",
+            "Opportunities in language schools, community colleges, and settlement agencies",
+            "Bachelor's degree usually required",
+            "Demand is high in areas with large immigrant populations"
+          ]
+        },
+        "conclusion": "Many provinces have specific programs to expedite certification for qualified foreign teachers, especially in subjects with shortages."
+      },
+      "resumeInterview": {
+        "title": "Canadian Resumes and Interviews",
+        "resume": {
+          "title": "Canadian Resume Format:",
+          "points": [
+            "Called a \"resume\" rather than CV",
+            "Typically 1-2 pages maximum",
+            "No photograph",
+            "No personal details like age, marital status, or religion",
+            "Reverse chronological order (most recent experience first)",
+            "Focus on accomplishments rather than just duties",
+            "Include Canadian credentials assessment if applicable"
+          ]
+        },
+        "interview": {
+          "title": "Interview Expectations:",
+          "expectations": [
+            "Punctuality is essential (10-15 minutes early is standard)",
+            "Business casual or business formal depending on industry",
+            "Prepare for behavioral questions (\"Tell me about a time when...\")",
+            "Research the company and its values thoroughly",
+            "Canadians value politeness, so be courteous but confident",
+            "Prepare thoughtful questions about the role and company culture"
+          ]
+        }
+      },
+      "networking": {
+        "title": "Networking in Canada",
+        "description": "Networking is crucial in the Canadian job market, where many positions are filled before being advertised.",
+        "strategies": [
+          "Join professional associations in your field",
+          "Attend industry meetups, conferences, and job fairs",
+          "Participate in provincial immigrant settlement programs",
+          "Connect with alumni networks if you studied in Canada",
+          "Volunteer to gain Canadian experience and build connections",
+          "Create a strong LinkedIn profile optimized for the Canadian market"
+        ],
+        "resources": {
+          "title": "Key Settlement Resources:",
+          "list": [
+            "Immigrant-serving organizations in your city",
+            "Provincial newcomer services",
+            "Industry-specific mentorship programs",
+            "Networking events for international professionals",
+            "Canadian government-funded employment counselling"
+          ]
+        }
+      }
+    },
+    "checklist": {
+      "title": "Canadian Job Search Checklist",
+      "categories": [
+        {
+          "title": "Before You Apply",
+          "items": [
+            "Get your foreign credentials assessed (ECA)",
+            "Format your resume to Canadian standards",
+            "Determine your NOC code and TEER category",
+            "Take required language tests (IELTS/CELPIP/TEF)"
+          ]
+        },
+        {
+          "title": "Immigration Steps",
+          "items": [
+            "Create Express Entry profile if eligible",
+            "Research provincial nominee programs",
+            "Check employer-specific work permit options",
+            "Prepare proof of funds for settlement"
+          ]
+        },
+        {
+          "title": "Settlement Preparations",
+          "items": [
+            "Research cost of living in target cities",
+            "Connect with settlement agencies",
+            "Join social media groups for newcomers",
+            "Learn about healthcare and social systems"
+          ]
+        }
+      ]
+    }
+  },
+
+  "canadamovingcosts": {
+    "accessibility": {
+      "toggleSection": "Toggle section for"
+    },
+    "costSections": [
+      {
+        "id": "visa-pr",
+        "icon": "🛂",
+        "title": "Visa & Permanent Residency",
+        "amount": "$1,500–$3,000",
+        "details": "Includes application fees, medical exams, language tests",
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "housing",
+        "icon": "🏠",
+        "title": "Housing",
+        "amount": "$2,000–$5,000 upfront",
+        "details": "First and last month's rent + security deposit",
+        "subItems": [
+          {
+            "title": "Major cities (monthly)",
+            "amount": "$1,500–$3,000"
+          },
+          {
+            "title": "Smaller cities/towns (monthly)",
+            "amount": "$800–$1,500"
+          }
+        ],
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "shipping",
+        "icon": "📦",
+        "title": "Shipping (Optional)",
+        "amount": "$5,000–$10,000",
+        "details": "Small to medium container. Consider local furniture options to reduce costs.",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "transportation",
+        "icon": "🚗",
+        "title": "Transportation",
+        "amount": "$500–$5,000",
+        "details": "Public transit pass or used car purchase",
+        "subItems": [
+          {
+            "title": "Monthly transit pass",
+            "amount": "$90–$150"
+          },
+          {
+            "title": "Used car",
+            "amount": "$5,000–$15,000"
+          },
+          {
+            "title": "Car insurance (monthly)",
+            "amount": "$150–$300"
+          }
+        ],
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "utilities",
+        "icon": "💡",
+        "title": "Utilities & Internet Setup",
+        "amount": "$200–$400",
+        "details": "Connection fees & deposits",
+        "subItems": [
+          {
+            "title": "Monthly utilities",
+            "amount": "$150–$300"
+          },
+          {
+            "title": "Internet (monthly)",
+            "amount": "$60–$100"
+          },
+          {
+            "title": "Cell phone (monthly)",
+            "amount": "$50–$100"
+          }
+        ],
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "healthcare",
+        "icon": "🏥",
+        "title": "Healthcare Coverage",
+        "amount": "$0–$900",
+        "details": "Varies by province. Some have waiting periods for public healthcare.",
+        "subItems": [
+          {
+            "title": "Private insurance (monthly during waiting period)",
+            "amount": "$75–$150"
+          }
+        ],
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "everyday",
+        "icon": "🛒",
+        "title": "Everyday Costs",
+        "amount": "$800–$1,500 monthly",
+        "subItems": [
+          {
+            "title": "Groceries",
+            "amount": "$400–$800/month"
+          },
+          {
+            "title": "Dining out",
+            "amount": "$200–$400/month"
+          },
+          {
+            "title": "Entertainment",
+            "amount": "$100–$300/month"
+          }
+        ],
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "winter",
+        "icon": "❄️",
+        "title": "Winter Essentials",
+        "amount": "$500–$1,000",
+        "details": "Winter clothing, boots, accessories",
+        "color": "bg-sky-500"
+      }
+    ],
+    "totalCosts": {
+      "title": "Total Estimated Costs",
+      "categories": [
+        {
+          "title": "Initial Setup (Without Shipping)",
+          "amount": "$5,000–$10,000",
+          "description": "Includes visa fees, first month's housing, deposits, winter gear, and basic setup costs"
+        },
+        {
+          "title": "Initial Setup (With Shipping)",
+          "amount": "$10,000–$20,000+",
+          "description": "Includes all basic costs plus shipping containers of household belongings"
+        },
+        {
+          "title": "Monthly Expenses (Approximate)",
+          "amount": "$2,000–$4,500",
+          "description": "Includes rent, utilities, groceries, transportation, and other regular expenses"
+        }
+      ]
+    },
+    "regionalCosts": {
+      "title": "Regional Cost Variations",
+      "categories": [
+        {
+          "title": "High Cost",
+          "cities": ["Toronto", "Vancouver", "Victoria"]
+        },
+        {
+          "title": "Medium Cost",
+          "cities": ["Calgary", "Montreal", "Ottawa"]
+        },
+        {
+          "title": "Lower Cost",
+          "cities": ["Winnipeg", "Quebec City", "Halifax"]
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Cost-Saving Strategies",
+      "tips": [
+        {
+          "title": "Consider Secondary Cities",
+          "description": "Living in Montreal, Calgary or Ottawa instead of Toronto or Vancouver can reduce housing costs by 30-40%."
+        },
+        {
+          "title": "Buy Furniture in Canada",
+          "description": "Purchase furniture locally from IKEA, secondhand shops, or Facebook Marketplace instead of shipping."
+        },
+        {
+          "title": "Public Transportation",
+          "description": "In major cities, using public transit is much more economical than owning a car."
+        },
+        {
+          "title": "Arrive in Spring/Summer",
+          "description": "Moving during warmer months reduces immediate need for expensive winter gear."
+        }
+      ]
+    },
+    "conclusion": "Moving to Canada requires significant initial investment, but provides access to high quality of life, universal healthcare, and economic opportunities. With proper planning and budgeting, your transition to Canadian life can be successful and rewarding."
+  },
+
+  "ustocanadaguide": {
+    "navigation": {
+      "title": "Jump to Section"
+    },
+    "accessibility": {
+      "toggleSection": "Toggle section for"
+    },
+    "sections": {
+      "whyCanada": {
+        "title": "Why Move to Canada?",
+        "description": "Many Americans are choosing Canada as their new home for compelling reasons:",
+        "reasons": [
+          "Universal healthcare system",
+          "High quality of life and safety",
+          "Beautiful natural landscapes",
+          "Cultural diversity and inclusivity",
+          "Strong social support systems",
+          "Proximity to the US for visiting family"
+        ],
+        "conclusion": "Whether you're relocating for professional opportunities, education, family reasons, or seeking a change in lifestyle, Canada offers familiar yet distinctly different experiences for Americans."
+      },
+      "immigrationOptions": {
+        "title": "Immigration Options for US Citizens",
+        "description": "As a US citizen, you have several pathways to immigrate to Canada:",
+        "options": [
+          {
+            "title": "1. Express Entry System",
+            "points": [
+              "Points-based system for skilled workers",
+              "Evaluates age, education, work experience, language skills",
+              "Competitive system with ranking and invitations",
+              "Pathway to permanent residency"
+            ]
+          },
+          {
+            "title": "2. Provincial Nominee Programs (PNP)",
+            "points": [
+              "Provinces and territories nominate candidates based on local needs",
+              "Often faster than federal programs for in-demand skills",
+              "Each province has specific streams and requirements",
+              "Can lead to permanent residency"
+            ]
+          },
+          {
+            "title": "3. Study Permit",
+            "points": [
+              "For enrollment in designated Canadian institutions",
+              "Requires acceptance letter, proof of funds, and clean record",
+              "Includes limited work permissions",
+              "Post-graduation work permit available after completion"
+            ]
+          },
+          {
+            "title": "4. Family Sponsorship",
+            "points": [
+              "For spouses, partners, children, or parents of Canadian citizens/PRs",
+              "Sponsor must meet income requirements",
+              "Leads to permanent residence"
+            ]
+          },
+          {
+            "title": "5. NAFTA/USMCA Work Permit",
+            "points": [
+              "Temporary work permits for eligible professions",
+              "Must have job offer from Canadian employer",
+              "Relatively straightforward application process",
+              "Can be a stepping stone to permanent immigration pathways"
+            ]
+          }
+        ]
+      },
+      "requiredDocuments": {
+        "title": "Required Documents for Immigration",
+        "description": "Document requirements vary by immigration pathway, but typically include:",
+        "documents": [
+          "Valid US passport",
+          "Immigration application forms",
+          "Proof of language proficiency (English/French)",
+          "Educational credential assessment",
+          "Work experience references and proof",
+          "Police clearance certificates",
+          "Medical examination results",
+          "Proof of funds to support yourself"
+        ],
+        "tip": {
+          "label": "Pro tip:",
+          "text": "Start gathering these documents early. Educational assessments, language tests, and police certificates can take several weeks to obtain."
+        }
+      },
+      "popularCities": {
+        "title": "Popular Canadian Cities for American Expats",
+        "description": "Americans relocating to Canada often choose these popular areas:",
+        "mainCities": [
+          {
+            "name": "Toronto",
+            "icon": "🌆",
+            "highlights": [
+              "Canada's largest city and financial center",
+              "Extremely diverse with strong job market",
+              "Vibrant culture and entertainment scene",
+              "Higher cost of living but more opportunities"
+            ]
+          },
+          {
+            "name": "Vancouver",
+            "icon": "🏞️",
+            "highlights": [
+              "Mild climate and stunning natural beauty",
+              "Strong tech and film industries",
+              "Outdoor lifestyle with mountains and ocean",
+              "High cost of housing but high quality of life"
+            ]
+          },
+          {
+            "name": "Ottawa",
+            "icon": "🏛️",
+            "highlights": [
+              "Canada's capital with stable government jobs",
+              "Affordable housing compared to Toronto/Vancouver",
+              "High standard of living and safety",
+              "Bilingual city with cultural attractions"
+            ]
+          },
+          {
+            "name": "Montréal",
+            "icon": "🏛️",
+            "highlights": [
+              "European charm with North American convenience",
+              "Lower cost of living than other major cities",
+              "Rich culture, food, and arts scene",
+              "French-speaking but English widely understood"
+            ]
+          }
+        ],
+        "emergingOptions": {
+          "title": "Emerging Options",
+          "cities": [
+            {
+              "name": "Halifax",
+              "description": "Atlantic coast lifestyle with growing tech scene"
+            },
+            {
+              "name": "Calgary",
+              "description": "Strong economy, proximity to Rockies, lower taxes"
+            },
+            {
+              "name": "Waterloo",
+              "description": "Tech hub with universities and innovation"
+            },
+            {
+              "name": "Victoria",
+              "description": "Mild climate and laid-back island lifestyle"
+            }
+          ]
+        }
+      },
+      "costOfLiving": {
+        "title": "Cost of Living Comparison: Canada vs USA",
+        "table": {
+          "headers": {
+            "expense": "Expense",
+            "canada": "Canada (avg.)",
+            "usa": "USA (avg.)"
+          },
+          "rows": [
+            {
+              "expense": "Rent (1BR city center)",
+              "canada": "C$1,300–$2,000/month",
+              "usa": "$1,500–$2,500/month"
+            },
+            {
+              "expense": "Healthcare",
+              "canada": "Mostly covered by provincial plans",
+              "usa": "$300–$600/month",
+              "canadaHighlight": true
+            },
+            {
+              "expense": "Utilities (monthly)",
+              "canada": "C$150–$200",
+              "usa": "$150–$200"
+            },
+            {
+              "expense": "Transportation",
+              "canada": "C$100–$150/month",
+              "usa": "$100–$150 + car expenses"
+            },
+            {
+              "expense": "Dining out (for 2)",
+              "canada": "C$60–$100",
+              "usa": "$50–$100"
+            },
+            {
+              "expense": "University Tuition",
+              "canada": "C$7,000–$20,000/year",
+              "usa": "$10,000–$40,000/year",
+              "canadaHighlight": true
+            },
+            {
+              "expense": "Income Tax",
+              "canada": "Generally higher",
+              "usa": "Generally lower"
+            }
+          ]
+        },
+        "note": "Cost of living varies significantly between cities. Vancouver and Toronto are the most expensive, comparable to major US cities, while other Canadian regions offer more affordable living."
+      },
+      "healthcare": {
+        "title": "Healthcare in Canada",
+        "description": "Canada's universal healthcare system is a major attraction for Americans. Each province administers its own healthcare plan, covering most essential medical services.",
+        "newcomersInfo": {
+          "title": "Healthcare for Newcomers",
+          "points": [
+            "Permanent residents can apply for provincial health insurance immediately",
+            "Some provinces have waiting periods (up to 3 months) - private insurance recommended during this time",
+            "Temporary residents (work/study permits) eligibility varies by province",
+            "Not all services are covered (dental, vision, prescription drugs)"
+          ]
+        },
+        "privateInsurance": "Private health insurance is available and recommended to supplement provincial coverage for services not included such as dental care, prescription drugs, and vision care."
+      },
+      "language": {
+        "title": "Language & Cultural Tips",
+        "description": "Despite many similarities, Canadian culture has its own distinct characteristics:",
+        "details": {
+          "title": "Canadian English & Cultural Nuances",
+          "terms": {
+            "title": "Canadian English Terms:",
+            "examples": [
+              "Washroom (not restroom)",
+              "Toque (winter hat)",
+              "Loonie ($1 coin), Toonie ($2 coin)",
+              "Pop (not soda)",
+              "Hydro (electricity)",
+              "Double-double (coffee with 2 cream, 2 sugar)"
+            ]
+          },
+          "cultural": {
+            "title": "Cultural Differences:",
+            "points": [
+              "Canadians tend to be more reserved initially",
+              "Strong emphasis on politeness and inclusivity",
+              "Multiculturalism is celebrated and embraced",
+              "Less confrontational communication style",
+              "Tipping customs similar to US (15-20%)"
+            ]
+          }
+        },
+        "frenchNote": "French is an official language alongside English. While most of Canada is primarily English-speaking, Quebec is predominantly French, and many federal services are bilingual."
+      },
+      "moving": {
+        "title": "Moving & Cross-Border Relocation",
+        "description": "Planning your physical move across the border requires preparation:",
+        "belongings": {
+          "title": "Moving Your Belongings",
+          "points": [
+            {
+              "label": "Goods and personal effects",
+              "description": "Can be imported duty-free with proper documentation"
+            },
+            {
+              "label": "Required forms",
+              "description": "Personal Effects Accounting Document (Form B4) and detailed inventory list"
+            },
+            {
+              "label": "Moving companies",
+              "description": "Choose ones experienced with US-Canada relocations"
+            },
+            {
+              "label": "Restricted items",
+              "description": "Certain foods, plants, firearms are restricted or prohibited"
+            }
+          ]
+        },
+        "vehicles": {
+          "title": "Bringing Vehicles",
+          "points": [
+            "Vehicles must meet Canadian safety and emission standards",
+            "Import process requires forms, inspection, and possible modifications",
+            "Cost includes RIV fee, taxes, and possible duty",
+            "Consider selling US vehicle and buying in Canada instead"
+          ]
+        },
+        "note": "Consider what to bring carefully. Canada uses the metric system and has 120V electricity like the US, so most electronics will work without converters."
+      },
+      "banking": {
+        "title": "Banking & Finances",
+        "description": "Setting up your financial life in Canada should be a priority:",
+        "bankingInfo": {
+          "title": "Banking in Canada",
+          "points": [
+            "Major banks: RBC, TD, Scotiabank, BMO, CIBC",
+            "Newcomer banking packages available with reduced requirements",
+            "Required documents: immigration papers, passport, address proof",
+            "Consider opening account before arrival through cross-border banking options"
+          ]
+        },
+        "financialConsiderations": {
+          "title": "Financial Considerations",
+          "points": [
+            "US citizens must file US taxes regardless of residence",
+            "Canada-US tax treaty helps prevent double taxation",
+            "Consider services like Wise or OFX for currency transfers",
+            "Credit history doesn't transfer - build Canadian credit history",
+            "Canadian retirement accounts (RRSP, TFSA) have US tax implications"
+          ]
+        },
+        "recommendation": "Maintaining US banking relationships is recommended for ongoing US financial obligations. Consider working with a cross-border tax professional to optimize your financial situation."
+      }
+    },
+    "checklist": {
+      "title": "Pre-Move Checklist for Americans",
+      "items": [
+        "Determine your immigration pathway",
+        "Take language tests if required (IELTS/CELPIP)",
+        "Get Educational Credential Assessment (ECA)",
+        "Arrange for cross-border banking",
+        "Research healthcare coverage options",
+        "Create a detailed inventory of belongings",
+        "Consult with cross-border tax professional",
+        "Research housing in your target city",
+        "Join Canadian expat communities and forums online"
+      ]
+    },
+    "resources": {
+      "title": "Helpful Resources",
+      "categories": [
+        {
+          "title": "Official Information",
+          "items": [
+            "Immigration, Refugees and Citizenship Canada",
+            "Provincial Immigration Programs",
+            "US Embassy and Consulates in Canada"
+          ]
+        },
+        {
+          "title": "Expat Communities",
+          "items": [
+            "Americans in Canada Facebook Groups",
+            "InterNations Canada Chapters",
+            "City-specific newcomer associations"
+          ]
+        },
+        {
+          "title": "Practical Services",
+          "items": [
+            "Cross-border moving companies",
+            "Housing websites (Realtor.ca, Kijiji)",
+            "Cross-border tax specialists"
+          ]
+        }
+      ]
+    },
+    "finalTips": {
+      "title": "Final Tips for New Canadians",
+      "categories": [
+        {
+          "title": "Getting Started",
+          "tips": [
+            "Apply for your Social Insurance Number (SIN) immediately upon arrival",
+            "Register for provincial health insurance as soon as eligible",
+            "Consider temporary accommodation while house-hunting"
+          ]
+        },
+        {
+          "title": "Integration Tips",
+          "tips": [
+            "Embrace the Canadian winter with proper clothing and activities",
+            "Use settlement services available to newcomers",
+            "Be patient with building credit history and establishing yourself"
+          ]
+        }
+      ],
+      "conclusion": "Your new Canadian adventure awaits! With proper planning and preparation, your transition from the US to Canada can be an exciting and rewarding experience."
+    }
+  },
+
+  "movingwithpets": {
+    "navigation": {
+      "title": "Navigation Guide"
+    },
+    "accessibility": {
+      "toggleSection": "Toggle section for"
+    },
+    "sections": {
+      "requirements": {
+        "title": "Entry Requirements",
+        "steps": [
+          {
+            "title": "Microchip",
+            "description": "All pets must have an ISO standard (11784/11785) microchip implanted."
+          },
+          {
+            "title": "Rabies Vaccination",
+            "description": "Pets must be vaccinated against rabies <span class=\"font-medium\">at least 30 days</span> before entry and the vaccine must be <span class=\"font-medium\">valid upon arrival</span>."
+          },
+          {
+            "title": "Veterinary Certificate",
+            "details": [
+              "Must be issued by a licensed veterinarian in your home country.",
+              "Should be endorsed by the government authority (such as USDA in the US).",
+              "Must be issued within <span class=\"font-medium\">14 days</span> before entry into Canada."
+            ]
+          }
+        ],
+        "importantNote": {
+          "title": "Important Note",
+          "text": "Unlike many countries, Canada does <span class=\"font-medium\">not require</span> quarantine for pets that meet all documentation requirements."
+        }
+      },
+      "dogSpecific": {
+        "title": "Dog-Specific Rules",
+        "breedRestrictions": {
+          "title": "Breed Restrictions",
+          "description": "Canada has restrictions on certain dog breeds that are considered aggressive. These regulations vary by province and municipality.",
+          "restrictedTitle": "Restricted in Some Areas:",
+          "breeds": [
+            "Pit Bull Terriers",
+            "Staffordshire Bull Terriers",
+            "American Staffordshire Terriers",
+            "Rottweilers (in some areas)"
+          ],
+          "note": "If your dog belongs to a potentially restricted breed, check with your specific destination province and city."
+        },
+        "commercialDogs": {
+          "title": "Commercial Dogs (Under 8 Months)",
+          "description": "Dogs under 8 months old imported for commercial purposes (breeding, showing, resale) have additional requirements. These dogs need an import permit from the Canadian Food Inspection Agency."
+        }
+      },
+      "catSpecific": {
+        "title": "Cat-Specific Rules",
+        "goodNews": "Good news! Canada has relatively simple requirements for importing cats compared to many other countries.",
+        "basicRequirements": {
+          "title": "Basic Requirements for Cats",
+          "requirements": [
+            "Microchip (ISO standard)",
+            "Rabies vaccination (at least 30 days before entry)",
+            "Veterinary health certificate"
+          ]
+        },
+        "noBreedRestrictions": "Unlike dogs, there are no breed restrictions for cats in Canada."
+      },
+      "travelOptions": {
+        "title": "Travel Options",
+        "options": [
+          {
+            "title": "In-cabin Travel",
+            "description": "Pets under 8-10 kg (including carrier) may travel in the cabin. Carrier must fit under the seat in front of you.",
+            "fee": "Fee: CAD $50-125 each way",
+            "icon": "🧳",
+            "ariaLabel": "cabin"
+          },
+          {
+            "title": "Checked Baggage",
+            "description": "Pets too large for cabin but under 32 kg may travel as checked baggage.",
+            "fee": "Fee: CAD $100-250 each way",
+            "icon": "🧴",
+            "ariaLabel": "checked baggage"
+          },
+          {
+            "title": "Air Cargo",
+            "description": "Very large pets or those traveling on routes without pet allowances must go as cargo.",
+            "fee": "Fee: CAD $400-1,000+ each way",
+            "icon": "📦",
+            "ariaLabel": "cargo"
+          }
+        ],
+        "warning": "Always book with the airline well in advance as pet spots are limited. Airlines have different policies and restrictions, especially for snub-nosed breeds which may be prohibited due to breathing concerns."
+      },
+      "afterArrival": {
+        "title": "After Arrival",
+        "atTheBorder": {
+          "title": "At the Border",
+          "description": "Upon arrival, a Canada Border Services Agency (CBSA) officer will examine your pet's documents. Make sure to:",
+          "steps": [
+            "Declare your pet to customs officials",
+            "Have all original documents readily available",
+            "Be prepared for potential inspection of your pet"
+          ]
+        },
+        "firstWeekChecklist": {
+          "title": "First Week Checklist",
+          "items": [
+            {
+              "title": "1. Find a Local Veterinarian",
+              "description": "Schedule a check-up within the first month."
+            },
+            {
+              "title": "2. Register with Municipality",
+              "description": "Many Canadian cities require pet licensing."
+            },
+            {
+              "title": "3. Update Microchip Info",
+              "description": "Change address to your new Canadian address."
+            },
+            {
+              "title": "4. Pet Insurance",
+              "description": "Consider obtaining Canadian pet insurance."
+            }
+          ]
+        }
+      },
+      "canadianClimate": {
+        "title": "Canadian Climate",
+        "description": "Canada's climate varies dramatically by region and season. This is an important consideration for pets, especially those coming from warmer climates.",
+        "seasons": [
+          {
+            "title": "Winter Preparations",
+            "icon": "❄️",
+            "tips": [
+              "Pet-safe ice melter for walkways",
+              "Booties to protect paws from salt and ice",
+              "Coats/sweaters for short-haired breeds",
+              "Limited outdoor time in extreme cold"
+            ]
+          },
+          {
+            "title": "Summer Considerations",
+            "icon": "☀️",
+            "tips": [
+              "Never leave pets in parked cars",
+              "Watch for heatstroke symptoms",
+              "Tick and flea prevention",
+              "Access to fresh water and shade"
+            ]
+          }
+        ],
+        "warning": "<strong>Warning:</strong> Brachycephalic (flat-faced) breeds like Bulldogs, Pugs, and Persian cats may struggle with temperature extremes. Take extra precautions with these breeds."
+      },
+      "petFriendly": {
+        "title": "Pet-Friendly Canada",
+        "description": "Canada is generally very pet-friendly, with excellent veterinary care and many pet-friendly spaces.",
+        "aspects": [
+          {
+            "title": "Veterinary Care",
+            "icon": "🏥",
+            "description": "High-quality but can be expensive. Average check-up costs CAD $75-150.",
+            "additionalInfo": "Pet insurance costs around CAD $25-80 monthly."
+          },
+          {
+            "title": "Parks & Recreation",
+            "icon": "🏞️",
+            "description": "Most cities have designated off-leash dog parks and pet-friendly trails.",
+            "additionalInfo": "National parks have specific pet rules - check before visiting."
+          },
+          {
+            "title": "Pet Supplies",
+            "icon": "🥫",
+            "description": "Major chains include PetSmart, Canadian Tire, and Pet Valu. Online options include Amazon.ca and Chewy.ca."
+          },
+          {
+            "title": "Pet-Friendly Housing",
+            "icon": "🏨",
+            "description": "Some rental properties restrict pets. Look for \"pet-friendly\" designations when house-hunting.",
+            "additionalInfo": "Pet deposits are common (CAD $200-500)."
+          }
+        ]
+      }
+    },
+    "checklist": {
+      "title": "Pet Travel Checklist",
+      "items": [
+        "Verify your pet meets Canada's entry requirements (at least 3 months before travel)",
+        "Ensure microchip is ISO standard compliant",
+        "Schedule rabies vaccination (at least 30 days before travel)",
+        "Book pet-friendly transportation",
+        "Purchase airline-approved pet carrier and acclimate your pet to it",
+        "Get veterinary health certificate (within 14 days of travel)",
+        "Pack pet essentials (food, medications, comfort items)",
+        "Make copies of all documentation and keep them with you"
+      ]
+    }
+  },
+
+  "relocationrequirements": {
+    "introduction": "Canada welcomes thousands of newcomers each year through various immigration pathways. Whether you're planning to work, study, join family, or retire in Canada, understanding the key requirements will help ensure a successful relocation. Here's what you need to know.",
+    "requirements": [
+      {
+        "icon": "🛂",
+        "title": "Valid Passport",
+        "description": "Your passport must be valid for the duration of your planned stay in Canada. For permanent residence applications, ensure your passport won't expire during the processing time, which can take several months or even years."
+      },
+      {
+        "icon": "📝",
+        "title": "Immigration Status",
+        "description": "Determine your immigration pathway:",
+        "details": [
+          "Express Entry (Federal Skilled Worker, Federal Skilled Trades, Canadian Experience Class)",
+          "Provincial Nominee Programs (PNPs)",
+          "Family Sponsorship",
+          "Study Permits",
+          "Work Permits (LMIA-based, CUSMA/NAFTA, IEC)",
+          "Visitor Visa (Temporary Resident Visa) or eTA"
+        ]
+      },
+      {
+        "icon": "💵",
+        "title": "Proof of Funds",
+        "description": "For most immigration programs, you'll need to demonstrate you have sufficient funds to support yourself and your family:",
+        "details": [
+          "Express Entry requires proof of settlement funds (varies by family size, updated annually)",
+          "Students must show tuition fees plus living expenses (approximately $10,000 CAD per year)",
+          "Bank statements, investment accounts, or a letter from your bank are acceptable proof"
+        ]
+      },
+      {
+        "icon": "🩺",
+        "title": "Medical Examination",
+        "description": "Most applicants must undergo a medical examination by an IRCC-approved physician:",
+        "details": [
+          "Required for permanent residence applications",
+          "Required for temporary residents staying longer than 6 months",
+          "Must be completed by a designated panel physician"
+        ]
+      },
+      {
+        "icon": "🔍",
+        "title": "Background Checks",
+        "description": "Security and criminal background checks are standard for all applications:",
+        "details": [
+          "Police clearance certificates from countries where you've lived for 6+ months",
+          "Biometrics (fingerprints and photo) are required for most applicants",
+          "Security screening process"
+        ]
+      },
+      {
+        "icon": "🗣️",
+        "title": "Language Proficiency",
+        "description": "English or French language ability is crucial for most immigration programs:",
+        "details": [
+          "IELTS or CELPIP for English",
+          "TEF or TCF for French",
+          "Specific CLB (Canadian Language Benchmark) levels required depending on the program"
+        ]
+      },
+      {
+        "icon": "🎓",
+        "title": "Educational Credentials Assessment (ECA)",
+        "description": "If you completed your education outside Canada:",
+        "details": [
+          "Get your credentials assessed by an IRCC-approved organization",
+          "Verify your degree, diploma, or certificate is equivalent to Canadian standards",
+          "ECA is mandatory for Express Entry and many other immigration programs"
+        ]
+      },
+      {
+        "icon": "🏠",
+        "title": "Housing Plans",
+        "description": "While not required for most applications, having housing plans is essential:",
+        "details": [
+          "Temporary accommodation upon arrival (hotels, short-term rentals)",
+          "Research rental markets in your destination city",
+          "Understand leasing requirements (credit checks, references, deposits)"
+        ]
+      },
+      {
+        "icon": "💼",
+        "title": "Employment Preparations",
+        "description": "For those planning to work in Canada:",
+        "details": [
+          "Research the Canadian job market in your field",
+          "Prepare Canadian-style resume and cover letters",
+          "Network with professionals in your industry",
+          "Check if your profession is regulated and requires Canadian licensing"
+        ]
+      },
+      {
+        "icon": "⚕️",
+        "title": "Health Insurance",
+        "description": "Healthcare in Canada is primarily public, but varies by province:",
+        "details": [
+          "Provincial health insurance requires a waiting period (usually 3 months)",
+          "Purchase private health insurance to cover the gap period",
+          "Understand what's covered and what isn't in your province"
+        ]
+      }
+    ],
+    "postArrival": {
+      "title": "Post-Arrival Steps",
+      "timeframes": [
+        {
+          "period": "First Week",
+          "tasks": [
+            "Apply for Social Insurance Number (SIN)",
+            "Open a Canadian bank account",
+            "Get a local phone number",
+            "Apply for provincial health insurance"
+          ]
+        },
+        {
+          "period": "First Month",
+          "tasks": [
+            "Find permanent housing",
+            "Register children for school",
+            "Obtain a driver's license or ID",
+            "Connect with settlement services"
+          ]
+        }
+      ]
+    }
+  },
+
+  "uktocanadaguide": {
+    "navigation": {
+      "title": "Quick Navigation"
+    },
+    "accessibility": {
+      "toggleSection": "Toggle section for"
+    },
+    "sections": {
+      "whyMove": {
+        "title": "Why Are Brits Moving to Canada?",
+        "description": "Thousands of British nationals have made Canada their home, especially in cities like Toronto, Vancouver, Montreal, and Calgary. The appeal includes:",
+        "reasons": [
+          "High quality of life with excellent social systems",
+          "Diverse natural landscapes and outdoor activities",
+          "Similar culture and familiar language",
+          "Strong economy with career opportunities",
+          "Multicultural society with welcoming communities"
+        ],
+        "conclusion": "Post-Brexit, many Brits are exploring options outside Europe, and Canada's immigration system offers several pathways."
+      },
+      "entryRequirements": {
+        "title": "Entry Requirements & Visa Rules",
+        "touristEntry": {
+          "title": "Tourist Entry",
+          "description": "UK citizens can visit Canada for up to 6 months with an Electronic Travel Authorization (eTA), which costs CAD $7. However, for permanent relocation, you'll need to apply through one of Canada's immigration pathways."
+        }
+      },
+      "immigrationPathways": {
+        "title": "Immigration Pathways for UK Citizens",
+        "pathways": [
+          {
+            "title": "1. Express Entry System",
+            "description": "<span class=\"font-medium\">Canada's main immigration pathway for skilled workers</span><br/>Points-based system that ranks candidates based on factors like age, education, work experience, and language skills",
+            "subProgramsTitle": "Three programs under Express Entry:",
+            "subPrograms": [
+              "Federal Skilled Worker Program",
+              "Federal Skilled Trades Program",
+              "Canadian Experience Class (for those with Canadian work experience)"
+            ]
+          },
+          {
+            "title": "2. Provincial Nominee Programs (PNPs)",
+            "details": [
+              "Each province has its own immigration streams",
+              "Often faster than Express Entry for those with skills needed in specific provinces",
+              "Some provinces have UK-specific recruitment initiatives"
+            ]
+          },
+          {
+            "title": "3. Work Permits",
+            "details": [
+              "Employer-specific work permits require a job offer from a Canadian employer",
+              "Open work permits available through special programs like Working Holiday (IEC)",
+              "UK citizens aged 18-30 can apply for IEC working holiday visas"
+            ]
+          },
+          {
+            "title": "4. Family Sponsorship",
+            "description": "If you have a spouse, common-law partner, or close family member who is a Canadian citizen or permanent resident"
+          }
+        ]
+      },
+      "property": {
+        "title": "Buying or Renting Property",
+        "points": [
+          "As a non-resident, you can purchase property in most of Canada with some restrictions in certain provinces",
+          "The 2023 foreign buyer ban has exceptions for permanent residents and those on work permits",
+          "Popular areas for British expats: Toronto, Vancouver, Montreal, Calgary, Halifax",
+          "Rental markets vary widely: expect to pay CAD $1,500-$3,000+ for a 1-bedroom apartment in major cities"
+        ],
+        "tip": "<strong>Tip:</strong> Research locations carefully – property prices in Toronto and Vancouver are significantly higher than in other regions."
+      },
+      "costLiving": {
+        "title": "Cost of Living Comparison",
+        "table": {
+          "headers": {
+            "expense": "Expense",
+            "canada": "Canada (avg.)",
+            "uk": "UK (avg.)"
+          },
+          "rows": [
+            {
+              "expense": "Rent (1-bed apartment)",
+              "canada": "CAD $1,200–$2,500",
+              "uk": "£800–£1,200"
+            },
+            {
+              "expense": "Utilities",
+              "canada": "CAD $150–$250/month",
+              "uk": "£150+/month"
+            },
+            {
+              "expense": "Meal at restaurant",
+              "canada": "CAD $20–$35",
+              "uk": "£10–£25"
+            },
+            {
+              "expense": "Transportation pass",
+              "canada": "CAD $80–$150/month",
+              "uk": "£60–£120/month"
+            }
+          ]
+        },
+        "note": "While overall costs are similar to the UK, they vary significantly between regions. Atlantic provinces and rural areas offer more affordable living."
+      },
+      "healthcare": {
+        "title": "Healthcare Access",
+        "points": [
+          "Canada has universal public healthcare (Medicare) funded through taxes",
+          "As a permanent resident, you're eligible for provincial healthcare after a waiting period (usually 3 months)",
+          "During the waiting period, temporary private health insurance is essential",
+          "Each province administers its own healthcare system with slight variations in coverage",
+          "Some services like dental, vision care, and prescription medications may require private insurance"
+        ]
+      },
+      "weather": {
+        "title": "Weather & Climate",
+        "seasons": [
+          {
+            "title": "Winter (Nov-March)",
+            "description": "Significantly colder than the UK with temperatures ranging from -30°C to 0°C depending on the region. Snow is common across most of the country, with coastal BC being the exception."
+          },
+          {
+            "title": "Summer (June-Sept)",
+            "description": "Warmer than the UK with temperatures typically between 20°C and 30°C. Humidity can be high in eastern provinces."
+          }
+        ],
+        "regionalVariations": {
+          "title": "Regional Variations",
+          "description": "Vancouver has a mild, rainy climate similar to the UK. Toronto and Montreal experience hot summers and cold winters. The Prairies have extreme temperature variations. Northern territories have very long, harsh winters."
+        }
+      },
+      "dailyLife": {
+        "title": "Daily Life Adjustments",
+        "aspects": [
+          {
+            "title": "Language",
+            "description": "English is an official language across Canada (except Quebec). French is also an official language, and predominant in Quebec where French proficiency is highly beneficial."
+          },
+          {
+            "title": "Driving",
+            "description": "UK licenses can be used temporarily (varies by province), but you'll need to exchange it for a provincial license. Canadians drive on the right side of the road."
+          },
+          {
+            "title": "Currency",
+            "description": "Canadian Dollar (CAD) — exchange rates fluctuate, but costs are generally comparable to the UK."
+          },
+          {
+            "title": "Banking",
+            "description": "Major banks offer newcomer packages with fee waivers. You'll need proof of address and identification to open an account. Credit history doesn't transfer, so building credit will be important."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "title": "Moving Logistics from the UK",
+        "points": [
+          "Shipping household goods to Canada takes 4-8 weeks by sea freight",
+          "Personal effects can be imported duty-free with a detailed inventory and proof of residence",
+          "Cars more than 15 years old are easier to import; newer vehicles must meet Canadian standards",
+          "Pets need microchips, rabies vaccinations, and health certificates; no quarantine is required if conditions are met"
+        ]
+      },
+      "challenges": {
+        "title": "Realistic Challenges to Expect",
+        "challenges": [
+          {
+            "title": "Winter adjustment",
+            "description": "The severity and length of Canadian winters can be challenging for Brits"
+          },
+          {
+            "title": "Distance from family",
+            "description": "7+ hour flights make visits home less frequent"
+          },
+          {
+            "title": "Building credit history",
+            "description": "UK credit history doesn't transfer, making initial borrowing difficult"
+          },
+          {
+            "title": "Professional accreditation",
+            "description": "Some UK qualifications may need recertification in Canada"
+          }
+        ]
+      },
+      "britishCommunities": {
+        "title": "British Expat Communities",
+        "description": "Canada has sizable British expat communities in:",
+        "cities": ["Toronto", "Vancouver", "Calgary", "Victoria", "Halifax"],
+        "supportNote": "Online forums, Facebook groups like \"Brits in Canada,\" and community events make it easier to connect with other UK expats who can provide advice and support."
+      }
+    },
+    "checklist": {
+      "title": "Essential Checklist Before Moving to Canada",
+      "items": [
+        "Secure appropriate immigration status or work permit",
+        "Obtain Social Insurance Number (SIN) upon arrival",
+        "Purchase travel and initial health insurance",
+        "Open a Canadian bank account",
+        "Research provincial healthcare registration process",
+        "Purchase appropriate clothing for Canadian weather",
+        "Notify UK authorities (HMRC, pension providers, etc.) about your move abroad"
+      ]
+    },
+    "conclusion": {
+      "title": "Is Relocating to Canada Right for You?",
+      "text": "Canada offers a high standard of living, stunning natural beauty, and strong social systems, making it an attractive destination for UK expats. While the immigration process requires careful planning and the winter weather takes adjustment, many Brits find the transition worthwhile for the quality of life, career opportunities, and welcoming multicultural society Canada provides."
+    },
+    "footer": {
+      "disclaimer": "Guide last updated: May 2025 • Information subject to change • Always check official government sources"
+    }
+  },
+
+  "canadavisaguide": {
+    "introduction": "Canada offers numerous pathways for immigrants, including workers, students, families, and business people. Each program is designed to support Canada's economic growth while welcoming newcomers from around the world.",
+    "labels": {
+      "bestFor": "Best for:",
+      "programs": "Programs:",
+      "requirements": "Requirements:",
+      "process": "Process:",
+      "types": "Types:",
+      "eligibleMembers": "Eligible family members:",
+      "sponsorRequirements": "Sponsor requirements:",
+      "benefits": "Benefits:",
+      "tfwpRequirements": "TFWP Requirements:",
+      "impBenefits": "IMP Benefits:",
+      "startupRequirements": "Start-up Visa Requirements:",
+      "notablePNPs": "Notable PNPs:"
+    },
+    "mainPrograms": [
+      {
+        "title": "1. Express Entry System",
+        "bestFor": [
+          "Skilled workers with work experience",
+          "Professionals with higher education",
+          "Language proficiency in English/French"
+        ],
+        "programs": [
+          "Federal Skilled Worker Program",
+          "Federal Skilled Trades Program",
+          "Canadian Experience Class"
+        ],
+        "requirements": [
+          "Minimum 1 year skilled work experience",
+          "Language testing (CLB 7+ for FSWP)",
+          "Educational credential assessment",
+          "Proof of funds (~$13,000+ for single person)"
+        ]
+      },
+      {
+        "title": "2. Provincial Nominee Programs (PNPs)",
+        "bestFor": [
+          "Workers whose skills match provincial needs",
+          "Those with connections to specific provinces",
+          "Candidates who may not qualify for Express Entry"
+        ],
+        "process": [
+          "Apply directly to a province or through Express Entry",
+          "Receive provincial nomination",
+          "Apply for permanent residence federally"
+        ],
+        "notablePNPs": [
+          "British Columbia PNP",
+          "Ontario Immigrant Nominee Program",
+          "Alberta Advantage Immigration Program",
+          "Manitoba Provincial Nominee Program"
+        ]
+      },
+      {
+        "title": "3. Study Permits",
+        "bestFor": "International students accepted to designated learning institutions",
+        "requirements": [
+          "Acceptance letter from a DLI",
+          "Proof of financial support (~$10,000/year + tuition)",
+          "Clean criminal record",
+          "Medical exam (if required)",
+          "Intent to leave Canada after studies"
+        ],
+        "benefits": [
+          "Work up to 20 hours/week during studies",
+          "Full-time work during scheduled breaks",
+          "Post-Graduation Work Permit eligibility",
+          "Pathway to permanent residence"
+        ]
+      },
+      {
+        "title": "4. Work Permits",
+        "types": [
+          "Temporary Foreign Worker Program (TFWP)",
+          "International Mobility Program (IMP)",
+          "Post-Graduation Work Permit (PGWP)",
+          "Open work permits for spouses"
+        ],
+        "tfwpRequirements": [
+          "Job offer from Canadian employer",
+          "Labour Market Impact Assessment (LMIA)",
+          "Proof of qualifications"
+        ],
+        "impBenefits": [
+          "LMIA-exempt work permits",
+          "Includes intra-company transfers",
+          "International agreements (CUSMA, CETA)"
+        ]
+      },
+      {
+        "title": "5. Family Sponsorship",
+        "bestFor": "Family members of Canadian citizens or permanent residents",
+        "eligibleMembers": [
+          "Spouse or common-law partner",
+          "Dependent children",
+          "Parents and grandparents",
+          "Other relatives (under specific programs)"
+        ],
+        "sponsorRequirements": [
+          "Canadian citizen or permanent resident",
+          "18 years or older",
+          "Meet minimum income requirements",
+          "Sign undertaking to financially support"
+        ]
+      },
+      {
+        "title": "6. Business Immigration",
+        "bestFor": ["Entrepreneurs", "Investors", "Self-employed persons"],
+        "programs": [
+          "Start-up Visa Program",
+          "Self-employed Persons Program",
+          "Provincial business programs"
+        ],
+        "startupRequirements": [
+          "Support from designated organization",
+          "Language proficiency (CLB 5+)",
+          "Sufficient settlement funds",
+          "Active management of business in Canada"
+        ]
+      }
+    ],
+    "additionalOptions": {
+      "title": "Additional Options",
+      "programs": [
+        {
+          "title": "Atlantic Immigration Program",
+          "description": "Designed for skilled workers and international graduates who want to live and work in New Brunswick, Nova Scotia, Prince Edward Island, or Newfoundland and Labrador.",
+          "requirement": "Requires job offer from designated employer in Atlantic Canada"
+        },
+        {
+          "title": "Rural and Northern Immigration Pilot",
+          "description": "Community-driven program that helps skilled foreign workers gain permanent residence while supporting smaller, rural communities.",
+          "requirement": "Available in selected communities across Canada"
+        },
+        {
+          "title": "Caregivers Programs",
+          "description": "Pathways for caregivers providing care for children, elderly, or those with medical needs to become permanent residents.",
+          "requirement": "2 years of work experience in Canada required"
+        },
+        {
+          "title": "Humanitarian and Refugee Programs",
+          "description": "Protection for refugees, asylum seekers, and others in need of humanitarian assistance.",
+          "requirement": "Includes Government-Assisted Refugee Program and Private Sponsorship"
+        }
+      ]
+    },
+    "importantConsiderations": {
+      "title": "Important Considerations",
+      "considerations": [
+        {
+          "title": "Processing Times",
+          "description": "Vary widely by program and applicant volume. Express Entry can be as quick as 6 months, while family sponsorship may take 12+ months."
+        },
+        {
+          "title": "Application Fees",
+          "description": "Consider both government fees and potential consultant costs. PR application fees are approximately $1,325 CAD per adult."
+        },
+        {
+          "title": "Settlement Funds",
+          "description": "Most programs require proof of funds for settlement. Amount varies based on family size and program requirements."
+        }
+      ]
+    }
+  }
+}

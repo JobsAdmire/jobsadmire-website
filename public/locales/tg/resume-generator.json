@@ -1,0 +1,357 @@
+{
+  "title": "Мутахассиси созандаи резюме",
+  "description": "Дар тӯли чанд дақиқа резюмеи касбии аҷибе эҷод кунед",
+  "steps": {
+    "personalInfo": "Маълумоти шахсӣ",
+    "achievements": "Дастовардҳо",
+    "workExperience": "Таҷрибаи корӣ",
+    "education": "Маориф",
+    "projects": "Лоиҳаҳо",
+    "skills": "Маҳорат"
+  },
+  "stepIcons": {
+    "personalInfo": "👤",
+    "achievements": "🏆",
+    "workExperience": "💼",
+    "education": "🎓",
+    "projects": "🚀",
+    "skills": "⚡"
+  },
+  "stepDescriptions": {
+    "personalInfo": "Дар бораи худ ба мо нақл кунед ва таассуроти аввалини хуб гузоред",
+    "achievements": "Дастовардҳои асосии худро нишон диҳед ва аз байни мардум фарқ кунед",
+    "workExperience": "Роҳи касбии худ ва нуқтаҳои муҳими фаъолияти худро муфассал шарҳ диҳед",
+    "education": "Таҷрибаи таҳсил ва дастовардҳои илмии худро нақл кунед",
+    "projects": "Лоиҳаҳои шахсиеро қайд кунед, ки маҳорати шуморо нишон медиҳанд",
+    "skills": "Маҳорати техникӣ ва нарми худро, ки шуморо арзишманд мегардонанд, нишон диҳед"
+  },
+  "buttons": {
+    "back": "Бозгашт ба {{step}}",
+    "back_mobile": "Баргашт",
+    "continue": "Ба {{step}} идома диҳед",
+    "continue_mobile": "Идома",
+    "saveSkill": "Маҳоратро захира кунед",
+    "generateResume": "Резюме эҷод кунед",
+    "saveProgress": "Пешрафтро захира кунед",
+    "needHelp": "Ба кӯмак ниёз доред?",
+    "previewResume": "Пешнамоиши резюме",
+    "addAnotherExperience": "Таҷрибаи дигар илова кунед",
+    "addAnotherEducation": "Маълумоти дигар илова кунед",
+    "addAnotherProject": "Лоиҳаи дигар илова кунед",
+    "addAnotherSkill": "Маҳорати дигар илова кунед",
+    "addAchievement": "Дастовард илова кунед",
+    "viewTemplates": "Шаблонҳоро дидан",
+    "cancel": "Бекор кардан",
+    "applyCrop": "Буриданро татбиқ кунед",
+    "choosePhoto": "Аксро интихоб кунед"
+  },
+  "features": {
+    "fastEasy": {
+      "icon": "⚡",
+      "title": "Зуд ва осон",
+      "description": "Бо раванди қадам ба қадами мо, резюмеи касбиро дар тӯли чанд дақиқа эҷод кунед."
+    },
+    "beautifulTemplates": {
+      "icon": "🎨",
+      "title": "Шаблонҳои зебо",
+      "description": "Аз маҷмӯаи қолибҳои резюмеи мо, ки аз ҷониби мо тарҳрезӣ шудаанд, интихоб кунед."
+    },
+    "atsOptimized": {
+      "icon": "📊",
+      "title": "ATS оптимизатсия шудааст",
+      "description": "Резюмеҳои мо барои гузаштан аз Системаҳои пайгирии довталабон оптимизатсия шудаанд."
+    }
+  },
+  "proTips": {
+    "title": "Маслиҳатҳои касбӣ: {{step}}",
+    "personalInfo": {
+      "tip1": {
+        "title": "Почтаи электронии касбӣ",
+        "description": "Ба ҷои лақабҳо ё суроғаҳои хандовар, суроғаи почтаи электронии касбиро дар асоси номи худ истифода баред."
+      },
+      "tip2": {
+        "title": "Хулосаи таъсирбахш",
+        "description": "Хулосаи худро мухтасар (3-5 ҷумла) нигоҳ доред ва тахассус ва ҳадафҳои касбии таъсирбахштарини худро қайд кунед."
+      },
+      "tip3": {
+        "title": "Акси касбӣ",
+        "description": "Агар акс илова кунед, аз акси касбии дорои заминаи бетараф ва либоси мувофиқ истифода баред."
+      },
+      "tip4": {
+        "title": "Тафсилоти тамос",
+        "description": "Танҳо маълумоти муҳими тамосро дохил кунед ва боварӣ ҳосил кунед, ки ҳамаи маълумот нав ва дақиқ мебошанд."
+      }
+    },
+    "achievements": {
+      "tip1": {
+        "title": "Натиҷаҳоро миқдорӣ муайян кунед",
+        "description": "Барои чен кардани дастовардҳои худ аз рақамҳо ва фоизҳо истифода баред (масалан, \"Афзоиши фурӯш 25%\" ба ҷои \"Афзоиши фурӯш\")."
+      },
+      "tip2": {
+        "title": "Натиҷаҳо дар муқоиса бо масъулиятҳо",
+        "description": "Ба ҷои номбар кардани масъулиятҳои корӣ, барои фарқ кардан аз дигар номзадҳо, ба натиҷаҳо ва натиҷаҳо диққат диҳед."
+      },
+      "tip3": {
+        "title": "Ҷоизаҳо ва эътироф",
+        "description": "Ҷоизаҳо, эътирофҳо ва ифтихорномаҳои дахлдорро, ки таҷриба ва арзиши шуморо нишон медиҳанд, дохил кунед."
+      },
+      "tip4": {
+        "title": "Феълҳои амалро истифода баред",
+        "description": "Тавсифи дастовардҳоро бо феълҳои пурқуввати амал ба монанди \"ба даст оварда шуд\", \"роҳбарӣ карда шуд\", \"амалӣ карда шуд\" ё \"офарид\" оғоз кунед."
+      }
+    }
+  },
+  "progress": {
+    "stepsCompleted": "{{count}} аз 6 қадам",
+    "currentStep": "Ҷорӣ: Қадами {{step}} - {{title}}",
+    "currentStep_mobile": "Ҷорӣ: Қадами {{step}}",
+    "progressPercentage": "{{фоиз}}%"
+  },
+  "step1": {
+    "title": "МАЪЛУМОТИ ШАХСӢ",
+    "basicDetails": "Тафсилоти асосӣ",
+    "firstName": "Ном",
+    "firstNamePlaceholder": "Номи худро ворид кунед",
+    "firstNameRequired": "Номи аввал ҳатмист",
+    "middleName": "Номи миёна",
+    "middleNameOptional": "(ихтиёрӣ)",
+    "middleNamePlaceholder": "масалан, Ҳерберт",
+    "lastName": "Насаб",
+    "lastNamePlaceholder": "Номи охирини худро ворид кунед",
+    "lastNameRequired": "Номи хонаводагӣ ҳатмист",
+    "professionalProfile": "Профили касбӣ",
+    "profilePhoto": "Акси профил",
+    "uploadInstructions": "Барои боргузорӣ ва буридани акси худ клик кунед",
+    "imageSizeError": "Андозаи файл бояд камтар аз 5 МБ бошад",
+    "imageTypeError": "Файл бояд JPEG, PNG ё GIF бошад",
+    "designation": "Таъинот",
+    "designationPlaceholder": "масалан, муҳосиби калон",
+    "address": "Суроға",
+    "addressPlaceholder": "Суроғаи худро ворид кунед",
+    "contactInformation": "Маълумот барои тамос",
+    "email": "Суроғаи имэйл",
+    "emailPlaceholder": "Почтаи электронии худро ворид кунед",
+    "emailRequired": "Почтаи электронӣ лозим аст",
+    "emailInvalid": "Почтаи электронӣ нодуруст аст",
+    "phone": "Рақамҳои телефон",
+    "phonePlaceholder": "Рақами телефони худро ворид кунед",
+    "phoneRequired": "Рақами телефон лозим аст",
+    "summary": "Хулосаи касбӣ",
+    "summaryPlaceholder": "Маълумоти мухтасари касбии худ, малакаҳои асосӣ ва ҳадафҳои касбии худро тавсиф кунед",
+    "summaryTip": "Хулосаи пурмазмун ба шумо кӯмак мекунад, ки аз дигарон фарқ кунед. Онро мухтасар ва таъсирбахш нигоҳ доред.",
+    "cropperTitle": "Акси профили худро буред",
+    "zoom": "Масштаб: {{zoom}}x",
+    "preview": "Пешнамоиш:",
+    "cropInstructions": {
+      "drag": "• Тасвирро барои ҷойгир кардан кашед",
+      "zoom": "• Барои тағир додани андоза аз лағжандаи масштаб истифода баред",
+      "cropArea": "• Доира майдони кишти шуморо нишон медиҳад"
+    }
+  },
+  "step2": {
+    "description": "Дастовардҳои назарраси худро нишон диҳед",
+    "noAchievements": "Ҳанӯз дастовардҳо илова нашудаанд. Дастоварди аввалини худро дар зер илова кунед.",
+    "remove": "Тоза кардан",
+    "delete": "Нест кардан",
+    "addNew": "Дастоварди нав илова кунед",
+    "achievementTitle": "Унвони дастовард",
+    "achievementTitlePlaceholder": "Унвони дастовардро ворид кунед",
+    "date": "Сана",
+    "achievementDescription": "Тавсиф",
+    "achievementDescriptionPlaceholder": "Дастоварди худро тавсиф кунед",
+    "title": "ACHIEVEMENTS"
+  },
+  "step3": {
+    "workExperience": "Таҷрибаи корӣ #{{index}}",
+    "jobTitle": "Унвон",
+    "jobTitlePlaceholder": "Унвони вазифаро ворид кунед",
+    "jobTitleRequired": "Унвони вазифа ҳатмист",
+    "company": "Ширкат / Ташкилот",
+    "companyPlaceholder": "Номи ширкатро ворид кунед",
+    "companyRequired": "Номи ширкат ҳатмист",
+    "location": "Макон",
+    "locationPlaceholder": "масалан, Сан-Франсиско, Калифорния",
+    "startDate": "Саршавии Сана",
+    "startDateRequired": "Санаи оғоз ҳатмист",
+    "endDate": "Санаи анҷом",
+    "endDateOptional": "(ё агар мавҷуд бошад, холӣ гузоред)",
+    "endDateTip": "Агар ин мавқеи кунунии шумо бошад, холӣ монед",
+    "description": "Тавсиф",
+    "descriptionPlaceholder": "Масъулиятҳо, дастовардҳо ва малакаҳои истифодашудаи худро дар ин нақш тавсиф кунед",
+    "descriptionTip": "Барои хондани беҳтар аз нуқтаҳои тир истифода баред. Ба ҷои вазифаҳо, ба дастовардҳо диққат диҳед.",
+    "title": "EXPERIENCE"
+  },
+  "step4": {
+    "educationEntry": "Маориф #{{index}}",
+    "school": "Мактаб",
+    "schoolPlaceholder": "Номи мактаб ё донишгоҳро ворид кунед",
+    "schoolRequired": "Номи мактаб ҳатмист",
+    "degree": "Дараҷа",
+    "degreePlaceholder": "масалан, бакалаври илм",
+    "degreeRequired": "Дараҷаи тахассусӣ лозим аст",
+    "city": "Шаҳр",
+    "cityPlaceholder": "масалан, Бостон, MA",
+    "startDate": "Саршавии Сана",
+    "startDatePlaceholder": "мм/сссс",
+    "startDateRequired": "Санаи оғоз ҳатмист",
+    "endDate": "Санаи анҷом",
+    "endDateOptional": "(ё ҳозира)",
+    "endDatePlaceholder": "мм/сссс ё ҳозира",
+    "description": "Тавсиф",
+    "descriptionOptional": "(ихтиёрӣ)",
+    "descriptionPlaceholder": "Дастовардҳо, GPA, корҳои курсии мувофиқ ва ғайраро тавсиф кунед.",
+    "descriptionTip": "Курсҳои мувофиқ, ҷоизаҳо ё фаъолиятҳои беруназсинфии марбут ба ҳадафҳои касбии худро қайд кунед.",
+    "title": "EDUCATION"
+  },
+  "step5": {
+    "projectEntry": "Лоиҳаи #{{index}}",
+    "projectName": "Номи лоиҳа",
+    "projectNamePlaceholder": "Номи лоиҳаро ворид кунед",
+    "projectNameRequired": "Номи лоиҳа ҳатмист",
+    "projectLink": "Пайванди лоиҳа",
+    "projectLinkOptional": "(ихтиёрӣ)",
+    "projectLinkInvalid": "Пайванд нодуруст аст",
+    "description": "Тавсиф",
+    "descriptionPlaceholder": "Лоиҳа, технологияҳои истифодашуда ва нақши худро тавсиф кунед",
+    "descriptionTip": "Мақсад, технологияҳои истифодашуда ва саҳми мушаххаси худро қайд кунед.",
+    "title": "PROJECTS",
+    "projectLinkPlaceholder": "https://example.com/project"
+  },
+  "step6": {
+    "skillsTitle": "Маҳорати техникӣ ва касбӣ",
+    "skillsDescription": "Малакаҳоеро, ки ба вазифаҳое, ки барои онҳо муроҷиат мекунед, мувофиқанд, илова кунед",
+    "skillPlaceholder": "масалан, JavaScript, Идоракунии лоиҳа, Таҳлили маълумот",
+    "skillRequired": "Номи ихтисос ҳатмист",
+    "tipsTitle": "Маслиҳатҳо барои малакаҳои рӯйхатгирӣ",
+    "tip1": "Омехтаи малакаҳои техникӣ (сахт) ва малакаҳои байнишахсӣ (нарм)-ро дар бар гиред",
+    "tip2": "Ба малакаҳои зикршуда дар тавсифи вазифаҳое, ки шумо ҳадаф қарор медиҳед, афзалият диҳед",
+    "tip3": "Маҳорати техникӣ мушаххас бошед (масалан, \"React.js\" ба ҷои танҳо \"JavaScript\")",
+    "title": "SKILLS"
+  },
+  "tooltip": {
+    "prefix": "Қадами {{step}}: {{title}}",
+    "completed": "✓"
+  },
+  "alts": {
+    "cropPreviewAlt": "Пешнамоиши буридан",
+    "previewAlt": "Пешнамоиш",
+    "profileAlt": "Профил"
+  },
+  "templateSelector": {
+    "selectTemplate": "Шаблонро интихоб кунед",
+    "selected": "✓ Интихобшуда",
+    "defaultSummary": "Ҷойгиркунандаи хулосаи касбӣ"
+  },
+  "sections": {
+    "skills": "Маҳорат",
+    "education": "Маориф",
+    "experience": "Таҷриба",
+    "workExperience": "Таҷрибаи корӣ",
+    "professionalSkills": "Маҳорати касбӣ",
+    "jobExperience": "Таҷрибаи корӣ",
+    "proSkills": "Маҳорати касбӣ",
+    "references": "Адабиёт",
+    "projects": "Лоиҳаҳо",
+    "achievements": "Дастовардҳо",
+    "contact": "Тамос",
+    "aboutMe": "Дар бораи ман",
+    "profile": "Профил",
+    "previousEmployment": "Шуғли қаблӣ",
+    "software": "Нармафзор",
+    "languages": "Забонҳо",
+    "reference": "Маълумотнома",
+    "awards": "Ҷоизаҳо",
+    "contactMe": "Бо ман тамос гиред"
+  },
+  "fallbacks": {
+    "noSummaryAvailable": "Хулоса дастрас нест",
+    "unnamedSkill": "Маҳорати беном",
+    "noDataAvailable": "Маълумот дастрас нест",
+    "availableUponRequest": "Бо дархост дастрас аст"
+  },
+  "labels": {
+    "phone": "Телефон",
+    "email": "Почтаи электронӣ",
+    "address": "Суроға"
+  },
+  "actions": {
+    "generatePdf": "PDF эҷод кунед",
+    "generatingPdf": "PDF тавлид мешавад..."
+  },
+  "messages": {
+    "referencesAvailableOnRequest": "Тавсияномаҳои касбӣ бо дархост пешниҳод карда мешаванд"
+  },
+  "resumeBuilder": "Созандаи резюме",
+  "forms": {
+    "personalInfoTitle": "Маълумоти шахсӣ",
+    "buildProfileSubtitle": "Профили касбии худро эҷод кунед",
+    "profilePhoto": "Акси профил",
+    "profileAlt": "Профил",
+    "changePhoto": "Тағйир додани акс",
+    "uploadPhoto": "Аксро боргузорӣ кунед",
+    "headshotTip": "Акси касбии сарро бор кунед. Тавсия дода мешавад: 400x400px, JPG ё PNG",
+    "firstName": "Ном",
+    "lastName": "Насаб",
+    "placeholderFirstName": "Юҳанно",
+    "placeholderLastName": "Дое",
+    "emailAddress": "Суроғаи имэйл",
+    "phoneNumber": "Рақами мобилӣ",
+    "placeholderEmail": "Почтаи электронии худро ворид кунед",
+    "placeholderPhone": "Телефони худро ворид кунед",
+    "location": "Макон",
+    "placeholderLocation": "масалан, Сан-Франсиско, Калифорния",
+    "placeholderLocationExample": "Ню Йорк, Ню Йорк",
+    "linkedinProfile": "Профили LinkedIn",
+    "placeholderLinkedIn": "linkedin.com/in/johndoe",
+    "websitePortfolio": "Вебсайт/Портфолио",
+    "placeholderPortfolio": "www.johndoe.com",
+    "professionalSummary": "Хулосаи касбӣ",
+    "placeholderSummary": "Хулосаи кӯтоҳи касбӣ, ки дастовардҳо, малакаҳо ва ҳадафҳои асосии касбии шуморо нишон медиҳад...",
+    "summaryHint": "Онро ҷолиб ва мухтасар гардонед",
+    "characters": "қаҳрамонҳо",
+    "jobTitlePlaceholder": "Вазифа",
+    "companyPlaceholder": "Номи ширкат",
+    "locationPlaceholder": "Макон",
+    "descriptionPlaceholder": "Масъулиятҳо ва дастовардҳои худро тавсиф кунед",
+    "experienceLabel": "Таҷриба",
+    "jobTitle": "Вазифа",
+    "company": "Ширкат",
+    "placeholderJobTitle": "Таҳиягари нармафзор",
+    "placeholderCompany": "Ширкати Техникӣ",
+    "placeholderLocationExp": "Сан-Франсиско, Калифорния",
+    "startDate": "Саршавии Сана",
+    "endDate": "Санаи анҷом",
+    "currentWorkHere": "Ман айни замон дар ин ҷо кор мекунам",
+    "description": "Тавсиф",
+    "addExperience": "Таҷриба илова кунед",
+    "educationLabel": "Маориф",
+    "degreePlaceholder": "Дараҷа",
+    "universityPlaceholder": "Номи донишгоҳ",
+    "degree": "Дараҷа",
+    "school": "Мактаб",
+    "placeholderDegree": "Бакалавр дар соҳаи илмҳои компютерӣ",
+    "placeholderSchool": "Донишгоҳи Технологӣ",
+    "placeholderLocationEdu": "Бостон, MA",
+    "gpaPlaceholder": "GPA (ихтиёрӣ)",
+    "gpaOptional": "GPA (ихтиёрӣ)",
+    "placeholderGpa": "3.8/4.0",
+    "addEducation": "Илова кардани маориф",
+    "certificationLabel": "Сертификатсия",
+    "certificationNamePlaceholder": "Номи сертификатсия",
+    "issuerPlaceholder": "Эмитент",
+    "certificationName": "Номи сертификатсия",
+    "issuingOrganization": "Ташкилоти содиркунанда",
+    "dateObtained": "Санаи ба даст овардашуда",
+    "placeholderCertification": "Меъмори ҳалли сертификатсияшудаи AWS",
+    "placeholderIssuer": "Хизматрасониҳои веби Amazon",
+    "addCertification": "Илова кардани сертификатсия",
+    "skillsPlaceholder": "JavaScript",
+    "addSkill": "Маҳорат илова кунед",
+    "beginner": "Шурӯъкунанда",
+    "intermediate": "Миёна",
+    "advanced": "Пешрафта",
+    "expert": "Мутахассис",
+    "placeholderEmailExample": "john.doe@email.com",
+    "placeholderPhoneExample": "+1 (555) 123-4567"
+  }
+}

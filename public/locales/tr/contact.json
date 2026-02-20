@@ -1,0 +1,91 @@
+{
+  "contact": {
+    "brand": {
+      "name": "JobsAdmire",
+      "title": "Yolculuğunuza birlikte başlayalım",
+      "description": "Kariyer hedeflerinize ulaşmanıza yardımcı olmaktan heyecan duyuyoruz. Bize ulaşın ve ilk adımı atın."
+    },
+    "contactInfo": [
+      {
+        "label": "Aday & İK Şirketleri",
+        "value": "+90 501 124 03 40"
+      },
+      {
+        "label": "İş Sağlayıcı",
+        "value": "+90 553 383 2549"
+      },
+      {
+        "label": "Bize e-posta gönderin",
+        "value": "info@jobsadmire.com"
+      },
+      {
+        "label": "Ofisimizi ziyaret edin",
+        "value": "Antalya, Türkiye"
+      },
+      {
+        "label": "Çalışma saatleri",
+        "value": "Pazartesi-Cuma, Sabah 9:00 - Akşam 6:00"
+      }
+    ],
+    "form": {
+      "progress": {
+        "step1": "Kişisel Bilgiler",
+        "step2": "Mesaj"
+      },
+      "step1": {
+        "title": "İletişime geçin",
+        "subtitle": "Hadi bir konuşma başlatalım"
+      },
+      "step2": {
+        "title": "Bize daha fazlasını anlatın",
+        "subtitle": "Dinlemek için buradayız"
+      },
+      "fields": {
+        "name": {
+          "label": "Sizin adınız",
+          "placeholder": "Sizin adınız"
+        },
+        "email": {
+          "label": "E-posta Adresi",
+          "placeholder": "E-posta adresi"
+        },
+        "phone": {
+          "label": "Telefon Numarası",
+          "placeholder": "Telefon numarası"
+        },
+        "subject": {
+          "label": "Konu",
+          "placeholder": "Konu"
+        },
+        "message": {
+          "label": "Mesajınız",
+          "placeholder": "Mesajınız"
+        }
+      },
+      "validation": {
+        "nameRequired": "İsim gereklidir",
+        "nameMinLength": "İsim en az 2 karakter olmalıdır",
+        "emailRequired": "E-posta gereklidir",
+        "emailInvalid": "Lütfen geçerli bir e-posta adresi girin",
+        "phoneInvalid": "Lütfen geçerli bir telefon numarası girin",
+        "subjectRequired": "Konu gereklidir",
+        "subjectMinLength": "Konu en az 3 karakter olmalıdır",
+        "messageRequired": "Mesaj gereklidir",
+        "messageMinLength": "Mesaj en az 10 karakter olmalıdır"
+      },
+      "buttons": {
+        "continue": "Devam et",
+        "back": "Geri",
+        "send": "Gönder",
+        "sending": "Gönderiyorum."
+      },
+      "notification": "Mesajınızı inceledikten sonra sizi bilgilendireceğiz."
+    },
+    "success": {
+      "title": "Teşekkür ederim!",
+      "message": "Mesajınız başarıyla gönderildi.",
+      "followUp": "Size mümkün olan en kısa sürede geri döneceğiz.",
+      "sendAnother": "Başka Bir Mesaj Gönder"
+    }
+  }
+}

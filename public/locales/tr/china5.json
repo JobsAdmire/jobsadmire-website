@@ -1,0 +1,54 @@
+{
+  "header": {
+    "badge": "Çin Oturma İzni Süreci",
+    "title": {
+      "yourStepByStep": "Adım adım ilerleyen yolunuz",
+      "chinaResidencePermit": "Çin oturma izni",
+      "success": "başarı"
+    },
+    "description": "Kanıtlanmış 4 adımlı yaklaşımımızla karmaşık Çin vizesi sürecini basitleştirerek başvurunuzun tüm Çin göçmenlik gereksinimlerini karşılamasını sağlıyoruz."
+  },
+  "stages": {
+    "consultation": {
+      "title": "İlk danışma ve değerlendirme",
+      "description": "Çin göçmenlik uzmanlarımız uygunluğunuzu değerlendirir ve Çin oturma izni gereklilikleri ve vize seçenekleri hakkında ayrıntılı bilgi sağlar."
+    },
+    "documentPreparation": {
+      "title": "Belge hazırlama ve inceleme",
+      "description": "Gerekli tüm belgeleri toplamanız, Çin göçmenlik standartlarını karşılamaları ve uygun şekilde onaylanıp noter tarafından tasdik edilmeleri konusunda size rehberlik ediyoruz."
+    },
+    "applicationSubmission": {
+      "title": "Başvuru gönderimi ve takibi",
+      "description": "Hukuk ekibimiz Çin oturma izni başvurunuzu sunar ve PSB (Kamu Güvenliği Bürosu) işlemleri boyunca sürekli destek sağlar."
+    },
+    "permitApproval": {
+      "title": "Oturma izni onayı ve kaydı",
+      "description": "Tıbbi muayene, geçici ikamet kaydı dahil olmak üzere son adımlarda yardımcı oluyor ve Çin oturma izninizi almanızı sağlıyoruz."
+    }
+  },
+  "images": {
+    "greatWall": {
+      "alt": "Çin Seddi",
+      "location": "Büyük Duvar",
+      "description": "Çin'in antik harikası"
+    },
+    "shanghai": {
+      "alt": "Şanghay Manzarası",
+      "location": "Şanghay",
+      "description": "Modern finans merkezi"
+    },
+    "forbiddenCity": {
+      "alt": "Yasak Şehir Pekin",
+      "location": "Pekin",
+      "description": "İmparatorluk saray kompleksi"
+    },
+    "temple": {
+      "alt": "Geleneksel Çin Tapınağı",
+      "location": "Geleneksel Çin",
+      "description": "Kültürel miras alanları"
+    }
+  },
+  "floatingBadge": {
+    "permitsProcessing": "İzin İşlemleri"
+  }
+}

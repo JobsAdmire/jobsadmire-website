@@ -1,0 +1,161 @@
+{
+  "hero": {
+    "badge": "POSISI UNGGULAN",
+    "titleLine1": "Perangkat Lunak Senior",
+    "titleLine2": "Insinyur",
+    "companyName": "TechVision Inc",
+    "subtitle": "Bergabunglah dengan tim inovatif kami untuk membangun solusi mutakhir yang mentransformasi berbagai industri. Kami mencari insinyur berbakat yang bersemangat menciptakan teknologi yang berdampak besar.",
+    "ctaPrimary": "Minta Konsultasi",
+    "ctaShare": "Bagikan Pekerjaan",
+    "salaryRange": "Kisaran Gaji",
+    "location": "Lokasi",
+    "experience": "Pengalaman",
+    "tabOverview": "Ringkasan",
+    "tabRequirements": "Persyaratan",
+    "tabBenefits": "Manfaat",
+    "industry": "Pengembangan Perangkat Lunak",
+    "locationValue": "Jarak Jauh (Berbasis di AS)",
+    "locationStatValue": "Terpencil",
+    "salaryLabel": "Gaji",
+    "teamSizeLabel": "Ukuran Tim",
+    "teamSizeValue": "15-20 Insinyur",
+    "employmentLabel": "Pekerjaan",
+    "employmentValue": "Penuh waktu",
+    "postedLabel": "Diposting",
+    "postedValue": "15 Maret 2025",
+    "requiredSkills": "Keterampilan yang Diperlukan",
+    "readyToJoin": "Siap bergabung dengan tim kami?",
+    "applicationTime": "Aplikasi 5 menit"
+  },
+  "loading": "Sedang memuat detail pekerjaan...",
+  "notifications": {
+    "resume_uploaded": "Resume berhasil diunggah!",
+    "application_submitted": {
+      "title": "Permohonan telah diajukan!",
+      "message": "Terima kasih atas minat Anda pada posisi {{title}}. Tim kami akan meninjau lamaran Anda dan segera menghubungi Anda.",
+      "close": "Menutup"
+    }
+  },
+  "application_modal": {
+    "title": "Ajukan permohonan untuk {{title}}",
+    "subtitle": "Lengkapi formulir aplikasi Anda di bawah ini.",
+    "progress": "Kemajuan Aplikasi",
+    "form": {
+      "full_name": "Nama Lengkap *",
+      "full_name_placeholder": "Masukkan nama Anda",
+      "email": "Alamat Email *",
+      "phone": "Nomor Telepon *",
+      "location": "Lokasi Saat Ini *",
+      "location_placeholder": "Kota, Negara",
+      "linkedin": "Profil LinkedIn",
+      "portfolio": "URL Portofolio",
+      "cover_message": "Pesan Sampul",
+      "cover_message_placeholder": "Mengapa Anda tertarik dengan posisi ini?",
+      "upload_resume": "Unggah Resume *",
+      "click_to_upload": "Klik untuk mengunggah resume Anda",
+      "file_types": "(PDF, DOC, atau DOCX)",
+      "cancel": "Membatalkan",
+      "submit": "Kirim Aplikasi",
+      "application_closed": "Pendaftaran Ditutup",
+      "terms_agreement": "Dengan mendaftar, Anda menyetujui <1>Syarat & Ketentuan</1> kami.",
+      "email_placeholder": "name@example.com",
+      "phone_placeholder": "+90 555 123 4567",
+      "linkedin_placeholder": "https://linkedin.com/in/username",
+      "portfolio_placeholder": "https://yourportfolio.com"
+    }
+  },
+  "share_modal": {
+    "title": "Bagikan Lowongan Ini",
+    "subtitle": "Bagikan kesempatan ini dengan jaringan Anda.",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp",
+    "copy_link": "Menyalin",
+    "copied": "Disalin!"
+  },
+  "header": {
+    "status_open": "Membuka",
+    "status_closed": "Tertutup",
+    "posted": "Diposting",
+    "save_job": "Simpan Pekerjaan",
+    "saved": "Tersimpan",
+    "share": "Membagikan",
+    "apply_now": "Daftar Sekarang",
+    "application_closed": "Pendaftaran Ditutup"
+  },
+  "quick_info": {
+    "currency": "Mata uang",
+    "salary": "Gaji",
+    "type": "Jenis"
+  },
+  "tabs": {
+    "job_description": "Deskripsi Pekerjaan",
+    "requirements": "Persyaratan",
+    "details": "Detail"
+  },
+  "tab_content": {
+    "description": {
+      "overview": "Gambaran Umum Pekerjaan",
+      "employment_type": "Jenis Pekerjaan",
+      "work_location": "Lokasi Kerja"
+    },
+    "requirements": {
+      "title": "Persyaratan & Kualifikasi",
+      "what_we_looking_for": "Apa yang Kami Cari",
+      "professional_experience": "Pengalaman Profesional",
+      "communication_skills": "Keterampilan Komunikasi",
+      "team_collaboration": "Kolaborasi Tim",
+      "growth_mindset": "Pola Pikir Berkembang"
+    },
+    "details": {
+      "job_information": "Informasi Pekerjaan",
+      "job_type": "Jenis Pekerjaan:",
+      "location": "Lokasi:",
+      "posted": "Diposting:",
+      "status": "Status:",
+      "quota_full": "Kuota Penuh",
+      "open_for_applications": "Pendaftaran Dibuka",
+      "compensation": "Kompensasi",
+      "currency": "Mata uang:",
+      "salary": "Gaji:",
+      "why_join": "Mengapa Bergabung dengan {{title}}?",
+      "career_growth": "Pertumbuhan Karier",
+      "career_growth_desc": "Peluang untuk kemajuan",
+      "great_location": "Lokasi yang bagus",
+      "great_location_desc": "Bekerja di {{location}}",
+      "competitive_package": "Paket Kompetitif",
+      "competitive_package_desc": "Gaji dan tunjangan yang menarik",
+      "professional_growth": "Pengembangan Profesional",
+      "professional_growth_desc": "Kesempatan belajar berkelanjutan"
+    }
+  },
+  "cta": {
+    "title": "Siap Bergabung dengan Tim Kami?",
+    "subtitle": "Raihlah langkah selanjutnya dalam karier Anda bersama {{title}}. Kami mencari individu-individu bersemangat yang ingin membuat perbedaan.",
+    "apply_now": "Daftar Sekarang",
+    "application_closed": "Pendaftaran Ditutup"
+  },
+  "contact": {
+    "title": "Butuh Bantuan dengan Aplikasi Anda?",
+    "subtitle": "Tim SDM kami siap membantu Anda.",
+    "live_chat": {
+      "title": "Dukungan Obrolan Langsung",
+      "subtitle": "Waktu respons rata-rata: 5 menit"
+    },
+    "email": {
+      "title": "Kirim email ke Tim SDM",
+      "subtitle": "info@jobsadmire.com"
+    }
+  },
+  "fallback": {
+    "title_not_available": "Judul Pekerjaan Tidak Tersedia",
+    "location_not_available": "Lokasi Tidak Tersedia",
+    "description_not_available": "<p>Deskripsi pekerjaan tidak tersedia.</p>",
+    "requirement_not_available": "<p>Persyaratan tidak tersedia.</p>",
+    "date_not_available": "Tanggal tidak tersedia",
+    "error_loading": "Terjadi kesalahan saat memuat pekerjaan.",
+    "unable_to_load_desc": "<p>Deskripsi pekerjaan tidak dapat dimuat. Silakan coba lagi nanti.</p>",
+    "unable_to_load_req": "<p>Tidak dapat memuat persyaratan. Silakan coba lagi nanti.</p>"
+  }
+}

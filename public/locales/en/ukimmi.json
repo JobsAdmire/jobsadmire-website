@@ -1,0 +1,3087 @@
+{
+    "herosection": {
+      "badge": "Exclusive Journeys",
+      "title": "Discover Your Next Adventure",
+      "description": "Experience breathtaking destinations and create unforgettable memories with our premium travel packages tailored to your desires.",
+      "currentlyViewing": {
+        "label": "Currently Viewing"
+      },
+      "buttons": {
+        "primary": "Explore Now",
+        "secondary": "View All Destinations"
+      },
+      "destinationCounter": "Destination {{current}}/{{total}}",
+      "controls": {
+        "selectDestination": "Select {{destination}}"
+      },
+      "compass": ["N", "E", "S", "W"],
+      "destinations": [
+        {
+          "img": "/images/ihul.png",
+          "name": "London",
+          "country": "UK",
+          "alt": "Beautiful view of London cityscape with iconic landmarks"
+        },
+        {
+          "img": "/images/ihum.png",
+          "name": "Manchester",
+          "country": "UK", 
+          "alt": "Manchester city center with modern architecture and historic buildings"
+        },
+        {
+          "img": "/images/ihub.png",
+          "name": "Birmingham",
+          "country": "UK",
+          "alt": "Birmingham's vibrant downtown area and cultural districts"
+        },
+        {
+          "img": "/images/ihue.png",
+          "name": "Edinburgh",
+          "country": "UK",
+          "alt": "Edinburgh's historic castle and medieval old town"
+        },
+        {
+          "img": "/images/ihuli.png",
+          "name": "Liverpool",
+          "country": "UK",
+          "alt": "Liverpool's famous waterfront and maritime heritage"
+        }
+      ]
+    },
+    
+    "aboutsection": {
+      "badge": "About Us",
+      "title": "Your Trusted Travel Partner",
+      "description": "With over 15 years of experience in the travel industry, we specialize in creating extraordinary journeys that exceed expectations.",
+      "features": [
+        {
+          "title": "Expert Guidance",
+          "description": "Our experienced travel consultants provide personalized recommendations."
+        },
+        {
+          "title": "Best Prices",
+          "description": "We guarantee competitive prices with no hidden fees."
+        },
+        {
+          "title": "24/7 Support",
+          "description": "Round-the-clock customer support for peace of mind."
+        }
+      ],
+      "stats": {
+        "experience": {
+          "number": "15+",
+          "label": "Years Experience"
+        },
+        "customers": {
+          "number": "50K+",
+          "label": "Happy Customers"
+        },
+        "destinations": {
+          "number": "200+",
+          "label": "Destinations"
+        },
+        "awards": {
+          "number": "25+",
+          "label": "Awards Won"
+        }
+      }
+    },
+    "servicessection": {
+      "badge": "Our Services",
+      "title": "Complete Travel Solutions",
+      "description": "From planning to execution, we handle every aspect of your journey.",
+      "services": [
+        {
+          "icon": "plane",
+          "title": "Flight Booking",
+          "description": "Best deals on domestic and international flights."
+        },
+        {
+          "icon": "hotel",
+          "title": "Hotel Reservations",
+          "description": "Luxury accommodations at unbeatable prices."
+        },
+        {
+          "icon": "car",
+          "title": "Car Rentals",
+          "description": "Reliable transportation for your convenience."
+        },
+        {
+          "icon": "guide",
+          "title": "Tour Guides",
+          "description": "Professional guides for immersive experiences."
+        },
+        {
+          "icon": "insurance",
+          "title": "Travel Insurance",
+          "description": "Comprehensive coverage for worry-free travel."
+        },
+        {
+          "icon": "visa",
+          "title": "Visa Assistance",
+          "description": "Complete visa processing support."
+        }
+      ]
+    },
+    "packagessection": {
+      "badge": "Travel Packages",
+      "title": "Curated Travel Experiences",
+      "description": "Discover our handpicked packages designed for unforgettable memories.",
+      "filters": {
+        "all": "All Packages",
+        "adventure": "Adventure",
+        "luxury": "Luxury",
+        "cultural": "Cultural",
+        "romantic": "Romantic"
+      },
+      "packages": [
+        {
+          "id": 1,
+          "title": "London Explorer",
+          "category": "cultural",
+          "duration": "5 Days",
+          "price": "£1,299",
+          "originalPrice": "£1,599",
+          "rating": 4.8,
+          "reviews": 324,
+          "image": "/images/london-package.jpg",
+          "highlights": ["Big Ben", "London Eye", "Buckingham Palace", "Tower Bridge"],
+          "description": "Explore the historic charm and modern vibrancy of London."
+        },
+        {
+          "id": 2,
+          "title": "Scottish Highlands",
+          "category": "adventure",
+          "duration": "7 Days",
+          "price": "£1,899",
+          "originalPrice": "£2,299",
+          "rating": 4.9,
+          "reviews": 156,
+          "image": "/images/scotland-package.jpg",
+          "highlights": ["Edinburgh Castle", "Loch Ness", "Isle of Skye", "Whisky Tours"],
+          "description": "Adventure through Scotland's breathtaking landscapes."
+        }
+      ]
+    },
+    "testimonialssection": {
+      "badge": "Testimonials",
+      "title": "What Our Travelers Say",
+      "description": "Read authentic reviews from our satisfied customers.",
+      "testimonials": [
+        {
+          "id": 1,
+          "name": "Sarah Johnson",
+          "location": "New York, USA",
+          "rating": 5,
+          "comment": "Absolutely amazing experience! Every detail was perfectly planned.",
+          "avatar": "/images/avatar1.jpg",
+          "trip": "London Explorer Package"
+        },
+        {
+          "id": 2,
+          "name": "Michael Chen",
+          "location": "Toronto, Canada",
+          "rating": 5,
+          "comment": "The Scottish Highlands trip exceeded all our expectations. Highly recommended!",
+          "avatar": "/images/avatar2.jpg",
+          "trip": "Scottish Highlands Package"
+        }
+      ]
+    },
+    "contactsection": {
+      "badge": "Get In Touch",
+      "title": "Plan Your Next Adventure",
+      "description": "Ready to explore? Contact our travel experts today.",
+      "form": {
+        "name": {
+          "label": "Full Name",
+          "placeholder": "Enter your full name"
+        },
+        "email": {
+          "label": "Email Address",
+          "placeholder": "Enter your email"
+        },
+        "phone": {
+          "label": "Phone Number",
+          "placeholder": "Enter your phone number"
+        },
+        "destination": {
+          "label": "Preferred Destination",
+          "placeholder": "Where would you like to go?"
+        },
+        "message": {
+          "label": "Message",
+          "placeholder": "Tell us about your travel plans..."
+        },
+        "submit": "Send Message"
+      },
+      "contactInfo": {
+        "address": {
+          "title": "Visit Us",
+          "details": "123 Travel Street, London, UK SW1A 1AA"
+        },
+        "phone": {
+          "title": "Call Us",
+          "details": "+44 20 7946 0958"
+        },
+        "email": {
+          "title": "Email Us",
+          "details": "info@travelco.com"
+        },
+        "hours": {
+          "title": "Office Hours",
+          "details": "Mon - Fri: 9:00 AM - 6:00 PM"
+        }
+      }
+    },
+  "tableOfContents": {
+          "title": "Table of Contents",
+          "subtitle": "Navigate through sections",
+          "currentlyReading": "Currently reading",
+          "sectionsCount": "{{count}} sections to explore",
+          "quickNavigation": "Quick Navigation",
+          "scrollText": "Scroll through {{count}} sections",
+          "sections": [
+            {
+              "id": 1,
+              "title": "Fascinating Facts About the United Kingdom"
+            },
+            {
+              "id": 2,
+              "title": "Visa and Residence Options for Moving to the UK"
+            },
+            {
+              "id": 3,
+              "title": "Requirements for Moving to UK"
+            },
+            {
+              "id": 4,
+              "title": "Working in the United Kingdom"
+            },
+            {
+              "id": 5,
+              "title": "Moving to UK from the US"
+            },
+            {
+              "id": 6,
+              "title": "Moving to UK from Turkey"
+            },
+            {
+              "id": 7,
+              "title": "How much does it cost to move to UK?"
+            },
+            {
+              "id": 8,
+              "title": "Moving With Pets to UK"
+            }
+          ]
+        },
+
+       
+        "facts": {
+          "title": "Fascinating Facts About the United Kingdom",
+          "subtitle": "Discover what makes the UK a unique destination",
+          "factsList": [
+            {
+              "title": "Rich History",
+              "description": "Over 1000 years of documented history with countless historic landmarks."
+            },
+            {
+              "title": "Cultural Diversity",
+              "description": "Home to people from over 200 different nationalities."
+            },
+            {
+              "title": "Economic Power",
+              "description": "One of the world's largest economies and financial centers."
+            },
+            {
+              "title": "Education Excellence",
+              "description": "Home to world-renowned universities like Oxford and Cambridge."
+            }
+          ]
+        },
+        "visa": {
+          "title": "Visa and Residence Options for Moving to the UK",
+          "subtitle": "Choose the right visa pathway for your situation",
+          "visaTypes": [
+            {
+              "type": "Skilled Worker Visa",
+              "description": "For individuals with a job offer from a UK employer",
+              "requirements": ["Job offer", "English proficiency", "Salary threshold"],
+              "duration": "Up to 5 years"
+            },
+            {
+              "type": "Student Visa",
+              "description": "For full-time study at a UK educational institution",
+              "requirements": ["University acceptance", "Financial proof", "English proficiency"],
+              "duration": "Course duration + additional time"
+            },
+            {
+              "type": "Family Visa",
+              "description": "For joining family members who are UK residents",
+              "requirements": ["Family relationship proof", "Financial requirements", "English proficiency"],
+              "duration": "2.5 to 5 years"
+            }
+          ]
+        },
+        "requirements": {
+          "title": "Requirements for Moving to UK",
+          "subtitle": "Essential documents and criteria you need to meet",
+          "generalRequirements": [
+            {
+              "category": "Documentation",
+              "items": ["Valid passport", "Visa application", "Biometric data", "Photos"]
+            },
+            {
+              "category": "Financial",
+              "items": ["Bank statements", "Proof of income", "Sponsorship documents", "Tax records"]
+            },
+            {
+              "category": "Personal",
+              "items": ["Medical examination", "Criminal background check", "English proficiency test", "Educational certificates"]
+            }
+          ]
+        },
+        "job": {
+          "title": "Working in the United Kingdom",
+          "subtitle": "Employment opportunities and work culture in the UK",
+          "workInfo": {
+            "averageSalary": "£35,000 - £45,000 annually",
+            "workingHours": "37.5 hours per week standard",
+            "holidays": "28 days minimum annual leave",
+            "benefits": "NHS healthcare, pension schemes, sick pay"
+          },
+          "jobSectors": [
+            {
+              "sector": "Technology",
+              "demand": "High",
+              "averageSalary": "£45,000 - £80,000"
+            },
+            {
+              "sector": "Healthcare",
+              "demand": "Very High",
+              "averageSalary": "£35,000 - £70,000"
+            },
+            {
+              "sector": "Finance",
+              "demand": "High",
+              "averageSalary": "£40,000 - £90,000"
+            }
+          ]
+        },
+        "moving": {
+          "title": "Moving to UK from the US",
+          "subtitle": "Special considerations for American citizens",
+          "process": [
+            {
+              "step": 1,
+              "title": "Choose Your Visa",
+              "description": "Determine which UK visa category suits your situation"
+            },
+            {
+              "step": 2,
+              "title": "Prepare Documents",
+              "description": "Gather all required documentation and certificates"
+            },
+            {
+              "step": 3,
+              "title": "Submit Application",
+              "description": "Apply online and attend biometric appointment"
+            },
+            {
+              "step": 4,
+              "title": "Plan Your Move",
+              "description": "Arrange housing, shipping, and initial settlement"
+            }
+          ]
+        },
+        "turkeyToUk": {
+          "title": "Moving to UK from Turkey",
+          "subtitle": "Guide for Turkish citizens immigrating to the UK",
+          "considerations": [
+            "Visa requirements for Turkish nationals",
+            "Document translation and apostille",
+            "Cultural adaptation tips",
+            "Turkish community in the UK"
+          ]
+        },
+        "cost": {
+          "title": "How much does it cost to move to UK?",
+          "subtitle": "Budget planning for your UK immigration",
+          "costs": {
+            "visa": {
+              "title": "Visa Fees",
+              "amount": "£610 - £1,423",
+              "description": "Depends on visa type and duration"
+            },
+            "healthcare": {
+              "title": "Healthcare Surcharge",
+              "amount": "£624 per year",
+              "description": "Immigration Health Surcharge (IHS)"
+            },
+            "moving": {
+              "title": "Moving Costs",
+              "amount": "£2,000 - £8,000",
+              "description": "Shipping, flights, and initial setup"
+            },
+            "living": {
+              "title": "Initial Living Costs",
+              "amount": "£1,500 - £3,000",
+              "description": "First month accommodation and expenses"
+            }
+          }
+        },
+        "pet": {
+          "title": "Moving With Pets to UK",
+          "subtitle": "Requirements and procedures for bringing your pets",
+          "requirements": [
+            {
+              "requirement": "Pet Passport",
+              "description": "EU pet passport or third-country official veterinary certificate",
+              "timeframe": "At least 21 days before travel"
+            },
+            {
+              "requirement": "Microchip",
+              "description": "ISO 11784/11785 compliant microchip before rabies vaccination",
+              "timeframe": "Before rabies vaccination"
+            },
+            {
+              "requirement": "Rabies Vaccination",
+              "description": "Valid rabies vaccination administered after microchipping",
+              "timeframe": "21 days before entry"
+            },
+            {
+              "requirement": "Health Certificate",
+              "description": "Official veterinary certificate signed by authorized vet",
+              "timeframe": "Within 10 days of travel"
+            }
+          ],
+          "process": [
+            {
+              "step": 1,
+              "title": "Microchip Your Pet",
+              "description": "Ensure your pet is microchipped with ISO standard chip"
+            },
+            {
+              "step": 2,
+              "title": "Rabies Vaccination",
+              "description": "Get rabies vaccination and wait 21 days"
+            },
+            {
+              "step": 3,
+              "title": "Health Certificate",
+              "description": "Obtain health certificate from authorized veterinarian"
+            },
+            {
+              "step": 4,
+              "title": "Book Travel",
+              "description": "Arrange pet-friendly transportation to the UK"
+            }
+          ],
+          "costs": {
+            "microchip": "£15 - £30",
+            "vaccination": "£50 - £100",
+            "healthCertificate": "£100 - £200",
+            "transportation": "£200 - £1,000",
+            "quarantine": "Free (if requirements met)"
+          }
+        },
+      
+      
+
+
+        
+            "ukInfoCard": {
+              "title": "Fascinating Facts About the United Kingdom",
+              "description": "Explore the rich heritage and fascinating features of the United Kingdom, from its historic monarchy to breathtaking landscapes and academic excellence.",
+              "didYouKnow": "Did you know?",
+              "cta": "Discover More About the UK",
+              "footer": "© 2025 United Kingdom Information",
+              "navigation": {
+                "previous": "Previous",
+                "next": "Next",
+                "counter": "{{current}} of {{total}}"
+              },
+              "facts": [
+                {
+                  "title": "Ancient Monarchy",
+                  "content": "The UK has one of the oldest monarchies in the world, dating back over 1,000 years.",
+                  "detail": "The British monarchy has existed continuously since the 9th century, with Queen Elizabeth II being the longest-reigning monarch in British history before King Charles III.",
+                  "iconType": "crown",
+                  "emoji": "👑",
+                  "color": "bg-indigo-500"
+                },
+                {
+                  "title": "Top Universities",
+                  "content": "The UK is home to some of the world's top universities, including Oxford and Cambridge.",
+                  "detail": "Oxford and Cambridge consistently rank among the world's top 10 universities, with histories dating back to the 11th and 13th centuries respectively.",
+                  "iconType": "graduation",
+                  "emoji": "🎓",
+                  "color": "bg-emerald-500"
+                },
+                {
+                  "title": "Island Nation",
+                  "content": "The UK is an island nation, with over 7,000 smaller islands.",
+                  "detail": "While Great Britain is the largest island, the UK includes numerous other notable islands such as the Isle of Wight, Anglesey, and the Hebrides.",
+                  "iconType": "waves",
+                  "emoji": "🏝️",
+                  "color": "bg-blue-500"
+                },
+                {
+                  "title": "Scientific Legacy",
+                  "content": "British scientists have made major contributions, including Isaac Newton, Charles Darwin, and Stephen Hawking.",
+                  "detail": "The UK has produced over 100 Nobel Prize winners in sciences, with groundbreaking discoveries from gravity to DNA structure and quantum physics.",
+                  "iconType": "lightbulb",
+                  "emoji": "💡",
+                  "color": "bg-amber-500"
+                },
+                {
+                  "title": "Highest Peak",
+                  "content": "The highest mountain is Ben Nevis in Scotland (1,345 meters).",
+                  "detail": "Located in the Scottish Highlands, Ben Nevis attracts over 100,000 climbers annually and features rare alpine flora and fauna.",
+                  "iconType": "mountain",
+                  "emoji": "🏔️",
+                  "color": "bg-slate-500"
+                }
+              ]
+            },
+          
+            "categories": {
+              "history": {
+                "title": "Historical Heritage",
+                "description": "Discover the rich historical legacy of the United Kingdom",
+                "facts": [
+                  {
+                    "title": "Medieval Castles",
+                    "description": "The UK has over 1,500 castles, many dating back to medieval times.",
+                    "highlight": "Windsor Castle is the oldest occupied castle in the world."
+                  },
+                  {
+                    "title": "Roman Heritage",
+                    "description": "Hadrian's Wall stretches 84 miles across northern England.",
+                    "highlight": "Built by Emperor Hadrian in 122 AD to defend Roman Britain."
+                  },
+                  {
+                    "title": "Industrial Revolution",
+                    "description": "The UK was the birthplace of the Industrial Revolution in the 18th century.",
+                    "highlight": "The first steam engine was developed by James Watt in 1769."
+                  }
+                ]
+              },
+              "geography": {
+                "title": "Geographic Wonders",
+                "description": "Explore the diverse landscapes and natural features",
+                "facts": [
+                  {
+                    "title": "Coastline Length",
+                    "description": "The UK has approximately 11,000 miles of coastline.",
+                    "highlight": "No point in the UK is more than 75 miles from the sea."
+                  },
+                  {
+                    "title": "National Parks",
+                    "description": "There are 15 National Parks across England, Wales, and Scotland.",
+                    "highlight": "The Lake District was the first National Park established in 1951."
+                  },
+                  {
+                    "title": "Climate Zones",
+                    "description": "Despite its size, the UK has multiple distinct climate zones.",
+                    "highlight": "Scotland can be 10°C colder than southern England on the same day."
+                  }
+                ]
+              },
+              "culture": {
+                "title": "Cultural Richness",
+                "description": "The cultural diversity and artistic contributions of the UK",
+                "facts": [
+                  {
+                    "title": "Literary Giants",
+                    "description": "Home to Shakespeare, Dickens, Austen, and many literary legends.",
+                    "highlight": "Shakespeare invented over 1,700 words still used today."
+                  },
+                  {
+                    "title": "Music Heritage",
+                    "description": "Birthplace of The Beatles, Queen, Led Zeppelin, and countless bands.",
+                    "highlight": "The UK has produced more global #1 hits than any other country except the US."
+                  },
+                  {
+                    "title": "Theatre Tradition",
+                    "description": "London's West End is one of the world's premier theatre districts.",
+                    "highlight": "The Globe Theatre offers performances in the same style as Shakespeare's time."
+                  }
+                ]
+              },
+              "science": {
+                "title": "Scientific Excellence",
+                "description": "Groundbreaking discoveries and innovations from British minds",
+                "facts": [
+                  {
+                    "title": "Medical Breakthroughs",
+                    "description": "Penicillin, vaccines, and DNA structure were discovered here.",
+                    "highlight": "Alexander Fleming discovered penicillin accidentally in 1928."
+                  },
+                  {
+                    "title": "Physics Pioneers",
+                    "description": "Newton's laws, Darwin's evolution, and Hawking's black holes.",
+                    "highlight": "Stephen Hawking's 'A Brief History of Time' sold over 25 million copies."
+                  },
+                  {
+                    "title": "Technology Innovation",
+                    "description": "The World Wide Web and computers have British origins.",
+                    "highlight": "Tim Berners-Lee invented the World Wide Web at CERN in 1989."
+                  }
+                ]
+              }
+            },
+            "statistics": {
+              "title": "UK by Numbers",
+              "subtitle": "Fascinating statistics about the United Kingdom",
+              "stats": [
+                {
+                  "number": "66.8M",
+                  "label": "Population",
+                  "description": "Total population of the United Kingdom"
+                },
+                {
+                  "number": "243,610",
+                  "label": "Square Kilometers",
+                  "description": "Total area of the UK"
+                },
+                {
+                  "number": "4",
+                  "label": "Countries",
+                  "description": "England, Scotland, Wales, and Northern Ireland"
+                },
+                {
+                  "number": "100+",
+                  "label": "Nobel Prizes",
+                  "description": "Nobel Prize winners from the UK"
+                },
+                {
+                  "number": "31",
+                  "label": "UNESCO Sites",
+                  "description": "World Heritage Sites in the UK"
+                },
+                {
+                  "number": "1,000+",
+                  "label": "Years",
+                  "description": "Age of the British monarchy"
+                }
+              ]
+            },
+          
+            "contact": {
+              "title": "Learn More About the UK",
+              "subtitle": "Get in touch for more information about British culture and heritage",
+              "form": {
+                "name": {
+                  "label": "Full Name",
+                  "placeholder": "Enter your full name"
+                },
+                "email": {
+                  "label": "Email Address",
+                  "placeholder": "Enter your email address"
+                },
+                "interest": {
+                  "label": "Area of Interest",
+                  "placeholder": "What aspect of UK culture interests you most?"
+                },
+                "message": {
+                  "label": "Message",
+                  "placeholder": "Tell us what you'd like to know about the UK..."
+                },
+                "submit": "Send Inquiry"
+              },
+              "contactInfo": {
+                "address": {
+                  "title": "Visit Us",
+                  "details": "123 British Heritage Street, London, UK SW1A 1AA"
+                },
+                "phone": {
+                  "title": "Call Us",
+                  "details": "+44 20 7946 0123"
+                },
+                "email": {
+                  "title": "Email Us",
+                  "details": "info@ukexplorer.com"
+                },
+                "hours": {
+                  "title": "Hours",
+                  "details": "Monday - Friday: 9:00 AM - 5:00 PM"
+                }
+              }
+            },
+            
+          
+            
+                "costsGuide": {
+                  "title": "How Much Does It Cost to Move to the UK?",
+                  "description": "A comprehensive breakdown of all expenses you should expect when relocating to the United Kingdom, from visa fees to daily living costs.",
+                  "sections": [
+                    {
+                      "id": "visa-immigration",
+                      "icon": "🛂",
+                      "title": "Visa & Immigration",
+                      "amount": "£250–£3,000",
+                      "details": "Includes visa application, healthcare surcharge, biometrics",
+                      "color": "bg-sky-600"
+                    },
+                    {
+                      "id": "housing",
+                      "icon": "🏠",
+                      "title": "Housing",
+                      "amount": "£1,800–£5,000 upfront",
+                      "details": "1–2 months' deposit + first month's rent + agency fees",
+                      "subItems": [
+                        {
+                          "title": "London (monthly)",
+                          "amount": "£1,500–£2,500"
+                        },
+                        {
+                          "title": "Major cities (monthly)",
+                          "amount": "£800–£1,200"
+                        },
+                        {
+                          "title": "Towns/Rural areas (monthly)",
+                          "amount": "£600–£900"
+                        }
+                      ],
+                      "color": "bg-sky-700"
+                    },
+                    {
+                      "id": "shipping",
+                      "icon": "📦",
+                      "title": "Shipping (Optional)",
+                      "amount": "£2,000–£6,000",
+                      "details": "20ft container. Many expats use furnished rentals or buy locally.",
+                      "color": "bg-sky-800"
+                    },
+                    {
+                      "id": "utilities",
+                      "icon": "💡",
+                      "title": "Utilities & Internet Setup",
+                      "amount": "£100–£300",
+                      "details": "Setup fees & deposits",
+                      "subItems": [
+                        {
+                          "title": "Monthly bills",
+                          "amount": "£150–£300"
+                        },
+                        {
+                          "title": "Council tax (monthly)",
+                          "amount": "£120–£300"
+                        }
+                      ],
+                      "color": "bg-sky-600"
+                    },
+                    {
+                      "id": "everyday",
+                      "icon": "🛒",
+                      "title": "Everyday Costs",
+                      "amount": "£800–£1,500 monthly",
+                      "subItems": [
+                        {
+                          "title": "Groceries",
+                          "amount": "£250–£450/month"
+                        },
+                        {
+                          "title": "Public transport",
+                          "amount": "£150–£300/month"
+                        },
+                        {
+                          "title": "Mobile & internet",
+                          "amount": "£40–£80/month"
+                        },
+                        {
+                          "title": "Entertainment & dining",
+                          "amount": "£200–£400/month"
+                        }
+                      ],
+                      "color": "bg-sky-700"
+                    },
+                    {
+                      "id": "banking",
+                      "icon": "🏦",
+                      "title": "Banking & Finance",
+                      "amount": "£50–£200",
+                      "details": "Account setup fees, international transfers",
+                      "color": "bg-sky-600"
+                    }
+                  ],
+                  "totalCosts": {
+                    "title": "Total Estimated Moving Costs",
+                    "options": [
+                      {
+                        "title": "Budget Option",
+                        "amount": "£3,000–£5,000",
+                        "description": "Minimum costs for single person, outside London, minimal belongings",
+                        "featured": false
+                      },
+                      {
+                        "title": "Standard Move",
+                        "amount": "£5,000–£10,000",
+                        "description": "Average costs for single person or couple with moderate shipping",
+                        "featured": true
+                      },
+                      {
+                        "title": "Family Move",
+                        "amount": "£10,000–£20,000+",
+                        "description": "Family of 3-4 moving to London with full shipping container",
+                        "featured": false
+                      }
+                    ]
+                  },
+                  "savingTips": {
+                    "title": "UK Money-Saving Strategies",
+                    "tips": [
+                      {
+                        "title": "Location Matters",
+                        "description": "Living outside of London can reduce your housing costs by 40-60%. Consider cities like Manchester, Birmingham, or Glasgow for better value."
+                      },
+                      {
+                        "title": "Furnished Accommodation",
+                        "description": "Furnished rentals can save thousands in shipping and furniture costs. Short-term rentals allow you to find the right neighborhood before committing."
+                      },
+                      {
+                        "title": "Transport Savings",
+                        "description": "Purchase annual travel cards and consider cycling in bike-friendly cities. London's transport costs are significantly higher than other UK cities."
+                      },
+                      {
+                        "title": "Banking & Currency",
+                        "description": "Use services like Wise or Revolut for international transfers to avoid high bank fees. Exchange currency when rates are favorable before moving."
+                      }
+                    ]
+                  },
+                  "considerations": {
+                    "title": "Essential UK-Specific Considerations",
+                    "items": [
+                      {
+                        "icon": "🏥",
+                        "title": "Healthcare",
+                        "description": "Budget for the Immigration Health Surcharge (£624 per year for adults) when applying for visas longer than 6 months, giving you access to the NHS."
+                      },
+                      {
+                        "icon": "📱",
+                        "title": "Communication",
+                        "description": "Consider SIM-only deals instead of contracts, especially if you have your own phone. Providers like giffgaff and Lebara offer flexible no-contract options."
+                      },
+                      {
+                        "icon": "🌦️",
+                        "title": "Seasonal Costs",
+                        "description": "Heating costs in winter can be significant. Consider accommodations with good insulation and energy efficiency ratings to save on utilities."
+                      },
+                      {
+                        "icon": "🚗",
+                        "title": "Transport Planning",
+                        "description": "If you plan to drive, factor in higher insurance costs for new UK residents and potential charges for low-emission zones in major cities."
+                      }
+                    ]
+                  },
+                  "conclusion": {
+                    "title": "Planning Your UK Relocation",
+                    "description": "Moving to the UK represents a significant investment, particularly if relocating to London or other major cities. While initial costs may seem high, proper planning and research can help you navigate the process more economically. Consider your location carefully and prepare for higher living costs than many other countries, but also enjoy the excellent public services, healthcare, and quality of life the UK has to offer."
+                  }
+                },
+                "calculator": {
+                  "title": "UK Moving Cost Calculator",
+                  "subtitle": "Get a personalized estimate for your move to the UK",
+                  "form": {
+                    "familySize": {
+                      "label": "Family Size",
+                      "options": [
+                        "Single person",
+                        "Couple",
+                        "Family (3-4 people)",
+                        "Large family (5+ people)"
+                      ]
+                    },
+                    "destination": {
+                      "label": "UK Destination",
+                      "options": [
+                        "London",
+                        "Major city (Manchester, Birmingham, etc.)",
+                        "Medium city/town",
+                        "Rural area"
+                      ]
+                    },
+                    "shipping": {
+                      "label": "Shipping Requirements",
+                      "options": [
+                        "No shipping (buy locally)",
+                        "Partial shipping (essentials only)",
+                        "Full container shipping",
+                        "Multiple containers"
+                      ]
+                    },
+                    "visaType": {
+                      "label": "Visa Type",
+                      "options": [
+                        "Student Visa",
+                        "Skilled Worker Visa",
+                        "Family Visa",
+                        "Investor Visa",
+                        "Other"
+                      ]
+                    },
+                    "calculate": "Calculate Estimate"
+                  },
+                  "results": {
+                    "title": "Your Estimated Moving Costs",
+                    "breakdown": "Cost Breakdown:",
+                    "total": "Total Estimated Cost:",
+                    "disclaimer": "This is an estimate based on average costs. Actual costs may vary depending on specific circumstances, timing, and service providers."
+                  }
+                },
+                "comparison": {
+                  "title": "UK Cost of Living Comparison",
+                  "subtitle": "Compare UK living costs with major global cities",
+                  "categories": [
+                    {
+                      "category": "Housing",
+                      "london": "£2,000/month",
+                      "manchester": "£900/month",
+                      "newyork": "£2,800/month",
+                      "paris": "£1,800/month"
+                    },
+                    {
+                      "category": "Groceries",
+                      "london": "£350/month",
+                      "manchester": "£280/month",
+                      "newyork": "£420/month",
+                      "paris": "£320/month"
+                    },
+                    {
+                      "category": "Transport",
+                      "london": "£200/month",
+                      "manchester": "£80/month",
+                      "newyork": "£150/month",
+                      "paris": "£90/month"
+                    },
+                    {
+                      "category": "Dining Out",
+                      "london": "£300/month",
+                      "manchester": "£200/month",
+                      "newyork": "£350/month",
+                      "paris": "£280/month"
+                    }
+                  ]
+                },
+                "timeline": {
+                  "title": "UK Moving Timeline & Costs",
+                  "subtitle": "When to budget for different expenses during your move",
+                  "phases": [
+                    {
+                      "phase": "Pre-Application (3-6 months before)",
+                      "costs": "£200-£500",
+                      "items": [
+                        "Document preparation and translation",
+                        "English language tests",
+                        "Medical examinations",
+                        "Legal consultations"
+                      ]
+                    },
+                    {
+                      "phase": "Visa Application (2-4 months before)",
+                      "costs": "£500-£3,500",
+                      "items": [
+                        "Visa application fees",
+                        "Immigration Health Surcharge",
+                        "Biometric appointments",
+                        "Priority processing (optional)"
+                      ]
+                    },
+                    {
+                      "phase": "Pre-Departure (1-2 months before)",
+                      "costs": "£2,000-£8,000",
+                      "items": [
+                        "Shipping and logistics",
+                        "Travel arrangements",
+                        "Temporary accommodation bookings",
+                        "Pet relocation (if applicable)"
+                      ]
+                    },
+                    {
+                      "phase": "Arrival (First month)",
+                      "costs": "£2,000-£6,000",
+                      "items": [
+                        "Housing deposits and rent",
+                        "Utility setup and deposits",
+                        "Bank account opening",
+                        "Initial living expenses"
+                      ]
+                    },
+                    {
+                      "phase": "Settlement (Months 2-6)",
+                      "costs": "£1,000-£3,000",
+                      "items": [
+                        "Furniture and household items",
+                        "Local registration and documentation",
+                        "Education setup (if applicable)",
+                        "Community integration costs"
+                      ]
+                    }
+                  ]
+                },
+                "resources": {
+                  "title": "Money Management Resources",
+                  "subtitle": "Helpful tools and services for managing your UK move finances",
+                  "categories": [
+                    {
+                      "title": "Currency Exchange",
+                      "services": [
+                        {
+                          "name": "Wise (formerly TransferWise)",
+                          "description": "Low-cost international money transfers",
+                          "fees": "0.35-2% of transfer amount"
+                        },
+                        {
+                          "name": "Revolut",
+                          "description": "Multi-currency account with good exchange rates",
+                          "fees": "Free up to certain limits"
+                        },
+                        {
+                          "name": "XE Money",
+                          "description": "Competitive rates for larger transfers",
+                          "fees": "Varies by amount"
+                        }
+                      ]
+                    },
+                    {
+                      "title": "Banking",
+                      "services": [
+                        {
+                          "name": "UK High Street Banks",
+                          "description": "Traditional banks like Barclays, HSBC, Lloyds",
+                          "fees": "Monthly fees £5-£25"
+                        },
+                        {
+                          "name": "Digital Banks",
+                          "description": "Monzo, Starling Bank, Revolut",
+                          "fees": "Often fee-free basic accounts"
+                        },
+                        {
+                          "name": "International Banks",
+                          "description": "HSBC Expat, Citi International",
+                          "fees": "Higher fees but global services"
+                        }
+                      ]
+                    }
+                  ]
+                },
+                "footer": {
+                  "disclaimer": "All costs are estimates and may vary based on individual circumstances, market conditions, and timing. Please consult with professional advisors for personalized guidance.",
+                  "lastUpdated": "Last updated: {{date}}",
+                  "sources": "Data sources: UK Government, ONS, property websites, and expat surveys."
+                },
+
+
+                
+                    "jobGuide": {
+                      "header": {
+                        "title": "Working in the United Kingdom",
+                        "subtitle": "A Comprehensive Guide for International Job Seekers",
+                        "intro": {
+                          "paragraph1": "The United Kingdom, with its robust economy, multicultural environment, and world-class cities, remains a top destination for international professionals seeking career advancement and growth.",
+                          "paragraph2": "This guide walks you through everything you need to know about finding employment in the UK as a foreign national, from understanding the points-based immigration system to navigating the local job market and settling into British working life."
+                        }
+                      },
+                      "navigation": {
+                        "title": "Quick Navigation",
+                        "backToAll": "Back to All Sections"
+                      },
+                      "sections": [
+                        {
+                          "id": "job-market",
+                          "icon": "🔍",
+                          "title": "Understanding the UK Job Market",
+                          "type": "job-market",
+                          "content": {
+                            "intro": "The UK offers diverse opportunities across various sectors, with certain industries being particularly accessible and welcoming to international workers.",
+                            "sectorsTitle": "In-Demand Sectors for Foreign Workers:",
+                            "sectors": [
+                              {
+                                "name": "Healthcare & NHS",
+                                "description": "Doctors, nurses, caregivers, specialists"
+                              },
+                              {
+                                "name": "IT & Technology", 
+                                "description": "Software development, cybersecurity, data science"
+                              },
+                              {
+                                "name": "Finance & Banking",
+                                "description": "Financial analysis, investment banking, fintech"
+                              },
+                              {
+                                "name": "Education",
+                                "description": "Teaching, research, international schools"
+                              },
+                              {
+                                "name": "Engineering",
+                                "description": "Civil, mechanical, electrical engineering"
+                              },
+                              {
+                                "name": "Hospitality & Tourism",
+                                "description": "Hotels, restaurants, tourism management"
+                              }
+                            ],
+                            "conclusion": "The UK job market values English proficiency highly, and most professional roles require strong communication skills. London offers the most diverse opportunities, but cities like Manchester, Birmingham, Edinburgh, and Bristol have growing job markets with often lower living costs."
+                          }
+                        },
+                        {
+                          "id": "visa-system",
+                          "icon": "🔒",
+                          "title": "UK Visa System: Points-Based Immigration",
+                          "type": "visa-system",
+                          "content": {
+                            "intro": "The UK employs a points-based immigration system that prioritizes skills, qualifications, and English language proficiency.",
+                            "routesTitle": "Main Work Visa Routes:",
+                            "visaRoutes": [
+                              {
+                                "name": "Skilled Worker Visa",
+                                "description": "For qualified professionals with a job offer from a UK employer"
+                              },
+                              {
+                                "name": "Global Talent Visa",
+                                "description": "For leaders or potential leaders in academia, research, arts, or digital technology"
+                              },
+                              {
+                                "name": "Health and Care Worker Visa",
+                                "description": "For qualified medical professionals with NHS job offers"
+                              },
+                              {
+                                "name": "Graduate Visa",
+                                "description": "For international students who completed a UK degree"
+                              }
+                            ],
+                            "requirement": "Most work visas require a job offer from a licensed sponsor before application."
+                          }
+                        },
+                        {
+                          "id": "sponsorship",
+                          "icon": "📋",
+                          "title": "Getting Employer Sponsorship",
+                          "type": "sponsorship",
+                          "content": {
+                            "requirementsTitle": "Requirements for Sponsorship:",
+                            "requirements": [
+                              "Job must typically be at or above RQF level 3 (A-level equivalent)",
+                              "Salary must meet minimum thresholds (usually £26,200+ depending on the role)",
+                              "Employer must be a licensed sponsor approved by the Home Office",
+                              "Role should be on the eligible occupations list"
+                            ],
+                            "shortageList": {
+                              "title": "Shortage Occupation List",
+                              "description": "Jobs on this list have easier visa requirements and lower salary thresholds. Current shortage occupations include:",
+                              "occupations": [
+                                "Healthcare professionals",
+                                "Engineers",
+                                "IT specialists",
+                                "Scientists and researchers",
+                                "Veterinarians",
+                                "Architects and certain teaching roles"
+                              ]
+                            },
+                            "proTip": {
+                              "title": "Pro Tip",
+                              "description": "Target companies with a history of sponsoring international workers. Large multinational corporations, tech companies, and NHS trusts are often more experienced with the sponsorship process.",
+                              "additional": "You can check if a company holds a sponsorship license on the UK government website."
+                            }
+                          }
+                        },
+                        {
+                          "id": "application-process",
+                          "icon": "📝",
+                          "title": "UK Job Application Process",
+                          "type": "application-process",
+                          "content": {
+                            "stepsTitle": "Application Steps:",
+                            "steps": [
+                              {
+                                "title": "1. CV & Cover Letter",
+                                "description": "UK employers expect a 2-page CV (resume) focusing on relevant skills and experience. Cover letters should be concise and tailored to each position."
+                              },
+                              {
+                                "title": "2. Interview Process",
+                                "description": "Often includes an initial phone screening, followed by 1-2 interviews (increasingly virtual for international candidates), and possibly assessment tasks for technical roles."
+                              },
+                              {
+                                "title": "3. Job Offer & Visa Sponsorship",
+                                "description": "If successful, you'll receive a formal offer letter and Certificate of Sponsorship for your visa application."
+                              }
+                            ],
+                            "cvTips": {
+                              "title": "UK-Specific CV Tips:",
+                              "tips": [
+                                "No photo required",
+                                "Include a professional profile/summary at the top",
+                                "Focus on achievements rather than duties",
+                                "Include relevant qualifications and certifications",
+                                "References are often 'available upon request' rather than listed"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "id": "finding-jobs",
+                          "icon": "🔎",
+                          "title": "Finding Job Opportunities in the UK",
+                          "type": "finding-jobs",
+                          "content": {
+                            "portalsTitle": "Top UK Job Portals:",
+                            "jobPortals": [
+                              "Indeed UK",
+                              "Reed.co.uk",
+                              "CV-Library",
+                              "LinkedIn",
+                              "Guardian Jobs",
+                              "NHS Jobs"
+                            ],
+                            "recruitmentAgencies": {
+                              "title": "Recruitment Agencies",
+                              "description": "Specialized recruitment agencies can be valuable for international job seekers. Many focus on specific industries or regions and have relationships with employers who regularly sponsor visas."
+                            },
+                            "directApplications": {
+                              "title": "Direct Applications",
+                              "description": "Research companies in your field that have sponsor licenses and apply directly through their careers pages. Multinational corporations often have established processes for hiring international talent."
+                            }
+                          }
+                        },
+                        {
+                          "id": "cost-of-living",
+                          "icon": "💷",
+                          "title": "UK Cost of Living Considerations",
+                          "type": "cost-of-living",
+                          "content": {
+                            "intro": "Understanding UK living costs is crucial when evaluating job offers and planning your relocation.",
+                            "locations": [
+                              {
+                                "name": "London",
+                                "description": "Significantly higher costs than the rest of the UK",
+                                "costs": [
+                                  {
+                                    "category": "Rent",
+                                    "amount": "£1,500-2,500/month (1-bed flat)"
+                                  },
+                                  {
+                                    "category": "Transport",
+                                    "amount": "£140-180/month"
+                                  },
+                                  {
+                                    "category": "Utilities",
+                                    "amount": "£150-200/month"
+                                  }
+                                ]
+                              },
+                              {
+                                "name": "Regional Cities",
+                                "description": "Manchester, Birmingham, Edinburgh, etc.",
+                                "costs": [
+                                  {
+                                    "category": "Rent",
+                                    "amount": "£700-1,200/month (1-bed flat)"
+                                  },
+                                  {
+                                    "category": "Transport",
+                                    "amount": "£60-100/month"
+                                  },
+                                  {
+                                    "category": "Utilities",
+                                    "amount": "£120-170/month"
+                                  }
+                                ]
+                              }
+                            ],
+                            "additionalExpenses": {
+                              "title": "Additional Expenses:",
+                              "items": [
+                                "Healthcare surcharge (£624 per year when applying for visas)",
+                                "Council tax (£1,000-2,000 annually depending on property)",
+                                "TV license (£159 annually)",
+                                "Initial relocation costs and deposits"
+                              ]
+                            }
+                          }
+                        },
+                        {
+                          "id": "healthcare",
+                          "icon": "🏥",
+                          "title": "Accessing UK Healthcare",
+                          "type": "healthcare",
+                          "content": {
+                            "intro": "All UK visa holders who pay the Immigration Health Surcharge have access to the National Health Service (NHS).",
+                            "coverage": {
+                              "description": "This provides comprehensive healthcare coverage including:",
+                              "includes": [
+                                "GP (doctor) appointments",
+                                "Hospital treatment",
+                                "Emergency care",
+                                "Maternity services"
+                              ]
+                            },
+                            "registration": "You'll need to register with a local GP practice once you arrive in the UK. Dental care and prescriptions may require additional payments.",
+                            "note": "Note: Private health insurance is optional but can provide faster access to specialists and additional services not covered by the NHS."
+                          }
+                        },
+                        {
+                          "id": "networking",
+                          "icon": "👥",
+                          "title": "Networking in the UK",
+                          "type": "networking",
+                          "content": {
+                            "intro": "Building a professional network is crucial for job hunting in the UK:",
+                            "online": {
+                              "title": "Online Networking",
+                              "platforms": [
+                                "LinkedIn (essential for UK job searching)",
+                                "Professional Facebook groups",
+                                "Industry-specific forums and communities",
+                                "Alumni networks from your university"
+                              ]
+                            },
+                            "inPerson": {
+                              "title": "In-Person Events",
+                              "events": [
+                                "Industry conferences and seminars",
+                                "Meetup.com events related to your field",
+                                "Professional association gatherings",
+                                "International professionals networking events"
+                              ]
+                            },
+                            "advice": "British business culture values professionalism and courtesy. When networking, focus on building genuine relationships rather than immediately asking for job opportunities."
+                          }
+                        }
+                      ],
+                      "checklist": {
+                        "title": "Your UK Job Search Checklist",
+                        "beforeApplying": {
+                          "title": "Before You Apply",
+                          "items": [
+                            "Research UK-specific CV format and standards",
+                            "Check if your occupation is on the Shortage Occupation List",
+                            "Verify your qualifications are recognized in the UK",
+                            "Build your LinkedIn profile with UK-specific keywords"
+                          ]
+                        },
+                        "duringSearch": {
+                          "title": "During Your Job Search",
+                          "items": [
+                            "Target companies with sponsor licenses",
+                            "Prepare for video interviews across time zones",
+                            "Research typical UK salary ranges for your role",
+                            "Understand UK employment rights and benefits"
+                          ]
+                        }
+                      },
+                      "conclusion": {
+                        "title": "Start Your UK Career Journey",
+                        "description": "Finding work in the UK as a foreign national requires preparation, persistence, and patience. While the immigration system has specific requirements, the UK remains committed to attracting international talent across industries. With the right skills, qualifications, and approach, you can successfully navigate the UK job market and build a rewarding career in one of the world's most dynamic economies."
+                      }
+                    },
+                    "salaryGuide": {
+                      "title": "UK Salary Guide by Industry",
+                      "subtitle": "Average salaries for international professionals",
+                      "industries": [
+                        {
+                          "sector": "Information Technology",
+                          "averageRange": "£35,000 - £80,000",
+                          "entryLevel": "£25,000 - £35,000",
+                          "experienced": "£50,000 - £80,000",
+                          "senior": "£70,000 - £120,000+",
+                          "hotRoles": [
+                            "Software Engineers",
+                            "Data Scientists",
+                            "Cybersecurity Specialists",
+                            "DevOps Engineers"
+                          ]
+                        },
+                        {
+                          "sector": "Healthcare",
+                          "averageRange": "£30,000 - £70,000",
+                          "entryLevel": "£24,000 - £30,000",
+                          "experienced": "£40,000 - £60,000",
+                          "senior": "£60,000 - £100,000+",
+                          "hotRoles": [
+                            "Nurses",
+                            "Junior Doctors",
+                            "Specialists",
+                            "Healthcare Managers"
+                          ]
+                        },
+                        {
+                          "sector": "Finance & Banking",
+                          "averageRange": "£40,000 - £90,000",
+                          "entryLevel": "£28,000 - £40,000",
+                          "experienced": "£50,000 - £80,000",
+                          "senior": "£80,000 - £150,000+",
+                          "hotRoles": [
+                            "Financial Analysts",
+                            "Investment Bankers",
+                            "Risk Managers",
+                            "Compliance Officers"
+                          ]
+                        },
+                        {
+                          "sector": "Engineering",
+                          "averageRange": "£35,000 - £65,000",
+                          "entryLevel": "£25,000 - £35,000",
+                          "experienced": "£45,000 - £65,000",
+                          "senior": "£65,000 - £100,000+",
+                          "hotRoles": [
+                            "Civil Engineers",
+                            "Mechanical Engineers",
+                            "Electrical Engineers",
+                            "Project Managers"
+                          ]
+                        }
+                      ]
+                    },
+                    "workCulture": {
+                      "title": "UK Work Culture Guide",
+                      "subtitle": "Understanding British workplace expectations",
+                      "aspects": [
+                        {
+                          "category": "Communication Style",
+                          "description": "British communication tends to be polite, indirect, and often includes understatement.",
+                          "tips": [
+                            "Phrases like 'quite good' often mean 'excellent'",
+                            "Disagreement is often softened with phrases like 'I wonder if...'",
+                            "Small talk about weather is common and expected",
+                            "Punctuality is highly valued"
+                          ]
+                        },
+                        {
+                          "category": "Work-Life Balance",
+                          "description": "The UK generally maintains a good work-life balance with legal protections.",
+                          "tips": [
+                            "Standard working week is 37.5-40 hours",
+                            "Minimum 28 days annual leave (including bank holidays)",
+                            "Flexible working requests are legally protected",
+                            "Overtime culture varies by industry and company"
+                          ]
+                        },
+                        {
+                          "category": "Hierarchy & Meetings",
+                          "description": "British workplaces tend to be less hierarchical than many other countries.",
+                          "tips": [
+                            "First names are commonly used across all levels",
+                            "Meetings often include time for discussion and input",
+                            "Decisions may take time as consensus is often sought",
+                            "Queue etiquette applies in all situations"
+                          ]
+                        }
+                      ]
+                    },
+                    "relocationSupport": {
+                      "title": "Employee Relocation Support",
+                      "subtitle": "What to expect from UK employers",
+                      "commonSupport": [
+                        {
+                          "type": "Visa Sponsorship",
+                          "description": "Certificate of Sponsorship and visa application support",
+                          "typical": "Standard for skilled worker visas"
+                        },
+                        {
+                          "type": "Relocation Package",
+                          "description": "Financial assistance for moving expenses",
+                          "typical": "£2,000-£10,000 depending on role level"
+                        },
+                        {
+                          "type": "Temporary Accommodation",
+                          "description": "Hotel or serviced apartment for initial weeks",
+                          "typical": "2-4 weeks coverage common"
+                        },
+                        {
+                          "type": "House Hunting Support",
+                          "description": "Assistance finding permanent accommodation",
+                          "typical": "Estate agent recommendations, area tours"
+                        },
+                        {
+                          "type": "Cultural Integration",
+                          "description": "Orientation programs and cultural training",
+                          "typical": "Buddy systems, local area introductions"
+                        }
+                      ]
+                    },
+                    "legalRequirements": {
+                      "title": "Legal Requirements for Working in UK",
+                      "subtitle": "Essential compliance information",
+                      "requirements": [
+                        {
+                          "area": "Right to Work",
+                          "description": "All employees must prove they can legally work in the UK",
+                          "documents": [
+                            "Valid passport with visa",
+                            "Biometric Residence Permit (BRP)",
+                            "Share code from online right to work check"
+                          ]
+                        },
+                        {
+                          "area": "National Insurance",
+                          "description": "Unique number required for tax and benefits",
+                          "process": "Apply online or by phone after arrival, usually takes 2-3 weeks"
+                        },
+                        {
+                          "area": "Tax (PAYE)",
+                          "description": "Income tax deducted automatically from salary",
+                          "rates": "Basic rate 20%, Higher rate 40%, Additional rate 45%"
+                        },
+                        {
+                          "area": "Employment Rights",
+                          "description": "UK employees have strong legal protections",
+                          "rights": [
+                            "Minimum wage protection",
+                            "Anti-discrimination laws",
+                            "Unfair dismissal protection (after 2 years)",
+                            "Statutory sick pay"
+                          ]
+                        }
+                      ]
+                    },
+
+
+                    
+                        "usToUkGuide": {
+                          "header": {
+                            "title": "Moving from the US to the UK",
+                            "subtitle": "Your comprehensive guide to relocating across the pond - from visa applications to settling into British life"
+                          },
+                          "navigation": {
+                            "title": "Contents"
+                          },
+                          "sections": [
+                            {
+                              "id": "why-uk",
+                              "icon": "🇬🇧",
+                              "title": "Why Move to the UK?",
+                              "type": "why-uk",
+                              "content": {
+                                "intro": "Many Americans are choosing the UK as their new home for compelling reasons:",
+                                "reasons": [
+                                  "Shared language and cultural familiarity",
+                                  "World-class healthcare (NHS)",
+                                  "Rich history and cultural offerings",
+                                  "Gateway to Europe for travel",
+                                  "Excellent public transportation",
+                                  "Strong job market in specific sectors"
+                                ],
+                                "conclusion": "Whether you're relocating for work opportunities, education, family reasons, or simply for a change of pace, the UK offers a familiar yet distinctly different lifestyle for Americans."
+                              }
+                            },
+                            {
+                              "id": "visa-options",
+                              "icon": "🛂",
+                              "title": "Visa Options for US Citizens",
+                              "type": "visa-options",
+                              "content": {
+                                "intro": "As a US citizen, you can visit the UK for up to 6 months without a visa, but for long-term living, you'll need one of these visa paths:",
+                                "visaTypes": [
+                                  {
+                                    "title": "1. Skilled Worker Visa",
+                                    "requirements": [
+                                      "Need a job offer from a UK employer with sponsorship license",
+                                      "Must meet minimum salary requirements (typically £26,200+, varies by job)",
+                                      "Job must be at the required skill level (usually RQF level 3 or above)",
+                                      "Valid for up to 5 years, can lead to settlement after 5 years"
+                                    ]
+                                  },
+                                  {
+                                    "title": "2. Global Talent Visa",
+                                    "requirements": [
+                                      "For leaders or promising individuals in academia, research, arts, culture, or digital technology",
+                                      "Requires endorsement from a relevant UK body",
+                                      "No sponsorship needed, greater flexibility than work visa",
+                                      "Can lead to settlement after 3-5 years"
+                                    ]
+                                  },
+                                  {
+                                    "title": "3. Student Visa",
+                                    "requirements": [
+                                      "For enrollment in UK educational institutions",
+                                      "Requires acceptance letter, proof of funds, and English proficiency",
+                                      "Limited work rights during studies",
+                                      "Graduate route allows staying 2 years after graduation to work"
+                                    ]
+                                  },
+                                  {
+                                    "title": "4. Family Visa",
+                                    "requirements": [
+                                      "For partners, spouses, or children of British citizens or settled persons",
+                                      "Requires proof of genuine relationship and financial requirements",
+                                      "Can lead to settlement after 5 years"
+                                    ]
+                                  },
+                                  {
+                                    "title": "5. UK Ancestry Visa",
+                                    "requirements": [
+                                      "If you have a UK-born grandparent, you may be eligible for this 5-year visa with a pathway to settlement"
+                                    ]
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              "id": "required-documents",
+                              "icon": "📄",
+                              "title": "Required Documents for Relocation",
+                              "type": "required-documents",
+                              "content": {
+                                "intro": "Document requirements vary by visa type, but typically include:",
+                                "documents": [
+                                  "Valid US passport (with at least 6 months validity)",
+                                  "Visa application forms and payment receipts",
+                                  "Biometric information (fingerprints and photo)",
+                                  "Proof of English language proficiency",
+                                  "Financial documents showing sufficient funds",
+                                  "Job offer and sponsorship certificate (for work visas)",
+                                  "Tuberculosis (TB) test results (if staying over 6 months)",
+                                  "Proof of accommodation arrangements"
+                                ],
+                                "proTip": {
+                                  "label": "Pro tip",
+                                  "text": "Start collecting these documents early, as some (like background checks) can take significant time to obtain."
+                                }
+                              }
+                            },
+                            {
+                              "id": "popular-cities",
+                              "icon": "🏙️",
+                              "title": "Where Do Most Americans Live in the UK?",
+                              "type": "popular-cities",
+                              "content": {
+                                "intro": "Americans relocating to the UK tend to cluster in these popular areas:",
+                                "cities": [
+                                  {
+                                    "name": "London",
+                                    "icon": "🌆",
+                                    "highlights": [
+                                      "Most popular destination, especially areas like Kensington, Chelsea, and Notting Hill",
+                                      "Global financial center with diverse job opportunities",
+                                      "Vibrant cultural scene but higher cost of living"
+                                    ]
+                                  },
+                                  {
+                                    "name": "Oxford & Cambridge",
+                                    "icon": "📚",
+                                    "highlights": [
+                                      "University towns with academic and research opportunities",
+                                      "Historic architecture and strong intellectual communities",
+                                      "Good quality of life, but housing can be expensive"
+                                    ]
+                                  },
+                                  {
+                                    "name": "Manchester",
+                                    "icon": "🏭",
+                                    "highlights": [
+                                      "Major tech and media hub with growing American expat community",
+                                      "More affordable than London with excellent cultural offerings",
+                                      "Home to BBC North and MediaCityUK"
+                                    ]
+                                  },
+                                  {
+                                    "name": "Edinburgh",
+                                    "icon": "🏰",
+                                    "highlights": [
+                                      "Scotland's capital with stunning architecture and strong financial sector",
+                                      "Popular with Americans in finance, tech, and education",
+                                      "Excellent quality of life with vibrant cultural scene"
+                                    ]
+                                  }
+                                ],
+                                "risingLocations": {
+                                  "title": "Rising Locations",
+                                  "icon": "💼",
+                                  "locations": [
+                                    {
+                                      "name": "Bristol",
+                                      "description": "Thriving creative and tech scene with great quality of life"
+                                    },
+                                    {
+                                      "name": "Birmingham",
+                                      "description": "Increasingly popular with its growing economy and lower living costs"
+                                    },
+                                    {
+                                      "name": "Glasgow",
+                                      "description": "Scotland's largest city offering affordability and cultural attractions"
+                                    },
+                                    {
+                                      "name": "Cardiff",
+                                      "description": "Welsh capital with growing job opportunities and lower cost of living"
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            {
+                              "id": "cost-of-living",
+                              "icon": "💷",
+                              "title": "Cost of Living Comparison: UK vs USA",
+                              "type": "cost-of-living",
+                              "content": {
+                                "table": {
+                                  "headers": {
+                                    "expense": "Expense",
+                                    "uk": "UK (avg.)",
+                                    "usa": "USA (avg.)"
+                                  },
+                                  "rows": [
+                                    {
+                                      "expense": "Rent (1BR city center)",
+                                      "uk": "£800–£1,500/month",
+                                      "usa": "$1,500–$2,000",
+                                      "ukHighlight": false
+                                    },
+                                    {
+                                      "expense": "Healthcare",
+                                      "uk": "Mostly free via NHS",
+                                      "usa": "$300–$600/month",
+                                      "ukHighlight": true
+                                    },
+                                    {
+                                      "expense": "Utilities (monthly)",
+                                      "uk": "£150–£200",
+                                      "usa": "$150–$200",
+                                      "ukHighlight": false
+                                    },
+                                    {
+                                      "expense": "Transportation",
+                                      "uk": "£65–£150/month",
+                                      "usa": "$70–$150 + car expenses",
+                                      "ukHighlight": true
+                                    },
+                                    {
+                                      "expense": "Dining out (for 2)",
+                                      "uk": "£40–£80",
+                                      "usa": "$50–$100",
+                                      "ukHighlight": false
+                                    },
+                                    {
+                                      "expense": "Higher Education",
+                                      "uk": "£9,250/year (domestic)",
+                                      "usa": "$10,000–$40,000/year",
+                                      "ukHighlight": true
+                                    }
+                                  ]
+                                },
+                                "conclusion": "Cost of living varies significantly between London and other UK regions. While London prices rival major US cities like New York and San Francisco, other UK regions offer a substantially lower cost of living."
+                              }
+                            },
+                            {
+                              "id": "healthcare",
+                              "icon": "🏥",
+                              "title": "Healthcare in the UK",
+                              "type": "healthcare",
+                              "content": {
+                                "intro": "The UK's National Health Service (NHS) provides comprehensive healthcare that's free at the point of use for residents, which is a major advantage for Americans used to high healthcare costs.",
+                                "nhsAccess": {
+                                  "title": "NHS Access for Immigrants",
+                                  "points": [
+                                    "Most visa applications for stays over 6 months require paying the Immigration Health Surcharge (IHS)",
+                                    "Current IHS fee: £1,035 per year for most adult visa applicants",
+                                    "Once paid, you're entitled to most NHS services (excluding certain dental and optical services)",
+                                    "Register with a local General Practitioner (GP) once settled"
+                                  ]
+                                },
+                                "conclusion": "Private healthcare is also available and some employers offer private health insurance as a benefit."
+                              }
+                            },
+                            {
+                              "id": "language",
+                              "icon": "🗣️",
+                              "title": "Language & Cultural Tips",
+                              "type": "language",
+                              "content": {
+                                "intro": "Despite sharing a language, there are cultural differences Americans should be aware of:",
+                                "differences": {
+                                  "title": "British vs American English",
+                                  "vocabulary": {
+                                    "title": "Vocabulary Differences:",
+                                    "examples": [
+                                      "Apartment → Flat",
+                                      "Elevator → Lift",
+                                      "Sidewalk → Pavement",
+                                      "Line → Queue",
+                                      "French fries → Chips",
+                                      "Chips → Crisps"
+                                    ]
+                                  },
+                                  "cultural": {
+                                    "title": "Cultural Differences:",
+                                    "points": [
+                                      "British humor tends to be more ironic and self-deprecating",
+                                      "Politeness and understatement are highly valued",
+                                      "Directness can sometimes be perceived as rudeness",
+                                      "Queuing (waiting in line) is taken very seriously"
+                                    ]
+                                  }
+                                },
+                                "conclusion": "British social customs may seem familiar but often have subtle differences. The British tend to be more reserved initially but warm up over time."
+                              }
+                            },
+                            {
+                              "id": "moving",
+                              "icon": "📦",
+                              "title": "Moving & Shipping from the US",
+                              "type": "moving",
+                              "content": {
+                                "intro": "Planning your physical move to the UK requires careful consideration:",
+                                "shipping": {
+                                  "title": "Shipping Options",
+                                  "options": [
+                                    {
+                                      "type": "Air freight",
+                                      "description": "Faster (5-10 days) but more expensive"
+                                    },
+                                    {
+                                      "type": "Sea freight",
+                                      "description": "More affordable but slower (4-8 weeks)"
+                                    },
+                                    {
+                                      "type": "International movers",
+                                      "description": "Full-service options available with packing and customs handling"
+                                    }
+                                  ]
+                                },
+                                "customs": {
+                                  "title": "Customs Considerations",
+                                  "considerations": [
+                                    "Personal effects can be imported duty-free if you've owned them for over 6 months",
+                                    "Complete a Transfer of Residence (ToR) application before shipping",
+                                    "Some items like certain foods, plants, and medications are restricted",
+                                    "Pets require microchipping, vaccinations, and pet passports"
+                                  ]
+                                },
+                                "conclusion": "Consider what to bring carefully—many household electronics will need voltage converters (UK: 230V vs US: 120V), and furniture may not fit in typically smaller UK homes."
+                              }
+                            },
+                            {
+                              "id": "banking",
+                              "icon": "💳",
+                              "title": "Banking & Finances",
+                              "type": "banking",
+                              "content": {
+                                "intro": "Setting up your financial life in the UK is an important early step:",
+                                "ukAccount": {
+                                  "title": "Opening a UK Bank Account",
+                                  "points": [
+                                    "Traditionally requires proof of UK address, which creates a catch-22 situation for new arrivals",
+                                    "Digital banks like Monzo, Starling, and Revolut offer easier options for newcomers",
+                                    "Some international banks (HSBC, Barclays) offer international account services",
+                                    "Required documents: passport, visa, proof of address, employment details"
+                                  ]
+                                },
+                                "usUkFinances": {
+                                  "title": "Managing US-UK Finances",
+                                  "points": [
+                                    "Keep your US bank account for ongoing US obligations",
+                                    "Consider services like Wise (formerly TransferWise) for cost-effective money transfers",
+                                    "US citizens must file US tax returns regardless of residence (Foreign Earned Income Exclusion available)",
+                                    "The US-UK tax treaty helps prevent double taxation"
+                                  ]
+                                },
+                                "conclusion": "Building UK credit history takes time, so plan accordingly. Credit scores don't transfer internationally, and you'll be starting from scratch in the UK credit system."
+                              }
+                            }
+                          ],
+                          "checklist": {
+                            "title": "Pre-Move Checklist for Americans",
+                            "items": [
+                              "Apply for appropriate visa well in advance",
+                              "Pay Immigration Health Surcharge (IHS)",
+                              "Open a UK bank account (or prepare alternatives)",
+                              "Research housing in your preferred location",
+                              "Set up international money transfer service",
+                              "Arrange shipping or storage of belongings",
+                              "Convert important documents to UK format",
+                              "Research tax implications (US-UK)",
+                              "Join expat communities and forums for advice and connection"
+                            ]
+                          },
+                          "resources": {
+                            "title": "Additional Resources",
+                            "categories": [
+                              {
+                                "title": "Official Information",
+                                "links": [
+                                  "UK Government Visa Information",
+                                  "UK Home Office Guidelines",
+                                  "US Embassy in the UK"
+                                ]
+                              },
+                              {
+                                "title": "Expat Communities",
+                                "links": [
+                                  "Americans in the UK Facebook Groups",
+                                  "InterNations UK Chapters",
+                                  "Meetup Groups for Expats"
+                                ]
+                              },
+                              {
+                                "title": "Practical Services",
+                                "links": [
+                                  "International Moving Companies",
+                                  "UK Accommodation Websites",
+                                  "Expat Tax Services"
+                                ]
+                              }
+                            ]
+                          }
+                        },
+                        "immigrationTimeline": {
+                          "title": "US to UK Immigration Timeline",
+                          "subtitle": "Typical timeline for different visa types",
+                          "visaTimelines": [
+                            {
+                              "visaType": "Skilled Worker Visa",
+                              "totalTime": "3-6 months",
+                              "phases": [
+                                {
+                                  "phase": "Job Search & Offer",
+                                  "duration": "1-4 months",
+                                  "description": "Finding employment with sponsorship"
+                                },
+                                {
+                                  "phase": "Visa Application",
+                                  "duration": "3-8 weeks",
+                                  "description": "Application processing time"
+                                },
+                                {
+                                  "phase": "Decision & Travel",
+                                  "duration": "1-2 weeks",
+                                  "description": "Receiving decision and planning travel"
+                                }
+                              ]
+                            },
+                            {
+                              "visaType": "Student Visa",
+                              "totalTime": "2-4 months",
+                              "phases": [
+                                {
+                                  "phase": "University Application",
+                                  "duration": "1-3 months",
+                                  "description": "Applying and receiving acceptance"
+                                },
+                                {
+                                  "phase": "Visa Application",
+                                  "duration": "3-6 weeks",
+                                  "description": "Student visa processing"
+                                },
+                                {
+                                  "phase": "Preparation",
+                                  "duration": "2-4 weeks",
+                                  "description": "Accommodation and travel arrangements"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "culturalAdaptation": {
+                          "title": "Cultural Adaptation Guide",
+                          "subtitle": "Settling into British life as an American",
+                          "areas": [
+                            {
+                              "category": "Social Interactions",
+                              "tips": [
+                                "Small talk about weather is genuinely important",
+                                "Apologizing frequently ('sorry') is normal",
+                                "Personal space and queuing etiquette matter",
+                                "Pub culture is central to social life"
+                              ]
+                            },
+                            {
+                              "category": "Workplace Culture",
+                              "tips": [
+                                "More formal communication than typical US workplaces",
+                                "Longer lunch breaks and tea breaks are common",
+                                "Holiday/vacation time is more generous",
+                                "Work-life balance is generally better protected"
+                              ]
+                            },
+                            {
+                              "category": "Daily Life",
+                              "tips": [
+                                "Public transport is reliable but can be expensive",
+                                "Grocery shopping patterns differ (smaller, more frequent trips)",
+                                "Clothing sizes and measurements are different",
+                                "Tipping culture is less extensive than the US"
+                              ]
+                            }
+                          ]
+                        },
+                        "financialPlanning": {
+                          "title": "Financial Planning for Your Move",
+                          "subtitle": "Budgeting for your US to UK relocation",
+                          "categories": [
+                            {
+                              "stage": "Pre-Move Costs",
+                              "totalRange": "$3,000 - $8,000",
+                              "items": [
+                                {
+                                  "item": "Visa applications and fees",
+                                  "cost": "$1,500 - $3,500"
+                                },
+                                {
+                                  "item": "Medical examinations and tests",
+                                  "cost": "$200 - $500"
+                                },
+                                {
+                                  "item": "Document preparation and legal fees",
+                                  "cost": "$500 - $2,000"
+                                },
+                                {
+                                  "item": "Flight bookings",
+                                  "cost": "$800 - $2,000"
+                                }
+                              ]
+                            },
+                            {
+                              "stage": "Moving Costs",
+                              "totalRange": "$2,000 - $15,000",
+                              "items": [
+                                {
+                                  "item": "Shipping household goods",
+                                  "cost": "$2,000 - $8,000"
+                                },
+                                {
+                                  "item": "Temporary accommodation",
+                                  "cost": "$1,000 - $4,000"
+                                },
+                                {
+                                  "item": "Pet relocation (if applicable)",
+                                  "cost": "$1,000 - $3,000"
+                                }
+                              ]
+                            },
+                            {
+                              "stage": "Settlement Costs",
+                              "totalRange": "$3,000 - $10,000",
+                              "items": [
+                                {
+                                  "item": "Housing deposits and rent",
+                                  "cost": "$2,000 - $6,000"
+                                },
+                                {
+                                  "item": "Initial furnishing and setup",
+                                  "cost": "$1,000 - $3,000"
+                                },
+                                {
+                                  "item": "First month living expenses",
+                                  "cost": "$1,500 - $3,500"
+                                }
+                              ]
+                            }
+                          ]
+                        },
+                        "legalConsiderations": {
+                          "title": "Legal Considerations for Americans",
+                          "subtitle": "Important legal aspects of moving to the UK",
+                          "topics": [
+                            {
+                              "area": "Tax Obligations",
+                              "description": "US citizens must file US tax returns regardless of residence",
+                              "keyPoints": [
+                                "Foreign Earned Income Exclusion available up to ~$120,000",
+                                "UK-US tax treaty prevents most double taxation",
+                                "Consider professional tax advice for complex situations",
+                                "Report foreign bank accounts if balances exceed $10,000"
+                              ]
+                            },
+                            {
+                              "area": "Voting Rights",
+                              "description": "Understanding your voting rights in both countries",
+                              "keyPoints": [
+                                "Maintain US voting rights through absentee ballots",
+                                "UK local elections available after residence registration",
+                                "EU citizenship lost after Brexit affects some rights",
+                                "Consider dual citizenship implications"
+                              ]
+                            },
+                            {
+                              "area": "Legal Status",
+                              "description": "Understanding your legal status and rights",
+                              "keyPoints": [
+                                "Visa conditions determine work and travel rights",
+                                "Path to permanent residence varies by visa type",
+                                "British citizenship possible after 5+ years residence",
+                                "Legal advice recommended for complex situations"
+                              ]
+                            }
+                          ]
+                        },
+                      
+                  
+                        
+                            "petsToUkGuide": {
+                              "header": {
+                                "title": "Moving with Pets to the UK",
+                                "subtitle": "Complete guide to bringing your beloved companions to their new British home - requirements, process, and settling in"
+                              },
+                              "navigation": {
+                                "title": "UK Pet Immigration Guide"
+                              },
+                              "sections": [
+                                {
+                                  "id": "requirements",
+                                  "icon": "✅",
+                                  "title": "Key Requirements",
+                                  "type": "requirements",
+                                  "content": {
+                                    "keyRequirements": [
+                                      {
+                                        "number": "1",
+                                        "title": "Microchip",
+                                        "description": "Your pet must be microchipped with an ISO 11784/11785 compliant chip before any vaccinations are given."
+                                      },
+                                      {
+                                        "number": "2",
+                                        "title": "Rabies Vaccination",
+                                        "description": "Must be given at least 21 days before travel and be valid at the time of travel."
+                                      },
+                                      {
+                                        "number": "3",
+                                        "title": "Animal Health Certificate (AHC)",
+                                        "description": [
+                                          "Must be issued by an official veterinarian in your country within 10 days of travel to the UK.",
+                                          "Valid for entry to the UK for up to 4 months after issue.",
+                                          "Only needed if you don't have an EU Pet Passport issued in the EU or Northern Ireland."
+                                        ]
+                                      },
+                                      {
+                                        "number": "4",
+                                        "title": "Tapeworm Treatment",
+                                        "note": "(dogs only)",
+                                        "description": "Dogs must be treated for tapeworm 24-120 hours (1-5 days) before arriving in the UK."
+                                      }
+                                    ]
+                                  }
+                                },
+                                {
+                                  "id": "entry-routes",
+                                  "icon": "🛂",
+                                  "title": "Entry Routes",
+                                  "type": "entry-routes",
+                                  "content": {
+                                    "approvedEntry": {
+                                      "title": "Approved Entry Points",
+                                      "description": "Pets can only enter the UK through specific approved routes.",
+                                      "routes": [
+                                        {
+                                          "title": "Air Travel",
+                                          "description": "Major airports like Heathrow, Gatwick, Manchester, Edinburgh"
+                                        },
+                                        {
+                                          "title": "Eurotunnel",
+                                          "description": "Folkestone (via Calais)"
+                                        },
+                                        {
+                                          "title": "Ferry Ports",
+                                          "description": "Dover, Portsmouth, Hull, Harwich"
+                                        },
+                                        {
+                                          "title": "Eurostar",
+                                          "description": "Only assistance dogs allowed"
+                                        }
+                                      ]
+                                    },
+                                    "warning": "You must arrive via an approved route with your pet or your pet may be put into quarantine for up to 4 months."
+                                  }
+                                },
+                                {
+                                  "id": "traveling",
+                                  "icon": "✈️",
+                                  "title": "Traveling Options",
+                                  "type": "traveling",
+                                  "content": {
+                                    "travelOptions": [
+                                      {
+                                        "icon": "🐱",
+                                        "ariaLabel": "small pet",
+                                        "title": "In-cabin",
+                                        "description": "Limited options - most UK-bound flights don't allow pets in cabin except assistance animals."
+                                      },
+                                      {
+                                        "icon": "🐕",
+                                        "ariaLabel": "large pet",
+                                        "title": "As Cargo",
+                                        "description": "Most common method for flying pets to the UK. Usually handled by specialist animal handling departments."
+                                      },
+                                      {
+                                        "icon": "🚗",
+                                        "ariaLabel": "car",
+                                        "title": "Eurotunnel/Ferry",
+                                        "description": "Popular option if coming from Europe. Pets can stay with owners in vehicles."
+                                      }
+                                    ],
+                                    "costConsiderations": {
+                                      "title": "Cost Considerations",
+                                      "costs": [
+                                        "Flights: £400-£800 for cargo transport",
+                                        "Eurotunnel: £20-£30 per pet in addition to vehicle fee",
+                                        "Ferries: £15-£30 per pet depending on route",
+                                        "Health Certificate: £100-£175"
+                                      ]
+                                    },
+                                    "warning": "Always check with your specific airline or transport company for their pet policy, as requirements can change."
+                                  }
+                                },
+                                {
+                                  "id": "arrival-process",
+                                  "icon": "🛬",
+                                  "title": "Arrival Process",
+                                  "type": "arrival-process",
+                                  "content": {
+                                    "intro": "The UK has a specific process for pets arriving from abroad.",
+                                    "documentChecks": {
+                                      "title": "Document Checks",
+                                      "items": [
+                                        "Microchip verification",
+                                        "Animal Health Certificate",
+                                        "Rabies vaccination record",
+                                        "Tapeworm treatment (dogs)"
+                                      ]
+                                    },
+                                    "processFlow": {
+                                      "title": "Process Flow",
+                                      "steps": [
+                                        "Arrive at approved entry point",
+                                        "Present your pet and documentation to officials",
+                                        "Pet's microchip will be scanned to verify identity",
+                                        "Documents will be checked thoroughly",
+                                        "If everything is in order, your pet will be cleared to enter"
+                                      ]
+                                    },
+                                    "warning": "If documentation is incomplete or your pet seems unwell, they may be put into quarantine at your expense (up to 4 months)."
+                                  }
+                                },
+                                {
+                                  "id": "after-arrival",
+                                  "icon": "🏠",
+                                  "title": "Living in the UK with Pets",
+                                  "type": "after-arrival",
+                                  "content": {
+                                    "intro": "Once in the UK, there are several things to consider for your pet's well-being.",
+                                    "livingAspects": [
+                                      {
+                                        "icon": "🏥",
+                                        "title": "Veterinary Care",
+                                        "description": "Register with a local vet as soon as possible. The UK has excellent veterinary care but costs can be high - pet insurance is recommended.",
+                                        "cost": "Standard vet consultation: £30-£60"
+                                      },
+                                      {
+                                        "icon": "📋",
+                                        "title": "Registration",
+                                        "description": "Update your pet's microchip details with your UK address. Dogs must also be registered with the local council and wear a tag with your contact details."
+                                      },
+                                      {
+                                        "icon": "🏞️",
+                                        "title": "Exercise & Spaces",
+                                        "description": "The UK has many pet-friendly parks and countryside areas. Most towns have dedicated dog exercise areas, but always check local rules about keeping dogs on leads."
+                                      },
+                                      {
+                                        "icon": "🏠",
+                                        "title": "Housing",
+                                        "description": "Many rentals in the UK have 'no pets' policies, though this is changing. Be prepared to pay a higher deposit or 'pet rent' in some properties."
+                                      }
+                                    ],
+                                    "firstWeekChecklist": {
+                                      "title": "First Week Checklist",
+                                      "items": [
+                                        "Register with a local veterinary practice",
+                                        "Update microchip registration with UK address",
+                                        "Register your dog with local council (if applicable)",
+                                        "Purchase ID tag with UK contact details",
+                                        "Research pet insurance options"
+                                      ]
+                                    }
+                                  }
+                                },
+                                {
+                                  "id": "resources",
+                                  "icon": "📚",
+                                  "title": "Useful Resources",
+                                  "type": "resources",
+                                  "content": {
+                                    "officialInfo": {
+                                      "title": "Official Information",
+                                      "resources": [
+                                        {
+                                          "title": "UK Government Pet Travel Guidelines",
+                                          "description": "Official rules and requirements for bringing pets to the UK"
+                                        },
+                                        {
+                                          "title": "Animal and Plant Health Agency (APHA)",
+                                          "description": "Government body overseeing pet imports"
+                                        },
+                                        {
+                                          "title": "Pet Travel Scheme Helpline",
+                                          "description": "+44 370 241 1710 (Monday to Friday, 8:30am to 5pm UK time)"
+                                        }
+                                      ]
+                                    },
+                                    "petServices": {
+                                      "title": "Pet Services in the UK",
+                                      "services": [
+                                        {
+                                          "category": "Pet Insurance",
+                                          "providers": "Compare providers: PetPlan, Animal Friends, More Than"
+                                        },
+                                        {
+                                          "category": "Pet Supplies",
+                                          "providers": "Pets at Home, Amazon UK, VetUK"
+                                        },
+                                        {
+                                          "category": "Find a Vet",
+                                          "providers": "Royal College of Veterinary Surgeons: FindAVet service"
+                                        },
+                                        {
+                                          "category": "Pet-Friendly Accommodation",
+                                          "providers": "PetsLets, Airbnb (use 'pets allowed' filter)"
+                                        }
+                                      ]
+                                    }
+                                  }
+                                }
+                              ],
+                              "sidebar": {
+                                "checklist": {
+                                  "title": "Pre-Travel Checklist",
+                                  "items": [
+                                    "Microchip your pet",
+                                    "Ensure rabies vaccination is valid",
+                                    "Wait at least 21 days after vaccination",
+                                    "Treat dogs for tapeworm 1-5 days before travel",
+                                    "Get Animal Health Certificate within 10 days of travel",
+                                    "Book approved transport route to the UK",
+                                    "Prepare travel carrier (airline-approved if flying)"
+                                  ]
+                                },
+                                "faq": {
+                                  "title": "Common Questions",
+                                  "questions": [
+                                    {
+                                      "question": "Do I need a pet passport?",
+                                      "answer": "EU pet passports issued in the EU or Northern Ireland are still valid for UK entry. Otherwise, you'll need an Animal Health Certificate."
+                                    },
+                                    {
+                                      "question": "Is there quarantine?",
+                                      "answer": "No quarantine is needed if all requirements are met. If requirements aren't met, pets may face up to 4 months in quarantine."
+                                    },
+                                    {
+                                      "question": "What breeds are banned?",
+                                      "answer": "Certain dog breeds are prohibited in the UK, including Pit Bull Terrier, Japanese Tosa, Dogo Argentino, and Fila Brasileiro."
+                                    },
+                                    {
+                                      "question": "Can I bring exotic pets?",
+                                      "answer": "Exotic animals have different requirements. Many require CITES permits and specific import licenses."
+                                    }
+                                  ]
+                                }
+                              }
+                            },
+                            "petHealthRequirements": {
+                              "title": "Detailed Health Requirements",
+                              "subtitle": "Comprehensive health and vaccination requirements by country of origin",
+                              "categories": [
+                                {
+                                  "region": "EU Countries",
+                                  "requirements": [
+                                    {
+                                      "requirement": "Pet Passport",
+                                      "description": "EU pet passport issued in EU or Northern Ireland",
+                                      "validity": "Must be current and valid"
+                                    },
+                                    {
+                                      "requirement": "Rabies Vaccination",
+                                      "description": "Primary vaccination at least 21 days old",
+                                      "validity": "Valid according to manufacturer's guidelines"
+                                    },
+                                    {
+                                      "requirement": "Microchip",
+                                      "description": "ISO 11784/11785 compliant before vaccination",
+                                      "validity": "Must be readable"
+                                    }
+                                  ]
+                                },
+                                {
+                                  "region": "Non-EU Countries",
+                                  "requirements": [
+                                    {
+                                      "requirement": "Animal Health Certificate",
+                                      "description": "Issued by official veterinarian within 10 days",
+                                      "validity": "Valid for 4 months for UK entry"
+                                    },
+                                    {
+                                      "requirement": "Rabies Vaccination",
+                                      "description": "At least 21 days before travel",
+                                      "validity": "Must be current at time of travel"
+                                    },
+                                    {
+                                      "requirement": "Rabies Antibody Test",
+                                      "description": "May be required from certain countries",
+                                      "validity": "Must show adequate antibody levels"
+                                    }
+                                  ]
+                                }
+                              ]
+                            },
+                            "petTransportGuide": {
+                              "title": "Pet Transport Guide",
+                              "subtitle": "Detailed information about transporting pets to the UK",
+                              "transportMethods": [
+                                {
+                                  "method": "Commercial Airlines",
+                                  "suitableFor": "Dogs and cats",
+                                  "process": [
+                                    "Book pet transport when booking your flight",
+                                    "Provide health certificates and vaccination records",
+                                    "Use IATA-approved travel carrier",
+                                    "Arrive at airport 3-4 hours before departure",
+                                    "Pet travels in climate-controlled cargo hold"
+                                  ],
+                                  "costs": {
+                                    "range": "£400-£1,200",
+                                    "factors": [
+                                      "Size and weight of pet",
+                                      "Distance traveled",
+                                      "Airline policies",
+                                      "Season (peak vs off-peak)"
+                                    ]
+                                  },
+                                  "tips": [
+                                    "Book early as space is limited",
+                                    "Avoid peak travel seasons if possible",
+                                    "Consider pet's anxiety and comfort",
+                                    "Ensure carrier is appropriately sized"
+                                  ]
+                                },
+                                {
+                                  "method": "Pet Relocation Services",
+                                  "suitableFor": "All pets, especially valuable or nervous animals",
+                                  "process": [
+                                    "Full-service door-to-door transport",
+                                    "Handle all documentation and logistics",
+                                    "Provide specialized care during transport",
+                                    "Custom travel arrangements based on pet needs"
+                                  ],
+                                  "costs": {
+                                    "range": "£800-£3,000+",
+                                    "factors": [
+                                      "Level of service required",
+                                      "Pet size and special needs",
+                                      "Origin and destination",
+                                      "Additional services (boarding, etc.)"
+                                    ]
+                                  },
+                                  "tips": [
+                                    "Research company credentials thoroughly",
+                                    "Read reviews from other pet owners",
+                                    "Ensure company is licensed and insured",
+                                    "Ask about their experience with your pet type"
+                                  ]
+                                }
+                              ]
+                            },
+                            "settlingInGuide": {
+                              "title": "Settling Your Pet in the UK",
+                              "subtitle": "Helping your pet adjust to their new British home",
+                              "adjustmentTips": [
+                                {
+                                  "category": "First Days",
+                                  "tips": [
+                                    "Keep routines as similar as possible to home country",
+                                    "Allow time for adjustment - pets may be stressed",
+                                    "Gradually introduce new environments and experiences",
+                                    "Monitor eating and sleeping patterns closely"
+                                  ]
+                                },
+                                {
+                                  "category": "Climate Adaptation",
+                                  "tips": [
+                                    "UK weather can be quite different - prepare for rain",
+                                    "Some pets may need time to adjust to cooler temperatures",
+                                    "Provide appropriate bedding and shelter",
+                                    "Consider seasonal changes in daylight hours"
+                                  ]
+                                },
+                                {
+                                  "category": "Social Integration",
+                                  "tips": [
+                                    "Join local pet groups and communities",
+                                    "Use dog parks and pet-friendly venues gradually",
+                                    "Consider training classes to help with UK-specific behaviors",
+                                    "Be patient with house training adjustments"
+                                  ]
+                                }
+                              ],
+                              "ukSpecificConsiderations": [
+                                {
+                                  "topic": "Weather and Exercise",
+                                  "details": [
+                                    "UK has frequent rain - invest in pet raincoats",
+                                    "Shorter winter days affect exercise routines",
+                                    "Many parks have specific dog exercise areas",
+                                    "Beach restrictions vary by season and location"
+                                  ]
+                                },
+                                {
+                                  "topic": "Housing and Rentals",
+                                  "details": [
+                                    "Many UK rentals have strict no-pet policies",
+                                    "Pet deposits typically range from £200-£500",
+                                    "Some areas have breed restrictions in rentals",
+                                    "Garden/yard access is less common in city centers"
+                                  ]
+                                },
+                                {
+                                  "topic": "Legal Requirements",
+                                  "details": [
+                                    "Dogs must wear collar and tag with owner details",
+                                    "Some areas require dogs to be on leads in public",
+                                    "Dangerous Dogs Act applies to certain breeds",
+                                    "Pet waste must be cleaned up - fines apply"
+                                  ]
+                                }
+                              ]
+                            },
+                            "costBreakdown": {
+                              "title": "Complete Cost Breakdown",
+                              "subtitle": "All expenses involved in bringing pets to the UK",
+                              "preTravel": {
+                                "title": "Pre-Travel Costs",
+                                "items": [
+                                  {
+                                    "item": "Microchipping",
+                                    "cost": "£15-£30",
+                                    "notes": "One-time cost, required before vaccination"
+                                  },
+                                  {
+                                    "item": "Rabies Vaccination",
+                                    "cost": "£50-£100",
+                                    "notes": "Must wait 21 days before travel"
+                                  },
+                                  {
+                                    "item": "Animal Health Certificate",
+                                    "cost": "£100-£175",
+                                    "notes": "Must be within 10 days of travel"
+                                  },
+                                  {
+                                    "item": "Tapeworm Treatment (dogs)",
+                                    "cost": "£20-£40",
+                                    "notes": "1-5 days before travel"
+                                  },
+                                  {
+                                    "item": "Travel Carrier",
+                                    "cost": "£50-£200",
+                                    "notes": "IATA-approved for air travel"
+                                  }
+                                ]
+                              },
+                              "transport": {
+                                "title": "Transport Costs",
+                                "items": [
+                                  {
+                                    "item": "Airline Pet Transport",
+                                    "cost": "£400-£800",
+                                    "notes": "Varies by airline and pet size"
+                                  },
+                                  {
+                                    "item": "Pet Relocation Service",
+                                    "cost": "£800-£3,000",
+                                    "notes": "Full-service option"
+                                  },
+                                  {
+                                    "item": "Eurotunnel Pet Fee",
+                                    "cost": "£20-£30",
+                                    "notes": "Plus vehicle transport cost"
+                                  },
+                                  {
+                                    "item": "Ferry Pet Fee",
+                                    "cost": "£15-£30",
+                                    "notes": "Varies by route and operator"
+                                  }
+                                ]
+                              },
+                              "postArrival": {
+                                "title": "Post-Arrival Costs",
+                                "items": [
+                                  {
+                                    "item": "Vet Registration/Check-up",
+                                    "cost": "£30-£60",
+                                    "notes": "Initial consultation"
+                                  },
+                                  {
+                                    "item": "Pet Insurance",
+                                    "cost": "£10-£50/month",
+                                    "notes": "Varies by coverage and pet"
+                                  },
+                                  {
+                                    "item": "Pet Supplies",
+                                    "cost": "£50-£200",
+                                    "notes": "Food, toys, bedding, etc."
+                                  },
+                                  {
+                                    "item": "Local Registration",
+                                    "cost": "£15-£25",
+                                    "notes": "Dog license where required"
+                                  }
+                                ]
+                              }
+                            },
+                            
+                                "ukrelocationrequirements": {
+                                  "introduction": "Relocating to the United Kingdom requires careful planning and preparation. Whether you're moving for work opportunities, education, family reasons, or simply for a change of lifestyle, understanding the legal requirements is crucial. This guide outlines everything you need to know for a successful move to the UK.",
+                                  "requirements": [
+                                    {
+                                      "title": "Valid Passport",
+                                      "description": "You must have a passport that is valid for the entire duration of your stay in the UK. For non-visa nationals visiting for up to 6 months, your passport should be valid for the length of your intended stay. For visa applications, your passport typically needs to be valid for the entire duration of your visa plus some additional months."
+                                    },
+                                    {
+                                      "title": "Appropriate Visa",
+                                      "description": "The UK has various visa categories depending on your purpose of visit:",
+                                      "details": [
+                                        "Work visas (Skilled Worker, Health and Care Worker, etc.)",
+                                        "Study visas (Student visa, Child Student visa)",
+                                        "Family visas (Partner, Child, Parent visas)",
+                                        "Visitor visas (Standard Visitor, Business Visitor)",
+                                        "Settlement or Indefinite Leave to Remain (ILR)"
+                                      ]
+                                    },
+                                    {
+                                      "title": "Proof of Accommodation",
+                                      "description": "You'll need evidence of where you'll be staying in the UK:",
+                                      "details": [
+                                        "Rental agreement or property ownership documents",
+                                        "Letter from your host if staying with friends or family",
+                                        "Hotel reservations for initial accommodation",
+                                        "University accommodation confirmation for students"
+                                      ]
+                                    },
+                                    {
+                                      "title": "Financial Requirements",
+                                      "description": "You must demonstrate that you can financially support yourself:",
+                                      "details": [
+                                        "Bank statements showing sufficient funds (usually covering 3-6 months)",
+                                        "Proof of income or employment contract if applicable",
+                                        "Scholarship or funding letter for students",
+                                        "Proof of investments or savings"
+                                      ],
+                                      "additionalInfo": "The exact amount required varies by visa type and personal circumstances."
+                                    },
+                                    {
+                                      "title": "Healthcare Coverage",
+                                      "description": "Access to healthcare in the UK is managed through:",
+                                      "details": [
+                                        "Immigration Health Surcharge (IHS) payment with most visa applications",
+                                        "Private health insurance (recommended for initial period)",
+                                        "European Health Insurance Card (EHIC) or Global Health Insurance Card (GHIC) for eligible visitors"
+                                      ],
+                                      "additionalInfo": "After arriving, register with a local GP (General Practitioner) as soon as possible."
+                                    },
+                                    {
+                                      "title": "Biometric Residence Permit (BRP)",
+                                      "description": "If staying longer than 6 months:",
+                                      "details": [
+                                        "You'll receive a Biometric Residence Permit after arrival",
+                                        "You must collect your BRP within 10 days of arriving in the UK",
+                                        "The BRP serves as your proof of immigration status and entitlements"
+                                      ]
+                                    },
+                                    {
+                                      "title": "National Insurance Number",
+                                      "description": "Essential for working in the UK:",
+                                      "details": [
+                                        "Apply online or by phone after arriving in the UK",
+                                        "Required for employment, tax, and benefits purposes",
+                                        "You can begin working before receiving your NI number"
+                                      ]
+                                    },
+                                    {
+                                      "title": "Tuberculosis (TB) Test Certificate",
+                                      "description": "Required for nationals of certain countries:",
+                                      "details": [
+                                        "TB test must be taken at an approved center",
+                                        "Certificate valid for 6 months from date of issue",
+                                        "Must be obtained before applying for a visa"
+                                      ]
+                                    },
+                                    {
+                                      "title": "English Language Proficiency",
+                                      "description": "For most visa categories:",
+                                      "details": [
+                                        "Proof of English language ability (IELTS, TOEFL, etc.)",
+                                        "Degree taught in English may be accepted as proof",
+                                        "Exemptions available for certain nationalities and visa types"
+                                      ]
+                                    },
+                                    {
+                                      "title": "Bank Account",
+                                      "description": "Setting up a UK bank account:",
+                                      "details": [
+                                        "Proof of address (utility bill, rental agreement)",
+                                        "Passport and BRP",
+                                        "Consider online banks for easier setup as a newcomer",
+                                        "Some banks offer international account opening before arrival"
+                                      ]
+                                    }
+                                  ],
+                                  "additionalConsiderations": {
+                                    "title": "Additional Considerations",
+                                    "items": [
+                                      {
+                                        "title": "Council Tax Registration",
+                                        "description": "Register with your local council for council tax purposes. This is a mandatory tax for local services. Some exemptions apply for full-time students."
+                                      },
+                                      {
+                                        "title": "Driving in the UK",
+                                        "description": "Non-UK license holders can drive for up to 12 months. After that, you may need to exchange your license or take a UK driving test."
+                                      },
+                                      {
+                                        "title": "Mobile Phone & Internet",
+                                        "description": "Set up a UK mobile number and internet connection early. Many providers offer special deals for newcomers."
+                                      },
+                                      {
+                                        "title": "Climate Preparation",
+                                        "description": "The UK has a temperate maritime climate with cool summers and mild winters. Be prepared for rain year-round by bringing appropriate clothing and accessories."
+                                      }
+                                    ]
+                                  },
+                                  "helpResources": {
+                                    "title": "Getting Help With Your Move",
+                                    "description": "For official information and assistance with your UK relocation, consider these resources:",
+                                    "resources": [
+                                      {
+                                        "title": "UK Government",
+                                        "description": "Official guidance on visas, immigration, and settling in the UK"
+                                      },
+                                      {
+                                        "title": "British Council",
+                                        "description": "Resources for international students and cultural adaptation"
+                                      },
+                                      {
+                                        "title": "Citizens Advice",
+                                        "description": "Free, confidential advice on rights and responsibilities"
+                                      }
+                                    ]
+                                  },
+                                  "footer": {
+                                    "disclaimer": "Remember that immigration rules can change frequently. Always check the latest requirements from official sources."
+                                  }
+                                },
+                                
+                                  "ukfromturkeyguide": {
+                                    "navigation": {
+                                      "title": "Navigate This Guide"
+                                    },
+                                    "accessibility": {
+                                      "toggleSection": "Toggle section for"
+                                    },
+                                    "labels": {
+                                      "youllNeed": "You'll need:"
+                                    },
+                                    "sections": {
+                                      "whyMove": {
+                                        "title": "Why Are Turks Moving to the UK?",
+                                        "description": "Thousands of Turkish nationals now call the UK home, especially in cities like London, Manchester, Birmingham, and Edinburgh. The appeal includes:",
+                                        "reasons": [
+                                          "Educational and career opportunities",
+                                          "Multicultural environment with diverse communities",
+                                          "Strong healthcare and social welfare systems",
+                                          "Political stability and rule of law",
+                                          "Established Turkish communities across major cities"
+                                        ],
+                                        "conclusion": "However, relocating involves careful planning, understanding the UK visa system, and meeting specific requirements."
+                                      },
+                                      "entryRequirements": {
+                                        "title": "Entry Requirements & Visa Rules",
+                                        "visitorEntry": {
+                                          "title": "Visitor Entry",
+                                          "description": "Turkish citizens need a visitor visa to enter the UK, which allows stays of up to 6 months. For long-term stays, you'll need to apply for an appropriate visa based on your circumstances."
+                                        },
+                                        "tip": "Apply for UK visas well in advance of your planned travel date, as processing can take several weeks."
+                                      },
+                                      "longTermStay": {
+                                        "title": "Long-Term Stay Options for Turkish Citizens",
+                                        "options": [
+                                          {
+                                            "title": "1. Skilled Worker Visa",
+                                            "description": "<span class=\"font-medium\">Valid for up to 5 years and can lead to settlement</span><br/>For those with a job offer from a UK employer with a sponsorship license",
+                                            "requirements": [
+                                              "Valid job offer with appropriate salary level",
+                                              "Certificate of Sponsorship from employer",
+                                              "Proof of English language proficiency",
+                                              "Sufficient funds to support yourself",
+                                              "Criminal record certificate (if applicable)"
+                                            ]
+                                          },
+                                          {
+                                            "title": "2. Family Visa",
+                                            "details": [
+                                              "For joining a spouse, partner, or family member who is a British citizen or settled person",
+                                              "Initial period of 2.5 years, extendable",
+                                              "Financial and accommodation requirements apply"
+                                            ]
+                                          },
+                                          {
+                                            "title": "3. Student Visa",
+                                            "details": [
+                                              "For those accepted into a UK educational institution",
+                                              "Duration depends on length of course",
+                                              "Proof of funds for tuition and living expenses required"
+                                            ]
+                                          },
+                                          {
+                                            "title": "4. Innovator Visa",
+                                            "description": "For entrepreneurs with innovative business ideas and at least £50,000 in investment funds"
+                                          },
+                                          {
+                                            "title": "5. High Potential Individual Visa",
+                                            "description": "For graduates from top global universities, allowing 2-3 years to work or look for work without a job offer"
+                                          }
+                                        ]
+                                      },
+                                      "property": {
+                                        "title": "Buying or Renting Property",
+                                        "points": [
+                                          "Turkish citizens can buy property in the UK, with no restrictions for non-residents",
+                                          "Mortgage options are available but often require larger deposits for non-UK residents",
+                                          "Popular areas for Turkish communities: North London, Manchester, Birmingham",
+                                          "Renting is more expensive: expect £800-£1,500/month for a one-bedroom flat in major cities"
+                                        ],
+                                        "tip": "<strong>Tip:</strong> Use a solicitor when buying property and ensure you understand all rental contract terms before signing."
+                                      },
+                                      "costLiving": {
+                                        "title": "Cost of Living Comparison",
+                                        "table": {
+                                          "headers": {
+                                            "expense": "Expense",
+                                            "uk": "UK (avg.)",
+                                            "turkey": "Turkey (avg.)"
+                                          },
+                                          "rows": [
+                                            {
+                                              "expense": "Rent (1-bed apartment)",
+                                              "uk": "£800–£1,500",
+                                              "turkey": "£200–£400",
+                                              "ukHighlight": true
+                                            },
+                                            {
+                                              "expense": "Utilities",
+                                              "uk": "£150+/month",
+                                              "turkey": "£30–£70/month",
+                                              "ukHighlight": true
+                                            },
+                                            {
+                                              "expense": "Meal at restaurant",
+                                              "uk": "£15–£25",
+                                              "turkey": "£3–£8",
+                                              "ukHighlight": true
+                                            },
+                                            {
+                                              "expense": "Transportation pass",
+                                              "uk": "£60–£180/month",
+                                              "turkey": "£10–£30/month",
+                                              "ukHighlight": true
+                                            }
+                                          ]
+                                        },
+                                        "note": "The UK is significantly more expensive than Turkey, so financial planning is essential before relocating."
+                                      },
+                                      "healthcare": {
+                                        "title": "Healthcare Access",
+                                        "points": [
+                                          "The UK has the National Health Service (NHS), providing free healthcare at the point of use",
+                                          "Most visa applicants must pay an Immigration Health Surcharge as part of their application",
+                                          "The surcharge is currently £624 per year for most visa types",
+                                          "Once paid, you'll have access to NHS services similar to UK residents",
+                                          "Private healthcare options are available but expensive compared to Turkey"
+                                        ]
+                                      },
+                                      "dailyLife": {
+                                        "title": "Daily Life Adjustments",
+                                        "aspects": [
+                                          {
+                                            "title": "Language barrier",
+                                            "description": "English is the official language. Having good English skills is essential for daily life, work, and social integration."
+                                          },
+                                          {
+                                            "title": "Driving",
+                                            "description": "Turkish driving licenses can be used for up to 12 months. After that, you must exchange it or take a UK driving test."
+                                          },
+                                          {
+                                            "title": "Currency",
+                                            "description": "British Pound Sterling (GBP) — a strong currency, but means you'll need more Turkish Lira to maintain your lifestyle."
+                                          },
+                                          {
+                                            "title": "Banking",
+                                            "description": "Opening a bank account requires proof of address and immigration status. Digital banks like Monzo or Revolut may be easier options initially."
+                                          }
+                                        ]
+                                      },
+                                      "movingLogistics": {
+                                        "title": "Moving Logistics from Turkey",
+                                        "points": [
+                                          "You may need to pay customs duty and VAT when bringing personal belongings to the UK",
+                                          "Transfer of Residence relief may apply if you're moving your permanent home to the UK",
+                                          "International shipping from Turkey to the UK takes approximately 3-5 weeks by sea",
+                                          "Pets require microchipping, rabies vaccination, tapeworm treatment (for dogs), and an Animal Health Certificate"
+                                        ]
+                                      },
+                                      "challenges": {
+                                        "title": "Realistic Challenges to Expect",
+                                        "challenges": [
+                                          {
+                                            "title": "Weather adjustment",
+                                            "description": "The UK has cooler, cloudier weather with frequent rain compared to Turkey"
+                                          },
+                                          {
+                                            "title": "Higher cost of living",
+                                            "description": "Expenses are significantly higher, requiring careful budgeting"
+                                          },
+                                          {
+                                            "title": "Cultural differences",
+                                            "description": "British social norms and etiquette may take time to understand"
+                                          },
+                                          {
+                                            "title": "Complex visa system",
+                                            "description": "Navigating immigration rules can be stressful and expensive"
+                                          }
+                                        ]
+                                      },
+                                      "turkishCommunities": {
+                                        "title": "Turkish Communities in the UK",
+                                        "description": "The UK has established Turkish communities, especially in:",
+                                        "cities": ["North London", "Manchester", "Birmingham", "Edinburgh", "Leeds"],
+                                        "supportNote": "You'll find cultural associations, community centers, Turkish restaurants, and social media groups to help you connect with fellow Turks and ease your transition."
+                                      }
+                                    },
+                                    "checklist": {
+                                      "title": "Final Checklist Before Moving to the UK",
+                                      "items": [
+                                        "Apply for and secure the appropriate visa",
+                                        "Pay the Immigration Health Surcharge",
+                                        "Arrange accommodation in advance",
+                                        "Set up a UK bank account",
+                                        "Research UK tax system and obligations",
+                                        "Exchange some currency before arrival",
+                                        "Connect with Turkish communities in your destination city"
+                                      ]
+                                    },
+                                    "conclusion": {
+                                      "title": "Is Moving to the UK Right for You?",
+                                      "text": "Moving to the UK offers educational excellence, career opportunities, and a high standard of living, but comes with higher costs and cultural adjustments. Careful planning and research are essential. For many Turkish citizens seeking new horizons, the UK's multicultural environment and established Turkish communities make it an attractive destination despite the challenges."
+                                    },
+                                    "footer": {
+                                      "lastUpdated": "Last updated: May 2025"
+                                    }
+                                  },
+                                  
+                                    "ukvisaguide": {
+                                      "introduction": "Moving to the UK requires selecting the appropriate visa based on your circumstances. The UK offers various visa and residence options for workers, students, family members, investors, and entrepreneurs.",
+                                      "labels": {
+                                        "bestFor": "Best for:",
+                                        "requirements": "Requirements:",
+                                        "benefits": "Benefits:",
+                                        "validity": "Validity:"
+                                      },
+                                      "visaTypes": [
+                                        {
+                                          "title": "Skilled Worker Visa",
+                                          "bestFor": [
+                                            "Professionals with job offers from UK employers",
+                                            "People working in shortage occupations",
+                                            "Experienced workers in specialized fields"
+                                          ],
+                                          "requirements": [
+                                            "Job offer from a UK employer with sponsorship license",
+                                            "Skill level equivalent to RQF Level 3 or above",
+                                            "English language proficiency (B1 level)",
+                                            "Minimum salary threshold (typically £26,200 or the occupation's \"going rate\")",
+                                            "Sufficient funds to support yourself"
+                                          ],
+                                          "validity": "Up to 5 years (extendable, path to settlement after 5 years)"
+                                        },
+                                        {
+                                          "title": "Student Visa",
+                                          "bestFor": "Students accepted into UK universities or educational institutions",
+                                          "requirements": [
+                                            "Confirmed place at a licensed student sponsor institution",
+                                            "English language proficiency",
+                                            "Proof of financial means to cover tuition and living costs",
+                                            "Consent from parents/guardian (if under 18)"
+                                          ],
+                                          "validity": "Duration of course plus some months (varies by course length)"
+                                        },
+                                        {
+                                          "title": "Family Visa",
+                                          "bestFor": "Partners, children, and dependents of British citizens or settled persons",
+                                          "requirements": [
+                                            "Proof of genuine and subsisting relationship",
+                                            "Meeting minimum income requirement (£18,600 plus additional for children)",
+                                            "Adequate accommodation",
+                                            "English language requirement (for partners)"
+                                          ],
+                                          "validity": "2.5 years initially (renewable, path to settlement after 5 years)"
+                                        },
+                                        {
+                                          "title": "Innovator Founder Visa",
+                                          "bestFor": "Experienced entrepreneurs setting up an innovative business in the UK",
+                                          "requirements": [
+                                            "Endorsement from an approved endorsing body",
+                                            "Viable, innovative business plan",
+                                            "At least £50,000 investment funds",
+                                            "English language proficiency (B2 level)",
+                                            "Sufficient personal funds for maintenance"
+                                          ],
+                                          "validity": "3 years (path to settlement after 3 years)"
+                                        },
+                                        {
+                                          "title": "Global Talent Visa",
+                                          "bestFor": "Leaders or potential leaders in academia, research, arts, culture, or digital technology",
+                                          "requirements": [
+                                            "Endorsement from a relevant UK body in your field",
+                                            "Proof of exceptional talent or promise",
+                                            "Track record of achievements in your field"
+                                          ],
+                                          "benefits": [
+                                            "Flexible work arrangements (no sponsor needed)",
+                                            "Path to settlement after 3-5 years",
+                                            "Dependents can join you"
+                                          ]
+                                        },
+                                        {
+                                          "title": "High Potential Individual Visa",
+                                          "bestFor": "Recent graduates from top global universities",
+                                          "requirements": [
+                                            "Degree equivalent to UK bachelor's or higher from a top global university (within last 5 years)",
+                                            "English language proficiency (B1 level)",
+                                            "Sufficient maintenance funds"
+                                          ],
+                                          "validity": "2 years for bachelor's/master's graduates, 3 years for PhD graduates (no direct path to settlement)"
+                                        },
+                                        {
+                                          "title": "Investor Visa",
+                                          "bestFor": "High net worth individuals looking to invest in the UK",
+                                          "requirements": [
+                                            "£2 million minimum investment in UK companies",
+                                            "Funds must be held in a regulated financial institution",
+                                            "Funds must be disposable in the UK",
+                                            "UK bank account"
+                                          ],
+                                          "validity": "3 years initially (path to settlement in 2-5 years depending on investment amount)"
+                                        },
+                                        {
+                                          "title": "Graduate Visa",
+                                          "bestFor": "International students who completed a degree in the UK",
+                                          "requirements": [
+                                            "Successfully completed a degree at a UK higher education provider",
+                                            "Current Student visa at the time of application",
+                                            "Sponsor's confirmation of course completion"
+                                          ],
+                                          "validity": "2 years for bachelor's and master's graduates, 3 years for PhD graduates"
+                                        }
+                                      ],
+                                      "footer": {
+                                        "disclaimer": "Note: UK immigration rules are subject to change. Always check the official UK government website for the most up-to-date information."
+                                      }
+                                    }
+                                    
+
+  }

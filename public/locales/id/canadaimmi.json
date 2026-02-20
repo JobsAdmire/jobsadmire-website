@@ -1,0 +1,1728 @@
+{
+  "herosection": {
+    "badge": "Perjalanan Eksklusif",
+    "title": "Temukan Petualangan Anda Selanjutnya",
+    "description": "Rasakan keindahan destinasi yang menakjubkan dan ciptakan kenangan tak terlupakan dengan paket wisata premium kami yang disesuaikan dengan keinginan Anda.",
+    "currentlyViewing": {
+      "label": "Sedang Dilihat"
+    },
+    "buttons": {
+      "primary": "Jelajahi Sekarang",
+      "secondary": "Lihat Semua Destinasi"
+    },
+    "destinationCounter": "Tujuan {saat ini}/{total}",
+    "destinations": [
+      {
+        "img": "/images/ihc.png",
+        "name": "Kota Calgary",
+        "country": "Kanada",
+        "alt": "Pemandangan indah kota Calgary, Kanada."
+      },
+      {
+        "img": "/images/ihm.png",
+        "name": "Montreal",
+        "country": "Kanada",
+        "alt": "Pemandangan kota Montreal yang menakjubkan, Kanada"
+      },
+      {
+        "img": "/images/iho.png",
+        "name": "Ottawa",
+        "country": "Kanada",
+        "alt": "Pemandangan indah di Ottawa, Kanada"
+      },
+      {
+        "img": "/images/iht.png",
+        "name": "Toronto",
+        "country": "Kanada",
+        "alt": "Pemandangan ikonik kota Toronto, Kanada"
+      },
+      {
+        "img": "/images/ihv.png",
+        "name": "Vancouver",
+        "country": "Kanada",
+        "alt": "Pemandangan Vancouver yang menakjubkan, Kanada"
+      }
+    ],
+    "compass": [
+      "N",
+      "E",
+      "S",
+      "W"
+    ]
+  },
+  "tableofcontents": {
+    "header": {
+      "title": "Daftar isi",
+      "subtitle": "Navigasi melalui bagian-bagian"
+    },
+    "status": {
+      "currentlyReading": "Saat ini sedang membaca"
+    },
+    "footer": {
+      "sectionsCount": "{count} bagian untuk dijelajahi"
+    },
+    "quickNav": {
+      "title": "Navigasi Cepat",
+      "buttonLabel": "Menu navigasi cepat",
+      "footer": "Gulir melalui {count} bagian"
+    },
+    "accessibility": {
+      "openMenu": "Buka menu navigasi",
+      "closeMenu": "Tutup menu navigasi"
+    },
+    "sections": [
+      {
+        "title": "Fakta Tentang Kanada",
+        "id": 1
+      },
+      {
+        "title": "Opsi Visa untuk Pindah ke Kanada",
+        "id": 2
+      },
+      {
+        "title": "Persyaratan Penting untuk Pindah ke Kanada",
+        "id": 3
+      },
+      {
+        "title": "Mendapatkan Pekerjaan di Kanada sebagai Warga Negara Asing",
+        "id": 4
+      },
+      {
+        "title": "Pindah ke Kanada dari AS",
+        "id": 5
+      },
+      {
+        "title": "Pindah ke Kanada dari Inggris",
+        "id": 6
+      },
+      {
+        "title": "Berapa biaya untuk pindah ke Kanada?",
+        "id": 7
+      },
+      {
+        "title": "Pindah ke Kanada Bersama Hewan Peliharaan",
+        "id": 8
+      }
+    ]
+  },
+  "canadafacts": {
+    "navigation": {
+      "previous": "Fakta Sebelumnya",
+      "next": "Fakta Selanjutnya"
+    },
+    "allFactsSection": {
+      "title": "Semua Fakta Tentang Kanada"
+    },
+    "accessibility": {
+      "selectFact": "Pilih fakta",
+      "goToFact": "Buka fakta",
+      "previousFact": "Kembali ke fakta sebelumnya",
+      "nextFact": "Lanjut ke fakta berikutnya"
+    },
+    "facts": [
+      {
+        "title": "Garis Pantai Terpanjang di Dunia",
+        "description": "Kanada memiliki garis pantai terpanjang di dunia, membentang lebih dari 202.080 kilometer di sepanjang Samudra Atlantik, Pasifik, dan Arktik.",
+        "icon": "🌊"
+      },
+      {
+        "title": "Merupakan rumah bagi 20% air tawar dunia.",
+        "description": "Kanada memiliki sekitar 20% air tawar dunia yang tersimpan dalam danau, sungai, dan gletsernya yang tak terhitung jumlahnya.",
+        "icon": "💧"
+      },
+      {
+        "title": "Ibu Kota Beruang Kutub",
+        "description": "Churchill, Manitoba dikenal sebagai 'Ibu Kota Beruang Kutub Dunia' karena terletak di jalur migrasi utama beruang kutub.",
+        "icon": "🐻‍❄️"
+      },
+      {
+        "title": "Taman Nasional mencakup 8% wilayah negara.",
+        "description": "Taman nasional dan cagar alam taman nasional Kanada mencakup sekitar 8% wilayah negara tersebut, melestarikan keanekaragaman ekologi.",
+        "icon": "🏞️"
+      },
+      {
+        "title": "Penemu Poutine",
+        "description": "Hidangan ikonik berupa kentang goreng yang diberi taburan keju dadih dan saus kental ini berasal dari Quebec pada akhir tahun 1950-an.",
+        "icon": "🍟"
+      },
+      {
+        "title": "Dua Bahasa Resmi",
+        "description": "Kanada memiliki dua bahasa resmi: Inggris dan Prancis. Sekitar 23% warga Kanada berbicara bahasa Prancis sebagai bahasa pertama mereka.",
+        "icon": "🗣️"
+      },
+      {
+        "title": "Ibu Kota Sirup Maple",
+        "description": "Kanada memproduksi sekitar 71% sirup maple dunia, dengan Quebec sebagai produsen terbesar secara global.",
+        "icon": "🍁"
+      },
+      {
+        "title": "Negara Terbesar Kedua di Dunia",
+        "description": "Dengan luas wilayah 9,98 juta kilometer persegi, Kanada adalah negara terbesar kedua di dunia berdasarkan luas total wilayahnya.",
+        "icon": "🗺️"
+      },
+      {
+        "title": "Rumah bagi Aurora Borealis",
+        "description": "Kanada menawarkan beberapa peluang terbaik untuk menyaksikan Aurora Borealis, terutama di Wilayah Barat Laut dan Yukon.",
+        "icon": "🌌"
+      },
+      {
+        "title": "Masyarakat Multikultural",
+        "description": "Kanada adalah rumah bagi orang-orang dari lebih dari 200 etnis, menjadikannya salah satu negara paling multikultural di dunia.",
+        "icon": "🌍"
+      }
+    ]
+  },
+  "canadajobguide": {
+    "tableOfContents": {
+      "title": "Daftar Isi Panduan"
+    },
+    "accessibility": {
+      "toggleSection": "Alihkan bagian"
+    },
+    "sections": {
+      "jobMarket": {
+        "title": "Memahami Pasar Kerja Kanada",
+        "description": "Kanada menawarkan beragam peluang kerja di berbagai sektor, dengan beberapa industri secara aktif mencari talenta internasional.",
+        "inDemandTitle": "Sektor-sektor yang Banyak Diminati oleh Warga Negara Asing:",
+        "sectors": [
+          {
+            "name": "Perawatan kesehatan",
+            "description": "Dokter, perawat, pekerja perawatan"
+          },
+          {
+            "name": "Teknologi Informasi & Teknologi",
+            "description": "Insinyur perangkat lunak, ilmuwan data"
+          },
+          {
+            "name": "Rekayasa",
+            "description": "Teknik sipil, teknik mesin, teknik elektro"
+          },
+          {
+            "name": "Keuangan",
+            "description": "Perbankan, teknologi keuangan, akuntansi"
+          },
+          {
+            "name": "Keahlian Perdagangan",
+            "description": "Tukang las, tukang listrik, tukang ledeng"
+          },
+          {
+            "name": "Pertanian",
+            "description": "Manajer pertanian, ahli agronomi"
+          }
+        ],
+        "languageNote": "Kanada memiliki dua bahasa resmi: Inggris dan Prancis. Kemampuan berbahasa Inggris sangat penting untuk sebagian besar posisi, tetapi kemampuan dwibahasa merupakan keuntungan, terutama di Quebec dan peran di pemerintahan federal."
+      },
+      "immigration": {
+        "title": "Jalur Imigrasi Kanada",
+        "description": "Kanada menawarkan berbagai jalur imigrasi untuk pekerja terampil, dengan Express Entry sebagai sistem utama.",
+        "expressEntry": {
+          "title": "Sistem Masuk Cepat",
+          "description": "Jalur utama bagi imigran terampil:",
+          "points": [
+            "Mengelola permohonan untuk Program Pekerja Terampil Federal, Program Perdagangan Terampil Federal, dan Kelas Pengalaman Kanada.",
+            "Berdasarkan Sistem Peringkat Komprehensif (CRS) yang memberi skor pada kandidat.",
+            "Poin diberikan berdasarkan usia, pendidikan, pengalaman kerja, kemampuan berbahasa, dan faktor kemampuan beradaptasi.",
+            "Pengundian berkala mengundang kandidat dengan skor tertinggi untuk mengajukan permohonan izin tinggal tetap."
+          ]
+        },
+        "otherPathways": {
+          "title": "Jalur Imigrasi Lainnya:",
+          "programs": [
+            {
+              "name": "Program Nominasi Provinsi (PNP)",
+              "description": "Provinsi dapat mencalonkan kandidat untuk memenuhi kebutuhan ekonomi lokal."
+            },
+            {
+              "name": "Program Imigrasi Atlantik",
+              "description": "Bagi mereka yang ingin bekerja di provinsi-provinsi Atlantik"
+            },
+            {
+              "name": "Program Percontohan Imigrasi Pedesaan dan Utara",
+              "description": "Untuk komunitas yang lebih kecil di luar pusat kota besar."
+            },
+            {
+              "name": "Aliran Bakat Global",
+              "description": "Izin kerja jalur cepat untuk pekerja teknologi dan inovator"
+            },
+            {
+              "name": "Izin Kerja Pasca-Kelulusan",
+              "description": "Untuk mahasiswa internasional yang telah menyelesaikan studi di Kanada"
+            }
+          ]
+        },
+        "conclusion": "Sebagian besar program imigrasi Kanada mengarah ke izin tinggal tetap, yang memungkinkan Anda untuk bekerja untuk perusahaan mana pun dan akhirnya mengajukan permohonan kewarganegaraan."
+      },
+      "jobOpportunities": {
+        "title": "Mencari Peluang Kerja di Kanada",
+        "portalsTitle": "Portal Lowongan Kerja Populer di Kanada:",
+        "portals": [
+          "Memang Kanada",
+          "Kota Kerja",
+          "LinkedIn",
+          "Raksasa",
+          "Bank Pekerjaan",
+          "Pintu Kaca",
+          "Eluta",
+          "ZipRecruiter"
+        ],
+        "tipsTitle": "Tips Profesional:",
+        "tips": [
+          "Kunjungi situs web resmi Job Bank untuk informasi dan peluang pasar kerja.",
+          "Cari perusahaan yang memiliki riwayat merekrut talenta internasional.",
+          "Sesuaikan resume Anda dengan format Kanada (biasanya 1-2 halaman, berfokus pada pencapaian).",
+          "Sertakan penilaian kredensial Kanada jika Anda memiliki kualifikasi asing.",
+          "Jalinlah jaringan melalui organisasi layanan imigran tingkat provinsi dan kota."
+        ]
+      },
+      "noc": {
+        "title": "Klasifikasi Pekerjaan Nasional (NOC)",
+        "description": "Kanada menggunakan sistem Klasifikasi Pekerjaan Nasional (NOC) untuk mengkategorikan pekerjaan. Memahami kode NOC Anda sangat penting untuk imigrasi.",
+        "categories": {
+          "title": "Kategori TEER:",
+          "teer": [
+            {
+              "name": "TEER 0",
+              "description": "Pekerjaan manajemen"
+            },
+            {
+              "name": "TEER 1",
+              "description": "Pekerjaan yang membutuhkan gelar universitas"
+            },
+            {
+              "name": "TEER 2",
+              "description": "Pekerjaan yang membutuhkan ijazah perguruan tinggi atau pelatihan magang."
+            },
+            {
+              "name": "TEER 3",
+              "description": "Pekerjaan yang membutuhkan pendidikan sekolah menengah dan/atau pelatihan khusus bidang pekerjaan."
+            },
+            {
+              "name": "TEER 4",
+              "description": "Pekerjaan yang membutuhkan demonstrasi kerja singkat dan tidak memerlukan pendidikan formal."
+            },
+            {
+              "name": "TEER 5",
+              "description": "Pekerjaan tingkat pemula yang membutuhkan demonstrasi kerja singkat"
+            }
+          ]
+        },
+        "importance": {
+          "title": "Mengapa Ini Penting:",
+          "points": [
+            "Sebagian besar program pekerja terampil mensyaratkan pekerjaan dengan TEER 0, 1, 2, atau 3.",
+            "Menentukan kelayakan untuk program imigrasi tertentu",
+            "Memengaruhi poin CRS di Express Entry",
+            "Membantu memverifikasi bahwa pengalaman kerja Anda sesuai dengan tawaran pekerjaan Anda.",
+            "Digunakan untuk menentukan tingkat upah yang berlaku."
+          ]
+        },
+        "findCode": "Temukan kode NOC Anda di situs web resmi Imigrasi, Pengungsi, dan Kewarganegaraan Kanada (IRCC)."
+      },
+      "remoteWork": {
+        "title": "Opsi Kerja Jarak Jauh di Kanada",
+        "intro": "Bekerja jarak jauh semakin umum di Kanada, terutama di bidang teknologi, keuangan, dan industri kreatif:",
+        "points": [
+          "Untuk bekerja jarak jauh untuk perusahaan Kanada, Anda tetap memerlukan izin kerja yang sesuai.",
+          "Global Talent Stream memfasilitasi percepatan izin kerja bagi pekerja teknologi, termasuk untuk peran jarak jauh.",
+          "Banyak perusahaan Kanada sekarang menawarkan pengaturan kerja jarak jauh permanen atau pengaturan kerja hibrida.",
+          "Visa Digital Nomad: Kanada memperkenalkan visa Digital Nomad baru pada tahun 2024 untuk pekerja jarak jauh yang dipekerjakan oleh perusahaan asing."
+        ],
+        "taxConsiderations": {
+          "title": "Pertimbangan Pajak:",
+          "points": [
+            "Bekerja di Kanada umumnya membuat Anda menjadi penduduk pajak.",
+            "Waspadai potensi masalah pajak berganda.",
+            "Kanada memiliki perjanjian pajak dengan banyak negara.",
+            "Konsultasikan dengan profesional pajak untuk situasi spesifik Anda."
+          ]
+        }
+      },
+      "teaching": {
+        "title": "Mengajar di Kanada",
+        "description": "Profesi mengajar menawarkan peluang bagus bagi kandidat internasional yang berkualifikasi di Kanada.",
+        "k12": {
+          "title": "Pengajaran K-12:",
+          "requirements": [
+            "Setiap provinsi mengatur sertifikasi guru masing-masing.",
+            "Umumnya membutuhkan gelar Sarjana Pendidikan atau yang setara.",
+            "Kualifikasi pendidikan luar negeri perlu dinilai oleh otoritas pengajaran provinsi.",
+            "Guru program pembelajaran bahasa Prancis secara intensif sangat dibutuhkan."
+          ]
+        },
+        "esl": {
+          "title": "Pengajaran ESL:",
+          "requirements": [
+            "Sertifikasi TESL/TESOL biasanya diperlukan.",
+            "Peluang di sekolah bahasa, perguruan tinggi komunitas, dan lembaga pemukiman.",
+            "Gelar sarjana biasanya diperlukan.",
+            "Permintaan tinggi di daerah dengan populasi imigran yang besar."
+          ]
+        },
+        "conclusion": "Banyak provinsi memiliki program khusus untuk mempercepat sertifikasi bagi guru asing yang berkualitas, terutama dalam mata pelajaran yang kekurangan tenaga pengajar."
+      },
+      "resumeInterview": {
+        "title": "Contoh Resume dan Wawancara di Kanada",
+        "resume": {
+          "title": "Format Resume Kanada:",
+          "points": [
+            "Disebut \"resume\" dan bukan CV.",
+            "Biasanya maksimal 1-2 halaman.",
+            "Tidak ada foto",
+            "Tidak ada detail pribadi seperti usia, status perkawinan, atau agama.",
+            "Urutan kronologis terbalik (pengalaman terbaru terlebih dahulu)",
+            "Fokuslah pada pencapaian, bukan hanya kewajiban.",
+            "Sertakan penilaian kredensial Kanada jika berlaku."
+          ]
+        },
+        "interview": {
+          "title": "Harapan Saat Wawancara:",
+          "expectations": [
+            "Ketepatan waktu sangat penting (datang 10-15 menit lebih awal adalah hal yang standar).",
+            "Kasual bisnis atau formal bisnis, tergantung pada industrinya.",
+            "Bersiaplah untuk pertanyaan perilaku (\"Ceritakan tentang suatu waktu ketika...\")",
+            "Lakukan riset mendalam tentang perusahaan dan nilai-nilainya.",
+            "Orang Kanada menghargai kesopanan, jadi bersikaplah sopan namun percaya diri.",
+            "Siapkan pertanyaan-pertanyaan yang matang mengenai peran dan budaya perusahaan."
+          ]
+        }
+      },
+      "networking": {
+        "title": "Membangun jaringan di Kanada",
+        "description": "Membangun jaringan sangat penting di pasar kerja Kanada, di mana banyak posisi terisi sebelum diiklankan.",
+        "strategies": [
+          "Bergabunglah dengan asosiasi profesional di bidang Anda.",
+          "Hadiri pertemuan industri, konferensi, dan bursa kerja.",
+          "Berpartisipasi dalam program pemukiman imigran tingkat provinsi.",
+          "Berinteraksilah dengan jaringan alumni jika Anda pernah belajar di Kanada.",
+          "Bergabunglah sebagai sukarelawan untuk mendapatkan pengalaman di Kanada dan membangun koneksi.",
+          "Buat profil LinkedIn yang kuat dan dioptimalkan untuk pasar Kanada."
+        ],
+        "resources": {
+          "title": "Sumber Daya Utama untuk Penyelesaian Masalah:",
+          "list": [
+            "Organisasi-organisasi yang melayani imigran di kota Anda",
+            "Layanan pendatang baru provinsi",
+            "Program pendampingan khusus industri",
+            "Acara networking untuk para profesional internasional",
+            "Konseling ketenagakerjaan yang didanai pemerintah Kanada"
+          ]
+        }
+      }
+    },
+    "checklist": {
+      "title": "Daftar Periksa Pencarian Kerja di Kanada",
+      "categories": [
+        {
+          "title": "Sebelum Anda Melamar",
+          "items": {
+            "0": "Lakukan penilaian kredensial asing Anda (ECA)",
+            "1": "Format resume Anda sesuai standar Kanada.",
+            "2": "Tentukan kode NOC dan kategori TEER Anda.",
+            "3": "Ikuti tes bahasa yang diperlukan (IELTS/CELPIP/TEF)"
+          }
+        },
+        {
+          "title": "Langkah-langkah Imigrasi",
+          "items": {
+            "0": "Buat profil Express Entry jika memenuhi syarat.",
+            "1": "Teliti program nominasi provinsi.",
+            "2": "Periksa opsi izin kerja khusus perusahaan.",
+            "3": "Siapkan bukti ketersediaan dana untuk penyelesaian transaksi."
+          }
+        },
+        {
+          "title": "Persiapan Penyelesaian",
+          "items": {
+            "0": "Teliti biaya hidup di kota-kota target.",
+            "1": "Berhubungan dengan lembaga pemukiman",
+            "2": "Bergabunglah dengan grup media sosial untuk pendatang baru",
+            "3": "Pelajari tentang layanan kesehatan dan sistem sosial."
+          }
+        }
+      ]
+    }
+  },
+  "canadamovingcosts": {
+    "accessibility": {
+      "toggleSection": "Alihkan bagian untuk"
+    },
+    "costSections": [
+      {
+        "id": "visa-pr",
+        "icon": "🛂",
+        "title": "Visa & Izin Tinggal Tetap",
+        "amount": "$1.500–$3.000",
+        "details": "Termasuk biaya pendaftaran, pemeriksaan medis, dan tes bahasa.",
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "perumahan",
+        "icon": "🏠",
+        "title": "Perumahan",
+        "amount": "Uang muka sebesar $2.000–$5.000",
+        "details": "Uang sewa bulan pertama dan terakhir + uang jaminan",
+        "subItems": {
+          "0": {
+            "title": "Kota-kota besar (bulanan)",
+            "amount": "$1.500–$3.000"
+          },
+          "1": {
+            "title": "Kota/kota kecil (bulanan)",
+            "amount": "$800–$1.500"
+          }
+        },
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "pengiriman",
+        "icon": "📦",
+        "title": "Pengiriman (Opsional)",
+        "amount": "$5.000–$10.000",
+        "details": "Kontainer berukuran kecil hingga menengah. Pertimbangkan opsi furnitur lokal untuk mengurangi biaya.",
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "angkutan",
+        "icon": "🚗",
+        "title": "Angkutan",
+        "amount": "$500–$5.000",
+        "details": "Tiket transportasi umum atau pembelian mobil bekas",
+        "subItems": {
+          "0": {
+            "title": "Kartu transportasi bulanan",
+            "amount": "$90–$150"
+          },
+          "1": {
+            "title": "Mobil bekas",
+            "amount": "$5.000–$15.000"
+          },
+          "2": {
+            "title": "Asuransi mobil (bulanan)",
+            "amount": "$150–$300"
+          }
+        },
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "utilitas",
+        "icon": "💡",
+        "title": "Pengaturan Utilitas & Internet",
+        "amount": "$200–$400",
+        "details": "Biaya dan deposit koneksi",
+        "subItems": {
+          "0": {
+            "title": "Tagihan bulanan",
+            "amount": "$150–$300"
+          },
+          "1": {
+            "title": "Internet (bulanan)",
+            "amount": "$60–$100"
+          },
+          "2": {
+            "title": "Telepon seluler (bulanan)",
+            "amount": "$50–$100"
+          }
+        },
+        "color": "bg-sky-500"
+      },
+      {
+        "id": "perawatan kesehatan",
+        "icon": "🏥",
+        "title": "Cakupan Perawatan Kesehatan",
+        "amount": "$0–$900",
+        "details": "Berbeda-beda di setiap provinsi. Beberapa provinsi memiliki masa tunggu untuk mendapatkan layanan kesehatan publik.",
+        "subItems": {
+          "0": {
+            "title": "Asuransi swasta (bulanan selama masa tunggu)",
+            "amount": "$75–$150"
+          }
+        },
+        "color": "bg-sky-600"
+      },
+      {
+        "id": "setiap hari",
+        "icon": "🛒",
+        "title": "Biaya Sehari-hari",
+        "amount": "$800–$1.500 per bulan",
+        "subItems": {
+          "0": {
+            "title": "Bahan makanan",
+            "amount": "$400–$800/bulan"
+          },
+          "1": {
+            "title": "Makan di luar",
+            "amount": "$200–$400/bulan"
+          },
+          "2": {
+            "title": "Hiburan",
+            "amount": "$100–$300/bulan"
+          }
+        },
+        "color": "bg-sky-700"
+      },
+      {
+        "id": "musim dingin",
+        "icon": "❄️",
+        "title": "Perlengkapan Musim Dingin",
+        "amount": "$500–$1.000",
+        "details": "Pakaian musim dingin, sepatu bot, aksesoris",
+        "color": "bg-sky-500"
+      }
+    ],
+    "totalCosts": {
+      "title": "Total Estimasi Biaya",
+      "categories": [
+        {
+          "title": "Pengaturan Awal (Tanpa Pengiriman)",
+          "amount": "$5.000–$10.000",
+          "description": "Termasuk biaya visa, biaya penginapan bulan pertama, uang deposit, perlengkapan musim dingin, dan biaya pengaturan dasar."
+        },
+        {
+          "title": "Pengaturan Awal (Termasuk Pengiriman)",
+          "amount": "$10.000–$20.000+",
+          "description": "Termasuk semua biaya dasar ditambah kontainer pengiriman barang-barang rumah tangga."
+        },
+        {
+          "title": "Pengeluaran Bulanan (Perkiraan)",
+          "amount": "$2.000–$4.500",
+          "description": "Termasuk biaya sewa, utilitas, belanjaan, transportasi, dan pengeluaran rutin lainnya."
+        }
+      ]
+    },
+    "regionalCosts": {
+      "title": "Variasi Biaya Regional",
+      "categories": [
+        {
+          "title": "Biaya Tinggi",
+          "cities": {
+            "0": "Toronto",
+            "1": "Vancouver",
+            "2": "Victoria"
+          }
+        },
+        {
+          "title": "Biaya Sedang",
+          "cities": {
+            "0": "Kota Calgary",
+            "1": "Montreal",
+            "2": "Ottawa"
+          }
+        },
+        {
+          "title": "Biaya Lebih Rendah",
+          "cities": {
+            "0": "Winnipeg",
+            "1": "Kota Quebec",
+            "2": "Halifax"
+          }
+        }
+      ]
+    },
+    "savingTips": {
+      "title": "Strategi Penghematan Biaya",
+      "tips": [
+        {
+          "title": "Pertimbangkan Kota-kota Sekunder",
+          "description": "Tinggal di Montreal, Calgary, atau Ottawa, alih-alih di Toronto atau Vancouver, dapat mengurangi biaya perumahan hingga 30-40%."
+        },
+        {
+          "title": "Beli Furnitur di Kanada",
+          "description": "Belilah furnitur secara lokal dari IKEA, toko barang bekas, atau Facebook Marketplace daripada memesan pengiriman."
+        },
+        {
+          "title": "Transportasi Umum",
+          "description": "Di kota-kota besar, menggunakan transportasi umum jauh lebih ekonomis daripada memiliki mobil."
+        },
+        {
+          "title": "Tiba di Musim Semi/Panas",
+          "description": "Pindah rumah selama bulan-bulan yang lebih hangat mengurangi kebutuhan mendesak akan perlengkapan musim dingin yang mahal."
+        }
+      ]
+    },
+    "conclusion": "Pindah ke Kanada membutuhkan investasi awal yang signifikan, tetapi memberikan akses ke kualitas hidup yang tinggi, layanan kesehatan universal, dan peluang ekonomi. Dengan perencanaan dan penganggaran yang tepat, transisi Anda ke kehidupan di Kanada dapat berhasil dan bermanfaat."
+  },
+  "ustocanadaguide": {
+    "navigation": {
+      "title": "Lompat ke Bagian"
+    },
+    "accessibility": {
+      "toggleSection": "Alihkan bagian untuk"
+    },
+    "sections": {
+      "whyCanada": {
+        "title": "Mengapa Pindah ke Kanada?",
+        "description": "Banyak warga Amerika memilih Kanada sebagai rumah baru mereka karena alasan-alasan yang kuat:",
+        "reasons": [
+          "Sistem perawatan kesehatan universal",
+          "Kualitas hidup dan keamanan yang tinggi",
+          "Pemandangan alam yang indah",
+          "Keragaman budaya dan inklusivitas",
+          "Sistem dukungan sosial yang kuat",
+          "Kedekatan dengan AS untuk mengunjungi keluarga."
+        ],
+        "conclusion": "Baik Anda pindah karena peluang profesional, pendidikan, alasan keluarga, atau mencari perubahan gaya hidup, Kanada menawarkan pengalaman yang familiar namun juga berbeda bagi warga Amerika."
+      },
+      "immigrationOptions": {
+        "title": "Opsi Imigrasi untuk Warga Negara AS",
+        "description": "Sebagai warga negara AS, Anda memiliki beberapa jalur untuk berimigrasi ke Kanada:",
+        "options": [
+          {
+            "title": "1. Sistem Express Entry",
+            "points": {
+              "0": "Sistem berbasis poin untuk pekerja terampil",
+              "1": "Mengevaluasi usia, pendidikan, pengalaman kerja, dan kemampuan berbahasa.",
+              "2": "Sistem kompetitif dengan peringkat dan undangan",
+              "3": "Jalur menuju izin tinggal tetap"
+            }
+          },
+          {
+            "title": "2. Program Nominasi Provinsi (PNP)",
+            "points": {
+              "0": "Provinsi dan wilayah mencalonkan kandidat berdasarkan kebutuhan lokal.",
+              "1": "Seringkali lebih cepat daripada program federal untuk keterampilan yang dibutuhkan.",
+              "2": "Setiap provinsi memiliki jalur dan persyaratan khusus.",
+              "3": "Dapat mengarah ke izin tinggal tetap."
+            }
+          },
+          {
+            "title": "3. Izin Belajar",
+            "points": {
+              "0": "Untuk pendaftaran di lembaga-lembaga Kanada yang ditunjuk",
+              "1": "Membutuhkan surat penerimaan, bukti dana, dan catatan bersih.",
+              "2": "Termasuk izin kerja terbatas.",
+              "3": "Izin kerja pasca-kelulusan tersedia setelah menyelesaikan studi."
+            }
+          },
+          {
+            "title": "4. Sponsorship Keluarga",
+            "points": {
+              "0": "Untuk pasangan, mitra, anak, atau orang tua dari warga negara Kanada/pemegang PR Kanada",
+              "1": "Sponsor harus memenuhi persyaratan pendapatan.",
+              "2": "Mengarah ke izin tinggal tetap"
+            }
+          },
+          {
+            "title": "5. Izin Kerja NAFTA/USMCA",
+            "points": {
+              "0": "Izin kerja sementara untuk profesi yang memenuhi syarat",
+              "1": "Harus memiliki surat penawaran kerja dari perusahaan Kanada.",
+              "2": "Proses pendaftaran yang relatif mudah.",
+              "3": "Dapat menjadi batu loncatan menuju jalur imigrasi permanen."
+            }
+          }
+        ]
+      },
+      "requiredDocuments": {
+        "title": "Dokumen yang Diperlukan untuk Imigrasi",
+        "description": "Persyaratan dokumen berbeda-beda tergantung jalur imigrasi, tetapi umumnya meliputi:",
+        "documents": [
+          "Paspor AS yang masih berlaku",
+          "Formulir permohonan imigrasi",
+          "Bukti kemampuan berbahasa (Inggris/Prancis)",
+          "Penilaian kredensial pendidikan",
+          "Referensi dan bukti pengalaman kerja",
+          "Surat keterangan bebas catatan kepolisian",
+          "Hasil pemeriksaan medis",
+          "Bukti dana untuk menghidupi diri sendiri"
+        ],
+        "tip": {
+          "label": "Tips profesional:",
+          "text": "Mulailah mengumpulkan dokumen-dokumen ini sedini mungkin. Penilaian pendidikan, tes bahasa, dan surat keterangan polisi dapat memakan waktu beberapa minggu untuk diperoleh."
+        }
+      },
+      "popularCities": {
+        "title": "Kota-kota Populer di Kanada untuk Ekspatriat Amerika",
+        "description": "Warga Amerika yang pindah ke Kanada sering memilih daerah-daerah populer berikut ini:",
+        "mainCities": [
+          {
+            "name": "Toronto",
+            "icon": "🌆",
+            "highlights": {
+              "0": "Kota terbesar dan pusat keuangan Kanada",
+              "1": "Sangat beragam dengan pasar kerja yang kuat.",
+              "2": "Suasana budaya dan hiburan yang semarak.",
+              "3": "Biaya hidup lebih tinggi tetapi peluang lebih banyak."
+            }
+          },
+          {
+            "name": "Vancouver",
+            "icon": "🏞️",
+            "highlights": {
+              "0": "Iklim yang sejuk dan keindahan alam yang menakjubkan",
+              "1": "Industri teknologi dan film yang kuat",
+              "2": "Gaya hidup luar ruangan dengan pegunungan dan lautan.",
+              "3": "Biaya perumahan tinggi tetapi kualitas hidup tinggi."
+            }
+          },
+          {
+            "name": "Ottawa",
+            "icon": "🏛️",
+            "highlights": {
+              "0": "Ibu kota Kanada dengan pekerjaan pemerintah yang stabil.",
+              "1": "Perumahan terjangkau dibandingkan dengan Toronto/Vancouver",
+              "2": "Standar hidup dan keamanan yang tinggi",
+              "3": "Kota dwibahasa dengan atraksi budaya."
+            }
+          },
+          {
+            "name": "Montréal",
+            "icon": "🏛️",
+            "highlights": {
+              "0": "Pesona Eropa dengan kenyamanan Amerika Utara",
+              "1": "Biaya hidup lebih rendah dibandingkan kota-kota besar lainnya.",
+              "2": "Kaya akan budaya, kuliner, dan seni.",
+              "3": "Berbahasa Prancis tetapi bahasa Inggris dipahami secara luas."
+            }
+          }
+        ],
+        "emergingOptions": {
+          "title": "Opsi yang Muncul",
+          "cities": [
+            {
+              "name": "Halifax",
+              "description": "Gaya hidup pesisir Atlantik dengan perkembangan pesat di bidang teknologi."
+            },
+            {
+              "name": "Kota Calgary",
+              "description": "Ekonomi yang kuat, dekat dengan Pegunungan Rocky, pajak yang lebih rendah"
+            },
+            {
+              "name": "Waterloo",
+              "description": "Pusat teknologi dengan universitas dan inovasi."
+            },
+            {
+              "name": "Victoria",
+              "description": "Iklim yang sejuk dan gaya hidup pulau yang santai."
+            }
+          ]
+        }
+      },
+      "costOfLiving": {
+        "title": "Perbandingan Biaya Hidup: Kanada vs Amerika Serikat",
+        "table": {
+          "headers": {
+            "expense": "Pengeluaran",
+            "canada": "Kanada (rata-rata)",
+            "usa": "Amerika Serikat (rata-rata)"
+          },
+          "rows": [
+            {
+              "expense": "Sewa (1 kamar tidur, pusat kota)",
+              "canada": "C$1.300–$2.000/bulan",
+              "usa": "$1.500–$2.500/bulan"
+            },
+            {
+              "expense": "Perawatan kesehatan",
+              "canada": "Sebagian besar dicakup oleh rencana provinsi.",
+              "usa": "$300–$600/bulan",
+              "canadaHighlight": true
+            },
+            {
+              "expense": "Biaya utilitas (bulanan)",
+              "canada": "C$150–$200",
+              "usa": "$150–$200"
+            },
+            {
+              "expense": "Angkutan",
+              "canada": "C$100–$150/bulan",
+              "usa": "$100–$150 + biaya mobil"
+            },
+            {
+              "expense": "Makan di luar (untuk 2 orang)",
+              "canada": "C$60–$100",
+              "usa": "$50–$100"
+            },
+            {
+              "expense": "Biaya Kuliah Universitas",
+              "canada": "C$7.000–$20.000/tahun",
+              "usa": "$10.000–$40.000/tahun",
+              "canadaHighlight": true
+            },
+            {
+              "expense": "Pajak pendapatan",
+              "canada": "Secara umum lebih tinggi",
+              "usa": "Secara umum lebih rendah"
+            }
+          ]
+        },
+        "note": "Biaya hidup sangat bervariasi antar kota. Vancouver dan Toronto adalah kota termahal, setara dengan kota-kota besar di AS, sementara wilayah Kanada lainnya menawarkan biaya hidup yang lebih terjangkau."
+      },
+      "healthcare": {
+        "title": "Pelayanan kesehatan di Kanada",
+        "description": "Sistem perawatan kesehatan universal Kanada merupakan daya tarik utama bagi warga Amerika. Setiap provinsi mengelola rencana perawatan kesehatannya sendiri, yang mencakup sebagian besar layanan medis penting.",
+        "newcomersInfo": {
+          "title": "Pelayanan Kesehatan untuk Pendatang Baru",
+          "points": [
+            "Penduduk tetap dapat mengajukan permohonan asuransi kesehatan provinsi segera.",
+            "Beberapa provinsi memiliki masa tunggu (hingga 3 bulan) - asuransi swasta disarankan selama periode ini.",
+            "Persyaratan kelayakan penduduk sementara (izin kerja/belajar) berbeda-beda di setiap provinsi.",
+            "Tidak semua layanan ditanggung (perawatan gigi, penglihatan, obat resep)."
+          ]
+        },
+        "privateInsurance": "Asuransi kesehatan swasta tersedia dan direkomendasikan untuk melengkapi cakupan provinsi untuk layanan yang tidak termasuk, seperti perawatan gigi, obat resep, dan perawatan mata."
+      },
+      "language": {
+        "title": "Tips Bahasa & Budaya",
+        "description": "Meskipun memiliki banyak kesamaan, budaya Kanada memiliki karakteristiknya sendiri yang berbeda:",
+        "details": {
+          "title": "Bahasa Inggris Kanada & Nuansa Budaya",
+          "terms": {
+            "title": "Istilah Bahasa Inggris Kanada:",
+            "examples": [
+              "Kamar mandi (bukan toilet)",
+              "Topi rajut (topi musim dingin)",
+              "Loonie (koin 1 dolar), Toonie (koin 2 dolar)",
+              "Minuman bersoda (bukan soda)",
+              "Tenaga air (listrik)",
+              "Double-double (kopi dengan 2 krim, 2 gula)"
+            ]
+          },
+          "cultural": {
+            "title": "Perbedaan Budaya:",
+            "points": [
+              "Orang Kanada cenderung lebih pendiam pada awalnya.",
+              "Penekanan kuat pada kesopanan dan inklusivitas.",
+              "Multikulturalisme dirayakan dan diterima",
+              "Gaya komunikasi yang kurang konfrontatif",
+              "Kebiasaan memberi tip serupa dengan di AS (15-20%)"
+            ]
+          }
+        },
+        "frenchNote": "Bahasa Prancis adalah bahasa resmi bersama dengan bahasa Inggris. Meskipun sebagian besar Kanada didominasi oleh penutur bahasa Inggris, Quebec didominasi oleh penutur bahasa Prancis, dan banyak layanan federal bersifat dwibahasa."
+      },
+      "moving": {
+        "title": "Pindahan & Relokasi Lintas Batas",
+        "description": "Merencanakan kepindahan fisik Anda melintasi perbatasan membutuhkan persiapan:",
+        "belongings": {
+          "title": "Memindahkan Barang-Barang Anda",
+          "points": [
+            {
+              "label": "Barang dan perlengkapan pribadi",
+              "description": "Dapat diimpor bebas bea dengan dokumen yang sesuai."
+            },
+            {
+              "label": "Formulir yang dibutuhkan",
+              "description": "Dokumen Akuntansi Barang Pribadi (Formulir B4) dan daftar inventaris terperinci"
+            },
+            {
+              "label": "Perusahaan pindahan",
+              "description": "Pilihlah perusahaan yang berpengalaman dalam relokasi AS-Kanada."
+            },
+            {
+              "label": "Barang terlarang",
+              "description": "Beberapa jenis makanan, tumbuhan, dan senjata api dibatasi atau dilarang."
+            }
+          ]
+        },
+        "vehicles": {
+          "title": "Membawa Kendaraan",
+          "points": [
+            "Kendaraan harus memenuhi standar keselamatan dan emisi Kanada.",
+            "Proses impor memerlukan formulir, inspeksi, dan kemungkinan modifikasi.",
+            "Harga sudah termasuk biaya RIV, pajak, dan kemungkinan bea masuk.",
+            "Pertimbangkan untuk menjual kendaraan Anda di AS dan membeli kendaraan di Kanada sebagai gantinya."
+          ]
+        },
+        "note": "Pertimbangkan dengan cermat apa yang akan Anda bawa. Kanada menggunakan sistem metrik dan memiliki listrik 120V seperti AS, jadi sebagian besar elektronik akan berfungsi tanpa konverter."
+      },
+      "banking": {
+        "title": "Perbankan & Keuangan",
+        "description": "Menata kehidupan finansial Anda di Kanada seharusnya menjadi prioritas:",
+        "bankingInfo": {
+          "title": "Perbankan di Kanada",
+          "points": [
+            "Bank-bank besar: RBC, TD, Scotiabank, BMO, CIBC",
+            "Paket perbankan untuk pendatang baru tersedia dengan persyaratan yang lebih ringan.",
+            "Dokumen yang dibutuhkan: dokumen imigrasi, paspor, bukti alamat.",
+            "Pertimbangkan untuk membuka rekening sebelum kedatangan melalui opsi perbankan lintas negara."
+          ]
+        },
+        "financialConsiderations": {
+          "title": "Pertimbangan Keuangan",
+          "points": [
+            "Warga negara AS wajib membayar pajak AS tanpa memandang tempat tinggal.",
+            "Perjanjian pajak Kanada-AS membantu mencegah pajak berganda",
+            "Pertimbangkan layanan seperti Wise atau OFX untuk transfer mata uang.",
+            "Riwayat kredit tidak dapat ditransfer - bangun riwayat kredit Kanada Anda.",
+            "Rekening pensiun Kanada (RRSP, TFSA) memiliki implikasi pajak AS."
+          ]
+        },
+        "recommendation": "Mempertahankan hubungan perbankan AS direkomendasikan untuk kewajiban keuangan AS yang berkelanjutan. Pertimbangkan untuk bekerja sama dengan profesional pajak lintas negara untuk mengoptimalkan situasi keuangan Anda."
+      }
+    },
+    "checklist": {
+      "title": "Daftar Periksa Pra-Pindah untuk Warga Amerika",
+      "items": [
+        "Tentukan jalur imigrasi Anda",
+        "Ikuti tes bahasa jika diperlukan (IELTS/CELPIP)",
+        "Dapatkan Penilaian Kredensial Pendidikan (ECA)",
+        "Mengatur layanan perbankan lintas batas.",
+        "Telusuri pilihan cakupan layanan kesehatan.",
+        "Buat inventaris barang-barang secara detail.",
+        "Konsultasikan dengan profesional pajak lintas batas.",
+        "Telusuri informasi mengenai perumahan di kota target Anda.",
+        "Bergabunglah dengan komunitas dan forum ekspatriat Kanada secara online."
+      ]
+    },
+    "resources": {
+      "title": "Sumber Daya yang Bermanfaat",
+      "categories": [
+        {
+          "title": "Informasi Resmi",
+          "items": {
+            "0": "Imigrasi, Pengungsi dan Kewarganegaraan Kanada",
+            "1": "Program Imigrasi Provinsi",
+            "2": "Kedutaan Besar dan Konsulat AS di Kanada"
+          }
+        },
+        {
+          "title": "Komunitas Ekspatriat",
+          "items": {
+            "0": "Grup Facebook Warga Amerika di Kanada",
+            "1": "Cabang InterNations Kanada",
+            "2": "Asosiasi pendatang baru khusus kota"
+          }
+        },
+        {
+          "title": "Layanan Praktis",
+          "items": {
+            "0": "Perusahaan pindahan lintas negara",
+            "1": "Situs web perumahan (Realtor.ca, Kijiji)",
+            "2": "Spesialis pajak lintas batas"
+          }
+        }
+      ]
+    },
+    "finalTips": {
+      "title": "Tips Terakhir untuk Warga Kanada Baru",
+      "categories": [
+        {
+          "title": "Memulai",
+          "tips": {
+            "0": "Segera ajukan Nomor Jaminan Sosial (SIN) Anda setibupon tiba.",
+            "1": "Daftar untuk asuransi kesehatan provinsi segera setelah memenuhi syarat.",
+            "2": "Pertimbangkan akomodasi sementara saat mencari rumah."
+          }
+        },
+        {
+          "title": "Tips Integrasi",
+          "tips": {
+            "0": "Hadapi musim dingin Kanada dengan pakaian dan aktivitas yang tepat.",
+            "1": "Manfaatkan layanan pemukiman yang tersedia bagi pendatang baru.",
+            "2": "Bersabarlah dalam membangun riwayat kredit dan memantapkan diri Anda."
+          }
+        }
+      ],
+      "conclusion": "Petualangan baru Anda di Kanada menanti! Dengan perencanaan dan persiapan yang tepat, transisi Anda dari AS ke Kanada dapat menjadi pengalaman yang menyenangkan dan bermanfaat."
+    }
+  },
+  "movingwithpets": {
+    "navigation": {
+      "title": "Panduan Navigasi"
+    },
+    "accessibility": {
+      "toggleSection": "Alihkan bagian untuk"
+    },
+    "sections": {
+      "requirements": {
+        "title": "Persyaratan Masuk",
+        "steps": [
+          {
+            "title": "Mikrochip",
+            "description": "Semua hewan peliharaan harus memiliki mikrocip standar ISO (11784/11785) yang ditanamkan."
+          },
+          {
+            "title": "Vaksinasi Rabies",
+            "description": "Hewan peliharaan harus divaksinasi rabies <span class=\"font-medium\">setidaknya 30 hari</span> sebelum masuk dan vaksin tersebut harus <span class=\"font-medium\">berlaku saat kedatangan</span>."
+          },
+          {
+            "title": "Sertifikat Kedokteran Hewan",
+            "details": {
+              "0": "Harus dikeluarkan oleh dokter hewan berlisensi di negara asal Anda.",
+              "1": "Harus disetujui oleh otoritas pemerintah (seperti USDA di AS).",
+              "2": "Harus diterbitkan dalam waktu <span class=\"font-medium\">14 hari</span> sebelum masuk ke Kanada."
+            }
+          }
+        ],
+        "importantNote": {
+          "title": "Catatan Penting",
+          "text": "Berbeda dengan banyak negara, Kanada tidak mewajibkan karantina untuk hewan peliharaan yang memenuhi semua persyaratan dokumentasi."
+        }
+      },
+      "dogSpecific": {
+        "title": "Aturan Khusus untuk Anjing",
+        "breedRestrictions": {
+          "title": "Pembatasan Ras",
+          "description": "Kanada memiliki pembatasan terhadap beberapa ras anjing tertentu yang dianggap agresif. Peraturan ini berbeda-beda di setiap provinsi dan kotamadya.",
+          "restrictedTitle": "Dibatasi di Beberapa Area:",
+          "breeds": [
+            "Anjing Pit Bull Terrier",
+            "Staffordshire Bull Terriers",
+            "Anjing Staffordshire Terrier Amerika",
+            "Rottweiler (di beberapa daerah)"
+          ],
+          "note": "Jika anjing Anda termasuk dalam ras yang berpotensi dibatasi, periksa dengan provinsi dan kota tujuan Anda."
+        },
+        "commercialDogs": {
+          "title": "Anjing Komersial (Di Bawah 8 Bulan)",
+          "description": "Anjing berusia di bawah 8 bulan yang diimpor untuk tujuan komersial (pembiakan, pameran, penjualan kembali) memiliki persyaratan tambahan. Anjing-anjing ini memerlukan izin impor dari Badan Inspeksi Pangan Kanada."
+        }
+      },
+      "catSpecific": {
+        "title": "Aturan Khusus Kucing",
+        "goodNews": "Kabar baik! Kanada memiliki persyaratan impor kucing yang relatif sederhana dibandingkan dengan banyak negara lain.",
+        "basicRequirements": {
+          "title": "Kebutuhan Dasar untuk Kucing",
+          "requirements": [
+            "Mikrochip (standar ISO)",
+            "Vaksinasi rabies (setidaknya 30 hari sebelum masuk)",
+            "Sertifikat kesehatan hewan"
+          ]
+        },
+        "noBreedRestrictions": "Tidak seperti anjing, tidak ada batasan ras untuk kucing di Kanada."
+      },
+      "travelOptions": {
+        "title": "Opsi Perjalanan",
+        "options": [
+          {
+            "title": "Perjalanan di dalam kabin",
+            "description": "Hewan peliharaan dengan berat kurang dari 8-10 kg (termasuk kandang) diperbolehkan bepergian di dalam kabin. Kandang harus muat di bawah kursi di depan Anda.",
+            "fee": "Biaya: CAD $50-125 sekali jalan",
+            "icon": "🧳",
+            "ariaLabel": "kabin"
+          },
+          {
+            "title": "Bagasi Terdaftar",
+            "description": "Hewan peliharaan yang terlalu besar untuk dibawa ke kabin tetapi beratnya kurang dari 32 kg dapat dibawa sebagai bagasi terdaftar.",
+            "fee": "Biaya: CAD $100-250 sekali jalan",
+            "icon": "🧴",
+            "ariaLabel": "bagasi terdaftar"
+          },
+          {
+            "title": "Kargo Udara",
+            "description": "Hewan peliharaan yang berukuran sangat besar atau yang bepergian melalui rute tanpa ketentuan membawa hewan peliharaan harus diangkut sebagai kargo.",
+            "fee": "Biaya: CAD $400-1.000+ sekali jalan",
+            "icon": "📦",
+            "ariaLabel": "muatan"
+          }
+        ],
+        "warning": "Selalu pesan tiket dengan maskapai jauh-jauh hari karena tempat untuk hewan peliharaan terbatas. Maskapai memiliki kebijakan dan batasan yang berbeda, terutama untuk ras anjing berhidung pesek yang mungkin dilarang karena masalah pernapasan."
+      },
+      "afterArrival": {
+        "title": "Setelah Tiba",
+        "atTheBorder": {
+          "title": "Di Perbatasan",
+          "description": "Setelah tiba, petugas Badan Layanan Perbatasan Kanada (CBSA) akan memeriksa dokumen hewan peliharaan Anda. Pastikan untuk:",
+          "steps": [
+            "Laporkan hewan peliharaan Anda kepada petugas bea cukai.",
+            "Siapkan semua dokumen asli.",
+            "Bersiaplah untuk kemungkinan pemeriksaan terhadap hewan peliharaan Anda."
+          ]
+        },
+        "firstWeekChecklist": {
+          "title": "Daftar Periksa Minggu Pertama",
+          "items": [
+            {
+              "title": "1. Temukan Dokter Hewan Lokal",
+              "description": "Jadwalkan pemeriksaan dalam bulan pertama."
+            },
+            {
+              "title": "2. Mendaftar di Pemerintah Kota",
+              "description": "Banyak kota di Kanada yang mewajibkan perizinan hewan peliharaan."
+            },
+            {
+              "title": "3. Perbarui Informasi Mikrochip",
+              "description": "Ubah alamat Anda ke alamat baru Anda di Kanada."
+            },
+            {
+              "title": "4. Asuransi Hewan Peliharaan",
+              "description": "Pertimbangkan untuk mendapatkan asuransi hewan peliharaan Kanada."
+            }
+          ]
+        }
+      },
+      "canadianClimate": {
+        "title": "Iklim Kanada",
+        "description": "Iklim Kanada sangat bervariasi menurut wilayah dan musim. Ini merupakan pertimbangan penting bagi hewan peliharaan, terutama yang berasal dari iklim yang lebih hangat.",
+        "seasons": [
+          {
+            "title": "Persiapan Musim Dingin",
+            "icon": "❄️",
+            "tips": {
+              "0": "Cairan pelebur es yang aman untuk hewan peliharaan di jalan setapak",
+              "1": "Sepatu bot untuk melindungi telapak kaki dari garam dan es.",
+              "2": "Mantel/sweater untuk ras anjing berbulu pendek",
+              "3": "Waktu terbatas di luar ruangan dalam cuaca dingin ekstrem."
+            }
+          },
+          {
+            "title": "Pertimbangan Musim Panas",
+            "icon": "☀️",
+            "tips": {
+              "0": "Jangan pernah meninggalkan hewan peliharaan di dalam mobil yang sedang parkir.",
+              "1": "Waspadai gejala serangan panas.",
+              "2": "Pencegahan kutu dan caplak",
+              "3": "Akses ke air bersih dan tempat teduh"
+            }
+          }
+        ],
+        "warning": "<strong>Peringatan:</strong> Ras brachycephalic (berwajah datar) seperti Bulldog, Pug, dan kucing Persia mungkin kesulitan menghadapi suhu ekstrem. Ambil tindakan pencegahan ekstra dengan ras-ras ini."
+      },
+      "petFriendly": {
+        "title": "Kanada yang Ramah Hewan Peliharaan",
+        "description": "Secara umum, Kanada sangat ramah terhadap hewan peliharaan, dengan layanan perawatan hewan yang sangat baik dan banyak tempat yang ramah hewan peliharaan.",
+        "aspects": [
+          {
+            "title": "Perawatan Hewan",
+            "icon": "🏥",
+            "description": "Berkualitas tinggi tetapi bisa mahal. Biaya pemeriksaan kesehatan rata-rata berkisar antara CAD $75-150.",
+            "additionalInfo": "Biaya asuransi hewan peliharaan berkisar antara CAD $25-80 per bulan."
+          },
+          {
+            "title": "Taman & Rekreasi",
+            "icon": "🏞️",
+            "description": "Sebagian besar kota memiliki taman khusus anjing tanpa tali dan jalur ramah hewan peliharaan.",
+            "additionalInfo": "Taman nasional memiliki peraturan khusus mengenai hewan peliharaan - periksa terlebih dahulu sebelum berkunjung."
+          },
+          {
+            "title": "Perlengkapan Hewan Peliharaan",
+            "icon": "🥫",
+            "description": "Jaringan toko besar meliputi PetSmart, Canadian Tire, dan Pet Valu. Pilihan online termasuk Amazon.ca dan Chewy.ca."
+          },
+          {
+            "title": "Perumahan Ramah Hewan Peliharaan",
+            "icon": "🏨",
+            "description": "Beberapa properti sewaan melarang hewan peliharaan. Carilah label \"ramah hewan peliharaan\" saat mencari rumah.",
+            "additionalInfo": "Deposit untuk hewan peliharaan adalah hal yang umum (CAD $200-500)."
+          }
+        ]
+      }
+    },
+    "checklist": {
+      "title": "Daftar Periksa Perjalanan Hewan Peliharaan",
+      "items": [
+        "Pastikan hewan peliharaan Anda memenuhi persyaratan masuk Kanada (setidaknya 3 bulan sebelum perjalanan).",
+        "Pastikan mikrochip tersebut sesuai dengan standar ISO.",
+        "Jadwalkan vaksinasi rabies (setidaknya 30 hari sebelum perjalanan)",
+        "Pesan transportasi yang ramah hewan peliharaan.",
+        "Beli kandang hewan peliharaan yang disetujui maskapai penerbangan dan biasakan hewan peliharaan Anda dengan kandang tersebut.",
+        "Dapatkan sertifikat kesehatan hewan dari dokter hewan (dalam waktu 14 hari sebelum perjalanan)",
+        "Siapkan perlengkapan penting untuk hewan peliharaan (makanan, obat-obatan, barang-barang yang membuatnya nyaman)",
+        "Buat salinan semua dokumen dan simpanlah bersama Anda."
+      ]
+    }
+  },
+  "relocationrequirements": {
+    "introduction": "Kanada menyambut ribuan pendatang baru setiap tahun melalui berbagai jalur imigrasi. Baik Anda berencana untuk bekerja, belajar, bergabung dengan keluarga, atau pensiun di Kanada, memahami persyaratan utama akan membantu memastikan relokasi yang sukses. Berikut adalah hal-hal yang perlu Anda ketahui.",
+    "requirements": [
+      {
+        "icon": "🛂",
+        "title": "Paspor yang sah",
+        "description": "Paspor Anda harus berlaku selama masa tinggal yang Anda rencanakan di Kanada. Untuk permohonan izin tinggal tetap, pastikan paspor Anda tidak akan kedaluwarsa selama masa pemrosesan, yang dapat memakan waktu beberapa bulan atau bahkan bertahun-tahun."
+      },
+      {
+        "icon": "📝",
+        "title": "Status Imigrasi",
+        "description": "Tentukan jalur imigrasi Anda:",
+        "details": {
+          "0": "Express Entry (Pekerja Terampil Federal, Perdagangan Terampil Federal, Kelas Pengalaman Kanada)",
+          "1": "Program Nominasi Provinsi (PNP)",
+          "2": "Sponsor Keluarga",
+          "3": "Izin Belajar",
+          "4": "Izin Kerja (berdasarkan LMIA, CUSMA/NAFTA, IEC)",
+          "5": "Visa Kunjungan (Visa Penduduk Sementara) atau eTA"
+        }
+      },
+      {
+        "icon": "💵",
+        "title": "Bukti Dana",
+        "description": "Untuk sebagian besar program imigrasi, Anda perlu menunjukkan bahwa Anda memiliki dana yang cukup untuk menghidupi diri sendiri dan keluarga Anda:",
+        "details": {
+          "0": "Express Entry memerlukan bukti dana pemukiman (bervariasi tergantung ukuran keluarga, diperbarui setiap tahun)",
+          "1": "Mahasiswa wajib menunjukkan bukti pembayaran biaya kuliah ditambah biaya hidup (sekitar $10.000 CAD per tahun).",
+          "2": "Laporan rekening bank, rekening investasi, atau surat dari bank Anda dapat diterima sebagai bukti."
+        }
+      },
+      {
+        "icon": "🩺",
+        "title": "Pemeriksaan Medis",
+        "description": "Sebagian besar pelamar harus menjalani pemeriksaan medis oleh dokter yang disetujui IRCC:",
+        "details": {
+          "0": "Diperlukan untuk permohonan izin tinggal tetap.",
+          "1": "Diperlukan bagi penduduk sementara yang tinggal lebih dari 6 bulan.",
+          "2": "Harus diisi oleh dokter panel yang ditunjuk."
+        }
+      },
+      {
+        "icon": "🔍",
+        "title": "Pemeriksaan Latar Belakang",
+        "description": "Pemeriksaan keamanan dan riwayat kriminal merupakan hal standar untuk semua aplikasi:",
+        "details": {
+          "0": "Surat keterangan bebas catatan kriminal dari negara tempat Anda tinggal selama 6 bulan atau lebih.",
+          "1": "Biometrik (sidik jari dan foto) diperlukan untuk sebagian besar pelamar.",
+          "2": "Proses pemeriksaan keamanan"
+        }
+      },
+      {
+        "icon": "🗣️",
+        "title": "Kemampuan Bahasa",
+        "description": "Kemampuan berbahasa Inggris atau Prancis sangat penting untuk sebagian besar program imigrasi:",
+        "details": {
+          "0": "IELTS atau CELPIP untuk Bahasa Inggris",
+          "1": "TEF atau TCF untuk bahasa Prancis",
+          "2": "Tingkat CLB (Canadian Language Benchmark) spesifik yang dibutuhkan bergantung pada programnya."
+        }
+      },
+      {
+        "icon": "🎓",
+        "title": "Penilaian Kredensial Pendidikan (ECA)",
+        "description": "Jika Anda menyelesaikan pendidikan Anda di luar Kanada:",
+        "details": {
+          "0": "Mintalah lembaga yang disetujui IRCC untuk menilai kredensial Anda.",
+          "1": "Pastikan gelar, diploma, atau sertifikat Anda setara dengan standar Kanada.",
+          "2": "ECA (Electronic Cardiac Assessment) wajib untuk Express Entry dan banyak program imigrasi lainnya."
+        }
+      },
+      {
+        "icon": "🏠",
+        "title": "Rencana Perumahan",
+        "description": "Meskipun tidak diwajibkan untuk sebagian besar aplikasi, memiliki rencana perumahan sangat penting:",
+        "details": {
+          "0": "Akomodasi sementara saat kedatangan (hotel, sewa jangka pendek)",
+          "1": "Lakukan riset pasar sewa di kota tujuan Anda.",
+          "2": "Pahami persyaratan sewa (pemeriksaan kredit, referensi, deposit)"
+        }
+      },
+      {
+        "icon": "💼",
+        "title": "Persiapan Kerja",
+        "description": "Bagi mereka yang berencana bekerja di Kanada:",
+        "details": {
+          "0": "Lakukan riset pasar kerja Kanada di bidang Anda.",
+          "1": "Siapkan resume dan surat lamaran bergaya Kanada.",
+          "2": "Jalinlah koneksi dengan para profesional di industri Anda.",
+          "3": "Periksa apakah profesi Anda diatur dan memerlukan lisensi Kanada."
+        }
+      },
+      {
+        "icon": "⚕️",
+        "title": "Asuransi Kesehatan",
+        "description": "Pelayanan kesehatan di Kanada sebagian besar bersifat publik, tetapi bervariasi menurut provinsi:",
+        "details": {
+          "0": "Asuransi kesehatan provinsi memerlukan masa tunggu (biasanya 3 bulan).",
+          "1": "Beli asuransi kesehatan swasta untuk menutupi periode kesenjangan tersebut.",
+          "2": "Pahami apa yang tercakup dan apa yang tidak tercakup di provinsi Anda."
+        }
+      }
+    ],
+    "postArrival": {
+      "title": "Langkah-langkah Setelah Kedatangan",
+      "timeframes": [
+        {
+          "period": "Minggu Pertama",
+          "tasks": {
+            "0": "Ajukan permohonan Nomor Jaminan Sosial (SIN)",
+            "1": "Buka rekening bank Kanada",
+            "2": "Dapatkan nomor telepon lokal",
+            "3": "Ajukan permohonan asuransi kesehatan provinsi"
+          }
+        },
+        {
+          "period": "Bulan Pertama",
+          "tasks": {
+            "0": "Cari tempat tinggal tetap",
+            "1": "Mendaftarkan anak-anak ke sekolah.",
+            "2": "Dapatkan surat izin mengemudi atau kartu identitas.",
+            "3": "Terhubung dengan layanan pemukiman"
+          }
+        }
+      ]
+    }
+  },
+  "uktocanadaguide": {
+    "navigation": {
+      "title": "Navigasi Cepat"
+    },
+    "accessibility": {
+      "toggleSection": "Alihkan bagian untuk"
+    },
+    "sections": {
+      "whyMove": {
+        "title": "Mengapa Warga Inggris Pindah ke Kanada?",
+        "description": "Ribuan warga negara Inggris telah menjadikan Kanada sebagai rumah mereka, terutama di kota-kota seperti Toronto, Vancouver, Montreal, dan Calgary. Daya tariknya meliputi:",
+        "reasons": [
+          "Kualitas hidup yang tinggi dengan sistem sosial yang sangat baik.",
+          "Beragam bentang alam dan aktivitas luar ruangan",
+          "Budaya yang serupa dan bahasa yang familiar",
+          "Ekonomi yang kuat dengan peluang karir.",
+          "Masyarakat multikultural dengan komunitas yang ramah."
+        ],
+        "conclusion": "Pasca-Brexit, banyak warga Inggris yang menjajaki pilihan di luar Eropa, dan sistem imigrasi Kanada menawarkan beberapa jalur."
+      },
+      "entryRequirements": {
+        "title": "Persyaratan Masuk & Aturan Visa",
+        "touristEntry": {
+          "title": "Tiket Masuk Turis",
+          "description": "Warga negara Inggris dapat mengunjungi Kanada hingga 6 bulan dengan Otorisasi Perjalanan Elektronik (eTA), yang biayanya CAD $7. Namun, untuk relokasi permanen, Anda perlu mengajukan permohonan melalui salah satu jalur imigrasi Kanada."
+        }
+      },
+      "immigrationPathways": {
+        "title": "Jalur Imigrasi untuk Warga Negara Inggris",
+        "pathways": [
+          {
+            "title": "1. Sistem Express Entry",
+            "description": "<span class=\"font-medium\">Jalur imigrasi utama Kanada untuk pekerja terampil</span><br/>Sistem berbasis poin yang memberi peringkat kandidat berdasarkan faktor-faktor seperti usia, pendidikan, pengalaman kerja, dan kemampuan berbahasa",
+            "subProgramsTitle": "Tiga program di bawah Express Entry:",
+            "subPrograms": {
+              "0": "Program Pekerja Terampil Federal",
+              "1": "Program Keahlian Perdagangan Federal",
+              "2": "Kelas Pengalaman Kerja Kanada (untuk mereka yang memiliki pengalaman kerja di Kanada)"
+            }
+          },
+          {
+            "title": "2. Program Nominasi Provinsi (PNP)",
+            "details": {
+              "0": "Setiap provinsi memiliki jalur imigrasi tersendiri.",
+              "1": "Seringkali lebih cepat daripada Express Entry bagi mereka yang memiliki keterampilan yang dibutuhkan di provinsi tertentu.",
+              "2": "Beberapa provinsi memiliki inisiatif perekrutan khusus untuk Inggris Raya."
+            }
+          },
+          {
+            "title": "3. Izin Kerja",
+            "details": {
+              "0": "Izin kerja khusus pemberi kerja memerlukan tawaran pekerjaan dari pemberi kerja Kanada.",
+              "1": "Izin kerja terbuka tersedia melalui program khusus seperti Working Holiday (IEC).",
+              "2": "Warga negara Inggris berusia 18-30 tahun dapat mengajukan permohonan visa liburan kerja IEC."
+            }
+          },
+          {
+            "title": "4. Sponsorship Keluarga",
+            "description": "Jika Anda memiliki pasangan, pasangan hidup tanpa ikatan pernikahan, atau anggota keluarga dekat yang merupakan warga negara Kanada atau penduduk tetap."
+          }
+        ]
+      },
+      "property": {
+        "title": "Membeli atau Menyewa Properti",
+        "points": [
+          "Sebagai warga negara non-residen, Anda dapat membeli properti di sebagian besar wilayah Kanada dengan beberapa pembatasan di provinsi-provinsi tertentu.",
+          "Larangan pembelian oleh warga asing pada tahun 2023 memiliki pengecualian untuk penduduk tetap dan mereka yang memiliki izin kerja.",
+          "Daerah populer bagi ekspatriat Inggris: Toronto, Vancouver, Montreal, Calgary, Halifax",
+          "Pasar sewa sangat bervariasi: perkirakan untuk membayar CAD $1.500-$3.000+ untuk apartemen 1 kamar tidur di kota-kota besar."
+        ],
+        "tip": "<strong>Tips:</strong> Teliti lokasi dengan saksama – harga properti di Toronto dan Vancouver jauh lebih tinggi dibandingkan di wilayah lain."
+      },
+      "costLiving": {
+        "title": "Perbandingan Biaya Hidup",
+        "table": {
+          "headers": {
+            "expense": "Pengeluaran",
+            "canada": "Kanada (rata-rata)",
+            "uk": "Inggris (rata-rata)"
+          },
+          "rows": [
+            {
+              "expense": "Sewa (apartemen 1 kamar tidur)",
+              "canada": "CAD $1.200–$2.500",
+              "uk": "£800–£1.200"
+            },
+            {
+              "expense": "Utilitas",
+              "canada": "CAD $150–$250/bulan",
+              "uk": "£150+/bulan"
+            },
+            {
+              "expense": "Makan di restoran",
+              "canada": "CAD $20–$35",
+              "uk": "£10–£25"
+            },
+            {
+              "expense": "Kartu transportasi",
+              "canada": "CAD $80–$150/bulan",
+              "uk": "£60–£120/bulan"
+            }
+          ]
+        },
+        "note": "Meskipun biaya secara keseluruhan mirip dengan Inggris, biaya tersebut sangat bervariasi antar wilayah. Provinsi-provinsi Atlantik dan daerah pedesaan menawarkan biaya hidup yang lebih terjangkau."
+      },
+      "healthcare": {
+        "title": "Akses Layanan Kesehatan",
+        "points": [
+          "Kanada memiliki layanan kesehatan publik universal (Medicare) yang didanai melalui pajak.",
+          "Sebagai penduduk tetap, Anda berhak mendapatkan layanan kesehatan provinsi setelah masa tunggu (biasanya 3 bulan).",
+          "Selama masa tunggu, asuransi kesehatan swasta sementara sangat penting.",
+          "Setiap provinsi mengelola sistem perawatan kesehatannya sendiri dengan sedikit perbedaan dalam cakupannya.",
+          "Beberapa layanan seperti perawatan gigi, perawatan mata, dan obat resep mungkin memerlukan asuransi swasta."
+        ]
+      },
+      "weather": {
+        "title": "Cuaca & Iklim",
+        "seasons": [
+          {
+            "title": "Musim Dingin (November-Maret)",
+            "description": "Jauh lebih dingin daripada Inggris, dengan suhu berkisar antara -30°C hingga 0°C tergantung pada wilayahnya. Salju umum terjadi di sebagian besar wilayah negara ini, kecuali di daerah pesisir British Columbia."
+          },
+          {
+            "title": "Musim panas (Juni-September)",
+            "description": "Lebih hangat daripada Inggris dengan suhu biasanya antara 20°C dan 30°C. Kelembapan bisa tinggi di provinsi-provinsi bagian timur."
+          }
+        ],
+        "regionalVariations": {
+          "title": "Variasi Regional",
+          "description": "Vancouver memiliki iklim yang sejuk dan hujan, mirip dengan Inggris. Toronto dan Montreal mengalami musim panas yang panas dan musim dingin yang dingin. Dataran Prairie memiliki variasi suhu yang ekstrem. Wilayah utara memiliki musim dingin yang sangat panjang dan keras."
+        }
+      },
+      "dailyLife": {
+        "title": "Penyesuaian Kehidupan Sehari-hari",
+        "aspects": [
+          {
+            "title": "Bahasa",
+            "description": "Bahasa Inggris adalah bahasa resmi di seluruh Kanada (kecuali Quebec). Bahasa Prancis juga merupakan bahasa resmi, dan dominan di Quebec di mana kemampuan berbahasa Prancis sangat menguntungkan."
+          },
+          {
+            "title": "Penggerak",
+            "description": "SIM Inggris dapat digunakan sementara (berbeda-beda tergantung provinsi), tetapi Anda perlu menukarkannya dengan SIM provinsi. Warga Kanada mengemudi di sisi kanan jalan."
+          },
+          {
+            "title": "Mata uang",
+            "description": "Dolar Kanada (CAD) — nilai tukar berfluktuasi, tetapi biaya umumnya sebanding dengan Inggris."
+          },
+          {
+            "title": "Perbankan",
+            "description": "Bank-bank besar menawarkan paket untuk nasabah baru dengan pembebasan biaya. Anda akan membutuhkan bukti alamat dan identitas untuk membuka rekening. Riwayat kredit tidak dapat ditransfer, jadi membangun riwayat kredit akan sangat penting."
+          }
+        ]
+      },
+      "movingLogistics": {
+        "title": "Pemindahan Logistik dari Inggris",
+        "points": [
+          "Pengiriman barang rumah tangga ke Kanada membutuhkan waktu 4-8 minggu melalui angkutan laut.",
+          "Barang-barang pribadi dapat diimpor bebas bea dengan daftar inventaris terperinci dan bukti tempat tinggal.",
+          "Mobil yang berusia lebih dari 15 tahun lebih mudah diimpor; kendaraan yang lebih baru harus memenuhi standar Kanada.",
+          "Hewan peliharaan memerlukan mikrocip, vaksinasi rabies, dan sertifikat kesehatan; karantina tidak diperlukan jika persyaratan terpenuhi."
+        ]
+      },
+      "challenges": {
+        "title": "Tantangan Realistis yang Dapat Diantisipasi",
+        "challenges": [
+          {
+            "title": "Penyesuaian musim dingin",
+            "description": "Tingkat keparahan dan lamanya musim dingin di Kanada dapat menjadi tantangan bagi warga Inggris."
+          },
+          {
+            "title": "Jarak dari keluarga",
+            "description": "Penerbangan selama 7 jam atau lebih membuat kunjungan ke rumah menjadi lebih jarang."
+          },
+          {
+            "title": "Membangun riwayat kredit",
+            "description": "Riwayat kredit di Inggris tidak dapat ditransfer, sehingga menyulitkan proses peminjaman awal."
+          },
+          {
+            "title": "Akreditasi profesional",
+            "description": "Beberapa kualifikasi dari Inggris mungkin memerlukan sertifikasi ulang di Kanada."
+          }
+        ]
+      },
+      "britishCommunities": {
+        "title": "Komunitas Ekspatriat Inggris",
+        "description": "Kanada memiliki komunitas ekspatriat Inggris yang cukup besar di:",
+        "cities": [
+          "Toronto",
+          "Vancouver",
+          "Kota Calgary",
+          "Victoria",
+          "Halifax"
+        ],
+        "supportNote": "Forum online, grup Facebook seperti \"Brits in Canada,\" dan acara komunitas memudahkan untuk terhubung dengan ekspatriat Inggris lainnya yang dapat memberikan saran dan dukungan."
+      }
+    },
+    "checklist": {
+      "title": "Daftar Periksa Penting Sebelum Pindah ke Kanada",
+      "items": [
+        "Dapatkan status imigrasi atau izin kerja yang sesuai.",
+        "Dapatkan Nomor Jaminan Sosial (SIN) saat tiba.",
+        "Beli asuransi perjalanan dan asuransi kesehatan awal.",
+        "Buka rekening bank Kanada",
+        "Teliti proses pendaftaran layanan kesehatan provinsi.",
+        "Belilah pakaian yang sesuai untuk cuaca Kanada.",
+        "Beritahukan otoritas Inggris (HMRC, penyedia pensiun, dll.) tentang kepindahan Anda ke luar negeri."
+      ]
+    },
+    "conclusion": {
+      "title": "Apakah Pindah ke Kanada Tepat untuk Anda?",
+      "text": "Kanada menawarkan standar hidup yang tinggi, keindahan alam yang menakjubkan, dan sistem sosial yang kuat, menjadikannya tujuan yang menarik bagi ekspatriat Inggris. Meskipun proses imigrasi membutuhkan perencanaan yang cermat dan cuaca musim dingin membutuhkan penyesuaian, banyak warga Inggris menganggap transisi ini sepadan dengan kualitas hidup, peluang karier, dan masyarakat multikultural yang ramah yang ditawarkan Kanada."
+    },
+    "footer": {
+      "disclaimer": "Panduan terakhir diperbarui: Mei 2025 • Informasi dapat berubah sewaktu-waktu • Selalu periksa sumber resmi pemerintah"
+    }
+  },
+  "canadavisaguide": {
+    "introduction": "Kanada menawarkan berbagai jalur bagi imigran, termasuk pekerja, pelajar, keluarga, dan pelaku bisnis. Setiap program dirancang untuk mendukung pertumbuhan ekonomi Kanada sekaligus menyambut pendatang baru dari seluruh dunia.",
+    "labels": {
+      "bestFor": "Cocok untuk:",
+      "programs": "Program:",
+      "requirements": "Persyaratan:",
+      "process": "Proses:",
+      "types": "Jenis:",
+      "eligibleMembers": "Anggota keluarga yang memenuhi syarat:",
+      "sponsorRequirements": "Persyaratan sponsor:",
+      "benefits": "Manfaat:",
+      "tfwpRequirements": "Persyaratan TFWP:",
+      "impBenefits": "Manfaat IMP:",
+      "startupRequirements": "Persyaratan Visa untuk Perusahaan Rintisan:",
+      "notablePNPs": "PNP terkemuka:"
+    },
+    "mainPrograms": [
+      {
+        "title": "1. Sistem Express Entry",
+        "bestFor": {
+          "0": "Pekerja terampil dengan pengalaman kerja",
+          "1": "Para profesional dengan pendidikan tinggi",
+          "2": "Kemampuan berbahasa Inggris/Prancis"
+        },
+        "programs": {
+          "0": "Program Pekerja Terampil Federal",
+          "1": "Program Keahlian Perdagangan Federal",
+          "2": "Kelas Pengalaman Kanada"
+        },
+        "requirements": {
+          "0": "Pengalaman kerja terampil minimal 1 tahun",
+          "1": "Tes kemampuan berbahasa (CLB 7+ untuk FSWP)",
+          "2": "Penilaian kredensial pendidikan",
+          "3": "Bukti dana (~$13.000+ untuk perorangan)"
+        }
+      },
+      {
+        "title": "2. Program Nominasi Provinsi (PNP)",
+        "bestFor": {
+          "0": "Pekerja yang keahliannya sesuai dengan kebutuhan provinsi.",
+          "1": "Mereka yang memiliki hubungan dengan provinsi tertentu",
+          "2": "Kandidat yang mungkin tidak memenuhi syarat untuk Express Entry."
+        },
+        "process": {
+          "0": "Ajukan permohonan langsung ke provinsi atau melalui Express Entry.",
+          "1": "Menerima nominasi provinsi",
+          "2": "Ajukan permohonan izin tinggal tetap secara federal."
+        },
+        "notablePNPs": {
+          "0": "Kepolisian Provinsi British Columbia",
+          "1": "Program Nominasi Imigran Ontario",
+          "2": "Program Imigrasi Alberta Advantage",
+          "3": "Program Nominasi Provinsi Manitoba"
+        }
+      },
+      {
+        "title": "3. Izin Belajar",
+        "bestFor": "Mahasiswa internasional diterima di lembaga pendidikan yang telah ditentukan.",
+        "requirements": {
+          "0": "Surat penerimaan dari DLI",
+          "1": "Bukti dukungan keuangan (~$10.000/tahun + biaya kuliah)",
+          "2": "Catatan kriminal bersih",
+          "3": "Pemeriksaan medis (jika diperlukan)",
+          "4": "Berniat meninggalkan Kanada setelah studi selesai"
+        },
+        "benefits": {
+          "0": "Bekerja hingga 20 jam/minggu selama masa studi.",
+          "1": "Kerja penuh waktu selama waktu istirahat yang telah dijadwalkan.",
+          "2": "Persyaratan Izin Kerja Pasca-Kelulusan",
+          "3": "Jalur menuju izin tinggal tetap"
+        }
+      },
+      {
+        "title": "4. Izin Kerja",
+        "types": {
+          "0": "Program Pekerja Asing Sementara (TFWP)",
+          "1": "Program Mobilitas Internasional (IMP)",
+          "2": "Izin Kerja Pascasarjana (PGWP)",
+          "3": "Izin kerja terbuka untuk pasangan suami istri"
+        },
+        "tfwpRequirements": {
+          "0": "Tawaran pekerjaan dari perusahaan Kanada",
+          "1": "Penilaian Dampak Pasar Tenaga Kerja (LMIA)",
+          "2": "Bukti kualifikasi"
+        },
+        "impBenefits": {
+          "0": "Izin kerja yang dikecualikan dari LMIA",
+          "1": "Termasuk transfer antar perusahaan.",
+          "2": "Perjanjian internasional (CUSMA, CETA)"
+        }
+      },
+      {
+        "title": "5. Sponsorship Keluarga",
+        "bestFor": "Anggota keluarga warga negara Kanada atau penduduk tetap",
+        "eligibleMembers": {
+          "0": "Pasangan suami istri atau pasangan hidup tanpa ikatan pernikahan resmi",
+          "1": "Anak tanggungan",
+          "2": "Orang tua dan kakek-nenek",
+          "3": "Kerabat lainnya (berdasarkan program khusus)"
+        },
+        "sponsorRequirements": {
+          "0": "Warga negara Kanada atau penduduk tetap",
+          "1": "Berusia 18 tahun atau lebih",
+          "2": "Memenuhi persyaratan pendapatan minimum",
+          "3": "Menandatangani surat pernyataan untuk memberikan dukungan finansial."
+        }
+      },
+      {
+        "title": "6. Imigrasi Bisnis",
+        "bestFor": {
+          "0": "Pengusaha",
+          "1": "Investor",
+          "2": "Orang yang bekerja sendiri"
+        },
+        "programs": {
+          "0": "Program Visa untuk Perusahaan Rintisan",
+          "1": "Program untuk Pekerja Mandiri",
+          "2": "Program bisnis provinsi"
+        },
+        "startupRequirements": {
+          "0": "Dukungan dari organisasi yang ditunjuk",
+          "1": "Kemampuan berbahasa (CLB 5+)",
+          "2": "Dana penyelesaian yang mencukupi",
+          "3": "Pengelolaan bisnis aktif di Kanada"
+        }
+      }
+    ],
+    "additionalOptions": {
+      "title": "Opsi Tambahan",
+      "programs": [
+        {
+          "title": "Program Imigrasi Atlantik",
+          "description": "Dirancang untuk pekerja terampil dan lulusan internasional yang ingin tinggal dan bekerja di New Brunswick, Nova Scotia, Prince Edward Island, atau Newfoundland dan Labrador.",
+          "requirement": "Membutuhkan tawaran pekerjaan dari pemberi kerja yang ditunjuk di Kanada Atlantik."
+        },
+        {
+          "title": "Program Percontohan Imigrasi Pedesaan dan Utara",
+          "description": "Program berbasis komunitas yang membantu pekerja asing terampil memperoleh izin tinggal tetap sekaligus mendukung komunitas pedesaan yang lebih kecil.",
+          "requirement": "Tersedia di komunitas tertentu di seluruh Kanada."
+        },
+        {
+          "title": "Program untuk Pengasuh",
+          "description": "Jalur bagi para pengasuh yang merawat anak-anak, lansia, atau mereka yang memiliki kebutuhan medis untuk menjadi penduduk tetap.",
+          "requirement": "Diperlukan pengalaman kerja selama 2 tahun di Kanada."
+        },
+        {
+          "title": "Program Kemanusiaan dan Pengungsi",
+          "description": "Perlindungan bagi pengungsi, pencari suaka, dan pihak lain yang membutuhkan bantuan kemanusiaan.",
+          "requirement": "Termasuk Program Pengungsi yang Dibantu Pemerintah dan Sponsor Swasta"
+        }
+      ]
+    },
+    "importantConsiderations": {
+      "title": "Pertimbangan Penting",
+      "considerations": [
+        {
+          "title": "Waktu Pemrosesan",
+          "description": "Lamanya proses sangat bervariasi tergantung program dan jumlah pelamar. Express Entry bisa secepat 6 bulan, sedangkan sponsor keluarga mungkin memakan waktu 12 bulan atau lebih."
+        },
+        {
+          "title": "Biaya Pendaftaran",
+          "description": "Pertimbangkan biaya pemerintah dan potensi biaya konsultan. Biaya permohonan PR (Permanent Resident) sekitar $1.325 CAD per orang dewasa."
+        },
+        {
+          "title": "Dana Penyelesaian",
+          "description": "Sebagian besar program memerlukan bukti ketersediaan dana untuk penyelesaian. Jumlahnya bervariasi tergantung pada ukuran keluarga dan persyaratan program."
+        }
+      ]
+    }
+  }
+}

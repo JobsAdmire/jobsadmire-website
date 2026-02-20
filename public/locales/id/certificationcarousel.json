@@ -1,0 +1,62 @@
+{
+  "controls": {
+    "previous": "Sertifikat sebelumnya",
+    "next": "Sertifikat berikutnya",
+    "play": "Putar otomatis",
+    "pause": "Jeda pemutaran otomatis",
+    "goToSlide": "Lanjutkan ke slide"
+  },
+  "events": {
+    "event1": {
+      "title": "Pameran Mahasiswa UniAdmire",
+      "location": "Karachi, Pakistan",
+      "date": "15-17 Maret 2025",
+      "description": "Menghubungkan mahasiswa Pakistan dengan universitas internasional dan peluang beasiswa.",
+      "images": {
+        "image1": {
+          "alt": "Perwakilan universitas berbicara kepada mahasiswa.",
+          "caption": "Perwakilan universitas internasional bertemu dengan mahasiswa lokal."
+        },
+        "image2": {
+          "alt": "Stan informasi di pameran",
+          "caption": "Para siswa mengeksplorasi peluang pendidikan di stan informasi."
+        },
+        "image3": {
+          "alt": "Upacara penghargaan",
+          "caption": "Upacara penghargaan untuk lembaga-lembaga yang berpartisipasi"
+        },
+        "image4": {
+          "alt": "Diskusi panel",
+          "caption": "Panel ahli membahas tren pendidikan internasional."
+        },
+        "image5": {
+          "alt": "Sesi konseling siswa",
+          "caption": "Konseling pribadi dengan petugas penerimaan mahasiswa universitas."
+        }
+      }
+    },
+    "event2": {
+      "title": "Pameran Pendidikan Pantai Gading",
+      "location": "Abidjan, Pantai Gading",
+      "date": "20-22 Januari 2025",
+      "description": "Menghubungkan mahasiswa Afrika Barat dengan universitas internasional",
+      "images": {
+        "image1": {
+          "alt": "Pintu masuk pameran pendidikan",
+          "caption": "Pintu masuk utama Pameran Pendidikan Pantai Gading"
+        },
+        "image2": {
+          "alt": "Para siswa di stan informasi",
+          "caption": "Siswa lokal yang menjajaki peluang pendidikan internasional."
+        },
+        "image3": {
+          "alt": "Diskusi panel",
+          "caption": "Para ahli pendidikan membahas program beasiswa."
+        }
+      }
+    }
+  },
+  "background": {
+    "watermark": "CERTIFICATIONS"
+  }
+}

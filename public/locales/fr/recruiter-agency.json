@@ -1,0 +1,233 @@
+{
+  "header": {
+    "heroImageAlt": "Professionnels du recrutement",
+    "program_title": "Programme de partenaires de recrutement certifiés",
+    "main_title_prefix": "Partenariat avec des acteurs de premier plan",
+    "main_title_suffix": "Agences de recrutement",
+    "description": "Nous collaborons avec des agences de recrutement de confiance pour mettre en relation les entreprises avec des professionnels qualifiés et présélectionnés dans divers secteurs d'activité. Rejoignez notre réseau et élargissez votre champ d'action grâce à des partenariats de recrutement fiables.",
+    "contact_us": "Nous contacter",
+    "verified_candidates": "Candidats vérifiés",
+    "pre_screened": "Présélection"
+  },
+  "form": {
+    "title": "Inscription des partenaires de recrutement",
+    "subtitle": "Remplissez ce formulaire pour commencer à recruter du personnel qualifié par l'intermédiaire de JobsAdmire.",
+    "company_info": {
+      "title": "Informations sur l'entreprise",
+      "company_name": "Nom de l'entreprise *",
+      "company_name_placeholder": "Saisissez le nom de votre entreprise",
+      "company_name_error": "Le nom de l'entreprise est requis",
+      "contact_person": "Personne de contact *",
+      "contact_person_placeholder": "Nom complet de la personne de contact",
+      "contact_person_error": "La personne de contact est requise",
+      "company_type": "Type d'entreprise *",
+      "company_type_placeholder": "Sélectionner le type d'entreprise",
+      "company_type_error": "Le type d'entreprise est requis",
+      "types": {
+        "manufacturing": "Fabrication/usine",
+        "agriculture": "Agriculture",
+        "tourism": "Tourisme et hôtellerie",
+        "construction": "La construction",
+        "retail": "Commerce de détail et services",
+        "other": "Autres"
+      },
+      "years_in_business": "Années d'activité",
+      "years_placeholder": "Sélectionner les années",
+      "years_options": {
+        "1_2": "1 à 2 ans",
+        "3_5": "3-5 ans",
+        "6_10": "6-10 ans",
+        "10_plus": "10 ans et plus"
+      },
+      "license_number": "Numéro de licence d'exploitation",
+      "license_placeholder": "Saisir le numéro de licence",
+      "employees_count": "Nombre actuel de salariés",
+      "employees_placeholder": "Sélectionner la gamme",
+      "employees_options": {
+        "1_10": "1-10 employés",
+        "11_50": "11-50 employés",
+        "51_100": "51-100 employés",
+        "100_plus": "100+ employés"
+      }
+    },
+    "contact_info": {
+      "title": "Informations sur le contact",
+      "email": "Adresse électronique *",
+      "email_required": "L'adresse électronique est requise",
+      "email_invalid": "L'adresse électronique n'est pas valide",
+      "phone": "Numéro de téléphone *",
+      "phone_placeholder": "+90 xxx xxx xx xx",
+      "phone_required": "Le numéro de téléphone est requis",
+      "country": "Pays *",
+      "country_placeholder": "Entrez votre pays",
+      "country_required": "Le pays est requis",
+      "city": "Ville *",
+      "city_placeholder": "Entrez votre ville",
+      "city_required": "La ville est requise",
+      "address": "Adresse professionnelle",
+      "address_placeholder": "Saisissez votre adresse professionnelle complète",
+      "website": "Site web de l'entreprise",
+      "email_placeholder": "company@example.com",
+      "website_placeholder": "https://www.yourcompany.com"
+    },
+    "staffing_needs": {
+      "title": "Besoins en personnel",
+      "types_needed": "Types de personnel nécessaire",
+      "types_placeholder": "Sélectionnez la position souhaitée",
+      "positions": {
+        "housekeeping": "Entretien ménager",
+        "waiter": "Serveur / Serveuse",
+        "waiter_assistant": "Assistant serveur",
+        "receptionist": "Réceptionniste",
+        "guest_relations": "Relations avec les invités",
+        "bellboy": "Groom",
+        "animator": "Animateur / Coordinateur d'activités",
+        "kitchen_assistant": "Assistant de cuisine",
+        "specialized_worker": "Travailleur à compétences spécialisées",
+        "cnc_operator": "Opérateur CNC",
+        "packing_worker": "Travailleur de l'emballage",
+        "tailor": "Tailleur",
+        "forklift_operator": "Opérateur de chariot élévateur",
+        "material_handler": "Manutentionnaire",
+        "fruit_picker": "Cueilleur de fruits et légumes",
+        "greenhouse_worker": "Ouvrier de serre",
+        "packing_sorting": "Personnel chargé de l'emballage et du tri",
+        "irrigation": "Assistant à l'irrigation / à la plantation",
+        "animal_husbandry": "Élevage (laitier/agricole)",
+        "general_labourer": "Manœuvre",
+        "painter": "Peintre",
+        "electrician": "Électricien",
+        "tile_fixer": "Fixateur de carreaux"
+      },
+      "industry_focus": "L'industrie primaire en point de mire",
+      "industry_placeholder": "Sélectionnez votre secteur d'activité",
+      "industries": {
+        "factory": "Usine",
+        "agriculture": "Agriculture",
+        "tourism": "Tourisme",
+        "construction": "La construction"
+      },
+      "description_label": "Parlez-nous de vos besoins en personnel",
+      "description_placeholder": "Décrivez votre entreprise, vos besoins actuels en personnel, le nombre de postes à pourvoir, les compétences requises et toute autre exigence spécifique..."
+    },
+    "legal": {
+      "title": "Accord juridique",
+      "agree_terms_prefix": "J'accepte les",
+      "terms_link": "Conditions générales d'utilisation",
+      "agree_terms_suffix": "et comprendre les exigences et les obligations du partenariat. *",
+      "terms_error": "Vous devez accepter les conditions générales",
+      "agree_privacy_prefix": "Je reconnais que j'ai lu et que j'accepte la",
+      "privacy_link": "Politique de confidentialité",
+      "agree_privacy_suffix": "et les procédures de traitement des données. *",
+      "privacy_error": "Vous devez accepter la politique de confidentialité"
+    },
+    "submit": {
+      "button": "Soumettre la demande",
+      "submitting": "Soumettre...",
+      "success_message": "La demande a été envoyée avec succès ! Nous examinerons votre demande et vous contacterons dans les 2 à 3 jours ouvrables.",
+      "footer_message": "Nous examinerons votre demande et vous contacterons dans un délai de 2 à 3 jours ouvrables."
+    }
+  },
+  "why_partner": {
+    "title": "Pourquoi devenir partenaire de JobsAdmire ?",
+    "subtitle": "Nous mettons les entreprises en relation avec des travailleurs qualifiés et gérons toutes les complexités du recrutement international.",
+    "items": {
+      "global_network": {
+        "title": "Réseau mondial de recrutement",
+        "description": "Accédez à un vaste vivier de talents internationaux et entrez en contact avec des employeurs vérifiés qui recherchent des candidats qualifiés dans tous les secteurs d'activité."
+      },
+      "trusted_brand": {
+        "title": "Marque de confiance et conformité légale",
+        "description": "S'associer à une agence de recrutement agréée, reconnue pour ses activités transparentes, éthiques et conformes aux normes gouvernementales."
+      },
+      "ai_driven": {
+        "title": "Plateforme de recrutement pilotée par l'IA",
+        "description": "Tirez parti de nos outils de recrutement intelligents pour le suivi des candidats, la gestion des candidatures et une communication transparente avec les clients."
+      },
+      "end_to_end": {
+        "title": "Soutien de bout en bout",
+        "description": "De la recherche de candidats à l'assistance en matière de visa et de documentation, nous prenons en charge toutes les étapes afin de garantir un recrutement et un accueil en douceur."
+      },
+      "commission": {
+        "title": "Structure de commission attrayante",
+        "description": "Gagnez des commissions compétitives et des primes récurrentes pour chaque placement réussi grâce à notre programme de partenariat avec les recruteurs."
+      },
+      "dedicated_team": {
+        "title": "Équipe de partenariat spécialisée",
+        "description": "Recevez un soutien continu, des conseils et des mises à jour de la part de notre équipe de partenaires pour vous aider à développer votre succès en matière de recrutement."
+      }
+    }
+  },
+  "industry_expertise": {
+    "title": "Industries que nous servons",
+    "subtitle": "Nous fournissons du personnel qualifié dans les principaux secteurs d'activité en Turquie",
+    "items": {
+      "factory": {
+        "title": "Usine",
+        "description": "Travailleurs de la fabrication et de la chaîne de production"
+      },
+      "agriculture": {
+        "title": "Agriculture",
+        "description": "Ouvriers agricoles et spécialistes de l'agriculture"
+      },
+      "tourism": {
+        "title": "Tourisme",
+        "description": "Personnel hôtelier, guides et personnel d'accueil"
+      },
+      "construction": {
+        "title": "La construction",
+        "description": "Constructeurs, ingénieurs et travailleurs de la construction"
+      }
+    }
+  },
+  "platform_features": {
+    "title": "Notre plateforme de recrutement",
+    "subtitle": "Une technologie rationalisée et un soutien d'experts pour trouver le personnel adéquat pour votre entreprise",
+    "items": {
+      "verified_candidates": {
+        "title": "Candidats vérifiés",
+        "description": "Tous les candidats sont présélectionnés et vérifiés."
+      },
+      "quick_placement": {
+        "title": "Placement rapide",
+        "description": "Délai de placement moyen de 2 à 3 semaines"
+      },
+      "document_processing": {
+        "title": "Traitement des documents",
+        "description": "Nous nous occupons de tous les permis de travail et des formalités légales"
+      },
+      "ongoing_support": {
+        "title": "Soutien continu",
+        "description": "Soutien continu après le placement"
+      }
+    }
+  },
+  "benefits": {
+    "title": "Avantages du partenariat",
+    "subtitle": "Rejoignez les centaines d'entreprises qui travaillent déjà avec JobsAdmire",
+    "items": {
+      "talent_pool": {
+        "title": "Un vivier de talents présélectionnés",
+        "description": "Accéder à des candidats qualifiés prêts à travailler en Turquie"
+      },
+      "fast_process": {
+        "title": "Processus de recrutement rapide",
+        "description": "Pourvoir rapidement les postes grâce à notre système d'embauche rationalisé"
+      },
+      "legal_compliance": {
+        "title": "Conformité juridique",
+        "description": "Nous nous occupons de tous les permis de travail et de la documentation relative aux visas"
+      },
+      "industry_matching": {
+        "title": "Correspondance avec le secteur d'activité",
+        "description": "Obtenir des candidats correspondant aux besoins spécifiques de votre secteur d'activité"
+      }
+    }
+  },
+  "contact_footer": {
+    "title": "Prêt à constituer votre équipe ?",
+    "description": "Vous avez des questions sur nos services de recrutement ? Notre équipe dévouée est prête à vous aider à trouver le personnel idéal pour votre entreprise.",
+    "business_hours": "Heures d'ouverture : Du lundi au vendredi, de 9h00 à 18h00 (heure de Turquie)",
+    "response_time": "Temps de réponse moyen : dans les 2 heures pendant les heures de bureau"
+  }
+}

@@ -1,0 +1,161 @@
+{
+  "hero": {
+    "badge": "SEÇILEN WEZIPE",
+    "titleLine1": "Ýokary derejeli programma üpjünçiligi",
+    "titleLine2": "Inžener",
+    "companyName": "TechVision Inc",
+    "subtitle": "Senagatlary özgerdýän öňdebaryjy çözgütleri döretmek üçin biziň innowasion toparymyza goşulyň. Biz täsirli tehnologiýa döretmäge höwesli zehinli inženerleri gözleýäris.",
+    "ctaPrimary": "Maslahat soraň",
+    "ctaShare": "Işi paýlaş",
+    "salaryRange": "Aýlyk hakynyň aralygy",
+    "location": "Ýerleşýän ýeri",
+    "experience": "Tejribe",
+    "tabOverview": "Umumy syn",
+    "tabRequirements": "Talaplar",
+    "tabBenefits": "Peýdalar",
+    "industry": "Programma üpjünçiligini işläp düzmek",
+    "locationValue": "Uzakdan (ABŞ-da ýerleşýän)",
+    "locationStatValue": "Uzakdan",
+    "salaryLabel": "Aýlyk",
+    "teamSizeLabel": "Toparyň ölçegi",
+    "teamSizeValue": "15-20 Inžener",
+    "employmentLabel": "Iş bilen üpjünçilik",
+    "employmentValue": "Doly wagt",
+    "postedLabel": "Ýerleşdirilen",
+    "postedValue": "2025-nji ýylyň 15-nji marty",
+    "requiredSkills": "Gerekli başarnyklar",
+    "readyToJoin": "Toparymyza goşulmaga taýynmy?",
+    "applicationTime": "5 minutlyk programma"
+  },
+  "loading": "Işiň jikme-jiklikleri ýüklenýär...",
+  "notifications": {
+    "resume_uploaded": "Rezüme üstünlikli ýüklendi!",
+    "application_submitted": {
+      "title": "Arza tabşyryldy!",
+      "message": "{{title}} wezipesine gyzyklanma bildireniňiz üçin sag boluň. Toparymyz arzaňyzy gözden geçirip, tiz wagtda siziň bilen habarlaşar.",
+      "close": "Ýap"
+    }
+  },
+  "application_modal": {
+    "title": "{{title}} üçin ýüz tutuň",
+    "subtitle": "Arzaňyzy aşakdaky tertipde dolduryň",
+    "progress": "Programmanyň öňegidişligi",
+    "form": {
+      "full_name": "Doly ady *",
+      "full_name_placeholder": "Adyňyzy giriziň",
+      "email": "E-poçta salgysy *",
+      "phone": "Telefon belgisi *",
+      "location": "Häzirki ýerleşýän ýeri *",
+      "location_placeholder": "Şäher, Ýurt",
+      "linkedin": "LinkedIn profili",
+      "portfolio": "Portfolio URL-i",
+      "cover_message": "Gapdaldaky habar",
+      "cover_message_placeholder": "Siz näme üçin bu wezipä gyzyklanýarsyňyz?",
+      "upload_resume": "Rezüme ýüklemek *",
+      "click_to_upload": "Öz rezyumenizi ýüklemek üçin basyň",
+      "file_types": "(PDF, DOC ýa-da DOCX)",
+      "cancel": "Ýatyr",
+      "submit": "Arza tabşyryň",
+      "application_closed": "Arza ýapyk",
+      "terms_agreement": "Ýüz tutmak bilen, siz biziň <1>Şertlerimize we Düzgünlerimize</1> razy bolýarsyňyz",
+      "email_placeholder": "name@example.com",
+      "phone_placeholder": "+90 555 123 4567",
+      "linkedin_placeholder": "https://linkedin.com/in/username",
+      "portfolio_placeholder": "https://yourportfolio.com"
+    }
+  },
+  "share_modal": {
+    "title": "Bu işi paýlaş",
+    "subtitle": "Bu mümkinçiligi öz ulgamyňyz bilen paýlaşyň",
+    "facebook": "Facebook",
+    "twitter": "Twitter",
+    "linkedin": "LinkedIn",
+    "whatsapp": "WhatsApp",
+    "copy_link": "Göçürmek",
+    "copied": "Göçürildi!"
+  },
+  "header": {
+    "status_open": "Açyk",
+    "status_closed": "Ýapyk",
+    "posted": "Ýerleşdirilen",
+    "save_job": "Işi saklaň",
+    "saved": "Saklandy",
+    "share": "Paýlaş",
+    "apply_now": "Häzir ýüz tutuň",
+    "application_closed": "Arza ýapyk"
+  },
+  "quick_info": {
+    "currency": "Walýuta",
+    "salary": "Aýlyk",
+    "type": "Görnüş"
+  },
+  "tabs": {
+    "job_description": "Işiň düşündirişi",
+    "requirements": "Talaplar",
+    "details": "Jikme-jiklikler"
+  },
+  "tab_content": {
+    "description": {
+      "overview": "Işiň umumy mazmuny",
+      "employment_type": "Iş görnüşi",
+      "work_location": "Iş ýeri"
+    },
+    "requirements": {
+      "title": "Talaplar we Kwalifikasiýalar",
+      "what_we_looking_for": "Biz näme gözleýäris",
+      "professional_experience": "Hünär tejribesi",
+      "communication_skills": "Aragatnaşyk başarnyklary",
+      "team_collaboration": "Topar hyzmatdaşlygy",
+      "growth_mindset": "Ösüş pikirlenişi"
+    },
+    "details": {
+      "job_information": "Iş barada maglumat",
+      "job_type": "Işiň görnüşi:",
+      "location": "Ýerleşýän ýeri:",
+      "posted": "Ýerleşdirilen:",
+      "status": "Ýagdaý:",
+      "quota_full": "Kwota Doly",
+      "open_for_applications": "Arzalar üçin açyk",
+      "compensation": "Kompensasiýa",
+      "currency": "Walýuta:",
+      "salary": "Aýlyk:",
+      "why_join": "Näme üçin {{title}}-e goşulmaly?",
+      "career_growth": "Karýera ösüşi",
+      "career_growth_desc": "Ösüş üçin mümkinçilikler",
+      "great_location": "Ajaýyp ýer",
+      "great_location_desc": "{{location}}-da iş",
+      "competitive_package": "Bäsdeşlikli Paket",
+      "competitive_package_desc": "Özüne çekiji aýlyk we ýeňillikler",
+      "professional_growth": "Hünär ösüşi",
+      "professional_growth_desc": "Üznüksiz öwrenmek mümkinçilikleri"
+    }
+  },
+  "cta": {
+    "title": "Toparymyza goşulmaga taýynmy?",
+    "subtitle": "{{title}} bilen karýeraňyzda indiki ädimi ädiň. Biz özgeriş döretmek isleýän yhlasly adamlary gözleýäris.",
+    "apply_now": "Häzir ýüz tutuň",
+    "application_closed": "Arza ýapyk"
+  },
+  "contact": {
+    "title": "Arzaňyz boýunça kömege mätäçmi?",
+    "subtitle": "HR toparymyz size kömek etmäge taýýar",
+    "live_chat": {
+      "title": "Janly söhbetdeşlik goldawy",
+      "subtitle": "Ortaça jogap wagty: 5 minut"
+    },
+    "email": {
+      "title": "HR toparyna e-poçta iberiň",
+      "subtitle": "info@jobsadmire.com"
+    }
+  },
+  "fallback": {
+    "title_not_available": "Wezipe ady elýeterli däl",
+    "location_not_available": "Ýerleşýän ýer elýeterli däl",
+    "description_not_available": "<p>Işiň düşündirişi elýeterli däl.</p>",
+    "requirement_not_available": "<p>Talaplar elýeterli däl.</p>",
+    "date_not_available": "Sene elýeterli däl",
+    "error_loading": "Işi ýüklemekde ýalňyşlyk",
+    "unable_to_load_desc": "<p>Iş düşündirişini ýükläp bolmady. Soňrak gaýtadan synanyşyň.</p>",
+    "unable_to_load_req": "<p>Talaplary ýükläp bolmaýar. Soňrak gaýtadan synanyşyň.</p>"
+  }
+}

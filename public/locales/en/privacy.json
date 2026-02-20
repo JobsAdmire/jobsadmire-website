@@ -1,0 +1,255 @@
+{
+    "privacy": {
+      "page": {
+        "brandName": "JobsAdmire",
+        "heroTitle": "PRIVACY",
+        "heroTitleHighlight": "POLICY",
+        "lastUpdated": "Last Updated: 27 September 2025",
+        "aboutTitle": "About This Policy",
+        "aboutParagraph": "This Privacy Policy applies to jobsadmire.com and all subdomains (including crm.jobsadmire.com), as well as our mobile and communication channels (email, WhatsApp, phone). We are committed to protecting your personal data in full compliance with Turkish Law on the Protection of Personal Data No. 6698 (KVKK) and İŞKUR regulations.",
+        "sectionDataController": "1. DATA CONTROLLER",
+        "sectionScope": "2. SCOPE",
+        "sectionDataCategories": "3. DATA CATEGORIES",
+        "sectionPurposes": "4. PURPOSES & LEGAL BASES",
+        "sectionCookies": "5. COOKIES",
+        "sectionDisclosures": "6. THIRD PARTY DISCLOSURES",
+        "sectionTransfers": "7. CROSS-BORDER TRANSFERS",
+        "sectionRetention": "8. RETENTION",
+        "sectionRights": "9. YOUR RIGHTS",
+        "sectionSecurity": "10. SECURITY MEASURES",
+        "body": {
+          "dataController": {
+            "companyName": "Jobs Admire Özel İstihdam Bürosu Sanayi ve Ticaret Limited Şirketi",
+            "addressLabel": "Address:",
+            "addressText": "As listed on our website footer/Contact page",
+            "emailLabel": "Email:",
+            "email": "info@jobsadmire.com",
+            "phoneLabel": "Phone:",
+            "phone": "+90 501 124 03 40",
+            "permitNote": "We operate as a Private Employment Agency permitted by İŞKUR (Permit No. 1730, dated 19.09.2024). Under Law No. 4904, it is forbidden to charge jobseekers any fee. Complaints: İstanbul İŞKUR Provincial Directorate Kadıköy Service Center (tel. 0216 418 34 55)."
+          },
+          "scope": {
+            "intro": "This Policy explains how we process personal data when you:",
+            "items": ["Browse our site", "Create a profile or upload a CV", "Apply to jobs", "Request services (recruitment, HR, immigration)", "Subscribe to job alerts", "Partner with us", "Interact with our CRM and support channels"]
+          },
+          "dataCategories": {
+            "sectionTitle": "3. CATEGORIES OF PERSONAL DATA",
+            "categories": [
+              { "title": "Identification & Contact:", "desc": "name, email, phone, address, nationality" },
+              { "title": "Candidate Data:", "desc": "CV/resume, education, work history, skills, references, interview notes, profile photo, uploaded documents (qualifications, licenses)" },
+              { "title": "Immigration/Relocation Data:", "desc": "passport/ID details, civil status, travel history, residency/work-permit information (only where needed)" },
+              { "title": "Employer/Partner Data (B2B):", "desc": "company name, title, work contact, role requirements, contracts" },
+              { "title": "Transaction Data:", "desc": "paid service details (premium/resume/interview coaching), invoices (no card data stored on our servers)" },
+              { "title": "Usage & Device Data:", "desc": "logs, IP, user agent, pages viewed, cookies" },
+              { "title": "Communications:", "desc": "emails, calls/WhatsApp/chat, support tickets" }
+            ],
+            "specialNote": "Special Categories: We do not intentionally collect health or biometric data. If a role or legal process requires such data, we will process only where lawful and necessary, with explicit consent under KVKK where required."
+          },
+          "purposes": {
+            "sectionTitle": "4. PURPOSES & LEGAL BASES (KVKK ARTS. 5–6)",
+            "intro": "We process data for these purposes and legal grounds:",
+            "items": [
+              { "title": "Core Services (Candidates & Employers):", "desc": "Create accounts, match & place candidates, manage applications, interviews, offers, contracts, onboarding", "legal": "Performance of contract, legitimate interests, legal obligation" },
+              { "title": "Immigration/Relocation Support:", "desc": "Residence/work permit, visa invitations, documentation", "legal": "Performance of contract, legal obligation, explicit consent (for certain documents)" },
+              { "title": "B2B Partner & Recruiter Management:", "desc": "Onboarding, compliance, invoicing", "legal": "Contract, legal obligation, legitimate interests" },
+              { "title": "Communications & Alerts:", "desc": "Job alerts, consultation scheduling, service updates", "legal": "Explicit consent (marketing), contract/legitimate interests (service messages)" },
+              { "title": "Security & Compliance:", "desc": "Audit logs, access controls, responding to authorities, İŞKUR requirements", "legal": "Legal obligation, legitimate interests" },
+              { "title": "Analytics & Site Performance:", "desc": "Aggregated usage, improving UX", "legal": "Legitimate interests, consent (for non-essential cookies)" }
+            ],
+            "legalLabel": "Legal bases: {{legal}}"
+          },
+          "cookies": {
+            "sectionTitle": "5. COOKIES & ONLINE IDENTIFIERS",
+            "intro": "We use necessary cookies and, with your consent, analytics/functional/advertising cookies. You can manage or withdraw consent anytime via Cookie Settings (site footer).",
+            "notice": "Our Cookie Notice includes categories, purposes, providers, retention, and withdrawal instructions—aligned with the KVKK Board's Cookie Guidelines (2022, updated 2025)."
+          },
+          "disclosures": {
+            "sectionTitle": "7. DISCLOSURES TO THIRD PARTIES",
+            "items": ["Employers/clients seeking to hire (only relevant candidate data)", "Authorized partners/recruiters assisting in placement", "Service providers/processors (hosting, CRM, ATS tools, communications, payment processing, background checks)", "Public authorities & courts where legally required (İŞKUR, immigration authorities)"],
+            "processorNote": "All processors act under contracts meeting KVKK requirements."
+          },
+          "transfers": {
+            "sectionTitle": "8. CROSS-BORDER TRANSFERS (KVKK ART. 9)",
+            "intro": "Where data is transferred outside Türkiye (e.g., cloud hosting, international employers, global tools), we rely on permitted mechanisms under 2024 amendments:",
+            "items": ["Adequacy decision (if destination recognized by the Board)", "Commitments/standard contracts approved/notified to Authority", "Binding Corporate Rules", "Explicit consent (last resort, where no other mechanism applies)"],
+            "recordNote": "We keep a record of transfer assessments."
+          },
+          "retention": {
+            "sectionTitle": "9. RETENTION",
+            "text": "We retain data only as long as necessary for the purposes above and statutory limitation periods (e.g., labor, commercial, and İŞKUR regulations). When no longer needed, data is deleted/anonymized per KVKK."
+          },
+          "rights": {
+            "sectionTitle": "10. YOUR RIGHTS (KVKK ART. 11)",
+            "intro": "You may apply to us to:",
+            "items": ["Learn whether we process your data", "Request information on processing", "Learn purposes & recipients", "Request rectification", "Request deletion/anonymization where grounds apply", "Object to exclusively automated processing", "Object to processing under legitimate interests", "Request compensation for unlawful processing"],
+            "howToApply": "How to apply: Email privacy@jobsadmire.com or info@jobsadmire.com with identity details sufficient to verify your request.",
+            "responseTime": "We respond within 30 days as per KVKK procedures.",
+            "complaintNote": "If unsatisfied, you may complain to the Personal Data Protection Authority (KVKK) after exhausting the data controller application route."
+          },
+          "security": {
+            "sectionTitle": "12. SECURITY MEASURES",
+            "intro": "We implement administrative, technical, and physical safeguards:",
+            "items": ["Access control and least-privilege", "Encryption in transit/at rest", "Network and application security", "Vendor due diligence", "Staff confidentiality", "Backup and continuity", "Regular review of data inventory"]
+          },
+          "additional": {
+            "sectionTitle": "ADDITIONAL INFORMATION",
+            "verbisTitle": "11. VERBIS",
+            "verbisText": "Where JobsAdmire meets legal thresholds, we register with VERBIS (Data Controllers' Registry) and keep records up to date. Public VERBIS entries can be checked on the Authority portal.",
+            "childrenTitle": "13. Children's Data",
+            "childrenText": "Our services target adults and employers. We do not knowingly collect data from children; if we learn of such processing without appropriate legal basis and consent, we will delete it.",
+            "thirdPartyTitle": "14. Third-Party Links & Social Channels",
+            "thirdPartyText": "Our site may link to external services (e.g., WhatsApp, payment providers). Their privacy practices are governed by their own policies.",
+            "changesTitle": "15. Changes",
+            "changesText": "We may update this Policy to reflect changes in services or law (including future Board decisions or guidance). We will post the new version with an updated date."
+          },
+          "contact": {
+            "sectionTitle": "16. CONTACT",
+            "intro": "For any KVKK queries or requests, contact:",
+            "dataProtectionLabel": "Data Protection Contact",
+            "dataProtectionEmail": "info@jobsadmire.com",
+            "alternativeLabel": "Alternative Email",
+            "alternativeEmail": "privacy@jobsadmire.com",
+            "addressLabel": "Registered Address",
+            "addressText": "See our website footer/Contact page for full address details"
+          },
+          "footerCta": {
+            "title": "Questions About Our Privacy Policy?",
+            "description": "We're here to help. Contact us if you have any questions about how we handle your personal data.",
+            "button": "Contact Us"
+          }
+        }
+      },
+      "header": {
+        "companyName": "Jobs Admire",
+        "lastUpdated": "Last Updated: October 17, 2022",
+        "title": "TERMS OF SERVICE",
+        "description": "Welcome to Jobs Admire (\"Company,\" \"we,\" \"our,\" \"us\"). Protecting your personal data is a priority for us. This Privacy Policy explains how we collect, use, share, and protect your information in compliance with Turkish Law No. 6698 on the Protection of Personal Data (KVKK) and other relevant regulations."
+      },
+      "navigation": {
+        "title": "Policy Contents"
+      },
+      "sections": [
+        { "id": "general", "title": "General Terms", "icon": "shield-check" },
+        { "id": "data", "title": "Data Collection", "icon": "database" },
+        { "id": "purpose", "title": "Processing Purpose", "icon": "clipboard-list" },
+        { "id": "legal", "title": "Legal Basis", "icon": "scale" },
+        { "id": "sharing", "title": "Data Sharing", "icon": "share-nodes" },
+        { "id": "retention", "title": "Data Retention", "icon": "clock" },
+        { "id": "rights", "title": "Your Rights", "icon": "user-shield" },
+        { "id": "security", "title": "Data Security", "icon": "lock" },
+        { "id": "updates", "title": "Policy Updates", "icon": "bell" },
+        { "id": "contact", "title": "Contact Us", "icon": "envelope" }
+      ],
+      "content": {
+        "general": {
+          "title": "GENERAL TERMS & CONDITIONS",
+          "subtitle": "Data Controller Information",
+          "description": "Jobs Admire operates as a private employment agency under the Turkish Employment Agency (İŞKUR) with permit number 1730 dated 19.09.2024. As the Data Controller, we ensure compliance with KVKK regarding the collection and processing of personal data."
+        },
+        "data": {
+          "title": "PERSONAL DATA WE COLLECT",
+          "intro": "We may collect the following personal data:",
+          "categories": [
+            {
+              "title": "Job Seekers",
+              "description": "Name, contact, CV, experience, education, skills, and job application details"
+            },
+            {
+              "title": "Employers",
+              "description": "Company name, representative details, contact information, and job vacancy details."
+            },
+            {
+              "title": "Website Visitors",
+              "description": "IP address, device information, cookies, and browsing behavior."
+            }
+          ]
+        },
+        "purpose": {
+          "title": "PURPOSE OF DATA PROCESSING",
+          "intro": "We process personal data for the following purposes:",
+          "purposes": [
+            "Facilitating job placements between job seekers and employers.",
+            "Verifying user identity and qualifications.",
+            "Communicating job opportunities and recruitment-related services.",
+            "Compliance with legal obligations under Turkish law.",
+            "Improving website functionality and user experience."
+          ]
+        },
+        "legal": {
+          "title": "LEGAL BASIS FOR DATA PROCESSING",
+          "intro": "We process your data based on the following legal grounds:",
+          "bases": [
+            {
+              "title": "Explicit consent",
+              "description": "Where required by law or regulation"
+            },
+            {
+              "title": "Performance of a contract",
+              "description": "Between job seekers and employers"
+            },
+            {
+              "title": "Legal obligations",
+              "description": "Under Turkish employment and data protection laws"
+            },
+            {
+              "title": "Legitimate interests",
+              "description": "Such as fraud prevention, security, and service improvements"
+            }
+          ]
+        },
+        "sharing": {
+          "title": "DATA SHARING AND TRANSFERS",
+          "intro": "We may share personal data with:",
+          "parties": [
+            {
+              "title": "Employers",
+              "description": "Seeking candidates for job vacancies"
+            },
+            {
+              "title": "Service providers",
+              "description": "Assisting in our operations (e.g., hosting, IT support)"
+            },
+            {
+              "title": "Regulatory authorities",
+              "description": "When required by law"
+            }
+          ],
+          "transferNote": "If data is transferred outside Turkey, we ensure adequate protection in compliance with KVKK regulations."
+        },
+        "retention": {
+          "title": "DATA RETENTION PERIOD",
+          "description": "Personal data will be retained as long as necessary for the purposes outlined in this policy or as required by Turkish laws. Unnecessary data will be securely deleted or anonymized."
+        },
+        "rights": {
+          "title": "YOUR RIGHTS UNDER KVKK",
+          "intro": "As per Article 11 of KVKK, you have the following rights:",
+          "userRights": [
+            "Request access to your personal data",
+            "Request correction of inaccurate or incomplete data",
+            "Request deletion of your data under applicable conditions",
+            "Object to processing for certain purposes",
+            "Request data portability where applicable"
+          ],
+          "contactNote": "To exercise your rights, contact us at Info@jobsadmire.com"
+        },
+        "security": {
+          "title": "DATA SECURITY",
+          "description": "We implement technical and administrative security measures to protect your personal data against unauthorized access, alteration, or disclosure. Our security protocols are regularly updated to ensure the highest level of protection for your information."
+        },
+        "updates": {
+          "title": "UPDATES TO THIS POLICY",
+          "description": "We may update this Privacy Policy periodically. Changes will be posted on this page with the updated date. We encourage you to review this policy regularly to stay informed about how we protect your information."
+        },
+        "contact": {
+          "title": "CONTACT US",
+          "intro": "For inquiries or to exercise your data rights, please contact:",
+          "companyName": "Jobs Admire Özel İstihdam Bürosu Sanayi ve Ticaret Limited Şirketi",
+          "address": "Tahilpazari Mah. Adnan Menderes Blv. Erkal Apt. A Blok No: 7 İç Kapı No: 6 Muratpaşa/Antalya",
+          "email": "Info@jobsadmire.com",
+          "phone": "+90 501 124 03 40",
+          "acknowledgment": "By using our website and services, you acknowledge that you have read and understood this Privacy Policy."
+        }
+      }
+    }
+
+}

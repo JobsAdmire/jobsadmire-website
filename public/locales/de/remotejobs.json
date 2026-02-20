@@ -1,0 +1,276 @@
+{
+  "remotejobs": {
+    "hero": {
+      "badge": "Globale Remote-Job-Möglichkeiten für Fachkräfte",
+      "headline": {
+        "prefix": "Umfassen Sie",
+        "suffix": "Von überall her"
+      },
+      "animatedWords": [
+        "Fernarbeit",
+        "Freiheit",
+        "Flexibilität",
+        "Bilanz",
+        "Unabhängigkeit",
+        "Zukunft"
+      ],
+      "description": "Entfalten Sie Ihr Potenzial mit flexiblen und lohnenden Fernarbeitsplätzen. Finden Sie seriöse, hochwertige Fernarbeitsplätze in verschiedenen Branchen und finden Sie die perfekte Work-Life-Balance.",
+      "cta": {
+        "text": "Gelegenheiten zum Fernstudium finden"
+      }
+    },
+    "showcase": {
+      "title": "Hub für Fernarbeit",
+      "subtitle": "Arbeiten Sie von jedem Ort der Welt aus",
+      "workAnywhere": {
+        "title": "Überall arbeiten",
+        "subtitle": "Global vernetzen, lokal arbeiten"
+      },
+      "benefits": [
+        {
+          "icon": "Uhr",
+          "title": "Flexibilität",
+          "description": "Ihr Zeitplan",
+          "gradient": "bg-gradient-to-r von-himmel-500 zu-blau-600"
+        },
+        {
+          "icon": "Weltkugel",
+          "title": "Global",
+          "description": "Weltweite Teams",
+          "gradient": "bg-gradient-to-r von-violett-500 nach-indigo-600"
+        },
+        {
+          "icon": "Startseite",
+          "title": "Komfort",
+          "description": "Heimbüro",
+          "gradient": "bg-gradient-to-r von-emerald-500 bis-teal-600"
+        },
+        {
+          "icon": "Aktentasche",
+          "title": "Wachstum",
+          "description": "Berufliche Entwicklung",
+          "gradient": "bg-gradient-to-r von-orange-500 nach-rot-600"
+        }
+      ]
+    }
+  },
+  "remoteworksection": {
+    "whyChoose": {
+      "title": {
+        "prefix": "Warum wählen",
+        "highlight": "Fernarbeit?"
+      },
+      "description": "Entdecken Sie die lebensverändernden Vorteile der Telearbeit",
+      "benefits": [
+        {
+          "icon": "Uhr",
+          "title": "Flexibilität",
+          "description": "Arbeiten Sie, wann und wo Sie wollen, und behalten Sie die volle Kontrolle über Ihren Zeitplan.",
+          "highlight": "flexible Arbeitsmöglichkeiten"
+        },
+        {
+          "icon": "Weltkugel",
+          "title": "Zugang zu globalen Märkten",
+          "description": "Finden Sie Stellenangebote von Unternehmen aus der ganzen Welt, ohne umzuziehen.",
+          "highlight": "Online-Stellenangebote"
+        },
+        {
+          "icon": "DollarZeichen",
+          "title": "Kosteneinsparungen",
+          "description": "Sparen Sie Geld beim Pendeln, beim Umzug und bei den Kosten für die tägliche Arbeit.",
+          "highlight": ""
+        },
+        {
+          "icon": "Herz",
+          "title": "Work-Life-Balance",
+          "description": "Schaffen Sie mehr Harmonie zwischen Ihrem Berufs- und Privatleben.",
+          "highlight": "Arbeit von zu Hause aus"
+        },
+        {
+          "icon": "TrendingUp",
+          "title": "Verbesserung der Fertigkeiten",
+          "description": "Lernen Sie internationale Projekte und fortschrittliche Tools für die Fernarbeit kennen.",
+          "highlight": "Verbesserung der beruflichen Fähigkeiten"
+        },
+        {
+          "icon": "Benutzer",
+          "title": "Vielfältiges Netzwerk",
+          "description": "Knüpfen Sie Kontakte zu Fachleuten aus verschiedenen Kulturen weltweit.",
+          "highlight": "globale Vernetzung"
+        }
+      ]
+    },
+    "whatWeOffer": {
+      "title": {
+        "prefix": "Was wir",
+        "highlight": "Angebot"
+      },
+      "description": "Umfassende Lösungen für Ihre Fernarbeit",
+      "services": [
+        {
+          "icon": "Ziel",
+          "title": "Kuratierte Jobangebote aus der Ferne",
+          "description": "Wir suchen und prüfen Angebote in Bereichen wie IT, digitales Marketing, Inhaltserstellung, Grafikdesign, Kundensupport, virtuelle Assistenz und mehr.",
+          "highlight": "Remote-Job-Möglichkeiten"
+        },
+        {
+          "icon": "Aktentasche",
+          "title": "Freiberufliche und Vollzeit-Remote-Rollen",
+          "description": "Ganz gleich, ob Sie nach projektbasierten Freelance-Aufträgen oder nach Vollzeitstellen suchen, wir haben Optionen für unterschiedliche Präferenzen",
+          "highlight": "Fernarbeit für Fachleute"
+        },
+        {
+          "icon": "Benutzer",
+          "title": "Personalisiertes Job-Matching",
+          "description": "Unsere Experten helfen Ihnen, Ihre Fähigkeiten, Erfahrungen und Karriereziele mit den richtigen Unternehmen abzugleichen.",
+          "highlight": "Unternehmen, die Mitarbeiter aus der Ferne einstellen"
+        },
+        {
+          "icon": "Kopfhörer",
+          "title": "Anwendungsunterstützung",
+          "description": "Wir unterstützen Sie während des gesamten Einstellungsprozesses, von der Optimierung Ihres Lebenslaufs für Remote-Rollen bis hin zur Vorbereitung auf Vorstellungsgespräche.",
+          "highlight": ""
+        },
+        {
+          "icon": "BookOpen",
+          "title": "Training für Fernarbeitskompetenzen",
+          "description": "Beherrschung von Tools für die Remote-Zusammenarbeit, Kommunikationsetikette und Zeitmanagement, um in virtuellen Arbeitsumgebungen erfolgreich zu sein",
+          "highlight": ""
+        }
+      ],
+      "cta": "Starten Sie Ihre Fernkarriere"
+    }
+  },
+  "remoteworksection2": {
+    "whoShould": {
+      "title": {
+        "prefix": "Wer sollte erforschen",
+        "highlight": "Fernarbeit?"
+      },
+      "description": "Fernarbeit öffnet Türen für Fachleute in jeder Phase ihrer Karriere",
+      "audience": [
+        {
+          "icon": "GraduationCap",
+          "title": "Frische Absolventen",
+          "description": "die bereit sind, ihre Karriere mit flexiblen Möglichkeiten der Fernbetreuung zu beginnen",
+          "highlight": "Remote-Jobs für pakistanische Fachkräfte"
+        },
+        {
+          "icon": "Startseite",
+          "title": "Berufstätige Fachkräfte",
+          "description": "Fachkräfte suchen oder hybride Optionen",
+          "highlight": "Arbeit von zu Hause aus"
+        },
+        {
+          "icon": "Benutzer",
+          "title": "Freiberufler",
+          "description": "die ihren Kundenstamm weltweit ausbauen wollen",
+          "highlight": ""
+        },
+        {
+          "icon": "Baby",
+          "title": "Eltern, die zu Hause bleiben",
+          "description": "Vereinbarkeit von Familie und Beruf",
+          "highlight": ""
+        },
+        {
+          "icon": "Münzen",
+          "title": "Währung Verdiener",
+          "description": "Jeder, der in Fremdwährungen verdienen möchte, ohne sein Land zu verlassen",
+          "highlight": ""
+        },
+        {
+          "icon": "MapPin",
+          "title": "Entfernte Entdecker",
+          "description": "Menschen, die während ihrer Arbeit völlige Ortsunabhängigkeit wünschen",
+          "highlight": "digitaler Nomadenlebensstil"
+        }
+      ]
+    },
+    "howToStart": {
+      "title": {
+        "prefix": "Wie bekommt man",
+        "highlight": "Gestartet"
+      },
+      "description": "Ihr Weg zum Erfolg bei der Fernarbeit in 4 einfachen Schritten",
+      "steps": [
+        {
+          "icon": "BenutzerPlus",
+          "title": "Registrierung bei JobsAdmire",
+          "description": "Erstellen Sie Ihr Profil und stellen Sie Ihre Fähigkeiten und Erfahrungen vor",
+          "number": "01"
+        },
+        {
+          "icon": "Suche",
+          "title": "Durchsuchen & Bewerben",
+          "description": "Erkunden Sie unsere kuratierten Remote-Jobs und bewerben Sie sich auf Stellen, die Ihrem Profil entsprechen",
+          "number": "02"
+        },
+        {
+          "icon": "MessageSquare",
+          "title": "Vorbereiten & Interview",
+          "description": "Profitieren Sie von unserem Bewerbungs- und Vorstellungsgesprächscoaching, um Ihre Chancen zu erhöhen",
+          "number": "03"
+        },
+        {
+          "icon": "Aktentasche",
+          "title": "Sichern Sie sich Ihren Fernarbeitsplatz",
+          "description": "Nehmen Sie eine Stelle im Außendienst an und genießen Sie die Freiheit, von überall aus zu arbeiten",
+          "number": "04"
+        }
+      ],
+      "form": {
+        "title": "Beginnen Sie Ihre Reise",
+        "subtitle": "Sind Sie bereit, Ihre Karriere im Fernstudium zu beginnen?",
+        "fields": {
+          "name": "Vollständiger Name",
+          "email": "E-Mail Adresse",
+          "skills": "Fähigkeiten und Erfahrungen"
+        },
+        "placeholders": {
+          "name": "Geben Sie Ihren vollständigen Namen ein",
+          "skills": "Erzählen Sie uns von Ihren Fähigkeiten...",
+          "email": "your.email@example.com"
+        },
+        "submit": "Profil erstellen und loslegen"
+      },
+      "cta": "Beginnen Sie Ihre Fernkarriere-Reise"
+    },
+    "whyTrust": {
+      "title": {
+        "prefix": "Warum Vertrauen",
+        "highlight": "JobsAdmire?"
+      },
+      "description": "Ihr zuverlässiger Partner für echte Fernarbeitsmöglichkeiten",
+      "points": [
+        {
+          "icon": "Auszeichnung",
+          "title": "Jahre der Erfahrung",
+          "description": "Verbindung von Arbeitssuchenden mit seriösen Arbeitgebern weltweit"
+        },
+        {
+          "icon": "Schild",
+          "title": "Qualitätssicherung",
+          "description": "Wir legen Wert auf Transparenz, Qualität und Ihren beruflichen Erfolg"
+        },
+        {
+          "icon": "Weltkugel",
+          "title": "Globales Netzwerk",
+          "description": "Partnerschaften mit vertrauenswürdigen Unternehmen aus verschiedenen Branchen"
+        }
+      ],
+      "highlight": {
+        "title": {
+          "prefix": "Echtes",
+          "highlight": "Möglichkeiten der Fernarbeit"
+        },
+        "features": [
+          "Geprüfte Stellenausschreibungen von vertrauenswürdigen Arbeitgebern",
+          "Umfassende Unterstützung während Ihrer gesamten beruflichen Laufbahn",
+          "Zugang zu exklusiven Remote-Möglichkeiten"
+        ],
+        "cta": "Möglichkeiten ausloten"
+      }
+    }
+  }
+}
