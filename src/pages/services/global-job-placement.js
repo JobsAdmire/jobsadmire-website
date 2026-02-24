@@ -33,23 +33,31 @@ const globaljobplacement = () => {
         <Second />
         <Thirds />
         <ServicesCarousel />
-        <Banner
-          title="Unlock Global Career Opportunities"
-          description="Access exclusive job opportunities across the globe. Our extensive network of international employers helps you find the perfect position that matches your skills and career aspirations worldwide."
-          buttonText="Find Jobs"
-          buttonLink="/job"
-          serviceLabel="GLOBAL PLACEMENT"
-        />
+        <Banner />
       </div>
     </div>
   );
 };
 
 export const getStaticProps = async ({ locale }) => {
+  const { getLayoutCmsProps } = require("@/lib/api/cmsHelper");
+  const { getServiceBySlug } = require("@/lib/api/cms");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const [layoutProps, cmsService, cmsPageContent] = await Promise.all([
+    getLayoutCmsProps(locale),
+    getServiceBySlug("global-job-placement", locale),
+    getPageAndLayoutContent("services/global-jobs", locale),
+  ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["about", "common"])),
+      ...layoutProps,
+      cmsService: cmsService || null,
+      cmsPageContent,
     },
+    revalidate: 60,
   };
 };
 export default globaljobplacement;

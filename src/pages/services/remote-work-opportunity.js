@@ -32,23 +32,31 @@ const remoteworkopportunity = () => {
         <Second />
         <Thirds />
         <ServicesCarousel />
-        <Banner
-          title="Discover Remote Career Freedom"
-          description="Find flexible remote job opportunities from top companies worldwide. We connect talented professionals with remote positions that offer work-life balance and unlimited career growth."
-          buttonText="Find Remote Jobs"
-          buttonLink="/contact-us"
-          serviceLabel="REMOTE CAREERS"
-        />
+        <Banner />
       </div>
     </div>
   );
 };
 
 export const getStaticProps = async ({ locale }) => {
+  const { getLayoutCmsProps } = require("@/lib/api/cmsHelper");
+  const { getServiceBySlug } = require("@/lib/api/cms");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const [layoutProps, cmsService, cmsPageContent] = await Promise.all([
+    getLayoutCmsProps(locale),
+    getServiceBySlug("remote-work", locale),
+    getPageAndLayoutContent("services/remote-jobs", locale),
+  ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["about", "common"])),
+      ...layoutProps,
+      cmsService: cmsService || null,
+      cmsPageContent,
     },
+    revalidate: 60,
   };
 };
 export default remoteworkopportunity;

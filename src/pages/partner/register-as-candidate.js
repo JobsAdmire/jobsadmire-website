@@ -43,7 +43,7 @@ import {
   Book,
 } from "lucide-react";
 
-export default function CandidateRegistration() {
+export default function CandidateRegistration({ cmsFaqs = [] }) {
   const router = useRouter();
   const { t } = useTranslation("common");
   const [formData, setFormData] = useState({
@@ -1392,68 +1392,27 @@ export default function CandidateRegistration() {
               </h2>
               <p className="max-w-3xl mx-auto text-xl text-gray-600">
                 Get answers to common questions about working in Turkey through
-                JobAsdmire.
+                JobsAdmire.
               </p>
             </div>
             <div className="grid gap-8 md:grid-cols-2">
-              <div className="p-6 bg-white border shadow-lg rounded-xl border-emerald-100">
-                <h4 className="mb-3 font-bold text-slate-900">
-                  Is the service really free for candidates?
-                </h4>
-                <p className="text-gray-600">
-                  Yes! We never charge candidates any fees. Employers pay us for
-                  our recruitment services, so everything is completely free for
-                  job seekers.
-                </p>
-              </div>
-              <div className="p-6 bg-white border shadow-lg rounded-xl border-emerald-100">
-                <h4 className="mb-3 font-bold text-slate-900">
-                  How long does the visa process take?
-                </h4>
-                <p className="text-gray-600">
-                  Typically 30-45 days from job offer to visa approval. We
-                  handle all documentation and government processes for you.
-                </p>
-              </div>
-              <div className="p-6 bg-white border shadow-lg rounded-xl border-emerald-100">
-                <h4 className="mb-3 font-bold text-slate-900">
-                  Do I need to speak Turkish?
-                </h4>
-                <p className="text-gray-600">
-                  Not required for most positions! Many employers provide
-                  Turkish language training, and we offer free basic Turkish
-                  courses to our candidates.
-                </p>
-              </div>
-              <div className="p-6 bg-white border shadow-lg rounded-xl border-emerald-100">
-                <h4 className="mb-3 font-bold text-slate-900">
-                  Can I bring my family?
-                </h4>
-                <p className="text-gray-600">
-                  Yes! We assist with family visas and help you find suitable
-                  family accommodation near your workplace.
-                </p>
-              </div>
-              <div className="p-6 bg-white border shadow-lg rounded-xl border-emerald-100">
-                <h4 className="mb-3 font-bold text-slate-900">
-                  What if I don't like the job?
-                </h4>
-                <p className="text-gray-600">
-                  We provide 6 months of support after arrival. If there are
-                  issues, we help you find alternative employment with our other
-                  partner companies.
-                </p>
-              </div>
-              <div className="p-6 bg-white border shadow-lg rounded-xl border-emerald-100">
-                <h4 className="mb-3 font-bold text-slate-900">
-                  Are salaries paid on time?
-                </h4>
-                <p className="text-gray-600">
-                  All our partner companies are verified and monitored. We
-                  ensure compliance with Turkish labor laws and timely salary
-                  payments.
-                </p>
-              </div>
+              {(cmsFaqs.length > 0 ? cmsFaqs : [
+                { question: 'Is the service really free for candidates?', answer: 'Yes! We never charge candidates any fees. Employers pay us for our recruitment services, so everything is completely free for job seekers.' },
+                { question: 'How long does the visa process take?', answer: 'Typically 30-45 days from job offer to visa approval. We handle all documentation and government processes for you.' },
+                { question: 'Do I need to speak Turkish?', answer: 'Not required for most positions! Many employers provide Turkish language training, and we offer free basic Turkish courses to our candidates.' },
+                { question: 'Can I bring my family?', answer: 'Yes! We assist with family visas and help you find suitable family accommodation near your workplace.' },
+                { question: 'What if I don\'t like the job?', answer: 'We provide 6 months of support after arrival. If there are issues, we help you find alternative employment with our other partner companies.' },
+                { question: 'Are salaries paid on time?', answer: 'All our partner companies are verified and monitored. We ensure compliance with Turkish labor laws and timely salary payments.' },
+              ]).map((faq, idx) => (
+                <div key={faq.id || idx} className="p-6 bg-white border shadow-lg rounded-xl border-emerald-100">
+                  <h4 className="mb-3 font-bold text-slate-900">
+                    {faq.question}
+                  </h4>
+                  <p className="text-gray-600">
+                    {faq.answer}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
@@ -1497,9 +1456,24 @@ export const getStaticProps = async ({ locale }) => {
   const {
     serverSideTranslations,
   } = require("next-i18next/serverSideTranslations");
+  const { getLayoutCmsProps } = require("@/lib/api/cmsHelper");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const { getFaqs } = require("@/lib/api/cms");
+
+  const [layoutProps, cmsPageContent, cmsFaqs] = await Promise.all([
+    getLayoutCmsProps(locale),
+    getPageAndLayoutContent("partner-register-as-candidate", locale),
+    getFaqs("register-as-candidate", locale),
+  ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
+      ...layoutProps,
+      cmsPageContent,
+      cmsFaqs: cmsFaqs || [],
     },
+    revalidate: 60,
   };
 };

@@ -41,23 +41,31 @@ const CareerCounsellingPage = () => {
         <Sectionthree />
         <Section4 />
         <ServicesCarousel />
-        <Banner
-          title="Shape Your Career Path"
-          description="Get personalized career guidance from industry experts. We help you identify your strengths, explore career paths, and create a strategic plan to achieve your professional goals."
-          buttonText="Start Counselling"
-          buttonLink="/contact-us"
-          serviceLabel="CAREER GUIDANCE"
-        />
+        <Banner />
       </div>
     </div>
   );
 };
 
 export const getStaticProps = async ({ locale }) => {
+  const { getLayoutCmsProps } = require("@/lib/api/cmsHelper");
+  const { getServiceBySlug } = require("@/lib/api/cms");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const [layoutProps, cmsService, cmsPageContent] = await Promise.all([
+    getLayoutCmsProps(locale),
+    getServiceBySlug("career-counselling", locale),
+    getPageAndLayoutContent("services/career-counselling", locale),
+  ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["about", "common"])),
+      ...layoutProps,
+      cmsService: cmsService || null,
+      cmsPageContent,
     },
+    revalidate: 60,
   };
 };
 

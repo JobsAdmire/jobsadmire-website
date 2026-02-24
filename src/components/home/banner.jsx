@@ -1,8 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { TrendingUp, ChevronRight } from 'lucide-react';
 import { useTranslation } from 'next-i18next';
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 
-// Intersection Observer Hook for animations
 const useIntersectionObserver = (options = {}) => {
   const ref = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -27,45 +27,22 @@ const useIntersectionObserver = (options = {}) => {
   return [ref, isVisible];
 };
 
-const ServiceBanner = ({ 
-  variant = "default", // New prop to select banner variant
-  customTitle = "",
-  customSubtitle = "",
-  customDescription = "",
-  customButtonText = "",
-  customButtonLink = "",
-  customServiceLabel = ""
-}) => {
+const ServiceBanner = ({ variant = "default" }) => {
   const { t } = useTranslation('common');
+  const { c } = useCmsContent();
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
-  
-  // Get translations based on variant or use custom props
-  const getContent = () => {
-    if (customTitle || customDescription || customButtonText || customServiceLabel) {
-      // Use custom props if provided
-      return {
-        serviceLabel: customServiceLabel || t('serviceBanner.default.serviceLabel'),
-        title: customTitle || t('serviceBanner.default.title'),
-        description: customDescription || t('serviceBanner.default.description'),
-        buttonText: customButtonText || t('serviceBanner.default.buttonText')
-      };
-    } else {
-      // Use predefined variant or default
-      const basePath = variant === "default" 
-        ? 'serviceBanner.default' 
-        : `serviceBanner.variants.${variant}`;
-      
-      return {
-        serviceLabel: t(`${basePath}.serviceLabel`),
-        title: t(`${basePath}.title`),
-        description: t(`${basePath}.description`),
-        buttonText: t(`${basePath}.buttonText`)
-      };
-    }
-  };
 
-  const content = getContent();
-  const buttonLink = customButtonLink || "/services"; // Default link
+  const basePath = variant === "default"
+    ? 'serviceBanner.default'
+    : `serviceBanner.variants.${variant}`;
+
+  const content = {
+    serviceLabel: c('banner.serviceLabel', t(`${basePath}.serviceLabel`)),
+    title: c('banner.title', t(`${basePath}.title`)),
+    description: c('banner.description', t(`${basePath}.description`)),
+    buttonText: c('banner.buttonText', t(`${basePath}.buttonText`)),
+  };
+  const buttonLink = c('banner.buttonLink', '/services');
   
   return (
     <div className="relative py-24 overflow-hidden bg-gradient-to-b from-gray-50 to-white">

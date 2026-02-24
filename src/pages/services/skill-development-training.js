@@ -31,23 +31,31 @@ const skilldevelopmenttraining = () => {
         <Hero />
         <Second />
         <ServicesCarousel />
-        <Banner
-          title="Elevate Your Professional Skills"
-          description="Enhance your capabilities with our comprehensive training programs. From technical skills to leadership development, we help you stay competitive and advance in today's job market."
-          buttonText="Start Training"
-          buttonLink="/contact-us"
-          serviceLabel="SKILL BUILDERS"
-        />
+        <Banner />
       </div>
     </div>
   );
 };
 
 export const getStaticProps = async ({ locale }) => {
+  const { getLayoutCmsProps } = require("@/lib/api/cmsHelper");
+  const { getServiceBySlug } = require("@/lib/api/cms");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const [layoutProps, cmsService, cmsPageContent] = await Promise.all([
+    getLayoutCmsProps(locale),
+    getServiceBySlug("skill-development", locale),
+    getPageAndLayoutContent("services/skill-development", locale),
+  ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["about", "common"])),
+      ...layoutProps,
+      cmsService: cmsService || null,
+      cmsPageContent,
     },
+    revalidate: 60,
   };
 };
 export default skilldevelopmenttraining;

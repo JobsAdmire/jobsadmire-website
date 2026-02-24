@@ -6,9 +6,15 @@ export default function Services() {
 
 // Add these Next.js specific functions to fix the error
 export const getStaticProps = async ({ locale }) => {
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const cmsPageContent = await getPageAndLayoutContent("services", locale);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ['about', 'common'])),
+      cmsPageContent,
     },
+    revalidate: 60,
   }
 }

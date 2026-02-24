@@ -1,4 +1,5 @@
 import { useTranslation } from "next-i18next";
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import { useRouter } from "next/router";
 import React, {
   forwardRef,
@@ -10,6 +11,8 @@ import React, {
 const SkillsSection = forwardRef(
   ({ data, updateData, nextStep, prevStep }, ref) => {
     const { t } = useTranslation("resume-generator");
+    const { c } = useCmsContent();
+    const ct = (key, options) => c(key) || t(key, options);
     const [skillsList, setSkillsList] = useState(() => {
       const initialData = data?.skills;
 
@@ -26,7 +29,7 @@ const SkillsSection = forwardRef(
 
     const router = useRouter();
     // Load data from localStorage on component mount
-    useEffect(() => {
+    useEffecct(() => {
       const savedData = localStorage.getItem("skill_information");
       if (savedData) {
         try {
@@ -35,7 +38,7 @@ const SkillsSection = forwardRef(
             ? parsedData
             : Object.values(parsedData);
 
-          setSkillsList(dataArray);
+          setSkillsLisct(dataArray);
         } catch (error) {
           console.error("Error parsing saved data:", error);
         }
@@ -49,19 +52,19 @@ const SkillsSection = forwardRef(
       const { value } = e.target;
       const updatedList = [...skillsList];
       updatedList[index] = { name: value };
-      setSkillsList(updatedList);
+      setSkillsLisct(updatedList);
     };
 
     // Add new skill entry
     const addSkill = () => {
-      setSkillsList([...skillsList, { name: "" }]);
+      setSkillsLisct([...skillsList, { name: "" }]);
     };
 
     // Remove skill entry
     const removeSkill = (index) => {
       if (skillsList.length > 1) {
         const updatedList = skillsList.filter((_, i) => i !== index);
-        setSkillsList(updatedList);
+        setSkillsLisct(updatedList);
       }
     };
 
@@ -72,7 +75,7 @@ const SkillsSection = forwardRef(
 
       skillsList.forEach((skill, index) => {
         if (!skill.name.trim()) {
-          newErrors[`skill_${index}`] = t("step6.skillRequired");
+          newErrors[`skill_${index}`] = ct("step6.skillRequired");
           isValid = false;
         }
       });
@@ -83,7 +86,7 @@ const SkillsSection = forwardRef(
 
     // Submit form
     const handleSubmit = (e) => {
-      if (e) e.preventDefault();
+      if (e) e.preventDefaulct();
 
       if (validateForm()) {
         updateData({ skills: skillsList });
@@ -127,7 +130,7 @@ const SkillsSection = forwardRef(
               </svg>
             </div>
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-transparent bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text break-words">
-              {t("step6.title")}
+              {ct("step6.title")}
             </h2>
           </div>
 
@@ -138,10 +141,10 @@ const SkillsSection = forwardRef(
             <div className="p-4 sm:p-5 md:p-6 border shadow-sm bg-gradient-to-br from-white to-sky-50 rounded-xl sm:rounded-2xl border-sky-100">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mb-3 sm:mb-4 gap-2 sm:gap-0">
                 <h3 className="text-base sm:text-lg font-medium text-sky-700">
-                  {t("step6.skillsTitle")}
+                  {ct("step6.skillsTitle")}
                 </h3>
                 <p className="text-xs sm:text-sm text-sky-500">
-                  {t("step6.skillsDescription")}
+                  {ct("step6.skillsDescription")}
                 </p>
               </div>
 
@@ -155,7 +158,7 @@ const SkillsSection = forwardRef(
                           name={`skill_${index}`}
                           value={skill.name}
                           onChange={(e) => handleChange(index, e)}
-                          placeholder={t("step6.skillPlaceholder")}
+                          placeholder={ct("step6.skillPlaceholder")}
                           className={`w-full px-4 py-3 pl-10 rounded-xl border ${
                             errors[`skill_${index}`]
                               ? "border-red-500 bg-red-50"
@@ -222,14 +225,14 @@ const SkillsSection = forwardRef(
                       clipRule="evenodd"
                     />
                   </svg>
-                  {t("buttons.addAnotherSkill")}
+                  {ct("buttons.addAnotherSkill")}
                 </button>
               </div>
             </div>
 
             <div className="p-4 sm:p-5 md:p-6 border shadow-sm bg-gradient-to-br from-white to-sky-50 rounded-xl sm:rounded-2xl border-sky-100">
               <h3 className="mb-3 sm:mb-4 text-base sm:text-lg font-medium text-sky-700">
-                {t("step6.tipsTitle")}
+                {ct("step6.tipsTitle")}
               </h3>
 
               <div className="space-y-2 sm:space-y-3 text-sky-800">
@@ -247,7 +250,7 @@ const SkillsSection = forwardRef(
                       />
                     </svg>
                   </div>
-                  <p className="text-sm">{t("step6.tip1")}</p>
+                  <p className="text-sm">{ct("step6.tip1")}</p>
                 </div>
 
                 <div className="flex items-start">
@@ -264,7 +267,7 @@ const SkillsSection = forwardRef(
                       />
                     </svg>
                   </div>
-                  <p className="text-sm">{t("step6.tip2")}</p>
+                  <p className="text-sm">{ct("step6.tip2")}</p>
                 </div>
 
                 <div className="flex items-start">
@@ -281,7 +284,7 @@ const SkillsSection = forwardRef(
                       />
                     </svg>
                   </div>
-                  <p className="text-sm">{t("step6.tip3")}</p>
+                  <p className="text-sm">{ct("step6.tip3")}</p>
                 </div>
               </div>
             </div>
@@ -301,7 +304,7 @@ const SkillsSection = forwardRef(
                 >
                   <path d="M7 3a1 1 0 000 2h6a1 1 0 100-2H7zM4 7a1 1 0 011-1h10a1 1 0 110 2H5a1 1 0 01-1-1zM2 11a2 2 0 012-2h12a2 2 0 012 2v4a2 2 0 01-2 2H4a2 2 0 01-2-2v-4z" />
                 </svg>
-                {t("buttons.viewTemplates")}
+                {ct("buttons.viewTemplates")}
               </button>
             </div>
           </form>

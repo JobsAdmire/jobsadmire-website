@@ -1,10 +1,13 @@
 import React, { useRef } from 'react';
 import { useTranslation } from 'next-i18next';
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 
 const DarkResume = ({ userData }) => {
   const { t } = useTranslation('resume-generator');
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const resumeRef = useRef(null);
 
   // Extract data with same structure as NurseResumeTemplate
@@ -45,7 +48,7 @@ const DarkResume = ({ userData }) => {
             <div className="absolute top-0 left-0 right-0 h-16 bg-blue-500"></div>
             <img 
               src={personal_data?.image || personal_data?.profileImage || "/api/placeholder/200/200"} 
-              alt={t('alts.profileAlt')} 
+              alt={ct('alts.profileAlt')} 
               className="w-32 h-32 rounded-full object-cover border-4 border-white mt-16 shadow-md"
             />
             <h1 className="text-xl font-bold mt-4 text-center">
@@ -72,7 +75,7 @@ const DarkResume = ({ userData }) => {
             {(skill_data && Object.keys(skill_data).length > 0) && (
               <div className="mt-8 w-full text-left">
                 <h2 className="text-lg font-bold border-b-2 border-white pb-2">
-                  {t("sections.skills")}
+                  {ct("sections.skills")}
                 </h2>
                 <ul className="mt-3 list-none space-y-1 text-[13px]">
                   {Array.isArray(skill_data) 
@@ -91,7 +94,7 @@ const DarkResume = ({ userData }) => {
             {(achievement_data && Object.keys(achievement_data).length > 0) && (
               <div className="mt-8 w-full text-left">
                 <h2 className="text-lg font-bold border-b-2 border-white pb-2">
-                  {t("sections.achievements")}
+                  {ct("sections.achievements")}
                 </h2>
                 <ul className="mt-3 list-none space-y-2">
                   {Array.isArray(achievement_data) 
@@ -126,7 +129,7 @@ const DarkResume = ({ userData }) => {
             {(experience_data && Object.keys(experience_data).length > 0) && (
               <div className="mt-6">
                 <h2 className="text-lg font-bold border-b-2 border-gray-300 pb-2">
-                  {t("sections.experience")}
+                  {ct("sections.experience")}
                 </h2>
                 <ul className="mt-3 list-none space-y-2 text-gray-700 text-sm">
                   {Object.values(experience_data).map((exp, index) => (
@@ -147,7 +150,7 @@ const DarkResume = ({ userData }) => {
             {(education_data && Object.keys(education_data).length > 0) && (
               <div className="mt-6">
                 <h2 className="text-lg font-bold border-b-2 border-gray-300 pb-2">
-                  {t("sections.education")}
+                  {ct("sections.education")}
                 </h2>
                 <ul className="mt-3 list-none space-y-2 text-sm">
                   {Object.values(education_data).map((edu, index) => (
@@ -185,7 +188,7 @@ const DarkResume = ({ userData }) => {
             {/* References Section - Same as NurseResumeTemplate */}
             <div className="mt-6">
               <h2 className="text-lg font-bold border-b-2 border-gray-300 pb-2">
-                {t("sections.references")}
+                {ct("sections.references")}
               </h2>
               <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div className="mb-4">

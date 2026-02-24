@@ -1,9 +1,12 @@
 import React, { useRef, useState } from "react";
 import { useTranslation } from "next-i18next";
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import { showInfo } from "@/lib/utils/toast";
 
 const TailwindResume = ({ userData }) => {
   const { t } = useTranslation("resume-generator");
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   var personal_data = userData["personal_data"];
   var experience_data = userData["experience_data"];
   var education_data = userData["education_data"];
@@ -58,15 +61,15 @@ const TailwindResume = ({ userData }) => {
 
             <div className="mt-6 text-center">
               <p>
-                <strong>{t("labels.phone")}:</strong>{" "}
+                <strong>{ct("labels.phone")}:</strong>{" "}
                 <span className="text-[15px]">{userData.phone}</span>
               </p>
               <p>
-                <strong>{t("labels.email")}:</strong>{" "}
+                <strong>{ct("labels.email")}:</strong>{" "}
                 <span className="text-[15px]">{userData.email}</span>
               </p>
               <p>
-                <strong>{t("labels.address")}:</strong>{" "}
+                <strong>{ct("labels.address")}:</strong>{" "}
                 <span className="text-[15px]">{userData.address}</span>
               </p>
             </div>
@@ -83,7 +86,7 @@ const TailwindResume = ({ userData }) => {
             {skill_data && (
               <div className="mt-8">
                 <h2 className="pb-2 text-2xl font-bold border-b-2 border-gray-300">
-                  {t("sections.skills")}
+                  {ct("sections.skills")}
                 </h2>
                 <ul className="mt-3 list-disc pl-6 space-y-1 text-[14px]">
                   {Object.values(skill_data).map((skill, index) => (
@@ -99,7 +102,7 @@ const TailwindResume = ({ userData }) => {
             {achievements_data && (
               <div className="mt-8">
 <h2 className="pb-2 text-2xl font-bold border-b-2 border-gray-300">
-                {t("sections.achievements")}
+                {ct("sections.achievements")}
                 </h2>
                 <ul className="pl-6 mt-3 space-y-1 list-disc">
                   {Object.values(achievements_data).map(
@@ -120,7 +123,7 @@ const TailwindResume = ({ userData }) => {
             {experience_data && (
               <div className="mt-8">
                 <h2 className="pb-2 text-2xl font-bold border-b-2 border-gray-300">
-                  {t("sections.experience")}
+                  {ct("sections.experience")}
                 </h2>
                 <ul className="pl-6 mt-3 space-y-3 list-disc">
                   {Object.values(experience_data).map((exp, index) => (
@@ -136,7 +139,7 @@ const TailwindResume = ({ userData }) => {
             {education_data && (
               <div className="mt-8">
                 <h2 className="pb-2 text-2xl font-bold border-b-2 border-gray-300">
-                  {t("sections.education")}
+                  {ct("sections.education")}
                 </h2>
                 <ul className="pl-6 mt-3 space-y-3 list-disc">
                   {Object.values(education_data).map((edu, index) => (
@@ -178,7 +181,7 @@ const TailwindResume = ({ userData }) => {
           disabled={isGenerating}
           className="px-6 py-2 text-white transition-colors bg-blue-600 rounded hover:bg-blue-700 disabled:bg-blue-400"
         >
-          {isGenerating ? t("actions.generatingPdf") : "Download CV"}
+          {isGenerating ? ct("actions.generatingPdf") : "Download CV"}
         </button>
       </div>
     </div>

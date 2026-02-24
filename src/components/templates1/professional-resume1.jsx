@@ -1,11 +1,14 @@
 import React, { use, useEffect, useRef, useState } from "react";
 import { useTranslation } from "next-i18next";
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import { Edit, Phone, Mail, MapPin } from "lucide-react";
 import html2canvas from "html2canvas";
 import { showInfo } from "@/lib/utils/toast";
 
 const ModernResume = ({ userData }) => {
   const { t } = useTranslation(["common", "resume-generator"]);
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   var personal_data = userData["personal_data"];
   var experience_data = userData["experience_data"];
   var education_data = userData["education_data"];
@@ -41,7 +44,7 @@ const ModernResume = ({ userData }) => {
 
   const extractInitials = (name) => {
     return name
-      .split(" ")
+      .splict(" ")
       .map((part) => part[0])
       .join("")
       .toUpperCase();
@@ -53,7 +56,7 @@ const ModernResume = ({ userData }) => {
       <button
         onClick={handleEdit}
         className="fixed z-50 p-3 text-white transition-colors bg-black rounded-full shadow-lg hide-for-pdf bottom-12 right-6 hover:bg-gray-800"
-        title={t("labels.general.updateResume")}
+        title={ct("labels.general.updateResume")}
       >
         <Edit size={24} />
       </button>
@@ -96,7 +99,7 @@ const ModernResume = ({ userData }) => {
             <div className="mb-6">
               <p className="flex items-center gap-2 mb-2">
                 <Phone size={16} className="text-gray-600" />
-                <span className="font-semibold">{t("labels.phone", { ns: "resume-generator" }).toUpperCase()}:</span>
+                <span className="font-semibold">{ct("labels.phone", { ns: "resume-generator" }).toUpperCase()}:</span>
                 <a
                   href={`tel:+${personal_data?.phone}`}
                   className="text-gray-700"
@@ -106,7 +109,7 @@ const ModernResume = ({ userData }) => {
               </p>
               <p className="flex items-center gap-2 mb-2">
                 <Mail size={16} className="text-gray-600" />
-                <span className="font-semibold">{t("labels.email", { ns: "resume-generator" }).toUpperCase()}:</span>
+                <span className="font-semibold">{ct("labels.email", { ns: "resume-generator" }).toUpperCase()}:</span>
                 <a
                   href={`mailto:${personal_data?.email}`}
                   className="text-gray-700"
@@ -116,7 +119,7 @@ const ModernResume = ({ userData }) => {
               </p>
               <p className="flex items-center gap-2">
                 <MapPin size={16} className="text-gray-600" />
-                <span className="font-semibold">{t("labels.address", { ns: "resume-generator" }).toUpperCase()}:</span>
+                <span className="font-semibold">{ct("labels.address", { ns: "resume-generator" }).toUpperCase()}:</span>
                 <span className="text-gray-700">
                   {personal_data?.address ?? "-"}
                 </span>
@@ -134,7 +137,7 @@ const ModernResume = ({ userData }) => {
             {/* Education - Short version */}
             <div className="mb-6">
               <h3 className="pb-1 mb-3 font-bold uppercase border-b border-gray-300">
-                {t("resume-generator:sections.education")}
+                {ct("resume-generator:sections.education")}
               </h3>
               <p className="text-gray-700">
                 {userData.school} - <span>{userData.graduationYear}</span>
@@ -153,7 +156,7 @@ const ModernResume = ({ userData }) => {
             {/* Profile Section */}
             <div className="mb-6">
               <h3 className="mb-2 font-semibold text-gray-500 uppercase">
-                {t("sections.profile", { ns: "resume-generator" })}
+                {ct("sections.profile", { ns: "resume-generator" })}
               </h3>
               <p className="mb-6 text-gray-700">{userData.about}</p>
             </div>
@@ -161,11 +164,11 @@ const ModernResume = ({ userData }) => {
             {/* Experience Section */}
             <div className="mb-6">
               <h3 className="mb-3 font-semibold text-gray-500 uppercase">
-                {t("resume-generator:sections.experience")}
+                {ct("resume-generator:sections.experience")}
               </h3>
 
               <h4 className="mb-2 text-lg font-semibold">
-                {t("sections.previousEmployment", { ns: "resume-generator" })}
+                {ct("sections.previousEmployment", { ns: "resume-generator" })}
               </h4>
               <p className="mb-2 font-light">
                 {userData.company}
@@ -179,7 +182,7 @@ const ModernResume = ({ userData }) => {
 
               {/* Professional Skills */}
               <h4 className="mb-2 text-lg font-semibold">
-                {t("resume-generator:sections.professionalSkills")}
+                {ct("resume-generator:sections.professionalSkills")}
               </h4>
               <p className="mb-2 font-light">{userData.company}</p>
               <ul className="pl-5 mb-6 list-disc">
@@ -189,7 +192,7 @@ const ModernResume = ({ userData }) => {
               </ul>
 
               {/* Software */}
-              <h4 className="mb-2 text-lg font-semibold">{t("sections.software", { ns: "resume-generator" })}</h4>
+              <h4 className="mb-2 text-lg font-semibold">{ct("sections.software", { ns: "resume-generator" })}</h4>
               <ul className="pl-5 mb-6 list-disc">
                 <li>
                   {userData.software} - {userData.softwareLevel}
@@ -197,7 +200,7 @@ const ModernResume = ({ userData }) => {
               </ul>
 
               {/* Education - Detailed */}
-              <h4 className="mb-2 text-lg font-semibold">{t("resume-generator:sections.education")}</h4>
+              <h4 className="mb-2 text-lg font-semibold">{ct("resume-generator:sections.education")}</h4>
               <p className="mb-2 font-light">
                 {userData.school}
                 <span className="block text-gray-600">
@@ -209,7 +212,7 @@ const ModernResume = ({ userData }) => {
               <p className="mb-6 text-gray-700">{userData.studyDescription}</p>
 
               {/* Languages */}
-              <h4 className="mb-2 text-lg font-semibold">{t("sections.languages", { ns: "resume-generator" })}</h4>
+              <h4 className="mb-2 text-lg font-semibold">{ct("sections.languages", { ns: "resume-generator" })}</h4>
               <p className="mb-6 font-light">
                 {userData.language1} - {userData.language1Level}
                 <br />
@@ -219,7 +222,7 @@ const ModernResume = ({ userData }) => {
               </p>
 
               {/* Reference */}
-              <h4 className="mb-2 text-lg font-semibold">{t("sections.reference", { ns: "resume-generator" })}</h4>
+              <h4 className="mb-2 text-lg font-semibold">{ct("sections.reference", { ns: "resume-generator" })}</h4>
               <p className="mb-2 font-light">
                 {userData.reference} from {userData.referenceDetails}
                 <span className="block">
@@ -238,7 +241,7 @@ const ModernResume = ({ userData }) => {
           disabled={isGenerating}
           className="px-4 py-2 text-white transition-colors bg-blue-500 rounded-md hide-for-pdf hover:bg-blue-600 disabled:bg-blue-300"
         >
-          {isGenerating ? t("actions.generatingPdf", { ns: "resume-generator" }) : t("actions.generatePdf", { ns: "resume-generator" })}
+          {isGenerating ? ct("actions.generatingPdf", { ns: "resume-generator" }) : ct("actions.generatePdf", { ns: "resume-generator" })}
         </button>
       </div>
     </div>

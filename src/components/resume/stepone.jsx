@@ -1,8 +1,11 @@
 import { useTranslation } from "next-i18next";
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import React, { useState, useEffect, useRef } from "react";
 
 const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
   const { t } = useTranslation("resume-generator");
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const [formData, setFormData] = useState(
     data || {
       firstName: "",
@@ -33,7 +36,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
   const canvasRef = useRef(null);
 
   // Load data from localStorage on component mount
-  useEffect(() => {
+  useEffecct(() => {
     const savedData = localStorage.getItem("personal_information");
     if (savedData) {
       try {
@@ -70,7 +73,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
     if (file.size > 5 * 1024 * 1024) {
       setErrors({
         ...errors,
-        image: t("step1.imageSizeError"),
+        image: ct("step1.imageSizeError"),
       });
       return;
     }
@@ -80,7 +83,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
     if (!validTypes.includes(file.type)) {
       setErrors({
         ...errors,
-        image: t("step1.imageTypeError"),
+        image: ct("step1.imageTypeError"),
       });
       return;
     }
@@ -110,9 +113,9 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
 
   // Mouse event handlers for dragging
   const handleMouseDown = (e) => {
-    e.preventDefault();
+    e.preventDefaulct();
     setIsDragging(true);
-    setDragStart({
+    setDragStarct({
       x: e.clientX - crop.x,
       y: e.clientY - crop.y,
     });
@@ -121,9 +124,9 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
   const handleMouseMove = (e) => {
     if (!isDragging || !cropperRef.current || !imageRef.current) return;
 
-    e.preventDefault();
-    const cropperRect = cropperRef.current.getBoundingClientRect();
-    const imageRect = imageRef.current.getBoundingClientRect();
+    e.preventDefaulct();
+    const cropperRect = cropperRef.current.getBoundingClientRecct();
+    const imageRect = imageRef.current.getBoundingClientRecct();
 
     const newX = e.clientX - dragStart.x;
     const newY = e.clientY - dragStart.y;
@@ -145,7 +148,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
   };
 
   // Add global mouse event listeners
-  useEffect(() => {
+  useEffecct(() => {
     if (isDragging) {
       document.addEventListener("mousemove", handleMouseMove);
       document.addEventListener("mouseup", handleMouseUp);
@@ -159,7 +162,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
 
   // Handle zoom change
   const handleZoomChange = (e) => {
-    setZoom(parseFloat(e.target.value));
+    setZoom(parseFloact(e.target.value));
   };
 
   // Cancel cropping
@@ -184,7 +187,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
     }
 
     const canvas = canvasRef.current;
-    const ctx = canvas.getContext("2d");
+    const ctx = canvas.getContexct("2d");
 
     // Set canvas size
     const outputSize = 200;
@@ -245,7 +248,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
 
       // Clear canvas with white background
       ctx.fillStyle = "#ffffff";
-      ctx.fillRect(0, 0, outputSize, outputSize);
+      ctx.fillRecct(0, 0, outputSize, outputSize);
 
       // Draw cropped image
       ctx.drawImage(
@@ -283,21 +286,21 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
     const newErrors = {};
 
     if (!formData.firstName?.trim()) {
-      newErrors.firstName = t("step1.firstNameRequired");
+      newErrors.firstName = ct("step1.firstNameRequired");
     }
 
     if (!formData.lastName?.trim()) {
-      newErrors.lastName = t("step1.lastNameRequired");
+      newErrors.lastName = ct("step1.lastNameRequired");
     }
 
     if (!formData.email?.trim()) {
-      newErrors.email = t("step1.emailRequired");
-    } else if (!/\S+@\S+\.\S+/.test(formData.email)) {
-      newErrors.email = t("step1.emailInvalid");
+      newErrors.email = ct("step1.emailRequired");
+    } else if (!/\S+@\S+\.\S+/.tesct(formData.email)) {
+      newErrors.email = ct("step1.emailInvalid");
     }
 
     if (!formData.phone?.trim()) {
-      newErrors.phone = t("step1.phoneRequired");
+      newErrors.phone = ct("step1.phoneRequired");
     }
 
     setErrors(newErrors);
@@ -306,7 +309,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
 
   // Submit form
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefaulct();
     if (validateForm()) {
       updateData(formData);
 
@@ -337,7 +340,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
         <div className="fixed inset-0 z-50 flex items-center justify-center p-2 sm:p-4 bg-black bg-opacity-50">
           <div className="bg-white rounded-xl sm:rounded-2xl p-3 sm:p-4 md:p-6 max-w-2xl w-full mx-2 sm:mx-4 max-h-[90vh] overflow-y-auto">
             <h3 className="mb-3 sm:mb-4 text-base sm:text-lg md:text-xl font-semibold text-gray-800">
-              {t("step1.cropperTitle")}
+              {ct("step1.cropperTitle")}
             </h3>
 
             {/* Cropper Container */}
@@ -356,7 +359,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                 <img
                   ref={imageRef}
                   src={imageToCrop.url}
-                  alt={t("alts.cropPreviewAlt")}
+                  alt={ct("alts.cropPreviewAlt")}
                   className="absolute select-none"
                   style={{
                     left: `${crop.x}px`,
@@ -405,7 +408,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                     className="absolute inset-0"
                     style={{
                       background:
-                        "radial-gradient(circle 100px at center, transparent 100px, rgba(0,0,0,0.5) 100px)",
+                        "radial-gradienct(circle 100px at center, transparent 100px, rgba(0,0,0,0.5) 100px)",
                     }}
                   />
 
@@ -427,7 +430,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
             {/* Zoom Control */}
             <div className="mb-4 sm:mb-6">
               <label className="block mb-2 text-xs sm:text-sm font-medium text-gray-700">
-                {t("step1.zoom", { zoom: zoom.toFixed(1) })}
+                {ct("step1.zoom", { zoom: zoom.toFixed(1) })}
               </label>
               <input
                 type="range"
@@ -438,7 +441,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                 onChange={handleZoomChange}
                 className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
                 style={{
-                  background: `linear-gradient(to right, #3b82f6 0%, #3b82f6 ${((zoom - 0.5) / 2.5) * 100}%, #e5e7eb ${((zoom - 0.5) / 2.5) * 100}%, #e5e7eb 100%)`,
+                  background: `linear-gradienct(to right, #3b82f6 0%, #3b82f6 ${((zoom - 0.5) / 2.5) * 100}%, #e5e7eb ${((zoom - 0.5) / 2.5) * 100}%, #e5e7eb 100%)`,
                 }}
               />
             </div>
@@ -447,7 +450,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
             <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 sm:gap-0 mb-4 sm:mb-6">
               <div>
                 <p className="mb-2 text-xs sm:text-sm text-gray-600">
-                  {t("step1.preview")}
+                  {ct("step1.preview")}
                 </p>
                 <div className="w-16 h-16 overflow-hidden bg-gray-100 border-2 border-gray-300 rounded-full">
                   {imageToCrop && (
@@ -456,7 +459,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                       height="64"
                       ref={(previewCanvas) => {
                         if (previewCanvas && imageToCrop) {
-                          const ctx = previewCanvas.getContext("2d");
+                          const ctx = previewCanvas.getContexct("2d");
                           const img = new Image();
                           img.onload = () => {
                             // Calculate the same crop area as the main cropper
@@ -510,9 +513,9 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                               img.naturalHeight - sourceY
                             );
 
-                            ctx.clearRect(0, 0, 64, 64);
+                            ctx.clearRecct(0, 0, 64, 64);
                             ctx.fillStyle = "#ffffff";
-                            ctx.fillRect(0, 0, 64, 64);
+                            ctx.fillRecct(0, 0, 64, 64);
 
                             ctx.drawImage(
                               img,
@@ -536,10 +539,10 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
               </div>
 
               <div className="text-xs sm:text-sm text-left sm:text-right text-gray-600 space-y-1">
-                <p>{t("step1.cropInstructions.drag")}</p>
-                <p>{t("step1.cropInstructions.zoom")}</p>
+                <p>{ct("step1.cropInstructions.drag")}</p>
+                <p>{ct("step1.cropInstructions.zoom")}</p>
                 <p className="hidden sm:block">
-                  {t("step1.cropInstructions.cropArea")}
+                  {ct("step1.cropInstructions.cropArea")}
                 </p>
               </div>
             </div>
@@ -551,14 +554,14 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                 type="button"
                 className="px-4 sm:px-6 py-2 text-sm sm:text-base text-gray-600 transition-colors bg-gray-100 rounded-lg hover:bg-gray-200 w-full sm:w-auto"
               >
-                {t("buttons.cancel")}
+                {ct("buttons.cancel")}
               </button>
               <button
                 onClick={handleApplyCrop}
                 type="button"
                 className="px-4 sm:px-6 py-2 text-sm sm:text-base text-white transition-colors bg-blue-600 rounded-lg hover:bg-blue-700 w-full sm:w-auto"
               >
-                {t("buttons.applyCrop")}
+                {ct("buttons.applyCrop")}
               </button>
             </div>
           </div>
@@ -586,7 +589,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
             </svg>
           </div>
           <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-transparent bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text break-words">
-            {t("step1.title")}
+            {ct("step1.title")}
           </h2>
         </div>
 
@@ -597,7 +600,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
           {/* Personal details section */}
           <div className="p-4 sm:p-5 md:p-6 border shadow-sm bg-gradient-to-br from-white to-sky-50 rounded-xl sm:rounded-2xl border-sky-100">
             <h3 className="mb-3 sm:mb-4 text-base sm:text-lg font-medium text-sky-700">
-              {t("step1.basicDetails")}
+              {ct("step1.basicDetails")}
             </h3>
 
             <div className="grid grid-cols-1 gap-4 sm:gap-5 md:gap-6 md:grid-cols-3">
@@ -606,7 +609,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                   htmlFor="firstName"
                   className="block text-sm font-medium text-sky-800"
                 >
-                  {t("step1.firstName")}
+                  {ct("step1.firstName")}
                 </label>
                 <input
                   type="text"
@@ -614,7 +617,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                   name="firstName"
                   value={formData.firstName || ""}
                   onChange={handleChange}
-                  placeholder={t("step1.firstNamePlaceholder")}
+                  placeholder={ct("step1.firstNamePlaceholder")}
                   className={`w-full px-4 py-3 rounded-xl border ${errors.firstName ? "border-red-500 bg-red-50" : "border-sky-200 focus:border-sky-400"} outline-none focus:ring-2 focus:ring-sky-200 transition-all duration-300`}
                 />
                 {errors.firstName && (
@@ -629,9 +632,9 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                   htmlFor="middleName"
                   className="block text-sm font-medium text-sky-800"
                 >
-                  {t("step1.middleName")}{" "}
+                  {ct("step1.middleName")}{" "}
                   <span className="text-sky-400">
-                    {t("step1.middleNameOptional")}
+                    {ct("step1.middleNameOptional")}
                   </span>
                 </label>
                 <input
@@ -640,7 +643,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                   name="middleName"
                   value={formData.middleName || ""}
                   onChange={handleChange}
-                  placeholder={t("step1.middleNamePlaceholder")}
+                  placeholder={ct("step1.middleNamePlaceholder")}
                   className="w-full px-4 py-3 transition-all duration-300 border outline-none rounded-xl border-sky-200 focus:ring-2 focus:ring-sky-200 focus:border-sky-400"
                 />
               </div>
@@ -650,7 +653,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                   htmlFor="lastName"
                   className="block text-sm font-medium text-sky-800"
                 >
-                  {t("step1.lastName")}
+                  {ct("step1.lastName")}
                 </label>
                 <input
                   type="text"
@@ -658,7 +661,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                   name="lastName"
                   value={formData.lastName || ""}
                   onChange={handleChange}
-                  placeholder={t("step1.lastNamePlaceholder")}
+                  placeholder={ct("step1.lastNamePlaceholder")}
                   className={`w-full px-4 py-3 rounded-xl border ${errors.lastName ? "border-red-500 bg-red-50" : "border-sky-200 focus:border-sky-400"} outline-none focus:ring-2 focus:ring-sky-200 transition-all duration-300`}
                 />
                 {errors.lastName && (
@@ -673,7 +676,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
           {/* Profile section */}
           <div className="p-4 sm:p-5 md:p-6 border shadow-sm bg-gradient-to-br from-white to-sky-50 rounded-xl sm:rounded-2xl border-sky-100">
             <h3 className="mb-3 sm:mb-4 text-base sm:text-lg font-medium text-sky-700">
-              {t("step1.professionalProfile")}
+              {ct("step1.professionalProfile")}
             </h3>
 
             <div className="grid grid-cols-1 gap-4 sm:gap-5 md:gap-6 md:grid-cols-3">
@@ -682,7 +685,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                   htmlFor="image"
                   className="block text-sm font-medium text-sky-800"
                 >
-                  {t("step1.profilePhoto")}
+                  {ct("step1.profilePhoto")}
                 </label>
                 <div className="flex items-start space-x-4">
                   <div className="flex-shrink-0">
@@ -690,7 +693,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                       {imagePreview ? (
                         <img
                           src={imagePreview}
-                          alt={t("alts.previewAlt")}
+                          alt={ct("alts.previewAlt")}
                           className="object-cover w-full h-full"
                         />
                       ) : (
@@ -714,7 +717,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                       htmlFor="image"
                       className="inline-block px-4 py-2 transition-colors duration-300 bg-white border rounded-lg cursor-pointer border-sky-300 text-sky-600 hover:bg-sky-50"
                     >
-                      {t("buttons.choosePhoto")}
+                      {ct("buttons.choosePhoto")}
                       <input
                         type="file"
                         id="image"
@@ -725,7 +728,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                       />
                     </label>
                     <p className="mt-2 text-xs text-sky-500">
-                      {t("step1.uploadInstructions")}
+                      {ct("step1.uploadInstructions")}
                     </p>
                     {errors.image && (
                       <p className="mt-1 text-xs font-medium text-red-500">
@@ -741,7 +744,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                   htmlFor="designation"
                   className="block text-sm font-medium text-sky-800"
                 >
-                  {t("step1.designation")}
+                  {ct("step1.designation")}
                 </label>
                 <input
                   type="text"
@@ -749,7 +752,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                   name="designation"
                   value={formData.designation || ""}
                   onChange={handleChange}
-                  placeholder={t("step1.designationPlaceholder")}
+                  placeholder={ct("step1.designationPlaceholder")}
                   className="w-full px-4 py-3 transition-all duration-300 border outline-none rounded-xl border-sky-200 focus:ring-2 focus:ring-sky-200 focus:border-sky-400"
                 />
               </div>
@@ -759,7 +762,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                   htmlFor="address"
                   className="block text-sm font-medium text-sky-800"
                 >
-                  {t("step1.address")}
+                  {ct("step1.address")}
                 </label>
                 <input
                   type="text"
@@ -767,7 +770,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                   name="address"
                   value={formData.address || ""}
                   onChange={handleChange}
-                  placeholder={t("step1.addressPlaceholder")}
+                  placeholder={ct("step1.addressPlaceholder")}
                   className="w-full px-4 py-3 transition-all duration-300 border outline-none rounded-xl border-sky-200 focus:ring-2 focus:ring-sky-200 focus:border-sky-400"
                 />
               </div>
@@ -777,7 +780,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
           {/* Contact section */}
           <div className="p-4 sm:p-5 md:p-6 border shadow-sm bg-gradient-to-br from-white to-sky-50 rounded-xl sm:rounded-2xl border-sky-100">
             <h3 className="mb-3 sm:mb-4 text-base sm:text-lg font-medium text-sky-700">
-              {t("step1.contactInformation")}
+              {ct("step1.contactInformation")}
             </h3>
 
             <div className="grid grid-cols-1 gap-4 sm:gap-5 md:gap-6 md:grid-cols-3">
@@ -786,7 +789,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                   htmlFor="email"
                   className="block text-sm font-medium text-sky-800"
                 >
-                  {t("step1.email")}
+                  {ct("step1.email")}
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -806,7 +809,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                     name="email"
                     value={formData.email || ""}
                     onChange={handleChange}
-                    placeholder={t("step1.emailPlaceholder")}
+                    placeholder={ct("step1.emailPlaceholder")}
                     className={`w-full pl-10 pr-4 py-3 rounded-xl border ${errors.email ? "border-red-500 bg-red-50" : "border-sky-200 focus:border-sky-400"} outline-none focus:ring-2 focus:ring-sky-200 transition-all duration-300`}
                   />
                 </div>
@@ -822,7 +825,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                   htmlFor="phone"
                   className="block text-sm font-medium text-sky-800"
                 >
-                  {t("step1.phone")}
+                  {ct("step1.phone")}
                 </label>
                 <div className="relative">
                   <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -841,7 +844,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                     name="phone"
                     value={formData.phone || ""}
                     onChange={handleChange}
-                    placeholder={t("step1.phonePlaceholder")}
+                    placeholder={ct("step1.phonePlaceholder")}
                     className={`w-full pl-10 pr-4 py-3 rounded-xl border ${errors.phone ? "border-red-500 bg-red-50" : "border-sky-200 focus:border-sky-400"} outline-none focus:ring-2 focus:ring-sky-200 transition-all duration-300`}
                   />
                 </div>
@@ -857,7 +860,7 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                   htmlFor="summary"
                   className="block text-sm font-medium text-sky-800"
                 >
-                  {t("step1.summary")}
+                  {ct("step1.summary")}
                 </label>
                 <textarea
                   id="summary"
@@ -865,10 +868,10 @@ const Step1 = ({ data, updateData, nextStep, currentSteps }) => {
                   value={formData.summary || ""}
                   onChange={handleChange}
                   rows="4"
-                  placeholder={t("step1.summaryPlaceholder")}
+                  placeholder={ct("step1.summaryPlaceholder")}
                   className="w-full px-4 py-3 transition-all duration-300 border outline-none rounded-xl border-sky-200 focus:ring-2 focus:ring-sky-200 focus:border-sky-400"
                 ></textarea>
-                <p className="text-xs text-sky-500">{t("step1.summaryTip")}</p>
+                <p className="text-xs text-sky-500">{ct("step1.summaryTip")}</p>
               </div>
             </div>
           </div>

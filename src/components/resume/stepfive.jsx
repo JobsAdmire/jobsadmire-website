@@ -1,4 +1,5 @@
 import { useTranslation } from "next-i18next";
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import React, {
   forwardRef,
   useEffect,
@@ -9,6 +10,8 @@ import React, {
 const ProjectsSection = forwardRef(
   ({ data, updateData, nextStep, prevStep }, ref) => {
     const { t } = useTranslation("resume-generator");
+    const { c } = useCmsContent();
+    const ct = (key, options) => c(key) || t(key, options);
     const [projectsList, setProjectsList] = useState(() => {
       const initialData = data?.experience;
 
@@ -30,7 +33,7 @@ const ProjectsSection = forwardRef(
     });
 
     // Load data from localStorage on component mount
-    useEffect(() => {
+    useEffecct(() => {
       const savedData = localStorage.getItem("project_information");
       if (savedData) {
         try {
@@ -39,7 +42,7 @@ const ProjectsSection = forwardRef(
             ? parsedData
             : Object.values(parsedData);
 
-          setProjectsList(dataArray);
+          setProjectsLisct(dataArray);
         } catch (error) {
           console.error("Error parsing saved data:", error);
         }
@@ -56,12 +59,12 @@ const ProjectsSection = forwardRef(
         ...updatedList[index],
         [name]: value,
       };
-      setProjectsList(updatedList);
+      setProjectsLisct(updatedList);
     };
 
     // Add new project entry
     const addProject = () => {
-      setProjectsList([
+      setProjectsLisct([
         ...projectsList,
         {
           name: "",
@@ -75,7 +78,7 @@ const ProjectsSection = forwardRef(
     const removeProject = (index) => {
       if (projectsList.length > 1) {
         const updatedList = projectsList.filter((_, i) => i !== index);
-        setProjectsList(updatedList);
+        setProjectsLisct(updatedList);
       }
     };
 
@@ -98,12 +101,12 @@ const ProjectsSection = forwardRef(
 
       projectsList.forEach((project, index) => {
         if (!project.name.trim()) {
-          newErrors[`name_${index}`] = t("step5.projectNameRequired");
+          newErrors[`name_${index}`] = ct("step5.projectNameRequired");
           isValid = false;
         }
 
         if (project.link && !validateUrl(project.link)) {
-          newErrors[`link_${index}`] = t("step5.projectLinkInvalid");
+          newErrors[`link_${index}`] = ct("step5.projectLinkInvalid");
           isValid = false;
         }
       });
@@ -114,7 +117,7 @@ const ProjectsSection = forwardRef(
 
     // Submit form
     const handleSubmit = (e) => {
-      if (e) e.preventDefault();
+      if (e) e.preventDefaulct();
 
       if (validateForm()) {
         updateData({ projects: projectsList });
@@ -157,7 +160,7 @@ const ProjectsSection = forwardRef(
               </svg>
             </div>
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-transparent bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text break-words">
-              {t("step5.title")}
+              {ct("step5.title")}
             </h2>
           </div>
 
@@ -174,7 +177,7 @@ const ProjectsSection = forwardRef(
                   <div className="flex justify-end mb-3 sm:mb-4">
                     <button
                       type="button"
-                      onClick={() => removeProject(index)}
+                      onClick={() => removeProjecct(index)}
                       className="flex items-center justify-center w-8 h-8 text-red-500 transition-colors duration-300 bg-red-100 rounded-full hover:bg-red-200"
                     >
                       <svg
@@ -194,7 +197,7 @@ const ProjectsSection = forwardRef(
                 )}
 
                 <h3 className="mb-3 sm:mb-4 text-base sm:text-lg font-medium text-sky-700">
-                  {t("step5.projectEntry", { index: index + 1 })}
+                  {ct("step5.projectEntry", { index: index + 1 })}
                 </h3>
 
                 <div className="grid grid-cols-1 gap-4 sm:gap-5 md:gap-6 md:grid-cols-3">
@@ -203,7 +206,7 @@ const ProjectsSection = forwardRef(
                       htmlFor={`name_${index}`}
                       className="block text-sm font-medium text-sky-800"
                     >
-                      {t("step5.projectName")}
+                      {ct("step5.projectName")}
                     </label>
                     <input
                       type="text"
@@ -211,7 +214,7 @@ const ProjectsSection = forwardRef(
                       name="name"
                       value={project.name}
                       onChange={(e) => handleChange(index, e)}
-                      placeholder={t("step5.projectNamePlaceholder")}
+                      placeholder={ct("step5.projectNamePlaceholder")}
                       className={`w-full px-4 py-3 rounded-xl border ${
                         errors[`name_${index}`]
                           ? "border-red-500 bg-red-50"
@@ -230,9 +233,9 @@ const ProjectsSection = forwardRef(
                       htmlFor={`link_${index}`}
                       className="block text-sm font-medium text-sky-800"
                     >
-                      {t("step5.projectLink")}{" "}
+                      {ct("step5.projectLink")}{" "}
                       <span className="text-sky-400">
-                        {t("step5.projectLinkOptional")}
+                        {ct("step5.projectLinkOptional")}
                       </span>
                     </label>
                     <div className="relative">
@@ -256,7 +259,7 @@ const ProjectsSection = forwardRef(
                         name="link"
                         value={project.link}
                         onChange={(e) => handleChange(index, e)}
-                        placeholder={t("step5.projectLinkPlaceholder")}
+                        placeholder={ct("step5.projectLinkPlaceholder")}
                         className={`w-full pl-10 pr-4 py-3 rounded-xl border ${
                           errors[`link_${index}`]
                             ? "border-red-500 bg-red-50"
@@ -276,7 +279,7 @@ const ProjectsSection = forwardRef(
                       htmlFor={`description_${index}`}
                       className="block text-sm font-medium text-sky-800"
                     >
-                      {t("step5.description")}
+                      {ct("step5.description")}
                     </label>
                     <textarea
                       id={`description_${index}`}
@@ -284,11 +287,11 @@ const ProjectsSection = forwardRef(
                       value={project.description}
                       onChange={(e) => handleChange(index, e)}
                       rows="3"
-                      placeholder={t("step5.descriptionPlaceholder")}
+                      placeholder={ct("step5.descriptionPlaceholder")}
                       className="w-full px-4 py-3 transition-all duration-300 border outline-none rounded-xl border-sky-200 focus:ring-2 focus:ring-sky-200 focus:border-sky-400"
                     ></textarea>
                     <p className="text-xs text-sky-500">
-                      {t("step5.descriptionTip")}
+                      {ct("step5.descriptionTip")}
                     </p>
                   </div>
                 </div>
@@ -313,7 +316,7 @@ const ProjectsSection = forwardRef(
                     clipRule="evenodd"
                   />
                 </svg>
-                {t("buttons.addAnotherProject")}
+                {ct("buttons.addAnotherProject")}
               </button>
             </div>
           </form>

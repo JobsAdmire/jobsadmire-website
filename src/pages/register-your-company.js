@@ -30,7 +30,7 @@ export default function CompanyRegistration() {
 }
 
 // Original component kept for future use
-function CompanyRegistrationOriginal() {
+function CompanyRegistrationOriginal({ cmsFaqs = [] }) {
   const { t } = useTranslation("company-registration");
   const router = useRouter();
   const { locale } = router;
@@ -709,26 +709,14 @@ function CompanyRegistrationOriginal() {
             {t("faq.title")}
           </h2>
           <div className="space-y-4">
-            {[
-              {
-                q: t("faq.items.duration.question"),
-                a: t("faq.items.duration.answer"),
-              },
-              {
-                q: t("faq.items.foreigners.question"),
-                a: t("faq.items.foreigners.answer"),
-              },
-              {
-                q: t("faq.items.presence.question"),
-                a: t("faq.items.presence.answer"),
-              },
-              {
-                q: t("faq.items.obligations.question"),
-                a: t("faq.items.obligations.answer"),
-              },
-            ].map((faq, idx) => (
+            {(cmsFaqs.length > 0 ? cmsFaqs.map((f) => ({ q: f.question, a: f.answer, id: f.id })) : [
+              { q: t("faq.items.duration.question"), a: t("faq.items.duration.answer") },
+              { q: t("faq.items.foreigners.question"), a: t("faq.items.foreigners.answer") },
+              { q: t("faq.items.presence.question"), a: t("faq.items.presence.answer") },
+              { q: t("faq.items.obligations.question"), a: t("faq.items.obligations.answer") },
+            ]).map((faq, idx) => (
               <details
-                key={idx}
+                key={faq.id || idx}
                 className="bg-white rounded-lg shadow-md p-6 group"
               >
                 <summary className="font-semibold text-gray-800 cursor-pointer flex items-center justify-between">
@@ -751,12 +739,24 @@ export const getStaticProps = async ({ locale }) => {
   const {
     serverSideTranslations,
   } = require("next-i18next/serverSideTranslations");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const { getFaqs } = require("@/lib/api/cms");
+
+  const [cmsPageContent, cmsFaqs] = await Promise.all([
+    getPageAndLayoutContent("company-registration", locale),
+    getFaqs("register-your-company", locale),
+  ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, [
         "common",
         "company-registration",
       ])),
+      cmsPageContent,
+      cmsFaqs: cmsFaqs || [],
     },
+    revalidate: 60,
   };
 };

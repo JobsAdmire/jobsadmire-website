@@ -10,7 +10,9 @@
     "start": "next start",
     "lint": "next lint",
     "i18n:check": "node scripts/i18n-check.js",
-    "translate": "node scripts/translate-with-deepl.js"
+    "translate": "node scripts/translate-with-deepl.js",
+    "sync:translations:import": "node scripts/sync-translations.js import",
+    "sync:translations:export": "node scripts/sync-translations.js export"
   },
   "keywords": [],
   "author": "",

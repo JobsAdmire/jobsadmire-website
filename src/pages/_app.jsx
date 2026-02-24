@@ -3,9 +3,11 @@ import { ConfigProvider } from "antd";
 import { Toaster } from "react-hot-toast";
 import { appWithTranslation } from "next-i18next";
 import { useRouter } from "next/router";
-import { useEffect } from "react";
+import { useEffect, useMemo } from "react";
 import { Header, Footer } from "@components/app";
 import WhatsAppButton from "@components/whatsapp/whatsapp";
+import { CmsProvider } from "@/lib/context/CmsContext";
+import { CmsContentProvider } from "@/lib/context/CmsContentContext";
 
 import "@styles/globals.css";
 import "@styles/select.css";
@@ -16,6 +18,18 @@ import "@styles/phone.css";
 function App({ Component, pageProps }) {
   const router = useRouter();
   const { locale } = router;
+
+  const cmsValue = useMemo(
+    () => ({
+      nav: pageProps.cmsNav || { header: null, footer: null, servicesMega: null, partner: null },
+      settings: pageProps.cmsSettings || { contact: {}, social: {} },
+      services: pageProps.cmsServices || [],
+      stats: pageProps.cmsStats || [],
+      testimonials: pageProps.cmsTestimonials || [],
+      destinations: pageProps.cmsDestinations || [],
+    }),
+    [pageProps.cmsNav, pageProps.cmsSettings, pageProps.cmsServices, pageProps.cmsStats, pageProps.cmsTestimonials, pageProps.cmsDestinations]
+  );
 
   // Check if current locale is RTL
   const isRTL = locale === "ar" || locale === "fa";
@@ -121,6 +135,8 @@ function App({ Component, pageProps }) {
         },
       }}
     >
+      <CmsProvider value={cmsValue}>
+      <CmsContentProvider content={pageProps.cmsPageContent}>
       <div className={isRTL ? "rtl-layout" : "ltr-layout"}>
         {/* Google Analytics - gtag.js */}
         <Script
@@ -163,6 +179,8 @@ function App({ Component, pageProps }) {
           }}
         />
       </div>
+      </CmsContentProvider>
+      </CmsProvider>
     </ConfigProvider>
   );
 }

@@ -158,9 +158,20 @@ export const getStaticProps = async ({ locale }) => {
   const {
     serverSideTranslations,
   } = require("next-i18next/serverSideTranslations");
+  const { getLayoutCmsProps } = require("@/lib/api/cmsHelper");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const [layoutProps, cmsPageContent] = await Promise.all([
+    getLayoutCmsProps(locale),
+    getPageAndLayoutContent("login-companies", locale),
+  ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
+      ...layoutProps,
+      cmsPageContent,
     },
+    revalidate: 60,
   };
 };

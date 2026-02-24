@@ -135,10 +135,16 @@ const ThankYouPage = () => {
 };
 
 export async function getStaticProps({ locale }) {
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const cmsPageContent = await getPageAndLayoutContent("thank-you", locale);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["thankyou", "common"])),
+      cmsPageContent,
     },
+    revalidate: 60,
   };
 }
 

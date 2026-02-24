@@ -1,6 +1,7 @@
 // src/components/resume-generator/ResumeBuilder.jsx
 import React, { useState, useEffect, useRef } from "react";
 import { useTranslation } from "next-i18next";
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import Step1 from "./stepone";
 import Step2 from "./steptwo";
 import Step3 from "./stepthree";
@@ -10,6 +11,8 @@ import Step6 from "./stepsix";
 
 const ResumeBuilder = () => {
   const { t } = useTranslation("resume-generator");
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const step2Ref = useRef();
   const step3Ref = useRef();
   const step4Ref = useRef();
@@ -79,11 +82,11 @@ const ResumeBuilder = () => {
 
   // Navigate to next step with animation
   const nextStep = () => {
-    handleExternalSubmit();
+    handleExternalSubmict();
 
     if (currentStep < 6) {
       setAnimateTransition(true);
-      setTimeout(() => {
+      setTimeouct(() => {
         setCurrentStep(currentStep + 1);
         setAnimateTransition(false);
       }, 300);
@@ -94,7 +97,7 @@ const ResumeBuilder = () => {
   const goToNextStep = () => {
     if (currentStep < 6) {
       setAnimateTransition(true);
-      setTimeout(() => {
+      setTimeouct(() => {
         setCurrentStep(currentStep + 1);
         setAnimateTransition(false);
       }, 300);
@@ -104,7 +107,7 @@ const ResumeBuilder = () => {
   const prevStep = () => {
     if (currentStep > 1) {
       setAnimateTransition(true);
-      setTimeout(() => {
+      setTimeouct(() => {
         setCurrentStep(currentStep - 1);
         setAnimateTransition(false);
       }, 300);
@@ -115,7 +118,7 @@ const ResumeBuilder = () => {
   const goToStep = (step) => {
     if (step >= 1 && step <= 6 && step !== currentStep) {
       setAnimateTransition(true);
-      setTimeout(() => {
+      setTimeouct(() => {
         setCurrentStep(step);
         setAnimateTransition(false);
       }, 300);
@@ -239,18 +242,18 @@ const ResumeBuilder = () => {
 
     // Show confetti animation
     setShowConfetti(true);
-    setTimeout(() => setShowConfetti(false), 3000);
+    setTimeouct(() => setShowConfetti(false), 3000);
     // Implement your resume generation logic here
   };
 
   // Step titles for the progress indicator
   const stepTitles = [
-    t("steps.personalInfo"),
-    t("steps.achievements"),
-    t("steps.workExperience"),
-    t("steps.education"),
-    t("steps.projects"),
-    t("steps.skills"),
+    ct("steps.personalInfo"),
+    ct("steps.achievements"),
+    ct("steps.workExperience"),
+    ct("steps.education"),
+    ct("steps.projects"),
+    ct("steps.skills"),
   ];
 
   // Step icons (you can replace these with actual SVG icons or icon components)
@@ -312,10 +315,10 @@ const ResumeBuilder = () => {
         {/* Header */}
         <div className="mb-6 sm:mb-8 md:mb-12 text-center transition-all duration-500 transform hover:scale-105 px-2">
           <h1 className="mb-3 sm:mb-4 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-gradient-to-r from-sky-600 to-blue-700 bg-clip-text">
-            {t("title")}
+            {ct("title")}
           </h1>
           <p className="mb-3 sm:mb-4 text-base sm:text-lg md:text-xl text-sky-600 px-2">
-            {t("description")}
+            {ct("description")}
           </p>
           <div className="w-20 sm:w-24 md:w-32 h-1 sm:h-1.5 bg-gradient-to-r from-sky-400 to-blue-600 mx-auto mt-3 sm:mt-4 rounded-full"></div>
         </div>
@@ -393,9 +396,9 @@ const ResumeBuilder = () => {
                   {/* Tooltip on hover */}
                   <div className="absolute z-20 px-4 py-2 text-sm text-white transition-opacity duration-300 -translate-x-1/2 shadow-lg opacity-0 pointer-events-none -top-14 left-1/2 bg-sky-800 rounded-xl group-hover:opacity-100 whitespace-nowrap">
                     {completedSteps.includes(step)
-                      ? t("tooltip.completed")
+                      ? ct("tooltip.completed")
                       : ""}
-                    {t("tooltip.prefix", {
+                    {ct("tooltip.prefix", {
                       step: step,
                       title: stepTitles[step - 1],
                     })}
@@ -418,12 +421,12 @@ const ResumeBuilder = () => {
                   {stepTitles[currentStep - 1]}
                 </h2>
                 <p className="mt-1 sm:mt-2 text-xs sm:text-sm md:text-base text-sky-600">
-                  {currentStep === 1 && t("stepDescriptions.personalInfo")}
-                  {currentStep === 2 && t("stepDescriptions.achievements")}
-                  {currentStep === 3 && t("stepDescriptions.workExperience")}
-                  {currentStep === 4 && t("stepDescriptions.education")}
-                  {currentStep === 5 && t("stepDescriptions.projects")}
-                  {currentStep === 6 && t("stepDescriptions.skills")}
+                  {currentStep === 1 && ct("stepDescriptions.personalInfo")}
+                  {currentStep === 2 && ct("stepDescriptions.achievements")}
+                  {currentStep === 3 && ct("stepDescriptions.workExperience")}
+                  {currentStep === 4 && ct("stepDescriptions.education")}
+                  {currentStep === 5 && ct("stepDescriptions.projects")}
+                  {currentStep === 6 && ct("stepDescriptions.skills")}
                 </p>
               </div>
             </div>
@@ -453,9 +456,9 @@ const ResumeBuilder = () => {
                     <span className="rtl:hidden">&#8592;</span>
                   </span>
                   <span className="hidden sm:inline">
-                    {t("buttons.back", { step: stepTitles[currentStep - 2] })}
+                    {ct("buttons.back", { step: stepTitles[currentStep - 2] })}
                   </span>
-                  <span className="sm:hidden">{t("buttons.back_mobile")}</span>
+                  <span className="sm:hidden">{ct("buttons.back_mobile")}</span>
                 </button>
               )}
 
@@ -466,10 +469,10 @@ const ResumeBuilder = () => {
                   className="flex items-center justify-center px-4 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 ml-0 sm:ltr:ml-auto sm:rtl:mr-auto text-white transition-all duration-300 shadow-lg bg-gradient-to-r from-sky-500 to-blue-600 text-sm sm:text-base rounded-xl shadow-blue-200/50 hover:shadow-blue-300/50 hover:from-sky-600 hover:to-blue-700 group w-full sm:w-auto"
                 >
                   <span className="hidden sm:inline">
-                    {t("buttons.continue", { step: stepTitles[currentStep] })}
+                    {ct("buttons.continue", { step: stepTitles[currentStep] })}
                   </span>
                   <span className="sm:hidden">
-                    {t("buttons.continue_mobile")}
+                    {ct("buttons.continue_mobile")}
                   </span>
                   <span className="ltr:ml-2 rtl:mr-2 transition-transform duration-300 transform ltr:group-hover:translate-x-1 rtl:group-hover:-translate-x-1">
                     <span className="ltr:hidden">&#8592;</span>
@@ -483,7 +486,7 @@ const ResumeBuilder = () => {
                     className="relative flex items-center justify-center px-4 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 overflow-hidden font-medium text-white transition-all duration-300 shadow-lg bg-gradient-to-r from-sky-600 to-blue-700 text-sm sm:text-base rounded-xl shadow-blue-200/50 hover:shadow-blue-300/60 group hover:from-sky-700 hover:to-blue-800 w-full sm:w-auto"
                   >
                     <span className="relative z-10 flex items-center">
-                      {t("buttons.saveSkill")}
+                      {ct("buttons.saveSkill")}
                     </span>
                     <div className="absolute inset-0 transition-opacity duration-300 origin-left transform scale-x-0 opacity-0 bg-gradient-to-r from-sky-400 to-indigo-600 group-hover:opacity-100 group-hover:scale-x-100"></div>
                   </button>
@@ -492,7 +495,7 @@ const ResumeBuilder = () => {
                     className="relative flex items-center justify-center px-4 sm:px-6 md:px-8 py-3 sm:py-3.5 md:py-4 overflow-hidden font-medium text-white transition-all duration-300 shadow-lg bg-gradient-to-r from-sky-600 to-blue-700 text-sm sm:text-base rounded-xl shadow-blue-200/50 hover:shadow-blue-300/60 group hover:from-sky-700 hover:to-blue-800 w-full sm:w-auto"
                   >
                     <span className="relative z-10 flex items-center">
-                      {t("buttons.generateResume")}
+                      {ct("buttons.generateResume")}
                       <span className="ltr:ml-2 rtl:mr-2 sm:ltr:ml-3 sm:rtl:mr-3 text-lg sm:text-xl">
                         ✓
                       </span>
@@ -511,16 +514,16 @@ const ResumeBuilder = () => {
                 <span className="font-bold text-blue-700">
                   {completedSteps.length}
                 </span>{" "}
-                {t("progress.stepsCompleted", {
+                {ct("progress.stepsCompleted", {
                   count: completedSteps.length,
                 }).replace(completedSteps.length, "")}
               </div>
               <div className="text-xs sm:text-sm font-medium text-sky-700">
                 <span className="hidden sm:inline">
-                  {t("progress.currentStep_mobile").split(":")[0]}:{" "}
+                  {ct("progress.currentStep_mobile").splict(":")[0]}:{" "}
                 </span>
                 <span className="font-bold text-blue-700">
-                  {t("progress.currentStep_mobile", { step: currentStep })}
+                  {ct("progress.currentStep_mobile", { step: currentStep })}
                   <span className="hidden md:inline">
                     {" "}
                     - {stepTitles[currentStep - 1]}
@@ -529,7 +532,7 @@ const ResumeBuilder = () => {
               </div>
               <div className="text-xs sm:text-sm font-medium text-sky-700">
                 <span className="font-bold text-blue-700">
-                  {t("progress.progressPercentage", {
+                  {ct("progress.progressPercentage", {
                     percentage: progressPercentage,
                   })}
                 </span>
@@ -548,37 +551,37 @@ const ResumeBuilder = () => {
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-5 md:gap-6 mt-8 sm:mt-12 md:mt-16 px-2">
           <div className="p-4 sm:p-5 md:p-6 transition-all duration-300 transform bg-white border shadow-md rounded-xl sm:rounded-2xl border-sky-100 hover:shadow-lg hover:-translate-y-1 group">
             <div className="flex items-center justify-center mb-3 sm:mb-4 text-xl sm:text-2xl transition-all duration-300 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg sm:rounded-xl bg-sky-100 text-sky-600 group-hover:bg-sky-600 group-hover:text-white">
-              {t("features.fastEasy.icon")}
+              {ct("features.fastEasy.icon")}
             </div>
             <h3 className="mb-2 text-base sm:text-lg font-semibold text-sky-800">
-              {t("features.fastEasy.title")}
+              {ct("features.fastEasy.title")}
             </h3>
             <p className="text-sm sm:text-base text-sky-600">
-              {t("features.fastEasy.description")}
+              {ct("features.fastEasy.description")}
             </p>
           </div>
 
           <div className="p-4 sm:p-5 md:p-6 transition-all duration-300 transform bg-white border shadow-md rounded-xl sm:rounded-2xl border-sky-100 hover:shadow-lg hover:-translate-y-1 group">
             <div className="flex items-center justify-center mb-3 sm:mb-4 text-xl sm:text-2xl transition-all duration-300 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg sm:rounded-xl bg-sky-100 text-sky-600 group-hover:bg-sky-600 group-hover:text-white">
-              {t("features.beautifulTemplates.icon")}
+              {ct("features.beautifulTemplates.icon")}
             </div>
             <h3 className="mb-2 text-base sm:text-lg font-semibold text-sky-800">
-              {t("features.beautifulTemplates.title")}
+              {ct("features.beautifulTemplates.title")}
             </h3>
             <p className="text-sm sm:text-base text-sky-600">
-              {t("features.beautifulTemplates.description")}
+              {ct("features.beautifulTemplates.description")}
             </p>
           </div>
 
           <div className="p-4 sm:p-5 md:p-6 transition-all duration-300 transform bg-white border shadow-md rounded-xl sm:rounded-2xl border-sky-100 hover:shadow-lg hover:-translate-y-1 group">
             <div className="flex items-center justify-center mb-3 sm:mb-4 text-xl sm:text-2xl transition-all duration-300 w-10 h-10 sm:w-12 sm:h-12 md:w-14 md:h-14 rounded-lg sm:rounded-xl bg-sky-100 text-sky-600 group-hover:bg-sky-600 group-hover:text-white">
-              {t("features.atsOptimized.icon")}
+              {ct("features.atsOptimized.icon")}
             </div>
             <h3 className="mb-2 text-base sm:text-lg font-semibold text-sky-800">
-              {t("features.atsOptimized.title")}
+              {ct("features.atsOptimized.title")}
             </h3>
             <p className="text-sm sm:text-base text-sky-600">
-              {t("features.atsOptimized.description")}
+              {ct("features.atsOptimized.description")}
             </p>
           </div>
         </div>
@@ -594,7 +597,7 @@ const ResumeBuilder = () => {
                 💡
               </span>
               <span className="break-words">
-                {t("proTips.title", { step: stepTitles[currentStep - 1] })}
+                {ct("proTips.title", { step: stepTitles[currentStep - 1] })}
               </span>
             </h3>
 
@@ -603,34 +606,34 @@ const ResumeBuilder = () => {
                 <>
                   <div className="p-3 sm:p-4 bg-sky-50 rounded-lg sm:rounded-xl">
                     <h4 className="mb-1.5 sm:mb-2 text-sm sm:text-base font-medium text-sky-700">
-                      {t("proTips.personalInfo.tip1.title")}
+                      {ct("proTips.personalInfo.tip1.title")}
                     </h4>
                     <p className="text-xs sm:text-sm text-sky-600">
-                      {t("proTips.personalInfo.tip1.description")}
+                      {ct("proTips.personalInfo.tip1.description")}
                     </p>
                   </div>
                   <div className="p-4 bg-sky-50 rounded-xl">
                     <h4 className="mb-2 font-medium text-sky-700">
-                      {t("proTips.personalInfo.tip2.title")}
+                      {ct("proTips.personalInfo.tip2.title")}
                     </h4>
                     <p className="text-sm text-sky-600">
-                      {t("proTips.personalInfo.tip2.description")}
+                      {ct("proTips.personalInfo.tip2.description")}
                     </p>
                   </div>
                   <div className="p-4 bg-sky-50 rounded-xl">
                     <h4 className="mb-2 font-medium text-sky-700">
-                      {t("proTips.personalInfo.tip3.title")}
+                      {ct("proTips.personalInfo.tip3.title")}
                     </h4>
                     <p className="text-sm text-sky-600">
-                      {t("proTips.personalInfo.tip3.description")}
+                      {ct("proTips.personalInfo.tip3.description")}
                     </p>
                   </div>
                   <div className="p-4 bg-sky-50 rounded-xl">
                     <h4 className="mb-2 font-medium text-sky-700">
-                      {t("proTips.personalInfo.tip4.title")}
+                      {ct("proTips.personalInfo.tip4.title")}
                     </h4>
                     <p className="text-sm text-sky-600">
-                      {t("proTips.personalInfo.tip4.description")}
+                      {ct("proTips.personalInfo.tip4.description")}
                     </p>
                   </div>
                 </>
@@ -639,34 +642,34 @@ const ResumeBuilder = () => {
                 <>
                   <div className="p-4 bg-sky-50 rounded-xl">
                     <h4 className="mb-2 font-medium text-sky-700">
-                      {t("proTips.achievements.tip1.title")}
+                      {ct("proTips.achievements.tip1.title")}
                     </h4>
                     <p className="text-sm text-sky-600">
-                      {t("proTips.achievements.tip1.description")}
+                      {ct("proTips.achievements.tip1.description")}
                     </p>
                   </div>
                   <div className="p-4 bg-sky-50 rounded-xl">
                     <h4 className="mb-2 font-medium text-sky-700">
-                      {t("proTips.achievements.tip2.title")}
+                      {ct("proTips.achievements.tip2.title")}
                     </h4>
                     <p className="text-sm text-sky-600">
-                      {t("proTips.achievements.tip2.description")}
+                      {ct("proTips.achievements.tip2.description")}
                     </p>
                   </div>
                   <div className="p-4 bg-sky-50 rounded-xl">
                     <h4 className="mb-2 font-medium text-sky-700">
-                      {t("proTips.achievements.tip3.title")}
+                      {ct("proTips.achievements.tip3.title")}
                     </h4>
                     <p className="text-sm text-sky-600">
-                      {t("proTips.achievements.tip3.description")}
+                      {ct("proTips.achievements.tip3.description")}
                     </p>
                   </div>
                   <div className="p-4 bg-sky-50 rounded-xl">
                     <h4 className="mb-2 font-medium text-sky-700">
-                      {t("proTips.achievements.tip4.title")}
+                      {ct("proTips.achievements.tip4.title")}
                     </h4>
                     <p className="text-sm text-sky-600">
-                      {t("proTips.achievements.tip4.description")}
+                      {ct("proTips.achievements.tip4.description")}
                     </p>
                   </div>
                 </>
@@ -679,13 +682,13 @@ const ResumeBuilder = () => {
         {/* Quick Help & Support */}
         <div className="flex flex-col sm:flex-row justify-center gap-2 sm:gap-0 mt-6 sm:mt-8 md:mt-10 mb-4 sm:mb-6 px-2">
           <button className="px-4 sm:px-5 py-2 sm:py-2.5 mx-0 sm:mx-2 transition-all duration-300 bg-white border rounded-lg shadow-sm text-sky-600 text-sm sm:text-base border-sky-200 hover:bg-sky-50 w-full sm:w-auto">
-            {t("buttons.saveProgress")}
+            {ct("buttons.saveProgress")}
           </button>
           <button className="px-4 sm:px-5 py-2 sm:py-2.5 mx-0 sm:mx-2 transition-all duration-300 bg-white border rounded-lg shadow-sm text-sky-600 text-sm sm:text-base border-sky-200 hover:bg-sky-50 w-full sm:w-auto">
-            {t("buttons.needHelp")}
+            {ct("buttons.needHelp")}
           </button>
           <button className="px-4 sm:px-5 py-2 sm:py-2.5 mx-0 sm:mx-2 transition-all duration-300 bg-white border rounded-lg shadow-sm text-sky-600 text-sm sm:text-base border-sky-200 hover:bg-sky-50 w-full sm:w-auto">
-            {t("buttons.previewResume")}
+            {ct("buttons.previewResume")}
           </button>
         </div>
       </div>

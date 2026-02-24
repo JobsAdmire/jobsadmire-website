@@ -1,10 +1,13 @@
 import React, { useRef } from 'react';
 import { useTranslation } from 'next-i18next';
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 
 const TealResume = ({ userData }) => {
   const { t } = useTranslation('resume-generator');
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const resumeRef = useRef(null);
 
   // Extract data with same structure as NurseResumeTemplate
@@ -44,7 +47,7 @@ const TealResume = ({ userData }) => {
           <div className="text-center">
             <img 
               src={personal_data?.image || personal_data?.profileImage || "/api/placeholder/200/200"} 
-              alt={t('alts.profileAlt')} 
+              alt={ct('alts.profileAlt')} 
               className="w-24 h-24 rounded-full mx-auto object-cover border-4 border-white"
             />
             <h2 className="text-2xl font-bold mt-4">
@@ -55,21 +58,21 @@ const TealResume = ({ userData }) => {
           </div>
           
           <div className="mt-6">
-            <h3 className="text-lg font-semibold">{t("sections.contact")}</h3>
+            <h3 className="text-lg font-semibold">{ct("sections.contact")}</h3>
             <p className="mt-2 text-[15px]">📞 {personal_data?.phone ?? "-"}</p>
             <p className="text-[15px]">✉️ {personal_data?.email ?? "-"}</p>
             <p className="text-[15px]">📍 {personal_data?.address ?? "-"}</p>
           </div>
           
           <div className="mt-6">
-            <h3 className="text-lg font-semibold">{t("sections.aboutMe")}</h3>
+            <h3 className="text-lg font-semibold">{ct("sections.aboutMe")}</h3>
             <p className="mt-2 text-[13px]">{personal_data?.summary ?? ""}</p>
           </div>
           
           {/* Skills - Enhanced with safe data access */}
           {(skill_data && Object.keys(skill_data).length > 0) && (
             <div className="mt-6">
-              <h3 className="text-lg font-semibold">{t("sections.skills")}</h3>
+              <h3 className="text-lg font-semibold">{ct("sections.skills")}</h3>
               <ul className="mt-2 text-[13px]">
                 {Array.isArray(skill_data) 
                   ? skill_data.map((skill, index) => (
@@ -114,7 +117,7 @@ const TealResume = ({ userData }) => {
           {/* Experience - Enhanced with safe data access */}
           {(experience_data && Object.keys(experience_data).length > 0) && (
             <div className="mt-8">
-              <h2 className="text-2xl font-bold border-b-2 border-teal-700 pb-2">{t("sections.experience")}</h2>
+              <h2 className="text-2xl font-bold border-b-2 border-teal-700 pb-2">{ct("sections.experience")}</h2>
               <ul className="mt-3 list-disc pl-6 space-y-3">
                 {Object.values(experience_data).map((exp, index) => (
                   <li key={`exp-${index}`} className="text-[13px]">
@@ -134,7 +137,7 @@ const TealResume = ({ userData }) => {
           {/* Education - Enhanced with safe data access */}
           {(education_data && Object.keys(education_data).length > 0) && (
             <div className="mt-8">
-              <h2 className="text-2xl font-bold border-b-2 border-teal-700 pb-2">{t("sections.education")}</h2>
+              <h2 className="text-2xl font-bold border-b-2 border-teal-700 pb-2">{ct("sections.education")}</h2>
               <ul className="mt-3 list-disc pl-6 space-y-3">
                 {Object.values(education_data).map((edu, index) => (
                   <li key={`edu-${index}`} className="text-[13px]">
@@ -169,7 +172,7 @@ const TealResume = ({ userData }) => {
 
           {/* References Section - Same as NurseResumeTemplate */}
           <div className="mt-8">
-            <h2 className="text-2xl font-bold border-b-2 border-teal-700 pb-2">{t("sections.references")}</h2>
+            <h2 className="text-2xl font-bold border-b-2 border-teal-700 pb-2">{ct("sections.references")}</h2>
             <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="mb-4">
                 <h3 className="text-base font-bold">Harumi Kobayashi</h3>

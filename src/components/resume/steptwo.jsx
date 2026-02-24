@@ -1,4 +1,5 @@
 import { useTranslation } from "next-i18next";
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import React, {
   forwardRef,
   useEffect,
@@ -8,6 +9,8 @@ import React, {
 
 const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
   const { t } = useTranslation("resume-generator");
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const [achievements, setAchievements] = useState(data || []);
   const [currentAchievement, setCurrentAchievement] = useState({
     title: "",
@@ -17,7 +20,7 @@ const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
   const [errors, setErrors] = useState({});
 
   // Load data from localStorage on component mount
-  useEffect(() => {
+  useEffecct(() => {
     const savedData = localStorage.getItem("achievement_information");
     if (savedData) {
       try {
@@ -39,7 +42,7 @@ const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
   // Handle input changes for current achievement form
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setCurrentAchievement((prev) => ({
+    setCurrentAchievemenct((prev) => ({
       ...prev,
       [name]: value,
     }));
@@ -58,7 +61,7 @@ const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
       updateData(updatedAchievements);
 
       // Reset the form
-      setCurrentAchievement({
+      setCurrentAchievemenct({
         title: "",
         description: "",
         date: "",
@@ -80,7 +83,7 @@ const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
 
   // Handle submit
   const handleSubmit = (e) => {
-    if (e) e.preventDefault();
+    if (e) e.preventDefaulct();
 
     if (validateForm()) {
       updateData(achievements);
@@ -123,10 +126,10 @@ const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
               />
             </svg>
           </span>
-          {t("step2.title")}
+          {ct("step2.title")}
         </h2>
         <p className="ml-8 sm:ml-10 md:ml-12 text-xs sm:text-sm italic text-sky-600">
-          {t("step2.description")}
+          {ct("step2.description")}
         </p>
       </div>
 
@@ -149,7 +152,7 @@ const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
               />
             </svg>
             <p className="text-sm sm:text-base text-sky-700">
-              {t("step2.noAchievements")}
+              {ct("step2.noAchievements")}
             </p>
           </div>
         ) : (
@@ -187,7 +190,7 @@ const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
                   </div>
                 </div>
                 <button
-                  onClick={() => removeAchievement(achievement.id)}
+                  onClick={() => removeAchievemenct(achievement.id)}
                   className="flex items-center px-3 py-1.5 sm:py-1 ml-0 sm:ml-4 text-xs sm:text-sm text-white transition-colors duration-200 bg-red-400 rounded-md hover:bg-red-500 w-full sm:w-auto justify-center"
                 >
                   <svg
@@ -204,8 +207,8 @@ const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
                       d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                     />
                   </svg>
-                  <span className="hidden sm:inline">{t("step2.remove")}</span>
-                  <span className="sm:hidden">{t("step2.delete")}</span>
+                  <span className="hidden sm:inline">{ct("step2.remove")}</span>
+                  <span className="sm:hidden">{ct("step2.delete")}</span>
                 </button>
               </div>
             ))}
@@ -230,7 +233,7 @@ const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
               d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          {t("step2.addNew")}
+          {ct("step2.addNew")}
         </h3>
 
         <div className="grid grid-cols-1 gap-4 sm:gap-5 mb-4 sm:mb-5 md:grid-cols-2">
@@ -239,7 +242,7 @@ const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
               htmlFor="title"
               className="block mb-2 text-sm font-medium text-sky-700"
             >
-              {t("step2.achievementTitle")}
+              {ct("step2.achievementTitle")}
             </label>
             <div className="relative">
               <input
@@ -248,7 +251,7 @@ const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
                 name="title"
                 value={currentAchievement.title}
                 onChange={handleChange}
-                placeholder={t("step2.achievementTitlePlaceholder")}
+                placeholder={ct("step2.achievementTitlePlaceholder")}
                 className="w-full pl-10 pr-3 py-2.5 border border-sky-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent bg-white"
               />
               <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -275,7 +278,7 @@ const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
               htmlFor="date"
               className="block mb-2 text-sm font-medium text-sky-700"
             >
-              {t("step2.date")}
+              {ct("step2.date")}
             </label>
             <div className="relative">
               <input
@@ -311,7 +314,7 @@ const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
             htmlFor="description"
             className="block mb-2 text-sm font-medium text-sky-700"
           >
-            {t("step2.achievementDescription")}
+            {ct("step2.achievementDescription")}
           </label>
           <div className="relative">
             <textarea
@@ -319,7 +322,7 @@ const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
               name="description"
               value={currentAchievement.description}
               onChange={handleChange}
-              placeholder={t("step2.achievementDescriptionPlaceholder")}
+              placeholder={ct("step2.achievementDescriptionPlaceholder")}
               rows="3"
               className="w-full pl-10 pr-3 py-2.5 border border-sky-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-sky-400 focus:border-transparent bg-white"
             ></textarea>
@@ -361,7 +364,7 @@ const Step2 = forwardRef(({ data, updateData, nextStep, prevStep }, ref) => {
               d="M12 6v6m0 0v6m0-6h6m-6 0H6"
             />
           </svg>
-          {t("buttons.addAchievement")}
+          {ct("buttons.addAchievement")}
         </button>
       </div>
     </div>

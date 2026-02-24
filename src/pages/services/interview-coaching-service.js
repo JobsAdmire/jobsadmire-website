@@ -33,23 +33,31 @@ const interviewcoachingservice = () => {
         <Time />
         <Info />
         <ServicesCarousel />
-        <Banner
-          title="Master Your Next Interview"
-          description="Build confidence and ace your interviews with personalized coaching sessions. Our experienced coaches help you practice answers and excel in any interview scenario to land your dream job."
-          buttonText="Book Coaching"
-          buttonLink="/contact-us"
-          serviceLabel="INTERVIEW MASTERY"
-        />
+        <Banner />
       </div>
     </div>
   );
 };
 
 export const getStaticProps = async ({ locale }) => {
+  const { getLayoutCmsProps } = require("@/lib/api/cmsHelper");
+  const { getServiceBySlug } = require("@/lib/api/cms");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const [layoutProps, cmsService, cmsPageContent] = await Promise.all([
+    getLayoutCmsProps(locale),
+    getServiceBySlug("interview-coaching", locale),
+    getPageAndLayoutContent("services/interview-preparation", locale),
+  ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["about", "common"])),
+      ...layoutProps,
+      cmsService: cmsService || null,
+      cmsPageContent,
     },
+    revalidate: 60,
   };
 };
 export default interviewcoachingservice;

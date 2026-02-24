@@ -666,9 +666,15 @@ export const getStaticProps = async ({ locale }) => {
   const {
     serverSideTranslations,
   } = require("next-i18next/serverSideTranslations");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const cmsPageContent = await getPageAndLayoutContent("citizenship", locale);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
+      cmsPageContent,
     },
+    revalidate: 60,
   };
 };

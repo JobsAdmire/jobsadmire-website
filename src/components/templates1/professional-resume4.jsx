@@ -1,10 +1,13 @@
 import React, { useRef } from 'react';
 import { useTranslation } from 'next-i18next';
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 
 const GradientResume = ({ userData }) => {
   const { t } = useTranslation('resume-generator');
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const resumeRef = useRef(null);
 
   // Extract data with same structure as NurseResumeTemplate
@@ -44,7 +47,7 @@ const GradientResume = ({ userData }) => {
           <div className="w-full md:w-1/3 bg-white text-gray-900 p-8 flex flex-col items-center">
             <img 
               src={personal_data?.image || personal_data?.profileImage || "/api/placeholder/200/200"} 
-              alt={t('alts.profileAlt')} 
+              alt={ct('alts.profileAlt')} 
               className="w-32 h-32 rounded-full object-cover border-4 border-gray-300 shadow-lg"
             />
             <h1 className="text-2xl font-bold mt-4 text-center">
@@ -57,15 +60,15 @@ const GradientResume = ({ userData }) => {
 
             <div className="mt-6 text-center">
               <p>
-                <strong className="text-[15px] text-gray-700">{t("labels.phone")}:</strong>{" "}
+                <strong className="text-[15px] text-gray-700">{ct("labels.phone")}:</strong>{" "}
                 <span className="text-[15px]">{personal_data?.phone ?? "-"}</span>
               </p>
               <p>
-                <strong className="text-[15px] text-gray-700">{t("labels.email")}:</strong>{" "}
+                <strong className="text-[15px] text-gray-700">{ct("labels.email")}:</strong>{" "}
                 <span className="text-[15px]">{personal_data?.email ?? "-"}</span>
               </p>
               <p>
-                <strong className="text-[15px] text-gray-700">{t("labels.address")}:</strong>{" "}
+                <strong className="text-[15px] text-gray-700">{ct("labels.address")}:</strong>{" "}
                 <span className="text-[15px]">{personal_data?.address ?? "-"}</span>
               </p>
             </div>
@@ -74,7 +77,7 @@ const GradientResume = ({ userData }) => {
             {(skill_data && Object.keys(skill_data).length > 0) && (
               <div className="mt-8 w-full text-left">
                 <h2 className="text-lg font-bold border-b-2 border-blue-500 pb-2">
-                  {t("sections.skills")}
+                  {ct("sections.skills")}
                 </h2>
                 <ul className="mt-3 list-disc pl-4 space-y-1 text-gray-700 text-[13px]">
                   {Array.isArray(skill_data) 
@@ -93,7 +96,7 @@ const GradientResume = ({ userData }) => {
             {(achievement_data && Object.keys(achievement_data).length > 0) && (
               <div className="mt-8 w-full text-left">
                 <h2 className="text-lg font-bold border-b-2 border-blue-500 pb-2">
-                  {t("sections.achievements")}
+                  {ct("sections.achievements")}
                 </h2>
                 <ul className="mt-3 list-disc pl-4 space-y-2 text-gray-700">
                   {Array.isArray(achievement_data) 
@@ -128,7 +131,7 @@ const GradientResume = ({ userData }) => {
             {(experience_data && Object.keys(experience_data).length > 0) && (
               <div className="mt-6">
                 <h2 className="text-lg font-bold border-b-2 border-blue-500 pb-2">
-                  {t("sections.experience")}
+                  {ct("sections.experience")}
                 </h2>
                 <ul className="mt-3 list-disc pl-4 space-y-2 text-gray-700">
                   {Object.values(experience_data).map((exp, index) => (
@@ -149,7 +152,7 @@ const GradientResume = ({ userData }) => {
             {(education_data && Object.keys(education_data).length > 0) && (
               <div className="mt-6">
                 <h2 className="text-lg font-bold border-b-2 border-blue-500 pb-2">
-                  {t("sections.education")}
+                  {ct("sections.education")}
                 </h2>
                 <ul className="mt-3 list-disc pl-4 space-y-1 text-gray-700">
                   {Object.values(education_data).map((edu, index) => (

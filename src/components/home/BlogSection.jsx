@@ -14,39 +14,48 @@ import {
   Eye,
 } from "lucide-react";
 import { env } from "@/lib/constants/env";
-
-// Import translation files for all 7 languages
-import enTranslations from "../../../public/locales/en/blogcarousel.json";
-import trTranslations from "../../../public/locales/tr/blogcarousel.json";
-import frTranslations from "../../../public/locales/fr/blogcarousel.json";
-import deTranslations from "../../../public/locales/de/blogcarousel.json";
-import arTranslations from "../../../public/locales/ar/blogcarousel.json";
-import ruTranslations from "../../../public/locales/ru/blogcarousel.json";
-import faTranslations from "../../../public/locales/fa/blogcarousel.json";
+import { useTranslation } from "next-i18next";
+import { useCmsContent } from "@/lib/context/CmsContentContext";
 
 export default function BlogCarousel() {
   const { locale } = useRouter();
+  const { t: tr } = useTranslation("blogcarousel");
+  const { c } = useCmsContent();
 
-  const getTranslations = () => {
-    switch (locale) {
-      case "tr":
-        return trTranslations;
-      case "fr":
-        return frTranslations;
-      case "de":
-        return deTranslations;
-      case "ar":
-        return arTranslations;
-      case "ru":
-        return ruTranslations;
-      case "fa":
-        return faTranslations;
-      default:
-        return enTranslations;
-    }
+  const t = {
+    header: {
+      title: { line1: c("blogSection.headerTitle", tr("header.title.line1", "Recent Articles")) },
+      description: c("blogSection.headerDescription", tr("header.description", "Explore in-depth insights on global job opportunities.")),
+    },
+    loading: {
+      title: c("blogSection.loadingTitle", tr("loading.title", "Curating Amazing Content")),
+      description: c("blogSection.loadingDescription", tr("loading.description", "Loading our latest educational insights...")),
+    },
+    error: {
+      title: c("blogSection.errorTitle", tr("error.title", "Unable to Load Content")),
+      button: c("blogSection.errorButton", tr("error.button", "Try Again")),
+    },
+    empty: {
+      title: c("blogSection.emptyTitle", tr("empty.title", "Coming Soon")),
+      description: c("blogSection.emptyDescription", tr("empty.description", "Amazing blog content is on the way!")),
+    },
+    blog: {
+      readMore: c("blogSection.readMore", tr("blog.readMore", "Read Full Article")),
+      featured: c("blogSection.featured", tr("blog.featured", "Featured")),
+    },
+    navigation: {
+      previous: tr("navigation.previous", "Previous blog"),
+      next: tr("navigation.next", "Next blog"),
+      goTo: tr("navigation.goTo", "Go to blog"),
+    },
+    viewAll: {
+      text: c("blogSection.viewAllText", tr("viewAll.text", "Explore All Articles")),
+    },
+    readTime: {
+      defaultMinutes: tr("readTime.defaultMinutes", "5 min"),
+      suffix: tr("readTime.suffix", "min read"),
+    },
   };
-
-  const t = getTranslations();
 
   const [blogs, setBlogs] = useState([]);
   const [loading, setLoading] = useState(true);

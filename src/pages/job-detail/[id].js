@@ -14,9 +14,14 @@ export const getServerSideProps = async ({ locale }) => {
   const {
     serverSideTranslations,
   } = require("next-i18next/serverSideTranslations");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const cmsPageContent = await getPageAndLayoutContent("job-detail", locale);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common", "job-detail"])),
+      cmsPageContent,
     },
   };
 };

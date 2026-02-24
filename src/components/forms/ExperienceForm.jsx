@@ -1,16 +1,19 @@
 // src/components/forms/ExperienceForm.js
 import React from 'react';
 import { useTranslation } from 'next-i18next';
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import { Plus, Trash2 } from 'lucide-react';
 
 const ExperienceForm = ({ cvData, updateExperience, addExperience, removeExperience }) => {
   const { t } = useTranslation('resume-generator');
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   return (
     <div className="space-y-6">
       {cvData.experience.map((exp, index) => (
         <div key={exp.id} className="border border-gray-200 rounded-lg p-4">
           <div className="flex justify-between items-center mb-4">
-            <h3 className="text-lg font-medium text-gray-900">{t('forms.experienceLabel')} {index + 1}</h3>
+            <h3 className="text-lg font-medium text-gray-900">{ct('forms.experienceLabel')} {index + 1}</h3>
             <button
               onClick={() => removeExperience(exp.id)}
               className="text-red-500 hover:text-red-700"
@@ -21,39 +24,39 @@ const ExperienceForm = ({ cvData, updateExperience, addExperience, removeExperie
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">{t('forms.jobTitle')}</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">{ct('forms.jobTitle')}</label>
               <input
                 type="text"
                 value={exp.jobTitle}
                 onChange={(e) => updateExperience(exp.id, 'jobTitle', e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder={t('forms.placeholderJobTitle')}
+                placeholder={ct('forms.placeholderJobTitle')}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">{t('forms.company')}</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">{ct('forms.company')}</label>
               <input
                 type="text"
                 value={exp.company}
                 onChange={(e) => updateExperience(exp.id, 'company', e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder={t('forms.placeholderCompany')}
+                placeholder={ct('forms.placeholderCompany')}
               />
             </div>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">{t('forms.location')}</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">{ct('forms.location')}</label>
               <input
                 type="text"
                 value={exp.location}
                 onChange={(e) => updateExperience(exp.id, 'location', e.target.value)}
                 className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                placeholder={t('forms.placeholderLocationExp')}
+                placeholder={ct('forms.placeholderLocationExp')}
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">{t('forms.startDate')}</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">{ct('forms.startDate')}</label>
               <input
                 type="month"
                 value={exp.startDate}
@@ -62,7 +65,7 @@ const ExperienceForm = ({ cvData, updateExperience, addExperience, removeExperie
               />
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-1">{t('forms.endDate')}</label>
+              <label className="block text-sm font-medium text-gray-700 mb-1">{ct('forms.endDate')}</label>
               <input
                 type="month"
                 value={exp.endDate}
@@ -80,17 +83,17 @@ const ExperienceForm = ({ cvData, updateExperience, addExperience, removeExperie
                 onChange={(e) => updateExperience(exp.id, 'current', e.target.checked)}
                 className="mr-2"
               />
-              <span className="text-sm text-gray-700">{t('forms.currentWorkHere')}</span>
+              <span className="text-sm text-gray-700">{ct('forms.currentWorkHere')}</span>
             </label>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-1">{t('forms.description')}</label>
+            <label className="block text-sm font-medium text-gray-700 mb-1">{ct('forms.description')}</label>
             <textarea
               value={exp.description}
               onChange={(e) => updateExperience(exp.id, 'description', e.target.value)}
               rows={3}
               className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              placeholder={t('forms.descriptionPlaceholder')}
+              placeholder={ct('forms.descriptionPlaceholder')}
             />
           </div>
         </div>
@@ -100,7 +103,7 @@ const ExperienceForm = ({ cvData, updateExperience, addExperience, removeExperie
         className="flex items-center justify-center w-full p-3 border-2 border-dashed border-gray-300 rounded-lg text-gray-500 hover:border-blue-500 hover:text-blue-500 transition-colors"
       >
         <Plus size={16} className="mr-2" />
-        {t('forms.addExperience')}
+        {ct('forms.addExperience')}
       </button>
     </div>
   );

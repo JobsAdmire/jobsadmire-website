@@ -24,9 +24,19 @@ import {
   Building,
 } from "lucide-react";
 import { FACEBOOK_URL, INSTAGRAM_URL, LINKEDIN_URL } from "@/lib/constants/app";
+import { useCms } from "@/lib/context/CmsContext";
+import { useCmsContent } from "@/lib/context/CmsContentContext";
 
 const JobPortalFooter = () => {
   const { t } = useTranslation("common");
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
+  const { nav, settings } = useCms();
+  const footerLogoUrl = settings?.footer?.footer_logo_url || '/logos/logo4.png';
+  const footerTagline = settings?.footer?.footer_tagline || ct("footer.brand.tagline", { defaultValue: "Connecting Talent with Opportunity" });
+  const footerDescription = settings?.footer?.footer_description || ct("footer.brand.description", { defaultValue: "Empowering careers and businesses through innovative HR solutions and personalized recruitment services." });
+  const footerCopyright = settings?.footer?.footer_copyright || 'JOBS ADMİRE ÖZEL İSTİHDAM BÜROSU SANAYİ VE TİCARET LİMİTED ŞİRKETİ';
+  const footerProfilePdf = settings?.footer?.footer_profile_pdf || '/profile/company-profile.pdf';
   const [hoverIndex, setHoverIndex] = useState(null);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [activeTab, setActiveTab] = useState(0);
@@ -55,12 +65,12 @@ const JobPortalFooter = () => {
   const contacts = [
     {
       id: 1,
-      country: t("footer.contacts.turkey.country"),
-      city: t("footer.contacts.turkey.city"),
-      address: t("footer.contacts.turkey.address"),
-      phone: t("footer.contacts.turkey.phone"),
-      email: t("footer.contacts.turkey.email"),
-      hours: t("footer.contacts.turkey.hours"),
+      country: ct("footer.contacts.turkey.country"),
+      city: ct("footer.contacts.turkey.city"),
+      address: ct("footer.contacts.turkey.address"),
+      phone: ct("footer.contacts.turkey.phone"),
+      email: ct("footer.contacts.turkey.email"),
+      hours: ct("footer.contacts.turkey.hours"),
       icon: Building,
       color: "from-sky-400 to-blue-500",
       mapUrl:
@@ -68,12 +78,12 @@ const JobPortalFooter = () => {
     },
     {
       id: 2,
-      country: t("footer.contacts.pakistan.country"),
-      city: t("footer.contacts.pakistan.city"),
-      address: t("footer.contacts.pakistan.address"),
-      phone: t("footer.contacts.pakistan.phone"),
-      email: t("footer.contacts.pakistan.email"),
-      hours: t("footer.contacts.pakistan.hours"),
+      country: ct("footer.contacts.pakistan.country"),
+      city: ct("footer.contacts.pakistan.city"),
+      address: ct("footer.contacts.pakistan.address"),
+      phone: ct("footer.contacts.pakistan.phone"),
+      email: ct("footer.contacts.pakistan.email"),
+      hours: ct("footer.contacts.pakistan.hours"),
       icon: Building,
       color: "from-emerald-400 to-teal-500",
       mapUrl:
@@ -83,62 +93,62 @@ const JobPortalFooter = () => {
 
   const tabContents = [
     {
-      title: t("footer.featuredServices.tabs.findJobs.title", {
+      title: ct("footer.featuredServices.tabs.findJobs.title", {
         defaultValue: "Find Jobs",
       }),
       features: [
-        t("footer.featuredServices.tabs.findJobs.features.searchVacancies", {
+        ct("footer.featuredServices.tabs.findJobs.features.searchVacancies", {
           defaultValue: "Search Vacancies",
         }),
-        t("footer.featuredServices.tabs.findJobs.features.createProfile", {
+        ct("footer.featuredServices.tabs.findJobs.features.createProfile", {
           defaultValue: "Create Profile",
         }),
-        t("footer.featuredServices.tabs.findJobs.features.applyTracking", {
+        ct("footer.featuredServices.tabs.findJobs.features.applyTracking", {
           defaultValue: "Apply Tracking",
         }),
-        t("footer.featuredServices.tabs.findJobs.features.careerAdvice", {
+        ct("footer.featuredServices.tabs.findJobs.features.careerAdvice", {
           defaultValue: "Career Advice",
         }),
       ],
       link: "/job",
     },
     {
-      title: t("footer.featuredServices.tabs.hireTalent.title", {
+      title: ct("footer.featuredServices.tabs.hireTalent.title", {
         defaultValue: "Hire Talent",
       }),
       features: [
-        t("footer.featuredServices.tabs.hireTalent.features.postJobOpenings", {
+        ct("footer.featuredServices.tabs.hireTalent.features.postJobOpenings", {
           defaultValue: "Post Job Openings",
         }),
-        t("footer.featuredServices.tabs.hireTalent.features.resumeDatabase", {
+        ct("footer.featuredServices.tabs.hireTalent.features.resumeDatabase", {
           defaultValue: "Resume Database",
         }),
-        t(
+        ct(
           "footer.featuredServices.tabs.hireTalent.features.recruitmentSolutions",
           { defaultValue: "Recruitment Solutions" }
         ),
-        t("footer.featuredServices.tabs.hireTalent.features.hrConsulting", {
+        ct("footer.featuredServices.tabs.hireTalent.features.hrConsulting", {
           defaultValue: "HR Consulting",
         }),
       ],
       link: "/hire-talent",
     },
     {
-      title: t("footer.featuredServices.tabs.partnerWithUs.title", {
+      title: ct("footer.featuredServices.tabs.partnerWithUs.title", {
         defaultValue: "Partner With Us",
       }),
       features: [
-        t("footer.featuredServices.tabs.partnerWithUs.features.jobSeeker", {
+        ct("footer.featuredServices.tabs.partnerWithUs.features.jobSeeker", {
           defaultValue: "Are You A Job Seeker?",
         }),
-        t("footer.featuredServices.tabs.partnerWithUs.features.employer", {
+        ct("footer.featuredServices.tabs.partnerWithUs.features.employer", {
           defaultValue: "Are You An Employer?",
         }),
-        t(
+        ct(
           "footer.featuredServices.tabs.partnerWithUs.features.recruitmentAgency",
           { defaultValue: "Are You A Recruitment Agency?" }
         ),
-        t("footer.featuredServices.tabs.partnerWithUs.features.hrConsultant", {
+        ct("footer.featuredServices.tabs.partnerWithUs.features.hrConsultant", {
           defaultValue: "Are You A HR Consultant?",
         }),
       ],
@@ -156,90 +166,51 @@ const JobPortalFooter = () => {
     "/logos/27.png",
   ];
 
-  const navigationCategories = [
+  const buildNavFromCms = () => {
+    if (!nav?.footer?.items?.length) return null;
+    return nav.footer.items
+      .filter((item) => item.visible !== false && !item.parentId)
+      .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+      .map((group) => ({
+        title: group.contents?.[0]?.label || group.contents?.[0]?.url || "",
+        links: (group.children || [])
+          .filter((child) => child.visible !== false)
+          .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+          .map((child) => ({
+            name: child.contents?.[0]?.label || "",
+            href: child.contents?.[0]?.url || "#",
+          })),
+      }));
+  };
+
+  const fallbackNav = [
     {
-      title: t("footer.navigation.jobsAdmire.title", {
-        defaultValue: "JobsAdmire",
-      }),
+      title: ct("footer.navigation.jobsAdmire.title", { defaultValue: "JobsAdmire" }),
       links: [
-        {
-          name: t("footer.navigation.jobsAdmire.links.aboutUs", {
-            defaultValue: "About Us",
-          }),
-          href: "/about",
-        },
-        {
-          name: t("footer.navigation.jobsAdmire.links.contactUs", {
-            defaultValue: "Contact Us",
-          }),
-          href: "/contact-us",
-        },
-        {
-          name: t("footer.navigation.jobsAdmire.links.blog", {
-            defaultValue: "Blog",
-          }),
-          href: "/blog",
-        },
-        {
-          name: t("footer.navigation.jobsAdmire.links.companyCertifications", {
-            defaultValue: "Company Certifications",
-          }),
-          href: "/certifications",
-        },
+        { name: ct("footer.navigation.jobsAdmire.links.aboutUs", { defaultValue: "About Us" }), href: "/about" },
+        { name: ct("footer.navigation.jobsAdmire.links.contactUs", { defaultValue: "Contact Us" }), href: "/contact-us" },
+        { name: ct("footer.navigation.jobsAdmire.links.blog", { defaultValue: "Blog" }), href: "/blog" },
+        { name: ct("footer.navigation.jobsAdmire.links.companyCertifications", { defaultValue: "Company Certifications" }), href: "/certifications" },
       ],
     },
     {
-      title: t("footer.navigation.resources.title", {
-        defaultValue: "Resources",
-      }),
+      title: ct("footer.navigation.resources.title", { defaultValue: "Resources" }),
       links: [
-        {
-          name: t("footer.navigation.resources.links.residencePermitInfo", {
-            defaultValue: "Residence Permit Info",
-          }),
-          href: "/immigration/turkey-residence-permit",
-        },
-        {
-          name: t("footer.navigation.resources.links.invitationLetterRequest", {
-            defaultValue: "Invitation Letter Request",
-          }),
-          href: "/visa-e-invitation",
-        },
+        { name: ct("footer.navigation.resources.links.residencePermitInfo", { defaultValue: "Residence Permit Info" }), href: "/immigration/turkey-residence-permit" },
+        { name: ct("footer.navigation.resources.links.invitationLetterRequest", { defaultValue: "Invitation Letter Request" }), href: "/visa-e-invitation" },
       ],
     },
     {
-      title: t("footer.navigation.jobProviders.title", {
-        defaultValue: "Job Providers",
-      }),
+      title: ct("footer.navigation.jobProviders.title", { defaultValue: "Job Providers" }),
       links: [
-        {
-          name: t("footer.navigation.jobProviders.links.findJobs", {
-            defaultValue: "Find Jobs",
-          }),
-          href: "/job",
-        },
-        {
-          name: t("footer.navigation.jobProviders.links.resumeGenerator", {
-            defaultValue: "Resume Generator",
-          }),
-          href: "/resume-generator",
-        },
-        {
-          name: t("footer.navigation.jobProviders.links.resumeService", {
-            defaultValue: "Resume Service",
-          }),
-          href: "/services/resume-service",
-        },
-        // Disabled: Company Registration page
-        // {
-        //   name: t("footer.navigation.jobProviders.links.companyRegistration", {
-        //     defaultValue: "Company Registration",
-        //   }),
-        //   href: "/register-your-company",
-        // },
+        { name: ct("footer.navigation.jobProviders.links.findJobs", { defaultValue: "Find Jobs" }), href: "/job" },
+        { name: ct("footer.navigation.jobProviders.links.resumeGenerator", { defaultValue: "Resume Generator" }), href: "/resume-generator" },
+        { name: ct("footer.navigation.jobProviders.links.resumeService", { defaultValue: "Resume Service" }), href: "/services/resume-service" },
       ],
     },
   ];
+
+  const navigationCategories = buildNavFromCms() || fallbackNav;
 
   return (
     <footer className="relative pt-20 pb-10 overflow-hidden bg-gradient-to-b from-slate-50 to-slate-100">
@@ -259,30 +230,25 @@ const JobPortalFooter = () => {
               <div className="relative inline-block mb-3">
                 <div className="absolute inset-0 transform blur-lg opacity-30 bg-gradient-to-r from-white to-primary rounded-3xl -rotate-3"></div>
                 <img
-                  src="/logos/logo4.png"
-                  alt={t("labels.footer.logoAlt")}
+                  src={footerLogoUrl}
+                  alt={ct("labels.footer.logoAlt")}
                   className="relative w-auto h-16"
                 />
               </div>
 
               <h2 className="mb-4 text-xl font-medium tracking-wide text-blue-400">
-                {t("footer.brand.tagline", {
-                  defaultValue: "Connecting Talent with Opportunity",
-                })}
+                {footerTagline}
               </h2>
               <p className="mb-5 text-gray-600">
-                {t("footer.brand.description", {
-                  defaultValue:
-                    "Empowering careers and businesses through innovative HR solutions and personalized recruitment services.",
-                })}
+                {footerDescription}
               </p>
               <a
-                href="/profile/company-profile.pdf"
+                href={footerProfilePdf}
                 download
                 className="inline-flex items-center justify-center gap-2 px-6 py-3 mb-5 font-medium text-white transition-all transform rounded-lg bg-gradient-to-r from-primary to-primary hover:shadow-lg hover:from-sky-600 hover:to-primary hover:-translate-y-1"
               >
                 <Download size={18} />
-                {t("footer.brand.downloadProfile", {
+                {ct("footer.brand.downloadProfile", {
                   defaultValue: "Download Company Profile",
                 })}
               </a>
@@ -291,25 +257,25 @@ const JobPortalFooter = () => {
                   {
                     icon: <Facebook size={18} />,
                     color: "bg-[#1877F2] hover:bg-[#0D65D9]",
-                    link: FACEBOOK_URL,
+                    link: settings?.social?.social_facebook || FACEBOOK_URL,
                   },
                   {
                     icon: <Instagram size={18} />,
                     color:
                       "bg-gradient-to-br from-[#833AB4] via-[#FD1D1D] to-[#FCAF45] hover:opacity-90",
-                    link: INSTAGRAM_URL,
+                    link: settings?.social?.social_instagram || INSTAGRAM_URL,
                   },
                   {
                     icon: <Linkedin size={18} />,
                     color: "bg-[#0A66C2] hover:bg-[#004182]",
-                    link: LINKEDIN_URL,
+                    link: settings?.social?.social_linkedin || LINKEDIN_URL,
                   },
                 ].map((social, index) => (
                   <a
                     key={index}
                     href={social.link}
                     className={`h-10 w-10 md:h-12 md:w-12 rounded-full ${social.color} flex items-center justify-center text-white shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300`}
-                    aria-label={t(
+                    aria-label={ct(
                       `footer.social.${index === 0 ? "facebook" : index === 1 ? "instagram" : "linkedin"}`,
                       {
                         defaultValue:
@@ -330,14 +296,14 @@ const JobPortalFooter = () => {
             {/* Right Side - Newsletter */}
             <div className="w-full p-6 bg-white shadow-md lg:w-1/2 rounded-xl">
               <h3 className="mb-4 text-xl font-bold text-primary">
-                {t("footer.newsletter.title", {
+                {ct("footer.newsletter.title", {
                   defaultValue: "Job Alerts & Updates",
                 })}
               </h3>
               <div className="flex flex-col gap-3 sm:flex-row">
                 <input
                   type="email"
-                  placeholder={t("footer.newsletter.placeholder", {
+                  placeholder={ct("footer.newsletter.placeholder", {
                     defaultValue: "Enter your email",
                   })}
                   value={emailInput}
@@ -348,14 +314,14 @@ const JobPortalFooter = () => {
                   onClick={handleSubmit}
                   className="px-6 py-3 text-white transition-colors rounded-lg bg-gradient-to-r from-primary to-primary hover:from-primary hover:to-primary whitespace-nowrap"
                 >
-                  {t("footer.newsletter.subscribe", {
+                  {ct("footer.newsletter.subscribe", {
                     defaultValue: "Subscribe",
                   })}
                 </button>
               </div>
               {isNewsletterSubmitted && (
                 <p className="mt-2 text-sm text-green-600">
-                  {t("footer.newsletter.success", {
+                  {ct("footer.newsletter.success", {
                     defaultValue: "Thank you for subscribing!",
                   })}
                 </p>
@@ -366,27 +332,27 @@ const JobPortalFooter = () => {
                 <div className="flex flex-wrap items-center justify-center gap-4">
                   <img
                     src="/logos/americanexpress.png"
-                    alt={t("labels.footer.paymentAmex")}
+                    alt={ct("labels.footer.paymentAmex")}
                     className="object-contain h-8"
                   />
                   <img
                     src="/logos/applepay.png"
-                    alt={t("labels.footer.paymentApplePay")}
+                    alt={ct("labels.footer.paymentApplePay")}
                     className="object-contain h-8"
                   />
                   <img
                     src="/logos/mastercard.png"
-                    alt={t("labels.footer.paymentMastercard")}
+                    alt={ct("labels.footer.paymentMastercard")}
                     className="object-contain h-8"
                   />
                   <img
                     src="/logos/visa.png"
-                    alt={t("labels.footer.paymentVisa")}
+                    alt={ct("labels.footer.paymentVisa")}
                     className="object-contain h-8"
                   />
                   <img
                     src="/logos/gp.png"
-                    alt={t("labels.footer.paymentGooglePay")}
+                    alt={ct("labels.footer.paymentGooglePay")}
                     className="object-contain h-8"
                   />
                 </div>
@@ -451,7 +417,7 @@ const JobPortalFooter = () => {
           <div className="flex flex-col w-full h-full">
             <div className="flex flex-col justify-between mb-8 md:flex-row md:items-center">
               <h3 className="relative inline-block mb-4 text-2xl font-bold text-primary md:mb-0">
-                {t("footer.globalPresence.title", {
+                {ct("footer.globalPresence.title", {
                   defaultValue: "Global Presence",
                 })}
                 <span className="absolute bottom-[-8px] left-0 w-16 h-1 bg-gradient-to-r from-primary to-primary rounded-full"></span>
@@ -460,7 +426,7 @@ const JobPortalFooter = () => {
                 href="/contact-us"
                 className="flex items-center text-sm font-semibold text-primary hover:text-sky-800 group"
               >
-                {t("footer.globalPresence.viewAll", {
+                {ct("footer.globalPresence.viewAll", {
                   defaultValue: "View all locations",
                 })}
                 <ArrowUpRight
@@ -477,7 +443,7 @@ const JobPortalFooter = () => {
                     <Globe className="w-5 h-5 text-white" />
                   </div>
                   <h3 className="text-xl font-bold text-sky-900">
-                    {t("footer.mapSection.title", {
+                    {ct("footer.mapSection.title", {
                       defaultValue: "Find Us on Map",
                     })}
                   </h3>
@@ -527,7 +493,7 @@ const JobPortalFooter = () => {
                             >
                               <Mail className="w-3 h-3" />
                               <span>
-                                {t("footer.mapSection.email", {
+                                {ct("footer.mapSection.email", {
                                   defaultValue: "Email",
                                 })}
                               </span>
@@ -566,19 +532,19 @@ const JobPortalFooter = () => {
             <div className="flex-shrink-0">
               <img
                 src="/logos/iskur.png"
-                alt={t("labels.footer.certificationAlt")}
+                alt={ct("labels.footer.certificationAlt")}
                 className="object-contain w-24 h-24"
               />
             </div>
             <div className="text-gray-600">
               <p className="mb-3 text-base font-semibold text-primary">
-                {t("footer.certification.companyName", {
+                {ct("footer.certification.companyName", {
                   defaultValue:
                     "Jobs Admire Özel İstihdam Bürosu Sanayi Ve Ticaret Limited Şirket",
                 })}
               </p>
               <p className="text-sm leading-relaxed">
-                {t("footer.certification.description", {
+                {ct("footer.certification.description", {
                   defaultValue:
                     "operates with the permit number 1730 dated 19.09.2024 of the Turkish Employment Agency. According to law number 4904, it is forbidden to charge a fee to job seekers. For your complaints, you can apply to the Istanbul İŞKUR Provincial Directorate Kadıköy Service Center. İşKur Tel: 0216 418 34 55 Eğitim mah. 1.Açıkgöz street. No:3 KADIKÖY/İSTANBUL",
                 })}
@@ -591,12 +557,12 @@ const JobPortalFooter = () => {
         <div className="pt-8 mt-6 border-t border-slate-200">
           <div className="flex flex-col items-center justify-between space-y-4 md:space-y-0 md:flex-row">
             <div className="text-center text-gray-600">
-              {t("footer.copyright.text", {
-                defaultValue: `Copyright © ${new Date().getFullYear()} JOBS ADMİRE ÖZEL İSTİHDAM BÜROSU SANAYİ VE TİCARET LİMİTED ŞİRKETİ`,
+              {ct("footer.copyright.text", {
+                defaultValue: `Copyright © ${new Date().getFullYear()} ${footerCopyright}`,
                 year: new Date().getFullYear(),
               })}{" "}
               <b>
-                {t("footer.copyright.taxNo", {
+                {ct("footer.copyright.taxNo", {
                   defaultValue: "Tax No: 48422122",
                 })}
               </b>
@@ -606,19 +572,19 @@ const JobPortalFooter = () => {
                 href="/privacy"
                 className="text-sm text-gray-600 hover:text-indigo-900"
               >
-                {t("footer.legal.privacy", { defaultValue: "Privacy Policy" })}
+                {ct("footer.legal.privacy", { defaultValue: "Privacy Policy" })}
               </a>
               <a
                 href="/terms"
                 className="text-sm text-gray-600 hover:text-indigo-900"
               >
-                {t("footer.legal.terms", { defaultValue: "Terms of Service" })}
+                {ct("footer.legal.terms", { defaultValue: "Terms of Service" })}
               </a>
               <a
                 href=""
                 className="text-sm text-gray-600 hover:text-indigo-900"
               >
-                {t("footer.legal.cookies", { defaultValue: "Cookie Settings" })}
+                {ct("footer.legal.cookies", { defaultValue: "Cookie Settings" })}
               </a>
             </div>
           </div>

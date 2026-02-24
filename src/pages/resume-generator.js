@@ -14,10 +14,16 @@ export const getStaticProps = async ({ locale }) => {
   const {
     serverSideTranslations,
   } = require("next-i18next/serverSideTranslations");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const cmsPageContent = await getPageAndLayoutContent("services/resume-generator", locale);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common", "resume-generator"])),
+      cmsPageContent,
     },
+    revalidate: 60,
   };
 };
 

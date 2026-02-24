@@ -1,9 +1,26 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useTranslation } from 'next-i18next';
 import { ChevronLeft, ChevronRight, Play, Pause, ExternalLink, Star, Users, Award, Globe } from 'lucide-react';
+import { useCms } from '@/lib/context/CmsContext';
+
+const ICON_MAP = {
+  Globe: <Globe className="w-6 h-6" />,
+  Award: <Award className="w-6 h-6" />,
+  Star: <Star className="w-6 h-6" />,
+  Users: <Users className="w-6 h-6" />,
+};
+
+const COUNTRY_IMAGES = {
+  canada: "https://images.unsplash.com/photo-1503756234508-e32369269deb?w=800&h=600&fit=crop",
+  "united-kingdom": "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&h=600&fit=crop",
+  "united-states": "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=800&h=600&fit=crop",
+  australia: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
+  turkey: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&h=600&fit=crop",
+};
 
 const PremiumImmigrationCarousel = () => {
   const { t } = useTranslation('common');
+  const { destinations: cmsDestinations } = useCms();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isHovered, setIsHovered] = useState(false);
@@ -11,84 +28,40 @@ const PremiumImmigrationCarousel = () => {
   const [touchEnd, setTouchEnd] = useState(0);
   const intervalRef = useRef(null);
 
-  // Premium immigration services data with translations
-  const immigrationServices = [
-    {
-      id: 1,
-      titleKey: 'immigrationCarousel.services.canada.title',
-      subtitleKey: 'immigrationCarousel.services.canada.subtitle',
-      descriptionKey: 'immigrationCarousel.services.canada.description',
-      image: "https://images.unsplash.com/photo-1503756234508-e32369269deb?w=800&h=600&fit=crop",
-      categoryKey: 'immigrationCarousel.services.canada.category',
-      rating: 4.9,
-      clients: "25,000+",
-      icon: <Globe className="w-6 h-6" />,
-      gradient: "from-sky-400 via-sky-500 to-blue-500",
-      glowColor: "sky-500/40",
-      link: "https://www.jobsadmire.com/immigration/immigrate-to-canada",
-      buttonTextKey: 'immigrationCarousel.services.canada.buttonText'
-    },
-    {
-      id: 2,
-      titleKey: 'immigrationCarousel.services.uk.title',
-      subtitleKey: 'immigrationCarousel.services.uk.subtitle',
-      descriptionKey: 'immigrationCarousel.services.uk.description',
-      image: "https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?w=800&h=600&fit=crop",
-      categoryKey: 'immigrationCarousel.services.uk.category',
-      rating: 4.8,
-      clients: "18,000+",
-      icon: <Award className="w-6 h-6" />,
-      gradient: "from-blue-400 via-sky-500 to-cyan-500",
-      glowColor: "blue-500/40",
-      link: "https://www.jobsadmire.com/immigration/immigrate-to-uk",
-      buttonTextKey: 'immigrationCarousel.services.uk.buttonText'
-    },
-    {
-      id: 3,
-      titleKey: 'immigrationCarousel.services.usa.title',
-      subtitleKey: 'immigrationCarousel.services.usa.subtitle',
-      descriptionKey: 'immigrationCarousel.services.usa.description',
-      image: "https://images.unsplash.com/photo-1485738422979-f5c462d49f74?w=800&h=600&fit=crop",
-      categoryKey: 'immigrationCarousel.services.usa.category',
-      rating: 4.9,
-      clients: "30,000+",
-      icon: <Star className="w-6 h-6" />,
-      gradient: "from-sky-500 via-blue-500 to-sky-600",
-      glowColor: "sky-500/40",
-      link: "https://www.jobsadmire.com/immigration/immigrate-to-usa",
-      buttonTextKey: 'immigrationCarousel.services.usa.buttonText'
-    },
-    {
-      id: 4,
-      titleKey: 'immigrationCarousel.services.australia.title',
-      subtitleKey: 'immigrationCarousel.services.australia.subtitle',
-      descriptionKey: 'immigrationCarousel.services.australia.description',
-      image: "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&h=600&fit=crop",
-      categoryKey: 'immigrationCarousel.services.australia.category',
-      rating: 4.7,
-      clients: "22,000+",
-      icon: <Users className="w-6 h-6" />,
-      gradient: "from-cyan-400 via-sky-400 to-blue-500",
-      glowColor: "cyan-500/40",
-      link: "https://www.jobsadmire.com/immigration/immigrate-to-australia",
-      buttonTextKey: 'immigrationCarousel.services.australia.buttonText'
-    },
-    {
-      id: 5,
-      titleKey: 'immigrationCarousel.services.turkey.title',
-      subtitleKey: 'immigrationCarousel.services.turkey.subtitle',
-      descriptionKey: 'immigrationCarousel.services.turkey.description',
-      image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?w=800&h=600&fit=crop",
-      categoryKey: 'immigrationCarousel.services.turkey.category',
-      rating: 4.8,
-      clients: "15,000+",
-      icon: <Globe className="w-6 h-6" />,
-      gradient: "from-sky-300 via-sky-400 to-blue-400",
-      glowColor: "sky-400/40",
-      link: "https://www.jobsadmire.com/immigration/immigrate-to-turkey",
-      buttonTextKey: 'immigrationCarousel.services.turkey.buttonText'
-    }
+  const buildFromCms = () => {
+    if (!cmsDestinations?.length) return null;
+    return cmsDestinations
+      .filter((d) => d.visible !== false)
+      .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+      .map((dest) => {
+        const content = dest.contents?.[0] || {};
+        return {
+          id: dest.id,
+          title: content.title || dest.slug,
+          subtitle: content.subtitle || "",
+          description: content.description || "",
+          image: dest.image?.url || COUNTRY_IMAGES[dest.slug] || COUNTRY_IMAGES.canada,
+          category: content.title || "",
+          rating: dest.rating ?? 4.8,
+          clients: dest.clientCount || "",
+          icon: ICON_MAP[dest.slug] || <Globe className="w-6 h-6" />,
+          gradient: dest.gradient || "from-sky-400 via-sky-500 to-blue-500",
+          glowColor: "sky-500/40",
+          link: dest.link || `/immigration/immigrate-to-${dest.slug}`,
+          buttonText: t('immigrationCarousel.common.learnMore', { defaultValue: 'Learn More' }),
+        };
+      });
+  };
+
+  const fallbackServices = [
+    { id: 1, title: t('immigrationCarousel.services.canada.title', { defaultValue: 'Canada' }), subtitle: t('immigrationCarousel.services.canada.subtitle', { defaultValue: '' }), description: t('immigrationCarousel.services.canada.description', { defaultValue: '' }), image: COUNTRY_IMAGES.canada, category: t('immigrationCarousel.services.canada.category', { defaultValue: '' }), rating: 4.9, clients: "25,000+", icon: <Globe className="w-6 h-6" />, gradient: "from-sky-400 via-sky-500 to-blue-500", glowColor: "sky-500/40", link: "/immigration/immigrate-to-canada", buttonText: t('immigrationCarousel.services.canada.buttonText', { defaultValue: 'Learn More' }) },
+    { id: 2, title: t('immigrationCarousel.services.uk.title', { defaultValue: 'United Kingdom' }), subtitle: t('immigrationCarousel.services.uk.subtitle', { defaultValue: '' }), description: t('immigrationCarousel.services.uk.description', { defaultValue: '' }), image: COUNTRY_IMAGES["united-kingdom"], category: t('immigrationCarousel.services.uk.category', { defaultValue: '' }), rating: 4.8, clients: "18,000+", icon: <Award className="w-6 h-6" />, gradient: "from-blue-400 via-sky-500 to-cyan-500", glowColor: "blue-500/40", link: "/immigration/immigrate-to-uk", buttonText: t('immigrationCarousel.services.uk.buttonText', { defaultValue: 'Learn More' }) },
+    { id: 3, title: t('immigrationCarousel.services.usa.title', { defaultValue: 'United States' }), subtitle: t('immigrationCarousel.services.usa.subtitle', { defaultValue: '' }), description: t('immigrationCarousel.services.usa.description', { defaultValue: '' }), image: COUNTRY_IMAGES["united-states"], category: t('immigrationCarousel.services.usa.category', { defaultValue: '' }), rating: 4.9, clients: "30,000+", icon: <Star className="w-6 h-6" />, gradient: "from-sky-500 via-blue-500 to-sky-600", glowColor: "sky-500/40", link: "/immigration/immigrate-to-usa", buttonText: t('immigrationCarousel.services.usa.buttonText', { defaultValue: 'Learn More' }) },
+    { id: 4, title: t('immigrationCarousel.services.australia.title', { defaultValue: 'Australia' }), subtitle: t('immigrationCarousel.services.australia.subtitle', { defaultValue: '' }), description: t('immigrationCarousel.services.australia.description', { defaultValue: '' }), image: COUNTRY_IMAGES.australia, category: t('immigrationCarousel.services.australia.category', { defaultValue: '' }), rating: 4.7, clients: "22,000+", icon: <Users className="w-6 h-6" />, gradient: "from-cyan-400 via-sky-400 to-blue-500", glowColor: "cyan-500/40", link: "/immigration/immigrate-to-australia", buttonText: t('immigrationCarousel.services.australia.buttonText', { defaultValue: 'Learn More' }) },
+    { id: 5, title: t('immigrationCarousel.services.turkey.title', { defaultValue: 'Turkey' }), subtitle: t('immigrationCarousel.services.turkey.subtitle', { defaultValue: '' }), description: t('immigrationCarousel.services.turkey.description', { defaultValue: '' }), image: COUNTRY_IMAGES.turkey, category: t('immigrationCarousel.services.turkey.category', { defaultValue: '' }), rating: 4.8, clients: "15,000+", icon: <Globe className="w-6 h-6" />, gradient: "from-sky-300 via-sky-400 to-blue-400", glowColor: "sky-400/40", link: "/immigration/immigrate-to-turkey", buttonText: t('immigrationCarousel.services.turkey.buttonText', { defaultValue: 'Learn More' }) },
   ];
+
+  const immigrationServices = buildFromCms() || fallbackServices;
 
   const totalSlides = immigrationServices.length;
 
@@ -262,7 +235,7 @@ const PremiumImmigrationCarousel = () => {
                   <div className="relative h-64 overflow-hidden">
                     <img 
                       src={service.image} 
-                      alt={t(service.titleKey, { defaultValue: 'Immigration Service' })}
+                      alt={service.title}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     <div className={`absolute inset-0 bg-gradient-to-t ${service.gradient} opacity-60`}></div>
@@ -270,7 +243,7 @@ const PremiumImmigrationCarousel = () => {
                     {/* Enhanced category badge */}
                     <div className="absolute top-4 left-4">
                       <span className="px-3 py-1 bg-white/90 backdrop-blur-md border border-sky-200 rounded-full text-slate-700 text-sm font-medium shadow-lg">
-                        {t(service.categoryKey, { defaultValue: 'Immigration Service' })}
+                        {service.category}
                       </span>
                     </div>
 
@@ -289,18 +262,16 @@ const PremiumImmigrationCarousel = () => {
                       </div>
                       <div>
                         <h3 className="text-2xl font-bold text-slate-800">
-                          {t(service.titleKey, { defaultValue: 'Immigration Service' })}
+                          {service.title}
                         </h3>
                         <p className="text-slate-600 text-sm">
-                          {t(service.subtitleKey, { defaultValue: 'Professional immigration assistance' })}
+                          {service.subtitle}
                         </p>
                       </div>
                     </div>
 
                     <p className="text-slate-700 text-base leading-relaxed mb-6">
-                      {t(service.descriptionKey, { 
-                        defaultValue: 'Professional immigration services to help you achieve your goals.' 
-                      })}
+                      {service.description}
                     </p>
 
                     <div className="flex items-center justify-between mb-6">
@@ -319,7 +290,7 @@ const PremiumImmigrationCarousel = () => {
                       className={`w-full bg-gradient-to-r ${service.gradient} text-white font-bold py-4 px-6 rounded-xl hover:shadow-2xl hover:shadow-${service.glowColor} transition-all duration-300 flex items-center justify-center space-x-2 group-hover:scale-105 shadow-lg text-lg`}
                       onClick={() => window.open(service.link, '_blank')}
                     >
-                      <span>{t(service.buttonTextKey, { defaultValue: 'Learn More' })}</span>
+                      <span>{service.buttonText}</span>
                       <ExternalLink className="w-5 h-5" />
                     </button>
                   </div>

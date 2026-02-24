@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 
 const ProfessionalResumeTemplate2 = ({ userData }) => {
   const { t } = useTranslation("resume-generator");
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const [profileImage, setProfileImage] = useState(null);
   
   // Handle both prop data and localStorage data
@@ -78,7 +81,7 @@ const ProfessionalResumeTemplate2 = ({ userData }) => {
   // Helper function to render array data
   const renderArrayData = (dataArray, renderItem) => {
     if (!dataArray || !Array.isArray(dataArray) || dataArray.length === 0) {
-      return <p className="text-sm text-gray-500 italic">{t("fallbacks.noDataAvailable")}</p>;
+      return <p className="text-sm text-gray-500 italic">{ct("fallbacks.noDataAvailable")}</p>;
     }
     return dataArray.map((item, index) => renderItem(item, index));
   };
@@ -102,7 +105,7 @@ const ProfessionalResumeTemplate2 = ({ userData }) => {
                 {profileImage ? (
                   <img
                     src={profileImage}
-                    alt={t("alts.profileAlt")}
+                    alt={ct("alts.profileAlt")}
                     className="object-cover w-full h-full"
                   />
                 ) : (
@@ -167,24 +170,24 @@ const ProfessionalResumeTemplate2 = ({ userData }) => {
           {/* About Me */}
           <div className="mb-8">
             <h3 className="text-lg font-bold text-slate-800 mb-4 pb-2 border-b-2 border-slate-600 uppercase tracking-wide">
-              {t("sections.aboutMe")}
+              {ct("sections.aboutMe")}
             </h3>
             <p className="text-sm text-slate-700 leading-relaxed">
-              {safeGet(resumeData.personal_data, 'summary', t('fallbacks.noSummaryAvailable'))}
+              {safeGet(resumeData.personal_data, 'summary', ct('fallbacks.noSummaryAvailable'))}
             </p>
           </div>
 
           {/* Skills */}
           <div className="mb-8">
             <h3 className="text-lg font-bold text-slate-800 mb-4 pb-2 border-b-2 border-slate-600 uppercase tracking-wide">
-              {t("sections.skills")}
+              {ct("sections.skills")}
             </h3>
             <div className="space-y-3">
               {renderArrayData(resumeData.skill_data, (skill, index) => (
                 <div key={index} className="bg-white rounded-lg p-3 shadow-sm border-l-4 border-slate-600">
                   <div className="flex justify-between items-center">
                     <span className="font-medium text-slate-800">
-                      {typeof skill === 'string' ? skill : safeGet(skill, 'name', t('fallbacks.unnamedSkill'))}
+                      {typeof skill === 'string' ? skill : safeGet(skill, 'name', ct('fallbacks.unnamedSkill'))}
                     </span>
                   </div>
                 </div>
@@ -196,7 +199,7 @@ const ProfessionalResumeTemplate2 = ({ userData }) => {
           {resumeData.achievements_data && resumeData.achievements_data.length > 0 && (
             <div className="mb-8">
               <h3 className="text-lg font-bold text-slate-800 mb-4 pb-2 border-b-2 border-slate-600 uppercase tracking-wide">
-                {t("sections.achievements")}
+                {ct("sections.achievements")}
               </h3>
               <div className="space-y-4">
                 {renderArrayData(resumeData.achievements_data, (achievement, index) => (
@@ -218,7 +221,7 @@ const ProfessionalResumeTemplate2 = ({ userData }) => {
           {resumeData.project_data && resumeData.project_data.length > 0 && (
             <div>
               <h3 className="text-lg font-bold text-slate-800 mb-4 pb-2 border-b-2 border-slate-600 uppercase tracking-wide">
-                {t("sections.projects")}
+                {ct("sections.projects")}
               </h3>
               <div className="space-y-4">
                 {renderArrayData(resumeData.project_data, (project, index) => (
@@ -242,7 +245,7 @@ const ProfessionalResumeTemplate2 = ({ userData }) => {
           {/* Experience */}
           <div className="mb-8">
             <h3 className="text-2xl font-bold text-slate-800 mb-6 pb-3 border-b-2 border-slate-300 uppercase tracking-wide">
-              {t("sections.workExperience")}
+              {ct("sections.workExperience")}
             </h3>
             <div className="space-y-6">
               {renderArrayData(resumeData.experience_data, (experience, index) => (
@@ -277,7 +280,7 @@ const ProfessionalResumeTemplate2 = ({ userData }) => {
           {/* Education */}
           <div>
             <h3 className="text-2xl font-bold text-slate-800 mb-6 pb-3 border-b-2 border-slate-300 uppercase tracking-wide">
-              {t("sections.education")}
+              {ct("sections.education")}
             </h3>
             <div className="space-y-6">
               {renderArrayData(resumeData.education_data, (education, index) => (

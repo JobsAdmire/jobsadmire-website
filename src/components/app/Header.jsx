@@ -26,6 +26,8 @@ import {
   LINKEDIN_URL,
 } from "@/lib/constants/app";
 import { env } from "@/lib/constants/env";
+import { useCms } from "@/lib/context/CmsContext";
+import { useCmsContent } from "@/lib/context/CmsContentContext";
 
 const SERVICE_PATH_PREFIXES = ["/services", "/immigration"];
 const SERVICE_EXACT_MATCHES = [
@@ -88,7 +90,12 @@ const isServicesPath = (path) => {
 
 const Navbar = () => {
   const { t } = useTranslation("common");
+  const { c } = useCmsContent();
+  const ct = useCallback((key, options) => c(key) || t(key, options), [c, t]);
   const router = useRouter();
+  const { settings, nav } = useCms();
+  const headerLogoUrl = settings?.header?.header_logo_url || '/logos/logo4.png';
+  const headerLogoAlt = settings?.header?.header_logo_alt || ct("labels.general.jobsAdmireLogo");
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [megaMenuOpen, setMegaMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
@@ -171,6 +178,63 @@ const Navbar = () => {
     setActiveItem(itemName);
   };
 
+  const cmsHeaderItems = (() => {
+    if (!nav?.header?.items?.length) return null;
+    return nav.header.items
+      .filter((item) => item.visible !== false)
+      .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+      .map((item) => ({
+        label: item.contents?.[0]?.label || "",
+        url: item.contents?.[0]?.url || "#",
+      }));
+  })();
+
+  const cmsServicesMegaItems = (() => {
+    if (!nav?.servicesMega?.items?.length) return null;
+    return nav.servicesMega.items
+      .filter((item) => item.visible !== false)
+      .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+      .map((item) => ({
+        label: item.contents?.[0]?.label || "",
+        url: item.contents?.[0]?.url || "#",
+        description: item.contents?.[0]?.description || "",
+      }));
+  })();
+
+  const cmsPartnerItems = (() => {
+    if (!nav?.partner?.items?.length) return null;
+    return nav.partner.items
+      .filter((item) => item.visible !== false)
+      .sort((a, b) => (a.sortOrder ?? 0) - (b.sortOrder ?? 0))
+      .map((item) => ({
+        label: item.contents?.[0]?.label || "",
+        url: item.contents?.[0]?.url || "#",
+      }));
+  })();
+
+  const fallbackHeaderItems = [
+    { label: ct("navbar.about", { defaultValue: "About Us" }), url: "/about" },
+    { label: ct("navbar.jobs", { defaultValue: "Available Jobs" }), url: "/job" },
+    { label: ct("navbar.resumeGenerator", { defaultValue: "Resume Generator" }), url: "/resume-generator" },
+  ];
+
+  const fallbackServicesMegaItems = [
+    { label: ct("navbar.megaMenu.immigration.items.hireWorkers.title", { defaultValue: "Hire Workers" }), url: "/hire-workers-in-turkey", description: ct("navbar.megaMenu.immigration.items.hireWorkers.description", { defaultValue: "Workforce Recruitment Solutions" }) },
+    { label: ct("navbar.megaMenu.immigration.title", { defaultValue: "Turkish Residence Permit" }), url: "/immigration/turkey-residence-permit", description: ct("navbar.megaMenu.immigration.items.turkey.description", { defaultValue: "Get your residence permit" }) },
+    { label: ct("navbar.megaMenu.immigration.items.workPermit.title", { defaultValue: "Work Permit" }), url: "/work-permit", description: ct("navbar.megaMenu.immigration.items.workPermit.description", { defaultValue: "Get your work permit" }) },
+    { label: ct("navbar.megaMenu.immigration.items.citizenship.title", { defaultValue: "Turkish Citizenship" }), url: "/turkey-citizenship", description: ct("navbar.megaMenu.immigration.items.citizenship.description", { defaultValue: "Turkey Citizenship Service" }) },
+    { label: ct("navbar.megaMenu.immigration.items.visaInvitations.title", { defaultValue: "Visa Invitations" }), url: "/visa-e-invitations", description: ct("navbar.megaMenu.immigration.items.visaInvitations.description", { defaultValue: "Visa Services" }) },
+  ];
+
+  const fallbackPartnerItems = [
+    { label: ct("navbar.recruitmentAgency", { defaultValue: "Recruitment Agency" }), url: "/partner/recruiter-agency", icon: <Users size={14} className="mr-2" /> },
+    { label: ct("navbar.jobProvider", { defaultValue: "Job Provider" }), url: "/partner/job-provider", icon: <Briefcase size={14} className="mr-2" /> },
+  ];
+
+  const headerNavItems = cmsHeaderItems || fallbackHeaderItems;
+  const servicesMegaItems = cmsServicesMegaItems || fallbackServicesMegaItems;
+  const partnerItems = cmsPartnerItems || fallbackPartnerItems;
+
   return (
     <>
       {/* Main Navbar */}
@@ -197,7 +261,7 @@ const Navbar = () => {
                   >
                     <PhoneCall size={14} className="mr-1.5 flex-shrink-0" />
                     <span>
-                      {t("navbar.candidateHRCompanies", {
+                      {ct("navbar.candidateHRCompanies", {
                         defaultValue: "Candidate & HR Companies",
                       })}{" "}
                       +90 501 124 03 40
@@ -210,7 +274,7 @@ const Navbar = () => {
                   >
                     <PhoneCall size={14} className="mr-1.5 flex-shrink-0" />
                     <span>
-                      {t("navbar.jobProvider", {
+                      {ct("navbar.jobProvider", {
                         defaultValue: "Job Provider",
                       })}
                       : +90 553 383 2549
@@ -229,7 +293,7 @@ const Navbar = () => {
                 <div className="flex items-center text-sm whitespace-nowrap text-white/90">
                   <MapPin size={14} className="mr-1.5 flex-shrink-0" />
                   <span>
-                    {t("navbar.location", { defaultValue: "Antalya, Turkey" })}
+                    {ct("navbar.location", { defaultValue: "Antalya, Turkey" })}
                   </span>
                 </div>
               </div>
@@ -259,7 +323,7 @@ const Navbar = () => {
                   onClick={() => handleNavClick("blog")}
                 >
                   <PenTool size={14} className="mr-1.5 flex-shrink-0" />
-                  {t("navbar.blog", { defaultValue: "Blog" })}
+                  {ct("navbar.blog", { defaultValue: "Blog" })}
                 </a>
 
                 <a
@@ -268,7 +332,7 @@ const Navbar = () => {
                   onClick={() => handleNavClick("contact")}
                 >
                   <Mail size={14} className="mr-1.5 flex-shrink-0" />
-                  {t("navbar.contact", { defaultValue: "Contact" })}
+                  {ct("navbar.contact", { defaultValue: "Contact" })}
                 </a>
 
                 <a
@@ -276,7 +340,7 @@ const Navbar = () => {
                   className="flex items-center px-3 py-1.5 text-sm font-medium text-sky-500 transition-all duration-300 rounded-md whitespace-nowrap bg-white hover:scale-105 shadow-md"
                   onClick={() => handleNavClick("login")}
                 >
-                  {t("navbar.login", { defaultValue: "Login" })}
+                  {ct("navbar.login", { defaultValue: "Login" })}
                 </a>
 
                 <div className="w-px h-5 mx-1 bg-white/20"></div>
@@ -294,7 +358,7 @@ const Navbar = () => {
                 >
                   <PhoneCall size={12} className="mr-1 flex-shrink-0" />
                   <span className="font-medium">
-                    {t("navbar.candidateHRCompanies", {
+                    {ct("navbar.candidateHRCompanies", {
                       defaultValue: "Candidate & HR Companies",
                     })}
                     :
@@ -307,7 +371,7 @@ const Navbar = () => {
                 >
                   <PhoneCall size={12} className="mr-1 flex-shrink-0" />
                   <span className="font-medium">
-                    {t("navbar.jobProvider", { defaultValue: "Job Provider" })}:
+                    {ct("navbar.jobProvider", { defaultValue: "Job Provider" })}:
                   </span>
                   <span className="ml-1">+90 553 383 2549</span>
                 </a>
@@ -383,7 +447,7 @@ const Navbar = () => {
                   <span className="flex items-center">
                     <PhoneCall size={12} className="mr-1 flex-shrink-0" />
                     <span className="font-medium">
-                      {t("navbar.candidateHRCompanies", {
+                      {ct("navbar.candidateHRCompanies", {
                         defaultValue: "Candidate & HR Companies",
                       })}
                       :
@@ -399,7 +463,7 @@ const Navbar = () => {
                   <span className="flex items-center">
                     <PhoneCall size={12} className="mr-1 flex-shrink-0" />
                     <span className="font-medium">
-                      {t("navbar.jobProvider", {
+                      {ct("navbar.jobProvider", {
                         defaultValue: "Job Provider",
                       })}
                       :
@@ -427,7 +491,7 @@ const Navbar = () => {
                   >
                     <PenTool size={11} className="mr-1 flex-shrink-0" />
                     <span className="ml-0">
-                      {t("navbar.blog", { defaultValue: "Blog" })}
+                      {ct("navbar.blog", { defaultValue: "Blog" })}
                     </span>
                   </a>
 
@@ -438,7 +502,7 @@ const Navbar = () => {
                   >
                     <Mail size={11} className="mr-1 flex-shrink-0" />
                     <span className="ml-0">
-                      {t("navbar.contact", { defaultValue: "Contact" })}
+                      {ct("navbar.contact", { defaultValue: "Contact" })}
                     </span>
                   </a>
 
@@ -477,8 +541,8 @@ const Navbar = () => {
             <div className="flex-shrink-0">
               <a href="/" className="block">
                 <img
-                  src="/logos/logo4.png"
-                  alt={t("labels.general.jobsAdmireLogo")}
+                  src={headerLogoUrl}
+                  alt={headerLogoAlt}
                   className={`transition-all duration-300 ${
                     scrolled ? "h-8 lg:h-10" : "h-9 lg:h-10"
                   }`}
@@ -488,12 +552,14 @@ const Navbar = () => {
 
             {/* Desktop Menu Items - Better spacing */}
             <div className="items-center hidden space-x-6 lg:flex">
-              <NavItem
-                href="/about"
-                text={t("navbar.about", { defaultValue: "About Us" })}
-                active={activeItem === "about"}
-                onClick={() => handleNavClick("about")}
-              />
+              {headerNavItems.length > 0 && (
+                <NavItem
+                  href={headerNavItems[0].url}
+                  text={headerNavItems[0].label}
+                  active={activeItem === "about"}
+                  onClick={() => handleNavClick("about")}
+                />
+              )}
 
               {/* Services Dropdown */}
               <div
@@ -513,7 +579,7 @@ const Navbar = () => {
                     toggleMegaMenu(e);
                   }}
                 >
-                  {t("navbar.services", { defaultValue: "Services" })}
+                  {ct("navbar.services", { defaultValue: "Services" })}
                   <ChevronDown
                     size={16}
                     className={`ml-1 transition-transform duration-300 ${megaMenuOpen ? "rotate-180" : ""}`}
@@ -529,135 +595,46 @@ const Navbar = () => {
                     transformOrigin: "top center",
                   }}
                 >
-                  {/* Mega Menu Hero Section */}
                   <div className="flex overflow-hidden text-white rounded-t-lg bg-gradient-to-r from-sky-500 to-sky-600">
-                    {/* <div className="hidden w-1/3 md:block bg-gradient-to-br from-sky-400/20 to-sky-600/20"></div> */}
                   </div>
 
-                  {/* Mega Menu Categories */}
                   <div className=" gap-4 p-6 rounded-b-lg bg-gradient-to-b from-sky-50 to-white">
                     <div>
                       <h3 className="flex items-center pb-2 mb-4 text-lg font-bold border-b text-sky-600 border-sky-100">
                         <Briefcase size={18} className="mr-2" />
-                        {t("navbar.megaMenu.skillServices.title", {
-                          defaultValue: "Skill Services",
+                        {ct("navbar.megaMenu.skillServices.title", {
+                          defaultValue: "Services",
                         })}
                       </h3>
                       <ul className="space-y-3">
-                        <MegaMenuItem
-                          href="/hire-workers-in-turkey"
-                          text={t(
-                            "navbar.megaMenu.immigration.items.hireWorkers.title",
-                            {
-                              defaultValue: "Hire Workers",
-                            }
-                          )}
-                          description={t(
-                            "navbar.megaMenu.immigration.items.hireWorkers.description",
-                            {
-                              defaultValue: "Workforce Recruitment Solutions",
-                            }
-                          )}
-                        />
-                        <MegaMenuItem
-                          href="/immigration/turkey-residence-permit"
-                          text={t("navbar.megaMenu.immigration.title", {
-                            defaultValue: "Turkish Residence Permit",
-                          })}
-                          description={t(
-                            "navbar.megaMenu.immigration.items.turkey.description",
-                            { defaultValue: "Get your residence permit" }
-                          )}
-                        />
-                        <MegaMenuItem
-                          href="/work-permit"
-                          text={t(
-                            "navbar.megaMenu.immigration.items.workPermit.title",
-                            {
-                              defaultValue: "Work Permit",
-                            }
-                          )}
-                          description={t(
-                            "navbar.megaMenu.immigration.items.workPermit.description",
-                            {
-                              defaultValue: "Get your work permit",
-                            }
-                          )}
-                        />
-                        <MegaMenuItem
-                          href="/turkey-citizenship"
-                          text={t(
-                            "navbar.megaMenu.immigration.items.citizenship.title",
-                            {
-                              defaultValue: "Turkish Citizenship",
-                            }
-                          )}
-                          description={t(
-                            "navbar.megaMenu.immigration.items.citizenship.description",
-                            {
-                              defaultValue: "Turkey Citizenship Service",
-                            }
-                          )}
-                        />
-                        <MegaMenuItem
-                          href="/visa-e-invitations"
-                          text={t(
-                            "navbar.megaMenu.immigration.items.visaInvitations.title",
-                            {
-                              defaultValue: "Visa Invitations",
-                            }
-                          )}
-                          description={t(
-                            "navbar.megaMenu.immigration.items.visaInvitations.description",
-                            {
-                              defaultValue: "Visa Services",
-                            }
-                          )}
-                        />
-{/* Disabled: Company Registration page
-                        <MegaMenuItem
-                          href="/register-your-company"
-                          text={t(
-                            "navbar.megaMenu.immigration.items.companyRegistration.title",
-                            {
-                              defaultValue: "Company Registration",
-                            }
-                          )}
-                          description={t(
-                            "navbar.megaMenu.immigration.items.companyRegistration.description",
-                            {
-                              defaultValue: "Register a Company",
-                            }
-                          )}
-                        />
-*/}
+                        {servicesMegaItems.map((item, idx) => (
+                          <MegaMenuItem
+                            key={item.url || idx}
+                            href={item.url}
+                            text={item.label}
+                            description={item.description}
+                          />
+                        ))}
                       </ul>
                     </div>
                   </div>
                 </div>
               </div>
 
-              {/* Jobs Link */}
-              {/* <NavItem
-                href="/visa-e-invitations"
-                text={t('navbar.visa', { defaultValue: 'Visa & Invitation' })}
-                active={activeItem === 'visa'}
-                onClick={() => handleNavClick('visa')}
-              /> */}
-              <NavItem
-                href="/job"
-                text={t("navbar.jobs", { defaultValue: "Available Jobs" })}
-                active={activeItem === "jobs"}
-                onClick={() => handleNavClick("jobs")}
-              />
-              <NavItem
-                href="/resume-generator"
-                text={t("navbar.resumeGenerator", {
-                  defaultValue: "Resume Generator",
-                })}
-                active={activeItem === "resume-generator"}
-                onClick={() => handleNavClick("resume-generator")}
-              />
+              {/* Remaining header nav items (Jobs, Resume Generator, etc.) */}
+              {headerNavItems.slice(1).map((item, idx) => {
+                const itemKey = item.url?.replace(/^\//, "") || `nav-${idx}`;
+                const activeKey = item.url === "/job" ? "jobs" : item.url === "/resume-generator" ? "resume-generator" : itemKey;
+                return (
+                  <NavItem
+                    key={item.url || idx}
+                    href={item.url}
+                    text={item.label}
+                    active={activeItem === activeKey}
+                    onClick={() => handleNavClick(activeKey)}
+                  />
+                );
+              })}
             </div>
 
             {/* Right Section - Better balanced layout */}
@@ -670,7 +647,7 @@ const Navbar = () => {
               >
                 <button className="flex items-center px-4 py-2 text-sm font-medium text-white transition-all duration-300 rounded-md bg-gradient-to-r from-sky-600 to-sky-600 hover:from-sky-600 hover:to-sky-600 hover:scale-105 shadow-md">
                   <UserPlus size={14} className="mr-2" />
-                  {t("navbar.partnerWithUs", {
+                  {ct("navbar.partnerWithUs", {
                     defaultValue: "Partner with Us",
                   })}
                   <ChevronDown
@@ -683,28 +660,16 @@ const Navbar = () => {
                   className={`absolute right-0 bg-white rounded-lg shadow-xl top-full mt-2 w-48 transition-all duration-300 origin-top-right border border-gray-100 z-50 ${partnerDropdownOpen ? "opacity-100 scale-100 visible" : "opacity-0 scale-95 invisible"}`}
                 >
                   <div className="py-2">
-                    <a
-                      href="/partner/recruiter-agency"
-                      className="flex items-center px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-sky-50 hover:text-sky-600"
-                    >
-                      <Users size={14} className="mr-2" />
-                      {t("navbar.recruitmentAgency", {
-                        defaultValue: "Recruitment Agency",
-                      })}
-                    </a>
-                    <a
-                      href="/partner/job-provider"
-                      className="flex items-center px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-sky-50 hover:text-sky-600"
-                    >
-                      <Briefcase size={14} className="mr-2" />
-                      {t("navbar.jobProvider", {
-                        defaultValue: "Job Provider",
-                      })}
-                    </a>
-                    {/* <a href="/partner/register-as-candidate" className="flex items-center px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-sky-50 hover:text-sky-600">
-                      <UserPlus size={14} className="mr-2" />
-                      Candidates
-                    </a> */}
+                    {partnerItems.map((item, idx) => (
+                      <a
+                        key={item.url || idx}
+                        href={item.url}
+                        className="flex items-center px-4 py-2 text-sm text-gray-700 transition-colors hover:bg-sky-50 hover:text-sky-600"
+                      >
+                        {item.icon || (idx === 0 ? <Users size={14} className="mr-2" /> : <Briefcase size={14} className="mr-2" />)}
+                        {item.label}
+                      </a>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -713,7 +678,7 @@ const Navbar = () => {
               <button
                 onClick={toggleSearch}
                 className="hidden p-2 transition-colors duration-300 rounded-full lg:block hover:bg-sky-100 text-sky-500"
-                aria-label={t("navbar.search", { defaultValue: "Search" })}
+                aria-label={ct("navbar.search", { defaultValue: "Search" })}
               >
                 <Search size={20} />
               </button>
@@ -728,7 +693,7 @@ const Navbar = () => {
                 <button
                   onClick={toggleSearch}
                   className="p-1.5 transition-colors duration-300 rounded-full hover:bg-sky-100 text-sky-500"
-                  aria-label={t("navbar.search", { defaultValue: "Search" })}
+                  aria-label={ct("navbar.search", { defaultValue: "Search" })}
                 >
                   <Search size={18} />
                 </button>
@@ -737,7 +702,7 @@ const Navbar = () => {
                 <button
                   onClick={toggleMenu}
                   className="p-2 transition-colors duration-300 rounded-full hover:bg-sky-100 text-sky-600 bg-sky-50"
-                  aria-label={t("navbar.toggleMenu", {
+                  aria-label={ct("navbar.toggleMenu", {
                     defaultValue: "Toggle Menu",
                   })}
                 >
@@ -766,28 +731,28 @@ const Navbar = () => {
             <button
               onClick={toggleSearch}
               className="absolute p-2 text-gray-500 rounded-full right-4 top-4 hover:text-gray-700 hover:bg-gray-100"
-              aria-label={t("navbar.closeSearch", {
+              aria-label={ct("navbar.closeSearch", {
                 defaultValue: "Close Search",
               })}
             >
               <X size={24} />
             </button>
             <h3 className="mb-4 text-2xl font-semibold text-gray-800">
-              {t("navbar.searchTitle", {
+              {ct("navbar.searchTitle", {
                 defaultValue: "Search Jobs & Services",
               })}
             </h3>
             <div className="flex max-w-2xl">
               <input
                 type="text"
-                placeholder={t("navbar.searchPlaceholder", {
+                placeholder={ct("navbar.searchPlaceholder", {
                   defaultValue: "Search for jobs, services...",
                 })}
                 className="flex-1 px-4 py-3 border-2 rounded-l-lg border-sky-200 focus:outline-none focus:ring-2 focus:ring-sky-500 focus:border-transparent"
                 autoFocus
               />
               <button className="px-6 py-3 text-white transition-colors rounded-r-lg bg-sky-500 hover:bg-sky-600">
-                {t("navbar.searchButton", { defaultValue: "Search" })}
+                {ct("navbar.searchButton", { defaultValue: "Search" })}
               </button>
             </div>
           </div>
@@ -805,7 +770,7 @@ const Navbar = () => {
           <button
             onClick={toggleMenu}
             className="absolute z-50 p-3 bg-white rounded-full shadow-lg top-4 right-4 text-sky-500 hover:bg-sky-50"
-            aria-label={t("navbar.closeMenu", { defaultValue: "Close Menu" })}
+            aria-label={ct("navbar.closeMenu", { defaultValue: "Close Menu" })}
           >
             <X size={24} />
           </button>
@@ -813,23 +778,25 @@ const Navbar = () => {
           {/* Mobile Logo */}
           <div className="absolute top-4 left-4">
             <img
-              src="/logos/logo4.png"
-              alt={t("labels.general.jobsAdmireLogo")}
+              src={headerLogoUrl}
+              alt={headerLogoAlt}
               className="h-10"
             />
           </div>
 
           {/* Mobile Navigation Items */}
           <div className="mt-6 space-y-1">
-            <MobileNavItem
-              href="/about"
-              text={t("navbar.about", { defaultValue: "About Us" })}
-              active={activeItem === "about"}
-              onClick={() => {
-                handleNavClick("about");
-                closeMenus();
-              }}
-            />
+            {headerNavItems.length > 0 && (
+              <MobileNavItem
+                href={headerNavItems[0].url}
+                text={headerNavItems[0].label}
+                active={activeItem === "about"}
+                onClick={() => {
+                  handleNavClick("about");
+                  closeMenus();
+                }}
+              />
+            )}
 
             {/* Services Section */}
             <div className="border-b border-gray-100">
@@ -840,7 +807,7 @@ const Navbar = () => {
                 <span
                   className={`text-lg ${activeItem === "services" ? "font-semibold text-sky-500" : "text-gray-700"}`}
                 >
-                  {t("navbar.services", { defaultValue: "Services" })}
+                  {ct("navbar.services", { defaultValue: "Services" })}
                 </span>
                 <ChevronDown
                   size={20}
@@ -853,84 +820,37 @@ const Navbar = () => {
                 className={`overflow-hidden transition-all duration-500 ${megaMenuOpen ? "max-h-screen pb-4" : "max-h-0"}`}
               >
                 <div className="pl-4 space-y-6">
-                  {/* Skill Services - Matching Desktop */}
                   <div>
                     <ul className="pl-6 space-y-3">
-                      <MobileSubMenuItem
-                        href="/hire-workers-in-turkey"
-                        text={t(
-                          "navbar.megaMenu.immigration.items.hireWorkers.title",
-                          {
-                            defaultValue: "Hire Workers",
-                          }
-                        )}
-                      />
-                      <MobileSubMenuItem
-                        href="/visa-e-invitations"
-                        text={t(
-                          "navbar.megaMenu.immigration.items.visaInvitations.title",
-                          {
-                            defaultValue: "Visa Invitations",
-                          }
-                        )}
-                      />
-                      <MobileSubMenuItem
-                        href="/work-permit"
-                        text={t(
-                          "navbar.megaMenu.immigration.items.workPermit.title",
-                          {
-                            defaultValue: "Turkish Work Permit",
-                          }
-                        )}
-                      />
-                      <MobileSubMenuItem
-                        href="/immigration/turkey-residence-permit"
-                        text={t("navbar.megaMenu.immigration.title", {
-                          defaultValue: "Turkish Residence Permit",
-                        })}
-                      />
-                      <MobileSubMenuItem
-                        href="/turkey-citizenship"
-                        text={t(
-                          "navbar.megaMenu.immigration.items.citizenship.title",
-                          {
-                            defaultValue: "Turkish Citizenship",
-                          }
-                        )}
-                      />
-{/* Disabled: Company Registration page
-                      <MobileSubMenuItem
-                        href="/register-your-company"
-                        text={t(
-                          "navbar.megaMenu.immigration.items.companyRegistration.title",
-                          {
-                            defaultValue: "Company Registration",
-                          }
-                        )}
-                      />
-*/}
-                      <MobileSubMenuItem
-                        href="/resume-generator"
-                        text={t("navbar.cv", {
-                          defaultValue: "Resume Generator",
-                        })}
-                      />
+                      {servicesMegaItems.map((item, idx) => (
+                        <MobileSubMenuItem
+                          key={item.url || idx}
+                          href={item.url}
+                          text={item.label}
+                        />
+                      ))}
                     </ul>
                   </div>
                 </div>
               </div>
             </div>
 
-            {/* Jobs Link */}
-            <MobileNavItem
-              href="/job"
-              text={t("navbar.jobs", { defaultValue: "Available Jobs" })}
-              active={activeItem === "jobs"}
-              onClick={() => {
-                handleNavClick("jobs");
-                setIsMenuOpen(false);
-              }}
-            />
+            {/* Remaining nav items (Jobs, Resume Generator, etc.) */}
+            {headerNavItems.slice(1).map((item, idx) => {
+              const itemKey = item.url === "/job" ? "jobs" : item.url?.replace(/^\//, "") || `mob-${idx}`;
+              return (
+                <MobileNavItem
+                  key={item.url || idx}
+                  href={item.url}
+                  text={item.label}
+                  active={activeItem === itemKey}
+                  onClick={() => {
+                    handleNavClick(itemKey);
+                    setIsMenuOpen(false);
+                  }}
+                />
+              );
+            })}
           </div>
 
           {/* Partner with Us - Mobile */}
@@ -942,7 +862,7 @@ const Navbar = () => {
               onClick={() => setPartnerDropdownOpen(!partnerDropdownOpen)}
             >
               <span className="text-lg font-medium text-gray-700">
-                {t("navbar.partnerWithUs", { defaultValue: "Partner with Us" })}
+                {ct("navbar.partnerWithUs", { defaultValue: "Partner with Us" })}
               </span>
               <ChevronDown
                 size={20}
@@ -954,28 +874,16 @@ const Navbar = () => {
               className={`overflow-hidden transition-all duration-500 ${partnerDropdownOpen ? "max-h-screen pb-4" : "max-h-0"}`}
             >
               <div className="pl-4 space-y-3">
-                <a
-                  href="/partner/recruiter-agency"
-                  className="flex items-center py-2 text-gray-600 transition-colors hover:text-sky-500"
-                >
-                  <Users size={16} className="mr-3" />
-                  {t("navbar.recruitmentAgency", {
-                    defaultValue: "Recruitment Agency",
-                  })}
-                </a>
-
-                <a
-                  href="/partner/job-provider"
-                  className="flex items-center py-2 text-gray-600 transition-colors hover:text-sky-500"
-                >
-                  <Briefcase size={16} className="mr-3" />
-                  {t("navbar.jobProvider", { defaultValue: "Job Provider" })}
-                </a>
-
-                {/* <a href="/partner/register-as-candidate" className="flex items-center py-2 text-gray-600 transition-colors hover:text-sky-500">
-        <UserPlus size={16} className="mr-3" />
-        Candidates
-      </a> */}
+                {partnerItems.map((item, idx) => (
+                  <a
+                    key={item.url || idx}
+                    href={item.url}
+                    className="flex items-center py-2 text-gray-600 transition-colors hover:text-sky-500"
+                  >
+                    {item.icon || (idx === 0 ? <Users size={16} className="mr-3" /> : <Briefcase size={16} className="mr-3" />)}
+                    {item.label}
+                  </a>
+                ))}
               </div>
             </div>
           </div>
@@ -992,7 +900,7 @@ const Navbar = () => {
                 </div>
                 <div>
                   <div className="text-xs text-gray-500">
-                    {t("navbar.candidateHRCompanies", {
+                    {ct("navbar.candidateHRCompanies", {
                       defaultValue: "Candidate & HR Companies",
                     })}
                   </div>
@@ -1009,7 +917,7 @@ const Navbar = () => {
                 </div>
                 <div>
                   <div className="text-xs text-gray-500">
-                    {t("navbar.jobProvider", { defaultValue: "Job Provider" })}
+                    {ct("navbar.jobProvider", { defaultValue: "Job Provider" })}
                   </div>
                   <div className="font-medium">+90 553 383 2549</div>
                 </div>
@@ -1029,7 +937,7 @@ const Navbar = () => {
                 <MapPin size={18} />
               </div>
               <span>
-                {t("navbar.location", { defaultValue: "Istanbul, Turkey" })}
+                {ct("navbar.location", { defaultValue: "Istanbul, Turkey" })}
               </span>
             </div>
           </div>
@@ -1037,7 +945,7 @@ const Navbar = () => {
           {/* Social Media Icons - Mobile */}
           <div className="pt-6 mt-8 border-t border-gray-100">
             <p className="mb-4 text-sm text-center text-gray-500">
-              {t("navbar.mobile.connectWithUs", {
+              {ct("navbar.mobile.connectWithUs", {
                 defaultValue: "Connect with us",
               })}
             </p>

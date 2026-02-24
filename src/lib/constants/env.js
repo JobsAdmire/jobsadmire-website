@@ -1,4 +1,6 @@
 export const env = {
+  // CMS API (headless content management)
+  CMS_API_URL: process.env.NEXT_PUBLIC_CMS_API_URL || 'http://localhost:4000/api/v1',
   // External API bases (no trailing slash unless path includes query)
   CRM_API_URL: process.env.NEXT_PUBLIC_CRM_API_URL || 'https://crm.jobsadmire.com',
   BLOG_API_URL: process.env.NEXT_PUBLIC_BLOG_API_URL || 'https://phpstack-1309382-5454384.cloudwaysapps.com/api/blogs.php',

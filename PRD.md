@@ -9,11 +9,12 @@
 5. [API Endpoints](#5-api-endpoints)
 6. [Component Architecture](#6-component-architecture)
 7. [Core Business Logic and Features](#7-core-business-logic-and-features)
-8. [Internationalization (i18n)](#8-internationalization-i18n)
-9. [External Integrations](#9-external-integrations)
-10. [Data Models](#10-data-models)
-11. [Environment Variables](#11-environment-variables)
-12. [Scripts and DevOps](#12-scripts-and-devops)
+8. [CMS Integration](#8-cms-integration)
+9. [Internationalization (i18n)](#9-internationalization-i18n)
+10. [External Integrations](#10-external-integrations)
+11. [Data Models](#11-data-models)
+12. [Environment Variables](#12-environment-variables)
+13. [Scripts and DevOps](#13-scripts-and-devops)
 
 ---
 
@@ -241,6 +242,9 @@ jobsadmirewebsite/
 │   ├── lib/
 │   │   ├── api/
 │   │   │   ├── client.js           # Axios-based HTTP client wrapper
+│   │   │   ├── cms.js              # CMS API client (navigation, services, pages, etc.)
+│   │   │   ├── cmsHelper.js        # Layout/homepage CMS data bundlers
+│   │   │   ├── cmsContent.js       # Page content flattener + layout merger
 │   │   │   └── services/           # API service classes
 │   │   │       ├── index.js
 │   │   │       ├── university-service.js
@@ -248,8 +252,11 @@ jobsadmirewebsite/
 │   │   │       ├── partner-service.js
 │   │   │       ├── auth-service.js
 │   │   │       └── accommodation-service.js
+│   │   ├── context/
+│   │   │   ├── CmsContext.js       # React context for structured CMS data
+│   │   │   └── CmsContentContext.js # React context for page text content
 │   │   ├── constants/
-│   │   │   ├── env.js              # Environment variable exports
+│   │   │   ├── env.js              # Environment variable exports (incl. CMS_API_URL)
 │   │   │   ├── app.js              # App URLs and social links
 │   │   │   └── filters.js          # Filter/sort option constants
 │   │   ├── utils/
@@ -314,9 +321,11 @@ Every page is wrapped by the `_app.jsx` component which provides:
 1. **next-i18next** integration via `appWithTranslation` HOC
 2. **RTL/LTR detection** based on locale (`ar` and `fa` are RTL)
 3. **Ant Design ConfigProvider** with custom theme (primary color `#51bae7`, Poppins font)
-4. **Global components**: `Header`, `Footer`, `WhatsAppButton`, `Toaster`
-5. **Google Analytics** script injection (`G-77Y5KBV97L`)
-6. **Global link handling** for locale-prefixed navigation
+4. **CmsProvider** — wraps the app with structured CMS data (navigation, settings, services, stats, testimonials, destinations) fetched in `getStaticProps` via `getLayoutCmsProps` and `getHomeCmsProps`
+5. **CmsContentProvider** — wraps the app with page-specific text content fetched via `getPageAndLayoutContent(pageSlug, locale)`, making `c()` and `cObj()` accessors available to all components
+6. **Global components**: `Header`, `Footer`, `WhatsAppButton`, `Toaster`
+7. **Google Analytics** script injection (`G-77Y5KBV97L`)
+8. **Global link handling** for locale-prefixed navigation
 
 ### 3.4 Middleware (Geo-Locale Detection)
 
@@ -657,8 +666,8 @@ _app.jsx (App Wrapper)
 
 | Component | File | Description |
 |-----------|------|-------------|
-| `Header` | `components/app/Header.jsx` | Fixed navbar with scroll effects, top bar (phone, email, location), mega menu for services, partner dropdown, mobile hamburger, search overlay, language switcher, social links |
-| `Footer` | `components/app/Footer.jsx` | Footer with navigation links, contact info, social media links |
+| `Header` | `components/app/Header.jsx` | Fixed navbar with scroll effects, top bar (phone, email, location), mega menu for services, partner dropdown, mobile hamburger, search overlay, language switcher, social links. Reads logo, CTA text/link from `useCms()` / `settings.header` with `ct()` and `next-i18next` fallback. |
+| `Footer` | `components/app/Footer.jsx` | Footer with navigation links, contact info, social media links. Reads logo, tagline, description, copyright, company profile PDF from `useCms()` / `settings.footer` with `ct()` and `next-i18next` fallback. |
 | `LanguageSwitcher` | `components/LanguageSwitcher.js` | Dropdown with 11 languages, flag icons, cookie persistence, RTL support |
 
 ### 6.3 Home Page Components
@@ -1006,9 +1015,125 @@ Each service page typically includes: Hero section, content sections, `ServicesC
 
 ---
 
-## 8. Internationalization (i18n)
+## 8. CMS Integration
 
-### 8.1 Configuration
+The website fetches all page content, navigation, services, and other structured data from the JobsAdmire CMS API (`jobsadmire-cms`) instead of relying on hardcoded values. Translation JSON files in `public/locales/` serve as fallbacks.
+
+### 8.1 CMS API Client
+
+**File:** `src/lib/api/cms.js`
+
+A lightweight fetch-based client that calls the CMS REST API with ISR revalidation (`revalidate: 60`).
+
+| Function | CMS Endpoint | Description |
+|----------|-------------|-------------|
+| `getNavigation(location, locale)` | `/navigation/{location}` | Fetch menu by location (HEADER, FOOTER, SERVICES_MEGA, PARTNER_DROPDOWN) |
+| `getServices(locale)` | `/services` | List visible services |
+| `getServiceBySlug(slug, locale)` | `/services/{slug}` | Get a single service by slug |
+| `getTestimonials(locale)` | `/testimonials` | List visible testimonials |
+| `getStats(locale)` | `/stats` | List visible homepage statistics |
+| `getDestinations(locale)` | `/destinations` | List visible immigration destinations |
+| `getPage(slug, locale)` | `/pages/{slug}` | Get page with locale-filtered sections |
+| `getFaqs(pageSlug, locale)` | `/faqs/page/{slug}` | Fetch visible FAQs for a page |
+| `getSettings(group)` | `/settings/group/{group}` | Get settings by group (contact, social, header, footer) |
+
+### 8.2 CMS Helper Functions
+
+**File:** `src/lib/api/cmsHelper.js`
+
+| Function | Fetches | Used By |
+|----------|---------|---------|
+| `getLayoutCmsProps(locale)` | Navigation (4 menus) + Settings (contact, social, **header**, **footer**) | All pages in `getStaticProps`; layout props include `cmsSettings.header` and `cmsSettings.footer` |
+| `getHomeCmsProps(locale)` | Services, Stats, Testimonials, Destinations | Homepage `getStaticProps` |
+
+### 8.3 Page Content Flattener
+
+**File:** `src/lib/api/cmsContent.js`
+
+| Function | Description |
+|----------|-------------|
+| `flattenPageSections(page)` | Converts nested page sections into a flat `{ "sectionKey.field": value }` map |
+| `getCmsPageContent(slug, locale)` | Fetches a page and flattens its sections |
+| `getPageAndLayoutContent(pageSlug, locale)` | Fetches both page-specific and `_layout` content, merges them (page values override layout) |
+
+### 8.4 React Contexts
+
+**CmsContext** (`src/lib/context/CmsContext.js`):
+- Provides structured CMS data: `nav`, `settings`, `services`, `stats`, `testimonials`, `destinations`.
+- Access via `useCms()` hook.
+- Populated in `_app.jsx` from props returned by `getLayoutCmsProps` and `getHomeCmsProps`.
+
+**CmsContentContext** (`src/lib/context/CmsContentContext.js`):
+- Provides flattened page text content as a key-value map.
+- Access via `useCmsContent()` hook.
+- Returns `c(key, defaultValue)` for string values and `cObj(key, defaultValue)` for JSON-parsed arrays/objects.
+- Populated in `_app.jsx` from `pageProps.cmsPageContent`.
+
+### 8.5 Content Access Pattern
+
+Components use a CMS-first approach with translation fallback:
+
+```jsx
+const { c } = useCmsContent();
+const { t } = useTranslation("common");
+
+<h1>{c("hero.title", t("hero.title"))}</h1>
+```
+
+The `ct` helper pattern (used in **Header** and **Footer** for CMS-managed labels: logo, CTA, tagline, description, copyright, profile link) combines both, with `next-i18next` as fallback:
+
+```jsx
+const ct = (key, options) => c(key) || t(key, options);
+```
+
+### 8.6 Data Fetching in Pages
+
+Every page's `getStaticProps` (or `getServerSideProps`) follows this pattern:
+
+```javascript
+export async function getStaticProps({ locale }) {
+  const { getLayoutCmsProps } = require("@/lib/api/cmsHelper");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const [layoutProps, cmsPageContent] = await Promise.all([
+    getLayoutCmsProps(locale),
+    getPageAndLayoutContent("page-slug", locale),
+  ]);
+
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ["common"])),
+      ...layoutProps,
+      cmsPageContent,
+    },
+    revalidate: 60,
+  };
+}
+```
+
+### 8.7 What is NOT in the CMS
+
+| Content | Source |
+|---------|--------|
+| Blog posts | External phpstack API (`BLOG_API_URL`) |
+| Job listings & applications | CRM API (`crm.jobsadmire.com`) |
+| Visa requirements data | Local file `src/data/visaData.json` |
+
+### 8.8 FAQs from CMS
+
+The CMS exposes per-page FAQs via `getFaqs(pageSlug, locale)`. Website pages that show FAQs fetch `cmsFaqs` in `getStaticProps` (or client-side where needed) and render them with fallback to `t()` for question/answer text. Pages using CMS FAQs include: `hire-workers-in-turkey`, `register-your-company`, `partner/register-as-candidate`, and the UK immigration pets component (`components/i-uk/pet.jsx`).
+
+### 8.9 Header and Footer from Settings
+
+**Header:** Logo URL, logo alt text, and main CTA button text/link come from `settings.header` (keys: `header_logo_url`, `header_logo_alt`, `header_cta_text`, `header_cta_link`). The Header component uses `ct()` or `c()` with `t()` fallback.
+
+**Footer:** Logo URL, tagline, description, copyright text, and company profile PDF download link come from `settings.footer` (keys: `footer_logo_url`, `footer_tagline`, `footer_description`, `footer_copyright`, `footer_profile_pdf`). Same fallback pattern.
+
+---
+
+## 9. Internationalization (i18n)
+
+### 9.1 Configuration
 
 Defined in `next-i18next.config.js`:
 
@@ -1018,7 +1143,13 @@ Defined in `next-i18next.config.js`:
 - **Fallback:** `en`
 - **Debug:** Enabled in development
 
-### 8.2 Translation Namespaces
+### 9.2 Content Strategy: CMS-First with Translation Fallback
+
+All website text content is now primarily managed through the CMS via the Pages module (see Section 8). The `next-i18next` translation files in `public/locales/` serve as a **fallback layer** — they are still loaded and available via `t()`, but components check CMS content first using `c()`.
+
+The CMS stores all 11 locales' content in `PageSectionContent.contentJson` fields, seeded from the original translation JSON files via `scripts/seed-pages-from-translations.js` in the CMS project.
+
+### 9.3 Translation Namespaces (Fallback)
 
 Each locale has 60+ translation JSON files in `public/locales/{locale}/`. Key namespaces include:
 
@@ -1044,7 +1175,7 @@ Each locale has 60+ translation JSON files in `public/locales/{locale}/`. Key na
 
 Total: **744 translation JSON files** across all locales.
 
-### 8.3 RTL Support
+### 9.4 RTL Support
 
 Arabic (`ar`) and Persian (`fa`) locales receive:
 - `dir="rtl"` on document root
@@ -1053,11 +1184,11 @@ Arabic (`ar`) and Persian (`fa`) locales receive:
 - RTL toast notification positioning (`top-left` instead of `top-right`)
 - RTL CSS class (`rtl-layout`) on app wrapper
 
-### 8.4 Geo-Detection Middleware
+### 9.5 Geo-Detection Middleware
 
 Automatic locale assignment based on visitor's country (see Section 3.4 for full details).
 
-### 8.5 Translation Scripts
+### 9.6 Translation Scripts
 
 | Script | Command | Description |
 |--------|---------|-------------|
@@ -1068,9 +1199,9 @@ Automatic locale assignment based on visitor's country (see Section 3.4 for full
 
 ---
 
-## 9. External Integrations
+## 10. External Integrations
 
-### 9.1 CRM API
+### 10.1 CRM API
 
 **Base URL:** `https://crm.jobsadmire.com` (configurable via `NEXT_PUBLIC_CRM_API_URL`)
 
@@ -1087,7 +1218,7 @@ Automatic locale assignment based on visitor's country (see Section 3.4 for full
 | Job listing endpoints | GET | Fetching jobs for job board and homepage |
 | Category endpoints | GET | Fetching job categories |
 
-### 9.2 Blog API
+### 10.2 Blog API
 
 **Base URL:** `https://phpstack-1309382-5454384.cloudwaysapps.com/api/blogs.php` (configurable via `NEXT_PUBLIC_BLOG_API_URL`)
 
@@ -1096,7 +1227,7 @@ Automatic locale assignment based on visitor's country (see Section 3.4 for full
 - Fetching individual blog posts by slug (SSR)
 - Blog category retrieval
 
-### 9.3 University API
+### 10.3 University API
 
 **Base URL:** `https://dev-university-service.uniadmire.com/` (configurable via `NEXT_PUBLIC_UNIVERSITY_API_URL`)
 
@@ -1112,7 +1243,7 @@ Automatic locale assignment based on visitor's country (see Section 3.4 for full
 - `UniversityService`: `getAllPrograms()`, `getAllProgramsNames()`, `getCountries()`, `getUniversitiesIdsAndNames()`, `getUniversitiesCount()`
 - `StudentService`: `getStudentsCount()`, `getCountries()`
 
-### 9.4 Google Gemini AI API
+### 10.4 Google Gemini AI API
 
 **Base URL:** `https://generativelanguage.googleapis.com/v1beta` (configurable via `NEXT_PUBLIC_GEMINI_API_URL`)
 
@@ -1120,7 +1251,7 @@ Automatic locale assignment based on visitor's country (see Section 3.4 for full
 
 **Usage:** Auto-generating professional profile summaries during candidate registration (`/register-as-candidate`). The AI takes candidate information and produces a polished professional summary.
 
-### 9.5 Resend (Email)
+### 10.5 Resend (Email)
 
 **API Key:** `RESEND_API_KEY`
 
@@ -1138,13 +1269,13 @@ Automatic locale assignment based on visitor's country (see Section 3.4 for full
 - `TO_EMAIL` -- Default admin recipient
 - `RECIPIENT_EMAIL` -- Additional recipient
 
-### 9.6 RestCountries API
+### 10.6 RestCountries API
 
 **Base URL:** `https://restcountries.com/v3.1` (configurable via `NEXT_PUBLIC_RESTCOUNTRIES_API_URL`)
 
 **Usage:** Fetching country data for dropdowns and country information display.
 
-### 9.7 Sentry (Error Monitoring)
+### 10.7 Sentry (Error Monitoring)
 
 **Configuration:**
 - Organization: `jobsadmire`
@@ -1164,7 +1295,7 @@ Automatic locale assignment based on visitor's country (see Section 3.4 for full
 - Partner registration pages (`recruiter-agency.js`, `job-provider.js`) use Sentry event tracking
 - Test endpoint at `/api/sentry-example-api`
 
-### 9.8 Google Analytics, GTM, and Google Ads
+### 10.8 Google Analytics, GTM, and Google Ads
 
 **Google Analytics:**
 - Tracking ID: `G-77Y5KBV97L`
@@ -1178,7 +1309,7 @@ Automatic locale assignment based on visitor's country (see Section 3.4 for full
 - Conversion ID: `AW-17096273578`
 - Conversion tracking on `/thankyou` page
 
-### 9.9 Scaleway Object Storage
+### 10.9 Scaleway Object Storage
 
 **Domain:** `techadmire.s3.fr-par.scw.cloud`
 
@@ -1186,9 +1317,9 @@ Configured as an allowed image domain in `next.config.js` for Next.js Image opti
 
 ---
 
-## 10. Data Models
+## 11. Data Models
 
-### 10.1 MySQL Database -- Applications
+### 11.1 MySQL Database -- Applications
 
 **Table: `applications`**
 
@@ -1232,7 +1363,7 @@ Configured as an allowed image domain in `next.config.js` for Next.js Image opti
 | `end_date` | VARCHAR | End date |
 | `reference` | VARCHAR | Reference info |
 
-### 10.2 LocalStorage -- Candidate Profiles
+### 11.2 LocalStorage -- Candidate Profiles
 
 Managed by `candidateService.js` (key: `job_platform_candidates`).
 
@@ -1256,7 +1387,7 @@ Managed by `candidateService.js` (key: `job_platform_candidates`).
 
 **Categories:** `software-development`, `design`, `data-science`, `marketing`, `customer-support`, `business`
 
-### 10.3 LocalStorage -- CV/Resume Data
+### 11.3 LocalStorage -- CV/Resume Data
 
 Managed by `useCVData` hook. Structure:
 
@@ -1311,7 +1442,7 @@ Managed by `useCVData` hook. Structure:
 }
 ```
 
-### 10.4 Visa Data (JSON)
+### 11.4 Visa Data (JSON)
 
 File: `src/data/visaData.json` (10,000+ lines)
 
@@ -1339,7 +1470,7 @@ Organized by country pairs (e.g., `"Pakistan-UK"`, `"Pakistan-USA"`):
 }
 ```
 
-### 10.5 Countries List
+### 11.5 Countries List
 
 File: `src/lib/utils/countries.js`
 
@@ -1348,7 +1479,7 @@ Array of **197 countries** with:
 - `name` -- English country name
 - Used for all country dropdown selectors across the application
 
-### 10.6 Filter Constants
+### 11.6 Filter Constants
 
 File: `src/lib/constants/filters.js`
 
@@ -1364,14 +1495,15 @@ File: `src/lib/constants/filters.js`
 
 ---
 
-## 11. Environment Variables
+## 12. Environment Variables
 
 All environment variables are documented in `.env.example`:
 
-### 11.1 API URLs (Public / Client-side)
+### 12.1 API URLs (Public / Client-side)
 
 | Variable | Default | Description |
 |----------|---------|-------------|
+| `NEXT_PUBLIC_CMS_API_URL` | `http://localhost:4000/api/v1` | CMS API base URL for content, navigation, settings |
 | `NEXT_PUBLIC_CRM_API_URL` | `https://crm.jobsadmire.com` | CRM API base URL for jobs, inquiries, leads |
 | `NEXT_PUBLIC_BLOG_API_URL` | `https://phpstack-1309382-5454384.cloudwaysapps.com/api/blogs.php` | Blog API endpoint |
 | `NEXT_PUBLIC_UNIVERSITY_API_URL` | `https://dev-university-service.uniadmire.com/` | University service API |
@@ -1380,7 +1512,7 @@ All environment variables are documented in `.env.example`:
 | `NEXT_PUBLIC_RESTCOUNTRIES_API_URL` | `https://restcountries.com/v3.1` | RestCountries API |
 | `NEXT_PUBLIC_SITE_URL` | (none) | Public site URL |
 
-### 11.2 Email (Resend) -- Server-side only
+### 12.2 Email (Resend) -- Server-side only
 
 | Variable | Default | Description |
 |----------|---------|-------------|
@@ -1389,7 +1521,7 @@ All environment variables are documented in `.env.example`:
 | `FROM_EMAIL` | (none) | Sender email address |
 | `TO_EMAIL` | (none) | Default recipient email |
 
-### 11.3 Database (MySQL) -- Server-side only
+### 12.3 Database (MySQL) -- Server-side only
 
 | Variable | Default | Description |
 |----------|---------|-------------|
@@ -1399,7 +1531,7 @@ All environment variables are documented in `.env.example`:
 | `DB_NAME` | `job_applications` | MySQL database name |
 | `DB_PORT` | `3306` | MySQL port |
 
-### 11.4 Legacy/Optional API URLs
+### 12.4 Legacy/Optional API URLs
 
 Defined in `src/lib/constants/env.js` but not in `.env.example`:
 
@@ -1412,9 +1544,9 @@ Defined in `src/lib/constants/env.js` but not in `.env.example`:
 
 ---
 
-## 12. Scripts and DevOps
+## 13. Scripts and DevOps
 
-### 12.1 NPM Scripts
+### 13.1 NPM Scripts
 
 | Script | Command | Description |
 |--------|---------|-------------|
@@ -1425,7 +1557,7 @@ Defined in `src/lib/constants/env.js` but not in `.env.example`:
 | `i18n:check` | `node scripts/i18n-check.js` | Validate translation keys across all locales |
 | `translate` | `node scripts/translate-with-deepl.js` | Auto-translate missing keys via DeepL |
 
-### 12.2 Translation Scripts
+### 13.2 Translation Scripts
 
 | Script | File | Description |
 |--------|------|-------------|
@@ -1434,7 +1566,7 @@ Defined in `src/lib/constants/env.js` but not in `.env.example`:
 | Locale Sync | `scripts/sync-locale-keys.js` | Ensures all locale files have the same keys structure as the base locale |
 | Translate Locales | `scripts/translate-locales.js` | General translation utility script |
 
-### 12.3 Sentry Configuration
+### 13.3 Sentry Configuration
 
 | File | Purpose |
 |------|---------|
@@ -1450,7 +1582,7 @@ Defined in `src/lib/constants/env.js` but not in `.env.example`:
 - Logger: Auto tree-shaken in production
 - Vercel Cron Monitors: Enabled
 
-### 12.4 Build and Deployment Notes
+### 13.4 Build and Deployment Notes
 
 - The project uses the **Next.js Pages Router** (not App Router)
 - React Strict Mode is enabled

@@ -1,15 +1,8 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useRouter } from 'next/router';
 import { Users, Building, Clock, Award, Briefcase, TrendingUp, ChevronRight, Check, PieChart, BarChart4, Target } from 'lucide-react';
-
-// Import translation files for all 7 languages
-import enTranslations from '../../../public/locales/en/common.json';
-import trTranslations from '../../../public/locales/tr/common.json';
-import frTranslations from '../../../public/locales/fr/common.json';
-import deTranslations from '../../../public/locales/de/common.json';
-import arTranslations from '../../../public/locales/ar/common.json';
-import ruTranslations from '../../../public/locales/ru/common.json';
-import faTranslations from '../../../public/locales/fa/common.json';
+import { useCms } from '@/lib/context/CmsContext';
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 
 // Intersection Observer Hook for animations
 const useIntersectionObserver = (options = {}) => {
@@ -36,7 +29,7 @@ const useIntersectionObserver = (options = {}) => {
   return [ref, isVisible];
 };
 
-const StatCard = ({ icon, number, label, delay, accent, percentage, subtitle, t }) => {
+const StatCard = ({ icon, number, label, delay, accent, percentage, subtitle }) => {
   const [count, setCount] = useState(0);
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
   
@@ -130,81 +123,50 @@ const FeatureItem = ({ icon, title, description }) => {
   );
 };
 
+const ICON_MAP = {
+  Briefcase: <Briefcase size={28} />,
+  Building: <Building size={28} />,
+  Clock: <Clock size={28} />,
+  Users: <Users size={28} />,
+  Award: <Award size={28} />,
+  TrendingUp: <TrendingUp size={28} />,
+};
+
 const AdvancedStatsSection = () => {
   const router = useRouter();
-  const { locale } = router;
-  
-  // Get translations based on locale
-  const getTranslations = () => {
-    switch (locale) {
-      case 'tr': return trTranslations;
-      case 'fr': return frTranslations;
-      case 'de': return deTranslations;
-      case 'ar': return arTranslations;
-      case 'ru': return ruTranslations;
-      case 'fa': return faTranslations;
-      default: return enTranslations;
-    }
-  };
-  
-  const t = getTranslations();
+  const { stats: cmsStats } = useCms();
+  const { c } = useCmsContent();
   const [ref, isVisible] = useIntersectionObserver({ threshold: 0.1 });
-  
-  const stats = [
-    { 
-      icon: <Briefcase size={28} />, 
-      number: "150+", 
-      label: t.stats.jobFulfillment.label, 
-      delay: 0,
-      accent: "bg-sky-500",
-      percentage: "32",
-      subtitle: t.stats.jobFulfillment.subtitle
-    },
-    { 
-      icon: <Building size={28} />, 
-      number: "2", 
-      label: t.stats.branches.label, 
-      delay: 200,
-      accent: "bg-sky-500",
-      percentage: "15",
-      subtitle: t.stats.branches.subtitle
-    },
-    { 
-      icon: <Clock size={28} />, 
-      number: "2", 
-      label: t.stats.yearsExperience.label, 
-      delay: 400,
-      accent: "bg-sky-500",
-      percentage: "100",
-      subtitle: t.stats.yearsExperience.subtitle
-    },
-    { 
-      icon: <Users size={28} />, 
-      number: "150+", 
-      label: t.stats.happyClients.label, 
-      delay: 250,
-      accent: "bg-sky-500",
-      percentage: "24",
-      subtitle: t.stats.happyClients.subtitle
-    }
+
+  const buildStatsFromCms = () => {
+    if (!cmsStats?.length) return null;
+    return cmsStats.map((item, idx) => {
+      const content = item.contents?.[0] || {};
+      return {
+        icon: ICON_MAP[item.icon] || <Briefcase size={28} />,
+        number: item.value || "0",
+        label: content.label || "",
+        delay: idx * 200,
+        accent: item.color || "bg-sky-500",
+        percentage: item.percentage || null,
+        subtitle: content.description || "",
+      };
+    });
+  };
+
+  const fallbackStats = [
+    { icon: <Briefcase size={28} />, number: "150+", label: c("stats.jobFulfillment.label", "Job Fulfillment"), delay: 0, accent: "bg-sky-500", percentage: "32", subtitle: c("stats.jobFulfillment.subtitle", "") },
+    { icon: <Building size={28} />, number: "2", label: c("stats.branches.label", "Branches"), delay: 200, accent: "bg-sky-500", percentage: "15", subtitle: c("stats.branches.subtitle", "") },
+    { icon: <Clock size={28} />, number: "2", label: c("stats.yearsExperience.label", "Years Experience"), delay: 400, accent: "bg-sky-500", percentage: "100", subtitle: c("stats.yearsExperience.subtitle", "") },
+    { icon: <Users size={28} />, number: "150+", label: c("stats.happyClients.label", "Happy Clients"), delay: 250, accent: "bg-sky-500", percentage: "24", subtitle: c("stats.happyClients.subtitle", "") },
   ];
 
+  const stats = buildStatsFromCms() || fallbackStats;
+
   const features = [
-    {
-      icon: <Target size={20} />,
-      title: t.features.targetedRecruitment.title,
-      description: t.features.targetedRecruitment.description
-    },
-    {
-      icon: <BarChart4 size={20} />,
-      title: t.features.performanceTracking.title,
-      description: t.features.performanceTracking.description
-    },
-    {
-      icon: <Check size={20} />,
-      title: t.features.qualityAssurance.title,
-      description: t.features.qualityAssurance.description
-    }
+    { icon: <Target size={20} />, title: c("features.targetedRecruitment.title", "Targeted Recruitment"), description: c("features.targetedRecruitment.description", "") },
+    { icon: <BarChart4 size={20} />, title: c("features.performanceTracking.title", "Performance Tracking"), description: c("features.performanceTracking.description", "") },
+    { icon: <Check size={20} />, title: c("features.qualityAssurance.title", "Quality Assurance"), description: c("features.qualityAssurance.description", "") },
   ];
 
   return (
@@ -230,7 +192,7 @@ const AdvancedStatsSection = () => {
               accent={stat.accent}
               percentage={stat.percentage}
               subtitle={stat.subtitle}
-              t={t}
+              
             />
           ))}
         </div>

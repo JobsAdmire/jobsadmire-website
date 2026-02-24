@@ -541,13 +541,27 @@ const WorkPermitPage = () => {
 };
 
 export const getStaticProps = async ({ locale }) => {
+  const { getLayoutCmsProps } = require("@/lib/api/cmsHelper");
+  const { getPage } = require("@/lib/api/cms");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
   const {
     serverSideTranslations,
   } = require("next-i18next/serverSideTranslations");
+
+  const [layoutProps, cmsPage, cmsPageContent] = await Promise.all([
+    getLayoutCmsProps(locale),
+    getPage("work-permit", locale),
+    getPageAndLayoutContent("work-permit", locale),
+  ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common", "work-permit"])),
+      ...layoutProps,
+      cmsPage: cmsPage || null,
+      cmsPageContent,
     },
+    revalidate: 60,
   };
 };
 

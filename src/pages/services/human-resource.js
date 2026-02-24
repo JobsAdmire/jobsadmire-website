@@ -4,19 +4,16 @@ import { useTranslation } from "next-i18next";
 import ServicesCarousel from "@components/home/ServicesCarousel";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import Banner from "../../components/home/banner";
+import { useCms } from "@/lib/context/CmsContext";
+import { useCmsContent } from "@/lib/context/CmsContentContext";
 import {
   User,
   FileSpreadsheet,
   Briefcase,
   BarChart,
-  Calendar,
   Award,
   BookOpen,
-  Clock,
   CheckCircle,
-  Phone,
-  Mail,
-  MessageSquare,
   Users,
   ShieldCheck,
   Lightbulb,
@@ -25,119 +22,63 @@ import {
   Sigma,
 } from "lucide-react";
 
+const ICON_MAP = {
+  User: <User size={36} />,
+  FileSpreadsheet: <FileSpreadsheet size={36} />,
+  Briefcase: <Briefcase size={36} />,
+  BarChart: <BarChart size={36} />,
+  BookOpen: <BookOpen size={36} />,
+  Users: <Users size={36} />,
+  ShieldCheck: <ShieldCheck size={36} />,
+  Sigma: <Sigma size={36} />,
+  Heart: <Heart size={24} />,
+  TrendingUp: <TrendingUp size={24} />,
+  Award: <Award size={24} />,
+};
+
 const HRServicesPage = () => {
   const { t } = useTranslation("common");
+  const { c, cObj } = useCmsContent();
+  const { testimonials: cmsTestimonials, stats: cmsStats } = useCms();
   const [activeTab, setActiveTab] = useState("all");
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    company: "",
-    message: "",
-  });
 
   const handleTabChange = (tab) => {
     setActiveTab(tab);
   };
 
-  const handleInputChange = (e) => {
-    const { name, value } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  const testimonials =
+    cmsTestimonials?.length > 0
+      ? cmsTestimonials.map((item) => ({
+          name: item.authorName,
+          position: item.authorTitle || "",
+          content: item.quote,
+          image: item.authorImage?.url || "/api/placeholder/60/60",
+        }))
+      : [
+          { name: "Sarah Johnson", position: "COO, TechVision Inc.", content: "The HR services team transformed our recruitment process.", image: "/api/placeholder/60/60" },
+          { name: "Michael Chen", position: "Director of Operations, GrowthFirst", content: "Their performance management systems helped us identify and develop key talent.", image: "/api/placeholder/60/60" },
+          { name: "Elena Rodriguez", position: "CEO, Innovative Solutions", content: "Working with this HR team gave us access to expertise we couldn't afford in-house.", image: "/api/placeholder/60/60" },
+        ];
 
-  const testimonials = [
-    {
-      name: "Sarah Johnson",
-      position: "COO, TechVision Inc.",
-      content:
-        "The HR services team transformed our recruitment process. We've reduced time-to-hire by 40% while improving the quality of candidates.",
-      image: "/api/placeholder/60/60",
-    },
-    {
-      name: "Michael Chen",
-      position: "Director of Operations, GrowthFirst",
-      content:
-        "Their performance management systems helped us identify and develop key talent within our organization, resulting in better retention and productivity.",
-      image: "/api/placeholder/60/60",
-    },
-    {
-      name: "Elena Rodriguez",
-      position: "CEO, Innovative Solutions",
-      content:
-        "Working with this HR team gave us access to expertise we couldn't afford in-house. Their strategic guidance has been invaluable to our growth.",
-      image: "/api/placeholder/60/60",
-    },
+  const defaultCategories = [
+    { id: 1, title: "Recruitment & Staffing", description: "End-to-end talent acquisition services from job description creation to onboarding new hires.", iconKey: "User", color: "blue" },
+    { id: 2, title: "Payroll Management", description: "Accurate and timely payroll processing, tax compliance, and benefit administration.", iconKey: "FileSpreadsheet", color: "green" },
+    { id: 3, title: "HR Consulting", description: "Strategic HR planning, policy development, and organizational structure optimization.", iconKey: "Briefcase", color: "purple" },
+    { id: 4, title: "Performance Management", description: "KPI development, review process design, and performance improvement programs.", iconKey: "BarChart", color: "red" },
+    { id: 5, title: "Training & Development", description: "Custom training programs, workshops, and professional development planning.", iconKey: "BookOpen", color: "yellow" },
+    { id: 6, title: "Employee Relations", description: "Conflict resolution, employee engagement, and workplace culture enhancement.", iconKey: "Users", color: "indigo" },
+    { id: 7, title: "Compliance Management", description: "Ensure your organization meets all legal and regulatory requirements in HR practices.", iconKey: "ShieldCheck", color: "teal" },
+    { id: 8, title: "HR Analytics", description: "Data-driven insights to optimize workforce planning and HR strategy.", iconKey: "Sigma", color: "pink" },
   ];
 
+  const cmsCategories = cObj("hrServices.categories", null);
+  const categoriesAll = (cmsCategories || defaultCategories).map((cat) => ({
+    ...cat,
+    icon: ICON_MAP[cat.iconKey] || <Briefcase size={36} />,
+  }));
+
   const serviceCategories = {
-    all: [
-      {
-        id: 1,
-        title: "Recruitment & Staffing",
-        description:
-          "End-to-end talent acquisition services from job description creation to onboarding new hires.",
-        icon: <User size={36} />,
-        color: "blue",
-      },
-      {
-        id: 2,
-        title: "Payroll Management",
-        description:
-          "Accurate and timely payroll processing, tax compliance, and benefit administration.",
-        icon: <FileSpreadsheet size={36} />,
-        color: "green",
-      },
-      {
-        id: 3,
-        title: "HR Consulting",
-        description:
-          "Strategic HR planning, policy development, and organizational structure optimization.",
-        icon: <Briefcase size={36} />,
-        color: "purple",
-      },
-      {
-        id: 4,
-        title: "Performance Management",
-        description:
-          "KPI development, review process design, and performance improvement programs.",
-        icon: <BarChart size={36} />,
-        color: "red",
-      },
-      {
-        id: 5,
-        title: "Training & Development",
-        description:
-          "Custom training programs, workshops, and professional development planning.",
-        icon: <BookOpen size={36} />,
-        color: "yellow",
-      },
-      {
-        id: 6,
-        title: "Employee Relations",
-        description:
-          "Conflict resolution, employee engagement, and workplace culture enhancement.",
-        icon: <Users size={36} />,
-        color: "indigo",
-      },
-      {
-        id: 7,
-        title: "Compliance Management",
-        description:
-          "Ensure your organization meets all legal and regulatory requirements in HR practices.",
-        icon: <ShieldCheck size={36} />,
-        color: "teal",
-      },
-      {
-        id: 8,
-        title: "HR Analytics",
-        description:
-          "Data-driven insights to optimize workforce planning and HR strategy.",
-        icon: <Sigma size={36} />,
-        color: "pink",
-      },
-    ],
+    all: categoriesAll,
     strategic: [3, 4, 7, 8],
     operational: [1, 2, 5, 6],
   };
@@ -149,20 +90,19 @@ const HRServicesPage = () => {
           serviceCategories[activeTab].includes(service.id)
         );
 
-  const stats = [
-    { value: "98%", label: "Client Retention", icon: <Heart size={24} /> },
-    {
-      value: "45%",
-      label: "Avg. Productivity Increase",
-      icon: <TrendingUp size={24} />,
-    },
-    {
-      value: "3.5x",
-      label: "ROI on HR Investment",
-      icon: <BarChart size={24} />,
-    },
-    { value: "25+", label: "Years of Experience", icon: <Award size={24} /> },
-  ];
+  const stats =
+    cmsStats?.length > 0
+      ? cmsStats.map((s) => ({
+          value: s.value,
+          label: s.contents?.[0]?.label || s.label || "",
+          icon: ICON_MAP[s.icon] || <Award size={24} />,
+        }))
+      : [
+          { value: "98%", label: "Client Retention", icon: <Heart size={24} /> },
+          { value: "45%", label: "Avg. Productivity Increase", icon: <TrendingUp size={24} /> },
+          { value: "3.5x", label: "ROI on HR Investment", icon: <BarChart size={24} /> },
+          { value: "25+", label: "Years of Experience", icon: <Award size={24} /> },
+        ];
 
   return (
     <div className="bg-white">
@@ -191,18 +131,17 @@ const HRServicesPage = () => {
         {/* Title Section */}
         <div className="text-center px-4 pt-[186px] xs:pt-[166px] lg:pt-[172px] pb-[50px]">
           <h1 className="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
-            Strategic HR Solutions
+            {c("hero.title", t("labels.humanResource.heroTitle", "Strategic HR Solutions"))}
           </h1>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Elevate your organization with comprehensive human resource services
-            tailored to your unique business needs
+            {c("hero.description", t("labels.humanResource.heroDescription", "Elevate your organization with comprehensive human resource services tailored to your unique business needs"))}
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <button className="bg-[#38B6FF] hover:bg-blue-700 text-white font-medium py-3 px-8 rounded-lg transition-colors">
-              Schedule a Consultation
+              {c("hero.ctaPrimary", t("labels.humanResource.ctaPrimary", "Schedule a Consultation"))}
             </button>
             <button className="border border-[#38B6FF] text-[#38B6FF] hover:bg-blue-50 font-medium py-3 px-8 rounded-lg transition-colors">
-              Download Services Guide
+              {c("hero.ctaSecondary", t("labels.humanResource.ctaSecondary", "Download Services Guide"))}
             </button>
           </div>
         </div>
@@ -211,7 +150,7 @@ const HRServicesPage = () => {
         <div className="bg-gradient-to-r from-[#38B6FF] to-[#38B6FF] text-white py-12 px-4 md:px-8 mb-16">
           <div className="max-w-5xl mx-auto text-center">
             <h2 className="text-3xl font-bold mb-6">
-              What Sets Our HR Solutions Apart
+              {c("valueProposition.title", t("labels.humanResource.valueTitle", "What Sets Our HR Solutions Apart"))}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
               {stats.map((stat, index) => (
@@ -232,11 +171,10 @@ const HRServicesPage = () => {
         <div className="px-4 mb-20">
           <div className="text-center mb-10">
             <h2 className="text-3xl font-bold text-gray-800 mb-4">
-              Our HR Services
+              {c("hrServices.title", t("labels.humanResource.servicesTitle", "Our HR Services"))}
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto mb-8">
-              Comprehensive solutions designed to optimize your workforce and
-              drive organizational success
+              {c("hrServices.description", t("labels.humanResource.servicesDescription", "Comprehensive solutions designed to optimize your workforce and drive organizational success"))}
             </p>
 
             <div className="flex flex-wrap justify-center gap-2 mb-10">
@@ -244,19 +182,19 @@ const HRServicesPage = () => {
                 onClick={() => handleTabChange("all")}
                 className={`px-6 py-2 rounded-full ${activeTab === "all" ? "bg-[#38B6FF] text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
               >
-                All Services
+                {c("hrServices.tabAll", t("labels.humanResource.tabAll", "All Services"))}
               </button>
               <button
                 onClick={() => handleTabChange("strategic")}
                 className={`px-6 py-2 rounded-full ${activeTab === "strategic" ? "bg-[#38B6FF] text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
               >
-                Strategic HR
+                {c("hrServices.tabStrategic", t("labels.humanResource.tabStrategic", "Strategic HR"))}
               </button>
               <button
                 onClick={() => handleTabChange("operational")}
                 className={`px-6 py-2 rounded-full ${activeTab === "operational" ? "bg-[#38B6FF] text-white" : "bg-gray-100 text-gray-700 hover:bg-gray-200"}`}
               >
-                Operational HR
+                {c("hrServices.tabOperational", t("labels.humanResource.tabOperational", "Operational HR"))}
               </button>
             </div>
           </div>
@@ -290,11 +228,10 @@ const HRServicesPage = () => {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-800 mb-4">
-                Our Approach to HR Management
+                {c("approach.title", t("labels.humanResource.approachTitle", "Our Approach to HR Management"))}
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                We believe that effective HR management is a strategic
-                partnership that drives business results
+                {c("approach.description", t("labels.humanResource.approachDescription", "We believe that effective HR management is a strategic partnership that drives business results"))}
               </p>
             </div>
 
@@ -414,7 +351,7 @@ const HRServicesPage = () => {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 text-center">
-              {[
+              {cObj("industries.list", [
                 "Technology",
                 "Healthcare",
                 "Manufacturing",
@@ -425,7 +362,7 @@ const HRServicesPage = () => {
                 "Nonprofit",
                 "Construction",
                 "Professional Services",
-              ].map((industry, index) => (
+              ]).map((industry, index) => (
                 <div
                   key={index}
                   className="bg-gray-50 hover:bg-gray-100 p-4 rounded-lg transition-colors"
@@ -442,11 +379,10 @@ const HRServicesPage = () => {
           <div className="max-w-5xl mx-auto">
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold text-gray-800 mb-4">
-                What Our Clients Say
+                {c("testimonials.title", t("labels.humanResource.testimonialsTitle", "What Our Clients Say"))}
               </h2>
               <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-                Hear from organizations that have transformed their HR function
-                with our services
+                {c("testimonials.description", t("labels.humanResource.testimonialsDescription", "Hear from organizations that have transformed their HR function with our services"))}
               </p>
             </div>
 
@@ -483,10 +419,24 @@ const HRServicesPage = () => {
 };
 
 export const getStaticProps = async ({ locale }) => {
+  const { getLayoutCmsProps } = require("@/lib/api/cmsHelper");
+  const { getServiceBySlug } = require("@/lib/api/cms");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const [layoutProps, cmsService, cmsPageContent] = await Promise.all([
+    getLayoutCmsProps(locale),
+    getServiceBySlug("human-resource", locale),
+    getPageAndLayoutContent("services/hire-workers", locale),
+  ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["about", "common"])),
+      ...layoutProps,
+      cmsService: cmsService || null,
+      cmsPageContent,
     },
+    revalidate: 60,
   };
 };
 export default HRServicesPage;

@@ -1,4 +1,5 @@
 import { useTranslation } from "next-i18next";
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import React, {
   forwardRef,
   useEffect,
@@ -9,6 +10,8 @@ import React, {
 const ExperienceSection = forwardRef(
   ({ data, updateData, nextStep, prevStep }, ref) => {
     const { t } = useTranslation("resume-generator");
+    const { c } = useCmsContent();
+    const ct = (key, options) => c(key) || t(key, options);
     const [experienceList, setExperienceList] = useState(() => {
       const initialData = data?.experience;
 
@@ -33,7 +36,7 @@ const ExperienceSection = forwardRef(
     });
 
     // Load data from localStorage on component mount
-    useEffect(() => {
+    useEffecct(() => {
       const savedData = localStorage.getItem("experience_information");
       if (savedData) {
         try {
@@ -42,7 +45,7 @@ const ExperienceSection = forwardRef(
             ? parsedData
             : Object.values(parsedData);
 
-          setExperienceList(dataArray);
+          setExperienceLisct(dataArray);
         } catch (error) {
           console.error("Error parsing saved data:", error);
         }
@@ -59,12 +62,12 @@ const ExperienceSection = forwardRef(
         ...updatedList[index],
         [name]: value,
       };
-      setExperienceList(updatedList);
+      setExperienceLisct(updatedList);
     };
 
     // Add new experience entry
     const addExperience = () => {
-      setExperienceList([
+      setExperienceLisct([
         ...experienceList,
         {
           title: "",
@@ -81,7 +84,7 @@ const ExperienceSection = forwardRef(
     const removeExperience = (index) => {
       if (experienceList.length > 1) {
         const updatedList = experienceList.filter((_, i) => i !== index);
-        setExperienceList(updatedList);
+        setExperienceLisct(updatedList);
       }
     };
 
@@ -92,17 +95,17 @@ const ExperienceSection = forwardRef(
 
       experienceList.forEach((exp, index) => {
         if (!exp.title.trim()) {
-          newErrors[`title_${index}`] = t("step3.jobTitleRequired");
+          newErrors[`title_${index}`] = ct("step3.jobTitleRequired");
           isValid = false;
         }
 
         if (!exp.company.trim()) {
-          newErrors[`company_${index}`] = t("step3.companyRequired");
+          newErrors[`company_${index}`] = ct("step3.companyRequired");
           isValid = false;
         }
 
         if (!exp.startDate.trim()) {
-          newErrors[`startDate_${index}`] = t("step3.startDateRequired");
+          newErrors[`startDate_${index}`] = ct("step3.startDateRequired");
           isValid = false;
         }
       });
@@ -113,7 +116,7 @@ const ExperienceSection = forwardRef(
 
     // Submit form
     const handleSubmit = (e) => {
-      if (e) e.preventDefault();
+      if (e) e.preventDefaulct();
 
       if (validateForm()) {
         updateData({ experience: experienceList });
@@ -160,7 +163,7 @@ const ExperienceSection = forwardRef(
               </svg>
             </div>
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-transparent bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text break-words">
-              {t("step3.title")}
+              {ct("step3.title")}
             </h2>
           </div>
 
@@ -197,7 +200,7 @@ const ExperienceSection = forwardRef(
                 )}
 
                 <h3 className="mb-3 sm:mb-4 text-base sm:text-lg font-medium text-sky-700">
-                  {t("step3.workExperience", { index: index + 1 })}
+                  {ct("step3.workExperience", { index: index + 1 })}
                 </h3>
 
                 <div className="grid grid-cols-1 gap-4 sm:gap-5 md:gap-6 md:grid-cols-3">
@@ -206,7 +209,7 @@ const ExperienceSection = forwardRef(
                       htmlFor={`title_${index}`}
                       className="block text-sm font-medium text-sky-800"
                     >
-                      {t("step3.jobTitle")}
+                      {ct("step3.jobTitle")}
                     </label>
                     <input
                       type="text"
@@ -214,7 +217,7 @@ const ExperienceSection = forwardRef(
                       name="title"
                       value={experience.title}
                       onChange={(e) => handleChange(index, e)}
-                      placeholder={t("step3.jobTitlePlaceholder")}
+                      placeholder={ct("step3.jobTitlePlaceholder")}
                       className={`w-full px-4 py-3 rounded-xl border ${
                         errors[`title_${index}`]
                           ? "border-red-500 bg-red-50"
@@ -233,7 +236,7 @@ const ExperienceSection = forwardRef(
                       htmlFor={`company_${index}`}
                       className="block text-sm font-medium text-sky-800"
                     >
-                      {t("step3.company")}
+                      {ct("step3.company")}
                     </label>
                     <input
                       type="text"
@@ -241,7 +244,7 @@ const ExperienceSection = forwardRef(
                       name="company"
                       value={experience.company}
                       onChange={(e) => handleChange(index, e)}
-                      placeholder={t("step3.companyPlaceholder")}
+                      placeholder={ct("step3.companyPlaceholder")}
                       className={`w-full px-4 py-3 rounded-xl border ${
                         errors[`company_${index}`]
                           ? "border-red-500 bg-red-50"
@@ -260,7 +263,7 @@ const ExperienceSection = forwardRef(
                       htmlFor={`location_${index}`}
                       className="block text-sm font-medium text-sky-800"
                     >
-                      {t("step3.location")}
+                      {ct("step3.location")}
                     </label>
                     <input
                       type="text"
@@ -268,7 +271,7 @@ const ExperienceSection = forwardRef(
                       name="location"
                       value={experience.location}
                       onChange={(e) => handleChange(index, e)}
-                      placeholder={t("step3.locationPlaceholder")}
+                      placeholder={ct("step3.locationPlaceholder")}
                       className="w-full px-4 py-3 transition-all duration-300 border outline-none rounded-xl border-sky-200 focus:ring-2 focus:ring-sky-200 focus:border-sky-400"
                     />
                   </div>
@@ -280,7 +283,7 @@ const ExperienceSection = forwardRef(
                       htmlFor={`startDate_${index}`}
                       className="block text-sm font-medium text-sky-800"
                     >
-                      {t("step3.startDate")}
+                      {ct("step3.startDate")}
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -322,9 +325,9 @@ const ExperienceSection = forwardRef(
                       htmlFor={`endDate_${index}`}
                       className="block text-sm font-medium text-sky-800"
                     >
-                      {t("step3.endDate")}{" "}
+                      {ct("step3.endDate")}{" "}
                       <span className="text-sky-400">
-                        {t("step3.endDateOptional")}
+                        {ct("step3.endDateOptional")}
                       </span>
                     </label>
                     <div className="relative">
@@ -352,7 +355,7 @@ const ExperienceSection = forwardRef(
                       />
                     </div>
                     <p className="text-xs text-sky-500">
-                      {t("step3.endDateTip")}
+                      {ct("step3.endDateTip")}
                     </p>
                   </div>
 
@@ -361,7 +364,7 @@ const ExperienceSection = forwardRef(
                       htmlFor={`description_${index}`}
                       className="block text-sm font-medium text-sky-800"
                     >
-                      {t("step3.description")}
+                      {ct("step3.description")}
                     </label>
                     <textarea
                       id={`description_${index}`}
@@ -369,11 +372,11 @@ const ExperienceSection = forwardRef(
                       value={experience.description}
                       onChange={(e) => handleChange(index, e)}
                       rows="4"
-                      placeholder={t("step3.descriptionPlaceholder")}
+                      placeholder={ct("step3.descriptionPlaceholder")}
                       className="w-full px-4 py-3 transition-all duration-300 border outline-none rounded-xl border-sky-200 focus:ring-2 focus:ring-sky-200 focus:border-sky-400"
                     ></textarea>
                     <p className="text-xs text-sky-500">
-                      {t("step3.descriptionTip")}
+                      {ct("step3.descriptionTip")}
                     </p>
                   </div>
                 </div>
@@ -398,7 +401,7 @@ const ExperienceSection = forwardRef(
                     clipRule="evenodd"
                   />
                 </svg>
-                {t("buttons.addAnotherExperience")}
+                {ct("buttons.addAnotherExperience")}
               </button>
             </div>
           </form>

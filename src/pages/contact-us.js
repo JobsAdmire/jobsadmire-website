@@ -14,41 +14,72 @@ import {
   Bell,
 } from "lucide-react";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
-// Import your translation files
-import enTranslations from "../../public/locales/en/contact.json";
-import trTranslations from "../../public/locales/tr/contact.json";
-import arTranslations from "../../public/locales/ar/contact.json";
-import frTranslations from "../../public/locales/fr/contact.json";
-import deTranslations from "../../public/locales/de/contact.json";
-import faTranslations from "../../public/locales/fa/contact.json";
-import ruTranslations from "../../public/locales/ru/contact.json";
+import { useTranslation } from "next-i18next";
+import { useCmsContent } from "@/lib/context/CmsContentContext";
+import { useCms } from "@/lib/context/CmsContext";
 import { createInquiry } from "@/utils/crmUtils";
 
 const PremiumContactForm = () => {
   const router = useRouter();
-  const { locale } = router;
+  const { t: tr } = useTranslation("contact");
+  const { c } = useCmsContent();
+  const { settings } = useCms();
 
-  // Get translations based on current locale
-  const getTranslations = () => {
-    switch (locale) {
-      case "tr":
-        return trTranslations;
-      case "ar":
-        return arTranslations;
-      case "fa":
-        return faTranslations;
-      case "ru":
-        return ruTranslations;
-      case "fr":
-        return frTranslations;
-      case "de":
-        return deTranslations;
-      default:
-        return enTranslations;
-    }
+  const t = {
+    contact: {
+      brand: {
+        name: c("contact.brand.name", tr("contact.brand.name", "JobsAdmire")),
+        title: c("contact.brand.title", tr("contact.brand.title", "Let's start your journey together")),
+        description: c("contact.brand.description", tr("contact.brand.description", "We're excited to help you achieve your career goals.")),
+      },
+      contactInfo: tr("contact.contactInfo", { returnObjects: true, defaultValue: [] }),
+      form: {
+        progress: {
+          step1: c("contact.form.progress.step1", tr("contact.form.progress.step1", "Personal Info")),
+          step2: c("contact.form.progress.step2", tr("contact.form.progress.step2", "Message")),
+        },
+        step1: {
+          title: c("contact.form.step1.title", tr("contact.form.step1.title", "Get in touch")),
+          subtitle: c("contact.form.step1.subtitle", tr("contact.form.step1.subtitle", "Let's start a conversation")),
+        },
+        step2: {
+          title: c("contact.form.step2.title", tr("contact.form.step2.title", "Tell us more")),
+          subtitle: c("contact.form.step2.subtitle", tr("contact.form.step2.subtitle", "We're here to listen")),
+        },
+        fields: {
+          name: { label: tr("contact.form.fields.name.label", "Your Name"), placeholder: tr("contact.form.fields.name.placeholder", "Your name") },
+          email: { label: tr("contact.form.fields.email.label", "Email Address"), placeholder: tr("contact.form.fields.email.placeholder", "Email address") },
+          phone: { label: tr("contact.form.fields.phone.label", "Phone Number"), placeholder: tr("contact.form.fields.phone.placeholder", "Phone number") },
+          subject: { label: tr("contact.form.fields.subject.label", "Subject"), placeholder: tr("contact.form.fields.subject.placeholder", "Subject") },
+          message: { label: tr("contact.form.fields.message.label", "Your Message"), placeholder: tr("contact.form.fields.message.placeholder", "Your message") },
+        },
+        validation: {
+          nameRequired: tr("contact.form.validation.nameRequired", "Name is required"),
+          nameMinLength: tr("contact.form.validation.nameMinLength", "Name must be at least 2 characters"),
+          emailRequired: tr("contact.form.validation.emailRequired", "Email is required"),
+          emailInvalid: tr("contact.form.validation.emailInvalid", "Please enter a valid email address"),
+          phoneInvalid: tr("contact.form.validation.phoneInvalid", "Please enter a valid phone number"),
+          subjectRequired: tr("contact.form.validation.subjectRequired", "Subject is required"),
+          subjectMinLength: tr("contact.form.validation.subjectMinLength", "Subject must be at least 3 characters"),
+          messageRequired: tr("contact.form.validation.messageRequired", "Message is required"),
+          messageMinLength: tr("contact.form.validation.messageMinLength", "Message must be at least 10 characters"),
+        },
+        buttons: {
+          continue: c("contact.form.buttons.continue", tr("contact.form.buttons.continue", "Continue")),
+          back: c("contact.form.buttons.back", tr("contact.form.buttons.back", "Back")),
+          send: c("contact.form.buttons.send", tr("contact.form.buttons.send", "Send")),
+          sending: tr("contact.form.buttons.sending", "Sending..."),
+        },
+        notification: c("contact.form.notification", tr("contact.form.notification", "We'll notify you once we review your message.")),
+      },
+      success: {
+        title: c("contact.success.title", tr("contact.success.title", "Thank You!")),
+        message: c("contact.success.message", tr("contact.success.message", "Your message has been sent successfully.")),
+        followUp: c("contact.success.followUp", tr("contact.success.followUp", "We'll get back to you as soon as possible.")),
+        sendAnother: c("contact.success.sendAnother", tr("contact.success.sendAnother", "Send Another Message")),
+      },
+    },
   };
-
-  const t = getTranslations();
 
   const [formState, setFormState] = useState({
     name: "",
@@ -562,10 +593,24 @@ const PremiumContactForm = () => {
 };
 
 export const getStaticProps = async ({ locale }) => {
+  const { getLayoutCmsProps } = require("@/lib/api/cmsHelper");
+  const { getPage } = require("@/lib/api/cms");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const [layoutProps, cmsPage, cmsPageContent] = await Promise.all([
+    getLayoutCmsProps(locale),
+    getPage("contact-us", locale),
+    getPageAndLayoutContent("contact-us", locale),
+  ]);
+
   return {
     props: {
-      ...(await serverSideTranslations(locale, ["about", "common"])),
+      ...(await serverSideTranslations(locale, ["about", "common", "contact"])),
+      ...layoutProps,
+      cmsPage: cmsPage || null,
+      cmsPageContent,
     },
+    revalidate: 60,
   };
 };
 export default PremiumContactForm;

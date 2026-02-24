@@ -14,10 +14,16 @@ const visy = () => {
   )
 }
 export const getStaticProps = async ({ locale }) => {
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const cmsPageContent = await getPageAndLayoutContent("visa-relocation", locale);
+
   return {
     props: {  
       ...(await serverSideTranslations(locale, ['about', 'common', 'travel'])),
+      cmsPageContent,
     },
+    revalidate: 60,
   }
 }
 export default visy

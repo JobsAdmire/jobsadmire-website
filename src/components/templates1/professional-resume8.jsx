@@ -1,10 +1,13 @@
 import React, { useRef } from 'react';
 import { useTranslation } from 'next-i18next';
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 
 const ReverseLayoutResume = ({ userData }) => {
   const { t } = useTranslation('resume-generator');
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const resumeRef = useRef(null);
 
   // Extract data with same structure as NurseResumeTemplate
@@ -51,7 +54,7 @@ const ReverseLayoutResume = ({ userData }) => {
 
           {/* Contact Me */}
           <div className="mt-6">
-            <h2 className="text-xl font-semibold text-red-500">{t("sections.contactMe")}</h2>
+            <h2 className="text-xl font-semibold text-red-500">{ct("sections.contactMe")}</h2>
             <p className="text-gray-600">📞 <span className="text-[15px]">{personal_data?.phone ?? "-"}</span></p>
             <p className="text-gray-600">✉️ <span className="text-[15px]">{personal_data?.email ?? "-"}</span></p>
             <p className="text-gray-600">📍 <span className="text-[15px]">{personal_data?.address ?? "-"}</span></p>
@@ -60,7 +63,7 @@ const ReverseLayoutResume = ({ userData }) => {
           {/* Job Experience - Enhanced with safe data access */}
           {(experience_data && Object.keys(experience_data).length > 0) && (
             <div className="mt-6">
-              <h2 className="text-xl font-semibold text-red-500">{t("sections.jobExperience")}</h2>
+              <h2 className="text-xl font-semibold text-red-500">{ct("sections.jobExperience")}</h2>
               <div className="mt-3">
                 {Object.values(experience_data).map((exp, index) => (
                   <div key={`exp-${index}`} className="mb-4">
@@ -80,7 +83,7 @@ const ReverseLayoutResume = ({ userData }) => {
           {/* Education - Enhanced with safe data access */}
           {(education_data && Object.keys(education_data).length > 0) && (
             <div className="mt-6">
-              <h2 className="text-xl font-semibold text-red-500">{t("sections.education")}</h2>
+              <h2 className="text-xl font-semibold text-red-500">{ct("sections.education")}</h2>
               <div className="mt-3">
                 {Object.values(education_data).map((edu, index) => (
                   <div key={`edu-${index}`} className="mb-4">
@@ -99,7 +102,7 @@ const ReverseLayoutResume = ({ userData }) => {
 
           {/* References Section - Same as NurseResumeTemplate */}
           <div className="mt-6">
-            <h2 className="text-xl font-semibold text-red-500">{t("sections.references")}</h2>
+            <h2 className="text-xl font-semibold text-red-500">{ct("sections.references")}</h2>
             <div className="mt-3 grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="mb-4">
                 <h3 className="text-base font-bold text-gray-800">Harumi Kobayashi</h3>
@@ -135,13 +138,13 @@ const ReverseLayoutResume = ({ userData }) => {
             <img 
               className="w-24 h-24 rounded-full border-4 border-red-500 object-cover" 
               src={personal_data?.image || personal_data?.profileImage || "/api/placeholder/200/200"} 
-              alt={t('alts.profileAlt')}
+              alt={ct('alts.profileAlt')}
             />
           </div>
 
           {/* About Me */}
           <div>
-            <h2 className="text-lg font-semibold text-red-500">{t("sections.aboutMe")}</h2>
+            <h2 className="text-lg font-semibold text-red-500">{ct("sections.aboutMe")}</h2>
             <p className="text-gray-300 mt-2 text-[13px]">{personal_data?.summary ?? ""}</p>
           </div>
 
@@ -185,7 +188,7 @@ const ReverseLayoutResume = ({ userData }) => {
           {/* Skills - Enhanced with safe data access */}
           {(skill_data && Object.keys(skill_data).length > 0) && (
             <div className="mt-6">
-              <h2 className="text-lg font-semibold text-orange-400">{t("sections.skills")}</h2>
+              <h2 className="text-lg font-semibold text-orange-400">{ct("sections.skills")}</h2>
               <ul className="mt-2 list-disc pl-5">
                 {Array.isArray(skill_data) 
                   ? skill_data.map((skill, index) => (

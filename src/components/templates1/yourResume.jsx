@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import { useTranslation } from "next-i18next";
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { Edit } from "lucide-react";
@@ -7,6 +8,8 @@ import { showInfo } from "@/lib/utils/toast";
 
 const TraditionalResume = ({ userData }) => {
   const { t } = useTranslation(["common", "resume-generator"]);
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const resumeRef = useRef(null);
 
   const handleEdit = () => {
@@ -43,7 +46,7 @@ const TraditionalResume = ({ userData }) => {
     contentElement.style.height = "auto";
 
     // Wait for a short duration to let the content adjust
-    setTimeout(() => {
+    setTimeouct(() => {
       html2canvas(contentElement, opt.html2canvas).then((canvas) => {
         // Reset the height of the content
         contentElement.style.height = originalHeight;
@@ -72,7 +75,7 @@ const TraditionalResume = ({ userData }) => {
       <button
         onClick={handleEdit}
         className="fixed bottom-12 right-2.5 bg-black text-white p-3 rounded-full shadow-lg z-50 hover:bg-gray-800 transition-colors"
-        title={t("labels.general.updateResume")}
+        title={ct("labels.general.updateResume")}
         id="edit"
       >
         <Edit size={24} />
@@ -98,7 +101,7 @@ const TraditionalResume = ({ userData }) => {
           </div>
 
           <div className="details">
-            <h3 className="text-base font-bold mt-4 uppercase">{t("labels.phone", { ns: "resume-generator" }).toUpperCase()}</h3>
+            <h3 className="text-base font-bold mt-4 uppercase">{ct("labels.phone", { ns: "resume-generator" }).toUpperCase()}</h3>
             <p>
               <i className="fas fa-phone pr-2"></i>
               <a href={`tel:${userData.phone}`} className="text-white">
@@ -106,7 +109,7 @@ const TraditionalResume = ({ userData }) => {
               </a>
             </p>
 
-            <h3 className="text-base font-bold mt-4 uppercase">{t("labels.email", { ns: "resume-generator" }).toUpperCase()}</h3>
+            <h3 className="text-base font-bold mt-4 uppercase">{ct("labels.email", { ns: "resume-generator" }).toUpperCase()}</h3>
             <p>
               <i className="fas fa-envelope pr-1"></i>
               <a href={`mailto:${userData.email}`} className="text-white">
@@ -114,7 +117,7 @@ const TraditionalResume = ({ userData }) => {
               </a>
             </p>
 
-            <h3 className="text-base font-bold mt-4 uppercase">{t("labels.address", { ns: "resume-generator" }).toUpperCase()}</h3>
+            <h3 className="text-base font-bold mt-4 uppercase">{ct("labels.address", { ns: "resume-generator" }).toUpperCase()}</h3>
             <p>
               <i className="fas fa-map-marker-alt pr-1"></i> {userData.address}
             </p>
@@ -127,7 +130,7 @@ const TraditionalResume = ({ userData }) => {
             {/* Profile Section */}
             <div className="company mb-6">
               <h3 className="text-lg font-bold mb-2.5 text-gray-800">
-                {t("sections.profile", { ns: "resume-generator" })}
+                {ct("sections.profile", { ns: "resume-generator" })}
               </h3>
               <div className="company_details">
                 <p>{userData.summary}</p>
@@ -137,7 +140,7 @@ const TraditionalResume = ({ userData }) => {
             {/* Previous Employment Section */}
             <div className="company mb-6">
               <h3 className="text-lg font-bold mb-2.5 text-gray-800">
-                {t("sections.previousEmployment", { ns: "resume-generator" })}
+                {ct("sections.previousEmployment", { ns: "resume-generator" })}
               </h3>
               {userData.experience.map((exp, index) => (
                 <div key={`exp-${index}`} className="company_details mb-2.5">
@@ -153,11 +156,11 @@ const TraditionalResume = ({ userData }) => {
             {/* Professional Skills Section */}
             <div className="skills mb-6">
               <h3 className="text-lg font-bold mb-2.5 text-gray-800">
-                {t("resume-generator:sections.professionalSkills")}
+                {ct("resume-generator:sections.professionalSkills")}
               </h3>
               <div className="skill_list">
                 <div className="skill1">
-                  <h4 className="font-semibold">{t("sections.software", { ns: "resume-generator" })}</h4>
+                  <h4 className="font-semibold">{ct("sections.software", { ns: "resume-generator" })}</h4>
                   <ul className="pl-4 list-disc">
                     {userData.software && (
                       <li>
@@ -167,7 +170,7 @@ const TraditionalResume = ({ userData }) => {
                   </ul>
                 </div>
                 <div className="skill2">
-                  <h4 className="font-semibold">{t("sections.languages", { ns: "resume-generator" })}</h4>
+                  <h4 className="font-semibold">{ct("sections.languages", { ns: "resume-generator" })}</h4>
                   <ul className="pl-4 list-disc">
                     {userData.skills.map((skill, index) => (
                       <li key={`skill-${index}`}>{skill}</li>
@@ -181,7 +184,7 @@ const TraditionalResume = ({ userData }) => {
             {/* Education Section */}
             <div className="education mb-6">
               <h3 className="text-lg font-bold mb-2.5 text-gray-800">
-                {t("resume-generator:sections.education")}
+                {ct("resume-generator:sections.education")}
               </h3>
               {userData.education.map((edu, index) => (
                 <div key={`edu-${index}`} className="education_details mb-2.5">
@@ -197,7 +200,7 @@ const TraditionalResume = ({ userData }) => {
             {/* Languages Section */}
             <div className="company mb-6">
               <h3 className="text-lg font-bold mb-2.5 text-gray-800">
-                {t("sections.languages", { ns: "resume-generator" })}
+                {ct("sections.languages", { ns: "resume-generator" })}
               </h3>
               <div className="company_details">
                 {userData.languages?.map((lang, index) => (
@@ -214,7 +217,7 @@ const TraditionalResume = ({ userData }) => {
             {/* Reference Section */}
             <div className="company mb-6">
               <h3 className="text-lg font-bold mb-2.5 text-gray-800">
-                {t("sections.reference", { ns: "resume-generator" })}
+                {ct("sections.reference", { ns: "resume-generator" })}
               </h3>
               {userData.references.map((ref, index) => (
                 <div key={`ref-${index}`} className="company_details">
@@ -238,9 +241,9 @@ const TraditionalResume = ({ userData }) => {
         <button
           onClick={generatePDF}
           className="btn btn-info myBtn px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
-          title={t("labels.general.generatePdf")}
+          title={ct("labels.general.generatePdf")}
         >
-          {t("labels.general.generatePdf")}
+          {ct("labels.general.generatePdf")}
         </button>
       </div>
     </div>

@@ -9,9 +9,11 @@ import {
   Wheat,
 } from "lucide-react";
 import { useTranslation } from "next-i18next";
+import { useCmsContent } from "@/lib/context/CmsContentContext";
 
 const CategoryCard = ({ icon: Icon, title, index }) => {
   const { t } = useTranslation("common");
+  const { c } = useCmsContent();
   const [isHovered, setIsHovered] = useState(false);
 
   // Define different colors for each category
@@ -98,7 +100,7 @@ const CategoryCard = ({ icon: Icon, title, index }) => {
           <span
             className={`text-sm ${color.dark} font-medium flex items-center justify-center`}
           >
-            {t("popularCategories.exploreJobs")}
+            {c("popularCategories.exploreJobs", t("popularCategories.exploreJobs"))}
             <svg
               className="w-4 h-4 ml-1 transition-transform duration-300 group-hover:translate-x-1"
               fill="none"
@@ -121,24 +123,24 @@ const CategoryCard = ({ icon: Icon, title, index }) => {
 
 const PopularCategories = () => {
   const { t } = useTranslation("common");
+  const { c } = useCmsContent();
 
   const categories = [
     {
       icon: Factory,
-      title: t("popularCategories.categories.factoryWorker"),
+      title: c("popularCategories.categories.factoryWorker", t("popularCategories.categories.factoryWorker")),
     },
-
     {
       icon: Wheat,
-      title: t("popularCategories.categories.informationTechnology"),
+      title: c("popularCategories.categories.informationTechnology", t("popularCategories.categories.informationTechnology")),
     },
     {
       icon: Plane,
-      title: t("popularCategories.categories.tourismHospitality"),
+      title: c("popularCategories.categories.tourismHospitality", t("popularCategories.categories.tourismHospitality")),
     },
     {
       icon: Truck,
-      title: t("popularCategories.categories.engineeringConstruction"),
+      title: c("popularCategories.categories.engineeringConstruction", t("popularCategories.categories.engineeringConstruction")),
     },
   ];
 
@@ -170,13 +172,13 @@ const PopularCategories = () => {
           </div>
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-sky-500 to-sky-500">
-              {t("popularCategories.title")}
+              {c("popularCategories.title", t("popularCategories.title"))}
             </span>
           </h2>
           {/* <h2 className="mb-6 text-3xl font-bold text-gray-800 md:text-4xl">{t('popularCategories.title')}</h2> */}
           <br></br>
           <p className="max-w-3xl px-4 mx-auto text-base text-gray-600 md:text-lg">
-            {t("popularCategories.description")}
+            {c("popularCategories.description", t("popularCategories.description"))}
           </p>
         </div>
 

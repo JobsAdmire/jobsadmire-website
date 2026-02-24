@@ -25,7 +25,7 @@ import {
 } from "lucide-react";
 import HireWorkersPopupForm from "@/components/hireworkers/HireWorkersPopupForm";
 
-const HireWorkersPage = () => {
+const HireWorkersPage = ({ cmsFaqs = [] }) => {
   const { t } = useTranslation("hire-workers");
   const router = useRouter();
   const { locale } = router;
@@ -571,17 +571,20 @@ const HireWorkersPage = () => {
           </div>
 
           <div className="space-y-4">
-            {[1, 2, 3, 4].map((num) => (
+            {(cmsFaqs.length > 0 ? cmsFaqs : [1, 2, 3, 4].map((num) => ({
+              question: t(`faq.items.q${num}.question`),
+              answer: t(`faq.items.q${num}.answer`),
+            }))).map((faq, idx) => (
               <div
-                key={num}
+                key={faq.id || idx}
                 className="bg-white/80 backdrop-blur-xl rounded-2xl shadow-lg border border-white/50 overflow-hidden"
               >
                 <div className="p-6">
                   <h3 className="text-lg font-bold text-sky-900 mb-3">
-                    {t(`faq.items.q${num}.question`)}
+                    {faq.question}
                   </h3>
                   <p className="text-sky-600 leading-relaxed">
-                    {t(`faq.items.q${num}.answer`)}
+                    {faq.answer}
                   </p>
                 </div>
               </div>
@@ -634,10 +637,22 @@ export const getStaticProps = async ({ locale }) => {
   const {
     serverSideTranslations,
   } = require("next-i18next/serverSideTranslations");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const { getFaqs } = require("@/lib/api/cms");
+
+  const [cmsPageContent, cmsFaqs] = await Promise.all([
+    getPageAndLayoutContent("services/hire-workers", locale),
+    getFaqs("hire-workers-in-turkey", locale),
+  ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common", "hire-workers"])),
+      cmsPageContent,
+      cmsFaqs: cmsFaqs || [],
     },
+    revalidate: 60,
   };
 };
 

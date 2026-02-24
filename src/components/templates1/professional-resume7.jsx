@@ -1,10 +1,13 @@
 import React, { useRef } from 'react';
 import { useTranslation } from 'next-i18next';
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 
 const OrangeAccentResume = ({ userData }) => {
   const { t } = useTranslation('resume-generator');
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const resumeRef = useRef(null);
   
   // Extract data with same structure as NurseResumeTemplate
@@ -44,7 +47,7 @@ const OrangeAccentResume = ({ userData }) => {
           <img 
             src={personal_data?.image || personal_data?.profileImage || "/api/placeholder/200/200"} 
             className="w-32 h-32 rounded-full border-4 border-orange-500 shadow-md object-cover" 
-            alt={t('alts.profileAlt')}
+            alt={ct('alts.profileAlt')}
           />
           <h1 className="text-2xl font-bold mt-4 text-orange-500">
             {personal_data?.firstName ?? ""} {personal_data?.middleName ?? ""} {personal_data?.lastName ?? ""} 
@@ -52,7 +55,7 @@ const OrangeAccentResume = ({ userData }) => {
           </h1>
           <p className="text-gray-400">{personal_data?.designation ?? "-"}</p>
           <hr className="my-4 border-gray-700 w-full" />
-          <h2 className="text-lg font-semibold mb-2">{t("sections.contactMe")}</h2>
+          <h2 className="text-lg font-semibold mb-2">{ct("sections.contactMe")}</h2>
           <p className="">📍 <span className="text-[15px]">{personal_data?.address ?? "-"}</span></p>
           <p className="">📧 <span className="text-[13px]">{personal_data?.email ?? "-"}</span></p>
           <p className="">📞 <span className="text-[15px]">{personal_data?.phone ?? "-"}</span></p>
@@ -61,7 +64,7 @@ const OrangeAccentResume = ({ userData }) => {
           {/* Skills - Enhanced with safe data access */}
           {(skill_data && Object.keys(skill_data).length > 0) && (
             <>
-              <h2 className="text-lg font-semibold mb-2">{t("sections.proSkills")}</h2>
+              <h2 className="text-lg font-semibold mb-2">{ct("sections.proSkills")}</h2>
               <div className="w-full">
                 <ul className="space-y-2">
                   {Array.isArray(skill_data) 
@@ -85,7 +88,7 @@ const OrangeAccentResume = ({ userData }) => {
         {/* Main Content */}
         <div className="w-full md:w-2/3 p-8">
           <h2 className="text-2xl font-semibold text-orange-500 border-orange-500 inline-block">
-            {t("sections.aboutMe")}
+            {ct("sections.aboutMe")}
           </h2>
           <p className="text-gray-600 mt-2 text-[13px]">
             {personal_data?.summary ?? ""}
@@ -95,7 +98,7 @@ const OrangeAccentResume = ({ userData }) => {
           {(education_data && Object.keys(education_data).length > 0) && (
             <>
               <h2 className="text-2xl font-semibold text-orange-500 border-orange-500 inline-block mt-6">
-                {t("sections.education")}
+                {ct("sections.education")}
               </h2>
               <div className="mt-4 space-y-3">
                 {Object.values(education_data).map((edu, index) => (
@@ -117,7 +120,7 @@ const OrangeAccentResume = ({ userData }) => {
           {(experience_data && Object.keys(experience_data).length > 0) && (
             <>
               <h2 className="text-2xl font-semibold text-orange-500 border-orange-500 inline-block mt-6">
-                {t("sections.experience")}
+                {ct("sections.experience")}
               </h2>
               <div className="mt-4 space-y-3">
                 {Object.values(experience_data).map((exp, index) => (

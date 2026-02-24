@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useRouter } from "next/router";
 
 import enTranslations from "../../../public/locales/en/ukimmi.json";
@@ -12,6 +12,18 @@ const MovingWithPetsToUK = () => {
   const { locale } = router;
 
   const [activeSection, setActiveSection] = useState(null);
+  const [cmsFaqs, setCmsFaqs] = useState([]);
+
+  useEffect(() => {
+    const cmsBase = process.env.NEXT_PUBLIC_CMS_API_URL || 'http://localhost:4000/api/v1';
+    fetch(`${cmsBase}/faqs/page/${encodeURIComponent('immigration/pets-to-uk')}?locale=${locale}`)
+      .then((r) => r.ok ? r.json() : null)
+      .then((json) => {
+        const data = json?.data ?? json;
+        if (Array.isArray(data) && data.length > 0) setCmsFaqs(data);
+      })
+      .catch(() => {});
+  }, [locale]);
 
   // Get translations based on current locale
   const getTranslations = () => {
@@ -550,9 +562,9 @@ const MovingWithPetsToUK = () => {
               </h2>
 
               <div className="space-y-4">
-                {t.petsToUkGuide.sidebar.faq.questions.map(
+                {(cmsFaqs.length > 0 ? cmsFaqs : t.petsToUkGuide.sidebar.faq.questions).map(
                   (question, index) => (
-                    <div key={index}>
+                    <div key={question.id || index}>
                       <h3 className="font-medium text-sky-700">
                         {question.question}
                       </h3>

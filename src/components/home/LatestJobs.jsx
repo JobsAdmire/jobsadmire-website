@@ -17,9 +17,11 @@ import {
 } from "lucide-react";
 import axios from "axios";
 import { env } from "@/lib/constants/env";
+import { useCmsContent } from "@/lib/context/CmsContentContext";
 
 const JobBoard = () => {
   const { t } = useTranslation("common");
+  const { c } = useCmsContent();
   // const initialJobs = [
   //   {
   //     id: 1,
@@ -211,15 +213,15 @@ const JobBoard = () => {
 
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-sky-500 to-sky-500">
-              {t("jobsInDemand.title", { defaultValue: "Jobs In Demand" })}
+              {c("jobsInDemand.title", t("jobsInDemand.title", { defaultValue: "Jobs In Demand" }))}
             </span>
           </h2>
           <br></br>
           <p className="relative max-w-3xl mx-auto text-gray-600">
-            {t("jobsInDemand.description", {
+            {c("jobsInDemand.description", t("jobsInDemand.description", {
               defaultValue:
                 "Search all the open 100+ positions on the web. Get your own personalized salary estimate. Read reviews on over 30+ companies worldwide.",
-            })}
+            }))}
           </p>
         </div>
 
@@ -230,7 +232,7 @@ const JobBoard = () => {
         {/* Results count */}
         <div className="flex items-center justify-between mb-6">
           <p className="font-medium text-gray-600">
-            {t("jobsInDemand.showingJobs", { defaultValue: "Showing" })}{" "}
+            {c("jobsInDemand.showingJobs", t("jobsInDemand.showingJobs", { defaultValue: "Showing" }))}{" "}
             <span className="text-sky-600">{jobs.length}</span>{" "}
             {t("jobsInDemand.jobs", { defaultValue: "jobs" })}
           </p>
@@ -285,9 +287,9 @@ const JobBoard = () => {
                 {job.featured && (
                   <div className="bg-gradient-to-r from-sky-500 to-blue-600 py-1.5 px-4 text-xs font-medium text-white flex items-center justify-center">
                     <Star size={12} className="mr-1 fill-white" />{" "}
-                    {t("jobsInDemand.featured", {
+                    {c("jobsInDemand.featured", t("jobsInDemand.featured", {
                       defaultValue: "Featured Opportunity",
-                    })}
+                    }))}
                   </div>
                 )}
 
@@ -328,9 +330,9 @@ const JobBoard = () => {
                     <div className="grid grid-cols-2 gap-4">
                       <div>
                         <p className="flex items-center mb-1 text-xs font-medium text-gray-500 uppercase">
-                          {t("jobsInDemand.salaryRange", {
+                          {c("jobsInDemand.salaryRange", t("jobsInDemand.salaryRange", {
                             defaultValue: "Salary Range",
-                          })}
+                          }))}
                         </p>
                         <p className="font-semibold text-gray-800">
                           {job.currency}- {job.salary_start} - {job.salary_end}
@@ -339,9 +341,9 @@ const JobBoard = () => {
                       <div>
                         <p className="flex items-center mb-1 text-xs font-medium text-gray-500 uppercase">
                           <Calendar size={12} className="mr-1" />{" "}
-                          {t("jobsInDemand.experience", {
+                          {c("jobsInDemand.experience", t("jobsInDemand.experience", {
                             defaultValue: "Experience",
-                          })}
+                          }))}
                         </p>
                         <p className="font-semibold text-gray-800">
                           {job.experience}
@@ -352,15 +354,15 @@ const JobBoard = () => {
 
                   <div className="flex items-center justify-between">
                     <button className="flex items-center text-sm text-gray-500 transition-colors hover:text-sky-600">
-                      {t("jobsInDemand.saveForLater", {
+                      {c("jobsInDemand.saveForLater", t("jobsInDemand.saveForLater", {
                         defaultValue: "Save for later",
-                      })}
+                      }))}
                     </button>
                     <a href={`/job-detail/${job.job_id}`}>
                       <button className="flex items-center px-4 py-2 text-sm font-medium transition-colors rounded-lg bg-sky-50 hover:bg-sky-100 text-sky-600 group-hover:bg-sky-600 group-hover:text-white">
-                        {t("jobsInDemand.viewDetails", {
+                        {c("jobsInDemand.viewDetails", t("jobsInDemand.viewDetails", {
                           defaultValue: "View Details",
-                        })}
+                        }))}
                         <ChevronRight size={16} className="ml-1" />
                       </button>
                     </a>
@@ -375,7 +377,7 @@ const JobBoard = () => {
               <Search size={24} className="text-sky-400" />
             </div>
             <h3 className="mb-2 text-xl font-semibold text-gray-800">
-              {t("jobsInDemand.noJobsFound", { defaultValue: "No jobs found" })}
+              {c("jobsInDemand.noJobsFound", t("jobsInDemand.noJobsFound", { defaultValue: "No jobs found" }))}
             </h3>
             <p className="mb-6 text-gray-600">
               {t("jobsInDemand.tryAdjusting", {
@@ -398,9 +400,9 @@ const JobBoard = () => {
           <div className="mt-12 text-center">
             <a href="/job">
               <button className="inline-flex items-center px-8 py-3 font-medium text-white transition-all bg-gradient-to-r from-sky-500 to-blue-600 rounded-xl hover:shadow-lg">
-                {t("jobsInDemand.seeMoreJobs", {
+                {c("jobsInDemand.seeMoreJobs", t("jobsInDemand.seeMoreJobs", {
                   defaultValue: "See More Jobs",
-                })}
+                }))}
                 <ArrowRight size={16} className="ml-2" />
               </button>
             </a>

@@ -640,9 +640,22 @@ const VisaRequirementsPage = () => {
 };
 
 export async function getServerSideProps({ locale }) {
+  const { getLayoutCmsProps } = require("@/lib/api/cmsHelper");
+  const { getPage } = require("@/lib/api/cms");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const [layoutProps, cmsPage, cmsPageContent] = await Promise.all([
+    getLayoutCmsProps(locale),
+    getPage("visa", locale),
+    getPageAndLayoutContent("visa-relocation", locale),
+  ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["common"])),
+      ...layoutProps,
+      cmsPage: cmsPage || null,
+      cmsPageContent,
     },
   };
 }

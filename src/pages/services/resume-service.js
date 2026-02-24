@@ -40,23 +40,31 @@ const resumeservice = () => {
         <Resumesect />
         <Way />
         <ServicesCarousel />
-        <Banner
-          title="Craft Your Perfect Resume"
-          description="Get a professionally written resume that highlights your strengths and lands you interviews. Our expert writers have helped thousands secure their dream jobs with ATS-optimized resumes."
-          buttonText="Order Resume"
-          buttonLink="/services/resume-service"
-          serviceLabel="RESUME EXPERTS"
-        />
+        <Banner />
       </div>
     </div>
   );
 };
 
 export const getStaticProps = async ({ locale }) => {
+  const { getLayoutCmsProps } = require("@/lib/api/cmsHelper");
+  const { getServiceBySlug } = require("@/lib/api/cms");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const [layoutProps, cmsService, cmsPageContent] = await Promise.all([
+    getLayoutCmsProps(locale),
+    getServiceBySlug("resume-service", locale),
+    getPageAndLayoutContent("services/resume-service", locale),
+  ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["about", "common"])),
+      ...layoutProps,
+      cmsService: cmsService || null,
+      cmsPageContent,
     },
+    revalidate: 60,
   };
 };
 

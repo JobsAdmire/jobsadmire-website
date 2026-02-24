@@ -1,5 +1,4 @@
-import React, { useState, useEffect, useCallback } from "react";
-// Updated imports - using more standard icon names
+import React, { useState, useEffect, useCallback, useMemo } from "react";
 import {
   ChevronLeft,
   ChevronRight,
@@ -19,14 +18,36 @@ import {
   Award,
 } from "lucide-react";
 import { useTranslation } from "next-i18next";
+import { useCms } from "@/lib/context/CmsContext";
+import { useCmsContent } from "@/lib/context/CmsContentContext";
+
+const ICON_MAP = {
+  FileText: <FileText className="w-8 h-8" />,
+  Globe: <Globe className="w-8 h-8" />,
+  MessageCircle: <MessageCircle className="w-8 h-8" />,
+  TrendingUp: <TrendingUp className="w-8 h-8" />,
+  Plane: <Plane className="w-8 h-8" />,
+  BookOpen: <BookOpen className="w-8 h-8" />,
+  Monitor: <Monitor className="w-8 h-8" />,
+  Users: <Users className="w-8 h-8" />,
+  Building: <Building className="w-8 h-8" />,
+};
+
+const EMOJI_MAP = {
+  "resume-service": "📄", "global-job-placement": "🌍", "interview-coaching": "🎯",
+  "career-counselling": "🎯", "visa-assistance": "✈️", "skill-development": "📚",
+  "remote-work": "💻", "talent-acquisition": "👥", "immigration": "🏠", "human-resource": "🤝",
+};
 
 const ServicesCarousel = () => {
   const { t } = useTranslation("common");
+  const { c } = useCmsContent();
+  const { services: cmsServices } = useCms();
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [isTransitioning, setIsTransitioning] = useState(false);
 
-  const services = [
+  const fallbackServices = [
     {
       id: 1,
       titleKey: "resumeWriting.title",
@@ -149,7 +170,29 @@ const ServicesCarousel = () => {
     },
   ];
 
-  // Custom theme colors using #38B6FF
+  const services = useMemo(() => {
+    if (cmsServices?.length > 0) {
+      return cmsServices.map((svc, i) => {
+        const content = svc.contents?.[0] || {};
+        const features = content.featuresJson || [];
+        return {
+          id: svc.id || i + 1,
+          title: content.title || svc.slug,
+          subtitle: content.subtitle || "",
+          description: content.description || "",
+          features: Array.isArray(features) ? features : [],
+          ctaPrimary: content.ctaText || "Learn More",
+          icon: ICON_MAP[svc.icon] || <Award className="w-8 h-8" />,
+          image: svc.emoji || EMOJI_MAP[svc.slug] || "⭐",
+          link: svc.link || `/services/${svc.slug}`,
+          primaryColor: "custom",
+          _fromCms: true,
+        };
+      });
+    }
+    return fallbackServices;
+  }, [cmsServices]);
+
   const colorMap = {
     custom: {
       primary: "bg-[#38B6FF]",
@@ -225,14 +268,14 @@ const ServicesCarousel = () => {
         <div className="inline-flex items-center space-x-2 mb-4">
           <Award className="w-6 h-6 text-[#38B6FF]" />
           <span className="text-[#38B6FF] font-semibold text-sm uppercase tracking-wide">
-            {safeTranslate("servicesCarousel.header.badge")}
+            {c("servicesCarousel.badge", safeTranslate("servicesCarousel.header.badge"))}
           </span>
         </div>
         <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4 leading-tight">
-          {safeTranslate("servicesCarousel.header.title")}
+          {c("servicesCarousel.title", safeTranslate("servicesCarousel.header.title"))}
         </h2>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-          {safeTranslate("servicesCarousel.header.description")}
+          {c("servicesCarousel.description", safeTranslate("servicesCarousel.header.description"))}
         </p>
       </div>
 
@@ -242,26 +285,23 @@ const ServicesCarousel = () => {
           {/* Content Area */}
           <div className="relative h-[600px] md:h-[550px]">
             {services.map((service, index) => {
-              // Get translated content for current service with safe fallbacks
-              const title = safeTranslate(
-                `servicesCarousel.services.${service.titleKey}`
-              );
-              const subtitle = safeTranslate(
-                `servicesCarousel.services.${service.subtitleKey}`
-              );
-              const description = safeTranslate(
-                `servicesCarousel.services.${service.descriptionKey}`
-              );
-              const features = safeTranslate(
-                `servicesCarousel.services.${service.featuresKey}`,
-                { returnObjects: true }
-              );
-              const ctaPrimary = safeTranslate(
-                `servicesCarousel.services.${service.ctaPrimaryKey}`
-              );
+              const title = service._fromCms
+                ? service.title
+                : safeTranslate(`servicesCarousel.services.${service.titleKey}`);
+              const subtitle = service._fromCms
+                ? service.subtitle
+                : safeTranslate(`servicesCarousel.services.${service.subtitleKey}`);
+              const description = service._fromCms
+                ? service.description
+                : safeTranslate(`servicesCarousel.services.${service.descriptionKey}`);
+              const rawFeatures = service._fromCms
+                ? service.features
+                : safeTranslate(`servicesCarousel.services.${service.featuresKey}`, { returnObjects: true });
+              const ctaPrimary = service._fromCms
+                ? service.ctaPrimary
+                : safeTranslate(`servicesCarousel.services.${service.ctaPrimaryKey}`);
 
-              // Ensure features is an array
-              const featuresArray = Array.isArray(features) ? features : [];
+              const featuresArray = Array.isArray(rawFeatures) ? rawFeatures : [];
 
               return (
                 <div
@@ -400,9 +440,9 @@ const ServicesCarousel = () => {
           {/* Pagination Dots */}
           <div className="flex items-center space-x-2">
             {services.map((service, index) => {
-              const serviceTitle = safeTranslate(
-                `servicesCarousel.services.${service.titleKey}`
-              );
+              const serviceTitle = service._fromCms
+                ? service.title
+                : safeTranslate(`servicesCarousel.services.${service.titleKey}`);
               return (
                 <button
                   key={index}

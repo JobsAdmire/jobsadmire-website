@@ -1,8 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useTranslation } from "next-i18next";
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 
 const NurseResumeTemplate = ({ userData }) => {
   const { t } = useTranslation("resume-generator");
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const [profileImage, setProfileImage] = useState(null);
   
   // Handle both prop data and localStorage data
@@ -78,7 +81,7 @@ const NurseResumeTemplate = ({ userData }) => {
   // Helper function to render array data
   const renderArrayData = (dataArray, renderItem) => {
     if (!dataArray || !Array.isArray(dataArray) || dataArray.length === 0) {
-      return <p className="text-sm text-gray-500 italic">{t("fallbacks.noDataAvailable")}</p>;
+      return <p className="text-sm text-gray-500 italic">{ct("fallbacks.noDataAvailable")}</p>;
     }
     return dataArray.map((item, index) => renderItem(item, index));
   };
@@ -94,7 +97,7 @@ const NurseResumeTemplate = ({ userData }) => {
               {profileImage ? (
                 <img
                   src={profileImage}
-                  alt={t("alts.profileAlt")}
+                  alt={ct("alts.profileAlt")}
                   className="object-cover w-full h-full"
                 />
               ) : (
@@ -125,7 +128,7 @@ const NurseResumeTemplate = ({ userData }) => {
           {/* Contact Section */}
           <div className="mb-8">
             <h2 className="pb-2 mb-4 text-xl font-semibold border-b border-blue-600">
-              {t("sections.contact")}
+              {ct("sections.contact")}
             </h2>
             <div className="space-y-3">
               <div className="flex items-center">
@@ -191,22 +194,22 @@ const NurseResumeTemplate = ({ userData }) => {
           {/* About Me Section */}
           <div className="mb-8">
             <h2 className="pb-2 mb-4 text-xl font-semibold border-b border-blue-600">
-              {t("sections.aboutMe")}
+              {ct("sections.aboutMe")}
             </h2>
             <p className="text-sm leading-relaxed">
-              {safeGet(resumeData.personal_data, 'summary', t('fallbacks.noSummaryAvailable'))}
+              {safeGet(resumeData.personal_data, 'summary', ct('fallbacks.noSummaryAvailable'))}
             </p>
           </div>
 
           {/* Skills Section */}
           <div>
             <h2 className="pb-2 mb-4 text-xl font-semibold border-b border-blue-600">
-              {t("sections.skills")}
+              {ct("sections.skills")}
             </h2>
             <ul className="pl-5 space-y-2 list-disc">
               {renderArrayData(resumeData.skill_data, (skill, index) => (
                 <li key={index}>
-                  {typeof skill === 'string' ? skill : safeGet(skill, 'name', t('fallbacks.unnamedSkill'))}
+                  {typeof skill === 'string' ? skill : safeGet(skill, 'name', ct('fallbacks.unnamedSkill'))}
                 </li>
               ))}
             </ul>
@@ -218,7 +221,7 @@ const NurseResumeTemplate = ({ userData }) => {
           {/* Education Section */}
           <div className="mb-8">
             <h2 className="pb-2 mb-6 text-xl font-semibold text-blue-800 border-b border-gray-300">
-              {t("sections.education")}
+              {ct("sections.education")}
             </h2>
             {renderArrayData(resumeData.education_data, (education, index) => (
               <div key={index} className="relative pl-6 mb-6 border-l-2 border-blue-400">
@@ -240,7 +243,7 @@ const NurseResumeTemplate = ({ userData }) => {
           {/* Experience Section */}
           <div className="mb-8">
             <h2 className="pb-2 mb-6 text-xl font-semibold text-blue-800 border-b border-gray-300">
-              {t("sections.experience")}
+              {ct("sections.experience")}
             </h2>
             {renderArrayData(resumeData.experience_data, (experience, index) => (
               <div key={index} className="relative pl-6 mb-6 border-l-2 border-blue-400">
@@ -263,7 +266,7 @@ const NurseResumeTemplate = ({ userData }) => {
           {resumeData.project_data && resumeData.project_data.length > 0 && (
             <div className="mb-8">
               <h2 className="pb-2 mb-6 text-xl font-semibold text-blue-800 border-b border-gray-300">
-                {t("sections.projects")}
+                {ct("sections.projects")}
               </h2>
               {renderArrayData(resumeData.project_data, (project, index) => (
                 <div key={index} className="relative pl-6 mb-6 border-l-2 border-blue-400">
@@ -286,7 +289,7 @@ const NurseResumeTemplate = ({ userData }) => {
           {resumeData.achievements_data && resumeData.achievements_data.length > 0 && (
             <div className="mb-8">
               <h2 className="pb-2 mb-6 text-xl font-semibold text-blue-800 border-b border-gray-300">
-                {t("sections.achievements")}
+                {ct("sections.achievements")}
               </h2>
               {renderArrayData(resumeData.achievements_data, (achievement, index) => (
                 <div key={index} className="relative pl-6 mb-6 border-l-2 border-blue-400">
@@ -310,13 +313,13 @@ const NurseResumeTemplate = ({ userData }) => {
           {/* References Section */}
           <div>
             <h2 className="pb-2 mb-6 text-xl font-semibold text-blue-800 border-b border-gray-300">
-              {t("sections.references")}
+              {ct("sections.references")}
             </h2>
 
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               <div className="mb-4">
-                <h3 className="text-base font-bold">{t("fallbacks.availableUponRequest")}</h3>
-                <p className="text-sm text-gray-600">{t("messages.referencesAvailableOnRequest")}</p>
+                <h3 className="text-base font-bold">{ct("fallbacks.availableUponRequest")}</h3>
+                <p className="text-sm text-gray-600">{ct("messages.referencesAvailableOnRequest")}</p>
               </div>
             </div>
           </div>

@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
 import { Upload, Zap, Users, Target, Star, ArrowRight, CheckCircle, Briefcase, TrendingUp, Award, Globe, Clock, Mail, Phone, Sparkles, Rocket, Shield, Heart, Search, Filter, Bell, Menu, X } from 'lucide-react';
+import { useCms } from '@/lib/context/CmsContext';
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 
 export default function ResumeSubmissionPage() {
   const { t } = useTranslation('common');
+  const { c, cObj } = useCmsContent();
+  const { testimonials: cmsTestimonials } = useCms();
   const [isUploaded, setIsUploaded] = useState(false);
   const [dragActive, setDragActive] = useState(false);
   const [currentStep, setCurrentStep] = useState(1);
@@ -65,39 +69,29 @@ export default function ResumeSubmissionPage() {
     { icon: Shield, titleKey: "labels.submitResume.feature4Title", descriptionKey: "labels.submitResume.feature4Description", color: "from-cyan-400 to-sky-500" }
   ];
 
-  const testimonials = [
-    {
-      name: "Alexandra Thompson",
-      role: "Product Manager",
-      company: "Airbnb",
-      avatar: "👩‍💼",
-      quote: "JobsAdmire transformed my career search. Within a week, I had three interviews lined up with companies I'd only dreamed of working for.",
-      rating: 5,
-      increase: "+$40K salary"
-    },
-    {
-      name: "David Chen",
-      role: "Software Engineer",
-      company: "Google",
-      avatar: "👨‍💻",
-      quote: "The AI matching was incredibly accurate. Every job recommendation was relevant to my skills and career aspirations.",
-      rating: 5,
-      increase: "+$60K salary"
-    },
-    {
-      name: "Maria Rodriguez",
-      role: "UX Designer",
-      company: "Netflix",
-      avatar: "👩‍🎨",
-      quote: "I was skeptical at first, but JobsAdmire delivered. Found my dream role at Netflix in just two weeks. Absolutely recommend!",
-      rating: 5,
-      increase: "+$35K salary"
-    }
+  const fallbackTestimonials = [
+    { name: "Alexandra Thompson", role: "Product Manager", company: "Airbnb", avatar: "👩‍💼", quote: "JobsAdmire transformed my career search.", rating: 5, increase: "+$40K salary" },
+    { name: "David Chen", role: "Software Engineer", company: "Google", avatar: "👨‍💻", quote: "The AI matching was incredibly accurate.", rating: 5, increase: "+$60K salary" },
+    { name: "Maria Rodriguez", role: "UX Designer", company: "Netflix", avatar: "👩‍🎨", quote: "I was skeptical at first, but JobsAdmire delivered.", rating: 5, increase: "+$35K salary" },
   ];
 
-  const companies = [
+  const testimonials =
+    cmsTestimonials?.length > 0
+      ? cmsTestimonials.map((item) => ({
+          name: item.authorName,
+          role: item.authorTitle || "",
+          company: "",
+          avatar: item.authorImage?.url ? null : "⭐",
+          avatarUrl: item.authorImage?.url || null,
+          quote: item.quote,
+          rating: item.rating || 5,
+          increase: item.metricValue ? `${item.metricValue} ${item.metricLabel || ""}`.trim() : "",
+        }))
+      : fallbackTestimonials;
+
+  const companies = cObj("companies.list", [
     "Google", "Apple", "Microsoft", "Netflix", "Airbnb", "Uber", "Tesla", "Meta", "Amazon", "Spotify"
-  ];
+  ]);
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-sky-50 via-white to-blue-50">
@@ -123,23 +117,23 @@ export default function ResumeSubmissionPage() {
             {/* Badge */}
             <div className="inline-flex items-center bg-white border border-sky-200 text-sky-700 px-6 py-3 rounded-full text-sm font-semibold mb-8 shadow-sm">
               <Star className="h-4 w-4 mr-2 text-yellow-500" />
-              Trusted by 500K+ Professionals
+              {c("submitResume.badge", t("labels.submitResume.badge", "Trusted by 500K+ Professionals"))}
               <Sparkles className="h-4 w-4 ml-2 text-sky-500" />
             </div>
 
             {/* Main Headline */}
             <h1 className="text-6xl md:text-8xl font-black mb-8 leading-tight">
-              <span className="text-black">Find Your</span>
+              <span className="text-black">{c("submitResume.heroLine1", t("labels.submitResume.heroLine1", "Find Your"))}</span>
               <br />
               <span className="bg-gradient-to-r from-sky-500 via-blue-500 to-indigo-500 bg-clip-text text-transparent">
-                Dream Career
+                {c("submitResume.heroLine2", t("labels.submitResume.heroLine2", "Dream Career"))}
               </span>
             </h1>
 
             {/* Subtitle */}
             <p className="text-xl md:text-2xl text-gray-600 max-w-4xl mx-auto mb-12 leading-relaxed">
-              Upload your resume and let our AI connect you with opportunities from the world's top companies. 
-              <span className="text-sky-600 font-semibold"> Your next career move starts here.</span>
+              {c("submitResume.heroDescription", t("labels.submitResume.heroDescription", "Upload your resume and let our AI connect you with opportunities from the world's top companies."))}
+              <span className="text-sky-600 font-semibold"> {c("submitResume.heroHighlight", t("labels.submitResume.heroHighlight", "Your next career move starts here."))}</span>
             </p>
 
             {/* Process Steps */}
@@ -284,7 +278,7 @@ export default function ResumeSubmissionPage() {
       {/* Companies Section */}
       <section className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <p className="text-gray-500 font-semibold text-lg mb-12">Trusted by professionals at top companies worldwide</p>
+          <p className="text-gray-500 font-semibold text-lg mb-12">{c("submitResume.companiesHeading", t("labels.submitResume.companiesHeading", "Trusted by professionals at top companies worldwide"))}</p>
           <div className="flex flex-wrap items-center justify-center gap-8 md:gap-12">
             {companies.map((company, index) => (
               <div key={index} className="text-2xl font-bold text-gray-400 hover:text-gray-600 transition-colors cursor-pointer">
@@ -338,7 +332,11 @@ export default function ResumeSubmissionPage() {
               <div key={index} className="group">
                 <div className="bg-gradient-to-br from-sky-50 to-blue-50 rounded-3xl p-8 border border-sky-200 hover:border-sky-300 transform hover:-translate-y-2 hover:shadow-xl transition-all duration-500">
                   <div className="flex items-center mb-6">
-                    <div className="text-4xl mr-4">{testimonial.avatar}</div>
+                    <div className="text-4xl mr-4">
+                      {testimonial.avatarUrl
+                        ? <img src={testimonial.avatarUrl} alt={testimonial.name} className="w-12 h-12 rounded-full object-cover" />
+                        : testimonial.avatar}
+                    </div>
                     <div>
                       <h4 className="font-bold text-gray-800 text-lg">{testimonial.name}</h4>
                       <p className="text-sky-600 font-semibold">{testimonial.role}</p>

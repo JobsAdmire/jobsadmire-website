@@ -1,10 +1,13 @@
 import React, { useRef } from 'react';
 import { useTranslation } from 'next-i18next';
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import { jsPDF } from 'jspdf';
 import html2canvas from 'html2canvas';
 
 const MinimalResume = ({ userData }) => {
   const { t } = useTranslation('resume-generator');
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const resumeRef = useRef(null);
 
   const generatePDF = () => {
@@ -51,9 +54,9 @@ const MinimalResume = ({ userData }) => {
           />
 
           <div className="mt-6 text-center text-gray-700">
-            <p><strong>{t("labels.phone")}:</strong> {userData.phone}</p>
-            <p><strong>{t("labels.email")}:</strong> {userData.email}</p>
-            <p><strong>{t("labels.address")}:</strong> {userData.address}</p>
+            <p><strong>{ct("labels.phone")}:</strong> {userData.phone}</p>
+            <p><strong>{ct("labels.email")}:</strong> {userData.email}</p>
+            <p><strong>{ct("labels.address")}:</strong> {userData.address}</p>
           </div>
         </div>
 
@@ -67,7 +70,7 @@ const MinimalResume = ({ userData }) => {
 
         {/* Skills */}
         <div className="mt-8">
-          <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-gray-300 pb-2">{t("sections.skills")}</h2>
+          <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-gray-300 pb-2">{ct("sections.skills")}</h2>
           <ul className="mt-3 list-disc pl-6 text-gray-700 space-y-1 text-sm">
             {userData.skills.map((skill, index) => (
               <li key={`skill-${index}`}>{skill}</li>
@@ -87,7 +90,7 @@ const MinimalResume = ({ userData }) => {
 
         {/* Education */}
         <div className="mt-8">
-          <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-gray-300 pb-2">{t("sections.education")}</h2>
+          <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-gray-300 pb-2">{ct("sections.education")}</h2>
           <ul className="mt-3 list-disc pl-6 text-gray-700 space-y-3">
             {userData.education.map((edu, index) => (
               <li key={`edu-${index}`} className="text-sm">
@@ -101,7 +104,7 @@ const MinimalResume = ({ userData }) => {
 
         {/* Experience */}
         <div className="mt-8">
-          <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-gray-300 pb-2">{t("sections.experience")}</h2>
+          <h2 className="text-2xl font-bold text-gray-800 border-b-2 border-gray-300 pb-2">{ct("sections.experience")}</h2>
           <ul className="mt-3 list-disc pl-6 text-gray-700 space-y-3">
             {userData.experience.map((exp, index) => (
               <li key={`exp-${index}`} className="text-sm">

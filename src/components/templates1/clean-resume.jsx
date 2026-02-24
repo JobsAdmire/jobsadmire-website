@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import { useTranslation } from "next-i18next";
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { Printer, Edit } from "lucide-react";
@@ -7,6 +8,8 @@ import { showInfo } from "@/lib/utils/toast";
 
 const Resume = ({ userData }) => {
   const { t } = useTranslation(["common", "resume-generator"]);
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const resumeRef = useRef(null);
   const [isGenerating, setIsGenerating] = useState(false);
 
@@ -52,7 +55,7 @@ const Resume = ({ userData }) => {
       <button
         onClick={handleEdit}
         className="hide-for-pdf fixed bottom-6 right-6 bg-black text-white p-3 rounded-full shadow-lg z-50 hover:bg-gray-800 transition-colors"
-        title={t("labels.general.updateResume")}
+        title={ct("labels.general.updateResume")}
       >
         <Edit size={24} />
       </button>
@@ -70,15 +73,15 @@ const Resume = ({ userData }) => {
           <div className="text-sm mb-4">
             <div className="flex flex-wrap gap-x-4 gap-y-1">
               <div>
-                <span className="font-semibold">{t("labels.email")}: </span>
+                <span className="font-semibold">{ct("labels.email")}: </span>
                 <span>{userData.email}</span>
               </div>
               <div>
-                <span className="font-semibold">{t("labels.phone")}: </span>
+                <span className="font-semibold">{ct("labels.phone")}: </span>
                 <span>+{userData.phone}</span>
               </div>
               <div>
-                <span className="font-semibold">{t("labels.address")}: </span>
+                <span className="font-semibold">{ct("labels.address")}: </span>
                 <span>{userData.address}</span>
               </div>
             </div>
@@ -95,7 +98,7 @@ const Resume = ({ userData }) => {
         {/* Experience Section */}
         <div className="mb-6">
           <h3 className="text-lg font-bold border-b border-gray-200 pb-2 mb-3">
-            {t("resume-generator:sections.experience")}
+            {ct("resume-generator:sections.experience")}
           </h3>
           <div className="mb-4">
             <div className="grid md:grid-cols-2 gap-4">
@@ -117,7 +120,7 @@ const Resume = ({ userData }) => {
         {/* Education Section */}
         <div className="mb-6">
           <h3 className="text-lg font-bold border-b border-gray-200 pb-2 mb-3">
-            {t("resume-generator:sections.education")}
+            {ct("resume-generator:sections.education")}
           </h3>
           <div className="mb-4">
             <div className="grid md:grid-cols-2 gap-4">
@@ -138,7 +141,7 @@ const Resume = ({ userData }) => {
         {/* Skills Section */}
         <div className="mb-6">
           <h3 className="text-lg font-bold border-b border-gray-200 pb-2 mb-3">
-            {t("resume-generator:sections.skills")}
+            {ct("resume-generator:sections.skills")}
           </h3>
           <div className="mb-4">
             <div className="font-medium">
@@ -150,7 +153,7 @@ const Resume = ({ userData }) => {
         {/* Software Section */}
         <div className="mb-6">
           <h3 className="text-lg font-bold border-b border-gray-200 pb-2 mb-3">
-            {t("sections.software")}
+            {ct("sections.software")}
           </h3>
           <div className="mb-4">
             <div className="font-medium">
@@ -162,7 +165,7 @@ const Resume = ({ userData }) => {
         {/* Languages Section */}
         <div className="mb-6">
           <h3 className="text-lg font-bold border-b border-gray-200 pb-2 mb-3">
-            {t("sections.languages")}
+            {ct("sections.languages")}
           </h3>
           <div className="mb-4">
             <div>
@@ -179,7 +182,7 @@ const Resume = ({ userData }) => {
         {/* Reference Section */}
         <div className="mb-6">
           <h3 className="text-lg font-bold border-b border-gray-200 pb-2 mb-3">
-            {t("sections.reference")}
+            {ct("sections.reference")}
           </h3>
           <div className="mb-4">
             <div className="grid md:grid-cols-2 gap-4">
@@ -205,7 +208,7 @@ const Resume = ({ userData }) => {
           className="hide-for-pdf bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md flex items-center gap-2 transition-colors disabled:bg-blue-300"
         >
           <Printer size={20} />
-          {isGenerating ? t("labels.general.generatingPdf") : t("labels.general.generatePdf")}
+          {isGenerating ? ct("labels.general.generatingPdf") : ct("labels.general.generatePdf")}
         </button>
       </div>
     </div>

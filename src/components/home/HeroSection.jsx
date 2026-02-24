@@ -31,9 +31,11 @@ import Link from "next/link";
 import { useTranslation } from "next-i18next";
 import { useRouter } from "next/router";
 import { env } from "@/lib/constants/env";
+import { useCmsContent } from "@/lib/context/CmsContentContext";
 
 const PremiumJobHeroSection = () => {
   const { t } = useTranslation("common");
+  const { c, cObj } = useCmsContent();
   const router = useRouter();
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -92,9 +94,9 @@ const PremiumJobHeroSection = () => {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      const animatedWords = t("hero.animatedWords", { returnObjects: true });
+      const animatedWords = cObj("hero.animatedWords", t("hero.animatedWords", { returnObjects: true }) || []);
       setCurrentWordIndex(
-        (prevIndex) => (prevIndex + 1) % animatedWords.length
+        (prevIndex) => (prevIndex + 1) % (animatedWords.length || 1)
       );
     }, 2000);
 
@@ -134,11 +136,11 @@ const PremiumJobHeroSection = () => {
         setFilteredLocations(jobLocations);
       } else {
         console.warn("Unexpected API response structure:", data);
-        setError(t("hero.search.errorText"));
+        setError(c("hero.search.errorText", t("hero.search.errorText")));
       }
     } catch (err) {
       console.error("Error fetching jobs:", err);
-      setError(t("hero.search.errorText"));
+      setError(c("hero.search.errorText", t("hero.search.errorText")));
     } finally {
       setLoading(false);
     }
@@ -195,9 +197,9 @@ const PremiumJobHeroSection = () => {
   const serviceOptions = [
     {
       id: "migrate",
-      label: t("hero.services.migrate.label"),
+      label: c("hero.services.migrate.label", t("hero.services.migrate.label")),
       icon: <UserCheck className="w-5 h-5" />,
-      description: t("hero.services.migrate.description"),
+      description: c("hero.services.migrate.description", t("hero.services.migrate.description")),
       gradient: "from-blue-500 to-indigo-600",
       iconBg: "bg-blue-500",
       bgColor: "bg-blue-50",
@@ -206,9 +208,9 @@ const PremiumJobHeroSection = () => {
     },
     {
       id: "work",
-      label: t("hero.services.work.label"),
+      label: c("hero.services.work.label", t("hero.services.work.label")),
       icon: <Target className="w-5 h-5" />,
-      description: t("hero.services.work.description"),
+      description: c("hero.services.work.description", t("hero.services.work.description")),
       gradient: "from-emerald-500 to-teal-600",
       iconBg: "bg-emerald-500",
       bgColor: "bg-emerald-50",
@@ -217,9 +219,9 @@ const PremiumJobHeroSection = () => {
     },
     {
       id: "visit",
-      label: t("hero.services.visit.label"),
+      label: c("hero.services.visit.label", t("hero.services.visit.label")),
       icon: <Plane className="w-5 h-5" />,
-      description: t("hero.services.visit.description"),
+      description: c("hero.services.visit.description", t("hero.services.visit.description")),
       gradient: "from-purple-500 to-violet-600",
       iconBg: "bg-purple-500",
       bgColor: "bg-purple-50",
@@ -228,7 +230,7 @@ const PremiumJobHeroSection = () => {
     },
   ];
 
-  const animatedWords = t("hero.animatedWords", { returnObjects: true });
+  const animatedWords = cObj("hero.animatedWords", t("hero.animatedWords", { returnObjects: true }) || []);
 
   return (
     <>
@@ -261,7 +263,7 @@ const PremiumJobHeroSection = () => {
                 <div className="space-y-4">
                   <h1 className="text-2xl font-bold leading-tight sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl">
                     <span className="text-gray-900">
-                      {t("hero.title.findTheDream")}
+                      {c("hero.title.findTheDream", t("hero.title.findTheDream"))}
                     </span>{" "}
                     <span className="relative inline-block">
                       <span className="font-extrabold text-transparent bg-gradient-to-r from-sky-600 to-sky-600 bg-clip-text">
@@ -271,12 +273,12 @@ const PremiumJobHeroSection = () => {
                     </span>
                     <br />
                     <span className="text-gray-900">
-                      {t("hero.title.forYourself")}
+                      {c("hero.title.forYourself", t("hero.title.forYourself"))}
                     </span>
                   </h1>
 
                   <p className="max-w-2xl text-base leading-relaxed text-gray-600 sm:text-lg lg:text-xl">
-                    {t("hero.subtitle")}
+                    {c("hero.subtitle", t("hero.subtitle"))}
                   </p>
                 </div>
 
@@ -287,7 +289,7 @@ const PremiumJobHeroSection = () => {
                     <div className="flex items-center mb-4 text-sky-600">
                       <div className="w-4 h-4 mr-2 border-b-2 rounded-full animate-spin border-sky-600"></div>
                       <span className="text-sm">
-                        {t("hero.search.loadingText")}
+                        {c("hero.search.loadingText", t("hero.search.loadingText"))}
                       </span>
                     </div>
                   )}
@@ -302,7 +304,7 @@ const PremiumJobHeroSection = () => {
                           onClick={fetchJobsData}
                           className="font-medium text-left underline sm:ml-2 text-sky-600 hover:text-sky-600"
                         >
-                          {t("hero.search.retryButton")}
+                          {c("hero.search.retryButton", t("hero.search.retryButton"))}
                         </button>
                       </div>
                     </div>
@@ -316,7 +318,7 @@ const PremiumJobHeroSection = () => {
                       </div>
                       <input
                         type="text"
-                        placeholder={t("hero.search.jobPlaceholder")}
+                        placeholder={c("hero.search.jobPlaceholder", t("hero.search.jobPlaceholder"))}
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         onFocus={() => setShowJobTitles(true)}
@@ -339,7 +341,7 @@ const PremiumJobHeroSection = () => {
                           {filteredJobTitles.length > 8 && (
                             <div className="px-4 py-2 text-xs text-gray-500 bg-gray-50/80">
                               +{filteredJobTitles.length - 8}{" "}
-                              {t("hero.search.moreResults")}
+                              {c("hero.search.moreResults", t("hero.search.moreResults"))}
                             </div>
                           )}
                         </div>
@@ -353,7 +355,7 @@ const PremiumJobHeroSection = () => {
                       </div>
                       <input
                         type="text"
-                        placeholder={t("hero.search.locationPlaceholder")}
+                        placeholder={c("hero.search.locationPlaceholder", t("hero.search.locationPlaceholder"))}
                         value={location}
                         onChange={(e) => setLocation(e.target.value)}
                         onFocus={() => setShowLocations(true)}
@@ -376,7 +378,7 @@ const PremiumJobHeroSection = () => {
                           {filteredLocations.length > 8 && (
                             <div className="px-4 py-2 text-xs text-gray-500 bg-gray-50/80">
                               +{filteredLocations.length - 8}{" "}
-                              {t("hero.search.moreResults")}
+                              {c("hero.search.moreResults", t("hero.search.moreResults"))}
                             </div>
                           )}
                         </div>
@@ -390,7 +392,7 @@ const PremiumJobHeroSection = () => {
                       <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/25 to-white/0 -skew-x-12 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-700"></div>
                       <div className="relative flex items-center justify-center">
                         <span className="mr-2">
-                          {t("hero.search.searchButton")}
+                          {c("hero.search.searchButton", t("hero.search.searchButton"))}
                         </span>
                         <ArrowRight className="w-5 h-5 transition-transform duration-300 group-hover:translate-x-1" />
                       </div>
@@ -404,10 +406,10 @@ const PremiumJobHeroSection = () => {
                 {/* Services Header */}
                 <div className="text-center">
                   <h2 className="mb-2 text-xl font-bold text-gray-900 sm:text-2xl lg:text-3xl">
-                    {t("hero.services.sectionTitle")}
+                    {c("hero.services.sectionTitle", t("hero.services.sectionTitle"))}
                   </h2>
                   <p className="text-sm text-gray-600 sm:text-base">
-                    {t("hero.services.sectionSubtitle")}
+                    {c("hero.services.sectionSubtitle", t("hero.services.sectionSubtitle"))}
                   </p>
                 </div>
 
@@ -491,12 +493,12 @@ const PremiumJobHeroSection = () => {
                       </div>
                       <div className="flex-1 min-w-0">
                         <h4 className="text-sm font-bold truncate">
-                          {t("hero.services.consultation.title")}
+                          {c("hero.services.consultation.title", t("hero.services.consultation.title"))}
                         </h4>
                         <p className="text-xs truncate text-emerald-100">
-                          {t("hero.services.consultation.subtitle", {
+                          {c("hero.services.consultation.subtitle", t("hero.services.consultation.subtitle", {
                             defaultValue: "Expert guidance available",
-                          })}
+                          }))}
                         </p>
                       </div>
                     </div>
@@ -505,7 +507,7 @@ const PremiumJobHeroSection = () => {
                       className="flex items-center flex-shrink-0 px-3 py-2 ml-2 text-xs font-semibold transition-all duration-300 border rounded-lg group sm:px-4 bg-white/20 hover:bg-white/30 backdrop-blur-sm border-white/30 hover:scale-105 sm:text-sm"
                     >
                       <span className="hidden sm:inline">
-                        {t("hero.services.consultation.button")}
+                        {c("hero.services.consultation.button", t("hero.services.consultation.button"))}
                       </span>
                       <span className="sm:hidden">Chat</span>
                       <ArrowRight className="w-3 h-3 ml-1 transition-transform duration-300 sm:w-4 sm:h-4 sm:ml-2 group-hover:translate-x-1" />

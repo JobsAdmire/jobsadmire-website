@@ -1,4 +1,5 @@
 import { useTranslation } from "next-i18next";
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import React, {
   forwardRef,
   useEffect,
@@ -9,6 +10,8 @@ import React, {
 const EducationSection = forwardRef(
   ({ data, updateData, nextStep, prevStep }, ref) => {
     const { t } = useTranslation("resume-generator");
+    const { c } = useCmsContent();
+    const ct = (key, options) => c(key) || t(key, options);
     const [educationList, setEducationList] = useState(() => {
       const initialData = data?.education;
 
@@ -33,7 +36,7 @@ const EducationSection = forwardRef(
     });
 
     // Load data from localStorage on component mount
-    useEffect(() => {
+    useEffecct(() => {
       const savedData = localStorage.getItem("education_information");
       if (savedData) {
         try {
@@ -42,7 +45,7 @@ const EducationSection = forwardRef(
             ? parsedData
             : Object.values(parsedData);
 
-          setEducationList(dataArray);
+          setEducationLisct(dataArray);
         } catch (error) {
           console.error("Error parsing saved data:", error);
         }
@@ -59,12 +62,12 @@ const EducationSection = forwardRef(
         ...updatedList[index],
         [name]: value,
       };
-      setEducationList(updatedList);
+      setEducationLisct(updatedList);
     };
 
     // Add new education entry
     const addEducation = () => {
-      setEducationList([
+      setEducationLisct([
         ...educationList,
         {
           school: "",
@@ -81,7 +84,7 @@ const EducationSection = forwardRef(
     const removeEducation = (index) => {
       if (educationList.length > 1) {
         const updatedList = educationList.filter((_, i) => i !== index);
-        setEducationList(updatedList);
+        setEducationLisct(updatedList);
       }
     };
 
@@ -92,17 +95,17 @@ const EducationSection = forwardRef(
 
       educationList.forEach((edu, index) => {
         if (!edu.school.trim()) {
-          newErrors[`school_${index}`] = t("step4.schoolRequired");
+          newErrors[`school_${index}`] = ct("step4.schoolRequired");
           isValid = false;
         }
 
         if (!edu.degree.trim()) {
-          newErrors[`degree_${index}`] = t("step4.degreeRequired");
+          newErrors[`degree_${index}`] = ct("step4.degreeRequired");
           isValid = false;
         }
 
         if (!edu.startDate.trim()) {
-          newErrors[`startDate_${index}`] = t("step4.startDateRequired");
+          newErrors[`startDate_${index}`] = ct("step4.startDateRequired");
           isValid = false;
         }
       });
@@ -113,7 +116,7 @@ const EducationSection = forwardRef(
 
     // Submit form
     const handleSubmit = (e) => {
-      if (e) e.preventDefault();
+      if (e) e.preventDefaulct();
 
       if (validateForm()) {
         updateData({ education: educationList });
@@ -156,7 +159,7 @@ const EducationSection = forwardRef(
               </svg>
             </div>
             <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-transparent bg-gradient-to-r from-sky-600 to-blue-600 bg-clip-text break-words">
-              {t("step4.title")}
+              {ct("step4.title")}
             </h2>
           </div>
 
@@ -193,7 +196,7 @@ const EducationSection = forwardRef(
                 )}
 
                 <h3 className="mb-3 sm:mb-4 text-base sm:text-lg font-medium text-sky-700">
-                  {t("step4.educationEntry", { index: index + 1 })}
+                  {ct("step4.educationEntry", { index: index + 1 })}
                 </h3>
 
                 <div className="grid grid-cols-1 gap-4 sm:gap-5 md:gap-6 md:grid-cols-3">
@@ -202,7 +205,7 @@ const EducationSection = forwardRef(
                       htmlFor={`school_${index}`}
                       className="block text-sm font-medium text-sky-800"
                     >
-                      {t("step4.school")}
+                      {ct("step4.school")}
                     </label>
                     <input
                       type="text"
@@ -210,7 +213,7 @@ const EducationSection = forwardRef(
                       name="school"
                       value={education.school}
                       onChange={(e) => handleChange(index, e)}
-                      placeholder={t("step4.schoolPlaceholder")}
+                      placeholder={ct("step4.schoolPlaceholder")}
                       className={`w-full px-4 py-3 rounded-xl border ${
                         errors[`school_${index}`]
                           ? "border-red-500 bg-red-50"
@@ -229,7 +232,7 @@ const EducationSection = forwardRef(
                       htmlFor={`degree_${index}`}
                       className="block text-sm font-medium text-sky-800"
                     >
-                      {t("step4.degree")}
+                      {ct("step4.degree")}
                     </label>
                     <input
                       type="text"
@@ -237,7 +240,7 @@ const EducationSection = forwardRef(
                       name="degree"
                       value={education.degree}
                       onChange={(e) => handleChange(index, e)}
-                      placeholder={t("step4.degreePlaceholder")}
+                      placeholder={ct("step4.degreePlaceholder")}
                       className={`w-full px-4 py-3 rounded-xl border ${
                         errors[`degree_${index}`]
                           ? "border-red-500 bg-red-50"
@@ -256,7 +259,7 @@ const EducationSection = forwardRef(
                       htmlFor={`city_${index}`}
                       className="block text-sm font-medium text-sky-800"
                     >
-                      {t("step4.city")}
+                      {ct("step4.city")}
                     </label>
                     <input
                       type="text"
@@ -264,7 +267,7 @@ const EducationSection = forwardRef(
                       name="city"
                       value={education.city}
                       onChange={(e) => handleChange(index, e)}
-                      placeholder={t("step4.cityPlaceholder")}
+                      placeholder={ct("step4.cityPlaceholder")}
                       className="w-full px-4 py-3 transition-all duration-300 border outline-none rounded-xl border-sky-200 focus:ring-2 focus:ring-sky-200 focus:border-sky-400"
                     />
                   </div>
@@ -276,7 +279,7 @@ const EducationSection = forwardRef(
                       htmlFor={`startDate_${index}`}
                       className="block text-sm font-medium text-sky-800"
                     >
-                      {t("step4.startDate")}
+                      {ct("step4.startDate")}
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 flex items-center pl-3 pointer-events-none">
@@ -299,7 +302,7 @@ const EducationSection = forwardRef(
                         name="startDate"
                         value={education.startDate}
                         onChange={(e) => handleChange(index, e)}
-                        placeholder={t("step4.startDatePlaceholder")}
+                        placeholder={ct("step4.startDatePlaceholder")}
                         className={`w-full pl-10 pr-4 py-3 rounded-xl border ${
                           errors[`startDate_${index}`]
                             ? "border-red-500 bg-red-50"
@@ -319,9 +322,9 @@ const EducationSection = forwardRef(
                       htmlFor={`endDate_${index}`}
                       className="block text-sm font-medium text-sky-800"
                     >
-                      {t("step4.endDate")}{" "}
+                      {ct("step4.endDate")}{" "}
                       <span className="text-sky-400">
-                        {t("step4.endDateOptional")}
+                        {ct("step4.endDateOptional")}
                       </span>
                     </label>
                     <div className="relative">
@@ -345,7 +348,7 @@ const EducationSection = forwardRef(
                         name="endDate"
                         value={education.endDate}
                         onChange={(e) => handleChange(index, e)}
-                        placeholder={t("step4.endDatePlaceholder")}
+                        placeholder={ct("step4.endDatePlaceholder")}
                         className="w-full py-3 pl-10 pr-4 transition-all duration-300 border outline-none rounded-xl border-sky-200 focus:ring-2 focus:ring-sky-200 focus:border-sky-400"
                       />
                     </div>
@@ -356,9 +359,9 @@ const EducationSection = forwardRef(
                       htmlFor={`description_${index}`}
                       className="block text-sm font-medium text-sky-800"
                     >
-                      {t("step4.description")}{" "}
+                      {ct("step4.description")}{" "}
                       <span className="text-sky-400">
-                        {t("step4.descriptionOptional")}
+                        {ct("step4.descriptionOptional")}
                       </span>
                     </label>
                     <textarea
@@ -367,11 +370,11 @@ const EducationSection = forwardRef(
                       value={education.description}
                       onChange={(e) => handleChange(index, e)}
                       rows="3"
-                      placeholder={t("step4.descriptionPlaceholder")}
+                      placeholder={ct("step4.descriptionPlaceholder")}
                       className="w-full px-4 py-3 transition-all duration-300 border outline-none rounded-xl border-sky-200 focus:ring-2 focus:ring-sky-200 focus:border-sky-400"
                     ></textarea>
                     <p className="text-xs text-sky-500">
-                      {t("step4.descriptionTip")}
+                      {ct("step4.descriptionTip")}
                     </p>
                   </div>
                 </div>
@@ -396,7 +399,7 @@ const EducationSection = forwardRef(
                     clipRule="evenodd"
                   />
                 </svg>
-                {t("buttons.addAnotherEducation")}
+                {ct("buttons.addAnotherEducation")}
               </button>
             </div>
           </form>

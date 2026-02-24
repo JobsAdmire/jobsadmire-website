@@ -1,11 +1,14 @@
 import React, { useRef, useState } from "react";
 import { useTranslation } from "next-i18next";
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import { Phone, Mail, Globe, Facebook, Instagram, MapPin } from "lucide-react";
 
 const SkillBasedResume = ({ userData }) => {
   const { t } = useTranslation("resume-generator");
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const resumeRef = useRef(null);
   const [isGenerating, setIsGenerating] = useState(false);
 
@@ -108,7 +111,7 @@ const SkillBasedResume = ({ userData }) => {
         disabled={isGenerating}
         className="px-4 py-2 mb-4 text-white transition-colors bg-blue-500 rounded-md hide-for-pdf hover:bg-blue-600 disabled:bg-blue-300"
       >
-        {isGenerating ? t("actions.generatingPdf") : t("actions.generatePdf")}
+        {isGenerating ? ct("actions.generatingPdf") : ct("actions.generatePdf")}
       </button>
 
       <main
@@ -148,7 +151,7 @@ const SkillBasedResume = ({ userData }) => {
             {/* Contact Info */}
             <div className="mb-8">
               <h3 className="mb-4 text-xl tracking-wide text-white uppercase">
-                {t("sections.contact")}
+                {ct("sections.contact")}
               </h3>
               <ul>
                 <li className="flex items-center mb-3 text-gray-400">
@@ -181,7 +184,7 @@ const SkillBasedResume = ({ userData }) => {
             {/* Skills Section */}
             <div className="mb-8">
               <h3 className="mb-4 text-xl tracking-wide text-white uppercase">
-                {t("sections.skills")}
+                {ct("sections.skills")}
               </h3>
               <ul>
                 {userData.skills.map((skill, index) => (
@@ -197,7 +200,7 @@ const SkillBasedResume = ({ userData }) => {
             {/* References Section */}
             <div>
               <h3 className="mb-4 text-xl tracking-wide text-white uppercase">
-                {t("sections.references")}
+                {ct("sections.references")}
               </h3>
               {userData.references.map((reference, index) => (
                 <ReferenceItem
@@ -218,7 +221,7 @@ const SkillBasedResume = ({ userData }) => {
             {/* About Section */}
             <div className="mb-8">
               <h2 className="text-xl text-blue-500 uppercase tracking-wide mb-4 relative after:content-[''] after:absolute after:w-3/5 after:h-0.5 after:bg-gray-300 after:rounded-full after:right-0 after:top-1/2 after:transform after:-translate-y-1/2">
-                {t("sections.aboutMe")}
+                {ct("sections.aboutMe")}
               </h2>
               <p className="leading-relaxed text-gray-600">{userData.about}</p>
             </div>
@@ -226,7 +229,7 @@ const SkillBasedResume = ({ userData }) => {
             {/* Experience Section */}
             <div className="mb-8">
               <h2 className="text-xl text-blue-500 uppercase tracking-wide mb-4 relative after:content-[''] after:absolute after:w-3/5 after:h-0.5 after:bg-gray-300 after:rounded-full after:right-0 after:top-1/2 after:transform after:-translate-y-1/2">
-                {t("sections.experience")}
+                {ct("sections.experience")}
               </h2>
               {userData.experience.map((exp, index) => (
                 <TimelineItem
@@ -242,7 +245,7 @@ const SkillBasedResume = ({ userData }) => {
             {/* Education Section */}
             <div className="mb-8">
               <h2 className="text-xl text-blue-500 uppercase tracking-wide mb-4 relative after:content-[''] after:absolute after:w-3/5 after:h-0.5 after:bg-gray-300 after:rounded-full after:right-0 after:top-1/2 after:transform after:-translate-y-1/2">
-                {t("sections.education")}
+                {ct("sections.education")}
               </h2>
               {userData.education.map((edu, index) => (
                 <TimelineItem
@@ -258,7 +261,7 @@ const SkillBasedResume = ({ userData }) => {
             {/* Awards Section */}
             <div>
               <h2 className="text-xl text-blue-500 uppercase tracking-wide mb-4 relative after:content-[''] after:absolute after:w-3/5 after:h-0.5 after:bg-gray-300 after:rounded-full after:right-0 after:top-1/2 after:transform after:-translate-y-1/2">
-                {t("sections.awards")}
+                {ct("sections.awards")}
               </h2>
               {userData.awards.map((award, index) => (
                 <TimelineItem

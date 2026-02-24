@@ -32,23 +32,31 @@ const visa = () => {
         <Page />
         <Last />
         <ServicesCarousel />
-        <Banner
-          title="Navigate Your Visa Journey"
-          description="Navigate the complex visa application process with expert guidance. We provide complete assistance for work visas, documentation, and legal requirements to help you work abroad successfully."
-          buttonText="Get Visa Help"
-          buttonLink="/contact-us"
-          serviceLabel="VISA SPECIALISTS"
-        />
+        <Banner />
       </div>
     </div>
   );
 };
 
 export const getStaticProps = async ({ locale }) => {
+  const { getLayoutCmsProps } = require("@/lib/api/cmsHelper");
+  const { getServiceBySlug } = require("@/lib/api/cms");
+  const { getPageAndLayoutContent } = require("@/lib/api/cmsContent");
+
+  const [layoutProps, cmsService, cmsPageContent] = await Promise.all([
+    getLayoutCmsProps(locale),
+    getServiceBySlug("visa-assistance", locale),
+    getPageAndLayoutContent("visa-relocation", locale),
+  ]);
+
   return {
     props: {
       ...(await serverSideTranslations(locale, ["about", "common"])),
+      ...layoutProps,
+      cmsService: cmsService || null,
+      cmsPageContent,
     },
+    revalidate: 60,
   };
 };
 export default visa;

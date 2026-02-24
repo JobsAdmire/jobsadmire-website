@@ -11,65 +11,62 @@ import {
   Sparkles,
 } from "lucide-react";
 import { useTranslation } from "next-i18next";
+import { useCms } from "@/lib/context/CmsContext";
+import { useCmsContent } from "@/lib/context/CmsContentContext";
+
+const defaultProfileImages = [
+  "/images/bd.jpg",
+  "/images/bd3.jpg",
+  "/images/mk.jpg",
+  "/images/bd11.jpg",
+  "/images/aliraza.jpg",
+  "/images/bd9.jpg",
+];
 
 const CompactTestimonials = () => {
   const { t } = useTranslation("common");
+  const { testimonials: cmsTestimonials } = useCms();
+  const { c } = useCmsContent();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isAnimating, setIsAnimating] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [direction, setDirection] = useState("next");
 
-  // Get testimonials from translations
-  const testimonialData = t("testimonials.testimonialsList", {
-    returnObjects: true,
-  });
-  const stats = t("testimonials.stats", { returnObjects: true });
+  const buildFromCms = () => {
+    if (!cmsTestimonials?.length) return null;
+    return cmsTestimonials.map((item, idx) => ({
+      author: item.authorName || "",
+      position: item.authorTitle || "",
+      company: "",
+      text: item.quote || "",
+      highlight: "",
+      rating: item.rating || 5,
+      profileImage: item.authorImage?.url || defaultProfileImages[idx % defaultProfileImages.length],
+      metric: item.metricValue || "",
+      metricLabel: item.metricLabel || "",
+    }));
+  };
 
-  // Combine translation data with static data (images, metrics, etc.)
-  const testimonials = [
-    {
-      ...testimonialData[0],
+  const buildFromTranslations = () => {
+    const testimonialData = t("testimonials.testimonialsList", { returnObjects: true });
+    const stats = t("testimonials.stats", { returnObjects: true });
+    if (!Array.isArray(testimonialData)) return [];
+    const staticMeta = [
+      { profileImage: "/images/bd.jpg", metric: "100%", metricLabel: stats.retention || "Retention" },
+      { profileImage: "/images/bd3.jpg", metric: "15+", metricLabel: stats.years || "Years" },
+      { profileImage: "/images/mk.jpg", metric: "500+", metricLabel: stats.hires || "Hires" },
+      { profileImage: "/images/bd11.jpg", metric: "98%", metricLabel: stats.retention || "Retention" },
+      { profileImage: "/images/aliraza.jpg", metric: "24/7", metricLabel: stats.support || "Support" },
+      { profileImage: "/images/bd9.jpg", metric: "10+", metricLabel: stats.years || "Years" },
+    ];
+    return testimonialData.map((item, idx) => ({
+      ...item,
       rating: 5,
-      profileImage: "/images/bd.jpg",
-      metric: "100%",
-      metricLabel: stats.retention || "Retention",
-    },
-    {
-      ...testimonialData[1],
-      rating: 5,
-      profileImage: "/images/bd3.jpg",
-      metric: "15+",
-      metricLabel: stats.years || "Years",
-    },
-    {
-      ...testimonialData[2],
-      rating: 5,
-      profileImage: "/images/mk.jpg",
-      metric: "500+",
-      metricLabel: stats.hires || "Hires",
-    },
-    {
-      ...testimonialData[3],
-      rating: 5,
-      profileImage: "/images/bd11.jpg",
-      metric: "98%",
-      metricLabel: stats.retention || "Retention",
-    },
-    {
-      ...testimonialData[4],
-      rating: 5,
-      profileImage: "/images/aliraza.jpg",
-      metric: "24/7",
-      metricLabel: stats.support || "Support",
-    },
-    {
-      ...testimonialData[5],
-      rating: 5,
-      profileImage: "/images/bd9.jpg",
-      metric: "10+",
-      metricLabel: stats.years || "Years",
-    },
-  ];
+      ...(staticMeta[idx] || { profileImage: defaultProfileImages[idx % defaultProfileImages.length], metric: "", metricLabel: "" }),
+    }));
+  };
+
+  const testimonials = buildFromCms() || buildFromTranslations();
 
   useEffect(() => {
     const interval = !hovering
@@ -116,11 +113,11 @@ const CompactTestimonials = () => {
         <div className="mb-6 text-center">
           <h2 className="text-3xl font-bold tracking-tight text-gray-900 md:text-4xl">
             <span className="block text-transparent bg-clip-text bg-gradient-to-r from-sky-600 via-sky-500 to-sky-500">
-              {t("testimonials.header.title")}
+              {c("testimonials.header.title", t("testimonials.header.title"))}
             </span>
           </h2>
           <p className="max-w-2xl mx-auto mt-2 text-sm text-gray-600">
-            {t("testimonials.header.description")}
+            {c("testimonials.header.description", t("testimonials.header.description"))}
           </p>
         </div>
 

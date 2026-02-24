@@ -1,5 +1,6 @@
 import { Fragment, useState, useEffect } from 'react';
 import { useTranslation } from 'next-i18next';
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import { RiCheckboxCircleFill } from 'react-icons/ri';
 import { BsFillFileCheckFill} from 'react-icons/bs';
 import Link from 'next/link';
@@ -25,15 +26,17 @@ const initialData = {
 
 const ReferenceForm = () => {
   const { t } = useTranslation('common');
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const [data, setData] = useState(initialData);
 
   const schema = yup.object().shape({
-    firstName: yup.string().required(t('labels.referenceForm.firstName')),
-    lastName: yup.string().required(t('labels.referenceForm.lastName')),
-    email: yup.string().email().required(t('labels.referenceForm.email')),
-    phone: yup.string().required(t('labels.referenceForm.phone')),
-    sex: yup.string().required(t('labels.referenceForm.gender')),
-    password: yup.string().required(t('labels.referenceForm.password')),
+    firstName: yup.string().required(ct('labels.referenceForm.firstName')),
+    lastName: yup.string().required(ct('labels.referenceForm.lastName')),
+    email: yup.string().email().required(ct('labels.referenceForm.email')),
+    phone: yup.string().required(ct('labels.referenceForm.phone')),
+    sex: yup.string().required(ct('labels.referenceForm.gender')),
+    password: yup.string().required(ct('labels.referenceForm.password')),
   });
   const [isSubmitted, setIsSubmitted] = useState(false)
   
@@ -54,7 +57,7 @@ const ReferenceForm = () => {
       const { confirmPassword, ...mainData } = data
       
       if (mainData.password !== confirmPassword) {
-        throw new Error(t('labels.referenceForm.passwordsDoNotMatch'))
+        throw new Error(ct('labels.referenceForm.passwordsDoNotMatch'))
       }
       
       const validatedData = await schema.validate({ ...mainData, sex: data.sex?.value })
@@ -64,12 +67,12 @@ const ReferenceForm = () => {
       Modal.success({
         content: (
           <Typography.Text>
-            {t('labels.referenceForm.accountCreatedSuccess')}
+            {ct('labels.referenceForm.accountCreatedSuccess')}
             <br/>
-            {t('labels.referenceForm.verifyEmailTo')}
+            {ct('labels.referenceForm.verifyEmailTo')}
             &nbsp;
             <Link href={`${appURL}/login`} className="w-fit !underline underline-offset-2">
-              {t('labels.referenceForm.loginToDashboard')}
+              {ct('labels.referenceForm.loginToDashboard')}
             </Link>
           </Typography.Text>
         ),
@@ -82,7 +85,7 @@ const ReferenceForm = () => {
     }
   }
   
-  useEffect(() => {
+  useEffecct(() => {
     if (error) {
       showError(error.message)
     }
@@ -91,8 +94,8 @@ const ReferenceForm = () => {
   return (
     <Fragment>
       <Input
-        label={t('labels.referenceForm.firstName')}
-        placeholder={t('labels.referenceForm.placeholderFirstName')}
+        label={ct('labels.referenceForm.firstName')}
+        placeholder={ct('labels.referenceForm.placeholderFirstName')}
         autoComplete="given-name"
         value={data.firstName}
         onChange={handleDataChange('firstName')}
@@ -100,8 +103,8 @@ const ReferenceForm = () => {
         labelClassName="font-medium"
       />
       <Input
-        label={t('labels.referenceForm.lastName')}
-        placeholder={t('labels.referenceForm.placeholderLastName')}
+        label={ct('labels.referenceForm.lastName')}
+        placeholder={ct('labels.referenceForm.placeholderLastName')}
         autoComplete="family-name"
         value={data.lastName}
         onChange={handleDataChange('lastName')}
@@ -109,8 +112,8 @@ const ReferenceForm = () => {
         labelClassName="font-medium"
       />
       <Input
-        label={t('labels.referenceForm.email')}
-        placeholder={t('labels.referenceForm.placeholderEmail')}
+        label={ct('labels.referenceForm.email')}
+        placeholder={ct('labels.referenceForm.placeholderEmail')}
         type="email"
         autoComplete="email"
         value={data.email}
@@ -119,16 +122,16 @@ const ReferenceForm = () => {
         labelClassName="font-medium"
       />
       <PhoneInput
-        label={t('labels.referenceForm.phone')}
-        placeholder={t('labels.referenceForm.placeholderPhone')}
+        label={ct('labels.referenceForm.phone')}
+        placeholder={ct('labels.referenceForm.placeholderPhone')}
         value={data.phone}
         onChange={handleDataChange('phone')}
         className="w-full"
         labelClassName="font-medium"
       />
       <SelectInput
-        label={t('labels.referenceForm.gender')}
-        placeholder={t('labels.referenceForm.gender')}
+        label={ct('labels.referenceForm.gender')}
+        placeholder={ct('labels.referenceForm.gender')}
         options={gendersOptions}
         value={data.sex}
         onSelect={handleDataChange('sex')}
@@ -136,8 +139,8 @@ const ReferenceForm = () => {
         labelClassName="font-medium"
       />
       <PasswordInput
-        label={t('labels.referenceForm.password')}
-        placeholder={t('labels.referenceForm.placeholderPassword')}
+        label={ct('labels.referenceForm.password')}
+        placeholder={ct('labels.referenceForm.placeholderPassword')}
         autoComplete="new-password"
         value={data.password}
         onChange={handleDataChange('password')}
@@ -145,8 +148,8 @@ const ReferenceForm = () => {
         labelClassName="font-medium"
       />
       <PasswordInput
-        label={t('labels.referenceForm.confirmPassword')}
-        placeholder={t('labels.referenceForm.placeholderConfirmPassword')}
+        label={ct('labels.referenceForm.confirmPassword')}
+        placeholder={ct('labels.referenceForm.placeholderConfirmPassword')}
         value={data.confirmPassword}
         onChange={handleDataChange('confirmPassword')}
         className="w-full"
@@ -157,14 +160,14 @@ const ReferenceForm = () => {
           <div className="flex items-center gap-2.5 w-fit h-10 mt-5 px-2.5 py-2 bg-success rounded-lg">
             <BsFillFileCheckFill className="w-5 h-5 text-secondary"/>
             <Typography.Text className="font-medium text-secondary leading-none">
-              {t('labels.referenceForm.submitted')}
+              {ct('labels.referenceForm.submitted')}
             </Typography.Text>
           </div>
         ) : (
           <PrimaryButton
             onClick={handleSubmit}
             isLoading={isMutating}
-            text={t('labels.referenceForm.submit')}
+            text={ct('labels.referenceForm.submit')}
             className="w-fit mt-5"
           />
         )

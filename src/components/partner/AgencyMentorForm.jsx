@@ -1,5 +1,6 @@
 import { Fragment, useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 import countries from 'i18n-iso-countries';
 import enLocale from 'i18n-iso-countries/langs/en.json'
 import { object, string } from 'yup';
@@ -22,6 +23,8 @@ const countryOptions = getCountryOptions()
 
 const AgencyMentorForm = ({ type, onSubmit }) => {
   const { t } = useTranslation();
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   
   const [firstName, setFirstName] = useState('')
   const [lastName, setLastName] = useState('')
@@ -34,16 +37,16 @@ const AgencyMentorForm = ({ type, onSubmit }) => {
   const [name, setName] = useState('')
   
   const payloadSchema = object({
-    firstName: string().required(t('nameRequired')),
-    lastName: string().required(t('lastNameRequired')),
-    type: string().required(t('typeRequired')),
-    country: string().required(t('countryRequired')),
-    title: string().required(t('titleRequired')),
-    address: string().required(t('adressRequired')),
-    name: string().required(t('nameRequired')),
-    email: string().email().required(t('emailRequired')),
-    phone: string().required(t('phoneRequired')),
-    sex: string().required(t('sexRequired'))
+    firstName: string().required(ct('nameRequired')),
+    lastName: string().required(ct('lastNameRequired')),
+    type: string().required(ct('typeRequired')),
+    country: string().required(ct('countryRequired')),
+    title: string().required(ct('titleRequired')),
+    address: string().required(ct('adressRequired')),
+    name: string().required(ct('nameRequired')),
+    email: string().email().required(ct('emailRequired')),
+    phone: string().required(ct('phoneRequired')),
+    sex: string().required(ct('sexRequired'))
   })
   
   const handleSubmit = async () => {
@@ -70,7 +73,7 @@ const AgencyMentorForm = ({ type, onSubmit }) => {
       })
       
       await PartnerService.createPartnerRequest(statusPayload)
-      showSuccess(t('agencyMentorForm.requestSubmittedSuccess'))
+      showSuccess(ct('agencyMentorForm.requestSubmittedSuccess'))
       onSubmit?.()
       
       setAddress('')
@@ -90,48 +93,48 @@ const AgencyMentorForm = ({ type, onSubmit }) => {
   return (
     <Fragment>
       <Input
-        label={t('Agency Name')}
-        placeholder={t('Agency Name')}
+        label={ct('Agency Name')}
+        placeholder={ct('Agency Name')}
         value={name}
         onChange={setName}
         className="w-full"
         labelClassName="font-medium"
       />
       <Input
-        label={t('Title')}
-        placeholder={t('Title')}
+        label={ct('Title')}
+        placeholder={ct('Title')}
         onChange={setTitle}
         value={title}
         className="w-full"
         labelClassName="font-medium"
       />
       <Input
-        label={t('Manager Name')}
-        placeholder={t('Manager Name')}
+        label={ct('Manager Name')}
+        placeholder={ct('Manager Name')}
         onChange={setFirstName}
         value={firstName}
         className="w-full"
         labelClassName="font-medium"
       />
       <Input
-        label={t('Manager Last Name')}
-        placeholder={t('Manager Last Name')}
+        label={ct('Manager Last Name')}
+        placeholder={ct('Manager Last Name')}
         onChange={setLastName}
         value={lastName}
         className="w-full"
         labelClassName="font-medium"
       />
       <Input
-        label={t('Email')}
-        placeholder={t('Email')}
+        label={ct('Email')}
+        placeholder={ct('Email')}
         onChange={setEmail}
         value={email}
         className="w-full"
         labelClassName="font-medium"
       />
       <SelectInput
-        label={t('Country')}
-        placeholder={t('Country')}
+        label={ct('Country')}
+        placeholder={ct('Country')}
         options={countryOptions}
         onSelect={setCountry}
         value={country}
@@ -140,8 +143,8 @@ const AgencyMentorForm = ({ type, onSubmit }) => {
         labelClassName="font-medium"
       />
       <SelectInput
-        label={t('Sex')}
-        placeholder={t('Sex')}
+        label={ct('Sex')}
+        placeholder={ct('Sex')}
         onSelect={setSex}
         value={sex}
         options={gendersOptions}
@@ -150,16 +153,16 @@ const AgencyMentorForm = ({ type, onSubmit }) => {
         labelClassName="font-medium"
       />
       <PhoneInput
-        label={t('Phone')}
-        placeholder={t('Phone')}
+        label={ct('Phone')}
+        placeholder={ct('Phone')}
         onChange={setPhone}
         value={phone}
         className="w-full"
         labelClassName="font-medium"
       />
       <Input
-        label={t('Address')}
-        placeholder={t('Address')}
+        label={ct('Address')}
+        placeholder={ct('Address')}
         onChange={setAddress}
         value={address}
         className="w-full"
@@ -167,7 +170,7 @@ const AgencyMentorForm = ({ type, onSubmit }) => {
       />
       <PrimaryButton
         onClick={handleSubmit}
-        text={t('Submit')}
+        text={ct('Submit')}
         className="w-fit mt-5"
       />
     </Fragment>

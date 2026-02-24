@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'next-i18next';
+import { useCmsContent } from '@/lib/context/CmsContentContext';
 
 const ResumeContainer = () => {
   const { t } = useTranslation('resume-generator');
+  const { c } = useCmsContent();
+  const ct = (key, options) => c(key) || t(key, options);
   const [selectedTemplate, setSelectedTemplate] = useState('professional');
   
   // Sample user data that would normally come from an API or form
@@ -13,7 +16,7 @@ const ResumeContainer = () => {
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="container mx-auto py-8 px-4">
-        <h1 className="text-3xl font-bold text-center mb-8">{t("resumeBuilder")}</h1>
+        <h1 className="text-3xl font-bold text-center mb-8">{ct("resumeBuilder")}</h1>
         
         <div className="bg-white shadow rounded-lg p-6 mb-8">
           <h2 className="text-xl font-semibold mb-4">Choose a Template</h2>
