@@ -39,7 +39,11 @@ test('API routes are not intercepted by the locale proxy', async ({ request }) =
 });
 
 test('the locale cookie uses our name', async ({ page, context }) => {
+  // Two navigations on purpose: next-intl skips the cookie when the resolved locale already
+  // matches the browser's accept-language, so a cold /en in an English browser sets nothing.
+  await page.goto('/');
   await page.goto('/en');
   const names = (await context.cookies()).map((c) => c.name);
+  expect(names).toContain('ja_locale');
   expect(names).not.toContain('NEXT_LOCALE');
 });
