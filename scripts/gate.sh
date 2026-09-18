@@ -30,5 +30,15 @@ for path in / /en /isci-talebi /en/hire-workers; do
 done
 # Before assert, so the reports survive a failing budget — that is when they are read (R48).
 npx lhci upload --target=filesystem --outputDir=./lighthouse-report >/dev/null
-npx lhci assert
+
+# R50: against localhost, Lantern charges the whole sub-60 ms waterfall to the LCP graph and
+# reports ~2.7 s whatever the page — so LCP is a warning there and an error everywhere else.
+# The binding run is the one against the preview URL. Only `assert` changes; collect/upload do not.
+if [[ "$E2E_BASE_URL" =~ ^https?://(localhost|127\.0\.0\.1)(:|/|$) ]]; then
+  LHCI_CONFIG=lighthouserc.local.json
+else
+  LHCI_CONFIG=lighthouserc.json
+fi
+echo "gate: asserting with $LHCI_CONFIG"
+npx lhci assert --config="$LHCI_CONFIG"
 echo "gate: OK"

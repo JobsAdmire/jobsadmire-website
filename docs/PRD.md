@@ -71,7 +71,7 @@ WCAG 2.2 AA. **Accessibility overrides pixel fidelity where the two conflict** (
 
 ## 6. Performance budget
 
-LCP ≤ 2.5 s, CLS ≤ 0.1, INP ≤ 200 ms (mobile). Content routes ≤ 120 KB gzipped JS. Budget is re-measured once real photography replaces placeholders. One consent-granted `gate` run per work package.
+LCP ≤ 2.5 s, CLS ≤ 0.1, INP ≤ 200 ms (mobile). Content routes **≤ 180 KB gzipped JS** — corrected from the plan's 120 KB once the stack was measured (R49): `react-dom` (73,398 B) plus the App Router client runtime (48,040 B) is 121,438 B before a line of our code, and next-intl's client runtime adds 17,140 B, so 120 KB was below the floor. 180 KB = that floor + next-intl + a 40 KB allowance for our own client code; the WP1 shell measures 172,509 B, and WP2 watches the per-page increment (no page more than +25 KB over the shell). Asserted by the gate as `resource-summary:script:size ≤ 184320`. Budget is re-measured once real photography replaces placeholders. One consent-granted `gate` run per work package.
 
 ## 7. Analytics / consent
 

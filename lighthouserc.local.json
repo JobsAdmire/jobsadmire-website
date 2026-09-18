@@ -1,5 +1,5 @@
 {
-  "_comment": "Script budget (R49): D27's original 120 KB predates the stack measurement and sits below the framework floor — react-dom (73,398 B) + the Next App Router client runtime (48,040 B) = 121,438 B before a line of our code, plus next-intl's client runtime (17,140 B, required by the error boundary). 184,320 B = that 121 KB floor + 17 KB next-intl + a 40 KB allowance for our own client code; the WP1 shell measures 172,509 B. WP2 watches the per-page increment: no page may add more than 25 KB over the shell. See docs/ARCHITECTURE.md § Quality gate.",
+  "_comment": "Identical to lighthouserc.json except that LCP is advisory (R50). Against a localhost server every asset arrives inside 60 ms, so Lantern's pessimistic LCP graph charges the whole early payload to the paint and reports ~2705 ms on every path alike; the observed LCP is 54 ms, and the same build measures LCP 1503 ms / performance 0.97 under real (--throttling-method=devtools) throttling. gate.sh selects this config for assert only when E2E_BASE_URL is localhost. The binding run is the one against the Vercel preview URL, where LCP is an error — see docs/ARCHITECTURE.md § Quality gate and docs/OPERATING.md.",
   "ci": {
     "collect": { "numberOfRuns": 2, "settings": { "formFactor": "mobile" } },
     "assert": {
@@ -9,7 +9,7 @@
         "categories:best-practices": ["error", { "minScore": 1 }],
         "categories:seo": ["error", { "minScore": 1 }],
         "resource-summary:script:size": ["error", { "maxNumericValue": 184320 }],
-        "largest-contentful-paint": ["error", { "maxNumericValue": 2500 }],
+        "largest-contentful-paint": ["warn", { "maxNumericValue": 2500 }],
         "cumulative-layout-shift": ["error", { "maxNumericValue": 0.1 }],
         "total-blocking-time": ["warn", { "maxNumericValue": 200 }]
       }

@@ -51,6 +51,10 @@ The external monitor pages the **owner's phone**. A **second human** (pending §
 
 A short, recurring check the owner performs (not delegated) — the plan does not further specify the exact checklist beyond its existence; treat this as: today's digest arrived, `/api/site-health` is green, and the APPROVE queue (Phase B) isn't backing up.
 
+## Work-package sign-off
+
+`npm run gate` against the **Vercel preview URL** for that work package is the binding run — D27, and `CLAUDE.md`'s task-completion checklist. A local `next start` run is for fast feedback only: `gate.sh` switches to `lighthouserc.local.json` there, which downgrades LCP to a warning because Lantern cannot measure it honestly over a localhost waterfall (R50). Every other budget — performance, accessibility, best-practices, SEO, the 180 KB script budget, CLS — is an error in both configs. Sign-off means a green preview run, not a green local one.
+
 ## Checkpoint cadence
 
 Week 1, 2, 4, 8, 12 post-cutover (WP7a) — see `docs/SEO.md` for the three tracked numbers (GSC clicks, GSC Crawl Stats 429s, Vercel Web Analytics vs. forecast) and `docs/ANALYTICS.md` for the weekly three-way reconciliation that runs alongside.
