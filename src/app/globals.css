@@ -129,3 +129,22 @@ h4 {
     scroll-behavior: auto !important;
   }
 }
+
+/* PausableMarquee: the track is duplicated, so -50% is one seamless loop.
+   Duration comes from the component; reduced motion stops it outright (D20). */
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.marquee {
+  animation: marquee linear infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee {
+    animation-play-state: paused !important;
+  }
+}
