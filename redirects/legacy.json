@@ -126,6 +126,12 @@
   "source": "tg"
  },
  {
+  "from": "/about",
+  "to": "/en/about",
+  "status": 308,
+  "source": "en"
+ },
+ {
   "from": "/tr/about",
   "to": "/hakkimizda",
   "status": 308,
@@ -250,6 +256,12 @@
   "to": "/en/contact",
   "status": 308,
   "source": "tg"
+ },
+ {
+  "from": "/work-permit",
+  "to": "/en/work-permit",
+  "status": 308,
+  "source": "en"
  },
  {
   "from": "/tr/work-permit",
@@ -636,6 +648,12 @@
   "source": "tg"
  },
  {
+  "from": "/privacy",
+  "to": "/en/privacy",
+  "status": 308,
+  "source": "en"
+ },
+ {
   "from": "/tr/privacy",
   "to": "/gizlilik",
   "status": 308,
@@ -694,6 +712,12 @@
   "to": "/en/privacy",
   "status": 308,
   "source": "tg"
+ },
+ {
+  "from": "/terms",
+  "to": "/en/terms",
+  "status": 308,
+  "source": "en"
  },
  {
   "from": "/tr/terms",

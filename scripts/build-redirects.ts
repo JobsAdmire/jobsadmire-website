@@ -23,6 +23,18 @@ function external(locale: 'tr' | 'en', internal: string): string {
   return `${withPrefix || '/'}${hash ? `#${hash}` : ''}`;
 }
 
+/**
+ * Every external path the new site already serves (TR at the root, EN under /en) — R33. A
+ * next.config redirect applies to all traffic, so a legacy rule whose old unprefixed `from`
+ * happens to already be a live route on the new site (e.g. the shared '/' and '/blog' keep
+ * rows) must never get the unprefixed-English add below, or it would clobber that live route.
+ */
+export const LIVE = new Set(
+  Object.values(pathnames).flatMap((p) =>
+    typeof p === 'string' ? [p, `/en${p === '/' ? '' : p}`] : [p.tr, `/en${p.en}`],
+  ),
+);
+
 export function buildRedirects(rules: Rule[], clicks: Click[]) {
   const clicked = new Map(clicks.map((c) => [c.url, c.clicks]));
   const redirects: { from: string; to: string; status: 308; source: string }[] = [];
@@ -44,8 +56,8 @@ export function buildRedirects(rules: Rule[], clicks: Click[]) {
       continue;
     }
     const target = to ?? rule.from;
-    // old unprefixed = English
-    if (disposition === '301') add(rule.from, external('en', target), 'en');
+    // old unprefixed = English, unless the old path is itself a live route on the new site
+    if (!LIVE.has(rule.from)) add(rule.from, external('en', target), 'en');
     // old /tr → Turkish root slug; dropped locales → English
     add(`/tr${rule.from === '/' ? '' : rule.from}`, external('tr', target), 'tr');
     for (const l of DROPPED)

@@ -55,4 +55,20 @@ test.describe('legacy redirects (D21)', () => {
     // Assert exactly what legacy.json says for this rule (#lisans anchor on the EN About page).
     expect(target(res.headers()['location'], true)).toBe('/en/about#lisans');
   });
+
+  test('old unprefixed English /about redirects to /en/about (R33)', async ({ request }) => {
+    const res = await request.get('/about', { maxRedirects: 0 });
+    expect(res.status()).toBe(308);
+    expect(target(res.headers()['location'])).toBe('/en/about');
+  });
+
+  test('/blog is a live keep route, never redirected (R33)', async ({ request }) => {
+    // /blog is a 'keep' row and a live path (the root pathnames entry), so R33's live-route
+    // guard must never turn it into a redirect. Its page isn't built in this WP1 slice yet
+    // (only `/[locale]` and `/[locale]/hire-workers` exist), so it 404s rather than 200ing today
+    // — assert "not a redirect" so this doesn't need touching again once the page ships.
+    const res = await request.get('/blog', { maxRedirects: 0 });
+    expect(res.status()).not.toBe(308);
+    expect(res.status()).not.toBe(307);
+  });
 });
