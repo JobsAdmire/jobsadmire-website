@@ -37,6 +37,17 @@ export function readConsent(): ConsentState {
   return readCookie() ?? 'unknown';
 }
 
+/** `gtag` comes from the inline default script, which only renders when
+ *  `settings.analytics.consentMode` is on — so it stays optional here, never assumed. */
+function updateGtag(v: 'granted' | 'denied') {
+  (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.('consent', 'update', {
+    ad_storage: v,
+    analytics_storage: v,
+    ad_user_data: v,
+    ad_personalization: v,
+  });
+}
+
 export function writeConsent(state: Exclude<ConsentState, 'unknown'>) {
   try {
     localStorage.setItem(CONSENT_KEY, state);
@@ -44,16 +55,8 @@ export function writeConsent(state: Exclude<ConsentState, 'unknown'>) {
     /* private mode */
   }
   document.cookie = COOKIE(state, MAX_AGE);
-  const v = state === 'granted' ? 'granted' : 'denied';
   (window.dataLayer ??= []).push({ event: 'consent_update' });
-  // `gtag` comes from the inline default script, which only renders when
-  // `settings.analytics.consentMode` is on — so it stays optional here, never assumed.
-  (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.('consent', 'update', {
-    ad_storage: v,
-    analytics_storage: v,
-    ad_user_data: v,
-    ad_personalization: v,
-  });
+  updateGtag(state);
   window.dispatchEvent(new Event(CONSENT_EVENT));
 }
 
@@ -67,5 +70,8 @@ export function clearConsent() {
     /* private mode */
   }
   document.cookie = COOKIE('', 0);
+  // R39: re-deny straight away, so any tag already running stops within this page view rather
+  // than waiting for the visitor to choose again or to reload.
+  updateGtag('denied');
   window.dispatchEvent(new Event(CONSENT_EVENT));
 }

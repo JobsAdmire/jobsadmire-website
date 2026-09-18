@@ -95,4 +95,25 @@ describe('clearConsent', () => {
     expect(document.cookie).not.toContain(`${CONSENT_KEY}=granted`);
     expect(listener).toHaveBeenCalledTimes(1);
   });
+
+  it('re-denies through gtag so tags stop within the same page view (R39)', () => {
+    const gtag = vi.fn();
+    w.gtag = gtag;
+    writeConsent('granted');
+    gtag.mockClear();
+
+    clearConsent();
+
+    expect(gtag).toHaveBeenCalledWith('consent', 'update', {
+      ad_storage: 'denied',
+      analytics_storage: 'denied',
+      ad_user_data: 'denied',
+      ad_personalization: 'denied',
+    });
+  });
+
+  it('does not throw when the consent-default script never ran (gtag undefined)', () => {
+    expect(w.gtag).toBeUndefined();
+    expect(() => clearConsent()).not.toThrow();
+  });
 });
