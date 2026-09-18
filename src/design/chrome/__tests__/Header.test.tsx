@@ -14,6 +14,25 @@ const bundle = BundleSchema.parse({ ...fixture, strings: trBundle.strings });
 
 const t = (id: string) => trBundle.strings[id as keyof typeof trBundle.strings];
 
+const desktopNav = bundle.nav.filter((n) => n.group === 'desktopNav');
+
+/** The importer fills no external entry today; the chrome still has to honour one. */
+const withExternalItem = BundleSchema.parse({
+  ...fixture,
+  strings: trBundle.strings,
+  nav: [
+    ...fixture.nav,
+    {
+      group: 'desktopNav',
+      order: 11,
+      labelId: 'home.012',
+      href: 'https://portal.jobsadmire.com/auth/login',
+      external: true,
+      visibleOn: ['desktop', 'mobile'],
+    },
+  ],
+});
+
 describe('Header', () => {
   it('renders the desktop nav from bundle.nav with localized hrefs', () => {
     renderWithIntl(<Header locale="tr" bundle={bundle} primaryCta={{ href: '/hire-workers' }} />);
@@ -44,7 +63,7 @@ describe('Header', () => {
     expect(panel).toBeVisible();
     // the panel keeps every nav item, including the four the desktop row promotes elsewhere
     const menu = within(panel).getByRole('navigation', { name: t('hire.239') });
-    expect(within(menu).getAllByRole('link')).toHaveLength(bundle.nav.length);
+    expect(within(menu).getAllByRole('link')).toHaveLength(desktopNav.length);
     expect(within(menu).getByRole('link', { name: t('home.011') })).toHaveAttribute(
       'href',
       '/temsilci-dogrulama',
@@ -55,6 +74,26 @@ describe('Header', () => {
       'aria-expanded',
       'false',
     );
+  });
+
+  it('renders an external nav entry as a new-tab anchor in both rows', async () => {
+    renderWithIntl(
+      <Header locale="tr" bundle={withExternalItem} primaryCta={{ href: '/hire-workers' }} />,
+    );
+    const inRow = within(screen.getByRole('navigation', { name: 'Ana menü' })).getByRole('link', {
+      name: t('home.012'),
+    });
+    expect(inRow).toHaveAttribute('href', 'https://portal.jobsadmire.com/auth/login');
+    expect(inRow).toHaveAttribute('target', '_blank');
+    expect(inRow).toHaveAttribute('rel', 'noopener noreferrer');
+
+    await userEvent.click(screen.getByRole('button', { name: t('hire.239') }));
+    const inPanel = within(screen.getByRole('navigation', { name: t('hire.239') })).getByRole(
+      'link',
+      { name: t('home.012') },
+    );
+    expect(inPanel).toHaveAttribute('target', '_blank');
+    expect(inPanel).toHaveAttribute('rel', 'noopener noreferrer');
   });
 
   it('renders the split primary CTA and the partner secondary CTA', () => {

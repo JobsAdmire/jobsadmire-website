@@ -2,11 +2,12 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { makeT } from '@/content/pure';
 import { Button } from '@/design/primitives';
-import { Link, type Href } from '@/i18n/navigation';
+import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../contract/website-bundle.v1';
 import { LanguageSwitcher } from './LanguageSwitcher';
-import { MobileNav, type MobileNavItem } from './MobileNav';
+import { MobileNav } from './MobileNav';
+import { NavLink, type ChromeNavItem } from './NavLink';
 
 export type ChromeCta = { href: string; external?: boolean };
 
@@ -31,7 +32,7 @@ export function Header({
   // `useTranslations` resolves against the request config on the server and against the
   // provider in tests, so `sys.*` needs no prop drilling here.
   const sys = useTranslations('sys');
-  const items: MobileNavItem[] = bundle.nav
+  const items: ChromeNavItem[] = bundle.nav
     .filter((n) => n.group === 'desktopNav')
     .sort((a, b) => a.order - b.order)
     .map((n) => ({ href: n.href, label: t(n.labelId), external: n.external }));
@@ -48,9 +49,7 @@ export function Header({
           {items
             .filter((i) => !PROMOTED.has(i.href))
             .map((item) => (
-              <Link key={item.href} href={item.href as Href} className={NAV_LINK}>
-                {item.label}
-              </Link>
+              <NavLink key={item.href} item={item} className={NAV_LINK} />
             ))}
         </nav>
         <div className="flex flex-none items-center gap-2">
@@ -59,6 +58,7 @@ export function Header({
             <Button
               variant="secondary"
               href={secondary.href}
+              external={secondary.external}
               className="hidden whitespace-nowrap xl:inline-flex"
             >
               {secondary.label}

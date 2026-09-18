@@ -37,10 +37,11 @@ export function SiteChrome({
           <WhatsAppFab bundle={bundle} />
         </>
       )}
-      {children}
-      <MobileBottomBarSpacer />
-      <MobileBottomBar bundle={bundle} />
+      <main id="main">{children}</main>
       <Footer locale={locale} bundle={bundle} />
+      <MobileBottomBar bundle={bundle} />
+      {/* R29: last in flow, so the fixed bar clears the footer's legal line, not the page. */}
+      <MobileBottomBarSpacer />
     </>
   );
 }
