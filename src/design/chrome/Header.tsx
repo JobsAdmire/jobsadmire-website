@@ -42,7 +42,7 @@ export function Header({
   return (
     <header className="sticky top-0 z-40 border-b border-border-3 bg-white">
       <div className="container-site flex items-center justify-between gap-5 py-3">
-        <Link href="/" className="flex-none no-underline">
+        <Link href="/" prefetch={false} className="flex-none no-underline">
           {/* 34 × 29 — the asset's own 336 × 285 ratio (see the footer's copy). */}
           <Image src="/brand/ja-mark.png" alt="JobsAdmire" width={34} height={29} priority />
         </Link>
@@ -68,6 +68,7 @@ export function Header({
               variant="secondary"
               href={secondary.href}
               external={secondary.external}
+              prefetch={false}
               className="hidden whitespace-nowrap xl:inline-flex"
             >
               {secondary.label}
@@ -77,6 +78,7 @@ export function Header({
             variant="primary"
             href={primaryCta.href}
             external={primaryCta.external}
+            prefetch={false}
             className="whitespace-nowrap bg-ink hover:bg-blue-safe"
           >
             {t('home.014')} <span className="hidden xl:inline">{t('home.015')}</span>

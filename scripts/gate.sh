@@ -7,6 +7,9 @@
 # ops coverage: without it the two token-dependent cases in e2e/ops.spec.ts skip themselves (R43).
 set -euo pipefail
 : "${E2E_BASE_URL:?set E2E_BASE_URL to the preview or local URL}"
+# A trailing slash would double up in every "${E2E_BASE_URL}${path}" below.
+E2E_BASE_URL="${E2E_BASE_URL%/}"
+export E2E_BASE_URL
 echo "gate → $E2E_BASE_URL"
 if [ -z "${REVALIDATE_SECRET:-}" ]; then
   echo "gate: warning — REVALIDATE_SECRET unset; the two token-dependent ops cases will skip (R43)"
@@ -25,5 +28,7 @@ for path in / /en /isci-talebi /en/hire-workers; do
   # preset — `--preset` only accepts perf|experimental|desktop and rejects anything else.
   npx lhci collect --additive --url="${E2E_BASE_URL}${path}" >/dev/null
 done
+# Before assert, so the reports survive a failing budget — that is when they are read (R48).
+npx lhci upload --target=filesystem --outputDir=./lighthouse-report >/dev/null
 npx lhci assert
 echo "gate: OK"

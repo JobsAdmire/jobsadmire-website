@@ -46,6 +46,7 @@ export function SlimBar({ bundle }: { bundle: Bundle }) {
             <Link
               key={item.href}
               href={item.href as Href}
+              prefetch={false}
               className={
                 item.accent
                   ? `${LINK} rounded-pill border border-success/40 bg-success/15 px-3 text-sky`

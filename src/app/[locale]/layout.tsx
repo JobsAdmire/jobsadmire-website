@@ -5,7 +5,7 @@ import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { GtmLoader } from '@/analytics/GtmLoader';
 import { getBundle, makeT } from '@/content/adapter';
-import { ConsentBanner } from '@/design/chrome/ConsentBanner';
+import { ClientIslands } from '@/design/chrome/ClientIslands';
 import { SiteChrome } from '@/design/chrome/SiteChrome';
 import { routing } from '@/i18n/routing';
 import { JsonLd } from '@/lib/seo/JsonLdScript';
@@ -59,10 +59,15 @@ export default async function LocaleLayout({
           <SiteChrome locale={locale} bundle={bundle}>
             {children}
           </SiteChrome>
-          {/* R38: no container id means no tag can fire, so there is nothing to consent to —
-              asking anyway would be a dark pattern. Mounted after the chrome so the sheet is
-              last in the tab order, not first. */}
-          {analytics.consentMode && Boolean(analytics.gtmId) && <ConsentBanner />}
+          {/* Both islands load as their own chunks after hydration (`ssr: false`), so neither
+              is in the initial script graph. R38 is unchanged and now also decides whether the
+              consent chunk is fetched at all: no container id means no tag can fire, so there
+              is nothing to consent to — asking anyway would be a dark pattern. Mounted after
+              the chrome so the sheet is last in the tab order, not first. */}
+          <ClientIslands
+            locale={locale}
+            consent={analytics.consentMode && Boolean(analytics.gtmId)}
+          />
         </NextIntlClientProvider>
       </body>
     </html>

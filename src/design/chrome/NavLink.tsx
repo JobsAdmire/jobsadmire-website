@@ -31,7 +31,9 @@ export function NavLink({
   }
   if (item.href.startsWith('/')) {
     return (
-      <Link href={item.href as Href} className={className} onClick={onClick}>
+      // prefetch={false} on every chrome link: Next still prefetches on hover, so
+      // navigation stays instant, but the eager `_rsc` requests leave the first load (R47c).
+      <Link href={item.href as Href} prefetch={false} className={className} onClick={onClick}>
         {item.label}
       </Link>
     );

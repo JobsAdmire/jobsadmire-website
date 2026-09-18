@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useState, useSyncExternalStore } from 'react';
+import { useCallback, useId, useState, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname, type Href } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
@@ -39,6 +39,7 @@ function readDismissal(): string | null {
  *  English while they are looking at the Turkish site. */
 export function LanguageHint({ locale }: { locale: Locale }) {
   const sys = useTranslations('sys');
+  const bodyId = useId();
   const pathname = usePathname() ?? '/';
   const [dismissed, setDismissed] = useState(false);
   const eligible = useSyncExternalStore(
@@ -61,12 +62,25 @@ export function LanguageHint({ locale }: { locale: Locale }) {
 
   if (!eligible || dismissed) return null;
   return (
-    <div className="border-b border-tint-border bg-tint">
-      <div className="container-site flex flex-wrap items-center justify-center gap-3 py-2">
-        <p className="m-0 font-bold">{sys('languageHint.body')}</p>
+    // R45: out of flow, not a strip above the header. The hint can only be decided in the
+    // browser, so in flow it inserted 57 px after hydration and shifted the whole page —
+    // CLS 0.099 on every Turkish page, the single largest metric cost on the site. As a fixed
+    // sheet it costs nothing: it sits above the mobile bottom bar (74 px, z-50) below `lg`
+    // and clears the phone's home indicator; z-55 keeps it under the consent sheet (z-60),
+    // which must always win, and above the bar.
+    <div
+      role="region"
+      aria-labelledby={bodyId}
+      className="fixed inset-x-3 bottom-[calc(74px+0.75rem+env(safe-area-inset-bottom))] z-[55] rounded-base border border-tint-border bg-tint shadow-card-hover lg:bottom-4 lg:left-1/2 lg:right-auto lg:w-[min(560px,calc(100%-2rem))] lg:-translate-x-1/2"
+    >
+      <div className="flex flex-wrap items-center justify-center gap-3 px-4 py-3">
+        <p id={bodyId} className="m-0 font-bold">
+          {sys('languageHint.body')}
+        </p>
         <Link
           href={pathname as Href}
           locale="en"
+          prefetch={false}
           onClick={dismiss}
           className="inline-flex min-h-[44px] items-center rounded-pill bg-ink px-4 font-extrabold text-white no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
         >

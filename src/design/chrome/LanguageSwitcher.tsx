@@ -47,6 +47,7 @@ export function LanguageSwitcher({
           <Link
             key={l}
             href={pathname as Href}
+            prefetch={false}
             locale={l}
             hrefLang={l}
             aria-current={active ? 'true' : undefined}

@@ -5,7 +5,6 @@ import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../contract/website-bundle.v1';
 import { Footer } from './Footer';
 import { Header } from './Header';
-import { LanguageHint } from './LanguageHint';
 import { MobileBottomBar, MobileBottomBarSpacer } from './MobileBottomBar';
 import { SlimBar } from './SlimBar';
 import { SocialRail } from './SocialRail';
@@ -30,7 +29,6 @@ export function SiteChrome({
       <SkipLink label={sys('skipToContent')} />
       <SlimBar bundle={bundle} />
       <Header locale={locale} bundle={bundle} primaryCta={{ href: '/hire-workers' }} />
-      <LanguageHint locale={locale} />
       {variant === 'default' && (
         <>
           <SocialRail bundle={bundle} />

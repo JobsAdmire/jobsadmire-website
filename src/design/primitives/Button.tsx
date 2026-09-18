@@ -29,6 +29,9 @@ export type ButtonProps = {
   external?: boolean;
   type?: 'button' | 'submit' | 'reset';
   disabled?: boolean;
+  /** Chrome CTAs pass `false` so they do not add an eager `_rsc` request to the first load;
+   *  hover prefetch is unaffected (R47c). Page CTAs keep Next's default. */
+  prefetch?: boolean;
   children?: ReactNode;
 } & HTMLAttributes<HTMLElement>;
 
@@ -39,6 +42,7 @@ export function Button({
   external,
   type = 'button',
   disabled,
+  prefetch,
   className,
   children,
   ...rest
@@ -63,7 +67,7 @@ export function Button({
     return (
       // R17: `href` is a plain string at this component's boundary; next-intl's typed
       // pathnames are re-imposed here. The one sanctioned cast in this module.
-      <Link {...rest} href={href as Href} className={cls}>
+      <Link {...rest} href={href as Href} prefetch={prefetch} className={cls}>
         {children}
       </Link>
     );

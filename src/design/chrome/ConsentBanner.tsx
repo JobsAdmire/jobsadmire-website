@@ -36,7 +36,11 @@ export function ConsentBanner() {
           <p className="m-0 font-extrabold">{sys('consent.title')}</p>
           <p className="m-0 text-body-sm text-text-secondary">
             {sys('consent.body')}{' '}
-            <Link href="/cookie-policy" className="font-bold text-blue-safe underline">
+            <Link
+              href="/cookie-policy"
+              prefetch={false}
+              className="font-bold text-blue-safe underline"
+            >
               {sys('consent.policy')}
             </Link>
           </p>
