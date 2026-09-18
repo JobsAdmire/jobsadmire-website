@@ -33,9 +33,12 @@ test('the Link component emits the localized href', async ({ page }) => {
 });
 
 test('API routes are not intercepted by the locale proxy', async ({ request }) => {
+  // The handler's own refusal is the proof it was reached: 401 with a secret configured,
+  // 503 without one. A locale-rewritten request could produce neither. The full status
+  // matrix lives in e2e/ops.spec.ts.
   const res = await request.post('/api/revalidate');
-  expect(res.status()).toBe(200);
-  expect(await res.json()).toEqual({ ok: true });
+  expect([401, 503]).toContain(res.status());
+  expect(await res.json()).toHaveProperty('error');
 });
 
 test('the locale cookie uses our name', async ({ page, context }) => {

@@ -78,8 +78,8 @@ Pages: one server component per page, client islands only where interactive; inl
 
 ## Operations surface
 
-- `GET /api/site-health` — bundle age, last revalidate timestamp, canary image HEAD check, Operations `ping`, tripped-forms state, handler failures, lead-drought flag. Watched by an external monitor to the owner's phone (D25).
-- `POST /api/revalidate` — Operations-triggered, secret-authenticated, serial tag revalidation with read-back.
+- `GET /api/site-health` — `force-dynamic`, `Cache-Control: no-store`, watched by an external monitor to the owner's phone (D25). Shipped in WP1 (`src/app/api/site-health/`): both bundles loaded through the adapter, plus `lastRevalidate` and `opsPing`; answers `{ ok, reasons, checks, contractVersion, source, commit, at }` with **200 when ok, 503 otherwise**. Reason codes and the `skip` rule are in `docs/OPERATING.md`. Canary image HEAD, tripped-forms state, handler failures and lead-drought join it in WP3a/WP5/WP6.
+- `POST /api/revalidate` — Operations-triggered, secret-authenticated tag revalidation (`src/app/api/revalidate/`). `Authorization: Bearer $REVALIDATE_SECRET`, body `{ tags: string[] }` (1–50, each `/^[a-z0-9:_-]+$/`); **503 when no usable secret is configured** (never open), 401 on a missing/wrong token (timing-safe, equal-length compare only), 400 on a malformed body — validated in full before the first `revalidateTag(tag, 'max')`, so there is no partial purge. A success records the timestamp `site-health` reads; that store is module-level and best-effort until WP5. Read-back verification is WP5.
 - Vercel Cron: **synthetic-lead** every 30 min through the real form path (test token class), pinging an external heartbeat — a missed ping pages the owner. **Daily digest** email sent from Vercel — its _absence_ is the alarm, not its content.
 - Client submit-failure beacon feeding `/api/site-health`'s "handler failures" signal (belt-and-braces alongside Sentry).
 

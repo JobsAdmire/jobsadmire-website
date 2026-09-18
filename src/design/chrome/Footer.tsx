@@ -184,8 +184,12 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
 
       <div className="container-site flex flex-wrap items-center justify-between gap-x-6 gap-y-1 border-t border-white/15 py-5">
         <p className="m-0 text-white/50">{t('home.228')}</p>
-        {/* R36: consent is withdrawable, and this is where visitors look for it. */}
-        <CookiePreferencesButton label={sys('consent.manage')} />
+        {/* R36: consent is withdrawable, and this is where visitors look for it. R40 gates it
+            exactly like the banner (R38): with no container id nothing ever asked for
+            consent, so there is nothing to withdraw and the button would reopen nothing. */}
+        {settings.analytics.consentMode && Boolean(settings.analytics.gtmId) && (
+          <CookiePreferencesButton label={sys('consent.manage')} />
+        )}
       </div>
     </footer>
   );

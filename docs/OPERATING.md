@@ -4,17 +4,36 @@ Full rationale: plan D25, D26, WP7a, WP6.5. This doc is the day-to-day operating
 
 ## Site-health checks
 
-`GET /api/site-health` (see `docs/ARCHITECTURE.md`) reports, and is watched by an **external monitor to the owner's phone** — not an in-app bell, not anything that lives inside the system it's monitoring:
+`GET /api/site-health` (see `docs/ARCHITECTURE.md`) reports, and is watched by an **external monitor to the owner's phone** — not an in-app bell, not anything that lives inside the system it's monitoring.
 
-| Check                                                         | Reason code (illustrative — exact codes land in WP1) |
-| ------------------------------------------------------------- | ---------------------------------------------------- |
-| Bundle age vs. its time floor                                 | `BUNDLE_STALE`                                       |
-| Last successful revalidate                                    | `REVALIDATE_STALE`                                   |
-| Canary image HEAD request                                     | `MEDIA_UNREACHABLE`                                  |
-| Operations `ping`                                             | `OPS_UNREACHABLE`                                    |
-| Tripped forms (captcha degraded / abuse auto-trip)            | `FORMS_DEGRADED`                                     |
-| Handler failures                                              | `HANDLER_FAILED`                                     |
-| Lead-drought (no successful submission in an abnormal window) | `LEAD_DROUGHT`                                       |
+Every check reports `ok`, `fail` or **`skip`** — `skip` means the check cannot run in this
+mode and is counted as neither pass nor failure. Nothing reports `ok` for a check that never
+ran: a health endpoint that flatters itself is worse than none (D25). `ok` at the top level
+is "no check reported `fail`", and the response is **200** when true, **503** when not.
+
+Shipped in WP1 (`src/app/api/site-health/checks.ts`):
+
+| Check            | Reason code        | Behaviour                                                                                                 |
+| ---------------- | ------------------ | --------------------------------------------------------------------------------------------------------- |
+| `bundleTr`       | `BUNDLE_TR`        | `getBundle('tr')` resolves                                                                                |
+| `bundleEn`       | `BUNDLE_EN`        | `getBundle('en')` resolves                                                                                |
+| `lastRevalidate` | `REVALIDATE_STALE` | `skip` in LOCAL (the bundle ships with the deploy); in OPS, `fail` when never recorded or older than 24 h |
+| `opsPing`        | `OPS_PING`         | `skip` until WP3a adds the real Operations ping                                                           |
+
+The response also carries `source` (`LOCAL`/`OPS`), `contractVersion`, `commit`
+(`VERCEL_GIT_COMMIT_SHA`) and `at`. **Bundle age is deliberately not derived from the
+bundle's own `generatedAt`** — in Phase A that is a fixed sentinel, so an age computed from
+it would be fiction.
+
+Still to land, with the work package that brings them:
+
+| Check                                                         | Reason code         | Lands in |
+| ------------------------------------------------------------- | ------------------- | -------- |
+| Bundle age vs. its time floor                                 | `BUNDLE_STALE`      | WP5      |
+| Canary image HEAD request                                     | `MEDIA_UNREACHABLE` | WP5      |
+| Tripped forms (captcha degraded / abuse auto-trip)            | `FORMS_DEGRADED`    | WP3a     |
+| Handler failures                                              | `HANDLER_FAILED`    | WP3a     |
+| Lead-drought (no successful submission in an abnormal window) | `LEAD_DROUGHT`      | WP5      |
 
 ## Synthetic lead
 

@@ -64,6 +64,8 @@ test('no container id means no consent sheet, but the denied defaults still ship
   });
   expect(await page.locator('script[src*="googletagmanager.com"]').count()).toBe(0);
 
-  // The withdrawal door is in the footer whether or not the sheet is mounted.
-  await expect(page.getByRole('button', { name: 'Çerez tercihleri' })).toHaveCount(1);
+  // R40: the footer's withdrawal door is gated exactly like the sheet — with no container id
+  // nothing ever asked, so there is nothing to withdraw and the button would reopen nothing.
+  // It returns with the GTM id (Phase B); the button itself is covered in Footer.test.tsx.
+  await expect(page.getByRole('button', { name: 'Çerez tercihleri' })).toHaveCount(0);
 });

@@ -56,12 +56,29 @@ describe('Footer', () => {
     expect(screen.getByText(t('home.228'))).toBeInTheDocument();
   });
 
-  it('offers the cookie-preferences door in the legal row (R36)', () => {
-    renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+  it('offers the cookie-preferences door in the legal row once a container id exists (R36)', () => {
+    const withGtm: typeof bundle = {
+      ...bundle,
+      settings: {
+        ...bundle.settings,
+        analytics: { ...bundle.settings.analytics, gtmId: 'GTM-TEST123' },
+      },
+    };
+    renderWithIntl(<Footer locale="tr" bundle={withGtm} />);
     const button = within(screen.getByRole('contentinfo')).getByRole('button', {
       name: tr.sys.consent.manage,
     });
     expect(button).toHaveAttribute('type', 'button');
+  });
+
+  it('hides it while no tag can fire, exactly like the banner (R40)', () => {
+    expect(bundle.settings.analytics.gtmId).toBeNull();
+    renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+    expect(
+      within(screen.getByRole('contentinfo')).queryByRole('button', {
+        name: tr.sys.consent.manage,
+      }),
+    ).toBeNull();
   });
 
   it('gives every social and contact link an accessible name', () => {

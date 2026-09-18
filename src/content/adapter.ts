@@ -19,7 +19,15 @@ async function loadOps(locale: Locale): Promise<Bundle> {
     next: { revalidate: 900, tags: [`site:${locale}`] }, // time floor + tag (D8)
   });
   if (!res.ok) throw new BundleUnavailableError(`bundle ${locale}: HTTP ${res.status}`);
-  const parsed = BundleSchema.safeParse(await res.json());
+  // R28: an HTML error page served with a 200 (a proxy, a login wall) is the same outage as
+  // a 500 — one error class, so every caller's fallback path is the same one.
+  let raw: unknown;
+  try {
+    raw = await res.json();
+  } catch {
+    throw new BundleUnavailableError(`bundle ${locale}: invalid JSON`);
+  }
+  const parsed = BundleSchema.safeParse(raw);
   if (!parsed.success)
     throw new BundleUnavailableError(
       `bundle ${locale}: contract violation ${parsed.error.issues[0]?.path.join('.')}`,

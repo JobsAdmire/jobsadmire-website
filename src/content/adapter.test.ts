@@ -20,6 +20,12 @@ describe('makeT', () => {
     vi.stubEnv('NODE_ENV', 'development');
     expect(() => makeT(bundle)('nope.001')).toThrow(/unknown string id/);
   });
+  // R28: a missing id must never take a production page down — it degrades to empty copy,
+  // and the build-time lint is what catches it before it ships.
+  it('returns an empty string for an unknown id in production', () => {
+    vi.stubEnv('NODE_ENV', 'production');
+    expect(makeT(bundle)('nope.001')).toBe('');
+  });
 });
 
 describe('contentSource', () => {
