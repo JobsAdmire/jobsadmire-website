@@ -14,7 +14,8 @@
     "test:watch": "vitest",
     "verify": "npm run typecheck && npm run lint && npm run format && npm run test",
     "e2e": "playwright test",
-    "gate": "bash scripts/gate.sh"
+    "gate": "bash scripts/gate.sh",
+    "content:import": "tsx scripts/import-design-package.ts"
   },
   "dependencies": {
     "next": "16.3.5",
@@ -37,6 +38,7 @@
     "jsdom": "^29.1.1",
     "prettier": "^3.9.8",
     "tailwindcss": "^4",
+    "tsx": "^4.23.13",
     "typescript": "^5",
     "vitest": "^4.1.11"
   },
