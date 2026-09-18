@@ -3,7 +3,9 @@ import { Archivo } from 'next/font/google';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { GtmLoader } from '@/analytics/GtmLoader';
 import { getBundle, makeT } from '@/content/adapter';
+import { ConsentBanner } from '@/design/chrome/ConsentBanner';
 import { SiteChrome } from '@/design/chrome/SiteChrome';
 import { routing } from '@/i18n/routing';
 import { JsonLd } from '@/lib/seo/JsonLdScript';
@@ -38,9 +40,13 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const bundle = await getBundle(locale);
   const t = makeT(bundle);
+  const { analytics } = bundle.settings;
   return (
     <html lang={locale} className={archivo.variable}>
       <body>
+        {/* D13: consent defaults denied inline, before any tag; GA4/Ads load only inside the
+            container. Off entirely when the bundle turns consent mode off. */}
+        {analytics.consentMode && <GtmLoader gtmId={analytics.gtmId} />}
         {/* Site-wide graph nodes (docs/SEO.md): Organization/EmploymentAgency on every page. */}
         <JsonLd
           data={organizationJsonLd(bundle.settings, {
@@ -53,6 +59,8 @@ export default async function LocaleLayout({
           <SiteChrome locale={locale} bundle={bundle}>
             {children}
           </SiteChrome>
+          {/* Mounted after the chrome so the sheet is last in the tab order, not first. */}
+          <ConsentBanner />
         </NextIntlClientProvider>
       </body>
     </html>

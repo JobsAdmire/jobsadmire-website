@@ -19,6 +19,7 @@
     "redirects:build": "tsx scripts/build-redirects.ts"
   },
   "dependencies": {
+    "@next/third-parties": "^16.3.5",
     "next": "16.3.5",
     "next-intl": "^4.14.5",
     "react": "19.2.8",
