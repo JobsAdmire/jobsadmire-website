@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { contentSource, getBundle } from '@/content/adapter';
+// Relative on purpose: the `@/` alias covers `src/` only, and `contract/` is a sibling.
 import { CONTRACT_VERSION } from '../../../../contract/website-bundle.v1';
 import { lastRevalidateAt } from '../revalidate/state';
 import { evaluate, type CheckResult, type Checks } from './checks';

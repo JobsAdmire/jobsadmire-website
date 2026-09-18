@@ -1,9 +1,13 @@
 import { test, expect } from '@playwright/test';
 import tr from '../src/messages/tr.json';
 
-// Matches the secret the task's local production server is started with; on a preview these
-// cases are skipped rather than failing (see below).
-const SECRET = process.env.REVALIDATE_SECRET ?? 'wp1-local-secret-0123456789';
+// R43: the two cases that need a valid token read the secret from the runner's own
+// environment and are skipped outright when it has none — a guessed fallback would fail
+// against any server started with a different secret (it would 401, and the failure would
+// look like a broken route rather than a misconfigured run). Every other case needs no
+// secret and always runs.
+const SECRET = process.env.REVALIDATE_SECRET;
+const NO_SECRET = 'REVALIDATE_SECRET not provided to the runner';
 
 test('site-health answers honestly and is never cached (D25)', async ({ request }) => {
   const res = await request.get('/api/site-health');
@@ -36,6 +40,7 @@ test('revalidate refuses a wrong token', async ({ request }) => {
 });
 
 test('revalidate accepts the secret and reports the tags it purged', async ({ request }) => {
+  test.skip(!SECRET, NO_SECRET);
   const res = await request.post('/api/revalidate', {
     headers: { Authorization: `Bearer ${SECRET}` },
     data: { tags: ['site:tr'] },
@@ -46,7 +51,9 @@ test('revalidate accepts the secret and reports the tags it purged', async ({ re
   expect(Number.isNaN(Date.parse(body.at))).toBe(false);
 });
 
+// Auth runs before the body is parsed, so reaching the 400 needs a valid token too.
 test('revalidate rejects a malformed tag before purging anything', async ({ request }) => {
+  test.skip(!SECRET, NO_SECRET);
   const res = await request.post('/api/revalidate', {
     headers: { Authorization: `Bearer ${SECRET}` },
     data: { tags: ['bad tag!'] },
