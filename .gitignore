@@ -50,3 +50,6 @@ test-results
 coverage
 
 .DS_Store
+
+# SDD scratch (ledgers, briefs, review packages) — never committed
+.superpowers/
