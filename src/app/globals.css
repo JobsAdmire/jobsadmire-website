@@ -147,4 +147,9 @@ h4 {
   .marquee {
     animation-play-state: paused !important;
   }
+  /* R20: nothing is moving, so the pause/play control has nothing to control — hiding it in
+     CSS keeps the server render and the hydrating client identical for every visitor. */
+  .marquee-toggle {
+    display: none;
+  }
 }

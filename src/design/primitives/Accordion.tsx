@@ -17,10 +17,13 @@ export function Accordion({
   const [open, setOpen] = useState<Set<string>>(
     () => new Set(defaultOpenId ? [defaultOpenId] : []),
   );
+  // R21: a header always toggles its own panel — with `singleOpen` the others close,
+  // without it an already-open panel must still be closable.
   const toggle = (id: string) =>
     setOpen((prev) => {
       const next = new Set(singleOpen ? [] : prev);
-      if (!prev.has(id)) next.add(id);
+      if (prev.has(id)) next.delete(id);
+      else next.add(id);
       return next;
     });
   // WAI-ARIA accordion pattern: Home/End move focus to the first/last header button.
@@ -50,7 +53,7 @@ export function Accordion({
                 aria-controls={panelId}
                 onClick={() => toggle(it.id)}
                 onKeyDown={onKeyDown}
-                className="flex min-h-[46px] w-full items-center justify-between gap-4 py-3 text-left font-extrabold"
+                className="flex min-h-[46px] w-full items-center justify-between gap-4 py-3 text-left font-extrabold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
               >
                 <span>{it.title}</span>
                 <span aria-hidden="true">{isOpen ? '−' : '+'}</span>

@@ -23,7 +23,9 @@ export function Stat({
   locale: Locale;
 }) {
   const ref = useRef<HTMLDivElement>(null);
-  const [shown, setShown] = useState(value);
+  // `null` until the count-up actually runs, so a changed `value` is shown immediately when
+  // motion is reduced or no IntersectionObserver exists — state is never seeded from the prop.
+  const [animated, setAnimated] = useState<number | null>(null);
 
   useEffect(() => {
     const node = ref.current;
@@ -36,7 +38,7 @@ export function Stat({
     let started = false;
     const step = (start: number) => (now: number) => {
       const p = Math.min(1, (now - start) / DURATION_MS);
-      setShown(Math.round(value * (1 - Math.pow(1 - p, 3))));
+      setAnimated(Math.round(value * (1 - Math.pow(1 - p, 3))));
       if (p < 1) frame = requestAnimationFrame(step(start));
     };
     const observer = new IntersectionObserver(
@@ -44,7 +46,7 @@ export function Stat({
         if (started || !entries.some((e) => e.isIntersecting)) return;
         started = true;
         observer.disconnect();
-        setShown(0);
+        setAnimated(0);
         frame = requestAnimationFrame(step(performance.now()));
       },
       { threshold: 0.4 },
@@ -60,7 +62,7 @@ export function Stat({
     <div ref={ref}>
       <p className="text-stat font-extrabold">
         <span aria-hidden="true">
-          {formatInt(shown, locale)}
+          {formatInt(animated ?? value, locale)}
           {suffix}
         </span>
         <span className="sr-only">

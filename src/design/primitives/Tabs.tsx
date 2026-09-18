@@ -6,7 +6,10 @@ export type TabItem = { id: string; label: string; panel: ReactNode };
 export function Tabs({ tabs, defaultId }: { tabs: TabItem[]; defaultId: string }) {
   const base = useId();
   const listRef = useRef<HTMLDivElement>(null);
-  const [active, setActive] = useState(defaultId);
+  const [selected, setSelected] = useState(defaultId);
+  // A `defaultId` matching no tab would leave every tab at tabIndex -1 with no panel open,
+  // making the tablist unreachable by keyboard: fall back to the first tab.
+  const active = tabs.some((t) => t.id === selected) ? selected : (tabs[0]?.id ?? '');
 
   // Roving tabindex: only the selected tab is in the tab order; arrows/Home/End move
   // selection and focus together (WAI-ARIA tabs pattern, automatic activation).
@@ -19,7 +22,7 @@ export function Tabs({ tabs, defaultId }: { tabs: TabItem[]; defaultId: string }
     else if (e.key === 'End') next = tabs.length - 1;
     if (next < 0 || tabs.length === 0) return;
     e.preventDefault();
-    setActive(tabs[next].id);
+    setSelected(tabs[next].id);
     listRef.current?.querySelectorAll<HTMLButtonElement>('[role="tab"]')[next]?.focus();
   };
 
@@ -37,7 +40,7 @@ export function Tabs({ tabs, defaultId }: { tabs: TabItem[]; defaultId: string }
               aria-selected={selected}
               aria-controls={`${base}-${t.id}-panel`}
               tabIndex={selected ? 0 : -1}
-              onClick={() => setActive(t.id)}
+              onClick={() => setSelected(t.id)}
               onKeyDown={onKeyDown}
               className={[
                 'min-h-[44px] rounded-pill px-4 text-body-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe',

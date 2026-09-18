@@ -41,14 +41,22 @@ export function Button({
   ...rest
 }: ButtonProps) {
   const cls = [BASE, VARIANT[variant], SIZE[size], className].filter(Boolean).join(' ');
-  if (href && external) {
+  // A disabled CTA must never navigate, whatever its href says.
+  if (disabled || !href) {
+    return (
+      <button {...rest} type={type} disabled={disabled} className={cls}>
+        {children}
+      </button>
+    );
+  }
+  if (external) {
     return (
       <a {...rest} href={href} target="_blank" rel="noopener noreferrer" className={cls}>
         {children}
       </a>
     );
   }
-  if (href && href.startsWith('/')) {
+  if (href.startsWith('/')) {
     return (
       // R17: `href` is a plain string at this component's boundary; next-intl's typed
       // pathnames are re-imposed here. The one sanctioned cast in this module.
@@ -57,9 +65,11 @@ export function Button({
       </Link>
     );
   }
+  // R22: anything else that is still a link — `https://wa.me/…`, `tel:`, `mailto:` — stays a
+  // same-tab anchor rather than degrading into a button that goes nowhere.
   return (
-    <button {...rest} type={type} disabled={disabled} className={cls}>
+    <a {...rest} href={href} className={cls}>
       {children}
-    </button>
+    </a>
   );
 }

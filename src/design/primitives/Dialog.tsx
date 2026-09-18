@@ -16,6 +16,13 @@ export function Dialog({
   children: ReactNode;
 }) {
   const ref = useRef<HTMLDivElement>(null);
+  // The trap is keyed on `open` alone: an inline `onClose={() => setOpen(false)}` changes
+  // identity on every parent render, and re-running the trap would restore focus to the
+  // opener and re-focus the first control mid-interaction. The latest handler lives in a ref.
+  const onCloseRef = useRef(onClose);
+  useEffect(() => {
+    onCloseRef.current = onClose;
+  }, [onClose]);
   useEffect(() => {
     if (!open) return;
     const previous = document.activeElement as HTMLElement | null;
@@ -25,7 +32,7 @@ export function Dialog({
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
         e.preventDefault();
-        onClose();
+        onCloseRef.current();
         return;
       }
       if (e.key !== 'Tab') return;
@@ -48,7 +55,7 @@ export function Dialog({
       document.body.style.overflow = '';
       previous?.focus();
     };
-  }, [open, onClose]);
+  }, [open]);
   if (!open) return null;
   return (
     // jsdom has no showModal and <dialog>'s top layer fights the sticky header (D20):
