@@ -14,6 +14,14 @@ export default defineConfig({
     ],
     setupFiles: ['./vitest.setup.ts'],
     css: false,
+    // R19: next-intl's navigation build deep-imports `next/navigation` extensionless. Left
+    // external, Node's ESM resolver refuses it; inlined, Vite resolves it (aliases proved
+    // unnecessary — Vite's own resolver completes the extension).
+    server: { deps: { inline: ['next-intl'] } },
   },
-  resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+    },
+  },
 });

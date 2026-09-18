@@ -3,6 +3,8 @@ import { Archivo } from 'next/font/google';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
 import { setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { getBundle } from '@/content/adapter';
+import { SiteChrome } from '@/design/chrome/SiteChrome';
 import { routing } from '@/i18n/routing';
 import '../globals.css';
 
@@ -29,10 +31,15 @@ export default async function LocaleLayout({
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
+  const bundle = await getBundle(locale);
   return (
     <html lang={locale} className={archivo.variable}>
       <body>
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <SiteChrome locale={locale} bundle={bundle}>
+            {children}
+          </SiteChrome>
+        </NextIntlClientProvider>
       </body>
     </html>
   );
