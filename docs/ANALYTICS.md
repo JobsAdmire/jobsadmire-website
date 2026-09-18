@@ -21,6 +21,8 @@ Full context: plan D13. IDs and the GTM container inventory are config values, n
 
 ## IDs (config values — CMS-driven in Phase B, env/constants in Phase A)
 
+The WP1 generated bundle (`scripts/import-design-package.ts`'s `SETTINGS.analytics`) ships all four of these as `null` (only `consentMode: true` is set) — nothing fires yet. The values below are the real target account ids, recorded here so Phase A's env/constants wiring and Phase B's Integrations screen both fill in the same numbers rather than someone re-discovering them:
+
 | ID                       | Value            |
 | ------------------------ | ---------------- |
 | GA4 Measurement ID       | `G-77Y5KBV97L`   |
@@ -45,7 +47,7 @@ The allowlist lives in one place — `ALLOWED_PARAMS` in `src/analytics/track.ts
 
 `page` is `usePathname()` from **`next/navigation`** — the real URL pathname the visitor's address bar shows (`/tesekkurler`, `/en/thank-you`), not next-intl's internal route key (R35). `track()` also copies only values whose `typeof` is `'string'` or `'number'`: an object, an array or a `null` under an allow-listed key is a caller handing over raw form state, and it is dropped rather than pushed.
 
-**Coverage:** all 14 pages instrumented — this is a Gate A checklist item, not optional per-page. **Parameter allowlist rule:** no event, on any page, ever carries a candidate name, phone number, email, free-text form content, or any other identifier a visitor typed into a form. This is enforced in `track()` itself, not by caller discipline: the event only ever sees `form_key` and page context, never the submitted fields.
+**WP1 wires exactly one of these seven events: `conversion`**, fired from `ConversionPing` on the thank-you page. The other six (`generate_lead`, `call_click`, `whatsapp_click`, `email_click`, `calculator_use`, `language_switch`) are defined in `track.ts`'s allowlist — the contract is frozen — but no chrome component or page calls `track()` for them yet; the header/footer/mobile-bar phone, WhatsApp and email links render as plain `tel:`/`wa.me`/`mailto:` anchors with no click handler. Wiring the remaining six, on all 14 pages once they exist, is a Gate A checklist item (below), not something WP1 shipped. **Parameter allowlist rule (already enforced today, for every event including the six unwired ones):** no event, on any page, may ever carry a candidate name, phone number, email, free-text form content, or any other identifier a visitor typed into a form. This is enforced in `track()` itself, not by caller discipline — the event only ever sees `form_key` and page context, never submitted fields.
 
 ## Conversion
 

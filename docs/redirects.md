@@ -18,9 +18,13 @@ the new site already serves live (a next.config redirect applies to all traffic,
 clobber it — e.g. the shared `/` and `/blog` keep rows), and never sends a redirect's destination
 into a `410` prefix. This doc is the policy record and the forecast.
 
+## Two numbers, not one: 517 legacy URLs vs. the 50-row `rules.json`
+
+The old site served **517 legacy URLs** — 47 distinct route patterns × up to 11 locale prefixes each — discovered from the old-site inventory. `redirects/rules.json` does **not** list 517 rows: it lists **50**, one row per distinct old route pattern regardless of locale (24 `301`, 20 `410`, 6 `keep`), because the locale expansion is mechanical and belongs in code, not in a hand-maintained file. `scripts/build-redirects.ts` re-expands each of those 50 rows across the applicable locale variants — the bare old path (→ `/en/...`, unless it collides with a live new-site route, R33), `/tr/...` (→ the new Turkish root slug), and the nine dropped locale prefixes (→ `/en/...`) — which is how 50 rows become the actual generated table: **328 redirects** in `redirects/legacy.json` plus **20 `410` prefixes** in `redirects/gone.json` (not 517, because `keep` rows skip the unprefixed-English add when the old path is already live, and every `410` row collapses to one prefix regardless of how many locales served it).
+
 ## Rules
 
-- **Disposition is GSC-joined, not guessed.** The 517 legacy URL rules identified from the old site are joined against the WP0 GSC export (16 months of clicks/impressions per URL, exported in WP0 item 0 — before the redirect map is decided, not after).
+- **Disposition is GSC-joined, not guessed.** The 50 canonical old-route rules (covering the 517-URL legacy inventory above) are joined against the WP0 GSC export (16 months of clicks/impressions per URL, exported in WP0 item 0 — before the redirect map is decided, not after).
 - **Any URL with a click in that 16-month window gets a 301 to the nearest relevant live page.** "Nearest relevant" is a human judgment call per URL — there's no mechanical mapping from old URL structure to new.
 - **Zero-click URLs get `410` (Gone)**, not a redirect to the homepage or any other catch-all. A 410 tells crawlers the page is intentionally removed, which de-indexes faster and cleaner than a soft redirect to an unrelated page.
 - **Unbounded legacy spaces are `410` outright, not individually mapped:** `/blog/*`, `/job-detail/*`, `/profile/*`. These are old-site patterns with unbounded cardinality (every old blog post, every old job listing, every old candidate profile) — mapping them one-by-one isn't tractable and most have no meaningful "nearest" equivalent on the new 14-page site.

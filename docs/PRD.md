@@ -43,6 +43,8 @@ All 14 core pages must exist before launch — the shared header/footer links to
 
 Form handler types (D11, backed by Operations `POST /api/website/v1/forms/:formKey`): `INQUIRY`, `CAREERS_APPLY`, `NEWSLETTER`, `FRAUD_REPORT`, `CALLBACK`, `VISIT`, `CALCULATOR_QUOTE` — 13–15 form instances across the pages above (the design package's own discovery count; several pages carry more than one instance). Every form has a WhatsApp co-primary/secondary CTA and a visitor-side fallback panel on failure (D11) — never a spinner or fake success.
 
+**No form handler is built in WP1** — this section is the WP2/WP3a contract. What WP1 does ship is the far end of every form's success path: `/tesekkurler`/`/en/thank-you`, whitelisting the five `FORM_KEYS` (`hire`, `contact`, `partner`, `careers`, `newsletter`) and firing the `conversion` analytics event once per session per form+path (`docs/ANALYTICS.md`).
+
 ## 3. i18n rules
 
 - **D1:** Turkish at the root, no `/tr` prefix; other locales prefixed (`/en`, later `/fr`). `localeDetection: false`; language choice persists in cookie `ja_locale` (replaces the design's `localStorage["ja-lang"]`); `?lang=` query param still overrides.
@@ -99,3 +101,18 @@ Values not yet confirmed are marked against the plan's owner-input table (§10):
 - TR slug table confirmation, "Karachi" office label, ticker "Now" label, desktop body-small size — **pending §10 item 8**, decide-by WP1 day 3.
 - Ads account ownership / final-URL re-pointing — **pending §10 item 9**.
 - Second human for alerts — **pending §10 item 10**, no default; required before Gate A.
+
+## 11. WP1 delivered
+
+WP1 (foundation) is the plumbing every later page/feature builds on top of, not the 14 pages themselves. Delivered:
+
+- **Routing & i18n** — Next 16.3.5 + next-intl 4.14.5 spike passed; TR-root/`/en` routing, the full `pathnames` table (§2 above), `ja_locale` cookie, `alternateLinks: false`.
+- **Design system** — scaled tokens (D19), Archivo self-hosted, 13 accessible primitives, the shared chrome (header/footer/slim bar/mobile bar/rails/FAB/language hint/consent banner), the 900px/1101px breakpoint scheme.
+- **Content pipeline** — the design package's 3,505-id catalogue imported (`npm run content:import`); the `LOCAL`/`OPS` adapter with the D23 production-fixture guard; the frozen, hash-pinned bundle contract (`contract/`); the numeric-parity/currency-form/hard-typed-metric lints with a ratchet baseline.
+- **SEO scaffolding** — `generateMetadata`, `alternates`/hreflang, `Organization`/`WebSite` JSON-LD, `robots.ts`, a `sitemap.ts` (not yet gated to real routes — `docs/SEO.md`).
+- **Redirects** — the data-driven 301/410 pipeline (`redirects/rules.json` → `build-redirects.ts` → `legacy.json`/`gone.json`), 328 redirects + 20 gone prefixes generated and tested.
+- **Analytics scaffolding** — Consent Mode v2 defaults, the GTM loader, the consent banner with withdrawal, the `track()` allowlist and the thank-you page's `conversion` event (the only one of the seven allowed events actually wired yet — `docs/ANALYTICS.md`).
+- **Operations surface** — `/api/site-health` and `/api/revalidate`, both with their WP5 follow-up items recorded (`docs/ARCHITECTURE.md`).
+- **Quality gate** — Playwright + axe + Lighthouse CI wired end-to-end, the corrected 180 KB script budget, a localhost-vs-preview LCP split (R50); the gate itself has not yet been run against a Vercel preview (pending the owner linking `jobsadmire-web-v2`).
+
+**Not yet built, by design (WP2 and later):** 12 of the 14 core pages (only the homepage and Hire Workers exist, both still spike-era placeholder content), every form handler and the Operations write path, Sentry, OG image generation, the `BreadcrumbList`/`FAQPage`/`Article`/`JobPosting` JSON-LD builders, the synthetic-lead cron and daily digest, and per-route bundle nav groups beyond `desktopNav`.

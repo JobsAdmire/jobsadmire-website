@@ -25,16 +25,19 @@ The old site's data plane (its MySQL `job_applications` DB, its Resend-powered v
 
 Names only — see each environment's Vercel project settings for values, never committed here or anywhere in this repo:
 
-| Variable                   | Purpose                                                            |
-| -------------------------- | ------------------------------------------------------------------ |
-| `OPS_API_URL`              | Base URL for `operations.jobsadmire.com/api/website/v1`            |
-| `OPS_WEBSITE_READ_TOKEN`   | Bundle/content reads (current + previous class held by Operations) |
-| `OPS_WEBSITE_WRITE_TOKEN`  | Form submissions                                                   |
-| `REVALIDATE_SECRET`        | Authenticates Operations → `/api/revalidate` calls                 |
-| `NEXT_PUBLIC_SITE_URL`     | Canonical site origin for metadata/sitemap/OG                      |
-| Sentry (DSN + org/project) | Error reporting — see `docs/ARCHITECTURE.md` for scrubbing config  |
+| Variable                   | Purpose                                                                                                                                                                                          |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `CONTENT_SOURCE`           | `LOCAL` or `OPS` — which adapter `contentSource()` resolves to (also needs `OPS_API_URL` and a 32+ char `OPS_WEBSITE_READ_TOKEN` to actually reach `OPS`; `.env.example` defaults it to `LOCAL`) |
+| `OPS_API_URL`              | Base URL for `operations.jobsadmire.com/api/website/v1`                                                                                                                                          |
+| `OPS_WEBSITE_READ_TOKEN`   | Bundle/content reads (current + previous class held by Operations)                                                                                                                               |
+| `OPS_WEBSITE_WRITE_TOKEN`  | Form submissions (not yet consumed by any WP1 code — `docs/ARCHITECTURE.md` § Forms flow)                                                                                                        |
+| `REVALIDATE_SECRET`        | Authenticates Operations → `/api/revalidate` calls, and the gate's `e2e/ops.spec.ts` token-dependent cases (R43)                                                                                 |
+| `NEXT_PUBLIC_SITE_URL`     | Canonical site origin for metadata/sitemap/OG (`.env.example` default: `https://www.jobsadmire.com`)                                                                                             |
+| Sentry (DSN + org/project) | **Not yet integrated** — no `@sentry/*` dependency exists in this repo as of WP1; see `docs/ARCHITECTURE.md` § Sentry                                                                            |
 
-Preview and Production hold separate values; Local reads from `.env.local` (never committed — see `.gitignore`, which already blocks `.env*` except `.env.example`).
+Preview and Production hold separate values; Local reads from `.env.local` (never committed — see `.gitignore`, which already blocks `.env*` except `.env.example`). The full current list, with placeholder values, is `.env.example`.
+
+**Preview `noindex` is `VERCEL_ENV`-driven:** `app/robots.ts` disallows everything (`disallow: '/'`) whenever `process.env.VERCEL_ENV` is set and not `'production'` — every Preview deployment, automatically, with no separate flag to configure.
 
 ## Deployment Protection
 
@@ -59,3 +62,4 @@ Every row stays in this table even after its action is taken — it's the record
 - The Vercel build runs `npm run verify` (`vercel.json`'s `buildCommand: "npm run verify && next build"`) — a failing typecheck/lint/format/test blocks the build outright.
 - `npm run gate` (Lighthouse/Playwright/axe) is **never** part of the Vercel build — there's no Chrome there. It runs against a preview URL, once per work package, from a developer machine or CI (GitHub Actions restoration was checked in WP0, 30 minutes budgeted).
 - This repo's push-to-`main` does **not** auto-deploy any VPS infrastructure — Vercel's own git integration handles builds/deploys for both Vercel projects. The workspace-root "push = production in ~2 min" rule describes the VPS-hosted CRM/Operations pipelines, not this repo.
+- **`npm run dev` (`next dev`) appends an `nextjs-agent-rules` block to this repo's `CLAUDE.md` the first time it runs.** This is Next's own dev-server behaviour, not something this project's tooling does on purpose — revert it (`git checkout -- CLAUDE.md` or drop the appended block by hand) before committing anything; never commit that block. Task 13's implementer hit and reverted this once already.

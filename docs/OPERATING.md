@@ -25,6 +25,8 @@ The response also carries `source` (`LOCAL`/`OPS`), `contractVersion`, `commit`
 bundle's own `generatedAt`** — in Phase A that is a fixed sentinel, so an age computed from
 it would be fiction.
 
+**`lastRevalidate` is not yet trustworthy under `OPS` — WP5 blocker.** The timestamp it reads (`src/app/api/revalidate/state.ts`) is a module-level in-memory variable: best-effort on Vercel's serverless runtime, where a cold instance starts with it unset and a redeploy forgets it entirely. Once `CONTENT_SOURCE=OPS` is live, this check can `fail` on a perfectly healthy instance that simply hasn't personally handled a revalidate call yet — a false `503` from this endpoint, not a real staleness signal. WP5 replaces the module-level variable with a real store before that flip. A related caveat for the same work: even with a real store, `bundleTr`/`bundleEn` read through the same `next: { revalidate: 900 }` Next.js Data Cache the pages themselves use, so a passing bundle check up to 900 s after a failed Operations publish can still be looking at the last-good cached bundle rather than the current one. Full detail: `docs/ARCHITECTURE.md` § Operations surface.
+
 Still to land, with the work package that brings them:
 
 | Check                                                         | Reason code         | Lands in |
@@ -37,11 +39,11 @@ Still to land, with the work package that brings them:
 
 ## Synthetic lead
 
-A Vercel Cron job submits a real form, through the real form path, **every 30 minutes**, using the `isTest` token class (so it never shows up as a real lead in Operations' inbox or in `generate_lead` conversion counts). It pings an external heartbeat service on success. **A missed ping is the page** — the alarm is the monitor noticing silence, not the site self-reporting a failure it may be unable to self-report during an actual outage.
+**Not yet built** — no cron config exists in `vercel.json` and no form handlers exist yet to exercise (`docs/ARCHITECTURE.md` § Forms flow). The design, for when WP3a/WP5 land it: a Vercel Cron job submits a real form, through the real form path, **every 30 minutes**, using the `isTest` token class (so it never shows up as a real lead in Operations' inbox or in `generate_lead` conversion counts). It pings an external heartbeat service on success. **A missed ping is the page** — the alarm is the monitor noticing silence, not the site self-reporting a failure it may be unable to self-report during an actual outage.
 
 ## Daily digest
 
-An email, sent **from Vercel** (not from Operations — deliberately a different failure domain), summarizing the prior day's leads, form health, and any tripped alarms. **Its absence is itself the alarm** — a missing digest means something broke badly enough to take the digest with it, which is exactly the scenario a digest exists to catch.
+**Not yet built** — depends on the same not-yet-existing form/lead pipeline. Design: an email, sent **from Vercel** (not from Operations — deliberately a different failure domain), summarizing the prior day's leads, form health, and any tripped alarms. **Its absence is itself the alarm** — a missing digest means something broke badly enough to take the digest with it, which is exactly the scenario a digest exists to catch.
 
 ## External monitor and second human
 
