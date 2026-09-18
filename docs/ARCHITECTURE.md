@@ -66,6 +66,28 @@ When porting any desktop value from the package, check off:
 - [ ] Desktop body-small is raised to **11px** post-scale (owner may keep the scaled 9.75px instead — pending §10 item 8).
 - [ ] After porting a page, run the token snapshot + width sweep (part of `npm run gate`) to catch any value that drifted from its scaled source.
 
+## Quality gate (D27)
+
+`npm run gate` (`scripts/gate.sh`) runs **outside** the Vercel build — there is no Chrome there — against a URL: a preview deployment, or a local `next start`. Once per work package.
+
+```bash
+E2E_BASE_URL=https://<preview> REVALIDATE_SECRET=<the server's own secret> npm run gate
+```
+
+It runs, in order and never concurrently:
+
+1. **Playwright**, both projects (`mobile` = Pixel 7, `desktop` = 1440×900), no filter — routing, redirects, SEO, thank-you/conversion, ops, smoke, plus the two gate sweeps below. `REVALIDATE_SECRET` is optional: without it the two token-dependent cases in `e2e/ops.spec.ts` skip themselves (R43) and `gate.sh` says so.
+2. **axe** (`e2e/a11y.spec.ts`) over `GATE_ROUTES` (`e2e/routes.ts` — the public routes per locale; WP2 appends each page as it lands), tags `wcag2a wcag2aa wcag22aa`, zero violations. It runs under **both** projects on purpose: the hamburger, the mobile bottom bar and the footer accordions only exist at the mobile viewport.
+3. **The width sweep** (`e2e/width-sweep.spec.ts`): no horizontal overflow at 1440/1280/1101/1100/900/700/560/460/390 — 1101 and 1100 straddle the D19 boundary.
+4. **Lighthouse CI** (`lighthouserc.json`), mobile preset, 2 runs per path, on the four indexable gate paths (the list in `gate.sh` mirrors `e2e/routes.ts` minus the noindex `/tesekkurler`): performance ≥ 0.95, accessibility / best-practices / SEO = 1.0, LCP ≤ 2500 ms, CLS ≤ 0.1, TBT warn at 200 ms. Each `lhci collect` is `--additive`, otherwise it wipes the previous path's result and `lhci assert` would only ever see the last one.
+
+**A failure is fixed in the component, never by lowering the assertion (D20).** The WP1 gate forced these, and they are the named deltas from the package's own pixels:
+
+- The **CTA face is `blue-safe` (#1073a8)**, not the raw brand blue: white on #1899d5 is 3.2:1, which is AA for large text only — a 15 px button label is not large text. `blue` survives behind icons and as a hover/decorative surface.
+- The **WhatsApp action is `success-text` (#12813c)**, not `success` (#16a34a, 3.3:1 under white) — one colour for the action in the mobile bar and the FAB.
+- Footer **office hours are `white/55`** (5.9:1 on navy), not `white/40` (3.8:1); the language hint's dismiss button is `text-secondary`, not `text-tertiary` (4.25:1 on the tint strip).
+- The **header's desktop row (nav + language switcher) appears only above 1101px**; below it the hamburger panel carries both. Below the D19 boundary the type scale is the authored 1:1 one, and the full row overflows the viewport (47 px at 1100, 125 px at 390) — the design package hides the same two at its own mobile breakpoint.
+
 ## Design system
 
 `src/design/` — tokens (colour, type, radius, shadow per `design-package/README.md`'s Design Tokens section, scaled per D19), `Archivo` via `next/font/google` (`latin` + `latin-ext` subsets, self-hosted), primitives (`FormField` with label/error/`aria-live`, `Dialog`, `PausableMarquee`, `SkipLink`), shared chrome (`SlimBar`, `Header`/`Nav`, `SocialRail`, `WhatsAppFab`, `MobileBottomBar`, `Footer`, `LanguageHint`, `StickyCtaBar`, `ConsentBanner`) — identical on every page per the package's own warning against chrome drift.

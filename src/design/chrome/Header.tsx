@@ -43,9 +43,14 @@ export function Header({
     <header className="sticky top-0 z-40 border-b border-border-3 bg-white">
       <div className="container-site flex items-center justify-between gap-5 py-3">
         <Link href="/" className="flex-none no-underline">
-          <Image src="/brand/ja-mark.png" alt="JobsAdmire" width={34} height={34} priority />
+          {/* 34 × 29 — the asset's own 336 × 285 ratio (see the footer's copy). */}
+          <Image src="/brand/ja-mark.png" alt="JobsAdmire" width={34} height={29} priority />
         </Link>
-        <nav aria-label={sys('nav.main')} className="hidden items-center gap-4 lg:flex">
+        {/* The desktop row only fits above the D19 boundary: below 1101 the type scale is
+            the authored 1:1 one, and nav + language + CTAs outgrow the viewport (the width
+            sweep catches it at 1100). Below it the hamburger carries the same items, as the
+            design package does at its own breakpoint. */}
+        <nav aria-label={sys('nav.main')} className="hidden items-center gap-4 xl:flex">
           {items
             .filter((i) => !PROMOTED.has(i.href))
             .map((item) => (
@@ -53,7 +58,11 @@ export function Header({
             ))}
         </nav>
         <div className="flex flex-none items-center gap-2">
-          <LanguageSwitcher locale={locale} label={languageLabel} />
+          {/* ~300 px of pills: it is the reason the row overflows below 1101 (and below
+              515 px, the phone). The hamburger panel carries the same switcher. */}
+          <div className="hidden xl:block">
+            <LanguageSwitcher locale={locale} label={languageLabel} />
+          </div>
           {secondary && (
             <Button
               variant="secondary"
@@ -68,7 +77,7 @@ export function Header({
             variant="primary"
             href={primaryCta.href}
             external={primaryCta.external}
-            className="whitespace-nowrap bg-ink hover:bg-blue"
+            className="whitespace-nowrap bg-ink hover:bg-blue-safe"
           >
             {t('home.014')} <span className="hidden xl:inline">{t('home.015')}</span>
           </Button>

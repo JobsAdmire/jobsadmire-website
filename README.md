@@ -19,6 +19,8 @@ E2E_BASE_URL=http://localhost:3000 npm run gate   # Playwright + axe + Lighthous
 
 Other scripts: `npm run typecheck`, `npm run lint`, `npm run format` / `format:write`, `npm run test` / `test:watch`, `npm run e2e` (Playwright only, no Lighthouse/axe).
 
+Two one-off setup notes: `npx playwright install chromium` once per machine (the gate's browser, and Lighthouse's), and run Node 22 (`nvm use` — `.nvmrc`), because Node >= 23 changes `localStorage` under Vitest.
+
 Local dev talks to the Operations backend on **port 4001** (`jobsadmire-operations` — see the workspace-root `CLAUDE.md`); run that stack alongside this one for anything past the `LOCAL` content adapter.
 
 ## Environments

@@ -29,7 +29,9 @@ export function MobileBottomBar({ bundle }: { bundle: Bundle }) {
         href={waLink(settings.whatsappNumber, sys('whatsapp.prefill'))}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${ACTION} bg-success`}
+        // `success` (#16a34a) is 3.3:1 under white — the darker green of the same family
+        // clears AA (4.96:1) and keeps the WhatsApp action one colour everywhere.
+        className={`${ACTION} bg-success-text`}
       >
         <WhatsAppIcon size={18} />
         {t('home.221')}

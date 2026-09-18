@@ -24,6 +24,14 @@ describe('Accordion', () => {
     expect(screen.getByRole('button', { name: 'Second' })).toHaveAttribute('aria-expanded', 'true');
   });
 
+  it('puts each trigger at the requested heading level', () => {
+    render(<Accordion items={items} headingLevel={2} />);
+    expect(screen.getByRole('heading', { level: 2, name: 'First' })).toBeInTheDocument();
+    cleanup();
+    render(<Accordion items={items} />);
+    expect(screen.getByRole('heading', { level: 3, name: 'First' })).toBeInTheDocument();
+  });
+
   it('closes an open panel when singleOpen is false (R21)', async () => {
     render(<Accordion items={items} singleOpen={false} />);
     const first = screen.getByRole('button', { name: 'First' });

@@ -48,7 +48,8 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
   const office = (name: string, hours: string, map: string) => (
     <span key={name} className="flex flex-col gap-1 border-t border-white/10 pt-2.5">
       <h3 className={OFFICE_LABEL}>{name}</h3>
-      <span className="font-medium text-white/40">{hours}</span>
+      {/* /40 is 3.8:1 on navy — opening hours are information, not decoration (D20). */}
+      <span className="font-medium text-white/55">{hours}</span>
       <a href={map} target="_blank" rel="noopener noreferrer" className={FLINK}>
         <MapPinIcon size={13} />
         {t('home.192')}
@@ -108,7 +109,7 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
             href={waHref}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-3 inline-flex min-h-[44px] items-center justify-center rounded-md bg-blue px-5 font-extrabold text-white no-underline hover:bg-blue-safe focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky"
+            className="mt-3 inline-flex min-h-[44px] items-center justify-center rounded-md bg-blue-safe px-5 font-extrabold text-white no-underline hover:bg-sky hover:text-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky"
           >
             {t('home.193')}
           </a>
@@ -142,7 +143,9 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
     <footer className="border-t-[3px] border-blue bg-navy text-body-sm">
       <div className="container-site grid gap-10 pt-16 pb-12 lg:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
         <div>
-          <Image src="/brand/ja-mark.png" alt="" width={50} height={50} className="mb-4" />
+          {/* 50 × 42 is the asset's own 336 × 285 ratio: a square box here reserves 7 px too
+              much and the whole footer jumps when the image lands (CLS). */}
+          <Image src="/brand/ja-mark.png" alt="" width={50} height={42} className="mb-4" />
           <p className="m-0 mb-4 max-w-[330px] text-white/65">{t('home.188')}</p>
           <p className="m-0 mb-5 inline-flex items-center gap-2 rounded-pill border border-white/20 bg-white/5 px-4 py-1.5 font-bold text-sky">
             <span aria-hidden="true" className="h-2 w-2 rounded-pill bg-success" />
@@ -176,6 +179,7 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
 
         <div className="text-white/80 lg:hidden">
           <Accordion
+            headingLevel={2}
             singleOpen={false}
             items={columns.map((c) => ({ id: c.id, title: c.heading, body: c.body }))}
           />

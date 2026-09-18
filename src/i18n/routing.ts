@@ -35,5 +35,11 @@ export const routing = defineRouting({
   localePrefix: 'as-needed', // TR unprefixed, /en prefixed (D1)
   localeDetection: false, // crawlers and visitors always get TR at the root; the LanguageHint offers EN once
   localeCookie: { name: 'ja_locale', maxAge: 60 * 60 * 24 * 365 },
+  // The middleware otherwise answers with a `Link: …rel="alternate"; hreflang=…` header built
+  // from the *request host* — localhost, a preview `*.vercel.app`, the apex — alongside the
+  // `<link rel="alternate">` tags we render from SITE_URL (docs/SEO.md). Two disagreeing
+  // hreflang sets, and a canonical that then points at "another hreflang location": the gate's
+  // Lighthouse SEO audit fails on it. One source of truth, and it is the metadata layer.
+  alternateLinks: false,
   pathnames,
 });

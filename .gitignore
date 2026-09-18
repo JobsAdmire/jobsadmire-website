@@ -48,6 +48,8 @@ next-env.d.ts
 playwright-report
 test-results
 coverage
+lighthouse-report/
+.lighthouseci/
 
 .DS_Store
 

@@ -7,11 +7,17 @@ export function Accordion({
   items,
   singleOpen = true,
   defaultOpenId,
+  headingLevel = 3,
 }: {
   items: AccordionItem[];
   singleOpen?: boolean;
   defaultOpenId?: string;
+  /** The level each trigger's heading sits at. The WAI-ARIA pattern requires it to match the
+   *  surrounding document outline: a panel that stands in for an `h2` column (the footer on
+   *  mobile) must not drop to `h3`, or the visible heading order skips a level. */
+  headingLevel?: 2 | 3 | 4;
 }) {
+  const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
   const base = useId();
   const listRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState<Set<string>>(
@@ -44,7 +50,7 @@ export function Accordion({
         const panelId = `${base}-${it.id}-panel`;
         return (
           <div key={it.id}>
-            <h3 className="m-0">
+            <Heading className="m-0">
               <button
                 id={btnId}
                 type="button"
@@ -58,7 +64,7 @@ export function Accordion({
                 <span>{it.title}</span>
                 <span aria-hidden="true">{isOpen ? '−' : '+'}</span>
               </button>
-            </h3>
+            </Heading>
             <div
               id={panelId}
               role="region"

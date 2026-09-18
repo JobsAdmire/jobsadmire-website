@@ -75,7 +75,8 @@ export function LanguageHint({ locale }: { locale: Locale }) {
         <button
           type="button"
           onClick={dismiss}
-          className="inline-flex min-h-[44px] items-center px-2 font-bold text-text-tertiary hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
+          // tertiary (#64748b) is 4.25:1 on the tint strip; secondary clears AA at 5.5:1.
+          className="inline-flex min-h-[44px] items-center px-2 font-bold text-text-secondary hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
         >
           {sys('languageHint.dismiss')}
         </button>

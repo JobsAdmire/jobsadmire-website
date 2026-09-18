@@ -14,7 +14,13 @@ const pairs: Array<[string, string, number, string]> = [
   [color.successText, color.successSurface, 4.5, 'success text on surface'],
   [color.warningText, color.warningSurface, 4.5, 'warning text on surface'],
   [color.danger, color.dangerSurface, 4.5, 'danger text on surface'],
-  [color.white, color.blue, 3.0, 'white on brand blue (buttons, large text)'],
+  // The gate's axe sweep reads button labels as normal text, so every surface that carries
+  // one is held to 4.5 — that is why the CTA face is `blueSafe` and the WhatsApp action
+  // `successText`, not the raw brand colours (D20).
+  [color.white, color.blueSafe, 4.5, 'white on blue-safe (primary CTA face)'],
+  [color.white, color.successText, 4.5, 'white on the WhatsApp action green'],
+  [color.textSecondary, color.tint, 4.5, 'secondary on the tint strip (language hint)'],
+  [color.white, color.blue, 3.0, 'white on raw brand blue — icons and large text only'],
 ];
 
 describe('design tokens', () => {

@@ -7,6 +7,11 @@ describe('routing', () => {
     expect(routing.localePrefix).toBe('as-needed');
     expect(routing.localeDetection).toBe(false);
   });
+  it('leaves hreflang to the metadata layer, not the middleware header', () => {
+    // Two hreflang sets — ours from SITE_URL, the middleware's from the request host —
+    // disagree on every non-production host and break the canonical (docs/SEO.md).
+    expect(routing.alternateLinks).toBe(false);
+  });
   it('gives every localized pathname a tr and an en form', () => {
     for (const [internal, ext] of Object.entries(pathnames)) {
       if (typeof ext === 'string') continue;

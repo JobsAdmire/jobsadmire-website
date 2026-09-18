@@ -4,7 +4,10 @@ import { Link, type Href } from '@/i18n/navigation';
 export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
 
 const VARIANT: Record<ButtonVariant, string> = {
-  primary: 'bg-blue text-white hover:bg-blue-safe',
+  // D20: white on the raw brand blue (#1899d5) is 3.2:1 — enough for large text, not for
+  // a 15 px button label. The contrast-safe blue is the CTA face; `blue` survives as a
+  // decorative/hover surface behind icons only.
+  primary: 'bg-blue-safe text-white hover:bg-ink',
   secondary: 'border border-border-1 bg-white text-ink hover:border-tint-border hover:bg-pale-1',
   ghost: 'text-blue-safe hover:bg-tint',
   danger: 'bg-danger text-white hover:opacity-90',
