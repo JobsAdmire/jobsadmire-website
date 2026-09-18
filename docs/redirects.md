@@ -46,7 +46,7 @@ The old site served **517 legacy URLs** — 47 distinct route patterns × up to 
 
 ## Disposition table
 
-_Placeholder — to be filled from the WP0 GSC export joined against the 517-rule legacy inventory. Each row: old URL → GSC clicks (16 mo) → disposition (301 target / 410) → rationale. The generator's side is ready: every `410` row except `/services/resume-service` has a `RESCUE` target, so the join only needs the CSV._
+_Placeholder — to be filled from the WP0 GSC export joined against the 517-rule legacy inventory. Each row: old URL → GSC clicks (16 mo) → disposition (301 target / 410) → rationale. The generator's side is ready: every `410` row (all 19) has a `RESCUE` target, so the join only needs the CSV._
 
 | Old URL                         | GSC clicks (16 mo) | Disposition | Target | Rationale |
 | ------------------------------- | ------------------ | ----------- | ------ | --------- |
