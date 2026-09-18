@@ -3507,8 +3507,7 @@
   "terms.005": "işçi",
   "terms.006": "çalışma izni",
   "terms.007": "inceleme",
-  "terms.008": "ortak portalı",
-  "sys.nav.verify": "Temsilci Doğrulama"
+  "terms.008": "ortak portalı"
  },
  "nav": [
   {
@@ -3591,7 +3590,7 @@
   {
    "group": "desktopNav",
    "order": 7,
-   "labelId": "sys.nav.verify",
+   "labelId": "home.011",
    "href": "/verify",
    "external": false,
    "visibleOn": [

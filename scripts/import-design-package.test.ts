@@ -5,10 +5,8 @@ describe('import-design-package', () => {
   const { tr, en, catalogue } = buildBundles();
 
   it('imports every id in both locales with the same key set', () => {
-    const ids = Object.keys(tr.strings);
-    expect(ids.filter((id) => !id.startsWith('sys.')).length).toBe(3505);
-    expect(tr.strings['sys.nav.verify']).toBe('Temsilci Doğrulama');
-    expect(Object.keys(en.strings).sort()).toEqual(ids.sort());
+    expect(Object.keys(tr.strings).length).toBe(3505);
+    expect(Object.keys(en.strings).sort()).toEqual(Object.keys(tr.strings).sort());
   });
   it('keeps the six deliberately-empty Turkish fragments empty', () => {
     for (const id of ['hire.141', 'calc.041', 'calc.154', 'calc.157', 'calc.367', 'jt.107']) {
@@ -37,5 +35,10 @@ describe('import-design-package', () => {
       '/careers',
       '/contact',
     ]);
+  });
+  it('uses the package nav-verify id home.011 for the /verify nav item, not an invented id', () => {
+    const verifyItem = tr.nav.find((n) => n.href === '/verify');
+    expect(verifyItem?.labelId).toBe('home.011');
+    expect(tr.strings['home.011']).toBe('Temsilci Doğrulama');
   });
 });

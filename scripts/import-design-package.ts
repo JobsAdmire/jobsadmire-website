@@ -84,7 +84,7 @@ const NAV: Array<{ href: string; labelId: string }> = [
   { href: '/about', labelId: 'home.001' },
   { href: '/success-stories', labelId: 'home.006' },
   { href: '/blog', labelId: 'home.010' },
-  { href: '/verify', labelId: 'sys.nav.verify' },
+  { href: '/verify', labelId: 'home.011' },
   { href: '/partner-with-us', labelId: 'home.008' },
   { href: '/careers', labelId: 'home.009' },
   { href: '/contact', labelId: 'home.007' },
@@ -110,10 +110,6 @@ export function buildBundles() {
       };
     }
   }
-  // sys.* ids that the package does not carry (D7 reserved range)
-  strings.tr['sys.nav.verify'] = 'Temsilci Doğrulama';
-  strings.en['sys.nav.verify'] = 'Verify Representative';
-  catalogue['sys.nav.verify'] = { page: 'sys', sec: 'nav', legal: false, rev: 'sys' };
 
   const mk = (locale: 'tr' | 'en') => ({
     contractVersion: '1.0',

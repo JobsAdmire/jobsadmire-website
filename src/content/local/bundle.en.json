@@ -3507,8 +3507,7 @@
   "terms.005": "worker",
   "terms.006": "work permit",
   "terms.007": "vetting",
-  "terms.008": "partner portal",
-  "sys.nav.verify": "Verify Representative"
+  "terms.008": "partner portal"
  },
  "nav": [
   {
@@ -3591,7 +3590,7 @@
   {
    "group": "desktopNav",
    "order": 7,
-   "labelId": "sys.nav.verify",
+   "labelId": "home.011",
    "href": "/verify",
    "external": false,
    "visibleOn": [
