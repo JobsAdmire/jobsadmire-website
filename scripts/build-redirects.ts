@@ -23,6 +23,7 @@ const RESCUE: Record<string, string> = {
   '/services/interview-coaching-service': '/contact',
   '/services/remote-work-opportunity': '/contact',
   '/services/skill-development-training': '/contact',
+  '/services/resume-service': '/contact',
   '/immigration/immigrate-to-usa': '/work-permit',
   '/immigration/immigrate-to-uk': '/work-permit',
   '/immigration/immigrate-to-canada': '/work-permit',
