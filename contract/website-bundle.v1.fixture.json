@@ -1,0 +1,177 @@
+{
+  "contractVersion": "1.0",
+  "locale": "tr",
+  "generatedAt": "2026-09-18T00:00:00.000Z",
+  "strings": {
+    "hire.141": "",
+    "calc.041": "",
+    "calc.154": "",
+    "calc.157": "",
+    "calc.367": "",
+    "jt.107": "",
+    "home.001": "Hakkımızda",
+    "home.002": "İşçi Talebi",
+    "home.003": "Adaylar",
+    "home.004": "Çalışma İzinleri",
+    "home.005": "Maliyet Hesaplama",
+    "home.006": "Başarı Hikayeleri",
+    "home.007": "İletişim",
+    "home.008": "İş Ortağı Olun",
+    "home.009": "Ekibimize Katılın",
+    "home.010": "Rehberler",
+    "home.011": "Temsilci Doğrulama",
+    "home.012": "CRM Girişi",
+    "home.017": "İŞKUR lisanslı · sözleşmeler kurucu imzasıyla · işçiden ücret alınmaz",
+    "home.018": "Nitelikli işçi."
+  },
+  "nav": [
+    {
+      "group": "desktopNav",
+      "order": 0,
+      "labelId": "home.002",
+      "href": "/hire-workers",
+      "external": false,
+      "visibleOn": ["desktop", "mobile"]
+    },
+    {
+      "group": "desktopNav",
+      "order": 1,
+      "labelId": "home.003",
+      "href": "/available-workers",
+      "external": false,
+      "visibleOn": ["desktop", "mobile"]
+    },
+    {
+      "group": "desktopNav",
+      "order": 2,
+      "labelId": "home.004",
+      "href": "/work-permit",
+      "external": false,
+      "visibleOn": ["desktop", "mobile"]
+    },
+    {
+      "group": "desktopNav",
+      "order": 3,
+      "labelId": "home.005",
+      "href": "/hiring-cost-calculator",
+      "external": false,
+      "visibleOn": ["desktop", "mobile"]
+    },
+    {
+      "group": "desktopNav",
+      "order": 4,
+      "labelId": "home.001",
+      "href": "/about",
+      "external": false,
+      "visibleOn": ["desktop", "mobile"]
+    },
+    {
+      "group": "desktopNav",
+      "order": 5,
+      "labelId": "home.006",
+      "href": "/success-stories",
+      "external": false,
+      "visibleOn": ["desktop", "mobile"]
+    },
+    {
+      "group": "desktopNav",
+      "order": 6,
+      "labelId": "home.010",
+      "href": "/blog",
+      "external": false,
+      "visibleOn": ["desktop", "mobile"]
+    },
+    {
+      "group": "desktopNav",
+      "order": 7,
+      "labelId": "home.011",
+      "href": "/verify",
+      "external": false,
+      "visibleOn": ["desktop", "mobile"]
+    },
+    {
+      "group": "desktopNav",
+      "order": 8,
+      "labelId": "home.008",
+      "href": "/partner-with-us",
+      "external": false,
+      "visibleOn": ["desktop", "mobile"]
+    },
+    {
+      "group": "desktopNav",
+      "order": 9,
+      "labelId": "home.009",
+      "href": "/careers",
+      "external": false,
+      "visibleOn": ["desktop", "mobile"]
+    },
+    {
+      "group": "desktopNav",
+      "order": 10,
+      "labelId": "home.007",
+      "href": "/contact",
+      "external": false,
+      "visibleOn": ["desktop", "mobile"]
+    }
+  ],
+  "settings": {
+    "siteUrl": "https://www.jobsadmire.com",
+    "phone": "+905011240340",
+    "phoneDisplay": "+90 501 124 03 40",
+    "partnershipsPhone": "+905533832549",
+    "email": "info@jobsadmire.com",
+    "careersEmail": "careers@jobsadmire.com",
+    "whatsappNumber": "905011240340",
+    "telegramUrl": "https://t.me/jobsadmire",
+    "social": {
+      "instagram": "https://instagram.com/jobsadmire",
+      "tiktok": "https://tiktok.com/@jobsadmire",
+      "linkedin": "https://linkedin.com/company/jobsadmire",
+      "facebook": "https://facebook.com/jobsadmire"
+    },
+    "licence": {
+      "permitNo": "1730",
+      "lawRef": "4904",
+      "taxNo": "48422122"
+    },
+    "storeLinks": {
+      "android": "https://play.google.com/store/apps/details?id=com.jobsadmire.portal",
+      "ios": null
+    },
+    "portal": {
+      "loginPath": "/auth/login",
+      "forgotPath": "/auth/forgot-password",
+      "host": "https://portal.jobsadmire.com"
+    },
+    "maps": {
+      "antalya": "https://www.google.com/maps/search/?api=1&query=Adnan+Menderes+Blv.+No+7%2F6+Muratpa%C5%9Fa+Antalya",
+      "karachi": "https://www.google.com/maps/search/?api=1&query=Shahrah-e-Faisal+Karachi"
+    },
+    "analytics": {
+      "ga4Id": null,
+      "gtmId": null,
+      "adsId": null,
+      "adsConversionLabel": null,
+      "consentMode": true
+    },
+    "turnstileSiteKey": null
+  },
+  "pages": {
+    "home": {
+      "titleId": "home.017",
+      "descriptionId": "home.018",
+      "ogImage": null,
+      "canonical": null,
+      "robots": "index",
+      "jsonLd": ["organization", "website", "faq"]
+    }
+  },
+  "collections": {},
+  "redirects": [
+    {
+      "from": "/contact-us",
+      "to": "/en/contact",
+      "status": 308
+    }
+  ]
+}
