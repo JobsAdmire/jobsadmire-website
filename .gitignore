@@ -47,11 +47,8 @@ next-env.d.ts
 # test artefacts
 playwright-report
 test-results
-coverage
 lighthouse-report/
 .lighthouseci/
-
-.DS_Store
 
 # SDD scratch (ledgers, briefs, review packages) — never committed
 .superpowers/

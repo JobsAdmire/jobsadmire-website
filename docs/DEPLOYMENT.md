@@ -17,6 +17,8 @@ Move the `jobsadmire.com` + `www` domains from `jobsadmirewebsite` to `jobsadmir
 
 **Rollback:** move the domains back to the old project — the still-`READY` frozen deployment, id **`dpl_hRVuY1faCQe8fQ44sqmw4t82Rs7A`** (2026-02-17). This id is the recorded rollback target from WP0 day 1; do not let it expire or get pruned before Phase A is confirmed stable.
 
+**Domain direction matters.** The canonical host is **`www.jobsadmire.com`** (`NEXT_PUBLIC_SITE_URL` and `settings.siteUrl` both), so on `jobsadmire-web-v2` the **primary domain must be `www`, with the apex `jobsadmire.com` redirecting to it** — not the other way round. If the apex is primary, every canonical, hreflang and sitemap URL the site emits points through a 308 on its way to the page it names.
+
 **`legacy.jobsadmire.com`** is aliased to the old deployment for 90 days post-cutover (`noindex`), so any link or bookmark that still points at old-site-specific behaviour has a landing place during the watch window.
 
 The old site's data plane (its MySQL `job_applications` DB, its Resend-powered visa-application mailer) is **not migrated** — see the retired-secrets log below. Once `RESEND_API_KEY` is rotated at cutover, the old site's only working intake stops working. **The flip is one-way**: there is no path back to a functioning old site once that key rotates, only back to its frozen static artifact via the domain-move rollback above.
@@ -25,15 +27,20 @@ The old site's data plane (its MySQL `job_applications` DB, its Resend-powered v
 
 Names only — see each environment's Vercel project settings for values, never committed here or anywhere in this repo:
 
-| Variable                   | Purpose                                                                                                                                                                                          |
-| -------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| `CONTENT_SOURCE`           | `LOCAL` or `OPS` — which adapter `contentSource()` resolves to (also needs `OPS_API_URL` and a 32+ char `OPS_WEBSITE_READ_TOKEN` to actually reach `OPS`; `.env.example` defaults it to `LOCAL`) |
-| `OPS_API_URL`              | Base URL for `operations.jobsadmire.com/api/website/v1`                                                                                                                                          |
-| `OPS_WEBSITE_READ_TOKEN`   | Bundle/content reads (current + previous class held by Operations)                                                                                                                               |
-| `OPS_WEBSITE_WRITE_TOKEN`  | Form submissions (not yet consumed by any WP1 code — `docs/ARCHITECTURE.md` § Forms flow)                                                                                                        |
-| `REVALIDATE_SECRET`        | Authenticates Operations → `/api/revalidate` calls, and the gate's `e2e/ops.spec.ts` token-dependent cases (R43)                                                                                 |
-| `NEXT_PUBLIC_SITE_URL`     | Canonical site origin for metadata/sitemap/OG (`.env.example` default: `https://www.jobsadmire.com`)                                                                                             |
-| Sentry (DSN + org/project) | **Not yet integrated** — no `@sentry/*` dependency exists in this repo as of WP1; see `docs/ARCHITECTURE.md` § Sentry                                                                            |
+| Variable                           | Purpose                                                                                                                                                                                          |
+| ---------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `CONTENT_SOURCE`                   | `LOCAL` or `OPS` — which adapter `contentSource()` resolves to (also needs `OPS_API_URL` and a 32+ char `OPS_WEBSITE_READ_TOKEN` to actually reach `OPS`; `.env.example` defaults it to `LOCAL`) |
+| `OPS_API_URL`                      | Base URL for `operations.jobsadmire.com/api/website/v1`                                                                                                                                          |
+| `OPS_WEBSITE_READ_TOKEN`           | Bundle/content reads (current + previous class held by Operations)                                                                                                                               |
+| `OPS_WEBSITE_WRITE_TOKEN`          | Form submissions (not yet consumed by any WP1 code — `docs/ARCHITECTURE.md` § Forms flow)                                                                                                        |
+| `REVALIDATE_SECRET`                | Authenticates Operations → `/api/revalidate` calls, and the gate's `e2e/ops.spec.ts` token-dependent cases (R43)                                                                                 |
+| `NEXT_PUBLIC_SITE_URL`             | Canonical site origin for metadata/sitemap/OG (`.env.example` default: `https://www.jobsadmire.com`)                                                                                             |
+| `NEXT_PUBLIC_GTM_ID`               | GTM container id — public identifier, not a secret. Overlays the LOCAL bundle's `null` (R54); this is what makes GTM and the consent banner load in Phase A                                      |
+| `NEXT_PUBLIC_GA4_ID`               | GA4 measurement id — public identifier; overlays `settings.analytics.ga4Id`                                                                                                                      |
+| `NEXT_PUBLIC_ADS_ID`               | Google Ads conversion id — public identifier; overlays `settings.analytics.adsId`                                                                                                                |
+| `NEXT_PUBLIC_ADS_CONVERSION_LABEL` | Ads conversion label — public identifier; overlays `settings.analytics.adsConversionLabel`                                                                                                       |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY`   | Turnstile **site** key — public identifier (the secret key is not held by this repo); overlays `settings.turnstileSiteKey`                                                                       |
+| Sentry (DSN + org/project)         | **Not yet integrated** — no `@sentry/*` dependency exists in this repo as of WP1; see `docs/ARCHITECTURE.md` § Sentry                                                                            |
 
 Preview and Production hold separate values; Local reads from `.env.local` (never committed — see `.gitignore`, which already blocks `.env*` except `.env.example`). The full current list, with placeholder values, is `.env.example`.
 

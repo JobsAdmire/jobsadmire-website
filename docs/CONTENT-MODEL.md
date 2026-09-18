@@ -39,11 +39,11 @@ The design package ships **zero** field-label, error-message, consent-banner, or
 
 **`sys.*` is not a `t()`/`makeT` id.** It lives in `src/messages/{tr,en}.json` (next-intl message files) and is read via `getTranslations('sys')` (server) / `useTranslations('sys')` (client) — a different accessor from the bundle string map entirely. As shipped in WP1, both locale files carry exactly the same key set:
 
-- **Chrome:** `skipToContent`, `languageName`, `home`, `nav.main`, `nav.close`, `marquee.pause`, `marquee.play`, `whatsapp.prefill`
+- **Chrome:** `skipToContent`, `home`, `nav.main`, `nav.close`, `marquee.pause`, `marquee.play`, `whatsapp.prefill` — there is deliberately **no** `languageName`: a switcher names the language you are switching _to_, so it uses endonyms in `LanguageSwitcher.tsx`, not a current-locale string (the unused key was removed, M-10)
 - **Language hint:** `languageHint.body`, `languageHint.switch`, `languageHint.dismiss` — **English in both locale files on purpose**: this copy is read by a visitor whose browser is set to English while they're looking at the Turkish site, so it must not itself be Turkish
 - **Consent:** `consent.title`, `consent.body`, `consent.accept`, `consent.reject`, `consent.policy`, `consent.manage`
 - **Error/404 boundaries:** `notFoundTitle`, `notFoundBody`, `errorTitle`, `errorRetry`
-- **Thank-you page:** `thankYou.title`, `thankYou.body`, `thankYou.home`, `thankYou.whatsapp`, `thankYou.forms.{hire,contact,partner,careers,newsletter}`
+- **Thank-you page:** `thankYou.title`, `thankYou.body`, `thankYou.home`, `thankYou.whatsapp`, `thankYou.forms.{hire,contact,partner,careers,newsletter,callback,visit,calculator,fraud,workers}` — one line per `FORM_KEY` (R55); adding a key to `src/analytics/forms.ts` without adding its line here leaves the conversion page silent for that form
 
 This is the entire namespace as of WP1. New UI copy the package doesn't carry gets a new key here, never a new `<page>.<nnn>`-shaped id — and, per the point above, `sys.nav.verify` was **not** created: the Verify-a-Representative nav label reuses the package's own `home.011` (see below).
 

@@ -1,9 +1,11 @@
 'use client';
 import { Link, usePathname, type Href } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
+import { alternatePath } from './alternate-path';
 
 /** Endonyms, not copy: a switcher has to name the language you are switching *to*, so it
- *  cannot come from the current locale's `sys.languageName`. */
+ *  cannot come from a `sys.*` string in the *current* locale — which is why no such key
+ *  exists (M-10 removed the unused `sys.languageName`). */
 const ENDONYM: Record<Locale, string> = { tr: 'Türkçe', en: 'English' };
 
 const SHELL: Record<'light' | 'dark' | 'block', string> = {
@@ -28,7 +30,9 @@ const IDLE: Record<'light' | 'dark' | 'block', string> = {
 };
 
 /** Client-only: the switch has to keep the visitor on the page they are reading, and the
- *  current pathname is a browser fact. `usePathname` is `null` outside the App Router. */
+ *  current pathname is a browser fact. `usePathname` is `null` outside the App Router.
+ *  On a dynamic route it returns the template, so `alternatePath` sends the switch to the
+ *  parent index rather than a slug that does not exist in the other locale (R58). */
 export function LanguageSwitcher({
   locale,
   label,
@@ -38,7 +42,7 @@ export function LanguageSwitcher({
   label: string;
   variant?: 'light' | 'dark' | 'block';
 }) {
-  const pathname = usePathname() ?? '/';
+  const target = alternatePath(usePathname() ?? '/');
   return (
     <div role="group" aria-label={label} className={`flex items-center ${SHELL[variant]}`}>
       {locales.map((l) => {
@@ -46,7 +50,7 @@ export function LanguageSwitcher({
         return (
           <Link
             key={l}
-            href={pathname as Href}
+            href={target as Href}
             prefetch={false}
             locale={l}
             hrefLang={l}

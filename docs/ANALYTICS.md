@@ -11,7 +11,7 @@ Full context: plan D13. IDs and the GTM container inventory are config values, n
 
 ### How that order is realised in code
 
-`src/analytics/GtmLoader.tsx` renders `CONSENT_DEFAULT_SCRIPT` (from `src/analytics/consent.ts`) through `next/script` at `strategy="beforeInteractive"`, then `GoogleTagManager` from `@next/third-parties/google`. It is mounted from `src/app/[locale]/layout.tsx` — the root layout, which is what makes `beforeInteractive` legal — and only when `settings.analytics.consentMode` is true. With `settings.analytics.gtmId === null` (the Phase A bundle) **only the defaults ship**: the container loads the moment the owner fills the id in the Integrations screen (Phase B), and the first tag it ever loads starts denied.
+`src/analytics/GtmLoader.tsx` renders `CONSENT_DEFAULT_SCRIPT` (from `src/analytics/consent.ts`) through `next/script` at `strategy="beforeInteractive"`, then `GoogleTagManager` from `@next/third-parties/google`. It is mounted from `src/app/[locale]/layout.tsx` — the root layout, which is what makes `beforeInteractive` legal — and only when `settings.analytics.consentMode` is true. With `settings.analytics.gtmId === null` **only the defaults ship**: the container loads the moment that id is filled — from `NEXT_PUBLIC_GTM_ID` in Phase A (R54, below) or from the Integrations screen in Phase B — and the first tag it ever loads starts denied.
 
 ### The consent banner
 
@@ -19,9 +19,9 @@ Full context: plan D13. IDs and the GTM container inventory are config values, n
 
 **Withdrawal (R36).** The banner's copy promises the visitor can change their mind, so `clearConsent()` removes the localStorage key, expires the cookie (`Max-Age=0`) and dispatches the same event — the state returns to `unknown` and the sheet re-opens. `src/design/chrome/CookiePreferencesButton.tsx` ("Çerez tercihleri" / "Cookie preferences", `sys.consent.manage`) sits in the footer's legal row and is the visitor's door to it; it is a leaf client component that receives only its label, so the server-rendered Footer stays a server component.
 
-## IDs (config values — CMS-driven in Phase B, env/constants in Phase A)
+## IDs (config values — env in Phase A, CMS-driven in Phase B)
 
-The WP1 generated bundle (`scripts/import-design-package.ts`'s `SETTINGS.analytics`) ships all four of these as `null` (only `consentMode: true` is set) — nothing fires yet. The values below are the real target account ids, recorded here so Phase A's env/constants wiring and Phase B's Integrations screen both fill in the same numbers rather than someone re-discovering them:
+The WP1 generated bundle (`scripts/import-design-package.ts`'s `SETTINGS.analytics`) ships all four of these as `null` (only `consentMode: true` is set) — the design package carries no account ids. The values below are the real target account ids, recorded here so Phase A's env wiring and Phase B's Integrations screen both fill in the same numbers rather than someone re-discovering them:
 
 | ID                       | Value            |
 | ------------------------ | ---------------- |
@@ -30,6 +30,22 @@ The WP1 generated bundle (`scripts/import-design-package.ts`'s `SETTINGS.analyti
 | Google Ads Conversion ID | `AW-17096273578` |
 
 These are public identifiers (they ship in the page source by nature of how GTM/GA4/Ads work) — they are config values, not secrets, and belong in the Integrations screen (D12) in Phase B with a **test button** that fires a verifiable test event.
+
+### How Phase A turns analytics on (R54)
+
+The bundle's nulls are overlaid from the environment by `applyPublicSettings` (`src/content/pure.ts`), which `loadLocal` applies right after `BundleSchema.parse` — and `loadOps` never applies, because under `OPS` the CMS is the source of truth (D12). Set these on the Vercel project (Preview and/or Production) or in `.env.local`:
+
+| Variable                           | Fills                                   |
+| ---------------------------------- | --------------------------------------- |
+| `NEXT_PUBLIC_GTM_ID`               | `settings.analytics.gtmId`              |
+| `NEXT_PUBLIC_GA4_ID`               | `settings.analytics.ga4Id`              |
+| `NEXT_PUBLIC_ADS_ID`               | `settings.analytics.adsId`              |
+| `NEXT_PUBLIC_ADS_CONVERSION_LABEL` | `settings.analytics.adsConversionLabel` |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY`   | `settings.turnstileSiteKey`             |
+
+An unset or empty variable leaves the bundle's own value alone, so "configured nowhere" stays "off" — the failure mode is a dark container, never a half-configured one. Filling `NEXT_PUBLIC_GTM_ID` is what makes the GTM container load, the consent banner mount (R38) and the withdrawal door appear, so a Phase A preview can rehearse consent → GTM → conversion end to end before WP2 instruments the pages. The `NEXT_PUBLIC_` prefix is honest here: every one of these values is visible in the page source by design.
+
+**Inline consent defaults are not literally in `<head>` (M-12).** In the App Router, `next/script` at `beforeInteractive` with inline children renders as a `self.__next_s.push(...)` call in the body and is executed by the Next runtime before hydration — earlier than the `afterInteractive` GTM loader, which is what matters (`e2e/thank-you.spec.ts` proves `dataLayer[0]` is the default state). A raw GTM snippet pasted anywhere else would race it; don't add one.
 
 ## Event schema
 
@@ -53,7 +69,7 @@ The allowlist lives in one place — `ALLOWED_PARAMS` in `src/analytics/track.ts
 
 Fires on `/tesekkurler?form=<key>` — the single navigation target every form's success path uses (D13, `docs/PRD.md` §2). This is why the inline-success-panel pattern from the design package was explicitly overridden: Ads conversion measurement needs a real navigation to attach to, and GA4/GTM event-only conversions on an SPA-style panel are the failure mode the plan calls out ("conversion orphaned" risk, plan §9).
 
-`src/app/[locale]/thank-you/page.tsx` whitelists `?form=` against the five known keys — `hire`, `contact`, `partner`, `careers`, `newsletter` — and renders a form-specific line for each. An unrecognised or missing key still renders the page, but **fires no conversion**: a stale or hand-typed link is not a lead. The event itself comes from `ConversionPing` (client, renders nothing). It is deduped twice over (R37): a `useRef` guard for React's dev double-invoke, and `sessionStorage['ja_conv:<formKey>:<pathname>']` for the whole session — so a reload, a back-forward restore or a re-render cannot inflate the count, while a different form key (or the same form on another path) still counts. The page renders it with `key={formKey}` so a client-side navigation between keys remounts it. With storage blocked (private mode) the dedupe is skipped and the event fires: losing a lead is worse than counting one twice. The page is `noindex` regardless of any later page record, and is absent from both `robots.txt` and the sitemap.
+`src/app/[locale]/thank-you/page.tsx` whitelists `?form=` against the ten known keys — `hire`, `contact`, `partner`, `careers`, `newsletter`, `callback`, `visit`, `calculator`, `fraud`, `workers` (`FORM_KEYS` in `src/analytics/forms.ts`, one per PRD §2 handler type, R55) — and renders a form-specific line for each (`sys.thankYou.forms.<key>`). **Every WP2 server action types its redirect key as `FormKey`**, so a form redirecting with a key nobody added to `FORM_KEYS` is a compile error at the form rather than a silent zero in Ads. Adding a key means adding both the `FORM_KEYS` entry and its `sys.thankYou.forms.<key>` line in **both** message files. An unrecognised or missing key still renders the page, but **fires no conversion**: a stale or hand-typed link is not a lead. The event itself comes from `ConversionPing` (client, renders nothing). It is deduped twice over (R37): a `useRef` guard for React's dev double-invoke, and `sessionStorage['ja_conv:<formKey>:<pathname>']` for the whole session — so a reload, a back-forward restore or a re-render cannot inflate the count, while a different form key (or the same form on another path) still counts. The page renders it with `key={formKey}` so a client-side navigation between keys remounts it. With storage blocked (private mode) the dedupe is skipped and the event fires: losing a lead is worse than counting one twice. The page is `noindex` regardless of any later page record, and is absent from both `robots.txt` and the sitemap.
 
 ## Vercel Web Analytics as the consent-independent truth
 

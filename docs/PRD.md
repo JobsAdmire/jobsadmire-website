@@ -43,11 +43,11 @@ All 14 core pages must exist before launch — the shared header/footer links to
 
 Form handler types (D11, backed by Operations `POST /api/website/v1/forms/:formKey`): `INQUIRY`, `CAREERS_APPLY`, `NEWSLETTER`, `FRAUD_REPORT`, `CALLBACK`, `VISIT`, `CALCULATOR_QUOTE` — 13–15 form instances across the pages above (the design package's own discovery count; several pages carry more than one instance). Every form has a WhatsApp co-primary/secondary CTA and a visitor-side fallback panel on failure (D11) — never a spinner or fake success.
 
-**No form handler is built in WP1** — this section is the WP2/WP3a contract. What WP1 does ship is the far end of every form's success path: `/tesekkurler`/`/en/thank-you`, whitelisting the five `FORM_KEYS` (`hire`, `contact`, `partner`, `careers`, `newsletter`) and firing the `conversion` analytics event once per session per form+path (`docs/ANALYTICS.md`).
+**No form handler is built in WP1** — this section is the WP2/WP3a contract. What WP1 does ship is the far end of every form's success path: `/tesekkurler`/`/en/thank-you`, whitelisting the ten `FORM_KEYS` (`hire`, `contact`, `partner`, `careers`, `newsletter`, `callback`, `visit`, `calculator`, `fraud`, `workers` — one per handler type above, R55) and firing the `conversion` analytics event once per session per form+path (`docs/ANALYTICS.md`).
 
 ## 3. i18n rules
 
-- **D1:** Turkish at the root, no `/tr` prefix; other locales prefixed (`/en`, later `/fr`). `localeDetection: false`; language choice persists in cookie `ja_locale` (replaces the design's `localStorage["ja-lang"]`); `?lang=` query param still overrides.
+- **D1:** Turkish at the root, no `/tr` prefix; other locales prefixed (`/en`, later `/fr`). `localeDetection: false`; language choice persists in cookie `ja_locale` (replaces the design's `localStorage["ja-lang"]`). There is no `?lang=` query override — the design's one was dropped and no code reads it.
 - **D16:** TR/EN slug table above; `pathnames` are static per locale in next-intl config.
 - **D18 — number/currency contract:** TR thousands `38.944 ₺` (period, symbol trailing), EN `₺38,944` (comma, symbol leading); percent TR `%21,75` (sign leads), EN `21.75%`. `formatTRY(n, locale)` is tested against the design's worked examples. The ~38 divergent TR strings already in the package are normalised via bulk APPROVE at import.
 - **Never translated:** `İŞKUR`, `law No. 4904`, `SGK`, `JobsAdmire`, `Partner Portal`, `ChatAdmire`, the `JA-` ID prefix, `Tax No`. App-store badge micro-copy ("GET IT ON", "DOWNLOAD ON THE") stays English. Both languages keep `Türkiye`, never "Turkey". The company refers to itself as "JobsAdmire", never "we" (formal register, Turkish "siz").
@@ -110,7 +110,7 @@ WP1 (foundation) is the plumbing every later page/feature builds on top of, not 
 - **Design system** — scaled tokens (D19), Archivo self-hosted, 13 accessible primitives, the shared chrome (header/footer/slim bar/mobile bar/rails/FAB/language hint/consent banner), the 900px/1101px breakpoint scheme.
 - **Content pipeline** — the design package's 3,505-id catalogue imported (`npm run content:import`); the `LOCAL`/`OPS` adapter with the D23 production-fixture guard; the frozen, hash-pinned bundle contract (`contract/`); the numeric-parity/currency-form/hard-typed-metric lints with a ratchet baseline.
 - **SEO scaffolding** — `generateMetadata`, `alternates`/hreflang, `Organization`/`WebSite` JSON-LD, `robots.ts`, a `sitemap.ts` (not yet gated to real routes — `docs/SEO.md`).
-- **Redirects** — the data-driven 301/410 pipeline (`redirects/rules.json` → `build-redirects.ts` → `legacy.json`/`gone.json`), 328 redirects + 20 gone prefixes generated and tested.
+- **Redirects** — the data-driven 308/410 pipeline (`redirects/rules.json` → `build-redirects.ts` → `legacy.json`/`gone.json`), 328 redirects + 19 gone prefixes generated and tested.
 - **Analytics scaffolding** — Consent Mode v2 defaults, the GTM loader, the consent banner with withdrawal, the `track()` allowlist and the thank-you page's `conversion` event (the only one of the seven allowed events actually wired yet — `docs/ANALYTICS.md`).
 - **Operations surface** — `/api/site-health` and `/api/revalidate`, both with their WP5 follow-up items recorded (`docs/ARCHITECTURE.md`).
 - **Quality gate** — Playwright + axe + Lighthouse CI wired end-to-end, the corrected 180 KB script budget, a localhost-vs-preview LCP split (R50); the gate itself has not yet been run against a Vercel preview (pending the owner linking `jobsadmire-web-v2`).

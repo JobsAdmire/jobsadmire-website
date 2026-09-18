@@ -1,7 +1,6 @@
 {
   "sys": {
     "skipToContent": "Skip to content",
-    "languageName": "English",
     "notFoundTitle": "Page not found",
     "notFoundBody": "The page you are looking for may have moved or been removed.",
     "errorTitle": "Something went wrong",
@@ -41,7 +40,12 @@
         "contact": "We have your message and usually reply within one business day.",
         "partner": "We have your partnership enquiry; our business development team will be in touch.",
         "careers": "We have your application; we will contact you when a suitable role opens.",
-        "newsletter": "You are on the list; check your inbox to confirm."
+        "newsletter": "You are on the list; check your inbox to confirm.",
+        "callback": "We have your callback request; our team will call you back shortly.",
+        "visit": "Your visit request is noted; we will be in touch to agree a time.",
+        "calculator": "Your cost estimate is on its way; we will send it over shortly.",
+        "fraud": "Thank you for the report; we investigate every one.",
+        "workers": "We have your request for candidates; we will send you matching profiles."
       }
     }
   }

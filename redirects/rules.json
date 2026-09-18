@@ -7,7 +7,6 @@
   { "from": "/hire-workers-in-turkey", "to": "/hire-workers", "disposition": "301" },
   { "from": "/job-recruitment", "to": "/hire-workers", "disposition": "301" },
   { "from": "/blog", "to": "/blog", "disposition": "keep" },
-  { "from": "/blog/*", "to": null, "disposition": "410" },
   { "from": "/certifications", "to": "/about#lisans", "disposition": "301" },
   { "from": "/thankyou", "to": "/thank-you", "disposition": "301" },
   { "from": "/privacy", "to": "/privacy", "disposition": "keep" },

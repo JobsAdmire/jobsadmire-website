@@ -18,6 +18,11 @@ const eslintConfig = defineConfig([
               group: ['**/content/local/*'],
               message: 'Bundles are loaded only through src/content/adapter.ts (D23)',
             },
+            {
+              group: ['**/design-package/**'],
+              message:
+                'Bundles are loaded only through src/content/adapter.ts (D23); the design package is reference material, never imported',
+            },
           ],
         },
       ],

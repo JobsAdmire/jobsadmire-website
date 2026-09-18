@@ -55,9 +55,11 @@ export function PausableMarquee({
           </span>
         </div>
       </div>
+      {/* M-6: the label swap *is* the state announcement ("Pause" ⇄ "Play"), per the WAI-ARIA
+          play/pause guidance — an `aria-pressed` on top of it makes a screen reader say
+          "Play, pressed", which names the state twice and in two directions. */}
       <button
         type="button"
-        aria-pressed={paused}
         onClick={() => setOverride(!paused)}
         className="marquee-toggle absolute right-2 top-2 min-h-[44px] min-w-[44px] rounded-pill bg-white/90 px-3 text-body-sm font-bold shadow-social focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
       >

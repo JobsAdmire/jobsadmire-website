@@ -1,5 +1,7 @@
 import type { MetadataRoute } from 'next';
-import { SITE_URL } from '@/lib/seo/routes';
+import { getPathname } from '@/i18n/navigation';
+import { routing } from '@/i18n/routing';
+import { NOINDEX_PATHNAMES, SITE_URL } from '@/lib/seo/routes';
 
 export default function robots(): MetadataRoute.Robots {
   // Previews are additionally protected by Vercel Deployment Protection — robots is a hint,
@@ -11,12 +13,14 @@ export default function robots(): MetadataRoute.Robots {
         rules: {
           userAgent: '*',
           allow: '/',
+          // `/api/` is literal — it is not a `pathnames` route. Everything else is derived
+          // from the one `NOINDEX_PATHNAMES` set the sitemap excludes (M-3), in both locales,
+          // so a slug change cannot leave this list pointing at a path that no longer exists.
           disallow: [
             '/api/',
-            '/portal-girisi',
-            '/en/portal-login',
-            '/tesekkurler',
-            '/en/thank-you',
+            ...routing.locales.flatMap((locale) =>
+              NOINDEX_PATHNAMES.map((href) => getPathname({ locale, href })),
+            ),
           ],
         },
         sitemap: `${SITE_URL}/sitemap.xml`,

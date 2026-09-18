@@ -1,17 +1,12 @@
 import type { MetadataRoute } from 'next';
 import { pathnames, routing } from '@/i18n/routing';
-import { absoluteUrl, localeAlternates } from '@/lib/seo/routes';
+import { absoluteUrl, localeAlternates, NOINDEX_PATHNAMES } from '@/lib/seo/routes';
 
 export const revalidate = 900;
 
-/** Listed nowhere because they are never indexed: the conversion page, the portal door and the
- *  newsletter one-shot pages (docs/SEO.md — same set robots.ts disallows). */
-const EXCLUDED: ReadonlySet<string> = new Set([
-  '/thank-you',
-  '/portal-login',
-  '/newsletter/confirm',
-  '/newsletter/unsubscribe',
-]);
+/** Listed nowhere because they are never indexed — literally the same set `robots.ts` disallows
+ *  (`NOINDEX_PATHNAMES`, M-3), not a second copy of it. */
+const EXCLUDED: ReadonlySet<string> = new Set<string>(NOINDEX_PATHNAMES);
 
 type StaticPathname = Exclude<keyof typeof pathnames, `${string}[${string}`>;
 

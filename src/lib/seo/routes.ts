@@ -18,6 +18,20 @@ export function absoluteUrl(locale: Locale, href: Href): string {
   return `${SITE_URL}${getPathname({ locale, href })}`;
 }
 
+/**
+ * Internal pathnames that are never indexed: the conversion page (D13), the portal door and the
+ * two newsletter one-shot pages. One set, two consumers (M-3) — `app/sitemap.ts` excludes them
+ * and `app/robots.ts` disallows their external form in both locales, derived through
+ * `getPathname`, so a TR slug change in `pathnames` can never leave robots pointing at a path
+ * that no longer exists. (`/api/` is disallowed literally there; it is not a `pathnames` route.)
+ */
+export const NOINDEX_PATHNAMES = [
+  '/thank-you',
+  '/portal-login',
+  '/newsletter/confirm',
+  '/newsletter/unsubscribe',
+] as const satisfies readonly Href[];
+
 /** hreflang map for one page: both locales plus `x-default` = TR, self-reference included
  *  (a page missing its own locale here is a defect — docs/SEO.md). */
 export function localeAlternates(href: Href): { languages: Record<string, string> } {

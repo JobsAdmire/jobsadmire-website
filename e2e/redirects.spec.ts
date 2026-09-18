@@ -44,9 +44,21 @@ test.describe('legacy redirects (D21)', () => {
     expect(res.status()).toBe(410);
   });
 
-  test('/blog/anything is gone (unbounded legacy space)', async ({ request }) => {
-    const res = await request.get('/blog/anything', { maxRedirects: 0 });
+  test('/profile/xyz is gone (unbounded legacy space)', async ({ request }) => {
+    const res = await request.get('/profile/xyz', { maxRedirects: 0 });
     expect(res.status()).toBe(410);
+  });
+
+  test('/blog/anything is NOT gone — the namespace belongs to the new blog (R53)', async ({
+    request,
+  }) => {
+    // The `/blog/*` 410 row was deleted: `/blog/[slug]` is a live Turkish route at the root, so
+    // a 410 prefix here would kill every new Turkish article. Old article URLs 404 through the
+    // locale catch-all instead (the page itself arrives in WP2), which is why this asserts
+    // "neither gone nor redirected" rather than a specific success status.
+    const res = await request.get('/blog/anything', { maxRedirects: 0 });
+    expect(res.status()).not.toBe(410);
+    expect(res.status()).not.toBe(308);
   });
 
   test('/certifications redirects to the licence anchor on About', async ({ request }) => {

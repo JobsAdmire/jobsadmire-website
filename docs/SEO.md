@@ -39,7 +39,7 @@ Full context: `docs/PRD.md` §4, `docs/ARCHITECTURE.md`. Redirects have their ow
 
 ## Redirects policy (summary)
 
-Full rules, the GSC-joined disposition process, and the expected-loss forecast live in `docs/redirects.md`. Headline: every legacy URL with any click in the 16-month GSC export gets a single-hop, permanent redirect to the nearest relevant live page; zero-click URLs get `410`; unbounded legacy spaces (`/blog/*`, `/job-detail/*`, `/profile/*`) are `410` outright rather than individually mapped.
+Full rules, the GSC-joined disposition process, and the expected-loss forecast live in `docs/redirects.md`. Headline: every legacy URL with any click in the 16-month GSC export gets a single-hop, permanent redirect to the nearest relevant live page; zero-click URLs get `410`; unbounded legacy spaces (`/job-detail/*`, `/profile/*`) are `410` outright rather than individually mapped. **`/blog/*` is deliberately not a `410` prefix** (R53): `/blog/[slug]` is a live route at the Turkish root, so a prefix 410 there would de-index the new Turkish blog as fast as the old one — old article URLs 404 instead.
 
 ## 12-week post-launch watch
 

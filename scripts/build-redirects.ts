@@ -5,7 +5,12 @@ import { pathnames } from '../src/i18n/routing';
 export type Rule = { from: string; to: string | null; disposition: 'keep' | '301' | '410' };
 export type Click = { url: string; clicks: number };
 const DROPPED = ['fr', 'de', 'ar', 'ru', 'fa', 'id', 'fil', 'tk', 'tg'];
-/** where a clicked-but-410 route lands (nearest relevant page) */
+/**
+ * Where a clicked-but-410 route lands (nearest relevant page). Every `410` row in
+ * `redirects/rules.json` needs an entry here, or the D21 GSC join cannot rescue it: the
+ * promotion below only fires when the row has a target to be promoted *to*. Wildcard rows
+ * (`/job-detail/*`) are keyed by the rule's own `from`, wildcard and all.
+ */
 const RESCUE: Record<string, string> = {
   '/visa': '/work-permit',
   '/visa-e-invitations': '/work-permit',
@@ -13,9 +18,21 @@ const RESCUE: Record<string, string> = {
   '/resume-generator': '/careers',
   '/templates': '/careers',
   '/apply-online': '/contact',
+  '/services/career-counselling': '/contact',
+  '/services/career-councelling': '/contact',
+  '/services/interview-coaching-service': '/contact',
+  '/services/remote-work-opportunity': '/contact',
+  '/services/skill-development-training': '/contact',
+  '/immigration/immigrate-to-usa': '/work-permit',
+  '/immigration/immigrate-to-uk': '/work-permit',
+  '/immigration/immigrate-to-canada': '/work-permit',
+  '/immigration/immigrate-to-australia': '/work-permit',
+  '/immigration/kazakhstan-residence-permit': '/work-permit',
+  '/job-detail/*': '/available-workers',
+  '/profile/*': '/available-workers',
 };
 
-function external(locale: 'tr' | 'en', internal: string): string {
+export function external(locale: 'tr' | 'en', internal: string): string {
   const [path, hash] = internal.split('#');
   const p = pathnames[path as keyof typeof pathnames];
   const ext = typeof p === 'string' ? p : p[locale];
@@ -47,7 +64,12 @@ export function buildRedirects(rules: Rule[], clicks: Click[]) {
     const base = wildcard ? rule.from.slice(0, -1) : rule.from;
     let disposition = rule.disposition;
     let to = rule.to;
-    if (disposition === '410' && (clicked.get(rule.from) ?? 0) > 0 && RESCUE[rule.from]) {
+    // A wildcard row is never itself a clicked URL — the GSC export carries the leaves
+    // (`/job-detail/8812`), so the prefix is promoted when *any* URL under it was clicked.
+    const hits = wildcard
+      ? Array.from(clicked).reduce((n, [url, c]) => (url.startsWith(base) ? n + c : n), 0)
+      : (clicked.get(rule.from) ?? 0);
+    if (disposition === '410' && hits > 0 && RESCUE[rule.from]) {
       disposition = '301';
       to = RESCUE[rule.from];
     }
@@ -56,12 +78,14 @@ export function buildRedirects(rules: Rule[], clicks: Click[]) {
       continue;
     }
     const target = to ?? rule.from;
+    // A promoted wildcard keeps matching the whole space it rescued, in next.config's own
+    // source syntax (`/job-detail/:rest*`) — a bare `*` is not a path-to-regexp token.
+    const from = wildcard ? `${base}:rest*` : rule.from;
     // old unprefixed = English, unless the old path is itself a live route on the new site
-    if (!LIVE.has(rule.from)) add(rule.from, external('en', target), 'en');
+    if (!LIVE.has(from)) add(from, external('en', target), 'en');
     // old /tr → Turkish root slug; dropped locales → English
-    add(`/tr${rule.from === '/' ? '' : rule.from}`, external('tr', target), 'tr');
-    for (const l of DROPPED)
-      add(`/${l}${rule.from === '/' ? '' : rule.from}`, external('en', target), l);
+    add(`/tr${from === '/' ? '' : from}`, external('tr', target), 'tr');
+    for (const l of DROPPED) add(`/${l}${from === '/' ? '' : from}`, external('en', target), l);
   }
   return { redirects, gone: Array.from(new Set(gone)) };
 }

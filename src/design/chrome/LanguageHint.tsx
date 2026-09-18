@@ -3,6 +3,7 @@ import { useCallback, useId, useState, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { Link, usePathname, type Href } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
+import { alternatePath } from './alternate-path';
 
 export const HINT_KEY = 'ja-lang-hint';
 
@@ -40,7 +41,9 @@ function readDismissal(): string | null {
 export function LanguageHint({ locale }: { locale: Locale }) {
   const sys = useTranslations('sys');
   const bodyId = useId();
-  const pathname = usePathname() ?? '/';
+  // R58: on a dynamic route `usePathname()` is the template (`/blog/[slug]`); the English slug
+  // is a different string the client cannot know, so the hint offers the parent index instead.
+  const target = alternatePath(usePathname() ?? '/');
   const [dismissed, setDismissed] = useState(false);
   const eligible = useSyncExternalStore(
     subscribe,
@@ -78,7 +81,7 @@ export function LanguageHint({ locale }: { locale: Locale }) {
           {sys('languageHint.body')}
         </p>
         <Link
-          href={pathname as Href}
+          href={target as Href}
           locale="en"
           prefetch={false}
           onClick={dismiss}

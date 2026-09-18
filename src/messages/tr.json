@@ -1,7 +1,6 @@
 {
   "sys": {
     "skipToContent": "İçeriğe geç",
-    "languageName": "Türkçe",
     "notFoundTitle": "Sayfa bulunamadı",
     "notFoundBody": "Aradığınız sayfa taşınmış veya kaldırılmış olabilir.",
     "errorTitle": "Bir şeyler ters gitti",
@@ -41,7 +40,12 @@
         "contact": "Mesajınızı aldık; genellikle bir iş günü içinde yanıtlıyoruz.",
         "partner": "Ortaklık başvurunuzu aldık; iş geliştirme ekibimiz sizinle görüşecek.",
         "careers": "Başvurunuzu aldık; uygun bir pozisyon açıldığında sizinle iletişime geçeceğiz.",
-        "newsletter": "Kaydınızı aldık; onaylamak için e-posta kutunuzu kontrol edin."
+        "newsletter": "Kaydınızı aldık; onaylamak için e-posta kutunuzu kontrol edin.",
+        "callback": "Geri arama talebinizi aldık; ekibimiz en kısa sürede sizi arayacak.",
+        "visit": "Ziyaret talebinizi aldık; uygun bir zaman için sizinle iletişime geçeceğiz.",
+        "calculator": "Maliyet tahmininizi hazırlıyoruz; kısa süre içinde size ulaştıracağız.",
+        "fraud": "Bildiriminiz için teşekkürler; gelen her ihbarı inceliyoruz.",
+        "workers": "Aday talebinizi aldık; eşleşen profilleri size ileteceğiz."
       }
     }
   }

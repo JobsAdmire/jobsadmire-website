@@ -20,6 +20,43 @@ export function assertServableInProduction(
     );
 }
 
+/**
+ * Phase A's analytics door (R54). The `LOCAL` bundle ships every analytics id as `null` — the
+ * design package has none — so GTM, the consent banner and the Ads conversion are dark by
+ * configuration until the Operations Integrations screen owns these values in Phase B (D12).
+ * This overlays the public identifiers from the environment so a Phase A preview or production
+ * deployment can turn analytics on without editing the generated bundle.
+ *
+ * These are `NEXT_PUBLIC_*` on purpose: a GTM container id, a GA4 measurement id, an Ads
+ * conversion id and a Turnstile site key all ship in the page source by nature of how those
+ * products work. They are public identifiers, not secrets. An unset or empty variable leaves
+ * the bundle's own value (usually `null`) alone, so "configured nowhere" stays "off".
+ *
+ * Applied by `loadLocal` only — never by `loadOps`, where the CMS is the source of truth (D12).
+ */
+export function applyPublicSettings(bundle: Bundle, env: NodeJS.ProcessEnv): Bundle {
+  const pick = (value: string | undefined, current: string | null) =>
+    typeof value === 'string' && value.length > 0 ? value : current;
+  const { analytics } = bundle.settings;
+  return {
+    ...bundle,
+    settings: {
+      ...bundle.settings,
+      analytics: {
+        ...analytics,
+        ga4Id: pick(env.NEXT_PUBLIC_GA4_ID, analytics.ga4Id),
+        gtmId: pick(env.NEXT_PUBLIC_GTM_ID, analytics.gtmId),
+        adsId: pick(env.NEXT_PUBLIC_ADS_ID, analytics.adsId),
+        adsConversionLabel: pick(
+          env.NEXT_PUBLIC_ADS_CONVERSION_LABEL,
+          analytics.adsConversionLabel,
+        ),
+      },
+      turnstileSiteKey: pick(env.NEXT_PUBLIC_TURNSTILE_SITE_KEY, bundle.settings.turnstileSiteKey),
+    },
+  };
+}
+
 /** Content strings by package id. Empty values are legitimate (six TR fragments) and returned as ''. */
 export function makeT(bundle: Bundle) {
   return (id: string): string => {

@@ -29,7 +29,7 @@ The catalogue below is plan §4, with phase tags: **[A]** Phase A, **[B]** Phase
 
 ## I1 — Bundle, pages, blog, nav, settings, redirects, sitemap data
 
-**Direction:** Ops → Website. **Auth:** read token (current + previous class), timing-safe, fail closed. **Shape:** contract v1, see `contract/` once frozen in WP1 — `GET /api/website/v1/bundle?locale=<tr|en>`, validated against `contract/website-bundle.v1.schema.json`. **Failure/degraded:** last-good ISR content served past its time floor; failure counted, Sentry-reported, surfaces on `/api/site-health`.
+**Direction:** Ops → Website. **Auth:** read token (current + previous class), timing-safe, fail closed. **Shape:** contract v1, see `contract/` once frozen in WP1 — `GET /api/website/v1/bundle?locale=<tr|en>`, validated against `contract/website-bundle.v1.ts` (a Zod schema — there is no JSON-Schema file). **Failure/degraded:** last-good ISR content served past its time floor; failure counted, Sentry-reported, surfaces on `/api/site-health`.
 
 ## I2 — Revalidate + read-back
 

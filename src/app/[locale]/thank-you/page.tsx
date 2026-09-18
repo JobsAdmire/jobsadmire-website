@@ -47,8 +47,9 @@ export default async function ThankYou({
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const [bundle, sys] = await Promise.all([getBundle(locale), getTranslations('sys')]);
-  // The five keys D13 allows in `?form=`. Anything else — a stale link, a hand-typed URL —
-  // gets the generic page and fires no conversion: an unrecognised key is not a lead.
+  // The ten keys D13 allows in `?form=` (R55 — one per PRD §2 handler type). Anything else —
+  // a stale link, a hand-typed URL — gets the generic page and fires no conversion: an
+  // unrecognised key is not a lead.
   const formKey = asFormKey(Array.isArray(form) ? form[0] : form);
   return (
     <Section tone="light">
