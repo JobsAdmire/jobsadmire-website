@@ -15,7 +15,8 @@
     "verify": "npm run typecheck && npm run lint && npm run format && npm run test",
     "e2e": "playwright test",
     "gate": "bash scripts/gate.sh",
-    "content:import": "tsx scripts/import-design-package.ts"
+    "content:import": "tsx scripts/import-design-package.ts",
+    "redirects:build": "tsx scripts/build-redirects.ts"
   },
   "dependencies": {
     "next": "16.3.5",
