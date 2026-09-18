@@ -19,9 +19,15 @@ declare global {
 }
 
 export function track(event: EventName, params: Partial<Record<string, string | number>>) {
-  const allowed = ALLOWED_PARAMS[event];
-  if (!allowed) throw new Error(`unknown analytics event: ${String(event)}`);
+  // `hasOwn`, not truthiness: an inherited `toString`/`constructor` must not pass for an event.
+  if (!Object.hasOwn(ALLOWED_PARAMS, event))
+    throw new Error(`unknown analytics event: ${String(event)}`);
   const clean: Record<string, unknown> = { event };
-  for (const k of allowed) if (params[k] !== undefined) clean[k] = params[k];
+  for (const k of ALLOWED_PARAMS[event]) {
+    // Scalars only. An object, an array or a null under an allow-listed key is a caller
+    // passing the raw form state, which is exactly what D13 forbids from reaching GTM.
+    const v = params[k];
+    if (typeof v === 'string' || typeof v === 'number') clean[k] = v;
+  }
   (window.dataLayer ??= []).push(clean);
 }

@@ -1,8 +1,8 @@
-import { screen, within } from '@testing-library/react';
+import { act, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { ConsentBanner } from '../ConsentBanner';
-import { CONSENT_KEY } from '@/analytics/consent';
+import { CONSENT_KEY, clearConsent } from '@/analytics/consent';
 import tr from '@/messages/tr.json';
 import { renderWithIntl } from '@/test/render';
 import { memoryStorage } from '@/test/storage';
@@ -36,6 +36,16 @@ describe('ConsentBanner', () => {
     await userEvent.click(screen.getByRole('button', { name: copy.reject }));
     expect(screen.queryByTestId('consent-banner')).toBeNull();
     expect(localStorage.getItem(CONSENT_KEY)).toBe('denied');
+  });
+
+  it('re-opens when the visitor withdraws from the footer (R36)', async () => {
+    localStorage.setItem(CONSENT_KEY, 'granted');
+    renderWithIntl(<ConsentBanner />);
+    expect(screen.queryByTestId('consent-banner')).toBeNull();
+
+    // What `CookiePreferencesButton` calls — the sheet is subscribed, so no reload is needed.
+    await act(async () => clearConsent());
+    expect(screen.getByRole('region', { name: copy.title })).toBeInTheDocument();
   });
 
   it('never opens for a visitor who has already chosen', () => {

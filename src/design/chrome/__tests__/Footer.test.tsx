@@ -4,6 +4,7 @@ import { describe, expect, it } from 'vitest';
 import { Footer } from '../Footer';
 import { renderWithIntl } from '@/test/render';
 import trBundle from '@/content/local/bundle.tr.json';
+import tr from '@/messages/tr.json';
 import fixture from '../../../../contract/website-bundle.v1.fixture.json';
 import { BundleSchema } from '../../../../contract/website-bundle.v1';
 
@@ -53,6 +54,14 @@ describe('Footer', () => {
     renderWithIntl(<Footer locale="tr" bundle={bundle} />);
     expect(screen.getByRole('contentinfo')).toHaveTextContent(bundle.settings.licence.permitNo);
     expect(screen.getByText(t('home.228'))).toBeInTheDocument();
+  });
+
+  it('offers the cookie-preferences door in the legal row (R36)', () => {
+    renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+    const button = within(screen.getByRole('contentinfo')).getByRole('button', {
+      name: tr.sys.consent.manage,
+    });
+    expect(button).toHaveAttribute('type', 'button');
   });
 
   it('gives every social and contact link an accessible name', () => {

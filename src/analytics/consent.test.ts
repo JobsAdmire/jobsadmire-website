@@ -1,6 +1,6 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { memoryStorage } from '@/test/storage';
-import { CONSENT_EVENT, CONSENT_KEY, readConsent, writeConsent } from './consent';
+import { CONSENT_EVENT, CONSENT_KEY, clearConsent, readConsent, writeConsent } from './consent';
 
 type TestWindow = Window & {
   dataLayer?: Record<string, unknown>[];
@@ -74,5 +74,25 @@ describe('writeConsent', () => {
       ad_user_data: 'granted',
       ad_personalization: 'granted',
     });
+  });
+});
+
+describe('clearConsent', () => {
+  it('un-chooses: both records gone, subscribers told, banner back to unknown', () => {
+    writeConsent('granted');
+    expect(readConsent()).toBe('granted');
+
+    const listener = vi.fn();
+    window.addEventListener(CONSENT_EVENT, listener);
+    try {
+      clearConsent();
+    } finally {
+      window.removeEventListener(CONSENT_EVENT, listener);
+    }
+
+    expect(localStorage.getItem(CONSENT_KEY)).toBeNull();
+    expect(readConsent()).toBe('unknown');
+    expect(document.cookie).not.toContain(`${CONSENT_KEY}=granted`);
+    expect(listener).toHaveBeenCalledTimes(1);
   });
 });

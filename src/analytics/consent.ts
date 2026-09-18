@@ -6,6 +6,10 @@ export const CONSENT_KEY = 'ja_consent_v1';
 export const CONSENT_EVENT = 'ja:consent';
 
 const MAX_AGE = 60 * 60 * 24 * 180;
+/** `Secure` because the site is HTTPS-only in every environment that matters (localhost is a
+ *  trustworthy origin, so it still round-trips in dev and in the e2e run). */
+const COOKIE = (value: string, maxAge: number) =>
+  `${CONSENT_KEY}=${value}; Max-Age=${maxAge}; Path=/; SameSite=Lax; Secure`;
 
 /** Inline in <head> before GTM: Consent Mode v2 defaults denied (D13). */
 export const CONSENT_DEFAULT_SCRIPT = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','url_passthrough',true);gtag('set','ads_data_redaction',true);`;
@@ -15,7 +19,8 @@ export const CONSENT_DEFAULT_SCRIPT = `window.dataLayer=window.dataLayer||[];fun
  *  re-appear the instant they dismissed it, because the snapshot would read `unknown` again. */
 function readCookie(): ConsentState | null {
   try {
-    const m = new RegExp(`(?:^|;\\s*)${CONSENT_KEY}=(granted|denied)`).exec(document.cookie);
+    // Anchored on both sides: `ja_consent_v1=granted_later` is not a granted consent.
+    const m = new RegExp(`(?:^|;\\s*)${CONSENT_KEY}=(granted|denied)(?:;|$)`).exec(document.cookie);
     return (m?.[1] as ConsentState | undefined) ?? null;
   } catch {
     return null;
@@ -38,7 +43,7 @@ export function writeConsent(state: Exclude<ConsentState, 'unknown'>) {
   } catch {
     /* private mode */
   }
-  document.cookie = `${CONSENT_KEY}=${state}; Max-Age=${MAX_AGE}; Path=/; SameSite=Lax`;
+  document.cookie = COOKIE(state, MAX_AGE);
   const v = state === 'granted' ? 'granted' : 'denied';
   (window.dataLayer ??= []).push({ event: 'consent_update' });
   // `gtag` comes from the inline default script, which only renders when
@@ -49,5 +54,18 @@ export function writeConsent(state: Exclude<ConsentState, 'unknown'>) {
     ad_user_data: v,
     ad_personalization: v,
   });
+  window.dispatchEvent(new Event(CONSENT_EVENT));
+}
+
+/** Withdrawal (R36): the banner promises the visitor can change their mind, so something has
+ *  to be able to un-choose. Drops both records and re-publishes — the sheet re-opens on
+ *  `unknown`, and with nothing stored the next page load starts from the denied defaults. */
+export function clearConsent() {
+  try {
+    localStorage.removeItem(CONSENT_KEY);
+  } catch {
+    /* private mode */
+  }
+  document.cookie = COOKIE('', 0);
   window.dispatchEvent(new Event(CONSENT_EVENT));
 }

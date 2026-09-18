@@ -3,17 +3,12 @@ import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { ConversionPing } from '@/analytics/ConversionPing';
+import { asFormKey } from '@/analytics/forms';
 import { getBundle } from '@/content/adapter';
 import { Button, Section } from '@/design/primitives';
 import { routing } from '@/i18n/routing';
 import { waLink } from '@/lib/contact';
 import { buildMetadata } from '@/lib/seo/metadata';
-
-/** The five keys D13 allows in `?form=`. Anything else — a stale link, a hand-typed URL —
- *  gets the generic page and fires no conversion: an unrecognised key is not a lead. */
-const FORM_KEYS = ['hire', 'contact', 'partner', 'careers', 'newsletter'] as const;
-type FormKey = (typeof FORM_KEYS)[number];
-const asFormKey = (v: string | undefined): FormKey | null => FORM_KEYS.find((k) => k === v) ?? null;
 
 export async function generateMetadata({
   params,
@@ -44,13 +39,17 @@ export default async function ThankYou({
   searchParams,
 }: {
   params: Promise<{ locale: string }>;
-  searchParams: Promise<{ form?: string }>;
+  // Next hands every query param through as `string | string[]`; `?form=a&form=b` is a
+  // malformed link, not two conversions — the first value decides, the rest are ignored.
+  searchParams: Promise<{ form?: string | string[] }>;
 }) {
   const [{ locale }, { form }] = await Promise.all([params, searchParams]);
   if (!hasLocale(routing.locales, locale)) notFound();
   setRequestLocale(locale);
   const [bundle, sys] = await Promise.all([getBundle(locale), getTranslations('sys')]);
-  const formKey = asFormKey(form);
+  // The five keys D13 allows in `?form=`. Anything else — a stale link, a hand-typed URL —
+  // gets the generic page and fires no conversion: an unrecognised key is not a lead.
+  const formKey = asFormKey(Array.isArray(form) ? form[0] : form);
   return (
     <Section tone="light">
       <div className="container-site max-w-[720px]">
@@ -74,7 +73,7 @@ export default async function ThankYou({
         </div>
       </div>
       {/* Fires the conversion once, on arrival, for a known form key only (D13). */}
-      {formKey && <ConversionPing formKey={formKey} locale={locale} />}
+      {formKey && <ConversionPing key={formKey} formKey={formKey} locale={locale} />}
     </Section>
   );
 }

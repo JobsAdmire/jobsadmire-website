@@ -59,8 +59,10 @@ export default async function LocaleLayout({
           <SiteChrome locale={locale} bundle={bundle}>
             {children}
           </SiteChrome>
-          {/* Mounted after the chrome so the sheet is last in the tab order, not first. */}
-          <ConsentBanner />
+          {/* R38: no container id means no tag can fire, so there is nothing to consent to —
+              asking anyway would be a dark pattern. Mounted after the chrome so the sheet is
+              last in the tab order, not first. */}
+          {analytics.consentMode && Boolean(analytics.gtmId) && <ConsentBanner />}
         </NextIntlClientProvider>
       </body>
     </html>

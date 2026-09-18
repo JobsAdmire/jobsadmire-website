@@ -5,6 +5,7 @@ import { Accordion } from '@/design/primitives';
 import { mailLink, telLink, waLink } from '@/lib/contact';
 import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../contract/website-bundle.v1';
+import { CookiePreferencesButton } from './CookiePreferencesButton';
 import { MapPinIcon, TelegramIcon } from './icons';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { NavLink, type ChromeNavItem } from './NavLink';
@@ -181,8 +182,10 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
         </div>
       </div>
 
-      <div className="container-site border-t border-white/15 py-5">
+      <div className="container-site flex flex-wrap items-center justify-between gap-x-6 gap-y-1 border-t border-white/15 py-5">
         <p className="m-0 text-white/50">{t('home.228')}</p>
+        {/* R36: consent is withdrawable, and this is where visitors look for it. */}
+        <CookiePreferencesButton label={sys('consent.manage')} />
       </div>
     </footer>
   );
