@@ -12,7 +12,7 @@ Per `design-package/docs/project-brief.md`:
 
 ## 2. Pages, routes, forms
 
-Turkish is the root locale (no prefix); English is under `/en` (D1, D16). TR slugs are **locked** (D16). EN slugs follow `src/i18n/routing.ts` (the WP1 plan is authoritative); the 14 core pages use the design package's own English route table. EN slugs for legal/thank-you/newsletter routes are **not enumerated in the plan** — marked "proposed" below; confirm alongside owner input §10 item 8 (decide-by WP1 day 3).
+Turkish is the root locale (no prefix); English is under `/en` (D1, D16). TR slugs are **locked** (D16). EN slugs follow `src/i18n/routing.ts` (the WP1 plan is authoritative); the 14 core pages use the design package's own English route table. The whole table (TR and EN) is reviewed with owner input §10 item 8 (decide-by WP1 day 3).
 
 | #   | Page                          | TR slug (root)                             | EN slug (`/en/…`)            | Forms carried                                                                           |
 | --- | ----------------------------- | ------------------------------------------ | ---------------------------- | --------------------------------------------------------------------------------------- |
@@ -23,8 +23,8 @@ Turkish is the root locale (no prefix); English is under `/en` (D1, D16). TR slu
 | 5   | Work Permit                   | `/calisma-izni`                            | `/en/work-permit`            | none (explainer)                                                                        |
 | 6   | About Us                      | `/hakkimizda` (+ `#lisans` licence anchor) | `/en/about`                  | none                                                                                    |
 | 7   | Verify Representative         | `/temsilci-dogrulama`                      | `/en/verify`                 | Fraud report (`FRAUD_REPORT`); empty-state register at launch (D9 v1)                   |
-| 8   | Join Our Team (careers index) | `/kariyer`                                 | `/en/join-our-team`          | Staff application via careers detail (`CAREERS_APPLY`)                                  |
-| —   | Careers detail                | `/kariyer/[slug]`                          | `/en/join-our-team/[slug]`   | Staff application (`CAREERS_APPLY`); `JobPosting` JSON-LD (D15)                         |
+| 8   | Join Our Team (careers index) | `/kariyer`                                 | `/en/careers`          | Staff application via careers detail (`CAREERS_APPLY`)                                  |
+| —   | Careers detail                | `/kariyer/[slug]`                          | `/en/careers/[slug]`   | Staff application (`CAREERS_APPLY`); `JobPosting` JSON-LD (D15)                         |
 | 9   | Contact Us                    | `/iletisim`                                | `/en/contact`                | Message form (`INQUIRY`), site-visit request (`VISIT`), callback (`CALLBACK`)           |
 | 10  | Available Workers             | `/adaylar`                                 | `/en/available-workers`      | Aggregate stats section (no per-profile cards at launch, D2) + request form (`INQUIRY`) |
 | 11  | Success Stories               | `/basari-hikayeleri`                       | `/en/success-stories`        | none — CMS cards, no proof scans at launch (D9 v1)                                      |
