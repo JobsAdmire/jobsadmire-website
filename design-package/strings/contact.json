@@ -1,0 +1,1613 @@
+{
+ "page": "Contact Us",
+ "route": "/contact",
+ "strings": [
+  {
+   "id": "contact.001",
+   "en": "İŞKUR Licensed · Permit No. 1730",
+   "tr": "İŞKUR Lisanslı · İzin No. 1730",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "z1r9le"
+  },
+  {
+   "id": "contact.002",
+   "en": "İŞKUR · 1730",
+   "tr": "İŞKUR · 1730",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "1ih9pud"
+  },
+  {
+   "id": "contact.003",
+   "en": "info@jobsadmire.com",
+   "tr": "info@jobsadmire.com",
+   "sec": "Menü ve genel etiketler",
+   "rev": "38yl46"
+  },
+  {
+   "id": "contact.004",
+   "en": "Blog",
+   "tr": "Blog",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjmm4j"
+  },
+  {
+   "id": "contact.005",
+   "en": "Join Our Team",
+   "tr": "Ekibimize Katılın",
+   "sec": "Menü ve genel etiketler",
+   "rev": "ftsz4i"
+  },
+  {
+   "id": "contact.006",
+   "en": "Verify a Representative",
+   "tr": "Temsilci Doğrulama",
+   "sec": "Menü ve genel etiketler",
+   "rev": "l6eh8g"
+  },
+  {
+   "id": "contact.007",
+   "en": "CRM Login",
+   "tr": "CRM Girişi",
+   "sec": "Menü ve genel etiketler",
+   "rev": "57mcey"
+  },
+  {
+   "id": "contact.008",
+   "en": "About Us",
+   "tr": "Hakkımızda",
+   "sec": "Menü ve genel etiketler",
+   "rev": "6iiw1a"
+  },
+  {
+   "id": "contact.009",
+   "en": "Hire Workers",
+   "tr": "İşçi Talebi",
+   "sec": "Menü ve genel etiketler",
+   "rev": "oqbvo6"
+  },
+  {
+   "id": "contact.010",
+   "en": "Candidates",
+   "tr": "Adaylar",
+   "sec": "Menü ve genel etiketler",
+   "rev": "brf3mr"
+  },
+  {
+   "id": "contact.011",
+   "en": "Work Permits",
+   "tr": "Çalışma İzinleri",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1gd2msg"
+  },
+  {
+   "id": "contact.012",
+   "en": "Cost Calculator",
+   "tr": "Maliyet Hesaplama",
+   "sec": "Menü ve genel etiketler",
+   "rev": "k5qxyq"
+  },
+  {
+   "id": "contact.013",
+   "en": "Success Stories",
+   "tr": "Başarı Hikâyeleri",
+   "sec": "Menü ve genel etiketler",
+   "rev": "11w6kar"
+  },
+  {
+   "id": "contact.014",
+   "en": "Contact Us",
+   "tr": "İletişim",
+   "sec": "Menü ve genel etiketler",
+   "rev": "14c3gdf"
+  },
+  {
+   "id": "contact.015",
+   "en": "Send",
+   "tr": "Bir mesaj",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjzgrd"
+  },
+  {
+   "id": "contact.016",
+   "en": "a message",
+   "tr": "gönderin",
+   "sec": "Menü ve genel etiketler",
+   "rev": "123uvhr"
+  },
+  {
+   "id": "contact.017",
+   "en": "Language",
+   "tr": "Dil",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1s1gw53"
+  },
+  {
+   "id": "contact.018",
+   "en": "Blog & Guides",
+   "tr": "Blog ve Rehberler",
+   "sec": "Menü ve genel etiketler",
+   "rev": "4wi5os"
+  },
+  {
+   "id": "contact.019",
+   "en": "Partner With Us",
+   "tr": "İş Ortağı Olun",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1redpm7"
+  },
+  {
+   "id": "contact.020",
+   "en": "CRM Login →",
+   "tr": "CRM Girişi →",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1s31eug"
+  },
+  {
+   "id": "contact.021",
+   "en": "Jobs Admire",
+   "tr": "Jobs Admire",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1dcqzgn"
+  },
+  {
+   "id": "contact.022",
+   "en": "Menu",
+   "tr": "Menü",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjlvbq"
+  },
+  {
+   "id": "contact.023",
+   "en": "Home",
+   "tr": "Ana Sayfa",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "yjtufe"
+  },
+  {
+   "id": "contact.024",
+   "en": "Contact",
+   "tr": "İletişim",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1ofoso5"
+  },
+  {
+   "id": "contact.025",
+   "en": "Talk to the people who",
+   "tr": "İşi asıl yapan",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "kt7pi"
+  },
+  {
+   "id": "contact.026",
+   "en": "do the work",
+   "tr": "kişilerle konuşun",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "arphyu"
+  },
+  {
+   "id": "contact.027",
+   "en": "One number does it all — call or WhatsApp, and our live support line picks up, guides you and puts you through to the desk that handles it: workers, permits or partnerships.",
+   "tr": "Tek numara her şeyi yapar — arayın veya WhatsApp’tan yazın; canlı destek hattımız açar, sizi yönlendirir ve konuyla ilgilenen birime bağlar: işçi, izin veya iş ortaklığı.",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "2cyw6t"
+  },
+  {
+   "id": "contact.028",
+   "en": "One number for everything — call or WhatsApp, and a real person puts you through to the right desk.",
+   "tr": "Her şey için tek numara — arayın veya WhatsApp’tan yazın, gerçek bir kişi sizi doğru birime bağlar.",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1xibi0d"
+  },
+  {
+   "id": "contact.029",
+   "en": "İŞKUR licensed · No. 1730",
+   "tr": "İŞKUR lisanslı · No. 1730",
+   "sec": "Üst bölüm (Hero)",
+   "legal": true,
+   "rev": "5zvfb9"
+  },
+  {
+   "id": "contact.030",
+   "en": "No consultation fee",
+   "tr": "Danışmanlık ücreti yok",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "7y0lmr"
+  },
+  {
+   "id": "contact.031",
+   "en": "We speak your language",
+   "tr": "Sizin dilinizi konuşuyoruz",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "x5yp94"
+  },
+  {
+   "id": "contact.032",
+   "en": "Write in whichever you prefer — the reply comes back in the same language.",
+   "tr": "Hangisini tercih ederseniz onunla yazın — yanıt aynı dilde gelir.",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "bahw88"
+  },
+  {
+   "id": "contact.033",
+   "en": "Fastest",
+   "tr": "En hızlı",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "nrw9if"
+  },
+  {
+   "id": "contact.034",
+   "en": "Send job titles and headcount — a live support agent guides you and answers with numbers",
+   "tr": "Pozisyon adlarını ve kişi sayısını gönderin — canlı destek temsilcisi sizi yönlendirir ve sayılarla yanıtlar",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "iljpl0"
+  },
+  {
+   "id": "contact.035",
+   "en": "Employers",
+   "tr": "İşverenler",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1ajv0mb"
+  },
+  {
+   "id": "contact.036",
+   "en": "Live support line — hiring, permits and quotes",
+   "tr": "Canlı destek hattı — işe alım, izinler ve teklifler",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1555h4v"
+  },
+  {
+   "id": "contact.037",
+   "en": "Agencies & agents",
+   "tr": "Ajanslar ve temsilciler",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1b539g8"
+  },
+  {
+   "id": "contact.038",
+   "en": "Supply partners and institutes",
+   "tr": "Tedarik ortakları ve enstitüler",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1rz4aju"
+  },
+  {
+   "id": "contact.039",
+   "en": "Documents, contracts and formal enquiries",
+   "tr": "Belgeler, sözleşmeler ve resmî talepler",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "uvj833"
+  },
+  {
+   "id": "contact.040",
+   "en": "Reply within ~4 business hours",
+   "tr": "Yaklaşık 4 iş saati içinde yanıt",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "b4ko8d"
+  },
+  {
+   "id": "contact.041",
+   "en": "Can’t talk right now?",
+   "tr": "Şu anda konuşamıyor musunuz?",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "10snvof"
+  },
+  {
+   "id": "contact.042",
+   "en": "Pick a slot — we call you back on your number",
+   "tr": "Bir zaman dilimi seçin — sizi numaranızdan geri arayalım",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "40jim"
+  },
+  {
+   "id": "contact.043",
+   "en": "Which day",
+   "tr": "Hangi gün",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "ozp3ok"
+  },
+  {
+   "id": "contact.044",
+   "en": "Best time",
+   "tr": "En uygun saat",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "19zakhc"
+  },
+  {
+   "id": "contact.045",
+   "en": "Request call",
+   "tr": "Arama talep et",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "9an39y"
+  },
+  {
+   "id": "contact.046",
+   "en": "We call from +90 501 124 03 40. Requests outside office hours are called at the start of the next slot.",
+   "tr": "+90 501 124 03 40 numarasından arıyoruz. Mesai dışı talepler bir sonraki zaman diliminin başında aranır.",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1alcoej"
+  },
+  {
+   "id": "contact.047",
+   "en": "Press send in WhatsApp to confirm it.",
+   "tr": "Onaylamak için WhatsApp’ta gönder’e basın.",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1nzjv17"
+  },
+  {
+   "id": "contact.048",
+   "en": "Change the slot",
+   "tr": "Zaman dilimini değiştir",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1bwktry"
+  },
+  {
+   "id": "contact.049",
+   "en": "Your number, e.g. +90 5xx xxx xx xx",
+   "tr": "Numaranız, örn. +90 5xx xxx xx xx",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1yo88ja"
+  },
+  {
+   "id": "contact.050",
+   "en": "Send a message",
+   "tr": "Mesaj gönder",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "mve4tv"
+  },
+  {
+   "id": "contact.051",
+   "en": "What happens after you press send",
+   "tr": "Gönder’e bastıktan sonra ne oluyor",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "1q6aea"
+  },
+  {
+   "id": "contact.052",
+   "en": "Four steps, no black hole. You always know who is holding your file.",
+   "tr": "Dört adım, kara delik yok. Dosyanızın kimde olduğunu her zaman bilirsiniz.",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "9ahcur"
+  },
+  {
+   "id": "contact.053",
+   "en": "In a hurry?",
+   "tr": "Aceleniz mi var?",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "1l2lg8o"
+  },
+  {
+   "id": "contact.054",
+   "en": "WhatsApp is answered fastest — usually within 15 minutes during office hours. The same number is a live support line: call it and a real person guides you.",
+   "tr": "WhatsApp en hızlı yanıtlanır — mesai saatlerinde genellikle 15 dakika içinde. Aynı numara canlı destek hattıdır: arayın, gerçek bir kişi sizi yönlendirir.",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "13ua3kd"
+  },
+  {
+   "id": "contact.055",
+   "en": "Chat on WhatsApp",
+   "tr": "WhatsApp’tan yazın",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "16eiiyq"
+  },
+  {
+   "id": "contact.056",
+   "en": "On a computer? Point your phone camera at the code — the chat opens with our number already in it.",
+   "tr": "Bilgisayarda mısınız? Telefon kameranızı koda tutun — sohbet numaramız hazır şekilde açılır.",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "y1gzsb"
+  },
+  {
+   "id": "contact.057",
+   "en": "What is this about?",
+   "tr": "Konu nedir?",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "1ye7sv5"
+  },
+  {
+   "id": "contact.058",
+   "en": "I need workers",
+   "tr": "İşçiye ihtiyacım var",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "uauaeb"
+  },
+  {
+   "id": "contact.059",
+   "en": "Roles, headcount and a quote",
+   "tr": "Pozisyonlar, kişi sayısı ve teklif",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "hodp11"
+  },
+  {
+   "id": "contact.060",
+   "en": "Work permit only",
+   "tr": "Sadece çalışma izni",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "zolalj"
+  },
+  {
+   "id": "contact.061",
+   "en": "You already have the worker",
+   "tr": "İşçi elinizde zaten var",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "1qnqk9h"
+  },
+  {
+   "id": "contact.062",
+   "en": "Agency or agent",
+   "tr": "Ajans veya temsilci",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "1m30l12"
+  },
+  {
+   "id": "contact.063",
+   "en": "Supply or partner with us",
+   "tr": "Bize tedarik edin veya ortak olun",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "16l2yo1"
+  },
+  {
+   "id": "contact.064",
+   "en": "I am looking for a job",
+   "tr": "İş arıyorum",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "8xajne"
+  },
+  {
+   "id": "contact.065",
+   "en": "Candidates start here",
+   "tr": "Adaylar buradan başlar",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "xzunp5"
+  },
+  {
+   "id": "contact.066",
+   "en": "Your name",
+   "tr": "Adınız",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "1cia7lf"
+  },
+  {
+   "id": "contact.067",
+   "en": "Email",
+   "tr": "E-posta",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "3brsq1"
+  },
+  {
+   "id": "contact.068",
+   "en": "Phone / WhatsApp",
+   "tr": "Telefon / WhatsApp",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "1w7nv5a"
+  },
+  {
+   "id": "contact.069",
+   "en": "Anything else",
+   "tr": "Başka bir şey",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "xaz8mo"
+  },
+  {
+   "id": "contact.070",
+   "en": "(optional)",
+   "tr": "(isteğe bağlı)",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "1e7jm3u"
+  },
+  {
+   "id": "contact.071",
+   "en": "Reply me on",
+   "tr": "Bana şuradan yanıt verin",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "dlgjfi"
+  },
+  {
+   "id": "contact.072",
+   "en": "I agree that JobsAdmire may process my details to answer this enquiry, under KVKK Law No. 6698. We never share them with third parties.",
+   "tr": "JobsAdmire’ın bu talebi yanıtlamak için bilgilerimi 6698 sayılı KVKK kapsamında işlemesini kabul ediyorum. Bilgileri asla üçüncü taraflarla paylaşmıyoruz.",
+   "sec": "Mesaj gönderme ve süreç",
+   "legal": true,
+   "rev": "o7a2r6"
+  },
+  {
+   "id": "contact.073",
+   "en": "Sends through WhatsApp so you keep a copy of the conversation.",
+   "tr": "WhatsApp üzerinden gönderilir, böylece görüşmenin bir kopyası sizde kalır.",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "by2oq"
+  },
+  {
+   "id": "contact.074",
+   "en": "Rather email? →",
+   "tr": "E-posta mı tercih edersiniz? →",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "12yblmk"
+  },
+  {
+   "id": "contact.075",
+   "en": "Looking for a job in Turkey?",
+   "tr": "Türkiye’de iş mi arıyorsunuz?",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "163308z"
+  },
+  {
+   "id": "contact.076",
+   "en": "We do not take individual applications directly",
+   "tr": "Bireysel başvuruları doğrudan almıyoruz",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "1jvt3ze"
+  },
+  {
+   "id": "contact.077",
+   "en": "— we are a B2B agency and work only through licensed sourcing partners in your country. Apply through one of our verified partner agencies in your country, and",
+   "tr": "— B2B bir ajansız ve yalnızca ülkenizdeki lisanslı tedarik ortakları aracılığıyla çalışıyoruz. Ülkenizdeki doğrulanmış ortak ajanslarımızdan biri üzerinden başvurun ve",
+   "sec": "Mesaj gönderme ve süreç",
+   "legal": true,
+   "rev": "1ax45hw"
+  },
+  {
+   "id": "contact.078",
+   "en": "we never charge a worker a placement fee — not for the visa, not for the permit, not for the job",
+   "tr": "bir işçiden asla yerleştirme ücreti almıyoruz — ne vize, ne izin, ne de iş için",
+   "sec": "Mesaj gönderme ve süreç",
+   "legal": true,
+   "rev": "ny8sow"
+  },
+  {
+   "id": "contact.079",
+   "en": ". If anyone asks you for money in JobsAdmire's name, report it to us on WhatsApp — that person does not represent us.",
+   "tr": ". Biri JobsAdmire adına sizden para isterse, bunu WhatsApp’tan bize bildirin — o kişi bizi temsil etmiyor.",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "r1sfrh"
+  },
+  {
+   "id": "contact.080",
+   "en": "1 · Ask us for the verified partner list",
+   "tr": "1 · Bizden doğrulanmış ortak listesini isteyin",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "1aizygk"
+  },
+  {
+   "id": "contact.081",
+   "en": "Message us your country and trade — we send you the contact of our verified sourcing partner there. Only partners on that list represent us.",
+   "tr": "Ülkenizi ve mesleğinizi bize yazın — oradaki doğrulanmış tedarik ortağımızın iletişim bilgilerini gönderiyoruz. Yalnızca o listedeki ortaklar bizi temsil eder.",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "1o0i7ay"
+  },
+  {
+   "id": "contact.082",
+   "en": "Get the list on WhatsApp",
+   "tr": "Listeyi WhatsApp’tan alın",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "r0dkmp"
+  },
+  {
+   "id": "contact.083",
+   "en": "2 · Apply through the partner",
+   "tr": "2 · Ortak aracılığıyla başvurun",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "1qco1h4"
+  },
+  {
+   "id": "contact.084",
+   "en": "The partner checks your trade and documents and submits your file to us directly. When an employer picks you, we handle the permit and travel.",
+   "tr": "Ortak mesleğinizi ve belgelerinizi kontrol eder ve dosyanızı doğrudan bize iletir. Bir işveren sizi seçtiğinde izni ve seyahati biz yürütürüz.",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "1eq32lb"
+  },
+  {
+   "id": "contact.085",
+   "en": "Already registered with one of our sourcing partners? You are in the system — they submit your file to us directly.",
+   "tr": "Tedarik ortaklarımızdan birine zaten kayıtlı mısınız? Sistemdesiniz — dosyanızı doğrudan bize iletirler.",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "150bn2c"
+  },
+  {
+   "id": "contact.086",
+   "en": "WhatsApp is open with your message",
+   "tr": "WhatsApp mesajınızla açıldı",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "1k67vez"
+  },
+  {
+   "id": "contact.087",
+   "en": "Email instead",
+   "tr": "Bunun yerine e-posta",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "158z7gp"
+  },
+  {
+   "id": "contact.088",
+   "en": "Send another",
+   "tr": "Bir tane daha gönder",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "13ja88i"
+  },
+  {
+   "id": "contact.089",
+   "en": "QR code — scan to open a WhatsApp chat with JobsAdmire",
+   "tr": "QR kod — JobsAdmire ile WhatsApp sohbeti açmak için tarayın",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "kkfm08"
+  },
+  {
+   "id": "contact.090",
+   "en": "Who we should ask for",
+   "tr": "Kimi sormalıyız",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "1gctgng"
+  },
+  {
+   "id": "contact.091",
+   "en": "Start date, shift pattern, accommodation, budget — whatever helps us answer properly.",
+   "tr": "Başlangıç tarihi, vardiya düzeni, konaklama, bütçe — düzgün yanıt vermemize yardımcı olacak her şey.",
+   "sec": "Mesaj gönderme ve süreç",
+   "rev": "5pco1n"
+  },
+  {
+   "id": "contact.092",
+   "en": "Where we are",
+   "tr": "Neredeyiz",
+   "sec": "Ofisler",
+   "rev": "3ytlws"
+  },
+  {
+   "id": "contact.093",
+   "en": "Two offices, one file",
+   "tr": "İki ofis, tek dosya",
+   "sec": "Ofisler",
+   "rev": "1mu7psk"
+  },
+  {
+   "id": "contact.094",
+   "en": "Antalya handles your contract, permits and arrivals. Karachi finds and tests the workers before they ever reach your shortlist.",
+   "tr": "Antalya sözleşmenizi, izinlerinizi ve varışları yürütür. Karaçi, işçileri kısa listenize ulaşmadan önce bulur ve test eder.",
+   "sec": "Ofisler",
+   "rev": "1tuduss"
+  },
+  {
+   "id": "contact.095",
+   "en": "3,700 km apart — one file, same day",
+   "tr": "3.700 km arayla — tek dosya, aynı gün",
+   "sec": "Ofisler",
+   "rev": "1wx0ns1"
+  },
+  {
+   "id": "contact.096",
+   "en": "Antalya",
+   "tr": "Antalya",
+   "sec": "Ofisler",
+   "rev": "9ixuzv"
+  },
+  {
+   "id": "contact.097",
+   "en": "Karachi",
+   "tr": "Karaçi",
+   "sec": "Ofisler",
+   "rev": "jqiy9q"
+  },
+  {
+   "id": "contact.098",
+   "en": "Antalya, Turkey",
+   "tr": "Antalya, Türkiye",
+   "sec": "Ofisler",
+   "rev": "e7emn7"
+  },
+  {
+   "id": "contact.099",
+   "en": "Head office",
+   "tr": "Merkez ofis",
+   "sec": "Ofisler",
+   "rev": "i58zt9"
+  },
+  {
+   "id": "contact.100",
+   "en": "Mon–Fri · 09:00–18:00 (TRT)",
+   "tr": "Pzt–Cum · 09:00–18:00 (TRT)",
+   "sec": "Ofisler",
+   "rev": "13v806o"
+  },
+  {
+   "id": "contact.101",
+   "en": "Contracts, work permit filings, employer visits and arrival logistics.",
+   "tr": "Sözleşmeler, çalışma izni başvuruları, işveren ziyaretleri ve varış lojistiği.",
+   "sec": "Ofisler",
+   "rev": "11t32j4"
+  },
+  {
+   "id": "contact.102",
+   "en": "Get directions →",
+   "tr": "Yol tarifi al →",
+   "sec": "Ofisler",
+   "rev": "1evf7qv"
+  },
+  {
+   "id": "contact.103",
+   "en": "Karachi, Pakistan",
+   "tr": "Karaçi, Pakistan",
+   "sec": "Ofisler",
+   "rev": "1td9ko9"
+  },
+  {
+   "id": "contact.104",
+   "en": "Sourcing office",
+   "tr": "Tedarik ofisi",
+   "sec": "Ofisler",
+   "rev": "1wj2yql"
+  },
+  {
+   "id": "contact.105",
+   "en": "Shahrah-e-Faisal",
+   "tr": "Shahrah-e-Faisal",
+   "sec": "Ofisler",
+   "rev": "y795a1"
+  },
+  {
+   "id": "contact.106",
+   "en": "Mon–Sat · 10:00–19:00 (PKT)",
+   "tr": "Pzt–Cmt · 10:00–19:00 (PKT)",
+   "sec": "Ofisler",
+   "rev": "3xmnkv"
+  },
+  {
+   "id": "contact.107",
+   "en": "WhatsApp the sourcing desk",
+   "tr": "Tedarik birimine WhatsApp’tan yazın",
+   "sec": "Ofisler",
+   "rev": "2d4tnp"
+  },
+  {
+   "id": "contact.108",
+   "en": "Candidate interviews, trade tests, document checks and pre-departure briefings.",
+   "tr": "Aday mülakatları, meslek sınavları, belge kontrolleri ve gidiş öncesi bilgilendirmeler.",
+   "sec": "Ofisler",
+   "rev": "90h6kh"
+  },
+  {
+   "id": "contact.109",
+   "en": "See who is available →",
+   "tr": "Kimlerin müsait olduğunu görün →",
+   "sec": "Ofisler",
+   "rev": "gczuf"
+  },
+  {
+   "id": "contact.110",
+   "en": "We come to you before big orders",
+   "tr": "Büyük siparişlerden önce size geliyoruz",
+   "sec": "Ofisler",
+   "rev": "d01jlv"
+  },
+  {
+   "id": "contact.111",
+   "en": "For orders above 10 workers we see the site first — factory floor, hotel, farm or camp — so the shortlist matches the real job and the accommodation you offer. Antalya region within the week; elsewhere in Turkey by arrangement.",
+   "tr": "10’dan fazla çalışan ihtiyacınız olduğunda, işe alım sürecine başlamadan önce çalışma alanınızı yerinde ziyaret ediyoruz. Fabrika, otel, çiftlik veya kamp fark etmeksizin; böylece aday seçimini gerçek çalışma koşullarınıza ve sunduğunuz konaklama imkânlarına uygun şekilde yapıyoruz. Antalya bölgesinde saha ziyareti hafta içinde gerçekleştirilebilir; Türkiye’nin diğer bölgeleri için ziyaretler karşılıklı planlama ile organize edilir.",
+   "sec": "Ofisler",
+   "rev": "163654x"
+  },
+  {
+   "id": "contact.112",
+   "en": "Request a site visit",
+   "tr": "Saha ziyareti talep edin",
+   "sec": "Ofisler",
+   "rev": "1vk9k4v"
+  },
+  {
+   "id": "contact.113",
+   "en": "Book a visit",
+   "tr": "Ziyaret ayarlayın",
+   "sec": "Ofisler",
+   "rev": "1my2a70"
+  },
+  {
+   "id": "contact.114",
+   "en": "Prefer to sit down with us?",
+   "tr": "Bizimle yüz yüze görüşmeyi mi tercih edersiniz?",
+   "sec": "Ofisler",
+   "rev": "ku3qy7"
+  },
+  {
+   "id": "contact.115",
+   "en": "Pick a day and a time — the support team confirms your slot on WhatsApp within the hour. Coffee is on us.",
+   "tr": "Size uygun gün ve saati seçin. Destek ekibimiz randevunuzu bir saat içinde WhatsApp üzerinden onaylasın. Kahve bizden.",
+   "sec": "Ofisler",
+   "rev": "d0dszt"
+  },
+  {
+   "id": "contact.116",
+   "en": "Day",
+   "tr": "Gün",
+   "sec": "Ofisler",
+   "rev": "3767fd"
+  },
+  {
+   "id": "contact.117",
+   "en": "Time",
+   "tr": "Saat",
+   "sec": "Ofisler",
+   "rev": "yjx8sw"
+  },
+  {
+   "id": "contact.118",
+   "en": "Book on WhatsApp",
+   "tr": "WhatsApp’tan randevu alın",
+   "sec": "Ofisler",
+   "rev": "ths911"
+  },
+  {
+   "id": "contact.119",
+   "en": "FAQ",
+   "tr": "SSS",
+   "sec": "SSS",
+   "rev": "37651v"
+  },
+  {
+   "id": "contact.120",
+   "en": "Before you write",
+   "tr": "Yazmadan önce",
+   "sec": "SSS",
+   "rev": "wa611e"
+  },
+  {
+   "id": "contact.121",
+   "en": "The things people ask us in the first message.",
+   "tr": "İnsanların ilk mesajda bize sorduğu şeyler.",
+   "sec": "SSS",
+   "rev": "1qv15ce"
+  },
+  {
+   "id": "contact.122",
+   "en": "Still not sure what you need?",
+   "tr": "Neye ihtiyacınız olduğundan hâlâ emin değil misiniz?",
+   "sec": "SSS",
+   "rev": "tjko0j"
+  },
+  {
+   "id": "contact.123",
+   "en": "Send one line describing the job. We will tell you the route, the timeline and the cost — no obligation.",
+   "tr": "İşi anlatan tek bir satır gönderin. Size yolu, süreyi ve maliyeti söyleyeceğiz — yükümlülük yok.",
+   "sec": "SSS",
+   "rev": "1klm80b"
+  },
+  {
+   "id": "contact.124",
+   "en": "Ask on WhatsApp",
+   "tr": "WhatsApp'tan sorun",
+   "sec": "SSS",
+   "rev": "1mmxffp"
+  },
+  {
+   "id": "contact.125",
+   "en": "Call us",
+   "tr": "Bizi arayın",
+   "sec": "Kapanış çağrısı",
+   "rev": "1pu4zvl"
+  },
+  {
+   "id": "contact.126",
+   "en": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+   "tr": "Türkiye’deki işverenler için lisanslı iş gücü temini — yurt dışı tedarik, inceleme ve çalışma izinleri, uçtan uca.",
+   "sec": "Alt bilgi (Footer)",
+   "legal": true,
+   "rev": "1v5awlm"
+  },
+  {
+   "id": "contact.127",
+   "en": "For Employers",
+   "tr": "İşverenler için",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1yhsmw"
+  },
+  {
+   "id": "contact.128",
+   "en": "Available Workers",
+   "tr": "Mevcut İşçiler",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "wzront"
+  },
+  {
+   "id": "contact.129",
+   "en": "Hiring Cost Calculator",
+   "tr": "İşçi Maliyet Hesaplama",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "e9bold"
+  },
+  {
+   "id": "contact.130",
+   "en": "Company",
+   "tr": "Kurumsal",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1ohrlxe"
+  },
+  {
+   "id": "contact.131",
+   "en": "Telegram · @jobsadmire",
+   "tr": "Telegram · @jobsadmire",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3y9lox"
+  },
+  {
+   "id": "contact.132",
+   "en": "Antalya · Head office",
+   "tr": "Antalya · Merkez ofis",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1vkrek4"
+  },
+  {
+   "id": "contact.133",
+   "en": "Adnan Menderes Blv. No 7/6",
+   "tr": "Adnan Menderes Blv. No 7/6",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "muabnf"
+  },
+  {
+   "id": "contact.134",
+   "en": "Muratpaşa, Antalya, Türkiye",
+   "tr": "Muratpaşa, Antalya, Türkiye",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "e06xbz"
+  },
+  {
+   "id": "contact.135",
+   "en": "Mon–Fri 09:00–18:00",
+   "tr": "Pzt–Cum 09:00–18:00",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1pratzo"
+  },
+  {
+   "id": "contact.136",
+   "en": "Get directions",
+   "tr": "Yol tarifi alın",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "9twfut"
+  },
+  {
+   "id": "contact.137",
+   "en": "Karachi · Tech office",
+   "tr": "Karaçi · Teknoloji ofisi",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1dihier"
+  },
+  {
+   "id": "contact.138",
+   "en": "Mon–Sat 10:00–19:00 PKT",
+   "tr": "Pzt–Cmt 10:00–19:00 PKT",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1w2dzmx"
+  },
+  {
+   "id": "contact.139",
+   "en": "WhatsApp Us →",
+   "tr": "WhatsApp’tan yazın →",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1bo2cnd"
+  },
+  {
+   "id": "contact.140",
+   "en": "Get Our App",
+   "tr": "Uygulamamızı İndirin",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "ncsu7u"
+  },
+  {
+   "id": "contact.141",
+   "en": "Workforce on the go",
+   "tr": "İş gücü her yerde yanınızda",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3cj12h"
+  },
+  {
+   "id": "contact.142",
+   "en": "Approve candidates, track permits & get instant updates.",
+   "tr": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "19enop8"
+  },
+  {
+   "id": "contact.143",
+   "en": "GET IT ON",
+   "tr": "İNDİRİN",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "xm8p2n"
+  },
+  {
+   "id": "contact.144",
+   "en": "DOWNLOAD ON THE",
+   "tr": "İNDİRİN",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "mgrgjt"
+  },
+  {
+   "id": "contact.145",
+   "en": "İŞKUR permit No. 1730 · Job seekers are never charged a fee (law No. 4904) · Tax No: 48422122",
+   "tr": "İŞKUR izin No. 1730 · İş arayanlardan asla ücret alınmaz (4904 sayılı kanun) · Vergi No: 48422122",
+   "sec": "Alt bilgi (Footer)",
+   "legal": true,
+   "rev": "dgg8hy"
+  },
+  {
+   "id": "contact.146",
+   "en": "Privacy",
+   "tr": "Gizlilik Politikası",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1ligp4z"
+  },
+  {
+   "id": "contact.147",
+   "en": "Terms",
+   "tr": "Kullanım Şartları",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3rktfc"
+  },
+  {
+   "id": "contact.148",
+   "en": "© 2026 Jobs Admire",
+   "tr": "© 2026 Jobs Admire",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1f7jgq0"
+  },
+  {
+   "id": "contact.149",
+   "en": "JobsAdmire app",
+   "tr": "JobsAdmire uygulaması",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "10jpxja"
+  },
+  {
+   "id": "contact.150",
+   "en": "Sat",
+   "tr": "Cmt",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "376nk3"
+  },
+  {
+   "id": "contact.151",
+   "en": "Sun",
+   "tr": "Paz",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "376n2l"
+  },
+  {
+   "id": "contact.152",
+   "en": "Office open now ·",
+   "tr": "Ofis şu anda açık ·",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "18r29hs"
+  },
+  {
+   "id": "contact.153",
+   "en": "in Antalya",
+   "tr": "Antalya’da",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "66j7nw"
+  },
+  {
+   "id": "contact.154",
+   "en": "Weekend · WhatsApp is still watched",
+   "tr": "Hafta sonu · WhatsApp yine takip ediliyor",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "k16rwl"
+  },
+  {
+   "id": "contact.155",
+   "en": "Closed for today",
+   "tr": "Bugün için kapalı",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1wpmuej"
+  },
+  {
+   "id": "contact.156",
+   "en": "Contact:",
+   "tr": "İletişim:",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "5ikqv3"
+  },
+  {
+   "id": "contact.157",
+   "en": "Email:",
+   "tr": "E-posta:",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "12rd9wz"
+  },
+  {
+   "id": "contact.158",
+   "en": "Phone:",
+   "tr": "Telefon:",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1k1wy5f"
+  },
+  {
+   "id": "contact.159",
+   "en": "Preferred reply:",
+   "tr": "Tercih edilen yanıt:",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "5o34w8"
+  },
+  {
+   "id": "contact.160",
+   "en": "Notes:",
+   "tr": "Notlar:",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1ar0ue4"
+  },
+  {
+   "id": "contact.161",
+   "en": "employer desk",
+   "tr": "işveren birimi",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "8swtm1"
+  },
+  {
+   "id": "contact.162",
+   "en": "Tell us the roles",
+   "tr": "Pozisyonları bize söyleyin",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1kcivvw"
+  },
+  {
+   "id": "contact.163",
+   "en": "Job titles and headcount are enough to start — we come back with candidates, timeline and cost.",
+   "tr": "Başlamak için pozisyon adları ve kişi sayısı yeterli — adaylar, süre ve maliyetle geri döneriz.",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "11v7g7q"
+  },
+  {
+   "id": "contact.164",
+   "en": "Company name",
+   "tr": "Firma adı",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "eago79"
+  },
+  {
+   "id": "contact.165",
+   "en": "Registered company name",
+   "tr": "Kayıtlı şirket adı",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "rxj4y5"
+  },
+  {
+   "id": "contact.166",
+   "en": "Roles and headcount",
+   "tr": "Pozisyonlar ve kişi sayısı",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1exo7s2"
+  },
+  {
+   "id": "contact.167",
+   "en": "e.g. 10 welders, 4 CNC operators",
+   "tr": "örn. 10 kaynakçı, 4 CNC operatörü",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1ka8j4t"
+  },
+  {
+   "id": "contact.168",
+   "en": "City in Turkey",
+   "tr": "Türkiye’deki şehir",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1gnrd8h"
+  },
+  {
+   "id": "contact.169",
+   "en": "Send my hiring request",
+   "tr": "İşe alım talebimi gönder",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1elz5zj"
+  },
+  {
+   "id": "contact.170",
+   "en": "permit team",
+   "tr": "izin ekibi",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "4gv7an"
+  },
+  {
+   "id": "contact.171",
+   "en": "Permit file, no sourcing",
+   "tr": "Sadece izin dosyası, tedarik yok",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "17r5v0h"
+  },
+  {
+   "id": "contact.172",
+   "en": "You already have the worker — we run the application, the follow-up and the renewals.",
+   "tr": "İşçi elinizde zaten var — başvuruyu, takibi ve yenilemeleri biz yürütürüz.",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "uvycws"
+  },
+  {
+   "id": "contact.173",
+   "en": "Worker and role",
+   "tr": "İşçi ve pozisyon",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "ttodu4"
+  },
+  {
+   "id": "contact.174",
+   "en": "e.g. 1 Uzbek chef, already in Turkey",
+   "tr": "örn. 1 Özbek aşçı, hâlihazırda Türkiye’de",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "bsqilw"
+  },
+  {
+   "id": "contact.175",
+   "en": "Workplace city",
+   "tr": "İşyeri şehri",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "onm6ew"
+  },
+  {
+   "id": "contact.176",
+   "en": "Ask the permit team",
+   "tr": "İzin ekibine sorun",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "19nn3zj"
+  },
+  {
+   "id": "contact.177",
+   "en": "partnerships desk",
+   "tr": "iş ortaklıkları birimi",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "kxrmv7"
+  },
+  {
+   "id": "contact.178",
+   "en": "HR agencies in Turkey, sourcing agents abroad and training institutes — tell us what you bring.",
+   "tr": "Türkiye’deki İK ajansları, yurt dışındaki tedarik temsilcileri ve eğitim enstitüleri — ne getirdiğinizi bize söyleyin.",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "xh2wwt"
+  },
+  {
+   "id": "contact.179",
+   "en": "Agency name & country",
+   "tr": "Ajans adı ve ülke",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1q65s3f"
+  },
+  {
+   "id": "contact.180",
+   "en": "e.g. Skyline Manpower, Nepal",
+   "tr": "örn. Skyline Manpower, Nepal",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "fo96of"
+  },
+  {
+   "id": "contact.181",
+   "en": "What you supply",
+   "tr": "Ne tedarik ediyorsunuz",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "ooc44f"
+  },
+  {
+   "id": "contact.182",
+   "en": "e.g. welders and masons, 200 on file",
+   "tr": "örn. kaynakçı ve duvarcı, dosyada 200 kişi",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1835bnq"
+  },
+  {
+   "id": "contact.183",
+   "en": "Licence no.",
+   "tr": "Lisans no.",
+   "sec": "Form alanları ve sistem mesajları",
+   "legal": true,
+   "rev": "1qj2go1"
+  },
+  {
+   "id": "contact.184",
+   "en": "If you have one",
+   "tr": "Varsa",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "c7hw3b"
+  },
+  {
+   "id": "contact.185",
+   "en": "Send partnership enquiry",
+   "tr": "İş ortaklığı talebi gönder",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "uy3muw"
+  },
+  {
+   "id": "contact.186",
+   "en": "A call",
+   "tr": "Bir arama",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "16bdsva"
+  },
+  {
+   "id": "contact.187",
+   "en": "It lands on the right desk",
+   "tr": "Doğru birime ulaşır",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "11pclfx"
+  },
+  {
+   "id": "contact.188",
+   "en": "Hiring, permits and partnerships are three different people here — your message goes to one of them, not a shared inbox.",
+   "tr": "İşe alım, izinler ve iş ortaklıkları burada üç farklı kişidir — mesajınız ortak bir gelen kutusuna değil, onlardan birine gider.",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1feaar5"
+  },
+  {
+   "id": "contact.189",
+   "en": "You get a human reply",
+   "tr": "Gerçek bir kişiden yanıt alırsınız",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "tlgifw"
+  },
+  {
+   "id": "contact.190",
+   "en": "Same day in office hours. Next business morning if you write at night or over the weekend.",
+   "tr": "Mesai saatlerinde aynı gün. Gece veya hafta sonu yazarsanız bir sonraki iş günü sabahı.",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "jgyqcp"
+  },
+  {
+   "id": "contact.191",
+   "en": "A short call to pin it down",
+   "tr": "Netleştirmek için kısa bir görüşme",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1jni0wn"
+  },
+  {
+   "id": "contact.192",
+   "en": "Roles, headcount, start date, accommodation, budget. Fifteen minutes is usually enough.",
+   "tr": "Pozisyonlar, kişi sayısı, başlangıç tarihi, konaklama, bütçe. On beş dakika genellikle yeterli.",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1qil02p"
+  },
+  {
+   "id": "contact.193",
+   "en": "Written numbers within 24 hours",
+   "tr": "24 saat içinde yazılı sayılar",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "9pxmn6"
+  },
+  {
+   "id": "contact.194",
+   "en": "A quote, or a permit checklist — in writing, so you can take it to your board.",
+   "tr": "Bir teklif veya izin kontrol listesi — yazılı olarak, yönetim kuruluna sunabilmeniz için.",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "99ub5d"
+  },
+  {
+   "id": "contact.195",
+   "en": "Do you charge for a first conversation?",
+   "tr": "İlk görüşme için ücret alıyor musunuz?",
+   "sec": "SSS",
+   "rev": "p77qed"
+  },
+  {
+   "id": "contact.196",
+   "en": "No. Sourcing, shortlists and the quote itself are free — you pay one agreed service fee only when you accept workers and we start the permit file. There is no consultation charge, no retainer and nothing upfront.",
+   "tr": "Hayır. Tedarik, kısa listeler ve teklifin kendisi ücretsizdir — yalnızca işçileri kabul ettiğinizde ve izin dosyasını başlattığımızda anlaşılan tek bir hizmet bedeli ödersiniz. Danışmanlık ücreti, ön ödeme veya peşin bir bedel yoktur.",
+   "sec": "SSS",
+   "rev": "sj9r6a"
+  },
+  {
+   "id": "contact.197",
+   "en": "Which languages can we speak?",
+   "tr": "Hangi dilleri konuşabiliyoruz?",
+   "sec": "SSS",
+   "rev": "17tvd10"
+  },
+  {
+   "id": "contact.198",
+   "en": "Turkish, English, French, Hindi and Russian. Write in whichever you prefer — the reply comes back in the same language.",
+   "tr": "Türkçe, İngilizce, Fransızca, Hintçe ve Rusça. Hangisini tercih ederseniz onunla yazın — yanıt aynı dilde gelir.",
+   "sec": "SSS",
+   "rev": "1itq1fy"
+  },
+  {
+   "id": "contact.199",
+   "en": "How fast will someone actually answer?",
+   "tr": "Gerçekte ne kadar hızlı yanıt alırım?",
+   "sec": "SSS",
+   "rev": "zuso3"
+  },
+  {
+   "id": "contact.200",
+   "en": "Can you come and see our site first?",
+   "tr": "Önce gelip sahamızı görebilir misiniz?",
+   "sec": "SSS",
+   "rev": "xd1btc"
+  },
+  {
+   "id": "contact.201",
+   "en": "Yes, and for orders above ten workers we prefer it. We look at the work itself and at the accommodation you offer, because both decide which candidates will actually stay. Antalya and nearby provinces within the week — elsewhere in Turkey by arrangement.",
+   "tr": "Evet ve on işçinin üzerindeki siparişlerde bunu tercih ediyoruz. İşin kendisine ve sunduğunuz konaklamaya bakıyoruz, çünkü hangi adayların gerçekten kalacağını ikisi birlikte belirliyor. Antalya ve çevre iller hafta içinde — Türkiye’nin diğer yerleri anlaşmayla.",
+   "sec": "SSS",
+   "rev": "13ng8r"
+  },
+  {
+   "id": "contact.202",
+   "en": "I am a worker looking for a job — can I write here?",
+   "tr": "İş arayan bir işçiyim — buraya yazabilir miyim?",
+   "sec": "SSS",
+   "rev": "5d27ic"
+  },
+  {
+   "id": "contact.203",
+   "en": "Are my details safe?",
+   "tr": "Bilgilerim güvende mi?",
+   "sec": "SSS",
+   "rev": "13zy3d7"
+  },
+  {
+   "id": "contact.204",
+   "en": "Yes. Details you send are used only to answer your enquiry, under KVKK Law No. 6698, and are never sold or shared with third parties. Ask us to delete them at any time and we do.",
+   "tr": "Evet. Gönderdiğiniz bilgiler yalnızca talebinizi yanıtlamak için, 6698 sayılı KVKK kapsamında kullanılır ve asla satılmaz veya üçüncü taraflarla paylaşılmaz. Dilediğiniz zaman silmemizi isteyin, sileriz.",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "1p5h3qt"
+  },
+  {
+   "id": "contact.205",
+   "en": "Today",
+   "tr": "Bugün",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "3rvtpe"
+  },
+  {
+   "id": "contact.206",
+   "en": "Tomorrow",
+   "tr": "Yarın",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "16lz1yc"
+  },
+  {
+   "id": "contact.207",
+   "en": "This week",
+   "tr": "Bu hafta",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1baauzj"
+  },
+  {
+   "id": "contact.208",
+   "en": "a weekday",
+   "tr": "bir hafta içi günü",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "qd98is"
+  },
+  {
+   "id": "contact.209",
+   "en": "any time",
+   "tr": "herhangi bir saat",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "xlmy3q"
+  },
+  {
+   "id": "contact.210",
+   "en": "Hide extra details",
+   "tr": "Ek bilgileri gizle",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "ald1kt"
+  },
+  {
+   "id": "contact.211",
+   "en": "+ Add extra details (optional)",
+   "tr": "+ Ek bilgi ekle (isteğe bağlı)",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "zq2hnc"
+  },
+  {
+   "id": "contact.212",
+   "en": "Hide the slots",
+   "tr": "Saatleri gizle",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "vrkeej"
+  },
+  {
+   "id": "contact.213",
+   "en": "Pick a day & time",
+   "tr": "Bir gün ve saat seçin",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "ik7pju"
+  },
+  {
+   "id": "contact.214",
+   "en": "Hello JobsAdmire, I want to hire workers.",
+   "tr": "Merhaba JobsAdmire, işçi talebinde bulunmak istiyorum.",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "17wwilm"
+  },
+  {
+   "id": "contact.215",
+   "en": "Lines open now",
+   "tr": "Hatlar şu anda açık",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "hlyu4a"
+  },
+  {
+   "id": "contact.216",
+   "en": "Lines closed",
+   "tr": "Hatlar kapalı",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "d0rdka"
+  },
+  {
+   "id": "contact.217",
+   "en": "Looking for a job",
+   "tr": "İş arıyorum",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "j271fj"
+  },
+  {
+   "id": "contact.218",
+   "en": "Goes to the",
+   "tr": "Şuraya gider:",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1kc9a61"
+  },
+  {
+   "id": "contact.219",
+   "en": "sourcing team",
+   "tr": "tedarik ekibi",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "2pjls0"
+  },
+  {
+   "id": "contact.220",
+   "en": ", any time in office hours",
+   "tr": ", mesai saatleri içinde her zaman",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "1xiufku"
+  },
+  {
+   "id": "contact.221",
+   "en": "Callback requested for",
+   "tr": "Geri arama talep edildi:",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "vz7m87"
+  },
+  {
+   "id": "contact.222",
+   "en": "Subscribe to hiring updates",
+   "tr": "İşe alım güncellemelerine abone olun",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "vjuptz"
+  },
+  {
+   "id": "contact.223",
+   "en": "İŞKUR Private Employment Agency Permit No. 1730",
+   "tr": "İŞKUR Özel İstihdam Bürosu İzin No. 1730",
+   "sec": "Form alanları ve sistem mesajları",
+   "legal": true,
+   "rev": "h0j4wg"
+  },
+  {
+   "id": "contact.224",
+   "en": "Turkish",
+   "tr": "Türkçe",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "16r1j67"
+  },
+  {
+   "id": "contact.225",
+   "en": "French",
+   "tr": "Fransızca",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "15xxka9"
+  },
+  {
+   "id": "contact.226",
+   "en": "Hindi",
+   "tr": "Hintçe",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "3oid1j"
+  },
+  {
+   "id": "contact.227",
+   "en": "Russian",
+   "tr": "Rusça",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "btezr8"
+  },
+  {
+   "id": "contact.228",
+   "en": "Contact JobsAdmire",
+   "tr": "JobsAdmire ile iletişime geçin",
+   "sec": "Form alanları ve sistem mesajları",
+   "rev": "193pxnr"
+  }
+ ]
+}

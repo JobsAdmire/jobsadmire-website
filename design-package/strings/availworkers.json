@@ -1,0 +1,1767 @@
+{
+ "page": "Available Workers",
+ "route": "/available-workers",
+ "strings": [
+  {
+   "id": "availworkers.001",
+   "en": "İŞKUR Licensed · Permit No. 1730",
+   "tr": "İŞKUR Lisanslı · İzin No. 1730",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "z1r9le"
+  },
+  {
+   "id": "availworkers.002",
+   "en": "İŞKUR · 1730",
+   "tr": "İŞKUR · 1730",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "1ih9pud"
+  },
+  {
+   "id": "availworkers.003",
+   "en": "info@jobsadmire.com",
+   "tr": "info@jobsadmire.com",
+   "sec": "Menü ve genel etiketler",
+   "rev": "38yl46"
+  },
+  {
+   "id": "availworkers.004",
+   "en": "Blog",
+   "tr": "Blog",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjmm4j"
+  },
+  {
+   "id": "availworkers.005",
+   "en": "Join Our Team",
+   "tr": "Ekibimize Katılın",
+   "sec": "Menü ve genel etiketler",
+   "rev": "ftsz4i"
+  },
+  {
+   "id": "availworkers.006",
+   "en": "Verify a Representative",
+   "tr": "Temsilci Doğrulama",
+   "sec": "Menü ve genel etiketler",
+   "rev": "l6eh8g"
+  },
+  {
+   "id": "availworkers.007",
+   "en": "CRM Login",
+   "tr": "CRM Girişi",
+   "sec": "Menü ve genel etiketler",
+   "rev": "57mcey"
+  },
+  {
+   "id": "availworkers.008",
+   "en": "About Us",
+   "tr": "Hakkımızda",
+   "sec": "Menü ve genel etiketler",
+   "rev": "6iiw1a"
+  },
+  {
+   "id": "availworkers.009",
+   "en": "Hire Workers",
+   "tr": "İşçi Talebi",
+   "sec": "Menü ve genel etiketler",
+   "rev": "oqbvo6"
+  },
+  {
+   "id": "availworkers.010",
+   "en": "Candidates",
+   "tr": "Adaylar",
+   "sec": "Menü ve genel etiketler",
+   "rev": "brf3mr"
+  },
+  {
+   "id": "availworkers.011",
+   "en": "Work Permits",
+   "tr": "Çalışma İzinleri",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1gd2msg"
+  },
+  {
+   "id": "availworkers.012",
+   "en": "Cost Calculator",
+   "tr": "Maliyet Hesaplama",
+   "sec": "Menü ve genel etiketler",
+   "rev": "k5qxyq"
+  },
+  {
+   "id": "availworkers.013",
+   "en": "Success Stories",
+   "tr": "Başarı Hikâyeleri",
+   "sec": "Menü ve genel etiketler",
+   "rev": "11w6kar"
+  },
+  {
+   "id": "availworkers.014",
+   "en": "Contact Us",
+   "tr": "İletişim",
+   "sec": "Menü ve genel etiketler",
+   "rev": "14c3gdf"
+  },
+  {
+   "id": "availworkers.015",
+   "en": "Partner With Us",
+   "tr": "İş Ortağı Olun",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1redpm7"
+  },
+  {
+   "id": "availworkers.016",
+   "en": "See",
+   "tr": "Bkz.",
+   "sec": "Menü ve genel etiketler",
+   "rev": "376nh2"
+  },
+  {
+   "id": "availworkers.017",
+   "en": "Language",
+   "tr": "Dil",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1s1gw53"
+  },
+  {
+   "id": "availworkers.018",
+   "en": "Blog & Guides",
+   "tr": "Blog ve Rehberler",
+   "sec": "Menü ve genel etiketler",
+   "rev": "4wi5os"
+  },
+  {
+   "id": "availworkers.019",
+   "en": "CRM Login →",
+   "tr": "CRM Girişi →",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1s31eug"
+  },
+  {
+   "id": "availworkers.020",
+   "en": "Menu",
+   "tr": "Menü",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjlvbq"
+  },
+  {
+   "id": "availworkers.021",
+   "en": "Home",
+   "tr": "Ana Sayfa",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "yjtufe"
+  },
+  {
+   "id": "availworkers.022",
+   "en": "Available Workers",
+   "tr": "Mevcut İşçiler",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "wzront"
+  },
+  {
+   "id": "availworkers.023",
+   "en": "Live from our portal",
+   "tr": "Portalımızdan canlı",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "pi30m1"
+  },
+  {
+   "id": "availworkers.024",
+   "en": "Verified workers,",
+   "tr": "Doğrulanmış işçiler,",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "17t6woa"
+  },
+  {
+   "id": "availworkers.025",
+   "en": "ready to start",
+   "tr": "başlamaya hazır",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1ac2dqt"
+  },
+  {
+   "id": "availworkers.026",
+   "en": "in Turkey",
+   "tr": "iş ortağı olun",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "6r2jra"
+  },
+  {
+   "id": "availworkers.027",
+   "en": "Real candidates from our pool — skill-tested, documents checked and waiting for an employer. Pick the profiles you like and we file every work permit under our İŞKUR licence.",
+   "tr": "Havuzumuzdan gerçek adaylar — beceri testinden geçmiş, belgeleri kontrol edilmiş ve bir işveren bekliyor. Beğendiğiniz profilleri seçin, her çalışma iznini İŞKUR lisansımız altında biz sunarız.",
+   "sec": "Üst bölüm (Hero)",
+   "legal": true,
+   "rev": "1puln1z"
+  },
+  {
+   "id": "availworkers.028",
+   "en": "Browse candidates →",
+   "tr": "Adaylara göz atın →",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "4jem4v"
+  },
+  {
+   "id": "availworkers.029",
+   "en": "Ask for profiles",
+   "tr": "Profil isteyin",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "7qo9y7"
+  },
+  {
+   "id": "availworkers.030",
+   "en": "Profiles are anonymised for candidate privacy (KVKK) — full CVs, documents and video interviews are shared with employers on request.",
+   "tr": "Profiller aday gizliliği için anonimleştirilmiştir (KVKK) — tam CV’ler, belgeler ve video mülakatlar talep üzerine işverenlerle paylaşılır.",
+   "sec": "Üst bölüm (Hero)",
+   "legal": true,
+   "rev": "1pwjjxm"
+  },
+  {
+   "id": "availworkers.031",
+   "en": "Popular in the pool right now",
+   "tr": "Şu anda havuzda popüler",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "mdi2fo"
+  },
+  {
+   "id": "availworkers.032",
+   "en": "Reply in 4 h",
+   "tr": "4 saatte yanıt",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "onxz1o"
+  },
+  {
+   "id": "availworkers.033",
+   "en": "No upfront fee",
+   "tr": "Peşin ücret yok",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1oz7kw6"
+  },
+  {
+   "id": "availworkers.034",
+   "en": "Start my request",
+   "tr": "Talebimi başlat",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "15wqw9s"
+  },
+  {
+   "id": "availworkers.035",
+   "en": "Browse the pool",
+   "tr": "Havuza göz atın",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "qw2mv2"
+  },
+  {
+   "id": "availworkers.036",
+   "en": "Clear",
+   "tr": "Temizle",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "3illss"
+  },
+  {
+   "id": "availworkers.037",
+   "en": "Request sent",
+   "tr": "Talebiniz gönderildi",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "9aaobc"
+  },
+  {
+   "id": "availworkers.038",
+   "en": "We reply within 4 working hours with matching profiles.",
+   "tr": "4 iş saati içinde eşleşen profillerle yanıt veriyoruz.",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1221nhd"
+  },
+  {
+   "id": "availworkers.039",
+   "en": "I agree that JobsAdmire may process these details to answer my request —",
+   "tr": "JobsAdmire’ın talebimi yanıtlamak için bu bilgileri işlemesini kabul ediyorum —",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "14fbeqe"
+  },
+  {
+   "id": "availworkers.040",
+   "en": "KVKK privacy notice",
+   "tr": "KVKK aydınlatma metni",
+   "sec": "Üst bölüm (Hero)",
+   "legal": true,
+   "rev": "x1omqs"
+  },
+  {
+   "id": "availworkers.041",
+   "en": "Prefer WhatsApp?",
+   "tr": "WhatsApp’ı mı tercih edersiniz?",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1ayl6xg"
+  },
+  {
+   "id": "availworkers.042",
+   "en": "Sourcing agency?",
+   "tr": "Tedarik ajansı mısınız?",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1wm70t1"
+  },
+  {
+   "id": "availworkers.043",
+   "en": "Partner with us →",
+   "tr": "İş ortağımız olun →",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "bi6x25"
+  },
+  {
+   "id": "availworkers.044",
+   "en": "Contact person",
+   "tr": "İletişim kişisi",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1w4445s"
+  },
+  {
+   "id": "availworkers.045",
+   "en": "Email",
+   "tr": "E-posta",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "3brsq1"
+  },
+  {
+   "id": "availworkers.046",
+   "en": "Phone / WhatsApp",
+   "tr": "Telefon / WhatsApp",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1w7nv5a"
+  },
+  {
+   "id": "availworkers.047",
+   "en": "City in Turkey",
+   "tr": "Türkiye’deki şehir",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1gnrd8h"
+  },
+  {
+   "id": "availworkers.048",
+   "en": "Found a profile that fits? Full CV and video interview within 24 hours.",
+   "tr": "Uygun bir profil buldunuz mu? 24 saat içinde tam CV ve video mülakat.",
+   "sec": "Talep formu",
+   "rev": "yqt14c"
+  },
+  {
+   "id": "availworkers.049",
+   "en": "Call",
+   "tr": "Arayın",
+   "sec": "Talep formu",
+   "rev": "yjn8ef"
+  },
+  {
+   "id": "availworkers.050",
+   "en": "WhatsApp us",
+   "tr": "WhatsApp’tan yazın",
+   "sec": "Talep formu",
+   "rev": "r6ebyz"
+  },
+  {
+   "id": "availworkers.051",
+   "en": "Request workers →",
+   "tr": "İşçi talep edin →",
+   "sec": "Talep formu",
+   "rev": "t5mzoj"
+  },
+  {
+   "id": "availworkers.052",
+   "en": "Candidates available now",
+   "tr": "Şu anda müsait adaylar",
+   "sec": "Aday havuzu",
+   "rev": "jotk7g"
+  },
+  {
+   "id": "availworkers.053",
+   "en": "Filter the pool, then message us about any profile — we send the full CV, documents and a video interview.",
+   "tr": "Havuzu filtreleyin, ardından herhangi bir profil hakkında bize yazın — tam CV’yi, belgeleri ve bir video mülakatı gönderiyoruz.",
+   "sec": "Aday havuzu",
+   "rev": "1mfygf"
+  },
+  {
+   "id": "availworkers.054",
+   "en": "Sort",
+   "tr": "Sırala",
+   "sec": "Aday havuzu",
+   "rev": "yjzhy7"
+  },
+  {
+   "id": "availworkers.055",
+   "en": "CVs in our portal",
+   "tr": "portalımızdaki CV",
+   "sec": "Aday havuzu",
+   "rev": "1hkugk8"
+  },
+  {
+   "id": "availworkers.056",
+   "en": "ready to start now",
+   "tr": "şimdi başlamaya hazır",
+   "sec": "Aday havuzu",
+   "rev": "1n1wuub"
+  },
+  {
+   "id": "availworkers.057",
+   "en": "countries listed",
+   "tr": "listelenen ülke",
+   "sec": "Aday havuzu",
+   "rev": "dtmcy0"
+  },
+  {
+   "id": "availworkers.058",
+   "en": "professions listed",
+   "tr": "listelenen meslek",
+   "sec": "Aday havuzu",
+   "rev": "1c5wbjn"
+  },
+  {
+   "id": "availworkers.059",
+   "en": "Filter the pool",
+   "tr": "Havuzu filtrele",
+   "sec": "Aday havuzu",
+   "rev": "gl6sw0"
+  },
+  {
+   "id": "availworkers.060",
+   "en": "Clear all ✕",
+   "tr": "Tümünü temizle ✕",
+   "sec": "Aday havuzu",
+   "rev": "z507s8"
+  },
+  {
+   "id": "availworkers.061",
+   "en": "Profession",
+   "tr": "Meslek",
+   "sec": "Aday havuzu",
+   "rev": "vj7xpf"
+  },
+  {
+   "id": "availworkers.062",
+   "en": "Country",
+   "tr": "Ülke",
+   "sec": "Aday havuzu",
+   "rev": "1oy8cul"
+  },
+  {
+   "id": "availworkers.063",
+   "en": "Industry",
+   "tr": "Sektör",
+   "sec": "Aday havuzu",
+   "rev": "1oqrtmn"
+  },
+  {
+   "id": "availworkers.064",
+   "en": "Experience",
+   "tr": "Deneyim",
+   "sec": "Aday havuzu",
+   "rev": "lz121n"
+  },
+  {
+   "id": "availworkers.065",
+   "en": "Availability",
+   "tr": "Bulunabilirlik",
+   "sec": "Aday havuzu",
+   "rev": "1gvuoxg"
+  },
+  {
+   "id": "availworkers.066",
+   "en": "No profiles match those filters right now",
+   "tr": "Şu anda bu filtrelerle eşleşen profil yok",
+   "sec": "Aday havuzu",
+   "rev": "gcw0hb"
+  },
+  {
+   "id": "availworkers.067",
+   "en": "Our pool changes weekly and we source to order — tell us what you need and we shortlist from 13+ countries, usually within 24 hours.",
+   "tr": "Havuzumuz her hafta değişir ve siparişe göre tedarik ederiz — ne istediğinizi söyleyin, 13+ ülkeden genellikle 24 saat içinde kısa liste hazırlarız.",
+   "sec": "Aday havuzu",
+   "rev": "11r5ph9"
+  },
+  {
+   "id": "availworkers.068",
+   "en": "Tell us what you need →",
+   "tr": "İhtiyacınızı bize yazın →",
+   "sec": "Aday havuzu",
+   "rev": "1trd9ib"
+  },
+  {
+   "id": "availworkers.069",
+   "en": "Clear filters",
+   "tr": "Filtreleri temizle",
+   "sec": "Aday havuzu",
+   "rev": "16w7sdr"
+  },
+  {
+   "id": "availworkers.070",
+   "en": "Can't see the profession you need?",
+   "tr": "İhtiyacınız olan meslek görünmüyor mu?",
+   "sec": "Aday havuzu",
+   "rev": "b1xuu8"
+  },
+  {
+   "id": "availworkers.071",
+   "en": "This pool is what is ready today — we also source to order from 13+ countries. Tell us the roles and headcount, and you get a shortlist in about a week.",
+   "tr": "Bu havuz bugün hazır olanlardır — ayrıca 13+ ülkeden siparişe göre tedarik ediyoruz. Pozisyonları ve kişi sayısını söyleyin, yaklaşık bir hafta içinde kısa liste alın.",
+   "sec": "Aday havuzu",
+   "rev": "kpbs6i"
+  },
+  {
+   "id": "availworkers.072",
+   "en": "What \"verified\" means on this page",
+   "tr": "Bu sayfada “doğrulanmış” ne anlama gelir",
+   "sec": "“Doğrulanmış” ne demek",
+   "rev": "1n9jgp"
+  },
+  {
+   "id": "availworkers.073",
+   "en": "Every profile passes four checks before it appears here — that is why the shortlist moves fast.",
+   "tr": "Her profil burada görünmeden önce dört kontrolden geçer — kısa listenin hızlı ilerlemesinin nedeni bu.",
+   "sec": "“Doğrulanmış” ne demek",
+   "rev": "1gjusy9"
+  },
+  {
+   "id": "availworkers.074",
+   "en": "Documents checked",
+   "tr": "Belgeler kontrol edildi",
+   "sec": "“Doğrulanmış” ne demek",
+   "rev": "ftu5b2"
+  },
+  {
+   "id": "availworkers.075",
+   "en": "Passport validity, qualifications and certificates verified before the profile goes live.",
+   "tr": "Profil yayına girmeden önce pasaport geçerliliği, yeterlilikler ve sertifikalar doğrulanır.",
+   "sec": "“Doğrulanmış” ne demek",
+   "rev": "11ta71z"
+  },
+  {
+   "id": "availworkers.076",
+   "en": "Skill-tested",
+   "tr": "Beceri testinden geçti",
+   "sec": "“Doğrulanmış” ne demek",
+   "rev": "u293ou"
+  },
+  {
+   "id": "availworkers.077",
+   "en": "Practical assessment by our partner institutes or our own team — not just a CV claim.",
+   "tr": "Partner enstitülerimiz veya kendi ekibimiz tarafından uygulamalı değerlendirme — sadece CV’de bir iddia değil.",
+   "sec": "“Doğrulanmış” ne demek",
+   "rev": "1y3ylc0"
+  },
+  {
+   "id": "availworkers.078",
+   "en": "Video interviewed",
+   "tr": "Video mülakat yapıldı",
+   "sec": "“Doğrulanmış” ne demek",
+   "rev": "k1vli4"
+  },
+  {
+   "id": "availworkers.079",
+   "en": "Recorded interview covering attitude, language level and readiness to relocate.",
+   "tr": "Tutum, dil seviyesi ve taşınmaya hazır olma durumunu kapsayan kayıtlı mülakat.",
+   "sec": "“Doğrulanmış” ne demek",
+   "rev": "18g7kbo"
+  },
+  {
+   "id": "availworkers.080",
+   "en": "Permit-ready file",
+   "tr": "İzne hazır dosya",
+   "sec": "“Doğrulanmış” ne demek",
+   "rev": "1w0eyuq"
+  },
+  {
+   "id": "availworkers.081",
+   "en": "Goes live",
+   "tr": "Yayına girer",
+   "sec": "“Doğrulanmış” ne demek",
+   "rev": "557aul"
+  },
+  {
+   "id": "availworkers.082",
+   "en": "Paperwork prepared so the work permit can be filed the moment you approve.",
+   "tr": "Onayladığınız anda çalışma izni sunulabilsin diye evraklar hazırlanır.",
+   "sec": "“Doğrulanmış” ne demek",
+   "rev": "13nnw6e"
+  },
+  {
+   "id": "availworkers.083",
+   "en": "A profile that fails any check never reaches this page —",
+   "tr": "Herhangi bir kontrolden geçemeyen profil bu sayfaya hiç ulaşmaz —",
+   "sec": "“Doğrulanmış” ne demek",
+   "rev": "4b9cw7"
+  },
+  {
+   "id": "availworkers.084",
+   "en": "what you see is what we can place.",
+   "tr": "gördüğünüz, yerleştirebileceğimizdir.",
+   "sec": "“Doğrulanmış” ne demek",
+   "rev": "gae7fo"
+  },
+  {
+   "id": "availworkers.085",
+   "en": "After you pick",
+   "tr": "Seçiminizden sonra",
+   "sec": "Seçimden sonraki süreç",
+   "rev": "11etv8z"
+  },
+  {
+   "id": "availworkers.086",
+   "en": "From a profile on this page to their first working day",
+   "tr": "Bu sayfadaki bir profilden ilk iş günlerine",
+   "sec": "Seçimden sonraki süreç",
+   "rev": "1r0acab"
+  },
+  {
+   "id": "availworkers.087",
+   "en": "Because these candidates are already vetted and permit-ready, the timeline is shorter than sourcing from scratch — and everything after your approval is handled by us.",
+   "tr": "Bu adaylar zaten kontrol edilmiş ve izne hazır olduğu için süreç sıfırdan tedarikten kısadır — onayınızdan sonraki her şeyi biz yürütüyoruz.",
+   "sec": "Seçimden sonraki süreç",
+   "rev": "1cmv2ix"
+  },
+  {
+   "id": "availworkers.088",
+   "en": "How permits work →",
+   "tr": "İzinler nasıl işler →",
+   "sec": "Seçimden sonraki süreç",
+   "rev": "c6yghu"
+  },
+  {
+   "id": "availworkers.089",
+   "en": "Start hiring →",
+   "tr": "İşe almaya başlayın →",
+   "sec": "Seçimden sonraki süreç",
+   "rev": "1xd78hw"
+  },
+  {
+   "id": "availworkers.090",
+   "en": "You request a profile",
+   "tr": "Bir profil talep edersiniz",
+   "sec": "Seçimden sonraki süreç",
+   "rev": "1fqj77h"
+  },
+  {
+   "id": "availworkers.091",
+   "en": "Day 0",
+   "tr": "Başlangıç",
+   "sec": "Seçimden sonraki süreç",
+   "rev": "3g7y15"
+  },
+  {
+   "id": "availworkers.092",
+   "en": "Full CV, documents and the video interview reach you the same day.",
+   "tr": "Tam CV, belgeler ve video mülakat aynı gün size ulaşır.",
+   "sec": "Seçimden sonraki süreç",
+   "rev": "hhu85y"
+  },
+  {
+   "id": "availworkers.093",
+   "en": "Your own interview",
+   "tr": "Kendi mülakatınız",
+   "sec": "Seçimden sonraki süreç",
+   "rev": "142hr63"
+  },
+  {
+   "id": "availworkers.094",
+   "en": "Live video call with the candidate — you approve, or ask for alternatives.",
+   "tr": "Adayla canlı görüntülü görüşme — onaylarsınız veya alternatif istersiniz.",
+   "sec": "Seçimden sonraki süreç",
+   "rev": "1xb1wtz"
+  },
+  {
+   "id": "availworkers.095",
+   "en": "Contract & permit filing",
+   "tr": "Sözleşme ve izin başvurusu",
+   "sec": "Seçimden sonraki süreç",
+   "rev": "7a1nj9"
+  },
+  {
+   "id": "availworkers.096",
+   "en": "Week 1",
+   "tr": "1. hafta",
+   "sec": "Seçimden sonraki süreç",
+   "rev": "1griag8"
+  },
+  {
+   "id": "availworkers.097",
+   "en": "E-signature contract, then we file the work permit under our İŞKUR licence.",
+   "tr": "E-imzalı sözleşme, ardından çalışma iznini İŞKUR lisansımız altında sunarız.",
+   "sec": "Seçimden sonraki süreç",
+   "legal": true,
+   "rev": "16l4jlo"
+  },
+  {
+   "id": "availworkers.098",
+   "en": "Arrival & first day",
+   "tr": "Varış ve ilk iş günü",
+   "sec": "Seçimden sonraki süreç",
+   "rev": "dfmmza"
+  },
+  {
+   "id": "availworkers.099",
+   "en": "Permit approved, travel and onboarding coordinated, worker registered with SGK.",
+   "tr": "İzin onaylanır, seyahat ve işe başlangıç koordine edilir, işçi SGK’ya kaydedilir.",
+   "sec": "Seçimden sonraki süreç",
+   "rev": "pwl1fe"
+  },
+  {
+   "id": "availworkers.100",
+   "en": "FAQ",
+   "tr": "SSS",
+   "sec": "SSS",
+   "rev": "37651v"
+  },
+  {
+   "id": "availworkers.101",
+   "en": "Questions about these profiles",
+   "tr": "Bu profiller hakkında sorular",
+   "sec": "SSS",
+   "rev": "1s0n0ci"
+  },
+  {
+   "id": "availworkers.102",
+   "en": "What employers ask before requesting their first candidate from the pool.",
+   "tr": "İşverenlerin havuzdan ilk adaylarını istemeden önce sorduğu şeyler.",
+   "sec": "SSS",
+   "rev": "qdzmso"
+  },
+  {
+   "id": "availworkers.103",
+   "en": "Something else?",
+   "tr": "Başka bir şey mi var?",
+   "sec": "SSS",
+   "rev": "p77qz1"
+  },
+  {
+   "id": "availworkers.104",
+   "en": "Ask our placement team directly.",
+   "tr": "Doğrudan yerleştirme ekibimize sorun.",
+   "sec": "SSS",
+   "rev": "1x4zz1y"
+  },
+  {
+   "id": "availworkers.105",
+   "en": "The workers are ready — are you?",
+   "tr": "İşçiler hazır — siz hazır mısınız?",
+   "sec": "Kapanış çağrısı",
+   "rev": "1u2e7bu"
+  },
+  {
+   "id": "availworkers.106",
+   "en": "Send us the profile numbers you liked, or just tell us the roles you need. Written quote and full CVs within 24 hours — no upfront fee.",
+   "tr": "Beğendiğiniz profil numaralarını bize gönderin veya sadece ihtiyacınız olan pozisyonları söyleyin. 24 saat içinde yazılı teklif ve tam CV’ler — peşin ücret yok.",
+   "sec": "Kapanış çağrısı",
+   "rev": "1lj4lz0"
+  },
+  {
+   "id": "availworkers.107",
+   "en": "Request these candidates",
+   "tr": "Bu adayları talep edin",
+   "sec": "Kapanış çağrısı",
+   "rev": "16cka65"
+  },
+  {
+   "id": "availworkers.108",
+   "en": "Message us on WhatsApp",
+   "tr": "Bize WhatsApp’tan yazın",
+   "sec": "Kapanış çağrısı",
+   "rev": "q1a65t"
+  },
+  {
+   "id": "availworkers.109",
+   "en": "Send a hiring request",
+   "tr": "İşe alım talebi gönderin",
+   "sec": "Kapanış çağrısı",
+   "rev": "ft6tei"
+  },
+  {
+   "id": "availworkers.110",
+   "en": "JobsAdmire · İŞKUR Private Employment Agency Permit No. 1730 · Antalya, Türkiye ·",
+   "tr": "JobsAdmire · İŞKUR Özel İstihdam Bürosu İzin No. 1730 · Antalya, Türkiye ·",
+   "sec": "Kapanış çağrısı",
+   "legal": true,
+   "rev": "y1ebqb"
+  },
+  {
+   "id": "availworkers.111",
+   "en": "Call us",
+   "tr": "Bizi arayın",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1pu4zvl"
+  },
+  {
+   "id": "availworkers.112",
+   "en": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+   "tr": "Türkiye’deki işverenler için lisanslı iş gücü temini — yurt dışı tedarik, inceleme ve çalışma izinleri, uçtan uca.",
+   "sec": "Alt bilgi (Footer)",
+   "legal": true,
+   "rev": "1v5awlm"
+  },
+  {
+   "id": "availworkers.113",
+   "en": "For Employers",
+   "tr": "İşverenler için",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1yhsmw"
+  },
+  {
+   "id": "availworkers.114",
+   "en": "Hiring Cost Calculator",
+   "tr": "İşçi Maliyet Hesaplama",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "e9bold"
+  },
+  {
+   "id": "availworkers.115",
+   "en": "Company",
+   "tr": "Kurumsal",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1ohrlxe"
+  },
+  {
+   "id": "availworkers.116",
+   "en": "Contact",
+   "tr": "İletişim",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1ofoso5"
+  },
+  {
+   "id": "availworkers.117",
+   "en": "Telegram · @jobsadmire",
+   "tr": "Telegram · @jobsadmire",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3y9lox"
+  },
+  {
+   "id": "availworkers.118",
+   "en": "Antalya · Head office",
+   "tr": "Antalya · Merkez ofis",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1vkrek4"
+  },
+  {
+   "id": "availworkers.119",
+   "en": "Adnan Menderes Blv. No 7/6",
+   "tr": "Adnan Menderes Blv. No 7/6",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "muabnf"
+  },
+  {
+   "id": "availworkers.120",
+   "en": "Muratpaşa, Antalya, Türkiye",
+   "tr": "Muratpaşa, Antalya, Türkiye",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "e06xbz"
+  },
+  {
+   "id": "availworkers.121",
+   "en": "Mon–Fri 09:00–18:00",
+   "tr": "Pzt–Cum 09:00–18:00",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1pratzo"
+  },
+  {
+   "id": "availworkers.122",
+   "en": "Get directions",
+   "tr": "Yol tarifi alın",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "9twfut"
+  },
+  {
+   "id": "availworkers.123",
+   "en": "Karachi · Tech office",
+   "tr": "Karaçi · Teknoloji ofisi",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1dihier"
+  },
+  {
+   "id": "availworkers.124",
+   "en": "Shahrah-e-Faisal",
+   "tr": "Shahrah-e-Faisal",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "y795a1"
+  },
+  {
+   "id": "availworkers.125",
+   "en": "Karachi, Pakistan",
+   "tr": "Karaçi, Pakistan",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1td9ko9"
+  },
+  {
+   "id": "availworkers.126",
+   "en": "Mon–Sat 10:00–19:00 PKT",
+   "tr": "Pzt–Cmt 10:00–19:00 PKT",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1w2dzmx"
+  },
+  {
+   "id": "availworkers.127",
+   "en": "WhatsApp Us →",
+   "tr": "WhatsApp’tan yazın →",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1bo2cnd"
+  },
+  {
+   "id": "availworkers.128",
+   "en": "Get Our App",
+   "tr": "Uygulamamızı İndirin",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "ncsu7u"
+  },
+  {
+   "id": "availworkers.129",
+   "en": "Workforce on the go",
+   "tr": "İş gücü her yerde yanınızda",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3cj12h"
+  },
+  {
+   "id": "availworkers.130",
+   "en": "Approve candidates, track permits & get instant updates.",
+   "tr": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "19enop8"
+  },
+  {
+   "id": "availworkers.131",
+   "en": "GET IT ON",
+   "tr": "İNDİRİN",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "xm8p2n"
+  },
+  {
+   "id": "availworkers.132",
+   "en": "DOWNLOAD ON THE",
+   "tr": "İNDİRİN",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "mgrgjt"
+  },
+  {
+   "id": "availworkers.133",
+   "en": "İŞKUR permit No. 1730 · Job seekers are never charged a fee (law No. 4904) · Tax No: 48422122",
+   "tr": "İŞKUR izin No. 1730 · İş arayanlardan asla ücret alınmaz (4904 sayılı kanun) · Vergi No: 48422122",
+   "sec": "Alt bilgi (Footer)",
+   "legal": true,
+   "rev": "dgg8hy"
+  },
+  {
+   "id": "availworkers.134",
+   "en": "Privacy",
+   "tr": "Gizlilik Politikası",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1ligp4z"
+  },
+  {
+   "id": "availworkers.135",
+   "en": "Terms",
+   "tr": "Kullanım Şartları",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3rktfc"
+  },
+  {
+   "id": "availworkers.136",
+   "en": "© 2026 Jobs Admire",
+   "tr": "© 2026 Jobs Admire",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1f7jgq0"
+  },
+  {
+   "id": "availworkers.137",
+   "en": "JobsAdmire app",
+   "tr": "JobsAdmire uygulaması",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "10jpxja"
+  },
+  {
+   "id": "availworkers.138",
+   "en": "Profile",
+   "tr": "Profil",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1lgvfce"
+  },
+  {
+   "id": "availworkers.139",
+   "en": "8+ yrs",
+   "tr": "8+ yıl",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1vahyq6"
+  },
+  {
+   "id": "availworkers.140",
+   "en": "available now",
+   "tr": "şimdi müsait",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "y5431m"
+  },
+  {
+   "id": "availworkers.141",
+   "en": "Employer",
+   "tr": "İşveren",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "r8n53k"
+  },
+  {
+   "id": "availworkers.142",
+   "en": "Full CVs, documents and video interviews within 4 working hours.",
+   "tr": "4 iş saati içinde tam CV’ler, belgeler ve video mülakatlar.",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1e48g6l"
+  },
+  {
+   "id": "availworkers.143",
+   "en": "Company name",
+   "tr": "Firma adı",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "eago79"
+  },
+  {
+   "id": "availworkers.144",
+   "en": "Which roles and how many workers?",
+   "tr": "Hangi pozisyonlar ve kaç işçi?",
+   "sec": "SSS",
+   "rev": "1h630l"
+  },
+  {
+   "id": "availworkers.145",
+   "en": "City, sector and target start date (optional)",
+   "tr": "Şehir, sektör ve hedef başlangıç tarihi (isteğe bağlı)",
+   "sec": "SSS",
+   "rev": "naskqb"
+  },
+  {
+   "id": "availworkers.146",
+   "en": "Request candidates →",
+   "tr": "Aday talep edin →",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "yygu8"
+  },
+  {
+   "id": "availworkers.147",
+   "en": "HR agency",
+   "tr": "İK ajansı",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1pl8pyg"
+  },
+  {
+   "id": "availworkers.148",
+   "en": "Supply for your clients",
+   "tr": "Müşterileriniz için tedarik",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1sm8ziu"
+  },
+  {
+   "id": "availworkers.149",
+   "en": "We supply the workers and file the permits — your client stays yours.",
+   "tr": "İşçileri biz tedarik ederiz ve izinleri biz sunarız — müşteriniz sizin kalır.",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1vgwqs4"
+  },
+  {
+   "id": "availworkers.150",
+   "en": "Agency name",
+   "tr": "Ajans adı",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "6jgdg5"
+  },
+  {
+   "id": "availworkers.151",
+   "en": "Which roles do your clients need, and what volume?",
+   "tr": "Müşterileriniz hangi pozisyonlara ve ne hacimde ihtiyaç duyuyor?",
+   "sec": "SSS",
+   "rev": "5rxbcv"
+  },
+  {
+   "id": "availworkers.152",
+   "en": "Sectors you serve and cities (optional)",
+   "tr": "Hizmet verdiğiniz sektörler ve şehirler (isteğe bağlı)",
+   "sec": "SSS",
+   "rev": "63sme3"
+  },
+  {
+   "id": "availworkers.153",
+   "en": "Request supply →",
+   "tr": "Tedarik talep edin →",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "xx3n91"
+  },
+  {
+   "id": "availworkers.154",
+   "en": "Antalya",
+   "tr": "Antalya",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "9ixuzv"
+  },
+  {
+   "id": "availworkers.155",
+   "en": "İŞKUR Private Employment Agency Permit No. 1730",
+   "tr": "İŞKUR Özel İstihdam Bürosu İzin No. 1730",
+   "sec": "Aday kartları ve filtreler",
+   "legal": true,
+   "rev": "h0j4wg"
+  },
+  {
+   "id": "availworkers.156",
+   "en": "Welder",
+   "tr": "Kaynakçı",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1grnnmw"
+  },
+  {
+   "id": "availworkers.157",
+   "en": "Pakistan",
+   "tr": "Pakistan",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "5d34da"
+  },
+  {
+   "id": "availworkers.158",
+   "en": "Construction",
+   "tr": "İnşaat",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "v1hp4"
+  },
+  {
+   "id": "availworkers.159",
+   "en": "English (basic)",
+   "tr": "İngilizce (temel)",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "6rrc7g"
+  },
+  {
+   "id": "availworkers.160",
+   "en": "MIG/TIG certified",
+   "tr": "MIG/TIG belgeli",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1h47xmc"
+  },
+  {
+   "id": "availworkers.161",
+   "en": "Gulf experience",
+   "tr": "Körfez deneyimi",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "exr277"
+  },
+  {
+   "id": "availworkers.162",
+   "en": "India",
+   "tr": "Hindistan",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "3jpoum"
+  },
+  {
+   "id": "availworkers.163",
+   "en": "Factory",
+   "tr": "Fabrika",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "nhac41"
+  },
+  {
+   "id": "availworkers.164",
+   "en": "English (good)",
+   "tr": "İngilizce (iyi)",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "151idyt"
+  },
+  {
+   "id": "availworkers.165",
+   "en": "Pipe welding",
+   "tr": "Boru kaynağı",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "a7uwur"
+  },
+  {
+   "id": "availworkers.166",
+   "en": "CNC Operator",
+   "tr": "CNC operatörü",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1ji7mtn"
+  },
+  {
+   "id": "availworkers.167",
+   "en": "Uzbekistan",
+   "tr": "Özbekistan",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1jr9u5j"
+  },
+  {
+   "id": "availworkers.168",
+   "en": "Turkish (basic), Russian",
+   "tr": "Türkçe (temel), Rusça",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "114b1a1"
+  },
+  {
+   "id": "availworkers.169",
+   "en": "Night shifts OK",
+   "tr": "Gece vardiyasına uygun",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1pqt0jy"
+  },
+  {
+   "id": "availworkers.170",
+   "en": "Machine Operator",
+   "tr": "Makine Operatörü",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "12scsqo"
+  },
+  {
+   "id": "availworkers.171",
+   "en": "Nepal",
+   "tr": "Nepal",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "3kmesz"
+  },
+  {
+   "id": "availworkers.172",
+   "en": "Textile lines",
+   "tr": "Tekstil hatları",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "83n685"
+  },
+  {
+   "id": "availworkers.173",
+   "en": "Team of 4 available",
+   "tr": "4 kişilik ekip müsait",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1o414f0"
+  },
+  {
+   "id": "availworkers.174",
+   "en": "Electrician",
+   "tr": "Elektrikçi",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "yeyr9c"
+  },
+  {
+   "id": "availworkers.175",
+   "en": "Industrial wiring",
+   "tr": "Endüstriyel tesisat",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "12oz70u"
+  },
+  {
+   "id": "availworkers.176",
+   "en": "Site supervisor",
+   "tr": "Şantiye şefi",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1rh7voe"
+  },
+  {
+   "id": "availworkers.177",
+   "en": "Housekeeping",
+   "tr": "Kat hizmetleri",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "545q6y"
+  },
+  {
+   "id": "availworkers.178",
+   "en": "Kyrgyzstan",
+   "tr": "Kırgızistan",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "8yrzqh"
+  },
+  {
+   "id": "availworkers.179",
+   "en": "Hotel",
+   "tr": "Otel",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "3ok81r"
+  },
+  {
+   "id": "availworkers.180",
+   "en": "Turkish (good), Russian",
+   "tr": "Türkçe (iyi), Rusça",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1vyyf8g"
+  },
+  {
+   "id": "availworkers.181",
+   "en": "5-star resort",
+   "tr": "5 yıldızlı tesis",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "7sspms"
+  },
+  {
+   "id": "availworkers.182",
+   "en": "Season-ready",
+   "tr": "Sezona hazır",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1mnhv9i"
+  },
+  {
+   "id": "availworkers.183",
+   "en": "Kitchen Steward",
+   "tr": "Mutfak Görevlisi",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "m9f98x"
+  },
+  {
+   "id": "availworkers.184",
+   "en": "Philippines",
+   "tr": "Filipinler",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "vd7w80"
+  },
+  {
+   "id": "availworkers.185",
+   "en": "English (fluent)",
+   "tr": "İngilizce (akıcı)",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1rmxkdy"
+  },
+  {
+   "id": "availworkers.186",
+   "en": "Hotel chain",
+   "tr": "Otel zinciri",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "13usg0i"
+  },
+  {
+   "id": "availworkers.187",
+   "en": "HACCP trained",
+   "tr": "HACCP eğitimli",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1bzr9ml"
+  },
+  {
+   "id": "availworkers.188",
+   "en": "Construction Labourer",
+   "tr": "İnşaat İşçisi",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1ljxyiw"
+  },
+  {
+   "id": "availworkers.189",
+   "en": "Turkmenistan",
+   "tr": "Türkmenistan",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "i88ymy"
+  },
+  {
+   "id": "availworkers.190",
+   "en": "Turkish (basic)",
+   "tr": "Türkçe (temel)",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "ai9yms"
+  },
+  {
+   "id": "availworkers.191",
+   "en": "Team of 12",
+   "tr": "12 kişilik ekip",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "14l91o2"
+  },
+  {
+   "id": "availworkers.192",
+   "en": "Formwork",
+   "tr": "Kalıp işi",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "isa4uq"
+  },
+  {
+   "id": "availworkers.193",
+   "en": "Greenhouse Worker",
+   "tr": "Sera işçisi",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "wtbnqk"
+  },
+  {
+   "id": "availworkers.194",
+   "en": "Agriculture",
+   "tr": "Tarım",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1u4i3kk"
+  },
+  {
+   "id": "availworkers.195",
+   "en": "Tomato & pepper",
+   "tr": "Domates ve biber",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "864up9"
+  },
+  {
+   "id": "availworkers.196",
+   "en": "Team of 8",
+   "tr": "8 kişilik ekip",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1afj7ux"
+  },
+  {
+   "id": "availworkers.197",
+   "en": "Plumber",
+   "tr": "Tesisatçı",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "8ioac"
+  },
+  {
+   "id": "availworkers.198",
+   "en": "Hotel projects",
+   "tr": "Otel projeleri",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1e1wfzt"
+  },
+  {
+   "id": "availworkers.199",
+   "en": "Waiter",
+   "tr": "Garson",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1goxexl"
+  },
+  {
+   "id": "availworkers.200",
+   "en": "Turkish (good), Russian, English",
+   "tr": "Türkçe (iyi), Rusça, İngilizce",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1gchh9a"
+  },
+  {
+   "id": "availworkers.201",
+   "en": "A la carte",
+   "tr": "A la carte",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "syfzzc"
+  },
+  {
+   "id": "availworkers.202",
+   "en": "Antalya season",
+   "tr": "Antalya sezonu",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "v9jcpa"
+  },
+  {
+   "id": "availworkers.203",
+   "en": "Textile Machine Operator",
+   "tr": "Tekstil Makine Operatörü",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "s8kvnh"
+  },
+  {
+   "id": "availworkers.204",
+   "en": "Bangladesh",
+   "tr": "Bangladeş",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "5u393s"
+  },
+  {
+   "id": "availworkers.205",
+   "en": "Knitting lines",
+   "tr": "Örme hatları",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "z7xohg"
+  },
+  {
+   "id": "availworkers.206",
+   "en": "Team leader",
+   "tr": "Ekip lideri",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1qvqk4j"
+  },
+  {
+   "id": "availworkers.207",
+   "en": "Available now",
+   "tr": "Şimdi müsait",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "11jtrbe"
+  },
+  {
+   "id": "availworkers.208",
+   "en": "Within 30 days",
+   "tr": "30 gün içinde",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1kecrws"
+  },
+  {
+   "id": "availworkers.209",
+   "en": "Next season",
+   "tr": "Gelecek sezon",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "m5obmv"
+  },
+  {
+   "id": "availworkers.210",
+   "en": "How current is this list?",
+   "tr": "Bu liste ne kadar güncel?",
+   "sec": "SSS",
+   "rev": "5wno2l"
+  },
+  {
+   "id": "availworkers.211",
+   "en": "The profiles here are a live sample of our portal, refreshed weekly. Our full pool holds 200+ verified CVs, so if you cannot see the profession you need, ask — matching profiles usually reach you the same day.",
+   "tr": "Buradaki profiller portalımızın canlı bir örneğidir ve haftalık olarak yenilenir. Tam havuzumuzda 200+ doğrulanmış CV var; aradığınız mesleği göremiyorsanız sorun — eşleşen profiller genellikle aynı gün size ulaşır.",
+   "sec": "SSS",
+   "rev": "182be3b"
+  },
+  {
+   "id": "availworkers.212",
+   "en": "Why are names and photos hidden?",
+   "tr": "İsimler ve fotoğraflar neden gizli?",
+   "sec": "SSS",
+   "rev": "1dic1r4"
+  },
+  {
+   "id": "availworkers.213",
+   "en": "Candidate data is protected under KVKK, so public profiles are anonymised. Once you request a profile, we share the full CV, documents, photo and the recorded video interview with you directly.",
+   "tr": "Aday verileri KVKK kapsamında korunur, bu yüzden herkese açık profiller anonimleştirilir. Bir profil talep ettiğinizde tam CV’yi, belgeleri, fotoğrafı ve kayıtlı video mülakatı doğrudan sizinle paylaşırız.",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "1eqz9nr"
+  },
+  {
+   "id": "availworkers.214",
+   "en": "Can I interview the candidate before deciding?",
+   "tr": "Karar vermeden önce adayla mülakat yapabilir miyim?",
+   "sec": "SSS",
+   "rev": "z5cioc"
+  },
+  {
+   "id": "availworkers.215",
+   "en": "Yes, and we recommend it. After you request a profile you get the recorded interview first, then we arrange a live video call with the candidate. Nothing is signed until you approve the person.",
+   "tr": "Evet ve öneriyoruz. Bir profil talep ettikten sonra önce kayıtlı mülakatı alırsınız, ardından adayla canlı görüntülü görüşme ayarlarız. Kişiyi onaylamadan hiçbir şey imzalanmaz.",
+   "sec": "SSS",
+   "rev": "1fluyav"
+  },
+  {
+   "id": "availworkers.216",
+   "en": "Is a candidate reserved once I request them?",
+   "tr": "Bir adayı talep ettiğimde rezerve edilir mi?",
+   "sec": "SSS",
+   "rev": "emnrkr"
+  },
+  {
+   "id": "availworkers.217",
+   "en": "We hold a profile for you while your decision is pending, and tell you honestly if another employer is also in process for the same person. If someone is taken, we send equivalent profiles from the pool.",
+   "tr": "Kararınız beklerken profili sizin için tutuyoruz ve aynı kişi için başka bir işverenin de süreçte olup olmadığını dürüstçe söylüyoruz. Biri alınmışsa havuzdan eşdeğer profiller gönderiyoruz.",
+   "sec": "SSS",
+   "rev": "1gk25hw"
+  },
+  {
+   "id": "availworkers.218",
+   "en": "Who files the work permit for these candidates?",
+   "tr": "Bu adaylar için çalışma iznini kim sunar?",
+   "sec": "SSS",
+   "rev": "t2mv6"
+  },
+  {
+   "id": "availworkers.219",
+   "en": "How fast can a candidate from this page start?",
+   "tr": "Bu sayfadaki bir aday ne kadar hızlı başlayabilir?",
+   "sec": "SSS",
+   "rev": "fp1q41"
+  },
+  {
+   "id": "availworkers.220",
+   "en": "Because these profiles are already skill-tested and permit-ready, the file goes to the Ministry within days of your approval. Workers already in Turkey typically start in 4–6 weeks; candidates abroad in about 8–10 weeks.",
+   "tr": "Bu profiller zaten beceri testinden geçmiş ve izne hazır olduğu için dosya, onayınızdan günler sonra Bakanlığa gider. Türkiye’de bulunan işçiler genellikle 4–6 haftada, yurt dışındaki adaylar yaklaşık 8–10 haftada başlar.",
+   "sec": "SSS",
+   "rev": "fbjzwf"
+  },
+  {
+   "id": "availworkers.221",
+   "en": "What if the worker leaves or does not perform?",
+   "tr": "İşçi ayrılırsa veya beklentiyi karşılamazsa ne olur?",
+   "sec": "SSS",
+   "rev": "1fbv37g"
+  },
+  {
+   "id": "availworkers.222",
+   "en": "Do I pay anything to see the profiles?",
+   "tr": "Profilleri görmek için bir ödeme yapıyor muyum?",
+   "sec": "SSS",
+   "rev": "i6lipf"
+  },
+  {
+   "id": "availworkers.223",
+   "en": "No. Browsing, requesting CVs and interviewing candidates costs nothing, and there is no upfront fee. Commercial terms are agreed in writing before any placement.",
+   "tr": "Hayır. Göz atmak, CV talep etmek ve adaylarla mülakat yapmak ücretsizdir ve peşin ücret yoktur. Ticari koşullar herhangi bir yerleştirmeden önce yazılı olarak kararlaştırılır.",
+   "sec": "SSS",
+   "rev": "l8nucl"
+  },
+  {
+   "id": "availworkers.224",
+   "en": "Hello JobsAdmire, I want to hire workers.",
+   "tr": "Merhaba JobsAdmire, işçi talebinde bulunmak istiyorum.",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "17wwilm"
+  },
+  {
+   "id": "availworkers.225",
+   "en": "Updated weekly",
+   "tr": "Haftalık güncellenir",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "18fscih"
+  },
+  {
+   "id": "availworkers.226",
+   "en": "Showing",
+   "tr": "Gösteriliyor",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1hwmyva"
+  },
+  {
+   "id": "availworkers.227",
+   "en": "Soonest available",
+   "tr": "En erken müsait",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1kuibz7"
+  },
+  {
+   "id": "availworkers.228",
+   "en": "Most experience",
+   "tr": "En fazla deneyim",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1yy1w72"
+  },
+  {
+   "id": "availworkers.229",
+   "en": "Recently added",
+   "tr": "Yeni eklenen",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "vyewcb"
+  },
+  {
+   "id": "availworkers.230",
+   "en": "Profession A–Z",
+   "tr": "Meslek A–Z",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "94vygb"
+  },
+  {
+   "id": "availworkers.231",
+   "en": "more)",
+   "tr": "daha)",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "2vy7dl"
+  },
+  {
+   "id": "availworkers.232",
+   "en": "profile attached",
+   "tr": "profil eklendi",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "f4h2kk"
+  },
+  {
+   "id": "availworkers.233",
+   "en": "profiles attached",
+   "tr": "profil eklendi",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "a8niv"
+  },
+  {
+   "id": "availworkers.234",
+   "en": "Hide ▲",
+   "tr": "Gizle ▲",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1efl56f"
+  },
+  {
+   "id": "availworkers.235",
+   "en": "Show ▼",
+   "tr": "Göster ▼",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1jg0lmi"
+  },
+  {
+   "id": "availworkers.236",
+   "en": "All professions",
+   "tr": "Tüm meslekler",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "bn3kvl"
+  },
+  {
+   "id": "availworkers.237",
+   "en": "All countries",
+   "tr": "Tüm ülkeler",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1igggdm"
+  },
+  {
+   "id": "availworkers.238",
+   "en": "All industries",
+   "tr": "Tüm sektörler",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "108ekjc"
+  },
+  {
+   "id": "availworkers.239",
+   "en": "Any experience",
+   "tr": "Her deneyim",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1b4u3il"
+  },
+  {
+   "id": "availworkers.240",
+   "en": "0–3 years",
+   "tr": "0–3 yıl",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "bherop"
+  },
+  {
+   "id": "availworkers.241",
+   "en": "4–7 years",
+   "tr": "4–7 yıl",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "12nyld5"
+  },
+  {
+   "id": "availworkers.242",
+   "en": "8+ years",
+   "tr": "8+ yıl",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1bq14fe"
+  },
+  {
+   "id": "availworkers.243",
+   "en": "Any language",
+   "tr": "Her dil",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "y0uxk1"
+  },
+  {
+   "id": "availworkers.244",
+   "en": "Speaks Turkish",
+   "tr": "Türkçe konuşuyor",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "9bkrps"
+  },
+  {
+   "id": "availworkers.245",
+   "en": "Good English",
+   "tr": "İyi İngilizce",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "ae5pf8"
+  },
+  {
+   "id": "availworkers.246",
+   "en": "Any time",
+   "tr": "Her zaman",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "pq45fq"
+  },
+  {
+   "id": "availworkers.247",
+   "en": "New",
+   "tr": "Yeni",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "376cnt"
+  },
+  {
+   "id": "availworkers.248",
+   "en": "yrs experience",
+   "tr": "yıl deneyim",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "6hw3hf"
+  },
+  {
+   "id": "availworkers.249",
+   "en": "Added to request",
+   "tr": "Talebe eklendi",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "1skdizz"
+  },
+  {
+   "id": "availworkers.250",
+   "en": "Add to request",
+   "tr": "Talebe ekle",
+   "sec": "Aday kartları ve filtreler",
+   "rev": "14zqo4u"
+  }
+ ]
+}

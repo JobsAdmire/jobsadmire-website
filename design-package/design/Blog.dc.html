@@ -1,0 +1,1158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* Desktop-only: render at 75% scale (matches browser zoom 75%). Mobile/tablet untouched. */
+    @media (min-width: 1101px) { html { zoom: 0.75; } }
+    h1, h2, h3, h4 { font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background: #ffffff; color: #16202e; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    a { color: #1899D5; }
+    a:hover { color: #1385bd; }
+    input::placeholder, textarea::placeholder, select:invalid { color: #94a3b8; }
+    @keyframes jaPanelIn { from { opacity: 0; transform: translateY(-14px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes jaCardIn { from { opacity: 0; transform: translateY(26px) scale(0.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .ja-panel { animation: jaPanelIn 0.42s cubic-bezier(0.22, 1, 0.36, 1); }
+    .ja-card-in { animation: jaCardIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    @keyframes jaPulse { 0% { box-shadow: 0 0 0 0 rgba(22,163,74,0.45); } 70% { box-shadow: 0 0 0 8px rgba(22,163,74,0); } 100% { box-shadow: 0 0 0 0 rgba(22,163,74,0); } }
+    @keyframes jaRowIn { from { opacity: 0; transform: translateX(14px); } to { opacity: 1; transform: translateX(0); } }
+    .ja-net-live { width: 9px; height: 9px; border-radius: 50%; background: #16a34a; display: inline-block; animation: jaPulse 2s ease-out infinite; }
+    .ja-net-row { opacity: 0; }
+    .ja-net-row.ja-in { animation: jaRowIn 0.55s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    @media (prefers-reduced-motion: reduce) { .ja-net-row { opacity: 1; } .ja-net-row.ja-in { animation: none; } .ja-net-live { animation: none; } }
+    @keyframes jaMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ja-marquee-track { display: flex; width: max-content; animation: jaMarquee 38s linear infinite; }
+    .ja-marquee:hover .ja-marquee-track { animation-play-state: paused; }
+    .ja-logo { filter: grayscale(1); opacity: 0.62; transition: filter 0.25s ease, opacity 0.25s ease, transform 0.25s ease; }
+    .ja-logo:hover { filter: grayscale(0); opacity: 1; transform: translateY(-2px); }
+    .ja-journey-line { transform: scaleX(0); transform-origin: left center; transition: transform 1.1s cubic-bezier(0.22, 1, 0.36, 1); }
+    .ja-journey-line.ja-on { transform: scaleX(1); }
+    .ja-step { opacity: 0; transform: translateY(20px); transition: opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1), transform 0.55s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.25s ease; }
+    .ja-step.ja-on { opacity: 1; transform: translateY(0); }
+    .ja-step.ja-on:hover { transform: translateY(-5px); box-shadow: 0 18px 40px rgba(22,60,90,0.12); }
+    @media (prefers-reduced-motion: reduce) { .ja-step { opacity: 1; transform: none; } .ja-journey-line { transform: scaleX(1); } }
+    .ja-sticky { position: fixed; left: 0; right: 0; bottom: 0; z-index: 40; transform: translateY(110%); transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1); }
+    .ja-sticky-on { transform: translateY(0); }
+    @media print { .ja-sticky { display: none; } }
+    .ja-track { transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease; }
+    .ja-track:hover { transform: translateY(-5px); box-shadow: 0 20px 44px rgba(22,60,90,0.13); border-color: #bfdff0; }
+    img { max-width: 100%; }
+    @media (max-width: 900px) {
+      [style*="px 48px"] { padding-left: 20px !important; padding-right: 20px !important; }
+      [style*="px 56px"] { padding-left: 24px !important; padding-right: 24px !important; }
+      [style*="grid-template-columns"]:not([style*="auto-fit"]):not([style*="auto-fill"]) { grid-template-columns: 1fr !important; }
+      [style*="position: sticky"]:not([style*="z-index: 40"]) { position: static !important; }
+      [style*="gap: 64px"], [style*="gap: 56px"] { gap: 32px !important; }
+    }
+    @media (max-width: 700px) {
+      .ja-hero-crumb { font-size: 12px !important; margin-bottom: 12px !important; }
+      .ja-hero-updated { margin-left: 0 !important; margin-top: 9px !important; font-size: 11px !important; padding: 5px 11px !important; }
+      .ja-hero-copy h1 { min-height: 0 !important; letter-spacing: -1.1px !important; line-height: 1.06 !important; }
+      .ja-hero-copy > p:first-of-type { font-size: 15.5px !important; margin-bottom: 20px !important; }
+      .ja-hero-grid { gap: 26px !important; }
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 32px !important; letter-spacing: -0.6px !important; }
+      h2 { font-size: 25px !important; letter-spacing: -0.4px !important; }
+    }
+    /* shared site chrome (header, footer, mobile bar) */
+    .ja-live { width: 8px; height: 8px; border-radius: 50%; background: #16a34a; display: inline-block; animation: jaPulse 2s ease-out infinite; }
+    .ja-idx { transition: background .18s ease, padding .18s ease; }
+    .ja-btn-l { transition: transform .18s cubic-bezier(0.22,1,0.36,1), background .18s ease, border-color .18s ease, box-shadow .18s ease; }
+    .ja-btn-l:hover { transform: translateY(-2px); }
+    .ja-btn-l:active { transform: translateY(0) scale(0.97); filter: brightness(0.88); }
+    .ja-idx:active { background: #e8f4fb; }
+    @media (prefers-reduced-motion: reduce) { .ja-stagger > *, .ja-reveal-on .ja-stagger > * { opacity: 1; animation: none; } .ja-glow { animation: none; } .ja-card-l:hover, .ja-role-row:hover, .ja-btn-l:hover { transform: none; } }
+    .ja-idx:hover { background: #f4f9fc; }
+    @media (prefers-reduced-motion: reduce) { .ja-reveal { opacity:1; transform:none; transition:none; } .ja-hero-1, .ja-hero-2, .ja-hero-3 { animation:none; } .ja-live { animation:none; } .ja-sc-flags { animation: none !important; } }
+    @media (max-width: 1100px) { .ja-social-rail { display: none !important; } .ja-nav-cta-secondary { display: none !important; } .ja-cta-long { display: none !important; } .ja-nav { flex-wrap: wrap !important; } }
+    @media (min-width: 1101px) { .ja-wa-fab { display: none !important; } }
+    .ja-wa-fab { animation: jaFabPop .4s cubic-bezier(0.22,1,0.36,1) .8s both; }
+    .ja-t-mob { display: none; }
+    .ja-nav-toggle, .ja-mobile-bar, .ja-mobile-bar-spacer, .ja-form-cta, .ja-choice, .ja-net-mobile, .ja-calc-cta-mobile, .ja-blog-bottom-cta, .ja-dash-mob { display: none; }
+    html { scroll-behavior: smooth; scroll-padding-top: 76px; }
+    .ja-fchev { display: none; }
+    @media (max-width: 900px) {
+      .ja-sec { padding-left: 20px !important; padding-right: 20px !important; }
+      .ja-sec-top { padding-top: 54px !important; }
+      .ja-grid2, .ja-grid4, .ja-grid-team, .ja-hero-grid, .ja-form, .ja-grid-2up { grid-template-columns: 1fr !important; }
+      .ja-grid2, .ja-hero-grid { gap: 34px !important; }
+      .ja-sticky { position: static !important; top: auto !important; }
+      .ja-right { text-align: left !important; max-width: none !important; }
+      .ja-slim { padding: 9px 20px !important; gap: 10px !important; }
+      .ja-slim-r { display: none !important; }
+      .ja-slim-l { gap: 5px 18px !important; font-size: 12px !important; }
+      .ja-slim-contact, .ja-slim-div { display: none !important; }
+      .ja-slim { justify-content: space-between !important; }
+      .ja-slim-lang { display: flex !important; }
+      .ja-wa-fab { display: none !important; }
+      .ja-mobile-bar { display: grid !important; }
+      .ja-mobile-bar-spacer { display: block !important; }
+      .ja-nav { padding: 10px 14px !important; flex-wrap: wrap !important; box-shadow: 0 6px 22px rgba(10,20,40,0.07) !important; }
+      .ja-nav img { height: 30px !important; }
+      .ja-nav-cta { padding: 13px 20px !important; font-size: 14px !important; font-weight: 800 !important; background: linear-gradient(135deg, #1899D5, #1073a8) !important; box-shadow: 0 8px 20px rgba(24,153,213,0.32) !important; }
+      .ja-cta-long { display: inline !important; }
+      .ja-nav-cta { white-space: nowrap !important; }
+      .ja-nav-links { display: none !important; }
+      .ja-nav-toggle { display: inline-flex !important; }
+      .ja-nav-cta-secondary { display: none !important; }
+      .ja-lang { display: none !important; }
+      .ja-lang-hint { position: relative !important; justify-content: flex-start !important; gap: 10px !important; padding: 12px 44px 13px 16px !important; }
+      .ja-lang-hint > span { flex: 1 1 100% !important; font-size: 13px !important; }
+      .ja-lang-hint > button:not(.ja-lang-hint-x) { flex: 1 1 100% !important; min-height: 44px !important; border-radius: 12px !important; }
+      .ja-lang-hint-x { position: absolute !important; top: 5px !important; right: 6px !important; width: 34px !important; padding: 0 !important; min-height: 34px !important; }
+    }
+    @media (max-width: 460px) {
+      .ja-nav { gap: 10px !important; padding: 10px 12px !important; }
+      .ja-nav-actions { flex: 1 1 auto !important; justify-content: flex-end !important; }
+      .ja-nav-cta { flex: 1 1 auto !important; text-align: center !important; padding: 13px 10px !important; font-size: 13.5px !important; max-width: 185px !important; }
+      .ja-logo-full { height: 30px !important; }
+      .ja-nav-links { display: none !important; }
+      .ja-nav-cta-secondary { display: none !important; }
+      .ja-nav-toggle { display: inline-flex !important; }
+      .ja-hero-wrap { min-height: 0 !important; }
+      .ja-hero-1 { display: none !important; }
+      .ja-hero-cta-primary, .ja-hero-note, .ja-hero-browse { display: none !important; }
+      .ja-t-desk { display: none !important; }
+      .ja-t-mob { display: inline !important; }
+      .ja-hero-form { margin-top: 6px !important; }
+      .ja-form-sub { font-size: 14px !important; margin-bottom: 14px !important; }
+      .ja-form-cta > button { min-height: 54px !important; font-size: 16.5px !important; }
+      .ja-hero-grid { padding: 40px 20px 32px !important; }
+      .ja-hero-form { padding: 20px 18px !important; border-radius: 20px !important; }
+      .ja-hero-form .ja-form { display: none !important; }
+      .ja-hero-form.ja-form-open .ja-form { display: grid !important; }
+      .ja-form-cta { display: flex !important; }
+      .ja-hero-form.ja-form-open .ja-form-cta { display: none !important; }
+      .ja-season-scroll { overflow-x: visible !important; padding: 0 !important; margin: 0 !important; }
+      .ja-season-scroll > div { min-width: 0 !important; }
+      .ja-season-row { grid-template-columns: 1fr !important; gap: 7px !important; padding: 12px 12px !important; margin: 0 0 4px !important; border: 1px solid #e6eef4 !important; }
+      .ja-season-row:first-child { border: none !important; padding: 0 12px !important; margin: 0 0 2px !important; }
+      .ja-season-row:not(:first-child) > span:last-child { height: 34px !important; }
+      .ja-season-row > span:first-child { gap: 2px !important; }
+      .ja-season-cta { width: 100% !important; justify-content: center !important; padding: 15px 20px !important; }
+      .ja-pool-track { animation-duration: 34s !important; }
+      .ja-pool-track > * { flex: 0 0 270px !important; margin-right: 12px !important; }
+      .ja-tl-row { display: grid !important; grid-template-columns: 30px 1fr !important; column-gap: 14px !important; }
+      .ja-tl-label { grid-column: 2 !important; grid-row: 1 !important; width: auto !important; text-align: left !important; padding-top: 0 !important; padding-bottom: 6px !important; }
+      .ja-tl-line { grid-column: 1 !important; grid-row: 1 / span 2 !important; }
+      .ja-tl-body { grid-column: 2 !important; grid-row: 2 !important; }
+      .ja-choice { display: grid !important; }
+      .ja-map-visual, .ja-portal-panel { display: none !important; }
+      .ja-net-mobile { display: block !important; }
+      .ja-grid-team { gap: 0 !important; background: #ffffff; border: 1px solid #e2ebf2; border-radius: 22px; overflow: hidden; box-shadow: 0 16px 38px rgba(22,60,90,0.09); }
+      .ja-team-founder { padding: 22px 20px !important; gap: 16px !important; border-radius: 0 !important; }
+      .ja-team-photo { width: 86px !important; height: 108px !important; }
+      .ja-team-mini { display: grid !important; grid-template-columns: 40px 1fr !important; column-gap: 14px !important; row-gap: 3px !important; align-items: start !important; padding: 15px 18px !important; border: none !important; border-top: 1px solid #eef3f7 !important; border-radius: 0 !important; box-shadow: none !important; }
+      .ja-team-mini > span:nth-child(1) { width: 40px !important; height: 40px !important; border-radius: 11px !important; }
+      .ja-dash-feats { gap: 0 !important; background: #ffffff; border: 1px solid #e2ebf2; border-radius: 20px; overflow: hidden; box-shadow: 0 16px 38px rgba(22,60,90,0.09); }
+      .ja-dash-feats > div { border: none !important; border-top: 1px solid #eef3f7 !important; border-radius: 0 !important; padding: 15px 18px !important; }
+      .ja-dash-feats > div:first-child { border-top: none !important; }
+      .ja-dash-cta { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+      .ja-dash-cta > a:first-child { grid-column: 1 / -1 !important; justify-content: center !important; padding: 15px 20px !important; }
+      .ja-dash-cta > a:not(:first-child) { justify-content: center !important; padding: 11px 12px !important; }
+      .ja-team-cta { flex-direction: column !important; gap: 10px !important; }
+      .ja-team-cta > a { justify-content: center !important; padding: 15px 20px !important; }
+      .ja-team-mini > span:nth-child(1) { grid-column: 1 !important; grid-row: 1 / span 2 !important; margin-bottom: 0 !important; }
+      .ja-team-mini > span:nth-child(2) { grid-column: 2 !important; grid-row: 1 !important; align-self: center !important; }
+      .ja-team-mini > span:nth-child(3) { grid-column: 2 !important; grid-row: 2 !important; font-size: 12.5px !important; }
+      .ja-net-chips { display: none !important; }
+      .ja-calc-card > div { padding-left: 20px !important; padding-right: 20px !important; }
+      .ja-calc-card { border-radius: 22px !important; }
+      .ja-calc-chips { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+      .ja-calc-chips > button { width: 100% !important; min-height: 46px !important; padding: 10px 12px !important; white-space: normal !important; font-size: 13.5px !important; line-height: 1.25 !important; }
+      .ja-calc-roles > button:last-child { grid-column: 1 / -1 !important; }
+      .ja-calc-oneoff { flex-direction: column !important; align-items: flex-start !important; gap: 3px !important; }
+      .ja-calc-cta { display: none !important; }
+      .ja-calc-cta-mobile { display: flex !important; flex-direction: column !important; gap: 10px !important; margin-top: 16px !important; }
+      .ja-calc-cta-mobile > a { justify-content: center !important; padding: 15px 20px !important; }
+      .ja-fcol h4 { display: flex !important; align-items: center; justify-content: space-between; cursor: pointer; margin: 0 !important; padding: 15px 0 !important; border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .ja-fchev { display: block !important; transition: transform .2s ease; }
+      .ja-fcol.ja-open .ja-fchev { transform: rotate(180deg); }
+      .ja-fcol .ja-flinks, .ja-fcol .ja-flinks-app { display: none !important; }
+      .ja-fcol.ja-open .ja-flinks { display: flex !important; padding: 14px 0 4px !important; }
+      .ja-fcol.ja-open .ja-flinks-app { display: block !important; padding: 14px 0 4px !important; }
+      .ja-footer-grid { gap: 26px 32px !important; padding-bottom: 34px !important; }
+      .ja-foot-wa { display: none !important; }
+      .ja-fcol.ja-open .ja-flinks > a { min-height: 40px !important; align-items: center !important; display: flex !important; }
+      .ja-sec { padding-top: 54px !important; padding-bottom: 54px !important; }
+      .ja-form input, .ja-form select { font-size: 16px !important; padding: 14px !important; }
+      .ja-form button[type="submit"] { min-height: 52px !important; font-size: 16px !important; }
+      .ja-nav-panel { max-height: 68vh !important; overflow-y: auto !important; }
+      .ja-hero-grid h1 { letter-spacing: -1.2px !important; line-height: 1.06 !important; }
+      .ja-hero-grid p { font-size: 16px !important; }
+      .ja-hero-grid a[href="#proposal"], .ja-hero-grid a[href="Available Workers.dc.html"] { flex: 1 1 100% !important; justify-content: center !important; }
+      .ja-calc-big { font-size: 30px !important; }
+      .ja-blog-hero-img { height: 190px !important; }
+      .ja-blog-feature { display: flex !important; border-radius: 20px !important; }
+      .ja-blog-feature > span:last-child { padding: 20px 20px 22px !important; gap: 10px !important; }
+      .ja-blog-feature > span:last-child > span:nth-child(3) { font-size: 21px !important; letter-spacing: -0.6px !important; }
+      .ja-blog-feature > span:last-child > span:nth-child(4) { font-size: 14px !important; display: -webkit-box !important; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+      .ja-blog-side { padding: 2px 18px !important; border-radius: 20px !important; }
+      .ja-blog-side .ja-idx { padding: 15px 0 !important; gap: 6px !important; }
+      .ja-blog-side .ja-idx > span:nth-child(3) { display: none !important; }
+      .ja-blog-side .ja-idx > span:nth-child(2) { font-size: 15.5px !important; }
+      .ja-blog-all { display: none !important; }
+      .ja-blog-top-cta { display: none !important; }
+      .ja-blog-side { display: none !important; }
+      .ja-dash-feats { display: none !important; }
+      .ja-dash-mob { display: flex !important; }
+      .ja-team-mini { display: none !important; }
+      .ja-grid-team { border-radius: 20px !important; }
+      .ja-blog-bottom-cta { display: flex !important; }
+      .ja-sec h2 { letter-spacing: -1px !important; }
+      .ja-hide-mobile { display: none !important; }
+      .ja-f-opt { display: none !important; }
+      .ja-hero-stats { grid-template-columns: 1fr 1fr !important; padding: 0 20px !important; column-gap: 0 !important; }
+      .ja-hero-stats > div { padding: 15px 0 !important; border-right: none !important; border-top: 1px solid rgba(255,255,255,0.14) !important; }
+      .ja-hero-stats > div:nth-child(2) { padding-left: 18px !important; border-left: 1px solid rgba(255,255,255,0.14) !important; }
+      .ja-hero-stats > div:nth-child(3) { grid-column: 1 / -1 !important; display: flex !important; align-items: baseline !important; gap: 10px !important; }
+      .ja-hero-stats > div:nth-child(3) > div:last-child { margin-top: 0 !important; }
+      .ja-hero-stats > div:nth-child(4) { display: none !important; }
+      .ja-hero-stats [data-count] { font-size: 27px !important; letter-spacing: -1px !important; }
+      .ja-case { background: #0e1a37 !important; padding: 16px 20px !important; }
+      .ja-case .ja-tick { flex-direction: column !important; gap: 3px !important; }
+      .ja-case .ja-tick > span:nth-child(1) { font-size: 15px !important; line-height: 1.35 !important; letter-spacing: -0.3px !important; }
+      .ja-case a { margin-left: 0 !important; align-self: stretch !important; display: flex !important; align-items: center !important; justify-content: space-between !important; min-height: 44px !important; margin-top: 8px !important; padding-top: 10px !important; border-top: 1px solid rgba(255,255,255,0.14) !important; }
+      .ja-case > div { flex-direction: column !important; align-items: flex-start !important; gap: 4px !important; }
+      .ja-case .ja-tick > span:nth-child(2) { font-size: 12.5px !important; line-height: 1.45 !important; }
+
+      .ja-cta-card { padding: 28px 22px !important; border-radius: 22px !important; }
+      .ja-cta-actions { width: 100% !important; }
+      .ja-cta-actions > a:first-child { flex: 1 1 100% !important; justify-content: center !important; padding: 16px 22px !important; }
+      .ja-cta-actions > a:not(:first-child) { display: none !important; }
+      .ja-cta-actions > a.ja-cta-tg { display: flex !important; flex: 1 1 100% !important; justify-content: center !important; padding: 15px 20px !important; }
+      .ja-portal { height: 330px !important; }
+      .ja-portal-laptop { width: 100% !important; }
+      .ja-portal-phone, .ja-portal-badge { display: none !important; }
+      .ja-card-pad { padding: 26px 22px !important; }
+      .ja-grid2 > *, .ja-grid-team > *, .ja-grid4 > *, .ja-grid-2up > *, .ja-hero-grid > * { min-width: 0 !important; }
+      .ja-role-row { flex-wrap: wrap !important; row-gap: 4px !important; }
+      .ja-role-row span { white-space: normal !important; }
+    }
+    @media (max-width: 700px) {
+      .ja-t-desk { display: none !important; }
+      .ja-t-mob { display: inline !important; }
+      .ja-cta-wp { display: none !important; }
+      .ja-mobile-bar.ja-mobile-bar.ja-mobile-bar.ja-mobile-bar { grid-template-columns: 1fr 1fr !important; }
+      .ja-hero-grid.ja-hero-grid.ja-hero-grid { padding: 0 !important; }
+      .ja-sticky { display: none !important; }
+    }
+
+    @media (max-width: 700px) {
+      [style*="grid-template-columns"] > * { min-width: 0 !important; }
+      h2[style*="text-align: center"], p[style*="text-align: center"] { text-align: left !important; }
+      .ja-hero-grid { gap: 22px !important; }
+      .ja-track { display: grid !important; grid-template-columns: 40px 1fr 20px !important; column-gap: 12px !important; row-gap: 3px !important; align-items: center !important; padding: 13px 14px !important; border-radius: 15px !important; box-shadow: none !important; }
+      .ja-track > span:first-child { grid-column: 1 !important; grid-row: 1 / span 2 !important; width: 40px !important; height: 40px !important; border-radius: 12px !important; margin-bottom: 0 !important; align-self: center !important; }
+      .ja-track h3 { grid-column: 2 !important; grid-row: 1 !important; font-size: 16px !important; letter-spacing: -0.2px !important; margin: 0 !important; }
+      .ja-track p { grid-column: 2 !important; grid-row: 2 !important; font-size: 12.5px !important; line-height: 1.4 !important; margin: 0 !important; flex: none !important; display: -webkit-box !important; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+      .ja-track > span:last-child { grid-column: 3 !important; grid-row: 1 / span 2 !important; font-size: 0 !important; justify-content: flex-end !important; }
+      .ja-track > span:last-child::after { content: "\203A"; font-size: 24px; font-weight: 800; line-height: 1; }
+      .ja-track-on { background: #f4f9fc !important; box-shadow: 0 8px 20px rgba(22,60,90,0.09) !important; }
+      .ja-track-on > span:last-child::after { content: "\2304"; font-size: 22px; }
+      .ja-journey-line { display: none !important; }
+      .ja-step { background: transparent !important; border: 0 !important; box-shadow: none !important; border-radius: 0 !important; padding: 0 0 20px !important; display: grid !important; grid-template-columns: 38px 1fr !important; column-gap: 14px !important; row-gap: 3px !important; align-items: start !important; }
+      .ja-step:last-child { padding-bottom: 0 !important; }
+      .ja-step:hover { transform: none !important; box-shadow: none !important; }
+      .ja-step > div:first-child { grid-column: 1 !important; grid-row: 1 !important; margin-bottom: 0 !important; display: block !important; }
+      .ja-step > div:first-child > svg { display: none !important; }
+      .ja-step > div:first-child > span { box-shadow: 0 0 0 5px #f4f9fc !important; }
+      .ja-step > h3, .ja-step > div:nth-child(2) { grid-column: 2 !important; grid-row: 1 !important; font-size: 16.5px !important; margin: 0 !important; align-self: center !important; min-height: 38px !important; align-content: center !important; }
+      .ja-step > p { grid-column: 2 !important; grid-row: 2 !important; font-size: 13px !important; line-height: 1.5 !important; }
+    }
+  
+    /* ---- Blog page styles ---- */
+    h1, h2, h3, h4 { font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+    img { max-width: 100%; }
+    @keyframes ja-wordin { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    @keyframes ja-blob1 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(30px, -24px) scale(1.12); } }
+    @keyframes ja-blob2 { 0%, 100% { transform: translate(0, 0) scale(1); } 50% { transform: translate(-26px, 20px) scale(0.92); } }
+    @keyframes ja-float1 { 0%, 100% { transform: rotate(-4deg) translateY(0); } 50% { transform: rotate(-4deg) translateY(-12px); } }
+    @keyframes ja-float2 { 0%, 100% { transform: rotate(3deg) translateY(0); } 50% { transform: rotate(3deg) translateY(-9px); } }
+    @keyframes ja-float3 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+    @keyframes ja-pulse { 0%, 100% { box-shadow: 0 0 0 0 rgba(22,163,74,0.35); } 50% { box-shadow: 0 0 0 9px rgba(22,163,74,0); } }
+    @media (max-width: 900px) {
+      [style*="px 48px"]:not(.ja-slim):not(.ja-nav):not(.ja-sec):not(.ja-sticky) { padding-left: 20px !important; padding-right: 20px !important; }
+      [style*="px 52px"] { padding-left: 24px !important; padding-right: 24px !important; }
+      [style*="grid-template-columns"]:not([style*="auto-fit"]):not([style*="auto-fill"]):not(.ja-mobile-bar) { grid-template-columns: 1fr !important; }
+      .ja-mobile-bar.ja-mobile-bar.ja-mobile-bar.ja-mobile-bar { grid-template-columns: 1fr 1fr !important; }
+      [style*="position: sticky"]:not([style*="z-index: 40"]):not(.ja-nav) { position: static !important; }
+      [style*="gap: 48px"], [style*="gap: 40px"] { gap: 28px !important; }
+    }
+    @media (max-width: 700px) {
+      .ja-sticky { display: none !important; }
+      [style*="min-width: 340px"], [style*="min-width:340px"] { min-width: 0 !important; }
+    }
+    @media (max-width: 700px) {
+      .ja-hero-crumb { font-size: 12px !important; margin-bottom: 12px !important; }
+      .ja-hero-updated { margin-left: 0 !important; margin-top: 9px !important; font-size: 11px !important; padding: 5px 11px !important; }
+      .ja-hero-copy h1 { min-height: 0 !important; letter-spacing: -1.1px !important; line-height: 1.06 !important; }
+      .ja-hero-copy > p:first-of-type { font-size: 15.5px !important; margin-bottom: 20px !important; }
+      .ja-hero-grid { gap: 26px !important; }
+    }
+    @media (max-width: 700px) {
+      .ja-blog-heroart { display: none !important; }
+      .ja-blog-heromob { display: flex !important; }
+      .ja-blog-ticks { gap: 8px !important; flex-direction: column !important; margin-top: 2px !important; }
+      .ja-blog-ticks > div:nth-child(2) { display: none !important; }
+      .ja-blog-ticks span { font-size: 13.5px !important; line-height: 1.4 !important; }
+      .ja-blog-ticks svg { width: 15px !important; height: 15px !important; margin-top: 2px !important; }
+      .ja-hero-copy h1 { font-size: 30px !important; line-height: 1.08 !important; letter-spacing: -1px !important; margin-bottom: 12px !important; }
+      .ja-hero-copy > p:first-of-type { font-size: 15px !important; line-height: 1.5 !important; margin-bottom: 18px !important; }
+      .ja-hero-crumb { font-size: 12px !important; }
+      .ja-blog-hero { padding: 30px 20px 34px !important; }
+      .ja-blog-tools { margin-top: 22px !important; padding: 12px 12px !important; gap: 10px !important; }
+      .ja-blog-search { flex: 1 1 100% !important; min-width: 0 !important; padding: 8px 10px 8px 8px !important; min-height: 56px !important; gap: 11px !important; border-radius: 16px !important; background: #ffffff !important; border: 1.5px solid #dbe8f2 !important; box-shadow: 0 8px 22px rgba(22,60,90,0.10) !important; transition: border-color .15s ease, box-shadow .15s ease; }
+      .ja-blog-search:focus-within { border-color: #1899D5 !important; box-shadow: 0 0 0 3px rgba(24,153,213,0.16), 0 8px 22px rgba(22,60,90,0.10) !important; }
+      .ja-blog-search input { font-size: 16px !important; font-weight: 600 !important; min-height: 40px !important; }
+      .ja-blog-search input::placeholder { color: #8ba3b8 !important; font-weight: 600 !important; }
+      .ja-blog-sicon { display: inline-flex !important; width: 40px !important; height: 40px !important; flex: none !important; align-items: center !important; justify-content: center !important; border-radius: 12px !important; background: linear-gradient(135deg, #1899D5, #146fa1) !important; box-shadow: 0 6px 14px rgba(24,153,213,0.35) !important; }
+      .ja-blog-sicon svg { stroke: #ffffff !important; width: 18px !important; height: 18px !important; }
+      .ja-blog-clear { width: 34px !important; height: 34px !important; }
+      .ja-blog-tools { border-radius: 20px !important; padding: 12px !important; gap: 10px !important; box-shadow: 0 26px 60px rgba(3,10,26,0.42), inset 0 1px 0 rgba(255,255,255,0.8) !important; }
+      .ja-blog-clear { display: inline-flex !important; }
+      .ja-blog-count { display: block !important; }
+      .ja-blog-fsec { padding: 22px 20px 0 !important; }
+      .ja-blog-fsec > div { gap: 14px !important; }
+      .ja-blog-feature { border-radius: 20px !important; box-shadow: 0 14px 34px rgba(22,60,90,0.10) !important; }
+      .ja-blog-fcover image-slot { height: 186px !important; }
+      .ja-blog-fbody { padding: 16px 18px 18px !important; }
+      .ja-blog-fpills { gap: 8px !important; margin-bottom: 10px !important; }
+      .ja-blog-fpills > span { font-size: 11px !important; padding: 4px 11px !important; }
+      .ja-blog-feature h2 { font-size: 20px !important; line-height: 1.28 !important; letter-spacing: -0.5px !important; margin-bottom: 8px !important; }
+      .ja-blog-feature p { font-size: 14px !important; line-height: 1.55 !important; margin-bottom: 14px !important; display: -webkit-box !important; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+      .ja-blog-fmeta { justify-content: space-between !important; gap: 10px !important; padding-top: 12px !important; border-top: 1px solid #eef3f7 !important; }
+      .ja-blog-fmeta > span:first-child { font-size: 12.5px !important; }
+      .ja-blog-fmeta > span:last-child { font-size: 13.5px !important; background: #e8f4fb; border-radius: 999px; padding: 8px 14px; }
+      .ja-blog-most { padding: 4px 16px 8px !important; border-radius: 20px !important; box-shadow: 0 14px 34px rgba(22,60,90,0.08) !important; }
+      .ja-blog-most h2 { font-size: 12px !important; font-weight: 800 !important; letter-spacing: 1.1px !important; text-transform: uppercase; color: #94a3b8 !important; margin: 16px 0 2px !important; }
+      .ja-blog-mrow { align-items: center !important; gap: 12px !important; padding: 13px 0 !important; min-height: 44px !important; }
+      .ja-blog-rank { flex: none !important; width: 26px !important; height: 26px !important; display: inline-flex !important; align-items: center !important; justify-content: center !important; border-radius: 9px !important; background: #e8f4fb !important; color: #1073a8 !important; font-size: 13px !important; }
+      .ja-blog-mrow > span:last-child { min-width: 0 !important; gap: 3px !important; }
+      .ja-blog-mrow > span:last-child > span:first-child { font-size: 15px !important; line-height: 1.35 !important; display: -webkit-box !important; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+      .ja-blog-mrow > span:last-child > span:last-child { font-size: 12px !important; }
+      .ja-blog-gsec { padding: 18px 20px 26px !important; }
+      .ja-blog-grid { gap: 10px !important; }
+      .ja-blog-card { flex-direction: row !important; align-items: stretch !important; border-radius: 16px !important; }
+      .ja-blog-ccover { flex: none !important; width: 104px !important; }
+      .ja-blog-ccover image-slot { height: 100% !important; min-height: 104px !important; }
+      .ja-blog-cbody { padding: 12px 14px !important; gap: 0 !important; justify-content: center !important; min-width: 0 !important; }
+      .ja-blog-cbody > div:first-child { margin-bottom: 7px !important; }
+      .ja-blog-cbody > div:first-child > span { font-size: 10.5px !important; font-weight: 800 !important; padding: 3px 9px !important; }
+      .ja-blog-card h3 { font-size: 15px !important; line-height: 1.32 !important; margin-bottom: 6px !important; display: -webkit-box !important; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+      .ja-blog-card p { display: none !important; }
+      .ja-blog-cbody > div:last-child { margin-top: 0 !important; }
+      .ja-blog-cbody > div:last-child > span:first-child { font-size: 11.5px !important; }
+      .ja-blog-cbody > div:last-child > span:last-child { display: none !important; }
+      .ja-blog-more { width: 100% !important; min-height: 52px !important; border-radius: 14px !important; }
+      .ja-nl-sec { padding: 8px 20px 0 !important; }
+      .ja-nl-card { padding: 22px 18px 20px !important; border-radius: 20px !important; gap: 16px !important; background: linear-gradient(165deg, #f7fbfd 0%, #eaf4fa 100%) !important; border-color: #cfe3f0 !important; box-shadow: 0 14px 34px rgba(22,60,90,0.08) !important; }
+      .ja-nl-head { gap: 13px !important; align-items: flex-start !important; }
+      .ja-nl-icon { width: 44px !important; height: 44px !important; border-radius: 14px !important; box-shadow: 0 8px 18px rgba(24,153,213,0.28) !important; }
+      .ja-nl-icon svg { width: 20px !important; height: 20px !important; }
+      .ja-nl-card h2 { font-size: 20px !important; letter-spacing: -0.7px !important; line-height: 1.18 !important; margin-bottom: 5px !important; }
+      .ja-nl-sub { font-size: 13.5px !important; line-height: 1.5 !important; }
+      .ja-nl-nospam { display: block !important; margin-top: 4px !important; font-size: 12.5px !important; color: #12813c !important; }
+      .ja-nl-row { background: #ffffff !important; border-color: #cfe3f0 !important; box-shadow: 0 6px 16px rgba(22,60,90,0.06) !important; border-radius: 14px !important; }
+      .ja-nl-row button { border-radius: 11px !important; font-size: 15.5px !important; background: linear-gradient(135deg, #1899D5, #146fa1) !important; }
+      .ja-nl-proof { text-align: center !important; padding-left: 0 !important; font-size: 12px !important; }
+      .ja-blog-cta-sec { padding: 22px 20px 26px !important; }
+      .ja-blog-cta { padding: 24px 20px 22px !important; border-radius: 22px !important; gap: 18px !important; flex-direction: column !important; align-items: stretch !important; }
+      .ja-blog-cta::before { content: "" !important; position: absolute !important; top: -120px !important; right: -90px !important; width: 260px !important; height: 260px !important; border-radius: 50% !important; background: radial-gradient(circle, rgba(24,153,213,0.35), transparent 65%) !important; }
+      .ja-blog-cta-copy { position: relative !important; }
+      .ja-blog-cta h2 { font-size: 23px !important; letter-spacing: -0.9px !important; line-height: 1.12 !important; margin-bottom: 8px !important; }
+      .ja-blog-cta-sub { font-size: 14.5px !important; line-height: 1.5 !important; }
+      .ja-blog-cta-ticks { display: flex !important; }
+      .ja-blog-cta-btns { position: relative !important; }
+      .ja-blog-cta-btns > a.ja-blog-cta-wa.ja-blog-cta-wa { display: none !important; }
+      .ja-blog-cta-btns > a { flex: 1 1 100% !important; display: flex !important; align-items: center !important; justify-content: center !important; min-height: 54px !important; padding: 0 20px !important; border-radius: 999px !important; font-size: 16.5px !important; }
+      .ja-blog-chips { display: none !important; }
+      .ja-blog-topic { display: flex !important; }
+      .ja-blog-sheet { display: none !important; }
+      .ja-blog-sheet.ja-open { display: block !important; }
+      .ja-blog-lang { display: none !important; }
+      .ja-nl-form { min-width: 0 !important; }
+      .ja-nl-row { flex-wrap: wrap !important; gap: 8px !important; padding: 8px !important; }
+      .ja-nl-row input { flex: 1 1 100% !important; font-size: 16px !important; min-height: 48px !important; }
+      .ja-nl-row button { flex: 1 1 100% !important; min-height: 48px !important; }
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 32px !important; letter-spacing: -0.6px !important; min-height: 0 !important; }
+      h2 { font-size: 23px !important; letter-spacing: -0.4px !important; }
+    }
+  </style>
+  <script src="./ja-i18n.js"></script>
+</helmet>
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="#0e1a37"/><g transform="translate(112,86)"><rect x="0" y="0" width="176" height="50" rx="10" fill="#1899D5"/><rect x="14" y="14" width="90" height="8" rx="4" fill="#ffffff" opacity="0.95"/><rect x="14" y="30" width="140" height="7" rx="3.5" fill="#ffffff" opacity="0.6"/><rect x="0" y="60" width="176" height="50" rx="10" fill="#ffffff" opacity="0.85"/><rect x="14" y="74" width="76" height="8" rx="4" fill="#0e1a37" opacity="0.55"/><rect x="14" y="90" width="130" height="7" rx="3.5" fill="#0e1a37" opacity="0.3"/></g></svg>
+</template>
+
+
+<div style="width:0; height:0; overflow:hidden; position:absolute">
+  <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="loader-slot" hint-size="0,0"></x-import>
+</div>
+
+<div style="{{ barStyle }}"></div>
+
+<!-- ============ SLIM BAR ============ -->
+<div class="ja-slim" style="background:#0a1428; color:rgba(255,255,255,0.7); font-size:12.5px; padding:8px 48px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap">
+  <span class="ja-slim-l" style="display:flex; align-items:center; gap:20px; font-weight:600; flex-wrap:wrap">
+    <span class="ja-slim-license" style="display:inline-flex; align-items:center; gap:9px"><span class="ja-live"></span><span class="ja-t-desk">İŞKUR Licensed &middot; Permit No. 1730</span><span class="ja-t-mob">İŞKUR &middot; 1730</span></span>
+    <span class="ja-slim-div" style="width:1px; height:12px; background:rgba(255,255,255,0.25); display:inline-block"></span>
+    <a href="tel:+905011240340" class="ja-slim-contact" style="display:inline-flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7); text-decoration:none" style-hover="color:#ffffff"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.6 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>+90 501 124 03 40</a>
+    <a href="mailto:info@jobsadmire.com" class="ja-slim-contact" style="display:inline-flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7); text-decoration:none" style-hover="color:#ffffff"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 5L2 7"></path></svg>info@jobsadmire.com</a>
+  </span>
+  <span class="ja-slim-lang" style="display:none; align-items:center; gap:3px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); border-radius:999px; padding:2px; flex:none">
+    <sc-for list="{{ langsSlim }}" as="l" hint-placeholder-count="2">
+      <button type="button" onClick="{{ l.onClick }}" style="{{ l.style }}">{{ l.code }}</button>
+    </sc-for>
+  </span>
+  <span class="ja-slim-r" style="display:flex; align-items:center; gap:20px; font-weight:600; flex-wrap:wrap">
+    <a href="Blog.dc.html" style="color:rgba(255,255,255,0.7); text-decoration:none" style-hover="color:#ffffff">Blog</a>
+    <a href="Join Our Team.dc.html" style="color:rgba(255,255,255,0.7); text-decoration:none" style-hover="color:#ffffff">Join Our Team</a>
+    <span style="width:1px; height:12px; background:rgba(255,255,255,0.25); display:inline-block"></span>
+    <a href="Verify Representative.dc.html" style="display:inline-flex; align-items:center; gap:6px; background:rgba(22,163,74,0.16); border:1px solid rgba(93,223,176,0.35); border-radius:999px; padding:3px 12px; color:#5ddfb0; text-decoration:none" style-hover="background:rgba(22,163,74,0.28); color:#ffffff"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M12 2l7.5 3.2v5.3c0 4.7-3.1 9-7.5 10.5-4.4-1.5-7.5-5.8-7.5-10.5V5.2L12 2zm-1 12.4l5-5-1.4-1.4-3.6 3.6-1.9-1.9L7.7 11l3.3 3.4z"></path></svg>Verify a Representative</a>
+    <a href="https://crm.jobsadmire.com/ext-login" style="display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.22); border-radius:999px; padding:3px 12px; color:#7fd0f5; text-decoration:none" style-hover="color:#ffffff; background:rgba(255,255,255,0.16)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><path d="M10 17l5-5-5-5"></path><path d="M15 12H3"></path></svg>CRM Login</a>
+  </span>
+</div>
+
+<!-- ============ NAV ============ -->
+<div class="ja-nav" style="background:#ffffff; padding:14px 32px; display:flex; align-items:center; justify-content:space-between; gap:20px; border-bottom:1px solid #e9eff4; position:sticky; top:0; z-index:40">
+  <a href="JobsAdmire Homepage v4.dc.html" style="display:flex; align-items:center; gap:10px; text-decoration:none; flex:none">
+    <img class="ja-logo-full" src="https://www.jobsadmire.com/logos/logo4.png" alt="Jobs Admire" style="height:34px; display:block" />
+    <img class="ja-logo-mark" src="ja-mark.png" alt="Jobs Admire" style="height:34px; width:34px; object-fit:contain; display:none" />
+  </a>
+  <div class="ja-nav-links" style="display:flex; align-items:center; gap:17px; font-size:13.5px; font-weight:600; flex-shrink:0">
+    <a href="About Us.dc.html" style="color:#16202e; text-decoration:none; white-space:nowrap" style-hover="color:#1899D5">About Us</a>
+    <a href="Hire Workers.dc.html" style="color:#16202e; text-decoration:none; white-space:nowrap" style-hover="color:#1899D5">Hire Workers</a>
+    <a href="Available Workers.dc.html" style="color:#16202e; text-decoration:none; white-space:nowrap" style-hover="color:#1899D5">Candidates</a>
+    <a href="Work Permit.dc.html" style="color:#16202e; text-decoration:none; white-space:nowrap" style-hover="color:#1899D5">Work Permits</a>
+    <a href="Hiring Cost Calculator.dc.html" style="color:#16202e; text-decoration:none; white-space:nowrap" style-hover="color:#1899D5">Cost Calculator</a>
+    <a href="Success Stories.dc.html" style="color:#16202e; text-decoration:none; white-space:nowrap" style-hover="color:#1899D5">Success Stories</a>
+    <a href="Contact Us.dc.html" style="color:#16202e; text-decoration:none; white-space:nowrap" style-hover="color:#1899D5">Contact Us</a>
+  </div>
+  <div class="ja-nav-actions" style="display:flex; align-items:center; gap:9px; flex:none">
+    <button type="button" class="ja-nav-toggle" onClick="{{ toggleMenu }}" aria-label="Menu" style="align-items:center; justify-content:center; gap:8px; background:#f4f9fc; border:1.5px solid #dbe8f2; color:#16202e; border-radius:14px; width:46px; height:46px; padding:0; cursor:pointer; font-family:inherit" style-active="background:#e8f4fb"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 6h18"></path><path d="M3 12h18"></path><path d="M3 18h18"></path></svg></button>
+    <div class="ja-lang" style="display:flex; align-items:center; gap:3px; background:#f4f9fc; border:1.5px solid #dbe8f2; border-radius:999px; padding:3px">
+      <sc-for list="{{ langs }}" as="l" hint-placeholder-count="2">
+        <button type="button" onClick="{{ l.onClick }}" style="{{ l.style }}">{{ l.code }}</button>
+      </sc-for>
+    </div>
+    <a href="Partner With Us.dc.html" class="ja-nav-cta-secondary" style="background:#e8f4fb; border:1.5px solid #bfdff0; color:#1073a8; text-decoration:none; padding:10px 17px; border-radius:999px; font-weight:700; font-size:13.5px; white-space:nowrap" style-hover="background:#d3ecf9; border-color:#1899D5">Partner With Us</a>
+    <a href="Hire Workers.dc.html#request-form" class="ja-nav-cta" style="background:#16202e; color:#ffffff; text-decoration:none; padding:11.5px 20px; border-radius:999px; font-weight:700; font-size:13.5px; white-space:nowrap" style-hover="background:#1899D5">Request<span class="ja-cta-long"> Workers</span></a>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div class="ja-nav-panel" onClick="{{ closeMenu }}" style="width:100%; display:flex; flex-direction:column; border-top:1px solid #e9eff4; margin-top:10px; padding-top:6px">
+      <div style="display:flex; align-items:center; gap:10px; padding:10px 0 12px; border-bottom:1px solid #f1f5f9">
+        <span style="font-size:11.5px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:#94a3b8; flex:none">Language</span>
+        <span style="display:flex; gap:8px; flex:1">
+          <sc-for list="{{ langsBig }}" as="l" hint-placeholder-count="2">
+            <button type="button" onClick="{{ l.onClick }}" style="{{ l.style }}">{{ l.label }}</button>
+          </sc-for>
+        </span>
+      </div>
+      <a href="About Us.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">About Us</a>
+      <a href="Hire Workers.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Hire Workers</a>
+      <a href="Available Workers.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Candidates</a>
+      <a href="Work Permit.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Work Permits</a>
+      <a href="Hiring Cost Calculator.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Cost Calculator</a>
+      <a href="Success Stories.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Success Stories</a>
+      <a href="Blog.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9; color:#1899D5">Blog &amp; Guides</a>
+      <a href="Verify Representative.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Verify a Representative</a>
+      <a href="Partner With Us.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Partner With Us</a>
+      <a href="Join Our Team.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Join Our Team</a>
+      <a href="Contact Us.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Contact Us</a>
+      <a href="https://crm.jobsadmire.com/ext-login" style="display:flex; align-items:center; min-height:46px; color:#1073a8; text-decoration:none; font-size:15px; font-weight:800">CRM Login &rarr;</a>
+    </div>
+  </sc-if>
+</div>
+
+<!-- ============ SOCIAL RAIL ============ -->
+<div class="ja-social-rail" style="position:fixed; left:16px; top:50%; transform:translateY(-50%); z-index:45; display:flex; flex-direction:column; align-items:center; gap:9px">
+  <span style="width:1px; height:26px; background:#c9d8e4; display:block; margin-bottom:2px"></span>
+  <a href="https://www.facebook.com/jobsadmire" target="_blank" aria-label="Facebook" style="width:38px; height:38px; border-radius:50%; background:#ffffff; border:1px solid #e2ebf2; box-shadow:0 6px 18px rgba(22,60,90,0.12); display:flex; align-items:center; justify-content:center; color:#43536a; text-decoration:none" style-hover="background:#1899D5; border-color:#1899D5; color:#ffffff"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.5-3.91 3.79-3.91 1.1 0 2.24.2 2.24.2v2.47H15.2c-1.25 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.9h-2.34V22c4.78-.75 8.43-4.91 8.43-9.94"></path></svg></a>
+  <a href="https://www.instagram.com/jobsadmire" target="_blank" aria-label="Instagram" style="width:38px; height:38px; border-radius:50%; background:#ffffff; border:1px solid #e2ebf2; box-shadow:0 6px 18px rgba(22,60,90,0.12); display:flex; align-items:center; justify-content:center; color:#43536a; text-decoration:none" style-hover="background:#1899D5; border-color:#1899D5; color:#ffffff"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor" stroke="none"></circle></svg></a>
+  <a href="{{ waHireHref }}" target="_blank" aria-label="WhatsApp" style="width:38px; height:38px; border-radius:50%; background:#ffffff; border:1px solid #e2ebf2; box-shadow:0 6px 18px rgba(22,60,90,0.12); display:flex; align-items:center; justify-content:center; color:#43536a; text-decoration:none" style-hover="background:#16a34a; border-color:#16a34a; color:#ffffff"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.9 7c0 5.45-4.44 9.88-9.9 9.88zm8.42-18.3A11.8 11.8 0 0 0 12.07 0C5.53 0 .2 5.32.2 11.87c0 2.09.55 4.14 1.59 5.94L.1 24l6.33-1.66a11.9 11.9 0 0 0 5.64 1.44h.01c6.54 0 11.87-5.32 11.87-11.87 0-3.17-1.24-6.15-3.45-8.35z"></path></svg></a>
+  <a href="https://t.me/jobsadmire" target="_blank" aria-label="Telegram" style="width:38px; height:38px; border-radius:50%; background:#ffffff; border:1px solid #e2ebf2; box-shadow:0 6px 18px rgba(22,60,90,0.1); color:#43536a; display:flex; align-items:center; justify-content:center; text-decoration:none" style-hover="background:#229ED9; border-color:#229ED9; color:#ffffff"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.9 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7 8.5-7.7c.4-.3-.1-.5-.6-.2L6.2 13l-4.5-1.4c-1-.3-1-1 .2-1.4l17.6-6.8c.8-.3 1.5.2 1.2 1.4z"></path></svg></a>
+  <a href="https://www.tiktok.com/@jobsadmire" target="_blank" aria-label="TikTok" style="width:38px; height:38px; border-radius:50%; background:#ffffff; border:1px solid #e2ebf2; box-shadow:0 6px 18px rgba(22,60,90,0.12); display:flex; align-items:center; justify-content:center; color:#43536a; text-decoration:none" style-hover="background:#16202e; border-color:#16202e; color:#ffffff"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.75 2h3.07c.22 1.87 1.45 3.42 3.18 4.03.6.22 1.25.34 1.95.34v3.1a7.7 7.7 0 0 1-4.4-1.38v6.24c0 3.66-2.97 6.63-6.63 6.63A6.63 6.63 0 0 1 3.3 14.3c0-3.66 2.96-6.62 6.62-6.62.34 0 .68.03 1 .08v3.24a3.44 3.44 0 0 0-1-.15 3.46 3.46 0 1 0 3.46 3.46V2z"></path></svg></a>
+  <a href="https://www.linkedin.com/company/jobsadmire" target="_blank" aria-label="LinkedIn" style="width:38px; height:38px; border-radius:50%; background:#ffffff; border:1px solid #e2ebf2; box-shadow:0 6px 18px rgba(22,60,90,0.12); display:flex; align-items:center; justify-content:center; color:#43536a; text-decoration:none" style-hover="background:#1073a8; border-color:#1073a8; color:#ffffff"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.31h4.52V23H.24V8.31zM8.34 8.31h4.33v2h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.92V23h-4.51v-7.13c0-1.7-.03-3.89-2.37-3.89-2.37 0-2.73 1.85-2.73 3.76V23H8.34V8.31z"></path></svg></a>
+  <span style="width:1px; height:26px; background:#c9d8e4; display:block; margin-top:2px"></span>
+</div>
+
+<!-- ============ MOBILE WHATSAPP FAB ============ -->
+<a href="{{ waHireHref }}" target="_blank" aria-label="Chat on WhatsApp" class="ja-wa-fab" style="position:fixed; right:18px; bottom:18px; z-index:45; width:56px; height:56px; border-radius:50%; background:#16a34a; box-shadow:0 12px 30px rgba(22,163,74,0.45); display:flex; align-items:center; justify-content:center; color:#ffffff; text-decoration:none" style-active="transform:scale(0.94)"><svg width="27" height="27" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.9 7c0 5.45-4.44 9.88-9.9 9.88zm8.42-18.3A11.8 11.8 0 0 0 12.07 0C5.53 0 .2 5.32.2 11.87c0 2.09.55 4.14 1.59 5.94L.1 24l6.33-1.66a11.9 11.9 0 0 0 5.64 1.44h.01c6.54 0 11.87-5.32 11.87-11.87 0-3.17-1.24-6.15-3.45-8.35z"></path></svg></a>
+
+<!-- ============ PAGE HERO ============ -->
+<div class="ja-blog-hero" style="position:relative; background:#0a1428; padding:60px 48px 68px; overflow:hidden">
+  <image-slot id="blog-hero" placeholder="Hero photo — worksite, team or newsroom" shape="rect" style="position:absolute; inset:0; width:100%; height:100%; display:block"></image-slot>
+  <div style="position:absolute; inset:0; background:linear-gradient(90deg, rgba(10,20,40,0.96) 0%, rgba(10,20,40,0.9) 55%, rgba(10,20,40,0.76) 100%); pointer-events:none"></div>
+  <div style="position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,20,40,0.55) 0%, transparent 34%, rgba(10,20,40,0.7) 100%); pointer-events:none"></div>
+  <div style="max-width:1280px; margin:0 auto; position:relative">
+    <div class="ja-hero-grid" style="display:grid; grid-template-columns:1.15fr 0.85fr; gap:48px; align-items:center">
+      <div class="ja-hero-copy">
+        <div class="ja-hero-crumb" style="font-size:13.5px; font-weight:700; color:rgba(255,255,255,0.55); margin-bottom:16px">
+          <a href="JobsAdmire Homepage v4.dc.html" style="color:#7fd0f5; text-decoration:none">Home</a>
+          <span style="margin:0 8px; color:rgba(255,255,255,0.35)">/</span>
+          <span>Blog</span>
+          <span class="ja-hero-updated" style="display:inline-flex; align-items:center; gap:6px; margin-left:14px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); border-radius:999px; padding:4px 12px; font-size:12px; font-weight:800; color:#7fd0f5"><span class="ja-live"></span>{{ tNewWeekly }}</span>
+        </div>
+        <h1 style="font-size:clamp(36px, 4.2vw, 54px); line-height:1.02; font-weight:800; margin:0 0 16px; color:#ffffff; letter-spacing:-2.1px; min-height:108px; display:flex; flex-wrap:wrap; align-content:flex-start; column-gap:13px">{{ tHeroPre }} {{ rotatingWord }} {{ tHeroPost }}</h1>
+        <p style="font-size:17.5px; line-height:1.55; color:rgba(255,255,255,0.78); font-weight:600; margin:0 0 26px; max-width:620px">{{ tHeroSub }}</p>
+        <div class="ja-blog-ticks" style="display:flex; gap:14px 34px; flex-wrap:wrap; max-width:600px">
+          <div style="display:flex; gap:10px; align-items:flex-start">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:3px"><path d="M20 6L9 17l-5-5"></path></svg>
+            <span style="font-size:15.5px; line-height:1.45; color:rgba(255,255,255,0.75); font-weight:600">Written by our <strong style="color:#ffffff; font-weight:800">permit &amp; recruitment team</strong></span>
+          </div>
+          <div style="display:flex; gap:10px; align-items:flex-start">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:3px"><path d="M20 6L9 17l-5-5"></path></svg>
+            <span style="font-size:15.5px; line-height:1.45; color:rgba(255,255,255,0.75); font-weight:600"><strong style="color:#ffffff; font-weight:800">English &amp; Türkçe</strong> — 2 languages</span>
+          </div>
+        </div>
+        <div class="ja-blog-heromob" style="display:none; align-items:center; flex-wrap:wrap; gap:8px 14px; margin-top:16px; font-size:12.5px; font-weight:700; color:rgba(255,255,255,0.62)">
+          <span style="display:inline-flex; align-items:center; gap:6px"><strong style="color:#ffffff; font-weight:800">{{ postCount }}</strong>{{ tGuides }}</span>
+          <span style="width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.3); display:inline-block"></span>
+          <span style="display:inline-flex; align-items:center; gap:6px"><strong style="color:#7fd0f5; font-weight:800">EN&middot;TR</strong>{{ tLangs }}</span>
+          <span style="width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.3); display:inline-block"></span>
+          <span style="display:inline-flex; align-items:center; gap:6px"><strong style="color:#4ade80; font-weight:800">{{ tWeekly }}</strong>{{ tNewPost }}</span>
+        </div>
+      </div>
+
+      <div class="ja-blog-heroart" style="position:relative; height:280px; min-width:0">
+        <div style="position:absolute; top:18px; left:4%; width:250px; background:#ffffff; border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:16px 18px; box-shadow:0 26px 60px rgba(3,10,26,0.5); animation:ja-float1 6s ease-in-out infinite; z-index:2">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px">
+            <span style="background:#e8f4fb; color:#1899D5; font-size:11px; font-weight:800; padding:3px 10px; border-radius:999px">Work Permits</span>
+          </div>
+          <div style="font-size:14.5px; font-weight:800; color:#16202e; line-height:1.35; margin-bottom:8px">Work permit guide for employers — 2026</div>
+          <div style="display:flex; align-items:center; gap:8px">
+            <span style="width:22px; height:22px; border-radius:50%; background:linear-gradient(135deg, #1E9EE8, #16a34a); display:inline-block"></span>
+            <span style="font-size:11.5px; color:#94a3b8; font-weight:600">JobsAdmire · 8 min read</span>
+          </div>
+        </div>
+        <div style="position:absolute; top:120px; right:0; width:230px; background:#ffffff; border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:16px 18px; box-shadow:0 22px 52px rgba(3,10,26,0.45); animation:ja-float2 7.5s ease-in-out 0.9s infinite; z-index:3">
+          <div style="display:flex; align-items:center; gap:8px; margin-bottom:10px">
+            <span style="background:#eafaf1; color:#12813c; font-size:11px; font-weight:800; padding:3px 10px; border-radius:999px">Recruitment</span>
+          </div>
+          <div style="font-size:14.5px; font-weight:800; color:#16202e; line-height:1.35; margin-bottom:8px">Hiring overseas workers: 30-day checklist</div>
+          <div style="display:flex; align-items:center; gap:6px">
+            <span style="color:#f59e0b; font-size:11.5px; letter-spacing:0.5px">★★★★★</span>
+            <span style="font-size:11.5px; color:#94a3b8; font-weight:600">Most read</span>
+          </div>
+        </div>
+        <div style="position:absolute; bottom:6px; left:12%; display:inline-flex; align-items:center; gap:7px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.24); border-radius:999px; padding:8px 16px; font-size:12.5px; font-weight:800; color:#ffffff; backdrop-filter:blur(6px); animation:ja-float3 6.5s ease-in-out 1.6s infinite; z-index:4">
+          <span style="color:#7fd0f5">EN</span><span style="color:rgba(255,255,255,0.4)">·</span><span style="color:#7fd0f5">TR</span>
+          <span style="color:rgba(255,255,255,0.7); font-weight:600">2 languages</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="ja-blog-tools" style="margin-top:30px; background:#ffffff; border:1px solid rgba(255,255,255,0.14); border-radius:16px; padding:12px 14px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; box-shadow:0 26px 60px rgba(3,10,26,0.42)">
+      <div class="ja-blog-search" style="display:flex; align-items:center; gap:10px; background:#f4f9fc; border-radius:11px; padding:11px 16px; flex:1; min-width:230px">
+        <span class="ja-blog-sicon" style="display:contents"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg></span>
+        <input ref="{{ searchRef }}" onInput="{{ onSearch }}" placeholder="{{ tSearchPh }}" enterkeyhint="search" autoComplete="off" style="border:none; outline:none; font-size:14.5px; color:#16202e; background:transparent; flex:1; min-width:0; font-family:inherit" />
+        <sc-if value="{{ hasQuery }}" hint-placeholder-val="{{ false }}">
+          <button type="button" onClick="{{ clearSearch }}" aria-label="Clear search" class="ja-blog-clear" style="display:none; flex:none; align-items:center; justify-content:center; width:30px; height:30px; border:0; border-radius:50%; background:#e8f4fb; color:#1073a8; font-size:15px; font-weight:800; cursor:pointer; font-family:inherit">&times;</button>
+        </sc-if>
+      </div>
+      <button type="button" class="ja-blog-topic" onClick="{{ openTopics }}" style="display:none; width:100%; cursor:pointer; font-family:inherit; align-items:center; justify-content:space-between; gap:12px; background:#f4f9fc; border:1.5px solid #dbe8f2; border-radius:14px; padding:0 14px; min-height:52px; text-align:left">
+        <span style="display:flex; flex-direction:column; gap:1px; min-width:0">
+          <span style="font-size:10.5px; font-weight:800; letter-spacing:0.9px; text-transform:uppercase; color:#94a3b8">{{ tTopic }}</span>
+          <span style="font-size:15.5px; font-weight:800; color:#16202e; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">{{ topicLabel }}</span>
+        </span>
+        <span style="flex:none; display:inline-flex; align-items:center; gap:8px">
+          <span style="font-size:12.5px; font-weight:800; color:#1073a8; background:#e8f4fb; border-radius:999px; padding:4px 10px">{{ topicCount }}</span>
+          <span style="display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:9px; background:#e8f4fb; color:#1073a8; font-size:12px; font-weight:800">&#9660;</span>
+        </span>
+      </button>
+      <div class="ja-blog-chips" style="display:flex; gap:8px; flex-wrap:wrap">
+        <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="5">
+          <button onClick="{{ chip.select }}" style="{{ chip.style }}">{{ chip.label }}</button>
+        </sc-for>
+      </div>
+      <div class="ja-blog-lang" style="display:inline-flex; border:1.5px solid #d3e6f2; border-radius:999px; overflow:hidden; background:#ffffff; flex-shrink:0">
+        <sc-for list="{{ blogLangs }}" as="lng" hint-placeholder-count="2">
+          <button onClick="{{ lng.select }}" style="{{ lng.style }}">{{ lng.label }}</button>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ja-blog-count" style="display:none; padding:14px 20px 0">
+  <div style="display:flex; align-items:center; justify-content:space-between; gap:12px">
+    <span style="font-size:13px; font-weight:800; color:#43536a">{{ resultLine }}</span>
+    <sc-if value="{{ isFiltered }}" hint-placeholder-val="{{ false }}">
+      <button type="button" onClick="{{ resetFilters }}" style="flex:none; min-height:34px; padding:0 14px; border-radius:999px; border:1.5px solid #d3e6f2; background:#ffffff; color:#1073a8; font-size:12.5px; font-weight:800; cursor:pointer; font-family:inherit">{{ tClearAll }}</button>
+    </sc-if>
+  </div>
+</div>
+
+<!-- ============ FEATURED + MOST READ ============ -->
+<div class="ja-blog-fsec" style="padding:44px 48px 8px">
+  <div style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:1.85fr 1.15fr; gap:24px; align-items:stretch">
+
+    <a href="{{ featured.href }}" class="ja-blog-feature" style="display:flex; flex-direction:column; background:#ffffff; border:1px solid #e6eef4; border-radius:20px; overflow:hidden; text-decoration:none" style-hover="box-shadow:0 20px 48px rgba(22,60,90,0.12)">
+      <span class="ja-blog-fcover" style="{{ featured.coverStyle }}">
+        <image-slot id="blog-featured" style="display:block; width:100%; height:270px" shape="rect" placeholder="{{ featured.cat }}"></image-slot>
+      </span>
+      <div class="ja-blog-fbody" style="padding:26px 30px 28px; display:flex; flex-direction:column; flex:1">
+        <div class="ja-blog-fpills" style="display:flex; align-items:center; gap:10px; margin-bottom:13px">
+          <span style="background:#16202e; color:#ffffff; font-size:11.5px; font-weight:800; letter-spacing:0.8px; padding:5px 13px; border-radius:999px">FEATURED</span>
+          <span style="background:#e8f4fb; color:#1899D5; font-size:12.5px; font-weight:700; padding:5px 13px; border-radius:999px">{{ featured.cat }}</span>
+        </div>
+        <h2 style="margin:0 0 10px; font-size:26px; font-weight:800; color:#16202e; line-height:1.25; letter-spacing:-0.5px">{{ featured.title }}</h2>
+        <p style="margin:0 0 18px; font-size:15px; line-height:1.6; color:#556377">{{ featured.excerpt }}</p>
+        <div class="ja-blog-fmeta" style="margin-top:auto; display:flex; align-items:center; gap:14px">
+          <span style="font-size:13.5px; color:#94a3b8; font-weight:600">{{ featured.meta }}</span>
+          <span style="color:#1899D5; font-weight:800; font-size:14.5px">{{ featured.cta }}</span>
+        </div>
+      </div>
+    </a>
+
+    <div class="ja-blog-most" style="background:#ffffff; border:1px solid #e6eef4; border-radius:20px; padding:24px 26px; display:flex; flex-direction:column">
+      <h2 style="margin:0 0 6px; font-size:19px; font-weight:800; color:#16202e; letter-spacing:-0.3px">{{ tMostRead }}</h2>
+      <sc-for list="{{ mostRead }}" as="mr" hint-placeholder-count="3">
+        <a href="{{ mr.href }}" class="ja-blog-mrow" style="display:flex; gap:14px; align-items:flex-start; text-decoration:none; padding:16px 4px; border-top:1px solid #eef3f7; flex:1" style-hover="background:#f4f9fc">
+          <span class="ja-blog-rank" style="font-size:26px; font-weight:800; color:#bfdff0; line-height:1">{{ mr.rank }}</span>
+          <span style="display:flex; flex-direction:column; gap:4px">
+            <span style="font-size:14.5px; font-weight:800; color:#16202e; line-height:1.4">{{ mr.title }}</span>
+            <span style="font-size:12.5px; color:#94a3b8; font-weight:600">{{ mr.meta }}</span>
+          </span>
+        </a>
+      </sc-for>
+    </div>
+  </div>
+</div>
+
+<!-- ============ POSTS GRID ============ -->
+<div class="ja-blog-gsec" style="padding:32px 48px 32px">
+  <div class="ja-blog-grid" style="max-width:1280px; margin:0 auto; display:grid; grid-template-columns:repeat(3, 1fr); gap:24px">
+
+    <sc-for list="{{ posts }}" as="post" hint-placeholder-count="6">
+      <a href="{{ post.href }}" class="ja-blog-card" style="text-decoration:none; background:#ffffff; border:1px solid #e6eef4; border-radius:18px; overflow:hidden; display:flex; flex-direction:column" style-hover="box-shadow:0 14px 34px rgba(22,60,90,0.10); transform:translateY(-3px)">
+        <span class="ja-blog-ccover" style="{{ post.coverStyle }}">
+          <image-slot id="{{ post.slotId }}" style="display:block; width:100%; height:190px" shape="rect" placeholder="{{ post.cat }}"></image-slot>
+        </span>
+        <div class="ja-blog-cbody" style="padding:24px; display:flex; flex-direction:column; flex:1">
+          <div style="display:flex; margin-bottom:12px"><span style="{{ post.pillStyle }}">{{ post.cat }}</span></div>
+          <h3 style="margin:0 0 8px; font-size:18.5px; font-weight:800; color:#16202e; line-height:1.35">{{ post.title }}</h3>
+          <p style="margin:0 0 16px; font-size:14px; line-height:1.6; color:#64748b">{{ post.excerpt }}</p>
+          <div style="margin-top:auto; display:flex; justify-content:space-between; align-items:center; gap:8px">
+            <span style="font-size:13px; color:#94a3b8; font-weight:600">{{ post.meta }}</span>
+            <span style="{{ post.altStyle }}">{{ post.altLabel }}</span>
+          </div>
+        </div>
+      </a>
+    </sc-for>
+
+  </div>
+
+  <sc-if value="{{ noResults }}" hint-placeholder-val="{{ false }}">
+    <div style="max-width:1280px; margin:28px auto 0; background:#f4f9fc; border:1px dashed #bfdff0; border-radius:14px; padding:28px; text-align:center; font-size:15px; font-weight:600; color:#64748b">No articles match your search — try another keyword or category.</div>
+  </sc-if>
+
+  <!-- Load more -->
+  <sc-if value="{{ hasMore }}" hint-placeholder-val="{{ true }}">
+    <div style="max-width:1280px; margin:36px auto 0; display:flex; justify-content:center">
+      <button onClick="{{ loadMore }}" class="ja-blog-more" style="background:#ffffff; color:#1899D5; border:1.5px solid #1899D5; padding:13px 34px; border-radius:11px; font-weight:800; font-size:15px; cursor:pointer; font-family:inherit" style-hover="background:#e8f4fb">{{ tLoadMore }}</button>
+    </div>
+  </sc-if>
+</div>
+
+<!-- ============ NEWSLETTER BAND ============ -->
+<div class="ja-nl-sec" style="padding:40px 48px 8px">
+  <div class="ja-nl-card" style="max-width:1280px; margin:0 auto; background:#ffffff; border:1px solid #d3e6f2; border-radius:22px; padding:44px 52px; display:grid; grid-template-columns:1fr auto; gap:40px; align-items:center; position:relative; overflow:hidden; box-shadow:0 16px 40px rgba(22,60,90,0.07)">
+    <div style="position:absolute; top:-100px; left:-70px; width:300px; height:300px; border-radius:50%; background:radial-gradient(circle, rgba(24,153,213,0.10), transparent 65%)"></div>
+    <div class="ja-nl-head" style="position:relative; display:flex; align-items:center; gap:24px">
+      <div class="ja-nl-icon" style="width:64px; height:64px; border-radius:18px; background:linear-gradient(135deg, #1E9EE8, #146fa1); display:flex; align-items:center; justify-content:center; flex-shrink:0; box-shadow:0 12px 26px rgba(24,153,213,0.30)">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 6L2 7"></path></svg>
+      </div>
+      <div>
+        <h2 style="margin:0 0 6px; font-size:clamp(22px, 2.4vw, 28px); font-weight:800; color:#16202e; letter-spacing:-1.2px">Hiring insights, once a month</h2>
+        <p class="ja-nl-sub" style="margin:0; font-size:15px; line-height:1.6; color:#556377">Work permit updates, market news and hiring guides — straight to your inbox. <span class="ja-nl-nospam" style="font-weight:700; color:#16202e">No spam, unsubscribe anytime.</span></p>
+      </div>
+    </div>
+    <form onSubmit="{{ subscribeEmployer }}" class="ja-nl-form" style="position:relative; display:flex; flex-direction:column; gap:8px; min-width:340px">
+      <div class="ja-nl-row" style="display:flex; gap:0; background:#f4f9fc; border:1.5px solid #d3e6f2; border-radius:12px; padding:5px; align-items:stretch" style-focus="border-color:#1899D5">
+        <input name="email" type="email" required="required" placeholder="Your work email" style="border:none; outline:none; font-size:15px; color:#16202e; background:transparent; flex:1; padding:10px 14px; font-family:inherit" />
+        <button type="submit" style="background:#1899D5; color:#ffffff; border:none; border-radius:9px; padding:11px 26px; font-size:14.5px; font-weight:800; cursor:pointer; white-space:nowrap" style-hover="background:#1385bd">Subscribe →</button>
+      </div>
+      <span class="ja-nl-proof" style="font-size:12.5px; color:#94a3b8; font-weight:600; padding-left:4px">Joined by 200+ employers &amp; HR partners</span>
+    </form>
+  </div>
+</div>
+
+<!-- ============ CTA BAND ============ -->
+<div class="ja-blog-cta-sec" style="padding:48px 48px 72px">
+  <div class="ja-blog-cta" style="max-width:1280px; margin:0 auto; background:linear-gradient(115deg, #16202e 0%, #253063 100%); border-radius:20px; padding:38px 44px; display:flex; align-items:center; justify-content:space-between; gap:32px; flex-wrap:wrap; position:relative; overflow:hidden">
+    <div class="ja-blog-cta-copy">
+      <h2 style="margin:0 0 6px; font-size:clamp(22px, 2.4vw, 28px); font-weight:800; color:#ffffff; letter-spacing:-1.2px">Reading about hiring? Let's just do it.</h2>
+      <p class="ja-blog-cta-sub" style="margin:0; font-size:16px; color:rgba(255,255,255,0.9)">Free consultation for employers — tell us what you need.</p>
+      <div class="ja-blog-cta-ticks" style="display:none; flex-direction:column; gap:7px; margin-top:14px">
+        <span style="display:flex; align-items:flex-start; gap:9px; font-size:13px; font-weight:600; color:rgba(255,255,255,0.75)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><path d="M20 6L9 17l-5-5"></path></svg>İŞKUR licensed &mdash; permit No. 1730</span>
+        <span style="display:flex; align-items:flex-start; gap:9px; font-size:13px; font-weight:600; color:rgba(255,255,255,0.75)"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#4ade80" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><path d="M20 6L9 17l-5-5"></path></svg>Free proposal in 24 hours</span>
+      </div>
+    </div>
+    <div class="ja-blog-cta-btns" style="display:flex; gap:14px; flex-wrap:wrap">
+      <a href="Hire Workers.dc.html#request-form" style="background:#ffffff; color:#16202e; text-decoration:none; padding:15px 30px; border-radius:12px; font-weight:800; font-size:16px; white-space:nowrap" style-hover="background:#e8f4fb">Request Workers →</a>
+      <a href="https://wa.me/905011240340?text=Hello%20JobsAdmire%2C%20I%20want%20a%20free%20consultation." target="_blank" class="ja-blog-cta-wa" style="background:rgba(255,255,255,0.15); color:#ffffff; border:1.5px solid rgba(255,255,255,0.6); text-decoration:none; padding:15px 30px; border-radius:12px; font-weight:800; font-size:16px; white-space:nowrap" style-hover="background:rgba(255,255,255,0.25)">WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<div class="ja-mobile-bar" style="position:fixed; left:0; right:0; bottom:0; z-index:60; grid-template-columns:1fr 1fr; gap:10px; padding:10px 14px calc(10px + env(safe-area-inset-bottom)); background:rgba(10,20,40,0.96); backdrop-filter:blur(10px); border-top:1px solid rgba(255,255,255,0.14)">
+  <a href="tel:+905011240340" style="display:flex; align-items:center; justify-content:center; gap:9px; min-height:48px; border-radius:999px; background:rgba(255,255,255,0.1); border:1.5px solid rgba(255,255,255,0.26); color:#ffffff; text-decoration:none; font-size:15px; font-weight:800" style-active="background:rgba(255,255,255,0.2)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.6 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>Call us</a>
+  <a href="{{ waHireHref }}" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:9px; min-height:48px; border-radius:999px; background:#16a34a; color:#ffffff; text-decoration:none; font-size:15px; font-weight:800" style-active="background:#12813c"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.9 7c0 5.45-4.44 9.88-9.9 9.88zm8.42-18.3A11.8 11.8 0 0 0 12.07 0C5.53 0 .2 5.32.2 11.87c0 2.09.55 4.14 1.59 5.94L.1 24l6.33-1.66a11.9 11.9 0 0 0 5.64 1.44h.01c6.54 0 11.87-5.32 11.87-11.87 0-3.17-1.24-6.15-3.45-8.35z"></path></svg>WhatsApp</a>
+</div>
+
+<!-- ============ FOOTER (site theme) ============ -->
+<div class="ja-sec" style="background:#0a1428; border-top:3px solid #1899D5; padding:72px 48px 0">
+  <div style="max-width:1280px; margin:0 auto">
+    <div class="ja-footer-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:40px 36px; padding-bottom:52px">
+      <div>
+        <img src="https://www.jobsadmire.com/logos/logo4.png" alt="Jobs Admire" style="height:50px; display:block; margin-bottom:18px; filter:brightness(0) invert(1); opacity:0.95" />
+        <p style="font-size:15px; line-height:1.65; margin:0 0 18px; color:rgba(255,255,255,0.65); max-width:330px">Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.</p>
+        <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.2); border-radius:999px; padding:7px 16px; font-size:13px; font-weight:700; color:#7fd0f5; margin-bottom:20px">
+          <span style="width:8px; height:8px; border-radius:50%; background:#16a34a; display:inline-block"></span>
+          İŞKUR Licensed · Permit No. 1730
+        </div>
+        <div style="display:flex; align-items:center; gap:3px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.2); border-radius:999px; padding:3px; width:fit-content; margin-bottom:18px">
+          <sc-for list="{{ langsDark }}" as="l" hint-placeholder-count="2">
+            <button type="button" onClick="{{ l.onClick }}" style="{{ l.style }}">{{ l.label }}</button>
+          </sc-for>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap">
+          <a href="https://www.facebook.com/jobsadmire" target="_blank" aria-label="Facebook" style="width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffffff; display:flex; align-items:center; justify-content:center; text-decoration:none" style-hover="background:#1899D5; border-color:#1899D5"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.5-3.91 3.79-3.91 1.1 0 2.24.2 2.24.2v2.47H15.2c-1.25 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.9h-2.34V22c4.78-.75 8.43-4.91 8.43-9.94"></path></svg></a>
+          <a href="https://www.instagram.com/jobsadmire" target="_blank" aria-label="Instagram" style="width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffffff; display:flex; align-items:center; justify-content:center; text-decoration:none" style-hover="background:#1899D5; border-color:#1899D5"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor" stroke="none"></circle></svg></a>
+          <a href="{{ waHireHref }}" target="_blank" aria-label="WhatsApp" style="width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffffff; display:flex; align-items:center; justify-content:center; text-decoration:none" style-hover="background:#16a34a; border-color:#16a34a"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.9 7c0 5.45-4.44 9.88-9.9 9.88zm8.42-18.3A11.8 11.8 0 0 0 12.07 0C5.53 0 .2 5.32.2 11.87c0 2.09.55 4.14 1.59 5.94L.1 24l6.33-1.66a11.9 11.9 0 0 0 5.64 1.44h.01c6.54 0 11.87-5.32 11.87-11.87 0-3.17-1.24-6.15-3.45-8.35z"></path></svg></a>
+          <a href="https://t.me/jobsadmire" target="_blank" aria-label="Telegram" style="width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffffff; display:flex; align-items:center; justify-content:center; text-decoration:none" style-hover="background:#229ED9; border-color:#229ED9"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.9 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7 8.5-7.7c.4-.3-.1-.5-.6-.2L6.2 13l-4.5-1.4c-1-.3-1-1 .2-1.4l17.6-6.8c.8-.3 1.5.2 1.2 1.4z"></path></svg></a>
+          <a href="https://www.tiktok.com/@jobsadmire" target="_blank" aria-label="TikTok" style="width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffffff; display:flex; align-items:center; justify-content:center; text-decoration:none" style-hover="background:rgba(255,255,255,0.18); border-color:rgba(255,255,255,0.5)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.75 2h3.07c.22 1.87 1.45 3.42 3.18 4.03.6.22 1.25.34 1.95.34v3.1a7.7 7.7 0 0 1-4.4-1.38v6.24c0 3.66-2.97 6.63-6.63 6.63A6.63 6.63 0 0 1 3.3 14.3c0-3.66 2.96-6.62 6.62-6.62.34 0 .68.03 1 .08v3.24a3.44 3.44 0 0 0-1-.15 3.46 3.46 0 1 0 3.46 3.46V2z"></path></svg></a>
+          <a href="https://www.linkedin.com/company/jobsadmire" target="_blank" aria-label="LinkedIn" style="width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffffff; display:flex; align-items:center; justify-content:center; text-decoration:none" style-hover="background:#1073a8; border-color:#1073a8"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.31h4.52V23H.24V8.31zM8.34 8.31h4.33v2h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.92V23h-4.51v-7.13c0-1.7-.03-3.89-2.37-3.89-2.37 0-2.73 1.85-2.73 3.76V23H8.34V8.31z"></path></svg></a>
+        </div>
+      </div>
+      <div class="ja-fcol">
+        <h4 onClick="{{ toggleFcol }}" style="color:#ffffff; font-size:14px; font-weight:800; margin:0 0 16px; letter-spacing:0.6px; text-transform:uppercase; opacity:0.9">For Employers<svg class="ja-fchev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg></h4>
+        <div class="ja-flinks" style="display:flex; flex-direction:column; gap:11px; font-size:14.5px; font-weight:600">
+          <a href="Hire Workers.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Hire Workers</a>
+          <a href="Available Workers.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Available Workers</a>
+          <a href="Hiring Cost Calculator.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Hiring Cost Calculator</a>
+          <a href="Work Permit.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Work Permits</a>
+          <a href="Verify Representative.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Verify a Representative</a>
+          <a href="https://crm.jobsadmire.com/ext-login" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">CRM Login</a>
+        </div>
+      </div>
+      <div class="ja-fcol">
+        <h4 onClick="{{ toggleFcol }}" style="color:#ffffff; font-size:14px; font-weight:800; margin:0 0 16px; letter-spacing:0.6px; text-transform:uppercase; opacity:0.9">Company<svg class="ja-fchev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg></h4>
+        <div class="ja-flinks" style="display:flex; flex-direction:column; gap:11px; font-size:14.5px; font-weight:600">
+          <a href="About Us.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">About Us</a>
+          <a href="Success Stories.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Success Stories</a>
+          <a href="Blog.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Blog</a>
+          <a href="Partner With Us.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Partner With Us</a>
+          <a href="Join Our Team.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Join Our Team</a>
+          <a href="Contact Us.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Contact Us</a>
+        </div>
+      </div>
+      <div class="ja-fcol">
+        <h4 onClick="{{ toggleFcol }}" style="color:#ffffff; font-size:14px; font-weight:800; margin:0 0 16px; letter-spacing:0.6px; text-transform:uppercase; opacity:0.9">Contact<svg class="ja-fchev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg></h4>
+        <div class="ja-flinks" style="display:flex; flex-direction:column; gap:11px; font-size:14.5px; font-weight:600">
+          <a href="tel:+905011240340" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">+90 501 124 03 40</a>
+          <a href="mailto:info@jobsadmire.com" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">info@jobsadmire.com</a>
+          <a href="https://t.me/jobsadmire" target="_blank" style="display:inline-flex; align-items:center; gap:8px; color:rgba(255,255,255,0.62); text-decoration:none; min-height:34px" style-hover="color:#7fd0f5"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M21.9 4.3 18.9 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7 8.5-7.7c.4-.3-.1-.5-.6-.2L6.2 13l-4.5-1.4c-1-.3-1-1 .2-1.4l17.6-6.8c.8-.3 1.5.2 1.2 1.4z"></path></svg>Telegram &middot; @jobsadmire</a>
+          <span style="display:flex; flex-direction:column; gap:4px; padding-top:6px; border-top:1px solid rgba(255,255,255,0.12)">
+            <span style="display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#7fd0f5">Antalya &middot; Head office</span>
+            <span style="color:rgba(255,255,255,0.6); font-weight:500; font-size:13.5px; line-height:1.5">Adnan Menderes Blv. No 7/6<br />Muratpaşa, Antalya, Türkiye</span>
+            <span style="color:rgba(255,255,255,0.4); font-weight:600; font-size:12.5px">Mon–Fri 09:00–18:00</span>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Adnan%20Menderes%20Bulvar%C4%B1%207%2F6%20Muratpa%C5%9Fa%20Antalya" target="_blank" style="display:inline-flex; align-items:center; gap:6px; color:#7fd0f5; text-decoration:none; font-size:13px; font-weight:800; min-height:32px" style-hover="color:#ffffff"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Get directions</a>
+          </span>
+          <span style="display:flex; flex-direction:column; gap:4px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.12)">
+            <span style="display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#7fd0f5">Karachi &middot; Tech office</span>
+            <span style="color:rgba(255,255,255,0.6); font-weight:500; font-size:13.5px; line-height:1.5">Shahrah-e-Faisal<br />Karachi, Pakistan</span>
+            <span style="color:rgba(255,255,255,0.4); font-weight:600; font-size:12.5px">Mon–Sat 10:00–19:00 PKT</span>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Shahrah-e-Faisal%20Karachi%20Pakistan" target="_blank" style="display:inline-flex; align-items:center; gap:6px; color:#7fd0f5; text-decoration:none; font-size:13px; font-weight:800; min-height:32px" style-hover="color:#ffffff"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Get directions</a>
+          </span>
+        </div>
+        <a href="{{ waHireHref }}" target="_blank" class="ja-foot-wa" style="display:inline-block; margin-top:16px; background:#1899D5; color:#ffffff; text-decoration:none; padding:11px 22px; border-radius:10px; font-weight:800; font-size:14px" style-hover="background:#1385bd">WhatsApp Us →</a>
+      </div>
+      <div class="ja-fcol">
+        <h4 onClick="{{ toggleFcol }}" style="color:#ffffff; font-size:14px; font-weight:800; margin:0 0 16px; letter-spacing:0.6px; text-transform:uppercase; opacity:0.9">Get Our App<svg class="ja-fchev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg></h4>
+        <div class="ja-flinks-app">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px">
+            <div style="width:32px; height:52px; border-radius:9px; background:#ffffff; border:2px solid #16202e; flex-shrink:0; box-shadow:0 5px 14px rgba(22,60,90,0.16); position:relative; display:flex; align-items:center; justify-content:center">
+              <span style="position:absolute; top:3.5px; left:50%; transform:translateX(-50%); width:9px; height:2.5px; border-radius:999px; background:#16202e"></span>
+              <img src="ja-mark.png" alt="JobsAdmire app" style="width:22px; height:22px; object-fit:contain; display:block" />
+              <span style="position:absolute; bottom:3px; left:50%; transform:translateX(-50%); width:10px; height:2px; border-radius:999px; background:#c6d4de"></span>
+            </div>
+            <div>
+              <div style="font-size:14.5px; font-weight:800; color:#ffffff; line-height:1.2">JobsAdmire</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.55); font-weight:600; margin-top:2px">Workforce on the go</div>
+            </div>
+          </div>
+          <p style="font-size:12.5px; line-height:1.55; color:rgba(255,255,255,0.55); margin:0 0 14px">Approve candidates, track permits &amp; get instant updates.</p>
+          <div style="display:flex; flex-direction:column; gap:8px; align-items:flex-start">
+            <a href="https://play.google.com/store" target="_blank" style="display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.22); border-radius:9px; padding:8px 16px 8px 13px; text-decoration:none; min-width:0; max-width:100%" style-hover="background:rgba(255,255,255,0.16)">
+              <svg width="20" height="20" viewBox="0 0 24 24"><path d="M4 3.5v17c0 .4.45.65.8.42l.2-.12L15.5 12 5 3.2l-.2-.12A.5.5 0 0 0 4 3.5z" fill="#2196F3"></path><path d="M18.9 9.9L15.5 12 5 3.2l13.9 6.7z" fill="#4CAF50"></path><path d="M18.9 14.1L15.5 12 5 20.8l13.9-6.7z" fill="#F44336"></path><path d="M18.9 9.9l2.3 1.3c.7.4.7 1.2 0 1.6l-2.3 1.3L15.5 12l3.4-2.1z" fill="#FFC107"></path></svg>
+              <span style="display:flex; flex-direction:column; line-height:1.15">
+                <span style="font-size:9.5px; color:#b9c4cf; font-weight:600; letter-spacing:0.3px">GET IT ON</span>
+                <span style="font-size:14.5px; color:#ffffff; font-weight:700">Google Play</span>
+              </span>
+            </a>
+            <a href="https://www.apple.com/app-store/" target="_blank" style="display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.22); border-radius:9px; padding:8px 16px 8px 13px; text-decoration:none; min-width:0; max-width:100%" style-hover="background:rgba(255,255,255,0.16)">
+              <svg width="19" height="22" viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" fill="#ffffff"></path></svg>
+              <span style="display:flex; flex-direction:column; line-height:1.15">
+                <span style="font-size:9.5px; color:#b9c4cf; font-weight:600; letter-spacing:0.3px">DOWNLOAD ON THE</span>
+                <span style="font-size:14.5px; color:#ffffff; font-weight:700">App Store</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.14); padding:20px 0 26px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap">
+      <span style="font-size:13px; color:rgba(255,255,255,0.5)">İŞKUR permit No. 1730 · Job seekers are never charged a fee (law No. 4904) · Tax No: 48422122</span>
+      <div style="display:flex; gap:20px; font-size:13px">
+        <a href="https://www.jobsadmire.com/privacy" style="color:rgba(255,255,255,0.5); text-decoration:none" style-hover="color:#7fd0f5">Privacy</a>
+        <a href="https://www.jobsadmire.com/terms" style="color:rgba(255,255,255,0.5); text-decoration:none" style-hover="color:#7fd0f5">Terms</a>
+        <span style="color:rgba(255,255,255,0.5)">© 2026 Jobs Admire</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="ja-mobile-bar-spacer" style="height:74px"></div>
+<div class="ja-blog-sheet {{ topicsCls }}" style="display:none; position:fixed; inset:0; z-index:90">
+  <div onClick="{{ closeTopics }}" style="position:absolute; inset:0; background:rgba(8,16,32,0.55)"></div>
+  <div style="position:absolute; left:0; right:0; bottom:0; max-height:76vh; display:flex; flex-direction:column; background:#ffffff; border-radius:20px 20px 0 0; box-shadow:0 -14px 40px rgba(3,10,26,0.3)">
+    <div style="flex:none; padding:14px 18px 12px; border-bottom:1px solid #eef4f8; display:flex; align-items:center; justify-content:space-between; gap:12px">
+      <span style="font-size:16px; font-weight:800; color:#16202e">{{ tPickTopic }}</span>
+      <button type="button" onClick="{{ closeTopics }}" aria-label="Close" style="cursor:pointer; font-family:inherit; width:34px; height:34px; border:0; border-radius:10px; background:#f1f5f9; color:#556377; font-size:16px; font-weight:800">&times;</button>
+    </div>
+    <div style="flex:1; overflow-y:auto; padding:10px 12px calc(16px + env(safe-area-inset-bottom))">
+      <sc-for list="{{ topicRows }}" as="t" hint-placeholder-count="5">
+        <button type="button" onClick="{{ t.onPick }}" style="{{ t.style }}">
+          <span style="display:flex; align-items:center; gap:11px; min-width:0">
+            <span style="{{ t.dotStyle }}"></span>
+            <span style="font-size:15.5px; font-weight:800; color:#16202e; white-space:nowrap; overflow:hidden; text-overflow:ellipsis">{{ t.label }}</span>
+          </span>
+          <span style="flex:none; display:inline-flex; align-items:center; gap:9px">
+            <span style="font-size:13px; font-weight:800; color:#64748b">{{ t.count }}</span>
+            <span style="font-size:14px; font-weight:800; color:#1899D5; width:14px; text-align:right">{{ t.tick }}</span>
+          </span>
+        </button>
+      </sc-for>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  // the review sheet links here as ?lang=tr|fr|ru — the page is written in English, so
+  // ja-i18n swaps the rendered text after mount
+  static reviewLang() {
+    try {
+      const v = (new URLSearchParams(location.search).get("lang") || "").toUpperCase();
+      return ["TR", "FR", "RU"].indexOf(v) >= 0 ? v : null;
+    } catch (e) { return null; }
+  }
+
+  applyReviewLang() {
+    const rl = Component.reviewLang();
+    if (rl && window.JA_I18N) window.JA_I18N.apply(document.body, rl);
+  }
+
+  componentDidUpdate() { this.applyReviewLang(); }
+
+  // i18n lands after first paint — retry until the swap sticks, then stop, so a later pass
+  // cannot refill a node the highlighter has already emptied
+  bootReviewLang() {
+    if (!Component.reviewLang()) return;
+    let n = 0;
+    const tick = () => {
+      this.applyReviewLang();
+      if (document.querySelector("mark.ja-hl-mark")) return;
+      if (n++ < 10) setTimeout(tick, 350);
+    };
+    tick();
+  }
+
+  searchRef = React.createRef();
+
+  state = { menuOpen: false, topicsOpen: false, category: "All", query: "", progress: 0, lang: "en", wordIndex: 0, visibleCount: 6 };
+
+  wordsByLang = {
+    en: ["employers", "factories", "hotels", "farms", "builders"],
+    tr: ["işverenler", "fabrikalar", "oteller", "çiftlikler", "müteahhitler"]
+  };
+
+  postsEn = [
+    { slotId: "blog-post-1", slug: "hiring-from-pakistan-turkish-employers", cat: "Recruitment", catBg: "#eafaf1", catColor: "#12813c", title: "Hiring from Pakistan: what Turkish employers should know", excerpt: "Skill profiles, vetting standards and why the Pakistan corridor delivers reliable factory and agriculture workers.", meta: "May 2026 · 5 min read", alt: "Türkçe'de de var" },
+    { slotId: "blog-post-2", slug: "iskur-rules-private-employment-agencies", cat: "Compliance", catBg: "#f3edfd", catColor: "#7c3aed", title: "İŞKUR rules for private employment agencies, explained", excerpt: "What permit No. 1730 means, why job seekers never pay a fee, and how to verify any agency's license.", meta: "May 2026 · 4 min read", alt: "Türkçe'de de var" },
+    { slotId: "blog-post-3", slug: "turkey-labor-shortage-factories-hiring-overseas", cat: "Market News", catBg: "#fef3e2", catColor: "#c2710c", title: "Turkey's labor shortage: why factories are hiring overseas", excerpt: "Manufacturing, tourism and agriculture are all short on workers — here's what the data says and what employers are doing.", meta: "April 2026 · 6 min read", alt: "Türkçe'de de var" },
+    { slotId: "blog-post-4", slug: "work-permit-costs-timelines-budget", cat: "Work Permits", catBg: "#e8f4fb", catColor: "#1899D5", title: "Work permit costs & timelines: what employers should budget", excerpt: "Government fees, processing times and the realistic end-to-end budget for bringing one worker to your site.", meta: "April 2026 · 5 min read", alt: null },
+    { slotId: "blog-post-5", slug: "onboarding-overseas-workers-first-30-days", cat: "Recruitment", catBg: "#eafaf1", catColor: "#12813c", title: "Onboarding overseas workers: the first 30 days checklist", excerpt: "Housing, SGK registration, orientation and retention — how to set new arrivals up for success from day one.", meta: "March 2026 · 5 min read", alt: null },
+    { slotId: "blog-post-6", slug: "seasonal-agriculture-workforce-harvest-hiring", cat: "Market News", catBg: "#fef3e2", catColor: "#c2710c", title: "Seasonal agriculture workforce: planning your harvest hiring", excerpt: "Why farms that request workers 3 months ahead never miss a season — a planning timeline for growers.", meta: "March 2026 · 4 min read", alt: null },
+    { slotId: "blog-post-7", slug: "hotel-resort-staffing-2026-tourism-season", cat: "Recruitment", catBg: "#eafaf1", catColor: "#12813c", title: "Hotel & resort staffing: preparing for the 2026 tourism season", excerpt: "Antalya's hotels start recruiting in winter. A staffing timeline for housekeeping, kitchen and front-office roles.", meta: "February 2026 · 4 min read", alt: null },
+    { slotId: "blog-post-8", slug: "work-permit-renewals-deadlines", cat: "Work Permits", catBg: "#e8f4fb", catColor: "#1899D5", title: "Work permit renewals: don't lose your workforce to missed deadlines", excerpt: "Renewal windows, required updates and how to keep a valid permit for every worker on site.", meta: "February 2026 · 3 min read", alt: null },
+    { slotId: "blog-post-9", slug: "sgk-registration-foreign-workers", cat: "Compliance", catBg: "#f3edfd", catColor: "#7c3aed", title: "SGK registration for foreign workers: employer obligations", excerpt: "Social security registration, premiums and the 30-day rule after your worker arrives in Turkey.", meta: "January 2026 · 4 min read", alt: null },
+    { slotId: "blog-post-10", slug: "work-permit-rejection-reasons", cat: "Work Permits", catBg: "#e8f4fb", catColor: "#1899D5", title: "Turkey work permit rejection reasons — and how to avoid them", excerpt: "The 7 most common rejection grounds we see, with the fix for each one before you file.", meta: "January 2026 · 5 min read", alt: null },
+    { slotId: "blog-post-11", slug: "work-visa-vs-work-permit-turkey", cat: "Work Permits", catBg: "#e8f4fb", catColor: "#1899D5", title: "Work visa vs work permit in Turkey: what's the difference?", excerpt: "Two documents, two processes, one hire — how the consulate visa and ministry permit fit together.", meta: "December 2025 · 4 min read", alt: null },
+    { slotId: "blog-post-12", slug: "turkey-work-permit-quota-system", cat: "Work Permits", catBg: "#e8f4fb", catColor: "#1899D5", title: "Turkey's work permit quota system explained for employers", excerpt: "How sector quotas and shortage-occupation lists change what you can apply for.", meta: "December 2025 · 5 min read", alt: null },
+    { slotId: "blog-post-13", slug: "hire-factory-workers-turkey-overseas", cat: "Recruitment", catBg: "#eafaf1", catColor: "#12813c", title: "How to hire factory workers in Turkey from overseas", excerpt: "From skill test to shift start: a manufacturing-specific hiring walkthrough.", meta: "December 2025 · 6 min read", alt: null },
+    { slotId: "blog-post-14", slug: "hiring-construction-workers-central-asia", cat: "Recruitment", catBg: "#eafaf1", catColor: "#12813c", title: "Hiring construction workers from Central Asia: a practical guide", excerpt: "Trades, certifications and mobilization timelines for building sites.", meta: "November 2025 · 5 min read", alt: null },
+    { slotId: "blog-post-15", slug: "agriculture-workers-seasonal-vs-yearly-contracts", cat: "Recruitment", catBg: "#eafaf1", catColor: "#12813c", title: "Agriculture workers for Turkish farms: seasonal vs yearly contracts", excerpt: "Which contract type fits your crop calendar — and what each means for permits.", meta: "November 2025 · 4 min read", alt: null },
+    { slotId: "blog-post-16", slug: "verify-recruitment-agency-turkey-checklist", cat: "Recruitment", catBg: "#eafaf1", catColor: "#12813c", title: "How to verify a recruitment agency in Turkey: 6-point checklist", excerpt: "License lookup, fee rules and red flags — protect your company from unlicensed operators.", meta: "October 2025 · 3 min read", alt: null },
+    { slotId: "blog-post-17", slug: "foreign-worker-minimum-salary-thresholds-2026", cat: "Compliance", catBg: "#f3edfd", catColor: "#7c3aed", title: "Foreign worker minimum salary thresholds in Turkey (2026 update)", excerpt: "The ministry's role-based salary multipliers, updated for the new minimum wage.", meta: "October 2025 · 4 min read", alt: null },
+    { slotId: "blog-post-18", slug: "employer-obligations-housing-insurance-contracts", cat: "Compliance", catBg: "#f3edfd", catColor: "#7c3aed", title: "Employer obligations: housing, insurance and contracts for foreign staff", excerpt: "What the law requires you to provide — and what good employers add on top.", meta: "September 2025 · 5 min read", alt: null },
+    { slotId: "blog-post-19", slug: "turkey-2026-minimum-wage-hiring-costs", cat: "Market News", catBg: "#fef3e2", catColor: "#c2710c", title: "Turkey's 2026 minimum wage: what it means for hiring costs", excerpt: "New wage floor, new permit salary thresholds — the numbers employers need.", meta: "September 2025 · 4 min read", alt: null },
+    { slotId: "blog-post-20", slug: "top-5-countries-turkish-employers-recruited-2025", cat: "Market News", catBg: "#fef3e2", catColor: "#c2710c", title: "Top 5 countries Turkish employers recruited from in 2025", excerpt: "Corridor-by-corridor data on where Turkey's overseas workforce came from last year.", meta: "August 2025 · 5 min read", alt: null },
+    { slotId: "blog-post-21", slug: "tourism-season-2026-antalya-hotel-staffing", cat: "Market News", catBg: "#fef3e2", catColor: "#c2710c", title: "Tourism season 2026: Antalya's hotel staffing outlook", excerpt: "Occupancy forecasts and what they mean for housekeeping and kitchen hiring.", meta: "August 2025 · 4 min read", alt: null }
+  ];
+
+  postsTr = [
+    { slotId: "blog-post-tr-1", slug: "pakistandan-isci-istihdami", cat: "İşe Alım", catBg: "#eafaf1", catColor: "#12813c", title: "Pakistan'dan işçi istihdamı: Türk işverenlerin bilmesi gerekenler", excerpt: "Beceri profilleri, doğrulama standartları ve Pakistan koridorunun güvenilir fabrika ve tarım işçisi sağlamasının nedenleri.", meta: "Mayıs 2026 · 5 dk okuma", alt: "Also in English" },
+    { slotId: "blog-post-tr-2", slug: "iskur-ozel-istihdam-burolari-kurallari", cat: "Mevzuat", catBg: "#f3edfd", catColor: "#7c3aed", title: "Özel istihdam büroları için İŞKUR kuralları", excerpt: "1730 numaralı iznin anlamı, iş arayanlardan neden ücret alınmadığı ve bir ajansın lisansının nasıl doğrulanacağı.", meta: "Mayıs 2026 · 4 dk okuma", alt: "Also in English" },
+    { slotId: "blog-post-tr-3", slug: "turkiye-de-isgucu-acigi", cat: "Piyasa Haberleri", catBg: "#fef3e2", catColor: "#c2710c", title: "Türkiye'de işgücü açığı: fabrikalar neden yurt dışından işçi alıyor?", excerpt: "İmalat, turizm ve tarımda işçi açığı büyüyor — veriler ne söylüyor, işverenler ne yapıyor?", meta: "Nisan 2026 · 6 dk okuma", alt: "Also in English" },
+    { slotId: "blog-post-tr-4", slug: "yabanci-isciler-calisma-izni-rehberi", cat: "İş İzinleri", catBg: "#e8f4fb", catColor: "#1899D5", title: "Yabancı işçiler için çalışma izni: adım adım işveren rehberi", excerpt: "Gerekli belgeler, İŞKUR kriterleri, maliyetler ve süreler — başvuruların reddedilmesine yol açan hatalar.", meta: "Nisan 2026 · 7 dk okuma", alt: null }
+  ];
+
+  featuredByLang = {
+    en: { slug: "turkey-work-permit-process-employer-guide", cat: "Work Permits", title: "Turkey work permit process for foreign workers: the complete employer's guide", excerpt: "Everything an employer needs to know before hiring overseas workers — required documents, İŞKUR criteria, costs, timelines, and the mistakes that get applications rejected.", meta: "June 2026 · 8 min read", cta: "Read article →" },
+    tr: { slug: "yabanci-isciler-calisma-izni-rehberi", cat: "İş İzinleri", title: "Yabancı işçiler için çalışma izni süreci: eksiksiz işveren rehberi", excerpt: "Yurt dışından işçi almadan önce işverenin bilmesi gereken her şey — gerekli belgeler, İŞKUR kriterleri, maliyetler, süreler ve başvuruları reddettiren hatalar.", meta: "Haziran 2026 · 8 dk okuma", cta: "Yazıyı okuyun →" }
+  };
+
+  mostReadByLang = {
+    en: [
+      { rank: "1", slug: "turkey-work-permit-process-employer-guide", title: "Turkey work permit process: the complete employer's guide", meta: "Work Permits · 8 min read" },
+      { rank: "2", slug: "hiring-from-pakistan-turkish-employers", title: "Hiring from Pakistan: what Turkish employers should know", meta: "Recruitment · 5 min read" },
+      { rank: "3", slug: "work-permit-costs-timelines-budget", title: "Work permit costs & timelines: what employers should budget", meta: "Work Permits · 5 min read" }
+    ],
+    tr: [
+      { rank: "1", slug: "yabanci-isciler-calisma-izni-rehberi", title: "Yabancı işçiler için çalışma izni süreci: işveren rehberi", meta: "İş İzinleri · 8 dk okuma" },
+      { rank: "2", slug: "pakistandan-isci-istihdami", title: "Pakistan'dan işçi istihdamı: bilmeniz gerekenler", meta: "İşe Alım · 5 dk okuma" },
+      { rank: "3", slug: "turkiye-de-isgucu-acigi", title: "Türkiye'de işgücü açığı: veriler ne söylüyor?", meta: "Piyasa Haberleri · 6 dk okuma" }
+    ]
+  };
+
+  catsByLang = {
+    en: [{ value: "All", label: "All" }, { value: "Work Permits", label: "Work Permits" }, { value: "Recruitment", label: "Recruitment" }, { value: "Compliance", label: "Compliance" }, { value: "Market News", label: "Market News" }],
+    tr: [{ value: "All", label: "Tümü" }, { value: "İş İzinleri", label: "İş İzinleri" }, { value: "İşe Alım", label: "İşe Alım" }, { value: "Mevzuat", label: "Mevzuat" }, { value: "Piyasa Haberleri", label: "Piyasa Haberleri" }]
+  };
+
+  COVERS = {
+    "Work Permits": ["#1899D5", "#0e5f8f"], "İş İzinleri": ["#1899D5", "#0e5f8f"],
+    "Recruitment": ["#16a34a", "#0b6b2f"], "İşe Alım": ["#16a34a", "#0b6b2f"],
+    "Compliance": ["#7c3aed", "#4c1d95"], "Mevzuat": ["#7c3aed", "#4c1d95"],
+    "Market News": ["#f59e0b", "#b45309"], "Piyasa Haberleri": ["#f59e0b", "#b45309"]
+  };
+
+  coverStyle(cat) {
+    const c = this.COVERS[cat] || ["#35468a", "#16202e"];
+    return "position:relative; display:block; background:linear-gradient(135deg, " + c[0] + " 0%, " + c[1] + " 100%); color:#ffffff";
+  }
+
+  componentDidMount() {
+    this.bootReviewLang();
+    this._onScroll = () => {
+      const h = document.documentElement;
+      const max = h.scrollHeight - h.clientHeight;
+      const top = h.scrollTop || document.body.scrollTop || 0;
+      this.setState({ progress: max > 0 ? (top / max) * 100 : 0 });
+    };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    this._wordTimer = setInterval(() => {
+      this.setState((s) => ({ wordIndex: (s.wordIndex + 1) % this.wordsByLang[s.lang].length }));
+    }, 2600);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this._onScroll);
+    clearInterval(this._wordTimer);
+  }
+
+  renderVals() {
+    const lang = this.state.lang;
+
+    const CHROME_LANGS = [["EN", "English"], ["TR", "Türkçe"]];
+    const chromeLang = lang.toUpperCase();
+    const langBase = { padding: "9px 18px", fontSize: "13px", fontWeight: 800, cursor: "pointer", border: "none", background: "#ffffff", color: "#556377", fontFamily: "inherit" };
+    const blogLangs = [
+      { label: "EN", style: lang === "en" ? Object.assign({}, langBase, { background: "#1899D5", color: "#ffffff" }) : langBase, select: () => this.setState({ lang: "en", category: "All" }) },
+      { label: "TR", style: lang === "tr" ? Object.assign({}, langBase, { background: "#1899D5", color: "#ffffff" }) : langBase, select: () => this.setState({ lang: "tr", category: "All" }) }
+    ];
+
+    const chipBase = {
+      padding: "8px 16px", borderRadius: "999px", fontSize: "13.5px", fontWeight: 700,
+      whiteSpace: "nowrap", cursor: "pointer", border: "1px solid #d3e6f2",
+      background: "#ffffff", color: "#43536a", fontFamily: "inherit"
+    };
+    const chips = this.catsByLang[lang].map((c) => ({
+      label: c.label,
+      style: c.value === this.state.category
+        ? Object.assign({}, chipBase, { background: "#1899D5", color: "#ffffff", border: "1px solid #1899D5" })
+        : chipBase,
+      select: () => this.setState({ category: c.value })
+    }));
+
+    const q = this.state.query.trim().toLowerCase();
+    const source = lang === "en" ? this.postsEn : this.postsTr;
+    const posts = source
+      .filter((p) =>
+        (this.state.category === "All" || p.cat === this.state.category) &&
+        (!q || (p.title + " " + p.excerpt + " " + p.cat).toLowerCase().includes(q))
+      )
+      .map((p) => Object.assign({}, p, {
+        href: "Blog Article.dc.html?slug=" + p.slug,
+        coverStyle: this.coverStyle(p.cat),
+        pillStyle: { display: "inline-block", background: p.catBg, color: p.catColor, fontSize: "12.5px", fontWeight: 700, padding: "4px 12px", borderRadius: "999px" },
+        altLabel: p.alt || "",
+        altStyle: p.alt
+          ? { display: "inline-block", background: "#f4f9fc", border: "1px solid #d3e6f2", color: "#43536a", fontSize: "11px", fontWeight: 700, padding: "3px 10px", borderRadius: "999px", whiteSpace: "nowrap" }
+          : { display: "none" }
+      }));
+
+    const rawWord = this.wordsByLang[lang][this.state.wordIndex % this.wordsByLang[lang].length];
+    const word = lang === "tr" ? rawWord.charAt(0).toLocaleUpperCase("tr") + rawWord.slice(1) : rawWord;
+    const rotatingWord = React.createElement("span", {
+      key: lang + "-" + this.state.wordIndex,
+      style: { display: "inline-block", color: "#7fd0f5", animation: "ja-wordin 0.45s ease", borderBottom: "5px solid #7fd0f5", paddingBottom: "2px", lineHeight: 1 }
+    }, word);
+
+    const isTr = lang === "tr";
+    const filtered = posts.length;
+    const total = new Set(source.map((p) => p.slug).concat([this.featuredByLang[lang].slug])).size;
+    const hit = (p, val) => (val === "All" || p.cat === val) &&
+      (!q || (p.title + " " + p.excerpt + " " + p.cat).toLowerCase().includes(q));
+    const feat = this.featuredByLang[lang];
+    const countFor = (val) => {
+      const inGrid = source.filter((p) => hit(p, val)).length;
+      const featIn = hit(feat, val) && !source.some((p) => p.slug === feat.slug) ? 1 : 0;
+      return inGrid + featIn;
+    };
+    const isFiltered = !!q || this.state.category !== "All";
+    const shown = countFor(this.state.category);
+    const resultLine = q
+      ? (isTr ? shown + " sonuç · “" + this.state.query.trim() + "”" : shown + (shown === 1 ? " result" : " results") + " for “" + this.state.query.trim() + "”")
+      : (this.state.category !== "All"
+          ? (isTr ? shown + " yazı · " + this.state.category : shown + " in " + this.state.category)
+          : (isTr ? total + " yazı" : "All " + total + " articles"));
+
+    const CAT_DOT = {
+      "All": "#16202e", "Tümü": "#16202e",
+      "Work Permits": "#1899D5", "İş İzinleri": "#1899D5",
+      "Recruitment": "#16a34a", "İşe Alım": "#16a34a",
+      "Compliance": "#7c3aed", "Mevzuat": "#7c3aed",
+      "Market News": "#f59e0b", "Piyasa Haberleri": "#f59e0b"
+    };
+    const activeCat = this.catsByLang[lang].find((c) => c.value === this.state.category) || this.catsByLang[lang][0];
+
+    return {
+      searchRef: this.searchRef,
+      tTopic: isTr ? "Konu" : "Topic",
+      tPickTopic: isTr ? "Konu seçin" : "Pick a topic",
+      topicLabel: activeCat.label,
+      topicCount: countFor(this.state.category),
+      topicsCls: this.state.topicsOpen ? "ja-open" : "",
+      openTopics: () => this.setState({ topicsOpen: true }),
+      closeTopics: () => this.setState({ topicsOpen: false }),
+      topicRows: this.catsByLang[lang].map((c) => {
+        const on = c.value === this.state.category;
+        return {
+          label: c.label,
+          count: countFor(c.value),
+          tick: on ? "\u2713" : "",
+          dotStyle: "flex:none; width:10px; height:10px; border-radius:50%; background:" + (CAT_DOT[c.label] || "#94a3b8"),
+          style: "display:flex; width:100%; align-items:center; justify-content:space-between; gap:12px; cursor:pointer; font-family:inherit; text-align:left; min-height:54px; padding:10px 13px; margin-bottom:6px; border-radius:12px; border:1.5px solid " +
+            (on ? "#1899D5; background:#f2fafe" : "#eef4f8; background:#ffffff"),
+          onPick: () => this.setState({ category: c.value, visibleCount: 6, topicsOpen: false })
+        };
+      }),
+      hasQuery: !!q,
+      isFiltered,
+      resultLine,
+      tSearchPh: isTr ? "Yazılarda ara…" : "Search articles…",
+      tClearAll: isTr ? "Temizle" : "Clear",
+      tMostRead: isTr ? "En çok okunan" : "Most read",
+      tLoadMore: isTr ? "Daha fazla yazı ↓" : "Load more articles ↓",
+      clearSearch: () => {
+        if (this.searchRef.current) this.searchRef.current.value = "";
+        this.setState({ query: "", visibleCount: 6 });
+      },
+      resetFilters: () => {
+        if (this.searchRef.current) this.searchRef.current.value = "";
+        this.setState({ query: "", category: "All", visibleCount: 6 });
+      },
+      postCount: total,
+      tGuides: isTr ? "Rehber" : "Guides",
+      tLangs: isTr ? "Diller" : "Languages",
+      tWeekly: isTr ? "Haftalık" : "Weekly",
+      tNewPost: isTr ? "Yeni yazı" : "New post",
+      tHeroPre: isTr ? "" : "Insights for",
+      tHeroPost: isTr ? "için içgörüler" : "",
+      tHeroSub: isTr
+        ? "Türkiye ve yurt dışı işe alım koridorundan işe alım rehberleri, çalışma izni güncellemeleri ve iş gücü haberleri."
+        : "Hiring guides, work permit updates and workforce news from the Turkey–overseas recruitment corridor.",
+      tNewWeekly: isTr ? "Her hafta yeni yazı" : "New article every week",
+      rotatingWord,
+      blogLangs,
+      waHireHref: "https://wa.me/905011240340?text=" + encodeURIComponent("Hello JobsAdmire, I want to hire workers."),
+      menuOpen: !!this.state.menuOpen,
+      toggleMenu: () => this.setState((st) => ({ menuOpen: !st.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      toggleFcol: (e) => { const col = e.currentTarget.closest(".ja-fcol"); if (col) col.classList.toggle("ja-open"); },
+      langs: CHROME_LANGS.map((l) => ({
+        code: l[0], onClick: () => this.setState({ lang: l[0].toLowerCase(), category: "All" }),
+        style: "border-radius:999px; padding:6px 11px; font-size:12px; font-weight:800; letter-spacing:0.4px; cursor:pointer; font-family:inherit; border:none; " +
+          (l[0] === chromeLang ? "background:#16202e; color:#ffffff;" : "background:transparent; color:#64748b;")
+      })),
+      langsSlim: CHROME_LANGS.map((l) => ({
+        code: l[0], onClick: () => this.setState({ lang: l[0].toLowerCase(), category: "All" }),
+        style: "border-radius:999px; padding:5px 12px; min-height:30px; font-size:12px; font-weight:800; letter-spacing:0.4px; cursor:pointer; font-family:inherit; border:none; " +
+          (l[0] === chromeLang ? "background:#ffffff; color:#0a1428;" : "background:transparent; color:rgba(255,255,255,0.65);")
+      })),
+      langsBig: CHROME_LANGS.map((l) => ({
+        label: l[1], onClick: () => this.setState({ lang: l[0].toLowerCase(), category: "All" }),
+        style: "flex:1; min-height:44px; border-radius:12px; font-size:14px; font-weight:800; cursor:pointer; font-family:inherit; " +
+          (l[0] === chromeLang ? "background:#16202e; color:#ffffff; border:1.5px solid #16202e;" : "background:#ffffff; color:#43536a; border:1.5px solid #dbe8f2;")
+      })),
+      langsDark: CHROME_LANGS.map((l) => ({
+        label: l[1], onClick: () => this.setState({ lang: l[0].toLowerCase(), category: "All" }),
+        style: "border-radius:999px; padding:7px 15px; font-size:12.5px; font-weight:800; cursor:pointer; font-family:inherit; border:none; " +
+          (l[0] === chromeLang ? "background:#1899D5; color:#ffffff;" : "background:transparent; color:rgba(255,255,255,0.62);")
+      })),
+      chips,
+      posts: posts.slice(0, this.state.visibleCount),
+      hasMore: posts.length > this.state.visibleCount,
+      loadMore: () => this.setState((s) => ({ visibleCount: s.visibleCount + 6 })),
+      featured: Object.assign({}, this.featuredByLang[lang], {
+        href: "Blog Article.dc.html?slug=" + this.featuredByLang[lang].slug,
+        coverStyle: this.coverStyle(this.featuredByLang[lang].cat)
+      }),
+      mostRead: this.mostReadByLang[lang].map((m) => Object.assign({}, m, { href: "Blog Article.dc.html?slug=" + m.slug })),
+      noResults: posts.length === 0,
+      onSearch: (e) => this.setState({ query: e.target.value, visibleCount: 6 }),
+      barStyle: {
+        position: "fixed", top: 0, left: 0, height: "3px", zIndex: 50,
+        background: "linear-gradient(90deg, #1899D5, #16a34a)",
+        width: this.state.progress + "%", transition: "width 80ms linear"
+      },
+      subscribeEmployer: (e) => {
+        e.preventDefault();
+        const email = new FormData(e.target).get("email");
+        const msg = "Hello JobsAdmire, please add me to hiring updates: " + email;
+        window.open("https://wa.me/905011240340?text=" + encodeURIComponent(msg), "_blank");
+        e.target.reset();
+      }
+    };
+  }
+}
+</script>
+</body>
+</html>

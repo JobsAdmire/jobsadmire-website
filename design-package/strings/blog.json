@@ -1,0 +1,697 @@
+{
+ "page": "Blog",
+ "route": "/blog",
+ "strings": [
+  {
+   "id": "blog.001",
+   "en": "İŞKUR Licensed · Permit No. 1730",
+   "tr": "İŞKUR Lisanslı · İzin No. 1730",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "z1r9le"
+  },
+  {
+   "id": "blog.002",
+   "en": "İŞKUR · 1730",
+   "tr": "İŞKUR · 1730",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "1ih9pud"
+  },
+  {
+   "id": "blog.003",
+   "en": "info@jobsadmire.com",
+   "tr": "info@jobsadmire.com",
+   "sec": "Menü ve genel etiketler",
+   "rev": "38yl46"
+  },
+  {
+   "id": "blog.004",
+   "en": "Blog",
+   "tr": "Blog",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjmm4j"
+  },
+  {
+   "id": "blog.005",
+   "en": "Join Our Team",
+   "tr": "Ekibimize Katılın",
+   "sec": "Menü ve genel etiketler",
+   "rev": "ftsz4i"
+  },
+  {
+   "id": "blog.006",
+   "en": "Verify a Representative",
+   "tr": "Temsilci Doğrulama",
+   "sec": "Menü ve genel etiketler",
+   "rev": "l6eh8g"
+  },
+  {
+   "id": "blog.007",
+   "en": "CRM Login",
+   "tr": "CRM Girişi",
+   "sec": "Menü ve genel etiketler",
+   "rev": "57mcey"
+  },
+  {
+   "id": "blog.008",
+   "en": "About Us",
+   "tr": "Hakkımızda",
+   "sec": "Menü ve genel etiketler",
+   "rev": "6iiw1a"
+  },
+  {
+   "id": "blog.009",
+   "en": "Hire Workers",
+   "tr": "İşçi Talebi",
+   "sec": "Menü ve genel etiketler",
+   "rev": "oqbvo6"
+  },
+  {
+   "id": "blog.010",
+   "en": "Candidates",
+   "tr": "Adaylar",
+   "sec": "Menü ve genel etiketler",
+   "rev": "brf3mr"
+  },
+  {
+   "id": "blog.011",
+   "en": "Work Permits",
+   "tr": "Çalışma İzinleri",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1gd2msg"
+  },
+  {
+   "id": "blog.012",
+   "en": "Cost Calculator",
+   "tr": "Maliyet Hesaplama",
+   "sec": "Menü ve genel etiketler",
+   "rev": "k5qxyq"
+  },
+  {
+   "id": "blog.013",
+   "en": "Success Stories",
+   "tr": "Başarı Hikâyeleri",
+   "sec": "Menü ve genel etiketler",
+   "rev": "11w6kar"
+  },
+  {
+   "id": "blog.014",
+   "en": "Contact Us",
+   "tr": "İletişim",
+   "sec": "Menü ve genel etiketler",
+   "rev": "14c3gdf"
+  },
+  {
+   "id": "blog.015",
+   "en": "Partner With Us",
+   "tr": "İş Ortağı Olun",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1redpm7"
+  },
+  {
+   "id": "blog.016",
+   "en": "Request",
+   "tr": "Talep",
+   "sec": "Menü ve genel etiketler",
+   "rev": "lixris"
+  },
+  {
+   "id": "blog.017",
+   "en": "Workers",
+   "tr": "Oluştur",
+   "sec": "Menü ve genel etiketler",
+   "rev": "11joiw0"
+  },
+  {
+   "id": "blog.018",
+   "en": "Language",
+   "tr": "Dil",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1s1gw53"
+  },
+  {
+   "id": "blog.019",
+   "en": "Blog & Guides",
+   "tr": "Blog ve Rehberler",
+   "sec": "Menü ve genel etiketler",
+   "rev": "4wi5os"
+  },
+  {
+   "id": "blog.020",
+   "en": "CRM Login →",
+   "tr": "CRM Girişi →",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1s31eug"
+  },
+  {
+   "id": "blog.021",
+   "en": "Menu",
+   "tr": "Menü",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjlvbq"
+  },
+  {
+   "id": "blog.022",
+   "en": "Home",
+   "tr": "Ana Sayfa",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "yjtufe"
+  },
+  {
+   "id": "blog.023",
+   "en": "Written by our",
+   "tr": "Yazan:",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "17ee8i9"
+  },
+  {
+   "id": "blog.024",
+   "en": "permit & recruitment team",
+   "tr": "izin ve işe alım ekibimiz",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "n7u4id"
+  },
+  {
+   "id": "blog.025",
+   "en": "English & Türkçe",
+   "tr": "İngilizce ve Türkçe",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1jm17gi"
+  },
+  {
+   "id": "blog.026",
+   "en": "— 2 languages",
+   "tr": "— 2 dil",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1llbp42"
+  },
+  {
+   "id": "blog.027",
+   "en": "Work permit guide for employers — 2026",
+   "tr": "İşverenler için çalışma izni rehberi — 2026",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "14xzgee"
+  },
+  {
+   "id": "blog.028",
+   "en": "JobsAdmire · 8 min read",
+   "tr": "JobsAdmire · 8 dk okuma",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "15nxkq8"
+  },
+  {
+   "id": "blog.029",
+   "en": "Recruitment",
+   "tr": "İşe alım",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1l99vh5"
+  },
+  {
+   "id": "blog.030",
+   "en": "Hiring overseas workers: 30-day checklist",
+   "tr": "Yurt dışından işçi alımı: 30 günlük kontrol listesi",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1rysxdh"
+  },
+  {
+   "id": "blog.031",
+   "en": "Most read",
+   "tr": "En çok okunan",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "19e18s2"
+  },
+  {
+   "id": "blog.032",
+   "en": "2 languages",
+   "tr": "2 dil",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "iflmmu"
+  },
+  {
+   "id": "blog.033",
+   "en": "Clear search",
+   "tr": "Aramayı temizle",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "gpj1xu"
+  },
+  {
+   "id": "blog.034",
+   "en": "FEATURED",
+   "tr": "ÖNE ÇIKAN",
+   "sec": "Öne çıkan yazı",
+   "rev": "1isra0l"
+  },
+  {
+   "id": "blog.035",
+   "en": "No articles match your search — try another keyword or category.",
+   "tr": "Aramanızla eşleşen makale yok — başka bir anahtar kelime veya kategori deneyin.",
+   "sec": "Yazı listesi",
+   "rev": "1uj3rfp"
+  },
+  {
+   "id": "blog.036",
+   "en": "Hiring insights, once a month",
+   "tr": "Ayda bir işe alım içgörüleri",
+   "sec": "Bülten",
+   "rev": "1s98ee1"
+  },
+  {
+   "id": "blog.037",
+   "en": "Work permit updates, market news and hiring guides — straight to your inbox.",
+   "tr": "Çalışma izni güncellemeleri, piyasa haberleri ve işe alım rehberleri — doğrudan e-postanıza.",
+   "sec": "Bülten",
+   "rev": "1m61xdv"
+  },
+  {
+   "id": "blog.038",
+   "en": "No spam, unsubscribe anytime.",
+   "tr": "Spam yok, dilediğiniz zaman çıkabilirsiniz.",
+   "sec": "Bülten",
+   "rev": "1915p4p"
+  },
+  {
+   "id": "blog.039",
+   "en": "Subscribe →",
+   "tr": "Abone olun →",
+   "sec": "Bülten",
+   "rev": "1hd6pzz"
+  },
+  {
+   "id": "blog.040",
+   "en": "Joined by 200+ employers & HR partners",
+   "tr": "200+ işveren ve İK ortağı katıldı",
+   "sec": "Bülten",
+   "rev": "scxdkz"
+  },
+  {
+   "id": "blog.041",
+   "en": "Your work email",
+   "tr": "İş e-postanız",
+   "sec": "Bülten",
+   "rev": "hhernd"
+  },
+  {
+   "id": "blog.042",
+   "en": "Reading about hiring? Let's just do it.",
+   "tr": "İhtiyacınız olan iş gücünü birlikte bulalım.",
+   "sec": "Kapanış çağrısı",
+   "rev": "1ajcz33"
+  },
+  {
+   "id": "blog.043",
+   "en": "Free consultation for employers — tell us what you need.",
+   "tr": "İşverenlere özel ücretsiz danışmanlık — ihtiyacınızı bize iletin, süreci birlikte planlayalım.",
+   "sec": "Kapanış çağrısı",
+   "rev": "8wtawz"
+  },
+  {
+   "id": "blog.044",
+   "en": "İŞKUR licensed — permit No. 1730",
+   "tr": "İŞKUR lisanslı — izin No. 1730",
+   "sec": "Kapanış çağrısı",
+   "legal": true,
+   "rev": "9ocoa9"
+  },
+  {
+   "id": "blog.045",
+   "en": "Free proposal in 24 hours",
+   "tr": "24 saatte ücretsiz teklif",
+   "sec": "Kapanış çağrısı",
+   "rev": "8wu573"
+  },
+  {
+   "id": "blog.046",
+   "en": "Request Workers →",
+   "tr": "İşçi talep edin →",
+   "sec": "Kapanış çağrısı",
+   "rev": "1t7ca6b"
+  },
+  {
+   "id": "blog.047",
+   "en": "Call us",
+   "tr": "Bizi arayın",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1pu4zvl"
+  },
+  {
+   "id": "blog.048",
+   "en": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+   "tr": "Türkiye’deki işverenler için lisanslı iş gücü temini — yurt dışı tedarik, inceleme ve çalışma izinleri, uçtan uca.",
+   "sec": "Alt bilgi (Footer)",
+   "legal": true,
+   "rev": "1v5awlm"
+  },
+  {
+   "id": "blog.049",
+   "en": "For Employers",
+   "tr": "İşverenler için",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1yhsmw"
+  },
+  {
+   "id": "blog.050",
+   "en": "Available Workers",
+   "tr": "Mevcut İşçiler",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "wzront"
+  },
+  {
+   "id": "blog.051",
+   "en": "Hiring Cost Calculator",
+   "tr": "İşçi Maliyet Hesaplama",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "e9bold"
+  },
+  {
+   "id": "blog.052",
+   "en": "Company",
+   "tr": "Kurumsal",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1ohrlxe"
+  },
+  {
+   "id": "blog.053",
+   "en": "Contact",
+   "tr": "İletişim",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1ofoso5"
+  },
+  {
+   "id": "blog.054",
+   "en": "Telegram · @jobsadmire",
+   "tr": "Telegram · @jobsadmire",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3y9lox"
+  },
+  {
+   "id": "blog.055",
+   "en": "Antalya · Head office",
+   "tr": "Antalya · Merkez ofis",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1vkrek4"
+  },
+  {
+   "id": "blog.056",
+   "en": "Adnan Menderes Blv. No 7/6",
+   "tr": "Adnan Menderes Blv. No 7/6",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "muabnf"
+  },
+  {
+   "id": "blog.057",
+   "en": "Muratpaşa, Antalya, Türkiye",
+   "tr": "Muratpaşa, Antalya, Türkiye",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "e06xbz"
+  },
+  {
+   "id": "blog.058",
+   "en": "Mon–Fri 09:00–18:00",
+   "tr": "Pzt–Cum 09:00–18:00",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1pratzo"
+  },
+  {
+   "id": "blog.059",
+   "en": "Get directions",
+   "tr": "Yol tarifi alın",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "9twfut"
+  },
+  {
+   "id": "blog.060",
+   "en": "Karachi · Tech office",
+   "tr": "Karaçi · Teknoloji ofisi",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1dihier"
+  },
+  {
+   "id": "blog.061",
+   "en": "Shahrah-e-Faisal",
+   "tr": "Shahrah-e-Faisal",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "y795a1"
+  },
+  {
+   "id": "blog.062",
+   "en": "Karachi, Pakistan",
+   "tr": "Karaçi, Pakistan",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1td9ko9"
+  },
+  {
+   "id": "blog.063",
+   "en": "Mon–Sat 10:00–19:00 PKT",
+   "tr": "Pzt–Cmt 10:00–19:00 PKT",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1w2dzmx"
+  },
+  {
+   "id": "blog.064",
+   "en": "WhatsApp Us →",
+   "tr": "WhatsApp’tan yazın →",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1bo2cnd"
+  },
+  {
+   "id": "blog.065",
+   "en": "Get Our App",
+   "tr": "Uygulamamızı İndirin",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "ncsu7u"
+  },
+  {
+   "id": "blog.066",
+   "en": "Workforce on the go",
+   "tr": "İş gücü her yerde yanınızda",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3cj12h"
+  },
+  {
+   "id": "blog.067",
+   "en": "Approve candidates, track permits & get instant updates.",
+   "tr": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "19enop8"
+  },
+  {
+   "id": "blog.068",
+   "en": "GET IT ON",
+   "tr": "İNDİRİN",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "xm8p2n"
+  },
+  {
+   "id": "blog.069",
+   "en": "DOWNLOAD ON THE",
+   "tr": "İNDİRİN",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "mgrgjt"
+  },
+  {
+   "id": "blog.070",
+   "en": "İŞKUR permit No. 1730 · Job seekers are never charged a fee (law No. 4904) · Tax No: 48422122",
+   "tr": "İŞKUR izin No. 1730 · İş arayanlardan asla ücret alınmaz (4904 sayılı kanun) · Vergi No: 48422122",
+   "sec": "Alt bilgi (Footer)",
+   "legal": true,
+   "rev": "dgg8hy"
+  },
+  {
+   "id": "blog.071",
+   "en": "Privacy",
+   "tr": "Gizlilik Politikası",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1ligp4z"
+  },
+  {
+   "id": "blog.072",
+   "en": "Terms",
+   "tr": "Kullanım Şartları",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3rktfc"
+  },
+  {
+   "id": "blog.073",
+   "en": "© 2026 Jobs Admire",
+   "tr": "© 2026 Jobs Admire",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1f7jgq0"
+  },
+  {
+   "id": "blog.074",
+   "en": "JobsAdmire app",
+   "tr": "JobsAdmire uygulaması",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "10jpxja"
+  },
+  {
+   "id": "blog.075",
+   "en": "Close",
+   "tr": "Kapat",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3ilh77"
+  },
+  {
+   "id": "blog.076",
+   "en": "All",
+   "tr": "Tümü",
+   "sec": "Arayüz ve filtreler",
+   "rev": "3765b8"
+  },
+  {
+   "id": "blog.077",
+   "en": "Türkçe'de de var",
+   "tr": "Türkçe'de de var",
+   "sec": "Arayüz ve filtreler",
+   "rev": "cat4z8"
+  },
+  {
+   "id": "blog.078",
+   "en": "Compliance",
+   "tr": "Mevzuat",
+   "sec": "Arayüz ve filtreler",
+   "rev": "1lxbewo"
+  },
+  {
+   "id": "blog.079",
+   "en": "Market News",
+   "tr": "Piyasa haberleri",
+   "sec": "Arayüz ve filtreler",
+   "rev": "1pxhwj2"
+  },
+  {
+   "id": "blog.080",
+   "en": "Turkey work permit rejection reasons — and how to avoid them",
+   "tr": "Türkiye çalışma izni ret nedenleri — ve bunlardan nasıl kaçınılır",
+   "sec": "Arayüz ve filtreler",
+   "rev": "9bsahe"
+  },
+  {
+   "id": "blog.081",
+   "en": "Also in English",
+   "tr": "İngilizce'de de var",
+   "sec": "Arayüz ve filtreler",
+   "rev": "1fy8jc1"
+  },
+  {
+   "id": "blog.082",
+   "en": "Mevzuat",
+   "tr": "Mevzuat",
+   "sec": "Arayüz ve filtreler",
+   "rev": "ohahr5"
+  },
+  {
+   "id": "blog.083",
+   "en": "Piyasa Haberleri",
+   "tr": "Piyasa Haberleri",
+   "sec": "Arayüz ve filtreler",
+   "rev": "1k7y2fs"
+  },
+  {
+   "id": "blog.084",
+   "en": "Read article →",
+   "tr": "Yazıyı okuyun →",
+   "sec": "Arayüz ve filtreler",
+   "rev": "1izbewx"
+  },
+  {
+   "id": "blog.085",
+   "en": "for “",
+   "tr": "“",
+   "sec": "Arayüz ve filtreler",
+   "rev": "2txb0i"
+  },
+  {
+   "id": "blog.086",
+   "en": "Topic",
+   "tr": "Konu",
+   "sec": "Arayüz ve filtreler",
+   "rev": "3rvjfo"
+  },
+  {
+   "id": "blog.087",
+   "en": "Pick a topic",
+   "tr": "Konu seçin",
+   "sec": "Arayüz ve filtreler",
+   "rev": "jo0nh0"
+  },
+  {
+   "id": "blog.088",
+   "en": "Search articles…",
+   "tr": "Yazılarda ara…",
+   "sec": "Arayüz ve filtreler",
+   "rev": "m8t5wa"
+  },
+  {
+   "id": "blog.089",
+   "en": "Clear",
+   "tr": "Temizle",
+   "sec": "Arayüz ve filtreler",
+   "rev": "3illss"
+  },
+  {
+   "id": "blog.090",
+   "en": "Load more articles ↓",
+   "tr": "Daha fazla yazı ↓",
+   "sec": "Arayüz ve filtreler",
+   "rev": "t2lvki"
+  },
+  {
+   "id": "blog.091",
+   "en": "Guides",
+   "tr": "Rehber",
+   "sec": "Arayüz ve filtreler",
+   "rev": "16q9230"
+  },
+  {
+   "id": "blog.092",
+   "en": "Languages",
+   "tr": "Diller",
+   "sec": "Arayüz ve filtreler",
+   "rev": "1hg7vfo"
+  },
+  {
+   "id": "blog.093",
+   "en": "Weekly",
+   "tr": "Haftalık",
+   "sec": "Arayüz ve filtreler",
+   "rev": "1gric18"
+  },
+  {
+   "id": "blog.094",
+   "en": "New post",
+   "tr": "Yeni yazı",
+   "sec": "Arayüz ve filtreler",
+   "rev": "15arkip"
+  },
+  {
+   "id": "blog.095",
+   "en": "Insights for",
+   "tr": "için içgörüler",
+   "sec": "Arayüz ve filtreler",
+   "rev": "rn0s2z"
+  },
+  {
+   "id": "blog.096",
+   "en": "Hiring guides, work permit updates and workforce news from the Turkey–overseas recruitment corridor.",
+   "tr": "Türkiye ve yurt dışı işe alım koridorundan işe alım rehberleri, çalışma izni güncellemeleri ve iş gücü haberleri.",
+   "sec": "Arayüz ve filtreler",
+   "rev": "1psyner"
+  },
+  {
+   "id": "blog.097",
+   "en": "New article every week",
+   "tr": "Her hafta yeni yazı",
+   "sec": "Arayüz ve filtreler",
+   "rev": "1n9a330"
+  },
+  {
+   "id": "blog.098",
+   "en": "Hello JobsAdmire, I want to hire workers.",
+   "tr": "Merhaba JobsAdmire, işçi talebinde bulunmak istiyorum.",
+   "sec": "Arayüz ve filtreler",
+   "rev": "17wwilm"
+  }
+ ]
+}

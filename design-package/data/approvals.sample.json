@@ -1,0 +1,160 @@
+{
+  "updated": "2026-07-28T09:00:00Z",
+  "approvals": [
+    {
+      "id": "AP-2026-118",
+      "sector": "hotels",
+      "roles": "Housekeeping and pool staff",
+      "headcount": 26,
+      "date": "2026-04-14",
+      "place": "Side, Antalya",
+      "countries": [
+        "Kyrgyzstan"
+      ],
+      "image": "",
+      "redact": [
+        {
+          "x": 8,
+          "y": 26,
+          "w": 44,
+          "h": 5
+        }
+      ],
+      "status": "approved",
+      "publish": true
+    },
+    {
+      "id": "AP-2026-092",
+      "sector": "construction",
+      "roles": "Concrete workers and site labour",
+      "headcount": 40,
+      "date": "2026-01-22",
+      "place": "İzmir",
+      "countries": [
+        "Pakistan"
+      ],
+      "image": "",
+      "redact": [
+        {
+          "x": 8,
+          "y": 26,
+          "w": 44,
+          "h": 5
+        }
+      ],
+      "status": "approved",
+      "publish": true
+    },
+    {
+      "id": "AP-2026-061",
+      "sector": "agriculture",
+      "roles": "Greenhouse and packhouse workers",
+      "headcount": 34,
+      "date": "2026-02-09",
+      "place": "Kumluca, Antalya",
+      "countries": [
+        "Turkmenistan",
+        "Kyrgyzstan"
+      ],
+      "image": "",
+      "redact": [],
+      "status": "approved",
+      "publish": true
+    },
+    {
+      "id": "AP-2025-244",
+      "sector": "logistics",
+      "roles": "Pickers and forklift operators",
+      "headcount": 22,
+      "date": "2025-10-03",
+      "place": "İstanbul",
+      "countries": [
+        "Nepal",
+        "India"
+      ],
+      "image": "",
+      "redact": [],
+      "status": "approved",
+      "publish": true
+    },
+    {
+      "id": "AP-2025-201",
+      "sector": "hotels",
+      "roles": "Room attendants, kitchen porters, laundry",
+      "headcount": 45,
+      "date": "2025-08-11",
+      "place": "Kemer, Antalya",
+      "countries": [
+        "Uzbekistan",
+        "Nepal"
+      ],
+      "image": "",
+      "redact": [],
+      "status": "approved",
+      "publish": true
+    },
+    {
+      "id": "AP-2025-176",
+      "sector": "factory",
+      "roles": "Textile machine operators",
+      "headcount": 15,
+      "date": "2025-11-19",
+      "place": "Denizli",
+      "countries": [
+        "India"
+      ],
+      "image": "",
+      "redact": [],
+      "status": "approved",
+      "publish": true
+    },
+    {
+      "id": "AP-2025-140",
+      "sector": "construction",
+      "roles": "Formwork carpenters, steel fixers, welders",
+      "headcount": 60,
+      "date": "2025-05-27",
+      "place": "Ankara",
+      "countries": [
+        "Pakistan",
+        "India"
+      ],
+      "image": "",
+      "redact": [],
+      "status": "approved",
+      "publish": true
+    },
+    {
+      "id": "AP-2025-108",
+      "sector": "food",
+      "roles": "Cooks, dishwashers, service staff",
+      "headcount": 18,
+      "date": "2025-06-16",
+      "place": "Bodrum",
+      "countries": [
+        "Indonesia",
+        "Philippines"
+      ],
+      "image": "",
+      "redact": [],
+      "status": "approved",
+      "publish": true
+    },
+    {
+      "id": "AP-2025-063",
+      "sector": "factory",
+      "roles": "Machine operators, packers",
+      "headcount": 28,
+      "date": "2025-03-05",
+      "place": "Gaziantep",
+      "countries": [
+        "Uzbekistan",
+        "Kyrgyzstan"
+      ],
+      "image": "",
+      "redact": [],
+      "status": "approved",
+      "publish": true
+    }
+  ]
+}

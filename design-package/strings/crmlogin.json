@@ -1,0 +1,703 @@
+{
+ "page": "CRM Login",
+ "route": "/crm-login",
+ "strings": [
+  {
+   "id": "crmlogin.001",
+   "en": "Back to site",
+   "tr": "Siteye dön",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1o3lf1a"
+  },
+  {
+   "id": "crmlogin.002",
+   "en": "Sign in",
+   "tr": "Giriş yap",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1hce7g1"
+  },
+  {
+   "id": "crmlogin.003",
+   "en": "One login page for every JobsAdmire system. Pick the one your account belongs to.",
+   "tr": "Her JobsAdmire sistemi için tek giriş sayfası. Hesabınızın bağlı olduğu portalı seçin.",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "b6dyix"
+  },
+  {
+   "id": "crmlogin.004",
+   "en": "Password",
+   "tr": "Şifre",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1pd9l6i"
+  },
+  {
+   "id": "crmlogin.005",
+   "en": "Forgot password?",
+   "tr": "Şifrenizi mi unuttunuz?",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1ibz3z6"
+  },
+  {
+   "id": "crmlogin.006",
+   "en": "Your password",
+   "tr": "Şifreniz",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "udz9qj"
+  },
+  {
+   "id": "crmlogin.007",
+   "en": "Show",
+   "tr": "Göster",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "yjzr6u"
+  },
+  {
+   "id": "crmlogin.008",
+   "en": "Hide",
+   "tr": "Gizle",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "yjtsh1"
+  },
+  {
+   "id": "crmlogin.009",
+   "en": "Keep me signed in on this device",
+   "tr": "Bu cihazda oturumumu açık tut",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "b9n1lo"
+  },
+  {
+   "id": "crmlogin.010",
+   "en": "Signing in…",
+   "tr": "Giriş yapılıyor…",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1796dg7"
+  },
+  {
+   "id": "crmlogin.011",
+   "en": "New — mobile app",
+   "tr": "Yeni — mobil uygulama",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "x53h58"
+  },
+  {
+   "id": "crmlogin.012",
+   "en": "Message",
+   "tr": "Mesaj",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "ol2umm"
+  },
+  {
+   "id": "crmlogin.013",
+   "en": "Get the mobile app",
+   "tr": "Mobil uygulamayı edinin",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "84bl8r"
+  },
+  {
+   "id": "crmlogin.014",
+   "en": "Account manager",
+   "tr": "Müşteri yöneticisi",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1wl76f"
+  },
+  {
+   "id": "crmlogin.015",
+   "en": "IT desk",
+   "tr": "BT birimi",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1qnfom9"
+  },
+  {
+   "id": "crmlogin.016",
+   "en": "WhatsApp reply in ~10 min",
+   "tr": "WhatsApp yanıtı ~10 dk",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "vg7scd"
+  },
+  {
+   "id": "crmlogin.017",
+   "en": "Download on the",
+   "tr": "İndirin",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "16bjxop"
+  },
+  {
+   "id": "crmlogin.018",
+   "en": "Get it on",
+   "tr": "İndirin",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1i6cs1b"
+  },
+  {
+   "id": "crmlogin.019",
+   "en": "Contact a branch",
+   "tr": "Bir şubeyle iletişime geçin",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "mvkaj4"
+  },
+  {
+   "id": "crmlogin.020",
+   "en": "İŞKUR Licensed · Permit No. 1730",
+   "tr": "İŞKUR Lisanslı · İzin No. 1730",
+   "sec": "Arayüz ve mesajlar",
+   "legal": true,
+   "rev": "z1r9le"
+  },
+  {
+   "id": "crmlogin.021",
+   "en": "Authorised private employment agency · Republic of Türkiye",
+   "tr": "Yetkili özel istihdam bürosu · Türkiye Cumhuriyeti",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1pho8j1"
+  },
+  {
+   "id": "crmlogin.022",
+   "en": "İŞKUR licensed · Permit No. 1730 · Never pay a fee to any recruiter",
+   "tr": "İŞKUR lisanslı · İzin No. 1730 · Hiçbir aracıya ücret ödemeyin",
+   "sec": "Arayüz ve mesajlar",
+   "legal": true,
+   "rev": "1rxdowk"
+  },
+  {
+   "id": "crmlogin.023",
+   "en": "JobsAdmire never asks for your password by WhatsApp, SMS or phone. If someone does, it is not us.",
+   "tr": "JobsAdmire şifrenizi asla WhatsApp, SMS veya telefonla istemez. İsteyen biri varsa, o biz değiliz.",
+   "sec": "Arayüz ve mesajlar",
+   "legal": true,
+   "rev": "1mnh3l7"
+  },
+  {
+   "id": "crmlogin.024",
+   "en": "Enter the email address your account was opened with.",
+   "tr": "Hesabınızın açıldığı e-posta adresini girin.",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "84yiqq"
+  },
+  {
+   "id": "crmlogin.025",
+   "en": "Your password is at least 6 characters.",
+   "tr": "Şifreniz en az 6 karakterdir.",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "15qfo6x"
+  },
+  {
+   "id": "crmlogin.026",
+   "en": "Email or password is incorrect. One attempt left before the account locks.",
+   "tr": "E-posta veya şifre hatalı. Hesap kilitlenmeden önce bir deneme kaldı.",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "ppn45f"
+  },
+  {
+   "id": "crmlogin.027",
+   "en": "Too many attempts — this account is temporarily locked. Our team can unlock it after an ID check.",
+   "tr": "Çok fazla deneme — bu hesap geçici olarak kilitli. Ekibimiz kimlik kontrolünden sonra kilidi açabilir.",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "142pke5"
+  },
+  {
+   "id": "crmlogin.028",
+   "en": "Operations Portal selected from your work email.",
+   "tr": "İş e-postanıza göre Operasyon Portalı seçildi.",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "x93j7e"
+  },
+  {
+   "id": "crmlogin.029",
+   "en": "Partner Portal selected from your email domain.",
+   "tr": "E-posta alan adınıza göre İş Ortağı Portalı seçildi.",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1ao9y2b"
+  },
+  {
+   "id": "crmlogin.030",
+   "en": "QR code to download the JobsAdmire app",
+   "tr": "JobsAdmire uygulamasını indirmek için QR kod",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1x68o0u"
+  },
+  {
+   "id": "crmlogin.031",
+   "en": "Caps Lock is on.",
+   "tr": "Caps Lock açık.",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1897wka"
+  },
+  {
+   "id": "crmlogin.032",
+   "en": "Locked",
+   "tr": "Kilitli",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1c1b20f"
+  },
+  {
+   "id": "crmlogin.033",
+   "en": "Your session ended",
+   "tr": "Oturumunuz sona erdi",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "ca7vtw"
+  },
+  {
+   "id": "crmlogin.034",
+   "en": "You were signed out after 30 minutes without activity. Sign in again to pick up where you left off.",
+   "tr": "30 dakikalık hareketsizlik nedeniyle oturumunuz sona erdi. İşlemlerinize devam etmek için lütfen yeniden giriş yapın.",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1dnwjtx"
+  },
+  {
+   "id": "crmlogin.035",
+   "en": "You have been signed out",
+   "tr": "Oturumunuz kapatıldı",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1vuzvd8"
+  },
+  {
+   "id": "crmlogin.036",
+   "en": "Sign in again whenever you are ready.",
+   "tr": "Hazır olduğunuzda yeniden giriş yapın.",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "b9uw6p"
+  },
+  {
+   "id": "crmlogin.037",
+   "en": "Reset your password",
+   "tr": "Şifrenizi sıfırlayın",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1eq2me6"
+  },
+  {
+   "id": "crmlogin.038",
+   "en": "Enter your account email and we send you a reset link.",
+   "tr": "Hesap e-postanızı girin, size sıfırlama bağlantısı gönderelim.",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "13asist"
+  },
+  {
+   "id": "crmlogin.039",
+   "en": "Send reset link",
+   "tr": "Sıfırlama bağlantısı gönder",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "h3788c"
+  },
+  {
+   "id": "crmlogin.040",
+   "en": "Sending…",
+   "tr": "Gönderiliyor…",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "m5dden"
+  },
+  {
+   "id": "crmlogin.041",
+   "en": "Back to sign in",
+   "tr": "Girişe dön",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "16hh1k1"
+  },
+  {
+   "id": "crmlogin.042",
+   "en": "Check your inbox",
+   "tr": "E-postanızı kontrol edin",
+   "sec": "Arayüz ve mesajlar",
+   "rev": "1tb9ue8"
+  },
+  {
+   "id": "crmlogin.043",
+   "en": "Partner Portal",
+   "tr": "İş Ortağı Portalı",
+   "sec": "Portal açıklamaları",
+   "rev": "phqi4f"
+  },
+  {
+   "id": "crmlogin.044",
+   "en": "Agencies & employers",
+   "tr": "Ajanslar ve işverenler",
+   "sec": "Portal açıklamaları",
+   "rev": "bwjcl0"
+  },
+  {
+   "id": "crmlogin.045",
+   "en": "Partner portal",
+   "tr": "İş ortağı portalı",
+   "sec": "Portal açıklamaları",
+   "rev": "1dur5en"
+  },
+  {
+   "id": "crmlogin.046",
+   "en": "For agencies and employers",
+   "tr": "Ajanslar ve işverenler için",
+   "sec": "Portal açıklamaları",
+   "rev": "v7nrfm"
+  },
+  {
+   "id": "crmlogin.047",
+   "en": "Your whole partnership runs on one portal.",
+   "tr": "Tüm iş ortaklığınız tek bir portalda yürür.",
+   "sec": "Portal açıklamaları",
+   "rev": "ouxt0k"
+  },
+  {
+   "id": "crmlogin.048",
+   "en": "No paperwork by courier, no chasing updates by phone — from the agreement to every placement, everything happens in one place.",
+   "tr": "Evrak gönderimi ve telefon trafiğiyle uğraşmadan, sözleşmeden yerleştirmeye kadar tüm süreci tek bir portal üzerinden yönetin.",
+   "sec": "Portal açıklamaları",
+   "rev": "11pj1mc"
+  },
+  {
+   "id": "crmlogin.049",
+   "en": "E-signature agreement — terms signed digitally",
+   "tr": "E-imzalı sözleşme — koşullar dijital olarak imzalanır",
+   "sec": "Portal açıklamaları",
+   "rev": "4nkk0r"
+  },
+  {
+   "id": "crmlogin.050",
+   "en": "Company documents — upload once, valid for every placement",
+   "tr": "Şirket belgeleri — bir kez yükleyin, her yerleştirme için geçerli",
+   "sec": "Portal açıklamaları",
+   "rev": "159waij"
+  },
+  {
+   "id": "crmlogin.051",
+   "en": "Jobs & CVs — post vacancies, upload candidates",
+   "tr": "İşler ve CV’ler — pozisyon yayınlayın, aday yükleyin",
+   "sec": "Portal açıklamaları",
+   "rev": "1o6w243"
+  },
+  {
+   "id": "crmlogin.052",
+   "en": "Live placement status — every candidate and permit in real time",
+   "tr": "Canlı yerleştirme durumu — her aday ve izin gerçek zamanlı",
+   "sec": "Portal açıklamaları",
+   "rev": "1rio41y"
+  },
+  {
+   "id": "crmlogin.053",
+   "en": "Company email",
+   "tr": "Şirket e-postası",
+   "sec": "Portal açıklamaları",
+   "rev": "196xvpq"
+  },
+  {
+   "id": "crmlogin.054",
+   "en": "This login is only for HR agencies and employers we work with.",
+   "tr": "Bu giriş yalnızca çalıştığımız İK ajansları ve işverenler içindir.",
+   "sec": "Portal açıklamaları",
+   "rev": "1m7h7t8"
+  },
+  {
+   "id": "crmlogin.055",
+   "en": "470+ placements already run through this portal. Accounts are opened by your account manager once the cooperation agreement is signed.",
+   "tr": "470+ yerleştirme bu portal üzerinden gerçekleştirildi. İş birliği sözleşmesi imzalandıktan sonra hesabınız müşteri yöneticiniz tarafından açılır.",
+   "sec": "Portal açıklamaları",
+   "rev": "fcsls1"
+  },
+  {
+   "id": "crmlogin.056",
+   "en": "No account yet?",
+   "tr": "Henüz hesabınız yok mu?",
+   "sec": "Portal açıklamaları",
+   "rev": "1geytg2"
+  },
+  {
+   "id": "crmlogin.057",
+   "en": "One short call is usually enough to know whether a partnership makes sense. We reply within 4 working hours and open your portal the same day the agreement is signed.",
+   "tr": "Bir iş ortaklığının anlamlı olup olmadığını anlamak için genellikle kısa bir görüşme yeterli. 4 iş saati içinde yanıt veriyoruz ve sözleşmenin imzalandığı gün portalınızı açıyoruz.",
+   "sec": "Portal açıklamaları",
+   "rev": "15vr7nu"
+  },
+  {
+   "id": "crmlogin.058",
+   "en": "Request portal access",
+   "tr": "Portal erişimi talep edin",
+   "sec": "Portal açıklamaları",
+   "rev": "n12b0k"
+  },
+  {
+   "id": "crmlogin.059",
+   "en": "Also on mobile — manage placements on the go.",
+   "tr": "Mobilde de var — yerleştirmeleri hareket halinde yönetin.",
+   "sec": "Portal açıklamaları",
+   "rev": "y0n81w"
+  },
+  {
+   "id": "crmlogin.060",
+   "en": "Push alert the moment a permit stage moves",
+   "tr": "Bir izin aşaması ilerlediği anda bildirim",
+   "sec": "Portal açıklamaları",
+   "rev": "6uj06k"
+  },
+  {
+   "id": "crmlogin.061",
+   "en": "Photograph and upload company documents",
+   "tr": "Şirket belgelerini fotoğraflayıp yükleyin",
+   "sec": "Portal açıklamaları",
+   "rev": "1x5sz12"
+  },
+  {
+   "id": "crmlogin.062",
+   "en": "Approve or reject a shortlist in one tap",
+   "tr": "Kısa listeyi tek dokunuşla onaylayın veya reddedin",
+   "sec": "Portal açıklamaları",
+   "rev": "d7acfj"
+  },
+  {
+   "id": "crmlogin.063",
+   "en": "Free · iOS 15+ and Android 9+ · same login, same data as this portal",
+   "tr": "Ücretsiz · iOS 15+ ve Android 9+ · bu portalla aynı giriş, aynı veri",
+   "sec": "Portal açıklamaları",
+   "rev": "1tyhfzq"
+  },
+  {
+   "id": "crmlogin.064",
+   "en": "Operations Portal",
+   "tr": "Operasyon Portalı",
+   "sec": "Portal açıklamaları",
+   "rev": "wb4nnb"
+  },
+  {
+   "id": "crmlogin.065",
+   "en": "JobsAdmire team",
+   "tr": "JobsAdmire ekibi",
+   "sec": "Portal açıklamaları",
+   "rev": "1xl74ze"
+  },
+  {
+   "id": "crmlogin.066",
+   "en": "Operations",
+   "tr": "Operasyon",
+   "sec": "Portal açıklamaları",
+   "rev": "1xzaeb"
+  },
+  {
+   "id": "crmlogin.067",
+   "en": "Internal — JobsAdmire team",
+   "tr": "Dahili — JobsAdmire ekibi",
+   "sec": "Portal açıklamaları",
+   "rev": "113zgbt"
+  },
+  {
+   "id": "crmlogin.068",
+   "en": "The whole pipeline on one desk.",
+   "tr": "Tüm süreç tek bir masada.",
+   "sec": "Portal açıklamaları",
+   "rev": "1du8jyt"
+  },
+  {
+   "id": "crmlogin.069",
+   "en": "Every action logged against your staff account",
+   "tr": "Her işlem personel hesabınıza kaydedilir",
+   "sec": "Portal açıklamaları",
+   "rev": "16ehpqt"
+  },
+  {
+   "id": "crmlogin.070",
+   "en": "Permit files, approvals and deadlines in one timeline",
+   "tr": "İzin dosyaları, onaylar ve son tarihler tek bir zaman çizelgesinde",
+   "sec": "Portal açıklamaları",
+   "rev": "1hdeic5"
+  },
+  {
+   "id": "crmlogin.071",
+   "en": "Sessions end after 30 minutes idle",
+   "tr": "Oturumlar 30 dakika hareketsizlikten sonra sona erer",
+   "sec": "Portal açıklamaları",
+   "rev": "1ultfkp"
+  },
+  {
+   "id": "crmlogin.072",
+   "en": "Work email",
+   "tr": "İş e-postası",
+   "sec": "Portal açıklamaları",
+   "rev": "16k9wqw"
+  },
+  {
+   "id": "crmlogin.073",
+   "en": "This login is only for the JobsAdmire internal team.",
+   "tr": "Bu giriş yalnızca JobsAdmire dahili ekibi içindir.",
+   "sec": "Portal açıklamaları",
+   "rev": "p33woq"
+  },
+  {
+   "id": "crmlogin.074",
+   "en": "Internal accounts are issued by IT. Never share your login — activity is logged against your name.",
+   "tr": "Dahili hesaplar BT tarafından verilir. Girişinizi asla paylaşmayın — faaliyetler adınıza kaydedilir.",
+   "sec": "Portal açıklamaları",
+   "rev": "1ca5kag"
+  },
+  {
+   "id": "crmlogin.075",
+   "en": "Locked out?",
+   "tr": "Kilitli mi kaldınız?",
+   "sec": "Portal açıklamaları",
+   "rev": "1lun8e"
+  },
+  {
+   "id": "crmlogin.076",
+   "en": "Password resets for internal accounts go through IT. Message the operations group and we unlock it after an ID check.",
+   "tr": "Dahili hesaplarda şifre sıfırlama BT üzerinden yapılır. Operasyon grubuna yazın, kimlik kontrolünden sonra kilidi açarız.",
+   "sec": "Portal açıklamaları",
+   "rev": "1nx5vgj"
+  },
+  {
+   "id": "crmlogin.077",
+   "en": "Message IT support",
+   "tr": "BT desteğine yazın",
+   "sec": "Portal açıklamaları",
+   "rev": "zzbq0s"
+  },
+  {
+   "id": "crmlogin.078",
+   "en": "Operations app — approvals, tasks and candidate files on the move.",
+   "tr": "Operasyon uygulaması — onaylar, görevler ve aday dosyaları hareket halinde.",
+   "sec": "Portal açıklamaları",
+   "rev": "xlxwxo"
+  },
+  {
+   "id": "crmlogin.079",
+   "en": "Today's tasks and deadlines on the home screen",
+   "tr": "Bugünün görevleri ve son tarihleri ana ekranda",
+   "sec": "Portal açıklamaları",
+   "rev": "1vykhwh"
+  },
+  {
+   "id": "crmlogin.080",
+   "en": "Scan a passport straight into a candidate file",
+   "tr": "Pasaportu doğrudan aday dosyasına tarayın",
+   "sec": "Portal açıklamaları",
+   "rev": "1kg6zkr"
+  },
+  {
+   "id": "crmlogin.081",
+   "en": "Approve permits and requests away from your desk",
+   "tr": "İzinleri ve talepleri masanızdan uzakta onaylayın",
+   "sec": "Portal açıklamaları",
+   "rev": "azru1j"
+  },
+  {
+   "id": "crmlogin.082",
+   "en": "WhatsApp inbox CRM",
+   "tr": "WhatsApp gelen kutusu CRM",
+   "sec": "Portal açıklamaları",
+   "rev": "1imyi2b"
+  },
+  {
+   "id": "crmlogin.083",
+   "en": "ChatAdmire is only for the JobsAdmire internal team.",
+   "tr": "ChatAdmire yalnızca JobsAdmire şirket içi ekibi içindir.",
+   "sec": "Portal açıklamaları",
+   "rev": "1vq2gqf"
+  },
+  {
+   "id": "crmlogin.084",
+   "en": "A WhatsApp inbox that works like a CRM.",
+   "tr": "CRM gibi çalışan bir WhatsApp gelen kutusu.",
+   "sec": "Portal açıklamaları",
+   "rev": "ofkdal"
+  },
+  {
+   "id": "crmlogin.085",
+   "en": "One shared number for the whole team, and every chat filed against the candidate or employer it belongs to — not lost on someone's phone.",
+   "tr": "Tüm ekip için tek ortak numara ve her sohbet ait olduğu aday ya da işveren kaydına işlenir — kimsenin telefonunda kaybolmaz.",
+   "sec": "Portal açıklamaları",
+   "rev": "1jeqlvm"
+  },
+  {
+   "id": "crmlogin.086",
+   "en": "Shared inbox — one number, the whole team replies",
+   "tr": "Ortak gelen kutusu — tek numara, tüm ekip yanıtlar",
+   "sec": "Portal açıklamaları",
+   "rev": "1xm4txk"
+  },
+  {
+   "id": "crmlogin.087",
+   "en": "Every chat filed on the candidate or employer record",
+   "tr": "Her sohbet aday ya da işveren kaydına işlenir",
+   "sec": "Portal açıklamaları",
+   "rev": "1r2c6wc"
+  },
+  {
+   "id": "crmlogin.088",
+   "en": "Chats assigned to a coordinator, with full history",
+   "tr": "Sohbetler bir koordinatöre atanır, tüm geçmişiyle",
+   "sec": "Portal açıklamaları",
+   "rev": "1e7zxcn"
+  },
+  {
+   "id": "crmlogin.089",
+   "en": "Broadcast campaigns, with replies landing in the same inbox",
+   "tr": "Toplu kampanyalar, yanıtlar aynı gelen kutusuna düşer",
+   "sec": "Portal açıklamaları",
+   "rev": "b2g3mk"
+  },
+  {
+   "id": "crmlogin.090",
+   "en": "ChatAdmire has its own sign-in",
+   "tr": "ChatAdmire girişi ayrıdır",
+   "sec": "Portal açıklamaları",
+   "rev": "nn9hp2"
+  },
+  {
+   "id": "crmlogin.091",
+   "en": "For your security we never ask for another system's password here. The button opens ChatAdmire and you sign in there.",
+   "tr": "Güvenliğiniz için başka bir sistemin şifresini burada asla istemiyoruz. Düğme ChatAdmire uygulamasını açar, girişi orada yaparsınız.",
+   "sec": "Portal açıklamaları",
+   "legal": true,
+   "rev": "1jgdxym"
+  },
+  {
+   "id": "crmlogin.092",
+   "en": "Open ChatAdmire",
+   "tr": "ChatAdmire uygulamasını aç",
+   "sec": "Portal açıklamaları",
+   "rev": "lp4hvd"
+  },
+  {
+   "id": "crmlogin.093",
+   "en": "No ChatAdmire access?",
+   "tr": "ChatAdmire erişiminiz yok mu?",
+   "sec": "Portal açıklamaları",
+   "rev": "1krsdz"
+  },
+  {
+   "id": "crmlogin.094",
+   "en": "Ask operations",
+   "tr": "Operasyona yazın",
+   "sec": "Portal açıklamaları",
+   "rev": "d1kzwa"
+  },
+  {
+   "id": "crmlogin.095",
+   "en": "ChatAdmire on mobile — reply from the shared inbox, not your own number.",
+   "tr": "Mobilde ChatAdmire — kendi numaranızdan değil, ortak gelen kutusundan yanıtlayın.",
+   "sec": "Portal açıklamaları",
+   "rev": "13vztyl"
+  },
+  {
+   "id": "crmlogin.096",
+   "en": "Assigned chats pushed to you, not to everyone",
+   "tr": "Atanan sohbetler herkese değil, size gelir",
+   "sec": "Portal açıklamaları",
+   "rev": "67r9jo"
+  },
+  {
+   "id": "crmlogin.097",
+   "en": "Reply as JobsAdmire from the shared number",
+   "tr": "Ortak numaradan JobsAdmire olarak yanıtlayın",
+   "sec": "Portal açıklamaları",
+   "rev": "1ysl8zm"
+  },
+  {
+   "id": "crmlogin.098",
+   "en": "Chat history travels with the candidate file",
+   "tr": "Sohbet geçmişi aday dosyasıyla birlikte gider",
+   "sec": "Portal açıklamaları",
+   "rev": "wseefu"
+  },
+  {
+   "id": "crmlogin.099",
+   "en": "Free · iOS 15+ and Android 9+ · signs in with your ChatAdmire account",
+   "tr": "Ücretsiz · iOS 15+ ve Android 9+ · ChatAdmire hesabınızla giriş yapılır",
+   "sec": "Portal açıklamaları",
+   "rev": "wabwc4"
+  }
+ ]
+}

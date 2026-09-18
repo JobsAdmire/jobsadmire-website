@@ -1,0 +1,1017 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="qr.js"></script>
+  <style>
+    /* Desktop-only: render at 75% scale (matches browser zoom 75%). Mobile/tablet untouched. */
+    @media (min-width: 1101px) { html { zoom: 0.75; } }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body { font-family: "Archivo", "Helvetica Neue", Arial, sans-serif; background: #0a1428; -webkit-font-smoothing: antialiased; }
+    h1, h2, h3 { margin: 0; font-weight: 800; letter-spacing: -0.8px; }
+    p { margin: 0; }
+    input, button { font-family: inherit; }
+    input:focus, button:focus-visible, a:focus-visible { outline: 2px solid #1899D5; outline-offset: 2px; }
+    a { color: #1073a8; text-decoration: none; }
+    a:hover { color: #16202e; }
+    @keyframes jaClSpin { to { transform: rotate(360deg); } }
+    @keyframes jaClRise { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: none; } }
+    @keyframes jaClPulse { 0%, 100% { opacity: .35; } 50% { opacity: 1; } }
+    @keyframes jaClShake { 0%, 100% { transform: none; } 20% { transform: translateX(-5px); } 40% { transform: translateX(4px); } 60% { transform: translateX(-3px); } 80% { transform: translateX(2px); } }
+    .ja-cl-rise { animation: jaClRise .32s cubic-bezier(0.22,1,0.36,1) both; }
+    .ja-cl-live { animation: jaClPulse 2.4s ease-in-out infinite; }
+    .ja-cl-shake { animation: jaClShake .4s ease-in-out both; }
+    @media (prefers-reduced-motion: reduce) { .ja-cl-rise, .ja-cl-live, .ja-cl-shake { animation: none !important; } }
+
+    @media (max-width: 1080px) {
+      .ja-cl-brand { padding: 36px 36px 34px !important; }
+      .ja-cl-form { padding: 34px 36px 42px !important; }
+      .ja-cl-brand h1 { font-size: 30px !important; }
+    }
+    @media (max-width: 900px) {
+      .ja-cl-shell { grid-template-columns: minmax(0, 1fr) !important; min-height: 0 !important; }
+      .ja-cl-brand, .ja-cl-form { min-width: 0 !important; }
+      .ja-cl-brand { padding: 26px 32px 28px !important; }
+      .ja-cl-points, .ja-cl-qr, .ja-cl-spacer, .ja-cl-trust { display: none !important; }
+      .ja-cl-brand h1 { font-size: 27px !important; }
+      .ja-cl-panelsub { max-width: none !important; }
+      .ja-cl-form { padding: 30px 32px 40px !important; }
+      .ja-cl-appmob { display: block !important; }
+    }
+    @media (max-width: 700px) {
+      .ja-cl-brand { padding: 18px 20px 20px !important; }
+      .ja-cl-eyebrow { font-size: 10.5px !important; margin-bottom: 7px !important; }
+      .ja-cl-brand h1 { font-size: 23px !important; letter-spacing: -0.7px !important; }
+      .ja-cl-panelsub { font-size: 13.5px !important; line-height: 1.5 !important; margin-top: 7px !important; }
+      .ja-cl-headcopy { margin-top: 20px !important; }
+      .ja-cl-brandfoot { margin-top: 16px !important; }
+      .ja-cl-copy { display: none !important; }
+      .ja-cl-form { padding: 22px 20px 32px !important; }
+      .ja-cl-topbar { margin-bottom: 20px !important; }
+      .ja-cl-card { max-width: 100% !important; }
+      .ja-cl-card h2 { font-size: 23px !important; }
+      .ja-cl-cardsub { font-size: 13.5px !important; line-height: 1.5 !important; }
+      .ja-cl-portals { gap: 8px !important; }
+      .ja-cl-portal { padding: 12px 13px !important; }
+      .ja-cl-pname { font-size: 14px !important; }
+      .ja-cl-psub { font-size: 11px !important; }
+      .ja-cl-field { min-height: 52px !important; font-size: 15.5px !important; }
+      .ja-cl-help { padding: 13px 14px !important; }
+      .ja-cl-stores { grid-template-columns: 1fr 1fr !important; }
+      .ja-cl-mtop { display: flex !important; }
+      .ja-cl-headcopy { display: none !important; }
+      .ja-cl-portals { grid-template-columns: repeat(3, 1fr) !important; gap: 6px !important; margin-top: 16px !important; }
+      .ja-cl-portal { padding: 11px 6px !important; min-height: 46px !important; display: flex !important; align-items: center !important; justify-content: center !important; border-radius: 12px !important; text-align: center !important; }
+      .ja-cl-portal > span:first-child { justify-content: center !important; gap: 6px !important; }
+      .ja-cl-pname, .ja-cl-psub { display: none !important; }
+      .ja-cl-pshort { display: block !important; }
+      .ja-cl-mtoggle { display: flex !important; }
+      .ja-cl-mtoggle[data-open="1"] .ja-cl-chev { transform: rotate(180deg); }
+      .ja-cl-appmob[data-open="0"], .ja-cl-help[data-open="0"] { display: none !important; }
+      .ja-cl-appmob[data-open="1"] { margin-top: 10px !important; }
+      .ja-cl-help[data-open="1"] { margin-top: 10px !important; }
+      .ja-cl-topbar { display: none !important; }
+      .ja-cl-brandfoot { display: none !important; }
+      .ja-cl-form { padding: 24px 20px 32px !important; }
+      .ja-cl-card h2 { font-size: 25px !important; }
+    }
+    @media (max-width: 400px) {
+      .ja-cl-portal { padding: 11px !important; }
+      .ja-cl-remember { font-size: 12.5px !important; }
+    }
+  </style>
+  <script src="./ja-i18n.js"></script>
+</helmet>
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="#0e1a37"/><g transform="translate(152,78)"><path d="M22 44V32a26 26 0 0 1 52 0v12" fill="none" stroke="#1899D5" stroke-width="11" stroke-linecap="round"/><rect x="4" y="44" width="88" height="66" rx="12" fill="#1899D5"/><circle cx="48" cy="72" r="8" fill="#ffffff"/><rect x="44" y="78" width="8" height="16" rx="4" fill="#ffffff"/><rect x="0" y="126" width="96" height="14" rx="7" fill="#ffffff" opacity="0.35"/></g></svg>
+</template>
+
+
+<div class="ja-cl-shell" style="display:grid; grid-template-columns:1.02fr 1fr; min-height:100vh; background:#ffffff">
+
+  <div class="ja-cl-brand" style="position:relative; overflow:hidden; background:#0a1428; color:#ffffff; padding:44px 56px 40px; display:flex; flex-direction:column; justify-content:flex-start">
+    <div style="position:absolute; top:-150px; right:-130px; width:440px; height:440px; border-radius:50%; background:radial-gradient(circle, rgba(24,153,213,0.32) 0%, rgba(24,153,213,0) 70%); pointer-events:none"></div>
+    <div style="position:absolute; bottom:-170px; left:-110px; width:400px; height:400px; border-radius:50%; background:radial-gradient(circle, rgba(24,153,213,0.14) 0%, rgba(24,153,213,0) 70%); pointer-events:none"></div>
+
+    <div class="ja-cl-mtop" style="display:none; position:relative; align-items:center; justify-content:space-between; gap:12px; margin-bottom:18px">
+      <a href="JobsAdmire Homepage v4.dc.html" style="display:inline-flex; align-items:center; gap:7px; min-height:40px; font-size:13px; font-weight:700; color:rgba(255,255,255,0.72)" style-hover="color:#ffffff">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path></svg>
+        {{ t.back }}
+      </a>
+      <div style="display:flex; gap:4px; background:rgba(255,255,255,0.09); border:1px solid rgba(255,255,255,0.16); border-radius:999px; padding:3px">
+        <sc-for list="{{ langsDark }}" as="lg" hint-placeholder-count="2">
+          <button type="button" onClick="{{ lg.onClick }}" style="{{ lg.style }}">{{ lg.code }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div style="position:relative; display:flex; align-items:center; gap:11px">
+      <img src="ja-mark.png" alt="JobsAdmire" width="34" height="34" style="width:34px; height:34px; border-radius:9px; display:block; object-fit:contain; background:#ffffff; padding:3px" />
+      <span style="font-size:16px; font-weight:800; letter-spacing:-0.3px">JobsAdmire</span>
+      <span style="margin-left:2px; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.16); border-radius:999px; padding:3px 10px; font-size:10.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:rgba(255,255,255,0.72)">{{ portalTag }}</span>
+    </div>
+
+    <div class="ja-cl-spacer" style="flex:1 1 0; min-height:0"></div>
+
+    <div class="ja-cl-headcopy" style="position:relative; margin:34px 0 0">
+      <div class="ja-cl-eyebrow" style="font-size:11.5px; font-weight:800; letter-spacing:1.6px; text-transform:uppercase; color:#4fb4e4; margin-bottom:12px">{{ panelEyebrow }}</div>
+      <h1 style="font-size:35px; line-height:1.08">{{ panelTitle }}</h1>
+      <p class="ja-cl-panelsub" style="max-width:430px; margin-top:12px; font-size:15px; line-height:1.6; color:rgba(255,255,255,0.68)">{{ panelSub }}</p>
+
+      <div class="ja-cl-points" style="display:flex; flex-direction:column; gap:12px; margin-top:28px">
+        <sc-for list="{{ panelPoints }}" as="pt" hint-placeholder-count="3">
+          <div style="display:flex; align-items:flex-start; gap:11px">
+            <span style="flex:none; width:19px; height:19px; margin-top:1px; border-radius:50%; background:rgba(24,153,213,0.18); border:1px solid rgba(79,180,228,0.45); display:flex; align-items:center; justify-content:center">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#7ccbf0" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+            </span>
+            <span style="font-size:13.5px; font-weight:600; line-height:1.5; color:rgba(255,255,255,0.78)">{{ pt }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="ja-cl-spacer" style="flex:1.5 1 0; min-height:22px"></div>
+
+    <div class="ja-cl-trust" style="position:relative; display:flex; align-items:center; gap:9px; margin-bottom:20px">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,0.5)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5l3 1.8"></path></svg>
+      <span style="min-width:0; font-size:11.5px; font-weight:700; line-height:1.4; color:rgba(255,255,255,0.58)">{{ supportLine }}</span>
+      <a href="{{ waHelpHref }}" target="_blank" style="margin-left:auto; display:inline-flex; align-items:center; gap:6px; flex:none; font-size:11.5px; font-weight:800; color:#7ccbf0" style-hover="color:#ffffff">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="#25D366" style="flex:none"><path d="M12 2a10 10 0 0 0-8.6 15.08L2 22l5.05-1.33A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.1.81.83-3.02-.19-.31A8.2 8.2 0 1 1 12 20.2z"></path></svg>
+        {{ t.statusWa }}
+      </a>
+    </div>
+
+    <sc-if value="{{ showApp }}" hint-placeholder-val="{{ true }}">
+    <div class="ja-cl-qr" style="position:relative; margin-top:0; display:flex; align-items:center; gap:16px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.13); border-radius:18px; padding:15px 17px">
+      <span role="img" aria-label="{{ t.qrAlt }}" ref="{{ qrRef }}" style="flex:none; width:82px; height:82px; border-radius:11px; background:#ffffff center/76px 76px no-repeat; image-rendering:pixelated; display:block"></span>
+      <div style="min-width:0">
+        <div style="display:inline-flex; align-items:center; gap:7px; margin-bottom:7px">
+          <span class="ja-cl-live" style="width:7px; height:7px; border-radius:50%; background:#4ade80; display:block"></span>
+          <span style="font-size:10.5px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#7ccbf0">{{ t.appNew }}</span>
+        </div>
+        <div style="font-size:14.5px; font-weight:800; line-height:1.3">{{ appLine }}</div>
+        <div style="display:flex; flex-direction:column; gap:5px; margin-top:7px">
+          <sc-for list="{{ appPoints }}" as="ap" hint-placeholder-count="3">
+            <div style="display:flex; align-items:flex-start; gap:7px">
+              <svg width="9" height="9" viewBox="0 0 24 24" fill="none" stroke="#7ccbf0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:4px"><path d="M20 6L9 17l-5-5"></path></svg>
+              <span style="font-size:11.5px; font-weight:600; line-height:1.4; color:rgba(255,255,255,0.62)">{{ ap }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:8px; font-size:11px; font-weight:700; line-height:1.4; color:rgba(255,255,255,0.6)">{{ appPlatforms }}</div>
+        <sc-if value="{{ appSearch }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top:5px; font-size:11px; font-weight:800; line-height:1.4; color:#7ccbf0">{{ appSearch }}</div>
+        </sc-if>
+        <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:11px; max-width:296px">
+          <a href="{{ iosHref }}" target="_blank" aria-label="App Store" style="display:flex; align-items:center; gap:9px; min-height:44px; padding:0 13px; background:rgba(255,255,255,0.09); border:1px solid rgba(255,255,255,0.2); border-radius:11px; color:#ffffff" style-hover="background:rgba(255,255,255,0.16)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff" style="flex:none"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8.79.05 2.28-.98 3.85-.84 1.32.11 2.31.63 2.99 1.57-2.72 1.66-2.28 5.31.24 6.42-.5 1.63-1.15 3.24-2.16 5.02zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"></path></svg>
+            <span style="min-width:0">
+              <span style="display:block; font-size:9.5px; font-weight:600; letter-spacing:0.3px; color:rgba(255,255,255,0.6); line-height:1.2">{{ t.storeIos }}</span>
+              <span style="display:block; font-size:12.5px; font-weight:800; letter-spacing:-0.2px; line-height:1.25; white-space:nowrap">App Store</span>
+            </span>
+          </a>
+          <a href="{{ androidHref }}" target="_blank" aria-label="Google Play" style="display:flex; align-items:center; gap:9px; min-height:44px; padding:0 13px; background:rgba(255,255,255,0.09); border:1px solid rgba(255,255,255,0.2); border-radius:11px; color:#ffffff" style-hover="background:rgba(255,255,255,0.16)">
+            <svg width="17" height="17" viewBox="0 0 24 24" style="flex:none"><path fill="#00d7fe" d="M3.6 1.8L13.5 12 3.6 22.2c-.37-.2-.6-.6-.6-1.1V2.9c0-.5.23-.9.6-1.1z"></path><path fill="#ffd400" d="M16.9 8.6L13.5 12l-9.9-10.2c.15-.08.33-.13.5-.13.24 0 .48.07.7.2l12.1 6.73z"></path><path fill="#f43249" d="M16.9 15.4L4.8 22.13c-.22.13-.46.2-.7.2-.17 0-.35-.05-.5-.13L13.5 12l3.4 3.4z"></path><path fill="#00ee76" d="M20.6 10.55c.9.5.9 2.4 0 2.9l-3.7 2.05L13.5 12l3.4-3.4 3.7 1.95z"></path></svg>
+            <span style="min-width:0">
+              <span style="display:block; font-size:9.5px; font-weight:600; letter-spacing:0.3px; color:rgba(255,255,255,0.6); line-height:1.2">{{ t.storeAnd }}</span>
+              <span style="display:block; font-size:12.5px; font-weight:800; letter-spacing:-0.2px; line-height:1.25; white-space:nowrap">Google Play</span>
+            </span>
+          </a>
+        </div>
+      </div>
+    </div>
+    </sc-if>
+
+    <div class="ja-cl-brandfoot" style="position:relative; margin-top:26px">
+      <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.14); border-radius:999px; padding:6px 13px">
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#7ccbf0" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+        <span style="font-size:11.5px; font-weight:800; letter-spacing:0.4px; color:rgba(255,255,255,0.82)">{{ t.licenceChip }}</span>
+      </div>
+      <div class="ja-cl-copy" style="margin-top:13px; font-size:11.5px; font-weight:600; color:rgba(255,255,255,0.55)">{{ t.agencyLine }}</div>
+    </div>
+  </div>
+
+  <div class="ja-cl-form" style="padding:40px 56px 48px; display:flex; flex-direction:column; background:#ffffff">
+
+    <div class="ja-cl-topbar" style="display:flex; align-items:center; justify-content:space-between; gap:14px; margin-bottom:32px">
+      <a href="JobsAdmire Homepage v4.dc.html" style="display:inline-flex; align-items:center; gap:7px; min-height:40px; font-size:13.5px; font-weight:700; color:#64748b" style-hover="color:#16202e">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path></svg>
+        {{ t.back }}
+      </a>
+      <div style="display:flex; gap:5px; background:#f4f9fc; border:1px solid #e2ebf2; border-radius:999px; padding:3px">
+        <sc-for list="{{ langs }}" as="lg" hint-placeholder-count="2">
+          <button type="button" onClick="{{ lg.onClick }}" style="{{ lg.style }}">{{ lg.code }}</button>
+        </sc-for>
+      </div>
+    </div>
+
+    <div class="ja-cl-card" style="width:100%; max-width:436px; margin:0 auto">
+      <sc-if value="{{ hasReason }}" hint-placeholder-val="{{ false }}">
+        <div style="display:flex; gap:11px; margin-bottom:18px; background:#f4f9fc; border:1px solid #bfdff0; border-left:3px solid #1899D5; border-radius:13px; padding:13px 15px">
+          <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#1073a8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px"><circle cx="12" cy="12" r="9"></circle><path d="M12 7.5v5l3 1.8"></path></svg>
+          <span style="min-width:0">
+            <span style="display:block; font-size:13px; font-weight:800; color:#16202e">{{ reasonTitle }}</span>
+            <span style="display:block; margin-top:3px; font-size:12.5px; font-weight:600; line-height:1.45; color:#64748b">{{ reasonBody }}</span>
+          </span>
+        </div>
+      </sc-if>
+
+      <h2 style="font-size:29px; color:#16202e; line-height:1.12">{{ cardTitle }}</h2>
+      <p class="ja-cl-cardsub" style="margin-top:9px; font-size:14.5px; line-height:1.6; color:#64748b">{{ cardSub }}</p>
+
+      <div class="ja-cl-portals" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(122px, 1fr)); gap:10px; margin-top:22px">
+        <sc-for list="{{ portalTiles }}" as="pl" hint-placeholder-count="2">
+          <button type="button" class="ja-cl-portal" onClick="{{ pl.onClick }}" style="{{ pl.style }}">
+            <span style="display:flex; align-items:center; gap:8px">
+              <span style="{{ pl.dotStyle }}"></span>
+              <span class="ja-cl-pname" style="font-size:14.5px; font-weight:800; letter-spacing:-0.2px">{{ pl.name }}</span>
+              <span class="ja-cl-pshort" style="display:none; font-size:12.5px; font-weight:800; letter-spacing:-0.2px">{{ pl.short }}</span>
+            </span>
+            <span class="ja-cl-psub" style="display:block; margin-top:4px; font-size:11.5px; font-weight:600; line-height:1.35; opacity:0.75">{{ pl.sub }}</span>
+          </button>
+        </sc-for>
+      </div>
+
+      <sc-if value="{{ isHandoff }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:22px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:16px; padding:18px 19px">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:8px">
+            <span style="flex:none; width:30px; height:30px; border-radius:9px; background:#dcfce7; display:flex; align-items:center; justify-content:center">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="#12813c"><path d="M12 2a10 10 0 0 0-8.6 15.08L2 22l5.05-1.33A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.1.81.83-3.02-.19-.31A8.2 8.2 0 1 1 12 20.2z"></path></svg>
+            </span>
+            <span style="font-size:14.5px; font-weight:800; color:#14532d">{{ handoffTitle }}</span>
+          </div>
+          <p style="font-size:13px; line-height:1.55; font-weight:600; color:#15803d">{{ handoffBody }}</p>
+          <div style="display:flex; align-items:flex-start; gap:7px; margin-top:11px; padding-top:11px; border-top:1px solid #bbf7d0">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#15803d" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><circle cx="12" cy="12" r="9"></circle><path d="M12 16.5v-4"></path><path d="M12 8.2h.01"></path></svg>
+            <span style="min-width:0; font-size:12px; font-weight:700; line-height:1.45; color:#15803d">{{ scopeNote }}</span>
+          </div>
+        </div>
+
+        <a href="{{ deskHref }}" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:10px; width:100%; margin-top:18px; min-height:56px; background:#1073a8; color:#ffffff; border-radius:14px; font-size:15.5px; font-weight:800; letter-spacing:0.1px; box-shadow:0 12px 26px rgba(16,115,168,0.3)" style-hover="background:#0d5f87">
+          {{ handoffCta }}
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M7 17L17 7"></path><path d="M9 7h8v8"></path></svg>
+        </a>
+        <p style="margin-top:13px; font-size:12px; line-height:1.5; color:#556377; font-weight:600">{{ footNote }}</p>
+      </sc-if>
+
+      <sc-if value="{{ isSignin }}" hint-placeholder-val="{{ true }}">
+      <form onSubmit="{{ onSubmitForm }}" style="display:contents">
+        <div style="margin-top:22px">
+          <label for="ja-cl-email" style="display:block; font-size:12px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#64748b; margin-bottom:9px">{{ emailLabel }}</label>
+          <input id="ja-cl-email" class="ja-cl-field" type="email" inputmode="email" autocomplete="username" enterkeyhint="next" spellcheck="false" ref="{{ emailRef }}" aria-invalid="{{ emailInvalid }}" aria-describedby="ja-cl-alert" placeholder="{{ emailPlaceholder }}" value="{{ email }}" onChange="{{ onEmail }}" style="{{ emailStyle }}" />
+          <sc-if value="{{ scopeNote }}" hint-placeholder-val="{{ true }}">
+            <div style="display:flex; align-items:flex-start; gap:7px; margin-top:9px">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><circle cx="12" cy="12" r="9"></circle><path d="M12 16.5v-4"></path><path d="M12 8.2h.01"></path></svg>
+              <span style="min-width:0; font-size:12px; font-weight:600; line-height:1.45; color:#64748b">{{ scopeNote }}</span>
+            </div>
+          </sc-if>
+          <sc-if value="{{ showDomainHint }}" hint-placeholder-val="{{ false }}">
+            <div style="display:flex; align-items:center; gap:7px; margin-top:8px">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#1073a8" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M20 6L9 17l-5-5"></path></svg>
+              <span style="font-size:12px; font-weight:700; line-height:1.4; color:#1073a8">{{ domainHint }}</span>
+            </div>
+          </sc-if>
+        </div>
+
+        <div style="margin-top:16px">
+          <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px; margin-bottom:9px">
+            <label for="ja-cl-pass" style="font-size:12px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#64748b">{{ t.password }}</label>
+            <button type="button" onClick="{{ onForgot }}" style="background:none; border:none; padding:0; font-size:12.5px; font-weight:800; color:#1073a8; cursor:pointer; font-family:inherit" style-hover="color:#16202e">{{ t.forgot }}</button>
+          </div>
+          <div style="position:relative">
+            <input id="ja-cl-pass" class="ja-cl-field" type="{{ passType }}" autocomplete="current-password" enterkeyhint="go" aria-invalid="{{ passInvalid }}" aria-describedby="ja-cl-alert" placeholder="{{ t.passPlaceholder }}" value="{{ password }}" onChange="{{ onPassword }}" onKeyDown="{{ onPassKey }}" onKeyUp="{{ onPassKey }}" style="{{ passStyle }}" />
+            <button type="button" onClick="{{ onTogglePass }}" aria-pressed="{{ showPass }}" style="position:absolute; top:50%; right:8px; transform:translateY(-50%); min-height:38px; padding:0 12px; background:#f4f9fc; border:1px solid #e2ebf2; border-radius:10px; font-size:12px; font-weight:800; color:#556377; cursor:pointer" style-hover="color:#16202e">{{ passToggleLabel }}</button>
+          </div>
+          <sc-if value="{{ capsOn }}" hint-placeholder-val="{{ false }}">
+            <div role="status" style="display:flex; align-items:center; gap:7px; margin-top:8px">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#c2410c" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M12 5l7 7h-4v4H9v-4H5l7-7z"></path><path d="M9 20h6"></path></svg>
+              <span style="font-size:12px; font-weight:800; line-height:1.4; color:#c2410c">{{ t.capsOn }}</span>
+            </div>
+          </sc-if>
+        </div>
+
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap; margin-top:15px">
+          <button type="button" role="checkbox" aria-checked="{{ remember }}" onClick="{{ onRemember }}" class="ja-cl-remember" style="display:inline-flex; align-items:center; gap:9px; min-height:40px; background:none; border:none; padding:0; font-size:13px; font-weight:700; color:#43536a; cursor:pointer">
+            <span style="{{ rememberBoxStyle }}">
+              <sc-if value="{{ rememberOn }}" hint-placeholder-val="{{ true }}">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="3.6" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+              </sc-if>
+            </span>
+            {{ t.remember }}
+          </button>
+        </div>
+
+        <sc-if value="{{ hasNotice }}" hint-placeholder-val="{{ false }}">
+          <div id="ja-cl-alert" class="{{ noticeAnim }}" role="alert" aria-live="assertive" style="{{ noticeBoxStyle }}">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ noticeIcon }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+            <span style="{{ noticeTextStyle }}">{{ notice }}</span>
+          </div>
+        </sc-if>
+
+        <button type="submit" disabled="{{ locked }}" style="{{ submitStyle }}">
+          <sc-if value="{{ signing }}" hint-placeholder-val="{{ false }}">
+            <span style="width:17px; height:17px; border:2.4px solid rgba(255,255,255,0.35); border-top-color:#ffffff; border-radius:50%; animation:jaClSpin .7s linear infinite; display:block"></span>
+          </sc-if>
+          {{ submitLabel }}
+        </button>
+      </form>
+
+      <p style="margin-top:13px; font-size:12px; line-height:1.5; color:#556377; font-weight:600">{{ footNote }}</p>
+      </sc-if>
+
+      <sc-if value="{{ isReset }}" hint-placeholder-val="{{ false }}">
+        <form onSubmit="{{ onResetSubmit }}" style="display:contents">
+          <div style="margin-top:22px">
+            <label for="ja-cl-remail" style="display:block; font-size:12px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#64748b; margin-bottom:9px">{{ emailLabel }}</label>
+            <input id="ja-cl-remail" class="ja-cl-field" type="email" inputmode="email" autocomplete="username" enterkeyhint="go" spellcheck="false" aria-invalid="{{ emailInvalid }}" aria-describedby="ja-cl-alert" placeholder="{{ emailPlaceholder }}" value="{{ email }}" onChange="{{ onEmail }}" style="{{ emailStyle }}" />
+          </div>
+
+          <sc-if value="{{ hasNotice }}" hint-placeholder-val="{{ false }}">
+            <div id="ja-cl-alert" class="{{ noticeAnim }}" role="alert" aria-live="assertive" style="{{ noticeBoxStyle }}">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="{{ noticeIcon }}" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:1px"><circle cx="12" cy="12" r="10"></circle><path d="M12 8v4"></path><path d="M12 16h.01"></path></svg>
+              <span style="{{ noticeTextStyle }}">{{ notice }}</span>
+            </div>
+          </sc-if>
+
+          <button type="submit" style="width:100%; margin-top:20px; min-height:56px; display:flex; align-items:center; justify-content:center; gap:10px; background:#1073a8; color:#ffffff; border:none; border-radius:14px; font-size:15.5px; font-weight:800; cursor:pointer; font-family:inherit; box-shadow:0 12px 26px rgba(24,153,213,0.28)" style-hover="background:#0d5f87">
+            <sc-if value="{{ resetting }}" hint-placeholder-val="{{ false }}">
+              <span style="width:17px; height:17px; border:2.4px solid rgba(255,255,255,0.35); border-top-color:#ffffff; border-radius:50%; animation:jaClSpin .7s linear infinite; display:block"></span>
+            </sc-if>
+            {{ resetLabel }}
+          </button>
+        </form>
+        <button type="button" onClick="{{ onBackToSignin }}" style="display:inline-flex; align-items:center; gap:7px; min-height:44px; margin-top:12px; background:none; border:none; padding:0; font-size:13.5px; font-weight:800; color:#64748b; cursor:pointer; font-family:inherit" style-hover="color:#16202e">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5"></path><path d="M12 19l-7-7 7-7"></path></svg>
+          {{ t.resetBack }}
+        </button>
+      </sc-if>
+
+      <sc-if value="{{ isSent }}" hint-placeholder-val="{{ false }}">
+        <div style="margin-top:20px; background:#f0fdf4; border:1px solid #bbf7d0; border-radius:15px; padding:18px 19px">
+          <div style="display:flex; align-items:center; gap:10px; margin-bottom:9px">
+            <span style="flex:none; width:26px; height:26px; border-radius:50%; background:#dcfce7; display:flex; align-items:center; justify-content:center">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#12813c" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"></path></svg>
+            </span>
+            <span style="font-size:14.5px; font-weight:800; color:#14532d">{{ t.resetSentTitle }}</span>
+          </div>
+          <p style="font-size:13px; line-height:1.55; font-weight:600; color:#15803d">{{ resetSentBody }}</p>
+        </div>
+        <button type="button" onClick="{{ onBackToSignin }}" style="width:100%; margin-top:16px; min-height:52px; display:flex; align-items:center; justify-content:center; background:#ffffff; border:1.5px solid #dbe8f2; border-radius:14px; font-size:14.5px; font-weight:800; color:#16202e; cursor:pointer; font-family:inherit" style-hover="border-color:#94a3b8">{{ t.resetBack }}</button>
+      </sc-if>
+
+      <sc-if value="{{ showApp }}" hint-placeholder-val="{{ true }}">
+      <button type="button" class="ja-cl-mtoggle" data-open="{{ appOpenAttr }}" aria-expanded="{{ appExpanded }}" aria-controls="ja-cl-appcard" onClick="{{ toggleApp }}" style="display:none; width:100%; margin-top:20px; align-items:center; gap:10px; min-height:50px; padding:0 15px; background:#f4f9fc; border:1.5px solid #dbe8f2; border-radius:14px; font-size:13.5px; font-weight:800; color:#16202e; cursor:pointer; font-family:inherit; text-align:left">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1073a8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="6" y="2.5" width="12" height="19" rx="2.6"></rect><path d="M11 18.5h2"></path></svg>
+        <span style="min-width:0">{{ t.getApp }}</span>
+        <svg class="ja-cl-chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-left:auto; transition:transform .18s"><path d="M6 9l6 6 6-6"></path></svg>
+      </button>
+
+      <div id="ja-cl-appcard" class="ja-cl-appmob" data-open="{{ appOpenAttr }}" style="display:none; margin-top:22px; background:#0a1428; border-radius:16px; padding:16px 17px; color:#ffffff">
+        <div style="display:inline-flex; align-items:center; gap:7px; margin-bottom:8px">
+          <span class="ja-cl-live" style="width:7px; height:7px; border-radius:50%; background:#4ade80; display:block"></span>
+          <span style="font-size:10.5px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#7ccbf0">{{ t.appNew }}</span>
+        </div>
+        <div style="font-size:14.5px; font-weight:800; line-height:1.35">{{ appLine }}</div>
+        <div style="display:flex; flex-direction:column; gap:6px; margin-top:10px">
+          <sc-for list="{{ appPoints }}" as="ap" hint-placeholder-count="3">
+            <div style="display:flex; align-items:flex-start; gap:8px">
+              <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#7ccbf0" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:4px"><path d="M20 6L9 17l-5-5"></path></svg>
+              <span style="font-size:12.5px; font-weight:600; line-height:1.45; color:rgba(255,255,255,0.7)">{{ ap }}</span>
+            </div>
+          </sc-for>
+        </div>
+        <div style="margin-top:10px; font-size:11px; font-weight:700; line-height:1.4; color:rgba(255,255,255,0.6)">{{ appPlatforms }}</div>
+        <sc-if value="{{ appSearch }}" hint-placeholder-val="{{ true }}">
+          <div style="margin-top:6px; font-size:11.5px; font-weight:800; line-height:1.4; color:#7ccbf0">{{ appSearch }}</div>
+        </sc-if>
+        <div class="ja-cl-stores" style="display:grid; grid-template-columns:1fr 1fr; gap:9px; margin-top:13px">
+          <a href="{{ iosHref }}" target="_blank" aria-label="App Store" style="display:flex; align-items:center; gap:9px; min-height:50px; padding:0 13px; background:rgba(255,255,255,0.09); border:1px solid rgba(255,255,255,0.2); border-radius:11px; color:#ffffff" style-hover="background:rgba(255,255,255,0.16)">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="#ffffff" style="flex:none"><path d="M17.05 20.28c-.98.95-2.05.8-3.08.35-1.09-.46-2.09-.48-3.24 0-1.44.62-2.2.44-3.06-.35C2.79 15.25 3.51 7.59 9.05 7.31c1.35.07 2.29.74 3.08.8.79.05 2.28-.98 3.85-.84 1.32.11 2.31.63 2.99 1.57-2.72 1.66-2.28 5.31.24 6.42-.5 1.63-1.15 3.24-2.16 5.02zM12.03 7.25c-.15-2.23 1.66-4.07 3.74-4.25.29 2.58-2.34 4.5-3.74 4.25z"></path></svg>
+            <span style="min-width:0">
+              <span style="display:block; font-size:10px; font-weight:600; letter-spacing:0.3px; color:rgba(255,255,255,0.6); line-height:1.2">{{ t.storeIos }}</span>
+              <span style="display:block; font-size:13.5px; font-weight:800; letter-spacing:-0.2px; line-height:1.25; white-space:nowrap">App Store</span>
+            </span>
+          </a>
+          <a href="{{ androidHref }}" target="_blank" aria-label="Google Play" style="display:flex; align-items:center; gap:9px; min-height:50px; padding:0 13px; background:rgba(255,255,255,0.09); border:1px solid rgba(255,255,255,0.2); border-radius:11px; color:#ffffff" style-hover="background:rgba(255,255,255,0.16)">
+            <svg width="17" height="17" viewBox="0 0 24 24" style="flex:none"><path fill="#00d7fe" d="M3.6 1.8L13.5 12 3.6 22.2c-.37-.2-.6-.6-.6-1.1V2.9c0-.5.23-.9.6-1.1z"></path><path fill="#ffd400" d="M16.9 8.6L13.5 12l-9.9-10.2c.15-.08.33-.13.5-.13.24 0 .48.07.7.2l12.1 6.73z"></path><path fill="#f43249" d="M16.9 15.4L4.8 22.13c-.22.13-.46.2-.7.2-.17 0-.35-.05-.5-.13L13.5 12l3.4 3.4z"></path><path fill="#00ee76" d="M20.6 10.55c.9.5.9 2.4 0 2.9l-3.7 2.05L13.5 12l3.4-3.4 3.7 1.95z"></path></svg>
+            <span style="min-width:0">
+              <span style="display:block; font-size:10px; font-weight:600; letter-spacing:0.3px; color:rgba(255,255,255,0.6); line-height:1.2">{{ t.storeAnd }}</span>
+              <span style="display:block; font-size:13.5px; font-weight:800; letter-spacing:-0.2px; line-height:1.25; white-space:nowrap">Google Play</span>
+            </span>
+          </a>
+        </div>
+      </div>
+      </sc-if>
+
+      <button type="button" class="ja-cl-mtoggle" data-open="{{ helpOpenAttr }}" aria-expanded="{{ helpExpanded }}" aria-controls="ja-cl-helpcard" onClick="{{ toggleHelp }}" style="display:none; width:100%; margin-top:10px; align-items:center; gap:10px; min-height:50px; padding:0 15px; background:#f4f9fc; border:1.5px solid #dbe8f2; border-radius:14px; font-size:13.5px; font-weight:800; color:#16202e; cursor:pointer; font-family:inherit; text-align:left">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#1073a8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="9"></circle><path d="M12 16.5v-4"></path><path d="M12 8.2h.01"></path></svg>
+        <span style="min-width:0">{{ helpTitle }}</span>
+        <svg class="ja-cl-chev" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#64748b" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-left:auto; transition:transform .18s"><path d="M6 9l6 6 6-6"></path></svg>
+      </button>
+
+      <div id="ja-cl-helpcard" class="ja-cl-help" data-open="{{ helpOpenAttr }}" style="margin-top:22px; background:#f4f9fc; border:1px solid #d3e6f2; border-radius:15px; padding:15px 17px">
+        <div style="font-size:13.5px; font-weight:800; color:#16202e; margin-bottom:4px">{{ helpTitle }}</div>
+        <p style="font-size:12.5px; line-height:1.5; color:#556377; font-weight:600">{{ helpBody }}</p>
+        <div style="display:flex; flex-wrap:wrap; gap:9px; margin-top:12px">
+          <a href="{{ waHelpHref }}" target="_blank" style="display:inline-flex; align-items:center; gap:8px; min-height:44px; padding:0 16px; background:#ffffff; border:1.5px solid #bfdff0; border-radius:12px; font-size:13.5px; font-weight:800; color:#1073a8" style-hover="border-color:#1899D5">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="#25D366"><path d="M12 2a10 10 0 0 0-8.6 15.08L2 22l5.05-1.33A10 10 0 1 0 12 2zm0 18.2a8.2 8.2 0 0 1-4.18-1.14l-.3-.18-3.1.81.83-3.02-.19-.31A8.2 8.2 0 1 1 12 20.2z"></path><path d="M17.47 14.38c-.3-.15-1.75-.86-2.02-.96-.27-.1-.47-.15-.67.15-.2.3-.77.96-.92 1.16-.15.2-.3.22-.6.07-.3-.15-1.12-.41-2.14-1.32-.79-.7-1.32-1.57-1.47-1.87-.15-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.18.2-.3.3-.5.1-.2.05-.38-.03-.53-.07-.15-.67-1.6-.92-2.19-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.79.37-.27.3-1.04 1.01-1.04 2.47 0 1.45 1.06 2.86 1.21 3.06.15.2 2.09 3.2 5.07 4.37 2.98 1.17 2.98.78 3.52.73.54-.05 1.75-.71 2-1.4.25-.7.25-1.3.17-1.42-.07-.13-.27-.2-.57-.35z"></path></svg>
+            {{ helpCta }}
+          </a>
+          <a href="Contact Us.dc.html" style="display:inline-flex; align-items:center; min-height:44px; padding:0 16px; background:transparent; border:1.5px solid #dbe8f2; border-radius:12px; font-size:13.5px; font-weight:800; color:#556377" style-hover="border-color:#94a3b8">{{ t.branch }}</a>
+        </div>
+      </div>
+
+      <div style="margin-top:16px; display:flex; gap:9px; align-items:flex-start">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#556377" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none; margin-top:2px"><rect x="4" y="10" width="16" height="11" rx="2.4"></rect><path d="M8 10V7a4 4 0 0 1 8 0v3"></path></svg>
+        <p style="font-size:11.5px; line-height:1.5; font-weight:700; color:#556377">{{ t.phishing }}</p>
+      </div>
+
+      <p style="margin-top:14px; text-align:center; font-size:11.5px; font-weight:700; color:#556377">{{ t.licenceFoot }}</p>
+    </div>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;defaultPortal&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;partner&quot;,&quot;ops&quot;],&quot;default&quot;:&quot;partner&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Sign-in&quot;},&quot;staffDomain&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;jobsadmire.com&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Sign-in&quot;},&quot;reason&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;none&quot;,&quot;expired&quot;,&quot;signedout&quot;],&quot;default&quot;:&quot;none&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Sign-in&quot;},&quot;productName&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;ChatAdmire&quot;,&quot;Admira&quot;,&quot;Admio&quot;,&quot;Sohbet&quot;],&quot;default&quot;:&quot;ChatAdmire&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Third product&quot;},&quot;deskUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Third product&quot;},&quot;lockMinutes&quot;:{&quot;editor&quot;:&quot;int&quot;,&quot;default&quot;:15,&quot;min&quot;:1,&quot;max&quot;:60,&quot;unit&quot;:&quot;min&quot;,&quot;tsType&quot;:&quot;number&quot;,&quot;section&quot;:&quot;Sign-in&quot;},&quot;appUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;https://jobsadmire.com/app&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Mobile app&quot;},&quot;appName&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;JobsAdmire Partners&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Mobile app&quot;},&quot;iosUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Mobile app&quot;},&quot;androidUrl&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Mobile app&quot;}}">
+const CL_T = {
+  en: {
+    back: "Back to site", signIn: "Sign in",
+    cardSub: "One login page for every JobsAdmire system. Pick the one your account belongs to.",
+    password: "Password", forgot: "Forgot password?", passPlaceholder: "Your password",
+    show: "Show", hide: "Hide", remember: "Keep me signed in on this device",
+    signInTo: "Sign in to ", signingIn: "Signing in…",
+    appNew: "New — mobile app",
+    statusWa: "Message", getApp: "Get the mobile app",
+    whoAm: "Account manager", whoIt: "IT desk",
+    hours: "Mon–Fri 09:00–18:00 TRT", reply: "WhatsApp reply in ~10 min",
+    storeIos: "Download on the", storeAnd: "Get it on",
+    branch: "Contact a branch",
+    licenceChip: "İŞKUR Licensed · Permit No. 1730",
+    agencyLine: "Authorised private employment agency · Republic of Türkiye",
+    licenceFoot: "İŞKUR licensed · Permit No. 1730 · Never pay a fee to any recruiter",
+    phishing: "JobsAdmire never asks for your password by WhatsApp, SMS or phone. If someone does, it is not us.",
+    errEmail: "Enter the email address your account was opened with.",
+    errPass: "Your password is at least 6 characters.",
+    errWrong: "Email or password is incorrect. ", errWrongTail: " attempts left.",
+    errLast: "Email or password is incorrect. One attempt left before the account locks.",
+    errLocked: "Too many attempts — this account is temporarily locked. Our team can unlock it after an ID check.",
+    hintOps: "Operations Portal selected from your work email.",
+    hintPartner: "Partner Portal selected from your email domain.",
+    demo: "Demo only — this prototype is not connected to ",
+    qrAlt: "QR code to download the JobsAdmire app",
+    capsOn: "Caps Lock is on.",
+    lockedBtn: "Locked", unlocksIn: "Unlocks in ",
+    expiredTitle: "Your session ended",
+    expiredBody: "You were signed out after 30 minutes without activity. Sign in again to pick up where you left off.",
+    signedOutTitle: "You have been signed out",
+    signedOutBody: "Sign in again whenever you are ready.",
+    resetTitle: "Reset your password",
+    resetSub: "Enter your account email and we send you a reset link.",
+    resetSend: "Send reset link", resetSending: "Sending…",
+    resetBack: "Back to sign in",
+    resetSentTitle: "Check your inbox",
+    resetSentA: "We sent a reset link to ", resetSentB: ". It expires in 30 minutes. No email? Check spam, then message us."
+  },
+  tr: {
+    back: "Siteye dön", signIn: "Giriş yap",
+    cardSub: "Her JobsAdmire sistemi için tek giriş sayfası. Hesabınızın bağlı olduğu portalı seçin.",
+    password: "Şifre", forgot: "Şifrenizi mi unuttunuz?", passPlaceholder: "Şifreniz",
+    show: "Göster", hide: "Gizle", remember: "Bu cihazda oturumumu açık tut",
+    signInTo: "Giriş yap: ", signingIn: "Giriş yapılıyor…",
+    appNew: "Yeni — mobil uygulama",
+    statusWa: "Yazın", getApp: "Mobil uygulamayı alın",
+    whoAm: "Müşteri yöneticiniz", whoIt: "BT masası",
+    hours: "Pzt–Cum 09:00–18:00 TSİ", reply: "WhatsApp yanıt ~10 dk",
+    storeIos: "İndirin:", storeAnd: "Şuradan alın:",
+    branch: "Bir şubeye ulaşın",
+    licenceChip: "İŞKUR Lisanslı · Belge No. 1730",
+    agencyLine: "Yetkili özel istihdam bürosu · Türkiye Cumhuriyeti",
+    licenceFoot: "İŞKUR lisanslı · Belge No. 1730 · Hiçbir aracıya ücret ödemeyin",
+    phishing: "JobsAdmire şifrenizi asla WhatsApp, SMS veya telefonla istemez. İsteyen biri varsa, o biz değiliz.",
+    errEmail: "Hesabınızın açıldığı e-posta adresini girin.",
+    errPass: "Şifreniz en az 6 karakter olmalıdır.",
+    errWrong: "E-posta veya şifre hatalı. ", errWrongTail: " deneme kaldı.",
+    errLast: "E-posta veya şifre hatalı. Hesap kilitlenmeden önce bir deneme kaldı.",
+    errLocked: "Çok fazla deneme — bu hesap geçici olarak kilitli. Ekibimiz kimlik doğrulamasından sonra açabilir.",
+    hintOps: "Kurumsal e-postanızdan Operasyon Portalı seçildi.",
+    hintPartner: "E-posta alan adınızdan İş Ortağı Portalı seçildi.",
+    demo: "Sadece demo — bu prototip şuraya bağlı değil: ",
+    qrAlt: "JobsAdmire uygulamasını indirmek için QR kodu",
+    capsOn: "Caps Lock açık.",
+    lockedBtn: "Kilitli", unlocksIn: "Açılma: ",
+    expiredTitle: "Oturumunuz sona erdi",
+    expiredBody: "30 dakika işlem yapılmadığı için çıkış yapıldı. Kaldığınız yerden devam etmek için tekrar giriş yapın.",
+    signedOutTitle: "Çıkış yapıldı",
+    signedOutBody: "Hazır olduğunuzda tekrar giriş yapabilirsiniz.",
+    resetTitle: "Şifrenizi sıfırlayın",
+    resetSub: "Hesap e-postanızı girin, size sıfırlama bağlantısı gönderelim.",
+    resetSend: "Sıfırlama bağlantısı gönder", resetSending: "Gönderiliyor…",
+    resetBack: "Girişe dön",
+    resetSentTitle: "E-postanızı kontrol edin",
+    resetSentA: "Sıfırlama bağlantısını şuraya gönderdik: ", resetSentB: ". Bağlantı 30 dakika geçerli. E-posta gelmediyse spam klasörüne bakın, sonra bize yazın."
+  }
+};
+
+const CL_PORTALS = [
+  {
+    id: "partner", dot: "#1899D5",
+    en: {
+      name: "Partner Portal", sub: "Agencies & employers", tag: "Partner portal",
+      eyebrow: "For agencies and employers",
+      title: "Your whole partnership runs on one portal.",
+      sub2: "No paperwork by courier, no chasing updates by phone — from the agreement to every placement, everything happens in one place.",
+      points: ["E-signature agreement — terms signed digitally", "Company documents — upload once, valid for every placement", "Jobs & CVs — post vacancies, upload candidates", "Live placement status — every candidate and permit in real time"],
+      emailLabel: "Company email", emailPlaceholder: "you@company.com",
+      scope: "This login is only for HR agencies and employers we work with.",
+      foot: "470+ placements already run through this portal. Accounts are opened by your account manager once the cooperation agreement is signed.",
+      helpTitle: "No account yet?",
+      helpBody: "One short call is usually enough to know whether a partnership makes sense. We reply within 4 working hours and open your portal the same day the agreement is signed.",
+      helpCta: "Request portal access",
+      app: "Also on mobile — manage placements on the go.",
+      appPoints: ["Push alert the moment a permit stage moves", "Photograph and upload company documents", "Approve or reject a shortlist in one tap"],
+      appPlatforms: "Free · iOS 15+ and Android 9+ · same login, same data as this portal"
+    },
+    tr: {
+      name: "İş Ortağı Portalı", sub: "Acenteler ve işverenler", tag: "İş ortağı portalı",
+      eyebrow: "Acenteler ve işverenler için",
+      title: "Tüm iş ortaklığınız tek portalda.",
+      sub2: "Kuryeyle evrak yok, telefonla güncelleme peşinde koşmak yok — sözleşmeden her yerleştirmeye kadar her şey tek yerde.",
+      points: ["E-imzalı sözleşme — şartlar dijital olarak imzalanır", "Şirket belgeleri — bir kez yükleyin, her yerleştirmede geçerli", "İlanlar ve CV'ler — ilan açın, aday yükleyin", "Canlı yerleştirme durumu — her aday ve izin gerçek zamanlı"],
+      emailLabel: "Şirket e-postası", emailPlaceholder: "siz@sirket.com",
+      scope: "Bu giriş yalnızca çalıştığımız İK acenteleri ve işverenler içindir.",
+      foot: "Bu portal üzerinden 470'ten fazla yerleştirme yapıldı. Hesaplar, iş birliği sözleşmesi imzalandığında müşteri yöneticiniz tarafından açılır.",
+      helpTitle: "Hesabınız yok mu?",
+      helpBody: "Genellikle kısa bir görüşme, ortaklığın uygun olup olmadığını anlamak için yeterli. 4 iş saati içinde dönüyoruz ve sözleşme imzalandığı gün portalınızı açıyoruz.",
+      helpCta: "Portal erişimi isteyin",
+      app: "Mobilde de var — yerleştirmelerinizi yolda yönetin.",
+      appPoints: ["İzin aşaması değiştiği anda bildirim", "Şirket belgelerini fotoğraflayıp yükleyin", "Kısa listeyi tek dokunuşla onaylayın"],
+      appPlatforms: "Ücretsiz · iOS 15+ ve Android 9+ · bu portalla aynı giriş, aynı veri"
+    },
+    waText: { en: "Hello JobsAdmire, I need Partner Portal access.", tr: "Merhaba JobsAdmire, İş Ortağı Portalı erişimi istiyorum." }
+  },
+  {
+    id: "ops", dot: "#f59e0b",
+    en: {
+      name: "Operations Portal", sub: "JobsAdmire team", tag: "Operations",
+      eyebrow: "Internal — JobsAdmire team",
+      title: "The whole pipeline on one desk.",
+      sub2: "Internal operations: candidate files, permit applications, employer requests and representative activity — all logged against your user.",
+      points: ["Every action logged against your staff account", "Permit files, approvals and deadlines in one timeline", "Sessions end after 30 minutes idle"],
+      emailLabel: "Work email", emailPlaceholder: "name@jobsadmire.com",
+      scope: "This login is only for the JobsAdmire internal team.",
+      foot: "Internal accounts are issued by IT. Never share your login — activity is logged against your name.",
+      helpTitle: "Locked out?",
+      helpBody: "Password resets for internal accounts go through IT. Message the operations group and we unlock it after an ID check.",
+      helpCta: "Message IT support",
+      app: "Operations app — approvals, tasks and candidate files on the move.",
+      appPoints: ["Today's tasks and deadlines on the home screen", "Scan a passport straight into a candidate file", "Approve permits and requests away from your desk"],
+      appPlatforms: "Free · iOS 15+ and Android 9+ · same login, same data as this portal"
+    },
+    tr: {
+      name: "Operasyon Portalı", sub: "JobsAdmire ekibi", tag: "Operasyon",
+      eyebrow: "Şirket içi — JobsAdmire ekibi",
+      title: "Tüm süreç tek masada.",
+      sub2: "Şirket içi operasyon: aday dosyaları, izin başvuruları, işveren talepleri ve temsilci hareketleri — hepsi kullanıcınıza kayıtlı.",
+      points: ["Her işlem personel hesabınıza kaydedilir", "İzin dosyaları, onaylar ve tarihler tek zaman çizelgesinde", "Oturum 30 dakika işlem yapılmazsa kapanır"],
+      emailLabel: "Kurumsal e-posta", emailPlaceholder: "isim@jobsadmire.com",
+      scope: "Bu giriş yalnızca JobsAdmire şirket içi ekibi içindir.",
+      foot: "Şirket içi hesaplar BT tarafından verilir. Giriş bilgilerinizi paylaşmayın — işlemler adınıza kaydedilir.",
+      helpTitle: "Giriş yapamıyor musunuz?",
+      helpBody: "Şirket içi hesapların şifre sıfırlaması BT üzerinden yapılır. Operasyon grubuna yazın, kimlik doğrulamasından sonra açıyoruz.",
+      helpCta: "BT desteğine yazın",
+      app: "Operasyon uygulaması — onaylar, görevler ve aday dosyaları yolda.",
+      appPoints: ["Günün görevleri ve tarihleri ana ekranda", "Pasaportu tarayıp doğrudan aday dosyasına ekleyin", "İzin ve talepleri masanızdan uzakta onaylayın"],
+      appPlatforms: "Ücretsiz · iOS 15+ ve Android 9+ · bu portalla aynı giriş, aynı veri"
+    },
+    waText: { en: "Hello, I am locked out of the Operations Portal.", tr: "Merhaba, Operasyon Portalına giriş yapamıyorum." }
+  }
+];
+
+CL_PORTALS.push({
+  id: "desk", dot: "#25D366", handoff: true,
+  en: {
+    name: "{n}", sub: "WhatsApp inbox CRM", tag: "{n}",
+    scope: "{n} is only for the JobsAdmire internal team.",
+    eyebrow: "WhatsApp inbox CRM",
+    title: "A WhatsApp inbox that works like a CRM.",
+    sub2: "One shared number for the whole team, and every chat filed against the candidate or employer it belongs to — not lost on someone's phone.",
+    points: ["Shared inbox — one number, the whole team replies", "Every chat filed on the candidate or employer record", "Chats assigned to a coordinator, with full history", "Broadcast campaigns, with replies landing in the same inbox"],
+    handoffTitle: "{n} has its own sign-in",
+    handoffBody: "For your security we never ask for another system's password here. The button opens {n} and you sign in there.",
+    handoffCta: "Open {n}",
+    foot: "Coming soon: sign in once on the Operations Portal and {n} opens with you.",
+    helpTitle: "No {n} access?", helpCta: "Ask operations",
+    app: "{n} on mobile — reply from the shared inbox, not your own number.",
+    appPoints: ["Assigned chats pushed to you, not to everyone", "Reply as JobsAdmire from the shared number", "Chat history travels with the candidate file"],
+    appPlatforms: "Free · iOS 15+ and Android 9+ · signs in with your {n} account"
+  },
+  tr: {
+    name: "{n}", sub: "WhatsApp gelen kutusu CRM", tag: "{n}",
+    scope: "{n} yalnızca JobsAdmire şirket içi ekibi içindir.",
+    eyebrow: "WhatsApp gelen kutusu CRM",
+    title: "CRM gibi çalışan bir WhatsApp gelen kutusu.",
+    sub2: "Tüm ekip için tek ortak numara ve her sohbet ait olduğu aday ya da işveren kaydına işlenir — kimsenin telefonunda kaybolmaz.",
+    points: ["Ortak gelen kutusu — tek numara, tüm ekip yanıtlar", "Her sohbet aday ya da işveren kaydına işlenir", "Sohbetler bir koordinatöre atanır, tüm geçmişiyle", "Toplu kampanyalar, yanıtları aynı gelen kutusuna düşer"],
+    handoffTitle: "{n} girişi ayrıdır",
+    handoffBody: "Güvenliğiniz için başka bir sistemin şifresini burada asla istemiyoruz. Düğme {n} uygulamasını açar, girişi orada yaparsınız.",
+    handoffCta: "{n} uygulamasını aç",
+    foot: "Yakında: Operasyon Portalı'na bir kez giriş yapın, {n} de sizinle açılsın.",
+    helpTitle: "{n} erişiminiz yok mu?", helpCta: "Operasyona yazın",
+    app: "Mobilde {n} — kendi numaranızdan değil, ortak gelen kutusundan yanıtlayın.",
+    appPoints: ["Atanan sohbetler herkese değil, size gelir", "Ortak numaradan JobsAdmire olarak yanıtlayın", "Sohbet geçmişi aday dosyasıyla birlikte gider"],
+    appPlatforms: "Ücretsiz · iOS 15+ ve Android 9+ · {n} hesabınızla giriş yapılır"
+  },
+  waText: { en: "Hello, I need Desk access.", tr: "Merhaba, Desk erişimi istiyorum." }
+});
+
+const CL_LANGS = [["EN", "en"], ["TR", "tr"]];
+const CL_MAX_TRIES = 3;
+
+class Component extends DCLogic {
+  // the review sheet links here as ?lang=tr|fr|ru — the page is written in English, so
+  // ja-i18n swaps the rendered text after mount
+  static reviewLang() {
+    try {
+      const v = (new URLSearchParams(location.search).get("lang") || "").toUpperCase();
+      return ["TR", "FR", "RU"].indexOf(v) >= 0 ? v : null;
+    } catch (e) { return null; }
+  }
+
+  applyReviewLang() {
+    const rl = Component.reviewLang();
+    if (rl && window.JA_I18N) window.JA_I18N.apply(document.body, rl);
+  }
+
+  // i18n lands after first paint — retry until the swap sticks, then stop, so a later pass
+  // cannot refill a node the highlighter has already emptied
+  bootReviewLang() {
+    if (!Component.reviewLang()) return;
+    let n = 0;
+    const tick = () => {
+      this.applyReviewLang();
+      if (document.querySelector("mark.ja-hl-mark")) return;
+      if (n++ < 10) setTimeout(tick, 350);
+    };
+    tick();
+  }
+
+  state = {
+    portal: "", portalTouched: false, autoPortal: "",
+    email: "", password: "", showPass: false, remember: true,
+    signing: false, notice: "", noticeKind: "warn", shake: 0,
+    tries: {}, locks: {}, tick: 0, caps: false,
+    view: "signin", resetting: false, sentTo: "",
+    appOpen: false, helpOpen: false,
+    lang: "en"
+  };
+
+  componentDidMount() {
+    this.bootReviewLang();
+    this.syncLang();
+    this.makeQr();
+    if (window.innerWidth > 900 && this._emailEl) {
+      try { this._emailEl.focus({ preventScroll: true }); } catch (e) { this._emailEl.focus(); }
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    this.syncLang();
+    this.applyReviewLang();
+    if (this._qrFor !== this.storeUrl) {
+      this._qrUrl = "";
+      if (this._qrEl) this._qrEl.style.backgroundImage = "none";
+      this.makeQr();
+    }
+  }
+
+  componentWillUnmount() { clearTimeout(this._t); clearInterval(this._lockTimer); }
+
+  syncLang() {
+    try { document.documentElement.lang = this.lang; } catch (e) { /* no-op */ }
+  }
+
+  startLockTimer() {
+    clearInterval(this._lockTimer);
+    this._lockTimer = setInterval(() => {
+      const any = Object.keys(this.state.locks).some((k) => this.state.locks[k] > Date.now());
+      if (!any) { clearInterval(this._lockTimer); this.forceUpdate(); return; }
+      this.setState((st) => ({ tick: st.tick + 1 }));
+    }, 1000);
+  }
+
+  mmss(sec) {
+    const m = Math.floor(sec / 60);
+    const r = sec % 60;
+    return m + ":" + (r < 10 ? "0" + r : r);
+  }
+
+  get appUrl() { return this.props.appUrl || "https://jobsadmire.com/app"; }
+
+  get deskHost() {
+    return this.props.deskUrl || ("https://" + this.productName.toLowerCase().replace(/[^a-z0-9]/g, "") + ".jobsadmire.com");
+  }
+
+  get iosUrl() { return String(this.props.iosUrl || "").trim() || this.storeUrl; }
+  get androidUrl() { return String(this.props.androidUrl || "").trim() || this.storeUrl; }
+  get storeUrl() {
+    if (this.portalDef.handoff) return this.deskHost.replace(/\/+$/, "") + "/app";
+    return this.portalDef.appUrl || this.appUrl;
+  }
+  get storeAppName() {
+    if (this.portalDef.handoff) return "";
+    if (this.portalId !== "partner") return "";
+    return String(this.props.appName == null ? "JobsAdmire Partners" : this.props.appName).trim();
+  }
+  get appSearchLine() {
+    const n = this.storeAppName;
+    if (!n) return "";
+    return this.lang === "tr" ? "Her iki mağazada arayın: “" + n + "”" : "Search either store for “" + n + "”";
+  }
+  get lang() { return this.state.lang === "tr" ? "tr" : "en"; }
+  get t() { return CL_T[this.lang]; }
+  get staffDomain() { return String(this.props.staffDomain || "jobsadmire.com").toLowerCase().replace(/^@/, ""); }
+  get portalId() { return this.state.portal || this.props.defaultPortal || "partner"; }
+  get portalDef() { return CL_PORTALS.filter((p) => p.id === this.portalId)[0] || CL_PORTALS[0]; }
+  get productName() { return this.props.productName || "ChatAdmire"; }
+
+  get copy() {
+    const raw = this.portalDef[this.lang];
+    if (!this.portalDef.handoff) return raw;
+    const name = this.productName;
+    const out = {};
+    Object.keys(raw).forEach((k) => {
+      const v = raw[k];
+      out[k] = typeof v === "string"
+        ? v.split("{n}").join(name)
+        : (Array.isArray(v) ? v.map((x) => (typeof x === "string" ? x.split("{n}").join(name) : x)) : v);
+    });
+    return out;
+  }
+
+  makeQr() {
+    try {
+      if (window.JAQR && window.JAQR.toDataURL) {
+        this._qrFor = this.storeUrl;
+        this._qrUrl = window.JAQR.toDataURL(this._qrFor, 4, 1, "#0a1428");
+        this.paintQr();
+      }
+    } catch (e) { /* QR is decorative */ }
+  }
+
+  paintQr() {
+    if (this._qrEl && this._qrUrl) this._qrEl.style.backgroundImage = "url('" + this._qrUrl + "')";
+  }
+
+  domainOf(email) {
+    const at = String(email || "").indexOf("@");
+    if (at < 1) return "";
+    return String(email).slice(at + 1).trim().toLowerCase();
+  }
+
+  onEmailChange = (e) => {
+    const val = e.target.value;
+    const dom = this.domainOf(val);
+    const patch = { email: val, notice: "" };
+    if (dom && dom.indexOf(".") > 0 && !this.state.portalTouched && !this.portalDef.handoff) {
+      const wanted = dom === this.staffDomain ? "ops" : "partner";
+      if (wanted !== this.portalId) { patch.portal = wanted; patch.autoPortal = wanted; }
+      else if (this.state.autoPortal !== wanted) patch.autoPortal = wanted;
+    }
+    this.setState(patch);
+  };
+
+  fail() {
+    const pid = this.portalId;
+    const tries = Object.assign({}, this.state.tries);
+    const locks = Object.assign({}, this.state.locks);
+    tries[pid] = (tries[pid] || 0) + 1;
+    if (tries[pid] >= CL_MAX_TRIES) {
+      locks[pid] = Date.now() + (parseInt(this.props.lockMinutes, 10) || 15) * 60000;
+      this.setState({ tries: tries, locks: locks, noticeKind: "error", notice: this.t.errLocked, shake: this.state.shake + 1 });
+      this.startLockTimer();
+      return;
+    }
+    const left = CL_MAX_TRIES - tries[pid];
+    this.setState({
+      tries: tries,
+      noticeKind: "error",
+      notice: left === 1 ? this.t.errLast : this.t.errWrong + left + this.t.errWrongTail,
+      shake: this.state.shake + 1
+    });
+  }
+
+  get lockLeft() {
+    const until = this.state.locks[this.portalId] || 0;
+    const left = Math.ceil((until - Date.now()) / 1000);
+    return left > 0 ? left : 0;
+  }
+
+  get isLocked() { return this.lockLeft > 0; }
+
+  forgot = () => this.setState({ view: "reset", notice: "", shake: 0 });
+
+  backToSignin = () => this.setState({ view: "signin", notice: "", resetting: false });
+
+  resetSubmit = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    if (this.state.resetting) return;
+    const email = String(this.state.email || "").trim();
+    const dom = this.domainOf(email);
+    if (!dom || dom.indexOf(".") < 1) {
+      this.setState({ notice: this.t.errEmail, noticeKind: "warn", shake: this.state.shake + 1 });
+      return;
+    }
+    this.setState({ resetting: true, notice: "" });
+    this._t = setTimeout(() => this.setState({ resetting: false, view: "sent", sentTo: email }), 1100);
+  };
+
+  onPassKey = (e) => {
+    if (!e.getModifierState) return;
+    const on = e.getModifierState("CapsLock");
+    if (on !== this.state.caps) this.setState({ caps: on });
+  };
+
+  submit = (e) => {
+    if (e && e.preventDefault) e.preventDefault();
+    if (this.state.signing || this.isLocked) return;
+    const t = this.t;
+    const email = String(this.state.email || "").trim();
+    const dom = this.domainOf(email);
+    if (!dom || dom.indexOf(".") < 1) {
+      this.setState({ notice: t.errEmail, noticeKind: "warn", shake: this.state.shake + 1 });
+      return;
+    }
+    if (String(this.state.password || "").length < 6) {
+      this.setState({ notice: t.errPass, noticeKind: "warn", shake: this.state.shake + 1 });
+      return;
+    }
+    this.setState({ signing: true, notice: "" });
+    this._t = setTimeout(() => {
+      this.setState({ signing: false });
+      if (String(this.state.password).toLowerCase().indexOf("demo") === 0) {
+        this.setState({ noticeKind: "info", notice: this.t.demo + this.copy.name + "." });
+      } else {
+        this.fail();
+      }
+    }, 1150);
+  };
+
+  renderVals() {
+    const t = this.t;
+    const c = this.copy;
+    const kind = this.isLocked ? "error" : this.state.noticeKind;
+    const skin = kind === "error"
+      ? { bg: "#fef2f2", bd: "#fecaca", fg: "#b91c1c", icon: "#dc2626" }
+      : (kind === "info"
+        ? { bg: "#eff6ff", bd: "#bfdbfe", fg: "#1d4ed8", icon: "#2563eb" }
+        : { bg: "#fff7ed", bd: "#fed7aa", fg: "#9a3412", icon: "#c2410c" });
+    const bad = kind === "error" || kind === "warn";
+    const view = this.state.view;
+    const locked = this.isLocked;
+    const left = this.lockLeft;
+    const reason = this.props.reason === "expired" || this.props.reason === "signedout" ? this.props.reason : "";
+    const emailBad = bad && this.state.notice === t.errEmail;
+    const passBad = kind === "error" && !!this.state.notice;
+    const fieldBase = "width:100%; min-height:54px; background:#ffffff; border-radius:13px; font-size:16px; font-weight:600; color:#16202e; border:1.5px solid ";
+    const auto = this.state.autoPortal;
+
+    return {
+      t: t,
+      portalTag: c.tag,
+      panelEyebrow: c.eyebrow,
+      panelTitle: c.title,
+      panelSub: c.sub2,
+      panelPoints: c.points,
+      appLine: c.app,
+      appPoints: c.appPoints,
+      appPlatforms: c.appPlatforms,
+      appSearch: this.appSearchLine,
+      supportLine: (this.portalId === "partner" ? t.whoAm : t.whoIt) + " · " + t.hours + " · " + t.reply,
+      showApp: this.portalId === "partner" && !this.portalDef.handoff,
+      appHref: this.storeUrl,
+      iosHref: this.iosUrl,
+      androidHref: this.androidUrl,
+      qrRef: (el) => { this._qrEl = el; this.paintQr(); },
+
+      appOpenAttr: this.state.appOpen ? "1" : "0",
+      helpOpenAttr: this.state.helpOpen ? "1" : "0",
+      appExpanded: this.state.appOpen ? "true" : "false",
+      helpExpanded: this.state.helpOpen ? "true" : "false",
+      toggleApp: () => this.setState((st) => ({ appOpen: !st.appOpen })),
+      toggleHelp: () => this.setState((st) => ({ helpOpen: !st.helpOpen })),
+
+      portalTiles: CL_PORTALS.map((it) => {
+        const on = it.id === this.portalId;
+        return {
+          name: String(it[this.lang].name).split("{n}").join(this.productName),
+          short: it.id === "partner" ? (this.lang === "tr" ? "İş Ortağı" : "Partner")
+            : (it.id === "ops" ? (this.lang === "tr" ? "Operasyon" : "Operations") : this.productName),
+          sub: it[this.lang].sub,
+          onClick: () => this.setState({ portal: it.id, portalTouched: true, autoPortal: "", notice: "", view: "signin", resetting: false }),
+          dotStyle: "width:9px; height:9px; border-radius:50%; flex:none; background:" + it.dot,
+          style: "text-align:left; padding:13px 14px; border-radius:14px; cursor:pointer; font-family:inherit; transition:border-color .15s, background .15s; " +
+            (on
+              ? "background:#eaf6fd; border:1.5px solid #1899D5; color:#0f6b9c; box-shadow:0 6px 16px rgba(24,153,213,0.16);"
+              : "background:#ffffff; border:1.5px solid #dbe8f2; color:#43536a;")
+        };
+      }),
+
+      emailLabel: c.emailLabel,
+      scopeNote: String(c.scope || "").split("{n}").join(this.productName),
+      emailPlaceholder: c.emailPlaceholder,
+      email: this.state.email,
+      onEmail: this.onEmailChange,
+      emailRef: (el) => { this._emailEl = el; },
+      emailStyle: fieldBase + (emailBad ? "#f0a9a9" : "#d3e6f2") + "; padding:0 16px",
+      emailInvalid: emailBad ? "true" : "false",
+      showDomainHint: !!auto && !this.state.portalTouched,
+      domainHint: auto === "ops" ? t.hintOps : t.hintPartner,
+
+      password: this.state.password,
+      onPassword: (e) => this.setState({ password: e.target.value, notice: "" }),
+      passType: this.state.showPass ? "text" : "password",
+      passToggleLabel: this.state.showPass ? t.hide : t.show,
+      onTogglePass: () => this.setState((st) => ({ showPass: !st.showPass })),
+      passStyle: fieldBase + (passBad ? "#f0a9a9" : "#d3e6f2") + "; padding:0 78px 0 16px",
+      passInvalid: passBad ? "true" : "false",
+      showPass: this.state.showPass ? "true" : "false",
+      capsOn: !!this.state.caps,
+      onPassKey: this.onPassKey,
+
+      remember: this.state.remember ? "true" : "false",
+      onRemember: () => this.setState((st) => ({ remember: !st.remember })),
+      rememberOn: !!this.state.remember,
+      rememberBoxStyle: "flex:none; width:19px; height:19px; border-radius:6px; display:flex; align-items:center; justify-content:center; " +
+        (this.state.remember ? "background:#1899D5; border:1.5px solid #1899D5;" : "background:#ffffff; border:1.5px solid #cbd9e6;"),
+
+      isHandoff: !!this.portalDef.handoff && view === "signin",
+      isSignin: view === "signin" && !this.portalDef.handoff,
+      handoffTitle: c.handoffTitle,
+      handoffBody: c.handoffBody,
+      handoffCta: c.handoffCta,
+      deskHref: this.deskHost,
+      isReset: view === "reset",
+      isSent: view === "sent",
+      cardTitle: view === "reset" ? t.resetTitle : (view === "sent" ? t.resetSentTitle : t.signIn),
+      cardSub: view === "reset" ? t.resetSub : (view === "sent" ? "" : t.cardSub),
+      onForgot: this.forgot,
+      onBackToSignin: this.backToSignin,
+      onResetSubmit: this.resetSubmit,
+      resetting: this.state.resetting,
+      resetLabel: this.state.resetting ? t.resetSending : t.resetSend,
+      resetSentBody: t.resetSentA + (this.state.sentTo || this.state.email) + t.resetSentB,
+
+      hasReason: !!reason && view === "signin",
+      reasonTitle: reason === "expired" ? t.expiredTitle : t.signedOutTitle,
+      reasonBody: reason === "expired" ? t.expiredBody : t.signedOutBody,
+
+      signing: this.state.signing,
+      onSubmitForm: this.submit,
+      locked: locked ? true : null,
+      submitLabel: locked ? t.lockedBtn : (this.state.signing ? t.signingIn : t.signInTo + c.name),
+      submitStyle: "width:100%; margin-top:20px; min-height:56px; display:flex; align-items:center; justify-content:center; gap:10px; border:none; border-radius:14px; font-size:15.5px; font-weight:800; letter-spacing:0.1px; font-family:inherit; " +
+        (locked
+          ? "background:#e4eaf0; color:#6b7a8a; cursor:not-allowed;"
+          : "background:#1073a8; color:#ffffff; cursor:pointer; box-shadow:0 12px 26px rgba(16,115,168,0.3);"),
+      footNote: c.foot,
+
+      helpTitle: c.helpTitle,
+      helpBody: c.helpBody,
+      helpCta: c.helpCta,
+      waHelpHref: "https://wa.me/905011240340?text=" + encodeURIComponent(this.portalDef.waText[this.lang]),
+
+      hasNotice: !!this.state.notice || locked,
+      notice: locked ? t.errLocked + " " + t.unlocksIn + this.mmss(left) + "." : this.state.notice,
+      noticeIcon: skin.icon,
+      noticeAnim: "ja-cl-shake ja-cl-n" + this.state.shake,
+      noticeBoxStyle: "margin-top:16px; display:flex; gap:10px; border-radius:12px; padding:11px 13px; background:" + skin.bg + "; border:1px solid " + skin.bd,
+      noticeTextStyle: "font-size:12.5px; font-weight:700; line-height:1.45; color:" + skin.fg,
+
+      langs: CL_LANGS.map((l) => ({
+        code: l[0],
+        onClick: () => this.setState({ lang: l[1], notice: "", caps: false }),
+        style: "border:none; border-radius:999px; padding:7px 14px; min-height:34px; font-size:12px; font-weight:800; letter-spacing:0.4px; cursor:pointer; font-family:inherit; " +
+          (l[1] === this.lang ? "background:#16202e; color:#ffffff;" : "background:transparent; color:#64748b;")
+      })),
+
+      langsDark: CL_LANGS.map((l) => ({
+        code: l[0],
+        onClick: () => this.setState({ lang: l[1], notice: "", caps: false }),
+        style: "border:none; border-radius:999px; padding:6px 13px; min-height:32px; font-size:12px; font-weight:800; letter-spacing:0.4px; cursor:pointer; font-family:inherit; " +
+          (l[1] === this.lang ? "background:#ffffff; color:#0a1428;" : "background:transparent; color:rgba(255,255,255,0.7);")
+      }))
+    };
+  }
+}
+
+</script>
+</body>
+</html>

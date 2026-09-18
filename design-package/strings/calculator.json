@@ -1,0 +1,4534 @@
+{
+ "page": "Hiring Cost Calculator",
+ "route": "/hiring-cost-calculator",
+ "strings": [
+  {
+   "id": "calc.001",
+   "en": "Home",
+   "tr": "Ana Sayfa",
+   "k": "hHome",
+   "sec": "Hero",
+   "rev": "yjtufe"
+  },
+  {
+   "id": "calc.002",
+   "en": "Hiring Cost Calculator",
+   "tr": "İşçi Maliyet Hesaplayıcı",
+   "k": "hCrumb",
+   "sec": "Hero",
+   "rev": "e9bold"
+  },
+  {
+   "id": "calc.003",
+   "en": "2026 rates · Updated January 2026",
+   "tr": "2026 oranları · Ocak 2026'da güncellendi",
+   "k": "hBadge",
+   "sec": "Hero",
+   "rev": "rlq2cs"
+  },
+  {
+   "id": "calc.004",
+   "en": "What does a foreign worker",
+   "tr": "Türkiye'de yabancı bir işçi",
+   "k": "hT1",
+   "sec": "Hero",
+   "rev": "18sho3f"
+  },
+  {
+   "id": "calc.005",
+   "en": "really cost",
+   "tr": "gerçekte ne kadara",
+   "k": "hT2",
+   "sec": "Hero",
+   "rev": "1vfvdz5"
+  },
+  {
+   "id": "calc.006",
+   "en": "in Turkey?",
+   "tr": "mal olur?",
+   "k": "hT3",
+   "sec": "Hero",
+   "rev": "9pzy49"
+  },
+  {
+   "id": "calc.007",
+   "en": "Salary, SGK employer contribution, permit fees, flights and accommodation — calculated in one place, with 2026 rates. No sign-up, no email required.",
+   "tr": "Maaş, SGK işveren payı, izin harçları, uçak bileti ve konaklama — 2026 oranlarıyla tek yerde hesaplanır. Üyelik yok, e-posta istenmez.",
+   "k": "hSub",
+   "sec": "Hero",
+   "legal": true,
+   "rev": "rym04s"
+  },
+  {
+   "id": "calc.008",
+   "en": "Your requirement",
+   "tr": "İhtiyacınız",
+   "k": "cReq",
+   "sec": "Hesaplayıcı",
+   "rev": "1i1d80b"
+  },
+  {
+   "id": "calc.009",
+   "en": "Per month",
+   "tr": "Aylık",
+   "k": "cPerMonth",
+   "sec": "Hesaplayıcı",
+   "rev": "13lriya"
+  },
+  {
+   "id": "calc.010",
+   "en": "One-off",
+   "tr": "Tek seferlik",
+   "k": "cOneOff",
+   "sec": "Hesaplayıcı",
+   "rev": "1ybozpf"
+  },
+  {
+   "id": "calc.011",
+   "en": "Get an exact written quote →",
+   "tr": "Yazılı net teklif alın →",
+   "k": "cQuoteArrow",
+   "sec": "Hesaplayıcı",
+   "rev": "zc3v7c"
+  },
+  {
+   "id": "calc.012",
+   "en": "Profession",
+   "tr": "Meslek",
+   "k": "cProfession",
+   "sec": "Hesaplayıcı",
+   "rev": "vj7xpf"
+  },
+  {
+   "id": "calc.013",
+   "en": "Number of workers",
+   "tr": "İşçi sayısı",
+   "k": "cWorkers",
+   "sec": "Hesaplayıcı",
+   "rev": "ntrfqi"
+  },
+  {
+   "id": "calc.014",
+   "en": "Contract length",
+   "tr": "Sözleşme süresi",
+   "k": "cContract",
+   "sec": "Hesaplayıcı",
+   "rev": "4lde3v"
+  },
+  {
+   "id": "calc.015",
+   "en": "Gross salary offered",
+   "tr": "Teklif edilen brüt maaş",
+   "k": "cSalary",
+   "sec": "Hesaplayıcı",
+   "rev": "11wuigi"
+  },
+  {
+   "id": "calc.016",
+   "en": "What you cover",
+   "tr": "Sizin karşıladıklarınız",
+   "k": "cCover",
+   "sec": "Hesaplayıcı",
+   "rev": "6w4tj5"
+  },
+  {
+   "id": "calc.017",
+   "en": "Flight to Turkey",
+   "tr": "Türkiye'ye uçak bileti",
+   "k": "cFlight",
+   "sec": "Hesaplayıcı",
+   "rev": "lo6asi"
+  },
+  {
+   "id": "calc.018",
+   "en": "Accommodation",
+   "tr": "Konaklama",
+   "k": "cAcc",
+   "sec": "Hesaplayıcı",
+   "rev": "hu4ta5"
+  },
+  {
+   "id": "calc.019",
+   "en": "(shared, per worker)",
+   "tr": "(paylaşımlı, işçi başına)",
+   "k": "cAccNote",
+   "sec": "Hesaplayıcı",
+   "rev": "6rkkkw"
+  },
+  {
+   "id": "calc.020",
+   "en": "Minimum wage support",
+   "tr": "Asgari ücret desteği",
+   "k": "cSupport",
+   "sec": "Hesaplayıcı",
+   "rev": "swi6w8"
+  },
+  {
+   "id": "calc.021",
+   "en": "(₺1,270 / worker / month — if your workplace qualifies)",
+   "tr": "(₺1.270 / işçi / ay — işyeriniz hak kazanıyorsa)",
+   "k": "cSupportNote",
+   "sec": "Hesaplayıcı",
+   "rev": "1r409g9"
+  },
+  {
+   "id": "calc.022",
+   "en": "SGK discount (teşvik)",
+   "tr": "SGK teşvik indirimi",
+   "k": "cSgkDisc",
+   "sec": "Hesaplayıcı",
+   "legal": true,
+   "rev": "1mrhboc"
+  },
+  {
+   "id": "calc.023",
+   "en": "Estimated cost",
+   "tr": "Tahmini maliyet",
+   "k": "cEst",
+   "sec": "Hesaplayıcı",
+   "rev": "556gak"
+  },
+  {
+   "id": "calc.024",
+   "en": "Monthly, recurring",
+   "tr": "Aylık, tekrarlayan",
+   "k": "cMonthly",
+   "sec": "Hesaplayıcı",
+   "rev": "3u8x4d"
+  },
+  {
+   "id": "calc.025",
+   "en": "Gross salary",
+   "tr": "Brüt maaş",
+   "k": "cGross",
+   "sec": "Hesaplayıcı",
+   "rev": "bx6yuj"
+  },
+  {
+   "id": "calc.026",
+   "en": "SGK employer contribution",
+   "tr": "SGK işveren payı",
+   "k": "cSgkEmp",
+   "sec": "Hesaplayıcı",
+   "legal": true,
+   "rev": "1jawuix"
+  },
+  {
+   "id": "calc.027",
+   "en": "(state)",
+   "tr": "(devlet)",
+   "k": "cState",
+   "sec": "Hesaplayıcı",
+   "rev": "ivkyb7"
+  },
+  {
+   "id": "calc.028",
+   "en": "Monthly total",
+   "tr": "Aylık toplam",
+   "k": "cMonthlyTotal",
+   "sec": "Hesaplayıcı",
+   "rev": "n5izr6"
+  },
+  {
+   "id": "calc.029",
+   "en": "One-off, first year",
+   "tr": "Tek seferlik, ilk yıl",
+   "k": "cOneOffY1",
+   "sec": "Hesaplayıcı",
+   "rev": "1hjqsii"
+  },
+  {
+   "id": "calc.030",
+   "en": "Work permit + card fees",
+   "tr": "Çalışma izni + kart harçları",
+   "k": "cPermitFees",
+   "sec": "Hesaplayıcı",
+   "rev": "w7wj15"
+  },
+  {
+   "id": "calc.031",
+   "en": "Flight & travel",
+   "tr": "Uçak bileti ve seyahat",
+   "k": "cFlightTravel",
+   "sec": "Hesaplayıcı",
+   "rev": "4a5cw3"
+  },
+  {
+   "id": "calc.032",
+   "en": "JobsAdmire service fee",
+   "tr": "JobsAdmire hizmet bedeli",
+   "k": "cServiceFee",
+   "sec": "Hesaplayıcı",
+   "rev": "wlmyyk"
+  },
+  {
+   "id": "calc.033",
+   "en": "Not in this total",
+   "tr": "Bu toplama dahil değil",
+   "k": "cQuotedWritten",
+   "sec": "Hesaplayıcı",
+   "rev": "1hcixwz"
+  },
+  {
+   "id": "calc.034",
+   "en": "One-off total",
+   "tr": "Tek seferlik toplam",
+   "k": "cOneOffTotal",
+   "sec": "Hesaplayıcı",
+   "rev": "thwloh"
+  },
+  {
+   "id": "calc.035",
+   "en": "· Service fee not included — quoted in writing before we start.",
+   "tr": "· Hizmet bedeli dahil değildir — işe başlamadan önce yazılı olarak bildirilir.",
+   "k": "cFeeNote",
+   "sec": "Hesaplayıcı",
+   "rev": "dhd2s4"
+  },
+  {
+   "id": "calc.036",
+   "en": "Get an exact written quote",
+   "tr": "Yazılı net teklif alın",
+   "k": "cQuoteBtn",
+   "sec": "Hesaplayıcı",
+   "rev": "omev0q"
+  },
+  {
+   "id": "calc.037",
+   "en": "Print",
+   "tr": "Yazdır",
+   "k": "cPrint",
+   "sec": "Hesaplayıcı",
+   "rev": "3u3blg"
+  },
+  {
+   "id": "calc.038",
+   "en": "Seasonal note: permit and travel are paid once even for a short season, so the cost per month is higher —",
+   "tr": "Sezonluk not: izin ve seyahat masrafları kısa bir sezon için bile bir kez ödenir, bu yüzden aylık maliyet daha yüksektir — sözleşme boyunca işçi başına",
+   "k": "sea1",
+   "sec": "Hesaplayıcı",
+   "rev": "15hsmux"
+  },
+  {
+   "id": "calc.039",
+   "en": "per worker across the contract.",
+   "tr": ".",
+   "k": "sea2",
+   "sec": "Hesaplayıcı",
+   "rev": "fu4cry"
+  },
+  {
+   "id": "calc.040",
+   "en": "Estimates based on 2026 rates: minimum wage ₺33,030 gross, employer SGK 21.75% with the standard 2-point discount (18.75% in manufacturing with 5 points, 23.75% with no discount), state permit and card fees ≈ ₺16,000 per worker. Actual figures vary by sector, city and case.",
+   "tr": "Tahminler 2026 oranlarına dayanır: asgari ücret brüt ₺33.030, standart 2 puanlık indirimle işveren SGK payı %21,75 (imalatta 5 puanla %18,75, indirimsiz %23,75), devlet izin ve kart harçları işçi başına ≈ ₺16.000. Gerçek rakamlar sektöre, şehre ve duruma göre değişir.",
+   "k": "cFine",
+   "sec": "Hesaplayıcı",
+   "legal": true,
+   "rev": "1vc0vkg"
+  },
+  {
+   "id": "calc.041",
+   "en": "Can you hire",
+   "tr": "",
+   "sec": "Kota kontrolü",
+   "rev": "1d5efj0"
+  },
+  {
+   "id": "calc.042",
+   "en": "?",
+   "tr": "işçi alabilir misiniz?",
+   "k": "cQuotaQ2",
+   "sec": "Hesaplayıcı",
+   "rev": "3t0a"
+  },
+  {
+   "id": "calc.043",
+   "en": "Turkey's 5:1 rule means the workplace needs",
+   "tr": "Türkiye'deki 5:1 kuralına göre bu sayı için işyerinde SGK'lı",
+   "k": "cQuotaD1",
+   "sec": "Hesaplayıcı",
+   "legal": true,
+   "rev": "157jt7"
+  },
+  {
+   "id": "calc.044",
+   "en": "Turkish employees",
+   "tr": "Türk çalışan",
+   "k": "cQuotaStaff",
+   "sec": "Hesaplayıcı",
+   "rev": "1ttwqta"
+  },
+  {
+   "id": "calc.045",
+   "en": "on SGK for this many — unless your sector is exempt.",
+   "tr": "bulunmalıdır — sektörünüz muaf değilse.",
+   "k": "cQuotaD2",
+   "sec": "Hesaplayıcı",
+   "legal": true,
+   "rev": "1xjdyvn"
+  },
+  {
+   "id": "calc.046",
+   "en": "Needs",
+   "tr": "SGK'lı",
+   "k": "cQuotaM1",
+   "sec": "Hesaplayıcı",
+   "legal": true,
+   "rev": "3klx5o"
+  },
+  {
+   "id": "calc.047",
+   "en": "Turkish staff",
+   "tr": "Türk çalışan",
+   "k": "cQuotaStaffShort",
+   "sec": "Hesaplayıcı",
+   "rev": "u3zex5"
+  },
+  {
+   "id": "calc.048",
+   "en": "on SGK.",
+   "tr": "gerekir.",
+   "k": "cQuotaM2",
+   "sec": "Hesaplayıcı",
+   "legal": true,
+   "rev": "1vk61dh"
+  },
+  {
+   "id": "calc.049",
+   "en": "Check your quota →",
+   "tr": "Kotanızı kontrol edin →",
+   "k": "cQuotaLink",
+   "sec": "Hesaplayıcı",
+   "rev": "nlgdni"
+  },
+  {
+   "id": "calc.050",
+   "en": "Want the exact number for your case? Written quote within 24 hours.",
+   "tr": "Kendi durumunuz için net rakamı ister misiniz? 24 saat içinde yazılı teklif.",
+   "k": "sTag",
+   "sec": "Sticky CTA / Maaş rehberi",
+   "rev": "1op71y2"
+  },
+  {
+   "id": "calc.051",
+   "en": "Call",
+   "tr": "Ara",
+   "k": "sCall",
+   "sec": "Sticky CTA / Maaş rehberi",
+   "rev": "yjn8ef"
+  },
+  {
+   "id": "calc.052",
+   "en": "WhatsApp quote",
+   "tr": "WhatsApp'tan teklif",
+   "k": "sWa",
+   "sec": "Sticky CTA / Maaş rehberi",
+   "rev": "b1ftqf"
+  },
+  {
+   "id": "calc.053",
+   "en": "Request workers →",
+   "tr": "İşçi talep edin →",
+   "k": "sReq",
+   "sec": "Sticky CTA / Maaş rehberi",
+   "rev": "t5mzoj"
+  },
+  {
+   "id": "calc.054",
+   "en": "Salary guide",
+   "tr": "Maaş rehberi",
+   "k": "jSalary",
+   "sec": "Bölüm başlıkları",
+   "rev": "ha8gx7"
+  },
+  {
+   "id": "calc.055",
+   "en": "Your quota",
+   "tr": "Kotanız",
+   "k": "jQuota",
+   "sec": "Bölüm başlıkları",
+   "rev": "11pkaoa"
+  },
+  {
+   "id": "calc.056",
+   "en": "Incentives",
+   "tr": "Teşvikler",
+   "k": "jInc",
+   "sec": "Bölüm başlıkları",
+   "rev": "leko3b"
+  },
+  {
+   "id": "calc.057",
+   "en": "Will it pass?",
+   "tr": "Geçer mi?",
+   "k": "jPass",
+   "sec": "Bölüm başlıkları",
+   "rev": "o4hmw8"
+  },
+  {
+   "id": "calc.058",
+   "en": "Penalties",
+   "tr": "Cezalar",
+   "k": "jPen",
+   "sec": "Bölüm başlıkları",
+   "legal": true,
+   "rev": "tcnejc"
+  },
+  {
+   "id": "calc.059",
+   "en": "FAQ",
+   "tr": "SSS",
+   "k": "jFaq",
+   "sec": "Bölüm başlıkları",
+   "rev": "37651v"
+  },
+  {
+   "id": "calc.060",
+   "en": "What these numbers are based on",
+   "tr": "Bu rakamlar neye dayanıyor",
+   "k": "aBasisT",
+   "sec": "Bölüm başlıkları",
+   "rev": "1iihkwm"
+  },
+  {
+   "id": "calc.061",
+   "en": "2026 minimum wage, SGK rates, permit fees, travel",
+   "tr": "2026 asgari ücret, SGK oranları, izin harçları, seyahat",
+   "k": "aBasisS",
+   "sec": "Bölüm başlıkları",
+   "legal": true,
+   "rev": "n9vmmx"
+  },
+  {
+   "id": "calc.062",
+   "en": "Salary guide 2026",
+   "tr": "Maaş rehberi 2026",
+   "k": "aSalT",
+   "sec": "Bölüm başlıkları",
+   "rev": "6lz44t"
+  },
+  {
+   "id": "calc.063",
+   "en": "Gross monthly ranges by profession",
+   "tr": "Mesleğe göre aylık brüt aralıklar",
+   "k": "aSalS",
+   "sec": "Bölüm başlıkları",
+   "rev": "1jkhlu3"
+  },
+  {
+   "id": "calc.064",
+   "en": "Local hire vs overseas hire",
+   "tr": "Yerli işe alım vs yurt dışından alım",
+   "k": "aCmpT",
+   "sec": "Bölüm başlıkları",
+   "rev": "1y4gdpj"
+  },
+  {
+   "id": "calc.065",
+   "en": "What actually differs — and what does not",
+   "tr": "Gerçekte ne değişir — ve ne değişmez",
+   "k": "aCmpS",
+   "sec": "Bölüm başlıkları",
+   "rev": "2v5qqo"
+  },
+  {
+   "id": "calc.066",
+   "en": "Are you allowed to hire?",
+   "tr": "İşçi alabilir misiniz?",
+   "k": "aQuoT",
+   "sec": "Bölüm başlıkları",
+   "rev": "1vq4xm"
+  },
+  {
+   "id": "calc.067",
+   "en": "The 5:1 rule, exemptions and your quota",
+   "tr": "5:1 kuralı, muafiyetler ve kotanız",
+   "k": "aQuoS",
+   "sec": "Bölüm başlıkları",
+   "rev": "1nsn6xa"
+  },
+  {
+   "id": "calc.068",
+   "en": "Will your application pass?",
+   "tr": "Başvurunuz geçer mi?",
+   "k": "aPassT",
+   "sec": "Bölüm başlıkları",
+   "rev": "1rl2un2"
+  },
+  {
+   "id": "calc.069",
+   "en": "5 questions — the usual refusal reasons",
+   "tr": "5 soru — en sık ret nedenleri",
+   "k": "aPassS",
+   "sec": "Bölüm başlıkları",
+   "rev": "17qrk4z"
+  },
+  {
+   "id": "calc.070",
+   "en": "Cost of doing it the wrong way",
+   "tr": "Yanlış yolun maliyeti",
+   "k": "aPenT",
+   "sec": "Bölüm başlıkları",
+   "rev": "1kak604"
+  },
+  {
+   "id": "calc.071",
+   "en": "2026 fines for unregistered employment",
+   "tr": "Kayıt dışı istihdam için 2026 cezaları",
+   "k": "aPenS",
+   "sec": "Bölüm başlıkları",
+   "legal": true,
+   "rev": "1jb0gwc"
+  },
+  {
+   "id": "calc.072",
+   "en": "Hiring foreign students in Turkey",
+   "tr": "Türkiye'deki yabancı öğrencileri işe alma",
+   "k": "aStuT",
+   "sec": "Bölüm başlıkları",
+   "rev": "1evs5n5"
+  },
+  {
+   "id": "calc.073",
+   "en": "A different route, its own rules",
+   "tr": "Farklı bir yol, kendi kuralları var",
+   "k": "aStuS",
+   "sec": "Bölüm başlıkları",
+   "rev": "osdo4x"
+  },
+  {
+   "id": "calc.074",
+   "en": "Cost questions",
+   "tr": "Maliyet soruları",
+   "k": "aFaqT",
+   "sec": "Bölüm başlıkları",
+   "rev": "1m2007n"
+  },
+  {
+   "id": "calc.075",
+   "en": "What employers ask about these numbers",
+   "tr": "İşverenlerin bu rakamlar hakkında sordukları",
+   "k": "aFaqS",
+   "sec": "Bölüm başlıkları",
+   "rev": "158s4ki"
+  },
+  {
+   "id": "calc.076",
+   "en": "What the numbers above are based on",
+   "tr": "Yukarıdaki rakamlar neye dayanıyor",
+   "k": "bH",
+   "sec": "Dayanak (2026 verileri)",
+   "rev": "1d00sm7"
+  },
+  {
+   "id": "calc.077",
+   "en": "Every figure in the calculator comes from public 2026 data — here is the source of each one.",
+   "tr": "Hesaplayıcıdaki her rakam kamuya açık 2026 verilerinden gelir — her birinin kaynağı aşağıda.",
+   "k": "bSub",
+   "sec": "Dayanak (2026 verileri)",
+   "rev": "1uikyqi"
+  },
+  {
+   "id": "calc.078",
+   "en": "Minimum wage 2026",
+   "tr": "Asgari ücret 2026",
+   "k": "b1T",
+   "sec": "Dayanak (2026 verileri)",
+   "rev": "1yrm24h"
+  },
+  {
+   "id": "calc.079",
+   "en": "₺33,030 gross / ₺28,075.50 net per month, set by the Ministry in December 2025. Employer cost at that level: ₺40,214.",
+   "tr": "Aylık brüt ₺33.030 / net ₺28.075,50; Aralık 2025'te Bakanlık tarafından belirlendi. Bu seviyede işverene maliyeti: ₺40.214.",
+   "k": "b1B",
+   "sec": "Dayanak (2026 verileri)",
+   "rev": "vcqzpp"
+  },
+  {
+   "id": "calc.080",
+   "en": "SGK employer share",
+   "tr": "SGK işveren payı",
+   "k": "b2T",
+   "sec": "Dayanak (2026 verileri)",
+   "legal": true,
+   "rev": "18me9vm"
+  },
+  {
+   "id": "calc.081",
+   "en": "23.75% of gross before incentives. With the 5510 discount: 21.75% in most sectors (2 points), 18.75% in manufacturing (5 points).",
+   "tr": "Teşvik öncesi brütün %23,75'i. 5510 indirimiyle: çoğu sektörde %21,75 (2 puan), imalatta %18,75 (5 puan).",
+   "k": "b2B",
+   "sec": "Dayanak (2026 verileri)",
+   "legal": true,
+   "rev": "8jmrgj"
+  },
+  {
+   "id": "calc.082",
+   "en": "Permit & card fees",
+   "tr": "İzin ve kart harçları",
+   "k": "b3T",
+   "sec": "Dayanak (2026 verileri)",
+   "rev": "1j0iz85"
+  },
+  {
+   "id": "calc.083",
+   "en": "≈ ₺16,000 per worker per permit year, updated every January.",
+   "tr": "İzin yılı başına işçi başına ≈ ₺16.000; her Ocak ayında güncellenir.",
+   "k": "b3B",
+   "sec": "Dayanak (2026 verileri)",
+   "rev": "1l8m4vm"
+  },
+  {
+   "id": "calc.084",
+   "en": "See how permits work →",
+   "tr": "İzin süreci nasıl işliyor →",
+   "k": "b3L",
+   "sec": "Dayanak (2026 verileri)",
+   "rev": "126ca1d"
+  },
+  {
+   "id": "calc.085",
+   "en": "Travel & housing",
+   "tr": "Seyahat ve konaklama",
+   "k": "b4T",
+   "sec": "Dayanak (2026 verileri)",
+   "rev": "xrfx6i"
+  },
+  {
+   "id": "calc.086",
+   "en": "Flight ≈ ₺12,000 one-off (varies by country); shared accommodation ≈ ₺5,000 per worker per month.",
+   "tr": "Uçak bileti tek seferlik ≈ ₺12.000 (ülkeye göre değişir); paylaşımlı konaklama işçi başına ayda ≈ ₺5.000.",
+   "k": "b4B",
+   "sec": "Dayanak (2026 verileri)",
+   "rev": "1y9wguf"
+  },
+  {
+   "id": "calc.087",
+   "en": "Note:",
+   "tr": "Not:",
+   "k": "bNoteL",
+   "sec": "Dayanak (2026 verileri)",
+   "rev": "3khlrj"
+  },
+  {
+   "id": "calc.088",
+   "en": "each role also has a legal minimum salary set as a multiple of the minimum wage — offering less means the permit is rejected. The calculator will not let you go below the threshold for the profession you pick.",
+   "tr": "her meslek için ayrıca asgari ücretin katı olarak belirlenmiş yasal bir alt maaş sınırı vardır — daha düşük teklif izin reddiyle sonuçlanır. Hesaplayıcı seçtiğiniz meslek için bu sınırın altına inmenize izin vermez.",
+   "k": "bNote",
+   "sec": "Dayanak (2026 verileri)",
+   "rev": "164rj7i"
+  },
+  {
+   "id": "calc.089",
+   "en": "Last updated:",
+   "tr": "Son güncelleme:",
+   "k": "bUpd",
+   "sec": "Dayanak (2026 verileri)",
+   "rev": "rnsj34"
+  },
+  {
+   "id": "calc.090",
+   "en": "Rates are reviewed every January and whenever the Ministry changes them.",
+   "tr": "Oranlar her Ocak ayında ve Bakanlık değiştirdiğinde gözden geçirilir.",
+   "k": "bRev",
+   "sec": "Dayanak (2026 verileri)",
+   "rev": "p7g9bw"
+  },
+  {
+   "id": "calc.091",
+   "en": "What should you pay? Salary guide 2026",
+   "tr": "Ne kadar ödemelisiniz? Maaş rehberi 2026",
+   "k": "sH",
+   "sec": "Sticky CTA / Maaş rehberi",
+   "rev": "1y4shy2"
+  },
+  {
+   "id": "calc.092",
+   "en": "Gross monthly ranges we see in our own placements. Every range starts at or above the legal minimum for that job — pay below the minimum and the permit is refused.",
+   "tr": "Kendi yerleştirmelerimizde gördüğümüz aylık brüt aralıklar. Her aralık o meslek için yasal alt sınırda veya üzerinde başlar — alt sınırın altında ödeme izin reddiyle sonuçlanır.",
+   "k": "sSub",
+   "sec": "Sticky CTA / Maaş rehberi",
+   "rev": "10gt12a"
+  },
+  {
+   "id": "calc.093",
+   "en": "Usual gross range",
+   "tr": "Olağan brüt aralık",
+   "k": "sLegRange",
+   "sec": "Sticky CTA / Maaş rehberi",
+   "rev": "10bv6xq"
+  },
+  {
+   "id": "calc.094",
+   "en": "Minimum wage",
+   "tr": "Asgari ücret",
+   "k": "sLegMin",
+   "sec": "Sticky CTA / Maaş rehberi",
+   "rev": "phgqv"
+  },
+  {
+   "id": "calc.095",
+   "en": "Skilled job = 1.5× minimum",
+   "tr": "Nitelikli iş = asgari ücretin 1,5 katı",
+   "k": "sLegSkill",
+   "sec": "Sticky CTA / Maaş rehberi",
+   "rev": "11igmv8"
+  },
+  {
+   "id": "calc.096",
+   "en": "gross / month",
+   "tr": "brüt / ay",
+   "k": "sGrossMo",
+   "sec": "Sticky CTA / Maaş rehberi",
+   "rev": "80og00"
+  },
+  {
+   "id": "calc.097",
+   "en": "Employer cost",
+   "tr": "İşverene maliyeti",
+   "k": "sEmpCost",
+   "sec": "Sticky CTA / Maaş rehberi",
+   "rev": "9a3piz"
+  },
+  {
+   "id": "calc.098",
+   "en": "Employer cost",
+   "tr": "İşverene maliyeti",
+   "k": "sFootL",
+   "sec": "Sticky CTA / Maaş rehberi",
+   "rev": "9a3piz"
+  },
+  {
+   "id": "calc.099",
+   "en": "= gross salary + SGK employer contribution (21.75%, or 18.75% in manufacturing). Permit fees, flights and accommodation come on top — pick a job above and the calculator does the full number for you.",
+   "tr": "= brüt maaş + SGK işveren payı (%21,75, imalatta %18,75). İzin harçları, uçak bileti ve konaklama bunun üzerine eklenir — yukarıdan bir meslek seçin, hesaplayıcı tam rakamı sizin için çıkarsın.",
+   "k": "sFoot",
+   "sec": "Sticky CTA / Maaş rehberi",
+   "legal": true,
+   "rev": "1s2xn8q"
+  },
+  {
+   "id": "calc.100",
+   "en": "Now get the real number",
+   "tr": "Şimdi gerçek rakamı alın",
+   "k": "zH",
+   "sec": "Kapanış CTA",
+   "rev": "kdi5hh"
+  },
+  {
+   "id": "calc.101",
+   "en": "Estimates are useful — a written quote is better. Tell us the roles, headcount and city, and you get the full cost breakdown including our service fee within 24 hours.",
+   "tr": "Tahminler işe yarar — yazılı teklif daha iyisidir. Meslekleri, işçi sayısını ve şehri bildirin; hizmet bedelimiz dahil tam maliyet dökümünü 24 saat içinde alacaksınız.",
+   "k": "zSub",
+   "sec": "Kapanış CTA",
+   "rev": "1a9bxhq"
+  },
+  {
+   "id": "calc.102",
+   "en": "Your estimate so far",
+   "tr": "Şu ana kadarki tahmininiz",
+   "k": "zEst",
+   "sec": "Kapanış CTA",
+   "rev": "ikz76z"
+  },
+  {
+   "id": "calc.103",
+   "en": "That is roughly",
+   "tr": "Bu yaklaşık",
+   "k": "zRough",
+   "sec": "Kapanış CTA",
+   "rev": "17alslg"
+  },
+  {
+   "id": "calc.104",
+   "en": "Service fee is quoted in writing — send this and we come back with the exact figure within 24 hours.",
+   "tr": "Hizmet bedeli yazılı olarak bildirilir — bunu gönderin, 24 saat içinde net rakamla dönelim.",
+   "k": "zFee",
+   "sec": "Kapanış CTA",
+   "rev": "gy2rax"
+  },
+  {
+   "id": "calc.105",
+   "en": "Get a written quote",
+   "tr": "Yazılı teklif alın",
+   "k": "zBtn1",
+   "sec": "Kapanış CTA",
+   "rev": "i5bpjj"
+  },
+  {
+   "id": "calc.106",
+   "en": "See available candidates",
+   "tr": "Müsait adayları görün",
+   "k": "zBtn2",
+   "sec": "Kapanış CTA",
+   "rev": "1anauo9"
+  },
+  {
+   "id": "calc.107",
+   "en": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+   "tr": "Türkiye'deki işverenler için izinli işgücü temini — yurt dışından bulma, değerlendirme ve çalışma izinleri, baştan sona.",
+   "k": "fBlurb",
+   "sec": "Footer",
+   "rev": "1v5awlm"
+  },
+  {
+   "id": "calc.108",
+   "en": "Call us",
+   "tr": "Bizi arayın",
+   "k": "mCall",
+   "sec": "Footer",
+   "rev": "1pu4zvl"
+  },
+  {
+   "id": "calc.109",
+   "en": "The cost of doing it the wrong way",
+   "tr": "Yanlış yolun maliyeti",
+   "k": "pH",
+   "sec": "Cezalar",
+   "rev": "c4swv1"
+  },
+  {
+   "id": "calc.110",
+   "en": "Some employers think about hiring quietly, without a permit. Here is what that really costs under the 2026 fines.",
+   "tr": "Bazı işverenler izin almadan, sessizce işçi çalıştırmayı düşünür. 2026 cezalarına göre bunun gerçek bedeli şu:",
+   "k": "pSub",
+   "sec": "Cezalar",
+   "legal": true,
+   "rev": "12bvlwy"
+  },
+  {
+   "id": "calc.111",
+   "en": "Per worker, per inspection",
+   "tr": "İşçi başına, her denetimde",
+   "k": "p1K",
+   "sec": "Cezalar",
+   "rev": "zj55t"
+  },
+  {
+   "id": "calc.112",
+   "en": "Fine on the employer for each foreign worker found without a permit, under Law No. 6735. If it happens again, it doubles to",
+   "tr": "6735 sayılı Kanun uyarınca, izinsiz çalıştığı tespit edilen her yabancı işçi için işverene kesilen ceza. Tekrarında işçi başına",
+   "k": "p1B1",
+   "sec": "Cezalar",
+   "legal": true,
+   "rev": "1313d9n"
+  },
+  {
+   "id": "calc.113",
+   "en": "per worker.",
+   "tr": "'ye çıkar.",
+   "k": "p1B2",
+   "sec": "Cezalar",
+   "rev": "1toda62"
+  },
+  {
+   "id": "calc.114",
+   "en": "Using an unlicensed agent",
+   "tr": "İzinsiz aracı kullanmak",
+   "k": "p2K",
+   "sec": "Cezalar",
+   "rev": "1pwfyp"
+  },
+  {
+   "id": "calc.115",
+   "en": "Fine on the",
+   "tr": "İŞKUR izni olmayan bir aracıyla her çalıştığınızda",
+   "k": "p2B1",
+   "sec": "Cezalar",
+   "legal": true,
+   "rev": "1aqbv15"
+  },
+  {
+   "id": "calc.116",
+   "en": "employer",
+   "tr": "işverene",
+   "k": "p2Emp",
+   "sec": "Cezalar",
+   "rev": "11mdc4w"
+  },
+  {
+   "id": "calc.117",
+   "en": "every time you use an agent who has no İŞKUR licence. The agent pays ₺341,812, and double if it happens again.",
+   "tr": "kesilen ceza. Aracı ₺341.812 öder, tekrarında iki katı.",
+   "k": "p2B2",
+   "sec": "Cezalar",
+   "legal": true,
+   "rev": "1ndv8ko"
+  },
+  {
+   "id": "calc.118",
+   "en": "You pay for the deportation",
+   "tr": "Sınır dışı masrafını siz ödersiniz",
+   "k": "p3T",
+   "sec": "Cezalar",
+   "rev": "r4q3qh"
+  },
+  {
+   "id": "calc.119",
+   "en": "The employer must pay the worker's accommodation, return travel and health costs, and the same costs for the spouse and children.",
+   "tr": "İşveren, işçinin konaklama, dönüş yolculuğu ve sağlık masraflarını; ayrıca eşi ve çocukları için aynı masrafları ödemek zorundadır.",
+   "k": "p3B",
+   "sec": "Cezalar",
+   "rev": "ji6vrf"
+  },
+  {
+   "id": "calc.120",
+   "en": "Your incentives stop",
+   "tr": "Teşvikleriniz durur",
+   "k": "p4T",
+   "sec": "Cezalar",
+   "rev": "1m073we"
+  },
+  {
+   "id": "calc.121",
+   "en": "If you employ someone without registration, your workplace loses every SGK incentive, including the minimum wage support, for one month — and for one year if it happens again within three years.",
+   "tr": "Kayıt dışı işçi çalıştırırsanız, işyeriniz asgari ücret desteği dahil tüm SGK teşviklerini bir ay boyunca kaybeder — üç yıl içinde tekrarlanırsa bir yıl boyunca.",
+   "k": "p4B",
+   "sec": "Cezalar",
+   "legal": true,
+   "rev": "whumhf"
+  },
+  {
+   "id": "calc.122",
+   "en": "The worker is deported",
+   "tr": "İşçi sınır dışı edilir",
+   "k": "p5T",
+   "sec": "Cezalar",
+   "rev": "1tqbsqx"
+  },
+  {
+   "id": "calc.123",
+   "en": "The worker also gets a fine and is reported for deportation. You lose the person you trained and cannot employ them again.",
+   "tr": "İşçiye de ceza kesilir ve sınır dışı edilmek üzere bildirilir. Eğittiğiniz kişiyi kaybedersiniz ve onu bir daha çalıştıramazsınız.",
+   "k": "p5B",
+   "sec": "Cezalar",
+   "legal": true,
+   "rev": "u90r3b"
+  },
+  {
+   "id": "calc.124",
+   "en": "Each worker found<br />without a permit",
+   "tr": "İzinsiz çalıştığı tespit<br />edilen her bir işçi",
+   "k": "pmA",
+   "sec": "Cezalar",
+   "rev": "hmie8d"
+  },
+  {
+   "id": "calc.125",
+   "en": "Using an agent with<br />no İŞKUR licence",
+   "tr": "İŞKUR izni bulunmayan<br />bir aracı kullanmak",
+   "k": "pmB",
+   "sec": "Cezalar",
+   "legal": true,
+   "rev": "159eebm"
+  },
+  {
+   "id": "calc.126",
+   "en": "Both double if it happens again — and the second one is paid by",
+   "tr": "Tekrarında ikisi de iki katına çıkar — ve ikincisini aracı değil",
+   "k": "pmNote1",
+   "sec": "Cezalar",
+   "rev": "1no9tn1"
+  },
+  {
+   "id": "calc.127",
+   "en": "you",
+   "tr": "siz",
+   "k": "pmYou",
+   "sec": "Cezalar",
+   "rev": "375zvq"
+  },
+  {
+   "id": "calc.128",
+   "en": ", not the agent.",
+   "tr": "ödersiniz.",
+   "k": "pmNote2",
+   "sec": "Cezalar",
+   "rev": "18du6k2"
+  },
+  {
+   "id": "calc.129",
+   "en": "One fine for one worker is",
+   "tr": "Tek bir işçi için kesilen tek bir ceza, işi yasal yoldan yapmanın peşin maliyetinin",
+   "k": "pmBig1",
+   "sec": "Cezalar",
+   "legal": true,
+   "rev": "1wx5kja"
+  },
+  {
+   "id": "calc.130",
+   "en": "more than three times",
+   "tr": "üç katından fazlası",
+   "k": "pmBig2",
+   "sec": "Cezalar",
+   "rev": "18859mz"
+  },
+  {
+   "id": "calc.131",
+   "en": "what doing it legally costs you up front — permit and flight together are about ₺28,000.",
+   "tr": "ıdır — izin ve uçak bileti birlikte yaklaşık ₺28.000 tutar.",
+   "k": "pmBig3",
+   "sec": "Cezalar",
+   "rev": "13b6oy3"
+  },
+  {
+   "id": "calc.132",
+   "en": "So always ask an agency for its İŞKUR licence number.",
+   "tr": "Bu yüzden aracı firmadan mutlaka İŞKUR izin belgesi numarasını isteyin.",
+   "k": "pmAsk",
+   "sec": "Cezalar",
+   "legal": true,
+   "rev": "1av6m2g"
+  },
+  {
+   "id": "calc.133",
+   "en": "Ours is 1730.",
+   "tr": "Bizimki 1730.",
+   "k": "pmOurs",
+   "sec": "Cezalar",
+   "rev": "1mt7mb3"
+  },
+  {
+   "id": "calc.134",
+   "en": "One fine for one worker is more than three times the up-front cost of hiring that person legally — the permit and the flight together come to about ₺28,000. And look at the second card again:",
+   "tr": "Tek bir işçi için kesilen tek bir ceza, o kişiyi yasal yoldan işe almanın peşin maliyetinin üç katından fazlasıdır — izin ve uçak bileti birlikte yaklaşık ₺28.000 tutar. İkinci karta tekrar bakın: aracınızın izni yoksa cezayı",
+   "k": "pBan1",
+   "sec": "Cezalar",
+   "legal": true,
+   "rev": "sdozcv"
+  },
+  {
+   "id": "calc.135",
+   "en": "you",
+   "tr": "siz",
+   "k": "pBanYou",
+   "sec": "Cezalar",
+   "rev": "375zvq"
+  },
+  {
+   "id": "calc.136",
+   "en": "pay the fine if your agent has no licence, so always ask for the İŞKUR licence number.",
+   "tr": "ödersiniz; bu yüzden mutlaka İŞKUR izin belgesi numarasını isteyin.",
+   "k": "pBan2",
+   "sec": "Cezalar",
+   "legal": true,
+   "rev": "1sq0z89"
+  },
+  {
+   "id": "calc.137",
+   "en": "Ours is 1730.",
+   "tr": "Bizimki 1730.",
+   "k": "pBanOurs",
+   "sec": "Cezalar",
+   "rev": "1mt7mb3"
+  },
+  {
+   "id": "calc.138",
+   "en": "Are you allowed to hire, and how many?",
+   "tr": "İşçi alabilir misiniz, kaç kişi?",
+   "k": "qH",
+   "sec": "Kota kontrolü",
+   "rev": "1mjirme"
+  },
+  {
+   "id": "calc.139",
+   "en": "Two things are checked before anyone looks at the salary: how many Turkish staff your workplace has, and whether your company meets one financial condition.",
+   "tr": "Maaşa bakılmadan önce iki şey kontrol edilir: işyerinizde kaç Türk çalışan olduğu ve şirketinizin mali şartlardan birini karşılayıp karşılamadığı.",
+   "k": "qSub",
+   "sec": "Kota kontrolü",
+   "rev": "bs4412"
+  },
+  {
+   "id": "calc.140",
+   "en": "Gate 1 · The 5:1 ratio",
+   "tr": "1. Eşik · 5:1 oranı",
+   "k": "qG1",
+   "sec": "Kota kontrolü",
+   "rev": "wugwc2"
+  },
+  {
+   "id": "calc.141",
+   "en": "Live",
+   "tr": "Canlı",
+   "k": "qLive",
+   "sec": "Kota kontrolü",
+   "rev": "yjqq43"
+  },
+  {
+   "id": "calc.142",
+   "en": "Turkish employees at this workplace",
+   "tr": "Bu işyerindeki Türk çalışan sayısı",
+   "k": "qStaffLbl",
+   "sec": "Kota kontrolü",
+   "rev": "bipr3r"
+  },
+  {
+   "id": "calc.143",
+   "en": "SGK-registered, same branch",
+   "tr": "SGK'lı, aynı işyeri",
+   "k": "qSameBranch",
+   "sec": "Kota kontrolü",
+   "legal": true,
+   "rev": "1ck4zjx"
+  },
+  {
+   "id": "calc.144",
+   "en": "How your headcount splits into places",
+   "tr": "Çalışan sayınız kaç kontenjana karşılık geliyor",
+   "k": "qSplit",
+   "sec": "Kota kontrolü",
+   "rev": "t86062"
+  },
+  {
+   "id": "calc.145",
+   "en": "Turkish employee",
+   "tr": "Türk çalışan",
+   "k": "qLegTr",
+   "sec": "Kota kontrolü",
+   "rev": "1sez3n1"
+  },
+  {
+   "id": "calc.146",
+   "en": "Place unlocked",
+   "tr": "Açılan kontenjan",
+   "k": "qLegPlace",
+   "sec": "Kota kontrolü",
+   "rev": "pwhxzj"
+  },
+  {
+   "id": "calc.147",
+   "en": "Incomplete block",
+   "tr": "Tamamlanmamış grup",
+   "k": "qLegInc",
+   "sec": "Kota kontrolü",
+   "rev": "1ssvkki"
+  },
+  {
+   "id": "calc.148",
+   "en": "You picked",
+   "tr": "Yukarıdaki hesaplayıcıda",
+   "k": "qPicked1",
+   "sec": "Kota kontrolü",
+   "rev": "lb3bp2"
+  },
+  {
+   "id": "calc.149",
+   "en": "in the cost calculator above.",
+   "tr": "işçi seçtiniz.",
+   "k": "qPicked2",
+   "sec": "Kota kontrolü",
+   "rev": "em21lp"
+  },
+  {
+   "id": "calc.150",
+   "en": "The rule in one line",
+   "tr": "Kural tek cümlede",
+   "k": "qRuleK",
+   "sec": "Kota kontrolü",
+   "rev": "sh8bhb"
+  },
+  {
+   "id": "calc.151",
+   "en": "For each foreign worker, your workplace must",
+   "tr": "Her yabancı işçi için işyerinizde SGK'ya kayıtlı 5 Türk çalışan",
+   "k": "qRule1",
+   "sec": "Kota kontrolü",
+   "legal": true,
+   "rev": "jxzygx"
+  },
+  {
+   "id": "calc.152",
+   "en": "already",
+   "tr": "halihazırda",
+   "k": "qRuleAlready",
+   "sec": "Kota kontrolü",
+   "rev": "6skkkj"
+  },
+  {
+   "id": "calc.153",
+   "en": "have 5 Turkish employees registered with SGK. Only complete groups of five count — 9 employees give one place, not two.",
+   "tr": "bulunmalıdır. Yalnızca tam beşlik gruplar sayılır — 9 çalışan iki değil, bir kontenjan verir.",
+   "k": "qRule2",
+   "sec": "Kota kontrolü",
+   "legal": true,
+   "rev": "cznuso"
+  },
+  {
+   "id": "calc.154",
+   "en": "Counted",
+   "tr": "",
+   "sec": "Kota kontrolü",
+   "rev": "1oy8ch3"
+  },
+  {
+   "id": "calc.155",
+   "en": "per branch",
+   "tr": "İşyeri bazında",
+   "k": "qB1b",
+   "sec": "Kota kontrolü",
+   "rev": "1ilss5y"
+  },
+  {
+   "id": "calc.156",
+   "en": ", not per company — all five must be at the same workplace.",
+   "tr": "sayılır, şirket bazında değil — beşinin de aynı işyerinde olması gerekir.",
+   "k": "qB1c",
+   "sec": "Kota kontrolü",
+   "rev": "pp8lyn"
+  },
+  {
+   "id": "calc.157",
+   "en": "Counted",
+   "tr": "",
+   "sec": "Kota kontrolü",
+   "rev": "1oy8ch3"
+  },
+  {
+   "id": "calc.158",
+   "en": "on the day you apply",
+   "tr": "Başvuru günü",
+   "k": "qB2b",
+   "sec": "Kota kontrolü",
+   "rev": "ei3d4m"
+  },
+  {
+   "id": "calc.159",
+   "en": "— people you plan to hire do not count.",
+   "tr": "itibarıyla sayılır — işe almayı planladıklarınız sayılmaz.",
+   "k": "qB2c",
+   "sec": "Kota kontrolü",
+   "rev": "gf3cws"
+  },
+  {
+   "id": "calc.160",
+   "en": "If the foreign worker is a",
+   "tr": "Yabancı işçi",
+   "k": "qB3a",
+   "sec": "Kota kontrolü",
+   "rev": "f5zxc0"
+  },
+  {
+   "id": "calc.161",
+   "en": "company partner",
+   "tr": "şirket ortağı",
+   "k": "qB3b",
+   "sec": "Kota kontrolü",
+   "rev": "9bpap8"
+  },
+  {
+   "id": "calc.162",
+   "en": ", this rule is checked only in the last six months of the first permit.",
+   "tr": "ise bu kural yalnızca ilk iznin son altı ayında kontrol edilir.",
+   "k": "qB3c",
+   "sec": "Kota kontrolü",
+   "rev": "4lbo0e"
+  },
+  {
+   "id": "calc.163",
+   "en": "Gate 2 · Your company",
+   "tr": "2. Eşik · Şirketiniz",
+   "k": "qG2",
+   "sec": "Kota kontrolü",
+   "rev": "9j28e9"
+  },
+  {
+   "id": "calc.164",
+   "en": "Besides the 5:1 rule, your company must meet",
+   "tr": "5:1 kuralının yanı sıra şirketinizin şunlardan",
+   "k": "qG2a",
+   "sec": "Kota kontrolü",
+   "rev": "10uk4rj"
+  },
+  {
+   "id": "calc.165",
+   "en": "one",
+   "tr": "birini",
+   "k": "qG2One",
+   "sec": "Kota kontrolü",
+   "rev": "375ny9"
+  },
+  {
+   "id": "calc.166",
+   "en": "of these. If the company meets none of them, the application is refused, even with enough Turkish staff.",
+   "tr": "karşılaması gerekir. Hiçbirini karşılamıyorsa, yeterli Türk çalışan olsa bile başvuru reddedilir.",
+   "k": "qG2b",
+   "sec": "Kota kontrolü",
+   "rev": "qlu5xk"
+  },
+  {
+   "id": "calc.167",
+   "en": "paid-in capital",
+   "tr": "ödenmiş sermaye",
+   "k": "qCap",
+   "sec": "Kota kontrolü",
+   "rev": "jyob75"
+  },
+  {
+   "id": "calc.168",
+   "en": "gross sales, last year",
+   "tr": "brüt satış, geçen yıl",
+   "k": "qSales",
+   "sec": "Kota kontrolü",
+   "rev": "wjkahq"
+  },
+  {
+   "id": "calc.169",
+   "en": "exports, last year",
+   "tr": "ihracat, geçen yıl",
+   "k": "qExp",
+   "sec": "Kota kontrolü",
+   "rev": "6bcb0b"
+  },
+  {
+   "id": "calc.170",
+   "en": "Household employers and a few exempt groups do not have to meet this condition.",
+   "tr": "Ev hizmetlerinde çalıştıranlar ve bazı muaf gruplar bu şartı karşılamak zorunda değildir.",
+   "k": "qHouse",
+   "sec": "Kota kontrolü",
+   "rev": "1ew5ol2"
+  },
+  {
+   "id": "calc.171",
+   "en": "Check yours in the pass check →",
+   "tr": "Geçer-mi testinde kontrol edin →",
+   "k": "qHouseL",
+   "sec": "Kota kontrolü",
+   "rev": "t6ebe"
+  },
+  {
+   "id": "calc.172",
+   "en": "When neither gate applies · exemptions",
+   "tr": "Hiçbir eşiğin geçerli olmadığı durumlar · muafiyetler",
+   "k": "qExK",
+   "sec": "Kota kontrolü",
+   "rev": "1o7uips"
+  },
+  {
+   "id": "calc.173",
+   "en": "We check your quota before quoting",
+   "tr": "Teklif vermeden önce kotanızı kontrol ederiz",
+   "k": "qExFootL",
+   "sec": "Kota kontrolü",
+   "rev": "1xmx654"
+  },
+  {
+   "id": "calc.174",
+   "en": "— no application is filed that we already know will fail on this.",
+   "tr": "— bu yüzden reddedileceğini bildiğimiz hiçbir başvuruyu yapmayız.",
+   "k": "qExFoot",
+   "sec": "Kota kontrolü",
+   "rev": "sytk7b"
+  },
+  {
+   "id": "calc.175",
+   "en": "Step 1",
+   "tr": "1. Adım",
+   "k": "qmS1",
+   "sec": "Kota kontrolü",
+   "rev": "1iwka3q"
+  },
+  {
+   "id": "calc.176",
+   "en": "How many Turkish employees does this workplace have on SGK?",
+   "tr": "Bu işyerinde SGK'lı kaç Türk çalışan var?",
+   "k": "qmS1T",
+   "sec": "Kota kontrolü",
+   "legal": true,
+   "rev": "odbspb"
+  },
+  {
+   "id": "calc.177",
+   "en": "Your answer",
+   "tr": "Cevabınız",
+   "k": "qmAns",
+   "sec": "Kota kontrolü",
+   "rev": "1b6pv54"
+  },
+  {
+   "id": "calc.178",
+   "en": "Why — the 5:1 rule",
+   "tr": "Neden — 5:1 kuralı",
+   "k": "qmWhy",
+   "sec": "Kota kontrolü",
+   "rev": "zk001q"
+  },
+  {
+   "id": "calc.179",
+   "en": "Every 5 Turkish employees unlock 1 foreign worker.",
+   "tr": "Her 5 Türk çalışan 1 yabancı işçi kontenjanı açar.",
+   "k": "qmWhyA",
+   "sec": "Kota kontrolü",
+   "rev": "72dspd"
+  },
+  {
+   "id": "calc.180",
+   "en": "Only complete fives count, so 9 staff still give one place — and they must already be registered at this same branch on the day you apply.",
+   "tr": "Yalnızca tam beşlikler sayılır; 9 çalışan yine bir kontenjan verir — ve başvuru günü aynı işyerinde kayıtlı olmaları gerekir.",
+   "k": "qmWhyB",
+   "sec": "Kota kontrolü",
+   "rev": "15pe0la"
+  },
+  {
+   "id": "calc.181",
+   "en": "Step 2 · your company",
+   "tr": "2. Adım · şirketiniz",
+   "k": "qmS2",
+   "sec": "Kota kontrolü",
+   "rev": "e4bkmc"
+  },
+  {
+   "id": "calc.182",
+   "en": "Besides the staff rule, the company must meet",
+   "tr": "Çalışan kuralının yanı sıra şirketin şu üçünden",
+   "k": "qmS2a",
+   "sec": "Kota kontrolü",
+   "rev": "1hokwen"
+  },
+  {
+   "id": "calc.183",
+   "en": "one",
+   "tr": "birini",
+   "k": "qmS2One",
+   "sec": "Kota kontrolü",
+   "rev": "375ny9"
+  },
+  {
+   "id": "calc.184",
+   "en": "of these three:",
+   "tr": "karşılaması gerekir:",
+   "k": "qmS2b",
+   "sec": "Kota kontrolü",
+   "rev": "mu3z1z"
+  },
+  {
+   "id": "calc.185",
+   "en": "paid-in capital",
+   "tr": "ödenmiş sermaye",
+   "k": "qmCap",
+   "sec": "Kota kontrolü",
+   "rev": "jyob75"
+  },
+  {
+   "id": "calc.186",
+   "en": "gross sales",
+   "tr": "brüt satış",
+   "k": "qmSales",
+   "sec": "Kota kontrolü",
+   "rev": "18yesaf"
+  },
+  {
+   "id": "calc.187",
+   "en": "exports",
+   "tr": "ihracat",
+   "k": "qmExp",
+   "sec": "Kota kontrolü",
+   "rev": "4la8he"
+  },
+  {
+   "id": "calc.188",
+   "en": "Household employers and some exempt groups skip this. Exemptions are listed below.",
+   "tr": "Ev hizmetlerinde çalıştıranlar ve bazı muaf gruplar bunun dışındadır. Muafiyetler aşağıda listelenmiştir.",
+   "k": "qmNote",
+   "sec": "Kota kontrolü",
+   "rev": "7ffxfl"
+  },
+  {
+   "id": "calc.189",
+   "en": "Local hire vs overseas hire",
+   "tr": "Yerli işe alım vs yurt dışından alım",
+   "k": "cmH",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1y4gdpj"
+  },
+  {
+   "id": "calc.190",
+   "en": "The salary and SGK cost are the same for both. Turkish labour law applies to both, and we never quote below the legal minimum. The real question is different: at that wage, in your city, on your shift pattern, does anyone take the job?",
+   "tr": "Maaş ve SGK maliyeti ikisinde de aynıdır. Türk iş hukuku ikisi için de geçerlidir ve biz hiçbir zaman yasal alt sınırın altında teklif vermeyiz. Asıl soru şu: bu ücretle, sizin şehrinizde, sizin vardiya düzeninizde bu işi alan çıkıyor mu?",
+   "k": "cmSub",
+   "sec": "Yerli vs yurt dışı",
+   "legal": true,
+   "rev": "19oa619"
+  },
+  {
+   "id": "calc.191",
+   "en": "Option A",
+   "tr": "A Seçeneği",
+   "k": "cmOptA",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "q4cthj"
+  },
+  {
+   "id": "calc.192",
+   "en": "Local Turkish hire",
+   "tr": "Yerli Türk çalışan",
+   "k": "cmOptAT",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1lxvkes"
+  },
+  {
+   "id": "calc.193",
+   "en": "Option B",
+   "tr": "B Seçeneği",
+   "k": "cmOptB",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "q4cthg"
+  },
+  {
+   "id": "calc.194",
+   "en": "Overseas hire through us",
+   "tr": "Bizim aracılığımızla yurt dışından",
+   "k": "cmOptBT",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "oi1u1w"
+  },
+  {
+   "id": "calc.195",
+   "en": "Salary & SGK",
+   "tr": "Maaş ve SGK",
+   "k": "cmR1",
+   "sec": "Yerli vs yurt dışı",
+   "legal": true,
+   "rev": "fzgt3c"
+  },
+  {
+   "id": "calc.196",
+   "en": "Same gross salary and SGK —",
+   "tr": "Aynı brüt maaş ve SGK —",
+   "k": "cmR1a",
+   "sec": "Yerli vs yurt dışı",
+   "legal": true,
+   "rev": "1ko1ahd"
+  },
+  {
+   "id": "calc.197",
+   "en": "the law treats both the same",
+   "tr": "kanun ikisine de aynı davranır",
+   "k": "cmR1aS",
+   "sec": "Yerli vs yurt dışı",
+   "legal": true,
+   "rev": "2q04q9"
+  },
+  {
+   "id": "calc.198",
+   "en": "Same gross salary and SGK —",
+   "tr": "Aynı brüt maaş ve SGK —",
+   "k": "cmR1b",
+   "sec": "Yerli vs yurt dışı",
+   "legal": true,
+   "rev": "1ko1ahd"
+  },
+  {
+   "id": "calc.199",
+   "en": "identical payroll cost",
+   "tr": "birebir aynı bordro maliyeti",
+   "k": "cmR1bS",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1smw8xa"
+  },
+  {
+   "id": "calc.200",
+   "en": "Permit & travel",
+   "tr": "İzin ve seyahat",
+   "k": "cmR2",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "uwkrn0"
+  },
+  {
+   "id": "calc.201",
+   "en": "None",
+   "tr": "Yok",
+   "k": "cmR2a",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "yjpenj"
+  },
+  {
+   "id": "calc.202",
+   "en": "About ₺16,000 in state fees, once",
+   "tr": "Tek seferlik yaklaşık ₺16.000 devlet harcı",
+   "k": "cmR2bS",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "3inrs7"
+  },
+  {
+   "id": "calc.203",
+   "en": "+ the flight — paid one time, for years of work",
+   "tr": "+ uçak bileti — bir kez ödenir, yıllarca çalışma için",
+   "k": "cmR2b",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1sh5u6t"
+  },
+  {
+   "id": "calc.204",
+   "en": "Who accepts the wage",
+   "tr": "Bu ücreti kim kabul ediyor",
+   "k": "cmR3",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "ct1n6z"
+  },
+  {
+   "id": "calc.205",
+   "en": "At minimum wage, most local applicants keep looking. For the same money they can work in a shop or café in the city centre.",
+   "tr": "Asgari ücrette yerli adayların çoğu aramaya devam eder. Aynı parayla şehir merkezinde bir dükkanda veya kafede çalışabilirler.",
+   "k": "cmR3a",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "16sdpgg"
+  },
+  {
+   "id": "calc.206",
+   "en": "The same registered wage fills the job",
+   "tr": "Aynı kayıtlı ücret işi doldurur",
+   "k": "cmR3bS",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1paxp5k"
+  },
+  {
+   "id": "calc.207",
+   "en": "— people apply for it, and for them this is a real career step, not a short-term job",
+   "tr": "— bu işe başvuru gelir ve onlar için bu kısa vadeli bir iş değil, gerçek bir kariyer adımıdır",
+   "k": "cmR3b",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "78k8vl"
+  },
+  {
+   "id": "calc.208",
+   "en": "Where the work is",
+   "tr": "İşin bulunduğu yer",
+   "k": "cmR4",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1bt7u8a"
+  },
+  {
+   "id": "calc.209",
+   "en": "Factories in small cities and industrial zones have the hardest time. Young people move to the big cities and do not return for factory shifts.",
+   "tr": "Küçük şehirlerdeki ve organize sanayi bölgelerindeki fabrikalar en çok zorlanan taraf. Gençler büyük şehirlere taşınıyor ve fabrika vardiyası için geri dönmüyor.",
+   "k": "cmR4a",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "13kuh00"
+  },
+  {
+   "id": "calc.210",
+   "en": "Workers move to where the factory is",
+   "tr": "İşçiler fabrikanın bulunduğu yere gelir",
+   "k": "cmR4bS",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "k1amog"
+  },
+  {
+   "id": "calc.211",
+   "en": "— a small city, a farm or a remote site is not a problem for these candidates",
+   "tr": "— küçük bir şehir, bir çiftlik ya da uzak bir şantiye bu adaylar için sorun değil",
+   "k": "cmR4b",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "gp4igp"
+  },
+  {
+   "id": "calc.212",
+   "en": "Availability",
+   "tr": "Bulunabilirlik",
+   "k": "cmR5",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1gvuoxg"
+  },
+  {
+   "id": "calc.213",
+   "en": "Hard for skilled trades — welders, machine operators and seasonal jobs often stay empty for months",
+   "tr": "Nitelikli mesleklerde zor — kaynakçı, makine operatörü ve sezonluk işler aylık süreyle boş kalabiliyor",
+   "k": "cmR5a",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "r6jqw7"
+  },
+  {
+   "id": "calc.214",
+   "en": "Checked candidates, ready now",
+   "tr": "Değerlendirilmiş adaylar, hemen hazır",
+   "k": "cmR5bS",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1ib86k5"
+  },
+  {
+   "id": "calc.215",
+   "en": "— their skills are tested before you interview them",
+   "tr": "— becerileri siz görüşmeden önce test edilir",
+   "k": "cmR5b",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "rl5et3"
+  },
+  {
+   "id": "calc.216",
+   "en": "Retention",
+   "tr": "Kalıcılık",
+   "k": "cmR6",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "ooqt8x"
+  },
+  {
+   "id": "calc.217",
+   "en": "People leave often in low-wage jobs, so you hire and train again and again",
+   "tr": "Düşük ücretli işlerde sık ayrılma olur, siz de tekrar tekrar işe alıp eğitirsiniz",
+   "k": "cmR6a",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1qkyh80"
+  },
+  {
+   "id": "calc.218",
+   "en": "The permit is",
+   "tr": "İzin",
+   "k": "cmR6b1",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "yir4i9"
+  },
+  {
+   "id": "calc.219",
+   "en": "tied to your workplace",
+   "tr": "işyerinize bağlıdır",
+   "k": "cmR6bS",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1m5eaw9"
+  },
+  {
+   "id": "calc.220",
+   "en": ", so the worker stays with you for the contract",
+   "tr": ", böylece işçi sözleşme boyunca sizde kalır",
+   "k": "cmR6b2",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "15n2rhj"
+  },
+  {
+   "id": "calc.221",
+   "en": "Admin load",
+   "tr": "İdari yük",
+   "k": "cmR7",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "19tg51o"
+  },
+  {
+   "id": "calc.222",
+   "en": "Your own time, or your accountant's",
+   "tr": "Sizin veya mali müşavirinizin zamanı",
+   "k": "cmR7a",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "11j1g49"
+  },
+  {
+   "id": "calc.223",
+   "en": "Finding, checking, permits and SGK paperwork are",
+   "tr": "Bulma, kontrol, izinler ve SGK evrak işleri",
+   "k": "cmR7b1",
+   "sec": "Yerli vs yurt dışı",
+   "legal": true,
+   "rev": "1j1yhh3"
+  },
+  {
+   "id": "calc.224",
+   "en": "done by us",
+   "tr": "bizim tarafımızdan yapılır",
+   "k": "cmR7bS",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "h14ziw"
+  },
+  {
+   "id": "calc.225",
+   "en": "This is a long-term hire, not a stopgap",
+   "tr": "Bu uzun vadeli bir işe alımdır, geçici bir çözüm değil",
+   "k": "ltT",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "sibegh"
+  },
+  {
+   "id": "calc.226",
+   "en": "The one-off costs only look big if you think of the worker as temporary. In practice these hires stay for years — the permit renews with you, and every renewal is cheaper than the first year.",
+   "tr": "Tek seferlik masraflar yalnızca işçiyi geçici görürseniz büyük durur. Pratikte bu işçiler yıllarca kalır — izin sizinle birlikte yenilenir ve her yenileme ilk yıldan daha ucuzdur.",
+   "k": "ltSub",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "12cj5ci"
+  },
+  {
+   "id": "calc.227",
+   "en": "The permit ladder",
+   "tr": "İzin Süreci",
+   "k": "ltK1",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "dab0lt"
+  },
+  {
+   "id": "calc.228",
+   "en": "1 year",
+   "tr": "1 yıl",
+   "k": "ltY1c",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1qup43f"
+  },
+  {
+   "id": "calc.229",
+   "en": "+2 years",
+   "tr": "+2 yıl",
+   "k": "ltY2c",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1jj5aps"
+  },
+  {
+   "id": "calc.230",
+   "en": "+3 years",
+   "tr": "+3 yıl",
+   "k": "ltY3c",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1ba2nk1"
+  },
+  {
+   "id": "calc.231",
+   "en": "The first permit is for one year, then it extends by two, then by three. That takes the same worker to six years on your payroll. After that the permit keeps renewing on the same basis, and once they reach eight years of legal residence in Turkey they can apply for an open-ended permit.",
+   "tr": "İlk izin bir yıllıktır, sonra iki yıl, ardından üç yıl uzatılır. Bu, aynı işçiyi bordronuzda altı yıla taşır. Sonrasında izin aynı esasla yenilenmeye devam eder ve Türkiye'de sekiz yıl yasal ikamete ulaştıklarında süresiz çalışma iznine başvurabilirler.",
+   "k": "ltB1",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1c3nsdw"
+  },
+  {
+   "id": "calc.232",
+   "en": "Why they stay",
+   "tr": "Neden kalıyorlar",
+   "k": "ltK2",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1jl515o"
+  },
+  {
+   "id": "calc.233",
+   "en": "The permit is tied to your workplace, so they cannot move to the employer down the road mid-contract. They relocated for this job, their family plan depends on it, and a clean renewal record is what lets them keep working here. Leaving early costs them far more than it costs you.",
+   "tr": "İzin işyerinize bağlıdır; sözleşme ortasında yandaki işverene geçemezler. Bu iş için taşındılar, aile planları buna bağlı ve burada çalışmaya devam etmelerini sağlayan şey temiz bir yenileme geçmişi. Erken ayrılmak onlara sizden çok daha pahalıya mal olur.",
+   "k": "ltB2",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "d56k1h"
+  },
+  {
+   "id": "calc.234",
+   "en": "What that is worth",
+   "tr": "Bunun değeri ne",
+   "k": "ltK3",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "ad2vqi"
+  },
+  {
+   "id": "calc.235",
+   "en": "Every time someone walks out you pay again — advertising, interviews, the notice period, three months of training and a line running below capacity. A worker who stays three years skips all of that twice over, and by year two they know your machines better than a new local hire ever will in month one.",
+   "tr": "Biri işten her ayrıldığında yeniden ödersiniz — ilan, görüşmeler, ihbar süresi, üç aylık eğitim ve kapasitenin altında çalışan bir hat. Üç yıl kalan bir işçi bunların hepsini iki kez atlar ve ikinci yılda makinelerinizi, yeni bir yerli çalışanın ilk ayında bilebileceğinden çok daha iyi bilir.",
+   "k": "ltB3",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "pbojo5"
+  },
+  {
+   "id": "calc.236",
+   "en": "The one-off cost, spread over time — per worker",
+   "tr": "Tek seferlik maliyetin zamana yayılmış hali — işçi başına",
+   "k": "ltSpread",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1y2m5te"
+  },
+  {
+   "id": "calc.237",
+   "en": "Permit fees + flight, paid once",
+   "tr": "İzin harçları + uçak bileti, bir kez",
+   "k": "ltL1",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "nhll1f"
+  },
+  {
+   "id": "calc.238",
+   "en": "Per month if they stay 1 year",
+   "tr": "1 yıl kalırlarsa aylık",
+   "k": "ltL2",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "15gfvmk"
+  },
+  {
+   "id": "calc.239",
+   "en": "Per month if they stay 3 years",
+   "tr": "3 yıl kalırlarsa aylık",
+   "k": "ltL3",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1avg84t"
+  },
+  {
+   "id": "calc.240",
+   "en": "Renewals cost only the state fee — no new flight, no new search, no retraining. That is why employers who have done this once keep the same people instead of starting again every season.",
+   "tr": "Yenilemeler yalnızca devlet harcı kadar tutar — yeni uçak bileti yok, yeni arama yok, yeniden eğitim yok. Bunu bir kez yapmış işverenlerin her sezon baştan başlamak yerine aynı kişileri tutmasının sebebi bu.",
+   "k": "ltFoot",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "ynbbep"
+  },
+  {
+   "id": "calc.241",
+   "en": "We say it openly: if you can fill the job locally, do that — it is simpler. This route is for the jobs that stay empty.",
+   "tr": "Açıkça söylüyoruz: işi yerelden doldurabiliyorsanız onu yapın — daha basit. Bu yol, boş kalan işler için.",
+   "k": "cmClose",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "obxcbm"
+  },
+  {
+   "id": "calc.242",
+   "en": "The short answer",
+   "tr": "Kısa cevap",
+   "k": "cmmK",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1n0pw8i"
+  },
+  {
+   "id": "calc.243",
+   "en": "Salary and SGK are",
+   "tr": "Maaş ve SGK, yerli ve yurt dışından işe alımda",
+   "k": "cmmA1",
+   "sec": "Yerli vs yurt dışı",
+   "legal": true,
+   "rev": "1hf3owj"
+  },
+  {
+   "id": "calc.244",
+   "en": "exactly the same",
+   "tr": "birebir aynı",
+   "k": "cmmA2",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "e57k0o"
+  },
+  {
+   "id": "calc.245",
+   "en": "for a local and an overseas hire. Only two things differ.",
+   "tr": "dır. Yalnızca iki şey değişir.",
+   "k": "cmmA3",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1jxwauf"
+  },
+  {
+   "id": "calc.246",
+   "en": "1 · What overseas costs extra",
+   "tr": "1 · Yurt dışının ek maliyeti",
+   "k": "cmm1",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "omgkzl"
+  },
+  {
+   "id": "calc.247",
+   "en": "state fees, once",
+   "tr": "devlet harcı, tek sefer",
+   "k": "cmmFee",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "lhqob0"
+  },
+  {
+   "id": "calc.248",
+   "en": "Plus one flight. Both are paid a single time — the permit then renews with you, cheaper each year.",
+   "tr": "Bir de uçak bileti. İkisi de tek sefer ödenir — izin sonrasında sizinle yenilenir, her yıl daha ucuza.",
+   "k": "cmmPlus",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "3mdyfa"
+  },
+  {
+   "id": "calc.249",
+   "en": "2 · What you get for it",
+   "tr": "2 · Karşılığında ne alıyorsunuz",
+   "k": "cmm2",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "45wfll"
+  },
+  {
+   "id": "calc.250",
+   "en": "The job actually fills.",
+   "tr": "İş gerçekten doluyor.",
+   "k": "cmmB1S",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "usqweq"
+  },
+  {
+   "id": "calc.251",
+   "en": "At the same registered wage local applicants keep looking; these candidates apply and stay.",
+   "tr": "Aynı kayıtlı ücrette yerli adaylar aramaya devam ederken bu adaylar başvurup kalıyor.",
+   "k": "cmmB1",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1gplk99"
+  },
+  {
+   "id": "calc.252",
+   "en": "Location is not a problem.",
+   "tr": "Konum sorun değil.",
+   "k": "cmmB2S",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1no2iur"
+  },
+  {
+   "id": "calc.253",
+   "en": "Workers move to the factory, farm or site — small cities included.",
+   "tr": "İşçiler fabrikaya, çiftliğe veya şantiyeye gelir — küçük şehirler dahil.",
+   "k": "cmmB2",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "mvz8wp"
+  },
+  {
+   "id": "calc.254",
+   "en": "Skills tested first.",
+   "tr": "Beceriler önce test edilir.",
+   "k": "cmmB3S",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1eh2u2s"
+  },
+  {
+   "id": "calc.255",
+   "en": "Trade-tested candidates, ready now — no months of empty shifts.",
+   "tr": "Mesleği sınanmış adaylar, hemen hazır — aylarca boş vardiya yok.",
+   "k": "cmmB3",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "13mpm8p"
+  },
+  {
+   "id": "calc.256",
+   "en": "They stay for the contract.",
+   "tr": "Sözleşme boyunca kalırlar.",
+   "k": "cmmB4S",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1amzdlw"
+  },
+  {
+   "id": "calc.257",
+   "en": "The permit is tied to your workplace, so you stop re-hiring and re-training.",
+   "tr": "İzin işyerinize bağlıdır, böylece tekrar işe alma ve eğitme döngüsü biter.",
+   "k": "cmmB4",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "1m6k7r4"
+  },
+  {
+   "id": "calc.258",
+   "en": "Paperwork is ours.",
+   "tr": "Evrak işi bizde.",
+   "k": "cmmB5S",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "u0fdlp"
+  },
+  {
+   "id": "calc.259",
+   "en": "Sourcing, checks, permit filing and SGK admin are done by us.",
+   "tr": "Bulma, kontrol, izin başvurusu ve SGK işlemleri tarafımızdan yapılır.",
+   "k": "cmmB5",
+   "sec": "Yerli vs yurt dışı",
+   "legal": true,
+   "rev": "1wue2bm"
+  },
+  {
+   "id": "calc.260",
+   "en": "Hiring foreign students already in Turkey",
+   "tr": "Türkiye'de bulunan yabancı öğrencileri işe alma",
+   "k": "stH",
+   "sec": "Öğrenciler",
+   "rev": "1sji8qf"
+  },
+  {
+   "id": "calc.261",
+   "en": "This is a different route with its own rules: no flight, no consulate step, and the person is already living in your city. The limits depend entirely on what they are studying.",
+   "tr": "Bu, kendi kuralları olan farklı bir yol: uçak bileti yok, konsolosluk adımı yok ve kişi zaten sizin şehrinizde yaşıyor. Sınırlar tamamen ne okuduklarına bağlı.",
+   "k": "stSub",
+   "sec": "Öğrenciler",
+   "rev": "1xtvcb9"
+  },
+  {
+   "id": "calc.262",
+   "en": "Associate & bachelor students",
+   "tr": "Ön lisans ve lisans öğrencileri",
+   "k": "st1T",
+   "sec": "Öğrenciler",
+   "rev": "1pa5kr5"
+  },
+  {
+   "id": "calc.263",
+   "en": "Ön lisans · Lisans",
+   "tr": "Ön lisans · Lisans",
+   "k": "st1S",
+   "sec": "Öğrenciler",
+   "rev": "13zya96"
+  },
+  {
+   "id": "calc.264",
+   "en": "Only",
+   "tr": "Yalnızca",
+   "k": "st1a1",
+   "sec": "Öğrenciler",
+   "rev": "yjq3td"
+  },
+  {
+   "id": "calc.265",
+   "en": "after the first year is finished",
+   "tr": "birinci sınıf tamamlandıktan sonra",
+   "k": "st1a2",
+   "sec": "Öğrenciler",
+   "rev": "1nn7yed"
+  },
+  {
+   "id": "calc.266",
+   "en": "— the prep year and the first year do not count.",
+   "tr": "— hazırlık yılı ve birinci sınıf sayılmaz.",
+   "k": "st1a3",
+   "sec": "Öğrenciler",
+   "rev": "1hgli3o"
+  },
+  {
+   "id": "calc.267",
+   "en": "Part-time only",
+   "tr": "Yalnızca yarı zamanlı",
+   "k": "st1b2",
+   "sec": "Öğrenciler",
+   "rev": "r7j8ce"
+  },
+  {
+   "id": "calc.268",
+   "en": "— up to 24 hours a week.",
+   "tr": "— haftada en fazla 24 saat.",
+   "k": "st1b3",
+   "sec": "Öğrenciler",
+   "rev": "ii6eix"
+  },
+  {
+   "id": "calc.269",
+   "en": "Students on a Turkish state scholarship may not be allowed to work while they study.",
+   "tr": "Türkiye burslusu öğrencilerin öğrenim süresince çalışmasına izin verilmeyebilir.",
+   "k": "st1c",
+   "sec": "Öğrenciler",
+   "rev": "130wt9v"
+  },
+  {
+   "id": "calc.270",
+   "en": "Master's & doctorate students",
+   "tr": "Yüksek lisans ve doktora öğrencileri",
+   "k": "st2T",
+   "sec": "Öğrenciler",
+   "rev": "71x2o0"
+  },
+  {
+   "id": "calc.271",
+   "en": "Yüksek lisans · Doktora",
+   "tr": "Yüksek lisans · Doktora",
+   "k": "st2S",
+   "sec": "Öğrenciler",
+   "rev": "nfcd8j"
+  },
+  {
+   "id": "calc.272",
+   "en": "No waiting for the first year",
+   "tr": "Birinci yılı beklemek yok",
+   "k": "st2a2",
+   "sec": "Öğrenciler",
+   "rev": "fpllh4"
+  },
+  {
+   "id": "calc.273",
+   "en": "— they can work from any point in their studies.",
+   "tr": "— öğrenimlerinin herhangi bir aşamasında çalışabilirler.",
+   "k": "st2a3",
+   "sec": "Öğrenciler",
+   "rev": "17cqoi"
+  },
+  {
+   "id": "calc.274",
+   "en": "No limit on weekly hours",
+   "tr": "Haftalık saat sınırı yok",
+   "k": "st2b2",
+   "sec": "Öğrenciler",
+   "rev": "12xnz62"
+  },
+  {
+   "id": "calc.275",
+   "en": "— full-time work is possible.",
+   "tr": "— tam zamanlı çalışma mümkündür.",
+   "k": "st2b3",
+   "sec": "Öğrenciler",
+   "rev": "62cgaa"
+  },
+  {
+   "id": "calc.276",
+   "en": "Useful for engineering, IT, agriculture-science and management roles where the degree itself is the qualification.",
+   "tr": "Diplomanın kendisinin nitelik sayıldığı mühendislik, bilişim, ziraat ve yönetim pozisyonları için uygundur.",
+   "k": "st2c",
+   "sec": "Öğrenciler",
+   "rev": "18wzi0c"
+  },
+  {
+   "id": "calc.277",
+   "en": "You apply, not the student",
+   "tr": "Başvuruyu öğrenci değil siz yaparsınız",
+   "k": "st3T",
+   "sec": "Öğrenciler",
+   "rev": "yik1cr"
+  },
+  {
+   "id": "calc.278",
+   "en": "A student cannot file for their own permit. They find the job first, then you apply electronically to the Ministry on their behalf.",
+   "tr": "Öğrenci kendi izni için başvuramaz. Önce işi bulurlar, sonra siz onlar adına Bakanlığa elektronik ortamda başvurursunuz.",
+   "k": "st3B",
+   "sec": "Öğrenciler",
+   "rev": "1u6d6k7"
+  },
+  {
+   "id": "calc.279",
+   "en": "Student residence stays separate",
+   "tr": "Öğrenci ikameti ayrı kalır",
+   "k": "st4T",
+   "sec": "Öğrenciler",
+   "rev": "1nom22p"
+  },
+  {
+   "id": "calc.280",
+   "en": "The work permit does not replace their student residence permit — that must stay valid throughout, or the permit falls with it.",
+   "tr": "Çalışma izni öğrenci ikamet iznini ortadan kaldırmaz — ikametin sürekli geçerli kalması gerekir, aksi halde çalışma izni de düşer.",
+   "k": "st4B",
+   "sec": "Öğrenciler",
+   "rev": "192bqxe"
+  },
+  {
+   "id": "calc.281",
+   "en": "Student years do not build the 3-year exemption",
+   "tr": "Öğrencilik yılları 3 yıl muafiyetini oluşturmaz",
+   "k": "st5T",
+   "sec": "Öğrenciler",
+   "rev": "1k9jukp"
+  },
+  {
+   "id": "calc.282",
+   "en": "The \"3 of the last 5 years resident\" exemption above excludes student residence — so a fresh graduate does not carry it, and the standard criteria apply to their first post-graduation permit.",
+   "tr": "Yukarıdaki \"son 5 yılın 3'ünde ikamet\" muafiyeti öğrenci ikametini kapsamaz — yeni mezun bu hakkı taşımaz ve mezuniyet sonrası ilk izninde standart şartlar geçerli olur.",
+   "k": "st5B",
+   "sec": "Öğrenciler",
+   "rev": "1p4vqop"
+  },
+  {
+   "id": "calc.283",
+   "en": "Working without a permit is not a grey area.",
+   "tr": "İzinsiz çalışma gri alan değildir.",
+   "k": "stFootL",
+   "sec": "Öğrenciler",
+   "rev": "j2eag0"
+  },
+  {
+   "id": "calc.284",
+   "en": "If a student is found working unregistered, the residence permit is cancelled by the migration authority and both of you face penalties. If you already have a student working informally, tell us — regularising the file is usually straightforward.",
+   "tr": "Bir öğrenci kayıt dışı çalışırken tespit edilirse ikamet izni göç idaresi tarafından iptal edilir ve iki taraf da ceza alır. Halihazırda kayıt dışı çalışan bir öğrenciniz varsa bize söyleyin — dosyayı yasal hale getirmek genelde kolaydır.",
+   "k": "stFoot",
+   "sec": "Öğrenciler",
+   "legal": true,
+   "rev": "12tda7o"
+  },
+  {
+   "id": "calc.285",
+   "en": "Why this route is easier",
+   "tr": "Bu yol neden daha kolay",
+   "k": "smK",
+   "sec": "Öğrenciler",
+   "rev": "16lznn3"
+  },
+  {
+   "id": "calc.286",
+   "en": "No flight, no consulate step, no relocation — the person already lives in your city. What they may work depends only on",
+   "tr": "Uçak bileti yok, konsolosluk adımı yok, taşınma yok — kişi zaten sizin şehrinizde yaşıyor. Ne çalışabilecekleri yalnızca",
+   "k": "smA1",
+   "sec": "Öğrenciler",
+   "rev": "gfycqm"
+  },
+  {
+   "id": "calc.287",
+   "en": "what they study",
+   "tr": "ne okuduklarına",
+   "k": "smA2",
+   "sec": "Öğrenciler",
+   "rev": "1q0nmn4"
+  },
+  {
+   "id": "calc.288",
+   "en": ".",
+   "tr": "bağlı.",
+   "k": "smA3",
+   "sec": "Öğrenciler",
+   "rev": "3szv"
+  },
+  {
+   "id": "calc.289",
+   "en": "Bachelor / associate",
+   "tr": "Lisans / ön lisans",
+   "k": "smB1",
+   "sec": "Öğrenciler",
+   "rev": "c4lg6a"
+  },
+  {
+   "id": "calc.290",
+   "en": "Lisans · Ön lisans",
+   "tr": "Lisans · Ön lisans",
+   "k": "smB1S",
+   "sec": "Öğrenciler",
+   "rev": "vj0gqy"
+  },
+  {
+   "id": "calc.291",
+   "en": "24 h / week",
+   "tr": "24 saat / hafta",
+   "k": "smB1a",
+   "sec": "Öğrenciler",
+   "rev": "4h24hk"
+  },
+  {
+   "id": "calc.292",
+   "en": "part-time only",
+   "tr": "yalnızca yarı zamanlı",
+   "k": "smB1b",
+   "sec": "Öğrenciler",
+   "rev": "j6taqm"
+  },
+  {
+   "id": "calc.293",
+   "en": "After year 1",
+   "tr": "1. yıldan sonra",
+   "k": "smB1c",
+   "sec": "Öğrenciler",
+   "rev": "1if6qu7"
+  },
+  {
+   "id": "calc.294",
+   "en": "prep year excluded",
+   "tr": "hazırlık yılı hariç",
+   "k": "smB1d",
+   "sec": "Öğrenciler",
+   "rev": "16fbo0v"
+  },
+  {
+   "id": "calc.295",
+   "en": "State-scholarship students may not be allowed to work at all while studying.",
+   "tr": "Türkiye burslusu öğrencilerin öğrenim süresince hiç çalışmasına izin verilmeyebilir.",
+   "k": "smB1n",
+   "sec": "Öğrenciler",
+   "rev": "14mn6f4"
+  },
+  {
+   "id": "calc.296",
+   "en": "Master's / doctorate",
+   "tr": "Yüksek lisans / doktora",
+   "k": "smB2",
+   "sec": "Öğrenciler",
+   "rev": "a2bs43"
+  },
+  {
+   "id": "calc.297",
+   "en": "Yüksek lisans · Doktora",
+   "tr": "Yüksek lisans · Doktora",
+   "k": "smB2S",
+   "sec": "Öğrenciler",
+   "rev": "nfcd8j"
+  },
+  {
+   "id": "calc.298",
+   "en": "Full-time",
+   "tr": "Tam zamanlı",
+   "k": "smB2a",
+   "sec": "Öğrenciler",
+   "rev": "bex166"
+  },
+  {
+   "id": "calc.299",
+   "en": "no hour limit",
+   "tr": "saat sınırı yok",
+   "k": "smB2b",
+   "sec": "Öğrenciler",
+   "rev": "1qjr441"
+  },
+  {
+   "id": "calc.300",
+   "en": "From day one",
+   "tr": "İlk günden",
+   "k": "smB2c",
+   "sec": "Öğrenciler",
+   "rev": "v1mwrv"
+  },
+  {
+   "id": "calc.301",
+   "en": "no waiting year",
+   "tr": "bekleme yılı yok",
+   "k": "smB2d",
+   "sec": "Öğrenciler",
+   "rev": "g093fk"
+  },
+  {
+   "id": "calc.302",
+   "en": "Best fit for engineering, IT, agri-science and management roles.",
+   "tr": "Mühendislik, bilişim, ziraat ve yönetim pozisyonları için en uygunu.",
+   "k": "smB2n",
+   "sec": "Öğrenciler",
+   "rev": "88q7uc"
+  },
+  {
+   "id": "calc.303",
+   "en": "You apply, not the student.",
+   "tr": "Başvuruyu öğrenci değil siz yaparsınız.",
+   "k": "smR1S",
+   "sec": "Öğrenciler",
+   "rev": "2ikd1x"
+  },
+  {
+   "id": "calc.304",
+   "en": "They find the job, you file with the Ministry.",
+   "tr": "Onlar işi bulur, siz Bakanlığa başvurursunuz.",
+   "k": "smR1",
+   "sec": "Öğrenciler",
+   "rev": "zx8x59"
+  },
+  {
+   "id": "calc.305",
+   "en": "Student residence must stay valid",
+   "tr": "Öğrenci ikameti geçerli kalmalı",
+   "k": "smR2S",
+   "sec": "Öğrenciler",
+   "rev": "ckqt9a"
+  },
+  {
+   "id": "calc.306",
+   "en": "— the work permit falls with it.",
+   "tr": "— çalışma izni onunla birlikte düşer.",
+   "k": "smR2",
+   "sec": "Öğrenciler",
+   "rev": "zspy2j"
+  },
+  {
+   "id": "calc.307",
+   "en": "Student years do not count",
+   "tr": "Öğrencilik yılları sayılmaz",
+   "k": "smR3S",
+   "sec": "Öğrenciler",
+   "rev": "1vbs8od"
+  },
+  {
+   "id": "calc.308",
+   "en": "towards the 3-of-5-years exemption after graduation.",
+   "tr": "— mezuniyet sonrası 5 yılın 3'ü muafiyetine dahil edilmez.",
+   "k": "smR3",
+   "sec": "Öğrenciler",
+   "rev": "6h4nz5"
+  },
+  {
+   "id": "calc.309",
+   "en": "Unregistered work cancels their residence.",
+   "tr": "Kayıt dışı çalışma ikameti iptal ettirir.",
+   "k": "smR4S",
+   "sec": "Öğrenciler",
+   "rev": "yrhb2i"
+  },
+  {
+   "id": "calc.310",
+   "en": "Already have a student working informally? Tell us — regularising is usually straightforward.",
+   "tr": "Kayıt dışı çalışan bir öğrenciniz mi var? Bize söyleyin — yasal hale getirmek genelde kolaydır.",
+   "k": "smR4",
+   "sec": "Öğrenciler",
+   "rev": "1cxs5vr"
+  },
+  {
+   "id": "calc.311",
+   "en": "About Us",
+   "tr": "Hakkımızda",
+   "k": "navAbout",
+   "sec": "Menü ve genel etiketler",
+   "rev": "6iiw1a"
+  },
+  {
+   "id": "calc.312",
+   "en": "Hire Workers",
+   "tr": "İşçi Talebi",
+   "k": "navHire",
+   "sec": "Menü ve genel etiketler",
+   "rev": "oqbvo6"
+  },
+  {
+   "id": "calc.313",
+   "en": "Candidates",
+   "tr": "Adaylar",
+   "k": "navCandidates",
+   "sec": "Menü ve genel etiketler",
+   "rev": "brf3mr"
+  },
+  {
+   "id": "calc.314",
+   "en": "Work Permits",
+   "tr": "Çalışma İzinleri",
+   "k": "navPermits",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1gd2msg"
+  },
+  {
+   "id": "calc.315",
+   "en": "Cost Calculator",
+   "tr": "Maliyet Hesaplama",
+   "k": "navCalc",
+   "sec": "Menü ve genel etiketler",
+   "rev": "k5qxyq"
+  },
+  {
+   "id": "calc.316",
+   "en": "Success Stories",
+   "tr": "Başarı Hikayeleri",
+   "k": "navStories",
+   "sec": "Menü ve genel etiketler",
+   "rev": "11w6kar"
+  },
+  {
+   "id": "calc.317",
+   "en": "Contact Us",
+   "tr": "İletişim",
+   "k": "navContact",
+   "sec": "Menü ve genel etiketler",
+   "rev": "14c3gdf"
+  },
+  {
+   "id": "calc.318",
+   "en": "Blog",
+   "tr": "Blog",
+   "k": "navBlog",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjmm4j"
+  },
+  {
+   "id": "calc.319",
+   "en": "Blog & Guides",
+   "tr": "Blog ve Rehberler",
+   "k": "navBlogShort",
+   "sec": "Menü ve genel etiketler",
+   "rev": "4wi5os"
+  },
+  {
+   "id": "calc.320",
+   "en": "Verify a Representative",
+   "tr": "Temsilci Doğrula",
+   "k": "navVerify",
+   "sec": "Menü ve genel etiketler",
+   "rev": "l6eh8g"
+  },
+  {
+   "id": "calc.321",
+   "en": "Partner With Us",
+   "tr": "İş Ortaklığı",
+   "k": "navPartner",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1redpm7"
+  },
+  {
+   "id": "calc.322",
+   "en": "Join Our Team",
+   "tr": "Ekibimize Katılın",
+   "k": "navJoin",
+   "sec": "Menü ve genel etiketler",
+   "rev": "ftsz4i"
+  },
+  {
+   "id": "calc.323",
+   "en": "CRM Login →",
+   "tr": "CRM Girişi →",
+   "k": "navCrm",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1s31eug"
+  },
+  {
+   "id": "calc.324",
+   "en": "Open the calculator",
+   "tr": "Hesaplayıcıyı aç",
+   "k": "navOpenCalc",
+   "sec": "Menü ve genel etiketler",
+   "rev": "ett650"
+  },
+  {
+   "id": "calc.325",
+   "en": "For Employers",
+   "tr": "İşverenler İçin",
+   "k": "fEmployers",
+   "sec": "Footer",
+   "rev": "1yhsmw"
+  },
+  {
+   "id": "calc.326",
+   "en": "Incentives that lower the bill",
+   "tr": "Faturayı düşüren teşvikler",
+   "k": "aIncT",
+   "sec": "Bölüm başlıkları",
+   "rev": "j1ovsf"
+  },
+  {
+   "id": "calc.327",
+   "en": "SGK discount, wage support, regional schemes",
+   "tr": "SGK indirimi, ücret desteği, bölgesel programlar",
+   "k": "aIncS",
+   "sec": "Bölüm başlıkları",
+   "legal": true,
+   "rev": "1ulfvpr"
+  },
+  {
+   "id": "calc.328",
+   "en": "Government incentives that lower the bill",
+   "tr": "Faturayı düşüren devlet teşvikleri",
+   "k": "iH",
+   "sec": "Teşvikler",
+   "rev": "kuoziy"
+  },
+  {
+   "id": "calc.329",
+   "en": "SGK incentives (teşvikler) are given to the workplace, not to the worker's nationality, so the same discounts you get on Turkish staff apply here. Two of them are already built into the calculator.",
+   "tr": "SGK teşvikleri işçinin uyruğuna değil işyerine verilir; bu yüzden Türk çalışanlarınızda aldığınız indirimler burada da geçerlidir. İkisi hesaplayıcıya zaten dahil edilmiştir.",
+   "k": "iSub",
+   "sec": "Teşvikler",
+   "legal": true,
+   "rev": "12sk0ar"
+  },
+  {
+   "id": "calc.330",
+   "en": "5510 SGK premium discount",
+   "tr": "5510 SGK prim indirimi",
+   "k": "i1T",
+   "sec": "Teşvikler",
+   "legal": true,
+   "rev": "lne1a5"
+  },
+  {
+   "id": "calc.331",
+   "en": "2 points · 5 points in manufacturing",
+   "tr": "2 puan · imalatta 5 puan",
+   "k": "i1S",
+   "sec": "Teşvikler",
+   "rev": "5xaape"
+  },
+  {
+   "id": "calc.332",
+   "en": "Minimum wage support",
+   "tr": "Asgari ücret desteği",
+   "k": "i2T",
+   "sec": "Teşvikler",
+   "rev": "swi6w8"
+  },
+  {
+   "id": "calc.333",
+   "en": "Regional & investment incentives",
+   "tr": "Bölgesel ve yatırım teşvikleri",
+   "k": "i3T",
+   "sec": "Teşvikler",
+   "rev": "1dbbxol"
+  },
+  {
+   "id": "calc.334",
+   "en": "Up to the full employer share",
+   "tr": "İşveren payının tamamına kadar",
+   "k": "i3S",
+   "sec": "Teşvikler",
+   "rev": "106daax"
+  },
+  {
+   "id": "calc.335",
+   "en": "With an investment incentive certificate, the employer premium share on minimum wage can be covered — in Zone 6 the worker's share too. Depends on your sector, city and certificate.",
+   "tr": "Yatırım teşvik belgesiyle asgari ücret üzerindeki işveren prim payı karşılanabilir — 6. Bölge'de işçi payı da. Sektörünüze, şehrinize ve belgenize bağlıdır.",
+   "k": "i3B",
+   "sec": "Teşvikler",
+   "rev": "1bd78rm"
+  },
+  {
+   "id": "calc.336",
+   "en": "Not modelled in the calculator — your accountant will know if your workplace holds one.",
+   "tr": "Hesaplayıcıda modellenmemiştir — işyerinizin böyle bir belgesi olup olmadığını mali müşaviriniz bilir.",
+   "k": "i3F",
+   "sec": "Teşvikler",
+   "rev": "11h1wji"
+  },
+  {
+   "id": "calc.337",
+   "en": "₺1,270 per insured worker / month (2026)",
+   "tr": "Sigortalı işçi başına ayda ₺1.270 (2026)",
+   "k": "i2S",
+   "sec": "Teşvikler",
+   "rev": "1yj58uk"
+  },
+  {
+   "id": "calc.338",
+   "en": "₺42.33 per day, offset against your SGK premiums from the Unemployment Insurance Fund. Continues in 2026 for workplaces that meet the conditions.",
+   "tr": "Günlük ₺42,33; İşsizlik Sigortası Fonu'ndan SGK primlerinizden mahsup edilir. Şartları karşılayan işyerleri için 2026'da devam ediyor.",
+   "k": "i2B",
+   "sec": "Teşvikler",
+   "legal": true,
+   "rev": "odk5xf"
+  },
+  {
+   "id": "calc.339",
+   "en": "On 10 workers that is",
+   "tr": "10 işçide bu, prim faturanızdan ayda",
+   "k": "i2F1",
+   "sec": "Teşvikler",
+   "rev": "1x4nlrn"
+  },
+  {
+   "id": "calc.340",
+   "en": "a month off your premium bill.",
+   "tr": "düşer.",
+   "k": "i2F2",
+   "sec": "Teşvikler",
+   "rev": "1na7n6c"
+  },
+  {
+   "id": "calc.341",
+   "en": "The Treasury covers part of the employer's disability–old age–death premium. Manufacturing workplaces get 5 points through 2026; other sectors get 2.",
+   "tr": "Hazine, işverenin malüllük–yaşlılık–ölüm priminin bir kısmını karşılar. İmalat işyerleri 2026 boyunca 5 puan, diğer sektörler 2 puan alır.",
+   "k": "i1B",
+   "sec": "Teşvikler",
+   "rev": "ezc1l4"
+  },
+  {
+   "id": "calc.342",
+   "en": "What the state does",
+   "tr": "Devletin öde",
+   "k": "iNotT1",
+   "sec": "Teşvikler",
+   "rev": "1jhqj8c"
+  },
+  {
+   "id": "calc.343",
+   "en": "not",
+   "tr": "mediği",
+   "k": "iNotEm",
+   "sec": "Teşvikler",
+   "rev": "375n74"
+  },
+  {
+   "id": "calc.344",
+   "en": "pay for",
+   "tr": "şeyler",
+   "k": "iNotT2",
+   "sec": "Teşvikler",
+   "rev": "15tvthy"
+  },
+  {
+   "id": "calc.345",
+   "en": "No subsidy for hiring a foreigner",
+   "tr": "Yabancı işçi almak için destek yok",
+   "k": "iN1T",
+   "sec": "Teşvikler",
+   "rev": "1iomdpj"
+  },
+  {
+   "id": "calc.346",
+   "en": "There is no grant, refund or bonus for employing a foreign worker. If someone promises you one, it is not true.",
+   "tr": "Yabancı işçi çalıştırmak için hibe, iade veya prim yoktur. Size böyle bir şey vaat eden varsa doğru değildir.",
+   "k": "iN1B",
+   "sec": "Teşvikler",
+   "rev": "v3j088"
+  },
+  {
+   "id": "calc.347",
+   "en": "Agricultural support goes to the producer",
+   "tr": "Tarımsal destek üreticiye gider",
+   "k": "iN2T",
+   "sec": "Teşvikler",
+   "rev": "1e5ay93"
+  },
+  {
+   "id": "calc.348",
+   "en": "Agricultural subsidies (tarımsal destekler) fund production — land, diesel, seed, livestock. They are not employment support, and hiring overseas workers does not add to them.",
+   "tr": "Tarımsal destekler üretimi finanse eder — arazi, mazot, tohum, hayvancılık. Bunlar istihdam desteği değildir ve yurt dışından işçi almak bu destekleri artırmaz.",
+   "k": "iN2B",
+   "sec": "Teşvikler",
+   "rev": "p0m7a1"
+  },
+  {
+   "id": "calc.349",
+   "en": "Some incentives exclude foreigners",
+   "tr": "Bazı teşvikler yabancıları kapsam dışı bırakır",
+   "k": "iN3T",
+   "sec": "Teşvikler",
+   "rev": "8ylnbz"
+  },
+  {
+   "id": "calc.350",
+   "en": "Incentives that require the hire to be registered unemployed at İŞKUR (7103 / geçici 19) cannot be used, because a foreign national cannot hold that registration.",
+   "tr": "İşe alınan kişinin İŞKUR'a işsiz kayıtlı olmasını gerektiren teşvikler (7103 / geçici 19) kullanılamaz, çünkü bir yabancı uyruklu böyle bir kayıt tutamaz.",
+   "k": "iN3B",
+   "sec": "Teşvikler",
+   "legal": true,
+   "rev": "1io08ls"
+  },
+  {
+   "id": "calc.351",
+   "en": "KOSGEB wage support excludes them by rule",
+   "tr": "KOSGEB ücret desteği kural gereği kapsam dışı bırakır",
+   "k": "iN4T",
+   "sec": "Teşvikler",
+   "rev": "1517bvh"
+  },
+  {
+   "id": "calc.352",
+   "en": "The qualified-personnel (nitelikli eleman) salary support is written for Turkish citizens with a university degree — foreign nationals are named in the exclusions, alongside retirees and the owner's family. KOSGEB's other programmes fund the business, not this hire.",
+   "tr": "Nitelikli eleman ücret desteği üniversite mezunu Türk vatandaşları için yazılmıştır — yabancı uyruklular, emekliler ve işletme sahibinin ailesiyle birlikte istisnalar arasında açıkça sayılır. KOSGEB'in diğer programları bu işe alımı değil işletmeyi finanse eder.",
+   "k": "iN4B",
+   "sec": "Teşvikler",
+   "rev": "16j43fw"
+  },
+  {
+   "id": "calc.353",
+   "en": "What you can get:",
+   "tr": "Alabilecekleriniz:",
+   "k": "iCanL",
+   "sec": "Teşvikler",
+   "rev": "jo5c4s"
+  },
+  {
+   "id": "calc.354",
+   "en": "the 5510 premium discount and the minimum wage support above. Both belong to your workplace and both are already in the calculator.",
+   "tr": "yukarıdaki 5510 prim indirimi ve asgari ücret desteği. İkisi de işyerinize aittir ve ikisi de hesaplayıcıda zaten var.",
+   "k": "iCan",
+   "sec": "Teşvikler",
+   "legal": true,
+   "rev": "wf3ncv"
+  },
+  {
+   "id": "calc.355",
+   "en": "These discounts depend on your workplace, not on us.",
+   "tr": "Bu indirimler bize değil, işyerinize bağlıdır.",
+   "k": "iWarnL",
+   "sec": "Teşvikler",
+   "rev": "1d1m2jk"
+  },
+  {
+   "id": "calc.356",
+   "en": "To get any SGK incentive, the workplace must have no unpaid premium debt, must file its declarations on time and must have no unregistered workers. If one of these is broken, the workplace loses all of them, including the minimum wage support. Ask your mali müşavir before you count on the saving. We always quote the full price without discounts, so there are no surprises.",
+   "tr": "Herhangi bir SGK teşviğinden yararlanmak için işyerinin ödenmemiş prim borcu olmamalı, beyannamelerini zamanında vermeli ve kayıt dışı işçisi bulunmamalıdır. Bunlardan biri bozulursa işyeri, asgari ücret desteği dahil hepsini kaybeder. Tasarrufa güvenmeden önce mali müşavirinize danışın. Biz her zaman indirimsiz tam fiyat veririz, böylece sürpriz olmaz.",
+   "k": "iWarn",
+   "sec": "Teşvikler",
+   "legal": true,
+   "rev": "1dk6mkw"
+  },
+  {
+   "id": "calc.357",
+   "en": "Already in your estimate",
+   "tr": "Tahmininize zaten dahil",
+   "k": "imK",
+   "sec": "Teşvikler",
+   "rev": "3kvoar"
+  },
+  {
+   "id": "calc.358",
+   "en": "SGK premium discount (5510).",
+   "tr": "SGK prim indirimi (5510).",
+   "k": "im1S",
+   "sec": "Teşvikler",
+   "legal": true,
+   "rev": "10yrilu"
+  },
+  {
+   "id": "calc.359",
+   "en": "Your rate above is",
+   "tr": "Yukarıdaki oranınız tam %23,75 yerine",
+   "k": "im1a",
+   "sec": "Teşvikler",
+   "rev": "1vkon1v"
+  },
+  {
+   "id": "calc.360",
+   "en": "instead of the full 23.75% — manufacturing gets 18.75%.",
+   "tr": "— imalatta %18,75.",
+   "k": "im1b",
+   "sec": "Teşvikler",
+   "rev": "10y7gb5"
+  },
+  {
+   "id": "calc.361",
+   "en": "Minimum wage support ₺1,270",
+   "tr": "Asgari ücret desteği ₺1.270",
+   "k": "im2S",
+   "sec": "Teşvikler",
+   "rev": "d01rsq"
+  },
+  {
+   "id": "calc.362",
+   "en": "per worker per month — on 10 workers that is ₺12,700 off the premium bill.",
+   "tr": "işçi başına ayda — 10 işçide prim faturasından ₺12.700 düşer.",
+   "k": "im2",
+   "sec": "Teşvikler",
+   "rev": "16x9bl7"
+  },
+  {
+   "id": "calc.363",
+   "en": "One more — case by case",
+   "tr": "Bir tane daha — duruma göre",
+   "k": "imK2",
+   "sec": "Teşvikler",
+   "rev": "1wuhfej"
+  },
+  {
+   "id": "calc.364",
+   "en": "Regional & investment incentives.",
+   "tr": "Bölgesel ve yatırım teşvikleri.",
+   "k": "im3S",
+   "sec": "Teşvikler",
+   "rev": "1spgo23"
+  },
+  {
+   "id": "calc.365",
+   "en": "With an investment certificate the whole employer share on minimum wage can be covered. Not in the calculator — your accountant knows if you hold one.",
+   "tr": "Yatırım belgesiyle asgari ücret üzerindeki işveren payının tamamı karşılanabilir. Hesaplayıcıda yok — belgeniz olup olmadığını mali müşaviriniz bilir.",
+   "k": "im3",
+   "sec": "Teşvikler",
+   "rev": "vjqgap"
+  },
+  {
+   "id": "calc.366",
+   "en": "What does not exist",
+   "tr": "Var olmayanlar",
+   "k": "imK3",
+   "sec": "Teşvikler",
+   "rev": "woqsk4"
+  },
+  {
+   "id": "calc.367",
+   "en": "There is",
+   "tr": "",
+   "sec": "Teşvikler",
+   "rev": "1idntxt"
+  },
+  {
+   "id": "calc.368",
+   "en": "no grant or refund for hiring a foreign worker",
+   "tr": "Yabancı işçi almak için hibe veya iade yoktur",
+   "k": "im4S",
+   "sec": "Teşvikler",
+   "rev": "16azixk"
+  },
+  {
+   "id": "calc.369",
+   "en": ". İŞKUR-based incentives (7103) and KOSGEB wage support exclude foreign nationals by rule, and agricultural support funds production, not employment. Also: any SGK discount is lost if the workplace has premium debt, late filings or unregistered staff — so we always quote the full price.",
+   "tr": ". İŞKUR'a dayalı teşvikler (7103) ve KOSGEB ücret desteği kural gereği yabancı uyrukluları kapsamaz; tarımsal destek ise istihdamı değil üretimi finanse eder. Ayrıca: işyerinin prim borcu, geç beyanı veya kayıt dışı çalışanı varsa her türlü SGK indirimi düşer — bu yüzden biz her zaman tam fiyat veririz.",
+   "k": "im4b",
+   "sec": "Teşvikler",
+   "legal": true,
+   "rev": "1ta120g"
+  },
+  {
+   "id": "calc.370",
+   "en": "₺100,000",
+   "tr": "₺100.000",
+   "k": "gCap",
+   "sec": "Diğer",
+   "rev": "jspd5e"
+  },
+  {
+   "id": "calc.371",
+   "en": "₺800,000",
+   "tr": "₺800.000",
+   "k": "gSales",
+   "sec": "Diğer",
+   "rev": "15xgd0b"
+  },
+  {
+   "id": "calc.372",
+   "en": "$250,000",
+   "tr": "250.000 $",
+   "k": "gExp",
+   "sec": "Diğer",
+   "rev": "1adca3u"
+  },
+  {
+   "id": "calc.373",
+   "en": "₺100k",
+   "tr": "₺100.000",
+   "k": "gmCap",
+   "sec": "Diğer",
+   "rev": "1fzh8it"
+  },
+  {
+   "id": "calc.374",
+   "en": "₺800k",
+   "tr": "₺800.000",
+   "k": "gmSales",
+   "sec": "Diğer",
+   "rev": "1fzaclo"
+  },
+  {
+   "id": "calc.375",
+   "en": "$250k",
+   "tr": "250.000 $",
+   "k": "gmExp",
+   "sec": "Diğer",
+   "rev": "1i4hel"
+  },
+  {
+   "id": "calc.376",
+   "en": "Pass check",
+   "tr": "Geçer-mi testi",
+   "k": "pcK",
+   "sec": "Geçer-mi testi",
+   "rev": "vyrb3m"
+  },
+  {
+   "id": "calc.377",
+   "en": "Reset ✕",
+   "tr": "Sıfırla ✕",
+   "k": "pcReset",
+   "sec": "Geçer-mi testi",
+   "rev": "ljxath"
+  },
+  {
+   "id": "calc.378",
+   "en": "Your answers are not sent to us — the check runs in your browser.",
+   "tr": "Cevaplarınız bize gönderilmez — kontrol tarayıcınızda çalışır.",
+   "k": "pcPriv",
+   "sec": "Geçer-mi testi",
+   "rev": "1297v3g"
+  },
+  {
+   "id": "calc.379",
+   "en": "Fix these first",
+   "tr": "Önce bunları düzeltin",
+   "k": "pcFix",
+   "sec": "Geçer-mi testi",
+   "rev": "cgssdj"
+  },
+  {
+   "id": "calc.380",
+   "en": "Want your exact number?",
+   "tr": "Net rakamınızı ister misiniz?",
+   "k": "pcSideT",
+   "sec": "Geçer-mi testi",
+   "rev": "1xt64v"
+  },
+  {
+   "id": "calc.381",
+   "en": "Send us the roles and headcount — written quote within 24 hours.",
+   "tr": "Meslekleri ve işçi sayısını gönderin — 24 saat içinde yazılı teklif.",
+   "k": "pcSideB",
+   "sec": "Geçer-mi testi",
+   "rev": "c0fnli"
+  },
+  {
+   "id": "calc.382",
+   "en": "Most refusals come from five things. Answer them honestly. It takes a minute and shows you whether to file now or fix something first.",
+   "tr": "Retlerin çoğu beş şeyden kaynaklanır. Bunları dürüstçe cevaplayın. Bir dakika sürer ve şimdi mi başvurmanız yoksa önce bir şeyi mi düzeltmeniz gerektiğini gösterir.",
+   "k": "pcSub",
+   "sec": "Geçer-mi testi",
+   "rev": "1q5qgg"
+  },
+  {
+   "id": "calc.383",
+   "en": "Cost questions",
+   "tr": "Maliyet soruları",
+   "k": "fqH",
+   "sec": "SSS",
+   "rev": "1m2007n"
+  },
+  {
+   "id": "calc.384",
+   "en": "What employers ask when they see these numbers for the first time.",
+   "tr": "İşverenlerin bu rakamları ilk gördüklerinde sordukları.",
+   "k": "fqSub",
+   "sec": "SSS",
+   "rev": "15xx63v"
+  },
+  {
+   "id": "calc.385",
+   "en": "No discount",
+   "tr": "İndirim yok",
+   "k": "rtNone",
+   "sec": "Teşvikler",
+   "rev": "ud2ck9"
+  },
+  {
+   "id": "calc.386",
+   "en": "Most sectors (2 pt)",
+   "tr": "Çoğu sektör (2 puan)",
+   "k": "rtMost",
+   "sec": "Teşvikler",
+   "rev": "gvztg8"
+  },
+  {
+   "id": "calc.387",
+   "en": "Manufacturing (5 pt)",
+   "tr": "İmalat (5 puan)",
+   "k": "rtManuf",
+   "sec": "Teşvikler",
+   "rev": "1shphlh"
+  },
+  {
+   "id": "calc.388",
+   "en": "In the calculator",
+   "tr": "Hesaplayıcıda var",
+   "k": "bdgCalc",
+   "sec": "Teşvikler",
+   "rev": "y79edj"
+  },
+  {
+   "id": "calc.389",
+   "en": "Case by case",
+   "tr": "Duruma göre",
+   "k": "bdgCase",
+   "sec": "Teşvikler",
+   "rev": "q8h25a"
+  },
+  {
+   "id": "calc.390",
+   "en": "Get directions",
+   "tr": "Yol tarifi alın",
+   "k": "footDirections",
+   "sec": "Footer",
+   "rev": "9twfut"
+  },
+  {
+   "id": "calc.391",
+   "en": "WhatsApp Us →",
+   "tr": "WhatsApp'tan yazın →",
+   "k": "footWa",
+   "sec": "Footer",
+   "rev": "1bo2cnd"
+  },
+  {
+   "id": "calc.392",
+   "en": "Manage your workforce anywhere",
+   "tr": "İş gücünüzü her yerden yönetin",
+   "k": "footAppTitle",
+   "sec": "Footer",
+   "rev": "6new42"
+  },
+  {
+   "id": "calc.393",
+   "en": "Approve candidates, track permits and get instant updates.",
+   "tr": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
+   "k": "footAppSub",
+   "sec": "Footer",
+   "rev": "11s8lwh"
+  },
+  {
+   "id": "calc.394",
+   "en": "Antalya · Head office",
+   "tr": "Antalya · Merkez ofis",
+   "k": "footOfficeAntalya",
+   "sec": "Footer",
+   "rev": "1vkrek4"
+  },
+  {
+   "id": "calc.395",
+   "en": "Karachi · Tech office",
+   "tr": "Karaçi · Teknoloji ofisi",
+   "k": "footOfficeKarachi",
+   "sec": "Footer",
+   "rev": "1dihier"
+  },
+  {
+   "id": "calc.396",
+   "en": "Mon–Fri 09:00–18:00",
+   "tr": "Pzt–Cum 09:00–18:00",
+   "k": "footHoursAntalya",
+   "sec": "Footer",
+   "rev": "1pratzo"
+  },
+  {
+   "id": "calc.397",
+   "en": "Mon–Sat 10:00–19:00 PKT",
+   "tr": "Pzt–Cmt 10:00–19:00 PKT",
+   "k": "footHoursKarachi",
+   "sec": "Footer",
+   "rev": "1w2dzmx"
+  },
+  {
+   "id": "calc.398",
+   "en": "CRM Login",
+   "tr": "CRM Girişi",
+   "k": "navCrmPlain",
+   "sec": "Menü ve genel etiketler",
+   "rev": "57mcey"
+  },
+  {
+   "id": "calc.399",
+   "en": "Pick a profession",
+   "tr": "Meslek seçin",
+   "k": "sheetPick",
+   "sec": "Diğer",
+   "rev": "uxtz9v"
+  },
+  {
+   "id": "calc.400",
+   "en": "Company",
+   "tr": "Kurumsal",
+   "k": "footCompany",
+   "sec": "Footer",
+   "rev": "1ohrlxe"
+  },
+  {
+   "id": "calc.401",
+   "en": "Contact",
+   "tr": "İletişim",
+   "k": "footContact",
+   "sec": "Footer",
+   "rev": "1ofoso5"
+  },
+  {
+   "id": "calc.402",
+   "en": "Get Our App",
+   "tr": "Uygulamamız",
+   "k": "footApp",
+   "sec": "Footer",
+   "rev": "ncsu7u"
+  },
+  {
+   "id": "calc.403",
+   "en": "Privacy",
+   "tr": "Gizlilik Politikası",
+   "k": "privacy",
+   "sec": "Footer",
+   "rev": "1ligp4z"
+  },
+  {
+   "id": "calc.404",
+   "en": "Terms",
+   "tr": "Kullanım Şartları",
+   "k": "terms",
+   "sec": "Footer",
+   "rev": "3rktfc"
+  },
+  {
+   "id": "calc.405",
+   "en": "FAQ",
+   "tr": "SSS",
+   "k": "faqEyebrow",
+   "sec": "SSS",
+   "rev": "37651v"
+  },
+  {
+   "id": "calc.406",
+   "en": "Email",
+   "tr": "E-posta",
+   "k": "lblEmail",
+   "sec": "Diğer",
+   "rev": "3brsq1"
+  },
+  {
+   "id": "calc.407",
+   "en": "₺102,504",
+   "tr": "₺102.504",
+   "k": "pFine1",
+   "sec": "Cezalar",
+   "rev": "jralld"
+  },
+  {
+   "id": "calc.408",
+   "en": "₺205,008",
+   "tr": "₺205.008",
+   "k": "pFine1x",
+   "sec": "Cezalar",
+   "rev": "ryc6l8"
+  },
+  {
+   "id": "calc.409",
+   "en": "₺170,906",
+   "tr": "₺170.906",
+   "k": "pFine2",
+   "sec": "Cezalar",
+   "rev": "htlvqy"
+  },
+  {
+   "id": "calc.410",
+   "en": "₺341,812",
+   "tr": "₺341.812",
+   "k": "pFine2x",
+   "sec": "Cezalar",
+   "rev": "19ibc3i"
+  },
+  {
+   "id": "calc.411",
+   "en": "≈ ₺16,000",
+   "tr": "≈ ₺16.000",
+   "k": "cmpFee",
+   "sec": "Yerli vs yurt dışı",
+   "rev": "d5d9fw"
+  },
+  {
+   "id": "calc.412",
+   "en": "Language",
+   "tr": "Dil",
+   "k": "lblLanguage",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1s1gw53"
+  },
+  {
+   "id": "calc.413",
+   "en": "Send my result to a specialist",
+   "tr": "Sonucumu bir uzmana gönder",
+   "k": "pcSend",
+   "sec": "Geçer-mi testi",
+   "rev": "vuljyp"
+  },
+  {
+   "id": "calc.414",
+   "en": "İŞKUR permit No. 1730 · Job seekers are never charged a fee (law No. 4904) · Tax No: 48422122",
+   "tr": "İŞKUR İzin Belgesi No: 1730 · İş arayanlardan hiçbir ücret alınmaz (4904 sayılı kanun) · Vergi No: 48422122",
+   "k": "legal",
+   "sec": "Footer",
+   "legal": true,
+   "rev": "dgg8hy"
+  },
+  {
+   "id": "calc.415",
+   "en": "23.75%",
+   "tr": "%23,75",
+   "k": "rvNone",
+   "sec": "Teşvikler",
+   "rev": "1r6brn1"
+  },
+  {
+   "id": "calc.416",
+   "en": "21.75%",
+   "tr": "%21,75",
+   "k": "rvMost",
+   "sec": "Teşvikler",
+   "rev": "1r7nm7j"
+  },
+  {
+   "id": "calc.417",
+   "en": "18.75%",
+   "tr": "%18,75",
+   "k": "rvManuf",
+   "sec": "Teşvikler",
+   "rev": "1qnpn5x"
+  },
+  {
+   "id": "calc.418",
+   "en": "İŞKUR Licensed · Permit No. 1730",
+   "tr": "Özel İstihdam Bürosu · İzin Belgesi No: 1730",
+   "k": "lic",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "z1r9le"
+  },
+  {
+   "id": "calc.419",
+   "en": "İŞKUR · 1730",
+   "tr": "İŞKUR · 1730",
+   "k": "licShort",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "1ih9pud"
+  },
+  {
+   "id": "calc.420",
+   "en": "Serving employers across Türkiye",
+   "tr": "Türkiye genelinde işverenlere hizmet",
+   "k": "nationwide",
+   "sec": "Diğer",
+   "rev": "tyfwfe"
+  },
+  {
+   "id": "calc.421",
+   "en": "Hide the breakdown",
+   "tr": "Dökümü gizle",
+   "k": "brkHide",
+   "sec": "Hesaplayıcı",
+   "rev": "15prenl"
+  },
+  {
+   "id": "calc.422",
+   "en": "See where the money goes",
+   "tr": "Para nereye gidiyor?",
+   "k": "brkShow",
+   "sec": "Hesaplayıcı",
+   "rev": "1rtkj58"
+  },
+  {
+   "id": "calc.423",
+   "en": "Fewer options",
+   "tr": "Daha az seçenek",
+   "k": "advFew",
+   "sec": "Hesaplayıcı",
+   "rev": "1fiegnq"
+  },
+  {
+   "id": "calc.424",
+   "en": "+ Contract, extras & SGK discount",
+   "tr": "+ Sözleşme, ekstralar ve SGK teşviki",
+   "k": "advMore",
+   "sec": "Hesaplayıcı",
+   "legal": true,
+   "rev": "oladh9"
+  },
+  {
+   "id": "calc.425",
+   "en": "No foreign workers yet",
+   "tr": "Henüz yabancı işçi yok",
+   "k": "quotaNone",
+   "sec": "Diğer",
+   "rev": "1q2xign"
+  },
+  {
+   "id": "calc.426",
+   "en": "Standard rule not met",
+   "tr": "Standart kural karşılanmıyor",
+   "k": "quotaTitleNo",
+   "sec": "Diğer",
+   "rev": "4xlqzd"
+  },
+  {
+   "id": "calc.427",
+   "en": "Standard rule allows",
+   "tr": "Standart kuralın izin verdiği",
+   "k": "quotaTitleYes",
+   "sec": "Diğer",
+   "rev": "1b95x8a"
+  },
+  {
+   "id": "calc.428",
+   "en": "Counted as 5 Turkish employees for each foreign worker. Your number fits exactly.",
+   "tr": "Her yabancı işçi için 5 Türk çalışan sayılır. Sayınız tam olarak uyuyor.",
+   "k": "quotaMsgExact",
+   "sec": "Diğer",
+   "rev": "cxuzs3"
+  },
+  {
+   "id": "calc.429",
+   "en": "That is within your quota.",
+   "tr": "Bu, kotanızın içinde.",
+   "k": "quotaVsOk",
+   "sec": "Diğer",
+   "rev": "1sroek2"
+  },
+  {
+   "id": "calc.430",
+   "en": "By sector",
+   "tr": "Sektöre göre",
+   "k": "exTabSector",
+   "sec": "Kota kontrolü",
+   "rev": "1kcs8v6"
+  },
+  {
+   "id": "calc.431",
+   "en": "By company",
+   "tr": "Şirkete göre",
+   "k": "exTabCompany",
+   "sec": "Kota kontrolü",
+   "rev": "1xepswp"
+  },
+  {
+   "id": "calc.432",
+   "en": "By candidate",
+   "tr": "Adaya göre",
+   "k": "exTabPerson",
+   "sec": "Kota kontrolü",
+   "rev": "10xl4wb"
+  },
+  {
+   "id": "calc.433",
+   "en": "Yes",
+   "tr": "Evet",
+   "k": "pcYes",
+   "sec": "Geçer-mi testi",
+   "rev": "376p8q"
+  },
+  {
+   "id": "calc.434",
+   "en": "No",
+   "tr": "Hayır",
+   "k": "pcNo",
+   "sec": "Geçer-mi testi",
+   "rev": "3hnac"
+  },
+  {
+   "id": "calc.435",
+   "en": "Not sure",
+   "tr": "Emin değilim",
+   "k": "pcMaybe",
+   "sec": "Geçer-mi testi",
+   "rev": "1ig6egx"
+  },
+  {
+   "id": "calc.436",
+   "en": "Clear — recheck above ↑",
+   "tr": "Uygun — yukarıdan kontrol edin ↑",
+   "k": "pcClear",
+   "sec": "Geçer-mi testi",
+   "rev": "1isljo7"
+  },
+  {
+   "id": "calc.437",
+   "en": "Short — fix above ↑",
+   "tr": "Yetersiz — yukarıdan düzeltin ↑",
+   "k": "pcShort",
+   "sec": "Geçer-mi testi",
+   "rev": "1wgr7oa"
+  },
+  {
+   "id": "calc.438",
+   "en": "Your result",
+   "tr": "Sonucunuz",
+   "k": "vIdleK",
+   "sec": "Geçer-mi testi",
+   "rev": "103nttp"
+  },
+  {
+   "id": "calc.439",
+   "en": "Answer the five checks",
+   "tr": "Beş kontrolü cevaplayın",
+   "k": "vIdleT",
+   "sec": "Geçer-mi testi",
+   "rev": "1kntaax"
+  },
+  {
+   "id": "calc.440",
+   "en": "The quota check is filled in from the calculator above. Answer the other four and you get a straight verdict.",
+   "tr": "Kota kontrolü yukarıdaki hesaplayıcıdan otomatik dolar. Diğer dördünü cevaplayın, net bir sonuç alın.",
+   "k": "vIdleB",
+   "sec": "Geçer-mi testi",
+   "rev": "620piu"
+  },
+  {
+   "id": "calc.441",
+   "en": "In progress",
+   "tr": "Devam ediyor",
+   "k": "vProgK",
+   "sec": "Geçer-mi testi",
+   "rev": "1jgvsfz"
+  },
+  {
+   "id": "calc.442",
+   "en": "So far, so good",
+   "tr": "Şu ana kadar iyi",
+   "k": "vProgT",
+   "sec": "Geçer-mi testi",
+   "rev": "9sd77j"
+  },
+  {
+   "id": "calc.443",
+   "en": "Nothing has failed yet. Finish the remaining checks for the full verdict.",
+   "tr": "Henüz hiçbir şey takılmadı. Tam sonuç için kalan kontrolleri tamamlayın.",
+   "k": "vProgB",
+   "sec": "Geçer-mi testi",
+   "rev": "u5f80w"
+  },
+  {
+   "id": "calc.444",
+   "en": "Confirm:",
+   "tr": "Teyit edin:",
+   "k": "pcConfirm",
+   "sec": "Geçer-mi testi",
+   "rev": "58sde5"
+  },
+  {
+   "id": "calc.445",
+   "en": "Your company meets one of the financial criteria",
+   "tr": "Şirketiniz mali şartlardan birini karşılıyor",
+   "k": "ckCapT",
+   "sec": "Geçer-mi testi",
+   "rev": "93duif"
+  },
+  {
+   "id": "calc.446",
+   "en": "₺100,000 paid-in capital, ₺800,000 gross sales or $250,000 exports in the last financial year — any one of the three is enough.",
+   "tr": "Son mali yılda ₺100.000 ödenmiş sermaye, ₺800.000 brüt satış veya 250.000 $ ihracat — üçünden biri yeterlidir.",
+   "k": "ckCapB",
+   "sec": "Geçer-mi testi",
+   "rev": "1j7nryb"
+  },
+  {
+   "id": "calc.447",
+   "en": "Company criteria not met. Household employers and a few categories are outside it — send us your figures before anything is filed.",
+   "tr": "Şirket şartları karşılanmıyor. Ev hizmetlerinde çalıştıranlar ve birkaç kategori bunun dışındadır — dosya açılmadan önce rakamlarınızı bize gönderin.",
+   "k": "ckCapF",
+   "sec": "Geçer-mi testi",
+   "rev": "1g00o32"
+  },
+  {
+   "id": "calc.448",
+   "en": "You have enough Turkish employees for the 5:1 rule",
+   "tr": "5:1 kuralı için yeterli Türk çalışanınız var",
+   "k": "ckQuoT",
+   "sec": "Geçer-mi testi",
+   "rev": "1tss0q3"
+  },
+  {
+   "id": "calc.449",
+   "en": "No overdue SGK or tax debt at this workplace",
+   "tr": "Bu işyerinde vadesi geçmiş SGK veya vergi borcu yok",
+   "k": "ckSgkT",
+   "sec": "Geçer-mi testi",
+   "legal": true,
+   "rev": "a1us27"
+  },
+  {
+   "id": "calc.450",
+   "en": "Premiums and filings up to date, and no unregistered-employment finding on record. Debt blocks the permit and your incentives at the same time.",
+   "tr": "Primler ve beyanlar güncel, kayıtlarda kayıt dışı istihdam tespiti yok. Borç hem izni hem teşviklerinizi aynı anda bloke eder.",
+   "k": "ckSgkB",
+   "sec": "Geçer-mi testi",
+   "rev": "2sl1md"
+  },
+  {
+   "id": "calc.451",
+   "en": "Clear the SGK or tax debt, or put a payment plan in place — the file stalls at the Ministry otherwise.",
+   "tr": "SGK veya vergi borcunu kapatın ya da bir ödeme planına bağlayın — aksi halde dosya Bakanlıkta takılır.",
+   "k": "ckSgkF",
+   "sec": "Geçer-mi testi",
+   "legal": true,
+   "rev": "1ip4bqu"
+  },
+  {
+   "id": "calc.452",
+   "en": "The salary you will declare is at or above the legal minimum",
+   "tr": "Beyan edeceğiniz maaş yasal alt sınırda veya üzerinde",
+   "k": "ckSalT",
+   "sec": "Geçer-mi testi",
+   "rev": "vjzpik"
+  },
+  {
+   "id": "calc.453",
+   "en": "Documents ready, translated and notarised",
+   "tr": "Belgeler hazır, tercüme ve noter onaylı",
+   "k": "ckDocT",
+   "sec": "Geçer-mi testi",
+   "rev": "z12s8a"
+  },
+  {
+   "id": "calc.454",
+   "en": "Passport, diploma or trade certificate with a sworn Turkish translation (plus denklik for foreign degrees), signed contract and company documents. Incomplete paperwork is the most common single cause of refusal.",
+   "tr": "Pasaport, yeminli Türkçe tercümesiyle diploma veya ustalık belgesi (yabancı diplomalar için ayrıca denklik), imzalı sözleşme ve şirket evrakları. Eksik evrak, tek başına en sık ret sebebidir.",
+   "k": "ckDocB",
+   "sec": "Geçer-mi testi",
+   "rev": "6ko2t9"
+  },
+  {
+   "id": "calc.455",
+   "en": "Get the sworn translations and notarisations done before the file opens — we send the exact list per nationality and role.",
+   "tr": "Dosya açılmadan önce yeminli tercüme ve noter onaylarını tamamlayın — uyruğa ve mesleğe göre tam listeyi biz gönderiyoruz.",
+   "k": "ckDocF",
+   "sec": "Geçer-mi testi",
+   "rev": "1amrxbv"
+  },
+  {
+   "id": "calc.456",
+   "en": "Result",
+   "tr": "Sonuç",
+   "k": "vRes",
+   "sec": "Geçer-mi testi",
+   "rev": "1igq9u4"
+  },
+  {
+   "id": "calc.457",
+   "en": "Nothing blocking — you can file",
+   "tr": "Engel yok — başvurabilirsiniz",
+   "k": "vGreenT",
+   "sec": "Geçer-mi testi",
+   "rev": "18lr0ks"
+  },
+  {
+   "id": "calc.458",
+   "en": "All five checks pass. On this basis the application is in normal shape; the remaining variables are the candidate's own documents and Ministry timing.",
+   "tr": "Beş kontrolün hepsi geçti. Bu temelde başvuru normal durumda; kalan değişkenler adayın kendi belgeleri ve Bakanlık süresidir.",
+   "k": "vGreenB",
+   "sec": "Geçer-mi testi",
+   "rev": "1abpc20"
+  },
+  {
+   "id": "calc.459",
+   "en": "One thing to confirm first",
+   "tr": "Önce teyit edilmesi gereken bir şey var",
+   "k": "vAmber1",
+   "sec": "Geçer-mi testi",
+   "rev": "gzkhla"
+  },
+  {
+   "id": "calc.460",
+   "en": "Nothing has failed, but an unchecked assumption becomes a refusal later. Confirm the items below with your accountant — or send them to us and we will check them for you.",
+   "tr": "Henüz hiçbir şey takılmadı, ancak kontrol edilmemiş bir varsayım sonradan rette döner. Aşağıdakileri mali müşavirinizle teyit edin — ya da bize gönderin, sizin için kontrol edelim.",
+   "k": "vAmberB",
+   "sec": "Geçer-mi testi",
+   "rev": "1fwmlmz"
+  },
+  {
+   "id": "calc.461",
+   "en": "One blocker — fix it before filing",
+   "tr": "Bir engel — başvurmadan önce düzeltin",
+   "k": "vRed1",
+   "sec": "Geçer-mi testi",
+   "rev": "1ltz5qz"
+  },
+  {
+   "id": "calc.462",
+   "en": "Filing now most likely ends in a refusal, and the time is lost. These are fixable — most employers clear them in a few weeks.",
+   "tr": "Şimdi başvurmak büyük olasılıkla retle biter ve süre kaybedilir. Bunlar çözülebilir — işverenlerin çoğu birkaç haftada hallediyor.",
+   "k": "vRedB",
+   "sec": "Geçer-mi testi",
+   "rev": "mbat6l"
+  },
+  {
+   "id": "calc.463",
+   "en": "per worker",
+   "tr": "işçi başına",
+   "k": "perWorker",
+   "sec": "Diğer",
+   "rev": "1ukamtw"
+  },
+  {
+   "id": "calc.464",
+   "en": "/ month",
+   "tr": "/ ay",
+   "k": "perMonthSuffix",
+   "sec": "Diğer",
+   "rev": "dwmlyy"
+  },
+  {
+   "id": "calc.465",
+   "en": "/ mo",
+   "tr": "/ ay",
+   "k": "perMoShort",
+   "sec": "Diğer",
+   "rev": "yhocaw"
+  },
+  {
+   "id": "calc.466",
+   "en": "Manufacturing · 5 pt",
+   "tr": "İmalat · 5 puan",
+   "k": "tierManuf",
+   "sec": "Diğer",
+   "rev": "9i9vr7"
+  },
+  {
+   "id": "calc.467",
+   "en": "Other sectors · 2 pt",
+   "tr": "Diğer sektörler · 2 puan",
+   "k": "tierOther",
+   "sec": "Diğer",
+   "rev": "bfkyi7"
+  },
+  {
+   "id": "calc.468",
+   "en": "No discount",
+   "tr": "İndirim yok",
+   "k": "tierNone",
+   "sec": "Diğer",
+   "rev": "ud2ck9"
+  },
+  {
+   "id": "calc.469",
+   "en": "First-year total",
+   "tr": "İlk yıl toplamı",
+   "k": "firstYear",
+   "sec": "Diğer",
+   "rev": "1sr8hz3"
+  },
+  {
+   "id": "calc.470",
+   "en": "Full year",
+   "tr": "Tam yıl",
+   "k": "fullYear",
+   "sec": "Diğer",
+   "rev": "bctjq1"
+  },
+  {
+   "id": "calc.471",
+   "en": "6 months (season)",
+   "tr": "6 ay (sezon)",
+   "k": "chip6",
+   "sec": "Diğer",
+   "rev": "q6c0r8"
+  },
+  {
+   "id": "calc.472",
+   "en": "9 months",
+   "tr": "9 ay",
+   "k": "chip9",
+   "sec": "Diğer",
+   "rev": "1wq2rmn"
+  },
+  {
+   "id": "calc.473",
+   "en": "Full year",
+   "tr": "Tam yıl",
+   "k": "chip12",
+   "sec": "Diğer",
+   "rev": "bctjq1"
+  },
+  {
+   "id": "calc.474",
+   "en": "All industries",
+   "tr": "Tüm sektörler",
+   "k": "allInd",
+   "sec": "Diğer",
+   "rev": "108ekjc"
+  },
+  {
+   "id": "calc.475",
+   "en": "All",
+   "tr": "Tümü",
+   "k": "allShort",
+   "sec": "Diğer",
+   "rev": "3765b8"
+  },
+  {
+   "id": "calc.476",
+   "en": "Skilled · 1.5×",
+   "tr": "Nitelikli · 1,5×",
+   "k": "skilled",
+   "sec": "Diğer",
+   "rev": "1mxsfwf"
+  },
+  {
+   "id": "calc.477",
+   "en": "Standard · 1×",
+   "tr": "Standart · 1×",
+   "k": "standard",
+   "sec": "Öğrenciler",
+   "rev": "8kd48f"
+  },
+  {
+   "id": "calc.478",
+   "en": "In calculator ✓",
+   "tr": "Hesaplayıcıda ✓",
+   "k": "inCalc",
+   "sec": "Diğer",
+   "rev": "1qxih8t"
+  },
+  {
+   "id": "calc.479",
+   "en": "Use in calculator →",
+   "tr": "Hesaplayıcıda kullan →",
+   "k": "useCalc",
+   "sec": "Diğer",
+   "rev": "swhkhb"
+  },
+  {
+   "id": "calc.480",
+   "en": "Is the service fee really not shown here?",
+   "tr": "Hizmet bedeli gerçekten burada gösterilmiyor mu?",
+   "k": "faq1Q",
+   "sec": "SSS",
+   "rev": "12icxzj"
+  },
+  {
+   "id": "calc.481",
+   "en": "That is right, because it depends on the job, the number of workers and how much of the work you need from us. It is always a fixed amount, agreed in writing before we start, and you pay nothing in advance. Send us the roles and the number of workers and you get the exact price within 24 hours.",
+   "tr": "Doğru, çünkü işe, işçi sayısına ve işin ne kadarını bizden istediğinize göre değişir. Her zaman sabit bir tutardır, işe başlamadan önce yazılı olarak anlaşılır ve peşin hiçbir ödeme yapmazsınız. Meslekleri ve işçi sayısını gönderin, 24 saat içinde net fiyatı alacaksınız.",
+   "k": "faq1A",
+   "sec": "SSS",
+   "rev": "m65o86"
+  },
+  {
+   "id": "calc.482",
+   "en": "Do foreign workers cost more than Turkish workers?",
+   "tr": "Yabancı işçiler Türk işçilerden daha mı pahalı?",
+   "k": "faq2Q",
+   "sec": "SSS",
+   "rev": "1lzlig"
+  },
+  {
+   "id": "calc.483",
+   "en": "On payroll, no. The gross salary and the SGK payments are the same, because Turkish labour law treats both workers the same way. The extra cost is paid only once: permit and card fees of about ₺16,000 per worker for each permit period, plus travel if you pay for it. Over a contract of several years, the difference per month is small.",
+   "tr": "Bordroda hayır. Brüt maaş ve SGK ödemeleri aynıdır, çünkü Türk iş hukuku iki işçiye de aynı şekilde davranır. Ek maliyet yalnızca bir kez ödenir: her izin dönemi için işçi başına yaklaşık ₺16.000 izin ve kart harcı, artı siz karşılıyorsanız seyahat. Birkaç yıllık bir sözleşmede aylk fark küçüktür.",
+   "k": "faq2A",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "7p26vw"
+  },
+  {
+   "id": "calc.484",
+   "en": "Is there a legal minimum salary for foreign workers?",
+   "tr": "Yabancı işçiler için yasal bir asgari maaş var mı?",
+   "k": "faq3Q",
+   "sec": "SSS",
+   "rev": "7hlf9q"
+  },
+  {
+   "id": "calc.485",
+   "en": "Yes. Every job has a minimum gross salary, set as a multiple of the minimum wage: 1× for unskilled jobs, 1.5× for skilled and specialist jobs, and more for engineers and managers. If you offer less, the permit is refused, so this calculator does not let you go below the minimum for the job you choose.",
+   "tr": "Evet. Her işin, asgari ücretin katı olarak belirlenmiş bir asgari brüt maaşı vardır: niteliksiz işlerde 1 kat, nitelikli ve uzmanlık işlerinde 1,5 kat, mühendis ve yöneticilerde daha fazlası. Daha düşük teklif ederseniz izin reddedilir; bu yüzden hesaplayıcı seçtiğiniz iş için alt sınırın altına inmenize izin vermez.",
+   "k": "faq3A",
+   "sec": "SSS",
+   "rev": "1dpims8"
+  },
+  {
+   "id": "calc.486",
+   "en": "Who pays the flight and the accommodation?",
+   "tr": "Uçak biletini ve konaklamayı kim öder?",
+   "k": "faq4Q",
+   "sec": "SSS",
+   "rev": "1cbkv7e"
+  },
+  {
+   "id": "calc.487",
+   "en": "You decide this together and write it in the contract. Most of our employers pay the one-way flight and give shared accommodation, especially in construction, farming and hotels, because workers stay longer that way. For most jobs the law does not require either.",
+   "tr": "Bunu birlikte kararlaştırıp sözleşmeye yazarsınız. İşverenlerimizin çoğu tek yön uçak biletini öder ve paylaşımlı konaklama sağlar; özellikle inşaat, tarım ve otelcilikte, çünkü işçiler böylece daha uzun kalıyor. Çoğu iş için kanun ikisini de zorunlu tutmaz.",
+   "k": "faq4A",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "1gitvxm"
+  },
+  {
+   "id": "calc.488",
+   "en": "Do government SGK incentives apply to foreign workers too?",
+   "tr": "Devlet SGK teşvikleri yabancı işçilerde de geçerli mi?",
+   "k": "faq5Q",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "16kpjqh"
+  },
+  {
+   "id": "calc.489",
+   "en": "The ones given to the workplace do. The 5510 premium discount and the minimum wage support are given to your workplace and depend on your own SGK record, not on the worker's nationality, so they work the same way for a foreign worker. Incentives that need the person to be registered as unemployed at İŞKUR, such as 7103 / geçici 19, cannot be used, because a foreign worker cannot have that registration. Since everything depends on your own SGK record, we always quote the full price without discounts and let your accountant confirm the saving.",
+   "tr": "İşyerine verilenler geçerli. 5510 prim indirimi ve asgari ücret desteği işyerinize verilir ve işçinin uyruğuna değil sizin SGK sicilinize bağlıdır; bu yüzden yabancı işçide de aynı şekilde işler. Kişinin İŞKUR'a işsiz kayıtlı olmasını gerektiren 7103 / geçici 19 gibi teşvikler kullanılamaz, çünkü yabancı işçi böyle bir kayıt tutamaz. Her şey sizin SGK sicilinize bağlı olduğu için biz her zaman indirimsiz tam fiyat veririz ve tasarrufu mali müşavirinizin teyit etmesini isteriz.",
+   "k": "faq5A",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "lekary"
+  },
+  {
+   "id": "calc.490",
+   "en": "Is there a limit on how many foreign workers we can employ?",
+   "tr": "Kaç yabancı işçi çalıştırabileceğimize dair bir sınır var mı?",
+   "k": "faq6Q",
+   "sec": "SSS",
+   "rev": "r9ewt3"
+  },
+  {
+   "id": "calc.491",
+   "en": "Yes. As a rule the Ministry wants five Turkish employees registered with SGK at that workplace for every foreign worker. Some cases are exempt: certified tourism and hotel businesses with at least ten Turkish employees, workplaces with net sales of ₺50 million or more (up to five foreign workers), household services, and people who have lived legally in Turkey for three of the last five years. Use the quota check above for your own numbers. We confirm any exemption in writing before we file an application.",
+   "tr": "Evet. Kural olarak Bakanlık, her yabancı işçi için o işyerinde SGK'ya kayıtlı beş Türk çalışan ister. Bazı durumlar muaftır: en az on Türk çalışanı olan belgeli turizm ve otel işletmeleri, net satışı 50 milyon ₺ ve üzeri olan işyerleri (beş yabancı işçiye kadar), ev hizmetleri ve son beş yılın üçünde Türkiye'de yasal olarak yaşamış kişiler. Kendi rakamlarınız için yukarıdaki kota kontrolünü kullanın. Başvuru yapmadan önce her muafiyeti yazılı olarak teyit ederiz.",
+   "k": "faq6A",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "j3j5mh"
+  },
+  {
+   "id": "calc.492",
+   "en": "Is there government funding for hiring foreign workers, in agriculture or any other sector?",
+   "tr": "Tarımda veya başka bir sektörde yabancı işçi almak için devlet desteği var mı?",
+   "k": "faq7Q",
+   "sec": "SSS",
+   "rev": "13gcvko"
+  },
+  {
+   "id": "calc.493",
+   "en": "No. Turkey gives no grant, refund or wage support for employing a foreign worker, in farming or in any other sector. Farming supports (tarımsal destekler) are paid to the producer for production itself: land, diesel, seed and animals. They do not increase if you hire workers from abroad. The only state help here is the SGK premium discount and the minimum wage support, and you would get both for a Turkish employee too.",
+   "tr": "Hayır. Türkiye, ne tarımda ne de başka bir sektörde yabancı işçi çalıştırmak için hibe, iade veya ücret desteği vermez. Tarımsal destekler üreticiye üretimin kendisi için ödenir: arazi, mazot, tohum ve hayvan. Yurt dışından işçi almanız bu destekleri artırmaz. Buradaki tek devlet yardımı SGK prim indirimi ve asgari ücret desteğidir; ikisini de bir Türk çalışan için de alırdınız.",
+   "k": "faq7A",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "qgez7w"
+  },
+  {
+   "id": "calc.494",
+   "en": "Does our company itself have to meet any conditions?",
+   "tr": "Şirketimizin kendisinin karşılaması gereken şartlar var mı?",
+   "k": "faq8Q",
+   "sec": "SSS",
+   "rev": "1486mw7"
+  },
+  {
+   "id": "calc.495",
+   "en": "Yes, and this is separate from the 5:1 rule. Your company must meet at least one of these: ₺100,000 paid-in capital, ₺800,000 gross sales last year, or $250,000 of exports. One of them is enough. Household employers and a few exempt groups do not have to meet this. Many companies fail here without expecting it, so check it before you open a file. The pass check on this page takes you through it.",
+   "tr": "Evet ve bu 5:1 kuralından ayrıdır. Şirketiniz şunlardan en az birini karşılamalıdır: ₺100.000 ödenmiş sermaye, geçen yıl ₺800.000 brüt satış veya 250.000 $ ihracat. Biri yeterlidir. Ev hizmetlerinde çalıştıranlar ve bazı muaf gruplar bunu karşılamak zorunda değildir. Birçok şirket beklemediği halde burada takılır; dosya açmadan önce kontrol edin. Bu sayfadaki geçer-mi testi sizi adım adım götürür.",
+   "k": "faq8A",
+   "sec": "SSS",
+   "rev": "9r1s2d"
+  },
+  {
+   "id": "calc.496",
+   "en": "What happens if we employ someone without a permit?",
+   "tr": "İzinsiz işçi çalıştırırsak ne olur?",
+   "k": "faq9Q",
+   "sec": "SSS",
+   "rev": "13qwjhw"
+  },
+  {
+   "id": "calc.497",
+   "en": "Under Law No. 6735 the employer pays a fine of ₺102,504 for each foreign worker found without a permit in 2026, and double that if it happens again. You must also pay the worker's accommodation, return travel and health costs, including for the spouse and children. The worker gets a separate fine and is reported for deportation. On top of this, your workplace loses all SGK incentives for one month, or for one year if it happens again within three years. One fine costs more than doing everything legally.",
+   "tr": "6735 sayılı Kanun uyarınca işveren, 2026'da izinsiz çalıştığı tespit edilen her yabancı işçi için ₺102.504 ceza öder, tekrarında bunun iki katı. Ayrıca işçinin konaklama, dönüş yolculuğu ve sağlık masraflarını, eşi ve çocukları dahil ödemeniz gerekir. İşçiye ayrıca ceza kesilir ve sınır dışı edilmek üzere bildirilir. Bunların üstüne işyeriniz tüm SGK teşviklerini bir ay boyunca, üç yıl içinde tekrarlanırsa bir yıl boyunca kaybeder. Tek bir ceza, her şeyi yasal yapmaktan pahalıya gelir.",
+   "k": "faq9A",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "rt6vve"
+  },
+  {
+   "id": "calc.498",
+   "en": "Can we employ a foreign student who is already studying here?",
+   "tr": "Burada okuyan bir yabancı öğrenciyi çalıştırabilir miyiz?",
+   "k": "faq10Q",
+   "sec": "SSS",
+   "rev": "qvwk15"
+  },
+  {
+   "id": "calc.499",
+   "en": "Yes, with a work permit that you apply for. The student cannot apply alone. Associate and bachelor students can work only after their first year, and only part-time, up to 24 hours a week. Some students on state scholarships cannot work at all while studying. Master's and doctorate students have no such limits: they can work from any point in their studies, with no hour limit. Their student residence permit must stay valid all the time, because the work permit does not replace it. One thing employers often get wrong: student years do not count for the three-of-five-years exemption, so a new graduate's first normal work permit follows the standard rules.",
+   "tr": "Evet, sizin başvuracağınız bir çalışma izniyle. Öğrenci tek başına başvuramaz. Ön lisans ve lisans öğrencileri yalnızca birinci yıllarını tamamladıktan sonra ve yalnızca yarı zamanlı, haftada en fazla 24 saat çalışabilir. Devlet burslu bazı öğrenciler öğrenim süresince hiç çalışamaz. Yüksek lisans ve doktora öğrencilerinde böyle bir sınır yoktur: öğrenimlerinin herhangi bir aşamasında, saat sınırı olmadan çalışabilirler. Öğrenci ikamet izinlerinin sürekli geçerli kalması gerekir, çünkü çalışma izni onun yerine geçmez. İşverenlerin sık yanıldığı bir nokta: öğrencilik yılları beş yılın üçü muafiyetine sayılmaz, bu yüzden yeni mezunun ilk normal çalışma izni standart kurallara tabidir.",
+   "k": "faq10A",
+   "sec": "SSS",
+   "rev": "7jrin2"
+  },
+  {
+   "id": "calc.500",
+   "en": "Can we claim KOSGEB or similar support for a foreign employee's wages?",
+   "tr": "Yabancı bir çalışanın ücreti için KOSGEB veya benzeri destek alabilir miyiz?",
+   "k": "faq11Q",
+   "sec": "SSS",
+   "rev": "1uy8ogv"
+  },
+  {
+   "id": "calc.501",
+   "en": "No. KOSGEB's qualified-personnel salary support is only for Turkish citizens with a university degree, and foreign workers are named in the list of people who cannot be employed under it, together with retirees and the owner's own family. KOSGEB's other programmes support the business itself (investment, machinery, digital work, training) and none of them pay part of a worker's wage. If your accountant already has a KOSGEB employment commitment, foreign workers still count in your total SGK staff number, but not in the personnel support payment.",
+   "tr": "Hayır. KOSGEB'in nitelikli eleman ücret desteği yalnızca üniversite mezunu Türk vatandaşları içindir ve yabancı işçiler, emekliler ve işletme sahibinin ailesiyle birlikte bu kapsamda çalıştırılamayacaklar listesinde açıkça sayılır. KOSGEB'in diğer programları işletmenin kendisini destekler (yatırım, makine, dijitalleşme, eğitim) ve hiçbiri işçi ücretinin bir kısmını ödemez. Mali müşavirinizin halihazırda bir KOSGEB istihdam taahhüdü varsa, yabancı işçiler toplam SGK çalışan sayınıza dahil edilir, ancak personel destek ödemesine dahil edilmez.",
+   "k": "faq11A",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "wg1kd0"
+  },
+  {
+   "id": "calc.502",
+   "en": "We only need workers for the 6-month season — does that change the cost?",
+   "tr": "Yalnızca 6 aylık sezon için işçi lazım — bu maliyeti değiştirir mi?",
+   "k": "faq12Q",
+   "sec": "SSS",
+   "rev": "t241rf"
+  },
+  {
+   "id": "calc.503",
+   "en": "The monthly cost is the same, but the one-time costs are shared over fewer months. Permit fees and flights are paid once, whether the contract is six months or three years, so the cost per month is higher for a season. Set the contract length to 6 months in the calculator and you see that figure. For very short work there is also the work permit exemption route, which avoids the full permit process. Send us one message and we tell you which one fits you.",
+   "tr": "Aylık maliyet aynıdır, ancak tek seferlik masraflar daha az aya bölünür. İzin harçları ve uçak bileti, sözleşme altı ay da üç yıl da olsa bir kez ödenir; bu yüzden bir sezonda aylık maliyet daha yüksektir. Hesaplayıcıda sözleşme süresini 6 ay yapın, o rakamı görürsünüz. Çok kısa işler için ayrıca tam izin sürecinden kaçınmayı sağlayan çalışma izni muafiyeti yolu vardır. Tek bir mesaj atın, size hangisinin uyduğunu söyleyelim.",
+   "k": "faq12A",
+   "sec": "SSS",
+   "rev": "1ge0yk4"
+  },
+  {
+   "id": "calc.504",
+   "en": "Are the permit fees per year or one-off?",
+   "tr": "İzin harçları yıllık mı yoksa tek seferlik mi?",
+   "k": "faq13Q",
+   "sec": "SSS",
+   "rev": "1oketl0"
+  },
+  {
+   "id": "calc.505",
+   "en": "Per permit period. The first permit is usually one year, the first extension two years and the next three years. You pay the fee again at each renewal, not every year.",
+   "tr": "İzin dönemi başına. İlk izin genellikle bir yıl, ilk uzatma iki yıl ve sonraki üç yıldır. Harcı her yenilemede tekrar ödersiniz, her yıl değil.",
+   "k": "faq13A",
+   "sec": "SSS",
+   "rev": "wwh2c2"
+  },
+  {
+   "id": "calc.506",
+   "en": "What is not included in this estimate?",
+   "tr": "Bu tahmine neler dahil değil?",
+   "k": "faq14Q",
+   "sec": "SSS",
+   "rev": "k0a20g"
+  },
+  {
+   "id": "calc.507",
+   "en": "Our service fee, meals, transport to the site, overtime, bonuses, money set aside for severance pay, and costs that belong to your sector. Income tax and stamp duty are not paid at minimum wage level, and above it they are taken from the worker's salary, not paid by you.",
+   "tr": "Hizmet bedelimiz, yemek, iş yerine ulaşım, fazla mesai, primler, kıdem tazminatı için ayrılan karşılık ve sektörünüze özgü masraflar. Gelir vergisi ve damga vergisi asgari ücret seviyesinde ödenmez; üzerinde ise işçinin maaşından kesilir, siz ödemezsiniz.",
+   "k": "faq14A",
+   "sec": "SSS",
+   "rev": "vtual4"
+  },
+  {
+   "id": "calc.508",
+   "en": "How often are these figures updated?",
+   "tr": "Bu rakamlar ne sıklıkla güncelleniyor?",
+   "k": "faq15Q",
+   "sec": "SSS",
+   "rev": "1w4jthl"
+  },
+  {
+   "id": "calc.509",
+   "en": "The minimum wage, SGK rates and permit fees change every January, and we update this page when they do — the badge at the top shows the last update. Salary ranges are refreshed from our own placement data.",
+   "tr": "Asgari ücret, SGK oranları ve izin harçları her Ocak ayında değişir ve biz de bu sayfayı o zaman güncelleriz — en üstteki rozet son güncelleme tarihini gösterir. Maaş aralıkları kendi yerleştirme verilerimizden yenilenir.",
+   "k": "faq15A",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "8y9x0k"
+  },
+  {
+   "id": "calc.510",
+   "en": "What your business does can remove the rule completely. These are the sector exemptions in the Ministry's rules.",
+   "tr": "İşinizin ne olduğu kuralı tamamen ortadan kaldırabilir. Bakanlık mevzuatındaki sektör muafiyetleri şunlardır.",
+   "k": "exIntro_sector",
+   "sec": "Kota kontrolü",
+   "rev": "gg1nje"
+  },
+  {
+   "id": "calc.511",
+   "en": "The size of your company and the type of work can also remove the rule.",
+   "tr": "Şirketinizin büyüklüğü ve işin türü de kuralı ortadan kaldırabilir.",
+   "k": "exIntro_company",
+   "sec": "Kota kontrolü",
+   "rev": "g2w12"
+  },
+  {
+   "id": "calc.512",
+   "en": "Sometimes the exemption comes from the candidate, not from you. These are the fastest routes when your quota is full.",
+   "tr": "Bazen muafiyet sizden değil adaydan gelir. Kotanız doluyken en hızlı yollar bunlardır.",
+   "k": "exIntro_person",
+   "sec": "Kota kontrolü",
+   "rev": "1ksr5rg"
+  },
+  {
+   "id": "calc.513",
+   "en": "Household services",
+   "tr": "Ev hizmetleri",
+   "k": "exRow1T",
+   "sec": "Kota kontrolü",
+   "rev": "12io8v4"
+  },
+  {
+   "id": "calc.514",
+   "en": "Staff employed by a private person at home — carers, cleaners, cooks — do not need the 5:1 rule at all.",
+   "tr": "Bir gerçek kişi tarafından evde çalıştırılan bakıcı, temizlikçi, aşçı gibi çalışanlar için 5:1 kuralı hiç aranmaz.",
+   "k": "exRow1B",
+   "sec": "Kota kontrolü",
+   "rev": "1huyk0h"
+  },
+  {
+   "id": "calc.515",
+   "en": "Tourism & accommodation",
+   "tr": "Turizm ve konaklama",
+   "k": "exRow2T",
+   "sec": "Kota kontrolü",
+   "rev": "81lnow"
+  },
+  {
+   "id": "calc.516",
+   "en": "Certified 3-star and higher hotels, holiday villages and licensed thermal hotels. With at least 10 Turkish employees, specialist and master-craft jobs do not need the 5:1 rule or the company financial test: two foreign workers with a tourism operating licence, five in health tourism. For normal jobs the Turkish staff are counted across the whole company, and every extra 5 at a branch gives one more place.",
+   "tr": "Belgeli 3 yıldız ve üzeri oteller, tatil köyleri ve belgeli termal oteller. En az 10 Türk çalışan varsa uzmanlık ve ustalık gerektiren işler için 5:1 kuralı ve şirket mali şartı aranmaz: turizm işletme belgesiyle iki yabancı, sağlık turizminde beş. Normal işlerde Türk çalışanlar şirketin tamamı üzerinden sayılır ve bir şubedeki her 5 kişi bir kontenjan daha açar.",
+   "k": "exRow2B",
+   "sec": "Kota kontrolü",
+   "rev": "14kykyl"
+  },
+  {
+   "id": "calc.517",
+   "en": "Entertainment & tourism-animation",
+   "tr": "Eğlence ve turizm-animasyon",
+   "k": "exRow3T",
+   "sec": "Kota kontrolü",
+   "rev": "fi9rwb"
+  },
+  {
+   "id": "calc.518",
+   "en": "Entertainment and animation companies with at least 10 Turkish employees do not have the 5:1 rule applied to specialist and master-craft jobs such as acrobats, dancers, musicians, animators, masseurs and SPA therapists.",
+   "tr": "En az 10 Türk çalışanı olan eğlence ve animasyon şirketlerinde akrobat, dansçı, müzisyen, animatör, masaj uzmanı ve SPA terapisti gibi uzmanlık ve ustalık işleri için 5:1 kuralı uygulanmaz.",
+   "k": "exRow3B",
+   "sec": "Kota kontrolü",
+   "rev": "k1l242"
+  },
+  {
+   "id": "calc.519",
+   "en": "Licensed sports centres",
+   "tr": "Belgeli spor merkezleri",
+   "k": "exRow4T",
+   "sec": "Kota kontrolü",
+   "rev": "b55tcr"
+  },
+  {
+   "id": "calc.520",
+   "en": "Licensed sports centres with at least 20 Turkish employees do not have the 5:1 rule applied to specialist jobs.",
+   "tr": "En az 20 Türk çalışanı olan belgeli spor merkezlerinde uzmanlık işleri için 5:1 kuralı uygulanmaz.",
+   "k": "exRow4B",
+   "sec": "Kota kontrolü",
+   "rev": "3bt90c"
+  },
+  {
+   "id": "calc.521",
+   "en": "Foreign airline representations",
+   "tr": "Yabancı havayolu temsilcilikleri",
+   "k": "exRow5T",
+   "sec": "Kota kontrolü",
+   "rev": "1kmw3el"
+  },
+  {
+   "id": "calc.522",
+   "en": "Turkish offices of foreign national airlines do not need the 5:1 rule or the company financial test for senior managers and specialists.",
+   "tr": "Yabancı milli havayolu şirketlerinin Türkiye ofislerinde üst düzey yönetici ve uzmanlar için 5:1 kuralı ve şirket mali şartı aranmaz.",
+   "k": "exRow5B",
+   "sec": "Kota kontrolü",
+   "rev": "dzqrul"
+  },
+  {
+   "id": "calc.523",
+   "en": "Net sales of ₺50 million or more",
+   "tr": "50 milyon ₺ ve üzeri net satış",
+   "k": "exRow6T",
+   "sec": "Kota kontrolü",
+   "rev": "1hnyqps"
+  },
+  {
+   "id": "calc.524",
+   "en": "If your workplace had net sales of ₺50 million or more last year, the 5:1 rule does not apply for up to five foreign workers.",
+   "tr": "İşyerinizin geçen yılki net satışı 50 milyon ₺ veya üzeriyse, beş yabancı işçiye kadar 5:1 kuralı uygulanmaz.",
+   "k": "exRow6B",
+   "sec": "Kota kontrolü",
+   "rev": "wtbd7d"
+  },
+  {
+   "id": "calc.525",
+   "en": "Public procurement work",
+   "tr": "Kamu ihalesi işleri",
+   "k": "exRow7T",
+   "sec": "Kota kontrolü",
+   "rev": "19cxd3v"
+  },
+  {
+   "id": "calc.526",
+   "en": "If the work is for goods or services bought by a public institution through a contract or tender, the 5:1 rule and the company test do not apply.",
+   "tr": "İş, bir kamu kurumunun sözleşme veya ihale yoluyla aldığı mal ya da hizmete yönelikse 5:1 kuralı ve şirket şartı uygulanmaz.",
+   "k": "exRow7B",
+   "sec": "Kota kontrolü",
+   "rev": "1xoyl1j"
+  },
+  {
+   "id": "calc.527",
+   "en": "Bilateral and multilateral treaties",
+   "tr": "İkili ve çok taraflı anlaşmalar",
+   "k": "exRow8T",
+   "sec": "Kota kontrolü",
+   "rev": "xso405"
+  },
+  {
+   "id": "calc.528",
+   "en": "If an agreement signed by Turkey covers this, the normal rules are not applied.",
+   "tr": "Türkiye'nin imzaladığı bir anlaşma bu durumu kapsıyorsa normal kurallar uygulanmaz.",
+   "k": "exRow8B",
+   "sec": "Kota kontrolü",
+   "rev": "1ew15b9"
+  },
+  {
+   "id": "calc.529",
+   "en": "Company partners",
+   "tr": "Şirket ortakları",
+   "k": "exRow9T",
+   "sec": "Kota kontrolü",
+   "rev": "svlp8f"
+  },
+  {
+   "id": "calc.530",
+   "en": "If the foreign worker is a company shareholder, the 5:1 rule is checked only in the last six months of the first one-year permit, not at the beginning.",
+   "tr": "Yabancı işçi şirket ortağıysa 5:1 kuralı başlangıçta değil, yalnızca ilk bir yıllık iznin son altı ayında kontrol edilir.",
+   "k": "exRow9B",
+   "sec": "Kota kontrolü",
+   "rev": "1xk090i"
+  },
+  {
+   "id": "calc.531",
+   "en": "3 of the last 5 years legally resident",
+   "tr": "Son 5 yılın 3'ünde yasal ikamet",
+   "k": "exRow10T",
+   "sec": "Kota kontrolü",
+   "rev": "jguiv9"
+  },
+  {
+   "id": "calc.532",
+   "en": "A candidate who has lived in Turkey with a residence permit, work permit or international protection for three of the last five years does not need the 5:1 rule or the company test. Student years do not count. This is often the fastest route when your quota is full.",
+   "tr": "Son beş yılın üçünde Türkiye'de ikamet izni, çalışma izni veya uluslararası koruma ile yaşamış bir aday için 5:1 kuralı ve şirket şartı aranmaz. Öğrencilik yılları sayılmaz. Kotanız doluyken genellikle en hızlı yol budur.",
+   "k": "exRow10B",
+   "sec": "Kota kontrolü",
+   "rev": "jo186h"
+  },
+  {
+   "id": "calc.533",
+   "en": "Married to a Turkish citizen",
+   "tr": "Türk vatandaşı ile evli",
+   "k": "exRow11T",
+   "sec": "Kota kontrolü",
+   "rev": "1edfb13"
+  },
+  {
+   "id": "calc.534",
+   "en": "A foreign national who is married to a Turkish citizen and lives with them in Turkey can get a permit through the special route, outside the normal rules.",
+   "tr": "Türk vatandaşı ile evli olan ve Türkiye'de birlikte yaşayan yabancılar, normal kuralların dışında istisnai yoldan izin alabilir.",
+   "k": "exRow11B",
+   "sec": "Kota kontrolü",
+   "rev": "2mycs1"
+  },
+  {
+   "id": "calc.535",
+   "en": "Parent or child is a Turkish citizen",
+   "tr": "Anne, baba veya çocuğu Türk vatandaşı",
+   "k": "exRow12T",
+   "sec": "Kota kontrolü",
+   "rev": "pv2q7t"
+  },
+  {
+   "id": "calc.536",
+   "en": "If the candidate's mother, father or child is a Turkish citizen, the normal rules are not applied.",
+   "tr": "Adayın annesi, babası veya çocuğu Türk vatandaşıysa normal kurallar uygulanmaz.",
+   "k": "exRow12B",
+   "sec": "Kota kontrolü",
+   "rev": "tpnkx4"
+  },
+  {
+   "id": "calc.537",
+   "en": "Qualified workforce or investor",
+   "tr": "Nitelikli işgücü veya yatırımcı",
+   "k": "exRow13T",
+   "sec": "Kota kontrolü",
+   "rev": "1ji6adg"
+  },
+  {
+   "id": "calc.538",
+   "en": "Candidates accepted as qualified because of their education, salary, work experience or contribution to science and technology, and qualified investors, are handled under Article 16 without the normal rules.",
+   "tr": "Eğitimi, maaşı, iş deneyimi ya da bilim ve teknolojiye katkısı nedeniyle nitelikli kabul edilen adaylar ve nitelikli yatırımcılar, normal kurallar aranmadan 16. madde kapsamında değerlendirilir.",
+   "k": "exRow13B",
+   "sec": "Kota kontrolü",
+   "rev": "16mjyet"
+  },
+  {
+   "id": "calc.539",
+   "en": "Turkish origin, protection status, project-based",
+   "tr": "Türk soylu, koruma statüsü, proje bazlı",
+   "k": "exRow14T",
+   "sec": "Kota kontrolü",
+   "rev": "kfng6d"
+  },
+  {
+   "id": "calc.540",
+   "en": "People of Turkish descent, people applying for international protection, conditional refugees and staff brought in for one defined project also use the special route.",
+   "tr": "Türk soylular, uluslararası korumaya başvuranlar, şartlı mülteciler ve tanımlı tek bir proje için getirilen personel de istisnai yolu kullanır.",
+   "k": "exRow14B",
+   "sec": "Kota kontrolü",
+   "rev": "jkxlvh"
+  },
+  {
+   "id": "calc.541",
+   "en": "Textile machine operator",
+   "tr": "Tekstil makine operatörü",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "9rfw59"
+  },
+  {
+   "id": "calc.542",
+   "en": "Construction labourer",
+   "tr": "İnşaat işçisi",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "kj6nmw"
+  },
+  {
+   "id": "calc.543",
+   "en": "Kitchen steward",
+   "tr": "Bulaşıkhane görevlisi",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "i4at0x"
+  },
+  {
+   "id": "calc.544",
+   "en": "Machine operator",
+   "tr": "Makine operatörü",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "1d68yw0"
+  },
+  {
+   "id": "calc.545",
+   "en": "Electrician",
+   "tr": "Elektrikçi",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "yeyr9c"
+  },
+  {
+   "id": "calc.546",
+   "en": "Plumber",
+   "tr": "Tesisatçı",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "8ioac"
+  },
+  {
+   "id": "calc.547",
+   "en": "Housekeeping",
+   "tr": "Kat hizmetleri",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "545q6y"
+  },
+  {
+   "id": "calc.548",
+   "en": "Cook / chef",
+   "tr": "Aşçı / şef",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "1eivt6"
+  },
+  {
+   "id": "calc.549",
+   "en": "No quota at all",
+   "tr": "Hiç kota yok",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "1qq664u"
+  },
+  {
+   "id": "calc.550",
+   "en": "Senior & specialist",
+   "tr": "Üst düzey ve uzman",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "d5wecg"
+  },
+  {
+   "id": "calc.551",
+   "en": "Factory",
+   "tr": "Fabrika",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "nhac41"
+  },
+  {
+   "id": "calc.552",
+   "en": "Hotel",
+   "tr": "Otel",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "3ok81r"
+  },
+  {
+   "id": "calc.553",
+   "en": "Agriculture",
+   "tr": "Tarım",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "1u4i3kk"
+  },
+  {
+   "id": "calc.554",
+   "en": "Construction",
+   "tr": "İnşaat",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "v1hp4"
+  },
+  {
+   "id": "calc.555",
+   "en": "Welder",
+   "tr": "Kaynakçı",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "1grnnmw"
+  },
+  {
+   "id": "calc.556",
+   "en": "welder",
+   "tr": "kaynakçı",
+   "sec": "Meslek ve etiket listeleri",
+   "rev": "x9wqyw"
+  },
+  {
+   "id": "calc.557",
+   "en": "Legal minimum for this job: ₺49,545 gross (1.5× the minimum wage).",
+   "tr": "Bu iş için yasal asgari: 49.545 ₺ brüt (asgari ücretin 1,5 katı).",
+   "sec": "Hesaplanan cümleler (sayılar değişir)",
+   "legal": true,
+   "rev": "c2mi6k"
+  },
+  {
+   "id": "calc.558",
+   "en": "25 employees make exactly 5 complete blocks — no spare capacity, 5 more unlock the next place.",
+   "tr": "25 çalışan için 5 tam kontenjan bulunmaktadır. Her 5 çalışan, bir kontenjanı doldurur; sonraki 5 çalışan için yeni bir kontenjan açılır.",
+   "sec": "Hesaplanan cümleler (sayılar değişir)",
+   "legal": true,
+   "rev": "119n5re"
+  },
+  {
+   "id": "calc.559",
+   "en": "Answered from your quota check above: 25 Turkish employees allow 5, and you planned 1.",
+   "tr": "Kota kontrolüne göre, 25 Türk çalışan için 5 yabancı çalışan kontenjanı bulunmaktadır. Planlanan: 1 yabancı çalışan.",
+   "sec": "Hesaplanan cümleler (sayılar değişir)",
+   "legal": true,
+   "rev": "1tvk7sl"
+  },
+  {
+   "id": "calc.560",
+   "en": "12 months of payroll + one-off costs",
+   "tr": "12 aylık bordro + tek seferlik maliyetler",
+   "sec": "Hesaplanan cümleler (sayılar değişir)",
+   "rev": "16k6woc"
+  },
+  {
+   "id": "calc.561",
+   "en": "1 of 5 checks clear · 4 unanswered",
+   "tr": "5 kontrolden 1 tamam · 4 yanıtlanmadı",
+   "sec": "Hesaplanan cümleler (sayılar değişir)",
+   "rev": "aqtfb5"
+  }
+ ]
+}

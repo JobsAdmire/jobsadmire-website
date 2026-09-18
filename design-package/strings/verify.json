@@ -1,0 +1,1953 @@
+{
+ "page": "Verify Representative",
+ "route": "/verify",
+ "strings": [
+  {
+   "id": "verify.001",
+   "en": "İŞKUR Licensed · Permit No. 1730",
+   "tr": "İŞKUR Lisanslı · İzin No. 1730",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "z1r9le"
+  },
+  {
+   "id": "verify.002",
+   "en": "İŞKUR · 1730",
+   "tr": "İŞKUR · 1730",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "1ih9pud"
+  },
+  {
+   "id": "verify.003",
+   "en": "info@jobsadmire.com",
+   "tr": "info@jobsadmire.com",
+   "sec": "Menü ve genel etiketler",
+   "rev": "38yl46"
+  },
+  {
+   "id": "verify.004",
+   "en": "Blog",
+   "tr": "Blog",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjmm4j"
+  },
+  {
+   "id": "verify.005",
+   "en": "Join Our Team",
+   "tr": "Ekibimize Katılın",
+   "sec": "Menü ve genel etiketler",
+   "rev": "ftsz4i"
+  },
+  {
+   "id": "verify.006",
+   "en": "Verify a Representative",
+   "tr": "Temsilci Doğrulama",
+   "sec": "Menü ve genel etiketler",
+   "rev": "l6eh8g"
+  },
+  {
+   "id": "verify.007",
+   "en": "CRM Login",
+   "tr": "CRM Girişi",
+   "sec": "Menü ve genel etiketler",
+   "rev": "57mcey"
+  },
+  {
+   "id": "verify.008",
+   "en": "About Us",
+   "tr": "Hakkımızda",
+   "sec": "Menü ve genel etiketler",
+   "rev": "6iiw1a"
+  },
+  {
+   "id": "verify.009",
+   "en": "Hire Workers",
+   "tr": "İşçi Talebi",
+   "sec": "Menü ve genel etiketler",
+   "rev": "oqbvo6"
+  },
+  {
+   "id": "verify.010",
+   "en": "Candidates",
+   "tr": "Adaylar",
+   "sec": "Menü ve genel etiketler",
+   "rev": "brf3mr"
+  },
+  {
+   "id": "verify.011",
+   "en": "Work Permits",
+   "tr": "Çalışma İzinleri",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1gd2msg"
+  },
+  {
+   "id": "verify.012",
+   "en": "Cost Calculator",
+   "tr": "Maliyet Hesaplama",
+   "sec": "Menü ve genel etiketler",
+   "rev": "k5qxyq"
+  },
+  {
+   "id": "verify.013",
+   "en": "Success Stories",
+   "tr": "Başarı Hikâyeleri",
+   "sec": "Menü ve genel etiketler",
+   "rev": "11w6kar"
+  },
+  {
+   "id": "verify.014",
+   "en": "Contact Us",
+   "tr": "İletişim",
+   "sec": "Menü ve genel etiketler",
+   "rev": "14c3gdf"
+  },
+  {
+   "id": "verify.015",
+   "en": "Report",
+   "tr": "Bildir",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1igpdgr"
+  },
+  {
+   "id": "verify.016",
+   "en": "an Impostor",
+   "tr": "sahtekârı",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1amq6rv"
+  },
+  {
+   "id": "verify.017",
+   "en": "Language",
+   "tr": "Dil",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1s1gw53"
+  },
+  {
+   "id": "verify.018",
+   "en": "Blog & Guides",
+   "tr": "Blog ve Rehberler",
+   "sec": "Menü ve genel etiketler",
+   "rev": "4wi5os"
+  },
+  {
+   "id": "verify.019",
+   "en": "Partner With Us",
+   "tr": "İş Ortağı Olun",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1redpm7"
+  },
+  {
+   "id": "verify.020",
+   "en": "Verify a representative",
+   "tr": "Temsilci doğrulama",
+   "sec": "Menü ve genel etiketler",
+   "rev": "2vlacg"
+  },
+  {
+   "id": "verify.021",
+   "en": "Home",
+   "tr": "Ana Sayfa",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjtufe"
+  },
+  {
+   "id": "verify.022",
+   "en": "Only the founder can sign for us",
+   "tr": "Bizim adımıza yalnızca kurucu imza atabilir",
+   "sec": "Üst bölüm (Hero)",
+   "legal": true,
+   "rev": "29em5n"
+  },
+  {
+   "id": "verify.023",
+   "en": "Only one person can sign for",
+   "tr": "Yalnızca tek bir kişi imza atabilir:",
+   "sec": "Üst bölüm (Hero)",
+   "legal": true,
+   "rev": "a5knr8"
+  },
+  {
+   "id": "verify.024",
+   "en": "JobsAdmire",
+   "tr": "JobsAdmire",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "m8wyx3"
+  },
+  {
+   "id": "verify.025",
+   "en": "Our founder, Haris Jiva, is the sole signatory. Everyone else on our team collects documents, checks skills and runs interviews — nobody else signs, and nobody at all takes money from a worker. This page lets you confirm exactly who you are dealing with.",
+   "tr": "Kurucumuz Haris Jiva tek imza yetkilisidir. Ekibimizdeki diğer herkes belge toplar, becerileri kontrol eder ve görüşme yapar — başka hiç kimse imza atmaz ve hiç kimse bir işçiden para almaz. Bu sayfa, tam olarak kiminle muhatap olduğunuzu doğrulamanızı sağlar.",
+   "sec": "Üst bölüm (Hero)",
+   "legal": true,
+   "rev": "85vdda"
+  },
+  {
+   "id": "verify.026",
+   "en": "Haris Jiva is our only signatory. Everyone else collects documents and runs interviews — nobody at JobsAdmire ever takes money from a worker.",
+   "tr": "Tek imza yetkilimiz Haris Jiva'dır. Diğer herkes belge toplar ve görüşme yapar — JobsAdmire'da hiç kimse bir işçiden para almaz.",
+   "sec": "Üst bölüm (Hero)",
+   "legal": true,
+   "rev": "134se07"
+  },
+  {
+   "id": "verify.027",
+   "en": "Every authorised person carries an ID beginning with JA-",
+   "tr": "Yetkili her kişi JA- ile başlayan bir kimlik taşır",
+   "sec": "Üst bölüm (Hero)",
+   "legal": true,
+   "rev": "12vo4j5"
+  },
+  {
+   "id": "verify.028",
+   "en": "Only company numbers and @jobsadmire.com addresses are official",
+   "tr": "Yalnızca şirket numaraları ve @jobsadmire.com adresleri resmîdir",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "fepo9j"
+  },
+  {
+   "id": "verify.029",
+   "en": "Partner agencies abroad are suppliers — never our representatives",
+   "tr": "Yurt dışındaki iş ortağı ajanslar tedarikçidir — asla temsilcimiz değildir",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1akooiu"
+  },
+  {
+   "id": "verify.030",
+   "en": "See our team & structure",
+   "tr": "Ekibimizi ve yapımızı görün",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1p0sx8w"
+  },
+  {
+   "id": "verify.031",
+   "en": "Check the ID before the meeting",
+   "tr": "Görüşmeden önce kimliği kontrol edin",
+   "sec": "Kimlik sorgulama",
+   "rev": "wm027i"
+  },
+  {
+   "id": "verify.032",
+   "en": "Representative ID, name, city or number",
+   "tr": "Temsilci kimliği, adı, şehri veya numarası",
+   "sec": "Kimlik sorgulama",
+   "rev": "12ciaw5"
+  },
+  {
+   "id": "verify.033",
+   "en": "Clear",
+   "tr": "Temizle",
+   "sec": "Kimlik sorgulama",
+   "rev": "3illss"
+  },
+  {
+   "id": "verify.034",
+   "en": "Call the office instead",
+   "tr": "Bunun yerine ofisi arayın",
+   "sec": "Kimlik sorgulama",
+   "rev": "p8d44e"
+  },
+  {
+   "id": "verify.035",
+   "en": "The ID is printed on the badge every representative carries. If they cannot show one, stop there.",
+   "tr": "Kimlik, her temsilcinin taşıdığı yaka kartında yazılıdır. Gösteremiyorsa orada durun.",
+   "sec": "Kimlik sorgulama",
+   "rev": "p85l0e"
+  },
+  {
+   "id": "verify.036",
+   "en": "Verify in one minute — 3 steps",
+   "tr": "Bir dakikada doğrulayın — 3 adım",
+   "sec": "Üç adımda doğrulama",
+   "rev": "m0alkp"
+  },
+  {
+   "id": "verify.037",
+   "en": "Ask for the badge",
+   "tr": "Yaka kartını isteyin",
+   "sec": "Üç adımda doğrulama",
+   "rev": "881mbf"
+  },
+  {
+   "id": "verify.038",
+   "en": "Every authorised person carries one — photo, a",
+   "tr": "Yetkili her kişide bulunur — fotoğraf, bir",
+   "sec": "Üç adımda doğrulama",
+   "legal": true,
+   "rev": "1e27zkf"
+  },
+  {
+   "id": "verify.039",
+   "en": "JA- ID",
+   "tr": "JA- kimliği",
+   "sec": "Üç adımda doğrulama",
+   "rev": "1cteuj2"
+  },
+  {
+   "id": "verify.040",
+   "en": "and a QR code. No badge — no meeting.",
+   "tr": "ve bir QR kod. Kart yoksa görüşme de yok.",
+   "sec": "Üç adımda doğrulama",
+   "rev": "dk8j9l"
+  },
+  {
+   "id": "verify.041",
+   "en": "Scan the QR, or type the ID above",
+   "tr": "QR'ı okutun ya da kimliği yukarıya yazın",
+   "sec": "Üç adımda doğrulama",
+   "rev": "1qwheq"
+  },
+  {
+   "id": "verify.042",
+   "en": "Both must open a record on",
+   "tr": "İkisi de bu sayfada bir kayıt açmalıdır:",
+   "sec": "Üç adımda doğrulama",
+   "rev": "1u0d1v6"
+  },
+  {
+   "id": "verify.043",
+   "en": "this page",
+   "tr": "bu sayfa",
+   "sec": "Üç adımda doğrulama",
+   "rev": "j41tqo"
+  },
+  {
+   "id": "verify.044",
+   "en": "Match the face, name and status",
+   "tr": "Yüzü, adı ve durumu karşılaştırın",
+   "sec": "Üç adımda doğrulama",
+   "rev": "19ro2gq"
+  },
+  {
+   "id": "verify.045",
+   "en": "Photo, name and a green",
+   "tr": "Fotoğraf, ad ve yeşil",
+   "sec": "Üç adımda doğrulama",
+   "rev": "7qzxv7"
+  },
+  {
+   "id": "verify.046",
+   "en": "Authorised",
+   "tr": "Yetkili",
+   "sec": "Üç adımda doğrulama",
+   "legal": true,
+   "rev": "1aig08b"
+  },
+  {
+   "id": "verify.047",
+   "en": "status must all match the person in front of you. Any mismatch — call the office.",
+   "tr": "durumu, karşınızdaki kişiyle birebir uyuşmalıdır. En küçük uyumsuzlukta ofisi arayın.",
+   "sec": "Üç adımda doğrulama",
+   "rev": "jhct9d"
+  },
+  {
+   "id": "verify.048",
+   "en": "Not on our authorised list",
+   "tr": "Yetkili listemizde değil",
+   "sec": "Üç adımda doğrulama",
+   "legal": true,
+   "rev": "ccm191"
+  },
+  {
+   "id": "verify.049",
+   "en": "Do not hand over documents or money",
+   "tr": "Belge veya para vermeyin",
+   "sec": "Üç adımda doğrulama",
+   "legal": true,
+   "rev": "lqa7k7"
+  },
+  {
+   "id": "verify.050",
+   "en": "Nothing matches “{{ queryEcho }}”. An ID can be mistyped — but until it checks out, treat this person as unauthorised.",
+   "tr": "“{{ queryEcho }}” ile eşleşen kayıt yok. Kimlik yanlış yazılmış olabilir — ama doğrulanana kadar bu kişiyi yetkisiz sayın.",
+   "sec": "Üç adımda doğrulama",
+   "legal": true,
+   "rev": "1o4qo74"
+  },
+  {
+   "id": "verify.051",
+   "en": "Call the office",
+   "tr": "Ofisi arayın",
+   "sec": "Üç adımda doğrulama",
+   "rev": "7zulq6"
+  },
+  {
+   "id": "verify.052",
+   "en": "Report this person",
+   "tr": "Bu kişiyi bildirin",
+   "sec": "Üç adımda doğrulama",
+   "rev": "qxk7y0"
+  },
+  {
+   "id": "verify.053",
+   "en": "01 · Our people",
+   "tr": "01 · Ekibimiz",
+   "sec": "Ekip ve yetki şeması",
+   "rev": "1mt8apk"
+  },
+  {
+   "id": "verify.054",
+   "en": "One signature at the top.",
+   "tr": "Tepede tek imza.",
+   "sec": "Ekip ve yetki şeması",
+   "legal": true,
+   "rev": "1xsz7l8"
+  },
+  {
+   "id": "verify.055",
+   "en": "Trusted hands everywhere else.",
+   "tr": "Geri kalan her yerde güvenilir eller.",
+   "sec": "Ekip ve yetki şeması",
+   "rev": "1xctmox"
+  },
+  {
+   "id": "verify.056",
+   "en": "Anyone not on this page does not act for JobsAdmire. Open any record before you sit down with them.",
+   "tr": "Bu sayfada olmayan hiç kimse JobsAdmire adına hareket etmez. Biriyle oturmadan önce kaydını açın.",
+   "sec": "Ekip ve yetki şeması",
+   "rev": "1kpwdri"
+  },
+  {
+   "id": "verify.057",
+   "en": "Authorised people",
+   "tr": "Yetkili kişi",
+   "sec": "Ekip ve yetki şeması",
+   "legal": true,
+   "rev": "1rh73yg"
+  },
+  {
+   "id": "verify.058",
+   "en": "Office team",
+   "tr": "Ofis ekibi",
+   "sec": "Ekip ve yetki şeması",
+   "rev": "2g8izc"
+  },
+  {
+   "id": "verify.059",
+   "en": "Countries",
+   "tr": "Ülke",
+   "sec": "Ekip ve yetki şeması",
+   "rev": "wnluaz"
+  },
+  {
+   "id": "verify.060",
+   "en": "Sole signatory",
+   "tr": "Tek imza yetkilisi",
+   "sec": "Ekip ve yetki şeması",
+   "legal": true,
+   "rev": "kd2pbm"
+  },
+  {
+   "id": "verify.061",
+   "en": "Authorised · no expiry",
+   "tr": "Yetkili · süresiz",
+   "sec": "Ekip ve yetki şeması",
+   "legal": true,
+   "rev": "4abhv6"
+  },
+  {
+   "id": "verify.062",
+   "en": "Open record",
+   "tr": "Kaydı aç",
+   "sec": "Ekip ve yetki şeması",
+   "rev": "yo3o64"
+  },
+  {
+   "id": "verify.063",
+   "en": "A contract signed by anyone else does not bind JobsAdmire.",
+   "tr": "Başka biri tarafından imzalanan bir sözleşme JobsAdmire'ı bağlamaz.",
+   "sec": "Ekip ve yetki şeması",
+   "legal": true,
+   "rev": "8rvotz"
+  },
+  {
+   "id": "verify.064",
+   "en": "Browse the register",
+   "tr": "Kayıt defterini görüntüleyin",
+   "sec": "Kayıt defteri",
+   "rev": "1ku6re3"
+  },
+  {
+   "id": "verify.065",
+   "en": "Everyone here is on our payroll and carries a JA- ID. Click any person to open their record.",
+   "tr": "Buradaki herkes bordromuzdadır ve JA- kimliği taşır. Kaydını açmak için kişiye tıklayın.",
+   "sec": "Kayıt defteri",
+   "rev": "ldtu35"
+  },
+  {
+   "id": "verify.066",
+   "en": "On our payroll — not agents",
+   "tr": "Bordromuzda — acente değil",
+   "sec": "Kayıt defteri",
+   "rev": "1lm3gs2"
+  },
+  {
+   "id": "verify.067",
+   "en": "Check an ID",
+   "tr": "Kimlik kontrol edin",
+   "sec": "Kayıt defteri",
+   "rev": "g9uw4h"
+  },
+  {
+   "id": "verify.068",
+   "en": "Person",
+   "tr": "Kişi",
+   "sec": "Kayıt defteri",
+   "rev": "1joixw0"
+  },
+  {
+   "id": "verify.069",
+   "en": "City",
+   "tr": "Şehir",
+   "sec": "Kayıt defteri",
+   "rev": "yjnfb6"
+  },
+  {
+   "id": "verify.070",
+   "en": "Representative ID",
+   "tr": "Temsilci kimliği",
+   "sec": "Kayıt defteri",
+   "rev": "ln6uz"
+  },
+  {
+   "id": "verify.071",
+   "en": "Status",
+   "tr": "Durum",
+   "sec": "Kayıt defteri",
+   "rev": "1iwhbo1"
+  },
+  {
+   "id": "verify.072",
+   "en": "Head of desk",
+   "tr": "Masa sorumlusu",
+   "sec": "Kayıt defteri",
+   "rev": "tc94zh"
+  },
+  {
+   "id": "verify.073",
+   "en": "No longer authorised:",
+   "tr": "Artık yetkili değil:",
+   "sec": "Kayıt defteri",
+   "legal": true,
+   "rev": "1timlkd"
+  },
+  {
+   "id": "verify.074",
+   "en": "Partner agencies are not on this chart on purpose.",
+   "tr": "İş ortağı ajanslar bu şemada bilerek yer almaz.",
+   "sec": "Kayıt defteri",
+   "rev": "17p8jc3"
+  },
+  {
+   "id": "verify.075",
+   "en": "They are suppliers abroad — they may source and prepare candidates, but they never sign for us and never collect money from a worker.",
+   "tr": "Onlar yurt dışındaki tedarikçilerdir — aday bulabilir ve hazırlayabilirler, ama bizim adımıza asla imza atmaz ve bir işçiden asla para almazlar.",
+   "sec": "Kayıt defteri",
+   "legal": true,
+   "rev": "1wtg85w"
+  },
+  {
+   "id": "verify.076",
+   "en": "How partnering works",
+   "tr": "İş ortaklığı nasıl işler",
+   "sec": "Kayıt defteri",
+   "rev": "1c01pu1"
+  },
+  {
+   "id": "verify.077",
+   "en": "Fraud report",
+   "tr": "Dolandırıcılık bildirimi",
+   "sec": "Uyarı işaretleri",
+   "rev": "tgol5b"
+  },
+  {
+   "id": "verify.078",
+   "en": "See a red flag? Stop — then tell us",
+   "tr": "Şüpheli bir durumla mı karşılaştınız? İşlemi durdurun ve hemen bize bildirin",
+   "sec": "Uyarı işaretleri",
+   "rev": "9s0u2j"
+  },
+  {
+   "id": "verify.079",
+   "en": "These five signs mean the person is not acting for JobsAdmire, no matter what their card or letter says. Do not pay, do not hand over documents — report it and we take it from there.",
+   "tr": "Bu beş işaret, kartında ya da mektubunda ne yazarsa yazsın, o kişinin JobsAdmire adına hareket etmediği anlamına gelir. Ödeme yapmayın, belge vermeyin — bildirin, gerisini biz hallederiz.",
+   "sec": "Uyarı işaretleri",
+   "legal": true,
+   "rev": "1unugyh"
+  },
+  {
+   "id": "verify.080",
+   "en": "Red flags — stop immediately",
+   "tr": "Uyarı işaretleri — hemen durun",
+   "sec": "Uyarı işaretleri",
+   "rev": "1pn4ko1"
+  },
+  {
+   "id": "verify.081",
+   "en": "Asks for money in any form.",
+   "tr": "Herhangi bir biçimde para ister.",
+   "sec": "Uyarı işaretleri",
+   "legal": true,
+   "rev": "1m1gkel"
+  },
+  {
+   "id": "verify.082",
+   "en": "Cash, transfer, “processing fee”, “visa deposit” — nobody at JobsAdmire ever collects money from a worker.",
+   "tr": "Nakit, havale, “işlem ücreti”, “vize depozitosu” — JobsAdmire'da hiç kimse bir işçiden para almaz.",
+   "sec": "Uyarı işaretleri",
+   "legal": true,
+   "rev": "vkhy3z"
+  },
+  {
+   "id": "verify.083",
+   "en": "No badge, or a QR that opens another site.",
+   "tr": "Yaka kartı yok ya da QR başka bir siteyi açıyor.",
+   "sec": "Uyarı işaretleri",
+   "rev": "o57ck2"
+  },
+  {
+   "id": "verify.084",
+   "en": "The QR must open a record on this page — nothing else counts.",
+   "tr": "QR bu sayfada bir kayıt açmalıdır — başka hiçbir şey geçerli değildir.",
+   "sec": "Uyarı işaretleri",
+   "rev": "brb25g"
+  },
+  {
+   "id": "verify.085",
+   "en": "Contacts you from a personal number or email.",
+   "tr": "Kişisel bir numaradan veya e-postadan ulaşıyor.",
+   "sec": "Uyarı işaretleri",
+   "rev": "1ce3jfq"
+  },
+  {
+   "id": "verify.086",
+   "en": "Official contact is only company numbers and @jobsadmire.com addresses.",
+   "tr": "Resmî iletişim yalnızca şirket numaraları ve @jobsadmire.com adresleridir.",
+   "sec": "Uyarı işaretleri",
+   "rev": "vcmcyd"
+  },
+  {
+   "id": "verify.087",
+   "en": "Wants to keep your original passport or certificates.",
+   "tr": "Pasaportunuzun ya da belgelerinizin aslını almak istiyor.",
+   "sec": "Uyarı işaretleri",
+   "legal": true,
+   "rev": "1ixd567"
+  },
+  {
+   "id": "verify.088",
+   "en": "Copies are enough. Originals always stay with you.",
+   "tr": "Kopyalar yeterlidir. Asıllar her zaman sizde kalır.",
+   "sec": "Uyarı işaretleri",
+   "rev": "wpm8iz"
+  },
+  {
+   "id": "verify.089",
+   "en": "Pressures you to sign or pay today.",
+   "tr": "Bugün imzalamanız ya da ödeme yapmanız için baskı yapıyor. Gerçek ve güvenilir bir teklif, doğrulama yapmanız için size zaman tanır.",
+   "sec": "Uyarı işaretleri",
+   "legal": true,
+   "rev": "1kdids4"
+  },
+  {
+   "id": "verify.090",
+   "en": "A real offer survives a phone call to our office. Urgency is the fraudster’s tool.",
+   "tr": "Gerçek bir teklif, ofisimize yapılan bir telefondan zarar görmez. Acele, dolandırıcının aracıdır.",
+   "sec": "Uyarı işaretleri",
+   "rev": "10yv8c5"
+  },
+  {
+   "id": "verify.091",
+   "en": "Report it — one minute",
+   "tr": "Bildirin — bir dakika",
+   "sec": "Bildirim",
+   "rev": "3ureug"
+  },
+  {
+   "id": "verify.092",
+   "en": "Someone asked you for money in our name?",
+   "tr": "Birisi bizim adımıza sizden para mı istedi?",
+   "sec": "Bildirim",
+   "legal": true,
+   "rev": "1t6xctu"
+  },
+  {
+   "id": "verify.093",
+   "en": "Send us three things — we act on every report and tell you what we found.",
+   "tr": "Bize üç şey gönderin — her bildirimi işleme alır ve bulduklarımızı size söyleriz.",
+   "sec": "Bildirim",
+   "rev": "12rlu6d"
+  },
+  {
+   "id": "verify.094",
+   "en": "The name they used",
+   "tr": "Kullandığı isim",
+   "sec": "Bildirim",
+   "rev": "35i15o"
+  },
+  {
+   "id": "verify.095",
+   "en": "The number or email they contacted you from",
+   "tr": "Size ulaştığı numara veya e-posta",
+   "sec": "Bildirim",
+   "rev": "1l8u3i2"
+  },
+  {
+   "id": "verify.096",
+   "en": "What they asked for",
+   "tr": "Ne istediği",
+   "sec": "Bildirim",
+   "rev": "81t0do"
+  },
+  {
+   "id": "verify.097",
+   "en": "Report on WhatsApp",
+   "tr": "WhatsApp'tan bildirin",
+   "sec": "Bildirim",
+   "rev": "7c3aky"
+  },
+  {
+   "id": "verify.098",
+   "en": "Reporting costs nothing and never affects a candidate’s application.",
+   "tr": "Bildirim ücretsizdir ve bir adayın başvurusunu asla etkilemez.",
+   "sec": "Bildirim",
+   "rev": "1itajz9"
+  },
+  {
+   "id": "verify.099",
+   "en": "Common questions",
+   "tr": "Sık sorulan sorular",
+   "sec": "Bildirim",
+   "rev": "1yzdc1h"
+  },
+  {
+   "id": "verify.100",
+   "en": "What people ask us most",
+   "tr": "En çok sorulanlar",
+   "sec": "SSS",
+   "rev": "1xub312"
+  },
+  {
+   "id": "verify.101",
+   "en": "Can a JobsAdmire representative ask a worker for money?",
+   "tr": "Bir JobsAdmire temsilcisi işçiden para isteyebilir mi?",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "edm8yr"
+  },
+  {
+   "id": "verify.102",
+   "en": "Never. There is no fee for the worker. No representative, coordinator or partner agency is authorised to collect any payment from a worker for a job, a permit, a visa or an interview. If money is requested, report it on this page.",
+   "tr": "Asla. İşçiden hiçbir ücret alınmaz. Hiçbir temsilci, koordinatör veya iş ortağı ajans; iş, izin, vize ya da görüşme karşılığında bir işçiden ödeme almaya yetkili değildir. Para istenirse bu sayfadan bildirin.",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "1myyp4m"
+  },
+  {
+   "id": "verify.103",
+   "en": "Who can sign a contract on behalf of JobsAdmire?",
+   "tr": "JobsAdmire adına kim sözleşme imzalayabilir?",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "zy17d4"
+  },
+  {
+   "id": "verify.104",
+   "en": "Only the founder, Haris Jiva. No representative, office employee or partner agency can sign a service agreement, an employer contract or a worker contract for JobsAdmire. Any document signed by anyone else is not valid.",
+   "tr": "Yalnızca kurucu Haris Jiva. Hiçbir temsilci, ofis çalışanı ya da iş ortağı ajans JobsAdmire adına hizmet sözleşmesi, işveren sözleşmesi veya işçi sözleşmesi imzalayamaz. Başka biri tarafından imzalanan hiçbir belge geçerli değildir.",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "stwe76"
+  },
+  {
+   "id": "verify.105",
+   "en": "How do I check that a representative is genuine?",
+   "tr": "Bir temsilcinin gerçek olduğunu nasıl kontrol ederim?",
+   "sec": "SSS",
+   "rev": "19b9nas"
+  },
+  {
+   "id": "verify.106",
+   "en": "Ask for their representative ID and enter it above, or scan the QR code on their badge. The page shows the person's official record and current status, taken from our internal system.",
+   "tr": "Temsilci kimliğini isteyip yukarıya girin ya da yaka kartındaki QR kodu okutun. Sayfa, kişinin resmî kaydını ve güncel durumunu iç sistemimizden alarak gösterir.",
+   "sec": "SSS",
+   "rev": "xok3qw"
+  },
+  {
+   "id": "verify.107",
+   "en": "What if a representative has left the company?",
+   "tr": "Bir temsilci şirketten ayrıldıysa ne olur?",
+   "sec": "SSS",
+   "rev": "1wbnofm"
+  },
+  {
+   "id": "verify.108",
+   "en": "Their record shows as no longer authorised. Any agreement, document request or payment request made by a former representative after that date is not made on behalf of JobsAdmire.",
+   "tr": "Kaydı “artık yetkili değil” olarak görünür. Eski bir temsilcinin o tarihten sonra yaptığı hiçbir anlaşma, belge talebi ya da ödeme talebi JobsAdmire adına yapılmış sayılmaz.",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "3x9s4e"
+  },
+  {
+   "id": "verify.109",
+   "en": "Badge QR",
+   "tr": "Yaka kartı QR'ı",
+   "sec": "Kişi kaydı",
+   "rev": "134lndv"
+  },
+  {
+   "id": "verify.110",
+   "en": "Scan the QR on their badge — it must open this same record.",
+   "tr": "Yaka kartındaki QR'ı okutun — aynı kaydı açmalıdır.",
+   "sec": "Kişi kaydı",
+   "rev": "dxb597"
+  },
+  {
+   "id": "verify.111",
+   "en": "Authorised until",
+   "tr": "Yetki bitiş tarihi",
+   "sec": "Kişi kaydı",
+   "legal": true,
+   "rev": "12lpr0h"
+  },
+  {
+   "id": "verify.112",
+   "en": "Official contact",
+   "tr": "Resmî iletişim",
+   "sec": "Kişi kaydı",
+   "rev": "1wve9w"
+  },
+  {
+   "id": "verify.113",
+   "en": "Languages",
+   "tr": "Diller",
+   "sec": "Kişi kaydı",
+   "rev": "1hg7vfo"
+  },
+  {
+   "id": "verify.114",
+   "en": "Reports to",
+   "tr": "Bağlı olduğu kişi",
+   "sec": "Kişi kaydı",
+   "rev": "1qto0eb"
+  },
+  {
+   "id": "verify.115",
+   "en": "With JobsAdmire",
+   "tr": "JobsAdmire ile",
+   "sec": "Kişi kaydı",
+   "rev": "qjp7et"
+  },
+  {
+   "id": "verify.116",
+   "en": "Desk",
+   "tr": "Masa",
+   "sec": "Kişi kaydı",
+   "rev": "yjku8s"
+  },
+  {
+   "id": "verify.117",
+   "en": "May do",
+   "tr": "Yapabilir",
+   "sec": "Kişi kaydı",
+   "rev": "17pihkr"
+  },
+  {
+   "id": "verify.118",
+   "en": "May never",
+   "tr": "Asla yapamaz",
+   "sec": "Kişi kaydı",
+   "rev": "1hlc5ui"
+  },
+  {
+   "id": "verify.119",
+   "en": "Record served from our internal system · {{ lastUpdatedLabel }}",
+   "tr": "Kayıt iç sistemimizden gelmektedir · {{ lastUpdatedLabel }}",
+   "sec": "Kişi kaydı",
+   "rev": "18u263t"
+  },
+  {
+   "id": "verify.120",
+   "en": "Print badge",
+   "tr": "Yaka kartını yazdır",
+   "sec": "Kişi kaydı",
+   "rev": "14zrg8h"
+  },
+  {
+   "id": "verify.121",
+   "en": "Call us",
+   "tr": "Bizi arayın",
+   "sec": "Kişi kaydı",
+   "rev": "1pu4zvl"
+  },
+  {
+   "id": "verify.122",
+   "en": "WhatsApp",
+   "tr": "WhatsApp",
+   "sec": "Kişi kaydı",
+   "rev": "vml2gt"
+  },
+  {
+   "id": "verify.123",
+   "en": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+   "tr": "Türkiye’deki işverenler için lisanslı iş gücü temini — yurt dışı tedarik, inceleme ve çalışma izinleri, uçtan uca.",
+   "sec": "Kişi kaydı",
+   "rev": "1v5awlm"
+  },
+  {
+   "id": "verify.124",
+   "en": "İŞKUR Licensed · Permit No. 1730",
+   "tr": "İŞKUR Lisanslı · İzin No. 1730",
+   "sec": "Kişi kaydı",
+   "legal": true,
+   "rev": "z1r9le"
+  },
+  {
+   "id": "verify.125",
+   "en": "For Employers",
+   "tr": "İşverenler için",
+   "sec": "Kişi kaydı",
+   "rev": "1yhsmw"
+  },
+  {
+   "id": "verify.126",
+   "en": "Available Workers",
+   "tr": "Mevcut İşçiler",
+   "sec": "Kişi kaydı",
+   "rev": "wzront"
+  },
+  {
+   "id": "verify.127",
+   "en": "Hiring Cost Calculator",
+   "tr": "İşçi Maliyet Hesaplama",
+   "sec": "Kişi kaydı",
+   "rev": "e9bold"
+  },
+  {
+   "id": "verify.128",
+   "en": "Company",
+   "tr": "Kurumsal",
+   "sec": "Kişi kaydı",
+   "rev": "1ohrlxe"
+  },
+  {
+   "id": "verify.129",
+   "en": "Contact",
+   "tr": "İletişim",
+   "sec": "Kişi kaydı",
+   "rev": "1ofoso5"
+  },
+  {
+   "id": "verify.130",
+   "en": "Telegram · @jobsadmire",
+   "tr": "Telegram · @jobsadmire",
+   "sec": "Kişi kaydı",
+   "rev": "3y9lox"
+  },
+  {
+   "id": "verify.131",
+   "en": "Antalya · Head office",
+   "tr": "Antalya · Merkez ofis",
+   "sec": "Kişi kaydı",
+   "rev": "1vkrek4"
+  },
+  {
+   "id": "verify.132",
+   "en": "Adnan Menderes Blv. No 7/6",
+   "tr": "Adnan Menderes Blv. No 7/6",
+   "sec": "Kişi kaydı",
+   "rev": "muabnf"
+  },
+  {
+   "id": "verify.133",
+   "en": "Muratpaşa, Antalya, Türkiye",
+   "tr": "Muratpaşa, Antalya, Türkiye",
+   "sec": "Kişi kaydı",
+   "rev": "e06xbz"
+  },
+  {
+   "id": "verify.134",
+   "en": "Mon–Fri 09:00–18:00",
+   "tr": "Pzt–Cum 09:00–18:00",
+   "sec": "Kişi kaydı",
+   "rev": "1pratzo"
+  },
+  {
+   "id": "verify.135",
+   "en": "Get directions",
+   "tr": "Yol tarifi alın",
+   "sec": "Kişi kaydı",
+   "rev": "9twfut"
+  },
+  {
+   "id": "verify.136",
+   "en": "Karachi · Tech office",
+   "tr": "Karaçi · Teknoloji ofisi",
+   "sec": "Kişi kaydı",
+   "rev": "1dihier"
+  },
+  {
+   "id": "verify.137",
+   "en": "Shahrah-e-Faisal",
+   "tr": "Shahrah-e-Faisal",
+   "sec": "Kişi kaydı",
+   "rev": "y795a1"
+  },
+  {
+   "id": "verify.138",
+   "en": "Karachi, Pakistan",
+   "tr": "Karaçi, Pakistan",
+   "sec": "Kişi kaydı",
+   "rev": "1td9ko9"
+  },
+  {
+   "id": "verify.139",
+   "en": "Mon–Sat 10:00–19:00 PKT",
+   "tr": "Pzt–Cmt 10:00–19:00 PKT",
+   "sec": "Kişi kaydı",
+   "rev": "1w2dzmx"
+  },
+  {
+   "id": "verify.140",
+   "en": "WhatsApp Us →",
+   "tr": "WhatsApp’tan yazın →",
+   "sec": "Kişi kaydı",
+   "rev": "1bo2cnd"
+  },
+  {
+   "id": "verify.141",
+   "en": "Get Our App",
+   "tr": "Uygulamamızı İndirin",
+   "sec": "Kişi kaydı",
+   "rev": "ncsu7u"
+  },
+  {
+   "id": "verify.142",
+   "en": "Workforce on the go",
+   "tr": "İş gücü her yerde yanınızda",
+   "sec": "Kişi kaydı",
+   "rev": "3cj12h"
+  },
+  {
+   "id": "verify.143",
+   "en": "Approve candidates, track permits & get instant updates.",
+   "tr": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
+   "sec": "Kişi kaydı",
+   "rev": "19enop8"
+  },
+  {
+   "id": "verify.144",
+   "en": "İŞKUR permit No. 1730 · Job seekers are never charged a fee (law No. 4904) · Tax No: 48422122",
+   "tr": "İŞKUR izin No. 1730 · İş arayanlardan asla ücret alınmaz (4904 sayılı kanun) · Vergi No: 48422122",
+   "sec": "Kişi kaydı",
+   "legal": true,
+   "rev": "dgg8hy"
+  },
+  {
+   "id": "verify.145",
+   "en": "Privacy",
+   "tr": "Gizlilik Politikası",
+   "sec": "Kişi kaydı",
+   "rev": "1ligp4z"
+  },
+  {
+   "id": "verify.146",
+   "en": "Terms",
+   "tr": "Kullanım Şartları",
+   "sec": "Kişi kaydı",
+   "rev": "3rktfc"
+  },
+  {
+   "id": "verify.147",
+   "en": "© 2026 Jobs Admire",
+   "tr": "© 2026 Jobs Admire",
+   "sec": "Kişi kaydı",
+   "rev": "1f7jgq0"
+  },
+  {
+   "id": "verify.148",
+   "en": "Founder · sole signatory",
+   "tr": "Kurucu · tek imza yetkilisi",
+   "sec": "Personel verileri",
+   "legal": true,
+   "rev": "1qiq6sk"
+  },
+  {
+   "id": "verify.149",
+   "en": "Antalya, Turkey",
+   "tr": "Antalya, Türkiye",
+   "sec": "Personel verileri",
+   "rev": "e7emn7"
+  },
+  {
+   "id": "verify.150",
+   "en": "Turkish · English",
+   "tr": "Türkçe · İngilizce",
+   "sec": "Personel verileri",
+   "rev": "x0cbm2"
+  },
+  {
+   "id": "verify.151",
+   "en": "Recruitment Specialist",
+   "tr": "İşe Alım Uzmanı",
+   "sec": "Personel verileri",
+   "rev": "9kb7cm"
+  },
+  {
+   "id": "verify.152",
+   "en": "Job orders, shortlists, arrivals",
+   "tr": "İş talepleri, kısa listeler, varışlar",
+   "sec": "Personel verileri",
+   "rev": "15530d8"
+  },
+  {
+   "id": "verify.153",
+   "en": "Work Permit Officer",
+   "tr": "Çalışma İzni Sorumlusu",
+   "sec": "Personel verileri",
+   "rev": "1eggtkx"
+  },
+  {
+   "id": "verify.154",
+   "en": "Work permits, SGK, quota checks",
+   "tr": "Çalışma izinleri, SGK, kota kontrolleri",
+   "sec": "Personel verileri",
+   "rev": "1oeh6r8"
+  },
+  {
+   "id": "verify.155",
+   "en": "Business Development Executive",
+   "tr": "İş Geliştirme Yetkilisi",
+   "sec": "Personel verileri",
+   "rev": "kf05hs"
+  },
+  {
+   "id": "verify.156",
+   "en": "Site visits, offers, invoices",
+   "tr": "Saha ziyaretleri, teklifler, faturalar",
+   "sec": "Personel verileri",
+   "rev": "rqbx1h"
+  },
+  {
+   "id": "verify.157",
+   "en": "Quality & Compliance Officer",
+   "tr": "Kalite ve Uyum Sorumlusu",
+   "sec": "Personel verileri",
+   "rev": "1n941i9"
+  },
+  {
+   "id": "verify.158",
+   "en": "Trade tests, document checks",
+   "tr": "Meslek testleri, belge kontrolleri",
+   "sec": "Personel verileri",
+   "rev": "96wkvk"
+  },
+  {
+   "id": "verify.159",
+   "en": "Turkish · English · Russian",
+   "tr": "Türkçe · İngilizce · Rusça",
+   "sec": "Personel verileri",
+   "rev": "jpvp7g"
+  },
+  {
+   "id": "verify.160",
+   "en": "Tech Manager — website, CRM & internal systems",
+   "tr": "Teknoloji Müdürü — web sitesi, CRM ve iç sistemler",
+   "sec": "Personel verileri",
+   "rev": "p3icas"
+  },
+  {
+   "id": "verify.161",
+   "en": "Urdu · English",
+   "tr": "Urduca · İngilizce",
+   "sec": "Personel verileri",
+   "rev": "vdcufq"
+  },
+  {
+   "id": "verify.162",
+   "en": "Product Designer",
+   "tr": "Ürün Tasarımcısı",
+   "sec": "Personel verileri",
+   "legal": true,
+   "rev": "1ltq5pn"
+  },
+  {
+   "id": "verify.163",
+   "en": "Design — website, brand & CRM UI",
+   "tr": "Tasarım — web sitesi, marka ve CRM arayüzü",
+   "sec": "Personel verileri",
+   "legal": true,
+   "rev": "1rtivvt"
+  },
+  {
+   "id": "verify.164",
+   "en": "Testing — website & CRM releases",
+   "tr": "Test — web sitesi ve CRM sürümleri",
+   "sec": "Personel verileri",
+   "rev": "1et9wqk"
+  },
+  {
+   "id": "verify.165",
+   "en": "Country Representative",
+   "tr": "Ülke Temsilcisi",
+   "sec": "Personel verileri",
+   "rev": "w6vr5q"
+  },
+  {
+   "id": "verify.166",
+   "en": "Uzbekistan desk · full-time",
+   "tr": "Özbekistan masası · tam zamanlı",
+   "sec": "Personel verileri",
+   "rev": "hmoole"
+  },
+  {
+   "id": "verify.167",
+   "en": "Tashkent, Uzbekistan",
+   "tr": "Taşkent, Özbekistan",
+   "sec": "Personel verileri",
+   "rev": "1dz3gep"
+  },
+  {
+   "id": "verify.168",
+   "en": "Uzbek · Russian · English",
+   "tr": "Özbekçe · Rusça · İngilizce",
+   "sec": "Personel verileri",
+   "rev": "1r2rnit"
+  },
+  {
+   "id": "verify.169",
+   "en": "Operations, Antalya",
+   "tr": "Operasyon, Antalya",
+   "sec": "Personel verileri",
+   "rev": "5y3akh"
+  },
+  {
+   "id": "verify.170",
+   "en": "Pakistan desk · full-time",
+   "tr": "Pakistan masası · tam zamanlı",
+   "sec": "Personel verileri",
+   "rev": "tnx7vf"
+  },
+  {
+   "id": "verify.171",
+   "en": "Sourcing Coordinator",
+   "tr": "Tedarik Koordinatörü",
+   "sec": "Personel verileri",
+   "rev": "1xyj19j"
+  },
+  {
+   "id": "verify.172",
+   "en": "Lahore, Pakistan",
+   "tr": "Lahor, Pakistan",
+   "sec": "Personel verileri",
+   "rev": "n5plwv"
+  },
+  {
+   "id": "verify.173",
+   "en": "Urdu · Punjabi · English",
+   "tr": "Urduca · Pencapça · İngilizce",
+   "sec": "Personel verileri",
+   "rev": "2yw18q"
+  },
+  {
+   "id": "verify.174",
+   "en": "Trade Test Assessor",
+   "tr": "Meslek Testi Değerlendiricisi",
+   "sec": "Personel verileri",
+   "rev": "klzzf0"
+  },
+  {
+   "id": "verify.175",
+   "en": "Pakistan desk · project-based",
+   "tr": "Pakistan masası · proje bazlı",
+   "sec": "Personel verileri",
+   "rev": "4t6nbt"
+  },
+  {
+   "id": "verify.176",
+   "en": "Islamabad, Pakistan",
+   "tr": "İslamabad, Pakistan",
+   "sec": "Personel verileri",
+   "rev": "1q8calq"
+  },
+  {
+   "id": "verify.177",
+   "en": "Quality, Antalya",
+   "tr": "Kalite, Antalya",
+   "sec": "Personel verileri",
+   "rev": "a91c22"
+  },
+  {
+   "id": "verify.178",
+   "en": "Uzbekistan desk · part-time",
+   "tr": "Özbekistan masası · yarı zamanlı",
+   "sec": "Personel verileri",
+   "rev": "1fzvgg6"
+  },
+  {
+   "id": "verify.179",
+   "en": "Samarkand, Uzbekistan",
+   "tr": "Semerkant, Özbekistan",
+   "sec": "Personel verileri",
+   "rev": "w7s0pz"
+  },
+  {
+   "id": "verify.180",
+   "en": "Uzbek · Russian",
+   "tr": "Özbekçe · Rusça",
+   "sec": "Personel verileri",
+   "rev": "1i4i5u8"
+  },
+  {
+   "id": "verify.181",
+   "en": "India desk · full-time",
+   "tr": "Hindistan masası · tam zamanlı",
+   "sec": "Personel verileri",
+   "rev": "exnbf"
+  },
+  {
+   "id": "verify.182",
+   "en": "Hindi · English",
+   "tr": "Hintçe · İngilizce",
+   "sec": "Personel verileri",
+   "rev": "f8g5mq"
+  },
+  {
+   "id": "verify.183",
+   "en": "Kyrgyzstan desk · full-time",
+   "tr": "Kırgızistan masası · tam zamanlı",
+   "sec": "Personel verileri",
+   "rev": "16vekuk"
+  },
+  {
+   "id": "verify.184",
+   "en": "Bishkek, Kyrgyzstan",
+   "tr": "Bişkek, Kırgızistan",
+   "sec": "Personel verileri",
+   "rev": "118fc0g"
+  },
+  {
+   "id": "verify.185",
+   "en": "Kyrgyz · Russian",
+   "tr": "Kırgızca · Rusça",
+   "sec": "Personel verileri",
+   "rev": "1gec393"
+  },
+  {
+   "id": "verify.186",
+   "en": "Nepal desk · part-time",
+   "tr": "Nepal masası · yarı zamanlı",
+   "sec": "Personel verileri",
+   "rev": "18wmlg2"
+  },
+  {
+   "id": "verify.187",
+   "en": "Kathmandu, Nepal",
+   "tr": "Katmandu, Nepal",
+   "sec": "Personel verileri",
+   "rev": "13y1vcq"
+  },
+  {
+   "id": "verify.188",
+   "en": "Nepali · Hindi · English",
+   "tr": "Nepalce · Hintçe · İngilizce",
+   "sec": "Personel verileri",
+   "rev": "18rmw8a"
+  },
+  {
+   "id": "verify.189",
+   "en": "Quality · project-based",
+   "tr": "Kalite · proje bazlı",
+   "sec": "Personel verileri",
+   "rev": "roe3fa"
+  },
+  {
+   "id": "verify.190",
+   "en": "Ghana desk · part-time",
+   "tr": "Gana masası · yarı zamanlı",
+   "sec": "Personel verileri",
+   "rev": "1sj263p"
+  },
+  {
+   "id": "verify.191",
+   "en": "English · French",
+   "tr": "İngilizce · Fransızca",
+   "sec": "Personel verileri",
+   "rev": "mqzyok"
+  },
+  {
+   "id": "verify.192",
+   "en": "Former Representative",
+   "tr": "Eski Temsilci",
+   "sec": "Personel verileri",
+   "rev": "1nectav"
+  },
+  {
+   "id": "verify.193",
+   "en": "Uzbekistan desk · until 14 Feb 2026",
+   "tr": "Özbekistan masası · 14 Şubat 2026'ya kadar",
+   "sec": "Personel verileri",
+   "rev": "vj6vlt"
+  },
+  {
+   "id": "verify.194",
+   "en": "Not authorised",
+   "tr": "Yetkili değil",
+   "sec": "Personel verileri",
+   "legal": true,
+   "rev": "1c98x8e"
+  },
+  {
+   "id": "verify.195",
+   "en": "Ended 14 Feb 2026",
+   "tr": "14 Şubat 2026'da sona erdi",
+   "sec": "Personel verileri",
+   "rev": "1mho7zd"
+  },
+  {
+   "id": "verify.196",
+   "en": "Representative",
+   "tr": "Temsilci",
+   "sec": "Personel verileri",
+   "rev": "tx80ja"
+  },
+  {
+   "id": "verify.197",
+   "en": "No longer authorised",
+   "tr": "Artık yetkili değil",
+   "sec": "Personel verileri",
+   "legal": true,
+   "rev": "1hn6wmv"
+  },
+  {
+   "id": "verify.198",
+   "en": "Sign service agreements and employer contracts",
+   "tr": "Hizmet sözleşmelerini ve işveren sözleşmelerini imzalamak",
+   "sec": "Yetki listeleri",
+   "legal": true,
+   "rev": "1ozbnc1"
+  },
+  {
+   "id": "verify.199",
+   "en": "Approve fees, invoices and offers",
+   "tr": "Ücretleri, faturaları ve teklifleri onaylamak",
+   "sec": "Yetki listeleri",
+   "legal": true,
+   "rev": "1qqmqkx"
+  },
+  {
+   "id": "verify.200",
+   "en": "Represent JobsAdmire in any meeting",
+   "tr": "Her görüşmede JobsAdmire'ı temsil etmek",
+   "sec": "Yetki listeleri",
+   "rev": "1ut4jzn"
+  },
+  {
+   "id": "verify.201",
+   "en": "Build and maintain our website, CRM and internal systems",
+   "tr": "Web sitemizi, CRM'imizi ve iç sistemlerimizi kurmak ve sürdürmek",
+   "sec": "Yetki listeleri",
+   "rev": "1plinp4"
+  },
+  {
+   "id": "verify.202",
+   "en": "Contact you about technical issues on our platforms",
+   "tr": "Platformlarımızdaki teknik konularda sizinle iletişime geçmek",
+   "sec": "Yetki listeleri",
+   "rev": "1rqxn07"
+  },
+  {
+   "id": "verify.203",
+   "en": "Work with application data inside our system only",
+   "tr": "Başvuru verileriyle yalnızca kendi sistemimiz içinde çalışmak",
+   "sec": "Yetki listeleri",
+   "rev": "1k2nkeh"
+  },
+  {
+   "id": "verify.204",
+   "en": "Take job orders and present candidates",
+   "tr": "İş taleplerini almak ve aday sunmak",
+   "sec": "Yetki listeleri",
+   "rev": "2gds5e"
+  },
+  {
+   "id": "verify.205",
+   "en": "File work permit applications",
+   "tr": "Çalışma izni başvurularını dosyalamak",
+   "sec": "Yetki listeleri",
+   "rev": "1ogeb30"
+  },
+  {
+   "id": "verify.206",
+   "en": "Request document copies through our system",
+   "tr": "Belge kopyalarını sistemimiz üzerinden istemek",
+   "sec": "Yetki listeleri",
+   "rev": "1aoc5ny"
+  },
+  {
+   "id": "verify.207",
+   "en": "Meet partner agencies and institutes in their country",
+   "tr": "İş ortağı ajanslar ve kurumlarla kendi ülkelerinde görüşmek",
+   "sec": "Yetki listeleri",
+   "rev": "e5lufj"
+  },
+  {
+   "id": "verify.208",
+   "en": "Run first interviews and check documents",
+   "tr": "İlk görüşmeleri yapmak ve belgeleri kontrol etmek",
+   "sec": "Yetki listeleri",
+   "rev": "ftsuql"
+  },
+  {
+   "id": "verify.209",
+   "en": "Represent JobsAdmire at local meetings and job fairs",
+   "tr": "Yerel toplantılarda ve iş fuarlarında JobsAdmire'ı temsil etmek",
+   "sec": "Yetki listeleri",
+   "rev": "1r2jv9m"
+  },
+  {
+   "id": "verify.210",
+   "en": "Shortlist candidates against a live job order",
+   "tr": "Açık bir iş talebine göre aday kısa listesi hazırlamak",
+   "sec": "Yetki listeleri",
+   "rev": "bv88fe"
+  },
+  {
+   "id": "verify.211",
+   "en": "Collect and check document copies",
+   "tr": "Belge kopyalarını toplamak ve kontrol etmek",
+   "sec": "Yetki listeleri",
+   "rev": "19egca"
+  },
+  {
+   "id": "verify.212",
+   "en": "Run screening calls",
+   "tr": "Ön eleme görüşmeleri yapmak",
+   "sec": "Yetki listeleri",
+   "rev": "c175gx"
+  },
+  {
+   "id": "verify.213",
+   "en": "Ask a worker for any payment, in cash or by transfer",
+   "tr": "Bir işçiden nakit ya da havale yoluyla herhangi bir ödeme istemek",
+   "sec": "Yetki listeleri",
+   "legal": true,
+   "rev": "110jttv"
+  },
+  {
+   "id": "verify.214",
+   "en": "Keep original passports or certificates",
+   "tr": "Pasaport ya da belgelerin aslını alıkoymak",
+   "sec": "Yetki listeleri",
+   "legal": true,
+   "rev": "14dkg3r"
+  },
+  {
+   "id": "verify.215",
+   "en": "Promise a visa, a salary or a start date in writing",
+   "tr": "Yazılı olarak vize, maaş ya da işe başlama tarihi vaat etmek",
+   "sec": "Yetki listeleri",
+   "rev": "eks9y0"
+  },
+  {
+   "id": "verify.216",
+   "en": "Sign any contract or agreement for JobsAdmire",
+   "tr": "JobsAdmire adına herhangi bir sözleşme imzalamak",
+   "sec": "Yetki listeleri",
+   "legal": true,
+   "rev": "f2u2b4"
+  },
+  {
+   "id": "verify.217",
+   "en": "Take job orders or deal with workers and employers",
+   "tr": "İş talebi almak ya da işçi ve işverenlerle muhatap olmak",
+   "sec": "Yetki listeleri",
+   "rev": "1mdrcdb"
+  },
+  {
+   "id": "verify.218",
+   "en": "Charge a fee that is not in the signed agreement",
+   "tr": "İmzalı sözleşmede yer almayan bir ücret talep etmek",
+   "sec": "Yetki listeleri",
+   "legal": true,
+   "rev": "1h9m6hg"
+  },
+  {
+   "id": "verify.219",
+   "en": "Loading from CRM…",
+   "tr": "CRM'den yükleniyor…",
+   "sec": "Sistem mesajları",
+   "rev": "xtmztb"
+  },
+  {
+   "id": "verify.220",
+   "en": "Internal list · CRM feed not configured",
+   "tr": "Dahili liste · CRM akışı yapılandırılmamış",
+   "sec": "Sistem mesajları",
+   "legal": true,
+   "rev": "1orxohc"
+  },
+  {
+   "id": "verify.221",
+   "en": "CRM connected · no records yet",
+   "tr": "CRM bağlı · henüz kayıt yok",
+   "sec": "Sistem mesajları",
+   "rev": "bnvizq"
+  },
+  {
+   "id": "verify.222",
+   "en": "Showing sample list · CRM feed not reachable",
+   "tr": "Örnek liste gösteriliyor · CRM akışına ulaşılamıyor",
+   "sec": "Sistem mesajları",
+   "legal": true,
+   "rev": "g2lv6x"
+  },
+  {
+   "id": "verify.223",
+   "en": "Hello JobsAdmire, I want to hire workers.",
+   "tr": "Merhaba JobsAdmire, işçi talebinde bulunmak istiyorum.",
+   "sec": "Sistem mesajları",
+   "rev": "17wwilm"
+  },
+  {
+   "id": "verify.224",
+   "en": "people authorised today",
+   "tr": "kişi bugün yetkili",
+   "sec": "Sistem mesajları",
+   "legal": true,
+   "rev": "fmhor3"
+  },
+  {
+   "id": "verify.225",
+   "en": "Register last updated:",
+   "tr": "Kayıt defterinin son güncellenmesi:",
+   "sec": "Sistem mesajları",
+   "rev": "10bbk09"
+  },
+  {
+   "id": "verify.226",
+   "en": "Copy record link",
+   "tr": "Kayıt bağlantısını kopyala",
+   "sec": "Sistem mesajları",
+   "rev": "6xuufh"
+  },
+  {
+   "id": "verify.227",
+   "en": "Antalya office",
+   "tr": "Antalya ofisi",
+   "sec": "Sistem mesajları",
+   "rev": "i5c6cr"
+  },
+  {
+   "id": "verify.228",
+   "en": "Hello JobsAdmire, I want to check something about",
+   "tr": "Merhaba JobsAdmire, şu kişiyle ilgili bir şey sormak istiyorum:",
+   "sec": "Sistem mesajları",
+   "rev": "1yz5nis"
+  },
+  {
+   "id": "verify.229",
+   "en": "Hello JobsAdmire, I want to report someone using your name. Details:",
+   "tr": "Merhaba JobsAdmire, adınızı kullanan birini bildirmek istiyorum. Ayrıntılar:",
+   "sec": "Sistem mesajları",
+   "rev": "1nggiof"
+  },
+  {
+   "id": "verify.230",
+   "en": "Show fewer red flags",
+   "tr": "Daha az uyarı işareti göster",
+   "sec": "Sistem mesajları",
+   "rev": "14mhl61"
+  },
+  {
+   "id": "verify.231",
+   "en": "Show 2 more red flags",
+   "tr": "2 uyarı işareti daha göster",
+   "sec": "Sistem mesajları",
+   "rev": "xe588d"
+  },
+  {
+   "id": "verify.232",
+   "en": "· all report to the Antalya head office",
+   "tr": "· hepsi Antalya merkez ofisine bağlıdır",
+   "sec": "Sistem mesajları",
+   "rev": "1mechzt"
+  },
+  {
+   "id": "verify.233",
+   "en": "CRM Login →",
+   "tr": "CRM Girişi →",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1s31eug"
+  },
+  {
+   "id": "verify.234",
+   "en": ". A badge whose QR goes anywhere else is fake.",
+   "tr": ". QR kodu başka bir yere giden bir kimlik kartı sahtedir.",
+   "sec": "3 adımda doğrulama",
+   "legal": true,
+   "rev": "102i8vh"
+  },
+  {
+   "id": "verify.235",
+   "en": "Nothing matches “",
+   "tr": "Hiçbir kayıt eşleşmiyor: “",
+   "sec": "3 adımda doğrulama",
+   "rev": "1o1kwld"
+  },
+  {
+   "id": "verify.236",
+   "en": "”. An ID can be mistyped — but until it checks out, treat this person as unauthorised.",
+   "tr": "”. Numara yanlış yazılmış olabilir — ama doğrulanmadıkça bu kişiyi yetkisiz kabul edin.",
+   "sec": "3 adımda doğrulama",
+   "legal": true,
+   "rev": "qdjp3j"
+  },
+  {
+   "id": "verify.237",
+   "en": "link",
+   "tr": "bağlantısı",
+   "sec": "Kayıt kartı alanları",
+   "rev": "yixq6d"
+  },
+  {
+   "id": "verify.238",
+   "en": "Record served from our internal system ·",
+   "tr": "Kayıt kendi iç sistemimizden alındı ·",
+   "sec": "Kayıt kartı alanları",
+   "rev": "1masl4g"
+  },
+  {
+   "id": "verify.239",
+   "en": "Something is wrong →",
+   "tr": "Bir sorun var →",
+   "sec": "Kayıt kartı alanları",
+   "rev": "1re9qw6"
+  },
+  {
+   "id": "verify.240",
+   "en": "Management",
+   "tr": "Yönetim",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "1s6z5li"
+  },
+  {
+   "id": "verify.241",
+   "en": "No expiry",
+   "tr": "Süresiz",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "4k2isr"
+  },
+  {
+   "id": "verify.242",
+   "en": "Operations",
+   "tr": "Operasyon",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "1xzaeb"
+  },
+  {
+   "id": "verify.243",
+   "en": "Founder",
+   "tr": "Kurucu",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "wnc1ic"
+  },
+  {
+   "id": "verify.244",
+   "en": "Permits",
+   "tr": "İzinler",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "1ppkqjl"
+  },
+  {
+   "id": "verify.245",
+   "en": "Employer desk",
+   "tr": "İşveren masası",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "9a2p6x"
+  },
+  {
+   "id": "verify.246",
+   "en": "Quality",
+   "tr": "Kalite",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "1fujl8o"
+  },
+  {
+   "id": "verify.247",
+   "en": "Tech team",
+   "tr": "Teknoloji ekibi",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "8cno6a"
+  },
+  {
+   "id": "verify.248",
+   "en": "Tech Manager",
+   "tr": "Teknoloji Müdürü",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "40q3d8"
+  },
+  {
+   "id": "verify.249",
+   "en": "QA Engineer",
+   "tr": "Test Mühendisi",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "1i95zxo"
+  },
+  {
+   "id": "verify.250",
+   "en": "Uzbekistan",
+   "tr": "Özbekistan",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "1jr9u5j"
+  },
+  {
+   "id": "verify.251",
+   "en": "Pakistan",
+   "tr": "Pakistan",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "5d34da"
+  },
+  {
+   "id": "verify.252",
+   "en": "India",
+   "tr": "Hindistan",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "3jpoum"
+  },
+  {
+   "id": "verify.253",
+   "en": "Mumbai, India",
+   "tr": "Mumbai, Hindistan",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "259xtp"
+  },
+  {
+   "id": "verify.254",
+   "en": "Kyrgyzstan",
+   "tr": "Kırgızistan",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "8yrzqh"
+  },
+  {
+   "id": "verify.255",
+   "en": "Nepal",
+   "tr": "Nepal",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "3kmesz"
+  },
+  {
+   "id": "verify.256",
+   "en": "Delhi, India",
+   "tr": "Delhi, Hindistan",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "16762ha"
+  },
+  {
+   "id": "verify.257",
+   "en": "Ghana",
+   "tr": "Gana",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "3fux0k"
+  },
+  {
+   "id": "verify.258",
+   "en": "Accra, Ghana",
+   "tr": "Accra, Gana",
+   "sec": "Kişi kayıtları (CRM)",
+   "rev": "147qyi"
+  },
+  {
+   "id": "verify.259",
+   "en": "Suspended",
+   "tr": "Askıya alındı",
+   "sec": "Kişi kayıtları (CRM)",
+   "legal": true,
+   "rev": "1s61esu"
+  },
+  {
+   "id": "verify.260",
+   "en": "Other",
+   "tr": "Diğer",
+   "sec": "Yetkiler",
+   "rev": "3lrcg1"
+  },
+  {
+   "id": "verify.261",
+   "en": "Türkiye",
+   "tr": "Türkiye",
+   "sec": "Yetkiler",
+   "rev": "1s5ad0h"
+  },
+  {
+   "id": "verify.262",
+   "en": "Sri Lanka",
+   "tr": "Sri Lanka",
+   "sec": "Yetkiler",
+   "rev": "7ywr2c"
+  },
+  {
+   "id": "verify.263",
+   "en": "Antalya",
+   "tr": "Antalya",
+   "sec": "Yetkiler",
+   "rev": "9ixuzv"
+  },
+  {
+   "id": "verify.264",
+   "en": "— photo",
+   "tr": "— fotoğraf",
+   "sec": "Yetkiler",
+   "rev": "1aq87wd"
+  },
+  {
+   "id": "verify.265",
+   "en": "1 person",
+   "tr": "1 kişi",
+   "sec": "Yetkiler",
+   "rev": "138pyip"
+  },
+  {
+   "id": "verify.266",
+   "en": "Live from CRM",
+   "tr": "CRM'den canlı",
+   "sec": "Sistem mesajları",
+   "rev": "ubesqh"
+  },
+  {
+   "id": "verify.267",
+   "en": "Link copied ✓",
+   "tr": "Bağlantı kopyalandı ✓",
+   "sec": "Sistem mesajları",
+   "rev": "1ay6qrm"
+  },
+  {
+   "id": "verify.268",
+   "en": "Since",
+   "tr": "Başlangıç",
+   "sec": "Sistem mesajları",
+   "rev": "3ty65z"
+  },
+  {
+   "id": "verify.269",
+   "en": "Photo",
+   "tr": "Fotoğraf",
+   "sec": "Sistem mesajları",
+   "rev": "3umxd5"
+  },
+  {
+   "id": "verify.270",
+   "en": "All people",
+   "tr": "Tüm kişiler",
+   "sec": "Sistem mesajları",
+   "rev": "yjfhk7"
+  },
+  {
+   "id": "verify.271",
+   "en": "All authorised people",
+   "tr": "Tüm yetkili kişiler",
+   "sec": "Sistem mesajları",
+   "rev": "19ivykp"
+  }
+ ]
+}

@@ -1,0 +1,1033 @@
+{
+ "page": "Blog Article",
+ "route": "/blog/:slug",
+ "strings": [
+  {
+   "id": "blogarticle.001",
+   "en": "İŞKUR Licensed · Permit No. 1730",
+   "tr": "İŞKUR Lisanslı · İzin No. 1730",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "z1r9le"
+  },
+  {
+   "id": "blogarticle.002",
+   "en": "İŞKUR · 1730",
+   "tr": "İŞKUR · 1730",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "1ih9pud"
+  },
+  {
+   "id": "blogarticle.003",
+   "en": "info@jobsadmire.com",
+   "tr": "info@jobsadmire.com",
+   "sec": "Menü ve genel etiketler",
+   "rev": "38yl46"
+  },
+  {
+   "id": "blogarticle.004",
+   "en": "Blog",
+   "tr": "Blog",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjmm4j"
+  },
+  {
+   "id": "blogarticle.005",
+   "en": "Join Our Team",
+   "tr": "Ekibimize Katılın",
+   "sec": "Menü ve genel etiketler",
+   "rev": "ftsz4i"
+  },
+  {
+   "id": "blogarticle.006",
+   "en": "Verify a Representative",
+   "tr": "Temsilci Doğrulama",
+   "sec": "Menü ve genel etiketler",
+   "rev": "l6eh8g"
+  },
+  {
+   "id": "blogarticle.007",
+   "en": "CRM Login",
+   "tr": "CRM Girişi",
+   "sec": "Menü ve genel etiketler",
+   "rev": "57mcey"
+  },
+  {
+   "id": "blogarticle.008",
+   "en": "About Us",
+   "tr": "Hakkımızda",
+   "sec": "Menü ve genel etiketler",
+   "rev": "6iiw1a"
+  },
+  {
+   "id": "blogarticle.009",
+   "en": "Hire Workers",
+   "tr": "İşçi Talebi",
+   "sec": "Menü ve genel etiketler",
+   "rev": "oqbvo6"
+  },
+  {
+   "id": "blogarticle.010",
+   "en": "Candidates",
+   "tr": "Adaylar",
+   "sec": "Menü ve genel etiketler",
+   "rev": "brf3mr"
+  },
+  {
+   "id": "blogarticle.011",
+   "en": "Work Permits",
+   "tr": "Çalışma İzinleri",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1gd2msg"
+  },
+  {
+   "id": "blogarticle.012",
+   "en": "Cost Calculator",
+   "tr": "Maliyet Hesaplama",
+   "sec": "Menü ve genel etiketler",
+   "rev": "k5qxyq"
+  },
+  {
+   "id": "blogarticle.013",
+   "en": "Success Stories",
+   "tr": "Başarı Hikâyeleri",
+   "sec": "Menü ve genel etiketler",
+   "rev": "11w6kar"
+  },
+  {
+   "id": "blogarticle.014",
+   "en": "Contact Us",
+   "tr": "İletişim",
+   "sec": "Menü ve genel etiketler",
+   "rev": "14c3gdf"
+  },
+  {
+   "id": "blogarticle.015",
+   "en": "Partner With Us",
+   "tr": "İş Ortağı Olun",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1redpm7"
+  },
+  {
+   "id": "blogarticle.016",
+   "en": "Request",
+   "tr": "Talep",
+   "sec": "Menü ve genel etiketler",
+   "rev": "lixris"
+  },
+  {
+   "id": "blogarticle.017",
+   "en": "Workers",
+   "tr": "Oluştur",
+   "sec": "Menü ve genel etiketler",
+   "rev": "11joiw0"
+  },
+  {
+   "id": "blogarticle.018",
+   "en": "Language",
+   "tr": "Dil",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1s1gw53"
+  },
+  {
+   "id": "blogarticle.019",
+   "en": "Blog & Guides",
+   "tr": "Blog ve Rehberler",
+   "sec": "Menü ve genel etiketler",
+   "rev": "4wi5os"
+  },
+  {
+   "id": "blogarticle.020",
+   "en": "CRM Login →",
+   "tr": "CRM Girişi →",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1s31eug"
+  },
+  {
+   "id": "blogarticle.021",
+   "en": "Menu",
+   "tr": "Menü",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjlvbq"
+  },
+  {
+   "id": "blogarticle.022",
+   "en": "Home",
+   "tr": "Ana Sayfa",
+   "sec": "Yazı başlığı ve künye",
+   "rev": "yjtufe"
+  },
+  {
+   "id": "blogarticle.023",
+   "en": "JobsAdmire Editorial",
+   "tr": "JobsAdmire Yayın Ekibi",
+   "sec": "Yazı başlığı ve künye",
+   "rev": "1o3c3cy"
+  },
+  {
+   "id": "blogarticle.024",
+   "en": "In this article",
+   "tr": "Bu yazıda",
+   "sec": "Yazı içeriği",
+   "rev": "91wna8"
+  },
+  {
+   "id": "blogarticle.025",
+   "en": "Turkey's factories, hotels, farms and construction sites are all competing for the same shrinking pool of local labor. Hiring from overseas is the practical answer — but the work permit process stops many employers before they start. This guide walks through it, end to end.",
+   "tr": "Türkiye’nin fabrikaları, otelleri, çiftlikleri ve inşaat sahaları aynı daralan yerel işgücü havuzu için yarışıyor. Yurt dışından işe alım pratik cevaptır — ancak çalışma izni süreci birçok işvereni başlamadan durdurur. Bu rehber süreci baştan sona anlatıyor.",
+   "sec": "Yazı içeriği",
+   "rev": "b6q32t"
+  },
+  {
+   "id": "blogarticle.026",
+   "en": "Key takeaways",
+   "tr": "Öne çıkanlar",
+   "sec": "Yazı içeriği",
+   "rev": "apj74k"
+  },
+  {
+   "id": "blogarticle.027",
+   "en": "The employer applies, not the worker — and salary below the ministry minimum is the #1 rejection reason.",
+   "tr": "Başvuruyu işveren yapar, işçi değil — ve bakanlık asgarisinin altındaki ücret 1 numaralı ret nedenidir.",
+   "sec": "Yazı içeriği",
+   "rev": "1plbngp"
+  },
+  {
+   "id": "blogarticle.028",
+   "en": "You need 5 Turkish employees per foreign hire, plus 100,000 TL capital — shortage sectors get exemptions.",
+   "tr": "Her yabancı çalışan için 5 Türk çalışan ve 100.000 TL sermaye gerekir — işgücü açığı olan sektörlerde muafiyet vardır.",
+   "sec": "Yazı içeriği",
+   "rev": "1r617f8"
+  },
+  {
+   "id": "blogarticle.029",
+   "en": "Realistic timeline: 4–8 weeks end to end, including ~30 days of ministry review.",
+   "tr": "Gerçekçi süre: baştan sona 4–8 hafta, yaklaşık 30 günlük bakanlık incelemesi dahil.",
+   "sec": "Yazı içeriği",
+   "rev": "11jqxb8"
+  },
+  {
+   "id": "blogarticle.030",
+   "en": "A licensed agency can file and track everything — you never touch a form.",
+   "tr": "Lisanslı bir ajans her şeyi sunar ve takip eder — hiçbir forma dokunmazsınız.",
+   "sec": "Yazı içeriği",
+   "legal": true,
+   "rev": "195zf9e"
+  },
+  {
+   "id": "blogarticle.031",
+   "en": "Who can hire foreign workers in Turkey?",
+   "tr": "Türkiye’de kimler yabancı işçi çalıştırabilir?",
+   "sec": "Yazı içeriği",
+   "rev": "1ebceug"
+  },
+  {
+   "id": "blogarticle.032",
+   "en": "Work permits are applied for by the",
+   "tr": "Çalışma izni başvurusunu",
+   "sec": "Yazı içeriği",
+   "rev": "yz9n3e"
+  },
+  {
+   "id": "blogarticle.033",
+   "en": "employer",
+   "tr": "işverene",
+   "sec": "Yazı içeriği",
+   "rev": "11mdc4w"
+  },
+  {
+   "id": "blogarticle.034",
+   "en": ", not the worker. The Ministry of Labor evaluates your company before it evaluates the candidate. Two criteria matter most:",
+   "tr": "yapar, işçi değil. Çalışma Bakanlığı adayı değerlendirmeden önce şirketinizi değerlendirir. En çok iki kriter önemlidir:",
+   "sec": "Yazı içeriği",
+   "legal": true,
+   "rev": "ixq1y3"
+  },
+  {
+   "id": "blogarticle.035",
+   "en": "5 : 1 rule",
+   "tr": "5 : 1 kuralı",
+   "sec": "Yazı içeriği",
+   "rev": "1o41l3p"
+  },
+  {
+   "id": "blogarticle.036",
+   "en": "Five Turkish employees registered at the workplace for each foreign worker you hire.",
+   "tr": "İşe aldığınız her yabancı çalışan için işyerinde kayıtlı beş Türk çalışan bulunmalıdır.",
+   "sec": "Yazı içeriği",
+   "rev": "ag8h0b"
+  },
+  {
+   "id": "blogarticle.037",
+   "en": "Capital / turnover",
+   "tr": "Sermaye / ciro",
+   "sec": "Yazı içeriği",
+   "rev": "11xp46z"
+  },
+  {
+   "id": "blogarticle.038",
+   "en": "Paid-in capital of at least 100,000 TL, or gross sales that meet the ministry's threshold.",
+   "tr": "En az 100.000 TL ödenmiş sermaye veya bakanlığın eşiğini karşılayan brüt satış.",
+   "sec": "Yazı içeriği",
+   "rev": "1txhk3j"
+  },
+  {
+   "id": "blogarticle.039",
+   "en": "Sectors with proven labor shortages — agriculture, manufacturing, tourism — benefit from exemptions and quotas that a licensed agency can apply on your behalf.",
+   "tr": "Kanıtlanmış işgücü açığı olan sektörler — tarım, imalat, turizm — lisanslı bir ajansın sizin adınıza kullanabileceği muafiyet ve kotalardan yararlanır.",
+   "sec": "Yazı içeriği",
+   "legal": true,
+   "rev": "12zff4t"
+  },
+  {
+   "id": "blogarticle.040",
+   "en": "Documents you'll need",
+   "tr": "Gerekli belgeler",
+   "sec": "Yazı içeriği",
+   "rev": "moaiwn"
+  },
+  {
+   "id": "blogarticle.041",
+   "en": "Signed employment contract",
+   "tr": "İmzalı iş sözleşmesi",
+   "sec": "Yazı içeriği",
+   "rev": "1lpmb9"
+  },
+  {
+   "id": "blogarticle.042",
+   "en": "Worker's passport copy",
+   "tr": "İşçinin pasaport kopyası",
+   "sec": "Yazı içeriği",
+   "rev": "15r3aq2"
+  },
+  {
+   "id": "blogarticle.043",
+   "en": "Diploma or skill certificate",
+   "tr": "Diploma veya beceri sertifikası",
+   "sec": "Yazı içeriği",
+   "rev": "d70vhq"
+  },
+  {
+   "id": "blogarticle.044",
+   "en": "Company tax & activity records",
+   "tr": "Şirket vergi ve faaliyet kayıtları",
+   "sec": "Yazı içeriği",
+   "rev": "1bjska"
+  },
+  {
+   "id": "blogarticle.045",
+   "en": "Current SGK service statement",
+   "tr": "Güncel SGK hizmet dökümü",
+   "sec": "Yazı içeriği",
+   "rev": "1fdknmz"
+  },
+  {
+   "id": "blogarticle.046",
+   "en": "Online application form",
+   "tr": "Çevrim içi başvuru formu",
+   "sec": "Yazı içeriği",
+   "rev": "11ppjza"
+  },
+  {
+   "id": "blogarticle.047",
+   "en": "The application, step by step",
+   "tr": "Başvuru, adım adım",
+   "sec": "Yazı içeriği",
+   "rev": "1nseu1d"
+  },
+  {
+   "id": "blogarticle.048",
+   "en": "Job offer & contract.",
+   "tr": "İş teklifi ve sözleşme.",
+   "sec": "Yazı içeriği",
+   "rev": "rlag80"
+  },
+  {
+   "id": "blogarticle.049",
+   "en": "The employer and candidate sign a contract that states role, salary and duration.",
+   "tr": "İşveren ve aday, pozisyonu, ücreti ve süreyi belirten bir sözleşme imzalar.",
+   "sec": "Yazı içeriği",
+   "rev": "bi3m31"
+  },
+  {
+   "id": "blogarticle.050",
+   "en": "Online application.",
+   "tr": "Çevrim içi başvuru.",
+   "sec": "Yazı içeriği",
+   "rev": "9kfbsu"
+  },
+  {
+   "id": "blogarticle.051",
+   "en": "Filed through the Ministry of Labor's e-permit system; the worker applies at the Turkish consulate in their country in parallel.",
+   "tr": "Çalışma Bakanlığı’nın e-izin sistemi üzerinden sunulur; işçi paralel olarak ülkesindeki Türk konsolosluğuna başvurur.",
+   "sec": "Yazı içeriği",
+   "legal": true,
+   "rev": "1rwq1ns"
+  },
+  {
+   "id": "blogarticle.052",
+   "en": "Ministry review.",
+   "tr": "Bakanlık incelemesi.",
+   "sec": "Yazı içeriği",
+   "rev": "1dnbdsu"
+  },
+  {
+   "id": "blogarticle.053",
+   "en": "Evaluation typically takes about 30 days; missing documents restart the clock.",
+   "tr": "Değerlendirme genellikle yaklaşık 30 gün sürer; eksik belgeler süreyi baştan başlatır.",
+   "sec": "Yazı içeriği",
+   "rev": "1tm2a1q"
+  },
+  {
+   "id": "blogarticle.054",
+   "en": "Approval & fees.",
+   "tr": "Onay ve harçlar.",
+   "sec": "Yazı içeriği",
+   "rev": "b0067"
+  },
+  {
+   "id": "blogarticle.055",
+   "en": "Permit and card fees are paid; the permit doubles as a residence permit.",
+   "tr": "İzin ve kart harçları ödenir; izin aynı zamanda ikamet izni yerine geçer.",
+   "sec": "Yazı içeriği",
+   "rev": "yq6ybz"
+  },
+  {
+   "id": "blogarticle.056",
+   "en": "Arrival & SGK.",
+   "tr": "Varış ve SGK.",
+   "sec": "Yazı içeriği",
+   "rev": "dvbwo1"
+  },
+  {
+   "id": "blogarticle.057",
+   "en": "The worker enters Turkey with a work visa and must be registered with SGK within 30 days of starting.",
+   "tr": "İşçi çalışma vizesiyle Türkiye’ye giriş yapar ve işe başladıktan itibaren 30 gün içinde SGK’ya kaydedilmelidir.",
+   "sec": "Yazı içeriği",
+   "rev": "djkwky"
+  },
+  {
+   "id": "blogarticle.058",
+   "en": "Mistakes that get applications rejected",
+   "tr": "Başvuruların reddedilmesine yol açan hatalar",
+   "sec": "Yazı içeriği",
+   "rev": "1isz882"
+  },
+  {
+   "id": "blogarticle.059",
+   "en": "Salary below the ministry's minimum for the role — the most common rejection reason.",
+   "tr": "Pozisyon için bakanlığın asgarisinin altında ücret — en yaygın ret nedeni.",
+   "sec": "Yazı içeriği",
+   "rev": "l138js"
+  },
+  {
+   "id": "blogarticle.060",
+   "en": "Contract details that don't match the online application.",
+   "tr": "Çevrim içi başvuruyla uyuşmayan sözleşme bilgileri.",
+   "sec": "Yazı içeriği",
+   "rev": "ogmd97"
+  },
+  {
+   "id": "blogarticle.061",
+   "en": "Applying while the 5:1 employee ratio isn't met.",
+   "tr": "5:1 çalışan oranı sağlanmadan başvurmak.",
+   "sec": "Yazı içeriği",
+   "rev": "73ahz3"
+  },
+  {
+   "id": "blogarticle.062",
+   "en": "Missing consulate appointment on the worker's side.",
+   "tr": "İşçi tarafında eksik konsolosluk randevusu.",
+   "sec": "Yazı içeriği",
+   "rev": "1dn4cvt"
+  },
+  {
+   "id": "blogarticle.063",
+   "en": "As a licensed İŞKUR agency, JobsAdmire files and tracks the entire permit application for you — most of our clients never touch a single form.",
+   "tr": "Lisanslı bir İŞKUR ajansı olarak JobsAdmire, izin başvurusunun tamamını sizin için sunar ve takip eder — müşterilerimizin çoğu tek bir forma dahi dokunmaz.",
+   "sec": "Yazı içeriği",
+   "legal": true,
+   "rev": "1rhquwb"
+  },
+  {
+   "id": "blogarticle.064",
+   "en": "Talk to a permit specialist →",
+   "tr": "Bir izin uzmanıyla görüşün →",
+   "sec": "Yazı içeriği",
+   "rev": "1czvo1z"
+  },
+  {
+   "id": "blogarticle.065",
+   "en": "Frequently asked questions",
+   "tr": "Sıkça sorulan sorular",
+   "sec": "Yazı içeriği",
+   "rev": "eoopun"
+  },
+  {
+   "id": "blogarticle.066",
+   "en": "Written by JobsAdmire Editorial",
+   "tr": "JobsAdmire Yayın Ekibi tarafından yazıldı",
+   "sec": "Yazı içeriği",
+   "rev": "1evv0ji"
+  },
+  {
+   "id": "blogarticle.067",
+   "en": "Our recruitment team in Antalya files work permit applications every week — this guide reflects real cases, not theory.",
+   "tr": "Antalya’daki işe alım ekibimiz her hafta çalışma izni başvurusu yapıyor — bu rehber teoriyi değil, gerçek vakaları yansıtıyor.",
+   "sec": "Yazı içeriği",
+   "rev": "rl9zot"
+  },
+  {
+   "id": "blogarticle.068",
+   "en": "İŞKUR Licensed · No. 1730",
+   "tr": "İŞKUR Lisanslı · No. 1730",
+   "sec": "Yazı içeriği",
+   "legal": true,
+   "rev": "1ndgd0l"
+  },
+  {
+   "id": "blogarticle.069",
+   "en": "Share",
+   "tr": "Paylaş",
+   "sec": "Yazı içeriği",
+   "rev": "3tz9yg"
+  },
+  {
+   "id": "blogarticle.070",
+   "en": "this article",
+   "tr": "bu yazıyı",
+   "sec": "Yazı içeriği",
+   "rev": "lxgarr"
+  },
+  {
+   "id": "blogarticle.071",
+   "en": "Need workers with permits handled?",
+   "tr": "İzinleri halledilmiş işçi mi arıyorsunuz?",
+   "sec": "Yazı içeriği",
+   "rev": "171kflp"
+  },
+  {
+   "id": "blogarticle.072",
+   "en": "Tell us the roles — we source, vet and file every permit.",
+   "tr": "Pozisyonları bize söyleyin — biz bulur, kontrol eder ve her izni sunarız.",
+   "sec": "Yazı içeriği",
+   "rev": "6zg4xh"
+  },
+  {
+   "id": "blogarticle.073",
+   "en": "Request Workers →",
+   "tr": "İşçi talep edin →",
+   "sec": "Yazı içeriği",
+   "rev": "1t7ca6b"
+  },
+  {
+   "id": "blogarticle.074",
+   "en": "Share on WhatsApp",
+   "tr": "WhatsApp’ta paylaş",
+   "sec": "Yazı içeriği",
+   "rev": "nelslt"
+  },
+  {
+   "id": "blogarticle.075",
+   "en": "Share on LinkedIn",
+   "tr": "LinkedIn’de paylaş",
+   "sec": "Yazı içeriği",
+   "rev": "1184qzz"
+  },
+  {
+   "id": "blogarticle.076",
+   "en": "Share on X",
+   "tr": "X’te paylaş",
+   "sec": "Yazı içeriği",
+   "rev": "1mva7kh"
+  },
+  {
+   "id": "blogarticle.077",
+   "en": "In progress",
+   "tr": "Devam ediyor",
+   "sec": "Hazırlanıyor",
+   "rev": "1jgvsfz"
+  },
+  {
+   "id": "blogarticle.078",
+   "en": "Full guide is being written",
+   "tr": "Tam rehber yazılıyor",
+   "sec": "Hazırlanıyor",
+   "rev": "9ae1p2"
+  },
+  {
+   "id": "blogarticle.079",
+   "en": "Read the permit guide →",
+   "tr": "İzin rehberini okuyun →",
+   "sec": "Hazırlanıyor",
+   "rev": "19y19w1"
+  },
+  {
+   "id": "blogarticle.080",
+   "en": "All articles",
+   "tr": "Tüm yazılar",
+   "sec": "Hazırlanıyor",
+   "rev": "fudzhv"
+  },
+  {
+   "id": "blogarticle.081",
+   "en": "Related articles",
+   "tr": "İlgili yazılar",
+   "sec": "İlgili yazılar",
+   "rev": "1etr02l"
+  },
+  {
+   "id": "blogarticle.082",
+   "en": "← Previous article",
+   "tr": "← Önceki yazı",
+   "sec": "İlgili yazılar",
+   "rev": "17jf8cg"
+  },
+  {
+   "id": "blogarticle.083",
+   "en": "Next article →",
+   "tr": "Sonraki yazı →",
+   "sec": "İlgili yazılar",
+   "rev": "1syda0k"
+  },
+  {
+   "id": "blogarticle.084",
+   "en": "Hiring overseas workers? We handle the permits, end to end.",
+   "tr": "Yurt dışından işçi mi alıyorsunuz? İzinleri baştan sona biz hallediyoruz.",
+   "sec": "Yazar ve paylaşım",
+   "rev": "ygv3mi"
+  },
+  {
+   "id": "blogarticle.085",
+   "en": "WhatsApp Us",
+   "tr": "Bize WhatsApp’tan yazın",
+   "sec": "Yazar ve paylaşım",
+   "rev": "r6eb7f"
+  },
+  {
+   "id": "blogarticle.086",
+   "en": "Hiring insights, once a month",
+   "tr": "Aylık İşe Alım Bülteni",
+   "sec": "Bülten",
+   "rev": "1s98ee1"
+  },
+  {
+   "id": "blogarticle.087",
+   "en": "Work permit updates, market news and hiring guides — straight to your inbox.",
+   "tr": "Çalışma izni güncellemeleri, piyasa haberleri ve işe alım rehberleri — doğrudan e-postanıza.",
+   "sec": "Bülten",
+   "rev": "1m61xdv"
+  },
+  {
+   "id": "blogarticle.088",
+   "en": "No spam, unsubscribe anytime.",
+   "tr": "Spam yok, dilediğiniz zaman çıkabilirsiniz.",
+   "sec": "Bülten",
+   "rev": "1915p4p"
+  },
+  {
+   "id": "blogarticle.089",
+   "en": "Subscribe →",
+   "tr": "Abone olun →",
+   "sec": "Bülten",
+   "rev": "1hd6pzz"
+  },
+  {
+   "id": "blogarticle.090",
+   "en": "Joined by 200+ employers & HR partners",
+   "tr": "200+ işveren ve İK ortağı katıldı",
+   "sec": "Bülten",
+   "rev": "scxdkz"
+  },
+  {
+   "id": "blogarticle.091",
+   "en": "Your work email",
+   "tr": "İş e-postanız",
+   "sec": "Bülten",
+   "rev": "hhernd"
+  },
+  {
+   "id": "blogarticle.092",
+   "en": "Reading about hiring? Let's just do it.",
+   "tr": "İşe alım hakkında okuyor musunuz? Hadi yapalım.",
+   "sec": "Kapanış çağrısı",
+   "rev": "1ajcz33"
+  },
+  {
+   "id": "blogarticle.093",
+   "en": "Free consultation for employers — tell us what you need.",
+   "tr": "İşverenler için ücretsiz danışmanlık — neye ihtiyacınız olduğunu söyleyin.",
+   "sec": "Kapanış çağrısı",
+   "rev": "8wtawz"
+  },
+  {
+   "id": "blogarticle.094",
+   "en": "İŞKUR licensed — permit No. 1730",
+   "tr": "İŞKUR lisanslı — izin No. 1730",
+   "sec": "Kapanış çağrısı",
+   "legal": true,
+   "rev": "9ocoa9"
+  },
+  {
+   "id": "blogarticle.095",
+   "en": "Free proposal in 24 hours",
+   "tr": "24 saatte ücretsiz teklif",
+   "sec": "Kapanış çağrısı",
+   "rev": "8wu573"
+  },
+  {
+   "id": "blogarticle.096",
+   "en": "Call us",
+   "tr": "Bizi arayın",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1pu4zvl"
+  },
+  {
+   "id": "blogarticle.097",
+   "en": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+   "tr": "Türkiye’deki işverenler için lisanslı iş gücü temini — yurt dışı tedarik, inceleme ve çalışma izinleri, uçtan uca.",
+   "sec": "Alt bilgi (Footer)",
+   "legal": true,
+   "rev": "1v5awlm"
+  },
+  {
+   "id": "blogarticle.098",
+   "en": "For Employers",
+   "tr": "İşverenler için",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1yhsmw"
+  },
+  {
+   "id": "blogarticle.099",
+   "en": "Available Workers",
+   "tr": "Mevcut İşçiler",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "wzront"
+  },
+  {
+   "id": "blogarticle.100",
+   "en": "Hiring Cost Calculator",
+   "tr": "İşçi Maliyet Hesaplama",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "e9bold"
+  },
+  {
+   "id": "blogarticle.101",
+   "en": "Company",
+   "tr": "Kurumsal",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1ohrlxe"
+  },
+  {
+   "id": "blogarticle.102",
+   "en": "Contact",
+   "tr": "İletişim",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1ofoso5"
+  },
+  {
+   "id": "blogarticle.103",
+   "en": "Telegram · @jobsadmire",
+   "tr": "Telegram · @jobsadmire",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3y9lox"
+  },
+  {
+   "id": "blogarticle.104",
+   "en": "Antalya · Head office",
+   "tr": "Antalya · Merkez ofis",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1vkrek4"
+  },
+  {
+   "id": "blogarticle.105",
+   "en": "Adnan Menderes Blv. No 7/6",
+   "tr": "Adnan Menderes Blv. No 7/6",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "muabnf"
+  },
+  {
+   "id": "blogarticle.106",
+   "en": "Muratpaşa, Antalya, Türkiye",
+   "tr": "Muratpaşa, Antalya, Türkiye",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "e06xbz"
+  },
+  {
+   "id": "blogarticle.107",
+   "en": "Mon–Fri 09:00–18:00",
+   "tr": "Pzt–Cum 09:00–18:00",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1pratzo"
+  },
+  {
+   "id": "blogarticle.108",
+   "en": "Get directions",
+   "tr": "Yol tarifi alın",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "9twfut"
+  },
+  {
+   "id": "blogarticle.109",
+   "en": "Karachi · Tech office",
+   "tr": "Karaçi · Teknoloji ofisi",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1dihier"
+  },
+  {
+   "id": "blogarticle.110",
+   "en": "Shahrah-e-Faisal",
+   "tr": "Shahrah-e-Faisal",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "y795a1"
+  },
+  {
+   "id": "blogarticle.111",
+   "en": "Karachi, Pakistan",
+   "tr": "Karaçi, Pakistan",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1td9ko9"
+  },
+  {
+   "id": "blogarticle.112",
+   "en": "Mon–Sat 10:00–19:00 PKT",
+   "tr": "Pzt–Cmt 10:00–19:00 PKT",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1w2dzmx"
+  },
+  {
+   "id": "blogarticle.113",
+   "en": "WhatsApp Us →",
+   "tr": "WhatsApp’tan yazın →",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1bo2cnd"
+  },
+  {
+   "id": "blogarticle.114",
+   "en": "Get Our App",
+   "tr": "Uygulamamızı İndirin",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "ncsu7u"
+  },
+  {
+   "id": "blogarticle.115",
+   "en": "Workforce on the go",
+   "tr": "İş gücü her yerde yanınızda",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3cj12h"
+  },
+  {
+   "id": "blogarticle.116",
+   "en": "Approve candidates, track permits & get instant updates.",
+   "tr": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "19enop8"
+  },
+  {
+   "id": "blogarticle.117",
+   "en": "GET IT ON",
+   "tr": "İNDİRİN",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "xm8p2n"
+  },
+  {
+   "id": "blogarticle.118",
+   "en": "DOWNLOAD ON THE",
+   "tr": "İNDİRİN",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "mgrgjt"
+  },
+  {
+   "id": "blogarticle.119",
+   "en": "İŞKUR permit No. 1730 · Job seekers are never charged a fee (law No. 4904) · Tax No: 48422122",
+   "tr": "İŞKUR izin No. 1730 · İş arayanlardan asla ücret alınmaz (4904 sayılı kanun) · Vergi No: 48422122",
+   "sec": "Alt bilgi (Footer)",
+   "legal": true,
+   "rev": "dgg8hy"
+  },
+  {
+   "id": "blogarticle.120",
+   "en": "Privacy",
+   "tr": "Gizlilik Politikası",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1ligp4z"
+  },
+  {
+   "id": "blogarticle.121",
+   "en": "Terms",
+   "tr": "Kullanım Şartları",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3rktfc"
+  },
+  {
+   "id": "blogarticle.122",
+   "en": "© 2026 Jobs Admire",
+   "tr": "© 2026 Jobs Admire",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1f7jgq0"
+  },
+  {
+   "id": "blogarticle.123",
+   "en": "JobsAdmire app",
+   "tr": "JobsAdmire uygulaması",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "10jpxja"
+  },
+  {
+   "id": "blogarticle.124",
+   "en": "Who can hire foreign workers?",
+   "tr": "Kimler yabancı işçi çalıştırabilir?",
+   "sec": "SSS",
+   "rev": "13g95qj"
+  },
+  {
+   "id": "blogarticle.125",
+   "en": "Rejection mistakes",
+   "tr": "Ret nedeni hatalar",
+   "sec": "SSS ve arayüz",
+   "rev": "lw4c1p"
+  },
+  {
+   "id": "blogarticle.126",
+   "en": "FAQ",
+   "tr": "SSS",
+   "sec": "SSS ve arayüz",
+   "rev": "37651v"
+  },
+  {
+   "id": "blogarticle.127",
+   "en": "How long does a Turkey work permit take?",
+   "tr": "Türkiye çalışma izni ne kadar sürer?",
+   "sec": "SSS",
+   "rev": "f976j9"
+  },
+  {
+   "id": "blogarticle.128",
+   "en": "Who pays for the permit — employer or worker?",
+   "tr": "İzni kim öder — işveren mi işçi mi?",
+   "sec": "SSS",
+   "rev": "17vgoa6"
+  },
+  {
+   "id": "blogarticle.129",
+   "en": "The employer files the application and pays the permit fees. Job seekers are never charged by JobsAdmire — charging candidates is illegal for licensed agencies.",
+   "tr": "Başvuruyu işveren yapar ve izin harçlarını öder. JobsAdmire iş arayanlardan asla ücret almaz — lisanslı ajansların adaylardan ücret alması yasa dışıdır.",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "k80fdc"
+  },
+  {
+   "id": "blogarticle.130",
+   "en": "Shortage sectors such as agriculture and some manufacturing lines qualify for exemptions. We check your eligibility for free before any application is filed.",
+   "tr": "Tarım ve bazı imalat kolları gibi işgücü açığı olan sektörler muafiyet kapsamındadır. Herhangi bir başvuru yapılmadan önce uygunluğunuzu ücretsiz kontrol ediyoruz.",
+   "sec": "SSS ve arayüz",
+   "rev": "1ee8k43"
+  },
+  {
+   "id": "blogarticle.131",
+   "en": "What happens if the application is rejected?",
+   "tr": "Başvuru reddedilirse ne olur?",
+   "sec": "SSS",
+   "rev": "17okjix"
+  },
+  {
+   "id": "blogarticle.132",
+   "en": "You can correct the issue and re-apply. Because we pre-check salary thresholds, ratios and documents, our clients' applications are approved on the first attempt in the vast majority of cases.",
+   "tr": "Sorunu düzeltip yeniden başvurabilirsiniz. Ücret eşiklerini, oranları ve belgeleri önceden kontrol ettiğimiz için müşterilerimizin başvuruları vakaların büyük çoğunluğunda ilk denemede onaylanır.",
+   "sec": "SSS",
+   "rev": "kztoot"
+  },
+  {
+   "id": "blogarticle.133",
+   "en": "Recruitment",
+   "tr": "İşe alım",
+   "sec": "SSS ve arayüz",
+   "rev": "1l99vh5"
+  },
+  {
+   "id": "blogarticle.134",
+   "en": "Compliance",
+   "tr": "Mevzuat",
+   "sec": "SSS ve arayüz",
+   "rev": "1lxbewo"
+  },
+  {
+   "id": "blogarticle.135",
+   "en": "Mevzuat",
+   "tr": "Mevzuat",
+   "sec": "SSS ve arayüz",
+   "rev": "ohahr5"
+  },
+  {
+   "id": "blogarticle.136",
+   "en": "Market News",
+   "tr": "Piyasa haberleri",
+   "sec": "SSS ve arayüz",
+   "rev": "1pxhwj2"
+  },
+  {
+   "id": "blogarticle.137",
+   "en": "Piyasa Haberleri",
+   "tr": "Piyasa Haberleri",
+   "sec": "SSS ve arayüz",
+   "rev": "1k7y2fs"
+  },
+  {
+   "id": "blogarticle.138",
+   "en": "Article not found",
+   "tr": "Yazı bulunamadı",
+   "sec": "SSS ve arayüz",
+   "rev": "aj030i"
+  },
+  {
+   "id": "blogarticle.139",
+   "en": "This link does not match any article in the index — browse all articles instead.",
+   "tr": "Bu bağlantı dizindeki hiçbir yazıyla eşleşmiyor — bunun yerine tüm yazılara göz atın.",
+   "sec": "SSS ve arayüz",
+   "rev": "1haz5rs"
+  },
+  {
+   "id": "blogarticle.140",
+   "en": "Almost done",
+   "tr": "Neredeyse bitti",
+   "sec": "SSS ve arayüz",
+   "rev": "1vtf3v1"
+  },
+  {
+   "id": "blogarticle.141",
+   "en": "min left",
+   "tr": "dk kaldı",
+   "sec": "SSS ve arayüz",
+   "rev": "1s3p9mc"
+  },
+  {
+   "id": "blogarticle.142",
+   "en": "Hello JobsAdmire, I want to hire workers.",
+   "tr": "Merhaba JobsAdmire, işçi talebinde bulunmak istiyorum.",
+   "sec": "SSS ve arayüz",
+   "rev": "17wwilm"
+  },
+  {
+   "id": "blogarticle.143",
+   "en": "TR · Also in English",
+   "tr": "TR · İngilizce'de de var",
+   "sec": "SSS ve arayüz",
+   "rev": "mp0nzk"
+  },
+  {
+   "id": "blogarticle.144",
+   "en": "Copied!",
+   "tr": "Kopyalandı!",
+   "sec": "SSS ve arayüz",
+   "rev": "1ouqdm8"
+  },
+  {
+   "id": "blogarticle.145",
+   "en": "Copy link",
+   "tr": "Bağlantıyı kopyala",
+   "sec": "SSS ve arayüz",
+   "rev": "1nmu080"
+  }
+ ]
+}

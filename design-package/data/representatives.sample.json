@@ -1,0 +1,269 @@
+{
+  "updated": "2026-07-29T08:00:00Z",
+  "representatives": [
+    {
+      "id": "JA-REP-001",
+      "name": "Haris Jiva",
+      "role": "Founder · sole signatory",
+      "level": "founder",
+      "desk": "Management",
+      "place": "Antalya, Turkey",
+      "languages": [
+        "Turkish",
+        "English"
+      ],
+      "contact": "+90 501 124 03 40",
+      "valid": "No expiry",
+      "reportsTo": "—",
+      "status": "active",
+      "canSign": true,
+      "photo": ""
+    },
+    {
+      "id": "JA-OFF-004",
+      "name": "Recruitment Specialist",
+      "role": "Job orders, shortlists, arrivals",
+      "level": "office",
+      "desk": "Operations",
+      "place": "Antalya, Turkey",
+      "languages": [
+        "Turkish",
+        "English"
+      ],
+      "contact": "+90 501 124 03 40",
+      "valid": "31 Dec 2026",
+      "reportsTo": "Founder",
+      "status": "active",
+      "canSign": false,
+      "photo": ""
+    },
+    {
+      "id": "JA-OFF-007",
+      "name": "Work Permit Officer",
+      "role": "Work permits, SGK, quota checks",
+      "level": "office",
+      "desk": "Permits",
+      "place": "Antalya, Turkey",
+      "languages": [
+        "Turkish",
+        "English"
+      ],
+      "contact": "+90 501 124 03 40",
+      "valid": "31 Dec 2026",
+      "reportsTo": "Founder",
+      "status": "active",
+      "canSign": false,
+      "photo": ""
+    },
+    {
+      "id": "JA-OFF-012",
+      "name": "Business Development Executive",
+      "role": "Site visits, offers, invoices",
+      "level": "office",
+      "desk": "Employer desk",
+      "place": "Antalya, Turkey",
+      "languages": [
+        "Turkish",
+        "English"
+      ],
+      "contact": "+90 553 383 2549",
+      "valid": "31 Dec 2026",
+      "reportsTo": "Founder",
+      "status": "active",
+      "canSign": false,
+      "photo": ""
+    },
+    {
+      "id": "JA-OFF-016",
+      "name": "Quality & Compliance Officer",
+      "role": "Trade tests, document checks",
+      "level": "office",
+      "desk": "Quality",
+      "place": "Antalya, Turkey",
+      "languages": [
+        "Turkish",
+        "English",
+        "Russian"
+      ],
+      "contact": "+90 501 124 03 40",
+      "valid": "31 Dec 2026",
+      "reportsTo": "Founder",
+      "status": "active",
+      "canSign": false,
+      "photo": ""
+    },
+    {
+      "id": "JA-OFF-021",
+      "name": "Faraz",
+      "role": "Tech Manager — website, CRM & internal systems",
+      "level": "office",
+      "desk": "Tech team",
+      "place": "Karachi, Pakistan",
+      "languages": "Urdu · English",
+      "contact": "+90 501 124 03 40",
+      "valid": "31 Dec 2026",
+      "reportsTo": "Founder",
+      "status": "active",
+      "canSign": false,
+      "since": "Feb 2024"
+    },
+    {
+      "id": "JA-OFF-022",
+      "name": "Product Designer",
+      "role": "Design — website, brand & CRM UI",
+      "level": "office",
+      "desk": "Tech team",
+      "place": "Karachi, Pakistan",
+      "languages": "Urdu · English",
+      "contact": "+90 501 124 03 40",
+      "valid": "31 Dec 2026",
+      "reportsTo": "Tech Manager",
+      "status": "active",
+      "canSign": false,
+      "since": "Apr 2024"
+    },
+    {
+      "id": "JA-OFF-023",
+      "name": "QA Engineer",
+      "role": "Testing — website & CRM releases",
+      "level": "office",
+      "desk": "Tech team",
+      "place": "Karachi, Pakistan",
+      "languages": "Urdu · English",
+      "contact": "+90 501 124 03 40",
+      "valid": "31 Dec 2026",
+      "reportsTo": "Tech Manager",
+      "status": "active",
+      "canSign": false,
+      "since": "Jun 2024"
+    },
+    {
+      "id": "JA-REP-011",
+      "name": "Country Representative",
+      "role": "Uzbekistan desk · full-time",
+      "level": "rep",
+      "desk": "Uzbekistan",
+      "place": "Tashkent, Uzbekistan",
+      "languages": [
+        "Uzbek",
+        "Russian",
+        "English"
+      ],
+      "contact": "+90 553 383 2549",
+      "valid": "31 Dec 2026",
+      "reportsTo": "Operations, Antalya",
+      "status": "active",
+      "canSign": false,
+      "photo": ""
+    },
+    {
+      "id": "JA-REP-014",
+      "name": "Country Representative",
+      "role": "Pakistan desk · full-time",
+      "level": "rep",
+      "desk": "Pakistan",
+      "place": "Karachi, Pakistan",
+      "languages": [
+        "Urdu",
+        "English"
+      ],
+      "contact": "+90 553 383 2549",
+      "valid": "31 Dec 2026",
+      "reportsTo": "Operations, Antalya",
+      "status": "active",
+      "canSign": false,
+      "photo": ""
+    },
+    {
+      "id": "JA-REP-026",
+      "name": "Country Representative",
+      "role": "Kyrgyzstan desk · full-time",
+      "level": "rep",
+      "desk": "Kyrgyzstan",
+      "place": "Bishkek, Kyrgyzstan",
+      "languages": [
+        "Kyrgyz",
+        "Russian"
+      ],
+      "contact": "+90 553 383 2549",
+      "valid": "31 Dec 2026",
+      "reportsTo": "Operations, Antalya",
+      "status": "active",
+      "canSign": false,
+      "photo": ""
+    },
+    {
+      "id": "JA-REP-019",
+      "name": "Sourcing Coordinator",
+      "role": "Nepal desk · part-time",
+      "level": "coordinator",
+      "desk": "Nepal",
+      "place": "Kathmandu, Nepal",
+      "languages": [
+        "Nepali",
+        "Hindi",
+        "English"
+      ],
+      "contact": "+90 553 383 2549",
+      "valid": "30 Jun 2027",
+      "reportsTo": "Operations, Antalya",
+      "status": "active",
+      "canSign": false,
+      "photo": ""
+    },
+    {
+      "id": "JA-REP-022",
+      "name": "Trade Test Assessor",
+      "role": "Quality · project-based",
+      "level": "coordinator",
+      "desk": "India",
+      "place": "Delhi, India",
+      "languages": [
+        "Hindi",
+        "English"
+      ],
+      "contact": "+90 553 383 2549",
+      "valid": "31 Mar 2027",
+      "reportsTo": "Quality, Antalya",
+      "status": "active",
+      "canSign": false,
+      "photo": ""
+    },
+    {
+      "id": "JA-REP-031",
+      "name": "Sourcing Coordinator",
+      "role": "Ghana desk · part-time",
+      "level": "coordinator",
+      "desk": "Ghana",
+      "place": "Accra, Ghana",
+      "languages": [
+        "English",
+        "French"
+      ],
+      "contact": "+90 553 383 2549",
+      "valid": "31 Dec 2026",
+      "reportsTo": "Operations, Antalya",
+      "status": "active",
+      "canSign": false,
+      "photo": ""
+    },
+    {
+      "id": "JA-REP-009",
+      "name": "Former Representative",
+      "role": "Uzbekistan desk · until 14 Feb 2026",
+      "level": "rep",
+      "desk": "Uzbekistan",
+      "place": "Samarkand, Uzbekistan",
+      "languages": [
+        "Uzbek",
+        "Russian"
+      ],
+      "contact": "Not authorised",
+      "valid": "Ended 14 Feb 2026",
+      "reportsTo": "—",
+      "status": "former",
+      "canSign": false,
+      "photo": ""
+    }
+  ]
+}

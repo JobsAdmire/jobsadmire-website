@@ -1,0 +1,2855 @@
+{
+ "page": "Work Permit",
+ "route": "/work-permit",
+ "strings": [
+  {
+   "id": "wp.001",
+   "en": "İŞKUR Licensed · Permit No. 1730",
+   "tr": "İŞKUR Lisanslı · İzin No. 1730",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "z1r9le"
+  },
+  {
+   "id": "wp.002",
+   "en": "İŞKUR · 1730",
+   "tr": "İŞKUR · 1730",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "1ih9pud"
+  },
+  {
+   "id": "wp.003",
+   "en": "info@jobsadmire.com",
+   "tr": "info@jobsadmire.com",
+   "sec": "Menü ve genel etiketler",
+   "rev": "38yl46"
+  },
+  {
+   "id": "wp.004",
+   "en": "Blog",
+   "tr": "Blog",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjmm4j"
+  },
+  {
+   "id": "wp.005",
+   "en": "Join Our Team",
+   "tr": "Ekibimize Katılın",
+   "sec": "Menü ve genel etiketler",
+   "rev": "ftsz4i"
+  },
+  {
+   "id": "wp.006",
+   "en": "Verify a Representative",
+   "tr": "Temsilci Doğrulama",
+   "sec": "Menü ve genel etiketler",
+   "rev": "l6eh8g"
+  },
+  {
+   "id": "wp.007",
+   "en": "CRM Login",
+   "tr": "CRM Girişi",
+   "sec": "Menü ve genel etiketler",
+   "rev": "57mcey"
+  },
+  {
+   "id": "wp.008",
+   "en": "About Us",
+   "tr": "Hakkımızda",
+   "sec": "Menü ve genel etiketler",
+   "rev": "6iiw1a"
+  },
+  {
+   "id": "wp.009",
+   "en": "Hire Workers",
+   "tr": "İşçi Talebi",
+   "sec": "Menü ve genel etiketler",
+   "rev": "oqbvo6"
+  },
+  {
+   "id": "wp.010",
+   "en": "Candidates",
+   "tr": "Adaylar",
+   "sec": "Menü ve genel etiketler",
+   "rev": "brf3mr"
+  },
+  {
+   "id": "wp.011",
+   "en": "Work Permits",
+   "tr": "Çalışma İzinleri",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1gd2msg"
+  },
+  {
+   "id": "wp.012",
+   "en": "Cost Calculator",
+   "tr": "Maliyet Hesaplama",
+   "sec": "Menü ve genel etiketler",
+   "rev": "k5qxyq"
+  },
+  {
+   "id": "wp.013",
+   "en": "Success Stories",
+   "tr": "Başarı Hikâyeleri",
+   "sec": "Menü ve genel etiketler",
+   "rev": "11w6kar"
+  },
+  {
+   "id": "wp.014",
+   "en": "Contact Us",
+   "tr": "İletişim",
+   "sec": "Menü ve genel etiketler",
+   "rev": "14c3gdf"
+  },
+  {
+   "id": "wp.015",
+   "en": "Partner With Us",
+   "tr": "İş Ortağı Olun",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1redpm7"
+  },
+  {
+   "id": "wp.016",
+   "en": "Apply",
+   "tr": "Başvurun",
+   "sec": "Menü ve genel etiketler",
+   "rev": "3eow35"
+  },
+  {
+   "id": "wp.017",
+   "en": "for a permit",
+   "tr": "izin için",
+   "sec": "Menü ve genel etiketler",
+   "rev": "rnfavc"
+  },
+  {
+   "id": "wp.018",
+   "en": "Language",
+   "tr": "Dil",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1s1gw53"
+  },
+  {
+   "id": "wp.019",
+   "en": "Blog & Guides",
+   "tr": "Blog ve Rehberler",
+   "sec": "Menü ve genel etiketler",
+   "rev": "4wi5os"
+  },
+  {
+   "id": "wp.020",
+   "en": "CRM Login →",
+   "tr": "CRM Girişi →",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1s31eug"
+  },
+  {
+   "id": "wp.021",
+   "en": "Home",
+   "tr": "Ana Sayfa",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjtufe"
+  },
+  {
+   "id": "wp.022",
+   "en": "Updated July 2026 · Reviewed by our permit team",
+   "tr": "Temmuz 2026'da güncellendi · İzin ekibimiz tarafından incelendi",
+   "sec": "Menü ve genel etiketler",
+   "rev": "vwdrex"
+  },
+  {
+   "id": "wp.023",
+   "en": "Turkey work permit guide —",
+   "tr": "Türkiye çalışma izni rehberi —",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "bo6p89"
+  },
+  {
+   "id": "wp.024",
+   "en": "explained, and handled for you",
+   "tr": "anlatıldı ve sizin adınıza yürütülüyor",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "71vq4y"
+  },
+  {
+   "id": "wp.025",
+   "en": "Everything an employer needs to know under Law No. 6735 — the standard work permit, the e-Muafiyet exemption, the rules and the penalties. We file every permit under our İŞKUR licence — for workers we place, or permit-only for workers you already have.",
+   "tr": "6735 sayılı Kanun kapsamında bir işverenin bilmesi gereken her şey — standart çalışma izni, e-Muafiyet istisnası, kurallar ve cezalar. Her izni kendi İŞKUR lisansımızla dosyalarız: yerleştirdiğimiz işçiler için ya da hâlihazırda çalıştırdığınız işçiler için yalnızca izin hizmeti olarak.",
+   "sec": "Üst bölüm (Hero)",
+   "legal": true,
+   "rev": "p7cez0"
+  },
+  {
+   "id": "wp.026",
+   "en": "The permit, the e-Muafiyet exemption and the rules under Law No. 6735 —",
+   "tr": "6735 sayılı Kanun kapsamındaki izin, e-Muafiyet istisnası ve kurallar —",
+   "sec": "Üst bölüm (Hero)",
+   "legal": true,
+   "rev": "ccflio"
+  },
+  {
+   "id": "wp.027",
+   "en": "and we file it all under our İŞKUR licence",
+   "tr": "ve hepsini kendi İŞKUR lisansımızla dosyalıyoruz",
+   "sec": "Üst bölüm (Hero)",
+   "legal": true,
+   "rev": "106zhpr"
+  },
+  {
+   "id": "wp.028",
+   "en": "İŞKUR-licensed",
+   "tr": "İŞKUR lisanslı",
+   "sec": "Üst bölüm (Hero)",
+   "legal": true,
+   "rev": "1euh7lh"
+  },
+  {
+   "id": "wp.029",
+   "en": "— Permit No. 1730, Law No. 4904",
+   "tr": "— İzin No. 1730, 4904 sayılı Kanun",
+   "sec": "Üst bölüm (Hero)",
+   "legal": true,
+   "rev": "lan95o"
+  },
+  {
+   "id": "wp.030",
+   "en": "470+ permits filed",
+   "tr": "470+ izin dosyalandı",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "gmdbtn"
+  },
+  {
+   "id": "wp.031",
+   "en": "— tracked to approval, every time",
+   "tr": "— her seferinde onaya kadar takip edildi",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "9wf2xz"
+  },
+  {
+   "id": "wp.032",
+   "en": "Permit-only service",
+   "tr": "Yalnızca izin hizmeti",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "1bj9l3q"
+  },
+  {
+   "id": "wp.033",
+   "en": "— already have a worker? We file just the permit",
+   "tr": "— işçiniz var mı? Yalnızca izni biz dosyalarız",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "lrt1uv"
+  },
+  {
+   "id": "wp.034",
+   "en": "Check your eligibility →",
+   "tr": "Uygunluğunuzu kontrol edin →",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "sikaml"
+  },
+  {
+   "id": "wp.035",
+   "en": "WhatsApp us",
+   "tr": "WhatsApp’tan yazın",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "r6ebyz"
+  },
+  {
+   "id": "wp.036",
+   "en": "General information, not legal advice — criteria, fees and thresholds are updated regularly by the Ministry of Labour and Social Security.",
+   "tr": "Genel bilgidir, hukuki tavsiye değildir — kriterler, harçlar ve eşikler Çalışma ve Sosyal Güvenlik Bakanlığı tarafından düzenli olarak güncellenir.",
+   "sec": "Üst bölüm (Hero)",
+   "legal": true,
+   "rev": "12t0dtb"
+  },
+  {
+   "id": "wp.037",
+   "en": "General information, not legal advice — Ministry criteria and fees change regularly.",
+   "tr": "Genel bilgidir, hukuki tavsiye değildir — Bakanlık kriterleri ve harçları düzenli olarak değişir.",
+   "sec": "Üst bölüm (Hero)",
+   "rev": "2in3t4"
+  },
+  {
+   "id": "wp.038",
+   "en": "Can you hire a foreign worker?",
+   "tr": "Yabancı işçi çalıştırabilir misiniz?",
+   "sec": "Uygunluk kontrolü",
+   "rev": "300fqi"
+  },
+  {
+   "id": "wp.039",
+   "en": "Free 60-second check — no details asked.",
+   "tr": "Ücretsiz 60 saniyelik kontrol — bilgi istenmez.",
+   "sec": "Uygunluk kontrolü",
+   "rev": "ava57x"
+  },
+  {
+   "id": "wp.040",
+   "en": "← Back",
+   "tr": "← Geri",
+   "sec": "Uygunluk kontrolü",
+   "rev": "2zpb0e"
+  },
+  {
+   "id": "wp.041",
+   "en": "Get an exact answer on WhatsApp",
+   "tr": "WhatsApp'tan net cevap alın",
+   "sec": "Uygunluk kontrolü",
+   "rev": "1bmsp5e"
+  },
+  {
+   "id": "wp.042",
+   "en": "Need workers too?",
+   "tr": "İşçiye de mi ihtiyacınız var?",
+   "sec": "Uygunluk kontrolü",
+   "rev": "99at8h"
+  },
+  {
+   "id": "wp.043",
+   "en": "See how hiring through us works →",
+   "tr": "Bizimle işe alım nasıl işliyor →",
+   "sec": "Uygunluk kontrolü",
+   "rev": "sg0sfc"
+  },
+  {
+   "id": "wp.044",
+   "en": "↺ Start again",
+   "tr": "↺ Yeniden başla",
+   "sec": "Uygunluk kontrolü",
+   "rev": "amyl8f"
+  },
+  {
+   "id": "wp.045",
+   "en": "İŞKUR-licensed · Permit No. 1730 — nothing is stored.",
+   "tr": "İŞKUR lisanslı · İzin No. 1730 — hiçbir bilgi saklanmaz.",
+   "sec": "Uygunluk kontrolü",
+   "legal": true,
+   "rev": "1116o3d"
+  },
+  {
+   "id": "wp.046",
+   "en": "~30 days",
+   "tr": "~30 gün",
+   "sec": "Uygunluk kontrolü",
+   "rev": "tbaenr"
+  },
+  {
+   "id": "wp.047",
+   "en": "Ministry processing",
+   "tr": "Bakanlık işlem süresi",
+   "sec": "Uygunluk kontrolü",
+   "rev": "bej5i9"
+  },
+  {
+   "id": "wp.048",
+   "en": "Permit = residence",
+   "tr": "İzin = ikamet",
+   "sec": "Uygunluk kontrolü",
+   "rev": "19uly8b"
+  },
+  {
+   "id": "wp.049",
+   "en": "permit too",
+   "tr": "izni de sayılır",
+   "sec": "Uygunluk kontrolü",
+   "rev": "wf75qe"
+  },
+  {
+   "id": "wp.050",
+   "en": "1 : 5 ratio",
+   "tr": "1 : 5 oranı",
+   "sec": "Uygunluk kontrolü",
+   "legal": true,
+   "rev": "1leqgnu"
+  },
+  {
+   "id": "wp.051",
+   "en": "— checked from month 7",
+   "tr": "— 7. aydan itibaren kontrol edilir",
+   "sec": "Uygunluk kontrolü",
+   "rev": "1i2si6f"
+  },
+  {
+   "id": "wp.052",
+   "en": "fine without a permit",
+   "tr": "izinsiz çalıştırma cezası",
+   "sec": "Uygunluk kontrolü",
+   "legal": true,
+   "rev": "1iuonbv"
+  },
+  {
+   "id": "wp.053",
+   "en": "Workers + permits, or permit-only for your own worker — we handle both.",
+   "tr": "İşçi + izin ya da kendi işçiniz için yalnızca izin — ikisini de yapıyoruz.",
+   "sec": "Uygunluk kontrolü",
+   "rev": "1nvcgdl"
+  },
+  {
+   "id": "wp.054",
+   "en": "Call",
+   "tr": "Arayın",
+   "sec": "Uygunluk kontrolü",
+   "rev": "yjn8ef"
+  },
+  {
+   "id": "wp.055",
+   "en": "Hire workers with us →",
+   "tr": "Bizimle işçi alın →",
+   "sec": "Uygunluk kontrolü",
+   "rev": "1h5451c"
+  },
+  {
+   "id": "wp.056",
+   "en": "On this page",
+   "tr": "Bu sayfada",
+   "sec": "Uygunluk kontrolü",
+   "rev": "129upox"
+  },
+  {
+   "id": "wp.057",
+   "en": "Eligibility",
+   "tr": "Uygunluk",
+   "sec": "Uygunluk kontrolü",
+   "rev": "g6u7ew"
+  },
+  {
+   "id": "wp.058",
+   "en": "Permit vs e-Muafiyet",
+   "tr": "İzin ile e-Muafiyet karşılaştırması",
+   "sec": "Uygunluk kontrolü",
+   "rev": "1gnz6w1"
+  },
+  {
+   "id": "wp.059",
+   "en": "Rules",
+   "tr": "Kurallar",
+   "sec": "Uygunluk kontrolü",
+   "rev": "3skum0"
+  },
+  {
+   "id": "wp.060",
+   "en": "Exemptions",
+   "tr": "İstisnalar",
+   "sec": "Uygunluk kontrolü",
+   "rev": "13o5uof"
+  },
+  {
+   "id": "wp.061",
+   "en": "Timeline",
+   "tr": "Zamanlama",
+   "sec": "Uygunluk kontrolü",
+   "rev": "1dml1ge"
+  },
+  {
+   "id": "wp.062",
+   "en": "Costs",
+   "tr": "Maliyetler",
+   "sec": "Uygunluk kontrolü",
+   "rev": "3igmjh"
+  },
+  {
+   "id": "wp.063",
+   "en": "Documents",
+   "tr": "Belgeler",
+   "sec": "Uygunluk kontrolü",
+   "rev": "tfs00p"
+  },
+  {
+   "id": "wp.064",
+   "en": "FAQ",
+   "tr": "SSS",
+   "sec": "Uygunluk kontrolü",
+   "rev": "37651v"
+  },
+  {
+   "id": "wp.065",
+   "en": "A registered Turkish entity is required before any application — we can advise on the fastest setup route.",
+   "tr": "Herhangi bir başvurudan önce Türkiye'de kayıtlı bir tüzel kişilik gerekir — en hızlı kuruluş yolu konusunda size yol gösterebiliriz.",
+   "sec": "Uygunluk kontrolü",
+   "rev": "fghv4n"
+  },
+  {
+   "id": "wp.066",
+   "en": "The 1:5 ratio is only checked from the 7th month of the first permit — you have time to build up, and some sectors are exempt.",
+   "tr": "1:5 oranı yalnızca ilk iznin 7. ayından itibaren kontrol edilir — kadro kurmak için zamanınız var ve bazı sektörler muaftır.",
+   "sec": "Uygunluk kontrolü",
+   "legal": true,
+   "rev": "3pkd2e"
+  },
+  {
+   "id": "wp.067",
+   "en": "Worker abroad: the application starts at the Turkish consulate in their country, then moves to the Ministry — we run both stages.",
+   "tr": "İşçi yurt dışında: başvuru kendi ülkesindeki Türk konsolosluğunda başlar, sonra Bakanlığa geçer — iki aşamayı da biz yürütürüz.",
+   "sec": "Uygunluk kontrolü",
+   "rev": "1o2t8le"
+  },
+  {
+   "id": "wp.068",
+   "en": "Worker already in Turkey with 6+ months residence: direct domestic application — usually the fastest route.",
+   "tr": "İşçi 6 aydan uzun ikametle zaten Türkiye'de: doğrudan yurt içi başvuru — genellikle en hızlı yol.",
+   "sec": "Uygunluk kontrolü",
+   "rev": "w75dz2"
+  },
+  {
+   "id": "wp.069",
+   "en": "Without a 6-month residence permit, the application must start from the worker's home country consulate.",
+   "tr": "6 aylık ikamet izni yoksa başvuru, işçinin kendi ülkesindeki konsolosluktan başlamalıdır.",
+   "sec": "Uygunluk kontrolü",
+   "rev": "19gtgsc"
+  },
+  {
+   "id": "wp.070",
+   "en": "Overdue tax or SGK debts suspend applications — these need clearing or restructuring before filing.",
+   "tr": "Vadesi geçmiş vergi veya SGK borçları başvuruları askıya alır — dosyalamadan önce ödenmeli veya yapılandırılmalıdır.",
+   "sec": "Uygunluk kontrolü",
+   "legal": true,
+   "rev": "1ytsfl"
+  },
+  {
+   "id": "wp.071",
+   "en": "Salary thresholds and financial-capacity criteria still apply per role — we pre-check these before filing.",
+   "tr": "Maaş eşikleri ve mali yeterlilik kriterleri pozisyona göre yine geçerlidir — bunları dosyalamadan önce kontrol ederiz.",
+   "sec": "Uygunluk kontrolü",
+   "legal": true,
+   "rev": "f86cg5"
+  },
+  {
+   "id": "wp.072",
+   "en": "Fixable — but not yet",
+   "tr": "Düzeltilebilir — ama henüz değil",
+   "sec": "Uygunluk kontrolü",
+   "rev": "1qq6l0y"
+  },
+  {
+   "id": "wp.073",
+   "en": "Likely eligible, with planning",
+   "tr": "Planlamayla büyük olasılıkla uygun",
+   "sec": "Uygunluk kontrolü",
+   "rev": "1jswjil"
+  },
+  {
+   "id": "wp.074",
+   "en": "You look eligible",
+   "tr": "Uygun görünüyorsunuz",
+   "sec": "Uygunluk kontrolü",
+   "rev": "12nw338"
+  },
+  {
+   "id": "wp.075",
+   "en": "Do you have a registered company in Turkey?",
+   "tr": "Türkiye'de kayıtlı bir şirketiniz var mı?",
+   "sec": "Uygunluk kontrolü",
+   "rev": "kakv9"
+  },
+  {
+   "id": "wp.076",
+   "en": "How many Turkish citizens are on your SGK payroll?",
+   "tr": "SGK bordronuzda kaç Türk vatandaşı var?",
+   "sec": "Uygunluk kontrolü",
+   "legal": true,
+   "rev": "1g7w08y"
+  },
+  {
+   "id": "wp.077",
+   "en": "Where is the worker you want to hire right now?",
+   "tr": "Çalıştırmak istediğiniz işçi şu anda nerede?",
+   "sec": "Uygunluk kontrolü",
+   "rev": "1hravzq"
+  },
+  {
+   "id": "wp.078",
+   "en": "In Turkey, with a residence permit of 6+ months",
+   "tr": "Türkiye'de, 6 aydan uzun ikamet izniyle",
+   "sec": "Uygunluk kontrolü",
+   "rev": "1kvi6nh"
+  },
+  {
+   "id": "wp.079",
+   "en": "In Turkey, without a long residence permit",
+   "tr": "Türkiye'de, uzun süreli ikamet izni olmadan",
+   "sec": "Uygunluk kontrolü",
+   "rev": "97ckqm"
+  },
+  {
+   "id": "wp.080",
+   "en": "Any overdue tax or SGK (social security) debts?",
+   "tr": "Vadesi geçmiş vergi veya SGK borcunuz var mı?",
+   "sec": "Uygunluk kontrolü",
+   "legal": true,
+   "rev": "1kb3fgx"
+  },
+  {
+   "id": "wp.081",
+   "en": "No / not yet",
+   "tr": "Hayır / henüz değil",
+   "sec": "Uygunluk kontrolü",
+   "rev": "d3s5h2"
+  },
+  {
+   "id": "wp.082",
+   "en": "Yes / not sure",
+   "tr": "Evet / emin değilim",
+   "sec": "Uygunluk kontrolü",
+   "rev": "eyaae9"
+  },
+  {
+   "id": "wp.083",
+   "en": "Which one are you?",
+   "tr": "Hangisisiniz?",
+   "sec": "Hızlı yönlendirme",
+   "rev": "17tnwl2"
+  },
+  {
+   "id": "wp.084",
+   "en": "Jump straight to your answer — no scrolling needed.",
+   "tr": "Doğrudan cevabınıza gidin — kaydırmaya gerek yok.",
+   "sec": "Hızlı yönlendirme",
+   "rev": "7a64sq"
+  },
+  {
+   "id": "wp.085",
+   "en": "Employer — need workers",
+   "tr": "İşveren — işçi lazım",
+   "sec": "Hızlı yönlendirme",
+   "rev": "ir6auj"
+  },
+  {
+   "id": "wp.086",
+   "en": "We source them and file the permits",
+   "tr": "İşçiyi biz buluruz, izinleri biz dosyalarız",
+   "sec": "Hızlı yönlendirme",
+   "rev": "1essjam"
+  },
+  {
+   "id": "wp.087",
+   "en": "Hire workers →",
+   "tr": "İşçi alın →",
+   "sec": "Hızlı yönlendirme",
+   "rev": "psbbb8"
+  },
+  {
+   "id": "wp.088",
+   "en": "Have your own worker",
+   "tr": "Kendi işçiniz var",
+   "sec": "Hızlı yönlendirme",
+   "rev": "poa5v2"
+  },
+  {
+   "id": "wp.089",
+   "en": "Permit-only — we file just the permit",
+   "tr": "Yalnızca izin — sadece izni biz dosyalarız",
+   "sec": "Hızlı yönlendirme",
+   "rev": "1yokb5p"
+  },
+  {
+   "id": "wp.090",
+   "en": "Permit-only enquiry →",
+   "tr": "Yalnızca izin talebi →",
+   "sec": "Hızlı yönlendirme",
+   "rev": "5grnmc"
+  },
+  {
+   "id": "wp.091",
+   "en": "Recruitment agency or agent",
+   "tr": "İşe alım ajansı veya acente",
+   "sec": "Hızlı yönlendirme",
+   "rev": "1xhf7t6"
+  },
+  {
+   "id": "wp.092",
+   "en": "Permits for your clients' workers — partner with us",
+   "tr": "Müşterilerinizin işçileri için izinler — iş ortağımız olun",
+   "sec": "Hızlı yönlendirme",
+   "rev": "rxa0al"
+  },
+  {
+   "id": "wp.093",
+   "en": "Partner with us →",
+   "tr": "İş ortağımız olun →",
+   "sec": "Hızlı yönlendirme",
+   "rev": "bi6x25"
+  },
+  {
+   "id": "wp.094",
+   "en": "Budgeting a hire",
+   "tr": "İşe alım bütçesi",
+   "sec": "Hızlı yönlendirme",
+   "rev": "1nwmmyf"
+  },
+  {
+   "id": "wp.095",
+   "en": "Salary, SGK, permit fees and flights — 2026 rates",
+   "tr": "Maaş, SGK, izin harçları ve uçuşlar — 2026 oranları",
+   "sec": "Hızlı yönlendirme",
+   "legal": true,
+   "rev": "1ijtkdr"
+  },
+  {
+   "id": "wp.096",
+   "en": "Cost calculator →",
+   "tr": "Maliyet hesaplayıcı →",
+   "sec": "Hızlı yönlendirme",
+   "rev": "exoio"
+  },
+  {
+   "id": "wp.097",
+   "en": "Two legal routes to work in Turkey",
+   "tr": "Türkiye'de çalışmanın iki yasal yolu",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "15gwnp5"
+  },
+  {
+   "id": "wp.098",
+   "en": "Law No. 6735 gives foreigners two doors: the standard work permit for real employment, and the e-Muafiyet exemption for short, specific assignments. Choosing the wrong one is the most common — and most expensive — mistake.",
+   "tr": "6735 sayılı Kanun yabancılara iki kapı açar: gerçek istihdam için standart çalışma izni ve kısa, belirli görevler için e-Muafiyet istisnası. Yanlış olanı seçmek en sık yapılan ve en pahalı hatadır.",
+   "sec": "İzin ile e-Muafiyet",
+   "legal": true,
+   "rev": "2r9gv5"
+  },
+  {
+   "id": "wp.099",
+   "en": "Work permit",
+   "tr": "Çalışma izni",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "1w6wmz7"
+  },
+  {
+   "id": "wp.100",
+   "en": "e-Muafiyet",
+   "tr": "e-Muafiyet",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "1569uz7"
+  },
+  {
+   "id": "wp.101",
+   "en": "Route 1 · Çalışma İzni",
+   "tr": "Yol 1 · Çalışma İzni",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "1nsegkf"
+  },
+  {
+   "id": "wp.102",
+   "en": "Standard work permit",
+   "tr": "Standart çalışma izni",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "licyq0"
+  },
+  {
+   "id": "wp.103",
+   "en": "For hired workers",
+   "tr": "Ücretli çalışanlar için",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "1c0n72h"
+  },
+  {
+   "id": "wp.104",
+   "en": "VS",
+   "tr": "VS",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "3hngg"
+  },
+  {
+   "id": "wp.105",
+   "en": "Route 2 · e-Muafiyet",
+   "tr": "Yol 2 · e-Muafiyet",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "ni1ihb"
+  },
+  {
+   "id": "wp.106",
+   "en": "Work permit exemption",
+   "tr": "Çalışma izni muafiyeti",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "1asegsq"
+  },
+  {
+   "id": "wp.107",
+   "en": "For short assignments",
+   "tr": "Kısa görevler için",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "1x8ia3w"
+  },
+  {
+   "id": "wp.108",
+   "en": "Real employment — factory workers, hotel staff, technicians,",
+   "tr": "Gerçek istihdam — fabrika işçileri, otel personeli, teknisyenler,",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "9pzb2p"
+  },
+  {
+   "id": "wp.109",
+   "en": "any role on payroll",
+   "tr": "bordrodaki her pozisyon",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "10izksz"
+  },
+  {
+   "id": "wp.110",
+   "en": "Best for",
+   "tr": "En uygun olduğu durum",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "11zg6f2"
+  },
+  {
+   "id": "wp.111",
+   "en": "Short, specific assignments —",
+   "tr": "Kısa ve belirli görevler —",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "3me4kv"
+  },
+  {
+   "id": "wp.112",
+   "en": "machinery installation, cross-border services, seasonal work",
+   "tr": "makine montajı, sınır ötesi hizmetler, mevsimlik iş",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "qmyqgf"
+  },
+  {
+   "id": "wp.113",
+   "en": "Up to 1 year",
+   "tr": "1 yıla kadar",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "d975z9"
+  },
+  {
+   "id": "wp.114",
+   "en": "first, then 2-year and 3-year extensions; indefinite after 8 years",
+   "tr": "önce; sonra 2 ve 3 yıllık uzatmalar; 8 yıl sonra süresiz",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "1xr4pkw"
+  },
+  {
+   "id": "wp.115",
+   "en": "Duration",
+   "tr": "Süre",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "u8n97f"
+  },
+  {
+   "id": "wp.116",
+   "en": "Typically up to 3 months",
+   "tr": "Genellikle 3 aya kadar",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "1qs5f50"
+  },
+  {
+   "id": "wp.117",
+   "en": "— category-based; longer for some categories",
+   "tr": "— kategoriye bağlı; bazı kategorilerde daha uzun",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "8g588y"
+  },
+  {
+   "id": "wp.118",
+   "en": "The employer",
+   "tr": "İşveren",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "1ir0obt"
+  },
+  {
+   "id": "wp.119",
+   "en": ", on the Ministry's online system — jointly with the worker (consulate stage first if abroad)",
+   "tr": ", Bakanlığın çevrim içi sistemi üzerinden — işçiyle birlikte (yurt dışındaysa önce konsolosluk aşaması)",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "9j5skp"
+  },
+  {
+   "id": "wp.120",
+   "en": "Who applies",
+   "tr": "Kim başvurur",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "1mdug5j"
+  },
+  {
+   "id": "wp.121",
+   "en": "The foreigner",
+   "tr": "Yabancının kendisi",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "1vfj9kl"
+  },
+  {
+   "id": "wp.122",
+   "en": ", online at emuafiyet.csgb.gov.tr — within 30 days of entering Turkey",
+   "tr": ", emuafiyet.csgb.gov.tr üzerinden — Türkiye'ye girişten sonraki 30 gün içinde",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "vq8avn"
+  },
+  {
+   "id": "wp.123",
+   "en": "Employer criteria apply:",
+   "tr": "İşveren kriterleri geçerlidir:",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "1xhdt0t"
+  },
+  {
+   "id": "wp.124",
+   "en": "1:5 ratio, financial capacity, salary thresholds",
+   "tr": "1:5 oranı, mali yeterlilik, maaş eşikleri",
+   "sec": "İzin ile e-Muafiyet",
+   "legal": true,
+   "rev": "1qlsst3"
+  },
+  {
+   "id": "wp.125",
+   "en": "Conditions",
+   "tr": "Koşullar",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "1nb1but"
+  },
+  {
+   "id": "wp.126",
+   "en": "Must fit an exact",
+   "tr": "Tam olarak bir",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "4qrgxx"
+  },
+  {
+   "id": "wp.127",
+   "en": "Article 48 category",
+   "tr": "48. madde kategorisine girmelidir",
+   "sec": "İzin ile e-Muafiyet",
+   "legal": true,
+   "rev": "1457v4t"
+  },
+  {
+   "id": "wp.128",
+   "en": "with proof documents — no employer criteria",
+   "tr": "— kanıt belgeleriyle; işveren kriteri aranmaz",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "amic5o"
+  },
+  {
+   "id": "wp.129",
+   "en": "Counts as",
+   "tr": "Tüm geçerlilik süresi boyunca",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "wnpcjr"
+  },
+  {
+   "id": "wp.130",
+   "en": "residence permit",
+   "tr": "ikamet izni",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "sipr1y"
+  },
+  {
+   "id": "wp.131",
+   "en": "for its full validity + SGK social security",
+   "tr": "yerine geçer + SGK sosyal güvencesi",
+   "sec": "İzin ile e-Muafiyet",
+   "legal": true,
+   "rev": "1r6ignc"
+  },
+  {
+   "id": "wp.132",
+   "en": "Residence",
+   "tr": "İkamet",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "y545sx"
+  },
+  {
+   "id": "wp.133",
+   "en": "Acts as",
+   "tr": "Geçerli olduğu sürece",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "65v9ua"
+  },
+  {
+   "id": "wp.134",
+   "en": "while valid, multi-entry; under 3 months no permit fee",
+   "tr": "yerine geçer, çok girişli; 3 aydan kısa sürelerde izin harcı yok",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "54acjn"
+  },
+  {
+   "id": "wp.135",
+   "en": "Ongoing job on your payroll? This is your route.",
+   "tr": "Bordronuzda sürekli bir iş mi? Sizin yolunuz bu.",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "1p61k17"
+  },
+  {
+   "id": "wp.136",
+   "en": "Short, one-off assignment? Check the categories below.",
+   "tr": "Kısa, tek seferlik bir görev mi? Aşağıdaki kategorilere bakın.",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "43ddet"
+  },
+  {
+   "id": "wp.137",
+   "en": "Important:",
+   "tr": "Önemli:",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "12cmfi1"
+  },
+  {
+   "id": "wp.138",
+   "en": "if the work will run past the exemption period, a full work permit is mandatory from the start — and the same exemption category cannot be re-used for 6–12 months after it ends. For ongoing employment, the standard permit is the only legal route.",
+   "tr": "iş, muafiyet süresini aşacaksa baştan itibaren tam çalışma izni zorunludur — ve aynı muafiyet kategorisi sona erdikten sonra 6–12 ay boyunca yeniden kullanılamaz. Sürekli istihdam için tek yasal yol standart izindir.",
+   "sec": "İzin ile e-Muafiyet",
+   "rev": "17zzwbr"
+  },
+  {
+   "id": "wp.139",
+   "en": "Sample document",
+   "tr": "Örnek belge",
+   "sec": "Örnek belge",
+   "rev": "8j76wc"
+  },
+  {
+   "id": "wp.140",
+   "en": "What the work permit card looks like",
+   "tr": "Çalışma izni kartı nasıl görünür",
+   "sec": "Örnek belge",
+   "rev": "1ixlw0b"
+  },
+  {
+   "id": "wp.141",
+   "en": "A credit-card-sized document issued by the Ministry of Labour and Social Security — it carries the worker's photo, the employer, the validity dates and a foreigner ID number starting with 99. This card is what the worker shows at the airport, the bank and SGK.",
+   "tr": "Çalışma ve Sosyal Güvenlik Bakanlığı tarafından verilen kredi kartı boyutunda bir belgedir — üzerinde işçinin fotoğrafı, işveren, geçerlilik tarihleri ve 99 ile başlayan yabancı kimlik numarası yer alır. İşçi havaalanında, bankada ve SGK'da bu kartı gösterir.",
+   "sec": "Örnek belge",
+   "legal": true,
+   "rev": "7oa7iq"
+  },
+  {
+   "id": "wp.142",
+   "en": "Every worker we place receives this card before their first working day — a copy stays on your portal.",
+   "tr": "Yerleştirdiğimiz her işçi, ilk iş gününden önce bu kartı alır — bir kopyası portalınızda kalır.",
+   "sec": "Örnek belge",
+   "rev": "1kj8krr"
+  },
+  {
+   "id": "wp.143",
+   "en": "ÖRNEK · SAMPLE",
+   "tr": "ÖRNEK · SAMPLE",
+   "sec": "Örnek belge",
+   "rev": "6st8hc"
+  },
+  {
+   "id": "wp.144",
+   "en": "TÜRKİYE CUMHURİYETİ",
+   "tr": "TÜRKİYE CUMHURİYETİ",
+   "sec": "Örnek belge",
+   "rev": "51qpgk"
+  },
+  {
+   "id": "wp.145",
+   "en": "ÇALIŞMA VE SOSYAL GÜVENLİK BAKANLIĞI",
+   "tr": "ÇALIŞMA VE SOSYAL GÜVENLİK BAKANLIĞI",
+   "sec": "Örnek belge",
+   "rev": "113gq8o"
+  },
+  {
+   "id": "wp.146",
+   "en": "ÇALIŞMA İZNİ",
+   "tr": "ÇALIŞMA İZNİ",
+   "sec": "Örnek belge",
+   "rev": "6f5i5c"
+  },
+  {
+   "id": "wp.147",
+   "en": "Adı / Name",
+   "tr": "Adı / Name",
+   "sec": "Örnek belge",
+   "rev": "ehclw9"
+  },
+  {
+   "id": "wp.148",
+   "en": "AHMED",
+   "tr": "AHMED",
+   "sec": "Örnek belge",
+   "rev": "3f6utc"
+  },
+  {
+   "id": "wp.149",
+   "en": "Soyadı / Surname",
+   "tr": "Soyadı / Surname",
+   "sec": "Örnek belge",
+   "rev": "uo2gnc"
+  },
+  {
+   "id": "wp.150",
+   "en": "KHAN",
+   "tr": "KHAN",
+   "sec": "Örnek belge",
+   "rev": "yjty89"
+  },
+  {
+   "id": "wp.151",
+   "en": "Uyruğu / Nationality",
+   "tr": "Uyruğu / Nationality",
+   "sec": "Örnek belge",
+   "rev": "bjylbl"
+  },
+  {
+   "id": "wp.152",
+   "en": "PAKİSTAN / PAK",
+   "tr": "PAKİSTAN / PAK",
+   "sec": "Örnek belge",
+   "rev": "19p2i8i"
+  },
+  {
+   "id": "wp.153",
+   "en": "Yabancı Kimlik No / Foreigner ID",
+   "tr": "Yabancı Kimlik No / Foreigner ID",
+   "sec": "Örnek belge",
+   "rev": "sbrvt"
+  },
+  {
+   "id": "wp.154",
+   "en": "İzin Türü / Permit Type",
+   "tr": "İzin Türü / Permit Type",
+   "sec": "Örnek belge",
+   "rev": "l21qr2"
+  },
+  {
+   "id": "wp.155",
+   "en": "SÜRELİ / FIXED-TERM",
+   "tr": "SÜRELİ / FIXED-TERM",
+   "sec": "Örnek belge",
+   "rev": "skdo2j"
+  },
+  {
+   "id": "wp.156",
+   "en": "Geçerlilik / Validity",
+   "tr": "Geçerlilik / Validity",
+   "sec": "Örnek belge",
+   "rev": "yltlc1"
+  },
+  {
+   "id": "wp.157",
+   "en": "İşveren / Employer:",
+   "tr": "İşveren / Employer:",
+   "sec": "Örnek belge",
+   "rev": "1gpupcw"
+  },
+  {
+   "id": "wp.158",
+   "en": "••••••• TEKSTİL SAN. TİC. A.Ş.",
+   "tr": "••••••• TEKSTİL SAN. TİC. A.Ş.",
+   "sec": "Örnek belge",
+   "rev": "1wkjl1e"
+  },
+  {
+   "id": "wp.159",
+   "en": "6735 SAYILI KANUN",
+   "tr": "6735 SAYILI KANUN",
+   "sec": "Örnek belge",
+   "legal": true,
+   "rev": "1ciret6"
+  },
+  {
+   "id": "wp.160",
+   "en": "Illustrative sample — not an official document; details are fictional",
+   "tr": "Temsili örnektir — resmî belge değildir; bilgiler kurgusaldır",
+   "sec": "Örnek belge",
+   "rev": "d79kk7"
+  },
+  {
+   "id": "wp.161",
+   "en": "Which permit type will your workers get?",
+   "tr": "İşçileriniz hangi izin türünü alacak?",
+   "sec": "İzin türleri",
+   "rev": "rubjys"
+  },
+  {
+   "id": "wp.162",
+   "en": "Law No. 6735 defines several types — but for hired workers, only one matters.",
+   "tr": "6735 sayılı Kanun birkaç tür tanımlar — ama ücretli çalışanlar için yalnızca biri önemlidir.",
+   "sec": "İzin türleri",
+   "legal": true,
+   "rev": "ev77ch"
+  },
+  {
+   "id": "wp.163",
+   "en": "The one that matters",
+   "tr": "Önemli olan tür",
+   "sec": "İzin türleri",
+   "rev": "1vrw4gp"
+  },
+  {
+   "id": "wp.164",
+   "en": "Fixed-term permit",
+   "tr": "Süreli izin",
+   "sec": "İzin türleri",
+   "rev": "tlyr6v"
+  },
+  {
+   "id": "wp.165",
+   "en": "· Süreli",
+   "tr": "· Süreli",
+   "sec": "İzin türleri",
+   "rev": "1ut9u7j"
+  },
+  {
+   "id": "wp.166",
+   "en": "Tied to one employer and workplace — this is the permit every hired worker gets, including every worker we place.",
+   "tr": "Tek bir işverene ve iş yerine bağlıdır — her ücretli çalışanın aldığı izin budur, yerleştirdiğimiz her işçi dahil.",
+   "sec": "İzin türleri",
+   "rev": "1008m5d"
+  },
+  {
+   "id": "wp.167",
+   "en": "First permit up to",
+   "tr": "İlk izin en fazla",
+   "sec": "İzin türleri",
+   "rev": "rli1zq"
+  },
+  {
+   "id": "wp.168",
+   "en": "1 year",
+   "tr": "1 yıl",
+   "sec": "İzin türleri",
+   "rev": "1qup43f"
+  },
+  {
+   "id": "wp.169",
+   "en": ", then extensions of 2 and 3 years",
+   "tr": ", sonra 2 ve 3 yıllık uzatmalar",
+   "sec": "İzin türleri",
+   "rev": "jv2bqj"
+  },
+  {
+   "id": "wp.170",
+   "en": "Counts as the worker's",
+   "tr": "İşçinin",
+   "sec": "İzin türleri",
+   "rev": "bc6na4"
+  },
+  {
+   "id": "wp.171",
+   "en": "for its full validity",
+   "tr": "yerine geçer — tüm geçerlilik süresi boyunca",
+   "sec": "İzin türleri",
+   "rev": "17685jl"
+  },
+  {
+   "id": "wp.172",
+   "en": "Changing employer needs a",
+   "tr": "İşveren değiştirmek için",
+   "sec": "İzin türleri",
+   "rev": "gowugb"
+  },
+  {
+   "id": "wp.173",
+   "en": "new permit",
+   "tr": "yeni izin gerekir",
+   "sec": "İzin türleri",
+   "rev": "1axlymm"
+  },
+  {
+   "id": "wp.174",
+   "en": "— workers stay tied to you",
+   "tr": "— işçiler size bağlı kalır",
+   "sec": "İzin türleri",
+   "rev": "gipbtb"
+  },
+  {
+   "id": "wp.175",
+   "en": "Other types — special cases only",
+   "tr": "Diğer türler — yalnızca özel durumlar",
+   "sec": "İzin türleri",
+   "rev": "15x5tv0"
+  },
+  {
+   "id": "wp.176",
+   "en": "Indefinite",
+   "tr": "Süresiz",
+   "sec": "İzin türleri",
+   "rev": "19n6eje"
+  },
+  {
+   "id": "wp.177",
+   "en": "— after 8 years of legal work in Turkey",
+   "tr": "— Türkiye'de 8 yıl yasal çalışmadan sonra",
+   "sec": "İzin türleri",
+   "rev": "1rlqu2h"
+  },
+  {
+   "id": "wp.178",
+   "en": "Independent",
+   "tr": "Bağımsız",
+   "sec": "İzin türleri",
+   "rev": "fed6n7"
+  },
+  {
+   "id": "wp.179",
+   "en": "— self-employed & company owners",
+   "tr": "— serbest çalışanlar ve şirket sahipleri",
+   "sec": "İzin türleri",
+   "rev": "zwx5n4"
+  },
+  {
+   "id": "wp.180",
+   "en": "Turquoise Card",
+   "tr": "Turkuaz Kart",
+   "sec": "İzin türleri",
+   "rev": "1umg0k6"
+  },
+  {
+   "id": "wp.181",
+   "en": "— highly qualified professionals & investors",
+   "tr": "— nitelikli profesyoneller ve yatırımcılar",
+   "sec": "İzin türleri",
+   "rev": "1x6tfhj"
+  },
+  {
+   "id": "wp.182",
+   "en": "Exceptional",
+   "tr": "İstisnai",
+   "sec": "İzin türleri",
+   "rev": "1sw62n3"
+  },
+  {
+   "id": "wp.183",
+   "en": "— spouses of Turkish citizens & similar",
+   "tr": "— Türk vatandaşlarının eşleri ve benzeri durumlar",
+   "sec": "İzin türleri",
+   "rev": "2sowvw"
+  },
+  {
+   "id": "wp.184",
+   "en": "Not sure which applies?",
+   "tr": "Hangisinin geçerli olduğundan emin değil misiniz?",
+   "sec": "İzin türleri",
+   "rev": "7nt1f5"
+  },
+  {
+   "id": "wp.185",
+   "en": "Tell us the role and the worker's situation — we'll tell you the route in one message.",
+   "tr": "Pozisyonu ve işçinin durumunu bize söyleyin — hangi yolu izleyeceğinizi tek mesajda söyleyelim.",
+   "sec": "İzin türleri",
+   "rev": "y3qvvg"
+  },
+  {
+   "id": "wp.186",
+   "en": "Ask on WhatsApp →",
+   "tr": "WhatsApp'tan sorun →",
+   "sec": "İzin türleri",
+   "rev": "1xu2i53"
+  },
+  {
+   "id": "wp.187",
+   "en": "Rules & regulations",
+   "tr": "Kurallar ve mevzuat",
+   "sec": "Kurallar ve mevzuat",
+   "rev": "jyip15"
+  },
+  {
+   "id": "wp.188",
+   "en": "What the Ministry checks before approving",
+   "tr": "Bakanlık onay öncesinde neleri kontrol eder",
+   "sec": "Kurallar ve mevzuat",
+   "rev": "s7pblr"
+  },
+  {
+   "id": "wp.189",
+   "en": "Most rejections are not about missing documents — they are about employer criteria. These are the rules under Law No. 6735 and its implementing regulation, checked on every application. When you",
+   "tr": "Redlerin çoğu eksik belgeden değil, işveren kriterlerinden kaynaklanır. Bunlar 6735 sayılı Kanun ve uygulama yönetmeliğindeki kurallardır ve her başvuruda kontrol edilir.",
+   "sec": "Kurallar ve mevzuat",
+   "legal": true,
+   "rev": "2atanc"
+  },
+  {
+   "id": "wp.190",
+   "en": "hire through us",
+   "tr": "Bizimle işe aldığınızda",
+   "sec": "Kurallar ve mevzuat",
+   "rev": "1ckspu6"
+  },
+  {
+   "id": "wp.191",
+   "en": ", we pre-check all of them before anything is filed.",
+   "tr": ", hiçbir şey dosyalanmadan önce hepsini önceden kontrol ederiz.",
+   "sec": "Kurallar ve mevzuat",
+   "rev": "1qtl28e"
+  },
+  {
+   "id": "wp.192",
+   "en": "Most rejections are not about documents — they are about",
+   "tr": "Redlerin çoğu belgelerden değil,",
+   "sec": "Kurallar ve mevzuat",
+   "rev": "8bvvmx"
+  },
+  {
+   "id": "wp.193",
+   "en": "employer criteria",
+   "tr": "işveren kriterlerinden kaynaklanır",
+   "sec": "Kurallar ve mevzuat",
+   "rev": "1bltdxf"
+  },
+  {
+   "id": "wp.194",
+   "en": ". We pre-check all six before filing.",
+   "tr": ". Dosyalamadan önce altısını da kontrol ederiz.",
+   "sec": "Kurallar ve mevzuat",
+   "rev": "xypn8i"
+  },
+  {
+   "id": "wp.195",
+   "en": "Working without a permit costs",
+   "tr": "İzinsiz çalıştırmanın bedeli",
+   "sec": "Kurallar ve mevzuat",
+   "rev": "14lztwm"
+  },
+  {
+   "id": "wp.196",
+   "en": "· Administrative fine per unauthorised worker — over ₺100,000 in 2026, updated every year",
+   "tr": "· İzinsiz her işçi için idari para cezası — 2026'da 100.000 ₺'nin üzerinde, her yıl güncellenir",
+   "sec": "Kurallar ve mevzuat",
+   "legal": true,
+   "rev": "1x56e2x"
+  },
+  {
+   "id": "wp.197",
+   "en": "· Deportation and entry ban for the worker — at the employer's expense",
+   "tr": "· İşçi için sınır dışı edilme ve giriş yasağı — masrafları işverene ait",
+   "sec": "Kurallar ve mevzuat",
+   "legal": true,
+   "rev": "tinspk"
+  },
+  {
+   "id": "wp.198",
+   "en": "· Block on the employer's future work permit applications",
+   "tr": "· İşverenin gelecekteki çalışma izni başvurularının engellenmesi",
+   "sec": "Kurallar ve mevzuat",
+   "rev": "13pixh4"
+  },
+  {
+   "id": "wp.199",
+   "en": "· Possible criminal liability for company directors",
+   "tr": "· Şirket yöneticileri için olası cezai sorumluluk",
+   "sec": "Kurallar ve mevzuat",
+   "legal": true,
+   "rev": "1eomeg8"
+  },
+  {
+   "id": "wp.200",
+   "en": "The 1:5 employment ratio",
+   "tr": "1:5 istihdam oranı",
+   "sec": "Kurallar ve mevzuat",
+   "legal": true,
+   "rev": "ez2cz"
+  },
+  {
+   "id": "wp.201",
+   "en": "At least five Turkish citizens on SGK payroll for each foreign worker, per workplace. Monitored monthly from the 7th month of the first permit — so a new employer has time to build up.",
+   "tr": "Her yabancı işçi için iş yeri başına SGK bordrosunda en az beş Türk vatandaşı. İlk iznin 7. ayından itibaren aylık izlenir — yani yeni bir işverenin kadro kurmak için zamanı olur.",
+   "sec": "Kurallar ve mevzuat",
+   "legal": true,
+   "rev": "em4jks"
+  },
+  {
+   "id": "wp.202",
+   "en": "Financial capacity",
+   "tr": "Mali yeterlilik",
+   "sec": "Kurallar ve mevzuat",
+   "rev": "7quqmw"
+  },
+  {
+   "id": "wp.203",
+   "en": "The company must show paid-in capital or gross sales above the Ministry's thresholds — proof that the business can genuinely carry a foreign employee.",
+   "tr": "Şirket, Bakanlığın eşiklerinin üzerinde ödenmiş sermaye veya brüt satış göstermelidir — işletmenin bir yabancı çalışanı gerçekten taşıyabildiğinin kanıtı.",
+   "sec": "Kurallar ve mevzuat",
+   "legal": true,
+   "rev": "193pkeh"
+  },
+  {
+   "id": "wp.204",
+   "en": "Role-based salary thresholds",
+   "tr": "Pozisyona göre maaş eşikleri",
+   "sec": "Kurallar ve mevzuat",
+   "legal": true,
+   "rev": "1g2ypod"
+  },
+  {
+   "id": "wp.205",
+   "en": "Each role has a minimum gross salary set as a multiple of the Turkish minimum wage — higher for specialists and managers. Updated every January; underpaying is an automatic rejection.",
+   "tr": "Her pozisyonun, Türkiye asgari ücretinin katı olarak belirlenmiş bir asgari brüt maaşı vardır — uzmanlar ve yöneticiler için daha yüksektir. Her ocak ayında güncellenir; eksik ödeme otomatik reddi getirir.",
+   "sec": "Kurallar ve mevzuat",
+   "rev": "1rg4w03"
+  },
+  {
+   "id": "wp.206",
+   "en": "No tax or SGK debts",
+   "tr": "Vergi veya SGK borcu olmaması",
+   "sec": "Kurallar ve mevzuat",
+   "legal": true,
+   "rev": "zt38jz"
+  },
+  {
+   "id": "wp.207",
+   "en": "Overdue tax or social security premiums suspend the application. Ministry, SGK and Revenue Administration databases are linked — discrepancies are flagged instantly.",
+   "tr": "Vadesi geçmiş vergi veya sosyal güvenlik primleri başvuruyu askıya alır. Bakanlık, SGK ve Gelir İdaresi veri tabanları bağlıdır — uyumsuzluklar anında işaretlenir.",
+   "sec": "Kurallar ve mevzuat",
+   "legal": true,
+   "rev": "1gi24b2"
+  },
+  {
+   "id": "wp.208",
+   "en": "SGK registration from day one",
+   "tr": "İlk günden SGK kaydı",
+   "sec": "Kurallar ve mevzuat",
+   "legal": true,
+   "rev": "rdablx"
+  },
+  {
+   "id": "wp.209",
+   "en": "Once the permit is approved, the worker must be registered with social security immediately and paid the declared salary through the books.",
+   "tr": "İzin onaylandıktan sonra işçi derhal sosyal güvenliğe kaydedilmeli ve beyan edilen maaş resmî kayıtlar üzerinden ödenmelidir.",
+   "sec": "Kurallar ve mevzuat",
+   "rev": "kijefp"
+  },
+  {
+   "id": "wp.210",
+   "en": "Sector-specific rules",
+   "tr": "Sektöre özgü kurallar",
+   "sec": "Kurallar ve mevzuat",
+   "rev": "d3ugg9"
+  },
+  {
+   "id": "wp.211",
+   "en": "Health roles need Ministry of Health pre-authorisation; tourism and advanced-technology investments enjoy exemptions from some employment criteria; public projects are exempt from financial criteria.",
+   "tr": "Sağlık pozisyonları Sağlık Bakanlığı ön iznini gerektirir; turizm ve ileri teknoloji yatırımları bazı istihdam kriterlerinden muaftır; kamu projeleri mali kriterlerden muaftır.",
+   "sec": "Kurallar ve mevzuat",
+   "rev": "1kiinj"
+  },
+  {
+   "id": "wp.212",
+   "en": "Who qualifies for the work permit exemption",
+   "tr": "Çalışma izni muafiyetinden kimler yararlanabilir",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "mqum3l"
+  },
+  {
+   "id": "wp.213",
+   "en": "Article 48 of the implementing regulation lists exact categories. If the assignment fits one, the foreigner applies online — no employer criteria, no 1:5 ratio.",
+   "tr": "Uygulama yönetmeliğinin 48. maddesi kategorileri tek tek sayar. Görev bunlardan birine giriyorsa yabancı çevrim içi başvurur — işveren kriteri yok, 1:5 oranı yok.",
+   "sec": "İstisnalar (48. madde)",
+   "legal": true,
+   "rev": "ne1rib"
+  },
+  {
+   "id": "wp.214",
+   "en": "For the standard permit, eligibility depends on the employer instead — see",
+   "tr": "Standart izinde ise uygunluk işverene bağlıdır — bkz.",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "17uw971"
+  },
+  {
+   "id": "wp.215",
+   "en": "what the Ministry checks",
+   "tr": "Bakanlık neleri kontrol eder",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "10tq1d8"
+  },
+  {
+   "id": "wp.216",
+   "en": "or take the",
+   "tr": "ya da yukarıdaki",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "1ggnny2"
+  },
+  {
+   "id": "wp.217",
+   "en": "60-second check",
+   "tr": "60 saniyelik kontrolü",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "12dno8o"
+  },
+  {
+   "id": "wp.218",
+   "en": "above.",
+   "tr": "yapın.",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "llsjlg"
+  },
+  {
+   "id": "wp.219",
+   "en": "Up to 3 months",
+   "tr": "3 aya kadar",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "lt5oa3"
+  },
+  {
+   "id": "wp.220",
+   "en": "Machinery & equipment specialists",
+   "tr": "Makine ve ekipman uzmanları",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "frxhp7"
+  },
+  {
+   "id": "wp.221",
+   "en": "Installation, maintenance, repair or user training for imported machinery.",
+   "tr": "İthal makinelerin montajı, bakımı, onarımı veya kullanıcı eğitimi.",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "of37le"
+  },
+  {
+   "id": "wp.222",
+   "en": "Cross-border service providers",
+   "tr": "Sınır ötesi hizmet sağlayıcılar",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "ps5305"
+  },
+  {
+   "id": "wp.223",
+   "en": "Foreigners delivering a service into Turkey without local employment.",
+   "tr": "Türkiye'de istihdam edilmeden hizmet sunan yabancılar.",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "1dxfhz5"
+  },
+  {
+   "id": "wp.224",
+   "en": "Seasonal",
+   "tr": "Mevsimlik",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "ilboz1"
+  },
+  {
+   "id": "wp.225",
+   "en": "Agriculture & livestock workers",
+   "tr": "Tarım ve hayvancılık işçileri",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "1w2r3vl"
+  },
+  {
+   "id": "wp.226",
+   "en": "Seasonal work within the provinces and quotas set by the Ministry.",
+   "tr": "Bakanlığın belirlediği iller ve kotalar dahilinde mevsimlik çalışma.",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "1ll1u9q"
+  },
+  {
+   "id": "wp.227",
+   "en": "Event-length",
+   "tr": "Etkinlik süresince",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "nuak54"
+  },
+  {
+   "id": "wp.228",
+   "en": "Science, culture, arts & sport",
+   "tr": "Bilim, kültür, sanat ve spor",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "lxtcxx"
+  },
+  {
+   "id": "wp.229",
+   "en": "Researchers, performers and athletes for the length of the activity.",
+   "tr": "Faaliyet süresince araştırmacılar, sanatçılar ve sporcular.",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "13mbbht"
+  },
+  {
+   "id": "wp.230",
+   "en": "Trainers tied to exports & imports",
+   "tr": "İhracat ve ithalata bağlı eğitmenler",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "1tejx3t"
+  },
+  {
+   "id": "wp.231",
+   "en": "Training on goods and services exported from or imported into Turkey.",
+   "tr": "Türkiye'den ihraç edilen veya Türkiye'ye ithal edilen mal ve hizmetler üzerine eğitim.",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "1c7gxw5"
+  },
+  {
+   "id": "wp.232",
+   "en": "More categories exist",
+   "tr": "Başka kategoriler de var",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "yux379"
+  },
+  {
+   "id": "wp.233",
+   "en": "The full Article 48 list also covers diplomatic staff, exchange programmes, ship crews and others — ask us about your case.",
+   "tr": "48. maddenin tam listesi diplomatik personeli, değişim programlarını, gemi mürettebatını ve diğerlerini de kapsar — kendi durumunuzu bize sorun.",
+   "sec": "İstisnalar (48. madde)",
+   "legal": true,
+   "rev": "v2fsfr"
+  },
+  {
+   "id": "wp.234",
+   "en": "Deadline",
+   "tr": "Süre sınırı",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "1iescun"
+  },
+  {
+   "id": "wp.235",
+   "en": "30 days from entry",
+   "tr": "Girişten itibaren 30 gün",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "k9yzt7"
+  },
+  {
+   "id": "wp.236",
+   "en": "to apply at emuafiyet.csgb.gov.tr — late applications are rejected.",
+   "tr": "içinde emuafiyet.csgb.gov.tr üzerinden başvurulmalıdır — geç başvurular reddedilir.",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "16r9svk"
+  },
+  {
+   "id": "wp.237",
+   "en": "Fees",
+   "tr": "Harçlar",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "yjjdlc"
+  },
+  {
+   "id": "wp.238",
+   "en": "Under 3 months — no permit fee",
+   "tr": "3 aydan kısa — izin harcı yok",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "t6edy1"
+  },
+  {
+   "id": "wp.239",
+   "en": "; only a small card-printing fee if a certificate is requested.",
+   "tr": "; yalnızca belge talep edilirse küçük bir kart basım ücreti alınır.",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "1eu62zp"
+  },
+  {
+   "id": "wp.240",
+   "en": "Rights",
+   "tr": "Haklar",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "1ipfumu"
+  },
+  {
+   "id": "wp.241",
+   "en": "Residence + multi-entry",
+   "tr": "İkamet + çok girişli",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "v3456"
+  },
+  {
+   "id": "wp.242",
+   "en": "— the certificate works as a residence permit while valid.",
+   "tr": "— belge geçerli olduğu sürece ikamet izni yerine geçer.",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "gtyje0"
+  },
+  {
+   "id": "wp.243",
+   "en": "Cooldown",
+   "tr": "Bekleme süresi",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "5ywyl4"
+  },
+  {
+   "id": "wp.244",
+   "en": "6–12 months",
+   "tr": "6–12 ay",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "go4tsw"
+  },
+  {
+   "id": "wp.245",
+   "en": "before the same category can be used again after it ends.",
+   "tr": "sona erdikten sonra aynı kategori yeniden kullanılamaz.",
+   "sec": "İstisnalar (48. madde)",
+   "rev": "1buyy0"
+  },
+  {
+   "id": "wp.246",
+   "en": "How we get a permit approved",
+   "tr": "Bir izni nasıl onaylatıyoruz",
+   "sec": "Süreç adımları",
+   "rev": "1sz09gs"
+  },
+  {
+   "id": "wp.247",
+   "en": "You confirm the role and the candidate — we run the whole file under our İŞKUR licence.",
+   "tr": "Siz pozisyonu ve adayı onaylarsınız — dosyanın tamamını kendi İŞKUR lisansımızla biz yürütürüz.",
+   "sec": "Süreç adımları",
+   "legal": true,
+   "rev": "5x61bk"
+  },
+  {
+   "id": "wp.248",
+   "en": "Pre-check",
+   "tr": "Ön kontrol",
+   "sec": "Süreç adımları",
+   "rev": "1g1j2qx"
+  },
+  {
+   "id": "wp.249",
+   "en": "We audit your company against the criteria — ratio, capital, salary threshold, debts — before anything is filed. No surprises later.",
+   "tr": "Hiçbir şey dosyalanmadan önce şirketinizi kriterlere göre denetleriz — oran, sermaye, maaş eşiği, borçlar. Sonradan sürpriz olmaz.",
+   "sec": "Süreç adımları",
+   "legal": true,
+   "rev": "1bdkdg7"
+  },
+  {
+   "id": "wp.250",
+   "en": "Consulate stage",
+   "tr": "Konsolosluk aşaması",
+   "sec": "Süreç adımları",
+   "rev": "55g715"
+  },
+  {
+   "id": "wp.251",
+   "en": "For workers abroad: work visa application at the Turkish consulate in their country, referenced to the Ministry application. Skipped for workers already in Turkey with 6+ months residence.",
+   "tr": "Yurt dışındaki işçiler için: kendi ülkelerindeki Türk konsolosluğunda, Bakanlık başvurusuna referanslı çalışma vizesi başvurusu. Türkiye'de 6 aydan uzun ikameti olan işçilerde bu aşama atlanır.",
+   "sec": "Süreç adımları",
+   "rev": "18v3qhk"
+  },
+  {
+   "id": "wp.252",
+   "en": "Ministry filing",
+   "tr": "Bakanlığa dosyalama",
+   "sec": "Süreç adımları",
+   "rev": "w99g7d"
+  },
+  {
+   "id": "wp.253",
+   "en": "We file the joint application on the Ministry of Labour's online system within the legal window and answer every information request — typical decision in ~30 days.",
+   "tr": "Ortak başvuruyu Çalışma Bakanlığının çevrim içi sisteminde yasal süre içinde dosyalar ve her bilgi talebini yanıtlarız — karar genellikle ~30 günde çıkar.",
+   "sec": "Süreç adımları",
+   "rev": "1v3c8zm"
+  },
+  {
+   "id": "wp.254",
+   "en": "Approval & start",
+   "tr": "Onay ve başlangıç",
+   "sec": "Süreç adımları",
+   "rev": "nsszo"
+  },
+  {
+   "id": "wp.255",
+   "en": "SGK day one",
+   "tr": "İlk gün SGK",
+   "sec": "Süreç adımları",
+   "legal": true,
+   "rev": "1prir4y"
+  },
+  {
+   "id": "wp.256",
+   "en": "Fees paid, permit issued, worker registered with SGK and legally on your payroll — with the permit doubling as their residence permit.",
+   "tr": "Harçlar ödenir, izin düzenlenir, işçi SGK'ya kaydedilir ve yasal olarak bordronuza girer — izin aynı zamanda ikamet izni yerine geçer.",
+   "sec": "Süreç adımları",
+   "legal": true,
+   "rev": "zvorg8"
+  },
+  {
+   "id": "wp.257",
+   "en": "Already found your worker yourself?",
+   "tr": "İşçinizi kendiniz mi buldunuz?",
+   "sec": "Süreç adımları",
+   "rev": "bdki80"
+  },
+  {
+   "id": "wp.258",
+   "en": "No problem — we also run permit-only files. You bring the employee, we handle the whole work permit process under our İŞKUR licence.",
+   "tr": "Sorun değil — yalnızca izin dosyaları da yürütüyoruz. Çalışanı siz getirin, çalışma izni sürecinin tamamını kendi İŞKUR lisansımızla biz yürütelim.",
+   "sec": "Süreç adımları",
+   "legal": true,
+   "rev": "dcjzfm"
+  },
+  {
+   "id": "wp.259",
+   "en": "How long will your case take?",
+   "tr": "Sizin dosyanız ne kadar sürer?",
+   "sec": "Zaman çizelgesi",
+   "rev": "u9litc"
+  },
+  {
+   "id": "wp.260",
+   "en": "It depends on one thing: where the worker is right now.",
+   "tr": "Tek bir şeye bağlı: işçi şu anda nerede.",
+   "sec": "Zaman çizelgesi",
+   "rev": "1cmu9jq"
+  },
+  {
+   "id": "wp.261",
+   "en": "Worker abroad",
+   "tr": "İşçi yurt dışında",
+   "sec": "Zaman çizelgesi",
+   "rev": "orohrc"
+  },
+  {
+   "id": "wp.262",
+   "en": "Already in Turkey",
+   "tr": "Zaten Türkiye'de",
+   "sec": "Zaman çizelgesi",
+   "rev": "q9gbsw"
+  },
+  {
+   "id": "wp.263",
+   "en": "Worker is abroad",
+   "tr": "İşçi yurt dışında",
+   "sec": "Zaman çizelgesi",
+   "rev": "1pvjfyq"
+  },
+  {
+   "id": "wp.264",
+   "en": "~8–10 weeks",
+   "tr": "~8–10 hafta",
+   "sec": "Zaman çizelgesi",
+   "rev": "96ma3i"
+  },
+  {
+   "id": "wp.265",
+   "en": "Week 1",
+   "tr": "1. hafta",
+   "sec": "Zaman çizelgesi",
+   "rev": "1griag8"
+  },
+  {
+   "id": "wp.266",
+   "en": "Work visa application at the Turkish consulate in the worker's country",
+   "tr": "İşçinin ülkesindeki Türk konsolosluğunda çalışma vizesi başvurusu",
+   "sec": "Zaman çizelgesi",
+   "rev": "1794t7d"
+  },
+  {
+   "id": "wp.267",
+   "en": "Weeks 2–6",
+   "tr": "2–6. hafta",
+   "sec": "Zaman çizelgesi",
+   "rev": "esy5j1"
+  },
+  {
+   "id": "wp.268",
+   "en": "Ministry filing within 10 working days of the consular application, then ~30 days processing",
+   "tr": "Konsolosluk başvurusundan sonraki 10 iş günü içinde Bakanlığa dosyalama, ardından ~30 gün işlem süresi",
+   "sec": "Zaman çizelgesi",
+   "rev": "if7yls"
+  },
+  {
+   "id": "wp.269",
+   "en": "Weeks 6–9",
+   "tr": "6–9. haftalar",
+   "sec": "Zaman çizelgesi",
+   "rev": "esy8vq"
+  },
+  {
+   "id": "wp.270",
+   "en": "Approval, fees, visa issuance and travel to Turkey",
+   "tr": "Onay, harçlar, vize düzenlenmesi ve Türkiye'ye seyahat",
+   "sec": "Zaman çizelgesi",
+   "rev": "113mx7n"
+  },
+  {
+   "id": "wp.271",
+   "en": "Arrival",
+   "tr": "Varış",
+   "sec": "Zaman çizelgesi",
+   "rev": "gmn0l2"
+  },
+  {
+   "id": "wp.272",
+   "en": "SGK registration and first working day",
+   "tr": "SGK kaydı ve ilk iş günü",
+   "sec": "Zaman çizelgesi",
+   "legal": true,
+   "rev": "rbgnzb"
+  },
+  {
+   "id": "wp.273",
+   "en": "Worker already in Turkey",
+   "tr": "İşçi zaten Türkiye'de",
+   "sec": "Zaman çizelgesi",
+   "rev": "1fd0i3a"
+  },
+  {
+   "id": "wp.274",
+   "en": "~4–6 weeks",
+   "tr": "~4–6 hafta",
+   "sec": "Zaman çizelgesi",
+   "rev": "zr3w91"
+  },
+  {
+   "id": "wp.275",
+   "en": "Direct domestic filing on the Ministry system — needs a valid residence permit of 6+ months",
+   "tr": "Bakanlık sistemi üzerinden doğrudan yurt içi başvuru — 6 aydan uzun geçerli ikamet izni gerekir",
+   "sec": "Zaman çizelgesi",
+   "rev": "18ejrt5"
+  },
+  {
+   "id": "wp.276",
+   "en": "Weeks 1–5",
+   "tr": "1–5. haftalar",
+   "sec": "Zaman çizelgesi",
+   "rev": "esy7wd"
+  },
+  {
+   "id": "wp.277",
+   "en": "~30 days Ministry processing — no consulate stage, no travel wait",
+   "tr": "~30 gün Bakanlık işlem süresi — konsolosluk aşaması yok, seyahat beklemesi yok",
+   "sec": "Zaman çizelgesi",
+   "rev": "1825y2s"
+  },
+  {
+   "id": "wp.278",
+   "en": "Approval",
+   "tr": "Onay",
+   "sec": "Zaman çizelgesi",
+   "rev": "jmk69u"
+  },
+  {
+   "id": "wp.279",
+   "en": "Fees paid, SGK registration and first working day",
+   "tr": "Harçlar ödenir, SGK kaydı ve ilk iş günü",
+   "sec": "Zaman çizelgesi",
+   "legal": true,
+   "rev": "1e5wh0i"
+  },
+  {
+   "id": "wp.280",
+   "en": "Fastest route — worth checking before sourcing abroad whether a suitable candidate is already in Turkey.",
+   "tr": "Daha hızlı bir süreç için, yurt dışından işçi aramadan önce Türkiye’de uygun bir aday bulunup bulunmadığını kontrol etmenizi öneririz.",
+   "sec": "Zaman çizelgesi",
+   "rev": "tfur1h"
+  },
+  {
+   "id": "wp.281",
+   "en": "What a work permit costs",
+   "tr": "Çalışma izni ne kadar tutar",
+   "sec": "Maliyetler",
+   "rev": "7o17xc"
+  },
+  {
+   "id": "wp.282",
+   "en": "Three cost lines — two go to the state, one to us. All quoted in writing before we start; the worker never pays anything.",
+   "tr": "Üç maliyet kalemi — ikisi devlete, biri bize. Hepsi başlamadan önce yazılı olarak bildirilir; işçi hiçbir şey ödemez.",
+   "sec": "Maliyetler",
+   "rev": "1hyoaqx"
+  },
+  {
+   "id": "wp.283",
+   "en": "State fee 1",
+   "tr": "Devlet harcı 1",
+   "sec": "Maliyetler",
+   "rev": "uo93lx"
+  },
+  {
+   "id": "wp.284",
+   "en": "Work permit fee",
+   "tr": "Çalışma izni harcı",
+   "sec": "Maliyetler",
+   "rev": "13tpk51"
+  },
+  {
+   "id": "wp.285",
+   "en": "Charged per permit year by the Ministry",
+   "tr": "Bakanlık tarafından her izin yılı için alınır",
+   "sec": "Maliyetler",
+   "rev": "551z49"
+  },
+  {
+   "id": "wp.286",
+   "en": "(çalışma izni harcı)",
+   "tr": "(çalışma izni harcı)",
+   "sec": "Maliyetler",
+   "legal": true,
+   "rev": "7i99ap"
+  },
+  {
+   "id": "wp.287",
+   "en": "— the amount is set every January.",
+   "tr": "— tutar her ocak ayında belirlenir.",
+   "sec": "Maliyetler",
+   "rev": "wrl1zp"
+  },
+  {
+   "id": "wp.288",
+   "en": "State fee 2",
+   "tr": "Devlet harcı 2",
+   "sec": "Maliyetler",
+   "rev": "uo93ly"
+  },
+  {
+   "id": "wp.289",
+   "en": "Card fee",
+   "tr": "Kart bedeli",
+   "sec": "Maliyetler",
+   "rev": "1jq4smv"
+  },
+  {
+   "id": "wp.290",
+   "en": "A small fixed fee for printing the permit card",
+   "tr": "İzin kartının basımı için küçük ve sabit bir ücret",
+   "sec": "Maliyetler",
+   "rev": "1jrr0l7"
+  },
+  {
+   "id": "wp.291",
+   "en": "(değerli kağıt bedeli)",
+   "tr": "(değerli kağıt bedeli)",
+   "sec": "Maliyetler",
+   "rev": "1lqpc3f"
+  },
+  {
+   "id": "wp.292",
+   "en": ". If the worker is abroad, the consular visa fee is added.",
+   "tr": ". İşçi yurt dışındaysa konsolosluk vize ücreti eklenir.",
+   "sec": "Maliyetler",
+   "rev": "1uppufv"
+  },
+  {
+   "id": "wp.293",
+   "en": "Our side",
+   "tr": "Bizim tarafımız",
+   "sec": "Maliyetler",
+   "rev": "fe4b3q"
+  },
+  {
+   "id": "wp.294",
+   "en": "Service fee — fixed",
+   "tr": "Hizmet bedeli — sabit",
+   "sec": "Maliyetler",
+   "rev": "1ansxq4"
+  },
+  {
+   "id": "wp.295",
+   "en": "Pre-check, filing, follow-up and SGK registration — one fixed amount, quoted upfront in writing. If a permit is rejected, we re-file at our own cost.",
+   "tr": "Ön kontrol, dosyalama, takip ve SGK kaydı — tek bir sabit tutar, baştan yazılı olarak bildirilir. Bir izin reddedilirse yeniden dosyalamayı kendi masrafımızla yaparız.",
+   "sec": "Maliyetler",
+   "legal": true,
+   "rev": "12ecxy2"
+  },
+  {
+   "id": "wp.296",
+   "en": "Get an exact quote on WhatsApp →",
+   "tr": "WhatsApp'tan net fiyat alın →",
+   "sec": "Maliyetler",
+   "rev": "11wc4h2"
+  },
+  {
+   "id": "wp.297",
+   "en": "Documents you'll need",
+   "tr": "Gerekli belgeler",
+   "sec": "Belgeler",
+   "rev": "moaiwn"
+  },
+  {
+   "id": "wp.298",
+   "en": "We collect, check and upload everything — this is what each side prepares.",
+   "tr": "Her şeyi biz toplar, kontrol eder ve yükleriz — her tarafın hazırlaması gerekenler şunlar.",
+   "sec": "Belgeler",
+   "rev": "m6lvi8"
+  },
+  {
+   "id": "wp.299",
+   "en": "From the employer",
+   "tr": "İşverenden",
+   "sec": "Belgeler",
+   "rev": "6eqn1b"
+  },
+  {
+   "id": "wp.300",
+   "en": "6 docs",
+   "tr": "6 belge",
+   "sec": "Belgeler",
+   "rev": "1oyj1ew"
+  },
+  {
+   "id": "wp.301",
+   "en": "Tax plate",
+   "tr": "Vergi levhası",
+   "sec": "Belgeler",
+   "rev": "gl7jno"
+  },
+  {
+   "id": "wp.302",
+   "en": "(vergi levhası)",
+   "tr": "(vergi levhası)",
+   "sec": "Belgeler",
+   "legal": true,
+   "rev": "101h4lb"
+  },
+  {
+   "id": "wp.303",
+   "en": "Trade registry gazette",
+   "tr": "Ticaret sicil gazetesi",
+   "sec": "Belgeler",
+   "rev": "be2nfu"
+  },
+  {
+   "id": "wp.304",
+   "en": "(ticaret sicil gazetesi)",
+   "tr": "(ticaret sicil gazetesi)",
+   "sec": "Belgeler",
+   "rev": "19he2ly"
+  },
+  {
+   "id": "wp.305",
+   "en": "Latest balance sheet or financial statement",
+   "tr": "Son bilanço veya mali tablo",
+   "sec": "Belgeler",
+   "rev": "ugoidi"
+  },
+  {
+   "id": "wp.306",
+   "en": "SGK workplace registration and premium records",
+   "tr": "SGK iş yeri tescili ve prim kayıtları",
+   "sec": "Belgeler",
+   "legal": true,
+   "rev": "1r8gu0v"
+  },
+  {
+   "id": "wp.307",
+   "en": "Signature circular",
+   "tr": "İmza sirküleri",
+   "sec": "Belgeler",
+   "rev": "o7s12o"
+  },
+  {
+   "id": "wp.308",
+   "en": "(imza sirküleri)",
+   "tr": "(imza sirküleri)",
+   "sec": "Belgeler",
+   "rev": "12jhbjq"
+  },
+  {
+   "id": "wp.309",
+   "en": "Signed employment contract",
+   "tr": "İmzalı iş sözleşmesi",
+   "sec": "Belgeler",
+   "rev": "1lpmb9"
+  },
+  {
+   "id": "wp.310",
+   "en": "(we prepare it)",
+   "tr": "(biz hazırlıyoruz)",
+   "sec": "Belgeler",
+   "rev": "80e10q"
+  },
+  {
+   "id": "wp.311",
+   "en": "From the worker",
+   "tr": "İşçiden",
+   "sec": "Belgeler",
+   "rev": "mi037g"
+  },
+  {
+   "id": "wp.312",
+   "en": "Passport — valid well beyond the permit period",
+   "tr": "Pasaport — izin süresini fazlasıyla aşan geçerlilikte",
+   "sec": "Belgeler",
+   "rev": "k4gw7h"
+  },
+  {
+   "id": "wp.313",
+   "en": "Biometric photo (last 6 months)",
+   "tr": "Biyometrik fotoğraf (son 6 ay)",
+   "sec": "Belgeler",
+   "rev": "62xe47"
+  },
+  {
+   "id": "wp.314",
+   "en": "Diploma or qualification certificate — translated and notarised",
+   "tr": "Diploma veya yeterlilik belgesi — tercüme edilmiş ve noter onaylı",
+   "sec": "Belgeler",
+   "rev": "1bo5wvi"
+  },
+  {
+   "id": "wp.315",
+   "en": "If abroad: consular work visa reference number",
+   "tr": "Yurt dışındaysa: konsolosluk çalışma vizesi referans numarası",
+   "sec": "Belgeler",
+   "rev": "2v29dg"
+  },
+  {
+   "id": "wp.316",
+   "en": "If in Turkey: residence permit copy (6+ months validity)",
+   "tr": "Türkiye'deyse: ikamet izni kopyası (6 aydan uzun geçerlilik)",
+   "sec": "Belgeler",
+   "rev": "4sn5bc"
+  },
+  {
+   "id": "wp.317",
+   "en": "For regulated roles: professional licence or pre-authorisation",
+   "tr": "Düzenlemeye tabi pozisyonlar için: mesleki lisans veya ön izin",
+   "sec": "Belgeler",
+   "rev": "1l1b8ez"
+  },
+  {
+   "id": "wp.318",
+   "en": "Exact requirements vary by sector and case — we send you a tailored checklist after the pre-check.",
+   "tr": "Tam gereklilikler sektöre ve duruma göre değişir — ön kontrolden sonra size özel bir kontrol listesi göndeririz.",
+   "sec": "Belgeler",
+   "rev": "dajedl"
+  },
+  {
+   "id": "wp.319",
+   "en": "Don't forget renewals",
+   "tr": "Yenilemeleri unutmayın",
+   "sec": "Yenileme",
+   "rev": "1qtkpu3"
+  },
+  {
+   "id": "wp.320",
+   "en": "A permit that expires is a worker you lose",
+   "tr": "Süresi dolan bir izin, kaybedilen bir işçi demektir",
+   "sec": "Yenileme",
+   "rev": "e0mzq9"
+  },
+  {
+   "id": "wp.321",
+   "en": "Renewal must be filed",
+   "tr": "Yenileme başvurusu",
+   "sec": "Yenileme",
+   "rev": "1dzpnll"
+  },
+  {
+   "id": "wp.322",
+   "en": "within the 60 days before expiry",
+   "tr": "bitiş tarihinden önceki 60 gün içinde yapılmalıdır",
+   "sec": "Yenileme",
+   "rev": "xipgkm"
+  },
+  {
+   "id": "wp.323",
+   "en": "— miss the window and the worker falls out of legal status. For every permit we file, we track the expiry date and start the renewal on time, automatically.",
+   "tr": "— bu süreyi kaçırırsanız işçi yasal statüsünü kaybeder. Dosyaladığımız her izin için bitiş tarihini takip eder ve yenilemeyi otomatik olarak zamanında başlatırız.",
+   "sec": "Yenileme",
+   "rev": "16a8ta7"
+  },
+  {
+   "id": "wp.324",
+   "en": "Miss the window and the worker falls out of legal status. For every permit we file, we track the expiry and start the renewal on time.",
+   "tr": "Bu süreyi kaçırırsanız işçi yasal statüsünü kaybeder. Dosyaladığımız her izin için bitiş tarihini takip eder ve yenilemeyi zamanında başlatırız.",
+   "sec": "Yenileme",
+   "rev": "14gemt2"
+  },
+  {
+   "id": "wp.325",
+   "en": "days",
+   "tr": "gün",
+   "sec": "Yenileme",
+   "rev": "yirre2"
+  },
+  {
+   "id": "wp.326",
+   "en": "Filing window opens 60 days before expiry — and closes on the expiry date.",
+   "tr": "Başvuru penceresi bitişten 60 gün önce açılır ve bitiş tarihinde kapanır.",
+   "sec": "Yenileme",
+   "rev": "1uu46sl"
+  },
+  {
+   "id": "wp.327",
+   "en": "Renew a permit →",
+   "tr": "İzin yenileyin →",
+   "sec": "Yenileme",
+   "rev": "1p5w6y2"
+  },
+  {
+   "id": "wp.328",
+   "en": "Work permit questions",
+   "tr": "Çalışma izni soruları",
+   "sec": "SSS",
+   "rev": "z68c1a"
+  },
+  {
+   "id": "wp.329",
+   "en": "What Turkish employers ask us before their first foreign hire.",
+   "tr": "Türk işverenlerin ilk yabancı işe alımından önce bize sorduğu sorular.",
+   "sec": "SSS",
+   "rev": "xss94r"
+  },
+  {
+   "id": "wp.330",
+   "en": "Something else?",
+   "tr": "Başka bir şey mi var?",
+   "sec": "SSS",
+   "rev": "p77qz1"
+  },
+  {
+   "id": "wp.331",
+   "en": "Ask our permit team directly.",
+   "tr": "Doğrudan izin ekibimize sorun.",
+   "sec": "SSS",
+   "rev": "17ccx60"
+  },
+  {
+   "id": "wp.332",
+   "en": "WhatsApp",
+   "tr": "WhatsApp",
+   "sec": "SSS",
+   "rev": "vml2gt"
+  },
+  {
+   "id": "wp.333",
+   "en": "Email",
+   "tr": "E-posta",
+   "sec": "SSS",
+   "rev": "3brsq1"
+  },
+  {
+   "id": "wp.334",
+   "en": "How long does a Turkish work permit take?",
+   "tr": "Türkiye çalışma izni ne kadar sürer?",
+   "sec": "SSS",
+   "rev": "81k2fv"
+  },
+  {
+   "id": "wp.335",
+   "en": "Around 30 days of Ministry processing once the file is complete. If the worker is abroad, add the consular work visa stage before that. With our pre-check, most files pass on the first submission — rejected files that need re-filing take far longer, which is why the pre-check matters.",
+   "tr": "Dosya tamamlandıktan sonra Bakanlıkta yaklaşık 30 gün. İşçi yurt dışındaysa öncesine konsolosluk çalışma vizesi aşamasını ekleyin. Ön kontrolümüzle dosyaların çoğu ilk gönderimde geçer — reddedilip yeniden dosyalanan başvurular çok daha uzun sürer, ön kontrolün önemi de burada.",
+   "sec": "SSS",
+   "rev": "8p8dnn"
+  },
+  {
+   "id": "wp.336",
+   "en": "Does the worker also need a residence permit?",
+   "tr": "İşçinin ayrıca ikamet iznine ihtiyacı var mı?",
+   "sec": "SSS",
+   "rev": "h8y9tt"
+  },
+  {
+   "id": "wp.337",
+   "en": "No. Under Law No. 6735, a valid work permit counts as a residence permit for its whole validity. The worker can live in Turkey and re-enter the country on the permit alone.",
+   "tr": "Hayır. 6735 sayılı Kanun uyarınca geçerli bir çalışma izni, tüm geçerlilik süresi boyunca ikamet izni yerine geçer. İşçi yalnızca bu izinle Türkiye'de yaşayabilir ve ülkeye yeniden giriş yapabilir.",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "1pxy2wb"
+  },
+  {
+   "id": "wp.338",
+   "en": "What exactly is the 1:5 rule?",
+   "tr": "1:5 kuralı tam olarak nedir?",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "cdrn25"
+  },
+  {
+   "id": "wp.339",
+   "en": "For each foreign worker, the workplace must employ at least five Turkish citizens registered with SGK. It is monitored monthly starting from the 7th month of the first permit, so new employers have a build-up window. Some sectors and situations are exempt — tourism specialists, advanced-technology investments and public projects among them.",
+   "tr": "Her yabancı işçi için iş yerinin SGK'ya kayıtlı en az beş Türk vatandaşı çalıştırması gerekir. İlk iznin 7. ayından itibaren aylık izlenir, böylece yeni işverenlerin kadro kurmak için süresi olur. Bazı sektörler ve durumlar muaftır — turizm uzmanları, ileri teknoloji yatırımları ve kamu projeleri bunlar arasındadır.",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "1q2n9n8"
+  },
+  {
+   "id": "wp.340",
+   "en": "What is e-Muafiyet and who can use it?",
+   "tr": "e-Muafiyet nedir ve kimler kullanabilir?",
+   "sec": "SSS",
+   "rev": "slj579"
+  },
+  {
+   "id": "wp.341",
+   "en": "What happens if someone works without a permit?",
+   "tr": "Biri izinsiz çalışırsa ne olur?",
+   "sec": "SSS",
+   "rev": "isu8ly"
+  },
+  {
+   "id": "wp.342",
+   "en": "Administrative fines of over ₺100,000 per unauthorised worker in 2026 (updated every year), deportation of the worker at the employer's expense, a block on the employer's future applications, and possible criminal liability for directors. It is never worth it.",
+   "tr": "2026'da izinsiz her işçi için 100.000 ₺'nin üzerinde idari para cezası (her yıl güncellenir), masrafları işverene ait olmak üzere işçinin sınır dışı edilmesi, işverenin gelecekteki başvurularının engellenmesi ve yöneticiler için olası cezai sorumluluk. Asla değmez.",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "fw43ya"
+  },
+  {
+   "id": "wp.343",
+   "en": "Is there a minimum salary for foreign workers?",
+   "tr": "Yabancı işçiler için asgari maaş var mı?",
+   "sec": "SSS",
+   "rev": "jkord9"
+  },
+  {
+   "id": "wp.344",
+   "en": "Yes — each role has a minimum gross salary defined as a multiple of the Turkish minimum wage, higher for specialists and managers. The multiples are updated every January, and offering less is an automatic rejection.",
+   "tr": "Evet — her pozisyonun, Türkiye asgari ücretinin katı olarak tanımlanmış bir asgari brüt maaşı vardır; uzmanlar ve yöneticiler için daha yüksektir. Katsayılar her ocak ayında güncellenir ve daha azını teklif etmek otomatik ret demektir.",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "1mhun9e"
+  },
+  {
+   "id": "wp.345",
+   "en": "We are a recruitment agency — can you file permits for our clients' workers?",
+   "tr": "Biz bir işe alım ajansıyız — müşterilerimizin işçileri için izin dosyalayabilir misiniz?",
+   "sec": "SSS",
+   "rev": "yii4wm"
+  },
+  {
+   "id": "wp.346",
+   "en": "Yes — that is exactly our HR agency partnership: you keep the client, we supply verified workers and file every permit under our İŞKUR licence. See the Partner With Us page for how the cooperation works, or message us on WhatsApp.",
+   "tr": "Evet — İK ajansı iş ortaklığımız tam olarak budur: müşteri sizde kalır, biz doğrulanmış işçi sağlar ve her izni kendi İŞKUR lisansımızla dosyalarız. İş birliğinin nasıl işlediğini Bizimle Çalışın sayfasında görebilir ya da bize WhatsApp'tan yazabilirsiniz.",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "w25o2f"
+  },
+  {
+   "id": "wp.347",
+   "en": "We already have a worker — can you handle just the permit?",
+   "tr": "Zaten bir işçimiz var — yalnızca izni halledebilir misiniz?",
+   "sec": "SSS",
+   "rev": "16u7tvo"
+  },
+  {
+   "id": "wp.348",
+   "en": "Yes. Permit-only files are a normal part of our work: you bring the employee, we run the pre-check, the consular stage if needed, the Ministry filing and SGK registration under our İŞKUR licence. You don't have to hire through us to use our permit service.",
+   "tr": "Evet. Yalnızca izin dosyaları işimizin olağan bir parçasıdır: çalışanı siz getirirsiniz, ön kontrolü, gerekiyorsa konsolosluk aşamasını, Bakanlığa dosyalamayı ve SGK kaydını kendi İŞKUR lisansımızla biz yürütürüz. İzin hizmetimizi kullanmak için bizden işçi almanız gerekmez.",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "1neidmq"
+  },
+  {
+   "id": "wp.349",
+   "en": "Who files the permit when we hire through JobsAdmire?",
+   "tr": "JobsAdmire üzerinden işe aldığımızda izni kim dosyalar?",
+   "sec": "SSS",
+   "rev": "1btnme0"
+  },
+  {
+   "id": "wp.350",
+   "en": "We do — every stage, under our İŞKUR licence (Permit No. 1730): the company pre-check, the consular stage, the Ministry filing and SGK registration. You track the status live on your portal, and if a permit is rejected we re-file at our own cost.",
+   "tr": "Biz — her aşamayı kendi İŞKUR lisansımızla (İzin No. 1730): şirket ön kontrolü, konsolosluk aşaması, Bakanlığa dosyalama ve SGK kaydı. Durumu portalınızdan canlı takip edersiniz ve bir izin reddedilirse yeniden dosyalamayı kendi masrafımızla yaparız.",
+   "sec": "SSS",
+   "legal": true,
+   "rev": "1jqufc1"
+  },
+  {
+   "id": "wp.351",
+   "en": "Keep reading on the blog",
+   "tr": "Blogda okumaya devam edin",
+   "sec": "Blog ve kapanış",
+   "rev": "1e84dle"
+  },
+  {
+   "id": "wp.352",
+   "en": "All articles →",
+   "tr": "Tüm yazılar →",
+   "sec": "Blog ve kapanış",
+   "rev": "1srtbgh"
+  },
+  {
+   "id": "wp.353",
+   "en": "Turkey work permit rejection reasons — and how to avoid them",
+   "tr": "Türkiye çalışma izni ret nedenleri — ve bunlardan nasıl kaçınılır",
+   "sec": "Blog ve kapanış",
+   "rev": "9bsahe"
+  },
+  {
+   "id": "wp.354",
+   "en": "The 7 most common rejection causes, and the pre-checks that prevent them.",
+   "tr": "En sık görülen 7 ret nedeni ve bunları önleyen ön kontroller.",
+   "sec": "Blog ve kapanış",
+   "rev": "1rdo6mi"
+  },
+  {
+   "id": "wp.355",
+   "en": "Work visa vs work permit in Turkey: what's the difference?",
+   "tr": "Türkiye'de çalışma vizesi ile çalışma izni: fark nedir?",
+   "sec": "Blog ve kapanış",
+   "rev": "eyq9e4"
+  },
+  {
+   "id": "wp.356",
+   "en": "Two documents, two processes — and why workers abroad need both.",
+   "tr": "İki belge, iki süreç — ve yurt dışındaki işçilerin neden ikisine de ihtiyacı var.",
+   "sec": "Blog ve kapanış",
+   "rev": "j0v5a2"
+  },
+  {
+   "id": "wp.357",
+   "en": "Work permit renewals: don't lose your workforce to missed deadlines",
+   "tr": "Çalışma izni yenilemeleri: kaçırılan süreler yüzünden iş gücünüzü kaybetmeyin",
+   "sec": "Blog ve kapanış",
+   "rev": "16uam0l"
+  },
+  {
+   "id": "wp.358",
+   "en": "Renewal windows, required documents and how we track expiry dates.",
+   "tr": "Yenileme süreleri, gerekli belgeler ve bitiş tarihlerini nasıl takip ettiğimiz.",
+   "sec": "Blog ve kapanış",
+   "rev": "jyne79"
+  },
+  {
+   "id": "wp.359",
+   "en": "With workers or without — we handle every permit",
+   "tr": "İşçiyle ya da işçisiz — her izni biz yürütürüz",
+   "sec": "Blog ve kapanış",
+   "rev": "1n7dd91"
+  },
+  {
+   "id": "wp.360",
+   "en": "Need workers? We source them and file the permits. Already have your own? We run the permit file alone. Either way: pre-check, consulate stage, Ministry filing and SGK registration under our İŞKUR licence — and if a permit is rejected, we re-file at our own cost.",
+   "tr": "İşçiye mi ihtiyacınız var? Onları biz buluruz ve izinleri biz dosyalarız. Kendi işçiniz mi var? Yalnızca izin dosyasını yürütürüz. Her iki durumda da: ön kontrol, konsolosluk aşaması, Bakanlığa dosyalama ve SGK kaydı — hepsi kendi İŞKUR lisansımızla. Bir izin reddedilirse yeniden dosyalamayı kendi masrafımızla yaparız.",
+   "sec": "Blog ve kapanış",
+   "legal": true,
+   "rev": "119p5j0"
+  },
+  {
+   "id": "wp.361",
+   "en": "Pre-check, consulate stage, Ministry filing and SGK — all under our İŞKUR licence.",
+   "tr": "Ön kontrol, konsolosluk aşaması, Bakanlığa dosyalama ve SGK — hepsi kendi İŞKUR lisansımızla.",
+   "sec": "Blog ve kapanış",
+   "legal": true,
+   "rev": "w3nwzj"
+  },
+  {
+   "id": "wp.362",
+   "en": "Rejected permit? We re-file at our own cost.",
+   "tr": "İzin reddedildi mi? Yeniden dosyalamayı kendi masrafımızla yaparız.",
+   "sec": "Blog ve kapanış",
+   "rev": "r9vmrn"
+  },
+  {
+   "id": "wp.363",
+   "en": "I need workers",
+   "tr": "İşçiye ihtiyacım var",
+   "sec": "Blog ve kapanış",
+   "rev": "uauaeb"
+  },
+  {
+   "id": "wp.364",
+   "en": "We source them and file every permit",
+   "tr": "Onları biz buluruz ve her izni biz dosyalarız",
+   "sec": "Blog ve kapanış",
+   "rev": "bsla2h"
+  },
+  {
+   "id": "wp.365",
+   "en": "I already have a worker",
+   "tr": "Zaten bir işçim var",
+   "sec": "Blog ve kapanış",
+   "rev": "7xl52f"
+  },
+  {
+   "id": "wp.366",
+   "en": "Hire workers with permits handled →",
+   "tr": "İzinleri bize bırakarak işçi alın →",
+   "sec": "Blog ve kapanış",
+   "rev": "1yq7qks"
+  },
+  {
+   "id": "wp.367",
+   "en": "Permit-only for my worker",
+   "tr": "İşçim için yalnızca izin",
+   "sec": "Blog ve kapanış",
+   "rev": "1vamvv6"
+  },
+  {
+   "id": "wp.368",
+   "en": "Call us",
+   "tr": "Bizi arayın",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1pu4zvl"
+  },
+  {
+   "id": "wp.369",
+   "en": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+   "tr": "Türkiye’deki işverenler için lisanslı iş gücü temini — yurt dışı tedarik, inceleme ve çalışma izinleri, uçtan uca.",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1v5awlm"
+  },
+  {
+   "id": "wp.370",
+   "en": "İŞKUR Licensed · Permit No. 1730",
+   "tr": "İŞKUR Lisanslı · İzin No. 1730",
+   "sec": "Alt bilgi (Footer)",
+   "legal": true,
+   "rev": "z1r9le"
+  },
+  {
+   "id": "wp.371",
+   "en": "For Employers",
+   "tr": "İşverenler için",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1yhsmw"
+  },
+  {
+   "id": "wp.372",
+   "en": "Available Workers",
+   "tr": "Mevcut İşçiler",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "wzront"
+  },
+  {
+   "id": "wp.373",
+   "en": "Hiring Cost Calculator",
+   "tr": "İşçi Maliyet Hesaplama",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "e9bold"
+  },
+  {
+   "id": "wp.374",
+   "en": "Company",
+   "tr": "Kurumsal",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1ohrlxe"
+  },
+  {
+   "id": "wp.375",
+   "en": "Contact",
+   "tr": "İletişim",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1ofoso5"
+  },
+  {
+   "id": "wp.376",
+   "en": "Telegram · @jobsadmire",
+   "tr": "Telegram · @jobsadmire",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3y9lox"
+  },
+  {
+   "id": "wp.377",
+   "en": "Antalya · Head office",
+   "tr": "Antalya · Merkez ofis",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1vkrek4"
+  },
+  {
+   "id": "wp.378",
+   "en": "Adnan Menderes Blv. No 7/6",
+   "tr": "Adnan Menderes Blv. No 7/6",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "muabnf"
+  },
+  {
+   "id": "wp.379",
+   "en": "Muratpaşa, Antalya, Türkiye",
+   "tr": "Muratpaşa, Antalya, Türkiye",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "e06xbz"
+  },
+  {
+   "id": "wp.380",
+   "en": "Mon–Fri 09:00–18:00",
+   "tr": "Pzt–Cum 09:00–18:00",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1pratzo"
+  },
+  {
+   "id": "wp.381",
+   "en": "Get directions",
+   "tr": "Yol tarifi alın",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "9twfut"
+  },
+  {
+   "id": "wp.382",
+   "en": "Karachi · Tech office",
+   "tr": "Karaçi · Teknoloji ofisi",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1dihier"
+  },
+  {
+   "id": "wp.383",
+   "en": "Shahrah-e-Faisal",
+   "tr": "Shahrah-e-Faisal",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "y795a1"
+  },
+  {
+   "id": "wp.384",
+   "en": "Karachi, Pakistan",
+   "tr": "Karaçi, Pakistan",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1td9ko9"
+  },
+  {
+   "id": "wp.385",
+   "en": "Mon–Sat 10:00–19:00 PKT",
+   "tr": "Pzt–Cmt 10:00–19:00 PKT",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1w2dzmx"
+  },
+  {
+   "id": "wp.386",
+   "en": "WhatsApp Us →",
+   "tr": "WhatsApp’tan yazın →",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1bo2cnd"
+  },
+  {
+   "id": "wp.387",
+   "en": "Get Our App",
+   "tr": "Uygulamamızı İndirin",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "ncsu7u"
+  },
+  {
+   "id": "wp.388",
+   "en": "JobsAdmire",
+   "tr": "JobsAdmire",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "m8wyx3"
+  },
+  {
+   "id": "wp.389",
+   "en": "Workforce on the go",
+   "tr": "İş gücü her yerde yanınızda",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3cj12h"
+  },
+  {
+   "id": "wp.390",
+   "en": "Approve candidates, track permits & get instant updates.",
+   "tr": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "19enop8"
+  },
+  {
+   "id": "wp.391",
+   "en": "İŞKUR permit No. 1730 · Job seekers are never charged a fee (law No. 4904) · Tax No: 48422122",
+   "tr": "İŞKUR izin No. 1730 · İş arayanlardan asla ücret alınmaz (4904 sayılı kanun) · Vergi No: 48422122",
+   "sec": "Alt bilgi (Footer)",
+   "legal": true,
+   "rev": "dgg8hy"
+  },
+  {
+   "id": "wp.392",
+   "en": "Privacy",
+   "tr": "Gizlilik Politikası",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1ligp4z"
+  },
+  {
+   "id": "wp.393",
+   "en": "Terms",
+   "tr": "Kullanım Şartları",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "3rktfc"
+  },
+  {
+   "id": "wp.394",
+   "en": "© 2026 Jobs Admire",
+   "tr": "© 2026 Jobs Admire",
+   "sec": "Alt bilgi (Footer)",
+   "rev": "1f7jgq0"
+  },
+  {
+   "id": "wp.395",
+   "en": "JobsAdmire · İŞKUR Private Employment Agency Permit No. 1730 · Antalya, Türkiye ·",
+   "tr": "JobsAdmire · İŞKUR Özel İstihdam Bürosu İzin No. 1730 · Antalya, Türkiye ·",
+   "sec": "SEO ve şema metni",
+   "legal": true,
+   "rev": "y1ebqb"
+  },
+  {
+   "id": "wp.396",
+   "en": "İŞKUR-licensed recruitment agency in Turkey — overseas worker sourcing with every work permit filed under Law No. 6735.",
+   "tr": "Türkiye'de İŞKUR lisanslı işe alım ajansı — yurt dışından işçi temini ve 6735 sayılı Kanun kapsamında dosyalanan her çalışma izni.",
+   "sec": "SEO ve şema metni",
+   "legal": true,
+   "rev": "mg2mtu"
+  },
+  {
+   "id": "wp.397",
+   "en": "İŞKUR Private Employment Agency Permit No. 1730",
+   "tr": "İŞKUR Özel İstihdam Bürosu İzin No. 1730",
+   "sec": "SEO ve şema metni",
+   "legal": true,
+   "rev": "h0j4wg"
+  },
+  {
+   "id": "wp.398",
+   "en": "Employer updates subscription",
+   "tr": "İşveren güncellemeleri aboneliği",
+   "sec": "SEO ve şema metni",
+   "rev": "1qcc7ht"
+  }
+ ]
+}

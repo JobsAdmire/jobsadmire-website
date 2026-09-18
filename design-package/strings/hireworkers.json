@@ -1,0 +1,2482 @@
+{
+ "page": "Hire Workers",
+ "route": "/hire-workers",
+ "strings": [
+  {
+   "id": "hire.001",
+   "en": "About Us",
+   "tr": "Hakkımızda",
+   "k": "navAbout",
+   "sec": "Menü ve genel etiketler",
+   "rev": "6iiw1a"
+  },
+  {
+   "id": "hire.002",
+   "en": "Hire Workers",
+   "tr": "İşçi Talebi",
+   "k": "navHire",
+   "sec": "Menü ve genel etiketler",
+   "rev": "oqbvo6"
+  },
+  {
+   "id": "hire.003",
+   "en": "Candidates",
+   "tr": "Adaylar",
+   "k": "navCandidates",
+   "sec": "Menü ve genel etiketler",
+   "rev": "brf3mr"
+  },
+  {
+   "id": "hire.004",
+   "en": "Work Permits",
+   "tr": "Çalışma İzinleri",
+   "k": "navPermits",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "1gd2msg"
+  },
+  {
+   "id": "hire.005",
+   "en": "Cost Calculator",
+   "tr": "Maliyet Hesaplama",
+   "k": "navCalc",
+   "sec": "Menü ve genel etiketler",
+   "rev": "k5qxyq"
+  },
+  {
+   "id": "hire.006",
+   "en": "Hiring Cost Calculator",
+   "tr": "İşçi Maliyet Hesaplama",
+   "k": "navCalcLong",
+   "sec": "Menü ve genel etiketler",
+   "rev": "e9bold"
+  },
+  {
+   "id": "hire.007",
+   "en": "Success Stories",
+   "tr": "Başarı Hikayeleri",
+   "k": "navStories",
+   "sec": "Menü ve genel etiketler",
+   "rev": "11w6kar"
+  },
+  {
+   "id": "hire.008",
+   "en": "Contact Us",
+   "tr": "İletişim",
+   "k": "navContact",
+   "sec": "Menü ve genel etiketler",
+   "rev": "14c3gdf"
+  },
+  {
+   "id": "hire.009",
+   "en": "Partner With Us",
+   "tr": "İş Ortağı Olun",
+   "k": "navPartner",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1redpm7"
+  },
+  {
+   "id": "hire.010",
+   "en": "Join Our Team",
+   "tr": "Ekibimize Katılın",
+   "k": "navJoin",
+   "sec": "Menü ve genel etiketler",
+   "rev": "ftsz4i"
+  },
+  {
+   "id": "hire.011",
+   "en": "Blog & Guides",
+   "tr": "Blog ve Rehberler",
+   "k": "navBlog",
+   "sec": "Menü ve genel etiketler",
+   "rev": "4wi5os"
+  },
+  {
+   "id": "hire.012",
+   "en": "Blog",
+   "tr": "Rehberler",
+   "k": "navBlogShort",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjmm4j"
+  },
+  {
+   "id": "hire.013",
+   "en": "Verify a Representative",
+   "tr": "Temsilci Doğrulama",
+   "k": "navVerify",
+   "sec": "Menü ve genel etiketler",
+   "rev": "l6eh8g"
+  },
+  {
+   "id": "hire.014",
+   "en": "CRM Login",
+   "tr": "CRM Girişi",
+   "k": "navCrm",
+   "sec": "Menü ve genel etiketler",
+   "rev": "57mcey"
+  },
+  {
+   "id": "hire.015",
+   "en": "Available Workers",
+   "tr": "Mevcut Adaylar",
+   "k": "navAvailable",
+   "sec": "Menü ve genel etiketler",
+   "rev": "wzront"
+  },
+  {
+   "id": "hire.016",
+   "en": "Request",
+   "tr": "Talep",
+   "k": "ctaRequest",
+   "sec": "Menü ve genel etiketler",
+   "rev": "lixris"
+  },
+  {
+   "id": "hire.017",
+   "en": "Workers",
+   "tr": "Oluştur",
+   "k": "ctaRequestLong",
+   "sec": "Menü ve genel etiketler",
+   "rev": "11joiw0"
+  },
+  {
+   "id": "hire.018",
+   "en": "Language",
+   "tr": "Dil",
+   "k": "langLabel",
+   "sec": "Menü ve genel etiketler",
+   "rev": "1s1gw53"
+  },
+  {
+   "id": "hire.019",
+   "en": "İŞKUR Licensed · Permit No. 1730",
+   "tr": "Özel İstihdam Bürosu · İzin Belgesi No: 1730",
+   "k": "slimLic",
+   "sec": "Menü ve genel etiketler",
+   "legal": true,
+   "rev": "z1r9le"
+  },
+  {
+   "id": "hire.020",
+   "en": "Home",
+   "tr": "Ana Sayfa",
+   "k": "crumbHome",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjtufe"
+  },
+  {
+   "id": "hire.021",
+   "en": "Hire verified overseas",
+   "tr": "Türkiye'de",
+   "k": "heroH1a",
+   "sec": "Hero bölümü",
+   "rev": "1bnkknz"
+  },
+  {
+   "id": "hire.022",
+   "en": "workers",
+   "tr": "belgeli yabancı işçi",
+   "k": "heroH1b",
+   "sec": "Hero bölümü",
+   "rev": "12ks6m8"
+  },
+  {
+   "id": "hire.023",
+   "en": "in Turkey",
+   "tr": "istihdam edin",
+   "k": "heroH1c",
+   "sec": "Hero bölümü",
+   "rev": "6r2jra"
+  },
+  {
+   "id": "hire.024",
+   "en": "Skilled workers from 13+ countries, vetted by our own teams, with every work permit filed and tracked by us —",
+   "tr": "13+ ülkeden nitelikli işçiler, JobsAdmire ekipleri tarafından yerinde değerlendirilir; her çalışma izni başvurusunu biz yapar ve takip ederiz —",
+   "k": "heroSubA",
+   "sec": "Hero bölümü",
+   "legal": true,
+   "rev": "1f0119b"
+  },
+  {
+   "id": "hire.025",
+   "en": "on your site in six to eight weeks.",
+   "tr": "6–8 hafta içinde işyerinizde.",
+   "k": "heroSubB",
+   "sec": "Hero bölümü",
+   "legal": true,
+   "rev": "11sk95i"
+  },
+  {
+   "id": "hire.026",
+   "en": "Vetted workers from 13+ countries, permits filed by us —",
+   "tr": "13+ ülkeden kontrol edilmiş işçiler, izinleri biz alırız —",
+   "k": "heroSubMobA",
+   "sec": "Hero bölümü",
+   "legal": true,
+   "rev": "nfz79c"
+  },
+  {
+   "id": "hire.027",
+   "en": "on site in six to eight weeks.",
+   "tr": "6–8 hafta içinde işyerinizde.",
+   "k": "heroSubMobB",
+   "sec": "Hero bölümü",
+   "legal": true,
+   "rev": "1ijkt5z"
+  },
+  {
+   "id": "hire.028",
+   "en": "No upfront fee",
+   "tr": "Peşin ödeme yapmazsınız",
+   "k": "ben1s",
+   "sec": "Hero bölümü",
+   "legal": true,
+   "rev": "1oz7kw6"
+  },
+  {
+   "id": "hire.029",
+   "en": "— you pay after arrival",
+   "tr": "— ödemenizi çalışan işbaşı yaptıktan sonra gerçekleştirirsiniz",
+   "k": "ben1t",
+   "sec": "Hero bölümü",
+   "rev": "155tyh9"
+  },
+  {
+   "id": "hire.030",
+   "en": "Replacement guarantee",
+   "tr": "Aday değişim güvencesi",
+   "k": "ben2s",
+   "sec": "Hero bölümü",
+   "legal": true,
+   "rev": "fbfpj5"
+  },
+  {
+   "id": "hire.031",
+   "en": "in your contract",
+   "tr": "sözleşme şartlarına uygun olarak",
+   "k": "ben2t",
+   "sec": "Hero bölümü",
+   "rev": "1pnoukh"
+  },
+  {
+   "id": "hire.032",
+   "en": "Call us",
+   "tr": "Bizi arayın",
+   "k": "callUs",
+   "sec": "Hero bölümü",
+   "rev": "1pu4zvl"
+  },
+  {
+   "id": "hire.033",
+   "en": "Call",
+   "tr": "Arayın",
+   "k": "callShort",
+   "sec": "Hero bölümü",
+   "rev": "yjn8ef"
+  },
+  {
+   "id": "hire.034",
+   "en": "İŞKUR Permit No. 1730",
+   "tr": "İŞKUR İzin Belgesi No: 1730",
+   "k": "pillPermit",
+   "sec": "Hero bölümü",
+   "legal": true,
+   "rev": "hu47cq"
+  },
+  {
+   "id": "hire.035",
+   "en": "workers placed",
+   "tr": "yerleştirilen işçi",
+   "k": "statPlaced",
+   "sec": "Hero bölümü",
+   "rev": "1l9n8qn"
+  },
+  {
+   "id": "hire.036",
+   "en": "source countries",
+   "tr": "kaynak ülke",
+   "k": "statCountries",
+   "sec": "Hero bölümü",
+   "rev": "ow36ba"
+  },
+  {
+   "id": "hire.037",
+   "en": "Get your quote in 24 hours",
+   "tr": "Teklifinizi 24 saat içinde alın",
+   "k": "qTitle",
+   "sec": "Hero formu ve alan etiketleri",
+   "legal": true,
+   "rev": "ssel56"
+  },
+  {
+   "id": "hire.038",
+   "en": "A few quick fields — we'll come back with a written proposal.",
+   "tr": "Birkaç bilgi yeterli — size özel teklifinizi hazırlayalım.",
+   "k": "qSubDesk",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "1cbqc24"
+  },
+  {
+   "id": "hire.039",
+   "en": "Tell us what you need — written proposal in 24 hours.",
+   "tr": "İhtiyacınızı yazın — 24 saat içinde yazılı teklif.",
+   "k": "qSubMob",
+   "sec": "Hero formu ve alan etiketleri",
+   "legal": true,
+   "rev": "9ntiaa"
+  },
+  {
+   "id": "hire.040",
+   "en": "Request workers →",
+   "tr": "İşçi talep edin →",
+   "k": "ctaReqWorkers",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "t5mzoj"
+  },
+  {
+   "id": "hire.041",
+   "en": "Ask on WhatsApp",
+   "tr": "WhatsApp'tan sorun",
+   "k": "askWa",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "1mmxffp"
+  },
+  {
+   "id": "hire.042",
+   "en": "No upfront fee",
+   "tr": "Peşin ücret yok",
+   "k": "mNoFee",
+   "sec": "Hero formu ve alan etiketleri",
+   "legal": true,
+   "rev": "1oz7kw6"
+  },
+  {
+   "id": "hire.043",
+   "en": "Reply in 4 working hours",
+   "tr": "Peşin ücret yok · 4 iş saati içinde geri dönüş · Bağlayıcı değil",
+   "k": "mReply",
+   "sec": "Hero formu ve alan etiketleri",
+   "legal": true,
+   "rev": "1c4wmom"
+  },
+  {
+   "id": "hire.044",
+   "en": "No obligation",
+   "tr": "Bağlayıcı değil",
+   "k": "mNoObl",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "1e8u3li"
+  },
+  {
+   "id": "hire.045",
+   "en": "Request sent",
+   "tr": "Talebiniz gönderildi",
+   "k": "sentTitle",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "9aaobc"
+  },
+  {
+   "id": "hire.046",
+   "en": "We reply within 4 working hours.",
+   "tr": "4 iş saati içinde yanıt veriyoruz.",
+   "k": "sentBody",
+   "sec": "Hero formu ve alan etiketleri",
+   "legal": true,
+   "rev": "m9p3c8"
+  },
+  {
+   "id": "hire.047",
+   "en": "Company name",
+   "tr": "Firma adı",
+   "k": "fCompany",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "eago79"
+  },
+  {
+   "id": "hire.048",
+   "en": "City in Turkey",
+   "tr": "Hangi şehirde?",
+   "k": "fCityTr",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "1gnrd8h"
+  },
+  {
+   "id": "hire.049",
+   "en": "Roles needed (e.g. welder, picker)",
+   "tr": "İhtiyaç duyulan pozisyonlar (örn. kaynakçı, toplayıcı)",
+   "k": "fRoles1",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "yz35bh"
+  },
+  {
+   "id": "hire.050",
+   "en": "How many?",
+   "tr": "Kaç kişi?",
+   "k": "fHowMany",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "c5nx3l"
+  },
+  {
+   "id": "hire.051",
+   "en": "Phone / WhatsApp",
+   "tr": "Telefon / WhatsApp",
+   "k": "fPhone",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "1w7nv5a"
+  },
+  {
+   "id": "hire.052",
+   "en": "Work email",
+   "tr": "Kurumsal e-posta",
+   "k": "fEmail",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "16k9wqw"
+  },
+  {
+   "id": "hire.053",
+   "en": "Contact person",
+   "tr": "İletişim kişisi",
+   "k": "fPerson",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "1w4445s"
+  },
+  {
+   "id": "hire.054",
+   "en": "Industry",
+   "tr": "Sektör",
+   "k": "fSector",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "1oqrtmn"
+  },
+  {
+   "id": "hire.055",
+   "en": "Roles needed (e.g. welder)",
+   "tr": "İhtiyaç duyulan pozisyonlar (örn. kaynakçı)",
+   "k": "fRoles2",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "r57947"
+  },
+  {
+   "id": "hire.056",
+   "en": "Number of workers",
+   "tr": "İşçi sayısı",
+   "k": "fCount",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "ntrfqi"
+  },
+  {
+   "id": "hire.057",
+   "en": "City / location in Turkey",
+   "tr": "Şehir / lokasyon (Türkiye)",
+   "k": "fCity",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "129yg2b"
+  },
+  {
+   "id": "hire.058",
+   "en": "When do you need them?",
+   "tr": "Ne zaman ihtiyacınız var?",
+   "k": "fWhen",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "zws908"
+  },
+  {
+   "id": "hire.059",
+   "en": "As soon as possible",
+   "tr": "En kısa sürede",
+   "k": "tlA",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "1gq25b9"
+  },
+  {
+   "id": "hire.060",
+   "en": "Within 1–2 months",
+   "tr": "1–2 ay içinde",
+   "k": "tlB",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "apgm7n"
+  },
+  {
+   "id": "hire.061",
+   "en": "In 3+ months",
+   "tr": "3+ ay içinde",
+   "k": "tlC",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "a0947t"
+  },
+  {
+   "id": "hire.062",
+   "en": "Just planning",
+   "tr": "Henüz planlama aşamasında",
+   "k": "tlD",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "12oyhcw"
+  },
+  {
+   "id": "hire.063",
+   "en": "Request Workers →",
+   "tr": "İşçi talep edin →",
+   "k": "qBtn",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "1t7ca6b"
+  },
+  {
+   "id": "hire.064",
+   "en": "By sending you agree we may process these details to prepare your quote — see our",
+   "tr": "Gönderdiğinizde, teklifinizi hazırlamak için bu bilgileri işleyebileceğimizi kabul etmiş olursunuz —",
+   "k": "kvkk1",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "1kkt8i2"
+  },
+  {
+   "id": "hire.065",
+   "en": "Privacy Notice (KVKK)",
+   "tr": "Gizlilik Aydınlatma Metni (KVKK)",
+   "k": "kvkkLink",
+   "sec": "Hero formu ve alan etiketleri",
+   "legal": true,
+   "rev": "107welh"
+  },
+  {
+   "id": "hire.066",
+   "en": "Need to give more detail? Full request form ↓",
+   "tr": "Daha fazla detay vermek ister misiniz? Ayrıntılı talep formu ↓",
+   "k": "fullForm",
+   "sec": "Hero formu ve alan etiketleri",
+   "rev": "e22n11"
+  },
+  {
+   "id": "hire.067",
+   "en": "Industries",
+   "tr": "Sektörler",
+   "k": "jIndustries",
+   "sec": "Hızlı menü ve sabit çağrı",
+   "rev": "k3rvq1"
+  },
+  {
+   "id": "hire.068",
+   "en": "Why us",
+   "tr": "Neden biz",
+   "k": "jWhy",
+   "sec": "Hızlı menü ve sabit çağrı",
+   "rev": "1guka9x"
+  },
+  {
+   "id": "hire.069",
+   "en": "Process",
+   "tr": "Süreç",
+   "k": "jProcess",
+   "sec": "Hızlı menü ve sabit çağrı",
+   "rev": "1lgryb2"
+  },
+  {
+   "id": "hire.070",
+   "en": "FAQ",
+   "tr": "SSS",
+   "k": "jFaq",
+   "sec": "Hızlı menü ve sabit çağrı",
+   "rev": "37651v"
+  },
+  {
+   "id": "hire.071",
+   "en": "Request workers",
+   "tr": "İşçi talep edin",
+   "k": "jReq",
+   "sec": "Hızlı menü ve sabit çağrı",
+   "rev": "m3hqp"
+  },
+  {
+   "id": "hire.072",
+   "en": "Need workers? Tell us the roles — written quote within 24 hours.",
+   "tr": "İşçiye mi ihtiyacınız var? Pozisyonları yazın — 24 saat içinde yazılı teklif.",
+   "k": "stickyMsg",
+   "sec": "Hızlı menü ve sabit çağrı",
+   "legal": true,
+   "rev": "h6rrl7"
+  },
+  {
+   "id": "hire.073",
+   "en": "employer partners across Turkey",
+   "tr": "Türkiye genelinde işveren iş ortağımız",
+   "k": "logoLabel",
+   "sec": "Hızlı menü ve sabit çağrı",
+   "rev": "8l7u46"
+  },
+  {
+   "id": "hire.074",
+   "en": "Industries we staff",
+   "tr": "İşçi temin ettiğimiz sektörler",
+   "k": "indTitle",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "jyu6jx"
+  },
+  {
+   "id": "hire.075",
+   "en": "From single roles to full production teams — these are the sectors we place workers in every month.",
+   "tr": "Tek bir pozisyondan tam üretim ekiplerine kadar — her ay işçi yerleştirdiğimiz sektörler.",
+   "k": "indSub",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1wmy7h4"
+  },
+  {
+   "id": "hire.076",
+   "en": "Factory / Manufacturing",
+   "tr": "Fabrika / Üretim",
+   "k": "sec1",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1wb12am"
+  },
+  {
+   "id": "hire.077",
+   "en": "Construction",
+   "tr": "İnşaat",
+   "k": "sec2",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "v1hp4"
+  },
+  {
+   "id": "hire.078",
+   "en": "Tourism / Hospitality",
+   "tr": "Turizm / Konaklama",
+   "k": "sec3",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1nw38kx"
+  },
+  {
+   "id": "hire.079",
+   "en": "Agriculture",
+   "tr": "Tarım",
+   "k": "sec4",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1u4i3kk"
+  },
+  {
+   "id": "hire.080",
+   "en": "Textile",
+   "tr": "Tekstil",
+   "k": "sec5",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1goakyg"
+  },
+  {
+   "id": "hire.081",
+   "en": "Logistics / Warehouse",
+   "tr": "Lojistik / Depo",
+   "k": "sec6",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "29mf0"
+  },
+  {
+   "id": "hire.082",
+   "en": "Other",
+   "tr": "Diğer",
+   "k": "secOther",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "3lrcg1"
+  },
+  {
+   "id": "hire.083",
+   "en": "Most requested · Production line & skilled trades",
+   "tr": "En çok talep edilen · Üretim hattı ve nitelikli meslekler",
+   "k": "ind1sub",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1oir4h5"
+  },
+  {
+   "id": "hire.084",
+   "en": "Site crews & skilled tradesmen for any project size",
+   "tr": "Her ölçekte proje için saha ekipleri ve nitelikli ustalar",
+   "k": "ind2sub",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "4jgyfa"
+  },
+  {
+   "id": "hire.085",
+   "en": "Hotel & restaurant staff for Antalya and beyond",
+   "tr": "Antalya ve Türkiye genelinde otel ve restoran personeli",
+   "k": "ind3sub",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "3fvenr"
+  },
+  {
+   "id": "hire.086",
+   "en": "Seasonal & year-round farm workforce",
+   "tr": "Sezonluk ve yıl boyu tarım iş gücü",
+   "k": "ind4sub",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1vuwgrz"
+  },
+  {
+   "id": "hire.087",
+   "en": "Experienced garment workers for producers",
+   "tr": "Üreticiler için deneyimli konfeksiyon işçileri",
+   "k": "ind5sub",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1d79l3w"
+  },
+  {
+   "id": "hire.088",
+   "en": "Warehouse & distribution staff who keep goods moving",
+   "tr": "Sevkiyatı aksatmayan depo ve dağıtım personeli",
+   "k": "ind6sub",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "8ipit"
+  },
+  {
+   "id": "hire.089",
+   "en": "Machine operator",
+   "tr": "Makine operatörü",
+   "k": "rMachineOp",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1d68yw0"
+  },
+  {
+   "id": "hire.090",
+   "en": "Welder",
+   "tr": "Kaynakçı",
+   "k": "rWelder",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1grnnmw"
+  },
+  {
+   "id": "hire.091",
+   "en": "Assembler",
+   "tr": "Montaj işçisi",
+   "k": "rAssembler",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1o5qv4l"
+  },
+  {
+   "id": "hire.092",
+   "en": "Packer",
+   "tr": "Paketleme işçisi",
+   "k": "rPacker",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1jro2cr"
+  },
+  {
+   "id": "hire.093",
+   "en": "CNC operator",
+   "tr": "CNC operatörü",
+   "k": "rCnc",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1e52kob"
+  },
+  {
+   "id": "hire.094",
+   "en": "Maintenance technician",
+   "tr": "Bakım teknisyeni",
+   "k": "rMaint",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1ae5g9s"
+  },
+  {
+   "id": "hire.095",
+   "en": "Quality inspector",
+   "tr": "Kalite kontrol elemanı",
+   "k": "rQinsp",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "lmevgj"
+  },
+  {
+   "id": "hire.096",
+   "en": "Production helper",
+   "tr": "Üretim yardımcısı",
+   "k": "rProdHelp",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1nist4w"
+  },
+  {
+   "id": "hire.097",
+   "en": "Mason",
+   "tr": "Duvar ustası",
+   "k": "rMason",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "3h6f0b"
+  },
+  {
+   "id": "hire.098",
+   "en": "Steel fixer",
+   "tr": "Demir bağlama ustası",
+   "k": "rSteel",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "b4oa4u"
+  },
+  {
+   "id": "hire.099",
+   "en": "Electrician",
+   "tr": "Elektrikçi",
+   "k": "rElec",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "yeyr9c"
+  },
+  {
+   "id": "hire.100",
+   "en": "Plumber",
+   "tr": "Tesisatçı",
+   "k": "rPlumb",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "8ioac"
+  },
+  {
+   "id": "hire.101",
+   "en": "Painter",
+   "tr": "Boyacı",
+   "k": "rPainter",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1srulf4"
+  },
+  {
+   "id": "hire.102",
+   "en": "Carpenter",
+   "tr": "Marangoz",
+   "k": "rCarp",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1kjd27h"
+  },
+  {
+   "id": "hire.103",
+   "en": "Tiler",
+   "tr": "Fayans ustası",
+   "k": "rTiler",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "3ro7s3"
+  },
+  {
+   "id": "hire.104",
+   "en": "Heavy equipment operator",
+   "tr": "İş makinesi operatörü",
+   "k": "rHeavy",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "mfgdsc"
+  },
+  {
+   "id": "hire.105",
+   "en": "Chef",
+   "tr": "Aşçı",
+   "k": "rChef",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "yjnfot"
+  },
+  {
+   "id": "hire.106",
+   "en": "Housekeeping",
+   "tr": "Kat hizmetleri",
+   "k": "rHouse",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "545q6y"
+  },
+  {
+   "id": "hire.107",
+   "en": "Waiter",
+   "tr": "Garson",
+   "k": "rWaiter",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1goxexl"
+  },
+  {
+   "id": "hire.108",
+   "en": "Receptionist",
+   "tr": "Ön büro görevlisi",
+   "k": "rRecept",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1owyy52"
+  },
+  {
+   "id": "hire.109",
+   "en": "Kitchen helper",
+   "tr": "Mutfak yardımcısı",
+   "k": "rKitchen",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "16noqlx"
+  },
+  {
+   "id": "hire.110",
+   "en": "Barista",
+   "tr": "Barista",
+   "k": "rBarista",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "127n0xn"
+  },
+  {
+   "id": "hire.111",
+   "en": "Cleaning staff",
+   "tr": "Temizlik personeli",
+   "k": "rClean",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "csaf1i"
+  },
+  {
+   "id": "hire.112",
+   "en": "Greenhouse worker",
+   "tr": "Sera işçisi",
+   "k": "rGreen",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1lbto7g"
+  },
+  {
+   "id": "hire.113",
+   "en": "Harvest crew",
+   "tr": "Hasat ekibi",
+   "k": "rHarvest",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1ehjxjd"
+  },
+  {
+   "id": "hire.114",
+   "en": "Livestock",
+   "tr": "Hayvan bakıcısı",
+   "k": "rLivestock",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "18mo3f7"
+  },
+  {
+   "id": "hire.115",
+   "en": "Irrigation worker",
+   "tr": "Sulama işçisi",
+   "k": "rIrrig",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1w16xhl"
+  },
+  {
+   "id": "hire.116",
+   "en": "Tractor operator",
+   "tr": "Traktör operatörü",
+   "k": "rTractor",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1ndni14"
+  },
+  {
+   "id": "hire.117",
+   "en": "Packing house worker",
+   "tr": "Paketleme tesisi işçisi",
+   "k": "rPackHouse",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "16v3edq"
+  },
+  {
+   "id": "hire.118",
+   "en": "Sewing operator",
+   "tr": "Dikiş makinesi operatörü",
+   "k": "rSewing",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "hjy4as"
+  },
+  {
+   "id": "hire.119",
+   "en": "Cutter",
+   "tr": "Kesim ustası",
+   "k": "rCutter",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "195d6n8"
+  },
+  {
+   "id": "hire.120",
+   "en": "Quality control",
+   "tr": "Kalite kontrol elemanı",
+   "k": "rQc",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1xd0ubz"
+  },
+  {
+   "id": "hire.121",
+   "en": "Ironing & pressing",
+   "tr": "Ütü ve pres işçisi",
+   "k": "rIron",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "rb4c3i"
+  },
+  {
+   "id": "hire.122",
+   "en": "Fabric cutter helper",
+   "tr": "Kesim yardımcısı",
+   "k": "rFabric",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "vk7c4f"
+  },
+  {
+   "id": "hire.123",
+   "en": "Packing",
+   "tr": "Paketlemeci",
+   "k": "rPacking",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1sl8pfg"
+  },
+  {
+   "id": "hire.124",
+   "en": "Forklift operator",
+   "tr": "Forklift operatörü",
+   "k": "rForklift",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "13o30ea"
+  },
+  {
+   "id": "hire.125",
+   "en": "Loader",
+   "tr": "Yükleme işçisi",
+   "k": "rLoader",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1c1fbw4"
+  },
+  {
+   "id": "hire.126",
+   "en": "Warehouse worker",
+   "tr": "Depo işçisi",
+   "k": "rWarehouse",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1oc702e"
+  },
+  {
+   "id": "hire.127",
+   "en": "Order picker",
+   "tr": "Sipariş toplama personeli",
+   "k": "rPicker",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "13z1gzx"
+  },
+  {
+   "id": "hire.128",
+   "en": "Inventory clerk",
+   "tr": "Stok görevlisi",
+   "k": "rInventory",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "12p34v0"
+  },
+  {
+   "id": "hire.129",
+   "en": "Driver helper",
+   "tr": "Şoför yardımcısı",
+   "k": "rDriver",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1qbl7x9"
+  },
+  {
+   "id": "hire.130",
+   "en": "Request Factory workers →",
+   "tr": "Fabrika işçisi talep edin →",
+   "k": "ind1cta",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1jc3x2v"
+  },
+  {
+   "id": "hire.131",
+   "en": "Request Construction workers →",
+   "tr": "İnşaat işçisi talep edin →",
+   "k": "ind2cta",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "19gh0v2"
+  },
+  {
+   "id": "hire.132",
+   "en": "Request Hospitality workers →",
+   "tr": "Konaklama personeli talep edin →",
+   "k": "ind3cta",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "131z777"
+  },
+  {
+   "id": "hire.133",
+   "en": "Request Agriculture workers →",
+   "tr": "Tarım işçisi talep edin →",
+   "k": "ind4cta",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1c4ikxe"
+  },
+  {
+   "id": "hire.134",
+   "en": "Request Textile workers →",
+   "tr": "Tekstil işçisi talep edin →",
+   "k": "ind5cta",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "p2ioam"
+  },
+  {
+   "id": "hire.135",
+   "en": "Request Logistics workers →",
+   "tr": "Lojistik personeli talep edin →",
+   "k": "ind6cta",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1759qi8"
+  },
+  {
+   "id": "hire.136",
+   "en": "More roles we place",
+   "tr": "Temin ettiğimiz diğer pozisyonlar",
+   "k": "moreRoles",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "111e2u6"
+  },
+  {
+   "id": "hire.137",
+   "en": "Arrival in 6–8 weeks · Replacement guarantee",
+   "tr": "6–8 haftada işbaşı · Aday değişim güvencesi",
+   "k": "arrivalNote",
+   "sec": "Sektörler ve pozisyonlar",
+   "legal": true,
+   "rev": "4rgtps"
+  },
+  {
+   "id": "hire.138",
+   "en": "Don't see your sector?",
+   "tr": "Sektörünüzü göremediniz mi?",
+   "k": "noSector",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "o46vyq"
+  },
+  {
+   "id": "hire.139",
+   "en": "Tell us what you need →",
+   "tr": "İhtiyacınızı bize yazın →",
+   "k": "noSectorCta",
+   "sec": "Sektörler ve pozisyonlar",
+   "rev": "1trd9ib"
+  },
+  {
+   "id": "hire.140",
+   "en": "Source countries",
+   "tr": "Kaynak ülkeler",
+   "k": "scLabel",
+   "sec": "Kaynak ülkeler",
+   "rev": "rntcie"
+  },
+  {
+   "id": "hire.141",
+   "en": "Vetted talent from",
+   "tr": "",
+   "k": "scTitleA",
+   "sec": "Kaynak ülkeler",
+   "rev": "g0tag7"
+  },
+  {
+   "id": "hire.142",
+   "en": "+ countries",
+   "tr": "+ ülkeden",
+   "k": "scTitleB",
+   "sec": "Kaynak ülkeler",
+   "rev": "t4nwcg"
+  },
+  {
+   "id": "hire.143",
+   "en": "Our sourcing teams and partner agents screen candidates on the ground — skills, experience and documents verified before you ever see a profile.",
+   "tr": "Tedarik ekiplerimiz ve iş ortağı acenteler adayları kendi ülkelerinde değerlendirir — nitelikleri, deneyimi ve belgeleri, siz profili görmeden önce kontrol edilir.",
+   "k": "scSub",
+   "sec": "Kaynak ülkeler",
+   "rev": "fn6733"
+  },
+  {
+   "id": "hire.144",
+   "en": "Our own teams, in every country",
+   "tr": "Her ülkede kendi ekibimiz",
+   "k": "scNoteT",
+   "sec": "Kaynak ülkeler",
+   "rev": "s26yjv"
+  },
+  {
+   "id": "hire.145",
+   "en": "Antalya, Türkiye for employers · Karachi, Pakistan for sourcing · our own representative in every source country — no unknown middlemen in between.",
+   "tr": "İşverenler için Antalya · Tedarik için Karaçi · her kaynak ülkede kendi temsilcimiz — arada tanımadığınız aracı yok.",
+   "k": "scNoteB",
+   "sec": "Kaynak ülkeler",
+   "rev": "1y7acqu"
+  },
+  {
+   "id": "hire.146",
+   "en": "Hiring abroad yourself vs. hiring with us",
+   "tr": "Yurt dışından kendiniz işe almak mı, JobsAdmire ile çalışmak mı?",
+   "k": "cmpTitle",
+   "sec": "Karşılaştırma",
+   "rev": "19lvs9o"
+  },
+  {
+   "id": "hire.147",
+   "en": "The same team, two very different routes.",
+   "tr": "Aynı ekip, birbirinden çok farklı iki yol.",
+   "k": "cmpSub",
+   "sec": "Karşılaştırma",
+   "rev": "6vu14y"
+  },
+  {
+   "id": "hire.148",
+   "en": "On your own",
+   "tr": "Kendi başınıza",
+   "k": "cmpBad",
+   "sec": "Karşılaştırma",
+   "rev": "s4mglf"
+  },
+  {
+   "id": "hire.149",
+   "en": "With JobsAdmire",
+   "tr": "JobsAdmire ile",
+   "k": "cmpGood",
+   "sec": "Karşılaştırma",
+   "rev": "qjp7et"
+  },
+  {
+   "id": "hire.150",
+   "en": "3–6 months to fill a role",
+   "tr": "Bir pozisyonu doldurmak 3–6 ay",
+   "k": "cmpB1",
+   "sec": "Karşılaştırma",
+   "rev": "1bpzo0h"
+  },
+  {
+   "id": "hire.151",
+   "en": "Local ads, agencies, repeat interviews — and often no result.",
+   "tr": "Yerel ilanlar, acenteler, tekrarlanan görüşmeler — ve genellikle sonuç yok.",
+   "k": "cmpB1s",
+   "sec": "Karşılaştırma",
+   "rev": "lorwwd"
+  },
+  {
+   "id": "hire.152",
+   "en": "Permit paperwork on your HR team",
+   "tr": "İzin evrakı İK ekibinizin üzerinde",
+   "k": "cmpB2",
+   "sec": "Karşılaştırma",
+   "legal": true,
+   "rev": "1p1y5si"
+  },
+  {
+   "id": "hire.153",
+   "en": "Filings, translations, notary runs and follow-ups for every worker.",
+   "tr": "Her işçi için başvuru, tercüme, noter işlemleri ve takip.",
+   "k": "cmpB2s",
+   "sec": "Karşılaştırma",
+   "rev": "1b8toev"
+  },
+  {
+   "id": "hire.154",
+   "en": "Unverified candidates",
+   "tr": "Doğrulanmamış adaylar",
+   "k": "cmpB3",
+   "sec": "Karşılaştırma",
+   "rev": "1ebuxwe"
+  },
+  {
+   "id": "hire.155",
+   "en": "Skills and documents taken on trust — problems appear after arrival.",
+   "tr": "Nitelik ve belgeler güvene dayalı — sorunlar işçi geldikten sonra çıkar.",
+   "k": "cmpB3s",
+   "sec": "Karşılaştırma",
+   "rev": "ch04vm"
+  },
+  {
+   "id": "hire.156",
+   "en": "Compliance risk is yours",
+   "tr": "Mevzuat riski size ait",
+   "k": "cmpB4",
+   "sec": "Karşılaştırma",
+   "rev": "1dqu5er"
+  },
+  {
+   "id": "hire.157",
+   "en": "A rejected or late filing means fines and a delayed start date.",
+   "tr": "Reddedilen ya da geciken başvuru, idari para cezası ve işe başlamanın gecikmesi anlamına gelir.",
+   "k": "cmpB4s",
+   "sec": "Karşılaştırma",
+   "rev": "qh0qfj"
+  },
+  {
+   "id": "hire.158",
+   "en": "Worker leaves — start again",
+   "tr": "İşçi ayrılırsa süreç yeniden başlar",
+   "k": "cmpB5",
+   "sec": "Karşılaştırma",
+   "rev": "7hdslr"
+  },
+  {
+   "id": "hire.159",
+   "en": "Costs already spent, vacancy open again from day one.",
+   "tr": "Harcanan maliyet gider, pozisyon ilk günden yeniden açılır.",
+   "k": "cmpB5s",
+   "sec": "Karşılaştırma",
+   "rev": "16h5eym"
+  },
+  {
+   "id": "hire.160",
+   "en": "6–8 weeks to first working day",
+   "tr": "İlk iş gününe 6–8 hafta",
+   "k": "cmpG1",
+   "sec": "Karşılaştırma",
+   "legal": true,
+   "rev": "jenlwr"
+  },
+  {
+   "id": "hire.161",
+   "en": "Shortlist within 24 hours, permits filed in parallel.",
+   "tr": "24 saat içinde kısa liste, izin başvuruları paralel yürür.",
+   "k": "cmpG1s",
+   "sec": "Karşılaştırma",
+   "legal": true,
+   "rev": "1ysunxp"
+  },
+  {
+   "id": "hire.162",
+   "en": "We file every permit",
+   "tr": "Her çalışma iznini biz alırız",
+   "k": "cmpG2",
+   "sec": "Karşılaştırma",
+   "legal": true,
+   "rev": "12ooogr"
+  },
+  {
+   "id": "hire.163",
+   "en": "İŞKUR-licensed (Permit No. 1730), under Turkish law No. 4904.",
+   "tr": "İŞKUR izinli özel istihdam bürosu (İzin Belgesi No: 1730), 4904 sayılı kanun kapsamında.",
+   "k": "cmpG2s",
+   "sec": "Karşılaştırma",
+   "legal": true,
+   "rev": "pcx3sl"
+  },
+  {
+   "id": "hire.164",
+   "en": "Skills and documents verified",
+   "tr": "Nitelikler ve belgeler doğrulanır",
+   "k": "cmpG3",
+   "sec": "Karşılaştırma",
+   "rev": "10571cm"
+  },
+  {
+   "id": "hire.165",
+   "en": "Trade tests, references and papers checked by our own teams.",
+   "tr": "Meslek testleri, referanslar ve evraklar kendi ekiplerimizce kontrol edilir.",
+   "k": "cmpG3s",
+   "sec": "Karşılaştırma",
+   "rev": "12cqiu6"
+  },
+  {
+   "id": "hire.166",
+   "en": "Compliance handled end to end",
+   "tr": "Mevzuat uyumu uçtan uca bizde",
+   "k": "cmpG4",
+   "sec": "Karşılaştırma",
+   "rev": "1mr64dp"
+  },
+  {
+   "id": "hire.167",
+   "en": "Correct files, tracked deadlines — workers are never charged a fee.",
+   "tr": "Doğru dosyalar, takip edilen süreler — işçiden hiçbir ücret alınmaz.",
+   "k": "cmpG4s",
+   "sec": "Karşılaştırma",
+   "rev": "sxkt3j"
+  },
+  {
+   "id": "hire.168",
+   "en": "Replacement guarantee in writing",
+   "tr": "Yazılı yerine koyma garantisi",
+   "k": "cmpG5",
+   "sec": "Karşılaştırma",
+   "legal": true,
+   "rev": "1pxwem6"
+  },
+  {
+   "id": "hire.169",
+   "en": "If a worker leaves, we source and place a replacement.",
+   "tr": "Bir işçi ayrılırsa yerine yeni işçi bulup yerleştiririz.",
+   "k": "cmpG5s",
+   "sec": "Karşılaştırma",
+   "rev": "spynkn"
+  },
+  {
+   "id": "hire.170",
+   "en": "From request to",
+   "tr": "Talebinizden",
+   "k": "procTitleA",
+   "sec": "Süreç adımları",
+   "rev": "1qm2jo9"
+  },
+  {
+   "id": "hire.171",
+   "en": "first working day",
+   "tr": "ilk iş gününe",
+   "k": "procTitleB",
+   "sec": "Süreç adımları",
+   "rev": "1eb8giq"
+  },
+  {
+   "id": "hire.172",
+   "en": "Every step tracked live on your portal dashboard — you always know where your workers are in the process.",
+   "tr": "Her adım portal panelinizden canlı takip edilir — işçilerinizin süreçte nerede olduğunu her zaman bilirsiniz.",
+   "k": "procSub",
+   "sec": "Süreç adımları",
+   "rev": "l151ct"
+  },
+  {
+   "id": "hire.173",
+   "en": "Typical total: 6–8 weeks",
+   "tr": "Tipik toplam süre: 6–8 hafta",
+   "k": "procTotal",
+   "sec": "Süreç adımları",
+   "legal": true,
+   "rev": "1jptwt1"
+  },
+  {
+   "id": "hire.174",
+   "en": "New to hiring foreigners? Read our full",
+   "tr": "Yabancı çalıştırma sizin için yeni mi? Ayrıntılı",
+   "k": "procL1a",
+   "sec": "Süreç adımları",
+   "rev": "qu7xq5"
+  },
+  {
+   "id": "hire.175",
+   "en": "Work Permit guide",
+   "tr": "Çalışma İzni rehberimizi",
+   "k": "procL1b",
+   "sec": "Süreç adımları",
+   "legal": true,
+   "rev": "1dir9s9"
+  },
+  {
+   "id": "hire.176",
+   "en": "— rules, the e-Muafiyet exemption and penalties, explained for employers.",
+   "tr": "okuyun — mevzuat, e-Muafiyet ve idari para cezaları, işverenler için anlatıldı.",
+   "k": "procL1c",
+   "sec": "Süreç adımları",
+   "rev": "61yaex"
+  },
+  {
+   "id": "hire.177",
+   "en": "Want the numbers first? Work out salary, SGK, permit fees and flights in the",
+   "tr": "Maliyetleri önceden görmek ister misiniz? Maaş, SGK, izin ve uçuş maliyetlerini",
+   "k": "procL2a",
+   "sec": "Süreç adımları",
+   "legal": true,
+   "rev": "ig2mf1"
+  },
+  {
+   "id": "hire.178",
+   "en": "hiring cost calculator",
+   "tr": "işçi maliyet hesaplama sayfasında",
+   "k": "procL2b",
+   "sec": "Süreç adımları",
+   "rev": "zqwzfl"
+  },
+  {
+   "id": "hire.179",
+   "en": ".",
+   "tr": "hesaplayın.",
+   "k": "procL2c",
+   "sec": "Süreç adımları",
+   "rev": "3szv"
+  },
+  {
+   "id": "hire.180",
+   "en": "Work permits approved — 12 of 15",
+   "tr": "Çalışma izinleri onaylandı — 15 başvurudan 12'si",
+   "k": "pdBadge",
+   "sec": "Portal tanıtımı",
+   "legal": true,
+   "rev": "1sa2gfl"
+  },
+  {
+   "id": "hire.181",
+   "en": "Live status for every worker — web and mobile",
+   "tr": "Her işçi için canlı durum — web ve mobil",
+   "k": "pdBadgeSub",
+   "sec": "Portal tanıtımı",
+   "rev": "1jtrquw"
+  },
+  {
+   "id": "hire.182",
+   "en": "Your hiring dashboard",
+   "tr": "İşe alım paneliniz",
+   "k": "pdLabel",
+   "sec": "Portal tanıtımı",
+   "rev": "1m7th4z"
+  },
+  {
+   "id": "hire.183",
+   "en": "Approve candidates and track permits — all on one portal",
+   "tr": "Adayları onaylayın, izinleri takip edin — hepsi tek portalda",
+   "k": "pdTitle",
+   "sec": "Portal tanıtımı",
+   "legal": true,
+   "rev": "1gb5j3c"
+  },
+  {
+   "id": "hire.184",
+   "en": "No spreadsheets, no chasing updates by phone. Review AI-matched shortlists, sign contracts digitally and follow every permit in real time.",
+   "tr": "Excel tablosu yok, güncelleme için telefon trafiği yok. Yapay zeka destekli kısa listeleri inceleyin, sözleşmeleri dijital imzalayın ve her izni anlık takip edin.",
+   "k": "pdSub",
+   "sec": "Portal tanıtımı",
+   "legal": true,
+   "rev": "1vvxc9r"
+  },
+  {
+   "id": "hire.185",
+   "en": "E-signature contracts — no printing, no courier",
+   "tr": "E-imzalı sözleşmeler — çıktı yok, kurye yok",
+   "k": "pdC1",
+   "sec": "Portal tanıtımı",
+   "rev": "ioxo44"
+  },
+  {
+   "id": "hire.186",
+   "en": "Secure online payments with clear invoices",
+   "tr": "Açık faturalarla güvenli çevrim içi ödeme",
+   "k": "pdC2",
+   "sec": "Portal tanıtımı",
+   "rev": "1n5fgml"
+  },
+  {
+   "id": "hire.187",
+   "en": "AI matching",
+   "tr": "Yapay zeka eşleştirme",
+   "k": "pdA1",
+   "sec": "Portal tanıtımı",
+   "rev": "1sska1q"
+  },
+  {
+   "id": "hire.188",
+   "en": "Your shortlist in 24 hours, not 3 weeks — and only pre-verified profiles ever reach you.",
+   "tr": "Kısa listeniz 3 haftada değil 24 saatte — ve size yalnızca önceden doğrulanmış profiller ulaşır.",
+   "k": "pdA1s",
+   "sec": "Portal tanıtımı",
+   "legal": true,
+   "rev": "1c6omu0"
+  },
+  {
+   "id": "hire.189",
+   "en": "Mobile app",
+   "tr": "Mobil uygulama",
+   "k": "pdA2",
+   "sec": "Portal tanıtımı",
+   "rev": "1p426c"
+  },
+  {
+   "id": "hire.190",
+   "en": "Approve a candidate from your phone in 30 seconds — no laptop, no waiting until Monday.",
+   "tr": "Bir adayı telefonunuzdan 30 saniyede onaylayın — bilgisayar gerekmez, pazartesiyi beklemek gerekmez.",
+   "k": "pdA2s",
+   "sec": "Portal tanıtımı",
+   "rev": "1i341lf"
+  },
+  {
+   "id": "hire.191",
+   "en": "470+ placements",
+   "tr": "470+ yerleştirme",
+   "k": "pdProofA",
+   "sec": "Portal tanıtımı",
+   "legal": true,
+   "rev": "gjw1nr"
+  },
+  {
+   "id": "hire.192",
+   "en": "managed through this portal by employers in Turkey",
+   "tr": ", Türkiye'deki işverenler tarafından bu portal üzerinden yönetildi",
+   "k": "pdProofB",
+   "sec": "Portal tanıtımı",
+   "rev": "1cugdrr"
+  },
+  {
+   "id": "hire.193",
+   "en": "Book a demo →",
+   "tr": "Demo talep edin →",
+   "k": "pdCta",
+   "sec": "Portal tanıtımı",
+   "rev": "dgveu4"
+  },
+  {
+   "id": "hire.194",
+   "en": "FAQ",
+   "tr": "SSS",
+   "k": "faqLabel",
+   "sec": "Sık sorulan sorular",
+   "rev": "37651v"
+  },
+  {
+   "id": "hire.195",
+   "en": "Employer questions, answered",
+   "tr": "İşverenlerin sorduğu sorular",
+   "k": "faqTitle",
+   "sec": "Sık sorulan sorular",
+   "rev": "1ooqwu4"
+  },
+  {
+   "id": "hire.196",
+   "en": "Permits, costs, timelines and what happens if something goes wrong — the things HR teams ask us before the first intake.",
+   "tr": "İzinler, maliyetler, süreler ve bir aksilik olduğunda ne olduğu — İK ekiplerinin ilk alımdan önce bize sorduğu konular.",
+   "k": "faqSub",
+   "sec": "Sık sorulan sorular",
+   "legal": true,
+   "rev": "n7alsq"
+  },
+  {
+   "id": "hire.197",
+   "en": "Question not listed?",
+   "tr": "Sorunuz listede yok mu?",
+   "k": "faqAskT",
+   "sec": "Sık sorulan sorular",
+   "rev": "1sbgh4y"
+  },
+  {
+   "id": "hire.198",
+   "en": "Message our team — we reply within 4 working hours.",
+   "tr": "Ekibimize yazın — 4 iş saati içinde yanıt veriyoruz.",
+   "k": "faqAskB",
+   "sec": "Sık sorulan sorular",
+   "legal": true,
+   "rev": "8juwle"
+  },
+  {
+   "id": "hire.199",
+   "en": "We reply within 4 working hours",
+   "tr": "4 iş saati içinde yanıt veriyoruz",
+   "k": "rfBadge",
+   "sec": "Talep formu",
+   "legal": true,
+   "rev": "ocnxhi"
+  },
+  {
+   "id": "hire.200",
+   "en": "Tell us who you need — we'll do the rest",
+   "tr": "Kime ihtiyacınız olduğunu söyleyin — gerisini biz yaparız",
+   "k": "rfTitle",
+   "sec": "Talep formu",
+   "rev": "1h27pqg"
+  },
+  {
+   "id": "hire.201",
+   "en": "Fill the form and continue on WhatsApp — your requirement goes straight to our team, and you get a written proposal within 24 hours.",
+   "tr": "Formu doldurun ve WhatsApp'tan devam edin — talebiniz doğrudan ekibimize ulaşır ve 24 saat içinde yazılı teklif alırsınız.",
+   "k": "rfSub",
+   "sec": "Talep formu",
+   "legal": true,
+   "rev": "1gk9m64"
+  },
+  {
+   "id": "hire.202",
+   "en": "Submit the form",
+   "tr": "Formu gönderin",
+   "k": "rfS1",
+   "sec": "Talep formu",
+   "rev": "1jcbzfi"
+  },
+  {
+   "id": "hire.203",
+   "en": "— it opens WhatsApp with your requirement pre-filled",
+   "tr": "— talebiniz hazır şekilde WhatsApp'ta açılır",
+   "k": "rfS1s",
+   "sec": "Talep formu",
+   "rev": "ru39dn"
+  },
+  {
+   "id": "hire.204",
+   "en": "Free consultation",
+   "tr": "Ücretsiz danışmanlık",
+   "k": "rfS2",
+   "sec": "Talep formu",
+   "rev": "q7odyo"
+  },
+  {
+   "id": "hire.205",
+   "en": "— we confirm details and send your custom quote",
+   "tr": "— detayları teyit eder ve size özel teklifi göndeririz",
+   "k": "rfS2s",
+   "sec": "Talep formu",
+   "rev": "1rgv2fw"
+  },
+  {
+   "id": "hire.206",
+   "en": "Shortlist on your portal",
+   "tr": "Portalınızda kısa liste",
+   "k": "rfS3",
+   "sec": "Talep formu",
+   "rev": "mp3uk1"
+  },
+  {
+   "id": "hire.207",
+   "en": "— first candidates within days",
+   "tr": "— ilk adaylar günler içinde",
+   "k": "rfS3s",
+   "sec": "Talep formu",
+   "rev": "yv5ycn"
+  },
+  {
+   "id": "hire.208",
+   "en": "No upfront fee — you pay only after arrival",
+   "tr": "Peşin ücret yok — ödemeyi yalnızca işçi geldikten sonra yaparsınız",
+   "k": "rfT1",
+   "sec": "Talep formu",
+   "legal": true,
+   "rev": "f370l6"
+  },
+  {
+   "id": "hire.209",
+   "en": "İŞKUR-licensed, Permit No. 1730 — workers never pay a fee",
+   "tr": "İŞKUR izinli özel istihdam bürosu, İzin Belgesi No: 1730 — işçiden hiçbir ücret alınmaz",
+   "k": "rfT2",
+   "sec": "Talep formu",
+   "legal": true,
+   "rev": "9r7jrk"
+  },
+  {
+   "id": "hire.210",
+   "en": "Your details stay confidential — never shared with third parties",
+   "tr": "Bilgileriniz gizli kalır — üçüncü taraflarla asla paylaşılmaz",
+   "k": "rfT3",
+   "sec": "Talep formu",
+   "legal": true,
+   "rev": "1iia70l"
+  },
+  {
+   "id": "hire.211",
+   "en": "Or reach us directly",
+   "tr": "Ya da doğrudan bize ulaşın",
+   "k": "rfDirect",
+   "sec": "Talep formu",
+   "rev": "11l0pqz"
+  },
+  {
+   "id": "hire.212",
+   "en": "Call",
+   "tr": "Telefon",
+   "k": "lblCall",
+   "sec": "Talep formu",
+   "rev": "yjn8ef"
+  },
+  {
+   "id": "hire.213",
+   "en": "Email",
+   "tr": "E-posta",
+   "k": "lblEmail",
+   "sec": "Talep formu",
+   "rev": "3brsq1"
+  },
+  {
+   "id": "hire.214",
+   "en": "Request Workers",
+   "tr": "İşçi Talebi",
+   "k": "rfCardT",
+   "sec": "Talep formu",
+   "rev": "4r7y5t"
+  },
+  {
+   "id": "hire.215",
+   "en": "Takes 1 minute — continues on WhatsApp.",
+   "tr": "1 dakika sürer — WhatsApp'tan devam eder.",
+   "k": "rfCardS",
+   "sec": "Talep formu",
+   "rev": "qntf4z"
+  },
+  {
+   "id": "hire.216",
+   "en": "Send Request on WhatsApp →",
+   "tr": "Talebi WhatsApp'tan gönderin →",
+   "k": "rfSubmit",
+   "sec": "Talep formu",
+   "rev": "7brj2b"
+  },
+  {
+   "id": "hire.217",
+   "en": "I agree that JobsAdmire may process the details above to prepare my quote, in line with the",
+   "tr": "Yukarıdaki bilgilerin teklifimi hazırlamak amacıyla JobsAdmire tarafından işlenmesini,",
+   "k": "consent1",
+   "sec": "Talep formu",
+   "rev": "xuh5ab"
+  },
+  {
+   "id": "hire.218",
+   "en": ".",
+   "tr": "kapsamında kabul ediyorum.",
+   "k": "consent2",
+   "sec": "Talep formu",
+   "rev": "3szv"
+  },
+  {
+   "id": "hire.219",
+   "en": "No obligation — quote and consultation are free.",
+   "tr": "Bağlayıcı değil — teklif ve danışmanlık ücretsizdir.",
+   "k": "rfNoObl",
+   "sec": "Talep formu",
+   "rev": "eiuyf2"
+  },
+  {
+   "id": "hire.220",
+   "en": "Where the process requires it, your details are shared only with our own representatives abroad — never with third parties. Full detail in the Privacy Notice.",
+   "tr": "Süreç gerektirdiğinde bilgileriniz yalnızca yurt dışındaki kendi temsilcilerimizle paylaşılır — üçüncü taraflarla asla paylaşılmaz. Ayrıntısı Gizlilik Aydınlatma Metni'nde.",
+   "k": "kvkkAbroad",
+   "sec": "Hero formu ve alan etiketleri",
+   "legal": true,
+   "rev": "rxi2m5"
+  },
+  {
+   "id": "hire.221",
+   "en": "Don't use WhatsApp?",
+   "tr": "WhatsApp kullanmıyor musunuz?",
+   "k": "rfAltQ",
+   "sec": "Talep formu",
+   "rev": "nvnugn"
+  },
+  {
+   "id": "hire.222",
+   "en": "Send this request by email",
+   "tr": "Bu talebi e-posta ile gönderin",
+   "k": "rfAltCta",
+   "sec": "Talep formu",
+   "rev": "11wzhyx"
+  },
+  {
+   "id": "hire.223",
+   "en": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+   "tr": "Türkiye'deki işverenler için lisanslı iş gücü temini — yurt dışından tedarik, kontrol ve çalışma izinleri, uçtan uca.",
+   "k": "footTag",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "legal": true,
+   "rev": "1v5awlm"
+  },
+  {
+   "id": "hire.224",
+   "en": "İŞKUR Licensed · Permit No. 1730",
+   "tr": "Özel İstihdam Bürosu · İzin Belgesi No: 1730",
+   "k": "footLic",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "legal": true,
+   "rev": "z1r9le"
+  },
+  {
+   "id": "hire.225",
+   "en": "For Employers",
+   "tr": "İşverenler için",
+   "k": "footEmployers",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "1yhsmw"
+  },
+  {
+   "id": "hire.226",
+   "en": "Company",
+   "tr": "Kurumsal",
+   "k": "footCompany",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "1ohrlxe"
+  },
+  {
+   "id": "hire.227",
+   "en": "Contact",
+   "tr": "İletişim",
+   "k": "footContact",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "1ofoso5"
+  },
+  {
+   "id": "hire.228",
+   "en": "Get Our App",
+   "tr": "Uygulamamız",
+   "k": "footApp",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "ncsu7u"
+  },
+  {
+   "id": "hire.229",
+   "en": "Telegram",
+   "tr": "Telegram",
+   "k": "telegram",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "159tyxw"
+  },
+  {
+   "id": "hire.230",
+   "en": "Antalya · Head office",
+   "tr": "Antalya · Merkez ofis",
+   "k": "footOfficeAntalya",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "1vkrek4"
+  },
+  {
+   "id": "hire.231",
+   "en": "Karachi · Tech office",
+   "tr": "Karaçi · Teknoloji ofisi",
+   "k": "footOfficeKarachi",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "1dihier"
+  },
+  {
+   "id": "hire.232",
+   "en": "Mon–Fri 09:00–18:00",
+   "tr": "Pzt–Cum 09:00–18:00",
+   "k": "footHoursAntalya",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "1pratzo"
+  },
+  {
+   "id": "hire.233",
+   "en": "Mon–Sat 10:00–19:00 PKT",
+   "tr": "Pzt–Cmt 10:00–19:00 PKT",
+   "k": "footHoursKarachi",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "1w2dzmx"
+  },
+  {
+   "id": "hire.234",
+   "en": "Karachi, Pakistan",
+   "tr": "Karaçi, Pakistan",
+   "k": "addrKarachi",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "1td9ko9"
+  },
+  {
+   "id": "hire.235",
+   "en": "Get directions",
+   "tr": "Yol tarifi alın",
+   "k": "footDirections",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "9twfut"
+  },
+  {
+   "id": "hire.236",
+   "en": "WhatsApp Us →",
+   "tr": "WhatsApp'tan yazın →",
+   "k": "footWa",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "1bo2cnd"
+  },
+  {
+   "id": "hire.237",
+   "en": "Workforce on the go",
+   "tr": "İş gücü her yerde yanınızda",
+   "k": "footAppTag",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "3cj12h"
+  },
+  {
+   "id": "hire.238",
+   "en": "Approve candidates, track permits & get instant updates.",
+   "tr": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
+   "k": "footAppSub",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "legal": true,
+   "rev": "19enop8"
+  },
+  {
+   "id": "hire.239",
+   "en": "Menu",
+   "tr": "Menü",
+   "k": "aMenu",
+   "sec": "Menü ve genel etiketler",
+   "rev": "yjlvbq"
+  },
+  {
+   "id": "hire.240",
+   "en": "Get it on Google Play",
+   "tr": "Google Play'den edinin",
+   "k": "altPlay",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "vaoule"
+  },
+  {
+   "id": "hire.241",
+   "en": "Download on the App Store",
+   "tr": "App Store'dan indirin",
+   "k": "altApple",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "c0p0nr"
+  },
+  {
+   "id": "hire.242",
+   "en": "Hero photo — worksite, factory floor or arrival team",
+   "tr": "Kapak fotoğrafı — şantiye, üretim alanı veya karşılama ekibi",
+   "k": "slotHero",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "bgqck4"
+  },
+  {
+   "id": "hire.243",
+   "en": "Portal — candidate shortlist screen",
+   "tr": "Portal — aday kısa liste ekranı",
+   "k": "slotPortal",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "412wek"
+  },
+  {
+   "id": "hire.244",
+   "en": "Mobile app screen",
+   "tr": "Mobil uygulama ekranı",
+   "k": "slotApp",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "1f8a948"
+  },
+  {
+   "id": "hire.245",
+   "en": "Client logo",
+   "tr": "Müşteri logosu",
+   "k": "slotLogo",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "1phfwaf"
+  },
+  {
+   "id": "hire.246",
+   "en": "İŞKUR permit No. 1730 · Job seekers are never charged a fee (law No. 4904) · Tax No: 48422122",
+   "tr": "İŞKUR İzin Belgesi No: 1730 · İş arayanlardan hiçbir ücret alınmaz (4904 sayılı kanun) · Vergi No: 48422122",
+   "k": "legal",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "legal": true,
+   "rev": "dgg8hy"
+  },
+  {
+   "id": "hire.247",
+   "en": "Privacy",
+   "tr": "Gizlilik Politikası",
+   "k": "privacy",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "1ligp4z"
+  },
+  {
+   "id": "hire.248",
+   "en": "Terms",
+   "tr": "Kullanım Şartları",
+   "k": "terms",
+   "sec": "Alt bilgi ve görsel etiketleri",
+   "rev": "3rktfc"
+  },
+  {
+   "id": "hire.249",
+   "en": "Hello JobsAdmire, I want to hire workers.",
+   "tr": "Merhaba JobsAdmire, işçi talebinde bulunmak istiyorum.",
+   "k": "msgHire",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "rev": "17wwilm"
+  },
+  {
+   "id": "hire.250",
+   "en": "Hello JobsAdmire, I want a quote for hiring workers.",
+   "tr": "Merhaba JobsAdmire, işçi istihdamı için teklif almak istiyorum.",
+   "k": "msgQuote",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "rev": "1ozjzw4"
+  },
+  {
+   "id": "hire.251",
+   "en": "Hello JobsAdmire, I want a demo of your CRM portal.",
+   "tr": "Merhaba JobsAdmire, CRM portalınız için demo talep etmek istiyorum.",
+   "k": "msgDemo",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "rev": "i5owls"
+  },
+  {
+   "id": "hire.252",
+   "en": "Hello JobsAdmire, I have a question about hiring workers.",
+   "tr": "Merhaba JobsAdmire, işçi istihdamı hakkında bir sorum var.",
+   "k": "msgAsk",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "rev": "1lvsn9c"
+  },
+  {
+   "id": "hire.253",
+   "en": "Worker request",
+   "tr": "İşçi talebi",
+   "k": "mSubject",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "rev": "zdao2"
+  },
+  {
+   "id": "hire.254",
+   "en": "Company",
+   "tr": "Firma",
+   "k": "mCompany",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "rev": "1ohrlxe"
+  },
+  {
+   "id": "hire.255",
+   "en": "Contact",
+   "tr": "Firma Yetkilisi",
+   "k": "mContact",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "rev": "1ofoso5"
+  },
+  {
+   "id": "hire.256",
+   "en": "Email",
+   "tr": "E-posta",
+   "k": "mEmail",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "rev": "3brsq1"
+  },
+  {
+   "id": "hire.257",
+   "en": "Industry",
+   "tr": "Sektör",
+   "k": "mIndustry",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "rev": "1oqrtmn"
+  },
+  {
+   "id": "hire.258",
+   "en": "Roles",
+   "tr": "Pozisyonlar",
+   "k": "mRoles",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "rev": "3t4en6"
+  },
+  {
+   "id": "hire.259",
+   "en": "Workers needed",
+   "tr": "İşçi sayısı",
+   "k": "mCount",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "rev": "6d5n7v"
+  },
+  {
+   "id": "hire.260",
+   "en": "Location",
+   "tr": "Lokasyon",
+   "k": "mLocation",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "rev": "wof33s"
+  },
+  {
+   "id": "hire.261",
+   "en": "Timeline",
+   "tr": "Zamanlama",
+   "k": "mTimeline",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "rev": "1dml1ge"
+  },
+  {
+   "id": "hire.262",
+   "en": "City",
+   "tr": "Şehir",
+   "k": "mCity",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "rev": "yjnfb6"
+  },
+  {
+   "id": "hire.263",
+   "en": "Phone / WhatsApp",
+   "tr": "Telefon / WhatsApp",
+   "k": "mPhone",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "rev": "1w7nv5a"
+  },
+  {
+   "id": "hire.264",
+   "en": "Hire Verified Overseas Workers in Turkey | İŞKUR-Licensed | JobsAdmire",
+   "tr": "Türkiye'de belgeli yabancı işçi istihdamı | İŞKUR İzinli | JobsAdmire",
+   "k": "seoTitle",
+   "sec": "Sayfa başlığı ve arama motoru metni",
+   "legal": true,
+   "rev": "ob5pij"
+  },
+  {
+   "id": "hire.265",
+   "en": "Hire skilled overseas workers in Turkey in 6–8 weeks. İŞKUR-licensed agency (Permit No. 1730) — we file every work permit, vet every candidate, and you pay no upfront fee. Written quote in 24 hours.",
+   "tr": "Türkiye'ye yurt dışından nitelikli işçi istihdamı, 6–8 haftada. İŞKUR izinli özel istihdam bürosu (İzin Belgesi No: 1730) — çalışma izni başvurularını biz yapar, her adayı biz doğrularız, peşin ücret ödemezsiniz. 24 saat içinde yazılı teklif.",
+   "k": "seoDesc",
+   "sec": "Sayfa başlığı ve arama motoru metni",
+   "legal": true,
+   "rev": "2fdk7b"
+  },
+  {
+   "id": "hire.266",
+   "en": "Hire Verified Overseas Workers in Turkey | JobsAdmire",
+   "tr": "Türkiye'de belgeli yabancı işçi istihdamı | JobsAdmire",
+   "k": "ogTitle",
+   "sec": "Sayfa başlığı ve arama motoru metni",
+   "rev": "1bxhkfb"
+  },
+  {
+   "id": "hire.267",
+   "en": "Skilled workers from 13+ countries, vetted by our own teams, every work permit filed by us — on site in six to eight weeks. No upfront fee.",
+   "tr": "13+ ülkeden nitelikli işçiler, kendi ekiplerimizce kontrol edilir, çalışma izinlerini biz alırız — 6–8 haftada işyerinizde. Peşin ücret yok.",
+   "k": "ogDesc",
+   "sec": "Sayfa başlığı ve arama motoru metni",
+   "legal": true,
+   "rev": "mxpj1z"
+  },
+  {
+   "id": "hire.268",
+   "en": "İŞKUR-licensed international recruitment agency placing verified overseas workers with employers in Turkey.",
+   "tr": "Türkiye'deki işverenlere belgeli yabancı işçi yerleştiren, İŞKUR izinli özel istihdam bürosu.",
+   "k": "schemaDesc",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "legal": true,
+   "rev": "rrhyvu"
+  },
+  {
+   "id": "hire.269",
+   "en": "Overseas worker recruitment and work permit processing",
+   "tr": "Yurt dışından işçi temini ve çalışma izni süreç yönetimi",
+   "k": "schemaService",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "legal": true,
+   "rev": "53pmer"
+  },
+  {
+   "id": "hire.270",
+   "en": "No upfront fee — one agreed placement fee per worker, invoiced after arrival.",
+   "tr": "Peşin ücret yok — işçi başına tek bir anlaşmalı yerleştirme ücreti, varıştan sonra faturalanır.",
+   "k": "schemaOffer",
+   "sec": "WhatsApp / e-posta mesajı ve SEO",
+   "legal": true,
+   "rev": "7ghdzs"
+  },
+  {
+   "id": "hire.271",
+   "en": "Day 0",
+   "tr": "Başlangıç",
+   "k": "stepWhen1",
+   "sec": "Süreç adımları",
+   "rev": "3g7y15"
+  },
+  {
+   "id": "hire.272",
+   "en": "Share your requirement",
+   "tr": "İhtiyacınızı paylaşın",
+   "k": "stepTitle1",
+   "sec": "Süreç adımları",
+   "rev": "10eky7a"
+  },
+  {
+   "id": "hire.273",
+   "en": "Industry, roles, headcount and location — via the form or WhatsApp. Free consultation and written quote within 24 hours.",
+   "tr": "Sektör, pozisyonlar, kişi sayısı ve lokasyon — form ya da WhatsApp üzerinden. Ücretsiz danışmanlık ve 24 saat içinde yazılı teklif.",
+   "k": "stepDesc1",
+   "sec": "Süreç adımları",
+   "legal": true,
+   "rev": "wgev1y"
+  },
+  {
+   "id": "hire.274",
+   "en": "Days 2–7",
+   "tr": "2–7. gün",
+   "k": "stepWhen2",
+   "sec": "Süreç adımları",
+   "rev": "1je08bg"
+  },
+  {
+   "id": "hire.275",
+   "en": "AI-matched shortlist",
+   "tr": "Yapay zeka destekli kısa liste",
+   "k": "stepTitle2",
+   "sec": "Süreç adımları",
+   "rev": "18yqojm"
+  },
+  {
+   "id": "hire.276",
+   "en": "Vetted candidate profiles appear on your portal — CVs, skills and documents complete. You review and approve.",
+   "tr": "Doğrulanmış aday profilleri portalınızda görünür — CV, nitelikler ve belgeler eksiksiz. İnceleyip onaylarsınız.",
+   "k": "stepDesc2",
+   "sec": "Süreç adımları",
+   "rev": "12qtdyu"
+  },
+  {
+   "id": "hire.277",
+   "en": "Week 1–2",
+   "tr": "1–2. hafta",
+   "k": "stepWhen3",
+   "sec": "Süreç adımları",
+   "rev": "1v5flrd"
+  },
+  {
+   "id": "hire.278",
+   "en": "Interviews & selection",
+   "tr": "Görüşmeler ve seçim",
+   "k": "stepTitle3",
+   "sec": "Süreç adımları",
+   "rev": "1j5f6wp"
+  },
+  {
+   "id": "hire.279",
+   "en": "Video interviews with your shortlisted candidates. Pick the workers you want.",
+   "tr": "Kısa listedeki adaylarla video görüşmesi. İstediğiniz işçileri siz seçersiniz.",
+   "k": "stepDesc3",
+   "sec": "Süreç adımları",
+   "rev": "1bdfors"
+  },
+  {
+   "id": "hire.280",
+   "en": "Week 2",
+   "tr": "2. hafta",
+   "k": "stepWhen4",
+   "sec": "Süreç adımları",
+   "rev": "1griagb"
+  },
+  {
+   "id": "hire.281",
+   "en": "E-signature contracts",
+   "tr": "E-imzalı sözleşmeler",
+   "k": "stepTitle4",
+   "sec": "Süreç adımları",
+   "rev": "1fl89ns"
+  },
+  {
+   "id": "hire.282",
+   "en": "Contracts signed digitally on the portal — no printing, no courier. Payment handled securely online.",
+   "tr": "Sözleşmeler portalda dijital olarak imzalanır — çıktı yok, kurye yok. Ödeme çevrim içi ve güvenli şekilde alınır.",
+   "k": "stepDesc4",
+   "sec": "Süreç adımları",
+   "rev": "1am028"
+  },
+  {
+   "id": "hire.283",
+   "en": "Weeks 2–6",
+   "tr": "2–6. hafta",
+   "k": "stepWhen5",
+   "sec": "Süreç adımları",
+   "legal": true,
+   "rev": "esy5j1"
+  },
+  {
+   "id": "hire.284",
+   "en": "Work permits processed",
+   "tr": "Çalışma izinleri alınır",
+   "k": "stepTitle5",
+   "sec": "Süreç adımları",
+   "legal": true,
+   "rev": "16em6ne"
+  },
+  {
+   "id": "hire.285",
+   "en": "We file every permit and track it to approval — you follow live status on your dashboard.",
+   "tr": "Her izin başvurusunu biz yapar ve onaya kadar takip ederiz — durumu panelinizden canlı izlersiniz.",
+   "k": "stepDesc5",
+   "sec": "Süreç adımları",
+   "legal": true,
+   "rev": "ylzjog"
+  },
+  {
+   "id": "hire.286",
+   "en": "Weeks 6–8",
+   "tr": "6–8. hafta",
+   "k": "stepWhen6",
+   "sec": "Süreç adımları",
+   "legal": true,
+   "rev": "esy8vr"
+  },
+  {
+   "id": "hire.287",
+   "en": "Arrival & first day",
+   "tr": "Varış ve ilk iş günü",
+   "k": "stepTitle6",
+   "sec": "Süreç adımları",
+   "rev": "dfmmza"
+  },
+  {
+   "id": "hire.288",
+   "en": "Visa, travel and onboarding coordinated by us. Workers arrive ready to start — with follow-up support after.",
+   "tr": "Vize, seyahat ve işe uyum süreci bize aittir. İşçiler işe başlamaya hazır gelir — sonrasında takip desteği sürer.",
+   "k": "stepDesc6",
+   "sec": "Süreç adımları",
+   "rev": "bmllul"
+  },
+  {
+   "id": "hire.289",
+   "en": "What is my responsibility as the employer?",
+   "tr": "İşveren olarak sorumluluğum nedir?",
+   "k": "faqQ1",
+   "sec": "Sık sorulan sorular",
+   "rev": "1s7uca4"
+  },
+  {
+   "id": "hire.290",
+   "en": "You provide the job, the salary and the workplace. Accommodation and transport are agreed case by case and written into the contract before we start — many employers provide housing, others pay an allowance. We handle sourcing, permits, contracts and the arrival process.",
+   "tr": "İşi, maaşı ve iş yerini siz sağlarsınız. Konaklama ve ulaşım her vakada ayrıca görüşülür ve süreç başlamadan önce sözleşmeye yazılır — bazı işverenler konaklama sağlar, bazıları ödenek verir. Temin, çalışma izinleri, sözleşmeler ve varış sürecini JobsAdmire yürütür.",
+   "k": "faqA1",
+   "sec": "Sık sorulan sorular",
+   "legal": true,
+   "rev": "46nfc9"
+  },
+  {
+   "id": "hire.291",
+   "en": "What does it cost?",
+   "tr": "Maliyeti nedir?",
+   "k": "faqQ2",
+   "sec": "Sık sorulan sorular",
+   "rev": "1t4wku3"
+  },
+  {
+   "id": "hire.292",
+   "en": "Pricing depends on roles, headcount and source country, so we prepare a custom quote for every requirement. Sourcing and interviews are free — you pay one agreed fee per placed worker, invoiced after arrival. Written proposal within 24 hours, no obligation.",
+   "tr": "Fiyatlama pozisyonlara, kişi sayısına ve kaynak ülkeye göre değişir; bu nedenle her talep için özel teklif hazırlarız. Temin ve görüşmeler ücretsizdir — yerleştirilen her işçi için tek bir anlaşmalı ücret ödersiniz ve bu ücret varıştan sonra faturalanır. 24 saat içinde yazılı teklif, taahhüt yok.",
+   "k": "faqA2",
+   "sec": "Sık sorulan sorular",
+   "legal": true,
+   "rev": "1vetsbl"
+  },
+  {
+   "id": "hire.293",
+   "en": "Is there a minimum number of workers?",
+   "tr": "Asgari işçi sayısı var mı?",
+   "k": "faqQ3",
+   "sec": "Sık sorulan sorular",
+   "rev": "b6h3au"
+  },
+  {
+   "id": "hire.294",
+   "en": "No. We place single specialists as well as full teams of 50+. Smaller requests simply move faster, because fewer permit files are processed in parallel.",
+   "tr": "Yok. Tek bir uzmanı da 50+ kişilik ekipleri de yerleştiriyoruz. Küçük talepler daha hızlı ilerler, çünkü aynı anda daha az izin dosyası işlenir.",
+   "k": "faqA3",
+   "sec": "Sık sorulan sorular",
+   "legal": true,
+   "rev": "65sr2g"
+  },
+  {
+   "id": "hire.295",
+   "en": "What happens if a work permit is rejected?",
+   "tr": "Çalışma izni reddedilirse ne olur?",
+   "k": "faqQ4",
+   "sec": "Sık sorulan sorular",
+   "legal": true,
+   "rev": "14e5k8d"
+  },
+  {
+   "id": "hire.296",
+   "en": "Rejections are rare because we pre-check every file, but if one happens we re-file at our own cost or replace the candidate — you are not charged a placement fee for a worker who never arrives. Official state fees already paid are shown with receipts.",
+   "tr": "Her dosyayı önceden kontrol ettiğimiz için ret çok nadirdir; yaşanırsa başvuruyu kendi maliyetimizle yeniden yapar ya da adayı değiştiririz — hiç gelmeyen bir işçi için yerleştirme ücreti ödemezsiniz. Ödenmiş resmî harçlar makbuzlarıyla gösterilir.",
+   "k": "faqA4",
+   "sec": "Sık sorulan sorular",
+   "legal": true,
+   "rev": "1g66rqr"
+  },
+  {
+   "id": "hire.297",
+   "en": "How do you verify skills before we interview?",
+   "tr": "Görüşmeden önce nitelikleri nasıl doğruluyorsunuz?",
+   "k": "faqQ5",
+   "sec": "Sık sorulan sorular",
+   "rev": "1wm0wvp"
+  },
+  {
+   "id": "hire.298",
+   "en": "Every candidate goes through document checks, reference calls and a trade test or practical assessment for skilled roles. You then run your own video interview through the portal before approving anyone — you always make the final choice.",
+   "tr": "Her aday belge kontrolü, referans görüşmeleri ve nitelikli pozisyonlar için meslek testi ya da uygulamalı değerlendirmeden geçer. Ardından portal üzerinden kendi video görüşmenizi yapıp onaylarsınız — son karar her zaman sizindir.",
+   "k": "faqA5",
+   "sec": "Sık sorulan sorular",
+   "rev": "sizo05"
+  },
+  {
+   "id": "hire.299",
+   "en": "Will workers understand instructions on site?",
+   "tr": "İşçiler iş yerinde talimatları anlayabilir mi?",
+   "k": "faqQ6",
+   "sec": "Sık sorulan sorular",
+   "rev": "12vn6ro"
+  },
+  {
+   "id": "hire.300",
+   "en": "Candidates are screened for language level and it is shown on every profile. For production and construction roles we prioritise workers with basic Turkish — English is assessed for tourism and hospitality roles — and teams are usually placed with an experienced lead worker who translates on site.",
+   "tr": "Adaylar dil seviyesine göre değerlendirilir ve bu bilgi her profilde gösterilir. Üretim ve inşaat pozisyonlarında temel Türkçe bilen işçilere öncelik veririz; turizm ve konaklama pozisyonlarında İngilizce de değerlendirilir. Ekipler genellikle sahada tercüme yapabilen deneyimli bir ekip lideriyle birlikte yerleştirilir.",
+   "k": "faqA6",
+   "sec": "Sık sorulan sorular",
+   "rev": "1vmxppp"
+  },
+  {
+   "id": "hire.301",
+   "en": "What if a worker leaves or doesn't perform?",
+   "tr": "İşçi ayrılırsa veya beklentiyi karşılamazsa ne olur?",
+   "k": "faqQ7",
+   "sec": "Sık sorulan sorular",
+   "rev": "1nrdqy4"
+  },
+  {
+   "id": "hire.302",
+   "en": "You're covered by our replacement guarantee: if a placed worker leaves or doesn't meet the agreed requirement, we source and place a replacement. The exact terms are written into your service contract.",
+   "tr": "Yerine koyma garantimiz kapsamındasınız: yerleştirilen bir işçi ayrılır ya da anlaşılan koşulları karşılamazsa yerine yeni bir işçi bulup yerleştiririz. Koşulların tamamı hizmet sözleşmenize yazılır.",
+   "k": "faqA7",
+   "sec": "Sık sorulan sorular",
+   "legal": true,
+   "rev": "17d0rkq"
+  }
+ ]
+}

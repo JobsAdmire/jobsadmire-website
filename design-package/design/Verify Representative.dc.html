@@ -1,0 +1,1557 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <title>Verify a JobsAdmire Representative — Official Authority Check</title>
+  <meta name="description" content="Check whether the person in front of you really represents JobsAdmire. Search by representative ID, name or company phone number to see their official record, what they are authorised to do, and what they can never ask you for." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.jobsadmire.com/verify" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="JobsAdmire" />
+  <meta property="og:locale" content="en_US" />
+  <meta property="og:title" content="Verify a JobsAdmire Representative" />
+  <meta property="og:description" content="Official authority check for employers, partners and candidates — before any meeting, contract or document is handed over." />
+  <meta property="og:url" content="https://www.jobsadmire.com/verify" />
+  <meta property="og:image" content="https://www.jobsadmire.com/logos/logo4.png" />
+  <meta property="og:image:alt" content="JobsAdmire — verify a representative" />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Verify a JobsAdmire Representative" />
+  <meta name="twitter:description" content="Search by ID, name or company number to confirm who is authorised to act for JobsAdmire." />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&display=swap" rel="stylesheet" />
+  <style>
+    /* Desktop-only: render at 75% scale (matches browser zoom 75%). Mobile/tablet untouched. */
+    @media (min-width: 1101px) { html { zoom: 0.75; } }
+    h1, h2, h3, h4 { font-family: 'Archivo', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif; }
+    body { margin: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; background: #ffffff; color: #16202e; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    a { color: #1899D5; }
+    a:hover { color: #1385bd; }
+    input::placeholder, textarea::placeholder, select:invalid { color: #94a3b8; }
+    @keyframes jaCardIn { from { opacity: 0; transform: translateY(26px) scale(0.985); } to { opacity: 1; transform: translateY(0) scale(1); } }
+    .ja-card-in { animation: jaCardIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    @keyframes jaPanelIn { from { opacity: 0; transform: translateY(-10px); } to { opacity: 1; transform: translateY(0); } }
+    .ja-panel { animation: jaPanelIn 0.36s cubic-bezier(0.22, 1, 0.36, 1); }
+    @keyframes jaPulse { 0% { box-shadow: 0 0 0 0 rgba(22,163,74,0.45); } 70% { box-shadow: 0 0 0 8px rgba(22,163,74,0); } 100% { box-shadow: 0 0 0 0 rgba(22,163,74,0); } }
+    .ja-live { width: 9px; height: 9px; border-radius: 50%; background: #16a34a; display: inline-block; animation: jaPulse 2s ease-out infinite; }
+    @keyframes jaFadeUp { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: translateY(0); } }
+    .ja-up { animation: jaFadeUp 0.5s cubic-bezier(0.22, 1, 0.36, 1) both; }
+    .ja-ch { transition: transform 0.22s cubic-bezier(0.22,1,0.36,1), box-shadow 0.22s ease, border-color 0.22s ease; }
+    .ja-ch:hover { transform: translateY(-4px); box-shadow: 0 18px 38px rgba(22,60,90,0.13); }
+    .ja-role { transition: border-color 0.2s ease, box-shadow 0.22s ease, transform 0.2s ease; }
+    .ja-role:hover { border-color: #bfdff0; box-shadow: 0 14px 30px rgba(22,60,90,0.08); }
+    .ja-reveal { opacity: 0; transform: translateY(26px); transition: opacity 0.7s cubic-bezier(0.22,1,0.36,1), transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .ja-reveal-on { opacity: 1; transform: translateY(0); }
+    @keyframes jaTick { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: scale(1); } }
+    .ja-tick { animation: jaTick 0.45s cubic-bezier(0.34,1.56,0.64,1) both; }
+    @keyframes jaSpin { to { transform: rotate(360deg); } }
+    @keyframes jaDashMove { to { background-position: 40px 0; } }
+    .ja-grow { transform: scaleY(0); transform-origin: top center; transition: transform 0.7s cubic-bezier(0.22,1,0.36,1); }
+    .ja-grow.ja-reveal-on { transform: scaleY(1); }
+    .ja-grow-x { transform: scaleX(0); transform-origin: center top; transition: transform 0.8s cubic-bezier(0.22,1,0.36,1) 0.5s; }
+    .ja-grow-x.ja-reveal-on { transform: scaleX(1); }
+    @media (prefers-reduced-motion: reduce) { .ja-grow, .ja-grow-x { transform: none; transition: none; } .ja-live { animation: none; } .ja-reveal { opacity: 1; transform: none; transition: none; } .ja-card-in, .ja-up { animation: none; } }
+    img { max-width: 100%; }
+    @media (max-width: 900px) {
+      [style*="px 48px"]:not(.ja-slim):not(.ja-nav):not(.ja-sticky) { padding-left: 20px !important; padding-right: 20px !important; }
+      [style*="grid-template-columns"]:not([style*="auto-fit"]):not([style*="auto-fill"]) { grid-template-columns: 1fr !important; }
+      [style*="position: sticky"] { position: static !important; }
+      [style*="gap: 64px"], [style*="gap: 56px"] { gap: 32px !important; }
+    }
+    @media (max-width: 600px) {
+      h1 { font-size: 32px !important; letter-spacing: -0.6px !important; }
+      h2 { font-size: 25px !important; letter-spacing: -0.4px !important; }
+    }
+    @media (max-width: 1100px) { .ja-social-rail { display: none !important; } .ja-nav-cta-secondary { display: none !important; } .ja-cta-long { display: none !important; } .ja-nav { flex-wrap: wrap !important; } }
+    @media (min-width: 1101px) { .ja-wa-fab { display: none !important; } }
+    @keyframes jaFabPop { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: scale(1); } }
+    .ja-wa-fab { animation: jaFabPop .4s cubic-bezier(0.22,1,0.36,1) .8s both; }
+    html { scroll-behavior: smooth; }
+    .ja-acc-a { display: none; }
+    .ja-acc.ja-open .ja-acc-a { display: block; }
+    .ja-acc-chev { transition: transform .2s ease; flex: none; }
+    .ja-acc.ja-open .ja-acc-chev { transform: rotate(180deg); }
+    .ja-acc { transition: border-color .18s ease, background .18s ease; }
+    .ja-acc:hover { border-color: #bfdff0; }
+    @keyframes jaMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+    .ja-pool-track { animation: jaMarquee 46s linear infinite; }
+    .ja-pool-track > * { flex: 0 0 300px; margin-right: 16px; }
+    .ja-pool-wrap:hover .ja-pool-track { animation-play-state: paused; }
+    @media (prefers-reduced-motion: reduce) { .ja-pool-track { animation: none; } }
+    @keyframes jaTick { from { opacity: 0; transform: translateY(9px); } to { opacity: 1; transform: translateY(0); } }
+    .ja-tick { animation: jaTick .45s cubic-bezier(0.22,1,0.36,1) both; }
+    @media (prefers-reduced-motion: reduce) { .ja-tick { animation: none; } }
+    .ja-t-mob { display: none; }
+    .ja-vr-sitrig { display: none; }
+    .ja-nav-toggle, .ja-mobile-bar, .ja-mobile-bar-spacer, .ja-form-cta, .ja-choice, .ja-net-mobile, .ja-calc-cta-mobile, .ja-blog-bottom-cta, .ja-dash-mob { display: none; }
+    .ja-fchev { display: none; }
+    @media (max-width: 900px) {
+      .ja-sec { padding-left: 20px !important; padding-right: 20px !important; }
+      .ja-sec-top { padding-top: 54px !important; }
+      .ja-grid2, .ja-grid4, .ja-grid-team, .ja-hero-grid, .ja-form, .ja-grid-2up { grid-template-columns: 1fr !important; }
+      .ja-grid2, .ja-hero-grid { gap: 34px !important; }
+      .ja-sticky { position: static !important; top: auto !important; }
+      .ja-right { text-align: left !important; max-width: none !important; }
+      .ja-slim { padding: 9px 20px !important; gap: 10px !important; }
+      .ja-slim-r { display: none !important; }
+      .ja-slim-l { gap: 5px 18px !important; font-size: 12px !important; }
+      .ja-slim-contact, .ja-slim-div { display: none !important; }
+      .ja-slim { justify-content: space-between !important; }
+      .ja-slim-lang { display: flex !important; }
+      .ja-wa-fab { display: none !important; }
+      .ja-mobile-bar { display: grid !important; }
+      .ja-mobile-bar-spacer { display: block !important; }
+      .ja-nav { padding: 10px 14px !important; flex-wrap: wrap !important; box-shadow: 0 6px 22px rgba(10,20,40,0.07) !important; }
+      .ja-nav img { height: 30px !important; }
+      .ja-nav-cta { padding: 13px 20px !important; font-size: 14px !important; font-weight: 800 !important; background: linear-gradient(135deg, #1899D5, #1073a8) !important; box-shadow: 0 8px 20px rgba(24,153,213,0.32) !important; }
+      .ja-cta-long { display: inline !important; }
+      .ja-nav-cta { white-space: nowrap !important; }
+      .ja-nav-links { display: none !important; }
+      .ja-nav-toggle { display: inline-flex !important; }
+      .ja-nav-cta-secondary { display: none !important; }
+      .ja-lang { display: none !important; }
+      .ja-lang-hint { position: relative !important; justify-content: flex-start !important; gap: 10px !important; padding: 12px 44px 13px 16px !important; }
+      .ja-lang-hint > span { flex: 1 1 100% !important; font-size: 13px !important; }
+      .ja-lang-hint > button:not(.ja-lang-hint-x) { flex: 1 1 100% !important; min-height: 44px !important; border-radius: 12px !important; }
+      .ja-lang-hint-x { position: absolute !important; top: 5px !important; right: 6px !important; width: 34px !important; padding: 0 !important; min-height: 34px !important; }
+    }
+    @media (max-width: 460px) {
+      .ja-nav { gap: 10px !important; padding: 10px 12px !important; }
+      .ja-nav-actions { flex: 1 1 auto !important; justify-content: flex-end !important; }
+      .ja-nav-cta { flex: 1 1 auto !important; text-align: center !important; padding: 13px 10px !important; font-size: 13.5px !important; max-width: 185px !important; }
+      .ja-logo-full { height: 30px !important; }
+      .ja-nav-links { display: none !important; }
+      .ja-nav-cta-secondary { display: none !important; }
+      .ja-nav-toggle { display: inline-flex !important; }
+      .ja-hero-wrap { min-height: 0 !important; }
+      .ja-hero-1 { display: none !important; }
+      .ja-hero-cta-primary, .ja-hero-note, .ja-hero-browse { display: none !important; }
+      .ja-t-desk { display: none !important; }
+      .ja-t-mob { display: inline !important; }
+      .ja-hero-form { margin-top: 6px !important; }
+      .ja-form-sub { font-size: 14px !important; margin-bottom: 14px !important; }
+      .ja-form-cta > button { min-height: 54px !important; font-size: 16.5px !important; }
+      .ja-hero-grid { padding: 40px 20px 32px !important; }
+      .ja-hero-form { padding: 20px 18px !important; border-radius: 20px !important; }
+      .ja-hero-form .ja-form { display: none !important; }
+      .ja-hero-form.ja-form-open .ja-form { display: grid !important; }
+      .ja-form-cta { display: flex !important; }
+      .ja-hero-form.ja-form-open .ja-form-cta { display: none !important; }
+      .ja-season-scroll { overflow-x: visible !important; padding: 0 !important; margin: 0 !important; }
+      .ja-season-scroll > div { min-width: 0 !important; }
+      .ja-season-row { grid-template-columns: 1fr !important; gap: 7px !important; padding: 12px 12px !important; margin: 0 0 4px !important; border: 1px solid #e6eef4 !important; }
+      .ja-season-row:first-child { border: none !important; padding: 0 12px !important; margin: 0 0 2px !important; }
+      .ja-season-row:not(:first-child) > span:last-child { height: 34px !important; }
+      .ja-season-row > span:first-child { gap: 2px !important; }
+      .ja-season-cta { width: 100% !important; justify-content: center !important; padding: 15px 20px !important; }
+      .ja-pool-track { animation-duration: 34s !important; }
+      .ja-pool-track > * { flex: 0 0 270px !important; margin-right: 12px !important; }
+      .ja-tl-row { display: grid !important; grid-template-columns: 30px 1fr !important; column-gap: 14px !important; }
+      .ja-tl-label { grid-column: 2 !important; grid-row: 1 !important; width: auto !important; text-align: left !important; padding-top: 0 !important; padding-bottom: 6px !important; }
+      .ja-tl-line { grid-column: 1 !important; grid-row: 1 / span 2 !important; }
+      .ja-tl-body { grid-column: 2 !important; grid-row: 2 !important; }
+      .ja-choice { display: grid !important; }
+      .ja-map-visual, .ja-portal-panel { display: none !important; }
+      .ja-net-mobile { display: block !important; }
+      .ja-grid-team { gap: 0 !important; background: #ffffff; border: 1px solid #e2ebf2; border-radius: 22px; overflow: hidden; box-shadow: 0 16px 38px rgba(22,60,90,0.09); }
+      .ja-team-founder { padding: 22px 20px !important; gap: 16px !important; border-radius: 0 !important; }
+      .ja-team-photo { width: 86px !important; height: 108px !important; }
+      .ja-team-mini { display: grid !important; grid-template-columns: 40px 1fr !important; column-gap: 14px !important; row-gap: 3px !important; align-items: start !important; padding: 15px 18px !important; border: none !important; border-top: 1px solid #eef3f7 !important; border-radius: 0 !important; box-shadow: none !important; }
+      .ja-team-mini > span:nth-child(1) { width: 40px !important; height: 40px !important; border-radius: 11px !important; }
+      .ja-dash-feats { gap: 0 !important; background: #ffffff; border: 1px solid #e2ebf2; border-radius: 20px; overflow: hidden; box-shadow: 0 16px 38px rgba(22,60,90,0.09); }
+      .ja-dash-feats > div { border: none !important; border-top: 1px solid #eef3f7 !important; border-radius: 0 !important; padding: 15px 18px !important; }
+      .ja-dash-feats > div:first-child { border-top: none !important; }
+      .ja-dash-cta { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 10px !important; }
+      .ja-dash-cta > a:first-child { grid-column: 1 / -1 !important; justify-content: center !important; padding: 15px 20px !important; }
+      .ja-dash-cta > a:not(:first-child) { justify-content: center !important; padding: 11px 12px !important; }
+      .ja-team-cta { flex-direction: column !important; gap: 10px !important; }
+      .ja-team-cta > a { justify-content: center !important; padding: 15px 20px !important; }
+      .ja-team-mini > span:nth-child(1) { grid-column: 1 !important; grid-row: 1 / span 2 !important; margin-bottom: 0 !important; }
+      .ja-team-mini > span:nth-child(2) { grid-column: 2 !important; grid-row: 1 !important; align-self: center !important; }
+      .ja-team-mini > span:nth-child(3) { grid-column: 2 !important; grid-row: 2 !important; font-size: 12.5px !important; }
+      .ja-net-chips { display: none !important; }
+      .ja-calc-card > div { padding-left: 20px !important; padding-right: 20px !important; }
+      .ja-calc-card { border-radius: 22px !important; }
+      .ja-calc-chips { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; }
+      .ja-calc-chips > button { width: 100% !important; min-height: 46px !important; padding: 10px 12px !important; white-space: normal !important; font-size: 13.5px !important; line-height: 1.25 !important; }
+      .ja-calc-roles > button:last-child { grid-column: 1 / -1 !important; }
+      .ja-calc-oneoff { flex-direction: column !important; align-items: flex-start !important; gap: 3px !important; }
+      .ja-calc-cta { display: none !important; }
+      .ja-calc-cta-mobile { display: flex !important; flex-direction: column !important; gap: 10px !important; margin-top: 16px !important; }
+      .ja-calc-cta-mobile > a { justify-content: center !important; padding: 15px 20px !important; }
+      .ja-fcol h4 { display: flex !important; align-items: center; justify-content: space-between; cursor: pointer; margin: 0 !important; padding: 15px 0 !important; border-bottom: 1px solid rgba(255,255,255,0.12); }
+      .ja-fchev { display: block !important; transition: transform .2s ease; }
+      .ja-fcol.ja-open .ja-fchev { transform: rotate(180deg); }
+      .ja-fcol .ja-flinks, .ja-fcol .ja-flinks-app { display: none !important; }
+      .ja-fcol.ja-open .ja-flinks { display: flex !important; padding: 14px 0 4px !important; }
+      .ja-fcol.ja-open .ja-flinks-app { display: block !important; padding: 14px 0 4px !important; }
+      .ja-footer-grid { gap: 26px 32px !important; padding-bottom: 34px !important; }
+      .ja-foot-wa { display: none !important; }
+      .ja-fcol.ja-open .ja-flinks > a { min-height: 40px !important; align-items: center !important; display: flex !important; }
+      .ja-sec { padding-top: 54px !important; padding-bottom: 54px !important; }
+      .ja-form input, .ja-form select { font-size: 16px !important; padding: 14px !important; }
+      .ja-form button[type="submit"] { min-height: 52px !important; font-size: 16px !important; }
+      .ja-nav-panel { max-height: 68vh !important; overflow-y: auto !important; }
+      .ja-hero-grid h1 { letter-spacing: -1.2px !important; line-height: 1.06 !important; }
+      .ja-hero-grid p { font-size: 16px !important; }
+      .ja-hero-grid a[href="#proposal"], .ja-hero-grid a[href="Available Workers.dc.html"] { flex: 1 1 100% !important; justify-content: center !important; }
+      .ja-calc-big { font-size: 30px !important; }
+      .ja-blog-hero-img { height: 190px !important; }
+      .ja-blog-feature { display: flex !important; border-radius: 20px !important; }
+      .ja-blog-feature > span:last-child { padding: 20px 20px 22px !important; gap: 10px !important; }
+      .ja-blog-feature > span:last-child > span:nth-child(3) { font-size: 21px !important; letter-spacing: -0.6px !important; }
+      .ja-blog-feature > span:last-child > span:nth-child(4) { font-size: 14px !important; display: -webkit-box !important; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+      .ja-blog-side { padding: 2px 18px !important; border-radius: 20px !important; }
+      .ja-blog-side .ja-idx { padding: 15px 0 !important; gap: 6px !important; }
+      .ja-blog-side .ja-idx > span:nth-child(3) { display: none !important; }
+      .ja-blog-side .ja-idx > span:nth-child(2) { font-size: 15.5px !important; }
+      .ja-blog-all { display: none !important; }
+      .ja-blog-top-cta { display: none !important; }
+      .ja-blog-side { display: none !important; }
+      .ja-dash-feats { display: none !important; }
+      .ja-dash-mob { display: flex !important; }
+      .ja-team-mini { display: none !important; }
+      .ja-grid-team { border-radius: 20px !important; }
+      .ja-blog-bottom-cta { display: flex !important; }
+      .ja-sec h2 { letter-spacing: -1px !important; }
+      .ja-hide-mobile { display: none !important; }
+      .ja-f-opt { display: none !important; }
+      .ja-hero-stats { grid-template-columns: 1fr 1fr !important; padding: 0 20px !important; column-gap: 0 !important; }
+      .ja-hero-stats > div { padding: 15px 0 !important; border-right: none !important; border-top: 1px solid rgba(255,255,255,0.14) !important; }
+      .ja-hero-stats > div:nth-child(2) { padding-left: 18px !important; border-left: 1px solid rgba(255,255,255,0.14) !important; }
+      .ja-hero-stats > div:nth-child(3) { grid-column: 1 / -1 !important; display: flex !important; align-items: baseline !important; gap: 10px !important; }
+      .ja-hero-stats > div:nth-child(3) > div:last-child { margin-top: 0 !important; }
+      .ja-hero-stats > div:nth-child(4) { display: none !important; }
+      .ja-hero-stats [data-count] { font-size: 27px !important; letter-spacing: -1px !important; }
+      .ja-case { background: #0e1a37 !important; padding: 16px 20px !important; }
+      .ja-case .ja-tick { flex-direction: column !important; gap: 3px !important; }
+      .ja-case .ja-tick > span:nth-child(1) { font-size: 15px !important; line-height: 1.35 !important; letter-spacing: -0.3px !important; }
+      .ja-case a { margin-left: 0 !important; align-self: stretch !important; display: flex !important; align-items: center !important; justify-content: space-between !important; min-height: 44px !important; margin-top: 8px !important; padding-top: 10px !important; border-top: 1px solid rgba(255,255,255,0.14) !important; }
+      .ja-case > div { flex-direction: column !important; align-items: flex-start !important; gap: 4px !important; }
+      .ja-case .ja-tick > span:nth-child(2) { font-size: 12.5px !important; line-height: 1.45 !important; }
+
+      .ja-cta-card { padding: 28px 22px !important; border-radius: 22px !important; }
+      .ja-cta-actions { width: 100% !important; }
+      .ja-cta-actions > a:first-child { flex: 1 1 100% !important; justify-content: center !important; padding: 16px 22px !important; }
+      .ja-cta-actions > a:not(:first-child) { display: none !important; }
+      .ja-cta-actions > a.ja-cta-tg { display: flex !important; flex: 1 1 100% !important; justify-content: center !important; padding: 15px 20px !important; }
+      .ja-portal { height: 330px !important; }
+      .ja-portal-laptop { width: 100% !important; }
+      .ja-portal-phone, .ja-portal-badge { display: none !important; }
+      .ja-card-pad { padding: 26px 22px !important; }
+      .ja-grid2 > *, .ja-grid-team > *, .ja-grid4 > *, .ja-grid-2up > *, .ja-hero-grid > * { min-width: 0 !important; }
+      .ja-role-row { flex-wrap: wrap !important; row-gap: 4px !important; }
+      .ja-role-row span { white-space: normal !important; }
+    }
+    @media (max-width: 560px) {
+      .ja-grid4 { grid-template-columns: 1fr !important; }
+      .ja-hero-stats { grid-template-columns: 1fr 1fr !important; }
+    }
+
+    /* ===== MOBILE — verify page ===== */
+    @media (max-width: 700px) {
+      .ja-t-desk { display: none !important; }
+      .ja-t-mob { display: inline !important; }
+      .ja-mobile-bar.ja-mobile-bar.ja-mobile-bar.ja-mobile-bar { grid-template-columns: 1fr 1fr !important; }
+      .ja-sticky { display: none !important; }
+      [style*="grid-template-columns"] > * { min-width: 0 !important; }
+
+      .ja-vr-hero { padding-bottom: 30px !important; }
+      .ja-vr-heroin { padding-top: 22px !important; }
+      .ja-vr-crumb { font-size: 12px !important; margin-bottom: 14px !important; }
+      .ja-vr-hgrid { gap: 22px !important; }
+      .ja-vr-hgrid h1 { letter-spacing: -1.1px !important; line-height: 1.07 !important; }
+      .ja-vr-hgrid > div > p { font-size: 15px !important; line-height: 1.55 !important; margin-bottom: 18px !important; }
+      .ja-vr-badge { padding: 6px 13px !important; font-size: 12px !important; margin-bottom: 16px !important; }
+      .ja-vr-ticks { gap: 9px !important; margin-bottom: 18px !important; }
+      .ja-vr-ticks > div { font-size: 13.5px !important; line-height: 1.45 !important; }
+      .ja-vr-hcta { width: 100% !important; justify-content: center !important; padding: 14px 20px !important; min-height: 50px !important; }
+      .ja-vr-card-head { padding: 18px 18px 4px !important; }
+      .ja-vr-card-head h2 { font-size: 19px !important; }
+      .ja-vr-card-body { padding: 14px 18px 20px !important; }
+      .ja-vr-card-body input { font-size: 16px !important; padding: 15px 16px !important; }
+      .ja-vr-card-body > div:first-of-type > * { flex: 1 1 auto !important; justify-content: center !important; min-height: 46px !important; display: inline-flex !important; align-items: center !important; }
+      .ja-vr-stepwrap { margin-top: 26px !important; padding-top: 20px !important; }
+      .ja-vr-steps { gap: 10px !important; }
+      .ja-vr-steps > div { padding: 14px 16px !important; border-radius: 14px !important; gap: 7px !important; }
+      .ja-vr-steps > div > div:first-child > span:last-child { font-size: 15px !important; line-height: 1.25 !important; }
+      .ja-vr-steps > div > div:last-child { font-size: 13px !important; line-height: 1.5 !important; }
+
+      .ja-vr-nm { padding-top: 24px !important; padding-bottom: 16px !important; }
+      .ja-vr-nmbody { padding: 16px 16px 18px !important; }
+      .ja-vr-nmbody > div:first-child { font-size: 17.5px !important; }
+      .ja-vr-nmbody p { font-size: 14px !important; line-height: 1.55 !important; }
+      .ja-vr-nmbody a { flex: 1 1 100% !important; justify-content: center !important; min-height: 48px !important; }
+
+      .ja-vr-sec { padding-top: 42px !important; padding-bottom: 34px !important; }
+      .ja-vr-intro { text-align: left !important; margin-bottom: 20px !important; }
+      .ja-vr-intro h2 { font-size: 25px !important; letter-spacing: -0.6px !important; line-height: 1.13 !important; }
+      .ja-vr-intro h2 br { display: none !important; }
+      .ja-vr-intro > p { font-size: 14.5px !important; line-height: 1.55 !important; }
+      .ja-vr-stats { gap: 10px 18px !important; padding: 13px 15px !important; border-radius: 14px !important; }
+      .ja-vr-stats > span > span:first-child { font-size: 19px !important; }
+      .ja-vr-stats > span:last-child { margin-left: 0 !important; flex: 1 1 100% !important; font-size: 11.5px !important; }
+      .ja-vr-founder { padding: 16px 16px !important; gap: 14px !important; border-radius: 16px !important; }
+      .ja-vr-founder > div:nth-child(2) { min-width: 0 !important; flex: 1 1 auto !important; }
+      .ja-vr-founder > div:last-child { margin-left: 0 !important; align-items: stretch !important; width: 100% !important; max-width: none !important; }
+      .ja-vr-founder > div:last-child > button { width: 100% !important; min-height: 46px !important; }
+      .ja-vr-founder > div:last-child > div { text-align: left !important; font-size: 12px !important; }
+
+      .ja-vr-reg { gap: 12px !important; }
+      .ja-vr-side { position: static !important; top: auto !important; padding: 10px !important; border-radius: 14px !important; }
+      .ja-vr-side > div:first-child { padding: 4px 4px 8px !important; }
+      .ja-vr-sitrig { display: flex !important; align-items: center !important; gap: 9px !important; width: 100% !important; background: #ffffff !important; border: 2px solid #bfdff0 !important; box-shadow: 0 6px 16px rgba(22,60,90,0.09) !important; min-height: 54px !important; padding: 10px 12px !important; }
+      .ja-vr-sitrig::before { content: "Showing"; font-size: 9.5px; font-weight: 800; letter-spacing: 1px; text-transform: uppercase; color: #94a3b8; flex: none; }
+      .ja-vr-sitrig.ja-vr-sitrig.ja-vr-sitrig > span:last-child { width: 38px !important; height: 38px !important; border-radius: 12px !important; background: linear-gradient(160deg, #253063 0%, #0e1a37 100%) !important; border: 1px solid rgba(127,208,245,0.28) !important; color: #7fd0f5 !important; display: flex !important; align-items: center !important; justify-content: center !important; box-shadow: 0 7px 16px rgba(14,26,55,0.3) !important; padding: 0 !important; }
+      .ja-vr-sidelist.ja-vr-sidelist.ja-vr-sidelist.ja-vr-sidelist { display: none !important; }
+      .ja-vr-sidelist.ja-open.ja-vr-sidelist.ja-vr-sidelist { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 6px !important; margin-top: 8px !important; }
+      .ja-vr-sidelist::-webkit-scrollbar { display: none; }
+      .ja-vr-sdiv { display: none !important; }
+      .ja-vr-sitem { flex: 0 0 auto !important; }
+      .ja-vr-sidelist button { width: 100% !important; }
+      .ja-vr-side > div:last-child { display: none !important; }
+
+      .ja-vr-phead { padding: 12px 15px !important; gap: 8px !important; }
+      .ja-vr-phead > span:nth-child(1) { font-size: 15px !important; }
+      .ja-vr-phead > span:last-child { margin-left: 0 !important; font-size: 10.5px !important; padding: 4px 11px !important; }
+      .ja-vr-cols { display: none !important; }
+      .ja-vr-ghead { padding: 9px 15px !important; }
+      .ja-vr-heads.ja-vr-heads.ja-vr-heads.ja-vr-heads { grid-template-columns: 1fr !important; padding: 12px 15px 10px !important; gap: 10px !important; }
+      .ja-vr-heads > button { padding: 12px 13px !important; gap: 11px !important; }
+      .ja-vr-heads > button > span:first-child { width: 48px !important; height: 48px !important; }
+      .ja-vr-row.ja-vr-row.ja-vr-row.ja-vr-row { grid-template-columns: 1fr auto !important; column-gap: 10px !important; row-gap: 5px !important; padding: 11px 15px !important; align-items: center !important; }
+      .ja-vr-row > span:nth-child(1) { grid-column: 1 !important; grid-row: 1 !important; gap: 11px !important; }
+      .ja-vr-row > span:nth-child(1) > span:first-child { width: 38px !important; height: 38px !important; }
+      .ja-vr-row > span:nth-child(2) { grid-column: 1 !important; grid-row: 2 !important; padding-left: 49px !important; font-size: 12.5px !important; }
+      .ja-vr-row > span:nth-child(3) { grid-column: 2 !important; grid-row: 1 !important; justify-self: end !important; padding: 5px 10px !important; font-size: 11.5px !important; }
+      .ja-vr-row > span:nth-child(4) { grid-column: 2 !important; grid-row: 2 !important; justify-self: end !important; font-size: 11.5px !important; }
+      .ja-vr-former { padding: 12px 14px !important; gap: 9px !important; }
+      .ja-vr-pnote { padding: 16px 16px !important; gap: 14px !important; border-radius: 16px !important; }
+      .ja-vr-pnote > div { font-size: 13.5px !important; line-height: 1.55 !important; }
+      .ja-vr-pnote > a { width: 100% !important; justify-content: center !important; min-height: 48px !important; }
+
+      .ja-vr-report { padding-top: 40px !important; padding-bottom: 44px !important; }
+      .ja-vr-report h2 { font-size: 25px !important; letter-spacing: -0.6px !important; line-height: 1.13 !important; }
+      .ja-vr-report > div > p { font-size: 14.5px !important; line-height: 1.55 !important; margin-bottom: 18px !important; }
+      .ja-vr-rgrid { gap: 12px !important; }
+      .ja-vr-flags { padding: 16px 16px 8px !important; border-radius: 16px !important; }
+      .ja-vr-flags > div { font-size: 13.5px !important; }
+      .ja-vr-rbox { padding: 20px 18px !important; border-radius: 16px !important; }
+      .ja-vr-rbox > div:nth-child(3) { font-size: 18px !important; line-height: 1.22 !important; }
+      .ja-vr-rbox a { min-height: 50px !important; }
+
+      .ja-vr-modal { padding: 10px !important; align-items: flex-start !important; }
+      .ja-vr-mcard { max-height: 94vh !important; border-radius: 16px !important; }
+      .ja-vr-mhead { padding: 12px 15px !important; }
+      .ja-vr-mbody { padding: 16px 15px !important; gap: 13px !important; }
+      .ja-vr-mbody > span:first-child { width: 68px !important; height: 88px !important; }
+      .ja-vr-mbody > div > div:first-child { font-size: 18px !important; }
+      .ja-vr-qr { display: none !important; }
+      .ja-vr-mmeta.ja-vr-mmeta.ja-vr-mmeta.ja-vr-mmeta { grid-template-columns: 1fr 1fr !important; }
+      .ja-vr-mmeta > div { padding: 11px 14px !important; }
+      .ja-vr-mcaps > div { padding: 15px 15px !important; }
+      .ja-vr-mfoot { padding: 13px 15px !important; gap: 10px !important; }
+      .ja-vr-mfoot > span:last-child { display: grid !important; grid-template-columns: 1fr 1fr !important; gap: 8px !important; width: 100% !important; }
+      .ja-vr-mfoot > span:last-child > * { justify-content: center !important; }
+      .ja-vr-mfoot > span:last-child > a { grid-column: 1 / -1 !important; min-height: 40px !important; display: flex !important; align-items: center !important; justify-content: center !important; }
+    }
+    @media (max-width: 700px) {
+      .ja-vr-hero { padding-bottom: 26px !important; }
+      .ja-vr-heroin { padding-top: 18px !important; }
+      .ja-vr-badge { background: rgba(24,153,213,0.16) !important; border-color: rgba(127,208,245,0.38) !important; color: #cbeafb !important; }
+      .ja-vr-hgrid > div > p { margin-bottom: 16px !important; color: rgba(255,255,255,0.72) !important; }
+      .ja-vr-ticks { background: rgba(255,255,255,0.07) !important; border: 1px solid rgba(255,255,255,0.18) !important; border-radius: 14px !important; padding: 12px 14px !important; gap: 10px !important; margin-bottom: 16px !important; }
+      .ja-vr-ticks > div { font-size: 13px !important; line-height: 1.42 !important; color: rgba(255,255,255,0.86) !important; font-weight: 600 !important; }
+      .ja-vr-hcta { display: none !important; }
+      .ja-vr-hgrid > .ja-card-in { box-shadow: 0 18px 40px rgba(3,10,26,0.45) !important; border-radius: 18px !important; }
+      .ja-vr-card-head h2 { font-size: 18.5px !important; letter-spacing: -0.4px !important; line-height: 1.22 !important; }
+      .ja-vr-card-body > div:last-child { display: none !important; }
+      .ja-vr-stepwrap { margin-top: 22px !important; padding-top: 18px !important; }
+      .ja-vr-stepwrap > div:first-child { margin-bottom: 12px !important; }
+      .ja-vr-stepwrap > div:first-child > span:last-child { font-size: 11px !important; letter-spacing: 1.2px !important; }
+      .ja-vr-steps { gap: 0 !important; background: rgba(255,255,255,0.055) !important; border: 1px solid rgba(255,255,255,0.15) !important; border-radius: 16px !important; overflow: hidden !important; }
+      .ja-vr-steps > div { background: transparent !important; border: 0 !important; border-top: 1px solid rgba(255,255,255,0.12) !important; border-radius: 0 !important; padding: 13px 15px !important; gap: 6px !important; }
+      .ja-vr-steps > div:first-child { border-top: 0 !important; }
+      .ja-vr-steps > div > div:first-child > span:first-child { width: 26px !important; height: 26px !important; border-radius: 8px !important; font-size: 12.5px !important; }
+      .ja-vr-steps > div > div:first-child > span:last-child { font-size: 14.5px !important; }
+      .ja-vr-steps > div > div:last-child { font-size: 12.5px !important; line-height: 1.5 !important; padding-left: 37px !important; }
+    }
+    @media (max-width: 700px) {
+      .ja-vr-intro > span { display: inline-flex !important; margin-top: 4px !important; }
+      .ja-vr-stats { display: grid !important; grid-template-columns: 1fr 1fr 1fr !important; gap: 0 !important; padding: 0 !important; overflow: hidden !important; margin-bottom: 12px !important; }
+      .ja-vr-stats > span { flex-direction: column !important; align-items: flex-start !important; gap: 1px !important; padding: 12px 12px !important; border-left: 1px solid #eef4f8 !important; }
+      .ja-vr-stats > span:first-child { border-left: 0 !important; }
+      .ja-vr-stats > span > span:first-child { font-size: 20px !important; color: #1899D5 !important; }
+      .ja-vr-stats > span > span:last-child { font-size: 10px !important; letter-spacing: 0.5px !important; line-height: 1.25 !important; }
+      .ja-vr-stats > span:last-child { grid-column: 1 / -1 !important; border-left: 0 !important; border-top: 1px solid #eef4f8 !important; padding: 9px 12px !important; background: #f9fcfe !important; }
+
+      .ja-vr-founder { background: linear-gradient(160deg, #0e1a37 0%, #253063 100%) !important; border-color: rgba(255,255,255,0.18) !important; box-shadow: 0 16px 36px rgba(3,10,26,0.32) !important; margin-bottom: 14px !important; }
+      .ja-vr-founder > div:nth-child(2) > div:nth-child(1) > span:nth-child(1) { color: #ffffff !important; font-size: 18.5px !important; }
+      .ja-vr-founder > div:nth-child(2) > div:nth-child(1) > span:nth-child(2) { background: rgba(255,255,255,0.16) !important; border: 1px solid rgba(255,255,255,0.3) !important; }
+      .ja-vr-founder > div:nth-child(2) > div:nth-child(2) { color: rgba(255,255,255,0.72) !important; }
+      .ja-vr-founder > div:nth-child(2) > div:nth-child(3) > span:nth-child(1) { background: rgba(22,163,74,0.18) !important; border-color: rgba(93,223,176,0.4) !important; color: #5ddfb0 !important; }
+      .ja-vr-founder > div:nth-child(2) > div:nth-child(3) > span:nth-child(2) { color: rgba(255,255,255,0.6) !important; }
+      .ja-vr-founder > div:last-child > button { background: #ffffff !important; border-color: #ffffff !important; color: #16202e !important; font-size: 14px !important; }
+      .ja-vr-founder > div:last-child > div { color: #fca5a5 !important; }
+
+      .ja-vr-phead { background: linear-gradient(135deg, #253063 0%, #16202e 100%) !important; }
+      .ja-vr-side { box-shadow: 0 8px 20px rgba(22,60,90,0.05) !important; }
+      .ja-vr-row > span:nth-child(3) { background: #ffffff !important; border-color: #cfe3f1 !important; color: #1073a8 !important; }
+      .ja-vr-row > span:nth-child(1) > span:last-child > span:first-child { font-size: 14.5px !important; }
+      .ja-vr-heads > button { background: linear-gradient(180deg, #ffffff 0%, #f4f9fc 100%) !important; }
+    }
+    @media (max-width: 700px) {
+      .ja-vr-side { padding: 11px 10px 9px !important; border-color: #dbe8f2 !important; }
+      .ja-vr-side > div:first-child { display: flex !important; align-items: center !important; justify-content: space-between !important; padding: 1px 3px 9px !important; font-size: 10.5px !important; letter-spacing: 1.1px !important; }
+      .ja-vr-side > div:first-child::after { content: "tap to change"; font-size: 9.5px; font-weight: 800; letter-spacing: 0.9px; text-transform: uppercase; color: #1073a8; background: #e8f4fb; border: 1px solid #bfdff0; border-radius: 999px; padding: 3px 10px; }
+      .ja-vr-sitem { min-width: 0 !important; }
+      .ja-vr-sdiv-wrap { grid-column: 1 / -1 !important; }
+      .ja-vr-sitem:has(.ja-vr-sdiv) { grid-column: 1 / -1 !important; }
+      .ja-vr-sdiv { display: block !important; font-size: 9.5px !important; letter-spacing: 1px !important; padding: 8px 2px 2px !important; color: #94a3b8 !important; }
+      .ja-vr-sidelist button { border-radius: 11px !important; padding: 10px 11px !important; font-size: 12.5px !important; gap: 7px !important; box-shadow: none !important; min-height: 44px !important; }
+      .ja-vr-sidelist button > span:last-child { margin-left: auto !important; }
+      .ja-vr-side button > span[style*="text-overflow"] { overflow: visible !important; text-overflow: clip !important; }
+      .ja-vr-side button > span:last-child { margin-left: 2px !important; font-size: 10.5px !important; padding: 2px 8px !important; }
+    }
+    @media (max-width: 700px) {
+      .ja-vr-report > div > div:first-child { gap: 9px !important; margin-bottom: 9px !important; }
+      .ja-vr-report > div > div:first-child > span, .ja-vr-report > div > div:first-child > div { font-size: 11px !important; letter-spacing: 1.2px !important; }
+      .ja-vr-flags > div:first-child { display: inline-flex !important; align-items: center !important; gap: 8px !important; background: #fef2f2 !important; border: 1px solid #fecaca !important; border-radius: 999px !important; padding: 6px 13px 6px 11px !important; margin-bottom: 4px !important; }
+      .ja-vr-flags > div:first-child > span { font-size: 10.5px !important; letter-spacing: 1.1px !important; }
+      .ja-vr-flags > div:not(:first-child) { padding: 12px 0 !important; gap: 11px !important; align-items: flex-start !important; }
+      .ja-vr-flags > div > svg { width: 22px !important; height: 22px !important; padding: 4.5px !important; background: #fef2f2 !important; border: 1px solid #fbe3e3 !important; border-radius: 8px !important; margin-top: 1px !important; box-sizing: border-box !important; }
+      .ja-vr-flags > div:not(:first-child) > div { font-size: 13.5px !important; line-height: 1.5 !important; }
+
+      .ja-vr-rbox { background: linear-gradient(160deg, #0e1a37 0%, #253063 100%) !important; box-shadow: 0 16px 36px rgba(3,10,26,0.32) !important; }
+      .ja-vr-rbox > div:nth-child(2) { font-size: 10.5px !important; letter-spacing: 1.2px !important; margin-bottom: 10px !important; }
+      .ja-vr-rbox > div:nth-child(3) { font-size: 18.5px !important; }
+      .ja-vr-rbox > p { font-size: 13.5px !important; line-height: 1.55 !important; margin-bottom: 14px !important; }
+      .ja-vr-rbox > div:nth-child(5) { gap: 7px !important; margin-bottom: 16px !important; }
+      .ja-vr-rbox > div:nth-child(5) > div { background: rgba(255,255,255,0.06) !important; border: 1px solid rgba(255,255,255,0.15) !important; border-radius: 11px !important; padding: 9px 11px !important; gap: 10px !important; }
+      .ja-vr-rbox > div:nth-child(5) > div > span:last-child { font-size: 13px !important; line-height: 1.4 !important; }
+      .ja-vr-rbox > div:nth-child(5) > div > span:first-child { width: 22px !important; height: 22px !important; border-radius: 6px !important; font-size: 11px !important; }
+      .ja-vr-rbox > div:last-child { font-size: 12px !important; line-height: 1.5 !important; margin-top: 14px !important; padding-top: 12px !important; }
+    }
+    @media (max-width: 700px) {
+      .ja-vr-crumb a, .ja-vr-crumb > span:last-child { display: inline-flex !important; align-items: center !important; min-height: 34px !important; }
+      .ja-vr-stepwrap > div:first-child > span:last-child { font-size: 11.5px !important; }
+      .ja-vr-stats > span > span:last-child { font-size: 11.5px !important; color: #64748b !important; letter-spacing: 0.3px !important; }
+      .ja-vr-stats > span:last-child { font-size: 11.5px !important; color: #64748b !important; }
+      .ja-vr-side > div:first-child { font-size: 11px !important; color: #64748b !important; }
+      .ja-vr-side > div:first-child::after { font-size: 10px !important; }
+      .ja-vr-sdiv { font-size: 11px !important; color: #64748b !important; letter-spacing: 0.8px !important; }
+      .ja-vr-sidelist button { font-size: 13px !important; }
+      .ja-vr-row > span:nth-child(3) { font-size: 12px !important; }
+      .ja-vr-row > span:nth-child(4) { font-size: 12px !important; }
+      .ja-vr-founder > div:nth-child(2) > div:nth-child(3) > span:nth-child(1) { font-size: 12px !important; }
+      .ja-vr-founder > div:nth-child(2) > div:nth-child(3) > span:nth-child(2) { font-size: 12px !important; }
+    }
+    @media (max-width: 700px) {
+      .ja-vr-faq { display: block !important; }
+      .ja-vr-checklink { display: inline-flex !important; }
+      .ja-vr-phead > span:nth-last-child(2) { order: 2 !important; }
+      .ja-vr-more { display: flex !important; }
+      .ja-vr-flags > div:nth-child(6), .ja-vr-flags > div:nth-child(7) { display: none !important; }
+      .ja-vr-flags.ja-open > div:nth-child(6), .ja-vr-flags.ja-open > div:nth-child(7) { display: flex !important; }
+      .ja-vr-schev { display: flex !important; align-items: center; margin-left: auto; color: #7fd0f5; flex: none; }
+      .ja-vr-stepwrap > div:first-child { cursor: pointer; }
+      .ja-vr-steps.ja-vr-steps.ja-vr-steps.ja-vr-steps { display: none !important; }
+      .ja-vr-steps.ja-open.ja-vr-steps.ja-vr-steps { display: block !important; }
+      .ja-vr-mbody { flex-wrap: wrap !important; }
+      .ja-vr-qr { display: flex !important; margin-left: 0 !important; width: 100% !important; padding: 12px 0 0 !important; border-left: 0 !important; border-top: 1px dashed #dbe8f2 !important; gap: 12px !important; }
+      .ja-vr-qr > span:first-child { width: 76px !important; height: 76px !important; background-size: 76px 76px !important; flex: none !important; }
+      .ja-vr-qr > div { max-width: none !important; }
+      .ja-vr-qr > div > div:nth-child(2) { font-size: 12px !important; line-height: 1.45 !important; }
+    }
+  </style>
+  <script src="image-slot.js"></script>
+  <script src="qr.js"></script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"Can a JobsAdmire representative ask a worker for money?","acceptedAnswer":{"@type":"Answer","text":"Never. There is no fee for the worker. No representative, coordinator or partner agency is authorised to collect any payment from a worker for a job, a permit, a visa or an interview. If money is requested, report it on our verification page."}},{"@type":"Question","name":"Who can sign a contract on behalf of JobsAdmire?","acceptedAnswer":{"@type":"Answer","text":"Only the founder, Haris Jiva. No representative, office employee or partner agency can sign a service agreement, an employer contract or a worker contract for JobsAdmire. Any document signed by anyone else is not valid."}},{"@type":"Question","name":"How do I check that a representative is genuine?","acceptedAnswer":{"@type":"Answer","text":"Ask for their representative ID and enter it on our verification page, or scan the QR code on their badge. The page shows the person's official record and current status, taken from our internal system."}},{"@type":"Question","name":"What if a representative has left the company?","acceptedAnswer":{"@type":"Answer","text":"Their record shows as no longer authorised. Any agreement, document request or payment request made by a former representative after that date is not made on behalf of JobsAdmire."}}]}</script>
+  <script src="./ja-i18n.js"></script>
+</helmet>
+<template id="__bundler_thumbnail">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300"><rect width="400" height="300" fill="#0e1a37"/><g transform="translate(160,85)"><path d="M40 0 L80 18 V52 C80 76 62 92 40 100 C18 92 0 76 0 52 V18 Z" fill="#1899D5"/><path d="M22 50 l12 12 l24 -26" stroke="#0e1a37" stroke-width="9" fill="none" stroke-linecap="round" stroke-linejoin="round"/></g><text x="200" y="222" text-anchor="middle" font-family="Archivo, sans-serif" font-size="26" font-weight="800" fill="#ffffff">Verify Representative</text></svg>
+</template>
+
+<!-- ============ SLIM BAR ============ -->
+<div class="ja-slim" style="background:#0a1428; color:rgba(255,255,255,0.7); font-size:12.5px; padding:8px 48px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap">
+  <span class="ja-slim-l" style="display:flex; align-items:center; gap:20px; font-weight:600; flex-wrap:wrap">
+    <span class="ja-slim-license" style="display:inline-flex; align-items:center; gap:9px"><span class="ja-live"></span><span class="ja-t-desk">İŞKUR Licensed &middot; Permit No. 1730</span><span class="ja-t-mob">İŞKUR &middot; 1730</span></span>
+    <span class="ja-slim-div" style="width:1px; height:12px; background:rgba(255,255,255,0.25); display:inline-block"></span>
+    <a href="tel:+905011240340" class="ja-slim-contact" style="display:inline-flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7); text-decoration:none" style-hover="color:#ffffff"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.6 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>+90 501 124 03 40</a>
+    <a href="mailto:info@jobsadmire.com" class="ja-slim-contact" style="display:inline-flex; align-items:center; gap:6px; color:rgba(255,255,255,0.7); text-decoration:none" style-hover="color:#ffffff"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 5L2 7"></path></svg>info@jobsadmire.com</a>
+  </span>
+  <span class="ja-slim-lang" style="display:none; align-items:center; gap:3px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.2); border-radius:999px; padding:2px; flex:none">
+    <sc-for list="{{ langsSlim }}" as="l" hint-placeholder-count="2">
+      <button type="button" onClick="{{ l.onClick }}" style="{{ l.style }}">{{ l.code }}</button>
+    </sc-for>
+  </span>
+  <span class="ja-slim-r" style="display:flex; align-items:center; gap:20px; font-weight:600; flex-wrap:wrap">
+    <a href="Blog.dc.html" style="color:rgba(255,255,255,0.7); text-decoration:none" style-hover="color:#ffffff">Blog</a>
+    <a href="Join Our Team.dc.html" style="color:rgba(255,255,255,0.7); text-decoration:none" style-hover="color:#ffffff">Join Our Team</a>
+    <span style="width:1px; height:12px; background:rgba(255,255,255,0.25); display:inline-block"></span>
+    <a href="Verify Representative.dc.html" style="display:inline-flex; align-items:center; gap:6px; background:rgba(22,163,74,0.16); border:1px solid rgba(93,223,176,0.35); border-radius:999px; padding:3px 12px; color:#5ddfb0; text-decoration:none" style-hover="background:rgba(22,163,74,0.28); color:#ffffff"><svg width="12" height="12" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M12 2l7.5 3.2v5.3c0 4.7-3.1 9-7.5 10.5-4.4-1.5-7.5-5.8-7.5-10.5V5.2L12 2zm-1 12.4l5-5-1.4-1.4-3.6 3.6-1.9-1.9L7.7 11l3.3 3.4z"></path></svg>Verify a Representative</a>
+    <a href="https://crm.jobsadmire.com/ext-login" style="display:inline-flex; align-items:center; gap:6px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.22); border-radius:999px; padding:3px 12px; color:#7fd0f5; text-decoration:none" style-hover="color:#ffffff; background:rgba(255,255,255,0.16)"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4"></path><path d="M10 17l5-5-5-5"></path><path d="M15 12H3"></path></svg>CRM Login</a>
+  </span>
+</div>
+
+<!-- ============ NAV ============ -->
+<div class="ja-nav" style="background:#ffffff; padding:14px 32px; display:flex; align-items:center; justify-content:space-between; gap:20px; border-bottom:1px solid #e9eff4; position:sticky; top:0; z-index:40">
+  <a href="JobsAdmire Homepage v4.dc.html" style="display:flex; align-items:center; gap:10px; text-decoration:none; flex:none">
+    <img class="ja-logo-full" src="https://www.jobsadmire.com/logos/logo4.png" alt="Jobs Admire" style="height:34px; display:block" />
+    <img class="ja-logo-mark" src="ja-mark.png" alt="Jobs Admire" style="height:34px; width:34px; object-fit:contain; display:none" />
+  </a>
+  <div class="ja-nav-links" style="display:flex; align-items:center; gap:17px; font-size:13.5px; font-weight:600; flex-shrink:0">
+    <a href="About Us.dc.html" style="color:#16202e; text-decoration:none; white-space:nowrap" style-hover="color:#1899D5">About Us</a>
+    <a href="Hire Workers.dc.html" style="color:#16202e; text-decoration:none; white-space:nowrap" style-hover="color:#1899D5">Hire Workers</a>
+    <a href="Available Workers.dc.html" style="color:#16202e; text-decoration:none; white-space:nowrap" style-hover="color:#1899D5">Candidates</a>
+    <a href="Work Permit.dc.html" style="color:#16202e; text-decoration:none; white-space:nowrap" style-hover="color:#1899D5">Work Permits</a>
+    <a href="Hiring Cost Calculator.dc.html" style="color:#16202e; text-decoration:none; white-space:nowrap" style-hover="color:#1899D5">Cost Calculator</a>
+    <a href="Success Stories.dc.html" style="color:#16202e; text-decoration:none; white-space:nowrap" style-hover="color:#1899D5">Success Stories</a>
+    <a href="Contact Us.dc.html" style="color:#16202e; text-decoration:none; white-space:nowrap" style-hover="color:#1899D5">Contact Us</a>
+  </div>
+  <div class="ja-nav-actions" style="display:flex; align-items:center; gap:9px; flex:none">
+    <button type="button" class="ja-nav-toggle" onClick="{{ toggleMenu }}" aria-label="Menu" style="align-items:center; justify-content:center; gap:8px; background:#f4f9fc; border:1.5px solid #dbe8f2; color:#16202e; border-radius:14px; width:46px; height:46px; padding:0; cursor:pointer; font-family:inherit" style-active="background:#e8f4fb"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M3 6h18"></path><path d="M3 12h18"></path><path d="M3 18h18"></path></svg></button>
+    <div class="ja-lang" style="display:flex; align-items:center; gap:3px; background:#f4f9fc; border:1.5px solid #dbe8f2; border-radius:999px; padding:3px">
+      <sc-for list="{{ langs }}" as="l" hint-placeholder-count="2">
+        <button type="button" onClick="{{ l.onClick }}" style="{{ l.style }}">{{ l.code }}</button>
+      </sc-for>
+    </div>
+    <a href="Hire Workers.dc.html" class="ja-nav-cta-secondary" style="background:#e8f4fb; border:1.5px solid #bfdff0; color:#1073a8; text-decoration:none; padding:10px 17px; border-radius:999px; font-weight:700; font-size:13.5px; white-space:nowrap" style-hover="background:#d3ecf9; border-color:#1899D5">Hire Workers</a>
+    <a href="#report" class="ja-nav-cta" style="background:#dc2626; color:#ffffff; text-decoration:none; padding:11.5px 20px; border-radius:999px; font-weight:700; font-size:13.5px; white-space:nowrap" style-hover="background:#b91c1c">Report<span class="ja-cta-long"> an Impostor</span></a>
+  </div>
+  <sc-if value="{{ menuOpen }}" hint-placeholder-val="{{ false }}">
+    <div class="ja-nav-panel" onClick="{{ closeMenu }}" style="width:100%; display:flex; flex-direction:column; border-top:1px solid #e9eff4; margin-top:10px; padding-top:6px">
+      <div style="display:flex; align-items:center; gap:10px; padding:10px 0 12px; border-bottom:1px solid #f1f5f9">
+        <span style="font-size:11.5px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:#94a3b8; flex:none">Language</span>
+        <span style="display:flex; gap:8px; flex:1">
+          <sc-for list="{{ langsBig }}" as="l" hint-placeholder-count="2">
+            <button type="button" onClick="{{ l.onClick }}" style="{{ l.style }}">{{ l.label }}</button>
+          </sc-for>
+        </span>
+      </div>
+      <a href="About Us.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">About Us</a>
+      <a href="Hire Workers.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Hire Workers</a>
+      <a href="Available Workers.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Candidates</a>
+      <a href="Work Permit.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Work Permits</a>
+      <a href="Hiring Cost Calculator.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Cost Calculator</a>
+      <a href="Success Stories.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Success Stories</a>
+      <a href="Blog.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Blog &amp; Guides</a>
+      <a href="Verify Representative.dc.html" style="display:flex; align-items:center; min-height:46px; color:#1899D5; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Verify a Representative</a>
+      <a href="Partner With Us.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Partner With Us</a>
+      <a href="Join Our Team.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Join Our Team</a>
+      <a href="Contact Us.dc.html" style="display:flex; align-items:center; min-height:46px; color:#16202e; text-decoration:none; font-size:15px; font-weight:700; border-bottom:1px solid #f1f5f9">Contact Us</a>
+      <a href="https://crm.jobsadmire.com/ext-login" style="display:flex; align-items:center; min-height:46px; color:#1073a8; text-decoration:none; font-size:15px; font-weight:800">CRM Login &rarr;</a>
+    </div>
+  </sc-if>
+</div>
+
+<!-- STICKY MINI SEARCH -->
+<div class="ja-sticky" style="{{ stickyBarStyle }}">
+  <img src="ja-mark.png" alt="" style="height:28px; display:block; flex:none" />
+  <span style="font-size:13px; font-weight:800; color:#ffffff; white-space:nowrap">Verify a representative</span>
+  <input onInput="{{ onQuery }}" placeholder="Check an ID — JA-REP-014" style="flex:1; max-width:420px; font-family:inherit; font-size:14px; font-weight:700; color:#16202e; background:#ffffff; border:1.5px solid rgba(255,255,255,0.25); border-radius:10px; padding:9px 14px; outline:none" style-focus="border-color:#1899D5" />
+  <span style="margin-left:auto; display:inline-flex; align-items:center; gap:7px; font-size:12px; font-weight:800; color:#5ddfb0; white-space:nowrap"><span class="ja-live"></span>{{ liveLabel }}</span>
+</div>
+
+<!-- ============ HERO ============ -->
+<div class="ja-vr-hero" style="position:relative; background:#0e1a37; padding:0 0 60px; overflow:hidden">
+  <div style="position:absolute; top:0; left:0; right:0; height:3px; background-image:linear-gradient(90deg, #1899D5 55%, transparent 45%); background-size:22px 3px; animation:jaDashMove 1.6s linear infinite; opacity:0.8"></div>
+  <div style="position:absolute; inset:0; background-image:repeating-linear-gradient(115deg, rgba(255,255,255,0.028) 0 1px, transparent 1px 9px); pointer-events:none"></div>
+  <div style="position:absolute; top:-220px; right:-160px; width:720px; height:720px; border-radius:50%; background:radial-gradient(circle, rgba(24,153,213,0.20) 0%, rgba(24,153,213,0) 65%); pointer-events:none"></div>
+  <div style="position:absolute; bottom:0; left:0; right:0; height:120px; background:linear-gradient(180deg, rgba(14,26,55,0) 0%, rgba(14,26,55,0.55) 100%); pointer-events:none"></div>
+
+  <div class="ja-vr-heroin" style="position:relative; max-width:1280px; margin:0 auto; padding:30px 48px 0">
+    <div class="ja-vr-crumb" style="font-size:13.5px; font-weight:700; color:rgba(255,255,255,0.55); margin-bottom:34px">
+      <a href="https://www.jobsadmire.com/" style="color:#7fd0f5; text-decoration:none">Home</a>
+      <span style="margin:0 8px; color:rgba(255,255,255,0.3)">/</span>
+      <span style="color:#ffffff">Verify a Representative</span>
+    </div>
+
+    <div class="ja-vr-hgrid" style="display:grid; grid-template-columns:1.05fr 0.95fr; gap:56px; align-items:center">
+      <div class="ja-up">
+        <div class="ja-vr-badge" style="display:inline-flex; align-items:center; gap:9px; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); border-radius:999px; padding:8px 17px; font-size:13px; font-weight:700; color:#ffffff; margin-bottom:22px">
+          <span class="ja-live"></span>
+          <span class="ja-t-desk">İŞKUR Licensed &middot; Permit No. 1730</span><span class="ja-t-mob">Only the founder can sign for us</span>
+        </div>
+        <h1 style="font-size:clamp(38px, 4.4vw, 56px); line-height:1.02; font-weight:800; margin:0 0 20px; color:#ffffff; letter-spacing:-2.2px">Only one person can sign for <span style="color:#7fd0f5">JobsAdmire</span></h1>
+        <p style="font-size:17.5px; line-height:1.62; color:rgba(255,255,255,0.76); font-weight:600; margin:0 0 26px; max-width:540px"><span class="ja-t-desk">Our founder, Haris Jiva, is the sole signatory. Everyone else on our team collects documents, checks skills and runs interviews &mdash; nobody else signs, and nobody at all takes money from a worker. This page lets you confirm exactly who you are dealing with.</span><span class="ja-t-mob">Haris Jiva is our only signatory. Everyone else collects documents and runs interviews &mdash; nobody at JobsAdmire ever takes money from a worker.</span></p>
+        <div class="ja-vr-ticks" style="display:flex; flex-direction:column; gap:10px; margin-bottom:26px">
+          <div style="display:flex; gap:11px; align-items:flex-start; font-size:14.5px; line-height:1.5; color:rgba(255,255,255,0.82); font-weight:700"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5ddfb0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:3px"><path d="M20 6L9 17l-5-5"></path></svg>Every authorised person carries an ID beginning with JA-</div>
+          <div style="display:flex; gap:11px; align-items:flex-start; font-size:14.5px; line-height:1.5; color:rgba(255,255,255,0.82); font-weight:700"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5ddfb0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:3px"><path d="M20 6L9 17l-5-5"></path></svg>Only company numbers and @jobsadmire.com addresses are official</div>
+          <div style="display:flex; gap:11px; align-items:flex-start; font-size:14.5px; line-height:1.5; color:rgba(255,255,255,0.82); font-weight:700"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#5ddfb0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:3px"><path d="M20 6L9 17l-5-5"></path></svg>Partner agencies abroad are suppliers &mdash; never our representatives</div>
+        </div>
+        <a href="#structure" class="ja-vr-hcta" style="display:inline-flex; align-items:center; gap:10px; background:rgba(255,255,255,0.08); border:1.5px solid rgba(255,255,255,0.26); color:#ffffff; text-decoration:none; border-radius:12px; padding:15px 24px; font-size:15px; font-weight:800" style-hover="background:rgba(255,255,255,0.16); border-color:rgba(255,255,255,0.45)">See our team &amp; structure</a>
+      </div>
+
+      <!-- Authority check -->
+      <div id="check" class="ja-card-in" style="background:#ffffff; border-radius:20px; box-shadow:0 34px 80px rgba(3,10,26,0.55); overflow:hidden">
+        <div style="height:4px; background-image:linear-gradient(90deg, #1899D5 55%, #d8ecf7 45%); background-size:18px 4px; animation:jaDashMove 1.4s linear infinite"></div>
+        <div class="ja-vr-card-head" style="padding:24px 28px 6px">
+          <h2 style="margin:0 0 6px; font-size:21px; font-weight:800; color:#16202e; letter-spacing:-0.5px">Check the ID before the meeting</h2>
+          <div style="display:inline-flex; align-items:center; gap:8px; font-size:13.5px; font-weight:700; color:#12813c; background:#dcfce7; border:1px solid #bfe8cf; border-radius:999px; padding:5px 13px">
+            <span class="ja-live"></span>{{ liveLabel }}
+          </div>
+        </div>
+        <div class="ja-vr-card-body" style="padding:20px 28px 26px">
+          <label style="display:block; font-size:12px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#64748b; margin-bottom:9px">Representative ID, name, city or number</label>
+          <input onInput="{{ onQuery }}" placeholder="JA-REP-014" style="width:100%; font-family:inherit; font-size:17px; font-weight:800; letter-spacing:0.4px; color:#16202e; background:#f9fcfe; border:1.5px solid #d3e6f2; border-radius:12px; padding:17px 18px; outline:none" style-focus="border-color:#1899D5; background:#ffffff" />
+          <div style="display:flex; gap:10px; margin-top:12px; flex-wrap:wrap">
+            <button onClick="{{ onClear }}" style="cursor:pointer; font-family:inherit; background:#ffffff; border:1.5px solid #d3e6f2; border-radius:11px; padding:12px 20px; font-size:14px; font-weight:800; color:#556377" style-hover="background:#f4f9fc">Clear</button>
+            <a href="tel:+905011240340" style="display:inline-flex; align-items:center; gap:8px; background:#f4f9fc; border:1.5px solid #d3e6f2; border-radius:11px; padding:12px 20px; font-size:14px; font-weight:800; color:#253063; text-decoration:none" style-hover="background:#e8f4fb">Call the office instead</a>
+          </div>
+          <div style="border-top:1px dashed #dbe8f2; margin-top:20px; padding-top:16px; font-size:13.5px; line-height:1.55; color:#64748b; font-weight:600">The ID is printed on the badge every representative carries. If they cannot show one, stop there.</div>
+          <div style="display:flex; align-items:center; gap:8px; margin-top:12px; font-size:12px; font-weight:800; letter-spacing:0.4px; color:#94a3b8">
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#94a3b8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="12" cy="12" r="10"></circle><path d="M12 6v6l4 2"></path></svg>
+            {{ lastUpdatedLabel }}
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ja-reveal ja-vr-stepwrap" style="margin-top:46px; border-top:1px solid rgba(255,255,255,0.14); padding-top:32px">
+      <div onClick="{{ toggleSteps }}" style="display:flex; align-items:center; gap:11px; margin-bottom:18px">
+        <span style="width:8px; height:8px; border-radius:50%; background:#4FC1F0; display:inline-block; flex:none"></span>
+        <span style="font-size:12.5px; font-weight:800; letter-spacing:1.4px; text-transform:uppercase; color:#7fd0f5">Verify in one minute &mdash; 3 steps</span>
+        <span class="ja-vr-schev" style="{{ stepsChevStyle }}"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></span>
+      </div>
+      <div class="ja-vr-steps {{ stepsOpenCls }}" style="display:grid; grid-template-columns:repeat(3, minmax(0, 1fr)); gap:16px">
+        <div style="background:rgba(255,255,255,0.055); border:1px solid rgba(255,255,255,0.13); border-radius:16px; padding:22px 24px 20px; display:flex; flex-direction:column; gap:10px">
+          <div style="display:flex; align-items:center; gap:11px">
+            <span style="width:30px; height:30px; border-radius:9px; background:#253063; color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; flex:none">1</span>
+            <span style="font-size:16.5px; font-weight:800; color:#ffffff; letter-spacing:-0.3px">Ask for the badge</span>
+          </div>
+          <div style="font-size:14.5px; line-height:1.6; color:rgba(255,255,255,0.7); font-weight:600">Every authorised person carries one &mdash; photo, a <span style="font-weight:800; color:#ffffff">JA- ID</span> and a QR code. No badge &mdash; no meeting.</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.055); border:1px solid rgba(255,255,255,0.13); border-radius:16px; padding:22px 24px 20px; display:flex; flex-direction:column; gap:10px">
+          <div style="display:flex; align-items:center; gap:11px">
+            <span style="width:30px; height:30px; border-radius:9px; background:#1899D5; color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; flex:none">2</span>
+            <span style="font-size:16.5px; font-weight:800; color:#ffffff; letter-spacing:-0.3px">Scan the QR, or type the ID above</span>
+          </div>
+          <div style="font-size:14.5px; line-height:1.6; color:rgba(255,255,255,0.7); font-weight:600">Both must open a record on <span style="font-weight:800; color:#ffffff">this page</span>. A badge whose QR goes anywhere else is fake.</div>
+        </div>
+        <div style="background:rgba(255,255,255,0.055); border:1px solid rgba(255,255,255,0.13); border-radius:16px; padding:22px 24px 20px; display:flex; flex-direction:column; gap:10px">
+          <div style="display:flex; align-items:center; gap:11px">
+            <span style="width:30px; height:30px; border-radius:9px; background:#12813c; color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:14px; font-weight:800; flex:none">3</span>
+            <span style="font-size:16.5px; font-weight:800; color:#ffffff; letter-spacing:-0.3px">Match the face, name and status</span>
+          </div>
+          <div style="font-size:14.5px; line-height:1.6; color:rgba(255,255,255,0.7); font-weight:600">Photo, name and a green <span style="font-weight:800; color:#5ddfb0">Authorised</span> status must all match the person in front of you. Any mismatch &mdash; call the office.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 01 VERIFY RESULT ============ -->
+<sc-if value="{{ showNoMatch }}" hint-placeholder-val="{{ false }}">
+<div id="verify" class="ja-reveal ja-vr-nm" style="padding:52px 48px 34px; scroll-margin-top:20px">
+  <div style="max-width:1280px; margin:0 auto">
+
+        <sc-if value="{{ showNoMatch }}" hint-placeholder-val="{{ false }}">
+          <div class="ja-card-in" style="max-width:720px; margin:0 auto; background:#ffffff; border:2px solid #fecaca; border-radius:20px; overflow:hidden; box-shadow:0 22px 52px rgba(127,29,29,0.13)">
+            <div style="background:#dc2626; padding:17px 28px; display:flex; align-items:center; gap:11px">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#ffffff" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"></path><path d="M12 17h.01"></path><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"></path></svg>
+              <span style="font-size:13px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#ffffff">Not on our authorised list</span>
+            </div>
+            <div class="ja-vr-nmbody" style="padding:24px 28px 26px">
+              <div style="font-size:20px; font-weight:800; color:#16202e; letter-spacing:-0.4px; margin-bottom:10px">Do not hand over documents or money</div>
+              <p style="font-size:15px; line-height:1.6; color:#556377; font-weight:600; margin:0 0 18px">Nothing matches &ldquo;{{ queryEcho }}&rdquo;. An ID can be mistyped &mdash; but until it checks out, treat this person as unauthorised.</p>
+              <div style="display:flex; gap:10px; flex-wrap:wrap">
+                <a href="tel:+905011240340" style="display:inline-flex; align-items:center; gap:9px; background:#1899D5; color:#ffffff; text-decoration:none; border-radius:12px; padding:14px 24px; font-size:14.5px; font-weight:800" style-hover="background:#1385bd">Call the office</a>
+                <a href="{{ reportWaHref }}" target="_blank" style="display:inline-flex; align-items:center; gap:9px; background:#dc2626; color:#ffffff; text-decoration:none; border-radius:12px; padding:14px 24px; font-size:14.5px; font-weight:800" style-hover="background:#b91c1c">Report this person</a>
+              </div>
+            </div>
+          </div>
+        </sc-if>
+  </div>
+</div>
+</sc-if>
+
+<!-- ============ 02 STRUCTURE + PEOPLE ============ -->
+<div id="structure" class="ja-vr-sec" style="background:linear-gradient(180deg, #ffffff 0%, #f4f9fc 55%, #ffffff 100%); padding:74px 48px 50px; scroll-margin-top:20px; overflow:hidden">
+  <div style="max-width:1280px; margin:0 auto">
+    <div class="ja-reveal ja-vr-intro" style="text-align:center; max-width:660px; margin:0 auto 40px">
+      <div style="display:inline-flex; align-items:baseline; gap:12px; margin-bottom:12px">
+        <span style="font-size:12px; font-weight:800; letter-spacing:1.6px; color:#1899D5; text-transform:uppercase">01 &middot; Our people</span>
+      </div>
+      <h2 style="font-size:clamp(28px, 3.2vw, 42px); line-height:1.05; font-weight:800; margin:0 0 14px; color:#16202e; letter-spacing:-1.6px">One signature at the top.<br />Trusted hands everywhere else.</h2>
+      <p style="font-size:16.5px; line-height:1.62; color:#556377; font-weight:600; margin:0 0 14px">Anyone not on this page does not act for JobsAdmire. Open any record before you sit down with them.</p>
+      <span style="{{ feedBadgeStyle }}">{{ feedBadgeLabel }}</span>
+    </div>
+
+
+    <div class="ja-reveal ja-vr-stats" style="display:flex; align-items:center; gap:36px; flex-wrap:wrap; margin-bottom:20px; background:#ffffff; border:1px solid #d3e6f2; border-radius:16px; padding:16px 24px; box-shadow:0 10px 26px rgba(22,60,90,0.05)">
+      <span style="display:flex; align-items:baseline; gap:9px"><span style="font-size:23px; font-weight:800; color:#16202e; letter-spacing:-0.8px">{{ statPeople }}</span><span style="font-size:11.5px; font-weight:700; letter-spacing:0.7px; text-transform:uppercase; color:#94a3b8">Authorised people</span></span>
+      <span style="display:flex; align-items:baseline; gap:9px"><span style="font-size:23px; font-weight:800; color:#16202e; letter-spacing:-0.8px">{{ statDesks }}</span><span style="font-size:11.5px; font-weight:700; letter-spacing:0.7px; text-transform:uppercase; color:#94a3b8">Office team</span></span>
+      <span style="display:flex; align-items:baseline; gap:9px"><span style="font-size:23px; font-weight:800; color:#16202e; letter-spacing:-0.8px">{{ statCountries }}</span><span style="font-size:11.5px; font-weight:700; letter-spacing:0.7px; text-transform:uppercase; color:#94a3b8">Countries</span></span>
+      <span style="margin-left:auto; font-size:12.5px; line-height:1.5; color:#94a3b8; font-weight:700">{{ lastUpdatedLabel }}</span>
+    </div>
+
+    <!-- FOUNDER STRIP -->
+    <div class="ja-reveal ja-vr-founder" style="background:#ffffff; border:1.5px solid #c9d3ec; border-radius:20px; box-shadow:0 20px 48px rgba(22,40,90,0.10); padding:20px 26px; display:flex; align-items:center; gap:24px; flex-wrap:wrap; margin-bottom:22px">
+      <span style="position:relative; width:84px; height:84px; display:inline-block; flex:none; margin:6px">
+        <span style="position:absolute; inset:-6px; border-radius:50%; background:conic-gradient(from 0deg, #1899D5, #253063, #7fd0f5, #1899D5); animation:jaSpin 7s linear infinite"></span>
+        <span style="position:absolute; inset:-2.5px; border-radius:50%; background:#ffffff"></span>
+        <span style="position:relative; width:84px; height:84px; border-radius:50%; overflow:hidden; background:#e8f4fb; display:block">
+          <image-slot id="rep-founder" placeholder="Haris Jiva — photo" shape="circle" style="width:100%; height:100%; display:block"></image-slot>
+        </span>
+      </span>
+      <div style="min-width:240px">
+        <div style="display:flex; align-items:center; gap:11px; flex-wrap:wrap">
+          <span style="font-size:20px; font-weight:800; color:#16202e; letter-spacing:-0.5px">{{ founderName }}</span>
+          <span style="background:#253063; color:#ffffff; border-radius:999px; padding:4px 13px; font-size:10.5px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; white-space:nowrap">Sole signatory</span>
+        </div>
+        <div style="font-size:14px; font-weight:700; color:#556377; margin-top:4px">{{ founderRole }}</div>
+        <div style="display:flex; align-items:center; gap:10px; margin-top:9px; flex-wrap:wrap">
+          <span style="display:inline-flex; align-items:center; gap:7px; background:#dcfce7; border:1px solid #bfe8cf; color:#12813c; border-radius:999px; padding:4px 12px; font-size:11.5px; font-weight:800; white-space:nowrap"><span class="ja-live"></span>Authorised &middot; no expiry</span>
+          <span style="font-size:12px; font-weight:800; color:#94a3b8">{{ founderId }}</span>
+        </div>
+      </div>
+      <div style="margin-left:auto; display:flex; flex-direction:column; align-items:flex-end; gap:10px; max-width:340px">
+        <button onClick="{{ founderVerify }}" style="cursor:pointer; font-family:inherit; background:#ffffff; border:1.5px solid #d3e6f2; border-radius:10px; padding:11px 24px; font-size:13px; font-weight:800; color:#253063" style-hover="border-color:#1899D5; background:#f4f9fc">Open record</button>
+        <div style="font-size:12.5px; line-height:1.5; color:#7f1d1d; font-weight:700; text-align:right">A contract signed by anyone else does not bind JobsAdmire.</div>
+      </div>
+    </div>
+
+    <!-- REGISTER: SIDEBAR + PANEL -->
+    <div class="ja-vr-reg" style="display:grid; grid-template-columns:280px minmax(0, 1fr); gap:20px; align-items:start">
+      <div class="ja-vr-side" style="position:sticky; top:20px; background:#ffffff; border:1px solid #d3e6f2; border-radius:18px; padding:14px; box-shadow:0 12px 30px rgba(22,60,90,0.06)">
+        <div style="font-size:11.5px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#94a3b8; padding:6px 12px 12px">Browse the register</div>
+        <button type="button" class="ja-vr-sitrig" onClick="{{ toggleReg }}" style="{{ regTrigStyle }}">
+          <sc-if value="{{ regHasFlag }}"><span style="{{ regFlagStyle }}"></span></sc-if>
+          <span style="min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">{{ regLabel }}</span>
+          <span style="margin-left:auto; flex:none; font-size:11px; font-weight:800; border-radius:999px; padding:2px 9px; background:#eef4f8; color:#556377">{{ regCount }}</span>
+          <span style="{{ regChevStyle }}"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></span>
+        </button>
+        <div class="ja-vr-sidelist {{ regOpenCls }}" style="display:flex; flex-direction:column; gap:3px">
+          <sc-for list="{{ sidebarItems }}" as="s" hint-placeholder-count="7">
+            <div class="ja-vr-sitem">
+              <sc-if value="{{ s.isDivider }}">
+                <div class="ja-vr-sdiv" style="font-size:10.5px; font-weight:800; letter-spacing:1.3px; text-transform:uppercase; color:#94a3b8; padding:14px 12px 6px">{{ s.label }}</div>
+              </sc-if>
+              <sc-if value="{{ s.isItem }}">
+                <button onClick="{{ s.onClick }}" style="{{ s.style }}">
+                  <sc-if value="{{ s.hasFlag }}"><span style="{{ s.flagStyle }}"></span></sc-if>
+                  <span style="min-width:0; overflow:hidden; text-overflow:ellipsis; white-space:nowrap">{{ s.label }}</span>
+                  <span style="{{ s.countStyle }}">{{ s.count }}</span>
+                </button>
+              </sc-if>
+            </div>
+          </sc-for>
+        </div>
+        <div style="border-top:1px dashed #dbe8f2; margin-top:12px; padding:12px 12px 4px; font-size:12px; line-height:1.55; color:#64748b; font-weight:600">Everyone here is on our payroll and carries a JA- ID. Click any person to open their record.</div>
+      </div>
+
+      <div style="background:#ffffff; border:1px solid #d3e6f2; border-radius:18px; overflow:hidden; box-shadow:0 14px 34px rgba(22,60,90,0.07)">
+        <div class="ja-vr-phead" style="background:#253063; padding:15px 24px; display:flex; align-items:center; gap:12px; flex-wrap:wrap">
+          <sc-if value="{{ panelHasFlag }}"><span style="{{ panelFlagStyle }}"></span></sc-if>
+          <span style="font-size:16px; font-weight:800; color:#ffffff; letter-spacing:-0.3px">{{ panelTitle }}</span>
+          <span style="font-size:12.5px; font-weight:700; color:#a8bce0">{{ panelSub }}</span>
+          <span style="margin-left:auto; display:inline-flex; align-items:center; gap:7px; background:rgba(93,223,176,0.13); border:1px solid rgba(93,223,176,0.35); color:#5ddfb0; border-radius:999px; padding:5px 13px; font-size:11.5px; font-weight:800; white-space:nowrap"><span class="ja-live"></span>On our payroll &mdash; not agents</span>
+          <a href="#check" class="ja-vr-checklink" style="display:none; align-items:center; gap:7px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.3); color:#ffffff; text-decoration:none; border-radius:999px; padding:7px 14px; font-size:12px; font-weight:800; white-space:nowrap"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><circle cx="11" cy="11" r="7"></circle><path d="m20 20-3.5-3.5"></path></svg>Check an ID</a>
+        </div>
+        <div class="ja-vr-cols" style="display:grid; grid-template-columns:1.8fr 0.85fr 0.8fr 0.6fr; gap:16px; background:#f9fcfe; border-bottom:1px solid #e4eef5; padding:10px 24px">
+          <span style="font-size:11px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:#94a3b8">Person</span>
+          <span style="font-size:11px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:#94a3b8">City</span>
+          <span style="font-size:11px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:#94a3b8">Representative ID</span>
+          <span style="font-size:11px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:#94a3b8">Status</span>
+        </div>
+        <sc-for list="{{ panelGroups }}" as="g" hint-placeholder-count="2">
+          <div>
+            <sc-if value="{{ g.showHeader }}">
+              <div class="ja-vr-ghead" style="display:flex; align-items:center; gap:10px; background:#f4f9fc; border-top:1px solid #dbe8f2; border-bottom:1px solid #e4eef5; padding:10px 24px">
+                <sc-if value="{{ g.hasFlag }}"><span style="{{ g.flagStyle }}"></span></sc-if>
+                <span style="font-size:14px; font-weight:800; color:#16202e; letter-spacing:-0.2px">{{ g.label }}</span>
+                <span style="font-size:12px; font-weight:700; color:#64748b; white-space:nowrap">{{ g.sub }}</span>
+              </div>
+            </sc-if>
+            <sc-if value="{{ g.hasHeads }}">
+              <div class="ja-vr-heads" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(320px, 1fr)); gap:14px; padding:16px 24px 14px">
+                <sc-for list="{{ g.heads }}" as="r" hint-placeholder-count="1">
+                  <button onClick="{{ r.onVerify }}" style="cursor:pointer; font-family:inherit; text-align:left; display:flex; align-items:center; gap:14px; background:#f9fcfe; border:1.5px solid #d3e6f2; border-radius:14px; padding:14px 16px; transition:all .15s" style-hover="border-color:#1899D5; background:#ffffff; box-shadow:0 10px 24px rgba(22,60,90,0.10)">
+                    <span style="width:58px; height:58px; border-radius:50%; overflow:hidden; background:#e8f4fb; box-shadow:0 0 0 2px #ffffff, 0 0 0 3.5px #bfdff0; display:block; flex:none">
+                      <image-slot id="{{ r.slotId }}" placeholder="{{ r.slotHint }}" shape="circle" style="width:100%; height:100%; display:block"></image-slot>
+                    </span>
+                    <span style="display:flex; flex-direction:column; gap:3px; min-width:0">
+                      <span style="display:flex; align-items:center; gap:8px; flex-wrap:wrap">
+                        <span style="font-size:15px; font-weight:800; color:#16202e; letter-spacing:-0.2px">{{ r.name }}</span>
+                        <span style="background:#e8f4fb; border:1px solid #bfdff0; color:#1073a8; border-radius:999px; padding:2px 9px; font-size:10px; font-weight:800; letter-spacing:0.8px; text-transform:uppercase; white-space:nowrap">Head of desk</span>
+                      </span>
+                      <span style="font-size:12.5px; font-weight:600; color:#64748b"><span>{{ r.role }}</span> · <span>{{ r.city }}</span></span>
+                      <span style="display:flex; align-items:center; gap:12px; margin-top:2px">
+                        <span style="font-size:12px; font-weight:800; color:#253063">{{ r.id }}</span>
+                        <span style="display:inline-flex; align-items:center; gap:6px; font-size:11.5px; font-weight:800; color:#12813c"><span style="{{ r.statusDot }}"></span>{{ r.statusLabel }}</span>
+                      </span>
+                    </span>
+                  </button>
+                </sc-for>
+              </div>
+            </sc-if>
+            <sc-if value="{{ g.hasPeople }}">
+              <div>
+                <sc-for list="{{ g.people }}" as="r" hint-placeholder-count="3">
+                  <button onClick="{{ r.onVerify }}" class="ja-vr-row" style="width:100%; text-align:left; cursor:pointer; font-family:inherit; background:transparent; border:none; border-top:1px solid #eef4f8; display:grid; grid-template-columns:1.8fr 0.85fr 0.8fr 0.6fr; gap:16px; align-items:center; padding:12px 24px; transition:background .12s" style-hover="background:#f4f9fc">
+                    <span style="display:flex; align-items:center; gap:13px; min-width:0">
+                      <span style="width:44px; height:44px; border-radius:50%; overflow:hidden; background:#e8f4fb; box-shadow:0 0 0 2px #ffffff, 0 0 0 3.5px #dbe8f2; display:block; flex:none">
+                        <image-slot id="{{ r.slotId }}" placeholder="{{ r.slotHint }}" shape="circle" style="width:100%; height:100%; display:block"></image-slot>
+                      </span>
+                      <span style="display:flex; flex-direction:column; gap:2px; min-width:0">
+                        <span style="font-size:14.5px; font-weight:800; color:#16202e; letter-spacing:-0.2px">{{ r.name }}</span>
+                        <span style="font-size:12.5px; font-weight:600; color:#64748b"><sc-if value="{{ r.showDesk }}" hint-placeholder-val="{{ false }}"><span>{{ r.desk }}</span> · </sc-if><span>{{ r.role }}</span></span>
+                      </span>
+                    </span>
+                    <span style="font-size:14px; font-weight:700; color:#556377">{{ r.city }}</span>
+                    <span style="justify-self:start; background:#f4f9fc; border:1px solid #d3e6f2; border-radius:9px; padding:6px 12px; font-size:12px; font-weight:800; color:#253063; white-space:nowrap">{{ r.id }} &rarr;</span>
+                    <span style="display:inline-flex; align-items:center; gap:8px; font-size:12.5px; font-weight:800; color:#12813c"><span style="{{ r.statusDot }}"></span>{{ r.statusLabel }}</span>
+                  </button>
+                </sc-for>
+              </div>
+            </sc-if>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+
+    <sc-if value="{{ hasFormer }}" hint-placeholder-val="{{ true }}">
+      <div class="ja-vr-former" style="margin-top:18px; display:flex; align-items:center; gap:12px; flex-wrap:wrap; background:#fef2f2; border:1px solid #fecaca; border-radius:14px; padding:14px 18px">
+        <span style="font-size:11.5px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#b91c1c; flex-shrink:0">No longer authorised:</span>
+        <sc-for list="{{ formerPeople }}" as="r" hint-placeholder-count="1">
+          <span style="display:inline-flex; align-items:center; gap:9px; background:#ffffff; border:1px solid #fecaca; border-radius:999px; padding:6px 14px">
+            <span style="width:7px; height:7px; border-radius:50%; background:#dc2626; display:inline-block"></span>
+            <span style="font-size:13px; font-weight:800; color:#7f1d1d">{{ r.name }} &middot; {{ r.id }}</span>
+            <span style="font-size:12px; font-weight:600; color:#b91c1c">{{ r.role }}</span>
+          </span>
+        </sc-for>
+      </div>
+    </sc-if>
+
+    <div class="ja-reveal ja-vr-pnote" style="margin-top:22px; display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap; background:linear-gradient(180deg, #f4f9fc 0%, #e8f3f9 100%); border:1px solid #d3e6f2; border-radius:18px; padding:20px 26px">
+      <div style="font-size:14.5px; line-height:1.6; color:#556377; font-weight:700; max-width:760px"><span style="color:#16202e; font-weight:800">Partner agencies are not on this chart on purpose.</span> They are suppliers abroad &mdash; they may source and prepare candidates, but they never sign for us and never collect money from a worker.</div>
+      <a href="Partner With Us.dc.html" style="display:inline-flex; align-items:center; gap:9px; background:#ffffff; border:1.5px solid #d3e6f2; color:#253063; text-decoration:none; border-radius:11px; padding:12px 22px; font-size:14px; font-weight:800; white-space:nowrap" style-hover="background:#f4f9fc">How partnering works</a>
+    </div>
+  </div>
+</div>
+
+<!-- ============ 04 REPORT ============ -->
+<div id="report" class="ja-reveal ja-vr-report" style="padding:64px 48px 84px; scroll-margin-top:20px; background:linear-gradient(180deg, #ffffff 0%, #fdf6f6 60%, #ffffff 100%)">
+  <div style="max-width:1280px; margin:0 auto">
+    <div style="display:flex; align-items:baseline; gap:14px; margin-bottom:12px">
+      <span style="font-size:12px; font-weight:800; letter-spacing:1.6px; color:#dc2626; text-transform:uppercase">02</span>
+      <div style="font-size:12px; font-weight:800; letter-spacing:1.6px; color:#dc2626; text-transform:uppercase">Fraud report</div>
+    </div>
+    <h2 style="font-size:clamp(26px, 2.9vw, 36px); line-height:1.06; font-weight:800; margin:0 0 14px; color:#16202e; letter-spacing:-1.5px">See a red flag? Stop &mdash; then tell us</h2>
+    <p style="font-size:17px; line-height:1.62; color:#556377; margin:0 0 28px; max-width:680px">These five signs mean the person is not acting for JobsAdmire, no matter what their card or letter says. Do not pay, do not hand over documents &mdash; report it and we take it from there.</p>
+
+    <div class="ja-vr-rgrid" style="display:grid; grid-template-columns:1.15fr 0.85fr; gap:20px; align-items:stretch">
+      <div class="ja-vr-flags {{ flagsOpenCls }}" style="background:#ffffff; border:1.5px solid #fecaca; border-radius:20px; padding:24px 30px 16px; box-shadow:0 16px 40px rgba(127,29,29,0.07)">
+        <div style="display:flex; align-items:center; gap:9px; padding-bottom:14px">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4"></path><path d="M12 17h.01"></path><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"></path></svg>
+          <span style="font-size:11.5px; font-weight:800; letter-spacing:1.3px; text-transform:uppercase; color:#b91c1c">Red flags &mdash; stop immediately</span>
+        </div>
+          <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid #fbe3e3">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3.4" stroke-linecap="round" style="flex:none; margin-top:5px"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            <div style="font-size:14.5px; line-height:1.55; color:#556377; font-weight:600"><span style="color:#16202e; font-weight:800">Asks for money in any form.</span> Cash, transfer, &ldquo;processing fee&rdquo;, &ldquo;visa deposit&rdquo; &mdash; nobody at JobsAdmire ever collects money from a worker.</div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid #fbe3e3">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3.4" stroke-linecap="round" style="flex:none; margin-top:5px"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            <div style="font-size:14.5px; line-height:1.55; color:#556377; font-weight:600"><span style="color:#16202e; font-weight:800">No badge, or a QR that opens another site.</span> The QR must open a record on this page &mdash; nothing else counts.</div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid #fbe3e3">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3.4" stroke-linecap="round" style="flex:none; margin-top:5px"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            <div style="font-size:14.5px; line-height:1.55; color:#556377; font-weight:600"><span style="color:#16202e; font-weight:800">Contacts you from a personal number or email.</span> Official contact is only company numbers and @jobsadmire.com addresses.</div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid #fbe3e3">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3.4" stroke-linecap="round" style="flex:none; margin-top:5px"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            <div style="font-size:14.5px; line-height:1.55; color:#556377; font-weight:600"><span style="color:#16202e; font-weight:800">Wants to keep your original passport or certificates.</span> Copies are enough. Originals always stay with you.</div>
+          </div>
+          <div style="display:flex; gap:12px; align-items:flex-start; padding:14px 0; border-top:1px solid #fbe3e3">
+            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3.4" stroke-linecap="round" style="flex:none; margin-top:5px"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>
+            <div style="font-size:14.5px; line-height:1.55; color:#556377; font-weight:600"><span style="color:#16202e; font-weight:800">Pressures you to sign or pay today.</span> A real offer survives a phone call to our office. Urgency is the fraudster&rsquo;s tool.</div>
+          </div>
+          <button type="button" class="ja-vr-more" onClick="{{ toggleFlags }}" style="display:none; width:100%; cursor:pointer; font-family:inherit; align-items:center; justify-content:center; gap:8px; background:#fef2f2; border:1.5px solid #fecaca; color:#b91c1c; border-radius:11px; padding:12px; margin:4px 0 14px; font-size:13.5px; font-weight:800; min-height:46px">{{ flagsMoreLabel }}</button>
+      </div>
+
+      <div class="ja-vr-rbox" style="background:#0e1a37; border-radius:20px; padding:28px 30px; box-shadow:0 24px 56px rgba(3,10,26,0.35); display:flex; flex-direction:column; position:relative; overflow:hidden">
+        <div style="position:absolute; top:0; left:0; right:0; height:3px; background-image:linear-gradient(90deg, #dc2626 55%, transparent 45%); background-size:22px 3px; animation:jaDashMove 1.6s linear infinite; opacity:0.9"></div>
+        <div style="font-size:11.5px; font-weight:800; letter-spacing:1.3px; text-transform:uppercase; color:#fca5a5; margin-bottom:14px">Report it &mdash; one minute</div>
+        <div style="font-size:20px; font-weight:800; color:#ffffff; letter-spacing:-0.4px; line-height:1.25; margin-bottom:10px">Someone asked you for money in our name?</div>
+        <p style="font-size:14.5px; line-height:1.6; color:rgba(255,255,255,0.72); font-weight:600; margin:0 0 18px">Send us three things &mdash; we act on every report and tell you what we found.</p>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-bottom:22px">
+            <div style="display:flex; align-items:center; gap:11px">
+              <span style="width:24px; height:24px; border-radius:7px; background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.28); color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex:none">1</span>
+              <span style="font-size:14px; font-weight:700; color:rgba(255,255,255,0.92)">The name they used</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:11px">
+              <span style="width:24px; height:24px; border-radius:7px; background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.28); color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex:none">2</span>
+              <span style="font-size:14px; font-weight:700; color:rgba(255,255,255,0.92)">The number or email they contacted you from</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:11px">
+              <span style="width:24px; height:24px; border-radius:7px; background:rgba(255,255,255,0.14); border:1px solid rgba(255,255,255,0.28); color:#ffffff; display:flex; align-items:center; justify-content:center; font-size:12px; font-weight:800; flex:none">3</span>
+              <span style="font-size:14px; font-weight:700; color:rgba(255,255,255,0.92)">What they asked for</span>
+            </div>
+        </div>
+        <div style="display:flex; flex-direction:column; gap:10px; margin-top:auto">
+          <a href="{{ reportWaHref }}" target="_blank" style="display:inline-flex; align-items:center; justify-content:center; gap:9px; background:#dc2626; color:#ffffff; text-decoration:none; border-radius:12px; padding:15px 24px; font-size:15px; font-weight:800" style-hover="background:#b91c1c">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="#ffffff"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.3 14.1c-.2.6-1.2 1.2-1.7 1.2-.5 0-1.6-.2-3.4-1.4-2-1.3-3.3-3.5-3.4-3.7-.2-.3-.9-1.4-.9-2.6 0-1.2.7-1.8 1-2 .2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5l.8 1.9c.1.2 0 .4-.1.6l-.4.5c-.1.1-.3.3-.1.6.2.3.7 1.1 1.5 1.8 1 .9 1.7 1.1 2 1.2.2.1.4.1.6-.1l.7-.8c.2-.2.4-.2.6-.1l1.8.9c.3.1.4.3.4.4 0 .2 0 .8-.2 1.4z"></path></svg>
+            Report on WhatsApp
+          </a>
+          <a href="tel:+905011240340" style="display:inline-flex; align-items:center; justify-content:center; gap:9px; background:rgba(255,255,255,0.08); border:1.5px solid rgba(255,255,255,0.25); color:#ffffff; text-decoration:none; border-radius:12px; padding:14px 24px; font-size:15px; font-weight:800" style-hover="background:rgba(255,255,255,0.16)">Call the office</a>
+        </div>
+        <div style="border-top:1px dashed rgba(255,255,255,0.18); margin-top:18px; padding-top:14px; font-size:12.5px; line-height:1.55; color:rgba(255,255,255,0.6); font-weight:600">Reporting costs nothing and never affects a candidate&rsquo;s application.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ============ FAQ (mobile only) ============ -->
+<div class="ja-vr-faq" style="display:none; background:#f4f9fc; border-top:1px solid #dbe8f2; padding:34px 20px 30px">
+  <div style="font-size:11.5px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#1899D5; margin-bottom:8px">Common questions</div>
+  <h2 style="font-size:25px; line-height:1.13; font-weight:800; margin:0 0 16px; color:#16202e; letter-spacing:-0.6px">What people ask us most</h2>
+  <div style="display:flex; flex-direction:column; gap:9px">
+    <sc-for list="{{ faqs }}" as="f" hint-placeholder-count="4">
+      <div class="ja-vr-fq" style="background:#ffffff; border:1px solid #dbe8f2; border-radius:14px; overflow:hidden">
+        <button type="button" onClick="{{ f.onClick }}" style="width:100%; cursor:pointer; font-family:inherit; text-align:left; display:flex; align-items:center; gap:10px; background:transparent; border:none; padding:14px 15px; font-size:14.5px; font-weight:800; color:#16202e; line-height:1.35; min-height:52px">
+          <span style="min-width:0">{{ f.q }}</span>
+          <span style="{{ f.chevStyle }}"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"></path></svg></span>
+        </button>
+        <sc-if value="{{ f.open }}">
+          <div style="padding:0 15px 15px; font-size:13.5px; line-height:1.6; color:#556377; font-weight:600">{{ f.a }}</div>
+        </sc-if>
+      </div>
+    </sc-for>
+  </div>
+</div>
+
+<!-- ============ RECORD MODAL ============ -->
+<sc-if value="{{ showMatch }}" hint-placeholder-val="{{ false }}">
+  <div onClick="{{ onClear }}" class="ja-vr-modal" style="position:fixed; inset:0; z-index:80; background:rgba(9,17,35,0.62); backdrop-filter:blur(3px); display:flex; align-items:center; justify-content:center; padding:24px">
+          <div class="ja-card-in ja-vr-mcard" onClick="{{ stopClick }}" style="width:100%; max-width:940px; max-height:88vh; overflow:auto; background:#ffffff; border-radius:20px; box-shadow:0 40px 90px rgba(3,10,26,0.5)">
+            <div class="ja-vr-mhead" style="{{ matchHeadStyle }}">
+              <div style="display:flex; align-items:center; gap:10px">
+                <span style="{{ matchDotStyle }}"></span>
+                <span style="font-size:13px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#ffffff">{{ matchStatusLabel }}</span>
+              </div>
+              <span style="display:flex; align-items:center; gap:14px">
+                <span style="font-size:13px; font-weight:800; color:rgba(255,255,255,0.92)">{{ matchId }}</span>
+                <button onClick="{{ onClear }}" aria-label="Close record" style="cursor:pointer; font-family:inherit; width:30px; height:30px; border-radius:50%; border:1px solid rgba(255,255,255,0.4); background:rgba(255,255,255,0.14); color:#ffffff; font-size:15px; font-weight:800; line-height:1; display:flex; align-items:center; justify-content:center" style-hover="background:#ffffff; color:#16202e">×</button>
+              </span>
+            </div>
+            <div class="ja-vr-mbody" style="padding:24px 28px; display:flex; gap:18px; align-items:center">
+              <span style="width:88px; height:112px; border-radius:13px; overflow:hidden; background:#e8f4fb; border:1px solid #d3e6f2; flex-shrink:0; display:block">
+                <image-slot id="{{ matchSlotId }}" placeholder="{{ matchSlotHint }}" shape="rect" style="width:100%; height:100%; display:block"></image-slot>
+              </span>
+              <div style="min-width:0">
+                <div style="font-size:20px; font-weight:800; color:#16202e; letter-spacing:-0.4px; line-height:1.22">{{ matchName }}</div>
+                <div style="font-size:14.5px; font-weight:700; color:#556377; margin-top:4px">{{ matchRole }}</div>
+                <div style="font-size:13.5px; font-weight:600; color:#64748b; margin-top:3px">{{ matchPlace }}</div>
+                <sc-if value="{{ matchCanSign }}" hint-placeholder-val="{{ false }}">
+                  <div style="display:inline-flex; align-items:center; gap:7px; margin-top:11px; background:#253063; color:#ffffff; border-radius:999px; padding:5px 13px; font-size:11.5px; font-weight:800; letter-spacing:0.6px; text-transform:uppercase">Sole signatory</div>
+                </sc-if>
+              </div>
+              <sc-if value="{{ hasQr }}" hint-placeholder-val="{{ false }}">
+                <div class="ja-vr-qr" style="margin-left:auto; display:flex; align-items:center; gap:14px; padding-left:18px; border-left:1px dashed #dbe8f2">
+                  <span role="img" aria-label="QR code for this record" style="{{ matchQrStyle }}"></span>
+                  <div style="max-width:170px">
+                    <div style="font-size:11px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:#94a3b8; margin-bottom:5px">Badge QR</div>
+                    <div style="font-size:12.5px; line-height:1.5; color:#556377; font-weight:700">Scan the QR on their badge &mdash; it must open this same record.</div>
+                    <a href="{{ matchRecordUrl }}" style="display:inline-block; margin-top:7px; font-size:11.5px; font-weight:800; color:#1899D5; text-decoration:none; word-break:break-all" style-hover="color:#1073a8">{{ matchId }} link</a>
+                  </div>
+                </div>
+              </sc-if>
+            </div>
+            <div class="ja-vr-mmeta" style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#e9f1f7; border-top:1px solid #e9f1f7">
+              <div style="background:#f9fcfe; padding:14px 20px">
+                <div style="font-size:11px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:#94a3b8; margin-bottom:4px">Authorised until</div>
+                <div style="font-size:14.5px; font-weight:800; color:#16202e">{{ matchValid }}</div>
+              </div>
+              <div style="background:#f9fcfe; padding:14px 20px">
+                <div style="font-size:11px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:#94a3b8; margin-bottom:4px">Official contact</div>
+                <a href="{{ matchContactHref }}" style="font-size:14.5px; font-weight:800; color:#1899D5; text-decoration:none" style-hover="color:#1073a8">{{ matchContact }}</a>
+              </div>
+              <div style="background:#f9fcfe; padding:14px 20px">
+                <div style="font-size:11px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:#94a3b8; margin-bottom:4px">Languages</div>
+                <div style="font-size:14.5px; font-weight:800; color:#16202e">{{ matchLanguages }}</div>
+              </div>
+              <div style="background:#f9fcfe; padding:14px 20px">
+                <div style="font-size:11px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:#94a3b8; margin-bottom:4px">Reports to</div>
+                <div style="font-size:14.5px; font-weight:800; color:#16202e">{{ matchReportsTo }}</div>
+              </div>
+              <div style="background:#f9fcfe; padding:14px 20px">
+                <div style="font-size:11px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:#94a3b8; margin-bottom:4px">With JobsAdmire</div>
+                <div style="font-size:14.5px; font-weight:800; color:#16202e">{{ matchSince }}</div>
+              </div>
+              <div style="background:#f9fcfe; padding:14px 20px">
+                <div style="font-size:11px; font-weight:800; letter-spacing:1.1px; text-transform:uppercase; color:#94a3b8; margin-bottom:4px">Desk</div>
+                <div style="font-size:14.5px; font-weight:800; color:#16202e">{{ matchDesk }}</div>
+              </div>
+            </div>
+            <div class="ja-vr-mcaps" style="display:grid; grid-template-columns:1fr 1fr; gap:1px; background:#e9f1f7">
+              <div style="background:#ffffff; padding:20px 24px">
+                <div style="font-size:11.5px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#12813c; margin-bottom:11px">May do</div>
+                <div style="display:flex; flex-direction:column; gap:8px">
+                  <sc-for list="{{ matchCan }}" as="c" hint-placeholder-count="3">
+                    <div style="display:flex; gap:9px; align-items:flex-start; font-size:13.5px; line-height:1.5; color:#556377; font-weight:700"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#16a34a" stroke-width="3.4" stroke-linecap="round" stroke-linejoin="round" style="flex-shrink:0; margin-top:3px"><path d="M20 6L9 17l-5-5"></path></svg>{{ c }}</div>
+                  </sc-for>
+                </div>
+              </div>
+              <div style="background:#fef2f2; padding:20px 24px">
+                <div style="font-size:11.5px; font-weight:800; letter-spacing:1.2px; text-transform:uppercase; color:#b91c1c; margin-bottom:11px">May never</div>
+                <div style="display:flex; flex-direction:column; gap:8px">
+                  <sc-for list="{{ matchCannot }}" as="c" hint-placeholder-count="3">
+                    <div style="display:flex; gap:9px; align-items:flex-start; font-size:13.5px; line-height:1.5; color:#7f1d1d; font-weight:700"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="#dc2626" stroke-width="3.6" stroke-linecap="round" style="flex-shrink:0; margin-top:4px"><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg>{{ c }}</div>
+                  </sc-for>
+                </div>
+              </div>
+            </div>
+            <div class="ja-vr-mfoot" style="border-top:1px solid #e9f1f7; background:#f9fcfe; padding:15px 24px; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap">
+              <span style="font-size:12.5px; font-weight:700; color:#94a3b8">Record served from our internal system &middot; {{ lastUpdatedLabel }}</span>
+              <span style="display:inline-flex; align-items:center; gap:16px">
+                <button onClick="{{ onPrintBadge }}" style="cursor:pointer; font-family:inherit; display:inline-flex; align-items:center; gap:8px; border-radius:10px; padding:9px 16px; font-size:13px; font-weight:800; border:1.5px solid #d3e6f2; background:#ffffff; color:#253063; transition:all .15s" style-hover="border-color:#1899D5; background:#f4f9fc">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M6 9V2h12v7"></path><path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"></path><rect x="6" y="14" width="12" height="8"></rect></svg>
+                  Print badge
+                </button>
+                <button onClick="{{ onCopyLink }}" style="{{ copyLinkStyle }}">
+                  <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><rect x="9" y="9" width="13" height="13" rx="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                  {{ copyLinkLabel }}
+                </button>
+                <a href="{{ matchReportHref }}" target="_blank" style="font-size:13.5px; font-weight:800; color:#dc2626; text-decoration:none" style-hover="color:#b91c1c">Something is wrong &rarr;</a>
+              </span>
+            </div>
+          </div>
+  </div>
+</sc-if>
+
+<div class="ja-mobile-bar" style="position:fixed; left:0; right:0; bottom:0; z-index:60; grid-template-columns:1fr 1fr; gap:10px; padding:10px 14px calc(10px + env(safe-area-inset-bottom)); background:rgba(10,20,40,0.96); backdrop-filter:blur(10px); border-top:1px solid rgba(255,255,255,0.14)">
+  <a href="tel:+905011240340" style="display:flex; align-items:center; justify-content:center; gap:9px; min-height:48px; border-radius:999px; background:rgba(255,255,255,0.1); border:1.5px solid rgba(255,255,255,0.26); color:#ffffff; text-decoration:none; font-size:15px; font-weight:800" style-active="background:rgba(255,255,255,0.2)"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.37 1.9.72 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.35 1.85.6 2.81.72A2 2 0 0 1 22 16.92z"></path></svg>Call us</a>
+  <a href="{{ waHireHref }}" target="_blank" style="display:flex; align-items:center; justify-content:center; gap:9px; min-height:48px; border-radius:999px; background:#16a34a; color:#ffffff; text-decoration:none; font-size:15px; font-weight:800" style-active="background:#12813c"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.9 7c0 5.45-4.44 9.88-9.9 9.88zm8.42-18.3A11.8 11.8 0 0 0 12.07 0C5.53 0 .2 5.32.2 11.87c0 2.09.55 4.14 1.59 5.94L.1 24l6.33-1.66a11.9 11.9 0 0 0 5.64 1.44h.01c6.54 0 11.87-5.32 11.87-11.87 0-3.17-1.24-6.15-3.45-8.35z"></path></svg>WhatsApp</a>
+</div>
+
+<!-- ============ FOOTER (site theme) ============ -->
+<div class="ja-sec" style="background:#0a1428; border-top:3px solid #1899D5; padding:72px 48px 0">
+  <div style="max-width:1280px; margin:0 auto">
+    <div class="ja-footer-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(200px, 1fr)); gap:40px 36px; padding-bottom:52px">
+      <div>
+        <img src="https://www.jobsadmire.com/logos/logo4.png" alt="Jobs Admire" style="height:50px; display:block; margin-bottom:18px; filter:brightness(0) invert(1); opacity:0.95" />
+        <p style="font-size:15px; line-height:1.65; margin:0 0 18px; color:rgba(255,255,255,0.65); max-width:330px">Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.</p>
+        <div style="display:inline-flex; align-items:center; gap:8px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.2); border-radius:999px; padding:7px 16px; font-size:13px; font-weight:700; color:#7fd0f5; margin-bottom:20px">
+          <span style="width:8px; height:8px; border-radius:50%; background:#16a34a; display:inline-block"></span>
+          İŞKUR Licensed · Permit No. 1730
+        </div>
+        <div style="display:flex; align-items:center; gap:3px; background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.2); border-radius:999px; padding:3px; width:fit-content; margin-bottom:18px">
+          <sc-for list="{{ langsDark }}" as="l" hint-placeholder-count="2">
+            <button type="button" onClick="{{ l.onClick }}" style="{{ l.style }}">{{ l.label }}</button>
+          </sc-for>
+        </div>
+        <div style="display:flex; gap:10px; flex-wrap:wrap">
+          <a href="https://www.facebook.com/jobsadmire" target="_blank" aria-label="Facebook" style="width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffffff; display:flex; align-items:center; justify-content:center; text-decoration:none" style-hover="background:#1899D5; border-color:#1899D5"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M22 12.06C22 6.5 17.52 2 12 2S2 6.5 2 12.06c0 5.02 3.66 9.18 8.44 9.94v-7.03H7.9v-2.91h2.54V9.85c0-2.52 1.5-3.91 3.79-3.91 1.1 0 2.24.2 2.24.2v2.47H15.2c-1.25 0-1.63.78-1.63 1.57v1.88h2.78l-.44 2.9h-2.34V22c4.78-.75 8.43-4.91 8.43-9.94"></path></svg></a>
+          <a href="https://www.instagram.com/jobsadmire" target="_blank" aria-label="Instagram" style="width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffffff; display:flex; align-items:center; justify-content:center; text-decoration:none" style-hover="background:#1899D5; border-color:#1899D5"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2.5" y="2.5" width="19" height="19" rx="5.5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle cx="17.4" cy="6.6" r="1.3" fill="currentColor" stroke="none"></circle></svg></a>
+          <a href="{{ waHireHref }}" target="_blank" aria-label="WhatsApp" style="width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffffff; display:flex; align-items:center; justify-content:center; text-decoration:none" style-hover="background:#16a34a; border-color:#16a34a"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 14.4c-.3-.15-1.76-.87-2.03-.97-.27-.1-.47-.15-.67.15-.2.3-.77.97-.94 1.17-.17.2-.35.22-.65.07-.3-.15-1.26-.46-2.4-1.48-.89-.79-1.49-1.77-1.66-2.07-.17-.3-.02-.46.13-.61.13-.13.3-.35.45-.52.15-.17.2-.3.3-.5.1-.2.05-.37-.02-.52-.07-.15-.67-1.62-.92-2.22-.24-.58-.49-.5-.67-.51h-.57c-.2 0-.52.07-.8.37-.27.3-1.04 1.02-1.04 2.5 0 1.47 1.07 2.89 1.22 3.09.15.2 2.11 3.22 5.1 4.51.71.31 1.27.49 1.7.63.72.23 1.37.2 1.88.12.57-.09 1.76-.72 2.01-1.41.25-.7.25-1.29.17-1.41-.07-.12-.27-.2-.57-.35zM12.05 21.8h-.01a9.87 9.87 0 0 1-5.03-1.38l-.36-.21-3.74.98 1-3.65-.24-.37a9.86 9.86 0 0 1-1.51-5.26c0-5.45 4.44-9.88 9.9-9.88a9.83 9.83 0 0 1 6.99 2.9 9.83 9.83 0 0 1 2.9 7c0 5.45-4.44 9.88-9.9 9.88zm8.42-18.3A11.8 11.8 0 0 0 12.07 0C5.53 0 .2 5.32.2 11.87c0 2.09.55 4.14 1.59 5.94L.1 24l6.33-1.66a11.9 11.9 0 0 0 5.64 1.44h.01c6.54 0 11.87-5.32 11.87-11.87 0-3.17-1.24-6.15-3.45-8.35z"></path></svg></a>
+          <a href="https://t.me/jobsadmire" target="_blank" aria-label="Telegram" style="width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffffff; display:flex; align-items:center; justify-content:center; text-decoration:none" style-hover="background:#229ED9; border-color:#229ED9"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 18.9 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7 8.5-7.7c.4-.3-.1-.5-.6-.2L6.2 13l-4.5-1.4c-1-.3-1-1 .2-1.4l17.6-6.8c.8-.3 1.5.2 1.2 1.4z"></path></svg></a>
+          <a href="https://www.tiktok.com/@jobsadmire" target="_blank" aria-label="TikTok" style="width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffffff; display:flex; align-items:center; justify-content:center; text-decoration:none" style-hover="background:rgba(255,255,255,0.18); border-color:rgba(255,255,255,0.5)"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12.75 2h3.07c.22 1.87 1.45 3.42 3.18 4.03.6.22 1.25.34 1.95.34v3.1a7.7 7.7 0 0 1-4.4-1.38v6.24c0 3.66-2.97 6.63-6.63 6.63A6.63 6.63 0 0 1 3.3 14.3c0-3.66 2.96-6.62 6.62-6.62.34 0 .68.03 1 .08v3.24a3.44 3.44 0 0 0-1-.15 3.46 3.46 0 1 0 3.46 3.46V2z"></path></svg></a>
+          <a href="https://www.linkedin.com/company/jobsadmire" target="_blank" aria-label="LinkedIn" style="width:40px; height:40px; border-radius:50%; background:rgba(255,255,255,0.07); border:1px solid rgba(255,255,255,0.2); color:#ffffff; display:flex; align-items:center; justify-content:center; text-decoration:none" style-hover="background:#1073a8; border-color:#1073a8"><svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S.02 4.88.02 3.5 1.13 1 2.5 1s2.48 1.12 2.48 2.5zM.24 8.31h4.52V23H.24V8.31zM8.34 8.31h4.33v2h.06c.6-1.14 2.08-2.34 4.28-2.34 4.58 0 5.42 3.01 5.42 6.92V23h-4.51v-7.13c0-1.7-.03-3.89-2.37-3.89-2.37 0-2.73 1.85-2.73 3.76V23H8.34V8.31z"></path></svg></a>
+        </div>
+      </div>
+      <div class="ja-fcol">
+        <h4 onClick="{{ toggleFcol }}" style="color:#ffffff; font-size:14px; font-weight:800; margin:0 0 16px; letter-spacing:0.6px; text-transform:uppercase; opacity:0.9">For Employers<svg class="ja-fchev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg></h4>
+        <div class="ja-flinks" style="display:flex; flex-direction:column; gap:11px; font-size:14.5px; font-weight:600">
+          <a href="Hire Workers.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Hire Workers</a>
+          <a href="Available Workers.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Available Workers</a>
+          <a href="Hiring Cost Calculator.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Hiring Cost Calculator</a>
+          <a href="Work Permit.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Work Permits</a>
+          <a href="Verify Representative.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Verify a Representative</a>
+          <a href="https://crm.jobsadmire.com/ext-login" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">CRM Login</a>
+        </div>
+      </div>
+      <div class="ja-fcol">
+        <h4 onClick="{{ toggleFcol }}" style="color:#ffffff; font-size:14px; font-weight:800; margin:0 0 16px; letter-spacing:0.6px; text-transform:uppercase; opacity:0.9">Company<svg class="ja-fchev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg></h4>
+        <div class="ja-flinks" style="display:flex; flex-direction:column; gap:11px; font-size:14.5px; font-weight:600">
+          <a href="About Us.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">About Us</a>
+          <a href="Success Stories.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Success Stories</a>
+          <a href="Blog.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Blog</a>
+          <a href="Partner With Us.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Partner With Us</a>
+          <a href="Join Our Team.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Join Our Team</a>
+          <a href="Contact Us.dc.html" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">Contact Us</a>
+        </div>
+      </div>
+      <div class="ja-fcol">
+        <h4 onClick="{{ toggleFcol }}" style="color:#ffffff; font-size:14px; font-weight:800; margin:0 0 16px; letter-spacing:0.6px; text-transform:uppercase; opacity:0.9">Contact<svg class="ja-fchev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg></h4>
+        <div class="ja-flinks" style="display:flex; flex-direction:column; gap:11px; font-size:14.5px; font-weight:600">
+          <a href="tel:+905011240340" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">+90 501 124 03 40</a>
+          <a href="mailto:info@jobsadmire.com" style="color:rgba(255,255,255,0.62); text-decoration:none" style-hover="color:#7fd0f5">info@jobsadmire.com</a>
+          <a href="https://t.me/jobsadmire" target="_blank" style="display:inline-flex; align-items:center; gap:8px; color:rgba(255,255,255,0.62); text-decoration:none; min-height:34px" style-hover="color:#7fd0f5"><svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" style="flex:none"><path d="M21.9 4.3 18.9 19c-.2 1-.8 1.3-1.7.8l-4.6-3.4-2.2 2.1c-.3.3-.5.5-1 .5l.3-4.7 8.5-7.7c.4-.3-.1-.5-.6-.2L6.2 13l-4.5-1.4c-1-.3-1-1 .2-1.4l17.6-6.8c.8-.3 1.5.2 1.2 1.4z"></path></svg>Telegram &middot; @jobsadmire</a>
+          <span style="display:flex; flex-direction:column; gap:4px; padding-top:6px; border-top:1px solid rgba(255,255,255,0.12)">
+            <span style="display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#7fd0f5">Antalya &middot; Head office</span>
+            <span style="color:rgba(255,255,255,0.6); font-weight:500; font-size:13.5px; line-height:1.5">Adnan Menderes Blv. No 7/6<br />Muratpaşa, Antalya, Türkiye</span>
+            <span style="color:rgba(255,255,255,0.4); font-weight:600; font-size:12.5px">Mon–Fri 09:00–18:00</span>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Adnan%20Menderes%20Bulvar%C4%B1%207%2F6%20Muratpa%C5%9Fa%20Antalya" target="_blank" style="display:inline-flex; align-items:center; gap:6px; color:#7fd0f5; text-decoration:none; font-size:13px; font-weight:800; min-height:32px" style-hover="color:#ffffff"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Get directions</a>
+          </span>
+          <span style="display:flex; flex-direction:column; gap:4px; padding-top:10px; border-top:1px solid rgba(255,255,255,0.12)">
+            <span style="display:inline-flex; align-items:center; gap:8px; font-size:11.5px; font-weight:800; letter-spacing:1px; text-transform:uppercase; color:#7fd0f5">Karachi &middot; Tech office</span>
+            <span style="color:rgba(255,255,255,0.6); font-weight:500; font-size:13.5px; line-height:1.5">Shahrah-e-Faisal<br />Karachi, Pakistan</span>
+            <span style="color:rgba(255,255,255,0.4); font-weight:600; font-size:12.5px">Mon–Sat 10:00–19:00 PKT</span>
+            <a href="https://www.google.com/maps/search/?api=1&amp;query=Shahrah-e-Faisal%20Karachi%20Pakistan" target="_blank" style="display:inline-flex; align-items:center; gap:6px; color:#7fd0f5; text-decoration:none; font-size:13px; font-weight:800; min-height:32px" style-hover="color:#ffffff"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" style="flex:none"><path d="M21 10c0 6-9 12-9 12s-9-6-9-12a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>Get directions</a>
+          </span>
+        </div>
+        <a href="{{ waHireHref }}" target="_blank" class="ja-foot-wa" style="display:inline-block; margin-top:16px; background:#1899D5; color:#ffffff; text-decoration:none; padding:11px 22px; border-radius:10px; font-weight:800; font-size:14px" style-hover="background:#1385bd">WhatsApp Us →</a>
+      </div>
+      <div class="ja-fcol">
+        <h4 onClick="{{ toggleFcol }}" style="color:#ffffff; font-size:14px; font-weight:800; margin:0 0 16px; letter-spacing:0.6px; text-transform:uppercase; opacity:0.9">Get Our App<svg class="ja-fchev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="m6 9 6 6 6-6"></path></svg></h4>
+        <div class="ja-flinks-app">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:12px">
+            <div style="width:32px; height:52px; border-radius:9px; background:#ffffff; border:2px solid #16202e; flex-shrink:0; box-shadow:0 5px 14px rgba(22,60,90,0.16); position:relative; display:flex; align-items:center; justify-content:center">
+              <span style="position:absolute; top:3.5px; left:50%; transform:translateX(-50%); width:9px; height:2.5px; border-radius:999px; background:#16202e"></span>
+              <img src="ja-mark.png" alt="JobsAdmire app" style="width:22px; height:22px; object-fit:contain; display:block" />
+              <span style="position:absolute; bottom:3px; left:50%; transform:translateX(-50%); width:10px; height:2px; border-radius:999px; background:#c6d4de"></span>
+            </div>
+            <div>
+              <div style="font-size:14.5px; font-weight:800; color:#ffffff; line-height:1.2">JobsAdmire</div>
+              <div style="font-size:12px; color:rgba(255,255,255,0.55); font-weight:600; margin-top:2px">Workforce on the go</div>
+            </div>
+          </div>
+          <p style="font-size:12.5px; line-height:1.55; color:rgba(255,255,255,0.55); margin:0 0 14px">Approve candidates, track permits &amp; get instant updates.</p>
+          <div style="display:flex; flex-direction:column; gap:8px; align-items:flex-start">
+            <a href="https://play.google.com/store" target="_blank" style="display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.22); border-radius:9px; padding:8px 16px 8px 13px; text-decoration:none; min-width:0; max-width:100%" style-hover="background:rgba(255,255,255,0.16)">
+              <svg width="20" height="20" viewBox="0 0 24 24"><path d="M4 3.5v17c0 .4.45.65.8.42l.2-.12L15.5 12 5 3.2l-.2-.12A.5.5 0 0 0 4 3.5z" fill="#2196F3"></path><path d="M18.9 9.9L15.5 12 5 3.2l13.9 6.7z" fill="#4CAF50"></path><path d="M18.9 14.1L15.5 12 5 20.8l13.9-6.7z" fill="#F44336"></path><path d="M18.9 9.9l2.3 1.3c.7.4.7 1.2 0 1.6l-2.3 1.3L15.5 12l3.4-2.1z" fill="#FFC107"></path></svg>
+              <span style="display:flex; flex-direction:column; line-height:1.15">
+                <span style="font-size:9.5px; color:#b9c4cf; font-weight:600; letter-spacing:0.3px">GET IT ON</span>
+                <span style="font-size:14.5px; color:#ffffff; font-weight:700">Google Play</span>
+              </span>
+            </a>
+            <a href="https://www.apple.com/app-store/" target="_blank" style="display:flex; align-items:center; gap:10px; background:rgba(255,255,255,0.08); border:1px solid rgba(255,255,255,0.22); border-radius:9px; padding:8px 16px 8px 13px; text-decoration:none; min-width:0; max-width:100%" style-hover="background:rgba(255,255,255,0.16)">
+              <svg width="19" height="22" viewBox="0 0 384 512"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184.8 4 273.5q0 39.3 14.4 81.2c12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z" fill="#ffffff"></path></svg>
+              <span style="display:flex; flex-direction:column; line-height:1.15">
+                <span style="font-size:9.5px; color:#b9c4cf; font-weight:600; letter-spacing:0.3px">DOWNLOAD ON THE</span>
+                <span style="font-size:14.5px; color:#ffffff; font-weight:700">App Store</span>
+              </span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="border-top:1px solid rgba(255,255,255,0.14); padding:20px 0 26px; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap">
+      <span style="font-size:13px; color:rgba(255,255,255,0.5)">İŞKUR permit No. 1730 · Job seekers are never charged a fee (law No. 4904) · Tax No: 48422122</span>
+      <div style="display:flex; gap:20px; font-size:13px">
+        <a href="https://www.jobsadmire.com/privacy" style="color:rgba(255,255,255,0.5); text-decoration:none" style-hover="color:#7fd0f5">Privacy</a>
+        <a href="https://www.jobsadmire.com/terms" style="color:rgba(255,255,255,0.5); text-decoration:none" style-hover="color:#7fd0f5">Terms</a>
+        <span style="color:rgba(255,255,255,0.5)">© 2026 Jobs Admire</span>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="ja-mobile-bar-spacer" style="height:74px"></div>
+</x-dc>
+
+<script type="text/x-dc" data-dc-script data-props="{&quot;registerUpdated&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Register&quot;}, &quot;feedUrl&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;CRM feed&quot;}, &quot;whatsappNumber&quot;: {&quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;905011240340&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Contact&quot;}}">
+class Component extends DCLogic {
+  // the review sheet links here as ?lang=tr|fr|ru — the page is written in English, so
+  // ja-i18n swaps the rendered text after mount
+  static reviewLang() {
+    try {
+      const v = (new URLSearchParams(location.search).get("lang") || "").toUpperCase();
+      return ["TR", "FR", "RU"].indexOf(v) >= 0 ? v : null;
+    } catch (e) { return null; }
+  }
+
+  applyReviewLang() {
+    const rl = Component.reviewLang();
+    if (rl && window.JA_I18N) window.JA_I18N.apply(document.body, rl);
+  }
+
+  componentDidUpdate() { this.applyReviewLang(); }
+
+  bootReviewLang() {
+    if (!Component.reviewLang()) return;
+    let n = 0;
+    const tick = () => {
+      this.applyReviewLang();
+      if (document.querySelector("mark.ja-hl-mark")) return;
+      if (n++ < 10) setTimeout(tick, 350);
+    };
+    tick();
+  }
+
+  state = { query: "", filter: "all", feedStatus: "loading", feedItems: [] };
+
+  people() {
+    return [
+      { id: "JA-REP-001", name: "Haris Jiva", role: "Founder · sole signatory", level: "founder", desk: "Management", place: "Antalya, Turkey", languages: "Turkish · English", contact: "+90 501 124 03 40", valid: "No expiry", reportsTo: "—", status: "active", canSign: true, since: "2019" },
+      { id: "JA-OFF-004", name: "Recruitment Specialist", role: "Job orders, shortlists, arrivals", level: "office", desk: "Operations", place: "Antalya, Turkey", languages: "Turkish · English", contact: "+90 501 124 03 40", valid: "31 Dec 2026", reportsTo: "Founder", status: "active", canSign: false, since: "Mar 2022" },
+      { id: "JA-OFF-007", name: "Work Permit Officer", role: "Work permits, SGK, quota checks", level: "office", desk: "Permits", place: "Antalya, Turkey", languages: "Turkish · English", contact: "+90 501 124 03 40", valid: "31 Dec 2026", reportsTo: "Founder", status: "active", canSign: false, since: "Sep 2021" },
+      { id: "JA-OFF-012", name: "Business Development Executive", role: "Site visits, offers, invoices", level: "office", desk: "Employer desk", place: "Antalya, Turkey", languages: "Turkish · English", contact: "+90 553 383 2549", valid: "31 Dec 2026", reportsTo: "Founder", status: "active", canSign: false, since: "Jan 2023" },
+      { id: "JA-OFF-016", name: "Quality & Compliance Officer", role: "Trade tests, document checks", level: "office", desk: "Quality", place: "Antalya, Turkey", languages: "Turkish · English · Russian", contact: "+90 501 124 03 40", valid: "31 Dec 2026", reportsTo: "Founder", status: "active", canSign: false, since: "Jun 2023" },
+      { id: "JA-OFF-021", name: "Faraz", role: "Tech Manager — website, CRM & internal systems", level: "office", desk: "Tech team", place: "Karachi, Pakistan", languages: "Urdu · English", contact: "+90 501 124 03 40", valid: "31 Dec 2026", reportsTo: "Founder", status: "active", canSign: false, since: "Feb 2024" },
+      { id: "JA-OFF-022", name: "Product Designer", role: "Design — website, brand & CRM UI", level: "office", desk: "Tech team", place: "Karachi, Pakistan", languages: "Urdu · English", contact: "+90 501 124 03 40", valid: "31 Dec 2026", reportsTo: "Tech Manager", status: "active", canSign: false, since: "Apr 2024" },
+      { id: "JA-OFF-023", name: "QA Engineer", role: "Testing — website & CRM releases", level: "office", desk: "Tech team", place: "Karachi, Pakistan", languages: "Urdu · English", contact: "+90 501 124 03 40", valid: "31 Dec 2026", reportsTo: "Tech Manager", status: "active", canSign: false, since: "Jun 2024" },
+      { id: "JA-REP-011", name: "Country Representative", role: "Uzbekistan desk · full-time", level: "rep", desk: "Uzbekistan", place: "Tashkent, Uzbekistan", languages: "Uzbek · Russian · English", contact: "+90 553 383 2549", valid: "31 Dec 2026", reportsTo: "Operations, Antalya", status: "active", canSign: false, since: "Feb 2023" },
+      { id: "JA-REP-014", name: "Country Representative", role: "Pakistan desk · full-time", level: "rep", desk: "Pakistan", place: "Karachi, Pakistan", languages: "Urdu · English", contact: "+90 553 383 2549", valid: "31 Dec 2026", reportsTo: "Operations, Antalya", status: "active", canSign: false, since: "Nov 2023" },
+      { id: "JA-REP-015", name: "Sourcing Coordinator", role: "Pakistan desk · full-time", level: "rep", desk: "Pakistan", place: "Lahore, Pakistan", languages: "Urdu · Punjabi · English", contact: "+90 553 383 2549", valid: "31 Dec 2026", reportsTo: "Operations, Antalya", status: "active", canSign: false, since: "Apr 2025" },
+      { id: "JA-REP-018", name: "Trade Test Assessor", role: "Pakistan desk · project-based", level: "coordinator", desk: "Pakistan", place: "Islamabad, Pakistan", languages: "Urdu · English", contact: "+90 553 383 2549", valid: "30 Jun 2027", reportsTo: "Quality, Antalya", status: "active", canSign: false, since: "Jan 2026" },
+      { id: "JA-REP-013", name: "Sourcing Coordinator", role: "Uzbekistan desk · part-time", level: "coordinator", desk: "Uzbekistan", place: "Samarkand, Uzbekistan", languages: "Uzbek · Russian", contact: "+90 501 124 03 40", valid: "31 Dec 2026", reportsTo: "Operations, Antalya", status: "active", canSign: false, since: "Aug 2025" },
+      { id: "JA-REP-023", name: "Country Representative", role: "India desk · full-time", level: "rep", desk: "India", place: "Mumbai, India", languages: "Hindi · English", contact: "+90 501 124 03 40", valid: "31 Dec 2026", reportsTo: "Operations, Antalya", status: "active", canSign: false, since: "May 2025" },
+      { id: "JA-REP-026", name: "Country Representative", role: "Kyrgyzstan desk · full-time", level: "rep", desk: "Kyrgyzstan", place: "Bishkek, Kyrgyzstan", languages: "Kyrgyz · Russian", contact: "+90 553 383 2549", valid: "31 Dec 2026", reportsTo: "Operations, Antalya", status: "active", canSign: false, since: "Oct 2024" },
+      { id: "JA-REP-019", name: "Sourcing Coordinator", role: "Nepal desk · part-time", level: "coordinator", desk: "Nepal", place: "Kathmandu, Nepal", languages: "Nepali · Hindi · English", contact: "+90 553 383 2549", valid: "30 Jun 2027", reportsTo: "Operations, Antalya", status: "active", canSign: false, since: "Jul 2024" },
+      { id: "JA-REP-022", name: "Trade Test Assessor", role: "Quality · project-based", level: "coordinator", desk: "India", place: "Delhi, India", languages: "Hindi · English", contact: "+90 553 383 2549", valid: "31 Mar 2027", reportsTo: "Quality, Antalya", status: "active", canSign: false, since: "Mar 2025" },
+      { id: "JA-REP-031", name: "Sourcing Coordinator", role: "Ghana desk · part-time", level: "coordinator", desk: "Ghana", place: "Accra, Ghana", languages: "English · French", contact: "+90 553 383 2549", valid: "31 Dec 2026", reportsTo: "Operations, Antalya", status: "active", canSign: false, since: "Feb 2025" },
+      { id: "JA-REP-009", name: "Former Representative", role: "Uzbekistan desk · until 14 Feb 2026", level: "rep", desk: "Uzbekistan", place: "Samarkand, Uzbekistan", languages: "Uzbek · Russian", contact: "Not authorised", valid: "Ended 14 Feb 2026", reportsTo: "—", status: "former", canSign: false }
+    ];
+  }
+
+  // Same feed pattern as the approvals wall — see crm-feed.md
+  loadFeed() {
+    const url = (this.props.feedUrl || "").trim();
+    if (!url) { this.setState({ feedStatus: "internal" }); return; }
+    fetch(url, { headers: { Accept: "application/json" } })
+      .then((r) => { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
+      .then((data) => {
+        const raw = Array.isArray(data) ? data : (data.representatives || []);
+        const items = raw.map((x, i) => ({
+          id: String(x.id || "JA-REP-" + i),
+          name: x.name || "Representative",
+          role: x.role || "",
+          level: x.level || "rep",
+          place: x.place || "",
+          languages: Array.isArray(x.languages) ? x.languages.join(" · ") : (x.languages || ""),
+          contact: x.contact || "",
+          valid: x.valid || "",
+          status: x.status || "active",
+          canSign: !!x.canSign,
+          photo: x.photo || ""
+        }));
+        this.setState({ feedStatus: items.length ? "live" : "empty", feedItems: items });
+      })
+      .catch(() => this.setState({ feedStatus: "offline" }));
+  }
+
+  wa(text) { return "https://wa.me/" + (this.props.whatsappNumber || "905011240340") + "?text=" + encodeURIComponent(text); }
+
+  track(name, extra) {
+    try {
+      window.dataLayer = window.dataLayer || [];
+      window.dataLayer.push(Object.assign({ event: name, page: "verify-representative", since: "Jan 2022" }, extra || {}));
+    } catch (e) {}
+  }
+
+  recordUrl(id) {
+    const base = (this.props.verifyPageUrl || "https://www.jobsadmire.com/verify");
+    return base + "?id=" + encodeURIComponent(id);
+  }
+
+  qrFor(id) {
+    this._qr = this._qr || {};
+    if (!(id in this._qr)) {
+      try { this._qr[id] = (window.JAQR && window.JAQR.toDataURL) ? window.JAQR.toDataURL(this.recordUrl(id), 4, 2) : ""; }
+      catch (e) { this._qr[id] = ""; }
+    }
+    return this._qr[id];
+  }
+
+  componentDidMount() {
+    this.bootReviewLang();
+    this.loadFeed();
+    try {
+      const p = new URLSearchParams(window.location.search);
+      const id = p.get("id") || p.get("rep") || (window.location.hash.indexOf("id=") > -1 ? window.location.hash.split("id=")[1] : "");
+      if (id) { this.setState({ query: decodeURIComponent(id) }); this.track("rep_verify_deeplink", { rep_id: id }); }
+    } catch (e) {}
+    if (!(window.JAQR && window.JAQR.toDataURL)) setTimeout(() => this.forceUpdate(), 500);
+    this._esc = (e) => { if (e.key === "Escape" && this.state.query) this.setState({ query: "" }); };
+    document.addEventListener("keydown", this._esc);
+    this._onScroll = () => {
+      const on = window.scrollY > 620;
+      if (on !== this.state.stickySearch) this.setState({ stickySearch: on });
+    };
+    window.addEventListener("scroll", this._onScroll, { passive: true });
+    const arm = () => {
+      const els = Array.from(document.querySelectorAll(".ja-reveal, .ja-grow, .ja-grow-x"));
+      if (!els.length) return false;
+      if (!("IntersectionObserver" in window)) { els.forEach((el) => el.classList.add("ja-reveal-on")); return true; }
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("ja-reveal-on"); io.unobserve(en.target); } });
+      }, { rootMargin: "0px 0px -12% 0px", threshold: 0.06 });
+      els.forEach((el) => io.observe(el));
+      return true;
+    };
+    let tries = 0;
+    const tick = () => { if (arm() || tries++ > 25) return; setTimeout(tick, 200); };
+    tick();
+    this._fallback = setTimeout(() => { document.querySelectorAll(".ja-reveal, .ja-grow, .ja-grow-x").forEach((el) => el.classList.add("ja-reveal-on")); }, 6000);
+  }
+
+  componentWillUnmount() { clearTimeout(this._fallback); document.removeEventListener("keydown", this._esc); window.removeEventListener("scroll", this._onScroll); clearTimeout(this._copyT); }
+
+  printBadge(r) {
+    const qr = this.qrFor(r.id);
+    const url = this.recordUrl(r.id);
+    const w = window.open("", "_blank", "width=460,height=680");
+    if (!w) return;
+    const sc = "scr" + "ipt";
+    const doc = '<!DOCTYPE html><html><head><title>' + r.id + ' — JobsAdmire badge</title><style>@page{size:105mm 148mm;margin:0}html,body{margin:0;padding:0}body{font-family:Arial,Helvetica,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}.badge{width:105mm;height:148mm;box-sizing:border-box;display:flex;flex-direction:column;background:#ffffff}.top{background:#0e1a37;color:#fff;padding:9mm 8mm 7mm;text-align:center}.top .co{font-size:13pt;font-weight:800;letter-spacing:1px}.top .tag{font-size:7pt;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:#7fd0f5;margin-top:1.5mm}.mid{flex:1;padding:7mm 8mm 0;text-align:center}.photo{width:30mm;height:38mm;border:1.5pt solid #d3e6f2;border-radius:3mm;margin:0 auto 4mm;display:flex;align-items:center;justify-content:center;color:#94a3b8;font-size:7pt;font-weight:700}.nm{font-size:14pt;font-weight:800;color:#16202e}.rl{font-size:9pt;font-weight:600;color:#43536a;margin-top:1.5mm}.idp{display:inline-block;margin-top:3mm;background:#253063;color:#fff;border-radius:99px;padding:1.8mm 6mm;font-size:10pt;font-weight:800;letter-spacing:1px}.meta{font-size:8pt;color:#64748b;margin-top:2.5mm;font-weight:600}.bot{border-top:1pt dashed #d3e6f2;margin:4mm 8mm 0;padding:4mm 0 6mm;display:flex;align-items:center;gap:5mm;text-align:left}.bot img{width:22mm;height:22mm}.bot .v{font-size:7.5pt;line-height:1.5;color:#43536a;font-weight:600}.bot .v b{color:#16202e}</style></head><body><div class="badge"><div class="top"><div class="co">JOBSADMIRE</div><div class="tag">Authorised Representative</div></div><div class="mid"><div class="photo">PHOTO</div><div class="nm">' + r.name + '</div><div class="rl">' + r.role + '</div><div class="idp">' + r.id + '</div><div class="meta">' + (r.place || "") + ' &middot; Authorised until ' + (r.valid || "—") + '</div></div><div class="bot">' + (qr ? '<img src="' + qr + '" alt="QR" />' : '') + '<div class="v"><b>Verify this badge:</b> scan the QR or check the ID at<br/>' + url.replace("?id=" + encodeURIComponent(r.id), "") + '<br/>This badge never authorises collecting money from a worker.</div></div></div><' + sc + '>window.onload=function(){window.print()}</' + sc + '></body></html>';
+    w.document.write(doc);
+    w.document.close();
+    this.track("rep_badge_print", { rep_id: r.id });
+  }
+
+  norm(v) { return String(v || "").toLowerCase().replace(/[^a-z0-9]/g, ""); }
+
+  renderVals() {
+    const s = this.state;
+    const live = s.feedStatus === "live" && s.feedItems.length > 0;
+    const all = live ? s.feedItems : this.people();
+    const q = s.query.trim();
+    const nq = this.norm(q);
+    const match = nq.length > 2
+      ? all.find((r) => this.norm(r.id).includes(nq) || this.norm(r.name).includes(nq) || this.norm(r.contact).includes(nq) || this.norm(r.place).includes(nq))
+      : null;
+
+    const statusMeta = {
+      active: { label: "Authorised", head: "#16a34a", pill: "background:#dcfce7; color:#12813c; border:1px solid #bfe8cf; border-radius:999px; padding:4px 11px; font-size:11px; font-weight:800; letter-spacing:0.4px; text-transform:uppercase; white-space:nowrap" },
+      suspended: { label: "Suspended", head: "#d97706", pill: "background:#fef3c7; color:#b45309; border:1px solid #fde68a; border-radius:999px; padding:4px 11px; font-size:11px; font-weight:800; letter-spacing:0.4px; text-transform:uppercase; white-space:nowrap" },
+      former: { label: "No longer authorised", head: "#dc2626", pill: "background:#fee2e2; color:#b91c1c; border:1px solid #fecaca; border-radius:999px; padding:4px 11px; font-size:11px; font-weight:800; letter-spacing:0.4px; text-transform:uppercase; white-space:nowrap" }
+    };
+    const meta = (st) => statusMeta[st] || statusMeta.active;
+
+    const canOf = (r) => {
+      if (r.level === "founder") return ["Sign service agreements and employer contracts", "Approve fees, invoices and offers", "Represent JobsAdmire in any meeting"];
+      if (r.desk === "Tech team") return ["Build and maintain our website, CRM and internal systems", "Contact you about technical issues on our platforms", "Work with application data inside our system only"];
+      if (r.level === "office") return ["Take job orders and present candidates", "File work permit applications", "Request document copies through our system"];
+      if (r.level === "rep") return ["Meet partner agencies and institutes in their country", "Run first interviews and check documents", "Represent JobsAdmire at local meetings and job fairs"];
+      return ["Shortlist candidates against a live job order", "Collect and check document copies", "Run screening calls"];
+    };
+    const cannotOf = (r) => {
+      const base = ["Ask a worker for any payment, in cash or by transfer", "Keep original passports or certificates", "Promise a visa, a salary or a start date in writing"];
+      if (r.desk === "Tech team") return ["Sign any contract or agreement for JobsAdmire", "Take job orders or deal with workers and employers"].concat(base);
+      return r.level === "founder"
+        ? ["Ask a worker for any payment, in cash or by transfer", "Keep original passports or certificates", "Charge a fee that is not in the signed agreement"]
+        : ["Sign any contract or agreement for JobsAdmire"].concat(base);
+    };
+
+    const founder = all.find((r) => r.level === "founder") || { id: "JA-REP-001", name: "Haris Jiva", role: "Founder · sole signatory" };
+    const activeOf = (lv) => all.filter((r) => r.status === "active" && (Array.isArray(lv) ? lv.indexOf(r.level) > -1 : r.level === lv));
+    const former = all.filter((r) => r.status !== "active");
+    const flt = this.state.peopleFilter || "o:Antalya";
+    const setFlt = (v) => () => this.setState({ peopleFilter: v, regOpen: false });
+    const fieldAll = activeOf(["rep", "coordinator"]);
+    const countryNames = Object.keys(fieldAll.reduce((m, r) => { m[r.desk || r.place || "Other"] = 1; return m; }, {})).sort();
+    const isoMap = { Turkey: "tr", "Türkiye": "tr", Pakistan: "pk", India: "in", Bangladesh: "bd", Nepal: "np", "Sri Lanka": "lk", Uzbekistan: "uz", Kazakhstan: "kz", Kyrgyzstan: "kg", Tajikistan: "tj", Turkmenistan: "tm", Azerbaijan: "az", Georgia: "ge", Russia: "ru", Ukraine: "ua", Moldova: "md", Serbia: "rs", Albania: "al", Indonesia: "id", Philippines: "ph", Vietnam: "vn", Egypt: "eg", Morocco: "ma", Tunisia: "tn", Ghana: "gh", Mali: "ml", Senegal: "sn", Cameroon: "cm", Nigeria: "ng", Kenya: "ke", Ethiopia: "et" };
+    const flagOf = (name) => { const c = isoMap[(name || "").trim()]; return c ? "https://flagcdn.com/w40/" + c + ".png" : ""; };
+    const flagStyleOf = (name, w, h, r) => { const u = flagOf(name); return u ? "width:" + w + "px; height:" + h + "px; border-radius:" + r + "px; flex:none; display:inline-block; background:#e8f4fb url(" + u + ") center/cover no-repeat; box-shadow:0 0 0 1px rgba(22,60,90,0.16)" : ""; };
+    const chipStyle = (on) => "cursor:pointer; font-family:inherit; border-radius:999px; padding:9px 17px; font-size:13px; font-weight:800; white-space:nowrap; transition:all .15s; border:1.5px solid " + (on ? "#1899D5" : "#d3e6f2") + "; background:" + (on ? "#1899D5" : "#ffffff") + "; color:" + (on ? "#ffffff" : "#43536a");
+    const countryFilter = flt.indexOf("c:") === 0 ? flt.slice(2) : null;
+    const officeAll = activeOf("office");
+    const officeCities = Object.keys(officeAll.reduce((m, r) => { m[(r.place || "").split(",")[0].trim()] = 1; return m; }, {})).sort();
+    const officePpl = (c) => officeAll.filter((r) => (r.place || "").split(",")[0].trim() === c);
+    const officeFilter = flt.indexOf("o:") === 0 ? flt.slice(2) : (flt === "office" ? "Antalya" : null);
+    const fieldShown = flt === "office" ? [] : fieldAll.filter((r) => !countryFilter || (r.desk || r.place) === countryFilter);
+    const officeShown = (flt === "all" || flt === "office") ? activeOf("office") : [];
+    const shownCountries = Object.keys(fieldShown.reduce((m, r) => { m[r.desk || r.place] = 1; return m; }, {})).length;
+
+    const openRecord = (r) => () => {
+      this.setState({ query: r.id });
+      this.track("rep_verify_open", { rep_id: r.id });
+    };
+    const personCard = (r, i) => ({
+      deskCardStyle: "width:100%; background:#ffffff; border:1px solid #d3e6f2; border-radius:18px; overflow:hidden; box-shadow:0 14px 34px rgba(22,60,90,0.08); transition-delay:" + (0.08 * (i || 0)) + "s",
+      id: r.id, name: r.name, role: r.role, place: r.place, desk: r.desk || "",
+      city: (r.place || "").split(",")[0].trim() || "—",
+      statusDot: "width:8px; height:8px; border-radius:50%; flex:none; display:inline-block; background:" + (r.status === "active" ? "#16a34a" : "#dc2626"),
+      slotId: "rep-" + r.id,
+      slotHint: r.name + " — photo",
+      statusLabel: meta(r.status).label,
+      statusStyle: meta(r.status).pill,
+      cardStyle: "background:#ffffff; border:1px solid " + (r.status === "active" ? "#d3e6f2" : "#fecaca") + "; border-radius:16px; overflow:hidden; box-shadow:0 12px 30px rgba(22,60,90,0.07)",
+      groupRowStyle: "display:flex; align-items:center; gap:12px; padding:12px 18px",
+      onVerify: openRecord(r)
+    });
+    const rowOf = (r) => {
+      const p = personCard(r);
+      // role, desk and city render as separate text nodes: glued into one string
+      // ("India desk · full-time · Mumbai") no dictionary key can ever match it,
+      // and the review sheet's highlighter cannot find the row either
+      p.showDesk = r.level === "office" && !!r.desk;
+      p.sub = (p.showDesk ? r.desk + " · " : "") + r.role;
+      p.headSub = r.role + " · " + p.city;
+      return p;
+    };
+    const groupsRaw = Object.values(fieldAll.reduce((m, r) => {
+      const key = r.desk || r.place || "Other";
+      if (!m[key]) m[key] = { country: key, people: [] };
+      m[key].people.push(r);
+      return m;
+    }, {})).sort((a, b) => a.country.localeCompare(b.country));
+    const singlePanel = !!officeFilter || !!countryFilter;
+    const mkGroup = (label, people, isOffice) => {
+      const heads = isOffice ? [] : people.filter((r) => r.level === "rep");
+      const rest = isOffice ? people.slice() : people.filter((r) => r.level !== "rep");
+      const cities = Object.keys(people.reduce((m, r) => { m[(r.place || "").split(",")[0].trim()] = 1; return m; }, {}));
+      return {
+        label: label,
+        hasFlag: !isOffice && !!flagOf(label),
+        flagStyle: isOffice ? "" : flagStyleOf(label, 22, 15, 3),
+        sub: (people.length === 1 ? "1 person" : people.length + " people") + " · " + (cities.length === 1 ? cities[0] : cities.length + " cities"),
+        showHeader: !singlePanel,
+        hasHeads: heads.length > 0,
+        heads: heads.map(rowOf),
+        hasPeople: rest.length > 0,
+        people: rest.map(rowOf).sort((x, y) => (x.city + x.name).localeCompare(y.city + y.name))
+      };
+    };
+    const shownGroupsRaw = countryFilter ? groupsRaw.filter((g) => g.country === countryFilter) : groupsRaw;
+    const panelGroupsArr = [];
+    let panelPeopleCount = 0;
+    if (flt === "all" || officeFilter) officeCities.filter((c) => !officeFilter || c === officeFilter).forEach((c) => { const ppl = officePpl(c); panelGroupsArr.push(mkGroup(c + " office", ppl, true)); panelPeopleCount += ppl.length; });
+    if (!officeFilter) shownGroupsRaw.forEach((g) => { panelGroupsArr.push(mkGroup(g.country, g.people, false)); panelPeopleCount += g.people.length; });
+    const sideStyle = (on) => "width:100%; cursor:pointer; font-family:inherit; display:flex; align-items:center; gap:10px; text-align:left; border-radius:11px; padding:10px 12px; font-size:13.5px; font-weight:800; transition:all .12s; border:none; background:" + (on ? "#253063" : "transparent") + "; color:" + (on ? "#ffffff" : "#43536a");
+
+    const pill = (bg, bd, fg) => "display:inline-flex; align-items:center; gap:7px; background:" + bg + "; border:1px solid " + bd + "; color:" + fg + "; border-radius:999px; padding:6px 14px; font-size:12.5px; font-weight:800";
+    const badge = {
+      loading: { label: "Loading from CRM…", style: pill("#f4f9fc", "#d3e6f2", "#64748b") },
+      internal: { label: "Internal list · CRM feed not configured", style: pill("#f4f9fc", "#d3e6f2", "#64748b") },
+      live: { label: "Live from CRM", style: pill("#dcfce7", "#bfe8cf", "#12813c") },
+      empty: { label: "CRM connected · no records yet", style: pill("#fffbeb", "#fde68a", "#b45309") },
+      offline: { label: "Showing sample list · CRM feed not reachable", style: pill("#fffbeb", "#fde68a", "#b45309") }
+    }[s.feedStatus] || { label: "", style: "display:none" };
+
+
+    const CHROME_LANGS = [["EN", "English"], ["TR", "Türkçe"]];
+    const chromeLang = this.state.lang || "EN";
+    return {
+      waHireHref: this.wa("Hello JobsAdmire, I want to hire workers."),
+      menuOpen: !!this.state.menuOpen,
+      toggleMenu: () => this.setState((st) => ({ menuOpen: !st.menuOpen })),
+      closeMenu: () => this.setState({ menuOpen: false }),
+      toggleFcol: (e) => { const col = e.currentTarget.closest(".ja-fcol"); if (col) col.classList.toggle("ja-open"); },
+      langs: CHROME_LANGS.map((l) => ({
+        code: l[0], onClick: () => this.setState({ lang: l[0] }),
+        style: "border-radius:999px; padding:6px 11px; font-size:12px; font-weight:800; letter-spacing:0.4px; cursor:pointer; font-family:inherit; border:none; " +
+          (l[0] === chromeLang ? "background:#16202e; color:#ffffff;" : "background:transparent; color:#64748b;")
+      })),
+      langsSlim: CHROME_LANGS.map((l) => ({
+        code: l[0], onClick: () => this.setState({ lang: l[0] }),
+        style: "border-radius:999px; padding:5px 12px; min-height:30px; font-size:12px; font-weight:800; letter-spacing:0.4px; cursor:pointer; font-family:inherit; border:none; " +
+          (l[0] === chromeLang ? "background:#ffffff; color:#0a1428;" : "background:transparent; color:rgba(255,255,255,0.65);")
+      })),
+      langsBig: CHROME_LANGS.map((l) => ({
+        label: l[1], onClick: () => this.setState({ lang: l[0] }),
+        style: "flex:1; min-height:44px; border-radius:12px; font-size:14px; font-weight:800; cursor:pointer; font-family:inherit; " +
+          (l[0] === chromeLang ? "background:#16202e; color:#ffffff; border:1.5px solid #16202e;" : "background:#ffffff; color:#43536a; border:1.5px solid #dbe8f2;")
+      })),
+      langsDark: CHROME_LANGS.map((l) => ({
+        label: l[1], onClick: () => this.setState({ lang: l[0] }),
+        style: "border-radius:999px; padding:7px 15px; font-size:12.5px; font-weight:800; cursor:pointer; font-family:inherit; border:none; " +
+          (l[0] === chromeLang ? "background:#1899D5; color:#ffffff;" : "background:transparent; color:rgba(255,255,255,0.62);")
+      })),
+      liveLabel: all.filter((r) => r.status === "active").length + " people authorised today",
+      lastUpdatedLabel: "Register last updated: " + (this.props.registerUpdated || new Date().toLocaleDateString("en-GB", { day: "numeric", month: "short", year: "numeric" })),
+      copyLinkLabel: this.state.copiedLink ? "Link copied ✓" : "Copy record link",
+      copyLinkStyle: "cursor:pointer; font-family:inherit; display:inline-flex; align-items:center; gap:8px; border-radius:10px; padding:9px 16px; font-size:13px; font-weight:800; transition:all .15s; border:1.5px solid " + (this.state.copiedLink ? "#bfe8cf" : "#d3e6f2") + "; background:" + (this.state.copiedLink ? "#dcfce7" : "#ffffff") + "; color:" + (this.state.copiedLink ? "#12813c" : "#253063"),
+      stickyBarStyle: "position:fixed; top:0; left:0; right:0; z-index:60; display:flex; align-items:center; gap:14px; background:rgba(14,26,55,0.97); backdrop-filter:blur(8px); box-shadow:0 10px 30px rgba(3,10,26,0.35); padding:10px 48px; transform:translateY(" + (this.state.stickySearch ? "0" : "-110%") + "); transition:transform .28s ease",
+      onPrintBadge: match ? () => this.printBadge(match) : () => {},
+      onCopyLink: () => {
+        const url = match ? this.recordUrl(match.id) : "";
+        if (!url) return;
+        const done = () => {
+          this.setState({ copiedLink: true });
+          clearTimeout(this._copyT);
+          this._copyT = setTimeout(() => this.setState({ copiedLink: false }), 2200);
+          this.track("rep_record_link_copied", { rep_id: match.id });
+        };
+        if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(url).then(done, done);
+        else { const t = document.createElement("textarea"); t.value = url; document.body.appendChild(t); t.select(); try { document.execCommand("copy"); } catch (e) {} document.body.removeChild(t); done(); }
+      },
+      founderName: founder.name,
+      founderRole: founder.role,
+      founderId: founder.id,
+      onQuery: (e) => this.setState({ query: e.target.value }),
+      onClear: () => this.setState({ query: "" }),
+      stopClick: (e) => { e.stopPropagation(); },
+      queryEcho: q,
+      showIdle: nq.length <= 2,
+      hasResult: nq.length > 2,
+      showMatch: !!match,
+      showNoMatch: nq.length > 2 && !match,
+      matchName: match ? match.name : "",
+      matchRole: match ? match.role : "",
+      matchPlace: match ? match.place : "",
+      matchId: match ? match.id : "",
+      matchValid: match ? match.valid : "",
+      matchLanguages: match ? match.languages : "",
+      matchContact: match ? match.contact : "",
+      matchReportsTo: match ? (match.reportsTo || "Operations, Antalya") : "",
+      matchSince: match ? (match.since ? "Since " + match.since : "—") : "",
+      matchQrStyle: match && this.qrFor(match.id) ? "width:86px; height:86px; flex:none; display:block; border-radius:8px; background-image:url(" + this.qrFor(match.id) + "); background-size:cover; background-repeat:no-repeat" : "",
+      hasQr: !!(match && this.qrFor(match.id)),
+      matchRecordUrl: match ? this.recordUrl(match.id) : "",
+      matchDesk: match ? (match.desk || "Antalya office") : "",
+      matchContactHref: match ? "tel:" + String(match.contact || "").replace(/[^+0-9]/g, "") : "",
+      matchCanSign: !!(match && match.canSign),
+      matchSlotId: match ? "rep-" + match.id : "rep-none",
+      matchSlotHint: match ? match.name + " — photo" : "Photo",
+      matchStatusLabel: match ? meta(match.status).label : "",
+      matchHeadStyle: match ? "background:" + meta(match.status).head + "; padding:15px 28px; display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap" : "",
+      matchDotStyle: "width:9px; height:9px; border-radius:50%; background:#ffffff; display:inline-block",
+      matchCan: match ? canOf(match) : [],
+      matchCannot: match ? cannotOf(match) : [],
+      matchReportHref: match ? this.wa("Hello JobsAdmire, I want to check something about " + match.id + " (" + match.name + ").") : "",
+      reportWaHref: this.wa("Hello JobsAdmire, I want to report someone using your name. Details: "),
+      feedBadgeLabel: badge.label,
+      feedBadgeStyle: badge.style,
+      officeCountLabel: activeOf("office").length + " desks",
+      founderVerify: openRecord(founder),
+      toggleReg: () => this.setState((st) => ({ regOpen: !st.regOpen })),
+      toggleSteps: () => this.setState((st) => ({ stepsOpen: !st.stepsOpen })),
+      stepsOpenCls: this.state.stepsOpen ? "ja-open" : "",
+      stepsChevStyle: "transition:transform .22s cubic-bezier(0.22,1,0.36,1); transform:rotate(" + (this.state.stepsOpen ? "180deg" : "0deg") + ")",
+      toggleFlags: () => this.setState((st) => ({ flagsOpen: !st.flagsOpen })),
+      flagsOpenCls: this.state.flagsOpen ? "ja-open" : "",
+      flagsMoreLabel: this.state.flagsOpen ? "Show fewer red flags" : "Show 2 more red flags",
+      faqs: [
+        ["Can a JobsAdmire representative ask a worker for money?", "Never. There is no fee for the worker. No representative, coordinator or partner agency is authorised to collect any payment from a worker for a job, a permit, a visa or an interview. If money is requested, report it on this page."],
+        ["Who can sign a contract on behalf of JobsAdmire?", "Only the founder, Haris Jiva. No representative, office employee or partner agency can sign a service agreement, an employer contract or a worker contract for JobsAdmire. Any document signed by anyone else is not valid."],
+        ["How do I check that a representative is genuine?", "Ask for their representative ID and enter it above, or scan the QR code on their badge. The page shows the person's official record and current status, taken from our internal system."],
+        ["What if a representative has left the company?", "Their record shows as no longer authorised. Any agreement, document request or payment request made by a former representative after that date is not made on behalf of JobsAdmire."]
+      ].map((f, i) => ({
+        q: f[0], a: f[1],
+        open: (this.state.faqOpen ?? -1) === i,
+        onClick: () => this.setState((st) => ({ faqOpen: (st.faqOpen ?? -1) === i ? -1 : i })),
+        chevStyle: "margin-left:auto; flex:none; color:#1899D5; display:inline-flex; transition:transform .2s ease; transform:rotate(" + ((this.state.faqOpen ?? -1) === i ? "180deg" : "0deg") + ")"
+      })),
+      regOpenCls: this.state.regOpen ? "ja-open" : "",
+      regLabel: officeFilter ? officeFilter + " office" : (countryFilter || "All people"),
+      regCount: (officeFilter ? officePpl(officeFilter).length : (countryFilter ? fieldAll.filter((r) => (r.desk || r.place) === countryFilter).length : all.filter((r) => r.status === "active").length)),
+      regHasFlag: !!(countryFilter && flagOf(countryFilter)),
+      regFlagStyle: countryFilter ? flagStyleOf(countryFilter, 20, 14, 2) : "",
+      regTrigStyle: "cursor:pointer; font-family:inherit; text-align:left; background:#f4f9fc; border:1.5px solid #dbe8f2; border-radius:12px; padding:11px 13px; font-size:13.5px; font-weight:800; color:#16202e; min-height:46px",
+      regChevStyle: "flex:none; transition:transform .22s cubic-bezier(0.22,1,0.36,1); transform:rotate(" + (this.state.regOpen ? "180deg" : "0deg") + ")",
+      sidebarItems: [{ key: "all", label: "All people", count: all.filter((r) => r.status === "active").length }].concat(officeCities.map((c) => ({ key: "o:" + c, label: c + " office", count: officePpl(c).length }))).concat([{ divider: "Countries" }])
+        .concat(countryNames.map((c) => ({ key: "c:" + c, label: c, count: fieldAll.filter((r) => (r.desk || r.place) === c).length, flag: true })))
+        .map((s) => s.divider ? { isDivider: true, isItem: false, label: s.divider } : {
+          isDivider: false, isItem: true, label: s.label, count: s.count,
+          hasFlag: !!(s.flag && flagOf(s.label)),
+          flagStyle: s.flag ? flagStyleOf(s.label, 20, 14, 2) : "",
+          onClick: setFlt(s.key),
+          style: sideStyle(flt === s.key),
+          countStyle: "margin-left:auto; flex:none; font-size:11px; font-weight:800; border-radius:999px; padding:2px 9px; background:" + (flt === s.key ? "rgba(255,255,255,0.18)" : "#eef4f8") + "; color:" + (flt === s.key ? "#ffffff" : "#64748b")
+        }),
+      panelTitle: officeFilter ? officeFilter + " office" : (countryFilter || "All authorised people"),
+      panelSub: (panelPeopleCount === 1 ? "1 person" : panelPeopleCount + " people") + " · all report to the Antalya head office",
+      panelHasFlag: !!(countryFilter && flagOf(countryFilter)),
+      panelFlagStyle: countryFilter ? flagStyleOf(countryFilter, 24, 17, 3) : "",
+      panelGroups: panelGroupsArr,
+      statDesks: activeOf("office").length,
+      statPeople: all.filter((r) => r.status === "active").length,
+      statCountries: countryNames.length,
+      formerPeople: former.map(personCard),
+      hasFormer: former.length > 0
+    };
+  }
+}
+</script>
+
+</body>
+</html>
