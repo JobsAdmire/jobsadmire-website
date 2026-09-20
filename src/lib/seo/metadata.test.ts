@@ -46,4 +46,15 @@ describe('buildMetadata', () => {
     expect(md.alternates?.canonical).toBe(absoluteUrl('tr', '/'));
     expect(md.robots).toMatchObject({ index: true, follow: true });
   });
+
+  it("uses the fallbacks when the page record's ids are '' (no package SEO string, W23/W38)", () => {
+    const blank = {
+      ...bundle,
+      pages: { ...bundle.pages, home: { ...bundle.pages.home, titleId: '', descriptionId: '' } },
+    };
+    const md = buildMetadata({ ...base, bundle: blank, pageKey: 'home' });
+    expect(md.title).toBe('JobsAdmire');
+    expect(md.description).toBe('fallback description');
+    expect(md.robots).toMatchObject({ index: true, follow: true });
+  });
 });

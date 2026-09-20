@@ -19,8 +19,10 @@ export function buildMetadata(args: {
   const { locale, href, bundle, pageKey } = args;
   const t = makeT(bundle);
   const seo = bundle.pages[pageKey];
-  const title = seo ? t(seo.titleId) : args.fallbackTitle;
-  const description = seo ? t(seo.descriptionId) : args.fallbackDescription;
+  // '' = the page record exists but the package has no SEO string for it (T0b); the page's
+  // sys.seo.<pageKey>.* copy arrives as the fallback (W23/W38). Task 4's rewrite keeps this.
+  const title = seo?.titleId ? t(seo.titleId) : args.fallbackTitle;
+  const description = seo?.descriptionId ? t(seo.descriptionId) : args.fallbackDescription;
   const canonical = seo?.canonical ?? absoluteUrl(locale, href);
   return {
     metadataBase: new URL(SITE_URL),

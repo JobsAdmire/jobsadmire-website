@@ -1,25 +1,30 @@
 import { describe, expect, it } from 'vitest';
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { METRIC_KEYS } from './collections';
 import {
   findHardTypedMetrics,
   findLeadingLiraViolations,
   findParityViolations,
   numericTokens,
   parseMetricLiteral,
+  type MetricLiterals,
 } from './lint';
 
-const tr = JSON.parse(readFileSync(join(__dirname, 'local/bundle.tr.json'), 'utf8'))
-  .strings as Record<string, string>;
-const en = JSON.parse(readFileSync(join(__dirname, 'local/bundle.en.json'), 'utf8'))
-  .strings as Record<string, string>;
-const baseline = JSON.parse(readFileSync(join(__dirname, 'lint-baseline.json'), 'utf8')) as {
-  parity: string[];
-  leadingLira: string[];
+const read = (p: string) => JSON.parse(readFileSync(join(__dirname, p), 'utf8'));
+const tr = read('local/bundle.tr.json').strings as Record<string, string>;
+const en = read('local/bundle.en.json').strings as Record<string, string>;
+const catalogue = read('local/catalogue.json') as Record<
+  string,
+  { legal: boolean; edits?: string[] }
+>;
+const baseline = read('lint-baseline.json') as { parity: string[]; leadingLira: string[] };
+const exceptions = read('lint-exceptions.json') as Record<string, string>;
+const placeholders = read('../../scripts/metric-placeholders.json') as {
+  literals: MetricLiterals;
+  strings: Record<string, { key: string }[]>;
 };
-const exceptions = JSON.parse(
-  readFileSync(join(__dirname, 'lint-exceptions.json'), 'utf8'),
-) as Record<string, string>;
+const metricBaseline = read('../../scripts/metric-lint-baseline.json') as Record<string, string>;
 
 describe('numericTokens', () => {
   it('normalises separators so 38,944 and 38.944 compare equal', () => {
@@ -68,5 +73,33 @@ describe('numbers-out-of-copy (D17)', () => {
     expect(
       findHardTypedMetrics({ 'x.3': 'Reply in 4 working hours' }, literals, { 'x.3': 'legal: …' }),
     ).toEqual([]);
+  });
+  it('the generated catalogue carries no metric literal outside the baseline, in either locale', () => {
+    expect(findHardTypedMetrics(en, placeholders.literals, metricBaseline)).toEqual([]);
+    expect(findHardTypedMetrics(tr, placeholders.literals, metricBaseline)).toEqual([]);
+  });
+  it('every baseline entry is legal-flagged (or explicitly not a metric) and still needed', () => {
+    const flagged = new Set([
+      ...findHardTypedMetrics(en, placeholders.literals),
+      ...findHardTypedMetrics(tr, placeholders.literals),
+    ]);
+    for (const [id, reason] of Object.entries(metricBaseline)) {
+      expect(
+        flagged.has(id),
+        `${id} no longer carries a literal — prune it from the baseline`,
+      ).toBe(true);
+      if (reason.startsWith('not-a-metric: ')) continue;
+      expect(reason, id).toMatch(/^legal: /);
+      expect(catalogue[id]?.legal, id).toBe(true);
+    }
+  });
+  it('every re-authored id carries its placeholder in both locales and every metric has literals', () => {
+    for (const [id, entries] of Object.entries(placeholders.strings))
+      for (const { key } of entries) {
+        expect(en[id], id).toContain(`{${key}}`);
+        expect(tr[id], id).toContain(`{${key}}`);
+        expect(catalogue[id]?.edits, id).toContain('placeholder');
+      }
+    expect(Object.keys(placeholders.literals).sort()).toEqual([...METRIC_KEYS].sort());
   });
 });
