@@ -42,6 +42,12 @@ export default defineConfig({
       // syntax loaded as CommonJS (no `"type": "module"` here — Next owns that decision) breaks
       // under the `configLoader: 'native'` default of a coming major. The extension settles it.
       '@': fileURLToPath(new URL('./src', import.meta.url)),
+      // `server-only` is a compiler-level marker: Next aliases the bare specifier to its own
+      // `next/dist/compiled/server-only` at build time and `next/types/global.d.ts` declares it
+      // for tsc — there is no top-level package Vitest could resolve. The server modules that
+      // carry it (`src/content/adapter.ts`, `src/forms/{env,post,action,uploads}.ts`) resolve
+      // to an empty module here (R2: the guard is the build's job).
+      'server-only': fileURLToPath(new URL('./src/test/server-only.ts', import.meta.url)),
     },
   },
 });
