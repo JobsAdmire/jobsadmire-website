@@ -1,0 +1,153 @@
+import 'server-only';
+import { doorBase, doorConfig } from './env';
+import {
+  FormActionError,
+  FormDoorError,
+  type FormErrorResult,
+  type PostFormVisitor,
+} from './types';
+
+/**
+ * W29 — the two upload doors a page calls from an async `toFields` BEFORE the envelope is
+ * built (docs/INTEGRATIONS.md I4/I5). Both return only the object KEY the catalog expects
+ * (`cvKey`, `evidenceKeys[]`); the browser never talks to storage or to Operations.
+ *
+ * Refusals are visitor-side (`FormActionError` with `field` + code `file` → the error text
+ * lands under the input) or door-side (`FormDoorError` → the same fallback panel `postForm`
+ * would show). One attempt each — a retry would upload the bytes twice; W3's retry rule is
+ * for the idempotent form post.
+ */
+
+/** careers-public's caps (`careers-public.controller.ts`): PDF only, 5 MB. */
+export const MAX_CV_BYTES = 5 * 1024 * 1024;
+/** website/fraud-evidence-file.ts: 8 MB per file, three files per report. */
+export const MAX_EVIDENCE_BYTES = 8 * 1024 * 1024;
+export const MAX_EVIDENCE_FILES = 3;
+export const UPLOAD_TIMEOUT_MS = 15_000;
+
+/** What the door hands back — mirrored from the catalog's `cvKey` / `evidenceKeys` patterns. */
+const CV_KEY_RE = /^careers-cv\/[A-Za-z0-9._-]+\.pdf$/i;
+const EVIDENCE_KEY_RE = /^website-fraud\/[A-Za-z0-9._-]+$/;
+const MAX_UA = 500;
+
+export type UploadDeps = { fetch?: typeof fetch; env?: NodeJS.ProcessEnv; timeoutMs?: number };
+type Opts = { field?: string } & UploadDeps;
+
+/** A `FormData` entry that is a file (a string entry is never one). */
+export function isFile(v: unknown): v is File {
+  return typeof File !== 'undefined' && v instanceof File;
+}
+
+const refuse = (field: string, why: string) =>
+  new FormActionError(why, { name: field, code: 'file' });
+
+const isTimeout = (err: unknown) =>
+  err instanceof Error && (err.name === 'TimeoutError' || err.name === 'AbortError');
+
+/** Non-2xx / no answer → the door-side result the fallback panel understands. */
+function doorFailure(status: number): FormErrorResult {
+  if (status === 401) return { kind: 'unauthorized' };
+  if (status === 404) return { kind: 'off' };
+  if (status === 429) return { kind: 'tripped' };
+  return { kind: 'unavailable', cause: 'server' };
+}
+
+async function send(
+  url: string,
+  file: File,
+  headers: Record<string, string> | undefined,
+  deps: UploadDeps,
+): Promise<{ status: number; json: unknown }> {
+  const body = new FormData();
+  body.append('file', file, file.name);
+  const doFetch = deps.fetch ?? fetch;
+  let res: Response;
+  try {
+    res = await doFetch(url, {
+      method: 'POST',
+      headers,
+      body,
+      cache: 'no-store',
+      signal: AbortSignal.timeout(deps.timeoutMs ?? UPLOAD_TIMEOUT_MS),
+    });
+  } catch (err) {
+    throw new FormDoorError({ kind: 'unavailable', cause: isTimeout(err) ? 'timeout' : 'network' });
+  }
+  return { status: res.status, json: await res.json().catch(() => null) };
+}
+
+const keyOf = (json: unknown): unknown =>
+  typeof json === 'object' && json !== null && typeof (json as { data?: unknown }).data === 'object'
+    ? ((json as { data: { key?: unknown } }).data?.key ?? null)
+    : null;
+
+/**
+ * `POST ${OPS_API_URL}/api/careers/upload-cv` (public, multipart `file`, PDF ≤ 5 MB). The
+ * key comes back as `careers-cv/<uuid><ext>`, so the sent filename must end in `.pdf` for the
+ * catalog's `cvKey` pattern to accept it — checked here, not left to the door.
+ */
+export async function uploadCv(file: File, opts: Opts = {}): Promise<{ cvKey: string }> {
+  const field = opts.field ?? 'cv';
+  if (file.size === 0) throw refuse(field, 'empty file');
+  if (file.type !== 'application/pdf' || !/\.pdf$/i.test(file.name))
+    throw refuse(field, 'not a PDF');
+  if (file.size > MAX_CV_BYTES) throw refuse(field, 'over 5 MB');
+  const base = doorBase(opts.env ?? process.env);
+  if (!base) {
+    console.error('[uploadCv] OPS_API_URL not configured');
+    throw new FormDoorError({ kind: 'unauthorized' });
+  }
+  const { status, json } = await send(`${base}/api/careers/upload-cv`, file, undefined, opts);
+  if (status === 400) throw refuse(field, 'door refused the file');
+  if (status < 200 || status >= 300) {
+    console.error('[uploadCv] door answered', { status });
+    throw new FormDoorError(doorFailure(status));
+  }
+  const key = keyOf(json);
+  if (typeof key !== 'string' || !CV_KEY_RE.test(key)) {
+    console.error('[uploadCv] malformed answer from the door');
+    throw new FormDoorError({ kind: 'unavailable', cause: 'server' });
+  }
+  return { cvKey: key };
+}
+
+/**
+ * `POST ${OPS_API_URL}/api/website/v1/uploads/fraud-evidence` with the write token — the
+ * door sniffs the bytes (JPEG/PNG/WEBP/PDF), so the client-declared type is not checked here;
+ * the route takes ONLY the `file` part (any other part is a 400). A null `key` is the test
+ * token's dry run, which the visitor path never uses — treated as an outage, never as success.
+ */
+export async function uploadFraudEvidence(
+  file: File,
+  visitor: PostFormVisitor,
+  opts: Opts = {},
+): Promise<{ key: string }> {
+  const field = opts.field ?? 'evidence';
+  if (file.size === 0) throw refuse(field, 'empty file');
+  if (file.size > MAX_EVIDENCE_BYTES) throw refuse(field, 'over 8 MB');
+  const door = doorConfig(opts.env ?? process.env);
+  if (!door) {
+    console.error('[uploadFraudEvidence] OPS_API_URL / OPS_WEBSITE_WRITE_TOKEN not configured');
+    throw new FormDoorError({ kind: 'unauthorized' });
+  }
+  const headers: Record<string, string> = { Authorization: `Bearer ${door.token}` };
+  if (visitor.ip) headers['X-Website-Visitor-Ip'] = visitor.ip;
+  if (visitor.ua) headers['X-Website-Visitor-Ua'] = visitor.ua.slice(0, MAX_UA);
+  const { status, json } = await send(
+    `${door.base}/api/website/v1/uploads/fraud-evidence`,
+    file,
+    headers,
+    opts,
+  );
+  if (status === 400) throw refuse(field, 'door refused the file');
+  if (status < 200 || status >= 300) {
+    console.error('[uploadFraudEvidence] door answered', { status });
+    throw new FormDoorError(doorFailure(status));
+  }
+  const key = keyOf(json);
+  if (typeof key !== 'string' || !EVIDENCE_KEY_RE.test(key)) {
+    console.error('[uploadFraudEvidence] no usable key from the door (dry run or malformed)');
+    throw new FormDoorError({ kind: 'unavailable', cause: 'server' });
+  }
+  return { key };
+}
