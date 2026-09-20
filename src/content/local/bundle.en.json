@@ -26,10 +26,10 @@
   "home.021": "We source from 13 countries with our own people on the ground, file every work permit under law No. 4904, and get workers to your site ready to start.",
   "home.022": "Request workers →",
   "home.023": "See available workers",
-  "home.024": "Free proposal within 24 hours",
+  "home.024": "Free proposal within {homepageReplyHours} hours",
   "home.025": "Request workers",
   "home.026": "Tell us what you need",
-  "home.027": "Reply within 24 hours",
+  "home.027": "Reply within {homepageReplyHours} hours",
   "home.028": "Candidate profiles, real monthly cost and a permit timeline — free.",
   "home.029": "Get free proposal →",
   "home.030": "Ask us to call you",
@@ -59,7 +59,7 @@
   "home.054": "approvals wall · real routes",
   "home.055": "All approvals →",
   "home.056": "I need workers",
-  "home.057": "Free proposal with real cost in 24 hours",
+  "home.057": "Free proposal with real cost in {homepageReplyHours} hours",
   "home.058": "I'm an agency abroad",
   "home.059": "Send candidates, we pay you on placement",
   "home.060": "Check someone's ID",
@@ -109,7 +109,7 @@
   "home.104": "Day 0",
   "home.105": "Share your requirement",
   "home.106": "Sector, headcount, location and timeline — via the form or WhatsApp.",
-  "home.107": "24 hours",
+  "home.107": "{homepageReplyHours} hours",
   "home.108": "Your proposal arrives",
   "home.109": "Candidate profiles, the real monthly cost and a permit timeline — free, no commitment.",
   "home.110": "Week 1–2",
@@ -122,7 +122,7 @@
   "home.117": "First working day",
   "home.118": "Travel, onboarding, SGK registration and 30-day follow-up — workers start on schedule.",
   "home.119": "Agent network",
-  "home.120": "Vetted partner agencies in 13 countries",
+  "home.120": "Vetted partner agencies in {countries} countries",
   "home.121": "Partner agencies and training institutes source and prepare candidates in their country — under our rules, supervised by our own team. They cannot sign contracts on behalf of JobsAdmire and never collect money from a worker.",
   "home.122": "Source countries",
   "home.123": "Supervised by our own country representatives",
@@ -136,7 +136,7 @@
   "home.131": "Operations, work permits, employer desk and quality — where every proposal and permit is handled.",
   "home.132": "Karachi office",
   "home.133": "Antalya HQ",
-  "home.134": "Our tech team — website, CRM and internal systems that keep every case trackable.",
+  "home.134": "Our sourcing team — candidate interviews, trade tests and document checks before a profile reaches you.",
   "home.135": "Country representatives",
   "home.136": "Our employees in every source country — they run interviews, check documents and supervise partner agencies.",
   "home.137": "Verify any team member →",
@@ -167,12 +167,12 @@
   "home.162": "Your dashboard",
   "home.163": "Your whole workforce in one portal",
   "home.164": "No spreadsheets and no phone calls to get updates. Everything from shortlist to permit lives on the portal — and on your phone.",
-  "home.165": "Shortlist in 24 hours, only pre-verified profiles",
+  "home.165": "Shortlist in {homepageReplyHours} hours, only pre-verified profiles",
   "home.166": "Contracts signed online — no courier",
   "home.167": "Live permit tracking",
   "home.168": "Every application status, in real time",
   "home.169": "Approve a candidate in 30 seconds",
-  "home.170": "Shortlist in 24 hours, contracts signed online",
+  "home.170": "Shortlist in {homepageReplyHours} hours, contracts signed online",
   "home.171": "Live permit status for every worker",
   "home.172": "Approve a candidate from your phone in 30 seconds",
   "home.173": "See how it works →",
@@ -190,7 +190,7 @@
   "home.185": "Talk to the Antalya employer team directly — free consultation, proposal within 24 hours. Workers never pay a fee, law No. 4904.",
   "home.186": "Request workers →",
   "home.187": "Call the office",
-  "home.188": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+  "home.188": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits, end-to-end.",
   "home.189": "For Employers",
   "home.190": "Company",
   "home.191": "Contact",
@@ -199,7 +199,7 @@
   "home.194": "Manage your workforce anywhere",
   "home.195": "Approve candidates, track permits and get instant updates.",
   "home.196": "Antalya · Head office",
-  "home.197": "Karachi · Tech office",
+  "home.197": "Karachi · Sourcing office",
   "home.198": "Mon–Fri 09:00–18:00",
   "home.199": "Mon–Sat 10:00–19:00 PKT",
   "home.200": "Our team",
@@ -210,7 +210,7 @@
   "home.205": "Skill profiles, vetting standards, document realities and timelines — everything we have learned from the route we know best, written for employers who have never hired overseas before.",
   "home.206": "days",
   "home.207": "AI matching",
-  "home.208": "Shortlist in 24 hours, only pre-verified profiles",
+  "home.208": "Shortlist in {homepageReplyHours} hours, only pre-verified profiles",
   "home.209": "E-signature",
   "home.210": "Contracts signed online — no courier",
   "home.211": "Live permit tracking",
@@ -260,7 +260,7 @@
   "home.255": "Work Permit Processing",
   "home.256": "Arrival & Deployment",
   "home.257": "Cost Transparency",
-  "home.258": "Sourcing and vetting from 13 countries — matched to your sector, skill level and headcount, by our own representatives.",
+  "home.258": "Sourcing and vetting from {countries} countries — matched to your sector, skill level and headcount, by our own representatives.",
   "home.259": "Every permit filed and tracked to approval under law No. 4904 — no paperwork on your side, 45 days on average.",
   "home.260": "Travel, onboarding and follow-up support — workers start on schedule, from day one.",
   "home.261": "Salary floors, SGK and permit fees — the real 2026 monthly figure before you commit.",
@@ -268,7 +268,7 @@
   "home.263": "Work Permits",
   "home.264": "Compliance",
   "home.265": "Recruitment",
-  "home.266": "Turkey's 2026 minimum wage: what it means for hiring costs",
+  "home.266": "Türkiye's 2026 minimum wage: what it means for hiring costs",
   "home.267": "New wage floor, new permit salary thresholds — and what changes for your budget.",
   "home.268": "Work permit rejection reasons — and how to avoid them",
   "home.269": "The 7 most common rejection reasons, and how we file to avoid every one.",
@@ -307,7 +307,7 @@
   "home.302": "Does the worker pay any fee?",
   "home.303": "Never. Job seekers are never charged a fee (law No. 4904). Anyone asking a worker for money is not working for us — check their JA- ID on the public register and report them to us.",
   "home.304": "Which sectors and countries do you cover?",
-  "home.305": "Factory and manufacturing, agriculture, tourism and hospitality, and construction — sourcing from 13 countries including Pakistan, Uzbekistan, Nepal, India, Kyrgyzstan and the Philippines.",
+  "home.305": "Factory and manufacturing, agriculture, tourism and hospitality, and construction — sourcing from {countries} countries including Pakistan, Uzbekistan, Nepal, India, Kyrgyzstan and the Philippines.",
   "hire.001": "About Us",
   "hire.002": "Hire Workers",
   "hire.003": "Candidates",
@@ -330,7 +330,7 @@
   "hire.020": "Home",
   "hire.021": "Hire verified overseas",
   "hire.022": "workers",
-  "hire.023": "in Turkey",
+  "hire.023": "in Türkiye",
   "hire.024": "Skilled workers from 13+ countries, vetted by our own teams, with every work permit filed and tracked by us —",
   "hire.025": "on your site in six to eight weeks.",
   "hire.026": "Vetted workers from 13+ countries, permits filed by us —",
@@ -355,7 +355,7 @@
   "hire.045": "Request sent",
   "hire.046": "We reply within 4 working hours.",
   "hire.047": "Company name",
-  "hire.048": "City in Turkey",
+  "hire.048": "City in Türkiye",
   "hire.049": "Roles needed (e.g. welder, picker)",
   "hire.050": "How many?",
   "hire.051": "Phone / WhatsApp",
@@ -364,7 +364,7 @@
   "hire.054": "Industry",
   "hire.055": "Roles needed (e.g. welder)",
   "hire.056": "Number of workers",
-  "hire.057": "City / location in Turkey",
+  "hire.057": "City / location in Türkiye",
   "hire.058": "When do you need them?",
   "hire.059": "As soon as possible",
   "hire.060": "Within 1–2 months",
@@ -380,7 +380,7 @@
   "hire.070": "FAQ",
   "hire.071": "Request workers",
   "hire.072": "Need workers? Tell us the roles — written quote within 24 hours.",
-  "hire.073": "employer partners across Turkey",
+  "hire.073": "employer partners across Türkiye",
   "hire.074": "Industries we staff",
   "hire.075": "From single roles to full production teams — these are the sectors we place workers in every month.",
   "hire.076": "Factory / Manufacturing",
@@ -499,7 +499,7 @@
   "hire.189": "Mobile app",
   "hire.190": "Approve a candidate from your phone in 30 seconds — no laptop, no waiting until Monday.",
   "hire.191": "470+ placements",
-  "hire.192": "managed through this portal by employers in Turkey",
+  "hire.192": "managed through this portal by employers in Türkiye",
   "hire.193": "Book a demo →",
   "hire.194": "FAQ",
   "hire.195": "Employer questions, answered",
@@ -530,7 +530,7 @@
   "hire.220": "Where the process requires it, your details are shared only with our own representatives abroad — never with third parties. Full detail in the Privacy Notice.",
   "hire.221": "Don't use WhatsApp?",
   "hire.222": "Send this request by email",
-  "hire.223": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+  "hire.223": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits, end-to-end.",
   "hire.224": "İŞKUR Licensed · Permit No. 1730",
   "hire.225": "For Employers",
   "hire.226": "Company",
@@ -538,7 +538,7 @@
   "hire.228": "Get Our App",
   "hire.229": "Telegram",
   "hire.230": "Antalya · Head office",
-  "hire.231": "Karachi · Tech office",
+  "hire.231": "Karachi · Sourcing office",
   "hire.232": "Mon–Fri 09:00–18:00",
   "hire.233": "Mon–Sat 10:00–19:00 PKT",
   "hire.234": "Karachi, Pakistan",
@@ -571,11 +571,11 @@
   "hire.261": "Timeline",
   "hire.262": "City",
   "hire.263": "Phone / WhatsApp",
-  "hire.264": "Hire Verified Overseas Workers in Turkey | İŞKUR-Licensed | JobsAdmire",
-  "hire.265": "Hire skilled overseas workers in Turkey in 6–8 weeks. İŞKUR-licensed agency (Permit No. 1730) — we file every work permit, vet every candidate, and you pay no upfront fee. Written quote in 24 hours.",
-  "hire.266": "Hire Verified Overseas Workers in Turkey | JobsAdmire",
+  "hire.264": "Hire Verified Overseas Workers in Türkiye | İŞKUR-Licensed | JobsAdmire",
+  "hire.265": "Hire skilled overseas workers in Türkiye in 6–8 weeks. İŞKUR-licensed agency (Permit No. 1730) — we file every work permit, vet every candidate, and you pay no upfront fee. Written quote in 24 hours.",
+  "hire.266": "Hire Verified Overseas Workers in Türkiye | JobsAdmire",
   "hire.267": "Skilled workers from 13+ countries, vetted by our own teams, every work permit filed by us — on site in six to eight weeks. No upfront fee.",
-  "hire.268": "İŞKUR-licensed international recruitment agency placing verified overseas workers with employers in Turkey.",
+  "hire.268": "İŞKUR-licensed international recruitment agency placing verified overseas workers with employers in Türkiye.",
   "hire.269": "Overseas worker recruitment and work permit processing",
   "hire.270": "No upfront fee — one agreed placement fee per worker, invoiced after arrival.",
   "hire.271": "Day 0",
@@ -615,7 +615,7 @@
   "calc.003": "2026 rates · Updated January 2026",
   "calc.004": "What does a foreign worker",
   "calc.005": "really cost",
-  "calc.006": "in Turkey?",
+  "calc.006": "in Türkiye?",
   "calc.007": "Salary, SGK employer contribution, permit fees, flights and accommodation — calculated in one place, with 2026 rates. No sign-up, no email required.",
   "calc.008": "Your requirement",
   "calc.009": "Per month",
@@ -626,7 +626,7 @@
   "calc.014": "Contract length",
   "calc.015": "Gross salary offered",
   "calc.016": "What you cover",
-  "calc.017": "Flight to Turkey",
+  "calc.017": "Flight to Türkiye",
   "calc.018": "Accommodation",
   "calc.019": "(shared, per worker)",
   "calc.020": "Minimum wage support",
@@ -652,14 +652,14 @@
   "calc.040": "Estimates based on 2026 rates: minimum wage ₺33,030 gross, employer SGK 21.75% with the standard 2-point discount (18.75% in manufacturing with 5 points, 23.75% with no discount), state permit and card fees ≈ ₺16,000 per worker. Actual figures vary by sector, city and case.",
   "calc.041": "Can you hire",
   "calc.042": "?",
-  "calc.043": "Turkey's 5:1 rule means the workplace needs",
+  "calc.043": "Türkiye's 5:1 rule means the workplace needs",
   "calc.044": "Turkish employees",
   "calc.045": "on SGK for this many — unless your sector is exempt.",
   "calc.046": "Needs",
   "calc.047": "Turkish staff",
   "calc.048": "on SGK.",
   "calc.049": "Check your quota →",
-  "calc.050": "Want the exact number for your case? Written quote within 24 hours.",
+  "calc.050": "Want the exact number for your case? Written quote within {homepageReplyHours} hours.",
   "calc.051": "Call",
   "calc.052": "WhatsApp quote",
   "calc.053": "Request workers →",
@@ -681,7 +681,7 @@
   "calc.069": "5 questions — the usual refusal reasons",
   "calc.070": "Cost of doing it the wrong way",
   "calc.071": "2026 fines for unregistered employment",
-  "calc.072": "Hiring foreign students in Turkey",
+  "calc.072": "Hiring foreign students in Türkiye",
   "calc.073": "A different route, its own rules",
   "calc.074": "Cost questions",
   "calc.075": "What employers ask about these numbers",
@@ -710,13 +710,13 @@
   "calc.098": "Employer cost",
   "calc.099": "= gross salary + SGK employer contribution (21.75%, or 18.75% in manufacturing). Permit fees, flights and accommodation come on top — pick a job above and the calculator does the full number for you.",
   "calc.100": "Now get the real number",
-  "calc.101": "Estimates are useful — a written quote is better. Tell us the roles, headcount and city, and you get the full cost breakdown including our service fee within 24 hours.",
+  "calc.101": "Estimates are useful — a written quote is better. Tell us the roles, headcount and city, and you get the full cost breakdown including our service fee within {homepageReplyHours} hours.",
   "calc.102": "Your estimate so far",
   "calc.103": "That is roughly",
-  "calc.104": "Service fee is quoted in writing — send this and we come back with the exact figure within 24 hours.",
+  "calc.104": "Service fee is quoted in writing — send this and we come back with the exact figure within {homepageReplyHours} hours.",
   "calc.105": "Get a written quote",
   "calc.106": "See available candidates",
-  "calc.107": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+  "calc.107": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits, end-to-end.",
   "calc.108": "Call us",
   "calc.109": "The cost of doing it the wrong way",
   "calc.110": "Some employers think about hiring quietly, without a permit. Here is what that really costs under the 2026 fines.",
@@ -840,7 +840,7 @@
   "calc.228": "1 year",
   "calc.229": "+2 years",
   "calc.230": "+3 years",
-  "calc.231": "The first permit is for one year, then it extends by two, then by three. That takes the same worker to six years on your payroll. After that the permit keeps renewing on the same basis, and once they reach eight years of legal residence in Turkey they can apply for an open-ended permit.",
+  "calc.231": "The first permit is for one year, then it extends by two, then by three. That takes the same worker to six years on your payroll. After that the permit keeps renewing on the same basis, and once they reach eight years of legal residence in Türkiye they can apply for an open-ended permit.",
   "calc.232": "Why they stay",
   "calc.233": "The permit is tied to your workplace, so they cannot move to the employer down the road mid-contract. They relocated for this job, their family plan depends on it, and a clean renewal record is what lets them keep working here. Leaving early costs them far more than it costs you.",
   "calc.234": "What that is worth",
@@ -869,7 +869,7 @@
   "calc.257": "The permit is tied to your workplace, so you stop re-hiring and re-training.",
   "calc.258": "Paperwork is ours.",
   "calc.259": "Sourcing, checks, permit filing and SGK admin are done by us.",
-  "calc.260": "Hiring foreign students already in Turkey",
+  "calc.260": "Hiring foreign students already in Türkiye",
   "calc.261": "This is a different route with its own rules: no flight, no consulate step, and the person is already living in your city. The limits depend entirely on what they are studying.",
   "calc.262": "Associate & bachelor students",
   "calc.263": "Ön lisans · Lisans",
@@ -990,7 +990,7 @@
   "calc.378": "Your answers are not sent to us — the check runs in your browser.",
   "calc.379": "Fix these first",
   "calc.380": "Want your exact number?",
-  "calc.381": "Send us the roles and headcount — written quote within 24 hours.",
+  "calc.381": "Send us the roles and headcount — written quote within {homepageReplyHours} hours.",
   "calc.382": "Most refusals come from five things. Answer them honestly. It takes a minute and shows you whether to file now or fix something first.",
   "calc.383": "Cost questions",
   "calc.384": "What employers ask when they see these numbers for the first time.",
@@ -1090,7 +1090,7 @@
   "calc.478": "In calculator ✓",
   "calc.479": "Use in calculator →",
   "calc.480": "Is the service fee really not shown here?",
-  "calc.481": "That is right, because it depends on the job, the number of workers and how much of the work you need from us. It is always a fixed amount, agreed in writing before we start, and you pay nothing in advance. Send us the roles and the number of workers and you get the exact price within 24 hours.",
+  "calc.481": "That is right, because it depends on the job, the number of workers and how much of the work you need from us. It is always a fixed amount, agreed in writing before we start, and you pay nothing in advance. Send us the roles and the number of workers and you get the exact price within {homepageReplyHours} hours.",
   "calc.482": "Do foreign workers cost more than Turkish workers?",
   "calc.483": "On payroll, no. The gross salary and the SGK payments are the same, because Turkish labour law treats both workers the same way. The extra cost is paid only once: permit and card fees of about ₺16,000 per worker for each permit period, plus travel if you pay for it. Over a contract of several years, the difference per month is small.",
   "calc.484": "Is there a legal minimum salary for foreign workers?",
@@ -1100,9 +1100,9 @@
   "calc.488": "Do government SGK incentives apply to foreign workers too?",
   "calc.489": "The ones given to the workplace do. The 5510 premium discount and the minimum wage support are given to your workplace and depend on your own SGK record, not on the worker's nationality, so they work the same way for a foreign worker. Incentives that need the person to be registered as unemployed at İŞKUR, such as 7103 / geçici 19, cannot be used, because a foreign worker cannot have that registration. Since everything depends on your own SGK record, we always quote the full price without discounts and let your accountant confirm the saving.",
   "calc.490": "Is there a limit on how many foreign workers we can employ?",
-  "calc.491": "Yes. As a rule the Ministry wants five Turkish employees registered with SGK at that workplace for every foreign worker. Some cases are exempt: certified tourism and hotel businesses with at least ten Turkish employees, workplaces with net sales of ₺50 million or more (up to five foreign workers), household services, and people who have lived legally in Turkey for three of the last five years. Use the quota check above for your own numbers. We confirm any exemption in writing before we file an application.",
+  "calc.491": "Yes. As a rule the Ministry wants five Turkish employees registered with SGK at that workplace for every foreign worker. Some cases are exempt: certified tourism and hotel businesses with at least ten Turkish employees, workplaces with net sales of ₺50 million or more (up to five foreign workers), household services, and people who have lived legally in Türkiye for three of the last five years. Use the quota check above for your own numbers. We confirm any exemption in writing before we file an application.",
   "calc.492": "Is there government funding for hiring foreign workers, in agriculture or any other sector?",
-  "calc.493": "No. Turkey gives no grant, refund or wage support for employing a foreign worker, in farming or in any other sector. Farming supports (tarımsal destekler) are paid to the producer for production itself: land, diesel, seed and animals. They do not increase if you hire workers from abroad. The only state help here is the SGK premium discount and the minimum wage support, and you would get both for a Turkish employee too.",
+  "calc.493": "No. Türkiye gives no grant, refund or wage support for employing a foreign worker, in farming or in any other sector. Farming supports (tarımsal destekler) are paid to the producer for production itself: land, diesel, seed and animals. They do not increase if you hire workers from abroad. The only state help here is the SGK premium discount and the minimum wage support, and you would get both for a Turkish employee too.",
   "calc.494": "Does our company itself have to meet any conditions?",
   "calc.495": "Yes, and this is separate from the 5:1 rule. Your company must meet at least one of these: ₺100,000 paid-in capital, ₺800,000 gross sales last year, or $250,000 of exports. One of them is enough. Household employers and a few exempt groups do not have to meet this. Many companies fail here without expecting it, so check it before you open a file. The pass check on this page takes you through it.",
   "calc.496": "What happens if we employ someone without a permit?",
@@ -1137,13 +1137,13 @@
   "calc.525": "Public procurement work",
   "calc.526": "If the work is for goods or services bought by a public institution through a contract or tender, the 5:1 rule and the company test do not apply.",
   "calc.527": "Bilateral and multilateral treaties",
-  "calc.528": "If an agreement signed by Turkey covers this, the normal rules are not applied.",
+  "calc.528": "If an agreement signed by Türkiye covers this, the normal rules are not applied.",
   "calc.529": "Company partners",
   "calc.530": "If the foreign worker is a company shareholder, the 5:1 rule is checked only in the last six months of the first one-year permit, not at the beginning.",
   "calc.531": "3 of the last 5 years legally resident",
-  "calc.532": "A candidate who has lived in Turkey with a residence permit, work permit or international protection for three of the last five years does not need the 5:1 rule or the company test. Student years do not count. This is often the fastest route when your quota is full.",
+  "calc.532": "A candidate who has lived in Türkiye with a residence permit, work permit or international protection for three of the last five years does not need the 5:1 rule or the company test. Student years do not count. This is often the fastest route when your quota is full.",
   "calc.533": "Married to a Turkish citizen",
-  "calc.534": "A foreign national who is married to a Turkish citizen and lives with them in Turkey can get a permit through the special route, outside the normal rules.",
+  "calc.534": "A foreign national who is married to a Turkish citizen and lives with them in Türkiye can get a permit through the special route, outside the normal rules.",
   "calc.535": "Parent or child is a Turkish citizen",
   "calc.536": "If the candidate's mother, father or child is a Turkish citizen, the normal rules are not applied.",
   "calc.537": "Qualified workforce or investor",
@@ -1193,7 +1193,7 @@
   "partner.020": "İŞKUR Licensed · Permit No. 1730",
   "partner.021": "İŞKUR · 1730",
   "partner.022": "info@jobsadmire.com",
-  "partner.023": "Partner with a licensed recruitment agency in Turkey",
+  "partner.023": "Partner with a licensed recruitment agency in Türkiye",
   "partner.024": "We sit between supply and demand: licensed agents and institutes send us verified candidates, and we place them with Turkish HR agencies and employers — with every work permit filed by us.",
   "partner.025": "Licensed agents and institutes send us verified candidates — we place them with Turkish employers and file every work permit.",
   "partner.026": "İŞKUR-licensed",
@@ -1207,8 +1207,8 @@
   "partner.034": "Hero photo — partner meeting, handshake or agent network",
   "partner.035": "Our network today",
   "partner.036": "Growing weekly",
-  "partner.037": "HR agencies in Turkey we supply workers to",
-  "partner.038": "HR agencies in Turkey",
+  "partner.037": "HR agencies in Türkiye we supply workers to",
+  "partner.038": "HR agencies in Türkiye",
   "partner.039": "licensed sourcing partners already sending candidates",
   "partner.040": "Sourcing partners abroad",
   "partner.041": "source countries across Asia and Africa",
@@ -1237,7 +1237,7 @@
   "partner.064": "Who are you?",
   "partner.065": "You have clients with vacancies. We supply the verified overseas workers and file the permits — your client stays yours.",
   "partner.066": "See how it works →",
-  "partner.067": "Licensed recruitment agents in Pakistan, Nepal, Uzbekistan and beyond — send us candidates, we place them in Turkey.",
+  "partner.067": "Licensed recruitment agents in Pakistan, Nepal, Uzbekistan and beyond — send us candidates, we place them in Türkiye.",
   "partner.068": "Training institutes",
   "partner.069": "Your graduates get real overseas placements — and your institute gets the results to show the next intake.",
   "partner.070": "Your application",
@@ -1248,16 +1248,16 @@
   "partner.075": "Your client stays your client",
   "partner.076": "We never approach an employer you introduce — it is written into the cooperation agreement.",
   "partner.077": "Shortlists from 12+ countries",
-  "partner.078": "Skill-tested, document-checked candidates — usually within 24 hours of your request.",
+  "partner.078": "Skill-tested, document-checked candidates — usually within {homepageReplyHours} hours of your request.",
   "partner.079": "Permits and compliance on us",
   "partner.080": "Filed under İŞKUR Permit No. 1730 and Turkish law No. 4904 — no compliance load on your team.",
   "partner.081": "Agreed in writing before the first placement — discussed in our first meeting.",
   "partner.082": "What we ask from you",
-  "partner.083": "· A registered company in Turkey",
+  "partner.083": "· A registered company in Türkiye",
   "partner.084": "· Live client demand — roles, headcount and location",
   "partner.085": "· A signed cooperation agreement before the first placement",
   "partner.086": "Apply as an HR agency",
-  "partner.087": "We reply within 4 working hours.",
+  "partner.087": "We reply within {replySlaHours} working hours.",
   "partner.088": "Application sent",
   "partner.089": "Our partnerships team will be in touch.",
   "partner.090": "I agree that JobsAdmire may process these details to assess our partnership, in line with the",
@@ -1265,7 +1265,7 @@
   "partner.092": "Send application →",
   "partner.093": "Agency name",
   "partner.094": "Contact person",
-  "partner.095": "City in Turkey",
+  "partner.095": "City in Türkiye",
   "partner.096": "Work email",
   "partner.097": "Phone / WhatsApp",
   "partner.098": "Which sectors and roles do your clients need?",
@@ -1291,7 +1291,7 @@
   "partner.118": "Which professions and how many candidates can you supply monthly?",
   "partner.119": "For institutes",
   "partner.120": "Turn your graduates into placements you can advertise",
-  "partner.121": "Technical and vocational institutes train good people — we put them to work in Turkey. Every placement becomes proof for your next intake, and your students graduate with a real job waiting in Turkey.",
+  "partner.121": "Technical and vocational institutes train good people — we put them to work in Türkiye. Every placement becomes proof for your next intake, and your students graduate with a real job waiting in Türkiye.",
   "partner.122": "A placement story for your marketing",
   "partner.123": "Named professions, real employers, real overseas jobs — the strongest admission argument an institute can have.",
   "partner.124": "We tell you what the market wants",
@@ -1310,7 +1310,7 @@
   "partner.137": "How a partnership starts",
   "partner.138": "Same four steps for every partner type — usually done within two weeks.",
   "partner.139": "You apply",
-  "partner.140": "Send the form for your track. We reply within 4 working hours.",
+  "partner.140": "Send the form for your track. We reply within {replySlaHours} working hours.",
   "partner.141": "Video call meeting",
   "partner.142": "An initial interview — we check licences and fit, and discuss the partnership terms.",
   "partner.143": "Portal access",
@@ -1329,7 +1329,7 @@
   "partner.156": "— post vacancies and upload candidates with full access",
   "partner.157": "Live placement status",
   "partner.158": "— every candidate and permit tracked in real time",
-  "partner.159": "470+ placements",
+  "partner.159": "{placed} placements",
   "partner.160": "already managed through this portal",
   "partner.161": "Also on mobile — manage placements on the go",
   "partner.162": "Download on the",
@@ -1340,14 +1340,14 @@
   "partner.167": "FAQ",
   "partner.168": "Partner questions",
   "partner.169": "The things agencies, agents and institutes ask us before the first agreement.",
-  "partner.170": "For HR agencies in Turkey: do you contact our clients directly?",
+  "partner.170": "For HR agencies in Türkiye: do you contact our clients directly?",
   "partner.171": "No. When an HR agency introduces an employer, that employer stays with the agency — it is written into the cooperation agreement before any placement happens. Our role is supply and permits, not your client relationship.",
   "partner.172": "How are the partnership terms agreed?",
   "partner.173": "In writing, always before the first placement. Who pays whom and how much depends on the track, the professions and the volume, so we discuss it in the video call meeting and put it in writing in the cooperation agreement, signed in the portal.",
   "partner.174": "Which countries do you accept sourcing partners from?",
   "partner.175": "We currently work with licensed agents in Pakistan, Nepal, India, Uzbekistan, Kyrgyzstan, Turkmenistan, the Philippines, Indonesia and several African countries. Other countries are considered case by case, provided the agency is properly licensed.",
   "partner.176": "Who files the work permits?",
-  "partner.177": "We do, in Turkey, under our İŞKUR licence (Permit No. 1730) and labour law No. 4904. Partners never deal with Turkish permit filings themselves.",
+  "partner.177": "We do, in Türkiye, under our İŞKUR licence (Permit No. 1730) and labour law No. 4904. Partners never deal with Turkish permit filings themselves.",
   "partner.178": "How quickly can a partnership start producing placements?",
   "partner.179": "Once the agreement is signed, the first batch usually moves within weeks — sourcing and interviews first, then permits. We deliberately start small and scale after the first successful batch.",
   "partner.180": "Can an institute partner if it has never placed students abroad?",
@@ -1356,12 +1356,12 @@
   "partner.183": "Talk to our partnerships team directly.",
   "partner.184": "WhatsApp",
   "partner.185": "Call us",
-  "partner.186": "We reply within 4 working hours",
+  "partner.186": "We reply within {replySlaHours} working hours",
   "partner.187": "Let's see if we fit",
   "partner.188": "One short call is usually enough to know whether a partnership makes sense. No commitment, no paperwork before that.",
   "partner.189": "Apply as a partner →",
   "partner.190": "JobsAdmire · İŞKUR Private Employment Agency Permit No. 1730 · Antalya, Türkiye ·",
-  "partner.191": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+  "partner.191": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits, end-to-end.",
   "partner.192": "For Employers",
   "partner.193": "Available Workers",
   "partner.194": "Hiring Cost Calculator",
@@ -1392,8 +1392,8 @@
   "partner.219": "LinkedIn",
   "partner.220": "Jobs Admire",
   "partner.221": "JobsAdmire app",
-  "partner.222": "Recruitment Agency Partnership in Turkey — HR Agencies, Sourcing Agents & Institutes | JobsAdmire",
-  "partner.223": "İŞKUR-licensed recruitment agency in Turkey partnering with HR agencies, overseas sourcing partners and training institutes.",
+  "partner.222": "Recruitment Agency Partnership in Türkiye — HR Agencies, Sourcing Agents & Institutes | JobsAdmire",
+  "partner.223": "İŞKUR-licensed recruitment agency in Türkiye partnering with HR agencies, overseas sourcing partners and training institutes.",
   "wp.001": "İŞKUR Licensed · Permit No. 1730",
   "wp.002": "İŞKUR · 1730",
   "wp.003": "info@jobsadmire.com",
@@ -1416,14 +1416,14 @@
   "wp.020": "CRM Login →",
   "wp.021": "Home",
   "wp.022": "Updated July 2026 · Reviewed by our permit team",
-  "wp.023": "Turkey work permit guide —",
+  "wp.023": "Türkiye work permit guide —",
   "wp.024": "explained, and handled for you",
   "wp.025": "Everything an employer needs to know under Law No. 6735 — the standard work permit, the e-Muafiyet exemption, the rules and the penalties. We file every permit under our İŞKUR licence — for workers we place, or permit-only for workers you already have.",
   "wp.026": "The permit, the e-Muafiyet exemption and the rules under Law No. 6735 —",
   "wp.027": "and we file it all under our İŞKUR licence",
   "wp.028": "İŞKUR-licensed",
   "wp.029": "— Permit No. 1730, Law No. 4904",
-  "wp.030": "470+ permits filed",
+  "wp.030": "{placed} permits filed",
   "wp.031": "— tracked to approval, every time",
   "wp.032": "Permit-only service",
   "wp.033": "— already have a worker? We file just the permit",
@@ -1461,18 +1461,18 @@
   "wp.065": "A registered Turkish entity is required before any application — we can advise on the fastest setup route.",
   "wp.066": "The 1:5 ratio is only checked from the 7th month of the first permit — you have time to build up, and some sectors are exempt.",
   "wp.067": "Worker abroad: the application starts at the Turkish consulate in their country, then moves to the Ministry — we run both stages.",
-  "wp.068": "Worker already in Turkey with 6+ months residence: direct domestic application — usually the fastest route.",
+  "wp.068": "Worker already in Türkiye with 6+ months residence: direct domestic application — usually the fastest route.",
   "wp.069": "Without a 6-month residence permit, the application must start from the worker's home country consulate.",
   "wp.070": "Overdue tax or SGK debts suspend applications — these need clearing or restructuring before filing.",
   "wp.071": "Salary thresholds and financial-capacity criteria still apply per role — we pre-check these before filing.",
   "wp.072": "Fixable — but not yet",
   "wp.073": "Likely eligible, with planning",
   "wp.074": "You look eligible",
-  "wp.075": "Do you have a registered company in Turkey?",
+  "wp.075": "Do you have a registered company in Türkiye?",
   "wp.076": "How many Turkish citizens are on your SGK payroll?",
   "wp.077": "Where is the worker you want to hire right now?",
-  "wp.078": "In Turkey, with a residence permit of 6+ months",
-  "wp.079": "In Turkey, without a long residence permit",
+  "wp.078": "In Türkiye, with a residence permit of 6+ months",
+  "wp.079": "In Türkiye, without a long residence permit",
   "wp.080": "Any overdue tax or SGK (social security) debts?",
   "wp.081": "No / not yet",
   "wp.082": "Yes / not sure",
@@ -1490,7 +1490,7 @@
   "wp.094": "Budgeting a hire",
   "wp.095": "Salary, SGK, permit fees and flights — 2026 rates",
   "wp.096": "Cost calculator →",
-  "wp.097": "Two legal routes to work in Turkey",
+  "wp.097": "Two legal routes to work in Türkiye",
   "wp.098": "Law No. 6735 gives foreigners two doors: the standard work permit for real employment, and the e-Muafiyet exemption for short, specific assignments. Choosing the wrong one is the most common — and most expensive — mistake.",
   "wp.099": "Work permit",
   "wp.100": "e-Muafiyet",
@@ -1515,7 +1515,7 @@
   "wp.119": ", on the Ministry's online system — jointly with the worker (consulate stage first if abroad)",
   "wp.120": "Who applies",
   "wp.121": "The foreigner",
-  "wp.122": ", online at emuafiyet.csgb.gov.tr — within 30 days of entering Turkey",
+  "wp.122": ", online at emuafiyet.csgb.gov.tr — within 30 days of entering Türkiye",
   "wp.123": "Employer criteria apply:",
   "wp.124": "1:5 ratio, financial capacity, salary thresholds",
   "wp.125": "Conditions",
@@ -1570,7 +1570,7 @@
   "wp.174": "— workers stay tied to you",
   "wp.175": "Other types — special cases only",
   "wp.176": "Indefinite",
-  "wp.177": "— after 8 years of legal work in Turkey",
+  "wp.177": "— after 8 years of legal work in Türkiye",
   "wp.178": "Independent",
   "wp.179": "— self-employed & company owners",
   "wp.180": "Turquoise Card",
@@ -1616,7 +1616,7 @@
   "wp.220": "Machinery & equipment specialists",
   "wp.221": "Installation, maintenance, repair or user training for imported machinery.",
   "wp.222": "Cross-border service providers",
-  "wp.223": "Foreigners delivering a service into Turkey without local employment.",
+  "wp.223": "Foreigners delivering a service into Türkiye without local employment.",
   "wp.224": "Seasonal",
   "wp.225": "Agriculture & livestock workers",
   "wp.226": "Seasonal work within the provinces and quotas set by the Ministry.",
@@ -1624,7 +1624,7 @@
   "wp.228": "Science, culture, arts & sport",
   "wp.229": "Researchers, performers and athletes for the length of the activity.",
   "wp.230": "Trainers tied to exports & imports",
-  "wp.231": "Training on goods and services exported from or imported into Turkey.",
+  "wp.231": "Training on goods and services exported from or imported into Türkiye.",
   "wp.232": "More categories exist",
   "wp.233": "The full Article 48 list also covers diplomatic staff, exchange programmes, ship crews and others — ask us about your case.",
   "wp.234": "Deadline",
@@ -1644,7 +1644,7 @@
   "wp.248": "Pre-check",
   "wp.249": "We audit your company against the criteria — ratio, capital, salary threshold, debts — before anything is filed. No surprises later.",
   "wp.250": "Consulate stage",
-  "wp.251": "For workers abroad: work visa application at the Turkish consulate in their country, referenced to the Ministry application. Skipped for workers already in Turkey with 6+ months residence.",
+  "wp.251": "For workers abroad: work visa application at the Turkish consulate in their country, referenced to the Ministry application. Skipped for workers already in Türkiye with 6+ months residence.",
   "wp.252": "Ministry filing",
   "wp.253": "We file the joint application on the Ministry of Labour's online system within the legal window and answer every information request — typical decision in ~30 days.",
   "wp.254": "Approval & start",
@@ -1655,25 +1655,25 @@
   "wp.259": "How long will your case take?",
   "wp.260": "It depends on one thing: where the worker is right now.",
   "wp.261": "Worker abroad",
-  "wp.262": "Already in Turkey",
+  "wp.262": "Already in Türkiye",
   "wp.263": "Worker is abroad",
-  "wp.264": "~8–10 weeks",
+  "wp.264": "~{firstDayWeeks} weeks",
   "wp.265": "Week 1",
   "wp.266": "Work visa application at the Turkish consulate in the worker's country",
   "wp.267": "Weeks 2–6",
   "wp.268": "Ministry filing within 10 working days of the consular application, then ~30 days processing",
   "wp.269": "Weeks 6–9",
-  "wp.270": "Approval, fees, visa issuance and travel to Turkey",
+  "wp.270": "Approval, fees, visa issuance and travel to Türkiye",
   "wp.271": "Arrival",
   "wp.272": "SGK registration and first working day",
-  "wp.273": "Worker already in Turkey",
-  "wp.274": "~4–6 weeks",
+  "wp.273": "Worker already in Türkiye",
+  "wp.274": "~{firstDayWeeksInCountry} weeks",
   "wp.275": "Direct domestic filing on the Ministry system — needs a valid residence permit of 6+ months",
   "wp.276": "Weeks 1–5",
   "wp.277": "~30 days Ministry processing — no consulate stage, no travel wait",
   "wp.278": "Approval",
   "wp.279": "Fees paid, SGK registration and first working day",
-  "wp.280": "Fastest route — worth checking before sourcing abroad whether a suitable candidate is already in Turkey.",
+  "wp.280": "Fastest route — worth checking before sourcing abroad whether a suitable candidate is already in Türkiye.",
   "wp.281": "What a work permit costs",
   "wp.282": "Three cost lines — two go to the state, one to us. All quoted in writing before we start; the worker never pays anything.",
   "wp.283": "State fee 1",
@@ -1709,7 +1709,7 @@
   "wp.313": "Biometric photo (last 6 months)",
   "wp.314": "Diploma or qualification certificate — translated and notarised",
   "wp.315": "If abroad: consular work visa reference number",
-  "wp.316": "If in Turkey: residence permit copy (6+ months validity)",
+  "wp.316": "If in Türkiye: residence permit copy (6+ months validity)",
   "wp.317": "For regulated roles: professional licence or pre-authorisation",
   "wp.318": "Exact requirements vary by sector and case — we send you a tailored checklist after the pre-check.",
   "wp.319": "Don't forget renewals",
@@ -1730,7 +1730,7 @@
   "wp.334": "How long does a Turkish work permit take?",
   "wp.335": "Around 30 days of Ministry processing once the file is complete. If the worker is abroad, add the consular work visa stage before that. With our pre-check, most files pass on the first submission — rejected files that need re-filing take far longer, which is why the pre-check matters.",
   "wp.336": "Does the worker also need a residence permit?",
-  "wp.337": "No. Under Law No. 6735, a valid work permit counts as a residence permit for its whole validity. The worker can live in Turkey and re-enter the country on the permit alone.",
+  "wp.337": "No. Under Law No. 6735, a valid work permit counts as a residence permit for its whole validity. The worker can live in Türkiye and re-enter the country on the permit alone.",
   "wp.338": "What exactly is the 1:5 rule?",
   "wp.339": "For each foreign worker, the workplace must employ at least five Turkish citizens registered with SGK. It is monitored monthly starting from the 7th month of the first permit, so new employers have a build-up window. Some sectors and situations are exempt — tourism specialists, advanced-technology investments and public projects among them.",
   "wp.340": "What is e-Muafiyet and who can use it?",
@@ -1746,9 +1746,9 @@
   "wp.350": "We do — every stage, under our İŞKUR licence (Permit No. 1730): the company pre-check, the consular stage, the Ministry filing and SGK registration. You track the status live on your portal, and if a permit is rejected we re-file at our own cost.",
   "wp.351": "Keep reading on the blog",
   "wp.352": "All articles →",
-  "wp.353": "Turkey work permit rejection reasons — and how to avoid them",
+  "wp.353": "Türkiye work permit rejection reasons — and how to avoid them",
   "wp.354": "The 7 most common rejection causes, and the pre-checks that prevent them.",
-  "wp.355": "Work visa vs work permit in Turkey: what's the difference?",
+  "wp.355": "Work visa vs work permit in Türkiye: what's the difference?",
   "wp.356": "Two documents, two processes — and why workers abroad need both.",
   "wp.357": "Work permit renewals: don't lose your workforce to missed deadlines",
   "wp.358": "Renewal windows, required documents and how we track expiry dates.",
@@ -1762,7 +1762,7 @@
   "wp.366": "Hire workers with permits handled →",
   "wp.367": "Permit-only for my worker",
   "wp.368": "Call us",
-  "wp.369": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+  "wp.369": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits, end-to-end.",
   "wp.370": "İŞKUR Licensed · Permit No. 1730",
   "wp.371": "For Employers",
   "wp.372": "Available Workers",
@@ -1789,7 +1789,7 @@
   "wp.393": "Terms",
   "wp.394": "© 2026 Jobs Admire",
   "wp.395": "JobsAdmire · İŞKUR Private Employment Agency Permit No. 1730 · Antalya, Türkiye ·",
-  "wp.396": "İŞKUR-licensed recruitment agency in Turkey — overseas worker sourcing with every work permit filed under Law No. 6735.",
+  "wp.396": "İŞKUR-licensed recruitment agency in Türkiye — overseas worker sourcing with every work permit filed under Law No. 6735.",
   "wp.397": "İŞKUR Private Employment Agency Permit No. 1730",
   "wp.398": "Employer updates subscription",
   "about.001": "İŞKUR Licensed · Permit No. 1730",
@@ -1816,7 +1816,7 @@
   "about.022": "About",
   "about.023": "Jobs Admire",
   "about.024": "Özel İstihdam Bürosu",
-  "about.025": "A licensed workforce recruitment agency in Turkey — connecting employers with skilled overseas workers, with every work permit handled by us.",
+  "about.025": "A licensed workforce recruitment agency in Türkiye — connecting employers with skilled overseas workers, with every work permit handled by us.",
   "about.026": "workers placed",
   "about.027": "client companies",
   "about.028": "source countries",
@@ -1824,14 +1824,14 @@
   "about.030": "WhatsApp",
   "about.031": "Company profile (PDF)",
   "about.032": "Bridging workforce across borders",
-  "about.033": "Turkey",
+  "about.033": "Türkiye",
   "about.034": "Work permits included",
   "about.035": "İŞKUR Licensed Agency",
   "about.036": "Permit No. 1730 · Since 19.09.2024",
   "about.037": "Licensed & operating",
   "about.038": "Who we are",
   "about.039": "A bridge between overseas talent and Turkish employers",
-  "about.040": "JobsAdmire is a private employment agency headquartered in Antalya, operating under İŞKUR permit No. 1730. We recruit skilled workers from 13+ countries for employers across Turkey — and we manage the entire journey.",
+  "about.040": "JobsAdmire is a private employment agency headquartered in Antalya, operating under İŞKUR permit No. 1730. We recruit skilled workers from 13+ countries for employers across Türkiye — and we manage the entire journey.",
   "about.041": "For employers",
   "about.042": "We make hiring easy — sourcing, work permits and paperwork handled end-to-end, so workers arrive ready to start.",
   "about.043": "For sourcing agencies",
@@ -1840,7 +1840,7 @@
   "about.046": "We do everything to keep every worker's rights protected — fair contracts, legal permits, and never a fee charged (law No. 4904).",
   "about.047": "Founder & CEO, JobsAdmire",
   "about.048": "“Behind every worker we place is a family whose life changes. Today we are proud to serve",
-  "about.049": "through dignified employment in Turkey.”",
+  "about.049": "through dignified employment in Türkiye.”",
   "about.050": "Our journey",
   "about.051": "Sep 2024",
   "about.052": "İŞKUR license granted — permit No. 1730",
@@ -1848,11 +1848,11 @@
   "about.054": "First overseas workers deployed",
   "about.055": "Antalya office fully operational",
   "about.056": "Today",
-  "about.057": "470+ workers placed, 14+ clients",
+  "about.057": "{placed} workers placed, {employers} clients",
   "about.058": "Partner with us →",
   "about.059": "Workers Placed",
   "about.060": "Client Companies",
-  "about.061": "45 days",
+  "about.061": "{permitDays} days",
   "about.062": "Avg. Permit Processing",
   "about.063": "Client Retention",
   "about.064": "Why our portal CRM",
@@ -1873,7 +1873,7 @@
   "about.079": "Auto-generated documents",
   "about.080": "Offer letters and candidate CVs generated automatically by the system — standardized, error-free, ready in seconds.",
   "about.081": "AI candidate matching",
-  "about.082": "Our AI matches candidates from 13+ countries to your exact requirement — the right skills, the first time.",
+  "about.082": "Our AI matches candidates from {countries} countries to your exact requirement — the right skills, the first time.",
   "about.083": "User-friendly mobile app",
   "about.084": "Review shortlists, approve candidates and track permits from your phone — everything one tap away.",
   "about.085": "Easy online payments",
@@ -1882,9 +1882,9 @@
   "about.088": "Built-in training courses for our sourcing partners — so every agent follows the same professional standard.",
   "about.089": "On the ground, both sides",
   "about.090": "Two offices, one team — contracts and permits handled in Antalya, candidates sourced and vetted in Karachi. Nothing gets lost in between.",
-  "about.091": "HEAD OFFICE · TURKEY",
+  "about.091": "HEAD OFFICE · TÜRKİYE",
   "about.092": "Antalya",
-  "about.093": "HEAD OFFICE · TURKEY",
+  "about.093": "HEAD OFFICE · TÜRKİYE",
   "about.094": "Adnan Menderes Blv. No: 7/6, Muratpaşa, Antalya",
   "about.095": "Client contracts",
   "about.096": "Work permit filing",
@@ -1905,7 +1905,7 @@
   "about.111": "Free consultation for employers — tell us what you need.",
   "about.112": "Request Workers →",
   "about.113": "Call us",
-  "about.114": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+  "about.114": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits, end-to-end.",
   "about.115": "İŞKUR Licensed · Permit No. 1730",
   "about.116": "For Employers",
   "about.117": "Available Workers",
@@ -1917,7 +1917,7 @@
   "about.123": "Adnan Menderes Blv. No 7/6",
   "about.124": "Muratpaşa, Antalya, Türkiye",
   "about.125": "Mon–Fri 09:00–18:00",
-  "about.126": "Karachi · Tech office",
+  "about.126": "Karachi · Sourcing office",
   "about.127": "Shahrah-e-Faisal",
   "about.128": "Karachi, Pakistan",
   "about.129": "Mon–Sat 10:00–19:00 PKT",
@@ -2059,7 +2059,7 @@
   "verify.120": "Print badge",
   "verify.121": "Call us",
   "verify.122": "WhatsApp",
-  "verify.123": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+  "verify.123": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits, end-to-end.",
   "verify.124": "İŞKUR Licensed · Permit No. 1730",
   "verify.125": "For Employers",
   "verify.126": "Available Workers",
@@ -2085,7 +2085,7 @@
   "verify.146": "Terms",
   "verify.147": "© 2026 Jobs Admire",
   "verify.148": "Founder · sole signatory",
-  "verify.149": "Antalya, Turkey",
+  "verify.149": "Antalya, Türkiye",
   "verify.150": "Turkish · English",
   "verify.151": "Recruitment Specialist",
   "verify.152": "Job orders, shortlists, arrivals",
@@ -2245,7 +2245,7 @@
   "jt.035": "All roles →",
   "jt.036": "Countries we work in",
   "jt.037": "Strong local network somewhere else? Still write to us.",
-  "jt.038": "Looking for a job in Turkey as a worker?",
+  "jt.038": "Looking for a job in Türkiye as a worker?",
   "jt.039": "This page is only for roles",
   "jt.040": "inside",
   "jt.041": "JobsAdmire. Worker placement runs through our verified partner agencies in your country —",
@@ -2325,7 +2325,7 @@
   "jt.115": "— a person reads it.",
   "jt.116": "Call us",
   "jt.117": "WhatsApp",
-  "jt.118": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+  "jt.118": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits, end-to-end.",
   "jt.119": "For Employers",
   "jt.120": "Available Workers",
   "jt.121": "Hiring Cost Calculator",
@@ -2357,7 +2357,7 @@
   "jt.147": "Find and manage licensed partner agencies and vocational institutes",
   "jt.148": "Run first interviews and confirm each candidate's real skill level",
   "jt.149": "Check passports, certificates and police records before a file moves",
-  "jt.150": "Prepare candidates for what the job in Turkey actually involves",
+  "jt.150": "Prepare candidates for what the job in Türkiye actually involves",
   "jt.151": "Keep every file updated in our CRM so Antalya can see status live",
   "jt.152": "A working network among agencies, institutes or trade centres",
   "jt.153": "Someone who says no to a weak candidate instead of pushing them",
@@ -2452,8 +2452,8 @@
   "jt.242": "Native-level Turkish writing, strong English",
   "jt.243": "Able to read a regulation and explain it simply",
   "jt.244": "Portfolio matters more than a diploma",
-  "jt.245": "Do you hire workers for jobs in Turkey through this page?",
-  "jt.246": "No. This page is only for roles inside JobsAdmire — our Antalya office team and our overseas representatives. Worker placement in Turkey is handled with our verified partner agencies abroad, not by direct application. We never ask a worker for money.",
+  "jt.245": "Do you hire workers for jobs in Türkiye through this page?",
+  "jt.246": "No. This page is only for roles inside JobsAdmire — our Antalya office team and our overseas representatives. Worker placement in Türkiye is handled with our verified partner agencies abroad, not by direct application. We never ask a worker for money.",
   "jt.247": "What does an overseas representative actually do?",
   "jt.248": "You are our person in a source country. You meet partner agencies and institutes, check candidate documents, run first interviews and prepare people for the job they are going to. Everything you do is recorded in our system, so Antalya sees the same picture you do.",
   "jt.249": "Can I work with you part-time or on a project basis?",
@@ -2568,7 +2568,7 @@
   "contact.037": "Agencies & agents",
   "contact.038": "Supply partners and institutes",
   "contact.039": "Documents, contracts and formal enquiries",
-  "contact.040": "Reply within ~4 business hours",
+  "contact.040": "Reply within ~{replySlaHours} business hours",
   "contact.041": "Can’t talk right now?",
   "contact.042": "Pick a slot — we call you back on your number",
   "contact.043": "Which day",
@@ -2603,7 +2603,7 @@
   "contact.072": "I agree that JobsAdmire may process my details to answer this enquiry, under KVKK Law No. 6698. We never share them with third parties.",
   "contact.073": "Sends through WhatsApp so you keep a copy of the conversation.",
   "contact.074": "Rather email? →",
-  "contact.075": "Looking for a job in Turkey?",
+  "contact.075": "Looking for a job in Türkiye?",
   "contact.076": "We do not take individual applications directly",
   "contact.077": "— we are a B2B agency and work only through licensed sourcing partners in your country. Apply through one of our verified partner agencies in your country, and",
   "contact.078": "we never charge a worker a placement fee — not for the visa, not for the permit, not for the job",
@@ -2626,7 +2626,7 @@
   "contact.095": "3,700 km apart — one file, same day",
   "contact.096": "Antalya",
   "contact.097": "Karachi",
-  "contact.098": "Antalya, Turkey",
+  "contact.098": "Antalya, Türkiye",
   "contact.099": "Head office",
   "contact.100": "Mon–Fri · 09:00–18:00 (TRT)",
   "contact.101": "Contracts, work permit filings, employer visits and arrival logistics.",
@@ -2639,7 +2639,7 @@
   "contact.108": "Candidate interviews, trade tests, document checks and pre-departure briefings.",
   "contact.109": "See who is available →",
   "contact.110": "We come to you before big orders",
-  "contact.111": "For orders above 10 workers we see the site first — factory floor, hotel, farm or camp — so the shortlist matches the real job and the accommodation you offer. Antalya region within the week; elsewhere in Turkey by arrangement.",
+  "contact.111": "For orders above 10 workers we see the site first — factory floor, hotel, farm or camp — so the shortlist matches the real job and the accommodation you offer. Antalya region within the week; elsewhere in Türkiye by arrangement.",
   "contact.112": "Request a site visit",
   "contact.113": "Book a visit",
   "contact.114": "Prefer to sit down with us?",
@@ -2654,7 +2654,7 @@
   "contact.123": "Send one line describing the job. We will tell you the route, the timeline and the cost — no obligation.",
   "contact.124": "Ask on WhatsApp",
   "contact.125": "Call us",
-  "contact.126": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+  "contact.126": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits, end-to-end.",
   "contact.127": "For Employers",
   "contact.128": "Available Workers",
   "contact.129": "Hiring Cost Calculator",
@@ -2665,7 +2665,7 @@
   "contact.134": "Muratpaşa, Antalya, Türkiye",
   "contact.135": "Mon–Fri 09:00–18:00",
   "contact.136": "Get directions",
-  "contact.137": "Karachi · Tech office",
+  "contact.137": "Karachi · Sourcing office",
   "contact.138": "Mon–Sat 10:00–19:00 PKT",
   "contact.139": "WhatsApp Us →",
   "contact.140": "Get Our App",
@@ -2696,17 +2696,17 @@
   "contact.165": "Registered company name",
   "contact.166": "Roles and headcount",
   "contact.167": "e.g. 10 welders, 4 CNC operators",
-  "contact.168": "City in Turkey",
+  "contact.168": "City in Türkiye",
   "contact.169": "Send my hiring request",
   "contact.170": "permit team",
   "contact.171": "Permit file, no sourcing",
   "contact.172": "You already have the worker — we run the application, the follow-up and the renewals.",
   "contact.173": "Worker and role",
-  "contact.174": "e.g. 1 Uzbek chef, already in Turkey",
+  "contact.174": "e.g. 1 Uzbek chef, already in Türkiye",
   "contact.175": "Workplace city",
   "contact.176": "Ask the permit team",
   "contact.177": "partnerships desk",
-  "contact.178": "HR agencies in Turkey, sourcing agents abroad and training institutes — tell us what you bring.",
+  "contact.178": "HR agencies in Türkiye, sourcing agents abroad and training institutes — tell us what you bring.",
   "contact.179": "Agency name & country",
   "contact.180": "e.g. Skyline Manpower, Nepal",
   "contact.181": "What you supply",
@@ -2721,7 +2721,7 @@
   "contact.190": "Same day in office hours. Next business morning if you write at night or over the weekend.",
   "contact.191": "A short call to pin it down",
   "contact.192": "Roles, headcount, start date, accommodation, budget. Fifteen minutes is usually enough.",
-  "contact.193": "Written numbers within 24 hours",
+  "contact.193": "Written numbers within {homepageReplyHours} hours",
   "contact.194": "A quote, or a permit checklist — in writing, so you can take it to your board.",
   "contact.195": "Do you charge for a first conversation?",
   "contact.196": "No. Sourcing, shortlists and the quote itself are free — you pay one agreed service fee only when you accept workers and we start the permit file. There is no consultation charge, no retainer and nothing upfront.",
@@ -2729,7 +2729,7 @@
   "contact.198": "Turkish, English, French, Hindi and Russian. Write in whichever you prefer — the reply comes back in the same language.",
   "contact.199": "How fast will someone actually answer?",
   "contact.200": "Can you come and see our site first?",
-  "contact.201": "Yes, and for orders above ten workers we prefer it. We look at the work itself and at the accommodation you offer, because both decide which candidates will actually stay. Antalya and nearby provinces within the week — elsewhere in Turkey by arrangement.",
+  "contact.201": "Yes, and for orders above ten workers we prefer it. We look at the work itself and at the accommodation you offer, because both decide which candidates will actually stay. Antalya and nearby provinces within the week — elsewhere in Türkiye by arrangement.",
   "contact.202": "I am a worker looking for a job — can I write here?",
   "contact.203": "Are my details safe?",
   "contact.204": "Yes. Details you send are used only to answer your enquiry, under KVKK Law No. 6698, and are never sold or shared with third parties. Ask us to delete them at any time and we do.",
@@ -2782,7 +2782,7 @@
   "availworkers.023": "Live from our portal",
   "availworkers.024": "Verified workers,",
   "availworkers.025": "ready to start",
-  "availworkers.026": "in Turkey",
+  "availworkers.026": "in Türkiye",
   "availworkers.027": "Real candidates from our pool — skill-tested, documents checked and waiting for an employer. Pick the profiles you like and we file every work permit under our İŞKUR licence.",
   "availworkers.028": "Browse candidates →",
   "availworkers.029": "Ask for profiles",
@@ -2794,7 +2794,7 @@
   "availworkers.035": "Browse the pool",
   "availworkers.036": "Clear",
   "availworkers.037": "Request sent",
-  "availworkers.038": "We reply within 4 working hours with matching profiles.",
+  "availworkers.038": "We reply within {replySlaHours} working hours with matching profiles.",
   "availworkers.039": "I agree that JobsAdmire may process these details to answer my request —",
   "availworkers.040": "KVKK privacy notice",
   "availworkers.041": "Prefer WhatsApp?",
@@ -2803,8 +2803,8 @@
   "availworkers.044": "Contact person",
   "availworkers.045": "Email",
   "availworkers.046": "Phone / WhatsApp",
-  "availworkers.047": "City in Turkey",
-  "availworkers.048": "Found a profile that fits? Full CV and video interview within 24 hours.",
+  "availworkers.047": "City in Türkiye",
+  "availworkers.048": "Found a profile that fits? Full CV and video interview within {homepageReplyHours} hours.",
   "availworkers.049": "Call",
   "availworkers.050": "WhatsApp us",
   "availworkers.051": "Request workers →",
@@ -2823,11 +2823,11 @@
   "availworkers.064": "Experience",
   "availworkers.065": "Availability",
   "availworkers.066": "No profiles match those filters right now",
-  "availworkers.067": "Our pool changes weekly and we source to order — tell us what you need and we shortlist from 13+ countries, usually within 24 hours.",
+  "availworkers.067": "Our pool changes weekly and we source to order — tell us what you need and we shortlist from {countries} countries, usually within {homepageReplyHours} hours.",
   "availworkers.068": "Tell us what you need →",
   "availworkers.069": "Clear filters",
   "availworkers.070": "Can't see the profession you need?",
-  "availworkers.071": "This pool is what is ready today — we also source to order from 13+ countries. Tell us the roles and headcount, and you get a shortlist in about a week.",
+  "availworkers.071": "This pool is what is ready today — we also source to order from {countries} countries. Tell us the roles and headcount, and you get a shortlist in about a week.",
   "availworkers.072": "What \"verified\" means on this page",
   "availworkers.073": "Every profile passes four checks before it appears here — that is why the shortlist moves fast.",
   "availworkers.074": "Documents checked",
@@ -2862,13 +2862,13 @@
   "availworkers.103": "Something else?",
   "availworkers.104": "Ask our placement team directly.",
   "availworkers.105": "The workers are ready — are you?",
-  "availworkers.106": "Send us the profile numbers you liked, or just tell us the roles you need. Written quote and full CVs within 24 hours — no upfront fee.",
+  "availworkers.106": "Send us the profile numbers you liked, or just tell us the roles you need. Written quote and full CVs within {homepageReplyHours} hours — no upfront fee.",
   "availworkers.107": "Request these candidates",
   "availworkers.108": "Message us on WhatsApp",
   "availworkers.109": "Send a hiring request",
   "availworkers.110": "JobsAdmire · İŞKUR Private Employment Agency Permit No. 1730 · Antalya, Türkiye ·",
   "availworkers.111": "Call us",
-  "availworkers.112": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+  "availworkers.112": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits, end-to-end.",
   "availworkers.113": "For Employers",
   "availworkers.114": "Hiring Cost Calculator",
   "availworkers.115": "Company",
@@ -2898,7 +2898,7 @@
   "availworkers.139": "8+ yrs",
   "availworkers.140": "available now",
   "availworkers.141": "Employer",
-  "availworkers.142": "Full CVs, documents and video interviews within 4 working hours.",
+  "availworkers.142": "Full CVs, documents and video interviews within {replySlaHours} working hours.",
   "availworkers.143": "Company name",
   "availworkers.144": "Which roles and how many workers?",
   "availworkers.145": "City, sector and target start date (optional)",
@@ -2976,7 +2976,7 @@
   "availworkers.217": "We hold a profile for you while your decision is pending, and tell you honestly if another employer is also in process for the same person. If someone is taken, we send equivalent profiles from the pool.",
   "availworkers.218": "Who files the work permit for these candidates?",
   "availworkers.219": "How fast can a candidate from this page start?",
-  "availworkers.220": "Because these profiles are already skill-tested and permit-ready, the file goes to the Ministry within days of your approval. Workers already in Turkey typically start in 4–6 weeks; candidates abroad in about 8–10 weeks.",
+  "availworkers.220": "Because these profiles are already skill-tested and permit-ready, the file goes to the Ministry within days of your approval. Workers already in Türkiye typically start in {firstDayWeeksInCountry} weeks; candidates abroad in about {firstDayWeeks} weeks.",
   "availworkers.221": "What if the worker leaves or does not perform?",
   "availworkers.222": "Do I pay anything to see the profiles?",
   "availworkers.223": "No. Browsing, requesting CVs and interviewing candidates costs nothing, and there is no upfront fee. Commercial terms are agreed in writing before any placement.",
@@ -3031,7 +3031,7 @@
   "success.022": "Home",
   "success.023": "Approved.",
   "success.024": "Not just promised.",
-  "success.025": "Below are the actual work permit approvals we obtained for employers in Turkey — the sector, the headcount and the month. Personal details are removed; the approvals are not.",
+  "success.025": "Below are the actual work permit approvals we obtained for employers in Türkiye — the sector, the headcount and the month. Personal details are removed; the approvals are not.",
   "success.026": "Discuss your case",
   "success.027": "Estimate your cost",
   "success.028": "Workers placed with Turkish employers",
@@ -3091,7 +3091,7 @@
   "success.082": "Book a 15-minute call",
   "success.083": "Or estimate the cost yourself →",
   "success.084": "Call us",
-  "success.085": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+  "success.085": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits, end-to-end.",
   "success.086": "For Employers",
   "success.087": "Available Workers",
   "success.088": "Hiring Cost Calculator",
@@ -3202,10 +3202,10 @@
   "blog.042": "Reading about hiring? Let's just do it.",
   "blog.043": "Free consultation for employers — tell us what you need.",
   "blog.044": "İŞKUR licensed — permit No. 1730",
-  "blog.045": "Free proposal in 24 hours",
+  "blog.045": "Free proposal in {homepageReplyHours} hours",
   "blog.046": "Request Workers →",
   "blog.047": "Call us",
-  "blog.048": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+  "blog.048": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits, end-to-end.",
   "blog.049": "For Employers",
   "blog.050": "Available Workers",
   "blog.051": "Hiring Cost Calculator",
@@ -3237,7 +3237,7 @@
   "blog.077": "Türkçe'de de var",
   "blog.078": "Compliance",
   "blog.079": "Market News",
-  "blog.080": "Turkey work permit rejection reasons — and how to avoid them",
+  "blog.080": "Türkiye work permit rejection reasons — and how to avoid them",
   "blog.081": "Also in English",
   "blog.082": "Mevzuat",
   "blog.083": "Piyasa Haberleri",
@@ -3253,7 +3253,7 @@
   "blog.093": "Weekly",
   "blog.094": "New post",
   "blog.095": "Insights for",
-  "blog.096": "Hiring guides, work permit updates and workforce news from the Turkey–overseas recruitment corridor.",
+  "blog.096": "Hiring guides, work permit updates and workforce news from the Türkiye–overseas recruitment corridor.",
   "blog.097": "New article every week",
   "blog.098": "Hello JobsAdmire, I want to hire workers.",
   "blogarticle.001": "İŞKUR Licensed · Permit No. 1730",
@@ -3280,13 +3280,13 @@
   "blogarticle.022": "Home",
   "blogarticle.023": "JobsAdmire Editorial",
   "blogarticle.024": "In this article",
-  "blogarticle.025": "Turkey's factories, hotels, farms and construction sites are all competing for the same shrinking pool of local labor. Hiring from overseas is the practical answer — but the work permit process stops many employers before they start. This guide walks through it, end to end.",
+  "blogarticle.025": "Türkiye's factories, hotels, farms and construction sites are all competing for the same shrinking pool of local labor. Hiring from overseas is the practical answer — but the work permit process stops many employers before they start. This guide walks through it, end to end.",
   "blogarticle.026": "Key takeaways",
   "blogarticle.027": "The employer applies, not the worker — and salary below the ministry minimum is the #1 rejection reason.",
   "blogarticle.028": "You need 5 Turkish employees per foreign hire, plus 100,000 TL capital — shortage sectors get exemptions.",
   "blogarticle.029": "Realistic timeline: 4–8 weeks end to end, including ~30 days of ministry review.",
   "blogarticle.030": "A licensed agency can file and track everything — you never touch a form.",
-  "blogarticle.031": "Who can hire foreign workers in Turkey?",
+  "blogarticle.031": "Who can hire foreign workers in Türkiye?",
   "blogarticle.032": "Work permits are applied for by the",
   "blogarticle.033": "employer",
   "blogarticle.034": ", not the worker. The Ministry of Labor evaluates your company before it evaluates the candidate. Two criteria matter most:",
@@ -3312,7 +3312,7 @@
   "blogarticle.054": "Approval & fees.",
   "blogarticle.055": "Permit and card fees are paid; the permit doubles as a residence permit.",
   "blogarticle.056": "Arrival & SGK.",
-  "blogarticle.057": "The worker enters Turkey with a work visa and must be registered with SGK within 30 days of starting.",
+  "blogarticle.057": "The worker enters Türkiye with a work visa and must be registered with SGK within 30 days of starting.",
   "blogarticle.058": "Mistakes that get applications rejected",
   "blogarticle.059": "Salary below the ministry's minimum for the role — the most common rejection reason.",
   "blogarticle.060": "Contract details that don't match the online application.",
@@ -3350,9 +3350,9 @@
   "blogarticle.092": "Reading about hiring? Let's just do it.",
   "blogarticle.093": "Free consultation for employers — tell us what you need.",
   "blogarticle.094": "İŞKUR licensed — permit No. 1730",
-  "blogarticle.095": "Free proposal in 24 hours",
+  "blogarticle.095": "Free proposal in {homepageReplyHours} hours",
   "blogarticle.096": "Call us",
-  "blogarticle.097": "Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-end.",
+  "blogarticle.097": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits, end-to-end.",
   "blogarticle.098": "For Employers",
   "blogarticle.099": "Available Workers",
   "blogarticle.100": "Hiring Cost Calculator",
@@ -3382,7 +3382,7 @@
   "blogarticle.124": "Who can hire foreign workers?",
   "blogarticle.125": "Rejection mistakes",
   "blogarticle.126": "FAQ",
-  "blogarticle.127": "How long does a Turkey work permit take?",
+  "blogarticle.127": "How long does a Türkiye work permit take?",
   "blogarticle.128": "Who pays for the permit — employer or worker?",
   "blogarticle.129": "The employer files the application and pays the permit fees. Job seekers are never charged by JobsAdmire — charging candidates is illegal for licensed agencies.",
   "blogarticle.130": "Shortage sectors such as agriculture and some manufacturing lines qualify for exemptions. We check your eligibility for free before any application is filed.",
@@ -3455,9 +3455,9 @@
   "crmlogin.052": "Live placement status — every candidate and permit in real time",
   "crmlogin.053": "Company email",
   "crmlogin.054": "This login is only for HR agencies and employers we work with.",
-  "crmlogin.055": "470+ placements already run through this portal. Accounts are opened by your account manager once the cooperation agreement is signed.",
+  "crmlogin.055": "{placed} placements already run through this portal. Accounts are opened by your account manager once the cooperation agreement is signed.",
   "crmlogin.056": "No account yet?",
-  "crmlogin.057": "One short call is usually enough to know whether a partnership makes sense. We reply within 4 working hours and open your portal the same day the agreement is signed.",
+  "crmlogin.057": "One short call is usually enough to know whether a partnership makes sense. We reply within {replySlaHours} working hours and open your portal the same day the agreement is signed.",
   "crmlogin.058": "Request portal access",
   "crmlogin.059": "Also on mobile — manage placements on the go.",
   "crmlogin.060": "Push alert the moment a permit stage moves",
@@ -3579,17 +3579,6 @@
   {
    "group": "desktopNav",
    "order": 6,
-   "labelId": "home.010",
-   "href": "/blog",
-   "external": false,
-   "visibleOn": [
-    "desktop",
-    "mobile"
-   ]
-  },
-  {
-   "group": "desktopNav",
-   "order": 7,
    "labelId": "home.011",
    "href": "/verify",
    "external": false,
@@ -3600,7 +3589,7 @@
   },
   {
    "group": "desktopNav",
-   "order": 8,
+   "order": 7,
    "labelId": "home.008",
    "href": "/partner-with-us",
    "external": false,
@@ -3611,7 +3600,7 @@
   },
   {
    "group": "desktopNav",
-   "order": 9,
+   "order": 8,
    "labelId": "home.009",
    "href": "/careers",
    "external": false,
@@ -3622,7 +3611,282 @@
   },
   {
    "group": "desktopNav",
+   "order": 9,
+   "labelId": "home.007",
+   "href": "/contact",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 0,
+   "labelId": "home.002",
+   "href": "/hire-workers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 1,
+   "labelId": "home.003",
+   "href": "/available-workers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 2,
+   "labelId": "home.004",
+   "href": "/work-permit",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 3,
+   "labelId": "home.005",
+   "href": "/hiring-cost-calculator",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 4,
+   "labelId": "home.001",
+   "href": "/about",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 5,
+   "labelId": "home.006",
+   "href": "/success-stories",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 6,
+   "labelId": "home.011",
+   "href": "/verify",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 7,
+   "labelId": "home.008",
+   "href": "/partner-with-us",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 8,
+   "labelId": "home.009",
+   "href": "/careers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 9,
+   "labelId": "home.007",
+   "href": "/contact",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
    "order": 10,
+   "labelId": "home.012",
+   "href": "https://portal.jobsadmire.com/auth/login",
+   "external": true,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "slimBarRight",
+   "order": 0,
+   "labelId": "home.009",
+   "href": "/careers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "slimBarRight",
+   "order": 1,
+   "labelId": "home.011",
+   "href": "/verify",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "slimBarRight",
+   "order": 2,
+   "labelId": "home.012",
+   "href": "https://portal.jobsadmire.com/auth/login",
+   "external": true,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerEmployers",
+   "order": 0,
+   "labelId": "home.002",
+   "href": "/hire-workers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerEmployers",
+   "order": 1,
+   "labelId": "home.003",
+   "href": "/available-workers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerEmployers",
+   "order": 2,
+   "labelId": "home.005",
+   "href": "/hiring-cost-calculator",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerEmployers",
+   "order": 3,
+   "labelId": "home.004",
+   "href": "/work-permit",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerEmployers",
+   "order": 4,
+   "labelId": "home.011",
+   "href": "/verify",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerEmployers",
+   "order": 5,
+   "labelId": "home.012",
+   "href": "https://portal.jobsadmire.com/auth/login",
+   "external": true,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerCompany",
+   "order": 0,
+   "labelId": "home.001",
+   "href": "/about",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerCompany",
+   "order": 1,
+   "labelId": "home.006",
+   "href": "/success-stories",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerCompany",
+   "order": 2,
+   "labelId": "home.008",
+   "href": "/partner-with-us",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerCompany",
+   "order": 3,
+   "labelId": "home.009",
+   "href": "/careers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerCompany",
+   "order": 4,
    "labelId": "home.007",
    "href": "/contact",
    "external": false,
@@ -3657,9 +3921,9 @@
    "ios": null
   },
   "portal": {
+   "host": "https://portal.jobsadmire.com",
    "loginPath": "/auth/login",
-   "forgotPath": "/auth/forgot-password",
-   "host": "https://portal.jobsadmire.com"
+   "forgotPath": "/auth/forgot-password"
   },
   "maps": {
    "antalya": "https://www.google.com/maps/search/?api=1&query=Adnan+Menderes+Blv.+No+7%2F6+Muratpa%C5%9Fa+Antalya",
@@ -3674,7 +3938,1654 @@
   },
   "turnstileSiteKey": null
  },
- "pages": {},
- "collections": {},
+ "pages": {
+  "home": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "organization",
+    "website",
+    "faq"
+   ]
+  },
+  "hire": {
+   "titleId": "hire.264",
+   "descriptionId": "hire.265",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "calc": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "wp": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "partner": {
+   "titleId": "partner.222",
+   "descriptionId": "partner.223",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "about": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb"
+   ]
+  },
+  "contact": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "workers": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "stories": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb"
+   ]
+  },
+  "verify": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "careers": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "careersDetail": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "jobPosting"
+   ]
+  },
+  "blog": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "noindex",
+   "jsonLd": [
+    "breadcrumb"
+   ]
+  },
+  "blogArticle": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "noindex",
+   "jsonLd": [
+    "breadcrumb",
+    "article",
+    "faq"
+   ]
+  },
+  "portal": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "noindex",
+   "jsonLd": []
+  },
+  "privacy": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb"
+   ]
+  },
+  "terms": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb"
+   ]
+  },
+  "kvkk": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb"
+   ]
+  },
+  "cookiePolicy": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb"
+   ]
+  },
+  "thankYou": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "noindex",
+   "jsonLd": []
+  },
+  "newsletterConfirm": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "noindex",
+   "jsonLd": []
+  },
+  "newsletterUnsubscribe": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "noindex",
+   "jsonLd": []
+  }
+ },
+ "collections": {
+  "metrics": [
+   {
+    "key": "placed",
+    "value": 470,
+    "text": null,
+    "suffix": "+",
+    "labelId": "home.050",
+    "unitId": null
+   },
+   {
+    "key": "employers",
+    "value": 22,
+    "text": null,
+    "suffix": "+",
+    "labelId": "hire.073",
+    "unitId": null
+   },
+   {
+    "key": "countries",
+    "value": 13,
+    "text": null,
+    "suffix": "",
+    "labelId": "home.051",
+    "unitId": null
+   },
+   {
+    "key": "permitDays",
+    "value": 45,
+    "text": null,
+    "suffix": "",
+    "labelId": "home.052",
+    "unitId": "home.206"
+   },
+   {
+    "key": "firstDayWeeks",
+    "value": null,
+    "text": "6–8",
+    "suffix": "",
+    "labelId": "home.117",
+    "unitId": null
+   },
+   {
+    "key": "firstDayWeeksInCountry",
+    "value": null,
+    "text": "4–6",
+    "suffix": "",
+    "labelId": null,
+    "unitId": null
+   },
+   {
+    "key": "replySlaHours",
+    "value": 4,
+    "text": null,
+    "suffix": "",
+    "labelId": null,
+    "unitId": null
+   },
+   {
+    "key": "homepageReplyHours",
+    "value": 24,
+    "text": null,
+    "suffix": "",
+    "labelId": null,
+    "unitId": null
+   },
+   {
+    "key": "sectors",
+    "value": 6,
+    "text": null,
+    "suffix": "",
+    "labelId": "hire.074",
+    "unitId": null
+   }
+  ],
+  "rateConfig": [
+   {
+    "version": "2026-01",
+    "effectiveFrom": "2026-01-01",
+    "reviewDueAt": "2026-12-20",
+    "updatedAt": "2026-01-15",
+    "currency": "TRY",
+    "legalMinGross": 33030,
+    "sgkEmployerRate": 0.2175,
+    "sgkRates": {
+     "manufacturing": 0.1875,
+     "other": 0.2175,
+     "none": 0.2375
+    },
+    "supportMonthly": 1270,
+    "permitFeeTRY": 16000,
+    "flightTRY": 12000,
+    "housingMonthlyTRY": 5000,
+    "quotaRatio": 5
+   }
+  ],
+  "calculatorRoles": [
+   {
+    "key": "welder",
+    "labelId": "calc.555",
+    "multiplier": 1.5,
+    "group": "skilled",
+    "preset": false,
+    "industry": "factory",
+    "industryLabelId": "calc.551",
+    "salaryMin": 45000,
+    "salaryMax": 70000
+   },
+   {
+    "key": "cnc",
+    "labelId": "hire.093",
+    "multiplier": 1.5,
+    "group": "skilled",
+    "preset": false,
+    "industry": "factory",
+    "industryLabelId": "calc.551",
+    "salaryMin": 45000,
+    "salaryMax": 65000
+   },
+   {
+    "key": "machine",
+    "labelId": "calc.544",
+    "multiplier": 1,
+    "group": "general",
+    "preset": false,
+    "industry": "factory",
+    "industryLabelId": "calc.551",
+    "salaryMin": 38000,
+    "salaryMax": 52000
+   },
+   {
+    "key": "textile",
+    "labelId": "calc.541",
+    "multiplier": 1,
+    "group": "general",
+    "preset": false,
+    "industry": "factory",
+    "industryLabelId": "calc.551",
+    "salaryMin": 36000,
+    "salaryMax": 50000
+   },
+   {
+    "key": "electrician",
+    "labelId": "calc.545",
+    "multiplier": 1.5,
+    "group": "skilled",
+    "preset": false,
+    "industry": "construction",
+    "industryLabelId": "calc.554",
+    "salaryMin": 45000,
+    "salaryMax": 62000
+   },
+   {
+    "key": "plumber",
+    "labelId": "calc.546",
+    "multiplier": 1.5,
+    "group": "skilled",
+    "preset": false,
+    "industry": "construction",
+    "industryLabelId": "calc.554",
+    "salaryMin": 42000,
+    "salaryMax": 58000
+   },
+   {
+    "key": "labourer",
+    "labelId": "calc.542",
+    "multiplier": 1,
+    "group": "general",
+    "preset": false,
+    "industry": "construction",
+    "industryLabelId": "calc.554",
+    "salaryMin": 33030,
+    "salaryMax": 44000
+   },
+   {
+    "key": "cook",
+    "labelId": "calc.548",
+    "multiplier": 1.5,
+    "group": "skilled",
+    "preset": false,
+    "industry": "hotel",
+    "industryLabelId": "calc.552",
+    "salaryMin": 50000,
+    "salaryMax": 78000
+   },
+   {
+    "key": "waiter",
+    "labelId": "hire.107",
+    "multiplier": 1,
+    "group": "general",
+    "preset": false,
+    "industry": "hotel",
+    "industryLabelId": "calc.552",
+    "salaryMin": 35000,
+    "salaryMax": 48000
+   },
+   {
+    "key": "housekeeping",
+    "labelId": "calc.547",
+    "multiplier": 1,
+    "group": "general",
+    "preset": false,
+    "industry": "hotel",
+    "industryLabelId": "calc.552",
+    "salaryMin": 33030,
+    "salaryMax": 44000
+   },
+   {
+    "key": "steward",
+    "labelId": "calc.543",
+    "multiplier": 1,
+    "group": "general",
+    "preset": false,
+    "industry": "hotel",
+    "industryLabelId": "calc.552",
+    "salaryMin": 33030,
+    "salaryMax": 45000
+   },
+   {
+    "key": "greenhouse",
+    "labelId": "hire.112",
+    "multiplier": 1,
+    "group": "general",
+    "preset": false,
+    "industry": "agriculture",
+    "industryLabelId": "calc.553",
+    "salaryMin": 33030,
+    "salaryMax": 42000
+   },
+   {
+    "key": "generalPreset",
+    "labelId": "home.240",
+    "multiplier": 1,
+    "group": "general",
+    "preset": true,
+    "industry": null,
+    "industryLabelId": null,
+    "salaryMin": null,
+    "salaryMax": null
+   },
+   {
+    "key": "skilledPreset",
+    "labelId": "home.241",
+    "multiplier": 1.5,
+    "group": "skilled",
+    "preset": true,
+    "industry": null,
+    "industryLabelId": null,
+    "salaryMin": null,
+    "salaryMax": null
+   },
+   {
+    "key": "specialistPreset",
+    "labelId": "home.242",
+    "multiplier": 2,
+    "group": "specialist",
+    "preset": true,
+    "industry": null,
+    "industryLabelId": null,
+    "salaryMin": null,
+    "salaryMax": null
+   }
+  ],
+  "sourceCountries": [
+   {
+    "code": "PK",
+    "nameId": "jt.290",
+    "name": "Pakistan",
+    "dial": "+92",
+    "lon": 69.3,
+    "lat": 30.4,
+    "flag": "🇵🇰"
+   },
+   {
+    "code": "NP",
+    "nameId": "jt.292",
+    "name": "Nepal",
+    "dial": "+977",
+    "lon": 84.1,
+    "lat": 28.4,
+    "flag": "🇳🇵"
+   },
+   {
+    "code": "IN",
+    "nameId": "jt.291",
+    "name": "India",
+    "dial": "+91",
+    "lon": 78.9,
+    "lat": 22.6,
+    "flag": "🇮🇳"
+   },
+   {
+    "code": "UZ",
+    "nameId": "jt.289",
+    "name": "Uzbekistan",
+    "dial": "+998",
+    "lon": 64.6,
+    "lat": 41.4,
+    "flag": "🇺🇿"
+   },
+   {
+    "code": "KG",
+    "nameId": "jt.294",
+    "name": "Kyrgyzstan",
+    "dial": "+996",
+    "lon": 74.8,
+    "lat": 41.2,
+    "flag": "🇰🇬"
+   },
+   {
+    "code": "TM",
+    "nameId": "jt.295",
+    "name": "Turkmenistan",
+    "dial": "+993",
+    "lon": 59.6,
+    "lat": 39,
+    "flag": "🇹🇲"
+   },
+   {
+    "code": "PH",
+    "nameId": "jt.301",
+    "name": "Philippines",
+    "dial": "+63",
+    "lon": 121.8,
+    "lat": 12.9,
+    "flag": "🇵🇭"
+   },
+   {
+    "code": "ID",
+    "nameId": "jt.300",
+    "name": "Indonesia",
+    "dial": "+62",
+    "lon": 113.9,
+    "lat": -1.5,
+    "flag": "🇮🇩"
+   },
+   {
+    "code": "RU",
+    "nameId": "jt.293",
+    "name": "Russia",
+    "dial": "+7",
+    "lon": 50,
+    "lat": 55.5,
+    "flag": "🇷🇺"
+   },
+   {
+    "code": "ML",
+    "nameId": "jt.297",
+    "name": "Mali",
+    "dial": "+223",
+    "lon": -4,
+    "lat": 17.5,
+    "flag": "🇲🇱"
+   },
+   {
+    "code": "SN",
+    "nameId": null,
+    "name": "Senegal",
+    "dial": "+221",
+    "lon": -14.5,
+    "lat": 14.5,
+    "flag": "🇸🇳"
+   },
+   {
+    "code": "CM",
+    "nameId": "jt.296",
+    "name": "Cameroon",
+    "dial": "+237",
+    "lon": 12.4,
+    "lat": 6,
+    "flag": "🇨🇲"
+   },
+   {
+    "code": "LK",
+    "nameId": "verify.262",
+    "name": "Sri Lanka",
+    "dial": "+94",
+    "lon": 80.7,
+    "lat": 7.9,
+    "flag": "🇱🇰"
+   }
+  ],
+  "countries": [
+   {
+    "code": "AE",
+    "name": "United Arab Emirates",
+    "dial": "+971"
+   },
+   {
+    "code": "AF",
+    "name": "Afghanistan",
+    "dial": "+93"
+   },
+   {
+    "code": "AT",
+    "name": "Austria",
+    "dial": "+43"
+   },
+   {
+    "code": "AU",
+    "name": "Australia",
+    "dial": "+61"
+   },
+   {
+    "code": "AZ",
+    "name": "Azerbaijan",
+    "dial": "+994"
+   },
+   {
+    "code": "BD",
+    "name": "Bangladesh",
+    "dial": "+880"
+   },
+   {
+    "code": "BE",
+    "name": "Belgium",
+    "dial": "+32"
+   },
+   {
+    "code": "BG",
+    "name": "Bulgaria",
+    "dial": "+359"
+   },
+   {
+    "code": "BH",
+    "name": "Bahrain",
+    "dial": "+973"
+   },
+   {
+    "code": "CA",
+    "name": "Canada",
+    "dial": "+1"
+   },
+   {
+    "code": "CH",
+    "name": "Switzerland",
+    "dial": "+41"
+   },
+   {
+    "code": "CM",
+    "name": "Cameroon",
+    "dial": "+237"
+   },
+   {
+    "code": "CN",
+    "name": "China",
+    "dial": "+86"
+   },
+   {
+    "code": "DE",
+    "name": "Germany",
+    "dial": "+49"
+   },
+   {
+    "code": "DK",
+    "name": "Denmark",
+    "dial": "+45"
+   },
+   {
+    "code": "DZ",
+    "name": "Algeria",
+    "dial": "+213"
+   },
+   {
+    "code": "EG",
+    "name": "Egypt",
+    "dial": "+20"
+   },
+   {
+    "code": "ES",
+    "name": "Spain",
+    "dial": "+34"
+   },
+   {
+    "code": "ET",
+    "name": "Ethiopia",
+    "dial": "+251"
+   },
+   {
+    "code": "FR",
+    "name": "France",
+    "dial": "+33"
+   },
+   {
+    "code": "GB",
+    "name": "United Kingdom",
+    "dial": "+44"
+   },
+   {
+    "code": "GE",
+    "name": "Georgia",
+    "dial": "+995"
+   },
+   {
+    "code": "GH",
+    "name": "Ghana",
+    "dial": "+233"
+   },
+   {
+    "code": "GR",
+    "name": "Greece",
+    "dial": "+30"
+   },
+   {
+    "code": "ID",
+    "name": "Indonesia",
+    "dial": "+62"
+   },
+   {
+    "code": "IN",
+    "name": "India",
+    "dial": "+91"
+   },
+   {
+    "code": "IQ",
+    "name": "Iraq",
+    "dial": "+964"
+   },
+   {
+    "code": "IR",
+    "name": "Iran",
+    "dial": "+98"
+   },
+   {
+    "code": "IT",
+    "name": "Italy",
+    "dial": "+39"
+   },
+   {
+    "code": "JO",
+    "name": "Jordan",
+    "dial": "+962"
+   },
+   {
+    "code": "KE",
+    "name": "Kenya",
+    "dial": "+254"
+   },
+   {
+    "code": "KG",
+    "name": "Kyrgyzstan",
+    "dial": "+996"
+   },
+   {
+    "code": "KW",
+    "name": "Kuwait",
+    "dial": "+965"
+   },
+   {
+    "code": "KZ",
+    "name": "Kazakhstan",
+    "dial": "+7"
+   },
+   {
+    "code": "LB",
+    "name": "Lebanon",
+    "dial": "+961"
+   },
+   {
+    "code": "LK",
+    "name": "Sri Lanka",
+    "dial": "+94"
+   },
+   {
+    "code": "MA",
+    "name": "Morocco",
+    "dial": "+212"
+   },
+   {
+    "code": "ML",
+    "name": "Mali",
+    "dial": "+223"
+   },
+   {
+    "code": "MY",
+    "name": "Malaysia",
+    "dial": "+60"
+   },
+   {
+    "code": "NG",
+    "name": "Nigeria",
+    "dial": "+234"
+   },
+   {
+    "code": "NL",
+    "name": "Netherlands",
+    "dial": "+31"
+   },
+   {
+    "code": "NO",
+    "name": "Norway",
+    "dial": "+47"
+   },
+   {
+    "code": "NP",
+    "name": "Nepal",
+    "dial": "+977"
+   },
+   {
+    "code": "OM",
+    "name": "Oman",
+    "dial": "+968"
+   },
+   {
+    "code": "PH",
+    "name": "Philippines",
+    "dial": "+63"
+   },
+   {
+    "code": "PK",
+    "name": "Pakistan",
+    "dial": "+92"
+   },
+   {
+    "code": "PL",
+    "name": "Poland",
+    "dial": "+48"
+   },
+   {
+    "code": "QA",
+    "name": "Qatar",
+    "dial": "+974"
+   },
+   {
+    "code": "RO",
+    "name": "Romania",
+    "dial": "+40"
+   },
+   {
+    "code": "RU",
+    "name": "Russia",
+    "dial": "+7"
+   },
+   {
+    "code": "SA",
+    "name": "Saudi Arabia",
+    "dial": "+966"
+   },
+   {
+    "code": "SE",
+    "name": "Sweden",
+    "dial": "+46"
+   },
+   {
+    "code": "SN",
+    "name": "Senegal",
+    "dial": "+221"
+   },
+   {
+    "code": "SY",
+    "name": "Syria",
+    "dial": "+963"
+   },
+   {
+    "code": "TH",
+    "name": "Thailand",
+    "dial": "+66"
+   },
+   {
+    "code": "TJ",
+    "name": "Tajikistan",
+    "dial": "+992"
+   },
+   {
+    "code": "TM",
+    "name": "Turkmenistan",
+    "dial": "+993"
+   },
+   {
+    "code": "TN",
+    "name": "Tunisia",
+    "dial": "+216"
+   },
+   {
+    "code": "TR",
+    "name": "Türkiye",
+    "dial": "+90"
+   },
+   {
+    "code": "UA",
+    "name": "Ukraine",
+    "dial": "+380"
+   },
+   {
+    "code": "US",
+    "name": "United States",
+    "dial": "+1"
+   },
+   {
+    "code": "UZ",
+    "name": "Uzbekistan",
+    "dial": "+998"
+   },
+   {
+    "code": "VN",
+    "name": "Vietnam",
+    "dial": "+84"
+   },
+   {
+    "code": "ZA",
+    "name": "South Africa",
+    "dial": "+27"
+   }
+  ],
+  "offices": [
+   {
+    "key": "antalya",
+    "kind": "hq",
+    "cityId": "contact.096",
+    "labelId": "contact.099",
+    "addressId": "contact.133",
+    "addressLine2Id": "contact.134",
+    "hoursId": "contact.100",
+    "footerLabelId": "home.196",
+    "phone": "+905011240340",
+    "whatsapp": "905011240340",
+    "email": "info@jobsadmire.com",
+    "hours": {
+     "tz": "Europe/Istanbul",
+     "days": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "open": "09:00",
+     "close": "18:00"
+    },
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Adnan+Menderes+Blv.+No+7%2F6+Muratpa%C5%9Fa+Antalya"
+   },
+   {
+    "key": "karachi",
+    "kind": "sourcing",
+    "cityId": "contact.097",
+    "labelId": "contact.104",
+    "addressId": "contact.105",
+    "addressLine2Id": "contact.103",
+    "hoursId": "contact.106",
+    "footerLabelId": "home.197",
+    "phone": "+905011240340",
+    "whatsapp": "905011240340",
+    "email": "info@jobsadmire.com",
+    "hours": {
+     "tz": "Asia/Karachi",
+     "days": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "open": "10:00",
+     "close": "19:00"
+    },
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Shahrah-e-Faisal+Karachi"
+   }
+  ],
+  "sectors": [
+   {
+    "key": "factory",
+    "labelId": "hire.076",
+    "subtitleId": "hire.083",
+    "icon": "factory"
+   },
+   {
+    "key": "construction",
+    "labelId": "hire.077",
+    "subtitleId": "hire.084",
+    "icon": "construction"
+   },
+   {
+    "key": "tourism",
+    "labelId": "hire.078",
+    "subtitleId": "hire.085",
+    "icon": "tourism"
+   },
+   {
+    "key": "agriculture",
+    "labelId": "hire.079",
+    "subtitleId": "hire.086",
+    "icon": "agriculture"
+   },
+   {
+    "key": "textile",
+    "labelId": "hire.080",
+    "subtitleId": "hire.087",
+    "icon": "textile"
+   },
+   {
+    "key": "logistics",
+    "labelId": "hire.081",
+    "subtitleId": "hire.088",
+    "icon": "logistics"
+   },
+   {
+    "key": "other",
+    "labelId": "hire.082",
+    "subtitleId": null,
+    "icon": "other"
+   }
+  ],
+  "blog": [
+   {
+    "key": "turkey-work-permit-process-employer-guide",
+    "slug": {
+     "en": "turkey-work-permit-process-employer-guide",
+     "tr": "yabanci-isciler-calisma-izni-rehberi"
+    },
+    "title": {
+     "en": "Turkey work permit process for foreign workers: the complete employer's guide",
+     "tr": "Yabancı işçiler için çalışma izni süreci: eksiksiz işveren rehberi"
+    },
+    "excerpt": {
+     "en": "Everything an employer needs to know before hiring overseas workers — required documents, İŞKUR criteria, costs, timelines, and the mistakes that get applications rejected.",
+     "tr": "Yurt dışından işçi almadan önce işverenin bilmesi gereken her şey — gerekli belgeler, İŞKUR kriterleri, maliyetler, süreler ve başvuruları reddettiren hatalar."
+    },
+    "category": "workPermits",
+    "categoryLabelId": "home.263",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-06-12",
+    "readMinutes": 8,
+    "hasBody": {
+     "en": true,
+     "tr": false
+    },
+    "body": {
+     "en": "Türkiye's factories, hotels, farms and construction sites are all competing for the same shrinking pool of local labor. Hiring from overseas is the practical answer — but the work permit process stops many employers before they start. This guide walks through it, end to end.\n\n> **Key takeaways**\n>\n> - The employer applies, not the worker — and salary below the ministry minimum is the #1 rejection reason.\n> - You need 5 Turkish employees per foreign hire, plus 100,000 TL capital — shortage sectors get exemptions.\n> - Realistic timeline: 4–8 weeks end to end, including ~30 days of ministry review.\n> - A licensed agency can file and track everything — you never touch a form.\n\n## Who can hire foreign workers in Türkiye?\n\nWork permits are applied for by the **employer**, not the worker. The Ministry of Labor evaluates your company before it evaluates the candidate. Two criteria matter most:\n\n**5 : 1 rule** — Five Turkish employees registered at the workplace for each foreign worker you hire.\n\n**Capital / turnover** — Paid-in capital of at least 100,000 TL, or gross sales that meet the ministry's threshold.\n\nSectors with proven labor shortages — agriculture, manufacturing, tourism — benefit from exemptions and quotas that a licensed agency can apply on your behalf.\n\n## Documents you'll need\n\n- Signed employment contract\n- Worker's passport copy\n- Diploma or skill certificate\n- Company tax & activity records\n- Current SGK service statement\n- Online application form\n\n## The application, step by step\n\n1. **Job offer & contract.** The employer and candidate sign a contract that states role, salary and duration.\n2. **Online application.** Filed through the Ministry of Labor's e-permit system; the worker applies at the Turkish consulate in their country in parallel.\n3. **Ministry review.** Evaluation typically takes about 30 days; missing documents restart the clock.\n4. **Approval & fees.** Permit and card fees are paid; the permit doubles as a residence permit.\n5. **Arrival & SGK.** The worker enters Türkiye with a work visa and must be registered with SGK within 30 days of starting.\n\n## Mistakes that get applications rejected\n\n- Salary below the ministry's minimum for the role — the most common rejection reason.\n- Contract details that don't match the online application.\n- Applying while the 5:1 employee ratio isn't met.\n- Missing consulate appointment on the worker's side.\n\n> As a licensed İŞKUR agency, JobsAdmire files and tracks the entire permit application for you — most of our clients never touch a single form.",
+     "tr": null
+    }
+   },
+   {
+    "key": "hiring-from-pakistan-turkish-employers",
+    "slug": {
+     "en": "hiring-from-pakistan-turkish-employers",
+     "tr": "pakistandan-isci-istihdami"
+    },
+    "title": {
+     "en": "Hiring from Pakistan: what Turkish employers should know",
+     "tr": "Pakistan'dan işçi istihdamı: Türk işverenlerin bilmesi gerekenler"
+    },
+    "excerpt": {
+     "en": "Skill profiles, vetting standards and why the Pakistan corridor delivers reliable factory and agriculture workers.",
+     "tr": "Beceri profilleri, doğrulama standartları ve Pakistan koridorunun güvenilir fabrika ve tarım işçisi sağlamasının nedenleri."
+    },
+    "category": "recruitment",
+    "categoryLabelId": "home.265",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-05-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "iskur-rules-private-employment-agencies",
+    "slug": {
+     "en": "iskur-rules-private-employment-agencies",
+     "tr": "iskur-ozel-istihdam-burolari-kurallari"
+    },
+    "title": {
+     "en": "İŞKUR rules for private employment agencies, explained",
+     "tr": "Özel istihdam büroları için İŞKUR kuralları"
+    },
+    "excerpt": {
+     "en": "What permit No. 1730 means, why job seekers never pay a fee, and how to verify any agency's license.",
+     "tr": "1730 numaralı iznin anlamı, iş arayanlardan neden ücret alınmadığı ve bir ajansın lisansının nasıl doğrulanacağı."
+    },
+    "category": "compliance",
+    "categoryLabelId": "home.264",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-05-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "turkey-labor-shortage-factories-hiring-overseas",
+    "slug": {
+     "en": "turkey-labor-shortage-factories-hiring-overseas",
+     "tr": "turkiye-de-isgucu-acigi"
+    },
+    "title": {
+     "en": "Turkey's labor shortage: why factories are hiring overseas",
+     "tr": "Türkiye'de işgücü açığı: fabrikalar neden yurt dışından işçi alıyor?"
+    },
+    "excerpt": {
+     "en": "Manufacturing, tourism and agriculture are all short on workers — here's what the data says and what employers are doing.",
+     "tr": "İmalat, turizm ve tarımda işçi açığı büyüyor — veriler ne söylüyor, işverenler ne yapıyor?"
+    },
+    "category": "marketNews",
+    "categoryLabelId": "home.262",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-04-01",
+    "readMinutes": 6,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "work-permit-costs-timelines-budget",
+    "slug": {
+     "en": "work-permit-costs-timelines-budget",
+     "tr": null
+    },
+    "title": {
+     "en": "Work permit costs & timelines: what employers should budget",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Government fees, processing times and the realistic end-to-end budget for bringing one worker to your site.",
+     "tr": null
+    },
+    "category": "workPermits",
+    "categoryLabelId": "home.263",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-04-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "onboarding-overseas-workers-first-30-days",
+    "slug": {
+     "en": "onboarding-overseas-workers-first-30-days",
+     "tr": null
+    },
+    "title": {
+     "en": "Onboarding overseas workers: the first 30 days checklist",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Housing, SGK registration, orientation and retention — how to set new arrivals up for success from day one.",
+     "tr": null
+    },
+    "category": "recruitment",
+    "categoryLabelId": "home.265",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-03-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "seasonal-agriculture-workforce-harvest-hiring",
+    "slug": {
+     "en": "seasonal-agriculture-workforce-harvest-hiring",
+     "tr": null
+    },
+    "title": {
+     "en": "Seasonal agriculture workforce: planning your harvest hiring",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Why farms that request workers 3 months ahead never miss a season — a planning timeline for growers.",
+     "tr": null
+    },
+    "category": "marketNews",
+    "categoryLabelId": "home.262",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-03-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "hotel-resort-staffing-2026-tourism-season",
+    "slug": {
+     "en": "hotel-resort-staffing-2026-tourism-season",
+     "tr": null
+    },
+    "title": {
+     "en": "Hotel & resort staffing: preparing for the 2026 tourism season",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Antalya's hotels start recruiting in winter. A staffing timeline for housekeeping, kitchen and front-office roles.",
+     "tr": null
+    },
+    "category": "recruitment",
+    "categoryLabelId": "home.265",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-02-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "work-permit-renewals-deadlines",
+    "slug": {
+     "en": "work-permit-renewals-deadlines",
+     "tr": null
+    },
+    "title": {
+     "en": "Work permit renewals: don't lose your workforce to missed deadlines",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Renewal windows, required updates and how to keep a valid permit for every worker on site.",
+     "tr": null
+    },
+    "category": "workPermits",
+    "categoryLabelId": "home.263",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-02-01",
+    "readMinutes": 3,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "sgk-registration-foreign-workers",
+    "slug": {
+     "en": "sgk-registration-foreign-workers",
+     "tr": null
+    },
+    "title": {
+     "en": "SGK registration for foreign workers: employer obligations",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Social security registration, premiums and the 30-day rule after your worker arrives in Turkey.",
+     "tr": null
+    },
+    "category": "compliance",
+    "categoryLabelId": "home.264",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-01-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "work-permit-rejection-reasons",
+    "slug": {
+     "en": "work-permit-rejection-reasons",
+     "tr": null
+    },
+    "title": {
+     "en": "Turkey work permit rejection reasons — and how to avoid them",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "The 7 most common rejection grounds we see, with the fix for each one before you file.",
+     "tr": null
+    },
+    "category": "workPermits",
+    "categoryLabelId": "home.263",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-01-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "work-visa-vs-work-permit-turkey",
+    "slug": {
+     "en": "work-visa-vs-work-permit-turkey",
+     "tr": null
+    },
+    "title": {
+     "en": "Work visa vs work permit in Turkey: what's the difference?",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Two documents, two processes, one hire — how the consulate visa and ministry permit fit together.",
+     "tr": null
+    },
+    "category": "workPermits",
+    "categoryLabelId": "home.263",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-12-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "turkey-work-permit-quota-system",
+    "slug": {
+     "en": "turkey-work-permit-quota-system",
+     "tr": null
+    },
+    "title": {
+     "en": "Turkey's work permit quota system explained for employers",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "How sector quotas and shortage-occupation lists change what you can apply for.",
+     "tr": null
+    },
+    "category": "workPermits",
+    "categoryLabelId": "home.263",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-12-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "hire-factory-workers-turkey-overseas",
+    "slug": {
+     "en": "hire-factory-workers-turkey-overseas",
+     "tr": null
+    },
+    "title": {
+     "en": "How to hire factory workers in Turkey from overseas",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "From skill test to shift start: a manufacturing-specific hiring walkthrough.",
+     "tr": null
+    },
+    "category": "recruitment",
+    "categoryLabelId": "home.265",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-12-01",
+    "readMinutes": 6,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "hiring-construction-workers-central-asia",
+    "slug": {
+     "en": "hiring-construction-workers-central-asia",
+     "tr": null
+    },
+    "title": {
+     "en": "Hiring construction workers from Central Asia: a practical guide",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Trades, certifications and mobilization timelines for building sites.",
+     "tr": null
+    },
+    "category": "recruitment",
+    "categoryLabelId": "home.265",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-11-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "agriculture-workers-seasonal-vs-yearly-contracts",
+    "slug": {
+     "en": "agriculture-workers-seasonal-vs-yearly-contracts",
+     "tr": null
+    },
+    "title": {
+     "en": "Agriculture workers for Turkish farms: seasonal vs yearly contracts",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Which contract type fits your crop calendar — and what each means for permits.",
+     "tr": null
+    },
+    "category": "recruitment",
+    "categoryLabelId": "home.265",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-11-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "verify-recruitment-agency-turkey-checklist",
+    "slug": {
+     "en": "verify-recruitment-agency-turkey-checklist",
+     "tr": null
+    },
+    "title": {
+     "en": "How to verify a recruitment agency in Turkey: 6-point checklist",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "License lookup, fee rules and red flags — protect your company from unlicensed operators.",
+     "tr": null
+    },
+    "category": "recruitment",
+    "categoryLabelId": "home.265",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-10-01",
+    "readMinutes": 3,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "foreign-worker-minimum-salary-thresholds-2026",
+    "slug": {
+     "en": "foreign-worker-minimum-salary-thresholds-2026",
+     "tr": null
+    },
+    "title": {
+     "en": "Foreign worker minimum salary thresholds in Turkey (2026 update)",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "The ministry's role-based salary multipliers, updated for the new minimum wage.",
+     "tr": null
+    },
+    "category": "compliance",
+    "categoryLabelId": "home.264",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-10-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "employer-obligations-housing-insurance-contracts",
+    "slug": {
+     "en": "employer-obligations-housing-insurance-contracts",
+     "tr": null
+    },
+    "title": {
+     "en": "Employer obligations: housing, insurance and contracts for foreign staff",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "What the law requires you to provide — and what good employers add on top.",
+     "tr": null
+    },
+    "category": "compliance",
+    "categoryLabelId": "home.264",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-09-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "turkey-2026-minimum-wage-hiring-costs",
+    "slug": {
+     "en": "turkey-2026-minimum-wage-hiring-costs",
+     "tr": null
+    },
+    "title": {
+     "en": "Turkey's 2026 minimum wage: what it means for hiring costs",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "New wage floor, new permit salary thresholds — the numbers employers need.",
+     "tr": null
+    },
+    "category": "marketNews",
+    "categoryLabelId": "home.262",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-09-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "top-5-countries-turkish-employers-recruited-2025",
+    "slug": {
+     "en": "top-5-countries-turkish-employers-recruited-2025",
+     "tr": null
+    },
+    "title": {
+     "en": "Top 5 countries Turkish employers recruited from in 2025",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Corridor-by-corridor data on where Turkey's overseas workforce came from last year.",
+     "tr": null
+    },
+    "category": "marketNews",
+    "categoryLabelId": "home.262",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-08-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "tourism-season-2026-antalya-hotel-staffing",
+    "slug": {
+     "en": "tourism-season-2026-antalya-hotel-staffing",
+     "tr": null
+    },
+    "title": {
+     "en": "Tourism season 2026: Antalya's hotel staffing outlook",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Occupancy forecasts and what they mean for housekeeping and kitchen hiring.",
+     "tr": null
+    },
+    "category": "marketNews",
+    "categoryLabelId": "home.262",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-08-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   }
+  ]
+ },
  "redirects": []
 }

@@ -26,10 +26,10 @@
   "home.021": "JobsAdmire, 13 ülkeden kendi temsilcileriyle işçi temin eder, her çalışma izni başvurusunu 4904 sayılı kanun kapsamında yapar ve işçileri işe başlamaya hazır şekilde işyerinize ulaştırır.",
   "home.022": "İşçi talep edin →",
   "home.023": "Mevcut adayları görün",
-  "home.024": "24 saat içinde ücretsiz teklif",
+  "home.024": "{homepageReplyHours} saat içinde ücretsiz teklif",
   "home.025": "İşçi talebi",
   "home.026": "İhtiyacınızı yazın",
-  "home.027": "24 saat içinde yanıt",
+  "home.027": "{homepageReplyHours} saat içinde yanıt",
   "home.028": "Aday profilleri, gerçek aylık maliyet ve çalışma izni takvimi — ücretsiz.",
   "home.029": "Ücretsiz teklif alın →",
   "home.030": "Sizi arayalım",
@@ -59,7 +59,7 @@
   "home.054": "Doğrulanmış sonuçlar · gerçek süreçler",
   "home.055": "Tüm onaylar →",
   "home.056": "İşçiye ihtiyacım var",
-  "home.057": "24 saat içinde, gerçek maliyetiyle ücretsiz teklif",
+  "home.057": "{homepageReplyHours} saat içinde, gerçek maliyetiyle ücretsiz teklif",
   "home.058": "Yurt dışında acenteyim",
   "home.059": "Aday gönderin, yerleştirmede ödemenizi JobsAdmire yapar",
   "home.060": "Temsilciyi doğrulayın",
@@ -109,7 +109,7 @@
   "home.104": "Başlangıç",
   "home.105": "İhtiyacınızı paylaşın",
   "home.106": "Sektör, kişi sayısı, lokasyon ve zaman planı — form ya da WhatsApp üzerinden.",
-  "home.107": "24 saat",
+  "home.107": "{homepageReplyHours} saat",
   "home.108": "Teklifiniz ulaşır",
   "home.109": "Aday profilleri, gerçek aylık maliyet ve çalışma izni takvimi — ücretsiz, taahhüt yok.",
   "home.110": "1–2. hafta",
@@ -122,7 +122,7 @@
   "home.117": "İlk iş günü",
   "home.118": "Seyahat, işe uyum, SGK kaydı ve 30 günlük takip — işçiler planlanan tarihte başlar.",
   "home.119": "Acente ağı",
-  "home.120": "13 ülkede denetlenen iş ortağı acenteler",
+  "home.120": "{countries} ülkede denetlenen iş ortağı acenteler",
   "home.121": "İş ortağı acenteler ve eğitim kurumları adayları kendi ülkelerinde bulur ve hazırlar — JobsAdmire'ın kurallarına göre ve JobsAdmire ekibinin denetiminde. JobsAdmire adına sözleşme imzalayamazlar ve hiçbir işçiden para tahsil etmezler.",
   "home.122": "Kaynak ülkeler",
   "home.123": "JobsAdmire'ın ülke temsilcileri tarafından denetlenir",
@@ -136,7 +136,7 @@
   "home.131": "Operasyon, çalışma izinleri, işveren birimi ve kalite — her teklif ve izin burada yürütülür.",
   "home.132": "Karaçi ofisi",
   "home.133": "Antalya merkez ofis",
-  "home.134": "Teknoloji ekibi — web sitesi, CRM ve her dosyanın takip edilebilir kalmasını sağlayan iç sistemler.",
+  "home.134": "Tedarik ekibimiz — bir profil size ulaşmadan önce aday mülakatları, meslek sınavları ve belge kontrolleri.",
   "home.135": "Ülke temsilcileri",
   "home.136": "Her kaynak ülkedeki JobsAdmire çalışanları — görüşmeleri yürütür, belgeleri kontrol eder ve iş ortağı acenteleri denetler.",
   "home.137": "Ekip üyesini doğrulayın →",
@@ -167,12 +167,12 @@
   "home.162": "Dijital İş Gücü Platformunuz",
   "home.163": "Tüm iş gücünüz tek portalda",
   "home.164": "Excel tablosu yok, güncelleme için telefon trafiği yok. Kısa listeden çalışma iznine kadar tüm süreç tek portalda, her an yanınızda.",
-  "home.165": "24 saat içinde kısa liste, yalnızca doğrulanmış profiller",
+  "home.165": "{homepageReplyHours} saat içinde kısa liste, yalnızca doğrulanmış profiller",
   "home.166": "Sözleşmeler çevrim içi imzalanır — kurye yok",
   "home.167": "Canlı izin takibi",
   "home.168": "Her başvurunun durumunu anlık olarak takip edin.",
   "home.169": "Bir adayı 30 saniyede onaylayın",
-  "home.170": "24 saatte kısa liste, sözleşmeler çevrim içi",
+  "home.170": "{homepageReplyHours} saatte kısa liste, sözleşmeler çevrim içi",
   "home.171": "Her işçi için canlı izin durumu",
   "home.172": "Telefonunuzdan bir adayı 30 saniyede onaylayın",
   "home.173": "Nasıl çalıştığını görün →",
@@ -199,7 +199,7 @@
   "home.194": "İş gücünüzü her yerden yönetin",
   "home.195": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
   "home.196": "Antalya · Merkez ofis",
-  "home.197": "Karaçi · Teknoloji ofisi",
+  "home.197": "Karaçi · Tedarik ofisi",
   "home.198": "Pzt–Cum 09:00–18:00",
   "home.199": "Pzt–Cmt 10:00–19:00 PKT",
   "home.200": "Ekibimiz",
@@ -210,7 +210,7 @@
   "home.205": "Aday profilleri, değerlendirme kriterleri, gerekli belgeler ve süreç süreleri — yurt dışından ilk kez işe alım yapacak işverenler için, sahadaki deneyimlerimize dayanarak hazırlanan kapsamlı bir rehber.",
   "home.206": "gün",
   "home.207": "Yapay zeka eşleştirme",
-  "home.208": "24 saat içinde kısa liste, yalnızca doğrulanmış profiller",
+  "home.208": "{homepageReplyHours} saat içinde kısa liste, yalnızca doğrulanmış profiller",
   "home.209": "E-imza",
   "home.210": "Sözleşmeler çevrim içi imzalanır — kurye yok",
   "home.211": "Canlı izin takibi",
@@ -260,7 +260,7 @@
   "home.255": "Çalışma izni süreci",
   "home.256": "Varış ve yerleşim",
   "home.257": "Maliyet şeffaflığı",
-  "home.258": "13 ülkeden tedarik ve kontrol — sektörünüze, nitelik seviyesine ve kişi sayısına göre, JobsAdmire temsilcileri tarafından.",
+  "home.258": "{countries} ülkeden tedarik ve kontrol — sektörünüze, nitelik seviyesine ve kişi sayısına göre, JobsAdmire temsilcileri tarafından.",
   "home.259": "Her izin başvurusu 4904 sayılı kanun kapsamında yapılır ve onaya kadar takip edilir — sizin tarafınızda evrak işi yok, ortalama 45 gün.",
   "home.260": "Seyahat, işe uyum ve takip desteği — işçiler ilk günden itibaren planlandığı gibi başlar.",
   "home.261": "Maaş tabanları, SGK ve izin harçları — taahhütten önce gerçek 2026 aylık tutarı.",
@@ -307,7 +307,7 @@
   "home.302": "İşçiden herhangi bir ücret alınıyor mu?",
   "home.303": "Asla. İş arayanlardan hiçbir ücret alınmaz (4904 sayılı kanun). İşçiden para isteyen kişi JobsAdmire adına çalışmıyordur — JA- kimlik numarasını kamuya açık kayıttan doğrulayın ve durumu bize bildirin.",
   "home.304": "Hangi sektörlerde ve hangi ülkelerde çalışıyorsunuz?",
-  "home.305": "Fabrika ve üretim, tarım, turizm ve konaklama ile inşaat — Pakistan, Özbekistan, Nepal, Hindistan, Kırgızistan ve Filipinler dahil 13 ülkeden işçi temin edilir.",
+  "home.305": "Fabrika ve üretim, tarım, turizm ve konaklama ile inşaat — Pakistan, Özbekistan, Nepal, Hindistan, Kırgızistan ve Filipinler dahil {countries} ülkeden işçi temin edilir.",
   "hire.001": "Hakkımızda",
   "hire.002": "İşçi Talebi",
   "hire.003": "Adaylar",
@@ -350,7 +350,7 @@
   "hire.040": "İşçi talep edin →",
   "hire.041": "WhatsApp'tan sorun",
   "hire.042": "Peşin ücret yok",
-  "hire.043": "Peşin ücret yok · 4 iş saati içinde geri dönüş · Bağlayıcı değil",
+  "hire.043": "4 iş saati içinde geri dönüş",
   "hire.044": "Bağlayıcı değil",
   "hire.045": "Talebiniz gönderildi",
   "hire.046": "4 iş saati içinde yanıt veriyoruz.",
@@ -538,7 +538,7 @@
   "hire.228": "Uygulamamız",
   "hire.229": "Telegram",
   "hire.230": "Antalya · Merkez ofis",
-  "hire.231": "Karaçi · Teknoloji ofisi",
+  "hire.231": "Karaçi · Tedarik ofisi",
   "hire.232": "Pzt–Cum 09:00–18:00",
   "hire.233": "Pzt–Cmt 10:00–19:00 PKT",
   "hire.234": "Karaçi, Pakistan",
@@ -547,8 +547,8 @@
   "hire.237": "İş gücü her yerde yanınızda",
   "hire.238": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
   "hire.239": "Menü",
-  "hire.240": "Google Play'den edinin",
-  "hire.241": "App Store'dan indirin",
+  "hire.240": "Get it on Google Play",
+  "hire.241": "Download on the App Store",
   "hire.242": "Kapak fotoğrafı — şantiye, üretim alanı veya karşılama ekibi",
   "hire.243": "Portal — aday kısa liste ekranı",
   "hire.244": "Mobil uygulama ekranı",
@@ -659,7 +659,7 @@
   "calc.047": "Türk çalışan",
   "calc.048": "gerekir.",
   "calc.049": "Kotanızı kontrol edin →",
-  "calc.050": "Kendi durumunuz için net rakamı ister misiniz? 24 saat içinde yazılı teklif.",
+  "calc.050": "Kendi durumunuz için net rakamı ister misiniz? {homepageReplyHours} saat içinde yazılı teklif.",
   "calc.051": "Ara",
   "calc.052": "WhatsApp'tan teklif",
   "calc.053": "İşçi talep edin →",
@@ -710,10 +710,10 @@
   "calc.098": "İşverene maliyeti",
   "calc.099": "= brüt maaş + SGK işveren payı (%21,75, imalatta %18,75). İzin harçları, uçak bileti ve konaklama bunun üzerine eklenir — yukarıdan bir meslek seçin, hesaplayıcı tam rakamı sizin için çıkarsın.",
   "calc.100": "Şimdi gerçek rakamı alın",
-  "calc.101": "Tahminler işe yarar — yazılı teklif daha iyisidir. Meslekleri, işçi sayısını ve şehri bildirin; hizmet bedelimiz dahil tam maliyet dökümünü 24 saat içinde alacaksınız.",
+  "calc.101": "Tahminler işe yarar — yazılı teklif daha iyisidir. Meslekleri, işçi sayısını ve şehri bildirin; hizmet bedelimiz dahil tam maliyet dökümünü {homepageReplyHours} saat içinde alacaksınız.",
   "calc.102": "Şu ana kadarki tahmininiz",
   "calc.103": "Bu yaklaşık",
-  "calc.104": "Hizmet bedeli yazılı olarak bildirilir — bunu gönderin, 24 saat içinde net rakamla dönelim.",
+  "calc.104": "Hizmet bedeli yazılı olarak bildirilir — bunu gönderin, {homepageReplyHours} saat içinde net rakamla dönelim.",
   "calc.105": "Yazılı teklif alın",
   "calc.106": "Müsait adayları görün",
   "calc.107": "Türkiye'deki işverenler için izinli işgücü temini — yurt dışından bulma, değerlendirme ve çalışma izinleri, baştan sona.",
@@ -990,7 +990,7 @@
   "calc.378": "Cevaplarınız bize gönderilmez — kontrol tarayıcınızda çalışır.",
   "calc.379": "Önce bunları düzeltin",
   "calc.380": "Net rakamınızı ister misiniz?",
-  "calc.381": "Meslekleri ve işçi sayısını gönderin — 24 saat içinde yazılı teklif.",
+  "calc.381": "Meslekleri ve işçi sayısını gönderin — {homepageReplyHours} saat içinde yazılı teklif.",
   "calc.382": "Retlerin çoğu beş şeyden kaynaklanır. Bunları dürüstçe cevaplayın. Bir dakika sürer ve şimdi mi başvurmanız yoksa önce bir şeyi mi düzeltmeniz gerektiğini gösterir.",
   "calc.383": "Maliyet soruları",
   "calc.384": "İşverenlerin bu rakamları ilk gördüklerinde sordukları.",
@@ -1090,7 +1090,7 @@
   "calc.478": "Hesaplayıcıda ✓",
   "calc.479": "Hesaplayıcıda kullan →",
   "calc.480": "Hizmet bedeli gerçekten burada gösterilmiyor mu?",
-  "calc.481": "Doğru, çünkü işe, işçi sayısına ve işin ne kadarını bizden istediğinize göre değişir. Her zaman sabit bir tutardır, işe başlamadan önce yazılı olarak anlaşılır ve peşin hiçbir ödeme yapmazsınız. Meslekleri ve işçi sayısını gönderin, 24 saat içinde net fiyatı alacaksınız.",
+  "calc.481": "Doğru, çünkü işe, işçi sayısına ve işin ne kadarını bizden istediğinize göre değişir. Her zaman sabit bir tutardır, işe başlamadan önce yazılı olarak anlaşılır ve peşin hiçbir ödeme yapmazsınız. Meslekleri ve işçi sayısını gönderin, {homepageReplyHours} saat içinde net fiyatı alacaksınız.",
   "calc.482": "Yabancı işçiler Türk işçilerden daha mı pahalı?",
   "calc.483": "Bordroda hayır. Brüt maaş ve SGK ödemeleri aynıdır, çünkü Türk iş hukuku iki işçiye de aynı şekilde davranır. Ek maliyet yalnızca bir kez ödenir: her izin dönemi için işçi başına yaklaşık ₺16.000 izin ve kart harcı, artı siz karşılıyorsanız seyahat. Birkaç yıllık bir sözleşmede aylk fark küçüktür.",
   "calc.484": "Yabancı işçiler için yasal bir asgari maaş var mı?",
@@ -1248,7 +1248,7 @@
   "partner.075": "Müşteriniz müşteriniz olarak kalır",
   "partner.076": "Tanıştırdığınız bir işverene asla doğrudan yaklaşmayız — bu, iş birliği sözleşmesinde yazılıdır.",
   "partner.077": "12’den fazla ülkeden aday listeleri",
-  "partner.078": "Beceri sınavından geçmiş, belgeleri kontrol edilmiş adaylar — genellikle talebinizden sonra 24 saat içinde.",
+  "partner.078": "Beceri sınavından geçmiş, belgeleri kontrol edilmiş adaylar — genellikle talebinizden sonra {homepageReplyHours} saat içinde.",
   "partner.079": "İzinler ve mevzuat uyumu bizde",
   "partner.080": "İŞKUR İzin No. 1730 ve 4904 sayılı kanun kapsamında başvurulur — ekibinizde hiçbir mevzuat yükü kalmaz.",
   "partner.081": "İlk yerleştirmeden önce yazılı olarak karara bağlanır — ilk görüşmemizde konuşulur.",
@@ -1257,7 +1257,7 @@
   "partner.084": "· Güncel müşteri talebi — pozisyonlar, kişi sayısı ve lokasyon",
   "partner.085": "· İlk yerleştirmeden önce imzalanmış iş birliği sözleşmesi",
   "partner.086": "İK ajansı olarak başvurun",
-  "partner.087": "4 iş saati içinde yanıt veriyoruz.",
+  "partner.087": "{replySlaHours} iş saati içinde yanıt veriyoruz.",
   "partner.088": "Başvuru gönderildi",
   "partner.089": "İş ortaklıkları ekibimiz sizinle iletişime geçecek.",
   "partner.090": "JobsAdmire’ın bu bilgileri iş ortaklığımızı değerlendirmek amacıyla işlemesine onay veriyorum;",
@@ -1310,7 +1310,7 @@
   "partner.137": "Ortaklık nasıl başlar",
   "partner.138": "Her ortak türü için aynı dört adım — genellikle iki hafta içinde tamamlanır.",
   "partner.139": "Başvurursunuz",
-  "partner.140": "İlgili başvuru formunu doldurup gönderin. Başvurunuza 4 iş saati içinde geri dönüş yapalım.",
+  "partner.140": "İlgili başvuru formunu doldurup gönderin. Başvurunuza {replySlaHours} iş saati içinde geri dönüş yapalım.",
   "partner.141": "Görüntülü görüşme",
   "partner.142": "İlk görüşme — lisansları ve uyumu kontrol eder, ortaklık koşullarını konuşuruz.",
   "partner.143": "Portal erişimi",
@@ -1329,11 +1329,11 @@
   "partner.156": "— tam erişimle açık pozisyon yayınlayın ve aday yükleyin",
   "partner.157": "Anlık yerleştirme durumu",
   "partner.158": "— her aday ve izin gerçek zamanlı takip edilir",
-  "partner.159": "470+ yerleştirme",
+  "partner.159": "{placed} yerleştirme",
   "partner.160": "bu portal üzerinden yönetildi",
   "partner.161": "Mobilde de var — yerleştirmelerinizi her yerden yönetin",
-  "partner.162": "İndirin",
-  "partner.163": "İndirin",
+  "partner.162": "Download on the",
+  "partner.163": "Get it on",
   "partner.164": "portal.jobsadmire.com",
   "partner.165": "Ortak portalı — sözleşme ve yerleştirmeler ekranı",
   "partner.166": "Ortak mobil uygulama ekranı",
@@ -1356,7 +1356,7 @@
   "partner.183": "Doğrudan iş ortaklıkları ekibimizle görüşün.",
   "partner.184": "WhatsApp",
   "partner.185": "Bizi arayın",
-  "partner.186": "4 iş saati içinde yanıt veriyoruz",
+  "partner.186": "{replySlaHours} iş saati içinde yanıt veriyoruz",
   "partner.187": "Birbirimize uygun muyuz, konuşalım",
   "partner.188": "Bir ortaklığın anlamlı olup olmadığını anlamak için genellikle kısa bir görüşme yeterlidir. Öncesinde hiçbir taahhüt, hiçbir evrak yok.",
   "partner.189": "Ortak olarak başvurun →",
@@ -1423,7 +1423,7 @@
   "wp.027": "ve hepsini kendi İŞKUR lisansımızla dosyalıyoruz",
   "wp.028": "İŞKUR lisanslı",
   "wp.029": "— İzin No. 1730, 4904 sayılı Kanun",
-  "wp.030": "470+ izin dosyalandı",
+  "wp.030": "{placed} izin dosyalandı",
   "wp.031": "— her seferinde onaya kadar takip edildi",
   "wp.032": "Yalnızca izin hizmeti",
   "wp.033": "— işçiniz var mı? Yalnızca izni biz dosyalarız",
@@ -1657,7 +1657,7 @@
   "wp.261": "İşçi yurt dışında",
   "wp.262": "Zaten Türkiye'de",
   "wp.263": "İşçi yurt dışında",
-  "wp.264": "~8–10 hafta",
+  "wp.264": "~{firstDayWeeks} hafta",
   "wp.265": "1. hafta",
   "wp.266": "İşçinin ülkesindeki Türk konsolosluğunda çalışma vizesi başvurusu",
   "wp.267": "2–6. hafta",
@@ -1667,7 +1667,7 @@
   "wp.271": "Varış",
   "wp.272": "SGK kaydı ve ilk iş günü",
   "wp.273": "İşçi zaten Türkiye'de",
-  "wp.274": "~4–6 hafta",
+  "wp.274": "~{firstDayWeeksInCountry} hafta",
   "wp.275": "Bakanlık sistemi üzerinden doğrudan yurt içi başvuru — 6 aydan uzun geçerli ikamet izni gerekir",
   "wp.276": "1–5. haftalar",
   "wp.277": "~30 gün Bakanlık işlem süresi — konsolosluk aşaması yok, seyahat beklemesi yok",
@@ -1848,11 +1848,11 @@
   "about.054": "İlk yurt dışı işçiler görevlendirildi",
   "about.055": "Antalya ofisi tam kapasite faaliyette",
   "about.056": "Bugün",
-  "about.057": "470+ işçi yerleştirildi, 14+ müşteri",
+  "about.057": "{placed} işçi yerleştirildi, {employers} müşteri",
   "about.058": "İş ortağımız olun →",
   "about.059": "Yerleştirilen İşçi",
   "about.060": "Müşteri Şirket",
-  "about.061": "45 gün",
+  "about.061": "{permitDays} gün",
   "about.062": "Ort. İzin Süresi",
   "about.063": "Müşteri Devamlılığı",
   "about.064": "Portal CRM'imiz neden",
@@ -1873,7 +1873,7 @@
   "about.079": "Otomatik oluşturulan belgeler",
   "about.080": "Teklif mektupları ve aday özgeçmişleri sistem tarafından otomatik oluşturulur — standart, hatasız, saniyeler içinde hazır.",
   "about.081": "Yapay zekâ ile aday eşleştirme",
-  "about.082": "Yapay zekâmız 13'ten fazla ülkeden adayları tam olarak sizin ihtiyacınıza eşleştirir — doğru beceriler, ilk seferde.",
+  "about.082": "Yapay zekâmız {countries} ülkeden adayları tam olarak sizin ihtiyacınıza eşleştirir — doğru beceriler, ilk seferde.",
   "about.083": "Kullanıcı dostu mobil uygulama",
   "about.084": "Kısa listeleri inceleyin, adayları onaylayın ve izinleri telefonunuzdan takip edin — her şey tek dokunuş uzağınızda.",
   "about.085": "Kolay çevrim içi ödeme",
@@ -1917,7 +1917,7 @@
   "about.123": "Adnan Menderes Blv. No 7/6",
   "about.124": "Muratpaşa, Antalya, Türkiye",
   "about.125": "Pzt–Cum 09:00–18:00",
-  "about.126": "Karaçi · Teknoloji ofisi",
+  "about.126": "Karaçi · Tedarik ofisi",
   "about.127": "Shahrah-e-Faisal",
   "about.128": "Karaçi, Pakistan",
   "about.129": "Pzt–Cmt 10:00–19:00 PKT",
@@ -2568,7 +2568,7 @@
   "contact.037": "Ajanslar ve temsilciler",
   "contact.038": "Tedarik ortakları ve enstitüler",
   "contact.039": "Belgeler, sözleşmeler ve resmî talepler",
-  "contact.040": "Yaklaşık 4 iş saati içinde yanıt",
+  "contact.040": "Yaklaşık {replySlaHours} iş saati içinde yanıt",
   "contact.041": "Şu anda konuşamıyor musunuz?",
   "contact.042": "Bir zaman dilimi seçin — sizi numaranızdan geri arayalım",
   "contact.043": "Hangi gün",
@@ -2665,14 +2665,14 @@
   "contact.134": "Muratpaşa, Antalya, Türkiye",
   "contact.135": "Pzt–Cum 09:00–18:00",
   "contact.136": "Yol tarifi alın",
-  "contact.137": "Karaçi · Teknoloji ofisi",
+  "contact.137": "Karaçi · Tedarik ofisi",
   "contact.138": "Pzt–Cmt 10:00–19:00 PKT",
   "contact.139": "WhatsApp’tan yazın →",
   "contact.140": "Uygulamamızı İndirin",
   "contact.141": "İş gücü her yerde yanınızda",
   "contact.142": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
-  "contact.143": "İNDİRİN",
-  "contact.144": "İNDİRİN",
+  "contact.143": "GET IT ON",
+  "contact.144": "DOWNLOAD ON THE",
   "contact.145": "İŞKUR izin No. 1730 · İş arayanlardan asla ücret alınmaz (4904 sayılı kanun) · Vergi No: 48422122",
   "contact.146": "Gizlilik Politikası",
   "contact.147": "Kullanım Şartları",
@@ -2721,7 +2721,7 @@
   "contact.190": "Mesai saatlerinde aynı gün. Gece veya hafta sonu yazarsanız bir sonraki iş günü sabahı.",
   "contact.191": "Netleştirmek için kısa bir görüşme",
   "contact.192": "Pozisyonlar, kişi sayısı, başlangıç tarihi, konaklama, bütçe. On beş dakika genellikle yeterli.",
-  "contact.193": "24 saat içinde yazılı sayılar",
+  "contact.193": "{homepageReplyHours} saat içinde yazılı sayılar",
   "contact.194": "Bir teklif veya izin kontrol listesi — yazılı olarak, yönetim kuruluna sunabilmeniz için.",
   "contact.195": "İlk görüşme için ücret alıyor musunuz?",
   "contact.196": "Hayır. Tedarik, kısa listeler ve teklifin kendisi ücretsizdir — yalnızca işçileri kabul ettiğinizde ve izin dosyasını başlattığımızda anlaşılan tek bir hizmet bedeli ödersiniz. Danışmanlık ücreti, ön ödeme veya peşin bir bedel yoktur.",
@@ -2782,7 +2782,7 @@
   "availworkers.023": "Portalımızdan canlı",
   "availworkers.024": "Doğrulanmış işçiler,",
   "availworkers.025": "başlamaya hazır",
-  "availworkers.026": "iş ortağı olun",
+  "availworkers.026": "Türkiye'de",
   "availworkers.027": "Havuzumuzdan gerçek adaylar — beceri testinden geçmiş, belgeleri kontrol edilmiş ve bir işveren bekliyor. Beğendiğiniz profilleri seçin, her çalışma iznini İŞKUR lisansımız altında biz sunarız.",
   "availworkers.028": "Adaylara göz atın →",
   "availworkers.029": "Profil isteyin",
@@ -2794,7 +2794,7 @@
   "availworkers.035": "Havuza göz atın",
   "availworkers.036": "Temizle",
   "availworkers.037": "Talebiniz gönderildi",
-  "availworkers.038": "4 iş saati içinde eşleşen profillerle yanıt veriyoruz.",
+  "availworkers.038": "{replySlaHours} iş saati içinde eşleşen profillerle yanıt veriyoruz.",
   "availworkers.039": "JobsAdmire’ın talebimi yanıtlamak için bu bilgileri işlemesini kabul ediyorum —",
   "availworkers.040": "KVKK aydınlatma metni",
   "availworkers.041": "WhatsApp’ı mı tercih edersiniz?",
@@ -2804,7 +2804,7 @@
   "availworkers.045": "E-posta",
   "availworkers.046": "Telefon / WhatsApp",
   "availworkers.047": "Türkiye’deki şehir",
-  "availworkers.048": "Uygun bir profil buldunuz mu? 24 saat içinde tam CV ve video mülakat.",
+  "availworkers.048": "Uygun bir profil buldunuz mu? {homepageReplyHours} saat içinde tam CV ve video mülakat.",
   "availworkers.049": "Arayın",
   "availworkers.050": "WhatsApp’tan yazın",
   "availworkers.051": "İşçi talep edin →",
@@ -2823,11 +2823,11 @@
   "availworkers.064": "Deneyim",
   "availworkers.065": "Bulunabilirlik",
   "availworkers.066": "Şu anda bu filtrelerle eşleşen profil yok",
-  "availworkers.067": "Havuzumuz her hafta değişir ve siparişe göre tedarik ederiz — ne istediğinizi söyleyin, 13+ ülkeden genellikle 24 saat içinde kısa liste hazırlarız.",
+  "availworkers.067": "Havuzumuz her hafta değişir ve siparişe göre tedarik ederiz — ne istediğinizi söyleyin, {countries} ülkeden genellikle {homepageReplyHours} saat içinde kısa liste hazırlarız.",
   "availworkers.068": "İhtiyacınızı bize yazın →",
   "availworkers.069": "Filtreleri temizle",
   "availworkers.070": "İhtiyacınız olan meslek görünmüyor mu?",
-  "availworkers.071": "Bu havuz bugün hazır olanlardır — ayrıca 13+ ülkeden siparişe göre tedarik ediyoruz. Pozisyonları ve kişi sayısını söyleyin, yaklaşık bir hafta içinde kısa liste alın.",
+  "availworkers.071": "Bu havuz bugün hazır olanlardır — ayrıca {countries} ülkeden siparişe göre tedarik ediyoruz. Pozisyonları ve kişi sayısını söyleyin, yaklaşık bir hafta içinde kısa liste alın.",
   "availworkers.072": "Bu sayfada “doğrulanmış” ne anlama gelir",
   "availworkers.073": "Her profil burada görünmeden önce dört kontrolden geçer — kısa listenin hızlı ilerlemesinin nedeni bu.",
   "availworkers.074": "Belgeler kontrol edildi",
@@ -2862,7 +2862,7 @@
   "availworkers.103": "Başka bir şey mi var?",
   "availworkers.104": "Doğrudan yerleştirme ekibimize sorun.",
   "availworkers.105": "İşçiler hazır — siz hazır mısınız?",
-  "availworkers.106": "Beğendiğiniz profil numaralarını bize gönderin veya sadece ihtiyacınız olan pozisyonları söyleyin. 24 saat içinde yazılı teklif ve tam CV’ler — peşin ücret yok.",
+  "availworkers.106": "Beğendiğiniz profil numaralarını bize gönderin veya sadece ihtiyacınız olan pozisyonları söyleyin. {homepageReplyHours} saat içinde yazılı teklif ve tam CV’ler — peşin ücret yok.",
   "availworkers.107": "Bu adayları talep edin",
   "availworkers.108": "Bize WhatsApp’tan yazın",
   "availworkers.109": "İşe alım talebi gönderin",
@@ -2887,8 +2887,8 @@
   "availworkers.128": "Uygulamamızı İndirin",
   "availworkers.129": "İş gücü her yerde yanınızda",
   "availworkers.130": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
-  "availworkers.131": "İNDİRİN",
-  "availworkers.132": "İNDİRİN",
+  "availworkers.131": "GET IT ON",
+  "availworkers.132": "DOWNLOAD ON THE",
   "availworkers.133": "İŞKUR izin No. 1730 · İş arayanlardan asla ücret alınmaz (4904 sayılı kanun) · Vergi No: 48422122",
   "availworkers.134": "Gizlilik Politikası",
   "availworkers.135": "Kullanım Şartları",
@@ -2898,7 +2898,7 @@
   "availworkers.139": "8+ yıl",
   "availworkers.140": "şimdi müsait",
   "availworkers.141": "İşveren",
-  "availworkers.142": "4 iş saati içinde tam CV’ler, belgeler ve video mülakatlar.",
+  "availworkers.142": "{replySlaHours} iş saati içinde tam CV’ler, belgeler ve video mülakatlar.",
   "availworkers.143": "Firma adı",
   "availworkers.144": "Hangi pozisyonlar ve kaç işçi?",
   "availworkers.145": "Şehir, sektör ve hedef başlangıç tarihi (isteğe bağlı)",
@@ -2976,7 +2976,7 @@
   "availworkers.217": "Kararınız beklerken profili sizin için tutuyoruz ve aynı kişi için başka bir işverenin de süreçte olup olmadığını dürüstçe söylüyoruz. Biri alınmışsa havuzdan eşdeğer profiller gönderiyoruz.",
   "availworkers.218": "Bu adaylar için çalışma iznini kim sunar?",
   "availworkers.219": "Bu sayfadaki bir aday ne kadar hızlı başlayabilir?",
-  "availworkers.220": "Bu profiller zaten beceri testinden geçmiş ve izne hazır olduğu için dosya, onayınızdan günler sonra Bakanlığa gider. Türkiye’de bulunan işçiler genellikle 4–6 haftada, yurt dışındaki adaylar yaklaşık 8–10 haftada başlar.",
+  "availworkers.220": "Bu profiller zaten beceri testinden geçmiş ve izne hazır olduğu için dosya, onayınızdan günler sonra Bakanlığa gider. Türkiye’de bulunan işçiler genellikle {firstDayWeeksInCountry} haftada, yurt dışındaki adaylar yaklaşık {firstDayWeeks} haftada başlar.",
   "availworkers.221": "İşçi ayrılırsa veya beklentiyi karşılamazsa ne olur?",
   "availworkers.222": "Profilleri görmek için bir ödeme yapıyor muyum?",
   "availworkers.223": "Hayır. Göz atmak, CV talep etmek ve adaylarla mülakat yapmak ücretsizdir ve peşin ücret yoktur. Ticari koşullar herhangi bir yerleştirmeden önce yazılı olarak kararlaştırılır.",
@@ -3111,8 +3111,8 @@
   "success.102": "Uygulamamızı İndirin",
   "success.103": "İş gücü her yerde yanınızda",
   "success.104": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
-  "success.105": "İNDİRİN",
-  "success.106": "İNDİRİN",
+  "success.105": "GET IT ON",
+  "success.106": "DOWNLOAD ON THE",
   "success.107": "İŞKUR izin No. 1730 · İş arayanlardan asla ücret alınmaz (4904 sayılı kanun) · Vergi No: 48422122",
   "success.108": "Gizlilik Politikası",
   "success.109": "Kullanım Şartları",
@@ -3202,7 +3202,7 @@
   "blog.042": "İhtiyacınız olan iş gücünü birlikte bulalım.",
   "blog.043": "İşverenlere özel ücretsiz danışmanlık — ihtiyacınızı bize iletin, süreci birlikte planlayalım.",
   "blog.044": "İŞKUR lisanslı — izin No. 1730",
-  "blog.045": "24 saatte ücretsiz teklif",
+  "blog.045": "{homepageReplyHours} saatte ücretsiz teklif",
   "blog.046": "İşçi talep edin →",
   "blog.047": "Bizi arayın",
   "blog.048": "Türkiye’deki işverenler için lisanslı iş gücü temini — yurt dışı tedarik, inceleme ve çalışma izinleri, uçtan uca.",
@@ -3225,8 +3225,8 @@
   "blog.065": "Uygulamamızı İndirin",
   "blog.066": "İş gücü her yerde yanınızda",
   "blog.067": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
-  "blog.068": "İNDİRİN",
-  "blog.069": "İNDİRİN",
+  "blog.068": "GET IT ON",
+  "blog.069": "DOWNLOAD ON THE",
   "blog.070": "İŞKUR izin No. 1730 · İş arayanlardan asla ücret alınmaz (4904 sayılı kanun) · Vergi No: 48422122",
   "blog.071": "Gizlilik Politikası",
   "blog.072": "Kullanım Şartları",
@@ -3288,7 +3288,7 @@
   "blogarticle.030": "Lisanslı bir ajans her şeyi sunar ve takip eder — hiçbir forma dokunmazsınız.",
   "blogarticle.031": "Türkiye’de kimler yabancı işçi çalıştırabilir?",
   "blogarticle.032": "Çalışma izni başvurusunu",
-  "blogarticle.033": "işverene",
+  "blogarticle.033": "işveren",
   "blogarticle.034": "yapar, işçi değil. Çalışma Bakanlığı adayı değerlendirmeden önce şirketinizi değerlendirir. En çok iki kriter önemlidir:",
   "blogarticle.035": "5 : 1 kuralı",
   "blogarticle.036": "İşe aldığınız her yabancı çalışan için işyerinde kayıtlı beş Türk çalışan bulunmalıdır.",
@@ -3350,7 +3350,7 @@
   "blogarticle.092": "İşe alım hakkında okuyor musunuz? Hadi yapalım.",
   "blogarticle.093": "İşverenler için ücretsiz danışmanlık — neye ihtiyacınız olduğunu söyleyin.",
   "blogarticle.094": "İŞKUR lisanslı — izin No. 1730",
-  "blogarticle.095": "24 saatte ücretsiz teklif",
+  "blogarticle.095": "{homepageReplyHours} saatte ücretsiz teklif",
   "blogarticle.096": "Bizi arayın",
   "blogarticle.097": "Türkiye’deki işverenler için lisanslı iş gücü temini — yurt dışı tedarik, inceleme ve çalışma izinleri, uçtan uca.",
   "blogarticle.098": "İşverenler için",
@@ -3372,8 +3372,8 @@
   "blogarticle.114": "Uygulamamızı İndirin",
   "blogarticle.115": "İş gücü her yerde yanınızda",
   "blogarticle.116": "Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.",
-  "blogarticle.117": "İNDİRİN",
-  "blogarticle.118": "İNDİRİN",
+  "blogarticle.117": "GET IT ON",
+  "blogarticle.118": "DOWNLOAD ON THE",
   "blogarticle.119": "İŞKUR izin No. 1730 · İş arayanlardan asla ücret alınmaz (4904 sayılı kanun) · Vergi No: 48422122",
   "blogarticle.120": "Gizlilik Politikası",
   "blogarticle.121": "Kullanım Şartları",
@@ -3417,8 +3417,8 @@
   "crmlogin.014": "Müşteri yöneticisi",
   "crmlogin.015": "BT birimi",
   "crmlogin.016": "WhatsApp yanıtı ~10 dk",
-  "crmlogin.017": "İndirin",
-  "crmlogin.018": "İndirin",
+  "crmlogin.017": "Download on the",
+  "crmlogin.018": "Get it on",
   "crmlogin.019": "Bir şubeyle iletişime geçin",
   "crmlogin.020": "İŞKUR Lisanslı · İzin No. 1730",
   "crmlogin.021": "Yetkili özel istihdam bürosu · Türkiye Cumhuriyeti",
@@ -3455,9 +3455,9 @@
   "crmlogin.052": "Canlı yerleştirme durumu — her aday ve izin gerçek zamanlı",
   "crmlogin.053": "Şirket e-postası",
   "crmlogin.054": "Bu giriş yalnızca çalıştığımız İK ajansları ve işverenler içindir.",
-  "crmlogin.055": "470+ yerleştirme bu portal üzerinden gerçekleştirildi. İş birliği sözleşmesi imzalandıktan sonra hesabınız müşteri yöneticiniz tarafından açılır.",
+  "crmlogin.055": "{placed} yerleştirme bu portal üzerinden gerçekleştirildi. İş birliği sözleşmesi imzalandıktan sonra hesabınız müşteri yöneticiniz tarafından açılır.",
   "crmlogin.056": "Henüz hesabınız yok mu?",
-  "crmlogin.057": "Bir iş ortaklığının anlamlı olup olmadığını anlamak için genellikle kısa bir görüşme yeterli. 4 iş saati içinde yanıt veriyoruz ve sözleşmenin imzalandığı gün portalınızı açıyoruz.",
+  "crmlogin.057": "Bir iş ortaklığının anlamlı olup olmadığını anlamak için genellikle kısa bir görüşme yeterli. {replySlaHours} iş saati içinde yanıt veriyoruz ve sözleşmenin imzalandığı gün portalınızı açıyoruz.",
   "crmlogin.058": "Portal erişimi talep edin",
   "crmlogin.059": "Mobilde de var — yerleştirmeleri hareket halinde yönetin.",
   "crmlogin.060": "Bir izin aşaması ilerlediği anda bildirim",
@@ -3579,17 +3579,6 @@
   {
    "group": "desktopNav",
    "order": 6,
-   "labelId": "home.010",
-   "href": "/blog",
-   "external": false,
-   "visibleOn": [
-    "desktop",
-    "mobile"
-   ]
-  },
-  {
-   "group": "desktopNav",
-   "order": 7,
    "labelId": "home.011",
    "href": "/verify",
    "external": false,
@@ -3600,7 +3589,7 @@
   },
   {
    "group": "desktopNav",
-   "order": 8,
+   "order": 7,
    "labelId": "home.008",
    "href": "/partner-with-us",
    "external": false,
@@ -3611,7 +3600,7 @@
   },
   {
    "group": "desktopNav",
-   "order": 9,
+   "order": 8,
    "labelId": "home.009",
    "href": "/careers",
    "external": false,
@@ -3622,7 +3611,282 @@
   },
   {
    "group": "desktopNav",
+   "order": 9,
+   "labelId": "home.007",
+   "href": "/contact",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 0,
+   "labelId": "home.002",
+   "href": "/hire-workers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 1,
+   "labelId": "home.003",
+   "href": "/available-workers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 2,
+   "labelId": "home.004",
+   "href": "/work-permit",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 3,
+   "labelId": "home.005",
+   "href": "/hiring-cost-calculator",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 4,
+   "labelId": "home.001",
+   "href": "/about",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 5,
+   "labelId": "home.006",
+   "href": "/success-stories",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 6,
+   "labelId": "home.011",
+   "href": "/verify",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 7,
+   "labelId": "home.008",
+   "href": "/partner-with-us",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 8,
+   "labelId": "home.009",
+   "href": "/careers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 9,
+   "labelId": "home.007",
+   "href": "/contact",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
    "order": 10,
+   "labelId": "home.012",
+   "href": "https://portal.jobsadmire.com/auth/login",
+   "external": true,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "slimBarRight",
+   "order": 0,
+   "labelId": "home.009",
+   "href": "/careers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "slimBarRight",
+   "order": 1,
+   "labelId": "home.011",
+   "href": "/verify",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "slimBarRight",
+   "order": 2,
+   "labelId": "home.012",
+   "href": "https://portal.jobsadmire.com/auth/login",
+   "external": true,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerEmployers",
+   "order": 0,
+   "labelId": "home.002",
+   "href": "/hire-workers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerEmployers",
+   "order": 1,
+   "labelId": "home.003",
+   "href": "/available-workers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerEmployers",
+   "order": 2,
+   "labelId": "home.005",
+   "href": "/hiring-cost-calculator",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerEmployers",
+   "order": 3,
+   "labelId": "home.004",
+   "href": "/work-permit",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerEmployers",
+   "order": 4,
+   "labelId": "home.011",
+   "href": "/verify",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerEmployers",
+   "order": 5,
+   "labelId": "home.012",
+   "href": "https://portal.jobsadmire.com/auth/login",
+   "external": true,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerCompany",
+   "order": 0,
+   "labelId": "home.001",
+   "href": "/about",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerCompany",
+   "order": 1,
+   "labelId": "home.006",
+   "href": "/success-stories",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerCompany",
+   "order": 2,
+   "labelId": "home.008",
+   "href": "/partner-with-us",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerCompany",
+   "order": 3,
+   "labelId": "home.009",
+   "href": "/careers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerCompany",
+   "order": 4,
    "labelId": "home.007",
    "href": "/contact",
    "external": false,
@@ -3657,9 +3921,9 @@
    "ios": null
   },
   "portal": {
+   "host": "https://portal.jobsadmire.com",
    "loginPath": "/auth/login",
-   "forgotPath": "/auth/forgot-password",
-   "host": "https://portal.jobsadmire.com"
+   "forgotPath": "/auth/forgot-password"
   },
   "maps": {
    "antalya": "https://www.google.com/maps/search/?api=1&query=Adnan+Menderes+Blv.+No+7%2F6+Muratpa%C5%9Fa+Antalya",
@@ -3674,7 +3938,1654 @@
   },
   "turnstileSiteKey": null
  },
- "pages": {},
- "collections": {},
+ "pages": {
+  "home": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "organization",
+    "website",
+    "faq"
+   ]
+  },
+  "hire": {
+   "titleId": "hire.264",
+   "descriptionId": "hire.265",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "calc": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "wp": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "partner": {
+   "titleId": "partner.222",
+   "descriptionId": "partner.223",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "about": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb"
+   ]
+  },
+  "contact": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "workers": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "stories": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb"
+   ]
+  },
+  "verify": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "careers": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "faq"
+   ]
+  },
+  "careersDetail": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb",
+    "jobPosting"
+   ]
+  },
+  "blog": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "noindex",
+   "jsonLd": [
+    "breadcrumb"
+   ]
+  },
+  "blogArticle": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "noindex",
+   "jsonLd": [
+    "breadcrumb",
+    "article",
+    "faq"
+   ]
+  },
+  "portal": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "noindex",
+   "jsonLd": []
+  },
+  "privacy": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb"
+   ]
+  },
+  "terms": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb"
+   ]
+  },
+  "kvkk": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb"
+   ]
+  },
+  "cookiePolicy": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "index",
+   "jsonLd": [
+    "breadcrumb"
+   ]
+  },
+  "thankYou": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "noindex",
+   "jsonLd": []
+  },
+  "newsletterConfirm": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "noindex",
+   "jsonLd": []
+  },
+  "newsletterUnsubscribe": {
+   "titleId": "",
+   "descriptionId": "",
+   "ogImage": null,
+   "canonical": null,
+   "robots": "noindex",
+   "jsonLd": []
+  }
+ },
+ "collections": {
+  "metrics": [
+   {
+    "key": "placed",
+    "value": 470,
+    "text": null,
+    "suffix": "+",
+    "labelId": "home.050",
+    "unitId": null
+   },
+   {
+    "key": "employers",
+    "value": 22,
+    "text": null,
+    "suffix": "+",
+    "labelId": "hire.073",
+    "unitId": null
+   },
+   {
+    "key": "countries",
+    "value": 13,
+    "text": null,
+    "suffix": "",
+    "labelId": "home.051",
+    "unitId": null
+   },
+   {
+    "key": "permitDays",
+    "value": 45,
+    "text": null,
+    "suffix": "",
+    "labelId": "home.052",
+    "unitId": "home.206"
+   },
+   {
+    "key": "firstDayWeeks",
+    "value": null,
+    "text": "6–8",
+    "suffix": "",
+    "labelId": "home.117",
+    "unitId": null
+   },
+   {
+    "key": "firstDayWeeksInCountry",
+    "value": null,
+    "text": "4–6",
+    "suffix": "",
+    "labelId": null,
+    "unitId": null
+   },
+   {
+    "key": "replySlaHours",
+    "value": 4,
+    "text": null,
+    "suffix": "",
+    "labelId": null,
+    "unitId": null
+   },
+   {
+    "key": "homepageReplyHours",
+    "value": 24,
+    "text": null,
+    "suffix": "",
+    "labelId": null,
+    "unitId": null
+   },
+   {
+    "key": "sectors",
+    "value": 6,
+    "text": null,
+    "suffix": "",
+    "labelId": "hire.074",
+    "unitId": null
+   }
+  ],
+  "rateConfig": [
+   {
+    "version": "2026-01",
+    "effectiveFrom": "2026-01-01",
+    "reviewDueAt": "2026-12-20",
+    "updatedAt": "2026-01-15",
+    "currency": "TRY",
+    "legalMinGross": 33030,
+    "sgkEmployerRate": 0.2175,
+    "sgkRates": {
+     "manufacturing": 0.1875,
+     "other": 0.2175,
+     "none": 0.2375
+    },
+    "supportMonthly": 1270,
+    "permitFeeTRY": 16000,
+    "flightTRY": 12000,
+    "housingMonthlyTRY": 5000,
+    "quotaRatio": 5
+   }
+  ],
+  "calculatorRoles": [
+   {
+    "key": "welder",
+    "labelId": "calc.555",
+    "multiplier": 1.5,
+    "group": "skilled",
+    "preset": false,
+    "industry": "factory",
+    "industryLabelId": "calc.551",
+    "salaryMin": 45000,
+    "salaryMax": 70000
+   },
+   {
+    "key": "cnc",
+    "labelId": "hire.093",
+    "multiplier": 1.5,
+    "group": "skilled",
+    "preset": false,
+    "industry": "factory",
+    "industryLabelId": "calc.551",
+    "salaryMin": 45000,
+    "salaryMax": 65000
+   },
+   {
+    "key": "machine",
+    "labelId": "calc.544",
+    "multiplier": 1,
+    "group": "general",
+    "preset": false,
+    "industry": "factory",
+    "industryLabelId": "calc.551",
+    "salaryMin": 38000,
+    "salaryMax": 52000
+   },
+   {
+    "key": "textile",
+    "labelId": "calc.541",
+    "multiplier": 1,
+    "group": "general",
+    "preset": false,
+    "industry": "factory",
+    "industryLabelId": "calc.551",
+    "salaryMin": 36000,
+    "salaryMax": 50000
+   },
+   {
+    "key": "electrician",
+    "labelId": "calc.545",
+    "multiplier": 1.5,
+    "group": "skilled",
+    "preset": false,
+    "industry": "construction",
+    "industryLabelId": "calc.554",
+    "salaryMin": 45000,
+    "salaryMax": 62000
+   },
+   {
+    "key": "plumber",
+    "labelId": "calc.546",
+    "multiplier": 1.5,
+    "group": "skilled",
+    "preset": false,
+    "industry": "construction",
+    "industryLabelId": "calc.554",
+    "salaryMin": 42000,
+    "salaryMax": 58000
+   },
+   {
+    "key": "labourer",
+    "labelId": "calc.542",
+    "multiplier": 1,
+    "group": "general",
+    "preset": false,
+    "industry": "construction",
+    "industryLabelId": "calc.554",
+    "salaryMin": 33030,
+    "salaryMax": 44000
+   },
+   {
+    "key": "cook",
+    "labelId": "calc.548",
+    "multiplier": 1.5,
+    "group": "skilled",
+    "preset": false,
+    "industry": "hotel",
+    "industryLabelId": "calc.552",
+    "salaryMin": 50000,
+    "salaryMax": 78000
+   },
+   {
+    "key": "waiter",
+    "labelId": "hire.107",
+    "multiplier": 1,
+    "group": "general",
+    "preset": false,
+    "industry": "hotel",
+    "industryLabelId": "calc.552",
+    "salaryMin": 35000,
+    "salaryMax": 48000
+   },
+   {
+    "key": "housekeeping",
+    "labelId": "calc.547",
+    "multiplier": 1,
+    "group": "general",
+    "preset": false,
+    "industry": "hotel",
+    "industryLabelId": "calc.552",
+    "salaryMin": 33030,
+    "salaryMax": 44000
+   },
+   {
+    "key": "steward",
+    "labelId": "calc.543",
+    "multiplier": 1,
+    "group": "general",
+    "preset": false,
+    "industry": "hotel",
+    "industryLabelId": "calc.552",
+    "salaryMin": 33030,
+    "salaryMax": 45000
+   },
+   {
+    "key": "greenhouse",
+    "labelId": "hire.112",
+    "multiplier": 1,
+    "group": "general",
+    "preset": false,
+    "industry": "agriculture",
+    "industryLabelId": "calc.553",
+    "salaryMin": 33030,
+    "salaryMax": 42000
+   },
+   {
+    "key": "generalPreset",
+    "labelId": "home.240",
+    "multiplier": 1,
+    "group": "general",
+    "preset": true,
+    "industry": null,
+    "industryLabelId": null,
+    "salaryMin": null,
+    "salaryMax": null
+   },
+   {
+    "key": "skilledPreset",
+    "labelId": "home.241",
+    "multiplier": 1.5,
+    "group": "skilled",
+    "preset": true,
+    "industry": null,
+    "industryLabelId": null,
+    "salaryMin": null,
+    "salaryMax": null
+   },
+   {
+    "key": "specialistPreset",
+    "labelId": "home.242",
+    "multiplier": 2,
+    "group": "specialist",
+    "preset": true,
+    "industry": null,
+    "industryLabelId": null,
+    "salaryMin": null,
+    "salaryMax": null
+   }
+  ],
+  "sourceCountries": [
+   {
+    "code": "PK",
+    "nameId": "jt.290",
+    "name": "Pakistan",
+    "dial": "+92",
+    "lon": 69.3,
+    "lat": 30.4,
+    "flag": "🇵🇰"
+   },
+   {
+    "code": "NP",
+    "nameId": "jt.292",
+    "name": "Nepal",
+    "dial": "+977",
+    "lon": 84.1,
+    "lat": 28.4,
+    "flag": "🇳🇵"
+   },
+   {
+    "code": "IN",
+    "nameId": "jt.291",
+    "name": "Hindistan",
+    "dial": "+91",
+    "lon": 78.9,
+    "lat": 22.6,
+    "flag": "🇮🇳"
+   },
+   {
+    "code": "UZ",
+    "nameId": "jt.289",
+    "name": "Özbekistan",
+    "dial": "+998",
+    "lon": 64.6,
+    "lat": 41.4,
+    "flag": "🇺🇿"
+   },
+   {
+    "code": "KG",
+    "nameId": "jt.294",
+    "name": "Kırgızistan",
+    "dial": "+996",
+    "lon": 74.8,
+    "lat": 41.2,
+    "flag": "🇰🇬"
+   },
+   {
+    "code": "TM",
+    "nameId": "jt.295",
+    "name": "Türkmenistan",
+    "dial": "+993",
+    "lon": 59.6,
+    "lat": 39,
+    "flag": "🇹🇲"
+   },
+   {
+    "code": "PH",
+    "nameId": "jt.301",
+    "name": "Filipinler",
+    "dial": "+63",
+    "lon": 121.8,
+    "lat": 12.9,
+    "flag": "🇵🇭"
+   },
+   {
+    "code": "ID",
+    "nameId": "jt.300",
+    "name": "Endonezya",
+    "dial": "+62",
+    "lon": 113.9,
+    "lat": -1.5,
+    "flag": "🇮🇩"
+   },
+   {
+    "code": "RU",
+    "nameId": "jt.293",
+    "name": "Rusya",
+    "dial": "+7",
+    "lon": 50,
+    "lat": 55.5,
+    "flag": "🇷🇺"
+   },
+   {
+    "code": "ML",
+    "nameId": "jt.297",
+    "name": "Mali",
+    "dial": "+223",
+    "lon": -4,
+    "lat": 17.5,
+    "flag": "🇲🇱"
+   },
+   {
+    "code": "SN",
+    "nameId": null,
+    "name": "Senegal",
+    "dial": "+221",
+    "lon": -14.5,
+    "lat": 14.5,
+    "flag": "🇸🇳"
+   },
+   {
+    "code": "CM",
+    "nameId": "jt.296",
+    "name": "Kamerun",
+    "dial": "+237",
+    "lon": 12.4,
+    "lat": 6,
+    "flag": "🇨🇲"
+   },
+   {
+    "code": "LK",
+    "nameId": "verify.262",
+    "name": "Sri Lanka",
+    "dial": "+94",
+    "lon": 80.7,
+    "lat": 7.9,
+    "flag": "🇱🇰"
+   }
+  ],
+  "countries": [
+   {
+    "code": "AE",
+    "name": "Birleşik Arap Emirlikleri",
+    "dial": "+971"
+   },
+   {
+    "code": "AF",
+    "name": "Afganistan",
+    "dial": "+93"
+   },
+   {
+    "code": "AT",
+    "name": "Avusturya",
+    "dial": "+43"
+   },
+   {
+    "code": "AU",
+    "name": "Avustralya",
+    "dial": "+61"
+   },
+   {
+    "code": "AZ",
+    "name": "Azerbaycan",
+    "dial": "+994"
+   },
+   {
+    "code": "BD",
+    "name": "Bangladeş",
+    "dial": "+880"
+   },
+   {
+    "code": "BE",
+    "name": "Belçika",
+    "dial": "+32"
+   },
+   {
+    "code": "BG",
+    "name": "Bulgaristan",
+    "dial": "+359"
+   },
+   {
+    "code": "BH",
+    "name": "Bahreyn",
+    "dial": "+973"
+   },
+   {
+    "code": "CA",
+    "name": "Kanada",
+    "dial": "+1"
+   },
+   {
+    "code": "CH",
+    "name": "İsviçre",
+    "dial": "+41"
+   },
+   {
+    "code": "CM",
+    "name": "Kamerun",
+    "dial": "+237"
+   },
+   {
+    "code": "CN",
+    "name": "Çin",
+    "dial": "+86"
+   },
+   {
+    "code": "DE",
+    "name": "Almanya",
+    "dial": "+49"
+   },
+   {
+    "code": "DK",
+    "name": "Danimarka",
+    "dial": "+45"
+   },
+   {
+    "code": "DZ",
+    "name": "Cezayir",
+    "dial": "+213"
+   },
+   {
+    "code": "EG",
+    "name": "Mısır",
+    "dial": "+20"
+   },
+   {
+    "code": "ES",
+    "name": "İspanya",
+    "dial": "+34"
+   },
+   {
+    "code": "ET",
+    "name": "Etiyopya",
+    "dial": "+251"
+   },
+   {
+    "code": "FR",
+    "name": "Fransa",
+    "dial": "+33"
+   },
+   {
+    "code": "GB",
+    "name": "Birleşik Krallık",
+    "dial": "+44"
+   },
+   {
+    "code": "GE",
+    "name": "Gürcistan",
+    "dial": "+995"
+   },
+   {
+    "code": "GH",
+    "name": "Gana",
+    "dial": "+233"
+   },
+   {
+    "code": "GR",
+    "name": "Yunanistan",
+    "dial": "+30"
+   },
+   {
+    "code": "ID",
+    "name": "Endonezya",
+    "dial": "+62"
+   },
+   {
+    "code": "IN",
+    "name": "Hindistan",
+    "dial": "+91"
+   },
+   {
+    "code": "IQ",
+    "name": "Irak",
+    "dial": "+964"
+   },
+   {
+    "code": "IR",
+    "name": "İran",
+    "dial": "+98"
+   },
+   {
+    "code": "IT",
+    "name": "İtalya",
+    "dial": "+39"
+   },
+   {
+    "code": "JO",
+    "name": "Ürdün",
+    "dial": "+962"
+   },
+   {
+    "code": "KE",
+    "name": "Kenya",
+    "dial": "+254"
+   },
+   {
+    "code": "KG",
+    "name": "Kırgızistan",
+    "dial": "+996"
+   },
+   {
+    "code": "KW",
+    "name": "Kuveyt",
+    "dial": "+965"
+   },
+   {
+    "code": "KZ",
+    "name": "Kazakistan",
+    "dial": "+7"
+   },
+   {
+    "code": "LB",
+    "name": "Lübnan",
+    "dial": "+961"
+   },
+   {
+    "code": "LK",
+    "name": "Sri Lanka",
+    "dial": "+94"
+   },
+   {
+    "code": "MA",
+    "name": "Fas",
+    "dial": "+212"
+   },
+   {
+    "code": "ML",
+    "name": "Mali",
+    "dial": "+223"
+   },
+   {
+    "code": "MY",
+    "name": "Malezya",
+    "dial": "+60"
+   },
+   {
+    "code": "NG",
+    "name": "Nijerya",
+    "dial": "+234"
+   },
+   {
+    "code": "NL",
+    "name": "Hollanda",
+    "dial": "+31"
+   },
+   {
+    "code": "NO",
+    "name": "Norveç",
+    "dial": "+47"
+   },
+   {
+    "code": "NP",
+    "name": "Nepal",
+    "dial": "+977"
+   },
+   {
+    "code": "OM",
+    "name": "Umman",
+    "dial": "+968"
+   },
+   {
+    "code": "PH",
+    "name": "Filipinler",
+    "dial": "+63"
+   },
+   {
+    "code": "PK",
+    "name": "Pakistan",
+    "dial": "+92"
+   },
+   {
+    "code": "PL",
+    "name": "Polonya",
+    "dial": "+48"
+   },
+   {
+    "code": "QA",
+    "name": "Katar",
+    "dial": "+974"
+   },
+   {
+    "code": "RO",
+    "name": "Romanya",
+    "dial": "+40"
+   },
+   {
+    "code": "RU",
+    "name": "Rusya",
+    "dial": "+7"
+   },
+   {
+    "code": "SA",
+    "name": "Suudi Arabistan",
+    "dial": "+966"
+   },
+   {
+    "code": "SE",
+    "name": "İsveç",
+    "dial": "+46"
+   },
+   {
+    "code": "SN",
+    "name": "Senegal",
+    "dial": "+221"
+   },
+   {
+    "code": "SY",
+    "name": "Suriye",
+    "dial": "+963"
+   },
+   {
+    "code": "TH",
+    "name": "Tayland",
+    "dial": "+66"
+   },
+   {
+    "code": "TJ",
+    "name": "Tacikistan",
+    "dial": "+992"
+   },
+   {
+    "code": "TM",
+    "name": "Türkmenistan",
+    "dial": "+993"
+   },
+   {
+    "code": "TN",
+    "name": "Tunus",
+    "dial": "+216"
+   },
+   {
+    "code": "TR",
+    "name": "Türkiye",
+    "dial": "+90"
+   },
+   {
+    "code": "UA",
+    "name": "Ukrayna",
+    "dial": "+380"
+   },
+   {
+    "code": "US",
+    "name": "Amerika Birleşik Devletleri",
+    "dial": "+1"
+   },
+   {
+    "code": "UZ",
+    "name": "Özbekistan",
+    "dial": "+998"
+   },
+   {
+    "code": "VN",
+    "name": "Vietnam",
+    "dial": "+84"
+   },
+   {
+    "code": "ZA",
+    "name": "Güney Afrika",
+    "dial": "+27"
+   }
+  ],
+  "offices": [
+   {
+    "key": "antalya",
+    "kind": "hq",
+    "cityId": "contact.096",
+    "labelId": "contact.099",
+    "addressId": "contact.133",
+    "addressLine2Id": "contact.134",
+    "hoursId": "contact.100",
+    "footerLabelId": "home.196",
+    "phone": "+905011240340",
+    "whatsapp": "905011240340",
+    "email": "info@jobsadmire.com",
+    "hours": {
+     "tz": "Europe/Istanbul",
+     "days": [
+      1,
+      2,
+      3,
+      4,
+      5
+     ],
+     "open": "09:00",
+     "close": "18:00"
+    },
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Adnan+Menderes+Blv.+No+7%2F6+Muratpa%C5%9Fa+Antalya"
+   },
+   {
+    "key": "karachi",
+    "kind": "sourcing",
+    "cityId": "contact.097",
+    "labelId": "contact.104",
+    "addressId": "contact.105",
+    "addressLine2Id": "contact.103",
+    "hoursId": "contact.106",
+    "footerLabelId": "home.197",
+    "phone": "+905011240340",
+    "whatsapp": "905011240340",
+    "email": "info@jobsadmire.com",
+    "hours": {
+     "tz": "Asia/Karachi",
+     "days": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+     ],
+     "open": "10:00",
+     "close": "19:00"
+    },
+    "mapUrl": "https://www.google.com/maps/search/?api=1&query=Shahrah-e-Faisal+Karachi"
+   }
+  ],
+  "sectors": [
+   {
+    "key": "factory",
+    "labelId": "hire.076",
+    "subtitleId": "hire.083",
+    "icon": "factory"
+   },
+   {
+    "key": "construction",
+    "labelId": "hire.077",
+    "subtitleId": "hire.084",
+    "icon": "construction"
+   },
+   {
+    "key": "tourism",
+    "labelId": "hire.078",
+    "subtitleId": "hire.085",
+    "icon": "tourism"
+   },
+   {
+    "key": "agriculture",
+    "labelId": "hire.079",
+    "subtitleId": "hire.086",
+    "icon": "agriculture"
+   },
+   {
+    "key": "textile",
+    "labelId": "hire.080",
+    "subtitleId": "hire.087",
+    "icon": "textile"
+   },
+   {
+    "key": "logistics",
+    "labelId": "hire.081",
+    "subtitleId": "hire.088",
+    "icon": "logistics"
+   },
+   {
+    "key": "other",
+    "labelId": "hire.082",
+    "subtitleId": null,
+    "icon": "other"
+   }
+  ],
+  "blog": [
+   {
+    "key": "turkey-work-permit-process-employer-guide",
+    "slug": {
+     "en": "turkey-work-permit-process-employer-guide",
+     "tr": "yabanci-isciler-calisma-izni-rehberi"
+    },
+    "title": {
+     "en": "Turkey work permit process for foreign workers: the complete employer's guide",
+     "tr": "Yabancı işçiler için çalışma izni süreci: eksiksiz işveren rehberi"
+    },
+    "excerpt": {
+     "en": "Everything an employer needs to know before hiring overseas workers — required documents, İŞKUR criteria, costs, timelines, and the mistakes that get applications rejected.",
+     "tr": "Yurt dışından işçi almadan önce işverenin bilmesi gereken her şey — gerekli belgeler, İŞKUR kriterleri, maliyetler, süreler ve başvuruları reddettiren hatalar."
+    },
+    "category": "workPermits",
+    "categoryLabelId": "home.263",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-06-12",
+    "readMinutes": 8,
+    "hasBody": {
+     "en": true,
+     "tr": false
+    },
+    "body": {
+     "en": "Türkiye's factories, hotels, farms and construction sites are all competing for the same shrinking pool of local labor. Hiring from overseas is the practical answer — but the work permit process stops many employers before they start. This guide walks through it, end to end.\n\n> **Key takeaways**\n>\n> - The employer applies, not the worker — and salary below the ministry minimum is the #1 rejection reason.\n> - You need 5 Turkish employees per foreign hire, plus 100,000 TL capital — shortage sectors get exemptions.\n> - Realistic timeline: 4–8 weeks end to end, including ~30 days of ministry review.\n> - A licensed agency can file and track everything — you never touch a form.\n\n## Who can hire foreign workers in Türkiye?\n\nWork permits are applied for by the **employer**, not the worker. The Ministry of Labor evaluates your company before it evaluates the candidate. Two criteria matter most:\n\n**5 : 1 rule** — Five Turkish employees registered at the workplace for each foreign worker you hire.\n\n**Capital / turnover** — Paid-in capital of at least 100,000 TL, or gross sales that meet the ministry's threshold.\n\nSectors with proven labor shortages — agriculture, manufacturing, tourism — benefit from exemptions and quotas that a licensed agency can apply on your behalf.\n\n## Documents you'll need\n\n- Signed employment contract\n- Worker's passport copy\n- Diploma or skill certificate\n- Company tax & activity records\n- Current SGK service statement\n- Online application form\n\n## The application, step by step\n\n1. **Job offer & contract.** The employer and candidate sign a contract that states role, salary and duration.\n2. **Online application.** Filed through the Ministry of Labor's e-permit system; the worker applies at the Turkish consulate in their country in parallel.\n3. **Ministry review.** Evaluation typically takes about 30 days; missing documents restart the clock.\n4. **Approval & fees.** Permit and card fees are paid; the permit doubles as a residence permit.\n5. **Arrival & SGK.** The worker enters Türkiye with a work visa and must be registered with SGK within 30 days of starting.\n\n## Mistakes that get applications rejected\n\n- Salary below the ministry's minimum for the role — the most common rejection reason.\n- Contract details that don't match the online application.\n- Applying while the 5:1 employee ratio isn't met.\n- Missing consulate appointment on the worker's side.\n\n> As a licensed İŞKUR agency, JobsAdmire files and tracks the entire permit application for you — most of our clients never touch a single form.",
+     "tr": null
+    }
+   },
+   {
+    "key": "hiring-from-pakistan-turkish-employers",
+    "slug": {
+     "en": "hiring-from-pakistan-turkish-employers",
+     "tr": "pakistandan-isci-istihdami"
+    },
+    "title": {
+     "en": "Hiring from Pakistan: what Turkish employers should know",
+     "tr": "Pakistan'dan işçi istihdamı: Türk işverenlerin bilmesi gerekenler"
+    },
+    "excerpt": {
+     "en": "Skill profiles, vetting standards and why the Pakistan corridor delivers reliable factory and agriculture workers.",
+     "tr": "Beceri profilleri, doğrulama standartları ve Pakistan koridorunun güvenilir fabrika ve tarım işçisi sağlamasının nedenleri."
+    },
+    "category": "recruitment",
+    "categoryLabelId": "home.265",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-05-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "iskur-rules-private-employment-agencies",
+    "slug": {
+     "en": "iskur-rules-private-employment-agencies",
+     "tr": "iskur-ozel-istihdam-burolari-kurallari"
+    },
+    "title": {
+     "en": "İŞKUR rules for private employment agencies, explained",
+     "tr": "Özel istihdam büroları için İŞKUR kuralları"
+    },
+    "excerpt": {
+     "en": "What permit No. 1730 means, why job seekers never pay a fee, and how to verify any agency's license.",
+     "tr": "1730 numaralı iznin anlamı, iş arayanlardan neden ücret alınmadığı ve bir ajansın lisansının nasıl doğrulanacağı."
+    },
+    "category": "compliance",
+    "categoryLabelId": "home.264",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-05-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "turkey-labor-shortage-factories-hiring-overseas",
+    "slug": {
+     "en": "turkey-labor-shortage-factories-hiring-overseas",
+     "tr": "turkiye-de-isgucu-acigi"
+    },
+    "title": {
+     "en": "Turkey's labor shortage: why factories are hiring overseas",
+     "tr": "Türkiye'de işgücü açığı: fabrikalar neden yurt dışından işçi alıyor?"
+    },
+    "excerpt": {
+     "en": "Manufacturing, tourism and agriculture are all short on workers — here's what the data says and what employers are doing.",
+     "tr": "İmalat, turizm ve tarımda işçi açığı büyüyor — veriler ne söylüyor, işverenler ne yapıyor?"
+    },
+    "category": "marketNews",
+    "categoryLabelId": "home.262",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-04-01",
+    "readMinutes": 6,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "work-permit-costs-timelines-budget",
+    "slug": {
+     "en": "work-permit-costs-timelines-budget",
+     "tr": null
+    },
+    "title": {
+     "en": "Work permit costs & timelines: what employers should budget",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Government fees, processing times and the realistic end-to-end budget for bringing one worker to your site.",
+     "tr": null
+    },
+    "category": "workPermits",
+    "categoryLabelId": "home.263",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-04-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "onboarding-overseas-workers-first-30-days",
+    "slug": {
+     "en": "onboarding-overseas-workers-first-30-days",
+     "tr": null
+    },
+    "title": {
+     "en": "Onboarding overseas workers: the first 30 days checklist",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Housing, SGK registration, orientation and retention — how to set new arrivals up for success from day one.",
+     "tr": null
+    },
+    "category": "recruitment",
+    "categoryLabelId": "home.265",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-03-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "seasonal-agriculture-workforce-harvest-hiring",
+    "slug": {
+     "en": "seasonal-agriculture-workforce-harvest-hiring",
+     "tr": null
+    },
+    "title": {
+     "en": "Seasonal agriculture workforce: planning your harvest hiring",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Why farms that request workers 3 months ahead never miss a season — a planning timeline for growers.",
+     "tr": null
+    },
+    "category": "marketNews",
+    "categoryLabelId": "home.262",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-03-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "hotel-resort-staffing-2026-tourism-season",
+    "slug": {
+     "en": "hotel-resort-staffing-2026-tourism-season",
+     "tr": null
+    },
+    "title": {
+     "en": "Hotel & resort staffing: preparing for the 2026 tourism season",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Antalya's hotels start recruiting in winter. A staffing timeline for housekeeping, kitchen and front-office roles.",
+     "tr": null
+    },
+    "category": "recruitment",
+    "categoryLabelId": "home.265",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-02-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "work-permit-renewals-deadlines",
+    "slug": {
+     "en": "work-permit-renewals-deadlines",
+     "tr": null
+    },
+    "title": {
+     "en": "Work permit renewals: don't lose your workforce to missed deadlines",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Renewal windows, required updates and how to keep a valid permit for every worker on site.",
+     "tr": null
+    },
+    "category": "workPermits",
+    "categoryLabelId": "home.263",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-02-01",
+    "readMinutes": 3,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "sgk-registration-foreign-workers",
+    "slug": {
+     "en": "sgk-registration-foreign-workers",
+     "tr": null
+    },
+    "title": {
+     "en": "SGK registration for foreign workers: employer obligations",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Social security registration, premiums and the 30-day rule after your worker arrives in Turkey.",
+     "tr": null
+    },
+    "category": "compliance",
+    "categoryLabelId": "home.264",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-01-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "work-permit-rejection-reasons",
+    "slug": {
+     "en": "work-permit-rejection-reasons",
+     "tr": null
+    },
+    "title": {
+     "en": "Turkey work permit rejection reasons — and how to avoid them",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "The 7 most common rejection grounds we see, with the fix for each one before you file.",
+     "tr": null
+    },
+    "category": "workPermits",
+    "categoryLabelId": "home.263",
+    "author": "JobsAdmire",
+    "publishedAt": "2026-01-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "work-visa-vs-work-permit-turkey",
+    "slug": {
+     "en": "work-visa-vs-work-permit-turkey",
+     "tr": null
+    },
+    "title": {
+     "en": "Work visa vs work permit in Turkey: what's the difference?",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Two documents, two processes, one hire — how the consulate visa and ministry permit fit together.",
+     "tr": null
+    },
+    "category": "workPermits",
+    "categoryLabelId": "home.263",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-12-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "turkey-work-permit-quota-system",
+    "slug": {
+     "en": "turkey-work-permit-quota-system",
+     "tr": null
+    },
+    "title": {
+     "en": "Turkey's work permit quota system explained for employers",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "How sector quotas and shortage-occupation lists change what you can apply for.",
+     "tr": null
+    },
+    "category": "workPermits",
+    "categoryLabelId": "home.263",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-12-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "hire-factory-workers-turkey-overseas",
+    "slug": {
+     "en": "hire-factory-workers-turkey-overseas",
+     "tr": null
+    },
+    "title": {
+     "en": "How to hire factory workers in Turkey from overseas",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "From skill test to shift start: a manufacturing-specific hiring walkthrough.",
+     "tr": null
+    },
+    "category": "recruitment",
+    "categoryLabelId": "home.265",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-12-01",
+    "readMinutes": 6,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "hiring-construction-workers-central-asia",
+    "slug": {
+     "en": "hiring-construction-workers-central-asia",
+     "tr": null
+    },
+    "title": {
+     "en": "Hiring construction workers from Central Asia: a practical guide",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Trades, certifications and mobilization timelines for building sites.",
+     "tr": null
+    },
+    "category": "recruitment",
+    "categoryLabelId": "home.265",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-11-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "agriculture-workers-seasonal-vs-yearly-contracts",
+    "slug": {
+     "en": "agriculture-workers-seasonal-vs-yearly-contracts",
+     "tr": null
+    },
+    "title": {
+     "en": "Agriculture workers for Turkish farms: seasonal vs yearly contracts",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Which contract type fits your crop calendar — and what each means for permits.",
+     "tr": null
+    },
+    "category": "recruitment",
+    "categoryLabelId": "home.265",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-11-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "verify-recruitment-agency-turkey-checklist",
+    "slug": {
+     "en": "verify-recruitment-agency-turkey-checklist",
+     "tr": null
+    },
+    "title": {
+     "en": "How to verify a recruitment agency in Turkey: 6-point checklist",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "License lookup, fee rules and red flags — protect your company from unlicensed operators.",
+     "tr": null
+    },
+    "category": "recruitment",
+    "categoryLabelId": "home.265",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-10-01",
+    "readMinutes": 3,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "foreign-worker-minimum-salary-thresholds-2026",
+    "slug": {
+     "en": "foreign-worker-minimum-salary-thresholds-2026",
+     "tr": null
+    },
+    "title": {
+     "en": "Foreign worker minimum salary thresholds in Turkey (2026 update)",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "The ministry's role-based salary multipliers, updated for the new minimum wage.",
+     "tr": null
+    },
+    "category": "compliance",
+    "categoryLabelId": "home.264",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-10-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "employer-obligations-housing-insurance-contracts",
+    "slug": {
+     "en": "employer-obligations-housing-insurance-contracts",
+     "tr": null
+    },
+    "title": {
+     "en": "Employer obligations: housing, insurance and contracts for foreign staff",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "What the law requires you to provide — and what good employers add on top.",
+     "tr": null
+    },
+    "category": "compliance",
+    "categoryLabelId": "home.264",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-09-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "turkey-2026-minimum-wage-hiring-costs",
+    "slug": {
+     "en": "turkey-2026-minimum-wage-hiring-costs",
+     "tr": null
+    },
+    "title": {
+     "en": "Turkey's 2026 minimum wage: what it means for hiring costs",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "New wage floor, new permit salary thresholds — the numbers employers need.",
+     "tr": null
+    },
+    "category": "marketNews",
+    "categoryLabelId": "home.262",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-09-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "top-5-countries-turkish-employers-recruited-2025",
+    "slug": {
+     "en": "top-5-countries-turkish-employers-recruited-2025",
+     "tr": null
+    },
+    "title": {
+     "en": "Top 5 countries Turkish employers recruited from in 2025",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Corridor-by-corridor data on where Turkey's overseas workforce came from last year.",
+     "tr": null
+    },
+    "category": "marketNews",
+    "categoryLabelId": "home.262",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-08-01",
+    "readMinutes": 5,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   },
+   {
+    "key": "tourism-season-2026-antalya-hotel-staffing",
+    "slug": {
+     "en": "tourism-season-2026-antalya-hotel-staffing",
+     "tr": null
+    },
+    "title": {
+     "en": "Tourism season 2026: Antalya's hotel staffing outlook",
+     "tr": null
+    },
+    "excerpt": {
+     "en": "Occupancy forecasts and what they mean for housekeeping and kitchen hiring.",
+     "tr": null
+    },
+    "category": "marketNews",
+    "categoryLabelId": "home.262",
+    "author": "JobsAdmire",
+    "publishedAt": "2025-08-01",
+    "readMinutes": 4,
+    "hasBody": {
+     "en": false,
+     "tr": false
+    },
+    "body": {
+     "en": null,
+     "tr": null
+    }
+   }
+  ]
+ },
  "redirects": []
 }

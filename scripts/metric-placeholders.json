@@ -1,0 +1,82 @@
+{
+  "literals": {
+    "placed": ["[470+]"],
+    "employers": [
+      "[22+] employers",
+      "[22+] clients",
+      "[22+] işveren",
+      "[22+] müşteri",
+      "[14+] clients",
+      "[14+] müşteri"
+    ],
+    "countries": [
+      "[13'ten fazla] ülke",
+      "[13+] countries",
+      "[13] countries",
+      "[13+] ülke",
+      "[13] ülke"
+    ],
+    "permitDays": ["[45] days", "[45] gün"],
+    "firstDayWeeks": [
+      "[six to eight] weeks",
+      "[eight to ten] weeks",
+      "[6–8] weeks",
+      "[6–8] hafta",
+      "[6–8]. hafta",
+      "weeks [6–8]",
+      "[8–10] weeks",
+      "[8–10] hafta"
+    ],
+    "firstDayWeeksInCountry": ["[four to six] weeks", "[4–6] weeks", "[4–6] hafta"],
+    "replySlaHours": ["[4] working hours", "[4] business hours", "[4] iş saati"],
+    "homepageReplyHours": [
+      "within [24] hours",
+      "in [24] hours",
+      "within [24]h",
+      "[24] saat içinde",
+      "[24] saatte"
+    ],
+    "sectors": ["[6] sectors", "[6] sektör"]
+  },
+  "strings": {
+    "home.024": [{ "key": "homepageReplyHours" }],
+    "home.027": [{ "key": "homepageReplyHours" }],
+    "home.057": [{ "key": "homepageReplyHours" }],
+    "home.107": [{ "key": "homepageReplyHours", "en": "[24] hours", "tr": "[24] saat" }],
+    "home.120": [{ "key": "countries" }],
+    "home.165": [{ "key": "homepageReplyHours" }],
+    "home.170": [{ "key": "homepageReplyHours" }],
+    "home.208": [{ "key": "homepageReplyHours" }],
+    "home.258": [{ "key": "countries" }],
+    "home.305": [{ "key": "countries" }],
+    "calc.050": [{ "key": "homepageReplyHours" }],
+    "calc.101": [{ "key": "homepageReplyHours" }],
+    "calc.104": [{ "key": "homepageReplyHours" }],
+    "calc.381": [{ "key": "homepageReplyHours" }],
+    "calc.481": [{ "key": "homepageReplyHours" }],
+    "partner.078": [{ "key": "homepageReplyHours" }],
+    "partner.087": [{ "key": "replySlaHours" }],
+    "partner.140": [{ "key": "replySlaHours" }],
+    "partner.159": [{ "key": "placed" }],
+    "partner.186": [{ "key": "replySlaHours" }],
+    "wp.030": [{ "key": "placed" }],
+    "wp.264": [{ "key": "firstDayWeeks" }],
+    "wp.274": [{ "key": "firstDayWeeksInCountry" }],
+    "about.057": [{ "key": "placed" }, { "key": "employers" }],
+    "about.061": [{ "key": "permitDays" }],
+    "about.082": [{ "key": "countries" }],
+    "contact.040": [{ "key": "replySlaHours" }],
+    "contact.193": [{ "key": "homepageReplyHours" }],
+    "availworkers.038": [{ "key": "replySlaHours" }],
+    "availworkers.048": [{ "key": "homepageReplyHours" }],
+    "availworkers.067": [{ "key": "countries" }, { "key": "homepageReplyHours" }],
+    "availworkers.071": [{ "key": "countries" }],
+    "availworkers.106": [{ "key": "homepageReplyHours" }],
+    "availworkers.142": [{ "key": "replySlaHours" }],
+    "availworkers.220": [{ "key": "firstDayWeeks" }, { "key": "firstDayWeeksInCountry" }],
+    "blog.045": [{ "key": "homepageReplyHours" }],
+    "blogarticle.095": [{ "key": "homepageReplyHours" }],
+    "crmlogin.055": [{ "key": "placed" }],
+    "crmlogin.057": [{ "key": "replySlaHours" }]
+  }
+}
