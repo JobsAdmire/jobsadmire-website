@@ -47,6 +47,149 @@
         "fraud": "Thank you for the report; we investigate every one.",
         "workers": "We have your request for candidates; we will send you matching profiles."
       }
+    },
+    "form": {
+      "labels": {
+        "name": "Full name",
+        "email": "E-mail",
+        "phone": "Phone",
+        "company": "Company",
+        "city": "City",
+        "country": "Country",
+        "sector": "Sector",
+        "headcount": "Number of workers",
+        "startWhen": "When do you need them?",
+        "roleNeeded": "Roles needed",
+        "message": "Message",
+        "subject": "Subject",
+        "iAm": "I am",
+        "preferredTime": "Preferred time",
+        "cv": "CV (PDF)",
+        "consent": "Consent",
+        "reporterName": "Your name",
+        "reporterEmail": "Your e-mail",
+        "reporterPhone": "Your phone",
+        "suspectName": "Person or company reported",
+        "suspectContact": "Their contact details",
+        "description": "What happened?",
+        "evidence": "Evidence files",
+        "office": "Office",
+        "preferredDate": "Preferred date",
+        "trade": "Trade",
+        "candidatesPerYear": "Candidates per year",
+        "trades": "Trades covered",
+        "licence": "Licence / registration",
+        "durationMonths": "Duration (months)",
+        "track": "Partnership type",
+        "topic": "Topic",
+        "portfolioUrl": "Portfolio link",
+        "expectedSalary": "Expected salary",
+        "expectedSalaryCurrency": "Currency",
+        "currentSalary": "Current salary",
+        "currentSalaryCurrency": "Currency",
+        "coverLetter": "Cover letter",
+        "linkedinUrl": "LinkedIn profile",
+        "language": "Languages",
+        "openingSlug": "Opening",
+        "estimateSummary": "Estimate summary"
+      },
+      "placeholders": {
+        "name": "Your full name",
+        "email": "name@company.com",
+        "phone": "+90 5xx xxx xx xx",
+        "company": "Company name",
+        "city": "e.g. Antalya",
+        "headcount": "e.g. 10",
+        "roleNeeded": "e.g. welder, waiter, driver",
+        "message": "Tell us briefly what you need",
+        "subject": "What is your message about?",
+        "select": "Select",
+        "description": "Who, when, what did they ask for? Every detail helps.",
+        "trade": "e.g. CNC operator",
+        "trades": "e.g. welding, construction, hotel service",
+        "licence": "e.g. licence number and issuing body",
+        "candidatesPerYear": "e.g. 200",
+        "durationMonths": "e.g. 12",
+        "portfolioUrl": "https://",
+        "linkedinUrl": "https://linkedin.com/in/",
+        "expectedSalary": "e.g. 45000",
+        "coverLetter": "Why this role? A few lines are enough.",
+        "language": "e.g. Urdu (native), English (B2)",
+        "suspectName": "Person or company name",
+        "suspectContact": "Phone, e-mail or profile link",
+        "reporterName": "Your full name",
+        "reporterEmail": "name@example.com",
+        "reporterPhone": "+90 5xx xxx xx xx",
+        "preferredDate": "e.g. 14 October",
+        "preferredTime": "e.g. 10:00–12:00"
+      },
+      "hints": {
+        "phone": "Include the country code.",
+        "cv": "PDF only, up to 5 MB.",
+        "evidence": "JPEG, PNG, WEBP or PDF; up to 8 MB each, three files at most.",
+        "optional": "Optional",
+        "description": "At least 20 characters.",
+        "portfolioUrl": "A link starting with https://.",
+        "linkedinUrl": "Optional; a link starting with https://.",
+        "expectedSalary": "Monthly gross, digits only."
+      },
+      "errors": {
+        "required": "This field is required.",
+        "email": "Enter a valid e-mail address.",
+        "phone": "Enter a valid phone number (at least 8 digits).",
+        "min": "This entry is too short.",
+        "max": "This entry is too long.",
+        "url": "Enter a valid link (starting with https://).",
+        "file": "The file was not accepted; check its type and size.",
+        "consent": "You need to accept the privacy notice to continue.",
+        "captcha": "The security check could not be completed. Please try again.",
+        "invalid": "This value is not valid."
+      },
+      "consent": {
+        "label": "I agree to the processing of my personal data as described in the <link>privacy notice</link>.",
+        "notice": "By sending this form you agree to the processing of your personal data as described in the <link>privacy notice</link>.",
+        "link": "Privacy notice"
+      },
+      "submit": {
+        "default": "Send",
+        "sending": "Sending…"
+      },
+      "honeypot": "Leave this field empty",
+      "fallback": {
+        "captcha": {
+          "title": "The security check did not go through",
+          "body": "You can send the form once more, or message us what you typed directly on WhatsApp."
+        },
+        "off": {
+          "title": "This form is currently closed",
+          "body": "You can reach us on WhatsApp, by phone or by e-mail; our team replies the same day."
+        },
+        "tripped": {
+          "title": "The form is paused for a short while",
+          "body": "We have paused the form briefly because of heavy traffic. Send what you typed to us on WhatsApp in one tap."
+        },
+        "unauthorized": {
+          "title": "The form cannot accept submissions right now",
+          "body": "We have told our team. In the meantime, reach us on WhatsApp or by phone."
+        },
+        "unavailable": {
+          "title": "Your request could not be sent",
+          "body": "A connection problem stopped your form from reaching us. Please try again, or send what you typed on WhatsApp."
+        },
+        "failed": {
+          "title": "Your request could not be processed",
+          "body": "Your request reached us but could not be processed. Our team will look into it; you can also message us on WhatsApp."
+        },
+        "invalid": {
+          "title": "The form could not be sent",
+          "body": "Some of the fields were not accepted. Please check what you entered and try again, or message us on WhatsApp."
+        },
+        "whatsapp": "Send on WhatsApp",
+        "call": "Call us",
+        "email": "E-mail us",
+        "whatsappIntro": "Hello JobsAdmire, I could not send the form on your website. My details:",
+        "retry": "Try again"
+      }
     }
   }
 }

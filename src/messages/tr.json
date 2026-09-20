@@ -47,6 +47,149 @@
         "fraud": "Bildiriminiz için teşekkürler; gelen her ihbarı inceliyoruz.",
         "workers": "Aday talebinizi aldık; eşleşen profilleri size ileteceğiz."
       }
+    },
+    "form": {
+      "labels": {
+        "name": "Ad Soyad",
+        "email": "E-posta",
+        "phone": "Telefon",
+        "company": "Şirket",
+        "city": "Şehir",
+        "country": "Ülke",
+        "sector": "Sektör",
+        "headcount": "İşçi sayısı",
+        "startWhen": "Ne zaman başlamalı?",
+        "roleNeeded": "Aranan pozisyonlar",
+        "message": "Mesajınız",
+        "subject": "Konu",
+        "iAm": "Ben",
+        "preferredTime": "Tercih ettiğiniz saat",
+        "cv": "Özgeçmiş (PDF)",
+        "consent": "Onay",
+        "reporterName": "Adınız",
+        "reporterEmail": "E-posta adresiniz",
+        "reporterPhone": "Telefon numaranız",
+        "suspectName": "Şüpheli kişi veya kurum",
+        "suspectContact": "Şüphelinin iletişim bilgisi",
+        "description": "Ne oldu?",
+        "evidence": "Kanıt dosyaları",
+        "office": "Ofis",
+        "preferredDate": "Tercih ettiğiniz tarih",
+        "trade": "Meslek",
+        "candidatesPerYear": "Yılda kaç aday?",
+        "trades": "Meslek alanları",
+        "licence": "Lisans / ruhsat",
+        "durationMonths": "Süre (ay)",
+        "track": "Ortaklık türü",
+        "topic": "Konu başlığı",
+        "portfolioUrl": "Portföy bağlantısı",
+        "expectedSalary": "Beklenen maaş",
+        "expectedSalaryCurrency": "Para birimi",
+        "currentSalary": "Mevcut maaş",
+        "currentSalaryCurrency": "Para birimi",
+        "coverLetter": "Ön yazı",
+        "linkedinUrl": "LinkedIn profili",
+        "language": "Diller",
+        "openingSlug": "İlan",
+        "estimateSummary": "Tahmin özeti"
+      },
+      "placeholders": {
+        "name": "Adınız ve soyadınız",
+        "email": "ad@sirket.com",
+        "phone": "+90 5xx xxx xx xx",
+        "company": "Şirket adı",
+        "city": "Örn. Antalya",
+        "headcount": "Örn. 10",
+        "roleNeeded": "Örn. kaynakçı, garson, şoför",
+        "message": "İhtiyacınızı kısaca anlatın",
+        "subject": "Mesajınızın konusu",
+        "select": "Seçiniz",
+        "description": "Kim, ne zaman, ne istedi? Elinizdeki her ayrıntı yardımcı olur.",
+        "trade": "Örn. CNC operatörü",
+        "trades": "Örn. kaynak, inşaat, otel servisi",
+        "licence": "Örn. ruhsat numarası ve veren kurum",
+        "candidatesPerYear": "Örn. 200",
+        "durationMonths": "Örn. 12",
+        "portfolioUrl": "https://",
+        "linkedinUrl": "https://linkedin.com/in/",
+        "expectedSalary": "Örn. 45000",
+        "coverLetter": "Neden bu pozisyon? Kısaca anlatın.",
+        "language": "Örn. Türkçe (ana dil), İngilizce (B2)",
+        "suspectName": "Kişi veya firma adı",
+        "suspectContact": "Telefon, e-posta veya profil bağlantısı",
+        "reporterName": "Adınız ve soyadınız",
+        "reporterEmail": "ad@ornek.com",
+        "reporterPhone": "+90 5xx xxx xx xx",
+        "preferredDate": "Örn. 14 Ekim",
+        "preferredTime": "Örn. 10:00–12:00"
+      },
+      "hints": {
+        "phone": "Ülke koduyla birlikte yazın.",
+        "cv": "Yalnızca PDF, en fazla 5 MB.",
+        "evidence": "JPEG, PNG, WEBP veya PDF; dosya başına en fazla 8 MB, en çok üç dosya.",
+        "optional": "İsteğe bağlı",
+        "description": "En az 20 karakter.",
+        "portfolioUrl": "https:// ile başlayan bir bağlantı.",
+        "linkedinUrl": "İsteğe bağlı; https:// ile başlayan bir bağlantı.",
+        "expectedSalary": "Aylık brüt, yalnızca rakam."
+      },
+      "errors": {
+        "required": "Bu alan zorunludur.",
+        "email": "Geçerli bir e-posta adresi girin.",
+        "phone": "Geçerli bir telefon numarası girin (en az 8 rakam).",
+        "min": "Bu alan çok kısa.",
+        "max": "Bu alan çok uzun.",
+        "url": "Geçerli bir bağlantı girin (https:// ile başlamalı).",
+        "file": "Dosya kabul edilmedi; türünü ve boyutunu kontrol edin.",
+        "consent": "Devam etmek için aydınlatma metnini onaylamanız gerekir.",
+        "captcha": "Güvenlik doğrulaması tamamlanamadı. Lütfen tekrar deneyin.",
+        "invalid": "Bu değer geçerli değil."
+      },
+      "consent": {
+        "label": "Kişisel verilerimin <link>aydınlatma metni</link> kapsamında işlenmesini kabul ediyorum.",
+        "notice": "Formu göndererek kişisel verilerinizin <link>aydınlatma metni</link> kapsamında işlenmesini kabul etmiş olursunuz.",
+        "link": "Aydınlatma metni"
+      },
+      "submit": {
+        "default": "Gönder",
+        "sending": "Gönderiliyor…"
+      },
+      "honeypot": "Bu alanı boş bırakın",
+      "fallback": {
+        "captcha": {
+          "title": "Güvenlik doğrulaması tamamlanamadı",
+          "body": "Formu bir kez daha gönderebilir ya da yazdıklarınızı doğrudan WhatsApp'tan iletebilirsiniz."
+        },
+        "off": {
+          "title": "Bu form şu anda kapalı",
+          "body": "Talebinizi WhatsApp, telefon veya e-posta ile iletebilirsiniz; ekibimiz aynı gün dönüş yapar."
+        },
+        "tripped": {
+          "title": "Form geçici olarak duraklatıldı",
+          "body": "Yoğunluk nedeniyle formu kısa süreliğine kapattık. Yazdıklarınızı tek dokunuşla WhatsApp'tan gönderebilirsiniz."
+        },
+        "unauthorized": {
+          "title": "Form şu anda gönderim kabul edemiyor",
+          "body": "Sorunu ekibimize ilettik. Bu arada bize WhatsApp'tan veya telefonla ulaşabilirsiniz."
+        },
+        "unavailable": {
+          "title": "Talebiniz iletilemedi",
+          "body": "Bağlantı sorunu nedeniyle formunuz bize ulaşmadı. Lütfen tekrar deneyin ya da yazdıklarınızı WhatsApp'tan gönderin."
+        },
+        "failed": {
+          "title": "Talebiniz işlenemedi",
+          "body": "Talebiniz bize ulaştı ancak işlenirken bir sorun oluştu. Ekibimiz inceleyecek; dilerseniz WhatsApp'tan da yazabilirsiniz."
+        },
+        "invalid": {
+          "title": "Form gönderilemedi",
+          "body": "Bazı alanlar kabul edilmedi. Lütfen girdiğiniz bilgileri kontrol edip tekrar deneyin ya da WhatsApp'tan yazın."
+        },
+        "whatsapp": "WhatsApp'tan gönder",
+        "call": "Bizi arayın",
+        "email": "E-posta gönderin",
+        "whatsappIntro": "Merhaba JobsAdmire, web sitesindeki formu gönderemedim. Bilgilerim:",
+        "retry": "Tekrar deneyin"
+      }
     }
   }
 }
