@@ -2,8 +2,10 @@ import { NextResponse } from 'next/server';
 import { contentSource, getBundle } from '@/content/adapter';
 // Relative on purpose: the `@/` alias covers `src/` only, and `contract/` is a sibling.
 import { CONTRACT_VERSION } from '../../../../contract/website-bundle.v1';
+import { formBeaconCount } from '../form-beacon/state';
 import { lastRevalidateAt } from '../revalidate/state';
 import { evaluate, type CheckResult, type Checks } from './checks';
+import { opsPingCheck, pingOps } from './ops';
 
 // D25: this is what the external monitor watches, so it is never cached and never answers
 // from a build-time snapshot — a health check that can be stale is not a health check.
@@ -16,7 +18,11 @@ const settled = (r: PromiseSettledResult<unknown>): CheckResult =>
 
 export async function GET() {
   const source = contentSource();
-  const [tr, en] = await Promise.allSettled([getBundle('tr'), getBundle('en')]);
+  // The ping (≤ 3 s) runs beside the bundle checks, not after them.
+  const [[tr, en], ops] = await Promise.all([
+    Promise.allSettled([getBundle('tr'), getBundle('en')]),
+    pingOps(),
+  ]);
   const last = lastRevalidateAt();
   const checks: Checks = {
     bundleTr: settled(tr),
@@ -30,10 +36,9 @@ export async function GET() {
         : last === null || Date.now() - last > REVALIDATE_MAX_AGE_MS
           ? 'fail'
           : 'ok',
-    // WP3a adds the real Operations ping. Until that call exists there is nothing to measure
-    // in either mode, and reporting 'ok' for a check that never ran is exactly the
-    // dishonesty D25 forbids.
-    opsPing: 'skip',
+    // The door's own ping with the forms' write token (docs/OPERATING.md): `off` and
+    // `unconfigured` are `skip` in Phase A, `unauthorized`/`unreachable` are a `fail`.
+    opsPing: opsPingCheck(ops),
   };
   const { ok, reasons } = evaluate(checks);
   return NextResponse.json(
@@ -41,6 +46,10 @@ export async function GET() {
       ok,
       reasons,
       checks,
+      ops,
+      // Best-effort per instance (form-beacon/state.ts): fallback panels shown since this
+      // instance started — a rising number with `ops.state: 'ok'` is a client-side problem.
+      formBeacons: formBeaconCount(),
       contractVersion: CONTRACT_VERSION,
       source,
       commit: process.env.VERCEL_GIT_COMMIT_SHA ?? null,
