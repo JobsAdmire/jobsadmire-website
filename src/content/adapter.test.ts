@@ -1,5 +1,12 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { applyPublicSettings, makeT, assertServableInProduction } from './pure';
+import {
+  applyPublicSettings,
+  assertServableInProduction,
+  fill,
+  makeT,
+  makeTf,
+  metricValues,
+} from './pure';
 import { contentSource } from './config';
 import { BundleSchema, type Bundle } from '../../contract/website-bundle.v1';
 import fixture from '../../contract/website-bundle.v1.fixture.json';
@@ -97,5 +104,44 @@ describe('assertServableInProduction (D23)', () => {
     );
     expect(() => assertServableInProduction(b, 'OPS', 'production')).not.toThrow();
     expect(() => assertServableInProduction(b, 'LOCAL', 'development')).not.toThrow();
+  });
+});
+
+describe('fill / metricValues / makeTf (D17 placeholders)', () => {
+  afterEach(() => vi.unstubAllEnvs());
+  const withMetrics: Bundle = {
+    ...bundle,
+    strings: {
+      ...bundle.strings,
+      'x.1': '{placed} workers from {countries} countries in {firstDayWeeks} weeks',
+    },
+    collections: {
+      metrics: [
+        { key: 'placed', value: 1240, text: null, suffix: '+', labelId: null, unitId: null },
+        { key: 'countries', value: 13, text: null, suffix: '', labelId: null, unitId: null },
+        { key: 'firstDayWeeks', value: null, text: '6–8', suffix: '', labelId: null, unitId: null },
+      ],
+    },
+  };
+  it('formats values per locale, keeps the suffix and prefers text', () => {
+    expect(metricValues(withMetrics, 'tr')).toEqual({
+      placed: '1.240+',
+      countries: '13',
+      firstDayWeeks: '6–8',
+    });
+    expect(metricValues(withMetrics, 'en').placed).toBe('1,240+');
+  });
+  it('fills placeholders and leaves mustache-style {{ tokens }} alone', () => {
+    expect(fill('{a} and {b}', { a: '1', b: '2' })).toBe('1 and 2');
+    expect(fill('Nothing matches “{{ queryEcho }}”', {})).toBe('Nothing matches “{{ queryEcho }}”');
+  });
+  it('throws in development on an unknown placeholder and leaves it in production', () => {
+    vi.stubEnv('NODE_ENV', 'development');
+    expect(() => fill('{nope}', {})).toThrow(/no value for placeholder \{nope\}/);
+    vi.stubEnv('NODE_ENV', 'production');
+    expect(fill('{nope}', {})).toBe('{nope}');
+  });
+  it('makeTf reads a package id and fills it', () => {
+    expect(makeTf(withMetrics, 'en')('x.1')).toBe('1,240+ workers from 13 countries in 6–8 weeks');
   });
 });

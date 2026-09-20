@@ -2,6 +2,9 @@
 // callers can use them. Server-only loading lives in ./adapter.
 import type { Bundle } from '../../contract/website-bundle.v1';
 import { FIXTURE_ONLY_COLLECTIONS, type ContentSource } from './config';
+import type { Locale } from '@/i18n/routing';
+import { formatInt } from '@/lib/format/money';
+import { getCollection } from './collections';
 
 export class BundleUnavailableError extends Error {}
 
@@ -67,4 +70,36 @@ export function makeT(bundle: Bundle) {
     }
     return v;
   };
+}
+
+const PLACEHOLDER = /\{([A-Za-z][A-Za-z0-9]*)\}/g;
+
+/**
+ * D17 placeholder fill: `{placed}` → values.placed. Unknown keys throw in development and are
+ * left in place in production (R28). The pattern requires a bare identifier, so the two
+ * package strings carrying mustache tokens (`{{ queryEcho }}`, verify.050/119) pass through.
+ */
+export function fill(template: string, values: Record<string, string>): string {
+  return template.replace(PLACEHOLDER, (token, key: string) => {
+    const v = values[key];
+    if (v !== undefined) return v;
+    if (process.env.NODE_ENV !== 'production')
+      throw new Error(`fill: no value for placeholder ${token}`);
+    return token;
+  });
+}
+
+/** Every metric as display text: `formatInt(value) + suffix`, or `text` for ranges (W1). */
+export function metricValues(bundle: Bundle, locale: Locale): Record<string, string> {
+  const out: Record<string, string> = {};
+  for (const m of getCollection(bundle, 'metrics'))
+    out[m.key] = m.text ?? (m.value === null ? '' : `${formatInt(m.value, locale)}${m.suffix}`);
+  return out;
+}
+
+/** `t(id)` with the metric placeholders filled — the accessor for re-authored package ids. */
+export function makeTf(bundle: Bundle, locale: Locale) {
+  const t = makeT(bundle);
+  const values = metricValues(bundle, locale);
+  return (id: string): string => fill(t(id), values);
 }

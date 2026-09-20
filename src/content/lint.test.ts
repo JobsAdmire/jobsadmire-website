@@ -6,6 +6,7 @@ import {
   findLeadingLiraViolations,
   findParityViolations,
   numericTokens,
+  parseMetricLiteral,
 } from './lint';
 
 const tr = JSON.parse(readFileSync(join(__dirname, 'local/bundle.tr.json'), 'utf8'))
@@ -43,10 +44,29 @@ describe('TR currency form (D18)', () => {
 });
 
 describe('numbers-out-of-copy (D17)', () => {
-  it('flags a string that hard-types a metric value', () => {
-    expect(findHardTypedMetrics({ 'x.1': 'We placed 470+ workers' }, { placed: 470 })).toEqual([
-      'x.1',
-    ]);
-    expect(findHardTypedMetrics({ 'x.2': 'Call {placed} now' }, { placed: 470 })).toEqual([]);
+  it('parses the [value] span marker of a metric literal', () => {
+    expect(parseMetricLiteral('[22+] clients')).toEqual({
+      text: '22+ clients',
+      pre: '',
+      span: '22+',
+      post: ' clients',
+    });
+    expect(parseMetricLiteral('within [24] hours')).toEqual({
+      text: 'within 24 hours',
+      pre: 'within ',
+      span: '24',
+      post: ' hours',
+    });
+    expect(parseMetricLiteral('470+')).toEqual({ text: '470+', pre: '', span: '470+', post: '' });
+    expect(() => parseMetricLiteral('[13] of [14]')).toThrow(/one \[value\] span/);
+  });
+  it('flags a string that hard-types a metric literal, case-insensitively, unless baselined', () => {
+    const literals = { placed: ['[470+]'], replySlaHours: ['[4] working hours', '[4] iş saati'] };
+    expect(findHardTypedMetrics({ 'x.1': 'We placed 470+ workers' }, literals)).toEqual(['x.1']);
+    expect(findHardTypedMetrics({ 'x.2': 'Call {placed} now' }, literals)).toEqual([]);
+    expect(findHardTypedMetrics({ 'x.3': 'Reply in 4 Working Hours' }, literals)).toEqual(['x.3']);
+    expect(
+      findHardTypedMetrics({ 'x.3': 'Reply in 4 working hours' }, literals, { 'x.3': 'legal: …' }),
+    ).toEqual([]);
   });
 });
