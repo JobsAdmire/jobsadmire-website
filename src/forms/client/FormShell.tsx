@@ -39,6 +39,9 @@ export type FormShellProps = {
   testId?: string;
   /** dev gallery / tests only — the state to start from instead of idle */
   initialState?: FormActionState;
+  /** every DOM id inside the form derives from `idScope ?? formKey` (`f-<scope>-<name>`); a page
+   *  with two forms of the same key (Contact: W3) passes a distinct one to each */
+  idScope?: string;
 };
 
 function SubmitButton({ label }: { label: string }) {
@@ -88,7 +91,15 @@ function FormLevelErrors({ errors }: { errors: [string, string][] }) {
   );
 }
 
-function ConsentRow({ mode, href }: { mode: 'checkbox' | 'notice'; href: '/privacy' | '/kvkk' }) {
+function ConsentRow({
+  mode,
+  href,
+  id,
+}: {
+  mode: 'checkbox' | 'notice';
+  href: '/privacy' | '/kvkk';
+  id: string;
+}) {
   const sys = useTranslations('sys');
   const error = useFieldError(CONSENT_FIELD);
   const ticked = useFieldValue(CONSENT_FIELD) === 'on';
@@ -103,7 +114,6 @@ function ConsentRow({ mode, href }: { mode: 'checkbox' | 'notice'; href: '/priva
         {sys.rich('form.consent.notice', { link })}
       </p>
     );
-  const id = `f-${CONSENT_FIELD}`;
   return (
     <div className="flex flex-col gap-1">
       <ConsentCheckboxRegistration />
@@ -154,7 +164,9 @@ export function FormShell({
   className,
   testId,
   initialState,
+  idScope,
 }: FormShellProps) {
+  const scope = idScope ?? formKey;
   const sys = useTranslations('sys');
   // A rejected action renders the `unavailable` panel, never the error boundary (D11).
   const guarded = useMemo(() => guardAction(action), [action]);
@@ -176,17 +188,17 @@ export function FormShell({
   const ctx = useMemo(
     () =>
       state.status === 'fieldErrors'
-        ? { errors: state.errors, values: state.values, register }
+        ? { errors: state.errors, values: state.values, register, idScope: scope }
         : state.status === 'error'
-          ? { errors: {}, values: state.values, register }
-          : { errors: {}, values: {}, register },
-    [state, register],
+          ? { errors: {}, values: state.values, register, idScope: scope }
+          : { errors: {}, values: {}, register, idScope: scope },
+    [state, register, scope],
   );
   const unshown =
     state.status === 'fieldErrors'
       ? Object.entries(state.errors).filter(([name]) => name === '_form' || !shown.has(name))
       : [];
-  const honeypotId = `f-${HONEYPOT_FIELD}-${formKey}`;
+  const honeypotId = `f-${scope}-${HONEYPOT_FIELD}`;
   return (
     <FormErrorsContext.Provider value={ctx}>
       <form
@@ -214,9 +226,14 @@ export function FormShell({
           />
         </div>
         {turnstileSiteKey ? (
-          <Turnstile ref={turnstile} siteKey={turnstileSiteKey} locale={locale} />
+          <Turnstile
+            ref={turnstile}
+            id={`f-${scope}-turnstile`}
+            siteKey={turnstileSiteKey}
+            locale={locale}
+          />
         ) : null}
-        <ConsentRow mode={consent} href={consentLinkHref} />
+        <ConsentRow mode={consent} href={consentLinkHref} id={`f-${scope}-${CONSENT_FIELD}`} />
         {unshown.length ? <FormLevelErrors errors={unshown} /> : null}
         <div>
           <SubmitButton label={submitLabel ?? sys('form.submit.default')} />

@@ -73,10 +73,13 @@ function loadScript(): void {
 export function Turnstile({
   siteKey,
   locale,
+  id,
   ref,
 }: {
   siteKey: string;
   locale: Locale;
+  /** the widget host's DOM id — the shell passes `f-<idScope>-turnstile` */
+  id?: string;
   ref?: Ref<TurnstileHandle>;
 }) {
   const host = useRef<HTMLDivElement>(null);
@@ -145,7 +148,7 @@ export function Turnstile({
 
   return (
     <>
-      <div ref={host} data-testid="turnstile" />
+      <div ref={host} id={id} data-testid="turnstile" />
       <input ref={input} type="hidden" name={CAPTCHA_FIELD} />
     </>
   );

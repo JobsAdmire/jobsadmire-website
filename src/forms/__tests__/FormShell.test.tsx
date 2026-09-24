@@ -302,6 +302,59 @@ describe('FormShell', () => {
     logged.mockRestore();
   });
 
+  it('derives every id from idScope ?? formKey, so two forms of one key on a page never share an id', async () => {
+    renderWithIntl(
+      <>
+        <FormShell
+          {...base}
+          testId="a"
+          idScope="contact-top"
+          turnstileSiteKey={SITE_KEY}
+          action={idle}
+        >
+          <Field name="name" />
+        </FormShell>
+        <FormShell
+          {...base}
+          testId="b"
+          idScope="contact-bottom"
+          turnstileSiteKey={SITE_KEY}
+          action={idle}
+        >
+          <Field name="name" />
+        </FormShell>
+      </>,
+    );
+    const ids = [...document.querySelectorAll('[id]')].map((el) => el.id);
+    expect(new Set(ids).size).toBe(ids.length);
+    const a = screen.getByTestId('a');
+    const b = screen.getByTestId('b');
+    expect(within(b).getByLabelText(copy.labels.name)).toHaveAttribute(
+      'id',
+      'f-contact-bottom-name',
+    );
+    expect(within(b).getByRole('checkbox')).toHaveAttribute('id', 'f-contact-bottom-consent');
+    expect(b.querySelector('input[name="honeypot"]')).toHaveAttribute(
+      'id',
+      'f-contact-bottom-honeypot',
+    );
+    expect(within(b).getByTestId('turnstile')).toHaveAttribute('id', 'f-contact-bottom-turnstile');
+    // A label click toggles its own form's checkbox, not the first one on the page.
+    await userEvent.click(within(b).getByRole('checkbox').closest('label')!);
+    expect(within(b).getByRole('checkbox')).toBeChecked();
+    expect(within(a).getByRole('checkbox')).not.toBeChecked();
+  });
+
+  it('scopes ids by formKey when no idScope is given', () => {
+    renderWithIntl(
+      <FormShell {...base} action={idle}>
+        <Field name="name" />
+      </FormShell>,
+    );
+    expect(screen.getByLabelText(copy.labels.name)).toHaveAttribute('id', 'f-hire-name');
+    expect(screen.getByRole('checkbox')).toHaveAttribute('id', 'f-hire-consent');
+  });
+
   it('notice mode renders the KVKK line instead of a checkbox, and the title/submitLabel props', () => {
     renderWithIntl(
       <FormShell

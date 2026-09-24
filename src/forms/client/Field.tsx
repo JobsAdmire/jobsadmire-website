@@ -1,7 +1,7 @@
 'use client';
 import { useTranslations } from 'next-intl';
 import { FormField } from '@/design/primitives';
-import { useFieldError, useFieldValue, useRegisterField } from './FormErrorsContext';
+import { useFieldError, useFieldId, useFieldValue, useRegisterField } from './FormErrorsContext';
 
 export type FieldOption = { value: string; label: string };
 
@@ -24,7 +24,8 @@ export type FieldProps = {
   min?: number;
   max?: number;
   className?: string;
-  /** defaults to `f-<name>`; pass one when the same field name appears twice on a page */
+  /** defaults to `f-<idScope>-<name>` inside a `FormShell` (its `idScope ?? formKey`), `f-<name>`
+   *  outside one; pass one only when the same field name appears twice in one form */
   id?: string;
 };
 
@@ -60,9 +61,11 @@ export function Field({
   min,
   max,
   className,
-  id = `f-${name}`,
+  id: idProp,
 }: FieldProps) {
   const sys = useTranslations('sys');
+  const defaultId = useFieldId(name);
+  const id = idProp ?? defaultId;
   const error = useFieldError(name);
   const value = useFieldValue(name);
   useRegisterField(name);

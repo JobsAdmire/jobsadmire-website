@@ -12,9 +12,18 @@ export type FormErrorsValue = {
    *  the returned function unregisters it), so the shell can list every OTHER error — `_form`,
    *  a hidden input — in its form-level alert instead of dropping it */
   register?: (name: string) => () => void;
+  /** set by `FormShell` (`idScope ?? formKey`): `Field` ids default to `f-<idScope>-<name>` */
+  idScope?: string;
 };
 
 export const FormErrorsContext = createContext<FormErrorsValue>({ errors: {}, values: {} });
+
+/** The default DOM id for a control named `name`: scoped by the enclosing shell so two forms
+ *  on one page never share an id; `f-<name>` outside a shell. */
+export function useFieldId(name: string): string {
+  const { idScope } = useContext(FormErrorsContext);
+  return idScope ? `f-${idScope}-${name}` : `f-${name}`;
+}
 
 /** Registers `name` with the enclosing shell for as long as the caller is mounted. */
 export function useRegisterField(name: string): void {
