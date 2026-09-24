@@ -132,6 +132,14 @@ describe('FallbackPanel', () => {
     ]);
   });
 
+  it('renders its heading at headingLevel (default 3)', () => {
+    const { unmount } = renderWithIntl(<FallbackPanel {...base} result={{ kind: 'off' }} />);
+    expect(screen.getByRole('heading', { name: copy.off.title }).tagName).toBe('H3');
+    unmount();
+    renderWithIntl(<FallbackPanel {...base} result={{ kind: 'off' }} headingLevel={4} />);
+    expect(screen.getByRole('heading', { name: copy.off.title }).tagName).toBe('H4');
+  });
+
   it('renders without the escape hatches when no contact is given', () => {
     renderWithIntl(<FallbackPanel {...base} contact={undefined} result={{ kind: 'off' }} />);
     expect(screen.getAllByRole('link')).toHaveLength(1);

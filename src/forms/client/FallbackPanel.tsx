@@ -18,6 +18,8 @@ export type FallbackPanelProps = {
   /** first line of the WhatsApp prefill; defaults to `sys.form.fallback.whatsappIntro` */
   whatsappIntro?: string;
   contact?: { phone: string; phoneDisplay?: string; email: string };
+  /** the panel heading's level — match the surrounding outline (axe `heading-order`); default 3 */
+  headingLevel?: 2 | 3 | 4;
 };
 
 /** Kinds where the door cannot take the lead at all right now — WhatsApp is the primary action. */
@@ -84,8 +86,10 @@ export function FallbackPanel({
   whatsappNumber,
   whatsappIntro,
   contact,
+  headingLevel = 3,
 }: FallbackPanelProps) {
   const sys = useTranslations('sys');
+  const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
   // R35: the real URL, not next-intl's internal key.
   const page = usePathname() ?? '/';
   const kind = result.kind;
@@ -127,7 +131,9 @@ export function FallbackPanel({
       tabIndex={-1}
       className="mt-6 rounded-base border border-warning-border bg-warning-surface p-5 text-ink focus:outline-none"
     >
-      <h3 className="m-0 text-body-lg font-extrabold">{sys(`form.fallback.${kind}.title`)}</h3>
+      <Heading className="m-0 text-body-lg font-extrabold">
+        {sys(`form.fallback.${kind}.title`)}
+      </Heading>
       <p className="mt-2 mb-0 text-body-sm text-text-secondary">
         {sys(`form.fallback.${kind}.body`)}
       </p>

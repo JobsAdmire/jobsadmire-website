@@ -233,6 +233,8 @@ describe('FormShell', () => {
     expect(
       screen.getByRole('heading', { name: copy.fallback.unavailable.title }),
     ).toBeInTheDocument();
+    // React resets the form after the action; the echoed value is the new default.
+    expect(screen.getByLabelText(copy.labels.name)).toHaveValue('Ayşe');
   });
 
   it('keeps the Turnstile token across a shell re-render (a fieldErrors answer re-renders every child)', () => {
@@ -431,6 +433,25 @@ describe('FormShell', () => {
     expect(document.body).toHaveFocus();
     await userEvent.click(screen.getByRole('button', { name: copy.submit.default }));
     await waitFor(() => expect(screen.getByTestId('form-fallback')).toHaveFocus());
+  });
+
+  it('renders its title and the panel heading at headingLevel (default 3)', () => {
+    const error: FormActionState = { status: 'error', result: { kind: 'off' }, values: {} };
+    const { unmount } = renderWithIntl(
+      <FormShell {...base} action={idle} title="Hızlı teklif" initialState={error}>
+        <Field name="name" />
+      </FormShell>,
+    );
+    expect(screen.getByRole('heading', { name: 'Hızlı teklif' }).tagName).toBe('H3');
+    expect(screen.getByRole('heading', { name: copy.fallback.off.title }).tagName).toBe('H3');
+    unmount();
+    renderWithIntl(
+      <FormShell {...base} action={idle} title="Hızlı teklif" headingLevel={2} initialState={error}>
+        <Field name="name" />
+      </FormShell>,
+    );
+    expect(screen.getByRole('heading', { name: 'Hızlı teklif' }).tagName).toBe('H2');
+    expect(screen.getByRole('heading', { name: copy.fallback.off.title }).tagName).toBe('H2');
   });
 
   it('notice mode renders the KVKK line instead of a checkbox, and the title/submitLabel props', () => {

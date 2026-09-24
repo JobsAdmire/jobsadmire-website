@@ -39,4 +39,17 @@ describe('POST /api/form-beacon', () => {
     ).toBe(400);
     expect(formBeaconCount()).toBe(0);
   });
+
+  it('accepts only the seven FormFallbackKind values as `kind`', async () => {
+    expect((await post(JSON.stringify({ formKey: 'hire', kind: 'bogus', page: '/' }))).status).toBe(
+      400,
+    );
+    expect(formBeaconCount()).toBe(0);
+    const kinds = ['invalid', 'captcha', 'off', 'tripped', 'unauthorized', 'unavailable', 'failed'];
+    for (const kind of kinds)
+      expect((await post(JSON.stringify({ formKey: 'hire', kind, page: '/' }))).status, kind).toBe(
+        204,
+      );
+    expect(formBeaconCount()).toBe(kinds.length);
+  });
 });

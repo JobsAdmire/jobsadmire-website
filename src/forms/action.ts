@@ -43,13 +43,19 @@ export type FormSpec<S extends z.ZodTypeAny> = {
   consent?: 'checkbox' | 'notice';
 };
 
-/** FormData → the object the page schema parses. Repeated keys (checkbox groups, multi-file
- *  inputs) become arrays; single ones stay scalar (`File` included — the schema decides). */
+/** A string entry trimmed — the door trims too, so a whitespace-only value must fail HERE as
+ *  `required` rather than pass the schema and come back as a 400 `invalid` panel. */
+const trimmed = (v: FormDataEntryValue): FormDataEntryValue =>
+  typeof v === 'string' ? v.trim() : v;
+
+/** FormData → the object the page schema parses, string values trimmed. Repeated keys
+ *  (checkbox groups, multi-file inputs) become arrays; single ones stay scalar (`File`
+ *  included — the schema decides). */
 function toObject(data: FormData): Record<string, unknown> {
   const out: Record<string, unknown> = {};
   for (const key of new Set(data.keys())) {
     if (isInternalKey(key)) continue;
-    const all = data.getAll(key);
+    const all = data.getAll(key).map(trimmed);
     out[key] = all.length > 1 ? all : all[0];
   }
   return out;
@@ -115,7 +121,7 @@ export function createFormAction<S extends z.ZodTypeAny>(spec: FormSpec<S>) {
         return { status: 'error', result: { kind: 'failed', error: err.visitorMessage }, values };
       }
       if (err instanceof FormDoorError) return { status: 'error', result: err.result, values };
-      console.error('[formAction] toFields threw', { formKey: spec.key });
+      console.error('[forms] toFields threw', err, { formKey: spec.key });
       return { status: 'error', result: { kind: 'unavailable', cause: 'server' }, values };
     }
 

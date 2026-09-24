@@ -50,6 +50,9 @@ export type FormShellProps = {
   /** every DOM id inside the form derives from `idScope ?? formKey` (`f-<scope>-<name>`); a page
    *  with two forms of the same key (Contact: W3) passes a distinct one to each */
   idScope?: string;
+  /** the level of `title` and of the fallback panel's heading — match the surrounding outline
+   *  (axe `heading-order`); default 3 */
+  headingLevel?: 2 | 3 | 4;
 };
 
 /** D20: never `disabled` while pending — that drops the visitor's focus to `<body>`. The button
@@ -198,7 +201,9 @@ export function FormShell({
   testId,
   initialState,
   idScope,
+  headingLevel = 3,
 }: FormShellProps) {
+  const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
   const scope = idScope ?? formKey;
   const sys = useTranslations('sys');
   // A rejected action renders the `unavailable` panel, never the error boundary (D11).
@@ -250,7 +255,7 @@ export function FormShell({
         data-form-key={formKey}
         className={['flex flex-col gap-4', className].filter(Boolean).join(' ')}
       >
-        {title ? <h3 className="m-0 text-card-title font-extrabold">{title}</h3> : null}
+        {title ? <Heading className="m-0 text-card-title font-extrabold">{title}</Heading> : null}
         {children}
         {/* The honeypot: outside the accessibility tree and the tab order, visible to bots only.
             The door reads the literal `honeypot` key and answers 200/SPAM when it is filled. */}
@@ -290,6 +295,7 @@ export function FormShell({
             whatsappNumber={whatsappNumber}
             whatsappIntro={whatsappIntro}
             contact={contact}
+            headingLevel={headingLevel}
           />
         ) : null}
       </form>

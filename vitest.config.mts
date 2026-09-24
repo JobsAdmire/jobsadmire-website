@@ -22,6 +22,7 @@ export default defineConfig({
       CONTENT_SOURCE: 'LOCAL',
       OPS_API_URL: '',
       OPS_WEBSITE_READ_TOKEN: '',
+      OPS_WEBSITE_WRITE_TOKEN: '',
       REVALIDATE_SECRET: '',
       VERCEL_ENV: '',
       NEXT_PUBLIC_GTM_ID: '',

@@ -136,6 +136,17 @@ describe('createFormAction', () => {
     expect(postForm).not.toHaveBeenCalled();
   });
 
+  it('trims what the schema sees: a whitespace-only required value is `required`, never a door 400', async () => {
+    const state = await action(IDLE_FORM_STATE, formData({ ...valid, name: '   ' }));
+    expect(state).toMatchObject({ status: 'fieldErrors', errors: { name: 'required' } });
+    expect(postForm).not.toHaveBeenCalled();
+    postForm.mockResolvedValueOnce(ok);
+    await expect(
+      action(IDLE_FORM_STATE, formData({ ...valid, name: '  Ali Veli \n' })),
+    ).rejects.toMatchObject({ digest: 'NEXT_REDIRECT' });
+    expect(postForm.mock.calls[0][1].fields.name).toBe('Ali Veli');
+  });
+
   it('skips the consent check for a notice-mode spec', async () => {
     const notice = createFormAction({
       key: 'callback',
@@ -195,14 +206,18 @@ describe('createFormAction', () => {
         throw new FormDoorError({ kind: 'off' });
       })(IDLE_FORM_STATE, formData(valid)),
     ).toEqual({ status: 'error', result: { kind: 'off' }, values: echoed });
+    const boom = new Error('boom');
     expect(
       await make(() => {
-        throw new Error('boom');
+        throw boom;
       })(IDLE_FORM_STATE, formData(valid)),
     ).toEqual({
       status: 'error',
       result: { kind: 'unavailable', cause: 'server' },
       values: echoed,
+    });
+    expect(console.error).toHaveBeenCalledWith('[forms] toFields threw', boom, {
+      formKey: 'careers',
     });
     expect(postForm).not.toHaveBeenCalled();
   });

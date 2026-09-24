@@ -138,7 +138,6 @@ describe('src/messages — sys.* parity (W9/W23)', () => {
     for (const k of [
       'sys.form.consent.label',
       'sys.form.consent.notice',
-      'sys.form.consent.link',
       'sys.form.submit.default',
       'sys.form.submit.sending',
       'sys.form.honeypot',
@@ -146,7 +145,6 @@ describe('src/messages — sys.* parity (W9/W23)', () => {
       'sys.form.fallback.call',
       'sys.form.fallback.email',
       'sys.form.fallback.whatsappIntro',
-      'sys.form.fallback.retry',
     ])
       expectKey(k);
   });

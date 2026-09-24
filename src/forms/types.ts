@@ -37,6 +37,22 @@ export type FormErrorResult =
   Exclude<PostFormResult, PostFormOk> | { kind: 'failed'; error: string | null };
 export type FormFallbackKind = FormErrorResult['kind'];
 
+/** The record makes a new `FormFallbackKind` a compile error here until it is listed. */
+const FALLBACK_KINDS: Record<FormFallbackKind, true> = {
+  invalid: true,
+  captcha: true,
+  off: true,
+  tripped: true,
+  unauthorized: true,
+  unavailable: true,
+  failed: true,
+};
+/** Every `FormFallbackKind` as a runtime list — what the form beacon accepts as `kind`. */
+export const FORM_FALLBACK_KINDS = Object.keys(FALLBACK_KINDS) as [
+  FormFallbackKind,
+  ...FormFallbackKind[],
+];
+
 export type FormActionState =
   | { status: 'idle' }
   | { status: 'error'; result: FormErrorResult; values: Record<string, string> }
