@@ -71,12 +71,12 @@ export function whatsappFallbackText(
 
 /**
  * The D11 visitor-side fallback: never a spinner, never a fake success. Copy per result kind,
- * a WhatsApp chat prefilled — at click time, W76 — with what the visitor already typed (primary when the door is
- * closed/paused/unreachable, secondary when the visitor can fix and resend), the phone and
- * e-mail escape hatches, one `/api/form-beacon` ping per mount (so a failing door shows on
- * `/api/site-health` even with Sentry down — WP6 adds Sentry) and `whatsapp_click` /
- * `call_click` / `email_click` with `placement: 'form_fallback'` (W12). Nothing typed ever
- * reaches the beacon or the dataLayer.
+ * a WhatsApp chat prefilled — at click time, W76 — with what the visitor already typed
+ * (primary when the door is closed/paused/unreachable, secondary when the visitor can fix and
+ * resend), the phone and e-mail escape hatches, one `/api/form-beacon` ping per mount (so a
+ * failing door shows on `/api/site-health` even with Sentry down — WP6 adds Sentry) and
+ * `whatsapp_click` / `call_click` / `email_click` with `placement: 'form_fallback'` (W12).
+ * Nothing typed ever reaches the beacon, the dataLayer or a DOM href.
  */
 export function FallbackPanel({
   result,

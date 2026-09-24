@@ -25,22 +25,23 @@ import { buildEnvelope, type WireFields } from './wire';
 export type { FormActionState, FormErrorResult, FormFallbackKind } from './types';
 export { IDLE_FORM_STATE, FormActionError, FormDoorError };
 
+/** What `toFields` gets besides the data: the visitor the door will be told about (hand it to
+ *  `uploadFraudEvidence`/`uploadCv` rather than re-deriving headers) and the request locale. */
+export type FormActionContext = { visitor: PostFormVisitor; locale: Locale };
+
 /**
  * One form's contract. `key` is `FormKey`-typed (R55) so an unlisted key is a compile error;
  * `schema` validates the posted string fields (Zod issues become `sys.form.errors.*` codes,
  * see `errors.ts`); `toFields` maps the parsed object onto the door's catalog names — it also
- * receives the raw `FormData` so a page can pull a `File` out and upload it first (careers CV,
- * fraud evidence — `uploads.ts`) and put the returned key on the wire. Throw `FormActionError`
+ * receives the raw `FormData` so a page can pull a `File` out and upload it first (the careers
+ * CV — `uploads.ts`; `ctx.visitor` is what the upload helpers take) and put the returned key on
+ * the wire. Throw `FormActionError`
  * from there for a visitor-side refusal (with `field` to land it on one input), `FormDoorError`
  * for a door-side failure; `uploads.ts` already does both.
  *
  * `consent: 'notice'` is for the designs that carry the KVKK line without a checkbox (the
  * Hire quick-quote card); the wire always carries `CONSENT_VERSION` either way.
  */
-/** What `toFields` gets besides the data: the visitor the door will be told about (hand it to
- *  `uploadFraudEvidence`/`uploadCv` rather than re-deriving headers) and the request locale. */
-export type FormActionContext = { visitor: PostFormVisitor; locale: Locale };
-
 export type FormSpec<S extends z.ZodTypeAny> = {
   key: FormKey;
   schema: S;

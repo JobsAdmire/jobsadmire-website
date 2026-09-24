@@ -4,9 +4,9 @@ import type { CheckResult } from './checks';
 
 export type OpsPing = {
   /** `ok` = the door answered the ping; `off` = 404 (module flag off — a failure since the door
-   *  went live in production on 2026-09-24, W75); `unauthorized` = 401 (token rotated/missing); `unreachable` = 5xx, network,
-   *  timeout or a 200 that is not the ping JSON; `unconfigured` = no `OPS_API_URL`/write token
-   *  in this environment. */
+   *  went live in production on 2026-09-24, W75); `unauthorized` = 401 (token rotated/missing);
+   *  `unreachable` = 5xx, network, timeout or a 200 that is not the ping JSON; `unconfigured` =
+   *  no `OPS_API_URL`/write token in this environment. */
   state: 'ok' | 'off' | 'unauthorized' | 'unreachable' | 'unconfigured';
   latencyMs: number | null;
   /** The door's own readiness facts (`WebsitePingResult`), surfaced for the owner's check — not
