@@ -18,10 +18,19 @@ import {
  * for the idempotent form post.
  */
 
-/** careers-public's caps (`careers-public.controller.ts`): PDF only, 5 MB. */
-export const MAX_CV_BYTES = 5 * 1024 * 1024;
-/** website/fraud-evidence-file.ts: 8 MB per file, three files per report. */
-export const MAX_EVIDENCE_BYTES = 8 * 1024 * 1024;
+/**
+ * W73: ONE cap for every file. The bytes travel browser → Vercel inside a server action, and
+ * a Vercel function body is capped at 4.5 MB (`next.config.ts` raises Next's own 1 MB
+ * server-action limit to 4 MB to match), so the doors' own caps — careers-public 5 MB,
+ * fraud-evidence 8 MB — are unreachable from this site. A multi-file form uploads ONE file
+ * per server-action call (docs/ARCHITECTURE.md § Forms flow, Uploads).
+ */
+export const MAX_UPLOAD_BYTES = 4 * 1024 * 1024;
+/** The CV cap — `MAX_UPLOAD_BYTES` (W73; the careers door itself takes 5 MB). */
+export const MAX_CV_BYTES = MAX_UPLOAD_BYTES;
+/** The per-file evidence cap — `MAX_UPLOAD_BYTES` (W73; the door itself takes 8 MB). */
+export const MAX_EVIDENCE_BYTES = MAX_UPLOAD_BYTES;
+/** website/fraud-evidence-file.ts: three files per report. */
 export const MAX_EVIDENCE_FILES = 3;
 export const UPLOAD_TIMEOUT_MS = 15_000;
 
@@ -82,7 +91,7 @@ const keyOf = (json: unknown): unknown =>
     : null;
 
 /**
- * `POST ${OPS_API_URL}/api/careers/upload-cv` (public, multipart `file`, PDF ≤ 5 MB). The
+ * `POST ${OPS_API_URL}/api/careers/upload-cv` (public, multipart `file`, PDF ≤ 4 MB here). The
  * key comes back as `careers-cv/<uuid><ext>`, so the sent filename must end in `.pdf` for the
  * catalog's `cvKey` pattern to accept it — checked here, not left to the door.
  */
@@ -91,7 +100,7 @@ export async function uploadCv(file: File, opts: Opts = {}): Promise<{ cvKey: st
   if (file.size === 0) throw refuse(field, 'empty file');
   if (file.type !== 'application/pdf' || !/\.pdf$/i.test(file.name))
     throw refuse(field, 'not a PDF');
-  if (file.size > MAX_CV_BYTES) throw refuse(field, 'over 5 MB');
+  if (file.size > MAX_CV_BYTES) throw refuse(field, 'over 4 MB');
   const base = doorBase(opts.env ?? process.env);
   if (!base) {
     console.error('[uploadCv] OPS_API_URL not configured');
@@ -124,7 +133,7 @@ export async function uploadFraudEvidence(
 ): Promise<{ key: string }> {
   const field = opts.field ?? 'evidence';
   if (file.size === 0) throw refuse(field, 'empty file');
-  if (file.size > MAX_EVIDENCE_BYTES) throw refuse(field, 'over 8 MB');
+  if (file.size > MAX_EVIDENCE_BYTES) throw refuse(field, 'over 4 MB');
   const door = doorConfig(opts.env ?? process.env);
   if (!door) {
     console.error('[uploadFraudEvidence] OPS_API_URL / OPS_WEBSITE_WRITE_TOKEN not configured');
