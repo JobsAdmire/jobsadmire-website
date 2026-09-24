@@ -40,23 +40,23 @@ describe('isFile', () => {
   });
 });
 
-describe('W73 — one 4 MB cap for every file (a server action carries the bytes; Vercel caps a body at 4.5 MB)', () => {
-  const FOUR_MB = 4 * 1024 * 1024;
+describe('W73/W116 — one 3 MB cap for every file (a server action carries the bytes; its body is capped at 4 MB)', () => {
+  const THREE_MB = 3 * 1024 * 1024;
 
-  it('caps the CV and the evidence alike at 4 MB', () => {
-    expect(MAX_UPLOAD_BYTES).toBe(FOUR_MB);
+  it('caps the CV and the evidence alike at 3 MB, leaving 1 MB of the 4 MB body limit for the rest', () => {
+    expect(MAX_UPLOAD_BYTES).toBe(THREE_MB);
     expect(MAX_CV_BYTES).toBe(MAX_UPLOAD_BYTES);
     expect(MAX_EVIDENCE_BYTES).toBe(MAX_UPLOAD_BYTES);
   });
 
-  it('refuses a 4 MB + 1 byte file with the `file` code before any fetch', async () => {
-    const cv = await uploadCv(file('cv.pdf', 'application/pdf', FOUR_MB + 1), deps).catch(
+  it('refuses a 3 MB + 1 byte file with the `file` code before any fetch', async () => {
+    const cv = await uploadCv(file('cv.pdf', 'application/pdf', THREE_MB + 1), deps).catch(
       (e: unknown) => e,
     );
     expect(cv).toBeInstanceOf(FormActionError);
     expect((cv as FormActionError).field).toEqual({ name: 'cv', code: 'file' });
     const shot = await uploadFraudEvidence(
-      file('a.png', 'image/png', FOUR_MB + 1),
+      file('a.png', 'image/png', THREE_MB + 1),
       visitor,
       deps,
     ).catch((e: unknown) => e);
@@ -65,9 +65,9 @@ describe('W73 — one 4 MB cap for every file (a server action carries the bytes
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
-  it('lets a file of exactly 4 MB through to the door', async () => {
+  it('lets a file of exactly 3 MB through to the door', async () => {
     fetchMock.mockResolvedValueOnce(json(201, { data: { key: 'careers-cv/abc.pdf' } }));
-    expect(await uploadCv(file('cv.pdf', 'application/pdf', FOUR_MB), deps)).toEqual({
+    expect(await uploadCv(file('cv.pdf', 'application/pdf', THREE_MB), deps)).toEqual({
       cvKey: 'careers-cv/abc.pdf',
     });
     expect(fetchMock).toHaveBeenCalledTimes(1);

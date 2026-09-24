@@ -194,11 +194,11 @@ describe('createFormAction', () => {
     ).toEqual({ status: 'fieldErrors', errors: { cv: 'file' }, values: echoed });
     expect(
       await make(() => {
-        throw new FormActionError('CV must be a PDF under 4 MB.');
+        throw new FormActionError('CV must be a PDF under 3 MB.');
       })(IDLE_FORM_STATE, formData(valid)),
     ).toEqual({
       status: 'error',
-      result: { kind: 'failed', error: 'CV must be a PDF under 4 MB.' },
+      result: { kind: 'failed', error: 'CV must be a PDF under 3 MB.' },
       values: echoed,
     });
     expect(

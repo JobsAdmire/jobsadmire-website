@@ -44,6 +44,8 @@ const eslintConfig = defineConfig([
   globalIgnores([
     // Reference design runtime (not shipped, not linted)
     'design-package/**',
+    // Git-ignored SDD planning artefacts (briefs, ledgers, draft snippets) — not source
+    '.superpowers/**',
     // Default ignores of eslint-config-next:
     '.next/**',
     'out/**',
