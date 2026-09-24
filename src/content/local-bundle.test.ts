@@ -31,6 +31,10 @@ describe('generated LOCAL bundles through the typed accessors', () => {
       expect(getCollection(bundle, 'offices')).toHaveLength(2);
       expect(getCollection(bundle, 'sectors')).toHaveLength(7);
       expect(getCollection(bundle, 'blog')).toHaveLength(22);
+      // W86: one founder row, hidden until §10 row 3 publishes it
+      expect(getCollection(bundle, 'founder')).toEqual([
+        expect.objectContaining({ titleId: 'about.047', photoSrc: null, published: false }),
+      ]);
       expect(getRateConfig(bundle).legalMinGross).toBe(33030);
     }
   });

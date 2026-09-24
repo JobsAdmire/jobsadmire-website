@@ -1,10 +1,12 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import fixture from '../../contract/website-bundle.v1.fixture.json';
 import { BundleSchema, type Bundle } from '../../contract/website-bundle.v1';
+import { FIXTURE_ONLY_COLLECTIONS } from './config';
 import {
   BLOG_NAV_THRESHOLD,
   blogNavVisible,
   CollectionError,
+  CollectionSchemas,
   getCollection,
   getMetric,
   getOffice,
@@ -57,6 +59,7 @@ const office = {
   mapUrl: 'https://www.google.com/maps/search/?api=1&query=Antalya',
 };
 const country = { code: 'TR', name: 'Türkiye', dial: '+90' };
+const founder = { name: 'Founder Name', titleId: 'about.047', photoSrc: null, published: false };
 const post = (tr: boolean) => ({
   key: 'a',
   slug: { tr: tr ? 'a-tr' : null, en: 'a' },
@@ -109,6 +112,20 @@ describe('getCollection', () => {
     expect(getCollection(withCollections({ countries: [country] }), 'countries')).toEqual([
       country,
     ]);
+  });
+
+  it('reads the founder collection (W86) — a real collection, not fixture-only', () => {
+    vi.stubEnv('NODE_ENV', 'development');
+    expect(getCollection(withCollections({ founder: [founder] }), 'founder')).toEqual([founder]);
+    const published = { ...founder, photoSrc: '/team/founder.jpg', published: true };
+    expect(getCollection(withCollections({ founder: [published] }), 'founder')).toEqual([
+      published,
+    ]);
+    expect(() =>
+      getCollection(withCollections({ founder: [{ ...founder, published: 'no' }] }), 'founder'),
+    ).toThrow(CollectionError);
+    expect(Object.keys(CollectionSchemas)).toContain('founder');
+    expect(FIXTURE_ONLY_COLLECTIONS as readonly string[]).not.toContain('founder');
   });
 
   it('refuses a blog row whose body and hasBody disagree (W28)', () => {

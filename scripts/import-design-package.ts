@@ -13,6 +13,7 @@ import {
   type CalculatorRole,
   type CollectionKey,
   type Country,
+  type Founder,
   type Metric,
   type MetricKey,
   type Office,
@@ -365,6 +366,17 @@ const SECTORS: Sector[] = [
   { key: 'logistics', labelId: 'hire.081', subtitleId: 'hire.088', icon: 'logistics' },
   { key: 'other', labelId: 'hire.082', subtitleId: null, icon: 'other' },
 ];
+
+/** W86: the About page's founder strip (About Us.dc.html 667–676): the name is the design's
+ *  `founderName` default (about.144, "Founder Name" — a placeholder, so it stays per locale
+ *  until the owner supplies the real name, §10 row 3), the title line about.047, no photo.
+ *  `published: false` keeps every reader (About, Verify, Homepage team) empty until then. */
+const founderRow = (strings: Record<string, string>): Founder => ({
+  name: strings['about.144'],
+  titleId: 'about.047',
+  photoSrc: null,
+  published: false,
+});
 
 /** blog-posts.js categories → stable keys + the homepage's category label ids. */
 const BLOG_CATEGORY: Record<string, BlogCategory> = {
@@ -942,6 +954,7 @@ export function buildBundles() {
       offices: OFFICES,
       sectors: SECTORS,
       blog,
+      founder: [founderRow(strings[locale])],
     };
     for (const key of Object.keys(c) as CollectionKey[]) {
       const schema: z.ZodTypeAny = CollectionSchemas[key];

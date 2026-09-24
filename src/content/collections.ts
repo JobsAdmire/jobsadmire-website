@@ -204,6 +204,16 @@ export const BlogPostSchema = z
     path: ['body'],
   });
 
+/** W86: the signing founder (About team card, founder band, Verify founder strip). One row,
+ *  `published: false` until the owner supplies the name and photo (§10 row 3) — every reader
+ *  renders nothing while unpublished. A real collection, not fixture-only (D23). */
+export const FounderSchema = z.object({
+  name: z.string().min(1),
+  titleId: id,
+  photoSrc: z.string().min(1).nullable(),
+  published: z.boolean(),
+});
+
 export const CollectionSchemas = {
   metrics: MetricSchema,
   rateConfig: RateConfigSchema,
@@ -213,6 +223,7 @@ export const CollectionSchemas = {
   offices: OfficeSchema,
   sectors: SectorSchema,
   blog: BlogPostSchema,
+  founder: FounderSchema,
 } as const;
 export type CollectionKey = keyof typeof CollectionSchemas;
 export type CollectionRow<K extends CollectionKey> = z.infer<(typeof CollectionSchemas)[K]>;
@@ -224,6 +235,7 @@ export type Country = z.infer<typeof CountrySchema>;
 export type Office = z.infer<typeof OfficeSchema>;
 export type Sector = z.infer<typeof SectorSchema>;
 export type BlogPost = z.infer<typeof BlogPostSchema>;
+export type Founder = z.infer<typeof FounderSchema>;
 
 export class CollectionError extends Error {}
 

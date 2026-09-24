@@ -333,6 +333,15 @@ describe('import-design-package — collections', () => {
       guide.body,
     );
   });
+  it('emits the one founder row from the About page strings, unpublished (W86)', () => {
+    expect(tr.collections.founder).toEqual([
+      { name: tr.strings['about.144'], titleId: 'about.047', photoSrc: null, published: false },
+    ]);
+    expect(en.collections.founder).toEqual([
+      { name: 'Founder Name', titleId: 'about.047', photoSrc: null, published: false },
+    ]);
+    expect(en.strings['about.047']).toBe('Founder & CEO, JobsAdmire');
+  });
   it('resolves every *Id field of every row to a catalogue id', () => {
     for (const rows of Object.values(tr.collections))
       for (const row of rows)
@@ -453,6 +462,7 @@ describe('import-design-package — nav and pages', () => {
       'offices',
       'sectors',
       'blog',
+      'founder',
     ]);
   });
 });
