@@ -40,11 +40,14 @@ export type FormShellProps = {
   submitLabel?: string;
   /** must match the spec's `consent` — `notice` renders the KVKK line without a checkbox */
   consent?: 'checkbox' | 'notice';
-  consentLinkHref?: '/privacy' | '/kvkk';
+  /** W79: `/privacy` only — the KVKK page is a counsel placeholder in Phase A */
+  consentLinkHref?: '/privacy';
   title?: string;
   children: ReactNode;
   className?: string;
   testId?: string;
+  /** the `<form>` element's own id — pages jump-link to it (`#<id>`) */
+  id?: string;
   /** dev gallery / tests only — the state to start from instead of idle */
   initialState?: FormActionState;
   /** every DOM id inside the form derives from `idScope ?? formKey` (`f-<scope>-<name>`); a page
@@ -133,7 +136,7 @@ function ConsentRow({
   id,
 }: {
   mode: 'checkbox' | 'notice';
-  href: '/privacy' | '/kvkk';
+  href: '/privacy';
   id: string;
 }) {
   const sys = useTranslations('sys');
@@ -199,6 +202,7 @@ export function FormShell({
   children,
   className,
   testId,
+  id,
   initialState,
   idScope,
   headingLevel = 3,
@@ -246,6 +250,7 @@ export function FormShell({
   return (
     <FormErrorsContext.Provider value={ctx}>
       <form
+        id={id}
         ref={formRef}
         action={formAction}
         onSubmit={onSubmit}

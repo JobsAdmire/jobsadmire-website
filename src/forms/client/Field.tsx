@@ -23,6 +23,12 @@ export type FieldProps = {
   rows?: number;
   min?: number;
   max?: number;
+  minLength?: number;
+  maxLength?: number;
+  /** the starting value (input/textarea/select; never a file input) — an echoed value from a
+   *  failed submit wins over it */
+  defaultValue?: string;
+  disabled?: boolean;
   className?: string;
   /** defaults to `f-<idScope>-<name>` inside a `FormShell` (its `idScope ?? formKey`), `f-<name>`
    *  outside one; pass one only when the same field name appears twice in one form */
@@ -60,6 +66,10 @@ export function Field({
   rows = 4,
   min,
   max,
+  minLength,
+  maxLength,
+  defaultValue,
+  disabled,
   className,
   id: idProp,
 }: FieldProps) {
@@ -67,7 +77,7 @@ export function Field({
   const defaultId = useFieldId(name);
   const id = idProp ?? defaultId;
   const error = useFieldError(name);
-  const value = useFieldValue(name);
+  const value = useFieldValue(name) ?? defaultValue;
   useRegisterField(name);
   const labelKey = `form.labels.${name}`;
   const labelText = label ?? (sys.has(labelKey) ? sys(labelKey) : missingLabel(name));
@@ -89,6 +99,9 @@ export function Field({
             placeholder={placeholderText}
             defaultValue={value}
             autoComplete={autoComplete}
+            minLength={minLength}
+            maxLength={maxLength}
+            disabled={disabled}
             className={cls}
           />
         ) : as === 'select' ? (
@@ -97,6 +110,7 @@ export function Field({
             name={name}
             defaultValue={value ?? ''}
             autoComplete={autoComplete}
+            disabled={disabled}
             className={cls}
           >
             <option value="">{sys('form.placeholders.select')}</option>
@@ -120,6 +134,9 @@ export function Field({
             multiple={multiple}
             min={min}
             max={max}
+            minLength={minLength}
+            maxLength={maxLength}
+            disabled={disabled}
             className={cls}
           />
         )

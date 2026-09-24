@@ -222,6 +222,25 @@ describe('createFormAction', () => {
     expect(postForm).not.toHaveBeenCalled();
   });
 
+  it('hands toFields the parsed object, the raw FormData and ctx { visitor, locale } (uploads reuse the visitor)', async () => {
+    const toFields = vi.fn((p: z.infer<typeof schema>) => ({ name: p.name }));
+    const withCtx = createFormAction({ key: 'fraud', schema, toFields });
+    getLocale.mockResolvedValueOnce('en');
+    postForm.mockResolvedValueOnce(ok);
+    const fd = formData(valid);
+    await expect(withCtx(IDLE_FORM_STATE, fd)).rejects.toMatchObject({ digest: 'NEXT_REDIRECT' });
+    expect(toFields).toHaveBeenCalledTimes(1);
+    const [parsed, data, ctx] = toFields.mock.calls[0] as unknown as [
+      z.infer<typeof schema>,
+      FormData,
+      { visitor: unknown; locale: unknown },
+    ];
+    expect(parsed).toMatchObject({ name: 'Ali Veli', email: 'ali@example.com' });
+    expect(data).toBe(fd);
+    expect(ctx).toEqual({ visitor: { ip: '203.0.113.9', ua: 'Mozilla/5.0 test' }, locale: 'en' });
+    expect(postForm.mock.calls[0][1].locale).toBe('en');
+  });
+
   it('never echoes a File and never validates the internal keys', async () => {
     const fd = formData({ ...valid });
     fd.append('cv', new File([new Uint8Array(8)], 'cv.pdf', { type: 'application/pdf' }));

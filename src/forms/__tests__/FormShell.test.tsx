@@ -454,6 +454,25 @@ describe('FormShell', () => {
     expect(screen.getByRole('heading', { name: copy.fallback.off.title }).tagName).toBe('H2');
   });
 
+  it('forwards id to the <form> (pages jump-link to it)', () => {
+    renderWithIntl(
+      <FormShell {...base} id="teklif-formu" action={idle}>
+        <Field name="name" />
+      </FormShell>,
+    );
+    expect(screen.getByTestId('hire-form')).toHaveAttribute('id', 'teklif-formu');
+  });
+
+  it('links the consent copy to /privacy only (W79: the KVKK page is a counsel placeholder in Phase A)', () => {
+    renderWithIntl(
+      // @ts-expect-error — '/kvkk' is no longer a consent link target
+      <FormShell {...base} consentLinkHref="/kvkk" action={idle}>
+        <Field name="name" />
+      </FormShell>,
+    );
+    expect(screen.getByRole('link', { name: 'aydınlatma metni' })).toBeInTheDocument();
+  });
+
   it('notice mode renders the KVKK line instead of a checkbox, and the title/submitLabel props', () => {
     renderWithIntl(
       <FormShell

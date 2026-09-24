@@ -18,6 +18,7 @@ import {
   HONEYPOT_FIELD,
   IDLE_FORM_STATE,
   type FormActionState,
+  type PostFormVisitor,
 } from './types';
 import { buildEnvelope, type WireFields } from './wire';
 
@@ -36,10 +37,18 @@ export { IDLE_FORM_STATE, FormActionError, FormDoorError };
  * `consent: 'notice'` is for the designs that carry the KVKK line without a checkbox (the
  * Hire quick-quote card); the wire always carries `CONSENT_VERSION` either way.
  */
+/** What `toFields` gets besides the data: the visitor the door will be told about (hand it to
+ *  `uploadFraudEvidence`/`uploadCv` rather than re-deriving headers) and the request locale. */
+export type FormActionContext = { visitor: PostFormVisitor; locale: Locale };
+
 export type FormSpec<S extends z.ZodTypeAny> = {
   key: FormKey;
   schema: S;
-  toFields: (parsed: z.infer<S>, data: FormData) => WireFields | Promise<WireFields>;
+  toFields: (
+    parsed: z.infer<S>,
+    data: FormData,
+    ctx: FormActionContext,
+  ) => WireFields | Promise<WireFields>;
   consent?: 'checkbox' | 'notice';
 };
 
@@ -76,7 +85,7 @@ function sourcePathOf(referer: string | null): string | null {
 /** The visitor's own address: the first `x-forwarded-for` hop when it is a bare IP (the door
  *  validates with `isIP` and would otherwise fall back to Vercel's egress), else `x-real-ip`,
  *  else nothing. Never logged here — the door hashes it and this module never persists it. */
-function visitorOf(h: Awaited<ReturnType<typeof headers>>) {
+function visitorOf(h: Awaited<ReturnType<typeof headers>>): PostFormVisitor {
   const forwarded = h.get('x-forwarded-for')?.split(',')[0]?.trim() ?? '';
   const real = h.get('x-real-ip')?.trim() ?? '';
   const ip = isIP(forwarded) ? forwarded : isIP(real) ? real : null;
@@ -111,9 +120,16 @@ export function createFormAction<S extends z.ZodTypeAny>(spec: FormSpec<S>) {
     if (!parsed.success) Object.assign(errors, fieldErrorsFromIssues(parsed.error.issues));
     if (Object.keys(errors).length) return { status: 'fieldErrors', errors, values };
 
+    const requested = await getLocale();
+    const locale: Locale = hasLocale(routing.locales, requested)
+      ? requested
+      : routing.defaultLocale;
+    const h = await headers();
+    const visitor = visitorOf(h);
+
     let fields: WireFields;
     try {
-      fields = await spec.toFields(parsed.data, data);
+      fields = await spec.toFields(parsed.data, data, { visitor, locale });
     } catch (err) {
       if (err instanceof FormActionError) {
         if (err.field)
@@ -125,11 +141,6 @@ export function createFormAction<S extends z.ZodTypeAny>(spec: FormSpec<S>) {
       return { status: 'error', result: { kind: 'unavailable', cause: 'server' }, values };
     }
 
-    const requested = await getLocale();
-    const locale: Locale = hasLocale(routing.locales, requested)
-      ? requested
-      : routing.defaultLocale;
-    const h = await headers();
     const envelope = buildEnvelope({
       locale,
       fields,
@@ -137,7 +148,7 @@ export function createFormAction<S extends z.ZodTypeAny>(spec: FormSpec<S>) {
       honeypot: str(data.get(HONEYPOT_FIELD)),
       sourcePath: sourcePathOf(h.get('referer')),
     });
-    const result = await postForm(spec.key, envelope, visitorOf(h));
+    const result = await postForm(spec.key, envelope, visitor);
 
     if (result.kind === 'ok' && result.status !== 'FAILED') {
       // Throws NEXT_REDIRECT — deliberately outside any try/catch above.
