@@ -7,6 +7,7 @@ import type { z } from 'zod';
 import type { FormKey } from '@/analytics/forms';
 import { redirect } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
+import { echoValues, isInternalKey } from './echo';
 import { fieldErrorsFromIssues } from './errors';
 import { postForm } from './post';
 import {
@@ -41,24 +42,6 @@ export type FormSpec<S extends z.ZodTypeAny> = {
   toFields: (parsed: z.infer<S>, data: FormData) => WireFields | Promise<WireFields>;
   consent?: 'checkbox' | 'notice';
 };
-
-/** Keys the shell adds, and React's progressive-enhancement fields — never form data. */
-const isInternalKey = (key: string) =>
-  key === HONEYPOT_FIELD || key === CAPTCHA_FIELD || key.startsWith('$ACTION');
-
-const MAX_ECHO = 5000;
-
-/** The typed string values, echoed back so a failed submit never empties the form and the
- *  fallback panel can prefill WhatsApp. Files and internal keys are never echoed; the consent
- *  tick is (`'on'`), so the checkbox survives a field error on another input. */
-function echoValues(data: FormData): Record<string, string> {
-  const out: Record<string, string> = {};
-  for (const [key, value] of data.entries()) {
-    if (isInternalKey(key) || typeof value !== 'string') continue;
-    if (!(key in out)) out[key] = value.slice(0, MAX_ECHO);
-  }
-  return out;
-}
 
 /** FormData → the object the page schema parses. Repeated keys (checkbox groups, multi-file
  *  inputs) become arrays; single ones stay scalar (`File` included — the schema decides). */

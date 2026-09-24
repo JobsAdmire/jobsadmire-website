@@ -9,6 +9,7 @@ import type { Locale } from '@/i18n/routing';
 import { CONSENT_FIELD, HONEYPOT_FIELD, IDLE_FORM_STATE, type FormActionState } from '../types';
 import { FallbackPanel } from './FallbackPanel';
 import { FormErrorsContext, useFieldError, useFieldValue } from './FormErrorsContext';
+import { guardAction } from './guardAction';
 import { Turnstile, useTurnstileReset } from './Turnstile';
 
 export type FormShellProps = {
@@ -117,7 +118,9 @@ export function FormShell({
   initialState,
 }: FormShellProps) {
   const sys = useTranslations('sys');
-  const [state, formAction] = useActionState(action, initialState ?? IDLE_FORM_STATE);
+  // A rejected action renders the `unavailable` panel, never the error boundary (D11).
+  const guarded = useMemo(() => guardAction(action), [action]);
+  const [state, formAction] = useActionState(guarded, initialState ?? IDLE_FORM_STATE);
   const turnstile = useTurnstileReset(state);
   const ctx = useMemo(
     () =>

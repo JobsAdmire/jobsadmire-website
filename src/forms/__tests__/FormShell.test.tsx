@@ -217,6 +217,31 @@ describe('FormShell', () => {
     expect(action).toHaveBeenCalledTimes(2);
   });
 
+  it('a rejected action (the browser→Vercel call failed) renders the unavailable panel with the typed values, not the error boundary', async () => {
+    const logged = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const action = vi.fn(async (): Promise<FormActionState> => {
+      throw new TypeError('Failed to fetch');
+    });
+    renderWithIntl(
+      <FormShell {...base} action={action}>
+        <Field name="name" />
+        <Field name="email" type="email" />
+      </FormShell>,
+    );
+    await userEvent.type(screen.getByLabelText(copy.labels.name), 'Ayşe');
+    await userEvent.type(screen.getByLabelText(copy.labels.email), 'ayse@example.com');
+    await userEvent.click(screen.getByRole('button', { name: copy.submit.default }));
+    const panel = await screen.findByTestId('form-fallback');
+    expect(panel).toHaveAttribute('data-kind', 'unavailable');
+    expect(
+      within(panel).getByRole('heading', { name: copy.fallback.unavailable.title }),
+    ).toBeInTheDocument();
+    expect(screen.getByLabelText(copy.labels.name)).toHaveValue('Ayşe');
+    expect(screen.getByLabelText(copy.labels.email)).toHaveValue('ayse@example.com');
+    expect(logged).toHaveBeenCalledTimes(1);
+    logged.mockRestore();
+  });
+
   it('notice mode renders the KVKK line instead of a checkbox, and the title/submitLabel props', () => {
     renderWithIntl(
       <FormShell
