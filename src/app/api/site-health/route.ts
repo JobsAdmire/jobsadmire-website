@@ -36,8 +36,8 @@ export async function GET() {
         : last === null || Date.now() - last > REVALIDATE_MAX_AGE_MS
           ? 'fail'
           : 'ok',
-    // The door's own ping with the forms' write token (docs/OPERATING.md): `off` and
-    // `unconfigured` are `skip` in Phase A, `unauthorized`/`unreachable` are a `fail`.
+    // The door's own ping with the forms' write token (docs/OPERATING.md): W75 — `off`,
+    // `unauthorized` and `unreachable` are a `fail`; only `unconfigured` is `skip`.
     opsPing: opsPingCheck(ops),
   };
   const { ok, reasons } = evaluate(checks);

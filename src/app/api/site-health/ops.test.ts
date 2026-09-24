@@ -62,6 +62,15 @@ describe('pingOps', () => {
     });
   });
 
+  it('reads (and discards) the body of a non-200 answer, so the connection is released', async () => {
+    for (const status of [404, 401, 502]) {
+      const res = new Response('x'.repeat(200_000), { status });
+      fetchMock.mockResolvedValueOnce(res);
+      await pingOps(env, f());
+      expect(res.bodyUsed, String(status)).toBe(true);
+    }
+  });
+
   it('maps 404 → off, 401 → unauthorized, 5xx/network → unreachable', async () => {
     fetchMock.mockResolvedValueOnce(new Response(null, { status: 404 }));
     expect((await pingOps(env, f())).state).toBe('off');
@@ -80,13 +89,13 @@ describe('pingOps', () => {
 });
 
 describe('opsPingCheck', () => {
-  it('ok → ok; unauthorized/unreachable → fail; off/unconfigured → skip', () => {
+  it('W75 — the door is live: ok → ok; off/unauthorized/unreachable → fail; unconfigured → skip', () => {
     // Typed, not `as const`: a readonly `[]` is not assignable to `OpsPing['trippedForms']`.
     const facts: Pick<OpsPing, 'captcha' | 'trippedForms'> = { captcha: null, trippedForms: [] };
     expect(opsPingCheck({ state: 'ok', latencyMs: 12, ...facts })).toBe('ok');
+    expect(opsPingCheck({ state: 'off', latencyMs: 9, ...facts })).toBe('fail');
     expect(opsPingCheck({ state: 'unauthorized', latencyMs: 12, ...facts })).toBe('fail');
     expect(opsPingCheck({ state: 'unreachable', latencyMs: null, ...facts })).toBe('fail');
-    expect(opsPingCheck({ state: 'off', latencyMs: 9, ...facts })).toBe('skip');
     expect(opsPingCheck({ state: 'unconfigured', latencyMs: null, ...facts })).toBe('skip');
   });
 });

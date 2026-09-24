@@ -3,8 +3,8 @@ import { doorConfig } from '@/forms/env';
 import type { CheckResult } from './checks';
 
 export type OpsPing = {
-  /** `ok` = the door answered the ping; `off` = 404 (module flag off, the Phase A default until
-   *  the WP3a flip); `unauthorized` = 401 (token rotated/missing); `unreachable` = 5xx, network,
+  /** `ok` = the door answered the ping; `off` = 404 (module flag off — a failure since the door
+   *  went live in production on 2026-09-24, W75); `unauthorized` = 401 (token rotated/missing); `unreachable` = 5xx, network,
    *  timeout or a 200 that is not the ping JSON; `unconfigured` = no `OPS_API_URL`/write token
    *  in this environment. */
   state: 'ok' | 'off' | 'unauthorized' | 'unreachable' | 'unconfigured';
@@ -16,6 +16,8 @@ export type OpsPing = {
 };
 
 const PING_TIMEOUT_MS = 3000;
+/** How much of an unused (non-200) body we read before cancelling the rest. */
+const DISCARD_MAX_BYTES = 64 * 1024;
 
 const PingSchema = z.object({
   data: z.object({
@@ -25,6 +27,24 @@ const PingSchema = z.object({
 });
 
 const NONE = { captcha: null, trippedForms: [] as string[] };
+
+/** Reads and throws away a body we do not use — at most 64 KB, then cancels the rest (still
+ *  under the request's 3 s signal) — so the connection goes back to the pool instead of
+ *  waiting for the garbage collector. */
+async function discardBody(res: Response): Promise<void> {
+  const reader = res.body?.getReader();
+  if (!reader) return;
+  try {
+    for (let read = 0; read < DISCARD_MAX_BYTES;) {
+      const { done, value } = await reader.read();
+      if (done) return;
+      read += value.byteLength;
+    }
+    await reader.cancel();
+  } catch {
+    /* the state is already decided by the status */
+  }
+}
 
 /** `GET ${OPS_API_URL}/api/website/v1/ping` with the write token (any class is accepted by
  *  the door; the write token is the one the forms use, so this proves the forms' credential). */
@@ -52,6 +72,7 @@ export async function pingOps(
         trippedForms: parsed.data.data.trippedForms ?? [],
       };
     }
+    await discardBody(res);
     if (res.status === 404) return { state: 'off', latencyMs, ...NONE };
     if (res.status === 401) return { state: 'unauthorized', latencyMs, ...NONE };
     return { state: 'unreachable', latencyMs, ...NONE };
@@ -60,10 +81,11 @@ export async function pingOps(
   }
 }
 
-/** `off` is `skip`, not `fail`, while the door is dark by configuration (Phase A). After the
- *  WP3a flip, T15's launch checklist turns `off` into a `fail` here — one line. */
+/** W75: the door is live in production (since 2026-09-24), so a dark door (`off`, 404) is a
+ *  failure like a rejected token or an unreachable host. Only `unconfigured` — no URL/token in
+ *  this environment (local, a preview without secrets) — is `skip`. */
 export function opsPingCheck(p: OpsPing): CheckResult {
   if (p.state === 'ok') return 'ok';
-  if (p.state === 'unauthorized' || p.state === 'unreachable') return 'fail';
-  return 'skip';
+  if (p.state === 'unconfigured') return 'skip';
+  return 'fail';
 }
