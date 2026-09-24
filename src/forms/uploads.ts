@@ -6,6 +6,7 @@ import {
   type FormErrorResult,
   type PostFormVisitor,
 } from './types';
+import { isTimeout, visitorHeaders } from './visitor';
 
 /**
  * W29 — the two upload doors a page calls from an async `toFields` BEFORE the envelope is
@@ -14,8 +15,8 @@ import {
  *
  * Refusals are visitor-side (`FormActionError` with `field` + code `file` → the error text
  * lands under the input) or door-side (`FormDoorError` → the same fallback panel `postForm`
- * would show). One attempt each — a retry would upload the bytes twice; W3's retry rule is
- * for the idempotent form post.
+ * would show). One attempt each — a retry would upload the bytes twice; the form post's own
+ * retry rule (W74: once, connection-level failures only) does not apply here.
  */
 
 /**
@@ -37,7 +38,6 @@ export const UPLOAD_TIMEOUT_MS = 15_000;
 /** What the door hands back — mirrored from the catalog's `cvKey` / `evidenceKeys` patterns. */
 const CV_KEY_RE = /^careers-cv\/[A-Za-z0-9._-]+\.pdf$/i;
 const EVIDENCE_KEY_RE = /^website-fraud\/[A-Za-z0-9._-]+$/;
-const MAX_UA = 500;
 
 export type UploadDeps = { fetch?: typeof fetch; env?: NodeJS.ProcessEnv; timeoutMs?: number };
 type Opts = { field?: string } & UploadDeps;
@@ -49,9 +49,6 @@ export function isFile(v: unknown): v is File {
 
 const refuse = (field: string, why: string) =>
   new FormActionError(why, { name: field, code: 'file' });
-
-const isTimeout = (err: unknown) =>
-  err instanceof Error && (err.name === 'TimeoutError' || err.name === 'AbortError');
 
 /** Non-2xx / no answer → the door-side result the fallback panel understands. */
 function doorFailure(status: number): FormErrorResult {
@@ -139,9 +136,7 @@ export async function uploadFraudEvidence(
     console.error('[uploadFraudEvidence] OPS_API_URL / OPS_WEBSITE_WRITE_TOKEN not configured');
     throw new FormDoorError({ kind: 'unauthorized' });
   }
-  const headers: Record<string, string> = { Authorization: `Bearer ${door.token}` };
-  if (visitor.ip) headers['X-Website-Visitor-Ip'] = visitor.ip;
-  if (visitor.ua) headers['X-Website-Visitor-Ua'] = visitor.ua.slice(0, MAX_UA);
+  const headers = { Authorization: `Bearer ${door.token}`, ...visitorHeaders(visitor) };
   const { status, json } = await send(
     `${door.base}/api/website/v1/uploads/fraud-evidence`,
     file,

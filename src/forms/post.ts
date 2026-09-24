@@ -3,6 +3,7 @@ import { z } from 'zod';
 import type { FormKey } from '@/analytics/forms';
 import { doorConfig } from './env';
 import type { PostFormResult, PostFormVisitor } from './types';
+import { isTimeout, visitorHeaders } from './visitor';
 import type { WireEnvelope } from './wire';
 
 export type { PostFormOk, PostFormResult, PostFormVisitor } from './types';
@@ -10,10 +11,12 @@ export type { PostFormOk, PostFormResult, PostFormVisitor } from './types';
 /** Test seams only — production callers pass nothing. */
 export type PostFormDeps = { fetch?: typeof fetch; env?: NodeJS.ProcessEnv; timeoutMs?: number };
 
-/** W3: per-attempt timeout × at most two attempts = the 8 s budget, no sleep in between. */
-export const ATTEMPT_TIMEOUT_MS = 4000;
+/** W74 (amends W3): the call's deadline — longer than Ops' own 6 s wait on Cloudflare's
+ *  siteverify, so a slow captcha check answers instead of timing out. ONE deadline for the
+ *  whole call: the one retry runs under what is left of it, so the worst case is ≈ 9 s. */
+export const ATTEMPT_TIMEOUT_MS = 9000;
+/** The first attempt plus the one retry after a connection-level failure (W74). */
 export const MAX_ATTEMPTS = 2;
-const MAX_UA = 500;
 
 const OkSchema = z.object({
   data: z.object({
@@ -26,9 +29,6 @@ const OkSchema = z.object({
   }),
 });
 
-const isTimeout = (err: unknown) =>
-  err instanceof Error && (err.name === 'TimeoutError' || err.name === 'AbortError');
-
 const messageOf = (json: unknown): string =>
   typeof json === 'object' &&
   json !== null &&
@@ -36,8 +36,8 @@ const messageOf = (json: unknown): string =>
     ? (json as { message: string }).message
     : 'rejected';
 
-/** HTTP status → result. `unavailable` is the only kind the caller retries. Logs carry the
- *  form key and the status class only — never the token, never a field. */
+/** HTTP status → result. An answer is never retried (W74). Logs carry the form key and the
+ *  status class only — never the token, never a field. */
 async function mapResponse(res: Response, formKey: FormKey): Promise<PostFormResult> {
   const { status } = res;
   const json: unknown = await res.json().catch(() => null);
@@ -70,10 +70,12 @@ async function mapResponse(res: Response, formKey: FormKey): Promise<PostFormRes
  * `POST ${OPS_API_URL}/api/website/v1/forms/${formKey}` with the write token (D6, D11).
  * Server-only: the browser never sees this URL, this token or this call.
  *
- * W3 retry rule: at most ONE immediate retry, and only after a network error, a per-attempt
- * timeout or a 5xx — never after a 4xx. Every Ops deploy is a 30–60 s 502 window and the door
- * dedupes on `(formKey, requestHash, hourBucket)`, so the retry lands on the same row
- * (`replayed: true`) rather than creating a second lead. After that the caller shows the
+ * W74 retry rule (amends W3): at most ONE immediate retry, and only when the first attempt
+ * failed at the CONNECTION level — `fetch` rejected without any response (DNS, refused,
+ * reset). A timeout or any answer (5xx included) is final: a request that reached the door
+ * may already have spent its single-use Turnstile token (Ops waits up to 6 s for siteverify),
+ * and re-sending it would earn a 403, not `replayed`. Both attempts share one
+ * `ATTEMPT_TIMEOUT_MS` deadline, so the worst case is ≈ 9 s. After that the caller shows the
  * visitor fallback panel — there is no queue on Vercel.
  */
 export async function postForm(
@@ -88,38 +90,29 @@ export async function postForm(
     return { kind: 'unauthorized' };
   }
   const doFetch = deps.fetch ?? fetch;
-  const timeoutMs = deps.timeoutMs ?? ATTEMPT_TIMEOUT_MS;
   const headers: Record<string, string> = {
     Authorization: `Bearer ${door.token}`,
     'Content-Type': 'application/json',
+    ...visitorHeaders(visitor),
   };
-  if (visitor.ip) headers['X-Website-Visitor-Ip'] = visitor.ip;
-  if (visitor.ua) headers['X-Website-Visitor-Ua'] = visitor.ua.slice(0, MAX_UA);
   const url = `${door.base}/api/website/v1/forms/${formKey}`;
   const body = JSON.stringify(envelope);
+  // One deadline for the whole call — the retry gets what is left of it, not a fresh budget.
+  const signal = AbortSignal.timeout(deps.timeoutMs ?? ATTEMPT_TIMEOUT_MS);
 
-  let last: Extract<PostFormResult, { kind: 'unavailable' }> = {
-    kind: 'unavailable',
-    cause: 'network',
-  };
-  for (let attempt = 1; attempt <= MAX_ATTEMPTS; attempt++) {
+  for (let attempt = 1; ; attempt++) {
     let res: Response;
     try {
-      res = await doFetch(url, {
-        method: 'POST',
-        headers,
-        body,
-        cache: 'no-store',
-        signal: AbortSignal.timeout(timeoutMs),
-      });
+      res = await doFetch(url, { method: 'POST', headers, body, cache: 'no-store', signal });
     } catch (err) {
-      last = { kind: 'unavailable', cause: isTimeout(err) ? 'timeout' : 'network' };
-      continue;
+      if (!isTimeout(err) && attempt < MAX_ATTEMPTS) continue; // connection-level: retry once
+      const cause = isTimeout(err) ? 'timeout' : 'network';
+      console.error('[postForm] unavailable', { formKey, cause, attempt });
+      return { kind: 'unavailable', cause };
     }
     const mapped = await mapResponse(res, formKey);
-    if (mapped.kind !== 'unavailable') return mapped;
-    last = mapped;
+    if (mapped.kind === 'unavailable')
+      console.error('[postForm] unavailable', { formKey, cause: mapped.cause, attempt });
+    return mapped;
   }
-  console.error('[postForm] unavailable after retry', { formKey, cause: last.cause });
-  return last;
 }

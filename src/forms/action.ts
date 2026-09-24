@@ -85,8 +85,9 @@ function visitorOf(h: Awaited<ReturnType<typeof headers>>) {
  * only async functions and this is a factory.
  *
  * Success is a redirect to `/thank-you?form=<key>` (D13) for every 200 whose `status` is not
- * `FAILED` — RECEIVED, HANDLED, SPAM (a bot sees success) and `replayed` (a retry landed on the
- * same row) all count. Everything else is an `error` state the shell renders as the D11
+ * `FAILED` — RECEIVED, HANDLED, SPAM (a bot sees success) and `replayed` (the same submission
+ * already landed this hour — a double submit, or a retry after a reset that did reach the door)
+ * all count. Everything else is an `error` state the shell renders as the D11
  * fallback panel, with the typed values echoed for the WhatsApp prefill.
  */
 export function createFormAction<S extends z.ZodTypeAny>(spec: FormSpec<S>) {

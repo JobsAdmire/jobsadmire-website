@@ -26,7 +26,7 @@ export type PostFormResult =
   | { kind: 'off' } // 404 — module flag off, form inactive (newsletter in Phase A), or unknown key
   | { kind: 'tripped' } // 429 — abuse trip, `fallback: 'whatsapp'`
   | { kind: 'unauthorized' } // 401 or no usable token/URL here — an ops alarm, the visitor sees the panel
-  | { kind: 'unavailable'; cause: 'network' | 'timeout' | 'server' }; // no answer, or 5xx, after the one retry (W3)
+  | { kind: 'unavailable'; cause: 'network' | 'timeout' | 'server' }; // no answer, a timeout, or a 5xx — W74: only a connection-level failure is retried, once
 
 export type PostFormVisitor = { ip: string | null; ua: string | null };
 

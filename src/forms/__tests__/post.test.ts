@@ -1,7 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { CONSENT_VERSION } from '../consent';
 import { doorBase, doorConfig } from '../env';
-import { postForm, type PostFormDeps } from '../post';
+import { ATTEMPT_TIMEOUT_MS, MAX_ATTEMPTS, postForm, type PostFormDeps } from '../post';
 import type { WireEnvelope } from '../wire';
 
 const envelope: WireEnvelope = {
@@ -179,29 +179,45 @@ describe('postForm — status mapping', () => {
     expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 
-  it('a 200 that is not the door JSON (login wall, proxy page) is an outage, not a success (R28)', async () => {
+  it('a 200 that is not the door JSON (login wall, proxy page) is an outage, not a success (R28) — and not retried', async () => {
     fetchMock.mockImplementation(() => new Response('<html>login</html>', { status: 200 }));
     expect(await postForm('hire', envelope, visitor, deps)).toEqual({
       kind: 'unavailable',
       cause: 'server',
     });
-    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
   });
 });
 
-describe('postForm — W3 retry rule', () => {
-  it('retries once after a 5xx and returns the second answer (a replayed row is a success)', async () => {
+describe('postForm — W74 retry rule (amends W3)', () => {
+  // A Turnstile token is single-use and Ops waits up to 6 s for siteverify: a request that
+  // REACHED the door may have spent its token, so re-sending it earns a 403, not `replayed`.
+  // Only a failure before any answer (DNS, refused, reset) is retried, once.
+  it('pins a 9 s budget and at most two attempts', () => {
+    expect(ATTEMPT_TIMEOUT_MS).toBe(9000);
+    expect(MAX_ATTEMPTS).toBe(2);
+  });
+
+  it('a 5xx is NOT retried — the request reached the door — and answers unavailable/server', async () => {
     fetchMock
       .mockResolvedValueOnce(new Response('Bad Gateway', { status: 502 }))
       .mockResolvedValueOnce(json(200, okBody({ replayed: true })));
-    expect(await postForm('hire', envelope, visitor, deps)).toMatchObject({
-      kind: 'ok',
-      replayed: true,
+    expect(await postForm('hire', envelope, visitor, deps)).toEqual({
+      kind: 'unavailable',
+      cause: 'server',
     });
+    expect(fetchMock).toHaveBeenCalledTimes(1);
+  });
+
+  it('a connection-level failure (fetch rejected, no response) is retried once and the second answer wins', async () => {
+    fetchMock
+      .mockRejectedValueOnce(new TypeError('fetch failed', { cause: { code: 'ECONNREFUSED' } }))
+      .mockResolvedValueOnce(json(200, okBody()));
+    expect(await postForm('hire', envelope, visitor, deps)).toMatchObject({ kind: 'ok' });
     expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
-  it('two network failures → unavailable/network, exactly two attempts', async () => {
+  it('two connection failures → unavailable/network, exactly two attempts', async () => {
     fetchMock.mockRejectedValue(new TypeError('fetch failed'));
     expect(await postForm('hire', envelope, visitor, deps)).toEqual({
       kind: 'unavailable',
@@ -210,30 +226,39 @@ describe('postForm — W3 retry rule', () => {
     expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
-  it('a 5xx then a network failure → unavailable/network', async () => {
+  it('a connection failure then a 5xx → unavailable/server', async () => {
     fetchMock
-      .mockResolvedValueOnce(new Response(null, { status: 503 }))
-      .mockRejectedValueOnce(new TypeError('fetch failed'));
+      .mockRejectedValueOnce(new TypeError('fetch failed'))
+      .mockResolvedValueOnce(new Response(null, { status: 503 }));
     expect(await postForm('hire', envelope, visitor, deps)).toEqual({
       kind: 'unavailable',
-      cause: 'network',
+      cause: 'server',
     });
     expect(fetchMock).toHaveBeenCalledTimes(2);
   });
 
-  it('each attempt is bounded by its own timeout; two timeouts → unavailable/timeout inside the budget', async () => {
-    // A fetch that never answers on its own — it only rejects when its signal aborts, which is
-    // what a hung Operations looks like from the caller's side.
-    fetchMock.mockImplementation(
-      (_url: string, init: RequestInit) =>
-        new Promise((_, reject) => {
-          init.signal!.addEventListener('abort', () => reject(init.signal!.reason));
-        }),
-    );
+  // A fetch that never answers on its own — it only rejects when its signal aborts, which is
+  // what a hung Operations looks like from the caller's side.
+  const hang = (_url: string, init: RequestInit) =>
+    new Promise<Response>((_, reject) => {
+      init.signal!.addEventListener('abort', () => reject(init.signal!.reason));
+    });
+
+  it('a timeout is NOT retried → unavailable/timeout after one attempt', async () => {
+    fetchMock.mockImplementation(hang);
     const started = Date.now();
     const res = await postForm('hire', envelope, visitor, { ...deps, timeoutMs: 20 });
     expect(res).toEqual({ kind: 'unavailable', cause: 'timeout' });
-    expect(fetchMock).toHaveBeenCalledTimes(2);
+    expect(fetchMock).toHaveBeenCalledTimes(1);
     expect(Date.now() - started).toBeLessThan(2000);
+  });
+
+  it('the retry runs under the SAME deadline as the first attempt, so the worst case stays ≈ one budget', async () => {
+    fetchMock.mockRejectedValueOnce(new TypeError('fetch failed')).mockImplementationOnce(hang);
+    const res = await postForm('hire', envelope, visitor, { ...deps, timeoutMs: 20 });
+    expect(res).toEqual({ kind: 'unavailable', cause: 'timeout' });
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    const [first, second] = fetchMock.mock.calls.map(([, init]) => (init as RequestInit).signal);
+    expect(second).toBe(first);
   });
 });

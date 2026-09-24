@@ -111,7 +111,7 @@ describe('createFormAction', () => {
     });
   });
 
-  it('redirects for SPAM and replayed answers too (a bot sees success; a retry landed on the same row)', async () => {
+  it('redirects for SPAM and replayed answers too (a bot sees success; the same submission already landed)', async () => {
     postForm.mockResolvedValueOnce({ ...ok, status: 'SPAM' });
     await expect(
       action(IDLE_FORM_STATE, formData({ ...valid, honeypot: 'http://spam' })),
