@@ -1,5 +1,5 @@
 'use client';
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, type MouseEvent } from 'react';
 import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import type { FormKey } from '@/analytics/forms';
@@ -69,7 +69,7 @@ export function whatsappFallbackText(
 
 /**
  * The D11 visitor-side fallback: never a spinner, never a fake success. Copy per result kind,
- * a WhatsApp deep link prefilled with what the visitor already typed (primary when the door is
+ * a WhatsApp chat prefilled — at click time, W76 — with what the visitor already typed (primary when the door is
  * closed/paused/unreachable, secondary when the visitor can fix and resend), the phone and
  * e-mail escape hatches, one `/api/form-beacon` ping per mount (so a failing door shows on
  * `/api/site-health` even with Sentry down — WP6 adds Sentry) and `whatsapp_click` /
@@ -103,11 +103,20 @@ export function FallbackPanel({
   }, [formKey, kind, page]);
 
   const primary = WHATSAPP_PRIMARY.has(kind);
-  const text = whatsappFallbackText(
-    whatsappIntro ?? sys('form.fallback.whatsappIntro'),
-    values,
-    (k) => sys(`form.labels.${k}`),
-  );
+  // W76 (D13): the prefilled text carries what the visitor typed, so it never sits in a DOM
+  // href — GA4 enhanced-measurement outbound clicks and a GTM Click URL trigger both read the
+  // href. The anchor points at the bare chat; the prefilled URL is composed on click and
+  // opened directly (a modifier/middle click still reaches the bare chat).
+  const openWhatsApp = (e: MouseEvent<HTMLElement>) => {
+    track('whatsapp_click', { page, locale, placement: 'form_fallback' });
+    e.preventDefault();
+    const text = whatsappFallbackText(
+      whatsappIntro ?? sys('form.fallback.whatsappIntro'),
+      values,
+      (k) => sys(`form.labels.${k}`),
+    );
+    window.open(waLink(whatsappNumber, text), '_blank', 'noopener');
+  };
   const doorError = kind === 'failed' ? result.error : null;
   return (
     <div
@@ -126,9 +135,9 @@ export function FallbackPanel({
       <div className="mt-4 flex flex-wrap gap-3">
         <Button
           variant={primary ? 'primary' : 'secondary'}
-          href={waLink(whatsappNumber, text)}
+          href={`https://wa.me/${whatsappNumber}`}
           external
-          onClick={() => track('whatsapp_click', { page, locale, placement: 'form_fallback' })}
+          onClick={openWhatsApp}
         >
           {sys('form.fallback.whatsapp')}
         </Button>

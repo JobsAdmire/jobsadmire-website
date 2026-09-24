@@ -183,7 +183,8 @@ describe('FormShell', () => {
     ]);
   });
 
-  it('renders the fallback panel for an error state, with the echoed values in the WhatsApp link', () => {
+  it('renders the fallback panel for an error state, with the echoed values in the WhatsApp message', async () => {
+    const open = vi.spyOn(window, 'open').mockImplementation(() => null);
     const state: FormActionState = {
       status: 'error',
       result: { kind: 'tripped' },
@@ -198,13 +199,13 @@ describe('FormShell', () => {
     expect(
       within(panel).getByRole('heading', { name: copy.fallback.tripped.title }),
     ).toBeInTheDocument();
-    expect(
-      decodeURIComponent(
-        within(panel).getByRole('link', { name: copy.fallback.whatsapp }).getAttribute('href')!,
-      ),
-    ).toContain('Ali Veli');
-    expect(screen.getByLabelText(copy.labels.name)).toHaveValue('Ali Veli');
     expect(document.body).toHaveFocus(); // a starting state never steals focus
+    const wa = within(panel).getByRole('link', { name: copy.fallback.whatsapp });
+    expect(wa).toHaveAttribute('href', 'https://wa.me/905011240340'); // W76
+    await userEvent.click(wa);
+    expect(decodeURIComponent(open.mock.calls[0][0] as string)).toContain('Ali Veli');
+    open.mockRestore();
+    expect(screen.getByLabelText(copy.labels.name)).toHaveValue('Ali Veli');
   });
 
   it('submits through the action and renders its answer (an error state here)', async () => {

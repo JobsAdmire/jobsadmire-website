@@ -26,7 +26,9 @@ const base = {
 };
 
 let sendBeacon: ReturnType<typeof vi.fn>;
+let open: ReturnType<typeof vi.spyOn<Window, 'open'>>;
 beforeEach(() => {
+  open = vi.spyOn(window, 'open').mockImplementation(() => null);
   sendBeacon = vi.fn(() => true);
   Object.defineProperty(navigator, 'sendBeacon', {
     value: sendBeacon,
@@ -37,6 +39,7 @@ beforeEach(() => {
 });
 afterEach(() => {
   Reflect.deleteProperty(navigator, 'sendBeacon');
+  vi.restoreAllMocks();
 });
 
 describe('FallbackPanel', () => {
@@ -46,11 +49,8 @@ describe('FallbackPanel', () => {
     expect(within(panel).getByRole('heading', { name: copy.tripped.title })).toBeInTheDocument();
     expect(panel).toHaveTextContent(copy.tripped.body);
     const wa = within(panel).getByRole('link', { name: copy.whatsapp });
-    expect(wa).toHaveAttribute(
-      'href',
-      expect.stringMatching(/^https:\/\/wa\.me\/905011240340\?text=/),
-    );
-    expect(decodeURIComponent(wa.getAttribute('href')!)).toContain('Ali Veli');
+    // W76: nothing the visitor typed ever sits in a DOM href (GA4 outbound clicks, GTM Click URL).
+    expect(wa).toHaveAttribute('href', 'https://wa.me/905011240340');
     expect(wa.className).toContain('bg-blue-safe'); // primary face
     expect(within(panel).getByRole('link', { name: copy.call })).toHaveAttribute(
       'href',
@@ -105,6 +105,28 @@ describe('FallbackPanel', () => {
     const wa = screen.getByRole('link', { name: copy.whatsapp });
     wa.addEventListener('click', (e) => e.preventDefault()); // jsdom has no navigation
     await userEvent.click(wa);
+    expect(window.dataLayer).toEqual([
+      { event: 'whatsapp_click', page: '/', locale: 'tr', placement: 'form_fallback' },
+    ]);
+  });
+
+  it('W76: composes the prefilled wa.me URL only at click time and opens it with noopener', async () => {
+    renderWithIntl(<FallbackPanel {...base} result={{ kind: 'tripped' }} />);
+    const wa = screen.getByRole('link', { name: copy.whatsapp });
+    expect(wa.getAttribute('href')).not.toContain('text=');
+    expect(document.body.innerHTML).not.toContain(encodeURIComponent('Ali Veli'));
+    const clicked = new MouseEvent('click', { bubbles: true, cancelable: true });
+    wa.dispatchEvent(clicked);
+    expect(clicked.defaultPrevented).toBe(true); // the bare href never navigates on a click
+    expect(open).toHaveBeenCalledTimes(1);
+    const [url, target, features] = open.mock.calls[0] as [string, string, string];
+    expect(url).toMatch(/^https:\/\/wa\.me\/905011240340\?text=/);
+    const text = decodeURIComponent(url.split('?text=')[1]);
+    expect(text).toContain(tr.sys.form.fallback.whatsappIntro);
+    expect(text).toContain(`${tr.sys.form.labels.name}: Ali Veli`);
+    expect(text).toContain(`${tr.sys.form.labels.message}: Need 10 welders`);
+    expect(target).toBe('_blank');
+    expect(features).toBe('noopener');
     expect(window.dataLayer).toEqual([
       { event: 'whatsapp_click', page: '/', locale: 'tr', placement: 'form_fallback' },
     ]);
