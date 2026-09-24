@@ -1,4 +1,4 @@
-import { screen, waitFor, within } from '@testing-library/react';
+import { act, screen, waitFor, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { Field } from '../client/Field';
@@ -204,6 +204,7 @@ describe('FormShell', () => {
       ),
     ).toContain('Ali Veli');
     expect(screen.getByLabelText(copy.labels.name)).toHaveValue('Ali Veli');
+    expect(document.body).toHaveFocus(); // a starting state never steals focus
   });
 
   it('submits through the action and renders its answer (an error state here)', async () => {
@@ -353,6 +354,82 @@ describe('FormShell', () => {
     );
     expect(screen.getByLabelText(copy.labels.name)).toHaveAttribute('id', 'f-hire-name');
     expect(screen.getByRole('checkbox')).toHaveAttribute('id', 'f-hire-consent');
+  });
+
+  it('keeps the submit button focusable while pending (aria-disabled + aria-busy, never disabled) and ignores a second submit', async () => {
+    let release: (s: FormActionState) => void = () => {};
+    const action = vi.fn(
+      () =>
+        new Promise<FormActionState>((resolve) => {
+          release = resolve;
+        }),
+    );
+    renderWithIntl(
+      <FormShell {...base} consent="notice" action={action}>
+        <Field name="name" />
+      </FormShell>,
+    );
+    const form = screen.getByTestId('hire-form');
+    await userEvent.click(screen.getByRole('button', { name: copy.submit.default }));
+    await waitFor(() => expect(form).toHaveAttribute('aria-busy', 'true'));
+    const pending = screen.getByRole('button', { name: copy.submit.sending });
+    expect(pending).not.toBeDisabled();
+    expect(pending).toHaveAttribute('aria-disabled', 'true');
+    expect(pending).toHaveFocus();
+    await userEvent.click(pending);
+    await act(async () => release({ status: 'idle' }));
+    await waitFor(() => expect(form).not.toHaveAttribute('aria-busy'));
+    expect(action).toHaveBeenCalledTimes(1);
+    expect(screen.getByRole('button', { name: copy.submit.default })).not.toHaveAttribute(
+      'aria-disabled',
+    );
+  });
+
+  it('moves focus to the first invalid control after a fieldErrors answer', async () => {
+    const action = vi.fn(async (): Promise<FormActionState> => ({
+      status: 'fieldErrors',
+      errors: { email: 'email', consent: 'consent' },
+      values: { name: 'Ayşe', email: 'nope' },
+    }));
+    renderWithIntl(
+      <FormShell {...base} action={action}>
+        <Field name="name" />
+        <Field name="email" type="email" />
+      </FormShell>,
+    );
+    await userEvent.click(screen.getByRole('button', { name: copy.submit.default }));
+    await waitFor(() => expect(screen.getByLabelText(copy.labels.email)).toHaveFocus());
+  });
+
+  it('moves focus to the form-level alert when no rendered control is invalid', async () => {
+    const action = vi.fn(async (): Promise<FormActionState> => ({
+      status: 'fieldErrors',
+      errors: { _form: 'invalid' },
+      values: {},
+    }));
+    renderWithIntl(
+      <FormShell {...base} consent="notice" action={action}>
+        <Field name="name" />
+      </FormShell>,
+    );
+    await userEvent.click(screen.getByRole('button', { name: copy.submit.default }));
+    await waitFor(() => expect(screen.getByRole('alert')).toHaveFocus());
+  });
+
+  it('moves focus to the fallback panel after an error answer — and never on mount', async () => {
+    const action = vi.fn(async (): Promise<FormActionState> => ({
+      status: 'error',
+      result: { kind: 'tripped' },
+      values: {},
+    }));
+    renderWithIntl(
+      <FormShell {...base} consent="notice" action={action}>
+        <Field name="name" />
+      </FormShell>,
+    );
+    expect(document.body).toHaveFocus();
+    await userEvent.click(screen.getByRole('button', { name: copy.submit.default }));
+    await waitFor(() => expect(screen.getByTestId('form-fallback')).toHaveFocus());
   });
 
   it('notice mode renders the KVKK line instead of a checkbox, and the title/submitLabel props', () => {

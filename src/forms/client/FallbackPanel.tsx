@@ -114,7 +114,9 @@ export function FallbackPanel({
       role="alert"
       data-testid="form-fallback"
       data-kind={kind}
-      className="mt-6 rounded-base border border-warning-border bg-warning-surface p-5 text-ink"
+      // the shell moves focus here after an error answer (D20)
+      tabIndex={-1}
+      className="mt-6 rounded-base border border-warning-border bg-warning-surface p-5 text-ink focus:outline-none"
     >
       <h3 className="m-0 text-body-lg font-extrabold">{sys(`form.fallback.${kind}.title`)}</h3>
       <p className="mt-2 mb-0 text-body-sm text-text-secondary">

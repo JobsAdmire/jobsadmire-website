@@ -1,6 +1,14 @@
 'use client';
-import { useActionState, useCallback, useMemo, useState, type ReactNode } from 'react';
-import { useFormStatus } from 'react-dom';
+import {
+  useActionState,
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+  type FormEvent,
+  type ReactNode,
+} from 'react';
 import { useTranslations } from 'next-intl';
 import type { FormKey } from '@/analytics/forms';
 import { Button } from '@/design/primitives';
@@ -44,20 +52,44 @@ export type FormShellProps = {
   idScope?: string;
 };
 
-function SubmitButton({ label }: { label: string }) {
+/** D20: never `disabled` while pending — that drops the visitor's focus to `<body>`. The button
+ *  stays focusable and announces itself as unavailable; the shell ignores a second submit. */
+function SubmitButton({ label, pending }: { label: string; pending: boolean }) {
   const sys = useTranslations('sys');
-  const { pending } = useFormStatus();
   return (
     <Button
       variant="primary"
       size="lg"
       type="submit"
-      disabled={pending}
-      aria-busy={pending || undefined}
+      aria-disabled={pending || undefined}
+      className="aria-disabled:cursor-progress aria-disabled:opacity-60"
     >
       {pending ? sys('form.submit.sending') : label}
     </Button>
   );
+}
+
+/** D20: after an answer, focus goes where the visitor has to act — the first invalid control
+ *  (else the form-level alert) after `fieldErrors`, the fallback panel after `error`. Only on a
+ *  CHANGE of state: a starting state (dev gallery) never steals focus on mount. */
+function useFocusAnswer(state: FormActionState) {
+  const form = useRef<HTMLFormElement>(null);
+  const seen = useRef(state);
+  useEffect(() => {
+    if (seen.current === state) return;
+    seen.current = state;
+    const el = form.current;
+    if (!el) return;
+    const target =
+      state.status === 'fieldErrors'
+        ? (el.querySelector<HTMLElement>('[aria-invalid="true"]') ??
+          el.querySelector<HTMLElement>('[data-form-alert]'))
+        : state.status === 'error'
+          ? el.querySelector<HTMLElement>('[data-testid="form-fallback"]')
+          : null;
+    target?.focus();
+  }, [state]);
+  return form;
 }
 
 function ConsentCheckboxRegistration() {
@@ -79,7 +111,8 @@ function FormLevelErrors({ errors }: { errors: [string, string][] }) {
     <div
       role="alert"
       data-form-alert=""
-      className="rounded-base border border-danger p-4 text-body-sm text-danger"
+      tabIndex={-1}
+      className="rounded-base border border-danger p-4 text-body-sm text-danger focus:outline-none"
     >
       <p className="m-0 font-bold">{sys('form.errors.form')}</p>
       <ul className="mt-2 mb-0 pl-5">
@@ -170,8 +203,14 @@ export function FormShell({
   const sys = useTranslations('sys');
   // A rejected action renders the `unavailable` panel, never the error boundary (D11).
   const guarded = useMemo(() => guardAction(action), [action]);
-  const [state, formAction] = useActionState(guarded, initialState ?? IDLE_FORM_STATE);
+  const [state, formAction, pending] = useActionState(guarded, initialState ?? IDLE_FORM_STATE);
   const turnstile = useTurnstileReset(state);
+  const formRef = useFocusAnswer(state);
+  // A second submit while the first is in flight would queue a second post (and re-send a
+  // spent captcha token): cancelled here, before React dispatches the action.
+  const onSubmit = (e: FormEvent<HTMLFormElement>) => {
+    if (pending) e.preventDefault();
+  };
   // How many mounted controls show each name's error themselves (Field, the consent row).
   const [shown, setShown] = useState<ReadonlyMap<string, number>>(() => new Map());
   const register = useCallback((name: string) => {
@@ -202,7 +241,10 @@ export function FormShell({
   return (
     <FormErrorsContext.Provider value={ctx}>
       <form
+        ref={formRef}
         action={formAction}
+        onSubmit={onSubmit}
+        aria-busy={pending || undefined}
         noValidate
         data-testid={testId}
         data-form-key={formKey}
@@ -236,7 +278,7 @@ export function FormShell({
         <ConsentRow mode={consent} href={consentLinkHref} id={`f-${scope}-${CONSENT_FIELD}`} />
         {unshown.length ? <FormLevelErrors errors={unshown} /> : null}
         <div>
-          <SubmitButton label={submitLabel ?? sys('form.submit.default')} />
+          <SubmitButton label={submitLabel ?? sys('form.submit.default')} pending={pending} />
         </div>
         {state.status === 'error' ? (
           <FallbackPanel
