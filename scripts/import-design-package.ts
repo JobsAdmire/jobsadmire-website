@@ -576,7 +576,7 @@ const OverridesSchema = z.record(
     })
     .refine((o) => o.en !== undefined || o.tr !== undefined, { message: 'needs en or tr' }),
 );
-const PlaceholdersSchema = z.object({
+export const PlaceholdersSchema = z.object({
   // a plain string-keyed record (not z.enum keys) so the type stays `Record<string, string[]>`,
   // which is what `findHardTypedMetrics` takes; the refine keeps the keys honest
   literals: z
@@ -588,11 +588,28 @@ const PlaceholdersSchema = z.object({
     z.string(),
     z
       .array(
-        z.object({
-          key: z.enum(METRIC_KEYS),
-          en: metricLiteral.optional(),
-          tr: metricLiteral.optional(),
-        }),
+        z
+          .object({
+            key: z.enum(METRIC_KEYS),
+            en: metricLiteral.optional(),
+            tr: metricLiteral.optional(),
+            /** W87: what the span becomes when the metric's unit differs from the copy's
+             *  ("one business day" → "{replySlaHours} working hours"). Default `{key}`; only
+             *  for a pinned literal, and it must carry `{key}` exactly once. */
+            as: z
+              .object({ en: z.string().min(1), tr: z.string().min(1) })
+              .partial()
+              .optional(),
+          })
+          .refine(
+            (e) =>
+              LOCALES.every(
+                (l) =>
+                  e.as?.[l] === undefined ||
+                  (e[l] !== undefined && e.as[l].split(`{${e.key}}`).length === 2),
+              ),
+            { message: '`as` needs a pinned literal and exactly one {key} per locale' },
+          ),
       )
       .min(1),
   ),
@@ -613,7 +630,8 @@ const readJson = (...rel: string[]): unknown =>
 
 const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-/** Replace exactly one occurrence of a metric literal's [value] span with `{key}`; anything
+/** Replace exactly one occurrence of a metric literal's [value] span with `{key}` (or with the
+ *  entry's `as` rewrite when the copy's unit is not the metric's, W87); anything
  *  else is an error the maintainer resolves in metric-placeholders.json (pin `en`/`tr`, or fix
  *  the copy). Longest literal first so "13+ countries" wins over "13 countries". */
 function reauthor(
@@ -623,6 +641,7 @@ function reauthor(
   key: MetricKey,
   pinned: string | undefined,
   literals: readonly string[],
+  as = `{${key}}`,
 ): { value: string; literal: string } {
   const candidates = (pinned ? [pinned] : [...literals])
     .map(parseMetricLiteral)
@@ -641,7 +660,13 @@ function reauthor(
     throw new Error(
       `metric-placeholders.json: ${id} (${locale}) contains "${hit.text}" ${count} times — pin the literal`,
     );
-  return { value: value.replace(re, `$1{${key}}$3`), literal: hit.text };
+  return {
+    value: value.replace(
+      re,
+      (_m, pre: string, _span: string, post: string) => `${pre}${as}${post}`,
+    ),
+    literal: hit.text,
+  };
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -855,8 +880,8 @@ export function buildBundles() {
       );
     for (const entry of entries) {
       const literals = placeholders.literals[entry.key] ?? [];
-      const en = reauthor(id, 'en', strings.en[id], entry.key, entry.en, literals);
-      const tr = reauthor(id, 'tr', strings.tr[id], entry.key, entry.tr, literals);
+      const en = reauthor(id, 'en', strings.en[id], entry.key, entry.en, literals, entry.as?.en);
+      const tr = reauthor(id, 'tr', strings.tr[id], entry.key, entry.tr, literals, entry.as?.tr);
       strings.en[id] = en.value;
       strings.tr[id] = tr.value;
       report.placeholders.push({ id, key: entry.key, en: en.literal, tr: tr.literal });

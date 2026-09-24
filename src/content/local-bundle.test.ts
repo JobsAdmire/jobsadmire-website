@@ -63,6 +63,11 @@ describe('generated LOCAL bundles through the typed accessors', () => {
     expect(makeTf(en, 'en')('wp.264')).toBe('~6–8 weeks');
     expect(makeTf(en, 'en')('home.107')).toBe('24 hours');
     expect(makeTf(tr, 'tr')('blog.045')).toBe('24 saatte ücretsiz teklif');
+    // W87
+    expect(makeTf(en, 'en')('partner.077')).toBe('Shortlists from 13 countries');
+    expect(makeTf(tr, 'tr')('partner.077')).toBe('13 ülkeden aday listeleri');
+    expect(makeTf(en, 'en')('partner.059')).toMatch(/we reply within 4 working hours\.$/);
+    expect(makeTf(tr, 'tr')('partner.059')).toContain('4 iş saati içinde yanıt veriyoruz');
   });
   it('offices, presets, countries and the article body read cleanly', () => {
     expect(getOffice(tr, 'karachi').kind).toBe('sourcing');

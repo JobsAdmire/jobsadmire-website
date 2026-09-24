@@ -3,7 +3,7 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { BundleSchema } from '../contract/website-bundle.v1';
 import { METRIC_KEYS, PAGE_KEYS } from '../src/content/collections';
-import { buildBundles, buildNav, rev } from './import-design-package';
+import { buildBundles, buildNav, PlaceholdersSchema, rev } from './import-design-package';
 
 const { tr, en, catalogue, report } = buildBundles();
 const readJson = (rel: string) => JSON.parse(readFileSync(join(__dirname, rel), 'utf8'));
@@ -111,9 +111,9 @@ describe('import-design-package — Türkiye rule (W7, README)', () => {
 });
 
 describe('import-design-package — metric placeholders (W1, D17)', () => {
-  it('re-authors the 39 listed ids in both locales and logs 42 replacements', () => {
-    expect(Object.keys(placeholders.strings)).toHaveLength(39);
-    expect(report.placeholders).toHaveLength(42);
+  it('re-authors the 41 listed ids in both locales and logs 44 replacements', () => {
+    expect(Object.keys(placeholders.strings)).toHaveLength(41);
+    expect(report.placeholders).toHaveLength(44);
     for (const [id, entries] of Object.entries(placeholders.strings))
       for (const { key } of entries) {
         expect(tr.strings[id], `${id} tr`).toContain(`{${key}}`);
@@ -137,6 +137,41 @@ describe('import-design-package — metric placeholders (W1, D17)', () => {
     expect(en.strings['home.024']).toBe('Free proposal within {homepageReplyHours} hours');
     expect(tr.strings['blog.045']).toBe('{homepageReplyHours} saatte ücretsiz teklif');
     expect(en.strings['contact.040']).toBe('Reply within ~{replySlaHours} business hours');
+  });
+  it('re-authors the W87 spellings: 12+ countries → {countries}, one business day → {replySlaHours} working hours', () => {
+    expect(placeholders.literals.countries).toEqual(
+      expect.arrayContaining(['[12+] countries', '[12’den fazla] ülke']),
+    );
+    expect(placeholders.literals.replySlaHours).toEqual(
+      expect.arrayContaining(['[one business day]', '[bir iş günü]']),
+    );
+    expect(en.strings['partner.077']).toBe('Shortlists from {countries} countries');
+    expect(tr.strings['partner.077']).toBe('{countries} ülkeden aday listeleri');
+    // the unit moves with the metric: a business day is not the 4-working-hour SLA's unit
+    expect(en.strings['partner.059']).toBe(
+      'Ready to work together? Pick your track — we reply within {replySlaHours} working hours.',
+    );
+    expect(tr.strings['partner.059']).toBe(
+      'Birlikte çalışmaya hazır mısınız? Yolunuzu seçin — {replySlaHours} iş saati içinde yanıt veriyoruz.',
+    );
+    expect(catalogue['partner.059'].packageRev).toBe('udmxuf');
+    expect(catalogue['partner.059'].rev).toBe(rev(en.strings['partner.059']));
+    // the literal finder over the new spellings: no other id carries them, in either locale
+    const hits = (strings: Record<string, string>, re: RegExp) =>
+      Object.keys(strings).filter((id) => re.test(strings[id]));
+    expect(hits(en.strings, /12\+|one business day/i)).toEqual([]);
+    expect(hits(tr.strings, /12\+|12’den fazla|bir iş günü/i)).toEqual([]);
+  });
+  it('refuses a unit rewrite (`as`) without a pinned literal or without its {key} exactly once', () => {
+    const file = (entry: Record<string, unknown>) =>
+      PlaceholdersSchema.safeParse({ literals: {}, strings: { 'x.1': [entry] } }).success;
+    const as = { en: '{replySlaHours} working hours' };
+    expect(file({ key: 'replySlaHours', en: '[one business day]', as })).toBe(true);
+    expect(file({ key: 'replySlaHours', as })).toBe(false);
+    expect(file({ key: 'replySlaHours', en: '[x]', as: { en: 'working hours' } })).toBe(false);
+    expect(
+      file({ key: 'replySlaHours', en: '[x]', as: { en: '{replySlaHours}–{replySlaHours}' } }),
+    ).toBe(false);
   });
   it('lists only legal-flagged or not-a-metric strings in the baseline', () => {
     expect(Object.keys(baseline)).toHaveLength(32);

@@ -11,7 +11,9 @@
     ],
     "countries": [
       "[13'ten fazla] ülke",
+      "[12’den fazla] ülke",
       "[13+] countries",
+      "[12+] countries",
       "[13] countries",
       "[13+] ülke",
       "[13] ülke"
@@ -28,7 +30,13 @@
       "[8–10] hafta"
     ],
     "firstDayWeeksInCountry": ["[four to six] weeks", "[4–6] weeks", "[4–6] hafta"],
-    "replySlaHours": ["[4] working hours", "[4] business hours", "[4] iş saati"],
+    "replySlaHours": [
+      "[4] working hours",
+      "[4] business hours",
+      "[4] iş saati",
+      "[one business day]",
+      "[bir iş günü]"
+    ],
     "homepageReplyHours": [
       "within [24] hours",
       "in [24] hours",
@@ -54,6 +62,15 @@
     "calc.104": [{ "key": "homepageReplyHours" }],
     "calc.381": [{ "key": "homepageReplyHours" }],
     "calc.481": [{ "key": "homepageReplyHours" }],
+    "partner.059": [
+      {
+        "key": "replySlaHours",
+        "en": "[one business day]",
+        "tr": "[bir iş günü]",
+        "as": { "en": "{replySlaHours} working hours", "tr": "{replySlaHours} iş saati" }
+      }
+    ],
+    "partner.077": [{ "key": "countries" }],
     "partner.078": [{ "key": "homepageReplyHours" }],
     "partner.087": [{ "key": "replySlaHours" }],
     "partner.140": [{ "key": "replySlaHours" }],
