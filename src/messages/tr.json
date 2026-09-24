@@ -101,7 +101,7 @@
         "city": "Örn. Antalya",
         "headcount": "Örn. 10",
         "roleNeeded": "Örn. kaynakçı, garson, şoför",
-        "message": "İhtiyacınızı kısaca anlatın",
+        "message": "Kısaca ihtiyacınızı yazın",
         "subject": "Mesajınızın konusu",
         "select": "Seçiniz",
         "description": "Kim, ne zaman, ne istedi? Elinizdeki her ayrıntı yardımcı olur.",
@@ -162,30 +162,30 @@
         },
         "off": {
           "title": "Bu form şu anda kapalı",
-          "body": "Talebinizi WhatsApp, telefon veya e-posta ile iletebilirsiniz; en kısa sürede dönüş yaparız."
+          "body": "Talebinizi WhatsApp, telefon veya e-posta ile iletebilirsiniz; JobsAdmire en kısa sürede dönüş yapar."
         },
         "tripped": {
           "title": "Form geçici olarak duraklatıldı",
-          "body": "Yoğunluk nedeniyle formu kısa süreliğine kapattık. Yazdıklarınızı tek dokunuşla WhatsApp'tan gönderebilirsiniz."
+          "body": "Yoğun talep nedeniyle form kısa süreliğine kapalı. Yazdıklarınızı tek dokunuşla WhatsApp'tan gönderebilirsiniz."
         },
         "unauthorized": {
           "title": "Form şu anda gönderim kabul edemiyor",
-          "body": "Formu gönderirken bir sorun oluştu. Bu arada bize WhatsApp'tan veya telefonla ulaşabilirsiniz."
+          "body": "Formu gönderirken bir sorun oluştu. Bu arada JobsAdmire'a WhatsApp'tan veya telefonla ulaşabilirsiniz."
         },
         "unavailable": {
           "title": "Talebiniz iletilemedi",
-          "body": "Bağlantı sorunu nedeniyle formunuz bize ulaşmadı. Lütfen tekrar deneyin ya da yazdıklarınızı WhatsApp'tan gönderin."
+          "body": "Bağlantı sorunu nedeniyle formunuz JobsAdmire'a ulaşmadı. Lütfen tekrar deneyin ya da yazdıklarınızı WhatsApp'tan gönderin."
         },
         "failed": {
           "title": "Talebiniz işlenemedi",
-          "body": "Formunuz gönderilemedi. Aşağıdaki kanallardan bize ulaşabilirsiniz."
+          "body": "Formunuz gönderilemedi. Aşağıdaki kanallardan JobsAdmire'a ulaşabilirsiniz."
         },
         "invalid": {
           "title": "Form gönderilemedi",
           "body": "Bazı alanlar kabul edilmedi. Lütfen girdiğiniz bilgileri kontrol edip tekrar deneyin ya da WhatsApp'tan yazın."
         },
         "whatsapp": "WhatsApp'tan gönderin",
-        "call": "Bizi arayın",
+        "call": "Arayın",
         "email": "E-posta gönderin",
         "whatsappIntro": "Merhaba JobsAdmire, web sitesindeki formu gönderemedim. Bilgilerim:"
       }

@@ -101,7 +101,7 @@
         "city": "e.g. Antalya",
         "headcount": "e.g. 10",
         "roleNeeded": "e.g. welder, waiter, driver",
-        "message": "Tell us briefly what you need",
+        "message": "Briefly describe what you need",
         "subject": "What is your message about?",
         "select": "Select",
         "description": "Who, when, what did they ask for? Every detail helps.",
@@ -158,35 +158,35 @@
       "fallback": {
         "captcha": {
           "title": "The security check did not go through",
-          "body": "You can send the form once more, or message us what you typed directly on WhatsApp."
+          "body": "You can send the form once more, or send what you typed directly on WhatsApp."
         },
         "off": {
           "title": "This form is currently closed",
-          "body": "You can reach us on WhatsApp, by phone or by e-mail; we will get back to you as soon as possible."
+          "body": "You can send your request on WhatsApp, by phone or by e-mail; JobsAdmire will get back to you as soon as possible."
         },
         "tripped": {
           "title": "The form is paused for a short while",
-          "body": "We have paused the form briefly because of heavy traffic. Send what you typed to us on WhatsApp in one tap."
+          "body": "The form is paused briefly because of heavy demand. You can send what you typed on WhatsApp in one tap."
         },
         "unauthorized": {
           "title": "The form cannot accept submissions right now",
-          "body": "Something went wrong while sending the form. In the meantime, reach us on WhatsApp or by phone."
+          "body": "Something went wrong while sending the form. In the meantime, you can reach JobsAdmire on WhatsApp or by phone."
         },
         "unavailable": {
           "title": "Your request could not be sent",
-          "body": "A connection problem stopped your form from reaching us. Please try again, or send what you typed on WhatsApp."
+          "body": "A connection problem stopped your form from reaching JobsAdmire. Please try again, or send what you typed on WhatsApp."
         },
         "failed": {
           "title": "Your request could not be processed",
-          "body": "Your form could not be sent. You can reach us through the channels below."
+          "body": "Your form could not be sent. You can reach JobsAdmire through the channels below."
         },
         "invalid": {
           "title": "The form could not be sent",
-          "body": "Some of the fields were not accepted. Please check what you entered and try again, or message us on WhatsApp."
+          "body": "Some of the fields were not accepted. Please check what you entered and try again, or send a message on WhatsApp."
         },
         "whatsapp": "Send on WhatsApp",
-        "call": "Call us",
-        "email": "E-mail us",
+        "call": "Call",
+        "email": "E-mail",
         "whatsappIntro": "Hello JobsAdmire, I could not send the form on your website. My details:"
       }
     }
