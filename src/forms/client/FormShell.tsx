@@ -9,7 +9,7 @@ import type { Locale } from '@/i18n/routing';
 import { CONSENT_FIELD, HONEYPOT_FIELD, IDLE_FORM_STATE, type FormActionState } from '../types';
 import { FallbackPanel } from './FallbackPanel';
 import { FormErrorsContext, useFieldError, useFieldValue } from './FormErrorsContext';
-import { Turnstile } from './Turnstile';
+import { Turnstile, useTurnstileReset } from './Turnstile';
 
 export type FormShellProps = {
   /** the page's `'use server'` wrapper around `createFormAction(spec)` */
@@ -118,6 +118,7 @@ export function FormShell({
 }: FormShellProps) {
   const sys = useTranslations('sys');
   const [state, formAction] = useActionState(action, initialState ?? IDLE_FORM_STATE);
+  const turnstile = useTurnstileReset(state);
   const ctx = useMemo(
     () =>
       state.status === 'fieldErrors'
@@ -154,7 +155,9 @@ export function FormShell({
             autoComplete="off"
           />
         </div>
-        {turnstileSiteKey ? <Turnstile siteKey={turnstileSiteKey} locale={locale} /> : null}
+        {turnstileSiteKey ? (
+          <Turnstile ref={turnstile} siteKey={turnstileSiteKey} locale={locale} />
+        ) : null}
         <ConsentRow mode={consent} href={consentLinkHref} />
         <div>
           <SubmitButton label={submitLabel ?? sys('form.submit.default')} />

@@ -17,6 +17,18 @@ const base = {
   testId: 'hire-form',
 };
 const idle = vi.fn(async (): Promise<FormActionState> => ({ status: 'idle' }));
+const SITE_KEY = '1x00000000000000000000AA';
+const tokenInput = () =>
+  document.querySelector<HTMLInputElement>('input[name="cf-turnstile-response"]')!;
+/** A stand-in for Cloudflare's API: the widget answers with `tok_1` as soon as it renders. */
+const turnstileApi = () => ({
+  render: vi.fn((_el: HTMLElement, opts: Record<string, unknown>) => {
+    (opts.callback as (t: string) => void)('tok_1');
+    return 'w1';
+  }),
+  reset: vi.fn(),
+  remove: vi.fn(),
+});
 
 beforeEach(() => {
   Object.defineProperty(navigator, 'sendBeacon', {
@@ -28,6 +40,7 @@ beforeEach(() => {
 });
 afterEach(() => {
   Reflect.deleteProperty(navigator, 'sendBeacon');
+  delete window.turnstile;
 });
 
 describe('FormShell', () => {
@@ -158,6 +171,50 @@ describe('FormShell', () => {
     expect(
       screen.getByRole('heading', { name: copy.fallback.unavailable.title }),
     ).toBeInTheDocument();
+  });
+
+  it('keeps the Turnstile token across a shell re-render (a fieldErrors answer re-renders every child)', () => {
+    window.turnstile = turnstileApi();
+    const { rerender } = renderWithIntl(
+      <FormShell {...base} turnstileSiteKey={SITE_KEY} action={idle}>
+        <Field name="name" />
+      </FormShell>,
+    );
+    expect(tokenInput()).toHaveValue('tok_1');
+    rerender(
+      <FormShell
+        {...base}
+        turnstileSiteKey={SITE_KEY}
+        action={idle}
+        initialState={{ status: 'fieldErrors', errors: { name: 'required' }, values: {} }}
+      >
+        <Field name="name" />
+      </FormShell>,
+    );
+    expect(tokenInput()).toHaveValue('tok_1');
+  });
+
+  it('resets the Turnstile widget once per action result, and the token survives a real submit', async () => {
+    const api = turnstileApi();
+    window.turnstile = api;
+    const action = vi.fn<(prev: FormActionState, data: FormData) => Promise<FormActionState>>(
+      async () => ({ status: 'fieldErrors', errors: { name: 'required' }, values: { name: '' } }),
+    );
+    renderWithIntl(
+      <FormShell {...base} turnstileSiteKey={SITE_KEY} action={action}>
+        <Field name="name" />
+      </FormShell>,
+    );
+    expect(api.reset).not.toHaveBeenCalled();
+    const submit = screen.getByRole('button', { name: copy.submit.default });
+    await userEvent.click(submit);
+    await waitFor(() => expect(api.reset).toHaveBeenCalledTimes(1));
+    expect(api.reset).toHaveBeenCalledWith('w1');
+    expect(action.mock.calls[0][1].get('cf-turnstile-response')).toBe('tok_1');
+    expect(tokenInput()).toHaveValue('tok_1');
+    await userEvent.click(submit);
+    await waitFor(() => expect(api.reset).toHaveBeenCalledTimes(2));
+    expect(action).toHaveBeenCalledTimes(2);
   });
 
   it('notice mode renders the KVKK line instead of a checkbox, and the title/submitLabel props', () => {
