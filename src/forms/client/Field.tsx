@@ -1,7 +1,7 @@
 'use client';
 import { useTranslations } from 'next-intl';
 import { FormField } from '@/design/primitives';
-import { useFieldError, useFieldValue } from './FormErrorsContext';
+import { useFieldError, useFieldValue, useRegisterField } from './FormErrorsContext';
 
 export type FieldOption = { value: string; label: string };
 
@@ -65,6 +65,7 @@ export function Field({
   const sys = useTranslations('sys');
   const error = useFieldError(name);
   const value = useFieldValue(name);
+  useRegisterField(name);
   const labelKey = `form.labels.${name}`;
   const labelText = label ?? (sys.has(labelKey) ? sys(labelKey) : missingLabel(name));
   const placeholderKey = `form.placeholders.${name}`;

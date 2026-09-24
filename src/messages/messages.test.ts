@@ -107,6 +107,7 @@ const ERRORS = [
   'consent',
   'captcha',
   'invalid',
+  'form',
 ];
 const FALLBACK_KINDS = [
   'captcha',

@@ -1,14 +1,20 @@
 'use client';
-import { useActionState, useMemo, type ReactNode } from 'react';
+import { useActionState, useCallback, useMemo, useState, type ReactNode } from 'react';
 import { useFormStatus } from 'react-dom';
 import { useTranslations } from 'next-intl';
 import type { FormKey } from '@/analytics/forms';
 import { Button } from '@/design/primitives';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
+import { isFormErrorCode } from '../errors';
 import { CONSENT_FIELD, HONEYPOT_FIELD, IDLE_FORM_STATE, type FormActionState } from '../types';
 import { FallbackPanel } from './FallbackPanel';
-import { FormErrorsContext, useFieldError, useFieldValue } from './FormErrorsContext';
+import {
+  FormErrorsContext,
+  useFieldError,
+  useFieldValue,
+  useRegisterField,
+} from './FormErrorsContext';
 import { guardAction } from './guardAction';
 import { Turnstile, useTurnstileReset } from './Turnstile';
 
@@ -51,6 +57,37 @@ function SubmitButton({ label }: { label: string }) {
   );
 }
 
+function ConsentCheckboxRegistration() {
+  useRegisterField(CONSENT_FIELD);
+  return null;
+}
+
+/** `_form` errors (an object-level `.refine()`, a `.strict()` extra key) and errors on names no
+ *  rendered control shows (a hidden `openingSlug`) — listed once above the submit button so a
+ *  submit never ends with nothing visible. */
+function FormLevelErrors({ errors }: { errors: [string, string][] }) {
+  const sys = useTranslations('sys');
+  const lines = errors.map(([name, code]) => {
+    const text = sys(`form.errors.${isFormErrorCode(code) ? code : 'invalid'}`);
+    const labelKey = `form.labels.${name}`;
+    return name !== '_form' && sys.has(labelKey) ? `${sys(labelKey)}: ${text}` : text;
+  });
+  return (
+    <div
+      role="alert"
+      data-form-alert=""
+      className="rounded-base border border-danger p-4 text-body-sm text-danger"
+    >
+      <p className="m-0 font-bold">{sys('form.errors.form')}</p>
+      <ul className="mt-2 mb-0 pl-5">
+        {[...new Set(lines)].map((line) => (
+          <li key={line}>{line}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
 function ConsentRow({ mode, href }: { mode: 'checkbox' | 'notice'; href: '/privacy' | '/kvkk' }) {
   const sys = useTranslations('sys');
   const error = useFieldError(CONSENT_FIELD);
@@ -69,6 +106,7 @@ function ConsentRow({ mode, href }: { mode: 'checkbox' | 'notice'; href: '/priva
   const id = `f-${CONSENT_FIELD}`;
   return (
     <div className="flex flex-col gap-1">
+      <ConsentCheckboxRegistration />
       <label htmlFor={id} className="flex cursor-pointer items-start gap-3 text-body-sm">
         <input
           id={id}
@@ -122,15 +160,32 @@ export function FormShell({
   const guarded = useMemo(() => guardAction(action), [action]);
   const [state, formAction] = useActionState(guarded, initialState ?? IDLE_FORM_STATE);
   const turnstile = useTurnstileReset(state);
+  // How many mounted controls show each name's error themselves (Field, the consent row).
+  const [shown, setShown] = useState<ReadonlyMap<string, number>>(() => new Map());
+  const register = useCallback((name: string) => {
+    setShown((prev) => new Map(prev).set(name, (prev.get(name) ?? 0) + 1));
+    return () =>
+      setShown((prev) => {
+        const next = new Map(prev);
+        const left = (prev.get(name) ?? 0) - 1;
+        if (left > 0) next.set(name, left);
+        else next.delete(name);
+        return next;
+      });
+  }, []);
   const ctx = useMemo(
     () =>
       state.status === 'fieldErrors'
-        ? { errors: state.errors, values: state.values }
+        ? { errors: state.errors, values: state.values, register }
         : state.status === 'error'
-          ? { errors: {}, values: state.values }
-          : { errors: {}, values: {} },
-    [state],
+          ? { errors: {}, values: state.values, register }
+          : { errors: {}, values: {}, register },
+    [state, register],
   );
+  const unshown =
+    state.status === 'fieldErrors'
+      ? Object.entries(state.errors).filter(([name]) => name === '_form' || !shown.has(name))
+      : [];
   const honeypotId = `f-${HONEYPOT_FIELD}-${formKey}`;
   return (
     <FormErrorsContext.Provider value={ctx}>
@@ -162,6 +217,7 @@ export function FormShell({
           <Turnstile ref={turnstile} siteKey={turnstileSiteKey} locale={locale} />
         ) : null}
         <ConsentRow mode={consent} href={consentLinkHref} />
+        {unshown.length ? <FormLevelErrors errors={unshown} /> : null}
         <div>
           <SubmitButton label={submitLabel ?? sys('form.submit.default')} />
         </div>

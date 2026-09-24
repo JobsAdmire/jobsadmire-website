@@ -123,6 +123,66 @@ describe('FormShell', () => {
     expect(screen.getByRole('checkbox')).toHaveAttribute('aria-invalid', 'true');
   });
 
+  it('renders a _form error (object-level refine, strict extra key) as a form-level alert', () => {
+    renderWithIntl(
+      <FormShell
+        {...base}
+        action={idle}
+        initialState={{ status: 'fieldErrors', errors: { _form: 'invalid' }, values: {} }}
+      >
+        <Field name="name" />
+      </FormShell>,
+    );
+    const alert = screen.getByRole('alert');
+    expect(alert).toHaveTextContent(copy.errors.form);
+    expect(alert).toHaveTextContent(copy.errors.invalid);
+  });
+
+  it('lists errors on names no Field renders in the form-level alert; rendered fields keep theirs', () => {
+    renderWithIntl(
+      <FormShell
+        {...base}
+        action={idle}
+        initialState={{
+          status: 'fieldErrors',
+          errors: { name: 'required', openingSlug: 'required' },
+          values: {},
+        }}
+      >
+        <Field name="name" required />
+        <input type="hidden" name="openingSlug" value="" />
+      </FormShell>,
+    );
+    const alerts = screen.getAllByRole('alert');
+    expect(alerts).toHaveLength(2);
+    expect(alerts[0]).toHaveTextContent(copy.errors.required); // under the name field
+    expect(alerts[0]).not.toHaveTextContent(copy.errors.form);
+    const formAlert = alerts[1];
+    expect(formAlert).toHaveTextContent(copy.errors.form);
+    expect(formAlert).toHaveTextContent(`${copy.labels.openingSlug}: ${copy.errors.required}`);
+    expect(within(formAlert).getAllByRole('listitem')).toHaveLength(1);
+  });
+
+  it('shows no form-level alert when every errored name has its Field', () => {
+    renderWithIntl(
+      <FormShell
+        {...base}
+        action={idle}
+        initialState={{
+          status: 'fieldErrors',
+          errors: { name: 'required', consent: 'consent' },
+          values: {},
+        }}
+      >
+        <Field name="name" required />
+      </FormShell>,
+    );
+    expect(screen.getAllByRole('alert').map((a) => a.textContent)).toEqual([
+      copy.errors.required,
+      copy.errors.consent,
+    ]);
+  });
+
   it('renders the fallback panel for an error state, with the echoed values in the WhatsApp link', () => {
     const state: FormActionState = {
       status: 'error',
