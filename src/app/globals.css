@@ -1,4 +1,9 @@
 @import 'tailwindcss';
+/* Tailwind 4 scans every non-ignored text file for class candidates. The plans,
+   specs and the 2026-09-25 handoff material under docs/superpowers contain code
+   blocks whose stray "[…]" strings produced invalid declarations ("Missed
+   semicolon") and broke `next build`; nothing in there is real page CSS. */
+@source not '../../docs/superpowers';
 
 @theme {
   --color-ink: #16202e;
