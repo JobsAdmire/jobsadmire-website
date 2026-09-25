@@ -71,3 +71,7 @@ Before calling any work package done:
 - **Phase A (target: approval + 4 weeks):** site live on design-package content via the `LOCAL` adapter, TR + EN, redirects, legal pages, analytics + conversion, forms through the minimal Operations intake door (WP3a), WhatsApp co-primary. Sections needing live data (pool cards, stories proof, representatives register) are hidden or in an empty state.
 - **Phase B (target: approval + 9 weeks):** adapter flips to `OPS` per route; the Operations "Website" module (CMS) becomes the content source; the marketing team (Sana, Nisanur) become the editors.
 - Work package order and gates: plan §5 and §12 (stop rules). Do not run WP3b/CRM work in parallel with WP3c — D24.
+
+## Resuming after a pause
+
+Read `docs/WEBSITE-HANDOFF.md` first — it is the single resume document for the whole programme (repos, branches, what is live, what is done, the exact next steps, every ruling, the owner's pending items). The working branch with all post-WP1 code and the supporting material is `wp2/foundation`; `main` is the live site's production branch and is guarded against deploying until the cutover.
