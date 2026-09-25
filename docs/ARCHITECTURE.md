@@ -1,6 +1,141 @@
 # Architecture — JobsAdmire Website
 
-Expands plan §3.1. Full rationale: `docs/superpowers/specs/2026-09-18-website-programme-design.md`.
+Expands plan §3.1. Full rationale: `docs/superpowers/specs/2026-09-18-website-programme-design.md`. This file is the single technical reference for the repo (stack, layout, modules, env vars, local/test/deploy commands); `docs/PRD.md` stays business-only and `docs/DEPLOYMENT.md` holds the deploy runbook detail.
+
+## Stack
+
+- **Framework:** Next.js 16.3.5, App Router (`package.json`). `@next/third-parties` ^16.3.5 alongside it.
+- **UI:** React 19.2.8, react-dom 19.2.8.
+- **Language:** TypeScript ^5, `strict: true` (`tsconfig.json`).
+- **i18n:** next-intl ^4.14.5 (`src/i18n/*`, `next.config.ts`'s `createNextIntlPlugin`).
+- **Styling:** Tailwind CSS ^4 via `@tailwindcss/postcss` (`postcss.config.mjs`).
+- **Validation:** Zod ^3.25.76 (the content bundle contract, form payloads).
+- **Testing:** Vitest ^4.1.11 + `@testing-library/react` ^16.3.3 (unit), Playwright ^1.63.0 + `@axe-core/playwright` ^4.13.0 (e2e/a11y), `@lhci/cli` ^0.15.1 (Lighthouse CI).
+- **Lint/format:** ESLint ^9 (`eslint-config-next` 16.3.5, `eslint.config.mjs`), Prettier ^3.9.8.
+- **Runtime:** Node 22.x (`package.json` `engines`, `.nvmrc`).
+- **No database, no ORM** — no `prisma/schema.prisma` or migrations anywhere in the repo; this is a static/SSR marketing site with no database of its own. **No Docker** — no `Dockerfile`/`docker-compose*.yml`.
+- **Not a Turborepo monorepo** — despite the workspace-root `CLAUDE.md` describing the ecosystem as "two independent Turborepo monorepos" (CRM, Operations), this repo is a single `package.json` with no `turbo.json`, `apps/*`, or `packages/*`.
+
+## Repository layout
+
+Two levels, annotated; excludes `node_modules/`, `.next/`, and `design-package/` (reference design only — never imported from `src/**`, see `CLAUDE.md`'s hard rules).
+
+```
+.
+├── contract/            # Frozen Zod schema + golden fixture for the Ops<->Website content bundle
+│                         #   website-bundle.v1.ts, website-bundle.v1.fixture.json, CONTRACT.md, contract.test.ts
+├── docs/                 # PRD, this file, DEPLOYMENT, INTEGRATIONS, SEO, ANALYTICS, CONTENT-MODEL,
+│                         #   redirects.md, PRIVACY, OPERATING, WEBSITE-HANDOFF, superpowers/ (plans/specs)
+├── e2e/                  # Playwright specs: routing, redirects, seo, smoke, thank-you, ops, a11y (axe), width-sweep
+├── public/               # Static assets (brand/)
+├── redirects/            # rules.json (source) -> legacy.json + gone.json (built) via redirects:build; gsc-clicks.csv input
+├── scripts/               # build-redirects.ts, import-design-package.ts, gate.sh
+├── src/
+│   ├── analytics/         # GtmLoader, consent, ConversionPing, track.ts, forms.ts (FormKey allowlist)
+│   ├── app/                # App Router: [locale]/ pages + layout, api/ route handlers, robots.ts, sitemap.ts, global-error.tsx
+│   ├── content/             # Content adapter: config.ts / pure.ts / adapter.ts; local/ (bundle.en.json, bundle.tr.json, catalogue.json)
+│   ├── design/               # Design system: chrome/ (Header, Footer, MobileNav, ...), primitives/ (Button, Card, ...), tokens
+│   ├── i18n/                  # next-intl routing.ts (locales, pathnames table), navigation.ts, request.ts
+│   ├── lib/                    # contact.ts, format/money.ts, seo/ (metadata, jsonld, routes), sanity.ts
+│   ├── messages/                 # sys.* next-intl message catalogues (en.json, tr.json)
+│   ├── proxy.ts                   # Locale routing / 410 / redirect middleware (Next 16's proxy.ts convention)
+│   └── test/                       # Vitest test helpers (storage.ts — Node-version localStorage workaround)
+├── next.config.ts, vercel.json, eslint.config.mjs, postcss.config.mjs, playwright.config.ts, vitest.config.mts, tsconfig.json
+└── .env.example, .nvmrc, README.md, CLAUDE.md
+```
+
+There is no `src/forms/` directory yet — the forms flow is designed (see "Forms flow" below) but unbuilt as of this writing; only `src/analytics/forms.ts`'s `FormKey` allowlist exists.
+
+## Entry points and key modules
+
+- **`src/app/[locale]/layout.tsx`** — locale-scoped root layout; mounts `SiteChrome` (server) and `ClientIslands` (client, `ssr: false`) — see "Chrome" below.
+- **`src/app/[locale]/page.tsx`, `hire-workers/page.tsx`, `thank-you/page.tsx`, `dev/gallery/page.tsx`, `[...rest]/page.tsx`, `error.tsx`, `not-found.tsx`** — routed pages; full routing behavior in "Routing" below.
+- **`src/app/global-error.tsx`** — root-level error boundary outside the locale scope.
+- **`src/app/api/revalidate/route.ts`** (+ `auth.ts`, `state.ts`) — Operations-triggered ISR tag revalidation; see "Operations surface" below.
+- **`src/app/api/site-health/route.ts`** (+ `checks.ts`) — health-check endpoint watched by an external monitor.
+- **`src/app/robots.ts`, `src/app/sitemap.ts`** — dynamic robots/sitemap generation.
+- **`src/proxy.ts`** — the Next 16 middleware-equivalent: `410` checks against `redirects/gone.json`, then next-intl locale resolution; see "Routing" below.
+- **`src/lib/seo/*`** — `metadata.ts` (metadata builder), `jsonld.ts` (structured data) + `JsonLdScript.tsx`, `routes.ts` (canonical route helpers).
+- **`src/lib/format/money.ts`** — `formatTRY`, the currency/number formatting contract (see "Calculator engine" below).
+- **`src/lib/contact.ts`** — WhatsApp/contact link helpers.
+- **`src/lib/calculator/`** — the cost-calculator's pure functions over `RateConfig`.
+- **`src/i18n/routing.ts`, `navigation.ts`, `request.ts`** — next-intl locale/pathname configuration; `routing.ts`'s `pathnames` table is the single internal-path → per-locale-external-path source (see "Routing" below).
+- **`src/analytics/GtmLoader.tsx`, `consent.ts`, `ConversionPing.tsx`, `track.ts`, `forms.ts`** — GTM loading, consent state, conversion pings, event tracking, and the `FormKey` allowlist.
+- **`src/content/adapter.ts`** (+ `config.ts`, `pure.ts`) — the content adapter (`LOCAL`/`OPS`); see "Content adapter" below.
+- **`src/design/chrome/*`, `src/design/primitives/*`** — site chrome and the 13 design-system primitives; see "Design system" below.
+
+## Environment variables
+
+Names and purpose only — no values live here or anywhere in this repo (`.gitignore` blocks `.env*` except `.env.example`). Full table with rationale/nuance per variable and the retired-secrets log: `docs/DEPLOYMENT.md` § Environment variables. Current placeholder list: `.env.example`.
+
+| Variable                           | Purpose                                                       |
+| ----------------------------------- | -------------------------------------------------------------- |
+| `CONTENT_SOURCE`                    | `LOCAL` or `OPS` — which content adapter `contentSource()` resolves to |
+| `OPS_API_URL`                       | Base URL for the Operations website API                        |
+| `OPS_WEBSITE_READ_TOKEN`            | Bearer token for bundle/content reads from Operations           |
+| `OPS_WEBSITE_WRITE_TOKEN`           | Bearer token for form submissions to Operations (not yet consumed — forms flow unbuilt) |
+| `REVALIDATE_SECRET`                 | Authenticates Operations → `/api/revalidate` calls               |
+| `NEXT_PUBLIC_SITE_URL`              | Canonical site origin for metadata/sitemap/OG                    |
+| `NEXT_PUBLIC_GTM_ID`                | GTM container id (public identifier)                             |
+| `NEXT_PUBLIC_GA4_ID`                | GA4 measurement id (public identifier)                           |
+| `NEXT_PUBLIC_ADS_ID`                | Google Ads conversion id (public identifier)                     |
+| `NEXT_PUBLIC_ADS_CONVERSION_LABEL`  | Google Ads conversion label (public identifier)                  |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY`    | Cloudflare Turnstile site key (public; the secret key lives in Operations, not this repo) |
+
+Runtime-only variables (not in `.env.example`, provided by Vercel or the shell, read directly in code):
+
+| Variable                | Read in                                    | Purpose                                          |
+| ------------------------ | ------------------------------------------- | ------------------------------------------------- |
+| `VERCEL_GIT_COMMIT_SHA`  | `src/app/api/site-health/route.ts`          | Commit SHA surfaced in the health-check response   |
+| `VERCEL_ENV`             | `src/app/robots.ts`                         | Drives `noindex` on every non-production deployment |
+| `NODE_ENV`               | `src/content/pure.ts`, `src/app/[locale]/dev/gallery/page.tsx` | Production fixture guard; dev-gallery 404 in production |
+
+## Run locally
+
+```bash
+nvm use              # Node 22.x, per .nvmrc
+npm ci
+npm run dev           # http://localhost:3000
+```
+
+Forms and the `OPS` content adapter need the `jobsadmire-operations` stack running locally on port 4001 (workspace-root `CLAUDE.md`); the default `.env.example` `CONTENT_SOURCE=LOCAL` needs nothing else running. Two content-generation scripts are run by hand, not automatically, whenever their source files change, and their output is committed:
+
+```bash
+npm run content:import      # scripts/import-design-package.ts -> src/content/local/*.json
+npm run redirects:build     # scripts/build-redirects.ts -> redirects/legacy.json + gone.json
+```
+
+## Test / quality gates
+
+Exact commands, from `package.json`:
+
+| Command                | Runs                                                    |
+| ------------------------ | ---------------------------------------------------------- |
+| `npm run typecheck`      | `tsc --noEmit`                                              |
+| `npm run lint`            | `eslint .`                                                  |
+| `npm run format`          | `prettier --check .` (`npm run format:write` to fix)         |
+| `npm run test`            | `vitest run` (`npm run test:watch` for watch mode)            |
+| `npm run verify`          | `typecheck && lint && format && test` — the exact gate the Vercel build runs (`vercel.json`'s `buildCommand`) |
+| `npm run e2e`             | `playwright test` (Playwright only, no axe/Lighthouse)         |
+| `npm run gate`            | `bash scripts/gate.sh` — Playwright + axe + Lighthouse CI against a URL; never part of the Vercel build. Full composition and budgets: "Quality gate (D27)" below. |
+
+## Deployment
+
+Deploys to **Vercel**, not the VPS (`vercel.json`: `framework: nextjs`, `buildCommand: "npm run verify && next build"`, `installCommand: npm ci`). A failing `verify` blocks the build outright. Two Vercel projects exist — the legacy `jobsadmirewebsite` (frozen, untouched) and `jobsadmire-web-v2` (this repo); `git.deploymentEnabled.main` is currently `false` in `vercel.json`, i.e. `main` is preview-only until the Phase A cutover flips it. Full cutover/rollback steps, per-environment values, and the retired-secrets log: `docs/DEPLOYMENT.md`.
+
+## Integrations
+
+Full catalogue (I1–I20), contracts, and token rotation runbook: `docs/INTEGRATIONS.md`. Found in this repo's code:
+
+- **Operations content bundle** — server-only `fetch()` to `${OPS_API_URL}/api/website/v1/bundle?locale=...`, Bearer `OPS_WEBSITE_READ_TOKEN` (`src/content/adapter.ts`); gated by `CONTENT_SOURCE=OPS`.
+- **Operations → Website revalidate webhook** — `POST /api/revalidate`, Bearer `REVALIDATE_SECRET` (`src/app/api/revalidate/route.ts`).
+- **Forms → Operations intake** — designed, not yet built; see "Forms flow" below.
+- **Google Tag Manager / GA4 / Google Ads conversion tracking** — `NEXT_PUBLIC_GTM_ID` / `NEXT_PUBLIC_GA4_ID` / `NEXT_PUBLIC_ADS_ID` + `NEXT_PUBLIC_ADS_CONVERSION_LABEL` (`src/analytics/GtmLoader.tsx`, `src/content/pure.ts`).
+- **Cloudflare Turnstile** — `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, site key only; the secret key is held by Operations, not this repo.
+- **Sentry** — not yet integrated (no `@sentry/*` dependency); see "Sentry — not yet wired" below.
+- **Vercel platform** — build/runtime environment; `VERCEL_GIT_COMMIT_SHA` and `VERCEL_ENV` read at runtime (see Environment variables above).
+
+No direct SDK imports for axios/Sanity/Stripe/Resend/Twilio/PostHog exist in `src/`.
 
 ## Routing
 
