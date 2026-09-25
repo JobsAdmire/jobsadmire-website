@@ -1,0 +1,22 @@
+export function CheckIcon(props: IconProps) {
+  return (
+    <svg
+      {...base({ size: 15, ...props })}
+      {...stroke}
+      strokeWidth={2.6}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M20 6L9 17l-5-5" />
+    </svg>
+  );
+}
+
+export function ClockIcon(props: IconProps) {
+  return (
+    <svg {...base({ size: 15, ...props })} {...stroke} strokeLinecap="round">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3.5 2" />
+    </svg>
+  );
+}

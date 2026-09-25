@@ -1,0 +1,3 @@
+# Task 6 additions (controller, 2026-09-24, from the WP2b consistency check — binding)
+- **W85** `src/design/islands/useInView.ts` (`useInView<T extends Element>(options?: IntersectionObserverInit): [ref, inView]`, SSR-safe, one observer per element, reduced-motion irrelevant) and `src/design/islands/LazyIsland.tsx` (`'use client'`; `{ load: () => Promise<{ default: ComponentType<P> }>; props: P; fallback: ReactNode; rootMargin?: string; ssr?: boolean }` — renders `fallback` (DOM-identical to the island's initial state) until in view, then `React.lazy`-loads). Tests with a mocked IntersectionObserver.
+- `ScrollSpyToc` gains optional string props `remainingSingular` / `remainingPlural` beside the function prop (ICU-free path for server callers). Test.

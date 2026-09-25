@@ -1,0 +1,2002 @@
+# Review package: 86e7320..14f7e4e
+
+## Commits
+14f7e4e test(email): prove custom headers reach the wire on all four transport paths
+de5d5e4 feat(website): NEWSLETTER double opt-in with confirm/unsubscribe routes, RFC 8058 headers and WEBSITE_SITE_URL
+e48d6f4 feat(email): optional custom headers from queueEmail through EmailService to SMTP and Gmail
+
+## Files changed
+ .env.example                                       |   5 +
+ .env.production.example                            |   4 +
+ .../src/modules/email/email-headers.spec.ts        | 163 +++++++++++++++
+ apps/backend/src/modules/email/email.service.ts    |  13 +-
+ .../src/modules/email/ir-email-config.service.ts   |   3 +
+ .../email/templates/website-newsletter-confirm.hbs |   8 +
+ .../templates/website-newsletter-confirm.tr.hbs    |   8 +
+ .../email/templates/website-newsletter-welcome.hbs |   6 +
+ .../templates/website-newsletter-welcome.tr.hbs    |   6 +
+ .../google-workspace-config.service.ts             |   3 +
+ .../modules/notifications/notifications.service.ts |   7 +
+ .../processors/email.processor.headers.spec.ts     |  29 +++
+ .../notifications/processors/email.processor.ts    |   6 +-
+ .../modules/website/dto/newsletter-token.dto.ts    |  10 +
+ .../website/handlers/newsletter.handler.spec.ts    |  78 ++++++++
+ .../modules/website/handlers/newsletter.handler.ts |  60 ++++++
+ .../website/newsletter/newsletter-token.spec.ts    |  50 +++++
+ .../modules/website/newsletter/newsletter-token.ts |  60 ++++++
+ .../newsletter/website-newsletter.service.spec.ts  | 185 +++++++++++++++++
+ .../newsletter/website-newsletter.service.ts       | 221 +++++++++++++++++++++
+ .../website-public-newsletter.controller.spec.ts   |  59 ++++++
+ .../website-public-newsletter.controller.ts        |  63 ++++++
+ .../src/modules/website/website-site-url.spec.ts   |  52 +++++
+ .../src/modules/website/website-site-url.ts        |  33 +++
+ apps/backend/src/modules/website/website.module.ts |  14 +-
+ .../test/permissions/website-conformance.spec.ts   |  11 +-
+ .../permissions/website-door-conformance.spec.ts   |  22 +-
+ docker-compose.vps.yml                             |   1 +
+ docker-compose.yml                                 |   3 +
+ docs/DEPLOYMENT.md                                 |   1 +
+ 30 files changed, 1175 insertions(+), 9 deletions(-)
+
+## Diff
+diff --git a/.env.example b/.env.example
+index 7debe4f..0ea9b51 100644
+--- a/.env.example
++++ b/.env.example
+@@ -13,20 +13,25 @@
+ # docs/DEPLOYMENT.md > Environment variables.
+ # ============================================================
+ 
+ # --- App ---
+ NODE_ENV=development
+ APP_PORT=4001
+ # APP_URL is the PUBLIC site base used in emails (tracking links, the header
+ # logo <img src="{{appUrl}}/jobsadmire-logo.png">) — the FRONTEND origin. In
+ # prod one origin serves both apps; in dev that's :4000, NOT the backend :4001.
+ APP_URL=http://localhost:4000
++# Public base of the marketing site (www.jobsadmire.com in prod). Newsletter
++# confirm/unsubscribe links and website autoresponder CTAs point here; WP3c's
++# revalidate call reuses it. Both compose files map it — a value only in .env
++# never reaches the container.
++WEBSITE_SITE_URL=http://localhost:3000
+ FRONTEND_URL=http://localhost:4000
+ 
+ # --- Database (host-mapped 4432 -> container 5432) ---
+ DATABASE_URL=postgresql://jobsadmire:jobsadmire_pass@localhost:4432/jobsadmire_ops_dev
+ DB_HOST=localhost
+ DB_PORT=4432
+ DB_NAME=jobsadmire_ops_dev
+ DB_USER=jobsadmire
+ DB_PASSWORD=jobsadmire_pass
+ 
+diff --git a/.env.production.example b/.env.production.example
+index 66cae9c..3ec0296 100644
+--- a/.env.production.example
++++ b/.env.production.example
+@@ -8,20 +8,24 @@
+ # portal.jobsadmire.com uses 3xxx on the same VPS).
+ # ============================================================
+ 
+ # ─── Application ─────────────────────────────────────────────────────────────
+ NODE_ENV=production
+ APP_PORT=4001
+ FRONTEND_PORT=4000
+ APP_URL=https://operations.jobsadmire.com
+ FRONTEND_URL=https://operations.jobsadmire.com
+ CORS_ORIGINS=https://operations.jobsadmire.com
++# Public base of the marketing site — every link Operations writes into a visitor
++# mail (newsletter confirm/unsubscribe, autoresponder CTA) starts here. Mapped in
++# docker-compose.vps.yml with this same default; set it beside WEBSITE_MODULE_ENABLED.
++WEBSITE_SITE_URL=https://www.jobsadmire.com
+ 
+ # ─── Database (PostgreSQL) ───────────────────────────────────────────────────
+ POSTGRES_USER=jobsadmire_ops
+ POSTGRES_PASSWORD=<generate-strong-random-value>
+ POSTGRES_DB=jobsadmire_operations
+ DATABASE_URL=postgresql://jobsadmire_ops:<password>@postgres:5432/jobsadmire_operations?schema=public
+ 
+ # ─── Redis ───────────────────────────────────────────────────────────────────
+ REDIS_HOST=redis
+ REDIS_PORT=6379
+diff --git a/apps/backend/src/modules/email/email-headers.spec.ts b/apps/backend/src/modules/email/email-headers.spec.ts
+new file mode 100644
+index 0000000..1e0984c
+--- /dev/null
++++ b/apps/backend/src/modules/email/email-headers.spec.ts
+@@ -0,0 +1,163 @@
++import * as nodemailer from 'nodemailer';
++import { google } from 'googleapis';
++
++import { GoogleWorkspaceConfigService } from '../integrations/google-workspace-config.service';
++import { EmailService } from './email.service';
++import { IrEmailConfigService, type ResolvedIrEmailConfig } from './ir-email-config.service';
++
++/**
++ * Custom RFC-822 headers (WP3a Task 9): `headers` must reach BOTH transports —
++ * the Gmail raw-MIME builder and nodemailer — or RFC 8058 one-click
++ * unsubscribe silently vanishes on one path. Same harness as
++ * email.service.spec.ts for the EmailService routing cells; below them, the
++ * three wire-format cells drive the real transports' last step (MailComposer
++ * for Gmail, nodemailer `sendMail` for both SMTP transporters) and read the
++ * header lines back.
++ *
++ * `nodemailer` (the main entry) is mocked so no transporter is ever created;
++ * `nodemailer/lib/mail-composer` is a different module id and stays REAL —
++ * the Gmail cell needs the genuine MIME builder to prove `headers` is the
++ * option MailComposer honours.
++ */
++jest.mock('nodemailer', () => ({ createTransport: jest.fn() }));
++jest.mock('googleapis', () => ({ google: { gmail: jest.fn() } }));
++
++function makeEmailService(opts: {
++  resolved: unknown;
++  gmailEnabled?: boolean;
++  sendGmail?: jest.Mock;
++  sendViaSmtp?: jest.Mock;
++  /** Set to give EmailService a global SMTP transporter (the mocked createTransport). */
++  smtpHost?: string;
++}) {
++  const config = { get: (k: string, d: unknown) => (k === 'SMTP_HOST' && opts.smtpHost ? opts.smtpHost : d) } as never;
++  const sendGmail = opts.sendGmail ?? jest.fn().mockResolvedValue({ messageId: 'gmail' });
++  const googleConfig = {
++    sendGmail,
++    getConfigRow: jest.fn().mockResolvedValue({ gmailEnabled: opts.gmailEnabled ?? true }),
++  } as never;
++  const sendViaSmtp = opts.sendViaSmtp ?? jest.fn().mockResolvedValue({ messageId: 'smtp' });
++  const irEmailConfig = {
++    getResolvedSafe: jest.fn().mockResolvedValue(opts.resolved),
++    from: (c: { senderName: string; senderEmail: string }) => `${c.senderName} <${c.senderEmail}>`,
++    sendViaSmtp,
++  } as never;
++  return { svc: new EmailService(config, googleConfig, irEmailConfig), sendGmail, sendViaSmtp };
++}
++
++const headers = {
++  'List-Unsubscribe': '<https://www.jobsadmire.com/abonelikten-cik?token=x.y>, <mailto:info@jobsadmire.com?subject=unsubscribe>',
++  'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
++};
++
++/** RFC 5322 §2.2.3: a long header is folded as CRLF + WSP; unfold before reading it back. */
++const unfold = (mime: string) => mime.replace(/\r?\n[ \t]+/g, ' ');
++
++describe('EmailService custom headers', () => {
++  it('default mailbox (prod: SMTP_HOST unset → Gmail impersonated) forwards headers to sendGmail', async () => {
++    const { svc, sendGmail } = makeEmailService({ resolved: null });
++    await svc.sendEmail({ to: 'a@b.io', subject: 's', template: 't', context: {}, mailbox: 'default', headers });
++    expect(sendGmail).toHaveBeenCalledWith(expect.objectContaining({ fromImpersonated: true, headers }));
++  });
++
++  it('careers mailbox on the IR SMTP transport forwards headers to sendViaSmtp', async () => {
++    const { svc, sendViaSmtp } = makeEmailService({
++      resolved: { isActive: true, transport: 'SMTP', senderName: 'C', senderEmail: 'careers@jobsadmire.com' },
++    });
++    await svc.sendEmail({ to: 'a@b.io', subject: 's', template: 't', context: {}, mailbox: 'careers', headers });
++    expect(sendViaSmtp).toHaveBeenCalledWith(expect.anything(), expect.objectContaining({ headers }));
++  });
++
++  it('careers mailbox on Gmail forwards headers to sendGmail', async () => {
++    const { svc, sendGmail } = makeEmailService({
++      resolved: { isActive: true, transport: 'GMAIL', senderName: 'C', senderEmail: 'careers@jobsadmire.com' },
++    });
++    await svc.sendEmail({ to: 'a@b.io', subject: 's', template: 't', context: {}, mailbox: 'careers', headers });
++    expect(sendGmail).toHaveBeenCalledWith(expect.objectContaining({ headers }));
++  });
++
++  it('the global SMTP transporter (SMTP_HOST set) gets headers on sendMail', async () => {
++    const sendMail = jest.fn().mockResolvedValue({ messageId: 'global-smtp' });
++    (nodemailer.createTransport as jest.Mock).mockReturnValue({ sendMail });
++    const { svc, sendGmail } = makeEmailService({ resolved: null, smtpHost: 'smtp.example.test' });
++    await svc.sendEmail({ to: 'a@b.io', subject: 's', template: 't', context: {}, headers });
++    expect(sendGmail).not.toHaveBeenCalled();
++    expect(sendMail).toHaveBeenCalledWith(expect.objectContaining({ to: 'a@b.io', headers }));
++  });
++
++  it('no headers → nothing is added to the transport call', async () => {
++    const { svc, sendGmail } = makeEmailService({ resolved: null });
++    await svc.sendEmail({ to: 'a@b.io', subject: 's', template: 't', context: {} });
++    expect(sendGmail.mock.calls[0][0]).not.toHaveProperty('headers');
++  });
++});
++
++describe('custom headers reach the wire format', () => {
++  it('IR SMTP: sendViaSmtp hands headers to nodemailer sendMail beside the threading headers', async () => {
++    const sendMail = jest.fn().mockResolvedValue({ messageId: '<relay-1@jobsadmire.com>' });
++    (nodemailer.createTransport as jest.Mock).mockReturnValue({ sendMail });
++    const svc = new IrEmailConfigService({} as never, { get: (_k: string, d: unknown) => d } as never, {} as never);
++    const cfg = {
++      isActive: true,
++      transport: 'SMTP',
++      senderName: 'JobsAdmire Careers',
++      senderEmail: 'careers@jobsadmire.com',
++      replyTo: 'careers@jobsadmire.com',
++      smtpHost: 'smtp-relay.gmail.com',
++      smtpPort: 587,
++      smtpSecure: false,
++      smtpUser: 'admin@jobsadmire.com',
++      smtpPass: 'pw',
++    } as unknown as ResolvedIrEmailConfig;
++    await svc.sendViaSmtp(cfg, { to: 'a@b.io', subject: 's', html: '<p>x</p>', inReplyTo: '<in@b.io>', headers }, { cached: false });
++    const arg = sendMail.mock.calls[0][0];
++    expect(arg.headers).toEqual(headers);
++    expect(arg.inReplyTo).toBe('<in@b.io>'); // threading untouched
++    // Without headers, nodemailer sees no `headers` key at all.
++    sendMail.mockClear();
++    await svc.sendViaSmtp(cfg, { to: 'a@b.io', subject: 's', html: '<p>x</p>' }, { cached: false });
++    expect(sendMail.mock.calls[0][0]).not.toHaveProperty('headers');
++  });
++
++  it('Gmail: sendGmail emits the header lines in the raw MIME it submits (real MailComposer)', async () => {
++    const send = jest.fn().mockResolvedValue({ data: { id: 'gmail-1', threadId: null } });
++    (google.gmail as jest.Mock).mockReturnValue({ users: { messages: { send } } });
++    const svc = new GoogleWorkspaceConfigService({} as never, { get: (_k: string, d: unknown) => d } as never);
++    jest.spyOn(svc, 'getConfigRow').mockResolvedValue({
++      gmailEnabled: true,
++      impersonatedUser: 'info@jobsadmire.com',
++      senderName: 'JobsAdmire',
++      senderEmail: 'careers@jobsadmire.com',
++    } as never);
++    jest.spyOn(svc, 'getAuthClient').mockResolvedValue({} as never);
++
++    await svc.sendGmail({
++      to: 'a@b.io',
++      subject: 'Please confirm',
++      html: '<p>x</p>',
++      fromImpersonated: true,
++      inReplyTo: '<in@b.io>',
++      headers,
++    });
++
++    const raw: string = send.mock.calls[0][0].requestBody.raw;
++    const mime = unfold(Buffer.from(raw.replace(/-/g, '+').replace(/_/g, '/'), 'base64').toString('utf8'));
++    expect(mime).toContain(`List-Unsubscribe: ${headers['List-Unsubscribe']}`);
++    expect(mime).toContain('List-Unsubscribe-Post: List-Unsubscribe=One-Click');
++    expect(mime).toContain('In-Reply-To: <in@b.io>'); // threading untouched
++    expect(mime).toContain('From: JobsAdmire <info@jobsadmire.com>');
++  });
++
++  it('the real MailComposer folds nothing away: both header names survive without `headers` being misspelt', async () => {
++    // Guards the option name itself — a typo (`header`, `customHeaders`) would
++    // be silently ignored by MailComposer and every cell above would still pass.
++    // eslint-disable-next-line @typescript-eslint/no-var-requires
++    const MailComposer = require('nodemailer/lib/mail-composer');
++    const built: Buffer = await new MailComposer({ from: 'a@b.io', to: 'c@d.io', subject: 's', html: '<p>x</p>', headers })
++      .compile()
++      .build();
++    const mime = unfold(built.toString('utf8'));
++    expect(mime.match(/^List-Unsubscribe: /m)).not.toBeNull();
++    expect(mime.match(/^List-Unsubscribe-Post: List-Unsubscribe=One-Click$/m)).not.toBeNull();
++  });
++});
+diff --git a/apps/backend/src/modules/email/email.service.ts b/apps/backend/src/modules/email/email.service.ts
+index d32016e..9992a33 100644
+--- a/apps/backend/src/modules/email/email.service.ts
++++ b/apps/backend/src/modules/email/email.service.ts
+@@ -19,20 +19,27 @@ export interface SendEmailOptions {
+     contentType?: string;
+   }>;
+   locale?: string;
+   /**
+    * 'careers' routes the mail through the org Google Workspace service account
+    * (sends as careers@) when Gmail is enabled — used by Internal Recruitment.
+    * Falls back to SMTP automatically if Gmail isn't configured/enabled or errors.
+    * Omitted/'default' → normal SMTP path.
+    */
+   mailbox?: 'careers' | 'default';
++  /**
++   * Extra RFC-822 headers, passed to nodemailer (`headers`) and to the Gmail
++   * MailComposer alike, on every transport of the fallback chain. First user:
++   * RFC 8058 one-click unsubscribe on website newsletter mail (WP3a). Never
++   * put addresses or secrets here that the template does not already carry.
++   */
++  headers?: Record<string, string>;
+ }
+ 
+ @Injectable()
+ export class EmailService {
+   private readonly logger = new Logger(EmailService.name);
+   /** Null when SMTP_HOST is unset — emails are logged but not sent. */
+   private readonly transporter: nodemailer.Transporter | null;
+   private readonly from: string;
+   private readonly templateCache = new Map<string, Handlebars.TemplateDelegate>();
+   private readonly templatesDir: string;
+@@ -94,21 +101,21 @@ export class EmailService {
+     });
+ 
+     if (this.transporter) {
+       this.logger.log(`Email transport configured: ${smtpHost}:${smtpPort}`);
+     } else {
+       this.logger.warn('SMTP_HOST is not set — emails will be logged but not sent.');
+     }
+   }
+ 
+   async sendEmail(options: SendEmailOptions): Promise<{ messageId: string }> {
+-    const { to, subject, template, context, attachments, locale = 'en', mailbox } = options;
++    const { to, subject, template, context, attachments, locale = 'en', mailbox, headers } = options;
+     const recipients = Array.isArray(to) ? to.join(', ') : to;
+ 
+     // Render once — both transports send the same HTML.
+     const html = this.renderTemplate(template, { ...context, locale });
+ 
+     // Internal Recruitment mail (mailbox='careers') runs on the admin-managed IR
+     // email config (transport + sender). The whole path is best-effort with a
+     // fallback chain — a misconfigured IR SMTP can never drop candidate mail.
+     // Did any transport actually get tried? Distinguishes "nothing is
+     // configured" (local dev — a log-only noop is correct) from "everything
+@@ -130,20 +137,21 @@ export class EmailService {
+ 
+       // 1) Active IR SMTP transport.
+       if (resolved?.isActive && resolved.transport === 'SMTP') {
+         transportAttempted = true;
+         try {
+           const res = await this.irEmailConfig.sendViaSmtp(resolved, {
+             to,
+             subject,
+             html,
+             attachments: bufferAttachments,
++            ...(headers ? { headers } : {}),
+           });
+           this.logger.log(
+             `Email sent via IR SMTP (${resolved.senderEmail}): ${template} → ${recipients} (id ${res.messageId})`,
+           );
+           return res;
+         } catch (err) {
+           this.logger.warn(
+             `IR SMTP send failed for "${template}" → ${recipients}; falling back to Gmail. ${(err as Error)?.message ?? err}`,
+           );
+         }
+@@ -155,20 +163,21 @@ export class EmailService {
+       // Only counts as an attempt if Gmail is actually enabled; otherwise
+       // sendGmail throws a config error and this is simply "not configured".
+       if (await this.gmailIsEnabled()) transportAttempted = true;
+       try {
+         const res = await this.googleConfig.sendGmail({
+           to,
+           subject,
+           html,
+           attachments: bufferAttachments,
+           from: resolved?.isActive ? irFrom : undefined,
++          ...(headers ? { headers } : {}),
+         });
+         this.logger.log(`Email sent via Gmail (careers@): ${template} → ${recipients} (id ${res.messageId})`);
+         return res;
+       } catch (err) {
+         this.logger.warn(
+           `Gmail send failed for "${template}" → ${recipients}; falling back to SMTP. ${(err as Error)?.message ?? err}`,
+         );
+       }
+       // 3) Falls through to the global env SMTP transport below (last resort).
+     }
+@@ -184,20 +193,21 @@ export class EmailService {
+         const res = await this.googleConfig.sendGmail({
+           to,
+           subject,
+           html,
+           fromImpersonated: true,
+           attachments: attachments?.map((a) => ({
+             filename: a.filename,
+             content: typeof a.content === 'string' ? Buffer.from(a.content) : a.content,
+             contentType: a.contentType,
+           })),
++          ...(headers ? { headers } : {}),
+         });
+         this.logger.log(`Email sent via Gmail (default mailbox): ${template} → ${recipients} (id ${res.messageId})`);
+         return res;
+       } catch (err) {
+         // Bind the error — this used to be a bare `catch {}` that discarded it.
+         lastTransportError = err as Error;
+         this.logger.warn(
+           `Gmail (default mailbox) send failed for "${template}" → ${recipients}. ${
+             (err as Error)?.message ?? err
+           }`,
+@@ -228,20 +238,21 @@ export class EmailService {
+       const result = await this.transporter.sendMail({
+         from: this.from,
+         to: recipients,
+         subject,
+         html,
+         attachments: attachments?.map((a) => ({
+           filename: a.filename,
+           content: a.content,
+           contentType: a.contentType,
+         })),
++        ...(headers ? { headers } : {}),
+       });
+ 
+       this.logger.log(`Email sent: ${template} → ${recipients} (messageId: ${result.messageId})`);
+       return { messageId: result.messageId };
+     } catch (error) {
+       this.logger.error(`Failed to send email "${template}" to ${recipients}: ${error.message}`, error.stack);
+       throw error;
+     }
+   }
+ 
+diff --git a/apps/backend/src/modules/email/ir-email-config.service.ts b/apps/backend/src/modules/email/ir-email-config.service.ts
+index 5c1678a..c20efc0 100644
+--- a/apps/backend/src/modules/email/ir-email-config.service.ts
++++ b/apps/backend/src/modules/email/ir-email-config.service.ts
+@@ -29,20 +29,22 @@ interface SendPayload {
+    * pass any domain alias here to send AS that alias through the shared
+    * Workspace SMTP relay — the Gmail API path rewrites `From` to info@ under
+    * DWD impersonation, the relay does not. (No caller uses it today; it is
+    * kept because it is the only way to send as a non-careers@ alias.)
+    */
+   from?: string;
+   /** RFC-822 threading headers, for replying into an existing thread. */
+   inReplyTo?: string;
+   references?: string;
+   attachments?: Array<{ filename: string; content: Buffer; contentType?: string }>;
++  /** Extra RFC-822 headers (e.g. List-Unsubscribe, WP3a). */
++  headers?: Record<string, string>;
+ }
+ 
+ /**
+  * Admin-managed, singleton Email/SMTP config for Internal Recruitment (careers)
+  * mail. Owns the sender identity + transport choice; the SMTP password is
+  * AES-256-GCM encrypted at rest (ENCRYPTION_KEY), stripped from public reads,
+  * and write-only in the UI. EmailService consults this on the `careers` path.
+  */
+ @Injectable()
+ export class IrEmailConfigService {
+@@ -198,20 +200,21 @@ export class IrEmailConfigService {
+       subject: payload.subject,
+       html: payload.html,
+       ...(payload.text ? { text: payload.text } : {}),
+       // The IR config's Reply-To is the careers@ identity. When a caller
+       // overrides `from` to send as a different alias, recipient replies must
+       // go back to that alias, so the careers@ Reply-To is suppressed.
+       ...(!payload.from && cfg.replyTo ? { replyTo: cfg.replyTo } : {}),
+       ...(payload.inReplyTo ? { inReplyTo: payload.inReplyTo } : {}),
+       ...(payload.references ? { references: payload.references } : {}),
+       attachments: payload.attachments,
++      ...(payload.headers ? { headers: payload.headers } : {}),
+     });
+     return { messageId: result.messageId };
+   }
+ 
+   /**
+    * Admin "Send test email" — sends a tiny test through the resolved transport,
+    * applying any `draft` overrides so a config can be tried BEFORE saving.
+    * Never throws — returns { ok:false, error } on failure.
+    */
+   async sendTest(dto: SendTestEmailDto, _user: AuthenticatedUser): Promise<{
+diff --git a/apps/backend/src/modules/email/templates/website-newsletter-confirm.hbs b/apps/backend/src/modules/email/templates/website-newsletter-confirm.hbs
+new file mode 100644
+index 0000000..9d6f687
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-newsletter-confirm.hbs
+@@ -0,0 +1,8 @@
++<h2>One more step</h2>
++<p>Thanks for signing up to the JobsAdmire newsletter. Please confirm your e-mail address so we know it is really you:</p>
++<a href="{{confirmUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Confirm my subscription</a>
++<p style="margin-top: 24px; color: #6b7280; font-size: 13px;">
++  This link is valid for {{expiresInHours}} hours. If you did not sign up, you can ignore this
++  e-mail — nothing will be sent to you — or <a href="{{unsubscribeUrl}}" style="color:#6b7280;">remove your address</a> right away.
++</p>
++<p style="color: #6b7280; font-size: 13px;">JobsAdmire · <a href="{{siteUrl}}" style="color:#6b7280;">{{siteUrl}}</a></p>
+diff --git a/apps/backend/src/modules/email/templates/website-newsletter-confirm.tr.hbs b/apps/backend/src/modules/email/templates/website-newsletter-confirm.tr.hbs
+new file mode 100644
+index 0000000..cef91ad
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-newsletter-confirm.tr.hbs
+@@ -0,0 +1,8 @@
++<h2>Son bir adım</h2>
++<p>JobsAdmire bültenine kaydolduğunuz için teşekkürler. Gerçekten siz olduğunuzdan emin olmak için e-posta adresinizi onaylayın:</p>
++<a href="{{confirmUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Aboneliğimi onayla</a>
++<p style="margin-top: 24px; color: #6b7280; font-size: 13px;">
++  Bu bağlantı {{expiresInHours}} saat geçerlidir. Kaydolmadıysanız bu e-postayı yok sayabilirsiniz — size hiçbir şey
++  gönderilmeyecek — ya da adresinizi hemen <a href="{{unsubscribeUrl}}" style="color:#6b7280;">kaldırabilirsiniz</a>.
++</p>
++<p style="color: #6b7280; font-size: 13px;">JobsAdmire · <a href="{{siteUrl}}" style="color:#6b7280;">{{siteUrl}}</a></p>
+diff --git a/apps/backend/src/modules/email/templates/website-newsletter-welcome.hbs b/apps/backend/src/modules/email/templates/website-newsletter-welcome.hbs
+new file mode 100644
+index 0000000..592cd07
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-newsletter-welcome.hbs
+@@ -0,0 +1,6 @@
++<h2>You're in</h2>
++<p>Your subscription to the JobsAdmire newsletter is confirmed. You will hear from us about hiring seasons, work-permit changes and new source countries — a few times a year, never more than monthly.</p>
++<a href="{{siteUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Visit jobsadmire.com</a>
++<p style="margin-top: 24px; color: #6b7280; font-size: 13px;">
++  Changed your mind? <a href="{{unsubscribeUrl}}" style="color:#6b7280;">Unsubscribe with one click</a> — the same link is in every newsletter.
++</p>
+diff --git a/apps/backend/src/modules/email/templates/website-newsletter-welcome.tr.hbs b/apps/backend/src/modules/email/templates/website-newsletter-welcome.tr.hbs
+new file mode 100644
+index 0000000..ab3f238
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-newsletter-welcome.tr.hbs
+@@ -0,0 +1,6 @@
++<h2>Aramıza hoş geldiniz</h2>
++<p>JobsAdmire bülten aboneliğiniz onaylandı. İşe alım sezonları, çalışma izni değişiklikleri ve yeni kaynak ülkeler hakkında yılda birkaç kez — asla ayda birden fazla olmamak üzere — sizden haberdar edeceğiz.</p>
++<a href="{{siteUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">jobsadmire.com'u ziyaret edin</a>
++<p style="margin-top: 24px; color: #6b7280; font-size: 13px;">
++  Fikriniz mi değişti? <a href="{{unsubscribeUrl}}" style="color:#6b7280;">Tek tıkla abonelikten çıkın</a> — aynı bağlantı her bültende yer alır.
++</p>
+diff --git a/apps/backend/src/modules/integrations/google-workspace-config.service.ts b/apps/backend/src/modules/integrations/google-workspace-config.service.ts
+index 0572f44..ef354a4 100644
+--- a/apps/backend/src/modules/integrations/google-workspace-config.service.ts
++++ b/apps/backend/src/modules/integrations/google-workspace-config.service.ts
+@@ -210,20 +210,22 @@ export class GoogleWorkspaceConfigService {
+     cc?: string | string[];
+     attachments?: Array<{ filename: string; content: Buffer; contentType?: string }>;
+     /**
+      * Threading: Gmail-side thread anchor + the RFC-822 headers that keep the
+      * conversation intact in the recipient's client. Omit for standalone mail
+      * — fully backward-compatible.
+      */
+     threadId?: string;
+     inReplyTo?: string;
+     references?: string;
++    /** Extra RFC-822 headers (e.g. List-Unsubscribe, WP3a) — MailComposer emits them verbatim. */
++    headers?: Record<string, string>;
+   }): Promise<{ messageId: string; threadId: string | null }> {
+     const row = await this.getConfigRow();
+     if (!row?.gmailEnabled) {
+       throw new BadRequestException('Gmail sending is not enabled in the integration settings.');
+     }
+     const auth = await this.getAuthClient(
+       ['https://www.googleapis.com/auth/gmail.send'],
+       row.impersonatedUser,
+     );
+     if (!auth) {
+@@ -245,20 +247,21 @@ export class GoogleWorkspaceConfigService {
+     const built: Buffer = await new MailComposer({
+       from,
+       to: Array.isArray(opts.to) ? opts.to.join(', ') : opts.to,
+       cc: Array.isArray(opts.cc) ? opts.cc.join(', ') : opts.cc,
+       subject: opts.subject,
+       html: opts.html,
+       text: opts.text,
+       inReplyTo: opts.inReplyTo,
+       references: opts.references,
+       attachments: opts.attachments,
++      ...(opts.headers ? { headers: opts.headers } : {}),
+     })
+       .compile()
+       .build();
+     const raw = built
+       .toString('base64')
+       .replace(/\+/g, '-')
+       .replace(/\//g, '_')
+       .replace(/=+$/, '');
+     const gmail = google.gmail({ version: 'v1', auth });
+     const res = await gmail.users.messages.send({
+diff --git a/apps/backend/src/modules/notifications/notifications.service.ts b/apps/backend/src/modules/notifications/notifications.service.ts
+index 6251b21..a4a7bf3 100644
+--- a/apps/backend/src/modules/notifications/notifications.service.ts
++++ b/apps/backend/src/modules/notifications/notifications.service.ts
+@@ -61,40 +61,47 @@ export class NotificationsService {
+     template: string;
+     context: Record<string, unknown>;
+     locale?: string;
+     attachments?: Array<{ filename: string; content: string; contentType?: string }>;
+     /** Recipient user ID — used by EmailProcessor to check notification preferences */
+     userId?: string;
+     /** Notification type (e.g., 'JOB_APPROVED') — maps to preference config */
+     notificationType?: string;
+     /** 'careers' → send as careers@ via Gmail (Internal Recruitment). See EmailService. */
+     mailbox?: 'careers' | 'default';
++    /**
++     * Extra RFC-822 headers (WP3a): e.g. RFC 8058 `List-Unsubscribe` +
++     * `List-Unsubscribe-Post` on newsletter mail. Forwarded verbatim through
++     * the queue to EmailService and on to both transports.
++     */
++    headers?: Record<string, string>;
+   }) {
+     await this.emailQueue.add('send', options, {
+       attempts: 3,
+       backoff: { type: 'exponential', delay: 2000 },
+     });
+     return { queued: true };
+   }
+ 
+   /**
+    * Queue bulk templated emails for async sending.
+    */
+   async queueBulkEmail(emails: Array<{
+     to: string | string[];
+     subject: string;
+     template: string;
+     context: Record<string, unknown>;
+     locale?: string;
+     userId?: string;
+     notificationType?: string;
+     mailbox?: 'careers' | 'default';
++    headers?: Record<string, string>;
+   }>) {
+     await this.emailQueue.add('send-bulk', { emails }, {
+       attempts: 3,
+       backoff: { type: 'exponential', delay: 2000 },
+     });
+     return { queued: true, count: emails.length };
+   }
+ 
+   async findAll(currentUser: AuthenticatedUser, unreadOnly = false) {
+     const where: any = { recipientUserId: currentUser.userId };
+diff --git a/apps/backend/src/modules/notifications/processors/email.processor.headers.spec.ts b/apps/backend/src/modules/notifications/processors/email.processor.headers.spec.ts
+new file mode 100644
+index 0000000..da72339
+--- /dev/null
++++ b/apps/backend/src/modules/notifications/processors/email.processor.headers.spec.ts
+@@ -0,0 +1,29 @@
++import { EmailProcessor } from './email.processor';
++
++/** WP3a Task 9: the queue must carry `headers` from queueEmail/queueBulkEmail to EmailService untouched. */
++describe('EmailProcessor forwards custom headers', () => {
++  const headers = { 'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click' };
++  const make = () => {
++    const emailService = { sendEmail: jest.fn().mockResolvedValue({ messageId: 'm1' }) };
++    const prisma = { user: { findUnique: jest.fn() } };
++    return { proc: new EmailProcessor(emailService as never, prisma as never), emailService };
++  };
++
++  it('send', async () => {
++    const { proc, emailService } = make();
++    await proc.handleSend({ id: 1, progress: jest.fn(), data: { to: 'a@b.io', subject: 's', template: 't', context: {}, headers } } as never);
++    expect(emailService.sendEmail).toHaveBeenCalledWith(expect.objectContaining({ headers }));
++  });
++
++  it('send without headers passes none', async () => {
++    const { proc, emailService } = make();
++    await proc.handleSend({ id: 1, progress: jest.fn(), data: { to: 'a@b.io', subject: 's', template: 't', context: {} } } as never);
++    expect(emailService.sendEmail.mock.calls[0][0]).not.toHaveProperty('headers');
++  });
++
++  it('send-bulk', async () => {
++    const { proc, emailService } = make();
++    await proc.handleBulkSend({ id: 2, progress: jest.fn(), data: { emails: [{ to: 'a@b.io', subject: 's', template: 't', context: {}, headers }] } } as never);
++    expect(emailService.sendEmail).toHaveBeenCalledWith(expect.objectContaining({ headers }));
++  });
++});
+diff --git a/apps/backend/src/modules/notifications/processors/email.processor.ts b/apps/backend/src/modules/notifications/processors/email.processor.ts
+index 4350c1d..1f470cd 100644
+--- a/apps/backend/src/modules/notifications/processors/email.processor.ts
++++ b/apps/backend/src/modules/notifications/processors/email.processor.ts
+@@ -14,20 +14,22 @@ export interface EmailJobData {
+   context: Record<string, unknown>;
+   /** Optional locale for template selection (defaults to 'en') */
+   locale?: string;
+   attachments?: Array<{ filename: string; content: string; contentType?: string }>;
+   /** Recipient user ID — used to look up notification preferences */
+   userId?: string;
+   /** Notification type (e.g., 'JOB_APPROVED') — maps to preference config */
+   notificationType?: string;
+   /** 'careers' → send as careers@ via Gmail (Internal Recruitment). */
+   mailbox?: 'careers' | 'default';
++  /** Extra RFC-822 headers (e.g. List-Unsubscribe, WP3a). Forwarded verbatim to EmailService. */
++  headers?: Record<string, string>;
+ }
+ 
+ @Processor('email')
+ export class EmailProcessor {
+   private readonly logger = new Logger(EmailProcessor.name);
+ 
+   constructor(
+     private readonly emailService: EmailService,
+     private readonly prisma: PrismaService,
+   ) {}
+@@ -44,21 +46,21 @@ export class EmailProcessor {
+       where: { id: userId },
+       select: { notificationPreferences: true },
+     });
+ 
+     const prefs = user?.notificationPreferences as Record<string, Record<string, boolean>> | null;
+     return isNotificationEnabled(prefs, notificationType, 'email');
+   }
+ 
+   @Process('send')
+   async handleSend(job: Job<EmailJobData>) {
+-    const { to, subject, template, context, locale, attachments, userId, notificationType, mailbox } = job.data;
++    const { to, subject, template, context, locale, attachments, userId, notificationType, mailbox, headers } = job.data;
+     const recipients = Array.isArray(to) ? to.join(', ') : to;
+ 
+     this.logger.log(`Processing email job ${job.id}: "${subject}" (${template}) → ${recipients}`);
+ 
+     try {
+       // Check user notification preferences before sending
+       const shouldSend = await this.shouldSendEmail(userId, notificationType);
+       if (!shouldSend) {
+         this.logger.log(`Email skipped for user ${userId} — disabled by preference (type: ${notificationType})`);
+         await job.progress(100);
+@@ -73,20 +75,21 @@ export class EmailProcessor {
+       }));
+ 
+       const result = await this.emailService.sendEmail({
+         to,
+         subject,
+         template,
+         context,
+         locale,
+         attachments: parsedAttachments,
+         mailbox,
++        ...(headers ? { headers } : {}),
+       });
+ 
+       await job.progress(100);
+       return { sent: true, recipients, subject, messageId: result.messageId };
+     } catch (error) {
+       this.logger.error(`Failed to send email job ${job.id}: ${error.message}`, error.stack);
+       throw error;
+     }
+   }
+ 
+@@ -108,20 +111,21 @@ export class EmailProcessor {
+           continue;
+         }
+ 
+         await this.emailService.sendEmail({
+           to: email.to,
+           subject: email.subject,
+           template: email.template,
+           context: email.context,
+           locale: email.locale,
+           mailbox: email.mailbox,
++          ...(email.headers ? { headers: email.headers } : {}),
+         });
+         results.push({ to: email.to, success: true });
+       } catch (error) {
+         results.push({ to: emails[i].to, success: false, error: error.message });
+       }
+       await job.progress(Math.round(((i + 1) / emails.length) * 100));
+     }
+ 
+     const skipped = results.filter((r) => r.skipped).length;
+     return { total: emails.length, sent: results.filter((r) => r.success && !r.skipped).length, skipped, failed: results.filter((r) => !r.success).length };
+diff --git a/apps/backend/src/modules/website/dto/newsletter-token.dto.ts b/apps/backend/src/modules/website/dto/newsletter-token.dto.ts
+new file mode 100644
+index 0000000..220491a
+--- /dev/null
++++ b/apps/backend/src/modules/website/dto/newsletter-token.dto.ts
+@@ -0,0 +1,10 @@
++import { ApiProperty } from '@nestjs/swagger';
++import { IsString, Length } from 'class-validator';
++
++/** `?token=` on the three newsletter routes: the confirm token from the mail link, or the signed unsubscribe token. */
++export class NewsletterTokenQueryDto {
++  @ApiProperty({ description: 'Confirm token from the mail link, or the signed unsubscribe token (<subscriberId>.<hmac>).' })
++  @IsString()
++  @Length(16, 200)
++  token: string;
++}
+diff --git a/apps/backend/src/modules/website/handlers/newsletter.handler.spec.ts b/apps/backend/src/modules/website/handlers/newsletter.handler.spec.ts
+new file mode 100644
+index 0000000..b474107
+--- /dev/null
++++ b/apps/backend/src/modules/website/handlers/newsletter.handler.spec.ts
+@@ -0,0 +1,78 @@
++import { WebsiteFormKind } from '@prisma/client';
++
++import { WebsiteFormHandlerRegistry, WebsiteFormHandlerInput } from '../website-form-handler';
++import { NewsletterHandler } from './newsletter.handler';
++
++/**
++ * The NEWSLETTER handler under Task 6's contract (RC4): self-registers, dry-runs
++ * on the test token (P2), never throws for visitor input (P8), and tells the
++ * core to skip the generic bell and autoresponder — the confirm mail IS the
++ * answer (P9).
++ */
++function make() {
++  const registry = new WebsiteFormHandlerRegistry();
++  const newsletter = { subscribe: jest.fn().mockResolvedValue({ subscriberId: 'sub_1', outcome: 'CONFIRMATION_SENT' }) };
++  const handler = new NewsletterHandler(registry, newsletter as never);
++  return { registry, newsletter, handler };
++}
++
++const input = (over: Partial<WebsiteFormHandlerInput> = {}): WebsiteFormHandlerInput => ({
++  submissionId: 'sub-row-1',
++  formKey: 'newsletter',
++  kind: WebsiteFormKind.NEWSLETTER,
++  locale: 'tr',
++  dryRun: false,
++  fields: { email: 'a@b.io', name: 'Ayşe' },
++  consentVersion: 'privacy-2026-09',
++  captchaDegraded: false,
++  visitorIp: '203.0.113.9',
++  userAgent: 'Safari',
++  ...over,
++});
++
++describe('NewsletterHandler', () => {
++  it('registers itself for NEWSLETTER only', () => {
++    const { registry, handler } = make();
++    expect(registry.get(WebsiteFormKind.NEWSLETTER)).toBe(handler);
++    expect(registry.get(WebsiteFormKind.INQUIRY)).toBeNull();
++  });
++
++  it('subscribes with the whitelisted e-mail, locale, visitor IP and consent, and skips notification + autoresponder', async () => {
++    const { handler, newsletter } = make();
++    const out = await handler.handle(input());
++    expect(newsletter.subscribe).toHaveBeenCalledWith({ email: 'a@b.io', locale: 'tr', visitorIp: '203.0.113.9', consentVersion: 'privacy-2026-09' });
++    expect(out).toEqual({
++      ok: true,
++      createdEntityType: 'subscriber',
++      createdEntityId: 'sub_1',
++      detail: { skipNotification: true, skipAutoresponder: true, alreadyReceived: false, outcome: 'CONFIRMATION_SENT', email: 'a@b.io' },
++    });
++  });
++
++  it('an already-confirmed address is reported as alreadyReceived, still ok', async () => {
++    const { handler, newsletter } = make();
++    newsletter.subscribe.mockResolvedValueOnce({ subscriberId: 'sub_9', outcome: 'ALREADY_CONFIRMED' });
++    const out = await handler.handle(input());
++    expect(out).toMatchObject({ ok: true, createdEntityId: 'sub_9', detail: { alreadyReceived: true, outcome: 'ALREADY_CONFIRMED' } });
++  });
++
++  it('dryRun (test token, P2): no subscribe call, no entity, skip flags set', async () => {
++    const { handler, newsletter } = make();
++    const out = await handler.handle(input({ dryRun: true }));
++    expect(newsletter.subscribe).not.toHaveBeenCalled();
++    expect(out).toEqual({ ok: true, detail: { skipNotification: true, skipAutoresponder: true, dryRun: true } });
++  });
++
++  it('a missing e-mail (cannot happen after the catalog) is ok:false, never a throw', async () => {
++    const { handler, newsletter } = make();
++    const out = await handler.handle(input({ fields: { name: 'x' } }));
++    expect(newsletter.subscribe).not.toHaveBeenCalled();
++    expect(out).toMatchObject({ ok: false, error: expect.stringMatching(/email/) });
++  });
++
++  it('an infrastructure failure inside subscribe propagates (the core files a FAILED row and re-runs it)', async () => {
++    const { handler, newsletter } = make();
++    newsletter.subscribe.mockRejectedValueOnce(new Error('db gone'));
++    await expect(handler.handle(input())).rejects.toThrow('db gone');
++  });
++});
+diff --git a/apps/backend/src/modules/website/handlers/newsletter.handler.ts b/apps/backend/src/modules/website/handlers/newsletter.handler.ts
+new file mode 100644
+index 0000000..1298250
+--- /dev/null
++++ b/apps/backend/src/modules/website/handlers/newsletter.handler.ts
+@@ -0,0 +1,60 @@
++import { Injectable } from '@nestjs/common';
++import { WebsiteFormKind } from '@prisma/client';
++
++import { WebsiteNewsletterService } from '../newsletter/website-newsletter.service';
++import {
++  WebsiteFormHandler,
++  WebsiteFormHandlerInput,
++  WebsiteFormHandlerRegistry,
++  WebsiteFormHandlerResult,
++} from '../website-form-handler';
++
++const NEWSLETTER_DETAIL = { skipNotification: true, skipAutoresponder: true } as const;
++
++/**
++ * NEWSLETTER (P4, RC4). A sign-up is not a lead: no WEBSITE_FORM_RECEIVED, no
++ * generic autoresponder — the double opt-in confirmation IS the mail, so the
++ * core is told to skip both. The `newsletter` WebsiteForm row is seeded
++ * inactive (D14, Task 6's seed), so the core refuses the door before this runs
++ * until counsel clears it. Visitor input never throws here (the catalog
++ * validated `email` before the row); only infrastructure failures propagate,
++ * which the core records as a FAILED row and the inbox can re-run.
++ */
++@Injectable()
++export class NewsletterHandler implements WebsiteFormHandler {
++  readonly kinds: readonly WebsiteFormKind[] = [WebsiteFormKind.NEWSLETTER];
++
++  constructor(
++    registry: WebsiteFormHandlerRegistry,
++    private readonly newsletter: WebsiteNewsletterService,
++  ) {
++    registry.register(this);
++  }
++
++  async handle(input: WebsiteFormHandlerInput): Promise<WebsiteFormHandlerResult> {
++    if (input.dryRun) {
++      return { ok: true, detail: { ...NEWSLETTER_DETAIL, dryRun: true } };
++    }
++    const email = typeof input.fields.email === 'string' ? input.fields.email.trim() : '';
++    if (!email) {
++      return { ok: false, error: 'newsletter: fields.email is missing after catalog validation', detail: { ...NEWSLETTER_DETAIL } };
++    }
++    const res = await this.newsletter.subscribe({
++      email,
++      locale: input.locale,
++      visitorIp: input.visitorIp,
++      consentVersion: input.consentVersion,
++    });
++    return {
++      ok: true,
++      createdEntityType: 'subscriber',
++      createdEntityId: res.subscriberId,
++      detail: {
++        ...NEWSLETTER_DETAIL,
++        alreadyReceived: res.outcome === 'ALREADY_CONFIRMED',
++        outcome: res.outcome,
++        email,
++      },
++    };
++  }
++}
+diff --git a/apps/backend/src/modules/website/newsletter/newsletter-token.spec.ts b/apps/backend/src/modules/website/newsletter/newsletter-token.spec.ts
+new file mode 100644
+index 0000000..292be6d
+--- /dev/null
++++ b/apps/backend/src/modules/website/newsletter/newsletter-token.spec.ts
+@@ -0,0 +1,50 @@
++import {
++  NEWSLETTER_CONFIRM_TTL_MS,
++  NEWSLETTER_PATHS,
++  hashToken,
++  newConfirmToken,
++  signUnsubscribeToken,
++  verifyUnsubscribeToken,
++} from './newsletter-token';
++
++/**
++ * Newsletter tokens (WP3a, P4). Confirm token: random, only its sha256 is
++ * stored (the OTP-hash precedent). Unsubscribe token: stateless HMAC over the
++ * subscriber id (RC12: no stored hash) — an unsubscribe link in a mail from
++ * six months ago must still work, so it cannot depend on an expiring row value.
++ */
++describe('newsletter tokens', () => {
++  it('confirm tokens are random, url-safe and hashed with sha256', () => {
++    const a = newConfirmToken();
++    const b = newConfirmToken();
++    expect(a).not.toBe(b);
++    expect(a).toMatch(/^[A-Za-z0-9_-]{32}$/);
++    expect(hashToken(a)).toMatch(/^[0-9a-f]{64}$/);
++    expect(hashToken(a)).toBe(hashToken(a));
++    expect(NEWSLETTER_CONFIRM_TTL_MS).toBe(48 * 60 * 60 * 1000);
++  });
++
++  it('unsubscribe tokens round-trip and fail on tampering or another secret', () => {
++    const token = signUnsubscribeToken('clx1abc2def', 'secret-one');
++    expect(token.startsWith('clx1abc2def.')).toBe(true);
++    expect(verifyUnsubscribeToken(token, 'secret-one')).toBe('clx1abc2def');
++    expect(verifyUnsubscribeToken(token, 'secret-two')).toBeNull();
++    expect(verifyUnsubscribeToken(token.slice(0, -1) + 'x', 'secret-one')).toBeNull();
++    expect(verifyUnsubscribeToken('clx1abc2def', 'secret-one')).toBeNull();
++    expect(verifyUnsubscribeToken('other.' + token.split('.')[1], 'secret-one')).toBeNull();
++    expect(verifyUnsubscribeToken('', 'secret-one')).toBeNull();
++    expect(verifyUnsubscribeToken('.', 'secret-one')).toBeNull();
++  });
++
++  it('the mail links use the website\'s localised slugs (its `pathnames` table, D16)', () => {
++    // jobsadmire-website/src/i18n/routing.ts:
++    //   '/newsletter/confirm':     { tr: '/abone-onay',      en: '/newsletter/confirm' },
++    //   '/newsletter/unsubscribe': { tr: '/abonelikten-cik', en: '/newsletter/unsubscribe' },
++    // TR is served at the root, EN under /en — a TR link printed as
++    // `/newsletter/confirm` lands on the site's 404 catch-all.
++    expect(NEWSLETTER_PATHS).toEqual({
++      confirm: { tr: '/abone-onay', en: '/newsletter/confirm' },
++      unsubscribe: { tr: '/abonelikten-cik', en: '/newsletter/unsubscribe' },
++    });
++  });
++});
+diff --git a/apps/backend/src/modules/website/newsletter/newsletter-token.ts b/apps/backend/src/modules/website/newsletter/newsletter-token.ts
+new file mode 100644
+index 0000000..339e1e5
+--- /dev/null
++++ b/apps/backend/src/modules/website/newsletter/newsletter-token.ts
+@@ -0,0 +1,60 @@
++import { createHash, createHmac, randomBytes, timingSafeEqual } from 'crypto';
++
++import type { WebsiteLocale } from '../dto/website-form-submit.dto';
++
++/** Double opt-in window. */
++export const NEWSLETTER_CONFIRM_TTL_MS = 48 * 60 * 60 * 1000;
++
++/**
++ * Website paths the mail links point at, PER LOCALE — a verbatim mirror of the
++ * website's `pathnames` table (`jobsadmire-website/src/i18n/routing.ts`, D16):
++ * TR is served at the root under its Turkish slug, EN under `/en` with the
++ * design slug. A TR link printed as `/newsletter/confirm` lands on the site's
++ * 404 catch-all, so the internal route key is never what a visitor sees.
++ * WP2 implements both pages; each forwards the token to Operations server-side.
++ */
++export const NEWSLETTER_PATHS: Readonly<Record<'confirm' | 'unsubscribe', Readonly<Record<WebsiteLocale, string>>>> = {
++  confirm: { tr: '/abone-onay', en: '/newsletter/confirm' },
++  unsubscribe: { tr: '/abonelikten-cik', en: '/newsletter/unsubscribe' },
++};
++
++/** Manual fallback in the mailto: half of List-Unsubscribe (I12: never a silent no-op). */
++export const NEWSLETTER_CONTACT_EMAIL = 'info@jobsadmire.com';
++
++/** 24 random bytes → 32 url-safe chars. Only its hash is stored. */
++export function newConfirmToken(): string {
++  return randomBytes(24).toString('base64url');
++}
++
++export function hashToken(token: string): string {
++  return createHash('sha256').update(token).digest('hex');
++}
++
++/** Domain-separated HMAC key derived from ENCRYPTION_KEY — never the raw key. */
++function unsubscribeKey(secret: string): Buffer {
++  return createHash('sha256').update(`website-newsletter-unsubscribe:${secret}`).digest();
++}
++
++/**
++ * Stateless unsubscribe token `<subscriberId>.<hmac>`: valid for the life of
++ * the row, so a link in an old newsletter keeps working (RFC 8058 needs that;
++ * RC12: nothing about it is stored on the row).
++ */
++export function signUnsubscribeToken(subscriberId: string, secret: string): string {
++  const sig = createHmac('sha256', unsubscribeKey(secret)).update(subscriberId).digest('base64url');
++  return `${subscriberId}.${sig}`;
++}
++
++/** Returns the subscriber id when the signature verifies, null otherwise. */
++export function verifyUnsubscribeToken(token: string, secret: string): string | null {
++  const dot = token.lastIndexOf('.');
++  if (dot <= 0 || dot === token.length - 1) return null;
++  const id = token.slice(0, dot);
++  const sig = token.slice(dot + 1);
++  if (!/^[A-Za-z0-9_-]{1,64}$/.test(id)) return null;
++  const expected = createHmac('sha256', unsubscribeKey(secret)).update(id).digest('base64url');
++  const a = Buffer.from(sig);
++  const b = Buffer.from(expected);
++  if (a.length !== b.length) return null;
++  return timingSafeEqual(a, b) ? id : null;
++}
+diff --git a/apps/backend/src/modules/website/newsletter/website-newsletter.service.spec.ts b/apps/backend/src/modules/website/newsletter/website-newsletter.service.spec.ts
+new file mode 100644
+index 0000000..4ed9d13
+--- /dev/null
++++ b/apps/backend/src/modules/website/newsletter/website-newsletter.service.spec.ts
+@@ -0,0 +1,185 @@
++import { BadRequestException, GoneException } from '@nestjs/common';
++import { WebsiteSubscriberStatus } from '@prisma/client';
++
++import { hashToken, signUnsubscribeToken } from './newsletter-token';
++import { WebsiteNewsletterService } from './website-newsletter.service';
++
++type Row = {
++  id: string;
++  email: string;
++  locale: string | null;
++  status: WebsiteSubscriberStatus;
++  confirmTokenHash: string | null;
++  confirmExpiresAt: Date | null;
++  consentVersion?: string | null;
++  ipAddressHash?: string | null;
++};
++
++function makeService(rows: Row[] = []) {
++  const store = [...rows];
++  const prisma = {
++    websiteSubscriber: {
++      findUnique: jest.fn(async ({ where }: { where: { email?: string; id?: string } }) =>
++        store.find((r) => (where.email ? r.email === where.email : r.id === where.id)) ?? null,
++      ),
++      findFirst: jest.fn(async ({ where }: { where: { confirmTokenHash: string } }) =>
++        store.find((r) => r.confirmTokenHash === where.confirmTokenHash) ?? null,
++      ),
++      create: jest.fn(async ({ data }: { data: Omit<Row, 'id'> }) => {
++        const row = { id: `sub_${store.length + 1}`, ...data } as Row;
++        store.push(row);
++        return row;
++      }),
++      update: jest.fn(async ({ where, data }: { where: { id: string }; data: Partial<Row> }) => {
++        const row = store.find((r) => r.id === where.id)!;
++        Object.assign(row, data);
++        return row;
++      }),
++    },
++  };
++  const notifications = { queueEmail: jest.fn().mockResolvedValue({ queued: true }) };
++  const env: Record<string, string> = {
++    ENCRYPTION_KEY: 'unit-test-key',
++    WEBSITE_SITE_URL: 'https://www.jobsadmire.com/',
++    IP_HASH_SALT: 'unit-salt',
++  };
++  const config = { get: (k: string, d?: string) => env[k] ?? d };
++  const svc = new WebsiteNewsletterService(prisma as never, config as never, notifications as never);
++  return { svc, prisma, notifications, store };
++}
++
++const SUB = { locale: 'tr' as const, visitorIp: '203.0.113.9', consentVersion: 'privacy-2026-09' };
++
++describe('WebsiteNewsletterService.subscribe', () => {
++  it('creates a PENDING row (hashed token, hashed IP, consent) and queues the TR confirm mail with RFC 8058 headers', async () => {
++    const { svc, notifications, store } = makeService();
++    const out = await svc.subscribe({ ...SUB, email: ' Ali@Example.com ' });
++    expect(out).toEqual({ subscriberId: 'sub_1', outcome: 'CONFIRMATION_SENT' });
++    const row = store[0];
++    expect(row.email).toBe('ali@example.com');
++    expect(row.status).toBe(WebsiteSubscriberStatus.PENDING);
++    expect(row.locale).toBe('tr');
++    expect(row.consentVersion).toBe('privacy-2026-09');
++    expect(row.confirmTokenHash).toMatch(/^[0-9a-f]{64}$/);
++    expect(row.confirmExpiresAt!.getTime()).toBeGreaterThan(Date.now() + 47 * 3600 * 1000);
++    expect(row.ipAddressHash).toMatch(/^[0-9a-f]{64}$/);
++    expect(JSON.stringify(row)).not.toContain('203.0.113.9');
++
++    expect(notifications.queueEmail).toHaveBeenCalledTimes(1);
++    const call = notifications.queueEmail.mock.calls[0][0];
++    expect(call).toMatchObject({ to: 'ali@example.com', template: 'website-newsletter-confirm', locale: 'tr', mailbox: 'default' });
++    expect(call.subject).toMatch(/onaylay/i);
++    // The link goes to the WEBSITE (TR root, the site's TR slug — no /en), which
++    // forwards the token to Ops server-side.
++    expect(call.context.confirmUrl).toMatch(/^https:\/\/www\.jobsadmire\.com\/abone-onay\?token=[A-Za-z0-9_-]{32}$/);
++    expect(hashToken(new URL(call.context.confirmUrl).searchParams.get('token')!)).toBe(row.confirmTokenHash);
++    expect(call.context.siteUrl).toBe('https://www.jobsadmire.com');
++    expect(call.context.expiresInHours).toBe(48);
++    expect(call.headers['List-Unsubscribe']).toMatch(
++      /^<https:\/\/www\.jobsadmire\.com\/abonelikten-cik\?token=sub_1\.[A-Za-z0-9_-]+>, <mailto:info@jobsadmire\.com\?subject=unsubscribe>$/,
++    );
++    expect(call.headers['List-Unsubscribe-Post']).toBe('List-Unsubscribe=One-Click');
++    // Never the hash in the mail.
++    expect(JSON.stringify(call)).not.toContain(row.confirmTokenHash);
++  });
++
++  it('EN locale links under /en and gets the EN subject', async () => {
++    const { svc, notifications } = makeService();
++    await svc.subscribe({ ...SUB, email: 'a@b.io', locale: 'en', visitorIp: null });
++    const call = notifications.queueEmail.mock.calls[0][0];
++    expect(call.context.confirmUrl).toMatch(/^https:\/\/www\.jobsadmire\.com\/en\/newsletter\/confirm\?/);
++    expect(call.context.unsubscribeUrl).toMatch(/^https:\/\/www\.jobsadmire\.com\/en\/newsletter\/unsubscribe\?token=/);
++    expect(call.subject).toMatch(/confirm/i);
++  });
++
++  it('an already CONFIRMED address gets no mail (no mail-bomb vector) and ALREADY_CONFIRMED', async () => {
++    const { svc, notifications } = makeService([
++      { id: 'sub_9', email: 'a@b.io', locale: 'en', status: WebsiteSubscriberStatus.CONFIRMED, confirmTokenHash: null, confirmExpiresAt: null },
++    ]);
++    await expect(svc.subscribe({ ...SUB, email: 'a@b.io', locale: 'en' })).resolves.toEqual({
++      subscriberId: 'sub_9',
++      outcome: 'ALREADY_CONFIRMED',
++    });
++    expect(notifications.queueEmail).not.toHaveBeenCalled();
++  });
++
++  it('an UNSUBSCRIBED address may re-subscribe (new token, back to PENDING, unsubscribedAt cleared)', async () => {
++    const { svc, store } = makeService([
++      { id: 'sub_9', email: 'a@b.io', locale: 'en', status: WebsiteSubscriberStatus.UNSUBSCRIBED, confirmTokenHash: null, confirmExpiresAt: null },
++    ]);
++    await svc.subscribe({ ...SUB, email: 'a@b.io' });
++    expect(store[0]).toMatchObject({ status: WebsiteSubscriberStatus.PENDING, locale: 'tr', unsubscribedAt: null, confirmedAt: null });
++    expect(store[0].confirmTokenHash).not.toBeNull();
++  });
++
++  it('a PENDING address that asks again gets a fresh token and a fresh mail (the first one may be lost)', async () => {
++    const { svc, store, notifications } = makeService([
++      { id: 'sub_9', email: 'a@b.io', locale: 'en', status: WebsiteSubscriberStatus.PENDING, confirmTokenHash: 'old', confirmExpiresAt: new Date(Date.now() + 1000) },
++    ]);
++    await expect(svc.subscribe({ ...SUB, email: 'a@b.io' })).resolves.toEqual({ subscriberId: 'sub_9', outcome: 'CONFIRMATION_SENT' });
++    expect(store[0].confirmTokenHash).not.toBe('old');
++    expect(notifications.queueEmail).toHaveBeenCalledTimes(1);
++  });
++
++  it('a non-address is a 400 (a programming error — the catalog refuses it before the row)', async () => {
++    const { svc } = makeService();
++    await expect(svc.subscribe({ ...SUB, email: 'not-an-email' })).rejects.toBeInstanceOf(BadRequestException);
++  });
++});
++
++describe('WebsiteNewsletterService.confirm / unsubscribe', () => {
++  const TOKEN = 'tok-tok-tok-tok-tok-tok-tok-tok-';
++  const pending = (over: Partial<Row> = {}): Row => ({
++    id: 'sub_1',
++    email: 'a@b.io',
++    locale: 'tr',
++    status: WebsiteSubscriberStatus.PENDING,
++    confirmTokenHash: hashToken(TOKEN),
++    confirmExpiresAt: new Date(Date.now() + 3600_000),
++    ...over,
++  });
++
++  it('confirm: valid token → CONFIRMED + welcome mail carrying List-Unsubscribe', async () => {
++    const { svc, notifications, store } = makeService([pending()]);
++    await expect(svc.confirm(TOKEN)).resolves.toEqual({ outcome: 'CONFIRMED' });
++    expect(store[0].status).toBe(WebsiteSubscriberStatus.CONFIRMED);
++    expect(store[0].confirmExpiresAt).toBeNull();
++    const call = notifications.queueEmail.mock.calls[0][0];
++    expect(call).toMatchObject({ to: 'a@b.io', template: 'website-newsletter-welcome', locale: 'tr', mailbox: 'default' });
++    expect(call.headers['List-Unsubscribe-Post']).toBe('List-Unsubscribe=One-Click');
++    expect(call.context.unsubscribeUrl).toMatch(/^https:\/\/www\.jobsadmire\.com\/abonelikten-cik\?token=sub_1\./);
++  });
++
++  it('confirm: a second click is ALREADY_CONFIRMED, no second welcome mail', async () => {
++    const { svc, notifications } = makeService([pending({ status: WebsiteSubscriberStatus.CONFIRMED, confirmExpiresAt: null })]);
++    await expect(svc.confirm(TOKEN)).resolves.toEqual({ outcome: 'ALREADY_CONFIRMED' });
++    expect(notifications.queueEmail).not.toHaveBeenCalled();
++  });
++
++  it('confirm: a failed welcome queue does not undo the confirmation', async () => {
++    const { svc, notifications, store } = makeService([pending()]);
++    notifications.queueEmail.mockRejectedValueOnce(new Error('redis down'));
++    await expect(svc.confirm(TOKEN)).resolves.toEqual({ outcome: 'CONFIRMED' });
++    expect(store[0].status).toBe(WebsiteSubscriberStatus.CONFIRMED);
++  });
++
++  it('confirm: unknown → 400, expired → 410, unsubscribed → 400', async () => {
++    await expect(makeService([pending()]).svc.confirm('nope')).rejects.toBeInstanceOf(BadRequestException);
++    await expect(
++      makeService([pending({ confirmExpiresAt: new Date(Date.now() - 1000) })]).svc.confirm(TOKEN),
++    ).rejects.toBeInstanceOf(GoneException);
++    await expect(
++      makeService([pending({ status: WebsiteSubscriberStatus.UNSUBSCRIBED })]).svc.confirm(TOKEN),
++    ).rejects.toBeInstanceOf(BadRequestException);
++  });
++
++  it('unsubscribe: signed token → UNSUBSCRIBED, idempotent, unknown id → UNKNOWN, bad signature → 400', async () => {
++    const { svc, store } = makeService([pending({ status: WebsiteSubscriberStatus.CONFIRMED })]);
++    const token = signUnsubscribeToken('sub_1', 'unit-test-key');
++    await expect(svc.unsubscribe(token)).resolves.toEqual({ outcome: 'UNSUBSCRIBED' });
++    expect(store[0].status).toBe(WebsiteSubscriberStatus.UNSUBSCRIBED);
++    await expect(svc.unsubscribe(token)).resolves.toEqual({ outcome: 'ALREADY_UNSUBSCRIBED' });
++    await expect(svc.unsubscribe(signUnsubscribeToken('sub_404', 'unit-test-key'))).resolves.toEqual({ outcome: 'UNKNOWN' });
++    await expect(svc.unsubscribe('sub_1.forged')).rejects.toBeInstanceOf(BadRequestException);
++  });
++});
+diff --git a/apps/backend/src/modules/website/newsletter/website-newsletter.service.ts b/apps/backend/src/modules/website/newsletter/website-newsletter.service.ts
+new file mode 100644
+index 0000000..94aec84
+--- /dev/null
++++ b/apps/backend/src/modules/website/newsletter/website-newsletter.service.ts
+@@ -0,0 +1,221 @@
++import {
++  BadRequestException,
++  GoneException,
++  Injectable,
++  Logger,
++  ServiceUnavailableException,
++} from '@nestjs/common';
++import { ConfigService } from '@nestjs/config';
++import { WebsiteSubscriberStatus } from '@prisma/client';
++import { isEmail } from 'class-validator';
++
++import { PrismaService } from '../../../prisma/prisma.service';
++import { hashIpOrNull, IP_HASH_DEV_SALT } from '../../../common/utils/ip-hash.util';
++import { NotificationsService } from '../../notifications/notifications.service';
++import type { WebsiteLocale } from '../dto/website-form-submit.dto';
++import { websiteLocalePath, websiteSiteUrl } from '../website-site-url';
++import {
++  NEWSLETTER_CONFIRM_TTL_MS,
++  NEWSLETTER_CONTACT_EMAIL,
++  NEWSLETTER_PATHS,
++  hashToken,
++  newConfirmToken,
++  signUnsubscribeToken,
++  verifyUnsubscribeToken,
++} from './newsletter-token';
++
++const SUBJECTS = {
++  confirm: {
++    en: 'Please confirm your JobsAdmire newsletter subscription',
++    tr: 'JobsAdmire bülten aboneliğinizi onaylayın',
++  },
++  welcome: {
++    en: 'Welcome to the JobsAdmire newsletter',
++    tr: 'JobsAdmire bültenine hoş geldiniz',
++  },
++} as const;
++
++export interface NewsletterSubscribeInput {
++  email: string;
++  locale: WebsiteLocale;
++  /** Hashed with IP_HASH_SALT before it touches the row (never the address itself). */
++  visitorIp: string | null;
++  /** The privacy text version the visitor accepted (D11 consent evidence). */
++  consentVersion: string | null;
++}
++
++export type NewsletterSubscribeOutcome = 'CONFIRMATION_SENT' | 'ALREADY_CONFIRMED';
++export type NewsletterConfirmOutcome = 'CONFIRMED' | 'ALREADY_CONFIRMED';
++export type NewsletterUnsubscribeOutcome = 'UNSUBSCRIBED' | 'ALREADY_UNSUBSCRIBED' | 'UNKNOWN';
++
++/**
++ * Newsletter double opt-in (WP3a, P4 / D14). Public submitters have no User
++ * row, so every mail goes through `queueEmail` directly (never the
++ * dispatcher) from the DEFAULT mailbox, with an explicit locale (the
++ * careers-public autoresponder forgot it and ships EN only). Every mail
++ * carries RFC 8058 `List-Unsubscribe` + `List-Unsubscribe-Post`, and every
++ * link points at the WEBSITE (`WEBSITE_SITE_URL`, the site's own localised
++ * slug for the mail's locale), which forwards the token to this API
++ * server-side with the write token (I12).
++ *
++ * Controls against abuse of the confirm mail: a CONFIRMED address is never
++ * mailed again; identical payloads inside an hour collapse into one
++ * submission (core dedupe, P8); the per-form abuse trip (P10) caps the rest.
++ *
++ * Nothing here logs a token or a hash — only subscriber ids and locales.
++ */
++@Injectable()
++export class WebsiteNewsletterService {
++  private readonly logger = new Logger(WebsiteNewsletterService.name);
++
++  constructor(
++    private readonly prisma: PrismaService,
++    private readonly config: ConfigService,
++    private readonly notifications: NotificationsService,
++  ) {}
++
++  // ─── links + headers ──────────────────────────────────────────────────
++
++  private secret(): string {
++    const key = this.config.get<string>('ENCRYPTION_KEY');
++    if (!key) throw new ServiceUnavailableException('ENCRYPTION_KEY is not configured.');
++    return key;
++  }
++
++  siteUrl(): string {
++    return websiteSiteUrl(this.config);
++  }
++
++  confirmUrl(locale: WebsiteLocale, token: string): string {
++    return `${websiteLocalePath(this.siteUrl(), locale, NEWSLETTER_PATHS.confirm[locale])}?token=${encodeURIComponent(token)}`;
++  }
++
++  unsubscribeUrl(locale: WebsiteLocale, subscriberId: string): string {
++    const token = signUnsubscribeToken(subscriberId, this.secret());
++    return `${websiteLocalePath(this.siteUrl(), locale, NEWSLETTER_PATHS.unsubscribe[locale])}?token=${encodeURIComponent(token)}`;
++  }
++
++  /** RFC 8058 one-click + RFC 2369 mailto fallback. */
++  listUnsubscribeHeaders(unsubscribeUrl: string): Record<string, string> {
++    return {
++      'List-Unsubscribe': `<${unsubscribeUrl}>, <mailto:${NEWSLETTER_CONTACT_EMAIL}?subject=unsubscribe>`,
++      'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
++    };
++  }
++
++  private asLocale(value: string | null | undefined): WebsiteLocale {
++    return value === 'en' ? 'en' : 'tr';
++  }
++
++  // ─── subscribe (called by the NEWSLETTER handler) ─────────────────────
++
++  async subscribe(args: NewsletterSubscribeInput): Promise<{ subscriberId: string; outcome: NewsletterSubscribeOutcome }> {
++    const email = (args.email ?? '').trim().toLowerCase();
++    if (!email || email.length > 254 || !isEmail(email)) {
++      // The catalog refuses this before the submission row exists (RC4); reaching
++      // here is a programming error, not a visitor error.
++      throw new BadRequestException({ code: 'NEWSLETTER_INVALID_EMAIL', message: 'Please enter a valid e-mail address.' });
++    }
++
++    const existing = await this.prisma.websiteSubscriber.findUnique({ where: { email } });
++    if (existing?.status === WebsiteSubscriberStatus.CONFIRMED) {
++      return { subscriberId: existing.id, outcome: 'ALREADY_CONFIRMED' };
++    }
++
++    const token = newConfirmToken();
++    const salt = this.config.get<string>('IP_HASH_SALT', IP_HASH_DEV_SALT);
++    const data = {
++      status: WebsiteSubscriberStatus.PENDING,
++      locale: args.locale,
++      confirmTokenHash: hashToken(token),
++      confirmExpiresAt: new Date(Date.now() + NEWSLETTER_CONFIRM_TTL_MS),
++      confirmedAt: null,
++      unsubscribedAt: null,
++      consentVersion: args.consentVersion,
++      ipAddressHash: hashIpOrNull(args.visitorIp, salt),
++    };
++    const row = existing
++      ? await this.prisma.websiteSubscriber.update({ where: { id: existing.id }, data })
++      : await this.prisma.websiteSubscriber.create({ data: { email, ...data } });
++
++    // The confirm mail IS the outcome: if it cannot be queued the handler
++    // fails, the submission row goes FAILED and the inbox can re-run it
++    // (a re-run reissues a token — nothing here depends on the first one).
++    const unsubscribeUrl = this.unsubscribeUrl(args.locale, row.id);
++    await this.notifications.queueEmail({
++      to: email,
++      subject: SUBJECTS.confirm[args.locale],
++      template: 'website-newsletter-confirm',
++      context: {
++        siteUrl: this.siteUrl(),
++        confirmUrl: this.confirmUrl(args.locale, token),
++        unsubscribeUrl,
++        expiresInHours: NEWSLETTER_CONFIRM_TTL_MS / 3_600_000,
++      },
++      locale: args.locale,
++      mailbox: 'default',
++      headers: this.listUnsubscribeHeaders(unsubscribeUrl),
++    });
++    this.logger.log(`Newsletter confirmation queued for subscriber ${row.id} (${args.locale})`);
++    return { subscriberId: row.id, outcome: 'CONFIRMATION_SENT' };
++  }
++
++  // ─── confirm / unsubscribe (public door routes: write token + subscriber token) ─
++
++  async confirm(token: string): Promise<{ outcome: NewsletterConfirmOutcome }> {
++    const row = await this.prisma.websiteSubscriber.findFirst({ where: { confirmTokenHash: hashToken(token ?? '') } });
++    if (!row || row.status === WebsiteSubscriberStatus.UNSUBSCRIBED) {
++      throw new BadRequestException({
++        code: 'NEWSLETTER_TOKEN_INVALID',
++        message: 'This confirmation link is not valid. Please subscribe again.',
++      });
++    }
++    if (row.status === WebsiteSubscriberStatus.CONFIRMED) return { outcome: 'ALREADY_CONFIRMED' };
++    if (!row.confirmExpiresAt || row.confirmExpiresAt.getTime() < Date.now()) {
++      throw new GoneException({
++        code: 'NEWSLETTER_TOKEN_EXPIRED',
++        message: 'This confirmation link has expired. Please subscribe again.',
++      });
++    }
++
++    // The hash is kept so a second click is ALREADY_CONFIRMED, not "invalid".
++    await this.prisma.websiteSubscriber.update({
++      where: { id: row.id },
++      data: { status: WebsiteSubscriberStatus.CONFIRMED, confirmedAt: new Date(), confirmExpiresAt: null },
++    });
++
++    const locale = this.asLocale(row.locale);
++    const unsubscribeUrl = this.unsubscribeUrl(locale, row.id);
++    try {
++      await this.notifications.queueEmail({
++        to: row.email,
++        subject: SUBJECTS.welcome[locale],
++        template: 'website-newsletter-welcome',
++        context: { siteUrl: this.siteUrl(), unsubscribeUrl },
++        locale,
++        mailbox: 'default',
++        headers: this.listUnsubscribeHeaders(unsubscribeUrl),
++      });
++    } catch (e) {
++      // The subscription is confirmed regardless; the welcome mail is a courtesy.
++      this.logger.warn(`Failed to queue newsletter welcome for ${row.id}: ${(e as Error).message}`);
++    }
++    return { outcome: 'CONFIRMED' };
++  }
++
++  async unsubscribe(token: string): Promise<{ outcome: NewsletterUnsubscribeOutcome }> {
++    const id = verifyUnsubscribeToken(token ?? '', this.secret());
++    if (!id) {
++      throw new BadRequestException({ code: 'NEWSLETTER_TOKEN_INVALID', message: 'This unsubscribe link is not valid.' });
++    }
++    const row = await this.prisma.websiteSubscriber.findUnique({ where: { id } });
++    if (!row) return { outcome: 'UNKNOWN' };
++    if (row.status === WebsiteSubscriberStatus.UNSUBSCRIBED) return { outcome: 'ALREADY_UNSUBSCRIBED' };
++    await this.prisma.websiteSubscriber.update({
++      where: { id: row.id },
++      data: { status: WebsiteSubscriberStatus.UNSUBSCRIBED, unsubscribedAt: new Date(), confirmExpiresAt: null },
++    });
++    this.logger.log(`Newsletter subscriber ${row.id} unsubscribed`);
++    return { outcome: 'UNSUBSCRIBED' };
++  }
++}
+diff --git a/apps/backend/src/modules/website/newsletter/website-public-newsletter.controller.spec.ts b/apps/backend/src/modules/website/newsletter/website-public-newsletter.controller.spec.ts
+new file mode 100644
+index 0000000..fde75ed
+--- /dev/null
++++ b/apps/backend/src/modules/website/newsletter/website-public-newsletter.controller.spec.ts
+@@ -0,0 +1,59 @@
++import { GUARDS_METADATA, HEADERS_METADATA, METHOD_METADATA, PATH_METADATA } from '@nestjs/common/constants';
++import { MetadataScanner } from '@nestjs/core';
++
++import { IS_PUBLIC_KEY } from '../../../common/decorators/public.decorator';
++import { WebsiteApiGuard } from '../guards/website-api.guard';
++import { WebsiteModuleEnabledGuard } from '../guards/website-module-enabled.guard';
++import { WebsitePublicNewsletterController } from './website-public-newsletter.controller';
++
++/**
++ * The third public controller of the door (RC3). Pinned: class-level
++ * @Public() and the guard chain [flag, token] in that order (P1, P7) — the
++ * same shape Task 4's door-conformance spec pins for WebsitePublicController —
++ * and the three routes delegate to the service and wrap in { data }.
++ */
++describe('WebsitePublicNewsletterController', () => {
++  it('is @Public() under website/v1/newsletter with the guard chain [WebsiteModuleEnabledGuard, WebsiteApiGuard]', () => {
++    expect(Reflect.getMetadata(IS_PUBLIC_KEY, WebsitePublicNewsletterController)).toBe(true);
++    expect(Reflect.getMetadata(PATH_METADATA, WebsitePublicNewsletterController)).toBe('website/v1/newsletter');
++    expect(Reflect.getMetadata(GUARDS_METADATA, WebsitePublicNewsletterController)).toEqual([WebsiteModuleEnabledGuard, WebsiteApiGuard]);
++  });
++
++  it('exposes exactly GET confirm, GET unsubscribe, POST unsubscribe — each answering Cache-Control: no-store (X6)', () => {
++    const prototype = WebsitePublicNewsletterController.prototype as unknown as Record<string, unknown>;
++    const routes = new MetadataScanner()
++      .getAllMethodNames(prototype)
++      .filter((m) => Reflect.getMetadata(METHOD_METADATA, prototype[m] as object) !== undefined)
++      .map((m) => {
++        const handler = prototype[m] as object;
++        const headers = (Reflect.getMetadata(HEADERS_METADATA, handler) ?? []) as Array<{ name: string; value: string }>;
++        return {
++          method: m,
++          verb: Reflect.getMetadata(METHOD_METADATA, handler),
++          path: Reflect.getMetadata(PATH_METADATA, handler),
++          cacheControl: headers.find((h) => h.name.toLowerCase() === 'cache-control')?.value,
++        };
++      })
++      .sort((a, b) => a.method.localeCompare(b.method));
++    // RequestMethod: GET = 0, POST = 1.
++    expect(routes).toEqual([
++      { method: 'confirm', verb: 0, path: 'confirm', cacheControl: 'private, no-store' },
++      { method: 'unsubscribe', verb: 0, path: 'unsubscribe', cacheControl: 'private, no-store' },
++      { method: 'unsubscribeOneClick', verb: 1, path: 'unsubscribe', cacheControl: 'private, no-store' },
++    ]);
++  });
++
++  it('confirm / unsubscribe (GET and POST) forward the query token and wrap the outcome', async () => {
++    const newsletter = {
++      confirm: jest.fn().mockResolvedValue({ outcome: 'CONFIRMED' }),
++      unsubscribe: jest.fn().mockResolvedValue({ outcome: 'UNSUBSCRIBED' }),
++    };
++    const ctrl = new WebsitePublicNewsletterController(newsletter as never);
++    await expect(ctrl.confirm({ token: 'confirm-token-0123456789' })).resolves.toEqual({ data: { outcome: 'CONFIRMED' } });
++    expect(newsletter.confirm).toHaveBeenCalledWith('confirm-token-0123456789');
++    await expect(ctrl.unsubscribe({ token: 'sub_1.signature-signature' })).resolves.toEqual({ data: { outcome: 'UNSUBSCRIBED' } });
++    await expect(ctrl.unsubscribeOneClick({ token: 'sub_1.signature-signature' })).resolves.toEqual({ data: { outcome: 'UNSUBSCRIBED' } });
++    expect(newsletter.unsubscribe).toHaveBeenCalledTimes(2);
++    expect(newsletter.unsubscribe).toHaveBeenLastCalledWith('sub_1.signature-signature');
++  });
++});
+diff --git a/apps/backend/src/modules/website/newsletter/website-public-newsletter.controller.ts b/apps/backend/src/modules/website/newsletter/website-public-newsletter.controller.ts
+new file mode 100644
+index 0000000..93b8ff3
+--- /dev/null
++++ b/apps/backend/src/modules/website/newsletter/website-public-newsletter.controller.ts
+@@ -0,0 +1,63 @@
++import { Controller, Get, Header, HttpCode, Post, Query, UseGuards } from '@nestjs/common';
++import { ApiOperation, ApiTags } from '@nestjs/swagger';
++import { Throttle } from '@nestjs/throttler';
++
++import { Public } from '../../../common/decorators/public.decorator';
++import { NewsletterTokenQueryDto } from '../dto/newsletter-token.dto';
++import { WebsiteApiGuard } from '../guards/website-api.guard';
++import { WebsiteModuleEnabledGuard } from '../guards/website-module-enabled.guard';
++import { WebsiteNewsletterService } from './website-newsletter.service';
++
++/**
++ * Newsletter confirm / unsubscribe (I12, RC3) — the third public controller of
++ * the door. The WEBSITE calls these server-side with the write token after the
++ * visitor (or their mail client, for RFC 8058 one-click) opens the link; the
++ * per-subscriber token is the second factor. `@Public()` + the two guards at
++ * class level, in that order, exactly like the forms door (P1, P7).
++ *
++ * `Cache-Control: private, no-store` on every route (ruling X6, as on every
++ * public website route): the answer is the outcome for ONE subscriber's token
++ * and must never sit in a shared cache. The door conformance spec walks every
++ * public website controller for the header.
++ *
++ * `@Throttle` numbers are inert until RATE_LIMITING_ENABLED (rate-limit.guard.ts)
++ * and documented here as the intended per-IP cap.
++ */
++@ApiTags('Website (public door)')
++@Public()
++@UseGuards(WebsiteModuleEnabledGuard, WebsiteApiGuard)
++@Controller('website/v1/newsletter')
++export class WebsitePublicNewsletterController {
++  constructor(private readonly newsletter: WebsiteNewsletterService) {}
++
++  @Get('confirm')
++  @Header('Cache-Control', 'private, no-store')
++  @Throttle({ default: { limit: 30, ttl: 60_000 } })
++  @ApiOperation({ summary: '[website] Confirm a double opt-in token → { outcome: CONFIRMED | ALREADY_CONFIRMED }; 400 invalid, 410 expired' })
++  async confirm(@Query() query: NewsletterTokenQueryDto) {
++    return { data: await this.newsletter.confirm(query.token) };
++  }
++
++  @Get('unsubscribe')
++  @Header('Cache-Control', 'private, no-store')
++  @Throttle({ default: { limit: 30, ttl: 60_000 } })
++  @ApiOperation({ summary: '[website] Unsubscribe by signed token (idempotent) → { outcome: UNSUBSCRIBED | ALREADY_UNSUBSCRIBED | UNKNOWN }' })
++  async unsubscribe(@Query() query: NewsletterTokenQueryDto) {
++    return { data: await this.newsletter.unsubscribe(query.token) };
++  }
++
++  /**
++   * RFC 8058: a mail client POSTs `List-Unsubscribe=One-Click` to the website's
++   * unsubscribe URL; the website forwards it here as a POST with the token in
++   * the query and no body. 200, same outcome shape as the GET. The body is
++   * never read (no `@Body()`), so whatever the client sent is ignored.
++   */
++  @Post('unsubscribe')
++  @HttpCode(200)
++  @Header('Cache-Control', 'private, no-store')
++  @Throttle({ default: { limit: 30, ttl: 60_000 } })
++  @ApiOperation({ summary: '[website] One-click unsubscribe (RFC 8058 forward) → { outcome }' })
++  async unsubscribeOneClick(@Query() query: NewsletterTokenQueryDto) {
++    return { data: await this.newsletter.unsubscribe(query.token) };
++  }
++}
+diff --git a/apps/backend/src/modules/website/website-site-url.spec.ts b/apps/backend/src/modules/website/website-site-url.spec.ts
+new file mode 100644
+index 0000000..4793738
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-site-url.spec.ts
+@@ -0,0 +1,52 @@
++import * as fs from 'fs';
++import * as path from 'path';
++
++import { WEBSITE_SITE_URL_ENV, WEBSITE_SITE_URL_FALLBACK, websiteLocalePath, websiteSiteUrl } from './website-site-url';
++
++/**
++ * WEBSITE_SITE_URL (WP3a, RC11) is the base of every link Operations prints
++ * for the marketing site: newsletter confirm/unsubscribe (this task), the
++ * autoresponder CTAs and the second-human mails (Task 10). Both compose files
++ * pass env by an explicit `environment:` map (no env_file), so a name missing
++ * there never reaches the container — the RATE_LIMITING_ENABLED lesson.
++ */
++describe('websiteSiteUrl', () => {
++  const cfg = (v: string | undefined) => ({ get: (k: string) => (k === WEBSITE_SITE_URL_ENV ? v : undefined) }) as never;
++
++  it('reads WEBSITE_SITE_URL, strips trailing slashes, falls back to the production host', () => {
++    expect(websiteSiteUrl(cfg('https://www.jobsadmire.com/'))).toBe('https://www.jobsadmire.com');
++    expect(websiteSiteUrl(cfg('http://localhost:3000'))).toBe('http://localhost:3000');
++    expect(websiteSiteUrl(cfg('   '))).toBe(WEBSITE_SITE_URL_FALLBACK);
++    expect(websiteSiteUrl(cfg(undefined))).toBe('https://www.jobsadmire.com');
++  });
++
++  it('TR lives at the root, EN under /en', () => {
++    // The PATH is the caller's: the website localises its slugs per locale
++    // (`/abone-onay` vs `/en/newsletter/confirm`), so a caller passes the slug
++    // for the locale it is printing and this helper only places the prefix.
++    expect(websiteLocalePath('https://www.jobsadmire.com', 'tr', '/abone-onay')).toBe('https://www.jobsadmire.com/abone-onay');
++    expect(websiteLocalePath('https://www.jobsadmire.com', 'en', '/newsletter/confirm')).toBe('https://www.jobsadmire.com/en/newsletter/confirm');
++    expect(websiteLocalePath('https://www.jobsadmire.com', 'en', '')).toBe('https://www.jobsadmire.com/en');
++  });
++});
++
++describe('WEBSITE_SITE_URL reaches the container', () => {
++  const root = path.resolve(__dirname, '../../../../..');
++  it.each(['docker-compose.yml', 'docker-compose.vps.yml', '.env.example', '.env.production.example'])('%s names WEBSITE_SITE_URL', (file) => {
++    expect(fs.readFileSync(path.join(root, file), 'utf8')).toMatch(/WEBSITE_SITE_URL/);
++  });
++  it('the production template carries the www value and DEPLOYMENT.md has the env row (RC18)', () => {
++    expect(fs.readFileSync(path.join(root, '.env.production.example'), 'utf8')).toContain('WEBSITE_SITE_URL=https://www.jobsadmire.com');
++    expect(fs.readFileSync(path.join(root, 'docs/DEPLOYMENT.md'), 'utf8')).toContain('| Website | `WEBSITE_SITE_URL`');
++  });
++  it('the VPS default is the production site (www)', () => {
++    expect(fs.readFileSync(path.join(root, 'docker-compose.vps.yml'), 'utf8')).toMatch(
++      /WEBSITE_SITE_URL: \$\{WEBSITE_SITE_URL:-https:\/\/www\.jobsadmire\.com\}/,
++    );
++  });
++  it('the dev default is the local website', () => {
++    expect(fs.readFileSync(path.join(root, 'docker-compose.yml'), 'utf8')).toMatch(
++      /WEBSITE_SITE_URL: \$\{WEBSITE_SITE_URL:-http:\/\/localhost:3000\}/,
++    );
++  });
++});
+diff --git a/apps/backend/src/modules/website/website-site-url.ts b/apps/backend/src/modules/website/website-site-url.ts
+new file mode 100644
+index 0000000..2db950b
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-site-url.ts
+@@ -0,0 +1,33 @@
++import { ConfigService } from '@nestjs/config';
++
++import type { WebsiteLocale } from './dto/website-form-submit.dto';
++
++/**
++ * Public base of the marketing site (jobsadmire.com), read per call from env
++ * (WP3a, RC11/RC28). Every link Operations prints for a website VISITOR starts
++ * here: newsletter confirm/unsubscribe (Task 9), the autoresponder CTAs
++ * (Task 10) and WP3c's revalidate call. Staff-facing links (the notify
++ * service, the second-human mails) point at the Operations inbox through
++ * `APP_URL` instead. Both compose files map it; both `.env` examples and
++ * DEPLOYMENT.md document it; nothing hard-codes the host.
++ */
++export const WEBSITE_SITE_URL_ENV = 'WEBSITE_SITE_URL';
++export const WEBSITE_SITE_URL_FALLBACK = 'https://www.jobsadmire.com';
++
++export function websiteSiteUrl(config: ConfigService): string {
++  const raw = config.get<string>(WEBSITE_SITE_URL_ENV)?.trim();
++  return (raw || WEBSITE_SITE_URL_FALLBACK).replace(/\/+$/, '');
++}
++
++/**
++ * TR is the root locale of the site, EN lives under `/en` (next-intl, website
++ * repo). The PATH is the caller's responsibility and must be the slug for THAT
++ * locale: the website localises its slugs per locale in `src/i18n/routing.ts`
++ * (`pathnames`, D16 — e.g. `/abone-onay` for TR vs `/newsletter/confirm` for
++ * EN), so an internal route key printed at the TR root lands on the site's
++ * 404 catch-all. `NEWSLETTER_PATHS` (newsletter-token.ts) is the locale-keyed
++ * precedent.
++ */
++export function websiteLocalePath(siteUrl: string, locale: WebsiteLocale, path: string): string {
++  return `${siteUrl}${locale === 'en' ? '/en' : ''}${path}`;
++}
+diff --git a/apps/backend/src/modules/website/website.module.ts b/apps/backend/src/modules/website/website.module.ts
+index 1437151..0fb3a32 100644
+--- a/apps/backend/src/modules/website/website.module.ts
++++ b/apps/backend/src/modules/website/website.module.ts
+@@ -21,20 +21,24 @@ import { SalesModule } from '../sales/sales.module';
+ import { WebsiteInquiryHandler } from './handlers/website-inquiry.handler';
+ import { WebsiteFormsInboxService } from './website-forms-inbox.service';
+ import { WebsiteFormsInboxController } from './website-forms-inbox.controller';
+ import { CareersPublicModule } from '../careers-public/careers-public.module';
+ import { UploadModule } from '../upload/upload.module';
+ import { CareersApplyHandler } from './handlers/careers-apply.handler';
+ import { FraudReportHandler } from './handlers/fraud-report.handler';
+ import { WebsiteFraudEvidenceService } from './website-fraud-evidence.service';
+ import { WebsitePublicUploadsController } from './website-public-uploads.controller';
+ import { WebsiteFormsEvidenceController } from './website-forms-evidence.controller';
++import { NotificationsModule } from '../notifications/notifications.module';
++import { NewsletterHandler } from './handlers/newsletter.handler';
++import { WebsiteNewsletterService } from './newsletter/website-newsletter.service';
++import { WebsitePublicNewsletterController } from './newsletter/website-public-newsletter.controller';
+ 
+ /**
+  * The Website module (WP3a, 2026-09-19 — PRD §5.12, §7.10).
+  *
+  * Serves jobsadmire.com: in WP3a the public INTAKE door (`/website/v1/*`, a
+  * Bearer-token machine surface the website calls server-side), the forms
+  * inbox and the integrations/token settings; in Phase B the CMS the site reads
+  * its content from (pages, strings, collections, blog, media, navigation).
+  *
+  * ALWAYS IMPORTED, WHATEVER `WEBSITE_MODULE_ENABLED` SAYS (ruling P1). The
+@@ -59,28 +63,33 @@ import { WebsiteFormsEvidenceController } from './website-forms-evidence.control
+  */
+ @Module({
+   // SalesModule exports InquiryService (sales.module.ts:54) — the ONE-WAY edge the
+   // website → Sales handler needs; Sales never imports website (the
+   // call-center.module.ts precedent). RedisModule, ConfigModule and
+   // ActivitiesModule are @Global().
+   // WP3a Task 8: one-way edges. CareersPublicModule now exports
+   // CareersPublicService; its controllers are already registered by
+   // AppModule, so importing it here duplicates no route. UploadModule
+   // exports UploadService (fraud evidence, CV URL rebuild).
+-  imports: [ConfigModule, PrismaModule, PermissionsModule, SalesModule, CareersPublicModule, UploadModule],
++  // WP3a Task 9: NotificationsModule (not global) exports NotificationsService,
++  // which the newsletter service queues its confirm/welcome mails through;
++  // Task 10's notify/autoresponder services inject from the same import.
++  imports: [ConfigModule, PrismaModule, PermissionsModule, SalesModule, CareersPublicModule, UploadModule, NotificationsModule],
+   controllers: [
+     WebsiteStatusController,
+     WebsiteIntegrationsController,
+     WebsitePublicController,
+     WebsiteFormsInboxController,
+     WebsitePublicUploadsController,
+     WebsiteFormsEvidenceController,
++    // Task 9: the third public controller (RC3) — @Public() + [flag, token] guards at class level.
++    WebsitePublicNewsletterController,
+   ],
+   // Both guards are providers of THIS module (the call-center.module.ts rule)
+   // so DI can hand WebsiteApiGuard its config service. The forms core's three
+   // collaborators (notify / abuse / autoresponder) are the contract shells
+   // Task 10 fills in (RC20). WebsiteInquiryHandler is never injected anywhere —
+   // Nest still instantiates every listed provider at boot, and its constructor
+   // registers it with WebsiteFormHandlerRegistry.
+   providers: [
+     WebsiteModuleEnabledGuard,
+     WebsiteApiGuard,
+@@ -90,20 +99,23 @@ import { WebsiteFormsEvidenceController } from './website-forms-evidence.control
+     WebsiteFormHandlerRegistry,
+     WebsiteNotifyService,
+     WebsiteAbuseService,
+     WebsiteAutoresponderService,
+     WebsiteFormsService,
+     WebsiteInquiryHandler,
+     WebsiteFormsInboxService,
+     CareersApplyHandler,
+     FraudReportHandler,
+     WebsiteFraudEvidenceService,
++    // Task 9
++    WebsiteNewsletterService,
++    NewsletterHandler,
+   ],
+   exports: [WebsiteIntegrationConfigService],
+ })
+ export class WebsiteModule {
+   constructor(registry: PermissionRegistry) {
+     registry.register({
+       name: 'website',
+       label: 'Website',
+       description:
+         'The public website (jobsadmire.com): the forms it submits into Operations, the tokens and ' +
+diff --git a/apps/backend/test/permissions/website-conformance.spec.ts b/apps/backend/test/permissions/website-conformance.spec.ts
+index 6cc1217..55bea0e 100644
+--- a/apps/backend/test/permissions/website-conformance.spec.ts
++++ b/apps/backend/test/permissions/website-conformance.spec.ts
+@@ -5,39 +5,48 @@ import { PermissionAction } from '@prisma/client';
+ import { PERMISSION_KEYS } from '@jobsadmire/permissions';
+ 
+ import { PermissionConformanceService } from '../../src/modules/permissions/permission-conformance.service';
+ import { SELF_SERVICE_KEY } from '../../src/modules/permissions/decorators/self-service.decorator';
+ import { WebsiteStatusController } from '../../src/modules/website/website-status.controller';
+ import { WebsiteIntegrationsController } from '../../src/modules/website/website-integrations.controller';
+ import { WebsitePublicController } from '../../src/modules/website/website-public.controller';
+ import { WebsiteFormsInboxController } from '../../src/modules/website/website-forms-inbox.controller';
+ import { WebsitePublicUploadsController } from '../../src/modules/website/website-public-uploads.controller';
+ import { WebsiteFormsEvidenceController } from '../../src/modules/website/website-forms-evidence.controller';
++import { WebsitePublicNewsletterController } from '../../src/modules/website/newsletter/website-public-newsletter.controller';
+ import { registryFromSource } from './registry-from-source';
+ 
+ /**
+  * The website module (WP3a, 2026-09-19) registers its whole key set on day one
+  * — the CMS screens Phase B will fill in as well as the two WP3a screens — so
+  * the Roles matrix never has to grow a column mid-programme (ruling P3).
+  *
+  * THE REAL SCANNER over the REAL controllers, market-research's shape. Every
+  * later WP3a task that adds a controller appends its class to CONTROLLERS
+  * (RC15): the public door is `@Public()` + the flag guard + the token guard at
+  * class level, the inbox is `website.forms`, the integrations screen is
+  * `website.integrations` for the non-secret half and `website` MANAGE_KEYS for
+  * every secret door.
+  */
+ 
+ // Every task that adds a website controller appends it here (RC15): Task 4 the
+ // integrations screen + the public door; Task 7 the forms inbox; Tasks 8/9 their
+ // public controllers.
+-const CONTROLLERS = [WebsiteStatusController, WebsiteIntegrationsController, WebsitePublicController, WebsiteFormsInboxController, WebsitePublicUploadsController, WebsiteFormsEvidenceController];
++const CONTROLLERS = [
++  WebsiteStatusController,
++  WebsiteIntegrationsController,
++  WebsitePublicController,
++  WebsiteFormsInboxController,
++  WebsitePublicUploadsController,
++  WebsiteFormsEvidenceController,
++  WebsitePublicNewsletterController,
++];
+ 
+ const MODULE_SOURCE = readFileSync(
+   join(__dirname, '../../src/modules/website/website.module.ts'),
+   'utf8',
+ );
+ 
+ const WEBSITE_RESOURCE_KEYS = [
+   'website.blog',
+   'website.collections',
+   'website.forms',
+diff --git a/apps/backend/test/permissions/website-door-conformance.spec.ts b/apps/backend/test/permissions/website-door-conformance.spec.ts
+index 08c4745..2d775f7 100644
+--- a/apps/backend/test/permissions/website-door-conformance.spec.ts
++++ b/apps/backend/test/permissions/website-door-conformance.spec.ts
+@@ -5,39 +5,47 @@ import { PermissionAction } from '@prisma/client';
+ import { PermissionConformanceService } from '../../src/modules/permissions/permission-conformance.service';
+ import {
+   PERMISSION_KEY,
+   type RequiredPermission,
+ } from '../../src/modules/permissions/decorators/require-permission.decorator';
+ import { IS_PUBLIC_KEY } from '../../src/common/decorators/public.decorator';
+ import { AUDIT_ENTITY_KEY } from '../../src/common/decorators/audit-entity.decorator';
+ import { WebsiteIntegrationsController } from '../../src/modules/website/website-integrations.controller';
+ import { WebsitePublicController } from '../../src/modules/website/website-public.controller';
+ import { WebsitePublicUploadsController } from '../../src/modules/website/website-public-uploads.controller';
++import { WebsitePublicNewsletterController } from '../../src/modules/website/newsletter/website-public-newsletter.controller';
+ import { WebsiteModuleEnabledGuard } from '../../src/modules/website/guards/website-module-enabled.guard';
+ import { WebsiteApiGuard } from '../../src/modules/website/guards/website-api.guard';
+ import { registryFromSource } from './registry-from-source';
+ 
+ /**
+  * WP3a Task 4 — the two controllers this task adds, scanned by the REAL scanner
+  * against the REAL descriptor (market-research-conformance shape). Task 1's
+  * `website-conformance.spec.ts` lists them in its CONTROLLERS too (RC15); this
+  * file pins what is specific to the door and the secret screen: the public
+  * door is a class-level @Public() controller whose guard chain is exactly
+  * [flag, token] in that order (rulings P1, P7), and every secret route on the
+  * admin controller sits on `website:MANAGE_KEYS` while the page itself is
+  * `website.integrations` VIEW/EDIT (ruling P3), every write audited.
+  *
+  * Task 8 appends its public controller (the ONE upload route, RC3) so the X6
+  * no-store cell below covers it; its guard chain and permission-free route are
+- * pinned in `careers-fraud-wiring.spec.ts`.
++ * pinned in `careers-fraud-wiring.spec.ts`. Task 9 appends the newsletter
++ * controller (the third public controller, RC3: GET confirm, GET unsubscribe,
++ * POST unsubscribe) for the same reason; its own spec pins its guard chain.
+  */
+-const CONTROLLERS = [WebsiteIntegrationsController, WebsitePublicController, WebsitePublicUploadsController];
++const CONTROLLERS = [
++  WebsiteIntegrationsController,
++  WebsitePublicController,
++  WebsitePublicUploadsController,
++  WebsitePublicNewsletterController,
++];
+ 
+ function keyOf(
+   controller: { prototype: object },
+   method: string,
+ ): RequiredPermission | RequiredPermission[] | undefined {
+   const handler = (controller.prototype as Record<string, unknown>)[method];
+   return Reflect.getMetadata(PERMISSION_KEY, handler as object);
+ }
+ 
+ function auditOf(controller: { prototype: object }, method: string): string | undefined {
+@@ -62,23 +70,24 @@ describe('Website door + integrations route conformance', () => {
+       { getControllers: () => [] } as never,
+       new MetadataScanner(),
+       new Reflector(),
+       registry,
+       { get: () => undefined } as never,
+     ).scanClasses(CONTROLLERS, true);
+ 
+     expect(errors).toEqual([]);
+     expect(report.undecorated).toEqual([]);
+     expect(report.decorated).toBe(5);
+-    // ping + forms/:formKey + uploads/fraud-evidence (Task 8) — all public, all
+-    // behind the class-level guard chain.
+-    expect(report.public).toBe(3);
++    // ping + forms/:formKey + uploads/fraud-evidence (Task 8) + the three
++    // newsletter routes (Task 9) — all public, all behind the class-level
++    // guard chain.
++    expect(report.public).toBe(6);
+   });
+ 
+   it('the page is website.integrations VIEW/EDIT; every secret door is website:MANAGE_KEYS; every write is audited', () => {
+     expect(keyOf(WebsiteIntegrationsController, 'getConfig')).toEqual({ module: 'website.integrations', action: 'VIEW' });
+     expect(keyOf(WebsiteIntegrationsController, 'updateSettings')).toEqual({ module: 'website.integrations', action: 'EDIT' });
+     for (const method of ['updateKeys', 'rotateSecret', 'testConnection']) {
+       expect({ method, key: keyOf(WebsiteIntegrationsController, method) }).toEqual({
+         method,
+         key: { module: 'website', action: 'MANAGE_KEYS' },
+       });
+@@ -123,14 +132,17 @@ describe('Website door + integrations route conformance', () => {
+           route: `${controller.name}.${method}`,
+           cacheControl: expect.stringContaining('no-store'),
+         });
+       }
+     }
+     expect(seen).toEqual(
+       expect.arrayContaining([
+         'WebsitePublicController.ping',
+         'WebsitePublicController.submitForm',
+         'WebsitePublicUploadsController.uploadFraudEvidence',
++        'WebsitePublicNewsletterController.confirm',
++        'WebsitePublicNewsletterController.unsubscribe',
++        'WebsitePublicNewsletterController.unsubscribeOneClick',
+       ]),
+     );
+   });
+ });
+diff --git a/docker-compose.vps.yml b/docker-compose.vps.yml
+index d42346e..a8fe55e 100644
+--- a/docker-compose.vps.yml
++++ b/docker-compose.vps.yml
+@@ -74,20 +74,21 @@ services:
+       context: .
+       dockerfile: apps/backend/Dockerfile.prod
+     container_name: jobsadmire_ops_backend
+     restart: always
+     ports:
+       - '127.0.0.1:4001:4001'
+     environment:
+       NODE_ENV: production
+       APP_PORT: 4001
+       APP_URL: ${APP_URL:-https://operations.jobsadmire.com}
++      WEBSITE_SITE_URL: ${WEBSITE_SITE_URL:-https://www.jobsadmire.com}
+       DATABASE_URL: postgresql://${POSTGRES_USER:-jobsadmire_ops}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-jobsadmire_operations}?schema=public
+       REDIS_HOST: redis
+       REDIS_PORT: 6379
+       REDIS_PASSWORD: ${REDIS_PASSWORD}
+       JWT_ACCESS_SECRET: ${JWT_ACCESS_SECRET:?Set JWT_ACCESS_SECRET}
+       JWT_REFRESH_SECRET: ${JWT_REFRESH_SECRET:?Set JWT_REFRESH_SECRET}
+       JWT_ACCESS_EXPIRY: ${JWT_ACCESS_EXPIRY:-15m}
+       JWT_REFRESH_EXPIRY: ${JWT_REFRESH_EXPIRY:-7d}
+       FRONTEND_URL: ${FRONTEND_URL:-https://operations.jobsadmire.com}
+       CORS_ORIGINS: ${CORS_ORIGINS:-${FRONTEND_URL:-https://operations.jobsadmire.com}}
+diff --git a/docker-compose.yml b/docker-compose.yml
+index 40c4f68..4e19877 100644
+--- a/docker-compose.yml
++++ b/docker-compose.yml
+@@ -123,20 +123,23 @@ services:
+       FRONTEND_URL: http://localhost:4000
+       # Signing salts. `apps/backend/.env` is a symlink to a repo-root file that
+       # does not exist inside this container, so anything not listed here is
+       # simply absent — and both OTP chains (candidate offer signing, HRM
+       # contract signing) call getOrThrow('OTP_SALT') and 500 without it. These
+       # are DEV values; production sets its own.
+       OTP_SALT: ${OTP_SALT:-dev_otp_salt_change_in_prod_______}
+       IP_HASH_SALT: ${IP_HASH_SALT:-dev_ip_hash_salt_change_in_prod___}
+       # The signing links printed into emails point here in local dev.
+       APP_URL: ${APP_URL:-http://localhost:4000}
++      # Base of the links Operations prints for website visitors (newsletter
++      # confirm/unsubscribe pages, autoresponder CTAs live on the marketing site).
++      WEBSITE_SITE_URL: ${WEBSITE_SITE_URL:-http://localhost:3000}
+       LOG_LEVEL: debug
+       # Hot-reload polling — required for reliable file-change detection
+       # when running under macOS Docker bind-mounts.
+       CHOKIDAR_USEPOLLING: 'true'
+       # CRM integration (leave blank locally to disable Sales lead→partner conversion)
+       CRM_API_BASE_URL: ${CRM_API_BASE_URL:-}
+       CRM_API_SERVICE_TOKEN: ${CRM_API_SERVICE_TOKEN:-}
+       # WhatsApp native module (Meta Cloud API) — Graph version pin + native-send switch
+       WA_GRAPH_VERSION: ${WA_GRAPH_VERSION:-v25.0}
+       # Dev-only mock-Graph override (wa.constants.ts WA_GRAPH_BASE_URL_ENV); empty = real Meta.
+diff --git a/docs/DEPLOYMENT.md b/docs/DEPLOYMENT.md
+index 49a19da..57f3068 100644
+--- a/docs/DEPLOYMENT.md
++++ b/docs/DEPLOYMENT.md
+@@ -107,20 +107,21 @@ The template is `.env.production.example` in the repo. The **actual** prod `.env
+ | AI | `OPENAI_API_KEY`, `ELEVENLABS_API_KEY` | env keys are FALLBACKS for `ai-interviewer` ("Admira") and `sales-training` — keys saved via the super-admin UI (encrypted in DB) win. **Marketing Studio reads neither**: it has no env fallback for any AI key, and since 2026-09-12 (P6 WP1) it has no AI provider config at all — see the Marketing Studio row below. `GEMINI_API_KEY`/`ANTHROPIC_API_KEY` are not read anywhere in the backend. |
+ | İŞKUR | `ISKUR_AGENT_TOKEN` | bearer for the Chrome agent extension; guard fail-closes when unset/short |
+ | Indeed | `INDEED_AGENT_TOKEN` | bearer for the Indeed import Chrome extension (`tools/indeed-agent/`); guard fail-closes when unset/<20 chars |
+ | ~~WhatsApp (WhatsCRM bridge)~~ | ~~`WHATSCRM_BASE_URL`, `WHATSCRM_API_KEY`~~ | **Retired by WP6 T14.** The client that read them is deleted and the compose mapping is gone, so the container no longer receives them. Delete the block from the VPS `.env` in the post-merge step below — an unmapped `.env` line is inert, but a retired credential left in a secrets file is not harmless |
+ | WhatsApp native | `WA_GRAPH_VERSION`, `WA_NATIVE_SEND`, `WA_CAMPAIGN_ALLOWLIST` | Graph pin (default v25.0). `WA_NATIVE_SEND` is **retired by WP6 T14**: native sending is unconditional and nothing reads the variable — it is still mapped so the existing `.env` needs no edit, and both lines can go at day 30. Meta tokens/app secrets are NOT env — they live encrypted in `wa_business_accounts` via WhatsApp → Settings → Numbers. `WA_CAMPAIGN_ALLOWLIST` (WP5) is comma-separated E.164 numbers; the campaign runner reads it live on every tick (no restart needed) and, when non-empty, sends to nobody else. Production value at the time of writing: `+905538676431` (the owner's number). Clearing it is a deliberate act that lets a campaign reach a real audience — see the WP5 note below |
+ | Captcha | `TURNSTILE_SECRET_KEY`, `NEXT_PUBLIC_TURNSTILE_SITE_KEY` | **must be set together or not at all** — `deploy-vps.sh` fails the deploy on a half-configured pair |
+ | Push (WP7) | `VAPID_PUBLIC_KEY`, `VAPID_PRIVATE_KEY`, `VAPID_SUBJECT` | Generated ONCE with `npx web-push generate-vapid-keys`; unlike the Turnstile pair, only the backend needs these — the public key is served at `GET /api/notifications/push/vapid-public-key`, never baked into the frontend build. **Unset = push is silently OFF** (the dispatcher logs once and skips the channel); unlike Turnstile, `deploy-vps.sh` does NOT fail the deploy on a half-configured trio — a broken push channel costs nobody a blocked user-facing flow, so R-P3 deliberately made this a no-op, not a deploy gate |
+ | Flags | `PERMISSION_SCOPE_ENFORCEMENT=false` | app-wide scope enforcement is OFF in prod; scoped roles rely on `resolveEnforced()` call sites (see `docs/scope-enforcement-audit.md`). Compose defaults it **true** if unset — the explicit `false` is deliberate |
+ | Flags | `PERMISSIONS_STRICT` — **defaults `true`** (W4, 2026-09-15) | Mapped in `docker-compose.vps.yml` as `${PERMISSIONS_STRICT:-true}` and set `'true'` in `docker-compose.yml`, so it is ON everywhere without an `.env` line. **It no longer gates anything**: an undecorated route (neither `@RequirePermission`, `@SelfService()` nor `@Public()`) fails the CONTAINER at boot — W3 made that flag-independent — and `PermissionsGuard` refuses one at request time whatever the value is. What the flag still does is DECLARE the mode: it is logged at boot and returned as `strict` by `GET /permissions/conformance` (`roles:VIEW`), which also serves the live census (`undecorated` has been 0 since W3). **Break-glass:** setting `PERMISSIONS_STRICT=false` in the production `.env` changes the report and the log line only — it does NOT re-open an undecorated route, and nothing else reads it. The real remedy for a route that forgot its decorator is to add the decorator; the container will not start until you do. Unlike `PERMISSION_SCOPE_ENFORCEMENT`, an UNSET value here reads as OFF (`=== 'true'`), which is why the compose default is explicit |
+ | Flags | `WEBSITE_MODULE_ENABLED` — **defaults `false`** on the VPS (WP3a, 2026-09-19) | The per-module kill switch for the public website intake door (PRD §5.12/§7.10). Mapped in `docker-compose.vps.yml` as `${WEBSITE_MODULE_ENABLED:-false}` and in `docker-compose.yml` as `${WEBSITE_MODULE_ENABLED:-true}` (pinned by `website-env.spec.ts`, which also fails if a second production file ever names the variable — `website-module-flag.ts` is the one reader). Only the literal `true` enables it. OFF = every `/api/website/v1/*` route answers a generic **404** (`WebsiteModuleEnabledGuard`, read per request, first in the guard chain so a probe cannot tell a shut door from an unknown path) and every website cron returns at the top of its tick; the admin screens (`/admin/website/**`), `GET /api/website/status` (`{ data: { enabled } }`) and the permission catalog are unaffected, so tokens and secrets are provisioned BEFORE the flip. `WebsiteModule` is ALWAYS imported — its permission descriptor must register on every boot or catalog conformance fails the container — which is why this is a request-time guard and not a module-shape switch. Flip recipe: "Flipping `WEBSITE_MODULE_ENABLED` on the VPS" below |
++| Website | `WEBSITE_SITE_URL` — VPS `.env` value `https://www.jobsadmire.com` (WP3a, 2026-09-19) | The public site's base URL for every link Operations writes into a visitor mail: newsletter confirm/unsubscribe (TR `GET {WEBSITE_SITE_URL}/abone-onay?token=…` / `…/abonelikten-cik?token=…`, EN `GET {WEBSITE_SITE_URL}/en/newsletter/confirm?token=…` / `…/en/newsletter/unsubscribe?token=…` — the website's own localised slugs from its `pathnames` table, RFC 8058 `List-Unsubscribe` + `List-Unsubscribe-Post` on every newsletter mail) and the autoresponder CTAs; WP3c's revalidate service reads the same variable. Read through `websiteSiteUrl(config)` (`modules/website/website-site-url.ts`, fallback `https://www.jobsadmire.com`, trailing slash stripped) by `WebsiteNewsletterService` and `WebsiteAutoresponderService` — the notify service links to the Operations inbox through `APP_URL` instead. Mapped in `docker-compose.vps.yml` as `${WEBSITE_SITE_URL:-https://www.jobsadmire.com}` and in `docker-compose.yml` as `${WEBSITE_SITE_URL:-http://localhost:3000}` (pinned by `website-site-url.spec.ts`), so the code push needs no `.env` line — set it in `.env` together with the flag (same `up -d backend`). Not a secret; never a token. Tokens, the website's Turnstile secret and the second-human recipient are NOT env: they live encrypted in `website_integration_config` via Website → Integrations |
+ | Frontend | `NEXT_PUBLIC_API_URL`, `NEXT_PUBLIC_WS_URL`, `NEXT_PUBLIC_APP_NAME` | baked at build time |
+ | **Dead legacy** | `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `AWS_REGION`, `AWS_S3_BUCKET` | zero code references (S3 was never used in prod). Safe to remove; harmless to keep. The four `GOOGLE_MEET_ENABLED` / `GOOGLE_OAUTH_CLIENT_ID` / `GOOGLE_OAUTH_CLIENT_SECRET` / `GOOGLE_OAUTH_REDIRECT_URI` lines were **unwired from both compose files on 2026-09-14** (dead since the 2026-07-16 Zoom cutover) — any leftover values in the server `.env` now reach nothing; don't re-add the mappings |
+ | **Deliberately unset** | `AI_RETENTION_PURGE_LIVE` | the AI-media retention sweep stays DRY-RUN until Faraz reviews a report and sets this to `true` |
+ 
+ Google Workspace service-account credentials (DWD) are **not** in `.env` — they live encrypted in the database, managed via `GoogleWorkspaceConfigService` (Settings UI).
+ 
+ `WA_DB_SPECS=1` is **dev-only**, not a production variable — it is set permanently for the backend service in the dev `docker-compose.yml` so every container `jest` run exercises the WhatsApp DB-backed specs (`test/whatsapp`); without it those specs skip with one warn line (no DB probe, no hang) and the host run is the unit-level merge gate only. It has no meaning in `docker-compose.vps.yml` / prod.
+ 
+ `WA_GRAPH_BASE_URL` is **dev-only too, and must stay unset in production.** It overrides the Meta Graph base URL — `wa-graph.client.ts` is the only reader (pinned by a guard-cell spec that fails if a second file ever reads it, and that fails if the production default literal ever changes), trailing slashes stripped, so a local stack can point every campaign send at a mock Graph server for the WP5 verification loop (`docs/archive/whatsapp-module/WP5-PLAN.md` Task V) instead of a real one. `docker-compose.yml` passes it through empty by default. When it IS set, the client logs one WARN at construction naming the override — deliberately loud, because a production container with this set would send every message into whatever answers at that URL and never reach a phone. The deploy env inventory lists it as **unset**; it is not part of the `WhatsApp native` row above because that row is production-relevant variables, and this one by design is never one.
+ 

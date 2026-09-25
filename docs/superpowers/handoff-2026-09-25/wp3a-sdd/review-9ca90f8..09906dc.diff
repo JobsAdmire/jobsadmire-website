@@ -1,0 +1,536 @@
+# Review package: 9ca90f8..09906dc
+
+## Commits
+09906dc fix(website): site-wide captcha alarm window (X13), no drought before the first lead (X14), trip marker isolated, one-query orphan sweep
+
+## Files changed
+ apps/backend/src/modules/upload/upload.service.ts  |  3 +-
+ .../modules/website/website-abuse.service.spec.ts  |  7 ++++
+ .../src/modules/website/website-abuse.service.ts   |  9 ++++-
+ .../modules/website/website-alarms.cron.spec.ts    | 11 +++++-
+ .../modules/website/website-alarms.logic.spec.ts   | 18 +++++++--
+ .../src/modules/website/website-alarms.logic.ts    | 25 +++++++++---
+ .../modules/website/website-notify.service.spec.ts | 15 ++++++-
+ .../src/modules/website/website-purge.cron.spec.ts | 46 ++++++++++++++--------
+ .../src/modules/website/website-purge.cron.ts      | 37 +++++++++++------
+ 9 files changed, 128 insertions(+), 43 deletions(-)
+
+## Diff
+diff --git a/apps/backend/src/modules/upload/upload.service.ts b/apps/backend/src/modules/upload/upload.service.ts
+index 14c0574..de7d645 100644
+--- a/apps/backend/src/modules/upload/upload.service.ts
++++ b/apps/backend/src/modules/upload/upload.service.ts
+@@ -207,21 +207,22 @@ export class UploadService implements OnModuleInit {
+       console.warn(`[UploadService] Could not delete object ${key}:`, (err as Error)?.message);
+       return false;
+     }
+   }
+ 
+   /**
+    * Every object under `prefix` (recursive), with its last-modified time —
+    * the website purge's fraud-orphan sweep (WP3a Task 10) lists
+    * `website-fraud/` with it to find uploads no submission ever claimed. A
+    * listing is a read; the caller decides what, if anything, to delete.
+-   * Rejects when MinIO is unreachable (the caller catches).
++   * Buffers the whole prefix in memory — for small prefixes only. Rejects when
++   * MinIO is unreachable (the caller catches).
+    */
+   async listObjects(prefix: string): Promise<Array<{ key: string; lastModified: Date | null; size: number }>> {
+     const stream = this.client.listObjectsV2(this.bucket, prefix, true);
+     const out: Array<{ key: string; lastModified: Date | null; size: number }> = [];
+     return new Promise((resolve, reject) => {
+       stream.on('data', (obj: Minio.BucketItem) => {
+         if (!obj.name) return;
+         out.push({ key: obj.name, lastModified: obj.lastModified ?? null, size: obj.size ?? 0 });
+       });
+       stream.on('end', () => resolve(out));
+diff --git a/apps/backend/src/modules/website/website-abuse.service.spec.ts b/apps/backend/src/modules/website/website-abuse.service.spec.ts
+index 5ae72b9..e7f482a 100644
+--- a/apps/backend/src/modules/website/website-abuse.service.spec.ts
++++ b/apps/backend/src/modules/website/website-abuse.service.spec.ts
+@@ -48,20 +48,27 @@ describe('WebsiteAbuseService.recordVerified', () => {
+     const { svc, notify } = make({ count: WEBSITE_ABUSE_TRIP_THRESHOLD + 3, setNx: false });
+     expect(await svc.recordVerified('hire')).toEqual({ count: WEBSITE_ABUSE_TRIP_THRESHOLD + 3, tripped: true, justTripped: false });
+     expect(notify.formsUnavailable).not.toHaveBeenCalled();
+   });
+ 
+   it('fails open when Redis is down', async () => {
+     const { svc } = make({ down: true });
+     expect(await svc.recordVerified('hire')).toEqual({ count: 0, tripped: false, justTripped: false });
+   });
+ 
++  it('still notifies and reports the trip when the announced marker cannot be written — the 429 switch is already set', async () => {
++    const { svc, redis, notify } = make({ count: WEBSITE_ABUSE_TRIP_THRESHOLD });
++    redis.set.mockRejectedValueOnce(new Error('redis hiccup'));
++    expect(await svc.recordVerified('hire')).toEqual({ count: WEBSITE_ABUSE_TRIP_THRESHOLD, tripped: true, justTripped: true });
++    expect(notify.formsUnavailable).toHaveBeenCalledWith(expect.objectContaining({ reason: 'tripped', formKey: 'hire' }));
++  });
++
+   it('still reports the trip when the notify call rejects — the 429 switch is already set', async () => {
+     const { svc, notify } = make({ count: WEBSITE_ABUSE_TRIP_THRESHOLD });
+     notify.formsUnavailable.mockRejectedValueOnce(new Error('dispatcher down'));
+     expect(await svc.recordVerified('hire')).toEqual({ count: WEBSITE_ABUSE_TRIP_THRESHOLD, tripped: true, justTripped: true });
+   });
+ });
+ 
+ describe('WebsiteAbuseService.isTripped / trippedForms', () => {
+   it('reads the trip marker', async () => {
+     const { svc, redis } = make({ exists: true });
+diff --git a/apps/backend/src/modules/website/website-abuse.service.ts b/apps/backend/src/modules/website/website-abuse.service.ts
+index 65b89ed..dcc306b 100644
+--- a/apps/backend/src/modules/website/website-abuse.service.ts
++++ b/apps/backend/src/modules/website/website-abuse.service.ts
+@@ -65,26 +65,33 @@ export class WebsiteAbuseService {
+   async recordVerified(formKey: string, now: Date = new Date()): Promise<{ count: number; tripped: boolean; justTripped: boolean }> {
+     const keys = websiteAbuseKeys(formKey);
+     let count = 0;
+     let justTripped = false;
+     try {
+       count = await this.redis.incr(keys.count);
+       if (count === 1) await this.redis.expire(keys.count, WEBSITE_ABUSE_WINDOW_SEC);
+       if (!shouldTrip(count)) return { count, tripped: false, justTripped: false };
+ 
+       justTripped = await this.redis.setNx(keys.tripped, now.toISOString(), WEBSITE_ABUSE_WINDOW_SEC);
+-      if (justTripped) await this.redis.set(keys.announced, now.toISOString(), WEBSITE_ABUSE_ANNOUNCED_TTL_SEC);
+     } catch (err) {
+       this.logger.warn(`abuse counter unavailable for ${formKey} (${(err as Error)?.message}); not counting`);
+       return { count: 0, tripped: false, justTripped: false };
+     }
+     if (justTripped) {
++      // Its own try/catch: the winning SETNX above IS the trip, and a Redis
++      // hiccup on the bookkeeping marker must not swallow the trip notice —
++      // the cron's untrip announcement is what goes missing, not the alarm.
++      try {
++        await this.redis.set(keys.announced, now.toISOString(), WEBSITE_ABUSE_ANNOUNCED_TTL_SEC);
++      } catch (err) {
++        this.logger.warn(`announced marker for ${formKey} not written (${(err as Error)?.message}); untrip may go unannounced`);
++      }
+       // The 429 switch is already set; a notifier that rejects must not undo that answer.
+       this.logger.warn(`website form ${formKey} tripped after ${count} verified submissions in one hour`);
+       try {
+         await this.notify.formsUnavailable({ reason: 'tripped', formKey, count, now });
+       } catch (err) {
+         this.logger.warn(`trip notice for ${formKey} failed: ${(err as Error)?.message}`);
+       }
+     }
+     return { count, tripped: true, justTripped };
+   }
+diff --git a/apps/backend/src/modules/website/website-alarms.cron.spec.ts b/apps/backend/src/modules/website/website-alarms.cron.spec.ts
+index 510bd52..64250f9 100644
+--- a/apps/backend/src/modules/website/website-alarms.cron.spec.ts
++++ b/apps/backend/src/modules/website/website-alarms.cron.spec.ts
+@@ -72,23 +72,30 @@ describe('WebsiteAlarmsCron', () => {
+     expect(prisma.websiteFormSubmission.findFirst).not.toHaveBeenCalled();
+     expect(notify.formsUnavailable).not.toHaveBeenCalled();
+   });
+ 
+   it('is not a drought when a lead arrived recently', async () => {
+     const { cron, notify } = make({ last: new Date('2026-09-21T06:00:00.000Z') });
+     await cron.runTick(MON_10_IST);
+     expect(notify.formsUnavailable).not.toHaveBeenCalled();
+   });
+ 
++  it('is not a drought before the first lead ever arrives (X14) — the heartbeat monitors the door', async () => {
++    const { cron, notify, prisma } = make({ last: null });
++    await cron.runTick(MON_10_IST);
++    expect(prisma.websiteFormSubmission.findFirst).toHaveBeenCalledTimes(1);
++    expect(notify.formsUnavailable).not.toHaveBeenCalled();
++  });
++
+   it('never lets Redis take the tick down', async () => {
+-    const { cron, redis, notify } = make({ last: null });
++    const { cron, redis, notify } = make({ last: new Date('2026-09-18T07:00:00.000Z') });
+     redis.exists.mockRejectedValue(new Error('redis down'));
+     await expect(cron.runTick(MON_10_IST)).resolves.toBeUndefined();
+     expect(notify.formsUnavailable).toHaveBeenCalledWith(expect.objectContaining({ reason: 'drought' }));
+   });
+ 
+   it('never lets the database take the tick down either', async () => {
+-    const { cron, prisma } = make({ last: null });
++    const { cron, prisma } = make();
+     prisma.websiteFormSubmission.findFirst.mockRejectedValueOnce(new Error('db down'));
+     await expect(cron.runTick(MON_10_IST)).resolves.toBeUndefined();
+   });
+ });
+diff --git a/apps/backend/src/modules/website/website-alarms.logic.spec.ts b/apps/backend/src/modules/website/website-alarms.logic.spec.ts
+index eded9f9..4ac3322 100644
+--- a/apps/backend/src/modules/website/website-alarms.logic.spec.ts
++++ b/apps/backend/src/modules/website/website-alarms.logic.spec.ts
+@@ -32,29 +32,39 @@ describe('website business hours (Europe/Istanbul, Mon–Fri 09:00–18:00)', ()
+     ['Mon 18:00 Istanbul (15:00Z) — exclusive end', '2026-09-21T15:00:00.000Z', false],
+     ['Sat 11:00 Istanbul', '2026-09-19T08:00:00.000Z', false],
+     ['Sun 22:30Z = Mon 01:30 Istanbul — day rolls with the zone', '2026-09-20T22:30:00.000Z', false],
+   ])('%s → %s', (_label, iso, expected) => {
+     expect(isWithinWebsiteBusinessHours(new Date(iso))).toBe(expected);
+   });
+ });
+ 
+ describe('lead drought', () => {
+   const now = new Date('2026-09-21T07:00:00.000Z');
+-  it('is 48 hours of silence by default, and "never" counts as silence', () => {
++  it('is 48 hours of silence by default, measured from a lead that exists', () => {
+     expect(isLeadDrought(new Date('2026-09-19T07:00:00.001Z'), now)).toBe(false);
+     expect(isLeadDrought(new Date('2026-09-19T07:00:00.000Z'), now)).toBe(true);
+-    expect(isLeadDrought(null, now)).toBe(true);
++  });
++
++  it('is NOT a drought before the first lead ever arrives (X14) — the heartbeat monitors the door, drought measures leads', () => {
++    expect(isLeadDrought(null, now)).toBe(false);
+   });
+ });
+ 
+ describe('once-per-window keys', () => {
+   const now = new Date('2026-09-21T22:30:00.000Z'); // Tue 01:30 Istanbul
+   it('cuts the drought key on the COMPANY day and gives it a day of life', () => {
+     expect(alarmOnceKey('drought', null, now)).toBe('website:alarm:drought:*:2026-09-22');
+     expect(alarmOnceTtlSec('drought')).toBe(86400);
+   });
+-  it('keys the other reasons per form per rolling hour', () => {
++  it('keys tripped / untripped / handlerFailed per form per rolling hour', () => {
+     expect(alarmOnceKey('tripped', 'hire', now)).toBe('website:alarm:tripped:hire');
+-    expect(alarmOnceKey('captchaDegraded', undefined, now)).toBe('website:alarm:captchaDegraded:*');
++    expect(alarmOnceKey('untripped', 'hire', now)).toBe('website:alarm:untripped:hire');
++    expect(alarmOnceKey('handlerFailed', 'visit', now)).toBe('website:alarm:handlerFailed:visit');
+     expect(alarmOnceTtlSec('tripped')).toBe(3600);
+   });
++
++  it('keys the captcha alarm SITE-WIDE whatever form saw it first (X13) — one secret, one condition', () => {
++    expect(alarmOnceKey('captchaDegraded', 'hire', now)).toBe('website:alarm:captchaDegraded:*');
++    expect(alarmOnceKey('captchaDegraded', 'fraud', now)).toBe('website:alarm:captchaDegraded:*');
++    expect(alarmOnceKey('captchaDegraded', undefined, now)).toBe('website:alarm:captchaDegraded:*');
++  });
+ });
+diff --git a/apps/backend/src/modules/website/website-alarms.logic.ts b/apps/backend/src/modules/website/website-alarms.logic.ts
+index 5c2a004..d6c0233 100644
+--- a/apps/backend/src/modules/website/website-alarms.logic.ts
++++ b/apps/backend/src/modules/website/website-alarms.logic.ts
+@@ -71,34 +71,47 @@ export function websiteAbuseKeys(formKey: string) {
+     count: `website:abuse:count:${formKey}`,
+     tripped: `website:abuse:tripped:${formKey}`,
+     announced: `website:abuse:announced:${formKey}`,
+   };
+ }
+ 
+ export function shouldTrip(count: number, threshold: number = WEBSITE_ABUSE_TRIP_THRESHOLD): boolean {
+   return count >= threshold;
+ }
+ 
++/**
++ * Reasons whose window is SITE-WIDE (X13): one Turnstile secret serves both
++ * hostnames and every form, so a captcha outage (`captchaDegraded`, whichever
++ * detail — `secretMissing`, `secretInvalid`, `httpError`, `unreachable`) is
++ * one condition, not ten. The e-mail still names `ctx.formKey`: the first form
++ * that saw it.
++ */
++const SITE_WIDE_REASONS: ReadonlySet<WebsiteUnavailableReason> = new Set(['captchaDegraded']);
++
+ /**
+  * The once-per-window key for an alarm. Drought is per COMPANY DAY (one bell a
+- * day while the silence lasts); everything else is per rolling hour per form.
+- * `*` stands in for "no particular form".
++ * day while the silence lasts); a site-wide reason is per rolling hour for the
++ * whole door; `tripped`, `untripped` and `handlerFailed` are per rolling hour
++ * per form. `*` stands in for "no particular form".
+  */
+ export function alarmOnceKey(reason: WebsiteUnavailableReason, formKey: string | null | undefined, now: Date): string {
+-  const form = formKey || '*';
++  const form = SITE_WIDE_REASONS.has(reason) ? '*' : formKey || '*';
+   return reason === 'drought'
+     ? `website:alarm:drought:${form}:${websiteDayKey(now)}`
+     : `website:alarm:${reason}:${form}`;
+ }
+ 
+ export function alarmOnceTtlSec(reason: WebsiteUnavailableReason): number {
+   return reason === 'drought' ? 24 * 60 * 60 : 60 * 60;
+ }
+ 
+ /**
+- * No real submission in `hours` wall-clock hours. `null` (never) IS a drought:
+- * a door that is on and has never heard a lead is the silence D11 describes.
++ * A real submission exists and is older than `hours` wall-clock hours. `null`
++ * (no lead has EVER arrived) is NOT a drought (X14): the ping/heartbeat
++ * monitors the door; drought measures leads, and a door that has never heard
++ * one has nothing to have dried up — the WP3a gate proves the door with the
++ * heartbeat, not with this alarm.
+  */
+ export function isLeadDrought(lastSubmissionAt: Date | null, now: Date, hours: number = WEBSITE_DROUGHT_HOURS): boolean {
+-  if (!lastSubmissionAt) return true;
++  if (!lastSubmissionAt) return false;
+   return now.getTime() - lastSubmissionAt.getTime() >= hours * 60 * 60 * 1000;
+ }
+diff --git a/apps/backend/src/modules/website/website-notify.service.spec.ts b/apps/backend/src/modules/website/website-notify.service.spec.ts
+index ca89925..355b252 100644
+--- a/apps/backend/src/modules/website/website-notify.service.spec.ts
++++ b/apps/backend/src/modules/website/website-notify.service.spec.ts
+@@ -67,33 +67,46 @@ describe('WebsiteNotifyService.formReceived', () => {
+     notifications.queueEmail.mockRejectedValueOnce(new Error('queue down'));
+     await expect(svc.formReceived({ submissionId: 's1', formKey: 'contact' })).resolves.toBeUndefined();
+     expect(events.dispatch).toHaveBeenCalledTimes(1);
+   });
+ });
+ 
+ describe('WebsiteNotifyService.formsUnavailable', () => {
+   it('fires once per window — the SETNX loser says nothing', async () => {
+     const { svc, events, redis, notifications } = make({ setNx: false });
+     expect(await svc.formsUnavailable({ reason: 'captchaDegraded', formKey: 'hire', detail: 'timeout' })).toBe(false);
+-    expect(redis.setNx).toHaveBeenCalledWith('website:alarm:captchaDegraded:hire', expect.any(String), 3600);
++    expect(redis.setNx).toHaveBeenCalledWith('website:alarm:captchaDegraded:*', expect.any(String), 3600);
+     expect(events.dispatch).not.toHaveBeenCalled();
+     expect(notifications.queueEmail).not.toHaveBeenCalled();
+   });
+ 
+   it('fires, dispatches and mails the second human when it wins the window', async () => {
+     const { svc, events, notifications } = make();
+     expect(await svc.formsUnavailable({ reason: 'tripped', formKey: 'hire', count: 30 })).toBe(true);
+     expect(events.dispatch).toHaveBeenCalledWith('WEBSITE_FORMS_UNAVAILABLE', expect.objectContaining({ reason: 'tripped', formKey: 'hire', count: 30 }));
+     const job = notifications.queueEmail.mock.calls[0][0] as Record<string, unknown>;
+     expect(job.subject).toBe('[Website] Website hire workers request paused after a burst');
+   });
+ 
++  it('two forms degrading in the same window raise ONE captcha alarm (X13) — the e-mail names the first form', async () => {
++    const { svc, events, redis, notifications } = make();
++    const claimed = new Set<string>();
++    redis.setNx.mockImplementation(async (k: string) => (claimed.has(k) ? false : (claimed.add(k), true)));
++    expect(await svc.formsUnavailable({ reason: 'captchaDegraded', formKey: 'hire', detail: 'secretInvalid' })).toBe(true);
++    expect(await svc.formsUnavailable({ reason: 'captchaDegraded', formKey: 'fraud', detail: 'secretInvalid' })).toBe(false);
++    expect(events.dispatch).toHaveBeenCalledTimes(1);
++    expect(events.dispatch).toHaveBeenCalledWith('WEBSITE_FORMS_UNAVAILABLE', expect.objectContaining({ formKey: 'hire' }));
++    expect(notifications.queueEmail).toHaveBeenCalledTimes(1);
++    // A per-form reason in the same window is still its own alarm.
++    expect(await svc.formsUnavailable({ reason: 'handlerFailed', formKey: 'fraud', submissionId: 's2', detail: 'x' })).toBe(true);
++  });
++
+   it('keys the drought alarm by company day, not by the hour', async () => {
+     const { svc, redis } = make();
+     await svc.formsUnavailable({ reason: 'drought', hours: 48, lastSubmissionAt: null, now: new Date('2026-09-21T07:00:00.000Z') });
+     expect(redis.setNx).toHaveBeenCalledWith('website:alarm:drought:*:2026-09-21', expect.any(String), 86400);
+   });
+ 
+   it('fails OPEN when Redis is down — an alarm that cannot dedupe still alarms', async () => {
+     const { svc, events } = make({ setNx: 'throw' });
+     expect(await svc.formsUnavailable({ reason: 'handlerFailed', formKey: 'visit', submissionId: 's9', detail: 'x' })).toBe(true);
+     expect(events.dispatch).toHaveBeenCalledTimes(1);
+diff --git a/apps/backend/src/modules/website/website-purge.cron.spec.ts b/apps/backend/src/modules/website/website-purge.cron.spec.ts
+index 17ebbc2..1ac20d4 100644
+--- a/apps/backend/src/modules/website/website-purge.cron.spec.ts
++++ b/apps/backend/src/modules/website/website-purge.cron.spec.ts
+@@ -3,55 +3,57 @@
+  * The 90-day purge (P10; RC5): rows whose `purgeAfter` has passed are deleted
+  * in batches; a FRAUD_REPORT row's private objects (payloadJson.fields.
+  * evidenceKeys, read through WebsiteFraudEvidenceService.evidenceKeysOf) go
+  * FIRST, and a row with ANY object that could not be removed is kept for the
+  * next night — a deleted pointer to a surviving object is an orphan nobody
+  * will ever sweep.
+  *
+  * The ORPHAN SWEEP (execution ruling): a visitor uploads evidence and never
+  * submits the form, so the object has no row and no purgeAfter. Every
+  * `website-fraud/` object older than 7 days that no submission's
+- * `payloadJson.fields.evidenceKeys` references is removed; counts only in the
+- * log.
++ * `payloadJson.fields.evidenceKeys` references is removed — the referenced
++ * set is ONE query over the FRAUD_REPORT-kind rows (test rows included);
++ * counts only in the log.
+  */
+ import { WebsitePurgeCron } from './website-purge.cron';
+ import { WEBSITE_MODULE_ENABLED_ENV } from './website-module-flag';
+ 
+ type Row = { id: string; payloadJson: unknown };
+ type Obj = { key: string; lastModified: Date | null };
+ 
+ function make(
+-  opts: { enabled?: boolean; rows?: Row[]; gone?: (key: string) => boolean; objects?: Obj[]; referenced?: string[] } = {},
++  opts: { enabled?: boolean; rows?: Row[]; gone?: (key: string) => boolean; objects?: Obj[]; fraudRows?: Row[] } = {},
+ ) {
+   const rows = [...(opts.rows ?? [])];
+-  const referenced = new Set(opts.referenced ?? []);
+   const prisma = {
+     websiteFormSubmission: {
+-      findMany: jest.fn(async (_a: unknown) => rows.splice(0, 100)),
+-      deleteMany: jest.fn(async (_a: unknown) => ({ count: 0 })),
+-      count: jest.fn(async (args: { where: { payloadJson: { array_contains: string[] } } }) =>
+-        referenced.has(args.where.payloadJson.array_contains[0]) ? 1 : 0,
++      // The purge reads rows past purgeAfter (batched); the orphan sweep reads
++      // every FRAUD_REPORT-kind row's payload in one query.
++      findMany: jest.fn(async (args: { where: Record<string, unknown> }) =>
++        'purgeAfter' in args.where ? rows.splice(0, 100) : [...(opts.fraudRows ?? [])],
+       ),
++      deleteMany: jest.fn(async (_a: unknown) => ({ count: 0 })),
+     },
+   };
+   const upload = {
+     deleteFileChecked: jest.fn(async (key: string) => (opts.gone ? opts.gone(key) : true)),
+     listObjects: jest.fn(async (_prefix: string) => opts.objects ?? []),
+   };
+   const config = { get: jest.fn((k: string) => (k === WEBSITE_MODULE_ENABLED_ENV ? String(opts.enabled ?? true) : undefined)) };
+   return { cron: new WebsitePurgeCron(prisma as never, upload as never, config as never), prisma, upload };
+ }
+ 
+ const NOW = new Date('2026-12-20T04:30:00.000Z');
+ const daysAgo = (n: number) => new Date(NOW.getTime() - n * 24 * 60 * 60 * 1000);
+ const plain = (id: string): Row => ({ id, payloadJson: { fields: { name: 'A', email: 'a@b.c' } } });
+ const fraud = (id: string, keys: string[]): Row => ({ id, payloadJson: { fields: { description: 'x', evidenceKeys: keys } } });
++const SWEEP_QUERY = { where: { form: { kind: 'FRAUD_REPORT' } }, select: { payloadJson: true } };
+ 
+ describe('WebsitePurgeCron', () => {
+   it('skips the sweep while the module flag is off', async () => {
+     const { cron, prisma, upload } = make({ enabled: false, rows: [plain('s1')], objects: [{ key: 'website-fraud/x.jpg', lastModified: daysAgo(30) }] });
+     await cron.run(NOW);
+     expect(prisma.websiteFormSubmission.findMany).not.toHaveBeenCalled();
+     expect(upload.listObjects).not.toHaveBeenCalled();
+   });
+ 
+   it('selects only rows whose purgeAfter has passed, oldest first, in batches of 100, reading the payload', async () => {
+@@ -105,36 +107,46 @@ describe('WebsitePurgeCron', () => {
+ 
+ describe('WebsitePurgeCron — fraud-orphan sweep', () => {
+   it('removes website-fraud/ objects older than 7 days that no submission references, and nothing else', async () => {
+     const { cron, prisma, upload } = make({
+       objects: [
+         { key: 'website-fraud/orphan.jpg', lastModified: daysAgo(8) },
+         { key: 'website-fraud/fresh.jpg', lastModified: daysAgo(1) },
+         { key: 'website-fraud/live.pdf', lastModified: daysAgo(30) },
+         { key: 'website-fraud/undated.jpg', lastModified: null },
+       ],
+-      referenced: ['website-fraud/live.pdf'],
++      fraudRows: [fraud('f1', ['website-fraud/live.pdf', 'website-fraud/other.jpg'])],
+     });
+     await cron.run(NOW);
+     expect(upload.listObjects).toHaveBeenCalledWith('website-fraud/');
+-    // The reference check is a JSON-path query on the stored payload envelope.
+-    expect(prisma.websiteFormSubmission.count).toHaveBeenCalledWith({
+-      where: { payloadJson: { path: ['fields', 'evidenceKeys'], array_contains: ['website-fraud/orphan.jpg'] } },
+-    });
+-    expect(prisma.websiteFormSubmission.count).toHaveBeenCalledWith({
+-      where: { payloadJson: { path: ['fields', 'evidenceKeys'], array_contains: ['website-fraud/live.pdf'] } },
+-    });
+-    expect(prisma.websiteFormSubmission.count).toHaveBeenCalledTimes(2);
++    // ONE query for the referenced set — every FRAUD_REPORT row's payload.
++    expect(prisma.websiteFormSubmission.findMany).toHaveBeenCalledWith(SWEEP_QUERY);
++    expect(prisma.websiteFormSubmission.findMany.mock.calls.filter(([a]) => 'form' in (a as { where: object }).where)).toHaveLength(1);
+     expect(upload.deleteFileChecked).toHaveBeenCalledTimes(1);
+     expect(upload.deleteFileChecked).toHaveBeenCalledWith('website-fraud/orphan.jpg');
+   });
+ 
++  it('keeps an object a TEST submission references — a heartbeat row is still a row', async () => {
++    const { cron, upload } = make({
++      objects: [{ key: 'website-fraud/test-ref.jpg', lastModified: daysAgo(30) }],
++      fraudRows: [fraud('f-test', ['website-fraud/test-ref.jpg'])],
++    });
++    await cron.run(NOW);
++    expect(upload.deleteFileChecked).not.toHaveBeenCalled();
++  });
++
++  it('does not query the database at all when no object is old enough', async () => {
++    const { cron, prisma } = make({ objects: [{ key: 'website-fraud/fresh.jpg', lastModified: daysAgo(1) }] });
++    await cron.run(NOW);
++    expect(prisma.websiteFormSubmission.findMany).not.toHaveBeenCalledWith(SWEEP_QUERY);
++  });
++
+   it('exactly seven days old is not yet an orphan; a day more is', async () => {
+     const sevenDays = 7 * 24 * 60 * 60 * 1000;
+     const { cron, upload } = make({
+       objects: [
+         { key: 'website-fraud/edge.jpg', lastModified: new Date(NOW.getTime() - sevenDays) },
+         { key: 'website-fraud/over.jpg', lastModified: new Date(NOW.getTime() - sevenDays - 1) },
+       ],
+     });
+     await cron.run(NOW);
+     expect(upload.deleteFileChecked).toHaveBeenCalledTimes(1);
+diff --git a/apps/backend/src/modules/website/website-purge.cron.ts b/apps/backend/src/modules/website/website-purge.cron.ts
+index 0ff16a7..ed5655f 100644
+--- a/apps/backend/src/modules/website/website-purge.cron.ts
++++ b/apps/backend/src/modules/website/website-purge.cron.ts
+@@ -1,14 +1,15 @@
+ // apps/backend/src/modules/website/website-purge.cron.ts
+ import { Injectable, Logger } from '@nestjs/common';
+ import { ConfigService } from '@nestjs/config';
+ import { Cron } from '@nestjs/schedule';
++import { WebsiteFormKind } from '@prisma/client';
+ import { PrismaService } from '../../prisma/prisma.service';
+ import { UploadService } from '../upload/upload.service';
+ import { FRAUD_EVIDENCE_KEY_PREFIX } from './fraud-evidence-file';
+ import { WebsiteFraudEvidenceService } from './website-fraud-evidence.service';
+ import { websiteModuleEnabled } from './website-module-flag';
+ 
+ const BATCH_SIZE = 100;
+ /** Ceiling per night, so a backlog is a few nights of work rather than one long transaction. */
+ const MAX_BATCHES = 20;
+ /**
+@@ -33,22 +34,25 @@ export const WEBSITE_FRAUD_ORPHAN_AGE_MS = 7 * 24 * 60 * 60 * 1000;
+  * row with its own retention. A FRAUD_REPORT row names up to three private
+  * objects under `website-fraud/` in `payloadJson.fields.evidenceKeys` (RC5;
+  * read through `WebsiteFraudEvidenceService.evidenceKeysOf`, which re-applies
+  * the prefix lock) that nothing else references, so the objects go FIRST with
+  * `deleteFileChecked`, and a row with ANY object that could not be removed is
+  * KEPT for the next night: deleting the pointer would leave an orphan no
+  * sweep can find.
+  *
+  * THE ORPHAN SWEEP runs second: every `website-fraud/` object older than
+  * `WEBSITE_FRAUD_ORPHAN_AGE_MS` that no submission's
+- * `payloadJson.fields.evidenceKeys` references (a JSON-path count per
+- * candidate — candidates are rare, the table is not scanned) is removed. The
++ * `payloadJson.fields.evidenceKeys` references is removed. The referenced set
++ * is ONE query: every FRAUD_REPORT-kind row's payload (RC5 — the fraud
++ * catalog is the only one that defines `evidenceKeys`, and the 90-day purge
++ * above bounds that population), test rows included, read through
++ * `evidenceKeysOf`; the query is skipped when no object is old enough. The
+  * log carries counts only; an object key is a visitor's private file name.
+  *
+  * `WebsiteSubscriber` is not purged here: an UNSUBSCRIBED row is the proof we
+  * honoured the request, and a CONFIRMED one is live consent.
+  *
+  * Reads the module flag per tick (P1). Never throws; each arm has its own
+  * try/catch so a database outage does not stop the sweep, nor the reverse.
+  */
+ @Injectable()
+ export class WebsitePurgeCron {
+@@ -122,29 +126,40 @@ export class WebsitePurgeCron {
+     }
+   }
+ 
+   private async sweepOrphans(now: Date): Promise<void> {
+     let removed = 0;
+     let referenced = 0;
+     let stuck = 0;
+     try {
+       const cutoff = now.getTime() - WEBSITE_FRAUD_ORPHAN_AGE_MS;
+       const objects = await this.upload.listObjects(FRAUD_EVIDENCE_KEY_PREFIX);
+-      for (const obj of objects) {
+-        // The listing is trusted only inside the prefix, and an undated object
+-        // cannot be judged old.
+-        if (!obj.key.startsWith(FRAUD_EVIDENCE_KEY_PREFIX)) continue;
+-        if (!obj.lastModified || obj.lastModified.getTime() >= cutoff) continue;
+-        const refs = await this.prisma.websiteFormSubmission.count({
+-          where: { payloadJson: { path: ['fields', 'evidenceKeys'], array_contains: [obj.key] } },
+-        });
+-        if (refs > 0) {
++      // The listing is trusted only inside the prefix, and an undated object
++      // cannot be judged old.
++      const candidates = objects.filter(
++        (obj) => obj.key.startsWith(FRAUD_EVIDENCE_KEY_PREFIX) && obj.lastModified !== null && obj.lastModified.getTime() < cutoff,
++      );
++      if (candidates.length === 0) return;
++
++      // One query for the referenced set — every fraud row, whether or not
++      // its purgeAfter has come, whether or not it is a test row.
++      const rows = await this.prisma.websiteFormSubmission.findMany({
++        where: { form: { kind: WebsiteFormKind.FRAUD_REPORT } },
++        select: { payloadJson: true },
++      });
++      const referencedKeys = new Set<string>();
++      for (const row of rows) {
++        for (const key of WebsiteFraudEvidenceService.evidenceKeysOf(row.payloadJson)) referencedKeys.add(key);
++      }
++
++      for (const obj of candidates) {
++        if (referencedKeys.has(obj.key)) {
+           referenced += 1;
+           continue;
+         }
+         if (await this.upload.deleteFileChecked(obj.key)) removed += 1;
+         else stuck += 1;
+       }
+       if (removed || referenced || stuck) {
+         this.logger.log(`website fraud-orphan sweep — removed ${removed} object(s) older than 7 days with no submission, ${referenced} still referenced, ${stuck} could not be removed`);
+       }
+     } catch (err) {

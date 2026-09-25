@@ -1,0 +1,561 @@
+calc.001 | hHome | - | Hero | EN: Home | TR: Ana Sayfa
+calc.002 | hCrumb | - | Hero | EN: Hiring Cost Calculator | TR: İşçi Maliyet Hesaplayıcı
+calc.003 | hBadge | - | Hero | EN: 2026 rates · Updated January 2026 | TR: 2026 oranları · Ocak 2026'da güncellendi
+calc.004 | hT1 | - | Hero | EN: What does a foreign worker | TR: Türkiye'de yabancı bir işçi
+calc.005 | hT2 | - | Hero | EN: really cost | TR: gerçekte ne kadara
+calc.006 | hT3 | - | Hero | EN: in Turkey? | TR: mal olur?
+calc.007 | hSub | L | Hero | EN: Salary, SGK employer contribution, permit fees, flights and accommodation — calculated in one place, with 2026 | TR: Maaş, SGK işveren payı, izin harçları, uçak bileti ve konaklama — 2026
+calc.008 | cReq | - | Hesaplayıcı | EN: Your requirement | TR: İhtiyacınız
+calc.009 | cPerMonth | - | Hesaplayıcı | EN: Per month | TR: Aylık
+calc.010 | cOneOff | - | Hesaplayıcı | EN: One-off | TR: Tek seferlik
+calc.011 | cQuoteArrow | - | Hesaplayıcı | EN: Get an exact written quote → | TR: Yazılı net teklif alın →
+calc.012 | cProfession | - | Hesaplayıcı | EN: Profession | TR: Meslek
+calc.013 | cWorkers | - | Hesaplayıcı | EN: Number of workers | TR: İşçi sayısı
+calc.014 | cContract | - | Hesaplayıcı | EN: Contract length | TR: Sözleşme süresi
+calc.015 | cSalary | - | Hesaplayıcı | EN: Gross salary offered | TR: Teklif edilen brüt maaş
+calc.016 | cCover | - | Hesaplayıcı | EN: What you cover | TR: Sizin karşıladıklarınız
+calc.017 | cFlight | - | Hesaplayıcı | EN: Flight to Turkey | TR: Türkiye'ye uçak bileti
+calc.018 | cAcc | - | Hesaplayıcı | EN: Accommodation | TR: Konaklama
+calc.019 | cAccNote | - | Hesaplayıcı | EN: (shared, per worker) | TR: (paylaşımlı, işçi başına)
+calc.020 | cSupport | - | Hesaplayıcı | EN: Minimum wage support | TR: Asgari ücret desteği
+calc.021 | cSupportNote | - | Hesaplayıcı | EN: (₺1,270 / worker / month — if your workplace qualifies) | TR: (₺1.270 / işçi / ay — işyeriniz hak kazanıyorsa)
+calc.022 | cSgkDisc | L | Hesaplayıcı | EN: SGK discount (teşvik) | TR: SGK teşvik indirimi
+calc.023 | cEst | - | Hesaplayıcı | EN: Estimated cost | TR: Tahmini maliyet
+calc.024 | cMonthly | - | Hesaplayıcı | EN: Monthly, recurring | TR: Aylık, tekrarlayan
+calc.025 | cGross | - | Hesaplayıcı | EN: Gross salary | TR: Brüt maaş
+calc.026 | cSgkEmp | L | Hesaplayıcı | EN: SGK employer contribution | TR: SGK işveren payı
+calc.027 | cState | - | Hesaplayıcı | EN: (state) | TR: (devlet)
+calc.028 | cMonthlyTotal | - | Hesaplayıcı | EN: Monthly total | TR: Aylık toplam
+calc.029 | cOneOffY1 | - | Hesaplayıcı | EN: One-off, first year | TR: Tek seferlik, ilk yıl
+calc.030 | cPermitFees | - | Hesaplayıcı | EN: Work permit + card fees | TR: Çalışma izni + kart harçları
+calc.031 | cFlightTravel | - | Hesaplayıcı | EN: Flight & travel | TR: Uçak bileti ve seyahat
+calc.032 | cServiceFee | - | Hesaplayıcı | EN: JobsAdmire service fee | TR: JobsAdmire hizmet bedeli
+calc.033 | cQuotedWritten | - | Hesaplayıcı | EN: Not in this total | TR: Bu toplama dahil değil
+calc.034 | cOneOffTotal | - | Hesaplayıcı | EN: One-off total | TR: Tek seferlik toplam
+calc.035 | cFeeNote | - | Hesaplayıcı | EN: · Service fee not included — quoted in writing before we start. | TR: · Hizmet bedeli dahil değildir — işe başlamadan önce yazılı olarak bil
+calc.036 | cQuoteBtn | - | Hesaplayıcı | EN: Get an exact written quote | TR: Yazılı net teklif alın
+calc.037 | cPrint | - | Hesaplayıcı | EN: Print | TR: Yazdır
+calc.038 | sea1 | - | Hesaplayıcı | EN: Seasonal note: permit and travel are paid once even for a short season, so the cost per month is higher — | TR: Sezonluk not: izin ve seyahat masrafları kısa bir sezon için bile bir 
+calc.039 | sea2 | - | Hesaplayıcı | EN: per worker across the contract. | TR: .
+calc.040 | cFine | L | Hesaplayıcı | EN: Estimates based on 2026 rates: minimum wage ₺33,030 gross, employer SGK 21.75% with the standard 2-point disco | TR: Tahminler 2026 oranlarına dayanır: asgari ücret brüt ₺33.030, standart
+calc.041 | undefined | - | Kota kontrolü | EN: Can you hire | TR: 
+calc.042 | cQuotaQ2 | - | Hesaplayıcı | EN: ? | TR: işçi alabilir misiniz?
+calc.043 | cQuotaD1 | L | Hesaplayıcı | EN: Turkey's 5:1 rule means the workplace needs | TR: Türkiye'deki 5:1 kuralına göre bu sayı için işyerinde SGK'lı
+calc.044 | cQuotaStaff | - | Hesaplayıcı | EN: Turkish employees | TR: Türk çalışan
+calc.045 | cQuotaD2 | L | Hesaplayıcı | EN: on SGK for this many — unless your sector is exempt. | TR: bulunmalıdır — sektörünüz muaf değilse.
+calc.046 | cQuotaM1 | L | Hesaplayıcı | EN: Needs | TR: SGK'lı
+calc.047 | cQuotaStaffShort | - | Hesaplayıcı | EN: Turkish staff | TR: Türk çalışan
+calc.048 | cQuotaM2 | L | Hesaplayıcı | EN: on SGK. | TR: gerekir.
+calc.049 | cQuotaLink | - | Hesaplayıcı | EN: Check your quota → | TR: Kotanızı kontrol edin →
+calc.050 | sTag | - | Sticky CTA / Maaş rehberi | EN: Want the exact number for your case? Written quote within 24 hours. | TR: Kendi durumunuz için net rakamı ister misiniz? 24 saat içinde yazılı t
+calc.051 | sCall | - | Sticky CTA / Maaş rehberi | EN: Call | TR: Ara
+calc.052 | sWa | - | Sticky CTA / Maaş rehberi | EN: WhatsApp quote | TR: WhatsApp'tan teklif
+calc.053 | sReq | - | Sticky CTA / Maaş rehberi | EN: Request workers → | TR: İşçi talep edin →
+calc.054 | jSalary | - | Bölüm başlıkları | EN: Salary guide | TR: Maaş rehberi
+calc.055 | jQuota | - | Bölüm başlıkları | EN: Your quota | TR: Kotanız
+calc.056 | jInc | - | Bölüm başlıkları | EN: Incentives | TR: Teşvikler
+calc.057 | jPass | - | Bölüm başlıkları | EN: Will it pass? | TR: Geçer mi?
+calc.058 | jPen | L | Bölüm başlıkları | EN: Penalties | TR: Cezalar
+calc.059 | jFaq | - | Bölüm başlıkları | EN: FAQ | TR: SSS
+calc.060 | aBasisT | - | Bölüm başlıkları | EN: What these numbers are based on | TR: Bu rakamlar neye dayanıyor
+calc.061 | aBasisS | L | Bölüm başlıkları | EN: 2026 minimum wage, SGK rates, permit fees, travel | TR: 2026 asgari ücret, SGK oranları, izin harçları, seyahat
+calc.062 | aSalT | - | Bölüm başlıkları | EN: Salary guide 2026 | TR: Maaş rehberi 2026
+calc.063 | aSalS | - | Bölüm başlıkları | EN: Gross monthly ranges by profession | TR: Mesleğe göre aylık brüt aralıklar
+calc.064 | aCmpT | - | Bölüm başlıkları | EN: Local hire vs overseas hire | TR: Yerli işe alım vs yurt dışından alım
+calc.065 | aCmpS | - | Bölüm başlıkları | EN: What actually differs — and what does not | TR: Gerçekte ne değişir — ve ne değişmez
+calc.066 | aQuoT | - | Bölüm başlıkları | EN: Are you allowed to hire? | TR: İşçi alabilir misiniz?
+calc.067 | aQuoS | - | Bölüm başlıkları | EN: The 5:1 rule, exemptions and your quota | TR: 5:1 kuralı, muafiyetler ve kotanız
+calc.068 | aPassT | - | Bölüm başlıkları | EN: Will your application pass? | TR: Başvurunuz geçer mi?
+calc.069 | aPassS | - | Bölüm başlıkları | EN: 5 questions — the usual refusal reasons | TR: 5 soru — en sık ret nedenleri
+calc.070 | aPenT | - | Bölüm başlıkları | EN: Cost of doing it the wrong way | TR: Yanlış yolun maliyeti
+calc.071 | aPenS | L | Bölüm başlıkları | EN: 2026 fines for unregistered employment | TR: Kayıt dışı istihdam için 2026 cezaları
+calc.072 | aStuT | - | Bölüm başlıkları | EN: Hiring foreign students in Turkey | TR: Türkiye'deki yabancı öğrencileri işe alma
+calc.073 | aStuS | - | Bölüm başlıkları | EN: A different route, its own rules | TR: Farklı bir yol, kendi kuralları var
+calc.074 | aFaqT | - | Bölüm başlıkları | EN: Cost questions | TR: Maliyet soruları
+calc.075 | aFaqS | - | Bölüm başlıkları | EN: What employers ask about these numbers | TR: İşverenlerin bu rakamlar hakkında sordukları
+calc.076 | bH | - | Dayanak (2026 verileri) | EN: What the numbers above are based on | TR: Yukarıdaki rakamlar neye dayanıyor
+calc.077 | bSub | - | Dayanak (2026 verileri) | EN: Every figure in the calculator comes from public 2026 data — here is the source of each one. | TR: Hesaplayıcıdaki her rakam kamuya açık 2026 verilerinden gelir — her bi
+calc.078 | b1T | - | Dayanak (2026 verileri) | EN: Minimum wage 2026 | TR: Asgari ücret 2026
+calc.079 | b1B | - | Dayanak (2026 verileri) | EN: ₺33,030 gross / ₺28,075.50 net per month, set by the Ministry in December 2025. Employer cost at that level: ₺ | TR: Aylık brüt ₺33.030 / net ₺28.075,50; Aralık 2025'te Bakanlık tarafında
+calc.080 | b2T | L | Dayanak (2026 verileri) | EN: SGK employer share | TR: SGK işveren payı
+calc.081 | b2B | L | Dayanak (2026 verileri) | EN: 23.75% of gross before incentives. With the 5510 discount: 21.75% in most sectors (2 points), 18.75% in manufa | TR: Teşvik öncesi brütün %23,75'i. 5510 indirimiyle: çoğu sektörde %21,75 
+calc.082 | b3T | - | Dayanak (2026 verileri) | EN: Permit & card fees | TR: İzin ve kart harçları
+calc.083 | b3B | - | Dayanak (2026 verileri) | EN: ≈ ₺16,000 per worker per permit year, updated every January. | TR: İzin yılı başına işçi başına ≈ ₺16.000; her Ocak ayında güncellenir.
+calc.084 | b3L | - | Dayanak (2026 verileri) | EN: See how permits work → | TR: İzin süreci nasıl işliyor →
+calc.085 | b4T | - | Dayanak (2026 verileri) | EN: Travel & housing | TR: Seyahat ve konaklama
+calc.086 | b4B | - | Dayanak (2026 verileri) | EN: Flight ≈ ₺12,000 one-off (varies by country); shared accommodation ≈ ₺5,000 per worker per month. | TR: Uçak bileti tek seferlik ≈ ₺12.000 (ülkeye göre değişir); paylaşımlı k
+calc.087 | bNoteL | - | Dayanak (2026 verileri) | EN: Note: | TR: Not:
+calc.088 | bNote | - | Dayanak (2026 verileri) | EN: each role also has a legal minimum salary set as a multiple of the minimum wage — offering less means the perm | TR: her meslek için ayrıca asgari ücretin katı olarak belirlenmiş yasal bi
+calc.089 | bUpd | - | Dayanak (2026 verileri) | EN: Last updated: | TR: Son güncelleme:
+calc.090 | bRev | - | Dayanak (2026 verileri) | EN: Rates are reviewed every January and whenever the Ministry changes them. | TR: Oranlar her Ocak ayında ve Bakanlık değiştirdiğinde gözden geçirilir.
+calc.091 | sH | - | Sticky CTA / Maaş rehberi | EN: What should you pay? Salary guide 2026 | TR: Ne kadar ödemelisiniz? Maaş rehberi 2026
+calc.092 | sSub | - | Sticky CTA / Maaş rehberi | EN: Gross monthly ranges we see in our own placements. Every range starts at or above the legal minimum for that j | TR: Kendi yerleştirmelerimizde gördüğümüz aylık brüt aralıklar. Her aralık
+calc.093 | sLegRange | - | Sticky CTA / Maaş rehberi | EN: Usual gross range | TR: Olağan brüt aralık
+calc.094 | sLegMin | - | Sticky CTA / Maaş rehberi | EN: Minimum wage | TR: Asgari ücret
+calc.095 | sLegSkill | - | Sticky CTA / Maaş rehberi | EN: Skilled job = 1.5× minimum | TR: Nitelikli iş = asgari ücretin 1,5 katı
+calc.096 | sGrossMo | - | Sticky CTA / Maaş rehberi | EN: gross / month | TR: brüt / ay
+calc.097 | sEmpCost | - | Sticky CTA / Maaş rehberi | EN: Employer cost | TR: İşverene maliyeti
+calc.098 | sFootL | - | Sticky CTA / Maaş rehberi | EN: Employer cost | TR: İşverene maliyeti
+calc.099 | sFoot | L | Sticky CTA / Maaş rehberi | EN: = gross salary + SGK employer contribution (21.75%, or 18.75% in manufacturing). Permit fees, flights and acco | TR: = brüt maaş + SGK işveren payı (%21,75, imalatta %18,75). İzin harçlar
+calc.100 | zH | - | Kapanış CTA | EN: Now get the real number | TR: Şimdi gerçek rakamı alın
+calc.101 | zSub | - | Kapanış CTA | EN: Estimates are useful — a written quote is better. Tell us the roles, headcount and city, and you get the full  | TR: Tahminler işe yarar — yazılı teklif daha iyisidir. Meslekleri, işçi sa
+calc.102 | zEst | - | Kapanış CTA | EN: Your estimate so far | TR: Şu ana kadarki tahmininiz
+calc.103 | zRough | - | Kapanış CTA | EN: That is roughly | TR: Bu yaklaşık
+calc.104 | zFee | - | Kapanış CTA | EN: Service fee is quoted in writing — send this and we come back with the exact figure within 24 hours. | TR: Hizmet bedeli yazılı olarak bildirilir — bunu gönderin, 24 saat içinde
+calc.105 | zBtn1 | - | Kapanış CTA | EN: Get a written quote | TR: Yazılı teklif alın
+calc.106 | zBtn2 | - | Kapanış CTA | EN: See available candidates | TR: Müsait adayları görün
+calc.107 | fBlurb | - | Footer | EN: Licensed workforce recruitment for employers in Turkey — overseas sourcing, vetting and work permits, end-to-e | TR: Türkiye'deki işverenler için izinli işgücü temini — yurt dışından bulm
+calc.108 | mCall | - | Footer | EN: Call us | TR: Bizi arayın
+calc.109 | pH | - | Cezalar | EN: The cost of doing it the wrong way | TR: Yanlış yolun maliyeti
+calc.110 | pSub | L | Cezalar | EN: Some employers think about hiring quietly, without a permit. Here is what that really costs under the 2026 fin | TR: Bazı işverenler izin almadan, sessizce işçi çalıştırmayı düşünür. 2026
+calc.111 | p1K | - | Cezalar | EN: Per worker, per inspection | TR: İşçi başına, her denetimde
+calc.112 | p1B1 | L | Cezalar | EN: Fine on the employer for each foreign worker found without a permit, under Law No. 6735. If it happens again,  | TR: 6735 sayılı Kanun uyarınca, izinsiz çalıştığı tespit edilen her yabanc
+calc.113 | p1B2 | - | Cezalar | EN: per worker. | TR: 'ye çıkar.
+calc.114 | p2K | - | Cezalar | EN: Using an unlicensed agent | TR: İzinsiz aracı kullanmak
+calc.115 | p2B1 | L | Cezalar | EN: Fine on the | TR: İŞKUR izni olmayan bir aracıyla her çalıştığınızda
+calc.116 | p2Emp | - | Cezalar | EN: employer | TR: işverene
+calc.117 | p2B2 | L | Cezalar | EN: every time you use an agent who has no İŞKUR licence. The agent pays ₺341,812, and double if it happens again. | TR: kesilen ceza. Aracı ₺341.812 öder, tekrarında iki katı.
+calc.118 | p3T | - | Cezalar | EN: You pay for the deportation | TR: Sınır dışı masrafını siz ödersiniz
+calc.119 | p3B | - | Cezalar | EN: The employer must pay the worker's accommodation, return travel and health costs, and the same costs for the s | TR: İşveren, işçinin konaklama, dönüş yolculuğu ve sağlık masraflarını; ay
+calc.120 | p4T | - | Cezalar | EN: Your incentives stop | TR: Teşvikleriniz durur
+calc.121 | p4B | L | Cezalar | EN: If you employ someone without registration, your workplace loses every SGK incentive, including the minimum wa | TR: Kayıt dışı işçi çalıştırırsanız, işyeriniz asgari ücret desteği dahil 
+calc.122 | p5T | - | Cezalar | EN: The worker is deported | TR: İşçi sınır dışı edilir
+calc.123 | p5B | L | Cezalar | EN: The worker also gets a fine and is reported for deportation. You lose the person you trained and cannot employ | TR: İşçiye de ceza kesilir ve sınır dışı edilmek üzere bildirilir. Eğittiğ
+calc.124 | pmA | - | Cezalar | EN: Each worker found<br />without a permit | TR: İzinsiz çalıştığı tespit<br />edilen her bir işçi
+calc.125 | pmB | L | Cezalar | EN: Using an agent with<br />no İŞKUR licence | TR: İŞKUR izni bulunmayan<br />bir aracı kullanmak
+calc.126 | pmNote1 | - | Cezalar | EN: Both double if it happens again — and the second one is paid by | TR: Tekrarında ikisi de iki katına çıkar — ve ikincisini aracı değil
+calc.127 | pmYou | - | Cezalar | EN: you | TR: siz
+calc.128 | pmNote2 | - | Cezalar | EN: , not the agent. | TR: ödersiniz.
+calc.129 | pmBig1 | L | Cezalar | EN: One fine for one worker is | TR: Tek bir işçi için kesilen tek bir ceza, işi yasal yoldan yapmanın peşi
+calc.130 | pmBig2 | - | Cezalar | EN: more than three times | TR: üç katından fazlası
+calc.131 | pmBig3 | - | Cezalar | EN: what doing it legally costs you up front — permit and flight together are about ₺28,000. | TR: ıdır — izin ve uçak bileti birlikte yaklaşık ₺28.000 tutar.
+calc.132 | pmAsk | L | Cezalar | EN: So always ask an agency for its İŞKUR licence number. | TR: Bu yüzden aracı firmadan mutlaka İŞKUR izin belgesi numarasını isteyin
+calc.133 | pmOurs | - | Cezalar | EN: Ours is 1730. | TR: Bizimki 1730.
+calc.134 | pBan1 | L | Cezalar | EN: One fine for one worker is more than three times the up-front cost of hiring that person legally — the permit  | TR: Tek bir işçi için kesilen tek bir ceza, o kişiyi yasal yoldan işe alma
+calc.135 | pBanYou | - | Cezalar | EN: you | TR: siz
+calc.136 | pBan2 | L | Cezalar | EN: pay the fine if your agent has no licence, so always ask for the İŞKUR licence number. | TR: ödersiniz; bu yüzden mutlaka İŞKUR izin belgesi numarasını isteyin.
+calc.137 | pBanOurs | - | Cezalar | EN: Ours is 1730. | TR: Bizimki 1730.
+calc.138 | qH | - | Kota kontrolü | EN: Are you allowed to hire, and how many? | TR: İşçi alabilir misiniz, kaç kişi?
+calc.139 | qSub | - | Kota kontrolü | EN: Two things are checked before anyone looks at the salary: how many Turkish staff your workplace has, and wheth | TR: Maaşa bakılmadan önce iki şey kontrol edilir: işyerinizde kaç Türk çal
+calc.140 | qG1 | - | Kota kontrolü | EN: Gate 1 · The 5:1 ratio | TR: 1. Eşik · 5:1 oranı
+calc.141 | qLive | - | Kota kontrolü | EN: Live | TR: Canlı
+calc.142 | qStaffLbl | - | Kota kontrolü | EN: Turkish employees at this workplace | TR: Bu işyerindeki Türk çalışan sayısı
+calc.143 | qSameBranch | L | Kota kontrolü | EN: SGK-registered, same branch | TR: SGK'lı, aynı işyeri
+calc.144 | qSplit | - | Kota kontrolü | EN: How your headcount splits into places | TR: Çalışan sayınız kaç kontenjana karşılık geliyor
+calc.145 | qLegTr | - | Kota kontrolü | EN: Turkish employee | TR: Türk çalışan
+calc.146 | qLegPlace | - | Kota kontrolü | EN: Place unlocked | TR: Açılan kontenjan
+calc.147 | qLegInc | - | Kota kontrolü | EN: Incomplete block | TR: Tamamlanmamış grup
+calc.148 | qPicked1 | - | Kota kontrolü | EN: You picked | TR: Yukarıdaki hesaplayıcıda
+calc.149 | qPicked2 | - | Kota kontrolü | EN: in the cost calculator above. | TR: işçi seçtiniz.
+calc.150 | qRuleK | - | Kota kontrolü | EN: The rule in one line | TR: Kural tek cümlede
+calc.151 | qRule1 | L | Kota kontrolü | EN: For each foreign worker, your workplace must | TR: Her yabancı işçi için işyerinizde SGK'ya kayıtlı 5 Türk çalışan
+calc.152 | qRuleAlready | - | Kota kontrolü | EN: already | TR: halihazırda
+calc.153 | qRule2 | L | Kota kontrolü | EN: have 5 Turkish employees registered with SGK. Only complete groups of five count — 9 employees give one place, | TR: bulunmalıdır. Yalnızca tam beşlik gruplar sayılır — 9 çalışan iki deği
+calc.154 | undefined | - | Kota kontrolü | EN: Counted | TR: 
+calc.155 | qB1b | - | Kota kontrolü | EN: per branch | TR: İşyeri bazında
+calc.156 | qB1c | - | Kota kontrolü | EN: , not per company — all five must be at the same workplace. | TR: sayılır, şirket bazında değil — beşinin de aynı işyerinde olması gerek
+calc.157 | undefined | - | Kota kontrolü | EN: Counted | TR: 
+calc.158 | qB2b | - | Kota kontrolü | EN: on the day you apply | TR: Başvuru günü
+calc.159 | qB2c | - | Kota kontrolü | EN: — people you plan to hire do not count. | TR: itibarıyla sayılır — işe almayı planladıklarınız sayılmaz.
+calc.160 | qB3a | - | Kota kontrolü | EN: If the foreign worker is a | TR: Yabancı işçi
+calc.161 | qB3b | - | Kota kontrolü | EN: company partner | TR: şirket ortağı
+calc.162 | qB3c | - | Kota kontrolü | EN: , this rule is checked only in the last six months of the first permit. | TR: ise bu kural yalnızca ilk iznin son altı ayında kontrol edilir.
+calc.163 | qG2 | - | Kota kontrolü | EN: Gate 2 · Your company | TR: 2. Eşik · Şirketiniz
+calc.164 | qG2a | - | Kota kontrolü | EN: Besides the 5:1 rule, your company must meet | TR: 5:1 kuralının yanı sıra şirketinizin şunlardan
+calc.165 | qG2One | - | Kota kontrolü | EN: one | TR: birini
+calc.166 | qG2b | - | Kota kontrolü | EN: of these. If the company meets none of them, the application is refused, even with enough Turkish staff. | TR: karşılaması gerekir. Hiçbirini karşılamıyorsa, yeterli Türk çalışan ol
+calc.167 | qCap | - | Kota kontrolü | EN: paid-in capital | TR: ödenmiş sermaye
+calc.168 | qSales | - | Kota kontrolü | EN: gross sales, last year | TR: brüt satış, geçen yıl
+calc.169 | qExp | - | Kota kontrolü | EN: exports, last year | TR: ihracat, geçen yıl
+calc.170 | qHouse | - | Kota kontrolü | EN: Household employers and a few exempt groups do not have to meet this condition. | TR: Ev hizmetlerinde çalıştıranlar ve bazı muaf gruplar bu şartı karşılama
+calc.171 | qHouseL | - | Kota kontrolü | EN: Check yours in the pass check → | TR: Geçer-mi testinde kontrol edin →
+calc.172 | qExK | - | Kota kontrolü | EN: When neither gate applies · exemptions | TR: Hiçbir eşiğin geçerli olmadığı durumlar · muafiyetler
+calc.173 | qExFootL | - | Kota kontrolü | EN: We check your quota before quoting | TR: Teklif vermeden önce kotanızı kontrol ederiz
+calc.174 | qExFoot | - | Kota kontrolü | EN: — no application is filed that we already know will fail on this. | TR: — bu yüzden reddedileceğini bildiğimiz hiçbir başvuruyu yapmayız.
+calc.175 | qmS1 | - | Kota kontrolü | EN: Step 1 | TR: 1. Adım
+calc.176 | qmS1T | L | Kota kontrolü | EN: How many Turkish employees does this workplace have on SGK? | TR: Bu işyerinde SGK'lı kaç Türk çalışan var?
+calc.177 | qmAns | - | Kota kontrolü | EN: Your answer | TR: Cevabınız
+calc.178 | qmWhy | - | Kota kontrolü | EN: Why — the 5:1 rule | TR: Neden — 5:1 kuralı
+calc.179 | qmWhyA | - | Kota kontrolü | EN: Every 5 Turkish employees unlock 1 foreign worker. | TR: Her 5 Türk çalışan 1 yabancı işçi kontenjanı açar.
+calc.180 | qmWhyB | - | Kota kontrolü | EN: Only complete fives count, so 9 staff still give one place — and they must already be registered at this same  | TR: Yalnızca tam beşlikler sayılır; 9 çalışan yine bir kontenjan verir — v
+calc.181 | qmS2 | - | Kota kontrolü | EN: Step 2 · your company | TR: 2. Adım · şirketiniz
+calc.182 | qmS2a | - | Kota kontrolü | EN: Besides the staff rule, the company must meet | TR: Çalışan kuralının yanı sıra şirketin şu üçünden
+calc.183 | qmS2One | - | Kota kontrolü | EN: one | TR: birini
+calc.184 | qmS2b | - | Kota kontrolü | EN: of these three: | TR: karşılaması gerekir:
+calc.185 | qmCap | - | Kota kontrolü | EN: paid-in capital | TR: ödenmiş sermaye
+calc.186 | qmSales | - | Kota kontrolü | EN: gross sales | TR: brüt satış
+calc.187 | qmExp | - | Kota kontrolü | EN: exports | TR: ihracat
+calc.188 | qmNote | - | Kota kontrolü | EN: Household employers and some exempt groups skip this. Exemptions are listed below. | TR: Ev hizmetlerinde çalıştıranlar ve bazı muaf gruplar bunun dışındadır. 
+calc.189 | cmH | - | Yerli vs yurt dışı | EN: Local hire vs overseas hire | TR: Yerli işe alım vs yurt dışından alım
+calc.190 | cmSub | L | Yerli vs yurt dışı | EN: The salary and SGK cost are the same for both. Turkish labour law applies to both, and we never quote below th | TR: Maaş ve SGK maliyeti ikisinde de aynıdır. Türk iş hukuku ikisi için de
+calc.191 | cmOptA | - | Yerli vs yurt dışı | EN: Option A | TR: A Seçeneği
+calc.192 | cmOptAT | - | Yerli vs yurt dışı | EN: Local Turkish hire | TR: Yerli Türk çalışan
+calc.193 | cmOptB | - | Yerli vs yurt dışı | EN: Option B | TR: B Seçeneği
+calc.194 | cmOptBT | - | Yerli vs yurt dışı | EN: Overseas hire through us | TR: Bizim aracılığımızla yurt dışından
+calc.195 | cmR1 | L | Yerli vs yurt dışı | EN: Salary & SGK | TR: Maaş ve SGK
+calc.196 | cmR1a | L | Yerli vs yurt dışı | EN: Same gross salary and SGK — | TR: Aynı brüt maaş ve SGK —
+calc.197 | cmR1aS | L | Yerli vs yurt dışı | EN: the law treats both the same | TR: kanun ikisine de aynı davranır
+calc.198 | cmR1b | L | Yerli vs yurt dışı | EN: Same gross salary and SGK — | TR: Aynı brüt maaş ve SGK —
+calc.199 | cmR1bS | - | Yerli vs yurt dışı | EN: identical payroll cost | TR: birebir aynı bordro maliyeti
+calc.200 | cmR2 | - | Yerli vs yurt dışı | EN: Permit & travel | TR: İzin ve seyahat
+calc.201 | cmR2a | - | Yerli vs yurt dışı | EN: None | TR: Yok
+calc.202 | cmR2bS | - | Yerli vs yurt dışı | EN: About ₺16,000 in state fees, once | TR: Tek seferlik yaklaşık ₺16.000 devlet harcı
+calc.203 | cmR2b | - | Yerli vs yurt dışı | EN: + the flight — paid one time, for years of work | TR: + uçak bileti — bir kez ödenir, yıllarca çalışma için
+calc.204 | cmR3 | - | Yerli vs yurt dışı | EN: Who accepts the wage | TR: Bu ücreti kim kabul ediyor
+calc.205 | cmR3a | - | Yerli vs yurt dışı | EN: At minimum wage, most local applicants keep looking. For the same money they can work in a shop or café in the | TR: Asgari ücrette yerli adayların çoğu aramaya devam eder. Aynı parayla ş
+calc.206 | cmR3bS | - | Yerli vs yurt dışı | EN: The same registered wage fills the job | TR: Aynı kayıtlı ücret işi doldurur
+calc.207 | cmR3b | - | Yerli vs yurt dışı | EN: — people apply for it, and for them this is a real career step, not a short-term job | TR: — bu işe başvuru gelir ve onlar için bu kısa vadeli bir iş değil, gerç
+calc.208 | cmR4 | - | Yerli vs yurt dışı | EN: Where the work is | TR: İşin bulunduğu yer
+calc.209 | cmR4a | - | Yerli vs yurt dışı | EN: Factories in small cities and industrial zones have the hardest time. Young people move to the big cities and  | TR: Küçük şehirlerdeki ve organize sanayi bölgelerindeki fabrikalar en çok
+calc.210 | cmR4bS | - | Yerli vs yurt dışı | EN: Workers move to where the factory is | TR: İşçiler fabrikanın bulunduğu yere gelir
+calc.211 | cmR4b | - | Yerli vs yurt dışı | EN: — a small city, a farm or a remote site is not a problem for these candidates | TR: — küçük bir şehir, bir çiftlik ya da uzak bir şantiye bu adaylar için 
+calc.212 | cmR5 | - | Yerli vs yurt dışı | EN: Availability | TR: Bulunabilirlik
+calc.213 | cmR5a | - | Yerli vs yurt dışı | EN: Hard for skilled trades — welders, machine operators and seasonal jobs often stay empty for months | TR: Nitelikli mesleklerde zor — kaynakçı, makine operatörü ve sezonluk işl
+calc.214 | cmR5bS | - | Yerli vs yurt dışı | EN: Checked candidates, ready now | TR: Değerlendirilmiş adaylar, hemen hazır
+calc.215 | cmR5b | - | Yerli vs yurt dışı | EN: — their skills are tested before you interview them | TR: — becerileri siz görüşmeden önce test edilir
+calc.216 | cmR6 | - | Yerli vs yurt dışı | EN: Retention | TR: Kalıcılık
+calc.217 | cmR6a | - | Yerli vs yurt dışı | EN: People leave often in low-wage jobs, so you hire and train again and again | TR: Düşük ücretli işlerde sık ayrılma olur, siz de tekrar tekrar işe alıp 
+calc.218 | cmR6b1 | - | Yerli vs yurt dışı | EN: The permit is | TR: İzin
+calc.219 | cmR6bS | - | Yerli vs yurt dışı | EN: tied to your workplace | TR: işyerinize bağlıdır
+calc.220 | cmR6b2 | - | Yerli vs yurt dışı | EN: , so the worker stays with you for the contract | TR: , böylece işçi sözleşme boyunca sizde kalır
+calc.221 | cmR7 | - | Yerli vs yurt dışı | EN: Admin load | TR: İdari yük
+calc.222 | cmR7a | - | Yerli vs yurt dışı | EN: Your own time, or your accountant's | TR: Sizin veya mali müşavirinizin zamanı
+calc.223 | cmR7b1 | L | Yerli vs yurt dışı | EN: Finding, checking, permits and SGK paperwork are | TR: Bulma, kontrol, izinler ve SGK evrak işleri
+calc.224 | cmR7bS | - | Yerli vs yurt dışı | EN: done by us | TR: bizim tarafımızdan yapılır
+calc.225 | ltT | - | Yerli vs yurt dışı | EN: This is a long-term hire, not a stopgap | TR: Bu uzun vadeli bir işe alımdır, geçici bir çözüm değil
+calc.226 | ltSub | - | Yerli vs yurt dışı | EN: The one-off costs only look big if you think of the worker as temporary. In practice these hires stay for year | TR: Tek seferlik masraflar yalnızca işçiyi geçici görürseniz büyük durur. 
+calc.227 | ltK1 | - | Yerli vs yurt dışı | EN: The permit ladder | TR: İzin Süreci
+calc.228 | ltY1c | - | Yerli vs yurt dışı | EN: 1 year | TR: 1 yıl
+calc.229 | ltY2c | - | Yerli vs yurt dışı | EN: +2 years | TR: +2 yıl
+calc.230 | ltY3c | - | Yerli vs yurt dışı | EN: +3 years | TR: +3 yıl
+calc.231 | ltB1 | - | Yerli vs yurt dışı | EN: The first permit is for one year, then it extends by two, then by three. That takes the same worker to six yea | TR: İlk izin bir yıllıktır, sonra iki yıl, ardından üç yıl uzatılır. Bu, a
+calc.232 | ltK2 | - | Yerli vs yurt dışı | EN: Why they stay | TR: Neden kalıyorlar
+calc.233 | ltB2 | - | Yerli vs yurt dışı | EN: The permit is tied to your workplace, so they cannot move to the employer down the road mid-contract. They rel | TR: İzin işyerinize bağlıdır; sözleşme ortasında yandaki işverene geçemezl
+calc.234 | ltK3 | - | Yerli vs yurt dışı | EN: What that is worth | TR: Bunun değeri ne
+calc.235 | ltB3 | - | Yerli vs yurt dışı | EN: Every time someone walks out you pay again — advertising, interviews, the notice period, three months of train | TR: Biri işten her ayrıldığında yeniden ödersiniz — ilan, görüşmeler, ihba
+calc.236 | ltSpread | - | Yerli vs yurt dışı | EN: The one-off cost, spread over time — per worker | TR: Tek seferlik maliyetin zamana yayılmış hali — işçi başına
+calc.237 | ltL1 | - | Yerli vs yurt dışı | EN: Permit fees + flight, paid once | TR: İzin harçları + uçak bileti, bir kez
+calc.238 | ltL2 | - | Yerli vs yurt dışı | EN: Per month if they stay 1 year | TR: 1 yıl kalırlarsa aylık
+calc.239 | ltL3 | - | Yerli vs yurt dışı | EN: Per month if they stay 3 years | TR: 3 yıl kalırlarsa aylık
+calc.240 | ltFoot | - | Yerli vs yurt dışı | EN: Renewals cost only the state fee — no new flight, no new search, no retraining. That is why employers who have | TR: Yenilemeler yalnızca devlet harcı kadar tutar — yeni uçak bileti yok, 
+calc.241 | cmClose | - | Yerli vs yurt dışı | EN: We say it openly: if you can fill the job locally, do that — it is simpler. This route is for the jobs that st | TR: Açıkça söylüyoruz: işi yerelden doldurabiliyorsanız onu yapın — daha b
+calc.242 | cmmK | - | Yerli vs yurt dışı | EN: The short answer | TR: Kısa cevap
+calc.243 | cmmA1 | L | Yerli vs yurt dışı | EN: Salary and SGK are | TR: Maaş ve SGK, yerli ve yurt dışından işe alımda
+calc.244 | cmmA2 | - | Yerli vs yurt dışı | EN: exactly the same | TR: birebir aynı
+calc.245 | cmmA3 | - | Yerli vs yurt dışı | EN: for a local and an overseas hire. Only two things differ. | TR: dır. Yalnızca iki şey değişir.
+calc.246 | cmm1 | - | Yerli vs yurt dışı | EN: 1 · What overseas costs extra | TR: 1 · Yurt dışının ek maliyeti
+calc.247 | cmmFee | - | Yerli vs yurt dışı | EN: state fees, once | TR: devlet harcı, tek sefer
+calc.248 | cmmPlus | - | Yerli vs yurt dışı | EN: Plus one flight. Both are paid a single time — the permit then renews with you, cheaper each year. | TR: Bir de uçak bileti. İkisi de tek sefer ödenir — izin sonrasında sizinl
+calc.249 | cmm2 | - | Yerli vs yurt dışı | EN: 2 · What you get for it | TR: 2 · Karşılığında ne alıyorsunuz
+calc.250 | cmmB1S | - | Yerli vs yurt dışı | EN: The job actually fills. | TR: İş gerçekten doluyor.
+calc.251 | cmmB1 | - | Yerli vs yurt dışı | EN: At the same registered wage local applicants keep looking; these candidates apply and stay. | TR: Aynı kayıtlı ücrette yerli adaylar aramaya devam ederken bu adaylar ba
+calc.252 | cmmB2S | - | Yerli vs yurt dışı | EN: Location is not a problem. | TR: Konum sorun değil.
+calc.253 | cmmB2 | - | Yerli vs yurt dışı | EN: Workers move to the factory, farm or site — small cities included. | TR: İşçiler fabrikaya, çiftliğe veya şantiyeye gelir — küçük şehirler dahi
+calc.254 | cmmB3S | - | Yerli vs yurt dışı | EN: Skills tested first. | TR: Beceriler önce test edilir.
+calc.255 | cmmB3 | - | Yerli vs yurt dışı | EN: Trade-tested candidates, ready now — no months of empty shifts. | TR: Mesleği sınanmış adaylar, hemen hazır — aylarca boş vardiya yok.
+calc.256 | cmmB4S | - | Yerli vs yurt dışı | EN: They stay for the contract. | TR: Sözleşme boyunca kalırlar.
+calc.257 | cmmB4 | - | Yerli vs yurt dışı | EN: The permit is tied to your workplace, so you stop re-hiring and re-training. | TR: İzin işyerinize bağlıdır, böylece tekrar işe alma ve eğitme döngüsü bi
+calc.258 | cmmB5S | - | Yerli vs yurt dışı | EN: Paperwork is ours. | TR: Evrak işi bizde.
+calc.259 | cmmB5 | L | Yerli vs yurt dışı | EN: Sourcing, checks, permit filing and SGK admin are done by us. | TR: Bulma, kontrol, izin başvurusu ve SGK işlemleri tarafımızdan yapılır.
+calc.260 | stH | - | Öğrenciler | EN: Hiring foreign students already in Turkey | TR: Türkiye'de bulunan yabancı öğrencileri işe alma
+calc.261 | stSub | - | Öğrenciler | EN: This is a different route with its own rules: no flight, no consulate step, and the person is already living i | TR: Bu, kendi kuralları olan farklı bir yol: uçak bileti yok, konsolosluk 
+calc.262 | st1T | - | Öğrenciler | EN: Associate & bachelor students | TR: Ön lisans ve lisans öğrencileri
+calc.263 | st1S | - | Öğrenciler | EN: Ön lisans · Lisans | TR: Ön lisans · Lisans
+calc.264 | st1a1 | - | Öğrenciler | EN: Only | TR: Yalnızca
+calc.265 | st1a2 | - | Öğrenciler | EN: after the first year is finished | TR: birinci sınıf tamamlandıktan sonra
+calc.266 | st1a3 | - | Öğrenciler | EN: — the prep year and the first year do not count. | TR: — hazırlık yılı ve birinci sınıf sayılmaz.
+calc.267 | st1b2 | - | Öğrenciler | EN: Part-time only | TR: Yalnızca yarı zamanlı
+calc.268 | st1b3 | - | Öğrenciler | EN: — up to 24 hours a week. | TR: — haftada en fazla 24 saat.
+calc.269 | st1c | - | Öğrenciler | EN: Students on a Turkish state scholarship may not be allowed to work while they study. | TR: Türkiye burslusu öğrencilerin öğrenim süresince çalışmasına izin veril
+calc.270 | st2T | - | Öğrenciler | EN: Master's & doctorate students | TR: Yüksek lisans ve doktora öğrencileri
+calc.271 | st2S | - | Öğrenciler | EN: Yüksek lisans · Doktora | TR: Yüksek lisans · Doktora
+calc.272 | st2a2 | - | Öğrenciler | EN: No waiting for the first year | TR: Birinci yılı beklemek yok
+calc.273 | st2a3 | - | Öğrenciler | EN: — they can work from any point in their studies. | TR: — öğrenimlerinin herhangi bir aşamasında çalışabilirler.
+calc.274 | st2b2 | - | Öğrenciler | EN: No limit on weekly hours | TR: Haftalık saat sınırı yok
+calc.275 | st2b3 | - | Öğrenciler | EN: — full-time work is possible. | TR: — tam zamanlı çalışma mümkündür.
+calc.276 | st2c | - | Öğrenciler | EN: Useful for engineering, IT, agriculture-science and management roles where the degree itself is the qualificat | TR: Diplomanın kendisinin nitelik sayıldığı mühendislik, bilişim, ziraat v
+calc.277 | st3T | - | Öğrenciler | EN: You apply, not the student | TR: Başvuruyu öğrenci değil siz yaparsınız
+calc.278 | st3B | - | Öğrenciler | EN: A student cannot file for their own permit. They find the job first, then you apply electronically to the Mini | TR: Öğrenci kendi izni için başvuramaz. Önce işi bulurlar, sonra siz onlar
+calc.279 | st4T | - | Öğrenciler | EN: Student residence stays separate | TR: Öğrenci ikameti ayrı kalır
+calc.280 | st4B | - | Öğrenciler | EN: The work permit does not replace their student residence permit — that must stay valid throughout, or the perm | TR: Çalışma izni öğrenci ikamet iznini ortadan kaldırmaz — ikametin sürekl
+calc.281 | st5T | - | Öğrenciler | EN: Student years do not build the 3-year exemption | TR: Öğrencilik yılları 3 yıl muafiyetini oluşturmaz
+calc.282 | st5B | - | Öğrenciler | EN: The "3 of the last 5 years resident" exemption above excludes student residence — so a fresh graduate does not | TR: Yukarıdaki "son 5 yılın 3'ünde ikamet" muafiyeti öğrenci ikametini kap
+calc.283 | stFootL | - | Öğrenciler | EN: Working without a permit is not a grey area. | TR: İzinsiz çalışma gri alan değildir.
+calc.284 | stFoot | L | Öğrenciler | EN: If a student is found working unregistered, the residence permit is cancelled by the migration authority and b | TR: Bir öğrenci kayıt dışı çalışırken tespit edilirse ikamet izni göç idar
+calc.285 | smK | - | Öğrenciler | EN: Why this route is easier | TR: Bu yol neden daha kolay
+calc.286 | smA1 | - | Öğrenciler | EN: No flight, no consulate step, no relocation — the person already lives in your city. What they may work depend | TR: Uçak bileti yok, konsolosluk adımı yok, taşınma yok — kişi zaten sizin
+calc.287 | smA2 | - | Öğrenciler | EN: what they study | TR: ne okuduklarına
+calc.288 | smA3 | - | Öğrenciler | EN: . | TR: bağlı.
+calc.289 | smB1 | - | Öğrenciler | EN: Bachelor / associate | TR: Lisans / ön lisans
+calc.290 | smB1S | - | Öğrenciler | EN: Lisans · Ön lisans | TR: Lisans · Ön lisans
+calc.291 | smB1a | - | Öğrenciler | EN: 24 h / week | TR: 24 saat / hafta
+calc.292 | smB1b | - | Öğrenciler | EN: part-time only | TR: yalnızca yarı zamanlı
+calc.293 | smB1c | - | Öğrenciler | EN: After year 1 | TR: 1. yıldan sonra
+calc.294 | smB1d | - | Öğrenciler | EN: prep year excluded | TR: hazırlık yılı hariç
+calc.295 | smB1n | - | Öğrenciler | EN: State-scholarship students may not be allowed to work at all while studying. | TR: Türkiye burslusu öğrencilerin öğrenim süresince hiç çalışmasına izin v
+calc.296 | smB2 | - | Öğrenciler | EN: Master's / doctorate | TR: Yüksek lisans / doktora
+calc.297 | smB2S | - | Öğrenciler | EN: Yüksek lisans · Doktora | TR: Yüksek lisans · Doktora
+calc.298 | smB2a | - | Öğrenciler | EN: Full-time | TR: Tam zamanlı
+calc.299 | smB2b | - | Öğrenciler | EN: no hour limit | TR: saat sınırı yok
+calc.300 | smB2c | - | Öğrenciler | EN: From day one | TR: İlk günden
+calc.301 | smB2d | - | Öğrenciler | EN: no waiting year | TR: bekleme yılı yok
+calc.302 | smB2n | - | Öğrenciler | EN: Best fit for engineering, IT, agri-science and management roles. | TR: Mühendislik, bilişim, ziraat ve yönetim pozisyonları için en uygunu.
+calc.303 | smR1S | - | Öğrenciler | EN: You apply, not the student. | TR: Başvuruyu öğrenci değil siz yaparsınız.
+calc.304 | smR1 | - | Öğrenciler | EN: They find the job, you file with the Ministry. | TR: Onlar işi bulur, siz Bakanlığa başvurursunuz.
+calc.305 | smR2S | - | Öğrenciler | EN: Student residence must stay valid | TR: Öğrenci ikameti geçerli kalmalı
+calc.306 | smR2 | - | Öğrenciler | EN: — the work permit falls with it. | TR: — çalışma izni onunla birlikte düşer.
+calc.307 | smR3S | - | Öğrenciler | EN: Student years do not count | TR: Öğrencilik yılları sayılmaz
+calc.308 | smR3 | - | Öğrenciler | EN: towards the 3-of-5-years exemption after graduation. | TR: — mezuniyet sonrası 5 yılın 3'ü muafiyetine dahil edilmez.
+calc.309 | smR4S | - | Öğrenciler | EN: Unregistered work cancels their residence. | TR: Kayıt dışı çalışma ikameti iptal ettirir.
+calc.310 | smR4 | - | Öğrenciler | EN: Already have a student working informally? Tell us — regularising is usually straightforward. | TR: Kayıt dışı çalışan bir öğrenciniz mi var? Bize söyleyin — yasal hale g
+calc.311 | navAbout | - | Menü ve genel etiketler | EN: About Us | TR: Hakkımızda
+calc.312 | navHire | - | Menü ve genel etiketler | EN: Hire Workers | TR: İşçi Talebi
+calc.313 | navCandidates | - | Menü ve genel etiketler | EN: Candidates | TR: Adaylar
+calc.314 | navPermits | - | Menü ve genel etiketler | EN: Work Permits | TR: Çalışma İzinleri
+calc.315 | navCalc | - | Menü ve genel etiketler | EN: Cost Calculator | TR: Maliyet Hesaplama
+calc.316 | navStories | - | Menü ve genel etiketler | EN: Success Stories | TR: Başarı Hikayeleri
+calc.317 | navContact | - | Menü ve genel etiketler | EN: Contact Us | TR: İletişim
+calc.318 | navBlog | - | Menü ve genel etiketler | EN: Blog | TR: Blog
+calc.319 | navBlogShort | - | Menü ve genel etiketler | EN: Blog & Guides | TR: Blog ve Rehberler
+calc.320 | navVerify | - | Menü ve genel etiketler | EN: Verify a Representative | TR: Temsilci Doğrula
+calc.321 | navPartner | - | Menü ve genel etiketler | EN: Partner With Us | TR: İş Ortaklığı
+calc.322 | navJoin | - | Menü ve genel etiketler | EN: Join Our Team | TR: Ekibimize Katılın
+calc.323 | navCrm | - | Menü ve genel etiketler | EN: CRM Login → | TR: CRM Girişi →
+calc.324 | navOpenCalc | - | Menü ve genel etiketler | EN: Open the calculator | TR: Hesaplayıcıyı aç
+calc.325 | fEmployers | - | Footer | EN: For Employers | TR: İşverenler İçin
+calc.326 | aIncT | - | Bölüm başlıkları | EN: Incentives that lower the bill | TR: Faturayı düşüren teşvikler
+calc.327 | aIncS | L | Bölüm başlıkları | EN: SGK discount, wage support, regional schemes | TR: SGK indirimi, ücret desteği, bölgesel programlar
+calc.328 | iH | - | Teşvikler | EN: Government incentives that lower the bill | TR: Faturayı düşüren devlet teşvikleri
+calc.329 | iSub | L | Teşvikler | EN: SGK incentives (teşvikler) are given to the workplace, not to the worker's nationality, so the same discounts  | TR: SGK teşvikleri işçinin uyruğuna değil işyerine verilir; bu yüzden Türk
+calc.330 | i1T | L | Teşvikler | EN: 5510 SGK premium discount | TR: 5510 SGK prim indirimi
+calc.331 | i1S | - | Teşvikler | EN: 2 points · 5 points in manufacturing | TR: 2 puan · imalatta 5 puan
+calc.332 | i2T | - | Teşvikler | EN: Minimum wage support | TR: Asgari ücret desteği
+calc.333 | i3T | - | Teşvikler | EN: Regional & investment incentives | TR: Bölgesel ve yatırım teşvikleri
+calc.334 | i3S | - | Teşvikler | EN: Up to the full employer share | TR: İşveren payının tamamına kadar
+calc.335 | i3B | - | Teşvikler | EN: With an investment incentive certificate, the employer premium share on minimum wage can be covered — in Zone  | TR: Yatırım teşvik belgesiyle asgari ücret üzerindeki işveren prim payı ka
+calc.336 | i3F | - | Teşvikler | EN: Not modelled in the calculator — your accountant will know if your workplace holds one. | TR: Hesaplayıcıda modellenmemiştir — işyerinizin böyle bir belgesi olup ol
+calc.337 | i2S | - | Teşvikler | EN: ₺1,270 per insured worker / month (2026) | TR: Sigortalı işçi başına ayda ₺1.270 (2026)
+calc.338 | i2B | L | Teşvikler | EN: ₺42.33 per day, offset against your SGK premiums from the Unemployment Insurance Fund. Continues in 2026 for w | TR: Günlük ₺42,33; İşsizlik Sigortası Fonu'ndan SGK primlerinizden mahsup 
+calc.339 | i2F1 | - | Teşvikler | EN: On 10 workers that is | TR: 10 işçide bu, prim faturanızdan ayda
+calc.340 | i2F2 | - | Teşvikler | EN: a month off your premium bill. | TR: düşer.
+calc.341 | i1B | - | Teşvikler | EN: The Treasury covers part of the employer's disability–old age–death premium. Manufacturing workplaces get 5 po | TR: Hazine, işverenin malüllük–yaşlılık–ölüm priminin bir kısmını karşılar
+calc.342 | iNotT1 | - | Teşvikler | EN: What the state does | TR: Devletin öde
+calc.343 | iNotEm | - | Teşvikler | EN: not | TR: mediği
+calc.344 | iNotT2 | - | Teşvikler | EN: pay for | TR: şeyler
+calc.345 | iN1T | - | Teşvikler | EN: No subsidy for hiring a foreigner | TR: Yabancı işçi almak için destek yok
+calc.346 | iN1B | - | Teşvikler | EN: There is no grant, refund or bonus for employing a foreign worker. If someone promises you one, it is not true | TR: Yabancı işçi çalıştırmak için hibe, iade veya prim yoktur. Size böyle 
+calc.347 | iN2T | - | Teşvikler | EN: Agricultural support goes to the producer | TR: Tarımsal destek üreticiye gider
+calc.348 | iN2B | - | Teşvikler | EN: Agricultural subsidies (tarımsal destekler) fund production — land, diesel, seed, livestock. They are not empl | TR: Tarımsal destekler üretimi finanse eder — arazi, mazot, tohum, hayvanc
+calc.349 | iN3T | - | Teşvikler | EN: Some incentives exclude foreigners | TR: Bazı teşvikler yabancıları kapsam dışı bırakır
+calc.350 | iN3B | L | Teşvikler | EN: Incentives that require the hire to be registered unemployed at İŞKUR (7103 / geçici 19) cannot be used, becau | TR: İşe alınan kişinin İŞKUR'a işsiz kayıtlı olmasını gerektiren teşvikler
+calc.351 | iN4T | - | Teşvikler | EN: KOSGEB wage support excludes them by rule | TR: KOSGEB ücret desteği kural gereği kapsam dışı bırakır
+calc.352 | iN4B | - | Teşvikler | EN: The qualified-personnel (nitelikli eleman) salary support is written for Turkish citizens with a university de | TR: Nitelikli eleman ücret desteği üniversite mezunu Türk vatandaşları içi
+calc.353 | iCanL | - | Teşvikler | EN: What you can get: | TR: Alabilecekleriniz:
+calc.354 | iCan | L | Teşvikler | EN: the 5510 premium discount and the minimum wage support above. Both belong to your workplace and both are alrea | TR: yukarıdaki 5510 prim indirimi ve asgari ücret desteği. İkisi de işyeri
+calc.355 | iWarnL | - | Teşvikler | EN: These discounts depend on your workplace, not on us. | TR: Bu indirimler bize değil, işyerinize bağlıdır.
+calc.356 | iWarn | L | Teşvikler | EN: To get any SGK incentive, the workplace must have no unpaid premium debt, must file its declarations on time a | TR: Herhangi bir SGK teşviğinden yararlanmak için işyerinin ödenmemiş prim
+calc.357 | imK | - | Teşvikler | EN: Already in your estimate | TR: Tahmininize zaten dahil
+calc.358 | im1S | L | Teşvikler | EN: SGK premium discount (5510). | TR: SGK prim indirimi (5510).
+calc.359 | im1a | - | Teşvikler | EN: Your rate above is | TR: Yukarıdaki oranınız tam %23,75 yerine
+calc.360 | im1b | - | Teşvikler | EN: instead of the full 23.75% — manufacturing gets 18.75%. | TR: — imalatta %18,75.
+calc.361 | im2S | - | Teşvikler | EN: Minimum wage support ₺1,270 | TR: Asgari ücret desteği ₺1.270
+calc.362 | im2 | - | Teşvikler | EN: per worker per month — on 10 workers that is ₺12,700 off the premium bill. | TR: işçi başına ayda — 10 işçide prim faturasından ₺12.700 düşer.
+calc.363 | imK2 | - | Teşvikler | EN: One more — case by case | TR: Bir tane daha — duruma göre
+calc.364 | im3S | - | Teşvikler | EN: Regional & investment incentives. | TR: Bölgesel ve yatırım teşvikleri.
+calc.365 | im3 | - | Teşvikler | EN: With an investment certificate the whole employer share on minimum wage can be covered. Not in the calculator  | TR: Yatırım belgesiyle asgari ücret üzerindeki işveren payının tamamı karş
+calc.366 | imK3 | - | Teşvikler | EN: What does not exist | TR: Var olmayanlar
+calc.367 | undefined | - | Teşvikler | EN: There is | TR: 
+calc.368 | im4S | - | Teşvikler | EN: no grant or refund for hiring a foreign worker | TR: Yabancı işçi almak için hibe veya iade yoktur
+calc.369 | im4b | L | Teşvikler | EN: . İŞKUR-based incentives (7103) and KOSGEB wage support exclude foreign nationals by rule, and agricultural su | TR: . İŞKUR'a dayalı teşvikler (7103) ve KOSGEB ücret desteği kural gereği
+calc.370 | gCap | - | Diğer | EN: ₺100,000 | TR: ₺100.000
+calc.371 | gSales | - | Diğer | EN: ₺800,000 | TR: ₺800.000
+calc.372 | gExp | - | Diğer | EN: $250,000 | TR: 250.000 $
+calc.373 | gmCap | - | Diğer | EN: ₺100k | TR: ₺100.000
+calc.374 | gmSales | - | Diğer | EN: ₺800k | TR: ₺800.000
+calc.375 | gmExp | - | Diğer | EN: $250k | TR: 250.000 $
+calc.376 | pcK | - | Geçer-mi testi | EN: Pass check | TR: Geçer-mi testi
+calc.377 | pcReset | - | Geçer-mi testi | EN: Reset ✕ | TR: Sıfırla ✕
+calc.378 | pcPriv | - | Geçer-mi testi | EN: Your answers are not sent to us — the check runs in your browser. | TR: Cevaplarınız bize gönderilmez — kontrol tarayıcınızda çalışır.
+calc.379 | pcFix | - | Geçer-mi testi | EN: Fix these first | TR: Önce bunları düzeltin
+calc.380 | pcSideT | - | Geçer-mi testi | EN: Want your exact number? | TR: Net rakamınızı ister misiniz?
+calc.381 | pcSideB | - | Geçer-mi testi | EN: Send us the roles and headcount — written quote within 24 hours. | TR: Meslekleri ve işçi sayısını gönderin — 24 saat içinde yazılı teklif.
+calc.382 | pcSub | - | Geçer-mi testi | EN: Most refusals come from five things. Answer them honestly. It takes a minute and shows you whether to file now | TR: Retlerin çoğu beş şeyden kaynaklanır. Bunları dürüstçe cevaplayın. Bir
+calc.383 | fqH | - | SSS | EN: Cost questions | TR: Maliyet soruları
+calc.384 | fqSub | - | SSS | EN: What employers ask when they see these numbers for the first time. | TR: İşverenlerin bu rakamları ilk gördüklerinde sordukları.
+calc.385 | rtNone | - | Teşvikler | EN: No discount | TR: İndirim yok
+calc.386 | rtMost | - | Teşvikler | EN: Most sectors (2 pt) | TR: Çoğu sektör (2 puan)
+calc.387 | rtManuf | - | Teşvikler | EN: Manufacturing (5 pt) | TR: İmalat (5 puan)
+calc.388 | bdgCalc | - | Teşvikler | EN: In the calculator | TR: Hesaplayıcıda var
+calc.389 | bdgCase | - | Teşvikler | EN: Case by case | TR: Duruma göre
+calc.390 | footDirections | - | Footer | EN: Get directions | TR: Yol tarifi alın
+calc.391 | footWa | - | Footer | EN: WhatsApp Us → | TR: WhatsApp'tan yazın →
+calc.392 | footAppTitle | - | Footer | EN: Manage your workforce anywhere | TR: İş gücünüzü her yerden yönetin
+calc.393 | footAppSub | - | Footer | EN: Approve candidates, track permits and get instant updates. | TR: Adayları onaylayın, izinleri takip edin ve anlık bildirim alın.
+calc.394 | footOfficeAntalya | - | Footer | EN: Antalya · Head office | TR: Antalya · Merkez ofis
+calc.395 | footOfficeKarachi | - | Footer | EN: Karachi · Tech office | TR: Karaçi · Teknoloji ofisi
+calc.396 | footHoursAntalya | - | Footer | EN: Mon–Fri 09:00–18:00 | TR: Pzt–Cum 09:00–18:00
+calc.397 | footHoursKarachi | - | Footer | EN: Mon–Sat 10:00–19:00 PKT | TR: Pzt–Cmt 10:00–19:00 PKT
+calc.398 | navCrmPlain | - | Menü ve genel etiketler | EN: CRM Login | TR: CRM Girişi
+calc.399 | sheetPick | - | Diğer | EN: Pick a profession | TR: Meslek seçin
+calc.400 | footCompany | - | Footer | EN: Company | TR: Kurumsal
+calc.401 | footContact | - | Footer | EN: Contact | TR: İletişim
+calc.402 | footApp | - | Footer | EN: Get Our App | TR: Uygulamamız
+calc.403 | privacy | - | Footer | EN: Privacy | TR: Gizlilik Politikası
+calc.404 | terms | - | Footer | EN: Terms | TR: Kullanım Şartları
+calc.405 | faqEyebrow | - | SSS | EN: FAQ | TR: SSS
+calc.406 | lblEmail | - | Diğer | EN: Email | TR: E-posta
+calc.407 | pFine1 | - | Cezalar | EN: ₺102,504 | TR: ₺102.504
+calc.408 | pFine1x | - | Cezalar | EN: ₺205,008 | TR: ₺205.008
+calc.409 | pFine2 | - | Cezalar | EN: ₺170,906 | TR: ₺170.906
+calc.410 | pFine2x | - | Cezalar | EN: ₺341,812 | TR: ₺341.812
+calc.411 | cmpFee | - | Yerli vs yurt dışı | EN: ≈ ₺16,000 | TR: ≈ ₺16.000
+calc.412 | lblLanguage | - | Menü ve genel etiketler | EN: Language | TR: Dil
+calc.413 | pcSend | - | Geçer-mi testi | EN: Send my result to a specialist | TR: Sonucumu bir uzmana gönder
+calc.414 | legal | L | Footer | EN: İŞKUR permit No. 1730 · Job seekers are never charged a fee (law No. 4904) · Tax No: 48422122 | TR: İŞKUR İzin Belgesi No: 1730 · İş arayanlardan hiçbir ücret alınmaz (49
+calc.415 | rvNone | - | Teşvikler | EN: 23.75% | TR: %23,75
+calc.416 | rvMost | - | Teşvikler | EN: 21.75% | TR: %21,75
+calc.417 | rvManuf | - | Teşvikler | EN: 18.75% | TR: %18,75
+calc.418 | lic | L | Menü ve genel etiketler | EN: İŞKUR Licensed · Permit No. 1730 | TR: Özel İstihdam Bürosu · İzin Belgesi No: 1730
+calc.419 | licShort | L | Menü ve genel etiketler | EN: İŞKUR · 1730 | TR: İŞKUR · 1730
+calc.420 | nationwide | - | Diğer | EN: Serving employers across Türkiye | TR: Türkiye genelinde işverenlere hizmet
+calc.421 | brkHide | - | Hesaplayıcı | EN: Hide the breakdown | TR: Dökümü gizle
+calc.422 | brkShow | - | Hesaplayıcı | EN: See where the money goes | TR: Para nereye gidiyor?
+calc.423 | advFew | - | Hesaplayıcı | EN: Fewer options | TR: Daha az seçenek
+calc.424 | advMore | L | Hesaplayıcı | EN: + Contract, extras & SGK discount | TR: + Sözleşme, ekstralar ve SGK teşviki
+calc.425 | quotaNone | - | Diğer | EN: No foreign workers yet | TR: Henüz yabancı işçi yok
+calc.426 | quotaTitleNo | - | Diğer | EN: Standard rule not met | TR: Standart kural karşılanmıyor
+calc.427 | quotaTitleYes | - | Diğer | EN: Standard rule allows | TR: Standart kuralın izin verdiği
+calc.428 | quotaMsgExact | - | Diğer | EN: Counted as 5 Turkish employees for each foreign worker. Your number fits exactly. | TR: Her yabancı işçi için 5 Türk çalışan sayılır. Sayınız tam olarak uyuyo
+calc.429 | quotaVsOk | - | Diğer | EN: That is within your quota. | TR: Bu, kotanızın içinde.
+calc.430 | exTabSector | - | Kota kontrolü | EN: By sector | TR: Sektöre göre
+calc.431 | exTabCompany | - | Kota kontrolü | EN: By company | TR: Şirkete göre
+calc.432 | exTabPerson | - | Kota kontrolü | EN: By candidate | TR: Adaya göre
+calc.433 | pcYes | - | Geçer-mi testi | EN: Yes | TR: Evet
+calc.434 | pcNo | - | Geçer-mi testi | EN: No | TR: Hayır
+calc.435 | pcMaybe | - | Geçer-mi testi | EN: Not sure | TR: Emin değilim
+calc.436 | pcClear | - | Geçer-mi testi | EN: Clear — recheck above ↑ | TR: Uygun — yukarıdan kontrol edin ↑
+calc.437 | pcShort | - | Geçer-mi testi | EN: Short — fix above ↑ | TR: Yetersiz — yukarıdan düzeltin ↑
+calc.438 | vIdleK | - | Geçer-mi testi | EN: Your result | TR: Sonucunuz
+calc.439 | vIdleT | - | Geçer-mi testi | EN: Answer the five checks | TR: Beş kontrolü cevaplayın
+calc.440 | vIdleB | - | Geçer-mi testi | EN: The quota check is filled in from the calculator above. Answer the other four and you get a straight verdict. | TR: Kota kontrolü yukarıdaki hesaplayıcıdan otomatik dolar. Diğer dördünü 
+calc.441 | vProgK | - | Geçer-mi testi | EN: In progress | TR: Devam ediyor
+calc.442 | vProgT | - | Geçer-mi testi | EN: So far, so good | TR: Şu ana kadar iyi
+calc.443 | vProgB | - | Geçer-mi testi | EN: Nothing has failed yet. Finish the remaining checks for the full verdict. | TR: Henüz hiçbir şey takılmadı. Tam sonuç için kalan kontrolleri tamamlayı
+calc.444 | pcConfirm | - | Geçer-mi testi | EN: Confirm: | TR: Teyit edin:
+calc.445 | ckCapT | - | Geçer-mi testi | EN: Your company meets one of the financial criteria | TR: Şirketiniz mali şartlardan birini karşılıyor
+calc.446 | ckCapB | - | Geçer-mi testi | EN: ₺100,000 paid-in capital, ₺800,000 gross sales or $250,000 exports in the last financial year — any one of the | TR: Son mali yılda ₺100.000 ödenmiş sermaye, ₺800.000 brüt satış veya 250.
+calc.447 | ckCapF | - | Geçer-mi testi | EN: Company criteria not met. Household employers and a few categories are outside it — send us your figures befor | TR: Şirket şartları karşılanmıyor. Ev hizmetlerinde çalıştıranlar ve birka
+calc.448 | ckQuoT | - | Geçer-mi testi | EN: You have enough Turkish employees for the 5:1 rule | TR: 5:1 kuralı için yeterli Türk çalışanınız var
+calc.449 | ckSgkT | L | Geçer-mi testi | EN: No overdue SGK or tax debt at this workplace | TR: Bu işyerinde vadesi geçmiş SGK veya vergi borcu yok
+calc.450 | ckSgkB | - | Geçer-mi testi | EN: Premiums and filings up to date, and no unregistered-employment finding on record. Debt blocks the permit and  | TR: Primler ve beyanlar güncel, kayıtlarda kayıt dışı istihdam tespiti yok
+calc.451 | ckSgkF | L | Geçer-mi testi | EN: Clear the SGK or tax debt, or put a payment plan in place — the file stalls at the Ministry otherwise. | TR: SGK veya vergi borcunu kapatın ya da bir ödeme planına bağlayın — aksi
+calc.452 | ckSalT | - | Geçer-mi testi | EN: The salary you will declare is at or above the legal minimum | TR: Beyan edeceğiniz maaş yasal alt sınırda veya üzerinde
+calc.453 | ckDocT | - | Geçer-mi testi | EN: Documents ready, translated and notarised | TR: Belgeler hazır, tercüme ve noter onaylı
+calc.454 | ckDocB | - | Geçer-mi testi | EN: Passport, diploma or trade certificate with a sworn Turkish translation (plus denklik for foreign degrees), si | TR: Pasaport, yeminli Türkçe tercümesiyle diploma veya ustalık belgesi (ya
+calc.455 | ckDocF | - | Geçer-mi testi | EN: Get the sworn translations and notarisations done before the file opens — we send the exact list per nationali | TR: Dosya açılmadan önce yeminli tercüme ve noter onaylarını tamamlayın — 
+calc.456 | vRes | - | Geçer-mi testi | EN: Result | TR: Sonuç
+calc.457 | vGreenT | - | Geçer-mi testi | EN: Nothing blocking — you can file | TR: Engel yok — başvurabilirsiniz
+calc.458 | vGreenB | - | Geçer-mi testi | EN: All five checks pass. On this basis the application is in normal shape; the remaining variables are the candid | TR: Beş kontrolün hepsi geçti. Bu temelde başvuru normal durumda; kalan de
+calc.459 | vAmber1 | - | Geçer-mi testi | EN: One thing to confirm first | TR: Önce teyit edilmesi gereken bir şey var
+calc.460 | vAmberB | - | Geçer-mi testi | EN: Nothing has failed, but an unchecked assumption becomes a refusal later. Confirm the items below with your acc | TR: Henüz hiçbir şey takılmadı, ancak kontrol edilmemiş bir varsayım sonra
+calc.461 | vRed1 | - | Geçer-mi testi | EN: One blocker — fix it before filing | TR: Bir engel — başvurmadan önce düzeltin
+calc.462 | vRedB | - | Geçer-mi testi | EN: Filing now most likely ends in a refusal, and the time is lost. These are fixable — most employers clear them  | TR: Şimdi başvurmak büyük olasılıkla retle biter ve süre kaybedilir. Bunla
+calc.463 | perWorker | - | Diğer | EN: per worker | TR: işçi başına
+calc.464 | perMonthSuffix | - | Diğer | EN: / month | TR: / ay
+calc.465 | perMoShort | - | Diğer | EN: / mo | TR: / ay
+calc.466 | tierManuf | - | Diğer | EN: Manufacturing · 5 pt | TR: İmalat · 5 puan
+calc.467 | tierOther | - | Diğer | EN: Other sectors · 2 pt | TR: Diğer sektörler · 2 puan
+calc.468 | tierNone | - | Diğer | EN: No discount | TR: İndirim yok
+calc.469 | firstYear | - | Diğer | EN: First-year total | TR: İlk yıl toplamı
+calc.470 | fullYear | - | Diğer | EN: Full year | TR: Tam yıl
+calc.471 | chip6 | - | Diğer | EN: 6 months (season) | TR: 6 ay (sezon)
+calc.472 | chip9 | - | Diğer | EN: 9 months | TR: 9 ay
+calc.473 | chip12 | - | Diğer | EN: Full year | TR: Tam yıl
+calc.474 | allInd | - | Diğer | EN: All industries | TR: Tüm sektörler
+calc.475 | allShort | - | Diğer | EN: All | TR: Tümü
+calc.476 | skilled | - | Diğer | EN: Skilled · 1.5× | TR: Nitelikli · 1,5×
+calc.477 | standard | - | Öğrenciler | EN: Standard · 1× | TR: Standart · 1×
+calc.478 | inCalc | - | Diğer | EN: In calculator ✓ | TR: Hesaplayıcıda ✓
+calc.479 | useCalc | - | Diğer | EN: Use in calculator → | TR: Hesaplayıcıda kullan →
+calc.480 | faq1Q | - | SSS | EN: Is the service fee really not shown here? | TR: Hizmet bedeli gerçekten burada gösterilmiyor mu?
+calc.481 | faq1A | - | SSS | EN: That is right, because it depends on the job, the number of workers and how much of the work you need from us. | TR: Doğru, çünkü işe, işçi sayısına ve işin ne kadarını bizden istediğiniz
+calc.482 | faq2Q | - | SSS | EN: Do foreign workers cost more than Turkish workers? | TR: Yabancı işçiler Türk işçilerden daha mı pahalı?
+calc.483 | faq2A | L | SSS | EN: On payroll, no. The gross salary and the SGK payments are the same, because Turkish labour law treats both wor | TR: Bordroda hayır. Brüt maaş ve SGK ödemeleri aynıdır, çünkü Türk iş huku
+calc.484 | faq3Q | - | SSS | EN: Is there a legal minimum salary for foreign workers? | TR: Yabancı işçiler için yasal bir asgari maaş var mı?
+calc.485 | faq3A | - | SSS | EN: Yes. Every job has a minimum gross salary, set as a multiple of the minimum wage: 1× for unskilled jobs, 1.5×  | TR: Evet. Her işin, asgari ücretin katı olarak belirlenmiş bir asgari brüt
+calc.486 | faq4Q | - | SSS | EN: Who pays the flight and the accommodation? | TR: Uçak biletini ve konaklamayı kim öder?
+calc.487 | faq4A | L | SSS | EN: You decide this together and write it in the contract. Most of our employers pay the one-way flight and give s | TR: Bunu birlikte kararlaştırıp sözleşmeye yazarsınız. İşverenlerimizin ço
+calc.488 | faq5Q | L | SSS | EN: Do government SGK incentives apply to foreign workers too? | TR: Devlet SGK teşvikleri yabancı işçilerde de geçerli mi?
+calc.489 | faq5A | L | SSS | EN: The ones given to the workplace do. The 5510 premium discount and the minimum wage support are given to your w | TR: İşyerine verilenler geçerli. 5510 prim indirimi ve asgari ücret desteğ
+calc.490 | faq6Q | - | SSS | EN: Is there a limit on how many foreign workers we can employ? | TR: Kaç yabancı işçi çalıştırabileceğimize dair bir sınır var mı?
+calc.491 | faq6A | L | SSS | EN: Yes. As a rule the Ministry wants five Turkish employees registered with SGK at that workplace for every forei | TR: Evet. Kural olarak Bakanlık, her yabancı işçi için o işyerinde SGK'ya 
+calc.492 | faq7Q | - | SSS | EN: Is there government funding for hiring foreign workers, in agriculture or any other sector? | TR: Tarımda veya başka bir sektörde yabancı işçi almak için devlet desteği
+calc.493 | faq7A | L | SSS | EN: No. Turkey gives no grant, refund or wage support for employing a foreign worker, in farming or in any other s | TR: Hayır. Türkiye, ne tarımda ne de başka bir sektörde yabancı işçi çalış
+calc.494 | faq8Q | - | SSS | EN: Does our company itself have to meet any conditions? | TR: Şirketimizin kendisinin karşılaması gereken şartlar var mı?
+calc.495 | faq8A | - | SSS | EN: Yes, and this is separate from the 5:1 rule. Your company must meet at least one of these: ₺100,000 paid-in ca | TR: Evet ve bu 5:1 kuralından ayrıdır. Şirketiniz şunlardan en az birini k
+calc.496 | faq9Q | - | SSS | EN: What happens if we employ someone without a permit? | TR: İzinsiz işçi çalıştırırsak ne olur?
+calc.497 | faq9A | L | SSS | EN: Under Law No. 6735 the employer pays a fine of ₺102,504 for each foreign worker found without a permit in 2026 | TR: 6735 sayılı Kanun uyarınca işveren, 2026'da izinsiz çalıştığı tespit e
+calc.498 | faq10Q | - | SSS | EN: Can we employ a foreign student who is already studying here? | TR: Burada okuyan bir yabancı öğrenciyi çalıştırabilir miyiz?
+calc.499 | faq10A | - | SSS | EN: Yes, with a work permit that you apply for. The student cannot apply alone. Associate and bachelor students ca | TR: Evet, sizin başvuracağınız bir çalışma izniyle. Öğrenci tek başına baş
+calc.500 | faq11Q | - | SSS | EN: Can we claim KOSGEB or similar support for a foreign employee's wages? | TR: Yabancı bir çalışanın ücreti için KOSGEB veya benzeri destek alabilir 
+calc.501 | faq11A | L | SSS | EN: No. KOSGEB's qualified-personnel salary support is only for Turkish citizens with a university degree, and for | TR: Hayır. KOSGEB'in nitelikli eleman ücret desteği yalnızca üniversite me
+calc.502 | faq12Q | - | SSS | EN: We only need workers for the 6-month season — does that change the cost? | TR: Yalnızca 6 aylık sezon için işçi lazım — bu maliyeti değiştirir mi?
+calc.503 | faq12A | - | SSS | EN: The monthly cost is the same, but the one-time costs are shared over fewer months. Permit fees and flights are | TR: Aylık maliyet aynıdır, ancak tek seferlik masraflar daha az aya bölünü
+calc.504 | faq13Q | - | SSS | EN: Are the permit fees per year or one-off? | TR: İzin harçları yıllık mı yoksa tek seferlik mi?
+calc.505 | faq13A | - | SSS | EN: Per permit period. The first permit is usually one year, the first extension two years and the next three year | TR: İzin dönemi başına. İlk izin genellikle bir yıl, ilk uzatma iki yıl ve
+calc.506 | faq14Q | - | SSS | EN: What is not included in this estimate? | TR: Bu tahmine neler dahil değil?
+calc.507 | faq14A | - | SSS | EN: Our service fee, meals, transport to the site, overtime, bonuses, money set aside for severance pay, and costs | TR: Hizmet bedelimiz, yemek, iş yerine ulaşım, fazla mesai, primler, kıdem
+calc.508 | faq15Q | - | SSS | EN: How often are these figures updated? | TR: Bu rakamlar ne sıklıkla güncelleniyor?
+calc.509 | faq15A | L | SSS | EN: The minimum wage, SGK rates and permit fees change every January, and we update this page when they do — the b | TR: Asgari ücret, SGK oranları ve izin harçları her Ocak ayında değişir ve
+calc.510 | exIntro_sector | - | Kota kontrolü | EN: What your business does can remove the rule completely. These are the sector exemptions in the Ministry's rule | TR: İşinizin ne olduğu kuralı tamamen ortadan kaldırabilir. Bakanlık mevzu
+calc.511 | exIntro_company | - | Kota kontrolü | EN: The size of your company and the type of work can also remove the rule. | TR: Şirketinizin büyüklüğü ve işin türü de kuralı ortadan kaldırabilir.
+calc.512 | exIntro_person | - | Kota kontrolü | EN: Sometimes the exemption comes from the candidate, not from you. These are the fastest routes when your quota i | TR: Bazen muafiyet sizden değil adaydan gelir. Kotanız doluyken en hızlı y
+calc.513 | exRow1T | - | Kota kontrolü | EN: Household services | TR: Ev hizmetleri
+calc.514 | exRow1B | - | Kota kontrolü | EN: Staff employed by a private person at home — carers, cleaners, cooks — do not need the 5:1 rule at all. | TR: Bir gerçek kişi tarafından evde çalıştırılan bakıcı, temizlikçi, aşçı 
+calc.515 | exRow2T | - | Kota kontrolü | EN: Tourism & accommodation | TR: Turizm ve konaklama
+calc.516 | exRow2B | - | Kota kontrolü | EN: Certified 3-star and higher hotels, holiday villages and licensed thermal hotels. With at least 10 Turkish emp | TR: Belgeli 3 yıldız ve üzeri oteller, tatil köyleri ve belgeli termal ote
+calc.517 | exRow3T | - | Kota kontrolü | EN: Entertainment & tourism-animation | TR: Eğlence ve turizm-animasyon
+calc.518 | exRow3B | - | Kota kontrolü | EN: Entertainment and animation companies with at least 10 Turkish employees do not have the 5:1 rule applied to s | TR: En az 10 Türk çalışanı olan eğlence ve animasyon şirketlerinde akrobat
+calc.519 | exRow4T | - | Kota kontrolü | EN: Licensed sports centres | TR: Belgeli spor merkezleri
+calc.520 | exRow4B | - | Kota kontrolü | EN: Licensed sports centres with at least 20 Turkish employees do not have the 5:1 rule applied to specialist jobs | TR: En az 20 Türk çalışanı olan belgeli spor merkezlerinde uzmanlık işleri
+calc.521 | exRow5T | - | Kota kontrolü | EN: Foreign airline representations | TR: Yabancı havayolu temsilcilikleri
+calc.522 | exRow5B | - | Kota kontrolü | EN: Turkish offices of foreign national airlines do not need the 5:1 rule or the company financial test for senior | TR: Yabancı milli havayolu şirketlerinin Türkiye ofislerinde üst düzey yön
+calc.523 | exRow6T | - | Kota kontrolü | EN: Net sales of ₺50 million or more | TR: 50 milyon ₺ ve üzeri net satış
+calc.524 | exRow6B | - | Kota kontrolü | EN: If your workplace had net sales of ₺50 million or more last year, the 5:1 rule does not apply for up to five f | TR: İşyerinizin geçen yılki net satışı 50 milyon ₺ veya üzeriyse, beş yaba
+calc.525 | exRow7T | - | Kota kontrolü | EN: Public procurement work | TR: Kamu ihalesi işleri
+calc.526 | exRow7B | - | Kota kontrolü | EN: If the work is for goods or services bought by a public institution through a contract or tender, the 5:1 rule | TR: İş, bir kamu kurumunun sözleşme veya ihale yoluyla aldığı mal ya da hi
+calc.527 | exRow8T | - | Kota kontrolü | EN: Bilateral and multilateral treaties | TR: İkili ve çok taraflı anlaşmalar
+calc.528 | exRow8B | - | Kota kontrolü | EN: If an agreement signed by Turkey covers this, the normal rules are not applied. | TR: Türkiye'nin imzaladığı bir anlaşma bu durumu kapsıyorsa normal kuralla
+calc.529 | exRow9T | - | Kota kontrolü | EN: Company partners | TR: Şirket ortakları
+calc.530 | exRow9B | - | Kota kontrolü | EN: If the foreign worker is a company shareholder, the 5:1 rule is checked only in the last six months of the fir | TR: Yabancı işçi şirket ortağıysa 5:1 kuralı başlangıçta değil, yalnızca i
+calc.531 | exRow10T | - | Kota kontrolü | EN: 3 of the last 5 years legally resident | TR: Son 5 yılın 3'ünde yasal ikamet
+calc.532 | exRow10B | - | Kota kontrolü | EN: A candidate who has lived in Turkey with a residence permit, work permit or international protection for three | TR: Son beş yılın üçünde Türkiye'de ikamet izni, çalışma izni veya uluslar
+calc.533 | exRow11T | - | Kota kontrolü | EN: Married to a Turkish citizen | TR: Türk vatandaşı ile evli
+calc.534 | exRow11B | - | Kota kontrolü | EN: A foreign national who is married to a Turkish citizen and lives with them in Turkey can get a permit through  | TR: Türk vatandaşı ile evli olan ve Türkiye'de birlikte yaşayan yabancılar
+calc.535 | exRow12T | - | Kota kontrolü | EN: Parent or child is a Turkish citizen | TR: Anne, baba veya çocuğu Türk vatandaşı
+calc.536 | exRow12B | - | Kota kontrolü | EN: If the candidate's mother, father or child is a Turkish citizen, the normal rules are not applied. | TR: Adayın annesi, babası veya çocuğu Türk vatandaşıysa normal kurallar uy
+calc.537 | exRow13T | - | Kota kontrolü | EN: Qualified workforce or investor | TR: Nitelikli işgücü veya yatırımcı
+calc.538 | exRow13B | - | Kota kontrolü | EN: Candidates accepted as qualified because of their education, salary, work experience or contribution to scienc | TR: Eğitimi, maaşı, iş deneyimi ya da bilim ve teknolojiye katkısı nedeniy
+calc.539 | exRow14T | - | Kota kontrolü | EN: Turkish origin, protection status, project-based | TR: Türk soylu, koruma statüsü, proje bazlı
+calc.540 | exRow14B | - | Kota kontrolü | EN: People of Turkish descent, people applying for international protection, conditional refugees and staff brough | TR: Türk soylular, uluslararası korumaya başvuranlar, şartlı mülteciler ve
+calc.541 | undefined | - | Meslek ve etiket listeleri | EN: Textile machine operator | TR: Tekstil makine operatörü
+calc.542 | undefined | - | Meslek ve etiket listeleri | EN: Construction labourer | TR: İnşaat işçisi
+calc.543 | undefined | - | Meslek ve etiket listeleri | EN: Kitchen steward | TR: Bulaşıkhane görevlisi
+calc.544 | undefined | - | Meslek ve etiket listeleri | EN: Machine operator | TR: Makine operatörü
+calc.545 | undefined | - | Meslek ve etiket listeleri | EN: Electrician | TR: Elektrikçi
+calc.546 | undefined | - | Meslek ve etiket listeleri | EN: Plumber | TR: Tesisatçı
+calc.547 | undefined | - | Meslek ve etiket listeleri | EN: Housekeeping | TR: Kat hizmetleri
+calc.548 | undefined | - | Meslek ve etiket listeleri | EN: Cook / chef | TR: Aşçı / şef
+calc.549 | undefined | - | Meslek ve etiket listeleri | EN: No quota at all | TR: Hiç kota yok
+calc.550 | undefined | - | Meslek ve etiket listeleri | EN: Senior & specialist | TR: Üst düzey ve uzman
+calc.551 | undefined | - | Meslek ve etiket listeleri | EN: Factory | TR: Fabrika
+calc.552 | undefined | - | Meslek ve etiket listeleri | EN: Hotel | TR: Otel
+calc.553 | undefined | - | Meslek ve etiket listeleri | EN: Agriculture | TR: Tarım
+calc.554 | undefined | - | Meslek ve etiket listeleri | EN: Construction | TR: İnşaat
+calc.555 | undefined | - | Meslek ve etiket listeleri | EN: Welder | TR: Kaynakçı
+calc.556 | undefined | - | Meslek ve etiket listeleri | EN: welder | TR: kaynakçı
+calc.557 | undefined | L | Hesaplanan cümleler (sayılar değişir) | EN: Legal minimum for this job: ₺49,545 gross (1.5× the minimum wage). | TR: Bu iş için yasal asgari: 49.545 ₺ brüt (asgari ücretin 1,5 katı).
+calc.558 | undefined | L | Hesaplanan cümleler (sayılar değişir) | EN: 25 employees make exactly 5 complete blocks — no spare capacity, 5 more unlock the next place. | TR: 25 çalışan için 5 tam kontenjan bulunmaktadır. Her 5 çalışan, bir kont
+calc.559 | undefined | L | Hesaplanan cümleler (sayılar değişir) | EN: Answered from your quota check above: 25 Turkish employees allow 5, and you planned 1. | TR: Kota kontrolüne göre, 25 Türk çalışan için 5 yabancı çalışan kontenjan
+calc.560 | undefined | - | Hesaplanan cümleler (sayılar değişir) | EN: 12 months of payroll + one-off costs | TR: 12 aylık bordro + tek seferlik maliyetler
+calc.561 | undefined | - | Hesaplanan cümleler (sayılar değişir) | EN: 1 of 5 checks clear · 4 unanswered | TR: 5 kontrolden 1 tamam · 4 yanıtlanmadı

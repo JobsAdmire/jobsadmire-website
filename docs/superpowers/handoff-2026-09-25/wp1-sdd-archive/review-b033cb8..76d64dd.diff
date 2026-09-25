@@ -1,0 +1,461 @@
+# Review package: b033cb8..76d64dd
+
+## Commits
+76d64dd feat(contract): content bundle contract v1.0 with golden fixture and hash pin
+
+## Files changed
+ contract/CONTRACT.md                    |  12 +++
+ contract/contract.test.ts               |  33 ++++++
+ contract/website-bundle.v1.fixture.json | 177 ++++++++++++++++++++++++++++++++
+ contract/website-bundle.v1.ts           |  90 ++++++++++++++++
+ package-lock.json                       |  10 +-
+ package.json                            |   3 +-
+ vitest.config.ts                        |   7 +-
+ 7 files changed, 325 insertions(+), 7 deletions(-)
+
+## Diff
+diff --git a/contract/CONTRACT.md b/contract/CONTRACT.md
+new file mode 100644
+index 0000000..353c370
+--- /dev/null
++++ b/contract/CONTRACT.md
+@@ -0,0 +1,12 @@
++# Content bundle contract
++
++`website-bundle.v1.ts` is the single source of truth for what Operations serves and the site consumes.
++It is vendored byte-identically into `jobsadmire-operations/packages/validators/src/website-bundle.v1.ts`
++together with the fixture; both repos run a hash test.
++
++Changing it: (1) edit the schema here, (2) update the fixture, (3) run `npm run test -- contract`, copy the
++new SHA-256 into `CONTRACT_FILE_SHA256`, (4) bump `CONTRACT_VERSION` (`1.1` for additive, `2.0` for breaking),
++(5) copy both files into Operations in the same day and update its hash constant. Additive = new optional
++fields or new collection keys; anything else is breaking.
++
++The hash is computed over the Prettier-formatted file; Operations must prettier-ignore its vendored copy so the bytes stay identical.
+diff --git a/contract/contract.test.ts b/contract/contract.test.ts
+new file mode 100644
+index 0000000..5064d8e
+--- /dev/null
++++ b/contract/contract.test.ts
+@@ -0,0 +1,33 @@
++import { createHash } from 'node:crypto';
++import { readFileSync } from 'node:fs';
++import { join } from 'node:path';
++import { describe, expect, it } from 'vitest';
++import { BundleSchema, CONTRACT_VERSION } from './website-bundle.v1';
++
++// Recompute deliberately when the contract changes (see CONTRACT.md). Operations pins the same value.
++export const CONTRACT_FILE_SHA256 =
++  'b407d92f39ab560e4c256ec2e7d1cd5d36f6166281b9d1dfdd178ede01319dcf';
++
++describe('content contract', () => {
++  it('schema file matches the pinned hash', () => {
++    const sha = createHash('sha256')
++      .update(readFileSync(join(__dirname, 'website-bundle.v1.ts')))
++      .digest('hex');
++    expect(sha).toBe(CONTRACT_FILE_SHA256);
++  });
++  it('the golden fixture validates', () => {
++    const fixture = JSON.parse(
++      readFileSync(join(__dirname, 'website-bundle.v1.fixture.json'), 'utf8'),
++    );
++    expect(fixture.contractVersion).toBe(CONTRACT_VERSION);
++    expect(() => BundleSchema.parse(fixture)).not.toThrow();
++  });
++  it('both generated local bundles validate', () => {
++    for (const l of ['tr', 'en']) {
++      const b = JSON.parse(
++        readFileSync(join(__dirname, '..', 'src', 'content', 'local', `bundle.${l}.json`), 'utf8'),
++      );
++      expect(() => BundleSchema.parse(b), l).not.toThrow();
++    }
++  });
++});
+diff --git a/contract/website-bundle.v1.fixture.json b/contract/website-bundle.v1.fixture.json
+new file mode 100644
+index 0000000..bcfc1b2
+--- /dev/null
++++ b/contract/website-bundle.v1.fixture.json
+@@ -0,0 +1,177 @@
++{
++  "contractVersion": "1.0",
++  "locale": "tr",
++  "generatedAt": "2026-09-18T00:00:00.000Z",
++  "strings": {
++    "hire.141": "",
++    "calc.041": "",
++    "calc.154": "",
++    "calc.157": "",
++    "calc.367": "",
++    "jt.107": "",
++    "home.001": "Hakkımızda",
++    "home.002": "İşçi Talebi",
++    "home.003": "Adaylar",
++    "home.004": "Çalışma İzinleri",
++    "home.005": "Maliyet Hesaplama",
++    "home.006": "Başarı Hikayeleri",
++    "home.007": "İletişim",
++    "home.008": "İş Ortağı Olun",
++    "home.009": "Ekibimize Katılın",
++    "home.010": "Rehberler",
++    "home.011": "Temsilci Doğrulama",
++    "home.012": "CRM Girişi",
++    "home.017": "İŞKUR lisanslı · sözleşmeler kurucu imzasıyla · işçiden ücret alınmaz",
++    "home.018": "Nitelikli işçi."
++  },
++  "nav": [
++    {
++      "group": "desktopNav",
++      "order": 0,
++      "labelId": "home.002",
++      "href": "/hire-workers",
++      "external": false,
++      "visibleOn": ["desktop", "mobile"]
++    },
++    {
++      "group": "desktopNav",
++      "order": 1,
++      "labelId": "home.003",
++      "href": "/available-workers",
++      "external": false,
++      "visibleOn": ["desktop", "mobile"]
++    },
++    {
++      "group": "desktopNav",
++      "order": 2,
++      "labelId": "home.004",
++      "href": "/work-permit",
++      "external": false,
++      "visibleOn": ["desktop", "mobile"]
++    },
++    {
++      "group": "desktopNav",
++      "order": 3,
++      "labelId": "home.005",
++      "href": "/hiring-cost-calculator",
++      "external": false,
++      "visibleOn": ["desktop", "mobile"]
++    },
++    {
++      "group": "desktopNav",
++      "order": 4,
++      "labelId": "home.001",
++      "href": "/about",
++      "external": false,
++      "visibleOn": ["desktop", "mobile"]
++    },
++    {
++      "group": "desktopNav",
++      "order": 5,
++      "labelId": "home.006",
++      "href": "/success-stories",
++      "external": false,
++      "visibleOn": ["desktop", "mobile"]
++    },
++    {
++      "group": "desktopNav",
++      "order": 6,
++      "labelId": "home.010",
++      "href": "/blog",
++      "external": false,
++      "visibleOn": ["desktop", "mobile"]
++    },
++    {
++      "group": "desktopNav",
++      "order": 7,
++      "labelId": "home.011",
++      "href": "/verify",
++      "external": false,
++      "visibleOn": ["desktop", "mobile"]
++    },
++    {
++      "group": "desktopNav",
++      "order": 8,
++      "labelId": "home.008",
++      "href": "/partner-with-us",
++      "external": false,
++      "visibleOn": ["desktop", "mobile"]
++    },
++    {
++      "group": "desktopNav",
++      "order": 9,
++      "labelId": "home.009",
++      "href": "/careers",
++      "external": false,
++      "visibleOn": ["desktop", "mobile"]
++    },
++    {
++      "group": "desktopNav",
++      "order": 10,
++      "labelId": "home.007",
++      "href": "/contact",
++      "external": false,
++      "visibleOn": ["desktop", "mobile"]
++    }
++  ],
++  "settings": {
++    "siteUrl": "https://www.jobsadmire.com",
++    "phone": "+905011240340",
++    "phoneDisplay": "+90 501 124 03 40",
++    "partnershipsPhone": "+905533832549",
++    "email": "info@jobsadmire.com",
++    "careersEmail": "careers@jobsadmire.com",
++    "whatsappNumber": "905011240340",
++    "telegramUrl": "https://t.me/jobsadmire",
++    "social": {
++      "instagram": "https://instagram.com/jobsadmire",
++      "tiktok": "https://tiktok.com/@jobsadmire",
++      "linkedin": "https://linkedin.com/company/jobsadmire",
++      "facebook": "https://facebook.com/jobsadmire"
++    },
++    "licence": {
++      "permitNo": "1730",
++      "lawRef": "4904",
++      "taxNo": "48422122"
++    },
++    "storeLinks": {
++      "android": "https://play.google.com/store/apps/details?id=com.jobsadmire.portal",
++      "ios": null
++    },
++    "portal": {
++      "loginPath": "/auth/login",
++      "forgotPath": "/auth/forgot-password",
++      "host": "https://portal.jobsadmire.com"
++    },
++    "maps": {
++      "antalya": "https://www.google.com/maps/search/?api=1&query=Adnan+Menderes+Blv.+No+7%2F6+Muratpa%C5%9Fa+Antalya",
++      "karachi": "https://www.google.com/maps/search/?api=1&query=Shahrah-e-Faisal+Karachi"
++    },
++    "analytics": {
++      "ga4Id": null,
++      "gtmId": null,
++      "adsId": null,
++      "adsConversionLabel": null,
++      "consentMode": true
++    },
++    "turnstileSiteKey": null
++  },
++  "pages": {
++    "home": {
++      "titleId": "home.017",
++      "descriptionId": "home.018",
++      "ogImage": null,
++      "canonical": null,
++      "robots": "index",
++      "jsonLd": ["organization", "website", "faq"]
++    }
++  },
++  "collections": {},
++  "redirects": [
++    {
++      "from": "/contact-us",
++      "to": "/en/contact",
++      "status": 308
++    }
++  ]
++}
+diff --git a/contract/website-bundle.v1.ts b/contract/website-bundle.v1.ts
+new file mode 100644
+index 0000000..401d300
+--- /dev/null
++++ b/contract/website-bundle.v1.ts
+@@ -0,0 +1,90 @@
++import { z } from 'zod';
++
++export const CONTRACT_VERSION = '1.0' as const;
++
++export const LocaleSchema = z.enum(['tr', 'en']);
++
++export const NavItemSchema = z.object({
++  group: z.enum([
++    'slimBarLeft',
++    'slimBarRight',
++    'desktopNav',
++    'hamburger',
++    'footerEmployers',
++    'footerCompany',
++    'footerContact',
++    'mobileBottomBar',
++    'socialRail',
++  ]),
++  order: z.number().int().nonnegative(),
++  labelId: z.string().min(1),
++  href: z.string().min(1),
++  external: z.boolean(),
++  visibleOn: z.array(z.enum(['desktop', 'mobile'])).min(1),
++});
++
++export const SettingsSchema = z.object({
++  siteUrl: z.string().url(),
++  phone: z.string().regex(/^\+\d{8,15}$/),
++  phoneDisplay: z.string(),
++  partnershipsPhone: z
++    .string()
++    .regex(/^\+\d{8,15}$/)
++    .nullable(),
++  email: z.string().email(),
++  careersEmail: z.string().email(),
++  whatsappNumber: z.string().regex(/^\d{8,15}$/),
++  telegramUrl: z.string().url(),
++  social: z.object({
++    instagram: z.string().url(),
++    tiktok: z.string().url(),
++    linkedin: z.string().url(),
++    facebook: z.string().url(),
++  }),
++  licence: z.object({ permitNo: z.string(), lawRef: z.string(), taxNo: z.string() }),
++  storeLinks: z.object({ android: z.string().url().nullable(), ios: z.string().url().nullable() }),
++  portal: z.object({ host: z.string().url(), loginPath: z.string(), forgotPath: z.string() }),
++  maps: z.object({ antalya: z.string().url(), karachi: z.string().url() }),
++  analytics: z.object({
++    ga4Id: z.string().nullable(),
++    gtmId: z.string().nullable(),
++    adsId: z.string().nullable(),
++    adsConversionLabel: z.string().nullable(),
++    consentMode: z.boolean(),
++  }),
++  turnstileSiteKey: z.string().nullable(),
++});
++
++export const PageSeoSchema = z.object({
++  titleId: z.string(),
++  descriptionId: z.string(),
++  ogImage: z.string().url().nullable(),
++  canonical: z.string().url().nullable(),
++  robots: z.enum(['index', 'noindex']),
++  jsonLd: z.array(
++    z.enum(['organization', 'website', 'breadcrumb', 'faq', 'article', 'jobPosting']),
++  ),
++});
++
++export const RedirectSchema = z.object({
++  from: z.string(),
++  to: z.string(),
++  status: z.union([z.literal(301), z.literal(308)]),
++});
++
++export const BundleSchema = z.object({
++  contractVersion: z.literal(CONTRACT_VERSION),
++  locale: LocaleSchema,
++  generatedAt: z.string().datetime(),
++  strings: z.record(z.string(), z.string()),
++  nav: z.array(NavItemSchema),
++  settings: SettingsSchema,
++  pages: z.record(z.string(), PageSeoSchema),
++  /** collections are typed per key as pages are ported (additive within 1.x) */
++  collections: z.record(z.string(), z.array(z.record(z.string(), z.unknown()))),
++  redirects: z.array(RedirectSchema),
++});
++
++export type Bundle = z.infer<typeof BundleSchema>;
++export type NavItem = z.infer<typeof NavItemSchema>;
++export type Settings = z.infer<typeof SettingsSchema>;
+diff --git a/package-lock.json b/package-lock.json
+index 86d519d..dfa9435 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -4,21 +4,22 @@
+   "lockfileVersion": 3,
+   "requires": true,
+   "packages": {
+     "": {
+       "name": "jobsadmire-website",
+       "version": "0.1.0",
+       "dependencies": {
+         "next": "16.3.5",
+         "next-intl": "^4.14.5",
+         "react": "19.2.8",
+-        "react-dom": "19.2.8"
++        "react-dom": "19.2.8",
++        "zod": "^3.25.76"
+       },
+       "devDependencies": {
+         "@axe-core/playwright": "^4.13.0",
+         "@playwright/test": "^1.63.0",
+         "@tailwindcss/postcss": "^4",
+         "@testing-library/jest-dom": "^7.0.1",
+         "@testing-library/react": "^16.3.3",
+         "@types/node": "^20",
+         "@types/react": "^19",
+         "@types/react-dom": "^19",
+@@ -10096,24 +10097,23 @@
+       "dev": true,
+       "license": "MIT",
+       "engines": {
+         "node": ">=10"
+       },
+       "funding": {
+         "url": "https://github.com/sponsors/sindresorhus"
+       }
+     },
+     "node_modules/zod": {
+-      "version": "4.6.5",
+-      "resolved": "https://registry.npmjs.org/zod/-/zod-4.6.5.tgz",
+-      "integrity": "sha512-v5l/aFXZQeai4awLbOpSoHecE9UiMrnfx75tEXLjNonXVARxQ5mOeipTjROUchszUNCqnE+hqAMujRsRHsut2Q==",
+-      "dev": true,
++      "version": "3.25.76",
++      "resolved": "https://registry.npmjs.org/zod/-/zod-3.25.76.tgz",
++      "integrity": "sha512-gzUt/qt81nXsFGKIFcC3YnfEAx5NkunCfnDlvuBSSFS02bcXu4Lmea0AFIUwbLWxWPx3d9p8S5QoaujKcNQxcQ==",
+       "license": "MIT",
+       "funding": {
+         "url": "https://github.com/sponsors/colinhacks"
+       }
+     },
+     "node_modules/zod-validation-error": {
+       "version": "4.0.2",
+       "resolved": "https://registry.npmjs.org/zod-validation-error/-/zod-validation-error-4.0.2.tgz",
+       "integrity": "sha512-Q6/nZLe6jxuU80qb/4uJ4t5v2VEZ44lzQjPDhYJNztRQ4wyWc6VF3D3Kb/fAuPetZQnhS3hnajCf9CsWesghLQ==",
+       "dev": true,
+diff --git a/package.json b/package.json
+index daa63db..80b2460 100644
+--- a/package.json
++++ b/package.json
+@@ -14,21 +14,22 @@
+     "test:watch": "vitest",
+     "verify": "npm run typecheck && npm run lint && npm run format && npm run test",
+     "e2e": "playwright test",
+     "gate": "bash scripts/gate.sh",
+     "content:import": "tsx scripts/import-design-package.ts"
+   },
+   "dependencies": {
+     "next": "16.3.5",
+     "next-intl": "^4.14.5",
+     "react": "19.2.8",
+-    "react-dom": "19.2.8"
++    "react-dom": "19.2.8",
++    "zod": "^3.25.76"
+   },
+   "devDependencies": {
+     "@axe-core/playwright": "^4.13.0",
+     "@playwright/test": "^1.63.0",
+     "@tailwindcss/postcss": "^4",
+     "@testing-library/jest-dom": "^7.0.1",
+     "@testing-library/react": "^16.3.3",
+     "@types/node": "^20",
+     "@types/react": "^19",
+     "@types/react-dom": "^19",
+diff --git a/vitest.config.ts b/vitest.config.ts
+index 4754e94..620eaf3 100644
+--- a/vitest.config.ts
++++ b/vitest.config.ts
+@@ -1,14 +1,19 @@
+ import { defineConfig } from 'vitest/config';
+ import react from '@vitejs/plugin-react';
+ import path from 'node:path';
+ 
+ export default defineConfig({
+   plugins: [react()],
+   test: {
+     environment: 'jsdom',
+-    include: ['src/**/*.test.{ts,tsx}', 'scripts/**/*.test.ts'],
++    include: [
++      'src/**/*.test.{ts,tsx}',
++      'contract/**/*.test.ts',
++      'scripts/**/*.test.ts',
++      'redirects/**/*.test.ts',
++    ],
+     setupFiles: ['./vitest.setup.ts'],
+     css: false,
+   },
+   resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
+ });

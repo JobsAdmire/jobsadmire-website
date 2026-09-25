@@ -1,0 +1,346 @@
+# Review package: ff39d3a..86e7320
+
+## Commits
+86e7320 fix(website): careers tracking token never leaves the handler (X11); evidence 404 on missing object; multipart fields capped
+
+## Files changed
+ .../modules/website/careers-fraud-wiring.spec.ts   | 10 ++++++
+ .../website/handlers/careers-apply.handler.spec.ts | 10 ++++--
+ .../website/handlers/careers-apply.handler.ts      | 15 +++++++--
+ .../website/website-fraud-evidence.service.spec.ts | 19 ++++++++++++
+ .../website/website-fraud-evidence.service.ts      | 36 ++++++++++++++++++++--
+ .../website/website-public-uploads.controller.ts   |  4 ++-
+ 6 files changed, 85 insertions(+), 9 deletions(-)
+
+## Diff
+diff --git a/apps/backend/src/modules/website/careers-fraud-wiring.spec.ts b/apps/backend/src/modules/website/careers-fraud-wiring.spec.ts
+index bdd52f3..5876b7f 100644
+--- a/apps/backend/src/modules/website/careers-fraud-wiring.spec.ts
++++ b/apps/backend/src/modules/website/careers-fraud-wiring.spec.ts
+@@ -45,20 +45,30 @@ describe('careers-public ↔ website module edge', () => {
+ 
+ describe('fraud-evidence upload door', () => {
+   it('is class-level @Public() behind [WebsiteModuleEnabledGuard, WebsiteApiGuard] in that order (P1, P7)', () => {
+     expect(Reflect.getMetadata(IS_PUBLIC_KEY, WebsitePublicUploadsController)).toBe(true);
+     expect(Reflect.getMetadata(GUARDS_METADATA, WebsitePublicUploadsController)).toEqual([
+       WebsiteModuleEnabledGuard,
+       WebsiteApiGuard,
+     ]);
+     expect(Reflect.getMetadata(PERMISSION_KEY, WebsitePublicUploadsController.prototype.uploadFraudEvidence)).toBeUndefined();
+   });
++
++  it('caps the multipart body at one file and zero text fields (the options live in the interceptor mixin, so pin the source)', () => {
++    const src = read('./website-public-uploads.controller.ts');
++    const call = /FileInterceptor\('file',\s*\{\s*limits:\s*\{([^}]*)\}/.exec(src);
++    expect(call).not.toBeNull();
++    const limits = call?.[1] ?? '';
++    expect(limits).toMatch(/\bfileSize:\s*MAX_FRAUD_EVIDENCE_BYTES\b/);
++    expect(limits).toMatch(/\bfiles:\s*1\b/);
++    expect(limits).toMatch(/\bfields:\s*0\b/);
++  });
+ });
+ 
+ describe('evidence read-back', () => {
+   it('both inbox routes sit on website.forms VIEW (P3)', () => {
+     for (const method of ['view', 'link'] as const) {
+       expect(Reflect.getMetadata(PERMISSION_KEY, WebsiteFormsEvidenceController.prototype[method])).toEqual({
+         module: 'website.forms',
+         action: 'VIEW',
+       });
+     }
+diff --git a/apps/backend/src/modules/website/handlers/careers-apply.handler.spec.ts b/apps/backend/src/modules/website/handlers/careers-apply.handler.spec.ts
+index 745fad9..77aea37 100644
+--- a/apps/backend/src/modules/website/handlers/careers-apply.handler.spec.ts
++++ b/apps/backend/src/modules/website/handlers/careers-apply.handler.spec.ts
+@@ -78,50 +78,54 @@ describe('CareersApplyHandler', () => {
+       sourceDetail: WEBSITE_CAREERS_SOURCE_DETAIL,
+     });
+     expect(ip).toBe('203.0.113.9');
+     expect(ua).toBe('Mozilla/5.0');
+ 
+     expect(result).toEqual({
+       ok: true,
+       createdEntityType: 'applicant',
+       createdEntityId: 'app_1',
+       detail: {
+-        trackingToken: 'tok_1',
+-        statusUrl: '/careers/status/tok_1',
+         dropped: [],
+         // careers-public already mails the candidate (careers mailbox) and the
+         // hiring owner (APPLICANT_RECEIVED): one notice per application, never two.
+         skipNotification: true,
+         skipAutoresponder: true,
+         contactName: 'Ayşe Yılmaz',
+         email: 'ayse@example.com',
+       },
+     });
++    // X11: the tracking token alone authorises careers/status/:token/* (withdraw,
++    // decline); `detail` becomes handlerResultJson, read by every website.forms
++    // VIEW holder — so neither the token nor the status URL may appear anywhere.
++    expect(JSON.stringify(result)).not.toContain('tok_1');
++    expect(JSON.stringify(result)).not.toContain('/careers/status/');
+   });
+ 
+   it('maps a 409 duplicate to ok + alreadyReceived with no entity and no core mails', async () => {
+     const { handler, careers } = make();
+     careers.apply.mockRejectedValueOnce(
+       new ConflictException({ message: 'already applied', existingTrackingToken: 'tok_old' }),
+     );
+     const result = await handler.handle(input(validFields()));
+     expect(result).toEqual({
+       ok: true,
+       detail: {
+         alreadyReceived: true,
+-        existingTrackingToken: 'tok_old',
+         skipNotification: true,
+         skipAutoresponder: true,
+         contactName: 'Ayşe Yılmaz',
+         email: 'ayse@example.com',
+       },
+     });
++    // X11: the 409 body's existingTrackingToken is never copied into the result.
++    expect(JSON.stringify(result)).not.toContain('tok_old');
+   });
+ 
+   it("turns apply()'s own 400/404 (residency, PK salary, closed opening) into a FAILED result with the reason — never a throw", async () => {
+     const { handler, careers } = make();
+     careers.apply.mockRejectedValueOnce(new NotFoundException('Opening not found or no longer accepting applications'));
+     await expect(handler.handle(input(validFields()))).resolves.toEqual({
+       ok: false,
+       error: 'Opening not found or no longer accepting applications',
+       // RC26: apply()'s 4xx is the VISITOR's mistake — the core files FAILED, skips the alarm, echoes the message.
+       detail: { visitorError: true, rejectedBy: 'careers-public', statusCode: 404, contactName: 'Ayşe Yılmaz', email: 'ayse@example.com' },
+diff --git a/apps/backend/src/modules/website/handlers/careers-apply.handler.ts b/apps/backend/src/modules/website/handlers/careers-apply.handler.ts
+index 0b870c3..f65423a 100644
+--- a/apps/backend/src/modules/website/handlers/careers-apply.handler.ts
++++ b/apps/backend/src/modules/website/handlers/careers-apply.handler.ts
+@@ -33,20 +33,28 @@ function httpMessage(e: HttpException): string {
+  *
+  * Never throws for a visitor error (RC4 — the row exists, HTTP stays 200):
+  *  - 409 duplicate (same e-mail + opening) → ok + `alreadyReceived` (HANDLED,
+  *    no entity, no second notice; the CV object stays — careers-cv/ belongs
+  *    to the careers retention cron and the website may retry with the key);
+  *  - apply()'s own 400/404 (residency, PK expected salary, unknown country,
+  *    closed opening) → `{ ok: false, detail: { visitorError: true } }` with the
+  *    reason (RC26), so the row is FAILED and needs attention in the inbox, no
+  *    alarm rings, and the website can show the visitor the message;
+  *  - anything else propagates: the core records FAILED and alarms.
++ *
++ * The tracking token NEVER leaves this handler (ruling X11): apply() returns
++ * `trackingToken`/`statusUrl` (and a 409 carries `existingTrackingToken`), but
++ * that token alone authorises the public `careers/status/:token/*` routes
++ * (withdraw, decline offer/contract), and `detail` is stored as
++ * `handlerResultJson`, which every `website.forms` VIEW holder reads in the
++ * inbox. The applicant id is the only pointer recorded; careers-public has
++ * already mailed the candidate the status link.
+  */
+ @Injectable()
+ export class CareersApplyHandler implements WebsiteFormHandler {
+   private readonly logger = new Logger(CareersApplyHandler.name);
+ 
+   readonly kinds = [WebsiteFormKind.CAREERS_APPLY] as const;
+ 
+   constructor(
+     private readonly careers: CareersPublicService,
+     private readonly upload: UploadService,
+@@ -85,29 +93,30 @@ export class CareersApplyHandler implements WebsiteFormHandler {
+       this.logger.warn(`website careers submission ${input.submissionId}: dropped optional field(s) ${dropped.join(', ')}`);
+     }
+ 
+     try {
+       const res = await this.careers.apply(slug, dto, input.visitorIp ?? undefined, input.userAgent ?? undefined);
+       this.logger.log(`website careers submission ${input.submissionId} → applicant ${res.data.applicantId} (${slug})`);
+       return {
+         ok: true,
+         createdEntityType: 'applicant',
+         createdEntityId: res.data.applicantId,
+-        detail: { trackingToken: res.data.trackingToken, statusUrl: res.data.statusUrl, dropped, ...NO_CORE_MAIL, ...contact },
++        // X11: no trackingToken / statusUrl — the applicant id is the pointer.
++        detail: { dropped, ...NO_CORE_MAIL, ...contact },
+       };
+     } catch (e) {
+       if (e instanceof ConflictException) {
+-        const body = e.getResponse() as { existingTrackingToken?: string };
++        // X11: the 409 body carries `existingTrackingToken`; it is deliberately not read.
+         this.logger.log(`website careers submission ${input.submissionId}: already applied (${slug})`);
+         return {
+           ok: true,
+-          detail: { alreadyReceived: true, existingTrackingToken: body?.existingTrackingToken ?? null, ...NO_CORE_MAIL, ...contact },
++          detail: { alreadyReceived: true, ...NO_CORE_MAIL, ...contact },
+         };
+       }
+       if (e instanceof HttpException && e.getStatus() < 500) {
+         // RC26: apply()'s own 4xx (residency, expected salary, closed opening) is the
+         // VISITOR's mistake — FAILED row, no handlerFailed alarm, message echoed to the site.
+         return {
+           ok: false,
+           error: httpMessage(e),
+           detail: { visitorError: true, rejectedBy: 'careers-public', statusCode: e.getStatus(), ...contact },
+         };
+diff --git a/apps/backend/src/modules/website/website-fraud-evidence.service.spec.ts b/apps/backend/src/modules/website/website-fraud-evidence.service.spec.ts
+index dcbd1e0..95c5820 100644
+--- a/apps/backend/src/modules/website/website-fraud-evidence.service.spec.ts
++++ b/apps/backend/src/modules/website/website-fraud-evidence.service.spec.ts
+@@ -106,20 +106,39 @@ describe('WebsiteFraudEvidenceService', () => {
+   });
+ 
+   it('link(): presigns the key (15-min default) and returns url + fileName', async () => {
+     const { svc, upload } = makeService({ fields: { evidenceKeys: ['website-fraud/a.png'] } });
+     await expect(svc.link('sub_1', 0)).resolves.toEqual({
+       data: { url: 'https://files.example/signed', fileName: 'a.png' },
+     });
+     expect(upload.presignedGetUrl).toHaveBeenCalledWith('website-fraud/a.png');
+   });
+ 
++  it('view(): a key the row references but the bucket no longer holds is a 404, not a 500', async () => {
++    const { svc, upload } = makeService({ fields: { evidenceKeys: ['website-fraud/gone.pdf'] } });
++    upload.getFileBuffer.mockRejectedValueOnce(Object.assign(new Error('The specified key does not exist.'), { code: 'NoSuchKey' }));
++    const res = fakeRes();
++    await expect(svc.view('sub_1', 0, res as never)).rejects.toBeInstanceOf(NotFoundException);
++    expect(res.end).not.toHaveBeenCalled();
++    // A different storage failure (MinIO down) still propagates as before.
++    upload.getFileBuffer.mockRejectedValueOnce(Object.assign(new Error('connect ECONNREFUSED'), { code: 'ECONNREFUSED' }));
++    await expect(svc.view('sub_1', 0, fakeRes() as never)).rejects.toThrow('ECONNREFUSED');
++  });
++
++  it('link(): a missing object (NotFound on name or code) is a 404 as well', async () => {
++    const { svc, upload } = makeService({ fields: { evidenceKeys: ['website-fraud/gone.png'] } });
++    upload.presignedGetUrl.mockRejectedValueOnce(Object.assign(new Error('Not Found'), { name: 'NotFound' }));
++    await expect(svc.link('sub_1', 0)).rejects.toBeInstanceOf(NotFoundException);
++    upload.presignedGetUrl.mockRejectedValueOnce(Object.assign(new Error('missing'), { code: 'NotFound' }));
++    await expect(svc.link('sub_1', 0)).rejects.toBeInstanceOf(NotFoundException);
++  });
++
+   it('404s an unknown submission and an out-of-range index; the kind filter is part of the query', async () => {
+     await expect(makeService(null).svc.link('nope', 0)).rejects.toBeInstanceOf(NotFoundException);
+     await expect(
+       makeService({ fields: { evidenceKeys: ['website-fraud/a.png'] } }).svc.link('sub_1', 3),
+     ).rejects.toBeInstanceOf(NotFoundException);
+     const { svc, prisma } = makeService({ fields: { evidenceKeys: ['website-fraud/a.png'] } });
+     await svc.link('sub_1', 0);
+     // A non-fraud submission id resolves to nothing because the kind is in the WHERE.
+     expect(prisma.websiteFormSubmission.findFirst).toHaveBeenCalledWith({
+       where: { id: 'sub_1', form: { kind: 'FRAUD_REPORT' } },
+diff --git a/apps/backend/src/modules/website/website-fraud-evidence.service.ts b/apps/backend/src/modules/website/website-fraud-evidence.service.ts
+index 0693ac9..ef85ca5 100644
+--- a/apps/backend/src/modules/website/website-fraud-evidence.service.ts
++++ b/apps/backend/src/modules/website/website-fraud-evidence.service.ts
+@@ -8,20 +8,39 @@ import {
+   FRAUD_EVIDENCE_FOLDER,
+   mimeFromEvidenceKey,
+   pickEvidenceKeys,
+   validateFraudEvidenceFile,
+ } from './fraud-evidence-file';
+ import type { WebsiteBearerClass } from './website.constants';
+ 
+ /** Safe to render INLINE: PDF cannot run script in our origin; images are inert. */
+ const INLINE_MIME_TYPES = ['application/pdf', 'image/jpeg', 'image/png', 'image/webp'];
+ 
++/**
++ * MinIO's "the object is gone" signals: `getObject` rejects with an S3Error
++ * `code: 'NoSuchKey'`, `statObject` with `code: 'NotFound'`; some client
++ * versions put the same word on `name`. A key the row still references but the
++ * bucket no longer holds (purged by hand, a restore from an older dump) is a
++ * 404 to the inbox, not a 500 — the row itself is intact.
++ */
++const MISSING_OBJECT_CODES = new Set(['NoSuchKey', 'NotFound']);
++
++function isMissingObjectError(err: unknown): boolean {
++  const e = err as { code?: unknown; name?: unknown } | null;
++  return (
++    !!e &&
++    typeof e === 'object' &&
++    ((typeof e.code === 'string' && MISSING_OBJECT_CODES.has(e.code)) ||
++      (typeof e.name === 'string' && MISSING_OBJECT_CODES.has(e.name)))
++  );
++}
++
+ /**
+  * Fraud-report evidence: upload from the website (write / previous-write
+  * token; the test class is a dry run, P2) and hardened read-back for the Forms
+  * inbox. Only the object KEY is ever persisted or returned — the prod bucket is
+  * private (upload.service.ts scrubs any public policy at boot) and a raw URL
+  * 403s there while working in dev, the mistake five features have already
+  * shipped. Read-back copies ApplicantDocumentsService.view/downloadLink header
+  * for header.
+  */
+ @Injectable()
+@@ -64,37 +83,50 @@ export class WebsiteFraudEvidenceService {
+     const row = await this.prisma.websiteFormSubmission.findFirst({
+       where: { id: submissionId, form: { kind: WebsiteFormKind.FRAUD_REPORT } },
+       select: { id: true, payloadJson: true },
+     });
+     if (!row) throw new NotFoundException('Submission not found');
+     const key = WebsiteFraudEvidenceService.evidenceKeysOf(row.payloadJson)[index];
+     if (!key) throw new NotFoundException('Evidence not found');
+     return { key, mime: mimeFromEvidenceKey(key), fileName: key.split('/').pop() ?? 'evidence' };
+   }
+ 
++  /** Storage call → 404 when the object is missing; anything else (MinIO down, auth) propagates as before. */
++  private async fromStorage<T>(key: string, op: () => Promise<T>): Promise<T> {
++    try {
++      return await op();
++    } catch (err) {
++      if (isMissingObjectError(err)) {
++        this.logger.warn(`Fraud evidence object missing in storage: ${key}`);
++        throw new NotFoundException('Evidence not found');
++      }
++      throw err;
++    }
++  }
++
+   /** Stream the object: inline for pdf/images with a strict no-script header set; sandboxed attachment otherwise. */
+   async view(submissionId: string, index: number, res: Response): Promise<void> {
+     const { key, mime, fileName } = await this.resolve(submissionId, index);
+-    const buffer = await this.upload.getFileBuffer(key);
++    const buffer = await this.fromStorage(key, () => this.upload.getFileBuffer(key));
+ 
+     const safeName = encodeURIComponent(fileName).replace(/['()]/g, '');
+     res.setHeader('X-Content-Type-Options', 'nosniff');
+     res.setHeader('Cache-Control', 'private, no-store');
+     if (INLINE_MIME_TYPES.includes(mime)) {
+       res.setHeader('Content-Type', mime);
+       res.setHeader('Content-Security-Policy', "default-src 'none'");
+       res.setHeader('Content-Disposition', `inline; filename*=UTF-8''${safeName}`);
+     } else {
+       res.setHeader('Content-Type', 'application/octet-stream');
+       res.setHeader('Content-Security-Policy', "default-src 'none'; sandbox");
+       res.setHeader('Content-Disposition', `attachment; filename*=UTF-8''${safeName}`);
+     }
+     res.end(buffer);
+   }
+ 
+   /** Short-TTL presigned URL (signed against the public endpoint — the only link that works in prod). */
+   async link(submissionId: string, index: number) {
+     const { key, fileName } = await this.resolve(submissionId, index);
+-    const url = await this.upload.presignedGetUrl(key);
++    const url = await this.fromStorage(key, () => this.upload.presignedGetUrl(key));
+     return { data: { url, fileName } };
+   }
+ }
+diff --git a/apps/backend/src/modules/website/website-public-uploads.controller.ts b/apps/backend/src/modules/website/website-public-uploads.controller.ts
+index 1859b9c..ce97412 100644
+--- a/apps/backend/src/modules/website/website-public-uploads.controller.ts
++++ b/apps/backend/src/modules/website/website-public-uploads.controller.ts
+@@ -37,18 +37,20 @@ export class WebsitePublicUploadsController {
+   constructor(private readonly evidence: WebsiteFraudEvidenceService) {}
+ 
+   @Post('fraud-evidence')
+   @Header('Cache-Control', 'private, no-store')
+   @Throttle({ default: { limit: 10, ttl: 60_000 } })
+   @ApiConsumes('multipart/form-data')
+   @ApiOperation({
+     summary:
+       '[website] Store one fraud-report evidence file (JPEG/PNG/WEBP/PDF, ≤ 8 MB, content-sniffed). Returns {key} only; the test token class is a dry run.',
+   })
+-  @UseInterceptors(FileInterceptor('file', { limits: { fileSize: MAX_FRAUD_EVIDENCE_BYTES, files: 1 } }))
++  // `files: 1` — one object per call; `fields: 0` — the route takes ONLY `file`,
++  // so any stray text part is a 400 (multer LIMIT_FIELD_COUNT) before it is parsed.
++  @UseInterceptors(FileInterceptor('file', { limits: { fileSize: MAX_FRAUD_EVIDENCE_BYTES, files: 1, fields: 0 } }))
+   uploadFraudEvidence(
+     @UploadedFile() file: Express.Multer.File | undefined,
+     @TokenClass() tokenClass: WebsiteBearerClass,
+   ) {
+     return this.evidence.store(file, tokenClass);
+   }
+ }

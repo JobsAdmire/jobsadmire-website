@@ -1,0 +1,77 @@
+import { screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { FaqBlock } from '../FaqBlock';
+import { testBundle } from '@/test/bundle';
+import { renderWithIntl } from '@/test/render';
+
+// No analytics mock: the ask card's ContactCta renders T0c's real ContactLink, whose hook
+// reads the locale from the provider `renderWithIntl` supplies.
+const bundle = testBundle({
+  strings: {
+    'x.eyebrow': 'SSS',
+    'x.title': 'İşverenlerin sorduğu sorular',
+    'x.body': 'İzinler, maliyetler, süreler.',
+    'x.askT': 'Sorunuz listede yok mu?',
+    'x.askB': 'Ekibimize yazın.',
+    'x.wa': "WhatsApp'tan sorun",
+    'x.call': 'Bizi arayın',
+  },
+});
+const items = [
+  { id: 'q1', q: 'Ne kadar sürer?', a: 'Ortalama 45 gün.' },
+  { id: 'q2', q: 'Maliyet?', a: 'Role göre değişir.' },
+];
+
+describe('FaqBlock', () => {
+  it('renders the side column, one accordion trigger per pair and a FAQPage node', () => {
+    const { container } = renderWithIntl(
+      <FaqBlock
+        bundle={bundle}
+        locale="tr"
+        items={items}
+        eyebrowId="x.eyebrow"
+        headingId="x.title"
+        bodyId="x.body"
+        askCard={{
+          titleId: 'x.askT',
+          bodyId: 'x.askB',
+          whatsappNumber: '905011240340',
+          whatsappText: 'Merhaba',
+          whatsappLabelId: 'x.wa',
+          phone: '+905011240340',
+          callLabelId: 'x.call',
+        }}
+      />,
+    );
+    expect(
+      screen.getByRole('heading', { level: 2, name: 'İşverenlerin sorduğu sorular' }),
+    ).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 3, name: 'Ne kadar sürer?' })).toBeInTheDocument();
+    expect(screen.getAllByRole('button', { name: /Ne kadar sürer\?|Maliyet\?/ })).toHaveLength(2);
+    expect(screen.getByRole('link', { name: "WhatsApp'tan sorun" })).toHaveAttribute(
+      'href',
+      'https://wa.me/905011240340?text=Merhaba',
+    );
+    expect(screen.getByRole('link', { name: 'Bizi arayın' })).toHaveAttribute(
+      'href',
+      'tel:+905011240340',
+    );
+    const data = JSON.parse(
+      container.querySelector('script[type="application/ld+json"]')!.textContent!,
+    );
+    expect(data['@type']).toBe('FAQPage');
+    expect(data.mainEntity).toHaveLength(2);
+    expect(data.mainEntity[1].acceptedAnswer.text).toBe('Role göre değişir.');
+  });
+
+  it('opens the first pair on request and allows multi-open (the Homepage variant)', () => {
+    renderWithIntl(
+      <FaqBlock bundle={bundle} locale="tr" items={items} singleOpen={false} openFirst />,
+    );
+    expect(screen.getByRole('button', { name: 'Ne kadar sürer?' })).toHaveAttribute(
+      'aria-expanded',
+      'true',
+    );
+    expect(screen.queryByRole('heading', { level: 2 })).toBeNull();
+  });
+});

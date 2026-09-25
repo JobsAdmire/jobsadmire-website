@@ -1,0 +1,1083 @@
+# Review package: f1fe57e..6dd2f05
+
+## Commits
+6dd2f05 feat(ops): site-health and revalidate routes, error pages, dev component gallery
+
+## Files changed
+ docs/ARCHITECTURE.md                        |   4 +-
+ docs/OPERATING.md                           |  41 +++--
+ e2e/ops.spec.ts                             |  74 +++++++++
+ e2e/routing.spec.ts                         |   7 +-
+ e2e/thank-you.spec.ts                       |   6 +-
+ src/app/[locale]/[...rest]/page.tsx         |   9 ++
+ src/app/[locale]/dev/gallery/DialogDemo.tsx |  31 ++++
+ src/app/[locale]/dev/gallery/page.tsx       | 240 ++++++++++++++++++++++++++++
+ src/app/[locale]/error.tsx                  |  27 ++++
+ src/app/[locale]/not-found.tsx              |  24 +++
+ src/app/api/revalidate/auth.test.ts         |  56 +++++++
+ src/app/api/revalidate/auth.ts              |  33 ++++
+ src/app/api/revalidate/route.ts             |  33 +++-
+ src/app/api/revalidate/state.ts             |  13 ++
+ src/app/api/site-health/checks.test.ts      |  15 ++
+ src/app/api/site-health/checks.ts           |  19 +++
+ src/app/api/site-health/route.ts            |  50 ++++++
+ src/app/global-error.tsx                    |  52 ++++++
+ src/content/adapter.test.ts                 |   6 +
+ src/content/adapter.ts                      |  10 +-
+ src/design/chrome/Footer.tsx                |   8 +-
+ src/design/chrome/__tests__/Footer.test.tsx |  21 ++-
+ 22 files changed, 755 insertions(+), 24 deletions(-)
+
+## Diff
+diff --git a/docs/ARCHITECTURE.md b/docs/ARCHITECTURE.md
+index 0a7fcde..aff013e 100644
+--- a/docs/ARCHITECTURE.md
++++ b/docs/ARCHITECTURE.md
+@@ -71,22 +71,22 @@ When porting any desktop value from the package, check off:
+ `src/design/` — tokens (colour, type, radius, shadow per `design-package/README.md`'s Design Tokens section, scaled per D19), `Archivo` via `next/font/google` (`latin` + `latin-ext` subsets, self-hosted), primitives (`FormField` with label/error/`aria-live`, `Dialog`, `PausableMarquee`, `SkipLink`), shared chrome (`SlimBar`, `Header`/`Nav`, `SocialRail`, `WhatsAppFab`, `MobileBottomBar`, `Footer`, `LanguageHint`, `StickyCtaBar`, `ConsentBanner`) — identical on every page per the package's own warning against chrome drift.
+ 
+ Pages: one server component per page, client islands only where interactive; inline SVG icon sprite (no icon font/library, per the package); local flag assets; the sourcing map pre-rendered from `design-package/design/source-map.js`'s country list; local QR generation (replacing the package's `qr.js`); a per-slot image policy with the LCP element named explicitly per page (the content-readiness gate refuses to launch a page whose named LCP slot is still a placeholder — D26).
+ 
+ ## Calculator engine
+ 
+ `src/lib/calculator/` — pure functions over the published `RateConfig` (versioned, `effectiveFrom`/`reviewDueAt`, D17). Output formatted through `formatTRY` (D18). Tested against the design package's worked figures. The homepage teaser and the full Cost Calculator page share this engine — no duplicated math. Dated labels ("2026 rates", "Updated January 2026") render from `RateConfig.effectiveFrom`, never hard-typed (D17's numbers-out-of-copy lint blocks publishing a string that hard-types a rate or metric value).
+ 
+ ## Operations surface
+ 
+-- `GET /api/site-health` — bundle age, last revalidate timestamp, canary image HEAD check, Operations `ping`, tripped-forms state, handler failures, lead-drought flag. Watched by an external monitor to the owner's phone (D25).
+-- `POST /api/revalidate` — Operations-triggered, secret-authenticated, serial tag revalidation with read-back.
++- `GET /api/site-health` — `force-dynamic`, `Cache-Control: no-store`, watched by an external monitor to the owner's phone (D25). Shipped in WP1 (`src/app/api/site-health/`): both bundles loaded through the adapter, plus `lastRevalidate` and `opsPing`; answers `{ ok, reasons, checks, contractVersion, source, commit, at }` with **200 when ok, 503 otherwise**. Reason codes and the `skip` rule are in `docs/OPERATING.md`. Canary image HEAD, tripped-forms state, handler failures and lead-drought join it in WP3a/WP5/WP6.
++- `POST /api/revalidate` — Operations-triggered, secret-authenticated tag revalidation (`src/app/api/revalidate/`). `Authorization: Bearer $REVALIDATE_SECRET`, body `{ tags: string[] }` (1–50, each `/^[a-z0-9:_-]+$/`); **503 when no usable secret is configured** (never open), 401 on a missing/wrong token (timing-safe, equal-length compare only), 400 on a malformed body — validated in full before the first `revalidateTag(tag, 'max')`, so there is no partial purge. A success records the timestamp `site-health` reads; that store is module-level and best-effort until WP5. Read-back verification is WP5.
+ - Vercel Cron: **synthetic-lead** every 30 min through the real form path (test token class), pinging an external heartbeat — a missed ping pages the owner. **Daily digest** email sent from Vercel — its _absence_ is the alarm, not its content.
+ - Client submit-failure beacon feeding `/api/site-health`'s "handler failures" signal (belt-and-braces alongside Sentry).
+ 
+ ## Sentry
+ 
+ `sendDefaultPii: false`; `beforeSend` scrubs server-action arguments and auth/cookie headers; `tracePropagationTargets` restricted to this site's own origin; tunnel is validated and rate-limited; traces sampled at 10%; **no Session Replay**.
+ 
+ ## Environments
+ 
+ | Environment | Branch/trigger                | Domain                                   | Tokens                                     | Indexing                            |
+diff --git a/docs/OPERATING.md b/docs/OPERATING.md
+index be79b17..4bedb48 100644
+--- a/docs/OPERATING.md
++++ b/docs/OPERATING.md
+@@ -1,27 +1,46 @@
+ # Operating — JobsAdmire Website
+ 
+ Full rationale: plan D25, D26, WP7a, WP6.5. This doc is the day-to-day operating reference once the site is live.
+ 
+ ## Site-health checks
+ 
+-`GET /api/site-health` (see `docs/ARCHITECTURE.md`) reports, and is watched by an **external monitor to the owner's phone** — not an in-app bell, not anything that lives inside the system it's monitoring:
+-
+-| Check                                                         | Reason code (illustrative — exact codes land in WP1) |
+-| ------------------------------------------------------------- | ---------------------------------------------------- |
+-| Bundle age vs. its time floor                                 | `BUNDLE_STALE`                                       |
+-| Last successful revalidate                                    | `REVALIDATE_STALE`                                   |
+-| Canary image HEAD request                                     | `MEDIA_UNREACHABLE`                                  |
+-| Operations `ping`                                             | `OPS_UNREACHABLE`                                    |
+-| Tripped forms (captcha degraded / abuse auto-trip)            | `FORMS_DEGRADED`                                     |
+-| Handler failures                                              | `HANDLER_FAILED`                                     |
+-| Lead-drought (no successful submission in an abnormal window) | `LEAD_DROUGHT`                                       |
++`GET /api/site-health` (see `docs/ARCHITECTURE.md`) reports, and is watched by an **external monitor to the owner's phone** — not an in-app bell, not anything that lives inside the system it's monitoring.
++
++Every check reports `ok`, `fail` or **`skip`** — `skip` means the check cannot run in this
++mode and is counted as neither pass nor failure. Nothing reports `ok` for a check that never
++ran: a health endpoint that flatters itself is worse than none (D25). `ok` at the top level
++is "no check reported `fail`", and the response is **200** when true, **503** when not.
++
++Shipped in WP1 (`src/app/api/site-health/checks.ts`):
++
++| Check            | Reason code        | Behaviour                                                                                                 |
++| ---------------- | ------------------ | --------------------------------------------------------------------------------------------------------- |
++| `bundleTr`       | `BUNDLE_TR`        | `getBundle('tr')` resolves                                                                                |
++| `bundleEn`       | `BUNDLE_EN`        | `getBundle('en')` resolves                                                                                |
++| `lastRevalidate` | `REVALIDATE_STALE` | `skip` in LOCAL (the bundle ships with the deploy); in OPS, `fail` when never recorded or older than 24 h |
++| `opsPing`        | `OPS_PING`         | `skip` until WP3a adds the real Operations ping                                                           |
++
++The response also carries `source` (`LOCAL`/`OPS`), `contractVersion`, `commit`
++(`VERCEL_GIT_COMMIT_SHA`) and `at`. **Bundle age is deliberately not derived from the
++bundle's own `generatedAt`** — in Phase A that is a fixed sentinel, so an age computed from
++it would be fiction.
++
++Still to land, with the work package that brings them:
++
++| Check                                                         | Reason code         | Lands in |
++| ------------------------------------------------------------- | ------------------- | -------- |
++| Bundle age vs. its time floor                                 | `BUNDLE_STALE`      | WP5      |
++| Canary image HEAD request                                     | `MEDIA_UNREACHABLE` | WP5      |
++| Tripped forms (captcha degraded / abuse auto-trip)            | `FORMS_DEGRADED`    | WP3a     |
++| Handler failures                                              | `HANDLER_FAILED`    | WP3a     |
++| Lead-drought (no successful submission in an abnormal window) | `LEAD_DROUGHT`      | WP5      |
+ 
+ ## Synthetic lead
+ 
+ A Vercel Cron job submits a real form, through the real form path, **every 30 minutes**, using the `isTest` token class (so it never shows up as a real lead in Operations' inbox or in `generate_lead` conversion counts). It pings an external heartbeat service on success. **A missed ping is the page** — the alarm is the monitor noticing silence, not the site self-reporting a failure it may be unable to self-report during an actual outage.
+ 
+ ## Daily digest
+ 
+ An email, sent **from Vercel** (not from Operations — deliberately a different failure domain), summarizing the prior day's leads, form health, and any tripped alarms. **Its absence is itself the alarm** — a missing digest means something broke badly enough to take the digest with it, which is exactly the scenario a digest exists to catch.
+ 
+ ## External monitor and second human
+diff --git a/e2e/ops.spec.ts b/e2e/ops.spec.ts
+new file mode 100644
+index 0000000..630e366
+--- /dev/null
++++ b/e2e/ops.spec.ts
+@@ -0,0 +1,74 @@
++import { test, expect } from '@playwright/test';
++import tr from '../src/messages/tr.json';
++
++// Matches the secret the task's local production server is started with; on a preview these
++// cases are skipped rather than failing (see below).
++const SECRET = process.env.REVALIDATE_SECRET ?? 'wp1-local-secret-0123456789';
++
++test('site-health answers honestly and is never cached (D25)', async ({ request }) => {
++  const res = await request.get('/api/site-health');
++  expect(res.status()).toBe(200);
++  expect(res.headers()['cache-control']).toContain('no-store');
++  const body = await res.json();
++  expect(body.ok).toBe(true);
++  expect(body.source).toBe('LOCAL');
++  expect(body.checks.bundleTr).toBe('ok');
++  expect(body.checks.bundleEn).toBe('ok');
++  // LOCAL has no publish pipeline and WP3a has not added the ping: both are skipped, not
++  // reported green.
++  expect(body.checks.lastRevalidate).toBe('skip');
++  expect(body.checks.opsPing).toBe('skip');
++  expect(body.reasons).toEqual([]);
++  expect(body.contractVersion).toBe('1.0');
++});
++
++test('revalidate refuses an unauthenticated call', async ({ request }) => {
++  const res = await request.post('/api/revalidate', { data: { tags: ['site:tr'] } });
++  expect(res.status()).toBe(401);
++});
++
++test('revalidate refuses a wrong token', async ({ request }) => {
++  const res = await request.post('/api/revalidate', {
++    headers: { Authorization: 'Bearer not-the-secret-0123456789' },
++    data: { tags: ['site:tr'] },
++  });
++  expect(res.status()).toBe(401);
++});
++
++test('revalidate accepts the secret and reports the tags it purged', async ({ request }) => {
++  const res = await request.post('/api/revalidate', {
++    headers: { Authorization: `Bearer ${SECRET}` },
++    data: { tags: ['site:tr'] },
++  });
++  expect(res.status()).toBe(200);
++  const body = await res.json();
++  expect(body.revalidated).toEqual(['site:tr']);
++  expect(Number.isNaN(Date.parse(body.at))).toBe(false);
++});
++
++test('revalidate rejects a malformed tag before purging anything', async ({ request }) => {
++  const res = await request.post('/api/revalidate', {
++    headers: { Authorization: `Bearer ${SECRET}` },
++    data: { tags: ['bad tag!'] },
++  });
++  expect(res.status()).toBe(400);
++});
++
++test('an unmatched Turkish URL is a 404 inside the Turkish chrome (R6)', async ({ page }) => {
++  const res = await page.goto('/this-does-not-exist');
++  expect(res?.status()).toBe(404);
++  await expect(page.locator('html')).toHaveAttribute('lang', 'tr');
++  await expect(page.locator('h1')).toHaveText(tr.sys.notFoundTitle);
++  await expect(page.getByRole('contentinfo')).toBeVisible();
++});
++
++test('an unmatched English URL is a 404 inside the English chrome', async ({ page }) => {
++  const res = await page.goto('/en/this-does-not-exist');
++  expect(res?.status()).toBe(404);
++  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
++});
++
++test('the dev gallery does not exist in a production build (R41)', async ({ page }) => {
++  const res = await page.goto('/dev/gallery');
++  expect(res?.status()).toBe(404);
++});
+diff --git a/e2e/routing.spec.ts b/e2e/routing.spec.ts
+index ab786bb..9bfecdb 100644
+--- a/e2e/routing.spec.ts
++++ b/e2e/routing.spec.ts
+@@ -26,23 +26,26 @@ test('English slug under /en renders the internal route', async ({ page }) => {
+   await page.goto('/en/hire-workers');
+   await expect(page.getByTestId('hire-h1')).toHaveText('en');
+ });
+ 
+ test('the Link component emits the localized href', async ({ page }) => {
+   await page.goto('/');
+   await expect(page.locator('a', { hasText: 'hire' })).toHaveAttribute('href', '/isci-talebi');
+ });
+ 
+ test('API routes are not intercepted by the locale proxy', async ({ request }) => {
++  // The handler's own refusal is the proof it was reached: 401 with a secret configured,
++  // 503 without one. A locale-rewritten request could produce neither. The full status
++  // matrix lives in e2e/ops.spec.ts.
+   const res = await request.post('/api/revalidate');
+-  expect(res.status()).toBe(200);
+-  expect(await res.json()).toEqual({ ok: true });
++  expect([401, 503]).toContain(res.status());
++  expect(await res.json()).toHaveProperty('error');
+ });
+ 
+ test('the locale cookie uses our name', async ({ page, context }) => {
+   // Two navigations on purpose: next-intl skips the cookie when the resolved locale already
+   // matches the browser's accept-language, so a cold /en in an English browser sets nothing.
+   await page.goto('/');
+   await page.goto('/en');
+   const names = (await context.cookies()).map((c) => c.name);
+   expect(names).toContain('ja_locale');
+   expect(names).not.toContain('NEXT_LOCALE');
+diff --git a/e2e/thank-you.spec.ts b/e2e/thank-you.spec.ts
+index 0eae593..923d447 100644
+--- a/e2e/thank-you.spec.ts
++++ b/e2e/thank-you.spec.ts
+@@ -57,13 +57,15 @@ test('no container id means no consent sheet, but the denied defaults still ship
+     first: Object.assign({}, (window as unknown as { dataLayer?: unknown[] }).dataLayer?.[0]),
+   }));
+   expect(defaults.gtag).toBe('function');
+   expect(defaults.first).toMatchObject({
+     0: 'consent',
+     1: 'default',
+     2: { ad_storage: 'denied', analytics_storage: 'denied' },
+   });
+   expect(await page.locator('script[src*="googletagmanager.com"]').count()).toBe(0);
+ 
+-  // The withdrawal door is in the footer whether or not the sheet is mounted.
+-  await expect(page.getByRole('button', { name: 'Çerez tercihleri' })).toHaveCount(1);
++  // R40: the footer's withdrawal door is gated exactly like the sheet — with no container id
++  // nothing ever asked, so there is nothing to withdraw and the button would reopen nothing.
++  // It returns with the GTM id (Phase B); the button itself is covered in Footer.test.tsx.
++  await expect(page.getByRole('button', { name: 'Çerez tercihleri' })).toHaveCount(0);
+ });
+diff --git a/src/app/[locale]/[...rest]/page.tsx b/src/app/[locale]/[...rest]/page.tsx
+new file mode 100644
+index 0000000..d394234
+--- /dev/null
++++ b/src/app/[locale]/[...rest]/page.tsx
+@@ -0,0 +1,9 @@
++import { notFound } from 'next/navigation';
++
++/** R6: next-intl's documented 404 pattern. Without this catch-all an unmatched URL renders
++ *  the root `app/not-found.tsx` outside the locale segment — no chrome, no messages, and no
++ *  `lang` on `<html>`. Here the layout has already resolved the locale, so `notFound()`
++ *  renders `[locale]/not-found.tsx` inside the site. */
++export default function CatchAllNotFound(): never {
++  notFound();
++}
+diff --git a/src/app/[locale]/dev/gallery/DialogDemo.tsx b/src/app/[locale]/dev/gallery/DialogDemo.tsx
+new file mode 100644
+index 0000000..91aab2d
+--- /dev/null
++++ b/src/app/[locale]/dev/gallery/DialogDemo.tsx
+@@ -0,0 +1,31 @@
++'use client';
++import { useState } from 'react';
++import { Button, Dialog } from '@/design/primitives';
++
++/** The one gallery entry that cannot be driven from a server component: `Dialog` needs an
++ *  `onClose` function, which never crosses the RSC boundary. */
++export function DialogDemo({
++  open,
++  title,
++  body,
++  close,
++}: Record<'open' | 'title' | 'body' | 'close', string>) {
++  const [isOpen, setIsOpen] = useState(false);
++  const titleId = 'gallery-dialog-title';
++  return (
++    <>
++      <Button variant="secondary" onClick={() => setIsOpen(true)}>
++        {open}
++      </Button>
++      <Dialog open={isOpen} onClose={() => setIsOpen(false)} titleId={titleId}>
++        <h3 id={titleId} className="text-card-title">
++          {title}
++        </h3>
++        <p className="text-body-sm text-text-secondary">{body}</p>
++        <Button variant="primary" onClick={() => setIsOpen(false)}>
++          {close}
++        </Button>
++      </Dialog>
++    </>
++  );
++}
+diff --git a/src/app/[locale]/dev/gallery/page.tsx b/src/app/[locale]/dev/gallery/page.tsx
+new file mode 100644
+index 0000000..f1ef6a8
+--- /dev/null
++++ b/src/app/[locale]/dev/gallery/page.tsx
+@@ -0,0 +1,240 @@
++import type { Metadata } from 'next';
++import { hasLocale } from 'next-intl';
++import { getTranslations, setRequestLocale } from 'next-intl/server';
++import { notFound } from 'next/navigation';
++import { getBundle, makeT } from '@/content/adapter';
++import { ConsentBanner } from '@/design/chrome/ConsentBanner';
++import { CookiePreferencesButton } from '@/design/chrome/CookiePreferencesButton';
++import { Footer } from '@/design/chrome/Footer';
++import { Header } from '@/design/chrome/Header';
++import { LanguageHint } from '@/design/chrome/LanguageHint';
++import { LanguageSwitcher } from '@/design/chrome/LanguageSwitcher';
++import { MobileBottomBar } from '@/design/chrome/MobileBottomBar';
++import { MobileNav } from '@/design/chrome/MobileNav';
++import { NavLink } from '@/design/chrome/NavLink';
++import { SlimBar } from '@/design/chrome/SlimBar';
++import { SocialRail } from '@/design/chrome/SocialRail';
++import { StickyCtaBar } from '@/design/chrome/StickyCtaBar';
++import { WhatsAppFab } from '@/design/chrome/WhatsAppFab';
++import {
++  Accordion,
++  Button,
++  Card,
++  Chip,
++  Eyebrow,
++  FormField,
++  PausableMarquee,
++  Section,
++  SkipLink,
++  Stat,
++  Tabs,
++  Timeline,
++} from '@/design/primitives';
++import { routing } from '@/i18n/routing';
++import { DialogDemo } from './DialogDemo';
++
++// Never indexed even in the environments where it does render.
++export const metadata: Metadata = {
++  title: 'Component gallery',
++  robots: { index: false, follow: false },
++};
++
++const INPUT =
++  'min-h-[44px] rounded-md border border-border-1 px-3 text-body-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
++
++function Block({ title, children }: { title: string; children: React.ReactNode }) {
++  return (
++    <section className="border-t border-border-2 py-8">
++      <h2 className="text-card-title mb-4 font-mono">{title}</h2>
++      <div className="flex flex-wrap items-end gap-4">{children}</div>
++    </section>
++  );
++}
++
++/** R41: a dev-only catalogue of every primitive and every chrome piece that takes plain
++ *  props, rendered from the real bundle. It is not a route of the site — `notFound()` is the
++ *  first thing it does in production, so the page cannot ship even by accident. */
++export default async function Gallery({ params }: { params: Promise<{ locale: string }> }) {
++  if (process.env.NODE_ENV === 'production') notFound();
++  const { locale } = await params;
++  if (!hasLocale(routing.locales, locale)) notFound();
++  setRequestLocale(locale);
++  const [bundle, sys] = await Promise.all([getBundle(locale), getTranslations('sys')]);
++  const t = makeT(bundle);
++  const navItems = bundle.nav
++    .filter((n) => n.group === 'desktopNav')
++    .sort((a, b) => a.order - b.order)
++    .map((n) => ({ href: n.href, label: t(n.labelId), external: n.external }));
++
++  return (
++    <div className="container-site py-10">
++      <h1 className="text-h2">Component gallery</h1>
++      <p className="text-body-sm text-text-secondary">
++        {`locale: ${locale} · dev only (404 in production)`}
++      </p>
++
++      <Block title="Button">
++        <Button variant="primary">primary</Button>
++        <Button variant="secondary">secondary</Button>
++        <Button variant="ghost">ghost</Button>
++        <Button variant="danger">danger</Button>
++        <Button variant="primary" size="lg">
++          primary lg
++        </Button>
++        <Button variant="primary" disabled>
++          disabled
++        </Button>
++        <Button variant="secondary" href="/">
++          internal link
++        </Button>
++        <Button variant="ghost" href="https://wa.me/905011240340" external>
++          external link
++        </Button>
++      </Block>
++
++      <Block title="Eyebrow / Chip / Stat">
++        <Eyebrow>{t('home.001')}</Eyebrow>
++        {/* `onToggle` is optional, so the static states render straight from the server. */}
++        <Chip>unselected</Chip>
++        <Chip selected>selected</Chip>
++        <Stat value={1240} suffix="+" label={t('home.024')} locale={locale} />
++      </Block>
++
++      <Block title="Card">
++        <Card className="w-72">
++          <h3 className="text-card-title">Card</h3>
++          <p className="text-body-sm text-text-secondary">Flat.</p>
++        </Card>
++        <Card hover as="article" className="w-72">
++          <h3 className="text-card-title">Card (hover, article)</h3>
++          <p className="text-body-sm text-text-secondary">Lifts on hover.</p>
++        </Card>
++      </Block>
++
++      <Block title="FormField">
++        <div className="w-72">
++          <FormField id="g-name" label="Label" hint="A hint" required>
++            {(p) => <input {...p} className={INPUT} />}
++          </FormField>
++        </div>
++        <div className="w-72">
++          <FormField id="g-mail" label="With an error" error="This field is required">
++            {(p) => <input {...p} className={INPUT} type="email" />}
++          </FormField>
++        </div>
++      </Block>
++
++      <Block title="Accordion / Tabs / Timeline">
++        <div className="w-full max-w-xl">
++          <Accordion
++            defaultOpenId="a1"
++            items={[
++              { id: 'a1', title: 'First', body: <p>First panel.</p> },
++              { id: 'a2', title: 'Second', body: <p>Second panel.</p> },
++            ]}
++          />
++        </div>
++        <div className="w-full max-w-xl">
++          <Tabs
++            defaultId="t1"
++            tabs={[
++              { id: 't1', label: 'One', panel: <p>Panel one.</p> },
++              { id: 't2', label: 'Two', panel: <p>Panel two.</p> },
++            ]}
++          />
++        </div>
++        <div className="w-full max-w-xl">
++          <Timeline
++            steps={[
++              { when: '01', title: 'Step one', body: 'What happens first.' },
++              { title: 'Step two (no `when`)', body: 'What happens next.' },
++            ]}
++          />
++        </div>
++      </Block>
++
++      <Block title="Dialog (client wrapper) / SkipLink">
++        <DialogDemo open="Open dialog" title="Dialog" body="Focus is trapped." close="Close" />
++        {/* Visible only while focused — tab into it from the button on its left. */}
++        <SkipLink label={sys('skipToContent')} />
++      </Block>
++
++      <Block title="PausableMarquee">
++        <div className="w-full">
++          <PausableMarquee
++            durationSec={30}
++            labelPause={sys('marquee.pause')}
++            labelPlay={sys('marquee.play')}
++          >
++            <span className="px-4 font-bold">{t('home.019')}</span>
++            <span className="px-4 font-bold">{t('home.020')}</span>
++            <span className="px-4 font-bold">{t('home.021')}</span>
++          </PausableMarquee>
++        </div>
++      </Block>
++
++      <Section tone="dark" className="my-8 rounded-xl">
++        <div className="container-site">
++          <h2 className="text-card-title font-mono">Section tone=&quot;dark&quot;</h2>
++          <p className="text-body-sm">The light tone is what this whole page sits on.</p>
++        </div>
++      </Section>
++
++      <Block title="Chrome — LanguageSwitcher / NavLink / CookiePreferencesButton">
++        <LanguageSwitcher locale={locale} label={t('home.016')} />
++        <span className="bg-navy p-3">
++          <LanguageSwitcher locale={locale} label={t('home.016')} variant="dark" />
++        </span>
++        <LanguageSwitcher locale={locale} label={t('home.016')} variant="block" />
++        {navItems[0] && (
++          <NavLink item={navItems[0]} className="font-bold text-blue-safe underline" />
++        )}
++        <span className="bg-navy p-3">
++          <CookiePreferencesButton label={sys('consent.manage')} />
++        </span>
++      </Block>
++
++      <Block title="Chrome — MobileNav (below lg) / SlimBar / Header">
++        <MobileNav
++          items={navItems}
++          locale={locale}
++          menuLabel={sys('nav.main')}
++          closeLabel={sys('nav.close')}
++          languageLabel={t('home.016')}
++        />
++        <div className="w-full">
++          <SlimBar bundle={bundle} />
++          <Header locale={locale} bundle={bundle} primaryCta={{ href: '/hire-workers' }} />
++        </div>
++      </Block>
++
++      <Block title="Chrome — Footer">
++        <div className="w-full">
++          <Footer locale={locale} bundle={bundle} />
++        </div>
++      </Block>
++
++      {/* Fixed-position chrome: these mount at the viewport, not here, so on this page they
++          stack on the copies `SiteChrome` already renders. Listed anyway — the gallery is
++          where you check they still render at all. `ConsentBanner` is the exception: the
++          layout only mounts it when a GTM container id exists, which Phase A has not. */}
++      <LanguageHint locale={locale} />
++      <SocialRail bundle={bundle} />
++      <WhatsAppFab bundle={bundle} />
++      <MobileBottomBar bundle={bundle} />
++      <StickyCtaBar
++        message={t('home.003')}
++        ctas={[
++          { label: t('home.004'), href: '/hire-workers' },
++          {
++            label: t('home.012'),
++            href: bundle.settings.portal.host,
++            variant: 'secondary',
++            external: true,
++          },
++        ]}
++      />
++      <ConsentBanner />
++    </div>
++  );
++}
+diff --git a/src/app/[locale]/error.tsx b/src/app/[locale]/error.tsx
+new file mode 100644
+index 0000000..d6d3c55
+--- /dev/null
++++ b/src/app/[locale]/error.tsx
+@@ -0,0 +1,27 @@
++'use client';
++import { useTranslations } from 'next-intl';
++import { Button, Section } from '@/design/primitives';
++
++/** The locale segment's error boundary: the chrome survives, the page is replaced. Errors
++ *  thrown by the layout itself escape to `app/global-error.tsx`. The error object is
++ *  deliberately not rendered — a visitor gets no stack, and Sentry gets the digest (WP6). */
++export default function LocaleError({
++  reset,
++}: {
++  error: Error & { digest?: string };
++  reset: () => void;
++}) {
++  const sys = useTranslations('sys');
++  return (
++    <Section tone="light">
++      <div className="container-site max-w-[720px]">
++        <h1 className="text-h2">{sys('errorTitle')}</h1>
++        <div className="mt-8">
++          <Button variant="primary" size="lg" onClick={() => reset()}>
++            {sys('errorRetry')}
++          </Button>
++        </div>
++      </div>
++    </Section>
++  );
++}
+diff --git a/src/app/[locale]/not-found.tsx b/src/app/[locale]/not-found.tsx
+new file mode 100644
+index 0000000..ee39c66
+--- /dev/null
++++ b/src/app/[locale]/not-found.tsx
+@@ -0,0 +1,24 @@
++import { getTranslations } from 'next-intl/server';
++import { Section } from '@/design/primitives';
++import { Link } from '@/i18n/navigation';
++
++const HOME_LINK =
++  'inline-flex min-h-[52px] items-center justify-center rounded-pill bg-blue px-7 text-body font-extrabold text-white no-underline transition-colors hover:bg-blue-safe focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
++
++/** R6: rendered inside the locale chrome, so a 404 is still a way back into the site rather
++ *  than a dead end. Reached from `[...rest]/page.tsx` (any unmatched URL) and from every
++ *  `notFound()` a page calls. */
++export default async function LocaleNotFound() {
++  const sys = await getTranslations('sys');
++  return (
++    <Section tone="light">
++      <div className="container-site max-w-[720px]">
++        <h1 className="text-h2">{sys('notFoundTitle')}</h1>
++        <p className="text-body-lg text-text-secondary">{sys('notFoundBody')}</p>
++        <Link href="/" className={`mt-8 ${HOME_LINK}`}>
++          {sys('home')}
++        </Link>
++      </div>
++    </Section>
++  );
++}
+diff --git a/src/app/api/revalidate/auth.test.ts b/src/app/api/revalidate/auth.test.ts
+new file mode 100644
+index 0000000..da0299b
+--- /dev/null
++++ b/src/app/api/revalidate/auth.test.ts
+@@ -0,0 +1,56 @@
++import { describe, expect, it } from 'vitest';
++import { authorize, parseTags } from './auth';
++
++const SECRET = 'wp1-local-secret-0123456789';
++
++describe('authorize', () => {
++  it('is disabled when no usable secret is configured — never open (D6)', () => {
++    expect(authorize(`Bearer ${SECRET}`, undefined)).toBe('disabled');
++    expect(authorize(`Bearer ${SECRET}`, '')).toBe('disabled');
++    expect(authorize('Bearer shortsecret123', 'shortsecret123')).toBe('disabled'); // 14 < 16
++  });
++
++  it('rejects a missing, malformed or wrong token', () => {
++    expect(authorize(null, SECRET)).toBe('unauthorized');
++    expect(authorize('', SECRET)).toBe('unauthorized');
++    expect(authorize('Bearer ', SECRET)).toBe('unauthorized');
++    expect(authorize(SECRET, SECRET)).toBe('unauthorized'); // no scheme
++    expect(authorize(`Basic ${SECRET}`, SECRET)).toBe('unauthorized'); // wrong scheme
++    expect(authorize(`Bearer ${'x'.repeat(SECRET.length)}`, SECRET)).toBe('unauthorized'); // same length
++    expect(authorize(`Bearer ${SECRET}x`, SECRET)).toBe('unauthorized'); // longer
++    expect(authorize(`Bearer ${SECRET.slice(0, -1)}`, SECRET)).toBe('unauthorized'); // shorter
++  });
++
++  it('accepts the exact token, scheme case-insensitively', () => {
++    expect(authorize(`Bearer ${SECRET}`, SECRET)).toBe('ok');
++    expect(authorize(`bearer ${SECRET}`, SECRET)).toBe('ok');
++  });
++});
++
++describe('parseTags', () => {
++  it('accepts 1–50 tags matching the tag grammar', () => {
++    expect(parseTags({ tags: ['site:tr', 'page:hire-workers', 'blog', 'a_b-c9'] })).toEqual([
++      'site:tr',
++      'page:hire-workers',
++      'blog',
++      'a_b-c9',
++    ]);
++    expect(parseTags({ tags: Array.from({ length: 50 }, (_, i) => `t${i}`) })).toHaveLength(50);
++  });
++
++  it('returns null for anything else — one bad tag fails the whole call', () => {
++    expect(parseTags(null)).toBeNull();
++    expect(parseTags(undefined)).toBeNull();
++    expect(parseTags('site:tr')).toBeNull();
++    expect(parseTags(['site:tr'])).toBeNull();
++    expect(parseTags({})).toBeNull();
++    expect(parseTags({ tags: 'site:tr' })).toBeNull();
++    expect(parseTags({ tags: [] })).toBeNull();
++    expect(parseTags({ tags: Array.from({ length: 51 }, (_, i) => `t${i}`) })).toBeNull();
++    expect(parseTags({ tags: ['site:tr', 'bad tag!'] })).toBeNull();
++    expect(parseTags({ tags: ['SITE:TR'] })).toBeNull();
++    expect(parseTags({ tags: ['site/tr'] })).toBeNull();
++    expect(parseTags({ tags: [''] })).toBeNull();
++    expect(parseTags({ tags: ['site:tr', 42] })).toBeNull();
++  });
++});
+diff --git a/src/app/api/revalidate/auth.ts b/src/app/api/revalidate/auth.ts
+new file mode 100644
+index 0000000..56fae28
+--- /dev/null
++++ b/src/app/api/revalidate/auth.ts
+@@ -0,0 +1,33 @@
++import { timingSafeEqual } from 'node:crypto';
++
++/** A secret shorter than this is a placeholder, not a secret: the route refuses to open. */
++export const MIN_SECRET_LENGTH = 16;
++export const MAX_TAGS = 50;
++const TAG = /^[a-z0-9:_-]+$/;
++const BEARER = /^Bearer[ ]+(.+)$/i; // the HTTP auth scheme is case-insensitive (RFC 7235)
++
++export type AuthOutcome = 'ok' | 'unauthorized' | 'disabled';
++
++/** Pure so the status matrix is unit-testable without a request. Never returns, logs or
++ *  echoes the secret — the caller only learns which of the three doors it hit. */
++export function authorize(header: string | null, secret: string | undefined): AuthOutcome {
++  if (!secret || secret.length < MIN_SECRET_LENGTH) return 'disabled';
++  const token = BEARER.exec(header ?? '')?.[1];
++  if (token === undefined) return 'unauthorized';
++  const given = Buffer.from(token, 'utf8');
++  const expected = Buffer.from(secret, 'utf8');
++  // `timingSafeEqual` throws on unequal lengths, and a length mismatch already rules the
++  // token out — comparing is pointless, so it is a plain 401 without calling it.
++  if (given.length !== expected.length) return 'unauthorized';
++  return timingSafeEqual(given, expected) ? 'ok' : 'unauthorized';
++}
++
++/** `{ tags: string[] }`, 1–50 entries, each `/^[a-z0-9:_-]+$/`. All-or-nothing: one bad tag
++ *  returns null and nothing is revalidated, so a caller never gets a partial purge. */
++export function parseTags(body: unknown): string[] | null {
++  if (typeof body !== 'object' || body === null || Array.isArray(body)) return null;
++  const { tags } = body as { tags?: unknown };
++  if (!Array.isArray(tags) || tags.length < 1 || tags.length > MAX_TAGS) return null;
++  if (!tags.every((t): t is string => typeof t === 'string' && TAG.test(t))) return null;
++  return tags;
++}
+diff --git a/src/app/api/revalidate/route.ts b/src/app/api/revalidate/route.ts
+index 8bebbbd..0b525eb 100644
+--- a/src/app/api/revalidate/route.ts
++++ b/src/app/api/revalidate/route.ts
+@@ -1,4 +1,33 @@
++import { revalidateTag } from 'next/cache';
+ import { NextResponse } from 'next/server';
+-export async function POST() {
+-  return NextResponse.json({ ok: true });
++import { authorize, parseTags } from './auth';
++import { recordRevalidate } from './state';
++
++// Operations calls this after a publish (docs/INTEGRATIONS.md I2). It sits outside the proxy
++// matcher on purpose: this target must never be redirected or locale-rewritten.
++export const dynamic = 'force-dynamic';
++
++const NO_STORE = { 'Cache-Control': 'no-store' };
++
++export async function POST(request: Request) {
++  const outcome = authorize(request.headers.get('authorization'), process.env.REVALIDATE_SECRET);
++  // Never open: no configured secret means the door is closed, not unlocked (D6).
++  if (outcome === 'disabled')
++    return NextResponse.json({ error: 'revalidate disabled' }, { status: 503, headers: NO_STORE });
++  if (outcome === 'unauthorized')
++    return NextResponse.json({ error: 'unauthorized' }, { status: 401, headers: NO_STORE });
++
++  const body: unknown = await request.json().catch(() => null);
++  const tags = parseTags(body);
++  if (tags === null)
++    return NextResponse.json({ error: 'invalid tags' }, { status: 400, headers: NO_STORE });
++
++  // Validated in full before anything is purged, so a bad entry can never leave half the
++  // tags revalidated and half not.
++  for (const tag of tags) revalidateTag(tag, 'max');
++  recordRevalidate();
++  return NextResponse.json(
++    { revalidated: tags, at: new Date().toISOString() },
++    { headers: NO_STORE },
++  );
+ }
+diff --git a/src/app/api/revalidate/state.ts b/src/app/api/revalidate/state.ts
+new file mode 100644
+index 0000000..22ab0b2
+--- /dev/null
++++ b/src/app/api/revalidate/state.ts
+@@ -0,0 +1,13 @@
++/** When the last successful revalidate ran, for `/api/site-health`'s `REVALIDATE_STALE`
++ *  check. Module-level and therefore best-effort on serverless: a cold instance reports
++ *  `null` and a redeploy forgets, so a single `fail` is a hint, not proof. WP5 replaces this
++ *  with a real store (a KV row written by the route, read by site-health). */
++let lastAt: number | null = null;
++
++export function recordRevalidate(at: number = Date.now()): void {
++  lastAt = at;
++}
++
++export function lastRevalidateAt(): number | null {
++  return lastAt;
++}
+diff --git a/src/app/api/site-health/checks.test.ts b/src/app/api/site-health/checks.test.ts
+new file mode 100644
+index 0000000..a2263e3
+--- /dev/null
++++ b/src/app/api/site-health/checks.test.ts
+@@ -0,0 +1,15 @@
++import { describe, expect, it } from 'vitest';
++import { evaluate } from './checks';
++
++describe('site-health evaluate', () => {
++  it('is ok when every check passes', () => {
++    expect(
++      evaluate({ bundleTr: 'ok', bundleEn: 'ok', lastRevalidate: 'skip', opsPing: 'skip' }),
++    ).toEqual({ ok: true, reasons: [] });
++  });
++  it('fails with reason codes', () => {
++    expect(
++      evaluate({ bundleTr: 'fail', bundleEn: 'ok', lastRevalidate: 'skip', opsPing: 'fail' }),
++    ).toEqual({ ok: false, reasons: ['BUNDLE_TR', 'OPS_PING'] });
++  });
++});
+diff --git a/src/app/api/site-health/checks.ts b/src/app/api/site-health/checks.ts
+new file mode 100644
+index 0000000..846ec88
+--- /dev/null
++++ b/src/app/api/site-health/checks.ts
+@@ -0,0 +1,19 @@
++export type CheckResult = 'ok' | 'fail' | 'skip';
++export type Checks = {
++  bundleTr: CheckResult;
++  bundleEn: CheckResult;
++  lastRevalidate: CheckResult;
++  opsPing: CheckResult;
++};
++const CODES: Record<keyof Checks, string> = {
++  bundleTr: 'BUNDLE_TR',
++  bundleEn: 'BUNDLE_EN',
++  lastRevalidate: 'REVALIDATE_STALE',
++  opsPing: 'OPS_PING',
++};
++export function evaluate(c: Checks) {
++  const reasons = (Object.keys(c) as (keyof Checks)[])
++    .filter((k) => c[k] === 'fail')
++    .map((k) => CODES[k]);
++  return { ok: reasons.length === 0, reasons };
++}
+diff --git a/src/app/api/site-health/route.ts b/src/app/api/site-health/route.ts
+new file mode 100644
+index 0000000..76dd944
+--- /dev/null
++++ b/src/app/api/site-health/route.ts
+@@ -0,0 +1,50 @@
++import { NextResponse } from 'next/server';
++import { contentSource, getBundle } from '@/content/adapter';
++import { CONTRACT_VERSION } from '../../../../contract/website-bundle.v1';
++import { lastRevalidateAt } from '../revalidate/state';
++import { evaluate, type CheckResult, type Checks } from './checks';
++
++// D25: this is what the external monitor watches, so it is never cached and never answers
++// from a build-time snapshot — a health check that can be stale is not a health check.
++export const dynamic = 'force-dynamic';
++
++const REVALIDATE_MAX_AGE_MS = 24 * 60 * 60 * 1000;
++
++const settled = (r: PromiseSettledResult<unknown>): CheckResult =>
++  r.status === 'fulfilled' ? 'ok' : 'fail';
++
++export async function GET() {
++  const source = contentSource();
++  const [tr, en] = await Promise.allSettled([getBundle('tr'), getBundle('en')]);
++  const last = lastRevalidateAt();
++  const checks: Checks = {
++    bundleTr: settled(tr),
++    bundleEn: settled(en),
++    // In LOCAL the bundle ships with the deploy: there is nothing to revalidate, so a
++    // timestamp would be noise. In OPS a missing or day-old one means publishes are not
++    // reaching the site. (Best-effort — see `revalidate/state.ts`.)
++    lastRevalidate:
++      source === 'LOCAL'
++        ? 'skip'
++        : last === null || Date.now() - last > REVALIDATE_MAX_AGE_MS
++          ? 'fail'
++          : 'ok',
++    // WP3a adds the real Operations ping. Until that call exists there is nothing to measure
++    // in either mode, and reporting 'ok' for a check that never ran is exactly the
++    // dishonesty D25 forbids.
++    opsPing: 'skip',
++  };
++  const { ok, reasons } = evaluate(checks);
++  return NextResponse.json(
++    {
++      ok,
++      reasons,
++      checks,
++      contractVersion: CONTRACT_VERSION,
++      source,
++      commit: process.env.VERCEL_GIT_COMMIT_SHA ?? null,
++      at: new Date().toISOString(),
++    },
++    { status: ok ? 200 : 503, headers: { 'Cache-Control': 'no-store' } },
++  );
++}
+diff --git a/src/app/global-error.tsx b/src/app/global-error.tsx
+new file mode 100644
+index 0000000..baf6e79
+--- /dev/null
++++ b/src/app/global-error.tsx
+@@ -0,0 +1,52 @@
++'use client';
++
++/** The last resort: it replaces the whole document, so it renders its own `<html>`/`<body>`
++ *  and cannot use the layout, the design tokens or next-intl — the locale is unknown here
++ *  (the layout is exactly what failed), so the copy is hard-coded in both languages rather
++ *  than guessed. Styles are inline for the same reason: `globals.css` is not loaded. */
++export default function GlobalError({
++  reset,
++}: {
++  error: Error & { digest?: string };
++  reset: () => void;
++}) {
++  return (
++    <html lang="tr">
++      <body
++        style={{
++          margin: 0,
++          minHeight: '100vh',
++          display: 'flex',
++          alignItems: 'center',
++          justifyContent: 'center',
++          padding: '24px',
++          fontFamily: 'system-ui, -apple-system, Segoe UI, Roboto, sans-serif',
++          color: '#16202e',
++          background: '#ffffff',
++        }}
++      >
++        <main style={{ maxWidth: '520px', textAlign: 'center' }}>
++          <h1 style={{ fontSize: '24px', margin: '0 0 8px' }}>Bir şeyler ters gitti</h1>
++          <p style={{ margin: '0 0 24px', color: '#4a5566' }}>Something went wrong.</p>
++          <button
++            type="button"
++            onClick={() => reset()}
++            style={{
++              minHeight: '52px',
++              padding: '0 28px',
++              border: 0,
++              borderRadius: '999px',
++              background: '#1073a8',
++              color: '#ffffff',
++              fontWeight: 800,
++              fontSize: '16px',
++              cursor: 'pointer',
++            }}
++          >
++            Tekrar dene / Try again
++          </button>
++        </main>
++      </body>
++    </html>
++  );
++}
+diff --git a/src/content/adapter.test.ts b/src/content/adapter.test.ts
+index 0492038..c3a508e 100644
+--- a/src/content/adapter.test.ts
++++ b/src/content/adapter.test.ts
+@@ -13,20 +13,26 @@ describe('makeT', () => {
+   });
+   it('returns an empty string for a deliberately empty value (no English fallback)', () => {
+     expect(makeT({ ...bundle, strings: { ...bundle.strings, 'calc.041': '' } })('calc.041')).toBe(
+       '',
+     );
+   });
+   it('throws in development for an unknown id', () => {
+     vi.stubEnv('NODE_ENV', 'development');
+     expect(() => makeT(bundle)('nope.001')).toThrow(/unknown string id/);
+   });
++  // R28: a missing id must never take a production page down — it degrades to empty copy,
++  // and the build-time lint is what catches it before it ships.
++  it('returns an empty string for an unknown id in production', () => {
++    vi.stubEnv('NODE_ENV', 'production');
++    expect(makeT(bundle)('nope.001')).toBe('');
++  });
+ });
+ 
+ describe('contentSource', () => {
+   afterEach(() => vi.unstubAllEnvs());
+   it('defaults to LOCAL', () => {
+     vi.stubEnv('CONTENT_SOURCE', '');
+     expect(contentSource()).toBe('LOCAL');
+   });
+   it('is OPS only when OPS_API_URL and the read token exist', () => {
+     vi.stubEnv('CONTENT_SOURCE', 'OPS');
+diff --git a/src/content/adapter.ts b/src/content/adapter.ts
+index adf15ca..05caf06 100644
+--- a/src/content/adapter.ts
++++ b/src/content/adapter.ts
+@@ -12,21 +12,29 @@ async function loadLocal(locale: Locale): Promise<Bundle> {
+   const raw = (await import(`./local/bundle.${locale}.json`)).default as unknown;
+   return BundleSchema.parse(raw);
+ }
+ 
+ async function loadOps(locale: Locale): Promise<Bundle> {
+   const res = await fetch(`${process.env.OPS_API_URL}/api/website/v1/bundle?locale=${locale}`, {
+     headers: { Authorization: `Bearer ${process.env.OPS_WEBSITE_READ_TOKEN}` },
+     next: { revalidate: 900, tags: [`site:${locale}`] }, // time floor + tag (D8)
+   });
+   if (!res.ok) throw new BundleUnavailableError(`bundle ${locale}: HTTP ${res.status}`);
+-  const parsed = BundleSchema.safeParse(await res.json());
++  // R28: an HTML error page served with a 200 (a proxy, a login wall) is the same outage as
++  // a 500 — one error class, so every caller's fallback path is the same one.
++  let raw: unknown;
++  try {
++    raw = await res.json();
++  } catch {
++    throw new BundleUnavailableError(`bundle ${locale}: invalid JSON`);
++  }
++  const parsed = BundleSchema.safeParse(raw);
+   if (!parsed.success)
+     throw new BundleUnavailableError(
+       `bundle ${locale}: contract violation ${parsed.error.issues[0]?.path.join('.')}`,
+     );
+   return parsed.data;
+ }
+ 
+ /** One bundle per locale per request (React cache); ISR keeps last-good HTML when OPS fails. */
+ export const getBundle = cache(async (locale: Locale): Promise<Bundle> => {
+   const source = contentSource();
+diff --git a/src/design/chrome/Footer.tsx b/src/design/chrome/Footer.tsx
+index 9b6b9f5..f4acc16 100644
+--- a/src/design/chrome/Footer.tsx
++++ b/src/design/chrome/Footer.tsx
+@@ -177,16 +177,20 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
+         <div className="text-white/80 lg:hidden">
+           <Accordion
+             singleOpen={false}
+             items={columns.map((c) => ({ id: c.id, title: c.heading, body: c.body }))}
+           />
+         </div>
+       </div>
+ 
+       <div className="container-site flex flex-wrap items-center justify-between gap-x-6 gap-y-1 border-t border-white/15 py-5">
+         <p className="m-0 text-white/50">{t('home.228')}</p>
+-        {/* R36: consent is withdrawable, and this is where visitors look for it. */}
+-        <CookiePreferencesButton label={sys('consent.manage')} />
++        {/* R36: consent is withdrawable, and this is where visitors look for it. R40 gates it
++            exactly like the banner (R38): with no container id nothing ever asked for
++            consent, so there is nothing to withdraw and the button would reopen nothing. */}
++        {settings.analytics.consentMode && Boolean(settings.analytics.gtmId) && (
++          <CookiePreferencesButton label={sys('consent.manage')} />
++        )}
+       </div>
+     </footer>
+   );
+ }
+diff --git a/src/design/chrome/__tests__/Footer.test.tsx b/src/design/chrome/__tests__/Footer.test.tsx
+index 2395fa6..b1b2c77 100644
+--- a/src/design/chrome/__tests__/Footer.test.tsx
++++ b/src/design/chrome/__tests__/Footer.test.tsx
+@@ -49,28 +49,45 @@ describe('Footer', () => {
+       'true',
+     );
+   });
+ 
+   it('carries the licence number in the legal line', () => {
+     renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+     expect(screen.getByRole('contentinfo')).toHaveTextContent(bundle.settings.licence.permitNo);
+     expect(screen.getByText(t('home.228'))).toBeInTheDocument();
+   });
+ 
+-  it('offers the cookie-preferences door in the legal row (R36)', () => {
+-    renderWithIntl(<Footer locale="tr" bundle={bundle} />);
++  it('offers the cookie-preferences door in the legal row once a container id exists (R36)', () => {
++    const withGtm: typeof bundle = {
++      ...bundle,
++      settings: {
++        ...bundle.settings,
++        analytics: { ...bundle.settings.analytics, gtmId: 'GTM-TEST123' },
++      },
++    };
++    renderWithIntl(<Footer locale="tr" bundle={withGtm} />);
+     const button = within(screen.getByRole('contentinfo')).getByRole('button', {
+       name: tr.sys.consent.manage,
+     });
+     expect(button).toHaveAttribute('type', 'button');
+   });
+ 
++  it('hides it while no tag can fire, exactly like the banner (R40)', () => {
++    expect(bundle.settings.analytics.gtmId).toBeNull();
++    renderWithIntl(<Footer locale="tr" bundle={bundle} />);
++    expect(
++      within(screen.getByRole('contentinfo')).queryByRole('button', {
++        name: tr.sys.consent.manage,
++      }),
++    ).toBeNull();
++  });
++
+   it('gives every social and contact link an accessible name', () => {
+     renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+     const footer = screen.getByRole('contentinfo');
+     const expected: Array<[string, string]> = [
+       ['Instagram', bundle.settings.social.instagram],
+       ['TikTok', bundle.settings.social.tiktok],
+       ['LinkedIn', bundle.settings.social.linkedin],
+       ['Facebook', bundle.settings.social.facebook],
+       [
+         'WhatsApp',

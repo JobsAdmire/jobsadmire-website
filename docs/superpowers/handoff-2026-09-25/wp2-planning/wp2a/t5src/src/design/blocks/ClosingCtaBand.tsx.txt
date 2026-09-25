@@ -1,0 +1,91 @@
+import { makeTf } from '@/content/pure';
+import { CheckIcon } from '@/design/chrome/icons';
+import type { ButtonVariant } from '@/design/primitives';
+import type { Locale } from '@/i18n/routing';
+import type { Bundle } from '../../../contract/website-bundle.v1';
+import { ContactCta } from './ContactCta';
+
+/** A resolved call to action. Labels are resolved by the page (package id or sys key). */
+export type Cta = { label: string; href: string; external?: boolean; variant?: ButtonVariant };
+
+const TONE = {
+  navy: 'bg-navy',
+  gradient: 'bg-gradient-to-br from-ink to-navy',
+  green: 'bg-success-text',
+} as const;
+
+/** The closing band every page ends on (Homepage contact strip, Blog's "let's just do it",
+ *  About's green band): a dark rounded card with h2 + body, the primary CTA and the
+ *  WhatsApp/Telegram/call buttons. Pages mount it inside `<Section tone="band">`. Every CTA
+ *  renders through `ContactCta` (placement `page_cta`): a contact href is tracked, any
+ *  other href is a plain `Button` link. */
+export function ClosingCtaBand({
+  bundle,
+  locale,
+  titleId,
+  bodyId,
+  primary,
+  secondary,
+  extra = [],
+  ticks = [],
+  tone = 'navy',
+  id,
+}: {
+  bundle: Bundle;
+  locale: Locale;
+  titleId: string;
+  bodyId?: string;
+  primary: Cta;
+  secondary?: Cta;
+  /** Telegram / call — the design's third and fourth buttons. */
+  extra?: Cta[];
+  /** The design's phone-only tick lines (Blog band): rendered, hidden from `md` up (W10). */
+  ticks?: string[];
+  tone?: keyof typeof TONE;
+  id?: string;
+}) {
+  const t = makeTf(bundle, locale);
+  const cta = (c: Cta, fallback: ButtonVariant, key: string) => (
+    <ContactCta
+      key={key}
+      placement="page_cta"
+      variant={c.variant ?? fallback}
+      href={c.href}
+      external={c.external}
+    >
+      {c.label}
+    </ContactCta>
+  );
+  return (
+    <div
+      id={id}
+      className={`relative overflow-hidden rounded-hero px-6 py-8 text-white lg:px-11 lg:py-10 ${TONE[tone]}`}
+    >
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute -right-28 -top-40 h-[480px] w-[480px] rounded-pill bg-[radial-gradient(circle,rgba(24,153,213,0.24),transparent_65%)]"
+      />
+      <div className="relative flex flex-wrap items-center justify-between gap-8">
+        <div className="max-w-[600px]">
+          <h2 className="text-h2 m-0 mb-2 text-white">{t(titleId)}</h2>
+          {bodyId && <p className="text-body m-0 text-white/70">{t(bodyId)}</p>}
+          {ticks.length > 0 && (
+            <ul className="text-body-sm m-0 mt-4 flex list-none flex-col gap-2 p-0 text-white/75 md:hidden">
+              {ticks.map((tick) => (
+                <li key={tick} className="flex items-start gap-2">
+                  <CheckIcon className="mt-0.5 shrink-0 text-success" />
+                  {tick}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+        <div className="flex flex-wrap gap-3">
+          {cta(primary, 'primary', 'primary')}
+          {secondary && cta(secondary, 'inverse', 'secondary')}
+          {extra.map((c, i) => cta(c, 'inverse', `extra-${i}`))}
+        </div>
+      </div>
+    </div>
+  );
+}

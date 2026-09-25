@@ -1,0 +1,1297 @@
+# Review package: cf78a10..27a0e8d
+
+## Commits
+27a0e8d test(roles): reset-defaults fixture registers resource keys under their module (first resource-key role rows)
+0de353f feat(website): register the website permission module — ten keys, role defaults v3, GET /website/status
+
+## Files changed
+ CLAUDE.md                                          |   4 +-
+ apps/backend/src/app.module.ts                     |   5 +
+ .../modules/permissions/casl-ability.factory.ts    |   6 +-
+ .../website/website-status.controller.spec.ts      |  33 ++++
+ .../modules/website/website-status.controller.ts   |  38 ++++
+ apps/backend/src/modules/website/website.module.ts | 208 +++++++++++++++++++++
+ .../test/permissions/website-conformance.spec.ts   | 121 ++++++++++++
+ .../permissions/website-inheritance.unit.spec.ts   | 172 +++++++++++++++++
+ .../backend/test/roles/reset-defaults.unit.spec.ts |  41 +++-
+ apps/frontend/src/messages/en.json                 |  10 +
+ apps/frontend/src/messages/tr.json                 |  10 +
+ docs/PRD.md                                        |  22 +--
+ packages/permissions/src/keys.catalog.ts           |  17 +-
+ packages/permissions/src/role-defaults.ts          |  37 +++-
+ 14 files changed, 700 insertions(+), 24 deletions(-)
+
+## Diff
+diff --git a/CLAUDE.md b/CLAUDE.md
+index 307e7bc..329ab7a 100644
+--- a/CLAUDE.md
++++ b/CLAUDE.md
+@@ -40,21 +40,21 @@ Modules: Sales (+ Field Sales Campaigns), Projects & Tasks (incl. work projects)
+ 
+ Re-derive exact counts on demand rather than trusting any doc: `grep -c '^model ' apps/backend/prisma/schema.prisma`, `ls apps/backend/src/modules/`.
+ 
+ ---
+ 
+ ## Architecture at a glance
+ 
+ - **Monorepo** — Turborepo. Apps: `backend` (NestJS 10 + Prisma 5 + PostgreSQL 16 + Redis 7; Bull queues, crons, and Socket.io all in the ONE backend process), `frontend` (Next.js 14 App Router, `[locale]` segment, Tailwind + shadcn/ui, React Query + Zustand + RHF/Zod). Packages: `shared-types`, `validators`, `constants`, `permissions` (the shared permission resolver + the typed key catalog — run by the backend AND the browser since W2).
+ - **Single internal portal** at `apps/frontend/src/app/[locale]/admin/` — every authenticated user is staff; the only public surface is `/careers/*` + auth. Global chrome is the 3-column "Command" shell (`src/components/layout/command-*`), with all module nav declared as data in `src/config/modules.ts`.
+ - **Auth** — JWT access (15 min) + refresh (30 d, Redis, rolling); optional TOTP 2FA. `REFRESH_TTL_SECONDS` (`auth.service.ts`) and frontend `COOKIE_MAX_AGE` (`stores/auth.store.ts`) must stay in lockstep.
+-- **Permissions** — database-driven: 12 system roles × **75 grantable keys** (22 modules + 53 screen-level resources, all enforced) × 13 actions × 3 scopes, plus per-USER overrides; catalog served by `GET /api/permissions/catalog`. **One resolver answers everything** — `EffectivePermissionsService` — and the BROWSER runs that same resolver, from `@jobsadmire/permissions`, over the inputs `GET /permissions/me/effective` returns. Use `@RequirePermission('key','ACTION')` server-side and `<Can>`/`usePermissions()` client-side. CASL survives as a projection for nine service-layer call sites, not as the decision point. Super-admin bypasses via `can('manage','all')`. **No code decides access by comparing a role slug** — a repo invariant refuses a new one, and the few that remain are declared policies about whose ACCOUNT may be touched. The programme that built this ran W0–W4 on 2026-09-15; PRD §4 describes the result, §4.8 the engine internals, §4.9 the route manifest + page guard.
++- **Permissions** — database-driven: 12 system roles × **85 grantable keys** (23 modules + 62 screen-level resources, all enforced) × 13 actions × 3 scopes, plus per-USER overrides; catalog served by `GET /api/permissions/catalog`. **One resolver answers everything** — `EffectivePermissionsService` — and the BROWSER runs that same resolver, from `@jobsadmire/permissions`, over the inputs `GET /permissions/me/effective` returns. Use `@RequirePermission('key','ACTION')` server-side and `<Can>`/`usePermissions()` client-side. CASL survives as a projection for nine service-layer call sites, not as the decision point. Super-admin bypasses via `can('manage','all')`. **No code decides access by comparing a role slug** — a repo invariant refuses a new one, and the few that remain are declared policies about whose ACCOUNT may be touched. The programme that built this ran W0–W4 on 2026-09-15; PRD §4 describes the result, §4.8 the engine internals, §4.9 the route manifest + page guard.
+ - **Storage** — MinIO in BOTH dev and prod (prod behind `files.operations.jobsadmire.com`). There is no S3.
+ - **i18n** — next-intl, English + Turkish.
+ - **Local dev** — Docker Compose (`npm run dev`), host ports 4xxx (CRM sibling owns 3xxx). Backend container self-runs `prisma generate / migrate deploy / db seed` on boot.
+ - **Deploy** — a VPS **cron poller** auto-deploys `main` within ~2 min of a push (GitHub Actions is billing-suspended org-wide). Details, env inventory, runbooks: `docs/DEPLOYMENT.md`.
+ 
+ ---
+ 
+ ## Development guidelines
+ 
+ ### Before writing code
+@@ -64,21 +64,21 @@ Re-derive exact counts on demand rather than trusting any doc: `grep -c '^model
+ 3. Prefer extending existing patterns over inventing new ones — find the precedent (the PRD names them) and mirror it.
+ 
+ ### Conventions
+ 
+ **Backend (NestJS)**
+ - One module per domain under `apps/backend/src/modules/`. Look there before adding top-level folders.
+ - `@RequirePermission(key, action)` for authorization — **never a role-slug check**. `@CurrentUser()` shape: `{ userId, email, roleId, roleSlug }`. Inside a service the question goes to `EffectivePermissionsService.check(key, action)` (strict) or `checkAny(moduleKey, action)` (wide — "may they touch this module at all"); super-admin passes through the resolver's own bypass, so there is no identity branch to write. `test/permissions/repo-invariants.spec.ts` fails on `roleSlug === 'super-admin'` or `{ slug: 'super-admin' }` outside a named allowlist, and the allowlist entry is the ARGUMENT that your literal is a definition, a target/destination policy or a population query rather than a capability check.
+ - **A rule that genuinely is not a permission gets a `policies` descriptor**, on the module that owns it, citing the file that enforces it (author-only comments, membership, the offer signing chain, a second approver). The Roles screen renders them read-only under the module row so an operator stops hunting for a checkbox that does not exist.
+ - New permission modules register via `PermissionRegistry.register` in the module constructor; a new `PermissionAction` needs schema enum + `ACTION_MAP` + `AppAction` + (if new subject) `AppSubject` — all of them.
+ - **Every user-grant read goes through `EffectivePermissionsService`.** Do not add a second `prisma.rolePermission` query — that is the bug class W1 removed (four independent queries, one of them forgotten, and neither screen showing an error). `test/permissions/repo-invariants.spec.ts` enforces it with a short allowlist; if you believe you need an exception, the invariant spec is where you argue for it.
+-- **A permission KEY is `module` or `module.resource`** (one dot, `[a-z0-9-]` segments). `RolePermission.module` holds a key. All 22 modules declare resources and all are `resourcesEnforced: true`; a NEW module's resources stay `false` until its controllers actually carry them — flip the flag in the SAME change set that re-keys the routes, never before, or an operator unticks a resource and nothing happens.
++- **A permission KEY is `module` or `module.resource`** (one dot, `[a-z0-9-]` segments). `RolePermission.module` holds a key. All 23 modules declare resources and all are `resourcesEnforced: true`; a NEW module's resources stay `false` until its controllers actually carry them — flip the flag in the SAME change set that re-keys the routes, never before, or an operator unticks a resource and nothing happens.
+ - **A new key goes in TWO places**: the module's `registry.register({ resources })` AND `PERMISSION_KEYS` in `packages/permissions/src/keys.catalog.ts` (sorted, plus its `PERMISSION_KEYS_HASH`). `PermissionConformanceService` fails the container at boot on any drift between them, because the browser types `<Can>`, the nav and the route manifest against that list.
+ - **Every route must say what it is: `@RequirePermission`, `@SelfService()` or `@Public()`.** An undecorated route **fails the container at boot** AND is refused at request time — `PERMISSIONS_STRICT` is `true` everywhere and gates neither of those, it only labels the conformance report. The census is at zero and "no decorator" must never go back to meaning two things. If a route is genuinely about the caller's own data, mark it `@SelfService()` and add it to the module descriptor's `selfServiceRoutes` so the Roles screen can explain it.
+ - **A role grant REMOVED from `ROLE_PERMISSION_MATRIX` needs a paired migration.** The seed is create-if-missing and never deletes, so deleting a line changes nothing on an existing database — and deleting the rows without also fixing the matrix is undone by the next deploy two minutes later (`20260924100000_purge_unregistered_grants` is the reference). Adding a grant needs `since: ROLE_DEFAULTS_VERSION + 1` and a bump of the constant. **Never map an `ACTIONS_*` constant over a list of modules**: that is what seeded 13 grants for actions nobody registers, invisible on every screen because both render from the registry.
+ - **A new workspace package needs a line in FOUR Dockerfiles** (both apps, both dev and prod) plus an explicit `RUN npm run build --workspace=` in each `.prod`. Miss it and the container boots with a seed that dies on MODULE_NOT_FOUND — visible only in production (`docs/DEPLOYMENT.md`).
+ - DTOs with `class-validator` (global `forbidNonWhitelisted` — clients sending removed fields 400). Share Zod schemas from `packages/validators` when the frontend uses the same shape.
+ - List endpoints: `page`, `limit`, `sortBy`, `sortOrder` + filters; responses `{ data, meta }`. Swagger decorators on every controller.
+ - Audit create/update/delete via `AuditInterceptor`; custom exceptions extend `HttpException`.
+ - Heavy work (email, notifications, scoring, bulk ops) goes through a Bull queue — never block the request.
+ - Outbound calls to other apps go through their client module (`CrmClient`, `WaGraphClient`, `ZoomMeetingsService`, `GoogleCalendarService`, `MetaGraphClient`, `BufferClient`, `HipcallClient`, `ElevenLabsConvaiClient`) — never `fetch()` an external app from feature code.
+ - Pure decision logic lives in `*.logic.ts` files with Jest specs (see `projects.logic.ts`, `interview-availability.logic.ts`, `password-reset.logic.ts` precedents).
+diff --git a/apps/backend/src/app.module.ts b/apps/backend/src/app.module.ts
+index 5871430..8240bec 100644
+--- a/apps/backend/src/app.module.ts
++++ b/apps/backend/src/app.module.ts
+@@ -34,20 +34,21 @@ import { IskurBotModule } from './modules/iskur-bot/iskur-bot.module';
+ import { CareersPublicModule } from './modules/careers-public/careers-public.module';
+ import { MarketingModule } from './modules/marketing/marketing.module';
+ import { HrmModule } from './modules/hrm/hrm.module';
+ import { CrmIntegrationModule } from './modules/crm-integration/crm-integration.module';
+ import { IntegrationsModule } from './modules/integrations/integrations.module';
+ import { AiInterviewerModule } from './modules/ai-interviewer/ai-interviewer.module';
+ import { CallCenterModule } from './modules/call-center/call-center.module';
+ import { WhatsappModule } from './modules/whatsapp/whatsapp.module';
+ import { SalesTrainingModule } from './modules/sales-training/sales-training.module';
+ import { TrainingLockGuard } from './modules/sales-training/training-lock.guard';
++import { WebsiteModule } from './modules/website/website.module';
+ 
+ @Module({
+   imports: [
+     ConfigModule.forRoot({
+       isGlobal: true,
+       envFilePath: ['.env.local', '.env'],
+     }),
+     ThrottlerModule.forRoot([
+       {
+         ttl: 60000,
+@@ -103,20 +104,24 @@ import { TrainingLockGuard } from './modules/sales-training/training-lock.guard'
+     MarketResearchModule,
+     RecruitmentPlatformsModule,
+     IskurBotModule,
+     CareersPublicModule,
+     MarketingModule,
+     HrmModule,
+     AiInterviewerModule,
+     CallCenterModule,
+     WhatsappModule,
+     SalesTrainingModule,
++    // ALWAYS imported, whatever WEBSITE_MODULE_ENABLED says: the descriptor
++    // must register on every boot or catalog conformance fails the container
++    // (ruling P1). The flag is a request-time guard + a per-tick cron check.
++    WebsiteModule,
+   ],
+   providers: [
+     // 0. Rate limiting — INERT unless RATE_LIMITING_ENABLED=true. Registered
+     //    first so a throttled request is rejected before auth work happens.
+     //    ThrottlerModule has been configured for a long time but no guard ever
+     //    provided it, so every @Throttle() in the app was decorative.
+     { provide: APP_GUARD, useClass: RateLimitGuard },
+     // 1. JWT authentication — validates Bearer token on every request
+     { provide: APP_GUARD, useClass: JwtAuthGuard },
+     // 2. CASL permission guard — checks role-based permissions from DB
+diff --git a/apps/backend/src/modules/permissions/casl-ability.factory.ts b/apps/backend/src/modules/permissions/casl-ability.factory.ts
+index f9c06fb..73e88c4 100644
+--- a/apps/backend/src/modules/permissions/casl-ability.factory.ts
++++ b/apps/backend/src/modules/permissions/casl-ability.factory.ts
+@@ -72,21 +72,25 @@ export type AppSubject =
+   | 'OfferLetter'
+   | 'IskurPosting'
+   | 'MarketingCampaign'
+   | 'HrmPerson'
+   | 'Project'
+   | 'AiInterviewer'
+   | 'SalesTraining'
+   | 'CallCenter'
+   | 'WhatsappConversation'
+   | 'WhatsappTemplate'
+-  | 'WhatsappAutomation';
++  | 'WhatsappAutomation'
++  // Website module (WP3a, 2026-09-19): the CMS screens, the forms inbox and
++  // the integrations settings. One subject for the whole module, like
++  // `MarketingCampaign` covers Marketing Studio.
++  | 'Website';
+ 
+ export type AppAbility = PureAbility<[AppAction, AppSubject]>;
+ 
+ /** Maps DB PermissionAction enum values to CASL action strings. Static —
+  * does not change per module, so kept here rather than in the registry. */
+ export const ACTION_MAP: Record<string, AppAction> = {
+   VIEW: 'read',
+   CREATE: 'create',
+   EDIT: 'update',
+   DELETE: 'delete',
+diff --git a/apps/backend/src/modules/website/website-status.controller.spec.ts b/apps/backend/src/modules/website/website-status.controller.spec.ts
+new file mode 100644
+index 0000000..6fc46d9
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-status.controller.spec.ts
+@@ -0,0 +1,33 @@
++import { WebsiteStatusController } from './website-status.controller';
++
++/**
++ * The status probe is what the admin screens read to draw the "public intake is
++ * OFF" banner (P14) and what the WP3a gate reads before flipping the VPS flag
++ * (P1). It answers from the container's environment on EVERY call — never a
++ * cached boot-time value — so a `docker compose up -d backend` after an .env
++ * edit is the whole flip recipe. Task 2 routes the read through the shared
++ * `websiteModuleEnabled(config)` helper; this spec is written so it stays green
++ * under both readers (one `config.get('WEBSITE_MODULE_ENABLED')` per call).
++ */
++describe('WebsiteStatusController', () => {
++  function build(value: string | undefined) {
++    const config = { get: jest.fn(() => value) };
++    return { controller: new WebsiteStatusController(config as never), config };
++  }
++
++  it("reports enabled only for the literal 'true'", () => {
++    expect(build('true').controller.status()).toEqual({ data: { enabled: true } });
++    expect(build('false').controller.status()).toEqual({ data: { enabled: false } });
++    expect(build('TRUE').controller.status()).toEqual({ data: { enabled: false } });
++    expect(build('1').controller.status()).toEqual({ data: { enabled: false } });
++    expect(build(undefined).controller.status()).toEqual({ data: { enabled: false } });
++  });
++
++  it('reads WEBSITE_MODULE_ENABLED through ConfigService, per call', () => {
++    const { controller, config } = build('true');
++    controller.status();
++    controller.status();
++    expect(config.get).toHaveBeenCalledTimes(2);
++    expect(config.get).toHaveBeenCalledWith('WEBSITE_MODULE_ENABLED');
++  });
++});
+diff --git a/apps/backend/src/modules/website/website-status.controller.ts b/apps/backend/src/modules/website/website-status.controller.ts
+new file mode 100644
+index 0000000..d6f2ab1
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-status.controller.ts
+@@ -0,0 +1,38 @@
++import { Controller, Get } from '@nestjs/common';
++import { ConfigService } from '@nestjs/config';
++import { ApiBearerAuth, ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
++import { SelfService } from '../permissions/decorators/self-service.decorator';
++
++/**
++ * `GET /website/status` — is the public intake door switched on in THIS
++ * environment? (WP3a, ruling P1.)
++ *
++ * Authenticated rather than public — the repo's boundary is "no public
++ * endpoints outside careers-public" and the website/v1 doors are the only
++ * sanctioned exceptions (PRD §7.10) — and self-service rather than
++ * grant-gated: the admin screens draw a "public intake is OFF" banner from this
++ * answer, and every holder of ANY website key may see that banner (the
++ * `GET /notifications/push/vapid-public-key` precedent). Nothing here reaches
++ * another person's data; there is no `@AuditEntity`.
++ *
++ * Read from the container's environment on every call, never cached at boot:
++ * flipping `WEBSITE_MODULE_ENABLED` in the VPS `.env` followed by
++ * `docker compose up -d backend` is the whole recipe (DEPLOYMENT.md). Task 2
++ * moves this read behind the shared `websiteModuleEnabled(config)` helper so
++ * the guard on the public door, the crons and this probe can never disagree
++ * for longer than one request.
++ */
++@ApiTags('Website')
++@ApiBearerAuth()
++@Controller('website')
++export class WebsiteStatusController {
++  constructor(private readonly config: ConfigService) {}
++
++  @SelfService()
++  @Get('status')
++  @ApiOperation({ summary: 'Whether the public website intake door is enabled in this environment' })
++  @ApiResponse({ status: 200, description: '{ enabled } — false unless WEBSITE_MODULE_ENABLED is the literal "true"' })
++  status() {
++    return { data: { enabled: this.config.get<string>('WEBSITE_MODULE_ENABLED') === 'true' } };
++  }
++}
+diff --git a/apps/backend/src/modules/website/website.module.ts b/apps/backend/src/modules/website/website.module.ts
+new file mode 100644
+index 0000000..ce19076
+--- /dev/null
++++ b/apps/backend/src/modules/website/website.module.ts
+@@ -0,0 +1,208 @@
++import { Module } from '@nestjs/common';
++import { ConfigModule } from '@nestjs/config';
++import { PermissionAction, PermissionScope } from '@prisma/client';
++import { PrismaModule } from '../../prisma/prisma.module';
++import { PermissionsModule } from '../permissions/permissions.module';
++import { PermissionRegistry } from '../permissions/registry/permission-registry';
++import { WebsiteStatusController } from './website-status.controller';
++
++/**
++ * The Website module (WP3a, 2026-09-19 — PRD §5.12, §7.10).
++ *
++ * Serves jobsadmire.com: in WP3a the public INTAKE door (`/website/v1/*`, a
++ * Bearer-token machine surface the website calls server-side), the forms
++ * inbox and the integrations/token settings; in Phase B the CMS the site reads
++ * its content from (pages, strings, collections, blog, media, navigation).
++ *
++ * ALWAYS IMPORTED, WHATEVER `WEBSITE_MODULE_ENABLED` SAYS (ruling P1). The
++ * descriptor below has to register on every boot: `PermissionConformanceService`
++ * diffs `registry.keys()` against `PERMISSION_KEYS` in BOTH directions and
++ * fails the container on a catalog key no module registers — so gating this
++ * module's import behind the flag would take production down in the OFF
++ * state, and dropping the keys from the catalog would take it down in the ON
++ * state. The flag is read at REQUEST time instead: `WebsiteModuleEnabledGuard`
++ * (Task 2) 404s every `website/v1` route while it is off, every website cron
++ * checks it per tick, and `GET /website/status` reports it. Nothing about the
++ * module's SHAPE depends on the environment.
++ *
++ * `ConfigModule` (global via `forRoot({ isGlobal: true })`), `PrismaModule`
++ * and `PermissionsModule` (both `@Global()`) are listed anyway — the way
++ * `market-research.module.ts` lists the latter two and
++ * `recruitment-platforms.module.ts` lists `ConfigModule` — so the
++ * dependency reads on the page: the status probe, the flag guard (Task 2),
++ * the token guard and the crons all read `ConfigService`. Later WP3a tasks add
++ * controllers and providers to the arrays below; the `registry.register`
++ * literal is never edited after this commit.
++ */
++@Module({
++  imports: [ConfigModule, PrismaModule, PermissionsModule],
++  controllers: [WebsiteStatusController],
++  providers: [],
++})
++export class WebsiteModule {
++  constructor(registry: PermissionRegistry) {
++    registry.register({
++      name: 'website',
++      label: 'Website',
++      description:
++        'The public website (jobsadmire.com): the forms it submits into Operations, the tokens and ' +
++        'captcha it authenticates with, and — from Phase B — the pages, strings, collections, blog, ' +
++        'media and navigation it renders from.',
++      category: 'OPERATIONS',
++      caslSubject: 'Website',
++      supportedActions: [
++        PermissionAction.VIEW,
++        PermissionAction.CREATE,
++        PermissionAction.EDIT,
++        PermissionAction.DELETE,
++        PermissionAction.EXPORT,
++        PermissionAction.APPROVE,
++        PermissionAction.MANAGE_KEYS,
++      ],
++      // One website, one inbox: there is no per-person slice of it (ALL only).
++      supportedScopes: [PermissionScope.ALL],
++      scopeBindings: {},
++
++      /**
++       * ALL TEN KEYS FROM DAY ONE (ruling P3). WP3a builds two of these screens
++       * (Forms inbox, Integrations); Phase B builds the other seven. They are
++       * registered now so the Roles matrix never grows a column mid-programme
++       * and a role prepared today keeps meaning the same thing in Phase B.
++       *
++       * MANAGE_KEYS IS NOT A RESOURCE ACTION. Every secret door — write/test
++       * token rotate, Turnstile secret, revalidate secret, "test connection" —
++       * is gated on the MODULE key at MANAGE_KEYS (seeded to NO role, so
++       * super-admin only via the CASL bypass — the marketing/whatsapp
++       * precedent). `website.integrations` VIEW/EDIT covers the page and its
++       * NON-secret fields (second-human recipient, has-chips).
++       */
++      resources: [
++        {
++          key: 'website.pages',
++          label: 'Pages',
++          description: 'Page-level content and SEO for each designed page (Phase B). APPROVE publishes.',
++          kind: 'screen',
++          supportedActions: [
++            PermissionAction.VIEW,
++            PermissionAction.CREATE,
++            PermissionAction.EDIT,
++            PermissionAction.DELETE,
++            PermissionAction.APPROVE,
++          ],
++        },
++        {
++          key: 'website.strings',
++          label: 'Strings',
++          description: 'The TR/EN UI strings the site renders (Phase B). APPROVE publishes.',
++          kind: 'screen',
++          supportedActions: [
++            PermissionAction.VIEW,
++            PermissionAction.CREATE,
++            PermissionAction.EDIT,
++            PermissionAction.DELETE,
++            PermissionAction.APPROVE,
++          ],
++        },
++        {
++          key: 'website.collections',
++          label: 'Collections',
++          description: 'Structured lists the site draws on — sectors, countries, FAQs, testimonials (Phase B). APPROVE publishes.',
++          kind: 'screen',
++          supportedActions: [
++            PermissionAction.VIEW,
++            PermissionAction.CREATE,
++            PermissionAction.EDIT,
++            PermissionAction.DELETE,
++            PermissionAction.APPROVE,
++          ],
++        },
++        {
++          key: 'website.blog',
++          label: 'Blog',
++          description: 'Blog posts and their translations (Phase B). APPROVE publishes.',
++          kind: 'screen',
++          supportedActions: [
++            PermissionAction.VIEW,
++            PermissionAction.CREATE,
++            PermissionAction.EDIT,
++            PermissionAction.DELETE,
++            PermissionAction.APPROVE,
++          ],
++        },
++        {
++          key: 'website.media',
++          label: 'Media',
++          description: 'Images and documents the site references (Phase B). APPROVE makes an asset publicly readable.',
++          kind: 'screen',
++          supportedActions: [
++            PermissionAction.VIEW,
++            PermissionAction.CREATE,
++            PermissionAction.EDIT,
++            PermissionAction.DELETE,
++            PermissionAction.APPROVE,
++          ],
++        },
++        {
++          key: 'website.navigation',
++          label: 'Navigation',
++          description: 'Header, footer and in-page navigation trees (Phase B). APPROVE publishes.',
++          kind: 'screen',
++          supportedActions: [
++            PermissionAction.VIEW,
++            PermissionAction.CREATE,
++            PermissionAction.EDIT,
++            PermissionAction.DELETE,
++            PermissionAction.APPROVE,
++          ],
++        },
++        {
++          key: 'website.forms',
++          label: 'Forms inbox',
++          description:
++            'Every submission the website delivered: payload, handler result, needs-attention filter. EDIT is the re-run of a FAILED submission; EXPORT is the CSV that leaves the building (audited, its own route).',
++          kind: 'screen',
++          supportedActions: [PermissionAction.VIEW, PermissionAction.EDIT, PermissionAction.EXPORT],
++        },
++        {
++          key: 'website.settings',
++          label: 'Settings',
++          description: 'Per-form switches (active, autoresponder) and the module notification toggles. No routes in WP3a — the newsletter form is flipped by SQL until the screen lands.',
++          kind: 'screen',
++          supportedActions: [PermissionAction.VIEW, PermissionAction.EDIT],
++        },
++        {
++          key: 'website.integrations',
++          label: 'Integrations',
++          description:
++            'The page and its NON-secret fields: which secrets are set (has-chips), the second-human recipient, last test results. Writing, rotating or testing a secret is `website` MANAGE_KEYS, never this resource.',
++          kind: 'screen',
++          supportedActions: [PermissionAction.VIEW, PermissionAction.EDIT],
++        },
++      ],
++
++      policies: [
++        {
++          key: 'website.secrets-are-manage-keys',
++          label: 'Every secret write, rotate or test is MANAGE_KEYS on the module key',
++          description:
++            'Write token, test token, Turnstile secret and revalidate secret are written, rotated and tested only through routes gated on `website:MANAGE_KEYS`, which is seeded to no role. `website.integrations` EDIT reaches the non-secret fields of the same page and nothing else (ruling P3).',
++        },
++        {
++          key: 'website.public-door-is-flag-gated',
++          label: 'The public intake door answers 404 while WEBSITE_MODULE_ENABLED is off',
++          description:
++            'Every `website/v1` route sits behind `WebsiteModuleEnabledGuard`, which reads the flag from the environment on each request; the admin screens stay reachable so tokens can be provisioned before the flip (ruling P1).',
++        },
++      ],
++
++      // The decorator on the controller is the authority; this list is what the
++      // Roles screen shows so "why can everyone reach that?" has an answer.
++      selfServiceRoutes: ['GET /website/status'],
++
++      // Every route that exists carries its key from this commit on (P3), so
++      // the flag is honest from day one — there is no un-keyed website route to
++      // let an operator untick a resource and see nothing happen.
++      resourcesEnforced: true,
++    });
++  }
++}
+diff --git a/apps/backend/test/permissions/website-conformance.spec.ts b/apps/backend/test/permissions/website-conformance.spec.ts
+new file mode 100644
+index 0000000..73559ed
+--- /dev/null
++++ b/apps/backend/test/permissions/website-conformance.spec.ts
+@@ -0,0 +1,121 @@
++import { readFileSync } from 'fs';
++import { join } from 'path';
++import { MetadataScanner, Reflector } from '@nestjs/core';
++import { PermissionAction } from '@prisma/client';
++import { PERMISSION_KEYS } from '@jobsadmire/permissions';
++
++import { PermissionConformanceService } from '../../src/modules/permissions/permission-conformance.service';
++import { SELF_SERVICE_KEY } from '../../src/modules/permissions/decorators/self-service.decorator';
++import { WebsiteStatusController } from '../../src/modules/website/website-status.controller';
++import { registryFromSource } from './registry-from-source';
++
++/**
++ * The website module (WP3a, 2026-09-19) registers its whole key set on day one
++ * — the CMS screens Phase B will fill in as well as the two WP3a screens — so
++ * the Roles matrix never has to grow a column mid-programme (ruling P3).
++ *
++ * THE REAL SCANNER over the REAL controllers, market-research's shape. Every
++ * later WP3a task that adds a controller appends its class to CONTROLLERS
++ * (RC15): the public door is `@Public()` + the flag guard + the token guard at
++ * class level, the inbox is `website.forms`, the integrations screen is
++ * `website.integrations` for the non-secret half and `website` MANAGE_KEYS for
++ * every secret door.
++ */
++
++const CONTROLLERS = [WebsiteStatusController];
++
++const MODULE_SOURCE = readFileSync(
++  join(__dirname, '../../src/modules/website/website.module.ts'),
++  'utf8',
++);
++
++const WEBSITE_RESOURCE_KEYS = [
++  'website.blog',
++  'website.collections',
++  'website.forms',
++  'website.integrations',
++  'website.media',
++  'website.navigation',
++  'website.pages',
++  'website.settings',
++  'website.strings',
++];
++
++describe('Website route conformance', () => {
++  const registry = registryFromSource('modules/website/website.module.ts');
++
++  it('reads the live descriptor (the parse itself still works)', () => {
++    expect(registry.descendantsOf('website').sort()).toEqual(WEBSITE_RESOURCE_KEYS);
++    expect(registry.get('website')?.supportedActions).toEqual([
++      PermissionAction.VIEW,
++      PermissionAction.CREATE,
++      PermissionAction.EDIT,
++      PermissionAction.DELETE,
++      PermissionAction.EXPORT,
++      PermissionAction.APPROVE,
++      PermissionAction.MANAGE_KEYS,
++    ]);
++  });
++
++  it('every website route names a registered key at a supported action, or says what it is', () => {
++    const { report, errors } = new PermissionConformanceService(
++      { getControllers: () => [] } as never,
++      new MetadataScanner(),
++      new Reflector(),
++      registry,
++      { get: () => undefined } as never,
++    ).scanClasses(CONTROLLERS, true);
++
++    expect(errors).toEqual([]);
++    expect(report.undecorated).toEqual([]);
++    // The status probe is the one self-service route in the module (P1).
++    expect(report.selfService).toBeGreaterThanOrEqual(1);
++  });
++
++  it('declares its resources as ENFORCED and stands on its own in the nav (no parentKey)', () => {
++    expect(registry.get('website')?.resourcesEnforced).toBe(true);
++    expect(registry.get('website')?.parentKey).toBeUndefined();
++  });
++
++  it('keeps the secret door on the MODULE key and the inbox export on EXPORT', () => {
++    // MANAGE_KEYS is a module-wide trust boundary (the marketing/whatsapp
++    // precedent): no resource may offer it, so the Roles screen cannot even
++    // draw a cell for it under `website.integrations`.
++    for (const key of WEBSITE_RESOURCE_KEYS) {
++      expect({ key, actions: registry.getResource(key)?.supportedActions }).not.toEqual({
++        key,
++        actions: expect.arrayContaining([PermissionAction.MANAGE_KEYS]),
++      });
++    }
++    expect(registry.getResource('website.forms')?.supportedActions).toEqual([
++      PermissionAction.VIEW,
++      PermissionAction.EDIT,
++      PermissionAction.EXPORT,
++    ]);
++    expect(registry.getResource('website.integrations')?.supportedActions).toEqual([
++      PermissionAction.VIEW,
++      PermissionAction.EDIT,
++    ]);
++    expect(registry.getResource('website.settings')?.supportedActions).toEqual([
++      PermissionAction.VIEW,
++      PermissionAction.EDIT,
++    ]);
++  });
++
++  it('GET /website/status is self-service, and the descriptor SAYS so', () => {
++    const handler = (WebsiteStatusController.prototype as unknown as Record<string, unknown>).status;
++    expect(Reflect.getMetadata(SELF_SERVICE_KEY, handler as object)).toBe(true);
++    // `registryFromSource` does not parse `selfServiceRoutes`; the literal is
++    // what the Roles screen shows, so pin it in the source the same way.
++    expect(MODULE_SOURCE).toContain("selfServiceRoutes: ['GET /website/status']");
++  });
++
++  it('every registered website key is in the shared PERMISSION_KEYS list, and nothing else is', () => {
++    const catalog = new Set<string>(PERMISSION_KEYS);
++    expect([...registry.keys()].filter((key) => !catalog.has(key))).toEqual([]);
++    expect(PERMISSION_KEYS.filter((k) => k === 'website' || k.startsWith('website.'))).toEqual([
++      'website',
++      ...WEBSITE_RESOURCE_KEYS,
++    ]);
++  });
++});
+diff --git a/apps/backend/test/permissions/website-inheritance.unit.spec.ts b/apps/backend/test/permissions/website-inheritance.unit.spec.ts
+new file mode 100644
+index 0000000..6e3c816
+--- /dev/null
++++ b/apps/backend/test/permissions/website-inheritance.unit.spec.ts
+@@ -0,0 +1,172 @@
++import {
++  ROLE_PERMISSION_MATRIX,
++  resolveEffective,
++  resourceKeysOf,
++  type GrantRow,
++  type PermissionActionKey,
++} from '@jobsadmire/permissions';
++
++/**
++ * THE MIGRATION SAFETY PROOF for the website module's seeded defaults (WP3a,
++ * rulings P3 + RC8). Three holder SHAPES: `admin` holds a MODULE row
++ * (everything but APPROVE and MANAGE_KEYS), `marketing-manager` holds six
++ * RESOURCE rows (the CMS screens, V/C/E) and the three sales roles each hold
++ * one resource row (`website.forms` VIEW). The first is the first module row
++ * with EXPORT that inherits into nine screens; the others are the first
++ * resource-key rows the matrix has ever carried, which is exactly why they are
++ * worth proving rather than asserting.
++ */
++
++const NOW = new Date('2026-09-19T12:00:00.000Z');
++const WEBSITE_RESOURCE_KEYS = resourceKeysOf('website');
++const CMS_KEYS = [
++  'website.pages',
++  'website.strings',
++  'website.collections',
++  'website.blog',
++  'website.media',
++  'website.navigation',
++];
++const SALES_ROLES: Array<[roleId: string, roleSlug: string]> = [
++  ['role-sales-manager', 'sales-manager'],
++  ['role-sales-executive', 'sales-executive'],
++  ['role-sales-agent', 'sales-agent'],
++];
++
++/** Every seeded row whose key is `website` or `website.<x>`, as the seed writes it. */
++function seededRows(roleId: string): GrantRow[] {
++  const grants = ROLE_PERMISSION_MATRIX[roleId] ?? [];
++  return grants
++    .filter((g) => g.module === 'website' || g.module.startsWith('website.'))
++    .flatMap((g) =>
++      g.actions.map((action) => ({
++        key: g.module,
++        action: action as PermissionActionKey,
++        scope: (g.scope ?? 'ALL') as GrantRow['scope'],
++        allowed: true,
++      })),
++    );
++}
++
++function resolve(roleId: string, roleSlug: string, rows: GrantRow[]) {
++  return resolveEffective({ roles: [{ roleId, roleSlug, rows }], overrides: [], now: NOW });
++}
++
++describe('the seeded website holders really differ (fixture guard)', () => {
++  it('the catalog carries the nine resources', () => {
++    expect(WEBSITE_RESOURCE_KEYS).toEqual([
++      'website.blog',
++      'website.collections',
++      'website.forms',
++      'website.integrations',
++      'website.media',
++      'website.navigation',
++      'website.pages',
++      'website.settings',
++      'website.strings',
++    ]);
++  });
++
++  it('admin: one module row, no APPROVE, no MANAGE_KEYS', () => {
++    const rows = seededRows('role-admin');
++    expect(rows.length).toBeGreaterThan(0);
++    expect(rows.every((r) => r.key === 'website')).toBe(true);
++    expect(rows.map((r) => r.action).sort()).toEqual(['CREATE', 'DELETE', 'EDIT', 'EXPORT', 'VIEW']);
++  });
++
++  it('marketing-manager: six CMS resource rows at V/C/E, nothing on forms/settings/integrations', () => {
++    const rows = seededRows('role-marketing-manager');
++    expect([...new Set(rows.map((r) => r.key))].sort()).toEqual([...CMS_KEYS].sort());
++    for (const key of CMS_KEYS) {
++      expect(rows.filter((r) => r.key === key).map((r) => r.action).sort()).toEqual(['CREATE', 'EDIT', 'VIEW']);
++    }
++  });
++
++  it.each(SALES_ROLES)('%s: website.forms VIEW only, at ALL (RC8)', (roleId) => {
++    expect(seededRows(roleId)).toEqual([
++      { key: 'website.forms', action: 'VIEW', scope: 'ALL', allowed: true },
++    ]);
++  });
++});
++
++describe('a module grant still reaches every website screen', () => {
++  it.each(WEBSITE_RESOURCE_KEYS)('%s inherits the admin row, marked inherited', (key) => {
++    const rows = seededRows('role-admin');
++    const effective = resolve('role-admin', 'admin', rows);
++    for (const action of ['VIEW', 'CREATE', 'EDIT', 'DELETE', 'EXPORT', 'APPROVE', 'MANAGE_KEYS'] as PermissionActionKey[]) {
++      const held = rows.some((r) => r.action === action);
++      const result = effective.check(key, action);
++      expect({ key, action, allowed: result.allowed }).toEqual({ key, action, allowed: held });
++      if (held) {
++        expect(result.reason).toEqual({
++          source: 'role-grant',
++          roleId: 'role-admin',
++          roleSlug: 'admin',
++          key: 'website',
++          inherited: true,
++        });
++      }
++    }
++  });
++
++  it('admin cannot APPROVE or MANAGE_KEYS anywhere in the module', () => {
++    const effective = resolve('role-admin', 'admin', seededRows('role-admin'));
++    for (const key of ['website', ...WEBSITE_RESOURCE_KEYS]) {
++      expect({ key, approve: effective.check(key, 'APPROVE').allowed }).toEqual({ key, approve: false });
++      expect({ key, keys: effective.check(key, 'MANAGE_KEYS').allowed }).toEqual({ key, keys: false });
++    }
++  });
++});
++
++describe('resource-ONLY holders (the first resource-key rows in the matrix)', () => {
++  it('marketing-manager reaches the CMS screens, sees the module in the nav, and nothing else', () => {
++    const effective = resolve('role-marketing-manager', 'marketing-manager', seededRows('role-marketing-manager'));
++    for (const key of CMS_KEYS) {
++      expect({ key, view: effective.check(key, 'VIEW').allowed }).toEqual({ key, view: true });
++      expect({ key, edit: effective.check(key, 'EDIT').allowed }).toEqual({ key, edit: true });
++      expect({ key, del: effective.check(key, 'DELETE').allowed }).toEqual({ key, del: false });
++      expect({ key, approve: effective.check(key, 'APPROVE').allowed }).toEqual({ key, approve: false });
++    }
++    expect(effective.check('website', 'VIEW').allowed).toBe(false);
++    expect(effective.checkAny('website', 'VIEW').allowed).toBe(true);
++    expect(effective.check('website.forms', 'VIEW').allowed).toBe(false);
++    expect(effective.check('website.integrations', 'VIEW').allowed).toBe(false);
++    expect(effective.check('website.settings', 'VIEW').allowed).toBe(false);
++  });
++
++  it.each(SALES_ROLES)('%s reaches the forms inbox and only the forms inbox', (roleId, roleSlug) => {
++    const effective = resolve(roleId, roleSlug, seededRows(roleId));
++    expect(effective.check('website.forms', 'VIEW').allowed).toBe(true);
++    expect(effective.check('website.forms', 'EDIT').allowed).toBe(false);
++    expect(effective.check('website.forms', 'EXPORT').allowed).toBe(false);
++    expect(effective.check('website', 'VIEW').allowed).toBe(false);
++    expect(effective.checkAny('website', 'VIEW').allowed).toBe(true);
++    expect(effective.check('website.integrations', 'VIEW').allowed).toBe(false);
++    expect(effective.check('website.pages', 'VIEW').allowed).toBe(false);
++  });
++});
++
++describe('the cases that are supposed to differ', () => {
++  it('a per-user DENY override on the module blocks every screen', () => {
++    const effective = resolveEffective({
++      roles: [{ roleId: 'role-admin', roleSlug: 'admin', rows: seededRows('role-admin') }],
++      overrides: [
++        { id: 'ovr1', key: 'website', action: 'VIEW', scope: 'ALL', allowed: false, expiresAt: '2026-09-30T00:00:00.000Z' },
++      ],
++      now: NOW,
++    });
++    for (const key of ['website', ...WEBSITE_RESOURCE_KEYS]) {
++      expect({ key, allowed: effective.check(key, 'VIEW').allowed }).toEqual({ key, allowed: false });
++    }
++  });
++
++  it('a marketing grant does not reach the website CMS', () => {
++    // Sibling MODULES in the data; the resolver never walks between them.
++    const effective = resolve('role-custom', 'custom', [
++      { key: 'marketing', action: 'APPROVE', scope: 'ALL', allowed: true },
++    ]);
++    expect(effective.check('website', 'VIEW').allowed).toBe(false);
++    expect(effective.check('website.pages', 'APPROVE').allowed).toBe(false);
++    expect(effective.checkAny('website', 'VIEW').allowed).toBe(false);
++  });
++});
+diff --git a/apps/backend/test/roles/reset-defaults.unit.spec.ts b/apps/backend/test/roles/reset-defaults.unit.spec.ts
+index e2d6503..37ef371 100644
+--- a/apps/backend/test/roles/reset-defaults.unit.spec.ts
++++ b/apps/backend/test/roles/reset-defaults.unit.spec.ts
+@@ -23,46 +23,71 @@ import type { AuthenticatedUser } from '../../src/modules/auth/interfaces/authen
+  * manual save does rather than writing the matrix straight to the table.
+  */
+ 
+ const ACTOR: AuthenticatedUser = {
+   userId: 'u-owner',
+   email: 'owner@jobsadmire.com',
+   roleId: 'role-super-admin',
+   roleSlug: 'super-admin',
+ };
+ 
+-/** A registry carrying every module the real matrix mentions. */
++/**
++ * A registry carrying every KEY the real matrix mentions.
++ *
++ * A matrix row's `module` is a key, not always a module: `website.forms`
++ * (WP3a, `since: 3`) is the first RESOURCE-key row the matrix carries, and
++ * `PermissionRegistry.register` refuses a dotted `name` — so a dotted key is
++ * registered as a resource under its module, the way the real module file
++ * declares it, and the module's own action list is the union of everything
++ * seeded on it or on its resources.
++ */
+ function realisticRegistry(): PermissionRegistry {
+   const reg = new PermissionRegistry();
+-  const modules = new Set<string>();
+-  const actionsByModule = new Map<string, Set<PermissionAction>>();
++  const actionsByKey = new Map<string, Set<PermissionAction>>();
+   for (const grants of Object.values(ROLE_PERMISSION_MATRIX)) {
+     for (const grant of grants) {
+-      modules.add(grant.module);
+-      const bucket = actionsByModule.get(grant.module) ?? new Set<PermissionAction>();
++      const bucket = actionsByKey.get(grant.module) ?? new Set<PermissionAction>();
+       for (const action of grant.actions) bucket.add(action as PermissionAction);
+-      actionsByModule.set(grant.module, bucket);
++      actionsByKey.set(grant.module, bucket);
+     }
+   }
+-  for (const name of modules) {
++  const modules = new Map<
++    string,
++    { actions: Set<PermissionAction>; resources: Map<string, Set<PermissionAction>> }
++  >();
++  for (const [key, actions] of actionsByKey) {
++    const [moduleName, resource] = key.split('.');
++    const entry = modules.get(moduleName) ?? { actions: new Set<PermissionAction>(), resources: new Map() };
++    for (const action of actions) entry.actions.add(action);
++    if (resource) entry.resources.set(key, actions);
++    modules.set(moduleName, entry);
++  }
++  for (const [name, { actions, resources }] of modules) {
+     reg.register({
+       name,
+       label: name,
+       description: '',
+       category: 'OPERATIONS',
+       caslSubject: 'Settings',
+-      supportedActions: [...(actionsByModule.get(name) ?? [])],
++      supportedActions: [...actions],
+       supportedScopes: [
+         PermissionScope.ALL,
+         PermissionScope.ASSIGNED_TO_ME,
+         PermissionScope.IN_MY_DEPARTMENT,
+       ],
++      resources: [...resources].map(([key, resourceActions]) => ({
++        key,
++        label: key,
++        kind: 'screen' as const,
++        supportedActions: [...resourceActions],
++        supportedScopes: [PermissionScope.ALL],
++      })),
+     });
+   }
+   return reg;
+ }
+ 
+ function harness(role: { id: string; slug: string; type?: RoleType } | null) {
+   const created: Array<Record<string, unknown>> = [];
+   const deleted: Array<Record<string, unknown>> = [];
+   const roleUpdates: Array<Record<string, unknown>> = [];
+   const audits: Array<Record<string, unknown>> = [];
+diff --git a/apps/frontend/src/messages/en.json b/apps/frontend/src/messages/en.json
+index 0f6fe00..386bbd7 100644
+--- a/apps/frontend/src/messages/en.json
++++ b/apps/frontend/src/messages/en.json
+@@ -3974,20 +3974,30 @@
+       "sales__leads": "Sales → Leads",
+       "sales__meetings": "Sales → Meetings",
+       "sales__proposals": "Sales → Proposals",
+       "settings": "Settings",
+       "settings__company": "Settings → Company Profile",
+       "settings__integrations": "Settings → Integrations",
+       "settings__queues": "Settings → Background Queues",
+       "settings__reference": "Settings → Reference Data",
+       "travel-expenses": "Travel & Expenses",
+       "users": "Users",
++      "website": "Website",
++      "website__blog": "Website → Blog",
++      "website__collections": "Website → Collections",
++      "website__forms": "Website → Forms Inbox",
++      "website__integrations": "Website → Integrations",
++      "website__media": "Website → Media",
++      "website__navigation": "Website → Navigation",
++      "website__pages": "Website → Pages",
++      "website__settings": "Website → Settings",
++      "website__strings": "Website → Strings",
+       "whatsapp": "WhatsApp",
+       "whatsapp-automations": "WhatsApp → Automations",
+       "whatsapp-templates": "WhatsApp → Templates",
+       "whatsapp__campaigns": "WhatsApp → Campaigns",
+       "whatsapp__inbox": "WhatsApp → Inbox",
+       "whatsapp__reports": "WhatsApp → Reports",
+       "whatsapp__settings": "WhatsApp → Settings"
+     },
+     "scopes": {
+       "ALL": "All records",
+diff --git a/apps/frontend/src/messages/tr.json b/apps/frontend/src/messages/tr.json
+index 7e293ef..cb96e91 100644
+--- a/apps/frontend/src/messages/tr.json
++++ b/apps/frontend/src/messages/tr.json
+@@ -3974,20 +3974,30 @@
+       "sales__leads": "Satış → Potansiyel Müşteriler",
+       "sales__meetings": "Satış → Toplantılar",
+       "sales__proposals": "Satış → Teklifler",
+       "settings": "Ayarlar",
+       "settings__company": "Ayarlar → Şirket Profili",
+       "settings__integrations": "Ayarlar → Entegrasyonlar",
+       "settings__queues": "Ayarlar → Arka Plan Kuyrukları",
+       "settings__reference": "Ayarlar → Referans Verileri",
+       "travel-expenses": "Seyahat ve Masraflar",
+       "users": "Kullanıcılar",
++      "website": "Web Sitesi",
++      "website__blog": "Web Sitesi → Blog",
++      "website__collections": "Web Sitesi → Koleksiyonlar",
++      "website__forms": "Web Sitesi → Form Gelen Kutusu",
++      "website__integrations": "Web Sitesi → Entegrasyonlar",
++      "website__media": "Web Sitesi → Medya",
++      "website__navigation": "Web Sitesi → Navigasyon",
++      "website__pages": "Web Sitesi → Sayfalar",
++      "website__settings": "Web Sitesi → Ayarlar",
++      "website__strings": "Web Sitesi → Metinler",
+       "whatsapp": "WhatsApp",
+       "whatsapp-automations": "WhatsApp → Otomasyonlar",
+       "whatsapp-templates": "WhatsApp → Şablonlar",
+       "whatsapp__campaigns": "WhatsApp → Kampanyalar",
+       "whatsapp__inbox": "WhatsApp → Gelen Kutusu",
+       "whatsapp__reports": "WhatsApp → Raporlar",
+       "whatsapp__settings": "WhatsApp → Ayarlar"
+     },
+     "scopes": {
+       "ALL": "Tüm kayıtlar",
+diff --git a/docs/PRD.md b/docs/PRD.md
+index 1d91d7d..c8048f2 100644
+--- a/docs/PRD.md
++++ b/docs/PRD.md
+@@ -255,21 +255,21 @@ Production is a single VPS (Apache vhosts + Docker Compose). Operations auto-dep
+ ## 4. Users, Roles & Permissions
+ 
+ Every authenticated user holds exactly one PRIMARY role plus any number of additional ones, and every one of them is internal JobsAdmire staff — the app has no external-user role at all since `investor` retired with the Investments module on 2026-09-14 (§8 "Removed domains"). There is no partner scoping, no employer/sourcing portal, no data-isolation firewall.
+ 
+ **Authorization is `key × action × scope`, database-driven, resolved in ONE place.** A key is a module (`sales`) or a module plus one screen (`hrm.payroll`); a grant is a row on a role, or a row on a USER (an override); `EffectivePermissionsService` gathers the rows and `resolveEffective()` — a pure function in `@jobsadmire/permissions`, run by the backend AND the browser — turns them into answers. Every route says which it is (`@RequirePermission`, `@SelfService()` or `@Public()`) or the container does not start; every admin page has a line in the route manifest or nobody can open it; and **no code decides access by comparing a role slug** — the handful of slug comparisons that remain are declared policies about WHOSE account may be touched, not about what anybody may do, and a repo invariant refuses a new one.
+ 
+ > **The permission programme, W0–W4 (2026-09-15).** Everything above was built in five waves over one day, and the sections below describe the RESULT rather than the sequence. W0 fixed the security bugs the audit found (the grant boundary enforced in the roles API, versioned role defaults so the seed stopped undoing operators' edits, `Role.isActive` made load-bearing, all 13 actions in the catalog). W1 built the engine: the key grammar, per-user overrides, the one resolver, boot-time conformance. W2 put that resolver in the BROWSER, typed every key, and gave Marketing the first screen-level keys, the route manifest and the page guard. W3 took screen keys to all 22 modules, drove the route census to zero and the unmapped-page list to zero, and made the page guard fail closed. W4 — this state — turned strict mode on, replaced the last hard-coded authorization with grants, declared the rules that are not permissions, purged the phantom grant rows, and wrote this down. Incident-level detail for any single wave lives in the Decisions & gotchas below, dated.
+ 
+ ### 4.1 Permission model (Key × Action × Scope)
+ 
+-- **A permission is a KEY, not just a module.** A key is either a module (`sales`, depth 0) or a module plus exactly one resource (`marketing.posts`, depth 1); segments are `[a-z0-9-]+`. `RolePermission.module` keeps its column name and holds a key — every row written before W1 is a depth-0 key and stays valid, which is why the grammar allows at most one dot. Modules declare their resources in `registry.register({ resources: [...] })`; **all 22 modules now declare them and all are `resourcesEnforced: true`** — 75 keys in total, listed in `packages/permissions/src/keys.catalog.ts` and per module in §4.2. The flag exists because a module must not start refusing requests the day its resources are DECLARED: it flips in the same change set that re-keys the controllers, never before.
++- **A permission is a KEY, not just a module.** A key is either a module (`sales`, depth 0) or a module plus exactly one resource (`marketing.posts`, depth 1); segments are `[a-z0-9-]+`. `RolePermission.module` keeps its column name and holds a key — every row written before W1 is a depth-0 key and stays valid, which is why the grammar allows at most one dot. Modules declare their resources in `registry.register({ resources: [...] })`; **all 23 modules now declare them and all are `resourcesEnforced: true`** — 85 keys in total, listed in `packages/permissions/src/keys.catalog.ts` and per module in §4.2. The flag exists because a module must not start refusing requests the day its resources are DECLARED: it flips in the same change set that re-keys the controllers, never before.
+ - **Per-user overrides (`user_permission_overrides`).** One row grants or revokes one `(key, action)` for one USER, optionally expiring, on top of whatever their roles confer. The need is what a role model cannot meet without inventing a role per person — "Ayşe does everything a marketing-manager does AND may approve posts", "Haris keeps his role but must not reach payroll for a month" — and the old answer was cloning a role, which is how prod ended up with `field-agent-legacy-cmqf5e` carrying twelve admin-tier grants under a field-agent label (§4.5). Managed at `GET`/`PUT /users/:id/permission-overrides`, gated **`roles:EDIT`** (an override is a permission-model edit, so the boundary that keeps role editing super-admin-only has to cover this door too). A **super-admin target is refused**: the bypass reads nothing from this table, so an override there would be stored, displayed, and do nothing.
+ - **PRECEDENCE — one ladder, in `@jobsadmire/permissions`, run by the backend and (from W2) the browser.** For each `(key, action)`:
+   1. an active override on the **exact key** decides — an allow REPLACES the role scope rather than widening it, a deny refuses outright;
+   2. an active **DENY override on the parent module key** → not allowed, marked `inherited`;
+   3. the exact key's **role rows** decide — allow beats deny across roles, the widest allow sets the scope;
+   4. an active **ALLOW override on the parent key** → allowed at its scope, `inherited`;
+   5. the **parent's role rows**, `inherited`; 6. nothing → not allowed.
+   **A parent DENY sits above the role rows because it is total.** "Block Marketing for Sana" has to mean every screen of Marketing; with the deny below step 3, a role granting `marketing.posts` explicitly would keep her in Posts while the module tile vanished — a revocation that looks complete on the admin screen and is not. **A parent ALLOW sits below them because it is not total**: a role's deliberate carve-out survives an override that opens the module, and an admin who means "and that screen too" adds a second override on the resource, where step 1 sees it. That makes "block the module except one screen" two visible overrides rather than a silent exception baked into the resolver.
+ - **A module-level `allowed = false` ROLE row is unrepresentable.** "No row" already means "not allowed", so a false row at depth 0 says nothing a missing row does not while reading, to the resolver, like a carve-out that outranks another role's grant. Migration `20260923100000_permission_engine` purged them (prod had zero) and `PUT /roles/:id/permissions` **drops** them rather than refusing — the Roles UI posts one for every unticked box, so refusing would 400 every save in the app. A depth-1 deny is the carve-out mechanism and is written normally. Per-USER module denies are the exception and the point: a role is a shared template, an override is a deliberate, attributable, expiring act.
+ - **Every check returns a REASON**, and the users → Effective Permissions tab renders it: `role-grant {roleId, roleSlug, key, inherited?}`, `override-allow {overrideId, inherited?}`, `override-deny {overrideId, inherited?}`, `no-grant`, `super-admin`. `key` names the row that actually decided; `inherited` marks a resource cell decided one level up.
+@@ -289,23 +289,23 @@ Every authenticated user holds exactly one PRIMARY role plus any number of addit
+   **The allowlist is the argument, file by file.** An entry claims the literal is one of three things: the DEFINITION of the bypass (`common/utils/role-helpers.ts`, and the permissions module's own short-circuits); a TARGET or DESTINATION policy — a rule about whose account may be touched, which no grant can express (`users.service.ts`, `auth.service.ts`'s 2FA target, `user-permission-overrides.service.ts`, `user-roles.service.ts`); or a POPULATION query — who the owners are, for a recipient list or a socket fan-out (`event-dispatcher.getSuperAdmins`, `assignee-eligibility.service.ts`, the two WhatsApp scope-qualified `whatsapp:VIEW @ ALL` queries, and the "only super-admins matched" diagnostic in `notifications.service.ts`). The spec asserts BOTH directions — an entry whose literal has since gone fails too, because a licence nobody uses is how the next person concludes the pattern is fine here.
+   Historical: the IR dashboard gated its owner cockpit on `roleSlug === 'super-admin' | 'admin'` until 2026-06-04.
+ - **The notification endpoints are SELF-SERVICE, not permission-gated (2026-06-08; marked `@SelfService()` 2026-09-15).** `GET /notifications`, `PATCH /:id/read`, `PATCH /mark-all-read` and `DELETE /:id` carry no `@RequirePermission` — the service scopes every query to `recipientUserId = currentUser.userId`, so they need only authentication. They used to require a `notifications` grant, which 403'd every custom role lacking it and made the bell poll-spam 403s. W1 gave them the `@SelfService()` marker and listed them in the module descriptor's `selfServiceRoutes`, which changes nothing at runtime but distinguishes "deliberately open" from "not yet annotated" — the latter is what `PERMISSIONS_STRICT` refuses. The seeded `notifications:VIEW` grants are vestigial/nav-only. **The notifications PAGE used to gate its own buttons on `notifications:EDIT`/`DELETE`** — actions this module has never registered — so Mark all read / Mark read / Delete rendered only for super-admin and for `admin`, which held a phantom `ACTIONS_FULL` row (purged in W4 — below); every other role had been unable to act on their own inbox from that page since it shipped (the topbar bell was never gated). The gates were removed in W1. Keep these endpoints self-service; the same rule applies to any per-user resource.
+ - **Replacing a slug check means picking the right AXIS, and "can they reach it" is rarely it (owner ruling, 2026-09-15).** The dashboard is the worked example. Five panels were gated on `roleSlug === 'super-admin' | 'admin'`, and they are not all the same question. Two are CAPABILITY questions and ask a grant: the IR KPI counts every open hiring request for a holder of `internal-recruitment.requests:APPROVE` — the person who DECIDES them — and the activity feed serves the whole audit log to `settings:VIEW`. The other three are today's agenda, and they are SCOPE questions: a column shows everyone's rows only when the caller's `<module>:VIEW` resolves to **`ALL`** (`ScopeFilterService.strongestScope` on `sales` / `internal-recruitment` / `communications`), and a scoped holder keeps the personal filter. The first cut of W4 widened all three on a bare `<module>:VIEW` and was wrong: `sales-agent` and `sales-executive` hold `sales:VIEW @ ASSIGNED_TO_ME` precisely so the sales surfaces show them their own book, and a company-wide agenda would have contradicted every other screen they have. **A caller with NO grant keeps the personal filter too** — there is deliberately no third branch, because "rows I own / interviews I run / logs I wrote" already answers correctly for a non-holder by returning nothing. `strongestScope` is used rather than a row filter because it EXPLAINS a scope through the same `check()` the filter uses, and it ignores `PERMISSION_SCOPE_ENFORCEMENT` — a rollout switch for query filters has no business deciding what a dashboard says. Pinned in `dashboard.service.spec.ts` (ALL → wide, ASSIGNED_TO_ME / IN_MY_DEPARTMENT / no grant → personal).
+ - **The 13 phantom `(module, action)` rows are GONE (W4, 2026-09-15) — and the lesson is the shape, not the count.** `ACTIONS_FULL` (VIEW/CREATE/EDIT/DELETE/APPROVE/EXPORT) was mapped over a list of modules without asking what any of them REGISTERS, and seven register fewer — so every deploy created `role_permissions` rows for pairs that exist nowhere else in the system: `communications` APPROVE/EXPORT, `notifications` CREATE/EDIT/DELETE/APPROVE/EXPORT, and EXPORT on `internal-recruitment`, `projects`, `sales`, `travel-expenses` and `settings` (plus APPROVE there). They gated nothing — since W1 a route decorated with an unregistered action fails the container at boot — but they were never harmless, because the roles matrix and the effective-permissions screen both render from the REGISTRY: there was no column to untick and no cell to explain. `admin` holding a phantom `notifications:EDIT` is exactly why that page's Mark-all-read and Delete buttons rendered for one role and nobody else.
+   Fixed in one change set, and the ORDER is the lesson: migration `20260924100000_purge_unregistered_grants` deletes the rows (a removal is something the create-if-missing seed can never do on its own — §4.2), `role-defaults.ts` replaces the mapped `ACTIONS_FULL` with per-module lists (`ACTIONS_NO_EXPORT`, `ACTIONS_CRUD`) so the next deploy does not simply put them back, `role-defaults.unit.spec.ts` asserts every matrix cell is an action its module registers (parsing the descriptors from source), and `CaslAbilityFactory` stopped projecting over the whole `PermissionAction` enum. **Deleting them piecemeal would have been undone within two minutes by the next deploy.**
+ - **Seed grants and registered `supportedActions` no longer drift, and three things now hold that line.** The drift ran in both directions and both were live: `communications:DELETE` was a real, seeded, ENFORCED grant the registry did not advertise (registered in W1, in the same change set that added the boot check), while seven modules carried grants for actions they never registered (the 13 rows above, purged in W4). Today: `PermissionConformanceService` fails the container on a decorator naming an unsupported action; the grant validator refuses one on a role save or an override; and `role-defaults.unit.spec.ts` refuses one in the seeded matrix. **`CaslAbilityFactory` therefore projects over `registry.supportedActionsFor(module)` rather than the whole enum** — it iterated everything precisely because of this drift, and with both halves closed the registry's list is the same answer, and the one that keeps a future phantom out of an ability instead of quietly into one.
+ 
+ ### 4.2 Permission modules — the live catalog
+ 
+-**22 permission modules + 53 screen-level resources = 75 grantable keys** are registered at runtime via `PermissionRegistry.register()` in each module's constructor, grouped by category (re-derive on demand: `grep -rn 'registry.register({' apps/backend/src`, or read `PERMISSION_KEYS` in `packages/permissions/src/keys.catalog.ts`, which the boot scan asserts is the same list). Resources per module: Marketing 9, Projects 8, Sales 6, HRM 6, IR 5, WhatsApp 4, Call Center 4, Settings 4, Admira 3, Market Research 2, Academy 2 — **every one `resourcesEnforced: true`**.
++**23 permission modules + 62 screen-level resources = 85 grantable keys** are registered at runtime via `PermissionRegistry.register()` in each module's constructor, grouped by category (re-derive on demand: `grep -rn 'registry.register({' apps/backend/src`, or read `PERMISSION_KEYS` in `packages/permissions/src/keys.catalog.ts`, which the boot scan asserts is the same list). Resources per module: Marketing 9, Website 9, Projects 8, Sales 6, HRM 6, IR 5, WhatsApp 4, Call Center 4, Settings 4, Admira 3, Market Research 2, Academy 2 — **every one `resourcesEnforced: true`**.
+ 
+-- **OPERATIONS (17):** `sales`, `travel-expenses` (both registered by `sales.module.ts`), `projects`, `internal-recruitment`, `market-research`, `recruitment-platforms`, `offer-letter-templates`, `offer-letters`, `iskur-postings`, `marketing`, `hrm`, `ai-interviewer`, `sales-training` (§5.6a), `call-center` (§5.10), plus the three registered by `whatsapp.module.ts` (§5.11): `whatsapp` (VIEW, CREATE, EDIT, DELETE, ASSIGN, EXPORT, APPROVE, MANAGE_KEYS, MANAGE_CAMPAIGNS — scopes ALL, IN_MY_DEPARTMENT (WP2a: WhatsApp team membership) and ASSIGNED_TO_ME), `whatsapp-templates` (VIEW, CREATE, EDIT, DELETE, SUBMIT — scope ALL), `whatsapp-automations` (VIEW, CREATE, EDIT, DELETE, APPROVE — scope ALL). (`copilot`, `investments`, `reports` and the legacy applicant `training` LMS were removed 2026-09-14, §8 "Removed domains".)
++- **OPERATIONS (18):** `sales`, `travel-expenses` (both registered by `sales.module.ts`), `projects`, `internal-recruitment`, `market-research`, `recruitment-platforms`, `offer-letter-templates`, `offer-letters`, `iskur-postings`, `marketing`, `hrm`, `ai-interviewer`, `sales-training` (§5.6a), `call-center` (§5.10), `website` (§5.12, WP3a 2026-09-19 — VIEW, CREATE, EDIT, DELETE, EXPORT, APPROVE, MANAGE_KEYS; scope ALL; nine screen resources registered from day one with `resourcesEnforced: true`, two of them routed in WP3a — `website.forms`, `website.integrations` — and seven reserved for the Phase B CMS; MANAGE_KEYS is module-only and seeded to no role), plus the three registered by `whatsapp.module.ts` (§5.11): `whatsapp` (VIEW, CREATE, EDIT, DELETE, ASSIGN, EXPORT, APPROVE, MANAGE_KEYS, MANAGE_CAMPAIGNS — scopes ALL, IN_MY_DEPARTMENT (WP2a: WhatsApp team membership) and ASSIGNED_TO_ME), `whatsapp-templates` (VIEW, CREATE, EDIT, DELETE, SUBMIT — scope ALL), `whatsapp-automations` (VIEW, CREATE, EDIT, DELETE, APPROVE — scope ALL). (`copilot`, `investments`, `reports` and the legacy applicant `training` LMS were removed 2026-09-14, §8 "Removed domains".)
+ - **INFRASTRUCTURE (3):** `notifications`, `communications`, `settings`.
+ - **ADMINISTRATION (2):** `users`, `roles`.
+ 
+ The frontend reads this list from **`GET /api/permissions/catalog`** (`permissions.controller.ts`) — the single source of truth for the role-permission matrix UI, returning categories, actions, scopes, and the full module list with metadata. This **shipped** (production-readiness Phase 1) and **replaced the static `PERMISSION_MODULES` constant**, which has been removed from `packages/constants` (`permission.enums.ts` documents the removal). `GET /permissions/me` returns the caller's own permission set.
+ 
+ **Decisions & gotchas**
+ 
+ - **Don't re-introduce a `DISABLED_PERMISSION_MODULES` list (or equivalent runtime filter).** The 2026-05-25 cleanup removed it — a fork relic that hid the real ops modules from the role-permission UI while leaving stale CRM slugs visible. If a module shouldn't be exposed, delete its backend code and seed entries; don't hide it from the UI via a filter list.
+ - Retired slugs stay retired: don't reintroduce an `expansion` module/slug/grant (torn out 2026-06-07) or a `mailbox` module/slug/grant (torn out 2026-08-04). Their out-of-matrix `role_permissions` rows were deleted by explicit migrations because the seed never revokes rows it no longer contains (create-if-missing since versioned defaults landed — §4.4) — any future grant *removal* needs the same paired migration (the `20260530130000_narrow_recruiter_platform_perms` pattern).
+ 
+@@ -329,49 +329,49 @@ Scope is enforced at query time by `ScopeFilterService` (`apps/backend/src/modul
+ - **Don't widen `field-agent`'s `projects` scope to ALL** — `ASSIGNED_TO_ME` is what restricts project-level edits (per-record scope 404s any non-owned project, so a field agent can't change another project's budget/owner) AND what scopes their dashboard (`projects-dashboard.service.summary(user)` is scope-aware; don't revert it to an unscoped global summary). There is intentionally no `projects:MANAGE` action — the scope IS the project-edit-vs-task-edit boundary.
+ - **Don't add a `PartnerScopeGuard` or partner-scoping middleware.** This app is internal-only; the CRM's data-isolation "firewall" doesn't apply here.
+ 
+ ### 4.4 System roles (12) and the seeded grant matrix
+ 
+ **Twelve SYSTEM roles** ship with the platform (`ROLES` in `apps/backend/prisma/role-defaults.ts`). The original eight date from the 2026-05-24 matrix decision; `field-agent` (2026-06-15), `sales-agent` (2026-07-08), `sales-executive` (2026-08-04) and `team-member` (2026-09-02, Work Management WP2) were added since. A thirteenth, `investor`, existed from 2026-06-15 until the Investments module was removed on 2026-09-14 (§8 "Removed domains") — its only holders were the demo logins, and any other holder would have been moved to `viewer` by that migration. `ACTIONS_FULL` = VIEW/CREATE/EDIT/DELETE/APPROVE/EXPORT, `ACTIONS_NO_EXPORT` the same minus EXPORT, `ACTIONS_CRUD` = VIEW/CREATE/EDIT/DELETE — three NAMES for three shapes, since W4, because mapping one of them over a list of modules is what produced the phantom rows (§4.1). Scope is `ALL` unless stated.
+ 
+ | Role slug | Default grants (per `ROLE_PERMISSION_MATRIX` — what the role ships with; the live rows are whatever the Roles UI last saved) |
+ |---|---|
+ | `super-admin` | **No rows.** CASL `can('manage','all')` bypass reaches everything, including the actions seeded to nobody (`MANAGE_KEYS`, `MANAGE_CAMPAIGNS`, `SIGN_AS_OWNER`) or admin-only (`CREATE_REQUEST`). Only role that can create/delete users or touch the `roles` module in practice. |
+-| `admin` | `hrm` ACTIONS_FULL (the one module in this group that registers all six); `sales`, `projects`, `travel-expenses` V/C/E/D/APPROVE (**no EXPORT — none of the three registers it**); `communications`, `settings` V/C/E/D; `notifications` **VIEW only** (the module registers nothing else, and that grant is nav-only — every notification route is `@SelfService()`). Plus exact-action grants: `marketing` V/C/E/D + `WITHDRAW` + `UNAPPROVE` (no APPROVE/`MANAGE_KEYS` — publishing approval and the platform/AI credentials are super-admin-only, same policy as `ai-interviewer`; the two revocations arrived 2026-09-16 with `since: 2` and are deliberately NOT approval — see §5.7); `internal-recruitment` V/C/E/D/APPROVE + `CREATE_REQUEST` (no EXPORT — unregistered); `market-research` V/C/E/D/APPROVE; `recruitment-platforms` V/C/E/D/`REVEAL_CREDENTIALS`; `offer-letter-templates` V/C/E/D; **no `offer-letters` grant** (revoked 2026-08-05 — see §5.4.8: the employer's signature block prints the CEO, so only the CEO may sign); `iskur-postings` V/C/E/`SUBMIT`/D; `ai-interviewer` V/E (**no `MANAGE_KEYS`** — super-admin-only by owner decision); `call-center` V/C/E/EXPORT (no `MANAGE_KEYS`/`MANAGE_CAMPAIGNS` — super-admin-only, owner decision 2026-08-19); `sales-training` V/C/E/D/APPROVE; `whatsapp` V/C/E/D/ASSIGN/EXPORT/APPROVE (no `MANAGE_KEYS`/`MANAGE_CAMPAIGNS` — super-admin-only, decision 12); `whatsapp-templates` V/C/E/D/`SUBMIT`; `whatsapp-automations` V/C/E/D/APPROVE; `users` **VIEW+EDIT only** (no CREATE/DELETE); **no `roles` grant**. |
+-| `sales-manager` | `sales` V/C/E/D/APPROVE; `travel-expenses` V/C/E/D/APPROVE; `projects` V/C/E; `communications` V/C/E/D; `call-center` V/C/E; `notifications` VIEW; `whatsapp` V/C/E/ASSIGN/EXPORT @ **IN_MY_DEPARTMENT** ("my WhatsApp teams"); `whatsapp-templates` V/C/E/`SUBMIT`; `whatsapp-automations` V/E. |
++| `admin` | `hrm` ACTIONS_FULL (the one module in this group that registers all six); `sales`, `projects`, `travel-expenses` V/C/E/D/APPROVE (**no EXPORT — none of the three registers it**); `communications`, `settings` V/C/E/D; `notifications` **VIEW only** (the module registers nothing else, and that grant is nav-only — every notification route is `@SelfService()`). Plus exact-action grants: `marketing` V/C/E/D + `WITHDRAW` + `UNAPPROVE` (no APPROVE/`MANAGE_KEYS` — publishing approval and the platform/AI credentials are super-admin-only, same policy as `ai-interviewer`; the two revocations arrived 2026-09-16 with `since: 2` and are deliberately NOT approval — see §5.7); `internal-recruitment` V/C/E/D/APPROVE + `CREATE_REQUEST` (no EXPORT — unregistered); `market-research` V/C/E/D/APPROVE; `recruitment-platforms` V/C/E/D/`REVEAL_CREDENTIALS`; `offer-letter-templates` V/C/E/D; **no `offer-letters` grant** (revoked 2026-08-05 — see §5.4.8: the employer's signature block prints the CEO, so only the CEO may sign); `iskur-postings` V/C/E/`SUBMIT`/D; `ai-interviewer` V/E (**no `MANAGE_KEYS`** — super-admin-only by owner decision); `call-center` V/C/E/EXPORT (no `MANAGE_KEYS`/`MANAGE_CAMPAIGNS` — super-admin-only, owner decision 2026-08-19); `sales-training` V/C/E/D/APPROVE; `whatsapp` V/C/E/D/ASSIGN/EXPORT/APPROVE (no `MANAGE_KEYS`/`MANAGE_CAMPAIGNS` — super-admin-only, decision 12); `whatsapp-templates` V/C/E/D/`SUBMIT`; `whatsapp-automations` V/C/E/D/APPROVE; `website` V/C/E/D/EXPORT (no APPROVE/`MANAGE_KEYS` — publishing and the website's tokens/secrets are super-admin-only; `since: 3`, WP3a — a MODULE row, so it reaches all nine `website.*` screens by inheritance); `users` **VIEW+EDIT only** (no CREATE/DELETE); **no `roles` grant**. |
++| `sales-manager` | `sales` V/C/E/D/APPROVE; `travel-expenses` V/C/E/D/APPROVE; `projects` V/C/E; `communications` V/C/E/D; `call-center` V/C/E; `notifications` VIEW; `whatsapp` V/C/E/ASSIGN/EXPORT @ **IN_MY_DEPARTMENT** ("my WhatsApp teams"); `whatsapp-templates` V/C/E/`SUBMIT`; `whatsapp-automations` V/E; `website.forms` VIEW (`since: 3`, WP3a — the first RESOURCE-key row in the matrix: the forms inbox and nothing else of the website module; ALL scope, the resource supports no other) |
+ | `hrm-admin` | `hrm` ACTIONS_FULL (payroll/attendance EXPORT is real here); `sales-training` VIEW (read-only visibility into onboarding progress); `projects` V/C/E; `communications` V/C/E/D; `notifications` VIEW; `whatsapp` V/C/E/ASSIGN @ **IN_MY_DEPARTMENT**; `whatsapp-templates` VIEW (needed so the composer's template picker doesn't 403). |
+-| `marketing-manager` | `marketing` V/C/E/D + `WITHDRAW` (no `UNAPPROVE`, no APPROVE/`MANAGE_KEYS` — same split as `admin`; the rebuilt module exposes no EXPORT action. Pulling a submission back out of review is part of running the pipeline; undoing an APPROVAL is an admin act, 2026-09-16 — §5.7); `projects` V/C/E; `communications` V/C/E/D; `notifications` VIEW; `whatsapp-templates` V/C/E/`SUBMIT`; `whatsapp-automations` V/E. **No `whatsapp` inbox grant** — templates and automations only. |
++| `marketing-manager` | `marketing` V/C/E/D + `WITHDRAW` (no `UNAPPROVE`, no APPROVE/`MANAGE_KEYS` — same split as `admin`; the rebuilt module exposes no EXPORT action. Pulling a submission back out of review is part of running the pipeline; undoing an APPROVAL is an admin act, 2026-09-16 — §5.7); `projects` V/C/E; `communications` V/C/E/D; `notifications` VIEW; `whatsapp-templates` V/C/E/`SUBMIT`; `whatsapp-automations` V/E. **No `whatsapp` inbox grant** — templates and automations only; `website.pages`/`.strings`/`.collections`/`.blog`/`.media`/`.navigation` V/C/E (`since: 3`, WP3a — six resource-key rows; no DELETE, no APPROVE, and nothing on `website.forms`/`.settings`/`.integrations`) |
+ | `training-coordinator` | `sales-training` V/C/E (no DELETE/APPROVE — certification stays with admin/manager/owner); `projects` V/C/E; `communications` V/C/E/D; `notifications` VIEW. (Its `training` ACTIONS_FULL grant went with the legacy applicant LMS on 2026-09-14 and its `reports` VIEW with the Reports module — §8 "Removed domains". The role is KEPT; seed description: "Authors Sales Training Academy content and monitors assignments; also projects, communications and notifications.") |
+ | `internal-recruiter` | `internal-recruitment` V/C/E/D — **deliberately no APPROVE** (owner gate: JD/hire approval, convert-to-employee; granting it would surface owner cockpit + Approve buttons the backend rejects) **and no `CREATE_REQUEST`** (recruiters receive requests, they don't raise them); `recruitment-platforms` VIEW+`REVEAL_CREDENTIALS` only (2026-05-30 narrowing — see gotchas); `offer-letter-templates` VIEW; `market-research` V/C/E (no APPROVE/DELETE — mirrors the JD/hire split; form-builder is APPROVE-gated); `iskur-postings` V/C/E/`SUBMIT` (no DELETE; İŞKUR profile/credentials are `settings:EDIT`, which the recruiter lacks); `ai-interviewer` V/E (never `MANAGE_KEYS`); **no `projects` at all** (revoked 2026-08-19 — see gotchas); `communications` V/C/E/D; `notifications` VIEW; `whatsapp` V/C/E/ASSIGN @ **IN_MY_DEPARTMENT**; `whatsapp-templates` VIEW. (Its `reports` VIEW grant went with the Reports module on 2026-09-14 — §8 "Removed domains".) |
+ | `viewer` | VIEW on 13 modules: all 11 `MODULE_OPS` + 3 `MODULE_INFRA` **minus `settings`** (reference-data GETs are `@Public()`, so no grant is needed for dropdowns) **and minus `offer-letters`** (that module exposes only `SIGN_AS_OWNER` — no VIEW exists; offer letters are read via `internal-recruitment:VIEW`), plus an explicit `ai-interviewer` VIEW. Does **not** include `call-center`, `sales-training`, `roles`, `users`, or any `whatsapp*` module — none of those are in `MODULE_OPS`/`MODULE_INFRA`. |
+ | `field-agent` | The field operative for Projects physical-meeting tasks (2026-06-15). `projects` V/C/E @ **ASSIGNED_TO_ME**; `communications` V/C/E (needed to log meeting notes + resolve follow-ups — the physical-meeting completion gate requires `communications:EDIT`); `notifications` VIEW; `whatsapp` V/C @ **ASSIGNED_TO_ME**; `whatsapp-templates` VIEW. No APPROVE/DELETE. Demo login `field-agent@jobsadmire.com`. Seed-only (idempotent, no migration). |
+-| `sales-agent` | Field-sales-campaign operative (2026-07-08, demo `sales-agent@jobsadmire.com`). `projects` V/C/E @ **ASSIGNED_TO_ME** (journey sub-records + call logging are projects endpoints; CREATE needed for travel/expense/meeting rows); `sales` **VIEW only** @ **ASSIGNED_TO_ME** (read-only lead detail for campaign-assigned leads — **no `sales:EDIT`**: agents write campaign state via projects endpoints; lead ownership/pipeline stays the manager's); `communications` V/C/E; `call-center` V/C (place/see calls from the in-browser softphone); `notifications` VIEW; `whatsapp` V/C @ **ASSIGNED_TO_ME**; `whatsapp-templates` VIEW. Note: `projects:CREATE` also gates `POST /campaigns`, so an agent *can* create a campaign — but it is owner-scoped + roster-scoped to their own visible leads (harmless), and they can't reach a manager's campaign detail. Agent assignment endpoints are owner-only, not the ProjectLead binding — an assigned agent must not reassign their own rows. Don't widen either scope. |
+-| `sales-executive` | The individual salesperson (2026-08-04), between `sales-agent` and `sales-manager`. `sales` V/C/E @ **ASSIGNED_TO_ME** — creates and works their own book of leads end-to-end; `projects` V/C/E @ **ASSIGNED_TO_ME**; `communications` V/C/E; `call-center` V/C; `notifications` VIEW; `whatsapp` V/C/E @ **ASSIGNED_TO_ME**; `whatsapp-templates` VIEW. Deliberately **no `sales:DELETE`** (a rep must never erase a lead) and no APPROVE. With CREATE they see every lead they add (the `addedById` arm of the binding); **pre-existing unassigned leads stay invisible** until assigned — intentional; a shared "new leads" pool would be a scope-binding change, not a role tweak. |
++| `sales-agent` | Field-sales-campaign operative (2026-07-08, demo `sales-agent@jobsadmire.com`). `projects` V/C/E @ **ASSIGNED_TO_ME** (journey sub-records + call logging are projects endpoints; CREATE needed for travel/expense/meeting rows); `sales` **VIEW only** @ **ASSIGNED_TO_ME** (read-only lead detail for campaign-assigned leads — **no `sales:EDIT`**: agents write campaign state via projects endpoints; lead ownership/pipeline stays the manager's); `communications` V/C/E; `call-center` V/C (place/see calls from the in-browser softphone); `notifications` VIEW; `whatsapp` V/C @ **ASSIGNED_TO_ME**; `whatsapp-templates` VIEW. Note: `projects:CREATE` also gates `POST /campaigns`, so an agent *can* create a campaign — but it is owner-scoped + roster-scoped to their own visible leads (harmless), and they can't reach a manager's campaign detail. Agent assignment endpoints are owner-only, not the ProjectLead binding — an assigned agent must not reassign their own rows. Don't widen either scope. Plus `website.forms` VIEW (`since: 3`, WP3a, RC8 — the whole inbox at ALL scope, because the resource has no row scope; the lead itself stays ASSIGNED_TO_ME through `sales`). |
++| `sales-executive` | The individual salesperson (2026-08-04), between `sales-agent` and `sales-manager`. `sales` V/C/E @ **ASSIGNED_TO_ME** — creates and works their own book of leads end-to-end; `projects` V/C/E @ **ASSIGNED_TO_ME**; `communications` V/C/E; `call-center` V/C; `notifications` VIEW; `whatsapp` V/C/E @ **ASSIGNED_TO_ME**; `whatsapp-templates` VIEW. Deliberately **no `sales:DELETE`** (a rep must never erase a lead) and no APPROVE. With CREATE they see every lead they add (the `addedById` arm of the binding); **pre-existing unassigned leads stay invisible** until assigned — intentional; a shared "new leads" pool would be a scope-binding change, not a role tweak. Plus `website.forms` VIEW (`since: 3`, WP3a, RC8 — same shape as `sales-agent`: the whole inbox at ALL scope). |
+ | `team-member` | Internal team member on **work projects** (Work Management, 2026-09-02). `projects` V/E/D @ **ASSIGNED_TO_ME** — **no CREATE** (a team member joins a work project, they do not open one — R1; the seed's upsert never revokes, so a pre-existing CREATE row is dropped by migration `20260906120000_work_governance`) and **DELETE IS present** (added at the same explicit scope so a member can delete a card they created — R3; `TaskService.remove` decides manager-or-creator). No `communications` grant (the work discussion is `TaskComment`, not the field `CommunicationsLog`) and no `notifications` grant (the bell is auth-only for this role). **ROLLOUT GATE: not assigned to anyone until Work Management WP2 is verified live.** |
+ 
+ **Conversion is a manager call — enforced since 2026-08-05.** Lead→partner conversion (`POST /api/sales/leads/:id/convert-to-partner`) is gated **`sales:APPROVE`** (`lead.controller.ts`) with a per-record APPROVE-scope merge in `LeadService.convertToPartner`. `sales-executive` (V/C/E only) can no longer convert; admin + sales-manager hold `sales:APPROVE` via the seed matrix (the grant rows existed all along — only the registration and the gate were missing). The 2026-08 audit had documented the earlier `sales:EDIT` gate as a known gap; that gap is closed.
+ 
+ **Decisions & gotchas**
+ 
+ - **Don't grant the entire `roles` module — or `users:CREATE` / `users:DELETE` — to any role except `super-admin`.** Admin holds `users:VIEW + EDIT` so they can edit existing accounts and reset/change passwords; that's the only relaxation. Granting `users:CREATE` to a non-super lets them mint a new super-admin account; `users:DELETE` lets them remove one; handing out `roles` lets a role redefine its own grants.
+ - **The activity timeline is permission-gated per type (closed 2026-08-19).** `GET /activities/timeline` and `/activities/by-subject` were **auth-only**, on the documented reasoning that "the caller had to know the subject/context id to ask in the first place". Ids are guessable and seeded ones are literals, so any authenticated user — an internal recruiter, or the external **investor** role of the day — could read `contextType=investments&contextId=div-2025` and get back `declared the dividend "FY2025 Dividend" (USD 750,000)` (verified live before the fix; that module was removed 2026-09-14, §8 "Removed domains", and its nine mappings went with it). An activity `summary` is a rendered sentence *about* the entity, so reading a timeline is reading the entity. `ACTIVITY_TYPE_SUBJECTS` in `activities.controller.ts` maps every `subject:`/`context:` type to its owning CASL subject + action and the controller enforces it — **fail closed**, an unmapped type 403s, so a new activity type must add its mapping in the same change set (`ENDPOINT_BY_KIND` precedent). The removed investor-relations types were the precedent for mapping an action **stricter than `read`** when a module's VIEW grant is deliberately narrower than its timeline: pick the action that the timeline's *content* really requires, not reflexively `read`.
+ - **`isInternal()` is DELETED — never reintroduce it (2026-08-19 audit).** It returned `true` unconditionally (every Operations user is internal staff) but was written in the shape of a permission check, so **nine** callsites read `if (!isInternal(user)) throw new ForbiddenException('Only Super Admin can manage users')` and every one was dead code. The consequence was a live privilege-escalation path: `role-admin` holds `users:EDIT`, and `GET /users` hands out every account's `roleId` + role slug, so an admin could `PATCH /users/<self>` with the super-admin `roleId`, or `POST /users/<owner>/change-password` (no current-password proof, and it revokes the victim's sessions), and re-login as a super-admin — which short-circuits to `can('manage','all')` and unlocks everything, including `roles:*`, which is granted to **no role at all** (`copilot:*` was the other such module until the Copilot module was removed 2026-09-14, §8 "Removed domains"). `UsersService.assertMayTargetUser()` now refuses any operation aimed at a super-admin unless the caller is one (a TARGET check — an admin resetting a recruiter's password is the point of `users:EDIT`), `update()` additionally refuses a `roleId` resolving to super-admin and refuses **any** self-role change, and `disableTwoFactor`'s force path was gated on `isSuperAdmin` (it had been reachable by every authenticated user, recruiters included — latent only because nobody had 2FA on yet). **W4 split that last one in two**, because the two halves are different kinds of rule: the CAPABILITY is `users:EDIT` — the grant that already resets a password, which is the other half of taking an account — and the TARGET rule stays an identity check, since no cell can express "…but not the owner's account". `admin` therefore gained force-disable on non-super-admin targets, which is consistent with the password reset it already had. **A guard that cannot fail is worse than no guard, because it reads like one in review.**
+ - **Never write `include: { <a User or HrmPerson relation>: true }` (2026-08-19 audit).** A bare Prisma `include` on a relation returns EVERY column of that model. Eight detail (`findOne`) reads in `hrm/lifecycle.service.ts` did this while their list siblings all used explicit `select`s — so `GET /hrm/documents/:id` returned the uploader's `passwordHash`, `twoFactorSecret` and backup codes, plus the employee's national ID, passport, tax ID, bank account and IBAN, behind nothing more than `hrm:VIEW`. Confirmed live: every production document was uploaded by a super-admin, so a super-admin's bcrypt hash was in the response. Use the `SAFE_USER_SELECT` / `SAFE_PERSON_SELECT` constants at the top of that file. A repo-wide sweep found no other offender — keep it that way.
+ - **Multi-role (2026-08-20): a user has ONE primary role plus any number of ADDITIONAL roles.** `User.roleId` is unchanged and still means "the role" — it rides in the JWT as `roleSlug`, drives the super-admin bypass, and is what every pre-existing read means. `user_additional_roles` layers extra roles on top, and effective permissions are the **union**; where two roles grant the same `(module, action)` at different scopes the **widest** wins (`ScopeFilterService` already reduced over `SCOPE_STRENGTH`, so widening its query was enough). Deliberately additive: a database with no rows in that table behaves exactly as before.
+   **`UserRolesService.roleIdsFor()` is the single resolver, and FOUR readers must all go through it** — `CaslAbilityFactory.createForUser` (the actual gate), `PermissionsService.getMyPermissions` (drives `<Can>` and the module nav), `PermissionsService.effectivePermissions` (the user-detail matrix), and `ScopeFilterService` (row-level scope). Miss one and the halves disagree: the UI hides what the backend allows, or worse the reverse. A fifth reader of `user.roleId` goes through it too.
+   **`super-admin` may never be an additional role.** The bypass reads the JWT's *primary* `roleSlug`, so it would grant nothing while looking like it granted everything — and would become a silent escalation route past the `roles:*` / `users:CREATE` boundary if the bypass were ever widened. `UserRolesService` refuses it, `assertMayTargetUser` still guards the target, and `PUT /users/:id/additional-roles` is `users:EDIT`-gated. Caching: per-role permission sets stay keyed by `roleId` (so changing a role still invalidates for everyone holding it); the per-user additional-role list is a separate `user-roles:<userId>` key, busted on write.
+   **Changing the PRIMARY role reconciles the additional roles, and `setAdditionalRoles` DROPS the primary role rather than refusing the write (fixed 2026-08-26).** The invariant is "a user's additional roles never include their primary role". `UserRolesService.setAdditionalRoles()` enforced it by throwing `400 That is already this user's primary role`, but nothing enforced it on the *other* write path: `PATCH /users/:id` could move a user INTO a role they already held as an extra and left the row behind. That is precisely what happened to Sana Nasir (`marketing-specialist` granted as an extra on 2026-08-20, made her primary role on 2026-08-26), and it bricked the account — the user-detail page seeds its checkbox state from `GET /users/:id/additional-roles` while **hiding the primary role from the rendered checkboxes**, so the stale id rode along in every payload with no way to untick it and every "Save additional roles" 400'd forever. The operator saw only "it will not save". Two changes, both needed: (1) `UsersService.update()` deletes any `user_additional_roles` row for the incoming primary role **in the same transaction as the role change**, then busts `user-roles:<userId>`; (2) `setAdditionalRoles()` filters the primary role out of the payload instead of throwing — correct SET semantics (the endpoint takes the roles held *in addition to* the primary one, so the primary is by definition not among them), and it makes the endpoint self-healing for rows that predate the fix. The refusals for **super-admin, inactive and unknown** roles stay hard errors: those are requests that cannot be honoured, not requests that are already satisfied. **General lesson: enforcing an invariant with a hard rejection only works if every path that can break it is closed — otherwise the guard stops punishing the writer who broke it and starts punishing whoever touches the record next.**
+ 
+   **The additional-roles payload is anchored on the PERSISTED primary role, never on the edit form's dropdown (2026-08-26, caught in review of the fix above).** The first cut of the fix derived the payload as `extraRoleIds.filter(id => id !== editData.roleId)` — and `editData.roleId` is the unsaved Primary-role `<select>` draft, while "Save additional roles" is a *separate* button that posts immediately. Because `PUT /users/:id/additional-roles` is a **SET** (`deleteMany` with `notIn: wanted`), any id the client omits is DELETED. So merely changing the dropdown — without saving the profile — would strip that role from the payload and the server would silently delete a real grant, then show a success toast; the server's own filter cannot compensate, because it compares against the primary role it still has. It now anchors on `userData.data.roleId` (the persisted value) and the checkbox list filters by the same value, so the payload and the screen cannot disagree. The seeding `useEffect` was also deleted: state now holds only the *pending edit* (`extraRolesDraft`, `null` = "show the server's answer"), which is what stops a refetch from clobbering unsaved ticks. **General lesson: when an endpoint replaces a set, never derive its payload from unsaved form state — an omission is a deletion, and a half-edited form becomes a silent revocation.**
+ - **Anything that asks "does this user hold role X?" must read the PRIMARY role AND the active ADDITIONAL roles (2026-08-31).** `UserRolesService.roleIdsFor()` returns primary + additional and is what CASL, `PermissionsService` and `ScopeFilterService` all resolve through — its own doc comment warns that a fifth reader of `user.roleId` has to go through it too. `AssigneeEligibilityService` was that fifth reader and did not: it matched `roleId: { in: eligibleRoleIds }`, i.e. the primary column only. Nisanur Karaman was given `internal-recruiter` as an **additional** role on a `sales-manager` primary (2026-08-26), so she genuinely held `internal-recruitment:EDIT` and could open and work every IR screen — and was still absent from **Assign to recruiter**, with nothing on screen to explain it. Both methods now match primary-or-active-additional (`holdsAnyOf()`), and `assertEligible()` checks the same union, so the picker and the write path cannot disagree. **General lesson: a permission model with two sources of role membership grows a silent half-state the moment one reader consults only the first — the user can DO the work but cannot be GIVEN it, and neither screen shows an error.** The same omission was then swept out of every recipient resolver on 2026-08-31: `NotificationsService.notifyModuleViewers()` (21 call sites), `EventDispatcher.getApprovers()` and `getOfferLetterOwnerSigners()`, and `ProjectRecipientsService.approverIds()` all now use the shared `holdsModuleGrant(module, action)` fragment from `common/utils/role-helpers.ts` (with `holdsAnyRole(roleIds)` beside it for the id-list case). **`EventDispatcher.getSuperAdmins()` was deliberately LEFT primary-only**, as is every `userRole: { slug: 'super-admin' }` arm inside the shared fragment: `setAdditionalRoles()` refuses super-admin, so an additional-role arm there could only ever match zero rows while reading, to the next person, as licence to widen the bypass itself. `offer-letters:SIGN_AS_OWNER` was weighed separately rather than waved through for consistency — prod holds **zero** `offer-letters` grant rows of any action, so widening delegates nothing and cannot resurrect the 2026-08-05 `admin` revocation; what it fixes is the reverse failure, since all six SIGN_AS_OWNER routes already union additional roles via CASL and a narrow resolver would let someone open the signature queue and sign while never being told there was anything to sign. The staff pickers used to carry an `investor` role EXCLUSION (`task.service.ts`, `campaign.service.ts`, `project-members.service.ts`), documented here as correct at primary-only and never to be unioned — negating a union flips "holds X" into "holds none of them", which removes staff from a picker rather than admitting anyone. The filters went with the role on 2026-09-14 (§8 "Removed domains"); **the rule stands for any future negative role filter.** Measured blast radius on the day: **zero** users changed notification status, because no additional role in prod currently grants `hrm:VIEW`, `settings:VIEW`, `internal-recruitment:APPROVE`, `projects:APPROVE` or `offer-letters:SIGN_AS_OWNER` — this is a latent-correctness fix that closes the hole before it bites. Shape is pinned by `common/utils/role-helpers.spec.ts`, including an explicit test that the super-admin arm stays primary-only.
+ - **The roles/users grant boundary is now enforced in the DATABASE, not just the seed matrix (2026-08-19 audit).** The rule — no role except super-admin may hold `roles:*`, `users:CREATE` or `users:DELETE`, because either lets a role mint or remove a super-admin — was honoured by `seed.ts` but never enforced against roles created through the **Roles UI**. Prod had a violator: a CUSTOM role `field-agent-legacy-cmqf5e`, displayed as *"Field Agent (legacy cmqf5e) — executes assigned project & physical-meeting tasks (no approve/delete)"*, actually carried `roles:{V,C,E,D}` + `users:{V,C,E,D}` + `settings` full + `hrm`/`investments`/`internal-recruitment` full at scope ALL — **12 admin-tier grants, more than `role-admin` itself has (8)**. Its only holder was an inactive QA account, so it was not live-exploitable, but the *label* was the real hazard: anyone assigning it from the Roles UI would read "field agent, no approve/delete" and be handing out super-admin minting rights. Migration `20260819160000_enforce_role_user_grant_boundary` deletes every `roles` grant and every `users` CREATE/DELETE grant unconditionally (super-admin needs no rows — it bypasses CASL), and `20260819170000_narrow_legacy_field_agent_role` then reset that role to mirror the seeded `role-field-agent` (owner decision: `projects` V/C/E @ ASSIGNED_TO_ME + `communications` V/C/E + `notifications` VIEW — 73 grants deleted, 7 inserted), so its existing description is finally accurate and it is safe to assign. **When auditing permissions, read `role_permissions` in the database, not just `ROLE_PERMISSION_MATRIX` — runtime-created roles never appear in the seed, and this one carried more admin-tier grants than `role-admin` while being labelled a field agent.**
+-- **Built-in role DEFAULTS are versioned; the Roles UI is the truth (2026-09-15, owner decision D1 — W0 of the permission programme).** `scripts/deploy-vps.sh` step [6] runs `prisma db seed` with `FORCE_SEED_PROD=yes` on **every** deploy, and the seed's per-row upsert forced `allowed: true` in its UPDATE branch — so every grant an operator unticked in `/admin/roles` came back within two minutes of the next push, silently, and the same loop rewrote each built-in role's `description`. The seed no longer decides: `Role.defaultsVersion` (migration `20260922100000_role_defaults_version`, SYSTEM roles stamped to 1 because prod already holds the version-1 matrix) records how much of `prisma/role-defaults.ts` a role has been given, and the seed applies only entries whose `since` exceeds it, **create-if-missing — the upsert's UPDATE branch is deliberately empty**, then stamps `ROLE_DEFAULTS_VERSION`. `description` left the role upsert's `update` for the same reason. Editing rules live in that file's header: **adding** a grant needs `since: ROLE_DEFAULTS_VERSION + 1` plus a bump of the constant; **removing** one still needs a paired migration (the seed only ever creates — the `internal-recruiter` projects revocation, `20260819141000`, is the precedent); **changing** an existing entry's scope or action list changes nothing on an existing install, so edit it in the UI or write a migration. `SEED_RESET_ROLE_DEFAULTS=true` wipes and re-creates each matrix role's grants for deterministic e2e fixtures — mapped in `docker-compose.yml` only, and a spec asserts it is absent from `docker-compose.vps.yml` (which passes env by an explicit `environment:` list). `defaultsVersion` stays 0 on the three CUSTOM roles and means nothing there. **A one-file invariant spec** (`test/permissions/role-defaults.unit.spec.ts`) pins version == max(`since`), no duplicate cell per role, no boundary cell, and no unknown action string — the four mistakes that would otherwise only surface on a production deploy.
++- **Built-in role DEFAULTS are versioned; the Roles UI is the truth (2026-09-15, owner decision D1 — W0 of the permission programme).** `scripts/deploy-vps.sh` step [6] runs `prisma db seed` with `FORCE_SEED_PROD=yes` on **every** deploy, and the seed's per-row upsert forced `allowed: true` in its UPDATE branch — so every grant an operator unticked in `/admin/roles` came back within two minutes of the next push, silently, and the same loop rewrote each built-in role's `description`. The seed no longer decides: `Role.defaultsVersion` (migration `20260922100000_role_defaults_version`, SYSTEM roles stamped to 1 because prod already holds the version-1 matrix) records how much of `prisma/role-defaults.ts` a role has been given, and the seed applies only entries whose `since` exceeds it, **create-if-missing — the upsert's UPDATE branch is deliberately empty**, then stamps `ROLE_DEFAULTS_VERSION`. `description` left the role upsert's `update` for the same reason. Editing rules live in that file's header: **adding** a grant needs `since: ROLE_DEFAULTS_VERSION + 1` plus a bump of the constant; **removing** one still needs a paired migration (the seed only ever creates — the `internal-recruiter` projects revocation, `20260819141000`, is the precedent); **changing** an existing entry's scope or action list changes nothing on an existing install, so edit it in the UI or write a migration. `SEED_RESET_ROLE_DEFAULTS=true` wipes and re-creates each matrix role's grants for deterministic e2e fixtures — mapped in `docker-compose.yml` only, and a spec asserts it is absent from `docker-compose.vps.yml` (which passes env by an explicit `environment:` list). `defaultsVersion` stays 0 on the three CUSTOM roles and means nothing there. **A one-file invariant spec** (`test/permissions/role-defaults.unit.spec.ts`) pins version == max(`since`), no duplicate cell per role, no boundary cell, and no unknown action string — the four mistakes that would otherwise only surface on a production deploy. **Version 3 (WP3a, 2026-09-19)** added the website module's rows — `admin` `website` V/C/E/D/EXPORT, `marketing-manager` six CMS resource rows, `sales-manager`/`sales-executive`/`sales-agent` `website.forms` VIEW — the first resource-key rows the matrix carries (`website-inheritance.unit.spec.ts`).
+ - **Built-in (SYSTEM) roles cannot be renamed or deactivated (2026-09-15).** `RolesService.update` refused only the `super-admin` slug, so the other eleven were editable through the Roles UI — futilely, since the seed resets `name`/`slug`/`type`/`isActive` by fixed id on every deploy, but expensively: a rename could trip the seed's squatter-rename block into relabelling whichever OTHER row held the canonical name, and a deactivation now genuinely revokes every holder's permissions (see the deactivation gotcha below) and is then silently reverted — an access outage that heals itself and leaves nothing to look at. `description` stays editable in both halves (it is what the Roles pencil is for, and the seed no longer overwrites it). The detail page disables the name field for a SYSTEM role and omits `name` from the payload.
+ - **A deactivated role now actually revokes permission (2026-09-15).** `Role.isActive` shipped with the Roles UI, is displayed in the roles list, and is refused by `setAdditionalRoles` — but **nothing on the enforcement path read it**. `UserRolesService.roleIdsFor()` filtered inactive ADDITIONAL roles; the PRIMARY role was never checked anywhere, so deactivating a role did nothing at all for the people who actually held it while looking in the UI like a revocation. It is decided once, in `CaslAbilityFactory.getPermissionsForRole` — an inactive (or missing) role yields no rules, and the empty answer is cached like any other — and every other read of a user's grants carries `role: { isActive: true }` **on the query, not on the id list**, so the primary and additional arms are covered by one clause: `PermissionsService.getMyPermissions` / `getEffectivePermissions`, `ScopeFilterService.resolveScope` / `assertAnyGrant` / `strongestScope`, `ProjectAccessService.hasWorkBypass`, and `holdsModuleGrant`'s PRIMARY arm (the additional arm always had it; the asymmetry kept a deactivated role's holders in every recipient resolver — notified about work the guard would then refuse them). The super-admin arm stays primary-only. **Both caches are busted when `isActive` flips**: `permissions:{roleId}` and each additional-role holder's `user-roles:{userId}` key (`UserRolesService.invalidateHoldersOf`) — without the second the revocation lands up to five minutes late, long enough for the operator to conclude it did not work.
+ - **`POST /users` refuses a super-admin or inactive destination role (2026-09-15).** `update()` has carried the DESTINATION guard since the 2026-08-19 audit; `create()` never had it, so the shorter version of the same escalation — mint the account directly in the super-admin role, then log in as it — was open to any holder of `users:CREATE`. Only a super-admin holds that grant today, which is exactly why the guard matters: the boundary has to survive the grant being handed out by mistake. Both doors also refuse an inactive role now, since moving a user into one produces a login that sees the shell and nothing else with no error to explain it.
+ - **`internal-recruiter` holds NO `projects` grant (revoked 2026-08-19, owner decision).** It had been seeded `projects` V/C/E @ ALL, which put the whole Projects & Tasks module on a recruiter's icon rail and gave them write access to the shared company/contact directory — while nothing in the recruitment workflow reads or writes projects. Revoked in the seed matrix **plus** migration `20260819141000_revoke_recruiter_projects` (the per-row-upsert seed never deletes out-of-matrix grants). If a recruiter ever needs field work, give them the `field-agent` role as well rather than widening this one.
+ - **Historical (superseded 2026-09-14 — the Reports module itself was removed, §8 "Removed domains"): `reports:VIEW` is permission to open the Reports surface, NOT permission to read every domain's numbers (tightened 2026-08-19).** `/reports/*` was one controller serving several modules, and gating it on `reports:VIEW` alone meant `internal-recruiter`, `marketing-manager`, `sales-manager` and `training-coordinator` — none of whom hold `hrm:VIEW` — could read the company's monthly **payroll totals**. Endpoints returning another module's data now require that module's VIEW **as well**, via the new `@RequirePermissions(...)` (AND semantics; `CaslAbilityGuard` normalises single-object and array metadata, +6 tests): `payroll-trends` and `employee-retention` need `hrm:VIEW`; `project-performance`, `agent-performance`, `meeting-statistics`, `expense-analytics`, `physical-meeting-completion` and `campaign-roi` need `projects:VIEW`. `overview` (counts only) and the sales/training/recruitment reports stay on `reports:VIEW`. Gating on the owning module *instead of* `reports:VIEW` would have gone the other way and exposed spend data to `field-agent`/`sales-agent`, so both grants are required — don't "simplify" it back to one.
+ - **Recruitment-platforms is admin-config-only; `internal-recruiter` holds VIEW + `REVEAL_CREDENTIALS` only (2026-05-30).** A recruiter reads the shared LinkedIn/Indeed passwords to log in (fully audited) but cannot CREATE/EDIT/DELETE platform accounts — a single mis-edit of the shared account silently breaks every recruiter's posting flow. The narrowing was the seed matrix **plus** migration `20260530130000_narrow_recruiter_platform_perms` (the per-row-upsert seed never deletes out-of-matrix grants).
+ - **Don't grant `market-research:APPROVE`/`DELETE` to `internal-recruiter`**, and keep the form-builder APPROVE-gated — mirrors the JD/hire approval split.
+ - **`projects:APPROVE` is admin-only** (super via CASL) — the single-approver rule for travel/expense money and budget/closure requests; don't grant it to ops managers or field roles.
+ - **İŞKUR employer profile + credentials are gated on `settings:EDIT`, NOT `iskur-postings`** — recruiters hold `iskur-postings:EDIT` to prepare drafts but must never reach the shared government login. Same pattern as IR Email Settings (`settings:EDIT`).
+ - The five manager roles all hold `projects` V/C/E @ ALL (they run projects); the three field roles hold it @ `ASSIGNED_TO_ME`. The `communications` V/C/E grant on the field roles is load-bearing: the physical-meeting completion gate needs `communications:EDIT` to resolve a follow-up — grant it to any future field role.
+@@ -474,21 +474,21 @@ Before W1 the question "what may this user do" was answered by **four independen
+ | `user-roles:{userId}` | `{ primary, extra }` role ids | additional-role edit, primary-role change, `invalidateHoldersOf` on an `isActive` flip |
+ 
+ The role-id hash is **in** the effective key, not beside it, so a role change landing between two requests cannot be served from a set built for the old role list. TTL is `min(300, seconds to the nearest override expiry)` — otherwise a one-hour revocation could outlive itself by five minutes, long enough for the operator to conclude it did not work. `invalidateRole` busts the role's grants **and** every holder's set, primary and additional: busting only the first is the same failure the W0 `isActive` fix had to close in two caches rather than one.
+ 
+ **`permissions.changed`** is emitted over the notifications socket (`NotificationsGateway.sendToUser`) on role permission edits and resets (every holder), `isActive` flips, additional-role edits, primary-role changes, override writes and the nightly expiry sweep. The caches are the FLOOR of propagation, not the ceiling: a holder's BROWSER has its own copy of `/permissions/me` driving `<Can>` and the nav, and nothing refetches it — so without the emit, an operator who revoked a grant watched the user keep the menu item until they reloaded, and the 403 when they clicked it was the first sign anything had happened. `PermissionChangeNotifier` resolves the gateway through `ModuleRef` at call time (PermissionsModule is @Global and owns `PermissionRegistry`, which NotificationsModule injects — importing Notifications from Permissions would be a real module cycle) and swallows every failure: a permission change is a database fact, the socket is a courtesy, and a down socket server must never roll back a role edit.
+ 
+ **Boot-time conformance.** `PermissionConformanceService` enumerates every controller handler at startup and **fails the container** on a decorator naming an unregistered key, an action the key does not support, or no annotation at all. The first two used to surface as a 403 someone eventually reported — `communications:DELETE` was a real, seeded, ENFORCED grant the registry did not advertise, so it had no column in the roles matrix and nobody could revoke it (registered in the same change set that added this check). It also counts the four rungs and serves them at **`GET /permissions/conformance`** (`roles:VIEW`): at W1, **decorated 840 · public 50 · self-service 3 · undecorated 79**; **from the end of W3, decorated 841 · public 58 · self-service 73 · undecorated 0**, and the census is now a FLOOR as well as a ceiling.
+ 
+ **An undecorated route is a BOOT ERROR, regardless of `PERMISSIONS_STRICT`, and W4 made it a request-time refusal too.** The census reached zero when the last 66 routes took `@SelfService()` and `GET /admin/queues` took `settings.queues:VIEW`, so "no decorator" is not a migration backlog — it is a route whose author did not say what it is. The guard's warn-and-allow branch (and the warn-once Set that kept a hot undecorated endpoint from drowning the log) was DELETED in W4: it could not execute in a container that had started, which made it dead code that read like a rollout switch — the worst combination, because the next person would trust it. `repo-invariants.spec.ts` is the same answer minutes earlier and NAMES the route. (Its source-scan twin also gained a fix in W3: a class decorator sitting ABOVE `@Controller` — `@Public()` on the İŞKUR and Indeed agent controllers — used to be dropped, so eight token-guarded machine routes were reported as ungated. The boot scan never saw that, because it reads metadata rather than line order.)
+ 
+-**Typed keys — one vocabulary, asserted at boot (W2).** `packages/permissions/src/keys.catalog.ts` exports `PERMISSION_KEYS` (every grantable key, sorted — 22 modules + 53 resources = **75** at the end of W3 — Marketing 9, Projects 8, Sales 6, HRM 6, IR 5, WhatsApp 4, Call Center 4, Settings 4, Admira 3, Market Research 2, Academy 2) and the `PermissionKey` union both halves type against. `keys.ts` is the GRAMMAR (what shape a key may take, and it must keep parsing whatever the database hands it); this is the VOCABULARY (which keys exist), and a typo cannot join it. The frontend types `<Can module>`, `SubRailItem.permission.module`, `ModuleEntry.permission.module` and the route manifest as `PermissionKey`, so `module="marketting"` is a **compile** error where it used to render nothing and look exactly like a missing grant. `PermissionConformanceService` diffs `registry.keys()` against the list at boot and **fails the container** on drift in either direction, naming the missing and the extra keys; `repo-invariants.spec.ts` is the CI-cheap twin. `PERMISSION_KEYS_HASH` is **checked in rather than computed** — the package ships to the browser bundle, where `require('crypto')` is a polyfill nobody asked for — so `GET /permissions/catalog` takes the digest, the invariant spec asserts the constant still matches, and `permissionsApi.getCatalog()` warns once in the console when a tab's bundle is behind the server's.
++**Typed keys — one vocabulary, asserted at boot (W2).** `packages/permissions/src/keys.catalog.ts` exports `PERMISSION_KEYS` (every grantable key, sorted — 23 modules + 62 resources = **85** since the website module (WP3a, 2026-09-19; 75 at the end of W3) — Marketing 9, Website 9, Projects 8, Sales 6, HRM 6, IR 5, WhatsApp 4, Call Center 4, Settings 4, Admira 3, Market Research 2, Academy 2) and the `PermissionKey` union both halves type against. `keys.ts` is the GRAMMAR (what shape a key may take, and it must keep parsing whatever the database hands it); this is the VOCABULARY (which keys exist), and a typo cannot join it. The frontend types `<Can module>`, `SubRailItem.permission.module`, `ModuleEntry.permission.module` and the route manifest as `PermissionKey`, so `module="marketting"` is a **compile** error where it used to render nothing and look exactly like a missing grant. `PermissionConformanceService` diffs `registry.keys()` against the list at boot and **fails the container** on drift in either direction, naming the missing and the extra keys; `repo-invariants.spec.ts` is the CI-cheap twin. `PERMISSION_KEYS_HASH` is **checked in rather than computed** — the package ships to the browser bundle, where `require('crypto')` is a polyfill nobody asked for — so `GET /permissions/catalog` takes the digest, the invariant spec asserts the constant still matches, and `permissionsApi.getCatalog()` warns once in the console when a tab's bundle is behind the server's.
+ 
+ **The BROWSER runs the resolver (W2).** `usePermissions()` fetches `GET /permissions/me/effective` — the resolver's INPUTS, not its answers — and resolves them with `resolveEffective` from `@jobsadmire/permissions`, the same function the guard runs. It used to read the flat `/permissions/me` list and answer with `.some()`, which has nowhere to put PRECEDENCE: a resource carve-out and a per-user DENY override are both statements about the ladder, so the screen would have gone on drawing a button the server had already decided to refuse. Shipping resolved cells instead would have meant a second implementation of the ladder in the API, which is the drift W1 spent itself removing. The hook returns `{ can, canAny, scopeOf, isLoading, isSuperAdmin, effective }`, and the three `roleSlug === 'super-admin'` compares it carried are **gone** — the flag comes off the wire through the resolver's own bypass branch. No `transpilePackages` was needed: the tsconfig path resolves the package exactly as `@jobsadmire/constants` already does (verified with a real `next build`).
+ 
+ **The browser's copy is a CACHE, and `PermissionsRefreshBridge` invalidates it.** Mounted once in `admin/layout.tsx` inside `SocketProvider`; it subscribes to `permissions.changed` and watches a `tokenVersion` counter the auth store bumps on every `setTokens` (a refreshed access token carries a freshly compiled claim set, so it is the one moment a change lands even when the socket is down). The third path is the admin screens, which invalidate `['permissions','me']` after saving role permissions, a reset, additional roles, a primary-role change or an override — a courtesy for the operator's OWN tab, which is the one the socket cannot reach because it is the tab that made the change.
+ 
+ **`PERMISSIONS_STRICT` is ON, and it now GATES NOTHING (W4, 2026-09-15).** `'true'` in `docker-compose.yml`, and mapped in `docker-compose.vps.yml` as `${PERMISSIONS_STRICT:-true}` — that compose passes env by an EXPLICIT list, so a line in the production `.env` reached nothing at all until this wave. What it does today is DECLARE the mode: it is logged at boot in both directions and returned as `strict` by `GET /permissions/conformance`. What it does NOT do is gate anything — an undecorated route fails boot (W3) and is refused by `PermissionsGuard` (W4) whatever its value. **Setting it `false` is therefore not a break-glass that re-opens a route**; the remedy for a route that forgot its decorator is to add the decorator, and the container will not start until you do. Note the asymmetry with `PERMISSION_SCOPE_ENFORCEMENT`, which is ON unless it literally reads `'false'`: this one is read as `=== 'true'`, so a typo leaves the report saying "not strict" rather than silently loosening anything.
+ 
+ **`@SelfService()`** marks a route as available to any authenticated user. It exists because "no decorator" meant both "deliberately open to everyone" and "nobody has gated this yet", and nothing in code or review could tell them apart. **73 routes carry it at the end of W3**: the employee's own attendance, leave, overtime, freelancer work, intern shifts, payslips, bonuses, bank-change requests and HRM profile; the trainee's whole academy (`sales-training/me/**`); own 2FA and logout; own user record and notification preferences; own notifications and browser-push subscriptions; the own-workspace dashboard and the activity timeline (which resolves the CONTEXT's module in the body, because the required key depends on the query string); `GET /permissions/catalog` (labels and the key hash, no secrets); and the two W0/W1 markers. Each module's descriptor lists its own in `selfServiceRoutes`, so the Roles screen can answer "why can everyone reach that?" on screen.
+ 
+ **Scope resolves at the KEY the route is gated on (W3).** `ScopeFilterService.resolve` / `resolveEnforced` / `strongestScope` take ANY key — module or resource — and every call site passes the key its route carries (`sales.leads`, `projects.tasks`, `whatsapp.inbox`, `internal-recruitment.applicants`, …); call sites behind module-keyed routes keep the module key. The GRANT is read at that exact key through `check`, which falls back to the parent module row when the resource carries none — so a module-only grant still scopes every screen, and a role built from resource rows alone now gets its own scope instead of failing closed. The scope BINDINGS are looked up on `moduleOf(key)`, because a resource is a slice of the same Prisma entities. **Never `checkAny` here**: a holder of `sales.proposals:VIEW @ ALL` and `sales.leads:VIEW @ ASSIGNED_TO_ME` must get ASSIGNED_TO_ME on leads. `assertAnyGrant` keeps `checkAny` — it asks "may this caller touch the module at all", and the per-record narrowing is what protects the rows. `WaSettingsScopeGuard` keeps asking at the MODULE key (via `moduleOf`): its rule is module-wide by design. `repo-invariants.spec.ts` lists every call site with its key, so a route that changes key without its service fails by name.
+@@ -4901,21 +4901,21 @@ This section is the **historical record plus the honest open backlog**. Numbers
+ - **AI retention arming** — the retention sweep runs dry-run; `AI_RETENTION_PURGE_LIVE=true` gets set on the VPS only after Faraz reviews a dry-run report.
+ - **CV virus scanning** — public uploads enforce MIME + size only; add clamav (or similar) before high-traffic promotion.
+ - **Operator env checks** — confirm `TURNSTILE_SECRET_KEY` (unset = captcha bypassed with a WARN) and `CRM_API_SERVICE_TOKEN` (unset = lead conversion 503s) are provisioned in prod.
+ - **Marketing Studio Meta credentials** — the Meta system-user token and App Secret transited chat once during P0 platform setup (`docs/archive/marketing-studio/P0-PLATFORM-SETUP.md`). Regenerate both in Business Settings and update them only via Marketing → Settings → Integrations; not yet done as of this docs pass.
+ 
+ **Permission programme — W0–W4 are DONE (2026-09-15). What is left is one flag and one habit.**
+ 
+ The programme closed with W4: strict mode declared, the last hard-coded authorization replaced by grants, the rules that are NOT permissions declared on their modules, the 13 phantom grant rows purged, and §4 rewritten as the final state. The census is `undecorated 0`, the unmapped-page list is empty, `PERMISSION_KEYS` is 75 and asserted against the registry at boot. What remains:
+ 
+ - **`PERMISSION_SCOPE_ENFORCEMENT` app-wide rollout** — the one genuinely open item, and it is a SEPARATE topic from the permission engine (see Security above and `docs/scope-enforcement-audit.md`). The flag is off in prod; scoped roles are protected by the `resolveEnforced()` call sites in projects, sales and whatsapp, each of which now asks at the key its ROUTE is gated on. Flipping it is a QA-heavy rollout, and the 2026-08-10 assessment still stands: enabling it today is a verified no-op, so **fix call sites, not the flag**. Afterwards the `resolveEnforced()` calls can revert to `resolve()`.
+-- **Catalog labels for FUTURE keys.** Module and resource labels ship from the registry; the Roles/Users screens prefer a translated `permissions.keys.*` label and fall back to the registry's (owner ruling, 2026-09-15). All 75 current keys have en + tr, so this is only about the next one added.
++- **Catalog labels for FUTURE keys.** Module and resource labels ship from the registry; the Roles/Users screens prefer a translated `permissions.keys.*` label and fall back to the registry's (owner ruling, 2026-09-15). All 85 current keys have en + tr, so this is only about the next one added.
+ - **The habits, which are the actual deliverable.** A new route says which it is or the container will not start. A new admin page gets a manifest line or nobody can open it. A new key goes in the registry AND `keys.catalog.ts`. A new capability is a grant, not a slug check — `repo-invariants.spec.ts` will say so. A rule that is genuinely not a permission gets a `policies` descriptor naming the file that enforces it. A grant REMOVED from the matrix still needs a paired migration; the seed only ever creates.
+ - **Nothing narrowed in W0–W3, and W4 only widened.** Every grant in production is a depth-0 row and the resolver hands it down, proved per module in `test/permissions/*-inheritance.unit.spec.ts` over the real seeded matrix. W4's grant swaps gave `admin` the queue page and the 2FA force-disable on non-super-admin targets, `hrm-admin` the leave cancel it could already approve, and every holder of an ALL-scope `<module>:VIEW` the dashboard agenda column their own module page already showed them — no user lost a registered capability. The screen keys start subtracting only when an operator writes a depth-1 row, which is the act that should be visible on the Roles screen.
+ 
+ **Platform / infra**
+ 
+ - **GitHub Actions billing** — org-wide suspension stands; the cron poller is the deploy path until the bill is paid. Real CI gating (tests before deploy) returns only then.
+ - ~~`invoice` Bull queue~~ — audited and deleted 2026-08-05 (no processor, no producer).
+ - **Fork-relic cleanup** — `GoogleOAuthConnection` model + per-user `google/auth` endpoints; orphan `LanguagePreference` Postgres type. (`employer-sidebar.tsx` / `sourcing-sidebar.tsx` — DONE, files no longer exist on this branch.)
+ - **Enum cleanups** (each gated on a prod `SELECT DISTINCT` confirming zero references): ~~legacy `InternalApplicantStage` values (`SELECTED_FOR_TRAINING` … `ACTIVE`)~~ **DONE 2026-09-14** with the Training LMS removal (migration `20260921103000_remove_legacy_training`, WP4, §8 "Enum notes"); CRM-era `NotificationType` values remain. Two more values need a future enum-rebuild migration to actually drop (Postgres can't drop in place, so both are dead-but-harmless until then): `ActivityType.OPENING_PUBLIC_LISTING_TOGGLED` (never emitted — its only callers were removed in cleanup WP6a, §12.2) — **never** drop `AuditAction.IMPERSONATE_START`/`IMPERSONATE_STOP`, though: impersonation itself is gone (§4.7), but prod `audit_log` rows already carry those values and must stay resolvable.
+ 
+diff --git a/packages/permissions/src/keys.catalog.ts b/packages/permissions/src/keys.catalog.ts
+index 4d1a8e1..3c36a5c 100644
+--- a/packages/permissions/src/keys.catalog.ts
++++ b/packages/permissions/src/keys.catalog.ts
+@@ -131,20 +131,35 @@ export const PERMISSION_KEYS = [
+   // W3 — three OTHER modules gate an admin page on `settings:EDIT` (HRM bank
+   // changes, the IR careers mail transport, the İŞKUR employer profile) and all
+   // three stay on the MODULE key: the rule is "an admin", not "this module's
+   // administrator". `/admin/settings` itself stays self-service.
+   'settings.company',
+   'settings.integrations',
+   'settings.queues',
+   'settings.reference',
+   'travel-expenses',
+   'users',
++  // Website module (WP3a, 2026-09-19 — PRD §5.12). All ten keys registered on
++  // day one, ruling P3: two screens ship in WP3a (forms inbox, integrations),
++  // seven arrive with the Phase B CMS. `website` sorts after `users` and before
++  // `whatsapp` ('e' < 'h'); the resources follow it directly, no hyphenated
++  // sibling module to trip the '-' before '.' rule.
++  'website',
++  'website.blog',
++  'website.collections',
++  'website.forms',
++  'website.integrations',
++  'website.media',
++  'website.navigation',
++  'website.pages',
++  'website.settings',
++  'website.strings',
+   'whatsapp',
+   // `whatsapp-automations` and `whatsapp-templates` sort BEFORE `whatsapp.*`:
+   // '-' (0x2D) precedes '.' (0x2E), the same trap as `sales-training`.
+   'whatsapp-automations',
+   'whatsapp-templates',
+   // W3 — the widest SHARED-READ surface in the app, and that decided the shape.
+   // `whatsapp/me`, the conversation reads (embedded on five other modules'
+   // pages), `messages/by-applicant`, and the label / quick-reply / team / number
+   // PICKERS all stay on the module key, as do MANAGE_KEYS and MANAGE_CAMPAIGNS.
+   'whatsapp.campaigns',
+@@ -163,21 +178,21 @@ export type PermissionKey = (typeof PERMISSION_KEYS)[number];
+  * browser bundle, and `require('crypto')` there is either a polyfill nobody
+  * asked for or a build error — so the one place the digest is taken is
+  * `GET /permissions/catalog` (Node), and `test/permissions/keys-catalog.spec.ts`
+  * asserts the constant still matches. Forgetting to update it after adding a
+  * key is therefore a red test, not a silent divergence.
+  *
+  * The hook compares this against the catalog's `keysHash` to notice that the
+  * browser is holding a stale bundle: a client resolving against yesterday's key
+  * list answers confidently and wrongly about a key it has never heard of.
+  */
+-export const PERMISSION_KEYS_HASH = 'f03cde11c29d49b07d9210646d400898cbce89d0';
++export const PERMISSION_KEYS_HASH = 'ba5427d7b0688c2b783cd58f3a21d384878363a4';
+ 
+ /**
+  * The resource keys declared under one module, in catalog order.
+  *
+  * Derived rather than listed a second time — a hand-kept per-module list is
+  * exactly the kind of copy that drifts. Callers that need "the whole module,
+  * resources included" use this: `holdsModuleGrant('marketing', VIEW, {
+  * descendants: resourceKeysOf('marketing') })` keeps a resource-only holder in
+  * the recipient list they would otherwise silently drop out of.
+  */
+diff --git a/packages/permissions/src/role-defaults.ts b/packages/permissions/src/role-defaults.ts
+index 1b55262..73e09cc 100644
+--- a/packages/permissions/src/role-defaults.ts
++++ b/packages/permissions/src/role-defaults.ts
+@@ -37,21 +37,21 @@
+  *     existing install, because the row is already there. Edit it in the Roles
+  *     UI, or write a migration. Bumping `since` to force it through would
+  *     re-create the row, not update it — it is a create-if-missing pass.
+  *
+  * `SEED_RESET_ROLE_DEFAULTS=true` wipes and re-creates each matrix role's
+  * grants for deterministic e2e fixtures. Dev compose only — never the VPS.
+  */
+ import type { PermissionActionKey, PermissionScopeKey, RoleTypeKey } from './types';
+ 
+ /** The version of this file. Bump it in the same edit that adds a `since`. */
+-export const ROLE_DEFAULTS_VERSION = 2;
++export const ROLE_DEFAULTS_VERSION = 3;
+ 
+ export interface RoleDef {
+   id: string;
+   slug: string;
+   name: string;
+   description: string;
+   type: RoleTypeKey;
+ }
+ 
+ export const ROLES: RoleDef[] = [
+@@ -330,20 +330,30 @@ export const ROLE_PERMISSION_MATRIX: Record<string, PermissionGrant[]> = {
+     // no row. Databases that already carried the grant are cleared by the
+     // DELETE in migration 20260805130000 — NOT here: this loop only upserts so
+     // that grants added at runtime via /admin/roles survive deploys, and a
+     // seed-side revoke would silently undo a future delegation every boot.
+     // Users: VIEW + EDIT only. EDIT transitively unlocks the password
+     // reset/change endpoints. CREATE and DELETE remain super-admin-only.
+     {
+       module: 'users',
+       actions: ['VIEW', 'EDIT'],
+     },
++    // Website (WP3a, 2026-09-19, `since: 3`, ruling P3). Everything the module
++    // registers EXCEPT APPROVE and MANAGE_KEYS: publishing a page and holding
++    // the website's tokens/secrets are super-admin-only through the CASL bypass
++    // (the marketing / whatsapp precedent). A MODULE row, so it reaches all
++    // nine screens by inheritance (website-inheritance.unit.spec.ts).
++    {
++      module: 'website',
++      actions: ['VIEW', 'CREATE', 'EDIT', 'DELETE', 'EXPORT'],
++      since: 3,
++    },
+   ],
+   // Non-admin roles intentionally do NOT receive a `settings` grant.
+   // Settings holds reference data (countries, cities, industries) consumed by
+   // other modules' dropdowns, but the GET endpoints for that reference data
+   // are @Public() at the controller level — they don't require any grant.
+   // Only writes (CREATE/EDIT/DELETE) are gated, and those stay admin/super
+   // -admin-only. Removing the VIEW grant just hides the Settings sidebar
+   // entry from these roles; their dropdowns continue to populate.
+   'role-sales-manager': [
+     // No EXPORT on `sales` or `travel-expenses`, and no APPROVE/EXPORT on
+@@ -360,20 +370,28 @@ export const ROLE_PERMISSION_MATRIX: Record<string, PermissionGrant[]> = {
+     // for this module — the shared enum, relabelled only in help text. Sales
+     // Manager additionally gets EXPORT and the template/automation grants
+     // decision 12 names for this role.
+     {
+       module: 'whatsapp',
+       actions: ['VIEW', 'CREATE', 'EDIT', 'ASSIGN', 'EXPORT'],
+       scope: 'IN_MY_DEPARTMENT',
+     },
+     { module: 'whatsapp-templates', actions: ['VIEW', 'CREATE', 'EDIT', 'SUBMIT'] },
+     { module: 'whatsapp-automations', actions: ['VIEW', 'EDIT'] },
++    // Website forms inbox (WP3a, `since: 3`, rulings P3 + RC8): every sales
++    // role that views inquiries sees what the website delivered. A
++    // RESOURCE-key row — the first in this matrix — on purpose: the CMS and
++    // the token screen are not sales work. The inbox has no row scope (ALL
++    // only), so `sales-executive` and `sales-agent` — which carry the same row
++    // below — see every submission, not "their own"; that is the ruling, and
++    // the Roles UI can untick it per role.
++    { module: 'website.forms', actions: ['VIEW'], since: 3 },
+   ],
+   'role-hrm-admin': [
+     // `hrm` registers all six, EXPORT included (payroll/attendance CSVs).
+     { module: 'hrm', actions: ACTIONS_FULL },
+     // Sales Training Academy — read-only visibility into onboarding training
+     // progress (HR needs to see who is stuck, not to edit curriculum).
+     { module: 'sales-training', actions: ['VIEW'] },
+     { module: 'projects', actions: ['VIEW', 'CREATE', 'EDIT'] },
+     { module: 'communications', actions: ACTIONS_CRUD },
+     { module: 'notifications', actions: ['VIEW'] },
+@@ -417,20 +435,31 @@ export const ROLE_PERMISSION_MATRIX: Record<string, PermissionGrant[]> = {
+       module: 'marketing',
+       actions: ['WITHDRAW'],
+       since: 2,
+     },
+     { module: 'projects', actions: ['VIEW', 'CREATE', 'EDIT'] },
+     { module: 'communications', actions: ACTIONS_CRUD },
+     { module: 'notifications', actions: ['VIEW'] },
+     // WhatsApp (WP2a, decision 12). Templates and automations only — no inbox.
+     { module: 'whatsapp-templates', actions: ['VIEW', 'CREATE', 'EDIT', 'SUBMIT'] },
+     { module: 'whatsapp-automations', actions: ['VIEW', 'EDIT'] },
++    // Website CMS (WP3a, `since: 3`, ruling P3): the six content screens at
++    // VIEW/CREATE/EDIT — no DELETE, and no APPROVE, for the same reason as
++    // `marketing` above: publishing is a super-admin act. Six RESOURCE rows
++    // rather than one module row, because the module row would also hand over
++    // the forms inbox (visitor PII) and the integrations page.
++    { module: 'website.pages', actions: ['VIEW', 'CREATE', 'EDIT'], since: 3 },
++    { module: 'website.strings', actions: ['VIEW', 'CREATE', 'EDIT'], since: 3 },
++    { module: 'website.collections', actions: ['VIEW', 'CREATE', 'EDIT'], since: 3 },
++    { module: 'website.blog', actions: ['VIEW', 'CREATE', 'EDIT'], since: 3 },
++    { module: 'website.media', actions: ['VIEW', 'CREATE', 'EDIT'], since: 3 },
++    { module: 'website.navigation', actions: ['VIEW', 'CREATE', 'EDIT'], since: 3 },
+   ],
+   'role-training-coordinator': [
+     // Sales Training Academy — content authoring + assignment monitoring, but
+     // no DELETE and no APPROVE (certification stays with admin/manager/owner).
+     {
+       module: 'sales-training',
+       actions: ['VIEW', 'CREATE', 'EDIT'],
+     },
+     { module: 'projects', actions: ['VIEW', 'CREATE', 'EDIT'] },
+     { module: 'communications', actions: ACTIONS_CRUD },
+@@ -571,20 +600,24 @@ export const ROLE_PERMISSION_MATRIX: Record<string, PermissionGrant[]> = {
+     // Call Center: place/see calls from the ops UI (in-browser softphone).
+     { module: 'call-center', actions: ['VIEW', 'CREATE'] },
+     { module: 'notifications', actions: ['VIEW'] },
+     // WhatsApp (WP2a, decision 12).
+     {
+       module: 'whatsapp',
+       actions: ['VIEW', 'CREATE'],
+       scope: 'ASSIGNED_TO_ME',
+     },
+     { module: 'whatsapp-templates', actions: ['VIEW'] },
++    // Website forms inbox (WP3a, `since: 3`, RC8) — see role-sales-manager.
++    // ALL scope: the resource supports no other, so an agent reads the whole
++    // inbox; the lead itself stays ASSIGNED_TO_ME through `sales`.
++    { module: 'website.forms', actions: ['VIEW'], since: 3 },
+   ],
+   // Sales Executive — the individual salesperson (2026-08-04). Sits between
+   // sales-agent (read-only, campaign-assigned leads) and sales-manager (the
+   // whole pipeline at ALL scope): they own and work their own book of leads
+   // end-to-end but do not run the department. `sales: V/C/E @ ASSIGNED_TO_ME`
+   // — deliberately NO DELETE (a rep must never be able to erase a lead) and NO
+   // APPROVE (that gates lead conversion to a CRM partner, a manager call).
+   //
+   // Scope note: the Lead ASSIGNED_TO_ME binding is
+   // `leadOwnerId = me OR addedById = me OR active-campaign assignee`, so with
+@@ -598,20 +631,22 @@ export const ROLE_PERMISSION_MATRIX: Record<string, PermissionGrant[]> = {
+     { module: 'communications', actions: ['VIEW', 'CREATE', 'EDIT'] },
+     { module: 'call-center', actions: ['VIEW', 'CREATE'] },
+     { module: 'notifications', actions: ['VIEW'] },
+     // WhatsApp (WP2a, decision 12).
+     {
+       module: 'whatsapp',
+       actions: ['VIEW', 'CREATE', 'EDIT'],
+       scope: 'ASSIGNED_TO_ME',
+     },
+     { module: 'whatsapp-templates', actions: ['VIEW'] },
++    // Website forms inbox (WP3a, `since: 3`, RC8) — see role-sales-manager.
++    { module: 'website.forms', actions: ['VIEW'], since: 3 },
+   ],
+   // Team Member — the internal team on WORK projects (Work Management WP2).
+   // Mirrors `role-field-agent`'s SHAPE (projects V/C/E at an explicit
+   // ASSIGNED_TO_ME scope) but nothing else: no `communications` (the WORK
+   // discussion is TaskComment, arriving in WP3, and CommunicationsLog is the
+   // FIELD comment system — granting it here would put the wrong one in reach),
+   // and no `notifications` grant is needed for the bell (it is auth-only).
+   //
+   // The scope is written EXPLICITLY. The upsert loop defaults an omitted scope
+   // to ALL, and an ALL-scope `projects` grant would hand this role every field

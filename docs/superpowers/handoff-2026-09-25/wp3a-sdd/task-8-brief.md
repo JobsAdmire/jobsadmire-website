@@ -1,0 +1,1582 @@
+### Task 8: CAREERS_APPLY through the exported `CareersPublicService`, FRAUD_REPORT with the one sanctioned evidence upload route and a key-only, hardened read-back
+
+Repo: the WP3a worktree `/Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-operations-website` (Operations; branch `website/wp3a-intake` — RC17: every task executes from this worktree, never from the shared `main` checkout). Every relative path and every `cd apps/backend` below is inside that worktree.
+
+**Files:**
+- Modify `apps/backend/src/modules/careers-public/careers-public.module.ts` — the line `  exports: [],` becomes `  exports: [CareersPublicService],` (with the comment printed in Step 3.1). Nothing else in that file changes: careers-public never imports website (one-way edge, the `ai-interviewer` precedent in the same file's doc comment).
+- Modify `apps/backend/src/modules/website/website.module.ts` (Task 1 file, extended by Tasks 2, 4, 6, 7) — edited in two anchored steps, one per commit, so each commit compiles on its own. Step 3.4 (Part A, commit 1): three import lines; `imports: [ConfigModule, PrismaModule, PermissionsModule, SalesModule],` (Task 7) gains `CareersPublicModule, UploadModule`; after the line `    WebsiteFormsInboxService,` (Task 7's last provider) add `    CareersApplyHandler,`. Step 8.6 (Part B, commit 2): four more import lines; after the line `    WebsiteFormsInboxController,` (Task 7) add the two controllers; after the line `    CareersApplyHandler,` (Step 3.4) add `    FraudReportHandler,` and `    WebsiteFraudEvidenceService,`. The constructor's `registry.register({` literal is untouched (registry-from-source parses it by regex; P1).
+- Modify `apps/backend/test/permissions/website-conformance.spec.ts` (Task 1 file) — the line beginning `const CONTROLLERS = [` gains `WebsitePublicUploadsController, WebsiteFormsEvidenceController` (RC15), plus two import lines (Step 8.7, Part B).
+- Create `apps/backend/src/modules/website/fraud-evidence-file.ts`
+- Create `apps/backend/src/modules/website/website-fraud-evidence.service.ts`
+- Create `apps/backend/src/modules/website/website-public-uploads.controller.ts`
+- Create `apps/backend/src/modules/website/website-forms-evidence.controller.ts`
+- Create `apps/backend/src/modules/website/handlers/careers-apply.logic.ts`
+- Create `apps/backend/src/modules/website/handlers/careers-apply.handler.ts`
+- Create `apps/backend/src/modules/website/handlers/fraud-report.handler.ts`
+- Test `apps/backend/src/modules/website/fraud-evidence-file.spec.ts`
+- Test `apps/backend/src/modules/website/website-fraud-evidence.service.spec.ts`
+- Test `apps/backend/src/modules/website/handlers/careers-apply.logic.spec.ts`
+- Test `apps/backend/src/modules/website/handlers/careers-apply.handler.spec.ts`
+- Test `apps/backend/src/modules/website/handlers/fraud-report.handler.spec.ts`
+- Test `apps/backend/src/modules/website/careers-fraud-wiring.spec.ts` (source-level + metadata pins, the `identity-card-upload.spec.ts` idiom)
+- NOT modified: `website-forms.service.ts`. Handlers self-register through `WebsiteFormHandlerRegistry` in their constructors (RC4); the core needs no edit for a new handler.
+
+**Interfaces:**
+- Consumes (Task 6, `apps/backend/src/modules/website/website-form-handler.ts`, per RC4): `interface WebsiteFormHandlerInput { submissionId: string; formKey: string; kind: WebsiteFormKind; locale: 'tr' | 'en'; dryRun: boolean; fields: Record<string, string | string[]>; consentVersion: string; captchaDegraded: boolean; visitorIp: string | null; userAgent: string | null }`; `type WebsiteFormHandlerResult = { ok: true; createdEntityType?: 'inquiry' | 'applicant' | 'subscriber' | 'object'; createdEntityId?: string; detail?: Record<string, unknown> } | { ok: false; error: string; detail?: Record<string, unknown> }`; `interface WebsiteFormHandler { readonly kinds: readonly WebsiteFormKind[]; handle(input: WebsiteFormHandlerInput): Promise<WebsiteFormHandlerResult> }`; `@Injectable() class WebsiteFormHandlerRegistry { register(handler: WebsiteFormHandler): void; get(kind: WebsiteFormKind): WebsiteFormHandler | null }`. Core contract relied on: the submission row is written FIRST (P8); `dryRun === true` for the test token class (P2, RC4); a handler never throws for a visitor error — an infrastructure throw or an `{ ok: false }` becomes a FAILED row and the website still gets HTTP 200 (RC4); an `{ ok: false, detail: { visitorError: true } }` is the RC26 shape — FAILED row, `handlerResultJson.visitorError = true`, NO `handlerFailed` alarm, and the door response carries `error` (the visitor-safe message); after a successful non-dry-run handler the core calls `WebsiteNotifyService.formReceived(...)` and `WebsiteAutoresponderService.send(...)` reading `detail.skipNotification`, `detail.skipAutoresponder`, `detail.alreadyReceived`, `detail.contactName`, `detail.email` (RC4/RC6); `WebsiteFormSubmission.payloadJson` is `{ fields: Record<string, string | string[]>; sourcePath?: string }`.
+- Consumes (Task 6 catalog, `website-form-catalog.ts`, per RC5): `careers` whitelists `openingSlug` (required, `/^[a-z0-9-]+$/`), `name`, `email`, `phone`, `country`, `city`, `language`, `cvKey` (required, `/^careers-cv\/[A-Za-z0-9._-]+\.pdf$/i`), `coverLetter`, `linkedinUrl`, `expectedSalary`, `expectedSalaryCurrency`, `currentSalary`, `currentSalaryCurrency`; `fraud` whitelists `reporterName`, `reporterEmail`, `reporterPhone`, `description` (required, max 5000), `suspectName`, `suspectContact`, `evidenceKeys` (array-of-key, ≤ 3, `/^website-fraud\/[A-Za-z0-9._-]+$/`). All visitor-facing validation happens there, BEFORE the row (RC4); this task only re-checks defensively and never throws for it.
+- Consumes (Task 4): `WebsiteApiGuard` from `./guards/website-api.guard`; `TokenClass` param decorator from `./decorators/token-class.decorator` returning `WebsiteBearerClass`; `type WebsiteBearerClass = 'write' | 'test' | 'previous-write'` from `./website.constants` (RC2 — never the Prisma enum `WebsiteTokenClass`).
+- Consumes (Task 2): `WebsiteModuleEnabledGuard` from `./guards/website-module-enabled.guard` (RC1).
+- Consumes (Task 3, Prisma): `WebsiteFormKind.CAREERS_APPLY`, `WebsiteFormKind.FRAUD_REPORT`; `prisma.websiteFormSubmission` with relation `form: WebsiteForm` and column `payloadJson Json`.
+- Consumes (Task 1): `apps/backend/test/permissions/website-conformance.spec.ts` and its `CONTROLLERS` array; resource `website.forms` supporting `VIEW` (P3, RC8).
+- Consumes (existing, verified): `CareersPublicService.apply(slug: string, dto: PublicApplyDto, remoteIp?: string, userAgent?: string)` (careers-public.service.ts:547) returning `{ data: { applicantId: string; trackingToken: string; statusUrl: string } }`, throwing `ConflictException({ message, existingTrackingToken })` on a duplicate (email, opening), `BadRequestException` for residency / PK expected salary / unknown country / `.docx` cvUrl, `NotFoundException` for a closed opening; `PublicApplyDto` (dto/careers-public.dto.ts:95 — `@Trim()` transforms, `@Type(() => Number)` on the salaries, `@IsIn(CURRENCY_CODES)` on the currencies, `@IsUrl({ require_protocol: true })` on `linkedinUrl`, `source: InternalApplicantSource`, `cvUrl: string`); `InternalApplicantSource.CAREERS_PAGE`; `UploadService.buildPublicUrl(key): string`, `uploadFile(buffer, originalName, mimeType, folder): Promise<UploadResult>` (key = `${folder}/${uuid}${ext}`), `getFileBuffer(key): Promise<Buffer>`, `presignedGetUrl(key, ttlSec = 15 * 60): Promise<string>`, `deleteFileChecked(key): Promise<boolean>` (upload.service.ts); `UploadModule` exports `UploadService`; `Public()` (`common/decorators/public.decorator.ts`), `RequirePermission(module, action)` (`permissions/decorators/require-permission.decorator.ts`), `FileInterceptor` / `Throttle` used exactly as careers-public.controller.ts:76-83; the header set of `ApplicantDocumentsService.view/downloadLink` (applicant-documents.service.ts:146-172).
+- Produces:
+  - `CareersPublicModule` → `exports: [CareersPublicService]` (P4).
+  - `handlers/careers-apply.logic.ts`: `WEBSITE_CAREERS_SOURCE_DETAIL = 'jobsadmire.com'`, `WEBSITE_CV_KEY_PATTERN = /^careers-cv\/[A-Za-z0-9._-]+\.pdf$/i`, `DROPPABLE_APPLY_FIELDS`, `buildPublicApplyDto(fields: Record<string, string | string[]>, cvUrl: string): PublicApplyDto`, `validatePublicApplyDto(dto: PublicApplyDto): Promise<{ dropped: string[]; errors: string[] }>`.
+  - `CareersApplyHandler` (`kinds = [CAREERS_APPLY]`, self-registers; constructor `(careers: CareersPublicService, upload: UploadService, registry: WebsiteFormHandlerRegistry)`); results: success `{ ok: true, createdEntityType: 'applicant', createdEntityId, detail: { trackingToken, statusUrl, dropped, skipNotification: true, skipAutoresponder: true, contactName, email } }`; duplicate `{ ok: true, detail: { alreadyReceived: true, existingTrackingToken, skipNotification: true, skipAutoresponder: true, contactName, email } }`; dry run `{ ok: true, detail: { dryRun: true, wouldCreate: 'applicant', skipNotification: true, skipAutoresponder: true } }`; apply()'s own 4xx `{ ok: false, error, detail: { visitorError: true, rejectedBy: 'careers-public', statusCode, contactName, email } }` (RC26 — the core files FAILED, skips the `handlerFailed` alarm and echoes `error` in the door response so WP2 can show the residency / expected-salary / closed-opening message).
+  - `FraudReportHandler` (`kinds = [FRAUD_REPORT]`, self-registers; constructor `(registry: WebsiteFormHandlerRegistry)`); result `{ ok: true, detail: { evidenceCount, evidenceKeys, hasReporterContact, contactName, email, skipNotification: false, skipAutoresponder: boolean } }` (no entity: the submission row IS the record); dry run `{ ok: true, detail: { dryRun: true, wouldCreate: 'fraud-report', evidenceCount } }`.
+  - `fraud-evidence-file.ts`: `MAX_FRAUD_EVIDENCE_BYTES = 8 MiB`, `MAX_FRAUD_EVIDENCE_FILES = 3`, `FRAUD_EVIDENCE_FOLDER = 'website-fraud'`, `FRAUD_EVIDENCE_KEY_PREFIX = 'website-fraud/'`, `FRAUD_EVIDENCE_KEY_PATTERN = /^website-fraud\/[A-Za-z0-9._-]+$/`, `validateFraudEvidenceFile(file?: { buffer?: Buffer; size?: number; mimetype?: string }): { buffer; mimeType; extension }` (throws 400 — used only on the upload route, before any row), `pickEvidenceKeys(raw: unknown): string[]` (never throws), `mimeFromEvidenceKey(key): string`.
+  - `WebsiteFraudEvidenceService` (constructor `(prisma: PrismaService, upload: UploadService)`): `store(file: Express.Multer.File | undefined, tokenClass: WebsiteBearerClass): Promise<{ data: { key: string | null; mimeType: string; sizeBytes: number; dryRun: boolean } }>`; `static evidenceKeysOf(payloadJson: unknown): string[]` — Task 10's purge cron deletes exactly these keys with `deleteFileChecked` and keeps the row if any survives (RC5, P10); `view(submissionId: string, index: number, res: Response): Promise<void>`; `link(submissionId: string, index: number): Promise<{ data: { url: string; fileName: string } }>`.
+  - HTTP (public door, RC3 — the ONE upload route; Task 12 lists it in PRD §7.10 and the runbook): `POST /api/website/v1/uploads/fraud-evidence` on `WebsitePublicUploadsController` (`@Controller('website/v1/uploads') @Public() @UseGuards(WebsiteModuleEnabledGuard, WebsiteApiGuard)`), multipart field `file`, Bearer write/previous-write/test; 200 `{ data: { key: 'website-fraud/<uuid>.<ext>' | null, mimeType, sizeBytes, dryRun } }` (`key: null, dryRun: true` for the test class — P2); 400 `FRAUD_EVIDENCE_MISSING | FRAUD_EVIDENCE_TOO_LARGE | FRAUD_EVIDENCE_TYPE`; 413 from multer above 8 MiB.
+  - HTTP (staff inbox, Task 7's `website/forms/submissions/*` family, RC1): `GET /api/website/forms/submissions/:id/evidence/:index/view` (streams; `nosniff`, `Cache-Control: private, no-store`, inline + `default-src 'none'` for pdf/jpeg/png/webp, sandboxed attachment otherwise) and `GET /api/website/forms/submissions/:id/evidence/:index/link` → `{ data: { url, fileName } }` (15-minute presign), both `website.forms` VIEW, 404 for an unknown id, a non-FRAUD_REPORT row or an index past the last key. Task 11's detail panel may call them for a `fraud` row (`evidenceKeys.length` from `payloadJson.fields`).
+  - Website contract (WP2 wires to it): `careers` form `fields` = `openingSlug`, `cvKey` (= `data.key` returned by the EXISTING public `POST /api/careers/upload-cv`, P5/RC3), `name`, `email`, `phone`, `country` (ISO-2), optional `city`, `language`, `coverLetter`, `linkedinUrl`, `expectedSalary`, `expectedSalaryCurrency`, `currentSalary`, `currentSalaryCurrency`; `fraud` form `fields` = `description`, optional `reporterName`, `reporterEmail`, `reporterPhone`, `suspectName`, `suspectContact`, `evidenceKeys: string[]` (≤ 3 keys from the upload route, one call per file).
+
+**Part A — CAREERS_APPLY (Steps 1–5, commit 1).** The careers handler is built, tested and committed on its own; `website.module.ts` gets only its careers lines (Step 3.4), so commit 1 compiles with no fraud file in it. Part B (Steps 6–10, commit 2) then adds the fraud report, the upload door and the read-back the same way.
+
+- [ ] **Step 1: Write the failing careers tests**
+
+`apps/backend/src/modules/website/handlers/careers-apply.logic.spec.ts`:
+```ts
+import { InternalApplicantSource } from '@prisma/client';
+
+import {
+  buildPublicApplyDto,
+  validatePublicApplyDto,
+  WEBSITE_CAREERS_SOURCE_DETAIL,
+  WEBSITE_CV_KEY_PATTERN,
+} from './careers-apply.logic';
+
+/**
+ * WP3a P4/P5 — the website careers payload → PublicApplyDto mapping is pure and
+ * runs the DTO's own class-validator rules HERE (the global ValidationPipe never
+ * sees this object). Optional fields that fail the DTO are DROPPED, not fatal:
+ * a lead must never be lost to a LinkedIn URL without a scheme.
+ */
+const CV_URL = 'http://localhost:9000/jobsadmire-ops/careers-cv/3f2b5c1e-1111-4222-8333-444455556666.pdf';
+
+const fields = (over: Record<string, string | string[]> = {}): Record<string, string | string[]> => ({
+  openingSlug: 'sales-executive-istanbul',
+  name: 'Ayşe Yılmaz',
+  email: 'ayse@example.com',
+  phone: '+905551112233',
+  country: 'TR',
+  city: 'Istanbul',
+  language: 'Turkish, English',
+  expectedSalary: '45000',
+  expectedSalaryCurrency: 'try',
+  coverLetter: 'Hello',
+  cvKey: 'careers-cv/3f2b5c1e-1111-4222-8333-444455556666.pdf',
+  ...over,
+});
+
+describe('buildPublicApplyDto', () => {
+  it('stamps CAREERS_PAGE + jobsadmire.com, forwards the CV URL, coerces the salary and uppercases the currency', async () => {
+    const dto = buildPublicApplyDto(fields(), CV_URL);
+    expect(dto).toMatchObject({
+      name: 'Ayşe Yılmaz',
+      email: 'ayse@example.com',
+      phone: '+905551112233',
+      country: 'TR',
+      city: 'Istanbul',
+      language: 'Turkish, English',
+      expectedSalary: 45000,
+      expectedSalaryCurrency: 'TRY',
+      coverLetter: 'Hello',
+      cvUrl: CV_URL,
+      source: InternalApplicantSource.CAREERS_PAGE,
+      sourceDetail: WEBSITE_CAREERS_SOURCE_DETAIL,
+    });
+    expect(dto.currentSalary).toBeUndefined();
+    expect(dto.linkedinUrl).toBeUndefined();
+    await expect(validatePublicApplyDto(dto)).resolves.toEqual({ dropped: [], errors: [] });
+  });
+
+  it('adds https:// to a scheme-less LinkedIn URL so the DTO accepts it', async () => {
+    const dto = buildPublicApplyDto(fields({ linkedinUrl: 'linkedin.com/in/ayse' }), CV_URL);
+    expect(dto.linkedinUrl).toBe('https://linkedin.com/in/ayse');
+    await expect(validatePublicApplyDto(dto)).resolves.toEqual({ dropped: [], errors: [] });
+  });
+
+  it('drops optional fields the DTO refuses (non-numeric salary, unknown currency, junk URL) and keeps the rest', async () => {
+    const dto = buildPublicApplyDto(
+      fields({ expectedSalary: 'about 45k', expectedSalaryCurrency: 'TL', linkedinUrl: 'not a url at all' }),
+      CV_URL,
+    );
+    const out = await validatePublicApplyDto(dto);
+    expect(out.errors).toEqual([]);
+    expect([...out.dropped].sort()).toEqual(['expectedSalary', 'expectedSalaryCurrency', 'linkedinUrl']);
+    expect(dto.expectedSalary).toBeUndefined();
+    expect(dto.expectedSalaryCurrency).toBeUndefined();
+    expect(dto.linkedinUrl).toBeUndefined();
+    expect(dto.name).toBe('Ayşe Yılmaz');
+  });
+
+  it('reports errors on REQUIRED fields and never drops them', async () => {
+    const { phone: _drop, ...noPhone } = fields();
+    const dto = buildPublicApplyDto(noPhone, CV_URL);
+    const out = await validatePublicApplyDto(dto);
+    expect(out.dropped).toEqual([]);
+    expect(out.errors.join('\n')).toMatch(/phone/);
+  });
+
+  it('WEBSITE_CV_KEY_PATTERN accepts only a PDF key under careers-cv/', () => {
+    expect(WEBSITE_CV_KEY_PATTERN.test('careers-cv/3f2b.pdf')).toBe(true);
+    expect(WEBSITE_CV_KEY_PATTERN.test('careers-cv/3f2b.PDF')).toBe(true);
+    expect(WEBSITE_CV_KEY_PATTERN.test('website-fraud/x.pdf')).toBe(false);
+    expect(WEBSITE_CV_KEY_PATTERN.test('careers-cv/x.docx')).toBe(false);
+    expect(WEBSITE_CV_KEY_PATTERN.test('http://localhost:9000/jobsadmire-ops/careers-cv/a.pdf')).toBe(false);
+  });
+});
+```
+
+`apps/backend/src/modules/website/handlers/careers-apply.handler.spec.ts`:
+```ts
+import { BadRequestException, ConflictException, NotFoundException } from '@nestjs/common';
+import { InternalApplicantSource, WebsiteFormKind } from '@prisma/client';
+
+import { CareersApplyHandler } from './careers-apply.handler';
+import { WEBSITE_CAREERS_SOURCE_DETAIL } from './careers-apply.logic';
+import { WebsiteFormHandlerRegistry, WebsiteFormHandlerInput } from '../website-form-handler';
+
+/**
+ * CAREERS_APPLY (WP3a, P4/P5, RC4): the website hands us the key it got from the
+ * EXISTING public POST /api/careers/upload-cv, we call the exported
+ * CareersPublicService.apply() with a validated PublicApplyDto (CAREERS_PAGE +
+ * sourceDetail), a 409 duplicate is "already received" — HANDLED, no entity,
+ * no second notice — and apply()'s own 4xx is a FAILED row with the reason,
+ * never a throw to the visitor (RC4: the row already exists, HTTP stays 200).
+ */
+function make() {
+  const careers = {
+    apply: jest.fn(async (_slug: string, _dto: unknown, _ip?: string, _ua?: string) => ({
+      data: { applicantId: 'app_1', trackingToken: 'tok_1', statusUrl: '/careers/status/tok_1' },
+    })),
+  };
+  const upload = { buildPublicUrl: (key: string) => `http://localhost:9000/jobsadmire-ops/${key}` };
+  const registry = new WebsiteFormHandlerRegistry();
+  const handler = new CareersApplyHandler(careers as never, upload as never, registry);
+  return { handler, careers, registry };
+}
+
+const validFields = (): Record<string, string | string[]> => ({
+  openingSlug: 'sales-executive-istanbul',
+  name: 'Ayşe Yılmaz',
+  email: 'ayse@example.com',
+  phone: '+905551112233',
+  country: 'TR',
+  city: 'Istanbul',
+  language: 'Turkish, English',
+  expectedSalary: '45000',
+  coverLetter: 'Hello',
+  cvKey: 'careers-cv/3f2b5c1e-1111-4222-8333-444455556666.pdf',
+});
+
+const input = (fields: Record<string, string | string[]>, over: Partial<WebsiteFormHandlerInput> = {}): WebsiteFormHandlerInput => ({
+  submissionId: 'sub_1',
+  formKey: 'careers',
+  kind: WebsiteFormKind.CAREERS_APPLY,
+  locale: 'tr',
+  dryRun: false,
+  fields,
+  consentVersion: 'privacy-2026-09',
+  captchaDegraded: false,
+  visitorIp: '203.0.113.9',
+  userAgent: 'Mozilla/5.0',
+  ...over,
+});
+
+describe('CareersApplyHandler', () => {
+  it('registers itself for CAREERS_APPLY only', () => {
+    const { handler, registry } = make();
+    expect(registry.get(WebsiteFormKind.CAREERS_APPLY)).toBe(handler);
+    expect(registry.get(WebsiteFormKind.FRAUD_REPORT)).toBeNull();
+    expect(registry.get(WebsiteFormKind.INQUIRY)).toBeNull();
+  });
+
+  it('calls apply() with a CAREERS_PAGE dto, the CV URL rebuilt from the key, the visitor IP and UA, and skips the core mails', async () => {
+    const { handler, careers } = make();
+    const result = await handler.handle(input(validFields()));
+
+    expect(careers.apply).toHaveBeenCalledTimes(1);
+    const [slug, dto, ip, ua] = careers.apply.mock.calls[0];
+    expect(slug).toBe('sales-executive-istanbul');
+    expect(dto).toMatchObject({
+      name: 'Ayşe Yılmaz',
+      email: 'ayse@example.com',
+      phone: '+905551112233',
+      country: 'TR',
+      expectedSalary: 45000,
+      cvUrl: 'http://localhost:9000/jobsadmire-ops/careers-cv/3f2b5c1e-1111-4222-8333-444455556666.pdf',
+      source: InternalApplicantSource.CAREERS_PAGE,
+      sourceDetail: WEBSITE_CAREERS_SOURCE_DETAIL,
+    });
+    expect(ip).toBe('203.0.113.9');
+    expect(ua).toBe('Mozilla/5.0');
+
+    expect(result).toEqual({
+      ok: true,
+      createdEntityType: 'applicant',
+      createdEntityId: 'app_1',
+      detail: {
+        trackingToken: 'tok_1',
+        statusUrl: '/careers/status/tok_1',
+        dropped: [],
+        // careers-public already mails the candidate (careers mailbox) and the
+        // hiring owner (APPLICANT_RECEIVED): one notice per application, never two.
+        skipNotification: true,
+        skipAutoresponder: true,
+        contactName: 'Ayşe Yılmaz',
+        email: 'ayse@example.com',
+      },
+    });
+  });
+
+  it('maps a 409 duplicate to ok + alreadyReceived with no entity and no core mails', async () => {
+    const { handler, careers } = make();
+    careers.apply.mockRejectedValueOnce(
+      new ConflictException({ message: 'already applied', existingTrackingToken: 'tok_old' }),
+    );
+    const result = await handler.handle(input(validFields()));
+    expect(result).toEqual({
+      ok: true,
+      detail: {
+        alreadyReceived: true,
+        existingTrackingToken: 'tok_old',
+        skipNotification: true,
+        skipAutoresponder: true,
+        contactName: 'Ayşe Yılmaz',
+        email: 'ayse@example.com',
+      },
+    });
+  });
+
+  it("turns apply()'s own 400/404 (residency, PK salary, closed opening) into a FAILED result with the reason — never a throw", async () => {
+    const { handler, careers } = make();
+    careers.apply.mockRejectedValueOnce(new NotFoundException('Opening not found or no longer accepting applications'));
+    await expect(handler.handle(input(validFields()))).resolves.toEqual({
+      ok: false,
+      error: 'Opening not found or no longer accepting applications',
+      // RC26: apply()'s 4xx is the VISITOR's mistake — the core files FAILED, skips the alarm, echoes the message.
+      detail: { visitorError: true, rejectedBy: 'careers-public', statusCode: 404, contactName: 'Ayşe Yılmaz', email: 'ayse@example.com' },
+    });
+    careers.apply.mockRejectedValueOnce(new BadRequestException('Please enter your expected salary.'));
+    const r = await handler.handle(input(validFields()));
+    expect(r.ok).toBe(false);
+    expect(r.ok ? '' : r.error).toBe('Please enter your expected salary.');
+    expect(r.ok ? null : r.detail).toMatchObject({ visitorError: true, statusCode: 400 });
+  });
+
+  it('lets an infrastructure failure propagate — the forms core records FAILED and alarms', async () => {
+    const { handler, careers } = make();
+    careers.apply.mockRejectedValueOnce(new Error('db gone'));
+    await expect(handler.handle(input(validFields()))).rejects.toThrow('db gone');
+  });
+
+  it('refuses a stored cvKey outside careers-cv/ (or a URL) as a FAILED result BEFORE touching apply()', async () => {
+    const { handler, careers } = make();
+    const a = await handler.handle(input({ ...validFields(), cvKey: 'website-fraud/x.pdf' }));
+    const b = await handler.handle(input({ ...validFields(), cvKey: 'http://localhost:9000/jobsadmire-ops/careers-cv/a.pdf' }));
+    expect(a.ok).toBe(false);
+    expect(b.ok).toBe(false);
+    expect(careers.apply).not.toHaveBeenCalled();
+  });
+
+  it('runs PublicApplyDto validation itself: a missing required field is a FAILED result naming it, apply() untouched', async () => {
+    const { handler, careers } = make();
+    const { phone: _drop, ...noPhone } = validFields();
+    const r = await handler.handle(input(noPhone));
+    expect(r.ok).toBe(false);
+    expect(r.ok ? '' : r.error).toMatch(/phone/);
+    expect(careers.apply).not.toHaveBeenCalled();
+  });
+
+  it('drops an optional field the DTO refuses and still applies, reporting what was dropped', async () => {
+    const { handler, careers } = make();
+    const r = await handler.handle(input({ ...validFields(), linkedinUrl: 'nope', expectedSalary: 'lots' }));
+    expect(careers.apply).toHaveBeenCalledTimes(1);
+    expect(r.ok).toBe(true);
+    expect((r.ok && r.detail?.dropped) as string[]).toEqual(expect.arrayContaining(['linkedinUrl', 'expectedSalary']));
+    const dto = careers.apply.mock.calls[0][1] as { linkedinUrl?: string; expectedSalary?: number };
+    expect(dto.linkedinUrl).toBeUndefined();
+    expect(dto.expectedSalary).toBeUndefined();
+  });
+
+  it('dry run (test token, P2): builds the DTO, writes nothing, reports what it would have created', async () => {
+    const { handler, careers } = make();
+    const r = await handler.handle(input(validFields(), { dryRun: true }));
+    expect(careers.apply).not.toHaveBeenCalled();
+    expect(r).toEqual({
+      ok: true,
+      detail: { dryRun: true, wouldCreate: 'applicant', skipNotification: true, skipAutoresponder: true },
+    });
+  });
+});
+```
+
+- [ ] **Step 2: Run the careers tests to verify they fail**
+
+```bash
+cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-operations-website/apps/backend
+npx jest src/modules/website/handlers/careers-apply --maxWorkers=2
+```
+Expected: `careers-apply.logic.spec.ts` and `careers-apply.handler.spec.ts` both fail at import time with `Cannot find module './careers-apply.logic'` / `'./careers-apply.handler'` (TS2307 from ts-jest). No test body runs.
+
+- [ ] **Step 3: Implement the careers half**
+
+3.1 `apps/backend/src/modules/careers-public/careers-public.module.ts` — replace the line `  exports: [],` with:
+```ts
+  // WP3a (2026-09-19, P4): the website intake door's CAREERS_APPLY handler calls
+  // apply() through this export. ONE-WAY edge — WebsiteModule imports this
+  // module; careers-public never imports website (same discipline as the
+  // ai-interviewer edge above). Never re-provide CareersPublicService elsewhere:
+  // its constructor needs ten injections across six modules.
+  exports: [CareersPublicService],
+```
+
+3.2 `apps/backend/src/modules/website/handlers/careers-apply.logic.ts`:
+```ts
+import { InternalApplicantSource } from '@prisma/client';
+import { plainToInstance } from 'class-transformer';
+import { validate, ValidationError } from 'class-validator';
+
+import { PublicApplyDto } from '../../careers-public/dto/careers-public.dto';
+
+/** `sourceDetail` stamped on every applicant that came through jobsadmire.com. */
+export const WEBSITE_CAREERS_SOURCE_DETAIL = 'jobsadmire.com';
+
+/**
+ * The key the EXISTING public `POST /api/careers/upload-cv` returns (P5, RC3):
+ * that route is PDF-only and stores under careers-cv/, so the key must be a PDF
+ * under that prefix. The Task 6 catalog carries the same pattern (RC5); this
+ * copy is the handler's defence for a hand-edited row on a re-run.
+ */
+export const WEBSITE_CV_KEY_PATTERN = /^careers-cv\/[A-Za-z0-9._-]+\.pdf$/i;
+
+/**
+ * Optional PublicApplyDto fields that are DROPPED (with a note in `detail`)
+ * when they fail the DTO's own rules, instead of failing the application.
+ * The website catalog only checks length on these; the DTO adds `@IsNumber`,
+ * `@IsIn(CURRENCY_CODES)` and `@IsUrl({ require_protocol: true })`, and a
+ * lead must never be lost to a LinkedIn URL without a scheme.
+ */
+export const DROPPABLE_APPLY_FIELDS = [
+  'city',
+  'language',
+  'expectedSalary',
+  'expectedSalaryCurrency',
+  'currentSalary',
+  'currentSalaryCurrency',
+  'coverLetter',
+  'linkedinUrl',
+] as const;
+
+type WebsiteFields = Record<string, string | string[]>;
+
+function str(v: string | string[] | undefined): string | undefined {
+  return typeof v === 'string' && v !== '' ? v : undefined;
+}
+
+function upper(v: string | undefined): string | undefined {
+  return v === undefined ? undefined : v.toUpperCase();
+}
+
+/** `linkedin.com/in/x` → `https://linkedin.com/in/x`; anything that already has a scheme is left alone. */
+function withScheme(v: string | undefined): string | undefined {
+  if (v === undefined) return undefined;
+  return /^[a-z][a-z0-9+.-]*:\/\//i.test(v) ? v : `https://${v}`;
+}
+
+function flattenErrors(errors: ValidationError[], prefix = ''): string[] {
+  const out: string[] = [];
+  for (const e of errors) {
+    const name = prefix ? `${prefix}.${e.property}` : e.property;
+    for (const msg of Object.values(e.constraints ?? {})) out.push(`${name}: ${msg}`);
+    if (e.children?.length) out.push(...flattenErrors(e.children, name));
+  }
+  return out;
+}
+
+/**
+ * The website careers payload (already whitelisted, trimmed, e-mail lowercased
+ * and ISO country uppercased by the Task 6 catalog) → a real PublicApplyDto
+ * instance, so `@Trim()` and `@Type(() => Number)` run exactly as they do on
+ * the public careers form. `cvUrl` is rebuilt by the caller from `cvKey`
+ * because apply() mints the CV ApplicantDocument row via `keyFromUrl(cvUrl)`.
+ */
+export function buildPublicApplyDto(fields: WebsiteFields, cvUrl: string): PublicApplyDto {
+  return plainToInstance(PublicApplyDto, {
+    name: str(fields.name),
+    email: str(fields.email),
+    phone: str(fields.phone),
+    country: str(fields.country),
+    city: str(fields.city),
+    language: str(fields.language),
+    expectedSalary: str(fields.expectedSalary),
+    expectedSalaryCurrency: upper(str(fields.expectedSalaryCurrency)),
+    currentSalary: str(fields.currentSalary),
+    currentSalaryCurrency: upper(str(fields.currentSalaryCurrency)),
+    coverLetter: str(fields.coverLetter),
+    linkedinUrl: withScheme(str(fields.linkedinUrl)),
+    cvUrl,
+    source: InternalApplicantSource.CAREERS_PAGE,
+    sourceDetail: WEBSITE_CAREERS_SOURCE_DETAIL,
+  });
+}
+
+/**
+ * Run PublicApplyDto's class-validator rules (the global ValidationPipe never
+ * sees this object). Droppable optional fields that fail are deleted from the
+ * instance and listed in `dropped`; whatever still fails afterwards (a required
+ * field) is returned in `errors`. Mutates `dto`.
+ */
+export async function validatePublicApplyDto(dto: PublicApplyDto): Promise<{ dropped: string[]; errors: string[] }> {
+  const droppable: readonly string[] = DROPPABLE_APPLY_FIELDS;
+  const dropped: string[] = [];
+  let errors = await validate(dto, { whitelist: true });
+  for (const e of errors) {
+    if (droppable.includes(e.property)) {
+      delete (dto as unknown as Record<string, unknown>)[e.property];
+      dropped.push(e.property);
+    }
+  }
+  if (dropped.length) errors = await validate(dto, { whitelist: true });
+  return { dropped, errors: flattenErrors(errors) };
+}
+```
+
+3.3 `apps/backend/src/modules/website/handlers/careers-apply.handler.ts`:
+```ts
+import { ConflictException, HttpException, Injectable, Logger } from '@nestjs/common';
+import { WebsiteFormKind } from '@prisma/client';
+
+import { CareersPublicService } from '../../careers-public/careers-public.service';
+import { UploadService } from '../../upload/upload.service';
+import {
+  WebsiteFormHandler,
+  WebsiteFormHandlerInput,
+  WebsiteFormHandlerRegistry,
+  WebsiteFormHandlerResult,
+} from '../website-form-handler';
+import { buildPublicApplyDto, validatePublicApplyDto, WEBSITE_CV_KEY_PATTERN } from './careers-apply.logic';
+
+/**
+ * careers-public already mails the candidate (careers mailbox, P4) and the
+ * hiring owner (APPLICANT_RECEIVED) inside apply(): one notice per
+ * application, never two. The core reads these flags (RC4).
+ */
+const NO_CORE_MAIL = { skipNotification: true, skipAutoresponder: true } as const;
+
+function httpMessage(e: HttpException): string {
+  const r = e.getResponse();
+  if (typeof r === 'string') return r;
+  const m = (r as { message?: string | string[] }).message;
+  return Array.isArray(m) ? m.join('; ') : m ?? e.message;
+}
+
+/**
+ * CAREERS_APPLY (WP3a, P4/P5, RC4). The website has already uploaded the CV
+ * through the EXISTING public upload-cv route; captcha, dedupe, the catalog
+ * whitelist and the submission row are the core's job before we run. We build
+ * a PublicApplyDto, validate it HERE, and call the exported apply().
+ *
+ * Never throws for a visitor error (RC4 — the row exists, HTTP stays 200):
+ *  - 409 duplicate (same e-mail + opening) → ok + `alreadyReceived` (HANDLED,
+ *    no entity, no second notice; the CV object stays — careers-cv/ belongs
+ *    to the careers retention cron and the website may retry with the key);
+ *  - apply()'s own 400/404 (residency, PK expected salary, unknown country,
+ *    closed opening) → `{ ok: false, detail: { visitorError: true } }` with the
+ *    reason (RC26), so the row is FAILED and needs attention in the inbox, no
+ *    alarm rings, and the website can show the visitor the message;
+ *  - anything else propagates: the core records FAILED and alarms.
+ */
+@Injectable()
+export class CareersApplyHandler implements WebsiteFormHandler {
+  private readonly logger = new Logger(CareersApplyHandler.name);
+
+  readonly kinds = [WebsiteFormKind.CAREERS_APPLY] as const;
+
+  constructor(
+    private readonly careers: CareersPublicService,
+    private readonly upload: UploadService,
+    registry: WebsiteFormHandlerRegistry,
+  ) {
+    registry.register(this);
+  }
+
+  async handle(input: WebsiteFormHandlerInput): Promise<WebsiteFormHandlerResult> {
+    const f = input.fields;
+    const slug = typeof f.openingSlug === 'string' ? f.openingSlug.trim() : '';
+    const cvKey = typeof f.cvKey === 'string' ? f.cvKey.trim() : '';
+    if (!slug || !WEBSITE_CV_KEY_PATTERN.test(cvKey)) {
+      // The catalog (RC5) guarantees both on a live submission; reaching this
+      // means a hand-edited row on a re-run. FAILED, never a throw.
+      return { ok: false, error: 'openingSlug or cvKey is missing or invalid in the stored payload' };
+    }
+
+    const dto = buildPublicApplyDto(f, this.upload.buildPublicUrl(cvKey));
+    const contact = { contactName: dto.name ?? null, email: dto.email ?? null };
+
+    if (input.dryRun) {
+      // P2: the mapping is exercised by every heartbeat; nothing is written.
+      return { ok: true, detail: { dryRun: true, wouldCreate: 'applicant', ...NO_CORE_MAIL } };
+    }
+
+    const { dropped, errors } = await validatePublicApplyDto(dto);
+    if (errors.length) {
+      return {
+        ok: false,
+        error: `Application rejected: ${errors.join('; ')}`,
+        detail: { rejectedBy: 'PublicApplyDto', errors, dropped, ...contact },
+      };
+    }
+    if (dropped.length) {
+      this.logger.warn(`website careers submission ${input.submissionId}: dropped optional field(s) ${dropped.join(', ')}`);
+    }
+
+    try {
+      const res = await this.careers.apply(slug, dto, input.visitorIp ?? undefined, input.userAgent ?? undefined);
+      this.logger.log(`website careers submission ${input.submissionId} → applicant ${res.data.applicantId} (${slug})`);
+      return {
+        ok: true,
+        createdEntityType: 'applicant',
+        createdEntityId: res.data.applicantId,
+        detail: { trackingToken: res.data.trackingToken, statusUrl: res.data.statusUrl, dropped, ...NO_CORE_MAIL, ...contact },
+      };
+    } catch (e) {
+      if (e instanceof ConflictException) {
+        const body = e.getResponse() as { existingTrackingToken?: string };
+        this.logger.log(`website careers submission ${input.submissionId}: already applied (${slug})`);
+        return {
+          ok: true,
+          detail: { alreadyReceived: true, existingTrackingToken: body?.existingTrackingToken ?? null, ...NO_CORE_MAIL, ...contact },
+        };
+      }
+      if (e instanceof HttpException && e.getStatus() < 500) {
+        // RC26: apply()'s own 4xx (residency, expected salary, closed opening) is the
+        // VISITOR's mistake — FAILED row, no handlerFailed alarm, message echoed to the site.
+        return {
+          ok: false,
+          error: httpMessage(e),
+          detail: { visitorError: true, rejectedBy: 'careers-public', statusCode: e.getStatus(), ...contact },
+        };
+      }
+      throw e;
+    }
+  }
+}
+```
+
+3.4 `apps/backend/src/modules/website/website.module.ts` — the careers half of the module edit (the only module edit commit 1 carries, so commit 1 compiles without any fraud file; Step 8.6 adds the fraud half). Add these three import lines after the last existing `import … from './…'` line of the file:
+```ts
+import { CareersPublicModule } from '../careers-public/careers-public.module';
+import { UploadModule } from '../upload/upload.module';
+import { CareersApplyHandler } from './handlers/careers-apply.handler';
+```
+Then two anchored edits inside the `@Module({ … })` decorator (the constructor's `registry.register({` block is untouched):
+- replace the line `  imports: [ConfigModule, PrismaModule, PermissionsModule, SalesModule],` (Task 7) with:
+```ts
+  // WP3a Task 8: one-way edges. CareersPublicModule now exports
+  // CareersPublicService; its controllers are already registered by
+  // AppModule, so importing it here duplicates no route. UploadModule
+  // exports UploadService (fraud evidence, CV URL rebuild).
+  imports: [ConfigModule, PrismaModule, PermissionsModule, SalesModule, CareersPublicModule, UploadModule],
+```
+- in `providers: [`, directly after the line `    WebsiteFormsInboxService,` (Task 7's last provider) insert:
+```ts
+    CareersApplyHandler,
+```
+The decorator after 3.4 — Task 7's block plus the lines above, nothing reordered, `controllers` and `exports` unchanged (this is the block commit 1 carries):
+```ts
+@Module({
+  // SalesModule exports InquiryService (sales.module.ts:54) — the ONE-WAY edge the
+  // website → Sales handler needs; Sales never imports website (the
+  // call-center.module.ts precedent). RedisModule, ConfigModule and
+  // ActivitiesModule are @Global().
+  // WP3a Task 8: one-way edges. CareersPublicModule now exports
+  // CareersPublicService; its controllers are already registered by
+  // AppModule, so importing it here duplicates no route. UploadModule
+  // exports UploadService (fraud evidence, CV URL rebuild).
+  imports: [ConfigModule, PrismaModule, PermissionsModule, SalesModule, CareersPublicModule, UploadModule],
+  controllers: [
+    WebsiteStatusController,
+    WebsiteIntegrationsController,
+    WebsitePublicController,
+    WebsiteFormsInboxController,
+  ],
+  // Both guards are providers of THIS module (the call-center.module.ts rule)
+  // so DI can hand WebsiteApiGuard its config service. The forms core's three
+  // collaborators (notify / abuse / autoresponder) are the contract shells
+  // Task 10 fills in (RC20). WebsiteInquiryHandler is never injected anywhere —
+  // Nest still instantiates every listed provider at boot, and its constructor
+  // registers it with WebsiteFormHandlerRegistry.
+  providers: [
+    WebsiteModuleEnabledGuard,
+    WebsiteApiGuard,
+    WebsiteIntegrationConfigService,
+    WebsitePingService,
+    WebsiteCaptchaService,
+    WebsiteFormHandlerRegistry,
+    WebsiteNotifyService,
+    WebsiteAbuseService,
+    WebsiteAutoresponderService,
+    WebsiteFormsService,
+    WebsiteInquiryHandler,
+    WebsiteFormsInboxService,
+    CareersApplyHandler,
+  ],
+  exports: [WebsiteIntegrationConfigService],
+})
+```
+
+- [ ] **Step 4: Run the careers specs + `tsc`**
+
+```bash
+cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-operations-website/apps/backend
+npx jest src/modules/website src/modules/careers-public --maxWorkers=2
+npx tsc --noEmit -p tsconfig.json
+```
+Expected: every existing website suite green plus the two new ones (`careers-apply.logic` 5, `careers-apply.handler` 9 tests); `careers-public` suites unchanged and green (`identity-card-upload.spec`, `careers-retention.cron.spec`, `candidate-*`); `tsc` clean (run alone — one build/typecheck job at a time on this machine). Nothing in Part B exists yet, so no fraud spec is on disk to fail. The boot-time DI proof for `CareersApplyHandler` comes with Step 9's boot check, on the finished module.
+
+- [ ] **Step 5: Commit 1** (the careers files, the `careers-public` export and `website.module.ts` at its Step 3.4 state — nothing from Part B)
+
+```bash
+cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-operations-website
+git add apps/backend/src/modules/careers-public/careers-public.module.ts \
+  apps/backend/src/modules/website/website.module.ts \
+  apps/backend/src/modules/website/handlers/careers-apply.logic.ts \
+  apps/backend/src/modules/website/handlers/careers-apply.logic.spec.ts \
+  apps/backend/src/modules/website/handlers/careers-apply.handler.ts \
+  apps/backend/src/modules/website/handlers/careers-apply.handler.spec.ts
+git commit -m "feat(website): CAREERS_APPLY files through the exported CareersPublicService (WP3a, P4/P5)
+
+CareersPublicModule now exports CareersPublicService (one-way edge; website
+imports careers-public, never the reverse). The handler rebuilds cvUrl from
+the upload-cv key, builds and validates a PublicApplyDto itself (CAREERS_PAGE
++ sourceDetail jobsadmire.com, optional fields the DTO refuses are dropped,
+not fatal), skips the core's notice and autoresponder because careers-public
+mails both sides, maps apply()'s 409 to alreadyReceived and its 4xx to a
+FAILED row — never a throw to the visitor. Dry run on the test token.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+```
+
+**Part B — FRAUD_REPORT (Steps 6–10, commit 2).** Same cycle for the fraud report handler, the one sanctioned evidence upload route and the key-only read-back; `website.module.ts` gets its fraud lines in Step 8.6 and the conformance spec its two controllers in Step 8.7.
+
+- [ ] **Step 6: Write the failing fraud tests**
+
+`apps/backend/src/modules/website/fraud-evidence-file.spec.ts`:
+```ts
+import {
+  FRAUD_EVIDENCE_KEY_PATTERN,
+  MAX_FRAUD_EVIDENCE_BYTES,
+  MAX_FRAUD_EVIDENCE_FILES,
+  mimeFromEvidenceKey,
+  pickEvidenceKeys,
+  validateFraudEvidenceFile,
+} from './fraud-evidence-file';
+
+/**
+ * Fraud-report evidence (WP3a, P4, RC3). Bytes arrive from an anonymous visitor
+ * through the website's server and are later streamed into a staff browser
+ * from the Forms inbox, so the CONTENT is what is validated — never multer's
+ * client-claimed `mimetype` (identity-card-image.ts precedent). Keys are
+ * prefix-locked so a forged key can never alias another folder.
+ */
+describe('fraud evidence file validation', () => {
+  const jpeg = () => Buffer.concat([Buffer.from([0xff, 0xd8, 0xff, 0xe0]), Buffer.alloc(32)]);
+  const png = () =>
+    Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]), Buffer.alloc(32)]);
+  const webp = () =>
+    Buffer.concat([Buffer.from('RIFF', 'ascii'), Buffer.alloc(4), Buffer.from('WEBP', 'ascii'), Buffer.alloc(32)]);
+  const pdf = () => Buffer.concat([Buffer.from('%PDF-1.7\n', 'ascii'), Buffer.alloc(32)]);
+
+  it('accepts JPEG, PNG, WEBP and PDF by magic bytes and reports the sniffed type', () => {
+    expect(validateFraudEvidenceFile({ buffer: jpeg() })).toMatchObject({ mimeType: 'image/jpeg', extension: '.jpg' });
+    expect(validateFraudEvidenceFile({ buffer: png() })).toMatchObject({ mimeType: 'image/png', extension: '.png' });
+    expect(validateFraudEvidenceFile({ buffer: webp() })).toMatchObject({ mimeType: 'image/webp', extension: '.webp' });
+    expect(validateFraudEvidenceFile({ buffer: pdf() })).toMatchObject({ mimeType: 'application/pdf', extension: '.pdf' });
+  });
+
+  it('ignores the declared Content-Type entirely', () => {
+    expect(() =>
+      validateFraudEvidenceFile({ buffer: Buffer.from('<html><script>1</script>'), mimetype: 'image/png' }),
+    ).toThrow(/JPEG, PNG, WEBP or PDF/);
+    expect(validateFraudEvidenceFile({ buffer: png(), mimetype: 'text/html' }).mimeType).toBe('image/png');
+  });
+
+  it('rejects an empty body, a missing file and an oversized buffer', () => {
+    expect(() => validateFraudEvidenceFile({ buffer: Buffer.alloc(0) })).toThrow();
+    expect(() => validateFraudEvidenceFile(undefined)).toThrow();
+    const big = Buffer.concat([Buffer.from([0xff, 0xd8, 0xff]), Buffer.alloc(MAX_FRAUD_EVIDENCE_BYTES)]);
+    expect(() => validateFraudEvidenceFile({ buffer: big })).toThrow(/8 MB/);
+  });
+
+  it('pickEvidenceKeys never throws: prefix-locked, deduped, capped, tolerant of a single string', () => {
+    expect(pickEvidenceKeys(undefined)).toEqual([]);
+    expect(pickEvidenceKeys(null)).toEqual([]);
+    expect(pickEvidenceKeys('website-fraud/one.png')).toEqual(['website-fraud/one.png']);
+    expect(pickEvidenceKeys(['website-fraud/a.jpg', 'website-fraud/a.jpg', 'website-fraud/b.pdf'])).toEqual([
+      'website-fraud/a.jpg',
+      'website-fraud/b.pdf',
+    ]);
+    // Anything outside the prefix is DROPPED, never thrown — the catalog already
+    // refused it before the row; this is the defence for a hand-edited row.
+    expect(pickEvidenceKeys(['careers-cv/x.pdf', 'website-fraud/../x.pdf', 42, 'website-fraud/ok.png'])).toEqual([
+      'website-fraud/ok.png',
+    ]);
+    expect(
+      pickEvidenceKeys(Array.from({ length: MAX_FRAUD_EVIDENCE_FILES + 2 }, (_, i) => `website-fraud/${i}.png`)),
+    ).toHaveLength(MAX_FRAUD_EVIDENCE_FILES);
+    expect(FRAUD_EVIDENCE_KEY_PATTERN.test('website-fraud/3f2b.png')).toBe(true);
+    expect(FRAUD_EVIDENCE_KEY_PATTERN.test('website-fraud/')).toBe(false);
+  });
+
+  it('mimeFromEvidenceKey maps the stored extension and falls back to octet-stream', () => {
+    expect(mimeFromEvidenceKey('website-fraud/a.pdf')).toBe('application/pdf');
+    expect(mimeFromEvidenceKey('website-fraud/a.JPG')).toBe('image/jpeg');
+    expect(mimeFromEvidenceKey('website-fraud/a.webp')).toBe('image/webp');
+    expect(mimeFromEvidenceKey('website-fraud/a.bin')).toBe('application/octet-stream');
+  });
+});
+```
+
+`apps/backend/src/modules/website/handlers/fraud-report.handler.spec.ts`:
+```ts
+import { WebsiteFormKind } from '@prisma/client';
+
+import { FraudReportHandler } from './fraud-report.handler';
+import { WebsiteFormHandlerRegistry, WebsiteFormHandlerInput } from '../website-form-handler';
+
+/**
+ * FRAUD_REPORT (WP3a, P4, RC4/RC5): no target entity — the submission row IS
+ * the record. Evidence is referenced by object KEY only (the keys the website
+ * got from POST /website/v1/uploads/fraud-evidence); the catalog validated
+ * them before the row, the handler only re-applies the prefix lock. Never
+ * throws for a visitor error.
+ */
+function make() {
+  const registry = new WebsiteFormHandlerRegistry();
+  const handler = new FraudReportHandler(registry);
+  return { handler, registry };
+}
+
+const input = (fields: Record<string, string | string[]>, over: Partial<WebsiteFormHandlerInput> = {}): WebsiteFormHandlerInput => ({
+  submissionId: 'sub_9',
+  formKey: 'fraud',
+  kind: WebsiteFormKind.FRAUD_REPORT,
+  locale: 'en',
+  dryRun: false,
+  fields,
+  consentVersion: 'privacy-2026-09',
+  captchaDegraded: false,
+  visitorIp: null,
+  userAgent: null,
+  ...over,
+});
+
+describe('FraudReportHandler', () => {
+  it('registers itself for FRAUD_REPORT only', () => {
+    const { handler, registry } = make();
+    expect(registry.get(WebsiteFormKind.FRAUD_REPORT)).toBe(handler);
+    expect(registry.get(WebsiteFormKind.CAREERS_APPLY)).toBeNull();
+  });
+
+  it('files the report with the deduped, prefix-locked evidence keys and hands the reporter to the core', async () => {
+    const { handler } = make();
+    const result = await handler.handle(
+      input({
+        description: 'Someone using our logo asked for a 2,000 EUR "visa deposit" on WhatsApp.',
+        reporterName: 'R. Reporter',
+        reporterEmail: 'r@example.com',
+        evidenceKeys: ['website-fraud/a.png', 'website-fraud/a.png', 'website-fraud/b.pdf'],
+      }),
+    );
+    expect(result).toEqual({
+      ok: true,
+      detail: {
+        evidenceCount: 2,
+        evidenceKeys: ['website-fraud/a.png', 'website-fraud/b.pdf'],
+        hasReporterContact: true,
+        contactName: 'R. Reporter',
+        email: 'r@example.com',
+        skipNotification: false,
+        skipAutoresponder: false,
+      },
+    });
+  });
+
+  it('an anonymous report is still filed: no contact, autoresponder skipped, staff still notified', async () => {
+    const { handler } = make();
+    const result = await handler.handle(input({ description: 'x'.repeat(40) }));
+    expect(result).toEqual({
+      ok: true,
+      detail: {
+        evidenceCount: 0,
+        evidenceKeys: [],
+        hasReporterContact: false,
+        contactName: null,
+        email: null,
+        skipNotification: false,
+        skipAutoresponder: true,
+      },
+    });
+  });
+
+  it('drops (never throws on) an evidence key outside website-fraud/ — a forged key can never alias another folder', async () => {
+    const { handler } = make();
+    const result = await handler.handle(
+      input({ description: 'x'.repeat(40), evidenceKeys: ['careers-identity/id-card-front.jpg', 'website-fraud/ok.jpg'] }),
+    );
+    expect(result.ok).toBe(true);
+    expect(result.ok && result.detail?.evidenceKeys).toEqual(['website-fraud/ok.jpg']);
+  });
+
+  it('dry run (test token, P2) reports what it would file and nothing else', async () => {
+    const { handler } = make();
+    await expect(
+      handler.handle(input({ description: 'x'.repeat(40), evidenceKeys: ['website-fraud/a.png'] }, { dryRun: true })),
+    ).resolves.toEqual({ ok: true, detail: { dryRun: true, wouldCreate: 'fraud-report', evidenceCount: 1 } });
+  });
+});
+```
+
+`apps/backend/src/modules/website/website-fraud-evidence.service.spec.ts`:
+```ts
+import { NotFoundException } from '@nestjs/common';
+
+import { WebsiteFraudEvidenceService } from './website-fraud-evidence.service';
+
+/**
+ * Upload + read-back of fraud evidence: the object KEY is the only thing ever
+ * persisted or returned (never `UploadResult.url` — the prod bucket is private
+ * and a raw URL 403s), the key must sit under website-fraud/, the test token
+ * class validates but never writes (P2), and the bytes are streamed with the
+ * nosniff + CSP set from applicant-documents.service.ts.
+ */
+function makeService(payloadJson: unknown) {
+  const prisma = {
+    websiteFormSubmission: {
+      findFirst: jest.fn(async (_a: unknown) => (payloadJson === null ? null : { id: 'sub_1', payloadJson })),
+    },
+  };
+  const upload = {
+    uploadFile: jest.fn(async () => ({
+      key: 'website-fraud/abc.png',
+      url: 'http://raw/should-not-leak',
+      bucket: 'b',
+      fileName: 'evidence.png',
+      fileSize: 40,
+      mimeType: 'image/png',
+    })),
+    getFileBuffer: jest.fn(async () => Buffer.from('%PDF-1.7')),
+    presignedGetUrl: jest.fn(async () => 'https://files.example/signed'),
+  };
+  const svc = new WebsiteFraudEvidenceService(prisma as never, upload as never);
+  return { svc, prisma, upload };
+}
+
+function fakeRes() {
+  const headers: Record<string, string> = {};
+  return {
+    headers,
+    setHeader: jest.fn((k: string, v: string) => {
+      headers[k] = v;
+    }),
+    end: jest.fn(),
+  };
+}
+
+const png = () =>
+  Buffer.concat([Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]), Buffer.alloc(32)]);
+
+describe('WebsiteFraudEvidenceService', () => {
+  it('store(): uploads under website-fraud/ with the SNIFFED mime and returns the key, never the url', async () => {
+    const { svc, upload } = makeService({});
+    const out = await svc.store({ buffer: png(), mimetype: 'text/html', size: 40 } as never, 'write');
+    expect(upload.uploadFile).toHaveBeenCalledWith(expect.any(Buffer), 'evidence.png', 'image/png', 'website-fraud');
+    expect(out).toEqual({ data: { key: 'website-fraud/abc.png', mimeType: 'image/png', sizeBytes: 40, dryRun: false } });
+    expect(JSON.stringify(out)).not.toContain('should-not-leak');
+  });
+
+  it('store(): the previous-write class is a real write; the test class validates but never writes an object', async () => {
+    const a = makeService({});
+    await a.svc.store({ buffer: png(), size: 40 } as never, 'previous-write');
+    expect(a.upload.uploadFile).toHaveBeenCalledTimes(1);
+
+    const b = makeService({});
+    const out = await b.svc.store({ buffer: png(), size: 40 } as never, 'test');
+    expect(b.upload.uploadFile).not.toHaveBeenCalled();
+    expect(out).toEqual({ data: { key: null, mimeType: 'image/png', sizeBytes: 40, dryRun: true } });
+  });
+
+  it('store(): bad bytes are a 400 even for the test class', async () => {
+    const { svc, upload } = makeService({});
+    await expect(svc.store({ buffer: Buffer.from('<html>'), size: 6 } as never, 'test')).rejects.toMatchObject({ status: 400 });
+    expect(upload.uploadFile).not.toHaveBeenCalled();
+  });
+
+  it('evidenceKeysOf(): reads payloadJson.fields.evidenceKeys and drops anything outside the prefix', () => {
+    expect(
+      WebsiteFraudEvidenceService.evidenceKeysOf({ fields: { evidenceKeys: ['website-fraud/a.png', 'careers-cv/x.pdf'] } }),
+    ).toEqual(['website-fraud/a.png']);
+    expect(WebsiteFraudEvidenceService.evidenceKeysOf({ fields: { evidenceKeys: 'website-fraud/one.pdf' } })).toEqual([
+      'website-fraud/one.pdf',
+    ]);
+    expect(WebsiteFraudEvidenceService.evidenceKeysOf({ fields: { name: 'no keys' } })).toEqual([]);
+    expect(WebsiteFraudEvidenceService.evidenceKeysOf(null)).toEqual([]);
+    expect(WebsiteFraudEvidenceService.evidenceKeysOf('garbage')).toEqual([]);
+  });
+
+  it('view(): streams inline with nosniff + strict CSP + no-store for pdf', async () => {
+    const { svc, upload } = makeService({ fields: { evidenceKeys: ['website-fraud/a.pdf'] } });
+    const res = fakeRes();
+    await svc.view('sub_1', 0, res as never);
+    expect(upload.getFileBuffer).toHaveBeenCalledWith('website-fraud/a.pdf');
+    expect(res.headers['X-Content-Type-Options']).toBe('nosniff');
+    expect(res.headers['Cache-Control']).toBe('private, no-store');
+    expect(res.headers['Content-Type']).toBe('application/pdf');
+    expect(res.headers['Content-Security-Policy']).toBe("default-src 'none'");
+    expect(res.headers['Content-Disposition']).toMatch(/^inline;/);
+    expect(res.end).toHaveBeenCalled();
+  });
+
+  it('view(): an unknown extension is served as a sandboxed attachment', async () => {
+    const { svc } = makeService({ fields: { evidenceKeys: ['website-fraud/a.bin'] } });
+    const res = fakeRes();
+    await svc.view('sub_1', 0, res as never);
+    expect(res.headers['Content-Type']).toBe('application/octet-stream');
+    expect(res.headers['Content-Security-Policy']).toBe("default-src 'none'; sandbox");
+    expect(res.headers['Content-Disposition']).toMatch(/^attachment;/);
+  });
+
+  it('link(): presigns the key (15-min default) and returns url + fileName', async () => {
+    const { svc, upload } = makeService({ fields: { evidenceKeys: ['website-fraud/a.png'] } });
+    await expect(svc.link('sub_1', 0)).resolves.toEqual({
+      data: { url: 'https://files.example/signed', fileName: 'a.png' },
+    });
+    expect(upload.presignedGetUrl).toHaveBeenCalledWith('website-fraud/a.png');
+  });
+
+  it('404s an unknown submission and an out-of-range index; the kind filter is part of the query', async () => {
+    await expect(makeService(null).svc.link('nope', 0)).rejects.toBeInstanceOf(NotFoundException);
+    await expect(
+      makeService({ fields: { evidenceKeys: ['website-fraud/a.png'] } }).svc.link('sub_1', 3),
+    ).rejects.toBeInstanceOf(NotFoundException);
+    const { svc, prisma } = makeService({ fields: { evidenceKeys: ['website-fraud/a.png'] } });
+    await svc.link('sub_1', 0);
+    // A non-fraud submission id resolves to nothing because the kind is in the WHERE.
+    expect(prisma.websiteFormSubmission.findFirst).toHaveBeenCalledWith({
+      where: { id: 'sub_1', form: { kind: 'FRAUD_REPORT' } },
+      select: { id: true, payloadJson: true },
+    });
+  });
+});
+```
+
+`apps/backend/src/modules/website/careers-fraud-wiring.spec.ts`:
+```ts
+import * as fs from 'fs';
+import * as path from 'path';
+import { GUARDS_METADATA } from '@nestjs/common/constants';
+
+import { IS_PUBLIC_KEY } from '../../common/decorators/public.decorator';
+import { PERMISSION_KEY } from '../permissions/decorators/require-permission.decorator';
+import { WebsiteApiGuard } from './guards/website-api.guard';
+import { WebsiteModuleEnabledGuard } from './guards/website-module-enabled.guard';
+import { WebsiteFormsEvidenceController } from './website-forms-evidence.controller';
+import { WebsitePublicUploadsController } from './website-public-uploads.controller';
+
+/**
+ * Wiring pins for Task 8 (WP3a, P4, RC3). Nothing about a missing module export
+ * fails a unit test — it fails Nest's container at boot, which on the VPS means
+ * a replaced container that never comes up. So the edge is pinned at source
+ * level (the identity-card-upload.spec.ts idiom), and the new public controller's
+ * guard chain + the inbox controller's permission keys are pinned by metadata
+ * (the website-door-conformance.spec.ts idiom).
+ */
+const read = (rel: string) => fs.readFileSync(path.join(__dirname, rel), 'utf8');
+
+describe('careers-public ↔ website module edge', () => {
+  it('CareersPublicModule exports CareersPublicService', () => {
+    const src = read('../careers-public/careers-public.module.ts');
+    expect(src).toMatch(/exports:\s*\[[^\]]*\bCareersPublicService\b[^\]]*\]/);
+  });
+
+  it('WebsiteModule imports CareersPublicModule and UploadModule and never re-provides CareersPublicService', () => {
+    const src = read('./website.module.ts');
+    expect(src).toMatch(/imports:\s*\[[^\]]*\bCareersPublicModule\b/);
+    expect(src).toMatch(/imports:\s*\[[^\]]*\bUploadModule\b/);
+    expect(src).not.toMatch(/providers:\s*\[[^\]]*\bCareersPublicService\b/);
+    expect(src).toMatch(/providers:\s*\[[^\]]*\bCareersApplyHandler\b/);
+    expect(src).toMatch(/providers:\s*\[[^\]]*\bFraudReportHandler\b/);
+    expect(src).toMatch(/providers:\s*\[[^\]]*\bWebsiteFraudEvidenceService\b/);
+  });
+
+  it('the import is one-way: careers-public never imports website', () => {
+    const dir = path.join(__dirname, '../careers-public');
+    for (const f of fs.readdirSync(dir).filter((n) => n.endsWith('.ts'))) {
+      expect(fs.readFileSync(path.join(dir, f), 'utf8')).not.toMatch(/from '\.\.\/website\//);
+    }
+  });
+});
+
+describe('fraud-evidence upload door', () => {
+  it('is class-level @Public() behind [WebsiteModuleEnabledGuard, WebsiteApiGuard] in that order (P1, P7)', () => {
+    expect(Reflect.getMetadata(IS_PUBLIC_KEY, WebsitePublicUploadsController)).toBe(true);
+    expect(Reflect.getMetadata(GUARDS_METADATA, WebsitePublicUploadsController)).toEqual([
+      WebsiteModuleEnabledGuard,
+      WebsiteApiGuard,
+    ]);
+    expect(Reflect.getMetadata(PERMISSION_KEY, WebsitePublicUploadsController.prototype.uploadFraudEvidence)).toBeUndefined();
+  });
+});
+
+describe('evidence read-back', () => {
+  it('both inbox routes sit on website.forms VIEW (P3)', () => {
+    for (const method of ['view', 'link'] as const) {
+      expect(Reflect.getMetadata(PERMISSION_KEY, WebsiteFormsEvidenceController.prototype[method])).toEqual({
+        module: 'website.forms',
+        action: 'VIEW',
+      });
+    }
+  });
+});
+```
+
+- [ ] **Step 7: Run the fraud tests to verify they fail**
+
+```bash
+cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-operations-website/apps/backend
+npx jest src/modules/website/fraud-evidence-file.spec.ts src/modules/website/website-fraud-evidence.service.spec.ts src/modules/website/handlers/fraud-report src/modules/website/careers-fraud-wiring.spec.ts --maxWorkers=2
+```
+Expected: `fraud-evidence-file.spec.ts`, `website-fraud-evidence.service.spec.ts`, `fraud-report.handler.spec.ts` and `careers-fraud-wiring.spec.ts` all fail at import time with `Cannot find module './fraud-evidence-file'` / `'./website-fraud-evidence.service'` / `'./fraud-report.handler'` / `'./website-public-uploads.controller'` (TS2307 from ts-jest). No test body runs. (The careers suites from Part A stay green — they are not in this run.)
+
+- [ ] **Step 8: Implement the fraud half**
+
+8.1 `apps/backend/src/modules/website/fraud-evidence-file.ts`:
+```ts
+import { BadRequestException } from '@nestjs/common';
+
+/**
+ * Fraud-report evidence uploads (WP3a, P4, RC3). Modelled on identity-card-image.ts:
+ * the bytes are sniffed, never the client-claimed multer `mimetype`, because
+ * these objects are streamed back into a staff browser from the Forms inbox.
+ * PDF is allowed here (chat exports arrive as PDFs from phones); HEIC stays
+ * out for the reason identity-card-image.ts gives (no browser renders it).
+ */
+
+/** 8 MB — one phone screenshot or a chat-export PDF; three stay under Apache's 50 MB cap. */
+export const MAX_FRAUD_EVIDENCE_BYTES = 8 * 1024 * 1024;
+
+/** Max evidence objects one report may reference (RC5). */
+export const MAX_FRAUD_EVIDENCE_FILES = 3;
+
+/**
+ * MinIO folder / key prefix. A NEW namespace, deliberately not careers-*: those
+ * prefixes are the applicant viewer's allowlist (applicant-documents.service.ts)
+ * and the careers retention cron's sweep universe. The website purge cron
+ * (Task 10) owns this one through WebsiteFraudEvidenceService.evidenceKeysOf().
+ */
+export const FRAUD_EVIDENCE_FOLDER = 'website-fraud';
+export const FRAUD_EVIDENCE_KEY_PREFIX = `${FRAUD_EVIDENCE_FOLDER}/`;
+
+/** Matches a key this module issued (uploadFile → `${folder}/${uuid}${ext}`). Mirrored in the Task 6 catalog (RC5). */
+export const FRAUD_EVIDENCE_KEY_PATTERN = /^website-fraud\/[A-Za-z0-9._-]+$/;
+
+type Sniffer = { mime: string; ext: string; test: (b: Buffer) => boolean };
+
+const SNIFFERS: readonly Sniffer[] = [
+  {
+    mime: 'image/jpeg',
+    ext: '.jpg',
+    // SOI marker. Every JPEG variant (JFIF, Exif, raw) starts FF D8 FF.
+    test: (b) => b.length > 3 && b[0] === 0xff && b[1] === 0xd8 && b[2] === 0xff,
+  },
+  {
+    mime: 'image/png',
+    ext: '.png',
+    test: (b) =>
+      b.length > 8 &&
+      b.subarray(0, 8).equals(Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a])),
+  },
+  {
+    mime: 'image/webp',
+    ext: '.webp',
+    // RIFF....WEBP — the size field sits between the two literals.
+    test: (b) =>
+      b.length > 12 &&
+      b.subarray(0, 4).toString('ascii') === 'RIFF' &&
+      b.subarray(8, 12).toString('ascii') === 'WEBP',
+  },
+  {
+    mime: 'application/pdf',
+    ext: '.pdf',
+    test: (b) => b.length > 5 && b.subarray(0, 5).toString('ascii') === '%PDF-',
+  },
+];
+
+export type ValidatedFraudEvidence = { buffer: Buffer; mimeType: string; extension: string };
+
+/**
+ * Validate an evidence upload by its CONTENT. Throws 400 with a visitor-safe
+ * message. Used ONLY on the upload route, which runs before any submission row
+ * exists — handlers never throw for visitor errors (RC4).
+ */
+export function validateFraudEvidenceFile(file?: {
+  buffer?: Buffer;
+  size?: number;
+  mimetype?: string;
+}): ValidatedFraudEvidence {
+  if (!file?.buffer || file.buffer.length === 0) {
+    throw new BadRequestException({ code: 'FRAUD_EVIDENCE_MISSING', message: 'Missing "file" field.' });
+  }
+  // multer `limits.fileSize` should have refused this already; belt and braces.
+  if (file.buffer.length > MAX_FRAUD_EVIDENCE_BYTES) {
+    throw new BadRequestException({
+      code: 'FRAUD_EVIDENCE_TOO_LARGE',
+      message: `File exceeds the ${MAX_FRAUD_EVIDENCE_BYTES / (1024 * 1024)} MB limit (got ${file.buffer.length} bytes).`,
+    });
+  }
+  const buffer = file.buffer;
+  const match = SNIFFERS.find((s) => s.test(buffer));
+  if (!match) {
+    throw new BadRequestException({
+      code: 'FRAUD_EVIDENCE_TYPE',
+      message: 'The file does not look like a JPEG, PNG, WEBP or PDF. Screenshots and PDF exports are accepted.',
+    });
+  }
+  return { buffer, mimeType: match.mime, extension: match.ext };
+}
+
+/**
+ * Prefix-locked, deduped, capped list of evidence keys from an untrusted value
+ * (a stored payload field, or the handler input). NEVER throws: the Task 6
+ * catalog already refused a bad key before the row; anything that still fails
+ * here (a hand-edited row) is silently dropped so the report is never lost.
+ * Accepts a bare string as a one-element list.
+ */
+export function pickEvidenceKeys(raw: unknown): string[] {
+  const list = Array.isArray(raw) ? raw : typeof raw === 'string' ? [raw] : [];
+  const keys: string[] = [];
+  for (const k of list) {
+    if (typeof k !== 'string') continue;
+    if (!FRAUD_EVIDENCE_KEY_PATTERN.test(k) || !k.startsWith(FRAUD_EVIDENCE_KEY_PREFIX)) continue;
+    if (keys.includes(k)) continue;
+    keys.push(k);
+    if (keys.length === MAX_FRAUD_EVIDENCE_FILES) break;
+  }
+  return keys;
+}
+
+const EXT_MIME: Record<string, string> = {
+  pdf: 'application/pdf',
+  jpg: 'image/jpeg',
+  jpeg: 'image/jpeg',
+  png: 'image/png',
+  webp: 'image/webp',
+};
+
+/** Mime for read-back, from the extension uploadFile stored (set from the sniffed type). */
+export function mimeFromEvidenceKey(key: string): string {
+  const ext = key.split('.').pop()?.toLowerCase() ?? '';
+  return EXT_MIME[ext] ?? 'application/octet-stream';
+}
+```
+
+8.2 `apps/backend/src/modules/website/website-fraud-evidence.service.ts`:
+```ts
+import { Injectable, Logger, NotFoundException } from '@nestjs/common';
+import { WebsiteFormKind } from '@prisma/client';
+import type { Response } from 'express';
+
+import { PrismaService } from '../../prisma/prisma.service';
+import { UploadService } from '../upload/upload.service';
+import {
+  FRAUD_EVIDENCE_FOLDER,
+  mimeFromEvidenceKey,
+  pickEvidenceKeys,
+  validateFraudEvidenceFile,
+} from './fraud-evidence-file';
+import type { WebsiteBearerClass } from './website.constants';
+
+/** Safe to render INLINE: PDF cannot run script in our origin; images are inert. */
+const INLINE_MIME_TYPES = ['application/pdf', 'image/jpeg', 'image/png', 'image/webp'];
+
+/**
+ * Fraud-report evidence: upload from the website (write / previous-write
+ * token; the test class is a dry run, P2) and hardened read-back for the Forms
+ * inbox. Only the object KEY is ever persisted or returned — the prod bucket is
+ * private (upload.service.ts scrubs any public policy at boot) and a raw URL
+ * 403s there while working in dev, the mistake five features have already
+ * shipped. Read-back copies ApplicantDocumentsService.view/downloadLink header
+ * for header.
+ */
+@Injectable()
+export class WebsiteFraudEvidenceService {
+  private readonly logger = new Logger(WebsiteFraudEvidenceService.name);
+
+  constructor(
+    private readonly prisma: PrismaService,
+    private readonly upload: UploadService,
+  ) {}
+
+  /**
+   * Sniff + store. The test token class (P2) validates the bytes but writes
+   * nothing — a synthetic lead must never leave objects behind. Only the sniffed
+   * mime and extension reach MinIO; the client's name and Content-Type do not.
+   */
+  async store(file: Express.Multer.File | undefined, tokenClass: WebsiteBearerClass) {
+    const v = validateFraudEvidenceFile(file);
+    if (tokenClass === 'test') {
+      return { data: { key: null, mimeType: v.mimeType, sizeBytes: v.buffer.length, dryRun: true } };
+    }
+    const result = await this.upload.uploadFile(v.buffer, `evidence${v.extension}`, v.mimeType, FRAUD_EVIDENCE_FOLDER);
+    this.logger.log(`Fraud evidence stored (${v.mimeType}, ${v.buffer.length} bytes) as ${result.key}`);
+    return { data: { key: result.key, mimeType: v.mimeType, sizeBytes: v.buffer.length, dryRun: false } };
+  }
+
+  /**
+   * Keys referenced by a stored submission payload (`{ fields: { evidenceKeys } }`,
+   * the Task 6 StoredPayload shape — RC5). Re-applies the prefix lock at read
+   * time. The purge cron (Task 10) deletes exactly these keys.
+   */
+  static evidenceKeysOf(payloadJson: unknown): string[] {
+    if (!payloadJson || typeof payloadJson !== 'object') return [];
+    const fields = (payloadJson as { fields?: unknown }).fields;
+    if (!fields || typeof fields !== 'object') return [];
+    return pickEvidenceKeys((fields as { evidenceKeys?: unknown }).evidenceKeys);
+  }
+
+  private async resolve(submissionId: string, index: number) {
+    const row = await this.prisma.websiteFormSubmission.findFirst({
+      where: { id: submissionId, form: { kind: WebsiteFormKind.FRAUD_REPORT } },
+      select: { id: true, payloadJson: true },
+    });
+    if (!row) throw new NotFoundException('Submission not found');
+    const key = WebsiteFraudEvidenceService.evidenceKeysOf(row.payloadJson)[index];
+    if (!key) throw new NotFoundException('Evidence not found');
+    return { key, mime: mimeFromEvidenceKey(key), fileName: key.split('/').pop() ?? 'evidence' };
+  }
+
+  /** Stream the object: inline for pdf/images with a strict no-script header set; sandboxed attachment otherwise. */
+  async view(submissionId: string, index: number, res: Response): Promise<void> {
+    const { key, mime, fileName } = await this.resolve(submissionId, index);
+    const buffer = await this.upload.getFileBuffer(key);
+
+    const safeName = encodeURIComponent(fileName).replace(/['()]/g, '');
+    res.setHeader('X-Content-Type-Options', 'nosniff');
+    res.setHeader('Cache-Control', 'private, no-store');
+    if (INLINE_MIME_TYPES.includes(mime)) {
+      res.setHeader('Content-Type', mime);
+      res.setHeader('Content-Security-Policy', "default-src 'none'");
+      res.setHeader('Content-Disposition', `inline; filename*=UTF-8''${safeName}`);
+    } else {
+      res.setHeader('Content-Type', 'application/octet-stream');
+      res.setHeader('Content-Security-Policy', "default-src 'none'; sandbox");
+      res.setHeader('Content-Disposition', `attachment; filename*=UTF-8''${safeName}`);
+    }
+    res.end(buffer);
+  }
+
+  /** Short-TTL presigned URL (signed against the public endpoint — the only link that works in prod). */
+  async link(submissionId: string, index: number) {
+    const { key, fileName } = await this.resolve(submissionId, index);
+    const url = await this.upload.presignedGetUrl(key);
+    return { data: { url, fileName } };
+  }
+}
+```
+
+8.3 `apps/backend/src/modules/website/handlers/fraud-report.handler.ts`:
+```ts
+import { Injectable } from '@nestjs/common';
+import { WebsiteFormKind } from '@prisma/client';
+
+import { pickEvidenceKeys } from '../fraud-evidence-file';
+import {
+  WebsiteFormHandler,
+  WebsiteFormHandlerInput,
+  WebsiteFormHandlerRegistry,
+  WebsiteFormHandlerResult,
+} from '../website-form-handler';
+
+function str(v: string | string[] | undefined): string | null {
+  return typeof v === 'string' && v.trim() !== '' ? v.trim() : null;
+}
+
+/**
+ * FRAUD_REPORT (WP3a, P4, RC4/RC5): no target entity — the submission row IS
+ * the record (inbox-only). Evidence is referenced by object KEY only (the keys
+ * the website got from POST /website/v1/uploads/fraud-evidence); the inbox
+ * reads them back through WebsiteFraudEvidenceService. The Task 6 catalog
+ * validated the description and the keys before the row; this handler only
+ * re-applies the prefix lock and never throws. The core sends
+ * WEBSITE_FORM_RECEIVED and, when a reporter e-mail exists, the autoresponder.
+ */
+@Injectable()
+export class FraudReportHandler implements WebsiteFormHandler {
+  readonly kinds = [WebsiteFormKind.FRAUD_REPORT] as const;
+
+  constructor(registry: WebsiteFormHandlerRegistry) {
+    registry.register(this);
+  }
+
+  async handle(input: WebsiteFormHandlerInput): Promise<WebsiteFormHandlerResult> {
+    const f = input.fields;
+    const evidenceKeys = pickEvidenceKeys(f.evidenceKeys);
+    if (input.dryRun) {
+      return { ok: true, detail: { dryRun: true, wouldCreate: 'fraud-report', evidenceCount: evidenceKeys.length } };
+    }
+    const contactName = str(f.reporterName);
+    const email = str(f.reporterEmail);
+    const phone = str(f.reporterPhone);
+    return {
+      ok: true,
+      detail: {
+        evidenceCount: evidenceKeys.length,
+        evidenceKeys,
+        hasReporterContact: Boolean(email || phone),
+        contactName,
+        email,
+        skipNotification: false,
+        skipAutoresponder: email === null,
+      },
+    };
+  }
+}
+```
+
+8.4 `apps/backend/src/modules/website/website-public-uploads.controller.ts`:
+```ts
+import { Controller, Post, UploadedFile, UseGuards, UseInterceptors } from '@nestjs/common';
+import { FileInterceptor } from '@nestjs/platform-express';
+import { ApiConsumes, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { Throttle } from '@nestjs/throttler';
+
+import { Public } from '../../common/decorators/public.decorator';
+import { TokenClass } from './decorators/token-class.decorator';
+import { MAX_FRAUD_EVIDENCE_BYTES } from './fraud-evidence-file';
+import { WebsiteApiGuard } from './guards/website-api.guard';
+import { WebsiteModuleEnabledGuard } from './guards/website-module-enabled.guard';
+import { WebsiteFraudEvidenceService } from './website-fraud-evidence.service';
+import type { WebsiteBearerClass } from './website.constants';
+
+/**
+ * The ONE upload route on the public website door (RC3, amending P5). The CV
+ * still goes through the existing public `POST /api/careers/upload-cv`.
+ *
+ * `@Public()` skips JwtAuthGuard / PermissionsGuard and satisfies
+ * PermissionConformanceService; the class-level guard chain is the real gate,
+ * in order: WebsiteModuleEnabledGuard (flag → 404, P1) then WebsiteApiGuard
+ * (write / test / previous-write Bearer → 401, P7). Multipart, not base64
+ * JSON: the global JSON body limit is 1 MB (main.ts). `@Throttle` is inert
+ * until RATE_LIMITING_ENABLED (rate-limit.guard.ts) — the token, the sniff and
+ * the size cap are the controls; the decorator documents intent, as on
+ * careers-public's upload routes.
+ */
+@ApiTags('Website (public door)')
+@Controller('website/v1/uploads')
+@Public()
+@UseGuards(WebsiteModuleEnabledGuard, WebsiteApiGuard)
+export class WebsitePublicUploadsController {
+  constructor(private readonly evidence: WebsiteFraudEvidenceService) {}
+
+  @Post('fraud-evidence')
+  @Throttle({ default: { limit: 10, ttl: 60_000 } })
+  @ApiConsumes('multipart/form-data')
+  @ApiOperation({
+    summary:
+      '[website] Store one fraud-report evidence file (JPEG/PNG/WEBP/PDF, ≤ 8 MB, content-sniffed). Returns {key} only; the test token class is a dry run.',
+  })
+  @UseInterceptors(FileInterceptor('file', { limits: { fileSize: MAX_FRAUD_EVIDENCE_BYTES, files: 1 } }))
+  uploadFraudEvidence(
+    @UploadedFile() file: Express.Multer.File | undefined,
+    @TokenClass() tokenClass: WebsiteBearerClass,
+  ) {
+    return this.evidence.store(file, tokenClass);
+  }
+}
+```
+
+8.5 `apps/backend/src/modules/website/website-forms-evidence.controller.ts`:
+```ts
+import { Controller, Get, Param, ParseIntPipe, Res } from '@nestjs/common';
+import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
+import type { Response } from 'express';
+
+import { RequirePermission } from '../permissions/decorators/require-permission.decorator';
+import { WebsiteFraudEvidenceService } from './website-fraud-evidence.service';
+
+/**
+ * Forms-inbox read-back of fraud evidence (P3: `website.forms` VIEW), in Task 7's
+ * `website/forms/submissions/*` family (RC1). Two doors, both key-based: a
+ * hardened stream (nosniff + CSP) for the inbox's inline viewer and a
+ * 15-minute presigned URL for the Download button — never a raw object URL
+ * (the private-bucket lesson). The `:index` is the position in
+ * `payloadJson.fields.evidenceKeys`.
+ */
+@ApiTags('Website')
+@ApiBearerAuth()
+@Controller('website/forms')
+export class WebsiteFormsEvidenceController {
+  constructor(private readonly evidence: WebsiteFraudEvidenceService) {}
+
+  @RequirePermission('website.forms', 'VIEW')
+  @Get('submissions/:id/evidence/:index/view')
+  @ApiOperation({ summary: 'Stream fraud evidence inline (pdf/images, nosniff + strict CSP); sandboxed attachment otherwise' })
+  @ApiParam({ name: 'id' })
+  @ApiParam({ name: 'index' })
+  view(@Param('id') id: string, @Param('index', ParseIntPipe) index: number, @Res() res: Response) {
+    return this.evidence.view(id, index, res);
+  }
+
+  @RequirePermission('website.forms', 'VIEW')
+  @Get('submissions/:id/evidence/:index/link')
+  @ApiOperation({ summary: 'Short-lived presigned download URL for one evidence object' })
+  @ApiParam({ name: 'id' })
+  @ApiParam({ name: 'index' })
+  link(@Param('id') id: string, @Param('index', ParseIntPipe) index: number) {
+    return this.evidence.link(id, index);
+  }
+}
+```
+
+8.6 `apps/backend/src/modules/website/website.module.ts` — the fraud half of the module edit (commit 2; Step 3.4's state is what commit 1 carried). Add these four import lines directly after the Step 3.4 line `import { CareersApplyHandler } from './handlers/careers-apply.handler';`:
+```ts
+import { FraudReportHandler } from './handlers/fraud-report.handler';
+import { WebsiteFraudEvidenceService } from './website-fraud-evidence.service';
+import { WebsitePublicUploadsController } from './website-public-uploads.controller';
+import { WebsiteFormsEvidenceController } from './website-forms-evidence.controller';
+```
+Then two anchored edits inside the `@Module({ … })` decorator (the `imports:` line is already the Step 3.4 one; the constructor's `registry.register({` block is untouched):
+- in `controllers: [`, directly after the line `    WebsiteFormsInboxController,` (Task 7) insert:
+```ts
+    WebsitePublicUploadsController,
+    WebsiteFormsEvidenceController,
+```
+- in `providers: [`, directly after the line `    CareersApplyHandler,` (Step 3.4) insert:
+```ts
+    FraudReportHandler,
+    WebsiteFraudEvidenceService,
+```
+The decorator this task leaves behind (RC15) — the Step 3.4 block plus the lines above, nothing reordered, `exports` unchanged:
+```ts
+@Module({
+  // SalesModule exports InquiryService (sales.module.ts:54) — the ONE-WAY edge the
+  // website → Sales handler needs; Sales never imports website (the
+  // call-center.module.ts precedent). RedisModule, ConfigModule and
+  // ActivitiesModule are @Global().
+  // WP3a Task 8: one-way edges. CareersPublicModule now exports
+  // CareersPublicService; its controllers are already registered by
+  // AppModule, so importing it here duplicates no route. UploadModule
+  // exports UploadService (fraud evidence, CV URL rebuild).
+  imports: [ConfigModule, PrismaModule, PermissionsModule, SalesModule, CareersPublicModule, UploadModule],
+  controllers: [
+    WebsiteStatusController,
+    WebsiteIntegrationsController,
+    WebsitePublicController,
+    WebsiteFormsInboxController,
+    WebsitePublicUploadsController,
+    WebsiteFormsEvidenceController,
+  ],
+  // Both guards are providers of THIS module (the call-center.module.ts rule)
+  // so DI can hand WebsiteApiGuard its config service. The forms core's three
+  // collaborators (notify / abuse / autoresponder) are the contract shells
+  // Task 10 fills in (RC20). WebsiteInquiryHandler is never injected anywhere —
+  // Nest still instantiates every listed provider at boot, and its constructor
+  // registers it with WebsiteFormHandlerRegistry.
+  providers: [
+    WebsiteModuleEnabledGuard,
+    WebsiteApiGuard,
+    WebsiteIntegrationConfigService,
+    WebsitePingService,
+    WebsiteCaptchaService,
+    WebsiteFormHandlerRegistry,
+    WebsiteNotifyService,
+    WebsiteAbuseService,
+    WebsiteAutoresponderService,
+    WebsiteFormsService,
+    WebsiteInquiryHandler,
+    WebsiteFormsInboxService,
+    CareersApplyHandler,
+    FraudReportHandler,
+    WebsiteFraudEvidenceService,
+  ],
+  exports: [WebsiteIntegrationConfigService],
+})
+```
+(`PrismaModule`, `RedisModule`, `ActivitiesModule` and `PermissionsModule` are `@Global()`; `CareersPublicModule` imports `NotificationsModule, UploadModule, OfferLetterModule, InternalRecruitmentModule, AiInterviewerModule, HrmModule` — none of them imports `WebsiteModule`, so there is no cycle. The three handler providers self-register in their constructors, so `WebsiteFormsService` needs no edit. Task 9 appends `NotificationsModule` / `WebsitePublicNewsletterController` / `WebsiteNewsletterService, NewsletterHandler` and Task 10 its two crons to this same block.)
+
+8.7 `apps/backend/test/permissions/website-conformance.spec.ts` (Task 1 file, as Task 7 left it) — add directly after the line `import { WebsiteFormsInboxController } from '../../src/modules/website/website-forms-inbox.controller';` (Task 7's import):
+```ts
+import { WebsitePublicUploadsController } from '../../src/modules/website/website-public-uploads.controller';
+import { WebsiteFormsEvidenceController } from '../../src/modules/website/website-forms-evidence.controller';
+```
+and replace the line (as Task 7 left it)
+```ts
+const CONTROLLERS = [WebsiteStatusController, WebsiteIntegrationsController, WebsitePublicController, WebsiteFormsInboxController];
+```
+with
+```ts
+const CONTROLLERS = [WebsiteStatusController, WebsiteIntegrationsController, WebsitePublicController, WebsiteFormsInboxController, WebsitePublicUploadsController, WebsiteFormsEvidenceController];
+```
+(the scanner counts the upload route as public via the class-level `@Public()`, which `PermissionConformanceService` reads with `getAllAndOverride([handler, class])`, and the two evidence routes as decorated `website.forms:VIEW`).
+
+- [ ] **Step 9: Run tests** (the whole module, both halves wired)
+
+```bash
+cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-operations-website/apps/backend
+npx jest src/modules/website src/modules/careers-public test/permissions/website-conformance.spec.ts test/permissions/repo-invariants.spec.ts --maxWorkers=2
+npx tsc --noEmit -p tsconfig.json
+```
+Expected: every website suite green including the six new ones (`fraud-evidence-file` 5, `careers-apply.logic` 5, `careers-apply.handler` 9, `fraud-report.handler` 5, `website-fraud-evidence.service` 8, `careers-fraud-wiring` 5 tests); `careers-public` suites unchanged and green (`identity-card-upload.spec`, `careers-retention.cron.spec`, `candidate-*`); `website-conformance.spec` green with the two new controllers scanned (`errors: []`, `undecorated: []`); `repo-invariants.spec` green (route census honours the class-level `@Public()`; the catalog hash is untouched — no new key); `tsc` clean (run alone — one build/typecheck job at a time on this machine).
+
+Then the boot-time property (the module export edge is invisible to unit tests): with the dev stack up and `WEBSITE_MODULE_ENABLED=true` in `docker-compose.yml`,
+```bash
+cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-operations-website
+docker compose up -d --build backend && sleep 25 && curl -s -o /dev/null -w '%{http_code}\n' localhost:4001/api/health
+docker compose logs backend --since 2m | grep -i "can't resolve dependencies\|Nest can't resolve\|registered twice" || echo 'DI clean'
+```
+Expected: `200` and `DI clean` — no `Nest can't resolve dependencies of CareersApplyHandler (…)` and no `Website form handler for … registered twice`.
+
+- [ ] **Step 10: Commit 2** (the fraud files, the wiring spec, `website.module.ts` at its Step 8.6 state and the conformance spec)
+
+```bash
+cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-operations-website
+git add apps/backend/src/modules/website/website.module.ts \
+  apps/backend/src/modules/website/fraud-evidence-file.ts \
+  apps/backend/src/modules/website/fraud-evidence-file.spec.ts \
+  apps/backend/src/modules/website/website-fraud-evidence.service.ts \
+  apps/backend/src/modules/website/website-fraud-evidence.service.spec.ts \
+  apps/backend/src/modules/website/website-public-uploads.controller.ts \
+  apps/backend/src/modules/website/website-forms-evidence.controller.ts \
+  apps/backend/src/modules/website/handlers/fraud-report.handler.ts \
+  apps/backend/src/modules/website/handlers/fraud-report.handler.spec.ts \
+  apps/backend/src/modules/website/careers-fraud-wiring.spec.ts \
+  apps/backend/test/permissions/website-conformance.spec.ts
+git commit -m "feat(website): FRAUD_REPORT with the one evidence upload route and key-only, hardened read-back (WP3a, P4, RC3)
+
+POST /website/v1/uploads/fraud-evidence (@Public + flag/token guards,
+multipart, magic-byte sniff, ≤ 8 MB, stored under website-fraud/, returns
+the key only; the test token class validates but writes nothing). The
+handler files the report as the submission row itself with prefix-locked
+evidence keys. The inbox streams evidence with nosniff + strict CSP or
+presigns it for 15 minutes on website.forms VIEW; evidenceKeysOf() is the
+purge cron's list of objects to delete.
+
+Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
+```
+
+---
+
+---
+

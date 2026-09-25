@@ -1,0 +1,102 @@
+import { screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { PostCard } from '../PostCard';
+import { getCollection } from '@/content/collections';
+import { BLOCK_STRINGS, testBundle } from '@/test/bundle';
+import { renderWithIntl } from '@/test/render';
+
+// Rows satisfy T0b's `BlogPostSchema` exactly (`src/content/collections.ts`, W33): key +
+// per-locale slug/title/excerpt/body (W28), the category enum and its label id.
+const rows = [
+  {
+    key: 'turkey-work-permit-process-employer-guide',
+    slug: { tr: 'calisma-izni-sureci', en: 'turkey-work-permit-process-employer-guide' },
+    title: { tr: 'Çalışma izni süreci', en: 'Turkey work permit process' },
+    excerpt: { tr: 'Adım adım.', en: 'Step by step.' },
+    category: 'workPermits',
+    categoryLabelId: 'p.cat',
+    author: 'JobsAdmire Editorial',
+    publishedAt: '2026-01-12',
+    readMinutes: 5,
+    hasBody: { tr: true, en: true },
+    body: { tr: null, en: null },
+  },
+];
+const bundle = testBundle({
+  strings: { ...BLOCK_STRINGS, 'p.cat': 'İş izinleri' },
+  collections: { blog: rows },
+});
+// The parsed row through T0b's own accessor, never the literal.
+const post = getCollection(bundle, 'blog')[0];
+
+describe('PostCard', () => {
+  it('links the title to the locale slug and formats the byline', () => {
+    renderWithIntl(<PostCard bundle={bundle} locale="tr" post={post} />, { locale: 'tr' });
+    expect(screen.getByRole('link', { name: 'Çalışma izni süreci' })).toHaveAttribute(
+      'href',
+      '/blog/calisma-izni-sureci',
+    );
+    expect(screen.getByRole('heading', { level: 3 })).toHaveTextContent('Çalışma izni süreci');
+    expect(screen.getByText('İş izinleri')).toBeInTheDocument(); // t(categoryLabelId)
+    expect(screen.getByText('Adım adım.')).toBeInTheDocument();
+    expect(screen.getByText('12 Ocak 2026 · 5 dk okuma')).toBeInTheDocument();
+    expect(screen.getByText("İngilizce'de de var")).toBeInTheDocument();
+    // no cover given → the NAMED placeholder is what the launch profile counts (D26, W55)
+    expect(document.querySelector('[data-placeholder]')).toHaveAttribute(
+      'data-placeholder',
+      'blog-cover-turkey-work-permit-process-employer-guide',
+    );
+  });
+
+  it('uses the English slug/title under /en and drops the pill without a translation', () => {
+    renderWithIntl(
+      <PostCard
+        bundle={bundle}
+        locale="en"
+        post={{ ...post, hasBody: { tr: false, en: true } }}
+        categoryLabel="Work permits"
+      />,
+      { locale: 'en' },
+    );
+    expect(screen.getByRole('link', { name: 'Turkey work permit process' })).toHaveAttribute(
+      'href',
+      '/en/blog/turkey-work-permit-process-employer-guide',
+    );
+    expect(screen.queryByText("Türkçe'de de var")).toBeNull();
+    expect(screen.getByText('12 January 2026 · 5 min read')).toBeInTheDocument();
+    expect(screen.getByText('Work permits')).toBeInTheDocument(); // categoryLabel override
+  });
+
+  it('featured variant adds the FEATURED pill, an h2 and the real cover', () => {
+    renderWithIntl(
+      <PostCard
+        bundle={bundle}
+        locale="tr"
+        post={post}
+        variant="featured"
+        headingLevel={2}
+        coverSrc="/brand/ja-mark.png"
+      />,
+      { locale: 'tr' },
+    );
+    expect(screen.getByText('ÖNE ÇIKAN')).toBeInTheDocument();
+    expect(screen.getByRole('heading', { level: 2 })).toBeInTheDocument();
+    expect(document.querySelector('[data-placeholder]')).toBeNull();
+  });
+
+  it('renders nothing for a locale the post is not written in (W33)', () => {
+    const { container } = renderWithIntl(
+      <PostCard
+        bundle={bundle}
+        locale="tr"
+        post={{
+          ...post,
+          slug: { tr: null, en: post.slug.en },
+          title: { tr: null, en: post.title.en },
+        }}
+      />,
+      { locale: 'tr' },
+    );
+    expect(container).toBeEmptyDOMElement();
+  });
+});

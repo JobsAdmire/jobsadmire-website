@@ -1,0 +1,805 @@
+# Review package: 78d8b42..f1fe57e
+
+## Commits
+f1fe57e fix(analytics): clearConsent re-denies consent via gtag
+4221bc9 fix(analytics): consent withdrawal, per-session conversion dedupe, URL page param, banner gated on a container id
+
+## Files changed
+ docs/ANALYTICS.md                                  |  8 ++--
+ e2e/thank-you.spec.ts                              | 42 ++++++++++++--------
+ src/analytics/ConversionPing.tsx                   | 34 ++++++++++++----
+ src/analytics/consent.test.ts                      | 43 +++++++++++++++++++-
+ src/analytics/consent.ts                           | 46 ++++++++++++++++------
+ src/analytics/forms.ts                             |  8 ++++
+ src/analytics/track.test.ts                        | 14 +++++++
+ src/analytics/track.ts                             | 12 ++++--
+ src/app/[locale]/layout.tsx                        |  6 ++-
+ src/app/[locale]/thank-you/page.tsx                | 17 ++++----
+ src/design/chrome/CookiePreferencesButton.tsx      | 18 +++++++++
+ src/design/chrome/Footer.tsx                       |  5 ++-
+ src/design/chrome/__tests__/ConsentBanner.test.tsx | 14 ++++++-
+ src/design/chrome/__tests__/Footer.test.tsx        |  9 +++++
+ src/messages/en.json                               |  3 +-
+ src/messages/tr.json                               |  3 +-
+ 16 files changed, 224 insertions(+), 58 deletions(-)
+
+## Diff
+diff --git a/docs/ANALYTICS.md b/docs/ANALYTICS.md
+index 0cddeb8..a5f4bf8 100644
+--- a/docs/ANALYTICS.md
++++ b/docs/ANALYTICS.md
+@@ -8,21 +8,23 @@ Full context: plan D13. IDs and the GTM container inventory are config values, n
+ 2. `url_passthrough` and `ads_data_redaction` are enabled so Ads conversion measurement degrades gracefully under denial rather than breaking.
+ 3. GTM loads via `@next/third-parties`.
+ 4. **GA4 is loaded only through GTM** — never a direct `gtag.js`/`analytics.js` include anywhere in the codebase. This is a hard rule, not a preference: it's the only way the GTM container inventory (below) stays the single source of truth for what fires.
+ 
+ ### How that order is realised in code
+ 
+ `src/analytics/GtmLoader.tsx` renders `CONSENT_DEFAULT_SCRIPT` (from `src/analytics/consent.ts`) through `next/script` at `strategy="beforeInteractive"`, then `GoogleTagManager` from `@next/third-parties/google`. It is mounted from `src/app/[locale]/layout.tsx` — the root layout, which is what makes `beforeInteractive` legal — and only when `settings.analytics.consentMode` is true. With `settings.analytics.gtmId === null` (the Phase A bundle) **only the defaults ship**: the container loads the moment the owner fills the id in the Integrations screen (Phase B), and the first tag it ever loads starts denied.
+ 
+ ### The consent banner
+ 
+-`src/design/chrome/ConsentBanner.tsx` (client) is mounted from the same root layout, after `SiteChrome`. It reads the choice through `useSyncExternalStore` — never during render, never from an effect — so a returning visitor never sees it flash (R27). The choice is stored twice: `localStorage.ja_consent_v1` and a 180-day `ja_consent_v1` cookie (`SameSite=Lax`), the cookie being the fallback when storage is blocked. `writeConsent` pushes `consent_update` to the `dataLayer`, calls `gtag('consent','update',…)` when the default script is present, and dispatches the `ja:consent` window event the banner subscribes to.
++`src/design/chrome/ConsentBanner.tsx` (client) is mounted from the same root layout, after `SiteChrome`, **and only when `analytics.consentMode && analytics.gtmId`** (R38): with no container id nothing can fire, so asking for consent would be theatre. It reads the choice through `useSyncExternalStore` — never during render, never from an effect — so a returning visitor never sees it flash (R27). The choice is stored twice: `localStorage.ja_consent_v1` and a 180-day `ja_consent_v1` cookie (`SameSite=Lax; Secure`), the cookie being the fallback when storage is blocked. `writeConsent` pushes `consent_update` to the `dataLayer`, calls `gtag('consent','update',…)` when the default script is present, and dispatches the `ja:consent` window event the banner subscribes to.
++
++**Withdrawal (R36).** The banner's copy promises the visitor can change their mind, so `clearConsent()` removes the localStorage key, expires the cookie (`Max-Age=0`) and dispatches the same event — the state returns to `unknown` and the sheet re-opens. `src/design/chrome/CookiePreferencesButton.tsx` ("Çerez tercihleri" / "Cookie preferences", `sys.consent.manage`) sits in the footer's legal row and is the visitor's door to it; it is a leaf client component that receives only its label, so the server-rendered Footer stays a server component.
+ 
+ ## IDs (config values — CMS-driven in Phase B, env/constants in Phase A)
+ 
+ | ID                       | Value            |
+ | ------------------------ | ---------------- |
+ | GA4 Measurement ID       | `G-77Y5KBV97L`   |
+ | GTM Container ID         | `GTM-N2CLWJWJ`   |
+ | Google Ads Conversion ID | `AW-17096273578` |
+ 
+ These are public identifiers (they ship in the page source by nature of how GTM/GA4/Ads work) — they are config values, not secrets, and belong in the Integrations screen (D12) in Phase B with a **test button** that fires a verifiable test event.
+@@ -34,29 +36,29 @@ The allowlist lives in one place — `ALLOWED_PARAMS` in `src/analytics/track.ts
+ | Event             | Fires on                                                                   | Parameter allowlist                   |
+ | ----------------- | -------------------------------------------------------------------------- | ------------------------------------- |
+ | `generate_lead`   | A form's successful submission                                             | `form_key`, `page`, `locale`          |
+ | `conversion`      | Arrival at `/tesekkurler?form=<key>`, once per mount, known form keys only | `form_key`, `page`, `locale`          |
+ | `call_click`      | Phone tap/click (header, footer, mobile bottom bar, page CTAs)             | `page`, `locale`, `placement`         |
+ | `whatsapp_click`  | WhatsApp CTA/FAB click                                                     | `page`, `locale`, `placement`         |
+ | `email_click`     | `mailto:` link click                                                       | `page`, `locale`, `placement`         |
+ | `calculator_use`  | Hiring-cost calculator interaction                                         | `page`, `locale`, `role`, `headcount` |
+ | `language_switch` | TR↔EN switch                                                               | `from`, `to`                          |
+ 
+-`page` is next-intl's `usePathname()` — the **internal** pathname (`/thank-you`), identical in both locales, with `locale` carrying the language dimension; it is not the localized slug.
++`page` is `usePathname()` from **`next/navigation`** — the real URL pathname the visitor's address bar shows (`/tesekkurler`, `/en/thank-you`), not next-intl's internal route key (R35). `track()` also copies only values whose `typeof` is `'string'` or `'number'`: an object, an array or a `null` under an allow-listed key is a caller handing over raw form state, and it is dropped rather than pushed.
+ 
+ **Coverage:** all 14 pages instrumented — this is a Gate A checklist item, not optional per-page. **Parameter allowlist rule:** no event, on any page, ever carries a candidate name, phone number, email, free-text form content, or any other identifier a visitor typed into a form. This is enforced in `track()` itself, not by caller discipline: the event only ever sees `form_key` and page context, never the submitted fields.
+ 
+ ## Conversion
+ 
+ Fires on `/tesekkurler?form=<key>` — the single navigation target every form's success path uses (D13, `docs/PRD.md` §2). This is why the inline-success-panel pattern from the design package was explicitly overridden: Ads conversion measurement needs a real navigation to attach to, and GA4/GTM event-only conversions on an SPA-style panel are the failure mode the plan calls out ("conversion orphaned" risk, plan §9).
+ 
+-`src/app/[locale]/thank-you/page.tsx` whitelists `?form=` against the five known keys — `hire`, `contact`, `partner`, `careers`, `newsletter` — and renders a form-specific line for each. An unrecognised or missing key still renders the page, but **fires no conversion**: a stale or hand-typed link is not a lead. The event itself comes from `ConversionPing` (client, renders nothing), which fires once per mount behind a ref guard so React's dev double-invoke cannot double-count. The page is `noindex` regardless of any later page record, and is absent from both `robots.txt` and the sitemap.
++`src/app/[locale]/thank-you/page.tsx` whitelists `?form=` against the five known keys — `hire`, `contact`, `partner`, `careers`, `newsletter` — and renders a form-specific line for each. An unrecognised or missing key still renders the page, but **fires no conversion**: a stale or hand-typed link is not a lead. The event itself comes from `ConversionPing` (client, renders nothing). It is deduped twice over (R37): a `useRef` guard for React's dev double-invoke, and `sessionStorage['ja_conv:<formKey>:<pathname>']` for the whole session — so a reload, a back-forward restore or a re-render cannot inflate the count, while a different form key (or the same form on another path) still counts. The page renders it with `key={formKey}` so a client-side navigation between keys remounts it. With storage blocked (private mode) the dedupe is skipped and the event fires: losing a lead is worse than counting one twice. The page is `noindex` regardless of any later page record, and is absent from both `robots.txt` and the sitemap.
+ 
+ ## Vercel Web Analytics as the consent-independent truth
+ 
+ GA4 numbers are consent-gated and will always undercount. **Vercel Web Analytics** (and Speed Insights) run independent of the consent banner and are the number used for the 12-week post-launch traffic watch (`docs/SEO.md`) and any GA4-vs-reality sanity check. **GA4 is never compared across the launch boundary** — old-site GA4 and new-site GA4 are different properties/configurations and a raw before/after comparison is not meaningful; use GSC clicks and Vercel Web Analytics for that comparison instead.
+ 
+ ## Weekly three-way reconciliation
+ 
+ Form submissions (Operations `WebsiteFormSubmission` count) vs. `generate_lead` events (GA4) vs. Ads conversions — run weekly during the 12-week watch. A mismatch in either direction is the fastest signal that either the conversion page isn't being reached (forms work, no `generate_lead`) or forms are silently failing while WhatsApp absorbs the traffic (`generate_lead` low, WhatsApp clicks high).
+ 
+ ## GTM container inventory (export in WP0)
+diff --git a/e2e/thank-you.spec.ts b/e2e/thank-you.spec.ts
+index d9e4050..0eae593 100644
+--- a/e2e/thank-you.spec.ts
++++ b/e2e/thank-you.spec.ts
+@@ -1,61 +1,69 @@
+ import { test, expect } from '@playwright/test';
+ 
+ type DataLayerEntry = Record<string, unknown>;
+ 
+ const dataLayer = (page: import('@playwright/test').Page) =>
+   page.evaluate(
+     () => (window as unknown as { dataLayer?: DataLayerEntry[] }).dataLayer ?? [],
+   ) as Promise<DataLayerEntry[]>;
+ 
++const conversions = async (page: import('@playwright/test').Page, formKey: string) =>
++  (await dataLayer(page)).filter((e) => e.event === 'conversion' && e.form_key === formKey);
++
+ test('the Turkish conversion page is noindex and fires the conversion once', async ({ page }) => {
+   const res = await page.goto('/tesekkurler?form=hire');
+   expect(res?.status()).toBe(200);
+   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
+   await expect(page.locator('h1')).toHaveCount(1);
+ 
+-  await expect
+-    .poll(async () =>
+-      (await dataLayer(page)).filter((e) => e.event === 'conversion' && e.form_key === 'hire'),
+-    )
+-    .toHaveLength(1);
++  await expect.poll(async () => conversions(page, 'hire')).toHaveLength(1);
++  expect((await conversions(page, 'hire'))[0]).toMatchObject({
++    page: '/tesekkurler',
++    locale: 'tr',
++  });
++
++  // R37: a reload (or a back-forward restore) must not re-count the same lead — the
++  // per-session key survives the navigation, and the fresh dataLayer stays empty of it.
++  await page.reload();
++  await page.waitForTimeout(300);
++  expect(await conversions(page, 'hire')).toHaveLength(0);
+ });
+ 
+ test('the English conversion page answers under /en', async ({ page }) => {
+   const res = await page.goto('/en/thank-you?form=contact');
+   expect(res?.status()).toBe(200);
+   await expect(page.locator('html')).toHaveAttribute('lang', 'en');
+   await expect(page.locator('h1')).toHaveCount(1);
+ });
+ 
+ test('an unknown form key renders the page without firing a conversion', async ({ page }) => {
+   await page.goto('/tesekkurler?form=profile_select');
+   await expect(page.locator('h1')).toHaveCount(1);
+   expect((await dataLayer(page)).filter((e) => e.event === 'conversion')).toHaveLength(0);
+ });
+ 
+-test('the consent sheet shows once and stores the choice', async ({ page }) => {
++test('no container id means no consent sheet, but the denied defaults still ship', async ({
++  page,
++}) => {
+   await page.goto('/');
+-  const banner = page.getByTestId('consent-banner');
+-  await expect(banner).toBeVisible();
+-  await expect(banner).toHaveAttribute('role', 'region');
++  // R38: the Phase A bundle carries `gtmId: null`, so nothing can fire and asking for consent
++  // would be theatre. The accept/reject flow itself is covered in ConsentBanner.test.tsx.
++  await expect(page.getByTestId('consent-banner')).toHaveCount(0);
++  expect(await page.evaluate(() => localStorage.getItem('ja_consent_v1'))).toBeNull();
+ 
+-  // Denied by default until the visitor chooses (D13): the inline script runs before any tag,
+-  // so `gtag` exists and the very first dataLayer entries are the denied defaults.
++  // The defaults run regardless, before any tag: `gtag` exists and denies everything.
+   const defaults = await page.evaluate(() => ({
+     gtag: typeof (window as unknown as { gtag?: unknown }).gtag,
+     first: Object.assign({}, (window as unknown as { dataLayer?: unknown[] }).dataLayer?.[0]),
+   }));
+   expect(defaults.gtag).toBe('function');
+   expect(defaults.first).toMatchObject({
+     0: 'consent',
+     1: 'default',
+     2: { ad_storage: 'denied', analytics_storage: 'denied' },
+   });
++  expect(await page.locator('script[src*="googletagmanager.com"]').count()).toBe(0);
+ 
+-  await banner.getByRole('button', { name: /kabul et/i }).click();
+-  await expect(banner).toBeHidden();
+-  expect(await page.evaluate(() => localStorage.getItem('ja_consent_v1'))).toBe('granted');
+-
+-  await page.reload();
+-  await expect(page.getByTestId('consent-banner')).toHaveCount(0);
++  // The withdrawal door is in the footer whether or not the sheet is mounted.
++  await expect(page.getByRole('button', { name: 'Çerez tercihleri' })).toHaveCount(1);
+ });
+diff --git a/src/analytics/ConversionPing.tsx b/src/analytics/ConversionPing.tsx
+index 13b1c8b..3bb1e29 100644
+--- a/src/analytics/ConversionPing.tsx
++++ b/src/analytics/ConversionPing.tsx
+@@ -1,22 +1,42 @@
+ 'use client';
+ import { useEffect, useRef } from 'react';
+-import { usePathname } from '@/i18n/navigation';
++import { usePathname } from 'next/navigation';
++import type { FormKey } from './forms';
+ import { track } from './track';
+ 
+-/** The conversion, fired once on arrival at `/tesekkurler?form=<key>` (D13) — the single
++/** The conversion, fired on arrival at `/tesekkurler?form=<key>` (D13) — the single
+  *  navigation every form's success path lands on. Renders nothing; carries only the form key,
+- *  the path and the locale, never anything the visitor typed. */
+-export function ConversionPing({ formKey, locale }: { formKey: string; locale: string }) {
++ *  the path and the locale, never anything the visitor typed.
++ *
++ *  Deduped once per session per form+path (R37), so a reload, a back-forward restore or a
++ *  re-render cannot inflate the count — while a different form key, or the same form on
++ *  another path, still counts. The page renders this with `key={formKey}` so a client-side
++ *  navigation between keys remounts it rather than silently reusing the fired instance. */
++export function ConversionPing({ formKey, locale }: { formKey: FormKey; locale: string }) {
++  // `next/navigation`'s pathname is the real URL (`/tesekkurler`), not next-intl's internal
++  // route key — R35: the analytics `page` param is what the visitor's address bar shows.
+   const pathname = usePathname() ?? '/';
+   const fired = useRef(false);
+   useEffect(() => {
+-    // Once per mount: StrictMode invokes effects twice in dev, and a conversion counted twice
+-    // is worse than one counted late.
++    // Strict mode invokes effects twice in dev; a conversion counted twice is worse than one
++    // counted late.
+     if (fired.current) return;
+     fired.current = true;
++    const k = `ja_conv:${formKey}:${pathname}`;
++    try {
++      if (sessionStorage.getItem(k)) return;
++    } catch {
++      // storage blocked (private mode): no dedupe available — fire rather than lose the lead.
++    }
+     track('conversion', { form_key: formKey, page: pathname, locale });
+-    // Deliberately empty: this fires on arrival, not on any later prop change.
++    try {
++      sessionStorage.setItem(k, '1');
++    } catch {
++      /* private mode */
++    }
++    // Deliberately empty: this fires on arrival, not on any later prop change — remounting
++    // (via `key`) is how a new form key gets its own ping.
+     // eslint-disable-next-line react-hooks/exhaustive-deps
+   }, []);
+   return null;
+ }
+diff --git a/src/analytics/consent.test.ts b/src/analytics/consent.test.ts
+index 0f0c51e..108f7a9 100644
+--- a/src/analytics/consent.test.ts
++++ b/src/analytics/consent.test.ts
+@@ -1,13 +1,13 @@
+ import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
+ import { memoryStorage } from '@/test/storage';
+-import { CONSENT_EVENT, CONSENT_KEY, readConsent, writeConsent } from './consent';
++import { CONSENT_EVENT, CONSENT_KEY, clearConsent, readConsent, writeConsent } from './consent';
+ 
+ type TestWindow = Window & {
+   dataLayer?: Record<string, unknown>[];
+   gtag?: (...args: unknown[]) => void;
+ };
+ const w = window as TestWindow;
+ 
+ beforeEach(() => {
+   vi.stubGlobal('localStorage', memoryStorage());
+   w.dataLayer = [];
+@@ -69,10 +69,51 @@ describe('writeConsent', () => {
+     w.gtag = gtag;
+     writeConsent('granted');
+     expect(gtag).toHaveBeenCalledWith('consent', 'update', {
+       ad_storage: 'granted',
+       analytics_storage: 'granted',
+       ad_user_data: 'granted',
+       ad_personalization: 'granted',
+     });
+   });
+ });
++
++describe('clearConsent', () => {
++  it('un-chooses: both records gone, subscribers told, banner back to unknown', () => {
++    writeConsent('granted');
++    expect(readConsent()).toBe('granted');
++
++    const listener = vi.fn();
++    window.addEventListener(CONSENT_EVENT, listener);
++    try {
++      clearConsent();
++    } finally {
++      window.removeEventListener(CONSENT_EVENT, listener);
++    }
++
++    expect(localStorage.getItem(CONSENT_KEY)).toBeNull();
++    expect(readConsent()).toBe('unknown');
++    expect(document.cookie).not.toContain(`${CONSENT_KEY}=granted`);
++    expect(listener).toHaveBeenCalledTimes(1);
++  });
++
++  it('re-denies through gtag so tags stop within the same page view (R39)', () => {
++    const gtag = vi.fn();
++    w.gtag = gtag;
++    writeConsent('granted');
++    gtag.mockClear();
++
++    clearConsent();
++
++    expect(gtag).toHaveBeenCalledWith('consent', 'update', {
++      ad_storage: 'denied',
++      analytics_storage: 'denied',
++      ad_user_data: 'denied',
++      ad_personalization: 'denied',
++    });
++  });
++
++  it('does not throw when the consent-default script never ran (gtag undefined)', () => {
++    expect(w.gtag).toBeUndefined();
++    expect(() => clearConsent()).not.toThrow();
++  });
++});
+diff --git a/src/analytics/consent.ts b/src/analytics/consent.ts
+index 3a6c780..fd7a4d9 100644
+--- a/src/analytics/consent.ts
++++ b/src/analytics/consent.ts
+@@ -1,53 +1,77 @@
+ export type ConsentState = 'unknown' | 'granted' | 'denied';
+ 
+ export const CONSENT_KEY = 'ja_consent_v1';
+ /** Custom window event `writeConsent` dispatches after storing, so `ConsentBanner`'s
+  *  `useSyncExternalStore` subscription hears the choice without polling or an effect (R27). */
+ export const CONSENT_EVENT = 'ja:consent';
+ 
+ const MAX_AGE = 60 * 60 * 24 * 180;
++/** `Secure` because the site is HTTPS-only in every environment that matters (localhost is a
++ *  trustworthy origin, so it still round-trips in dev and in the e2e run). */
++const COOKIE = (value: string, maxAge: number) =>
++  `${CONSENT_KEY}=${value}; Max-Age=${maxAge}; Path=/; SameSite=Lax; Secure`;
+ 
+ /** Inline in <head> before GTM: Consent Mode v2 defaults denied (D13). */
+ export const CONSENT_DEFAULT_SCRIPT = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','url_passthrough',true);gtag('set','ads_data_redaction',true);`;
+ 
+ /** The cookie is written alongside the localStorage entry, so a visitor whose storage is
+  *  blocked (private mode) still gets their choice remembered — without it the banner would
+  *  re-appear the instant they dismissed it, because the snapshot would read `unknown` again. */
+ function readCookie(): ConsentState | null {
+   try {
+-    const m = new RegExp(`(?:^|;\\s*)${CONSENT_KEY}=(granted|denied)`).exec(document.cookie);
++    // Anchored on both sides: `ja_consent_v1=granted_later` is not a granted consent.
++    const m = new RegExp(`(?:^|;\\s*)${CONSENT_KEY}=(granted|denied)(?:;|$)`).exec(document.cookie);
+     return (m?.[1] as ConsentState | undefined) ?? null;
+   } catch {
+     return null;
+   }
+ }
+ 
+ export function readConsent(): ConsentState {
+   try {
+     const stored = localStorage.getItem(CONSENT_KEY);
+     if (stored === 'granted' || stored === 'denied') return stored;
+   } catch {
+     /* storage blocked (private mode): fall through to the cookie */
+   }
+   return readCookie() ?? 'unknown';
+ }
+ 
++/** `gtag` comes from the inline default script, which only renders when
++ *  `settings.analytics.consentMode` is on — so it stays optional here, never assumed. */
++function updateGtag(v: 'granted' | 'denied') {
++  (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.('consent', 'update', {
++    ad_storage: v,
++    analytics_storage: v,
++    ad_user_data: v,
++    ad_personalization: v,
++  });
++}
++
+ export function writeConsent(state: Exclude<ConsentState, 'unknown'>) {
+   try {
+     localStorage.setItem(CONSENT_KEY, state);
+   } catch {
+     /* private mode */
+   }
+-  document.cookie = `${CONSENT_KEY}=${state}; Max-Age=${MAX_AGE}; Path=/; SameSite=Lax`;
+-  const v = state === 'granted' ? 'granted' : 'denied';
++  document.cookie = COOKIE(state, MAX_AGE);
+   (window.dataLayer ??= []).push({ event: 'consent_update' });
+-  // `gtag` comes from the inline default script, which only renders when
+-  // `settings.analytics.consentMode` is on — so it stays optional here, never assumed.
+-  (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.('consent', 'update', {
+-    ad_storage: v,
+-    analytics_storage: v,
+-    ad_user_data: v,
+-    ad_personalization: v,
+-  });
++  updateGtag(state);
++  window.dispatchEvent(new Event(CONSENT_EVENT));
++}
++
++/** Withdrawal (R36): the banner promises the visitor can change their mind, so something has
++ *  to be able to un-choose. Drops both records and re-publishes — the sheet re-opens on
++ *  `unknown`, and with nothing stored the next page load starts from the denied defaults. */
++export function clearConsent() {
++  try {
++    localStorage.removeItem(CONSENT_KEY);
++  } catch {
++    /* private mode */
++  }
++  document.cookie = COOKIE('', 0);
++  // R39: re-deny straight away, so any tag already running stops within this page view rather
++  // than waiting for the visitor to choose again or to reload.
++  updateGtag('denied');
+   window.dispatchEvent(new Event(CONSENT_EVENT));
+ }
+diff --git a/src/analytics/forms.ts b/src/analytics/forms.ts
+new file mode 100644
+index 0000000..3feabd6
+--- /dev/null
++++ b/src/analytics/forms.ts
+@@ -0,0 +1,8 @@
++/** The `?form=` keys D13 allows on the conversion page. One source for the page's whitelist,
++ *  `ConversionPing`'s prop type and the per-session dedupe key — this module imports nothing,
++ *  so neither the page nor the client component can pull the other in. */
++export const FORM_KEYS = ['hire', 'contact', 'partner', 'careers', 'newsletter'] as const;
++export type FormKey = (typeof FORM_KEYS)[number];
++
++export const asFormKey = (v: string | undefined): FormKey | null =>
++  FORM_KEYS.find((k) => k === v) ?? null;
+diff --git a/src/analytics/track.test.ts b/src/analytics/track.test.ts
+index b52b815..dd2afdd 100644
+--- a/src/analytics/track.test.ts
++++ b/src/analytics/track.test.ts
+@@ -14,14 +14,28 @@ describe('track (D13 parameter allowlist)', () => {
+       ref: 'JA-1042',
+     } as never);
+     const pushed = (window as unknown as { dataLayer: Record<string, unknown>[] }).dataLayer[0];
+     expect(pushed).toEqual({
+       event: 'generate_lead',
+       form_key: 'hire',
+       page: '/isci-talebi',
+       locale: 'tr',
+     });
+   });
++  it('drops params that are not scalars — a raw form object can never reach GTM', () => {
++    track('generate_lead', {
++      form_key: 'hire',
++      page: ['/isci-talebi'],
++      locale: null,
++      profiles: { ref: 'JA-1042' },
++    } as never);
++    expect((window as unknown as { dataLayer: Record<string, unknown>[] }).dataLayer[0]).toEqual({
++      event: 'generate_lead',
++      form_key: 'hire',
++    });
++  });
+   it('rejects unknown events at the type level and at runtime', () => {
+     expect(() => track('profile_select' as never, {})).toThrow(/unknown analytics event/);
++    // inherited keys are not events either
++    expect(() => track('toString' as never, {})).toThrow(/unknown analytics event/);
+   });
+ });
+diff --git a/src/analytics/track.ts b/src/analytics/track.ts
+index ebb1614..bec1bd3 100644
+--- a/src/analytics/track.ts
++++ b/src/analytics/track.ts
+@@ -12,16 +12,22 @@ export const ALLOWED_PARAMS = {
+ } as const;
+ export type EventName = keyof typeof ALLOWED_PARAMS;
+ 
+ declare global {
+   interface Window {
+     dataLayer?: Record<string, unknown>[];
+   }
+ }
+ 
+ export function track(event: EventName, params: Partial<Record<string, string | number>>) {
+-  const allowed = ALLOWED_PARAMS[event];
+-  if (!allowed) throw new Error(`unknown analytics event: ${String(event)}`);
++  // `hasOwn`, not truthiness: an inherited `toString`/`constructor` must not pass for an event.
++  if (!Object.hasOwn(ALLOWED_PARAMS, event))
++    throw new Error(`unknown analytics event: ${String(event)}`);
+   const clean: Record<string, unknown> = { event };
+-  for (const k of allowed) if (params[k] !== undefined) clean[k] = params[k];
++  for (const k of ALLOWED_PARAMS[event]) {
++    // Scalars only. An object, an array or a null under an allow-listed key is a caller
++    // passing the raw form state, which is exactly what D13 forbids from reaching GTM.
++    const v = params[k];
++    if (typeof v === 'string' || typeof v === 'number') clean[k] = v;
++  }
+   (window.dataLayer ??= []).push(clean);
+ }
+diff --git a/src/app/[locale]/layout.tsx b/src/app/[locale]/layout.tsx
+index c06f1fc..9ee204c 100644
+--- a/src/app/[locale]/layout.tsx
++++ b/src/app/[locale]/layout.tsx
+@@ -52,17 +52,19 @@ export default async function LocaleLayout({
+           data={organizationJsonLd(bundle.settings, {
+             name: 'JobsAdmire',
+             description: t('home.188'),
+           })}
+         />
+         <JsonLd data={websiteJsonLd(bundle.settings)} />
+         <NextIntlClientProvider>
+           <SiteChrome locale={locale} bundle={bundle}>
+             {children}
+           </SiteChrome>
+-          {/* Mounted after the chrome so the sheet is last in the tab order, not first. */}
+-          <ConsentBanner />
++          {/* R38: no container id means no tag can fire, so there is nothing to consent to —
++              asking anyway would be a dark pattern. Mounted after the chrome so the sheet is
++              last in the tab order, not first. */}
++          {analytics.consentMode && Boolean(analytics.gtmId) && <ConsentBanner />}
+         </NextIntlClientProvider>
+       </body>
+     </html>
+   );
+ }
+diff --git a/src/app/[locale]/thank-you/page.tsx b/src/app/[locale]/thank-you/page.tsx
+index fe5e4cb..601a13c 100644
+--- a/src/app/[locale]/thank-you/page.tsx
++++ b/src/app/[locale]/thank-you/page.tsx
+@@ -1,27 +1,22 @@
+ import type { Metadata } from 'next';
+ import { hasLocale } from 'next-intl';
+ import { getTranslations, setRequestLocale } from 'next-intl/server';
+ import { notFound } from 'next/navigation';
+ import { ConversionPing } from '@/analytics/ConversionPing';
++import { asFormKey } from '@/analytics/forms';
+ import { getBundle } from '@/content/adapter';
+ import { Button, Section } from '@/design/primitives';
+ import { routing } from '@/i18n/routing';
+ import { waLink } from '@/lib/contact';
+ import { buildMetadata } from '@/lib/seo/metadata';
+ 
+-/** The five keys D13 allows in `?form=`. Anything else — a stale link, a hand-typed URL —
+- *  gets the generic page and fires no conversion: an unrecognised key is not a lead. */
+-const FORM_KEYS = ['hire', 'contact', 'partner', 'careers', 'newsletter'] as const;
+-type FormKey = (typeof FORM_KEYS)[number];
+-const asFormKey = (v: string | undefined): FormKey | null => FORM_KEYS.find((k) => k === v) ?? null;
+-
+ export async function generateMetadata({
+   params,
+ }: {
+   params: Promise<{ locale: string }>;
+ }): Promise<Metadata> {
+   const { locale } = await params;
+   if (!hasLocale(routing.locales, locale)) notFound();
+   const bundle = await getBundle(locale);
+   const sys = await getTranslations({ locale, namespace: 'sys' });
+   return {
+@@ -37,27 +32,31 @@ export async function generateMetadata({
+     // target every form lands on (D13) — robots.ts and the sitemap agree.
+     robots: { index: false, follow: false },
+   };
+ }
+ 
+ export default async function ThankYou({
+   params,
+   searchParams,
+ }: {
+   params: Promise<{ locale: string }>;
+-  searchParams: Promise<{ form?: string }>;
++  // Next hands every query param through as `string | string[]`; `?form=a&form=b` is a
++  // malformed link, not two conversions — the first value decides, the rest are ignored.
++  searchParams: Promise<{ form?: string | string[] }>;
+ }) {
+   const [{ locale }, { form }] = await Promise.all([params, searchParams]);
+   if (!hasLocale(routing.locales, locale)) notFound();
+   setRequestLocale(locale);
+   const [bundle, sys] = await Promise.all([getBundle(locale), getTranslations('sys')]);
+-  const formKey = asFormKey(form);
++  // The five keys D13 allows in `?form=`. Anything else — a stale link, a hand-typed URL —
++  // gets the generic page and fires no conversion: an unrecognised key is not a lead.
++  const formKey = asFormKey(Array.isArray(form) ? form[0] : form);
+   return (
+     <Section tone="light">
+       <div className="container-site max-w-[720px]">
+         <h1 className="text-h2">{sys('thankYou.title')}</h1>
+         <p className="text-body-lg text-text-secondary">{sys('thankYou.body')}</p>
+         {formKey && (
+           <p className="text-body text-text-secondary">{sys(`thankYou.forms.${formKey}`)}</p>
+         )}
+         <div className="mt-8 flex flex-wrap gap-3">
+           <Button variant="primary" size="lg" href="/">
+@@ -67,14 +66,14 @@ export default async function ThankYou({
+             variant="secondary"
+             size="lg"
+             external
+             href={waLink(bundle.settings.whatsappNumber, sys('whatsapp.prefill'))}
+           >
+             {sys('thankYou.whatsapp')}
+           </Button>
+         </div>
+       </div>
+       {/* Fires the conversion once, on arrival, for a known form key only (D13). */}
+-      {formKey && <ConversionPing formKey={formKey} locale={locale} />}
++      {formKey && <ConversionPing key={formKey} formKey={formKey} locale={locale} />}
+     </Section>
+   );
+ }
+diff --git a/src/design/chrome/CookiePreferencesButton.tsx b/src/design/chrome/CookiePreferencesButton.tsx
+new file mode 100644
+index 0000000..a092d59
+--- /dev/null
++++ b/src/design/chrome/CookiePreferencesButton.tsx
+@@ -0,0 +1,18 @@
++'use client';
++import { clearConsent } from '@/analytics/consent';
++
++/** R36: the consent copy promises the visitor can change their mind, so the footer carries the
++ *  door back. A leaf client component — the Footer is a server component and hands it only the
++ *  label, so no bundle and no translator crosses the boundary. Clearing re-publishes the
++ *  `unknown` state, which is what re-opens the sheet. */
++export function CookiePreferencesButton({ label }: { label: string }) {
++  return (
++    <button
++      type="button"
++      onClick={() => clearConsent()}
++      className="inline-flex min-h-[44px] items-center px-1 font-bold text-white/50 underline hover:text-sky focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky"
++    >
++      {label}
++    </button>
++  );
++}
+diff --git a/src/design/chrome/Footer.tsx b/src/design/chrome/Footer.tsx
+index 2ed4f2d..9b6b9f5 100644
+--- a/src/design/chrome/Footer.tsx
++++ b/src/design/chrome/Footer.tsx
+@@ -1,17 +1,18 @@
+ import Image from 'next/image';
+ import { useTranslations } from 'next-intl';
+ import { makeT } from '@/content/pure';
+ import { Accordion } from '@/design/primitives';
+ import { mailLink, telLink, waLink } from '@/lib/contact';
+ import type { Locale } from '@/i18n/routing';
+ import type { Bundle } from '../../../contract/website-bundle.v1';
++import { CookiePreferencesButton } from './CookiePreferencesButton';
+ import { MapPinIcon, TelegramIcon } from './icons';
+ import { LanguageSwitcher } from './LanguageSwitcher';
+ import { NavLink, type ChromeNavItem } from './NavLink';
+ import { socialLinks } from './SocialRail';
+ 
+ const EMPLOYERS = [
+   '/hire-workers',
+   '/available-workers',
+   '/hiring-cost-calculator',
+   '/work-permit',
+@@ -174,16 +175,18 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
+         ))}
+ 
+         <div className="text-white/80 lg:hidden">
+           <Accordion
+             singleOpen={false}
+             items={columns.map((c) => ({ id: c.id, title: c.heading, body: c.body }))}
+           />
+         </div>
+       </div>
+ 
+-      <div className="container-site border-t border-white/15 py-5">
++      <div className="container-site flex flex-wrap items-center justify-between gap-x-6 gap-y-1 border-t border-white/15 py-5">
+         <p className="m-0 text-white/50">{t('home.228')}</p>
++        {/* R36: consent is withdrawable, and this is where visitors look for it. */}
++        <CookiePreferencesButton label={sys('consent.manage')} />
+       </div>
+     </footer>
+   );
+ }
+diff --git a/src/design/chrome/__tests__/ConsentBanner.test.tsx b/src/design/chrome/__tests__/ConsentBanner.test.tsx
+index 2f56510..5f932d6 100644
+--- a/src/design/chrome/__tests__/ConsentBanner.test.tsx
++++ b/src/design/chrome/__tests__/ConsentBanner.test.tsx
+@@ -1,15 +1,15 @@
+-import { screen, within } from '@testing-library/react';
++import { act, screen, within } from '@testing-library/react';
+ import userEvent from '@testing-library/user-event';
+ import { beforeEach, describe, expect, it, vi } from 'vitest';
+ import { ConsentBanner } from '../ConsentBanner';
+-import { CONSENT_KEY } from '@/analytics/consent';
++import { CONSENT_KEY, clearConsent } from '@/analytics/consent';
+ import tr from '@/messages/tr.json';
+ import { renderWithIntl } from '@/test/render';
+ import { memoryStorage } from '@/test/storage';
+ 
+ const copy = tr.sys.consent;
+ 
+ beforeEach(() => {
+   vi.stubGlobal('localStorage', memoryStorage());
+   (window as Window & { dataLayer?: unknown[] }).dataLayer = [];
+   document.cookie = `${CONSENT_KEY}=; Max-Age=0; Path=/`;
+@@ -31,16 +31,26 @@ describe('ConsentBanner', () => {
+     expect(localStorage.getItem(CONSENT_KEY)).toBe('granted');
+   });
+ 
+   it('records a refusal and stays closed', async () => {
+     renderWithIntl(<ConsentBanner />);
+     await userEvent.click(screen.getByRole('button', { name: copy.reject }));
+     expect(screen.queryByTestId('consent-banner')).toBeNull();
+     expect(localStorage.getItem(CONSENT_KEY)).toBe('denied');
+   });
+ 
++  it('re-opens when the visitor withdraws from the footer (R36)', async () => {
++    localStorage.setItem(CONSENT_KEY, 'granted');
++    renderWithIntl(<ConsentBanner />);
++    expect(screen.queryByTestId('consent-banner')).toBeNull();
++
++    // What `CookiePreferencesButton` calls — the sheet is subscribed, so no reload is needed.
++    await act(async () => clearConsent());
++    expect(screen.getByRole('region', { name: copy.title })).toBeInTheDocument();
++  });
++
+   it('never opens for a visitor who has already chosen', () => {
+     localStorage.setItem(CONSENT_KEY, 'denied');
+     renderWithIntl(<ConsentBanner />);
+     expect(screen.queryByTestId('consent-banner')).toBeNull();
+   });
+ });
+diff --git a/src/design/chrome/__tests__/Footer.test.tsx b/src/design/chrome/__tests__/Footer.test.tsx
+index 951925e..2395fa6 100644
+--- a/src/design/chrome/__tests__/Footer.test.tsx
++++ b/src/design/chrome/__tests__/Footer.test.tsx
+@@ -1,16 +1,17 @@
+ import { screen, within } from '@testing-library/react';
+ import userEvent from '@testing-library/user-event';
+ import { describe, expect, it } from 'vitest';
+ import { Footer } from '../Footer';
+ import { renderWithIntl } from '@/test/render';
+ import trBundle from '@/content/local/bundle.tr.json';
++import tr from '@/messages/tr.json';
+ import fixture from '../../../../contract/website-bundle.v1.fixture.json';
+ import { BundleSchema } from '../../../../contract/website-bundle.v1';
+ 
+ const bundle = BundleSchema.parse({ ...fixture, strings: trBundle.strings });
+ 
+ const t = (id: string) => trBundle.strings[id as keyof typeof trBundle.strings];
+ 
+ // Each column is rendered twice — once in the `lg+` grid, once in the mobile accordion — and
+ // jsdom applies no CSS, so both copies are in the tree. Only the accordion's own headers are
+ // exposed while it is collapsed: its panels carry `hidden`, which role queries skip.
+@@ -48,20 +49,28 @@ describe('Footer', () => {
+       'true',
+     );
+   });
+ 
+   it('carries the licence number in the legal line', () => {
+     renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+     expect(screen.getByRole('contentinfo')).toHaveTextContent(bundle.settings.licence.permitNo);
+     expect(screen.getByText(t('home.228'))).toBeInTheDocument();
+   });
+ 
++  it('offers the cookie-preferences door in the legal row (R36)', () => {
++    renderWithIntl(<Footer locale="tr" bundle={bundle} />);
++    const button = within(screen.getByRole('contentinfo')).getByRole('button', {
++      name: tr.sys.consent.manage,
++    });
++    expect(button).toHaveAttribute('type', 'button');
++  });
++
+   it('gives every social and contact link an accessible name', () => {
+     renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+     const footer = screen.getByRole('contentinfo');
+     const expected: Array<[string, string]> = [
+       ['Instagram', bundle.settings.social.instagram],
+       ['TikTok', bundle.settings.social.tiktok],
+       ['LinkedIn', bundle.settings.social.linkedin],
+       ['Facebook', bundle.settings.social.facebook],
+       [
+         'WhatsApp',
+diff --git a/src/messages/en.json b/src/messages/en.json
+index f72dc34..0eb7856 100644
+--- a/src/messages/en.json
++++ b/src/messages/en.json
+@@ -21,21 +21,22 @@
+     "languageHint": {
+       "body": "This page is also available in English.",
+       "switch": "Switch to English",
+       "dismiss": "Dismiss"
+     },
+     "consent": {
+       "title": "Cookies",
+       "body": "We use cookies to improve the site and to measure how our ads perform. You can change your choice at any time.",
+       "accept": "Accept",
+       "reject": "Reject",
+-      "policy": "Cookie policy"
++      "policy": "Cookie policy",
++      "manage": "Cookie preferences"
+     },
+     "thankYou": {
+       "title": "Thank you",
+       "body": "We have your request. Our team will get back to you shortly.",
+       "home": "Back to home",
+       "whatsapp": "Message us on WhatsApp",
+       "forms": {
+         "hire": "We have your worker request; we will line up suitable candidates and come back to you.",
+         "contact": "We have your message and usually reply within one business day.",
+         "partner": "We have your partnership enquiry; our business development team will be in touch.",
+diff --git a/src/messages/tr.json b/src/messages/tr.json
+index 2db3c63..a75e503 100644
+--- a/src/messages/tr.json
++++ b/src/messages/tr.json
+@@ -21,21 +21,22 @@
+     "languageHint": {
+       "body": "This page is also available in English.",
+       "switch": "Switch to English",
+       "dismiss": "Dismiss"
+     },
+     "consent": {
+       "title": "Çerezler",
+       "body": "Siteyi geliştirmek ve reklamlarımızın performansını ölçmek için çerez kullanıyoruz. Seçiminizi istediğiniz zaman değiştirebilirsiniz.",
+       "accept": "Kabul et",
+       "reject": "Reddet",
+-      "policy": "Çerez politikası"
++      "policy": "Çerez politikası",
++      "manage": "Çerez tercihleri"
+     },
+     "thankYou": {
+       "title": "Teşekkürler",
+       "body": "Talebiniz bize ulaştı. Ekibimiz en kısa sürede sizinle iletişime geçecek.",
+       "home": "Ana sayfaya dön",
+       "whatsapp": "WhatsApp'tan yazın",
+       "forms": {
+         "hire": "İşçi talebinizi aldık; uygun adayları hazırlayıp size döneceğiz.",
+         "contact": "Mesajınızı aldık; genellikle bir iş günü içinde yanıtlıyoruz.",
+         "partner": "Ortaklık başvurunuzu aldık; iş geliştirme ekibimiz sizinle görüşecek.",

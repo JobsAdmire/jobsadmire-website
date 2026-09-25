@@ -1,0 +1,1115 @@
+# Review package (trimmed): 4202fea..b033cb8 — generated JSON under src/content/local/ excluded from the full diff; samples appended at the end
+
+## Commits
+b033cb8 fix(content): nav verify label uses package id home.011, no invented sys id
+5a658cc feat(content): import the design-package catalogue into local bundles (3,505 ids, 380 legal)
+
+## Stat (full)
+ .prettierignore                       |     1 +
+ package-lock.json                     |   504 +
+ package.json                          |     4 +-
+ scripts/import-design-package.test.ts |    44 +
+ scripts/import-design-package.ts      |   142 +
+ src/content/local/bundle.en.json      |  3680 ++++++
+ src/content/local/bundle.tr.json      |  3680 ++++++
+ src/content/local/catalogue.json      | 22175 ++++++++++++++++++++++++++++++++
+ vitest.config.ts                      |     2 +-
+ 9 files changed, 30230 insertions(+), 2 deletions(-)
+
+## Diff (excluding src/content/local/*.json)
+diff --git a/.prettierignore b/.prettierignore
+index 6c9e33b..7b6021c 100644
+--- a/.prettierignore
++++ b/.prettierignore
+@@ -1,6 +1,7 @@
+ design-package
+ node_modules
+ .next
+ coverage
+ playwright-report
+ test-results
++src/content/local
+diff --git a/package-lock.json b/package-lock.json
+index 498e926..86d519d 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -21,20 +21,21 @@
+         "@testing-library/react": "^16.3.3",
+         "@types/node": "^20",
+         "@types/react": "^19",
+         "@types/react-dom": "^19",
+         "@vitejs/plugin-react": "^6.1.1",
+         "eslint": "^9",
+         "eslint-config-next": "16.3.5",
+         "jsdom": "^29.1.1",
+         "prettier": "^3.9.8",
+         "tailwindcss": "^4",
++        "tsx": "^4.23.13",
+         "typescript": "^5",
+         "vitest": "^4.1.11"
+       },
+       "engines": {
+         "node": "22.x"
+       }
+     },
+     "node_modules/@adobe/css-tools": {
+       "version": "4.5.0",
+       "resolved": "https://registry.npmjs.org/@adobe/css-tools/-/css-tools-4.5.0.tgz",
+@@ -573,20 +574,462 @@
+       "version": "1.2.1",
+       "resolved": "https://registry.npmjs.org/@emnapi/wasi-threads/-/wasi-threads-1.2.1.tgz",
+       "integrity": "sha512-uTII7OYF+/Mes/MrcIOYp5yOtSMLBWSIoLPpcgwipoiKbli6k322tcoFsxoIIxPDqW01SQGAgko4EzZi2BNv2w==",
+       "dev": true,
+       "license": "MIT",
+       "optional": true,
+       "dependencies": {
+         "tslib": "^2.4.0"
+       }
+     },
++    "node_modules/@esbuild/aix-ppc64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/aix-ppc64/-/aix-ppc64-0.28.2.tgz",
++      "integrity": "sha512-XExcO+dvLKvVtNTibSTBej1NCAbaGhWn9Ww1ZPx80qsahhPFe/8jgWP0IchNe0F3HwkU7n8ejhH8bjonqht8mQ==",
++      "cpu": [
++        "ppc64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "aix"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/android-arm": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/android-arm/-/android-arm-0.28.2.tgz",
++      "integrity": "sha512-kXXoiPVVGQcnIYGOeaovwOURpniDBpSq4A03qkQ+BMQqtGG6HYap3xne9C1O1yo4TR3qxlCX5IqqmX6fFo2Lqg==",
++      "cpu": [
++        "arm"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/android-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/android-arm64/-/android-arm64-0.28.2.tgz",
++      "integrity": "sha512-5YfKeeI8qWfBZIX+u2xZC3Zlb3Os/gLS2sbEKM+I4ZOcsWmHS2WLysCcQZDAFRslDUU5Oiq44gf6PYN1vGwG5A==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/android-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/android-x64/-/android-x64-0.28.2.tgz",
++      "integrity": "sha512-O387ite7SzUyCcy3JQX4P4bLtEA7bLLkx+esve5JHnyYfNTxcVpXZo9jhdB0lTKN44gztELTdU7nS8Nr16Fs1Q==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "android"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/darwin-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/darwin-arm64/-/darwin-arm64-0.28.2.tgz",
++      "integrity": "sha512-n4KqkOQrraxHJcgjM1RvwbigfQKIKJVpM7xp+KsxiyUSrRdIXnt73VhrPAx0fV44hgfmIVKjxMN9J1t5jySVkw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/darwin-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/darwin-x64/-/darwin-x64-0.28.2.tgz",
++      "integrity": "sha512-uq6suIWYP37qzGddBKPw5QEQPi6HiLGsO7UmkpfyaYNQ3D+rN6w6WfwH+nuqcGXWvawGwxOEroO4YGnFh95azw==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "darwin"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/freebsd-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/freebsd-arm64/-/freebsd-arm64-0.28.2.tgz",
++      "integrity": "sha512-n+I0BTSRIoy+d6RPKnEVwql5UwBJolytvY4mAOIEJorKlqgPII8ix6slVVrfZ5Tnj7glIZvloylbB/EJPMWEXw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "freebsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/freebsd-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/freebsd-x64/-/freebsd-x64-0.28.2.tgz",
++      "integrity": "sha512-78XJTJkvPs0kz2w61301PJjXl4g7q3JqiYMZ/M/yVI73EHBrCRTgkhu9oqG7vPqq+a/yadEW8aD+agKlk5xrmg==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "freebsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-arm": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-arm/-/linux-arm-0.28.2.tgz",
++      "integrity": "sha512-XlDnu2q5yoqems+xay6wSAcg9DDD7K9RLKZEBOMZm3ckNpJBvOX20tSfby8KfrrhINDyv9V2YVZKY/SpoGJI8w==",
++      "cpu": [
++        "arm"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-arm64/-/linux-arm64-0.28.2.tgz",
++      "integrity": "sha512-pW4AC0P3it8c7do9MVM4p51FzHzdM/TZrerurgRcHJ2WTa1VQ1CIq18xncfpBJw4ojkiZZrKW2yIBWBP92j6Ug==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-ia32": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-ia32/-/linux-ia32-0.28.2.tgz",
++      "integrity": "sha512-CYbnj78HsIeA+DhgUKgFCfvNsTHFhMMrinUrMZpDXJXKN8T3XViTZ/+wtHeVxEWY8ewSzTFN+nRmSwO2tZaLUQ==",
++      "cpu": [
++        "ia32"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-loong64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-loong64/-/linux-loong64-0.28.2.tgz",
++      "integrity": "sha512-buwkd8nsph4R+ajRvw0qM5Hja/TXQow3ptzWO2EbG/cqcIkHloRrdlBtQlshyYGTNFvfkfJ5tpPLVkY4DtsPfQ==",
++      "cpu": [
++        "loong64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-mips64el": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-mips64el/-/linux-mips64el-0.28.2.tgz",
++      "integrity": "sha512-ZVykbDyk7519VwiNb9Lcj9m8XM6v5V9uKPvrEMkkEedVewf+0itkhahp4HDpgERXhwLRpWFypsGbG/J8s0QjJA==",
++      "cpu": [
++        "mips64el"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-ppc64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-ppc64/-/linux-ppc64-0.28.2.tgz",
++      "integrity": "sha512-CAXl+Dtd9UUuJd8pKKdwh6MLm3MUMiqMPmhZ3tTSXPqfyQ3vDl6R5hZdZ/kYojK4ofXtdfSv1tFq8XzWx3heNQ==",
++      "cpu": [
++        "ppc64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-riscv64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-riscv64/-/linux-riscv64-0.28.2.tgz",
++      "integrity": "sha512-GeXCej4IQtU1B+QlDV8W/RRvbzI3O/Stss+/bCXv4lZls5WGRtu2a+3JkA3i4qIUlMXpcHebWpF8AkJhATowuA==",
++      "cpu": [
++        "riscv64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-s390x": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-s390x/-/linux-s390x-0.28.2.tgz",
++      "integrity": "sha512-3H1weTYZPxt/WOhByszQZybS9w5lKzUn1FDMsgEChbHWQwHYQQRfBxgCcZvPhjHfKyJjIievvMmEUawJrdY9Dg==",
++      "cpu": [
++        "s390x"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/linux-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/linux-x64/-/linux-x64-0.28.2.tgz",
++      "integrity": "sha512-4xTZr1FUmSoQW4XIWmit3tzQrUTZM+N3P0XV8xROKYF50XfI7xeO90+1bZvNwxIufQ9hDQVRJH5YhgPVF8A/HQ==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "linux"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/netbsd-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/netbsd-arm64/-/netbsd-arm64-0.28.2.tgz",
++      "integrity": "sha512-sSATRjPeDBg3pdgHoQfoYBob11Kk1FGa9lui5RIHZCoCkJa9QKlvl3/vKz2usCmYYjs7ymJR/2Nnsqe+Hjt5nw==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "netbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/netbsd-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/netbsd-x64/-/netbsd-x64-0.28.2.tgz",
++      "integrity": "sha512-lqnzCV+mM0gIADaKihiCg6ifgfU2L3h5E33rNQBN1Y4MaVGnzryzmvvf7UHxprpQdE8hpqLolJ9Rl+SkIRDpyw==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "netbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/openbsd-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/openbsd-arm64/-/openbsd-arm64-0.28.2.tgz",
++      "integrity": "sha512-AL2qJILH7lNjrDmCQDvdxMfAUIv8KMNZOvrwAQ8i8//ntL9FflhOyMJ8OZSMBb8/AWXe3/5v5S20y3zCoZWKoQ==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/openbsd-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/openbsd-x64/-/openbsd-x64-0.28.2.tgz",
++      "integrity": "sha512-QtiuPytchRyC4rwUKhexJdQKvDuZ6hWloi3igqPQNUJCS1/v9EiO3UTOXR6A3FoMo4fnAKbWJdqaIwhOzh8qEw==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openbsd"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/openharmony-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/openharmony-arm64/-/openharmony-arm64-0.28.2.tgz",
++      "integrity": "sha512-WkhYDmpTjLvGlScA1rwjRUmhl4k8oXR3cIbtqWmELgU/dFeHHlEllxDvdWcNJV9rbzCexB5vz8gtNewWLgCT7Q==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "openharmony"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/sunos-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/sunos-x64/-/sunos-x64-0.28.2.tgz",
++      "integrity": "sha512-GPMSkTOtMnv2U2F8gxe4Io6qmVs+YKyp832Etqqxr0hFngmXQ3rzwytelm3GIn7T4VviRUlf3sOgBOiTdvaf7g==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "sunos"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/win32-arm64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/win32-arm64/-/win32-arm64-0.28.2.tgz",
++      "integrity": "sha512-PIhhEkE9uPBleRBrQEJpUn7MBnibZzbGzYWPmY3x+YoVg/95zbjB4CxPPOQ8l5tYYM4mMaCthF8/1DIfBQQyWQ==",
++      "cpu": [
++        "arm64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/win32-ia32": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/win32-ia32/-/win32-ia32-0.28.2.tgz",
++      "integrity": "sha512-YmJbfTlvU7Sdn9BB+4PRES4oB6pxgS37MAONj+hBr/cpXS1aBPKXxNnDbu+QCWPj0o9dgyxeq79g6c5P8KeuYA==",
++      "cpu": [
++        "ia32"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
++    "node_modules/@esbuild/win32-x64": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/@esbuild/win32-x64/-/win32-x64-0.28.2.tgz",
++      "integrity": "sha512-5ebpxr3nWMzrL/rnUI755Jkuee0bHL/Gq0WTF9lvcpv73wAp5eu8MfBUgWK9bhWvZjj7yX8etf/8tI8Ney695g==",
++      "cpu": [
++        "x64"
++      ],
++      "dev": true,
++      "license": "MIT",
++      "optional": true,
++      "os": [
++        "win32"
++      ],
++      "engines": {
++        "node": ">=18"
++      }
++    },
+     "node_modules/@eslint-community/eslint-utils": {
+       "version": "4.10.1",
+       "resolved": "https://registry.npmjs.org/@eslint-community/eslint-utils/-/eslint-utils-4.10.1.tgz",
+       "integrity": "sha512-cuadcxVFE8sDK6iWJbs8Sn0av2Nrh2QSGQhVlBW9AaAHqHwjWsZHT8LJ4hFGPh7ASBV2deFdM7H/DPjulmh8rg==",
+       "dev": true,
+       "license": "MIT",
+       "dependencies": {
+         "eslint-visitor-keys": "^3.4.3"
+       },
+       "engines": {
+@@ -4883,20 +5326,62 @@
+         "is-date-object": "^1.1.0",
+         "is-symbol": "^1.1.1"
+       },
+       "engines": {
+         "node": ">= 0.4"
+       },
+       "funding": {
+         "url": "https://github.com/sponsors/ljharb"
+       }
+     },
++    "node_modules/esbuild": {
++      "version": "0.28.2",
++      "resolved": "https://registry.npmjs.org/esbuild/-/esbuild-0.28.2.tgz",
++      "integrity": "sha512-HKVLS8dvII+xoKW9kmqxbRKrnWEXfJJr/FZhhJmiqIB0e053QNYFqOBouTMO/k5sID4MvCiUCvv8b9M4h32wIA==",
++      "dev": true,
++      "hasInstallScript": true,
++      "license": "MIT",
++      "bin": {
++        "esbuild": "bin/esbuild"
++      },
++      "engines": {
++        "node": ">=18"
++      },
++      "optionalDependencies": {
++        "@esbuild/aix-ppc64": "0.28.2",
++        "@esbuild/android-arm": "0.28.2",
++        "@esbuild/android-arm64": "0.28.2",
++        "@esbuild/android-x64": "0.28.2",
++        "@esbuild/darwin-arm64": "0.28.2",
++        "@esbuild/darwin-x64": "0.28.2",
++        "@esbuild/freebsd-arm64": "0.28.2",
++        "@esbuild/freebsd-x64": "0.28.2",
++        "@esbuild/linux-arm": "0.28.2",
++        "@esbuild/linux-arm64": "0.28.2",
++        "@esbuild/linux-ia32": "0.28.2",
++        "@esbuild/linux-loong64": "0.28.2",
++        "@esbuild/linux-mips64el": "0.28.2",
++        "@esbuild/linux-ppc64": "0.28.2",
++        "@esbuild/linux-riscv64": "0.28.2",
++        "@esbuild/linux-s390x": "0.28.2",
++        "@esbuild/linux-x64": "0.28.2",
++        "@esbuild/netbsd-arm64": "0.28.2",
++        "@esbuild/netbsd-x64": "0.28.2",
++        "@esbuild/openbsd-arm64": "0.28.2",
++        "@esbuild/openbsd-x64": "0.28.2",
++        "@esbuild/openharmony-arm64": "0.28.2",
++        "@esbuild/sunos-x64": "0.28.2",
++        "@esbuild/win32-arm64": "0.28.2",
++        "@esbuild/win32-ia32": "0.28.2",
++        "@esbuild/win32-x64": "0.28.2"
++      }
++    },
+     "node_modules/escalade": {
+       "version": "3.2.0",
+       "resolved": "https://registry.npmjs.org/escalade/-/escalade-3.2.0.tgz",
+       "integrity": "sha512-WUj2qlxaQtO4g6Pq5c29GTcWGDyd8itL8zTlipgECz3JesAiiOKotd8JU6otB3PACgG6xkJUyVhboMS+bje/jA==",
+       "dev": true,
+       "license": "MIT",
+       "engines": {
+         "node": ">=6"
+       }
+     },
+@@ -8643,20 +9128,39 @@
+       "bin": {
+         "json5": "lib/cli.js"
+       }
+     },
+     "node_modules/tslib": {
+       "version": "2.8.1",
+       "resolved": "https://registry.npmjs.org/tslib/-/tslib-2.8.1.tgz",
+       "integrity": "sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==",
+       "license": "0BSD"
+     },
++    "node_modules/tsx": {
++      "version": "4.23.13",
++      "resolved": "https://registry.npmjs.org/tsx/-/tsx-4.23.13.tgz",
++      "integrity": "sha512-BL5MGkRln6aDYhb0xbQlEAGw743BaZYWdbWtdJOBriYJboKgUUYCadFp2/FpBBZquBC/ezNBn7wMMPx7FDZUDw==",
++      "dev": true,
++      "license": "MIT",
++      "dependencies": {
++        "esbuild": "~0.28.0"
++      },
++      "bin": {
++        "tsx": "dist/cli.mjs"
++      },
++      "engines": {
++        "node": ">=18.0.0"
++      },
++      "optionalDependencies": {
++        "fsevents": "~2.3.3"
++      }
++    },
+     "node_modules/type-check": {
+       "version": "0.4.0",
+       "resolved": "https://registry.npmjs.org/type-check/-/type-check-0.4.0.tgz",
+       "integrity": "sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==",
+       "dev": true,
+       "license": "MIT",
+       "dependencies": {
+         "prelude-ls": "^1.2.1"
+       },
+       "engines": {
+diff --git a/package.json b/package.json
+index 04d513d..daa63db 100644
+--- a/package.json
++++ b/package.json
+@@ -7,21 +7,22 @@
+     "build": "next build",
+     "start": "next start",
+     "lint": "eslint .",
+     "typecheck": "tsc --noEmit",
+     "format": "prettier --check .",
+     "format:write": "prettier --write .",
+     "test": "vitest run",
+     "test:watch": "vitest",
+     "verify": "npm run typecheck && npm run lint && npm run format && npm run test",
+     "e2e": "playwright test",
+-    "gate": "bash scripts/gate.sh"
++    "gate": "bash scripts/gate.sh",
++    "content:import": "tsx scripts/import-design-package.ts"
+   },
+   "dependencies": {
+     "next": "16.3.5",
+     "next-intl": "^4.14.5",
+     "react": "19.2.8",
+     "react-dom": "19.2.8"
+   },
+   "devDependencies": {
+     "@axe-core/playwright": "^4.13.0",
+     "@playwright/test": "^1.63.0",
+@@ -30,17 +31,18 @@
+     "@testing-library/react": "^16.3.3",
+     "@types/node": "^20",
+     "@types/react": "^19",
+     "@types/react-dom": "^19",
+     "@vitejs/plugin-react": "^6.1.1",
+     "eslint": "^9",
+     "eslint-config-next": "16.3.5",
+     "jsdom": "^29.1.1",
+     "prettier": "^3.9.8",
+     "tailwindcss": "^4",
++    "tsx": "^4.23.13",
+     "typescript": "^5",
+     "vitest": "^4.1.11"
+   },
+   "engines": {
+     "node": "22.x"
+   }
+ }
+diff --git a/scripts/import-design-package.test.ts b/scripts/import-design-package.test.ts
+new file mode 100644
+index 0000000..4876263
+--- /dev/null
++++ b/scripts/import-design-package.test.ts
+@@ -0,0 +1,44 @@
++import { describe, expect, it } from 'vitest';
++import { buildBundles } from './import-design-package';
++
++describe('import-design-package', () => {
++  const { tr, en, catalogue } = buildBundles();
++
++  it('imports every id in both locales with the same key set', () => {
++    expect(Object.keys(tr.strings).length).toBe(3505);
++    expect(Object.keys(en.strings).sort()).toEqual(Object.keys(tr.strings).sort());
++  });
++  it('keeps the six deliberately-empty Turkish fragments empty', () => {
++    for (const id of ['hire.141', 'calc.041', 'calc.154', 'calc.157', 'calc.367', 'jt.107']) {
++      expect(tr.strings[id]).toBe('');
++      expect(en.strings[id]).not.toBe('');
++    }
++  });
++  it('records 380 legal strings in the catalogue', () => {
++    expect(Object.values(catalogue).filter((c) => c.legal).length).toBe(380);
++  });
++  it('carries no HTML entities in values (the &amp; bug from the design)', () => {
++    const bad = Object.entries(en.strings).filter(([, v]) => /&(amp|middot|nbsp);/.test(v));
++    expect(bad).toEqual([]);
++  });
++  it('builds the desktop nav from the homepage nav ids in README order', () => {
++    expect(tr.nav.filter((n) => n.group === 'desktopNav').map((n) => n.href)).toEqual([
++      '/hire-workers',
++      '/available-workers',
++      '/work-permit',
++      '/hiring-cost-calculator',
++      '/about',
++      '/success-stories',
++      '/blog',
++      '/verify',
++      '/partner-with-us',
++      '/careers',
++      '/contact',
++    ]);
++  });
++  it('uses the package nav-verify id home.011 for the /verify nav item, not an invented id', () => {
++    const verifyItem = tr.nav.find((n) => n.href === '/verify');
++    expect(verifyItem?.labelId).toBe('home.011');
++    expect(tr.strings['home.011']).toBe('Temsilci Doğrulama');
++  });
++});
+diff --git a/scripts/import-design-package.ts b/scripts/import-design-package.ts
+new file mode 100644
+index 0000000..e67a6ca
+--- /dev/null
++++ b/scripts/import-design-package.ts
+@@ -0,0 +1,142 @@
++import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
++import { join } from 'node:path';
++
++const ROOT = join(__dirname, '..');
++const PKG = join(ROOT, 'design-package', 'strings');
++const OUT = join(ROOT, 'src', 'content', 'local');
++
++type Row = {
++  id: string;
++  en: string;
++  tr: string;
++  k?: string;
++  sec?: string;
++  rev: string;
++  legal?: boolean;
++};
++type PageFile = { page: string; route: string; strings: Row[] };
++
++const PAGE_FILES = [
++  'homepage',
++  'hireworkers',
++  'calculator',
++  'partner',
++  'workpermit',
++  'about',
++  'verify',
++  'jointeam',
++  'contact',
++  'availworkers',
++  'success',
++  'blog',
++  'blogarticle',
++  'crmlogin',
++  'terms',
++];
++
++const decode = (s: string) =>
++  s
++    .replace(/&amp;/g, '&')
++    .replace(/&middot;/g, '·')
++    .replace(/&nbsp;/g, ' ');
++
++/** README "Contact constants" + "Nav item order" — the only hand-typed data in the importer. */
++const SETTINGS = {
++  siteUrl: 'https://www.jobsadmire.com',
++  phone: '+905011240340',
++  phoneDisplay: '+90 501 124 03 40',
++  partnershipsPhone: '+905533832549',
++  email: 'info@jobsadmire.com',
++  careersEmail: 'careers@jobsadmire.com',
++  whatsappNumber: '905011240340',
++  telegramUrl: 'https://t.me/jobsadmire',
++  social: {
++    instagram: 'https://instagram.com/jobsadmire',
++    tiktok: 'https://tiktok.com/@jobsadmire',
++    linkedin: 'https://linkedin.com/company/jobsadmire',
++    facebook: 'https://facebook.com/jobsadmire',
++  },
++  licence: { permitNo: '1730', lawRef: '4904', taxNo: '48422122' },
++  storeLinks: {
++    android: 'https://play.google.com/store/apps/details?id=com.jobsadmire.portal',
++    ios: null,
++  },
++  portal: {
++    loginPath: '/auth/login',
++    forgotPath: '/auth/forgot-password',
++    host: 'https://portal.jobsadmire.com',
++  },
++  maps: {
++    antalya:
++      'https://www.google.com/maps/search/?api=1&query=Adnan+Menderes+Blv.+No+7%2F6+Muratpa%C5%9Fa+Antalya',
++    karachi: 'https://www.google.com/maps/search/?api=1&query=Shahrah-e-Faisal+Karachi',
++  },
++  analytics: { ga4Id: null, gtmId: null, adsId: null, adsConversionLabel: null, consentMode: true },
++  turnstileSiteKey: null,
++} as const;
++
++// desktop nav in README order; labels are the Homepage nav ids (home.001..010) + contact
++const NAV: Array<{ href: string; labelId: string }> = [
++  { href: '/hire-workers', labelId: 'home.002' },
++  { href: '/available-workers', labelId: 'home.003' },
++  { href: '/work-permit', labelId: 'home.004' },
++  { href: '/hiring-cost-calculator', labelId: 'home.005' },
++  { href: '/about', labelId: 'home.001' },
++  { href: '/success-stories', labelId: 'home.006' },
++  { href: '/blog', labelId: 'home.010' },
++  { href: '/verify', labelId: 'home.011' },
++  { href: '/partner-with-us', labelId: 'home.008' },
++  { href: '/careers', labelId: 'home.009' },
++  { href: '/contact', labelId: 'home.007' },
++];
++
++export function buildBundles() {
++  const catalogue: Record<
++    string,
++    { page: string; sec: string; legal: boolean; rev: string; k?: string }
++  > = {};
++  const strings: Record<'tr' | 'en', Record<string, string>> = { tr: {}, en: {} };
++  for (const f of PAGE_FILES) {
++    const file = JSON.parse(readFileSync(join(PKG, `${f}.json`), 'utf8')) as PageFile;
++    for (const r of file.strings) {
++      strings.tr[r.id] = decode(r.tr ?? '');
++      strings.en[r.id] = decode(r.en ?? '');
++      catalogue[r.id] = {
++        page: file.page,
++        sec: r.sec ?? '',
++        legal: r.legal === true,
++        rev: r.rev,
++        k: r.k,
++      };
++    }
++  }
++
++  const mk = (locale: 'tr' | 'en') => ({
++    contractVersion: '1.0',
++    locale,
++    generatedAt: '2026-09-18T00:00:00.000Z',
++    strings: strings[locale],
++    nav: NAV.map((n, i) => ({
++      group: 'desktopNav',
++      order: i,
++      labelId: n.labelId,
++      href: n.href,
++      external: false,
++      visibleOn: ['desktop', 'mobile'],
++    })),
++    settings: SETTINGS,
++    pages: {},
++    collections: {},
++    redirects: [],
++  });
++  return { tr: mk('tr'), en: mk('en'), catalogue };
++}
++
++if (require.main === module) {
++  const { tr, en, catalogue } = buildBundles();
++  mkdirSync(OUT, { recursive: true });
++  writeFileSync(join(OUT, 'bundle.tr.json'), JSON.stringify(tr, null, 1));
++  writeFileSync(join(OUT, 'bundle.en.json'), JSON.stringify(en, null, 1));
++  writeFileSync(join(OUT, 'catalogue.json'), JSON.stringify(catalogue, null, 1));
++  console.log(`wrote ${Object.keys(tr.strings).length} strings per locale`);
++}
+diff --git a/vitest.config.ts b/vitest.config.ts
+index 6c87b67..4754e94 100644
+--- a/vitest.config.ts
++++ b/vitest.config.ts
+@@ -1,14 +1,14 @@
+ import { defineConfig } from 'vitest/config';
+ import react from '@vitejs/plugin-react';
+ import path from 'node:path';
+ 
+ export default defineConfig({
+   plugins: [react()],
+   test: {
+     environment: 'jsdom',
+-    include: ['src/**/*.test.{ts,tsx}'],
++    include: ['src/**/*.test.{ts,tsx}', 'scripts/**/*.test.ts'],
+     setupFiles: ['./vitest.setup.ts'],
+     css: false,
+   },
+   resolve: { alias: { '@': path.resolve(__dirname, 'src') } },
+ });
+
+## Generated JSON samples (b033cb8)
+### bundle.tr.json lines 1-12
+{
+ "contractVersion": "1.0",
+ "locale": "tr",
+ "generatedAt": "2026-09-18T00:00:00.000Z",
+ "strings": {
+  "home.001": "Hakkımızda",
+  "home.002": "İşçi Talebi",
+  "home.003": "Adaylar",
+  "home.004": "Çalışma İzinleri",
+  "home.005": "Maliyet Hesaplama",
+  "home.006": "Başarı Hikayeleri",
+  "home.007": "İletişim",
+### bundle.tr.json: the six empty-TR ids
+451:  "hire.141": "",
+653:  "calc.041": "",
+766:  "calc.154": "",
+769:  "calc.157": "",
+979:  "calc.367": "",
+2317:  "jt.107": "",
+### bundle.en.json: same six ids
+451:  "hire.141": "Vetted talent from",
+653:  "calc.041": "Can you hire",
+766:  "calc.154": "Counted",
+769:  "calc.157": "Counted",
+979:  "calc.367": "There is",
+2317:  "jt.107": "to upload it directly.",
+### bundle.tr.json: from the end of strings through nav/settings/pages/collections/redirects
+  "terms.007": "inceleme",
+  "terms.008": "ortak portalı"
+ },
+ "nav": [
+  {
+   "group": "desktopNav",
+   "order": 0,
+   "labelId": "home.002",
+   "href": "/hire-workers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "desktopNav",
+   "order": 1,
+   "labelId": "home.003",
+   "href": "/available-workers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "desktopNav",
+   "order": 2,
+   "labelId": "home.004",
+   "href": "/work-permit",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "desktopNav",
+   "order": 3,
+   "labelId": "home.005",
+   "href": "/hiring-cost-calculator",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "desktopNav",
+   "order": 4,
+   "labelId": "home.001",
+   "href": "/about",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "desktopNav",
+   "order": 5,
+   "labelId": "home.006",
+   "href": "/success-stories",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "desktopNav",
+   "order": 6,
+   "labelId": "home.010",
+   "href": "/blog",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "desktopNav",
+   "order": 7,
+   "labelId": "home.011",
+   "href": "/verify",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "desktopNav",
+   "order": 8,
+   "labelId": "home.008",
+   "href": "/partner-with-us",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "desktopNav",
+   "order": 9,
+   "labelId": "home.009",
+   "href": "/careers",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "desktopNav",
+   "order": 10,
+   "labelId": "home.007",
+   "href": "/contact",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  }
+ ],
+ "settings": {
+  "siteUrl": "https://www.jobsadmire.com",
+  "phone": "+905011240340",
+  "phoneDisplay": "+90 501 124 03 40",
+  "partnershipsPhone": "+905533832549",
+  "email": "info@jobsadmire.com",
+  "careersEmail": "careers@jobsadmire.com",
+  "whatsappNumber": "905011240340",
+  "telegramUrl": "https://t.me/jobsadmire",
+  "social": {
+   "instagram": "https://instagram.com/jobsadmire",
+   "tiktok": "https://tiktok.com/@jobsadmire",
+   "linkedin": "https://linkedin.com/company/jobsadmire",
+   "facebook": "https://facebook.com/jobsadmire"
+  },
+  "licence": {
+   "permitNo": "1730",
+   "lawRef": "4904",
+   "taxNo": "48422122"
+  },
+  "storeLinks": {
+   "android": "https://play.google.com/store/apps/details?id=com.jobsadmire.portal",
+   "ios": null
+  },
+  "portal": {
+   "loginPath": "/auth/login",
+   "forgotPath": "/auth/forgot-password",
+   "host": "https://portal.jobsadmire.com"
+  },
+  "maps": {
+   "antalya": "https://www.google.com/maps/search/?api=1&query=Adnan+Menderes+Blv.+No+7%2F6+Muratpa%C5%9Fa+Antalya",
+   "karachi": "https://www.google.com/maps/search/?api=1&query=Shahrah-e-Faisal+Karachi"
+  },
+  "analytics": {
+   "ga4Id": null,
+   "gtmId": null,
+   "adsId": null,
+   "adsConversionLabel": null,
+   "consentMode": true
+  },
+  "turnstileSiteKey": null
+ },
+ "pages": {},
+ "collections": {},
+ "redirects": []
+}### catalogue.json lines 1-16 and the home.011 entry
+{
+ "home.001": {
+  "page": "Homepage",
+  "sec": "Menü ve genel etiketler",
+  "legal": false,
+  "rev": "6iiw1a",
+  "k": "navAbout"
+ },
+ "home.002": {
+  "page": "Homepage",
+  "sec": "Menü ve genel etiketler",
+  "legal": false,
+  "rev": "oqbvo6",
+  "k": "navHire"
+ },
+ "home.003": {
+72: "home.011": {
+73-  "page": "Homepage",
+74-  "sec": "Menü ve genel etiketler",
+75-  "legal": false,
+76-  "rev": "l6eh8g",
+77-  "k": "navVerify"
+78- },
+### counts
+tr strings 3505 en strings 3505 catalogue 3505 legal 380 nav 11 entities 0

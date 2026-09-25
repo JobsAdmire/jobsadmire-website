@@ -1,0 +1,503 @@
+# Review package: 1eee710..a285734
+
+## Commits
+a285734 fix(design): dialog trap stability, accordion multi-open, inert marquee copy, button href fallback, stat under reduced motion
+
+## Files changed
+ src/app/globals.css                                |  5 ++++
+ src/design/primitives/Accordion.tsx                |  7 +++--
+ src/design/primitives/Button.tsx                   | 18 +++++++++---
+ src/design/primitives/Dialog.tsx                   | 11 +++++--
+ src/design/primitives/PausableMarquee.tsx          | 17 ++++++-----
+ src/design/primitives/Stat.tsx                     | 10 ++++---
+ src/design/primitives/Tabs.tsx                     |  9 ++++--
+ src/design/primitives/__tests__/Accordion.test.tsx | 20 +++++++++++--
+ src/design/primitives/__tests__/Dialog.test.tsx    | 34 ++++++++++++++++++++--
+ 9 files changed, 105 insertions(+), 26 deletions(-)
+
+## Diff
+diff --git a/src/app/globals.css b/src/app/globals.css
+index 86757ef..2da6dad 100644
+--- a/src/app/globals.css
++++ b/src/app/globals.css
+@@ -140,11 +140,16 @@ h4 {
+     transform: translateX(-50%);
+   }
+ }
+ .marquee {
+   animation: marquee linear infinite;
+ }
+ @media (prefers-reduced-motion: reduce) {
+   .marquee {
+     animation-play-state: paused !important;
+   }
++  /* R20: nothing is moving, so the pause/play control has nothing to control — hiding it in
++     CSS keeps the server render and the hydrating client identical for every visitor. */
++  .marquee-toggle {
++    display: none;
++  }
+ }
+diff --git a/src/design/primitives/Accordion.tsx b/src/design/primitives/Accordion.tsx
+index 97520cf..f14fa72 100644
+--- a/src/design/primitives/Accordion.tsx
++++ b/src/design/primitives/Accordion.tsx
+@@ -10,24 +10,27 @@ export function Accordion({
+ }: {
+   items: AccordionItem[];
+   singleOpen?: boolean;
+   defaultOpenId?: string;
+ }) {
+   const base = useId();
+   const listRef = useRef<HTMLDivElement>(null);
+   const [open, setOpen] = useState<Set<string>>(
+     () => new Set(defaultOpenId ? [defaultOpenId] : []),
+   );
++  // R21: a header always toggles its own panel — with `singleOpen` the others close,
++  // without it an already-open panel must still be closable.
+   const toggle = (id: string) =>
+     setOpen((prev) => {
+       const next = new Set(singleOpen ? [] : prev);
+-      if (!prev.has(id)) next.add(id);
++      if (prev.has(id)) next.delete(id);
++      else next.add(id);
+       return next;
+     });
+   // WAI-ARIA accordion pattern: Home/End move focus to the first/last header button.
+   const onKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+     if (e.key !== 'Home' && e.key !== 'End') return;
+     const triggers = Array.from(
+       listRef.current?.querySelectorAll<HTMLButtonElement>('[data-accordion-trigger]') ?? [],
+     );
+     if (triggers.length === 0) return;
+     e.preventDefault();
+@@ -43,21 +46,21 @@ export function Accordion({
+           <div key={it.id}>
+             <h3 className="m-0">
+               <button
+                 id={btnId}
+                 type="button"
+                 data-accordion-trigger=""
+                 aria-expanded={isOpen}
+                 aria-controls={panelId}
+                 onClick={() => toggle(it.id)}
+                 onKeyDown={onKeyDown}
+-                className="flex min-h-[46px] w-full items-center justify-between gap-4 py-3 text-left font-extrabold"
++                className="flex min-h-[46px] w-full items-center justify-between gap-4 py-3 text-left font-extrabold focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
+               >
+                 <span>{it.title}</span>
+                 <span aria-hidden="true">{isOpen ? '−' : '+'}</span>
+               </button>
+             </h3>
+             <div
+               id={panelId}
+               role="region"
+               aria-labelledby={btnId}
+               hidden={!isOpen}
+diff --git a/src/design/primitives/Button.tsx b/src/design/primitives/Button.tsx
+index a98fc98..432c447 100644
+--- a/src/design/primitives/Button.tsx
++++ b/src/design/primitives/Button.tsx
+@@ -34,32 +34,42 @@ export function Button({
+   size = 'md',
+   href,
+   external,
+   type = 'button',
+   disabled,
+   className,
+   children,
+   ...rest
+ }: ButtonProps) {
+   const cls = [BASE, VARIANT[variant], SIZE[size], className].filter(Boolean).join(' ');
+-  if (href && external) {
++  // A disabled CTA must never navigate, whatever its href says.
++  if (disabled || !href) {
++    return (
++      <button {...rest} type={type} disabled={disabled} className={cls}>
++        {children}
++      </button>
++    );
++  }
++  if (external) {
+     return (
+       <a {...rest} href={href} target="_blank" rel="noopener noreferrer" className={cls}>
+         {children}
+       </a>
+     );
+   }
+-  if (href && href.startsWith('/')) {
++  if (href.startsWith('/')) {
+     return (
+       // R17: `href` is a plain string at this component's boundary; next-intl's typed
+       // pathnames are re-imposed here. The one sanctioned cast in this module.
+       <Link {...rest} href={href as Href} className={cls}>
+         {children}
+       </Link>
+     );
+   }
++  // R22: anything else that is still a link — `https://wa.me/…`, `tel:`, `mailto:` — stays a
++  // same-tab anchor rather than degrading into a button that goes nowhere.
+   return (
+-    <button {...rest} type={type} disabled={disabled} className={cls}>
++    <a {...rest} href={href} className={cls}>
+       {children}
+-    </button>
++    </a>
+   );
+ }
+diff --git a/src/design/primitives/Dialog.tsx b/src/design/primitives/Dialog.tsx
+index f5baa41..cae94b1 100644
+--- a/src/design/primitives/Dialog.tsx
++++ b/src/design/primitives/Dialog.tsx
+@@ -9,30 +9,37 @@ export function Dialog({
+   onClose,
+   titleId,
+   children,
+ }: {
+   open: boolean;
+   onClose: () => void;
+   titleId: string;
+   children: ReactNode;
+ }) {
+   const ref = useRef<HTMLDivElement>(null);
++  // The trap is keyed on `open` alone: an inline `onClose={() => setOpen(false)}` changes
++  // identity on every parent render, and re-running the trap would restore focus to the
++  // opener and re-focus the first control mid-interaction. The latest handler lives in a ref.
++  const onCloseRef = useRef(onClose);
++  useEffect(() => {
++    onCloseRef.current = onClose;
++  }, [onClose]);
+   useEffect(() => {
+     if (!open) return;
+     const previous = document.activeElement as HTMLElement | null;
+     const node = ref.current!;
+     const focusables = () => Array.from(node.querySelectorAll<HTMLElement>(FOCUSABLE));
+     (focusables()[0] ?? node).focus();
+     const onKey = (e: KeyboardEvent) => {
+       if (e.key === 'Escape') {
+         e.preventDefault();
+-        onClose();
++        onCloseRef.current();
+         return;
+       }
+       if (e.key !== 'Tab') return;
+       const f = focusables();
+       if (!f.length) return;
+       const first = f[0],
+         last = f[f.length - 1];
+       if (e.shiftKey && document.activeElement === first) {
+         e.preventDefault();
+         last.focus();
+@@ -41,21 +48,21 @@ export function Dialog({
+         first.focus();
+       }
+     };
+     document.addEventListener('keydown', onKey);
+     document.body.style.overflow = 'hidden';
+     return () => {
+       document.removeEventListener('keydown', onKey);
+       document.body.style.overflow = '';
+       previous?.focus();
+     };
+-  }, [open, onClose]);
++  }, [open]);
+   if (!open) return null;
+   return (
+     // jsdom has no showModal and <dialog>'s top layer fights the sticky header (D20):
+     // a real focus-trapped div with role="dialog" is the sanctioned shape here.
+     <div
+       className="fixed inset-0 z-[100] flex items-center justify-center bg-navy/60 p-4"
+       onMouseDown={(e) => e.target === e.currentTarget && onClose()}
+     >
+       <div
+         ref={ref}
+diff --git a/src/design/primitives/PausableMarquee.tsx b/src/design/primitives/PausableMarquee.tsx
+index e8e4d15..30d7887 100644
+--- a/src/design/primitives/PausableMarquee.tsx
++++ b/src/design/primitives/PausableMarquee.tsx
+@@ -25,41 +25,44 @@ export function PausableMarquee({
+   children: ReactNode;
+   durationSec: number;
+   labelPause: string;
+   labelPlay: string;
+ }) {
+   const reducedMotion = useSyncExternalStore(
+     subscribeReducedMotion,
+     getReducedMotion,
+     getReducedMotionOnServer,
+   );
+-  // Until the visitor touches the control, the button reflects reduced motion — the CSS
+-  // has already paused the animation, so it must offer "Play", not claim to be running.
+   const [override, setOverride] = useState<boolean | null>(null);
+-  const paused = override ?? reducedMotion;
++  // R20: under reduced motion the CSS pauses the track outright and hides this toggle, so
++  // the component must not let a stale override claim a running state — and it omits the
++  // inline play-state entirely, leaving the stylesheet the single source of truth.
++  const paused = reducedMotion || (override ?? false);
+   return (
+     <div className="relative">
+       <div className="overflow-hidden" aria-live="off">
+         <div
+           className="marquee flex w-max gap-4"
+           style={{
+             animationDuration: `${durationSec}s`,
+-            animationPlayState: paused ? 'paused' : 'running',
++            ...(reducedMotion ? null : { animationPlayState: paused ? 'paused' : 'running' }),
+           }}
+         >
+-          {children}
+-          <span aria-hidden="true" className="flex gap-4">
++          <span className="flex gap-4">{children}</span>
++          {/* The second copy is the seamless-loop filler: hidden from the tree and inert, so
++              its links/logos are neither focusable nor duplicated to assistive tech. */}
++          <span aria-hidden="true" inert className="flex gap-4">
+             {children}
+           </span>
+         </div>
+       </div>
+       <button
+         type="button"
+         aria-pressed={paused}
+         onClick={() => setOverride(!paused)}
+-        className="absolute right-2 top-2 min-h-[44px] min-w-[44px] rounded-pill bg-white/90 px-3 text-body-sm font-bold shadow-social"
++        className="marquee-toggle absolute right-2 top-2 min-h-[44px] min-w-[44px] rounded-pill bg-white/90 px-3 text-body-sm font-bold shadow-social focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
+       >
+         {paused ? labelPlay : labelPause}
+       </button>
+     </div>
+   );
+ }
+diff --git a/src/design/primitives/Stat.tsx b/src/design/primitives/Stat.tsx
+index d842884..9da0b47 100644
+--- a/src/design/primitives/Stat.tsx
++++ b/src/design/primitives/Stat.tsx
+@@ -16,58 +16,60 @@ export function Stat({
+   suffix,
+   label,
+   locale,
+ }: {
+   value: number;
+   suffix?: string;
+   label: string;
+   locale: Locale;
+ }) {
+   const ref = useRef<HTMLDivElement>(null);
+-  const [shown, setShown] = useState(value);
++  // `null` until the count-up actually runs, so a changed `value` is shown immediately when
++  // motion is reduced or no IntersectionObserver exists — state is never seeded from the prop.
++  const [animated, setAnimated] = useState<number | null>(null);
+ 
+   useEffect(() => {
+     const node = ref.current;
+     if (!node) return;
+     if (typeof window.matchMedia !== 'function') return; // R18 guard (jsdom has none)
+     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+     if (typeof IntersectionObserver !== 'function') return;
+ 
+     let frame = 0;
+     let started = false;
+     const step = (start: number) => (now: number) => {
+       const p = Math.min(1, (now - start) / DURATION_MS);
+-      setShown(Math.round(value * (1 - Math.pow(1 - p, 3))));
++      setAnimated(Math.round(value * (1 - Math.pow(1 - p, 3))));
+       if (p < 1) frame = requestAnimationFrame(step(start));
+     };
+     const observer = new IntersectionObserver(
+       (entries) => {
+         if (started || !entries.some((e) => e.isIntersecting)) return;
+         started = true;
+         observer.disconnect();
+-        setShown(0);
++        setAnimated(0);
+         frame = requestAnimationFrame(step(performance.now()));
+       },
+       { threshold: 0.4 },
+     );
+     observer.observe(node);
+     return () => {
+       observer.disconnect();
+       cancelAnimationFrame(frame);
+     };
+   }, [value]);
+ 
+   return (
+     <div ref={ref}>
+       <p className="text-stat font-extrabold">
+         <span aria-hidden="true">
+-          {formatInt(shown, locale)}
++          {formatInt(animated ?? value, locale)}
+           {suffix}
+         </span>
+         <span className="sr-only">
+           {formatInt(value, locale)}
+           {suffix}
+         </span>
+       </p>
+       <p className="text-body-sm text-text-secondary">{label}</p>
+     </div>
+   );
+diff --git a/src/design/primitives/Tabs.tsx b/src/design/primitives/Tabs.tsx
+index 5878118..47427a8 100644
+--- a/src/design/primitives/Tabs.tsx
++++ b/src/design/primitives/Tabs.tsx
+@@ -1,50 +1,53 @@
+ 'use client';
+ import { useId, useRef, useState, type KeyboardEvent, type ReactNode } from 'react';
+ 
+ export type TabItem = { id: string; label: string; panel: ReactNode };
+ 
+ export function Tabs({ tabs, defaultId }: { tabs: TabItem[]; defaultId: string }) {
+   const base = useId();
+   const listRef = useRef<HTMLDivElement>(null);
+-  const [active, setActive] = useState(defaultId);
++  const [selected, setSelected] = useState(defaultId);
++  // A `defaultId` matching no tab would leave every tab at tabIndex -1 with no panel open,
++  // making the tablist unreachable by keyboard: fall back to the first tab.
++  const active = tabs.some((t) => t.id === selected) ? selected : (tabs[0]?.id ?? '');
+ 
+   // Roving tabindex: only the selected tab is in the tab order; arrows/Home/End move
+   // selection and focus together (WAI-ARIA tabs pattern, automatic activation).
+   const onKeyDown = (e: KeyboardEvent<HTMLButtonElement>) => {
+     const current = tabs.findIndex((t) => t.id === active);
+     let next = -1;
+     if (e.key === 'ArrowRight') next = (current + 1) % tabs.length;
+     else if (e.key === 'ArrowLeft') next = (current - 1 + tabs.length) % tabs.length;
+     else if (e.key === 'Home') next = 0;
+     else if (e.key === 'End') next = tabs.length - 1;
+     if (next < 0 || tabs.length === 0) return;
+     e.preventDefault();
+-    setActive(tabs[next].id);
++    setSelected(tabs[next].id);
+     listRef.current?.querySelectorAll<HTMLButtonElement>('[role="tab"]')[next]?.focus();
+   };
+ 
+   return (
+     <div>
+       <div ref={listRef} role="tablist" className="flex flex-wrap gap-2">
+         {tabs.map((t) => {
+           const selected = t.id === active;
+           return (
+             <button
+               key={t.id}
+               id={`${base}-${t.id}-tab`}
+               type="button"
+               role="tab"
+               aria-selected={selected}
+               aria-controls={`${base}-${t.id}-panel`}
+               tabIndex={selected ? 0 : -1}
+-              onClick={() => setActive(t.id)}
++              onClick={() => setSelected(t.id)}
+               onKeyDown={onKeyDown}
+               className={[
+                 'min-h-[44px] rounded-pill px-4 text-body-sm font-bold transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe',
+                 selected ? 'bg-tint text-blue-safe' : 'text-text-secondary hover:bg-pale-1',
+               ].join(' ')}
+             >
+               {t.label}
+             </button>
+           );
+         })}
+diff --git a/src/design/primitives/__tests__/Accordion.test.tsx b/src/design/primitives/__tests__/Accordion.test.tsx
+index c68a6b3..0498982 100644
+--- a/src/design/primitives/__tests__/Accordion.test.tsx
++++ b/src/design/primitives/__tests__/Accordion.test.tsx
+@@ -1,23 +1,39 @@
+-import { render, screen } from '@testing-library/react';
++import { cleanup, render, screen } from '@testing-library/react';
+ import userEvent from '@testing-library/user-event';
+-import { describe, expect, it } from 'vitest';
++import { afterEach, describe, expect, it } from 'vitest';
+ import { Accordion } from '../Accordion';
+ 
+ const items = [
+   { id: 'a', title: 'First', body: 'Body A' },
+   { id: 'b', title: 'Second', body: 'Body B' },
+ ];
+ 
++// vitest runs without `globals: true`, so RTL's automatic cleanup never registers.
++afterEach(cleanup);
++
+ describe('Accordion', () => {
+   it('uses real buttons with aria-expanded and aria-controls', async () => {
+     render(<Accordion items={items} singleOpen defaultOpenId="a" />);
+     const first = screen.getByRole('button', { name: 'First' });
+     expect(first).toHaveAttribute('aria-expanded', 'true');
+     expect(document.getElementById(first.getAttribute('aria-controls')!)).toHaveTextContent(
+       'Body A',
+     );
+     await userEvent.click(screen.getByRole('button', { name: 'Second' }));
+     expect(first).toHaveAttribute('aria-expanded', 'false');
+     expect(screen.getByRole('button', { name: 'Second' })).toHaveAttribute('aria-expanded', 'true');
+   });
++
++  it('closes an open panel when singleOpen is false (R21)', async () => {
++    render(<Accordion items={items} singleOpen={false} />);
++    const first = screen.getByRole('button', { name: 'First' });
++    const second = screen.getByRole('button', { name: 'Second' });
++    await userEvent.click(first);
++    await userEvent.click(second);
++    expect(first).toHaveAttribute('aria-expanded', 'true');
++    expect(second).toHaveAttribute('aria-expanded', 'true');
++    await userEvent.click(second);
++    expect(first).toHaveAttribute('aria-expanded', 'true');
++    expect(second).toHaveAttribute('aria-expanded', 'false');
++  });
+ });
+diff --git a/src/design/primitives/__tests__/Dialog.test.tsx b/src/design/primitives/__tests__/Dialog.test.tsx
+index 6a16c45..747464b 100644
+--- a/src/design/primitives/__tests__/Dialog.test.tsx
++++ b/src/design/primitives/__tests__/Dialog.test.tsx
+@@ -1,22 +1,52 @@
+-import { render, screen } from '@testing-library/react';
++import { cleanup, render, screen } from '@testing-library/react';
+ import userEvent from '@testing-library/user-event';
+-import { describe, expect, it, vi } from 'vitest';
++import { afterEach, describe, expect, it, vi } from 'vitest';
+ import { Dialog } from '../Dialog';
+ 
++// vitest runs without `globals: true`, so RTL's automatic cleanup never registers.
++afterEach(cleanup);
++
+ describe('Dialog', () => {
+   it('is labelled, closes on Escape, and restores focus', async () => {
+     const onClose = vi.fn();
+     render(
+       <>
+         <button>opener</button>
+         <Dialog open onClose={onClose} titleId="t">
+           <h2 id="t">Title</h2>
+           <button>inside</button>
+         </Dialog>
+       </>,
+     );
+     expect(screen.getByRole('dialog')).toHaveAttribute('aria-labelledby', 't');
+     await userEvent.keyboard('{Escape}');
+     expect(onClose).toHaveBeenCalled();
+   });
++
++  it('keeps focus when an inline onClose changes identity on re-render', () => {
++    const view = (
++      <>
++        <button>opener</button>
++        <Dialog open onClose={() => {}} titleId="t">
++          <h2 id="t">Title</h2>
++          <button>first</button>
++          <button>second</button>
++        </Dialog>
++      </>
++    );
++    const { rerender } = render(view);
++    const second = screen.getByRole('button', { name: 'second' });
++    second.focus();
++    rerender(
++      <>
++        <button>opener</button>
++        <Dialog open onClose={() => {}} titleId="t">
++          <h2 id="t">Title</h2>
++          <button>first</button>
++          <button>second</button>
++        </Dialog>
++      </>,
++    );
++    expect(document.activeElement).toBe(second);
++  });
+ });

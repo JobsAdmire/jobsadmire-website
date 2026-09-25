@@ -1,0 +1,177 @@
+# Review package: 76d64dd..6910597
+
+## Commits
+6910597 feat(content): LOCAL/OPS bundle adapter with contract validation and the production fixture guard
+
+## Files changed
+ .env.example                |  7 +++++++
+ src/content/adapter.test.ts | 48 +++++++++++++++++++++++++++++++++++++++++++++
+ src/content/adapter.ts      | 36 ++++++++++++++++++++++++++++++++++
+ src/content/config.ts       |  9 +++++++++
+ src/content/pure.ts         | 33 +++++++++++++++++++++++++++++++
+ 5 files changed, 133 insertions(+)
+
+## Diff
+diff --git a/.env.example b/.env.example
+new file mode 100644
+index 0000000..ce4d3ba
+--- /dev/null
++++ b/.env.example
+@@ -0,0 +1,7 @@
++# Content source: LOCAL (design-package bundles, Phase A) or OPS (Operations CMS, Phase B)
++CONTENT_SOURCE=LOCAL
++OPS_API_URL=https://operations.jobsadmire.com
++OPS_WEBSITE_READ_TOKEN=
++OPS_WEBSITE_WRITE_TOKEN=
++REVALIDATE_SECRET=
++NEXT_PUBLIC_SITE_URL=https://www.jobsadmire.com
+diff --git a/src/content/adapter.test.ts b/src/content/adapter.test.ts
+new file mode 100644
+index 0000000..0492038
+--- /dev/null
++++ b/src/content/adapter.test.ts
+@@ -0,0 +1,48 @@
++import { afterEach, describe, expect, it, vi } from 'vitest';
++import { makeT, assertServableInProduction } from './pure';
++import { contentSource } from './config';
++import { BundleSchema, type Bundle } from '../../contract/website-bundle.v1';
++import fixture from '../../contract/website-bundle.v1.fixture.json';
++
++const bundle = BundleSchema.parse(fixture);
++
++describe('makeT', () => {
++  afterEach(() => vi.unstubAllEnvs());
++  it('returns the value for a known id', () => {
++    expect(makeT(bundle)('home.001')).toBe(bundle.strings['home.001']);
++  });
++  it('returns an empty string for a deliberately empty value (no English fallback)', () => {
++    expect(makeT({ ...bundle, strings: { ...bundle.strings, 'calc.041': '' } })('calc.041')).toBe(
++      '',
++    );
++  });
++  it('throws in development for an unknown id', () => {
++    vi.stubEnv('NODE_ENV', 'development');
++    expect(() => makeT(bundle)('nope.001')).toThrow(/unknown string id/);
++  });
++});
++
++describe('contentSource', () => {
++  afterEach(() => vi.unstubAllEnvs());
++  it('defaults to LOCAL', () => {
++    vi.stubEnv('CONTENT_SOURCE', '');
++    expect(contentSource()).toBe('LOCAL');
++  });
++  it('is OPS only when OPS_API_URL and the read token exist', () => {
++    vi.stubEnv('CONTENT_SOURCE', 'OPS');
++    vi.stubEnv('OPS_API_URL', 'https://operations.jobsadmire.com');
++    vi.stubEnv('OPS_WEBSITE_READ_TOKEN', 'x'.repeat(40));
++    expect(contentSource()).toBe('OPS');
++  });
++});
++
++describe('assertServableInProduction (D23)', () => {
++  it('refuses pool/stories/representatives collections from LOCAL in production', () => {
++    const b: Bundle = { ...bundle, collections: { pool: [{ publicRef: 'x' }] } };
++    expect(() => assertServableInProduction(b, 'LOCAL', 'production')).toThrow(
++      /never served from LOCAL/,
++    );
++    expect(() => assertServableInProduction(b, 'OPS', 'production')).not.toThrow();
++    expect(() => assertServableInProduction(b, 'LOCAL', 'development')).not.toThrow();
++  });
++});
+diff --git a/src/content/adapter.ts b/src/content/adapter.ts
+new file mode 100644
+index 0000000..adf15ca
+--- /dev/null
++++ b/src/content/adapter.ts
+@@ -0,0 +1,36 @@
++import 'server-only';
++import { cache } from 'react';
++import type { Locale } from '@/i18n/routing';
++import { BundleSchema, type Bundle } from '../../contract/website-bundle.v1';
++import { contentSource } from './config';
++import { assertServableInProduction, BundleUnavailableError } from './pure';
++
++export * from './pure';
++export { contentSource };
++
++async function loadLocal(locale: Locale): Promise<Bundle> {
++  const raw = (await import(`./local/bundle.${locale}.json`)).default as unknown;
++  return BundleSchema.parse(raw);
++}
++
++async function loadOps(locale: Locale): Promise<Bundle> {
++  const res = await fetch(`${process.env.OPS_API_URL}/api/website/v1/bundle?locale=${locale}`, {
++    headers: { Authorization: `Bearer ${process.env.OPS_WEBSITE_READ_TOKEN}` },
++    next: { revalidate: 900, tags: [`site:${locale}`] }, // time floor + tag (D8)
++  });
++  if (!res.ok) throw new BundleUnavailableError(`bundle ${locale}: HTTP ${res.status}`);
++  const parsed = BundleSchema.safeParse(await res.json());
++  if (!parsed.success)
++    throw new BundleUnavailableError(
++      `bundle ${locale}: contract violation ${parsed.error.issues[0]?.path.join('.')}`,
++    );
++  return parsed.data;
++}
++
++/** One bundle per locale per request (React cache); ISR keeps last-good HTML when OPS fails. */
++export const getBundle = cache(async (locale: Locale): Promise<Bundle> => {
++  const source = contentSource();
++  const bundle = source === 'OPS' ? await loadOps(locale) : await loadLocal(locale);
++  assertServableInProduction(bundle, source);
++  return bundle;
++});
+diff --git a/src/content/config.ts b/src/content/config.ts
+new file mode 100644
+index 0000000..8073059
+--- /dev/null
++++ b/src/content/config.ts
+@@ -0,0 +1,9 @@
++export type ContentSource = 'LOCAL' | 'OPS';
++export const FIXTURE_ONLY_COLLECTIONS = ['pool', 'stories', 'representatives'] as const;
++
++export function contentSource(): ContentSource {
++  const wanted = process.env.CONTENT_SOURCE === 'OPS';
++  const configured =
++    Boolean(process.env.OPS_API_URL) && (process.env.OPS_WEBSITE_READ_TOKEN?.length ?? 0) >= 32;
++  return wanted && configured ? 'OPS' : 'LOCAL';
++}
+diff --git a/src/content/pure.ts b/src/content/pure.ts
+new file mode 100644
+index 0000000..9667394
+--- /dev/null
++++ b/src/content/pure.ts
+@@ -0,0 +1,33 @@
++// Runtime-agnostic content helpers: no `server-only`, so tests and (later) client-safe
++// callers can use them. Server-only loading lives in ./adapter.
++import type { Bundle } from '../../contract/website-bundle.v1';
++import { FIXTURE_ONLY_COLLECTIONS, type ContentSource } from './config';
++
++export class BundleUnavailableError extends Error {}
++
++export function assertServableInProduction(
++  bundle: Bundle,
++  source: ContentSource,
++  env = process.env.NODE_ENV,
++) {
++  if (env !== 'production' || source === 'OPS') return;
++  const offending = FIXTURE_ONLY_COLLECTIONS.filter(
++    (k) => (bundle.collections[k]?.length ?? 0) > 0,
++  );
++  if (offending.length)
++    throw new Error(
++      `collections ${offending.join(', ')} are never served from LOCAL in production (D23)`,
++    );
++}
++
++/** Content strings by package id. Empty values are legitimate (six TR fragments) and returned as ''. */
++export function makeT(bundle: Bundle) {
++  return (id: string): string => {
++    const v = bundle.strings[id];
++    if (v === undefined) {
++      if (process.env.NODE_ENV !== 'production') throw new Error(`unknown string id: ${id}`);
++      return '';
++    }
++    return v;
++  };
++}

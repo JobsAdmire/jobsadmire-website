@@ -1,0 +1,598 @@
+# Review package: 374b785..bb2bc94
+
+## Commits
+bb2bc94 feat(seo): metadata/alternates builders, sitemap, robots, Organization/WebSite/Breadcrumb/FAQ JSON-LD
+
+## Files changed
+ e2e/seo.spec.ts                        | 53 ++++++++++++++++++++++++
+ src/app/[locale]/hire-workers/page.tsx | 27 ++++++++++++
+ src/app/[locale]/layout.tsx            | 18 +++++++-
+ src/app/[locale]/page.tsx              | 25 ++++++++++++
+ src/app/robots.ts                      | 24 +++++++++++
+ src/app/sitemap.ts                     | 32 +++++++++++++++
+ src/lib/seo/JsonLdScript.tsx           | 14 +++++++
+ src/lib/seo/jsonld.test.ts             | 24 +++++++++++
+ src/lib/seo/jsonld.ts                  | 75 ++++++++++++++++++++++++++++++++++
+ src/lib/seo/metadata.test.ts           | 49 ++++++++++++++++++++++
+ src/lib/seo/metadata.ts                | 44 ++++++++++++++++++++
+ src/lib/seo/routes.test.ts             | 25 ++++++++++++
+ src/lib/seo/routes.ts                  | 28 +++++++++++++
+ 13 files changed, 436 insertions(+), 2 deletions(-)
+
+## Diff
+diff --git a/e2e/seo.spec.ts b/e2e/seo.spec.ts
+new file mode 100644
+index 0000000..e702d4c
+--- /dev/null
++++ b/e2e/seo.spec.ts
+@@ -0,0 +1,53 @@
++import { test, expect } from '@playwright/test';
++
++// Canonicals, hreflang and the sitemap are built from SITE_URL — the production origin — not
++// from the host the run happens to hit, so these stay jobsadmire.com URLs against localhost.
++const ORIGIN = 'https://www.jobsadmire.com';
++
++test('the home page has one h1, a canonical and all three hreflang links', async ({ page }) => {
++  await page.goto('/');
++  await expect(page.locator('h1')).toHaveCount(1);
++  // `absoluteUrl` returns `${ORIGIN}/` for the TR root; Next normalises the lone trailing
++  // slash away when it renders the tag (`trailingSlash: false`) — the same URL either way.
++  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute('href', ORIGIN);
++  await expect(page.locator('link[hreflang="tr"]')).toHaveAttribute('href', ORIGIN);
++  await expect(page.locator('link[hreflang="en"]')).toHaveAttribute('href', `${ORIGIN}/en`);
++  await expect(page.locator('link[hreflang="x-default"]')).toHaveAttribute('href', ORIGIN);
++});
++
++test('an inner page canonicalises to its own localized URL', async ({ page }) => {
++  await page.goto('/en/hire-workers');
++  await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
++    'href',
++    `${ORIGIN}/en/hire-workers`,
++  );
++  await expect(page.locator('link[hreflang="tr"]')).toHaveAttribute(
++    'href',
++    `${ORIGIN}/isci-talebi`,
++  );
++});
++
++test('the sitemap lists both locales and omits the noindex routes', async ({ request }) => {
++  const res = await request.get('/sitemap.xml');
++  expect(res.status()).toBe(200);
++  const xml = await res.text();
++  expect(xml).toContain(`${ORIGIN}/isci-talebi`);
++  expect(xml).toContain(`${ORIGIN}/en/hire-workers`);
++  expect(xml).not.toContain('/tesekkurler');
++  expect(xml).not.toContain('[slug]');
++});
++
++test('robots.txt serves the production rules and points at the sitemap', async ({ request }) => {
++  const res = await request.get('/robots.txt');
++  expect(res.status()).toBe(200);
++  // VERCEL_ENV is unset locally, so this is the production ruleset, not the preview one.
++  const body = await res.text();
++  expect(body).toContain(`Sitemap: ${ORIGIN}/sitemap.xml`);
++  expect(body).toContain('Disallow: /tesekkurler');
++});
++
++test('every page carries the Organization/EmploymentAgency node', async ({ request }) => {
++  const res = await request.get('/');
++  expect(res.status()).toBe(200);
++  expect(await res.text()).toContain('"@type":["Organization","EmploymentAgency"]');
++});
+diff --git a/src/app/[locale]/hire-workers/page.tsx b/src/app/[locale]/hire-workers/page.tsx
+index 256d0bd..dafb35b 100644
+--- a/src/app/[locale]/hire-workers/page.tsx
++++ b/src/app/[locale]/hire-workers/page.tsx
+@@ -1,7 +1,34 @@
++import type { Metadata } from 'next';
++import { hasLocale } from 'next-intl';
+ import { setRequestLocale } from 'next-intl/server';
++import { notFound } from 'next/navigation';
++import { getBundle, makeT } from '@/content/adapter';
++import { routing } from '@/i18n/routing';
++import { buildMetadata } from '@/lib/seo/metadata';
++
++export async function generateMetadata({
++  params,
++}: {
++  params: Promise<{ locale: string }>;
++}): Promise<Metadata> {
++  const { locale } = await params;
++  if (!hasLocale(routing.locales, locale)) notFound();
++  const bundle = await getBundle(locale);
++  const t = makeT(bundle);
++  // No `pages.hire` record in the Phase A bundle yet, so the site-level fallbacks stand until
++  // WP2 fills the page records.
++  return buildMetadata({
++    locale,
++    href: '/hire-workers',
++    bundle,
++    pageKey: 'hire',
++    fallbackTitle: 'JobsAdmire',
++    fallbackDescription: t('home.188'),
++  });
++}
+ 
+ export default async function HireWorkers({ params }: { params: Promise<{ locale: string }> }) {
+   const { locale } = await params;
+   setRequestLocale(locale);
+   return <h1 data-testid="hire-h1">{locale}</h1>;
+ }
+diff --git a/src/app/[locale]/layout.tsx b/src/app/[locale]/layout.tsx
+index 2df80ef..8165f9c 100644
+--- a/src/app/[locale]/layout.tsx
++++ b/src/app/[locale]/layout.tsx
+@@ -1,46 +1,60 @@
+ import type { Metadata } from 'next';
+ import { Archivo } from 'next/font/google';
+ import { NextIntlClientProvider, hasLocale } from 'next-intl';
+ import { setRequestLocale } from 'next-intl/server';
+ import { notFound } from 'next/navigation';
+-import { getBundle } from '@/content/adapter';
++import { getBundle, makeT } from '@/content/adapter';
+ import { SiteChrome } from '@/design/chrome/SiteChrome';
+ import { routing } from '@/i18n/routing';
++import { JsonLd } from '@/lib/seo/JsonLdScript';
++import { organizationJsonLd, websiteJsonLd } from '@/lib/seo/jsonld';
++import { SITE_URL } from '@/lib/seo/routes';
+ import '../globals.css';
+ 
+ const archivo = Archivo({
+   subsets: ['latin', 'latin-ext'],
+   weight: ['500', '600', '700', '800'],
+   display: 'swap',
+   variable: '--font-archivo',
+ });
+ 
+-export const metadata: Metadata = { title: 'JobsAdmire' };
++/** Per-page title/description/alternates come from `buildMetadata`; this only anchors the
++ *  origin every relative metadata URL resolves against. */
++export const metadata: Metadata = { metadataBase: new URL(SITE_URL), title: 'JobsAdmire' };
+ 
+ export function generateStaticParams() {
+   return routing.locales.map((locale) => ({ locale }));
+ }
+ 
+ export default async function LocaleLayout({
+   children,
+   params,
+ }: {
+   children: React.ReactNode;
+   params: Promise<{ locale: string }>;
+ }) {
+   const { locale } = await params;
+   if (!hasLocale(routing.locales, locale)) notFound();
+   setRequestLocale(locale);
+   const bundle = await getBundle(locale);
++  const t = makeT(bundle);
+   return (
+     <html lang={locale} className={archivo.variable}>
+       <body>
++        {/* Site-wide graph nodes (docs/SEO.md): Organization/EmploymentAgency on every page. */}
++        <JsonLd
++          data={organizationJsonLd(bundle.settings, {
++            name: 'JobsAdmire',
++            description: t('home.188'),
++          })}
++        />
++        <JsonLd data={websiteJsonLd(bundle.settings)} />
+         <NextIntlClientProvider>
+           <SiteChrome locale={locale} bundle={bundle}>
+             {children}
+           </SiteChrome>
+         </NextIntlClientProvider>
+       </body>
+     </html>
+   );
+ }
+diff --git a/src/app/[locale]/page.tsx b/src/app/[locale]/page.tsx
+index 2e37d2f..099095f 100644
+--- a/src/app/[locale]/page.tsx
++++ b/src/app/[locale]/page.tsx
+@@ -1,12 +1,37 @@
++import type { Metadata } from 'next';
++import { hasLocale } from 'next-intl';
+ import { setRequestLocale } from 'next-intl/server';
++import { notFound } from 'next/navigation';
++import { getBundle, makeT } from '@/content/adapter';
+ import { Link } from '@/i18n/navigation';
++import { routing } from '@/i18n/routing';
++import { buildMetadata } from '@/lib/seo/metadata';
++
++export async function generateMetadata({
++  params,
++}: {
++  params: Promise<{ locale: string }>;
++}): Promise<Metadata> {
++  const { locale } = await params;
++  if (!hasLocale(routing.locales, locale)) notFound();
++  const bundle = await getBundle(locale);
++  const t = makeT(bundle);
++  return buildMetadata({
++    locale,
++    href: '/',
++    bundle,
++    pageKey: 'home',
++    fallbackTitle: 'JobsAdmire',
++    fallbackDescription: t('home.188'),
++  });
++}
+ 
+ export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+   const { locale } = await params;
+   setRequestLocale(locale);
+   return (
+     <>
+       <h1 data-testid="home-h1">{locale === 'tr' ? 'Ana sayfa' : 'Home'}</h1>
+       <Link href="/hire-workers">hire</Link>
+     </>
+   );
+diff --git a/src/app/robots.ts b/src/app/robots.ts
+new file mode 100644
+index 0000000..8b0594c
+--- /dev/null
++++ b/src/app/robots.ts
+@@ -0,0 +1,24 @@
++import type { MetadataRoute } from 'next';
++import { SITE_URL } from '@/lib/seo/routes';
++
++export default function robots(): MetadataRoute.Robots {
++  // Previews are additionally protected by Vercel Deployment Protection — robots is a hint,
++  // not access control (docs/SEO.md).
++  const preview = process.env.VERCEL_ENV && process.env.VERCEL_ENV !== 'production';
++  return preview
++    ? { rules: { userAgent: '*', disallow: '/' } }
++    : {
++        rules: {
++          userAgent: '*',
++          allow: '/',
++          disallow: [
++            '/api/',
++            '/portal-girisi',
++            '/en/portal-login',
++            '/tesekkurler',
++            '/en/thank-you',
++          ],
++        },
++        sitemap: `${SITE_URL}/sitemap.xml`,
++      };
++}
+diff --git a/src/app/sitemap.ts b/src/app/sitemap.ts
+new file mode 100644
+index 0000000..367546d
+--- /dev/null
++++ b/src/app/sitemap.ts
+@@ -0,0 +1,32 @@
++import type { MetadataRoute } from 'next';
++import { pathnames, routing } from '@/i18n/routing';
++import { absoluteUrl, localeAlternates } from '@/lib/seo/routes';
++
++export const revalidate = 900;
++
++/** Listed nowhere because they are never indexed: the conversion page, the portal door and the
++ *  newsletter one-shot pages (docs/SEO.md — same set robots.ts disallows). */
++const EXCLUDED: ReadonlySet<string> = new Set([
++  '/thank-you',
++  '/portal-login',
++  '/newsletter/confirm',
++  '/newsletter/unsubscribe',
++]);
++
++type StaticPathname = Exclude<keyof typeof pathnames, `${string}[${string}`>;
++
++export default function sitemap(): MetadataRoute.Sitemap {
++  // Static routes only. Blog and careers detail entries arrive in WP2, read from the bundle
++  // under the `sitemap` ISR tag; nothing is fetched here yet.
++  const hrefs = (Object.keys(pathnames) as (keyof typeof pathnames)[]).filter(
++    (href): href is StaticPathname => !href.includes('[') && !EXCLUDED.has(href),
++  );
++  return routing.locales.flatMap((locale) =>
++    hrefs.map((href) => ({
++      url: absoluteUrl(locale, href),
++      alternates: localeAlternates(href),
++      changeFrequency: 'weekly' as const,
++      priority: href === '/' ? 1 : 0.7,
++    })),
++  );
++}
+diff --git a/src/lib/seo/JsonLdScript.tsx b/src/lib/seo/JsonLdScript.tsx
+new file mode 100644
+index 0000000..7529b79
+--- /dev/null
++++ b/src/lib/seo/JsonLdScript.tsx
+@@ -0,0 +1,14 @@
++// Named `JsonLdScript` rather than `JsonLd` because macOS' case-insensitive filesystem cannot
++// tell `JsonLd.tsx` from the builders' `jsonld.ts`: TS resolves `@/lib/seo/JsonLd` to
++// `jsonld.ts` and fails the build (TS1149). The exported component keeps its name.
++
++/** Renders a JSON-LD graph node. `<` is escaped so a string from the bundle can never close
++ *  the script tag. */
++export function JsonLd({ data }: { data: object }) {
++  return (
++    <script
++      type="application/ld+json"
++      dangerouslySetInnerHTML={{ __html: JSON.stringify(data).replace(/</g, '\\u003c') }}
++    />
++  );
++}
+diff --git a/src/lib/seo/jsonld.test.ts b/src/lib/seo/jsonld.test.ts
+new file mode 100644
+index 0000000..2321454
+--- /dev/null
++++ b/src/lib/seo/jsonld.test.ts
+@@ -0,0 +1,24 @@
++import { describe, expect, it } from 'vitest';
++import { faqJsonLd, organizationJsonLd } from './jsonld';
++import fixture from '../../../contract/website-bundle.v1.fixture.json';
++import { BundleSchema } from '../../../contract/website-bundle.v1';
++
++// R13/R23: parse the fixture rather than casting it — the cast would hide a contract drift
++// that the schema catches here.
++const settings = BundleSchema.parse(fixture).settings;
++
++describe('jsonld', () => {
++  it('organization carries the İŞKUR permit, tax id and social profiles', () => {
++    const o = organizationJsonLd(settings, {
++      name: 'JobsAdmire',
++      description: 'x',
++    });
++    expect(o['@type']).toEqual(['Organization', 'EmploymentAgency']);
++    expect(JSON.stringify(o)).toContain('1730');
++    expect(o.sameAs.length).toBe(6);
++  });
++  it('faq pairs become a FAQPage', () => {
++    const f = faqJsonLd([{ q: 'Q?', a: 'A.' }]);
++    expect(f.mainEntity[0].acceptedAnswer.text).toBe('A.');
++  });
++});
+diff --git a/src/lib/seo/jsonld.ts b/src/lib/seo/jsonld.ts
+new file mode 100644
+index 0000000..0c4bd73
+--- /dev/null
++++ b/src/lib/seo/jsonld.ts
+@@ -0,0 +1,75 @@
++import type { Settings } from '../../../contract/website-bundle.v1';
++
++/** Site-wide Organization/EmploymentAgency node: İŞKUR permit, tax id, social profiles. */
++export function organizationJsonLd(s: Settings, o: { name: string; description: string }) {
++  return {
++    '@context': 'https://schema.org',
++    '@type': ['Organization', 'EmploymentAgency'],
++    name: o.name,
++    description: o.description,
++    url: s.siteUrl,
++    logo: `${s.siteUrl}/brand/ja-mark.png`,
++    telephone: s.phone,
++    email: s.email,
++    identifier: [
++      {
++        '@type': 'PropertyValue',
++        propertyID: 'İŞKUR Private Employment Agency Permit',
++        value: s.licence.permitNo,
++      },
++      { '@type': 'PropertyValue', propertyID: 'Tax No', value: s.licence.taxNo },
++    ],
++    sameAs: [
++      s.social.instagram,
++      s.social.tiktok,
++      s.social.linkedin,
++      s.social.facebook,
++      s.telegramUrl,
++      `https://wa.me/${s.whatsappNumber}`,
++    ],
++    address: [
++      {
++        '@type': 'PostalAddress',
++        streetAddress: 'Adnan Menderes Blv. No 7/6',
++        addressLocality: 'Muratpaşa, Antalya',
++        addressCountry: 'TR',
++      },
++      {
++        '@type': 'PostalAddress',
++        streetAddress: 'Shahrah-e-Faisal',
++        addressLocality: 'Karachi',
++        addressCountry: 'PK',
++      },
++    ],
++  };
++}
++
++export const websiteJsonLd = (s: Settings) => ({
++  '@context': 'https://schema.org',
++  '@type': 'WebSite',
++  url: s.siteUrl,
++  name: 'JobsAdmire',
++  inLanguage: ['tr', 'en'],
++});
++
++export const breadcrumbJsonLd = (items: { name: string; url: string }[]) => ({
++  '@context': 'https://schema.org',
++  '@type': 'BreadcrumbList',
++  itemListElement: items.map((it, i) => ({
++    '@type': 'ListItem',
++    position: i + 1,
++    name: it.name,
++    item: it.url,
++  })),
++});
++
++/** AEO only — FAQ rich results are no longer shown for commercial sites (docs/SEO.md). */
++export const faqJsonLd = (pairs: { q: string; a: string }[]) => ({
++  '@context': 'https://schema.org',
++  '@type': 'FAQPage',
++  mainEntity: pairs.map((p) => ({
++    '@type': 'Question',
++    name: p.q,
++    acceptedAnswer: { '@type': 'Answer', text: p.a },
++  })),
++});
+diff --git a/src/lib/seo/metadata.test.ts b/src/lib/seo/metadata.test.ts
+new file mode 100644
+index 0000000..ede7804
+--- /dev/null
++++ b/src/lib/seo/metadata.test.ts
+@@ -0,0 +1,49 @@
++import { describe, expect, it } from 'vitest';
++import { buildMetadata } from './metadata';
++import { absoluteUrl } from './routes';
++import { makeT } from '@/content/pure';
++import fixture from '../../../contract/website-bundle.v1.fixture.json';
++import { BundleSchema } from '../../../contract/website-bundle.v1';
++
++const bundle = BundleSchema.parse(fixture);
++const t = makeT(bundle);
++
++const base = {
++  locale: 'tr' as const,
++  href: '/' as const,
++  bundle,
++  fallbackTitle: 'JobsAdmire',
++  fallbackDescription: 'fallback description',
++};
++
++describe('buildMetadata', () => {
++  it('takes title, description, canonical and alternates from the page record', () => {
++    const md = buildMetadata({ ...base, pageKey: 'home' });
++    expect(md.title).toBe(t('home.017'));
++    expect(md.description).toBe(t('home.018'));
++    expect(md.alternates?.canonical).toBe(absoluteUrl('tr', '/'));
++    expect(md.alternates?.languages).toEqual({
++      tr: absoluteUrl('tr', '/'),
++      en: absoluteUrl('en', '/'),
++      'x-default': absoluteUrl('tr', '/'),
++    });
++    expect(md.robots).toMatchObject({ index: true, follow: true });
++  });
++
++  it('honours a noindex page record', () => {
++    const noindex = {
++      ...bundle,
++      pages: { ...bundle.pages, home: { ...bundle.pages.home, robots: 'noindex' as const } },
++    };
++    const md = buildMetadata({ ...base, bundle: noindex, pageKey: 'home' });
++    expect(md.robots).toMatchObject({ index: false, follow: false });
++  });
++
++  it('falls back when the bundle carries no record for the page', () => {
++    const md = buildMetadata({ ...base, pageKey: 'no-such-page' });
++    expect(md.title).toBe('JobsAdmire');
++    expect(md.description).toBe('fallback description');
++    expect(md.alternates?.canonical).toBe(absoluteUrl('tr', '/'));
++    expect(md.robots).toMatchObject({ index: true, follow: true });
++  });
++});
+diff --git a/src/lib/seo/metadata.ts b/src/lib/seo/metadata.ts
+new file mode 100644
+index 0000000..842e33d
+--- /dev/null
++++ b/src/lib/seo/metadata.ts
+@@ -0,0 +1,44 @@
++import type { Metadata } from 'next';
++import type { Locale } from '@/i18n/routing';
++import type { Bundle } from '../../../contract/website-bundle.v1';
++// R23: `@/content/pure`, not the adapter — the adapter is `server-only` and would make this
++// module unimportable from a unit test.
++import { makeT } from '@/content/pure';
++import { absoluteUrl, localeAlternates, SITE_URL, type Href } from './routes';
++
++/** Page metadata from the content bundle's page record, with fallbacks for the Phase A pages
++ *  the bundle has no record for yet (docs/SEO.md: no hard-typed metadata in components). */
++export function buildMetadata(args: {
++  locale: Locale;
++  href: Href;
++  bundle: Bundle;
++  pageKey: string;
++  fallbackTitle: string;
++  fallbackDescription: string;
++}): Metadata {
++  const { locale, href, bundle, pageKey } = args;
++  const t = makeT(bundle);
++  const seo = bundle.pages[pageKey];
++  const title = seo ? t(seo.titleId) : args.fallbackTitle;
++  const description = seo ? t(seo.descriptionId) : args.fallbackDescription;
++  const canonical = seo?.canonical ?? absoluteUrl(locale, href);
++  return {
++    metadataBase: new URL(SITE_URL),
++    title,
++    description,
++    alternates: { canonical, ...localeAlternates(href) },
++    robots:
++      seo?.robots === 'noindex' ? { index: false, follow: false } : { index: true, follow: true },
++    openGraph: {
++      title,
++      description,
++      url: canonical,
++      siteName: 'JobsAdmire',
++      locale: locale === 'tr' ? 'tr_TR' : 'en_US',
++      type: 'website',
++      // WP2 generates the per-page OG images (docs/SEO.md); this is the site-wide default.
++      images: seo?.ogImage ? [seo.ogImage] : ['/opengraph-image.png'],
++    },
++    twitter: { card: 'summary_large_image', title, description },
++  };
++}
+diff --git a/src/lib/seo/routes.test.ts b/src/lib/seo/routes.test.ts
+new file mode 100644
+index 0000000..992ae23
+--- /dev/null
++++ b/src/lib/seo/routes.test.ts
+@@ -0,0 +1,25 @@
++import { describe, expect, it } from 'vitest';
++import { absoluteUrl, localeAlternates } from './routes';
++
++describe('seo routes', () => {
++  it('builds absolute localized URLs (TR unprefixed, EN prefixed)', () => {
++    expect(absoluteUrl('tr', '/hire-workers')).toBe('https://www.jobsadmire.com/isci-talebi');
++    expect(absoluteUrl('en', '/hire-workers')).toBe('https://www.jobsadmire.com/en/hire-workers');
++    expect(absoluteUrl('tr', '/')).toBe('https://www.jobsadmire.com/');
++    expect(absoluteUrl('en', '/')).toBe('https://www.jobsadmire.com/en');
++  });
++  it('alternates include both locales and x-default = tr', () => {
++    expect(localeAlternates('/about')).toEqual({
++      languages: {
++        tr: 'https://www.jobsadmire.com/hakkimizda',
++        en: 'https://www.jobsadmire.com/en/about',
++        'x-default': 'https://www.jobsadmire.com/hakkimizda',
++      },
++    });
++  });
++  it('resolves dynamic pathnames through their params', () => {
++    expect(absoluteUrl('tr', { pathname: '/blog/[slug]', params: { slug: 'isgucu' } })).toBe(
++      'https://www.jobsadmire.com/blog/isgucu',
++    );
++  });
++});
+diff --git a/src/lib/seo/routes.ts b/src/lib/seo/routes.ts
+new file mode 100644
+index 0000000..f921f59
+--- /dev/null
++++ b/src/lib/seo/routes.ts
+@@ -0,0 +1,28 @@
++import { getPathname } from '@/i18n/navigation';
++import { routing, type Locale } from '@/i18n/routing';
++
++/** Production origin; a trailing slash in the env value would double up in every URL. */
++export const SITE_URL = (process.env.NEXT_PUBLIC_SITE_URL ?? 'https://www.jobsadmire.com').replace(
++  /\/$/,
++  '',
++);
++
++/** The typed internal pathname `getPathname` accepts — a key of `pathnames`, or, for the
++ *  dynamic routes, `{ pathname, params }`. */
++export type Href = Parameters<typeof getPathname>[0]['href'];
++
++/** Absolute, locale-correct URL for an internal pathname. `getPathname` is synchronous when
++ *  the locale is passed explicitly, and returns `/` for the TR root and `/en` for the EN one,
++ *  so the TR root keeps its trailing slash and no other URL gains one. */
++export function absoluteUrl(locale: Locale, href: Href): string {
++  return `${SITE_URL}${getPathname({ locale, href })}`;
++}
++
++/** hreflang map for one page: both locales plus `x-default` = TR, self-reference included
++ *  (a page missing its own locale here is a defect — docs/SEO.md). */
++export function localeAlternates(href: Href): { languages: Record<string, string> } {
++  const languages: Record<string, string> = {};
++  for (const locale of routing.locales) languages[locale] = absoluteUrl(locale, href);
++  languages['x-default'] = absoluteUrl(routing.defaultLocale, href);
++  return { languages };
++}

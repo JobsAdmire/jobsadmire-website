@@ -1,0 +1,1407 @@
+# Review package: 7af0be5..6521910
+
+## Commits
+6521910 feat(website): forms inbox API — list, detail, audited export and re-run on website.forms (WP3a, P3)
+9a7452e feat(website): idempotent re-run of a failed submission (WP3a, P8)
+72d11da feat(website): INQUIRY, CALLBACK, VISIT and CALCULATOR_QUOTE file a Sales inquiry as system:website (WP3a, P4)
+
+## Files changed
+ .../website/dto/query-website-submissions.dto.ts   |  64 +++++++++
+ .../handlers/website-inquiry.handler.spec.ts       |  97 +++++++++++++
+ .../website/handlers/website-inquiry.handler.ts    |  83 +++++++++++
+ .../website/handlers/website-inquiry.logic.spec.ts |  85 ++++++++++++
+ .../website/handlers/website-inquiry.logic.ts      |  84 +++++++++++
+ .../website/website-forms-inbox.controller.ts      |  67 +++++++++
+ .../website/website-forms-inbox.logic.spec.ts      | 127 +++++++++++++++++
+ .../modules/website/website-forms-inbox.logic.ts   | 138 ++++++++++++++++++
+ .../website/website-forms-inbox.service.spec.ts    |  67 +++++++++
+ .../modules/website/website-forms-inbox.service.ts |  57 ++++++++
+ .../modules/website/website-forms.rerun.spec.ts    | 154 +++++++++++++++++++++
+ .../src/modules/website/website-forms.service.ts   |  35 +++++
+ apps/backend/src/modules/website/website.module.ts |  29 +++-
+ .../test/permissions/website-conformance.spec.ts   |   3 +-
+ .../permissions/website-inbox-conformance.spec.ts  |  70 ++++++++++
+ 15 files changed, 1152 insertions(+), 8 deletions(-)
+
+## Diff
+diff --git a/apps/backend/src/modules/website/dto/query-website-submissions.dto.ts b/apps/backend/src/modules/website/dto/query-website-submissions.dto.ts
+new file mode 100644
+index 0000000..665ace3
+--- /dev/null
++++ b/apps/backend/src/modules/website/dto/query-website-submissions.dto.ts
+@@ -0,0 +1,64 @@
++import { ApiPropertyOptional } from '@nestjs/swagger';
++import { Type } from 'class-transformer';
++import { IsDateString, IsEnum, IsIn, IsInt, IsOptional, IsString, Max, MaxLength, Min } from 'class-validator';
++import { WebsiteSubmissionStatus } from '@prisma/client';
++import { WEBSITE_FORM_KEYS, WebsiteFormKey } from '@jobsadmire/constants';
++
++/**
++ * Query of the forms inbox list and export routes (WP3a, ruling P3/P8). The frontend's
++ * `WebsiteSubmissionsQuery` (lib/api/website.ts) sends exactly these keys; the global
++ * ValidationPipe forbids any other.
++ */
++export class QueryWebsiteSubmissionsDto {
++  @ApiPropertyOptional({ default: 1 })
++  @IsOptional()
++  @Type(() => Number)
++  @IsInt()
++  @Min(1)
++  page?: number = 1;
++
++  @ApiPropertyOptional({ default: 20, maximum: 100 })
++  @IsOptional()
++  @Type(() => Number)
++  @IsInt()
++  @Min(1)
++  @Max(100)
++  limit?: number = 20;
++
++  @ApiPropertyOptional({ description: 'Matches the submission id, the created entity id, or the visitor name / company / e-mail / phone in the payload' })
++  @IsOptional()
++  @IsString()
++  @MaxLength(200)
++  search?: string;
++
++  // RC31: swagger's `enum` (and `IsIn`) want a mutable string[], so the `as const` tuple is spread.
++  @ApiPropertyOptional({ enum: [...WEBSITE_FORM_KEYS] })
++  @IsOptional()
++  @IsIn([...WEBSITE_FORM_KEYS])
++  formKey?: WebsiteFormKey;
++
++  @ApiPropertyOptional({ enum: WebsiteSubmissionStatus })
++  @IsOptional()
++  @IsEnum(WebsiteSubmissionStatus)
++  status?: WebsiteSubmissionStatus;
++
++  @ApiPropertyOptional({ enum: ['true'], description: "'true' → FAILED or accepted with a degraded captcha (ruling P8)" })
++  @IsOptional()
++  @IsIn(['true'])
++  needsAttention?: 'true';
++
++  @ApiPropertyOptional({ enum: ['true', 'false'], description: "'true' → test-token rows only; 'false' → real only; omitted → both" })
++  @IsOptional()
++  @IsIn(['true', 'false'])
++  isTest?: 'true' | 'false';
++
++  @ApiPropertyOptional({ description: 'ISO 8601 lower bound on createdAt (inclusive)' })
++  @IsOptional()
++  @IsDateString()
++  from?: string;
++
++  @ApiPropertyOptional({ description: 'ISO 8601 upper bound on createdAt (inclusive; a date-only value covers that whole UTC day)' })
++  @IsOptional()
++  @IsDateString()
++  to?: string;
++}
+diff --git a/apps/backend/src/modules/website/handlers/website-inquiry.handler.spec.ts b/apps/backend/src/modules/website/handlers/website-inquiry.handler.spec.ts
+new file mode 100644
+index 0000000..a351959
+--- /dev/null
++++ b/apps/backend/src/modules/website/handlers/website-inquiry.handler.spec.ts
+@@ -0,0 +1,97 @@
++// apps/backend/src/modules/website/handlers/website-inquiry.handler.spec.ts
++/**
++ * WP3a Task 7 (rulings P2, P4, RC4) — the four Sales-bound kinds file THROUGH
++ * InquiryService.create with the system:website actor (never prisma.inquiry.create), a
++ * dry run writes nothing, and `detail` carries what the core needs for the bell and the
++ * autoresponder (inquiryNumber, assignedAgentId, contactName, email).
++ */
++import { InquiryClassification, InquirySource, WebsiteFormKind } from '@prisma/client';
++import { WebsiteInquiryHandler, WEBSITE_SYSTEM_USER } from './website-inquiry.handler';
++import { WebsiteFormHandlerRegistry, WebsiteFormHandlerInput } from '../website-form-handler';
++
++function make() {
++  const inquiries = {
++    create: jest.fn(async (_dto: unknown, _actor: unknown) => ({
++      data: { id: 'inq1', inquiryNumber: 'INQ-2026-042', assignedAgentId: 'u9' },
++      meta: { assignmentMode: 'RULE_BASED' },
++    })),
++  };
++  const registry = new WebsiteFormHandlerRegistry();
++  const handler = new WebsiteInquiryHandler(inquiries as never, registry);
++  return { handler, inquiries, registry };
++}
++
++const input = (over: Partial<WebsiteFormHandlerInput> = {}): WebsiteFormHandlerInput => ({
++  submissionId: 'sub1',
++  formKey: 'hire',
++  kind: WebsiteFormKind.INQUIRY,
++  locale: 'en',
++  dryRun: false,
++  fields: { name: 'John Doe', company: 'Acme', email: 'john@acme.test', phone: '05321234567', country: 'TR', message: 'hi' },
++  consentVersion: 'v1',
++  captchaDegraded: false,
++  visitorIp: null,
++  userAgent: null,
++  ...over,
++});
++
++describe('WebsiteInquiryHandler', () => {
++  it('registers itself for INQUIRY, CALLBACK, VISIT and CALCULATOR_QUOTE and nothing else', () => {
++    const { handler, registry } = make();
++    for (const k of [WebsiteFormKind.INQUIRY, WebsiteFormKind.CALLBACK, WebsiteFormKind.VISIT, WebsiteFormKind.CALCULATOR_QUOTE]) {
++      expect(registry.get(k)).toBe(handler);
++    }
++    expect(registry.get(WebsiteFormKind.CAREERS_APPLY)).toBeNull();
++    expect(registry.get(WebsiteFormKind.NEWSLETTER)).toBeNull();
++    expect(registry.get(WebsiteFormKind.FRAUD_REPORT)).toBeNull();
++  });
++
++  it('creates the inquiry through InquiryService with the system:website actor and reports the entity + the core facts', async () => {
++    const { handler, inquiries } = make();
++    const res = await handler.handle(input());
++    expect(inquiries.create).toHaveBeenCalledTimes(1);
++    const [dto, actor] = inquiries.create.mock.calls[0] as [Record<string, unknown>, Record<string, unknown>];
++    expect(dto).toMatchObject({
++      source: InquirySource.WEBSITE_FORM, contactName: 'John Doe', companyName: 'Acme', email: 'john@acme.test',
++      phoneNumber: '+905321234567', country: 'TR', language: 'en', classification: InquiryClassification.DIRECT_EMPLOYER,
++    });
++    expect(actor).toBe(WEBSITE_SYSTEM_USER);
++    expect(WEBSITE_SYSTEM_USER).toEqual({ userId: 'system:website', email: 'website@jobsadmire.local', roleId: 'system', roleSlug: 'system' });
++    expect(res).toEqual({
++      ok: true,
++      createdEntityType: 'inquiry',
++      createdEntityId: 'inq1',
++      detail: {
++        inquiryNumber: 'INQ-2026-042',
++        assignedAgentId: 'u9',
++        assignmentMode: 'RULE_BASED',
++        classification: InquiryClassification.DIRECT_EMPLOYER,
++        contactName: 'John Doe',
++        email: 'john@acme.test',
++      },
++    });
++  });
++
++  it('dry run (test token, P2): builds the DTO, writes nothing, reports what it would have created', async () => {
++    const { handler, inquiries } = make();
++    const res = await handler.handle(input({ dryRun: true }));
++    expect(inquiries.create).not.toHaveBeenCalled();
++    expect(res).toEqual({
++      ok: true,
++      detail: { dryRun: true, wouldCreate: 'inquiry', classification: InquiryClassification.DIRECT_EMPLOYER, contactName: 'John Doe', email: 'john@acme.test' },
++    });
++  });
++
++  it('a callback with no e-mail reports email null so the core skips the autoresponder', async () => {
++    const { handler } = make();
++    const res = await handler.handle(input({ formKey: 'callback', kind: WebsiteFormKind.CALLBACK, fields: { name: 'A', phone: '05321234567' } }));
++    expect(res.ok).toBe(true);
++    expect(res.detail).toMatchObject({ email: null, contactName: 'A', classification: null });
++  });
++
++  it('a Sales failure propagates as a throw — the forms core records it as FAILED and alarms', async () => {
++    const { handler, inquiries } = make();
++    inquiries.create.mockRejectedValueOnce(new Error('assignment engine down') as never);
++    await expect(handler.handle(input())).rejects.toThrow('assignment engine down');
++  });
++});
+diff --git a/apps/backend/src/modules/website/handlers/website-inquiry.handler.ts b/apps/backend/src/modules/website/handlers/website-inquiry.handler.ts
+new file mode 100644
+index 0000000..eff3178
+--- /dev/null
++++ b/apps/backend/src/modules/website/handlers/website-inquiry.handler.ts
+@@ -0,0 +1,83 @@
++import { Injectable, Logger } from '@nestjs/common';
++import { WebsiteFormKind } from '@prisma/client';
++
++import { AuthenticatedUser } from '../../auth/interfaces/authenticated-user.interface';
++import { InquiryService } from '../../sales/inquiry.service';
++import {
++  WebsiteFormHandler,
++  WebsiteFormHandlerInput,
++  WebsiteFormHandlerRegistry,
++  WebsiteFormHandlerResult,
++} from '../website-form-handler';
++import { buildWebsiteInquiryDto } from './website-inquiry.logic';
++
++/**
++ * The synthetic actor the website files inquiries as. Like `system:call-center` and
++ * `system:whatsapp-ai` (effective-permissions.service.ts), `roleSlug: 'system'` matches no
++ * Role row and therefore holds ZERO grants — which is fine, because `InquiryService.create`
++ * never reads the actor, and this handler never calls anything that does.
++ */
++export const WEBSITE_SYSTEM_USER: AuthenticatedUser = {
++  userId: 'system:website',
++  email: 'website@jobsadmire.local',
++  roleId: 'system',
++  roleSlug: 'system',
++};
++
++/**
++ * INQUIRY, CALLBACK, VISIT and CALCULATOR_QUOTE all become a Sales Inquiry (ruling P4),
++ * filed THROUGH `InquiryService.create` — never `prisma.inquiry.create`: the inquiry
++ * number, the assignment engine and the WhatsApp re-match live in that service (the
++ * wa-ai-tools.service.ts rule). It creates an Inquiry, never a Lead — a lead is a
++ * qualified thing a human decided.
++ *
++ * A dry run (test token, ruling P2) builds the DTO — so the mapping is exercised by every
++ * heartbeat — and returns before the write. Anything thrown by Sales propagates: the
++ * forms core records the row as FAILED, alarms once per window, and the row stays
++ * re-runnable from the inbox (ruling P8). `detail` carries `contactName` and `email` so
++ * the core can address the bell and the autoresponder (RC4).
++ */
++@Injectable()
++export class WebsiteInquiryHandler implements WebsiteFormHandler {
++  private readonly logger = new Logger(WebsiteInquiryHandler.name);
++
++  readonly kinds: readonly WebsiteFormKind[] = [
++    WebsiteFormKind.INQUIRY,
++    WebsiteFormKind.CALLBACK,
++    WebsiteFormKind.VISIT,
++    WebsiteFormKind.CALCULATOR_QUOTE,
++  ];
++
++  constructor(
++    private readonly inquiries: InquiryService,
++    registry: WebsiteFormHandlerRegistry,
++  ) {
++    registry.register(this);
++  }
++
++  async handle(input: WebsiteFormHandlerInput): Promise<WebsiteFormHandlerResult> {
++    const dto = buildWebsiteInquiryDto(input);
++    const facts = {
++      classification: dto.classification ?? null,
++      contactName: dto.contactName ?? null,
++      email: dto.email ?? null,
++    };
++    if (input.dryRun) {
++      return { ok: true, detail: { dryRun: true, wouldCreate: 'inquiry', ...facts } };
++    }
++    const created = await this.inquiries.create(dto, WEBSITE_SYSTEM_USER);
++    // Identifiers only — never the visitor's name or e-mail in a log line.
++    this.logger.log(`website ${input.formKey} submission ${input.submissionId} → inquiry ${created.data.inquiryNumber}`);
++    return {
++      ok: true,
++      createdEntityType: 'inquiry',
++      createdEntityId: created.data.id,
++      detail: {
++        inquiryNumber: created.data.inquiryNumber,
++        assignedAgentId: created.data.assignedAgentId ?? null,
++        assignmentMode: created.meta.assignmentMode,
++        ...facts,
++      },
++    };
++  }
++}
+diff --git a/apps/backend/src/modules/website/handlers/website-inquiry.logic.spec.ts b/apps/backend/src/modules/website/handlers/website-inquiry.logic.spec.ts
+new file mode 100644
+index 0000000..ae3d5a6
+--- /dev/null
++++ b/apps/backend/src/modules/website/handlers/website-inquiry.logic.spec.ts
+@@ -0,0 +1,85 @@
++// apps/backend/src/modules/website/handlers/website-inquiry.logic.spec.ts
++/**
++ * WP3a Task 7 (ruling P4) — the website → CreateInquiryDto mapping is pure and typed:
++ * no `as any`, ISO country, E.164 phone, contactName, a formKey-tagged messagePreview,
++ * and a classification only for INQUIRY forms (CALLBACK / VISIT / CALCULATOR_QUOTE
++ * arrive unclassified — staff classify them).
++ */
++import { InquiryClassification, InquirySource, WebsiteFormKind } from '@prisma/client';
++import { buildWebsiteInquiryDto } from './website-inquiry.logic';
++import type { WebsiteFormHandlerInput } from '../website-form-handler';
++
++const input = (over: Partial<WebsiteFormHandlerInput> = {}): WebsiteFormHandlerInput => ({
++  submissionId: 'sub1',
++  formKey: 'hire',
++  kind: WebsiteFormKind.INQUIRY,
++  locale: 'tr',
++  dryRun: false,
++  fields: {
++    name: 'Ayşe Yılmaz', company: 'Acme', email: 'ayse@example.com', phone: '0532 123 45 67',
++    country: 'TR', headcount: '20', roleNeeded: 'Welder', message: 'ASAP',
++  },
++  consentVersion: 'privacy-2026-09',
++  captchaDegraded: false,
++  visitorIp: '203.0.113.9',
++  userAgent: 'Safari',
++  ...over,
++});
++
++describe('buildWebsiteInquiryDto', () => {
++  it('hire: WEBSITE_FORM source, contactName, ISO country, E.164 phone, language = locale, DIRECT_EMPLOYER by default', () => {
++    const dto = buildWebsiteInquiryDto(input(), new Date('2026-09-19T10:00:00.000Z'));
++    expect(dto).toMatchObject({
++      source: InquirySource.WEBSITE_FORM,
++      date: '2026-09-19T10:00:00.000Z',
++      contactName: 'Ayşe Yılmaz',
++      companyName: 'Acme',
++      email: 'ayse@example.com',
++      phoneNumber: '+905321234567',
++      country: 'TR',
++      language: 'tr',
++      classification: InquiryClassification.DIRECT_EMPLOYER,
++    });
++    expect(dto.messagePreview).toMatch(/^\[website:hire\]\n/);
++    expect(dto.messagePreview).toContain('roleNeeded: Welder');
++    expect(dto.messagePreview).toContain('headcount: 20');
++    expect(dto.messagePreview).not.toContain('ayse@example.com'); // identity fields live in their columns
++    expect(dto.notes).toContain('sub1');
++    expect(dto.notes).toContain('privacy-2026-09');
++  });
++
++  it('the "I am a…" selector wins over the form default; partner defaults to SOURCING_PARTNER; contact has no default', () => {
++    expect(buildWebsiteInquiryDto(input({ fields: { name: 'A', company: 'B', email: 'a@b.co', phone: '05321234567', iAm: 'hr_agency' } })).classification).toBe(InquiryClassification.HR_AGENCY);
++    expect(buildWebsiteInquiryDto(input({ formKey: 'partner', fields: { name: 'A', company: 'B', email: 'a@b.co', phone: '05321234567', country: 'PK' } })).classification).toBe(InquiryClassification.SOURCING_PARTNER);
++    expect(buildWebsiteInquiryDto(input({ formKey: 'workers', fields: { name: 'A', company: 'B', email: 'a@b.co', phone: '05321234567' } })).classification).toBe(InquiryClassification.DIRECT_EMPLOYER);
++    expect(buildWebsiteInquiryDto(input({ formKey: 'contact', fields: { name: 'A', email: 'a@b.co', message: 'hi' } })).classification).toBeUndefined();
++    expect(buildWebsiteInquiryDto(input({ formKey: 'contact', fields: { name: 'A', email: 'a@b.co', message: 'hi', iAm: 'job_seeker' } })).classification).toBe(InquiryClassification.JOB_SEEKER);
++  });
++
++  it('CALLBACK, VISIT, CALCULATOR_QUOTE: classification unset (P4), formKey tag carried, phone normalised', () => {
++    const cb = buildWebsiteInquiryDto(input({ formKey: 'callback', kind: WebsiteFormKind.CALLBACK, fields: { name: 'A', phone: '+44 20 7946 0958', preferredTime: 'morning', iAm: 'hr_agency' } }));
++    expect(cb.classification).toBeUndefined();
++    expect(cb.phoneNumber).toBe('+442079460958');
++    expect(cb.messagePreview).toMatch(/^\[website:callback\]\n/);
++    expect(cb.messagePreview).toContain('preferredTime: morning');
++    expect(buildWebsiteInquiryDto(input({ formKey: 'visit', kind: WebsiteFormKind.VISIT })).classification).toBeUndefined();
++    expect(buildWebsiteInquiryDto(input({ formKey: 'calculator', kind: WebsiteFormKind.CALCULATOR_QUOTE })).classification).toBeUndefined();
++  });
++
++  it('a phone that cannot be normalised is passed through as typed; a missing phone stays undefined', () => {
++    expect(buildWebsiteInquiryDto(input({ fields: { name: 'A', phone: 'ext 4711 only' } })).phoneNumber).toBe('ext 4711 only');
++    expect(buildWebsiteInquiryDto(input({ fields: { name: 'A' } })).phoneNumber).toBeUndefined();
++  });
++
++  it('an array-valued field (RC5 array-of-key / multi-select) is joined into the preview; an array identity field takes its first value', () => {
++    const dto = buildWebsiteInquiryDto(input({ formKey: 'partner', fields: { name: ['A', 'B'], company: 'C', email: 'a@b.co', phone: '05321234567', trades: ['welder', 'fitter'] } }));
++    expect(dto.contactName).toBe('A');
++    expect(dto.messagePreview).toContain('trades: welder, fitter');
++  });
++
++  it('messagePreview is capped at 5000 characters and notes at 2000 (CreateInquiryDto caps are not enforced on a service call)', () => {
++    const dto = buildWebsiteInquiryDto(input({ fields: { name: 'A', message: 'x'.repeat(6000) } }));
++    expect(dto.messagePreview!.length).toBeLessThanOrEqual(5000);
++    expect(dto.notes!.length).toBeLessThanOrEqual(2000);
++  });
++});
+diff --git a/apps/backend/src/modules/website/handlers/website-inquiry.logic.ts b/apps/backend/src/modules/website/handlers/website-inquiry.logic.ts
+new file mode 100644
+index 0000000..fe8bf49
+--- /dev/null
++++ b/apps/backend/src/modules/website/handlers/website-inquiry.logic.ts
+@@ -0,0 +1,84 @@
++import { InquiryClassification, InquirySource, WebsiteFormKind } from '@prisma/client';
++
++import { CreateInquiryDto } from '../../sales/dto/create-inquiry.dto';
++import { normalizeE164 } from '../../call-center/logic/phone-normalize.logic';
++import type { WebsiteFormHandlerInput } from '../website-form-handler';
++
++/** The website "I am a…" selector → InquiryClassification (the call-agent-tools.service.ts map). */
++const I_AM_TO_CLASSIFICATION: Record<string, InquiryClassification> = {
++  direct_employer: InquiryClassification.DIRECT_EMPLOYER,
++  hr_agency: InquiryClassification.HR_AGENCY,
++  sourcing_partner: InquiryClassification.SOURCING_PARTNER,
++  job_seeker: InquiryClassification.JOB_SEEKER,
++};
++
++/** Per-form default when the selector is absent. `contact` deliberately has none. */
++const FORM_DEFAULT_CLASSIFICATION: Record<string, InquiryClassification | undefined> = {
++  hire: InquiryClassification.DIRECT_EMPLOYER,
++  workers: InquiryClassification.DIRECT_EMPLOYER,
++  partner: InquiryClassification.SOURCING_PARTNER,
++};
++
++/** Identity fields have their own Inquiry columns; everything else goes into the preview. */
++const IDENTITY_FIELDS = new Set(['name', 'company', 'email', 'phone', 'country', 'iAm']);
++
++/** CreateInquiryDto's own caps — not enforced on a service call, so enforced here. */
++const MESSAGE_PREVIEW_MAX = 5000;
++const NOTES_MAX = 2000;
++
++type WebsiteFieldValue = string | string[] | undefined;
++
++/** An identity column takes one value; an array (RC5 multi-value field) contributes its first (RC32). */
++function one(v: WebsiteFieldValue): string | undefined {
++  if (typeof v === 'string') return v || undefined;
++  if (Array.isArray(v)) return v.find((x) => typeof x === 'string' && x.length > 0);
++  return undefined;
++}
++
++/** A preview line shows every value; arrays are comma-joined. */
++function all(v: WebsiteFieldValue): string {
++  return Array.isArray(v) ? v.join(', ') : v ?? '';
++}
++
++function classificationFor(input: WebsiteFormHandlerInput): InquiryClassification | undefined {
++  // P4: CALLBACK, VISIT and CALCULATOR_QUOTE arrive unclassified — staff classify them.
++  if (input.kind !== WebsiteFormKind.INQUIRY) return undefined;
++  const picked = one(input.fields.iAm);
++  return (picked ? I_AM_TO_CLASSIFICATION[picked] : undefined) ?? FORM_DEFAULT_CLASSIFICATION[input.formKey];
++}
++
++/**
++ * The typed, cast-free CreateInquiryDto (the wa-ai-tools.service.ts shape). Country is
++ * already an ISO-2 code (the catalog uppercases it), the phone becomes E.164 for the
++ * WhatsApp re-match in InquiryService.create (or stays as typed when it cannot be
++ * normalised — the inbox keeps the visitor's own spelling either way), `language` is the
++ * page locale, and the preview is tagged with the form key so the Sales list can tell a
++ * callback request from a hiring request.
++ */
++export function buildWebsiteInquiryDto(input: WebsiteFormHandlerInput, now: Date = new Date()): CreateInquiryDto {
++  const f = input.fields;
++  const rawPhone = one(f.phone);
++  const phone = rawPhone ? normalizeE164(rawPhone) ?? rawPhone : undefined;
++  const lines = Object.entries(f)
++    .filter(([k, v]) => !IDENTITY_FIELDS.has(k) && all(v).length > 0)
++    .map(([k, v]) => `${k}: ${all(v)}`);
++  const messagePreview = [`[website:${input.formKey}]`, ...lines].join('\n').slice(0, MESSAGE_PREVIEW_MAX);
++  const notes = `Website intake submission ${input.submissionId} (${input.locale}), consent ${input.consentVersion}${
++    input.captchaDegraded ? ', captcha degraded' : ''
++  }.`.slice(0, NOTES_MAX);
++
++  const dto: CreateInquiryDto = {
++    source: InquirySource.WEBSITE_FORM,
++    date: now.toISOString(),
++    contactName: one(f.name),
++    companyName: one(f.company),
++    email: one(f.email),
++    phoneNumber: phone,
++    country: one(f.country),
++    language: input.locale,
++    classification: classificationFor(input),
++    messagePreview,
++    notes,
++  };
++  return dto;
++}
+diff --git a/apps/backend/src/modules/website/website-forms-inbox.controller.ts b/apps/backend/src/modules/website/website-forms-inbox.controller.ts
+new file mode 100644
+index 0000000..2474013
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-forms-inbox.controller.ts
+@@ -0,0 +1,67 @@
++import { Controller, Get, HttpCode, Param, Post, Query } from '@nestjs/common';
++import { ApiBearerAuth, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
++
++import { RequirePermission } from '../permissions/decorators/require-permission.decorator';
++import { AuditEntity } from '../../common/decorators/audit-entity.decorator';
++import { CurrentUser } from '../../common/decorators/current-user.decorator';
++import { AuthenticatedUser } from '../auth/interfaces/authenticated-user.interface';
++import { QueryWebsiteSubmissionsDto } from './dto/query-website-submissions.dto';
++import { WebsiteFormsInboxService } from './website-forms-inbox.service';
++import { WebsiteFormsService } from './website-forms.service';
++
++/**
++ * The forms inbox (WP3a, rulings P3, P8, RC1) — the ONE path family Task 11's
++ * `websiteFormsApi` calls: `website/forms/submissions/*`.
++ *
++ * Reads are `website.forms` VIEW. The export is its own route on EXPORT and audited
++ * (P3: "dedicated endpoint, @AuditEntity") — it answers the same paged `{ data, meta }`
++ * as the list because the frontend's ExportCsvButton walks pages and writes the CSV
++ * itself; what the EXPORT grant and the audit row record is WHO pulled the visitors'
++ * contact data out in bulk. The re-run is a write that may file a lead, so it is EDIT and
++ * audited. `export` is declared before `:id` so Nest never reads "export" as an id.
++ *
++ * Audited through the interceptor because a staff JWT is present
++ * (audit.interceptor.ts:46); the public door, by contrast, only has ActivityLogger.
++ */
++@ApiTags('Website')
++@ApiBearerAuth()
++@Controller('website/forms/submissions')
++export class WebsiteFormsInboxController {
++  constructor(
++    private readonly inbox: WebsiteFormsInboxService,
++    private readonly forms: WebsiteFormsService,
++  ) {}
++
++  @RequirePermission('website.forms', 'VIEW')
++  @Get()
++  @ApiOperation({ summary: 'Website form submissions (paged; search, formKey, status, needsAttention, isTest, from/to)' })
++  list(@Query() query: QueryWebsiteSubmissionsDto) {
++    return this.inbox.list(query);
++  }
++
++  @RequirePermission('website.forms', 'EXPORT')
++  @Get('export')
++  @AuditEntity('WebsiteFormSubmission')
++  @ApiOperation({ summary: 'Bulk read of submissions for the CSV export (same query and shape as the list; audited)' })
++  export(@Query() query: QueryWebsiteSubmissionsDto) {
++    return this.inbox.list(query);
++  }
++
++  @RequirePermission('website.forms', 'VIEW')
++  @Get(':id')
++  @ApiParam({ name: 'id' })
++  @ApiOperation({ summary: 'One submission with its payload and per-attempt handler result' })
++  get(@Param('id') id: string) {
++    return this.inbox.get(id);
++  }
++
++  @RequirePermission('website.forms', 'EDIT')
++  @Post(':id/rerun')
++  @HttpCode(200)
++  @AuditEntity('WebsiteFormSubmission')
++  @ApiParam({ name: 'id' })
++  @ApiOperation({ summary: 'Re-run the handler of a FAILED submission that created no record (409 otherwise; test rows dry-run)' })
++  rerun(@Param('id') id: string, @CurrentUser() user: AuthenticatedUser) {
++    return this.forms.rerun(id, user);
++  }
++}
+diff --git a/apps/backend/src/modules/website/website-forms-inbox.logic.spec.ts b/apps/backend/src/modules/website/website-forms-inbox.logic.spec.ts
+new file mode 100644
+index 0000000..8a5384c
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-forms-inbox.logic.spec.ts
+@@ -0,0 +1,127 @@
++// apps/backend/src/modules/website/website-forms-inbox.logic.spec.ts
++/**
++ * WP3a Task 7 (rulings P3, P8) — the inbox filters and the wire rows. Needs-attention is
++ * FAILED or captchaDegraded (P8); the list row never carries the hashes or the attempt
++ * log, the detail adds the attempt log, the UA and the token class.
++ */
++import { WebsiteFormKind, WebsiteSubmissionStatus, WebsiteTokenClass } from '@prisma/client';
++import { buildSubmissionWhere, toInboxDetail, toInboxRow } from './website-forms-inbox.logic';
++
++const ROW = {
++  id: 'sub1',
++  formId: 'form-hire',
++  formKey: 'hire',
++  requestHash: 'a'.repeat(64),
++  hourBucket: 497_000,
++  status: WebsiteSubmissionStatus.HANDLED,
++  isTest: false,
++  tokenClass: WebsiteTokenClass.PREVIOUS_WRITE,
++  locale: 'tr',
++  payloadJson: { fields: { name: 'Ayşe' }, sourcePath: '/tr/isci-kirala' },
++  consentVersion: 'v1',
++  ipAddressHash: 'b'.repeat(64),
++  userAgent: 'Safari',
++  captchaPassed: true,
++  captchaDegraded: false,
++  handlerResultJson: { attempts: [] },
++  createdEntityType: 'inquiry',
++  createdEntityId: 'inq1',
++  error: null,
++  handledAt: new Date('2026-09-19T10:00:01.000Z'),
++  purgeAfter: new Date('2026-12-18T10:00:01.000Z'),
++  createdAt: new Date('2026-09-19T10:00:00.000Z'),
++  updatedAt: new Date('2026-09-19T10:00:01.000Z'),
++  form: { kind: WebsiteFormKind.INQUIRY },
++};
++
++describe('buildSubmissionWhere', () => {
++  it('no filters → empty where', () => {
++    expect(buildSubmissionWhere({})).toEqual({});
++  });
++
++  it('formKey, status and isTest are plain column filters', () => {
++    expect(buildSubmissionWhere({ formKey: 'hire', status: WebsiteSubmissionStatus.FAILED, isTest: 'false' })).toEqual({
++      formKey: 'hire', status: WebsiteSubmissionStatus.FAILED, isTest: false,
++    });
++    expect(buildSubmissionWhere({ isTest: 'true' })).toEqual({ isTest: true });
++  });
++
++  it('needsAttention = FAILED or captchaDegraded (P8)', () => {
++    expect(buildSubmissionWhere({ needsAttention: 'true' })).toEqual({
++      AND: [{ OR: [{ status: WebsiteSubmissionStatus.FAILED }, { captchaDegraded: true }] }],
++    });
++  });
++
++  it('search matches the id, the created entity id, and the visitor identity fields inside payloadJson (e-mail lowercased)', () => {
++    const where = buildSubmissionWhere({ search: ' Ayşe@Example.COM ' });
++    expect(where.AND).toEqual([
++      {
++        OR: [
++          { id: 'Ayşe@Example.COM' },
++          { createdEntityId: 'Ayşe@Example.COM' },
++          { payloadJson: { path: ['fields', 'name'], string_contains: 'Ayşe@Example.COM' } },
++          { payloadJson: { path: ['fields', 'company'], string_contains: 'Ayşe@Example.COM' } },
++          { payloadJson: { path: ['fields', 'email'], string_contains: 'ayşe@example.com' } },
++          { payloadJson: { path: ['fields', 'phone'], string_contains: 'Ayşe@Example.COM' } },
++          { payloadJson: { path: ['fields', 'reporterName'], string_contains: 'Ayşe@Example.COM' } },
++          { payloadJson: { path: ['fields', 'reporterEmail'], string_contains: 'ayşe@example.com' } },
++        ],
++      },
++    ]);
++    expect(buildSubmissionWhere({ search: '   ' })).toEqual({});
++  });
++
++  it('from/to bound createdAt; a date-only `to` is inclusive of its whole UTC day', () => {
++    expect(buildSubmissionWhere({ from: '2026-09-01T00:00:00.000Z', to: '2026-09-19T12:00:00.000Z' })).toEqual({
++      createdAt: { gte: new Date('2026-09-01T00:00:00.000Z'), lte: new Date('2026-09-19T12:00:00.000Z') },
++    });
++    expect(buildSubmissionWhere({ to: '2026-09-19' })).toEqual({
++      createdAt: { lt: new Date('2026-09-20T00:00:00.000Z') },
++    });
++    expect(buildSubmissionWhere({ from: '2026-09-19' })).toEqual({
++      createdAt: { gte: new Date('2026-09-19T00:00:00.000Z') },
++    });
++  });
++
++  it('everything at once composes with AND', () => {
++    const where = buildSubmissionWhere({ formKey: 'contact', needsAttention: 'true', search: 'x', isTest: 'false' });
++    expect(where.formKey).toBe('contact');
++    expect(where.isTest).toBe(false);
++    expect(where.AND).toHaveLength(2);
++  });
++});
++
++describe('toInboxRow / toInboxDetail', () => {
++  it('the list row carries formKind and the payload, never the hashes, the attempt log or the UA', () => {
++    const row = toInboxRow(ROW);
++    expect(row).toEqual({
++      id: 'sub1',
++      formKey: 'hire',
++      formKind: WebsiteFormKind.INQUIRY,
++      status: WebsiteSubmissionStatus.HANDLED,
++      isTest: false,
++      locale: 'tr',
++      captchaPassed: true,
++      captchaDegraded: false,
++      createdEntityType: 'inquiry',
++      createdEntityId: 'inq1',
++      error: null,
++      handledAt: ROW.handledAt,
++      purgeAfter: ROW.purgeAfter,
++      consentVersion: 'v1',
++      payloadJson: ROW.payloadJson,
++      createdAt: ROW.createdAt,
++    });
++    expect(JSON.stringify(row)).not.toContain('a'.repeat(64));
++    expect(JSON.stringify(row)).not.toContain('b'.repeat(64));
++    expect(row).not.toHaveProperty('handlerResultJson');
++    expect(row).not.toHaveProperty('userAgent');
++  });
++
++  it('the detail adds the attempt log, the UA, the token class and updatedAt', () => {
++    const detail = toInboxDetail(ROW);
++    expect(detail).toMatchObject({ ...toInboxRow(ROW), handlerResultJson: { attempts: [] }, userAgent: 'Safari', tokenClass: WebsiteTokenClass.PREVIOUS_WRITE, updatedAt: ROW.updatedAt });
++    expect(detail).not.toHaveProperty('ipAddressHash');
++    expect(detail).not.toHaveProperty('requestHash');
++  });
++});
+diff --git a/apps/backend/src/modules/website/website-forms-inbox.logic.ts b/apps/backend/src/modules/website/website-forms-inbox.logic.ts
+new file mode 100644
+index 0000000..187d62e
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-forms-inbox.logic.ts
+@@ -0,0 +1,138 @@
++import { Prisma, WebsiteFormKind, WebsiteFormSubmission, WebsiteSubmissionStatus, WebsiteTokenClass } from '@prisma/client';
++
++import { QueryWebsiteSubmissionsDto } from './dto/query-website-submissions.dto';
++
++export const INBOX_DEFAULT_LIMIT = 20;
++/** The frontend's ExportCsvButton walks pages of 100. */
++export const INBOX_MAX_LIMIT = 100;
++
++/** A submission with its form's kind joined — what every inbox read selects. */
++export type WebsiteSubmissionWithKind = WebsiteFormSubmission & { form: { kind: WebsiteFormKind } };
++
++/**
++ * The list row (Task 11's `WebsiteFormSubmission` client type). Deliberately NOT the
++ * Prisma row: the request hash, the hour bucket and the IP hash are the door's own
++ * bookkeeping, and the attempt log is the detail's.
++ */
++export interface WebsiteInboxRow {
++  id: string;
++  formKey: string;
++  formKind: WebsiteFormKind;
++  status: WebsiteSubmissionStatus;
++  isTest: boolean;
++  locale: string | null;
++  captchaPassed: boolean | null;
++  captchaDegraded: boolean;
++  createdEntityType: string | null;
++  createdEntityId: string | null;
++  error: string | null;
++  handledAt: Date | null;
++  purgeAfter: Date | null;
++  consentVersion: string | null;
++  payloadJson: Prisma.JsonValue;
++  createdAt: Date;
++}
++
++export interface WebsiteInboxDetail extends WebsiteInboxRow {
++  tokenClass: WebsiteTokenClass;
++  handlerResultJson: Prisma.JsonValue | null;
++  userAgent: string | null;
++  updatedAt: Date;
++}
++
++export function toInboxRow(row: WebsiteSubmissionWithKind): WebsiteInboxRow {
++  return {
++    id: row.id,
++    formKey: row.formKey,
++    formKind: row.form.kind,
++    status: row.status,
++    isTest: row.isTest,
++    locale: row.locale,
++    captchaPassed: row.captchaPassed,
++    captchaDegraded: row.captchaDegraded,
++    createdEntityType: row.createdEntityType,
++    createdEntityId: row.createdEntityId,
++    error: row.error,
++    handledAt: row.handledAt,
++    purgeAfter: row.purgeAfter,
++    consentVersion: row.consentVersion,
++    payloadJson: row.payloadJson,
++    createdAt: row.createdAt,
++  };
++}
++
++export function toInboxDetail(row: WebsiteSubmissionWithKind): WebsiteInboxDetail {
++  return {
++    ...toInboxRow(row),
++    tokenClass: row.tokenClass,
++    handlerResultJson: row.handlerResultJson,
++    userAgent: row.userAgent,
++    updatedAt: row.updatedAt,
++  };
++}
++
++const DATE_ONLY = /^\d{4}-\d{2}-\d{2}$/;
++
++/** Inclusive upper bound: a date-only `to` means "through the end of that UTC day". */
++function upperBound(to: string): Prisma.DateTimeFilter {
++  if (DATE_ONLY.test(to)) {
++    const next = new Date(`${to}T00:00:00.000Z`);
++    next.setUTCDate(next.getUTCDate() + 1);
++    return { lt: next };
++  }
++  return { lte: new Date(to) };
++}
++
++/**
++ * Search is best-effort and MINIMAL by design (RC24): Prisma 5's JSON filter offers
++ * `string_contains` on a path but no case-insensitive `mode`, so a name search is
++ * case-sensitive while an e-mail search is lowercased (the catalog stores e-mails
++ * lowercased). The two `reporter*` paths cover the fraud form (RC5).
++ */
++function searchClause(term: string): Prisma.WebsiteFormSubmissionWhereInput {
++  const lower = term.toLowerCase();
++  return {
++    OR: [
++      { id: term },
++      { createdEntityId: term },
++      { payloadJson: { path: ['fields', 'name'], string_contains: term } },
++      { payloadJson: { path: ['fields', 'company'], string_contains: term } },
++      { payloadJson: { path: ['fields', 'email'], string_contains: lower } },
++      { payloadJson: { path: ['fields', 'phone'], string_contains: term } },
++      { payloadJson: { path: ['fields', 'reporterName'], string_contains: term } },
++      { payloadJson: { path: ['fields', 'reporterEmail'], string_contains: lower } },
++    ],
++  };
++}
++
++/**
++ * Every OR-shaped clause (needs-attention, search) is appended under `where.AND`, never
++ * assigned to `where.OR` (CLAUDE.md, the 2026-08-10 scope leak): `website.forms` is
++ * ALL-scoped today, and the day a row-level scope fragment is spread into this where,
++ * nothing here can overwrite it.
++ */
++export function buildSubmissionWhere(q: QueryWebsiteSubmissionsDto): Prisma.WebsiteFormSubmissionWhereInput {
++  const where: Prisma.WebsiteFormSubmissionWhereInput = {};
++  if (q.formKey) where.formKey = q.formKey;
++  if (q.status) where.status = q.status;
++  if (q.isTest === 'true') where.isTest = true;
++  else if (q.isTest === 'false') where.isTest = false;
++
++  if (q.from || q.to) {
++    where.createdAt = {
++      ...(q.from ? { gte: new Date(q.from) } : {}),
++      ...(q.to ? upperBound(q.to) : {}),
++    };
++  }
++
++  const and: Prisma.WebsiteFormSubmissionWhereInput[] = [];
++  // Needs-attention = FAILED or accepted while the captcha was degraded (ruling P8).
++  if (q.needsAttention === 'true') {
++    and.push({ OR: [{ status: WebsiteSubmissionStatus.FAILED }, { captchaDegraded: true }] });
++  }
++  const term = q.search?.trim();
++  if (term) and.push(searchClause(term));
++  if (and.length) where.AND = and;
++
++  return where;
++}
+diff --git a/apps/backend/src/modules/website/website-forms-inbox.service.spec.ts b/apps/backend/src/modules/website/website-forms-inbox.service.spec.ts
+new file mode 100644
+index 0000000..a66ea07
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-forms-inbox.service.spec.ts
+@@ -0,0 +1,67 @@
++// apps/backend/src/modules/website/website-forms-inbox.service.spec.ts
++/**
++ * WP3a Task 7 (ruling P3) — the inbox reads: house paging `{ data, meta }`, newest first,
++ * `limit` capped at 100 (the frontend ExportCsvButton walks pages of 100), and a 404 for
++ * an unknown id.
++ */
++import { NotFoundException } from '@nestjs/common';
++import { WebsiteFormKind, WebsiteSubmissionStatus, WebsiteTokenClass } from '@prisma/client';
++import { WebsiteFormsInboxService } from './website-forms-inbox.service';
++
++type Args = Record<string, unknown>;
++
++const row = (id: string) => ({
++  id, formId: 'form-hire', formKey: 'hire', requestHash: 'a'.repeat(64), hourBucket: 1, status: WebsiteSubmissionStatus.HANDLED, isTest: false,
++  tokenClass: WebsiteTokenClass.WRITE, locale: 'tr', payloadJson: { fields: { name: 'A' } }, consentVersion: 'v1', ipAddressHash: null, userAgent: 'UA',
++  captchaPassed: true, captchaDegraded: false, handlerResultJson: { attempts: [] }, createdEntityType: 'inquiry', createdEntityId: 'inq1', error: null,
++  handledAt: new Date('2026-09-19T10:00:01.000Z'), purgeAfter: null, createdAt: new Date('2026-09-19T10:00:00.000Z'), updatedAt: new Date('2026-09-19T10:00:01.000Z'),
++  form: { kind: WebsiteFormKind.INQUIRY },
++});
++
++function make(rows = [row('s1'), row('s2')], total = 2) {
++  const prisma = {
++    websiteFormSubmission: {
++      findMany: jest.fn(async (_a: Args) => rows),
++      count: jest.fn(async (_a: Args) => total),
++      findUnique: jest.fn(async (a: Args) => rows.find((r) => r.id === (a.where as { id: string }).id) ?? null),
++    },
++  };
++  return { svc: new WebsiteFormsInboxService(prisma as never), prisma };
++}
++
++describe('WebsiteFormsInboxService', () => {
++  it('list: defaults page 1 / limit 20, newest first, joins form.kind, answers { data, meta }', async () => {
++    const { svc, prisma } = make();
++    const res = await svc.list({});
++    expect(prisma.websiteFormSubmission.findMany).toHaveBeenCalledWith({
++      where: {},
++      orderBy: { createdAt: 'desc' },
++      skip: 0,
++      take: 20,
++      include: { form: { select: { kind: true } } },
++    });
++    expect(prisma.websiteFormSubmission.count).toHaveBeenCalledWith({ where: {} });
++    expect(res.meta).toEqual({ total: 2, page: 1, limit: 20, totalPages: 1 });
++    expect(res.data.map((r) => r.id)).toEqual(['s1', 's2']);
++    expect(res.data[0].formKind).toBe(WebsiteFormKind.INQUIRY);
++    expect(res.data[0]).not.toHaveProperty('handlerResultJson');
++  });
++
++  it('list: pages and filters flow through, limit is capped at 100', async () => {
++    const { svc, prisma } = make([], 250);
++    const res = await svc.list({ page: 3, limit: 500, formKey: 'hire', needsAttention: 'true' });
++    const args = prisma.websiteFormSubmission.findMany.mock.calls[0][0] as Args;
++    expect(args.skip).toBe(200);
++    expect(args.take).toBe(100);
++    expect(args.where).toEqual({ formKey: 'hire', AND: [{ OR: [{ status: WebsiteSubmissionStatus.FAILED }, { captchaDegraded: true }] }] });
++    expect(res.meta).toEqual({ total: 250, page: 3, limit: 100, totalPages: 3 });
++  });
++
++  it('get: the detail row with the attempt log; 404 when unknown', async () => {
++    const { svc, prisma } = make();
++    const res = await svc.get('s2');
++    expect(prisma.websiteFormSubmission.findUnique).toHaveBeenCalledWith({ where: { id: 's2' }, include: { form: { select: { kind: true } } } });
++    expect(res.data).toMatchObject({ id: 's2', formKind: WebsiteFormKind.INQUIRY, handlerResultJson: { attempts: [] }, userAgent: 'UA', tokenClass: WebsiteTokenClass.WRITE });
++    await expect(svc.get('nope')).rejects.toBeInstanceOf(NotFoundException);
++  });
++});
+diff --git a/apps/backend/src/modules/website/website-forms-inbox.service.ts b/apps/backend/src/modules/website/website-forms-inbox.service.ts
+new file mode 100644
+index 0000000..7830e3d
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-forms-inbox.service.ts
+@@ -0,0 +1,57 @@
++import { Injectable, NotFoundException } from '@nestjs/common';
++
++import { PrismaService } from '../../prisma/prisma.service';
++import { QueryWebsiteSubmissionsDto } from './dto/query-website-submissions.dto';
++import {
++  buildSubmissionWhere,
++  INBOX_DEFAULT_LIMIT,
++  INBOX_MAX_LIMIT,
++  toInboxDetail,
++  toInboxRow,
++  WebsiteInboxDetail,
++  WebsiteInboxRow,
++} from './website-forms-inbox.logic';
++
++export interface WebsiteInboxPage {
++  data: WebsiteInboxRow[];
++  meta: { total: number; page: number; limit: number; totalPages: number };
++}
++
++/**
++ * The staff side of the intake door: what the inbox screen lists and opens (ruling P3,
++ * spec WP3a "minimal Form inbox"). Reads only — the one write, `rerun`, lives on
++ * `WebsiteFormsService` because it shares the core's handler runner.
++ */
++@Injectable()
++export class WebsiteFormsInboxService {
++  constructor(private readonly prisma: PrismaService) {}
++
++  async list(q: QueryWebsiteSubmissionsDto): Promise<WebsiteInboxPage> {
++    const page = q.page ?? 1;
++    const limit = Math.min(q.limit ?? INBOX_DEFAULT_LIMIT, INBOX_MAX_LIMIT);
++    const where = buildSubmissionWhere(q);
++    const [rows, total] = await Promise.all([
++      this.prisma.websiteFormSubmission.findMany({
++        where,
++        orderBy: { createdAt: 'desc' },
++        skip: (page - 1) * limit,
++        take: limit,
++        include: { form: { select: { kind: true } } },
++      }),
++      this.prisma.websiteFormSubmission.count({ where }),
++    ]);
++    return {
++      data: rows.map(toInboxRow),
++      meta: { total, page, limit, totalPages: Math.ceil(total / limit) },
++    };
++  }
++
++  async get(id: string): Promise<{ data: WebsiteInboxDetail }> {
++    const row = await this.prisma.websiteFormSubmission.findUnique({
++      where: { id },
++      include: { form: { select: { kind: true } } },
++    });
++    if (!row) throw new NotFoundException('Submission not found.');
++    return { data: toInboxDetail(row) };
++  }
++}
+diff --git a/apps/backend/src/modules/website/website-forms.rerun.spec.ts b/apps/backend/src/modules/website/website-forms.rerun.spec.ts
+new file mode 100644
+index 0000000..5eb43e4
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-forms.rerun.spec.ts
+@@ -0,0 +1,154 @@
++// apps/backend/src/modules/website/website-forms.rerun.spec.ts
++/**
++ * WP3a Task 7 (rulings P2, P8, RC6) — re-run from the inbox is idempotent: only
++ * `status = FAILED && createdEntityId IS NULL` may run again; a re-run appends an attempt
++ * with the staff actor, notifies (bell + second human, through WebsiteNotifyService only)
++ * and autoresponds ONLY on success, re-alarms on a second failure, and a test row re-runs
++ * as a dry run. Built against the FINAL eight-argument constructor (RC6).
++ */
++import { ConflictException, NotFoundException } from '@nestjs/common';
++import { WebsiteFormKind, WebsiteSubmissionStatus, WebsiteTokenClass } from '@prisma/client';
++import { WebsiteFormsService } from './website-forms.service';
++import { WebsiteFormHandlerRegistry, WebsiteFormHandler } from './website-form-handler';
++
++type Args = Record<string, unknown>;
++
++const FORM = { id: 'form-hire', formKey: 'hire', kind: WebsiteFormKind.INQUIRY, label: 'Hire workers', isActive: true };
++
++const FAILED_ROW = {
++  id: 'sub1',
++  formId: 'form-hire',
++  formKey: 'hire',
++  requestHash: 'a'.repeat(64),
++  hourBucket: 497_000,
++  status: WebsiteSubmissionStatus.FAILED,
++  isTest: false,
++  tokenClass: WebsiteTokenClass.WRITE,
++  locale: 'tr',
++  payloadJson: { fields: { name: 'Ayşe', company: 'Acme', email: 'a@b.co', phone: '05321234567' } },
++  consentVersion: 'v1',
++  ipAddressHash: 'b'.repeat(64),
++  userAgent: 'Safari',
++  captchaPassed: true,
++  captchaDegraded: false,
++  handlerResultJson: { attempts: [{ at: '2026-09-19T09:00:00.000Z', ok: false, dryRun: false, rerun: false, actor: 'system:website', error: 'down' }] },
++  createdEntityType: null,
++  createdEntityId: null,
++  error: 'down',
++  handledAt: null,
++  purgeAfter: null,
++  createdAt: new Date('2026-09-19T09:00:00.000Z'),
++  updatedAt: new Date('2026-09-19T09:00:00.000Z'),
++  form: FORM,
++};
++
++function make(row: Record<string, unknown> | null = FAILED_ROW, handlerOk = true) {
++  const prisma = {
++    websiteForm: { findUnique: jest.fn(async () => FORM), create: jest.fn() },
++    websiteFormSubmission: {
++      findUnique: jest.fn(async (_a: Args) => row),
++      update: jest.fn(async (a: Args) => ({ ...(row ?? {}), ...(a.data as object) })),
++      create: jest.fn(),
++    },
++  };
++  const registry = new WebsiteFormHandlerRegistry();
++  const handler: WebsiteFormHandler = {
++    kinds: [WebsiteFormKind.INQUIRY],
++    handle: jest.fn(async () =>
++      handlerOk
++        ? { ok: true as const, createdEntityType: 'inquiry' as const, createdEntityId: 'inq1', detail: { inquiryNumber: 'INQ-2026-042', assignedAgentId: null, contactName: 'Ayşe', email: 'a@b.co' } }
++        : { ok: false as const, error: 'still down' },
++    ),
++  };
++  registry.register(handler);
++  const config = { get: jest.fn((_k: string, d?: string) => d ?? 'salt') };
++  const captcha = { verify: jest.fn(), isConfigured: jest.fn() };
++  const activity = { log: jest.fn(async () => undefined) };
++  const notify = { formReceived: jest.fn(async () => undefined), formsUnavailable: jest.fn(async () => true) };
++  const abuse = { isTripped: jest.fn(async () => false), recordVerified: jest.fn(), trippedForms: jest.fn(async () => []) };
++  const autoresponder = { send: jest.fn(async () => true) };
++  const svc = new WebsiteFormsService(
++    prisma as never, config as never, captcha as never, registry, activity as never, notify as never, abuse as never, autoresponder as never,
++  );
++  return { svc, prisma, handler, activity, notify, abuse, autoresponder, captcha };
++}
++
++const STAFF = { userId: 'u1', email: 'a@b.c', roleId: 'r1', roleSlug: 'admin' };
++
++describe('WebsiteFormsService.rerun', () => {
++  it('re-runs a FAILED row with no entity, appends attempt #2 with rerun=true and the staff actor, notifies and autoresponds on success', async () => {
++    const { svc, prisma, handler, notify, autoresponder, activity, abuse, captcha } = make();
++    const res = await svc.rerun('sub1', STAFF);
++
++    expect(prisma.websiteFormSubmission.findUnique).toHaveBeenCalledWith({ where: { id: 'sub1' }, include: { form: true } });
++    const input = (handler.handle as jest.Mock).mock.calls[0][0];
++    expect(input).toMatchObject({ submissionId: 'sub1', formKey: 'hire', kind: WebsiteFormKind.INQUIRY, dryRun: false, locale: 'tr', fields: { name: 'Ayşe', email: 'a@b.co' }, visitorIp: null, userAgent: 'Safari' });
++
++    const data = prisma.websiteFormSubmission.update.mock.calls[0][0].data as Record<string, unknown>;
++    expect(data.status).toBe(WebsiteSubmissionStatus.HANDLED);
++    expect(data.createdEntityType).toBe('inquiry');
++    expect(data.createdEntityId).toBe('inq1');
++    const attempts = (data.handlerResultJson as { attempts: Record<string, unknown>[] }).attempts;
++    expect(attempts).toHaveLength(2);
++    expect(attempts[0]).toMatchObject({ ok: false, rerun: false, error: 'down' });
++    expect(attempts[1]).toMatchObject({ ok: true, rerun: true, dryRun: false, actor: 'u1', createdEntityId: 'inq1' });
++
++    expect(notify.formReceived).toHaveBeenCalledTimes(1);
++    expect(notify.formReceived).toHaveBeenCalledWith(expect.objectContaining({ submissionId: 'sub1', formKey: 'hire', inquiryNumber: 'INQ-2026-042' }));
++    expect(notify.formsUnavailable).not.toHaveBeenCalled();
++    expect(autoresponder.send).toHaveBeenCalledTimes(1);
++    expect(autoresponder.send).toHaveBeenCalledWith(expect.objectContaining({ formKey: 'hire', to: 'a@b.co', isTest: false }));
++    expect(activity.log).toHaveBeenCalledWith(expect.objectContaining({ actor: expect.objectContaining({ id: 'u1' }) }));
++    // A re-run is not a visit: no captcha, no abuse counting, no trip check.
++    expect(captcha.verify).not.toHaveBeenCalled();
++    expect(abuse.isTripped).not.toHaveBeenCalled();
++    expect(abuse.recordVerified).not.toHaveBeenCalled();
++
++    expect(res.data).toMatchObject({ id: 'sub1', formKey: 'hire', formKind: WebsiteFormKind.INQUIRY, status: WebsiteSubmissionStatus.HANDLED, createdEntityId: 'inq1' });
++    expect(res.data.handlerResultJson).toEqual({ attempts });
++  });
++
++  it('a failing re-run stays FAILED, records attempt #2, re-alarms handlerFailed, and neither notifies nor autoresponds', async () => {
++    const { svc, prisma, notify, autoresponder } = make(FAILED_ROW, false);
++    const res = await svc.rerun('sub1', STAFF);
++    const data = prisma.websiteFormSubmission.update.mock.calls[0][0].data as Record<string, unknown>;
++    expect(data.status).toBe(WebsiteSubmissionStatus.FAILED);
++    expect(data.createdEntityId).toBeNull();
++    expect((data.handlerResultJson as { attempts: unknown[] }).attempts).toHaveLength(2);
++    expect(notify.formReceived).not.toHaveBeenCalled();
++    expect(notify.formsUnavailable).toHaveBeenCalledWith(expect.objectContaining({ reason: 'handlerFailed', formKey: 'hire' }));
++    expect(autoresponder.send).not.toHaveBeenCalled();
++    expect(res.data.status).toBe(WebsiteSubmissionStatus.FAILED);
++  });
++
++  it('refuses (409) a HANDLED row, a FAILED row that already created an entity, a SPAM row and a RECEIVED row; 404 for unknown ids; the handler never runs', async () => {
++    await expect(make({ ...FAILED_ROW, status: WebsiteSubmissionStatus.HANDLED, createdEntityId: 'inq1' }).svc.rerun('sub1', STAFF)).rejects.toBeInstanceOf(ConflictException);
++    await expect(make({ ...FAILED_ROW, createdEntityId: 'inq1', createdEntityType: 'inquiry' }).svc.rerun('sub1', STAFF)).rejects.toBeInstanceOf(ConflictException);
++    await expect(make({ ...FAILED_ROW, status: WebsiteSubmissionStatus.SPAM }).svc.rerun('sub1', STAFF)).rejects.toBeInstanceOf(ConflictException);
++    await expect(make({ ...FAILED_ROW, status: WebsiteSubmissionStatus.RECEIVED }).svc.rerun('sub1', STAFF)).rejects.toBeInstanceOf(ConflictException);
++    await expect(make(null).svc.rerun('nope', STAFF)).rejects.toBeInstanceOf(NotFoundException);
++    const untouched = make({ ...FAILED_ROW, createdEntityId: 'inq1' });
++    await untouched.svc.rerun('sub1', STAFF).catch(() => undefined);
++    expect(untouched.handler.handle).not.toHaveBeenCalled();
++    expect(untouched.prisma.websiteFormSubmission.update).not.toHaveBeenCalled();
++  });
++
++  it('refuses (409) when the stored payload no longer passes the catalog, and lists the reasons', async () => {
++    const broken = make({ ...FAILED_ROW, payloadJson: { fields: { email: 'not-an-email' } } });
++    await expect(broken.svc.rerun('sub1', STAFF)).rejects.toMatchObject({
++      response: expect.objectContaining({ errors: expect.arrayContaining(['name is required']) }),
++    });
++    expect(broken.handler.handle).not.toHaveBeenCalled();
++  });
++
++  it('a test row re-runs as a dry run (P2): the handler sees dryRun=true, nothing is notified or autoresponded, no entity is recorded', async () => {
++    const { svc, prisma, handler, notify, autoresponder } = make({ ...FAILED_ROW, isTest: true, tokenClass: WebsiteTokenClass.TEST });
++    const res = await svc.rerun('sub1', STAFF);
++    expect((handler.handle as jest.Mock).mock.calls[0][0].dryRun).toBe(true);
++    const data = prisma.websiteFormSubmission.update.mock.calls[0][0].data as Record<string, unknown>;
++    expect(data.createdEntityId).toBeNull();
++    expect(notify.formReceived).not.toHaveBeenCalled();
++    expect(autoresponder.send).not.toHaveBeenCalled();
++    expect(res.data.isTest).toBe(true);
++  });
++});
+diff --git a/apps/backend/src/modules/website/website-forms.service.ts b/apps/backend/src/modules/website/website-forms.service.ts
+index a2932f8..109ffd2 100644
+--- a/apps/backend/src/modules/website/website-forms.service.ts
++++ b/apps/backend/src/modules/website/website-forms.service.ts
+@@ -1,22 +1,25 @@
+ import {
+   BadRequestException,
++  ConflictException,
+   ForbiddenException,
+   HttpException,
+   HttpStatus,
+   Injectable,
+   Logger,
+   NotFoundException,
+ } from '@nestjs/common';
+ import { ConfigService } from '@nestjs/config';
+ import { ActivityType, Prisma, WebsiteForm, WebsiteFormSubmission, WebsiteSubmissionStatus } from '@prisma/client';
+ import { PrismaService } from '../../prisma/prisma.service';
++import { AuthenticatedUser } from '../auth/interfaces/authenticated-user.interface';
++import { toInboxDetail, WebsiteInboxDetail } from './website-forms-inbox.logic';
+ import { ActivityLogger, ActivitySystemActor } from '../activities/activity-logger.service';
+ import { hashIpOrNull, IP_HASH_DEV_SALT } from '../../common/utils/ip-hash.util';
+ import { WebsiteFormSubmitDto } from './dto/website-form-submit.dto';
+ import { normalizeWebsiteFields, websiteFormSpec, WebsiteFieldValue, WebsiteFormSpec } from './website-form-catalog';
+ import { hourBucketFor, isUniqueViolation, purgeAfterFor, requestHashFor } from './website-forms.logic';
+ import { PRISMA_TOKEN_CLASS_BY_BEARER, WebsiteBearerClass } from './website.constants';
+ import { WebsiteCaptchaService } from './website-captcha.service';
+ import { WebsiteFormHandlerRegistry, WebsiteFormHandlerResult } from './website-form-handler';
+ import { WebsiteNotifyService } from './website-notify.service';
+ import { WebsiteAbuseService } from './website-abuse.service';
+@@ -268,20 +271,52 @@ export class WebsiteFormsService {
+   }
+ 
+   /**
+    * Run the handler for a row and record the attempt. Shared by `submit` and the inbox
+    * re-run (Task 7). Never throws. Post-steps (RC6): activity; on success
+    * `notify.formReceived` once (unless the handler said skipNotification/alreadyReceived)
+    * and the autoresponder (unless skipAutoresponder/alreadyReceived); on failure
+    * `notify.formsUnavailable(handlerFailed)`. A dry run (test token) records the attempt
+    * and nothing else (P2).
+    */
++  /**
++   * Inbox re-run (ruling P8). Only a FAILED row that created nothing may run again — a
++   * FAILED row WITH an entity means the handler wrote and then stumbled, and running it
++   * again would file the lead twice. Test rows re-run as dry runs (ruling P2). The stored
++   * payload is re-normalised through the catalog (a whitelist tightened since the row was
++   * written is a 409 with the reasons, never a handler exception). Attempt N+1 is appended
++   * to handlerResultJson with `rerun: true` and the staff user as actor; the core's
++   * post-handler rules apply unchanged — notify + autorespond only on success, re-alarm on
++   * failure — and no captcha, trip check or abuse count runs (this is not a visit).
++   */
++  async rerun(id: string, actor: AuthenticatedUser): Promise<{ data: WebsiteInboxDetail }> {
++    const row = await this.prisma.websiteFormSubmission.findUnique({ where: { id }, include: { form: true } });
++    if (!row) throw new NotFoundException('Submission not found.');
++    if (row.status !== WebsiteSubmissionStatus.FAILED || row.createdEntityId !== null) {
++      throw new ConflictException('Only failed submissions that created no record can be re-run.');
++    }
++    const stored = (row.payloadJson ?? {}) as { fields?: unknown };
++    const normalized = normalizeWebsiteFields(row.formKey, stored.fields ?? {});
++    if (!normalized.ok) {
++      throw new ConflictException({ message: 'Stored payload no longer passes the catalog', errors: normalized.errors });
++    }
++    const { form, ...bare } = row;
++    const updated = await this.runHandler(
++      bare,
++      form,
++      normalized.fields,
++      { visitorIp: null, userAgent: row.userAgent },
++      { dryRun: row.isTest, rerun: true, actorId: actor.userId },
++    );
++    return { data: toInboxDetail({ ...updated, form: { kind: form.kind } }) };
++  }
++
+   protected async runHandler(
+     row: WebsiteFormSubmission,
+     form: Pick<WebsiteForm, 'kind'>,
+     fields: Record<string, WebsiteFieldValue>,
+     ctx: Pick<WebsiteSubmitContext, 'visitorIp' | 'userAgent'>,
+     opts: WebsiteRunHandlerOptions,
+   ): Promise<WebsiteFormSubmission> {
+     const handler = this.registry.get(form.kind);
+     let result: WebsiteFormHandlerResult;
+     if (!handler) {
+diff --git a/apps/backend/src/modules/website/website.module.ts b/apps/backend/src/modules/website/website.module.ts
+index e866570..c158aa9 100644
+--- a/apps/backend/src/modules/website/website.module.ts
++++ b/apps/backend/src/modules/website/website.module.ts
+@@ -10,20 +10,24 @@ import { WebsiteApiGuard } from './guards/website-api.guard';
+ import { WebsiteIntegrationConfigService } from './website-integration-config.service';
+ import { WebsiteIntegrationsController } from './website-integrations.controller';
+ import { WebsitePingService } from './website-ping.service';
+ import { WebsitePublicController } from './website-public.controller';
+ import { WebsiteCaptchaService } from './website-captcha.service';
+ import { WebsiteFormHandlerRegistry } from './website-form-handler';
+ import { WebsiteNotifyService } from './website-notify.service';
+ import { WebsiteAbuseService } from './website-abuse.service';
+ import { WebsiteAutoresponderService } from './website-autoresponder.service';
+ import { WebsiteFormsService } from './website-forms.service';
++import { SalesModule } from '../sales/sales.module';
++import { WebsiteInquiryHandler } from './handlers/website-inquiry.handler';
++import { WebsiteFormsInboxService } from './website-forms-inbox.service';
++import { WebsiteFormsInboxController } from './website-forms-inbox.controller';
+ 
+ /**
+  * The Website module (WP3a, 2026-09-19 — PRD §5.12, §7.10).
+  *
+  * Serves jobsadmire.com: in WP3a the public INTAKE door (`/website/v1/*`, a
+  * Bearer-token machine surface the website calls server-side), the forms
+  * inbox and the integrations/token settings; in Phase B the CMS the site reads
+  * its content from (pages, strings, collections, blog, media, navigation).
+  *
+  * ALWAYS IMPORTED, WHATEVER `WEBSITE_MODULE_ENABLED` SAYS (ruling P1). The
+@@ -40,39 +44,50 @@ import { WebsiteFormsService } from './website-forms.service';
+  * `ConfigModule` (global via `forRoot({ isGlobal: true })`), `PrismaModule`
+  * and `PermissionsModule` (both `@Global()`) are listed anyway — the way
+  * `market-research.module.ts` lists the latter two and
+  * `recruitment-platforms.module.ts` lists `ConfigModule` — so the
+  * dependency reads on the page: the status probe, the flag guard (Task 2),
+  * the token guard and the crons all read `ConfigService`. Later WP3a tasks add
+  * controllers and providers to the arrays below; the `registry.register`
+  * literal is never edited after this commit.
+  */
+ @Module({
+-  imports: [ConfigModule, PrismaModule, PermissionsModule],
+-  controllers: [WebsiteStatusController, WebsiteIntegrationsController, WebsitePublicController],
++  // SalesModule exports InquiryService (sales.module.ts:54) — the ONE-WAY edge the
++  // website → Sales handler needs; Sales never imports website (the
++  // call-center.module.ts precedent). RedisModule, ConfigModule and
++  // ActivitiesModule are @Global().
++  imports: [ConfigModule, PrismaModule, PermissionsModule, SalesModule],
++  controllers: [
++    WebsiteStatusController,
++    WebsiteIntegrationsController,
++    WebsitePublicController,
++    WebsiteFormsInboxController,
++  ],
+   // Both guards are providers of THIS module (the call-center.module.ts rule)
+-  // so DI can hand WebsiteApiGuard its config service; RedisModule, ConfigModule
+-  // and ActivitiesModule (ActivityLogger) are global, so no new imports. The
+-  // forms core's three collaborators (notify / abuse / autoresponder) are the
+-  // contract shells Task 10 fills in; handlers (Tasks 7–9) register themselves
+-  // in WebsiteFormHandlerRegistry from their constructors.
++  // so DI can hand WebsiteApiGuard its config service. The forms core's three
++  // collaborators (notify / abuse / autoresponder) are the contract shells
++  // Task 10 fills in (RC20). WebsiteInquiryHandler is never injected anywhere —
++  // Nest still instantiates every listed provider at boot, and its constructor
++  // registers it with WebsiteFormHandlerRegistry.
+   providers: [
+     WebsiteModuleEnabledGuard,
+     WebsiteApiGuard,
+     WebsiteIntegrationConfigService,
+     WebsitePingService,
+     WebsiteCaptchaService,
+     WebsiteFormHandlerRegistry,
+     WebsiteNotifyService,
+     WebsiteAbuseService,
+     WebsiteAutoresponderService,
+     WebsiteFormsService,
++    WebsiteInquiryHandler,
++    WebsiteFormsInboxService,
+   ],
+   exports: [WebsiteIntegrationConfigService],
+ })
+ export class WebsiteModule {
+   constructor(registry: PermissionRegistry) {
+     registry.register({
+       name: 'website',
+       label: 'Website',
+       description:
+         'The public website (jobsadmire.com): the forms it submits into Operations, the tokens and ' +
+diff --git a/apps/backend/test/permissions/website-conformance.spec.ts b/apps/backend/test/permissions/website-conformance.spec.ts
+index 52b87a3..54b046d 100644
+--- a/apps/backend/test/permissions/website-conformance.spec.ts
++++ b/apps/backend/test/permissions/website-conformance.spec.ts
+@@ -2,39 +2,40 @@ import { readFileSync } from 'fs';
+ import { join } from 'path';
+ import { MetadataScanner, Reflector } from '@nestjs/core';
+ import { PermissionAction } from '@prisma/client';
+ import { PERMISSION_KEYS } from '@jobsadmire/permissions';
+ 
+ import { PermissionConformanceService } from '../../src/modules/permissions/permission-conformance.service';
+ import { SELF_SERVICE_KEY } from '../../src/modules/permissions/decorators/self-service.decorator';
+ import { WebsiteStatusController } from '../../src/modules/website/website-status.controller';
+ import { WebsiteIntegrationsController } from '../../src/modules/website/website-integrations.controller';
+ import { WebsitePublicController } from '../../src/modules/website/website-public.controller';
++import { WebsiteFormsInboxController } from '../../src/modules/website/website-forms-inbox.controller';
+ import { registryFromSource } from './registry-from-source';
+ 
+ /**
+  * The website module (WP3a, 2026-09-19) registers its whole key set on day one
+  * — the CMS screens Phase B will fill in as well as the two WP3a screens — so
+  * the Roles matrix never has to grow a column mid-programme (ruling P3).
+  *
+  * THE REAL SCANNER over the REAL controllers, market-research's shape. Every
+  * later WP3a task that adds a controller appends its class to CONTROLLERS
+  * (RC15): the public door is `@Public()` + the flag guard + the token guard at
+  * class level, the inbox is `website.forms`, the integrations screen is
+  * `website.integrations` for the non-secret half and `website` MANAGE_KEYS for
+  * every secret door.
+  */
+ 
+ // Every task that adds a website controller appends it here (RC15): Task 4 the
+ // integrations screen + the public door; Task 7 the forms inbox; Tasks 8/9 their
+ // public controllers.
+-const CONTROLLERS = [WebsiteStatusController, WebsiteIntegrationsController, WebsitePublicController];
++const CONTROLLERS = [WebsiteStatusController, WebsiteIntegrationsController, WebsitePublicController, WebsiteFormsInboxController];
+ 
+ const MODULE_SOURCE = readFileSync(
+   join(__dirname, '../../src/modules/website/website.module.ts'),
+   'utf8',
+ );
+ 
+ const WEBSITE_RESOURCE_KEYS = [
+   'website.blog',
+   'website.collections',
+   'website.forms',
+diff --git a/apps/backend/test/permissions/website-inbox-conformance.spec.ts b/apps/backend/test/permissions/website-inbox-conformance.spec.ts
+new file mode 100644
+index 0000000..ac503ea
+--- /dev/null
++++ b/apps/backend/test/permissions/website-inbox-conformance.spec.ts
+@@ -0,0 +1,70 @@
++import { MetadataScanner, Reflector } from '@nestjs/core';
++import { PermissionAction } from '@prisma/client';
++
++import { PermissionConformanceService } from '../../src/modules/permissions/permission-conformance.service';
++import {
++  PERMISSION_KEY,
++  type RequiredPermission,
++} from '../../src/modules/permissions/decorators/require-permission.decorator';
++import { AUDIT_ENTITY_KEY } from '../../src/common/decorators/audit-entity.decorator';
++import { WebsiteFormsInboxController } from '../../src/modules/website/website-forms-inbox.controller';
++import { registryFromSource } from './registry-from-source';
++
++/**
++ * WP3a Task 7 (ruling P3) — the forms inbox on `website.forms`: reads on VIEW, the
++ * DEDICATED export route on EXPORT and audited, the re-run (a write that may file a
++ * lead) on EDIT and audited. The real scanner over the real controller against the real
++ * descriptor (Task 4's door-conformance shape); Task 1's website-conformance.spec.ts
++ * scans this controller too (RC15) — this file pins what is specific to the inbox.
++ */
++function keyOf(
++  controller: { prototype: object },
++  method: string,
++): RequiredPermission | RequiredPermission[] | undefined {
++  const handler = (controller.prototype as Record<string, unknown>)[method];
++  return Reflect.getMetadata(PERMISSION_KEY, handler as object);
++}
++
++function auditOf(controller: { prototype: object }, method: string): string | undefined {
++  const handler = (controller.prototype as Record<string, unknown>)[method];
++  return Reflect.getMetadata(AUDIT_ENTITY_KEY, handler as object);
++}
++
++describe('Website forms inbox route conformance', () => {
++  const registry = registryFromSource('modules/website/website.module.ts');
++
++  it('website.forms supports exactly VIEW, EDIT, EXPORT (RC8)', () => {
++    expect(registry.getResource('website.forms')?.supportedActions).toEqual([
++      PermissionAction.VIEW,
++      PermissionAction.EDIT,
++      PermissionAction.EXPORT,
++    ]);
++  });
++
++  it('every inbox route names website.forms at a supported action; none is public or self-service', () => {
++    const { report, errors } = new PermissionConformanceService(
++      { getControllers: () => [] } as never,
++      new MetadataScanner(),
++      new Reflector(),
++      registry,
++      { get: () => undefined } as never,
++    ).scanClasses([WebsiteFormsInboxController], true);
++
++    expect(errors).toEqual([]);
++    expect(report.undecorated).toEqual([]);
++    expect(report.decorated).toBe(4);
++    expect(report.public).toBe(0);
++    expect(report.selfService).toBe(0);
++  });
++
++  it('reads on VIEW, the dedicated export on EXPORT + audit, the re-run on EDIT + audit', () => {
++    expect(keyOf(WebsiteFormsInboxController, 'list')).toEqual({ module: 'website.forms', action: 'VIEW' });
++    expect(keyOf(WebsiteFormsInboxController, 'get')).toEqual({ module: 'website.forms', action: 'VIEW' });
++    expect(keyOf(WebsiteFormsInboxController, 'export')).toEqual({ module: 'website.forms', action: 'EXPORT' });
++    expect(keyOf(WebsiteFormsInboxController, 'rerun')).toEqual({ module: 'website.forms', action: 'EDIT' });
++    expect(auditOf(WebsiteFormsInboxController, 'list')).toBeUndefined();
++    expect(auditOf(WebsiteFormsInboxController, 'get')).toBeUndefined();
++    expect(auditOf(WebsiteFormsInboxController, 'export')).toBe('WebsiteFormSubmission');
++    expect(auditOf(WebsiteFormsInboxController, 'rerun')).toBe('WebsiteFormSubmission');
++  });
++});

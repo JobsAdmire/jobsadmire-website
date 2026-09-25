@@ -1,0 +1,535 @@
+# Review package: 6efdbe0..f2912e9
+
+## Commits
+f2912e9 feat(sales): Inquiry.contactName — the person's name survives from the form to the lead
+
+## Files changed
+ .../src/modules/sales/dto/create-inquiry.dto.ts    |  6 ++
+ .../src/modules/sales/dto/update-inquiry.dto.ts    |  6 ++
+ .../src/modules/sales/inquiry.contact-name.spec.ts | 81 ++++++++++++++++++++++
+ apps/backend/src/modules/sales/inquiry.service.ts  | 12 +++-
+ .../[locale]/admin/sales/inquiries/[id]/page.tsx   |  4 +-
+ .../app/[locale]/admin/sales/inquiries/page.tsx    | 14 +++-
+ apps/frontend/src/lib/api/sales.ts                 |  3 +
+ 7 files changed, 123 insertions(+), 3 deletions(-)
+
+## Diff
+diff --git a/apps/backend/src/modules/sales/dto/create-inquiry.dto.ts b/apps/backend/src/modules/sales/dto/create-inquiry.dto.ts
+index 64f197e..22514d2 100644
+--- a/apps/backend/src/modules/sales/dto/create-inquiry.dto.ts
++++ b/apps/backend/src/modules/sales/dto/create-inquiry.dto.ts
+@@ -28,20 +28,26 @@ export class CreateInquiryDto {
+   @IsOptional()
+   @IsEmail()
+   email?: string;
+ 
+   @ApiPropertyOptional()
+   @IsOptional()
+   @IsString()
+   @MaxLength(200)
+   companyName?: string;
+ 
++  @ApiPropertyOptional({ description: 'Person who wrote in — the website forms carry a name, not only a company (WP3a)' })
++  @IsOptional()
++  @IsString()
++  @MaxLength(200)
++  contactName?: string;
++
+   @ApiPropertyOptional()
+   @IsOptional()
+   @IsString()
+   @MaxLength(100)
+   country?: string;
+ 
+   @ApiPropertyOptional()
+   @IsOptional()
+   @IsString()
+   @MaxLength(50)
+diff --git a/apps/backend/src/modules/sales/dto/update-inquiry.dto.ts b/apps/backend/src/modules/sales/dto/update-inquiry.dto.ts
+index f9cb430..e67c530 100644
+--- a/apps/backend/src/modules/sales/dto/update-inquiry.dto.ts
++++ b/apps/backend/src/modules/sales/dto/update-inquiry.dto.ts
+@@ -30,20 +30,26 @@ export class UpdateInquiryDto {
+   @IsOptional()
+   @IsEmail()
+   email?: string;
+ 
+   @ApiPropertyOptional()
+   @IsOptional()
+   @IsString()
+   @MaxLength(200)
+   companyName?: string;
+ 
++  @ApiPropertyOptional({ description: 'Person who wrote in (WP3a)' })
++  @IsOptional()
++  @IsString()
++  @MaxLength(200)
++  contactName?: string;
++
+   @ApiPropertyOptional()
+   @IsOptional()
+   @IsString()
+   @MaxLength(100)
+   country?: string;
+ 
+   @ApiPropertyOptional()
+   @IsOptional()
+   @IsString()
+   @MaxLength(50)
+diff --git a/apps/backend/src/modules/sales/inquiry.contact-name.spec.ts b/apps/backend/src/modules/sales/inquiry.contact-name.spec.ts
+new file mode 100644
+index 0000000..a3bacb4
+--- /dev/null
++++ b/apps/backend/src/modules/sales/inquiry.contact-name.spec.ts
+@@ -0,0 +1,81 @@
++// apps/backend/src/modules/sales/inquiry.contact-name.spec.ts
++/**
++ * WP3a T5 — `Inquiry.contactName` (ruling P4, spec D11). The website forms carry a
++ * PERSON, not only a company; the column must be written on create, mapped on
++ * update, searchable from the list, and carried to `Lead.contactPerson` on
++ * conversion — the same bug class as the 2026-08-05 "contact details silently
++ * dropped" fix in convertToLeadInternal. Constructed exactly as
++ * inquiry.walink.spec.ts does: three stubs, no new constructor dependency.
++ */
++import { InquiryService } from './inquiry.service';
++
++const EXISTING = {
++  id: 'iq1',
++  phoneNumber: '+905550000001',
++  country: 'TR',
++  classification: 'HR_AGENCY',
++  status: 'NEW',
++  companyName: null,
++  contactName: 'Ayşe Yılmaz',
++  email: 'ayse@example.com',
++  assignedAgentId: 'u2',
++};
++
++function make() {
++  const prisma = {
++    inquiry: {
++      findFirst: jest.fn(async () => EXISTING),
++      findMany: jest.fn(async (_args?: unknown) => []),
++      count: jest.fn(async () => 0),
++      create: jest.fn(async (args: { data: Record<string, unknown> }) => ({ id: 'iq-new', ...args.data })),
++      update: jest.fn(async (args: { data: Record<string, unknown> }) => ({ ...EXISTING, ...args.data })),
++    },
++    lead: {
++      create: jest.fn(async (_args?: unknown) => ({ id: 'ld-new', leadNumber: 'LEAD-2026-0001' })),
++      findMany: jest.fn(async () => []),
++    },
++  };
++  const waLinks = { onPhoneChanged: jest.fn(async () => undefined) };
++  const assignmentEngine = { assignInquiry: jest.fn(async () => ({ assignedAgentId: 'u2', mode: 'RULE_BASED' })) };
++  return { svc: new InquiryService(prisma as never, assignmentEngine as never, waLinks as never), prisma };
++}
++
++const USER = { userId: 'u1', email: 'a@b.c', roleId: 'r1', roleSlug: 'sales-manager' };
++
++describe('InquiryService → contactName', () => {
++  it('writes contactName on create', async () => {
++    const { svc, prisma } = make();
++    await svc.create(
++      { source: 'WEBSITE_FORM', date: new Date().toISOString(), contactName: 'Ayşe Yılmaz', email: 'ayse@example.com' } as never,
++      USER as never,
++    );
++    const data = (prisma.inquiry.create.mock.calls[0][0] as { data: Record<string, unknown> }).data;
++    expect(data.contactName).toBe('Ayşe Yılmaz');
++  });
++
++  it('maps contactName on update, and leaves it alone when absent', async () => {
++    const a = make();
++    await a.svc.update('iq1', { contactName: 'Mehmet Kaya' } as never);
++    expect((a.prisma.inquiry.update.mock.calls[0][0] as { data: Record<string, unknown> }).data).toMatchObject({ contactName: 'Mehmet Kaya' });
++
++    const b = make();
++    await b.svc.update('iq1', { notes: 'called back' } as never);
++    expect((b.prisma.inquiry.update.mock.calls[0][0] as { data: Record<string, unknown> }).data).not.toHaveProperty('contactName');
++  });
++
++  it('search finds people, not only companies', async () => {
++    const { svc, prisma } = make();
++    await svc.findAll({ search: 'Ayşe' } as never);
++    const where = (prisma.inquiry.findMany.mock.calls[0][0] as { where: { OR?: Record<string, unknown>[] } }).where;
++    expect(where.OR).toEqual(expect.arrayContaining([{ contactName: { contains: 'Ayşe', mode: 'insensitive' } }]));
++  });
++
++  it('carries contactName to Lead.contactPerson on conversion', async () => {
++    const { svc, prisma } = make();
++    await svc.convertToLead('iq1', USER as never);
++    const data = (prisma.lead.create.mock.calls[0][0] as { data: Record<string, unknown> }).data;
++    expect(data.contactPerson).toBe('Ayşe Yılmaz');
++    expect(data.companyName).toBe('Unknown'); // the existing `|| 'Unknown'` fallback is untouched
++    expect(data.email).toBe('ayse@example.com');
++  });
++});
+diff --git a/apps/backend/src/modules/sales/inquiry.service.ts b/apps/backend/src/modules/sales/inquiry.service.ts
+index 6461fc1..472e732 100644
+--- a/apps/backend/src/modules/sales/inquiry.service.ts
++++ b/apps/backend/src/modules/sales/inquiry.service.ts
+@@ -61,20 +61,21 @@ export class InquiryService {
+     });
+ 
+     const inquiry = await this.prisma.inquiry.create({
+       data: {
+         inquiryNumber,
+         source: dto.source,
+         date: new Date(dto.date),
+         phoneNumber: dto.phoneNumber,
+         email: dto.email,
+         companyName: dto.companyName,
++        contactName: dto.contactName,
+         country: dto.country,
+         language: dto.language,
+         messagePreview: dto.messagePreview,
+         assignedAgentId: assignment.assignedAgentId,
+         assignedTeam: dto.assignedTeam,
+         classification: dto.classification,
+         notes: dto.notes,
+         status: InquiryStatus.NEW,
+       },
+       include: {
+@@ -116,22 +117,26 @@ export class InquiryService {
+     if (classification) where.classification = classification;
+     if (assignedAgentId) where.assignedAgentId = assignedAgentId;
+ 
+     if (dateFrom || dateTo) {
+       where.date = {};
+       if (dateFrom) where.date.gte = new Date(dateFrom);
+       if (dateTo) where.date.lte = new Date(dateTo);
+     }
+ 
+     if (search) {
++      // No scope fragment is spread into `where` in this list, so `OR` is free
++      // for the search terms. The moment a row-level scope is wired into
++      // findAll, nest these under `where.AND` (CLAUDE.md, the 2026-08-10 leak).
+       where.OR = [
+         { companyName: { contains: search, mode: 'insensitive' } },
++        { contactName: { contains: search, mode: 'insensitive' } },
+         { phoneNumber: { contains: search, mode: 'insensitive' } },
+         { email: { contains: search, mode: 'insensitive' } },
+         { inquiryNumber: { contains: search, mode: 'insensitive' } },
+       ];
+     }
+ 
+     const allowedSortFields = ['date', 'createdAt', 'status', 'source', 'inquiryNumber'];
+     const orderField = allowedSortFields.includes(sortBy) ? sortBy : 'date';
+ 
+     const [items, total] = await Promise.all([
+@@ -189,20 +194,21 @@ export class InquiryService {
+       throw new NotFoundException(`Inquiry ${id} not found`);
+     }
+ 
+     const data: Prisma.InquiryUpdateInput = {};
+ 
+     if (dto.source !== undefined) data.source = dto.source;
+     if (dto.date !== undefined) data.date = new Date(dto.date);
+     if (dto.phoneNumber !== undefined) data.phoneNumber = dto.phoneNumber;
+     if (dto.email !== undefined) data.email = dto.email;
+     if (dto.companyName !== undefined) data.companyName = dto.companyName;
++    if (dto.contactName !== undefined) data.contactName = dto.contactName;
+     if (dto.country !== undefined) data.country = dto.country;
+     if (dto.language !== undefined) data.language = dto.language;
+     if (dto.messagePreview !== undefined) data.messagePreview = dto.messagePreview;
+     if (dto.status !== undefined) data.status = dto.status;
+     if (dto.assignedTeam !== undefined) data.assignedTeam = dto.assignedTeam;
+     if (dto.notes !== undefined) data.notes = dto.notes;
+ 
+     if (dto.assignedAgentId !== undefined) {
+       data.assignedAgent = dto.assignedAgentId
+         ? { connect: { id: dto.assignedAgentId } }
+@@ -306,42 +312,46 @@ export class InquiryService {
+       );
+     }
+ 
+     return this.convertToLeadInternal(inquiry, currentUser);
+   }
+ 
+   private async convertToLeadInternal(
+     inquiry: {
+       id: string;
+       companyName: string | null;
++      contactName: string | null;
+       country: string | null;
+       classification: InquiryClassification | null;
+       assignedAgentId: string | null;
+       phoneNumber: string | null;
+       email: string | null;
+     },
+     currentUser: AuthenticatedUser,
+   ) {
+     const leadNumber = await this.generateLeadNumber();
+ 
+     const lead = await this.prisma.lead.create({
+       data: {
+         leadNumber,
+         companyName: inquiry.companyName || 'Unknown',
+         country: inquiry.country,
+         classification: inquiry.classification!,
+         leadOwnerId: inquiry.assignedAgentId || currentUser.userId,
+         addedById: currentUser.userId,
+         // Carry the inquiry's contact details — they used to be silently
+-        // dropped, leaving converted leads with no phone/email.
++        // dropped, leaving converted leads with no phone/email. contactName
++        // (WP3a, the website forms) rides along as the lead's contactPerson;
++        // `?? null` also covers rows stubbed without the column in specs.
+         phone: inquiry.phoneNumber,
+         email: inquiry.email,
++        contactPerson: inquiry.contactName ?? null,
+       },
+     });
+ 
+     // Link inquiry to lead and update status
+     const updatedInquiry = await this.prisma.inquiry.update({
+       where: { id: inquiry.id },
+       data: {
+         convertedLeadId: lead.id,
+         status: InquiryStatus.CONVERTED_TO_LEAD,
+       },
+diff --git a/apps/frontend/src/app/[locale]/admin/sales/inquiries/[id]/page.tsx b/apps/frontend/src/app/[locale]/admin/sales/inquiries/[id]/page.tsx
+index 76c0ba8..a2a50c3 100644
+--- a/apps/frontend/src/app/[locale]/admin/sales/inquiries/[id]/page.tsx
++++ b/apps/frontend/src/app/[locale]/admin/sales/inquiries/[id]/page.tsx
+@@ -147,21 +147,22 @@ export default function InquiryDetailPage() {
+       <PageGuide guideKey="admin_sales_inquiry_detail" />
+ 
+       {/* Header */}
+       <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+         <div className="flex items-center gap-4">
+           <button className="rounded-lg border p-2 hover:bg-accent transition-colors" onClick={() => router.push(`/${locale}/admin/sales/inquiries`)}>
+             <ArrowLeft className="h-4 w-4" />
+           </button>
+           <div className="space-y-1">
+             <h1 className="text-2xl font-bold">{inquiry.inquiryNumber}</h1>
+-            <p className="text-muted-foreground">{inquiry.companyName || 'Unknown Company'}</p>
++            {/* WP3a: the person first, then the company — a website inquiry may carry either or both. */}
++            <p className="text-muted-foreground">{[inquiry.contactName, inquiry.companyName].filter(Boolean).join(' · ') || 'Unknown Company'}</p>
+           </div>
+         </div>
+         <div className="flex items-center gap-2">
+           <CallButton phone={inquiry.phoneNumber} />
+           {!isConverted && !inquiry.classification && (
+             <Can module="sales.inquiries" action="EDIT">
+               <Button variant="outline" onClick={() => setShowClassifyDialog(true)}>
+                 <Tag className="mr-2 h-4 w-4" /> Classify
+               </Button>
+             </Can>
+@@ -204,20 +205,21 @@ export default function InquiryDetailPage() {
+             <Badge variant={CLASSIFICATION_VARIANT_MAP[inquiry.classification] || 'secondary'}>{CLASSIFICATION_LABELS[inquiry.classification]}</Badge>
+           ) : <span className="text-muted-foreground">Not classified</span>}
+         </div>
+       </div>
+ 
+       {/* Detail Grid */}
+       <div className="rounded-xl border bg-card p-6 shadow-card">
+         <h3 className="text-sm font-semibold mb-4">Inquiry Details</h3>
+         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-sm">
+           <div><span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Company</span> <span className="ml-2 font-medium">{editing ? <Input className="inline w-48" defaultValue={inquiry.companyName || ''} onChange={(e) => setEditData({ ...editData, companyName: e.target.value })} /> : inquiry.companyName || '—'}</span></div>
++          <div><span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Contact</span> <span className="ml-2 font-medium">{editing ? <Input className="inline w-48" defaultValue={inquiry.contactName || ''} onChange={(e) => setEditData({ ...editData, contactName: e.target.value })} /> : inquiry.contactName || '—'}</span></div>
+           <div><span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Country</span> <span className="ml-2 font-medium"><CountryName code={inquiry.country} /></span></div>
+           <div><span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Phone</span> <span className="ml-2 font-medium">{inquiry.phoneNumber || '—'}</span></div>
+           <div><span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Email</span> <span className="ml-2 font-medium">{inquiry.email || '—'}</span></div>
+           <div><span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Language</span> <span className="ml-2 font-medium">{inquiry.language || '—'}</span></div>
+           <div><span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Assigned Agent</span> <span className="ml-2 font-medium">{inquiry.assignedAgent?.fullName || 'Unassigned'}</span></div>
+           <div><span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Date</span> <span className="ml-2 font-medium">{new Date(inquiry.date).toLocaleString()}</span></div>
+           {isConverted && inquiry.convertedLead && (
+             <div>
+               <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Converted Lead</span>
+               <Button variant="link" className="ml-1 p-0 h-auto" onClick={() => router.push(`/${locale}/admin/sales/leads/${inquiry.convertedLeadId}`)}>
+diff --git a/apps/frontend/src/app/[locale]/admin/sales/inquiries/page.tsx b/apps/frontend/src/app/[locale]/admin/sales/inquiries/page.tsx
+index 1a8373b..a8d9329 100644
+--- a/apps/frontend/src/app/[locale]/admin/sales/inquiries/page.tsx
++++ b/apps/frontend/src/app/[locale]/admin/sales/inquiries/page.tsx
+@@ -82,20 +82,21 @@ function classificationTone(c: InquiryClassification): StatusTone {
+   if (c === 'SPAM') return 'destructive';
+   if (c === 'JOB_SEEKER') return 'warning';
+   return 'info';
+ }
+ 
+ const inquirySchema = z.object({
+   source: z.enum([
+     'WEBSITE_FORM', 'WHATSAPP_CRM', 'TURKEY_CALL_CENTER', 'INTERNATIONAL_CALL_CRM',
+     'EMAIL', 'REFERRAL', 'EXPO_MEETING', 'AI_CALLING_CAMPAIGN', 'MANUAL_ENTRY',
+   ]),
++  contactName: z.string().max(120).optional().or(z.literal('')),
+   companyName: z.string().max(120).optional().or(z.literal('')),
+   country: z.string().max(80).optional().or(z.literal('')),
+   phoneNumber: z.string().max(40).optional().or(z.literal('')),
+   email: z.string().email('Invalid email').optional().or(z.literal('')),
+   language: z.string().max(40).optional().or(z.literal('')),
+   messagePreview: z.string().max(2000).optional().or(z.literal('')),
+ });
+ type InquiryFormValues = z.infer<typeof inquirySchema>;
+ 
+ export default function InquiriesPage() {
+@@ -162,32 +163,34 @@ export default function InquiriesPage() {
+ 
+   const convertMutation = useMutation({
+     mutationFn: (id: string) => salesInquiriesApi.convertToLead(id),
+     onSuccess: () => queryClient.invalidateQueries({ queryKey: ['sales-inquiries'] }),
+   });
+ 
+   const form = useForm<InquiryFormValues>({
+     resolver: zodResolver(inquirySchema),
+     defaultValues: {
+       source: 'MANUAL_ENTRY',
++      contactName: '',
+       companyName: '',
+       country: '',
+       phoneNumber: '',
+       email: '',
+       language: '',
+       messagePreview: '',
+     },
+   });
+ 
+   const onSubmit = (values: InquiryFormValues) => {
+     const payload: CreateInquiryPayload = {
+       source: values.source,
++      contactName: values.contactName || undefined,
+       companyName: values.companyName || undefined,
+       country: values.country || undefined,
+       phoneNumber: values.phoneNumber || undefined,
+       email: values.email || undefined,
+       language: values.language || undefined,
+       messagePreview: values.messagePreview || undefined,
+       date: new Date().toISOString(),
+     } as CreateInquiryPayload;
+     createMutation.mutate(payload, { onSuccess: () => form.reset() });
+   };
+@@ -210,20 +213,25 @@ export default function InquiriesPage() {
+         <Badge variant="secondary" className="text-[10px]">
+           {INQUIRY_SOURCE_LABELS[row.original.source] ?? row.original.source}
+         </Badge>
+       ),
+     },
+     {
+       accessorKey: 'companyName',
+       header: 'Company',
+       cell: ({ row }) => row.original.companyName ?? '—',
+     },
++    {
++      accessorKey: 'contactName',
++      header: 'Contact',
++      cell: ({ row }) => row.original.contactName ?? '—',
++    },
+     {
+       accessorKey: 'country',
+       header: 'Country',
+       cell: ({ row }) => <CountryName code={row.original.country} />,
+     },
+     {
+       accessorKey: 'assignedAgent',
+       header: 'Agent',
+       enableSorting: false,
+       cell: ({ row }) => {
+@@ -398,21 +406,21 @@ export default function InquiriesPage() {
+         }
+         filters={
+           <FilterBar
+             filters={filterDefs}
+             values={filterValues}
+             onChange={(id, v) => { setFilterValues((s) => ({ ...s, [id]: v })); setPage(1); }}
+             onReset={() => { setFilterValues({}); setSearchValue(''); setPage(1); }}
+             showSearch
+             searchValue={searchValue}
+             onSearchChange={(v) => { setSearchValue(v); setPage(1); }}
+-            searchPlaceholder="Company, phone, email…"
++            searchPlaceholder="Contact, company, phone, email…"
+           />
+         }
+       >
+         <div className="space-y-2">
+           <DataTable
+             columns={columns}
+             data={inquiries}
+             rowKey={(row) => row.id}
+             loading={isLoading}
+             onRowClick={(row) => router.push(`/${locale}/admin/sales/inquiries/${row.id}`)}
+@@ -473,20 +481,24 @@ export default function InquiriesPage() {
+                 <SelectTrigger><SelectValue /></SelectTrigger>
+                 <SelectContent>
+                   {ALL_SOURCES.map((s) => (
+                     <SelectItem key={s} value={s}>{INQUIRY_SOURCE_LABELS[s]}</SelectItem>
+                   ))}
+                 </SelectContent>
+               </Select>
+             )}
+           </FormField>
+ 
++          <FormField control={form.control} name="contactName" label="Contact name">
++            {(field) => <Input {...field} placeholder="Ayşe Yılmaz" />}
++          </FormField>
++
+           <div className="grid grid-cols-2 gap-3">
+             <FormField control={form.control} name="companyName" label="Company name">
+               {(field) => <Input {...field} placeholder="Acme Hospitality GmbH" />}
+             </FormField>
+             <FormField control={form.control} name="country" label="Country">
+               {(field) => (
+                 <CountrySelect
+                   value={(field.value as string) ?? ''}
+                   onChange={field.onChange}
+                   placeholder="Select country"
+diff --git a/apps/frontend/src/lib/api/sales.ts b/apps/frontend/src/lib/api/sales.ts
+index 13a4acf..a9b769a 100644
+--- a/apps/frontend/src/lib/api/sales.ts
++++ b/apps/frontend/src/lib/api/sales.ts
+@@ -24,20 +24,21 @@ export interface UserRef {
+ }
+ 
+ export interface Inquiry {
+   id: string;
+   inquiryNumber: string;
+   source: InquirySource;
+   date: string;
+   phoneNumber: string | null;
+   email: string | null;
+   companyName: string | null;
++  contactName: string | null;
+   country: string | null;
+   language: string | null;
+   messagePreview: string | null;
+   assignedAgentId: string | null;
+   assignedAgent: UserRef | null;
+   assignedTeam: string | null;
+   classification: InquiryClassification | null;
+   status: InquiryStatus;
+   notes: string | null;
+   convertedLeadId: string | null;
+@@ -159,33 +160,35 @@ export interface LeadsQuery {
+ }
+ 
+ // ─── Payload Interfaces ─────────────────────────────────────────────────────────
+ 
+ export interface CreateInquiryPayload {
+   source: InquirySource;
+   date: string;
+   phoneNumber?: string;
+   email?: string;
+   companyName?: string;
++  contactName?: string;
+   country?: string;
+   language?: string;
+   messagePreview?: string;
+   assignedTeam?: string;
+   notes?: string;
+ }
+ 
+ export interface UpdateInquiryPayload {
+   source?: InquirySource;
+   date?: string;
+   phoneNumber?: string;
+   email?: string;
+   companyName?: string;
++  contactName?: string;
+   country?: string;
+   language?: string;
+   messagePreview?: string;
+   status?: InquiryStatus;
+   assignedAgentId?: string;
+   assignedTeam?: string;
+   notes?: string;
+ }
+ 
+ export interface ClassifyInquiryPayload {

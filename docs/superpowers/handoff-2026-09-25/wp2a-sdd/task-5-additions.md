@@ -1,0 +1,7 @@
+# Task 5 additions (controller, 2026-09-24, from the WP2b consistency check — binding; each is a small extra cycle with tests)
+- **W81** `StickyCtaBar`: any CTA whose href is `tel:`/`wa.me`/`mailto:` (use Task 3's `contactKindOf`) renders through `ContactLink` with placement `page_cta`; other CTAs stay `Button`; the bar's wrapper gets `data-testid="sticky-cta"`. Test: a tel CTA fires `call_click` with placement `page_cta`.
+- **W82** `Cta.href`, `ContactCta.href`, `EmptyStateCta.href`, `StickyCta.href` accept `string | Exclude<Href, string>` (object hrefs render through next-intl `Link` with `buttonClassName`). Test: `{ pathname: '/hire-workers', hash: '#request-form' }` renders `/isci-talebi#request-form` under `tr`.
+- **W83** `FaqBlock.askCard` gains optional `email`, `emailLabelId`, `subject` → a `ContactCta` mailto row (placement `page_cta`). Test.
+- **W84** `TimelineStep.body` becomes optional; no `<p>` when absent. Test.
+- **W78** New `src/forms/options.ts`: `export const START_WHEN_KEYS = ['asap','month1','months1to3','planning'] as const; export type StartWhenKey = …;` plus `sys.form.options.startWhen.{asap,month1,months1to3,planning}` in BOTH message files (TR: "Hemen", "1 ay içinde", "1–3 ay içinde", "Planlama aşamasında"; EN: "As soon as possible", "Within 1 month", "In 1–3 months", "Still planning"). Test: keys ↔ labels parity.
+- Also (Task 1 review minor): the dev gallery's `t('home.024')` (a re-authored id) must go through `makeTf` — fix while editing the gallery.

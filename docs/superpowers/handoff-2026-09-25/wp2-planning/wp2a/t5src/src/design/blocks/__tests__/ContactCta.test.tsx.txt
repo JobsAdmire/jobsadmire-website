@@ -1,0 +1,69 @@
+import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
+import { beforeEach, describe, expect, it } from 'vitest';
+import { ContactCta } from '../ContactCta';
+import { renderWithIntl } from '@/test/render';
+
+type Entry = Record<string, unknown>;
+const pushed = () => (window as unknown as { dataLayer: Entry[] }).dataLayer;
+
+// jsdom has no navigation; a native listener swallows the default action while React's own
+// handler (registered on the root) still runs — the same helper T0c's ContactLink test uses.
+async function click(name: string) {
+  const link = screen.getByRole('link', { name });
+  link.addEventListener('click', (e) => e.preventDefault());
+  await userEvent.click(link);
+}
+
+beforeEach(() => {
+  (window as unknown as { dataLayer: Entry[] }).dataLayer = [];
+});
+
+describe('ContactCta (W12 page placements)', () => {
+  it('fires the contact event with its placement for a wa.me href, in the Button face', async () => {
+    renderWithIntl(
+      <ContactCta placement="page_cta" href="https://wa.me/905011240340?text=Merhaba" external>
+        WhatsApp
+      </ContactCta>,
+    );
+    const link = screen.getByRole('link', { name: 'WhatsApp' });
+    expect(link).toHaveAttribute('target', '_blank');
+    expect(link).toHaveClass('bg-blue-safe'); // primary by default
+    await click('WhatsApp');
+    expect(pushed()).toEqual([
+      { event: 'whatsapp_click', page: '/', locale: 'tr', placement: 'page_cta' },
+    ]);
+  });
+
+  it('classifies tel: and mailto: too, with the variant it is given', async () => {
+    renderWithIntl(
+      <>
+        <ContactCta placement="office_card" href="tel:+905011240340" variant="ghost">
+          Ara
+        </ContactCta>
+        <ContactCta placement="office_card" href="mailto:info@jobsadmire.com" variant="inverse">
+          Yaz
+        </ContactCta>
+      </>,
+    );
+    expect(screen.getByRole('link', { name: 'Yaz' })).toHaveClass('text-white');
+    await click('Ara');
+    await click('Yaz');
+    expect(pushed().map((e) => [e.event, e.placement])).toEqual([
+      ['call_click', 'office_card'],
+      ['email_click', 'office_card'],
+    ]);
+  });
+
+  it('is a plain Button link for a non-contact href and fires nothing', async () => {
+    renderWithIntl(
+      <ContactCta placement="page_cta" href="/hire-workers" variant="secondary">
+        Talep
+      </ContactCta>,
+    );
+    const link = screen.getByRole('link', { name: 'Talep' });
+    expect(link).toHaveAttribute('href', '/isci-talebi');
+    await click('Talep');
+    expect(pushed()).toEqual([]);
+  });
+});
