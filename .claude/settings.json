@@ -1,0 +1,45 @@
+{
+  "permissions": {
+    "deny": [
+      "Read(./node_modules/**)",
+      "Read(./**/node_modules/**)",
+      "Read(./**/dist/**)",
+      "Read(./**/dist-scripts/**)",
+      "Read(./**/.next/**)",
+      "Read(./**/.turbo/**)",
+      "Read(./**/coverage/**)",
+      "Read(./**/playwright-report/**)",
+      "Read(./**/test-results/**)",
+      "Read(./**/*.tsbuildinfo)",
+      "Read(./**/.DS_Store)",
+      "Read(./.env)",
+      "Read(./**/.env)",
+      "Read(./**/.env.local)",
+      "Read(./**/.env.production)",
+      "Read(//Users/agentfaraz/projects/admiregroup/jobsadmire/ACCESS.md)",
+      "Read(//Users/agentfaraz/projects/admiregroup/jobsadmire/.secrets/**)",
+      "Read(./design-package/**/*.png)",
+      "Read(./design-package/**/*.jpg)",
+      "Read(./design-package/**/*.jpeg)",
+      "Read(./design-package/**/*.webp)",
+      "Read(./design-package/**/*.svg)",
+      "Read(./design-package/**/*.pdf)",
+      "Read(./public/**/*.png)",
+      "Read(./public/**/*.jpg)",
+      "Read(./public/**/*.webp)"
+    ]
+  },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Read",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash \"$CLAUDE_PROJECT_DIR\"/.claude/hooks/guard-large-reads.sh"
+          }
+        ]
+      }
+    ]
+  }
+}
