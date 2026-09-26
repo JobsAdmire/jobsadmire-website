@@ -3734,8 +3734,8 @@
    "group": "hamburger",
    "order": 10,
    "labelId": "home.012",
-   "href": "https://portal.jobsadmire.com/auth/login",
-   "external": true,
+   "href": "/portal-login",
+   "external": false,
    "visibleOn": [
     "desktop",
     "mobile"
@@ -3767,8 +3767,8 @@
    "group": "slimBarRight",
    "order": 2,
    "labelId": "home.012",
-   "href": "https://portal.jobsadmire.com/auth/login",
-   "external": true,
+   "href": "/portal-login",
+   "external": false,
    "visibleOn": [
     "desktop",
     "mobile"
@@ -3833,8 +3833,8 @@
    "group": "footerEmployers",
    "order": 5,
    "labelId": "home.012",
-   "href": "https://portal.jobsadmire.com/auth/login",
-   "external": true,
+   "href": "/portal-login",
+   "external": false,
    "visibleOn": [
     "desktop",
     "mobile"

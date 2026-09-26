@@ -136,7 +136,9 @@ const SETTINGS = {
 // ---------------------------------------------------------------------------------------------
 
 type NavRow = { href: string; labelId: string; external?: boolean; blog?: boolean };
-const PORTAL_LOGIN = `${SETTINGS.portal.host}${SETTINGS.portal.loginPath}`;
+/** W88: the portal row is internal — `/portal-login` (`/portal-girisi`) is the chooser page (W8)
+ *  that links out to `settings.portal.host`; no nav group links the portal host itself. */
+const PORTAL_ROW: NavRow = { href: '/portal-login', labelId: 'home.012' };
 // desktop nav in README order; labels are the Homepage nav ids (home.001..011)
 const DESKTOP: NavRow[] = [
   { href: '/hire-workers', labelId: 'home.002' },
@@ -155,18 +157,19 @@ const DESKTOP: NavRow[] = [
  * All nine schema groups. The four empty ones are settings-driven, not route lists (R15):
  * slimBarLeft = licence chip + phone + e-mail, footerContact = phone/e-mail/Telegram + the
  * `offices` collection, mobileBottomBar = tel: + wa.me from settings, socialRail = settings.social.
- * The portal login row (home.012, external) lives here and nowhere else (W36). Rows flagged
- * `blog` are emitted only once the blog nav threshold is met (W4).
+ * The portal login row (home.012, the internal `/portal-login` chooser, W88) lives here and
+ * nowhere else (W36). Rows flagged `blog` are emitted only once the blog nav threshold is met
+ * (W4).
  */
 const NAV_GROUPS: Record<NavItem['group'], NavRow[]> = {
   desktopNav: DESKTOP,
-  hamburger: [...DESKTOP, { href: PORTAL_LOGIN, labelId: 'home.012', external: true }],
+  hamburger: [...DESKTOP, PORTAL_ROW],
   slimBarLeft: [],
   slimBarRight: [
     { href: '/blog', labelId: 'home.013', blog: true },
     { href: '/careers', labelId: 'home.009' },
     { href: '/verify', labelId: 'home.011' },
-    { href: PORTAL_LOGIN, labelId: 'home.012', external: true },
+    PORTAL_ROW,
   ],
   footerEmployers: [
     { href: '/hire-workers', labelId: 'home.002' },
@@ -174,7 +177,7 @@ const NAV_GROUPS: Record<NavItem['group'], NavRow[]> = {
     { href: '/hiring-cost-calculator', labelId: 'home.005' },
     { href: '/work-permit', labelId: 'home.004' },
     { href: '/verify', labelId: 'home.011' },
-    { href: PORTAL_LOGIN, labelId: 'home.012', external: true },
+    PORTAL_ROW,
   ],
   footerCompany: [
     { href: '/about', labelId: 'home.001' },

@@ -389,7 +389,8 @@ describe('import-design-package — collections', () => {
 describe('import-design-package — nav and pages', () => {
   it('gates /blog behind the threshold (W4), fills five groups and carries the portal row only in the groups (W36)', () => {
     const hrefs = (group: string) => tr.nav.filter((n) => n.group === group).map((n) => n.href);
-    const portal = 'https://portal.jobsadmire.com/auth/login';
+    // W88: the portal row is the internal chooser page (W8), which links out to the portal host
+    const portal = '/portal-login';
     expect(hrefs('desktopNav')).toEqual([
       '/hire-workers',
       '/available-workers',
@@ -424,11 +425,17 @@ describe('import-design-package — nav and pages', () => {
     expect(tr.nav).toHaveLength(35);
     expect(tr.nav.find((n) => n.href === '/verify')?.labelId).toBe('home.011');
     expect(tr.strings['home.011']).toBe('Temsilci Doğrulama');
-    expect(tr.nav.filter((n) => n.external).map((n) => [n.group, n.labelId])).toEqual([
-      ['hamburger', 'home.012'],
-      ['slimBarRight', 'home.012'],
-      ['footerEmployers', 'home.012'],
+    expect(
+      tr.nav.filter((n) => n.href === portal).map((n) => [n.group, n.labelId, n.external]),
+    ).toEqual([
+      ['hamburger', 'home.012', false],
+      ['slimBarRight', 'home.012', false],
+      ['footerEmployers', 'home.012', false],
     ]);
+    // W88: no group carries an external row — the portal host is only ever linked from the
+    // chooser page, never from the chrome
+    expect(tr.nav.filter((n) => n.external)).toEqual([]);
+    expect(en.nav.filter((n) => n.external)).toEqual([]);
     for (const group of new Set(tr.nav.map((n) => n.group))) {
       const rows = tr.nav.filter((n) => n.group === group);
       expect(
