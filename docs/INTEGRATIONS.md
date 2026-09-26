@@ -85,7 +85,7 @@ The catalogue below is plan §4, with phase tags: **[A]** Phase A, **[B]** Phase
 
 ## I15 — Portal links
 
-**Direction:** Website → portal.jobsadmire.com. **Auth:** none — plain links in header/footer/`/portal-girisi`, no API traffic at all. **Failure/degraded:** n/a — it's a hyperlink.
+**Direction:** Website → portal.jobsadmire.com. **Auth:** none — a plain link out from the `/portal-girisi` chooser page (T13); the hamburger, slim-bar and footer portal rows point at that page internally (`/portal-login`, W88), never at the portal host. No API traffic at all. **Failure/degraded:** n/a — it's a hyperlink.
 
 ## I16 — Analytics/Ads/consent
 
