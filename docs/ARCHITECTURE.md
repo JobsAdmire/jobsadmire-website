@@ -68,27 +68,27 @@ There is no `src/forms/` directory yet — the forms flow is designed (see "Form
 
 Names and purpose only — no values live here or anywhere in this repo (`.gitignore` blocks `.env*` except `.env.example`). Full table with rationale/nuance per variable and the retired-secrets log: `docs/DEPLOYMENT.md` § Environment variables. Current placeholder list: `.env.example`.
 
-| Variable                           | Purpose                                                       |
-| ----------------------------------- | -------------------------------------------------------------- |
-| `CONTENT_SOURCE`                    | `LOCAL` or `OPS` — which content adapter `contentSource()` resolves to |
-| `OPS_API_URL`                       | Base URL for the Operations website API                        |
-| `OPS_WEBSITE_READ_TOKEN`            | Bearer token for bundle/content reads from Operations           |
-| `OPS_WEBSITE_WRITE_TOKEN`           | Bearer token for form submissions to Operations (not yet consumed — forms flow unbuilt) |
-| `REVALIDATE_SECRET`                 | Authenticates Operations → `/api/revalidate` calls               |
-| `NEXT_PUBLIC_SITE_URL`              | Canonical site origin for metadata/sitemap/OG                    |
-| `NEXT_PUBLIC_GTM_ID`                | GTM container id (public identifier)                             |
-| `NEXT_PUBLIC_GA4_ID`                | GA4 measurement id (public identifier)                           |
-| `NEXT_PUBLIC_ADS_ID`                | Google Ads conversion id (public identifier)                     |
-| `NEXT_PUBLIC_ADS_CONVERSION_LABEL`  | Google Ads conversion label (public identifier)                  |
-| `NEXT_PUBLIC_TURNSTILE_SITE_KEY`    | Cloudflare Turnstile site key (public; the secret key lives in Operations, not this repo) |
+| Variable                           | Purpose                                                                                   |
+| ---------------------------------- | ----------------------------------------------------------------------------------------- |
+| `CONTENT_SOURCE`                   | `LOCAL` or `OPS` — which content adapter `contentSource()` resolves to                    |
+| `OPS_API_URL`                      | Base URL for the Operations website API                                                   |
+| `OPS_WEBSITE_READ_TOKEN`           | Bearer token for bundle/content reads from Operations                                     |
+| `OPS_WEBSITE_WRITE_TOKEN`          | Bearer token for form submissions to Operations (not yet consumed — forms flow unbuilt)   |
+| `REVALIDATE_SECRET`                | Authenticates Operations → `/api/revalidate` calls                                        |
+| `NEXT_PUBLIC_SITE_URL`             | Canonical site origin for metadata/sitemap/OG                                             |
+| `NEXT_PUBLIC_GTM_ID`               | GTM container id (public identifier)                                                      |
+| `NEXT_PUBLIC_GA4_ID`               | GA4 measurement id (public identifier)                                                    |
+| `NEXT_PUBLIC_ADS_ID`               | Google Ads conversion id (public identifier)                                              |
+| `NEXT_PUBLIC_ADS_CONVERSION_LABEL` | Google Ads conversion label (public identifier)                                           |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY`   | Cloudflare Turnstile site key (public; the secret key lives in Operations, not this repo) |
 
 Runtime-only variables (not in `.env.example`, provided by Vercel or the shell, read directly in code):
 
-| Variable                | Read in                                    | Purpose                                          |
-| ------------------------ | ------------------------------------------- | ------------------------------------------------- |
-| `VERCEL_GIT_COMMIT_SHA`  | `src/app/api/site-health/route.ts`          | Commit SHA surfaced in the health-check response   |
-| `VERCEL_ENV`             | `src/app/robots.ts`                         | Drives `noindex` on every non-production deployment |
-| `NODE_ENV`               | `src/content/pure.ts`, `src/app/[locale]/dev/gallery/page.tsx` | Production fixture guard; dev-gallery 404 in production |
+| Variable                | Read in                                                        | Purpose                                                 |
+| ----------------------- | -------------------------------------------------------------- | ------------------------------------------------------- |
+| `VERCEL_GIT_COMMIT_SHA` | `src/app/api/site-health/route.ts`                             | Commit SHA surfaced in the health-check response        |
+| `VERCEL_ENV`            | `src/app/robots.ts`                                            | Drives `noindex` on every non-production deployment     |
+| `NODE_ENV`              | `src/content/pure.ts`, `src/app/[locale]/dev/gallery/page.tsx` | Production fixture guard; dev-gallery 404 in production |
 
 ## Run locally
 
@@ -109,15 +109,15 @@ npm run redirects:build     # scripts/build-redirects.ts -> redirects/legacy.jso
 
 Exact commands, from `package.json`:
 
-| Command                | Runs                                                    |
-| ------------------------ | ---------------------------------------------------------- |
-| `npm run typecheck`      | `tsc --noEmit`                                              |
-| `npm run lint`            | `eslint .`                                                  |
-| `npm run format`          | `prettier --check .` (`npm run format:write` to fix)         |
-| `npm run test`            | `vitest run` (`npm run test:watch` for watch mode)            |
-| `npm run verify`          | `typecheck && lint && format && test` — the exact gate the Vercel build runs (`vercel.json`'s `buildCommand`) |
-| `npm run e2e`             | `playwright test` (Playwright only, no axe/Lighthouse)         |
-| `npm run gate`            | `bash scripts/gate.sh` — Playwright + axe + Lighthouse CI against a URL; never part of the Vercel build. Full composition and budgets: "Quality gate (D27)" below. |
+| Command             | Runs                                                                                                                                                               |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `npm run typecheck` | `tsc --noEmit`                                                                                                                                                     |
+| `npm run lint`      | `eslint .`                                                                                                                                                         |
+| `npm run format`    | `prettier --check .` (`npm run format:write` to fix)                                                                                                               |
+| `npm run test`      | `vitest run` (`npm run test:watch` for watch mode)                                                                                                                 |
+| `npm run verify`    | `typecheck && lint && format && test` — the exact gate the Vercel build runs (`vercel.json`'s `buildCommand`)                                                      |
+| `npm run e2e`       | `playwright test` (Playwright only, no axe/Lighthouse)                                                                                                             |
+| `npm run gate`      | `bash scripts/gate.sh` — Playwright + axe + Lighthouse CI against a URL; never part of the Vercel build. Full composition and budgets: "Quality gate (D27)" below. |
 
 ## Deployment
 

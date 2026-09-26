@@ -6,36 +6,36 @@ Decisions below are cited as **D\<n\>**, rationale in `docs/superpowers/specs/20
 
 ## Where to look
 
-| Task / question | Doc & section |
-|---|---|
-| Pages, routes, slugs, forms per page, i18n rules | `docs/PRD.md` §2–3 |
-| SEO/GEO/AEO requirements | `docs/PRD.md` §4; `docs/SEO.md` |
-| Accessibility requirements | `docs/PRD.md` §5 |
-| Performance budget | `docs/PRD.md` §6; `docs/ARCHITECTURE.md` § Quality gate (D27) |
-| Analytics / consent requirements | `docs/PRD.md` §7; `docs/ANALYTICS.md` |
-| Legal pages | `docs/PRD.md` §8 |
-| Out of scope, owner-decided items, what WP1 shipped | `docs/PRD.md` §9–11 |
-| Stack, dependencies, repo layout, entry points | `docs/ARCHITECTURE.md` § Stack / § Repository layout / § Entry points and key modules |
-| Environment variables (full reference) | `docs/ARCHITECTURE.md` § Environment variables; `docs/DEPLOYMENT.md` § Environment variables |
-| Run locally; exact test/quality-gate commands | `docs/ARCHITECTURE.md` § Run locally / § Test / quality gates |
-| Routing, redirects, `src/proxy.ts` middleware | `docs/ARCHITECTURE.md` § Routing |
-| Content adapter (`LOCAL` vs `OPS`, fixture rule) | `docs/ARCHITECTURE.md` § Content adapter (D7, D23) |
-| ISR tags and freshness time floors | `docs/ARCHITECTURE.md` § Freshness (D8) |
-| Forms flow | `docs/ARCHITECTURE.md` § Forms flow (D11) |
-| Desktop-scale token port checklist (0.75 normalisation) | `docs/ARCHITECTURE.md` § D19 |
-| Quality gate composition and budgets | `docs/ARCHITECTURE.md` § Quality gate (D27) |
-| Design system, calculator engine, Operations surface | `docs/ARCHITECTURE.md` §§ Design system / Calculator engine / Operations surface |
-| Environments (local / preview / production) | `docs/ARCHITECTURE.md` § Environments; `docs/DEPLOYMENT.md` §§ Two Vercel projects / Phase A cutover |
-| Integration catalogue (I1–I20), token threat model | `docs/INTEGRATIONS.md` §§ Catalogue … Token threat model |
-| String catalogue, `sys.*`, bundle shape, blog model | `docs/CONTENT-MODEL.md` |
-| Redirect rules (D21), disposition table | `docs/redirects.md` |
-| Retention, DSAR/erasure, KVKK runbook, consent | `docs/PRIVACY.md` |
-| Site-health, synthetic lead, kill switches, owner checks | `docs/OPERATING.md` |
-| Retired secrets log; deploy discipline | `docs/DEPLOYMENT.md` §§ Retired secrets log / Deploy discipline |
-| Unbuilt / pending features | `docs/pending/README.md` |
-| Decision rationale (D\<n\>) and WP1 rulings (R\<n\>) | `docs/superpowers/specs/2026-09-18-website-programme-design.md`; `docs/superpowers/plans/2026-09-18-wp1-foundation-rulings.md` |
+| Task / question                                                  | Doc & section                                                                                                                                       |
+| ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pages, routes, slugs, forms per page, i18n rules                 | `docs/PRD.md` §2–3                                                                                                                                  |
+| SEO/GEO/AEO requirements                                         | `docs/PRD.md` §4; `docs/SEO.md`                                                                                                                     |
+| Accessibility requirements                                       | `docs/PRD.md` §5                                                                                                                                    |
+| Performance budget                                               | `docs/PRD.md` §6; `docs/ARCHITECTURE.md` § Quality gate (D27)                                                                                       |
+| Analytics / consent requirements                                 | `docs/PRD.md` §7; `docs/ANALYTICS.md`                                                                                                               |
+| Legal pages                                                      | `docs/PRD.md` §8                                                                                                                                    |
+| Out of scope, owner-decided items, what WP1 shipped              | `docs/PRD.md` §9–11                                                                                                                                 |
+| Stack, dependencies, repo layout, entry points                   | `docs/ARCHITECTURE.md` § Stack / § Repository layout / § Entry points and key modules                                                               |
+| Environment variables (full reference)                           | `docs/ARCHITECTURE.md` § Environment variables; `docs/DEPLOYMENT.md` § Environment variables                                                        |
+| Run locally; exact test/quality-gate commands                    | `docs/ARCHITECTURE.md` § Run locally / § Test / quality gates                                                                                       |
+| Routing, redirects, `src/proxy.ts` middleware                    | `docs/ARCHITECTURE.md` § Routing                                                                                                                    |
+| Content adapter (`LOCAL` vs `OPS`, fixture rule)                 | `docs/ARCHITECTURE.md` § Content adapter (D7, D23)                                                                                                  |
+| ISR tags and freshness time floors                               | `docs/ARCHITECTURE.md` § Freshness (D8)                                                                                                             |
+| Forms flow                                                       | `docs/ARCHITECTURE.md` § Forms flow (D11)                                                                                                           |
+| Desktop-scale token port checklist (0.75 normalisation)          | `docs/ARCHITECTURE.md` § D19                                                                                                                        |
+| Quality gate composition and budgets                             | `docs/ARCHITECTURE.md` § Quality gate (D27)                                                                                                         |
+| Design system, calculator engine, Operations surface             | `docs/ARCHITECTURE.md` §§ Design system / Calculator engine / Operations surface                                                                    |
+| Environments (local / preview / production)                      | `docs/ARCHITECTURE.md` § Environments; `docs/DEPLOYMENT.md` §§ Two Vercel projects / Phase A cutover                                                |
+| Integration catalogue (I1–I20), token threat model               | `docs/INTEGRATIONS.md` §§ Catalogue … Token threat model                                                                                            |
+| String catalogue, `sys.*`, bundle shape, blog model              | `docs/CONTENT-MODEL.md`                                                                                                                             |
+| Redirect rules (D21), disposition table                          | `docs/redirects.md`                                                                                                                                 |
+| Retention, DSAR/erasure, KVKK runbook, consent                   | `docs/PRIVACY.md`                                                                                                                                   |
+| Site-health, synthetic lead, kill switches, owner checks         | `docs/OPERATING.md`                                                                                                                                 |
+| Retired secrets log; deploy discipline                           | `docs/DEPLOYMENT.md` §§ Retired secrets log / Deploy discipline                                                                                     |
+| Unbuilt / pending features                                       | `docs/pending/README.md`                                                                                                                            |
+| Decision rationale (D\<n\>) and WP1 rulings (R\<n\>)             | `docs/superpowers/specs/2026-09-18-website-programme-design.md`; `docs/superpowers/plans/2026-09-18-wp1-foundation-rulings.md`                      |
 | Design source reference: pages, tokens, copy, CRM feed contracts | `design-package/README.md`, `design-package/docs/project-brief.md`, `design-package/docs/crm-feed.md`, `design-package/docs/translation-process.md` |
-| Programme status, branch, next steps | `docs/WEBSITE-HANDOFF.md` (living copy on branch `wp2/foundation`) |
+| Programme status, branch, next steps                             | `docs/WEBSITE-HANDOFF.md` (living copy on branch `wp2/foundation`)                                                                                  |
 
 ## Stack
 
