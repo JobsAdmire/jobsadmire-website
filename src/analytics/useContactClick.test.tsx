@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { fireEvent, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { ContactLink } from './ContactLink';
@@ -82,6 +82,30 @@ describe('ContactLink (W12)', () => {
       </ContactLink>,
     );
     await click('Instagram');
+    expect(pushed()).toEqual([]);
+  });
+
+  it('fires whatsapp_click exactly once on a middle-click (auxclick, button 1) — the click WhatsApp opens in a background tab (Minor 4)', () => {
+    renderWithIntl(
+      <ContactLink href="https://wa.me/905011240340?text=Merhaba" placement="whatsapp_fab">
+        WhatsApp
+      </ContactLink>,
+    );
+    const link = screen.getByRole('link', { name: 'WhatsApp' });
+    fireEvent(link, new MouseEvent('auxclick', { bubbles: true, cancelable: true, button: 1 }));
+    expect(pushed()).toEqual([
+      { event: 'whatsapp_click', page: '/', locale: 'tr', placement: 'whatsapp_fab' },
+    ]);
+  });
+
+  it('fires nothing on a right-button auxclick (button 2)', () => {
+    renderWithIntl(
+      <ContactLink href="https://wa.me/905011240340?text=Merhaba" placement="whatsapp_fab">
+        WhatsApp
+      </ContactLink>,
+    );
+    const link = screen.getByRole('link', { name: 'WhatsApp' });
+    fireEvent(link, new MouseEvent('auxclick', { bubbles: true, cancelable: true, button: 2 }));
     expect(pushed()).toEqual([]);
   });
 
