@@ -6,7 +6,6 @@ import { notFound } from 'next/navigation';
 import { GtmLoader } from '@/analytics/GtmLoader';
 import { getBundle, makeT } from '@/content/adapter';
 import { ClientIslands } from '@/design/chrome/ClientIslands';
-import { SiteChrome } from '@/design/chrome/SiteChrome';
 import { pickClientMessages } from '@/i18n/client-messages';
 import { routing } from '@/i18n/routing';
 import { JsonLd } from '@/lib/seo/JsonLdScript';
@@ -60,9 +59,10 @@ export default async function LocaleLayout({
         {/* W90: client components get every sys.* namespace except sys.legal/sys.seo, which
             only server code reads — they never ride the RSC payload. */}
         <NextIntlClientProvider messages={pickClientMessages(messages)}>
-          <SiteChrome locale={locale} bundle={bundle}>
-            {children}
-          </SiteChrome>
+          {/* W19: the chrome is mounted by the route-group layouts — `(site)` default,
+              `(minimal)` without rail/FAB, `(bare)` none — so `children` here is a group
+              layout, never a page. */}
+          {children}
           {/* Both islands load as their own chunks after hydration (`ssr: false`), so neither
               is in the initial script graph. R38 is unchanged and now also decides whether the
               consent chunk is fetched at all: no container id means no tag can fire, so there
