@@ -1,12 +1,13 @@
 import type { Metadata } from 'next';
 import { Archivo } from 'next/font/google';
 import { NextIntlClientProvider, hasLocale } from 'next-intl';
-import { setRequestLocale } from 'next-intl/server';
+import { getMessages, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
 import { GtmLoader } from '@/analytics/GtmLoader';
 import { getBundle, makeT } from '@/content/adapter';
 import { ClientIslands } from '@/design/chrome/ClientIslands';
 import { SiteChrome } from '@/design/chrome/SiteChrome';
+import { pickClientMessages } from '@/i18n/client-messages';
 import { routing } from '@/i18n/routing';
 import { JsonLd } from '@/lib/seo/JsonLdScript';
 import { organizationJsonLd, websiteJsonLd } from '@/lib/seo/jsonld';
@@ -40,6 +41,7 @@ export default async function LocaleLayout({
   setRequestLocale(locale);
   const bundle = await getBundle(locale);
   const t = makeT(bundle);
+  const messages = await getMessages();
   const { analytics } = bundle.settings;
   return (
     <html lang={locale} className={archivo.variable}>
@@ -55,7 +57,9 @@ export default async function LocaleLayout({
           })}
         />
         <JsonLd data={websiteJsonLd(bundle.settings)} />
-        <NextIntlClientProvider>
+        {/* W90: client components get every sys.* namespace except sys.legal/sys.seo, which
+            only server code reads — they never ride the RSC payload. */}
+        <NextIntlClientProvider messages={pickClientMessages(messages)}>
           <SiteChrome locale={locale} bundle={bundle}>
             {children}
           </SiteChrome>
