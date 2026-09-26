@@ -35,6 +35,9 @@ test('the sitemap lists both locales and omits the noindex routes', async ({ req
   expect(xml).toContain(`${ORIGIN}/en/hire-workers`);
   expect(xml).not.toContain('/tesekkurler');
   expect(xml).not.toContain('[slug]');
+  // W4: /blog is noindex and out of the sitemap in both locales until 6 Turkish bodies exist
+  expect(xml).not.toContain(`${ORIGIN}/blog`);
+  expect(xml).not.toContain(`${ORIGIN}/en/blog`);
 });
 
 test('robots.txt serves the production rules and points at the sitemap', async ({ request }) => {

@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
+import { ContactLink } from '@/analytics/ContactLink';
 import { makeT } from '@/content/pure';
 import { Accordion } from '@/design/primitives';
 import { mailLink, telLink, waLink } from '@/lib/contact';
@@ -8,17 +9,16 @@ import type { Bundle } from '../../../contract/website-bundle.v1';
 import { CookiePreferencesButton } from './CookiePreferencesButton';
 import { MapPinIcon, TelegramIcon } from './icons';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { navGroup } from './nav';
 import { NavLink, type ChromeNavItem } from './NavLink';
 import { socialLinks } from './SocialRail';
 
-const EMPLOYERS = [
-  '/hire-workers',
-  '/available-workers',
-  '/hiring-cost-calculator',
-  '/work-permit',
-  '/verify',
-];
-const COMPANY = ['/about', '/success-stories', '/blog', '/partner-with-us', '/careers', '/contact'];
+/** The legal row's two links (W11). The frozen contract has no `footerLegal` nav group, so
+ *  this is the one route list still declared in the chrome — canonical ids per R15. */
+const LEGAL = [
+  { href: '/privacy', labelId: 'home.218' },
+  { href: '/terms', labelId: 'home.219' },
+] as const;
 
 const HEADING = 'm-0 mb-4 text-[14px] font-extrabold uppercase tracking-[0.6px] text-white/90';
 const FLINK =
@@ -30,21 +30,12 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
   const t = makeT(bundle);
   const sys = useTranslations('sys');
   const { settings } = bundle;
-  const labels = new Map(
-    bundle.nav.map((n) => [n.href, { label: t(n.labelId), external: n.external }]),
-  );
   const waHref = waLink(settings.whatsappNumber, sys('whatsapp.prefill'));
 
-  const column = (hrefs: string[]) =>
-    hrefs
-      .filter((href) => labels.has(href))
-      .map((href) => (
-        <NavLink
-          key={href}
-          item={{ href, label: labels.get(href)!.label, external: labels.get(href)!.external }}
-          className={FLINK}
-        />
-      ));
+  // T0b fills `footerEmployers` (incl. the portal login row, W36 — the internal /portal-login
+  // chooser since W88) and `footerCompany`; `navGroup` drops /blog below the threshold (W4).
+  const column = (items: ChromeNavItem[]) =>
+    items.map((item) => <NavLink key={item.href} item={item} className={FLINK} />);
   const office = (name: string, hours: string, map: string) => (
     <span key={name} className="flex flex-col gap-1 border-t border-white/10 pt-2.5">
       <h3 className={OFFICE_LABEL}>{name}</h3>
@@ -56,9 +47,7 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
       </a>
     </span>
   );
-  const externalLink = (item: ChromeNavItem, className = FLINK) => (
-    <NavLink item={item} className={className} />
-  );
+  const storeLink = (item: ChromeNavItem) => <NavLink item={item} className={STORE} />;
 
   // One body per column, rendered twice: as a static grid column from `lg` up and inside the
   // mobile accordion below it. The hidden copy is `display:none`, so it is out of the
@@ -68,32 +57,27 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
       id: 'employers',
       heading: t('home.189'),
       body: (
-        <div className="flex flex-col gap-1">
-          {column(EMPLOYERS)}
-          {externalLink({
-            href: `${settings.portal.host}${settings.portal.loginPath}`,
-            label: t('home.012'),
-            external: true,
-          })}
-        </div>
+        <div className="flex flex-col gap-1">{column(navGroup(bundle, 'footerEmployers', t))}</div>
       ),
     },
     {
       id: 'company',
       heading: t('home.190'),
-      body: <div className="flex flex-col gap-1">{column(COMPANY)}</div>,
+      body: (
+        <div className="flex flex-col gap-1">{column(navGroup(bundle, 'footerCompany', t))}</div>
+      ),
     },
     {
       id: 'contact',
       heading: t('home.191'),
       body: (
         <div className="flex flex-col gap-1">
-          <a href={telLink(settings.phone)} className={FLINK}>
+          <ContactLink href={telLink(settings.phone)} placement="footer" className={FLINK}>
             {settings.phoneDisplay}
-          </a>
-          <a href={mailLink(settings.email)} className={FLINK}>
+          </ContactLink>
+          <ContactLink href={mailLink(settings.email)} placement="footer" className={FLINK}>
             {settings.email}
-          </a>
+          </ContactLink>
           <a
             href={settings.telegramUrl}
             target="_blank"
@@ -105,14 +89,15 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
           </a>
           {office(t('home.196'), t('home.198'), settings.maps.antalya)}
           {office(t('home.197'), t('home.199'), settings.maps.karachi)}
-          <a
+          <ContactLink
             href={waHref}
+            placement="footer"
             target="_blank"
             rel="noopener noreferrer"
             className="mt-3 inline-flex min-h-[44px] items-center justify-center rounded-md bg-blue-safe px-5 font-extrabold text-white no-underline hover:bg-sky hover:text-navy focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky"
           >
             {t('home.193')}
-          </a>
+          </ContactLink>
         </div>
       ),
     },
@@ -124,15 +109,13 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
           <p className="m-0 mb-3.5 text-white/55">{t('home.195')}</p>
           <div className="flex flex-col items-start gap-2">
             {settings.storeLinks.android &&
-              externalLink(
-                { href: settings.storeLinks.android, label: t('hire.240'), external: true },
-                STORE,
-              )}
+              storeLink({
+                href: settings.storeLinks.android,
+                label: t('hire.240'),
+                external: true,
+              })}
             {settings.storeLinks.ios &&
-              externalLink(
-                { href: settings.storeLinks.ios, label: t('hire.241'), external: true },
-                STORE,
-              )}
+              storeLink({ href: settings.storeLinks.ios, label: t('hire.241'), external: true })}
           </div>
         </>
       ),
@@ -155,17 +138,20 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
             <LanguageSwitcher locale={locale} label={t('home.016')} variant="dark" />
           </div>
           <div className="flex flex-wrap gap-2.5">
+            {/* W12: the WhatsApp tile fires whatsapp_click; the others are plain anchors
+                (`ContactLink` classifies by href). */}
             {socialLinks(settings, sys('whatsapp.prefill')).map((s) => (
-              <a
+              <ContactLink
                 key={s.name}
                 href={s.href}
+                placement="footer"
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={s.name}
                 className={`flex h-11 w-11 items-center justify-center rounded-pill border border-white/20 bg-white/5 text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky ${s.hover}`}
               >
                 {s.icon}
-              </a>
+              </ContactLink>
             ))}
           </div>
         </div>
@@ -188,12 +174,25 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
 
       <div className="container-site flex flex-wrap items-center justify-between gap-x-6 gap-y-1 border-t border-white/15 py-5">
         <p className="m-0 text-white/50">{t('home.228')}</p>
-        {/* R36: consent is withdrawable, and this is where visitors look for it. R40 gates it
-            exactly like the banner (R38): with no container id nothing ever asked for
-            consent, so there is nothing to withdraw and the button would reopen nothing. */}
-        {settings.analytics.consentMode && Boolean(settings.analytics.gtmId) && (
-          <CookiePreferencesButton label={sys('consent.manage')} />
-        )}
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+          {/* W11: Privacy/Terms in the legal row. The pages land in T13; until then the
+              `[...rest]` catch-all answers 404 inside the chrome. */}
+          <nav aria-label={sys('nav.legal')} className="flex items-center gap-x-4">
+            {LEGAL.map((l) => (
+              <NavLink
+                key={l.href}
+                item={{ href: l.href, label: t(l.labelId), external: false }}
+                className={FLINK}
+              />
+            ))}
+          </nav>
+          {/* R36: consent is withdrawable, and this is where visitors look for it. R40 gates it
+              exactly like the banner (R38): with no container id nothing ever asked for
+              consent, so there is nothing to withdraw and the button would reopen nothing. */}
+          {settings.analytics.consentMode && Boolean(settings.analytics.gtmId) && (
+            <CookiePreferencesButton label={sys('consent.manage')} />
+          )}
+        </div>
       </div>
     </footer>
   );

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { absoluteUrl, localeAlternates } from './routes';
+import { absoluteUrl, localeAlternates, NOINDEX_PATHNAMES, noindexExternalPaths } from './routes';
 
 describe('seo routes', () => {
   it('builds absolute localized URLs (TR unprefixed, EN prefixed)', () => {
@@ -21,5 +21,24 @@ describe('seo routes', () => {
     expect(absoluteUrl('tr', { pathname: '/blog/[slug]', params: { slug: 'isgucu' } })).toBe(
       'https://www.jobsadmire.com/blog/isgucu',
     );
+  });
+  it('keeps the blog index and articles out of the index until the Turkish threshold (W4)', () => {
+    expect(NOINDEX_PATHNAMES).toContain('/blog');
+    expect(NOINDEX_PATHNAMES).toContain('/blog/[slug]');
+    // robots form: localized, deduped — the dynamic key adds nothing beyond its parent prefix
+    expect(noindexExternalPaths('tr')).toEqual([
+      '/tesekkurler',
+      '/portal-girisi',
+      '/abone-onay',
+      '/abonelikten-cik',
+      '/blog',
+    ]);
+    expect(noindexExternalPaths('en')).toEqual([
+      '/en/thank-you',
+      '/en/portal-login',
+      '/en/newsletter/confirm',
+      '/en/newsletter/unsubscribe',
+      '/en/blog',
+    ]);
   });
 });
