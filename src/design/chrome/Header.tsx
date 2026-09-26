@@ -1,42 +1,32 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { makeT } from '@/content/pure';
-import { Button } from '@/design/primitives';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../contract/website-bundle.v1';
+import { resolveCtas } from './ctas';
+import { HeaderCtas } from './HeaderCtas';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { MobileNav } from './MobileNav';
-import { NavLink, type ChromeNavItem } from './NavLink';
-
-export type ChromeCta = { href: string; external?: boolean };
+import { navGroup } from './nav';
+import { NavLink } from './NavLink';
 
 /** The design promotes these out of the desktop row — three into the slim bar and
- *  `/partner-with-us` into the secondary CTA. All four stay in the hamburger panel. */
+ *  `/partner-with-us` into the secondary CTA. All four stay in the hamburger, which reads its
+ *  own `hamburger` nav group (T0b: desktopNav + the portal login). */
 const PROMOTED = new Set(['/blog', '/careers', '/verify', '/partner-with-us']);
-const SECONDARY_CTA = '/partner-with-us';
 
+// `text-nav` is `--fs-nav`: 12px between 901 and 1100, the 11px floor from 1101 (W11).
 const NAV_LINK =
-  'inline-flex min-h-[44px] items-center whitespace-nowrap text-body-sm font-semibold text-ink no-underline hover:text-blue-safe focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
+  'inline-flex min-h-[44px] items-center whitespace-nowrap text-nav font-semibold text-ink no-underline hover:text-blue-safe focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
 
-export function Header({
-  locale,
-  bundle,
-  primaryCta,
-}: {
-  locale: Locale;
-  bundle: Bundle;
-  primaryCta: ChromeCta;
-}) {
+export function Header({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
   const t = makeT(bundle);
   // `useTranslations` resolves against the request config on the server and against the
   // provider in tests, so `sys.*` needs no prop drilling here.
   const sys = useTranslations('sys');
-  const items: ChromeNavItem[] = bundle.nav
-    .filter((n) => n.group === 'desktopNav')
-    .sort((a, b) => a.order - b.order)
-    .map((n) => ({ href: n.href, label: t(n.labelId), external: n.external }));
-  const secondary = items.find((i) => i.href === SECONDARY_CTA);
+  const desktop = navGroup(bundle, 'desktopNav', t).filter((i) => !PROMOTED.has(i.href));
+  const hamburger = navGroup(bundle, 'hamburger', t);
   const languageLabel = t('home.016');
 
   return (
@@ -46,45 +36,29 @@ export function Header({
           {/* 34 × 29 — the asset's own 336 × 285 ratio (see the footer's copy). */}
           <Image src="/brand/ja-mark.png" alt="JobsAdmire" width={34} height={29} priority />
         </Link>
-        {/* The desktop row only fits above the D19 boundary: below 1101 the type scale is
-            the authored 1:1 one, and nav + language + CTAs outgrow the viewport (the width
-            sweep catches it at 1100). Below it the hamburger carries the same items, as the
-            design package does at its own breakpoint. */}
-        <nav aria-label={sys('nav.main')} className="hidden items-center gap-4 xl:flex">
-          {items
-            .filter((i) => !PROMOTED.has(i.href))
-            .map((item) => (
-              <NavLink key={item.href} item={item} className={NAV_LINK} />
-            ))}
+        {/* W11 (closes R46): the row appears from the design's own 901 px. Between 901 and
+            1100 the links are 12 px and may wrap onto a second line inside the nav — the
+            design's `.ja-nav { flex-wrap: wrap }` below 1100 does the same — while the
+            secondary CTA and the primary's tail stay `xl`-only, exactly as the design hides
+            `.ja-nav-cta-secondary` and `.ja-cta-long` at ≤1100. `min-w-0 flex-1` is what lets
+            the nav shrink and wrap instead of pushing the actions off the viewport; the width
+            sweep at 901/1100 is the proof. Below 901 the hamburger carries the same items. */}
+        <nav
+          aria-label={sys('nav.main')}
+          className="hidden min-w-0 flex-1 flex-wrap items-center justify-center gap-x-3 gap-y-0 lg:flex xl:gap-x-4"
+        >
+          {desktop.map((item) => (
+            <NavLink key={item.href} item={item} className={NAV_LINK} />
+          ))}
         </nav>
         <div className="flex flex-none items-center gap-2">
-          {/* ~300 px of pills: it is the reason the row overflows below 1101 (and below
-              515 px, the phone). The hamburger panel carries the same switcher. */}
-          <div className="hidden xl:block">
+          {/* the hamburger panel carries the same switcher below lg */}
+          <div className="hidden lg:block">
             <LanguageSwitcher locale={locale} label={languageLabel} />
           </div>
-          {secondary && (
-            <Button
-              variant="secondary"
-              href={secondary.href}
-              external={secondary.external}
-              prefetch={false}
-              className="hidden whitespace-nowrap xl:inline-flex"
-            >
-              {secondary.label}
-            </Button>
-          )}
-          <Button
-            variant="primary"
-            href={primaryCta.href}
-            external={primaryCta.external}
-            prefetch={false}
-            className="whitespace-nowrap bg-ink hover:bg-blue-safe"
-          >
-            {t('home.014')} <span className="hidden xl:inline">{t('home.015')}</span>
-          </Button>
+          <HeaderCtas table={resolveCtas(t)} />
           <MobileNav
-            items={items}
+            items={hamburger}
             locale={locale}
             menuLabel={t('hire.239')}
             closeLabel={sys('nav.close')}

@@ -33,3 +33,39 @@ test('an unmatched URL 404s inside the site chrome (R6 survives the route groups
   await expect(page.getByRole('contentinfo')).toBeVisible();
   await expect(page.locator('h1')).toHaveText('Sayfa bulunamadı');
 });
+
+test('the desktop nav row appears from 901px, the hamburger below it, nothing overflows (W11)', async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 901, height: 900 });
+  await page.goto('/');
+  await expect(page.getByRole('navigation', { name: 'Ana menü' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Menü' })).toBeHidden();
+
+  await page.setViewportSize({ width: 900, height: 900 });
+  await expect(page.getByRole('navigation', { name: 'Ana menü' })).toBeHidden();
+  await expect(page.getByRole('button', { name: 'Menü' })).toBeVisible();
+
+  // 1100 is the tight one: the row is on, the links are 12px and may wrap inside the nav
+  for (const width of [901, 1000, 1100]) {
+    await page.setViewportSize({ width, height: 900 });
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+    );
+    expect(overflow, `${width}px`).toBeLessThanOrEqual(0);
+  }
+});
+
+test('the header CTA follows the page (W17)', async ({ page }) => {
+  await page.goto('/');
+  // accessible name is "Talep" below xl (the tail span is display:none) and "Talep Oluştur" from xl
+  await expect(page.getByRole('banner').getByRole('link', { name: /^Talep/ })).toHaveAttribute(
+    'href',
+    '/#proposal',
+  );
+  await page.goto('/isci-talebi');
+  await expect(page.getByRole('banner').getByRole('link', { name: /^Talep/ })).toHaveAttribute(
+    'href',
+    '/isci-talebi#request-form',
+  );
+});

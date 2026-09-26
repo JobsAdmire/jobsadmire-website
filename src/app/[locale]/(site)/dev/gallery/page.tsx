@@ -204,7 +204,7 @@ export default async function Gallery({ params }: { params: Promise<{ locale: st
         />
         <div className="w-full">
           <SlimBar bundle={bundle} />
-          <Header locale={locale} bundle={bundle} primaryCta={{ href: '/hire-workers' }} />
+          <Header locale={locale} bundle={bundle} />
         </div>
       </Block>
 

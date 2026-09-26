@@ -28,7 +28,7 @@ export function SiteChrome({
     <>
       <SkipLink label={sys('skipToContent')} />
       <SlimBar bundle={bundle} />
-      <Header locale={locale} bundle={bundle} primaryCta={{ href: '/hire-workers' }} />
+      <Header locale={locale} bundle={bundle} />
       {variant === 'default' && (
         <>
           <SocialRail bundle={bundle} />

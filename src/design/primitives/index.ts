@@ -1,5 +1,5 @@
 export { Accordion, type AccordionItem } from './Accordion';
-export { Button, type ButtonProps, type ButtonVariant } from './Button';
+export { Button, buttonClassName, type ButtonProps, type ButtonVariant } from './Button';
 export { Card } from './Card';
 export { Chip } from './Chip';
 export { Dialog } from './Dialog';

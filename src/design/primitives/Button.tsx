@@ -22,6 +22,17 @@ const SIZE = {
 const BASE =
   'inline-flex items-center justify-center gap-2 rounded-pill text-center font-extrabold no-underline transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe disabled:cursor-not-allowed disabled:opacity-60';
 
+/** The exact class string `<Button>` renders, for the one caller that cannot go through it:
+ *  a next-intl `Link` with an *object* href (`{ pathname, hash }`), which `Button`'s
+ *  string-only `href` (R17) cannot carry. Same face, same focus ring, same hit target. */
+export function buttonClassName(
+  variant: ButtonVariant,
+  size: 'md' | 'lg' = 'md',
+  className?: string,
+): string {
+  return [BASE, VARIANT[variant], SIZE[size], className].filter(Boolean).join(' ');
+}
+
 export type ButtonProps = {
   variant: ButtonVariant;
   size?: 'md' | 'lg';
@@ -47,7 +58,7 @@ export function Button({
   children,
   ...rest
 }: ButtonProps) {
-  const cls = [BASE, VARIANT[variant], SIZE[size], className].filter(Boolean).join(' ');
+  const cls = buttonClassName(variant, size, className);
   // A disabled CTA must never navigate, whatever its href says.
   if (disabled || !href) {
     return (

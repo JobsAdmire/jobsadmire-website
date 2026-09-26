@@ -26,7 +26,7 @@ export function MobileNav({
   const [open, setOpen] = useState(false);
   const panelId = useId();
   return (
-    <div className="xl:hidden">
+    <div className="lg:hidden">
       <button
         type="button"
         aria-expanded={open}

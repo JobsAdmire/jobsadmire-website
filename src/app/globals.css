@@ -67,6 +67,7 @@
   --text-card-title: var(--fs-card-title);
   --text-stat: var(--fs-stat);
   --text-eyebrow: var(--fs-eyebrow);
+  --text-nav: var(--fs-nav);
   --text-h1: var(--fs-h1);
   --text-h2: var(--fs-h2);
   --text-h2-process: var(--fs-h2-process);
@@ -80,10 +81,20 @@
   --fs-card-title: 18.5px;
   --fs-stat: 34px;
   --fs-eyebrow: 12px;
+  --fs-nav: 13.5px;
   --fs-h1: clamp(40px, 4.6vw, 66px);
   --fs-h2: clamp(28px, 3.2vw, 42px);
   --fs-h2-process: clamp(30px, 3.4vw, 46px);
   --gutter: 20px;
+}
+/* W11: the header's desktop row is on from 901px (the design's own breakpoint); its links
+   drop to 12px there so seven of them, the language pills and the primary CTA fit a 1100px
+   viewport without the design's zoom hack — a named delta (docs/ARCHITECTURE.md § Quality
+   gate). Nothing else changes at 901: this is not a D19 scale step. */
+@media (min-width: 901px) {
+  :root {
+    --fs-nav: 12px;
+  }
 }
 @media (min-width: 1101px) {
   :root {
@@ -93,6 +104,7 @@
     --fs-card-title: 13.88px;
     --fs-stat: 25.5px;
     --fs-eyebrow: 11px;
+    --fs-nav: 11px;
     --fs-h1: clamp(30px, 3.45vw, 49.5px);
     --fs-h2: clamp(21px, 2.4vw, 31.5px);
     --fs-h2-process: clamp(22.5px, 2.55vw, 34.5px);
