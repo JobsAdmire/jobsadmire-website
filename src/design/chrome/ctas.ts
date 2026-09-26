@@ -3,9 +3,12 @@ import type { pathnames } from '@/i18n/routing';
 
 /** W17: pages cannot pass props to the group layouts, so the header's per-page CTAs come from
  *  this route-keyed table, read by `HeaderCtas` through next-intl's `usePathname()` (the
- *  internal key — SSR-consistent, so no hydration mismatch and no context store). Ids are the
- *  package's own per-page nav-CTA strings (R15/W23); the anchors are the design's own ids —
- *  THE PAGE TASK OWNING A KEY MUST RENDER THAT ELEMENT ID, or edit its entry here. */
+ *  internal key — SSR-consistent, so no hydration mismatch and no context store, for a STATIC
+ *  key only). Ids are the package's own per-page nav-CTA strings (R15/W23); the anchors are
+ *  the design's own ids — THE PAGE TASK OWNING A STATIC KEY MUST RENDER THAT ELEMENT ID, or
+ *  edit its entry here. A dynamic key (one containing `[`, e.g. `/careers/[slug]`) MUST NOT
+ *  get an entry: the prerendered TR HTML and the browser disagree on a dynamic route's
+ *  internal key, so it falls back to `DEFAULT_CTAS` on both sides instead (W121). */
 export type CtaVariant = 'primary' | 'danger';
 export type CtaLink = { labelId: string; tailId?: string; href: Href; variant?: CtaVariant };
 /** `secondary` left out → the default secondary; `null` → no secondary on that page. */

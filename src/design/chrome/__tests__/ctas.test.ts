@@ -75,4 +75,10 @@ describe('header CTA table (W17)', () => {
       for (const id of ids) expect(s[id], `${id} (${locale})`).toBeTruthy();
     }
   });
+
+  it('no key is a dynamic route (W121: the prerendered TR HTML and the browser disagree on the internal key for `/careers/[slug]`, `/blog/[slug]` …, so a dynamic key must fall back to the defaults, not get its own entry)', () => {
+    for (const key of Object.keys(CTA_BY_PATHNAME)) {
+      expect(key.includes('['), key).toBe(false);
+    }
+  });
 });
