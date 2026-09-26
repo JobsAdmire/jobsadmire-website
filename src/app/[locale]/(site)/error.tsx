@@ -2,7 +2,7 @@
 import { useTranslations } from 'next-intl';
 import { Button, Section } from '@/design/primitives';
 
-/** The locale segment's error boundary: the chrome survives, the page is replaced. Errors
+/** The (site) group's error boundary: the chrome survives, the page is replaced. Errors
  *  thrown by the layout itself escape to `app/global-error.tsx`. The error object is
  *  deliberately not rendered — a visitor gets no stack, and Sentry gets the digest (WP6). */
 export default function LocaleError({
