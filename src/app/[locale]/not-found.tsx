@@ -16,7 +16,7 @@ export default async function LocaleNotFound() {
         <h1 className="text-h2">{sys('notFoundTitle')}</h1>
         <p className="text-body-lg text-text-secondary">{sys('notFoundBody')}</p>
         <Link href="/" className={`mt-8 ${HOME_LINK}`}>
-          {sys('home')}
+          {sys('nav.home')}
         </Link>
       </div>
     </Section>

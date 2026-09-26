@@ -149,6 +149,15 @@ describe('src/messages — sys.* parity (W9/W23)', () => {
       expectKey(k);
   });
 
+  it('W80: the way-home label is sys.nav.home; sys.home is never a leaf (homepage copy owns it)', () => {
+    for (const file of [tr, en]) {
+      const keys = leaves(file);
+      expect(keys).toContain('sys.nav.home');
+      // The homepage task adds `sys.home.*` as an object (W23); a WP1-style leaf would collide.
+      expect(keys).not.toContain('sys.home');
+    }
+  });
+
   it('no sys.form leaf is empty in either file, and the consent copy carries the <link> tag', () => {
     for (const file of [tr, en]) {
       const form = file.sys.form as Record<string, unknown>;

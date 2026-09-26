@@ -41,7 +41,7 @@ The design package ships **zero** field-label, error-message, consent-banner, or
 
 **`sys.*` is not a `t()`/`makeT` id.** It lives in `src/messages/{tr,en}.json` (next-intl message files) and is read via `getTranslations('sys')` (server) / `useTranslations('sys')` (client) — a different accessor from the bundle string map entirely. As shipped in WP1, both locale files carry exactly the same key set:
 
-- **Chrome:** `skipToContent`, `home`, `nav.main`, `nav.close`, `marquee.pause`, `marquee.play`, `whatsapp.prefill` — there is deliberately **no** `languageName`: a switcher names the language you are switching _to_, so it uses endonyms in `LanguageSwitcher.tsx`, not a current-locale string (the unused key was removed, M-10)
+- **Chrome:** `skipToContent`, `nav.main`, `nav.close`, `nav.home` (the 404 page's way back and, from T12/T13, the breadcrumbs' root — W80 moved the WP1 leaf `home` here because `sys.home.*` is the homepage's own copy namespace, W23), `marquee.pause`, `marquee.play`, `whatsapp.prefill` — there is deliberately **no** `languageName`: a switcher names the language you are switching _to_, so it uses endonyms in `LanguageSwitcher.tsx`, not a current-locale string (the unused key was removed, M-10)
 - **Language hint:** `languageHint.body`, `languageHint.switch`, `languageHint.dismiss` — **English in both locale files on purpose**: this copy is read by a visitor whose browser is set to English while they're looking at the Turkish site, so it must not itself be Turkish
 - **Consent:** `consent.title`, `consent.body`, `consent.accept`, `consent.reject`, `consent.policy`, `consent.manage`
 - **Error/404 boundaries:** `notFoundTitle`, `notFoundBody`, `errorTitle`, `errorRetry`
