@@ -69,3 +69,28 @@ test('the header CTA follows the page (W17)', async ({ page }) => {
     '/isci-talebi#request-form',
   );
 });
+
+test('the secondary CTA and the slim-bar contact links hide below their breakpoint, not at every width (W119)', async ({
+  page,
+}) => {
+  await page.goto('/');
+  // role+name, scoped to the header — never the copy's package id (W119 review note).
+  const secondaryCta = page.getByRole('banner').getByRole('link', { name: 'İş Ortağı Olun' });
+  // The slim bar has no landmark role; `div.bg-navy` is its own root (the footer's equivalent
+  // background sits on a `<footer>`, not a `div`), so this scopes to the slim bar's copy of the
+  // phone link, not the footer's contact-column one — never a data attribute keyed to a label id.
+  const phoneLink = page
+    .locator('div.bg-navy')
+    .first()
+    .getByRole('link', { name: '+90 501 124 03 40' });
+
+  await page.setViewportSize({ width: 1100, height: 900 });
+  await expect(secondaryCta).not.toBeVisible();
+  await page.setViewportSize({ width: 1101, height: 900 });
+  await expect(secondaryCta).toBeVisible();
+
+  await page.setViewportSize({ width: 900, height: 900 });
+  await expect(phoneLink).not.toBeVisible();
+  await page.setViewportSize({ width: 901, height: 900 });
+  await expect(phoneLink).toBeVisible();
+});

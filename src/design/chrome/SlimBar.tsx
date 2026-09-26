@@ -35,7 +35,7 @@ export function SlimBar({ bundle }: { bundle: Bundle }) {
           <ContactLink
             href={telLink(settings.phone)}
             placement="slimbar"
-            className={`hidden lg:inline-flex ${LINK}`}
+            className={`max-lg:hidden ${LINK}`}
           >
             <PhoneIcon size={12} />
             {settings.phoneDisplay}
@@ -43,7 +43,7 @@ export function SlimBar({ bundle }: { bundle: Bundle }) {
           <ContactLink
             href={mailLink(settings.email)}
             placement="slimbar"
-            className={`hidden lg:inline-flex ${LINK}`}
+            className={`max-lg:hidden ${LINK}`}
           >
             <MailIcon size={12} />
             {settings.email}

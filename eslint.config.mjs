@@ -28,7 +28,7 @@ const eslintConfig = defineConfig([
       ],
     },
   },
-  // The only files that fail the rule and should: three component tests that render the chrome
+  // The only files that fail the rule and should: component tests that render the chrome
   // against the real generated TR bundle as a fixture. D23 governs how the *running site*
   // loads a bundle — `adapter.ts`'s own loader is a template-literal dynamic import the rule
   // cannot see, and the lint/contract tests read the JSON with `readFileSync`, so neither
@@ -38,6 +38,7 @@ const eslintConfig = defineConfig([
       'src/design/chrome/__tests__/Footer.test.tsx',
       'src/design/chrome/__tests__/Header.test.tsx',
       'src/design/chrome/__tests__/SlimBar.test.tsx',
+      'src/design/chrome/__tests__/visibility.test.tsx',
     ],
     rules: { 'no-restricted-imports': 'off' },
   },

@@ -7,9 +7,11 @@ import { ctasFor, type CtaTable, type ResolvedCta } from './ctas';
 // is the red "Report an Impostor"; both keep Button's base/size/focus classes.
 const PRIMARY = buttonClassName('primary', 'md', 'whitespace-nowrap bg-ink hover:bg-blue-safe');
 const DANGER = buttonClassName('danger', 'md', 'whitespace-nowrap');
-// `xl`-only, like the design's `.ja-nav-cta-secondary` (hidden ≤1100) — the same
-// `hidden … xl:inline-flex` pair the WP1 header used on <Button>, proven by the gate at 1100
-const SECONDARY = buttonClassName('secondary', 'md', 'hidden whitespace-nowrap xl:inline-flex');
+// `xl`-only, like the design's `.ja-nav-cta-secondary` (hidden ≤1100) — `max-xl:hidden` sorts
+// after `buttonClassName`'s base `inline-flex`, so the media variant wins the cascade; a bare
+// `hidden` (as WP1's <Button> used) loses to that same base class and never hides anything
+// (W119; `src/design/chrome/__tests__/visibility.test.tsx` guards this element).
+const SECONDARY = buttonClassName('secondary', 'md', 'max-xl:hidden whitespace-nowrap');
 
 function Primary({ cta }: { cta: ResolvedCta }) {
   return (
