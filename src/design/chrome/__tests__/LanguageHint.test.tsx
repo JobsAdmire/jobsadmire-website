@@ -1,5 +1,7 @@
-import { describe, expect, it } from 'vitest';
-import { shouldShowHint } from '../LanguageHint';
+import { screen } from '@testing-library/react';
+import { afterEach, describe, expect, it } from 'vitest';
+import { LanguageHint, shouldShowHint } from '../LanguageHint';
+import { renderWithIntl } from '@/test/render';
 
 describe('shouldShowHint', () => {
   it('shows once for English browsers on Turkish pages, never after dismissal', () => {
@@ -13,5 +15,32 @@ describe('shouldShowHint', () => {
     expect(shouldShowHint('tr', ['EN-GB'], null)).toBe(true);
     expect(shouldShowHint('tr', ['de-DE', 'en'], null)).toBe(true);
     expect(shouldShowHint('tr', [], null)).toBe(false);
+  });
+});
+
+describe('LanguageHint link target', () => {
+  // jsdom reports navigator.languages = ['en-US', 'en'], so a TR page is eligible; the
+  // dismissal read is inside try/catch (Node ≥ 23 stubs `localStorage` without `getItem`,
+  // src/test/storage.ts), so the hint counts as "not dismissed".
+  afterEach(() => {
+    document.head.querySelectorAll('link[rel="alternate"]').forEach((l) => l.remove());
+  });
+
+  it('offers /en (the parent index) without hreflang tags — R58', () => {
+    renderWithIntl(<LanguageHint locale="tr" />);
+    expect(screen.getByRole('link', { name: 'Switch to English' })).toHaveAttribute('href', '/en');
+  });
+
+  it("offers the page's English alternate when the tag exists — W17", () => {
+    const link = document.createElement('link');
+    link.setAttribute('rel', 'alternate');
+    link.setAttribute('hreflang', 'en');
+    link.setAttribute('href', 'https://www.jobsadmire.com/en/blog/seasonal-workforce');
+    document.head.appendChild(link);
+    renderWithIntl(<LanguageHint locale="tr" />);
+    expect(screen.getByRole('link', { name: 'Switch to English' })).toHaveAttribute(
+      'href',
+      '/en/blog/seasonal-workforce',
+    );
   });
 });

@@ -1,9 +1,11 @@
 'use client';
 import { useCallback, useId, useState, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
+import NextLink from 'next/link';
 import { Link, usePathname, type Href } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { alternatePath } from './alternate-path';
+import { useAlternatePath } from './use-alternate-path';
 
 export const HINT_KEY = 'ja-lang-hint';
 
@@ -36,14 +38,19 @@ function readDismissal(): string | null {
   }
 }
 
+const SWITCH =
+  'inline-flex min-h-[44px] items-center rounded-pill bg-ink px-4 font-extrabold text-white no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
+
 /** English copy in both locales on purpose: it is read by visitors whose browser is set to
  *  English while they are looking at the Turkish site. */
 export function LanguageHint({ locale }: { locale: Locale }) {
   const sys = useTranslations('sys');
   const bodyId = useId();
   // R58: on a dynamic route `usePathname()` is the template (`/blog/[slug]`); the English slug
-  // is a different string the client cannot know, so the hint offers the parent index instead.
+  // is a different string the client cannot know, so the hint offers the parent index —
+  // unless the page's own `hreflang="en"` tag names the real alternate (W17).
   const target = alternatePath(usePathname() ?? '/');
+  const alternate = useAlternatePath('en');
   const [dismissed, setDismissed] = useState(false);
   const eligible = useSyncExternalStore(
     subscribe,
@@ -80,15 +87,21 @@ export function LanguageHint({ locale }: { locale: Locale }) {
         <p id={bodyId} className="m-0 font-bold">
           {sys('languageHint.body')}
         </p>
-        <Link
-          href={target as Href}
-          locale="en"
-          prefetch={false}
-          onClick={dismiss}
-          className="inline-flex min-h-[44px] items-center rounded-pill bg-ink px-4 font-extrabold text-white no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
-        >
-          {sys('languageHint.switch')}
-        </Link>
+        {alternate ? (
+          <NextLink href={alternate} prefetch={false} onClick={dismiss} className={SWITCH}>
+            {sys('languageHint.switch')}
+          </NextLink>
+        ) : (
+          <Link
+            href={target as Href}
+            locale="en"
+            prefetch={false}
+            onClick={dismiss}
+            className={SWITCH}
+          >
+            {sys('languageHint.switch')}
+          </Link>
+        )}
         <button
           type="button"
           onClick={dismiss}
