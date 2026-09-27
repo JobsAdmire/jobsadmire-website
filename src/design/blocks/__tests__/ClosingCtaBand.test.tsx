@@ -85,6 +85,14 @@ describe('ClosingCtaBand', () => {
     const ticks = screen.getByRole('list');
     expect(ticks).toHaveClass('text-white');
     expect(ticks).not.toHaveClass('text-white/75');
+    // N1 (Task 5 re-review, W128b): the glyph itself must be full white too — its own
+    // `text-success` class used to override the list's inherited `currentColor` (1.51:1).
+    const tickIcons = ticks.querySelectorAll('svg');
+    expect(tickIcons.length).toBe(2);
+    tickIcons.forEach((icon) => {
+      expect(icon).toHaveClass('text-white');
+      expect(icon).not.toHaveClass('text-success');
+    });
     expect(screen.getByRole('link', { name: 'WhatsApp' }).className).toBe(
       buttonClassName('inverse-dark'),
     );
@@ -101,7 +109,13 @@ describe('ClosingCtaBand', () => {
     (tone) => {
       renderWithIntl(full(tone));
       expect(screen.getByText('Doğrudan görüşün.')).toHaveClass('text-white/70');
-      expect(screen.getByRole('list')).toHaveClass('text-white/75');
+      const ticks = screen.getByRole('list');
+      expect(ticks).toHaveClass('text-white/75');
+      // N1: navy/gradient keep the pre-existing glyph colour — only the green band's surface
+      // is close enough to it to fail contrast.
+      ticks.querySelectorAll('svg').forEach((icon) => {
+        expect(icon).toHaveClass('text-success');
+      });
       expect(screen.getByRole('link', { name: 'WhatsApp' }).className).toBe(
         buttonClassName('inverse'),
       );

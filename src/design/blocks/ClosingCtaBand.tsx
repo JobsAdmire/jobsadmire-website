@@ -15,25 +15,34 @@ export type Cta = {
   variant?: ButtonVariant;
 };
 
-/** Per tone: the surface, the body/tick colour and the default face of the secondary/extra
- *  CTAs. The green surface (#12813c) is too light for the navy tones' softened white and their
- *  translucent-white `inverse` face, so it sets full-white copy (4.97:1) and `inverse-dark`
- *  (≈5.6:1) — W128(b), a D20 delta. */
+/** Per tone: the surface, the body/tick copy colour, the tick glyph's own colour and the
+ *  default face of the secondary/extra CTAs. The green surface (#12813c) is too light for the
+ *  navy tones' softened white, their `text-success` glyph (1.51:1 — N1) and their
+ *  translucent-white `inverse` face, so it sets full-white copy and glyph (4.97:1) and
+ *  `inverse-dark` (≈5.6:1) — W128(b), a D20 delta. */
 const TONE: Record<
   'navy' | 'gradient' | 'green',
-  { surface: string; body: string; ticks: string; face: ButtonVariant }
+  { surface: string; body: string; ticks: string; icon: string; face: ButtonVariant }
 > = {
-  navy: { surface: 'bg-navy', body: 'text-white/70', ticks: 'text-white/75', face: 'inverse' },
+  navy: {
+    surface: 'bg-navy',
+    body: 'text-white/70',
+    ticks: 'text-white/75',
+    icon: 'text-success',
+    face: 'inverse',
+  },
   gradient: {
     surface: 'bg-gradient-to-br from-ink to-navy',
     body: 'text-white/70',
     ticks: 'text-white/75',
+    icon: 'text-success',
     face: 'inverse',
   },
   green: {
     surface: 'bg-success-text',
     body: 'text-white',
     ticks: 'text-white',
+    icon: 'text-white',
     face: 'inverse-dark',
   },
 };
@@ -101,7 +110,7 @@ export function ClosingCtaBand({
             >
               {ticks.map((tick) => (
                 <li key={tick} className="flex items-start gap-2">
-                  <CheckIcon className="mt-0.5 shrink-0 text-success" />
+                  <CheckIcon className={`mt-0.5 shrink-0 ${look.icon}`} />
                   {tick}
                 </li>
               ))}
