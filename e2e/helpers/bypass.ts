@@ -11,9 +11,9 @@ import { siteFace } from './face';
  * page's Archivo and its map data in the pixel harness.
  *
  * Consumers: `playwright.config.ts` (`extraHTTPHeaders`), `scripts/gate.sh` and
- * `scripts/js-size.mjs` (`lhci collect --extra-headers`, through tsx), the placeholder counter
- * (its fetches) and `scripts/pixel-compare.ts` (the built origin's requests only, never the
- * design page's).
+ * `scripts/js-size.mjs` (`lhci collect --settings.extraHeaders`, through tsx), the placeholder
+ * counter (its fetches) and `scripts/pixel-compare.ts` (the built origin's requests only, never
+ * the design page's).
  * Playwright and Lighthouse attach it to every request the audited page makes, so third parties
  * the built page calls (GTM, Turnstile) may see it: accepted knowingly (W137, docs/DEPLOYMENT.md).
  */

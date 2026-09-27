@@ -174,6 +174,9 @@ describe('js-size.mjs CLI arguments (M2)', () => {
 // W94/W137: the `--routes` collector runs `lhci collect` with the same config gate.sh picks
 // (lighthouseConfigFor — skipAudits is a collect-time setting) and the bypass header only when
 // it is non-empty. The argv builder is the pure part; the subprocess needs a server and Chrome.
+// `lhci collect` hands Lighthouse only its `settings` (a flags file): the header goes in as
+// `--settings.extraHeaders=<JSON>`. A bare `--extra-headers` is not an lhci option and is
+// silently dropped — proven against a local preview stand-in in the Task 7 fix round.
 describe('collectArgs (W94/W137)', () => {
   it('collects with the chosen config and no header when the secret is blank', () => {
     expect(
@@ -191,9 +194,23 @@ describe('collectArgs (W94/W137)', () => {
     const headers = { 'x-vercel-protection-bypass': 'q"uo\\te' };
     const args = collectArgs('/en', 'https://x.vercel.app', 'lighthouserc.preview.json', headers);
     expect(args).toContain('--config=lighthouserc.preview.json');
-    const extra = args.find((a) => a.startsWith('--extra-headers=')) ?? '';
-    expect(JSON.parse(extra.slice('--extra-headers='.length))).toEqual(headers);
+    const extra = args.find((a) => a.startsWith('--settings.extraHeaders=')) ?? '';
+    expect(JSON.parse(extra.slice('--settings.extraHeaders='.length))).toEqual(headers);
     expect(args.at(-1)).toBe('--url=https://x.vercel.app/en');
+  });
+
+  it('never hands lhci the --extra-headers flag it ignores — gate.sh and js-size alike', () => {
+    for (const file of ['scripts/gate.sh', 'scripts/js-size.mjs']) {
+      const code = readFileSync(file, 'utf8')
+        .split('\n')
+        .filter((line) => !/^\s*(#|\/\/|\*|\/\*\*)/.test(line))
+        .join('\n');
+      expect(code, file).not.toContain('--extra-headers');
+      expect(code, file).toContain('--settings.extraHeaders=');
+    }
+    expect(collectArgs('/en', 'https://x.vercel.app', 'c.json', { a: 'b' })).not.toContain(
+      '--extra-headers={"a":"b"}',
+    );
   });
 });
 

@@ -168,8 +168,10 @@ export function newRunFiles(before, now) {
 }
 
 /** W94/W137: the `npx` argv for one `--routes` collect — the Lighthouse config gate.sh picks
- *  (`lighthouseConfigFor`, e2e/helpers/face.ts: `skipAudits` is a collect-time setting) and
- *  `--extra-headers` only when the bypass header is non-empty (e2e/helpers/bypass.ts). Pure.
+ *  (`lighthouseConfigFor`, e2e/helpers/face.ts: `skipAudits` is a collect-time setting) and the
+ *  bypass header only when it is non-empty (e2e/helpers/bypass.ts), as
+ *  `--settings.extraHeaders=<JSON>`: `lhci collect` hands Lighthouse only its `settings`, and has
+ *  no extra-headers option of its own (one is silently dropped). Pure.
  *  @param {string} route @param {string} baseUrl @param {string} config
  *  @param {Record<string, string>} headers @returns {string[]} */
 export function collectArgs(route, baseUrl, config, headers) {
@@ -178,7 +180,7 @@ export function collectArgs(route, baseUrl, config, headers) {
     'collect',
     '--additive',
     `--config=${config}`,
-    ...(Object.keys(headers).length ? [`--extra-headers=${JSON.stringify(headers)}`] : []),
+    ...(Object.keys(headers).length ? [`--settings.extraHeaders=${JSON.stringify(headers)}`] : []),
     `--url=${baseUrl}${route}`,
   ];
 }

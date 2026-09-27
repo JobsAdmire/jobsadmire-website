@@ -42,8 +42,11 @@ fi
 #   localhost → lighthouserc.local.json: LCP a warning (R50, Lantern over a sub-60 ms waterfall);
 #   anything else (production, after WP7a) → lighthouserc.json.
 LHCI_CONFIG="$(node -e 'const { lighthouseConfigFor } = require("tsx/cjs/api").require("./e2e/helpers/face.ts", __filename); process.stdout.write(lighthouseConfigFor(process.env.E2E_BASE_URL));')"
-# W137: the bypass header as `--extra-headers` JSON (JSON.stringify, so any secret stays valid
-# JSON), and only when the secret is non-blank: an unset secret sends no header at all.
+# W137: the bypass header as JSON (JSON.stringify, so any secret stays valid JSON), only when the
+# secret is non-blank — an unset secret sends no header at all. `lhci collect` hands Lighthouse
+# nothing but its `settings`, so the header goes in as `--settings.extraHeaders=<JSON>`; lhci has
+# no extra-headers option of its own and silently drops one (it never reached Lighthouse before
+# the Task 7 fix round — proven against a local preview stand-in).
 LH_EXTRA_HEADERS="$(node -e 'const { protectionBypassHeaders } = require("tsx/cjs/api").require("./e2e/helpers/bypass.ts", __filename); const h = protectionBypassHeaders(); if (Object.keys(h).length) process.stdout.write(JSON.stringify(h));')"
 echo "gate: lighthouse config $LHCI_CONFIG"
 if [ -z "$LH_EXTRA_HEADERS" ] && [ "$LHCI_CONFIG" = lighthouserc.preview.json ]; then
@@ -70,10 +73,10 @@ while IFS= read -r path; do
   # would then only ever see the last path of the loop. The mobile emulation comes from the
   # config (`formFactor: mobile` in all three files, Lighthouse's own default): there is no
   # "mobile" preset — `--preset` only accepts perf|experimental|desktop and rejects the rest.
-  # --config: the file chosen above (W137); --extra-headers only when there is a header.
+  # --config: the file chosen above (W137); the bypass header only when there is one.
   echo "gate: lighthouse ${path}"
   npx lhci collect --additive --config="$LHCI_CONFIG" \
-    ${LH_EXTRA_HEADERS:+--extra-headers="$LH_EXTRA_HEADERS"} \
+    ${LH_EXTRA_HEADERS:+--settings.extraHeaders="$LH_EXTRA_HEADERS"} \
     --url="${E2E_BASE_URL}${path}" >/dev/null
 done <<< "$LH_PATHS"
 # Before assert, so the reports survive a failing budget — that is when they are read (R48).
