@@ -7,12 +7,13 @@
 // ruling demands a next/dynamic pass before the next page task starts.
 //   node scripts/js-size.mjs [--dir=.lighthouseci]
 //
-// W94: `node scripts/js-size.mjs --routes </a,/b>` is a standalone spot-check — it collects the
-// given routes itself (against E2E_BASE_URL) into a separate `.lighthouseci-extra` directory
-// (lhci's `collect` has no --outputDir of its own, unlike `upload`; the routes are gathered into
-// the default `.lighthouseci` folder and only THIS run's new files are moved out, so a gate run's
-// own collected reports are never touched) and prints their sizes the same way — never asserted,
-// and never part of `npm run gate`.
+// W94: `node scripts/js-size.mjs --routes </a,/b>` (or `--routes=</a,/b>`) is a standalone
+// spot-check — it collects the given routes itself (against E2E_BASE_URL, with the Lighthouse
+// config and bypass header the gate uses) into a separate `.lighthouseci-extra` directory (lhci's
+// `collect` has no --outputDir of its own, unlike `upload`; each route is collected into the
+// default `.lighthouseci` folder and only the `lhr-<ts>.json`/`lhr-<ts>.html` pairs THIS run
+// wrote are moved out, so a gate run's own collected reports are never touched) and prints their
+// sizes the same way — never asserted, and never part of `npm run gate`.
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmSync } from 'node:fs';
 import { createRequire } from 'node:module';
@@ -138,6 +139,15 @@ export function parseRoutesArg(argv) {
 }
 
 const LHR_RE = /^lhr-\d+\.json$/;
+/** One Lighthouse run's two files in .lighthouseci: the LHR json and its html report. */
+const RUN_FILE_RE = /^lhr-\d+\.(json|html)$/;
+
+/** W94/M3: the files one `lhci collect` just wrote — each run's `lhr-<ts>.json` and
+ *  `lhr-<ts>.html` — i.e. the run files in `now` that were not in `before`. Pure.
+ *  @param {Set<string>} before @param {string[]} now @returns {string[]} */
+export function newRunFiles(before, now) {
+  return now.filter((f) => RUN_FILE_RE.test(f) && !before.has(f));
+}
 
 /** W94/W137: the `npx` argv for one `--routes` collect — the Lighthouse config gate.sh picks
  *  (`lighthouseConfigFor`, e2e/helpers/face.ts: `skipAudits` is a collect-time setting) and
@@ -157,18 +167,22 @@ export function collectArgs(route, baseUrl, config, headers) {
 
 /** W94: collects `routes` (against E2E_BASE_URL) into `extraDir`, a directory separate from the
  *  main gate's `.lighthouseci`. `lhci collect` has no --outputDir (unlike `upload`) and always
- *  writes into `./.lighthouseci`, so each route is collected there and only the files it just
- *  produced are moved into `extraDir` — a concurrent or prior gate run's own reports are never
+ *  writes into `./.lighthouseci`, so each route is collected there and exactly the run files it
+ *  just wrote (`newRunFiles`: the LHR json and its html report) are moved into `extraDir`, which
+ *  is emptied of earlier runs first — a concurrent or prior gate run's own reports are never
  *  read, wiped or mixed in. */
 function collectExtra(routes, baseUrl, extraDir, config, headers) {
   mkdirSync(extraDir, { recursive: true });
-  for (const f of readdirSync(extraDir).filter((f) => LHR_RE.test(f))) rmSync(join(extraDir, f));
+  for (const f of readdirSync(extraDir).filter((f) => RUN_FILE_RE.test(f))) {
+    rmSync(join(extraDir, f));
+  }
   for (const route of routes) {
     const before = new Set(existsSync('.lighthouseci') ? readdirSync('.lighthouseci') : []);
     process.stdout.write(`js-size: collecting ${route}\n`);
     execFileSync('npx', collectArgs(route, baseUrl, config, headers), { stdio: 'inherit' });
-    const after = readdirSync('.lighthouseci').filter((f) => LHR_RE.test(f) && !before.has(f));
-    for (const f of after) renameSync(join('.lighthouseci', f), join(extraDir, f));
+    for (const f of newRunFiles(before, readdirSync('.lighthouseci'))) {
+      renameSync(join('.lighthouseci', f), join(extraDir, f));
+    }
   }
 }
 

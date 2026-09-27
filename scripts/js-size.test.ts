@@ -6,6 +6,7 @@ import {
   collectArgs,
   formatJsSizeTable,
   LAZY_LINE,
+  newRunFiles,
   parseJsSizeArgs,
   parseRoutesArg,
   SCRIPT_CEILING,
@@ -92,10 +93,10 @@ describe('js-size (W13 amended)', () => {
 
 // W94: `node scripts/js-size.mjs --routes <path,...>` collects the given routes on demand (a
 // spot-check outside the main gate route list) into a separate .lighthouseci-extra directory and
-// prints their sizes the same way — never asserted. The arg parser is the pure, testable part;
-// the actual `lhci collect` subprocess call needs a live server and Chrome, so it is exercised
-// manually (README § Running the gate), not spawned by this suite (memory rule: at most two
-// Lighthouse runs for the whole task, both reserved for the real gate proof).
+// prints their sizes the same way — never asserted. The arg parser, the collect argv and the
+// file selection are the pure, testable parts; the `lhci collect` subprocess itself needs a live
+// server and Chrome, so it is never spawned by this suite (memory rule) — README § Running the
+// gate documents the command, and a task's report records its run.
 describe('parseRoutesArg (W94)', () => {
   it('is null when --routes is absent', () => {
     expect(parseRoutesArg([])).toBeNull();
@@ -177,5 +178,20 @@ describe('collectArgs (W94/W137)', () => {
     const extra = args.find((a) => a.startsWith('--extra-headers=')) ?? '';
     expect(JSON.parse(extra.slice('--extra-headers='.length))).toEqual(headers);
     expect(args.at(-1)).toBe('--url=https://x.vercel.app/en');
+  });
+});
+
+// M3: the --routes collector moves exactly what its own `lhci collect` wrote — each run's
+// lhr-<ts>.json AND its lhr-<ts>.html report — out of .lighthouseci, and nothing else.
+describe('newRunFiles (W94, M3)', () => {
+  it("picks this run's LHR json and html, never an earlier run's or other files", () => {
+    const before = new Set(['lhr-1.json', 'lhr-1.html', 'assertion-results.json']);
+    const now = [...before, 'lhr-2.json', 'lhr-2.html', 'lhr-3.json', 'lhr-3.html', 'notes.txt'];
+    expect(newRunFiles(before, now)).toEqual([
+      'lhr-2.json',
+      'lhr-2.html',
+      'lhr-3.json',
+      'lhr-3.html',
+    ]);
   });
 });
