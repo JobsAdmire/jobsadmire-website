@@ -170,3 +170,25 @@ h4 {
     display: none;
   }
 }
+
+/* PrintButton (src/design/islands/PrintButton.tsx): while `body.print-isolating` is set, only
+   the page's `.print-isolate` region prints — the design's own #calculator print rule, made
+   opt-in per page. `.print-hidden` keeps controls (Print, WhatsApp buttons) off paper. */
+@media print {
+  body.print-isolating * {
+    visibility: hidden;
+  }
+  body.print-isolating .print-isolate,
+  body.print-isolating .print-isolate * {
+    visibility: visible;
+  }
+  body.print-isolating .print-isolate {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .print-hidden {
+    display: none !important;
+  }
+}
