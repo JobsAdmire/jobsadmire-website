@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { getBundle, makeT } from '@/content/adapter';
+import { getBundle, makeT, makeTf } from '@/content/adapter';
 import { ConsentBanner } from '@/design/chrome/ConsentBanner';
 import { CookiePreferencesButton } from '@/design/chrome/CookiePreferencesButton';
 import { Footer } from '@/design/chrome/Footer';
@@ -32,6 +32,7 @@ import {
 } from '@/design/primitives';
 import { routing } from '@/i18n/routing';
 import { DialogDemo } from './DialogDemo';
+import { Wp2Blocks } from './Wp2Blocks';
 
 // Never indexed even in the environments where it does render.
 export const metadata: Metadata = {
@@ -61,6 +62,9 @@ export default async function Gallery({ params }: { params: Promise<{ locale: st
   setRequestLocale(locale);
   const [bundle, sys] = await Promise.all([getBundle(locale), getTranslations('sys')]);
   const t = makeT(bundle);
+  // home.024 is one of Task 1's re-authored {metric} strings — makeT would render the raw
+  // token, so this one id resolves through makeTf like every other block on this page.
+  const tf = makeTf(bundle, locale);
   const navItems = bundle.nav
     .filter((n) => n.group === 'desktopNav')
     .sort((a, b) => a.order - b.order)
@@ -97,7 +101,7 @@ export default async function Gallery({ params }: { params: Promise<{ locale: st
         {/* `onToggle` is optional, so the static states render straight from the server. */}
         <Chip>unselected</Chip>
         <Chip selected>selected</Chip>
-        <Stat value={1240} suffix="+" label={t('home.024')} locale={locale} />
+        <Stat value={1240} suffix="+" label={tf('home.024')} locale={locale} />
       </Block>
 
       <Block title="Card">
@@ -180,6 +184,8 @@ export default async function Gallery({ params }: { params: Promise<{ locale: st
         </div>
       </Section>
 
+      <Wp2Blocks bundle={bundle} locale={locale} />
+
       <Block title="Chrome — LanguageSwitcher / NavLink / CookiePreferencesButton">
         <LanguageSwitcher locale={locale} label={t('home.016')} />
         <span className="bg-navy p-3">
@@ -224,6 +230,8 @@ export default async function Gallery({ params }: { params: Promise<{ locale: st
       <MobileBottomBar bundle={bundle} />
       <StickyCtaBar
         message={t('home.003')}
+        hideNearId="gallery-end"
+        live
         ctas={[
           { label: t('home.004'), href: '/hire-workers' },
           {
