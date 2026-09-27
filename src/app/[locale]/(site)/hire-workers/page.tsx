@@ -30,5 +30,9 @@ export async function generateMetadata({
 export default async function HireWorkers({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   setRequestLocale(locale);
-  return <h1 data-testid="hire-h1">{locale}</h1>;
+  return (
+    <h1 data-testid="page-h1" data-lcp-slot="h1">
+      {locale}
+    </h1>
+  );
 }

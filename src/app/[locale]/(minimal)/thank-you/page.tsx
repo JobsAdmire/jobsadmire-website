@@ -54,7 +54,9 @@ export default async function ThankYou({
   return (
     <Section tone="light">
       <div className="container-site max-w-[720px]">
-        <h1 className="text-h2">{sys('thankYou.title')}</h1>
+        <h1 className="text-h2" data-testid="page-h1" data-lcp-slot="h1">
+          {sys('thankYou.title')}
+        </h1>
         <p className="text-body-lg text-text-secondary">{sys('thankYou.body')}</p>
         {formKey && (
           <p className="text-body text-text-secondary">{sys(`thankYou.forms.${formKey}`)}</p>

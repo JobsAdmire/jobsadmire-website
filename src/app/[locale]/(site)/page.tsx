@@ -31,7 +31,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   setRequestLocale(locale);
   return (
     <>
-      <h1 data-testid="home-h1">{locale === 'tr' ? 'Ana sayfa' : 'Home'}</h1>
+      <h1 data-testid="page-h1" data-lcp-slot="h1">
+        {locale === 'tr' ? 'Ana sayfa' : 'Home'}
+      </h1>
       <Link href="/hire-workers">hire</Link>
     </>
   );
