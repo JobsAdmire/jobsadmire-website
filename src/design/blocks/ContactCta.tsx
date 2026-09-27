@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { ContactLink } from '@/analytics/ContactLink';
-import { contactKindOf } from '@/analytics/useContactClick';
+import { contactKindOf } from '@/analytics/contact-kind';
 import { Button, buttonClassName, type ButtonVariant } from '@/design/primitives';
 import { Link, type Href } from '@/i18n/navigation';
 
@@ -29,7 +29,9 @@ export type ContactCtaProps = {
  *  OBJECT href (W82 — `{ pathname: '/hire-workers', hash: '#request-form' }`) can never be a
  *  contact door, so it renders through next-intl's typed `Link` in the same face — `Button`'s
  *  `href` stays string-only (R17). No `'use client'` here: `ContactLink` is the client piece,
- *  so every block around it stays a server component (W13). */
+ *  so every block around it stays a server component (W13). `contactKindOf` comes from the pure
+ *  `@/analytics/contact-kind`, never `@/analytics/useContactClick`: that module imports
+ *  `usePathname`, which `next build` refuses in a server component's graph (W125). */
 export function ContactCta({
   placement,
   href,
