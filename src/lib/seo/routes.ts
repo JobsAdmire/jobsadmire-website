@@ -20,11 +20,13 @@ export type StaticPathname = Exclude<keyof typeof pathnames, `${string}[${string
  * two newsletter one-shot pages, and — W4, until six Turkish article bodies exist — the blog
  * index and its articles. One set, two consumers (M-3): `app/sitemap.ts` excludes them and
  * `app/robots.ts` disallows their external form in both locales through
- * `noindexExternalPaths`, so a TR slug change in `pathnames` can never leave robots pointing
- * at a path that no longer exists. (`/api/` is disallowed literally there; it is not a
- * `pathnames` route.) Typed as keys, not `Href`s: '/blog/[slug]' is a key but not a bare
- * href, so never hand this set to `getPathname`/`absoluteUrl` directly — go through
- * `noindexExternalPaths`. The blog flip back to index is a manual, reviewed step (T12/WP-C):
+ * `robotsDisallowPaths(locale)` (below), which folds in `UNBUILT_PATHNAMES` so a robots rule
+ * never names a path that does not exist yet. `noindexExternalPaths` is the same fold with no
+ * UNBUILT subtraction — kept as the reference `routes.test.ts` pins `robotsDisallowPaths`
+ * against; it has no production caller of its own. (`/api/` is disallowed literally there; it
+ * is not a `pathnames` route.) Typed as keys, not `Href`s: '/blog/[slug]' is a key but not a
+ * bare href, so never hand this set to `getPathname`/`absoluteUrl` directly — go through
+ * `robotsDisallowPaths`. The blog flip back to index is a manual, reviewed step (T12/WP-C):
  * remove both entries here and nowhere else.
  */
 export const NOINDEX_PATHNAMES = [
