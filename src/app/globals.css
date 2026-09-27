@@ -195,8 +195,9 @@ h4 {
 
 /* SourceMap (src/design/assets/source-map.generated.tsx): arcs dash in once, source dots pulse.
    `pathLength="1"` on every arc normalises the dash, so no path length is measured at runtime.
-   Reduced motion: the global rule above collapses both to a single 0.01 ms run — arcs end drawn
-   (`forwards`), the pulse ring settles at its resting radius. */
+   Reduced motion: the global rule above collapses both to a single 0.01 ms run, and the block at
+   the end of this section drops the staggered inline delays — arcs render drawn at once, the
+   pulse ring rests at its resting radius. */
 @keyframes source-map-dash {
   to {
     stroke-dashoffset: 0;
@@ -229,5 +230,17 @@ h4 {
   }
   .source-map__pulse {
     display: none;
+  }
+}
+/* The generated SVG staggers each arc and pulse with an inline `animationDelay`, which the global
+   reduced-motion rule does not reach: without this the arcs stay undrawn and pop in one by one
+   for ~1.5 s. `!important` is what beats an inline style. */
+@media (prefers-reduced-motion: reduce) {
+  .source-map__arc,
+  .source-map__pulse {
+    animation-delay: 0s !important;
+  }
+  .source-map__arc {
+    stroke-dashoffset: 0;
   }
 }
