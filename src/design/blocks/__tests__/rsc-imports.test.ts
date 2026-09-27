@@ -52,7 +52,25 @@ const CLIENT_ONLY_REACT = new Set([
   'useOptimistic',
   'useActionState',
   'createContext',
+  // W130 amended (Task 6 re-review N2): Next's RSC validator also rejects a class component and
+  // the legacy factory helper in a server module.
+  'Component',
+  'PureComponent',
+  'createFactory',
 ]);
+// W130 amended (Task 6 re-review N2): `react-dom`'s own client-only surface, checked as a second
+// specifier — a `<form>` action's client-side status/state hooks and the two APIs that force a
+// synchronous client commit, none of which exist in the react-server build.
+const CLIENT_ONLY_REACT_DOM = new Set([
+  'useFormStatus',
+  'useFormState',
+  'flushSync',
+  'unstable_batchedUpdates',
+]);
+const CLIENT_ONLY_SPECIFIERS: { specifier: string; names: Set<string> }[] = [
+  { specifier: 'react', names: CLIENT_ONLY_REACT },
+  { specifier: 'react-dom', names: CLIENT_ONLY_REACT_DOM },
+];
 
 /** Every module under `dir`, tests excluded (they are not part of any app graph). */
 function modulesUnder(dir: string): string[] {
@@ -117,52 +135,57 @@ function importsIslandsBarrel(file: string, text: string): boolean {
 }
 
 /** The client-only React APIs a module reaches, however the import is spelled: named imports
- *  and re-exports from `react` (aliases resolved to the imported name, type-only included), and
- *  `X.useState`-style reads through a default or namespace import of `react`. `export *` from
- *  `react` counts as `*`. Parsed, so a commented-out import is not a hit. */
+ *  and re-exports from `react` or `react-dom` (aliases resolved to the imported name, type-only
+ *  included), and `X.useState`-style reads through a default or namespace import of either module
+ *  (W130 amended: `react-dom` is a second specifier, Task 6 re-review N2). `export *` from either
+ *  module counts as `*`. Parsed, so a commented-out import is not a hit. */
 function clientOnlyReactApis(fileName: string, text: string): string[] {
   const source = ts.createSourceFile(fileName, text, ts.ScriptTarget.Latest, true);
-  const isReact = (specifier: ts.Expression | undefined) =>
-    specifier !== undefined && ts.isStringLiteral(specifier) && specifier.text === 'react';
   const found = new Set<string>();
-  const namespaces = new Set<string>();
-  for (const statement of source.statements) {
-    if (ts.isImportDeclaration(statement) && isReact(statement.moduleSpecifier)) {
-      const clause = statement.importClause;
-      if (clause?.name) namespaces.add(clause.name.text);
-      const bindings = clause?.namedBindings;
-      if (bindings && ts.isNamespaceImport(bindings)) namespaces.add(bindings.name.text);
-      if (bindings && ts.isNamedImports(bindings)) {
-        for (const element of bindings.elements) {
-          const imported = (element.propertyName ?? element.name).text;
-          if (CLIENT_ONLY_REACT.has(imported)) found.add(imported);
+  for (const { specifier, names } of CLIENT_ONLY_SPECIFIERS) {
+    const isModule = (moduleSpecifier: ts.Expression | undefined) =>
+      moduleSpecifier !== undefined &&
+      ts.isStringLiteral(moduleSpecifier) &&
+      moduleSpecifier.text === specifier;
+    const namespaces = new Set<string>();
+    for (const statement of source.statements) {
+      if (ts.isImportDeclaration(statement) && isModule(statement.moduleSpecifier)) {
+        const clause = statement.importClause;
+        if (clause?.name) namespaces.add(clause.name.text);
+        const bindings = clause?.namedBindings;
+        if (bindings && ts.isNamespaceImport(bindings)) namespaces.add(bindings.name.text);
+        if (bindings && ts.isNamedImports(bindings)) {
+          for (const element of bindings.elements) {
+            const imported = (element.propertyName ?? element.name).text;
+            if (names.has(imported)) found.add(imported);
+          }
+        }
+      }
+      if (ts.isExportDeclaration(statement) && isModule(statement.moduleSpecifier)) {
+        const clause = statement.exportClause;
+        if (clause && ts.isNamedExports(clause)) {
+          for (const element of clause.elements) {
+            const exported = (element.propertyName ?? element.name).text;
+            if (names.has(exported)) found.add(exported);
+          }
+        } else {
+          found.add('*');
         }
       }
     }
-    if (ts.isExportDeclaration(statement) && isReact(statement.moduleSpecifier)) {
-      const clause = statement.exportClause;
-      if (clause && ts.isNamedExports(clause)) {
-        for (const element of clause.elements) {
-          const exported = (element.propertyName ?? element.name).text;
-          if (CLIENT_ONLY_REACT.has(exported)) found.add(exported);
-        }
-      } else {
-        found.add('*');
+    const visit = (node: ts.Node): void => {
+      if (
+        ts.isPropertyAccessExpression(node) &&
+        ts.isIdentifier(node.expression) &&
+        namespaces.has(node.expression.text) &&
+        names.has(node.name.text)
+      ) {
+        found.add(node.name.text);
       }
-    }
+      ts.forEachChild(node, visit);
+    };
+    if (namespaces.size) visit(source);
   }
-  const visit = (node: ts.Node): void => {
-    if (
-      ts.isPropertyAccessExpression(node) &&
-      ts.isIdentifier(node.expression) &&
-      namespaces.has(node.expression.text) &&
-      CLIENT_ONLY_REACT.has(node.name.text)
-    ) {
-      found.add(node.name.text);
-    }
-    ts.forEachChild(node, visit);
-  };
-  if (namespaces.size) visit(source);
   return [...found].sort();
 }
 
@@ -236,6 +259,20 @@ describe('RSC import guard (W125, W130, W134)', () => {
     expect(apis("// import { useState } from 'react';\nimport { useId } from 'react';")).toEqual(
       [],
     );
+  });
+
+  it('reads a client-only React API from react-dom too, as a second specifier (W130 amended)', () => {
+    const apis = (text: string) => clientOnlyReactApis('probe.tsx', text);
+    expect(apis("import { useFormStatus } from 'react-dom';")).toEqual(['useFormStatus']);
+    expect(apis("import { useFormState, flushSync as fs } from 'react-dom';\nfs();")).toEqual([
+      'flushSync',
+      'useFormState',
+    ]);
+    expect(
+      apis("import * as ReactDOM from 'react-dom';\nReactDOM.unstable_batchedUpdates(() => {});"),
+    ).toEqual(['unstable_batchedUpdates']);
+    expect(apis("export { flushSync } from 'react-dom';")).toEqual(['flushSync']);
+    expect(apis("import { render } from 'react-dom';")).toEqual([]);
   });
 
   it('no directive-less module under src/design imports a client-only React API (W130)', () => {
