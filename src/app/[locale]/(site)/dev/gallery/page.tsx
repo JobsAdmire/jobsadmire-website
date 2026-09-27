@@ -50,10 +50,21 @@ export const metadata: Metadata = {
 const INPUT =
   'min-h-[44px] rounded-md border border-border-1 px-3 text-body-sm focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
 
-function Block({ title, children }: { title: string; children: React.ReactNode }) {
+function Block({
+  title,
+  id,
+  children,
+}: {
+  title: string;
+  /** Anchor for the islands demo's ScrollSpyToc (`#g-a`, `#g-b`), so it spies on real headings. */
+  id?: string;
+  children: React.ReactNode;
+}) {
   return (
     <section className="border-t border-border-2 py-8">
-      <h2 className="text-card-title mb-4 font-mono">{title}</h2>
+      <h2 id={id} className="text-card-title mb-4 font-mono">
+        {title}
+      </h2>
       <div className="flex flex-wrap items-end gap-4">{children}</div>
     </section>
   );
@@ -85,7 +96,7 @@ export default async function Gallery({ params }: { params: Promise<{ locale: st
         {`locale: ${locale} · dev only (404 in production)`}
       </p>
 
-      <Block title="Button">
+      <Block title="Button" id="g-a">
         <Button variant="primary">primary</Button>
         <Button variant="secondary">secondary</Button>
         <Button variant="ghost">ghost</Button>
@@ -171,7 +182,7 @@ export default async function Gallery({ params }: { params: Promise<{ locale: st
         <SkipLink label={sys('skipToContent')} />
       </Block>
 
-      <Block title="Islands (src/design/islands)">
+      <Block title="Islands (src/design/islands)" id="g-b">
         {/* W130: this server component imports through the islands barrel, so `next build`
             proves the barrel is RSC-safe (every module behind it is a client module). */}
         <div className="w-full max-w-md">

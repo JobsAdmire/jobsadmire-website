@@ -20,14 +20,17 @@ Two one-off setup notes: `npx playwright install chromium` once per machine (the
 
 Local dev talks to the Operations backend on **port 4001** (`jobsadmire-operations` — see the workspace-root `CLAUDE.md`); run that stack alongside this one for anything past the `LOCAL` content adapter.
 
-### Content and redirects
+### Content, redirects and assets
 
 ```bash
 npm run content:import     # scripts/import-design-package.ts — rebuilds src/content/local/*.json from design-package/strings/*.json
 npm run redirects:build    # scripts/build-redirects.ts — rebuilds redirects/legacy.json + gone.json from redirects/rules.json (+ redirects/gsc-clicks.csv)
+npm run assets:map         # scripts/build-source-map.ts — rebuilds src/design/assets/source-map.generated.tsx (the sourcing map)
+npm run assets:flags       # scripts/build-flags.ts — rebuilds public/brand/flags.svg from the flag-icons devDependency
+npm run assets:brand       # scripts/fetch-brand.sh — the one-time fetch of public/brand/logo.png + iskur.png (committed)
 ```
 
-Neither runs automatically; re-run by hand whenever their source files change, and commit the regenerated output (both are checked in, both are Prettier-ignored — see `docs/CONTENT-MODEL.md` and `docs/redirects.md`).
+None of them runs automatically or in the build; re-run by hand whenever their sources change, and commit the regenerated output (all of it is checked in; the generated JSON and TSX are Prettier-ignored — see `docs/CONTENT-MODEL.md`, `docs/redirects.md` and `docs/ARCHITECTURE.md` § Assets).
 
 ### Running the gate
 

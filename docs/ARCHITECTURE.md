@@ -29,12 +29,14 @@ Two levels, annotated; excludes `node_modules/`, `.next/`, and `design-package/`
 ├── e2e/                  # Playwright specs: routing, redirects, seo, smoke, thank-you, ops, chrome, a11y (axe), width-sweep
 ├── public/               # Static assets (brand/)
 ├── redirects/            # rules.json (source) -> legacy.json + gone.json (built) via redirects:build; gsc-clicks.csv input
-├── scripts/               # build-redirects.ts, import-design-package.ts, gate.sh
+├── scripts/               # import-design-package.ts, build-redirects.ts, build-source-map.ts, build-flags.ts, fetch-brand.sh, gate.sh
 ├── src/
 │   ├── analytics/         # GtmLoader, consent, ConversionPing, track.ts, ContactLink + useContactClick, forms.ts (FormKey allowlist)
 │   ├── app/                # App Router: [locale]/ layout + (site)/(minimal)/(bare) route groups, api/ route handlers, og/ (the OG image route), robots.ts, sitemap.ts, global-error.tsx
 │   ├── content/             # Content adapter: config.ts / pure.ts / adapter.ts; local/ (bundle.en.json, bundle.tr.json, catalogue.json)
-│   ├── design/               # Design system: chrome/ (Header, Footer, MobileNav, ...), primitives/ (Button, Card, ...), tokens, fonts/ (the OG route's vendored Archivo Bold)
+│   ├── design/               # Design system: chrome/ (Header, Footer, MobileNav, ...), primitives/ (Button, Card, ...), blocks/ (server page blocks),
+│   │                         #   islands/ (client page islands), assets/ (map/flag codes, BRAND, the generated SourceMap), Flag.tsx, QrCode.tsx,
+│   │                         #   tokens, fonts/ (the OG route's vendored Archivo Bold)
 │   ├── forms/                 # Forms kernel: action.ts (createFormAction), post.ts/wire.ts (transport), uploads.ts, client/ (FormShell, Field islands)
 │   ├── i18n/                  # next-intl routing.ts (locales, pathnames table), navigation.ts, request.ts
 │   ├── lib/                    # contact.ts, format/money.ts, seo/ (metadata, jsonld, routes, og, sitemap-sources), sanity.ts
@@ -99,11 +101,14 @@ npm ci
 npm run dev           # http://localhost:3000
 ```
 
-Forms and the `OPS` content adapter need the `jobsadmire-operations` stack running locally on port 4001 (workspace-root `CLAUDE.md`); the default `.env.example` `CONTENT_SOURCE=LOCAL` needs nothing else running. One compile error in a shared module — a server component importing a module that uses a client hook, for instance — 500s every route of a `next dev` session, not only the page that triggered it, until the dev server is restarted; jsdom unit tests cannot see React Server Component boundaries, which is why every task that adds or edits a server component ends with one `npm run build` (W126). Two content-generation scripts are run by hand, not automatically, whenever their source files change, and their output is committed:
+Forms and the `OPS` content adapter need the `jobsadmire-operations` stack running locally on port 4001 (workspace-root `CLAUDE.md`); the default `.env.example` `CONTENT_SOURCE=LOCAL` needs nothing else running. One compile error in a shared module — a server component importing a module that uses a client hook, for instance — 500s every route of a `next dev` session, not only the page that triggered it, until the dev server is restarted; jsdom unit tests cannot see React Server Component boundaries, which is why every task that adds or edits a server component ends with one `npm run build` (W126). Five generation scripts are run by hand, not automatically, whenever their sources change, and their output is committed; none of them runs in the build (§ Assets):
 
 ```bash
 npm run content:import      # scripts/import-design-package.ts -> src/content/local/*.json
 npm run redirects:build     # scripts/build-redirects.ts -> redirects/legacy.json + gone.json
+npm run assets:map          # scripts/build-source-map.ts -> src/design/assets/source-map.generated.tsx
+npm run assets:flags        # scripts/build-flags.ts -> public/brand/flags.svg (from the flag-icons devDependency)
+npm run assets:brand        # scripts/fetch-brand.sh -> public/brand/logo.png + iskur.png (a one-time fetch)
 ```
 
 ## Test / quality gates

@@ -55,7 +55,7 @@ npm run e2e                   # playwright test (no axe/Lighthouse)
 npm run gate                   # bash scripts/gate.sh — Playwright + axe + Lighthouse against a URL
 ```
 
-No migrations (no database). One-off setup: `npx playwright install chromium`. Default `.env.example` (`CONTENT_SOURCE=LOCAL`) needs nothing else running; forms and the `OPS` adapter need `jobsadmire-operations` on port 4001. Two generation scripts run by hand when their sources change, output committed: `npm run content:import` (design-package strings → `src/content/local/*.json`), `npm run redirects:build` (`redirects/rules.json` → `legacy.json`/`gone.json`).
+No migrations (no database). One-off setup: `npx playwright install chromium`. Default `.env.example` (`CONTENT_SOURCE=LOCAL`) needs nothing else running; forms and the `OPS` adapter need `jobsadmire-operations` on port 4001. Generation scripts run by hand when their sources change, output committed, none in the build: `npm run content:import` (design-package strings → `src/content/local/*.json`), `npm run redirects:build` (`redirects/rules.json` → `legacy.json`/`gone.json`), `npm run assets:map` (sourcing map → `src/design/assets/source-map.generated.tsx`), `npm run assets:flags` (`flag-icons` → `public/brand/flags.svg`); `npm run assets:brand` is the one-time fetch of `public/brand/logo.png`/`iskur.png` (`docs/ARCHITECTURE.md` § Assets).
 
 ## Conventions
 
