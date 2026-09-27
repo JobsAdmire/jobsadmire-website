@@ -6,9 +6,9 @@
 #
 # Export REVALIDATE_SECRET (the same value the server under test was started with) for full
 # ops coverage: without it the two token-dependent cases in e2e/ops.spec.ts skip themselves (R43).
-# W91: export VERCEL_AUTOMATION_BYPASS_SECRET to reach a Vercel-protected preview — Playwright
-# (playwright.config.ts) and the `lhci collect` calls below both send it as
-# x-vercel-protection-bypass; scripts/pixel-compare.ts sends it too, on the built-route requests.
+# W137: export VERCEL_AUTOMATION_BYPASS_SECRET to reach a Vercel-protected preview. The header is
+# built in one place (e2e/helpers/bypass.ts) and only when the secret is non-blank; Playwright
+# (playwright.config.ts) and the `lhci collect` calls below send it as x-vercel-protection-bypass.
 # Bash 3.2 (macOS /bin/bash) is enough: no mapfile, no associative arrays.
 set -euo pipefail
 
@@ -32,8 +32,22 @@ echo "gate → $E2E_BASE_URL (profile: $PROFILE)"
 if [ -z "${REVALIDATE_SECRET:-}" ]; then
   echo "gate: warning — REVALIDATE_SECRET unset; the two token-dependent ops cases will skip (R43)"
 fi
-if [ -z "${VERCEL_AUTOMATION_BYPASS_SECRET:-}" ]; then
-  echo "gate: warning — VERCEL_AUTOMATION_BYPASS_SECRET unset; a protected preview will refuse Playwright/Lighthouse (W91)"
+
+# W135/W137: the Lighthouse config for this target, chosen BEFORE collecting. `skipAudits`
+# (lighthouserc.preview.json) is a collect-time setting — `lhci assert` only reads the stored
+# runs — so the file goes to every `lhci collect` as well as to `assert`. The choice is
+# lighthouseConfigFor in e2e/helpers/face.ts, the one site-face helper (loaded through tsx):
+#   preview face (*.vercel.app, staging.jobsadmire.com, NEXT_PUBLIC_SITE_FACE ≠ production) →
+#     lighthouserc.preview.json: its robots.txt is `Disallow: /`, which fails is-crawlable;
+#   localhost → lighthouserc.local.json: LCP a warning (R50, Lantern over a sub-60 ms waterfall);
+#   anything else (production, after WP7a) → lighthouserc.json.
+LHCI_CONFIG="$(node -e 'const { lighthouseConfigFor } = require("tsx/cjs/api").require("./e2e/helpers/face.ts", __filename); process.stdout.write(lighthouseConfigFor(process.env.E2E_BASE_URL));')"
+# W137: the bypass header as `--extra-headers` JSON (JSON.stringify, so any secret stays valid
+# JSON), and only when the secret is non-blank: an unset secret sends no header at all.
+LH_EXTRA_HEADERS="$(node -e 'const { protectionBypassHeaders } = require("tsx/cjs/api").require("./e2e/helpers/bypass.ts", __filename); const h = protectionBypassHeaders(); if (Object.keys(h).length) process.stdout.write(JSON.stringify(h));')"
+echo "gate: lighthouse config $LHCI_CONFIG"
+if [ -z "$LH_EXTRA_HEADERS" ] && [ "$LHCI_CONFIG" = lighthouserc.preview.json ]; then
+  echo "gate: warning — VERCEL_AUTOMATION_BYPASS_SECRET unset; a protected preview will refuse Playwright/Lighthouse (W137)"
 fi
 
 npx playwright test
@@ -48,37 +62,25 @@ if [ -z "$LH_PATHS" ]; then
 fi
 rm -rf .lighthouseci
 
-# W91: previews sit behind Vercel Deployment Protection — every `lhci collect` sends the bypass
-# header (empty when the secret is unset, same as a run against localhost/production).
-LH_EXTRA_HEADERS="{\"x-vercel-protection-bypass\":\"${VERCEL_AUTOMATION_BYPASS_SECRET:-}\"}"
-
 # `read` line by line, never an unquoted `for path in $LH_PATHS`: a `?` in a path is a glob
 # character to the shell.
 while IFS= read -r path; do
   [ -z "$path" ] && continue
   # --additive: `lhci collect` wipes .lighthouseci on every run otherwise, and `lhci assert`
-  # would then only ever see the last path of the loop. The mobile emulation comes from
-  # lighthouserc.json (`formFactor: mobile`, Lighthouse's own default): there is no "mobile"
-  # preset — `--preset` only accepts perf|experimental|desktop and rejects anything else.
+  # would then only ever see the last path of the loop. The mobile emulation comes from the
+  # config (`formFactor: mobile` in all three files, Lighthouse's own default): there is no
+  # "mobile" preset — `--preset` only accepts perf|experimental|desktop and rejects the rest.
+  # --config: the file chosen above (W137); --extra-headers only when there is a header.
   echo "gate: lighthouse ${path}"
-  npx lhci collect --additive --url="${E2E_BASE_URL}${path}" --extra-headers="$LH_EXTRA_HEADERS" >/dev/null
+  npx lhci collect --additive --config="$LHCI_CONFIG" \
+    ${LH_EXTRA_HEADERS:+--extra-headers="$LH_EXTRA_HEADERS"} \
+    --url="${E2E_BASE_URL}${path}" >/dev/null
 done <<< "$LH_PATHS"
 # Before assert, so the reports survive a failing budget — that is when they are read (R48).
 npx lhci upload --target=filesystem --outputDir=./lighthouse-report >/dev/null
 
-# R50: against localhost, Lantern charges the whole sub-60 ms waterfall to the LCP graph and
-# reports ~2.7 s whatever the page — so LCP is a warning there and an error everywhere else.
-# W91: a Vercel preview's robots.txt is `Disallow: /` (face-aware, e2e/helpers/face.ts), which
-# would fail Lighthouse's is-crawlable audit and, with it, the SEO category score — asserted with
-# lighthouserc.preview.json (= lighthouserc.json minus that one assertion) instead. The binding
-# run for sign-off is still the preview run; only `assert` changes here, never collect/upload.
-if [[ "$E2E_BASE_URL" =~ ^https?://(localhost|127\.0\.0\.1)(:|/|$) ]]; then
-  LHCI_CONFIG=lighthouserc.local.json
-elif [[ "$E2E_BASE_URL" =~ \.vercel\.app(:|/|$) ]]; then
-  LHCI_CONFIG=lighthouserc.preview.json
-else
-  LHCI_CONFIG=lighthouserc.json
-fi
+# The same file the runs were collected with (W137). The binding run for sign-off is the one
+# against the Vercel preview; a localhost run is fast feedback (R50).
 echo "gate: asserting with $LHCI_CONFIG"
 npx lhci assert --config="$LHCI_CONFIG"
 
