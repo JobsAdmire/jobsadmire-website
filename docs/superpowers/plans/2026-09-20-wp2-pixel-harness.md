@@ -10,10 +10,20 @@ point at a Vercel-protected preview (W137): the harness adds `x-vercel-protectio
 alone. The design page loads in a browser context of its own with no extra header, so its web
 fonts and map data load and no third party it calls ever sees the secret.
 
+Like for like, never a broken page (W138): the design capture is clipped to the zoomed content
+box, so at 1440 a 1440-wide design canvas is compared with the 1440-wide build (unclipped, the
+design's `html { zoom: 0.75 }` makes Playwright's full-page shot 1920 wide and 43 % blank). Both
+pages must answer 2xx, or the harness exits 2 naming the URL and scores nothing; a page still in
+`UNBUILT_PATHNAMES`, or a blog article with no body in the locale, is skipped with a message
+(exit 0, no score).
+
 ## The rule (a ledger rule, not code)
 
 1. A page task runs the harness **at most twice**: once when the port is first complete, once
    after the fixes that run prompted. The second run's numbers are the ones the ledger records.
+   The cap counts from the first **like-for-like** run (W138): captures from before the Task 7
+   fix round (a design page in a fallback font without its map data, a 1440 design canvas 43 %
+   blank) are not like for like, never reach the ledger and use up no iteration.
 2. There is **no numeric pass mark**. The reviewer reads the three diff images and lists every
    visible delta as one of: (a) a named D20 accessibility delta (CTA face `blue-safe`, WhatsApp
    `success-text`, footer hours `white/55`, primary hover `bg-ink`, language hint as a bottom

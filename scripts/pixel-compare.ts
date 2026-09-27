@@ -21,6 +21,12 @@ import { bypassWarning, protectionBypassHeaders } from '../e2e/helpers/bypass';
  * and a running build of this site (`--base`, default E2E_BASE_URL or http://localhost:3000).
  * Never part of the gate or CI. Output under .pixel/ (git-ignored).
  *
+ * W138: like for like, never a score for a broken page. The design capture is clipped to the
+ * zoomed content box (at 1440 the design's `html { zoom: 0.75 }` would otherwise give a 1920-wide
+ * canvas, 43 % blank); both pages must answer 2xx or the harness exits 2 naming the URL; a blog
+ * article with no body in the locale, or a page still in UNBUILT_PATHNAMES, is skipped (exit 0,
+ * nothing scored).
+ *
  * W137: `--base` may point at a Vercel-protected preview. The bypass header
  * (VERCEL_AUTOMATION_BYPASS_SECRET, e2e/helpers/bypass.ts) goes ONLY to the built origin's
  * requests — `context.route(<origin>/**)` on the built page's own context, and only when the
@@ -70,6 +76,82 @@ export function resolvePixelRoute(
   const row = bundle?.collections.blog?.find((b) => b.hasBody[locale] && b.slug[locale]);
   if (!row) throw new Error(`pixel: no blog body in ${locale} — pass --route=/blog/<slug>`);
   return locale === 'tr' ? `/blog/${row.slug.tr}` : `/en/blog/${row.slug.en}`;
+}
+
+/** W138: each nominated page's internal pathname (`src/i18n/routing.ts`), for the unbuilt check. */
+const PIXEL_PATHNAMES: Record<PixelPageKey, string> = {
+  home: '/',
+  hire: '/hire-workers',
+  calc: '/hiring-cost-calculator',
+  'blog-article': '/blog/[slug]',
+};
+
+/** W138: the built route to compare, or why there is nothing to score yet (exit 0): a blog
+ *  article with no body in this locale (Phase A), or a page whose pathname is still in
+ *  `UNBUILT_PATHNAMES` (a page task deletes its key when it lands, W20). `--route` overrides
+ *  both; the 2xx check (`gotoOk`) still guards whatever is captured. */
+export function pixelTarget(
+  page: PixelPageKey,
+  locale: PixelLocale,
+  bundle: PixelBundle | null,
+  override: string | null,
+  unbuilt: ReadonlySet<string>,
+): { route: string } | { skip: string } {
+  if (override) return { route: override };
+  if (PIXEL_PAGES[page].route === 'blog' && !resolvesBlog(locale, bundle)) {
+    return { skip: `no blog body in ${locale} (pass --route=/blog/<slug> to force one)` };
+  }
+  const pathname = PIXEL_PATHNAMES[page];
+  if (unbuilt.has(pathname)) return { skip: `${pathname} is not built yet (UNBUILT_PATHNAMES)` };
+  return { route: resolvePixelRoute(page, locale, bundle) };
+}
+
+function resolvesBlog(locale: PixelLocale, bundle: PixelBundle | null): boolean {
+  try {
+    resolvePixelRoute('blog-article', locale, bundle);
+    return true;
+  } catch {
+    return false;
+  }
+}
+
+/** W138: the design screenshot's clip — the viewport width by the zoomed page height.
+ *  `pageHeight` is what Playwright's own full-page size reads (unzoomed CSS px), `zoom` the
+ *  root element's computed zoom: at 1440 the design's `html { zoom: 0.75 }` paints its
+ *  1920 × 7830 layout into 1440 × 5873, and the capture keeps exactly that box. */
+export function designClip(
+  viewportWidth: number,
+  pageHeight: number,
+  zoom: number,
+): { x: number; y: number; width: number; height: number } {
+  return { x: 0, y: 0, width: viewportWidth, height: Math.ceil(pageHeight * zoom) };
+}
+
+/** A harness failure with its exit code (W138: 2 when a page did not answer 2xx). */
+export class PixelExit extends Error {
+  readonly code: number;
+  constructor(message: string, code: number) {
+    super(message);
+    this.name = 'PixelExit';
+    this.code = code;
+  }
+}
+
+type GotoOptions = { waitUntil: 'load' | 'domcontentloaded' | 'networkidle'; timeout: number };
+
+/** The slice of Playwright's `Page` the status check uses (structural, for the tests). */
+export type PageLike = {
+  goto(url: string, options: GotoOptions): Promise<{ ok(): boolean; status(): number } | null>;
+};
+
+/** W138: navigate, and refuse anything but a 2xx answer — an unbuilt route or a missing design
+ *  file (404), a protected preview without the secret (401): never scored, exit 2. */
+export async function gotoOk(page: PageLike, url: string, options: GotoOptions): Promise<void> {
+  const res = await page.goto(url, options);
+  if (!res?.ok()) {
+    const answer = res ? `HTTP ${res.status()}` : 'no response';
+    throw new PixelExit(`pixel: ${url} answered ${answer}; nothing is scored (W138)`, 2);
+  }
 }
 
 function padTo(src: PNG, width: number, height: number): PNG {
@@ -196,7 +278,20 @@ async function main() {
     '',
   );
   const widths = (arg('widths')?.split(',').map(Number) ?? [...PIXEL_WIDTHS]).filter(Boolean);
-  const route = resolvePixelRoute(page, locale, readLocalBundle(locale), arg('route'));
+  // Loaded here, not at module top: the unit tests inject their own unbuilt set.
+  const { UNBUILT_PATHNAMES } = await import('../src/lib/seo/routes');
+  const target = pixelTarget(
+    page,
+    locale,
+    readLocalBundle(locale),
+    arg('route'),
+    UNBUILT_PATHNAMES,
+  );
+  if ('skip' in target) {
+    console.log(`pixel: ${page} ${locale} skipped: ${target.skip}; nothing is scored (W138)`);
+    return;
+  }
+  const { route } = target;
   const design = PIXEL_PAGES[page].design;
 
   const warning = bypassWarning(base);
@@ -230,7 +325,7 @@ async function main() {
       // W137: two contexts. The design page's never carries the bypass header.
       const designContext = await newCaptureContext();
       const designPage = await designContext.newPage();
-      await designPage.goto(`${origin}/${encodeURIComponent(design)}?lang=${locale}`, {
+      await gotoOk(designPage, `${origin}/${encodeURIComponent(design)}?lang=${locale}`, {
         waitUntil: 'networkidle',
         timeout: 90_000,
       });
@@ -239,14 +334,32 @@ async function main() {
         await document.fonts.ready;
       });
       await designPage.waitForTimeout(800);
-      const designPng = PNG.sync.read(await designPage.screenshot({ fullPage: true }));
+      // W138: the same metrics Playwright's full-page size reads, and the zoom the design applies.
+      const { pageHeight, zoom } = await designPage.evaluate(() => {
+        const html = document.documentElement;
+        const body = document.body ?? html;
+        return {
+          pageHeight: Math.max(
+            body.scrollHeight,
+            html.scrollHeight,
+            body.offsetHeight,
+            html.offsetHeight,
+            body.clientHeight,
+            html.clientHeight,
+          ),
+          zoom: parseFloat(getComputedStyle(html).zoom) || 1,
+        };
+      });
+      const designPng = PNG.sync.read(
+        await designPage.screenshot({ fullPage: true, clip: designClip(width, pageHeight, zoom) }),
+      );
       await designContext.close();
 
       // The built page's context: the header on its own origin's requests only (W137).
       const builtContext = await newCaptureContext();
       if (builtRoute) await builtContext.route(builtRoute.url, builtRoute.handler);
       const builtPage = await builtContext.newPage();
-      await builtPage.goto(`${base}${route}`, { waitUntil: 'networkidle', timeout: 60_000 });
+      await gotoOk(builtPage, `${base}${route}`, { waitUntil: 'networkidle', timeout: 60_000 });
       await builtPage.evaluate(async () => {
         await document.fonts.ready;
       });
@@ -290,4 +403,9 @@ async function main() {
   console.log(`pixel: report → ${reportFile}`);
 }
 
-if (require.main === module) void main();
+if (require.main === module) {
+  main().catch((e: unknown) => {
+    console.error(e instanceof Error ? e.message : e);
+    process.exit(e instanceof PixelExit ? e.code : 1);
+  });
+}

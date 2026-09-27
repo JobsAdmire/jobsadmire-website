@@ -5,8 +5,12 @@ import {
   builtOriginRoute,
   captureContextOptions,
   comparePngs,
+  designClip,
+  gotoOk,
   PIXEL_PAGES,
   PIXEL_WIDTHS,
+  PixelExit,
+  pixelTarget,
   resolvePixelRoute,
 } from './pixel-compare';
 
@@ -75,6 +79,62 @@ describe('pixel harness (D27)', () => {
     // 8 padded (white) pixels against 8 white pixels — identical after padding.
     expect(r.diffPixels).toBe(0);
     expect(r.match).toBe(100);
+  });
+
+  it('pads the narrower capture to the wider one before diffing', () => {
+    const r = comparePngs(png(4, 4), png(6, 4));
+    expect(r.width).toBe(6);
+    expect(r.height).toBe(4);
+    expect(r.diffPixels).toBe(0);
+    // Content in the padded strip is a difference like any other.
+    expect(comparePngs(png(4, 4), png(6, 4, [[5, 0]])).diffPixels).toBe(1);
+  });
+});
+
+// W138: like for like, and never a score for a broken page.
+describe('pixel harness scoring rules (W138)', () => {
+  it('clips the design capture to the zoomed content box', () => {
+    // 1440 under the design's `html { zoom: 0.75 }`: Playwright's full-page canvas is measured in
+    // unzoomed px (1920 × 7830) while the content paints in 1440 × 5873.
+    expect(designClip(1440, 7830, 0.75)).toEqual({ x: 0, y: 0, width: 1440, height: 5873 });
+    // Below 1101 px there is no zoom: the clip is the full page at the viewport width.
+    expect(designClip(390, 9988, 1)).toEqual({ x: 0, y: 0, width: 390, height: 9988 });
+  });
+
+  it('refuses a page that does not answer 2xx — exit 2, naming the URL', async () => {
+    const opts = { waitUntil: 'networkidle' as const, timeout: 1_000 };
+    const notFound = { goto: vi.fn(async () => ({ ok: () => false, status: () => 404 })) };
+    const url = 'http://localhost:3000/maliyet-hesaplayici';
+    const err = await gotoOk(notFound, url, opts).catch((e: unknown) => e);
+    expect(err).toBeInstanceOf(PixelExit);
+    expect((err as PixelExit).code).toBe(2);
+    expect((err as PixelExit).message).toContain(url);
+    expect((err as PixelExit).message).toContain('HTTP 404');
+    expect(notFound.goto).toHaveBeenCalledWith(url, opts);
+    const noResponse = { goto: vi.fn(async () => null) };
+    await expect(gotoOk(noResponse, url, opts)).rejects.toBeInstanceOf(PixelExit);
+    const ok = { goto: vi.fn(async () => ({ ok: () => true, status: () => 200 })) };
+    await expect(gotoOk(ok, url, opts)).resolves.toBeUndefined();
+  });
+
+  it('skips, unscored, a blog article with no body in the locale and an unbuilt page', () => {
+    const unbuilt = new Set(['/hiring-cost-calculator', '/blog/[slug]']);
+    expect(pixelTarget('blog-article', 'tr', bundle, null, unbuilt)).toEqual({
+      skip: expect.stringContaining('no blog body in tr'),
+    });
+    expect(pixelTarget('calc', 'tr', null, null, unbuilt)).toEqual({
+      skip: expect.stringContaining('/hiring-cost-calculator'),
+    });
+    // A written body whose page is not built yet is skipped too (T12 ships both).
+    expect(pixelTarget('blog-article', 'en', bundle, null, unbuilt)).toEqual({
+      skip: expect.stringContaining('/blog/[slug]'),
+    });
+    expect(pixelTarget('blog-article', 'en', bundle, null, new Set())).toEqual({
+      route: '/en/blog/work-permit-guide',
+    });
+    expect(pixelTarget('hire', 'tr', null, null, unbuilt)).toEqual({ route: '/isci-talebi' });
+    // --route overrides both rules; the 2xx check still guards the capture.
+    expect(pixelTarget('calc', 'en', null, '/en', unbuilt)).toEqual({ route: '/en' });
   });
 });
 
