@@ -49,6 +49,9 @@ playwright-report
 test-results
 lighthouse-report/
 .lighthouseci/
+.lighthouseci-extra/
+# D27 pixel harness output (diff/design/built PNGs + report.json) — local only, never committed
+.pixel/
 
 # SDD scratch (ledgers, briefs, review packages) — never committed
 .superpowers/
