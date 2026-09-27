@@ -33,6 +33,12 @@ import {
 import { routing } from '@/i18n/routing';
 import { DialogDemo } from './DialogDemo';
 import { Wp2Blocks } from './Wp2Blocks';
+import { IslandsDemo } from './IslandsDemo';
+import { getCollection } from '@/content/collections';
+import { SourceMap, sourceMapLabels } from '@/design/assets/source-map';
+import { Flag } from '@/design/Flag';
+import { isFlagCode } from '@/design/assets/flag-codes';
+import { QrCode } from '@/design/QrCode';
 
 // Never indexed even in the environments where it does render.
 export const metadata: Metadata = {
@@ -62,6 +68,7 @@ export default async function Gallery({ params }: { params: Promise<{ locale: st
   setRequestLocale(locale);
   const [bundle, sys] = await Promise.all([getBundle(locale), getTranslations('sys')]);
   const t = makeT(bundle);
+  const sourceCountries = getCollection(bundle, 'sourceCountries');
   // home.024 is one of Task 1's re-authored {metric} strings — makeT would render the raw
   // token, so this one id resolves through makeTf like every other block on this page.
   const tf = makeTf(bundle, locale);
@@ -161,6 +168,29 @@ export default async function Gallery({ params }: { params: Promise<{ locale: st
         <DialogDemo open="Open dialog" title="Dialog" body="Focus is trapped." close="Close" />
         {/* Visible only while focused — tab into it from the button on its left. */}
         <SkipLink label={sys('skipToContent')} />
+      </Block>
+
+      <Block title="Islands (src/design/islands)">
+        <IslandsDemo />
+      </Block>
+
+      <Block title="Assets: Flag sprite / QR / SourceMap (upper-case codes, W40)">
+        <div className="flex flex-wrap gap-2">
+          {sourceCountries.map((c) =>
+            isFlagCode(c.code) ? (
+              <Flag key={c.code} code={c.code} label={c.name} size={28} />
+            ) : null,
+          )}
+          <Flag code="TR" label="Türkiye" size={28} />
+        </div>
+        <QrCode text={`https://wa.me/${bundle.settings.whatsappNumber}`} label="WhatsApp QR" />
+        <div className="w-full max-w-[640px]">
+          <SourceMap
+            title="Countries we source from"
+            labels={sourceMapLabels(sourceCountries)}
+            turkiyeLabel="Türkiye"
+          />
+        </div>
       </Block>
 
       <Block title="PausableMarquee">
