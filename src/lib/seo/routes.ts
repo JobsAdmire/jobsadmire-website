@@ -69,3 +69,98 @@ export function localeAlternates(href: Href): { languages: Record<string, string
   languages['x-default'] = absoluteUrl(routing.defaultLocale, href);
   return { languages };
 }
+
+/**
+ * W20 — internal pathnames that have NO page yet. `app/sitemap.ts` omits them and
+ * `app/robots.ts` does not name them (a robots rule for a path that does not exist is exactly
+ * the drift the `NOINDEX_PATHNAMES` comment above forbids). Each page task deletes its own key
+ * in the commit that adds the page — `unbuilt.test.ts` walks `src/app/[locale]/**` and fails
+ * whenever this set and the filesystem disagree in either direction; T15 asserts it is empty.
+ */
+export const UNBUILT_PATHNAMES: ReadonlySet<keyof typeof pathnames> = new Set<
+  keyof typeof pathnames
+>([
+  '/hiring-cost-calculator',
+  '/partner-with-us',
+  '/work-permit',
+  '/about',
+  '/verify',
+  '/careers',
+  '/careers/[slug]',
+  '/contact',
+  '/available-workers',
+  '/success-stories',
+  '/blog',
+  '/blog/[slug]',
+  '/portal-login',
+  '/privacy',
+  '/terms',
+  '/kvkk',
+  '/cookie-policy',
+  '/newsletter/confirm',
+  '/newsletter/unsubscribe',
+]);
+
+/**
+ * W37 — what `app/robots.ts` disallows for one locale: `noindexExternalPaths(locale)` minus
+ * every noindex key still in `UNBUILT_PATHNAMES`, de-duplicated. A robots rule must never name
+ * a path that does not exist; the rule for a noindex page appears by itself in the commit that
+ * builds the page and deletes its key. The subtraction runs per KEY, before the parent-prefix
+ * fold, so a built `/blog` index stays disallowed while `/blog/[slug]` is still unbuilt (and
+ * the other way round). `unbuilt` is injectable only so the unit test can prove the blog rule
+ * without waiting for the blog page.
+ */
+export function robotsDisallowPaths(
+  locale: Locale,
+  unbuilt: ReadonlySet<keyof typeof pathnames> = UNBUILT_PATHNAMES,
+): string[] {
+  const out = new Set<string>();
+  for (const href of NOINDEX_PATHNAMES) {
+    if (unbuilt.has(href)) continue;
+    const key = (
+      href.includes('[') ? href.slice(0, href.lastIndexOf('/')) : href
+    ) as StaticPathname;
+    out.add(getPathname({ locale, href: key }));
+  }
+  return [...out];
+}
+
+/**
+ * The page keys the OG image route renders (one cached PNG per key × locale): every
+ * `PAGE_KEYS` entry the importer writes into `bundle.pages` (`src/content/collections.ts`,
+ * 22 keys) plus `site`, the generic wordmark image an unknown key falls back to, so a page
+ * whose record is not filled yet never 404s its image. `routes.test.ts` asserts the two lists
+ * agree — a new page key is added to both in the same commit.
+ */
+export const OG_PAGE_KEYS: ReadonlySet<string> = new Set([
+  'site',
+  'home',
+  'hire',
+  'calc',
+  'wp',
+  'partner',
+  'about',
+  'contact',
+  'workers',
+  'stories',
+  'verify',
+  'careers',
+  'careersDetail',
+  'blog',
+  'blogArticle',
+  'portal',
+  'privacy',
+  'terms',
+  'kvkk',
+  'cookiePolicy',
+  'thankYou',
+  'newsletterConfirm',
+  'newsletterUnsubscribe',
+]);
+
+/** Absolute URL of the generated Open Graph image for one page in one locale. The `.png`
+ *  suffix is load-bearing: `proxy.ts`'s matcher skips any path with an extension, so the
+ *  route under `app/og/` is never locale-rewritten (docs/ARCHITECTURE.md § Routing). */
+export function pageOgImageUrl(locale: Locale, pageKey: string): string {
+  return `${SITE_URL}/og/${locale}/${OG_PAGE_KEYS.has(pageKey) ? pageKey : 'site'}.png`;
+}

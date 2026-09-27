@@ -1,22 +1,29 @@
 import type { MetadataRoute } from 'next';
 import { pathnames, routing } from '@/i18n/routing';
-import { absoluteUrl, localeAlternates, NOINDEX_PATHNAMES } from '@/lib/seo/routes';
+import {
+  absoluteUrl,
+  localeAlternates,
+  NOINDEX_PATHNAMES,
+  UNBUILT_PATHNAMES,
+  type StaticPathname,
+} from '@/lib/seo/routes';
+import { detailSitemapEntries } from '@/lib/seo/sitemap-sources';
 
 export const revalidate = 900;
 
-/** Listed nowhere because they are never indexed — literally the same set `robots.ts` disallows
- *  (`NOINDEX_PATHNAMES`, M-3), not a second copy of it. */
-const EXCLUDED: ReadonlySet<string> = new Set<string>(NOINDEX_PATHNAMES);
+/** Listed nowhere: the never-indexed set `robots.ts` disallows (`NOINDEX_PATHNAMES`, M-3) plus
+ *  the routes that have no page yet (`UNBUILT_PATHNAMES`, W20) — both from `routes.ts`, never a
+ *  second copy here. */
+const EXCLUDED: ReadonlySet<string> = new Set<string>([...NOINDEX_PATHNAMES, ...UNBUILT_PATHNAMES]);
 
-type StaticPathname = Exclude<keyof typeof pathnames, `${string}[${string}`>;
-
-export default function sitemap(): MetadataRoute.Sitemap {
-  // Static routes only. Blog and careers detail entries arrive in WP2, read from the bundle
-  // under the `sitemap` ISR tag; nothing is fetched here yet.
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  // Static routes here; the dynamic keys are filtered by pattern. Detail entries (careers
+  // openings; blog once it leaves noindex, W4) come from DETAIL_SITEMAP_SOURCES (W31), read
+  // from the bundle under their own ISR tags.
   const hrefs = (Object.keys(pathnames) as (keyof typeof pathnames)[]).filter(
     (href): href is StaticPathname => !href.includes('[') && !EXCLUDED.has(href),
   );
-  return routing.locales.flatMap((locale) =>
+  const statics = routing.locales.flatMap((locale) =>
     hrefs.map((href) => ({
       url: absoluteUrl(locale, href),
       alternates: localeAlternates(href),
@@ -24,4 +31,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: href === '/' ? 1 : 0.7,
     })),
   );
+  const details = await Promise.all(routing.locales.map((locale) => detailSitemapEntries(locale)));
+  return [...statics, ...details.flat()];
 }
