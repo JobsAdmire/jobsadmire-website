@@ -6,7 +6,7 @@ export { Dialog } from './Dialog';
 export { Eyebrow } from './Eyebrow';
 export { FormField } from './FormField';
 export { PausableMarquee } from './PausableMarquee';
-export { Section } from './Section';
+export { Section, type SectionTone } from './Section';
 export { SkipLink } from './SkipLink';
 export { Stat } from './Stat';
 export { Tabs, type TabItem } from './Tabs';
