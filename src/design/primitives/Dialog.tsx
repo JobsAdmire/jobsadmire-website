@@ -34,6 +34,9 @@ export function Dialog({
     (focusables()[0] ?? node).focus();
     const onKey = (e: KeyboardEvent) => {
       if (e.key === 'Escape') {
+        // A control inside that already handled this Escape (SearchInput clearing its text in
+        // a BottomSheet) keeps it: the dialog closes on the next one.
+        if (e.defaultPrevented) return;
         e.preventDefault();
         onCloseRef.current();
         return;

@@ -50,6 +50,24 @@ describe('Dialog', () => {
     expect(document.activeElement).toBe(second);
   });
 
+  it('leaves an Escape that a control inside already handled to that control', async () => {
+    const onClose = vi.fn();
+    render(
+      <Dialog open onClose={onClose} titleId="t">
+        <h2 id="t">Title</h2>
+        <input
+          aria-label="field"
+          onKeyDown={(e) => {
+            if (e.key === 'Escape') e.preventDefault();
+          }}
+        />
+      </Dialog>,
+    );
+    expect(screen.getByRole('textbox', { name: 'field' })).toHaveFocus();
+    await userEvent.keyboard('{Escape}');
+    expect(onClose).not.toHaveBeenCalled();
+  });
+
   it('docks to the bottom edge as a sheet when asked', () => {
     render(
       <Dialog open onClose={() => {}} titleId="t" variant="sheet">
