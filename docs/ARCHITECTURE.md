@@ -32,12 +32,12 @@ Two levels, annotated; excludes `node_modules/`, `.next/`, and `design-package/`
 ├── scripts/               # build-redirects.ts, import-design-package.ts, gate.sh
 ├── src/
 │   ├── analytics/         # GtmLoader, consent, ConversionPing, track.ts, ContactLink + useContactClick, forms.ts (FormKey allowlist)
-│   ├── app/                # App Router: [locale]/ layout + (site)/(minimal)/(bare) route groups, api/ route handlers, robots.ts, sitemap.ts, global-error.tsx
+│   ├── app/                # App Router: [locale]/ layout + (site)/(minimal)/(bare) route groups, api/ route handlers, og/ (the OG image route), robots.ts, sitemap.ts, global-error.tsx
 │   ├── content/             # Content adapter: config.ts / pure.ts / adapter.ts; local/ (bundle.en.json, bundle.tr.json, catalogue.json)
-│   ├── design/               # Design system: chrome/ (Header, Footer, MobileNav, ...), primitives/ (Button, Card, ...), tokens
+│   ├── design/               # Design system: chrome/ (Header, Footer, MobileNav, ...), primitives/ (Button, Card, ...), tokens, fonts/ (the OG route's vendored Archivo Bold)
 │   ├── forms/                 # Forms kernel: action.ts (createFormAction), post.ts/wire.ts (transport), uploads.ts, client/ (FormShell, Field islands)
 │   ├── i18n/                  # next-intl routing.ts (locales, pathnames table), navigation.ts, request.ts
-│   ├── lib/                    # contact.ts, format/money.ts, seo/ (metadata, jsonld, routes), sanity.ts
+│   ├── lib/                    # contact.ts, format/money.ts, seo/ (metadata, jsonld, routes, og, sitemap-sources), sanity.ts
 │   ├── messages/                 # sys.* next-intl message catalogues (en.json, tr.json)
 │   ├── proxy.ts                   # Locale routing / 410 / redirect middleware (Next 16's proxy.ts convention)
 │   └── test/                       # Vitest test helpers (storage.ts — Node-version localStorage workaround)
@@ -158,6 +158,8 @@ No direct SDK imports for axios/Sanity/Stripe/Resend/Twilio/PostHog exist in `sr
 **`ja_locale` is written only when the resolved locale differs from Accept-Language negotiation** — next-intl's `syncCookie` behaviour, proved by curl bisection in Task 1's fix round (visiting `/` then `/en` with an English `Accept-Language` header sets it; visiting only `/` with a Turkish header never does). **"No `ja_locale` cookie" therefore means "no explicit choice was ever recorded," never "the visitor chose Turkish."** `LanguageHint` (Chrome, below) does not read this cookie for that reason — it reads `navigator.languages` directly.
 
 A tagged revalidate route (`/api/revalidate`) sits **outside** the proxy matcher — it must never be redirected or locale-rewritten.
+
+The Open Graph image route (`/og/{locale}/{pageKey}.png`, `src/app/og/…`) also lives outside the locale tree and is skipped by the matcher **because of its `.png` extension**, not by name — the matcher itself is unchanged. Do not add an extension-less route outside `[locale]` without extending the matcher.
 
 ## Content adapter (D7, D23)
 
@@ -283,6 +285,8 @@ Pages: one server component per page, client islands only where interactive; inl
 **The header's desktop nav row is gated at `lg` = 901px (W11, which closes R46).** Between 901 and 1100 the links render at 12px (`--fs-nav` → the `text-nav` utility; 11px from 1101, the floor) and may wrap onto a second line inside the nav (`min-w-0 flex-1 flex-wrap`) — the design's own `.ja-nav { flex-wrap: wrap }` below 1100 — while the secondary CTA is `max-xl:hidden` and the primary CTA's long form stays `xl`-only, as the design hides `.ja-nav-cta-secondary`/`.ja-cta-long` at ≤1100. `tokens.layout.headerRowFrom` (901) and `socialRailFrom` (1101) record the two boundaries; the width sweep straddles both (901/900 and 1101/1100) and `e2e/chrome.spec.ts` asserts the row/hamburger swap.
 
 **`LanguageHint` renders out of flow** — a `fixed` bottom sheet, not a strip in the document (Ruling R45; full CLS rationale under Quality gate below) — at `z-[55]`: above `MobileBottomBar` (`z-50`) below `lg`, and below the consent sheet (`z-60`). While consent is undecided, the two fixed sheets can occupy the same screen region on mobile; `ConsentBanner` always wins visually. This is self-resolving once a choice is made (re-review 9 treated it as acceptable, not a defect) but is worth knowing before assuming a stacking bug.
+
+**The two language links (`LanguageSwitcher`, the `LanguageHint` switch) read the page's own `<link rel="alternate" hreflang>` tags** (`src/design/chrome/use-alternate-path.ts`, ruling W17) through `useSyncExternalStore` with a `MutationObserver` on `<head>` as the subscription — the R18 pattern, and the only one `react-hooks`' `set-state-in-effect` rule allows. The server render and the hydrating render use `alternatePath()` (R58, parent index); once hydrated a tag wins, so blog/careers detail pages link to the real translated slug with no prop reaching the chrome through the group layouts. The tag-derived link renders through `next/link` (its path is already localized); the fallback stays next-intl's `<Link locale>`, which always carries the prefix when `locale` is passed (`/tr` folds to `/` in the middleware). Only the tag's path + query is used (never its host), so a preview deployment never links to production.
 
 **Contact clicks (W12).** Every `tel:`/`mailto:`/`wa.me` anchor in the slim bar, footer (contact column, WhatsApp button, social row), social rail, WhatsApp FAB and mobile bottom bar renders through `ContactLink` (`src/analytics/ContactLink.tsx`), which classifies the href with `contactKindOf` and fires `call_click`/`email_click`/`whatsapp_click` through `useContactClick(placement)` — `page` from `next/navigation` (R35), `locale` from the provider, `placement` from the closed `CONTACT_PLACEMENTS` tuple that `track()` itself enforces. Non-contact hrefs (Instagram, Telegram…) render as plain anchors. The `header` placement is reserved: every header CTA is an internal `Href`.
 
