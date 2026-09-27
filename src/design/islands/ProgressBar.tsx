@@ -1,12 +1,16 @@
 'use client';
+import { useId } from 'react';
+
 export type ProgressTone = 'blue' | 'green' | 'amber' | 'red';
 
 export type ProgressBarProps = {
   value: number;
   max?: number;
-  /** Accessible name of the bar. */
+  /** Accessible name of the bar. Shown above it when `valueText` is given, and then the bar
+   *  is named by that visible text (`aria-labelledby`) instead of repeating it in `aria-label`. */
   label: string;
-  /** Visible rendering of the value, already localized by the page (e.g. "3 / 5", "%60"). */
+  /** Visible rendering of the value, already localized by the page (e.g. "3 / 5", "%60");
+   *  also the bar's `aria-valuetext`, so a screen reader says what the screen shows. */
   valueText?: string;
   tone?: ProgressTone;
   className?: string;
@@ -30,22 +34,25 @@ export function ProgressBar({
   tone = 'blue',
   className,
 }: ProgressBarProps) {
+  const labelId = useId();
   const clamped = Math.min(max, Math.max(0, value));
   const pct = max > 0 ? (clamped / max) * 100 : 0;
   return (
     <div className={['flex flex-col gap-1', className].filter(Boolean).join(' ')}>
       {valueText ? (
         <div className="flex justify-between text-body-sm font-bold">
-          <span>{label}</span>
+          <span id={labelId}>{label}</span>
           <span className="tabular-nums">{valueText}</span>
         </div>
       ) : null}
       <div
         role="progressbar"
-        aria-label={label}
+        aria-label={valueText ? undefined : label}
+        aria-labelledby={valueText ? labelId : undefined}
         aria-valuemin={0}
         aria-valuemax={max}
         aria-valuenow={Math.round(clamped)}
+        aria-valuetext={valueText}
         className="h-2 w-full overflow-hidden rounded-pill bg-border-3"
       >
         <div
