@@ -1,5 +1,5 @@
 {
-  "_comment": "Identical to lighthouserc.json except that LCP is advisory (R50). Against a localhost server every asset arrives inside 60 ms, so Lantern's pessimistic LCP graph charges the whole early payload to the paint and reports ~2705 ms on every path alike; the observed LCP is 54 ms, and the same build measures LCP 1503 ms / performance 0.97 under real (--throttling-method=devtools) throttling. gate.sh selects this config for assert only when E2E_BASE_URL is localhost. The binding run is the one against the Vercel preview URL, where LCP is an error — see docs/ARCHITECTURE.md § Quality gate and docs/OPERATING.md.",
+  "_comment": "Identical to lighthouserc.json except that LCP is advisory (R50). Against a localhost server every asset arrives inside 60 ms, so Lantern's pessimistic LCP graph charges the whole early payload to the paint and reports ~2705 ms on every path alike; the observed LCP is 54 ms, and the same build measures LCP 1503 ms / performance 0.97 under real (--throttling-method=devtools) throttling. gate.sh selects this config for assert only when E2E_BASE_URL is localhost. The binding run is the one against the Vercel preview URL, where LCP is an error — see docs/ARCHITECTURE.md § Quality gate and docs/OPERATING.md. The script ceiling is 204,800 B here too (W13 amended); the two files differ only in the LCP level.",
   "ci": {
     "collect": { "numberOfRuns": 2, "settings": { "formFactor": "mobile" } },
     "assert": {
@@ -8,7 +8,7 @@
         "categories:accessibility": ["error", { "minScore": 1 }],
         "categories:best-practices": ["error", { "minScore": 1 }],
         "categories:seo": ["error", { "minScore": 1 }],
-        "resource-summary:script:size": ["error", { "maxNumericValue": 184320 }],
+        "resource-summary:script:size": ["error", { "maxNumericValue": 204800 }],
         "largest-contentful-paint": ["warn", { "maxNumericValue": 2500 }],
         "cumulative-layout-shift": ["error", { "maxNumericValue": 0.1 }],
         "total-blocking-time": ["warn", { "maxNumericValue": 200 }]

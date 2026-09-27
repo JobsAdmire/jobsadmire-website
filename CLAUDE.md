@@ -71,7 +71,7 @@ No migrations (no database). One-off setup: `npx playwright install chromium`. D
 - **Accessibility wins over pixel fidelity where they conflict** (D20) — named deltas (contrast-safe blue, the header's desktop row from 901px with 12px links — W11, R46 closed — and the fixed-sheet language hint) are accepted by the gate; don't "fix" them back toward the design.
 - **Every form's success path navigates to `/tesekkurler?form=<key>`** (D13) — never an inline success state.
 - **No candidate identifiers in analytics** — every GTM/GA4 event has a parameter allowlist (D13).
-- **Content-route JS budget is 180 KB gzipped**, not 120 KB (R49 corrected the plan's figure).
+- **The content-route JS budget is 200 KB gzipped per gate route** (Ruling W13 amended, `docs/superpowers/plans/2026-09-20-wp2-rulings.md`; R49's 180 KB predated the form island and left ~11.8 KB over the WP1 shell — the framework floor alone is ~121 KB on this stack). Asserted by the gate as `resource-summary:script:size ≤ 204800`; a route above 194,560 B gets a `next/dynamic` lazy-loading pass before the next page starts; `npm run js-size` prints the per-route table after a gate run. Full breakdown: `docs/ARCHITECTURE.md` § Quality gate.
 - **`.superpowers/` (repo root) is git-ignored scratch**; `docs/superpowers/` is the tracked plans/specs path.
 
 ## Hard rules and gotchas
