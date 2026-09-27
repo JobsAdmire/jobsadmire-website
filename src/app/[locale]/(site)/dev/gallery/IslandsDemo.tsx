@@ -92,6 +92,7 @@ export function IslandsDemo() {
           x: 'X',
           copy: 'Copy link',
           copied: 'Link copied',
+          copyFailed: 'Could not copy the link',
         }}
       />
       <div className="flex gap-2">

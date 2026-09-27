@@ -10,6 +10,9 @@ export type ShareLabels = {
   x: string;
   copy: string;
   copied: string;
+  /** W133: announced when the clipboard refuses (denied, insecure context, no Clipboard API).
+   *  Without it a failed copy stays silent. */
+  copyFailed?: string;
 };
 
 export type ShareRowProps = {
@@ -32,22 +35,29 @@ const ITEM =
  *  are not in the W12 allowlist. */
 export function ShareRow({ url, title, labels, className }: ShareRowProps) {
   const webShare = useSyncExternalStore(noSubscribe, canShare, onServer);
-  const [copied, setCopied] = useState(false);
-  // The "Copied" line clears itself 2 s after the latest copy. Keyed on `copied`, so the
-  // timer lives and dies with the state it resets — no ref read in a cleanup, no setState
-  // during the effect body (react-hooks 7's `set-state-in-effect` and `refs` rules).
+  const [status, setStatus] = useState<{ text: string; failed: boolean; seq: number } | null>(null);
+  // The status line clears itself 2 s after the LATEST copy (W133): every copy stores a new
+  // object, so this effect's cleanup cancels the previous timer and a fresh one starts. State
+  // is set only from the timer callback — never in the effect body — and no ref is read in a
+  // cleanup (react-hooks 7's `set-state-in-effect` and `refs` rules).
   useEffect(() => {
-    if (!copied) return;
-    const id = window.setTimeout(() => setCopied(false), 2000);
+    if (!status) return;
+    const id = window.setTimeout(() => setStatus(null), 2000);
     return () => window.clearTimeout(id);
-  }, [copied]);
+  }, [status]);
 
+  // `seq` keys the text node below: a repeat copy mounts a fresh node, so the live region
+  // announces it again even though the words are the same. No text (a failure without a
+  // `copyFailed` label) clears the line instead.
+  const announce = (text: string | undefined, failed: boolean) =>
+    setStatus((prev) => (text ? { text, failed, seq: (prev?.seq ?? 0) + 1 } : null));
   const copy = async () => {
     try {
       await navigator.clipboard.writeText(url);
-      setCopied(true);
+      announce(labels.copied, false);
     } catch {
-      /* clipboard denied: the visible URL bar is the fallback */
+      // Denied, an insecure context, or no Clipboard API at all (W133).
+      announce(labels.copyFailed, true);
     }
   };
   const share = async () => {
@@ -98,9 +108,12 @@ export function ShareRow({ url, title, labels, className }: ShareRowProps) {
       <p
         role="status"
         aria-live="polite"
-        className="m-0 min-h-[1.25rem] text-body-sm text-success-text"
+        className={[
+          'm-0 min-h-[1.25rem] text-body-sm',
+          status?.failed ? 'text-text-secondary' : 'text-success-text',
+        ].join(' ')}
       >
-        {copied ? labels.copied : ''}
+        {status ? <span key={status.seq}>{status.text}</span> : null}
       </p>
     </div>
   );
