@@ -1,10 +1,12 @@
 /** @vitest-environment node */
+import { spawnSync } from 'node:child_process';
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import {
   collectArgs,
   formatJsSizeTable,
   LAZY_LINE,
+  parseJsSizeArgs,
   parseRoutesArg,
   SCRIPT_CEILING,
   summarizeLhrs,
@@ -107,6 +109,48 @@ describe('parseRoutesArg (W94)', () => {
 
   it('drops empty entries from stray commas', () => {
     expect(parseRoutesArg(['--routes=/a,,/b,'])).toEqual(['/a', '/b']);
+  });
+
+  it("also takes W94's own spelling, `--routes <list>` (M2)", () => {
+    expect(parseRoutesArg(['--routes', '/blog,/en/blog'])).toEqual(['/blog', '/en/blog']);
+    expect(parseJsSizeArgs(['--routes', '/a', '--dir=.x'])).toEqual({
+      routes: ['/a'],
+      dir: '.x',
+      errors: [],
+    });
+  });
+
+  it('reports an unknown argument and a --routes without a list (M2)', () => {
+    expect(parseJsSizeArgs(['--bogus']).errors).toEqual(["unknown argument '--bogus'"]);
+    expect(parseJsSizeArgs(['--routes']).errors).toEqual(['--routes needs a comma-separated list']);
+    expect(parseJsSizeArgs(['--routes', '--dir=.x']).errors).toEqual([
+      '--routes needs a comma-separated list',
+    ]);
+    expect(parseJsSizeArgs(['--routes=,']).errors).toEqual([
+      '--routes needs a comma-separated list',
+    ]);
+  });
+});
+
+// M2: the CLI exits 2 with the usage line instead of silently printing the last gate's table.
+describe('js-size.mjs CLI arguments (M2)', () => {
+  const run = (...args: string[]) =>
+    spawnSync(process.execPath, ['scripts/js-size.mjs', ...args], {
+      encoding: 'utf8',
+      env: { ...process.env, E2E_BASE_URL: '' },
+    });
+
+  it('exits 2 with a usage line on an unknown argument', () => {
+    const r = run('--bogus');
+    expect(r.status).toBe(2);
+    expect(r.stderr).toContain("unknown argument '--bogus'");
+    expect(r.stderr).toContain('usage: node scripts/js-size.mjs');
+  });
+
+  it('treats `--routes /a,/b` as --routes (needs E2E_BASE_URL), not as no argument at all', () => {
+    const r = run('--routes', '/foo,/bar');
+    expect(r.status).toBe(2);
+    expect(r.stderr).toContain('--routes needs E2E_BASE_URL');
   });
 });
 

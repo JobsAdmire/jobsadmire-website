@@ -94,15 +94,47 @@ export function formatJsSizeTable(rows) {
   return lines.join('\n');
 }
 
-/** W94: `--routes=/a,/b` → `['/a', '/b']`; absent → null. Pure — the CLI's own arg parsing. */
-export function parseRoutesArg(argv) {
-  const hit = argv.find((a) => a.startsWith('--routes='));
-  if (!hit) return null;
-  return hit
-    .slice('--routes='.length)
+const USAGE = 'usage: node scripts/js-size.mjs [--dir=<dir>] [--routes=</a,/b> | --routes </a,/b>]';
+const ROUTES_NEED_A_LIST = '--routes needs a comma-separated list';
+
+const splitRoutes = (list) =>
+  list
     .split(',')
     .map((s) => s.trim())
     .filter(Boolean);
+
+/** W94/M2: the CLI's arguments — `--routes=/a,/b` or `--routes /a,/b` (W94's own spelling),
+ *  `--dir=<dir>`; anything else is an error the CLI answers with exit 2 and the usage line.
+ *  Pure. @param {string[]} argv
+ *  @returns {{ routes: string[] | null; dir: string | null; errors: string[] }} */
+export function parseJsSizeArgs(argv) {
+  /** @type {string[] | null} */
+  let routes = null;
+  /** @type {string | null} */
+  let dir = null;
+  /** @type {string[]} */
+  const errors = [];
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === '--routes' || a.startsWith('--routes=')) {
+      const next = argv[i + 1];
+      const list =
+        a === '--routes' ? (next !== undefined && !next.startsWith('--') ? next : '') : a.slice(9);
+      if (a === '--routes' && list) i++;
+      routes = splitRoutes(list);
+      if (!routes.length) errors.push(ROUTES_NEED_A_LIST);
+    } else if (a.startsWith('--dir=')) {
+      dir = a.slice('--dir='.length);
+    } else {
+      errors.push(`unknown argument '${a}'`);
+    }
+  }
+  return { routes, dir, errors };
+}
+
+/** W94: `--routes=/a,/b` or `--routes /a,/b` → `['/a', '/b']`; absent → null. Pure. */
+export function parseRoutesArg(argv) {
+  return parseJsSizeArgs(argv).routes;
 }
 
 const LHR_RE = /^lhr-\d+\.json$/;
@@ -155,14 +187,12 @@ function gateHelpers() {
 }
 
 function main() {
-  const argv = process.argv.slice(2);
-  const routes = parseRoutesArg(argv);
-  const dirArg = argv.find((a) => a.startsWith('--dir='));
-  const dir = dirArg
-    ? dirArg.slice('--dir='.length)
-    : routes
-      ? '.lighthouseci-extra'
-      : '.lighthouseci';
+  const { routes, dir: dirArg, errors } = parseJsSizeArgs(process.argv.slice(2));
+  if (errors.length) {
+    process.stderr.write(`js-size: ${errors.join('; ')}\n${USAGE}\n`);
+    process.exit(2);
+  }
+  const dir = dirArg ?? (routes ? '.lighthouseci-extra' : '.lighthouseci');
 
   if (routes) {
     const base = (process.env.E2E_BASE_URL ?? '').replace(/\/$/, '');
