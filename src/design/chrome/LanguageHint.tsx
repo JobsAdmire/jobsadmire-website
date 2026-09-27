@@ -87,10 +87,12 @@ export function LanguageHint({ locale }: { locale: Locale }) {
     // sheet it costs nothing: it sits above the mobile bottom bar (74 px, z-50) below `lg`
     // and clears the phone's home indicator; z-55 keeps it under the consent sheet (z-60),
     // which must always win, and above the bar.
+    // W18: a page-mounted StickyCtaBar publishes its height as --sticky-cta-h; the sheet adds
+    // it so the two never overlap.
     <div
       role="region"
       aria-labelledby={bodyId}
-      className="fixed inset-x-3 bottom-[calc(74px+0.75rem+env(safe-area-inset-bottom))] z-[55] rounded-base border border-tint-border bg-tint shadow-card-hover lg:bottom-4 lg:left-1/2 lg:right-auto lg:w-[min(560px,calc(100%-2rem))] lg:-translate-x-1/2"
+      className="fixed inset-x-3 bottom-[calc(74px+0.75rem+env(safe-area-inset-bottom)+var(--sticky-cta-h,0px))] z-[55] rounded-base border border-tint-border bg-tint shadow-card-hover lg:bottom-[calc(1rem+var(--sticky-cta-h,0px))] lg:left-1/2 lg:right-auto lg:w-[min(560px,calc(100%-2rem))] lg:-translate-x-1/2"
     >
       <div className="flex flex-wrap items-center justify-center gap-3 px-4 py-3">
         <p id={bodyId} className="m-0 font-bold">
