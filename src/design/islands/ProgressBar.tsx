@@ -1,3 +1,4 @@
+'use client';
 export type ProgressTone = 'blue' | 'green' | 'amber' | 'red';
 
 export type ProgressBarProps = {
@@ -18,6 +19,9 @@ const TONE: Record<ProgressTone, string> = {
   red: 'bg-danger',
 };
 
+/** A client module like every island (W130), with no state of its own: a server page renders
+ *  it with plain props — `import { ProgressBar } from '@/design/islands'` is safe there, because
+ *  every module behind the barrel carries `'use client'`. */
 export function ProgressBar({
   value,
   max = 100,

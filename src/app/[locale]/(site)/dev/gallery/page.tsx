@@ -39,6 +39,7 @@ import { SourceMap, sourceMapLabels } from '@/design/assets/source-map';
 import { Flag } from '@/design/Flag';
 import { isFlagCode } from '@/design/assets/flag-codes';
 import { QrCode } from '@/design/QrCode';
+import { ProgressBar } from '@/design/islands';
 
 // Never indexed even in the environments where it does render.
 export const metadata: Metadata = {
@@ -171,6 +172,16 @@ export default async function Gallery({ params }: { params: Promise<{ locale: st
       </Block>
 
       <Block title="Islands (src/design/islands)">
+        {/* W130: this server component imports through the islands barrel, so `next build`
+            proves the barrel is RSC-safe (every module behind it is a client module). */}
+        <div className="w-full max-w-md">
+          <ProgressBar
+            value={2}
+            max={5}
+            label="Server-rendered progress (barrel import)"
+            valueText="2 / 5"
+          />
+        </div>
         <IslandsDemo />
       </Block>
 

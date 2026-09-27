@@ -1,3 +1,4 @@
+'use client';
 import { useEffect, useRef, useState, type RefObject } from 'react';
 
 /** One `IntersectionObserver` per attached element (task-6-additions.md, W85): the observer is

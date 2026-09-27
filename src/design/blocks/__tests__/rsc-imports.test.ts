@@ -11,12 +11,36 @@ import { describe, expect, it } from 'vitest';
 // the pure `@/analytics/contact-kind` — or `next/navigation`. Type-only imports count too: the
 // pure module exports the same types. Parsed with the TypeScript compiler, never matched as text:
 // `ContactCta.tsx`'s own docblock carries the words `'use client'` and `next/navigation`.
+//
+// W130 widens it. The islands barrel re-exports hook modules, so a server page writing
+// `import { ProgressBar } from '@/design/islands'` pulls every module behind the barrel into the
+// server layer, where Next rejects `useEffect`/`useSyncExternalStore` exactly as it rejects
+// `usePathname`. So (a) every module under `src/design/islands/` is a client module — the barrel,
+// which holds nothing but re-exports, excepted — and (b) no directive-less module under
+// `src/design/` imports a client-only React API (the list Next's RSC validator enforces).
 const ROOT = process.cwd();
 const SRC = join(ROOT, 'src');
 const DESIGN = join(SRC, 'design');
 const BLOCKS = join(DESIGN, 'blocks');
+const ISLANDS = join(DESIGN, 'islands');
+const BARREL = join(ISLANDS, 'index.ts');
 const HOOK_MODULE = join(SRC, 'analytics', 'useContactClick');
 const NAVIGATION = 'next/navigation';
+const CLIENT_ONLY_REACT = new Set([
+  'useState',
+  'useEffect',
+  'useLayoutEffect',
+  'useInsertionEffect',
+  'useRef',
+  'useReducer',
+  'useSyncExternalStore',
+  'useTransition',
+  'useDeferredValue',
+  'useImperativeHandle',
+  'useOptimistic',
+  'useActionState',
+  'createContext',
+]);
 
 /** Every module under `dir`, tests excluded (they are not part of any app graph). */
 function modulesUnder(dir: string): string[] {
@@ -57,10 +81,60 @@ function isForbidden(file: string, specifier: string): boolean {
   return target === HOOK_MODULE;
 }
 
+/** The client-only React APIs a module reaches, however the import is spelled: named imports
+ *  and re-exports from `react` (aliases resolved to the imported name, type-only included), and
+ *  `X.useState`-style reads through a default or namespace import of `react`. `export *` from
+ *  `react` counts as `*`. Parsed, so a commented-out import is not a hit. */
+function clientOnlyReactApis(fileName: string, text: string): string[] {
+  const source = ts.createSourceFile(fileName, text, ts.ScriptTarget.Latest, true);
+  const isReact = (specifier: ts.Expression | undefined) =>
+    specifier !== undefined && ts.isStringLiteral(specifier) && specifier.text === 'react';
+  const found = new Set<string>();
+  const namespaces = new Set<string>();
+  for (const statement of source.statements) {
+    if (ts.isImportDeclaration(statement) && isReact(statement.moduleSpecifier)) {
+      const clause = statement.importClause;
+      if (clause?.name) namespaces.add(clause.name.text);
+      const bindings = clause?.namedBindings;
+      if (bindings && ts.isNamespaceImport(bindings)) namespaces.add(bindings.name.text);
+      if (bindings && ts.isNamedImports(bindings)) {
+        for (const element of bindings.elements) {
+          const imported = (element.propertyName ?? element.name).text;
+          if (CLIENT_ONLY_REACT.has(imported)) found.add(imported);
+        }
+      }
+    }
+    if (ts.isExportDeclaration(statement) && isReact(statement.moduleSpecifier)) {
+      const clause = statement.exportClause;
+      if (clause && ts.isNamedExports(clause)) {
+        for (const element of clause.elements) {
+          const exported = (element.propertyName ?? element.name).text;
+          if (CLIENT_ONLY_REACT.has(exported)) found.add(exported);
+        }
+      } else {
+        found.add('*');
+      }
+    }
+  }
+  const visit = (node: ts.Node): void => {
+    if (
+      ts.isPropertyAccessExpression(node) &&
+      ts.isIdentifier(node.expression) &&
+      namespaces.has(node.expression.text) &&
+      CLIENT_ONLY_REACT.has(node.name.text)
+    ) {
+      found.add(node.name.text);
+    }
+    ts.forEachChild(node, visit);
+  };
+  if (namespaces.size) visit(source);
+  return [...found].sort();
+}
+
 const modules = modulesUnder(DESIGN);
 const serverSide = modules.filter((f) => f.startsWith(BLOCKS + sep) || !isClientModule(f));
 
-describe('RSC import guard (W125)', () => {
+describe('RSC import guard (W125, W130)', () => {
   it('walks the blocks and tells a real directive from the words in a comment', () => {
     const contactCta = join(BLOCKS, 'ContactCta.tsx');
     expect(serverSide).toContain(contactCta);
@@ -71,16 +145,12 @@ describe('RSC import guard (W125)', () => {
     expect(isForbidden(contactCta, '@/analytics/contact-kind')).toBe(false);
   });
 
-  it('also walks src/design/islands: a plain island module is swept, a client island is not', () => {
-    // W85/task-6-additions: extends this guard to src/design/islands/ (Task 6). No sweep-logic
-    // change was needed — `modulesUnder(DESIGN)` already recurses into every subdirectory of
-    // `src/design`, so a plain (no-directive) island like `ProgressBar.tsx` was already being
-    // walked; this self-check makes that coverage explicit, the same way the first test does
-    // for `ContactCta`/`StickyCtaBar`.
-    const progressBar = join(DESIGN, 'islands', 'ProgressBar.tsx');
-    const rangeSlider = join(DESIGN, 'islands', 'RangeSlider.tsx');
-    expect(serverSide).toContain(progressBar);
-    expect(isClientModule(progressBar)).toBe(false);
+  it('also walks src/design/islands: the re-export barrel is swept, an island module is not', () => {
+    // `modulesUnder(DESIGN)` recurses into every subdirectory of `src/design`. After W130 the
+    // only directive-less module under `islands/` is the barrel, so it is the one swept here.
+    const rangeSlider = join(ISLANDS, 'RangeSlider.tsx');
+    expect(serverSide).toContain(BARREL);
+    expect(isClientModule(BARREL)).toBe(false);
     expect(isClientModule(rangeSlider)).toBe(true);
     expect(serverSide).not.toContain(rangeSlider);
   });
@@ -91,6 +161,50 @@ describe('RSC import guard (W125)', () => {
         .filter((specifier) => isForbidden(file, specifier))
         .map((specifier) => `${relative(ROOT, file)} → ${specifier}`),
     );
+    expect(offenders).toEqual([]);
+  });
+
+  it('every island module starts with the directive; the barrel holds nothing but re-exports (W130)', () => {
+    const islands = modules.filter((file) => file.startsWith(ISLANDS + sep));
+    expect(islands).toContain(join(ISLANDS, 'useInView.ts'));
+    const plain = islands.filter((file) => file !== BARREL && !isClientModule(file));
+    expect(plain.map((file) => relative(ROOT, file))).toEqual([]);
+    const barrel = ts.createSourceFile(
+      BARREL,
+      readFileSync(BARREL, 'utf8'),
+      ts.ScriptTarget.Latest,
+    );
+    expect(barrel.statements.length).toBeGreaterThan(0);
+    for (const statement of barrel.statements) {
+      expect(ts.isExportDeclaration(statement) && statement.moduleSpecifier !== undefined).toBe(
+        true,
+      );
+    }
+  });
+
+  it('reads a client-only React API however the import is spelled, and ignores comments', () => {
+    const apis = (text: string) => clientOnlyReactApis('probe.tsx', text);
+    expect(apis("import { useState as s, useId, type RefObject } from 'react';")).toEqual([
+      'useState',
+    ]);
+    expect(apis("import * as R from 'react';\nR.useEffect(() => {});")).toEqual(['useEffect']);
+    expect(apis("import React from 'react';\nconst C = React.createContext(0);")).toEqual([
+      'createContext',
+    ]);
+    expect(apis("export { useRef } from 'react';")).toEqual(['useRef']);
+    expect(apis("// import { useState } from 'react';\nimport { useId } from 'react';")).toEqual(
+      [],
+    );
+  });
+
+  it('no directive-less module under src/design imports a client-only React API (W130)', () => {
+    const offenders = modules
+      .filter((file) => !isClientModule(file))
+      .flatMap((file) =>
+        clientOnlyReactApis(file, readFileSync(file, 'utf8')).map(
+          (api) => `${relative(ROOT, file)} → ${api}`,
+        ),
+      );
     expect(offenders).toEqual([]);
   });
 });
