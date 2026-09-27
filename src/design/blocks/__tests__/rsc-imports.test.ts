@@ -71,6 +71,20 @@ describe('RSC import guard (W125)', () => {
     expect(isForbidden(contactCta, '@/analytics/contact-kind')).toBe(false);
   });
 
+  it('also walks src/design/islands: a plain island module is swept, a client island is not', () => {
+    // W85/task-6-additions: extends this guard to src/design/islands/ (Task 6). No sweep-logic
+    // change was needed — `modulesUnder(DESIGN)` already recurses into every subdirectory of
+    // `src/design`, so a plain (no-directive) island like `ProgressBar.tsx` was already being
+    // walked; this self-check makes that coverage explicit, the same way the first test does
+    // for `ContactCta`/`StickyCtaBar`.
+    const progressBar = join(DESIGN, 'islands', 'ProgressBar.tsx');
+    const rangeSlider = join(DESIGN, 'islands', 'RangeSlider.tsx');
+    expect(serverSide).toContain(progressBar);
+    expect(isClientModule(progressBar)).toBe(false);
+    expect(isClientModule(rangeSlider)).toBe(true);
+    expect(serverSide).not.toContain(rangeSlider);
+  });
+
   it('no block and no server module under src/design imports useContactClick or next/navigation', () => {
     const offenders = serverSide.flatMap((file) =>
       specifiersOf(file)
