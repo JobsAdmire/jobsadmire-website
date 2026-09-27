@@ -84,12 +84,16 @@ test("robots.txt matches this run's face and points at the sitemap in production
   const res = await request.get('/robots.txt');
   expect(res.status()).toBe(200);
   const body = await res.text();
-  // W91/W104: a Vercel preview is `Disallow: /` by design (src/app/robots.ts, VERCEL_ENV-driven)
-  // — the e2e process cannot read that server-side env var directly, so the expectation is
-  // derived from the same face the target itself would resolve (e2e/helpers/face.ts).
+  // W104/W135: a Vercel preview is `Disallow: /` by design (src/app/robots.ts, VERCEL_ENV-driven,
+  // prerendered at build) — the e2e process cannot read that server-side env var, so the
+  // expectation comes from the one site-face helper (e2e/helpers/face.ts). The preview body is
+  // asserted strictly: the production rules also contain `Disallow: /api/`, so a substring check
+  // would pass a preview that wrongly serves the indexable production rules.
   const face = expectedRobots(baseURL ?? 'http://localhost:3000');
   if (face === 'preview') {
-    expect(body).toContain('Disallow: /');
+    expect(body).toMatch(/^Disallow: \/$/m);
+    expect(body).not.toMatch(/^Allow:/m);
+    expect(body).not.toContain('Sitemap:');
     return;
   }
   expect(body).toContain(`Sitemap: ${ORIGIN}/sitemap.xml`);
