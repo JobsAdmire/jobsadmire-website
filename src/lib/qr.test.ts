@@ -1,5 +1,5 @@
 import QRCode from 'qrcode';
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { qrSvg } from './qr';
 
 const text = 'https://wa.me/905011240340?text=Hello';
@@ -32,5 +32,19 @@ describe('qrSvg', () => {
     expect(svg).toContain(`viewBox="0 0 ${size} ${size}"`);
     expect(svg).toContain('fill="#0a1428"');
     expect(svg).not.toContain('<rect');
+  });
+
+  it('returns an empty string for empty text (the encoder would throw "No input text")', () => {
+    expect(qrSvg('')).toBe('');
+  });
+
+  it('returns an empty string, and logs outside production, for text too big to encode', () => {
+    const error = vi.spyOn(console, 'error').mockImplementation(() => {});
+    try {
+      expect(qrSvg('x'.repeat(3000))).toBe(''); // beyond version 40 at ECC M (≈2.3 KB)
+      expect(error).toHaveBeenCalledTimes(1);
+    } finally {
+      error.mockRestore();
+    }
   });
 });

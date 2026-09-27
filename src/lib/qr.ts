@@ -19,10 +19,23 @@ const escapeAttr = (s: string) =>
  * Server-side QR → SVG string (ECC level M, byte mode — what the package's qr.js produced).
  * Pure so it is unit-testable; render it from a server component only (`QrCode.tsx` is the
  * door), never from a client island — the encoder would join the page's JS budget (W13).
+ * Returns `''` (render nothing) for empty text and for text the encoder refuses — beyond
+ * version 40 at ECC M, about 2.3 KB — logging the latter outside production: a bad QR input
+ * must not take the server render of the whole page down.
  */
 export function qrSvg(text: string, options: QrOptions = {}): string {
+  if (!text) return '';
   const { size = 86, margin = 4, dark = '#0a1428', light = '#ffffff', label } = options;
-  const { modules } = QRCode.create(text, { errorCorrectionLevel: 'M' });
+  let qr: ReturnType<typeof QRCode.create>;
+  try {
+    qr = QRCode.create(text, { errorCorrectionLevel: 'M' });
+  } catch (error) {
+    if (process.env.NODE_ENV !== 'production') {
+      console.error(`qrSvg: cannot encode ${text.length} characters as a QR code`, error);
+    }
+    return '';
+  }
+  const { modules } = qr;
   const n = modules.size;
   const total = n + margin * 2;
 
