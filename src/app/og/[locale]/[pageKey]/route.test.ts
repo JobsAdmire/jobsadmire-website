@@ -59,7 +59,9 @@ describe('GET /og/[locale]/[pageKey]', () => {
     expect(fonts[0].data.length).toBe(192180);
     expect(last.options.width).toBe(1200);
     expect(last.options.height).toBe(630);
-    expect(last.options.headers).toEqual({ 'Cache-Control': 'public, max-age=86400' });
+    expect(last.options.headers).toEqual({
+      'Cache-Control': 'public, max-age=86400, s-maxage=86400, stale-while-revalidate=604800',
+    });
   });
 
   it('falls back to sys.seo.<pageKey>.title, then the wordmark; subline = sys.seo.ogTagline (W38)', async () => {

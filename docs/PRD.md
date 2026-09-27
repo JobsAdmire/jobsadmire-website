@@ -62,7 +62,7 @@ Per plan §3.1 (expanded in `docs/SEO.md`):
 - `generateMetadata` per page from bundle/package fields; `alternates.languages` for tr/en with `x-default = tr` and self-reference.
 - `app/sitemap.ts` generated from the tagged content bundle with `revalidate`; `app/robots.ts`.
 - JSON-LD: `Organization`/`EmploymentAgency` (permit 1730, tax id, `sameAs`), `WebSite`, `BreadcrumbList`, `Article`/`BlogPosting`, `JobPosting` (careers detail only), `FAQPage` (AEO signal only — **not** pursued as a Google rich result, per plan §3.1).
-- OG images via `next/og` (Node runtime, bundled font bytes, ISR).
+- OG images via `next/og` (Node runtime, bundled font bytes, CDN-cached a day, stale-while-revalidate a week (W123)).
 - `llms.txt` published at root.
 - Facet URLs (filtered Available Workers/Success Stories views) canonicalise to the base page.
 - `noindex` on: portal entry, `/tesekkurler`, newsletter confirm/unsubscribe, all preview deployments.

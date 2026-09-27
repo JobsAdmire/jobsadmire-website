@@ -8,9 +8,9 @@ import { routing } from '@/i18n/routing';
 import { ogSubline, ogTitle } from '@/lib/seo/og';
 import { OG_PAGE_KEYS } from '@/lib/seo/routes';
 
-/** One PNG per page × locale, cached a day (docs/SEO.md § OG images). A content change reaches
- *  the image on the next revalidation; nothing here is per-request. Node runtime (the default
- *  for route handlers): the font is read from disk, never fetched. */
+/** One PNG per page × locale (docs/SEO.md § OG images). Next renders this handler per request
+ *  (ƒ: dynamic params, no generateStaticParams); the day-long cache is the CDN's `s-maxage`
+ *  (W123) — nothing here is per-visitor. Node runtime (the default for route handlers). */
 export const revalidate = 86400;
 
 const WIDTH = 1200;
@@ -90,9 +90,13 @@ export async function GET(
       width: WIDTH,
       height: HEIGHT,
       fonts: [{ name: 'Archivo', data: font, weight: 700, style: 'normal' }],
-      // ImageResponse's own default is a year, immutable; the CDN/browser lifetime follows the
-      // ISR window instead so a title change reaches crawlers within a day.
-      headers: { 'Cache-Control': `public, max-age=${revalidate}` },
+      // ImageResponse's own default is a year, immutable; this header gives the browser and
+      // Vercel's CDN a day-long lifetime instead (W123's `s-maxage`), then a week of
+      // stale-while-revalidate so a title change reaches crawlers within a day without a cache
+      // miss ever blocking one.
+      headers: {
+        'Cache-Control': `public, max-age=${revalidate}, s-maxage=${revalidate}, stale-while-revalidate=604800`,
+      },
     },
   );
 }
