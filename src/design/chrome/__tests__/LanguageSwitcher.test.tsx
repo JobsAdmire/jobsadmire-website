@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import { LanguageSwitcher } from '../LanguageSwitcher';
 import { renderWithIntl } from '@/test/render';
@@ -43,8 +43,25 @@ describe('LanguageSwitcher', () => {
       'href',
       '/en/blog/only-in-english',
     );
-    // The R58 fallback is next-intl's <Link locale="tr">, which always carries the prefix when
-    // `locale` is passed (`forcePrefix`); the middleware folds `/tr` back to `/` — WP1 behaviour.
-    expect(screen.getByRole('link', { name: 'Türkçe' })).toHaveAttribute('href', '/tr');
+    // M1 fix round: the fallback now goes through next-intl's `getPathname`, which — unlike
+    // `<Link locale>`'s `forcePrefix` — resolves the default locale exactly as `localePrefix:
+    // 'as-needed'` says: unprefixed. No redirect hop through `/tr` is needed either way, since
+    // `localeDetection: false` means a bare `/` is never bounced to a detected locale.
+    expect(screen.getByRole('link', { name: 'Türkçe' })).toHaveAttribute('href', '/');
+  });
+
+  it('keeps the same pill node when its hreflang tag appears after mount (M1)', async () => {
+    renderWithIntl(<LanguageSwitcher locale="tr" label="Dil" />);
+    const before = screen.getByRole('link', { name: 'English' });
+    addAlternate('en', 'https://www.jobsadmire.com/en/blog/seasonal-workforce');
+    await waitFor(() => {
+      expect(screen.getByRole('link', { name: 'English' })).toHaveAttribute(
+        'href',
+        '/en/blog/seasonal-workforce',
+      );
+    });
+    // Same DOM node, not a fresh one from an unmount/remount: a focused pill must not lose
+    // focus, and assistive tech must not see the element replaced, when the tag arrives.
+    expect(screen.getByRole('link', { name: 'English' })).toBe(before);
   });
 });

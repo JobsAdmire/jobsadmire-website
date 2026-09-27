@@ -2,12 +2,18 @@
 import { useCallback, useId, useState, useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import NextLink from 'next/link';
-import { Link, usePathname, type Href } from '@/i18n/navigation';
+import { getPathname, usePathname } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { alternatePath } from './alternate-path';
 import { useAlternatePath } from './use-alternate-path';
 
 export const HINT_KEY = 'ja-lang-hint';
+
+/** The typed internal pathname `getPathname` accepts (`src/lib/seo/routes.ts` has the same
+ *  alias): NOT `next/link`'s own `Href`, whose object variant's `query` is a plain `UrlObject`
+ *  field and does not structurally match `getPathname`'s narrower one. The switch link now
+ *  resolves its href through `getPathname` (M1), so this is the only shape that matters here. */
+type Href = Parameters<typeof getPathname>[0]['href'];
 
 /** Turkish page + an English browser + not dismissed. Pure so the rule is testable without
  *  a DOM, and so the component never has to decide anything twice. */
@@ -51,6 +57,9 @@ export function LanguageHint({ locale }: { locale: Locale }) {
   // unless the page's own `hreflang="en"` tag names the real alternate (W17).
   const target = alternatePath(usePathname() ?? '/');
   const alternate = useAlternatePath('en');
+  // One element type for both sources, so hydration only ever patches `href` and never
+  // remounts the switch link (M1) — same fix as LanguageSwitcher's pills.
+  const switchHref = alternate ?? getPathname({ href: target as Href, locale: 'en' });
   const [dismissed, setDismissed] = useState(false);
   const eligible = useSyncExternalStore(
     subscribe,
@@ -87,21 +96,9 @@ export function LanguageHint({ locale }: { locale: Locale }) {
         <p id={bodyId} className="m-0 font-bold">
           {sys('languageHint.body')}
         </p>
-        {alternate ? (
-          <NextLink href={alternate} prefetch={false} onClick={dismiss} className={SWITCH}>
-            {sys('languageHint.switch')}
-          </NextLink>
-        ) : (
-          <Link
-            href={target as Href}
-            locale="en"
-            prefetch={false}
-            onClick={dismiss}
-            className={SWITCH}
-          >
-            {sys('languageHint.switch')}
-          </Link>
-        )}
+        <NextLink href={switchHref} prefetch={false} onClick={dismiss} className={SWITCH}>
+          {sys('languageHint.switch')}
+        </NextLink>
         <button
           type="button"
           onClick={dismiss}

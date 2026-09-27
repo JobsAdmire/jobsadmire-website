@@ -1,9 +1,15 @@
 'use client';
 import NextLink from 'next/link';
-import { Link, usePathname, type Href } from '@/i18n/navigation';
+import { getPathname, usePathname } from '@/i18n/navigation';
 import { locales, type Locale } from '@/i18n/routing';
 import { alternatePath } from './alternate-path';
 import { useAlternatePath } from './use-alternate-path';
+
+/** The typed internal pathname `getPathname` accepts (`src/lib/seo/routes.ts` has the same
+ *  alias): NOT `next/link`'s own `Href`, whose object variant's `query` is a plain `UrlObject`
+ *  field and does not structurally match `getPathname`'s narrower one. Both pills now resolve
+ *  their href through `getPathname` (M1), so this is the only shape that matters here. */
+type Href = Parameters<typeof getPathname>[0]['href'];
 
 /** Endonyms, not copy: a switcher has to name the language you are switching *to*, so it
  *  cannot come from a `sys.*` string in the *current* locale — which is why no such key
@@ -74,21 +80,19 @@ function LanguageLink({
   className: string;
 }) {
   const alternate = useAlternatePath(to);
-  const shared = {
-    prefetch: false,
-    hrefLang: to,
-    'aria-current': active ? ('true' as const) : undefined,
-    className,
-  };
-  // The tag's path is already localized, so it goes through next/link untouched; the
-  // fallback is an internal pathname next-intl localizes for `to`.
-  return alternate ? (
-    <NextLink href={alternate} {...shared}>
+  // One element type for both sources, so hydration only ever patches `href` and never
+  // remounts the pill (M1): the tag's path is already localized; the fallback is an internal
+  // pathname resolved through next-intl's `getPathname`, same as the tag would have been.
+  const href = alternate ?? getPathname({ href: fallback, locale: to });
+  return (
+    <NextLink
+      href={href}
+      prefetch={false}
+      hrefLang={to}
+      aria-current={active ? ('true' as const) : undefined}
+      className={className}
+    >
       {ENDONYM[to]}
     </NextLink>
-  ) : (
-    <Link href={fallback} locale={to} {...shared}>
-      {ENDONYM[to]}
-    </Link>
   );
 }

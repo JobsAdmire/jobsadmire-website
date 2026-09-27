@@ -1,4 +1,4 @@
-import { screen } from '@testing-library/react';
+import { screen, waitFor } from '@testing-library/react';
 import { afterEach, describe, expect, it } from 'vitest';
 import { LanguageHint, shouldShowHint } from '../LanguageHint';
 import { renderWithIntl } from '@/test/render';
@@ -42,5 +42,23 @@ describe('LanguageHint link target', () => {
       'href',
       '/en/blog/seasonal-workforce',
     );
+  });
+
+  it('keeps the same switch node when the hreflang tag appears after mount (M1)', async () => {
+    renderWithIntl(<LanguageHint locale="tr" />);
+    const before = screen.getByRole('link', { name: 'Switch to English' });
+    const link = document.createElement('link');
+    link.setAttribute('rel', 'alternate');
+    link.setAttribute('hreflang', 'en');
+    link.setAttribute('href', 'https://www.jobsadmire.com/en/blog/seasonal-workforce');
+    document.head.appendChild(link);
+    await waitFor(() => {
+      expect(screen.getByRole('link', { name: 'Switch to English' })).toHaveAttribute(
+        'href',
+        '/en/blog/seasonal-workforce',
+      );
+    });
+    // Same DOM node: the fixed sheet must not remount and steal focus once the tag arrives.
+    expect(screen.getByRole('link', { name: 'Switch to English' })).toBe(before);
   });
 });
