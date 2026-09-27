@@ -40,6 +40,8 @@ import { Flag } from '@/design/Flag';
 import { isFlagCode } from '@/design/assets/flag-codes';
 import { QrCode } from '@/design/QrCode';
 import { ProgressBar } from '@/design/islands';
+import { BRAND } from '@/design/assets/brand';
+import Image from 'next/image';
 
 // Never indexed even in the environments where it does render.
 export const metadata: Metadata = {
@@ -212,6 +214,40 @@ export default async function Gallery({ params }: { params: Promise<{ locale: st
             labels={sourceMapLabels(sourceCountries)}
             turkiyeLabel="Türkiye"
           />
+        </div>
+        {/* re-review N3: the three brand files, so ARCHITECTURE.md's "renders every island
+            and asset" is literally true (this block's title names only the flag/QR/map). */}
+        <div className="flex flex-wrap gap-4">
+          <figure className="flex flex-col items-center gap-1">
+            <Image
+              src={BRAND.logo.src}
+              width={BRAND.logo.width}
+              height={BRAND.logo.height}
+              alt="JobsAdmire logo"
+              className="h-10 w-auto"
+            />
+            <figcaption className="text-body-sm">Logo</figcaption>
+          </figure>
+          <figure className="flex flex-col items-center gap-1">
+            <Image
+              src={BRAND.iskur.src}
+              width={BRAND.iskur.width}
+              height={BRAND.iskur.height}
+              alt="İŞKUR licence roundel"
+              className="h-10 w-auto"
+            />
+            <figcaption className="text-body-sm">İŞKUR</figcaption>
+          </figure>
+          <figure className="flex flex-col items-center gap-1">
+            <Image
+              src={BRAND.googlePlay.src}
+              width={BRAND.googlePlay.width}
+              height={BRAND.googlePlay.height}
+              alt="Google Play glyph"
+              className="h-10 w-auto"
+            />
+            <figcaption className="text-body-sm">Google Play</figcaption>
+          </figure>
         </div>
       </Block>
 

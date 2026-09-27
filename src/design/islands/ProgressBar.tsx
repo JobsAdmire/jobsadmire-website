@@ -24,8 +24,9 @@ const TONE: Record<ProgressTone, string> = {
 };
 
 /** A client module like every island (W130), with no state of its own: a server page renders
- *  it with plain props — `import { ProgressBar } from '@/design/islands'` is safe there, because
- *  every module behind the barrel carries `'use client'`. */
+ *  it with plain props — imported by path, never the barrel (W134): `import { ProgressBar }
+ *  from '@/design/islands/ProgressBar'`. The dev gallery keeps the barrel import instead, as
+ *  the standing proof that the whole set compiles (W130). */
 export function ProgressBar({
   value,
   max = 100,
