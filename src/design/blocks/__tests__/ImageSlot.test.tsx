@@ -80,6 +80,35 @@ describe('ImageSlot (W27 / D26 markup contract)', () => {
     expect(img).toHaveAttribute('height', '202');
   });
 
+  // W122 (Task 5 re-review N2): the docblock's caller rule must name every property BOX sets,
+  // not just width/aspect — a caller's `h-*`/`object-{fit}` class would silently lose to BOX's
+  // own `h-auto`/`object-cover` under Tailwind's alphabetical rule order. `object-{position}`
+  // classes (`object-top` etc.) are a different property (object-position) and stay allowed.
+  const boxPropertyClasses = (el: Element) =>
+    el
+      .getAttribute('class')!
+      .split(/\s+/)
+      .filter(
+        (c) =>
+          (/^(?:(?:min-|max-)?[wh]|size|aspect)-/.test(c) ||
+            /^object-(?:contain|cover|fill|none|scale-down)$/.test(c)) &&
+          !BOX.includes(c),
+      );
+
+  it('flags a caller class for any property BOX sets, never an object-position (W122)', () => {
+    const { container } = render(
+      <ImageSlot
+        slot="w122"
+        alt=""
+        width={80}
+        height={80}
+        className="h-[80px] object-contain object-top rounded-xs"
+      />,
+    );
+    const box = container.querySelector('[data-placeholder="w122"]')!;
+    expect(boxPropertyClasses(box)).toEqual(['h-[80px]', 'object-contain']);
+  });
+
   it('maps the frozen lcp/priority props to next/image `preload`, never the deprecated `priority` (M3)', () => {
     nextImage.calls.length = 0;
     render(

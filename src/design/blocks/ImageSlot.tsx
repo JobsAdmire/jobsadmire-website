@@ -11,9 +11,12 @@ export type ImageSlotProps = {
   width: number;
   height: number;
   sizes?: string;
-  /** Extra classes (a radius, a border) — never a width or aspect class (`w-*`, `aspect-*`):
-   *  the slot owns its box (W129). A caller that needs a narrower slot wraps it in a sized
-   *  element (`<div className="w-[104px] shrink-0">`) and gives the text beside it `min-w-0`. */
+  /** Extra classes (a radius, a border) — never a class for a property the box already sets
+   *  (`w-*`, `h-*`, `aspect-*`, `object-{fit}`; an `object-top`-style position is a different
+   *  property and is fine): the slot owns its box (W129/W122 — BOX below also sets `h-auto`
+   *  and `object-cover`, so a caller's `h-[…]`/`object-contain` would silently lose). A caller
+   *  that needs a narrower slot wraps it in a sized element (`<div className="w-[104px]
+   *  shrink-0">`) and gives the text beside it `min-w-0`. */
   className?: string;
   /** Overrides the preload `lcp` implies (`priority ?? lcp`). Kept by name (frozen), it maps
    *  to next/image's `preload`: that component's own `priority` is deprecated in 16.3.5 (M3). */

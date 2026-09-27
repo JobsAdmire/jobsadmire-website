@@ -106,13 +106,22 @@ describe('PostCard', () => {
     expect(container).toBeEmptyDOMElement();
   });
 
-  // W129: `ImageSlot` owns its box (`w-full` + the width/height ratio) and never receives a
-  // width or aspect class from a caller — the row's 104 px column is a wrapper around it.
+  // W129/W122: `ImageSlot` owns its box (`w-full h-auto object-cover` + the width/height ratio)
+  // and never receives a class for a property that box already sets from a caller — the row's
+  // 104 px column is a wrapper around it. `object-{top,bottom,...}` positions are a different
+  // property (object-position, not object-fit) and stay allowed.
   const callerBoxClasses = (el: Element) =>
     el
       .getAttribute('class')!
       .split(/\s+/)
-      .filter((c) => /^(?:(?:min-|max-)?w|size|aspect)-/.test(c) && c !== 'w-full');
+      .filter(
+        (c) =>
+          (/^(?:(?:min-|max-)?[wh]|size|aspect)-/.test(c) ||
+            /^object-(?:contain|cover|fill|none|scale-down)$/.test(c)) &&
+          c !== 'w-full' &&
+          c !== 'h-auto' &&
+          c !== 'object-cover',
+      );
 
   it('row: sizes the cover with a 104 px wrapper, never a width class on ImageSlot (W129)', () => {
     renderWithIntl(<PostCard bundle={bundle} locale="tr" post={post} variant="row" />, {
