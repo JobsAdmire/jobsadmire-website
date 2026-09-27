@@ -67,3 +67,15 @@ test('the OG image route answers a PNG, is not locale-rewritten and rejects unkn
   expect((await request.get('/og/tr/not-a-page.png')).status()).toBe(404);
   expect((await request.get('/og/de/home.png')).status()).toBe(404);
 });
+
+test('the home page points og:image and twitter:image at the generated PNG', async ({ page }) => {
+  await page.goto('/');
+  await expect(page.locator('meta[property="og:image"]')).toHaveAttribute(
+    'content',
+    `${ORIGIN}/og/tr/home.png`,
+  );
+  await expect(page.locator('meta[name="twitter:image"]')).toHaveAttribute(
+    'content',
+    `${ORIGIN}/og/tr/home.png`,
+  );
+});
