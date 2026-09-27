@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { SiteChrome } from '../SiteChrome';
+import { StickyCtaBar } from '../StickyCtaBar';
 import { getCollection, getOffice } from '@/content/collections';
 import {
   Breadcrumbs,
@@ -157,8 +158,19 @@ const post = getCollection(blocksBundle, 'blog')[0];
 
 describe('no shared block pairs a bare `hidden` with an unprefixed display utility (W122 addition, Task 5)', () => {
   it('every block, every tone/variant branch', () => {
+    // StickyCtaBar renders nothing until scrolled past `showAfterPx` (700). A fresh client render
+    // reads `window.scrollY` straight away, so set it first (its own test's mock), then reset.
+    Object.defineProperty(window, 'scrollY', { configurable: true, value: 800 });
     const { container } = renderWithIntl(
       <>
+        <StickyCtaBar
+          message="Talep"
+          live
+          ctas={[
+            { label: 'Talep et', href: '/hire-workers' },
+            { label: 'Ara', href: 'tel:+905011240340', variant: 'secondary' },
+          ]}
+        />
         <ContactCta placement="page_cta" href="https://wa.me/905011240340" external>
           WhatsApp
         </ContactCta>
@@ -204,8 +216,21 @@ describe('no shared block pairs a bare `hidden` with an unprefixed display utili
           bundle={blocksBundle}
           locale="tr"
           titleId="v.title"
+          bodyId="v.body"
           primary={{ label: 'Talep', href: '/hire-workers' }}
+          secondary={{ label: 'WhatsApp', href: 'https://wa.me/905011240340', external: true }}
+          ticks={['Tik 1']}
           tone="green"
+        />
+        <ClosingCtaBand
+          bundle={blocksBundle}
+          locale="tr"
+          titleId="v.title"
+          bodyId="v.body"
+          primary={{ label: 'Talep', href: '/hire-workers' }}
+          extra={[{ label: 'Ara', href: 'tel:+905011240340' }]}
+          ticks={['Tik 1']}
+          tone="gradient"
         />
         <ProcessSteps
           bundle={blocksBundle}
@@ -234,11 +259,18 @@ describe('no shared block pairs a bare `hidden` with an unprefixed display utili
         <OfficeCard bundle={blocksBundle} locale="tr" office={office} />
         <ImageSlot slot="v-empty" alt="Alt text" width={4} height={3} />
         <ImageSlot slot="v-lcp" lcp alt="" width={4} height={3} />
+        <ImageSlot slot="v-photo" src="/brand/ja-mark.png" alt="Foto" width={4} height={3} />
         <EmptyState
           title="Boş"
           body="Gövde."
           cta={{ label: 'Ara', href: 'tel:+905011240340' }}
           tone="light"
+        />
+        <EmptyState
+          title="Boş"
+          body="Gövde."
+          tone="pale"
+          cta={{ label: 'Yaz', href: 'https://wa.me/905011240340', external: true }}
         />
         <EmptyState
           title="Boş"
@@ -268,6 +300,16 @@ describe('no shared block pairs a bare `hidden` with an unprefixed display utili
         />
       </>,
     );
+    Object.defineProperty(window, 'scrollY', { configurable: true, value: 0 });
+    // M5: the branches this sweep must actually reach, so a green run is never a vacuous one —
+    // the scrolled StickyCtaBar, the gradient band, the pale EmptyState, ImageSlot's photo and
+    // the green band's inverse-dark face.
+    const classes = classNamesOf(container).map((c) => c.split(/\s+/));
+    expect(container.querySelector('[data-testid="sticky-cta"]')).not.toBeNull();
+    expect(classes.some((c) => c.includes('from-ink'))).toBe(true);
+    expect(container.querySelector('[role="status"].bg-pale-1')).not.toBeNull();
+    expect(container.querySelector('img[alt="Foto"]')).not.toBeNull();
+    expect(classes.some((c) => c.includes('bg-black/15'))).toBe(true);
     const offenders = classNamesOf(container).filter(hasUnguardedHidden);
     expect(offenders).toEqual([]);
   });
