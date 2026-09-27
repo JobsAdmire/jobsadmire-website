@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
   // the multipart framing, one file per call.
   experimental: {
     serverActions: { bodySizeLimit: '4mb' },
+    // Local build worker cap (memory rule, this machine only): NEXT_BUILD_CPUS=2 npm run build
+    // caps Next's static-generation workers. Unset (the Vercel build never sets it) keeps
+    // Next's own default worker count — Vercel is unaffected.
+    cpus: process.env.NEXT_BUILD_CPUS ? Number(process.env.NEXT_BUILD_CPUS) : undefined,
   },
   async redirects() {
     return (legacy as { from: string; to: string }[]).map((r) => ({
