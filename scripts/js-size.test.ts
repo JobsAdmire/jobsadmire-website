@@ -2,6 +2,7 @@
 import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import {
+  collectArgs,
   formatJsSizeTable,
   LAZY_LINE,
   parseRoutesArg,
@@ -106,5 +107,31 @@ describe('parseRoutesArg (W94)', () => {
 
   it('drops empty entries from stray commas', () => {
     expect(parseRoutesArg(['--routes=/a,,/b,'])).toEqual(['/a', '/b']);
+  });
+});
+
+// W94/W137: the `--routes` collector runs `lhci collect` with the same config gate.sh picks
+// (lighthouseConfigFor — skipAudits is a collect-time setting) and the bypass header only when
+// it is non-empty. The argv builder is the pure part; the subprocess needs a server and Chrome.
+describe('collectArgs (W94/W137)', () => {
+  it('collects with the chosen config and no header when the secret is blank', () => {
+    expect(
+      collectArgs('/tesekkurler?form=hire', 'http://localhost:3000', 'lighthouserc.local.json', {}),
+    ).toEqual([
+      'lhci',
+      'collect',
+      '--additive',
+      '--config=lighthouserc.local.json',
+      '--url=http://localhost:3000/tesekkurler?form=hire',
+    ]);
+  });
+
+  it('passes the bypass header as JSON, whatever the secret contains', () => {
+    const headers = { 'x-vercel-protection-bypass': 'q"uo\\te' };
+    const args = collectArgs('/en', 'https://x.vercel.app', 'lighthouserc.preview.json', headers);
+    expect(args).toContain('--config=lighthouserc.preview.json');
+    const extra = args.find((a) => a.startsWith('--extra-headers=')) ?? '';
+    expect(JSON.parse(extra.slice('--extra-headers='.length))).toEqual(headers);
+    expect(args.at(-1)).toBe('--url=https://x.vercel.app/en');
   });
 });

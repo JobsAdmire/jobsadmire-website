@@ -15,6 +15,7 @@
 // and never part of `npm run gate`.
 import { execFileSync } from 'node:child_process';
 import { existsSync, mkdirSync, readdirSync, readFileSync, renameSync, rmSync } from 'node:fs';
+import { createRequire } from 'node:module';
 import { join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
@@ -106,23 +107,51 @@ export function parseRoutesArg(argv) {
 
 const LHR_RE = /^lhr-\d+\.json$/;
 
+/** W94/W137: the `npx` argv for one `--routes` collect — the Lighthouse config gate.sh picks
+ *  (`lighthouseConfigFor`, e2e/helpers/face.ts: `skipAudits` is a collect-time setting) and
+ *  `--extra-headers` only when the bypass header is non-empty (e2e/helpers/bypass.ts). Pure.
+ *  @param {string} route @param {string} baseUrl @param {string} config
+ *  @param {Record<string, string>} headers @returns {string[]} */
+export function collectArgs(route, baseUrl, config, headers) {
+  return [
+    'lhci',
+    'collect',
+    '--additive',
+    `--config=${config}`,
+    ...(Object.keys(headers).length ? [`--extra-headers=${JSON.stringify(headers)}`] : []),
+    `--url=${baseUrl}${route}`,
+  ];
+}
+
 /** W94: collects `routes` (against E2E_BASE_URL) into `extraDir`, a directory separate from the
  *  main gate's `.lighthouseci`. `lhci collect` has no --outputDir (unlike `upload`) and always
  *  writes into `./.lighthouseci`, so each route is collected there and only the files it just
  *  produced are moved into `extraDir` — a concurrent or prior gate run's own reports are never
  *  read, wiped or mixed in. */
-function collectExtra(routes, baseUrl, extraDir) {
+function collectExtra(routes, baseUrl, extraDir, config, headers) {
   mkdirSync(extraDir, { recursive: true });
   for (const f of readdirSync(extraDir).filter((f) => LHR_RE.test(f))) rmSync(join(extraDir, f));
   for (const route of routes) {
     const before = new Set(existsSync('.lighthouseci') ? readdirSync('.lighthouseci') : []);
     process.stdout.write(`js-size: collecting ${route}\n`);
-    execFileSync('npx', ['lhci', 'collect', '--additive', `--url=${baseUrl}${route}`], {
-      stdio: 'inherit',
-    });
+    execFileSync('npx', collectArgs(route, baseUrl, config, headers), { stdio: 'inherit' });
     const after = readdirSync('.lighthouseci').filter((f) => LHR_RE.test(f) && !before.has(f));
     for (const f of after) renameSync(join('.lighthouseci', f), join(extraDir, f));
   }
+}
+
+/** W135/W137: the one site-face and bypass-header logic gate.sh uses — TypeScript beside the
+ *  e2e specs, loaded through tsx's CommonJS API (its namespaced ESM `tsImport` cannot resolve
+ *  bypass.ts's extensionless `./face` import on Node 25). Only the --routes path needs them. */
+function gateHelpers() {
+  const { require: tsRequire } = createRequire(import.meta.url)('tsx/cjs/api');
+  const face = tsRequire('../e2e/helpers/face.ts', import.meta.url);
+  const bypass = tsRequire('../e2e/helpers/bypass.ts', import.meta.url);
+  return {
+    lighthouseConfigFor: face.lighthouseConfigFor,
+    protectionBypassHeaders: bypass.protectionBypassHeaders,
+    bypassWarning: bypass.bypassWarning,
+  };
 }
 
 function main() {
@@ -141,7 +170,12 @@ function main() {
       process.stderr.write('js-size: --routes needs E2E_BASE_URL set to the server under test\n');
       process.exit(2);
     }
-    collectExtra(routes, base, dir);
+    const { lighthouseConfigFor, protectionBypassHeaders, bypassWarning } = gateHelpers();
+    const warning = bypassWarning(base);
+    if (warning) process.stderr.write(`js-size: warning — ${warning}\n`);
+    const config = lighthouseConfigFor(base);
+    process.stdout.write(`js-size: collecting with ${config}\n`);
+    collectExtra(routes, base, dir, config, protectionBypassHeaders());
   }
 
   let files;

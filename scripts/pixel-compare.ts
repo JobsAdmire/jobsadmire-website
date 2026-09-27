@@ -2,8 +2,10 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createServer, type Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { extname, join, normalize } from 'node:path';
+import type { BrowserContextOptions } from '@playwright/test';
 import pixelmatch from 'pixelmatch';
 import { PNG } from 'pngjs';
+import { bypassWarning, protectionBypassHeaders } from '../e2e/helpers/bypass';
 
 /**
  * D27 pixel harness: the design package's own page (`design-package/design/<Page>.dc.html`,
@@ -19,9 +21,12 @@ import { PNG } from 'pngjs';
  * and a running build of this site (`--base`, default E2E_BASE_URL or http://localhost:3000).
  * Never part of the gate or CI. Output under .pixel/ (git-ignored).
  *
- * W91: the built-route requests send x-vercel-protection-bypass (VERCEL_AUTOMATION_BYPASS_SECRET)
- * so `--base` can point at a Vercel-protected preview; the design side is our own throw-away
- * local server, which ignores the header harmlessly.
+ * W137: `--base` may point at a Vercel-protected preview. The bypass header
+ * (VERCEL_AUTOMATION_BYPASS_SECRET, e2e/helpers/bypass.ts) goes ONLY to the built origin's
+ * requests — `context.route(<origin>/**)` on the built page's own context, and only when the
+ * secret is non-blank. The design page gets a context of its own with no extra header: even an
+ * empty one forces a CORS preflight that fonts.gstatic.com and jsdelivr refuse (it broke the
+ * design's Archivo and its map data), and a real one would reach every third party it calls.
  */
 const ROOT = join(__dirname, '..');
 const DESIGN_DIR = join(ROOT, 'design-package', 'design');
@@ -88,6 +93,37 @@ export function comparePngs(
   const diffPixels = pixelmatch(a.data, b.data, diff.data, width, height, { threshold: 0.1 });
   const match = Math.round((1 - diffPixels / (width * height)) * 10_000) / 100;
   return { diff, width, height, diffPixels, match };
+}
+
+/** W137: what every capture context is — viewport, scale, locale, reduced motion — and nothing
+ *  else: the design page's context is exactly this, never an extra header. */
+export function captureContextOptions(width: number, locale: PixelLocale): BrowserContextOptions {
+  return {
+    viewport: { width, height: 900 },
+    deviceScaleFactor: 1,
+    locale: locale === 'tr' ? 'tr-TR' : 'en-US',
+    reducedMotion: 'reduce',
+  };
+}
+
+/** The slice of Playwright's `Route` the built-origin handler uses (structural, for the tests). */
+export type RouteLike = {
+  request(): { headers(): Record<string, string> };
+  continue(options: { headers: Record<string, string> }): Promise<void>;
+};
+
+/** W137: the built page's context adds `headers` to its own origin's requests only (third
+ *  parties the built page calls get nothing from here); `null` when the secret is blank, so
+ *  nothing is intercepted at all. */
+export function builtOriginRoute(
+  base: string,
+  headers: Record<string, string>,
+): { url: string; handler: (route: RouteLike) => Promise<void> } | null {
+  if (!Object.keys(headers).length) return null;
+  return {
+    url: `${new URL(base).origin}/**`,
+    handler: (route) => route.continue({ headers: { ...route.request().headers(), ...headers } }),
+  };
 }
 
 const MIME: Record<string, string> = {
@@ -163,6 +199,10 @@ async function main() {
   const route = resolvePixelRoute(page, locale, readLocalBundle(locale), arg('route'));
   const design = PIXEL_PAGES[page].design;
 
+  const warning = bypassWarning(base);
+  if (warning) console.warn(`pixel: warning — ${warning}`);
+  const builtRoute = builtOriginRoute(base, protectionBypassHeaders());
+
   // Loaded here, not at module top, so the unit tests import the pure functions without
   // pulling the Playwright runner into Vitest.
   const { chromium } = await import('@playwright/test');
@@ -172,29 +212,24 @@ async function main() {
   const results: Result[] = [];
   try {
     for (const width of widths) {
-      const context = await browser.newContext({
-        viewport: { width, height: 900 },
-        deviceScaleFactor: 1,
-        locale: locale === 'tr' ? 'tr-TR' : 'en-US',
-        reducedMotion: 'reduce',
-        // W91: reaches a Vercel-protected `--base` preview; harmless against the local design
-        // server or a local built server, which never check the header.
-        extraHTTPHeaders: {
-          'x-vercel-protection-bypass': process.env.VERCEL_AUTOMATION_BYPASS_SECRET ?? '',
-        },
-      });
-      // Design side: language + hint via the package's own localStorage keys; built side: the
-      // LanguageHint's HINT_KEY ('ja-lang-hint'), same value — one init script serves both.
-      await context.addInitScript((lang: string) => {
-        try {
-          localStorage.setItem('ja-lang', lang);
-          localStorage.setItem('ja-lang-hint', 'off');
-        } catch {
-          /* storage blocked — the hint is then a tolerated delta */
-        }
-      }, locale.toUpperCase());
+      const newCaptureContext = async () => {
+        const context = await browser.newContext(captureContextOptions(width, locale));
+        // Design side: language + hint via the package's own localStorage keys; built side: the
+        // LanguageHint's HINT_KEY ('ja-lang-hint'), same value — one init script serves both.
+        await context.addInitScript((lang: string) => {
+          try {
+            localStorage.setItem('ja-lang', lang);
+            localStorage.setItem('ja-lang-hint', 'off');
+          } catch {
+            /* storage blocked — the hint is then a tolerated delta */
+          }
+        }, locale.toUpperCase());
+        return context;
+      };
 
-      const designPage = await context.newPage();
+      // W137: two contexts. The design page's never carries the bypass header.
+      const designContext = await newCaptureContext();
+      const designPage = await designContext.newPage();
       await designPage.goto(`${origin}/${encodeURIComponent(design)}?lang=${locale}`, {
         waitUntil: 'networkidle',
         timeout: 90_000,
@@ -205,15 +240,19 @@ async function main() {
       });
       await designPage.waitForTimeout(800);
       const designPng = PNG.sync.read(await designPage.screenshot({ fullPage: true }));
+      await designContext.close();
 
-      const builtPage = await context.newPage();
+      // The built page's context: the header on its own origin's requests only (W137).
+      const builtContext = await newCaptureContext();
+      if (builtRoute) await builtContext.route(builtRoute.url, builtRoute.handler);
+      const builtPage = await builtContext.newPage();
       await builtPage.goto(`${base}${route}`, { waitUntil: 'networkidle', timeout: 60_000 });
       await builtPage.evaluate(async () => {
         await document.fonts.ready;
       });
       await builtPage.waitForTimeout(300);
       const builtPng = PNG.sync.read(await builtPage.screenshot({ fullPage: true }));
-      await context.close();
+      await builtContext.close();
 
       const cmp = comparePngs(designPng, builtPng);
       const stem = join(OUT_DIR, `${page}-${locale}-${width}`);

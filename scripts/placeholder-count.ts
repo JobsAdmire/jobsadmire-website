@@ -1,5 +1,6 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
+import { bypassWarning, protectionBypassHeaders } from '../e2e/helpers/bypass';
 import { GATE_ROUTES } from '../e2e/routes';
 
 /**
@@ -94,7 +95,8 @@ async function fetchRoute(
 ): Promise<{ status: number | null; html: string }> {
   try {
     const res = await fetch(`${base}${route}`, {
-      headers: { accept: 'text/html' },
+      // W137: a protected preview answers 401 (or the SSO redirect) without the bypass header.
+      headers: { accept: 'text/html', ...protectionBypassHeaders() },
       redirect: 'manual',
       signal: AbortSignal.timeout(15_000),
     });
@@ -110,6 +112,8 @@ async function main() {
     console.error('placeholder-count: set E2E_BASE_URL to the preview or local URL');
     process.exit(2);
   }
+  const warning = bypassWarning(base);
+  if (warning) console.warn(`placeholder-count: warning — ${warning}`);
   const verdicts: RouteVerdict[] = [];
   for (const route of GATE_ROUTES) {
     const { status, html } = await fetchRoute(base, route);

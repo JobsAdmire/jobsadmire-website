@@ -5,8 +5,10 @@ design package's own page and the built route at 390 / 900 / 1440, full page, re
 and writes `.pixel/<page>-<locale>-<w>.png` (the pixelmatch diff), `…-design.png`,
 `…-built.png` and a `% match` per width into `.pixel/report.json`. It needs network (the
 design runtime loads React/Babel from unpkg) and is never part of the gate or CI. `--base` may
-point at a Vercel-protected preview: the harness sends `x-vercel-protection-bypass` from
-`VERCEL_AUTOMATION_BYPASS_SECRET` on the built-route requests (W91).
+point at a Vercel-protected preview (W137): the harness adds `x-vercel-protection-bypass` (from
+`VERCEL_AUTOMATION_BYPASS_SECRET`, only when it is non-blank) to the built origin's requests
+alone. The design page loads in a browser context of its own with no extra header, so its web
+fonts and map data load and no third party it calls ever sees the secret.
 
 ## The rule (a ledger rule, not code)
 

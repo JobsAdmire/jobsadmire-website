@@ -18,7 +18,9 @@
  * prerendered, so setting it on `npm start` changes nothing), start that build, and run the gate
  * with `NEXT_PUBLIC_SITE_FACE=preview`.
  *
- * Consumers: `e2e/seo.spec.ts` (`expectedRobots`); tested in `scripts/face.test.ts`.
+ * Consumers: `e2e/seo.spec.ts` (`expectedRobots`); `scripts/js-size.mjs` (`lighthouseConfigFor`,
+ * through tsx); `e2e/helpers/bypass.ts`'s `bypassWarning`, which the pixel harness, the
+ * placeholder counter and `js-size --routes` print. Tested in `scripts/face.test.ts`.
  */
 export type SiteFace = 'preview' | 'production';
 
