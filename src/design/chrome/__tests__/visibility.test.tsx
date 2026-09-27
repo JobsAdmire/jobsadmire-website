@@ -1,5 +1,22 @@
 import { describe, expect, it } from 'vitest';
 import { SiteChrome } from '../SiteChrome';
+import { getCollection, getOffice } from '@/content/collections';
+import {
+  Breadcrumbs,
+  ClosingCtaBand,
+  ContactCta,
+  EmptyState,
+  FaqBlock,
+  ImageSlot,
+  LogoMarquee,
+  MetricStrip,
+  NewsletterBand,
+  OfficeCard,
+  PostCard,
+  ProcessSteps,
+  StoreBadges,
+} from '@/design/blocks';
+import { BLOCK_STRINGS, testBundle } from '@/test/bundle';
 import { renderWithIntl } from '@/test/render';
 import trBundle from '@/content/local/bundle.tr.json';
 import { BundleSchema, type Bundle } from '../../../../contract/website-bundle.v1';
@@ -19,6 +36,12 @@ const DISPLAY_UTILITIES = new Set([
   'inline',
   'table',
   'contents',
+  // W122 (Task 5 addition): the display utilities W119's original list missed.
+  'inline-table',
+  'flow-root',
+  'list-item',
+  'table-row',
+  'table-cell',
 ]);
 
 /** W119: `hidden` only wins the cascade over a base display utility when that utility carries
@@ -61,6 +84,189 @@ describe('no chrome element pairs a bare `hidden` with an unprefixed display uti
       <SiteChrome locale="tr" bundle={bundle} variant={variant}>
         <div>content</div>
       </SiteChrome>,
+    );
+    const offenders = classNamesOf(container).filter(hasUnguardedHidden);
+    expect(offenders).toEqual([]);
+  });
+});
+
+// W122 addition (Task 5): the blocks folder has no ambient sweep like SiteChrome's, so this
+// builds one fixture bundle covering every collection a block reads (metrics/offices/blog)
+// and renders every block — every tone/variant/branch that composes a class string — once,
+// then runs the same token check over the combined DOM.
+const metricsRows = [
+  { key: 'placed', value: 470, text: null, suffix: '+', labelId: 'v.m1', unitId: null },
+  { key: 'countries', value: 13, text: null, suffix: '', labelId: 'v.m2', unitId: null },
+];
+const officeRows = [
+  {
+    key: 'antalya',
+    kind: 'hq',
+    cityId: 'v.city',
+    labelId: 'v.label',
+    addressId: 'v.addr',
+    addressLine2Id: 'v.addr2',
+    hoursId: 'v.hours',
+    footerLabelId: 'v.foot',
+    phone: '+905011240340',
+    whatsapp: '905011240340',
+    email: 'info@jobsadmire.com',
+    hours: { tz: 'Europe/Istanbul', days: [1, 2, 3, 4, 5], open: '09:00', close: '18:00' },
+    mapUrl: 'https://maps.google.com/?q=Antalya',
+  },
+];
+const blogRows = [
+  {
+    key: 'v-post',
+    slug: { tr: 'v-yazi', en: 'v-post' },
+    title: { tr: 'Başlık', en: 'Title' },
+    excerpt: { tr: 'Özet.', en: 'Excerpt.' },
+    category: 'workPermits' as const,
+    categoryLabelId: 'v.cat',
+    author: 'JobsAdmire Editorial',
+    publishedAt: '2026-01-12',
+    readMinutes: 5,
+    hasBody: { tr: true, en: true },
+    body: { tr: '# Gövde', en: '# Body' },
+  },
+];
+const blocksBundle = testBundle({
+  strings: {
+    ...BLOCK_STRINGS,
+    'v.m1': 'işe yerleştirilen çalışan',
+    'v.m2': 'ülke',
+    'v.city': 'Antalya, Türkiye',
+    'v.label': 'Merkez ofis',
+    'v.addr': 'Adnan Menderes Blv. 7/6',
+    'v.addr2': 'Muratpaşa, Antalya',
+    'v.hours': 'Pzt–Cum · 09:00–18:00 (TRT)',
+    'v.foot': 'Antalya · Merkez ofis',
+    'v.cat': 'İş izinleri',
+    'v.title': 'Başlık',
+    'v.body': 'Gövde metni.',
+    'v.askT': 'Sorunuz mu var?',
+    'v.askB': 'Ekibimize yazın.',
+    'v.wa': "WhatsApp'tan sorun",
+    'v.call': 'Bizi arayın',
+    'v.mail': 'E-posta gönderin',
+  },
+  collections: { metrics: metricsRows, offices: officeRows, blog: blogRows },
+});
+const office = getOffice(blocksBundle, 'antalya');
+const post = getCollection(blocksBundle, 'blog')[0];
+
+describe('no shared block pairs a bare `hidden` with an unprefixed display utility (W122 addition, Task 5)', () => {
+  it('every block, every tone/variant branch', () => {
+    const { container } = renderWithIntl(
+      <>
+        <ContactCta placement="page_cta" href="https://wa.me/905011240340" external>
+          WhatsApp
+        </ContactCta>
+        <ContactCta
+          placement="page_cta"
+          href={{ pathname: '/hire-workers', hash: '#request-form' }}
+        >
+          Object href
+        </ContactCta>
+        <FaqBlock
+          bundle={blocksBundle}
+          locale="tr"
+          items={[{ id: 'q1', q: 'Soru?', a: 'Cevap.' }]}
+          eyebrowId="v.title"
+          headingId="v.title"
+          bodyId="v.body"
+          askCard={{
+            titleId: 'v.askT',
+            bodyId: 'v.askB',
+            whatsappNumber: '905011240340',
+            whatsappText: 'Merhaba',
+            whatsappLabelId: 'v.wa',
+            phone: '+905011240340',
+            callLabelId: 'v.call',
+            email: 'info@jobsadmire.com',
+            emailLabelId: 'v.mail',
+          }}
+        />
+        <Breadcrumbs locale="tr" items={[{ name: 'Ana sayfa', href: '/' }]} tone="light" />
+        <Breadcrumbs locale="tr" items={[{ name: 'Ana sayfa', href: '/' }]} tone="dark" />
+        <ClosingCtaBand
+          bundle={blocksBundle}
+          locale="tr"
+          titleId="v.title"
+          bodyId="v.body"
+          primary={{ label: 'Talep', href: '/hire-workers' }}
+          secondary={{ label: 'WhatsApp', href: 'https://wa.me/905011240340', external: true }}
+          extra={[{ label: 'Ara', href: 'tel:+905011240340' }]}
+          ticks={['Tik 1', 'Tik 2']}
+          tone="navy"
+        />
+        <ClosingCtaBand
+          bundle={blocksBundle}
+          locale="tr"
+          titleId="v.title"
+          primary={{ label: 'Talep', href: '/hire-workers' }}
+          tone="green"
+        />
+        <ProcessSteps
+          bundle={blocksBundle}
+          locale="tr"
+          steps={[{ n: 1, titleId: 'v.title', bodyId: 'v.body', when: 'Şimdi' }]}
+          variant="cards"
+        />
+        <ProcessSteps
+          bundle={blocksBundle}
+          locale="tr"
+          steps={[{ n: 1, titleId: 'v.title', bodyId: 'v.body' }]}
+          variant="plain"
+        />
+        <MetricStrip
+          bundle={blocksBundle}
+          locale="tr"
+          metrics={['placed', 'countries']}
+          tone="light"
+        />
+        <MetricStrip
+          bundle={blocksBundle}
+          locale="tr"
+          metrics={['placed', 'countries']}
+          tone="dark"
+        />
+        <OfficeCard bundle={blocksBundle} locale="tr" office={office} />
+        <ImageSlot slot="v-empty" alt="Alt text" width={4} height={3} />
+        <ImageSlot slot="v-lcp" lcp alt="" width={4} height={3} />
+        <EmptyState
+          title="Boş"
+          body="Gövde."
+          cta={{ label: 'Ara', href: 'tel:+905011240340' }}
+          tone="light"
+        />
+        <EmptyState
+          title="Boş"
+          tone="dark"
+          cta={{ label: 'Aç', href: { pathname: '/hire-workers', hash: '#request-form' } }}
+        />
+        <PostCard bundle={blocksBundle} locale="tr" post={post} variant="card" />
+        <PostCard bundle={blocksBundle} locale="tr" post={post} variant="row" />
+        <PostCard
+          bundle={blocksBundle}
+          locale="tr"
+          post={post}
+          variant="featured"
+          headingLevel={2}
+        />
+        <NewsletterBand bundle={blocksBundle} locale="tr" active id="v-newsletter">
+          <span>form</span>
+        </NewsletterBand>
+        <StoreBadges
+          bundle={blocksBundle}
+          locale="tr"
+          android="https://play.google.com/x"
+          ios="https://apps.apple.com/x"
+        />
+        <LogoMarquee
+          logos={[{ src: '/brand/ja-mark.png', alt: 'JobsAdmire', width: 88, height: 88 }]}
+        />
+      </>,
     );
     const offenders = classNamesOf(container).filter(hasUnguardedHidden);
     expect(offenders).toEqual([]);
