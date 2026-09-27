@@ -268,7 +268,7 @@ export function HeaderCtas({ table }: { table: CtaTable }): JSX.Element;   // us
 export function Header({ locale, bundle }: { locale: Locale; bundle: Bundle }): JSX.Element; // `primaryCta` prop and `ChromeCta` type REMOVED (W17)
 //   desktop row = navGroup(bundle,'desktopNav') minus the four promoted routes (/blog, /careers, /verify, /partner-with-us); hamburger = navGroup(bundle,'hamburger')
 // SiteChrome({ locale, bundle, variant?, children }) unchanged. SlimBar/Footer render slimBarRight / footerEmployers+footerCompany
-//   through navGroup() — the portal login is the groups' `external` row (W36); no chrome file hard-codes a route list except the footer legal pair.
+//   through navGroup() — the portal login is the groups' INTERNAL `/portal-login` row, `external: false` (W36 + W88, as built 2026-09-26); no chrome file hard-codes a route list except the footer legal pair.
 
 // src/lib/seo/routes.ts
 export type StaticPathname = Exclude<keyof typeof pathnames, `${string}[${string}`>;   // exported (was local to sitemap.ts) — Task 4's type guards use it (W37)
@@ -288,7 +288,7 @@ tokens.type.nav = { mobile: 13.5, tablet: 12, desktop: 11 };            // heade
 tokens.layout.headerRowFrom = 901; tokens.layout.socialRailFrom = 1101;  // = breakpoint.lg / breakpoint.xl
 // globals.css: `--fs-nav` (13.5px, 12px ≥901, 11px ≥1101) exposed as the `text-nav` utility via `@theme inline { --text-nav: var(--fs-nav) }`
 
-// src/messages/{tr,en}.json — additive: sys.nav.legal ("Yasal" / "Legal") — aria-label of the footer's Privacy/Terms nav. W39: Task 5's sys.nav block is { main, close, legal, breadcrumbs }.
+// src/messages/{tr,en}.json — additive: sys.nav.legal ("Yasal" / "Legal") — aria-label of the footer's Privacy/Terms nav. W39 + W80 (as built): Task 5's sys.nav block is { main, close, home, legal, breadcrumbs } — `home` moved here from the WP1 leaf `sys.home` in Task 3; never drop it.
 
 // e2e/chrome.spec.ts — four cases (chrome variants, 404 inside chrome, 901/900 threshold + no overflow at 901/1000/1100, the CTA follows the page); width sweep gains 901.
 // src/lib/seo/routes.test.ts line 2 after this task: import { absoluteUrl, localeAlternates, NOINDEX_PATHNAMES, noindexExternalPaths } from './routes';
@@ -795,3 +795,9 @@ Refreshed after the fix round lands: `idScope?`/`id?`/`headingLevel?` props on F
 - Message keys: `sys.form.errors.form` added; `sys.form.consent.link` and `sys.form.fallback.retry` removed; `sys.form.*` must never speak as "we" (`src/messages/voice.test.ts`).
 - Additions: `FormShell` props `idScope?: string`, `headingLevel?: 2|3|4`, `id?: string`; `FallbackPanel` `headingLevel?`; `Turnstile` `id` + `ref` with exports `TurnstileHandle`, `useTurnstileReset`; `FormErrorsValue` `register?`/`idScope?` with exports `useFieldId(name)`, `useRegisterField(name)`; `Field` props `minLength`, `maxLength`, `defaultValue`, `disabled` (the select branch ignores `placeholder`, W111); constants/types `MAX_UPLOAD_BYTES`, `FormActionContext`, `FORM_FALLBACK_KINDS`; new modules `src/forms/echo.ts` (`echoValues`, `isInternalKey`), `src/forms/visitor.ts`, `src/forms/client/guardAction.ts`; `src/forms/env.ts` exports `type DoorConfig`; `src/forms/uploads.ts` exports `UPLOAD_TIMEOUT_MS`.
 - Ids: every internal id derives from `idScope ?? formKey` — `f-<scope>-consent`, `f-<scope>-honeypot`, `f-<scope>-turnstile`, fields `f-<scope>-<name>`; a page with two shells of the same key passes distinct `idScope`s.
+
+## Task 3 — as built (2026-09-27, after review + fix round 1 + clean re-review; HEAD 6a22c01)
+
+- **Additions to the frozen block:** `src/i18n/client-messages.ts` — `SERVER_ONLY_SYS`, `pickClientMessages(messages: AbstractIntlMessages): { sys: AbstractIntlMessages }` (W90: the client provider receives `sys.*` minus `sys.legal.*`/`sys.seo.*`; server components still read both); `sys.nav.home` in both locale files (W80 — the leaf `sys.home` no longer exists; `messages.test.ts` asserts it); portal nav rows `{ href: '/portal-login', external: false }` in `hamburger`, `slimBarRight`, `footerEmployers` (W88); `ContactLink` props are `Omit<AnchorHTMLAttributes<HTMLAnchorElement>, 'href' | 'onClick' | 'onAuxClick'> & { href: string; placement: ContactPlacement; children: ReactNode }` and it fires the event on middle-click (`auxclick`, button 1) as well as click; `e2e/chrome.spec.ts` has five cases (the fifth = W119 visibility: header secondary CTA hidden at 1100 / visible at 1101, slim-bar phone hidden at 900 / visible at 901).
+- **Rules every consumer follows:** W119/W122 — never pair `hidden` with an unprefixed display utility and never append a utility for a property the base string already sets at the same variant (`buttonClassName` emits `inline-flex`); hide with `max-*:hidden`; `src/design/chrome/__tests__/visibility.test.tsx` guards the chrome. W121 — `CTA_BY_PATHNAME` never gets a dynamic key; detail pages render `DEFAULT_CTAS`. W120 — JS figures are Lighthouse `resource-summary:script:size` on the preview; the local proxy (gzip-9 over the `<script src>` set, excluding the `noModule` polyfill) is 167,097 B at 6a22c01.
+- The SlimBar's module-private `PORTAL` set only styles the `/portal-login` row the group emits — no anchor, URL or label id is hard-coded (W36 holds). Everything else in the Task 3 block above is as written.

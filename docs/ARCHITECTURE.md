@@ -130,7 +130,7 @@ Full catalogue (I1–I20), contracts, and token rotation runbook: `docs/INTEGRAT
 
 - **Operations content bundle** — server-only `fetch()` to `${OPS_API_URL}/api/website/v1/bundle?locale=...`, Bearer `OPS_WEBSITE_READ_TOKEN` (`src/content/adapter.ts`); gated by `CONTENT_SOURCE=OPS`.
 - **Operations → Website revalidate webhook** — `POST /api/revalidate`, Bearer `REVALIDATE_SECRET` (`src/app/api/revalidate/route.ts`).
-- **Forms → Operations intake** — designed, not yet built; see "Forms flow" below.
+- **Forms → Operations intake** — built in WP2a Task 2: server actions post through `src/forms/post.ts` to `${OPS_API_URL}/api/website/v1/forms/:formKey` with Bearer `OPS_WEBSITE_WRITE_TOKEN`; see § Forms flow (D11) below.
 - **Google Tag Manager / GA4 / Google Ads conversion tracking** — `NEXT_PUBLIC_GTM_ID` / `NEXT_PUBLIC_GA4_ID` / `NEXT_PUBLIC_ADS_ID` + `NEXT_PUBLIC_ADS_CONVERSION_LABEL` (`src/analytics/GtmLoader.tsx`, `src/content/pure.ts`).
 - **Cloudflare Turnstile** — `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, site key only; the secret key is held by Operations, not this repo.
 - **Sentry** — not yet integrated (no `@sentry/*` dependency); see "Sentry — not yet wired" below.
