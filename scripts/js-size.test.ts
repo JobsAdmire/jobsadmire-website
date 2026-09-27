@@ -5,6 +5,7 @@ import { describe, expect, it } from 'vitest';
 import {
   collectArgs,
   formatJsSizeTable,
+  formatMethodLine,
   LAZY_LINE,
   newRunFiles,
   parseJsSizeArgs,
@@ -81,6 +82,21 @@ describe('js-size (W13 amended)', () => {
 
   it('ignores files that are not Lighthouse results', () => {
     expect(summarizeLhrs([{ not: 'an lhr' }, null, 42])).toEqual([]);
+  });
+
+  it('states its method and the host it measured on (W136)', () => {
+    const line = formatMethodLine([
+      lhr('http://localhost:3000/en', 172_509, 1400, 0.98),
+      lhr('http://localhost:3000/', 172_509, 1400, 0.98),
+      { not: 'an lhr' },
+    ]);
+    expect(line).toContain(
+      'Lighthouse resource-summary:script:size, transfer bytes on localhost:3000',
+    );
+    expect(line).toContain('W136');
+    expect(formatMethodLine([lhr('https://x.vercel.app/en', 1, 1, 1)])).toContain(
+      'transfer bytes on x.vercel.app',
+    );
   });
 
   it('prints a markdown table the ledger can paste', () => {

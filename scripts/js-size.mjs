@@ -74,6 +74,24 @@ export function summarizeLhrs(lhrs) {
 
 const n = (v) => (typeof v === 'number' ? v.toLocaleString('en-US') : '—');
 
+/** W136: the line printed above the table — the metric (the one the gate asserts, so the ledger's
+ *  JS figure) and the host it was measured on, which decides whether the figure binds.
+ *  @param {unknown[]} lhrs @returns {string} */
+export function formatMethodLine(lhrs) {
+  const hosts = new Set();
+  for (const lhr of lhrs) {
+    if (!isLhr(lhr)) continue;
+    const url = lhr.finalDisplayedUrl ?? lhr.requestedUrl;
+    if (typeof url === 'string') hosts.add(new URL(url).host);
+  }
+  const on = [...hosts].sort().join(', ') || 'an unknown host';
+  return (
+    `method: Lighthouse resource-summary:script:size, transfer bytes on ${on} — worst run per ` +
+    'route, post-hydration chunks and response headers included; the figure the ledger ' +
+    'records (W136): the run against the Vercel preview is binding, a local run diagnostic'
+  );
+}
+
 /** @param {JsSizeRow[]} rows */
 export function formatJsSizeTable(rows) {
   const lines = [
@@ -239,6 +257,7 @@ function main() {
     ? `\ngate: per-route script size for --routes (W94, informational, never asserted) — ${dir}\n\n`
     : `\ngate: per-route script size (W13 amended) — paste into the ledger\n\n`;
   process.stdout.write(heading);
+  process.stdout.write(`${formatMethodLine(lhrs)}\n\n`);
   process.stdout.write(`${formatJsSizeTable(rows)}\n\n`);
 }
 

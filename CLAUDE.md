@@ -34,7 +34,7 @@ Decisions below are cited as **D\<n\>**, rationale in `docs/superpowers/specs/20
 | Retired secrets log; deploy discipline                           | `docs/DEPLOYMENT.md` §§ Retired secrets log / Deploy discipline                                                                                     |
 | Unbuilt / pending features                                       | `docs/pending/README.md`                                                                                                                            |
 | Decision rationale (D\<n\>) and WP1 rulings (R\<n\>)             | `docs/superpowers/specs/2026-09-18-website-programme-design.md`; `docs/superpowers/plans/2026-09-18-wp1-foundation-rulings.md`                      |
-| `docs/superpowers/plans/2026-09-20-wp2-pixel-harness.md`         | The D27 pixel harness (`npm run pixel`): the two-iteration cap, the delta taxonomy, the ledger row                                                  |
+| D27 pixel harness: two-iteration cap, delta taxonomy, ledger row | `docs/superpowers/plans/2026-09-20-wp2-pixel-harness.md` (`npm run pixel`)                                                                          |
 | Design source reference: pages, tokens, copy, CRM feed contracts | `design-package/README.md`, `design-package/docs/project-brief.md`, `design-package/docs/crm-feed.md`, `design-package/docs/translation-process.md` |
 | Programme status, branch, next steps                             | `docs/WEBSITE-HANDOFF.md` (living copy on branch `wp2/foundation`)                                                                                  |
 
