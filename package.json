@@ -16,7 +16,8 @@
     "e2e": "playwright test",
     "gate": "bash scripts/gate.sh",
     "content:import": "tsx scripts/import-design-package.ts",
-    "redirects:build": "tsx scripts/build-redirects.ts"
+    "redirects:build": "tsx scripts/build-redirects.ts",
+    "assets:flags": "tsx scripts/build-flags.ts"
   },
   "dependencies": {
     "@next/third-parties": "^16.3.5",
@@ -40,6 +41,7 @@
     "@vitejs/plugin-react": "^6.1.1",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
+    "flag-icons": "^7.5.0",
     "jsdom": "^29.1.1",
     "prettier": "^3.9.8",
     "tailwindcss": "^4",
