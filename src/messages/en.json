@@ -9,7 +9,8 @@
       "main": "Main menu",
       "close": "Close",
       "home": "Home",
-      "legal": "Legal"
+      "legal": "Legal",
+      "breadcrumbs": "Breadcrumb"
     },
     "marquee": {
       "pause": "Pause",
@@ -17,6 +18,9 @@
     },
     "whatsapp": {
       "prefill": "Hello JobsAdmire, "
+    },
+    "blocks": {
+      "readMinutes": "{n, plural, one {# min read} other {# min read}}"
     },
     "languageHint": {
       "body": "This page is also available in English.",

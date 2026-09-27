@@ -9,7 +9,8 @@
       "main": "Ana menü",
       "close": "Kapat",
       "home": "Ana sayfa",
-      "legal": "Yasal"
+      "legal": "Yasal",
+      "breadcrumbs": "Sayfa yolu"
     },
     "marquee": {
       "pause": "Duraklat",
@@ -17,6 +18,9 @@
     },
     "whatsapp": {
       "prefill": "Merhaba JobsAdmire, "
+    },
+    "blocks": {
+      "readMinutes": "{n, plural, one {# dk okuma} other {# dk okuma}}"
     },
     "languageHint": {
       "body": "This page is also available in English.",
