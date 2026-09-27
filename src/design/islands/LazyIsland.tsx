@@ -5,43 +5,53 @@ import { useInView } from './useInView';
 export type LazyIslandProps<P extends object> = {
   load: () => Promise<{ default: ComponentType<P> }>;
   props: P;
+  /** DOM-identical to the island's own initial state: the server sends it, and it shows until
+   *  the wrapper first nears the viewport, while the chunk loads, and for good if it fails. */
   fallback: ReactNode;
+  /** How far outside the viewport loading starts (`IntersectionObserver` syntax). */
   rootMargin?: string;
-  ssr?: boolean;
 };
 
-/** Defers a heavy island's own module (the calculator, the blog search/TOC — W13 amended)
- *  until it is near the viewport, without depending on `next/dynamic`'s build-time split for
- *  the "on viewport" half: `useInView` (W85) gates when `load()` first runs, since
- *  `React.lazy` does not call its loader until the component it wraps is actually rendered.
- *  `fallback` must be DOM identical to the real island's own initial state — it is what
- *  renders first (and, when `ssr` is true, what the server sends), so there is nothing to
- *  visually swap once the real island mounts. `ssr` (default `true`, matching `next/dynamic`)
- *  controls whether `fallback` renders eagerly, i.e. takes part in the very first paint, or
- *  only appears once the element has actually been observed. */
+/** What a failed `load()` resolves to instead (W132): a chunk error after a deploy keeps the
+ *  fallback on the page rather than reaching the route's error boundary. */
+function fallbackModule<P extends object>(fallback: ReactNode): { default: ComponentType<P> } {
+  return {
+    default: function LoadFailed() {
+      return <>{fallback}</>;
+    },
+  };
+}
+
+/** Defers a heavy island's own module (the calculator, the blog search/TOC — W13 amended) until
+ *  its wrapper first comes within `rootMargin` of the viewport, without depending on
+ *  `next/dynamic`'s build-time split for the "on viewport" half (W85, W132). `useInView` with
+ *  `once` gates when `load()` first runs, since `React.lazy` does not call its loader until the
+ *  component it wraps is rendered. Until then `fallback` renders — on the server and on the
+ *  client alike; after that the island is loaded once and stays mounted for this component's
+ *  life, so scrolling away never unmounts it (the calculator keeps its inputs). */
 export function LazyIsland<P extends object>({
   load,
   props,
   fallback,
   rootMargin = '200px',
-  ssr = true,
 }: LazyIslandProps<P>) {
-  const [ref, inView] = useInView<HTMLDivElement>({ rootMargin });
-  // `useState`'s lazy initializer runs exactly once (on mount), never again: a fresh
-  // `lazy(load)` on every render would remount the Suspense boundary (and re-invoke `load`)
-  // instead of reusing the same lazy component reference. `react-hooks/refs` forbids reading
-  // a ref's `.current` during render even to lazy-init it, so this is the sanctioned idiom.
-  const [LazyComponent] = useState<ComponentType<P>>(() => lazy(load));
+  const [ref, inView] = useInView<HTMLDivElement>({ rootMargin, once: true });
+  // `useState`'s lazy initializer runs exactly once (on mount): a fresh `lazy()` on every
+  // render would remount the Suspense boundary and re-invoke `load`. `react-hooks/refs` forbids
+  // reading a ref's `.current` during render even to lazy-init it, so this is the idiom.
+  const [Island] = useState<ComponentType<P>>(() =>
+    lazy(() => load().catch(() => fallbackModule<P>(fallback))),
+  );
 
   return (
     <div ref={ref}>
       {inView ? (
         <Suspense fallback={fallback}>
-          <LazyComponent {...props} />
+          <Island {...props} />
         </Suspense>
-      ) : ssr ? (
+      ) : (
         fallback
-      ) : null}
+      )}
     </div>
   );
 }

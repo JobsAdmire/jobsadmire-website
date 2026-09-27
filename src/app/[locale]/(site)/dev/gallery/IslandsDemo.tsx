@@ -2,6 +2,7 @@
 import { useState } from 'react';
 import {
   BottomSheet,
+  LazyIsland,
   PrintButton,
   ProgressBar,
   RangeSlider,
@@ -99,6 +100,13 @@ export function IslandsDemo() {
         </Button>
         <PrintButton label="Print this block" />
       </div>
+      {/* W132: the fallback is DOM-identical to the counter's initial state; the counter loads
+          once its wrapper is within 200px of the viewport and keeps its count after that. */}
+      <LazyIsland
+        load={() => import('./LazyCounter')}
+        props={{ label: 'LazyIsland clicks' }}
+        fallback={<Button variant="secondary">{'LazyIsland clicks: 0'}</Button>}
+      />
       <BottomSheet
         open={sheet}
         onClose={() => setSheet(false)}

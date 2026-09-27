@@ -1,17 +1,22 @@
-import { act, render, screen } from '@testing-library/react';
+import { act, fireEvent, render, screen } from '@testing-library/react';
+import { Component, useState, type ReactNode } from 'react';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { LazyIsland } from '../LazyIsland';
 
-/** jsdom has no IntersectionObserver; task-6-additions.md calls for tests with a mocked one. */
+/** jsdom has no IntersectionObserver; task-6-additions.md calls for tests with a mocked one.
+ *  Like the real one, it records its options and delivers entries only while it still
+ *  observes something. */
 class MockIntersectionObserver implements IntersectionObserver {
   static instances: MockIntersectionObserver[] = [];
   readonly root: Element | Document | null = null;
   readonly rootMargin: string = '';
   readonly thresholds: ReadonlyArray<number> = [];
+  readonly options: IntersectionObserverInit | undefined;
   private callback: IntersectionObserverCallback;
   elements = new Set<Element>();
-  constructor(callback: IntersectionObserverCallback) {
+  constructor(callback: IntersectionObserverCallback, options?: IntersectionObserverInit) {
     this.callback = callback;
+    this.options = options;
     MockIntersectionObserver.instances.push(this);
   }
   observe(el: Element) {
@@ -27,12 +32,34 @@ class MockIntersectionObserver implements IntersectionObserver {
     return [];
   }
   trigger(isIntersecting: boolean) {
+    if (!this.elements.size) return;
     this.callback([{ isIntersecting } as IntersectionObserverEntry], this);
   }
 }
 
 function Real({ label }: { label: string }) {
   return <button>{label}</button>;
+}
+
+function Counter({ label }: { label: string }) {
+  const [count, setCount] = useState(0);
+  return <button onClick={() => setCount((c) => c + 1)}>{`${label} ${count}`}</button>;
+}
+
+class Boundary extends Component<
+  { children: ReactNode; onError: (error: unknown) => void },
+  { failed: boolean }
+> {
+  state = { failed: false };
+  static getDerivedStateFromError() {
+    return { failed: true };
+  }
+  componentDidCatch(error: unknown) {
+    this.props.onError(error);
+  }
+  render() {
+    return this.state.failed ? <p>error boundary</p> : this.props.children;
+  }
 }
 
 describe('LazyIsland', () => {
@@ -42,6 +69,7 @@ describe('LazyIsland', () => {
   });
   afterEach(() => {
     vi.unstubAllGlobals();
+    vi.restoreAllMocks();
   });
 
   it('renders the fallback until in view, then React.lazy-loads the real component with its props', async () => {
@@ -63,20 +91,46 @@ describe('LazyIsland', () => {
     expect(screen.getByRole('button', { name: 'X' })).toBeInTheDocument();
   });
 
-  it('renders nothing (not even the fallback) until observed when ssr is false', async () => {
-    const load = vi.fn().mockResolvedValue({ default: Real });
-    render(
-      <LazyIsland
-        load={load}
-        props={{ label: 'Loaded' }}
-        fallback={<span>Loading…</span>}
-        ssr={false}
-      />,
-    );
+  it('loads once and stays mounted: leaving the viewport keeps the island and its state (W132)', async () => {
+    const load = vi.fn().mockResolvedValue({ default: Counter });
+    render(<LazyIsland load={load} props={{ label: 'Count' }} fallback={<span>Loading…</span>} />);
+    const observer = MockIntersectionObserver.instances[0]!;
+    act(() => observer.trigger(true));
+    fireEvent.click(await screen.findByRole('button', { name: 'Count 0' }));
+    expect(screen.getByRole('button', { name: 'Count 1' })).toBeInTheDocument();
+    act(() => observer.trigger(false));
+    expect(screen.getByRole('button', { name: 'Count 1' })).toBeInTheDocument();
     expect(screen.queryByText('Loading…')).toBeNull();
-    act(() => {
-      MockIntersectionObserver.instances[0]!.trigger(true);
+    expect(observer.elements.size).toBe(0);
+    expect(load).toHaveBeenCalledTimes(1);
+  });
+
+  it('passes rootMargin to the observer (default 200px)', () => {
+    const load = vi.fn().mockResolvedValue({ default: Real });
+    render(<LazyIsland load={load} props={{ label: 'a' }} fallback={null} />);
+    render(<LazyIsland load={load} props={{ label: 'b' }} fallback={null} rootMargin="480px" />);
+    expect(MockIntersectionObserver.instances.map((o) => o.options?.rootMargin)).toEqual([
+      '200px',
+      '480px',
+    ]);
+  });
+
+  it('keeps the fallback when load() rejects, without reaching an error boundary', async () => {
+    vi.spyOn(console, 'error').mockImplementation(() => {});
+    const load = vi.fn().mockRejectedValue(new Error('ChunkLoadError'));
+    const onError = vi.fn();
+    render(
+      <Boundary onError={onError}>
+        <LazyIsland load={load} props={{ label: 'x' }} fallback={<span>Loading…</span>} />
+      </Boundary>,
+    );
+    act(() => MockIntersectionObserver.instances[0]!.trigger(true));
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 0));
     });
-    expect(await screen.findByRole('button', { name: 'Loaded' })).toBeInTheDocument();
+    expect(load).toHaveBeenCalledTimes(1);
+    expect(onError).not.toHaveBeenCalled();
+    expect(screen.queryByText('error boundary')).toBeNull();
+    expect(screen.getByText('Loading…')).toBeInTheDocument();
   });
 });
