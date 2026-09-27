@@ -1,5 +1,5 @@
 'use client';
-import type { ChangeEvent } from 'react';
+import { useState, type ChangeEvent, type KeyboardEvent } from 'react';
 
 export type StepperProps = {
   id: string;
@@ -18,10 +18,15 @@ export type StepperProps = {
 const clamp = (n: number, min: number, max: number) => Math.min(max, Math.max(min, n));
 
 const BTN =
-  'inline-flex min-h-[44px] min-w-[44px] items-center justify-center border border-border-1 bg-white text-body font-extrabold text-ink transition-colors hover:bg-pale-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe disabled:cursor-not-allowed disabled:opacity-40';
+  'inline-flex min-h-[44px] min-w-[44px] items-center justify-center border border-border-1 bg-white text-body font-extrabold text-ink transition-colors hover:bg-pale-1 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe aria-disabled:cursor-not-allowed aria-disabled:opacity-40';
 
-/** Fully controlled: the prop is the only state, every change is clamped into [min, max].
- *  No local text state, so there is no setState-in-effect to keep in sync (R27's rule). */
+/** W131. `value` is the committed number. While the field has focus it holds a draft string,
+ *  set only in event handlers (no setState in an effect, R27), so `''` and out-of-range text can
+ *  be typed through; the draft is committed — rounded and clamped into [min, max] — on blur and
+ *  on Enter, and a field left empty reverts to the committed value. The −/+ buttons and
+ *  ArrowUp/ArrowDown step from the current number and clamp at once. Bounds compare against
+ *  `min`/`max` directly, so an off-step value still reaches them; a button at its bound is
+ *  `aria-disabled` and does nothing — never `disabled`, which would drop keyboard focus. */
 export function Stepper({
   id,
   label,
@@ -35,11 +40,35 @@ export function Stepper({
   hint,
   className,
 }: StepperProps) {
+  const [draft, setDraft] = useState<string | null>(null);
   const hintId = hint ? `${id}-hint` : undefined;
-  const onInput = (e: ChangeEvent<HTMLInputElement>) => {
-    if (e.target.value === '') return; // mid-edit: keep the last committed value
-    const n = Number(e.target.value);
-    if (Number.isFinite(n)) onChange(clamp(Math.round(n), min, max));
+  const parse = (text: string) => {
+    if (text.trim() === '') return null;
+    const n = Number(text);
+    return Number.isFinite(n) ? clamp(Math.round(n), min, max) : null;
+  };
+  // What −/+ and the arrow keys step from: the typed number while there is one, else the prop.
+  const current = (draft === null ? null : parse(draft)) ?? value;
+  const atMin = current <= min;
+  const atMax = current >= max;
+  const set = (next: number) => {
+    setDraft(null);
+    if (next !== value) onChange(next);
+  };
+  const commit = () => {
+    if (draft === null) return;
+    const typed = parse(draft);
+    if (typed === null) setDraft(null);
+    else set(typed);
+  };
+  const stepBy = (delta: number) => set(clamp(current + delta, min, max));
+  const onKeyDown = (e: KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      commit();
+    } else if (e.key === 'ArrowUp' || e.key === 'ArrowDown') {
+      e.preventDefault(); // the native step would bypass the clamp and the commit
+      stepBy(e.key === 'ArrowUp' ? step : -step);
+    }
   };
   return (
     <div
@@ -54,8 +83,10 @@ export function Stepper({
         <button
           type="button"
           aria-label={decrementLabel}
-          disabled={value - step < min}
-          onClick={() => onChange(clamp(value - step, min, max))}
+          aria-disabled={atMin || undefined}
+          onClick={() => {
+            if (!atMin) stepBy(-step);
+          }}
           className={`${BTN} rounded-l-input`}
         >
           <span aria-hidden="true">−</span>
@@ -67,16 +98,20 @@ export function Stepper({
           min={min}
           max={max}
           step={step}
-          value={value}
+          value={draft ?? String(value)}
           aria-describedby={hintId}
-          onChange={onInput}
+          onChange={(e: ChangeEvent<HTMLInputElement>) => setDraft(e.target.value)}
+          onBlur={commit}
+          onKeyDown={onKeyDown}
           className="w-20 border-y border-border-1 text-center text-body font-extrabold tabular-nums focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-blue-safe"
         />
         <button
           type="button"
           aria-label={incrementLabel}
-          disabled={value + step > max}
-          onClick={() => onChange(clamp(value + step, min, max))}
+          aria-disabled={atMax || undefined}
+          onClick={() => {
+            if (!atMax) stepBy(step);
+          }}
           className={`${BTN} rounded-r-input`}
         >
           <span aria-hidden="true">+</span>
