@@ -15,17 +15,35 @@ export type Cta = {
   variant?: ButtonVariant;
 };
 
-const TONE = {
-  navy: 'bg-navy',
-  gradient: 'bg-gradient-to-br from-ink to-navy',
-  green: 'bg-success-text',
-} as const;
+/** Per tone: the surface, the body/tick colour and the default face of the secondary/extra
+ *  CTAs. The green surface (#12813c) is too light for the navy tones' softened white and their
+ *  translucent-white `inverse` face, so it sets full-white copy (4.97:1) and `inverse-dark`
+ *  (≈5.6:1) — W128(b), a D20 delta. */
+const TONE: Record<
+  'navy' | 'gradient' | 'green',
+  { surface: string; body: string; ticks: string; face: ButtonVariant }
+> = {
+  navy: { surface: 'bg-navy', body: 'text-white/70', ticks: 'text-white/75', face: 'inverse' },
+  gradient: {
+    surface: 'bg-gradient-to-br from-ink to-navy',
+    body: 'text-white/70',
+    ticks: 'text-white/75',
+    face: 'inverse',
+  },
+  green: {
+    surface: 'bg-success-text',
+    body: 'text-white',
+    ticks: 'text-white',
+    face: 'inverse-dark',
+  },
+};
 
 /** The closing band every page ends on (Homepage contact strip, Blog's "let's just do it",
  *  About's green band): a dark rounded card with h2 + body, the primary CTA and the
  *  WhatsApp/Telegram/call buttons. Pages mount it inside `<Section tone="band">`. Every CTA
  *  renders through `ContactCta` (placement `page_cta`): a contact href is tracked, any
- *  other href is a plain `Button` link. */
+ *  other href is a plain `Button` link. Secondary/extra CTAs default to the tone's face —
+ *  `inverse` on navy/gradient, `inverse-dark` on green (W128b). */
 export function ClosingCtaBand({
   bundle,
   locale,
@@ -52,6 +70,7 @@ export function ClosingCtaBand({
   id?: string;
 }) {
   const t = makeTf(bundle, locale);
+  const look = TONE[tone];
   const cta = (c: Cta, fallback: ButtonVariant, key: string) => (
     <ContactCta
       key={key}
@@ -66,7 +85,7 @@ export function ClosingCtaBand({
   return (
     <div
       id={id}
-      className={`relative overflow-hidden rounded-hero px-6 py-8 text-white lg:px-11 lg:py-10 ${TONE[tone]}`}
+      className={`relative overflow-hidden rounded-hero px-6 py-8 text-white lg:px-11 lg:py-10 ${look.surface}`}
     >
       <div
         aria-hidden="true"
@@ -75,9 +94,11 @@ export function ClosingCtaBand({
       <div className="relative flex flex-wrap items-center justify-between gap-8">
         <div className="max-w-[600px]">
           <h2 className="text-h2 m-0 mb-2 text-white">{t(titleId)}</h2>
-          {bodyId && <p className="text-body m-0 text-white/70">{t(bodyId)}</p>}
+          {bodyId && <p className={`text-body m-0 ${look.body}`}>{t(bodyId)}</p>}
           {ticks.length > 0 && (
-            <ul className="text-body-sm m-0 mt-4 flex list-none flex-col gap-2 p-0 text-white/75 md:hidden">
+            <ul
+              className={`text-body-sm m-0 mt-4 flex list-none flex-col gap-2 p-0 ${look.ticks} md:hidden`}
+            >
               {ticks.map((tick) => (
                 <li key={tick} className="flex items-start gap-2">
                   <CheckIcon className="mt-0.5 shrink-0 text-success" />
@@ -89,8 +110,8 @@ export function ClosingCtaBand({
         </div>
         <div className="flex flex-wrap gap-3">
           {cta(primary, 'primary', 'primary')}
-          {secondary && cta(secondary, 'inverse', 'secondary')}
-          {extra.map((c, i) => cta(c, 'inverse', `extra-${i}`))}
+          {secondary && cta(secondary, look.face, 'secondary')}
+          {extra.map((c, i) => cta(c, look.face, `extra-${i}`))}
         </div>
       </div>
     </div>

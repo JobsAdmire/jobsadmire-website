@@ -1,6 +1,7 @@
 import { screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { ClosingCtaBand } from '../ClosingCtaBand';
+import { buttonClassName } from '@/design/primitives';
 import { testBundle } from '@/test/bundle';
 import { renderWithIntl } from '@/test/render';
 
@@ -59,4 +60,54 @@ describe('ClosingCtaBand', () => {
     expect(screen.getByRole('link', { name: 'Go' })).toHaveAttribute('href', '/en/contact');
     expect(screen.queryByRole('list')).toBeNull();
   });
+
+  // W128(b), a D20 delta: on the green surface (#12813c) the navy tones' softened white copy and
+  // translucent-white face fail contrast (body 3.25:1, inverse CTAs 4.13:1).
+  const full = (tone: 'navy' | 'gradient' | 'green') => (
+    <ClosingCtaBand
+      bundle={bundle}
+      locale="tr"
+      titleId="x.title"
+      bodyId="x.body"
+      primary={{ label: 'İşçi talep edin', href: '/hire-workers' }}
+      secondary={{ label: 'WhatsApp', href: 'https://wa.me/905011240340', external: true }}
+      extra={[{ label: 'Ofisi arayın', href: 'tel:+905011240340' }]}
+      ticks={['İŞKUR lisanslı', '24 saat içinde teklif']}
+      tone={tone}
+    />
+  );
+
+  it('green tone: full-white body and ticks, inverse-dark secondary and extra CTAs', () => {
+    renderWithIntl(full('green'));
+    const body = screen.getByText('Doğrudan görüşün.');
+    expect(body).toHaveClass('text-white');
+    expect(body).not.toHaveClass('text-white/70');
+    const ticks = screen.getByRole('list');
+    expect(ticks).toHaveClass('text-white');
+    expect(ticks).not.toHaveClass('text-white/75');
+    expect(screen.getByRole('link', { name: 'WhatsApp' }).className).toBe(
+      buttonClassName('inverse-dark'),
+    );
+    expect(screen.getByRole('link', { name: 'Ofisi arayın' }).className).toBe(
+      buttonClassName('inverse-dark'),
+    );
+    expect(screen.getByRole('link', { name: 'İşçi talep edin' }).className).toBe(
+      buttonClassName('primary'),
+    );
+  });
+
+  it.each(['navy', 'gradient'] as const)(
+    '%s tone keeps the inverse face and the softened copy',
+    (tone) => {
+      renderWithIntl(full(tone));
+      expect(screen.getByText('Doğrudan görüşün.')).toHaveClass('text-white/70');
+      expect(screen.getByRole('list')).toHaveClass('text-white/75');
+      expect(screen.getByRole('link', { name: 'WhatsApp' }).className).toBe(
+        buttonClassName('inverse'),
+      );
+      expect(screen.getByRole('link', { name: 'Ofisi arayın' }).className).toBe(
+        buttonClassName('inverse'),
+      );
+    },
+  );
 });

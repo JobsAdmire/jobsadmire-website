@@ -267,11 +267,20 @@ export function Wp2Blocks({ bundle, locale }: { bundle: Bundle; locale: Locale }
         />
       </Section>
       <Section tone="band">
+        {/* W128(b): body, ticks and a secondary CTA, so axe sees the green tone's copy and
+            its inverse-dark face (About's band). */}
         <ClosingCtaBand
           bundle={bundle}
           locale={locale}
           titleId="home.184"
+          bodyId="home.185"
           primary={{ label: t('home.022'), href: '/hire-workers' }}
+          secondary={{
+            label: t('home.221'),
+            href: waLink(settings.whatsappNumber, t('hire.249')),
+            external: true,
+          }}
+          ticks={[t('hire.019'), t('home.024')]}
           tone="green"
         />
       </Section>

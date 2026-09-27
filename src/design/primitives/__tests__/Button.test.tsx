@@ -49,4 +49,21 @@ describe('Button', () => {
     );
     expect(link.className).toBe(buttonClassName('success'));
   });
+
+  it('inverse-dark is the green band face: white on a darkened surface (W128b)', () => {
+    renderWithIntl(
+      <Button variant="inverse-dark" href="tel:+905011240340">
+        Ara
+      </Button>,
+    );
+    const link = screen.getByRole('link', { name: 'Ara' });
+    expect(link).toHaveClass(
+      'border',
+      'border-white/40',
+      'bg-black/15',
+      'text-white',
+      'hover:bg-black/25',
+    );
+    expect(link.className).toBe(buttonClassName('inverse-dark'));
+  });
 });
