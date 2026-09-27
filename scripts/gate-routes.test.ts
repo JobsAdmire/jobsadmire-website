@@ -1,5 +1,5 @@
 /** @vitest-environment node */
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import { describe, expect, it, vi } from 'vitest';
 import { GATE_ROUTE_TABLE, GATE_ROUTES, INDEXABLE_GATE_ROUTES } from '../e2e/routes';
 import { careersDetailRoutes } from './gate-routes.mjs';
@@ -57,6 +57,17 @@ describe('gate routes (W21)', () => {
   it('refuses an unknown flag', () => {
     expect(() => run('--bogus')).toThrow();
   }, 30_000);
+
+  it('says "detail rows skipped (door not configured)" on stderr, never on stdout (W93)', () => {
+    // stdout is what gate.sh reads as LH_PATHS: the message must stay out of it.
+    const r = spawnSync(process.execPath, ['scripts/gate-routes.mjs'], {
+      encoding: 'utf8',
+      env: { ...process.env, OPS_API_URL: '' },
+    });
+    expect(r.status).toBe(0);
+    expect(r.stderr).toContain('gate-routes: detail rows skipped (door not configured)');
+    expect(r.stdout.split('\n').filter(Boolean)).toEqual([...INDEXABLE_GATE_ROUTES]);
+  }, 30_000);
 });
 
 // W93: the first open careers opening, fetched from the public Ops endpoint, becomes two detail
@@ -87,13 +98,49 @@ describe('careersDetailRoutes (W93)', () => {
     expect(init.signal).toBeInstanceOf(AbortSignal);
   });
 
-  it('prints "detail rows skipped (door not configured)" and returns no rows on a timeout/network error', async () => {
+  it('returns no rows on a network error (the CLI then says so on stderr — spawn case above)', async () => {
     const fetchMock = vi.fn().mockRejectedValue(new Error('timeout'));
     const rows = await careersDetailRoutes(
       env({ OPS_API_URL: 'https://operations.example.com' }),
       fetchMock as unknown as typeof fetch,
     );
     expect(rows).toEqual([]);
+  });
+
+  it('gives up on a door that never answers after 3 s — the fetch honours the abort', async () => {
+    vi.useFakeTimers();
+    // AbortSignal.timeout runs on Node's internal timer list, out of fake timers' reach: rebuild
+    // it on the (faked) global setTimeout so the 3 s can be stepped deterministically.
+    const timeout = vi.spyOn(AbortSignal, 'timeout').mockImplementation((ms: number) => {
+      const c = new AbortController();
+      setTimeout(() => c.abort(new DOMException('The operation timed out.', 'TimeoutError')), ms);
+      return c.signal;
+    });
+    try {
+      // A door that never answers, but honours its signal the way fetch does.
+      const fetchMock = vi.fn(
+        (_url: string, init?: RequestInit) =>
+          new Promise<Response>((_resolve, reject) => {
+            init?.signal?.addEventListener('abort', () => reject(init.signal?.reason));
+          }),
+      );
+      const rows = careersDetailRoutes(
+        env({ OPS_API_URL: 'https://x.test' }),
+        fetchMock as unknown as typeof fetch,
+      );
+      expect(timeout).toHaveBeenCalledWith(3_000);
+      let settled = false;
+      void rows.finally(() => {
+        settled = true;
+      });
+      await vi.advanceTimersByTimeAsync(2_999);
+      expect(settled).toBe(false);
+      await vi.advanceTimersByTimeAsync(1);
+      await expect(rows).resolves.toEqual([]);
+    } finally {
+      timeout.mockRestore();
+      vi.useRealTimers();
+    }
   });
 
   it('returns no rows on a non-200, an empty list or a malformed body', async () => {
