@@ -4,6 +4,10 @@ import legacy from './redirects/legacy.json';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
+// NEXT_BUILD_CPUS counts only as a positive integer (M5): 'abc' (NaN), '0' or '2.5' must never
+// reach `experimental.cpus` below.
+const buildCpus = Number(process.env.NEXT_BUILD_CPUS);
+
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
@@ -18,9 +22,9 @@ const nextConfig: NextConfig = {
   experimental: {
     serverActions: { bodySizeLimit: '4mb' },
     // Local build worker cap (memory rule, this machine only): NEXT_BUILD_CPUS=2 npm run build
-    // caps Next's static-generation workers. Unset (the Vercel build never sets it) keeps
-    // Next's own default worker count — Vercel is unaffected.
-    cpus: process.env.NEXT_BUILD_CPUS ? Number(process.env.NEXT_BUILD_CPUS) : undefined,
+    // caps Next's static-generation workers. Unset or invalid (the Vercel build never sets it)
+    // keeps Next's own default worker count — Vercel is unaffected.
+    cpus: Number.isInteger(buildCpus) && buildCpus > 0 ? buildCpus : undefined,
   },
   async redirects() {
     return (legacy as { from: string; to: string }[]).map((r) => ({
