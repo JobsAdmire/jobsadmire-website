@@ -1,0 +1,22 @@
+{
+  "_comment": "Identical to lighthouserc.json except the is-crawlable audit is skipped (W91). A Vercel preview's robots.txt is face-aware and answers Disallow: / (e2e/helpers/face.ts, src/app/robots.ts), which the is-crawlable audit would fail — dragging categories:seo below 1.0 for a reason that has nothing to do with this page's own SEO markup. Skipping the audit removes it from the SEO category's score instead of loosening the assertion; every other SEO check (meta description, viewport, canonical, etc.) still has to score 1.0. gate.sh selects this config for assert when E2E_BASE_URL is a *.vercel.app host. Production runs (after WP7a) use lighthouserc.json with the audit live. See docs/ARCHITECTURE.md § Quality gate.",
+  "ci": {
+    "collect": {
+      "numberOfRuns": 2,
+      "settings": { "formFactor": "mobile", "skipAudits": ["is-crawlable"] }
+    },
+    "assert": {
+      "assertions": {
+        "categories:performance": ["error", { "minScore": 0.95 }],
+        "categories:accessibility": ["error", { "minScore": 1 }],
+        "categories:best-practices": ["error", { "minScore": 1 }],
+        "categories:seo": ["error", { "minScore": 1 }],
+        "resource-summary:script:size": ["error", { "maxNumericValue": 184320 }],
+        "largest-contentful-paint": ["error", { "maxNumericValue": 2500 }],
+        "cumulative-layout-shift": ["error", { "maxNumericValue": 0.1 }],
+        "total-blocking-time": ["warn", { "maxNumericValue": 200 }]
+      }
+    },
+    "upload": { "target": "filesystem", "outputDir": "./lighthouse-report" }
+  }
+}

@@ -10,6 +10,12 @@ export default defineConfig({
   use: {
     baseURL: process.env.E2E_BASE_URL ?? 'http://localhost:3000',
     trace: 'retain-on-failure',
+    // W91: reach a Vercel-protected preview. Empty string when the secret is unset (local,
+    // production) — Deployment Protection never checks a header that isn't present in the
+    // first place, so this is a no-op against localhost or the production host.
+    extraHTTPHeaders: {
+      'x-vercel-protection-bypass': process.env.VERCEL_AUTOMATION_BYPASS_SECRET ?? '',
+    },
   },
   projects: [
     { name: 'mobile', use: { ...devices['Pixel 7'] } },
