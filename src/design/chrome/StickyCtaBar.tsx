@@ -1,10 +1,14 @@
 'use client';
 import { useCallback, useEffect, useRef, useSyncExternalStore } from 'react';
-import { Button, type ButtonVariant } from '@/design/primitives';
+import { ContactCta } from '@/design/blocks/ContactCta';
+import type { ButtonVariant } from '@/design/primitives';
+import type { Href } from '@/i18n/navigation';
 
 export type StickyCta = {
   label: string;
-  href: string;
+  /** W82: a plain string (tel:/wa.me/mailto:, an external URL or an internal path) or the
+   *  typed object form of an internal `Href` — never a contact door itself. */
+  href: string | Exclude<Href, string>;
   variant?: ButtonVariant;
   external?: boolean;
 };
@@ -94,6 +98,7 @@ export function StickyCtaBar({
   return (
     <div
       ref={ref}
+      data-testid="sticky-cta"
       className="fixed inset-x-0 bottom-0 z-50 hidden border-t border-white/15 bg-navy/95 backdrop-blur lg:block"
     >
       <div className="container-site flex flex-wrap items-center justify-between gap-4 py-3">
@@ -108,15 +113,19 @@ export function StickyCtaBar({
           {message}
         </p>
         <div className="flex flex-wrap items-center gap-2">
-          {ctas.map((cta) => (
-            <Button
-              key={cta.href}
+          {/* W81: a tel:/wa.me/mailto: href renders through ContactLink (placement page_cta)
+              via ContactCta; any other href — including an object Href (W82) — stays the
+              Button face, exactly as ContactCta already resolves for every other block. */}
+          {ctas.map((cta, i) => (
+            <ContactCta
+              key={`${i}-${cta.label}`}
+              placement="page_cta"
               variant={cta.variant ?? 'primary'}
               href={cta.href}
               external={cta.external}
             >
               {cta.label}
-            </Button>
+            </ContactCta>
           ))}
         </div>
       </div>
