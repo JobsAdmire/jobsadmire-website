@@ -1,6 +1,7 @@
 import { screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
 import { FaqBlock } from '../FaqBlock';
+import { buttonClassName } from '@/design/primitives';
 import { testBundle } from '@/test/bundle';
 import { renderWithIntl } from '@/test/render';
 
@@ -98,5 +99,46 @@ describe('FaqBlock', () => {
       'href',
       'mailto:info@jobsadmire.com?subject=Soru',
     );
+  });
+
+  it('ask-card rows wear their variant face exactly, with no caller colour classes (W122/W127)', () => {
+    renderWithIntl(
+      <FaqBlock
+        bundle={bundle}
+        locale="tr"
+        items={items}
+        askCard={{
+          titleId: 'x.askT',
+          bodyId: 'x.askB',
+          whatsappNumber: '905011240340',
+          whatsappText: 'Merhaba',
+          whatsappLabelId: 'x.wa',
+          phone: '+905011240340',
+          callLabelId: 'x.call',
+          email: 'info@jobsadmire.com',
+          emailLabelId: 'x.mail',
+        }}
+      />,
+    );
+    const whatsapp = screen.getByRole('link', { name: "WhatsApp'tan sorun" });
+    const call = screen.getByRole('link', { name: 'Bizi arayın' });
+    const mail = screen.getByRole('link', { name: 'E-posta gönderin' });
+    const tokens = (el: HTMLElement) => el.className.split(/\s+/);
+    // WhatsApp: the `success` variant and nothing appended (Tailwind orders rules by name, not
+    // by position in the class string, so an appended colour class is a coin toss — W122).
+    expect(whatsapp).toHaveClass(
+      'border-success-border',
+      'text-success-text',
+      'hover:bg-success-surface',
+    );
+    expect(whatsapp.className).toBe(buttonClassName('success'));
+    // Call and e-mail: plain `secondary` — ink text, the W127 D20 delta; no blue-text override.
+    expect(call.className).toBe(buttonClassName('secondary'));
+    expect(mail.className).toBe(buttonClassName('secondary'));
+    for (const el of [whatsapp, call, mail]) expect(tokens(el)).not.toContain('text-blue-safe');
+    for (const el of [call, mail]) {
+      expect(tokens(el)).not.toContain('border-success-border');
+      expect(tokens(el)).not.toContain('hover:bg-success-surface');
+    }
   });
 });

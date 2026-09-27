@@ -1,7 +1,7 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import { Link, type Href } from '@/i18n/navigation';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'inverse';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'inverse' | 'success';
 
 const VARIANT: Record<ButtonVariant, string> = {
   // D20: white on the raw brand blue (#1899d5) is 3.2:1 — enough for large text, not for
@@ -14,6 +14,9 @@ const VARIANT: Record<ButtonVariant, string> = {
   // The design's translucent white outline on navy/gradient bands (ClosingCtaBand's
   // WhatsApp/Telegram/call buttons): white text on navy is 15:1, the face only frames it.
   inverse: 'border border-white/30 bg-white/10 text-white hover:bg-white/20',
+  // W127: the design's green WhatsApp outline (FaqBlock's ask card). A variant, never caller
+  // colour classes: Tailwind orders rules by name, not by class-string position (W122).
+  success: 'border border-success-border bg-white text-success-text hover:bg-success-surface',
 };
 
 const SIZE = {

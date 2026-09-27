@@ -15,7 +15,9 @@ export type FaqItem = { id: string; q: string; a: string };
 /** The design's "Question not listed?" card in the side column (Hire Workers, Contact,
  *  Available Workers). `whatsappText` is the page's own prefill id, resolved. `email`/
  *  `emailLabelId`/`subject` (W83) add a third, mailto, row — all three doors are optional so
- *  a page can offer just WhatsApp, WhatsApp+call, or all three. */
+ *  a page can offer just WhatsApp, WhatsApp+call, or all three. The WhatsApp row wears the
+ *  `success` variant (the design's green outline), call/e-mail plain `secondary` (ink text, a
+ *  D20 delta from the design's blue): no caller colour classes reach `ContactCta` (W122/W127). */
 export type FaqAskCard = {
   titleId: string;
   bodyId: string;
@@ -80,10 +82,9 @@ export function FaqBlock({
               <div className="flex flex-wrap gap-2">
                 <ContactCta
                   placement="page_cta"
-                  variant="secondary"
+                  variant="success"
                   external
                   href={waLink(askCard.whatsappNumber, askCard.whatsappText)}
-                  className="border-success-border text-success-text hover:bg-success-surface"
                 >
                   {t(askCard.whatsappLabelId)}
                 </ContactCta>
@@ -92,7 +93,6 @@ export function FaqBlock({
                     placement="page_cta"
                     variant="secondary"
                     href={telLink(askCard.phone)}
-                    className="text-blue-safe"
                   >
                     {t(askCard.callLabelId)}
                   </ContactCta>
@@ -102,7 +102,6 @@ export function FaqBlock({
                     placement="page_cta"
                     variant="secondary"
                     href={mailLink(askCard.email, askCard.subject)}
-                    className="text-blue-safe"
                   >
                     {t(askCard.emailLabelId)}
                   </ContactCta>

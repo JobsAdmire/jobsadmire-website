@@ -1,6 +1,6 @@
 import { screen } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
-import { Button } from '../index';
+import { Button, buttonClassName } from '../index';
 import { renderWithIntl } from '@/test/render';
 
 describe('Button', () => {
@@ -31,5 +31,22 @@ describe('Button', () => {
       </Button>,
     );
     expect(screen.getByRole('button', { name: 'Gönder' })).toHaveAttribute('type', 'submit');
+  });
+
+  it('success is the design green WhatsApp outline, a variant rather than caller classes (W127)', () => {
+    renderWithIntl(
+      <Button variant="success" href="https://wa.me/905011240340">
+        WhatsApp
+      </Button>,
+    );
+    const link = screen.getByRole('link', { name: 'WhatsApp' });
+    expect(link).toHaveClass(
+      'border',
+      'border-success-border',
+      'bg-white',
+      'text-success-text',
+      'hover:bg-success-surface',
+    );
+    expect(link.className).toBe(buttonClassName('success'));
   });
 });
