@@ -89,7 +89,7 @@ export function PostCard({
           </Link>
         </Heading>
         {!row && excerpt && <p className="text-body-sm m-0 mb-4 text-text-tertiary">{excerpt}</p>}
-        <div className="mt-auto flex flex-wrap items-center justify-between gap-2 text-eyebrow font-bold text-muted">
+        <div className="mt-auto flex flex-wrap items-center justify-between gap-2 text-eyebrow font-bold text-text-tertiary">
           <span>{meta}</span>
           {post.hasBody[other] && !row && (
             <span className="rounded-pill bg-pale-1 px-2 py-0.5 text-text-secondary">

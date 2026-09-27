@@ -41,6 +41,11 @@ describe('PostCard', () => {
     expect(screen.getByText('İş izinleri')).toBeInTheDocument(); // t(categoryLabelId)
     expect(screen.getByText('Adım adım.')).toBeInTheDocument();
     expect(screen.getByText('12 Ocak 2026 · 5 dk okuma')).toBeInTheDocument();
+    // W128(a), a D20 delta: the byline is text-tertiary (#64748b, 4.76:1 on white), never the
+    // design's muted (#94a3b8, 2.56:1 — axe color-contrast on every card).
+    const byline = screen.getByText('12 Ocak 2026 · 5 dk okuma').parentElement!;
+    expect(byline).toHaveClass('text-text-tertiary');
+    expect(byline).not.toHaveClass('text-muted');
     expect(screen.getByText("İngilizce'de de var")).toBeInTheDocument();
     // no cover given → the NAMED placeholder is what the launch profile counts (D26, W55)
     expect(document.querySelector('[data-placeholder]')).toHaveAttribute(
