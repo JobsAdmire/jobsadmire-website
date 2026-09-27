@@ -3,7 +3,7 @@ import Image from 'next/image';
 export type ImageSlotProps = {
   /** The design slot id — the value `data-placeholder`/`data-lcp-slot` carry (D26 counter). */
   slot: string;
-  /** This slot is the page's LCP element: the image gets `data-lcp-slot` + `priority`. */
+  /** This slot is the page's LCP element: the image gets `data-lcp-slot` + `preload`. */
   lcp?: boolean;
   src?: string | null;
   /** '' for a decorative image (the placeholder is then `aria-hidden`, not a labelled img). */
@@ -15,6 +15,8 @@ export type ImageSlotProps = {
    *  the slot owns its box (W129). A caller that needs a narrower slot wraps it in a sized
    *  element (`<div className="w-[104px] shrink-0">`) and gives the text beside it `min-w-0`. */
   className?: string;
+  /** Overrides the preload `lcp` implies (`priority ?? lcp`). Kept by name (frozen), it maps
+   *  to next/image's `preload`: that component's own `priority` is deprecated in 16.3.5 (M3). */
   priority?: boolean;
 };
 
@@ -51,7 +53,7 @@ export function ImageSlot({
         width={width}
         height={height}
         sizes={sizes}
-        priority={priority ?? lcp}
+        preload={priority ?? lcp}
         style={ratio}
         className={[BOX, className].filter(Boolean).join(' ')}
         data-lcp-slot={lcpSlot}
