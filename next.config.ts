@@ -7,6 +7,10 @@ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 const nextConfig: NextConfig = {
   reactStrictMode: true,
   poweredByHeader: false,
+  // The OG image route reads its font from disk at request time; the tracer resolves the
+  // `join(process.cwd(), '…')` literal, this is the belt to that brace so a tracer change can
+  // never ship the function without its bytes (docs/SEO.md § OG images).
+  outputFileTracingIncludes: { '/og/[locale]/[pageKey]': ['./src/design/fonts/*.ttf'] },
   // W73/W116: a form's file travels inside its server action. Next caps a server-action body
   // at 1 MB by default and Vercel caps a function body at 4.5 MB; the per-file cap is 3 MB
   // (`MAX_UPLOAD_BYTES`, src/forms/uploads.ts), 1 MB under this limit for the other fields and

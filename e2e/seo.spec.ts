@@ -54,3 +54,16 @@ test('every page carries the Organization/EmploymentAgency node', async ({ reque
   expect(res.status()).toBe(200);
   expect(await res.text()).toContain('"@type":["Organization","EmploymentAgency"]');
 });
+
+test('the OG image route answers a PNG, is not locale-rewritten and rejects unknown keys', async ({
+  request,
+}) => {
+  // Same host as the page under test, not ORIGIN: proves the route renders here, with its font.
+  const res = await request.get('/og/tr/home.png');
+  expect(res.status()).toBe(200);
+  expect(res.headers()['content-type']).toContain('image/png');
+  expect((await res.body()).subarray(0, 4)).toEqual(Buffer.from([0x89, 0x50, 0x4e, 0x47]));
+  expect((await request.get('/og/en/hire.png')).status()).toBe(200);
+  expect((await request.get('/og/tr/not-a-page.png')).status()).toBe(404);
+  expect((await request.get('/og/de/home.png')).status()).toBe(404);
+});
