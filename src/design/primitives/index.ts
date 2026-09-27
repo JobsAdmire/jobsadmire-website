@@ -6,6 +6,7 @@ export { Dialog } from './Dialog';
 export { Eyebrow } from './Eyebrow';
 export { FormField } from './FormField';
 export { PausableMarquee } from './PausableMarquee';
+export { RadioChips, type RadioChipOption } from './RadioChips';
 export { Section, type SectionTone } from './Section';
 export { SkipLink } from './SkipLink';
 export { Stat } from './Stat';

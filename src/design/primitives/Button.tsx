@@ -1,7 +1,7 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import { Link, type Href } from '@/i18n/navigation';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
+export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger' | 'inverse';
 
 const VARIANT: Record<ButtonVariant, string> = {
   // D20: white on the raw brand blue (#1899d5) is 3.2:1 — enough for large text, not for
@@ -11,6 +11,9 @@ const VARIANT: Record<ButtonVariant, string> = {
   secondary: 'border border-border-1 bg-white text-ink hover:border-tint-border hover:bg-pale-1',
   ghost: 'text-blue-safe hover:bg-tint',
   danger: 'bg-danger text-white hover:opacity-90',
+  // The design's translucent white outline on navy/gradient bands (ClosingCtaBand's
+  // WhatsApp/Telegram/call buttons): white text on navy is 15:1, the face only frames it.
+  inverse: 'border border-white/30 bg-white/10 text-white hover:bg-white/20',
 };
 
 const SIZE = {
