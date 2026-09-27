@@ -11,11 +11,12 @@ import { ImageSlot } from './ImageSlot';
 const ALSO_IN_ID: Record<Locale, string> = { tr: 'blog.081', en: 'blog.077' };
 
 /** Cover boxes: the package's 190/104/270 px heights × 0.75 (D19), as width/height pairs so
- *  `ImageSlot` reserves the same box with or without the photo. */
+ *  `ImageSlot` reserves the same box with or without the photo. `ImageSlot` owns that box and
+ *  takes no width class (W129): the row's 104 px column is a wrapper around it. */
 const COVER = {
-  card: { width: 380, height: 142, className: '' },
-  row: { width: 104, height: 78, className: 'w-[104px] shrink-0' },
-  featured: { width: 640, height: 202, className: '' },
+  card: { width: 380, height: 142 },
+  row: { width: 104, height: 78 },
+  featured: { width: 640, height: 202 },
 } as const;
 
 /** The blog card (Blog grid, Article related, Homepage teaser, Work Permit "keep reading").
@@ -50,7 +51,16 @@ export function PostCard({
   const excerpt = post.excerpt[locale];
   const meta = `${formatDate(post.publishedAt, locale)} · ${formatReadMinutes(post.readMinutes, locale)}`;
   const row = variant === 'row';
-  const cover = COVER[variant];
+  const cover = (
+    <ImageSlot
+      slot={`blog-cover-${post.key}`}
+      src={coverSrc}
+      alt=""
+      width={COVER[variant].width}
+      height={COVER[variant].height}
+      className="rounded-xs"
+    />
+  );
   return (
     <article
       className={[
@@ -58,14 +68,7 @@ export function PostCard({
         row ? 'flex gap-4 p-4' : 'flex flex-col overflow-hidden',
       ].join(' ')}
     >
-      <ImageSlot
-        slot={`blog-cover-${post.key}`}
-        src={coverSrc}
-        alt=""
-        width={cover.width}
-        height={cover.height}
-        className={['rounded-xs object-cover', cover.className].filter(Boolean).join(' ')}
-      />
+      {row ? <div className="w-[104px] shrink-0">{cover}</div> : cover}
       <div className={row ? 'flex min-w-0 flex-1 flex-col' : 'flex flex-1 flex-col p-6'}>
         <div className="mb-3 flex flex-wrap gap-2">
           {variant === 'featured' && (

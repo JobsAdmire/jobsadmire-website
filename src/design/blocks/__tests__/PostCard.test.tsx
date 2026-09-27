@@ -100,4 +100,51 @@ describe('PostCard', () => {
     );
     expect(container).toBeEmptyDOMElement();
   });
+
+  // W129: `ImageSlot` owns its box (`w-full` + the width/height ratio) and never receives a
+  // width or aspect class from a caller — the row's 104 px column is a wrapper around it.
+  const callerBoxClasses = (el: Element) =>
+    el
+      .getAttribute('class')!
+      .split(/\s+/)
+      .filter((c) => /^(?:(?:min-|max-)?w|size|aspect)-/.test(c) && c !== 'w-full');
+
+  it('row: sizes the cover with a 104 px wrapper, never a width class on ImageSlot (W129)', () => {
+    renderWithIntl(<PostCard bundle={bundle} locale="tr" post={post} variant="row" />, {
+      locale: 'tr',
+    });
+    const cover = document.querySelector('[data-placeholder]')!;
+    expect(cover.parentElement).toHaveClass('w-[104px]', 'shrink-0');
+    expect(cover).not.toHaveClass('w-[104px]');
+    expect(cover).not.toHaveClass('shrink-0');
+    expect(cover).toHaveClass('w-full');
+    // the text column may shrink below its content's width beside the fixed cover
+    expect(screen.getByRole('heading', { level: 3 }).parentElement).toHaveClass(
+      'min-w-0',
+      'flex-1',
+    );
+  });
+
+  it.each(['card', 'row', 'featured'] as const)(
+    '%s: no width or aspect class reaches ImageSlot, placeholder or photo (W129)',
+    (variant) => {
+      const { unmount } = renderWithIntl(
+        <PostCard bundle={bundle} locale="tr" post={post} variant={variant} />,
+        { locale: 'tr' },
+      );
+      expect(callerBoxClasses(document.querySelector('[data-placeholder]')!)).toEqual([]);
+      unmount();
+      renderWithIntl(
+        <PostCard
+          bundle={bundle}
+          locale="tr"
+          post={post}
+          variant={variant}
+          coverSrc="/brand/ja-mark.png"
+        />,
+        { locale: 'tr' },
+      );
+      expect(callerBoxClasses(document.querySelector('article img')!)).toEqual([]);
+    },
+  );
 });
