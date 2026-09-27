@@ -18,12 +18,24 @@ import { describe, expect, it } from 'vitest';
 // `usePathname`. So (a) every module under `src/design/islands/` is a client module — the barrel,
 // which holds nothing but re-exports, excepted — and (b) no directive-less module under
 // `src/design/` imports a client-only React API (the list Next's RSC validator enforces).
+//
+// W134 widens it again, outside `src/design/`. A server page that imports even one island
+// through the barrel ships all twelve island modules into that route's first-load JS, whether
+// or not the route renders them. So (c) no module under `src/` outside the dev gallery
+// (`src/app/[locale]/(site)/dev/gallery/`) and outside `src/design/islands/` itself may import
+// the barrel path `@/design/islands` — a relative spelling of the same path (`../islands`,
+// `./islands`) counts too, but a module path within it (`@/design/islands/ProgressBar`) does
+// not. The gallery keeps the barrel import as the standing proof that the whole set compiles.
 const ROOT = process.cwd();
 const SRC = join(ROOT, 'src');
 const DESIGN = join(SRC, 'design');
 const BLOCKS = join(DESIGN, 'blocks');
 const ISLANDS = join(DESIGN, 'islands');
 const BARREL = join(ISLANDS, 'index.ts');
+// The one directory allowed to import the barrel (W134): the dev gallery, which proves in
+// every `next build` that the whole set compiles (W130). Never a route in production (R41).
+const GALLERY = join(SRC, 'app', '[locale]', '(site)', 'dev', 'gallery');
+const ISLANDS_BARREL_SPECIFIER = '@/design/islands';
 const HOOK_MODULE = join(SRC, 'analytics', 'useContactClick');
 const NAVIGATION = 'next/navigation';
 const CLIENT_ONLY_REACT = new Set([
@@ -63,11 +75,16 @@ function isClientModule(file: string): boolean {
   );
 }
 
+/** Every specifier `text` imports or re-exports (static, dynamic, type-only), comment-aware.
+ *  Pure over the source text alone — reads no file, so a fixture can name a path that does
+ *  not exist on disk (used directly by `importsIslandsBarrel`'s unit case, W134). */
+function specifiersIn(text: string): string[] {
+  return ts.preProcessFile(text, true, true).importedFiles.map((f) => f.fileName);
+}
+
 /** Every specifier the file imports or re-exports (static, dynamic, type-only), comment-aware. */
 function specifiersOf(file: string): string[] {
-  return ts
-    .preProcessFile(readFileSync(file, 'utf8'), true, true)
-    .importedFiles.map((f) => f.fileName);
+  return specifiersIn(readFileSync(file, 'utf8'));
 }
 
 function isForbidden(file: string, specifier: string): boolean {
@@ -79,6 +96,24 @@ function isForbidden(file: string, specifier: string): boolean {
       ? resolve(dirname(file), bare)
       : bare;
   return target === HOOK_MODULE;
+}
+
+/** True for the islands barrel `@/design/islands`, or a relative spelling that resolves to the
+ *  same directory (`../islands`, `./islands`, …); false for a module path within it, such as
+ *  `@/design/islands/ProgressBar` (W134). */
+function isIslandsBarrelSpecifier(file: string, specifier: string): boolean {
+  const bare = specifier.replace(/\.(ts|tsx|js|mjs)$/, '');
+  if (bare === ISLANDS_BARREL_SPECIFIER) return true;
+  if (!bare.startsWith('.')) return false;
+  return resolve(dirname(file), bare) === ISLANDS;
+}
+
+/** True when `text` — a module's source, not necessarily read from disk — imports the islands
+ *  barrel. Pure over (file, text): `file` only supplies the directory a relative specifier
+ *  resolves against, so a fixture string can stand in for a real server page that does not
+ *  exist on disk (W134's unit case). */
+function importsIslandsBarrel(file: string, text: string): boolean {
+  return specifiersIn(text).some((specifier) => isIslandsBarrelSpecifier(file, specifier));
 }
 
 /** The client-only React APIs a module reaches, however the import is spelled: named imports
@@ -134,7 +169,13 @@ function clientOnlyReactApis(fileName: string, text: string): string[] {
 const modules = modulesUnder(DESIGN);
 const serverSide = modules.filter((f) => f.startsWith(BLOCKS + sep) || !isClientModule(f));
 
-describe('RSC import guard (W125, W130)', () => {
+// W134's guard spans all of `src/`, not just `src/design/` — a block, a page, a piece of
+// chrome or a form can all reach for the barrel — so it walks its own, wider module list.
+const barrelCheckTargets = modulesUnder(SRC).filter(
+  (file) => !file.startsWith(GALLERY + sep) && !file.startsWith(ISLANDS + sep),
+);
+
+describe('RSC import guard (W125, W130, W134)', () => {
   it('walks the blocks and tells a real directive from the words in a comment', () => {
     const contactCta = join(BLOCKS, 'ContactCta.tsx');
     expect(serverSide).toContain(contactCta);
@@ -205,6 +246,34 @@ describe('RSC import guard (W125, W130)', () => {
           (api) => `${relative(ROOT, file)} → ${api}`,
         ),
       );
+    expect(offenders).toEqual([]);
+  });
+
+  it('flags a fake server page that imports the islands barrel, and clears a module-path import (W134)', () => {
+    const fakePage = join(SRC, 'app', '[locale]', '(site)', 'fake', 'page.tsx');
+    expect(
+      importsIslandsBarrel(fakePage, "import { ProgressBar } from '@/design/islands';\n"),
+    ).toBe(true);
+    expect(
+      importsIslandsBarrel(
+        fakePage,
+        "import { ProgressBar } from '@/design/islands/ProgressBar';\n",
+      ),
+    ).toBe(false);
+    const fakeChrome = join(DESIGN, 'chrome', 'FakeChrome.tsx');
+    expect(importsIslandsBarrel(fakeChrome, "export * from '../islands';\n")).toBe(true);
+    const fakeDesignRoot = join(DESIGN, 'FakeRoot.tsx');
+    expect(importsIslandsBarrel(fakeDesignRoot, "import { ShareRow } from './islands';\n")).toBe(
+      true,
+    );
+  });
+
+  it('no module under src, outside the dev gallery and outside src/design/islands, imports the islands barrel (W134)', () => {
+    const offenders = barrelCheckTargets.flatMap((file) =>
+      specifiersOf(file)
+        .filter((specifier) => isIslandsBarrelSpecifier(file, specifier))
+        .map((specifier) => `${relative(ROOT, file)} → ${specifier}`),
+    );
     expect(offenders).toEqual([]);
   });
 });
