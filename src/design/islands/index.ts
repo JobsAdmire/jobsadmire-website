@@ -1,4 +1,5 @@
 export { BottomSheet, type BottomSheetProps } from './BottomSheet';
+export { LazyIsland, type LazyIslandProps } from './LazyIsland';
 export { PrintButton, type PrintButtonProps } from './PrintButton';
 export { ProgressBar, type ProgressBarProps, type ProgressTone } from './ProgressBar';
 export { RangeSlider, type RangeSliderProps } from './RangeSlider';
@@ -7,4 +8,5 @@ export { SearchInput, type SearchInputProps } from './SearchInput';
 export { ShareRow, type ShareRowProps, type ShareLabels } from './ShareRow';
 export { Stepper, type StepperProps } from './Stepper';
 export { TriState, type TriStateProps, type TriStateValue } from './TriState';
+export { useInView } from './useInView';
 export { useScrollProgress } from './useScrollProgress';
