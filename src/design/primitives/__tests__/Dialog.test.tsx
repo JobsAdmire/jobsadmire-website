@@ -49,4 +49,15 @@ describe('Dialog', () => {
     );
     expect(document.activeElement).toBe(second);
   });
+
+  it('docks to the bottom edge as a sheet when asked', () => {
+    render(
+      <Dialog open onClose={() => {}} titleId="t" variant="sheet">
+        <h2 id="t">Sheet</h2>
+      </Dialog>,
+    );
+    const dialog = screen.getByRole('dialog');
+    expect(dialog.className).toContain('rounded-t-hero');
+    expect(dialog.parentElement?.className).toContain('items-end');
+  });
 });

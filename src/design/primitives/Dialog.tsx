@@ -9,11 +9,14 @@ export function Dialog({
   onClose,
   titleId,
   children,
+  variant = 'center',
 }: {
   open: boolean;
   onClose: () => void;
   titleId: string;
   children: ReactNode;
+  /** `sheet` docks the panel to the bottom edge (BottomSheet); `center` is the modal. */
+  variant?: 'center' | 'sheet';
 }) {
   const ref = useRef<HTMLDivElement>(null);
   // The trap is keyed on `open` alone: an inline `onClose={() => setOpen(false)}` changes
@@ -61,7 +64,10 @@ export function Dialog({
     // jsdom has no showModal and <dialog>'s top layer fights the sticky header (D20):
     // a real focus-trapped div with role="dialog" is the sanctioned shape here.
     <div
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-navy/60 p-4"
+      className={[
+        'fixed inset-0 z-[100] flex justify-center bg-navy/60',
+        variant === 'sheet' ? 'items-end p-0' : 'items-center p-4',
+      ].join(' ')}
       onMouseDown={(e) => e.target === e.currentTarget && onClose()}
     >
       <div
@@ -70,7 +76,11 @@ export function Dialog({
         aria-modal="true"
         aria-labelledby={titleId}
         tabIndex={-1}
-        className="max-h-[90vh] w-full max-w-lg overflow-auto rounded-xl bg-white p-6 shadow-hero-form"
+        className={
+          variant === 'sheet'
+            ? 'max-h-[85vh] w-full max-w-lg overflow-auto rounded-t-hero bg-white p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-hero-form'
+            : 'max-h-[90vh] w-full max-w-lg overflow-auto rounded-xl bg-white p-6 shadow-hero-form'
+        }
       >
         {children}
       </div>
