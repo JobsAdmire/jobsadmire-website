@@ -101,6 +101,14 @@
         "openingSlug": "İlan",
         "estimateSummary": "Tahmin özeti"
       },
+      "options": {
+        "startWhen": {
+          "asap": "Hemen",
+          "month1": "1 ay içinde",
+          "months1to3": "1–3 ay içinde",
+          "planning": "Planlama aşamasında"
+        }
+      },
       "placeholders": {
         "name": "Adınız ve soyadınız",
         "email": "ad@sirket.com",

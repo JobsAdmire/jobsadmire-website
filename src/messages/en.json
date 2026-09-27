@@ -101,6 +101,14 @@
         "openingSlug": "Opening",
         "estimateSummary": "Estimate summary"
       },
+      "options": {
+        "startWhen": {
+          "asap": "As soon as possible",
+          "month1": "Within 1 month",
+          "months1to3": "In 1–3 months",
+          "planning": "Still planning"
+        }
+      },
       "placeholders": {
         "name": "Your full name",
         "email": "name@company.com",
