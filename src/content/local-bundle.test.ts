@@ -91,4 +91,21 @@ describe('generated LOCAL bundles through the typed accessors', () => {
     expect(tr.nav.some((n) => n.href === '/blog')).toBe(false);
     for (const key of PAGE_KEYS) expect(getPageSeo(tr, key), key).toBeDefined();
   });
+  // W124: blogArticle/careersDetail are one record per TEMPLATE, not per article/opening —
+  // buildMetadata gives the record's canonical/titleId/descriptionId precedence over the
+  // caller's per-article href/fallbackTitle/fallbackDescription. A non-null canonical or a
+  // non-empty titleId here would collapse every article (or opening) onto one canonical URL
+  // or one title, so this pins the safe, empty state in both bundles.
+  it('pins the template page records to no per-page SEO fields (W124)', () => {
+    for (const bundle of [tr, en]) {
+      for (const key of ['blogArticle', 'careersDetail'] as const) {
+        const seo = getPageSeo(bundle, key);
+        expect(seo, key).toBeDefined();
+        expect(seo?.titleId, key).toBe('');
+        expect(seo?.descriptionId, key).toBe('');
+        expect(seo?.canonical, key).toBeNull();
+        expect(seo?.ogImage, key).toBeNull();
+      }
+    }
+  });
 });

@@ -108,7 +108,7 @@ Brand names, the licence chip, Turkish addresses, academic tier labels (`Ön lis
 
 ## Page records
 
-One record per page/locale carrying SEO fields (title, description, OG), the page's block/section composition, and its publish state (draft → review → published, D8). In Phase A, "published" is implicit (the whole package is the content); the state machine becomes real in Phase B. The `pageKey` a page passes to `buildMetadata()` is its `PAGE_KEYS` entry (`blogArticle` for `/blog/[slug]`, `careersDetail` for `/careers/[slug]`); the OG image for that key is generated from the same record (docs/SEO.md § OG images).
+One record per page/locale carrying SEO fields (title, description, OG), the page's block/section composition, and its publish state (draft → review → published, D8). In Phase A, "published" is implicit (the whole package is the content); the state machine becomes real in Phase B. The `pageKey` a page passes to `buildMetadata()` is its `PAGE_KEYS` entry (`blogArticle` for `/blog/[slug]`, `careersDetail` for `/careers/[slug]`); the OG image for that key is generated from the same record (docs/SEO.md § OG images). Template records (`blogArticle`, `careersDetail`) never carry per-page SEO fields — `titleId`/`descriptionId` stay empty and `canonical`/`ogImage` null, so the detail page's own values win in `buildMetadata` (W124).
 
 ## Blog
 
