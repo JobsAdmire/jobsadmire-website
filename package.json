@@ -17,7 +17,8 @@
     "gate": "bash scripts/gate.sh",
     "content:import": "tsx scripts/import-design-package.ts",
     "redirects:build": "tsx scripts/build-redirects.ts",
-    "assets:flags": "tsx scripts/build-flags.ts"
+    "assets:flags": "tsx scripts/build-flags.ts",
+    "assets:map": "tsx scripts/build-source-map.ts"
   },
   "dependencies": {
     "@next/third-parties": "^16.3.5",
@@ -35,19 +36,26 @@
     "@testing-library/jest-dom": "^7.0.1",
     "@testing-library/react": "^16.3.3",
     "@testing-library/user-event": "^14.6.7",
+    "@types/d3-geo": "^3.1.1",
+    "@types/geojson": "^7946.0.16",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/topojson-client": "^3.1.5",
+    "@types/topojson-specification": "^1.0.5",
     "@vitejs/plugin-react": "^6.1.1",
+    "d3-geo": "^3.1.1",
     "eslint": "^9",
     "eslint-config-next": "16.3.5",
     "flag-icons": "^7.5.0",
     "jsdom": "^29.1.1",
     "prettier": "^3.9.8",
     "tailwindcss": "^4",
+    "topojson-client": "^3.1.0",
     "tsx": "^4.23.13",
     "typescript": "^5",
-    "vitest": "^4.1.11"
+    "vitest": "^4.1.11",
+    "world-atlas": "^2.0.2"
   },
   "engines": {
     "node": "22.x"

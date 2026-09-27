@@ -46,6 +46,8 @@ const eslintConfig = defineConfig([
   globalIgnores([
     // Reference design runtime (not shipped, not linted)
     'design-package/**',
+    // Build-time generated assets (scripts/build-source-map.ts) — regenerated, never hand-edited
+    'src/design/assets/*.generated.tsx',
     // Git-ignored SDD planning artefacts (briefs, ledgers, draft snippets) — not source
     '.superpowers/**',
     // Default ignores of eslint-config-next:
