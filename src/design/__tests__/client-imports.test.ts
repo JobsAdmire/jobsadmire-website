@@ -25,6 +25,10 @@ import { describe, expect, it } from 'vitest';
 //       time, so they are not edges here and not offences in (b).
 // A relative spelling that resolves to the same path (`../primitives`, `./date`) counts; a module
 // path within a barrel (`@/design/primitives/Button`, `@/lib/format/date/formatDate`) does not.
+//
+// W158 (final re-review N2): check (b) also forbids `@/lib/format/date/formatReadMinutes` (by path
+// — it imports both message catalogues) and any `src/messages/*.json` import in the client graph;
+// server components keep importing the formatter by path (PostCard).
 const ROOT = process.cwd();
 const SRC = join(ROOT, 'src');
 const GALLERY = join(SRC, 'app', '[locale]', '(site)', 'dev', 'gallery');
@@ -106,8 +110,22 @@ function barrelOf(file: string, specifier: string): string | null {
   return BARRELS.get(target.replace(/[\\/]index$/, '')) ?? null;
 }
 
+/** The two file-system reads the graph walk makes — injectable, so a fixture case can build a
+ *  module graph in memory (paths under `src/` that need not exist on disk). */
+type ModuleFs = { read(file: string): string; isFile(file: string): boolean };
+const diskFs: ModuleFs = {
+  read: (file) => readFileSync(file, 'utf8'),
+  isFile: (file) => {
+    try {
+      return statSync(file).isFile();
+    } catch {
+      return false; // not this candidate
+    }
+  },
+};
+
 /** The file a specifier resolves to under `src/`, or null (a package, JSON, a missing file). */
-function moduleFile(file: string, specifier: string): string | null {
+function moduleFile(file: string, specifier: string, fs: ModuleFs = diskFs): string | null {
   const target = targetOf(file, specifier);
   if (target === null) return null;
   for (const candidate of [
@@ -116,11 +134,7 @@ function moduleFile(file: string, specifier: string): string | null {
     join(target, 'index.ts'),
     join(target, 'index.tsx'),
   ]) {
-    try {
-      if (statSync(candidate).isFile()) return candidate;
-    } catch {
-      // not this candidate
-    }
+    if (fs.isFile(candidate)) return candidate;
   }
   return null;
 }
@@ -144,23 +158,45 @@ function modulesUnder(dir: string): string[] {
   });
 }
 
-const read = (file: string) => readFileSync(file, 'utf8');
+const read = diskFs.read;
 /** Every non-test module outside the dev gallery — the W156 scope for check (a). */
 const allRoots = modulesUnder(SRC).filter((file) => !file.startsWith(GALLERY + sep));
 /** The narrower, `'use client'`-only scope check (b) still uses (a client-bundle-composition
  *  check has no reason to walk a server component's own server-only import graph). */
 const clientRoots = allRoots.filter((file) => isClientText(file, read(file)));
 
-/** Every module reachable from `roots` through runtime imports; a barrel is a leaf (its importer
- *  is the offender, not everything behind it). */
-function clientGraph(roots: string[]): Map<string, string> {
+/** W158 (final re-review N2): `formatReadMinutes` imports BOTH full message catalogues, and the
+ *  W156 date split moved it out of the barrel's reach — `@/lib/format/date/formatReadMinutes` is a
+ *  module path within the barrel, which check (a) clears by design. It is forbidden in the CLIENT
+ *  graph only: a server component (PostCard) imports it by path legitimately. Any module of the
+ *  client graph importing a catalogue itself (`src/messages/*.json`, any spelling) is caught too —
+ *  client copy reaches the browser only through `NextIntlClientProvider`'s `CLIENT_SYS` (W148). */
+const READ_MINUTES = join(SRC, 'lib', 'format', 'date', 'formatReadMinutes');
+const MESSAGES = join(SRC, 'messages');
+
+/** What a module in the CLIENT graph must not import (check (b)), named for the offender line,
+ *  or null: the three barrels, the read-minutes formatter, a message catalogue. */
+function clientForbidden(file: string, specifier: string): string | null {
+  const barrel = barrelOf(file, specifier);
+  if (barrel) return barrel;
+  const target = targetOf(file, specifier);
+  if (target === READ_MINUTES) return '@/lib/format/date/formatReadMinutes';
+  if (target !== null && dirname(target) === MESSAGES && target.endsWith('.json')) {
+    return '@/messages/*.json';
+  }
+  return null;
+}
+
+/** Every module reachable from `roots` through runtime imports; a forbidden target is a leaf (its
+ *  importer is the offender, not everything behind it). */
+function clientGraph(roots: string[], fs: ModuleFs = diskFs): Map<string, string> {
   const reached = new Map<string, string>(roots.map((r) => [r, r])); // module → the root it came from
   const queue = [...roots];
   while (queue.length) {
     const file = queue.shift()!;
-    for (const { specifier, typeOnly } of importsIn(file, read(file))) {
-      if (typeOnly || barrelOf(file, specifier)) continue;
-      const next = moduleFile(file, specifier);
+    for (const { specifier, typeOnly } of importsIn(file, fs.read(file))) {
+      if (typeOnly || clientForbidden(file, specifier)) continue;
+      const next = moduleFile(file, specifier, fs);
       if (next && !reached.has(next)) {
         reached.set(next, reached.get(file)!);
         queue.push(next);
@@ -168,6 +204,20 @@ function clientGraph(roots: string[]): Map<string, string> {
     }
   }
   return reached;
+}
+
+/** Check (b)'s offender lines: every module of the client graph (the roots included) that
+ *  imports a client-forbidden target at runtime, with the client root it was reached from. */
+function clientOffenders(roots: string[], fs: ModuleFs = diskFs): string[] {
+  const graph = clientGraph(roots, fs);
+  return [...graph.keys()].flatMap((file) =>
+    importsIn(file, fs.read(file))
+      .filter((i) => !i.typeOnly && clientForbidden(file, i.specifier))
+      .map(
+        (i) =>
+          `${relative(ROOT, file)} → ${i.specifier} (reached from ${relative(ROOT, graph.get(file)!)})`,
+      ),
+  );
 }
 
 describe('client modules import primitives, blocks and @/lib/format/date by module path (W147)', () => {
@@ -245,14 +295,56 @@ describe('client modules import primitives, blocks and @/lib/format/date by modu
     expect(graph.get(join(SRC, 'design', 'blocks', 'ContactCta.tsx'))).toBe(
       join(SRC, 'design', 'chrome', 'StickyCtaBar.tsx'),
     );
-    const offenders = [...graph.keys()].flatMap((file) =>
-      importsIn(file, read(file))
-        .filter((i) => !i.typeOnly && barrelOf(file, i.specifier))
-        .map(
-          (i) =>
-            `${relative(ROOT, file)} → ${i.specifier} (reached from ${relative(ROOT, graph.get(file)!)})`,
-        ),
+    // W158: the one real importer of the read-minutes formatter is a server block no client
+    // module reaches — the rule forbids the client graph, not the module.
+    expect(read(join(SRC, 'design', 'blocks', 'PostCard.tsx'))).toContain(
+      "from '@/lib/format/date/formatReadMinutes'",
     );
-    expect(offenders).toEqual([]);
+    expect(graph.has(join(SRC, 'design', 'blocks', 'PostCard.tsx'))).toBe(false);
+    expect(clientOffenders(clientRoots)).toEqual([]);
+  });
+
+  it('(b, W158) the read-minutes formatter and the message catalogues are forbidden in the client graph, directly or through a helper; a server importer is not', () => {
+    const at = (...path: string[]) => join(SRC, ...path);
+    const files = new Map<string, string>([
+      [
+        at('design', 'chrome', 'FakeIsland.tsx'),
+        "'use client';\nimport { formatReadMinutes } from '@/lib/format/date/formatReadMinutes';\n",
+      ],
+      [
+        at('design', 'chrome', 'FakeIsland2.tsx'),
+        "'use client';\nimport { readLabel } from './fake-read-label';\nexport const x = readLabel;\n",
+      ],
+      [
+        at('design', 'chrome', 'fake-read-label.ts'),
+        "import { formatReadMinutes } from '../../lib/format/date/formatReadMinutes.ts';\n" +
+          'export const readLabel = formatReadMinutes;\n',
+      ],
+      [
+        at('design', 'chrome', 'FakeIsland3.tsx'),
+        "'use client';\nimport tr from '@/messages/tr.json';\nexport const n = Object.keys(tr).length;\n",
+      ],
+      // type-only: erased at compile time, never in the bundle, not an offender
+      [
+        at('design', 'chrome', 'FakeIsland4.tsx'),
+        "'use client';\nimport type { formatReadMinutes } from '@/lib/format/date/formatReadMinutes';\n",
+      ],
+      // a SERVER component may import it by path (PostCard does, W156) — no client root reaches it
+      [
+        at('design', 'blocks', 'FakeServerCard.tsx'),
+        "import { formatReadMinutes } from '@/lib/format/date/formatReadMinutes';\nexport const y = formatReadMinutes;\n",
+      ],
+      [
+        at('lib', 'format', 'date', 'formatReadMinutes.ts'),
+        "import en from '@/messages/en.json';\nimport tr from '@/messages/tr.json';\nexport const formatReadMinutes = () => [en, tr];\n",
+      ],
+    ]);
+    const memory: ModuleFs = { read: (file) => files.get(file) ?? '', isFile: (f) => files.has(f) };
+    const roots = [...files.keys()].filter((file) => isClientText(file, files.get(file)!));
+    expect(clientOffenders(roots, memory)).toEqual([
+      'src/design/chrome/FakeIsland.tsx → @/lib/format/date/formatReadMinutes (reached from src/design/chrome/FakeIsland.tsx)',
+      'src/design/chrome/FakeIsland3.tsx → @/messages/tr.json (reached from src/design/chrome/FakeIsland3.tsx)',
+      'src/design/chrome/fake-read-label.ts → ../../lib/format/date/formatReadMinutes.ts (reached from src/design/chrome/FakeIsland2.tsx)',
+    ]);
   });
 });

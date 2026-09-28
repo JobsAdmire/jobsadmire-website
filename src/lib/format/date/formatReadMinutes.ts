@@ -10,7 +10,8 @@ const MESSAGES: Record<Locale, Messages> = { tr, en };
 /** `sys.blocks.readMinutes` (ICU plural, W54): EN `5 min read`, TR `5 dk okuma`. Both message
  *  files are imported here, so a client island must never import this module — the block that
  *  needs it (`PostCard`) is a server component and imports it by path (W156), never through the
- *  `@/lib/format/date` barrel. */
+ *  `@/lib/format/date` barrel. `client-imports.test.ts` check (b) fails on any module of the
+ *  client graph that imports it (W158). */
 export function formatReadMinutes(n: number, locale: Locale): string {
   const t = createTranslator({ locale, messages: MESSAGES[locale], namespace: 'sys.blocks' });
   return t('readMinutes', { n: Math.max(1, Math.round(n)) });

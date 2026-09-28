@@ -226,9 +226,26 @@ describe('RateConfigSchema date fields (W144(b))', () => {
     expect(() => RateConfigSchema.parse({ ...rateConfig, effectiveFrom: 'not-a-date' })).toThrow();
   });
 
-  it('both generated bundles still parse under the tightened schema', () => {
-    expect(() => BundleSchema.parse(trBundle)).not.toThrow();
-    expect(() => BundleSchema.parse(enBundle)).not.toThrow();
+  // N5 (final re-review): `BundleSchema` types `collections` as records of unknown rows
+  // (contract/website-bundle.v1.ts), so parsing a whole bundle never reaches the row schemas —
+  // every committed row goes through the real, tightened RateConfigSchema/CalculatorRoleSchema.
+  it('both generated bundles still parse under the tightened schemas — every committed row, through the real row schemas', () => {
+    for (const bundle of [trBundle, enBundle]) {
+      const { collections } = BundleSchema.parse(bundle);
+      const roles = CalculatorRoleSchema.array().parse(collections.calculatorRoles);
+      const rates = RateConfigSchema.array().parse(collections.rateConfig);
+      expect(roles.length).toBeGreaterThan(0);
+      expect(rates).toHaveLength(1);
+    }
+  });
+
+  it('the row schemas catch what the bundle schema alone lets through (why the check above parses rows)', () => {
+    const bad = structuredClone(BundleSchema.parse(trBundle));
+    bad.collections.calculatorRoles![0]!.multiplier = 0.9;
+    bad.collections.rateConfig![0]!.effectiveFrom = '2026-02-30';
+    expect(() => BundleSchema.parse(bad)).not.toThrow();
+    expect(() => CalculatorRoleSchema.array().parse(bad.collections.calculatorRoles)).toThrow();
+    expect(() => RateConfigSchema.array().parse(bad.collections.rateConfig)).toThrow();
   });
 });
 
