@@ -340,6 +340,11 @@ function scanSource(fileName: string, text: string, variants: ButtonVariant[]): 
 const VARIANTS = buttonVariants(readFileSync(BUTTON, 'utf8'));
 
 describe('collisionsIn — the same-property check (W122/W155)', () => {
+  // The brief's three RED fixtures, all built from classes the tree already uses. The precision
+  // cases (colour vs size/alignment, bg colour vs image/size/position, border colour vs width,
+  // variant chains, shorthand vs longhand) live in src/test/class-collisions.test.ts, beside the
+  // checker: `src/test/` is outside Tailwind's content scan, so their fixture classes never
+  // become CSS rules (this folder is scanned — a fixture here must use existing classes only).
   it('flags the three brief fixtures: display, text colour, hover background', () => {
     expect(collisionsIn('hidden inline-flex').map(formatCollision)).toEqual([
       'display — hidden vs inline-flex',
@@ -349,38 +354,6 @@ describe('collisionsIn — the same-property check (W122/W155)', () => {
     ]);
     expect(collisionsIn('hover:bg-ink hover:bg-blue-safe').map(formatCollision)).toEqual([
       'hover: background-color — hover:bg-ink vs hover:bg-blue-safe',
-    ]);
-  });
-
-  it('tells text colour from text size and alignment', () => {
-    expect(collisionsIn('text-white text-body-sm text-center')).toEqual([]);
-    expect(collisionsIn('text-ink text-nav text-left')).toEqual([]);
-    expect(collisionsIn('text-blue-safe text-[14px]')).toEqual([]);
-    expect(collisionsIn('text-body-sm text-nav').map(formatCollision)).toEqual([
-      'font-size — text-body-sm vs text-nav',
-    ]);
-    expect(collisionsIn('text-success-text text-white').map(formatCollision)).toEqual([
-      'color — text-success-text vs text-white',
-    ]);
-  });
-
-  it('tells a background colour from a background image/size/position, a border colour from a width', () => {
-    expect(collisionsIn('bg-ink bg-cover bg-center bg-no-repeat')).toEqual([]);
-    expect(collisionsIn('bg-white/10 bg-gradient-to-br')).toEqual([]);
-    expect(collisionsIn('border border-t-[3px] border-blue border-dashed')).toEqual([]);
-    expect(collisionsIn('border-white/20 border-success/40').map(formatCollision)).toEqual([
-      'border-color — border-white/20 vs border-success/40',
-    ]);
-  });
-
-  it('keeps variant chains apart and lets a longhand follow its shorthand', () => {
-    expect(collisionsIn('hidden lg:flex')).toEqual([]);
-    expect(collisionsIn('max-xl:hidden inline-flex')).toEqual([]);
-    expect(collisionsIn('bg-ink hover:bg-blue-safe')).toEqual([]);
-    expect(collisionsIn('m-0 mb-4 gap-3 gap-x-5 border border-t')).toEqual([]);
-    expect(collisionsIn('sr-only focus:not-sr-only focus:absolute')).toEqual([]);
-    expect(collisionsIn('[&>svg]:h-4 [&>svg]:h-5').map(formatCollision)).toEqual([
-      '[&>svg]: height — [&>svg]:h-4 vs [&>svg]:h-5',
     ]);
   });
 });
@@ -426,7 +399,7 @@ describe('scanSource — evaluating class strings statically (W155)', () => {
 
   it('evaluates every branch of a joined array, a conditional and an object map', () => {
     expect(
-      scan("const c = ['text-white', on ? 'text-sky' : 'p-2'].filter(Boolean).join(' ');"),
+      scan("const c = ['text-white', on ? 'text-sky' : 'px-4'].filter(Boolean).join(' ');"),
     ).toEqual(['color — text-white vs text-sky']);
     expect(
       scan(
