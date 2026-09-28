@@ -10,14 +10,21 @@ import { describe, expect, it } from 'vitest';
 // chunk of every route (≈ 3 KB gz); `@/lib/format/date` imports BOTH message catalogues. The
 // barrels stay for server components and the dev gallery (which proves they compile).
 //
-//   (a) no `'use client'` module under `src/` outside the dev gallery imports one of the three —
-//       static, dynamic, re-export or type-only, the directive read as the first statement;
-//   (b) no module those client modules reach through RUNTIME imports does either: a
-//       directive-less module a client module imports (ContactCta, which StickyCtaBar mounts)
-//       is bundled into the same client graph, barrel and all. Type-only imports are erased at
-//       compile time, so they are not edges here and not offences in (b).
+// W156 (final fix round 1, widened by the final fix round 2 controller addition I0): proof run 1
+// showed a SERVER component importing `@/design/primitives` turns every `'use client'` primitive
+// the barrel re-exports into a client reference of the route (the manifest listed all seven), so
+// check (a) below applies to EVERY non-test module outside the dev gallery — server components
+// included — not only `'use client'` ones.
+//
+//   (a) no module under `src/` outside the dev gallery imports one of the three — static,
+//       dynamic, re-export or type-only, whether or not it carries a `'use client'` directive;
+//   (b) no module a CLIENT module reaches through RUNTIME imports does either: a directive-less
+//       module a client module imports (ContactCta, which StickyCtaBar mounts) is bundled into
+//       the same client graph, barrel and all — this is a client-bundle-composition check, so it
+//       stays scoped to the client reachability graph. Type-only imports are erased at compile
+//       time, so they are not edges here and not offences in (b).
 // A relative spelling that resolves to the same path (`../primitives`, `./date`) counts; a module
-// path within a barrel (`@/design/primitives/Button`) does not.
+// path within a barrel (`@/design/primitives/Button`, `@/lib/format/date/formatDate`) does not.
 const ROOT = process.cwd();
 const SRC = join(ROOT, 'src');
 const GALLERY = join(SRC, 'app', '[locale]', '(site)', 'dev', 'gallery');
@@ -138,9 +145,11 @@ function modulesUnder(dir: string): string[] {
 }
 
 const read = (file: string) => readFileSync(file, 'utf8');
-const clientRoots = modulesUnder(SRC).filter(
-  (file) => !file.startsWith(GALLERY + sep) && isClientText(file, read(file)),
-);
+/** Every non-test module outside the dev gallery — the W156 scope for check (a). */
+const allRoots = modulesUnder(SRC).filter((file) => !file.startsWith(GALLERY + sep));
+/** The narrower, `'use client'`-only scope check (b) still uses (a client-bundle-composition
+ *  check has no reason to walk a server component's own server-only import graph). */
+const clientRoots = allRoots.filter((file) => isClientText(file, read(file)));
 
 /** Every module reachable from `roots` through runtime imports; a barrel is a leaf (its importer
  *  is the offender, not everything behind it). */
@@ -206,10 +215,23 @@ describe('client modules import primitives, blocks and @/lib/format/date by modu
     expect(kinds("export type { A } from 'a';\nexport { b } from 'b';")).toEqual([true, false]);
   });
 
-  it('(a) no client module outside the dev gallery imports one of the three', () => {
-    expect(clientRoots).toContain(join(SRC, 'design', 'chrome', 'HeaderCtas.tsx'));
-    expect(clientRoots).toContain(join(SRC, 'forms', 'client', 'FormShell.tsx'));
-    const offenders = clientRoots.flatMap((file) =>
+  it('(W156) a server module (no client directive) is in scope where a client-only scan would miss it', () => {
+    const server = join(SRC, 'design', 'chrome', 'FakeServer.tsx');
+    const text = "import { Button } from '@/design/primitives';\nexport const X = Button;\n";
+    expect(isClientText(server, text)).toBe(false);
+    expect(barrels(server, text)).toEqual(['@/design/primitives']);
+    // A real, on-disk proof that the scope actually widened: Footer is a server component
+    // (round 1 moved it off the barrel after proof run 1) that `allRoots` still walks.
+    const footer = join(SRC, 'design', 'chrome', 'Footer.tsx');
+    expect(allRoots).toContain(footer);
+    expect(clientRoots).not.toContain(footer);
+  });
+
+  it('(a) no module outside the dev gallery imports one of the three (W156: server components included)', () => {
+    expect(allRoots).toContain(join(SRC, 'design', 'chrome', 'HeaderCtas.tsx'));
+    expect(allRoots).toContain(join(SRC, 'forms', 'client', 'FormShell.tsx'));
+    expect(allRoots).toContain(join(SRC, 'design', 'chrome', 'Footer.tsx'));
+    const offenders = allRoots.flatMap((file) =>
       importsIn(file, read(file))
         .filter((i) => barrelOf(file, i.specifier))
         .map((i) => `${relative(ROOT, file)} → ${i.specifier}`),

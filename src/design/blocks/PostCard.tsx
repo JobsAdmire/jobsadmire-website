@@ -2,7 +2,8 @@ import type { BlogPost } from '@/content/collections';
 import { makeTf } from '@/content/pure';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
-import { formatDate, formatReadMinutes } from '@/lib/format/date';
+import { formatDate } from '@/lib/format/date/formatDate';
+import { formatReadMinutes } from '@/lib/format/date/formatReadMinutes';
 import type { Bundle } from '../../../contract/website-bundle.v1';
 import { ImageSlot } from './ImageSlot';
 
