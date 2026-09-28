@@ -34,12 +34,18 @@ describe('COPY_DELTAS', () => {
       });
     }
   });
-  it('every row’s `legal` flag matches the catalogue (W142(f)/W143 — the WP-C legal-review list)', () => {
+  it('every row’s `legal` flag matches the catalogue (W142(f)/W143 — the WP-C legal-review list), and every package id it names exists there (N5)', () => {
     for (const row of COPY_DELTAS) {
       expect({ id: row.id, legal: catalogueLegalFor(row.id) }).toEqual({
         id: row.id,
         legal: row.legal,
       });
+      // N5: catalogueLegalFor treats an unknown id as `legal: false`, so a typo'd package id would
+      // otherwise pass silently for any row whose `legal` is false — a silent drop from the WP-C
+      // legal-review list. Assert existence too, keyed on the id itself so a miss fails with its name.
+      for (const packageId of row.id.match(PACKAGE_ID) ?? []) {
+        expect(catalogue).toHaveProperty([packageId]);
+      }
     }
   });
   it('has 18 rows: 7 deltas the page tasks must follow the model for, 11 agreeing pins (W142(e))', () => {
