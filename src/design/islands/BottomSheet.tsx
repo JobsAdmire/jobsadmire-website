@@ -1,7 +1,7 @@
 'use client';
 import { useId, type ReactNode } from 'react';
 import { CloseIcon } from '@/design/chrome/icons';
-import { Dialog } from '@/design/primitives';
+import { Dialog } from '@/design/primitives/Dialog';
 
 export type BottomSheetProps = {
   open: boolean;

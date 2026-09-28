@@ -1,7 +1,7 @@
 'use client';
 import { useCallback, useEffect, useRef, useSyncExternalStore } from 'react';
 import { ContactCta } from '@/design/blocks/ContactCta';
-import type { ButtonVariant } from '@/design/primitives';
+import type { ButtonVariant } from '@/design/primitives/Button';
 import type { Href } from '@/i18n/navigation';
 
 export type StickyCta = {

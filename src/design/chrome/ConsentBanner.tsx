@@ -2,7 +2,7 @@
 import { useSyncExternalStore } from 'react';
 import { useTranslations } from 'next-intl';
 import { CONSENT_EVENT, readConsent, writeConsent, type ConsentState } from '@/analytics/consent';
-import { Button } from '@/design/primitives';
+import { Button } from '@/design/primitives/Button';
 import { Link } from '@/i18n/navigation';
 
 /** Distinct from `unknown` on purpose (R27): the server render and the hydrating client both

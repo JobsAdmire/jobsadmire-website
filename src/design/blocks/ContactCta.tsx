@@ -1,7 +1,9 @@
 import type { ReactNode } from 'react';
 import { ContactLink } from '@/analytics/ContactLink';
 import { contactKindOf } from '@/analytics/contact-kind';
-import { Button, buttonClassName, type ButtonVariant } from '@/design/primitives';
+// By module path, not the barrel (W147): StickyCtaBar, a client module, mounts this block, so
+// whatever it imports is bundled into that client graph.
+import { Button, buttonClassName, type ButtonVariant } from '@/design/primitives/Button';
 import { Link, type Href } from '@/i18n/navigation';
 
 /** The two page-level placements W12 allows next to the chrome's own. */

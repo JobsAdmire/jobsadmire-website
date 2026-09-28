@@ -1,6 +1,6 @@
 'use client';
 import { useTranslations } from 'next-intl';
-import { FormField } from '@/design/primitives';
+import { FormField } from '@/design/primitives/FormField';
 import { useFieldError, useFieldId, useFieldValue, useRegisterField } from './FormErrorsContext';
 
 export type FieldOption = { value: string; label: string };

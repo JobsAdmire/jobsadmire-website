@@ -4,7 +4,7 @@ import { useTranslations } from 'next-intl';
 import { usePathname } from 'next/navigation';
 import type { FormKey } from '@/analytics/forms';
 import { track } from '@/analytics/track';
-import { Button } from '@/design/primitives';
+import { Button } from '@/design/primitives/Button';
 import type { Locale } from '@/i18n/routing';
 import { mailLink, telLink, waLink } from '@/lib/contact';
 import type { FormErrorResult } from '../types';

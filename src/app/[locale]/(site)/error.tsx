@@ -1,6 +1,7 @@
 'use client';
 import { useTranslations } from 'next-intl';
-import { Button, Section } from '@/design/primitives';
+import { Button } from '@/design/primitives/Button';
+import { Section } from '@/design/primitives/Section';
 
 /** The (site) group's error boundary: the chrome survives, the page is replaced. Errors
  *  thrown by the layout itself escape to `app/global-error.tsx`. The error object is

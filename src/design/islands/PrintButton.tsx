@@ -1,5 +1,5 @@
 'use client';
-import { Button, type ButtonVariant } from '@/design/primitives';
+import { Button, type ButtonVariant } from '@/design/primitives/Button';
 
 export type PrintButtonProps = {
   label: string;

@@ -1,6 +1,6 @@
 'use client';
 import { Link, usePathname } from '@/i18n/navigation';
-import { buttonClassName } from '@/design/primitives';
+import { buttonClassName } from '@/design/primitives/Button';
 import { ctasFor, type CtaTable, type ResolvedCta } from './ctas';
 
 // The header's primary face is the `nav` variant — ink at rest, blue-safe on hover (the design's

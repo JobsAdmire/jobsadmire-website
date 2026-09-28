@@ -11,7 +11,7 @@ import {
 } from 'react';
 import { useTranslations } from 'next-intl';
 import type { FormKey } from '@/analytics/forms';
-import { Button } from '@/design/primitives';
+import { Button } from '@/design/primitives/Button';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { isFormErrorCode } from '../errors';
