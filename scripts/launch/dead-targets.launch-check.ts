@@ -1,11 +1,11 @@
 /** @vitest-environment node */
 import { describe, expect, it } from 'vitest';
 import { getPathname } from '@/i18n/navigation';
-import { CTA_BY_PATHNAME } from '@/design/chrome/ctas';
+import { CTA_BY_PATHNAME, DEFAULT_CTAS } from '@/design/chrome/ctas';
 import type { StaticPathname } from '@/lib/seo/routes';
 import { bypassWarning } from '../../e2e/helpers/bypass';
 import { GATE_ROUTES } from '../../e2e/routes';
-import { deadTargets, missingCtaAnchor } from './dead-targets';
+import { ctaAnchorTargets, deadTargets, missingCtaAnchors } from './dead-targets';
 
 /**
  * W152 (§8 E, T3-4) — the launch profile's dead-target sweep, the check Gate A's "every chrome
@@ -19,6 +19,11 @@ import { deadTargets, missingCtaAnchor } from './dead-targets';
  * pages found 12 chrome hrefs 404ing (every unbuilt page's nav/footer link) and two CTA anchors
  * absent (`#proposal` on `/`, `#request-form` on `/isci-talebi`, both pending their page tasks).
  * Must be green by Gate A.
+ *
+ * W158 (final re-review N1): the anchor half walks `DEFAULT_CTAS` as well as `CTA_BY_PATHNAME`,
+ * primary and secondary, and checks each anchor on the page its link points at (the link's own
+ * `pathname`, localized through the routing table) — `DEFAULT_CTAS.primary`'s `#request-form` is
+ * the header CTA of every page without a table entry, and round 2's key-only loop never saw it.
  */
 const BASE = (process.env.E2E_BASE_URL ?? '').replace(/\/$/, '');
 if (!BASE) {
@@ -36,22 +41,20 @@ describe('W152 — dead-target sweep (launch profile)', () => {
     expect(dead, `dead target(s):\n${dead.join('\n')}`).toEqual([]);
   }, 180_000);
 
-  it('every CTA_BY_PATHNAME anchor id exists on its page, both locales', async () => {
-    const missing: string[] = [];
-    for (const [key, ctas] of Object.entries(CTA_BY_PATHNAME)) {
-      const href = ctas.primary.href;
-      const hash = typeof href === 'object' && href !== null && 'hash' in href ? href.hash : null;
-      if (!hash) continue; // W17: every entry in this table is an in-page anchor today, but a
-      // future one without a hash (a plain page navigation) has nothing here to check.
-      const id = hash.replace(/^#/, '');
-      // W121/ctas.ts's own comment: CTA_BY_PATHNAME never keys a dynamic pathname, so every key
-      // here is safely a StaticPathname (the bare-string form getPathname accepts).
-      for (const locale of ['tr', 'en'] as const) {
-        const path = getPathname({ locale, href: key as StaticPathname });
-        const line = await missingCtaAnchor(BASE, locale, path, id);
-        if (line) missing.push(`${key}: ${line}`);
-      }
-    }
+  it('every CTA anchor (DEFAULT_CTAS and CTA_BY_PATHNAME, primary and secondary) exists on the page its link points at, both locales (W158)', async () => {
+    const targets = ctaAnchorTargets({ defaults: DEFAULT_CTAS, byPathname: CTA_BY_PATHNAME });
+    // Non-vacuous: the default CTA's anchor is in the set (N1 — the one round 2 never checked).
+    expect(targets).toContainEqual({
+      source: 'DEFAULT_CTAS.primary',
+      pathname: '/hire-workers',
+      id: 'request-form',
+    });
+    // Every CTA link targets a static pathname today (W121 keeps dynamic keys out of the table,
+    // and no CTA links into a dynamic route), so the bare-string form getPathname accepts is safe;
+    // a future link to a `[slug]` page would localize to its literal pattern, 404, and be listed.
+    const localize = (locale: 'tr' | 'en', pathname: string) =>
+      getPathname({ locale, href: pathname as StaticPathname });
+    const missing = await missingCtaAnchors(BASE, targets, localize);
     if (missing.length)
       console.error(`dead-targets: ${missing.length} missing anchor(s):\n${missing.join('\n')}`);
     expect(missing, `missing CTA anchor(s):\n${missing.join('\n')}`).toEqual([]);

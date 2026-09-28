@@ -1,11 +1,20 @@
 import { describe, expect, it, vi } from 'vitest';
+import { CTA_BY_PATHNAME, DEFAULT_CTAS } from '@/design/chrome/ctas';
+import { getPathname } from '@/i18n/navigation';
+import type { StaticPathname } from '@/lib/seo/routes';
 import {
+  ctaAnchorTargets,
   deadTargets,
   fetchRoute,
   hasElementId,
   internalHrefs,
   missingCtaAnchor,
+  missingCtaAnchors,
 } from './dead-targets';
+
+/** The launch check's own localizer: the routing table's per-locale path for an internal one. */
+const localize = (locale: 'tr' | 'en', pathname: string) =>
+  getPathname({ locale, href: pathname as StaticPathname });
 
 describe('internalHrefs', () => {
   it('collects internal hrefs, dropping /_next/, external hosts, hashes and duplicates', () => {
@@ -115,5 +124,71 @@ describe('missingCtaAnchor', () => {
       async () => new Response('<section id="proposal">x</section>', { status: 200 }),
     ) as unknown as typeof fetch;
     expect(await missingCtaAnchor('https://example.test', 'tr', '/', 'proposal', f)).toBeNull();
+  });
+});
+
+// W158 (N1): the anchor sweep walks DEFAULT_CTAS as well as CTA_BY_PATHNAME, primary and
+// secondary, and fetches the page each link points at — never the table key it sits under.
+describe('ctaAnchorTargets + missingCtaAnchors (W158)', () => {
+  // RED fixture (N1): the real CTA tables against a site where every page carries every anchor
+  // id except /isci-talebi, which lacks DEFAULT_CTAS.primary's #request-form — the header's
+  // default CTA on every page without a table entry, and the one the review's I6 probe named.
+  it('reports a DEFAULT_CTAS anchor missing on /isci-talebi', async () => {
+    const targets = ctaAnchorTargets({ defaults: DEFAULT_CTAS, byPathname: CTA_BY_PATHNAME });
+    const everyId = [...new Set(targets.map((t) => t.id)), 'request-form']
+      .map((id) => `<section id="${id}"></section>`)
+      .join('');
+    const f = vi.fn(async (input: string | URL) => {
+      const path = new URL(input).pathname;
+      return new Response(path === '/isci-talebi' ? '<main>no anchor here</main>' : everyId, {
+        status: 200,
+      });
+    }) as unknown as typeof fetch;
+
+    expect(await missingCtaAnchors('https://example.test', targets, localize, f)).toEqual([
+      'DEFAULT_CTAS.primary (/hire-workers#request-form): tr /isci-talebi → missing id="request-form" (status 200)',
+    ]);
+    // the EN twin was checked too, on its own localized path, and carries the id
+    expect(f).toHaveBeenCalledWith('https://example.test/en/hire-workers', expect.anything());
+  });
+
+  it('fetches the page the link points at, not the table key it sits under', async () => {
+    const targets = ctaAnchorTargets({
+      defaults: { primary: { href: '/hire-workers' } },
+      byPathname: { '/': { primary: { href: { pathname: '/contact', hash: '#message' } } } },
+    });
+    expect(targets).toEqual([
+      { source: "CTA_BY_PATHNAME['/'].primary", pathname: '/contact', id: 'message' },
+    ]);
+    const f = vi.fn(
+      async () => new Response('<form id="message"></form>', { status: 200 }),
+    ) as unknown as typeof fetch;
+    expect(await missingCtaAnchors('https://example.test', targets, localize, f)).toEqual([]);
+    expect((f as unknown as ReturnType<typeof vi.fn>).mock.calls.map(([url]) => url)).toEqual([
+      'https://example.test/iletisim',
+      'https://example.test/en/contact',
+    ]);
+  });
+
+  it('walks primary AND secondary of every table and skips a plain page link (no hash)', () => {
+    expect(
+      ctaAnchorTargets({
+        defaults: {
+          primary: { href: { pathname: '/hire-workers', hash: '#request-form' } },
+          secondary: { href: '/partner-with-us' },
+        },
+        byPathname: {
+          '/verify': {
+            primary: { href: { pathname: '/verify', hash: '#report' } },
+            secondary: { href: { pathname: '/contact', hash: 'message' } },
+          },
+          '/about': { primary: { href: '/about' }, secondary: null },
+        },
+      }),
+    ).toEqual([
+      { source: 'DEFAULT_CTAS.primary', pathname: '/hire-workers', id: 'request-form' },
+      { source: "CTA_BY_PATHNAME['/verify'].primary", pathname: '/verify', id: 'report' },
+      { source: "CTA_BY_PATHNAME['/verify'].secondary", pathname: '/contact', id: 'message' },
+    ]);
   });
 });

@@ -27,9 +27,9 @@ export function internalHrefs(html: string): string[] {
 
 const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
-/** Whether the HTML carries a real element with this id — the landing spot a `CTA_BY_PATHNAME`
- *  hash (`#proposal` → `proposal`) must exist on its page (W17: "the page task that owns a key
- *  must render that element id"). */
+/** Whether the HTML carries a real element with this id — the landing spot a CTA hash
+ *  (`#proposal` → `proposal`, from `DEFAULT_CTAS` or `CTA_BY_PATHNAME`) must exist on its page
+ *  (W17: "the page task that owns a key must render that element id"; W158). */
 export function hasElementId(html: string, id: string): boolean {
   const re = new RegExp(`\\bid\\s*=\\s*(?:"${escapeRegExp(id)}"|'${escapeRegExp(id)}')`);
   return re.test(html);
@@ -93,4 +93,71 @@ export async function missingCtaAnchor(
     return `${locale} ${path} → missing id="${id}" (status ${status ?? 'no response'})`;
   }
   return null;
+}
+
+/** A CTA link's `href` as `src/design/chrome/ctas.ts` declares it (next-intl's typed `Href`): an
+ *  internal pathname, or an object with a `pathname` and an optional `hash` (`UrlObject`'s, so
+ *  possibly `null`). Structural, so this module needs no next-intl import. */
+export type CtaHref = string | { pathname: string; hash?: string | null };
+export type CtaEntry = { primary: { href: CtaHref }; secondary?: { href: CtaHref } | null };
+/** One in-page anchor a CTA link lands on: the table slot it came from, the internal pathname of
+ *  the page that must render it, and the element id. */
+export type CtaAnchorTarget = { source: string; pathname: string; id: string };
+
+/** The page and element id a CTA href lands on, or `null` for a plain page link (no hash — its
+ *  page answering 200 is the href sweep's job, not this one's). */
+function anchorOf(href: CtaHref): { pathname: string; id: string } | null {
+  const [pathname, hash = ''] =
+    typeof href === 'string' ? href.split('#', 2) : [href.pathname, href.hash ?? ''];
+  const id = hash.replace(/^#/, '');
+  return id && pathname ? { pathname, id } : null;
+}
+
+/** W158: every in-page anchor a header CTA can land on — `DEFAULT_CTAS` (the CTA of every page
+ *  without a table entry: Hire Workers itself, About, Careers, the legal pages, thank-you…) and
+ *  every `CTA_BY_PATHNAME` entry, primary AND secondary. The page to check is the one the LINK
+ *  points at (`href.pathname`), never the table key the entry sits under: identical for every
+ *  entry today, but a cross-page CTA (a key whose link lands on another page's anchor) must be
+ *  checked where it lands. */
+export function ctaAnchorTargets(tables: {
+  defaults: CtaEntry;
+  byPathname: Partial<Record<string, CtaEntry>>;
+}): CtaAnchorTarget[] {
+  const entries: [string, CtaEntry | undefined][] = [
+    ['DEFAULT_CTAS', tables.defaults],
+    ...Object.entries(tables.byPathname).map(([key, entry]): [string, CtaEntry | undefined] => [
+      `CTA_BY_PATHNAME['${key}']`,
+      entry,
+    ]),
+  ];
+  const out: CtaAnchorTarget[] = [];
+  for (const [name, entry] of entries) {
+    for (const slot of ['primary', 'secondary'] as const) {
+      const link = entry?.[slot];
+      const anchor = link ? anchorOf(link.href) : null;
+      if (anchor) out.push({ source: `${name}.${slot}`, ...anchor });
+    }
+  }
+  return out;
+}
+
+/** Every target whose id is absent from its page (or whose page does not answer 200), in both
+ *  locales — `localize` maps the internal pathname to the locale's external path (the routing
+ *  table, through next-intl's `getPathname`, in the launch check). One line per miss, naming
+ *  the table slot and the anchor so the fix is obvious. */
+export async function missingCtaAnchors(
+  base: string,
+  targets: readonly CtaAnchorTarget[],
+  localize: (locale: 'tr' | 'en', pathname: string) => string,
+  f: typeof fetch = fetch,
+): Promise<string[]> {
+  const missing: string[] = [];
+  for (const target of targets) {
+    for (const locale of ['tr', 'en'] as const) {
+      const path = localize(locale, target.pathname);
+      const line = await missingCtaAnchor(base, locale, path, target.id, f);
+      if (line) missing.push(`${target.source} (${target.pathname}#${target.id}): ${line}`);
+    }
+  }
+  return missing;
 }

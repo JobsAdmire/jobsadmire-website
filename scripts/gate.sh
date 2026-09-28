@@ -57,12 +57,29 @@ if [ -z "$LH_EXTRA_HEADERS" ] && [ "$LHCI_CONFIG" = lighthouserc.preview.json ];
 fi
 
 if [ "$PROFILE" = launch ]; then
-  # W152 (ruling 8): the launch profile's own vitest checks — W20 (UNBUILT_PATHNAMES empty) and
-  # the W152 dead-target sweep — run BEFORE Playwright so both launch results print even if the
-  # (much longer) Playwright + Lighthouse run below is interrupted or itself fails; both need only
-  # the server already up at E2E_BASE_URL, nothing Playwright/Lighthouse collect first.
-  echo "gate: launch — source-level checks (W20 + W152)"
-  npx vitest run --config vitest.launch.config.mts
+  # The launch profile's three Gate A checks run BEFORE Playwright, each to completion whatever
+  # the others return (N6 — `set -e` used to end the run at the first red one, so the D26 table
+  # never printed while W20 was red): W20 (UNBUILT_PATHNAMES empty), the W152/W158 dead-target
+  # sweep (every internal href 200, every CTA anchor rendered on the page its link points at) and
+  # the D26 content-readiness table. All three need only the server already up at E2E_BASE_URL.
+  # Any red one fails the profile right here, without starting the (much longer) Playwright +
+  # Lighthouse run — `npm run gate` covers those, and Gate A needs both green anyway.
+  LAUNCH_FAILED=""
+  echo "gate: launch — W20: UNBUILT_PATHNAMES is empty"
+  npx vitest run --config vitest.launch.config.mts scripts/launch/unbuilt-routes.launch-check.ts ||
+    LAUNCH_FAILED="$LAUNCH_FAILED W20"
+  echo "gate: launch — W152/W158: dead targets (internal hrefs, CTA anchors)"
+  npx vitest run --config vitest.launch.config.mts scripts/launch/dead-targets.launch-check.ts ||
+    LAUNCH_FAILED="$LAUNCH_FAILED dead-targets"
+  # D26/W55: placeholder counter + LCP-slot rule over every gate route; the table is the
+  # content-readiness card and lands in lighthouse-report/content-readiness.json.
+  echo "gate: launch — D26: content readiness"
+  npx tsx scripts/placeholder-count.ts || LAUNCH_FAILED="$LAUNCH_FAILED content-readiness"
+  if [ -n "$LAUNCH_FAILED" ]; then
+    echo "gate: launch — FAILED:$LAUNCH_FAILED (Playwright and Lighthouse not run: npm run gate)" >&2
+    exit 1
+  fi
+  echo "gate: launch — W20, dead targets and content readiness pass"
 fi
 
 npx playwright test
@@ -105,11 +122,4 @@ npx lhci assert --config="$LHCI_CONFIG"
 # above is what fails a route over 204,800 B; this flags the 194,560 B lazy-loading line.
 node scripts/js-size.mjs || true
 
-if [ "$PROFILE" = launch ]; then
-  # D26/W55: placeholder counter + LCP-slot rule over every gate route; the table is the
-  # content-readiness card and lands in lighthouse-report/content-readiness.json. The W20/W152
-  # source-level checks already ran, before Playwright, above.
-  echo "gate: launch — content readiness (D26)"
-  npx tsx scripts/placeholder-count.ts
-fi
 echo "gate: OK"
