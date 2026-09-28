@@ -1748,7 +1748,7 @@ NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/\[locale\]/(site)
 NEXT_BUILD_CPUS=2 NODE_OPTIONS=--max-old-space-size=4096 npm run build
 npx next start -p 3100 > /dev/null 2>&1 &
 NEXT_PID=$!
-until curl -s -o /dev/null http://localhost:3100/; do sleep 1; done
+curl -sf --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://localhost:3100/   # wait for the server without `sleep` (blocked in the agent's shell)
 E2E_BASE_URL=http://localhost:3100 npx playwright test e2e/pages/success-stories.spec.ts --project=desktop
 kill $NEXT_PID
 ```
@@ -2006,7 +2006,7 @@ npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-sp
 NEXT_BUILD_CPUS=2 NODE_OPTIONS=--max-old-space-size=4096 npm run build
 npx next start -p 3100 > /dev/null 2>&1 &
 NEXT_PID=$!
-until curl -s -o /dev/null http://localhost:3100/; do sleep 1; done
+curl -sf --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://localhost:3100/   # wait for the server without `sleep` (blocked in the agent's shell)
 E2E_BASE_URL=http://localhost:3100 npx playwright test e2e/pages/success-stories.spec.ts e2e/routing.spec.ts e2e/seo.spec.ts
 kill $NEXT_PID
 ```
@@ -2075,7 +2075,7 @@ If T1 has already turned the `<!-- ASSEMBLY -->` placeholder into a real Markdow
 NEXT_BUILD_CPUS=2 NODE_OPTIONS=--max-old-space-size=4096 npm run build
 npm run start &
 NEXT_PID=$!
-until curl -s -o /dev/null http://localhost:3000/; do sleep 1; done
+curl -sf --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://localhost:3000/   # wait for the server without `sleep` (blocked in the agent's shell)
 E2E_BASE_URL=http://localhost:3000 npm run gate
 npm run js-size
 kill $NEXT_PID

@@ -436,7 +436,7 @@ NEXT_BUILD_CPUS=2 NODE_OPTIONS=--max-old-space-size=4096 npm run build   # ONE b
 NODE_OPTIONS=--max-old-space-size=4096 npm run start &                    # background; note the PID
 SERVER_PID=$!
 # wait for :3000 to answer before gating it — a fixed sleep is unreliable on a loaded machine:
-until curl -sS -o /dev/null http://localhost:3000/ ; do sleep 1; done
+curl -sf --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://localhost:3000/   # wait for the server without `sleep` (blocked in the agent's shell)
 REVALIDATE_SECRET=<the value the server was started with, if any> \
   E2E_BASE_URL=http://localhost:3000 npm run gate:launch 2>&1 | tee /tmp/gate-launch-local.log
 kill "$SERVER_PID"
