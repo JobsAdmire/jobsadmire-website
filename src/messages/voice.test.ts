@@ -4,13 +4,14 @@ import tr from './tr.json';
 
 /**
  * docs/PRD.md §3: the company refers to itself as "JobsAdmire", never "we" (formal register,
- * Turkish "siz"). Checked over every `sys.form.*` string, so a later addition cannot slip back
- * into the first person. A net, not a proof: review still reads the copy (a Turkish
- * first-person possessive other than "ekibimiz…", e.g. "sitemiz", is not caught here).
+ * Turkish "siz"). Checked over every `sys.*` string (W154 widens this from `sys.form.*`), so a
+ * later addition cannot slip back into the first person. A net, not a proof: review still reads
+ * the copy (a Turkish first-person possessive other than "ekibimiz…", e.g. "sitemiz", is not
+ * caught here).
  */
 
 /** Keys written in the VISITOR's voice ("Hello JobsAdmire, I could not send…"), not the company's. */
-const VISITOR_VOICE = ['fallback.whatsappIntro'];
+const VISITOR_VOICE = ['form.fallback.whatsappIntro', 'whatsapp.prefill'];
 
 const EN_FIRST_PERSON = new Set(['we', 'us', 'our', 'ours', 'ourselves']);
 const TR_PRONOUNS = new Set([
@@ -72,22 +73,22 @@ function strings(obj: Record<string, unknown>, prefix = ''): [string, string][] 
   );
 }
 
-describe('sys.form.* — the company is "JobsAdmire", never "we" (docs/PRD.md §3)', () => {
+describe('sys.* — the company is "JobsAdmire", never "we" (docs/PRD.md §3)', () => {
   for (const [locale, file] of [
     ['tr', tr],
     ['en', en],
   ] as const) {
     it(`${locale}: no first-person plural outside the visitor-voice keys`, () => {
-      const hits = strings(file.sys.form)
+      const hits = strings(file.sys)
         .filter(([key]) => !VISITOR_VOICE.includes(key))
-        .flatMap(([key, value]) => firstPerson(locale, value).map((w) => `sys.form.${key}: ${w}`));
+        .flatMap(([key, value]) => firstPerson(locale, value).map((w) => `sys.${key}: ${w}`));
       expect(hits).toEqual([]);
     });
   }
 
   it('the visitor-voice allowlist names keys that exist in both locales', () => {
     for (const file of [tr, en]) {
-      const keys = strings(file.sys.form).map(([key]) => key);
+      const keys = strings(file.sys).map(([key]) => key);
       for (const key of VISITOR_VOICE) expect(keys, key).toContain(key);
     }
   });
