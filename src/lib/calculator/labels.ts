@@ -22,7 +22,12 @@ const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
 
 function utcMidnight(iso: string): Date {
   const date = ISO_DATE.test(iso) ? new Date(`${iso}T00:00:00Z`) : new Date(Number.NaN);
-  if (Number.isNaN(date.getTime())) throw new CalculatorError(`not an ISO date: "${iso}"`);
+  // Round-trip the parse (W144(b)/M2): a calendar-invalid date like "2026-02-30" is not NaN — the
+  // Date constructor rolls it over to the next month — so only re-printing it and comparing
+  // catches it. D17: never degrade silently.
+  if (Number.isNaN(date.getTime()) || date.toISOString().slice(0, 10) !== iso) {
+    throw new CalculatorError(`not a valid calendar date: "${iso}"`);
+  }
   return date;
 }
 
@@ -85,9 +90,15 @@ export type FormattedEstimate = {
   shares: { salaryPct: string; sgkPct: string };
 };
 
+/** Snap to the model's own 4-decimal precision before the final whole-lira round (W144(a)): every
+ * additive line is a sum/product of rates that carry 4 decimals, so it is exact at 4 dp, and this
+ * removes the float noise that can otherwise put an exact half-lira value on the wrong side of
+ * `Math.round` — a displayed line ₺1 low, and a breakdown that no longer sums to the total. */
+const snap4 = (value: number): number => Math.round(value * 1e4) / 1e4;
+
 const lira = <T extends Record<string, number>>(lines: T, locale: Locale): FormattedLines<T> =>
   Object.fromEntries(
-    Object.entries(lines).map(([key, value]) => [key, formatTRY(value, locale)]),
+    Object.entries(lines).map(([key, value]) => [key, formatTRY(snap4(value), locale)]),
   ) as FormattedLines<T>;
 
 /** Every lira line through formatTRY (rounded once, here); shares as whole percents. */
@@ -101,9 +112,10 @@ export function formatEstimate(estimate: Estimate, locale: Locale): FormattedEst
     monthly: lira(estimate.monthly, locale),
     oneOff: lira(estimate.oneOff, locale),
     contract: {
-      payroll: formatTRY(estimate.contract.payroll, locale),
-      oneOff: formatTRY(estimate.contract.oneOff, locale),
-      total: formatTRY(estimate.contract.total, locale),
+      payroll: formatTRY(snap4(estimate.contract.payroll), locale),
+      oneOff: formatTRY(snap4(estimate.contract.oneOff), locale),
+      total: formatTRY(snap4(estimate.contract.total), locale),
+      // the per-worker-per-month quotient is deliberately left unsnapped (M1/W144(a))
       perWorkerPerMonth: formatTRY(estimate.contract.perWorkerPerMonth, locale),
     },
     shares: {

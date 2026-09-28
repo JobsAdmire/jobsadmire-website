@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, describe, expect, it } from 'vitest';
 import { estimate } from '../engine';
 import {
   effectiveFromLabel,
@@ -13,6 +13,19 @@ import { CalculatorError } from '../types';
 import { RATE, role } from './fixtures';
 
 describe('dated labels from RateConfig (D17)', () => {
+  // M3: this suite otherwise only proves timezone-proofness in whatever zone happens to run it
+  // (UTC on Vercel, some positive offset on a dev machine) — a regression to local-time parsing
+  // only shows up in a NEGATIVE-offset zone. Node re-reads `process.env.TZ` at call time, so
+  // setting it here for the life of this describe block is enough to make that regression visible.
+  const originalTz = process.env.TZ;
+  beforeAll(() => {
+    process.env.TZ = 'America/Los_Angeles';
+  });
+  afterAll(() => {
+    if (originalTz === undefined) delete process.env.TZ;
+    else process.env.TZ = originalTz;
+  });
+
   it('effectiveFromLabel is month + year — calc.003 / home.068 “Updated January 2026”', () => {
     expect(effectiveFromLabel(RATE, 'tr')).toBe('Ocak 2026');
     expect(effectiveFromLabel(RATE, 'en')).toBe('January 2026');
@@ -35,6 +48,21 @@ describe('dated labels from RateConfig (D17)', () => {
     );
     expect(() => updatedAtLabel({ ...RATE, updatedAt: 'soon' }, 'tr')).toThrow(CalculatorError);
   });
+  it('refuses a calendar-invalid ISO date instead of rolling it over to the next month (W144(b))', () => {
+    expect(() => effectiveFromLabel({ ...RATE, effectiveFrom: '2026-02-30' }, 'en')).toThrow(
+      CalculatorError,
+    );
+    expect(() => updatedAtLabel({ ...RATE, updatedAt: '2026-02-29' }, 'en')).toThrow(
+      CalculatorError,
+    );
+    expect(() => effectiveFromLabel({ ...RATE, effectiveFrom: '2026-04-31' }, 'en')).toThrow(
+      CalculatorError,
+    );
+    // 2028 IS a leap year — 29 February is a real date and must not throw.
+    expect(effectiveFromLabel({ ...RATE, effectiveFrom: '2028-02-29' }, 'en')).toBe(
+      'February 2028',
+    );
+  });
 });
 
 describe('isReviewDue (the badge hides from reviewDueAt, D17)', () => {
@@ -47,6 +75,9 @@ describe('isReviewDue (the badge hides from reviewDueAt, D17)', () => {
   it('defaults `now` to the clock', () => {
     expect(isReviewDue({ ...RATE, reviewDueAt: '2000-01-01' })).toBe(true);
     expect(isReviewDue({ ...RATE, reviewDueAt: '2999-01-01' })).toBe(false);
+  });
+  it('also refuses a calendar-invalid reviewDueAt instead of shifting it (W144(b) — confirms isReviewDue uses utcMidnight)', () => {
+    expect(() => isReviewDue({ ...RATE, reviewDueAt: '2026-02-30' })).toThrow(CalculatorError);
   });
 });
 
@@ -99,5 +130,17 @@ describe('formatEstimate (every lira line through formatTRY)', () => {
     expect(f.grossSalary).toBe('₺49,545');
     expect(f.monthly.total).toBe('₺60,321');
     expect(f.contract.total).toBe('₺751,852');
+  });
+  it('snaps additive lines to 4 decimals before rounding so a breakdown always sums to the displayed total (W144(a))', () => {
+    // welder, gross 56 212, tier none, 330 workers: the exact monthly SGK is 4,405,615.5, which
+    // float noise can put on the wrong side of the half-lira boundary (4,405,615.499999999...).
+    const e = estimate(
+      { role: role('welder'), headcount: 330, sgkTier: 'none', grossSalary: 56212 },
+      RATE,
+    );
+    const f = formatEstimate(e, 'en');
+    expect(f.monthly.gross).toBe('₺18,549,960');
+    expect(f.monthly.sgk).toBe('₺4,405,616');
+    expect(f.monthly.total).toBe('₺22,955,576');
   });
 });

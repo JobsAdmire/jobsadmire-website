@@ -42,6 +42,10 @@ describe('COPY_DELTAS', () => {
       });
     }
   });
+  it('has 18 rows: 7 deltas the page tasks must follow the model for, 11 agreeing pins (W142(e))', () => {
+    expect(COPY_DELTAS).toHaveLength(18);
+    expect(COPY_DELTAS.filter((r) => r.agrees)).toHaveLength(11);
+  });
   it('lists exactly the seven places where the page tasks must follow the model, not the design (W142(a)(c)(d))', () => {
     expect(COPY_DELTAS.filter((r) => !r.agrees).map((r) => r.id)).toEqual([
       'Hiring Cost Calculator.dc.html:2588 (legalMin)',
@@ -63,12 +67,21 @@ describe('the generated bundle feeds the engine (Task 1 → Task 9 cross-check)'
       readFileSync(join(__dirname, '../../../content/local/bundle.tr.json'), 'utf8'),
     ) as unknown,
   );
+  const bundleEn = BundleSchema.parse(
+    JSON.parse(
+      readFileSync(join(__dirname, '../../../content/local/bundle.en.json'), 'utf8'),
+    ) as unknown,
+  );
   const rate = getRateConfig(bundle);
   const roles = getCollection(bundle, 'calculatorRoles');
 
   it('the seeded row and role table equal the fixtures this suite computed with', () => {
     expect(rate).toEqual(RATE);
     expect(roles).toEqual(ROLES);
+  });
+  it('the EN bundle carries the identical rate/roles data too (W144(d)/M5)', () => {
+    expect(getRateConfig(bundleEn)).toEqual(RATE);
+    expect(getCollection(bundleEn, 'calculatorRoles')).toEqual(ROLES);
   });
   it('the ruled figures hold over the real data', () => {
     const welder = findRole(roles, 'welder');
