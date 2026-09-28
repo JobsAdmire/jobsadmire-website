@@ -4,6 +4,7 @@ import { describe, expect, it, vi } from 'vitest';
 import {
   builtOriginRoute,
   captureContextOptions,
+  checkZoomedHeight,
   comparePngs,
   designClip,
   gotoOk,
@@ -99,6 +100,28 @@ describe('pixel harness scoring rules (W138)', () => {
     expect(designClip(1440, 7830, 0.75)).toEqual({ x: 0, y: 0, width: 1440, height: 5873 });
     // Below 1101 px there is no zoom: the clip is the full page at the viewport width.
     expect(designClip(390, 9988, 1)).toEqual({ x: 0, y: 0, width: 390, height: 9988 });
+  });
+
+  it('accepts pageHeight×zoom when an independent rect measurement agrees, within 2px (N2)', () => {
+    expect(() => checkZoomedHeight(7830, 0.75, 5873)).not.toThrow(); // exact: ⌈7830×0.75⌉ = 5873
+    expect(() => checkZoomedHeight(7830, 0.75, 5874.4)).not.toThrow(); // 1.4px of rounding slack
+    expect(() => checkZoomedHeight(9988, 1, 9988)).not.toThrow();
+  });
+
+  it('refuses a pageHeight×zoom the rendered rect disagrees with by more than 2px — exit 2 (N2)', () => {
+    // A stale/failed zoom read: the clip would be built for 5873 while the page actually painted
+    // at the unzoomed 7830 — a silently wrong capture, not a caught one, before this guard.
+    const err = (() => {
+      try {
+        checkZoomedHeight(7830, 0.75, 7830);
+        return null;
+      } catch (e) {
+        return e;
+      }
+    })();
+    expect(err).toBeInstanceOf(PixelExit);
+    expect((err as PixelExit).code).toBe(2);
+    expect((err as PixelExit).message).toContain('N2');
   });
 
   it('refuses a page that does not answer 2xx — exit 2, naming the URL', async () => {

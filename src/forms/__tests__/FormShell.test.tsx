@@ -465,12 +465,41 @@ describe('FormShell', () => {
 
   it('links the consent copy to /privacy only (W79: the KVKK page is a counsel placeholder in Phase A)', () => {
     renderWithIntl(
-      // @ts-expect-error — '/kvkk' is no longer a consent link target
+      // @ts-expect-error — '/kvkk' is no longer a consent link target: the prop type itself
+      // (`consentLinkHref?: '/privacy'`) is the guard, proved here at the type level.
       <FormShell {...base} consentLinkHref="/kvkk" action={idle}>
         <Field name="name" />
       </FormShell>,
     );
     expect(screen.getByRole('link', { name: 'aydınlatma metni' })).toBeInTheDocument();
+  });
+
+  // M21: the DEFAULT (only type-valid) target's actual, localized href — not just that a link
+  // with the right text exists, which a broken localization could leave true while the href
+  // itself pointed nowhere useful.
+  it('resolves the default consent link to /gizlilik under Turkish (M21)', () => {
+    renderWithIntl(
+      <FormShell {...base} action={idle}>
+        <Field name="name" />
+      </FormShell>,
+    );
+    expect(screen.getByRole('link', { name: 'aydınlatma metni' })).toHaveAttribute(
+      'href',
+      '/gizlilik',
+    );
+  });
+
+  it('resolves the default consent link to /en/privacy under English (M21)', () => {
+    renderWithIntl(
+      <FormShell {...base} locale="en" action={idle}>
+        <Field name="name" />
+      </FormShell>,
+      { locale: 'en' },
+    );
+    expect(screen.getByRole('link', { name: 'privacy notice' })).toHaveAttribute(
+      'href',
+      '/en/privacy',
+    );
   });
 
   it('notice mode renders the KVKK line instead of a checkbox, and the title/submitLabel props', () => {

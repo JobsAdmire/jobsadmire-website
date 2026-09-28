@@ -137,6 +137,22 @@ export class PixelExit extends Error {
   }
 }
 
+/** N2: `designClip` assumes `pageHeight × zoom` (read from `scrollHeight`/`offsetHeight`/
+ *  `clientHeight`) is the true zoomed content height, with nothing checking it — a wrong read
+ *  would silently crop or pad the design capture instead of failing loud. Cross-checked here
+ *  against `rectHeight`, an independent measurement (the root element's own
+ *  `getBoundingClientRect().height`, the browser's own rendered box in the same zoomed coordinate
+ *  space the screenshot's clip targets) within 2 px of rounding tolerance either side. */
+export function checkZoomedHeight(pageHeight: number, zoom: number, rectHeight: number): void {
+  const expected = Math.ceil(pageHeight * zoom);
+  if (Math.abs(expected - rectHeight) > 2) {
+    throw new PixelExit(
+      `pixel: pageHeight×zoom (${expected}) disagrees with the rendered height (${rectHeight.toFixed(1)}) by more than 2px — the zoom/height read is unreliable for this page (N2)`,
+      2,
+    );
+  }
+}
+
 type GotoOptions = { waitUntil: 'load' | 'domcontentloaded' | 'networkidle'; timeout: number };
 
 /** The slice of Playwright's `Page` the status check uses (structural, for the tests). */
@@ -335,7 +351,7 @@ async function main() {
       });
       await designPage.waitForTimeout(800);
       // W138: the same metrics Playwright's full-page size reads, and the zoom the design applies.
-      const { pageHeight, zoom } = await designPage.evaluate(() => {
+      const { pageHeight, zoom, rectHeight } = await designPage.evaluate(() => {
         const html = document.documentElement;
         const body = document.body ?? html;
         return {
@@ -348,8 +364,11 @@ async function main() {
             html.clientHeight,
           ),
           zoom: parseFloat(getComputedStyle(html).zoom) || 1,
+          // N2: an independent cross-check for checkZoomedHeight below.
+          rectHeight: html.getBoundingClientRect().height,
         };
       });
+      checkZoomedHeight(pageHeight, zoom, rectHeight);
       const designPng = PNG.sync.read(
         await designPage.screenshot({ fullPage: true, clip: designClip(width, pageHeight, zoom) }),
       );

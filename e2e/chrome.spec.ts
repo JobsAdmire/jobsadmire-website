@@ -76,13 +76,11 @@ test('the secondary CTA and the slim-bar contact links hide below their breakpoi
   await page.goto('/');
   // role+name, scoped to the header — never the copy's package id (W119 review note).
   const secondaryCta = page.getByRole('banner').getByRole('link', { name: 'İş Ortağı Olun' });
-  // The slim bar has no landmark role; `div.bg-navy` is its own root (the footer's equivalent
-  // background sits on a `<footer>`, not a `div`), so this scopes to the slim bar's copy of the
-  // phone link, not the footer's contact-column one — never a data attribute keyed to a label id.
-  const phoneLink = page
-    .locator('div.bg-navy')
-    .first()
-    .getByRole('link', { name: '+90 501 124 03 40' });
+  // `.bg-navy` is the slim bar's own root (the footer's equivalent background sits on a
+  // `<footer>`, not a `div` — the slim bar is a `role="region"` landmark since M1/§8 F, but this
+  // scopes by class regardless, so it never depends on that): `a[href^="tel:"]` finds its phone
+  // link by HREF, never the bundle's `phoneDisplay` text (M4) — a copy change cannot break this.
+  const phoneLink = page.locator('.bg-navy a[href^="tel:"]').first();
 
   await page.setViewportSize({ width: 1100, height: 900 });
   await expect(secondaryCta).not.toBeVisible();
