@@ -33,26 +33,34 @@ const nextConfig: NextConfig = {
       permanent: true,
     }));
   },
-  // W155 part 2 (§8 I): the four cheap security headers Gate A wants (a CSP with nonces is a
-  // separate, later item). The first three apply everywhere, including the OG image route —
-  // meant to be fetched and displayed by whatever renders a shared link's preview, so it must
-  // NOT carry X-Frame-Options: DENY. Next's own documented "header overriding" rule (the last
-  // matching block wins per KEY) does not undo a key an earlier block set that a later, more
-  // specific block simply never mentions — proved against a running server: an /og/:path*
-  // block that re-states the other three but omits X-Frame-Options still left DENY in place from
-  // the general block below. So X-Frame-Options gets its OWN block instead, whose `source` is a
-  // negative lookahead excluding /og/ at the regex level (also proved against a running server:
-  // `/`, `/en`, `/isci-talebi`, `/api/site-health` all still carry it; `/og/de/nope.png`, even a
-  // 404, does not) — e2e/headers.spec.ts pins all of this.
+  // W155 part 2 (§8 I) + W157: the four cheap security headers Gate A wants (a CSP with nonces is
+  // a separate, later item). `X-Content-Type-Options: nosniff` goes on EVERY response — it is the
+  // one that matters for a script. The other three are document headers: meaningless on a static
+  // chunk or an optimised image, and on every `/_next/static/*` response they cost ≈ 135 B that
+  // Lighthouse's script transfer size counts (≈ 1.5 KB per route, W157), so their `source` is a
+  // negative lookahead excluding `/_next/static/` and `/_next/image`. X-Frame-Options also skips
+  // the OG image route, meant to be fetched and displayed wherever a shared link's preview
+  // renders. Each key is set by exactly ONE block: Next's documented "last matching block wins per
+  // KEY" rule does not undo a key an earlier block set that a later, more specific block never
+  // mentions (proved against a running server in round 2 — an /og/:path* block that omitted
+  // X-Frame-Options still left DENY in place), so an exception is always a narrower `source`,
+  // never a block that leaves a key out. e2e/headers.spec.ts pins pages, a chunk, an optimised
+  // image and the OG route.
   async headers() {
-    const common = [
-      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-      { key: 'X-Content-Type-Options', value: 'nosniff' },
-      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-    ];
+    const notStatic = '(?!_next/static/|_next/image(?:/|$))';
     return [
-      { source: '/:path*', headers: common },
-      { source: '/((?!og/).*)', headers: [{ key: 'X-Frame-Options', value: 'DENY' }] },
+      { source: '/:path*', headers: [{ key: 'X-Content-Type-Options', value: 'nosniff' }] },
+      {
+        source: `/(${notStatic}.*)`,
+        headers: [
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+        ],
+      },
+      {
+        source: `/(${notStatic}(?!og/).*)`,
+        headers: [{ key: 'X-Frame-Options', value: 'DENY' }],
+      },
     ];
   },
 };

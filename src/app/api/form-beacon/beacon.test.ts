@@ -77,6 +77,83 @@ describe('POST /api/form-beacon', () => {
     expect(res.status).toBe(204);
   });
 
+  // W158 (final re-review N7): a chunked request carries no Content-Length, so the declared-length
+  // check above never sees it — the route counts bytes as it reads and gives up at the 4,097th.
+  // `streamed` builds such a request over a pull-based stream (nothing buffered ahead of the
+  // reader) and reports how many chunks the route actually pulled and whether it cancelled.
+  const encode = (text: string) => new TextEncoder().encode(text);
+  function streamed(chunks: Uint8Array[]) {
+    let pulled = 0;
+    let cancelled = false;
+    const body = new ReadableStream<Uint8Array>(
+      {
+        pull(controller) {
+          const chunk = chunks[pulled];
+          if (chunk === undefined) return controller.close();
+          pulled += 1;
+          controller.enqueue(chunk);
+        },
+        cancel() {
+          cancelled = true;
+        },
+      },
+      { highWaterMark: 0 },
+    );
+    const request = new Request('http://localhost/api/form-beacon', {
+      method: 'POST',
+      body,
+      duplex: 'half',
+    } as RequestInit);
+    expect(request.headers.get('content-length')).toBeNull();
+    return { request, pulled: () => pulled, cancelled: () => cancelled };
+  }
+  const padded = (bytes: number) =>
+    encode(validBody + ' '.repeat(bytes - encode(validBody).length));
+
+  it('refuses a streamed body over 4096 bytes with 413 — no Content-Length to trust (W158)', async () => {
+    const { request } = streamed(Array.from({ length: 5 }, () => encode('x'.repeat(1024))));
+    const res = await POST(request);
+    expect(res.status).toBe(413);
+    expect(res.headers.get('cache-control')).toBe('no-store');
+    expect(console.error).not.toHaveBeenCalled();
+    expect(formBeaconCount()).toBe(0);
+  });
+
+  it('stops reading at the chunk that crosses the cap and cancels the stream', async () => {
+    const { request, pulled, cancelled } = streamed(
+      Array.from({ length: 100 }, () => encode('x'.repeat(1024))),
+    );
+    expect((await POST(request)).status).toBe(413);
+    expect(pulled()).toBe(5); // 4 × 1024 = 4096 is allowed; the 5th chunk crosses it
+    expect(cancelled()).toBe(true);
+  });
+
+  it('reads a streamed body of exactly 4096 bytes and refuses 4097', async () => {
+    const at = padded(4096);
+    expect(at.byteLength).toBe(4096);
+    expect(
+      (await POST(streamed([at.slice(0, 1000), at.slice(1000, 3000), at.slice(3000)]).request))
+        .status,
+    ).toBe(204);
+    const over = padded(4097);
+    expect((await POST(streamed([over.slice(0, 2000), over.slice(2000)]).request)).status).toBe(
+      413,
+    );
+  });
+
+  it('decodes a multi-byte character split across two chunks', async () => {
+    const bytes = encode(JSON.stringify({ formKey: 'hire', kind: 'off', page: '/işçi-talebi' }));
+    const split = bytes.indexOf(0xc5) + 1; // between the two bytes of "ş" (C5 9F)
+    expect((await POST(streamed([bytes.slice(0, split), bytes.slice(split)]).request)).status).toBe(
+      204,
+    );
+    expect(console.error).toHaveBeenCalledWith('[form-beacon]', {
+      formKey: 'hire',
+      kind: 'off',
+      page: '/işçi-talebi',
+    });
+  });
+
   it('accepts only the seven FormFallbackKind values as `kind`', async () => {
     expect((await post(JSON.stringify({ formKey: 'hire', kind: 'bogus', page: '/' }))).status).toBe(
       400,
