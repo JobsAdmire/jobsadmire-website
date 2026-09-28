@@ -5,9 +5,13 @@ import NextLink from 'next/link';
 import { getPathname, usePathname } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { alternatePath } from './alternate-path';
+import { HINT_KEY, hintEligibleHere } from './hint-eligibility';
 import { useAlternatePath } from './use-alternate-path';
 
-export const HINT_KEY = 'ja-lang-hint';
+// W148: the rule and its storage key live in the pure `./hint-eligibility` module, which
+// `ClientIslands` reads before it requests this component at all; re-exported so the WP2a import
+// path (`shouldShowHint`, `HINT_KEY` from here) keeps working.
+export { HINT_KEY, shouldShowHint } from './hint-eligibility';
 
 /** The typed internal pathname `getPathname` accepts (`src/lib/seo/routes.ts` has the same
  *  alias): NOT `next/link`'s own `Href`, whose object variant's `query` is a plain `UrlObject`
@@ -15,34 +19,13 @@ export const HINT_KEY = 'ja-lang-hint';
  *  resolves its href through `getPathname` (M1), so this is the only shape that matters here. */
 type Href = Parameters<typeof getPathname>[0]['href'];
 
-/** Turkish page + an English browser + not dismissed. Pure so the rule is testable without
- *  a DOM, and so the component never has to decide anything twice. */
-export function shouldShowHint(
-  locale: string,
-  languages: readonly string[],
-  dismissed: string | null,
-) {
-  return (
-    locale === 'tr' &&
-    languages.some((l) => l.toLowerCase().startsWith('en')) &&
-    dismissed !== 'off'
-  );
-}
-
 // R18's pattern: browser facts (`navigator.languages`, `localStorage`) are never read during
 // the server render or the hydrating one — both see `false`, then React re-renders with the
-// live value. Nothing pushes updates, so the subscription is a no-op.
+// live value. Nothing pushes updates, so the subscription is a no-op. `ClientIslands` already
+// mounts this component only for an eligible visitor (W148); the component keeps its own check
+// so it stays correct wherever it is rendered.
 const subscribe = () => () => {};
 const onServer = () => false;
-
-function readDismissal(): string | null {
-  try {
-    return window.localStorage.getItem(HINT_KEY);
-  } catch {
-    // storage blocked (private mode): treat as "not dismissed"
-    return null;
-  }
-}
 
 const SWITCH =
   'inline-flex min-h-[44px] items-center rounded-pill bg-ink px-4 font-extrabold text-white no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
@@ -63,10 +46,7 @@ export function LanguageHint({ locale }: { locale: Locale }) {
   const [dismissed, setDismissed] = useState(false);
   const eligible = useSyncExternalStore(
     subscribe,
-    useCallback(
-      () => shouldShowHint(locale, navigator.languages ?? [navigator.language], readDismissal()),
-      [locale],
-    ),
+    useCallback(() => hintEligibleHere(locale), [locale]),
     onServer,
   );
 

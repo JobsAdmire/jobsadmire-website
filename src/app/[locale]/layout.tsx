@@ -56,8 +56,9 @@ export default async function LocaleLayout({
           })}
         />
         <JsonLd data={websiteJsonLd(bundle.settings)} />
-        {/* W90: client components get every sys.* namespace except sys.legal/sys.seo, which
-            only server code reads — they never ride the RSC payload. */}
+        {/* W148 (inverting W90): client components get only the sys.* namespaces a client
+            module reads (CLIENT_SYS); everything else is read by server code and never rides the
+            RSC payload. */}
         <NextIntlClientProvider messages={pickClientMessages(messages)}>
           {/* W19: the chrome is mounted by the route-group layouts — `(site)` default,
               `(minimal)` without rail/FAB, `(bare)` none — so `children` here is a group
