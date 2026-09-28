@@ -12,8 +12,11 @@ fonts and map data load and no third party it calls ever sees the secret.
 
 Like for like, never a broken page (W138): the design capture is clipped to the zoomed content
 box, so at 1440 a 1440-wide design canvas is compared with the 1440-wide build (unclipped, the
-design's `html { zoom: 0.75 }` makes Playwright's full-page shot 1920 wide and 43 % blank). Both
-pages must answer 2xx, or the harness exits 2 naming the URL and scores nothing; a page still in
+design's `html { zoom: 0.75 }` makes Playwright's full-page shot 1920 wide and 43 % blank). A
+height check (W159) cross-checks that clip against the document's own scroll height × zoom —
+never an element's client box, which under zoom reads only the viewport — and exits 2 on a
+mismatch of more than 1 px. Both pages must answer 2xx, or the harness exits 2 naming the URL and
+scores nothing; a page still in
 `UNBUILT_PATHNAMES`, or a blog article with no body in the locale, is skipped with a message
 (exit 0, no score).
 

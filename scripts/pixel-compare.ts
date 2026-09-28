@@ -137,17 +137,30 @@ export class PixelExit extends Error {
   }
 }
 
-/** N2: `designClip` assumes `pageHeight × zoom` (read from `scrollHeight`/`offsetHeight`/
- *  `clientHeight`) is the true zoomed content height, with nothing checking it — a wrong read
- *  would silently crop or pad the design capture instead of failing loud. Cross-checked here
- *  against `rectHeight`, an independent measurement (the root element's own
- *  `getBoundingClientRect().height`, the browser's own rendered box in the same zoomed coordinate
- *  space the screenshot's clip targets) within 2 px of rounding tolerance either side. */
-export function checkZoomedHeight(pageHeight: number, zoom: number, rectHeight: number): void {
-  const expected = Math.ceil(pageHeight * zoom);
-  if (Math.abs(expected - rectHeight) > 2) {
+/** N2/W159: `designClip` assumes `pageHeight × zoom` is the true zoomed content height, with
+ *  nothing checking it — a wrong read would silently crop or pad the design capture instead of
+ *  failing loud. Cross-checked here against the document's own scroll height — `htmlScrollHeight`
+ *  / `bodyScrollHeight` (the larger of the two; browsers disagree on which one grows with
+ *  content) × `zoom` — compared with `clipHeight`, the clip `designClip` already computed, within
+ *  1 px of rounding tolerance either side. W159: never an element's client box
+ *  (`getBoundingClientRect()`/`clientHeight` of the root element) — under `html { zoom: .75 }`
+ *  that reads only the viewport's rendered size (900 px on the design pages), not the scrolled
+ *  content height, and wrongly exited 2 on every real page taller than one screen. */
+export function checkZoomedHeight({
+  htmlScrollHeight,
+  bodyScrollHeight,
+  zoom,
+  clipHeight,
+}: {
+  htmlScrollHeight: number;
+  bodyScrollHeight: number;
+  zoom: number;
+  clipHeight: number;
+}): void {
+  const expected = Math.ceil(Math.max(htmlScrollHeight, bodyScrollHeight) * zoom);
+  if (Math.abs(expected - clipHeight) > 1) {
     throw new PixelExit(
-      `pixel: pageHeight×zoom (${expected}) disagrees with the rendered height (${rectHeight.toFixed(1)}) by more than 2px — the zoom/height read is unreliable for this page (N2)`,
+      `pixel: scrollHeight×zoom (${expected}) disagrees with the clip height (${clipHeight}) by more than 1px — the zoom/height read is unreliable for this page (N2/W159)`,
       2,
     );
   }
@@ -351,27 +364,30 @@ async function main() {
       });
       await designPage.waitForTimeout(800);
       // W138: the same metrics Playwright's full-page size reads, and the zoom the design applies.
-      const { pageHeight, zoom, rectHeight } = await designPage.evaluate(() => {
-        const html = document.documentElement;
-        const body = document.body ?? html;
-        return {
-          pageHeight: Math.max(
-            body.scrollHeight,
-            html.scrollHeight,
-            body.offsetHeight,
-            html.offsetHeight,
-            body.clientHeight,
-            html.clientHeight,
-          ),
-          zoom: parseFloat(getComputedStyle(html).zoom) || 1,
-          // N2: an independent cross-check for checkZoomedHeight below.
-          rectHeight: html.getBoundingClientRect().height,
-        };
-      });
-      checkZoomedHeight(pageHeight, zoom, rectHeight);
-      const designPng = PNG.sync.read(
-        await designPage.screenshot({ fullPage: true, clip: designClip(width, pageHeight, zoom) }),
+      const { pageHeight, zoom, htmlScrollHeight, bodyScrollHeight } = await designPage.evaluate(
+        () => {
+          const html = document.documentElement;
+          const body = document.body ?? html;
+          return {
+            pageHeight: Math.max(
+              body.scrollHeight,
+              html.scrollHeight,
+              body.offsetHeight,
+              html.offsetHeight,
+              body.clientHeight,
+              html.clientHeight,
+            ),
+            zoom: parseFloat(getComputedStyle(html).zoom) || 1,
+            // W159: the document's own scroll height — never an element's client box, which
+            // under zoom reads only the viewport (see checkZoomedHeight below).
+            htmlScrollHeight: html.scrollHeight,
+            bodyScrollHeight: body.scrollHeight,
+          };
+        },
       );
+      const clip = designClip(width, pageHeight, zoom);
+      checkZoomedHeight({ htmlScrollHeight, bodyScrollHeight, zoom, clipHeight: clip.height });
+      const designPng = PNG.sync.read(await designPage.screenshot({ fullPage: true, clip }));
       await designContext.close();
 
       // The built page's context: the header on its own origin's requests only (W137).

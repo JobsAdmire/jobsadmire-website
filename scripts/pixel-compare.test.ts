@@ -102,18 +102,56 @@ describe('pixel harness scoring rules (W138)', () => {
     expect(designClip(390, 9988, 1)).toEqual({ x: 0, y: 0, width: 390, height: 9988 });
   });
 
-  it('accepts pageHeight×zoom when an independent rect measurement agrees, within 2px (N2)', () => {
-    expect(() => checkZoomedHeight(7830, 0.75, 5873)).not.toThrow(); // exact: ⌈7830×0.75⌉ = 5873
-    expect(() => checkZoomedHeight(7830, 0.75, 5874.4)).not.toThrow(); // 1.4px of rounding slack
-    expect(() => checkZoomedHeight(9988, 1, 9988)).not.toThrow();
+  it('accepts scrollHeight×zoom when it matches the clip height, within 1px (N2/W159)', () => {
+    // The real Hire Workers page at 1440 (W159): 7830 unzoomed, zoom 0.75, clip 5873 — exact.
+    expect(() =>
+      checkZoomedHeight({
+        htmlScrollHeight: 7830,
+        bodyScrollHeight: 7830,
+        zoom: 0.75,
+        clipHeight: 5873,
+      }),
+    ).not.toThrow();
+    // Uses the larger of html/body scrollHeight — browsers disagree on which one grows.
+    expect(() =>
+      checkZoomedHeight({
+        htmlScrollHeight: 5000,
+        bodyScrollHeight: 7830,
+        zoom: 0.75,
+        clipHeight: 5873,
+      }),
+    ).not.toThrow();
+    // 1px of rounding slack either side.
+    expect(() =>
+      checkZoomedHeight({
+        htmlScrollHeight: 7830,
+        bodyScrollHeight: 7830,
+        zoom: 0.75,
+        clipHeight: 5874,
+      }),
+    ).not.toThrow();
+    expect(() =>
+      checkZoomedHeight({
+        htmlScrollHeight: 9988,
+        bodyScrollHeight: 9988,
+        zoom: 1,
+        clipHeight: 9988,
+      }),
+    ).not.toThrow();
   });
 
-  it('refuses a pageHeight×zoom the rendered rect disagrees with by more than 2px — exit 2 (N2)', () => {
-    // A stale/failed zoom read: the clip would be built for 5873 while the page actually painted
-    // at the unzoomed 7830 — a silently wrong capture, not a caught one, before this guard.
+  it('refuses a scrollHeight×zoom the clip height disagrees with by more than 1px — exit 2 (N2/W159)', () => {
+    // A stale/failed read: the clip was built for 5873 while the document's own scroll height
+    // says the zoomed content should be taller — a silently wrong capture, not a caught one,
+    // before this guard.
     const err = (() => {
       try {
-        checkZoomedHeight(7830, 0.75, 7830);
+        checkZoomedHeight({
+          htmlScrollHeight: 7830,
+          bodyScrollHeight: 7830,
+          zoom: 0.75,
+          clipHeight: 5875,
+        });
         return null;
       } catch (e) {
         return e;
@@ -121,7 +159,23 @@ describe('pixel harness scoring rules (W138)', () => {
     })();
     expect(err).toBeInstanceOf(PixelExit);
     expect((err as PixelExit).code).toBe(2);
-    expect((err as PixelExit).message).toContain('N2');
+    expect((err as PixelExit).message).toContain('W159');
+  });
+
+  it("is not fooled by the root element's client box (W159) — the real bug this check missed", () => {
+    // The production failure W159 fixes: at 1440 the design's `html { zoom: .75 }` makes the root
+    // element's own rendered box (getBoundingClientRect()/clientHeight) read 900 — the viewport
+    // height, not the 7830 unzoomed / 5873 zoomed content height. The OLD check compared the clip
+    // against that 900 box and wrongly exited 2 on every real page taller than one screen; a
+    // bystander field carrying the same 900 must not revive that mistake.
+    const withStaleRootBox = {
+      htmlScrollHeight: 7830,
+      bodyScrollHeight: 7830,
+      zoom: 0.75,
+      clipHeight: 5873,
+      rootClientHeight: 900,
+    };
+    expect(() => checkZoomedHeight(withStaleRootBox)).not.toThrow();
   });
 
   it('refuses a page that does not answer 2xx — exit 2, naming the URL', async () => {
