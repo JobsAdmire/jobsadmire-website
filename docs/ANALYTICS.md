@@ -33,7 +33,7 @@ These are public identifiers (they ship in the page source by nature of how GTM/
 
 ### How Phase A turns analytics on (R54)
 
-The bundle's nulls are overlaid from the environment by `applyPublicSettings` (`src/content/pure.ts`), which `loadLocal` applies right after `BundleSchema.parse` — and `loadOps` never applies, because under `OPS` the CMS is the source of truth (D12). Set these on the Vercel project (Preview and/or Production) or in `.env.local`:
+The bundle's nulls are overlaid from the environment by `applyPublicSettings` (`src/content/pure.ts`), which `loadLocal` applies right after `BundleSchema.parse` — and `loadOps` never applies, because under `OPS` the CMS is the source of truth (D12). Set these on the Vercel project's **Production** environment only, or in `.env.local` — W146: Preview, the face the quality gate measures (`staging.jobsadmire.com` included), stays dark, because `resource-summary:script:size` counts GTM and `gtag/js` (≈ 80–100 KB) against the 200 KB first-party ceiling:
 
 | Variable                           | Fills                                   |
 | ---------------------------------- | --------------------------------------- |
@@ -43,7 +43,7 @@ The bundle's nulls are overlaid from the environment by `applyPublicSettings` (`
 | `NEXT_PUBLIC_ADS_CONVERSION_LABEL` | `settings.analytics.adsConversionLabel` |
 | `NEXT_PUBLIC_TURNSTILE_SITE_KEY`   | `settings.turnstileSiteKey`             |
 
-An unset or empty variable leaves the bundle's own value alone, so "configured nowhere" stays "off" — the failure mode is a dark container, never a half-configured one. Filling `NEXT_PUBLIC_GTM_ID` is what makes the GTM container load, the consent banner mount (R38) and the withdrawal door appear, so a Phase A preview can rehearse consent → GTM → conversion end to end before WP2 instruments the pages. The `NEXT_PUBLIC_` prefix is honest here: every one of these values is visible in the page source by design.
+An unset or empty variable leaves the bundle's own value alone, so "configured nowhere" stays "off" — the failure mode is a dark container, never a half-configured one. Filling `NEXT_PUBLIC_GTM_ID` is what makes the GTM container load, the consent banner mount (R38) and the withdrawal door appear, so a local build with the ids in `.env.local` rehearses consent → GTM → conversion end to end before WP2 instruments the pages (production is the first deployed face that loads GTM — W146). The `NEXT_PUBLIC_` prefix is honest here: every one of these values is visible in the page source by design.
 
 **Inline consent defaults are not literally in `<head>` (M-12).** In the App Router, `next/script` at `beforeInteractive` with inline children renders as a `self.__next_s.push(...)` call in the body and is executed by the Next runtime before hydration — earlier than the `afterInteractive` GTM loader, which is what matters (`e2e/thank-you.spec.ts` proves `dataLayer[0]` is the default state). A raw GTM snippet pasted anywhere else would race it; don't add one.
 
