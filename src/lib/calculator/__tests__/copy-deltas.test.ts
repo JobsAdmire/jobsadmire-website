@@ -42,9 +42,10 @@ describe('COPY_DELTAS', () => {
       });
     }
   });
-  it('lists exactly the four places where the page tasks must follow the model, not the design', () => {
+  it('lists exactly the five places where the page tasks must follow the model, not the design (W142(a))', () => {
     expect(COPY_DELTAS.filter((r) => !r.agrees).map((r) => r.id)).toEqual([
       'Hiring Cost Calculator.dc.html:2588 (legalMin)',
+      'home.299',
       'home.074 / home.082',
       'Hiring Cost Calculator.dc.html:2646 (mTotal, initial render)',
       'Hiring Cost Calculator.dc.html:2657 (yearTotal, initial render)',

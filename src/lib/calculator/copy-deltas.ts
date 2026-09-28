@@ -83,10 +83,10 @@ export const COPY_DELTAS: Row[] = [
     id: 'home.299',
     where: 'homepage FAQ: "roughly ₺38,944 per worker per month"',
     design: 38944,
-    model: generalWithSupport.perWorker.monthly.total,
-    agrees: true,
+    model: general.perWorker.monthly.total,
+    agrees: false,
     legal: true,
-    note: 'reproduced only WITH the support opt-in — the teaser applied it automatically for General',
+    note: 'W142(a): legal-flagged, rendered verbatim (W58); its 38 944 embeds the opt-in ₺1,270 support the sentence never mentions; listed for the WP-C legal review beside the model figure ₺40,214',
   },
   {
     id: 'home.074 / home.082',
@@ -95,7 +95,7 @@ export const COPY_DELTAS: Row[] = [
     model: general.perWorker.monthly.total,
     agrees: false,
     legal: true,
-    note: 'W2: support is opt-in, OFF by default → the teaser card shows 40 214 unless the visitor opts in; T1 wires a toggle or rewrites home.074 via sys.home.calc.*',
+    note: 'W142(b)/W58: rendered verbatim; T1 states support separately via sys.home.calc.supportSeparate; WP-C lists both with the model figure ₺40,214',
   },
   {
     id: 'home.081',
