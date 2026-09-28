@@ -33,35 +33,20 @@ const nextConfig: NextConfig = {
       permanent: true,
     }));
   },
-  // W155 part 2 (§8 I) + W157: the four cheap security headers Gate A wants (a CSP with nonces is
-  // a separate, later item). `X-Content-Type-Options: nosniff` goes on EVERY response — it is the
-  // one that matters for a script. The other three are document headers: meaningless on a static
-  // chunk or an optimised image, and on every `/_next/static/*` response they cost ≈ 135 B that
-  // Lighthouse's script transfer size counts (≈ 1.5 KB per route, W157), so their `source` is a
-  // negative lookahead excluding `/_next/static/` and `/_next/image`. X-Frame-Options also skips
-  // the OG image route, meant to be fetched and displayed wherever a shared link's preview
-  // renders. Each key is set by exactly ONE block: Next's documented "last matching block wins per
-  // KEY" rule does not undo a key an earlier block set that a later, more specific block never
-  // mentions (proved against a running server in round 2 — an /og/:path* block that omitted
-  // X-Frame-Options still left DENY in place), so an exception is always a narrower `source`,
-  // never a block that leaves a key out. e2e/headers.spec.ts pins pages, a chunk, an optimised
-  // image and the OG route.
+  // W155 part 2 (§8 I) + W157 + W160: of the four cheap security headers Gate A wants (a CSP with
+  // nonces is a separate, later item), only `X-Content-Type-Options: nosniff` is set here, on
+  // EVERY response — it is the one that matters for a script, and it is harmless anywhere. The
+  // other three are document headers and used to live here too, behind a negative-lookahead
+  // `source` excluding `/_next/static/` and `/_next/image` (W157: meaningless on a static chunk or
+  // an optimised image, and costly on every script response otherwise). The Vercel preview showed
+  // that Vercel's routing layer does not honour that lookahead `source` form — it still applied
+  // those headers to `/_next/static` chunks there, although `next start` respected it (W160). They
+  // now live in `src/proxy.ts`'s middleware instead, whose matcher already selects document routes
+  // only (the canonical Next matcher form, which Vercel does support). `/og/*`, `/api/*` and
+  // `/_next/*` therefore carry `nosniff` only. e2e/headers.spec.ts pins pages, a chunk, an
+  // optimised image and the OG route.
   async headers() {
-    const notStatic = '(?!_next/static/|_next/image(?:/|$))';
-    return [
-      { source: '/:path*', headers: [{ key: 'X-Content-Type-Options', value: 'nosniff' }] },
-      {
-        source: `/(${notStatic}.*)`,
-        headers: [
-          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
-          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
-        ],
-      },
-      {
-        source: `/(${notStatic}(?!og/).*)`,
-        headers: [{ key: 'X-Frame-Options', value: 'DENY' }],
-      },
-    ];
+    return [{ source: '/:path*', headers: [{ key: 'X-Content-Type-Options', value: 'nosniff' }] }];
   },
 };
 

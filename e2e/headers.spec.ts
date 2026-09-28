@@ -2,13 +2,15 @@ import { test, expect } from '@playwright/test';
 import { GATE_ROUTES } from './routes';
 
 /**
- * W155 part 2 (§8 I) + W157 — the four cheap security headers `next.config.ts`'s `headers()` sets:
- * every page carries all four; `X-Content-Type-Options: nosniff` rides every response, static
- * chunks and optimised images included, while the three document headers stay off
- * `/_next/static/*` and `/_next/image` (they protect nothing there and cost transfer bytes on
- * every script, W157); and the OG image route, meant to be fetched and displayed by whatever
- * renders a shared link's preview, never carries X-Frame-Options: DENY. A CSP with nonces is a
- * separate, later item (Gate A).
+ * W155 part 2 (§8 I) + W157 + W160 — the four cheap security headers: every page carries all
+ * four (`X-Content-Type-Options: nosniff` from `next.config.ts`'s `headers()`, on every response;
+ * the other three from `src/proxy.ts`'s middleware, W160 — Vercel's routing layer silently ignored
+ * `headers()`'s old negative-lookahead `source` for them on `/_next/static` chunks, although
+ * `next start` honoured it). A static chunk, an optimised image and the OG image route all bypass
+ * that middleware (its matcher excludes any path with a file extension) and `next.config.ts` no
+ * longer sets the other three anywhere, so all three carry `nosniff` only — the OG route in
+ * particular, meant to be fetched and displayed by whatever renders a shared link's preview, must
+ * never refuse framing either. A CSP with nonces is a separate, later item (Gate A).
  */
 const HEADERS: Record<string, string> = {
   'referrer-policy': 'strict-origin-when-cross-origin',
@@ -49,16 +51,16 @@ test('a static chunk and an optimised image carry nosniff only — never the doc
   }
 });
 
-test('the OG route carries the other three headers but never X-Frame-Options', async ({
+test('the OG route carries nosniff only — never the document headers (W160)', async ({
   request,
 }) => {
   // 'site' is OG_PAGE_KEYS' own always-valid fallback (src/lib/seo/routes.ts) — valid whatever
-  // page keys exist today.
+  // page keys exist today. Like a static chunk, it never reaches src/proxy.ts (config.matcher
+  // excludes any path with a file extension), so it must still be fetchable wherever a shared
+  // link's preview renders — and never carries X-Frame-Options: DENY.
   const res = await request.get('/og/tr/site.png');
   expect(res.status()).toBe(200);
   const headers = res.headers();
-  expect(headers['referrer-policy']).toBe('strict-origin-when-cross-origin');
   expect(headers['x-content-type-options']).toBe('nosniff');
-  expect(headers['permissions-policy']).toBe('camera=(), microphone=(), geolocation=()');
-  expect(headers['x-frame-options']).toBeUndefined();
+  for (const key of DOCUMENT_ONLY) expect(headers[key], `${key} on the OG route`).toBeUndefined();
 });
