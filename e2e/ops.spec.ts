@@ -26,17 +26,21 @@ test('site-health answers honestly and is never cached (D25)', async ({ request 
   expect(body.contractVersion).toBe('1.0');
 });
 
+// W139/R43: 503 = fail-closed without a configured secret on door-less previews; 401 =
+// configured and refused.
 test('revalidate refuses an unauthenticated call', async ({ request }) => {
   const res = await request.post('/api/revalidate', { data: { tags: ['site:tr'] } });
-  expect(res.status()).toBe(401);
+  expect([401, 503]).toContain(res.status());
 });
 
+// W139/R43: 503 = fail-closed without a configured secret on door-less previews; 401 =
+// configured and refused.
 test('revalidate refuses a wrong token', async ({ request }) => {
   const res = await request.post('/api/revalidate', {
     headers: { Authorization: 'Bearer not-the-secret-0123456789' },
     data: { tags: ['site:tr'] },
   });
-  expect(res.status()).toBe(401);
+  expect([401, 503]).toContain(res.status());
 });
 
 test('revalidate accepts the secret and reports the tags it purged', async ({ request }) => {
