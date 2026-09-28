@@ -14,10 +14,33 @@
 // is exported (dependency-injected env/fetch, the pingOps(env, f) idiom from
 // src/app/api/site-health/ops.ts) so scripts/gate-routes.test.ts can prove it with a mocked
 // fetch and no child process.
+//
+// T7-5/W152: the detail PAGE itself (`/careers/[slug]`) does not exist until its page task lands
+// — asking Lighthouse to audit a slug under a route that still 404s would be worse than skipping
+// it. `careersDetailPageBuilt` answers that with a plain `fs.existsSync` over the App Router
+// folder next-intl's `pathnames` keys map to (route-group segments stripped, W19) — the exact
+// fact `src/lib/seo/unbuilt.test.ts` keeps in sync with `UNBUILT_PATHNAMES` — rather than
+// `tsImport`ing `src/lib/seo/routes.ts` itself: that file transitively imports
+// `next-intl/navigation`'s `createNavigation`, whose conditional package export (`react-server`
+// vs `react-client`) `tsImport`'s resolver cannot follow outside Next's own bundler (proven
+// empirically: `tsImport('../src/lib/seo/routes.ts', …)` throws `ERR_MODULE_NOT_FOUND` even with
+// tsx's loader fully registered on the process).
 import { tsImport } from 'tsx/esm/api';
-import { pathToFileURL } from 'node:url';
+import { existsSync } from 'node:fs';
+import { fileURLToPath, pathToFileURL } from 'node:url';
+import { join } from 'node:path';
 
 const CAREERS_TIMEOUT_MS = 3000;
+const APP_LOCALE_DIR = fileURLToPath(new URL('../src/app/[locale]/', import.meta.url));
+/** W19: the only route groups a page can live in. */
+const ROUTE_GROUPS = ['(site)', '(minimal)', '(bare)', ''];
+
+/** True once `/careers/[slug]` has a `page.tsx` under any route group. */
+export function careersDetailPageBuilt(appLocaleDir = APP_LOCALE_DIR) {
+  return ROUTE_GROUPS.some((group) =>
+    existsSync(join(appLocaleDir, group, 'careers', '[slug]', 'page.tsx')),
+  );
+}
 
 /** First open opening's slug from `${base}/api/careers/openings` (public, already filtered to
  *  OPEN + publicly listed — "first" is enough), or null on any failure/timeout/empty result. */
@@ -44,8 +67,19 @@ async function firstOpenCareersSlug(env, f) {
   }
 }
 
-/** @param {NodeJS.ProcessEnv} env @param {typeof fetch} f @returns {Promise<string[]>} */
-export async function careersDetailRoutes(env = process.env, f = fetch) {
+/**
+ * @param {NodeJS.ProcessEnv} env
+ * @param {typeof fetch} f
+ * @param {boolean} built - defaults to the real filesystem check; a test overrides it directly
+ *   rather than faking a route file on disk.
+ * @returns {Promise<string[]>}
+ */
+export async function careersDetailRoutes(
+  env = process.env,
+  f = fetch,
+  built = careersDetailPageBuilt(),
+) {
+  if (!built) return [];
   const slug = await firstOpenCareersSlug(env, f);
   if (!slug) return [];
   return [`/kariyer/${slug}`, `/en/careers/${slug}`];
@@ -64,8 +98,11 @@ async function main() {
 
   const routes = await tsImport('../e2e/routes.ts', import.meta.url);
   const base = args.includes('--all') ? routes.GATE_ROUTES : routes.INDEXABLE_GATE_ROUTES;
-  const extra = await careersDetailRoutes();
-  if (extra.length === 0) {
+  const built = careersDetailPageBuilt();
+  const extra = await careersDetailRoutes(process.env, fetch, built);
+  if (!built) {
+    process.stderr.write('gate-routes: detail rows skipped (page not built — /careers/[slug])\n');
+  } else if (extra.length === 0) {
     process.stderr.write('gate-routes: detail rows skipped (door not configured)\n');
   }
   const list = [...base, ...extra];

@@ -1,8 +1,12 @@
 /** @vitest-environment node */
 import { execFileSync, spawnSync } from 'node:child_process';
+import { mkdirSync, mkdtempSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { describe, expect, it, vi } from 'vitest';
+import { UNBUILT_PATHNAMES } from '@/lib/seo/routes';
 import { GATE_ROUTE_TABLE, GATE_ROUTES, INDEXABLE_GATE_ROUTES } from '../e2e/routes';
-import { careersDetailRoutes } from './gate-routes.mjs';
+import { careersDetailPageBuilt, careersDetailRoutes } from './gate-routes.mjs';
 
 // The .mjs is what scripts/gate.sh reads (W21); spawn it exactly as the shell does. tsx's
 // loader may print an ExperimentalWarning on stderr — stdout is the contract, so stderr is dropped.
@@ -58,16 +62,53 @@ describe('gate routes (W21)', () => {
     expect(() => run('--bogus')).toThrow();
   }, 30_000);
 
-  it('says "detail rows skipped (door not configured)" on stderr, never on stdout (W93)', () => {
-    // stdout is what gate.sh reads as LH_PATHS: the message must stay out of it.
+  it('says why detail rows are skipped on stderr, never on stdout (W93/W152)', () => {
+    // stdout is what gate.sh reads as LH_PATHS: the message must stay out of it. Today the
+    // careers detail page itself is unbuilt (T7-5/W152), so that reason wins over "door not
+    // configured" — once T11 ships the page this message shifts to the door-configuration one,
+    // with OPS_API_URL still stripped below.
     const r = spawnSync(process.execPath, ['scripts/gate-routes.mjs'], {
       encoding: 'utf8',
       env: { ...process.env, OPS_API_URL: '' },
     });
     expect(r.status).toBe(0);
-    expect(r.stderr).toContain('gate-routes: detail rows skipped (door not configured)');
+    expect(r.stderr).toContain(
+      careersDetailPageBuilt()
+        ? 'gate-routes: detail rows skipped (door not configured)'
+        : 'gate-routes: detail rows skipped (page not built — /careers/[slug])',
+    );
     expect(r.stdout.split('\n').filter(Boolean)).toEqual([...INDEXABLE_GATE_ROUTES]);
   }, 30_000);
+});
+
+describe('careersDetailPageBuilt (W152)', () => {
+  it('agrees with UNBUILT_PATHNAMES on whether /careers/[slug] is built, on the real repo', () => {
+    expect(careersDetailPageBuilt()).toBe(!UNBUILT_PATHNAMES.has('/careers/[slug]'));
+  });
+
+  it('is true once page.tsx exists under a route group, false otherwise', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'gate-routes-'));
+    try {
+      expect(careersDetailPageBuilt(dir)).toBe(false);
+      mkdirSync(join(dir, '(site)', 'careers', '[slug]'), { recursive: true });
+      expect(careersDetailPageBuilt(dir)).toBe(false); // the folder alone is not a page
+      writeFileSync(join(dir, '(site)', 'careers', '[slug]', 'page.tsx'), '');
+      expect(careersDetailPageBuilt(dir)).toBe(true);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
+
+  it('also finds it with no route group at all', () => {
+    const dir = mkdtempSync(join(tmpdir(), 'gate-routes-'));
+    try {
+      mkdirSync(join(dir, 'careers', '[slug]'), { recursive: true });
+      writeFileSync(join(dir, 'careers', '[slug]', 'page.tsx'), '');
+      expect(careersDetailPageBuilt(dir)).toBe(true);
+    } finally {
+      rmSync(dir, { recursive: true, force: true });
+    }
+  });
 });
 
 // W93: the first open careers opening, fetched from the public Ops endpoint, becomes two detail
@@ -78,7 +119,20 @@ describe('gate routes (W21)', () => {
 describe('careersDetailRoutes (W93)', () => {
   it('returns no rows when OPS_API_URL is unset — no fetch attempted', async () => {
     const fetchMock = vi.fn();
-    expect(await careersDetailRoutes(env({}), fetchMock as unknown as typeof fetch)).toEqual([]);
+    expect(await careersDetailRoutes(env({}), fetchMock as unknown as typeof fetch, true)).toEqual(
+      [],
+    );
+    expect(fetchMock).not.toHaveBeenCalled();
+  });
+
+  it('returns no rows when the detail page is not built yet — no fetch attempted (T7-5/W152)', async () => {
+    const fetchMock = vi.fn();
+    const rows = await careersDetailRoutes(
+      env({ OPS_API_URL: 'https://operations.example.com' }),
+      fetchMock as unknown as typeof fetch,
+      false,
+    );
+    expect(rows).toEqual([]);
     expect(fetchMock).not.toHaveBeenCalled();
   });
 
@@ -91,6 +145,7 @@ describe('careersDetailRoutes (W93)', () => {
     const rows = await careersDetailRoutes(
       env({ OPS_API_URL: 'https://operations.example.com' }),
       fetchMock as unknown as typeof fetch,
+      true,
     );
     expect(rows).toEqual(['/kariyer/senior-welder-antalya', '/en/careers/senior-welder-antalya']);
     const [url, init] = fetchMock.mock.calls[0] as [string, RequestInit];
@@ -103,6 +158,7 @@ describe('careersDetailRoutes (W93)', () => {
     const rows = await careersDetailRoutes(
       env({ OPS_API_URL: 'https://operations.example.com' }),
       fetchMock as unknown as typeof fetch,
+      true,
     );
     expect(rows).toEqual([]);
   });
@@ -127,6 +183,7 @@ describe('careersDetailRoutes (W93)', () => {
       const rows = careersDetailRoutes(
         env({ OPS_API_URL: 'https://x.test' }),
         fetchMock as unknown as typeof fetch,
+        true,
       );
       expect(timeout).toHaveBeenCalledWith(3_000);
       let settled = false;
@@ -150,18 +207,21 @@ describe('careersDetailRoutes (W93)', () => {
       await careersDetailRoutes(
         env({ OPS_API_URL: 'https://x.test' }),
         f(500, {}) as unknown as typeof fetch,
+        true,
       ),
     ).toEqual([]);
     expect(
       await careersDetailRoutes(
         env({ OPS_API_URL: 'https://x.test' }),
         f(200, { data: [] }) as unknown as typeof fetch,
+        true,
       ),
     ).toEqual([]);
     expect(
       await careersDetailRoutes(
         env({ OPS_API_URL: 'https://x.test' }),
         f(200, { not: 'a list' }) as unknown as typeof fetch,
+        true,
       ),
     ).toEqual([]);
   });

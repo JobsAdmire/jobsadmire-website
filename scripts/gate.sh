@@ -56,6 +56,15 @@ if [ -z "$LH_EXTRA_HEADERS" ] && [ "$LHCI_CONFIG" = lighthouserc.preview.json ];
   echo "gate: warning — VERCEL_AUTOMATION_BYPASS_SECRET unset; a protected preview will refuse Playwright/Lighthouse (W137)"
 fi
 
+if [ "$PROFILE" = launch ]; then
+  # W152 (ruling 8): the launch profile's own vitest checks — W20 (UNBUILT_PATHNAMES empty) and
+  # the W152 dead-target sweep — run BEFORE Playwright so both launch results print even if the
+  # (much longer) Playwright + Lighthouse run below is interrupted or itself fails; both need only
+  # the server already up at E2E_BASE_URL, nothing Playwright/Lighthouse collect first.
+  echo "gate: launch — source-level checks (W20 + W152)"
+  npx vitest run --config vitest.launch.config.mts
+fi
+
 npx playwright test
 
 # W21: ONE route list. Lighthouse audits the indexable routes only (nobody lands on the noindex
@@ -97,11 +106,9 @@ npx lhci assert --config="$LHCI_CONFIG"
 node scripts/js-size.mjs || true
 
 if [ "$PROFILE" = launch ]; then
-  # W20: no route may still be listed as unbuilt (the sitemap skips them; Gate A wants all).
-  echo "gate: launch — every pathnames route is built (W20)"
-  npx vitest run --config vitest.launch.config.mts
   # D26/W55: placeholder counter + LCP-slot rule over every gate route; the table is the
-  # content-readiness card and lands in lighthouse-report/content-readiness.json.
+  # content-readiness card and lands in lighthouse-report/content-readiness.json. The W20/W152
+  # source-level checks already ran, before Playwright, above.
   echo "gate: launch — content readiness (D26)"
   npx tsx scripts/placeholder-count.ts
 fi
