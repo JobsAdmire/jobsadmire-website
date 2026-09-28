@@ -21,8 +21,8 @@ const VARIANT: Record<ButtonVariant, string> = {
   // W128(b): the green band's face (ClosingCtaBand tone="green", #12813c). White on the
   // darkened surface is ≈5.6:1; `inverse`'s white/10 lightens it to 4.13:1 (a D20 delta).
   'inverse-dark': 'border border-white/40 bg-black/15 text-white hover:bg-black/25',
-  // W155: the design's nav CTA — ink at rest, the contrast-safe blue on hover (a D20 delta: the
-  // design hovers the raw brand blue). The header used to append `bg-ink hover:bg-blue-safe` to
+  // W155: the design's nav CTA — ink at rest, blue on hover, in the contrast-safe blue every CTA
+  // face uses (a D20 delta entry). The header used to append `bg-ink hover:bg-blue-safe` to
   // `primary`, whose own `hover:bg-ink` won by Tailwind's alphabetical order (W122).
   nav: 'bg-ink text-white hover:bg-blue-safe',
 };

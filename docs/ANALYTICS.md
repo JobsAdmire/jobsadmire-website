@@ -33,7 +33,7 @@ These are public identifiers (they ship in the page source by nature of how GTM/
 
 ### How Phase A turns analytics on (R54)
 
-The bundle's nulls are overlaid from the environment by `applyPublicSettings` (`src/content/pure.ts`), which `loadLocal` applies right after `BundleSchema.parse` — and `loadOps` never applies, because under `OPS` the CMS is the source of truth (D12). Set these on the Vercel project's **Production** environment only, or in `.env.local` — W146: Preview, the face the quality gate measures (`staging.jobsadmire.com` included), stays dark, because `resource-summary:script:size` counts GTM and `gtag/js` (≈ 80–100 KB) against the 200 KB first-party ceiling:
+The bundle's nulls are overlaid from the environment by `applyPublicSettings` (`src/content/pure.ts`), which `loadLocal` applies right after `BundleSchema.parse` — and `loadOps` never applies, because under `OPS` the CMS is the source of truth (D12). Set the four analytics ids (GTM, GA4, Ads id, conversion label) on the Vercel project's **Production** environment only, or in `.env.local` — W146: Preview, the face the quality gate measures (`staging.jobsadmire.com` included), stays dark, because `resource-summary:script:size` counts GTM and `gtag/js` (≈ 80–100 KB) against the 200 KB first-party ceiling. The Turnstile site key goes on Preview as well as Production: `staging` needs it before any write-class form test (`docs/DEPLOYMENT.md`).
 
 | Variable                           | Fills                                   |
 | ---------------------------------- | --------------------------------------- |
