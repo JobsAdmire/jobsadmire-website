@@ -1,4 +1,5 @@
 /** @vitest-environment node */
+import { readFileSync } from 'node:fs';
 import { describe, expect, it } from 'vitest';
 import { expectedRobots, lighthouseConfigFor, siteFace } from '../e2e/helpers/face';
 
@@ -45,7 +46,7 @@ describe('siteFace (W135)', () => {
 });
 
 describe('lighthouseConfigFor (W135/W137 — what gate.sh and js-size collect AND assert with)', () => {
-  it('a preview face skips is-crawlable: lighthouserc.preview.json', () => {
+  it('a preview face skips is-crawlable and robots-txt: lighthouserc.preview.json', () => {
     expect(lighthouseConfigFor('https://x-git-wp2.vercel.app', env({}))).toBe(
       'lighthouserc.preview.json',
     );
@@ -57,6 +58,13 @@ describe('lighthouseConfigFor (W135/W137 — what gate.sh and js-size collect AN
     expect(
       lighthouseConfigFor('http://127.0.0.1:3200', env({ NEXT_PUBLIC_SITE_FACE: 'preview' })),
     ).toBe('lighthouserc.preview.json');
+    // W140: robots-txt is skipped for the same reason as is-crawlable — Lighthouse's own robots
+    // fetch cannot carry the bypass header, so on a protected preview it parses Vercel's login
+    // page instead of the real file.
+    const cfg = JSON.parse(readFileSync('lighthouserc.preview.json', 'utf8')) as {
+      ci: { collect: { settings: { skipAudits: string[] } } };
+    };
+    expect(cfg.ci.collect.settings.skipAudits).toEqual(['is-crawlable', 'robots-txt']);
   });
 
   it('localhost with the production face: lighthouserc.local.json (R50)', () => {
