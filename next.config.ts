@@ -33,6 +33,28 @@ const nextConfig: NextConfig = {
       permanent: true,
     }));
   },
+  // W155 part 2 (§8 I): the four cheap security headers Gate A wants (a CSP with nonces is a
+  // separate, later item). The first three apply everywhere, including the OG image route —
+  // meant to be fetched and displayed by whatever renders a shared link's preview, so it must
+  // NOT carry X-Frame-Options: DENY. Next's own documented "header overriding" rule (the last
+  // matching block wins per KEY) does not undo a key an earlier block set that a later, more
+  // specific block simply never mentions — proved against a running server: an /og/:path*
+  // block that re-states the other three but omits X-Frame-Options still left DENY in place from
+  // the general block below. So X-Frame-Options gets its OWN block instead, whose `source` is a
+  // negative lookahead excluding /og/ at the regex level (also proved against a running server:
+  // `/`, `/en`, `/isci-talebi`, `/api/site-health` all still carry it; `/og/de/nope.png`, even a
+  // 404, does not) — e2e/headers.spec.ts pins all of this.
+  async headers() {
+    const common = [
+      { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+      { key: 'X-Content-Type-Options', value: 'nosniff' },
+      { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
+    ];
+    return [
+      { source: '/:path*', headers: common },
+      { source: '/((?!og/).*)', headers: [{ key: 'X-Frame-Options', value: 'DENY' }] },
+    ];
+  },
 };
 
 export default withNextIntl(nextConfig);

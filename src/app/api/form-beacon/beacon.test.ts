@@ -40,6 +40,43 @@ describe('POST /api/form-beacon', () => {
     expect(formBeaconCount()).toBe(0);
   });
 
+  // M11/§8 I: a valid beacon body (page capped at 300 chars, formKey/kind short enums by a
+  // `.strict()` schema) can never come close to 4096 bytes for real, so these cases test the
+  // MAX_BEACON_BYTES check's own boundary directly, on the declared header — the point of a
+  // pre-body-read guard is that it acts on the header alone, before anything about the body
+  // (real or fabricated) is inspected.
+  const validBody = JSON.stringify({ formKey: 'hire', kind: 'unavailable', page: '/isci-talebi' });
+  const withDeclaredLength = (n: number) =>
+    new Request('http://localhost/api/form-beacon', {
+      method: 'POST',
+      headers: { 'content-length': String(n) },
+      body: validBody,
+    });
+
+  it('rejects a declared length over 4096 bytes with 413, before ever reading the body (M11)', async () => {
+    const res = await POST(withDeclaredLength(4097));
+    expect(res.status).toBe(413);
+    expect(res.headers.get('cache-control')).toBe('no-store');
+    expect(console.error).not.toHaveBeenCalled();
+    expect(formBeaconCount()).toBe(0);
+  });
+
+  it('accepts a declared length right at the 4096-byte cap', async () => {
+    expect((await POST(withDeclaredLength(4096))).status).toBe(204);
+  });
+
+  it('falls through to normal parsing when content-length is absent or not a number', async () => {
+    expect((await post(validBody)).status).toBe(204); // beacon.test.ts's own helper sends none
+    const res = await POST(
+      new Request('http://localhost/api/form-beacon', {
+        method: 'POST',
+        headers: { 'content-length': 'not-a-number' },
+        body: validBody,
+      }),
+    );
+    expect(res.status).toBe(204);
+  });
+
   it('accepts only the seven FormFallbackKind values as `kind`', async () => {
     expect((await post(JSON.stringify({ formKey: 'hire', kind: 'bogus', page: '/' }))).status).toBe(
       400,

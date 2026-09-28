@@ -12,6 +12,12 @@ export const dynamic = 'force-dynamic';
 
 const NO_STORE = { 'Cache-Control': 'no-store' };
 
+// M11/§8 I: the beacon body is a fixed, tiny shape (formKey/kind/page) — a well-formed one never
+// gets near this; a declared size over it is refused BEFORE `request.text()` reads a byte, so an
+// oversized body never gets buffered at all (the earlier version read the whole thing first and
+// only then found it malformed — a free way to inflate this route's own memory/CPU use).
+const MAX_BEACON_BYTES = 4096;
+
 const BeaconSchema = z
   .object({
     formKey: z.enum(FORM_KEYS),
@@ -21,6 +27,10 @@ const BeaconSchema = z
   .strict();
 
 export async function POST(request: Request): Promise<Response> {
+  const declaredLength = Number(request.headers.get('content-length'));
+  if (Number.isFinite(declaredLength) && declaredLength > MAX_BEACON_BYTES) {
+    return new Response(null, { status: 413, headers: NO_STORE });
+  }
   const text = await request.text().catch(() => '');
   let json: unknown = null;
   try {
