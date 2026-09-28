@@ -78,7 +78,13 @@ export function LanguageHint({ locale }: { locale: Locale }) {
         <p id={bodyId} className="m-0 font-bold">
           {sys('languageHint.body')}
         </p>
-        <NextLink href={switchHref} prefetch={false} onClick={dismiss} className={SWITCH}>
+        <NextLink
+          href={switchHref}
+          prefetch={false}
+          onClick={dismiss}
+          hrefLang="en"
+          className={SWITCH}
+        >
           {sys('languageHint.switch')}
         </NextLink>
         <button

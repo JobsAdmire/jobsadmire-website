@@ -68,6 +68,26 @@ describe('Dialog', () => {
     expect(onClose).not.toHaveBeenCalled();
   });
 
+  it('skips a disabled select/textarea for initial focus and the Tab cycle (M15)', async () => {
+    render(
+      <Dialog open onClose={() => {}} titleId="t">
+        <h2 id="t">Title</h2>
+        <select disabled aria-label="disabled select">
+          <option>a</option>
+        </select>
+        <textarea disabled aria-label="disabled textarea" />
+        <button>only real control</button>
+      </Dialog>,
+    );
+    // Initial focus lands on the first REAL focusable, not the disabled select (would-be first
+    // DOM match under the old selector, which had no :not([disabled]) for select/textarea).
+    const onlyControl = screen.getByRole('button', { name: 'only real control' });
+    expect(onlyControl).toHaveFocus();
+    // A single real control: Tab cycles back to itself, never parking on a disabled field.
+    await userEvent.tab();
+    expect(onlyControl).toHaveFocus();
+  });
+
   it('docks to the bottom edge as a sheet when asked', () => {
     render(
       <Dialog open onClose={() => {}} titleId="t" variant="sheet">

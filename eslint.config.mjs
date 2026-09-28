@@ -39,6 +39,8 @@ const eslintConfig = defineConfig([
       'src/design/chrome/__tests__/Header.test.tsx',
       'src/design/chrome/__tests__/SlimBar.test.tsx',
       'src/design/chrome/__tests__/visibility.test.tsx',
+      'src/design/chrome/__tests__/SiteChrome.test.tsx',
+      'src/design/chrome/__tests__/MobileBottomBar.test.tsx',
     ],
     rules: { 'no-restricted-imports': 'off' },
   },

@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { ContactLink } from '@/analytics/ContactLink';
 import { makeT } from '@/content/pure';
 import { mailLink, telLink } from '@/lib/contact';
@@ -24,9 +25,16 @@ const PILL = `${LINK_BASE} rounded-pill px-3 text-sky hover:text-white`;
 
 export function SlimBar({ bundle }: { bundle: Bundle }) {
   const t = makeT(bundle);
+  const sys = useTranslations('sys');
   const { settings } = bundle;
   return (
-    <div className="bg-navy text-body-sm text-white/70">
+    // M1: the licence chip and contact links sat outside any landmark — a region names the
+    // bar without claiming it is a second `<nav>` (most of it is status text, not links).
+    <div
+      role="region"
+      aria-label={sys('nav.slimBar')}
+      className="bg-navy text-body-sm text-white/70"
+    >
       <div className="container-site flex flex-wrap items-center justify-between gap-x-5 py-1.5">
         <span className="flex flex-wrap items-center gap-x-5 font-semibold">
           <span className="inline-flex items-center gap-2">

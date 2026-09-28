@@ -67,4 +67,9 @@ describe('SlimBar', () => {
       { event: 'email_click', page: '/', locale: 'tr', placement: 'slimbar' },
     ]);
   });
+
+  it('is a named region, not a set of links sitting outside any landmark (M1)', () => {
+    renderWithIntl(<SlimBar bundle={bundle} />);
+    expect(screen.getByRole('region', { name: 'İletişim ve lisans şeridi' })).toBeInTheDocument();
+  });
 });

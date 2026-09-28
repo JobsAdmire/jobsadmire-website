@@ -18,7 +18,11 @@ export function MobileBottomBar({ bundle }: { bundle: Bundle }) {
   const sys = useTranslations('sys');
   const { settings } = bundle;
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 gap-2.5 border-t border-white/15 bg-navy/95 px-3.5 pt-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))] backdrop-blur lg:hidden">
+    // M1: a fixed `div.bottom-0` of call/WhatsApp actions sat outside any landmark.
+    <nav
+      aria-label={sys('nav.bottomBar')}
+      className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 gap-2.5 border-t border-white/15 bg-navy/95 px-3.5 pt-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))] backdrop-blur lg:hidden"
+    >
       <ContactLink
         href={telLink(settings.phone)}
         placement="bottom_bar"
@@ -39,6 +43,6 @@ export function MobileBottomBar({ bundle }: { bundle: Bundle }) {
         <WhatsAppIcon size={18} />
         {t('home.221')}
       </ContactLink>
-    </div>
+    </nav>
   );
 }

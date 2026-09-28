@@ -31,6 +31,14 @@ describe('LanguageHint link target', () => {
     expect(screen.getByRole('link', { name: 'Switch to English' })).toHaveAttribute('href', '/en');
   });
 
+  it('carries hrefLang="en", like the LanguageSwitcher pills (M23)', () => {
+    renderWithIntl(<LanguageHint locale="tr" />);
+    expect(screen.getByRole('link', { name: 'Switch to English' })).toHaveAttribute(
+      'hreflang',
+      'en',
+    );
+  });
+
   it("offers the page's English alternate when the tag exists — W17", () => {
     const link = document.createElement('link');
     link.setAttribute('rel', 'alternate');

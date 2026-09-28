@@ -1,5 +1,5 @@
 'use client';
-import { useId, useState } from 'react';
+import { useEffect, useId, useRef, useState } from 'react';
 import type { Locale } from '@/i18n/routing';
 import { CloseIcon, MenuIcon } from './icons';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -25,9 +25,34 @@ export function MobileNav({
 }) {
   const [open, setOpen] = useState(false);
   const panelId = useId();
+  const containerRef = useRef<HTMLDivElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
+
+  // M2: a disclosure pattern closes on Escape (focus returns to the trigger, never left stranded
+  // inside a now-hidden panel) and on an outside click (a visitor tapping the page behind the
+  // panel expects it gone, not a second tap to dismiss it first). Listens only while open.
+  useEffect(() => {
+    if (!open) return;
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key !== 'Escape') return;
+      setOpen(false);
+      buttonRef.current?.focus();
+    };
+    const onPointerDown = (e: MouseEvent) => {
+      if (!containerRef.current?.contains(e.target as Node)) setOpen(false);
+    };
+    document.addEventListener('keydown', onKeyDown);
+    document.addEventListener('mousedown', onPointerDown);
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener('mousedown', onPointerDown);
+    };
+  }, [open]);
+
   return (
-    <div className="lg:hidden">
+    <div className="lg:hidden" ref={containerRef}>
       <button
+        ref={buttonRef}
         type="button"
         aria-expanded={open}
         aria-controls={panelId}

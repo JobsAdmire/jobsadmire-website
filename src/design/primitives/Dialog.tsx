@@ -1,8 +1,10 @@
 'use client';
 import { useEffect, useRef, type ReactNode } from 'react';
 
+// M15: a disabled select/textarea is not reachable by Tab and must not enter the trap's cycle
+// or be handed initial focus — the same exemption `input`/`button` already had.
 const FOCUSABLE =
-  'a[href],button:not([disabled]),input:not([disabled]),select,textarea,[tabindex]:not([tabindex="-1"])';
+  'a[href],button:not([disabled]),input:not([disabled]),select:not([disabled]),textarea:not([disabled]),[tabindex]:not([tabindex="-1"])';
 
 export function Dialog({
   open,

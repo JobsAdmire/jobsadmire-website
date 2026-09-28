@@ -37,7 +37,13 @@ export function SiteChrome({
           <WhatsAppFab bundle={bundle} />
         </>
       )}
-      <main id="main">{children}</main>
+      {/* M3: a plain `id="main"` moves the skip link's scroll target but not sequential focus in
+          Chrome (`document.activeElement` stays `body`); `tabIndex={-1}` makes `<main>` a real
+          focus target for every browser, `focus:outline-none` keeps the (invisible, programmatic)
+          focus ring off a landmark nobody tabs to directly. */}
+      <main id="main" tabIndex={-1} className="focus:outline-none">
+        {children}
+      </main>
       <Footer locale={locale} bundle={bundle} />
       <MobileBottomBar bundle={bundle} />
       {/* R29: last in flow, so the fixed bar clears the footer's legal line, not the page. */}
