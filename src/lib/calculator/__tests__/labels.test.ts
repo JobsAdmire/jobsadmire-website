@@ -12,20 +12,28 @@ import {
 import { CalculatorError } from '../types';
 import { RATE, role } from './fixtures';
 
-describe('dated labels from RateConfig (D17)', () => {
-  // M3: this suite otherwise only proves timezone-proofness in whatever zone happens to run it
-  // (UTC on Vercel, some positive offset on a dev machine) — a regression to local-time parsing
-  // only shows up in a NEGATIVE-offset zone. Node re-reads `process.env.TZ` at call time, so
-  // setting it here for the life of this describe block is enough to make that regression visible.
-  const originalTz = process.env.TZ;
-  beforeAll(() => {
-    process.env.TZ = 'America/Los_Angeles';
-  });
-  afterAll(() => {
-    if (originalTz === undefined) delete process.env.TZ;
-    else process.env.TZ = originalTz;
-  });
+// W144(d): the date tests run under a negative-offset zone, hoisted to file level so every
+// describe below (including isReviewDue's exact-instant boundary checks) runs under it, not just
+// the calendar-label tests. Two DIFFERENT failure modes are in play, and this zone does not catch
+// them the same way (Task 9 re-review, finding N4 — a prior version of this comment had this
+// backwards): a FORMATTER regression (e.g. dropping `timeZone: 'UTC'` from the Intl call) shows up
+// here because Jan 1 00:00 UTC would then render in the runner's own local time — 31 December
+// under America/Los_Angeles — which the calendar-label tests below catch directly. A PARSER
+// regression (e.g. dropping the implicit UTC anchor when parsing the ISO string) is NOT visible
+// the same way: under this NEGATIVE offset, a local-time parse of a midnight date lands LATER the
+// same UTC day (e.g. 08:00 UTC, still "the 1st"), so calendar-only output is unaffected — only an
+// exact-instant comparison notices the drift, which is why isReviewDue's boundary tests need to
+// run under this zone too, and why a dedicated case pins it explicitly below.
+const originalTz = process.env.TZ;
+beforeAll(() => {
+  process.env.TZ = 'America/Los_Angeles';
+});
+afterAll(() => {
+  if (originalTz === undefined) delete process.env.TZ;
+  else process.env.TZ = originalTz;
+});
 
+describe('dated labels from RateConfig (D17)', () => {
   it('effectiveFromLabel is month + year — calc.003 / home.068 “Updated January 2026”', () => {
     expect(effectiveFromLabel(RATE, 'tr')).toBe('Ocak 2026');
     expect(effectiveFromLabel(RATE, 'en')).toBe('January 2026');
@@ -63,6 +71,10 @@ describe('dated labels from RateConfig (D17)', () => {
       'February 2028',
     );
   });
+  it('the day label for 2026-01-01 reads the 1st, not 31 December, under this zone (N4 — pins the formatter half of the guard)', () => {
+    expect(updatedAtLabel({ ...RATE, updatedAt: '2026-01-01' }, 'en')).toBe('1 January 2026');
+    expect(effectiveFromLabel({ ...RATE, effectiveFrom: '2026-01-01' }, 'en')).toBe('January 2026');
+  });
 });
 
 describe('isReviewDue (the badge hides from reviewDueAt, D17)', () => {
@@ -78,6 +90,16 @@ describe('isReviewDue (the badge hides from reviewDueAt, D17)', () => {
   });
   it('also refuses a calendar-invalid reviewDueAt instead of shifting it (W144(b) — confirms isReviewDue uses utcMidnight)', () => {
     expect(() => isReviewDue({ ...RATE, reviewDueAt: '2026-02-30' })).toThrow(CalculatorError);
+  });
+  it('parses reviewDueAt as UTC midnight, not local midnight (N4 — pins the parser half of the guard)', () => {
+    // The correct parse of "2026-01-01" is exactly 2026-01-01T00:00:00.000Z (getUTCDate() 1,
+    // getUTCHours() 0). A local-time parse under America/Los_Angeles (UTC−8) would instead anchor
+    // 8 hours LATER, at 2026-01-01T08:00:00Z — still "the 1st" in UTC, so the calendar-label tests
+    // above cannot tell the difference in this zone (see the file-level comment). This exact
+    // boundary can: at the true instant the regressed parse would not yet consider the date due.
+    const rate = { ...RATE, reviewDueAt: '2026-01-01' };
+    expect(isReviewDue(rate, new Date('2026-01-01T00:00:00.000Z'))).toBe(true);
+    expect(isReviewDue(rate, new Date('2025-12-31T23:59:59.999Z'))).toBe(false);
   });
 });
 
