@@ -57,11 +57,15 @@ export function socialLinks(settings: Settings, waPrefill: string): SocialLink[]
 }
 
 /** Fixed left rail, desktop only — below 1101 px the WhatsApp FAB and the mobile bar carry
- *  the same actions. */
+ *  the same actions. N8: a named complementary landmark (axe `region`), top-level beside the
+ *  header/main/footer. */
 export function SocialRail({ bundle }: { bundle: Bundle }) {
   const sys = useTranslations('sys');
   return (
-    <div className="fixed left-4 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-2 xl:flex">
+    <aside
+      aria-label={sys('nav.socialRail')}
+      className="fixed left-4 top-1/2 z-40 hidden -translate-y-1/2 flex-col items-center gap-2 xl:flex"
+    >
       {/* W12: the WhatsApp tile fires whatsapp_click (placement social_rail); the rest are
           plain anchors — `ContactLink` classifies by href. */}
       {socialLinks(bundle.settings, sys('whatsapp.prefill')).map((s) => (
@@ -77,6 +81,6 @@ export function SocialRail({ bundle }: { bundle: Bundle }) {
           {s.icon}
         </ContactLink>
       ))}
-    </div>
+    </aside>
   );
 }

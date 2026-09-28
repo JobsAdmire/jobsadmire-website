@@ -92,3 +92,34 @@ test('the secondary CTA and the slim-bar contact links hide below their breakpoi
   await page.setViewportSize({ width: 901, height: 900 });
   await expect(phoneLink).toBeVisible();
 });
+
+// N9 (final re-review): the rendered outcome of the three W155 cascade fixes — the static class
+// scan and the jsdom class checks guard the class lists, not what the cascade makes of them (a
+// Tailwind upgrade that changed rule order would pass both). Desktop project only: Tailwind 4
+// gates `hover:` behind `(hover: hover)`, which the touch-emulated mobile project never matches.
+test('the W155 colours render at 1440: header CTA ink, blue-safe on hover; slim-bar pills sky; footer store badge white', async ({
+  page,
+}, testInfo) => {
+  test.skip(testInfo.project.name !== 'desktop', '`hover:` needs (hover: hover)');
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  const cta = page.getByRole('banner').getByRole('link', { name: /^Talep/ });
+  await expect(cta).toHaveCSS('background-color', 'rgb(22, 32, 46)'); // ink
+  await cta.hover();
+  await expect(cta).toHaveCSS('background-color', 'rgb(16, 115, 168)'); // blue-safe
+  // The slim bar's two pills — /verify (accent) and the portal chooser — found by href inside the
+  // bar's own root, never by copy.
+  for (const href of ['/temsilci-dogrulama', '/portal-girisi']) {
+    await expect(page.locator(`div[role="region"].bg-navy a[href="${href}"]`)).toHaveCSS(
+      'color',
+      'rgb(127, 208, 245)', // sky
+    );
+  }
+  // The footer renders its columns twice (desktop columns + the mobile accordion): the visible one.
+  await expect(
+    page
+      .getByRole('contentinfo')
+      .locator('a[href^="https://play.google.com/"]')
+      .filter({ visible: true }),
+  ).toHaveCSS('color', 'rgb(255, 255, 255)');
+});

@@ -69,7 +69,7 @@ Per plan §3.1 (expanded in `docs/SEO.md`):
 
 ## 5. Accessibility
 
-WCAG 2.2 AA. **Accessibility overrides pixel fidelity where the two conflict** (D20): eyebrow colour `#1073a8` (contrast-safe, not the raw `#1899D5` brand blue), a contrast-token test in `verify`, pause/play on every marquee/ticker, real (not styled-div) dialogs, a skip link, every form input labelled with `aria-live` error regions. The pixel-comparison harness (four nominated pages) tolerates these named deltas plus the `/tesekkurler` navigation delta.
+WCAG 2.2 AA. **Accessibility overrides pixel fidelity where the two conflict** (D20): eyebrow colour `#1073a8` (contrast-safe, not the raw `#1899D5` brand blue), a contrast-token test in `verify`, pause/play on every marquee/ticker, real (not styled-div) dialogs, a skip link, every form input labelled with `aria-live` error regions, and no content outside a landmark — the fixed chrome (slim bar, mobile bottom bar, social rail, WhatsApp FAB) included, each a named landmark (axe `region`, checked at 390/1000/1440 px). The pixel-comparison harness (four nominated pages) tolerates these named deltas plus the `/tesekkurler` navigation delta.
 
 ## 6. Performance budget
 

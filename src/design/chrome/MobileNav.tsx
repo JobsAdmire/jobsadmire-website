@@ -38,14 +38,14 @@ export function MobileNav({
       setOpen(false);
       buttonRef.current?.focus();
     };
-    const onPointerDown = (e: MouseEvent) => {
+    const onMouseDown = (e: MouseEvent) => {
       if (!containerRef.current?.contains(e.target as Node)) setOpen(false);
     };
     document.addEventListener('keydown', onKeyDown);
-    document.addEventListener('mousedown', onPointerDown);
+    document.addEventListener('mousedown', onMouseDown);
     return () => {
       document.removeEventListener('keydown', onKeyDown);
-      document.removeEventListener('mousedown', onPointerDown);
+      document.removeEventListener('mousedown', onMouseDown);
     };
   }, [open]);
 
