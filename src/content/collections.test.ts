@@ -1,10 +1,13 @@
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import fixture from '../../contract/website-bundle.v1.fixture.json';
 import { BundleSchema, type Bundle } from '../../contract/website-bundle.v1';
+import enBundle from './local/bundle.en.json';
+import trBundle from './local/bundle.tr.json';
 import { FIXTURE_ONLY_COLLECTIONS } from './config';
 import {
   BLOG_NAV_THRESHOLD,
   blogNavVisible,
+  CalculatorRoleSchema,
   CollectionError,
   CollectionSchemas,
   getCollection,
@@ -15,6 +18,7 @@ import {
   METRIC_KEYS,
   PAGE_KEYS,
   PAGE_PATHNAME,
+  RateConfigSchema,
 } from './collections';
 
 const base = BundleSchema.parse(fixture);
@@ -165,6 +169,66 @@ describe('getMetric / getRateConfig / getOffice', () => {
     expect(() => getOffice(withCollections({ offices: [office] }), 'karachi')).toThrow(
       CollectionError,
     );
+  });
+});
+
+// M17 (Task 9 P3): a multiplier below 1 would floor a role's salary below the legal minimum wage
+// itself (salaryFloor = legalMinGross × multiplier, W2) — the design has no such role and the
+// adapter must not accept one from a producer typo.
+describe('CalculatorRoleSchema.multiplier (M17)', () => {
+  const role = {
+    key: 'general-labour',
+    labelId: 'calc.001',
+    multiplier: 1,
+    group: 'general' as const,
+    preset: true,
+    industry: null,
+    industryLabelId: null,
+    salaryMin: null,
+    salaryMax: null,
+  };
+
+  it('accepts exactly the legal floor (1×) and anything above', () => {
+    expect(CalculatorRoleSchema.parse(role).multiplier).toBe(1);
+    expect(CalculatorRoleSchema.parse({ ...role, multiplier: 1.5 }).multiplier).toBe(1.5);
+  });
+
+  it('rejects a multiplier below 1', () => {
+    expect(() => CalculatorRoleSchema.parse({ ...role, multiplier: 0.9 })).toThrow();
+    expect(() => CalculatorRoleSchema.parse({ ...role, multiplier: 0 })).toThrow();
+  });
+});
+
+// W144(b) round-trip, reused at ingest (§8 G): the design's Date constructor rolls a
+// calendar-invalid date like "2026-02-30" over to the next month instead of producing NaN, so a
+// regex on its own (\d{4}-\d{2}-\d{2}) cannot catch it — only re-printing and comparing can.
+describe('RateConfigSchema date fields (W144(b))', () => {
+  it('accepts every real calendar date already in rateConfig, including a leap-day and a 30-day month', () => {
+    expect(RateConfigSchema.parse(rateConfig).effectiveFrom).toBe('2026-01-01');
+    expect(
+      RateConfigSchema.parse({ ...rateConfig, effectiveFrom: '2024-02-29' }).effectiveFrom,
+    ).toBe('2024-02-29');
+    expect(
+      RateConfigSchema.parse({ ...rateConfig, effectiveFrom: '2026-04-30' }).effectiveFrom,
+    ).toBe('2026-04-30');
+  });
+
+  it('rejects a calendar-invalid date on every date field, not just effectiveFrom', () => {
+    expect(() => RateConfigSchema.parse({ ...rateConfig, effectiveFrom: '2026-02-30' })).toThrow();
+    expect(() => RateConfigSchema.parse({ ...rateConfig, reviewDueAt: '2026-02-30' })).toThrow();
+    expect(() => RateConfigSchema.parse({ ...rateConfig, updatedAt: '2026-02-30' })).toThrow();
+    // a non-leap year's February 29th — also rolls over (to March 1st), also invalid
+    expect(() => RateConfigSchema.parse({ ...rateConfig, effectiveFrom: '2026-02-29' })).toThrow();
+  });
+
+  it('still rejects a syntactically wrong date before ever reaching the calendar check', () => {
+    expect(() => RateConfigSchema.parse({ ...rateConfig, effectiveFrom: '2026/01/01' })).toThrow();
+    expect(() => RateConfigSchema.parse({ ...rateConfig, effectiveFrom: 'not-a-date' })).toThrow();
+  });
+
+  it('both generated bundles still parse under the tightened schema', () => {
+    expect(() => BundleSchema.parse(trBundle)).not.toThrow();
+    expect(() => BundleSchema.parse(enBundle)).not.toThrow();
   });
 });
 

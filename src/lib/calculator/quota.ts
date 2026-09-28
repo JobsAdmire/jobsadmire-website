@@ -24,6 +24,16 @@ const ratioOf = (quotaRatio: number): number => {
   return quotaRatio;
 };
 
+/** T9-2/§8 G: the visualisation's cap is a caller-supplied argument, not rate data — a stale UI
+ *  state, so it is validated the same way `ratioOf` validates a bad `sgkTier` (D17: never degrade
+ *  silently). `0` is a valid cap (show none of the blocks). */
+const capOf = (cap: number): number => {
+  if (!Number.isInteger(cap) || cap < 0) {
+    throw new CalculatorError(`cap must be a non-negative integer, got ${String(cap)}`);
+  }
+  return cap;
+};
+
 export function quotaCheck(
   turkishStaff: number,
   foreignRequested: number,
@@ -64,14 +74,15 @@ export function quotaBlocks(
   cap: number = QUOTA_VIZ_CAP,
 ): QuotaBlocks {
   const ratio = ratioOf(quotaRatio);
+  const validCap = capOf(cap);
   const staff = count(turkishStaff);
   const full = Math.floor(staff / ratio);
   const remainder = staff % ratio;
   return {
     full,
     remainder,
-    shown: Math.min(full, cap),
-    capped: full > cap,
+    shown: Math.min(full, validCap),
+    capped: full > validCap,
     nextUnlockIn: ratio - remainder,
   };
 }

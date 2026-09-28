@@ -69,6 +69,7 @@ describe('LazyIsland', () => {
   });
   afterEach(() => {
     vi.unstubAllGlobals();
+    vi.unstubAllEnvs();
     vi.restoreAllMocks();
   });
 
@@ -116,8 +117,9 @@ describe('LazyIsland', () => {
   });
 
   it('keeps the fallback when load() rejects, without reaching an error boundary', async () => {
-    vi.spyOn(console, 'error').mockImplementation(() => {});
-    const load = vi.fn().mockRejectedValue(new Error('ChunkLoadError'));
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const error = new Error('ChunkLoadError');
+    const load = vi.fn().mockRejectedValue(error);
     const onError = vi.fn();
     render(
       <Boundary onError={onError}>
@@ -132,5 +134,23 @@ describe('LazyIsland', () => {
     expect(onError).not.toHaveBeenCalled();
     expect(screen.queryByText('error boundary')).toBeNull();
     expect(screen.getByText('Loading…')).toBeInTheDocument();
+    // M14: a rejected load() was otherwise silent — logged outside production, like qrSvg.
+    expect(errorSpy).toHaveBeenCalledWith(
+      'LazyIsland: load() rejected, keeping the fallback',
+      error,
+    );
+  });
+
+  it('stays silent in production (M14)', async () => {
+    vi.stubEnv('NODE_ENV', 'production');
+    const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    const load = vi.fn().mockRejectedValue(new Error('ChunkLoadError'));
+    render(<LazyIsland load={load} props={{ label: 'x' }} fallback={<span>Loading…</span>} />);
+    act(() => MockIntersectionObserver.instances[0]!.trigger(true));
+    await act(async () => {
+      await new Promise((resolve) => setTimeout(resolve, 0));
+    });
+    expect(screen.getByText('Loading…')).toBeInTheDocument();
+    expect(errorSpy).not.toHaveBeenCalled();
   });
 });

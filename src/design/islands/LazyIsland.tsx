@@ -13,8 +13,16 @@ export type LazyIslandProps<P extends object> = {
 };
 
 /** What a failed `load()` resolves to instead (W132): a chunk error after a deploy keeps the
- *  fallback on the page rather than reaching the route's error boundary. */
-function fallbackModule<P extends object>(fallback: ReactNode): { default: ComponentType<P> } {
+ *  fallback on the page rather than reaching the route's error boundary. M14: the failure was
+ *  otherwise silent — `qrSvg` already logs its own failures this way — so it prints outside
+ *  production only (the CI/Vercel build's console must stay clean, W58-style). */
+function fallbackModule<P extends object>(
+  fallback: ReactNode,
+  error: unknown,
+): { default: ComponentType<P> } {
+  if (process.env.NODE_ENV !== 'production') {
+    console.error('LazyIsland: load() rejected, keeping the fallback', error);
+  }
   return {
     default: function LoadFailed() {
       return <>{fallback}</>;
@@ -40,7 +48,7 @@ export function LazyIsland<P extends object>({
   // render would remount the Suspense boundary and re-invoke `load`. `react-hooks/refs` forbids
   // reading a ref's `.current` during render even to lazy-init it, so this is the idiom.
   const [Island] = useState<ComponentType<P>>(() =>
-    lazy(() => load().catch(() => fallbackModule<P>(fallback))),
+    lazy(() => load().catch((error: unknown) => fallbackModule<P>(fallback, error))),
   );
 
   return (

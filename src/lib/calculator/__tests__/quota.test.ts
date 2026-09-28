@@ -116,4 +116,19 @@ describe('quotaBlocks (calc.144–147 visualisation)', () => {
     });
     expect(quotaBlocks(45, ratio, 20).capped).toBe(false);
   });
+
+  // T9-2/§8 G: the cap is a caller argument, not rate data — validated like a bad sgkTier
+  // (D17: never degrade silently) rather than silently producing a nonsensical `shown`/`capped`.
+  it('accepts a zero cap (show none) and refuses a negative, fractional or non-numeric one', () => {
+    expect(quotaBlocks(25, ratio, 0)).toEqual({
+      full: 5,
+      remainder: 0,
+      shown: 0,
+      capped: true,
+      nextUnlockIn: 5,
+    });
+    expect(() => quotaBlocks(25, ratio, -1)).toThrow(CalculatorError);
+    expect(() => quotaBlocks(25, ratio, 2.5)).toThrow(CalculatorError);
+    expect(() => quotaBlocks(25, ratio, Number.NaN)).toThrow(CalculatorError);
+  });
 });

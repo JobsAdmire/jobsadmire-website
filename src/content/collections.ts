@@ -73,6 +73,16 @@ export const PAGE_PATHNAME: Record<PageKey, keyof typeof pathnames> = {
 };
 
 const ISO_DATE = /^\d{4}-\d{2}-\d{2}$/;
+/** W144(b) round-trip, reused at ingest time so an invalid row never reaches the engine at all
+ *  (`src/lib/calculator/labels.ts`'s `utcMidnight` makes the same check again at read time): a
+ *  calendar-invalid date like "2026-02-30" is not NaN — the `Date` constructor rolls it over to
+ *  the next month — so only re-printing it and comparing catches it. UTC midnight so a date-only
+ *  string never shifts a day in a western-hemisphere runtime. */
+function isCalendarDate(iso: string): boolean {
+  const date = new Date(`${iso}T00:00:00Z`);
+  return !Number.isNaN(date.getTime()) && date.toISOString().slice(0, 10) === iso;
+}
+const calendarDate = z.string().regex(ISO_DATE).refine(isCalendarDate, 'not a valid calendar date');
 const HHMM = /^\d{2}:\d{2}$/;
 const ISO2 = /^[A-Z]{2}$/; // W40: upper-case everywhere (Task 6's map/flag codes, the door's iso2)
 const DIAL = /^\+\d{1,4}$/;
@@ -92,9 +102,9 @@ export const MetricSchema = z.object({
 /** W2 / D17: one versioned row; every calculator figure derives from it (Task 9's engine). */
 export const RateConfigSchema = z.object({
   version: z.string().min(1),
-  effectiveFrom: z.string().regex(ISO_DATE),
-  reviewDueAt: z.string().regex(ISO_DATE),
-  updatedAt: z.string().regex(ISO_DATE),
+  effectiveFrom: calendarDate,
+  reviewDueAt: calendarDate,
+  updatedAt: calendarDate,
   currency: z.literal('TRY'),
   legalMinGross: z.number().positive(),
   sgkEmployerRate: z.number().min(0).max(1),
@@ -113,7 +123,9 @@ export const RateConfigSchema = z.object({
 export const CalculatorRoleSchema = z.object({
   key: id,
   labelId: id,
-  multiplier: z.number().positive(),
+  // M17 (Task 9 P3): a multiplier below 1 would floor a role's salary below the legal minimum
+  // wage itself (salaryFloor = legalMinGross × multiplier, W2) — never a legal floor.
+  multiplier: z.number().min(1),
   group: z.enum(['general', 'skilled', 'specialist']),
   preset: z.boolean(),
   industry: z.enum(['factory', 'construction', 'hotel', 'agriculture']).nullable(),

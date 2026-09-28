@@ -6,8 +6,8 @@
 // prefixed and as the bare `fs`/`path` specifiers (N1). Scans every non-test `.ts` file under
 // src/lib/calculator/ recursively — including `__tests__/fixtures.ts`, a data module the engine's
 // authoring data imports — excluding only `*.test.ts` files.
-import { readFileSync, readdirSync } from 'node:fs';
-import { join } from 'node:path';
+import { readFileSync, readdirSync, statSync } from 'node:fs';
+import { join, relative, sep } from 'node:path';
 import { describe, expect, it } from 'vitest';
 
 const FORBIDDEN: Array<{ label: string; test: (specifier: string) => boolean }> = [
@@ -139,5 +139,64 @@ describe('src/lib/calculator/** stays pure (W144(c)/M6)', () => {
   it.each(files)('%s imports nothing forbidden', (file) => {
     const source = readFileSync(join(dir, file), 'utf8');
     expect(findImpureImports(file, source)).toEqual([]);
+  });
+});
+
+// M18/§8 G: copy-deltas.ts is authoring-time data — its `model` column is computed from this
+// test suite's own fixtures (RATE, role in __tests__/fixtures.ts), not the live RateConfig a page
+// renders with — so a page importing it directly would silently drift from production rates. It
+// is deliberately NOT re-exported from index.ts (W143); this guard closes the other door, a
+// direct or relative import reaching past the barrel into the file itself.
+describe('nothing outside src/lib/calculator/ imports copy-deltas.ts (M18)', () => {
+  const SRC = join(__dirname, '..', '..', '..');
+  const CALCULATOR = join(SRC, 'lib', 'calculator');
+
+  function tsFilesUnder(d: string): string[] {
+    return readdirSync(d).flatMap((name) => {
+      const full = join(d, name);
+      return statSync(full).isDirectory()
+        ? tsFilesUnder(full)
+        : /\.tsx?$/.test(name) && !/\.test\.tsx?$/.test(name)
+          ? [full]
+          : [];
+    });
+  }
+
+  // The same import-specifier grammar findImpureImports uses (dynamic import(), static import,
+  // require(), export…from), reused here in the opposite direction: who reaches IN, not what
+  // calculator's own files reach OUT to.
+  function specifiersIn(source: string): string[] {
+    const out: string[] = [];
+    for (const match of source.matchAll(IMPORT_SPECIFIER)) {
+      const specifier = match[1] ?? match[2] ?? match[3] ?? match[4];
+      if (specifier) out.push(specifier);
+    }
+    return out;
+  }
+
+  const targetsCopyDeltas = (specifier: string) =>
+    specifier.replace(/\.ts$/, '').endsWith('calculator/copy-deltas');
+
+  const outsideFiles = tsFilesUnder(SRC).filter((f) => !f.startsWith(CALCULATOR + sep));
+
+  it('scans a real, non-trivial slice of src/ outside the calculator folder', () => {
+    expect(outsideFiles.length).toBeGreaterThan(50);
+  });
+
+  it('the checker names a copy-deltas specifier by any spelling and clears an unrelated one', () => {
+    expect(targetsCopyDeltas('@/lib/calculator/copy-deltas')).toBe(true);
+    expect(targetsCopyDeltas('../../lib/calculator/copy-deltas.ts')).toBe(true);
+    expect(targetsCopyDeltas('../calculator/copy-deltas')).toBe(true);
+    expect(targetsCopyDeltas('@/lib/calculator')).toBe(false);
+    expect(targetsCopyDeltas('@/lib/calculator/engine')).toBe(false);
+  });
+
+  it('no file outside src/lib/calculator/ imports it', () => {
+    const offenders = outsideFiles.flatMap((file) =>
+      specifiersIn(readFileSync(file, 'utf8'))
+        .filter(targetsCopyDeltas)
+        .map((s) => `${relative(SRC, file)} → ${s}`),
+    );
+    expect(offenders).toEqual([]);
   });
 });
