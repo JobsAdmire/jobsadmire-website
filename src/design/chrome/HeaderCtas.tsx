@@ -3,9 +3,11 @@ import { Link, usePathname } from '@/i18n/navigation';
 import { buttonClassName } from '@/design/primitives';
 import { ctasFor, type CtaTable, type ResolvedCta } from './ctas';
 
-// The header's primary face is ink with a blue hover (the design's nav CTA), the danger face
-// is the red "Report an Impostor"; both keep Button's base/size/focus classes.
-const PRIMARY = buttonClassName('primary', 'md', 'whitespace-nowrap bg-ink hover:bg-blue-safe');
+// The header's primary face is the `nav` variant — ink at rest, blue-safe on hover (the design's
+// nav CTA, W155) — never `primary` plus appended colour classes, which Tailwind resolves by
+// alphabetical order, not by position (W122: the blue hover never rendered). The danger face is
+// the red "Report an Impostor"; both keep Button's base/size/focus classes.
+const PRIMARY = buttonClassName('nav', 'md', 'whitespace-nowrap');
 const DANGER = buttonClassName('danger', 'md', 'whitespace-nowrap');
 // `xl`-only, like the design's `.ja-nav-cta-secondary` (hidden ≤1100) — `max-xl:hidden` sorts
 // after `buttonClassName`'s base `inline-flex`, so the media variant wins the cascade; a bare

@@ -21,10 +21,14 @@ const LEGAL = [
 ] as const;
 
 const HEADING = 'm-0 mb-4 text-[14px] font-extrabold uppercase tracking-[0.6px] text-white/90';
-const FLINK =
-  'inline-flex min-h-[34px] items-center gap-2 text-white/60 no-underline hover:text-sky focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky';
+// W155: the base carries no colour, so the column links and the store badges each set their
+// own — a badge appended onto FLINK's `text-white/60` lost to it by Tailwind's alphabetical
+// order (W122).
+const FLINK_BASE =
+  'inline-flex min-h-[34px] items-center gap-2 no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky';
+const FLINK = `${FLINK_BASE} text-white/60 hover:text-sky`;
 const OFFICE_LABEL = 'm-0 text-[11.5px] font-extrabold uppercase tracking-[1px] text-sky';
-const STORE = `${FLINK} rounded-md border border-white/20 bg-white/5 px-4 text-white`;
+const STORE = `${FLINK_BASE} rounded-md border border-white/20 bg-white/5 px-4 text-white hover:text-sky`;
 
 export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
   const t = makeT(bundle);

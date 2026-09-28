@@ -2,6 +2,7 @@ import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { SlimBar } from '../SlimBar';
+import { collisionsInTree } from '@/test/class-collisions';
 import { renderWithIntl } from '@/test/render';
 import trBundle from '@/content/local/bundle.tr.json';
 import { BundleSchema, type Bundle } from '../../../../contract/website-bundle.v1';
@@ -33,6 +34,23 @@ describe('SlimBar', () => {
     expect(portal.className).toContain('rounded-pill');
     expect(container.querySelectorAll('a[href="/portal-girisi"]')).toHaveLength(1);
     expect(container.querySelector(`a[href^="${bundle.settings.portal.host}"]`)).toBeNull();
+  });
+
+  // W122/W155: PILL used to append `text-sky` onto LINK's `text-white/70`; Tailwind's
+  // alphabetical order made white/70 win, so the pills never rendered sky. LINK and PILL now
+  // share a colourless base and each carries its own colour pair.
+  it('no element sets one property twice at one variant; the pills are sky, the links white/70 (W155)', () => {
+    const { container } = renderWithIntl(<SlimBar bundle={bundle} />);
+    expect(collisionsInTree(container)).toEqual([]);
+    for (const name of [t('home.011'), t('home.012')]) {
+      const pill = screen.getByRole('link', { name });
+      expect(pill).toHaveClass('rounded-pill', 'text-sky', 'hover:text-white');
+      expect(pill).not.toHaveClass('text-white/70');
+    }
+    expect(screen.getByRole('link', { name: t('home.009') })).toHaveClass(
+      'text-white/70',
+      'hover:text-white',
+    );
   });
 
   it('fires call_click / email_click with placement slimbar (W12)', async () => {

@@ -66,4 +66,16 @@ describe('Button', () => {
     );
     expect(link.className).toBe(buttonClassName('inverse-dark'));
   });
+
+  it('nav is the header CTA face: ink at rest, blue-safe on hover — a variant, never caller classes (W155)', () => {
+    renderWithIntl(
+      <Button variant="nav" href="/hire-workers">
+        Talep
+      </Button>,
+    );
+    const link = screen.getByRole('link', { name: 'Talep' });
+    expect(link).toHaveClass('bg-ink', 'text-white', 'hover:bg-blue-safe');
+    expect(link).not.toHaveClass('bg-blue-safe');
+    expect(link.className).toBe(buttonClassName('nav'));
+  });
 });

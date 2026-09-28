@@ -2,6 +2,7 @@ import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { Footer } from '../Footer';
+import { collisionsInTree } from '@/test/class-collisions';
 import { renderWithIntl } from '@/test/render';
 import trBundle from '@/content/local/bundle.tr.json';
 import tr from '@/messages/tr.json';
@@ -189,6 +190,24 @@ describe('Footer', () => {
     // grid + collapsed accordion: two anchors in the DOM, still no hard-coded third
     expect(footer.querySelectorAll('a[href="/portal-girisi"]')).toHaveLength(2);
     expect(footer.querySelector(`a[href^="${bundle.settings.portal.host}"]`)).toBeNull();
+  });
+
+  // W122/W155: STORE used to append `text-white` onto FLINK's `text-white/60`; Tailwind's
+  // alphabetical order made white/60 win, so the store badges never rendered white. FLINK and
+  // STORE now share a colourless base and each carries its own colour pair.
+  it('no element sets one property twice at one variant; the store badges are white (W155)', async () => {
+    const { container } = renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+    // open every accordion panel so the mobile copies of the links are in the sweep too
+    for (const id of COLUMNS) await userEvent.click(screen.getByRole('button', { name: t(id) }));
+    expect(collisionsInTree(container)).toEqual([]);
+    const badges = within(screen.getByRole('contentinfo')).getAllByRole('link', {
+      name: t('hire.240'),
+    });
+    expect(badges.length).toBeGreaterThan(0);
+    for (const badge of badges) {
+      expect(badge).toHaveClass('text-white', 'hover:text-sky');
+      expect(badge).not.toHaveClass('text-white/60');
+    }
   });
 
   it('shows the Android store link and no App Store link while storeLinks.ios is null', () => {

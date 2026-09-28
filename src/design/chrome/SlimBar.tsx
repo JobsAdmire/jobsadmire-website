@@ -15,9 +15,12 @@ const PORTAL: ReadonlySet<string> = new Set(['/portal-login']);
 // 26 px, not the chrome's usual 44: these are inline utility links in a 33 px bar, which
 // WCAG 2.5.8 exempts — forcing 44 px here would half again the height of every page's top
 // edge. Every primary target (hamburger, language pills, CTAs, mobile bar) stays at 44 px.
-const LINK =
-  'inline-flex min-h-[26px] items-center gap-2 text-white/70 no-underline hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky';
-const PILL = `${LINK} rounded-pill px-3 text-sky`;
+// W155: the base carries no colour, so the plain links and the pills each set their own — a
+// pill appended onto LINK's `text-white/70` lost to it by Tailwind's alphabetical order (W122).
+const LINK_BASE =
+  'inline-flex min-h-[26px] items-center gap-2 no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky';
+const LINK = `${LINK_BASE} text-white/70 hover:text-white`;
+const PILL = `${LINK_BASE} rounded-pill px-3 text-sky hover:text-white`;
 
 export function SlimBar({ bundle }: { bundle: Bundle }) {
   const t = makeT(bundle);

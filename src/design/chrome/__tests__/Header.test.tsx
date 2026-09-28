@@ -2,6 +2,8 @@ import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Header } from '../Header';
+import { buttonClassName } from '@/design/primitives/Button';
+import { collisionsInTree } from '@/test/class-collisions';
 import { renderWithIntl } from '@/test/render';
 import trBundle from '@/content/local/bundle.tr.json';
 import { BundleSchema, type Bundle } from '../../../../contract/website-bundle.v1';
@@ -154,6 +156,30 @@ describe('Header', () => {
     });
     expect(report).toHaveAttribute('href', '/temsilci-dogrulama#report');
     expect(report.className).toContain('bg-danger');
+  });
+
+  // W122/W155: Tailwind orders rules by variant, property and name, never by class-string
+  // position, so a caller class appended onto a variant that sets the same property loses or
+  // wins by alphabetical accident — the header CTA's `hover:bg-blue-safe` lost to the primary
+  // variant's `hover:bg-ink` and the designed blue hover never rendered. The CTA is now the
+  // `nav` variant (ink at rest, blue-safe on hover) with no colour classes appended.
+  it('no element sets one property twice at one variant; the primary CTA is the nav face (W155)', async () => {
+    const { container, unmount } = renderWithIntl(<Header locale="tr" bundle={bundle} />);
+    await userEvent.click(screen.getByRole('button', { name: t('hire.239') }));
+    expect(collisionsInTree(container)).toEqual([]);
+    const cta = within(screen.getByRole('banner')).getByRole('link', {
+      name: `${t('home.014')} ${t('home.015')}`,
+    });
+    expect(cta).toHaveClass('bg-ink', 'text-white', 'hover:bg-blue-safe', 'whitespace-nowrap');
+    expect(cta).not.toHaveClass('bg-blue-safe');
+    expect(cta).not.toHaveClass('hover:bg-ink');
+    expect(cta.className).toBe(buttonClassName('nav', 'md', 'whitespace-nowrap'));
+    unmount();
+
+    // the danger face (the verify page's "Report an Impostor") stays collision-free too
+    nav.pathname = '/temsilci-dogrulama';
+    const { container: verify } = renderWithIntl(<Header locale="tr" bundle={bundle} />);
+    expect(collisionsInTree(verify)).toEqual([]);
   });
 
   it('offers the other language with aria-current on the active one', () => {
