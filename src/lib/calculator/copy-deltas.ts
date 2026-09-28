@@ -73,7 +73,7 @@ export const COPY_DELTAS: Row[] = [
   {
     id: 'Hiring Cost Calculator.dc.html:2587 (legalMin, 1× minimum-wage roles)',
     where:
-      'slider minimum / pass-check salary for labourer, housekeeping, steward, greenhouse (band starts at the minimum wage)',
+      'slider minimum / salary-guide low (range and employer-cost low) / pass-check salary for labourer, housekeeping, steward, greenhouse (band starts at the minimum wage)',
     design: 33500,
     model: salaryRange(role('labourer'), RATE).min,
     agrees: false,
