@@ -71,6 +71,16 @@ export const COPY_DELTAS: Row[] = [
     note: 'the band minimum wins over the floor on both sides',
   },
   {
+    id: 'Hiring Cost Calculator.dc.html:2587 (legalMin, 1× minimum-wage roles)',
+    where:
+      'slider minimum / pass-check salary for labourer, housekeeping, steward, greenhouse (band starts at the minimum wage)',
+    design: 33500,
+    model: salaryRange(role('labourer'), RATE).min,
+    agrees: false,
+    legal: false,
+    note: "W142(d): verified against dc.html:2587 — legalMin = max(role.min, ceil(mult × MINWAGE / 500) × 500) runs unconditionally for whatever role is selected, with no 1× special case, so a 1× role floors at 33 500 in the design vs the engine's exact 33 030 (W2); employer cost 40,786.25 (design) vs 40,214.03 (model); identical for housekeeping, steward and greenhouse; T3's named-delta list gains this (W142(e))",
+  },
+  {
     id: 'calc.079',
     where: 'basis card b1: employer cost at the minimum wage',
     design: 40214,
