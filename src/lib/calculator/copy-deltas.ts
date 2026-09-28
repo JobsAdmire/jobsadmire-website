@@ -4,10 +4,12 @@
 // model print the same figure. `legal` mirrors the catalogue's flag for the row's id (false for a
 // design-file citation, which has no catalogue entry), so this table doubles as the WP-C
 // legal-review list (W142(f)). This module is pure, side-effect-free data — no `describe`, no
-// bundle reads — so it can be imported by a page task or a lint; it is deliberately NOT
+// bundle reads — but it is authoring-time only, never for runtime page code: `model` is computed
+// against this file's own test fixtures (`RATE`, `role`), not the live `RateConfig`, so a page
+// importing it directly would silently drift from production rates. It is deliberately NOT
 // re-exported from `src/lib/calculator/index.ts` (W143: authoring-time data, never shipped to
-// clients). `__tests__/copy-deltas.test.ts` asserts every row and cross-checks the generated
-// bundle.
+// clients), and `purity.test.ts` asserts nothing outside `src/lib/calculator/` imports this file.
+// `__tests__/copy-deltas.test.ts` asserts every row and cross-checks the generated bundle.
 import {
   employerMonthlyCost,
   estimate,

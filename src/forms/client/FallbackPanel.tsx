@@ -109,8 +109,10 @@ export function FallbackPanel({
   const primary = WHATSAPP_PRIMARY.has(kind);
   // W76 (D13): the prefilled text carries what the visitor typed, so it never sits in a DOM
   // href — GA4 enhanced-measurement outbound clicks and a GTM Click URL trigger both read the
-  // href. The anchor points at the bare chat; the prefilled URL is composed on click and
-  // opened directly (a modifier/middle click still reaches the bare chat).
+  // href. The anchor points at the bare chat; the prefilled URL is composed on click and opened
+  // directly. A ctrl/cmd-click still fires this `onClick` (only `preventDefault`-ed), so it opens
+  // the *prefilled* chat too — only a genuine middle click, which fires no `click` event at all,
+  // reaches the bare `href` in the DOM.
   const openWhatsApp = (e: MouseEvent<HTMLElement>) => {
     track('whatsapp_click', { page, locale, placement: 'form_fallback' });
     e.preventDefault();

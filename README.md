@@ -53,7 +53,7 @@ npm run build && (npm run start -- -p 3100 & echo $! > /tmp/next.pid) && sleep 4
 
 Other scripts: `npm run typecheck`, `npm run lint`, `npm run format` / `format:write`, `npm run test` / `test:watch`, `npm run e2e` (Playwright only, no Lighthouse/axe).
 
-- A local preview rehearsal (`NEXT_PUBLIC_SITE_FACE=preview` against `next start`) selects the preview Lighthouse config — the same DevTools-throttled assertions minus the two robots audits (W145) — and SEO must score 1. Real preview runs need `VERCEL_AUTOMATION_BYPASS_SECRET` exported (owner's ACCESS.md); afterwards `.lighthouseci/` and `lighthouse-report/` contain the secret — never share them (W137 amended).
+- A local preview rehearsal (`NEXT_PUBLIC_SITE_FACE=preview` against `next start`) selects the preview Lighthouse config — the same DevTools-throttled assertions minus the two robots audits (W145) — and SEO must score 1. Real preview runs need `VERCEL_AUTOMATION_BYPASS_SECRET` exported (owner's ACCESS.md); afterwards `.lighthouseci/`, `lighthouse-report/` and (on a failing run) Playwright's `test-results/` traces all contain the secret — never share any of them (W137 amended).
 
 ## Environments
 

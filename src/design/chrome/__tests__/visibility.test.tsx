@@ -45,12 +45,16 @@ const DISPLAY_UTILITIES = new Set([
   'table-cell',
 ]);
 
-/** W119: `hidden` only wins the cascade over a base display utility when that utility carries
- *  a variant prefix (`max-xl:`, `sm:`, `hover:` …) — a bare `hidden` token sorts BEFORE a bare
- *  `inline-flex` token in Tailwind's own stylesheet order, so the bare display utility wins
- *  the tie and the element never actually hides. Token equality (not substring/regex matching)
- *  is exactly what "carries a variant" needs: `max-xl:hidden` and `xl:inline-flex` are
- *  different literal tokens from `hidden`/`inline-flex`, so they never trip this check. */
+/** W119: a bare `hidden` must never appear beside a bare (unprefixed) display utility in one
+ *  class list — not because `hidden` reliably loses that tie. In this build's generated CSS
+ *  today, a bare `hidden` actually beats `block`/`flex`/`grid` by alphabetical accident (the
+ *  element does hide) and loses to `inline-flex` (it does not); leaving the outcome to depend on
+ *  any one pairing's accident of order is exactly what W119 replaces with a media-variant
+ *  utility instead (`max-xl:hidden`, which sorts after the base utility on purpose), so this
+ *  guard bans the bare pairing outright — the accident can never decide which way a future
+ *  combination breaks. Token equality (not substring/regex matching) is exactly what "carries a
+ *  variant" needs: `max-xl:hidden` and `xl:inline-flex` are different literal tokens from
+ *  `hidden`/`inline-flex`, so they never trip this check. */
 function hasUnguardedHidden(className: string): boolean {
   const tokens = className.split(/\s+/).filter(Boolean);
   return tokens.includes('hidden') && tokens.some((tok) => DISPLAY_UTILITIES.has(tok));
