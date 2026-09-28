@@ -52,7 +52,7 @@ export const COPY_DELTAS: Row[] = [
     note: 'the design prints the exact 1.5× floor here — the model everywhere (W2)',
   },
   {
-    id: 'Hiring Cost Calculator.dc.html:2588 (legalMin)',
+    id: 'Hiring Cost Calculator.dc.html:2587 (legalMin)',
     where:
       'slider minimum / salary-guide low / pass-check salary (ckSalB) for welder, cnc, electrician, plumber',
     design: 50000,
@@ -62,7 +62,7 @@ export const COPY_DELTAS: Row[] = [
     note: 'design rounds up to the next ₺500; W2 forbids it — sys.calc.passcheck.salary and the slider read 49 545',
   },
   {
-    id: 'Hiring Cost Calculator.dc.html:2588 (legalMin, cook)',
+    id: 'Hiring Cost Calculator.dc.html:2587 (legalMin, cook)',
     where: 'slider minimum for cook (band starts at 50 000)',
     design: 50000,
     model: salaryRange(role('cook'), RATE).min,
@@ -144,7 +144,7 @@ export const COPY_DELTAS: Row[] = [
     note: 'rateConfig.supportMonthly',
   },
   {
-    id: 'Hiring Cost Calculator.dc.html:2646 (mTotal, initial render)',
+    id: 'Hiring Cost Calculator.dc.html:2598 (mTotal, initial render)',
     where: 'estimate card "Monthly total" on first paint (welder, 1, other, flight on)',
     design: 60875,
     model: initial.monthly.total,
@@ -153,7 +153,7 @@ export const COPY_DELTAS: Row[] = [
     note: '50 000 × 1.2175 in the design vs 49 545 × 1.2175 — follows from the floor rule',
   },
   {
-    id: 'Hiring Cost Calculator.dc.html:2657 (yearTotal, initial render)',
+    id: 'Hiring Cost Calculator.dc.html:2603 (yearTotal, initial render)',
     where: 'total card "First-year total" on first paint',
     design: 758500,
     model: initial.firstYearTotal,

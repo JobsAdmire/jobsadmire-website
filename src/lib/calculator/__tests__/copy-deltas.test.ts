@@ -48,12 +48,12 @@ describe('COPY_DELTAS', () => {
   });
   it('lists exactly the seven places where the page tasks must follow the model, not the design (W142(a)(c)(d))', () => {
     expect(COPY_DELTAS.filter((r) => !r.agrees).map((r) => r.id)).toEqual([
-      'Hiring Cost Calculator.dc.html:2588 (legalMin)',
+      'Hiring Cost Calculator.dc.html:2587 (legalMin)',
       'Hiring Cost Calculator.dc.html:2587 (legalMin, 1× minimum-wage roles)',
       'home.299',
       'home.074 / home.082',
-      'Hiring Cost Calculator.dc.html:2646 (mTotal, initial render)',
-      'Hiring Cost Calculator.dc.html:2657 (yearTotal, initial render)',
+      'Hiring Cost Calculator.dc.html:2598 (mTotal, initial render)',
+      'Hiring Cost Calculator.dc.html:2603 (yearTotal, initial render)',
       'Hiring Cost Calculator.dc.html:2718 (salary guide employer cost)',
     ]);
   });
