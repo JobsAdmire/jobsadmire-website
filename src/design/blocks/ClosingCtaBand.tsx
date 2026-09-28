@@ -1,6 +1,6 @@
 import { makeTf } from '@/content/pure';
 import { CheckIcon } from '@/design/chrome/icons';
-import type { ButtonVariant } from '@/design/primitives';
+import type { ButtonVariant } from '@/design/primitives/Button';
 import type { Href } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../contract/website-bundle.v1';

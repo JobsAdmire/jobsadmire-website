@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
-import { SkipLink } from '@/design/primitives';
+// By module path, not the barrel (W147): a server component's barrel import makes every
+// 'use client' primitive the barrel re-exports a client reference of the route.
+import { SkipLink } from '@/design/primitives/SkipLink';
 import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../contract/website-bundle.v1';
 import { Footer } from './Footer';

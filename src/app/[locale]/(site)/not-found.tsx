@@ -1,5 +1,7 @@
 import { getTranslations } from 'next-intl/server';
-import { Section } from '@/design/primitives';
+// By module path, not the barrel (W147): a server component's barrel import makes every
+// 'use client' primitive the barrel re-exports a client reference of the route.
+import { Section } from '@/design/primitives/Section';
 import { Link } from '@/i18n/navigation';
 
 const HOME_LINK =

@@ -1,6 +1,9 @@
 import type { ReactNode } from 'react';
 import { makeTf } from '@/content/pure';
-import { Accordion, Eyebrow } from '@/design/primitives';
+// By module path, not the barrel (W147): a server component's barrel import makes every
+// 'use client' primitive the barrel re-exports a client reference of the page.
+import { Accordion } from '@/design/primitives/Accordion';
+import { Eyebrow } from '@/design/primitives/Eyebrow';
 import type { Locale } from '@/i18n/routing';
 import { mailLink, telLink, waLink } from '@/lib/contact';
 import { JsonLd } from '@/lib/seo/JsonLdScript';

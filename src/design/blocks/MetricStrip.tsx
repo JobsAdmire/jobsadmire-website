@@ -1,6 +1,8 @@
 import { getCollection, type Metric, type MetricKey } from '@/content/collections';
 import { makeTf } from '@/content/pure';
-import { Stat } from '@/design/primitives';
+// By module path, not the barrel (W147): a server component's barrel import makes every
+// 'use client' primitive the barrel re-exports a client reference of the page.
+import { Stat } from '@/design/primitives/Stat';
 import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../contract/website-bundle.v1';
 

@@ -2,7 +2,9 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { ContactLink } from '@/analytics/ContactLink';
 import { makeT } from '@/content/pure';
-import { Accordion } from '@/design/primitives';
+// By module path, not the barrel (W147): a server component's barrel import makes every
+// 'use client' primitive the barrel re-exports a client reference of the route.
+import { Accordion } from '@/design/primitives/Accordion';
 import { mailLink, telLink, waLink } from '@/lib/contact';
 import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../contract/website-bundle.v1';

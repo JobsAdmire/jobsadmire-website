@@ -5,7 +5,10 @@ import { notFound } from 'next/navigation';
 import { ConversionPing } from '@/analytics/ConversionPing';
 import { asFormKey } from '@/analytics/forms';
 import { getBundle } from '@/content/adapter';
-import { Button, Section } from '@/design/primitives';
+// By module path, not the barrel (W147): a server component's barrel import makes every
+// 'use client' primitive the barrel re-exports a client reference of the route.
+import { Button } from '@/design/primitives/Button';
+import { Section } from '@/design/primitives/Section';
 import { routing } from '@/i18n/routing';
 import { waLink } from '@/lib/contact';
 import { buildMetadata } from '@/lib/seo/metadata';

@@ -1,6 +1,8 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
-import { PausableMarquee } from '@/design/primitives';
+// By module path, not the barrel (W147): a server component's barrel import makes every
+// 'use client' primitive the barrel re-exports a client reference of the page.
+import { PausableMarquee } from '@/design/primitives/PausableMarquee';
 
 export type Logo = { src: string; alt: string; width: number; height: number };
 
