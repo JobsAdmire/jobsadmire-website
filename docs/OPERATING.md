@@ -61,7 +61,7 @@ A short, recurring check the owner performs (not delegated) — the plan does no
 
 ## Work-package sign-off
 
-`npm run gate` against the **Vercel preview URL** for that work package is the binding run — D27, and `CLAUDE.md`'s task-completion checklist. A local `next start` run is for fast feedback only: `gate.sh` switches to `lighthouserc.local.json` there, which downgrades LCP to a warning because Lantern cannot measure it honestly over a localhost waterfall (R50). Every other budget — performance, accessibility, best-practices, SEO, the 200 KB script ceiling (W13 amended), CLS — is an error in both configs. Sign-off means a green preview run, not a green local one.
+`npm run gate` against the **Vercel preview URL** for that work package is the binding run — D27, and `CLAUDE.md`'s task-completion checklist. A local `next start` run is for fast feedback only. **LCP method (W145):** every Lighthouse config measures LCP and performance under DevTools throttling, three runs per path, asserting the median run — so LCP ≤ 2.5 s, performance ≥ 0.95, accessibility, best-practices, SEO, the 200 KB script ceiling (W13 amended) and CLS are errors locally and on the preview alike. R50's localhost LCP waiver is retired: it excused Lighthouse's simulated throttling (Lantern), which charged the whole initial waterfall to a text LCP element and read ~3 s on a page that paints in ~1.5 s. Sign-off means a green preview run, not a green local one; `npm run js-size` prints the per-route LCP and performance the ledger records, with a method line that must read `devtools throttling, median of 3`.
 
 ## Checkpoint cadence
 

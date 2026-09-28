@@ -67,12 +67,57 @@ describe('lighthouseConfigFor (W135/W137 — what gate.sh and js-size collect AN
     expect(cfg.ci.collect.settings.skipAudits).toEqual(['is-crawlable', 'robots-txt']);
   });
 
-  it('localhost with the production face: lighthouserc.local.json (R50)', () => {
+  it('localhost with the production face: lighthouserc.local.json (identical to production since W145)', () => {
     expect(lighthouseConfigFor('http://localhost:3000', env({}))).toBe('lighthouserc.local.json');
     expect(lighthouseConfigFor('http://127.0.0.1:3100/', env({}))).toBe('lighthouserc.local.json');
   });
 
   it('anything else: lighthouserc.json', () => {
     expect(lighthouseConfigFor('https://www.jobsadmire.com', env({}))).toBe('lighthouserc.json');
+  });
+});
+
+// W145 (closes W141): the gate measures LCP and performance under DevTools throttling, median of
+// three runs, in all three configs. Lantern's simulation charged the whole initial waterfall to a
+// text LCP element with no resource of its own (a placeholder page read ~3.0 s simulated vs
+// ~1.55 s observed under real throttling), so the assertions keep their values and now judge a
+// real, throttled paint — and R50's localhost LCP waiver retires with the simulation it excused.
+describe('Lighthouse configs measure under DevTools throttling, median of three (W145)', () => {
+  const CONFIGS = ['lighthouserc.json', 'lighthouserc.local.json', 'lighthouserc.preview.json'];
+  type Rc = {
+    _comment: string;
+    ci: {
+      collect: { numberOfRuns: number; settings: Record<string, unknown> };
+      assert: { aggregationMethod?: string; assertions: Record<string, unknown> };
+      upload: unknown;
+    };
+  };
+  const read = (file: string) => JSON.parse(readFileSync(file, 'utf8')) as Rc;
+
+  it.each(CONFIGS)('%s: devtools throttling, 3 runs, asserted on the median', (file) => {
+    const { collect, assert } = read(file).ci;
+    expect(collect.settings.throttlingMethod).toBe('devtools');
+    expect(collect.settings.formFactor).toBe('mobile');
+    expect(collect.numberOfRuns).toBe(3);
+    expect(assert.aggregationMethod).toBe('median');
+  });
+
+  it.each(CONFIGS)('%s: LCP ≤ 2,500 ms and performance ≥ 0.95 are errors, never waived', (file) => {
+    const { assertions } = read(file).ci.assert;
+    expect(assertions['largest-contentful-paint']).toEqual(['error', { maxNumericValue: 2500 }]);
+    expect(assertions['categories:performance']).toEqual(['error', { minScore: 0.95 }]);
+  });
+
+  it('R50 retired: the local config equals the production one but for its comment', () => {
+    const { ci: local } = read('lighthouserc.local.json');
+    expect(local).toEqual(read('lighthouserc.json').ci);
+  });
+
+  it('the preview config differs from the production one only by its two skipped audits', () => {
+    const preview = read('lighthouserc.preview.json').ci;
+    const production = read('lighthouserc.json').ci;
+    const { skipAudits, ...settings } = preview.collect.settings;
+    expect(skipAudits).toEqual(['is-crawlable', 'robots-txt']);
+    expect({ ...preview, collect: { ...preview.collect, settings } }).toEqual(production);
   });
 });

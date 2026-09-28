@@ -44,13 +44,13 @@ export type LighthouseConfig =
   'lighthouserc.preview.json' | 'lighthouserc.local.json' | 'lighthouserc.json';
 
 /**
- * R50/W135/W137: the Lighthouse CI config a run against `baseUrl` must pass to `lhci collect`
+ * W135/W137: the Lighthouse CI config a run against `baseUrl` must pass to `lhci collect`
  * AND `lhci assert` — `skipAudits` is a collect-time setting, `assert` only reads stored runs.
  * The face comes first: a preview face (`Disallow: /`) fails the is-crawlable audit, so it
- * always gets `lighthouserc.preview.json`, even on localhost, where LCP then stays an error — a
- * local preview-face rehearsal reports the R50 Lantern artefact, which is expected (a local run
- * is never sign-off). Otherwise localhost gets `lighthouserc.local.json` (LCP a warning, R50)
- * and anything else, i.e. production after WP7a, gets `lighthouserc.json`.
+ * always gets `lighthouserc.preview.json`, even on localhost (a local run is never sign-off).
+ * Otherwise localhost gets `lighthouserc.local.json` — identical to `lighthouserc.json` since
+ * W145 retired R50's localhost LCP waiver: all three measure under DevTools throttling, median of
+ * three runs — and anything else, i.e. production after WP7a, gets `lighthouserc.json`.
  */
 export function lighthouseConfigFor(
   baseUrl: string,

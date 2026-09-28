@@ -15,9 +15,16 @@ import {
 } from './js-size.mjs';
 
 // The shape of the fields js-size reads from a Lighthouse LHR (lhr-<ts>.json): nothing else.
-const lhr = (url: string, scriptBytes: number, lcpMs: number, perf: number) => ({
+const lhr = (
+  url: string,
+  scriptBytes: number,
+  lcpMs: number,
+  perf: number,
+  throttlingMethod = 'devtools',
+) => ({
   lighthouseVersion: '12.0.0',
   finalDisplayedUrl: url,
+  configSettings: { throttlingMethod },
   categories: { performance: { score: perf } },
   audits: {
     'largest-contentful-paint': { numericValue: lcpMs },
@@ -52,7 +59,7 @@ describe('js-size (W13 amended)', () => {
     }
   });
 
-  it('groups runs per path, keeps the worst script size, the median LCP and the lowest score', () => {
+  it('groups runs per path, keeps the worst script size, the median LCP and the median score (W145)', () => {
     const rows = summarizeLhrs([
       lhr('https://x.test/en', 172_509, 1400, 0.98),
       lhr('https://x.test/en', 172_600, 1600, 0.97),
@@ -66,11 +73,15 @@ describe('js-size (W13 amended)', () => {
       scriptBytes: 196_000,
       headroomBytes: 8_800,
       lcpMs: 1500,
-      performance: 0.95,
+      // the median of 0.96 / 0.99 / 0.95 — what `aggregationMethod: "median"` asserts (W145)
+      performance: 0.96,
       overLazyLine: true,
       overCeiling: false,
     });
+    // an even run count takes the mean of the two middle runs, unrounded — lhci's own rule
     expect(rows[1]).toMatchObject({ runs: 2, scriptBytes: 172_600, overLazyLine: false });
+    expect(rows[1].lcpMs).toBe(1500);
+    expect(rows[1].performance).toBeCloseTo(0.975);
   });
 
   it('flags a route over the ceiling and keeps the query string in the path', () => {
@@ -99,8 +110,21 @@ describe('js-size (W13 amended)', () => {
     );
   });
 
+  it('names how LCP and performance were measured, read from the runs themselves (W145)', () => {
+    const three = ['/', '/en'].flatMap((path) =>
+      [1, 2, 3].map(() => lhr(`http://localhost:3000${path}`, 1, 1500, 0.99)),
+    );
+    expect(formatMethodLine(three)).toContain(
+      'LCP and performance: devtools throttling, median of 3 (W145)',
+    );
+    // A pre-W145 collection says so instead of borrowing the new method's name.
+    const simulated = [1, 2].map(() => lhr('http://localhost:3000/', 1, 2856, 0.96, 'simulate'));
+    expect(formatMethodLine(simulated)).toContain('simulate throttling, median of 2');
+  });
+
   it('prints a markdown table the ledger can paste', () => {
     const table = formatJsSizeTable(summarizeLhrs([lhr('https://x.test/en', 172_509, 1400, 0.98)]));
+    expect(table).toContain('LCP ms (median) | perf (median)');
     expect(table).toContain('| /en |');
     expect(table).toContain('172,509');
     expect(table).toContain('32,291');

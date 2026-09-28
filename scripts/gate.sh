@@ -39,8 +39,11 @@ fi
 # lighthouseConfigFor in e2e/helpers/face.ts, the one site-face helper (loaded through tsx):
 #   preview face (*.vercel.app, staging.jobsadmire.com, NEXT_PUBLIC_SITE_FACE ≠ production) →
 #     lighthouserc.preview.json: its robots.txt is `Disallow: /`, which fails is-crawlable;
-#   localhost → lighthouserc.local.json: LCP a warning (R50, Lantern over a sub-60 ms waterfall);
+#   localhost → lighthouserc.local.json: identical to lighthouserc.json since W145 retired R50's
+#     localhost LCP waiver (it excused Lantern's simulation, which no config uses any more);
 #   anything else (production, after WP7a) → lighthouserc.json.
+# W145: all three measure under DevTools throttling (`throttlingMethod: devtools`), three runs per
+# path, and assert the median run — LCP ≤ 2,500 ms and performance ≥ 0.95 are errors everywhere.
 LHCI_CONFIG="$(node -e 'const { lighthouseConfigFor } = require("tsx/cjs/api").require("./e2e/helpers/face.ts", __filename); process.stdout.write(lighthouseConfigFor(process.env.E2E_BASE_URL));')"
 # W137: the bypass header as JSON (JSON.stringify, so any secret stays valid JSON), only when the
 # secret is non-blank — an unset secret sends no header at all. `lhci collect` hands Lighthouse
@@ -73,6 +76,7 @@ while IFS= read -r path; do
   # would then only ever see the last path of the loop. The mobile emulation comes from the
   # config (`formFactor: mobile` in all three files, Lighthouse's own default): there is no
   # "mobile" preset — `--preset` only accepts perf|experimental|desktop and rejects the rest.
+  # So do the three DevTools-throttled runs per path (W145): each takes the real throttled time.
   # --config: the file chosen above (W137); the bypass header only when there is one.
   echo "gate: lighthouse ${path}"
   npx lhci collect --additive --config="$LHCI_CONFIG" \
@@ -82,8 +86,9 @@ done <<< "$LH_PATHS"
 # Before assert, so the reports survive a failing budget — that is when they are read (R48).
 npx lhci upload --target=filesystem --outputDir=./lighthouse-report >/dev/null
 
-# The same file the runs were collected with (W137). The binding run for sign-off is the one
-# against the Vercel preview; a localhost run is fast feedback (R50).
+# The same file the runs were collected with (W137), asserting the median of the three runs
+# (W145). The binding run for sign-off is the one against the Vercel preview; a localhost run is
+# fast feedback.
 echo "gate: asserting with $LHCI_CONFIG"
 npx lhci assert --config="$LHCI_CONFIG"
 

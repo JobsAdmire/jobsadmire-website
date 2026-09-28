@@ -1,8 +1,12 @@
 {
-  "_comment": "Script budget: 204,800 B (200 KB gzipped) on every gate route — W13 amended. R49's 184,320 B left ~11.8 KB over the 172,509 B WP1 shell, no room for a form island. The framework floor is unchanged: react-dom (73,398 B) + the Next App Router client runtime (48,040 B) = 121,438 B before a line of our code, plus next-intl's client runtime (17,140 B, required by the error boundary). Heavy islands (calculator, season planner, map hover, blog search/TOC, track chooser) load with next/dynamic on interaction/viewport so they never count in this audit; a route above 194,560 B gets a lazy-loading pass before the next page starts (node scripts/js-size.mjs prints the per-route figures). See docs/ARCHITECTURE.md § Quality gate.",
+  "_comment": "Script budget: 204,800 B (200 KB gzipped) on every gate route — W13 amended. R49's 184,320 B left ~11.8 KB over the 172,509 B WP1 shell, no room for a form island. The framework floor is unchanged: react-dom (73,398 B) + the Next App Router client runtime (48,040 B) = 121,438 B before a line of our code, plus next-intl's client runtime (17,140 B, required by the error boundary). Heavy islands (calculator, season planner, map hover, blog search/TOC, track chooser) load with next/dynamic on interaction/viewport so they never count in this audit; a route above 194,560 B gets a lazy-loading pass before the next page starts (node scripts/js-size.mjs prints the per-route figures). See docs/ARCHITECTURE.md § Quality gate. W145 (closes W141): LCP and performance are measured under DevTools throttling (collect.settings.throttlingMethod \"devtools\"), three runs per path (collect.numberOfRuns), asserted on the median of the three (assert.aggregationMethod \"median\"). Lighthouse's default simulated throttling (Lantern) charges the whole initial waterfall (framework ~121 KB + next-intl ~17 KB + two Archivo files ~68 KB + CSS) to a text LCP element that has no resource of its own, so a placeholder page read ~2.9-3.0 s while its observed paint under real throttling is ~1.55 s; the LCP and performance assertions keep their values and now judge a real, throttled paint.",
   "ci": {
-    "collect": { "numberOfRuns": 2, "settings": { "formFactor": "mobile" } },
+    "collect": {
+      "numberOfRuns": 3,
+      "settings": { "formFactor": "mobile", "throttlingMethod": "devtools" }
+    },
     "assert": {
+      "aggregationMethod": "median",
       "assertions": {
         "categories:performance": ["error", { "minScore": 0.95 }],
         "categories:accessibility": ["error", { "minScore": 1 }],

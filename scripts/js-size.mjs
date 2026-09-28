@@ -1,10 +1,11 @@
 #!/usr/bin/env node
 // W13 (amended): per-route script transfer size for the WP2 ledger, read from the Lighthouse
 // runs scripts/gate.sh just collected (.lighthouseci/lhr-*.json — written by `lhci collect`,
-// one file per run, two runs per path). Informational: the gate's own assertion
-// (`resource-summary:script:size` in lighthouserc*.json) is what fails a route; this prints the
-// numbers the ledger records and flags a route above the 194,560 B lazy-loading line, where the
-// ruling demands a next/dynamic pass before the next page task starts.
+// one file per run, three runs per path under DevTools throttling since W145). Informational:
+// the gate's own assertions (lighthouserc*.json) are what fail a route; this prints the numbers
+// the ledger records — the worst script size, and the observed LCP and performance as the median
+// run, which is what the gate asserts (W145) — and flags a route above the 194,560 B
+// lazy-loading line, where the ruling demands a next/dynamic pass before the next page starts.
 //   node scripts/js-size.mjs [--dir=.lighthouseci]
 //
 // W94: `node scripts/js-size.mjs --routes </a,/b>` (or `--routes=</a,/b>`) is a standalone
@@ -28,11 +29,21 @@ export const LAZY_LINE = 194_560;
 const isLhr = (x) =>
   Boolean(x) && typeof x === 'object' && typeof x.lighthouseVersion === 'string' && x.audits;
 
+/** The median of `nums` — the middle run, or the mean of the two middle ones (lhci's own rule
+ *  for `aggregationMethod: "median"`); null for none. Unrounded: a score is a fraction. */
 const median = (nums) => {
   const s = [...nums].sort((a, b) => a - b);
   if (!s.length) return null;
   const mid = Math.floor(s.length / 2);
-  return s.length % 2 ? s[mid] : Math.round((s[mid - 1] + s[mid]) / 2);
+  return s.length % 2 ? s[mid] : (s[mid - 1] + s[mid]) / 2;
+};
+
+/** The route an LHR measured — pathname + query, the key every table row groups by. */
+const pathOf = (lhr) => {
+  const url = lhr.finalDisplayedUrl ?? lhr.requestedUrl;
+  if (typeof url !== 'string') return null;
+  const u = new URL(url);
+  return `${u.pathname}${u.search}`;
 };
 
 /** @param {unknown[]} lhrs @returns {JsSizeRow[]} */
@@ -41,10 +52,8 @@ export function summarizeLhrs(lhrs) {
   const byPath = new Map();
   for (const lhr of lhrs) {
     if (!isLhr(lhr)) continue;
-    const url = lhr.finalDisplayedUrl ?? lhr.requestedUrl;
-    if (typeof url !== 'string') continue;
-    const u = new URL(url);
-    const path = `${u.pathname}${u.search}`;
+    const path = pathOf(lhr);
+    if (path === null) continue;
     const items = lhr.audits['resource-summary']?.details?.items ?? [];
     const script = items.find((i) => i.resourceType === 'script')?.transferSize;
     const lcp = lhr.audits['largest-contentful-paint']?.numericValue;
@@ -59,13 +68,15 @@ export function summarizeLhrs(lhrs) {
     .sort(([a], [b]) => a.localeCompare(b))
     .map(([path, acc]) => {
       const scriptBytes = acc.script.length ? Math.max(...acc.script) : 0;
+      const lcp = median(acc.lcp);
       return {
         path,
         runs: Math.max(acc.script.length, acc.lcp.length, acc.perf.length),
         scriptBytes,
         headroomBytes: SCRIPT_CEILING - scriptBytes,
-        lcpMs: median(acc.lcp),
-        performance: acc.perf.length ? Math.min(...acc.perf) : null,
+        lcpMs: lcp === null ? null : Math.round(lcp),
+        // W145: the median run, as `aggregationMethod: "median"` asserts it (was the lowest).
+        performance: median(acc.perf),
         overLazyLine: scriptBytes > LAZY_LINE,
         overCeiling: scriptBytes > SCRIPT_CEILING,
       };
@@ -75,27 +86,39 @@ export function summarizeLhrs(lhrs) {
 const n = (v) => (typeof v === 'number' ? v.toLocaleString('en-US') : '—');
 
 /** W136: the line printed above the table — the metric (the one the gate asserts, so the ledger's
- *  JS figure) and the host it was measured on, which decides whether the figure binds.
- *  @param {unknown[]} lhrs @returns {string} */
+ *  JS figure) and the host it was measured on, which decides whether the figure binds. W145: it
+ *  also names how the LCP and performance columns were measured — the throttling method and the
+ *  runs per route, read from the runs themselves (`configSettings.throttlingMethod`), so the line
+ *  can never claim a method the runs did not use ("devtools throttling, median of 3" for a gate
+ *  run since W145). @param {unknown[]} lhrs @returns {string} */
 export function formatMethodLine(lhrs) {
   const hosts = new Set();
+  const methods = new Set();
+  /** @type {Map<string, number>} */
+  const runsPerPath = new Map();
   for (const lhr of lhrs) {
     if (!isLhr(lhr)) continue;
     const url = lhr.finalDisplayedUrl ?? lhr.requestedUrl;
     if (typeof url === 'string') hosts.add(new URL(url).host);
+    methods.add(lhr.configSettings?.throttlingMethod ?? 'unknown');
+    const path = pathOf(lhr);
+    if (path !== null) runsPerPath.set(path, (runsPerPath.get(path) ?? 0) + 1);
   }
   const on = [...hosts].sort().join(', ') || 'an unknown host';
+  const throttling = [...methods].sort().join('/') || 'unknown';
+  const runs = [...new Set(runsPerPath.values())].sort((a, b) => a - b).join('/') || '0';
   return (
     `method: Lighthouse resource-summary:script:size, transfer bytes on ${on} — worst run per ` +
     'route, post-hydration chunks and response headers included; the figure the ledger ' +
-    'records (W136): the run against the Vercel preview is binding, a local run diagnostic'
+    'records (W136): the run against the Vercel preview is binding, a local run diagnostic. ' +
+    `LCP and performance: ${throttling} throttling, median of ${runs} (W145)`
   );
 }
 
 /** @param {JsSizeRow[]} rows */
 export function formatJsSizeTable(rows) {
   const lines = [
-    `| route | script B (worst of ${rows[0]?.runs ?? 0} runs) | headroom to ${n(SCRIPT_CEILING)} | LCP ms (median) | perf (min) | note |`,
+    `| route | script B (worst of ${rows[0]?.runs ?? 0} runs) | headroom to ${n(SCRIPT_CEILING)} | LCP ms (median) | perf (median) | note |`,
     '| --- | ---: | ---: | ---: | ---: | --- |',
   ];
   for (const r of rows) {
