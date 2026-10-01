@@ -56,6 +56,48 @@ test('the desktop nav row appears from 901px, the hamburger below it, nothing ov
   }
 });
 
+// W180: the content container is the design's 1280/48 wrapper at 0.75 — a 960 px box with 36 px
+// gutters from 1101, the authored 48 px at 901–1100, 20 px below — while the slim bar and the
+// header row stay full-bleed (padding only), as the design draws them.
+test('the content container is 960 px from 1101 and the slim bar and header rows are full-bleed (W180)', async ({
+  page,
+}) => {
+  await page.goto('/');
+  const measure = () =>
+    page.evaluate(() => {
+      const pad = (el: Element) => parseFloat(getComputedStyle(el).paddingLeft);
+      const footerRow = document.querySelector('footer > .container-site')!;
+      const header = document.querySelector('header > div')!;
+      const slim = document.querySelector('div[role="region"].bg-navy > div')!;
+      return {
+        viewport: document.documentElement.clientWidth,
+        gutter: pad(footerRow),
+        content: footerRow.clientWidth - 2 * pad(footerRow),
+        headerWidth: header.getBoundingClientRect().width,
+        headerPad: pad(header),
+        slimWidth: slim.getBoundingClientRect().width,
+        slimPad: pad(slim),
+      };
+    });
+  for (const [width, gutter, headerPad] of [
+    [1440, 36, 24],
+    [1101, 36, 24],
+    [1100, 48, 32],
+    [901, 48, 32],
+    [390, 20, 20],
+  ] as const) {
+    await page.setViewportSize({ width, height: 900 });
+    const m = await measure();
+    const content = width >= 1101 ? 960 : m.viewport - 2 * gutter;
+    expect(m.gutter, `${width}px container gutter`).toBe(gutter);
+    expect(m.content, `${width}px content box`).toBe(content);
+    expect(m.headerWidth, `${width}px header row`).toBe(m.viewport);
+    expect(m.headerPad, `${width}px header padding`).toBe(headerPad);
+    expect(m.slimWidth, `${width}px slim bar row`).toBe(m.viewport);
+    expect(m.slimPad, `${width}px slim bar padding`).toBe(gutter);
+  }
+});
+
 test('the header CTA follows the page (W17)', async ({ page }) => {
   await page.goto('/');
   // accessible name is "Talep" below xl (the tail span is display:none) and "Talep Oluştur" from xl

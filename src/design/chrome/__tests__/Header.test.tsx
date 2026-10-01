@@ -182,6 +182,16 @@ describe('Header', () => {
     expect(collisionsInTree(verify)).toEqual([]);
   });
 
+  // W180: the design's nav (`.ja-nav`, padding 32 authored) is a full-bleed row — padding only,
+  // never the 960 px content box the sections share (`src/design/__tests__/container.test.ts`
+  // pins the `.chrome-row-nav` gutters: 20 below 901, 32 to 1100, 24 from 1101).
+  it('lays its row out full-bleed on the header gutter, never in the content container (W180)', () => {
+    renderWithIntl(<Header locale="tr" bundle={bundle} />);
+    const row = screen.getByRole('banner').firstElementChild;
+    expect(row).toHaveClass('chrome-row-nav');
+    expect(row).not.toHaveClass('container-site');
+  });
+
   it('offers the other language with aria-current on the active one', () => {
     renderWithIntl(<Header locale="tr" bundle={bundle} />);
     const banner = screen.getByRole('banner');

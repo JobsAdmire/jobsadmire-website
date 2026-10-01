@@ -249,6 +249,16 @@ When porting any desktop value from the package, check off:
 - [ ] Desktop body-small is raised to **11px** post-scale (owner may keep the scaled 9.75px instead — pending §10 item 8).
 - [ ] After porting a page, run the token snapshot + width sweep (part of `npm run gate`) to catch any value that drifted from its scaled source.
 
+**The content container (W180 — a WP1 miss, fixed in WP2b Task 1b).** The design wraps every section in `max-width:1280px` with 48 px of padding outside it, so under the zoom its content box is **960 px with 36 px gutters from 1101 px** (WP1 had copied the authored 1280/48, which left the content 1,184 px wide at 1440). `.container-site` (`src/app/globals.css`, unlayered on purpose — W178) is `max-width: var(--container-max)` with `padding-inline: var(--gutter)`:
+
+| Viewport    | Gutter (`--gutter`)                           | Content box (`--container-max`)            |
+| ----------- | --------------------------------------------- | ------------------------------------------ |
+| ≤ 900 px    | 20 px (the design's own ≤ 900 `.ja-sec` rule) | none — the viewport minus the gutters      |
+| 901–1100 px | 48 px (authored, no zoom; never scaled)       | none — 1280 never binds below 1376 px      |
+| ≥ 1101 px   | 36 px (48 × 0.75)                             | 960 px (`calc(960px + 2 * var(--gutter))`) |
+
+`tokens.layout` mirrors it (`maxWidth` 960, `gutterMobile`/`gutterTablet`/`gutterDesktop` 20/48/36). The slim bar and the header row are full-bleed in the design (padding only, no max-width), so they are not in the container: `.chrome-row` (the slim bar, on `--gutter`) and `.chrome-row-nav` (the header, on `--gutter-nav`: 20 px below 901, the design nav's authored 32 px at 901–1100, 24 px from 1101 — `navGutterTablet`/`navGutterDesktop`). The footer, the sticky CTA bar, the consent sheet and every page section stay in the container. `src/design/__tests__/container.test.ts` resolves the stylesheet at each band; `e2e/chrome.spec.ts` measures the rendered boxes.
+
 ## Quality gate (D27)
 
 `npm run gate` (`scripts/gate.sh`) runs **outside** the Vercel build — there is no Chrome there — against a URL: a preview deployment, or a local `next start`. Once per work package. `npm run gate:launch` (`--profile=launch`) runs the three Gate A checks first (item 6) and runs once before Gate A.

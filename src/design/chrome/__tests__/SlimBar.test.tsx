@@ -68,6 +68,15 @@ describe('SlimBar', () => {
     ]);
   });
 
+  // W180: the design's slim bar (`.ja-slim`, padding 48 authored) is a full-bleed row on the
+  // container's own gutter (20 / 48 / 36 px) — never the 960 px content box.
+  it('lays its row out full-bleed on the container gutter, never in the content box (W180)', () => {
+    renderWithIntl(<SlimBar bundle={bundle} />);
+    const row = screen.getByRole('region', { name: 'İletişim ve lisans şeridi' }).firstElementChild;
+    expect(row).toHaveClass('chrome-row');
+    expect(row).not.toHaveClass('container-site');
+  });
+
   it('is a named region, not a set of links sitting outside any landmark (M1)', () => {
     renderWithIntl(<SlimBar bundle={bundle} />);
     expect(screen.getByRole('region', { name: 'İletişim ve lisans şeridi' })).toBeInTheDocument();

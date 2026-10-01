@@ -88,15 +88,22 @@
   --fs-h1: clamp(40px, 4.6vw, 66px);
   --fs-h2: clamp(28px, 3.2vw, 42px);
   --fs-h2-process: clamp(30px, 3.4vw, 46px);
+  /* W180: the side padding of `.container-site` and the slim bar (the design's `.ja-sec` /
+     `.ja-slim`: 20 px from 900 down), the header row's (`.ja-nav`) and the content box's cap */
   --gutter: 20px;
+  --gutter-nav: 20px;
+  --container-max: none;
 }
 /* W11: the header's desktop row is on from 901px (the design's own breakpoint); its links
    drop to 12px there so seven of them, the language pills and the primary CTA fit a 1100px
    viewport without the design's zoom hack — a named delta (docs/ARCHITECTURE.md § Quality
-   gate). Nothing else changes at 901: this is not a D19 scale step. */
+   gate). Not a D19 scale step: the gutters below are the design's authored 901–1100 values
+   (sections and slim bar 48 px, the nav row 32 px — W180), never scaled. */
 @media (min-width: 901px) {
   :root {
     --fs-nav: 12px;
+    --gutter: 48px;
+    --gutter-nav: 32px;
   }
 }
 @media (min-width: 1101px) {
@@ -111,7 +118,10 @@
     --fs-h1: clamp(30px, 3.45vw, 49.5px);
     --fs-h2: clamp(21px, 2.4vw, 31.5px);
     --fs-h2-process: clamp(22.5px, 2.55vw, 34.5px);
-    --gutter: 48px;
+    /* W180: the design's 48 px / 32 px paddings and its 1280 px wrapper, × 0.75 */
+    --gutter: 36px;
+    --gutter-nav: 24px;
+    --container-max: calc(960px + 2 * var(--gutter));
   }
 }
 
@@ -132,10 +142,23 @@ h4 {
   font-family: var(--font-display);
   font-weight: 800;
 }
+/* W180 (D19): every design section wraps its content in `max-width:1280px` with 48 px of
+   padding outside it, authored under `zoom: .75` from 1101 px — a 960 px content box with 36 px
+   gutters there; the authored 48 px between 901 and 1100 (where 1280 never binds), 20 px from
+   900 down. Unlayered on purpose: a layered utility (`max-w-[720px]`) never overrides it (W178). */
 .container-site {
-  max-width: 1280px;
+  max-width: var(--container-max);
   margin-inline: auto;
   padding-inline: var(--gutter);
+}
+/* The two chrome rows the design draws full-bleed — padding only, no max-width (W180): the slim
+   bar on the container's own gutter, the header row on the nav's (32 px authored, 24 from 1101).
+   Their backgrounds and their content both span the viewport, as the design's do. */
+.chrome-row {
+  padding-inline: var(--gutter);
+}
+.chrome-row-nav {
+  padding-inline: var(--gutter-nav);
 }
 
 /* Every animation must stop under reduced motion (README: not optional polish). */

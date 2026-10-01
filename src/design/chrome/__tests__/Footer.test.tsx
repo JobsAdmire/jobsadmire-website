@@ -210,6 +210,15 @@ describe('Footer', () => {
     }
   });
 
+  // W180: unlike the slim bar and the header, the design's footer content sits in the same
+  // `max-width:1280px` wrapper as every section — the 960 px content box from 1101 px.
+  it('keeps both footer rows in the content container (W180)', () => {
+    renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+    const rows = [...screen.getByRole('contentinfo').children];
+    expect(rows).toHaveLength(2);
+    for (const row of rows) expect(row).toHaveClass('container-site');
+  });
+
   it('shows the Android store link and no App Store link while storeLinks.ios is null', () => {
     renderWithIntl(<Footer locale="tr" bundle={bundle} />);
     const footer = screen.getByRole('contentinfo');

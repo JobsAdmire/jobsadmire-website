@@ -35,7 +35,8 @@ export function SlimBar({ bundle }: { bundle: Bundle }) {
       aria-label={sys('nav.slimBar')}
       className="bg-navy text-body-sm text-white/70"
     >
-      <div className="container-site flex flex-wrap items-center justify-between gap-x-5 py-1.5">
+      {/* W180: full-bleed like the design's `.ja-slim` — the container's gutter, no max-width */}
+      <div className="chrome-row flex flex-wrap items-center justify-between gap-x-5 py-1.5">
         <span className="flex flex-wrap items-center gap-x-5 font-semibold">
           <span className="inline-flex items-center gap-2">
             <span aria-hidden="true" className="h-2 w-2 rounded-pill bg-success" />
