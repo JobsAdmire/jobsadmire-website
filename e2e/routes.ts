@@ -39,6 +39,8 @@ export const GATE_ROUTE_TABLE: readonly GateRoute[] = [
   { path: '/en/newsletter/confirm?token=e2e-dummy-token-0000000000', indexable: false },
   { path: '/abonelikten-cik?token=e2e-dummy-token-0000000000', indexable: false },
   { path: '/en/newsletter/unsubscribe?token=e2e-dummy-token-0000000000', indexable: false },
+  { path: '/maliyet-hesaplayici', indexable: true },
+  { path: '/en/hiring-cost-calculator', indexable: true },
 ];
 
 export const GATE_ROUTES: readonly string[] = GATE_ROUTE_TABLE.map((r) => r.path);
