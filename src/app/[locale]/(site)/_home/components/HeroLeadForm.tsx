@@ -91,7 +91,7 @@ export function HeroLeadForm({
       className="scroll-mt-[90px] rounded-hero bg-white px-[30px] pb-6 pt-7 text-ink shadow-hero-form max-xs:mt-1.5 max-xs:rounded-lg max-xs:px-[18px] max-xs:py-5 xl:px-[22.5px] xl:pb-[18px] xl:pt-[21px]"
     >
       <div className="mb-1.5 flex items-center justify-between gap-3">
-        <h2 className="m-0 text-[23px] tracking-[-0.8px] xl:text-[17.25px]">
+        <h2 className="m-0 text-[23px] leading-[1.15] tracking-[-0.8px] xl:text-[17.25px]">
           <span className="max-xs:hidden">{copy.title}</span>
           <span className="xs:hidden">{copy.titleMobile}</span>
         </h2>

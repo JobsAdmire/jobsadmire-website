@@ -105,7 +105,12 @@ describe('CalculatorTeaser (the island)', () => {
     expect(toggle).toHaveAttribute('aria-expanded', 'false');
     expect(toggle).toHaveAttribute('aria-controls', 'calc-rows');
     expect(document.getElementById('calc-rows')).toHaveClass('max-xs:hidden');
+    // the design's chevron (`.ja-calc-chev`): decorative, turned over once the rows are open
+    const chevron = toggle.querySelector('svg[aria-hidden="true"]');
+    expect(chevron).not.toBeNull();
+    expect(chevron).not.toHaveClass('rotate-180');
     await user.click(toggle);
+    expect(toggle.querySelector('svg[aria-hidden="true"]')).toHaveClass('rotate-180');
     expect(screen.getByRole('button', { name: 'Dökümü gizleyin' })).toHaveAttribute(
       'aria-expanded',
       'true',

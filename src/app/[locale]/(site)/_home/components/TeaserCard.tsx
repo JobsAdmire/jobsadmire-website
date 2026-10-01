@@ -6,6 +6,7 @@ import type { TeaserView } from '../lib/teaser-keys';
 export const TEASER_WA_CLASS = buttonClassName('success', 'md');
 /** The rows the ≤ 460 px disclosure controls. */
 export const TEASER_ROWS_ID = 'calc-rows';
+const CHEVRON = 'shrink-0 transition-transform';
 
 export type TeaserCardCopy = {
   per: string;
@@ -128,6 +129,22 @@ export function TeaserCard({
           className="mt-3 flex min-h-[44px] w-full items-center gap-2 text-left text-[13px] font-extrabold text-blue-safe xs:hidden"
         >
           {expanded ? copy.less : copy.more}
+          {/* The design's chevron (`.ja-calc-chev`), turned over while the rows are open. */}
+          <svg
+            width={15}
+            height={15}
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth={2.4}
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            aria-hidden="true"
+            focusable="false"
+            className={expanded ? `${CHEVRON} rotate-180` : CHEVRON}
+          >
+            <path d="M6 9l6 6 6-6" />
+          </svg>
         </button>
       </div>
       <div className="bg-[#f7fbfd] px-7 pb-6 pt-5 max-xs:px-5 xl:px-[21px]">

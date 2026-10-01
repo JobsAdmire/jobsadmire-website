@@ -80,6 +80,8 @@ describe('HeroLeadForm', () => {
   it('is the #proposal anchor; below xs the form waits behind the two mode buttons (W10/W17)', () => {
     renderWithIntl(<HeroLeadForm {...props} />);
     expect(screen.getByTestId('hero-form')).toHaveAttribute('id', 'proposal');
+    // the design's card title inherits `line-height: normal`, not the site's 1.55 body leading
+    expect(screen.getByRole('heading', { level: 2 })).toHaveClass('leading-[1.15]');
     expect(document.getElementById('hero-form-body')).toHaveClass('max-xs:hidden');
     expect(screen.getByTestId('hero-mode-proposal').parentElement).toHaveClass('xs:hidden');
   });
