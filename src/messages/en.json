@@ -64,6 +64,10 @@
       "newsletterUnsubscribe": {
         "title": "Unsubscribe | JobsAdmire",
         "description": "Unsubscribe from the JobsAdmire newsletter."
+      },
+      "calc": {
+        "title": "Hiring cost calculator for foreign workers in Türkiye | JobsAdmire",
+        "description": "Salary, SGK employer share, permit fees, flights and housing in one estimate. Check the 5:1 quota, run the pass check and ask for a written quote."
       }
     },
     "consent": {
@@ -104,6 +108,68 @@
       "form": {
         "dial": "Country code"
       }
+    },
+    "calc": {
+      "hero": { "badge": "{year} rates · Updated {month}" },
+      "skeleton": { "activate": "Adjust the estimate" },
+      "empty": {
+        "title": "The calculator is being updated",
+        "body": "The current rates are not published yet — ask JobsAdmire for a written quote instead."
+      },
+      "jump": { "label": "Jump to a section" },
+      "a11y": {
+        "decrease": "Decrease by {step}",
+        "increase": "Increase by {step}",
+        "headcountPresets": "Quick pick",
+        "industries": "Filter by industry"
+      },
+      "card": {
+        "forWorkers": "for {n} workers",
+        "nMonths": "{months} months",
+        "seasonTotal": "{months}-month season total",
+        "threshold": "Legal minimum for this job: {amount} gross ({multiplier}× the minimum wage).",
+        "yearNote": "{months} months of payroll + one-off costs{headcount, plural, =1 {} other { for # workers}}"
+      },
+      "quota": {
+        "allowed": "{n, plural, one {# foreign worker} other {# foreign workers}}",
+        "msgNo": "With {staff, plural, one {# Turkish employee} other {# Turkish employees}} you do not reach the {ratio}:1 rule yet. You need {need} more, or one of the exemptions below.",
+        "msgMore": "Counted as {ratio} Turkish employees for each foreign worker. {m, plural, one {# more Turkish employee} other {# more Turkish employees}} would give you one more place.",
+        "vsOver": "That is {over} more than the rule allows. You would need {need} more Turkish employees, or an exemption. Send your numbers to JobsAdmire to find out which one fits you.",
+        "vizNone": "Not one complete block yet — {n} more Turkish employees unlock the first place.",
+        "vizFull": "{staff} employees make exactly {blocks, plural, one {# complete block} other {# complete blocks}} — no spare capacity, {ratio} more unlock the next place.",
+        "vizPart": "{blocks, plural, one {# complete block} other {# complete blocks}} plus {spare, plural, one {# spare employee} other {# spare employees}} — {need} more unlock one further place.",
+        "vizCap": "{blocks} complete blocks (first {cap} shown) plus {spare} spare.{spare, plural, =0 {} other { {need} more unlock one further place.}}"
+      },
+      "pass": {
+        "count": "{clear} of {total} checks clear{unanswered, plural, =0 {} other { · # unanswered}}",
+        "quotaOk": "Answered from your quota check above: {staff} Turkish employees allow {allowed}, and you planned {headcount}.",
+        "quotaNo": "Answered from your quota check above: {headcount} foreign workers need {need} Turkish employees on SGK, and you entered {staff}.",
+        "quotaFix": "You are short on the ratio — {need} Turkish employees are needed for {headcount}. Either reduce the headcount, or check whether your sector is exempt.",
+        "salary": "{role}: {amount} gross per month ({multiplier}× the minimum wage). Declaring less is a refusal, not a negotiation — and paying part of it in cash is a separate offence.",
+        "salaryFix": "Raise the declared salary to at least {amount} gross for this role, or pick a role class that matches the pay.",
+        "amberN": "{n} things to confirm first",
+        "redN": "{n} blockers — fix them before filing",
+        "unanswered": "unanswered"
+      },
+      "exemptions": {
+        "tenStaff": "10+ Turkish staff",
+        "twentyStaff": "20+ Turkish staff",
+        "upTo5": "Up to 5 workers",
+        "full": "Full exemption",
+        "timing": "Timing exemption",
+        "upTo3": "Up to 3 workers",
+        "exceptional": "Exceptional permit"
+      },
+      "whatsapp": {
+        "generic": "Hello JobsAdmire, I used the hiring cost calculator on your website. Please send me a written quote.",
+        "estimate": "Hello JobsAdmire, I used the cost calculator: {headcount} × {role} at {salary} gross, {months}-month contract. Please send a written quote.",
+        "passCheck": "Hello JobsAdmire, I ran the pass check on your cost calculator page.\n\nRole: {role} · {headcount, plural, one {# worker} other {# workers}}\nTurkish employees at the workplace: {staff}\n\n{summary}\n\nCan you review this with me?"
+      },
+      "quote": {
+        "loading": "Opening the quote form…",
+        "attached": "The estimate above is sent with your request."
+      },
+      "summary": { "none": "none", "rates": "Rates version" }
     },
     "form": {
       "labels": {
