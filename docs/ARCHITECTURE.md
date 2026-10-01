@@ -283,8 +283,8 @@ It runs, in order and never concurrently:
 
 **Page markup contract** — what every ported page carries so the gate stays green without editing a spec:
 
-- its single `<h1>` carries `data-testid="page-h1"` (and `data-lcp-slot="h1"` when the h1 is the LCP element);
-- the element Lighthouse will pick as LCP carries `data-lcp-slot="<slot>"` — the hero `<img>` (its design slot id, e.g. `hw-hero`) once the photo ships, otherwise the h1 with `"h1"`;
+- its single `<h1>` carries `data-testid="page-h1"` (and `data-lcp-slot="h1"` when the h1 is the designed LCP element);
+- the designed LCP element carries `data-lcp-slot="<slot>"` — the hero `<img>` (its design slot id, e.g. `hw-hero`) once the photo ships, otherwise the h1 with `"h1"`. The slot names the designed element, not a measured one (W179): on a text-only hero Chrome ranks text nodes by painted area, so a larger block can win (`/en`'s hero sub `home.021` outranks its h1, painted in the same frame); the gate asserts the LCP **time**, never the element's identity;
 - every image slot rendered without its real asset carries `data-placeholder="<design slot id>"` on the fallback element — always named (W55), never on the LCP element (D26). Pages emit both image attributes through the shared `ImageSlot` block (`src/design/blocks/ImageSlot.tsx`, W27) rather than by hand;
 - its two locale paths are appended to `GATE_ROUTE_TABLE` (`indexable: false` for `NOINDEX_PATHNAMES` routes), and its `UNBUILT_PATHNAMES` entry is deleted (W20).
 
