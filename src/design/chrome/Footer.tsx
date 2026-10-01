@@ -191,8 +191,8 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
       <div className="container-site flex flex-wrap items-center justify-between gap-x-6 gap-y-1 border-t border-white/15 py-5">
         <p className="m-0 text-white/50">{t('home.228')}</p>
         <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
-          {/* W11: Privacy/Terms in the legal row. The pages land in T13; until then the
-              `[...rest]` catch-all answers 404 inside the chrome. */}
+          {/* W11: Privacy/Terms in the legal row — both pages exist since T13
+              (`(minimal)/privacy`, `(minimal)/terms`). */}
           <nav aria-label={sys('nav.legal')} className="flex items-center gap-x-4">
             {LEGAL.map((l) => (
               <NavLink

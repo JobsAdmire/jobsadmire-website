@@ -83,6 +83,8 @@ D13 — full schema in `docs/ANALYTICS.md`. Headline requirements: Consent Mode 
 
 D14 — Privacy and Terms seeded from the old site's JSON; Cookie policy, KVKK aydınlatma metni, candidate notice (v1.1), and retention policy are counsel-drafted, commissioned in WP0. **Pending §10 item 6** (decide-by: WP0 end for engagement, content freeze for copy; auto-default: Privacy + Terms + a minimal cookie notice ship for Phase A if counsel is late, newsletter and pool cards stay off).
 
+**Shipped in WP2 T13:** `/gizlilik` and `/kullanim-kosullari` carry the old site's 2025 Privacy and Terms text re-authored in the company-as-"JobsAdmire" voice (§3; every normalisation listed for counsel in `docs/PRIVACY.md`); the Turkish Terms route shows the English text under a named placeholder notice (§10 item 6 auto-default); `/kvkk` and `/cerez-politikasi` are counsel placeholders (`data-placeholder`, D14/D26), the cookie page with the minimal notice; every last-updated date is `sys.legal.<doc>.updatedAt`, rendered through `formatDate` (D17).
+
 ## 9. Out of scope (D22)
 
 FR/RU locales, Arabic/RTL, a third product tile, an iOS app-store badge, a job-seeker board, website login, the Operations→CRM partner receiver, a Vercel Blob media mirror.

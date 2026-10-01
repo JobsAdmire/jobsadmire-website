@@ -40,6 +40,22 @@
       "portal": {
         "title": "Partner Portal sign-in | JobsAdmire",
         "description": "Sign in to the JobsAdmire Partner Portal: agreements, candidates and permit status in one place."
+      },
+      "privacy": {
+        "title": "Privacy Policy | JobsAdmire",
+        "description": "How JobsAdmire collects, uses, stores and protects personal data under the Turkish data protection law (KVKK)."
+      },
+      "terms": {
+        "title": "Terms and Conditions | JobsAdmire",
+        "description": "The terms that govern the use of jobsadmire.com and the services of JobsAdmire."
+      },
+      "kvkk": {
+        "title": "KVKK Information Notice | JobsAdmire",
+        "description": "The information notice under the Turkish Law on the Protection of Personal Data No. 6698 (KVKK)."
+      },
+      "cookiePolicy": {
+        "title": "Cookie Policy | JobsAdmire",
+        "description": "The cookies jobsadmire.com uses and how to manage your preferences."
       }
     },
     "consent": {
@@ -261,6 +277,179 @@
     "portal": {
       "intro": "Partner accounts sign in on the JobsAdmire Partner Portal — the link below opens its login page.",
       "signIn": "Sign in to the Partner Portal"
+    },
+    "legal": {
+      "updatedLabel": "Last updated",
+      "contents": "Contents",
+      "privacy": {
+        "title": "Privacy Policy",
+        "intro": "This Privacy Policy explains how JobsAdmire processes personal data on jobsadmire.com and its subdomains (including the Partner Portal at portal.jobsadmire.com) and through its communication channels (e-mail, WhatsApp, phone). JobsAdmire protects personal data in line with the Turkish Law on the Protection of Personal Data No. 6698 (KVKK) and the İŞKUR regulations.",
+        "updatedAt": "2026-09-29",
+        "sections": {
+          "dataController": {
+            "title": "Data controller",
+            "body": "The data controller is Jobs Admire Özel İstihdam Bürosu Sanayi ve Ticaret Limited Şirketi (\"JobsAdmire\").\n\n- **Address:** as listed in the footer of this website and on the Contact page\n- **E-mail:** {email}\n- **Phone:** {phoneDisplay}\n- **Tax No:** {taxNo}\n\nJobsAdmire operates as a private employment agency licensed by İŞKUR (Permit No. {permitNo}, dated 19.09.2024). Under Law No. {lawRef}, charging job seekers any fee is prohibited. Complaints: İstanbul İŞKUR Provincial Directorate, Kadıköy Service Centre (tel. 0216 418 34 55)."
+          },
+          "scope": {
+            "title": "Scope",
+            "body": "This Policy explains how JobsAdmire processes personal data when you:\n\n- browse this website\n- create a profile or upload a CV\n- apply for jobs\n- request services (recruitment, HR, immigration)\n- subscribe to job alerts or the newsletter\n- become a JobsAdmire partner\n- use the Partner Portal and the support channels"
+          },
+          "dataCategories": {
+            "title": "Categories of personal data",
+            "body": "- **Identification and contact:** name, e-mail, phone, address, nationality\n- **Candidate data:** CV, education, work history, skills, references, interview notes, profile photo, uploaded documents (qualifications, licences)\n- **Immigration and relocation data:** passport and ID details, civil status, travel history, residence and work-permit information (only where needed)\n- **Employer and partner data (B2B):** company name, job title, work contact details, role requirements, contracts\n- **Transaction data:** details of paid services and invoices (card data is never stored on JobsAdmire's servers)\n- **Usage and device data:** logs, IP address, browser details, pages viewed, cookies\n- **Communications:** e-mails, calls, WhatsApp and chat messages, support requests\n\n**Special categories:** JobsAdmire does not intentionally collect health or biometric data. If a role or a legal process requires such data, JobsAdmire processes it only where lawful and necessary, and with your explicit consent where KVKK requires it."
+          },
+          "purposes": {
+            "title": "Purposes and legal bases (KVKK Arts. 5–6)",
+            "body": "JobsAdmire processes personal data for the following purposes and on the following legal bases:\n\n- **Core services (candidates and employers):** creating accounts, matching and placing candidates, managing applications, interviews, offers, contracts and onboarding — performance of a contract, legitimate interests, legal obligation\n- **Immigration and relocation support:** residence and work permits, visa invitations, documentation — performance of a contract, legal obligation, explicit consent (for certain documents)\n- **Partner and recruiter management (B2B):** onboarding, compliance, invoicing — contract, legal obligation, legitimate interests\n- **Communications and alerts:** job alerts, consultation scheduling, service updates — explicit consent (marketing), contract or legitimate interests (service messages)\n- **Security and compliance:** audit logs, access controls, responses to authorities, İŞKUR requirements — legal obligation, legitimate interests\n- **Analytics and site performance:** aggregated usage, improving the website — legitimate interests, consent (for non-essential cookies)"
+          },
+          "cookies": {
+            "title": "Cookies and online identifiers",
+            "body": "JobsAdmire uses strictly necessary cookies and, only with your consent, analytics and advertising cookies. You can change or withdraw your consent at any time with the Cookie preferences button in the site footer.\n\nThe Cookie Policy lists the categories, purposes, providers and retention periods and explains how to withdraw consent, in line with the Personal Data Protection Board's cookie guidelines."
+          },
+          "disclosures": {
+            "title": "Disclosures to third parties",
+            "body": "JobsAdmire may disclose personal data to:\n\n- employers and clients seeking to hire (only the relevant candidate data)\n- authorised partners and recruiters assisting with placement\n- service providers and processors (hosting, the Partner Portal and applicant-tracking tools, communications, payment processing, background checks)\n- public authorities and courts where the law requires it (İŞKUR, immigration authorities)\n\nEvery processor acts under a contract that meets KVKK requirements."
+          },
+          "transfers": {
+            "title": "Cross-border transfers (KVKK Art. 9)",
+            "body": "Where data is transferred outside Türkiye (for example cloud hosting, international employers, global tools), JobsAdmire relies on the mechanisms permitted under the 2024 amendments:\n\n- an adequacy decision (where the Board recognises the destination)\n- standard contracts or written undertakings approved by or notified to the Authority\n- binding corporate rules\n- explicit consent (as a last resort, where no other mechanism applies)\n\nJobsAdmire keeps a record of its transfer assessments."
+          },
+          "retention": {
+            "title": "Retention",
+            "body": "JobsAdmire keeps personal data only as long as the purposes above and the statutory limitation periods require (for example labour, commercial and İŞKUR rules). When data is no longer needed, it is deleted or anonymised in line with KVKK."
+          },
+          "rights": {
+            "title": "Your rights (KVKK Art. 11)",
+            "body": "You can apply to JobsAdmire to:\n\n- learn whether your personal data is processed\n- request information about that processing\n- learn the purposes of the processing and its recipients\n- request rectification\n- request deletion or anonymisation where the legal grounds apply\n- object to a result produced exclusively by automated processing\n- object to processing based on legitimate interests\n- claim compensation for unlawful processing\n\n**How to apply:** e-mail {email} with enough identity details to verify the request. JobsAdmire responds within 30 days, as the KVKK procedure requires. If you are not satisfied, you can complain to the Personal Data Protection Authority after first applying to the data controller."
+          },
+          "security": {
+            "title": "Security measures",
+            "body": "JobsAdmire applies administrative, technical and physical safeguards:\n\n- access control and least privilege\n- encryption in transit and at rest\n- network and application security\n- supplier due diligence\n- staff confidentiality\n- backups and business continuity\n- regular review of the data inventory"
+          },
+          "verbis": {
+            "title": "VERBİS",
+            "body": "Where JobsAdmire meets the legal thresholds, it registers with VERBİS (the Data Controllers' Registry) and keeps its records up to date. Public VERBİS entries can be checked on the Authority's portal."
+          },
+          "children": {
+            "title": "Children's data",
+            "body": "The services of JobsAdmire are aimed at adults and employers. JobsAdmire does not knowingly collect data from children; if it learns of such processing without an appropriate legal basis and consent, it deletes the data."
+          },
+          "thirdParty": {
+            "title": "Third-party links and social channels",
+            "body": "This website may link to external services (for example WhatsApp or map providers). Their privacy practices are governed by their own policies."
+          },
+          "changes": {
+            "title": "Changes",
+            "body": "JobsAdmire may update this Policy to reflect changes in its services or in the law (including future Board decisions or guidance). The new version is published on this page with an updated date."
+          },
+          "contact": {
+            "title": "Contact",
+            "body": "For any KVKK question or request:\n\n- **Data protection contact:** {email}\n- **Phone:** {phoneDisplay}\n- **Registered address:** see the footer of this website and the Contact page"
+          }
+        }
+      },
+      "terms": {
+        "title": "Terms and Conditions",
+        "intro": "These Terms and Conditions (\"Terms\") govern access to and use of jobsadmire.com, its subdomains (including the Partner Portal at portal.jobsadmire.com), its mobile interfaces and all related services operated by Jobs Admire Özel İstihdam Bürosu Sanayi ve Ticaret Limited Şirketi (\"JobsAdmire\"). By using the website or the services, you (a \"User\", \"Candidate\", \"Employer\" or \"Partner\") agree to these Terms. If you do not agree, please stop using them.",
+        "updatedAt": "2026-09-29",
+        "englishOnlyNotice": "The Turkish text of these Terms is being prepared with legal counsel. Until it is published, the English text below applies.",
+        "finalNote": "By accessing, browsing or using any service, communication channel or material JobsAdmire provides — including job search, recruitment, immigration services, career counselling and CV tools, whether through the website, the Partner Portal, e-mail, phone, WhatsApp or any other means — you acknowledge that you have read and understood these Terms and agree to be bound by them.",
+        "sections": {
+          "legalStatus": {
+            "title": "Data controller and legal status",
+            "body": "JobsAdmire operates as a private employment agency under İŞKUR Permit No. {permitNo} dated 19.09.2024, in accordance with Law No. {lawRef}. Under this law, no fee may be charged to job seekers for core recruitment services. Contact details and the complaints procedure are set out in the Privacy Policy."
+          },
+          "services": {
+            "title": "Services",
+            "body": "JobsAdmire provides job search, candidate placement and recruitment support for employers; immigration, work-permit and residence-permit facilitation where requested; career counselling, interview preparation and related advisory services; and online portal tools for candidates and employers. Some services are free (for example job applications); others (for example employer recruitment packages) may be fee-based."
+          },
+          "eligibility": {
+            "title": "Eligibility",
+            "body": "Candidates must be at least 18 years old or of legal working age in their jurisdiction. Employers and Partners must have the legal capacity to enter into binding contracts. By using the website you confirm that all the information you provide is accurate."
+          },
+          "accounts": {
+            "title": "User accounts",
+            "body": "You may be given an account to manage applications, candidates or job postings. You are responsible for keeping your login details secure. Any activity under your account is deemed to have been performed by you."
+          },
+          "candidateDuties": {
+            "title": "Candidate responsibilities",
+            "body": "Candidates provide true, current and complete information (CV, contact details, documents), do not submit false, misleading or defamatory material, and accept that hiring decisions rest solely with employers."
+          },
+          "employerDuties": {
+            "title": "Employer and partner responsibilities",
+            "body": "Employers and Partners use candidate data only for legitimate hiring purposes and in compliance with KVKK and all labour regulations, never charge candidates a recruitment fee, and sign a written service agreement with JobsAdmire where paid recruitment services are required."
+          },
+          "fees": {
+            "title": "Fees and payments",
+            "body": "Job seekers: no recruitment fee is ever charged for standard job placement. Employers and Partners: service packages are governed by separate commercial agreements or purchase orders that set out the scope, pricing and payment terms."
+          },
+          "ip": {
+            "title": "Intellectual property",
+            "body": "All content on the website (text, graphics, logos, trademarks, software) is owned by JobsAdmire or its licensors and protected by copyright and industrial property law. You may view or print content for personal use only; any reproduction or redistribution requires the prior written consent of JobsAdmire."
+          },
+          "acceptableUse": {
+            "title": "Acceptable use",
+            "body": "You agree not to break any applicable Turkish or international law; post or transmit harmful code, spam or abusive content; harvest, scrape or misuse other people's personal data; or interfere with or disrupt the security or functionality of the website. JobsAdmire may suspend or end access for a violation without prior notice."
+          },
+          "dataProtection": {
+            "title": "Data protection",
+            "body": "The Privacy Policy explains how personal data is processed. By using the services you acknowledge that your data may be processed and, where necessary, transferred in line with KVKK and the cross-border transfer rules."
+          },
+          "thirdParty": {
+            "title": "Third-party links and services",
+            "body": "The website may link to third-party websites or use third-party services (for example WhatsApp or map providers). JobsAdmire is not responsible for their content, policies or practices."
+          },
+          "availability": {
+            "title": "Service availability",
+            "body": "JobsAdmire aims for continuous service but does not guarantee uninterrupted or error-free operation, and may change or discontinue any service temporarily or permanently without liability."
+          },
+          "liability": {
+            "title": "Limitation of liability",
+            "body": "To the fullest extent permitted by law, JobsAdmire is not liable for employment outcomes, visa or permit decisions, or damage arising from the decisions of employers, nor for indirect, incidental or consequential damage arising from the use of the website. The total liability of JobsAdmire for any claim does not exceed the amount (if any) the user paid for the specific service that gave rise to the claim. Nothing in these Terms limits liability where Turkish law prohibits such a limitation (for example wilful misconduct or gross negligence)."
+          },
+          "indemnification": {
+            "title": "Indemnification",
+            "body": "You agree to indemnify JobsAdmire and hold it harmless against claims, damages or expenses arising from your breach of these Terms or from unlawful use of the services."
+          },
+          "law": {
+            "title": "Governing law and jurisdiction",
+            "body": "These Terms are governed by Turkish law. Disputes are resolved by the İstanbul (Anadolu) Courts and Enforcement Offices, unless consumer protection law requires a different forum."
+          },
+          "amendments": {
+            "title": "Amendments",
+            "body": "JobsAdmire may update these Terms to reflect legal or service changes. Updates are published with a revised last-updated date, and continued use after an update constitutes acceptance."
+          }
+        }
+      },
+      "kvkk": {
+        "title": "KVKK Information Notice",
+        "intro": "The information notice under the Turkish Law on the Protection of Personal Data No. 6698 (KVKK) on how JobsAdmire, as data controller, processes personal data.",
+        "updatedAt": "2026-09-29",
+        "pendingTitle": "The information notice is being prepared",
+        "pendingBody": "The legal counsel of JobsAdmire is preparing the KVKK information notice. Until it is published, the Privacy Policy describes how JobsAdmire processes personal data and applies in full.",
+        "privacyLink": "Read the Privacy Policy"
+      },
+      "cookiePolicy": {
+        "title": "Cookie Policy",
+        "intro": "This page explains which cookies jobsadmire.com uses and how you can manage your preferences.",
+        "updatedAt": "2026-09-29",
+        "pendingTitle": "The full cookie policy is being prepared",
+        "pendingBody": "The legal counsel of JobsAdmire is preparing the detailed cookie policy. Until it is published, this summary and the Privacy Policy apply.",
+        "sections": {
+          "essential": {
+            "title": "Strictly necessary cookies",
+            "body": "- **ja_locale** — remembers your language choice for up to one year\n- **ja_consent_v1** — remembers your cookie choice for 180 days (also kept in the local storage of your browser)\n- **ja-lang-hint** (local storage) — remembers that you closed the language suggestion\n\nThese are needed for the website to work the way you set it and do not require consent."
+          },
+          "consent": {
+            "title": "Cookies that need your consent",
+            "body": "Analytics and advertising cookies (Google Tag Manager, Google Analytics 4, Google Ads) are set only after you choose Accept in the cookie notice. Until you choose, every measurement signal stays denied (Google Consent Mode v2)."
+          },
+          "manage": {
+            "title": "Managing your preferences",
+            "body": "When the website asks for your consent, you can change your choice at any time with the Cookie preferences button in the footer. You can also delete cookies in your browser settings."
+          }
+        }
+      }
     }
   }
 }

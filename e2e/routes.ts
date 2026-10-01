@@ -24,6 +24,15 @@ export const GATE_ROUTE_TABLE: readonly GateRoute[] = [
   // T13 — the portal door: noindex (W8), swept by axe/width/placeholder/headers, never Lighthouse.
   { path: '/portal-girisi', indexable: false },
   { path: '/en/portal-login', indexable: false },
+  // T13 — the four legal pages: indexable, so Lighthouse audits all eight (W145 budgets apply).
+  { path: '/gizlilik', indexable: true },
+  { path: '/en/privacy', indexable: true },
+  { path: '/kullanim-kosullari', indexable: true },
+  { path: '/en/terms', indexable: true },
+  { path: '/kvkk', indexable: true },
+  { path: '/en/kvkk', indexable: true },
+  { path: '/cerez-politikasi', indexable: true },
+  { path: '/en/cookie-policy', indexable: true },
 ];
 
 export const GATE_ROUTES: readonly string[] = GATE_ROUTE_TABLE.map((r) => r.path);
