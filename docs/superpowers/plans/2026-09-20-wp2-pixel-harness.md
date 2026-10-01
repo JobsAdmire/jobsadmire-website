@@ -20,6 +20,13 @@ scores nothing; a page still in
 `UNBUILT_PATHNAMES`, or a blog article with no body in the locale, is skipped with a message
 (exit 0, no score).
 
+The web font is drawn, never assumed (W189): the site loads Archivo with `display: 'optional'`
+(W188), and `document.fonts.ready` means loaded, not drawn — a cold capture could score the
+size-adjusted fallback. In the built page's context only, the harness rewrites the page's own
+CSS responses from `font-display:optional` to `block`, then checks through CDP
+(`CSS.getPlatformFontsForNode` on the h1 and its descendants) that Archivo carries every glyph;
+it reloads once if not and exits 2 if it still does not. The design page is never routed.
+
 ## The rule (a ledger rule, not code)
 
 1. A page task runs the harness **at most twice**: once when the port is first complete, once

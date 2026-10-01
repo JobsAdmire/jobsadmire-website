@@ -2,11 +2,15 @@
 import { PNG } from 'pngjs';
 import { describe, expect, it, vi } from 'vitest';
 import {
+  builtCssRoute,
   builtOriginRoute,
   captureContextOptions,
   checkZoomedHeight,
   comparePngs,
   designClip,
+  drawnInFamily,
+  ensureFontDrawn,
+  forceFontDisplayBlock,
   gotoOk,
   PIXEL_PAGES,
   PIXEL_WIDTHS,
@@ -255,5 +259,112 @@ describe('pixel harness bypass-header scoping (W137)', () => {
     expect(cont).toHaveBeenCalledWith({
       headers: { accept: 'text/html', 'x-vercel-protection-bypass': 's3cret' },
     });
+  });
+});
+
+describe('pixel harness web-font capture (W189)', () => {
+  const FACE = (display: string) =>
+    `@font-face{font-family:Archivo;font-style:normal;font-weight:500;font-display:${display};src:url(/_next/static/media/a.woff2) format("woff2")}`;
+
+  it('rewrites every font-display:optional to block and counts them, leaving other values alone', () => {
+    const css = `${FACE('optional')}${FACE('optional')}${FACE('swap')}.x{color:red}`;
+    const out = forceFontDisplayBlock(css);
+    expect(out.replaced).toBe(2);
+    expect(out.css).toBe(`${FACE('block')}${FACE('block')}${FACE('swap')}.x{color:red}`);
+    // a pretty-printed sheet (spaces, upper case) is caught too
+    expect(forceFontDisplayBlock('a{ font-display : Optional ; }')).toEqual({
+      css: 'a{ font-display:block ; }',
+      replaced: 1,
+    });
+    expect(forceFontDisplayBlock('.y{display:block}')).toEqual({
+      css: '.y{display:block}',
+      replaced: 0,
+    });
+  });
+
+  it('decides "drawn in Archivo" only when Archivo carries every glyph of the node', () => {
+    expect(drawnInFamily([{ familyName: 'Archivo', glyphCount: 57 }])).toBe(true);
+    // next/font's size-adjusted fallback resolves to a local face — never Archivo
+    expect(drawnInFamily([{ familyName: 'Arial', glyphCount: 57 }])).toBe(false);
+    expect(drawnInFamily([{ familyName: 'Archivo Fallback', glyphCount: 57 }])).toBe(false);
+    // a mixed draw (one subset still missing) is not the web font
+    expect(
+      drawnInFamily([
+        { familyName: 'Archivo', glyphCount: 50 },
+        { familyName: 'Helvetica', glyphCount: 7 },
+      ]),
+    ).toBe(false);
+    expect(drawnInFamily([])).toBe(false);
+    expect(drawnInFamily([{ familyName: 'archivo', glyphCount: 3 }])).toBe(true);
+  });
+
+  it('reloads once when the first read is the fallback, and refuses to score after that — exit 2', async () => {
+    const archivo = [{ familyName: 'Archivo', glyphCount: 40 }];
+    const arial = [{ familyName: 'Arial', glyphCount: 40 }];
+    const reload = vi.fn(async () => undefined);
+
+    const first = vi.fn(async () => archivo);
+    await expect(ensureFontDrawn(first, reload, 'http://x/a')).resolves.toBe('first');
+    expect(reload).not.toHaveBeenCalled();
+
+    const reads = [arial, archivo];
+    await expect(
+      ensureFontDrawn(async () => reads.shift() ?? [], reload, 'http://x/a'),
+    ).resolves.toBe('reloaded');
+    expect(reload).toHaveBeenCalledTimes(1);
+
+    reload.mockClear();
+    const never = ensureFontDrawn(async () => arial, reload, 'http://x/b');
+    await expect(never).rejects.toBeInstanceOf(PixelExit);
+    await expect(ensureFontDrawn(async () => arial, reload, 'http://x/b')).rejects.toMatchObject({
+      code: 2,
+      message: expect.stringContaining('http://x/b'),
+    });
+    expect(reload).toHaveBeenCalledTimes(2);
+  });
+
+  it("rewrites only the built origin's CSS, fetched with the bypass header when one is set", async () => {
+    const route = builtCssRoute('https://x-git-wp2.vercel.app/en/hire-workers', {
+      'x-vercel-protection-bypass': 's3cret',
+    });
+    expect(route.url(new URL('https://x-git-wp2.vercel.app/_next/static/chunks/a.css?dpl=1'))).toBe(
+      true,
+    );
+    expect(route.url(new URL('https://x-git-wp2.vercel.app/_next/static/chunks/a.js'))).toBe(false);
+    expect(route.url(new URL('https://fonts.googleapis.com/css2.css'))).toBe(false);
+
+    const response = { text: async () => FACE('optional') };
+    const fetch = vi.fn(async (options?: { headers?: Record<string, string> }) => {
+      void options;
+      return response;
+    });
+    const fulfill = vi.fn(async (options: { response: unknown; body: string }) => {
+      void options;
+    });
+    const seen: number[] = [];
+    const css = builtCssRoute(
+      'https://x-git-wp2.vercel.app',
+      { 'x-vercel-protection-bypass': 's3cret' },
+      (n) => seen.push(n),
+    );
+    await css.handler({
+      request: () => ({ headers: () => ({ accept: 'text/css' }) }),
+      fetch,
+      fulfill,
+    });
+    expect(fetch).toHaveBeenCalledWith({
+      headers: { accept: 'text/css', 'x-vercel-protection-bypass': 's3cret' },
+    });
+    expect(fulfill).toHaveBeenCalledWith({ response, body: FACE('block') });
+    expect(seen).toEqual([1]);
+
+    // no secret: the request goes out untouched
+    fetch.mockClear();
+    await builtCssRoute('http://localhost:3000', {}).handler({
+      request: () => ({ headers: () => ({}) }),
+      fetch,
+      fulfill,
+    });
+    expect(fetch).toHaveBeenCalledWith();
   });
 });

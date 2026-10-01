@@ -2,7 +2,7 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from 'node:fs';
 import { createServer, type Server } from 'node:http';
 import type { AddressInfo } from 'node:net';
 import { extname, join, normalize } from 'node:path';
-import type { BrowserContextOptions } from '@playwright/test';
+import type { APIResponse, BrowserContextOptions } from '@playwright/test';
 import pixelmatch from 'pixelmatch';
 import { PNG } from 'pngjs';
 import { bypassWarning, protectionBypassHeaders } from '../e2e/helpers/bypass';
@@ -33,6 +33,13 @@ import { bypassWarning, protectionBypassHeaders } from '../e2e/helpers/bypass';
  * secret is non-blank. The design page gets a context of its own with no extra header: even an
  * empty one forces a CORS preflight that fonts.gstatic.com and jsdelivr refuse (it broke the
  * design's Archivo and its map data), and a real one would reach every third party it calls.
+ *
+ * W189 (amends W138): the site loads Archivo with `display: 'optional'` (W188), so a cold capture
+ * can keep next/font's size-adjusted fallback for the whole page view — `document.fonts.ready`
+ * means loaded, not drawn. In the BUILT page's context only, the page's own CSS responses are
+ * rewritten from `font-display:optional` to `block` (`builtCssRoute`), and before the screenshot
+ * CDP's `CSS.getPlatformFontsForNode` must show the h1 drawn in Archivo (`ensureFontDrawn`):
+ * one reload if not, exit 2 if still not. The design page is untouched.
  */
 const ROOT = join(__dirname, '..');
 const DESIGN_DIR = join(ROOT, 'design-package', 'design');
@@ -237,6 +244,88 @@ export function builtOriginRoute(
   };
 }
 
+/** W189: every `font-display: optional` in a stylesheet becomes `block` — the browser then waits
+ *  for the (preloaded) web font instead of keeping the fallback for the page view. Pure; the
+ *  count is logged per capture so a run that rewrote nothing is visible. */
+export function forceFontDisplayBlock(css: string): { css: string; replaced: number } {
+  let replaced = 0;
+  const out = css.replace(/font-display\s*:\s*optional/gi, () => {
+    replaced += 1;
+    return 'font-display:block';
+  });
+  return { css: out, replaced };
+}
+
+/** The slice of Playwright's `APIResponse` the CSS rewrite reads (structural, for the tests). */
+export type FetchedLike = { text(): Promise<string> };
+/** The slice of Playwright's `Route` the CSS rewrite uses (structural, for the tests). */
+export type CssRouteLike<R extends FetchedLike> = {
+  request(): { headers(): Record<string, string> };
+  fetch(options?: { headers?: Record<string, string> }): Promise<R>;
+  fulfill(options: { response: R; body: string }): Promise<void>;
+};
+
+/** W189: the built context's stylesheet handler — the built origin's `.css` responses only (the
+ *  design page has a context of its own and is never routed). It fetches the sheet itself, with
+ *  the W137 bypass header when one is set (Playwright runs the LAST registered matching route
+ *  first, so this handler, registered after `builtOriginRoute`'s, must carry the header too),
+ *  and fulfils it with `font-display:block`. */
+export function builtCssRoute(
+  base: string,
+  headers: Record<string, string>,
+  onRewrite?: (replaced: number) => void,
+): {
+  url: (url: URL) => boolean;
+  handler: <R extends FetchedLike>(route: CssRouteLike<R>) => Promise<void>;
+} {
+  const origin = new URL(base).origin;
+  return {
+    url: (url) => url.origin === origin && url.pathname.endsWith('.css'),
+    handler: async (route) => {
+      const response = Object.keys(headers).length
+        ? await route.fetch({ headers: { ...route.request().headers(), ...headers } })
+        : await route.fetch();
+      const { css, replaced } = forceFontDisplayBlock(await response.text());
+      onRewrite?.(replaced);
+      await route.fulfill({ response, body: css });
+    },
+  };
+}
+
+/** The slice of a CDP `CSS.PlatformFontUsage` the decision reads. */
+export type PlatformFont = { familyName: string; glyphCount: number };
+
+/** W189: a node is drawn in `family` when that platform font carries every glyph of it. Under the
+ *  fallback the platform reports the LOCAL face next/font's `<family> Fallback` resolves to
+ *  (Arial, Helvetica), never the family itself; a mixed draw (a subset still missing) is not the
+ *  web font either. */
+export function drawnInFamily(fonts: readonly PlatformFont[], family = 'Archivo'): boolean {
+  const name = family.toLowerCase();
+  const isFamily = (f: PlatformFont) =>
+    f.familyName.toLowerCase().includes(name) && !/fallback/i.test(f.familyName);
+  const inFamily = fonts.filter(isFamily).reduce((n, f) => n + f.glyphCount, 0);
+  const other = fonts.filter((f) => !isFamily(f)).reduce((n, f) => n + f.glyphCount, 0);
+  return inFamily > 0 && other === 0;
+}
+
+/** W189: read the h1's platform fonts; reload once when it is not drawn in Archivo; refuse to
+ *  score (exit 2, naming the URL and what was drawn) when it still is not. */
+export async function ensureFontDrawn(
+  readFonts: () => Promise<PlatformFont[]>,
+  reload: () => Promise<void>,
+  url: string,
+): Promise<'first' | 'reloaded'> {
+  if (drawnInFamily(await readFonts())) return 'first';
+  await reload();
+  const fonts = await readFonts();
+  if (drawnInFamily(fonts)) return 'reloaded';
+  const drawn = fonts.map((f) => `${f.familyName} ×${f.glyphCount}`).join(', ') || 'no text';
+  throw new PixelExit(
+    `pixel: ${url} — the h1 is not drawn in Archivo after one reload (${drawn}); nothing is scored (W189)`,
+    2,
+  );
+}
+
 const MIME: Record<string, string> = {
   '.html': 'text/html; charset=utf-8',
   '.js': 'text/javascript; charset=utf-8',
@@ -283,6 +372,32 @@ function readLocalBundle(locale: PixelLocale): PixelBundle | null {
   return existsSync(file) ? (JSON.parse(readFileSync(file, 'utf8')) as PixelBundle) : null;
 }
 
+/** W189: the platform fonts CDP reports for the h1 and its descendants (a heading whose text
+ *  sits inside spans reports nothing on the h1 node itself), merged by family. */
+async function h1PlatformFonts(page: import('@playwright/test').Page): Promise<PlatformFont[]> {
+  const cdp = await page.context().newCDPSession(page);
+  try {
+    await cdp.send('DOM.enable');
+    await cdp.send('CSS.enable');
+    const { root } = await cdp.send('DOM.getDocument', { depth: -1 });
+    const { nodeId } = await cdp.send('DOM.querySelector', { nodeId: root.nodeId, selector: 'h1' });
+    if (!nodeId) return [];
+    const { nodeIds } = await cdp.send('DOM.querySelectorAll', {
+      nodeId: root.nodeId,
+      selector: 'h1 *',
+    });
+    const merged = new Map<string, number>();
+    for (const id of [nodeId, ...nodeIds]) {
+      const { fonts } = await cdp.send('CSS.getPlatformFontsForNode', { nodeId: id });
+      for (const f of fonts)
+        merged.set(f.familyName, (merged.get(f.familyName) ?? 0) + f.glyphCount);
+    }
+    return [...merged].map(([familyName, glyphCount]) => ({ familyName, glyphCount }));
+  } finally {
+    await cdp.detach();
+  }
+}
+
 type Result = {
   width: number;
   designHeight: number;
@@ -325,7 +440,8 @@ async function main() {
 
   const warning = bypassWarning(base);
   if (warning) console.warn(`pixel: warning — ${warning}`);
-  const builtRoute = builtOriginRoute(base, protectionBypassHeaders());
+  const bypass = protectionBypassHeaders();
+  const builtRoute = builtOriginRoute(base, bypass);
 
   // Loaded here, not at module top, so the unit tests import the pure functions without
   // pulling the Playwright runner into Vitest.
@@ -393,11 +509,29 @@ async function main() {
       // The built page's context: the header on its own origin's requests only (W137).
       const builtContext = await newCaptureContext();
       if (builtRoute) await builtContext.route(builtRoute.url, builtRoute.handler);
+      // W189: registered after the bypass route, so it runs first on the built origin's CSS.
+      let rewritten = 0;
+      const css = builtCssRoute(base, bypass, (n) => (rewritten += n));
+      await builtContext.route(css.url, (r) => css.handler<APIResponse>(r));
       const builtPage = await builtContext.newPage();
-      await gotoOk(builtPage, `${base}${route}`, { waitUntil: 'networkidle', timeout: 60_000 });
-      await builtPage.evaluate(async () => {
-        await document.fonts.ready;
-      });
+      const builtUrl = `${base}${route}`;
+      await gotoOk(builtPage, builtUrl, { waitUntil: 'networkidle', timeout: 60_000 });
+      const fontsReady = () =>
+        builtPage.evaluate(async () => {
+          await document.fonts.ready;
+        });
+      await fontsReady();
+      const drawn = await ensureFontDrawn(
+        () => h1PlatformFonts(builtPage),
+        async () => {
+          await builtPage.reload({ waitUntil: 'networkidle', timeout: 60_000 });
+          await fontsReady();
+        },
+        builtUrl,
+      );
+      console.log(
+        `pixel: ${page} ${locale} @${width} — font-display optional→block in ${rewritten} rule(s); h1 drawn in Archivo (${drawn} load) (W189)`,
+      );
       await builtPage.waitForTimeout(300);
       const builtPng = PNG.sync.read(await builtPage.screenshot({ fullPage: true }));
       await builtContext.close();
