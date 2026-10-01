@@ -98,6 +98,9 @@ test("robots.txt matches this run's face and points at the sitemap in production
   }
   expect(body).toContain(`Sitemap: ${ORIGIN}/sitemap.xml`);
   expect(body).toContain('Disallow: /tesekkurler');
+  // T13 (W20/W37, W104): a built noindex route is disallowed in both locales, by itself.
+  for (const path of ['/portal-girisi', '/en/portal-login'])
+    expect(body).toContain(`Disallow: ${path}`);
   // W20/W37: an unbuilt noindex route (/blog today) is never named — nothing is asserted about it.
   expect(body).not.toContain('[slug]');
 });
