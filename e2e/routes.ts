@@ -33,6 +33,12 @@ export const GATE_ROUTE_TABLE: readonly GateRoute[] = [
   { path: '/en/kvkk', indexable: true },
   { path: '/cerez-politikasi', indexable: true },
   { path: '/en/cookie-policy', indexable: true },
+  // T13 — the newsletter one-shots: noindex, with a DUMMY token so the sweeps see the
+  // click-to-forward state (never a real subscriber's token — the Ops routes ignore the class).
+  { path: '/abone-onay?token=e2e-dummy-token-0000000000', indexable: false },
+  { path: '/en/newsletter/confirm?token=e2e-dummy-token-0000000000', indexable: false },
+  { path: '/abonelikten-cik?token=e2e-dummy-token-0000000000', indexable: false },
+  { path: '/en/newsletter/unsubscribe?token=e2e-dummy-token-0000000000', indexable: false },
 ];
 
 export const GATE_ROUTES: readonly string[] = GATE_ROUTE_TABLE.map((r) => r.path);

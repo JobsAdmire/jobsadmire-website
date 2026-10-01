@@ -38,3 +38,27 @@ describe('proxy — document security headers (W160)', () => {
     });
   });
 });
+
+const post = (path: string, headers: Record<string, string> = {}) =>
+  new NextRequest(new URL(path, 'https://www.jobsadmire.com'), { method: 'POST', headers });
+const rewriteOf = (res: Response) => res.headers.get('x-middleware-rewrite') ?? '';
+
+describe('proxy — RFC 8058 one-click rewrite (T13, I12)', () => {
+  it('rewrites a plain POST to either unsubscribe page onto the route handler, query kept, headers set', () => {
+    for (const path of ['/abonelikten-cik', '/en/newsletter/unsubscribe']) {
+      const res = proxy(post(`${path}?token=abc.def`));
+      expect(rewriteOf(res)).toContain('/api/newsletter/unsubscribe?token=abc.def');
+      for (const [key, value] of Object.entries(DOCUMENT_SECURITY_HEADERS)) {
+        expect(res.headers.get(key)).toBe(value);
+      }
+    }
+  });
+
+  it('leaves a server-action POST, a GET and the confirm page to next-intl', () => {
+    expect(
+      rewriteOf(proxy(post('/abonelikten-cik?token=abc', { 'next-action': '7f3a' }))),
+    ).not.toContain('/api/');
+    expect(rewriteOf(proxy(req('/abonelikten-cik?token=abc')))).not.toContain('/api/');
+    expect(rewriteOf(proxy(post('/abone-onay?token=abc')))).not.toContain('/api/');
+  });
+});

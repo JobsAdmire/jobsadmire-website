@@ -94,8 +94,6 @@ export const UNBUILT_PATHNAMES: ReadonlySet<keyof typeof pathnames> = new Set<
   '/success-stories',
   '/blog',
   '/blog/[slug]',
-  '/newsletter/confirm',
-  '/newsletter/unsubscribe',
 ]);
 
 /**

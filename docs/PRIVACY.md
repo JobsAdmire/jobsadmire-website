@@ -42,7 +42,7 @@ _Full runbook is a WP5-gate deliverable, commissioned from counsel per plan §10
 
 ## Newsletter double opt-in
 
-`NEWSLETTER` form handler creates a pending `WebsiteSubscriber` row; confirmation via `/abone-onay` (a per-subscriber signed token) activates it. Unsubscribe (`/abonelikten-cik`) is one-click per RFC 8058 — no login, no "are you sure," a single unambiguous action. Newsletter is one of the features gated off if the counsel trip-wire fires (no legal-document engagement by WP0 end — plan §12).
+`NEWSLETTER` form handler creates a pending `WebsiteSubscriber` row; confirmation via `/abone-onay` (a per-subscriber signed token) activates it. Unsubscribe is one-click per RFC 8058: the mail client's `List-Unsubscribe-Post` reaches the site as a POST and unsubscribes directly; a visitor who opens the link in a browser presses one button on `/abonelikten-cik` — no login, no second confirmation — because a page load never changes state (a mail scanner opening the link must not unsubscribe anyone, I12). Newsletter is one of the features gated off if the counsel trip-wire fires (no legal-document engagement by WP0 end — plan §12).
 
 ## Seeded legal copy — counsel review (T13)
 

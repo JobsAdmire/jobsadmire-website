@@ -56,6 +56,14 @@
       "cookiePolicy": {
         "title": "Çerez Politikası | JobsAdmire",
         "description": "jobsadmire.com'un kullandığı çerezler ve tercihlerinizi nasıl yönetebileceğiniz."
+      },
+      "newsletterConfirm": {
+        "title": "Abonelik onayı | JobsAdmire",
+        "description": "JobsAdmire bülten aboneliğinizi onaylayın."
+      },
+      "newsletterUnsubscribe": {
+        "title": "Abonelikten çıkış | JobsAdmire",
+        "description": "JobsAdmire bülten aboneliğinizi sonlandırın."
       }
     },
     "consent": {
@@ -447,6 +455,71 @@
           "manage": {
             "title": "Tercihlerinizi yönetme",
             "body": "Site izninizi istediğinde, seçiminizi istediğiniz zaman alt bilgideki Çerez tercihleri düğmesiyle değiştirebilirsiniz. Çerezleri tarayıcı ayarlarınızdan da silebilirsiniz."
+          }
+        }
+      }
+    },
+    "newsletter": {
+      "backHome": "Ana sayfaya dön",
+      "noToken": {
+        "title": "Bağlantı eksik",
+        "body": "Bu sayfa yalnızca e-postadaki bağlantıyla çalışır ve bağlantının kodu eksik görünüyor. E-postadaki bağlantıyı yeniden açın ya da aşağıdan JobsAdmire'a ulaşın."
+      },
+      "unavailable": {
+        "title": "İsteğiniz şu anda tamamlanamadı",
+        "body": "Abonelik hizmeti yanıt vermedi. Lütfen birkaç dakika sonra yeniden deneyin ya da aşağıdan JobsAdmire'a ulaşın; ekip talebinizi elle işler."
+      },
+      "fallback": {
+        "lead": "JobsAdmire'a ulaşın",
+        "email": "JobsAdmire'a e-posta gönderin",
+        "whatsapp": "WhatsApp'tan yazın",
+        "subject": "Bülten aboneliği"
+      },
+      "confirm": {
+        "title": "Bülten aboneliğinizi onaylayın",
+        "body": "JobsAdmire bülten aboneliğinizi onaylamak için aşağıdaki düğmeye basın. Onay verilene kadar JobsAdmire bu adrese hiçbir e-posta göndermez.",
+        "button": "Aboneliği onayla",
+        "pending": "Onaylanıyor…",
+        "invalid": {
+          "title": "Bu onay bağlantısı geçerli değil",
+          "body": "Bağlantı tanınmadı. Yeni bir onay e-postası almak için lütfen bültene yeniden abone olun."
+        },
+        "expired": {
+          "title": "Bu onay bağlantısının süresi dolmuş",
+          "body": "Onay bağlantıları sınırlı bir süre için geçerlidir. Yeni bir bağlantı almak için lütfen bültene yeniden abone olun."
+        },
+        "outcome": {
+          "CONFIRMED": {
+            "title": "Aboneliğiniz onaylandı",
+            "body": "Teşekkürler. JobsAdmire'ın işe alım güncellemeleri artık e-posta kutunuza gelecek; her e-postada abonelikten çıkma bağlantısı bulunur."
+          },
+          "ALREADY_CONFIRMED": {
+            "title": "Bu abonelik zaten onaylanmış",
+            "body": "Bu adres daha önce onaylandı; yapmanız gereken başka bir şey yok."
+          }
+        }
+      },
+      "unsubscribe": {
+        "title": "Bülten aboneliğinden çıkın",
+        "body": "Aşağıdaki düğmeye bastığınızda JobsAdmire bu adrese bülten göndermeyi durdurur.",
+        "button": "Abonelikten çık",
+        "pending": "İşleniyor…",
+        "invalid": {
+          "title": "Bu abonelikten çıkma bağlantısı geçerli değil",
+          "body": "Bağlantı tanınmadı. JobsAdmire'a e-posta gönderin; ekip adresinizi listeden elle çıkarır."
+        },
+        "outcome": {
+          "UNSUBSCRIBED": {
+            "title": "Abonelikten çıktınız",
+            "body": "JobsAdmire bu adrese artık bülten göndermez. Dilediğiniz zaman yeniden abone olabilirsiniz."
+          },
+          "ALREADY_UNSUBSCRIBED": {
+            "title": "Zaten abonelikten çıkmıştınız",
+            "body": "Bu adres listeden daha önce çıkarıldı; yapmanız gereken başka bir şey yok."
+          },
+          "UNKNOWN": {
+            "title": "Bu bağlantıya ait abonelik bulunamadı",
+            "body": "Bülten listesinde bu bağlantıya ait bir abonelik yok; bu nedenle hiçbir e-posta gönderilmeyecek. E-postalar gelmeye devam ederse JobsAdmire'a yazın, ekip adresi listeden elle çıkarır."
           }
         }
       }

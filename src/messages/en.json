@@ -56,6 +56,14 @@
       "cookiePolicy": {
         "title": "Cookie Policy | JobsAdmire",
         "description": "The cookies jobsadmire.com uses and how to manage your preferences."
+      },
+      "newsletterConfirm": {
+        "title": "Confirm your subscription | JobsAdmire",
+        "description": "Confirm your subscription to the JobsAdmire newsletter."
+      },
+      "newsletterUnsubscribe": {
+        "title": "Unsubscribe | JobsAdmire",
+        "description": "Unsubscribe from the JobsAdmire newsletter."
       }
     },
     "consent": {
@@ -447,6 +455,71 @@
           "manage": {
             "title": "Managing your preferences",
             "body": "When the website asks for your consent, you can change your choice at any time with the Cookie preferences button in the footer. You can also delete cookies in your browser settings."
+          }
+        }
+      }
+    },
+    "newsletter": {
+      "backHome": "Back to home",
+      "noToken": {
+        "title": "This link is incomplete",
+        "body": "This page works only with the link from the e-mail, and that link is missing its code. Open the link in the e-mail again, or contact JobsAdmire below."
+      },
+      "unavailable": {
+        "title": "The request could not be completed right now",
+        "body": "The subscription service did not answer. Please try again in a few minutes, or contact JobsAdmire below and the team handles it by hand."
+      },
+      "fallback": {
+        "lead": "Contact JobsAdmire",
+        "email": "E-mail JobsAdmire",
+        "whatsapp": "Message on WhatsApp",
+        "subject": "Newsletter subscription"
+      },
+      "confirm": {
+        "title": "Confirm your newsletter subscription",
+        "body": "Press the button below to confirm your subscription to the JobsAdmire newsletter. Until you confirm, JobsAdmire sends nothing to this address.",
+        "button": "Confirm subscription",
+        "pending": "Confirming…",
+        "invalid": {
+          "title": "This confirmation link is not valid",
+          "body": "The link was not recognised. Please subscribe again to receive a new confirmation e-mail."
+        },
+        "expired": {
+          "title": "This confirmation link has expired",
+          "body": "Confirmation links are valid for a limited time. Please subscribe again to receive a new one."
+        },
+        "outcome": {
+          "CONFIRMED": {
+            "title": "Your subscription is confirmed",
+            "body": "Thank you. Hiring updates from JobsAdmire will now reach your inbox, and every issue carries an unsubscribe link."
+          },
+          "ALREADY_CONFIRMED": {
+            "title": "This subscription was already confirmed",
+            "body": "This address was confirmed earlier — there is nothing more to do."
+          }
+        }
+      },
+      "unsubscribe": {
+        "title": "Unsubscribe from the newsletter",
+        "body": "Press the button below and JobsAdmire stops sending the newsletter to this address.",
+        "button": "Unsubscribe",
+        "pending": "Unsubscribing…",
+        "invalid": {
+          "title": "This unsubscribe link is not valid",
+          "body": "The link was not recognised. E-mail JobsAdmire and the team removes the address from the list by hand."
+        },
+        "outcome": {
+          "UNSUBSCRIBED": {
+            "title": "You are unsubscribed",
+            "body": "JobsAdmire will not send the newsletter to this address again. You can subscribe again at any time."
+          },
+          "ALREADY_UNSUBSCRIBED": {
+            "title": "You were already unsubscribed",
+            "body": "This address was removed from the list earlier — there is nothing more to do."
+          },
+          "UNKNOWN": {
+            "title": "No subscription found for this link",
+            "body": "The newsletter list has no subscription for this link, so nothing will be sent. If e-mails keep arriving, write to JobsAdmire and the team removes the address by hand."
           }
         }
       }

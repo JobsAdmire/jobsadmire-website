@@ -1,6 +1,7 @@
 import createMiddleware from 'next-intl/middleware';
 import { NextResponse } from 'next/server';
 import { routing } from './i18n/routing';
+import { isOneClickUnsubscribe } from './lib/newsletter/one-click';
 import gone from '../redirects/gone.json';
 
 const intl = createMiddleware(routing);
@@ -30,6 +31,16 @@ function withDocumentHeaders(res: NextResponse): NextResponse {
 
 export default function proxy(request: Parameters<typeof intl>[0]) {
   const { pathname } = request.nextUrl;
+  // RFC 8058 (T13, I12): a mail client's one-click POST lands on the unsubscribe PAGE URL
+  // Operations prints in List-Unsubscribe, and a page cannot answer a POST — rewrite it onto the
+  // route handler, query (the token) kept. A server-action call to the same page carries
+  // `Next-Action` and falls through to next-intl like every other request. W160: the rewrite
+  // gets the document headers like every response this proxy returns.
+  if (isOneClickUnsubscribe(request.method, pathname, request.headers.has('next-action'))) {
+    const url = request.nextUrl.clone();
+    url.pathname = '/api/newsletter/unsubscribe';
+    return withDocumentHeaders(NextResponse.rewrite(url));
+  }
   if (GONE.some((p) => pathname === p || pathname.startsWith(p.endsWith('/') ? p : `${p}/`))) {
     return withDocumentHeaders(new NextResponse(null, { status: 410 }));
   }

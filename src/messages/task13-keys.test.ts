@@ -2,14 +2,16 @@ import { createTranslator, type Messages } from 'next-intl';
 import { describe, expect, it } from 'vitest';
 import type { Locale } from '@/i18n/routing';
 import { LEGAL_DOCS, LEGAL_SECTIONS } from '@/lib/legal/documents';
+import { NEWSLETTER_STATES, stateCopyKey } from '@/lib/newsletter/copy';
 import en from './en.json';
 import tr from './tr.json';
 
 /**
  * T13's `sys.*` keys (W9/W23). Every one is read by a server component through
- * `getTranslations('sys')` — never by a client island (W90/W148) — so a missing key would render
- * a MISSING_MESSAGE string that no e2e text check reliably catches. Pinned per locale here, each
- * formatted through next-intl itself with an `onError` that throws.
+ * `getTranslations('sys')` — never by a client island (W90/W148; the newsletter island receives
+ * resolved strings as props) — so a missing key would render a MISSING_MESSAGE string that no e2e
+ * text check reliably catches. Pinned per locale here, each formatted through next-intl itself
+ * with an `onError` that throws.
  */
 const MESSAGES: Record<Locale, Messages> = { tr, en };
 
@@ -56,6 +58,28 @@ const LEGAL_KEYS = [
   'legal.cookiePolicy.pendingBody',
 ];
 
+const NEWSLETTER_KEYS = [
+  'seo.newsletterConfirm.title',
+  'seo.newsletterConfirm.description',
+  'seo.newsletterUnsubscribe.title',
+  'seo.newsletterUnsubscribe.description',
+  'newsletter.backHome',
+  'newsletter.fallback.lead',
+  'newsletter.fallback.email',
+  'newsletter.fallback.whatsapp',
+  'newsletter.fallback.subject',
+  ...(['confirm', 'unsubscribe'] as const).flatMap((kind) => [
+    `newsletter.${kind}.title`,
+    `newsletter.${kind}.body`,
+    `newsletter.${kind}.button`,
+    `newsletter.${kind}.pending`,
+    ...NEWSLETTER_STATES[kind].flatMap((state) => [
+      `${stateCopyKey(kind, state)}.title`,
+      `${stateCopyKey(kind, state)}.body`,
+    ]),
+  ]),
+];
+
 function translator(locale: Locale) {
   return createTranslator({
     locale,
@@ -73,9 +97,9 @@ const legalOf = (locale: Locale) =>
 
 describe('T13 sys keys (W9/W23)', () => {
   for (const locale of ['tr', 'en'] as const) {
-    it(`${locale}: every portal and legal key is a non-empty, fully formatted string`, () => {
+    it(`${locale}: every portal, legal and newsletter key is a non-empty, fully formatted string`, () => {
       const t = translator(locale);
-      for (const key of [...PORTAL_KEYS, ...LEGAL_KEYS]) {
+      for (const key of [...PORTAL_KEYS, ...LEGAL_KEYS, ...NEWSLETTER_KEYS]) {
         const value = t(key, LEGAL_VALUES);
         expect(value.trim().length, key).toBeGreaterThan(0);
         expect(value, key).not.toMatch(/[{}]/);
