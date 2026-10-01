@@ -13,10 +13,15 @@ import { organizationJsonLd, websiteJsonLd } from '@/lib/seo/jsonld';
 import { SITE_URL } from '@/lib/seo/routes';
 import '../globals.css';
 
+/** W188 (revisits W149): `optional`, not `swap` — the browser never swaps the web font in after
+ *  first paint, so its arrival cannot rewrap a headline and shift layout (under `swap` the
+ *  Turkish Hire Workers h1 went from two lines to three, CLS 0.116). Both subsets stay declared,
+ *  so next/font still preloads both files; on a slow first visit the page view keeps the
+ *  size-adjusted fallback. */
 const archivo = Archivo({
   subsets: ['latin', 'latin-ext'],
   weight: ['500', '600', '700', '800'],
-  display: 'swap',
+  display: 'optional',
   variable: '--font-archivo',
 });
 
