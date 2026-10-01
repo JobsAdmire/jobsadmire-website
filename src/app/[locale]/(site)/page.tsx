@@ -5,8 +5,10 @@ import { notFound } from 'next/navigation';
 import { getBundle } from '@/content/adapter';
 import { routing } from '@/i18n/routing';
 import { buildMetadata } from '@/lib/seo/metadata';
+import { submitCallback, submitHire } from './_home/actions';
 import { ChoiceCards } from './_home/sections/ChoiceCards';
 import { Hero } from './_home/sections/Hero';
+import { HeroForm } from './_home/sections/HeroForm';
 import { LiveCaseBar } from './_home/sections/LiveCaseBar';
 import { PoolSection } from './_home/sections/PoolSection';
 
@@ -48,9 +50,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const section = { locale, bundle };
   return (
     <>
-      {/* Cycle 2 mounts the lead card in this slot; the id exists from the first commit because
-          the header CTA (CTA_BY_PATHNAME['/']) and the launch anchor sweep point at it. */}
-      <Hero {...section} form={<div id="proposal" className="scroll-mt-[90px]" />} />
+      <Hero
+        {...section}
+        form={<HeroForm {...section} actions={{ hire: submitHire, callback: submitCallback }} />}
+      />
       <LiveCaseBar {...section} />
       <ChoiceCards {...section} />
       <PoolSection {...section} />
