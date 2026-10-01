@@ -13,7 +13,7 @@ export type ForwardDeps = { fetch?: typeof fetch; env?: NodeJS.ProcessEnv; timeo
  * or a body-less `POST …/newsletter/unsubscribe` (the RFC 8058 shape the door accepts), token in
  * the query, the write token as Bearer. Called ONLY from a visitor's click (the two server
  * actions) or the one-click route handler — never during a render, where a mail-link scanner
- * would spend the one-shot confirm token (W5, I12). The forms kernel's rule (W74/W117): one
+ * fetching the link would confirm or unsubscribe on the visitor's behalf (W5, I12). The forms kernel's rule (W74/W117): one
  * shared `ATTEMPT_TIMEOUT_MS` deadline, one retry only after a connection-level failure, a
  * timeout or any answer final. Logs name the kind and the status only — never the token.
  */

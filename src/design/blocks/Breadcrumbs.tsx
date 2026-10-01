@@ -47,7 +47,11 @@ export function Breadcrumbs({
                     {it.name}
                   </span>
                 ) : (
-                  <Link href={it.href} className={`${c.link} no-underline hover:underline`}>
+                  <Link
+                    href={it.href}
+                    prefetch={false}
+                    className={`${c.link} no-underline hover:underline`}
+                  >
                     {it.name}
                   </Link>
                 )}

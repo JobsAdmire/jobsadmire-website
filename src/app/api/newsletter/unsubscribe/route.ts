@@ -24,6 +24,10 @@ async function isOneClick(request: Request): Promise<boolean> {
 export async function POST(request: Request): Promise<Response> {
   const token = new URL(request.url).searchParams.get('token');
   if (!isPlausibleToken(token)) return json({ error: 'invalid' }, 400);
+  // The one-click pair is a few bytes; refuse a declared body over 4 KB before reading it
+  // (the form-beacon route's cap, T13 review M4).
+  const declared = Number(request.headers.get('content-length'));
+  if (Number.isFinite(declared) && declared > 4096) return json({ error: 'too-large' }, 413);
   if (!(await isOneClick(request))) return json({ error: 'not-one-click' }, 400);
   const result = await forwardNewsletterToken('unsubscribe', token);
   switch (result.kind) {

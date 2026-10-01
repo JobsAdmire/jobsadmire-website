@@ -86,7 +86,7 @@ export async function NewsletterPage({
             </div>
           )}
           <div className="mt-8">
-            <Button variant="ghost" href="/">
+            <Button variant="ghost" href="/" prefetch={false}>
               {sys('newsletter.backHome')}
             </Button>
           </div>

@@ -128,7 +128,7 @@ describe('T13 sys keys (W9/W23)', () => {
       }
     });
 
-    it(`${locale}: the alternative privacy mailbox appears only in the privacy contact section, and only while the owner confirmed it (W175)`, () => {
+    it(`${locale}: the alternative privacy mailbox appears only in the privacy rights and contact sections, and only while the owner confirmed it (W175)`, () => {
       const t = translator(locale);
       const contact = t('legal.privacy.sections.contact.body', LEGAL_VALUES);
       expect(contact).toContain(LEGAL_VALUES.email);
@@ -137,7 +137,9 @@ describe('T13 sys keys (W9/W23)', () => {
         t(key, LEGAL_VALUES).includes('privacy@jobsadmire.com'),
       );
       expect(mentions).toEqual(
-        PRIVACY_MAILBOX_CONFIRMED ? ['legal.privacy.sections.contact.body'] : [],
+        PRIVACY_MAILBOX_CONFIRMED
+          ? ['legal.privacy.sections.rights.body', 'legal.privacy.sections.contact.body']
+          : [],
       );
     });
   }

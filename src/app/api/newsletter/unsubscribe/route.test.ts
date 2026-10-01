@@ -62,6 +62,21 @@ describe('POST /api/newsletter/unsubscribe (RFC 8058, I12)', () => {
     expect(forward).not.toHaveBeenCalled();
   });
 
+  it('refuses a declared body over 4 KB before reading it (T13 review M4)', async () => {
+    const big = new Request(url(), {
+      method: 'POST',
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'content-length': String(4096 + 1),
+      },
+      body: 'List-Unsubscribe=One-Click',
+    });
+    const res = await POST(big);
+    expect(res.status).toBe(413);
+    expect(await res.json()).toEqual({ error: 'too-large' });
+    expect(forward).not.toHaveBeenCalled();
+  });
+
   it('maps the forward results to the one-click answers', async () => {
     const cases: [NewsletterForwardResult, number, string][] = [
       [{ kind: 'invalid' }, 400, 'invalid'],
