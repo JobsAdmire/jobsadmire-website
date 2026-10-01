@@ -8,12 +8,19 @@ import { buildMetadata } from '@/lib/seo/metadata';
 import { submitCallback, submitHire } from './_home/actions';
 import { CalculatorStrip } from './_home/sections/CalculatorStrip';
 import { ChoiceCards } from './_home/sections/ChoiceCards';
+import { ContactStrip } from './_home/sections/ContactStrip';
+import { FaqSection } from './_home/sections/FaqSection';
+import { GuidesSection } from './_home/sections/GuidesSection';
 import { Hero } from './_home/sections/Hero';
 import { HeroForm } from './_home/sections/HeroForm';
 import { LiveCaseBar } from './_home/sections/LiveCaseBar';
+import { NetworkSection } from './_home/sections/NetworkSection';
 import { PoolSection } from './_home/sections/PoolSection';
+import { PortalSection } from './_home/sections/PortalSection';
 import { ProcessSection } from './_home/sections/ProcessSection';
 import { SeasonSection } from './_home/sections/SeasonSection';
+import { TeamSection } from './_home/sections/TeamSection';
+import { WorkWithUs } from './_home/sections/WorkWithUs';
 
 /** W150 (D17): the calculator teaser's dated badge and eyebrow switch off at
  *  `rateConfig.reviewDueAt`; the page is statically generated, so it re-renders daily. */
@@ -44,7 +51,7 @@ export async function generateMetadata({
 
 /** The homepage (design/JobsAdmire Homepage v4), section for section in the design's order. No
  *  <main> here — SiteChrome owns it (R31). Sections that need live data decide for themselves
- *  whether to render (W6). */
+ *  whether to render (W6); no StickyCtaBar (the sticky header carries this page's #proposal CTA). */
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
@@ -63,6 +70,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <CalculatorStrip {...section} />
       <ProcessSection {...section} />
       <SeasonSection {...section} />
+      <NetworkSection {...section} />
+      <TeamSection {...section} />
+      <PortalSection {...section} />
+      <WorkWithUs {...section} />
+      <GuidesSection {...section} />
+      <FaqSection {...section} />
+      <ContactStrip {...section} />
     </>
   );
 }
