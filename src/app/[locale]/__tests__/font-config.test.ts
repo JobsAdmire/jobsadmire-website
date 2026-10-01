@@ -18,7 +18,7 @@ describe('Archivo font loading (W188)', () => {
   });
 
   it('keeps both subsets (Turkish needs latin-ext), so next/font still preloads both files', () => {
-    expect(options).toMatch(/subsets:\s*\[\s*'latin',\s*'latin-ext'\s*\]/);
+    expect(options).toMatch(/subsets:\s*\[\s*'latin',\s*'latin-ext',?\s*\]/);
     expect(options).not.toMatch(/preload:\s*false/);
   });
 });

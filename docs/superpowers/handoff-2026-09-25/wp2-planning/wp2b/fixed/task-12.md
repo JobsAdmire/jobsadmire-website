@@ -3565,7 +3565,7 @@ test.describe('/en/blog — the index with one written article (W4)', () => {
   }) => {
     await page.emulateMedia({ reducedMotion: 'no-preference' });
     await page.goto('/en/blog');
-    // Measure after the Archivo swap (display: swap, W149) so only the rotation could move the box.
+    // Measure once the fonts have settled (display: optional since W188 — no swap; fonts.ready is a guard) so only the rotation could move the box.
     await page.evaluate(async () => {
       await document.fonts.ready;
     });

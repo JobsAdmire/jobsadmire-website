@@ -43,7 +43,7 @@ export function SourceCountries({
         <div className="flex flex-col gap-10 rounded-hero border border-tint-border bg-gradient-to-b from-pale-1 to-tint px-6 py-10 max-md:gap-0 max-md:rounded-lg max-md:px-4 max-md:py-6 lg:grid lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-14 lg:px-14 lg:py-12">
           <div className="max-md:contents">
             <Eyebrow>{tf('hire.140')}</Eyebrow>
-            <h2 className="m-0 mb-4 mt-3 text-h2 leading-[1.05] tracking-[-1.6px] xl:tracking-[-1.2px]">
+            <h2 className="m-0 mb-4 mt-3 text-h2 leading-[1.05] tracking-[-1.6px] xl:tracking-[-1.2px] max-md:mb-2.5 max-md:text-[25px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
               {countries ? (
                 <>
                   {a}
@@ -58,7 +58,9 @@ export function SourceCountries({
                 tf('hire.140')
               )}
             </h2>
-            <p className="m-0 mb-5 text-body text-text-secondary">{tf('hire.143')}</p>
+            <p className="m-0 mb-5 text-body text-text-secondary max-md:mb-4 max-md:text-[14.5px] max-md:leading-[1.55]">
+              {tf('hire.143')}
+            </p>
             <div className="flex items-start gap-3 rounded-sm border border-tint-border bg-white px-5 py-4 max-md:order-1 max-md:mt-4">
               <span
                 aria-hidden="true"

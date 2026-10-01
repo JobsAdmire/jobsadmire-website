@@ -203,16 +203,16 @@ describe('Hero', () => {
     renderWithIntl(hero);
     const box = document.querySelector('[data-placeholder="hw-hero"]')!.parentElement!;
     const t = tokens(box);
-    expect(t).toEqual(expect.arrayContaining(['absolute', 'left-0', 'top-0', 'aspect-[9/4]']));
+    expect(t).toEqual(
+      expect.arrayContaining(['absolute', 'left-0', 'top-0', 'aspect-[9/4]', 'min-w-full']),
+    );
     expect(t.filter((c) => /(^|:)h-\[\d+px\]$/.test(c))).toEqual([
       'h-[1200px]',
       'md:h-[1800px]',
       'lg:h-[1200px]',
     ]);
     for (const c of t)
-      expect(c).not.toMatch(
-        /(^|:)(h-full|min-h-full|min-w-full|top-1\/2|left-1\/2|-?translate-[xy]-)/,
-      );
+      expect(c).not.toMatch(/(^|:)(h-full|min-h-full|top-1\/2|left-1\/2|-?translate-[xy]-)/);
     expect(box).not.toHaveAttribute('style');
   });
 });

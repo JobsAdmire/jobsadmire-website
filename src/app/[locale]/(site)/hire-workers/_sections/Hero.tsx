@@ -53,7 +53,7 @@ export function Hero({
           image is the LCP element (`data-lcp-slot="hw-hero"` + preload); without one it is a
           decorative named placeholder and the h1 carries the LCP slot. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-0 top-0 aspect-[9/4] h-[1200px] md:h-[1800px] lg:h-[1200px]">
+        <div className="absolute left-0 top-0 aspect-[9/4] h-[1200px] min-w-full md:h-[1800px] lg:h-[1200px]">
           <ImageSlot
             slot="hw-hero"
             lcp={heroIsLcp}

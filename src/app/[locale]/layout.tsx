@@ -16,8 +16,9 @@ import '../globals.css';
 /** W188 (revisits W149): `optional`, not `swap` — the browser never swaps the web font in after
  *  first paint, so its arrival cannot rewrap a headline and shift layout (under `swap` the
  *  Turkish Hire Workers h1 went from two lines to three, CLS 0.116). Both subsets stay declared,
- *  so next/font still preloads both files; on a slow first visit the page view keeps the
- *  size-adjusted fallback. */
+ *  so next/font still preloads both files; on a cold slow first visit the DOCUMENT keeps
+ *  next/font's size-adjusted fallback for the whole visit (client-side navigations included)
+ *  until the next full page load (W188/W189). */
 const archivo = Archivo({
   subsets: ['latin', 'latin-ext'],
   weight: ['500', '600', '700', '800'],
