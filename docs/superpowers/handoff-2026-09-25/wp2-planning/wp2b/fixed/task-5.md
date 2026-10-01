@@ -13,10 +13,10 @@
 - Page record (both bundles): `bundle.pages.partner = { titleId: 'partner.222', descriptionId: 'partner.223', ogImage: null, canonical: null, robots: 'index', jsonLd: ['breadcrumb', 'faq'] }` → `buildMetadata` uses the package's own SEO strings; **no `sys.seo.partner.*`** (W23). OG image `/og/{locale}/partner.png` (CDN-cached, W123).
 - `CTA_BY_PATHNAME['/partner-with-us']` (`src/design/chrome/ctas.ts`) = primary `partner.017` + tail `partner.018` → `{ pathname: '/partner-with-us', hash: '#tracks' }`, secondary `HIRE` (`home.002` → `/hire-workers`). **This page must render `id="tracks"`** (W17/W152/W158: `gate:launch`'s anchor sweep lists `CTA_BY_PATHNAME['/partner-with-us'].primary … missing id="tracks"` on both locales until this task lands). No edit to `ctas.ts` (W121).
 - `src/lib/seo/routes.ts` `UNBUILT_PATHNAMES` contains `'/partner-with-us'` (between `'/hiring-cost-calculator'` and `'/work-permit'` at WP2a close) — this task deletes it in the commit that adds `page.tsx` (W20; `unbuilt.test.ts` fails in either direction otherwise). `e2e/routes.ts` `GATE_ROUTE_TABLE` has no partner row — this task appends the two locale paths (W21) and nowhere else.
-- Settings used (LOCAL bundles): `phone '+905011240340'`, `phoneDisplay '+90 501 124 03 40'`, `email 'info@jobsadmire.com'`, `whatsappNumber '905011240340'`, `turnstileSiteKey null` (overlaid from `NEXT_PUBLIC_TURNSTILE_SITE_KEY` only where set), `storeLinks { android: <Play URL>, ios: null }`. (`settings.partnershipsPhone` `+905533832549` exists — the Contact page's partner line — but this page's design uses the main line everywhere; owner note in the ledger, not a code choice here.)
+- Settings used (LOCAL bundles): `phone '+905011240340'`, `phoneDisplay '+90 501 124 03 40'`, `email 'info@jobsadmire.com'`, `whatsappNumber '905011240340'`, `turnstileSiteKey null` (overlaid from `NEXT_PUBLIC_TURNSTILE_SITE_KEY` only where set), `storeLinks { android: <Play URL>, ios: null }`. `settings.partnershipsPhone` `+905533832549` (`string | null` in `SettingsSchema`, `contract/website-bundle.v1.ts`; the bundle carries no display string for it) is the **partner line** (W176): every `tel:` on this page — the FAQ ask card's Call row, the closing band's phone, the sticky bar's Call, the forms' fallback panel — reads it, with the main line (`phone`/`phoneDisplay`) as the fallback while it is `null`, resolved once in `page.tsx` by `partnerLineOf` (`_lib/partner-line.ts`, Cycle 6). The design shows the main line everywhere; the owner question "which number do partners call?" is carried on the ledger line, and the Contact page's Agencies card (T7) reads the same line.
 - Metrics (`getCollection(bundle, 'metrics')` / `metricValues`): `countries '13'`, `placed '470+'`, `replySlaHours '4'`, `homepageReplyHours '24'`. W87 already re-authored `partner.059` (`… {replySlaHours} working hours`) and `partner.077` (`Shortlists from {countries} countries`); `partner.078/087/140/159/186` carry `{homepageReplyHours}` / `{replySlaHours}` / `{placed}`. Every visible package string goes through `makeTf` (D17). No metric exists for the design's "5+ HR agencies", "20+ sourcing partners", "25+ partner companies" → not rendered (W1).
 - Collections: `sourceCountries` — 13 rows, collection order `PK, NP, IN, UZ, KG, TM, PH, ID, RU, ML, SN, CM, LK`, locale-resolved `name`; `countries` — 64 rows (all 13 source countries and `TR` included), upper-case ISO-2 `code`, locale-resolved `name` (W25: data, not copy — no `sys.form.countries` list exists or is written).
-- Operations catalog (`P/operations-door-contract-as-built.md` v1.0 + `A/produces-final.md` § Task 8 v1.1): `hire` — `name*` ≤120, `company*` ≤200, `email*` ≤254, `phone*` ≤40 (≥ 8 digits), `country` iso2, `iAm` ∈ `direct_employer|hr_agency`, `sector`, `roleNeeded`, `headcount`, `startWhen`, `message` ≤5000, **v1.1** `city` ≤120; `partner` — `name*`, `company*`, `email*`, `phone*`, `country*` iso2, `candidatesPerYear` ≤20, `trades` ≤500, `licence` ≤200, `message` ≤5000, **v1.1** `city` ≤120 and `track` ∈ `sourcing|institute` (inbox tag `[website:partner:<track>]`; classification `SOURCING_PARTNER` for both). An unknown key is dropped silently, so the mappers copy these names exactly.
+- Operations catalog (`P/operations-door-contract-as-built.md` v1.0 + `A/produces-final.md` § Task 8 / § "Task 8 — as built" v1.1 — live on Operations `main` 47a2160, wire names confirmed): `hire` — `name*` ≤120, `company*` ≤200, `email*` ≤254, `phone*` ≤40 (≥ 8 digits), `country` iso2, `iAm` ∈ `direct_employer|hr_agency`, `sector`, `roleNeeded`, `headcount`, `startWhen`, `message` ≤5000, **v1.1** `city` ≤120; `partner` — `name*`, `company*`, `email*`, `phone*`, `country*` iso2, `candidatesPerYear` ≤20, `trades` ≤500, `licence` ≤200, `message` ≤5000, **v1.1** `city` ≤120 and `track` ∈ `sourcing|institute` (inbox tag `[website:partner:<track>]`; classification `SOURCING_PARTNER` for both). An unknown key is dropped silently, so the mappers copy these names exactly.
 - The design's breakpoints: its generic `≤ 900 px` rule collapses every inline grid to one column → this repo's `lg:` (901 px); its `≤ 700 px` rules → `max-md:` / `md:` (701 px, `--breakpoint-md`, D19 — breakpoints are never scaled). The header is `sticky top-0`, so every in-page anchor target carries a `scroll-mt-*`.
 - `.container-site` is unlayered CSS (`max-width`, `margin-inline`, `padding-inline`): a `max-w-*`/`mx-*`/`px-*` utility on the same element never applies (T13 finding) — every narrower measure below sits on an inner element.
 
@@ -35,7 +35,7 @@
 12. The sticky bar is the foundation's navy bar (≥ 901 px only, like the design's ≤ 700 px hide plus the mobile bottom bar): Call (`secondary` face), WhatsApp (`success`), "Choose your partnership →" (`primary`). The design hides it only while `#tracks` sits in the 35–75 % viewport band; the foundation's `isBarVisible` hides a bar for good once its target nears or passes, and `#tracks` is ~1,000 px down, so `hideNearId="tracks"` would never show it — the bar keys on the closing band (`hideNearId="closing"`, which repeats the Apply/Call pair). It therefore rides over the forms as it does in the design, and `html` gains `scroll-padding-bottom: var(--sticky-cta-h, 0px)` so keyboard focus and scrolled-to fields always land above it (D20, WCAG 2.4.11).
 13. The FAQ ask card shows at every width (the design hides it ≤ 700 px — the block has no per-width prop) with WhatsApp / Call / E-mail rows (W83; the e-mail row's label is `partner.117`, the page's own "E-posta"/"Email" — the design's ask-card label has no id and W83's row takes one); the accordion is the foundation `Accordion` (`h3` triggers, first pair open).
 14. The chain's ≤ 700 px vertical rail with dots → stacked cards, the `→` arrows from 901 px; the chain sentence's old-site link (`/hire-workers-in-turkey`) → the typed `/hire-workers` route (`partner.048` + `partner.002` + `partner.049`, the one split the package makes around its link, W23).
-15. Chrome: the header CTA is the W17 table's (`partner.017`/`018` → `#tracks`, secondary Hire Workers); the portal block shows the Android badge only (W8) through `StoreBadges` (`hire.240` — never `partner.162`/`163`, W7); the two portal screenshots are named placeholders; the hero WhatsApp CTA wears the `success` face at every width (the design turns it solid green ≤ 700 px — a face is a variant, never caller colour classes, W122/W127).
+15. Chrome: the header CTA is the W17 table's (`partner.017`/`018` → `#tracks`, secondary Hire Workers); the portal block shows the Android badge only (W8) through `StoreBadges` (`hire.240` — never `partner.162`/`163`, W7); the two portal screenshots are named placeholders; the hero WhatsApp CTA wears the `success` face at every width (the design turns it solid green ≤ 700 px — a face is a variant, never caller colour classes, W122/W127); every `tel:` anchor and the closing band's visible number are the partner line (`settings.partnershipsPhone`, the main line as fallback, W176) where the design shows the main line.
 
 **Files:**
 
@@ -48,10 +48,12 @@ Create
 - `src/app/[locale]/(site)/partner-with-us/_lib/forms.ts`
 - `src/app/[locale]/(site)/partner-with-us/_lib/country-options.ts`
 - `src/app/[locale]/(site)/partner-with-us/_lib/logos.ts`
+- `src/app/[locale]/(site)/partner-with-us/_lib/partner-line.ts` (W176 — Cycle 6)
 - `src/app/[locale]/(site)/partner-with-us/_lib/__tests__/tracks.test.ts`
 - `src/app/[locale]/(site)/partner-with-us/_lib/__tests__/content.test.ts`
 - `src/app/[locale]/(site)/partner-with-us/_lib/__tests__/forms.test.ts`
 - `src/app/[locale]/(site)/partner-with-us/_lib/__tests__/country-options.test.ts`
+- `src/app/[locale]/(site)/partner-with-us/_lib/__tests__/partner-line.test.ts`
 - `src/app/[locale]/(site)/partner-with-us/_components/icons.tsx` (server-safe, no directive)
 - `src/app/[locale]/(site)/partner-with-us/_components/DeclarationCheckbox.tsx` (`'use client'`)
 - `src/app/[locale]/(site)/partner-with-us/_components/TrackChooser.tsx` (`'use client'`)
@@ -76,7 +78,7 @@ Modify
 - `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — the T5 row of the `## Ledger` table (Cycle 7)
 
 Test
-- Vitest: `_lib/__tests__/{tracks,content,forms,country-options}.test.ts`, `__tests__/actions.test.ts`, `_components/__tests__/{DeclarationCheckbox,TrackChooser}.test.tsx`, `_sections/__tests__/{sections,tracks}.test.tsx`
+- Vitest: `_lib/__tests__/{tracks,content,forms,country-options,partner-line}.test.ts`, `__tests__/actions.test.ts`, `_components/__tests__/{DeclarationCheckbox,TrackChooser}.test.tsx`, `_sections/__tests__/{sections,tracks}.test.tsx`
 - Playwright (both projects, in the gate only): `e2e/pages/partner.spec.ts`
 - Existing, must stay green untouched: `src/design/__tests__/class-collisions.test.ts` (W155 — scans `src/app/**`, so every class string below is part of the gate), `src/design/__tests__/client-imports.test.ts` (W147/W156/W158), `src/design/blocks/__tests__/rsc-imports.test.ts` (W125/W130/W134), `src/i18n/client-messages.test.ts` (W148), `src/messages/{messages,voice}.test.ts` (W154), `src/lib/seo/unbuilt.test.ts` (W20), `scripts/gate-routes.test.ts` (W21), `e2e/{routing,seo,a11y,width-sweep,chrome,headers,thank-you}.spec.ts`
 
@@ -88,7 +90,7 @@ Consumes (exact names, verified in the code at `7bacd7e`; import paths as writte
 - Chrome/analytics: `StickyCtaBar`, `type StickyCta` (`{ label, href: string | Exclude<Href, string>, variant?, external? }`) from `@/design/chrome/StickyCtaBar` (props `message, ctas, showAfterPx?, hideNearId?, live?`; renders `null` while hidden; wrapper `data-testid="sticky-cta"`, `hidden … lg:block`; publishes `--sticky-cta-h` on `<html>`; contact hrefs through `ContactCta` `page_cta`, W81); `CheckIcon`, `WhatsAppIcon` (`{ size?, className? }`) from `@/design/chrome/icons`; `ContactLink` from `@/analytics/ContactLink` (`'use client'`; `{ href, placement, …anchor props }` minus `onClick`/`onAuxClick`); `track`, `PARAM_ENUMS` from `@/analytics/track` (`PARAM_ENUMS.track = ['sourcing', 'institute']`, `ALLOWED_PARAMS.partner_track_select = ['page', 'locale', 'track']`).
 - Blocks (by path, `@/design/blocks/<Name>`): `Breadcrumbs` (`{ locale, items: { name, href }[], tone?: 'light' | 'dark', className? }`, emits `BreadcrumbList`, nav named `sys.nav.breadcrumbs`); `FaqBlock` + `type FaqItem` (`{ bundle, locale, items, id?, eyebrowId?, headingId?, bodyId?, askCard?, singleOpen?, openFirst?, headingLevel? }`, emits `FAQPage`; `FaqAskCard = { titleId, bodyId, whatsappNumber, whatsappText, whatsappLabelId, phone?, callLabelId?, email?, emailLabelId?, subject? }`, W83); `ProcessSteps` + `type ProcessStep` (`{ n, titleId, bodyId, when? }`; props `bundle, locale, steps, variant?: 'cards' | 'plain', id?, headingLevel?: 3 | 4`); `ClosingCtaBand` (`{ bundle, locale, titleId, bodyId?, primary: Cta, secondary?: Cta, extra?, ticks?, tone?: 'navy' | 'gradient' | 'green', id? }` — `ticks` render `md:hidden`; the root carries `id`); `ContactCta` (`{ placement: 'page_cta' | 'office_card', href, variant?, size?, external?, className?, children }`); `ImageSlot` (`{ slot, lcp?, src?, alt, width, height, sizes?, className?, priority? }` — owns its box, `className` only for a radius/border, W129); `StoreBadges` (`{ bundle, locale, android, ios?, tone? }`); `LogoMarquee` + `type Logo` (`{ logos: Logo[], durationSec?, className? }` → `null` for `[]`).
 - Primitives (by path): `Button` (`variant` ∈ `primary|secondary|ghost|danger|inverse|success|inverse-dark|nav`, `size`, `href`, `external`) from `@/design/primitives/Button`; `type ButtonVariant` from the same module; `Eyebrow` from `@/design/primitives/Eyebrow`; `Section` (`{ tone: 'light'|'dark'|'pale'|'band', id?, className?, children }` — tones set `py-16` / `py-10` and the background colour) from `@/design/primitives/Section`.
-- i18n/SEO/contact: `routing`, `type Locale` from `@/i18n/routing`; `Link` from `@/i18n/navigation`; `buildMetadata` from `@/lib/seo/metadata` (`{ locale, href, bundle, pageKey, fallbackTitle, fallbackDescription }`); `waLink`, `telLink`, `mailLink` from `@/lib/contact`; `renderWithIntl` from `@/test/render`.
+- i18n/SEO/contact: `routing`, `type Locale` from `@/i18n/routing`; `Link` from `@/i18n/navigation`; `buildMetadata` from `@/lib/seo/metadata` (`{ locale, href, bundle, pageKey, fallbackTitle, fallbackDescription }`); `waLink`, `telLink`, `mailLink` from `@/lib/contact`; `renderWithIntl` from `@/test/render`; the partner line's source `settings.partnershipsPhone` (`string | null`, E.164 — `SettingsSchema` in `contract/website-bundle.v1.ts`; the real LOCAL bundles carry `+905533832549`, and no display companion field exists — Foundation gaps note 6).
 - Messages consumed, not added: `sys.form.labels.{city,candidatesPerYear}`, `sys.form.placeholders.*`, `sys.form.hints.{optional,phone}`, `sys.form.errors.{required,consent}`, `sys.form.consent.label`, `sys.form.fallback.*`, `sys.nav.breadcrumbs`, `sys.thankYou.forms.{hire,partner}` (the thank-you page's).
 - Gate tooling: `npm run gate` / `gate:launch` (`scripts/gate.sh`; the launch profile's `scripts/launch/dead-targets.ts` prints `… (/partner-with-us#tracks): <locale> <path> → missing id="tracks" …` while the anchor is absent), `npm run js-size` (`scripts/js-size.mjs`), Playwright projects `mobile` (Pixel 7, 412 px) and `desktop` (1440×900).
 
@@ -96,17 +98,18 @@ Produces (for T14's instance map, T15's launch sweep and later page tasks that c
 - DOM: `section#tracks` (the header CTA, the hero, the sticky bar and the closing band land there); `#track-detail`; the radios `#track-hr`, `#track-sourcing`, `#track-institute` (a `#track-<key>` deep link preselects that card — for per-track campaigns); the form cards `#apply-hr`, `#apply-agent`, `#apply-inst` (the design's ids); `form[data-testid="partner-form-hr"]` (`data-form-key="hire"`, `idScope` `partner-hr`), `form[data-testid="partner-form-sourcing"]` (`partner`, `partner-sourcing`), `form[data-testid="partner-form-institute"]` (`partner`, `partner-institute`) — one mounted at a time; `#closing` (the band); one `data-lcp-slot` (the h1); placeholders `partner-portal-screen`, `partner-portal-mobile`.
 - Wire (T14's I4 rows 6–8): HR agency → `hire` · `name, company, email, phone, country: 'TR', iAm: 'hr_agency', city` (required on this page), `message?`; sourcing partner → `partner` · `name, company, email, phone, country` (ISO-2), `track: 'sourcing', licence` (required on this page), `candidatesPerYear?, trades?`; training institute → `partner` · `name, company, email, phone, country, track: 'institute', city?, candidatesPerYear?, trades?`. Consent is a checkbox on all three (W79); the sourcing form also requires the declaration tick, which is never sent (not a catalog field).
 - Analytics: `partner_track_select` wired (the chooser, `sourcing | institute` only).
-- `html { scroll-padding-bottom: var(--sticky-cta-h, 0px) }` — every later page that mounts a `StickyCtaBar` inherits it.
+- `html { scroll-padding-bottom: var(--sticky-cta-h, 0px) }` — every later page that mounts a `StickyCtaBar` inherits it; it lands after T2–T4's pixel proofs, so T15 re-proves it (W178).
+- The partner line (W176): every `tel:` anchor on this page is `tel:<settings.partnershipsPhone ?? settings.phone>` (the sticky bar's, the FAQ ask card's, the closing band's, the three forms' fallback panels'), the closing band's visible number is its `+90 5xx xxx xx xx` grouping; the Contact page's Agencies card (T7) reads the same setting.
 
 **Rulings applied:**
 - W1/D17 — the network card's two rows and every `{metric}` string read the `metrics` collection (`metricValues`/`makeTf`); the unsigned "5+/20+/25+" figures render nothing.
-- W3/W16 — HR track → `hire` + `iAm: 'hr_agency'` + `country: 'TR'`; sourcing/institute → `partner` + `track`; ISO-2 country select; `city` rides as the catalog v1.1 field; the door's required fields win over the design (`country` on every form, `licence` on sourcing).
+- W3/W16 — HR track → `hire` + `iAm: 'hr_agency'` + `country: 'TR'`; sourcing/institute → `partner` + `track`; ISO-2 country select; `city` rides as the catalog v1.1 field; the door's required fields win over the design (`country` on every form — the HR track's `TR` comes from the mapper); `licence` is required on the sourcing form because the design requires it (the door has it optional, ≤ 200).
 - W6 — the logo band (and its "25+" caption) renders nothing without consented logos; the wrapping section is not rendered either (W97's rule).
 - W7/W8 — Android badge only through `StoreBadges` (`hire.240`); `partner.162`/`163` never read.
 - W9/W23/W54 — three `sys.partner.*` keys for id-less copy (the two WhatsApp prefills, the mail subject); no `sys.seo.partner.*`; the only composed package sentence is `partner.048` + `partner.002` + `partner.049`, the split the package makes around its link.
 - W10 — the design's ≤ 700 px show/hide pairs (`partner.024`/`025`, `062`/`063`, `041`/`042`, `043`/`044`, the wayfinders, the jump links, the phone mock) are CSS on server-rendered markup (`max-md:hidden` / `md:hidden`), never conditional rendering.
 - W12/W26/W67/W68 — `partner_track_select { page, locale, track }` fires for `sourcing | institute` only (the HR default and a deep link fire nothing; `track()` drops anything else); every `tel:`/`wa.me`/`mailto:` anchor is a `ContactCta`/`ContactLink` with `placement: 'page_cta'`.
-- W13 amended/W96/W120/W136 — `TrackChooser` stays a plain client component (not `next/dynamic`, not `LazyIsland`) with its own gzipped chunk ≤ 6,144 B, measured in Cycle 7; the ledger's JS figure is `js-size`'s (ceiling 204,800 B, lazy line 194,560 B).
+- W13 amended/W96/W120/W136 — `TrackChooser` stays a plain client component (not `next/dynamic`, not `LazyIsland`) with its own gzipped chunk ≤ 6,144 B, measured in Cycle 7; the ledger's JS figure is `js-size`'s (ceiling 204,800 B; the controller's binding preview line 194,560 B; this task's local stop-and-report trigger 191,724 B, W162).
 - W14 — no hot-linked images: icons are inline SVG, the store badge is `StoreBadges`, the portal shots are `ImageSlot` placeholders.
 - W17/W121/W152/W158 — no `ctas.ts` edit; the page renders `id="tracks"` in both locales; Cycle 7 proves the launch anchor sweep no longer lists it.
 - W18/W81 — the page mounts `StickyCtaBar` with the design's Call / WhatsApp / `#tracks` CTAs (contact hrefs tracked by the bar itself), `hideNearId="closing"` (delta 12), `live`.
@@ -133,13 +136,17 @@ Produces (for T14's instance map, T15's launch sweep and later page tasks that c
 - W125/W130/W134/W147/W156 — primitives, blocks, chrome pieces and islands by module path everywhere, type-only imports included; server files never import `@/analytics/useContactClick`; `client-imports.test.ts` and `rsc-imports.test.ts` stay green.
 - W126 — one build + one start + one gate as the proof (Cycle 7).
 - W128 — not applicable (no green band, no `PostCard`). W129 — `ImageSlot` gets no width/height/aspect/object class: the laptop shot sits in its frame, the phone shot in a sized wrapper, only `rounded-[17px]` is passed. W131/W133 — not applicable.
-- W132 — `LazyIsland` is not used: the one island is W96's exception, and viewport loading would not cut the forms kernel (≈ 7.5 KB gz) from the first-load graph of a page whose forms ARE the content (projection in Cycle 7).
+- W132 — `LazyIsland` is not used on the main path: the one island is W96's exception, and viewport loading would not cut the forms kernel (≈ 7.5 KB gz) from the first-load graph of a page whose forms ARE the content (projection in Cycle 7); only the conditional Cycle 8 mounts the sticky bar through it (`{ load, props, fallback, rootMargin }`).
 - W135/W145/W146 — a localhost run wears the production face (`lighthouserc.local.json` = production: DevTools throttling, three runs, median — LCP ≤ 2,500 ms and performance ≥ 0.95 are errors); GTM stays dark (no `NEXT_PUBLIC_GTM_ID` locally).
 - W137/W139/W140 — no preview run by the implementer (never push); the controller's binding preview run uses `--settings.extraHeaders`.
 - W148 — no `CLIENT_SYS` change: no client module reads `sys.partner` (the island and the forms receive resolved strings; `DeclarationCheckbox` reads `sys.form` through the kernel's hooks, already listed).
 - W150 — no D17 dated badge on this page → no `revalidate` export (SSG like every static page).
 - W154 — no `sys.partner.*` string speaks as "we"/"biz" (the two prefills are the visitor's first-person singular, the subject is a noun phrase; `voice.test.ts` scans all of `sys.*`).
 - W157/W160 — security headers come from the middleware; nothing for the page to do. W161 — no `url`-typed field is sent.
+- W162 — the stop-and-report trigger is the LOCAL `js-size` figure **191,724 B** (194,560 B minus the ≈ 2,836 B the preview's `npm run js-size` runs above a local build, 176,132 → 178,968 B at 02ace58); the controller's binding preview decides at 194,560 B. Cycle 7 reads both routes against it; at or above it the conditional Cycle 8 (the page's one pre-ruled lever, the sticky bar) runs before T6 starts, and a route still at or above it afterwards stops and reports — nothing else is lazy-loaded here (W163: the forms are the page's content and the CTA targets, never lazy).
+- W165 — the conditional `LazyStickyBar` (Cycle 8) mounts the bar through `LazyIsland` with `rootMargin: '100000px 0px 200px 0px'` (T3's pattern), so the bar loads whenever the visitor is at or below its marker — a `#track-<key>` or `#faq` deep link, a hash reload and scroll restoration included.
+- W176 — the partner line is `settings.partnershipsPhone` with the main line as fallback, resolved once by `partnerLineOf` (`_lib/partner-line.ts`, Cycle 6) and passed to the FAQ ask card, the closing band, the sticky bar and the forms' fallback panels; the Contact page's Agencies card reads the same line (T7); the owner question "which number do partners call?" rides on the ledger line.
+- W178 — the ledger row notes that this task's global `html { scroll-padding-bottom }` lands after T2–T4's pixel proofs and is re-proven at T15.
 - Final-review page rule (§6) — exactly one `Breadcrumbs` and one `FaqBlock` per page (one `BreadcrumbList`, one `FAQPage`, one landmark label each); the site-wide `Organization`/`EmploymentAgency` node is not repeated (the design's per-page `EmploymentAgency` block is dropped).
 - D11/D13/D19/D20/D23/D26/D27 and R15/R22/R35/R56 — fallback panel, thank-you navigation, unscaled breakpoints, accessibility over pixels, no fixtures, named LCP slot, Fable review (not a pixel page), the chrome renders its own canonical ids (this page reads `partner.002`, `008`, `016` only as its own link/crumb labels), same-tab contact anchors except `wa.me` (`target="_blank"` + `noopener`), `page` from `next/navigation`, no `src/content/local/*` import from `src/**` (tests read the bundles with `readFileSync`).
 
@@ -3381,7 +3388,8 @@ export function SourcingPartnerForm({
 /** Training institute → `partner` + `track: 'institute'` (W16): the design's one "City, country"
  *  box becomes an optional `city` (catalog v1.1, sys label) + the required ISO-2 select;
  *  `candidatesPerYear` beside `trades`; no licence, no declaration. Blank placeholders where the
- *  kernel's Turkish examples would mislead an institute abroad (name, city, phone). */
+ *  kernel's Turkish examples would mislead an institute abroad (the institute name — the
+ *  `company` field —, `city`, `phone`; the contact person's `name` keeps its placeholder). */
 export function InstituteForm({
   locale,
   tf,
@@ -3511,7 +3519,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 ---
 
-#### Cycle 6 — the page, the route wiring (W20/W21), the sticky bar and its scroll padding, the page e2e contract, the SEO/analytics/PRD/architecture docs
+#### Cycle 6 — the page, the partner line (W176), the route wiring (W20/W21), the sticky bar and its scroll padding, the page e2e contract, the SEO/analytics/PRD/architecture docs
 
 - [ ] **Step 1: Write the failing test**
 
@@ -3526,6 +3534,58 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 (The route-driven page-contract loop in `e2e/routing.spec.ts`, the canonical/hreflang/sitemap cases in `e2e/seo.spec.ts`, axe in `e2e/a11y.spec.ts` and the width sweep in `e2e/width-sweep.spec.ts` pick the route up from there — no edit to those files.)
 
+`src/app/[locale]/(site)/partner-with-us/_lib/__tests__/partner-line.test.ts` (W176 — the partner line is `settings.partnershipsPhone` with the main line as the fallback; the bundle has no display string for it):
+
+```ts
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import { describe, expect, it } from 'vitest';
+import { BundleSchema } from '../../../../../../../contract/website-bundle.v1';
+import { displayPhone, partnerLineOf } from '../partner-line';
+
+const load = (locale: 'tr' | 'en') =>
+  BundleSchema.parse(
+    JSON.parse(
+      readFileSync(join(process.cwd(), 'src', 'content', 'local', `bundle.${locale}.json`), 'utf8'),
+    ),
+  );
+
+const MAIN = { phone: '+905011240340', phoneDisplay: '+90 501 124 03 40' };
+
+describe('partnerLineOf (W176)', () => {
+  it('is settings.partnershipsPhone, grouped like the main line', () => {
+    expect(partnerLineOf({ ...MAIN, partnershipsPhone: '+905533832549' })).toEqual({
+      phone: '+905533832549',
+      phoneDisplay: '+90 553 383 25 49',
+    });
+  });
+
+  it('falls back to the main line — E.164 and display — while the partner line is null', () => {
+    expect(partnerLineOf({ ...MAIN, partnershipsPhone: null })).toEqual(MAIN);
+  });
+
+  it('reads the real LOCAL bundles: +905533832549 shown as +90 553 383 25 49, in both locales', () => {
+    for (const locale of ['tr', 'en'] as const) {
+      expect(partnerLineOf(load(locale).settings)).toEqual({
+        phone: '+905533832549',
+        phoneDisplay: '+90 553 383 25 49',
+      });
+    }
+  });
+});
+
+describe('displayPhone', () => {
+  it('groups a Turkish E.164 number as +90 5xx xxx xx xx — the grouping settings.phoneDisplay uses', () => {
+    expect(displayPhone('+905011240340')).toBe(MAIN.phoneDisplay);
+  });
+
+  it('renders a number it cannot group exactly as stored', () => {
+    expect(displayPhone('+923001234567')).toBe('+923001234567');
+    expect(displayPhone('+90553')).toBe('+90553');
+  });
+});
+```
+
 `e2e/pages/partner.spec.ts` (runs under both Playwright projects inside the Cycle 7 gate; it needs no door and no `OPS_API_URL` — W92):
 
 ```ts
@@ -3535,9 +3595,10 @@ import { test, expect, type Locator, type Page } from '@playwright/test';
 const ROUTES = { tr: '/ortak-olun', en: '/en/partner-with-us' } as const;
 /** Canonicals, hreflang and og:image are built from SITE_URL, never the host this run hits. */
 const ORIGIN = 'https://www.jobsadmire.com';
-/** `bundle.settings` in the Phase A LOCAL bundle. */
+/** `bundle.settings` in the Phase A LOCAL bundle: the WhatsApp number is the main line's; every
+ *  `tel:` on this page is the partner line (W176) — `settings.partnershipsPhone`. */
 const WA = 'https://wa.me/905011240340';
-const TEL = 'tel:+905011240340';
+const TEL = 'tel:+905533832549';
 const isMobile = () => test.info().project.name === 'mobile';
 
 /** W92: only `staging` and production carry the Operations door. Every other face — this task's
@@ -3920,12 +3981,38 @@ test('desktop: the sticky bar carries Call / WhatsApp / #tracks, tracks the call
 No server may start before Cycle 7 (W126). The unit-level red, and proof that the spec compiles and is collected:
 
 ```bash
-NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1 src/lib/seo/unbuilt.test.ts
+NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1 src/lib/seo/unbuilt.test.ts partner-with-us/_lib/__tests__/partner-line
 npx playwright test e2e/pages/partner.spec.ts --list
 ```
-Expected: `unbuilt.test.ts` FAILS — `'/partner-with-us'` has no `page.tsx` yet but is no longer in the set (`expected [...] to deeply equal [..., '/partner-with-us', ...]`); the listing prints `Total: 30 tests in 1 file` (15 cases × the `mobile` and `desktop` projects). Against the current tree every page case would fail on its first `goto` (`/ortak-olun` answers 404 through the `[...rest]` catch-all); the spec executes exactly once, green, in Cycle 7's gate.
+Expected: `partner-line.test.ts` FAILS — `Failed to resolve import "../partner-line"`; `unbuilt.test.ts` FAILS — `'/partner-with-us'` has no `page.tsx` yet but is no longer in the set (`expected [...] to deeply equal [..., '/partner-with-us', ...]`); the listing prints `Total: 30 tests in 1 file` (15 cases × the `mobile` and `desktop` projects). Against the current tree every page case would fail on its first `goto` (`/ortak-olun` answers 404 through the `[...rest]` catch-all); the spec executes exactly once, green, in Cycle 7's gate.
 
 - [ ] **Step 3: Implement**
+
+`src/app/[locale]/(site)/partner-with-us/_lib/partner-line.ts`:
+
+```ts
+import type { Bundle } from '../../../../../../contract/website-bundle.v1';
+
+type PartnerLineSettings = Pick<Bundle['settings'], 'phone' | 'phoneDisplay' | 'partnershipsPhone'>;
+
+/** The one number this page offers to call: E.164 for the `tel:` href, grouped for the eye. */
+export type PartnerLine = { phone: string; phoneDisplay: string };
+
+/** `settings.phoneDisplay` exists for the main line only. A Turkish E.164 number (+90 and ten
+ *  digits) gets the same "+90 5xx xxx xx xx" grouping; anything else renders as stored. */
+export function displayPhone(e164: string): string {
+  const m = /^\+90(\d{3})(\d{3})(\d{2})(\d{2})$/.exec(e164);
+  return m ? `+90 ${m[1]} ${m[2]} ${m[3]} ${m[4]}` : e164;
+}
+
+/** W176: the partner line is `settings.partnershipsPhone`; while it is `null` the main line is
+ *  the fallback, so the page never renders a Call CTA without a number. */
+export function partnerLineOf(settings: PartnerLineSettings): PartnerLine {
+  const { partnershipsPhone } = settings;
+  if (!partnershipsPhone) return { phone: settings.phone, phoneDisplay: settings.phoneDisplay };
+  return { phone: partnershipsPhone, phoneDisplay: displayPhone(partnershipsPhone) };
+}
+```
 
 `src/app/[locale]/(site)/partner-with-us/page.tsx`:
 
@@ -3944,6 +4031,7 @@ import { buildMetadata } from '@/lib/seo/metadata';
 import { SEO_IDS, STICKY_IDS } from './_lib/content';
 import { countryOptions } from './_lib/country-options';
 import { PARTNER_LOGOS } from './_lib/logos';
+import { partnerLineOf } from './_lib/partner-line';
 import type { TrackKey } from './_lib/tracks';
 import { Chain } from './_sections/Chain';
 import { CLOSING_ID, Closing } from './_sections/Closing';
@@ -3997,12 +4085,15 @@ export default async function PartnerWithUs({ params }: { params: Promise<{ loca
   const [bundle, sys] = await Promise.all([getBundle(locale), getTranslations('sys')]);
   const tf = makeTf(bundle, locale);
   const { settings } = bundle;
+  // W176: every tel: on this page is the partner line — settings.partnershipsPhone, the main line
+  // as the fallback — resolved once; the closing band shows its grouped display form.
+  const line = partnerLineOf(settings);
   // W95: the page's own wa.me links (hero, sticky bar) carry only this static copy.
   const whatsappHref = waLink(settings.whatsappNumber, sys('partner.whatsapp.prefill'));
   const door: FormDoor = {
     turnstileSiteKey: settings.turnstileSiteKey,
     whatsappNumber: settings.whatsappNumber,
-    contact: { phone: settings.phone, phoneDisplay: settings.phoneDisplay, email: settings.email },
+    contact: { phone: line.phone, phoneDisplay: line.phoneDisplay, email: settings.email },
   };
   // W3/W25: the ISO-2 select — the 13 source countries first, the other rows by locale name.
   const countries = countryOptions(
@@ -4047,7 +4138,7 @@ export default async function PartnerWithUs({ params }: { params: Promise<{ loca
         tf={tf}
         whatsappNumber={settings.whatsappNumber}
         whatsappText={sys('partner.faq.whatsappText')}
-        phone={settings.phone}
+        phone={line.phone}
         email={settings.email}
         emailSubject={sys('partner.faq.emailSubject')}
       />
@@ -4055,8 +4146,8 @@ export default async function PartnerWithUs({ params }: { params: Promise<{ loca
         bundle={bundle}
         locale={locale}
         tf={tf}
-        phone={settings.phone}
-        phoneDisplay={settings.phoneDisplay}
+        phone={line.phone}
+        phoneDisplay={line.phoneDisplay}
         email={settings.email}
       />
       {/* W18/W81: the design's bar — Call / WhatsApp / "Choose your partnership" (contact hrefs
@@ -4066,7 +4157,7 @@ export default async function PartnerWithUs({ params }: { params: Promise<{ loca
       <StickyCtaBar
         message={tf(STICKY_IDS.message)}
         ctas={[
-          { label: tf(STICKY_IDS.call), href: telLink(settings.phone), variant: 'secondary' },
+          { label: tf(STICKY_IDS.call), href: telLink(line.phone), variant: 'secondary' },
           { label: tf(STICKY_IDS.whatsapp), href: whatsappHref, variant: 'success', external: true },
           { label: tf(STICKY_IDS.tracks), href: '#tracks' },
         ]}
@@ -4098,12 +4189,12 @@ export default async function PartnerWithUs({ params }: { params: Promise<{ loca
 2. Under `### Page instrumentation (WP2b)`, append after the last bullet:
 
 ```markdown
-- **Partner With Us (`/ortak-olun`, `/en/partner-with-us`, T5):** `partner_track_select` from the track chooser (`src/app/[locale]/(site)/partner-with-us/_components/TrackChooser.tsx`) when the visitor picks the sourcing-partner or institute card — `track` ∈ `sourcing | institute` (W26/W67), `page` = the real pathname (R35); the HR-agency card is the default and a `#track-<key>` deep link preselects silently, so neither fires, and the arrow keys move the radio group (one event per partner track reached). `whatsapp_click` (`page_cta`) from the hero's "WhatsApp us", the sticky bar and the FAQ ask card (static `sys.partner.*` prefills only, W95); `call_click` (`page_cta`) from the sticky bar, the ask card and the closing band's phone; `email_click` (`page_cta`) from the ask card's e-mail row (W83) and the closing legal line. The three forms' fallback panels fire the contact events with `placement: 'form_fallback'`. The page fires no lead event itself: `generate_lead`/`conversion` for `form_key: 'hire'` (the HR-agency track, W3) and `'partner'` (sourcing, institute) come from `ConversionPing` on `/tesekkurler`. The header CTA, the hero/sticky/closing `#tracks` CTAs and the jump links are same-page anchors and fire nothing.
+- **Partner With Us (`/ortak-olun`, `/en/partner-with-us`, T5):** `partner_track_select` from the track chooser (`src/app/[locale]/(site)/partner-with-us/_components/TrackChooser.tsx`) when the visitor picks the sourcing-partner or institute card — `track` ∈ `sourcing | institute` (W26/W67), `page` = the real pathname (R35); the HR-agency card is the default and a `#track-<key>` deep link preselects silently, so neither fires, and the arrow keys move the radio group (one event per partner track reached). `whatsapp_click` (`page_cta`) from the hero's "WhatsApp us", the sticky bar and the FAQ ask card (static `sys.partner.*` prefills only, W95); `call_click` (`page_cta`) from the sticky bar, the ask card and the closing band's phone; `email_click` (`page_cta`) from the ask card's e-mail row (W83) and the closing legal line. The three forms' fallback panels fire the contact events with `placement: 'form_fallback'`. The page fires no lead event itself: `conversion` for `form_key: 'hire'` (the HR-agency track, W3) and `'partner'` (sourcing, institute) comes from `ConversionPing` on `/tesekkurler` (`generate_lead` has no caller yet — T14 wires it beside `conversion` there). The header CTA, the hero/sticky/closing `#tracks` CTAs and the jump links are same-page anchors and fire nothing.
 ```
 
 `docs/PRD.md` — two in-place edits (W45):
 1. §2, the table row whose second cell is `Partner With Us`: replace its last cell (`Partner inquiry form (\`INQUIRY\`)`) with `Three track forms on two keys (W3/W16): HR agency → \`hire\` + \`iAm: 'hr_agency'\` + \`country: 'TR'\` (\`INQUIRY\`, HR_AGENCY — the Turkey sales team); sourcing partner and training institute → \`partner\` + \`track\` + an ISO-2 \`country\` (\`INQUIRY\`, SOURCING_PARTNER); the sourcing form also requires a licence/no-fee declaration tick`.
-2. §11, the sentence that begins "**Not yet built, by design (WP2 and later):**" (`grep -n 'Not yet built' docs/PRD.md`): in whatever wording T1–T4 and T13 left it, count Partner With Us as built — decrement the "N of the 14 core pages" figure by one and add "Partner With Us (WP2b T5)" to the list of designed pages that sentence names — keeping the rest of the sentence as it stands (W45: edit in place, never re-add WP1 wording).
+2. §11, the sentence that begins "**Not yet built, by design (WP2 and later):**" (`grep -n 'Not yet built' docs/PRD.md`): the opener "**Not yet built, by design (WP2 and later):**" is untouched by every earlier task, but the count and the parenthesis after it were edited in turn — T1 (the parenthesis → "(the homepage is the first designed page — WP2b T1; Hire Workers is still the spike placeholder until T2)"), T13 ("12 of the 14" → "11 of the 14", inserting "; the portal entry is built (WP2b T13)"), T2 (that clause → "Hire Workers is the second — WP2b T2"; count unchanged at 11), T3 ("11 of the 14" → "10 of the 14", appending "; the Cost Calculator is designed (WP2b T3)"), T4 (→ "9 of the 14", appending "; Work Permit is designed (WP2b T4)"). So at T5's turn it reads "9 of the 14 core pages (the homepage is the first designed page — WP2b T1; Hire Workers is the second — WP2b T2; the portal entry is built (WP2b T13); the Cost Calculator is designed (WP2b T3); Work Permit is designed (WP2b T4))". Count Partner With Us as built: "9 of the 14" → "8 of the 14", and append "; Partner With Us is designed (WP2b T5)" directly before that parenthesis closes; keep the rest of the sentence as it stands (W45: edit in place, never re-add WP1 wording). If the count does not read "9 of the 14", an earlier task drifted: stop and report rather than rewrite the sentence.
 
 `docs/ARCHITECTURE.md` — the paragraph that begins "**`StickyCtaBar` is page-mounted**": append after its last sentence (the one ending "…the bar's wrapper carries `data-testid="sticky-cta"`."):
 
@@ -4114,20 +4205,21 @@ export default async function PartnerWithUs({ params }: { params: Promise<{ loca
 - [ ] **Step 4: Verify**
 
 ```bash
-npx prettier --write "src/app/[locale]/(site)/partner-with-us/page.tsx" e2e/pages/partner.spec.ts e2e/routes.ts src/lib/seo/routes.ts src/app/globals.css docs/SEO.md docs/ANALYTICS.md docs/PRD.md docs/ARCHITECTURE.md
+npx prettier --write "src/app/[locale]/(site)/partner-with-us/page.tsx" "src/app/[locale]/(site)/partner-with-us/_lib/partner-line.ts" "src/app/[locale]/(site)/partner-with-us/_lib/__tests__/partner-line.test.ts" e2e/pages/partner.spec.ts e2e/routes.ts src/lib/seo/routes.ts src/app/globals.css docs/SEO.md docs/ANALYTICS.md docs/PRD.md docs/ARCHITECTURE.md
 npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1
 ```
-Expected: clean — `unbuilt.test.ts` agrees again (key deleted ↔ `page.tsx` exists), `scripts/gate-routes.test.ts` sees the two new rows (EN/TR parity), `sitemap.test.ts`/`robots.test.ts`/`routes.test.ts` derive from the set and stay green; typecheck covers `e2e/pages/partner.spec.ts`; the page file has no unit test of its own — it composes the tested sections and is proven by the Cycle 7 build + gate.
+Expected: clean — `partner-line.test.ts` green (the real LOCAL bundles carry `settings.partnershipsPhone`); `unbuilt.test.ts` agrees again (key deleted ↔ `page.tsx` exists), `scripts/gate-routes.test.ts` sees the two new rows (EN/TR parity), `sitemap.test.ts`/`robots.test.ts`/`routes.test.ts` derive from the set and stay green; typecheck covers `e2e/pages/partner.spec.ts`; the page file has no unit test of its own — it composes the tested sections and is proven by the Cycle 7 build + gate.
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add "src/app/[locale]/(site)/partner-with-us/page.tsx" e2e/pages/partner.spec.ts e2e/routes.ts src/lib/seo/routes.ts src/app/globals.css docs/SEO.md docs/ANALYTICS.md docs/PRD.md docs/ARCHITECTURE.md
+git add "src/app/[locale]/(site)/partner-with-us/page.tsx" "src/app/[locale]/(site)/partner-with-us/_lib/partner-line.ts" "src/app/[locale]/(site)/partner-with-us/_lib/__tests__/partner-line.test.ts" e2e/pages/partner.spec.ts e2e/routes.ts src/lib/seo/routes.ts src/app/globals.css docs/SEO.md docs/ANALYTICS.md docs/PRD.md docs/ARCHITECTURE.md
 git commit -m "feat(partner): the Partner With Us page — hero, chain, #tracks chooser with three track forms, process, portal, FAQ, closing, sticky bar; page e2e; docs (T5 c6)
 
 /partner-with-us leaves UNBUILT_PATHNAMES (W20); both locale paths join GATE_ROUTE_TABLE (W21);
 id=\"tracks\" for the W17 header CTA (W152/W158); h1 is the LCP element (§10 #4, D26); the bar
-keeps the design's Call/WhatsApp (W81) and html pads the scroll by its height (D20); the e2e is
+keeps the design's Call/WhatsApp (W81) and html pads the scroll by its height (D20); every tel: is
+the partner line — settings.partnershipsPhone, the main line as fallback (W176); the e2e is
 deterministic without a door (W92). Docs: SEO page row, ANALYTICS wiring, PRD forms row + §11,
 ARCHITECTURE scroll padding.
 
@@ -4176,7 +4268,7 @@ grep -n 'missing id="tracks"' "$TMPDIR/partner-gate-launch.log" || echo 'no miss
 ```
 Expected:
 - **Gate** (localhost wears the production face → `lighthouserc.local.json`, W135/W145): Playwright green under `mobile` and `desktop` — `e2e/pages/partner.spec.ts` 29 passed + 1 skipped (the sticky-bar case skips on `mobile` by design), and `routing` (page contract on `/ortak-olun`, `/en/partner-with-us`), `seo` (canonical/hreflang, sitemap lists both, every sitemap URL 200), `a11y` (zero `wcag2a`/`wcag2aa`/`wcag22aa` violations on both routes under both projects; `region` clean at 390/1000/1440), `width-sweep` (no horizontal overflow at 1440…390 incl. 1101/1100 and 901/900), `chrome` (every earlier page's header CTA still lands), `headers`, `thank-you` all green; the two token cases of `ops.spec.ts` skip without `REVALIDATE_SECRET` (as at WP2a). `lhci assert` passes on every indexable gate route; on `/ortak-olun` and `/en/partner-with-us` (median of 3 DevTools-throttled runs): performance ≥ 0.95, accessibility 1, best-practices 1, SEO 1, `resource-summary:script:size` ≤ 204,800 B, LCP ≤ 2,500 ms (the h1), CLS ≤ 0.1.
-- **js-size** (W136 — the ledger's figure): both partner routes below the 194,560 B lazy line. Projection: the WP2a close measured the shell at 176,132 B (TR) / 172,783 B (EN) locally; this page adds the forms kernel's client graph (`FormShell`, `Field`, `FormErrorsContext`, `FallbackPanel`, the `Turnstile` loader, `guardAction`, `echo`, `errors` — ≈ 7–8 KB gz, shared with T1/T2's forms but counted per route), `TrackChooser` + `DeclarationCheckbox` + the page icons (≈ 2–3 KB) and `StickyCtaBar` (≈ 1 KB; `ContactCta`/`ContactLink`/`Button`/`Accordion` already ship with the chrome) → ≈ 186–188 KB (TR) / 183–185 KB (EN) locally, ≈ 189–191 KB on a preview. `LazyIsland` would not lower it: it loads on viewport only, and the forms ARE this page's content (W132, T1's finding). The LCP column should read the h1 at ≈ 1.5–2.0 s. A route above 194,560 B → Cycle 8 before T6 starts (W13 amended).
+- **js-size** (W136 — the ledger's figure): both partner routes' LOCAL figures below the stop-and-report trigger **191,724 B** (W162: the controller's binding preview line is 194,560 B, and the preview's `npm run js-size` runs ≈ 2,836 B above this local build, 176,132 → 178,968 B at 02ace58). Projection: the WP2a close measured the shell at 176,132 B (TR) / 172,783 B (EN) locally; this page adds the forms kernel's client graph (`FormShell`, `Field`, `FormErrorsContext`, `FallbackPanel`, the `Turnstile` loader, `guardAction`, `echo`, `errors` — ≈ 7–8 KB gz, shared with T1/T2's forms but counted per route), `TrackChooser` + `DeclarationCheckbox` + the page icons (≈ 2–3 KB) and `StickyCtaBar` (≈ 1 KB; `ContactCta`/`ContactLink`/`Button`/`Accordion` already ship with the chrome) → ≈ 186–188 KB (TR) / 183–185 KB (EN) locally, ≈ 189–191 KB on a preview. `LazyIsland` would not lower it: it loads on viewport only, and the forms ARE this page's content (W132, T1's finding). The LCP column should read the h1 at ≈ 1.5–2.0 s. A LOCAL figure at or above 191,724 B on either route → Cycle 8 (the page's one pre-ruled lever, the sticky bar) before T6 starts (W13 amended, W162); the controller's binding preview decides at 194,560 B.
 - **Island size** (W96): one chunk carries `partner-track-chooser` (the island module, possibly bundled with `DeclarationCheckbox` and the page icons); its gzip-9 size ≈ 2–3 KB and ≤ 6,144 B. Above 6,144 B → report the chunk's module list to the controller (W96 is the exception's condition); never move the chooser behind `next/dynamic` without a ruling.
 - **Launch anchor check** (W152/W158): the launch profile stays RED by design (other pages' unbuilt routes and anchors), but the grep prints `no missing #tracks anchor` — the anchor half's lines (`CTA_BY_PATHNAME['/partner-with-us'].primary (/partner-with-us#tracks): <locale> <path> → missing id="tracks" …`, `scripts/launch/dead-targets.ts`) no longer name `/ortak-olun` or `/en/partner-with-us`, and the dead-href half no longer lists them either (the page answers 200).
 
@@ -4189,10 +4281,10 @@ pgrep -fl 'next-server|next start|playwright|lhci|lighthouse|chrome-headless|Chr
 Expected: `no stray processes` (kill any survivor by PID). `.lighthouseci/` and `lighthouse-report/` hold no secret on a localhost run, but are never committed.
 
 `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — append the T5 row to the `## Ledger` table in T1's row format (W98), filled from this session (the "**Ledger line**" template at the end of this task — every `<…>` from Steps 3–4; none typed from memory):
-- routes `/ortak-olun` · `/en/partner-with-us`; js-size per route; the TrackChooser chunk size (W96); the Lighthouse medians (perf / a11y / BP / SEO / LCP of the h1 / CLS) per route;
-- pixel: not a D27 page — "Fable side-by-side review" and the named deltas 1–15 at the top of this task;
+- routes `/ortak-olun` · `/en/partner-with-us`; js-size per route (local trigger 191,724 B, W162); the TrackChooser chunk size (W96); the Lighthouse medians (perf / a11y / BP / SEO / LCP of the h1 / CLS) per route;
+- pixel: not a D27 page — "Fable side-by-side review" and the named deltas 1–15 at the top of this task; the global `html { scroll-padding-bottom }` lands after T2–T4's pixel proofs and is re-proven at T15 (W178), so the row says so;
 - WP-C sheet: `partner.090`/`091` (the KVKK sentence the kernel consent replaces, W79), `partner.114` (the declaration, rendered verbatim), `partner.185` "Bizi arayın" and the package's first-person lines (`partner.024`, `025`, `048`, `073`, `101`, `121`, `171`, `173`, `177` — W154 note: package copy waits for WP-C), `partner.088`/`089`, `135`, `162`/`163` unused;
-- owner note: `settings.partnershipsPhone` (+90 553 383 25 49) exists for the Contact page's partner topic; this page's design uses the main line everywhere — confirm or switch the Call/tel CTAs in a later content change;
+- owner question (W176): which number do partners call? This page's `tel:` CTAs and the closing band's visible number are the partner line `settings.partnershipsPhone` (+90 553 383 25 49), the main line (+90 501 124 03 40) only as the fallback while it is `null`; the design showed the main line, so the owner confirms the choice (the Contact page's Agencies card reads the same line, T7);
 - launch anchor sweep: `#tracks` present in both locales (W152/W158).
 
 ```bash
@@ -4207,7 +4299,7 @@ git add docs/superpowers/plans/2026-09-20-wp2b-pages.md
 git commit -m "docs(partner): T5 ledger row — gate, js-size, TrackChooser chunk, Lighthouse medians, launch anchor sweep (T5 c7)
 
 Localhost proof session (W126/W145): one build, one gate, both partner routes under the
-194,560 B lazy line; the W96 island chunk under 6 KB gz; #tracks present for
+191,724 B local trigger (W162; the binding preview line is 194,560 B); the W96 island chunk under 6 KB gz; #tracks present for
 CTA_BY_PATHNAME['/partner-with-us'] in both locales (W152/W158).
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
@@ -4217,7 +4309,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 #### Cycle 8 — conditional: the lazy pass (W13 amended)
 
-Run this cycle only if Cycle 7's `js-size` reads above 194,560 B on `/ortak-olun` or `/en/partner-with-us`; otherwise the task ends with Cycle 7. It is the task's only second build. The only lever this page owns without a ruling is the sticky bar (≈ 1 KB; it renders `null` until the visitor has scrolled 700 px and never below 901 px): W96 keeps `TrackChooser` eager, and the forms kernel is the page's content and shared with T1/T2/T8.
+Run this cycle only if Cycle 7's `js-size` reads at or above **191,724 B** — W162's local stop-and-report trigger; the controller's binding preview decides at 194,560 B — on `/ortak-olun` or `/en/partner-with-us`; otherwise the task ends with Cycle 7. It is the task's only second build, and a route still at or above 191,724 B afterwards stops the task and reports (Step 4). The only lever this page owns without a ruling is the sticky bar (≈ 1 KB; it renders `null` until the visitor has scrolled 700 px and never below 901 px): W96 keeps `TrackChooser` eager, and the forms kernel is the page's content and shared with T1/T2/T8.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -4249,6 +4341,15 @@ describe('LazyStickyBar', () => {
     );
     expect(src).toContain("import('@/design/chrome/StickyCtaBar')");
   });
+
+  it('passes the top-extended rootMargin, so a jump past the wrapper still loads the bar (W165)', () => {
+    const src = readFileSync(
+      join(process.cwd(), 'src/app/[locale]/(site)/partner-with-us/_components/LazyStickyBar.tsx'),
+      'utf8',
+    );
+    expect(src).toContain("const STICKY_MARGIN = '100000px 0px 200px 0px';");
+    expect(src).toContain('rootMargin={STICKY_MARGIN}');
+  });
 });
 ```
 
@@ -4276,6 +4377,12 @@ type Props = {
   live?: boolean;
 };
 
+/** W165 (T3's pattern): the margin reaches 100,000 px ABOVE the viewport, so "at or past the
+ *  wrapper" is what loads the bar — a `#track-<key>` or `#faq` deep link, a reload at a hash or
+ *  scroll restoration lands past the wrapper without ever crossing the viewport, and a plain
+ *  200 px margin would then never load it. */
+const STICKY_MARGIN = '100000px 0px 200px 0px';
+
 /** W13 amended lazy pass: the bar renders `null` until the visitor has scrolled past
  *  `showAfterPx`, so `null` is its DOM-identical fallback (W132 — `{ load, props, fallback,
  *  rootMargin? }`, no `ssr`). The page mounts this right after the hero, so the module loads
@@ -4290,6 +4397,7 @@ export function LazyStickyBar(props: Props) {
       }
       props={props}
       fallback={null}
+      rootMargin={STICKY_MARGIN}
     />
   );
 }
@@ -4303,7 +4411,9 @@ and in `page.tsx`: replace the import `import { StickyCtaBar } from '@/design/ch
 npx prettier --write "src/app/[locale]/(site)/partner-with-us"
 npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1
 git add "src/app/[locale]/(site)/partner-with-us"
-git commit -m "perf(partner): the sticky bar behind LazyIsland — below the 194,560 B lazy line (W13 amended, W132)
+git commit -m "perf(partner): the sticky bar behind LazyIsland — under the 191,724 B local trigger (W13 amended, W132, W162)
+
+The bar loads whenever the visitor is at or below its marker: top-extended rootMargin (W165).
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 rm -rf .next .lighthouseci-extra
@@ -4316,7 +4426,7 @@ E2E_BASE_URL=http://localhost:3000 npm run js-size -- --routes=/ortak-olun,/en/p
 kill "$SERVER_PID"
 pgrep -fl 'next-server|next start|playwright|lhci|lighthouse|chrome-headless|Chrome for Testing' || echo 'no stray processes'
 ```
-Expected: the three specs green (the sticky case still passes: the wrapper sits after the hero, so the bar is loaded before 900 px of scroll); both routes below 194,560 B in the W94 spot-check — if a route is still above it, stop and report the route's client-manifest breakdown to the controller (no further change without a ruling); `no stray processes`.
+Expected: the three specs green (the sticky case still passes: the wrapper sits after the hero and the top-extended margin (W165) loads the bar whenever the viewport is at or below it, so the bar is loaded before the e2e's 900 px scroll — and for a `#track-<key>` deep link); both routes below 191,724 B locally (W162) in the W94 spot-check — if a route is still at or above it, stop and report the route's client-manifest breakdown to the controller (no further change without a ruling; the binding preview decides at 194,560 B); `no stray processes`.
 
 - [ ] **Step 5: Commit**
 
@@ -4344,17 +4454,18 @@ No `sys.seo.partner.*` (the page record carries `partner.222`/`223`), no `sys.fo
 
 **Package ids used:** 162 `partner.*` ids, every one verified present in `src/content/local/catalogue.json` and in both generated bundles (all 223 `partner.*` ids exist) — first `partner.002`, last `partner.223`: `partner.002`, `008`, `016` (the chain link and this page's crumbs, W23/W109), `023`–`033` (hero), `035`, `036`, `038`, `040`–`044`, `046` (network card — `038`/`040` also as track-card titles), `047`–`058` (chain), `059`, `060` (sticky bar), `061`–`087` (tracks, panels, the HR form head), `092`–`134`, `136` (form labels, the sourcing and institute panels, the declaration), `137`–`161`, `164`–`166` (process, portal), `167`–`190` (FAQ, closing), `222`, `223` (SEO, through the page record). Read through a block: `hire.240` (`StoreBadges`' Google Play label, W7). Not read (61, pinned by the same test): `partner.001`, `003`–`007`, `009`–`015`, `017`–`022` (chrome and the `CTA_BY_PATHNAME` pair — R15/W17), `034` (hero photo alt — gradient hero), `037`, `039`, `045` (captions of the unsigned 5+/20+/25+ figures — W1), `088`, `089` (inline success banner — D13), `090`, `091` (KVKK sentence — W79, WP-C sheet), `135` ("City, country" — split into `city` + the ISO-2 select), `162`, `163` (store micro-copy — W7), `191`–`221` (footer chrome — R15).
 
-**CLIENT_SYS additions:** none. The two `'use client'` modules of this task call no `useTranslations`: `TrackChooser` receives every string resolved on the server, and `DeclarationCheckbox` reads `sys.form.errors.*` only through the kernel's `useFieldError` (in `FormErrorsContext`, whose `form` namespace is already listed) — `src/i18n/client-messages.ts` stays `consent, languageHint, errorTitle, errorRetry, form` and `client-messages.test.ts` needs no change (W148).
+**CLIENT_SYS additions:** none. The two `'use client'` modules of this task call no `useTranslations`: `TrackChooser` receives every string resolved on the server, and `DeclarationCheckbox` reads `sys.form.errors.*` only through the kernel's `useFieldError` (in `FormErrorsContext`, whose `form` namespace is already listed) — `src/i18n/client-messages.ts` stays as T3 left it (`consent, languageHint, errorTitle, errorRetry, form, calc`) and `client-messages.test.ts` needs no change (W148).
 
 **Foundation gaps:** none blocking; every name this task consumes exists at `7bacd7e` and was checked in the code. Notes:
-1. Catalog v1.1 (WP2a Task 8, being implemented now): `hire.city`, `partner.city` and `partner.track` are cited as `A/produces-final.md` § Task 8 spells them (`city?: string` ≤ 120; `track?: 'sourcing' | 'institute'`, inbox tag `[website:partner:<track>]`) — the wire names are to be confirmed by the Task 8 report. Until Operations runs v1.1, a stray `city`/`track` is dropped into `dropped` with a 200 (no error; the institute/sourcing distinction then survives only in the inbox's absence of a tag), and the door-less gate is unaffected either way.
+1. Catalog v1.1 (WP2a Task 8) is LIVE — `A/produces-final.md` § "Task 8 — as built" (Operations `main` 47a2160, live 2026-09-28 11:14 UTC) CONFIRMS the wire names this task sends: `hire.city` and `partner.city` (`city?: string` ≤ 120, a `city:` line in the inbox preview) and `partner.track` (`'sourcing' | 'institute'`, inbox tag `[website:partner:<track>]`; classification `SOURCING_PARTNER` for both tracks). The HR track's `iAm: 'hr_agency'` classifies the `hire` inquiry `HR_AGENCY` (Ops `I_AM_TO_CLASSIFICATION`; without `iAm` a `hire` inquiry defaults to `DIRECT_EMPLOYER`). Not a gap — recorded so the implementer does not re-verify it; the door-less gate is unaffected either way.
 2. `StickyCtaBar` has no "hide while the target is in view" mode (the design hides its bar only while `#tracks` sits in the 35–75 % viewport band); `isBarVisible` hides a bar for good once its target nears or passes, so a bar keyed on this page's high `#tracks` would never show. The page keys the bar on its closing band (delta 12) and closes the resulting focus-obscuring risk site-wide with one additive declaration in `src/app/globals.css` (`html { scroll-padding-bottom: var(--sticky-cta-h, 0px) }`, documented in ARCHITECTURE) — a foundation-file edit made here because this is the first page whose bar rides over forms; the controller may prefer to fold it into a foundation task.
 3. `RadioChips`' `RadioChipOption = { value, label }` cannot carry the design's icon/body/CTA card — ruled (reconcile, `check.md` foundation_gaps_to_rule): the page-local native-radio cards on the same pattern (`fieldset role="radiogroup"`, `peer sr-only` radios, `peer-focus-visible` ring).
 4. The fallback panel's WhatsApp prefill (`WHATSAPP_FIELDS` in `src/forms/client/FallbackPanel.tsx`) carries name/company/email/phone/city/country/message but not `licence`, `trades` or `candidatesPerYear` — a sourcing partner who falls back to WhatsApp re-types those; a kernel list change if the owner wants them.
-5. `LazyIsland` loads on viewport only (T1's finding): with no interaction-loaded wrapper, the forms kernel stays in this route's first-load graph — within budget per the Cycle 7 projection (≈ 186–191 KB), a concern only if a route crosses 194,560 B (Cycle 8).
+5. `LazyIsland` loads on viewport only (T1's finding): with no interaction-loaded wrapper, the forms kernel stays in this route's first-load graph — within budget per the Cycle 7 projection (≈ 186–191 KB), a concern only if a route's LOCAL figure reaches the 191,724 B trigger (W162; Cycle 8 — the binding preview decides at 194,560 B).
+6. W176: `settings.partnershipsPhone` EXISTS (`string | null` in `SettingsSchema`), so the partner line needs no foundation change — but the bundle carries no display string for it (only `phoneDisplay`, the main line's). `_lib/partner-line.ts` groups the E.164 digits as `+90 5xx xxx xx xx` itself (a Turkish number only; anything else renders as stored); a `partnershipsPhoneDisplay` bundle field would be a later content change. T7 (Contact) groups the same number with its own `formatPhoneDisplay`; the two must print the same string (`+90 553 383 25 49`).
 
 **Ledger line** (append to the `## Ledger` table in `docs/superpowers/plans/2026-09-20-wp2b-pages.md`; fill every `<…>` from Cycle 7):
 
 ```markdown
-| T5 Partner With Us | `/ortak-olun` · `/en/partner-with-us` | js-size (local): `/ortak-olun` <n> B · `/en/partner-with-us` <n> B (ceiling 204,800; lazy line 194,560; projected ≈ 186–191 KB); TrackChooser chunk <n> B gz (≤ 6,144, W96); LazyStickyBar: <no/yes>; binding preview: <added by the controller> | LH mobile, median of 3, DevTools throttling (local rc = production): `/ortak-olun` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n>; `/en/partner-with-us` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n> | not a D27 pixel page — Fable side-by-side review; named deltas 1–15 (D13 thank-you navigation, W79 consent + declaration ticks, W115 labels, W3/W16 ISO-2 select + city split + candidatesPerYear, W1/W6 signed rows only + no logo band, gradient hero with the h1 as LCP, native radio cards + #track-<key>, D20 faces, ProcessSteps rail, dark ClosingCtaBand, sticky bar keyed on #closing + html scroll padding, FAQ ask card at every width with the W83 e-mail row, stacked chain, chrome W17/W7/W8/W127); WP-C: partner.090/091, partner.114 verbatim, package first-person lines + partner.185 (W154 note); owner: settings.partnershipsPhone vs the main line; launch sweep: #tracks present both locales | <YYYY-MM-DD> |
+| T5 Partner With Us | `/ortak-olun` · `/en/partner-with-us` | js-size (local): `/ortak-olun` <n> B · `/en/partner-with-us` <n> B (ceiling 204,800; local stop-and-report trigger 191,724 (W162); binding preview line 194,560; projected ≈ 186–188 KB TR / 183–185 KB EN locally, ≈ 189–191 KB on a preview); TrackChooser chunk <n> B gz (≤ 6,144, W96); LazyStickyBar: <no/yes — top-extended rootMargin, W165>; binding preview: <added by the controller> | LH mobile, median of 3, DevTools throttling (local rc = production): `/ortak-olun` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n>; `/en/partner-with-us` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n> | not a D27 pixel page — Fable side-by-side review; named deltas 1–15 (D13 thank-you navigation, W79 consent + declaration ticks, W115 labels, W3/W16 ISO-2 select + city split + candidatesPerYear, W1/W6 signed rows only + no logo band, gradient hero with the h1 as LCP, native radio cards + #track-<key>, D20 faces, ProcessSteps rail, dark ClosingCtaBand, sticky bar keyed on #closing + html scroll padding, FAQ ask card at every width with the W83 e-mail row, stacked chain, chrome W17/W7/W8/W127, every tel: the partner line W176); the global html { scroll-padding-bottom } lands after T2–T4's pixel proofs and is re-proven at T15 (W178); WP-C: partner.090/091, partner.114 verbatim, package first-person lines + partner.185 (W154 note); owner question: which number do partners call? (the page's tel: CTAs read settings.partnershipsPhone, the main line as fallback — W176; the Contact page's Agencies card reads the same line); launch sweep: #tracks present both locales | <YYYY-MM-DD> |
 ```

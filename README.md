@@ -57,13 +57,13 @@ Other scripts: `npm run typecheck`, `npm run lint`, `npm run format` / `format:w
 
 ## Environments
 
-| Environment | Vercel project      | Domain                                    | Notes                                                         |
-| ----------- | ------------------- | ----------------------------------------- | ------------------------------------------------------------- |
-| Production  | `jobsadmire-web-v2` | jobsadmire.com (after Phase A cutover)    | `main` branch; `npm run verify` gates every build             |
-| Preview     | `jobsadmire-web-v2` | `*.vercel.app` / `staging.jobsadmire.com` | Deployment Protection on; preview/test tokens only; `noindex` |
-| Local       | —                   | localhost:3000                            | Against the Operations stack on port 4001                     |
+| Environment | Vercel project      | Domain                                    | Notes                                                                       |
+| ----------- | ------------------- | ----------------------------------------- | --------------------------------------------------------------------------- |
+| Production  | `jobsadmirewebsite` | jobsadmire.com (after Phase A cutover)    | `main` branch; `npm run verify` gates every build                           |
+| Preview     | `jobsadmirewebsite` | `*.vercel.app` / `staging.jobsadmire.com` | Deployment Protection on; door variables on `staging` only (W92); `noindex` |
+| Local       | —                   | localhost:3000                            | Against the Operations stack on port 4001                                   |
 
-The pre-existing Vercel project `jobsadmirewebsite` still serves the old site and is left untouched until Phase A cutover — see `docs/DEPLOYMENT.md`.
+One Vercel project, `jobsadmirewebsite`, serves Production and Preview: its production deployment is still the frozen old site, and `main` deploys nothing until the Phase A cutover removes its two deploy guards (no domain move) — see `docs/DEPLOYMENT.md`.
 
 ## Where the docs are
 

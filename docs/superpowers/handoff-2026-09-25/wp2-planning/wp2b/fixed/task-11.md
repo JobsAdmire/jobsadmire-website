@@ -2,7 +2,7 @@
 
 **Why this task exists.** Design-package page 8, "Join Our Team" (`design-package/design/Join Our Team.dc.html`, strings `design-package/strings/jointeam.json`, ids `jt.001`–`jt.321`), is recruiting for JobsAdmire itself. The design hard-codes nine marketing roles, links every "Apply" out to operations.jobsadmire.com, carries a speculative-application form that only opens WhatsApp, and puts nine dated `JobPosting` nodes on the index. This task ports it onto the WP1 + WP2a foundation the way Phase A demands: the index lists the **live** openings of the Operations public careers API (read server-side only, ISR tag `openings`, 300 s floor — spec §3.1, D8, D15), shows the designed empty state when nothing is open (W6), keeps the speculative application to WhatsApp + e-mail (W3), and links nowhere on Operations (W8/W89); a new detail page per opening renders the role, its `JobPosting` JSON-LD (D15) and the apply form → form key `careers` (the PDF CV uploaded first through the public `POST /api/careers/upload-cv`, the residency lock, the Pakistan expected-salary rule, the portfolio "apply by e-mail" branch — W3/W56). The nine fixture roles are never rendered (D23).
 
-**Where and in what order.** Every path is in the worktree `/Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2` on branch `wp2/foundation` — never the shared checkout `…/jobsadmire-website`. Never push, never `git stash`, never amend/squash/rebase an existing commit (W118). Execution order (W99): T1 → T13 → T2 → … → T10 → **T11** → T12: when this task starts T1 has created the shared doc shapes (W98: `## Pages` in `docs/SEO.md` with the columns `Page | Route (tr · en) | Title source | Canonical | JSON-LD | LCP slot | Notes`; `### Page instrumentation (WP2b)` in `docs/ANALYTICS.md`; the per-page bullet list at the end of `### Adding copy (W9, W23, W54)` in `docs/CONTENT-MODEL.md`; the `## Ledger` table in `docs/superpowers/plans/2026-09-20-wp2b-pages.md`) and `e2e/pages/`; T13 has shipped `/privacy` (`/gizlilik` — the consent link); T2 has shipped `/hire-workers` with `id="request-form"` (the target of `DEFAULT_CTAS`, the header CTA on both careers routes); T5 has shipped `/partner-with-us` (the worker notice's and the ways note's link). Where this text and the code disagree, **the code wins** — every import below was checked against `src/**` at `77da5eb`.
+**Where and in what order.** Every path is in the worktree `/Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2` on branch `wp2/foundation` — never the shared checkout `…/jobsadmire-website`. Never push, never `git stash`, never amend/squash/rebase an existing commit (W118). Execution order (W99): T1 → T13 → T2 → … → T10 → **T11** → T12: when this task starts T1 has created the shared doc shapes (W98: `## Pages` in `docs/SEO.md` with the columns `Page | Route (tr · en) | Title source | Canonical | JSON-LD | LCP slot | Notes`; `### Page instrumentation (WP2b)` in `docs/ANALYTICS.md`; the per-page bullet list at the end of `### Adding copy (W9, W23, W54)` in `docs/CONTENT-MODEL.md`; the `## Ledger` table in `docs/superpowers/plans/2026-09-20-wp2b-pages.md`) and `e2e/pages/`; T13 has shipped `/privacy` (`/gizlilik` — the consent link); T2 has shipped `/hire-workers` with `id="request-form"` (the target of `DEFAULT_CTAS`, the header CTA on both careers routes); T5 has shipped `/partner-with-us` (the worker notice's and the ways note's link). Where this text and the code disagree, **the code wins** — every import below was checked against `src/**` at `77da5eb` and re-verified at the 2026-10-01 recheck (`36d6bd9` — no `src/`, `e2e/`, `scripts/` or docs change since).
 
 **Memory rule (owner, binding for every step).** One heavy job at a time. The per-commit verify is exactly
 `npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1`
@@ -11,12 +11,12 @@
 **Route and contract facts (verified — read before touching anything).**
 - `pathnames` (`src/i18n/routing.ts`): `'/careers'` → TR `/kariyer`, EN `/careers`; `'/careers/[slug]'` → TR `/kariyer/[slug]`, EN `/careers/[slug]`. The Operations slug is the same in both locales (openings are single-language Operations content). Private folders (`_lib`, `_components`, `_sections`, `__tests__`) never become routes (`src/lib/seo/unbuilt.test.ts` skips `_`-prefixed folders).
 - `src/lib/seo/routes.ts` `UNBUILT_PATHNAMES` contains the two lines `'/careers',` and `'/careers/[slug]',` — each is deleted in the commit that adds its `page.tsx` (W20; `unbuilt.test.ts` fails in either direction otherwise). `e2e/routes.ts` `GATE_ROUTE_TABLE` gets the two index paths; the detail rows are NEVER hand-written — `scripts/gate-routes.mjs` (W93) appends `/kariyer/<slug>` + `/en/careers/<slug>` for the first opening `${OPS_API_URL}/api/careers/openings` returns once `src/app/[locale]/(site)/careers/[slug]/page.tsx` exists, else prints `detail rows skipped (…)`.
-- Page records (both bundles): `careers = { titleId: '', descriptionId: '', ogImage: null, canonical: null, robots: 'index', jsonLd: ['breadcrumb', 'faq'] }`, `careersDetail = { …same…, jsonLd: ['breadcrumb', 'jobPosting'] }`. W124: the `careersDetail` template record carries no per-page SEO field, so the detail page's own title/description/href win in `buildMetadata`. The OG route (`/og/{locale}/{pageKey}.png`, CDN-cached — W123) titles an image from `sys.seo.<pageKey>.title` **called without arguments** (`src/lib/seo/og.ts` `ogTitle`) — so `sys.seo.careersDetail.title` must be argument-free; the per-opening `<title>` template lives under `sys.careers.detail.metaTitle`.
+- Page records (both bundles): `careers = { titleId: '', descriptionId: '', ogImage: null, canonical: null, robots: 'index', jsonLd: ['breadcrumb', 'faq'] }`, `careersDetail = { …same…, jsonLd: ['breadcrumb', 'jobPosting'] }`. W124: the `careersDetail` template record carries no per-page SEO field, so the detail page's own title/description/href win in `buildMetadata`. The OG route (`/og/{locale}/{pageKey}.png`, CDN-cached — W123) titles an image from `sys.seo.<pageKey>.title` **called without arguments** (`src/lib/seo/og.ts` `ogTitle`) — a `{title}` template there would print raw on the image. So this task follows T12's blog-article pattern (W169, recheck ruling 2026-10-01): the per-opening `<title>` template lives under `sys.careers.detail.metaTitle`, NO `sys.seo.careersDetail.*` key exists (pinned absent by `copy.test.ts`), and the detail page passes the index's image `pageOgImageUrl(locale, 'careers')` (`/og/{locale}/careers.png`) through `buildMetadata`'s `openGraph.images`.
 - Neither careers route has a `CTA_BY_PATHNAME` entry, and none may be added (`src/design/chrome/ctas.ts`; W121 forbids a dynamic key): both render `DEFAULT_CTAS` — primary `home.014`+`home.015` → `{ pathname: '/hire-workers', hash: '#request-form' }` (rendered `/isci-talebi#request-form` · `/en/hire-workers#request-form`), secondary `home.008` → `/partner-with-us`. The anchor `id="request-form"` lives on T2's page, so the careers pages render no header anchor of their own; `gate:launch`'s W152/W158 sweep checks `#request-form` on `/isci-talebi`, and every internal `href` these pages render must answer 200 there.
 - Operations public careers API (read-only, `jobsadmire-operations/apps/backend/src/modules/careers-public/careers-public.controller.ts`, controller prefix `careers`, all `@Public()`): `GET /api/careers/openings?page&limit` (`QueryPublicOpeningsDto`: `page` ≥ 1 default 1, `limit` 1–50 default 20) → `{ data: PublicOpening[], meta: { total, page, limit, totalPages } }`, only `OPEN` + `isPubliclyListed` + slugged openings, newest first; `GET /api/careers/openings/:slug` → `{ data: PublicOpening }` or 404 `Opening not found` (a closed opening too); `POST /api/careers/upload-cv` (multipart `file`, client-declared `application/pdf`, ≤ 5 MB, `@Throttle` 10/min — W110) → 201 `{ data: { url, key, fileName } }`. `PublicOpening` (`shapePublicOpening`, careers-public.service.ts) = `{ slug, title, country (Country.code), city, cities[], category (FULL_TIME | FREELANCER | PROJECT_BASED | COUNTRY_REPRESENTATIVE), employmentArrangement, employmentArrangements[] (admin-managed EmploymentType codes: PERMANENT, CONTRACT, FREELANCER, PART_TIME, INTERNSHIP, HOURLY, …), workMode, workModes[] (REMOTE | HYBRID | ON_SITE), description (one text; `jobDescription ?? roleDescription`), salaryMin/salaryMax (decimal strings), salaryCurrency, salaryPayType (RANGE | STARTING | MAXIMUM | EXACT), salaryPeriod (HOUR | DAY | WEEK | MONTH | YEAR) — all five null when salaryVisible is false —, salaryVisible, payCurrency (the opening's currency even when the salary is hidden), portfolioRequired, requiredLanguage, requiredLanguages[], postedAt (the opening's createdAt, ISO) }`.
 - The `careers` door (catalog v1.0 + v1.1, `P/operations-door-contract-as-built.md`, `A/produces-final.md` § Task 8 — as built; catalog source read at Operations `47a2160`): `openingSlug` ≤200 REQUIRED `/^[a-z0-9-]+$/`, `cvKey` ≤300 REQUIRED `/^careers-cv\/[A-Za-z0-9._-]+\.pdf$/i`, `name` ≤200 REQUIRED, `email` REQUIRED, `phone` REQUIRED (≥ 8 digits), `country` iso2 REQUIRED, `city` ≤100, `language` ≤300, `expectedSalary` ≤20, `expectedSalaryCurrency` ≤3, `currentSalary` ≤20, `currentSalaryCurrency` ≤3, `coverLetter` ≤5000, `linkedinUrl` ≤500 (length only; the handler adds `https://` and drops junk), v1.1 `portfolioUrl` (type `url`, ≤500, W161: whitespace and digits/phone-only values are refused, a scheme-less value gets `https://` BEFORE the ≤500 check, then http(s) only, no credentials, a dotted host or an IPv4/IPv6 literal — it rides as the last paragraph of the cover letter, `Portfolio: <url>`). An unknown key inside `fields` is dropped silently. Behind the door `CareersPublicService.apply` enforces: the residency rule (`country` must equal the opening's country), an expected salary for `PK` openings, ≥ 1 uploaded portfolio document when `portfolioRequired` (W56 — `portfolioUrl` does NOT satisfy it; the door answers 200 + `status: 'FAILED'` + `error: 'This position requires at least one portfolio document'`), a 409 duplicate (same e-mail + opening) that the handler maps to `alreadyReceived` (a normal 200 → thank-you).
 - The forms kernel as built: `createFormAction({ key, schema, toFields(parsed, data, ctx: { visitor, locale }), consent })` (`src/forms/action.ts`, `server-only`) checks the consent tick, trims every string, passes `File` entries through to the schema (repeated keys become arrays), turns the first Zod issue per field into a `sys.form.errors.*` code (`src/forms/errors.ts`: `required email phone min max url file consent captcha invalid`; a schema message naming a code wins), catches `FormActionError` (with `field` → a field error; without → the `failed` panel with its visitor message) and `FormDoorError` from `toFields`, and on a non-`FAILED` 200 redirects `{ pathname: '/thank-you', query: { form: key } }` → `/tesekkurler?form=careers` (D13). `uploadCv(file, { field })` (`src/forms/uploads.ts`, `server-only`) refuses an empty file, a non-`application/pdf` type, a name not ending `.pdf` or a file over `MAX_CV_BYTES` = 3 MiB with `FormActionError` (field `cv`, code `file`), throws `FormDoorError({ kind: 'unauthorized' })` without `OPS_API_URL`, maps a door 400 to the same `file` refusal and other non-2xx to the panel kinds, and returns `{ cvKey }`. `next.config.ts` caps a server-action body at 4 MB (W73/W116). `FormShell` renders children → honeypot → Turnstile (only with a site key) → consent row (`/privacy` only, W79) → form-level alert (errors on names no control shows, e.g. the hidden `openingSlug`) → submit → `FallbackPanel` (`data-testid="form-fallback"`, `data-kind`, bare `https://wa.me/<n>` href composed into a prefill only on click — W76); every id is `f-<idScope ?? formKey>-<name>`. `Field` passes `defaultValue`, `minLength`, `maxLength`, `disabled` through (W108) and its select branch always prepends the `sys.form.placeholders.select` option.
-- Existing copy this task reuses (both locales): `sys.form.labels.{name,email,phone,country,city,language,expectedSalary,cv,linkedinUrl,portfolioUrl,coverLetter,openingSlug}`, `sys.form.placeholders.*`, `sys.form.hints.{cv,linkedinUrl,portfolioUrl,optional,phone}`, `sys.nav.breadcrumbs`, `sys.thankYou.forms.careers` (rewritten here — its "when a suitable role opens" does not fit a per-opening application). `CLIENT_SYS` (`src/i18n/client-messages.ts`) = `consent, languageHint, errorTitle, errorRetry, form` plus whatever T1–T10 added: this task's islands call no `useTranslations`, so it is unchanged (W148).
+- Existing copy this task reuses (both locales): `sys.form.labels.{name,email,phone,country,city,language,expectedSalary,cv,linkedinUrl,portfolioUrl,coverLetter,openingSlug}`, `sys.form.placeholders.*`, `sys.form.hints.{cv,linkedinUrl,portfolioUrl,optional,phone}` (`portfolioUrl` is rewritten here, W178 — the WP1 value demands an `https://` the door does not), `sys.nav.breadcrumbs`, `sys.thankYou.forms.careers` (rewritten here — its "when a suitable role opens" does not fit a per-opening application). `CLIENT_SYS` (`src/i18n/client-messages.ts`) = `consent, languageHint, errorTitle, errorRetry, form, calc` (T3 appended `calc`; no other earlier task adds one): this task's islands call no `useTranslations`, so it is unchanged (W148).
 - Settings (LOCAL bundles): `careersEmail 'careers@jobsadmire.com'`, `whatsappNumber '905011240340'`, `phone '+905011240340'`, `phoneDisplay '+90 501 124 03 40'`, `turnstileSiteKey null` (overlaid from `NEXT_PUBLIC_TURNSTILE_SITE_KEY` where set). Collections: `countries` (64 rows `{ code, name, dial }`, names locale-resolved, sorted by code) and `sourceCountries` (13 rows, the ONE source-country list, D17).
 - CSS facts: the design's `≤ 900 px` rules → this repo's `max-lg:`/`lg:` (901 px); `xs` 461, `sm` 561, `md` 701. `.container-site` is unlayered CSS (`max-width`, `margin-inline`, `padding-inline`) — never put a `max-w-*`/`mx-*`/`px-*` utility on the same element (it silently loses); wrap instead. The header is sticky, so `#roles` and `#apply` carry `scroll-mt-24`. `text-muted` (#94a3b8, 2.56:1) is never used for text (W128a) — `text-text-tertiary`. White text on `#1899d5` (3.2:1) or `#16a34a` (3.3:1) fails at body sizes — `bg-blue-safe`/`bg-success-text` faces. An inline link inside a sentence is underlined (axe `link-in-text-block`, wcag2a).
 
@@ -60,14 +60,14 @@ Create
 - `e2e/pages/careers.spec.ts`
 
 Modify
-- `src/messages/tr.json`, `src/messages/en.json` — new `sys.careers` block; `sys.seo.careers` + `sys.seo.careersDetail` inside the existing `sys.seo` object; `sys.thankYou.forms.careers` rewritten
+- `src/messages/tr.json`, `src/messages/en.json` — new `sys.careers` block; `sys.seo.careers` inside the existing `sys.seo` object (never a `sys.seo.careersDetail` — the OG route would draw its template raw, W169); `sys.thankYou.forms.careers` rewritten; `sys.form.hints.portfolioUrl` rewritten in both locales to accept a scheme-less link (W178)
 - `src/lib/seo/routes.ts` — the `UNBUILT_PATHNAMES` initialiser: delete `'/careers',` (Cycle 3) and `'/careers/[slug]',` (Cycle 4)
 - `src/lib/seo/sitemap-sources.ts` — the `DETAIL_SITEMAP_SOURCES` literal gains `careersSitemapSource` + its import (W70)
 - `src/lib/seo/sitemap-sources.test.ts` — the case titled `is empty and frozen in the foundation — the careers page task edits the literal to add the first source (W70)` is rewritten
 - `src/app/sitemap.test.ts` — the case title `is exactly (static keys − excluded) × locales while no detail source is registered` (wording only)
 - `e2e/routes.ts` — `GATE_ROUTE_TABLE`: two rows
 - `package.json` — `"careers:door"` and `"e2e:careers"` beside `"e2e"`
-- `docs/ARCHITECTURE.md` (§ Freshness; § Quality gate item 2), `docs/INTEGRATIONS.md` (I5, I6), `docs/CONTENT-MODEL.md` (per-page bullet), `docs/SEO.md` (`## Pages` rows, `## Sitemap`, `## JSON-LD`), `docs/ANALYTICS.md` (`### Page instrumentation (WP2b)` bullet), `docs/PRD.md` (§2 rows 8 and "Careers detail", §11 sentence), `docs/superpowers/plans/2026-09-20-wp2b-pages.md` (`## Ledger` row)
+- `docs/ARCHITECTURE.md` (§ Freshness; § Quality gate item 2), `docs/INTEGRATIONS.md` (I5, I6), `docs/CONTENT-MODEL.md` (per-page bullet), `docs/SEO.md` (`## Pages` rows, `## Sitemap`, `## JSON-LD`), `docs/ANALYTICS.md` (`### Page instrumentation (WP2b)` bullet), `docs/PRD.md` (§2 rows 8 and "Careers detail", §11 sentence — "3 of the 14 core pages" becomes "2 of the 14 core pages", anchored on T10's post-edit text with a stop-and-report guard, W176), `docs/superpowers/plans/2026-09-20-wp2b-pages.md` (`## Ledger` row)
 
 Test
 - Vitest: `src/lib/careers-pure.test.ts`, `src/lib/careers.test.ts`, `src/lib/careers-sitemap.test.ts`, `src/app/[locale]/(site)/careers/__tests__/{copy.test.ts,roles.test.ts,sections.test.tsx,ids.test.ts}`, `src/app/[locale]/(site)/careers/[slug]/__tests__/{apply.test.ts,detail.test.tsx}`; the existing `src/lib/seo/unbuilt.test.ts`, `src/lib/seo/sitemap-sources.test.ts`, `src/app/sitemap.test.ts`, `src/messages/{messages,voice}.test.ts`, `src/i18n/client-messages.test.ts`, `src/design/__tests__/{class-collisions,client-imports}.test.ts`, `src/design/blocks/__tests__/rsc-imports.test.ts` (all matched by `src/**/*.test.{ts,tsx}`)
@@ -77,14 +77,14 @@ Test
 
 Consumes (exact names, checked in the code):
 - `@/content/adapter` — `getBundle(locale)`, `makeTf(bundle, locale)` (pages); `@/content/pure` — `makeTf` (sections' tests); `@/content/collections` — `getCollection(bundle, 'countries' | 'sourceCountries')`, types `SourceCountry`, `Country`
-- `@/forms/action` — `createFormAction`, type `FormActionState`; `@/forms/types` — `FormActionError`, type `FormActionState`; `@/forms/wire` — type `WireFields`; `@/forms/uploads` — `uploadCv(file, { field })`; `@/forms/env` — `doorBase(env?)`; `@/forms/client/FormShell` — `FormShell`; `@/forms/client/Field` — `Field`
+- `@/forms/action` — `createFormAction`, type `FormActionState`; `@/forms/types` — `FormActionError`, type `FormActionState`; `@/forms/wire` — type `WireFields`; `@/forms/errors` — `fieldErrorsFromIssues` (the apply tests); `@/forms/uploads` — `uploadCv(file, { field })`; `@/forms/env` — `doorBase(env?)`; `@/forms/client/FormShell` — `FormShell`; `@/forms/client/Field` — `Field`
 - `@/design/primitives/Section` — `Section({ tone, id?, className? })`; `@/design/primitives/Eyebrow`; `@/design/primitives/Button` — `buttonClassName(variant, size?, className?)`; `@/design/primitives/RadioChips` — `RadioChips({ name, options, value, onChange, legend, legendHidden?, className? })`
 - `@/design/blocks/Breadcrumbs` — `Breadcrumbs({ locale, items: Crumb[], tone? })` (emits the `BreadcrumbList`); `@/design/blocks/FaqBlock` — `FaqBlock({ bundle, locale, items, id?, eyebrowId?, headingId?, openFirst?, footer? })` (emits the `FAQPage`); `@/design/blocks/EmptyState` — `EmptyState({ title, body?, cta?, tone?, headingLevel?, testId? })`; `@/design/blocks/ContactCta` — `ContactCta({ placement, href, variant?, size?, external?, className?, children })`
 - `@/design/Flag` — `Flag({ code, size?, label? })`; `@/design/assets/flag-codes` — `isFlagCode(code)`
 - `@/analytics/ContactLink` — `ContactLink` (client); `@/analytics/track` — `track('career_apply_start', { page, locale, slug })` (`ALLOWED_PARAMS.career_apply_start = ['page','locale','slug']`, W26/W67)
 - `@/i18n/navigation` — `Link`; `@/i18n/routing` — `routing`, type `Locale`
 - `@/lib/contact` — `waLink(number, text)`, `mailLink(email, subject?)`; `@/lib/format/money` — `formatTRY`; `@/lib/format/date/formatDate` — `formatDate(iso, locale)` (by path, W156)
-- `@/lib/seo/metadata` — `buildMetadata({ locale, href, bundle, pageKey, fallbackTitle, fallbackDescription, alternates? })`; `@/lib/seo/routes` — `absoluteUrl`, `localeAlternates`; `@/lib/seo/jsonld` — `jobPostingJsonLd`, type `JobPostingJsonLdInput`; `@/lib/seo/JsonLdScript` — `JsonLd`; `@/lib/seo/sitemap-sources` — `DETAIL_SITEMAP_SOURCES`, type `SitemapSource`
+- `@/lib/seo/metadata` — `buildMetadata({ locale, href, bundle, pageKey, fallbackTitle, fallbackDescription, alternates?, openGraph? })` (`openGraph.images` wins over the generated image); `@/lib/seo/routes` — `absoluteUrl`, `localeAlternates`, `pageOgImageUrl(locale, pageKey)`; `@/lib/seo/jsonld` — `jobPostingJsonLd`, type `JobPostingJsonLdInput`; `@/lib/seo/JsonLdScript` — `JsonLd`; `@/lib/seo/sitemap-sources` — `DETAIL_SITEMAP_SOURCES`, type `SitemapSource`
 - `@/test/bundle` — `testBundle`; `@/test/render` — `renderWithIntl`
 - `scripts/gate-routes.mjs` (W93), `e2e/routes.ts` `GATE_ROUTE_TABLE`
 
@@ -101,7 +101,7 @@ Produces (later tasks rely on these):
 - **W9/W23** — every id-less string under `sys.careers.*` / `sys.seo.careers*`; package ids by exact id through `makeTf`.
 - **W10** — ways cards static; the hero card's third and fourth roles hidden ≤ 900 px by `max-lg:hidden` (CSS, not conditional rendering).
 - **W12/W26/W67** — `career_apply_start { page, locale, slug }` once per page view; contact clicks through `ContactLink`/`ContactCta` (`page_cta`, `form_fallback` in the panel); no other event.
-- **W13 amended / W120 / W136** — one small SSR'd island on the index (`RolesList`), the forms kernel on the detail; the ledger records `npm run js-size`; a route above 194,560 B stops the task (below).
+- **W13 amended / W120 / W136 / W162** — one small SSR'd island on the index (`RolesList`), the forms kernel on the detail; the ledger records `npm run js-size`; a LOCAL route figure ≥ 191,724 B (the binding 194,560 B minus the ≈ 2,836 B the preview's `npm run js-size` runs above the local build) stops the task and reports, and no lazy cycle is written in advance (below).
 - **W16 / W161** — `portfolioUrl` (catalog v1.1) sent when typed; the site's check is the door's `url` rule verbatim (scheme-less accepted, length on the normalised value) — never stricter, never looser.
 - **W17 / D16** — the detail passes `alternates: { tr, en }` (the same Operations slug) to `buildMetadata`; `LanguageSwitcher`/`LanguageHint` read those hreflang tags; no CTA table edit.
 - **W19** — both routes in `(site)`; `notFound()` lands in `(site)/not-found.tsx`.
@@ -125,7 +125,7 @@ Produces (later tasks rely on these):
 - **W118** — no history rewrite.
 - **W119 / W122 / W155** — no `hidden` beside an unprefixed display utility, no property set twice at one variant (`py-5 pr-6 pl-7`, not `px-6 pl-7`); a different face is a `Button` variant.
 - **W121 / W152 / W158** — no `CTA_BY_PATHNAME` entry; `DEFAULT_CTAS` points at T2's `#request-form`; the e2e asserts the header CTA href.
-- **W123 / W124** — the OG image is the `careers`/`careersDetail` template image; `sys.seo.careersDetail.title` is argument-free; the detail's own title/description win.
+- **W123 / W124 / W169** — the index's OG image is `/og/{locale}/careers.png` (CDN-cached); the detail passes that same image through `openGraph.images` and no `sys.seo.careersDetail.*` key exists (the OG route renders `sys.seo.<pageKey>.title` without arguments, so the per-opening title template lives at `sys.careers.detail.metaTitle`, never under `sys.seo.*`; a test pins `sys.seo.careersDetail` absent — W169, T12's blog-article pattern); the detail's own title/description win.
 - **W125 / W130 / W134 / W147 / W156** — primitives, blocks and `formatDate` by module path in every module; no server module imports `@/analytics/useContactClick`; client modules import only types from `@/lib/careers-pure`.
 - **W126** — one build, one start, one gate as the proof (Cycle 6).
 - **W128a** — `text-text-tertiary`, never `text-muted`, for text.
@@ -134,6 +134,8 @@ Produces (later tasks rely on these):
 - **W150** — no D17 dated badge on either route; `revalidate = 300` is the openings floor.
 - **W151** — an unknown slug answers 404 with Next's shell; the chrome appears after hydration (the e2e waits for it).
 - **W154** — every new `sys.*` string names "JobsAdmire", never "we"/"biz" (`src/messages/voice.test.ts`); the visitor-voice WhatsApp prefills are first-person singular.
+- **W176** — the PRD §11 "Not yet built" sentence decrements "3 of the 14 core pages" → "2 of the 14 core pages", anchored on T10's exact post-edit text with a stop-and-report guard (Cycle 4); T12 decrements from the "2" this task leaves.
+- **W178** — `sys.form.hints.portfolioUrl` is rewritten in both locales to accept a scheme-less link (EN "A web address, e.g. behance.net/yourname." / TR "Bir web adresi, ör. behance.net/adiniz."), pinned by `copy.test.ts` (Cycle 2); `portfolioUrlProblem` already mirrors the door's scheme-less acceptance (W161).
 - **R15** — the page's own copies of chrome strings (`jt.001`–`020`, `116`, `118`–`142`) are never rendered; **R28** — one failure class for the Operations feed (`OpeningsUnavailableError`, like `BundleUnavailableError`); **R35** — the analytics `page` is `next/navigation`'s pathname.
 - **D13** (success → `/tesekkurler?form=careers`), **D15** (JobPosting on the detail only; token-bearing candidate pages stay on Operations and are not linked), **D17** (no invented date or number), **D23** (no fixture served), **D26** (one named LCP slot per page, never a placeholder — this page has no image slot).
 
@@ -1106,7 +1108,6 @@ const leaves = (o: unknown, prefix = ''): [string, string][] =>
 const EXPECTED = [
   'seo.careers.title',
   'seo.careers.description',
-  'seo.careersDetail.title',
   'careers.hero.hiringCount',
   'careers.hero.seeOpenings',
   'careers.filters.all',
@@ -1159,7 +1160,7 @@ const careersKeys = (sys: unknown) =>
 
 describe('sys.careers.* and sys.seo.careers* (W9/W23)', () => {
   it('both locales carry exactly this key set, and no value is empty', () => {
-    expect(EXPECTED).toHaveLength(45);
+    expect(EXPECTED).toHaveLength(44);
     for (const [locale, sys] of Object.entries(LOCALES)) {
       const keys = careersKeys(sys);
       expect([...keys.keys()].sort(), locale).toEqual([...EXPECTED].sort());
@@ -1200,16 +1201,27 @@ describe('sys.careers.* and sys.seo.careers* (W9/W23)', () => {
     }
   });
 
-  it('the titles the OG image route reads take no argument (it calls them without values)', () => {
+  it('the OG route reads sys.seo.<pageKey>.title without values: the index title is argument-free and the template page has no sys.seo key at all (W169, T12 pattern)', () => {
     for (const sys of Object.values(LOCALES)) {
       expect(sys.seo.careers.title).not.toContain('{');
-      expect(sys.seo.careersDetail.title).not.toContain('{');
+      // W169: the detail's OG image is the index's /og/<locale>/careers.png (openGraph.images) and
+      // its title template is sys.careers.detail.metaTitle; a `sys.seo.careersDetail.title` would
+      // be drawn raw — `{title}` — on /og/<locale>/careersDetail.png.
+      expect('careersDetail' in sys.seo).toBe(false);
     }
   });
 
   it('the careers thank-you line fits a per-opening application (D13)', () => {
     expect(en.sys.thankYou.forms.careers).not.toMatch(/suitable role opens/);
     expect(tr.sys.thankYou.forms.careers).not.toMatch(/pozisyon açıldığında/);
+  });
+
+  it('the portfolio hint accepts a scheme-less link — the door adds https:// itself (W178, W161)', () => {
+    expect(en.sys.form.hints.portfolioUrl).toBe('A web address, e.g. behance.net/yourname.');
+    expect(tr.sys.form.hints.portfolioUrl).toBe('Bir web adresi, ör. behance.net/adiniz.');
+    for (const sys of Object.values(LOCALES)) {
+      expect(sys.form.hints.portfolioUrl).not.toContain('https://');
+    }
   });
 });
 ```
@@ -1313,14 +1325,14 @@ describe('heroRoles', () => {
 - [ ] **Step 2: Run to verify they fail**
 
 ```bash
-cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1 "src/app/\[locale\]/(site)/careers/__tests__"
+cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1 "src/app/[locale]/(site)/careers/__tests__"
 ```
 
-Expected: `roles.test.ts` FAILS to import (`Cannot find module '../_lib/roles'`); `copy.test.ts` FAILS its key-set, argument and OG cases (no `careers` keys yet) and the thank-you case (the WP1 line still says "when a suitable role opens").
+Expected: `roles.test.ts` FAILS to import (`Cannot find module '../_lib/roles'`); `copy.test.ts` FAILS its key-set, argument and OG cases (no `careers` keys yet), the thank-you case (the WP1 line still says "when a suitable role opens") and the portfolio-hint case (the WP1 hint still demands `https://`, W178).
 
 - [ ] **Step 3: Implement**
 
-`src/messages/en.json` — three edits inside `"sys"`:
+`src/messages/en.json` — four edits inside `"sys"`:
 
 1. Inside the existing `"seo"` object (beside `"ogTagline"` and the page keys earlier tasks added), add:
 
@@ -1328,11 +1340,10 @@ Expected: `roles.test.ts` FAILS to import (`Cannot find module '../_lib/roles'`)
 "careers": {
   "title": "Careers at JobsAdmire — roles in Antalya and in the source countries",
   "description": "Work for JobsAdmire: overseas representatives in the source countries and the Antalya office team. Full-time, part-time or per project; every application gets an answer."
-},
-"careersDetail": {
-  "title": "Open role at JobsAdmire"
 }
 ```
+
+(No `"careersDetail"` entry, W169: the OG route reads `sys.seo.<pageKey>.title` without values, so the per-opening title template lives at `sys.careers.detail.metaTitle`, never under `sys.seo.*`, and the detail reuses the index's OG image.)
 
 2. In `"thankYou"` → `"forms"`, replace the value of `"careers"` with:
 
@@ -1413,7 +1424,13 @@ Expected: `roles.test.ts` FAILS to import (`Cannot find module '../_lib/roles'`)
 }
 ```
 
-`src/messages/tr.json` — the same three edits (formal "siz" register; "JobsAdmire" is the subject, never "biz" — W154):
+4. In `"form"` → `"hints"`, replace the value on the line `"portfolioUrl": "A link starting with https://."` (W178: the door adds `https://` to a scheme-less link before its checks — W161 — so the hint must not demand one; the placeholder `sys.form.placeholders.portfolioUrl` stays as the foundation has it):
+
+```json
+"portfolioUrl": "A web address, e.g. behance.net/yourname."
+```
+
+`src/messages/tr.json` — the same four edits (formal "siz" register; "JobsAdmire" is the subject, never "biz" — W154):
 
 1. In `"seo"`:
 
@@ -1421,9 +1438,6 @@ Expected: `roles.test.ts` FAILS to import (`Cannot find module '../_lib/roles'`)
 "careers": {
   "title": "JobsAdmire'da kariyer — Antalya'da ve kaynak ülkelerde pozisyonlar",
   "description": "JobsAdmire'da çalışın: kaynak ülkelerde yurt dışı temsilcileri ve Antalya ofis ekibi. Tam zamanlı, yarı zamanlı ya da proje bazlı; her başvuru yanıt alır."
-},
-"careersDetail": {
-  "title": "JobsAdmire'da açık pozisyon"
 }
 ```
 
@@ -1504,6 +1518,12 @@ Expected: `roles.test.ts` FAILS to import (`Cannot find module '../_lib/roles'`)
     "email": "E-postayı yazın"
   }
 }
+```
+
+4. In `"form"` → `"hints"`, replace the value on the line `"portfolioUrl": "https:// ile başlayan bir bağlantı."` (W178, as in English):
+
+```json
+"portfolioUrl": "Bir web adresi, ör. behance.net/adiniz."
 ```
 
 (Every apostrophe above sits before a letter, which ICU MessageFormat reads as a literal; none precedes `{`, `}` or `#`.)
@@ -1614,7 +1634,7 @@ export const heroRoles = (cards: readonly RoleCard[]): RoleCard[] =>
 `docs/CONTENT-MODEL.md` — append one bullet to the per-page `sys.*` bullet list at the end of `### Adding copy (W9, W23, W54)` (after the last bullet an earlier task added, before the heading `### Deliberately-empty Turkish fragments`):
 
 ```markdown
-- **Careers index + detail (`sys.careers.*`, `sys.seo.careers.{title,description}`, `sys.seo.careersDetail.title`, WP2b T11):** `hero.{hiringCount,seeOpenings}` (ICU counts over the live openings — they replace `jt.287`/`jt.288` and `jt.025`, whose Turkish hard-types "dört", W1), `filters.all`, `roles.{resultAll,posted}` (ICU / `{date}`), `roles.{resultFiltered,showMore}` (plain `{shown}`/`{total}`/`{count}` templates the `RolesList` island fills itself — the page reads them with `sys.raw`, so `careers` stays out of `CLIENT_SYS`, W148), `workMode.{REMOTE,HYBRID,ON_SITE}`, `salary.{range,from,upTo}` + `salary.per.{HOUR,DAY,WEEK,MONTH,YEAR}` (the detail's pay line; the money itself goes through `formatTRY` or Intl), `empty.{title,body}` (W6), `apply.{whatsapp,emailSubject}` (the W3 open application), `detail.{metaTitle,metaDescription,about,back,applyLead,whatsappIntro}` + `detail.facts.{title,location,workMode,languages,salary,posted}`, `form.{residency,expectedSalaryHint,closed,portfolioGate}`, `emailPanel.{title,body,subject,email}` (the W56 portfolio branch). `seo.careersDetail.title` is argument-free because the OG image route reads it without values; the per-opening `<title>` is `careers.detail.metaTitle`. `sys.thankYou.forms.careers` was rewritten for the per-opening application. Package ids never rendered: `jt.144`–`244` (the nine fixture roles, D23), `jt.289`–`301` (the country chips → `sourceCountries`, D17), `jt.025`, `287`, `288`, `302`–`305`, `307`, `308` (composed counts → ICU), `jt.047`, `085`, `105`–`107` (Operations links, W89), `jt.097`–`102`, `108`–`110`, `284`, `285`, `313`–`321` (the speculative form, W3), `jt.050`, `051`, `309`, `310` (the expand panel — the API has one description), `jt.114` (the literal mailbox — `settings.careersEmail`, W102), `jt.143`, and the chrome copies `jt.001`–`020`, `116`, `118`–`142` (R15).
+- **Careers index + detail (`sys.careers.*`, `sys.seo.careers.{title,description}`, WP2b T11):** `hero.{hiringCount,seeOpenings}` (ICU counts over the live openings — they replace `jt.287`/`jt.288` and `jt.025`, whose Turkish hard-types "dört", W1), `filters.all`, `roles.{resultAll,posted}` (ICU / `{date}`), `roles.{resultFiltered,showMore}` (plain `{shown}`/`{total}`/`{count}` templates the `RolesList` island fills itself — the page reads them with `sys.raw`, so `careers` stays out of `CLIENT_SYS`, W148), `workMode.{REMOTE,HYBRID,ON_SITE}`, `salary.{range,from,upTo}` + `salary.per.{HOUR,DAY,WEEK,MONTH,YEAR}` (the detail's pay line; the money itself goes through `formatTRY` or Intl), `empty.{title,body}` (W6), `apply.{whatsapp,emailSubject}` (the W3 open application), `detail.{metaTitle,metaDescription,about,back,applyLead,whatsappIntro}` + `detail.facts.{title,location,workMode,languages,salary,posted}`, `form.{residency,expectedSalaryHint,closed,portfolioGate}`, `emailPanel.{title,body,subject,email}` (the W56 portfolio branch). No `seo.careersDetail.*` key exists, on purpose (W169): the OG image route reads `sys.seo.<pageKey>.title` without values, so the per-opening `<title>` template is `careers.detail.metaTitle` and the detail page reuses the index's OG image `/og/{locale}/careers.png` (the blog article's pattern). `sys.thankYou.forms.careers` was rewritten for the per-opening application, and `sys.form.hints.portfolioUrl` was rewritten in both locales to accept a scheme-less link (W178). Package ids never rendered: `jt.144`–`244` (the nine fixture roles, D23), `jt.289`–`301` (the country chips → `sourceCountries`, D17), `jt.025`, `287`, `288`, `302`–`305`, `307`, `308` (composed counts → ICU), `jt.047`, `085`, `105`–`107` (Operations links, W89), `jt.097`–`102`, `108`–`110`, `284`, `285`, `313`–`321` (the speculative form, W3), `jt.050`, `051`, `309`, `310` (the expand panel — the API has one description), `jt.114` (the literal mailbox — `settings.careersEmail`, W102), `jt.143`, and the chrome copies `jt.001`–`020`, `116`, `118`–`142` (R15).
 ```
 
 - [ ] **Step 4: Verify**
@@ -1623,7 +1643,7 @@ export const heroRoles = (cards: readonly RoleCard[]): RoleCard[] =>
 cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && npx prettier --write src/messages/en.json src/messages/tr.json "src/app/[locale]/(site)/careers" docs/CONTENT-MODEL.md && npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1
 ```
 
-Expected: green — `copy.test.ts` (5) and `roles.test.ts` (3); `src/messages/messages.test.ts` (identical TR/EN key sets), `src/messages/voice.test.ts` (no first-person plural in any `sys.*` value — W154) and `src/i18n/client-messages.test.ts` (no client module reads `sys.careers`, so `CLIENT_SYS` is unchanged — W148) stay green.
+Expected: green — `copy.test.ts` (6) and `roles.test.ts` (3); `src/messages/messages.test.ts` (identical TR/EN key sets), `src/messages/voice.test.ts` (no first-person plural in any `sys.*` value — W154) and `src/i18n/client-messages.test.ts` (no client module reads `sys.careers`, so `CLIENT_SYS` is unchanged — W148) stay green.
 
 - [ ] **Step 5: Commit**
 
@@ -1631,9 +1651,10 @@ Expected: green — `copy.test.ts` (5) and `roles.test.ts` (3); `src/messages/me
 git add src/messages/en.json src/messages/tr.json "src/app/[locale]/(site)/careers/_lib/roles.ts" "src/app/[locale]/(site)/careers/__tests__/copy.test.ts" "src/app/[locale]/(site)/careers/__tests__/roles.test.ts" docs/CONTENT-MODEL.md
 git commit -m "feat(careers): sys.careers copy, the careers SEO fallbacks and the index view model (T11 c2)
 
-sys.careers.* and sys.seo.careers* in both locales (W9/W23, W154 voice); the OG-read titles are
-argument-free; the two island templates are plain {token} strings (W148); the careers thank-you
-line fits a per-opening application (D13). roleCards/heroRoles resolve every string on the
+sys.careers.* and sys.seo.careers in both locales (W9/W23, W154 voice); the OG-read index title
+is argument-free and no sys.seo.careersDetail exists (W169, T12's template-page pattern); the two island templates are plain {token} strings (W148); the careers thank-you
+line fits a per-opening application (D13); sys.form.hints.portfolioUrl accepts a scheme-less
+link in both locales (W178, the door adds https://). roleCards/heroRoles resolve every string on the
 server — the island gets data only. CONTENT-MODEL: the careers bullet.
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
@@ -1943,7 +1964,7 @@ describe('the index as a whole (W8/W89, one h1)', () => {
 - [ ] **Step 2: Run to verify they fail**
 
 ```bash
-cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1 "src/app/\[locale\]/(site)/careers/__tests__/sections.test.tsx"
+cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1 "src/app/[locale]/(site)/careers/__tests__/sections.test.tsx"
 ```
 
 Expected: FAILS to import `../_sections/Hero` (and the other section modules).
@@ -2880,7 +2901,7 @@ export default async function CareersPage({ params }: { params: Promise<{ locale
 
 `src/lib/seo/routes.ts` — in the `UNBUILT_PATHNAMES` initialiser delete the line `'/careers',` (only that one; `'/careers/[slug]',` leaves in Cycle 4 with the detail page, so `unbuilt.test.ts` is green at every commit).
 
-`e2e/routes.ts` — inside `GATE_ROUTE_TABLE`, after the last page row an earlier task added and before the comment `// The conversion page (D13): nobody lands on it cold, so Lighthouse never audits it.`, add:
+`e2e/routes.ts` — inside `GATE_ROUTE_TABLE`, immediately before the comment line `// The conversion page (D13): nobody lands on it cold, so Lighthouse never audits it.` (after T7's and T10's rows, which sit there; T13, T3–T6, T8 and T9 appended theirs after the conversion row — order is irrelevant to every consumer, W21), add:
 
 ```ts
   { path: '/kariyer', indexable: true },
@@ -3455,7 +3476,7 @@ describe('the package ids both careers routes read (W9/W23)', () => {
 - [ ] **Step 2: Run to verify they fail**
 
 ```bash
-cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1 "src/app/\[locale\]/(site)/careers"
+cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1 "src/app/[locale]/(site)/careers"
 ```
 
 Expected: `apply.test.ts` and `detail.test.tsx` FAIL to import (`Cannot find module '../_lib/apply'`, `'../_lib/view'`, `'../_sections/ApplySection'`); `ids.test.ts` FAILS its count (`expected 122 to be 124` — the index reads 122 ids; `jt.103` and `jt.117` arrive with the detail); the Cycle 2–3 files stay green.
@@ -4135,7 +4156,7 @@ import {
 import { JsonLd } from '@/lib/seo/JsonLdScript';
 import { jobPostingJsonLd } from '@/lib/seo/jsonld';
 import { buildMetadata } from '@/lib/seo/metadata';
-import { absoluteUrl } from '@/lib/seo/routes';
+import { absoluteUrl, pageOgImageUrl } from '@/lib/seo/routes';
 import { HiringSteps } from '../_sections/HiringSteps';
 import { submitCareersApplication } from './actions';
 import { openingView } from './_lib/view';
@@ -4180,6 +4201,10 @@ export async function generateMetadata({ params }: { params: Params }): Promise<
       sys('careers.detail.metaDescription', { title: opening.title, location }),
     // W17/D16: the Operations slug is the same in both locales — both alternates named.
     alternates: { tr: href, en: href },
+    // W169: the OG route draws `sys.seo.<pageKey>.title` without values, so a template page cannot
+    // carry a per-opening OG title: every opening shares the index's image (T12's pattern) and
+    // its title template is `sys.careers.detail.metaTitle`, never a `sys.seo.*` key.
+    openGraph: { images: [pageOgImageUrl(locale, 'careers')] },
   });
 }
 
@@ -4266,7 +4291,7 @@ export default async function CareerDetailPage({ params }: { params: Params }) {
 1. Append one row to the `## Pages` table (after the careers index row):
 
 ```markdown
-| Careers detail | `/kariyer/<slug>` · `/en/careers/<slug>` | `sys.careers.detail.metaTitle` (`{title}`) / the opening's first paragraph (≤ 155 characters), else `sys.careers.detail.metaDescription` — W124: the `careersDetail` template record carries no per-page SEO field; OG `/og/{locale}/careersDetail.png`, titled from the argument-free `sys.seo.careersDetail.title` | `absoluteUrl(locale, { pathname: '/careers/[slug]', params: { slug } })`; `alternates: { tr, en }` = the same Operations slug (W17/D16) | `BreadcrumbList` (Home → Join Our Team → the role); `JobPosting` from `jobPostingJsonLd` (see § JSON-LD) | `h1` (`data-lcp-slot="h1"` — the opening's title) | prerendered for the live slugs (`generateStaticParams`), later ones on demand, `revalidate = 300`; an unknown slug → 404 (W151); the apply form → `careers` |
+| Careers detail | `/kariyer/<slug>` · `/en/careers/<slug>` | `sys.careers.detail.metaTitle` (`{title}`) / the opening's first paragraph (≤ 155 characters), else `sys.careers.detail.metaDescription` — W124: the `careersDetail` template record carries no per-page SEO field; OG = the index's `/og/{locale}/careers.png` through `openGraph.images` (no `sys.seo.careersDetail.*`, W169 — the OG route would draw a `{title}` template raw) | `absoluteUrl(locale, { pathname: '/careers/[slug]', params: { slug } })`; `alternates: { tr, en }` = the same Operations slug (W17/D16) | `BreadcrumbList` (Home → Join Our Team → the role); `JobPosting` from `jobPostingJsonLd` (see § JSON-LD) | `h1` (`data-lcp-slot="h1"` — the opening's title) | prerendered for the live slugs (`generateStaticParams`), later ones on demand, `revalidate = 300`; an unknown slug → 404 (W151); the apply form → `careers` |
 ```
 
 2. In `## JSON-LD`, directly after the target-set table (before `## OG images`), add:
@@ -4278,7 +4303,7 @@ export default async function CareerDetailPage({ params }: { params: Params }) {
 `docs/ANALYTICS.md` — append one bullet to `### Page instrumentation (WP2b)` (after the last page bullet):
 
 ```markdown
-- **Careers (`/kariyer`, `/en/careers`; `/kariyer/<slug>`, `/en/careers/<slug>`; T11):** index — `whatsapp_click` (`page_cta`) from each role's "Ask a question first" (a prefill carrying only the role's title and location — page data, W95) and from the open application's "Apply on WhatsApp"; `email_click` (`page_cta`) from "Email CV instead" and the FAQ footer's careers mailbox. Detail — `career_apply_start` `{ page, locale, slug }` once per page view on the first focus inside the apply form (`ApplyStartPing`; `slug` = the opening's public URL segment, ≤ 80 characters, W67); `whatsapp_click` (`page_cta`) from the hero's "Ask a question first" and the portfolio panel's WhatsApp; `email_click` (`page_cta`) from the portfolio panel's e-mail; the fallback panel's `whatsapp_click` / `call_click` / `email_click` with `form_fallback`; `generate_lead` + `conversion` for `form_key: 'careers'` on `/tesekkurler?form=careers` (D13). The filters, show-more, the role links and the hero role card fire nothing. No new event or parameter.
+- **Careers (`/kariyer`, `/en/careers`; `/kariyer/<slug>`, `/en/careers/<slug>`; T11):** index — `whatsapp_click` (`page_cta`) from each role's "Ask a question first" (a prefill carrying only the role's title and location — page data, W95) and from the open application's "Apply on WhatsApp"; `email_click` (`page_cta`) from "Email CV instead" and the FAQ footer's careers mailbox. Detail — `career_apply_start` `{ page, locale, slug }` once per page view on the first focus inside the apply form (`ApplyStartPing`; `slug` = the opening's public URL segment, ≤ 80 characters, W67); `whatsapp_click` (`page_cta`) from the hero's "Ask a question first" and the portfolio panel's WhatsApp; `email_click` (`page_cta`) from the portfolio panel's e-mail; the fallback panel's `whatsapp_click` / `call_click` / `email_click` with `form_fallback`; `conversion` for `form_key: 'careers'` from `ConversionPing` on `/tesekkurler?form=careers` (D13; `generate_lead` has no caller yet — T14 wires it beside `conversion` there) — the page fires neither itself. The filters, show-more, the role links and the hero role card fire nothing. No new event or parameter.
 ```
 
 `docs/INTEGRATIONS.md` — under `## I5 — Staff application + CV proxy`, insert this paragraph text directly BEFORE the paragraph's final sentence "`CareersPublicModule` exports `apply` (done in WP3a)." (keep that sentence last and verbatim — T14 anchors on it):
@@ -4290,7 +4315,7 @@ export default async function CareerDetailPage({ params }: { params: Params }) {
 `docs/PRD.md` — two in-place edits (W45; `grep -n 'Join Our Team (careers index)\|Careers detail\|Not yet built' docs/PRD.md`):
 
 1. §2 table: the last cell of the row whose page cell is `Join Our Team (careers index)` becomes `Live openings from the Operations public careers API (W6 empty state when none); staff application via careers detail (`CAREERS_APPLY`); the speculative "No matching role?" application is WhatsApp + e-mail only in Phase A (W3); nothing links to Operations (W8)`; the last cell of the row whose page cell is `Careers detail` becomes `Staff application (`CAREERS_APPLY`): PDF CV (≤ 3 MB), the opening's residency lock, an expected salary for Pakistan openings, apply-by-e-mail for portfolio openings (W3/W56); `JobPosting` JSON-LD (D15)`.
-2. §11, the sentence that begins "**Not yet built, by design (WP2 and later):**": in whatever wording T1, T13 and T2–T10 left it, count the careers index + detail as built — decrement the "N of the 14 core pages" figure by one and add "Careers index + detail (WP2b T11)" to the list of designed pages the sentence names — keeping the rest of the sentence as it stands.
+2. §11, the sentence that begins "**Not yet built, by design (WP2 and later):**": T10 left it opening "3 of the 14 core pages (…)" and naming "Verify Representative (WP2b T10)" directly after T9's "Success Stories (WP2b T9)" (W176's chain: T13 12 → 11, T2 keeps 11, T3 10, T4 9, T5 8, T6 7, T7 6, T8 5, T9 4, T10 3). Count the careers index + detail as built — it is one of the 14 core pages (§2 row 8; the detail is its template page) — replace "3 of the 14 core pages" with "2 of the 14 core pages" and add "Careers index + detail (WP2b T11)" to the list of designed pages that sentence names, directly after T10's "Verify Representative (WP2b T10)" clause — keeping the rest of the sentence as it stands (never re-add WP1 wording). **Stop-and-report guard (W176):** if the sentence does not open with "3 of the 14 core pages" and name "Verify Representative (WP2b T10)", an earlier task deviated — do not decrement from whatever figure it carries; stop and report the sentence's exact text to the controller. T12 decrements from the "2" this task leaves (its two pages, 2 → 0).
 
 - [ ] **Step 4: Verify**
 
@@ -4308,7 +4333,8 @@ git commit -m "feat(careers): the careers detail — JobPosting, the apply form 
 
 generateStaticParams over the live slugs (both locales), on-demand for later ones, notFound for
 an unknown slug (W151); the page's own title/description win over the careersDetail template
-record (W124) and name both alternates (W17); JobPosting from the live opening, no validThrough
+record (W124), name both alternates (W17) and reuse the index's OG image (W169: the OG route
+takes no title argument); JobPosting from the live opening, no validThrough
 (D15/D17). The action re-reads the opening, enforces closed/portfolio/residency/PK before the
 CV upload (W56, owner rules), sends catalog v1.0 + v1.1 names only (W16/W161), consent checkbox
 to /privacy (W79/W102). career_apply_start once per view (W67). '/careers/[slug]' leaves
@@ -4584,7 +4610,7 @@ test.describe('careers — the fixture door (E2E_CAREERS_MOCK=1)', () => {
     );
     await expect(page.locator('meta[property="og:image"]').first()).toHaveAttribute(
       'content',
-      `${ORIGIN}/og/tr/careersDetail.png`,
+      `${ORIGIN}/og/tr/careers.png`,
     );
     await expectNoLeaks(page);
     const axe = await new AxeBuilder({ page }).withTags(['wcag2a', 'wcag2aa', 'wcag22aa']).analyze();
@@ -5028,7 +5054,7 @@ If step 7 prints a `next-server` line (npm's child can outlive its parent), `kil
 Expected:
 - `npm run gate` → `gate: OK`. Playwright green on both projects: every existing spec; `e2e/pages/careers.spec.ts` — the five index cases per locale, the unknown-slug case (404, then the chrome), the seven fixture-door cases (filters, the detail page with its `JobPosting` and axe, the apply flow ending on the `unauthorized` panel with `career_apply_start` fired once, the Pakistan salary rule, the portfolio e-mail panel, the sitemap); the "configured door, read only" case skipped (fixture run). axe: zero violations over every `GATE_ROUTES` path at both projects and the `region` rule at 390/1000/1440. Width sweep clean at every width (the role cards stack below `md`, the country chips wrap). `e2e/seo.spec.ts`: `/kariyer` and `/en/careers` canonical/hreflang, both in the sitemap, and every sitemap `<loc>` — the ten fixture detail URLs included — answers 200.
 - `gate-routes` printed no "detail rows skipped" line: Lighthouse audited `/kariyer/work-permit-officer-antalya` and `/en/careers/work-permit-officer-antalya` besides the indexable table (W93). Every audited route: performance ≥ 0.95, accessibility / best practices / SEO = 1.00, script ≤ 204,800 B, LCP ≤ 2,500 ms, CLS ≤ 0.1 (medians of three DevTools-throttled runs, W145).
-- `npm run js-size`, projected: `/kariyer` ≈ 179–183 KB and `/en/careers` ≈ 176–180 KB (the shell plus `RolesList`, `RadioChips` and `ContactLink`, ≈ 3–5 KB); the two detail routes ≈ 184–189 KB (the shell plus the forms kernel, ≈ 7.5 KB, and `ApplyStartPing`). **A route above 194,560 B stops the task:** record it in the ledger row and raise it with the controller before T12 starts (W13 amended) — the fix is a reviewed lazy pass (the detail's form sits below the fold, a `LazyIsland` candidate), never a quiet edit inside this proof.
+- `npm run js-size`, projected: `/kariyer` ≈ 179–183 KB and `/en/careers` ≈ 176–180 KB (the shell plus `RolesList`, `RadioChips` and `ContactLink`, ≈ 3–5 KB); the two detail routes ≈ 184–189 KB (the shell plus the forms kernel, ≈ 7.5 KB, and `ApplyStartPing`). **A LOCAL route figure ≥ 191,724 B stops the task and reports (W162 — the binding line is 194,560 B on the preview's `npm run js-size`, which runs ≈ 2,836 B above the local build, so the local trigger is 194,560 − 2,836 = 191,724 B; the controller's binding preview decides at 194,560 B):** record the figure in the ledger row and raise it with the controller before T12 starts (W13 amended) — this task writes no lazy cycle in advance (the projection is ≤ 189 KB); the controller schedules the reviewed lazy pass (the detail's form sits below the fold, a `LazyIsland` candidate), never a quiet edit inside this proof.
 - Step 6 prints, per careers route, the snippet of the element Lighthouse named. Expected on both detail routes: the `<h1 data-testid="page-h1" data-lcp-slot="h1" …>`. On the index the hero's lead paragraph can outgrow a two-line h1 on a narrow viewport: if a snippet there is the `<p data-testid="careers-hero-lead" …>`, move the attribute in `src/app/[locale]/(site)/careers/_sections/Hero.tsx` — drop `data-lcp-slot="h1"` from the `<h1>` and add `data-lcp-slot="hero-lead"` to that `<p>` (the page still carries exactly one slot, so `sections.test.tsx`, the e2e and `scripts/placeholder-count.ts` stay green) — and change the careers index row's LCP cell in `docs/SEO.md` to name `p.careers-hero-lead` (`data-lcp-slot="hero-lead"`). If a detail route names a description paragraph instead, keep the attribute on the h1 (the description is per-opening content, not a slot) and say so in the ledger row. Any such edit is committed in Step 4 with the ledger, after the verify line.
 
 - [ ] **Step 3: Implement — the ledger row**
@@ -5036,7 +5062,7 @@ Expected:
 `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — append the T11 row to the `## Ledger` table (T1's row format), every `<…>` filled from Step 2 (`npm run js-size`'s table, `lighthouse-report/`, the Step 6 output):
 
 ```markdown
-| T11 Careers index + detail | `/kariyer` · `/en/careers`; W93 fixture detail `/kariyer/work-permit-officer-antalya` · `/en/careers/work-permit-officer-antalya` (fixture door, W112) | js-size (local, fixture-door build): `/kariyer` <n> B · `/en/careers` <n> B · detail TR <n> B · detail EN <n> B (ceiling 204,800; lazy line 194,560); binding preview: <added by the controller> | LH mobile, median of 3, DevTools throttling (local rc = production): `/kariyer` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (<element from Step 6>) · CLS <n>; `/en/careers` perf <x.xx> · LCP <n> ms · CLS <n>; detail TR perf <x.xx> · LCP <n> ms (<element>) · CLS <n>; detail EN perf <x.xx> · LCP <n> ms · CLS <n> | pixel: n/a — not a D27 page (side-by-side review against named deltas 1–12); deltas: (a) D20 faces — the blue-safe hero-card header, success-text badges and step 7, #a9b5d8 greys, underlined inline links; (b) the live list linking to a new detail page (no expand panel), ICU counts, static ways, the two-column FaqBlock, the WhatsApp/e-mail open application, no Operations link; (c) the W6 empty state on a door-less face |
+| T11 Careers index + detail | `/kariyer` · `/en/careers`; W93 fixture detail `/kariyer/work-permit-officer-antalya` · `/en/careers/work-permit-officer-antalya` (fixture door, W112) | js-size (local, fixture-door build): `/kariyer` <n> B · `/en/careers` <n> B · detail TR <n> B · detail EN <n> B (ceiling 204,800; binding lazy line 194,560, local trigger 191,724 — W162); binding preview: <added by the controller> | LH mobile, median of 3, DevTools throttling (local rc = production): `/kariyer` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (<element from Step 6>) · CLS <n>; `/en/careers` perf <x.xx> · LCP <n> ms · CLS <n>; detail TR perf <x.xx> · LCP <n> ms (<element>) · CLS <n>; detail EN perf <x.xx> · LCP <n> ms · CLS <n> | pixel: n/a — not a D27 page (side-by-side review against named deltas 1–12); deltas: (a) D20 faces — the blue-safe hero-card header, success-text badges and step 7, #a9b5d8 greys, underlined inline links; (b) the live list linking to a new detail page (no expand panel), ICU counts, static ways, the two-column FaqBlock, the WhatsApp/e-mail open application, no Operations link; (c) the W6 empty state on a door-less face | <YYYY-MM-DD> |
 ```
 
 - [ ] **Step 4: Verify**
@@ -5069,23 +5095,23 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 **Docs in this task:**
 - `docs/ARCHITECTURE.md` — § Freshness: the careers openings paragraph (the read, the tag and floor, the failure policy — Cycle 1); § Quality gate item 2: the careers fixture door (Cycle 5).
 - `docs/INTEGRATIONS.md` — I6 rewritten as built (Cycle 1); I5 gains the as-built paragraph before its final sentence "`CareersPublicModule` exports `apply` (done in WP3a).", which stays last and verbatim for T14 (Cycle 4).
-- `docs/CONTENT-MODEL.md` — the careers bullet at the end of `### Adding copy (W9, W23, W54)`: the `sys.careers.*`/`sys.seo.careers*` keys and the never-rendered package ids (Cycle 2).
+- `docs/CONTENT-MODEL.md` — the careers bullet at the end of `### Adding copy (W9, W23, W54)`: the `sys.careers.*`/`sys.seo.careers*` keys, the rewritten `sys.form.hints.portfolioUrl` (W178) and the never-rendered package ids (Cycle 2).
 - `docs/SEO.md` — two `## Pages` rows (index in Cycle 3, detail in Cycle 4 — each names its LCP element, confirmed in Cycle 6), the `## JSON-LD` as-built `JobPosting` note (Cycle 4), the `## Sitemap` careers-source sentence (Cycle 5).
 - `docs/ANALYTICS.md` — the Careers bullet in `### Page instrumentation (WP2b)` (Cycle 4; `career_apply_start` is already in the event table since WP2a; no new event or parameter).
-- `docs/PRD.md` — §2 rows "Join Our Team (careers index)" and "Careers detail" (their last cells) and the §11 "Not yet built" sentence (Cycle 4).
+- `docs/PRD.md` — §2 rows "Join Our Team (careers index)" and "Careers detail" (their last cells) and the §11 "Not yet built" sentence ("3 of the 14 core pages" → "2 of the 14 core pages", anchored on T10's post-edit text with the W176 guard; Cycle 4).
 - `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — the T11 `## Ledger` row (Cycle 6).
 - No Operations doc change: the `careers` contract (v1.0 + v1.1) and PRD §5.12 are unchanged by this task; the website only consumes them.
 
-**Sys keys added (45, identical key sets in `src/messages/tr.json` and `src/messages/en.json`, pinned by `careers/__tests__/copy.test.ts`):** `sys.seo.careers.title`, `sys.seo.careers.description`, `sys.seo.careersDetail.title`, `sys.careers.hero.hiringCount`, `sys.careers.hero.seeOpenings`, `sys.careers.filters.all`, `sys.careers.roles.resultAll`, `sys.careers.roles.resultFiltered`, `sys.careers.roles.showMore`, `sys.careers.roles.posted`, `sys.careers.workMode.REMOTE`, `sys.careers.workMode.HYBRID`, `sys.careers.workMode.ON_SITE`, `sys.careers.salary.range`, `sys.careers.salary.from`, `sys.careers.salary.upTo`, `sys.careers.salary.per.HOUR`, `sys.careers.salary.per.DAY`, `sys.careers.salary.per.WEEK`, `sys.careers.salary.per.MONTH`, `sys.careers.salary.per.YEAR`, `sys.careers.empty.title`, `sys.careers.empty.body`, `sys.careers.apply.whatsapp`, `sys.careers.apply.emailSubject`, `sys.careers.detail.metaTitle`, `sys.careers.detail.metaDescription`, `sys.careers.detail.about`, `sys.careers.detail.back`, `sys.careers.detail.applyLead`, `sys.careers.detail.whatsappIntro`, `sys.careers.detail.facts.title`, `sys.careers.detail.facts.location`, `sys.careers.detail.facts.workMode`, `sys.careers.detail.facts.languages`, `sys.careers.detail.facts.salary`, `sys.careers.detail.facts.posted`, `sys.careers.form.residency`, `sys.careers.form.expectedSalaryHint`, `sys.careers.form.closed`, `sys.careers.form.portfolioGate`, `sys.careers.emailPanel.title`, `sys.careers.emailPanel.body`, `sys.careers.emailPanel.subject`, `sys.careers.emailPanel.email`. Changed (both locales): `sys.thankYou.forms.careers` (rewritten for the per-opening application). Consumed, not added: `sys.form.labels.{name,email,phone,country,city,language,expectedSalary,cv,linkedinUrl,portfolioUrl,coverLetter}`, `sys.form.placeholders.*`, `sys.form.hints.{cv,linkedinUrl,portfolioUrl,optional,phone}`, `sys.form.errors.*`, `sys.nav.breadcrumbs`.
+**Sys keys added (44, identical key sets in `src/messages/tr.json` and `src/messages/en.json`, pinned by `careers/__tests__/copy.test.ts`):** `sys.seo.careers.title`, `sys.seo.careers.description`, `sys.careers.hero.hiringCount`, `sys.careers.hero.seeOpenings`, `sys.careers.filters.all`, `sys.careers.roles.resultAll`, `sys.careers.roles.resultFiltered`, `sys.careers.roles.showMore`, `sys.careers.roles.posted`, `sys.careers.workMode.REMOTE`, `sys.careers.workMode.HYBRID`, `sys.careers.workMode.ON_SITE`, `sys.careers.salary.range`, `sys.careers.salary.from`, `sys.careers.salary.upTo`, `sys.careers.salary.per.HOUR`, `sys.careers.salary.per.DAY`, `sys.careers.salary.per.WEEK`, `sys.careers.salary.per.MONTH`, `sys.careers.salary.per.YEAR`, `sys.careers.empty.title`, `sys.careers.empty.body`, `sys.careers.apply.whatsapp`, `sys.careers.apply.emailSubject`, `sys.careers.detail.metaTitle`, `sys.careers.detail.metaDescription`, `sys.careers.detail.about`, `sys.careers.detail.back`, `sys.careers.detail.applyLead`, `sys.careers.detail.whatsappIntro`, `sys.careers.detail.facts.title`, `sys.careers.detail.facts.location`, `sys.careers.detail.facts.workMode`, `sys.careers.detail.facts.languages`, `sys.careers.detail.facts.salary`, `sys.careers.detail.facts.posted`, `sys.careers.form.residency`, `sys.careers.form.expectedSalaryHint`, `sys.careers.form.closed`, `sys.careers.form.portfolioGate`, `sys.careers.emailPanel.title`, `sys.careers.emailPanel.body`, `sys.careers.emailPanel.subject`, `sys.careers.emailPanel.email`. Changed (both locales): `sys.thankYou.forms.careers` (rewritten for the per-opening application) and `sys.form.hints.portfolioUrl` (rewritten, not added — it accepts a scheme-less link: EN "A web address, e.g. behance.net/yourname.", TR "Bir web adresi, ör. behance.net/adiniz.", W178; pinned by `copy.test.ts`). Consumed, not added: `sys.form.labels.{name,email,phone,country,city,language,expectedSalary,cv,linkedinUrl,portfolioUrl,coverLetter}`, `sys.form.placeholders.*`, `sys.form.hints.{cv,linkedinUrl,optional,phone}`, `sys.form.errors.*`, `sys.nav.breadcrumbs`. Deliberately NOT added: `sys.seo.careersDetail.*` (pinned absent by `copy.test.ts` — W169: the OG route renders `sys.seo.<pageKey>.title` without arguments; the detail reuses `/og/{locale}/careers.png`, T12's pattern).
 
 **Package ids used:** 124, every one present in `src/content/local/catalogue.json` and in both committed bundles (pinned by `careers/__tests__/ids.test.ts`) — first `jt.005`, last `jt.312`: `jt.005`, `021`–`024`, `026`–`046`, `048`, `049`, `052`–`056`, `057`–`079`, `080`–`084`, `086`–`096`, `099`, `100`, `103`, `104`, `111`–`113`, `115`, `117`, `245`–`260`, `261`, `262`, `263`–`283`, `286`, `306`, `311`, `312`. Never rendered (asserted): `jt.001`–`004`, `006`–`020`, `116`, `118`–`142` (the chrome copies, R15); `jt.025`, `287`, `288`, `302`–`305`, `307`, `308` (composed counts → ICU, W1); `jt.047`, `085`, `105`–`107` (Operations links, W89); `jt.050`, `051`, `309`, `310` (the expand panel); `jt.097`, `098`, `101`, `102`, `108`–`110`, `284`, `285`, `313`–`321` (the speculative form, W3); `jt.114` (→ `settings.careersEmail`, W102); `jt.143`; `jt.144`–`244` (the fixture roles, D23); `jt.289`–`301` (→ `sourceCountries`, D17). Rendered as authored though flagged for the WP-C copy review: `jt.043`, `078` (legal-flagged, verbatim), `jt.046` and `264` ("you get a reference number" — the status link arrives in Operations' confirmation e-mail, not from the website door, X11), `jt.096` ("we reply within a week", parity-baselined, beside the `replySlaHours` metric), `jt.082`/`256` ("two to three weeks"), the seven step `when` labels `jt.265`, `268`, `271`, `274`, `277`, `280`, `283`.
 
 **CLIENT_SYS additions:** none. The page's two client modules call no `useTranslations`: `RolesList` receives every string resolved plus two plain `{token}` templates read on the server with `sys.raw` (W148), and `ApplyStartPing` reads only the locale and the pathname; `FormShell`/`Field`/`FallbackPanel` read `sys.form`, already listed.
 
-**Foundation gaps:** none blocking. Notes: (1) catalog v1.1 `portfolioUrl` is sent under the wire name `A/produces-final.md` § Task 8 — as built spells it, confirmed by the Task 8 report and read in the v1.1 catalog source at Operations `47a2160` (the Operations main checkout's local `main` branch is behind that commit — read the catalog with `git show 47a2160:apps/backend/src/modules/website/website-form-catalog.ts`); the site's check mirrors the door's W161 rule exactly. (2) `jobPostingJsonLd` has no `jobLocationType: 'TELECOMMUTE'` / `applicantLocationRequirements`, so a remote opening is described by its city and country only (Google's remote-job guidance wants both) — an additive builder field for a later task. (3) `jobPostingJsonLd`'s `jobLocation.city` is a required string: an opening without a city passes its country's name. (4) `Field as="select"` always prepends the `sys.form.placeholders.select` option, so the residency-locked select shows an empty choice beside the opening's country (the server refuses anything else). (5) One OG image per locale for every opening (the `careersDetail` template image, titled by the argument-free `sys.seo.careersDetail.title`) — no per-opening image. (6) How fast a publish or close reaches the site depends on Operations sending the `openings` tag to `/api/revalidate` (I2) — not verified here; the 300 s floor bounds it either way. (7) `sys.form.hints.portfolioUrl` still reads "A link starting with https://." although the door accepts a scheme-less link (W161) — advice, not a rule; left as is.
+**Foundation gaps:** none blocking. Notes: (1) catalog v1.1 `portfolioUrl` is sent under the wire name `A/produces-final.md` § Task 8 — as built spells it, confirmed by the Task 8 report and read in the v1.1 catalog source at Operations `47a2160` (re-read at the 2026-10-01 recheck: the Operations main checkout's `main` now contains that commit, so `apps/backend/src/modules/website/website-form-catalog.ts` on `main` is the source; the `careers` field list is unchanged); the site's check mirrors the door's W161 rule exactly. (2) `jobPostingJsonLd` has no `jobLocationType: 'TELECOMMUTE'` / `applicantLocationRequirements`, so a remote opening is described by its city and country only (Google's remote-job guidance wants both) — an additive builder field for a later task. (3) `jobPostingJsonLd`'s `jobLocation.city` is a required string: an opening without a city passes its country's name. (4) `Field as="select"` always prepends the `sys.form.placeholders.select` option, so the residency-locked select shows an empty choice beside the opening's country (the server refuses anything else). (5) One OG image per locale for every opening (W169) — the index's `/og/{locale}/careers.png`, passed through `openGraph.images`: the OG route renders `sys.seo.<pageKey>.title` with no ICU arguments (`ogTitle`, `src/lib/seo/og.ts`), so a template page cannot draw a per-opening title (T12's blog article does the same with `/og/{locale}/blog.png`); a per-opening image needs an OG route that takes a title (Phase B). (6) How fast a publish or close reaches the site depends on Operations sending the `openings` tag to `/api/revalidate` (I2) — not verified here; the 300 s floor bounds it either way. (7) The WP1 hint `sys.form.hints.portfolioUrl` ("A link starting with https://.") contradicted the door's scheme-less acceptance (W161); Cycle 2 rewrites it in both locales (W178). `sys.form.placeholders.portfolioUrl` ("https://") is left as the foundation has it — the ruling names the hint only.
 
 **Ledger line** (append to the `## Ledger` table in `docs/superpowers/plans/2026-09-20-wp2b-pages.md`; fill every `<…>`):
 
 ```markdown
-| T11 Careers index + detail | `/kariyer` · `/en/careers`; W93 fixture detail `/kariyer/work-permit-officer-antalya` · `/en/careers/work-permit-officer-antalya` (fixture door, W112) | js-size (local, fixture-door build): `/kariyer` <n> B · `/en/careers` <n> B · detail TR <n> B · detail EN <n> B (ceiling 204,800; lazy line 194,560; projected ≈ 179–183 / 176–180 / 184–189 KB); binding preview: <added by the controller> | LH mobile, median of 3, DevTools throttling (local rc = production): `/kariyer` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (<element>) · CLS <n>; `/en/careers` perf <x.xx> · LCP <n> ms · CLS <n>; detail TR perf <x.xx> · LCP <n> ms (<element>) · CLS <n>; detail EN perf <x.xx> · LCP <n> ms · CLS <n> | pixel: n/a — not a D27 page (side-by-side review against named deltas 1–12) |
+| T11 Careers index + detail | `/kariyer` · `/en/careers`; W93 fixture detail `/kariyer/work-permit-officer-antalya` · `/en/careers/work-permit-officer-antalya` (fixture door, W112) | js-size (local, fixture-door build): `/kariyer` <n> B · `/en/careers` <n> B · detail TR <n> B · detail EN <n> B (ceiling 204,800; binding lazy line 194,560, local trigger 191,724 — W162; projected ≈ 179–183 / 176–180 / 184–189 KB); binding preview: <added by the controller> | LH mobile, median of 3, DevTools throttling (local rc = production): `/kariyer` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (<element>) · CLS <n>; `/en/careers` perf <x.xx> · LCP <n> ms · CLS <n>; detail TR perf <x.xx> · LCP <n> ms (<element>) · CLS <n>; detail EN perf <x.xx> · LCP <n> ms · CLS <n> | pixel: n/a — not a D27 page (side-by-side review against named deltas 1–12) | <YYYY-MM-DD> |
 ```

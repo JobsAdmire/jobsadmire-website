@@ -2,26 +2,38 @@
 
 Full rationale: plan D24, WP0 item 7, WP7a. This doc is the operational reference; update it in the same change set as any deploy-pipeline or secret change.
 
-## Two Vercel projects
+## Vercel project
 
-| Project             | Status                                       | Serves                                              | Repo link                                               |
-| ------------------- | -------------------------------------------- | --------------------------------------------------- | ------------------------------------------------------- |
-| `jobsadmirewebsite` | Existing, **left untouched** through Phase A | jobsadmire.com (old site, frozen artifact)          | source repo is gone; project serves a frozen deployment |
-| `jobsadmire-web-v2` | New, created in WP0                          | Preview only until Phase A cutover, then production | this repo (`jobsadmire-website`)                        |
+One Vercel project serves the site before and after the cutover: **`jobsadmirewebsite`** (`prj_Ze3FSd1XbvNbIe2OF2UQjRZ2ZAD6`, team "Tech Admire Apps"). The owner linked this repository to that existing project on 2026-09-20; the spec's second project `jobsadmire-web-v2` was never created and no domain ever moves (W105, W173).
 
-The existing project is never touched, redeployed, or repointed before cutover — its only job before Phase A is staying up.
+| Aspect                | State                                                                                                                                                                |
+| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Domains               | `jobsadmire.com` + `www`, serving the project's production deployment                                                                                                |
+| Production deployment | The frozen old site, `dpl_hRVuY1faCQe8fQ44sqmw4t82Rs7A` (2026-02-17); its source repo is gone (the only copy is branch `main-backup` / tag `old-website-final`)      |
+| Git link              | This repo (`JobsAdmire/jobsadmire-website`), **Production Branch `main`**, held back by the two deploy guards (§ Deploy discipline) until the Phase A cutover        |
+| Previews              | Every other branch builds a preview behind Vercel Authentication (§ Deployment Protection); only the `staging` branch's preview carries the door variables (W92)     |
+| Plan                  | **Hobby** until the cutover: crons run daily at most, and Vercel Authentication is the only Deployment Protection setting. **Vercel Pro must be active before WP7a** |
+
+The frozen production deployment is never redeployed, replaced or repointed before the cutover — its only job before Phase A is staying up.
 
 ## Phase A cutover
 
-Move the `jobsadmire.com` + `www` domains from `jobsadmirewebsite` to `jobsadmire-web-v2` (WP7a). This is a **domain move**, not a redeploy of the old project.
+The cutover (WP7a) is **not a domain move**: the domains already point at `jobsadmirewebsite`. It turns the same project's `main` into production by removing the two `main` deploy guards in the merge that goes live (W105):
 
-**Rollback:** move the domains back to the old project — the still-`READY` frozen deployment, id **`dpl_hRVuY1faCQe8fQ44sqmw4t82Rs7A`** (2026-02-17). This id is the recorded rollback target from WP0 day 1; do not let it expire or get pruned before Phase A is confirmed stable.
+1. **Vercel Pro is active** (owner action, before anything else).
+2. **Clear the Ignored Build Step** (Settings → Git; today `[ "$VERCEL_GIT_COMMIT_REF" = "main" ] && exit 0 || exit 1`) — harmless on its own while `main`'s `vercel.json` still carries the flag.
+3. **Merge `wp2/foundation` → `main` without the `vercel.json` guard** (delete the `git.deploymentEnabled` block, or set `main` to `true`) and push. That push is the first production build; Vercel promotes it onto `jobsadmire.com` + `www`. While either guard is still in place `main` builds nothing and the old site stays live.
+4. **Alias the old deployment as `legacy.jobsadmire.com`** (`noindex`, 90 days — below).
+5. **Rotate `RESEND_API_KEY`** (§ Retired secrets log) — the one-way step.
+6. **Submit the sitemaps** (`docs/SEO.md` § Sitemap) in Google Search Console, and start the 12-week watch (`docs/SEO.md` § 12-week post-launch watch).
 
-**Domain direction matters.** The canonical host is **`www.jobsadmire.com`** (`NEXT_PUBLIC_SITE_URL` and `settings.siteUrl` both), so on `jobsadmire-web-v2` the **primary domain must be `www`, with the apex `jobsadmire.com` redirecting to it** — not the other way round. If the apex is primary, every canonical, hreflang and sitemap URL the site emits points through a 308 on its way to the page it names.
+**Rollback:** Vercel **Instant Rollback** — promote the previous production deployment, the still-`READY` frozen old site **`dpl_hRVuY1faCQe8fQ44sqmw4t82Rs7A`** (2026-02-17), back onto the domains. No rebuild and no domain change. This id is the recorded rollback target from WP0 day 1; do not let it expire or get pruned before Phase A is confirmed stable.
 
-**`legacy.jobsadmire.com`** is aliased to the old deployment for 90 days post-cutover (`noindex`), so any link or bookmark that still points at old-site-specific behaviour has a landing place during the watch window.
+**Domain direction matters.** The canonical host is **`www.jobsadmire.com`** (`NEXT_PUBLIC_SITE_URL` and `settings.siteUrl` both), so on `jobsadmirewebsite` the **primary domain must be `www`, with the apex `jobsadmire.com` redirecting to it** — not the other way round. If the apex is primary, every canonical, hreflang and sitemap URL the site emits points through a 308 on its way to the page it names.
 
-The old site's data plane (its MySQL `job_applications` DB, its Resend-powered visa-application mailer) is **not migrated** — see the retired-secrets log below. Once `RESEND_API_KEY` is rotated at cutover, the old site's only working intake stops working. **The flip is one-way**: there is no path back to a functioning old site once that key rotates, only back to its frozen static artifact via the domain-move rollback above.
+**`legacy.jobsadmire.com`** is aliased to the old deployment (`dpl_hRVuY1faCQe8fQ44sqmw4t82Rs7A`, on the same project) for 90 days post-cutover (`noindex`), so any link or bookmark that still points at old-site-specific behaviour has a landing place during the watch window.
+
+The old site's data plane (its MySQL `job_applications` DB, its Resend-powered visa-application mailer) is **not migrated** — see the retired-secrets log below. Once `RESEND_API_KEY` is rotated at cutover, the old site's only working intake stops working. **The flip is one-way**: there is no path back to a functioning old site once that key rotates, only back to its frozen static artifact via the Instant Rollback above.
 
 ## Environment variables
 
@@ -50,7 +62,7 @@ Preview and Production hold separate values; Local reads from `.env.local` (neve
 
 ## Deployment Protection
 
-Enabled on Preview for `jobsadmire-web-v2` (WP0 owner action). Preview deployments require authentication to view; they are never publicly reachable, and they always render `noindex`.
+Vercel Authentication is on for every preview deployment of `jobsadmirewebsite` (on the Hobby plan it is the only Deployment Protection setting). Preview deployments require authentication to view; they are never publicly reachable, and they always render `noindex`. People open a preview signed in to Vercel (or through the Vercel MCP `get_access_to_vercel_url`); automation passes with the Protection Bypass for Automation secret (created 2026-09-24; the `VERCEL_AUTOMATION_BYPASS_SECRET` row above). Production stays public: before the cutover it is the frozen old deployment, after it `main`.
 
 ## Retired secrets log
 
@@ -67,13 +79,13 @@ Every row stays in this table even after its action is taken — it's the record
 
 ## Deploy discipline
 
-- Website `main` is **preview-only until Phase A cutover**; production afterward. Deployment Protection covers previews in the meantime.
+- Website `main` **deploys nothing until the Phase A cutover** (the two guards below hold it back); it is production afterward. Every other branch builds a preview behind Deployment Protection.
 - The Vercel build runs `npm run verify` (`vercel.json`'s `buildCommand: "npm run verify && next build"`) — a failing typecheck/lint/format/test blocks the build outright. Vercel's build environment carries `NODE_ENV=production`, and Vitest keeps a pre-set `NODE_ENV` (it only defaults to `test` when the variable is unset) — under `production` React's production build breaks Testing Library and `makeT` switches to its silent production mode, so the whole suite fails (28 of 93 tests on 2026-09-20, the first Vercel build ever attempted). The `test`/`test:watch` scripts therefore pin `NODE_ENV=test` themselves; never run the suite without it in an environment that sets `NODE_ENV`. The same `NODE_ENV=production` makes a plain `npm ci` skip devDependencies (the second Vercel failure, dpl_8vFFX4t6…, 41 s: `sh: tsc: not found`), so `vercel.json`'s `installCommand` is `npm ci --include=dev`. A third failure came from the project's own variables: the legacy `NEXT_PUBLIC_SITE_URL=https://jobsadmire.com` changed `SITE_URL` under the routes tests (dpl_9Nqoyyyc2…), so `vitest.config.mts` now pins every variable the code reads (`test.env`) and the suite is independent of the ambient environment.
 
 Tailwind 4 scans every non-ignored text file for class candidates, so `src/app/globals.css` excludes the plan/spec/handoff material with `@source not '../../docs/superpowers';` (2026-09-25: 14 MB of planning Markdown produced a `Missed semicolon` CSS error and a red preview). The one that actually stopped every build (dpl_WwNH1UK3…, still 40 s with all of the above in place): **Vercel rewrites `vercel.json` inside the build container as minified single-line JSON** (`git status` there shows ` M vercel.json`), so `prettier --check .` fails on it every time — `vercel.json` is therefore in `.prettierignore`. Found by a throwaway branch whose build wrote the verify log and `git diff` into `public/` behind Vercel Authentication (names of variables only, never values); the four preview deployments of that branch (`preview/diag…`) can be deleted from the dashboard. The first two were reproduced and fixed in a `node:22-alpine` container with `NODE_ENV=production CI=1` on a fresh clone — the recipe for any future "works here, fails on Vercel" build: `docker run --rm -e NODE_ENV=production -e CI=1 -v "$PWD":/app -w /app node:22-alpine sh -c 'npm ci --include=dev && npm run verify && npx next build'`.
 
-- **`main` never deploys by itself (2026-09-21).** The live project `jobsadmirewebsite` (jobsadmire.com + www) is git-linked to this repository with `main` as its production branch, so a merge to `main` would replace the live site. `vercel.json` therefore carries `"git": { "deploymentEnabled": { "main": false } }` — Vercel reads it from the pushed commit and skips the build (proved 2026-09-21: a branch carrying `deploymentEnabled: false` for itself produced no deployment while a control branch built). Every other branch builds a preview. The Phase A cutover (WP7a) is the deliberate act of flipping that value to `true` (or deleting the `git` block) in the merge that goes live; rollback is Vercel's Instant Rollback to the frozen `dpl_hRVuY1faCQe8fQ44sqmw4t82Rs7A`. Until then, nothing may be pushed to `main` that lacks this block. Previews build only for commits whose author e-mail is verified on the owner's GitHub account (`admin@jobsadmire.com` and `farazahmed266@gmail.com` as of 2026-09-21); a commit by another author is skipped silently.
+- **`main` never deploys by itself (2026-09-21).** The live project `jobsadmirewebsite` (jobsadmire.com + www) is git-linked to this repository with `main` as its production branch, so a merge to `main` would replace the live site. `vercel.json` therefore carries `"git": { "deploymentEnabled": { "main": false } }` — Vercel reads it from the pushed commit and skips the build (proved 2026-09-21: a branch carrying `deploymentEnabled: false` for itself produced no deployment while a control branch built). The second guard is the project's **Ignored Build Step**, `[ "$VERCEL_GIT_COMMIT_REF" = "main" ] && exit 0 || exit 1` (set 2026-09-25 via the API; exit 0 = skip the build). Every other branch builds a preview. The Phase A cutover (WP7a) is the deliberate act of removing both — clearing the Ignored Build Step and flipping the `vercel.json` value to `true` (or deleting the `git` block) in the merge that goes live (§ Phase A cutover); rollback is Vercel's Instant Rollback to the frozen `dpl_hRVuY1faCQe8fQ44sqmw4t82Rs7A`. Until then, nothing may be pushed to `main` that lacks this block. Previews build only for commits whose author e-mail is verified on the owner's GitHub account (`admin@jobsadmire.com` and `farazahmed266@gmail.com` as of 2026-09-21); a commit by another author is skipped silently.
 
 - `npm run gate` (Lighthouse/Playwright/axe) is **never** part of the Vercel build — there's no Chrome there. It runs against a preview URL, once per work package, from a developer machine or CI (GitHub Actions restoration was checked in WP0, 30 minutes budgeted).
-- This repo's push-to-`main` does **not** auto-deploy any VPS infrastructure — Vercel's own git integration handles builds/deploys for both Vercel projects. The workspace-root "push = production in ~2 min" rule describes the VPS-hosted CRM/Operations pipelines, not this repo.
+- This repo's push-to-`main` does **not** auto-deploy any VPS infrastructure — Vercel's own git integration handles builds/deploys for the one Vercel project, `jobsadmirewebsite`. The workspace-root "push = production in ~2 min" rule describes the VPS-hosted CRM/Operations pipelines, not this repo.
 - **`npm run dev` (`next dev`) appends an `nextjs-agent-rules` block to this repo's `CLAUDE.md` the first time it runs.** This is Next's own dev-server behaviour, not something this project's tooling does on purpose — revert it (`git checkout -- CLAUDE.md` or drop the appended block by hand) before committing anything; never commit that block. Task 13's implementer hit and reverted this once already.

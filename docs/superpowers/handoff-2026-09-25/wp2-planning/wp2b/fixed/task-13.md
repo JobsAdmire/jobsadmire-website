@@ -1,6 +1,8 @@
 ### Task 13: Portal entry + legal pages + newsletter routes — `/portal-girisi` · `/gizlilik` · `/kullanim-kosullari` · `/kvkk` · `/cerez-politikasi` · `/abone-onay` · `/abonelikten-cik` (+ their `/en/…` forms)
 
-**Where this task runs.** Worktree `/Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2`, branch `wp2/foundation` (HEAD ≥ `7bacd7e`, plus T1). Execution order W99: T1 → **T13** → T2 → … — so WP2a Tasks 1–9 and T1 (Homepage) are in the tree when this task starts: T1 created `docs/SEO.md`'s WP2b pages table (W98 columns `Page | Route (tr · en) | Title source | Canonical | JSON-LD | LCP slot | Notes`), `docs/ANALYTICS.md`'s `### Page instrumentation (WP2b)` list, the per-page `sys.*` bullet list at the end of `docs/CONTENT-MODEL.md` § `### Adding copy (W9, W23, W54)`, the `## Ledger` table of `docs/superpowers/plans/2026-09-20-wp2b-pages.md`, the `e2e/pages/` folder and its own `GATE_ROUTE_TABLE` rows. This task runs second because the chrome already links here: the slim bar, hamburger and footer portal rows are the internal `/portal-login` (W88, as built), the footer's legal pair is `/privacy` + `/terms`, the consent sheet links `/cookie-policy`, every form's consent row links `/privacy` (W79) — all of them 404 through `[...rest]` until this task lands. Rules for the whole task: one heavy job at a time (memory rule); never push; never `git stash`; never rewrite a commit (W118); every commit verify-green; the implementer runs `npx prettier --write <the files the cycle touched>` before the verify line (the snippets below are not guaranteed to be prettier-formatted: `printWidth` 100, single quotes, trailing commas).
+**Where this task runs.** Worktree `/Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2`, branch `wp2/foundation` (HEAD ≥ `7bacd7e`, plus T1). Execution order W99: T1 → **T13** → T2 → … — so WP2a Tasks 1–9 and T1 (Homepage) are in the tree when this task starts: T1 created `docs/SEO.md`'s `## Pages` table (W98 columns `Page | Route (tr · en) | Title source | Canonical | JSON-LD | LCP slot | Notes`), `docs/ANALYTICS.md`'s `### Page instrumentation (WP2b)` list, the per-page `sys.*` bullet list at the end of `docs/CONTENT-MODEL.md` § `### Adding copy (W9, W23, W54)`, the `## Ledger` table of `docs/superpowers/plans/2026-09-20-wp2b-pages.md`, the `e2e/pages/` folder and its own `GATE_ROUTE_TABLE` rows. This task runs second because the chrome already links here: the slim bar, hamburger and footer portal rows are the internal `/portal-login` (W88, as built), the footer's legal pair is `/privacy` + `/terms`, the consent sheet links `/cookie-policy`, every form's consent row links `/privacy` (W79) — all of them 404 through `[...rest]` until this task lands. Rules for the whole task: one heavy job at a time (memory rule); never push; never `git stash`; never rewrite a commit (W118); every commit verify-green; the implementer runs `npx prettier --write <the files the cycle touched>` before the verify line (the snippets below are not guaranteed to be prettier-formatted: `printWidth` 100, single quotes, trailing commas).
+
+**Preconditions (owner checks, W175).** `privacy@jobsadmire.com` exists. The Privacy policy's contact section (`sys.legal.privacy.sections.contact`) publishes it as an "Alternative e-mail" beside `{email}`, so the owner confirms the mailbox exists before this task executes, and the controller's execution brief for T13 states the answer. Confirmed: Cycle 4 ships the bullet exactly as written. Not confirmed, or no answer stated when Cycle 4 starts: Cycle 4 applies its **W175 fallback** (Step 3, after the two `legal` blocks) — the "Alternative e-mail" bullet is dropped in BOTH `src/messages/tr.json` and `src/messages/en.json`, only `{email}` stays, and the key-set test flips its one constant (Step 1). Nothing else in this task depends on the mailbox. The GA4 "redact the `token` query parameter" item is not a precondition of this task: it sits on T15's Gate A owner checklist (W175), because the newsletter mail links carry a per-subscriber secret in `page_location`.
 
 **What ships — three route families, none of them a D27 pixel-harness page (Fable side-by-side review):**
 
@@ -63,7 +65,7 @@ Consumes (exact names, read in the code at `7bacd7e`):
 - `CLIENT_SYS` (`@/i18n/client-messages`) — unchanged by this task.
 - Test helpers `testBundle()` (`@/test/bundle`), `renderWithIntl(ui, { locale })` (`@/test/render`); `createTranslator` from `next-intl`.
 - Gate tooling: `GATE_ROUTE_TABLE` (`e2e/routes.ts`), `npm run gate`, `npm run js-size` (+ `--routes=<list>`, W94), `scripts/launch/dead-targets.launch-check.ts` (W152/W158), the page-markup contract (`h1[data-testid="page-h1"]`, exactly one `data-lcp-slot`, named `data-placeholder`).
-- Package ids `crmlogin.*` + `home.016` (+ `hire.240` inside `StoreBadges`); `sys.nav.home` (W80), `sys.whatsapp.prefill`.
+- Package ids `crmlogin.*` + `home.016` (+ `hire.240` inside `StoreBadges`) + `about.021` (the legal pages' Home crumb — the package string every page's own crumb carries, "Ana Sayfa" / "Home", W109/W176; not `sys.nav.home`, which reads "Ana sayfa"); `sys.whatsapp.prefill`.
 
 Produces (later tasks rely on):
 - `src/lib/newsletter/*` — `forwardNewsletterToken(kind, token, deps?)`, `classifyNewsletterResponse`, `isPlausibleToken`, `isOneClickValue`, `ONE_CLICK_PATHS`, `isOneClickUnsubscribe`, `NEWSLETTER_STATES`, `stateCopyKey`, `resultState` and the types in `types.ts` — T14's staging smoke of these routes (a throw-away subscriber only, never a real token) and T15's launch sweep use them.
@@ -84,7 +86,7 @@ Produces (later tasks rely on):
 - **W74 / W117 / W105** — the newsletter forward uses the kernel's retry rule (one shared 9 s deadline, one retry only after a connection-level failure, a timeout or any answer final); the draft's "W3 8 s budget" wording is gone.
 - **W76 / W95** — no token and no visitor data in any DOM href: the WhatsApp/mailto fallbacks carry static sys prefills; the language switch drops `?token=`.
 - **W79** — the forms' consent link `/privacy` and the consent sheet's `/cookie-policy` resolve from this task on; no form links `/kvkk` (placeholder).
-- **W80** — the breadcrumbs' Home crumb is `sys.nav.home`.
+- **W80 / W176** — W80's `sys.nav.home` is NOT the legal pages' Home crumb: W176 replaces it with the package Home string every other page's own crumb uses (`about.021`, "Ana Sayfa" / "Home"), so the BreadcrumbList names match across the site; `sys.nav.home` ("Ana sayfa") stays the not-found page's link only.
 - **W88** — the chrome's portal rows already point at the internal `/portal-login`; the draft's "portal rows go external" foundation gap is deleted.
 - **W90 / W148** — `sys.legal.*` and `sys.seo.*` (and this task's `sys.portal.*`, `sys.newsletter.*`) are read by server components only; the newsletter island receives resolved strings as props (the `LogoMarquee` pattern), so `CLIENT_SYS` is unchanged and no page's RSC payload grows.
 - **W92 (+ check.md #148)** — previews are door-less; the newsletter and one-click e2e accept both the door-less answer (`unavailable` / 503 `unconfigured`) and the `staging` answer for a dummy token (`invalid` / 400) — dummy token only.
@@ -93,7 +95,7 @@ Produces (later tasks rely on):
 - **W99** — this task runs right after T1.
 - **W104** — the robots e2e keeps the portal and newsletter `Disallow` lines.
 - **W107** — the TR `sys.legal.terms.sections` are spelled out in full (the English text); a test pins TR = EN for the Terms body.
-- **W109** — each legal page's own crumb is its own title (`sys.legal.<doc>.title`); one `Breadcrumbs` per page (WP2a final review §6 page rule — one BreadcrumbList node).
+- **W109 / W176** — each legal page's own (last) crumb is its own title (`sys.legal.<doc>.title`); the first crumb is the package Home string, one id for all four pages (`LEGAL_HOME_CRUMB_ID = 'about.021'` in `src/lib/legal/documents.ts` — the legal pages have no package of their own, and every page's own Home id carries the same text); one `Breadcrumbs` per page (WP2a final review §6 page rule — one BreadcrumbList node).
 - **W113** — test ids sit on inner `div`s, never on `Section`.
 - **W119 / W122 / W155** — hiding uses media variants (`max-lg:hidden`, `max-md:hidden`, `lg:hidden`) beside a base display; no class string sets one property twice at one variant; a different look is a `Button` variant or a complete per-face class string.
 - **W120 / W136** — the ledger's JS figure is `npm run js-size`'s.
@@ -101,7 +103,8 @@ Produces (later tasks rely on):
 - **W126** — one `NEXT_BUILD_CPUS=2 NODE_OPTIONS=--max-old-space-size=4096 npm run build`, one `npm run start`, one `npm run gate` — Cycle 7.
 - **W134 / W147 / W156** — primitives, blocks and the date function imported by module path; the drafts' barrel imports and `@/lib/format/date` are gone.
 - **W145** — the eight legal routes carry the LCP ≤ 2,500 ms / performance ≥ 0.95 assertions (DevTools throttling, median of three).
-- **W146** — GTM stays dark on the gated face; the GA4 `page_location` redaction of `token` is recorded as an owner item.
+- **W146** — GTM stays dark on the gated face; the GA4 `page_location` redaction of `token` is recorded as an owner item (and, W175, on T15's Gate A owner checklist).
+- **W175** — the `privacy@jobsadmire.com` mailbox is an owner check before this task executes (Preconditions above); Cycle 4 ships the "Alternative e-mail" bullet only when it is confirmed, otherwise it drops it in both locales and keeps `{email}`.
 - **W150** — no D17 dated badge on these pages → no `revalidate`.
 - **W152 / W158** — after this task the dead-target sweep lists none of `/portal-girisi`, `/gizlilik`, `/kullanim-kosullari` and their `/en/…` forms.
 - **W154** — every new `sys.*` string names "JobsAdmire" (TR: "JobsAdmire", "ekip"), never we/us/our/biz or a first-person-plural verb or possessive; the seeded legal copy is re-authored in the third person (`voice.test.ts`).
@@ -691,7 +694,7 @@ export default async function PortalLoginPage({
 }
 ```
 
-Executor notes: `text-text-tertiary` is used on white only (4.76:1); on `bg-pale-1` the copy is `text-text-secondary` (#64748b on #f4f9fc is 4.49:1 — below AA). The "Contact a branch" `Button` targets `/contact` (`/iletisim`), which T7 builds; the chrome already links it, so the dead-target sweep gains no new entry. `crmlogin.054`/`057` carry the package's own "we" — package copy waits for WP-C (W154 covers `sys.*` only).
+Executor notes: `text-text-tertiary` is used on white only (4.76:1); on `bg-pale-1` the copy is `text-text-secondary` (#556377) — tertiary #64748b on #f4f9fc would be 4.49:1, below AA. The "Contact a branch" `Button` targets `/contact` (`/iletisim`), which T7 builds; the chrome already links it, so the dead-target sweep gains no new entry. `crmlogin.054`/`057` carry the package's own "we" — package copy waits for WP-C (W154 covers `sys.*` only).
 
 `src/app/[locale]/(bare)/layout.tsx` — in the doc comment, replace "the group holds no page until T13 lands." with "it holds the portal entry page (T13, `portal-login/`)." (comment only).
 
@@ -714,7 +717,7 @@ Executor notes: `text-text-tertiary` is used on white only (4.76:1); on `bg-pale
 ```
 
 Docs (same commit):
-- `docs/SEO.md` — append to the WP2b pages table T1 created (W98):
+- `docs/SEO.md` — append after the last row of the `## Pages` table T1 created (W98):
 
 ```markdown
 | Portal entry | `/portal-girisi` · `/en/portal-login` | `sys.seo.portal.*` (the package ships no SEO strings, W38) | self, per locale | site-wide Organization + WebSite only (the record lists no `breadcrumb`) | `h1` — `crmlogin.047` in the brand panel (text; on phones Lighthouse may pick the sub `crmlogin.048`) | **noindex** — record + forced in `generateMetadata`; robots `Disallow`; not in the sitemap; `(bare)` group, no breadcrumbs; link-only chooser (W8) |
@@ -725,6 +728,7 @@ Docs (same commit):
 - `docs/ANALYTICS.md` — append to `### Page instrumentation (WP2b)`: "- **Portal entry (T13):** `whatsapp_click` with `placement: 'page_cta'` from the trust-line and help-card WhatsApp CTAs (`ContactCta` → `ContactLink`, static `sys.whatsapp.prefill`); the Partner Portal login/forgot-password anchors, the Play Store badge and the back link are plain navigations — no event, no new parameter (W12)."
 - `docs/CONTENT-MODEL.md` — append to the per-page bullet list at the end of `### Adding copy (W9, W23, W54)`: "- **Portal (T13):** `sys.portal.intro`, `sys.portal.signIn` (the link-only chooser's two composed strings — `crmlogin.003` describes the multi-portal choice D22 removed) + `sys.seo.portal.{title,description}`; the page reads `crmlogin.*` and `home.016` through `makeT` and `crmlogin.055`/`057` through `makeTf` (`{placed}`, `{replySlaHours}`); server-only reads."
 - `docs/PRD.md` — §2 table, row 14 ("Portal entry (CRM Login)"): replace the Forms cell "none — links out to portal.jobsadmire.com only" with "none — links out to portal.jobsadmire.com only (T13: `(bare)` group, one Partner Portal tile → login/forgot-password, Android badge + local QR, no credential form — W8)".
+- `docs/PRD.md` — §11, the sentence that begins "**Not yet built, by design (WP2 and later):**" (`grep -n 'Not yet built' docs/PRD.md`): the portal entry is §2 row 14, one of the 14 core pages, so count it as built — replace "12 of the 14 core pages" with "11 of the 14 core pages", and directly after T1's clause "Hire Workers is still the spike placeholder until T2" insert "; the portal entry is built (WP2b T13)" (before the parenthesis closes). Leave the rest of the sentence as it is (W45: edit in place); T2 then replaces only its own clause and keeps the count, T3 decrements from 11. If `grep -n 'still the spike placeholder until T2' docs/PRD.md` finds nothing, T1 drifted: stop and report rather than rewrite the sentence.
 
 - [ ] **Step 4: Verify**
 
@@ -826,10 +830,42 @@ describe('parseLegalBody', () => {
 `src/lib/legal/documents.test.ts` (new):
 
 ```ts
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { PAGE_KEYS, PAGE_PATHNAME } from '@/content/collections';
 import { testBundle } from '@/test/bundle';
-import { LEGAL_DOCS, LEGAL_HREF, LEGAL_SECTIONS, legalValues } from './documents';
+import { BundleSchema } from '../../../contract/website-bundle.v1';
+import {
+  LEGAL_DOCS,
+  LEGAL_HOME_CRUMB_ID,
+  LEGAL_HREF,
+  LEGAL_SECTIONS,
+  legalValues,
+} from './documents';
+
+/** The generated LOCAL bundle (the `src/content/local-bundle.test.ts` pattern): `testBundle()`
+ *  carries only the golden fixture's 20 strings, and the Home crumb ids live in the package. */
+const localBundle = (locale: 'tr' | 'en') =>
+  BundleSchema.parse(
+    JSON.parse(readFileSync(join(__dirname, `../../content/local/bundle.${locale}.json`), 'utf8')),
+  );
+
+/** Every designed page's own Home crumb (W109): each page reads its own id for the same text. */
+const OWN_HOME_CRUMB_IDS = [
+  'hire.020',
+  'calc.001',
+  'partner.016',
+  'wp.021',
+  'about.021',
+  'verify.021',
+  'jt.021',
+  'contact.023',
+  'availworkers.021',
+  'success.022',
+  'blog.022',
+  'blogarticle.022',
+];
 
 describe('legal document tables (T13)', () => {
   it('the four documents are page-record keys, routed exactly as PAGE_PATHNAME says', () => {
@@ -858,6 +894,15 @@ describe('legal document tables (T13)', () => {
       lawRef: settings.licence.lawRef,
       taxNo: settings.licence.taxNo,
     });
+  });
+
+  it('the Home crumb is the package string every page carries ("Ana Sayfa" / "Home"), never sys.nav.home (W109/W176)', () => {
+    for (const locale of ['tr', 'en'] as const) {
+      const { strings } = localBundle(locale);
+      const home = strings[LEGAL_HOME_CRUMB_ID];
+      expect(home, locale).toBe(locale === 'tr' ? 'Ana Sayfa' : 'Home');
+      for (const id of OWN_HOME_CRUMB_IDS) expect(strings[id], `${locale} ${id}`).toBe(home);
+    }
   });
 });
 ```
@@ -936,6 +981,15 @@ export const LEGAL_HREF = {
   kvkk: '/kvkk',
   cookiePolicy: '/cookie-policy',
 } as const satisfies Record<LegalDoc, keyof typeof pathnames>;
+
+/**
+ * W109/W176: the legal pages have no package of their own, so their Home crumb is the string
+ * every other page's own crumb carries — "Ana Sayfa" / "Home" (`hire.020`, `about.021`,
+ * `contact.023`, … hold the same text per locale; `documents.test.ts` pins it). Never
+ * `sys.nav.home` ("Ana sayfa", a different capitalisation): the BreadcrumbList names would
+ * differ by case across the site.
+ */
+export const LEGAL_HOME_CRUMB_ID = 'about.021';
 
 /**
  * Section ids — the `sys.legal.<doc>.sections.<id>.{title,body}` keys, in document order.
@@ -1021,7 +1075,8 @@ feat(legal): Markdown-lite body parser and the legal document tables (T13, D14, 
 
 parseLegalBody/parseRuns (paragraphs, "- " lists, **bold**, never markup);
 LEGAL_DOCS/LEGAL_HREF/LEGAL_SECTIONS (privacy 15, terms 16, kvkk 0, cookie 3);
-legalValues(settings) — the five identifiers the copy cites, from settings.
+legalValues(settings) — the five identifiers the copy cites, from settings;
+LEGAL_HOME_CRUMB_ID — the package Home crumb every page shares (W109/W176).
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
 MSG
@@ -1082,6 +1137,10 @@ describe('LegalDocument (T13)', () => {
     expect(list?.querySelector('strong')).toHaveTextContent('browse');
     // the page's one Breadcrumbs block → one BreadcrumbList node
     expect(container.querySelectorAll('script[type="application/ld+json"]')).toHaveLength(1);
+    // W109/W176: the trail is the Home label (the package string) then the page's own title
+    const trail = screen.getByRole('navigation', { name: 'Breadcrumb' });
+    expect(within(trail).getByRole('link', { name: 'Home' })).toBeInTheDocument();
+    expect(within(trail).getByText('Privacy Policy')).toHaveAttribute('aria-current', 'page');
     expect(container.querySelector('[data-placeholder]')).toBeNull();
   });
 
@@ -1090,7 +1149,7 @@ describe('LegalDocument (T13)', () => {
       <LegalDocument
         {...base}
         locale="tr"
-        homeLabel="Ana sayfa"
+        homeLabel="Ana Sayfa"
         updatedLabel="Son güncelleme"
         contentsLabel="İçindekiler"
         bodyLang="en"
@@ -1112,6 +1171,9 @@ describe('LegalDocument (T13)', () => {
       '29 Eylül 2026',
     );
     expect(container.querySelectorAll('[data-lcp-slot]')).toHaveLength(1);
+    // W176: the Turkish Home crumb is the package's "Ana Sayfa" (capital S), as on every page
+    const trail = screen.getByRole('navigation', { name: 'Sayfa yolu' });
+    expect(within(trail).getByRole('link', { name: 'Ana Sayfa' })).toBeInTheDocument();
   });
 
   it('renders no contents list when there are no sections (the KVKK placeholder)', () => {
@@ -1326,9 +1388,15 @@ import type { Metadata } from 'next';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
-import { getBundle } from '@/content/adapter';
+import { getBundle, makeT } from '@/content/adapter';
 import { routing } from '@/i18n/routing';
-import { LEGAL_HREF, LEGAL_SECTIONS, legalValues, type LegalDoc } from '@/lib/legal/documents';
+import {
+  LEGAL_HOME_CRUMB_ID,
+  LEGAL_HREF,
+  LEGAL_SECTIONS,
+  legalValues,
+  type LegalDoc,
+} from '@/lib/legal/documents';
 import { buildMetadata } from '@/lib/seo/metadata';
 import type { LegalDocumentProps } from './LegalDocument';
 
@@ -1357,7 +1425,9 @@ export async function legalMetadata(params: LegalParams, doc: LegalDoc): Promise
 /**
  * Everything one legal page renders, resolved on the server: every string from
  * `sys.legal.<doc>.*` (server-only — never a client island, W90/W148), every identifier the copy
- * cites passed as an ICU argument from settings (D17), the home crumb from `sys.nav.home` (W80).
+ * cites passed as an ICU argument from settings (D17), the Home crumb from the package string
+ * every page's own crumb carries (`LEGAL_HOME_CRUMB_ID` through `makeT`, W109/W176) — never
+ * `sys.nav.home`.
  */
 export async function loadLegal(params: LegalParams, doc: LegalDoc) {
   const { locale } = await params;
@@ -1368,7 +1438,7 @@ export async function loadLegal(params: LegalParams, doc: LegalDoc) {
   const common = {
     locale,
     href: LEGAL_HREF[doc],
-    homeLabel: sys('nav.home'),
+    homeLabel: makeT(bundle)(LEGAL_HOME_CRUMB_ID),
     title: sys(`legal.${doc}.title`),
     intro: sys(`legal.${doc}.intro`, values),
     updatedAt: sys(`legal.${doc}.updatedAt`),
@@ -1404,7 +1474,8 @@ LegalDocument: breadcrumbs (one BreadcrumbList, own-title crumb), h1 as the
 named LCP slot, dated line via formatDate (D17), named placeholder notice
 (D26/W55), contents list with 24 px targets, numbered Markdown-lite sections,
 lang on an English body (WCAG 3.1.2). load.ts resolves sys.legal.* on the
-server with the settings identifiers as ICU arguments (W90/W148, D17).
+server with the settings identifiers as ICU arguments (W90/W148, D17); the
+Home crumb is the package string every page carries (W109/W176).
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
 MSG
@@ -1442,6 +1513,15 @@ const LEGAL_VALUES = {
   lawRef: '4904',
   taxNo: '48422122',
 };
+
+/**
+ * W175 (owner check, Preconditions): `privacy@jobsadmire.com` is published as the Privacy
+ * policy's "Alternative e-mail" only while the owner has confirmed the mailbox exists. Leave
+ * `true` when the controller's brief states that confirmation; set `false` when it does not —
+ * Cycle 4 Step 3's W175 fallback then removes the bullet in both locales and the test below
+ * expects it gone (only `{email}` stays). Cycle 6 replaces this file: keep Cycle 4's value.
+ */
+const PRIVACY_MAILBOX_CONFIRMED = true;
 
 const PORTAL_KEYS = ['seo.portal.title', 'seo.portal.description', 'portal.intro', 'portal.signIn'];
 
@@ -1514,6 +1594,19 @@ describe('T13 sys keys (W9/W23)', () => {
           expect(listed === 0 || listed === lines.length, key).toBe(true);
         }
       }
+    });
+
+    it(`${locale}: the alternative privacy mailbox appears only in the privacy contact section, and only while the owner confirmed it (W175)`, () => {
+      const t = translator(locale);
+      const contact = t('legal.privacy.sections.contact.body', LEGAL_VALUES);
+      expect(contact).toContain(LEGAL_VALUES.email);
+      expect(/Alternative e-mail|Alternatif e-posta/.test(contact)).toBe(PRIVACY_MAILBOX_CONFIRMED);
+      const mentions = LEGAL_KEYS.filter((key) =>
+        t(key, LEGAL_VALUES).includes('privacy@jobsadmire.com'),
+      );
+      expect(mentions).toEqual(
+        PRIVACY_MAILBOX_CONFIRMED ? ['legal.privacy.sections.contact.body'] : [],
+      );
     });
   }
 
@@ -1599,6 +1692,19 @@ for (const doc of DOCS) {
       // One Breadcrumbs per page → one BreadcrumbList node (WP2a final review §6 page rule).
       const ld = await page.locator('script[type="application/ld+json"]').allTextContents();
       expect(ld.filter((s) => s.includes('"BreadcrumbList"'))).toHaveLength(1);
+      // W109/W176: the Home crumb is the package string every page carries — "Ana Sayfa"
+      // (capital S) / "Home", never `sys.nav.home` ("Ana sayfa") — and the last crumb is the
+      // page's own title.
+      const home = locale === 'tr' ? 'Ana Sayfa' : 'Home';
+      const crumbs = JSON.parse(ld.find((s) => s.includes('"BreadcrumbList"')) ?? '{}') as {
+        itemListElement?: { name: string; item: string }[];
+      };
+      const title = ((await page.getByTestId('page-h1').textContent()) ?? '').trim();
+      expect(crumbs.itemListElement?.map((i) => i.name)).toEqual([home, title]);
+      const trail = page.getByRole('navigation', {
+        name: locale === 'tr' ? 'Sayfa yolu' : 'Breadcrumb',
+      });
+      await expect(trail.locator('a').first()).toHaveText(home);
       // D26/W55: named placeholders only, never the LCP slot.
       const expected = doc.placeholder[locale];
       const placeholders = page.locator('[data-placeholder]');
@@ -2074,6 +2180,20 @@ and add this member to `sys` (after `portal`). The Terms `intro`, `updatedAt`, `
 }
 ```
 
+**W175 fallback — apply ONLY when the owner has not confirmed that `privacy@jobsadmire.com` exists** (see Preconditions; skip this paragraph when the controller's brief states the confirmation). The address appears in exactly one string per locale, the `body` of `legal.privacy.sections.contact`. After pasting the two `legal` blocks, drop the "Alternative e-mail" bullet in BOTH files so only `{email}` stays — in `src/messages/en.json` the fragment `\n- **Alternative e-mail:** privacy@jobsadmire.com` and in `src/messages/tr.json` the fragment `\n- **Alternatif e-posta:** privacy@jobsadmire.com`, i.e. these two lines change as shown:
+
+```diff
+-          "body": "For any KVKK question or request:\n\n- **Data protection contact:** {email}\n- **Alternative e-mail:** privacy@jobsadmire.com\n- **Phone:** {phoneDisplay}\n- **Registered address:** see the footer of this website and the Contact page"
++          "body": "For any KVKK question or request:\n\n- **Data protection contact:** {email}\n- **Phone:** {phoneDisplay}\n- **Registered address:** see the footer of this website and the Contact page"
+```
+
+```diff
+-          "body": "KVKK ile ilgili her türlü soru veya talep için:\n\n- **Veri koruma iletişim adresi:** {email}\n- **Alternatif e-posta:** privacy@jobsadmire.com\n- **Telefon:** {phoneDisplay}\n- **Kayıtlı adres:** bu web sitesinin alt bilgisi ve İletişim sayfası"
++          "body": "KVKK ile ilgili her türlü soru veya talep için:\n\n- **Veri koruma iletişim adresi:** {email}\n- **Telefon:** {phoneDisplay}\n- **Kayıtlı adres:** bu web sitesinin alt bilgisi ve İletişim sayfası"
+```
+
+Then set `PRIVACY_MAILBOX_CONFIRMED = false` in `src/messages/task13-keys.test.ts` (Step 1's one constant): the key-set test now expects no "Alternative e-mail" / "Alternatif e-posta" bullet and no `privacy@jobsadmire.com` in any legal string, with the `{email}` line still present. In `docs/PRIVACY.md`'s new item 7 (below) replace the clause "`privacy@jobsadmire.com` (W175: the owner confirmed the mailbox exists)," with "no alternative privacy mailbox is published (W175: the owner had not confirmed `privacy@jobsadmire.com`; add the bullet back when the mailbox exists),". Cycle 6 carries the same constant value into its replacement of the test file. Check with `grep -n 'privacy@jobsadmire.com' src/messages/en.json src/messages/tr.json` — it prints nothing once the fallback is applied and two lines (one per file) when it is not.
+
 Copy rules the executor keeps if any string is touched (both files): the company is "JobsAdmire" (TR also "ekip"), never we/us/our or biz/bize/bizim, a first-person-plural verb (-ırız, -ıyoruz, -acağız, -malıyız, -dık) or a first-person possessive (sitemiz, hizmetlerimiz, danışmanımız) — `voice.test.ts` fails on the first three forms, review catches the last; Turkish "Analitik"/"istatistik" end in "-tik" and trip the verb check — the copy says "Ölçüm"; the only braces are the five ICU arguments; no `<`, no `#`, no apostrophe directly before a brace.
 
 `src/app/[locale]/(minimal)/privacy/page.tsx` (new):
@@ -2227,7 +2347,7 @@ None of the four exports `revalidate` (no D17 dated badge, W150) or `generateSta
 ```
 
 Docs (same commit):
-- `docs/SEO.md` — append four rows to the WP2b pages table:
+- `docs/SEO.md` — append four rows after the last row of the `## Pages` table:
 
 ```markdown
 | Privacy | `/gizlilik` · `/en/privacy` | `sys.seo.privacy.*` | self, per locale | + BreadcrumbList (`Breadcrumbs`) | `h1` (text; on phones Lighthouse may pick the intro paragraph) | index; seeded from main-backup, re-authored in the "JobsAdmire" voice (docs/PRIVACY.md lists the changes) |
@@ -2253,7 +2373,7 @@ The four legal pages are content (`sys.legal.*` in `src/messages/{tr,en}.json`),
 4. **Turkish terminology.** "VERİ KONTROLÖRÜ" → "Veri sorumlusu"; "KURABİYELER" → "Çerezler"; "Analitik" → "Ölçüm" (the voice test reads the "-tik" ending as a first-person-plural past tense).
 5. **Structure.** Privacy renumbered 1–15 (the seed's headings skipped and repeated 3, 5, 6→7, 10→12); its "special categories" note is folded into §3.
 6. **Content changes to confirm.** "paid service details (premium/resume/interview coaching)" → "details of paid services"; Terms §2 "Resume Generator and online CRM tools" → "online portal tools" and the "premium CV/interview coaching" example dropped; "payment gateways / payment providers" examples → "map providers"; Privacy §5 "analytics/functional/advertising cookies" → "analytics and advertising cookies"; "Cookie Notice … (2022, updated 2025)" → the Board's "cookie guidelines" (no date). "Create a profile" and "CV tools" are kept from the seed — confirm they still describe a service.
-7. **Identifiers from settings (D17).** E-mail, phone, İŞKUR permit no., law no. and tax no. are ICU arguments filled from `settings`. Kept literal as legal text: the permit date "19.09.2024", the complaints office (İstanbul İŞKUR Provincial Directorate, Kadıköy Service Centre, 0216 418 34 55), `privacy@jobsadmire.com` (owner check: the mailbox must exist), "30 days", KVKK Law No. 6698, the İstanbul (Anadolu) courts.
+7. **Identifiers from settings (D17).** E-mail, phone, İŞKUR permit no., law no. and tax no. are ICU arguments filled from `settings`. Kept literal as legal text: the permit date "19.09.2024", the complaints office (İstanbul İŞKUR Provincial Directorate, Kadıköy Service Centre, 0216 418 34 55), `privacy@jobsadmire.com` (W175: the owner confirmed the mailbox exists), "30 days", KVKK Law No. 6698, the İstanbul (Anadolu) courts.
 8. **Dates.** Every page shows `sys.legal.<doc>.updatedAt` = 2026-09-29 — the republication of the normalised text; counsel re-dates on approval.
 9. **Still counsel's.** The KVKK aydınlatma metni (`/kvkk`, placeholder `legal-kvkk`), the full cookie policy (`/cerez-politikasi`, placeholder `legal-cookie-policy`; the page carries the minimal notice: `ja_locale` 1 year, `ja_consent_v1` 180 days + local storage, `ja-lang-hint` local storage, GTM/GA4/Ads only after Accept) and the Turkish Terms (`/kullanim-kosullari`, placeholder `legal-terms-tr`).
 10. **When counsel's text lands.** Replace the `sys.legal.<doc>.*` values in both files, drop the page's `notice`, and bump `CONSENT_VERSION` (`src/forms/consent.ts`) if the consent wording changes — no other code change.
@@ -2279,7 +2399,9 @@ placeholder notice with lang="en" (§10 row 6); /kvkk and /cerez-politikasi
 are named counsel placeholders (D26/W55); last-updated dates from
 sys.legal.<doc>.updatedAt (D17); identifiers from settings as ICU arguments.
 Four keys leave UNBUILT_PATHNAMES (W20); gate rows +8 (W21); docs (W98) and
-the counsel review list in PRIVACY.md.
+the counsel review list in PRIVACY.md. The privacy contact section's
+alternative mailbox follows the W175 owner check; the e2e pins the package
+Home crumb (W176).
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>
 MSG
@@ -2940,6 +3062,15 @@ const LEGAL_VALUES = {
   taxNo: '48422122',
 };
 
+/**
+ * W175 (owner check, Preconditions): `privacy@jobsadmire.com` is published as the Privacy
+ * policy's "Alternative e-mail" only while the owner has confirmed the mailbox exists. Leave
+ * `true` when the controller's brief states that confirmation; set `false` when it does not —
+ * Cycle 4 Step 3's W175 fallback then removes the bullet in both locales and the test below
+ * expects it gone (only `{email}` stays). Cycle 6 replaces this file: keep Cycle 4's value.
+ */
+const PRIVACY_MAILBOX_CONFIRMED = true;
+
 const PORTAL_KEYS = ['seo.portal.title', 'seo.portal.description', 'portal.intro', 'portal.signIn'];
 
 const LEGAL_KEYS = [
@@ -3033,6 +3164,19 @@ describe('T13 sys keys (W9/W23)', () => {
           expect(listed === 0 || listed === lines.length, key).toBe(true);
         }
       }
+    });
+
+    it(`${locale}: the alternative privacy mailbox appears only in the privacy contact section, and only while the owner confirmed it (W175)`, () => {
+      const t = translator(locale);
+      const contact = t('legal.privacy.sections.contact.body', LEGAL_VALUES);
+      expect(contact).toContain(LEGAL_VALUES.email);
+      expect(/Alternative e-mail|Alternatif e-posta/.test(contact)).toBe(PRIVACY_MAILBOX_CONFIRMED);
+      const mentions = LEGAL_KEYS.filter((key) =>
+        t(key, LEGAL_VALUES).includes('privacy@jobsadmire.com'),
+      );
+      expect(mentions).toEqual(
+        PRIVACY_MAILBOX_CONFIRMED ? ['legal.privacy.sections.contact.body'] : [],
+      );
     });
   }
 
@@ -4117,7 +4261,7 @@ export default function proxy(request: Parameters<typeof intl>[0]) {
 ```
 
 Docs (same commit):
-- `docs/SEO.md` — append two rows to the WP2b pages table:
+- `docs/SEO.md` — append two rows after the last row of the `## Pages` table:
 
 ```markdown
 | Newsletter confirm | `/abone-onay` · `/en/newsletter/confirm` | `sys.seo.newsletterConfirm.*` | self, per locale — never the `?token=` | site-wide only | `h1` | **noindex** — record + forced; robots `Disallow`; not in the sitemap; the token is forwarded on the visitor's click only (I12) |
@@ -4183,13 +4327,19 @@ NEXT_BUILD_CPUS=2 NODE_OPTIONS=--max-old-space-size=4096 npm run build
 ```
 Expected: green, no "importing a module that depends on … into a React Server Component" error (W125/W126 — the reason this build exists). The route table lists `/[locale]/portal-login`, `/[locale]/privacy`, `/[locale]/terms`, `/[locale]/kvkk`, `/[locale]/cookie-policy` as static (●, both locales), `/[locale]/newsletter/confirm` and `/[locale]/newsletter/unsubscribe` as dynamic (ƒ — they read `searchParams`), `/api/newsletter/unsubscribe` (ƒ) and `ƒ Proxy (Middleware)`.
 
-Start the production server as a background job (`npm run start` → http://localhost:3000, output to `.superpowers/t13-start.log`) and wait until `curl -sf -o /dev/null http://localhost:3000/` succeeds. Then:
+Start the production server as a background job and wait for it with `curl --retry` (never `sleep` — the agent shell blocks a foreground `sleep`):
+
+```bash
+(npm run start > .superpowers/t13-start.log 2>&1 &) && curl -sf --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://localhost:3000/portal-girisi && echo up
+```
+
+Then:
 
 ```bash
 E2E_BASE_URL=http://localhost:3000 npm run gate
 npm run js-size
 E2E_BASE_URL=http://localhost:3000 npm run js-size -- '--routes=/portal-girisi,/en/portal-login,/abone-onay?token=e2e-dummy-token-0000000000,/en/newsletter/confirm?token=e2e-dummy-token-0000000000,/abonelikten-cik?token=e2e-dummy-token-0000000000,/en/newsletter/unsubscribe?token=e2e-dummy-token-0000000000'
-E2E_BASE_URL=http://localhost:3000 npx vitest run --config vitest.launch.config.mts scripts/launch/dead-targets.launch-check.ts > .superpowers/t13-dead-targets.txt 2>&1 || true
+E2E_BASE_URL=http://localhost:3000 NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --config vitest.launch.config.mts scripts/launch/dead-targets.launch-check.ts --maxWorkers=1 > .superpowers/t13-dead-targets.txt 2>&1 || true
 grep -E '^/(portal-girisi|gizlilik|kullanim-kosullari|kvkk|cerez-politikasi|en/(portal-login|privacy|terms|kvkk|cookie-policy)) ' .superpowers/t13-dead-targets.txt
 ```
 No `pixel` run: none of these pages is a D27 harness page (Homepage, Hire Workers, Cost Calculator, Blog Article) — they get the Fable side-by-side review against the named deltas.
@@ -4218,7 +4368,7 @@ MSG
 
 ---
 
-**Docs in this task:** `docs/SEO.md` — seven rows in the WP2b pages table (portal, privacy, terms, KVKK, cookie policy, newsletter confirm, newsletter unsubscribe, each naming its LCP element `h1`), the JSON-LD table's BreadcrumbList row ("every indexable non-homepage page"), `## Sitemap` (+8 legal URLs → 12), `## Robots` (the portal and newsletter `Disallow` lines exist now); `docs/ANALYTICS.md` — three `### Page instrumentation (WP2b)` bullets (portal `whatsapp_click` `page_cta`; legal none; newsletter fallback `email_click`/`whatsapp_click` only, no `generate_lead`/`conversion`) and the owner inventory item on redacting `token` from GA4's `page_location`; `docs/CONTENT-MODEL.md` — three per-page bullets (`sys.portal.*`, `sys.legal.*`, `sys.newsletter.*` + their `sys.seo.*`) and the client-subset sentence (T13's namespaces are server-only reads); `docs/ARCHITECTURE.md` — § Repository layout (`src/lib/legal/`, `src/lib/newsletter/`, the proxy row), § Routing (the RFC 8058 one-click rewrite bullet, `/api/newsletter/unsubscribe` outside the matcher), § Forms flow (the newsletter-token exception paragraph); `docs/INTEGRATIONS.md` — I12 "Website side as built (T13)"; `docs/PRD.md` — §2 rows 14 / newsletter confirm / newsletter unsubscribe, §8 "Shipped in WP2 T13"; `docs/PRIVACY.md` — the newsletter one-click sentence and the new "Seeded legal copy — counsel review (T13)" section; `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — the ledger row.
+**Docs in this task:** `docs/SEO.md` — seven rows in the `## Pages` table (W98) (portal, privacy, terms, KVKK, cookie policy, newsletter confirm, newsletter unsubscribe, each naming its LCP element `h1`), the JSON-LD table's BreadcrumbList row ("every indexable non-homepage page"), `## Sitemap` (+8 legal URLs → 12), `## Robots` (the portal and newsletter `Disallow` lines exist now); `docs/ANALYTICS.md` — three `### Page instrumentation (WP2b)` bullets (portal `whatsapp_click` `page_cta`; legal none; newsletter fallback `email_click`/`whatsapp_click` only, no `generate_lead`/`conversion`) and the owner inventory item on redacting `token` from GA4's `page_location`; `docs/CONTENT-MODEL.md` — three per-page bullets (`sys.portal.*`, `sys.legal.*`, `sys.newsletter.*` + their `sys.seo.*`) and the client-subset sentence (T13's namespaces are server-only reads); `docs/ARCHITECTURE.md` — § Repository layout (`src/lib/legal/`, `src/lib/newsletter/`, the proxy row), § Routing (the RFC 8058 one-click rewrite bullet, `/api/newsletter/unsubscribe` outside the matcher), § Forms flow (the newsletter-token exception paragraph); `docs/INTEGRATIONS.md` — I12 "Website side as built (T13)"; `docs/PRD.md` — §2 rows 14 / newsletter confirm / newsletter unsubscribe, §11 "Not yet built" count (12 → 11, the portal entry), §8 "Shipped in WP2 T13"; `docs/PRIVACY.md` — the newsletter one-click sentence and the new "Seeded legal copy — counsel review (T13)" section; `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — the ledger row.
 
 **Sys keys added:** 138 leaves in each of `src/messages/tr.json` and `src/messages/en.json` (276 values), all server-only reads:
 - `sys.seo.*` (14): `portal`, `privacy`, `terms`, `kvkk`, `cookiePolicy`, `newsletterConfirm`, `newsletterUnsubscribe` — each `.title`, `.description`.
@@ -4226,14 +4376,14 @@ MSG
 - `sys.legal.*` (89): `updatedLabel`, `contents`; `privacy.{title,intro,updatedAt}` + `privacy.sections.{dataController,scope,dataCategories,purposes,cookies,disclosures,transfers,retention,rights,security,verbis,children,thirdParty,changes,contact}.{title,body}` (30); `terms.{title,intro,updatedAt,englishOnlyNotice,finalNote}` + `terms.sections.{legalStatus,services,eligibility,accounts,candidateDuties,employerDuties,fees,ip,acceptableUse,dataProtection,thirdParty,availability,liability,indemnification,law,amendments}.{title,body}` (32 — English in both files, W107); `kvkk.{title,intro,updatedAt,pendingTitle,pendingBody,privacyLink}`; `cookiePolicy.{title,intro,updatedAt,pendingTitle,pendingBody}` + `cookiePolicy.sections.{essential,consent,manage}.{title,body}` (6).
 - `sys.newsletter.*` (33): `backHome`; `noToken.{title,body}`; `unavailable.{title,body}`; `fallback.{lead,email,whatsapp,subject}`; `confirm.{title,body,button,pending}`, `confirm.invalid.{title,body}`, `confirm.expired.{title,body}`, `confirm.outcome.{CONFIRMED,ALREADY_CONFIRMED}.{title,body}`; `unsubscribe.{title,body,button,pending}`, `unsubscribe.invalid.{title,body}`, `unsubscribe.outcome.{UNSUBSCRIBED,ALREADY_UNSUBSCRIBED,UNKNOWN}.{title,body}`.
 
-**Package ids used:** 33, all present in `src/content/local/catalogue.json` and both bundles — first `crmlogin.001`, last `home.016`: `crmlogin.001`, `002`, `005`, `011`, `012`, `013`, `014`, `019`, `020` (legal), `021`, `022` (legal), `023` (legal), `030`, `043`, `044`, `045`, `046`, `047`, `048`, `049`, `050`, `051`, `052`, `054`, `055` (`makeTf` `{placed}`), `056`, `057` (`makeTf` `{replySlaHours}`), `058`, `059`, `060`, `061`, `062`, and `home.016` (the switcher label, R15). `hire.240` is read by `StoreBadges`, not by the page. Deliberately not rendered (D22, W8, D17): `crmlogin.003` (the multi-portal choice), `.004`, `.006`–`.010`, `.024`–`.029`, `.031`–`.042` (credential, reset, lockout, domain-detect and session UI), `.015` ("IT desk"), `.016` ("~10 min" — no signed SLA), `.017`/`.018` (badge micro-copy — `StoreBadges` owns its label), `.053` (the e-mail field label), `.063` ("iOS 15+" — no target), `.064`–`.081` (the Operations tile), `.082`–`.099` (the ChatAdmire/desk tile, incl. legal `.091`) — all stay imported. For the WP-C legal sheet: `crmlogin.020`, `.022`, `.023` (verbatim here); `crmlogin.054`/`057` speak as "we" (package copy waits for WP-C, W154). The legal and newsletter pages read no package id (the package has none for them — `strings/terms.json` is an 8-term glossary, not the Terms page).
+**Package ids used:** 34, all present in `src/content/local/catalogue.json` and both bundles — first `about.021`, last `home.016`: `about.021` (the four legal pages' Home crumb, W109/W176 — "Ana Sayfa" / "Home", the text every page's own crumb carries), `crmlogin.001`, `002`, `005`, `011`, `012`, `013`, `014`, `019`, `020` (legal), `021`, `022` (legal), `023` (legal), `030`, `043`, `044`, `045`, `046`, `047`, `048`, `049`, `050`, `051`, `052`, `054`, `055` (`makeTf` `{placed}`), `056`, `057` (`makeTf` `{replySlaHours}`), `058`, `059`, `060`, `061`, `062`, and `home.016` (the switcher label, R15). `hire.240` is read by `StoreBadges`, not by the page. Deliberately not rendered (D22, W8, D17): `crmlogin.003` (the multi-portal choice), `.004`, `.006`–`.010`, `.024`–`.029`, `.031`–`.042` (credential, reset, lockout, domain-detect and session UI), `.015` ("IT desk"), `.016` ("~10 min" — no signed SLA), `.017`/`.018` (badge micro-copy — `StoreBadges` owns its label), `.053` (the e-mail field label), `.063` ("iOS 15+" — no target), `.064`–`.081` (the Operations tile), `.082`–`.099` (the ChatAdmire/desk tile, incl. legal `.091`) — all stay imported. For the WP-C legal sheet: `crmlogin.020`, `.022`, `.023` (verbatim here); `crmlogin.054`/`057` speak as "we" (package copy waits for WP-C, W154). The newsletter pages read no package id, and the legal pages read exactly one (`about.021`, the Home crumb); the package has no id for their text — `strings/terms.json` is an 8-term glossary, not the Terms page.
 
 **CLIENT_SYS additions:** none — every `sys.*` read in this task is a server read; the `NewsletterAction` island receives its strings as props (the `LogoMarquee` pattern), so `CLIENT_SYS` stays `consent, languageHint, errorTitle, errorRetry, form` and `client-messages.test.ts` needs no edit.
 
 **Foundation gaps:** none — every API consumed exists as cited (read in the code at `7bacd7e`). Notes, not gaps: (1) the RFC 8058 rewrite is this task's edit to the foundation file `src/proxy.ts` (reconcile ruling on check.md: "accept in T13, documented in ARCHITECTURE"); (2) the `(bare)` group has no `error.tsx`/`not-found.tsx` of its own ("ships with its layout only") — a throw on the portal page reaches `app/global-error.tsx`; (3) redacting `token` from GA4's `page_location` is an owner GTM/GA4 setting, recorded in ANALYTICS; (4) `.container-site` is unlayered CSS, so a `max-w-*` utility on the same element never applies — this task puts its measures on inner wrappers; the thank-you page's `container-site max-w-[720px]` has the same latent issue (not changed here). The draft's four gaps are closed: the nav portal rows are internal since W88; the client provider no longer carries `sys.legal` (W148); the proxy rewrite and the forwarder outside `FormShell` are accepted rulings. T13 sends no catalog form fields (the Task 8 v1.1 fields are not involved) — the newsletter door routes take only `?token=`.
 
-**Ledger line** (one row in T1's `## Ledger` table; numbers from `npm run js-size` and the `lhci assert` output):
+**Ledger line** (one row in T1's `## Ledger` table, its six columns `Task | Routes (tr · en) | JS | Lighthouse | Pixel (D27) / named deltas | Date`; numbers from `npm run js-size` and the `lhci assert` output):
 
 ```
-| T13 | Portal entry + legal + newsletter | /portal-girisi · /en/portal-login (noindex) · /gizlilik · /en/privacy · /kullanim-kosullari · /en/terms · /kvkk · /en/kvkk · /cerez-politikasi · /en/cookie-policy · /abone-onay · /en/newsletter/confirm · /abonelikten-cik · /en/newsletter/unsubscribe (noindex) | js-size (W136, local): legal <min>–<max> B (lowest headroom <n> B) · portal <tr>/<en> B (--routes, W94) · newsletter <min>–<max> B (--routes) — all ≤ 194,560 | Lighthouse, 8 legal routes, median of 3 (W145): perf <min>–<max> · a11y 1 · BP 1 · SEO 1 · LCP <min>–<max> ms (element: h1 or the intro paragraph, text) · CLS <max> | pixel: n/a — not a D27 harness page (side-by-side review) | UNBUILT 19 → 12 · gate rows +14 · placeholders legal-terms-tr (TR), legal-kvkk ×2, legal-cookie-policy ×2 · dead-target sweep: 0 T13 paths | <YYYY-MM-DD> <short sha> |
+| T13 Portal entry + legal + newsletter | /portal-girisi · /en/portal-login (noindex) · /gizlilik · /en/privacy · /kullanim-kosullari · /en/terms · /kvkk · /en/kvkk · /cerez-politikasi · /en/cookie-policy · /abone-onay · /en/newsletter/confirm · /abonelikten-cik · /en/newsletter/unsubscribe (noindex) | js-size (W136, local): legal <min>–<max> B (lowest headroom <n> B) · portal <tr>/<en> B (--routes, W94) · newsletter <min>–<max> B (--routes) — all ≤ 194,560 | Lighthouse, 8 legal routes, median of 3 (W145): perf <min>–<max> · a11y 1 · BP 1 · SEO 1 · LCP <min>–<max> ms (element: h1 or the intro paragraph, text) · CLS <max> | pixel: n/a — not a D27 harness page (side-by-side review); deltas: the task header's (1)–(7); UNBUILT 19 → 12 · gate rows +14 · placeholders legal-terms-tr (TR), legal-kvkk ×2, legal-cookie-policy ×2 · dead-target sweep: 0 T13 paths | <YYYY-MM-DD> <short sha> |
 ```

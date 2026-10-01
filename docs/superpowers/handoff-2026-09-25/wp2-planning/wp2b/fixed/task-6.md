@@ -1,6 +1,6 @@
 ### Task 6: About (`/hakkimizda`, `/en/about`)
 
-Port of `design-package/design/About Us.dc.html` (strings `about.001`–`about.145`, 7 legal-flagged) onto the WP1 page pattern and the finished, whole-branch-reviewed WP2a foundation. Every path below is in the worktree `/Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2` on branch `wp2/foundation` (HEAD ≥ `7bacd7e` — the binding preview gate and the WP2a final review, rulings W118–W161, are both in). **Execution order (W99):** T1 → T13 → T2 → T3 → T4 → T5 → **T6** → T7 → T8 → … By the time this task runs, T1 has created the shared doc anchors (W98: the `docs/SEO.md` `## Pages` table, `docs/ANALYTICS.md` `### Page instrumentation (WP2b)`, the WP2b `## Ledger` table in `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — the per-page bullet list under `docs/CONTENT-MODEL.md` `### Adding copy (W9, W23, W54)` already exists at HEAD, T1 only appends to it); T13 has made `/privacy`, `/cookie-policy` and the footer legal links resolve; T2–T5 have appended their `GATE_ROUTE_TABLE` rows and their `sys.<page>` / `sys.seo.<pageKey>` objects, and **T2 has rendered `id="request-form"` on `/hire-workers`** — the page `DEFAULT_CTAS` points at (verified in `src/design/chrome/ctas.ts` at HEAD: `/about` has no `CTA_BY_PATHNAME` entry of its own, so the header's CTA and this page's own hash CTAs all resolve through the shared default; W152/W158 below). This task consumes the foundation as landed and verified against the code at HEAD — where a frozen `produces-final.md` Produces block and the real module disagree, the code wins (every import, export and prop below was opened and read, not copied from the block).
+Port of `design-package/design/About Us.dc.html` (strings `about.001`–`about.145`, 7 legal-flagged) onto the WP1 page pattern and the finished, whole-branch-reviewed WP2a foundation. Every path below is in the worktree `/Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2` on branch `wp2/foundation` (HEAD ≥ `7bacd7e` — the binding preview gate and the WP2a final review, rulings W118–W161, are both in). **Execution order (W99):** T1 → T13 → T2 → T3 → T4 → T5 → **T6** → T7 → T8 → … By the time this task runs, T1 has created the shared doc anchors (W98: the `docs/SEO.md` `## Pages` table, `docs/ANALYTICS.md` `### Page instrumentation (WP2b)`, the WP2b `## Ledger` table in `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — the per-page bullet list under `docs/CONTENT-MODEL.md` `### Adding copy (W9, W23, W54)` — the heading exists at HEAD, the list does not: T1 creates it as the paragraph that begins "**Per-page `sys.*` copy (WP2b, W98).**" plus the Homepage bullet, and T13/T2–T5 append theirs); T13 has made `/privacy`, `/cookie-policy` and the footer legal links resolve; T2–T5 have appended their `GATE_ROUTE_TABLE` rows and their `sys.<page>` / `sys.seo.<pageKey>` objects, and **T2 has rendered `id="request-form"` on `/hire-workers`** — the page `DEFAULT_CTAS` points at (verified in `src/design/chrome/ctas.ts` at HEAD: `/about` has no `CTA_BY_PATHNAME` entry of its own, so the header's CTA and this page's own hash CTAs all resolve through the shared default; W152/W158 below). This task consumes the foundation as landed and verified against the code at HEAD — where a frozen `produces-final.md` Produces block and the real module disagree, the code wins (every import, export and prop below was opened and read, not copied from the block).
 
 **What the page is in Phase A.** It is the company page. The hero sits on a navy gradient with no photo (spec §10 row 4 gives hero photography only to the Homepage and Hire Workers: "gradients elsewhere"), so the `h1` is the LCP element (D26). The page then carries:
 
@@ -36,7 +36,7 @@ Port of `design-package/design/About Us.dc.html` (strings `about.001`–`about.1
 - **Copy and voice.**
   - W9/W23: id-less copy goes under `sys.about.*` and `sys.seo.about.*`.
   - W10: the design's ≤900 px removals are CSS-hidden (`hidden lg:…`), never conditionally rendered — verified against the design file's own `@media (max-width: 900px)` block, which sets `.ja-tech-visual { display: none }` and `.ja-feat6 > div > p { display: none }` (design lines ~262–385). That covers the tech visual and the feature-card bodies exactly at the `lg` (901 px) breakpoint this port uses.
-  - W154: the company is "JobsAdmire", never "we"/"biz", enforced over every `sys.*` string by `src/messages/voice.test.ts` (widened from `sys.form.*` in the WP2a final review). The draft's `sys.about.licence.body` used "Our İŞKUR … permit" (EN) and "… belgemiz" (TR, the "-miz" = "our" suffix), and `sys.about.who.photoAlt` (TR) used "ofisimizdeki" ("at our office") — all first-person-plural company voice. Corrected below to third person ("The İŞKUR … permit", "izin belgesi", "ofisindeki"). The two WhatsApp prefills (`sys.about.whatsapp.demo`/`consult`) stay first-person **singular** ("I would like …" / "… istiyorum") — that is the visitor's own voice at send time (the same shape as the existing `sys.whatsapp.prefill`), and the checker's rule only flags `we/us/our` and Turkish first-person-**plural** endings, so these two new keys need no entry in `voice.test.ts`'s `VISITOR_VOICE` allowlist (verified against the exact regexes in `src/messages/voice.test.ts`: `EN_FIRST_PERSON = {we,us,our,ours,ourselves}`; `TR_VERB_1PL` matches only plural endings such as `-yoruz`/`-ecek/acağız`/`-malıyız`/`-dık`, none of which match "istiyorum").
+  - W154: the company is "JobsAdmire", never "we"/"biz", enforced over every `sys.*` string by `src/messages/voice.test.ts` (widened from `sys.form.*` in the WP2a final review). The draft's `sys.about.licence.body` used "Our İŞKUR … permit" (EN) and "… belgemiz" (TR, the "-miz" = "our" suffix), and `sys.about.who.photoAlt` (TR) used "ofisimizdeki" ("at our office") — all first-person-plural company voice. Corrected below to third person ("The İŞKUR … permit", "izin belgesi", "ofisindeki"). The same reading covers `sys.seo.about.title` (TR): "JobsAdmire Hakkında …", never the possessive page name "Hakkımızda" ("About Us" — the EN title is "About JobsAdmire …" for the same reason; the package's nav label `about.008` keeps "Hakkımızda" until WP-C). The two WhatsApp prefills (`sys.about.whatsapp.demo`/`consult`) stay first-person **singular** ("I would like …" / "… istiyorum") — that is the visitor's own voice at send time (the same shape as the existing `sys.whatsapp.prefill`), and the checker's rule only flags `we/us/our` and Turkish first-person-**plural** endings, so these two new keys need no entry in `voice.test.ts`'s `VISITOR_VOICE` allowlist (verified against the exact regexes in `src/messages/voice.test.ts`: `EN_FIRST_PERSON = {we,us,our,ours,ourselves}`; `TR_VERB_1PL` matches only plural endings such as `-yoruz`/`-ecek/acağız`/`-malıyız`/`-dık`, none of which match "istiyorum").
 - **Links and CTAs.**
   - W17: `/about` has no `CTA_BY_PATHNAME` entry, so `DEFAULT_CTAS` applies — confirmed in `src/design/chrome/ctas.ts`: `DEFAULT_CTAS.primary.href = { pathname: '/hire-workers', hash: '#request-form' }`. There is nothing for this page to render for the **header's** CTA, because the anchor it names lives on a different page.
   - W82: the hero's and the band's "Request workers" CTAs are the object href `{ pathname: '/hire-workers', hash: '#request-form' }` — the same target `DEFAULT_CTAS` uses.
@@ -65,6 +65,10 @@ Port of `design-package/design/About Us.dc.html` (strings `about.001`–`about.1
   - D27: this is not a pixel-harness page (the four are Homepage, Hire Workers, Cost Calculator, Blog Article); it gets side-by-side review, and Cycle 5's proof session runs no `npm run pixel`.
 - **Docs.**
   - W45/W98: sentence-anchored edits into the one shape per shared doc, folded into the cycle that builds the behaviour they describe (Cycle 4), not deferred to a separate docs-only cycle — matching how the already-reconciled sibling tasks (T2/T5/T7/T8) place their SEO/ANALYTICS/PRD edits.
+- **Reconcile rechecks (2026-10-01).**
+  - W162: the lazy-line trigger is local-adjusted. The binding JS figure is the preview's `npm run js-size`, which runs ≈ 2,836 B above the local build, so Cycle 5 stops and reports when a LOCAL route figure is ≥ 191,724 B (194,560 − 2,836); the controller's binding preview decides at 194,560 B. This page mounts no island, so there is no lazy lever to write in advance.
+  - W176: Cycle 4's PRD §11 edit anchors on T5's exact post-edit text ("8 of the 14" → "7 of the 14", "; About Us is designed (WP2b T6)" appended) and stops and reports when the sentence reads otherwise; T7 anchors on what this task leaves.
+  - W178: every `npm run dev` render check (Cycles 2, 3 and 4) ends with the dev server killed and confirmed gone before the next vitest run or commit; the page spec's metric-text case sets `page.emulateMedia({ reducedMotion: 'reduce' })` before `goto` (count-up flake).
 
 **Files:**
 
@@ -83,7 +87,7 @@ Create
 - `e2e/pages/about.spec.ts`
 
 Modify
-- `src/lib/seo/routes.ts` — delete the `'/about',` entry from the `UNBUILT_PATHNAMES` initialiser (`export const UNBUILT_PATHNAMES: ReadonlySet<keyof typeof pathnames> = new Set<keyof typeof pathnames>([ … ])`, confirmed present verbatim at HEAD).
+- `src/lib/seo/routes.ts` — delete the `'/about',` entry line from the `export const UNBUILT_PATHNAMES` initialiser (the `new Set<…>([ … ])` array literal; the entry line `'/about',` is confirmed present at HEAD — Prettier splits the `Set` generic over three lines, so anchor on the identifier and the entry line, never on the one-line form).
 - `e2e/routes.ts` — append two rows as the last entries of the `GATE_ROUTE_TABLE` array literal (after the rows T1–T5/T13 left; confirmed the array is `export const GATE_ROUTE_TABLE: readonly GateRoute[] = […]` at HEAD).
 - `src/messages/tr.json`, `src/messages/en.json` — `about: { title, description }` inside the existing `sys.seo` object (confirmed present with `ogTagline` at HEAD; T1–T5 add their own page keys beside it), and a new `about` object inside `sys` (confirmed absent at HEAD).
 - `src/app/globals.css` — `@keyframes about-fly` and `.about-fly`, appended at the end of the file.
@@ -187,12 +191,12 @@ Then add the SEO fallback copy (W23: the package has no `<title>`/description fo
 
 ```json
       "about": {
-        "title": "Hakkımızda — JobsAdmire, İŞKUR lisanslı özel istihdam bürosu",
+        "title": "JobsAdmire Hakkında — İŞKUR lisanslı özel istihdam bürosu, Antalya",
         "description": "JobsAdmire, Antalya'da faaliyet gösteren İŞKUR lisanslı bir özel istihdam bürosudur. Türkiye genelindeki işverenler için nitelikli yabancı işçi temin eder, tüm çalışma izni işlemlerini yürütür; Antalya ve Karaçi'de ofisleri vardır."
       }
 ```
 
-Both are `sys.seo.*` (W23), never checked by `voice.test.ts` (that checker sweeps `sys.*` generally, but SEO meta copy describing the company in third person — "JobsAdmire is …" / "JobsAdmire, … faaliyet gösteren …" — reads naturally without "we"; re-read: neither string contains `we/us/our` or a Turkish first-person-plural ending).
+Both are `sys.seo.*` (W23) and `voice.test.ts` sweeps them like every `sys.*` string (W154). They name the company in the third person — "About JobsAdmire" / "JobsAdmire Hakkında", "JobsAdmire is …" / "JobsAdmire, … faaliyet gösteren …": no `we/us/our`, no Turkish first-person-plural verb, and no first-person-plural possessive either. The conventional page name "Hakkımızda" ("About Us") is the package's own nav label `about.008` and stays as authored until WP-C (the WP2a final review §5 lists "hakkımızda" among the package's first-person strings), but new `sys.*` copy never uses it: the §5 sweep W154 adopted counts `…ımız` possessives as company "we" even where the `voice.test.ts` regex cannot see them (its own doc comment: "a Turkish first-person possessive … e.g. 'sitemiz', is not caught here"), and the EN title already avoids "About Us" the same way.
 
 - [ ] **Step 2: Run to verify it fails**
 
@@ -606,7 +610,7 @@ describe('About copy (W9/W23)', () => {
 cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run about/__tests__/copy.test.ts --maxWorkers=1
 ```
 
-Expected: the suite fails to collect with `TypeError: Cannot convert undefined or null to object`, because `en.sys.about` does not exist yet.
+Expected: 2 failures — "sys.about.* and sys.seo.about.* carry the identical key set in both locales" and "has no empty value in either locale" throw `TypeError: Cannot convert undefined or null to object` (`flatten(undefined)`), because `en.sys.about` does not exist yet. The other three cases pass on the Cycle 1 page (its `sys('seo.about.…')` references resolve, its package ids exist, and it reads no `NEVER_READ` id).
 
 - [ ] **Step 3: Implement**
 
@@ -933,6 +937,15 @@ Expected:
 - `src/messages/voice.test.ts` green — the two W154 fixes (`licence.body`, `who.photoAlt`) leave no first-person-plural string under `sys.about.*`.
 - `npm run lint`/`typecheck`/`format` green.
 - **Dev render.** Run `npm run dev` once (not a production build) and load `/hakkimizda` and `/en/about`. There must be no `unknown string id`, no `fill: no value for placeholder` and no `CollectionError` in the terminal. `makeTf` throws in dev only, so this run is the proof.
+- **Stop the dev server (W178), before the commit or any further vitest/typecheck run.** `npm run dev` is a heavy job that holds port 3000 (owner's one-heavy-job rule), and a survivor would make Cycle 5's `npm run start` fail with EADDRINUSE while the gate silently ran against `next dev`:
+
+  ```bash
+  pkill -f 'next dev' || true
+  pgrep -fl 'next dev' || echo 'dev server stopped'
+  lsof -nP -iTCP:3000 -sTCP:LISTEN || echo 'port 3000 free'
+  ```
+
+  Expected: `dev server stopped` and `port 3000 free`. If either lists a process, `kill` it by PID and run both checks again until they print the two messages.
 
 - [ ] **Step 5: Commit**
 
@@ -1178,6 +1191,15 @@ Expected:
 - 5 founder, 3 FounderBand and 5 copy cases green.
 - `npm run lint`/`typecheck`/`format` green.
 - **Dev render.** In `npm run dev`, `/hakkimizda` renders no `[data-testid="about-founder"]`, because the LOCAL bundle's row is unpublished. The published state is proven by `FounderBand.test.tsx`. Never publish it by editing `src/content/local/*.json`, which is generated.
+- **Stop the dev server (W178), before the commit or any further vitest/typecheck run.** `npm run dev` is a heavy job that holds port 3000 (owner's one-heavy-job rule), and a survivor would make Cycle 5's `npm run start` fail with EADDRINUSE while the gate silently ran against `next dev`:
+
+  ```bash
+  pkill -f 'next dev' || true
+  pgrep -fl 'next dev' || echo 'dev server stopped'
+  lsof -nP -iTCP:3000 -sTCP:LISTEN || echo 'port 3000 free'
+  ```
+
+  Expected: `dev server stopped` and `port 3000 free`. If either lists a process, `kill` it by PID and run both checks again until they print the two messages.
 
 - [ ] **Step 5: Commit**
 
@@ -1360,6 +1382,12 @@ for (const { path, lang, alternate, requestHref } of CASES) {
     });
 
     test('the headline numbers come from the metrics collection (W1)', async ({ page }) => {
+      // W178 (count-up flake): `Stat` counts its visible figure up from 0 after hydration (0→22
+      // passes 12 and 14, 0→470 passes 112/312/412) unless motion is reduced; pin reduced motion
+      // BEFORE `goto` so the "never 14+/12+" assertions read the final figures, never an animation
+      // frame. (A case that cannot pin motion reads the `.sr-only` span inside the `Stat`, which
+      // always carries the final figure, instead.)
+      await page.emulateMedia({ reducedMotion: 'reduce' });
       await page.goto(path);
       const text = await bodyText(page);
       expect(text).toContain('470+');
@@ -1497,7 +1525,7 @@ cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && N
 
 Expected: both files fail to load, with `Failed to resolve import "../licence"` and `"../_components/LicenceBlock"`.
 
-Not run against a server here: Playwright needs a production build, and the task gets exactly one build + one start + one gate (W126, Cycle 5). Before this cycle every `about.spec.ts` case fails by construction (`/hakkimizda` and `/en/about` answer 404 through `[...rest]`, since `/about` is still in `UNBUILT_PATHNAMES` until Cycle 1 — which has already run — but the offices/`#lisans`/band sections do not exist yet); Cycle 5 runs it against the finished page. What this step proves locally is that the spec parses, type-checks and lints:
+Not run against a server here, and no interim build is made for it (W126: the task's one build, one `npm run start` and one gate all sit in Cycle 5). The red state is structural: until Step 3 adds them, the page has no `about-offices`/`about-lisans`/`about-cta` sections, so the section-order, offices, `#lisans`, CTA and legacy-redirect cases cannot pass; Cycle 5's gate runs the spec for real against the finished page. What this step proves locally is that the spec compiles and its cases are collected:
 
 ```bash
 cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && npx playwright test e2e/pages/about.spec.ts --list
@@ -2119,7 +2147,7 @@ Now the shared docs, each edit anchored on a sentence or heading that exists (or
 - **About (`/hakkimizda`, `/en/about`, T6):** no page event (W12). `whatsapp_click` with `placement: 'page_cta'` from the technology panel's "Book a demo →" (prefill `sys.about.whatsapp.demo`) and the closing band's WhatsApp button (prefill `sys.about.whatsapp.consult`), both through `ContactCta`; `call_click` / `whatsapp_click` / `email_click` with `placement: 'office_card'` from the two `OfficeCard`s. The hero's phone-only and the band's "Request workers" CTAs are internal links to `/hire-workers#request-form` and fire nothing. Every prefill is fixed copy — no visitor data in any href (W76/W95).
 ```
 
-`docs/CONTENT-MODEL.md` — append one bullet as the last bullet of the per-page list under the `### Adding copy (W9, W23, W54)` heading (confirmed present at HEAD):
+`docs/CONTENT-MODEL.md` — append one bullet as the last bullet of the per-page list under the `### Adding copy (W9, W23, W54)` heading. The heading exists at HEAD; the list does not — T1 creates it there as the paragraph that begins "**Per-page `sys.*` copy (WP2b, W98).**" with the Homepage bullet, and T13 and T2–T5 append their bullets before this task. Append after whichever bullet is last; never start a second list:
 
 ```markdown
 - **About (`sys.about.*`, WP2b T6):**
@@ -2132,11 +2160,15 @@ Now the shared docs, each edit anchored on a sentence or heading that exists (or
   - It never reads the design's stat labels `about.026`–`028`/`059`–`063`, the "+ countries" suffix `about.142` (W1: exact 13), the founder placeholder `about.144` or the subscription `about.141`/`145` (W5). `copy.test.ts` pins this.
 ```
 
-`docs/PRD.md` — find the §10 bullet "Founder name/title, founder/office photo, licence PDFs — **pending §10 item 3**." (confirmed present verbatim) and append this sentence to it, after that text and on the same line:
+`docs/PRD.md` — two in-place edits (W45):
+
+1. Find the §10 bullet "Founder name/title, founder/office photo, licence PDFs — **pending §10 item 3**." (confirmed present verbatim; no earlier task in the W99 order edits it) and append this sentence to it, after that text and on the same line:
 
 ```markdown
  As built (WP2b T6): the About page renders the founder band only from a published `founder` row (W86 — the importer ships `published: false`), keeps the office/founder photo slots as named placeholders, and ships the `#lisans` block with five named PDF placeholder slots — `src/app/[locale]/(site)/about/licence.ts` is the one file to edit when the PDFs arrive (drop them under `public/docs/licence/`).
 ```
+
+2. §11, the sentence that begins "**Not yet built, by design (WP2 and later):**" (`grep -n 'Not yet built' docs/PRD.md`). When this task runs it opens "8 of the 14 core pages (the homepage is the first designed page — WP2b T1; Hire Workers is the second — WP2b T2; the portal entry is built (WP2b T13); the Cost Calculator is designed (WP2b T3); Work Permit is designed (WP2b T4); Partner With Us is designed (WP2b T5))" — the chain W176 fixes in W99 order: T1 replaced the WP2a parenthesis, T13 decremented "12 of the 14" to "11 of the 14" and inserted the portal clause, T2 rewrote T1's Hire-Workers clause (count unchanged), T3 → 10, T4 → 9, T5 → 8. Make About Us count as built: replace "8 of the 14 core pages" with "7 of the 14 core pages", and directly after "Partner With Us is designed (WP2b T5)" insert "; About Us is designed (WP2b T6)" (before the parenthesis closes). Leave the rest of the sentence as it is (W45: edit in place, never re-add WP1 wording). Run `grep -n 'Partner With Us is designed (WP2b T5)' docs/PRD.md` first: if it finds nothing, or the sentence does not read "8 of the 14", an earlier task drifted — stop and report (W176) rather than rewrite the sentence or guess a count. After the edit it reads "7 of the 14 core pages (… Partner With Us is designed (WP2b T5); About Us is designed (WP2b T6))"; T7 decrements from that text (7 → 6) and appends its own clause after "About Us is designed (WP2b T6)". §2's About Us row needs no edit: its last cell `none` is still exact (no form).
 
 - [ ] **Step 4: Verify**
 
@@ -2154,6 +2186,16 @@ Expected:
   - Both office cards show the collection's label, hours and contact rows.
   - The green band renders two CTAs (primary in the `primary` face, secondary in `inverse-dark`), and there is no newsletter band in the DOM.
   - `curl -sI http://localhost:3000/certifications | grep -i location` prints `/en/about#lisans` (308, the WP1 legacy redirect — nothing to change).
+- **Stop the dev server (W178), before the commit or any further vitest/typecheck run.** `npm run dev` is a heavy job that holds port 3000 (owner's one-heavy-job rule), and a survivor would make Cycle 5's `npm run start` fail with EADDRINUSE while the gate silently ran against `next dev`:
+
+  ```bash
+  pkill -f 'next dev' || true
+  pgrep -fl 'next dev' || echo 'dev server stopped'
+  lsof -nP -iTCP:3000 -sTCP:LISTEN || echo 'port 3000 free'
+  ```
+
+  Expected: `dev server stopped` and `port 3000 free`. If either lists a process, `kill` it by PID and run both checks again until they print the two messages.
+- PRD §11: `grep -n 'Not yet built' docs/PRD.md` prints the one sentence, and it contains "7 of the 14 core pages" and "Partner With Us is designed (WP2b T5); About Us is designed (WP2b T6))" (W176) — one hit, never a second copy of the sentence.
 - Re-read the five doc diffs once against the page: every claim in them must be something this cycle renders or proves.
 
 - [ ] **Step 5: Commit**
@@ -2175,7 +2217,8 @@ cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && g
   slots, offices, SEO + about.008 crumb (one BreadcrumbList only), #request-form hrefs + the
   green band's primary face, language switch, demo click, legacy /certifications
 - docs: SEO.md page row, ANALYTICS.md bullet, CONTENT-MODEL.md sys.about.* bullet (incl. the
-  W150 n/a note), PRD.md founder/licence as-built sentence
+  W150 n/a note), PRD.md founder/licence as-built sentence + the §11 page count (8 -> 7 of the 14, About Us
+  added after T5's clause, W176)
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 ```
@@ -2197,9 +2240,10 @@ grep -n "pathname: '/hire-workers', hash: '#request-form'" src/design/chrome/cta
 ls -a | grep '^\.env'                                        # only .env.example (Next never loads it)
 env | grep -E '^(OPS_|NEXT_PUBLIC_TURNSTILE|NEXT_PUBLIC_GTM|NEXT_PUBLIC_GA4|NEXT_PUBLIC_ADS)' || echo 'door-less, GTM-dark'
 git status --short                                            # clean: Cycles 1–4 are committed
+lsof -nP -iTCP:3000 -sTCP:LISTEN || echo 'port 3000 free'   # no `npm run dev` left from Cycles 1–4
 ```
 
-Expected: exactly as annotated. This page has no door of its own, but a stray door/GTM variable in the shell still inflates the measured JS budget (W146) or changes the e2e's door-face assumptions elsewhere on the branch — remove it from this shell/worktree before building. If a route or CTA fact differs, WP2a, T2 or an earlier page task drifted: stop and report; never "fix" the route list or the CTA table from this page task.
+Expected: exactly as annotated — in particular `port 3000 free`: a dev server still listening would make `npm run start` fail with EADDRINUSE while the `curl` wait and the gate silently ran against `next dev` (stop it first). This page has no door of its own, but a stray door/GTM variable in the shell still inflates the measured JS budget (W146) or changes the e2e's door-face assumptions elsewhere on the branch — remove it from this shell/worktree before building. If a route or CTA fact differs, WP2a, T2 or an earlier page task drifted: stop and report; never "fix" the route list or the CTA table from this page task.
 
 - [ ] **Step 2: Build and start (the one build, W126)**
 
@@ -2224,14 +2268,14 @@ E2E_BASE_URL=http://localhost:3000 npm run gate
 npm run js-size
 E2E_BASE_URL=http://localhost:3000 npm run gate:launch > "$TMPDIR/about-gate-launch.log" 2>&1 || true
 grep -n 'missing id="request-form"' "$TMPDIR/about-gate-launch.log" || echo 'no missing #request-form anchor'
-grep -n '/hakkimizda\b\|/en/about\b' "$TMPDIR/about-gate-launch.log" || echo 'about routes not listed as dead'
+grep -nE '(/hakkimizda|/en/about|/ortak-olun|/en/partner-with-us)[^ |]* → ' "$TMPDIR/about-gate-launch.log" || echo 'about routes not listed as dead'
 ```
 
 Expected:
 - **Gate** (localhost wears the production face → `lighthouserc.local.json`, W135/W145): Playwright green under `mobile` and `desktop` — `e2e/pages/about.spec.ts` (7 per-locale cases × 2 locales + the demo-click case + the legacy-redirect case, the two mobile-skipped cases accounted for) and `routing` (page contract on `/hakkimizda`, `/en/about`), `seo` (canonical/hreflang on both, the sitemap lists both, every sitemap URL 200), `a11y` (zero `wcag2a`/`wcag2aa`/`wcag22aa` violations on both routes under both projects), `width-sweep` (no horizontal overflow at 1440…390 incl. 1101/1100 and 901/900 — the offices' `lg:grid-cols-[1fr_auto_1fr]` row, the tech panel and the hero's İŞKUR float are the three layouts to watch), `chrome` (every earlier page's header CTA still lands, including the shared `DEFAULT_CTAS` this page itself uses), `headers`, `thank-you` all green; the two token cases of `ops.spec.ts` skip without `REVALIDATE_SECRET` (as at WP2a). `lhci assert` passes on both indexable gate routes; on `/hakkimizda` and `/en/about` (median of 3 DevTools-throttled runs): performance ≥ 0.95, accessibility 1, best-practices 1, SEO 1, `resource-summary:script:size` ≤ 204,800 B, LCP ≤ 2,500 ms (the h1), CLS ≤ 0.1.
-- **js-size** (W136 — the ledger's figure): both About routes below the 194,560 B lazy line. This page ships no client chunk of its own — `ContactLink`, `Stat` and next-intl `Link` are already in the shell/chrome graph other pages pay for — so the expected figure is within a few hundred bytes of whatever the shell measures at this point in the branch (T1–T5 have already landed their own chunks; About adds none). The LCP column should read the h1.
-- **Over the lazy line** (either route > 194,560 B): do NOT start T7 and do NOT add a second build here — record the table and the route's client chunk list (`.next/server/app/[locale]/(site)/about/page_client-reference-manifest.js`) and report to the controller (W13 amended). This page's own levers are essentially none (it mounts no island), so an overage would point at an EARLIER task's chunk growing, not at this page.
-- **Launch anchor check** (W152/W158): the launch profile stays RED by design (later pages' unbuilt routes and anchors), but the first grep prints `no missing #request-form anchor` (T2 already renders `id="request-form"` on `/hire-workers`, and this page adds no CTA-table entry of its own — it only consumes the shared `DEFAULT_CTAS`), and the second prints `about routes not listed as dead` (`/hakkimizda`, `/en/about` and this page's own new internal links — `/partner-with-us`, `#lisans` — all resolve).
+- **js-size** (W136 — the ledger's figure): both About routes below the LOCAL stop trigger of 191,724 B (W162: the binding figure is the preview's `npm run js-size`, which runs ≈ 2,836 B above the local build, so the trigger is 194,560 B − 2,836 B; the controller's binding preview decides at 194,560 B). This page ships no client chunk of its own — `ContactLink`, `Stat` and next-intl `Link` are already in the shell/chrome graph other pages pay for — so the expected figure is within a few hundred bytes of whatever the shell measures at this point in the branch (T1–T5 have already landed their own chunks; About adds none). The LCP column should read the h1.
+- **Local trigger crossed** (either route's LOCAL `npm run js-size` figure ≥ 191,724 B, W162): do NOT start T7, do NOT write a lazy cycle in advance and do NOT add a second build here — record the table and the route's client chunk list (`.next/server/app/[locale]/(site)/about/page_client-reference-manifest.js`) and stop and report to the controller (W13 amended; the controller schedules any lazy pass before the next page starts, W162). This page's own levers are essentially none (it mounts no island), so an overage would point at an EARLIER task's chunk growing, not at this page.
+- **Launch anchor check** (W152/W158): the launch profile stays RED by design (later pages' unbuilt routes and anchors), but the first grep prints `no missing #request-form anchor` (T2 already renders `id="request-form"` on `/hire-workers`, and this page adds no CTA-table entry of its own — it only consumes the shared `DEFAULT_CTAS`), and the second prints `about routes not listed as dead` (`/hakkimizda`, `/en/about` and this page's own new internal link `/partner-with-us` all resolve; `#lisans` is in-page). The grep matches only the sweep's `<href> → <status>` lines: the D26 content-readiness table further down the same log lists `| /hakkimizda | 200 | … |` rows for this page's named placeholders by design, so an unscoped grep for the route would always hit.
 
 - [ ] **Step 4: Stop the server, record the numbers**
 
@@ -2250,7 +2294,8 @@ Expected: `no stray processes` (kill any survivor by PID). `.lighthouseci/` and 
 cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && npx prettier --write docs/superpowers/plans/2026-09-20-wp2b-pages.md && npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1 && git add docs/superpowers/plans/2026-09-20-wp2b-pages.md && git commit -m "docs(about): T6 ledger row — gate, js-size, Lighthouse medians, launch anchor sweep (T6 c5)
 
 Localhost proof session (W126/W145): one build, one gate, both about routes measured against
-the 194,560 B lazy line (W136); id=\"request-form\" confirmed present on /hire-workers for the
+the 191,724 B local stop trigger (the 194,560 B lazy line less the 2,836 B local-to-preview
+offset, W162/W136); id=\"request-form\" confirmed present on /hire-workers for the
 shared DEFAULT_CTAS this page uses (W152/W158); not a D27 pixel page.
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
@@ -2261,8 +2306,8 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 **Docs in this task:**
 - `docs/SEO.md` — one row appended as the last row of the table under `## Pages` (T1's 7-column table; Cycle 4).
 - `docs/ANALYTICS.md` — one bullet appended to the list under `### Page instrumentation (WP2b)` (Cycle 4).
-- `docs/CONTENT-MODEL.md` — one bullet appended to the per-page list under `### Adding copy (W9, W23, W54)` (Cycle 4).
-- `docs/PRD.md` — one "As built" sentence appended to the §10 bullet that reads "Founder name/title, founder/office photo, licence PDFs — **pending §10 item 3**." (Cycle 4).
+- `docs/CONTENT-MODEL.md` — one bullet appended to the per-page list T1 creates under `### Adding copy (W9, W23, W54)` (the paragraph "**Per-page `sys.*` copy (WP2b, W98).**"; Cycle 4).
+- `docs/PRD.md` — one "As built" sentence appended to the §10 bullet that reads "Founder name/title, founder/office photo, licence PDFs — **pending §10 item 3**.", and the §11 sentence beginning "**Not yet built, by design (WP2 and later):**" counts About Us as built (Cycle 4, W45/W176): anchored on T5's exact post-edit text, "8 of the 14 core pages" becomes "7 of the 14 core pages" and "; About Us is designed (WP2b T6)" is inserted directly after "Partner With Us is designed (WP2b T5)", before the parenthesis closes; the step stops and reports if the sentence does not read as T5 leaves it, and T7 anchors on the text this task leaves.
 - `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — the T6 `## Ledger` row (Cycle 5, needs the measured numbers).
 
 No `docs/ARCHITECTURE.md` change (no new foundation behaviour — the page follows T1's route-group/private-folder pattern as documented). No `docs/INTEGRATIONS.md` change: there is no door form and no Operations catalog field is touched.
@@ -2321,6 +2366,6 @@ Repairs this reconcile made to the draft, none of them a foundation gap — the 
 **Ledger line** (append to the `## Ledger` table in `docs/superpowers/plans/2026-09-20-wp2b-pages.md`; fill every `<…>` from Cycle 5):
 
 ```markdown
-| T6 About | `/hakkimizda` · `/en/about` | js-size (local): `/hakkimizda` <n> B · `/en/about` <n> B (ceiling 204,800; lazy line 194,560; no island of its own — expected within a few hundred bytes of the shared shell) | LH mobile, median of 3, DevTools throttling (local rc = production): `/hakkimizda` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n>; `/en/about` perf <x.xx> · LCP <n> ms · CLS <n> | not a D27 page — side-by-side review; named deltas: gradient hero (no `about-hero` photo), metric labels from the collection (about.026–028/059–063 not read), "14+"/"12+"/"98 %"/"13+ countries" pill dropped (W1), founder band hidden (W6/W86), hero WhatsApp button not ported (hidden at every width in the design), journey CTA → /partner-with-us, #lisans block added (D26), office cards via OfficeCard (W7 labels; label/contact rows visible on phones), green band body + WhatsApp visible on phones, primary CTA keeps ClosingCtaBand's own face (W127/W128), static corridor lanes (D20); launch anchor sweep: `id="request-form"` confirmed present on `/hire-workers` for the shared `DEFAULT_CTAS` (W152/W158) | <YYYY-MM-DD> |
+| T6 About | `/hakkimizda` · `/en/about` | js-size (local): `/hakkimizda` <n> B · `/en/about` <n> B (ceiling 204,800; local stop trigger 191,724 = lazy line 194,560 − 2,836, W162; no island of its own — expected within a few hundred bytes of the shared shell); binding preview: <added by the controller> | LH mobile, median of 3, DevTools throttling (local rc = production): `/hakkimizda` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n>; `/en/about` perf <x.xx> · LCP <n> ms · CLS <n> | not a D27 page — side-by-side review; named deltas: gradient hero (no `about-hero` photo), metric labels from the collection (about.026–028/059–063 not read), "14+"/"12+"/"98 %"/"13+ countries" pill dropped (W1), founder band hidden (W6/W86), hero WhatsApp button not ported (hidden at every width in the design), journey CTA → /partner-with-us, #lisans block added (D26), office cards via OfficeCard (W7 labels; label/contact rows visible on phones), green band body + WhatsApp visible on phones, primary CTA keeps ClosingCtaBand's own face (W127/W128), static corridor lanes (D20); launch anchor sweep: `id="request-form"` confirmed present on `/hire-workers` for the shared `DEFAULT_CTAS` (W152/W158) | <YYYY-MM-DD> |
 ```
 

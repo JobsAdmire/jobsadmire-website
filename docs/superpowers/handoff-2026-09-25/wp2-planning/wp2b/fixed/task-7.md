@@ -13,7 +13,7 @@
 - Page record (both bundles): `bundle.pages.contact = { titleId: '', descriptionId: '', ogImage: null, canonical: null, robots: 'index', jsonLd: ['breadcrumb', 'faq'] }` → `buildMetadata` takes the page's `sys.seo.contact.{title,description}` (W23/W38; this task adds them). OG image `/og/{locale}/contact.png` — its title is `sys.seo.contact.title`, its subline `sys.seo.ogTagline` (CDN-cached, W123).
 - `CTA_BY_PATHNAME['/contact']` (`src/design/chrome/ctas.ts`) = primary `contact.015` + tail `contact.016` → `{ pathname: '/contact', hash: '#message' }` (rendered `href="/iletisim#message"` / `"/en/contact#message"`), secondary `home.002` → `/hire-workers`. **This page must render `id="message"`** (W17/W152/W158: `gate:launch`'s anchor sweep prints `CTA_BY_PATHNAME['/contact'].primary (/contact#message): <locale> <path> → missing id="message" …` until this task lands). No edit to `ctas.ts` (W121).
 - `src/lib/seo/routes.ts` `UNBUILT_PATHNAMES` contains `'/contact',` — this task deletes that line in the commit that adds `page.tsx` (W20; `src/lib/seo/unbuilt.test.ts` fails in either direction otherwise). `e2e/routes.ts` `GATE_ROUTE_TABLE` has no contact row — this task inserts the two locale paths (W21) and nowhere else.
-- Settings (LOCAL bundles): `phone '+905011240340'`, `phoneDisplay '+90 501 124 03 40'`, `partnershipsPhone '+905533832549'` (the contract types it `string | null` — the Agencies card renders only when it is set), `email 'info@jobsadmire.com'`, `whatsappNumber '905011240340'`, `siteUrl 'https://www.jobsadmire.com'`, `turnstileSiteKey null` (overlaid from `NEXT_PUBLIC_TURNSTILE_SITE_KEY` only where set).
+- Settings (LOCAL bundles): `phone '+905011240340'`, `phoneDisplay '+90 501 124 03 40'`, `partnershipsPhone '+905533832549'` (the contract types it `string | null`; the Agencies card and the JSON-LD `partnerships` ContactPoint read it with the main line as the fallback while it is `null` — W176, the same partner line T5 uses), `email 'info@jobsadmire.com'`, `whatsappNumber '905011240340'`, `siteUrl 'https://www.jobsadmire.com'`, `turnstileSiteKey null` (overlaid from `NEXT_PUBLIC_TURNSTILE_SITE_KEY` only where set).
 - `offices` collection (`getOffice(bundle, key)` — throws in every env when a row is missing): `antalya` — `kind 'hq'`, `cityId contact.096`, `labelId contact.099`, `addressId contact.133`, `addressLine2Id contact.134`, `hoursId contact.100` ("Mon–Fri · 09:00–18:00 (TRT)"), `phone '+905011240340'`, `whatsapp '905011240340'`, `hours { tz 'Europe/Istanbul', days [1,2,3,4,5], open '09:00', close '18:00' }`; `karachi` — `kind 'sourcing'`, `cityId contact.097`, `labelId contact.104`, `addressId contact.105`, `addressLine2Id contact.103`, `hoursId contact.106` ("Mon–Sat · 10:00–19:00 (PKT)"), the same phone/WhatsApp/e-mail, `hours { tz 'Asia/Karachi', days [1,2,3,4,5,6], open '10:00', close '19:00' }` — `days` are JS `getDay()` 0–6 (W43). Neither zone has DST.
 - Metrics (`metricValues`): `replySlaHours '4'`, `homepageReplyHours '24'`. The importer re-authored `contact.040` ("Reply within ~{replySlaHours} business hours") and `contact.193` ("Written numbers within {homepageReplyHours} hours") — every package string goes through `makeTf` (D17). `contact.054`'s "15 minutes" and `contact.095`'s "3,700 km" are package copy, rendered verbatim (no metric exists for them; no sys string repeats them).
 - Operations catalog (`P/operations-door-contract-as-built.md` v1.0 + `A/produces-final.md` § Task 8 v1.1, confirmed "as built" on Operations `main` `47a2160`): `contact` — `name*` ≤120, `email*` ≤254, `phone` (≥ 8 digits, ≤40), `company` ≤200, `country` iso2, `iAm` ∈ `direct_employer|hr_agency|sourcing_partner|job_seeker`, `subject` ≤200, `message*` ≤5000, **v1.1** `city` ≤120 and `topic` ∈ `hire|partner|permit|job|other` (exact lower-case; the inbox preview reads `subject: [<topic>] <subject>`); `callback` — `name*`, `phone*`, `email`, `preferredTime` ≤120, `topic` ≤200 (free text), **v1.1** `city` ≤120; `visit` — `name*`, `company`, `email*`, `phone*`, `office` ≤120, `preferredDate` ≤40, `preferredTime` ≤40, `message`. Every envelope carries `consentVersion`. An unknown key inside `fields` is dropped silently (a 200), so the mappers copy these names exactly.
@@ -50,7 +50,7 @@ Create
 - `src/app/[locale]/(site)/contact/_lib/forms.ts` — Zod schemas + catalog mappers (server action and tests only)
 - `src/app/[locale]/(site)/contact/_lib/office-status.ts` — pure office-hours arithmetic
 - `src/app/[locale]/(site)/contact/_lib/live-status-text.ts` — pure pill text per variant
-- `src/app/[locale]/(site)/contact/_lib/phone.ts` — `formatPhoneDisplay`
+- `src/app/[locale]/(site)/contact/_lib/phone.ts` — `formatPhoneDisplay`, `partnerLineOf` (W176)
 - `src/app/[locale]/(site)/contact/_lib/jsonld.ts` — `contactPageJsonLd`
 - `src/app/[locale]/(site)/contact/_lib/door.ts` — `formDoor(bundle, locale)`
 - `src/app/[locale]/(site)/contact/_lib/__tests__/bundles.ts` — test helper: the committed LOCAL bundles, parsed
@@ -78,7 +78,7 @@ Modify
 - `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — the T7 row of the `## Ledger` table (Cycle 6)
 
 Test
-- Vitest: the thirteen `__tests__` files above (`npx vitest run "src/app/\[locale\]/(site)/contact" --maxWorkers=1`)
+- Vitest: the thirteen `__tests__` files above (`NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/[locale]/(site)/contact" --maxWorkers=1`)
 - Playwright (both projects, in the gate only): `e2e/pages/contact.spec.ts`
 - Existing, must stay green untouched: `src/lib/seo/unbuilt.test.ts` (W20), `scripts/gate-routes.test.ts` (W21 — EN/TR halves equal), `src/messages/{messages,voice}.test.ts` (key parity; W154 over all of `sys.*`), `src/i18n/client-messages.test.ts` (W148 — no client module of this task reads `sys`), `src/design/__tests__/class-collisions.test.ts` (W122/W155 — scans `src/app/**`, so every class string below is part of the gate), `src/design/__tests__/client-imports.test.ts` (W147/W156/W158 — no barrel anywhere, no message JSON in the client graph), `src/design/blocks/__tests__/rsc-imports.test.ts` (W125/W130/W134), `e2e/{routing,seo,a11y,width-sweep,chrome,headers,thank-you}.spec.ts`
 
@@ -106,7 +106,8 @@ Produces (for T14's I4 instance map, T15's launch sweep and later pages that cop
 - W9/W23/W54 — 25 `sys.*` keys for id-less copy (`sys.contact.*` + `sys.seo.contact.*`); package fragments are composed only where the package splits them (`contact.025`/`026`, `152`/`153`, `218` + desk, `069` + `070`, `076`–`079`).
 - W10 — the desktop/mobile paragraph variants (`contact.027`/`028`) are two spans toggled by CSS; every ≤ 700 px hide/show is `max-md:hidden` / `md:hidden` on server markup.
 - W12/W26/W67 — `contact_topic { page, locale, topic }` fires for the picker keys only (the `hire` default fires nothing); every `tel:`/`wa.me`/`mailto:` anchor is a `ContactLink`/`ContactCta` with `page_cta`, the office rows `office_card` (inside `OfficeCard`).
-- W13 amended/W120/W136 — the islands import `options.ts` (zod-free), never the schemas; the ledger's JS figure is `js-size`'s (ceiling 204,800 B, lazy line 194,560 B); the page ships no `LazyIsland` (see W132).
+- W13 amended/W120/W136 — the islands import `options.ts` (zod-free), never the schemas; the ledger's JS figure is `js-size`'s (ceiling 204,800 B; the controller's binding preview line 194,560 B; this task's LOCAL stop-and-report trigger 191,724 B, W162); the page ships no `LazyIsland` (see W132).
+- W162 — the stop rule is local-adjusted: the preview's `npm run js-size` runs ≈ 2,836 B above the local build (176,132 → 178,968 B at 02ace58), so Cycle 6 stops and reports when a LOCAL route figure is ≥ **191,724 B** (194,560 − 2,836); the controller's binding preview decides at 194,560 B. The projection here (≈ 188–190 KB TR locally) sits at the lower edge of the 190,000–194,560 B band, and a page projected into that band writes no lazy cycle in advance, so this task writes none: the pre-approved levers (`VisitBooking` behind `LazyIsland`; the `CallbackWidget` form subtree on first open) are the controller-scheduled lazy pass, not executed by this task unless it stops and the controller says so.
 - W14 — no hot-linked asset: the QR is `QrCode` (server, `qrSvg`), the icons inline SVG.
 - W17/W121/W152/W158 — no `ctas.ts` edit; the page renders `id="message"` in both locales; Cycle 6 proves the launch anchor sweep no longer lists it.
 - W19/R31 — lives in the `(site)` group; no `<main>` (the layout owns it).
@@ -121,6 +122,7 @@ Produces (for T14's I4 instance map, T15's launch sweep and later pages that cop
 - W92 — the page e2e is deterministic without `OPS_API_URL`: a valid submit ends on the `unauthorized` panel; the submitting cases skip on a door face (`staging`, production — T14 owns real submissions).
 - W95 — no visitor data in any DOM href: the page's own `wa.me` links carry only `sys.contact.wa.*` company-authored prefills; the fallback anchors are bare.
 - W99 — T7 runs after T1, T13, T2–T6 and before T8. W109 — the crumbs are this page's own ids: `contact.023` → `/`, `contact.024` → this page.
+- W176 — the Agencies card and the JSON-LD `partnerships` ContactPoint read the partner line: `settings.partnershipsPhone`, with the main line (E.164 and display) as the fallback while it is `null` — `partnerLineOf` in `_lib/phone.ts`, the same rule as T5's `partner-line.ts` (both print `+90 553 383 25 49` for the LOCAL value). The card is no longer conditional and the point is always emitted; the owner question ("which number do partners call?") rides on the Ledger line.
 - W111 — not applicable (no `Field as="select"`).
 - W113 — section test ids sit on inner `<div>`s; `Section`'s props stay frozen.
 - W114 — the enquiry's input names are the catalog names (`subject`, `city`); the licence declaration is its own `licence` input folded into `message`.
@@ -132,7 +134,8 @@ Produces (for T14's I4 instance map, T15's launch sweep and later pages that cop
 - W126 — one build + one start + one gate as the proof (Cycle 6).
 - W127/W128 — `success` for the WhatsApp outline buttons, `inverse` for the band's button; no green band on this page.
 - W131/W133 — not applicable.
-- W132/W85 — no `LazyIsland`: the enquiry form is the page's content and `#message` target, and the forms kernel (≈ 7.5 KB gz) is shared by all three shells, so viewport loading would not take it out of the first-load graph; Cycle 6 measures and names the levers if the route crosses the lazy line.
+- W132/W85 — no `LazyIsland`: the enquiry form is the page's content and `#message` target, and the forms kernel (≈ 7.5 KB gz) is shared by all three shells, so viewport loading would not take it out of the first-load graph; Cycle 6 measures against the LOCAL trigger of 191,724 B (W162) and, on a crossing, stops and reports — it does not write the lazy levers itself.
+- W163 — the `#message` enquiry form (`ContactEnquiry`'s `FormShell`) is the CTA-target form: it renders in the server HTML and hydrates eagerly, is never lazy-loaded and never gets a page-local interaction trigger. The lazy levers are non-form islands only (W162); if the route still crosses the line, the controller rules per case (a forms-kernel client-bundle trim in a foundation-touch cycle is the fallback).
 - W135/W145/W146 — a localhost run wears the production face (`lighthouserc.local.json` = production: DevTools throttling, three runs, median — LCP ≤ 2,500 ms and performance ≥ 0.95 are errors); GTM stays dark (no `NEXT_PUBLIC_GTM_ID` locally).
 - W137/W139/W140 — no preview run by the implementer (never push); the controller's binding preview run uses `--settings.extraHeaders`.
 - W148 — no `CLIENT_SYS` change: no client module of this task calls `useTranslations`; the islands receive every string resolved (the live-status templates as raw `sys.raw(...)` strings the island fills with `{time}`/`{open}`/`{close}`/`{day}`), and the kernel reads only `sys.form` (already listed).
@@ -456,7 +459,7 @@ describe('liveStatusText', () => {
 
 ```ts
 import { describe, expect, it } from 'vitest';
-import { formatPhoneDisplay } from '../phone';
+import { formatPhoneDisplay, partnerLineOf } from '../phone';
 
 describe('formatPhoneDisplay', () => {
   it('groups a Turkish E.164 number the way settings.phoneDisplay does', () => {
@@ -468,6 +471,20 @@ describe('formatPhoneDisplay', () => {
     expect(formatPhoneDisplay('+90553')).toBe('+90553');
   });
 });
+
+const MAIN = { phone: '+905011240340', phoneDisplay: '+90 501 124 03 40' };
+
+describe('partnerLineOf (W176 — the same rule as the Partner page)', () => {
+  it('is settings.partnershipsPhone, grouped like the main line', () => {
+    expect(partnerLineOf({ ...MAIN, partnershipsPhone: '+905533832549' })).toEqual({
+      phone: '+905533832549',
+      phoneDisplay: '+90 553 383 25 49',
+    });
+  });
+  it('falls back to the main line, E.164 and display, while the partner line is null', () => {
+    expect(partnerLineOf({ ...MAIN, partnershipsPhone: null })).toEqual(MAIN);
+  });
+});
 ```
 
 `src/app/[locale]/(site)/contact/_lib/__tests__/jsonld.test.ts`:
@@ -475,6 +492,7 @@ describe('formatPhoneDisplay', () => {
 ```ts
 import { describe, expect, it } from 'vitest';
 import { contactPageJsonLd } from '../jsonld';
+import { partnerLineOf } from '../phone';
 
 const input = {
   name: 'Contact JobsAdmire',
@@ -482,7 +500,7 @@ const input = {
   locale: 'en' as const,
   siteUrl: 'https://www.jobsadmire.com',
   phone: '+905011240340',
-  partnershipsPhone: '+905533832549' as string | null,
+  partnerPhone: '+905533832549',
   email: 'info@jobsadmire.com',
   hours: { days: [1, 2, 3, 4, 5], open: '09:00', close: '18:00' },
 };
@@ -514,9 +532,17 @@ describe('contactPageJsonLd', () => {
       },
     });
   });
-  it('drops the partnerships point when settings.partnershipsPhone is null', () => {
-    const node = contactPageJsonLd({ ...input, partnershipsPhone: null });
-    expect(node.mainEntity.contactPoint).toHaveLength(1);
+  it('carries the main line on the partnerships point while settings.partnershipsPhone is null (W176)', () => {
+    const { phone: partnerPhone } = partnerLineOf({
+      phone: input.phone,
+      phoneDisplay: '+90 501 124 03 40',
+      partnershipsPhone: null,
+    });
+    const node = contactPageJsonLd({ ...input, partnerPhone });
+    expect(node.mainEntity.contactPoint.map((p) => p.telephone)).toEqual([
+      '+905011240340',
+      '+905011240340',
+    ]);
   });
   it('carries no undefined value anywhere (JSON.stringify would drop it silently)', () => {
     const node = contactPageJsonLd({ ...input, locale: 'tr', url: 'https://www.jobsadmire.com/iletisim', name: 'JobsAdmire ile iletişime geçin' });
@@ -628,7 +654,7 @@ describe('sys.contact.* + sys.seo.contact.*', () => {
 - [ ] **Step 2: Run to verify they fail**
 
 ```bash
-cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/\[locale\]/(site)/contact/_lib" --maxWorkers=1
+cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/[locale]/(site)/contact/_lib" --maxWorkers=1
 ```
 Expected: FAIL — `forms.test.ts`, `office-status.test.ts`, `live-status-text.test.ts`, `phone.test.ts`, `jsonld.test.ts` fail at import (`Failed to resolve import "../forms"`, `"../office-status"`, `"../live-status-text"`, `"../phone"`, `"../jsonld"`); `copy.test.ts` fails "pins 25 keys" (`expected 'undefined' to be 'string'` at `seo.contact.title`) and the namespace/ICU/argument cases (`sys.contact` is undefined).
 
@@ -1006,6 +1032,23 @@ export function formatPhoneDisplay(e164: string): string {
   const m = /^\+90(\d{3})(\d{3})(\d{2})(\d{2})$/.exec(e164);
   return m ? `+90 ${m[1]} ${m[2]} ${m[3]} ${m[4]}` : e164;
 }
+
+/** The one number the Agencies card and the JSON-LD `partnerships` point offer. */
+export type PartnerLine = { phone: string; phoneDisplay: string };
+
+/** W176: the partner line is `settings.partnershipsPhone`; while it is `null` the main line
+ *  (E.164 and `settings.phoneDisplay`) is the fallback, so the card never disappears and the
+ *  JSON-LD point never loses its number. The same rule as the Partner page's `partnerLineOf`
+ *  (T5): both print "+90 553 383 25 49" for the same value. */
+export function partnerLineOf(settings: {
+  phone: string;
+  phoneDisplay: string;
+  partnershipsPhone: string | null;
+}): PartnerLine {
+  const { partnershipsPhone } = settings;
+  if (!partnershipsPhone) return { phone: settings.phone, phoneDisplay: settings.phoneDisplay };
+  return { phone: partnershipsPhone, phoneDisplay: formatPhoneDisplay(partnershipsPhone) };
+}
 ```
 
 `src/app/[locale]/(site)/contact/_lib/jsonld.ts`:
@@ -1025,7 +1068,9 @@ export type ContactPageJsonLdInput = {
   locale: Locale;
   siteUrl: string;
   phone: string;
-  partnershipsPhone: string | null;
+  /** the partner line — `partnerLineOf(settings).phone` (W176): `settings.partnershipsPhone`, the
+   *  main line while it is null */
+  partnerPhone: string;
   email: string;
   /** the Antalya `offices` row's hours — the lines' hours */
   hours: { days: number[]; open: string; close: string };
@@ -1053,15 +1098,14 @@ export function contactPageJsonLd(input: ContactPageJsonLdInput) {
       availableLanguage,
       hoursAvailable,
     },
-  ];
-  if (input.partnershipsPhone)
-    contactPoint.push({
+    {
       '@type': 'ContactPoint',
       contactType: 'partnerships',
-      telephone: input.partnershipsPhone,
+      telephone: input.partnerPhone,
       availableLanguage,
       hoursAvailable,
-    });
+    },
+  ];
   return {
     '@context': 'https://schema.org',
     '@type': 'ContactPage',
@@ -1167,7 +1211,7 @@ The TR status lines avoid a case suffix after a clock time (`09:00’da`/`08:00�
 ```bash
 cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && npx prettier --write "src/app/[locale]/(site)/contact/_lib" src/messages/tr.json src/messages/en.json docs/CONTENT-MODEL.md && npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1
 ```
-Expected: green — `forms.test.ts` (21), `office-status.test.ts` (13), `live-status-text.test.ts` (6), `phone.test.ts` (2), `jsonld.test.ts` (3), `copy.test.ts` (7) pass; `src/messages/messages.test.ts` (identical key sets), `voice.test.ts` (no first-person plural in any new string) and `client-messages.test.ts` (no client module added yet) stay green.
+Expected: green — `forms.test.ts` (21), `office-status.test.ts` (13), `live-status-text.test.ts` (6), `phone.test.ts` (4), `jsonld.test.ts` (3), `copy.test.ts` (7) pass; `src/messages/messages.test.ts` (identical key sets), `voice.test.ts` (no first-person plural in any new string) and `client-messages.test.ts` (no client module added yet) stay green.
 
 - [ ] **Step 5: Commit**
 
@@ -1352,7 +1396,7 @@ describe('submitVisit — book-a-visit → visit (W3: name/email/phone added)', 
 - [ ] **Step 2: Run to verify it fails**
 
 ```bash
-cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/\[locale\]/(site)/contact/__tests__/actions.test.ts" --maxWorkers=1
+cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/[locale]/(site)/contact/__tests__/actions.test.ts" --maxWorkers=1
 ```
 Expected: FAIL — `Failed to resolve import "../actions"`.
 
@@ -1747,7 +1791,7 @@ describe('VisitBooking', () => {
 - [ ] **Step 2: Run to verify they fail**
 
 ```bash
-cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/\[locale\]/(site)/contact/_components" --maxWorkers=1
+cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/[locale]/(site)/contact/_components" --maxWorkers=1
 ```
 Expected: FAIL — all four files at import: `Failed to resolve import "../LiveStatus"` (and `"../ContactEnquiry"`, `"../CallbackWidget"`, `"../VisitBooking"`).
 
@@ -2549,11 +2593,14 @@ describe('Hero', () => {
     expect(screen.getByRole('button', { name: /Can’t talk right now\?/ })).toHaveAttribute('aria-expanded', 'false');
   });
 
-  it('the Agencies card is data: absent when settings.partnershipsPhone is null', () => {
+  it('the Agencies card falls back to the main line when settings.partnershipsPhone is null (W176)', () => {
     const noPartners = { ...en, settings: { ...en.settings, partnershipsPhone: null } };
     const { container } = renderWithIntl(<Hero bundle={noPartners} locale="en" submitCallback={idle} />, { locale: 'en' });
     expect(container.querySelector('a[href="tel:+905533832549"]')).toBeNull();
-    expect(screen.getAllByTestId('live-status')).toHaveLength(3);
+    const main = container.querySelectorAll('a[href="tel:+905011240340"]');
+    expect(main).toHaveLength(2); // the Employers card and the Agencies card, both on the main line
+    expect(main[1]).toHaveTextContent('+90 501 124 03 40');
+    expect(screen.getAllByTestId('live-status')).toHaveLength(4);
   });
 
   it('TR: the h1 is the package’s own split (contact.025 + contact.026)', () => {
@@ -2633,7 +2680,7 @@ describe('Faq', () => {
 - [ ] **Step 2: Run to verify they fail**
 
 ```bash
-cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/\[locale\]/(site)/contact/_lib/__tests__/ids.test.ts" "src/app/\[locale\]/(site)/contact/_sections" --maxWorkers=1
+cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/[locale]/(site)/contact/_lib/__tests__/ids.test.ts" "src/app/[locale]/(site)/contact/_sections" --maxWorkers=1
 ```
 Expected: FAIL — `sections.test.tsx` at import (`Failed to resolve import "../Faq"`); `ids.test.ts` "reads 144 distinct ids" (`expected 0 to be 144` — the Cycle 1–3 modules quote no package id).
 
@@ -2680,7 +2727,7 @@ import { LiveStatus } from '../_components/LiveStatus';
 import type { FormAction } from '../_components/types';
 import { formDoor } from '../_lib/door';
 import { LANGUAGE_CODES } from '../_lib/options';
-import { formatPhoneDisplay } from '../_lib/phone';
+import { partnerLineOf } from '../_lib/phone';
 
 /** The channel cards' shared frame: colourless and borderless, so each card adds its own border,
  *  layout and padding without a second utility for one property (W122). */
@@ -2698,7 +2745,9 @@ export function Hero({ bundle, locale, submitCallback }: { bundle: Bundle; local
   const { settings } = bundle;
   const antalya = getOffice(bundle, 'antalya');
   const hoursText = t(antalya.hoursId);
-  const partnersPhone = settings.partnershipsPhone;
+  // W176: the Agencies card is the partner line, `settings.partnershipsPhone` with the main line
+  // as the fallback while it is null — the same rule as the Partner page (T5).
+  const partnerLine = partnerLineOf(settings);
   const lines = { open: t('contact.215'), closed: t('contact.216') };
   return (
     <Section tone="dark" className="relative overflow-hidden">
@@ -2799,7 +2848,7 @@ export function Hero({ bundle, locale, submitCallback }: { bundle: Bundle; local
                 {sys('contact.channels.open')}
               </span>
             </ContactLink>
-            <div className={partnersPhone ? 'grid grid-cols-2 gap-3' : 'grid grid-cols-1 gap-3'}>
+            <div className="grid grid-cols-2 gap-3">
               <ContactLink href={telLink(settings.phone)} placement="page_cta" className={PHONE_CARD}>
                 <span aria-hidden="true" className={`${TILE} h-9 w-9 rounded-xs bg-tint text-blue-safe md:h-11 md:w-11`}>
                   <PhoneIcon size={18} />
@@ -2817,25 +2866,23 @@ export function Hero({ bundle, locale, submitCallback }: { bundle: Bundle; local
                   className="text-body-sm font-extrabold text-text-secondary max-md:hidden"
                 />
               </ContactLink>
-              {partnersPhone ? (
-                <ContactLink href={telLink(partnersPhone)} placement="page_cta" className={PHONE_CARD}>
-                  <span aria-hidden="true" className={`${TILE} h-9 w-9 rounded-xs bg-pale-1 text-navy md:h-11 md:w-11`}>
-                    <UsersIcon size={18} />
-                  </span>
-                  <span className="text-eyebrow font-extrabold uppercase tracking-[1px] text-navy">{t('contact.037')}</span>
-                  <span className="text-body-sm font-extrabold text-ink md:text-body">{formatPhoneDisplay(partnersPhone)}</span>
-                  <span className="text-body-sm text-text-tertiary max-md:hidden">{t('contact.038')}</span>
-                  <LiveStatus
-                    variant="lines"
-                    hours={antalya.hours}
-                    locale={locale}
-                    fallback={t('contact.135')}
-                    suffix={t('contact.135')}
-                    labels={lines}
-                    className="text-body-sm font-extrabold text-text-secondary max-md:hidden"
-                  />
-                </ContactLink>
-              ) : null}
+              <ContactLink href={telLink(partnerLine.phone)} placement="page_cta" className={PHONE_CARD}>
+                <span aria-hidden="true" className={`${TILE} h-9 w-9 rounded-xs bg-pale-1 text-navy md:h-11 md:w-11`}>
+                  <UsersIcon size={18} />
+                </span>
+                <span className="text-eyebrow font-extrabold uppercase tracking-[1px] text-navy">{t('contact.037')}</span>
+                <span className="text-body-sm font-extrabold text-ink md:text-body">{partnerLine.phoneDisplay}</span>
+                <span className="text-body-sm text-text-tertiary max-md:hidden">{t('contact.038')}</span>
+                <LiveStatus
+                  variant="lines"
+                  hours={antalya.hours}
+                  locale={locale}
+                  fallback={t('contact.135')}
+                  suffix={t('contact.135')}
+                  labels={lines}
+                  className="text-body-sm font-extrabold text-text-secondary max-md:hidden"
+                />
+              </ContactLink>
             </div>
             <ContactLink
               href={mailLink(settings.email)}
@@ -3238,6 +3285,7 @@ import { buildMetadata } from '@/lib/seo/metadata';
 import { absoluteUrl } from '@/lib/seo/routes';
 import { submitCallback, submitContact, submitVisit } from './actions';
 import { contactPageJsonLd } from './_lib/jsonld';
+import { partnerLineOf } from './_lib/phone';
 import { Faq } from './_sections/Faq';
 import { Hero } from './_sections/Hero';
 import { Message } from './_sections/Message';
@@ -3275,7 +3323,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
           locale,
           siteUrl: settings.siteUrl,
           phone: settings.phone,
-          partnershipsPhone: settings.partnershipsPhone,
+          partnerPhone: partnerLineOf(settings).phone,
           email: settings.email,
           hours: getOffice(bundle, 'antalya').hours,
         })}
@@ -3301,7 +3349,7 @@ export default async function ContactPage({ params }: { params: Promise<{ locale
 `docs/SEO.md` — append this row after the last row of the `## Pages` table (T1's columns `Page | Route (tr · en) | Title source | Canonical | JSON-LD | LCP slot | Notes`, W98):
 
 ```markdown
-| Contact | `/iletisim` · `/en/contact` | `sys.seo.contact.{title,description}` — the record `contact` carries no package SEO string (`titleId: ''`, W23/W38); OG image `/og/{locale}/contact.png` (title `sys.seo.contact.title`, subline `sys.seo.ogTagline`; CDN-cached, W123) | `absoluteUrl(locale, '/contact')` — the design's `/contact-us` is a 301 (`redirects/rules.json`) | `BreadcrumbList` (`Breadcrumbs`: `contact.023` → `/`, `contact.024` → this page, W109); `FAQPage` (`FaqBlock`, six pairs — answers 3 and 5 are `sys.contact.faq.*`; AEO only); `ContactPage` (`contact/_lib/jsonld.ts`: name `contact.228`, url, `inLanguage`, `isPartOf` WebSite, `mainEntity` Organization with the `ContactPoint`s from settings — the main line and, when `settings.partnershipsPhone` is set, the partnerships line — `availableLanguage` tr/en/fr/hi/ru and `hoursAvailable` from the Antalya `offices` row); the site-wide Organization/EmploymentAgency node is not repeated | `h1` (`data-lcp-slot="h1"`) while the full-bleed hero slot `contact-hero` is a named placeholder (§10 #4) | not a pixel page (Fable review); SSG, no `revalidate` (no dated badge, W150); the six live-status pills render the office rows' hours on the server and the computed state after hydration (R18) |
+| Contact | `/iletisim` · `/en/contact` | `sys.seo.contact.{title,description}` — the record `contact` carries no package SEO string (`titleId: ''`, W23/W38); OG image `/og/{locale}/contact.png` (title `sys.seo.contact.title`, subline `sys.seo.ogTagline`; CDN-cached, W123) | `absoluteUrl(locale, '/contact')` — the design's `/contact-us` is a 301 (`redirects/rules.json`) | `BreadcrumbList` (`Breadcrumbs`: `contact.023` → `/`, `contact.024` → this page, W109); `FAQPage` (`FaqBlock`, six pairs — answers 3 and 5 are `sys.contact.faq.*`; AEO only); `ContactPage` (`contact/_lib/jsonld.ts`: name `contact.228`, url, `inLanguage`, `isPartOf` WebSite, `mainEntity` Organization with the two `ContactPoint`s from settings — the main line and the partnerships line (`settings.partnershipsPhone`, the main line while it is `null`, W176) — `availableLanguage` tr/en/fr/hi/ru and `hoursAvailable` from the Antalya `offices` row); the site-wide Organization/EmploymentAgency node is not repeated | `h1` (`data-lcp-slot="h1"`) while the full-bleed hero slot `contact-hero` is a named placeholder (§10 #4) | not a pixel page (Fable review); SSG, no `revalidate` (no dated badge, W150); the six live-status pills render the office rows' hours on the server and the computed state after hydration (R18) |
 ```
 
 `docs/ANALYTICS.md` — two edits:
@@ -3732,13 +3780,13 @@ E2E_BASE_URL=http://localhost:3000 npm run gate
 npm run js-size
 E2E_BASE_URL=http://localhost:3000 npm run gate:launch > "$TMPDIR/contact-gate-launch.log" 2>&1 || true
 grep -n 'missing id="message"' "$TMPDIR/contact-gate-launch.log" || echo 'no missing #message anchor'
-grep -n '/iletisim\b\|/en/contact\b' "$TMPDIR/contact-gate-launch.log" || echo 'contact routes not listed as dead'
+grep -nE '^/(iletisim|en/contact)[^ ]* → ' "$TMPDIR/contact-gate-launch.log" || echo 'contact routes not listed as dead'
 ```
 Expected:
 - **Gate** (localhost wears the production face → `lighthouserc.local.json`, W135/W145): Playwright green under `mobile` and `desktop` — `e2e/pages/contact.spec.ts` 29 passed + 1 skipped (the language-switch case skips on `mobile` by design), and `routing` (page contract on `/iletisim`, `/en/contact`), `seo` (canonical/hreflang on both, the sitemap lists both, every sitemap URL 200), `a11y` (zero `wcag2a`/`wcag2aa`/`wcag22aa` violations on both routes under both projects; `region` clean at 390/1000/1440), `width-sweep` (no horizontal overflow at 1440…390 incl. 1101/1100 and 901/900), `chrome` (every earlier page's header CTA still lands), `headers`, `thank-you` all green; the two token cases of `ops.spec.ts` skip without `REVALIDATE_SECRET` (as at WP2a). `lhci assert` passes on every indexable gate route; on `/iletisim` and `/en/contact` (median of 3 DevTools-throttled runs): performance ≥ 0.95, accessibility 1, best-practices 1, SEO 1, `resource-summary:script:size` ≤ 204,800 B, LCP ≤ 2,500 ms (the h1), CLS ≤ 0.1.
-- **js-size** (W136 — the ledger's figure): both contact routes below the 194,560 B lazy line. Projection: the WP2a close measured the shell at 176,132 B (TR) / 172,783 B (EN) locally; this page adds the forms kernel's client graph (`FormShell`, `Field`, `FormErrorsContext`, `FallbackPanel`, the `Turnstile` loader, `guardAction`, `echo`, `errors` — ≈ 7–8 KB gz, shared with T1/T2/T5's forms but counted per route), `RadioChips` (≈ 0.5 KB) and the page's islands (`LiveStatus` + the clock + `office-status`/`live-status-text`, `ContactEnquiry`, `CallbackWidget`, `VisitBooking`, the icons — ≈ 4–5 KB; `ContactLink`, `Accordion`, `Button`, `track` already ship with the chrome) → ≈ 188–190 KB (TR) / 185–187 KB (EN) locally, ≈ 191–193 KB on a preview. The LCP column should read the h1 at ≈ 1.5–2.0 s.
-- **Over the lazy line** (either route > 194,560 B): do NOT start T8 and do NOT add a second build here — record the table and the route's client chunk list (`.next/server/app/[locale]/(site)/contact/page_client-reference-manifest.js`) and report to the controller (W13 amended: the lazy pass happens before the next page). The page's own levers are small: `VisitBooking` behind `LazyIsland` with a static card fallback (below the fold everywhere; ≈ 1 KB) and `CallbackWidget` loading its form subtree on first open (`React.lazy`; ≈ 0.5 KB) — the forms kernel stays in the first-load graph because the enquiry form is the page's content and the `#message` target; moving it behind an interaction needs a ruling.
-- **Launch anchor check** (W152/W158): the launch profile stays RED by design (other pages' unbuilt routes and anchors), but the first grep prints `no missing #message anchor` — the anchor half's lines (`CTA_BY_PATHNAME['/contact'].primary (/contact#message): <locale> <path> → missing id="message" …`) are gone for both locales — and the second prints `contact routes not listed as dead`. The dead-href half still lists `/adaylar` and `/en/available-workers` (the chrome's nav and this page's Karachi link) until T8 lands — by design.
+- **js-size** (W136 — the ledger's figure): both contact routes' LOCAL figures below the stop-and-report trigger **191,724 B** (W162: the binding preview's `npm run js-size` runs ≈ 2,836 B above this local build, 176,132 → 178,968 B at 02ace58, so 191,724 B local is the 194,560 B lazy line on the preview; the controller decides at 194,560 B). Projection: the WP2a close measured the shell at 176,132 B (TR) / 172,783 B (EN) locally; this page adds the forms kernel's client graph (`FormShell`, `Field`, `FormErrorsContext`, `FallbackPanel`, the `Turnstile` loader, `guardAction`, `echo`, `errors` — ≈ 7–8 KB gz, shared with T1/T2/T5's forms but counted per route), `RadioChips` (≈ 0.5 KB) and the page's islands (`LiveStatus` + the clock + `office-status`/`live-status-text`, `ContactEnquiry`, `CallbackWidget`, `VisitBooking`, the icons — ≈ 4–5 KB; `ContactLink`, `Accordion`, `Button`, `track` already ship with the chrome) → ≈ 188–190 KB (TR) / 185–187 KB (EN) locally, ≈ 191–193 KB on a preview. The LCP column should read the h1 at ≈ 1.5–2.0 s.
+- **Local trigger crossed** (either route's LOCAL `js-size` figure ≥ 191,724 B, W162): do NOT start T8, do NOT write a lazy cycle in advance and do NOT add a second build here — record the table and the route's client chunk list (`.next/server/app/[locale]/(site)/contact/page_client-reference-manifest.js`) and stop and report to the controller (W13 amended: the controller schedules the lazy pass before the next page starts; the binding preview decides at 194,560 B). The pre-approved first levers (W162), executed only if the controller says so: `VisitBooking` behind `LazyIsland` with a static card fallback (below the fold everywhere; ≈ 1 KB) and `CallbackWidget` loading its form subtree on first open (`React.lazy`; ≈ 0.5 KB). The enquiry form is never one of them (W163): it is the page's content and the `#message` target, so it renders in the server HTML and hydrates eagerly; if the route still crosses the line after those levers, the controller rules per case (a forms-kernel client-bundle trim in a foundation-touch cycle is the fallback), never a page-local interaction trigger on the form.
+- **Launch anchor check** (W152/W158): the launch profile stays RED by design (other pages' unbuilt routes and anchors), but the first grep prints `no missing #message anchor` — the anchor half's lines (`CTA_BY_PATHNAME['/contact'].primary (/contact#message): <locale> <path> → missing id="message" …`) are gone for both locales — and the second prints `contact routes not listed as dead` (it matches only the dead-href lines, `<href> → <status>`; the D26 content-readiness table further down the same log lists both contact routes by design — `| /iletisim | 200 | 1 | contact-hero | h1 | … |` — and is not a dead target). The dead-href half still lists `/adaylar` and `/en/available-workers` (the chrome's nav and this page's Karachi link) until T8 lands — by design.
 
 - [ ] **Step 4: Stop the server, record the numbers**
 
@@ -3756,7 +3804,7 @@ Expected: `no stray processes` (kill any survivor by PID). `.lighthouseci/` and 
 cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && npx prettier --write docs/superpowers/plans/2026-09-20-wp2b-pages.md && npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1 && git add docs/superpowers/plans/2026-09-20-wp2b-pages.md && git commit -m "docs(contact): T7 ledger row — gate, js-size, Lighthouse medians, launch anchor sweep (T7 c6)
 
 Localhost proof session (W126/W145): one build, one gate, both contact routes measured
-against the 194,560 B lazy line (W136); #message present for CTA_BY_PATHNAME['/contact'] in
+against the 191,724 B local stop trigger (W162; the binding preview line is 194,560 B); #message present for CTA_BY_PATHNAME['/contact'] in
 both locales (W152/W158); named deltas and the WP-C sheet entries recorded.
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
@@ -3776,12 +3824,12 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 **Package ids used:** 144 `contact.*` ids read by exact id in the route's own source (counted by the same scan `ids.test.ts` runs), every one verified present in `src/content/local/catalogue.json` and in both generated bundles (all 228 `contact.*` ids exist) — first `contact.023`, last `contact.228`: `contact.023`–`046`, `049` (hero, channels, callback copy), `050`–`071`, `074`–`085`, `089`–`091` (message section, picker, enquiry, job-seeker panel), `092`–`095`, `101`, `108`–`117` (offices, site visit, book-a-visit), `119`–`124` (FAQ head and ask card), `135` (the lines' hours), `152`–`155` (hero pill fragments), `161`–`186` (per-topic form copy and the reply chip), `187`–`194` (process steps), `195`–`204` (FAQ pairs), `205`–`207`, `209`–`213`, `215`, `216`, `218` (callback chips, the ≤ 700 px toggles, the phone-line status, the desk prefix), `228` (the ContactPage name). Read through data and blocks: `contact.096`/`097`, `099`/`104`, `133`/`105`, `134`/`103`, `100`/`106` (the `offices` rows — `OfficeCard` and the pills' fallbacks), `home.192`, `home.221` (`OfficeCard`). Not read (pinned by `ids.test.ts`): `contact.001`–`022` and `125`–`149` except `135` (chrome — R15/W17), `047`, `048`, `221` (the callback's WhatsApp confirmation — D13), `072` (KVKK — W79, WP-C sheet), `073`, `086`–`088` (the sent panel — D13), `098`, `102`, `107` (office-card labels the frozen `OfficeCard` replaces), `118` (→ `sys.contact.visit.submit`), `217` (the ≤ 700 px picked pill), `222` (newsletter — W5); also unused: `150`, `151` (weekday abbreviations — `Intl`), `156`–`160` (the WhatsApp message labels), `208`, `214` (the bottom bar's prefill — chrome), `219`, `220`, `223`–`227` (chrome licence line; exonyms — the JSON-LD uses BCP 47 codes).
 
-**CLIENT_SYS additions:** none. No `'use client'` module of this task calls `useTranslations`: the islands receive every string resolved on the server — the live-status templates as raw strings (`sys.raw`) that `LiveStatus` fills with `{time}`/`{open}`/`{close}`/`{day}` — and the forms kernel reads only `sys.form`, already listed; `src/i18n/client-messages.ts` stays `consent, languageHint, errorTitle, errorRetry, form` (plus whatever T1–T6 legitimately added) and `client-messages.test.ts` needs no change (W148).
+**CLIENT_SYS additions:** none. No `'use client'` module of this task calls `useTranslations`: the islands receive every string resolved on the server — the live-status templates as raw strings (`sys.raw`) that `LiveStatus` fills with `{time}`/`{open}`/`{close}`/`{day}` — and the forms kernel reads only `sys.form`, already listed; `src/i18n/client-messages.ts` stays as T3 left it (`consent, languageHint, errorTitle, errorRetry, form, calc` — T3 appended `calc`; no other earlier task adds one) and `client-messages.test.ts` needs no change (W148).
 
-**Foundation gaps:** none blocking; every name this task consumes exists at `bc708a3` and was checked in the code. Notes: (a) the catalog v1.1 `contact.city` and `contact.topic` (and `callback.city`, not sent — the design collects no city there) are cited as `A/produces-final.md` § Task 8 spells them; the wire names are confirmed by the Task 8 report ("Task 8 — as built", Operations `main` `47a2160`: the names ride inside `fields` as strings; the preview reads `subject: [<topic>] …`). (b) `OfficeCard` sets no text colour on its `<article>` — its `h3` inherits, so a page that mounts it inside a dark container must set `text-ink` on a wrapper (this task does); one `text-ink` class on the block's article would remove the trap for T6/later pages. Its frozen layout also puts the page's `children` above the address, shows the office phone as stored E.164, and offers the main number's WhatsApp row for Karachi — accepted as design deltas here. (c) `FallbackPanel`'s `WHATSAPP_FIELDS` carries neither `licence` nor the callback's `day`/`slot` nor `reply`, so the D11 WhatsApp prefill loses the partner licence and the requested call-back slot (the door path carries both) — a one-line additive change in `src/forms/client/FallbackPanel.tsx` if the owner wants them in the fallback message. (d) `FaqBlock`'s ask card has no per-width visibility (the design hides it ≤ 700 px) — accepted. (e) `LazyIsland` is viewport-only; if a contact route crosses the lazy line, moving the enquiry form behind an interaction needs a ruling (Cycle 6's branch).
+**Foundation gaps:** none blocking; every name this task consumes exists at `bc708a3` and was checked in the code. Notes: (a) the catalog v1.1 `contact.city` and `contact.topic` (and `callback.city`, not sent — the design collects no city there) are cited as `A/produces-final.md` § Task 8 spells them; the wire names are confirmed by the Task 8 report ("Task 8 — as built", Operations `main` `47a2160`: the names ride inside `fields` as strings; the preview reads `subject: [<topic>] …`). (b) `OfficeCard` sets no text colour on its `<article>` — its `h3` inherits, so a page that mounts it inside a dark container must set `text-ink` on a wrapper (this task does); one `text-ink` class on the block's article would remove the trap for T6/later pages. Its frozen layout also puts the page's `children` above the address, shows the office phone as stored E.164, and offers the main number's WhatsApp row for Karachi — accepted as design deltas here. (c) accepted for Phase A per W167: `FallbackPanel`'s `WHATSAPP_FIELDS` carries neither `licence` nor the callback's `day`/`slot` nor `reply` and prints option values raw, so the D11 WhatsApp prefill omits the partner licence and the requested call-back slot (the door receives every field and the visitor writes from their own WhatsApp; label mapping of option keys is Phase B). T14 extends `WHATSAPP_FIELDS` with `suspectName`, `suspectContact` and `licence` only (in one foundation-touch cycle before its staging run) — this task does not touch `src/forms/client/FallbackPanel.tsx`. (d) `FaqBlock`'s ask card has no per-width visibility (the design hides it ≤ 700 px) — accepted. (e) `LazyIsland` is viewport-only, and the enquiry form is never lazy-loaded (W163 — it is the `#message` target); if a contact route crosses the LOCAL trigger of 191,724 B (W162), Cycle 6 stops and reports and the controller schedules the lazy pass (`VisitBooking`, the `CallbackWidget` form subtree), with a forms-kernel client-bundle trim in a foundation-touch cycle as the fallback — never a page-local interaction trigger on the form.
 
 **Ledger line** (append to the `## Ledger` table in `docs/superpowers/plans/2026-09-20-wp2b-pages.md`; fill every `<…>` from Cycle 6):
 
 ```markdown
-| T7 Contact | `/iletisim` · `/en/contact` | js-size (local): `/iletisim` <n> B · `/en/contact` <n> B (ceiling 204,800; lazy line 194,560; projected ≈ 188–190 KB / 185–187 KB locally, ≈ 191–193 KB on a preview); binding preview: <added by the controller> | LH mobile, median of 3, DevTools throttling (local rc = production): `/iletisim` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n>; `/en/contact` perf <x.xx> · LCP <n> ms · CLS <n> | not a D27 page — Fable side-by-side; named deltas 1–17 (this task's header): (a) D20 faces (success/inverse WhatsApp buttons, white checked topic cards with the ✓ badge at every width, text-tertiary greys, the real "Open WhatsApp →"); (b) W3/W79/W114/W115 three door forms with package labels, consent checkboxes, name/e-mail/phone added to callback/visit, `sys.contact.visit.submit`, OfficeCard layout, stacked office cards, no sent panels, no design dataLayer pushes; (c) `contact-hero` placeholder, FAQ ask card at every width; WP-C sheet: `contact.072` (KVKK sentence the kernel consent replaces, W79), `contact.029`/`077`/`078`/`183`/`204` (legal, rendered verbatim), the package's first-person lines (`contact.042`, `046`, `052`, `076`–`079`, `081`, `084`, `115`, `123`, `197` … — W154: package copy waits for WP-C); owner notes: the Karachi office rows show the main number (`offices.karachi.phone`), `contact.046` carries the call-back number in copy; launch anchor sweep: `#message` present in both locales (W152/W158) | <YYYY-MM-DD> |
+| T7 Contact | `/iletisim` · `/en/contact` | js-size (local): `/iletisim` <n> B · `/en/contact` <n> B (ceiling 204,800; local stop trigger 191,724 = lazy line 194,560 − 2,836, W162; projected ≈ 188–190 KB / 185–187 KB locally, ≈ 191–193 KB on a preview; lazy pass: <no — written by the controller only after a stop-and-report>); binding preview: <added by the controller> | LH mobile, median of 3, DevTools throttling (local rc = production): `/iletisim` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n>; `/en/contact` perf <x.xx> · LCP <n> ms · CLS <n> | not a D27 page — Fable side-by-side; named deltas 1–17 (this task's header): (a) D20 faces (success/inverse WhatsApp buttons, white checked topic cards with the ✓ badge at every width, text-tertiary greys, the real "Open WhatsApp →"); (b) W3/W79/W114/W115 three door forms with package labels, consent checkboxes, name/e-mail/phone added to callback/visit, `sys.contact.visit.submit`, OfficeCard layout, stacked office cards, no sent panels, no design dataLayer pushes; (c) `contact-hero` placeholder, FAQ ask card at every width; WP-C sheet: `contact.072` (KVKK sentence the kernel consent replaces, W79), `contact.029`/`077`/`078`/`183`/`204` (legal, rendered verbatim), the package's first-person lines (`contact.042`, `046`, `052`, `076`–`079`, `081`, `084`, `115`, `123`, `197` … — W154: package copy waits for WP-C); owner notes: the Karachi office rows show the main number (`offices.karachi.phone`), `contact.046` carries the call-back number in copy; owner question (W176): which number do partners call? The Agencies card and the JSON-LD `partnerships` ContactPoint read the partner line `settings.partnershipsPhone` (+90 553 383 25 49), the main line (+90 501 124 03 40) only as the fallback while it is `null` — the same line T5's Partner page uses — so the owner confirms the number once for both pages; launch anchor sweep: `#message` present in both locales (W152/W158) | <YYYY-MM-DD> |
 ```

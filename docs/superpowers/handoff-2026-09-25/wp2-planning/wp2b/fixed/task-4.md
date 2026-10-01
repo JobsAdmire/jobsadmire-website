@@ -69,7 +69,7 @@ Modify
 - `src/messages/tr.json`, `src/messages/en.json` — the member `wp` inside the existing `sys.seo` object (beside `ogTagline` and the earlier pages' `seo.<pageKey>` objects) and a new `sys.wp` object (25 leaves per locale)
 - `docs/CONTENT-MODEL.md` — one bullet appended to the per-page `sys.*` list at the end of `### Adding copy (W9, W23, W54)` (W98)
 - `docs/SEO.md` — one row appended to the `## Pages` table (W98)
-- `docs/ANALYTICS.md` — the `eligibility_check_complete` row's "Fires on" cell + one bullet under `### Page instrumentation (WP2b)` (W98)
+- `docs/ANALYTICS.md` — the `eligibility_check_complete` row's "Fires on" cell + one bullet under `### Page instrumentation (WP2b)` (W98) + the "declared but still uncalled" clause of the paragraph that begins "**WP1 wired exactly one of these seven events**"
 - `docs/PRD.md` — §2 the table row whose page cell is `Work Permit` (its last cell) and the §11 sentence beginning "**Not yet built, by design (WP2 and later):**" (W45: edit in place)
 - `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — the T4 row of the `## Ledger` table (T1's row format, W98)
 
@@ -108,7 +108,8 @@ Produces (nothing imports these files; later page tasks copy patterns, never imp
 - W9/W23 — 25 `sys.*` keys for id-less copy (`sys.seo.wp.*` because `pages.wp` carries `''` ids); package fragments are composed only where the package splits them (`sp()`).
 - W10/W119 — every ≤ 700 px switch is `max-md:hidden` (desktop-only) / `md:hidden` (mobile-only) on server-rendered markup; `hidden` never meets an unprefixed display utility.
 - W12/W32 — every `tel:`/`wa.me`/`mailto:` anchor goes through `ContactCta`/`ContactLink`/`useContactClick` with `placement: 'page_cta'`; same-page anchors fire nothing.
-- W13 (amended)/W120/W136 — the ledger's JS figure is `js-size`'s (ceiling 204,800 B, lazy line 194,560 B); the wizard is small and above the fold, so it is an SSR'd client component (not `next/dynamic`/`LazyIsland`); a route above the lazy line triggers Cycle 8 before T5 starts.
+- W13 (amended)/W120/W136 — the ledger's JS figure is `js-size`'s (ceiling 204,800 B, lazy line 194,560 B on the controller's binding preview); the wizard is small and above the fold, so it is an SSR'd client component (not `next/dynamic`/`LazyIsland`).
+- W162 — the stop rule is local-adjusted: the preview's `npm run js-size` runs ≈ 2,836 B above the local build, so this task stops and reports when a LOCAL route figure is ≥ **191,724 B** (194,560 − 2,836); the controller's binding preview decides at 194,560 B. Projection here ≈ 181–186 KB (below the 190,000 B mark), so Cycle 8 stays a conditional cycle: on a crossing the proof stops and reports, and Cycle 8 (the sticky bar, the lazy pass already written below) runs on the controller's go-ahead before T5 starts.
 - W17/W121/W152/W158 — the page renders `id="permit-cta"` for the existing `CTA_BY_PATHNAME` entry; no `ctas.ts` edit; Cycle 7 proves the launch anchor sweep no longer names it.
 - W18/W81 — the page mounts `StickyCtaBar` (`hideNearId="permit-cta"`, `live`, the design's Call / WhatsApp / Hire CTAs); the bar tracks its own contact CTAs and carries `data-testid="sticky-cta"`.
 - W19/R31 — the page lives in the `(site)` group and renders no `<main>`.
@@ -129,7 +130,9 @@ Produces (nothing imports these files; later page tasks copy patterns, never imp
 - W126 — one build + one start + one gate as the proof (Cycle 7); a second build happens only in the conditional Cycle 8.
 - W127 — WhatsApp CTAs wear the `success` variant wherever the design paints them green (the hero, the wizard's solid green result button — white on `#16a34a` is 3.3:1 — the permit-only banner, the cost quote, the closing band, the sticky bar); the white-faced asks on blue/navy cards (permit types, exemptions, renewal) keep the design's white face as `secondary`. W128 — not applicable (no green band, no PostCard byline change).
 - W129 — `ImageSlot` gets no width/height/aspect/object class: the hero slot sits in a height-led cover wrapper.
-- W132 — `LazyIsland({ load, props, fallback })` with an explicit props generic is used only by Cycle 8's conditional lazy pass.
+- W132 — `LazyIsland({ load, props, fallback, rootMargin })` with an explicit props generic is used only by Cycle 8's conditional lazy pass.
+- W165 — the conditional `LazyStickyBar` passes `rootMargin: '100000px 0px 200px 0px'` (T3's pattern, the top-extended margin): the page's jump nav, the `#permit-cta` link, a reload at a hash and scroll restoration can all jump past the bar's wrapper, and a plain 200 px margin would then never load the bar. A Cycle 8 test pins the margin through a recording `IntersectionObserver`.
+- W178 — this page mounts no `Stat`/count-up (every metric is `makeTf`-filled static text, W1), so its one metric-text assertion in the page spec (`470+`, wp.030) needs no `emulateMedia`; a spec case that ever asserts the text of a `Stat` metric sets `page.emulateMedia({ reducedMotion: 'reduce' })` before `goto` or reads the sr-only final figure (the count-up flake).
 - W135/W145/W146 — a localhost run wears the production face (`lighthouserc.local.json`, identical to production): DevTools throttling, three runs, median — LCP ≤ 2,500 ms and performance ≥ 0.95 are errors; GTM stays dark (no `NEXT_PUBLIC_GTM_ID` locally).
 - W137/W139/W140 — not applicable to the implementer (no preview run; never push).
 - W148 — `CLIENT_SYS` is unchanged: the wizard island reads no `sys.*` (every string, the ICU progress labels and the prefill lines included, is resolved on the server and passed as a prop).
@@ -1257,7 +1260,7 @@ export const HERO_SIZE = { width: 1600, height: 900 } as const;
       }
 ```
 
-(2) a new member of `sys`, placed immediately before the line `    "form": {` (four spaces — the `sys.form` object whose first child is `"labels": {`; T2's `hire` and T3's `calc` objects sit above it — leave them untouched):
+(2) a new member of `sys`, placed immediately before the line `    "form": {` (four spaces — the `sys.form` object whose first child is `"labels": {`). The true layout of `sys` when this task runs: T2's `hire` object (WP2b T2 placed it immediately before `form`) already sits just above that line, so `wp` goes between `hire` and `form`; T1's `home` and then T3's `calc` (T3 appends `sys.calc` as the LAST member of `sys`, after `form` — W166) sit BELOW `form`, not above it. Leave `hire`, `form`, `home` and `calc` untouched:
 
 ```json
     "wp": {
@@ -4243,7 +4246,7 @@ for (const locale of ['tr', 'en'] as const) {
     expect(body).not.toMatch(/\{[a-zA-Z]+\}/);
     expect(body).not.toContain('undefined');
     expect(body).not.toMatch(/\bwp\.\d{3}\b/); // a package id leaking as text
-    expect(body).toContain('470+'); // wp.030 {placed} (W1)
+    expect(body).toContain('470+'); // wp.030 {placed} (W1) — static text, no Stat count-up on this page (W178)
   });
 
   test(`${locale}: the designed sections in order, each anchor once, the header CTA's #permit-cta (W17/W152/W158)`, async ({
@@ -4595,7 +4598,7 @@ Notes for the implementer:
 | Work Permit (T4) | `/calisma-izni` · `/en/work-permit` | `sys.seo.wp.{title,description}` — the page record `wp` carries `''` ids (the design's `<title>`/meta are outside the catalogue, W23/W38); OG image `/og/{locale}/wp.png` (title `sys.seo.wp.title`, subline `sys.seo.ogTagline`), CDN-cached (W123) | `absoluteUrl(locale, '/work-permit')`; hreflang tr / en / x-default | layout `Organization`/`EmploymentAgency` + `WebSite` (the design's client-side `EmploymentAgency` copy is not re-emitted); `BreadcrumbList` (2: `wp.021` → `/`, `wp.011` → this page, W109); `FAQPage` (9 pairs — `wp.334`–`350` plus the sys answer to `wp.340`, AEO only) — one `Breadcrumbs` and one `FaqBlock` on the page | **the h1** (`data-lcp-slot="h1"`) — §10 row 4 gives this page no photo, so `wp-hero` stays a named placeholder behind the navy gradients; setting `HERO_SRC` in `src/app/[locale]/(site)/work-permit/_lib/assets.ts` moves `data-lcp-slot="wp-hero"` + preload onto the image (D26) | no door form (explainer, PRD §2 row 5); `#permit-cta` is the header CTA's target (W152/W158); `revalidate = 86400` for the D17 badge (W150); the related-articles block renders only past the blog threshold (W4); side-by-side review, not a pixel page (D27) |
 ```
 
-`docs/ANALYTICS.md` — two edits:
+`docs/ANALYTICS.md` — three edits:
 
 1. In the `## Event schema` table, the row whose first cell is `` `eligibility_check_complete` ``: replace its "Fires on" cell `Work Permit wizard — a result is shown` with `Work Permit wizard — the fourth answer shows the verdict (once per completed run; the answers themselves are never sent, W67)` (prettier re-pads the table).
 2. Under `### Page instrumentation (WP2b)` (T1's heading, W98), append after the last bullet:
@@ -4603,6 +4606,8 @@ Notes for the implementer:
 ```markdown
 - **Work Permit (`/calisma-izni`, `/en/work-permit`, T4):** `eligibility_check_complete` once per completed run of the eligibility wizard, with `result` ∈ `eligible` | `conditional` | `ineligible` (W67) — the four answers are never pushed (the card promises "nothing is stored", `wp.045`), and the wizard posts nothing to the door; `whatsapp_click` with `placement: 'page_cta'` from the hero's "WhatsApp us", the wizard's result button (its DOM href is the bare chat; the prefill with the answers and the verdict is composed on click and opened `noopener` — W95, fired through `useContactClick('page_cta')` in the island, a middle click counted too), the router's permit-only card, the permit-types, exemptions and permit-only asks, the cost quote, the renewal banner, the FAQ ask card's WhatsApp row (`FaqBlock`), the closing band's permit-only button and ≤ 700 px route card, and the sticky bar's WhatsApp (W81); `call_click` (`page_cta`) from the closing band's phone button and the sticky bar's Call; `email_click` (`page_cta`) from the FAQ ask card's e-mail row (W83) and the closing band's licence line. No form, so no `generate_lead`/`conversion`. Same-page anchors (the jump nav, "Check your eligibility →", the in-sentence `#rules`/`#eligibility` links) and the internal links fire nothing.
 ```
+
+3. In the paragraph that begins "**WP1 wired exactly one of these seven events: `conversion`**" (`grep -n 'WP1 wired exactly one' docs/ANALYTICS.md`), the clause listing the events that are "declared but still uncalled" (at WP2a: "`generate_lead`, `calculator_use`, `language_switch` and the five W26 page events are declared but still uncalled — …"; T3 removes `calculator_use` from that list; T1, T13 and T2 leave the clause alone): replace "the five W26 page events are declared but still uncalled" with "four of the five W26 page events are declared but still uncalled (`eligibility_check_complete` fires from the Work Permit wizard since WP2b T4)" and leave the rest of the paragraph as it is. This page is the first live producer of a W26 page event, so the clause would be false after this commit otherwise.
 
 `docs/PRD.md` — two in-place edits (W45):
 
@@ -4612,7 +4617,7 @@ Notes for the implementer:
 none (explainer) — the eligibility wizard is client-only: it stores and posts nothing; its result opens WhatsApp with a prefill composed on click (W95) and pushes `eligibility_check_complete` with the result bucket only (W67)
 ```
 
-2. §11, the sentence that begins "**Not yet built, by design (WP2 and later):**" (`grep -n 'Not yet built' docs/PRD.md`): in whatever wording T1/T13/T2/T3 left it (at WP2a it read "12 of the 14 core pages (only the homepage and Hire Workers exist, …)"), make Work Permit count as built — decrement the unbuilt-page count by one and add Work Permit to the built list — and leave the rest of the sentence as it is.
+2. §11, the sentence that begins "**Not yet built, by design (WP2 and later):**" (`grep -n 'Not yet built' docs/PRD.md`). When this task runs it opens "10 of the 14 core pages (the homepage is the first designed page — WP2b T1; Hire Workers is the second — WP2b T2; the portal entry is built (WP2b T13); the Cost Calculator is designed (WP2b T3))": T1 replaced the WP2a parenthesis "(only the homepage and Hire Workers exist, both still spike-era placeholder content)", T13 decremented "12 of the 14" to "11 of the 14" and inserted "; the portal entry is built (WP2b T13)", T2 rewrote T1's Hire-Workers clause to "Hire Workers is the second — WP2b T2" (count unchanged), T3 decremented "11 of the 14" to "10 of the 14" and appended "; the Cost Calculator is designed (WP2b T3)". Make Work Permit count as built: replace "10 of the 14 core pages" with "9 of the 14 core pages", and directly after "the Cost Calculator is designed (WP2b T3)" insert "; Work Permit is designed (WP2b T4)" (before the parenthesis closes). Leave the rest of the sentence as it is (W45: edit in place, never re-add WP1 wording). If `grep -n 'the Cost Calculator is designed (WP2b T3)' docs/PRD.md` finds nothing, an earlier task drifted: read the count the sentence carries now, decrement it by one, and append "; Work Permit is designed (WP2b T4)" as the parenthesis's last clause — never rewrite the sentence from scratch.
 
 - [ ] **Step 4: Verify**
 
@@ -4680,7 +4685,7 @@ grep -n 'calisma-izni\|/en/work-permit' "$TMPDIR/wp-gate-launch.log"
 ```
 Expected:
 - **Gate** (localhost wears the production face → `lighthouserc.local.json`, W135/W145): Playwright green under `mobile` and `desktop` — `e2e/pages/work-permit.spec.ts` 26 passed + 2 skipped (the language-switch and sticky-bar cases skip on `mobile` by design) — and `routing` (the page-contract loop now covers both routes), `seo` (canonical + hreflang on both; the sitemap lists them and they answer 200; the site-wide `EmploymentAgency` node), `a11y` (zero `wcag2a`/`wcag2aa`/`wcag22aa` violations on `/calisma-izni` and `/en/work-permit` under both projects; `region` clean at 390/1000/1440), `width-sweep` (no horizontal overflow at 1440…390 incl. 1101/1100 and 901/900 — the comparison, the sample card and the jump nav's inner scroller are the candidates), `chrome`, `headers`, `thank-you`, `ops` (two token cases skip without `REVALIDATE_SECRET`) and the earlier page specs all green. `lhci assert` passes on every indexable gate route; on the two work-permit routes (median of 3 DevTools-throttled runs): performance ≥ 0.95, accessibility 1, best-practices 1, SEO 1, `resource-summary:script:size` ≤ 204,800 B, LCP ≤ 2,500 ms, CLS ≤ 0.1.
-- **js-size** (W136 — the ledger's figure): both routes below the 194,560 B lazy line. Projection ≈ 181–186 KB: the WP2a close measured the shell at 176,132 B (TR) / 172,783 B (EN); this page adds the wizard island, `ProgressBar`, `StickyCtaBar` + `ContactCta` (`ContactLink`, `useContactClick`, `Button` and `Accordion` already ship with the chrome). The observed LCP column should read the h1 at ≈ 1.5–2.0 s. A route above 194,560 B → Cycle 8 before T5 starts (W13 amended).
+- **js-size** (W136 — the ledger's figure): both routes below **191,724 B** on this LOCAL build (W162: the binding preview's `npm run js-size` runs ≈ 2,836 B above the local build, so 191,724 B local is the 194,560 B lazy line on the preview; the controller decides at 194,560 B). Projection ≈ 181–186 KB (local): the WP2a close measured the shell at 176,132 B (TR) / 172,783 B (EN); this page adds the wizard island, `ProgressBar`, `StickyCtaBar` + `ContactCta` (`ContactLink`, `useContactClick`, `Button` and `Accordion` already ship with the chrome). The observed LCP column should read the h1 at ≈ 1.5–2.0 s. **Stop rule:** a LOCAL figure ≥ 191,724 B on either route → finish Steps 4–5 (the server killed, the ledger row committed with its `LazyStickyBar:` cell reading `pending`), then STOP: report both figures and the route's client-manifest breakdown to the controller, and run Cycle 8 only on the controller's go-ahead, before T5 starts (W13 amended, W162).
 - **Launch anchor check** (W152/W158): the launch profile stays RED by design (W20: T5–T12 routes are still unbuilt, so it exits after its three checks — no second Playwright/Lighthouse run happens), but the first grep prints `no missing #permit-cta anchor`. The second grep may show only dead-target lines for this page's `/partner-with-us` links (`/ortak-olun`, `/en/partner-with-us` → 404 until T5) — expected; any other line naming the two work-permit routes is a defect. The D26 table lists both routes with one placeholder (`wp-hero`) and LCP slot `h1`, no problem.
 
 - [ ] **Step 4: Stop the server, record the numbers**
@@ -4705,7 +4710,7 @@ git add docs/superpowers/plans/2026-09-20-wp2b-pages.md
 git commit -m "docs(work-permit): T4 ledger row — gate, js-size, Lighthouse medians, launch anchor sweep
 
 Localhost proof session (W126/W145): one build, one gate, both work-permit routes under
-the 194,560 B lazy line; #permit-cta present for CTA_BY_PATHNAME in both locales
+the 191,724 B local lazy trigger (W162); #permit-cta present for CTA_BY_PATHNAME in both locales
 (W152/W158); not a pixel page (D27 side-by-side review).
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
@@ -4715,7 +4720,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 #### Cycle 8 — conditional: the lazy pass (W13 amended)
 
-Run this cycle only if Cycle 7's `js-size` put a work-permit route above 194,560 B; otherwise the task ends with Cycle 7 (the ledger says `LazyStickyBar: no`). It is the task's only second build. The first lazy candidate is the sticky bar: it renders nothing until the visitor has scrolled 700 px, so `null` is its DOM-identical fallback (W132). The wizard stays SSR'd — it is above the fold, where a lazy island would load at once and save nothing in the measure.
+Run this cycle only if Cycle 7's LOCAL `js-size` put a work-permit route at or above **191,724 B** (W162: the local trigger — the preview's figure runs ≈ 2,836 B higher and the controller decides at 194,560 B there) AND the controller, told of the crossing by Cycle 7's stop-and-report, has said to run it; otherwise the task ends with Cycle 7 (the ledger says `LazyStickyBar: no`). It is the task's only second build. The first lazy candidate is the sticky bar: it renders nothing until the visitor has scrolled 700 px, so `null` is its DOM-identical fallback (W132). Its observer uses the top-extended margin `'100000px 0px 200px 0px'` (W165, T3's pattern): the jump nav, the `#permit-cta` link, a reload at a hash and scroll restoration can jump past the wrapper, and the bar must load whenever the visitor is at or below the marker. The wizard stays SSR'd — it is above the fold, where a lazy island would load at once and save nothing in the measure.
 
 - [ ] **Step 1: Write the failing test**
 
@@ -4725,8 +4730,31 @@ Run this cycle only if Cycle 7's `js-size` put a work-permit route above 194,560
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { render } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { LazyStickyBar } from '../LazyStickyBar';
+
+/** jsdom has no IntersectionObserver: this one only records the `rootMargin` it was built with
+ *  and never reports an intersection, so the bar stays at its null fallback. */
+const rootMargins: Array<string | undefined> = [];
+class RecordingObserver implements IntersectionObserver {
+  readonly root = null;
+  readonly rootMargin = '';
+  readonly thresholds: ReadonlyArray<number> = [];
+  constructor(...args: ConstructorParameters<typeof IntersectionObserver>) {
+    rootMargins.push(args[1]?.rootMargin);
+  }
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+  takeRecords(): IntersectionObserverEntry[] {
+    return [];
+  }
+}
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+  rootMargins.length = 0;
+});
 
 describe('LazyStickyBar', () => {
   it('renders the DOM-identical fallback (nothing) until its wrapper nears the viewport (W132)', () => {
@@ -4752,6 +4780,19 @@ describe('LazyStickyBar', () => {
     );
     expect(src).toContain("import('@/design/chrome/StickyCtaBar')");
   });
+
+  it('observes with the top-extended margin, so an anchor jump past the wrapper still loads the bar (W165)', () => {
+    vi.stubGlobal('IntersectionObserver', RecordingObserver);
+    render(
+      <LazyStickyBar
+        message="m"
+        ctas={[{ label: 'x', href: '/hire-workers' }]}
+        hideNearId="permit-cta"
+        live
+      />,
+    );
+    expect(rootMargins).toEqual(['100000px 0px 200px 0px']);
+  });
 });
 ```
 
@@ -4760,7 +4801,7 @@ describe('LazyStickyBar', () => {
 ```bash
 NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1 work-permit/_components
 ```
-Expected: FAIL — `../LazyStickyBar` cannot be resolved.
+Expected: FAIL — `../LazyStickyBar` cannot be resolved (once it exists without the margin, the third case would read `['200px']` — `LazyIsland`'s default).
 
 - [ ] **Step 3: Implement**
 
@@ -4779,6 +4820,13 @@ type Props = {
   live?: boolean;
 };
 
+/** The margin reaches 100,000 px ABOVE the viewport (W165, T3's pattern): the jump nav, the
+ *  `#permit-cta` link, a reload at a hash and scroll restoration can all jump past the wrapper,
+ *  so it never crosses the viewport and a plain 200 px margin would then never load the bar.
+ *  With the top margin "at or below this point" is what counts, while the first viewport (the
+ *  wrapper sits below it on a phone) still loads nothing. */
+const STICKY_MARGIN = '100000px 0px 200px 0px';
+
 /** W13 amended lazy pass: the bar renders `null` until the visitor has scrolled past
  *  `showAfterPx`, so `null` is its DOM-identical fallback (W132 — `{ load, props, fallback,
  *  rootMargin? }`, no `ssr`). The page mounts this right below the hero: on a phone (the
@@ -4794,6 +4842,7 @@ export function LazyStickyBar(props: Props) {
       }
       props={props}
       fallback={null}
+      rootMargin={STICKY_MARGIN}
     />
   );
 }
@@ -4814,10 +4863,11 @@ import { LazyStickyBar } from './_components/LazyStickyBar';
 npx prettier --write "src/app/[locale]/(site)/work-permit"
 npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1
 git add "src/app/[locale]/(site)/work-permit"
-git commit -m "perf(work-permit): the sticky bar behind LazyIsland — below the 194,560 B lazy line (W13 amended, W132)
+git commit -m "perf(work-permit): the sticky bar behind LazyIsland — under the 191,724 B local trigger (W13 amended, W132, W162, W165)
 
 The bar renders null until 700 px of scroll, so null is its DOM-identical fallback;
-the wizard stays SSR'd above the fold.
+its observer uses the top-extended rootMargin so an anchor jump past the wrapper still
+loads it; the wizard stays SSR'd above the fold.
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 rm -rf .next .lighthouseci
@@ -4830,7 +4880,7 @@ E2E_BASE_URL=http://localhost:3000 npm run js-size -- --routes=/calisma-izni,/en
 kill "$SERVER_PID"
 pgrep -fl 'next-server|next start|playwright|lhci|lighthouse|chrome-headless|Chrome for Testing' || echo 'no stray processes'
 ```
-Expected: the verify green (`LazyStickyBar.test.tsx` 2/2); the three specs green (the scoped re-run of the page contract — the sticky-bar case proves the lazy bar still appears after 700 px and hides near `#permit-cta` — axe and the width sweep; the full gate already ran once, W126); both routes below 194,560 B in the W94 spot-check (if the lazy pass still leaves a route above it, stop and report the route's client-manifest breakdown to the controller — no further change without a ruling); `no stray processes`.
+Expected: the verify green (`LazyStickyBar.test.tsx` 3/3); the three specs green (the scoped re-run of the page contract — the sticky-bar case proves the lazy bar still appears after 700 px and hides near `#permit-cta` — axe and the width sweep; the full gate already ran once, W126); both routes below 191,724 B on the local build in the W94 spot-check (W162; if the lazy pass still leaves a route at or above it, stop and report the route's client-manifest breakdown to the controller — no further change without a ruling); `no stray processes`.
 
 - [ ] **Step 5: Commit**
 
@@ -4847,7 +4897,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 ---
 
-**Docs in this task:** `docs/CONTENT-MODEL.md` — the Work Permit bullet in the per-page `sys.*` list at the end of `### Adding copy (W9, W23, W54)` (Cycle 1, with the keys and the deliberately unread ids). `docs/SEO.md` — the Work Permit row of T1's `## Pages` table, naming the LCP element (the h1 — §10 row 4 gives this page no photo) (Cycle 6). `docs/ANALYTICS.md` — the `eligibility_check_complete` row's "Fires on" cell and the Work Permit bullet under `### Page instrumentation (WP2b)` (Cycle 6; no new event, no new parameter, no new enum value). `docs/PRD.md` — §2 row 5's last cell and the §11 "Not yet built" sentence, edited in place (Cycle 6, W45). `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — the T4 `## Ledger` row (Cycle 7, updated in Cycle 8 if it runs). No `docs/ARCHITECTURE.md` or `docs/INTEGRATIONS.md` change: the page has no form and no new integration, and T1 already documented the page-private `_lib/`/`_components/`/`_sections/` layout in ARCHITECTURE § Routing.
+**Docs in this task:** `docs/CONTENT-MODEL.md` — the Work Permit bullet in the per-page `sys.*` list at the end of `### Adding copy (W9, W23, W54)` (Cycle 1, with the keys and the deliberately unread ids). `docs/SEO.md` — the Work Permit row of T1's `## Pages` table, naming the LCP element (the h1 — §10 row 4 gives this page no photo) (Cycle 6). `docs/ANALYTICS.md` — the `eligibility_check_complete` row's "Fires on" cell, the Work Permit bullet under `### Page instrumentation (WP2b)` and the "declared but still uncalled" clause of the "**WP1 wired exactly one of these seven events**" paragraph (`eligibility_check_complete` is wired from T4) (Cycle 6; no new event, no new parameter, no new enum value). `docs/PRD.md` — §2 row 5's last cell and the §11 "Not yet built" sentence, edited in place (Cycle 6, W45). `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — the T4 `## Ledger` row (Cycle 7, updated in Cycle 8 if it runs). No `docs/ARCHITECTURE.md` or `docs/INTEGRATIONS.md` change: the page has no form and no new integration, and T1 already documented the page-private `_lib/`/`_components/`/`_sections/` layout in ARCHITECTURE § Routing.
 
 **Sys keys added:** 25 keys, identical key set in `src/messages/tr.json` and `src/messages/en.json`, pinned by `_lib/__tests__/sys-keys.test.ts` (and checked by `messages.test.ts` for parity and `voice.test.ts` for W154):
 - `sys.seo.wp.title` — TR "Yabancı işçiler için Türkiye çalışma izni — kurallar, e-Muafiyet ve süreç | JobsAdmire" · EN "Work permit in Türkiye for foreign workers — rules, e-Muafiyet and process | JobsAdmire"
@@ -4880,12 +4930,12 @@ Consumed, not added: `sys.whatsapp.prefill` (the greeting every prefill starts w
 
 **Package ids used:** 336 of the page's 398, all present in `src/content/local/catalogue.json` and in both bundles (verified: 398/398 `wp.*` ids exist; `_lib/__tests__/tables.test.ts` re-proves the table ids and the section tests render every other id in both locales) — first `wp.011`, last `wp.395`: `wp.011` + `wp.021` (crumbs, W109), `wp.023`–`051` (hero, wizard copy, chips), `wp.053`–`065` (sticky bar, jump nav, the first wizard point), `wp.067`–`260` (wizard points and questions, router, comparison, sample card, permit types, rules, exemptions, process, timeline heading), `wp.263`–`299` (timeline cards, costs, documents heading), `wp.301`–`324`, `wp.326`–`352` (documents, renewal, FAQ, related heading/link — the last two render only past the blog threshold), `wp.359`–`367` (closing band), `wp.395` (licence line); `wp.130` and `wp.089` are read twice by design (comparison + fixed-term bullet; router + closing route card). Not rendered (62): `wp.001`–`010`, `wp.012`–`020` (chrome — the layout renders the canonical `home.*` ids, R15; `wp.016`/`017` are the header CTA, which the chrome renders from `CTA_BY_PATHNAME`), `wp.022` (dated badge → `sys.wp.hero.updated`, D17), `wp.052` (the dropped fine chip), `wp.066` (W2), `wp.261`/`262` (tab labels — the cards stack, D20), `wp.300` (typed count), `wp.325` (the "days" numeral), `wp.353`–`358` (static blog cards, W4), `wp.368`–`394` (chrome), `wp.396`/`397` (schema text — the site-wide node is the layout's), `wp.398` (orphan newsletter string, W5).
 
-**CLIENT_SYS additions:** none — the one client module this page adds (`EligibilityWizard`, plus the conditional `LazyStickyBar`) reads no `sys.*`: every wizard string, the ICU step pills and the prefill lines are resolved on the server by `buildWizardProps` and passed as props. `src/i18n/client-messages.ts` stays `consent, languageHint, errorTitle, errorRetry, form` and `client-messages.test.ts` needs no change (W148).
+**CLIENT_SYS additions:** none — the one client module this page adds (`EligibilityWizard`, plus the conditional `LazyStickyBar`) reads no `sys.*`: every wizard string, the ICU step pills and the prefill lines are resolved on the server by `buildWizardProps` and passed as props. `src/i18n/client-messages.ts` stays as T3 left it (`consent, languageHint, errorTitle, errorRetry, form, calc` — T3 appends `calc`; T1, T13 and T2 add none) and `client-messages.test.ts` needs no change (W148).
 
 **Foundation gaps:** none — every name this task consumes exists at `7bacd7e` and was checked in the code (not only in `A/produces-final.md`); the page sends no catalog field, so WP2a Task 8's v1.1 fields (`hire.city`, `partner.track`, `contact.topic`, `careers.portfolioUrl`) are not involved and need no confirmation here. The draft's five gaps are closed or accepted: `StickyCtaBar` now tracks its contact CTAs (W81) and `FaqAskCard` has the e-mail row (W83) — both built; `ProcessSteps` has no badge/horizontal variant, `Section` has no gradient tone and `RateConfig` has no fine — all three accepted as page-local by the WP2b reconcile (the page-local process grid, the closing band's own `<section>`, the dropped chip). Accepted page-local items (no foundation change): the process grid; the light closing band (`ClosingCtaBand` is a dark card whose body cannot switch at ≤ 700 px); the wizard's click-time WhatsApp anchor (`ContactLink` omits `onClick` by design, so the result button is `Button` + `useContactClick('page_cta')` — the `FallbackPanel`/T1 `WhatsAppComposeLink` contract, copied rather than imported across route folders); `FaqBlock` showing the ask card at every width; the conditional `LazyStickyBar` wrapper (a server page cannot pass `LazyIsland`'s `load` function).
 
 **Ledger line** (T1's six-column row format, W98 — fill every `<…>` from Cycle 7/8; the controller adds the binding preview figures after the push):
 
 ```markdown
-| T4 Work Permit | `/calisma-izni` · `/en/work-permit` | js-size (W136, local): `/calisma-izni` <n> B · `/en/work-permit` <n> B (ceiling 204,800; lazy line 194,560; LazyStickyBar: <no/yes>); binding preview: <added by the controller> | LH mobile, median of 3, DevTools throttling (local rc = production, W145): `/calisma-izni` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n>; `/en/work-permit` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n> | pixel: n/a — not a D27 harness page (side-by-side review); named deltas 1–16 (tabs → stacked cards with real captions, fine chip dropped, dated badge from rateConfig, page-local process grid, renewal numeral, sys FAQ answer, click-time wizard prefill, light closing band, W4 related block, sample card + pseudo-element watermark, D20 faces/greys, h2 wizard heading + SVG marks, rules order, FAQ ask card at every width, jump-nav stickiness + router columns, navy sticky bar); launch sweep: #permit-cta present tr+en (W152/W158), `/ortak-olun` · `/en/partner-with-us` 404 until T5; WP-C: sample card `wp.139`–`160`, `sys.wp.faq.exemptionAnswer`, `sys.wp.wizard.points.ratio` (W2), `wp.050`/`051` timing (W2), `wp.095` "2026 rates", `wp.196`/`342` fine "in 2026", `wp.046`/`277`/`335` "~30 days" vs `permitDays` 45 (§10 row 2) | <YYYY-MM-DD> |
+| T4 Work Permit | `/calisma-izni` · `/en/work-permit` | js-size (W136, local): `/calisma-izni` <n> B · `/en/work-permit` <n> B (ceiling 204,800; lazy line 194,560 on the preview = local trigger 191,724, W162; LazyStickyBar: <no/yes>); binding preview: <added by the controller> | LH mobile, median of 3, DevTools throttling (local rc = production, W145): `/calisma-izni` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n>; `/en/work-permit` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n> | pixel: n/a — not a D27 harness page (side-by-side review); named deltas 1–16 (tabs → stacked cards with real captions, fine chip dropped, dated badge from rateConfig, page-local process grid, renewal numeral, sys FAQ answer, click-time wizard prefill, light closing band, W4 related block, sample card + pseudo-element watermark, D20 faces/greys, h2 wizard heading + SVG marks, rules order, FAQ ask card at every width, jump-nav stickiness + router columns, navy sticky bar); launch sweep: #permit-cta present tr+en (W152/W158), `/ortak-olun` · `/en/partner-with-us` 404 until T5; WP-C: sample card `wp.139`–`160`, `sys.wp.faq.exemptionAnswer`, `sys.wp.wizard.points.ratio` (W2), `wp.050`/`051` timing (W2), `wp.095` "2026 rates", `wp.196`/`342` fine "in 2026", `wp.046`/`277`/`335` "~30 days" vs `permitDays` 45 (§10 row 2) | <YYYY-MM-DD> |
 ```

@@ -23,6 +23,7 @@
 11. The band surface: the design's blue gradient (#1899D5 → #1073a8 with white copy — 3.2:1, below AA for body text) maps onto `ClosingCtaBand tone="gradient"` (ink → navy). The WhatsApp primary wears the `success` face (W127 — the site's WhatsApp CTA face, like the design's white button); the secondary and the extra keep the gradient tone's own `inverse` face (W128(b): the navy and gradient tones keep `inverse`; `inverse-dark` belongs to `tone="green"`, which this band does not use). A D20 delta.
 12. The hero photo slot `ss-hero` is a named gradient placeholder (§10 row 4: "gradients elsewhere") inside a positioning wrapper (W129 — the slot owns its 1440 : 620 box): below `md` it covers the top of the hero and the section's navy fills the rest, under the design's two overlays; the section surface is `bg-navy` (#0e1a37), not the design's #0a1428.
 13. `#cases` and `#talk` land below the sticky header (`scroll-mt-24`; the design's 20 px assumed a non-sticky nav).
+14. The empty state's WhatsApp CTA (the example job-order request) keeps `EmptyState`'s own `secondary` face (the block renders `variant={tone === 'dark' ? 'inverse' : 'secondary'}` through `ContactCta`, and this page uses `tone="pale"`), not the `success` face the closing band's WhatsApp primary wears (delta 11). Accepted by W178 as a named D20 delta.
 
 **Files:**
 
@@ -68,7 +69,7 @@ Consumes (exact names, verified in the code at `bc708a3`; import paths exactly a
 - Primitives (by path, `@/design/primitives/<Name>`): `Button` from `@/design/primitives/Button` (`variant` ∈ `primary|secondary|ghost|danger|inverse|success|inverse-dark|nav`, `size?: 'md' | 'lg'`, `href?` string — `/…` → typed next-intl `Link` (localized), `#…` → a same-tab `<a>` (R22), no `href` → `<button type="button">`; `external?`; `…HTMLAttributes<HTMLElement>` incl. `onClick`); `Card` from `@/design/primitives/Card` (`{ hover?, as?: 'article' | 'div', className?, children }`); `Eyebrow` from `@/design/primitives/Eyebrow` (children only); `Section` from `@/design/primitives/Section` (`{ tone: 'light' | 'dark' | 'pale' | 'band', id?, className?, children }` — tones set the surface and `py-16`/`py-10`; a longhand `pt-*` override is fine, W122; no test-id prop, W113); `Stat` from `@/design/primitives/Stat` (`'use client'`; `{ value?, text?, prefix?, suffix?, label, locale, tone? }`); `RadioChips` + `type RadioChipOption` (`{ value: string; label: string }`) from `@/design/primitives/RadioChips` (`'use client'`; `{ name, options, value, onChange, legend, legendHidden?, className? }` — a `role="radiogroup"` fieldset of native sr-only radios under chip labels).
 - i18n/SEO/contact/format: `routing`, `type Locale` from `@/i18n/routing`; `Link` from `@/i18n/navigation`; `hasLocale`, `useTranslations`, `createTranslator` (tests) from `next-intl`; `getTranslations({ locale, namespace })`, `setRequestLocale` from `next-intl/server`; `buildMetadata({ locale, href, bundle, pageKey, fallbackTitle, fallbackDescription })` from `@/lib/seo/metadata` (a `''` record id → the fallback, W38; `og:image` → `pageOgImageUrl(locale, 'stories')` = `https://www.jobsadmire.com/og/<locale>/stories.png`, `'stories'` ∈ `OG_PAGE_KEYS`; the OG route titles it from `sys.seo.stories.title`); `UNBUILT_PATHNAMES` (edited) from `@/lib/seo/routes`; `waLink(number, text)` from `@/lib/contact`; `formatMonth(iso, locale)` from `@/lib/format/date/formatMonth` (pure — TR `Haziran 2026`, EN `June 2026`; never the barrel `@/lib/format/date`, W156); `formatInt(n, locale)` from `@/lib/format/money`.
 - Test helpers: `renderWithIntl(ui, { locale? })` from `@/test/render` (the real `sys.*` catalogues); `testBundle({ strings?, collections?, settings? })` from `@/test/bundle` (the golden fixture: 20 strings, empty collections; `makeT` throws on an unknown id outside production); `collisionsInTree(root)` from `@/test/class-collisions` (the W122 render-side guard).
-- Chrome (read, not edited): `DEFAULT_CTAS`/`CTA_BY_PATHNAME` in `src/design/chrome/ctas.ts` (no `/success-stories` key); `ContactLink` (`'use client'`, fires `whatsapp_click` `{ page, locale, placement }` through `track()` into `window.dataLayer` on click and middle-click) reached only through `ContactCta`; `src/i18n/client-messages.ts` `CLIENT_SYS` = `consent, languageHint, errorTitle, errorRetry, form` (unchanged by this task).
+- Chrome (read, not edited): `DEFAULT_CTAS`/`CTA_BY_PATHNAME` in `src/design/chrome/ctas.ts` (no `/success-stories` key); `ContactLink` (`'use client'`, fires `whatsapp_click` `{ page, locale, placement }` through `track()` into `window.dataLayer` on click and middle-click) reached only through `ContactCta`; `src/i18n/client-messages.ts` `CLIENT_SYS` = `consent, languageHint, errorTitle, errorRetry, form, calc` (T3 appended `calc`; unchanged by this task).
 - Messages consumed, not added: `sys.nav.breadcrumbs` (the `Breadcrumbs` landmark name).
 - Gate tooling: `GATE_ROUTE_TABLE` (`e2e/routes.ts`), `npm run gate` / `npm run gate:launch` (`scripts/gate.sh`; the launch profile's `scripts/launch/dead-targets.ts` and `scripts/placeholder-count.ts`), `npm run js-size` (`scripts/js-size.mjs`); the placeholder counter's contract: exactly one `data-lcp-slot` per page, never on a `data-placeholder` element.
 - Ops catalog (`website-form-catalog.ts`, v1.0 + the four v1.1 fields confirmed live by the Task 8 as-built report): nothing — this page sends no form.
@@ -99,15 +100,17 @@ Produces (nothing later tasks import):
 - W118 — no history rewrite, no `wip` commit, no stash.
 - W119/W122/W155 — no `hidden` beside an unprefixed display utility; no class string sets one property twice at one variant (shorthand + longhand such as `py-16`/`pt-0` is fine); no colour/box class reaches `Button`/`ContactCta` (a different look is a variant); `class-collisions.test.ts` scans every file below and the render tests call `collisionsInTree`.
 - W125/W130/W134/W147/W156 — primitives, blocks and the date function by module path everywhere, type-only imports included; no server file imports `@/analytics/useContactClick`; no island barrel.
-- W126 — Cycle 6 is the one build + start + gate.
+- W126/W164 — Cycle 6 is the one build + start + gate (+ js-size and the launch dead-target check): one capped build per proof attempt, no interim build and no conditional re-proof build (T9 is not a D27 page, and a W162 crossing stops and reports instead of running a lazy pass); the page spec's red step in Cycle 5 is collect-only (`npx playwright test e2e/pages/success-stories.spec.ts --list`, no server, red by construction through the `(site)/[...rest]` 404) and the spec executes once, in Cycle 6's gate (the T1–T8 pattern).
 - W127/W128 — the band's WhatsApp primary is the `success` variant; `tone="gradient"` keeps `inverse` for the secondary/extra; `inverse-dark` is the green tone's face and is not used; no caller colour classes.
-- W129 — `ImageSlot` is placed by a wrapper `<div>`; it receives no class.
+- W129 — `ImageSlot` is placed by a wrapper `<div>`; it receives no box class (`w-*`/`h-*`/`aspect-*`/`object-*`) — only `opacity-60`, a property the slot's own box does not set.
 - W135/W145/W146 — a localhost run wears the production face (`lighthouserc.local.json` = production: DevTools throttling, three runs, median — LCP ≤ 2,500 ms and performance ≥ 0.95 are errors); GTM stays dark.
 - W137/W139/W140 — no preview run by the implementer (never push); the controller's binding preview runs use `--settings.extraHeaders`.
 - W148 — no `CLIENT_SYS` change: `ApprovalsWall` calls no `useTranslations`; the page resolves the result line (`wallResultLabels`) and every other string on the server, so `sys.stories.*` never enters every page's client payload.
 - W150 — no D17 dated badge → no `revalidate` export (SSG like every static page).
 - W154 — no `sys.stories.*`/`sys.seo.stories.*` string speaks as "we"/"biz" ("JobsAdmire" is the subject; the two prefills are the visitor's first-person singular); `voice.test.ts` scans all of `sys.*`; the package's first-person lines (`success.044`, `048`, `072`, `077`, `079`, `080`, `081`) render as authored and go on the WP-C sheet.
 - W157/W160 — security headers come from the middleware; nothing for the page. W161 — no `url` field is sent.
+- W162 — the lazy-line stop rule is local-adjusted: the binding JS figure is the controller's preview `npm run js-size` (lazy line 194,560 B, W136), which runs ≈ 2,836 B above the local build (176,132 → 178,968 B at 02ace58), so Cycle 6 stops and reports when a LOCAL route figure is ≥ **191,724 B** (194,560 − 2,836); this page writes no lazy cycle in advance and adds no second build.
+- W178 — the `EmptyState` WhatsApp CTA keeps the block's `secondary` face: an accepted D20 delta (design delta 14, named in the Ledger line); the closing band's WhatsApp primary stays `success` (delta 11).
 - Final-review page rule (§6) — exactly one `Breadcrumbs` (one `BreadcrumbList`, one breadcrumb landmark); no `FaqBlock` on this page.
 - Reconcile check B-1 — the island imports `Button`/`RadioChips` by path and receives the W6 `EmptyState` as a server-rendered node, so no block reaches the client graph.
 - Reconcile "accepted as page-local" — the `stories`/`testimonials` Zod schemas live in `_lib/stories.ts` until Phase B.
@@ -123,10 +126,13 @@ Produces (nothing later tasks import):
 `src/app/[locale]/(site)/success-stories/__tests__/stories.test.ts`:
 
 ```ts
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { FIXTURE_ONLY_COLLECTIONS } from '@/content/config';
 import { assertServableInProduction } from '@/content/pure';
 import { testBundle } from '@/test/bundle';
+import { BundleSchema } from '../../../../../../contract/website-bundle.v1';
 import {
   readStories,
   readTestimonials,
@@ -171,6 +177,20 @@ describe('the stories collection can never be served from LOCAL in production (D
     );
     // The same rows from Operations (Phase B) are fine — that is the whole point of the guard.
     expect(() => assertServableInProduction(bundle, 'OPS', 'production')).not.toThrow();
+  });
+  it('the committed LOCAL bundles carry no stories (or testimonial) rows, so a production build serves the W6 empty wall', () => {
+    for (const locale of ['tr', 'en'] as const) {
+      // readFileSync, never an import: `**/content/local/*` is import-banned in src/** (the D23
+      // ESLint rule); `src/content/local-bundle.test.ts` reads the same files the same way.
+      const raw = readFileSync(join(process.cwd(), 'src/content/local', `bundle.${locale}.json`), 'utf8');
+      const bundle = BundleSchema.parse(JSON.parse(raw));
+      expect(bundle.collections.stories ?? []).toEqual([]);
+      expect(() => assertServableInProduction(bundle, 'LOCAL', 'production')).not.toThrow();
+      expect(readStories(bundle)).toEqual([]);
+      // §10 row 11: no consented testimonial exists in Phase A either (not a D23 fixture key,
+      // so the adapter guard does not cover it — this pin does).
+      expect(readTestimonials(bundle)).toEqual([]);
+    }
   });
 });
 
@@ -299,7 +319,7 @@ describe('Success Stories owner sign-offs (W1, §10 row 11)', () => {
 - [ ] **Step 2: Run to verify they fail**
 
 ```bash
-NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/\[locale\]/(site)/success-stories" --maxWorkers=1
+NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/[locale]/(site)/success-stories" --maxWorkers=1
 ```
 
 Both files fail at import: `Failed to resolve import "../_lib/stories"` / `"../_lib/signoff"`.
@@ -442,11 +462,11 @@ export const WORKER_STORIES_CONSENTED = false;
 
 ```bash
 npx prettier --write "src/app/[locale]/(site)/success-stories/_lib" "src/app/[locale]/(site)/success-stories/__tests__/stories.test.ts" "src/app/[locale]/(site)/success-stories/__tests__/signoff.test.ts"
-NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/\[locale\]/(site)/success-stories" --maxWorkers=1
+NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/[locale]/(site)/success-stories" --maxWorkers=1
 npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1
 ```
 
-Both new files green (14 cases: 11 + 3 — `stories.test.ts`'s four `describe` blocks total 11, `signoff.test.ts` 3). The low-memory line is green (nothing imports the new modules yet, so tsc/lint/format see only additions).
+Both new files green (15 cases: 12 + 3 — `stories.test.ts`'s four `describe` blocks total 12, `signoff.test.ts` 3). The low-memory line is green (nothing imports the new modules yet, so tsc/lint/format see only additions).
 
 `docs/CONTENT-MODEL.md` — § `## Collections`: after the paragraph whose last sentence ends "…become collections when an editor needs to reorder them.", add a new paragraph:
 
@@ -473,7 +493,8 @@ Green (`prettier --check .` covers the doc edits; `website-docs-guard`-style pro
 git add "src/app/[locale]/(site)/success-stories/_lib" "src/app/[locale]/(site)/success-stories/__tests__/stories.test.ts" "src/app/[locale]/(site)/success-stories/__tests__/signoff.test.ts" docs/CONTENT-MODEL.md docs/INTEGRATIONS.md
 git commit -m "feat(stories): stories/testimonials collection readers and the W1/§10-row-11 sign-off pins (T9 c1)
 
-The stories fixture is asserted refused from LOCAL in production (D23); the hero and KPI
+The stories fixture is asserted refused from LOCAL in production and absent from both
+committed LOCAL bundles (D23); the hero and KPI
 metric lists are empty under W1 and the worker stories stay unconsented, all pinned by test.
 Collection shape and the I10 row-shape pointer documented.
 
@@ -560,7 +581,7 @@ describe('sys.stories.* / sys.seo.stories.* (W9, W23)', () => {
 - [ ] **Step 2: Run to verify it fails**
 
 ```bash
-NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/\[locale\]/(site)/success-stories/__tests__/sys-keys.test.ts" --maxWorkers=1
+NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/[locale]/(site)/success-stories/__tests__/sys-keys.test.ts" --maxWorkers=1
 ```
 
 Every `it.each` row fails (`expected 'undefined' to be 'string'`), and the ICU/token/SEO/claim cases fail on `undefined`.
@@ -647,7 +668,7 @@ Why these keys and not package ids (W9/W23): the live badge's "N permits approve
 
 ```bash
 npx prettier --write src/messages/tr.json src/messages/en.json "src/app/[locale]/(site)/success-stories/__tests__/sys-keys.test.ts"
-NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/\[locale\]/(site)/success-stories/__tests__/sys-keys.test.ts" src/messages --maxWorkers=1
+NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/[locale]/(site)/success-stories/__tests__/sys-keys.test.ts" src/messages --maxWorkers=1
 npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1
 ```
 
@@ -840,7 +861,7 @@ describe('data-gated sections render nothing on empty/unsigned/unconsented data 
 - [ ] **Step 2: Run to verify it fails**
 
 ```bash
-NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/\[locale\]/(site)/success-stories/__tests__/hidden-sections.test.tsx" --maxWorkers=1
+NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/[locale]/(site)/success-stories/__tests__/hidden-sections.test.tsx" --maxWorkers=1
 ```
 
 Fails at import: `Failed to resolve import "../_components/LiveBadge"`.
@@ -1079,11 +1100,11 @@ export function WorkerStories({
 
 ```bash
 npx prettier --write "src/app/[locale]/(site)/success-stories/_components/LiveBadge.tsx" "src/app/[locale]/(site)/success-stories/_components/NumbersBox.tsx" "src/app/[locale]/(site)/success-stories/_components/Testimonials.tsx" "src/app/[locale]/(site)/success-stories/_components/WorkerStories.tsx" "src/app/[locale]/(site)/success-stories/__tests__/hidden-sections.test.tsx"
-NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/\[locale\]/(site)/success-stories" --maxWorkers=1
+NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/[locale]/(site)/success-stories" --maxWorkers=1
 npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1
 ```
 
-`hidden-sections.test.tsx`'s 5 cases green (LiveBadge, two NumbersBox cases, Testimonials, WorkerStories); the three earlier test files stay green, 37 cases total across the folder (11 + 3 + 18 + 5). `src/design/__tests__/client-imports.test.ts` stays green: none of these four files carries `'use client'`, and none is reached from `ApprovalsWall` (Cycle 4) or any other client module, so the by-path primitive imports here are simply correct hygiene, not yet load-bearing for that guard. The low-memory line is green.
+`hidden-sections.test.tsx`'s 5 cases green (LiveBadge, two NumbersBox cases, Testimonials, WorkerStories); the three earlier test files stay green, 38 cases total across the folder (12 + 3 + 18 + 5). `src/design/__tests__/client-imports.test.ts` stays green: none of these four files carries `'use client'`, and none is reached from `ApprovalsWall` (Cycle 4) or any other client module, so the by-path primitive imports here are simply correct hygiene, not yet load-bearing for that guard. The low-memory line is green.
 
 - [ ] **Step 5: Commit**
 
@@ -1253,7 +1274,7 @@ describe('ApprovalsWall (W6, W148)', () => {
 - [ ] **Step 2: Run to verify it fails**
 
 ```bash
-NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/\[locale\]/(site)/success-stories/__tests__/ApprovalsWall.test.tsx" --maxWorkers=1
+NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/[locale]/(site)/success-stories/__tests__/ApprovalsWall.test.tsx" --maxWorkers=1
 ```
 
 Fails at import: `Failed to resolve import "../_components/ApprovalsWall"` (and `"../_lib/wall"`).
@@ -1447,11 +1468,11 @@ export function ApprovalsWall({
 
 ```bash
 npx prettier --write "src/app/[locale]/(site)/success-stories/_lib/wall.ts" "src/app/[locale]/(site)/success-stories/_components/StoryCard.tsx" "src/app/[locale]/(site)/success-stories/_components/ApprovalsWall.tsx" "src/app/[locale]/(site)/success-stories/__tests__/ApprovalsWall.test.tsx"
-NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/\[locale\]/(site)/success-stories" --maxWorkers=1
+NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/[locale]/(site)/success-stories" --maxWorkers=1
 npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1
 ```
 
-`ApprovalsWall.test.tsx`'s 6 cases green; 43 cases total across the folder (37 + 6). `src/design/__tests__/client-imports.test.ts` stays green: `ApprovalsWall.tsx` (`'use client'`) imports only `@/design/primitives/Button` and `@/design/primitives/RadioChips` by path, plus the page-local `StoryCard`/`_lib/wall`/`_lib/stories` (type-only) — no barrel, no block, no date function, no message file. `src/i18n/client-messages.test.ts` stays green: the island calls no `sys(...)`/`useTranslations('sys')`, so `CLIENT_SYS` (`consent, languageHint, errorTitle, errorRetry, form`) is untouched. The low-memory line is green.
+`ApprovalsWall.test.tsx`'s 6 cases green; 44 cases total across the folder (38 + 6). `src/design/__tests__/client-imports.test.ts` stays green: `ApprovalsWall.tsx` (`'use client'`) imports only `@/design/primitives/Button` and `@/design/primitives/RadioChips` by path, plus the page-local `StoryCard`/`_lib/wall`/`_lib/stories` (type-only) — no barrel, no block, no date function, no message file. `src/i18n/client-messages.test.ts` stays green: the island calls no `sys(...)`/`useTranslations('sys')`, so `CLIENT_SYS` (`consent, languageHint, errorTitle, errorRetry, form`) is untouched. The low-memory line is green.
 
 - [ ] **Step 5: Commit**
 
@@ -1469,7 +1490,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 ---
 
-- [ ] **Cycle 5 — the page: metadata, hero (LCP h1), wall, hidden sections, closing band; `UNBUILT_PATHNAMES` −1, gate rows +2; the page e2e spec (W106: the page and every component it imports are already in the tree from Cycles 1–4, so this commit leaves `npm run verify` green)**
+- [ ] **Cycle 5 — the page: metadata, hero (LCP h1), wall, hidden sections, closing band; `UNBUILT_PATHNAMES` −1, gate rows +2; the page e2e spec (W106: the page and every component it imports are already in the tree from Cycles 1–4, so this commit leaves the low-memory verify line green; the e2e spec is written here and executes once, in Cycle 6's gate — W126)**
 
 - [ ] **Step 1: Write the failing tests**
 
@@ -1744,16 +1765,13 @@ for (const r of ROUTES) {
 - [ ] **Step 2: Run to verify they fail**
 
 ```bash
-NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/\[locale\]/(site)/success-stories/__tests__/ids.test.ts" --maxWorkers=1
-NEXT_BUILD_CPUS=2 NODE_OPTIONS=--max-old-space-size=4096 npm run build
-npx next start -p 3100 > /dev/null 2>&1 &
-NEXT_PID=$!
-curl -sf --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://localhost:3100/   # wait for the server without `sleep` (blocked in the agent's shell)
-E2E_BASE_URL=http://localhost:3100 npx playwright test e2e/pages/success-stories.spec.ts --project=desktop
-kill $NEXT_PID
+NODE_OPTIONS=--max-old-space-size=4096 npx vitest run "src/app/[locale]/(site)/success-stories/__tests__/ids.test.ts" --maxWorkers=1
+npx playwright test e2e/pages/success-stories.spec.ts --list
 ```
 
-`ids.test.ts` fails at import: `Failed to resolve import "../page"`. Once `page.tsx` exists (Step 3) and before the `UNBUILT_PATHNAMES` line is deleted, `NODE_OPTIONS=--max-old-space-size=4096 npx vitest run src/lib/seo/unbuilt.test.ts --maxWorkers=1` goes red the other way (W20: the set still lists `/success-stories` while the filesystem walk now finds `success-stories/page.tsx`) — that edit is part of this same Step 3, so it is never committed red. The e2e run 404s from the `(site)/[...rest]` catch-all before the page exists (`expect(res?.status()).toBe(200)` receives 404; the rest time out on missing test ids).
+`ids.test.ts` fails at import: `Failed to resolve import "../page"`. Once `page.tsx` exists (Step 3) and before the `UNBUILT_PATHNAMES` line is deleted, `NODE_OPTIONS=--max-old-space-size=4096 npx vitest run src/lib/seo/unbuilt.test.ts --maxWorkers=1` goes red the other way (W20: the set still lists `/success-stories` while the filesystem walk now finds `success-stories/page.tsx`) — that edit is part of this same Step 3, so it is never committed red.
+
+The e2e spec is **not** run against a server in this cycle (W126/W164: the task gets exactly one capped build + one `npm run start` + one gate, all in Cycle 6 — no interim build, and the red step is collect-only). Its red state holds by construction: before `page.tsx` exists, `/basari-hikayeleri` and `/en/success-stories` answer 404 through the `(site)/[...rest]` catch-all, so `expect(res?.status()).toBe(200)` fails first and the rest would time out on the missing test ids. The spec executes once, against the finished page, inside Cycle 6's `npm run gate`. What this step proves is that the spec compiles and is collected: `--list` contacts no server and prints `Total: 32 tests in 1 file` (8 cases × 2 routes × the `mobile` and `desktop` projects).
 
 - [ ] **Step 3: Implement**
 
@@ -1990,7 +2008,7 @@ Notes: `#talk` is neither `/`-rooted nor external, so `Button` renders a same-ta
 
 `src/lib/seo/routes.ts` — in the `UNBUILT_PATHNAMES` set literal, delete the one line `'/success-stories',`.
 
-`e2e/routes.ts` — in `GATE_ROUTE_TABLE`, as the literal's last two entries (after the `{ path: '/tesekkurler?form=hire', indexable: false }` row and every row T1–T8 appended above it), add:
+`e2e/routes.ts` — in `GATE_ROUTE_TABLE`, as the literal's last two entries (after whatever row is last — T13, T3–T6 and T8 appended theirs after the `{ path: '/tesekkurler?form=hire', indexable: false }` row, T7 inserted its two before the conversion-page comment; order is irrelevant to every consumer, W21), add:
 
 ```ts
   { path: '/basari-hikayeleri', indexable: true },
@@ -2001,17 +2019,12 @@ Notes: `#talk` is neither `/`-rooted nor external, so `Button` renders a same-ta
 
 ```bash
 npx prettier --write "src/app/[locale]/(site)/success-stories/page.tsx" "src/app/[locale]/(site)/success-stories/__tests__/ids.test.ts" src/lib/seo/routes.ts e2e/routes.ts e2e/pages/success-stories.spec.ts
-NODE_OPTIONS=--max-old-space-size=4096 npx vitest run src/lib/seo/unbuilt.test.ts scripts/gate-routes.test.ts "src/app/\[locale\]/(site)/success-stories" --maxWorkers=1
+NODE_OPTIONS=--max-old-space-size=4096 npx vitest run src/lib/seo/unbuilt.test.ts scripts/gate-routes.test.ts "src/app/[locale]/(site)/success-stories" --maxWorkers=1
 npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1
-NEXT_BUILD_CPUS=2 NODE_OPTIONS=--max-old-space-size=4096 npm run build
-npx next start -p 3100 > /dev/null 2>&1 &
-NEXT_PID=$!
-curl -sf --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://localhost:3100/   # wait for the server without `sleep` (blocked in the agent's shell)
-E2E_BASE_URL=http://localhost:3100 npx playwright test e2e/pages/success-stories.spec.ts e2e/routing.spec.ts e2e/seo.spec.ts
-kill $NEXT_PID
+npx playwright test e2e/pages/success-stories.spec.ts --list
 ```
 
-`unbuilt.test.ts` green (set and filesystem agree again); `gate-routes.test.ts` green (the TR and EN halves of `INDEXABLE_GATE_ROUTES` stay equal); `ids.test.ts`'s 3 cases green; every earlier file in the folder stays green — 46 cases total (43 + 3). The low-memory line is green — `src/design/__tests__/client-imports.test.ts` and `src/i18n/client-messages.test.ts` stay green (the page is a server component; its only client descendant is the already-proven `ApprovalsWall`). The e2e spec's 8 cases × 2 routes × 2 projects = 32 green; `routing.spec.ts`'s page-contract loop and `seo.spec.ts`'s canonical/sitemap loop now include the two routes and pass (the sitemap lists `/basari-hikayeleri` and `/en/success-stories` because the key left `UNBUILT_PATHNAMES`). One build/test job at a time; the `kill` ends the server; check for stray `node`/`next` processes afterwards.
+`unbuilt.test.ts` green (set and filesystem agree again); `gate-routes.test.ts` green (the TR and EN halves of `INDEXABLE_GATE_ROUTES` stay equal); `ids.test.ts`'s 3 cases green; every earlier file in the folder stays green — 47 cases total (44 + 3). The low-memory line is green — `src/design/__tests__/client-imports.test.ts` and `src/i18n/client-messages.test.ts` stay green (the page is a server component; its only client descendant is the already-proven `ApprovalsWall`); `tsc` and ESLint cover `e2e/pages/success-stories.spec.ts` (the spec is outside Vitest's `include`). `--list` still collects 32 tests. No build, no server and no Playwright execution here (W126): the e2e spec's 8 cases × 2 routes × 2 projects, `routing.spec.ts`'s page-contract loop and `seo.spec.ts`'s canonical/sitemap loop (which pick the two new `GATE_ROUTE_TABLE` rows up automatically — the sitemap lists `/basari-hikayeleri` and `/en/success-stories` because the key left `UNBUILT_PATHNAMES`) all run once, in Cycle 6's gate.
 
 `docs/SEO.md` — append one row at the end of the `## Pages` table (T1 created it with the W98 columns Page | Route (tr · en) | Title source | Canonical | JSON-LD | LCP slot | Notes; append after the last row an earlier task added):
 
@@ -2031,7 +2044,7 @@ kill $NEXT_PID
 none — CMS cards, no proof scans at launch (D9 v1); Phase A ships the W6 empty wall (sector chips + "first approvals are on their way"), with hero metrics / KPI box / testimonials / worker stories hidden by data (W1, §10 row 11) until the `stories` collection is fed from Operations (I10)
 ```
 
-`docs/PRD.md` — §11, the sentence beginning "**Not yet built, by design (WP2 and later):**": T1's own task decremented its leading count from 12 by one for the homepage and named its own page in the parenthetical; T2–T8 will each have decremented it by one more, in the same place, in the same way, by the time this task runs. Read the number the sentence carries when this step actually runs (never assume 12, and never assume the seven prior decrements landed exactly as predicted here) and decrement it by one more for Success Stories; if the page is still named individually in the parenthetical alongside "the homepage and Hire Workers", extend that list to name every page shipped so far instead of counting them only in the leading number — pick whichever form the sentence is already in and keep it consistent, never inventing a second convention beside T1's.
+`docs/PRD.md` — §11, the sentence that begins "**Not yet built, by design (WP2 and later):**" (`grep -n 'Not yet built' docs/PRD.md`): in whatever wording T1–T8 and T13 left it, count Success Stories as built — decrement the "N of the 14 core pages" figure by one and add "Success Stories (WP2b T9)" to the list of designed pages that sentence names — keeping the rest of the sentence as it stands (W45: edit in place, never re-add WP1 wording). For orientation only: T1 replaced the WP2a parenthesis "(only the homepage and Hire Workers exist, both still spike-era placeholder content)" with "(the homepage is the first designed page — WP2b T1; Hire Workers is still the spike placeholder until T2)", T13 decremented the count to "11 of the 14" for the portal entry (§2 row 14), T2 rewrote that Hire-Workers clause (count unchanged), T3–T8 each decremented the figure by one and added their own page — so it should open "5 of the 14 core pages (…)" when this step runs and "4 of the 14 core pages (…)" after it. If it carries another figure, an earlier task deviated: still decrement whatever figure it carries by one, and name the discrepancy in this task's report.
 
 ```bash
 npx prettier --write docs/SEO.md docs/ANALYTICS.md docs/PRD.md
@@ -2056,18 +2069,22 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 ---
 
-- [ ] **Cycle 6 — the W126 proof (build, start, gate, js-size, kill) and the shared task ledger**
+- [ ] **Cycle 6 — the W126 proof (one build, one start, the gate, js-size, the launch dead-target check, kill) and the T9 `## Ledger` row**
 
-- [ ] **Step 1: No new test — confirm the one remaining doc anchor before editing it**
+- [ ] **Step 1: No new test — pre-flight: check the facts this task relies on and the ledger anchor**
 
-This cycle changes no source and adds no test; its checks are the W126 proof run and the doc edit below, which is prose (Prettier-checked by the low-memory line). The doc anchor must exist before editing it — prove it (a missing anchor means an earlier task deviated; stop and ask the controller rather than invent a location). Every other doc this task touches (`docs/SEO.md`, `docs/ANALYTICS.md`, `docs/CONTENT-MODEL.md`, `docs/PRD.md`, `docs/INTEGRATIONS.md`) was already edited in Cycles 1, 2 and 5:
+This cycle changes no source and adds no test; its checks are the W126 proof run (which executes the Cycle 5 page spec for the first time) and the ledger edit below, which is prose (Prettier-checked by the low-memory line). Every other doc this task touches (`docs/SEO.md`, `docs/ANALYTICS.md`, `docs/CONTENT-MODEL.md`, `docs/PRD.md`, `docs/INTEGRATIONS.md`) was already edited in Cycles 1, 2 and 5.
 
 ```bash
-grep -n "^## Task index" docs/superpowers/plans/2026-09-20-wp2b-pages.md
-grep -n "ASSEMBLY: filled after the reconcile rechecks" docs/superpowers/plans/2026-09-20-wp2b-pages.md
+grep -n "basari-hikayeleri\|/en/success-stories" e2e/routes.ts      # 2 hits, both `indexable: true` (W21)
+grep -n "'/success-stories'" src/lib/seo/routes.ts                # no hit (the UNBUILT key is gone, W20)
+grep -n "success-stories" src/design/chrome/ctas.ts               # no hit — the header renders DEFAULT_CTAS (W17/W121)
+grep -n "^## Ledger" docs/superpowers/plans/2026-09-20-wp2b-pages.md   # 1 hit — T1's table (W98)
+env | grep -E '^(NEXT_PUBLIC_GTM|NEXT_PUBLIC_GA4|NEXT_PUBLIC_ADS)' || echo 'GTM-dark'
+git status --short                                                  # clean: Cycles 1–5 are committed
 ```
 
-If T1 has already turned the `<!-- ASSEMBLY -->` placeholder into a real Markdown table, that `grep` for the comment finds nothing — read the table it left instead and append this task's row in the same columns; do not reintroduce the comment.
+Expected: exactly as annotated. A GTM/GA4/Ads id in this shell would put third-party script into the measured budget (W146) — unset it before building. A missing `## Ledger` heading means T1 deviated: stop and ask the controller rather than invent a location (never write into the controller's `## Task index` / `<!-- ASSEMBLY -->` placeholder above it).
 
 - [ ] **Step 2: Run the proof (W126 — one heavy job at a time; no preview run by the implementer, never push — W137/W139/W140, the controller's binding preview run is separate)**
 
@@ -2075,22 +2092,28 @@ If T1 has already turned the `<!-- ASSEMBLY -->` placeholder into a real Markdow
 NEXT_BUILD_CPUS=2 NODE_OPTIONS=--max-old-space-size=4096 npm run build
 npm run start &
 NEXT_PID=$!
-curl -sf --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://localhost:3000/   # wait for the server without `sleep` (blocked in the agent's shell)
+curl -sf --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://localhost:3000/basari-hikayeleri   # wait for the server without `sleep` (blocked in the agent's shell)
 E2E_BASE_URL=http://localhost:3000 npm run gate
 npm run js-size
+E2E_BASE_URL=http://localhost:3000 npm run gate:launch > "$TMPDIR/stories-gate-launch.log" 2>&1 || true
+grep -nE '^/(basari-hikayeleri|en/success-stories)[^ ]* → ' "$TMPDIR/stories-gate-launch.log" || echo 'success-stories routes not listed as dead'
 kill $NEXT_PID
 ps aux | grep -E 'next-server|next start' | grep -v grep   # confirm nothing stray survived the kill
 ```
 
-Expected: `npm run gate` green on both Playwright projects (every spec, including this page's 8 cases on both `/basari-hikayeleri` and `/en/success-stories`); axe zero violations over `GATE_ROUTES` (the chips are native radios with a visually hidden legend, the empty state is `role="status"`, the decorative hero slot and its gradient overlay are `aria-hidden`); the width sweep clean at 1440…390 (the hero is one column, the card grid is `md:grid-cols-2 lg:grid-cols-3` — empty in Phase A, so this is the chip row's own wrap behaviour); Lighthouse on both routes: performance ≥ 0.95, a11y/best-practices/SEO = 1.0, `resource-summary:script:size` ≤ 204,800 B, LCP ≤ 2,500 ms (the h1 over the gradient, DevTools-throttled median of 3 runs, W145). If `npm run js-size` reports either route above 194,560 B (`LAZY_LINE`) — unlikely: the only page island is `ApprovalsWall` (+ `RadioChips`, `Button`, `Card`), a few KB over the shell — move `ApprovalsWall` behind `next/dynamic` **with SSR kept** (it is the main content) before T10 starts (W13 amended). Record the actual numbers for the ledger row below.
+(An agent shell may start the server with its own background-run facility instead of `&`; keep its PID for the `kill` either way, and wait with `curl --retry`, never a bare `sleep`. A build error is fixed in the source, committed after the low-memory verify line, and the build re-run — that re-run is still "the" build of this task.)
 
-- [ ] **Step 3: Implement (the shared task ledger)**
+Expected:
+- **Build:** succeeds — the first time the RSC boundaries of `page.tsx` → the server sections → the `'use client'` `ApprovalsWall`/`RadioChips`/`Stat`/`ContactLink` are compiled (jsdom could not see them); both locales of the route are prerendered (no `headers()`/`cookies()` in the page).
+- **Gate:** `npm run gate` green on both Playwright projects — every spec, including this page's 8 cases on both `/basari-hikayeleri` and `/en/success-stories` (32 executions; the spec runs here for the first time, W126), `routing.spec.ts`'s page contract and `seo.spec.ts`'s canonical/hreflang/sitemap loop on the two new rows; axe zero violations over `GATE_ROUTES` (the chips are native radios with a visually hidden legend, the empty state is `role="status"`, the decorative hero slot and its gradient overlay are `aria-hidden`); the width sweep clean at 1440…390 (the hero is one column, the card grid is `md:grid-cols-2 lg:grid-cols-3` — empty in Phase A, so this is the chip row's own wrap behaviour); Lighthouse on both routes (localhost wears the production face, `lighthouserc.local.json`, W135/W145): performance ≥ 0.95, a11y/best-practices/SEO = 1.0, `resource-summary:script:size` ≤ 204,800 B, LCP ≤ 2,500 ms (the h1 over the gradient, DevTools-throttled median of 3 runs, W145).
+- **js-size** (W136 — the ledger's figure): both routes below the **191,724 B local trigger** (W162: the binding figure is the controller's preview `npm run js-size` against the 194,560 B lazy line, W136; the preview runs ≈ 2,836 B above the local build — 176,132 → 178,968 B at 02ace58 — so the local trigger is 194,560 − 2,836). Projection: the WP2a close measured the shell at 176,132 B (TR) / 172,783 B (EN) locally; this page adds only `ApprovalsWall` + `StoryCard` + `RadioChips` + `Stat` (the latter imported by the gated `NumbersBox`/`MetricStrip`) and the page-local `_lib/wall.ts` (`ContactLink`, `Button`, `Card` and `track` already ship with the chrome) — a few KB. If either route nevertheless measures ≥ 191,724 B locally: STOP and report — do NOT start T10, do NOT write a lazy cycle in advance and do NOT add a second build here (W164) — record the `js-size` table and the route's client chunk list and report to the controller; the controller's binding preview decides at 194,560 B and schedules the lazy pass before the next page starts (W13 amended; the wall is the page's main content and the `#cases` target, so moving it behind an interaction needs a ruling).
+- **Launch dead-target check** (W152/W158): the launch profile stays RED by design while other routes are still unbuilt (it prints the W20 unbuilt list, the dead-target sweep and the D26 content-readiness table, then fails), but the grep prints `success-stories routes not listed as dead` — the chrome's links to `/basari-hikayeleri` and `/en/success-stories` answered 404 before this task and answer 200 now. The pattern matches only the dead-href lines (`<href> → <status>`), never the D26 table further down the same log, which lists both routes by design. Every internal href this page renders (`/maliyet-hesaplayici`, `/calisma-izni`, `/iletisim`, the in-page `#talk`, and `/adaylar` behind the hidden worker stories) is a route T3/T4/T7/T8 already built; the page owns no `CTA_BY_PATHNAME` entry, and the `DEFAULT_CTAS` `#request-form` its header links to is checked on Hire Workers (T2's anchor).
 
-`docs/superpowers/plans/2026-09-20-wp2b-pages.md` — append the T9 row to the table under `## Task index` (T1's row format, built from the file's own `<!-- ASSEMBLY -->` comment — columns: number, name, routes, form keys, pixel page?, model, task file, size, cycles, sys keys, foundation gaps; if T1 chose different column names, use those instead and keep this row's content, not this literal header):
+Record the actual numbers for the ledger row below.
 
-```markdown
-| T9 | Success Stories | `/basari-hikayeleri` · `/en/success-stories` | none (no form on this page, PRD §2 row 11) | no (D27 pixel harness is T1/T2/T3/T12 only; Fable side-by-side review against named deltas 1–13 instead) | <implementer model> | `wp2b/fixed/task-9.md` | <bytes from `wc -c` on this task file> B | 6 | 14 | none |
-```
+- [ ] **Step 3: Implement (the T9 ledger row)**
+
+`docs/superpowers/plans/2026-09-20-wp2b-pages.md` — append the T9 row to the `## Ledger` table in T1's row format (W98 — six columns: Task · Routes (tr · en) · JS (`npm run js-size`, W136) · Lighthouse (median of 3, W145) · Pixel (D27) / named deltas · Date), filled from this session — the "**Ledger line**" template at the end of this task, every `<…>` from Step 2; none typed from memory. Never touch the controller's `## Task index` / `<!-- ASSEMBLY -->` placeholder.
 
 ```bash
 npx prettier --write docs/superpowers/plans/2026-09-20-wp2b-pages.md
@@ -2102,23 +2125,25 @@ npx prettier --write docs/superpowers/plans/2026-09-20-wp2b-pages.md
 npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1
 ```
 
-Green (`prettier --check .` covers the re-aligned table; nothing in this cycle changes source, so the whole suite is unchanged from Cycle 5 — 46 cases in this page's own folder, plus the repo's existing suite).
+Green (`prettier --check .` covers the re-aligned table; nothing in this cycle changes source, so the whole suite is unchanged from Cycle 5 — 47 cases in this page's own folder, plus the repo's existing suite).
 
 - [ ] **Step 5: Commit (never push — W118, the owner decision on push cadence is the controller's, not this task's)**
 
 ```bash
 git add docs/superpowers/plans/2026-09-20-wp2b-pages.md
-git commit -m "docs(stories): T9 ledger row — js-size, Lighthouse medians, cycle/sys-key counts (T9 c6)
+git commit -m "docs(stories): T9 ledger row — gate, js-size, Lighthouse medians, launch dead-target check (T9 c6)
 
-Local W126 proof (build + start + gate + js-size against localhost, never a pushed preview —
-W137/W139/W140): green on both routes, both locales. No source change.
+Local W126 proof (one build + start + gate + js-size against localhost, never a pushed preview —
+W137/W139/W140): the page spec ran once, green on both routes and both projects; both routes
+measured against the 191,724 B local trigger (W162; binding lazy line 194,560 B, W136); the launch sweep no longer lists either route
+as dead (W152/W158). No source change.
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 ```
 
 ---
 
-**Docs in this task:** `docs/CONTENT-MODEL.md` (Cycle 1: one paragraph in `## Collections`, after the sentence ending "…become collections when an editor needs to reorder them.", for the page-local `stories`/`testimonials` schemas; Cycle 2: one bullet appended to `### Adding copy (W9, W23, W54)`'s per-page list, the `sys.stories.*`/`sys.seo.stories.*` keys and why). `docs/INTEGRATIONS.md` (Cycle 1: one sentence in `## I10 — Success stories (cards)`, after "item type `successStory`.", pointing at the row shape and Phase A's zero rows). `docs/SEO.md` (Cycle 5: one row appended to the `## Pages` table — title source `sys.seo.stories.*`, self canonical, `BreadcrumbList`, LCP `h1`, `ss-hero` placeholder). `docs/ANALYTICS.md` (Cycle 5: one bullet appended to `### Page instrumentation (WP2b)` — `whatsapp_click` `page_cta` from the band and the empty-wall CTA, static prefills (W95), no `approval_filter`). `docs/PRD.md` (Cycle 5: the page-table row 11 Forms cell, anchored on "none — CMS cards, no proof scans at launch (D9 v1)"; the §11 not-yet-built sentence, decremented by one for this page). `docs/superpowers/plans/2026-09-20-wp2b-pages.md` (Cycle 6: the T9 row of the shared task table).
+**Docs in this task:** `docs/CONTENT-MODEL.md` (Cycle 1: one paragraph in `## Collections`, after the sentence ending "…become collections when an editor needs to reorder them.", for the page-local `stories`/`testimonials` schemas; Cycle 2: one bullet appended to `### Adding copy (W9, W23, W54)`'s per-page list, the `sys.stories.*`/`sys.seo.stories.*` keys and why). `docs/INTEGRATIONS.md` (Cycle 1: one sentence in `## I10 — Success stories (cards)`, after "item type `successStory`.", pointing at the row shape and Phase A's zero rows). `docs/SEO.md` (Cycle 5: one row appended to the `## Pages` table — title source `sys.seo.stories.*`, self canonical, `BreadcrumbList`, LCP `h1`, `ss-hero` placeholder). `docs/ANALYTICS.md` (Cycle 5: one bullet appended to `### Page instrumentation (WP2b)` — `whatsapp_click` `page_cta` from the band and the empty-wall CTA, static prefills (W95), no `approval_filter`). `docs/PRD.md` (Cycle 5: the page-table row 11 Forms cell, anchored on "none — CMS cards, no proof scans at launch (D9 v1)"; the §11 not-yet-built sentence, decremented by one with "Success Stories (WP2b T9)" added to the pages it names — the T6/T7/T8 convention). `docs/superpowers/plans/2026-09-20-wp2b-pages.md` (Cycle 6: the T9 row of T1's `## Ledger` table — never the controller's `## Task index`).
 
 **Sys keys added (14, both locales):** `sys.seo.stories.title`, `sys.seo.stories.description`, `sys.stories.hero.bodyEmpty`, `sys.stories.hero.liveBadge`, `sys.stories.wall.intro`, `sys.stories.wall.legend`, `sys.stories.wall.showingAll`, `sys.stories.wall.showingFiltered`, `sys.stories.empty.title`, `sys.stories.empty.body`, `sys.stories.empty.cta`, `sys.stories.empty.prefill`, `sys.stories.whatsappPrefill`, `sys.stories.workers.card1Title` — pinned by `__tests__/sys-keys.test.ts`.
 
@@ -2128,4 +2153,8 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 **Foundation gaps:** none. Accepted page-local by the reconcile rulings: the `stories`/`testimonials` Zod schemas in `_lib/stories.ts` (Phase B moves them into `src/content/collections.ts` once the Operations `successStory`/`testimonial` item types exist, I10).
 
-**Ledger line (W22/W98, T1's row format; local gate, never a pushed preview — W137/W139/W140):** routes `/basari-hikayeleri` · `/en/success-stories`; js-size = gzipped script bytes per route from `npm run js-size` against the Cycle 6 local run (ceiling 204,800 B, lazy line 194,560 B — fill from the run: `/basari-hikayeleri` `<n>` B, `/en/success-stories` `<n>` B); Lighthouse triple on both routes = perf `<x.xx>` / a11y `<x.xx>` / best-practices `<x.xx>` / SEO `<x.xx>`, LCP `<n>` ms, CLS `<n>`; pixel = **n/a** (D27 applies only to Homepage, Cost Calculator, Hire Workers, Blog Article — this page gets the Fable side-by-side review against the named deltas 1–13 instead); `UNBUILT_PATHNAMES` −1 (`/success-stories`), `GATE_ROUTE_TABLE` +2; sys keys +14; foundation gaps none; date `<the Cycle 6 run date>`.
+**Ledger line** (append to the `## Ledger` table in `docs/superpowers/plans/2026-09-20-wp2b-pages.md`, T1's six columns, W22/W98; local gate, never a pushed preview — W137/W139/W140; fill every `<…>` from Cycle 6):
+
+```markdown
+| T9 Success Stories | `/basari-hikayeleri` · `/en/success-stories` | js-size (local, W136 — Lighthouse `resource-summary:script:size` transfer bytes): `/basari-hikayeleri` <n> B · `/en/success-stories` <n> B (ceiling 204,800; local trigger 191,724, W162; binding lazy line 194,560 on the preview); binding preview: <added by the controller> | LH mobile, median of 3, DevTools throttling (local rc = production): `/basari-hikayeleri` perf <x.xx> · a11y <x.xx> · BP <x.xx> · SEO <x.xx> · LCP <n> ms (h1) · CLS <n>; `/en/success-stories` perf <x.xx> · a11y <x.xx> · BP <x.xx> · SEO <x.xx> · LCP <n> ms (h1) · CLS <n> | not a D27 pixel page — Fable side-by-side review; named deltas 1–14 (this task's header): W6 empty wall (hero stats, live badge, KPI box, testimonials and worker stories hidden by data — W1, §10 row 11), the site's sector chips, v1 card grid without proof frames, the band's third action as a button, typed localized hrefs, no filter URL or event, sys hero body and wall intro (no "below are the approvals" claim), static WhatsApp prefills, the ICU live badge, the package's headcount split, the gradient band with the success-face WhatsApp CTA, the `ss-hero` placeholder, `scroll-mt-24` anchors, the `EmptyState` WhatsApp CTA keeping the block's `secondary` face (accepted D20 delta, W178); WP-C sheet: `success.025`, `success.037` (legal), the package's first-person lines (`044`, `048`, `072`, `077`, `079`, `080`, `081` — W154: package copy waits for WP-C); `UNBUILT_PATHNAMES` −1, `GATE_ROUTE_TABLE` +2, sys keys +14; launch sweep: neither route listed as dead | <YYYY-MM-DD> |
+```

@@ -25,7 +25,7 @@ Decisions below are cited as **D\<n\>**, rationale in `docs/superpowers/specs/20
 | Desktop-scale token port checklist (0.75 normalisation)          | `docs/ARCHITECTURE.md` § D19                                                                                                                        |
 | Quality gate composition and budgets                             | `docs/ARCHITECTURE.md` § Quality gate (D27)                                                                                                         |
 | Design system, calculator engine, Operations surface             | `docs/ARCHITECTURE.md` §§ Design system / Calculator engine / Operations surface                                                                    |
-| Environments (local / preview / production)                      | `docs/ARCHITECTURE.md` § Environments; `docs/DEPLOYMENT.md` §§ Two Vercel projects / Phase A cutover                                                |
+| Environments (local / preview / production)                      | `docs/ARCHITECTURE.md` § Environments; `docs/DEPLOYMENT.md` §§ Vercel project / Phase A cutover                                                     |
 | Integration catalogue (I1–I20), token threat model               | `docs/INTEGRATIONS.md` §§ Catalogue … Token threat model                                                                                            |
 | String catalogue, `sys.*`, bundle shape, blog model              | `docs/CONTENT-MODEL.md`                                                                                                                             |
 | Redirect rules (D21), disposition table                          | `docs/redirects.md`                                                                                                                                 |
@@ -123,4 +123,4 @@ This repo has no push-without-asking rule. Whether a push to `main` reaches prod
 
 ## Environments and deploy
 
-Local dev talks to `LOCAL` content by default, or `jobsadmire-operations` on port 4001 for the `OPS` adapter and forms. Production is `jobsadmire.com` on Vercel — two projects exist (`jobsadmirewebsite` legacy, `jobsadmire-web-v2` this repo); pushing here never touches the VPS. Full detail: `docs/DEPLOYMENT.md`.
+Local dev talks to `LOCAL` content by default, or `jobsadmire-operations` on port 4001 for the `OPS` adapter and forms. Production is `jobsadmire.com` on Vercel — one project, `jobsadmirewebsite`, still serving the frozen old site until the Phase A cutover removes the two `main` deploy guards (no domain move; every other branch builds an authentication-protected preview); pushing here never touches the VPS. Full detail: `docs/DEPLOYMENT.md`.

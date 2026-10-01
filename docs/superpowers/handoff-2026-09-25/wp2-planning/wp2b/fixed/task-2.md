@@ -59,19 +59,19 @@ Create
 - `src/app/[locale]/(site)/hire-workers/_sections/__tests__/sections.test.tsx`
 - `src/app/[locale]/(site)/hire-workers/_sections/__tests__/forms.test.tsx`
 - `e2e/pages/hire.spec.ts`
-- only if Cycle 8's lazy pass is triggered: `src/app/[locale]/(site)/hire-workers/_components/LazyStickyBar.tsx`
+- only if Cycle 8's lazy pass is triggered: `src/app/[locale]/(site)/hire-workers/_components/LazyStickyBar.tsx` and `src/app/[locale]/(site)/hire-workers/_components/__tests__/LazyStickyBar.test.tsx`
 
 Modify
 - `src/app/[locale]/(site)/hire-workers/page.tsx` — replace the whole WP1 spike (the default export `HireWorkers` rendering `<h1 …>{locale}</h1>` and its `generateMetadata` with `fallbackTitle: 'JobsAdmire'`)
 - `src/messages/tr.json`, `src/messages/en.json` — add the `sys.hire` object (5 leaves) as a sibling of `sys.form`
-- `docs/CONTENT-MODEL.md` — one bullet in the per-page `sys.*` list under `### Adding copy (W9, W23, W54)`
-- `docs/SEO.md` — one row in the per-page table T1 created (W98)
-- `docs/ANALYTICS.md` — one bullet under `### Page instrumentation (WP2b)`
-- `docs/PRD.md` — §2 row 2 (the table row whose page cell is `Hire Workers`) and the Hire-Workers clause of the §11 sentence beginning "**Not yet built, by design (WP2 and later):**"
+- `docs/CONTENT-MODEL.md` — one bullet appended after the LAST bullet of the per-page `sys.*` list under `### Adding copy (W9, W23, W54)` (T13's Newsletter bullet at T2's turn, W98)
+- `docs/SEO.md` — one row appended after the LAST row of the `## Pages` table T1 created (T13's `Newsletter unsubscribe` row at T2's turn, W98)
+- `docs/ANALYTICS.md` — one bullet appended after the LAST bullet under `### Page instrumentation (WP2b)` (T13's Newsletter confirm/unsubscribe bullet at T2's turn, W98)
+- `docs/PRD.md` — §2 row 2 (the table row whose page cell is `Hire Workers`) and, in the §11 sentence beginning "**Not yet built, by design (WP2 and later):**", the clause "Hire Workers is still the spike placeholder until T2" that T1 leaves for this task
 - `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — the T2 row of the `## Ledger` table
 
 Test
-- Vitest: the six `_lib/__tests__/*.test.ts`, `__tests__/actions.test.ts`, `_components/__tests__/SectorPrefillLink.test.tsx`, `_sections/__tests__/{sections,forms}.test.tsx`
+- Vitest: the six `_lib/__tests__/*.test.ts`, `__tests__/actions.test.ts`, `_components/__tests__/SectorPrefillLink.test.tsx`, `_sections/__tests__/{sections,forms}.test.tsx` (+ `_components/__tests__/LazyStickyBar.test.tsx` only if Cycle 8(b) runs)
 - Playwright (both projects, in the gate only): `e2e/pages/hire.spec.ts`
 - Existing, must stay green untouched: `src/design/__tests__/class-collisions.test.ts` (W155 — scans `src/app/**`, so every class string below is part of the gate), `src/design/__tests__/client-imports.test.ts` (W147/W156), `src/i18n/client-messages.test.ts` (W148), `src/messages/{messages,voice}.test.ts` (W154), `src/lib/seo/unbuilt.test.ts`, `e2e/{routing,seo,a11y,width-sweep,chrome,headers,thank-you}.spec.ts`
 
@@ -86,7 +86,7 @@ Consumes (exact names, verified in the code at `7bacd7e`; import paths as writte
 - Assets: `SourceMap`, `sourceMapLabels` from `@/design/assets/source-map` (`{ title, labels, turkiyeLabel, id?, className? }`; markers `<g data-country="<CODE>"><title>`; the `<svg>` has no `id` — `id` names `<title id="<id>-title">`); `Flag` from `@/design/Flag` (`{ code: FlagCode, size?, label?, className? }`, `<use href="/brand/flags.svg#flag-<CODE>">`); `isFlagCode` from `@/design/assets/flag-codes`; `LazyIsland` from `@/design/islands/LazyIsland` (`{ load, props, fallback, rootMargin? }` — no `ssr`, W132; Cycle 8 only).
 - i18n/SEO/contact: `routing`, `type Locale` from `@/i18n/routing`; `Link` from `@/i18n/navigation`; `buildMetadata` from `@/lib/seo/metadata` (`{ locale, href, bundle, pageKey, fallbackTitle, fallbackDescription }`); `waLink`, `telLink`, `mailLink` from `@/lib/contact`; `renderWithIntl` from `@/test/render`.
 - Messages consumed, not added: `sys.form.labels.message`, `sys.form.options.startWhen.*`, `sys.form.consent.label`, `sys.form.placeholders.*`, `sys.form.hints.optional`, `sys.form.fallback.*`, `sys.marquee.{pause,play}`, `sys.nav.breadcrumbs`.
-- Operations catalog `hire` (INQUIRY): v1.0 — `name*` ≤120, `company*` ≤200, `email*` ≤254, `phone*` ≤40 (≥ 8 digits), `country` iso2, `iAm` enum, `sector` ≤120, `roleNeeded` ≤200, `headcount` ≤10, `startWhen` ≤120, `message` ≤5000 (`P/operations-door-contract-as-built.md`); v1.1 (WP2a Task 8, `A/produces-final.md` § Task 8) — `city?: string` ≤120 on `hire` (the other three v1.1 fields — `partner.track`, `contact.topic`, `careers.portfolioUrl` — are not `hire` fields and never appear here). Sent here: `name, company, email, phone, city, sector, roleNeeded, headcount, startWhen, message`. Not sent: `country`, `iAm` (optional; the design never asks).
+- Operations catalog `hire` (INQUIRY): v1.0 — `name*` ≤120, `company*` ≤200, `email*` ≤254, `phone*` ≤40 (≥ 8 digits), `country` iso2, `iAm` enum, `sector` ≤120, `roleNeeded` ≤200, `headcount` ≤10, `startWhen` ≤120, `message` ≤5000 (`P/operations-door-contract-as-built.md`); v1.1 (WP2a Task 8, `A/produces-final.md` § Task 8; CONFIRMED live by § "Task 8 — as built", Operations `main` 47a2160) — `city?: string` ≤120 on `hire` (the other three v1.1 fields — `partner.track`, `contact.topic`, `careers.portfolioUrl` — are not `hire` fields and never appear here). Sent here: `name, company, email, phone, city, sector, roleNeeded, headcount, startWhen, message`. Not sent: `country`, `iAm` (optional; the design never asks).
 - Gate tooling: `npm run gate` / `gate:launch` (`scripts/gate.sh`), `npm run js-size` (`scripts/js-size.mjs`), `npm run pixel -- --page=hire --locale=tr|en --base=<url> --widths=390,900,1440` (`scripts/pixel-compare.ts`), Playwright projects `mobile` (Pixel 7, 412 px) and `desktop` (1440×900).
 
 Produces (for T14's instance map and the launch sweep — nothing imports these files; later page tasks copy patterns, never import across route folders):
@@ -100,7 +100,8 @@ Produces (for T14's instance map and the launch sweep — nothing imports these 
 - W9/W23 — five `sys.hire.*` keys for id-less copy; no `sys.seo.hire.*`; package fragments composed only where the package splits them (`sp()`).
 - W10 — the design's ≤ 700 px hides/shows are CSS classes on server-rendered markup, never conditional rendering; this design has no ≤ 460 px rule.
 - W12/W32 — every `tel:`/`wa.me`/`mailto:` anchor is a `ContactCta`/`ContactLink` with `placement="page_cta"`; same-page anchors fire nothing.
-- W13 amended/W120/W136 — the ledger's JS figure is `js-size`'s; ceiling 204,800 B, lazy line 194,560 B (Cycle 8 if crossed).
+- W13 amended/W120/W136 — the ledger's JS figure is `js-size`'s; ceiling 204,800 B, lazy line 194,560 B on the controller's binding preview.
+- W162 — the stop rule is local-adjusted: the preview's `npm run js-size` runs ≈ 2,836 B above the local build (176,132 → 178,968 B at 02ace58), so this task stops and reports when a LOCAL route figure is ≥ **191,724 B** (194,560 − 2,836); the controller's binding preview decides at 194,560 B. Projection here ≈ 183–190 KB (local), so Cycle 8(b) stays a conditional cycle with the page's one lever, the sticky bar (≈ 1 KB): on a crossing the proof stops and reports, and Cycle 8(b) (the lazy pass already written below) runs on the controller's go-ahead before T3 starts. The request form is the `#request-form` CTA target and is never the lazy lever (W163).
 - W14 — build-time `SourceMap`, local sprite `Flag`s; no runtime d3/flagcdn/store-badge images.
 - W17/W121 — no `CTA_BY_PATHNAME` edit; the page renders the `DEFAULT_CTAS` anchor.
 - W18/W81 — the page mounts `StickyCtaBar` (`showAfterPx 700`, `hideNearId "request-form"`, `live`); the bar tracks its own contact CTAs and carries `data-testid="sticky-cta"`.
@@ -125,6 +126,8 @@ Produces (for T14's instance map and the launch sweep — nothing imports these 
 - W129 — `ImageSlot` is never given width/height/aspect/object classes: the hero slot sits in a cover wrapper, the phone-mock slot in its frame; only `rounded-[19px]` is passed.
 - W130/W134/W147/W156 — primitives, blocks, islands and assets are imported by module path everywhere, type-only imports included; `client-imports.test.ts` stays green.
 - W132 — `LazyIsland({ load, props, fallback, rootMargin? })` (no `ssr`) is used only by Cycle 8's conditional lazy pass.
+- W165 — the conditional `LazyStickyBar` (Cycle 8(b)) passes `rootMargin: '100000px 0px 200px 0px'` (T3's pattern, the top-extended margin): the jump nav's section links, a reload at a hash and scroll restoration can all jump past the bar's wrapper (it sits right after the jump nav), and a plain 200 px margin would then never load the bar. A Cycle 8 test pins the margin through a recording `IntersectionObserver`.
+- W178 — this page mounts no `Stat`/count-up (the hero pills and the source-countries heading are `metricValues`-filled static text, the employers stat a plain `<p>`; `MetricStrip`, the only `Stat` consumer, is not used), so its one metric-text assertion in the page spec (`470+` in the hero pills) needs no `emulateMedia`; a spec case that ever asserts the text of a `Stat` metric sets `page.emulateMedia({ reducedMotion: 'reduce' })` before `goto` or reads the sr-only final figure (the count-up flake).
 - W135/W145/W146 — a localhost run wears the production face (`lighthouserc.local.json`, identical to production): DevTools throttling, three runs, median — LCP ≤ 2,500 ms and performance ≥ 0.95 are errors; GTM stays dark (no `NEXT_PUBLIC_GTM_ID` locally).
 - W137 — no preview run by the implementer (never push); the controller's binding preview run uses `--settings.extraHeaders`.
 - W138/W159 — the pixel harness compares like for like (document-scroll-height check); at most two runs (D27).
@@ -854,7 +857,7 @@ export const CLIENT_LOGOS: readonly Logo[] = [];
 
 Why these five and nothing else: `whatsapp` is the design's literal "WhatsApp" CTA label (hero and sticky bar); `jump.label` is the ≤ 700 px jump nav's `aria-label`; `sc.titleTail` is the runtime dictionary's `scTitleC`, which has no package id (TR ` belgeli işçiler`, EN `''` — read with `sys.raw`, an ICU-free read that returns `''` untouched); `sc.mapTitle` is the SVG map's accessible name (W154: "JobsAdmire", never "we"/"biz" — `voice.test.ts` scans every `sys.*` string); `form.dial` labels the dial select (the design's select is unlabelled and the package has no id for it). The map's Türkiye marker label is **not** a key: it is the `countries` collection's `TR` row (`countryName`, data per W25). Every field label with a package id is that id (W115); both submits reuse `hire.063`. The TR apostrophes (`JobsAdmire'ın`, `Türkiye'deki`) are literal in ICU (an apostrophe quotes only before `{`, `}`, `#`, `|` or `'`).
 
-`docs/CONTENT-MODEL.md` — in the per-page `sys.*` bullet list T1 created at the end of `### Adding copy (W9, W23, W54)` (W98; `grep -n '^### Adding copy' docs/CONTENT-MODEL.md`), append after the Homepage bullet:
+`docs/CONTENT-MODEL.md` — in the per-page `sys.*` bullet list T1 created at the end of `### Adding copy (W9, W23, W54)` (W98; `grep -n '^### Adding copy' docs/CONTENT-MODEL.md`), append after the list's LAST bullet (W98: one bullet per task in execution order — at T2's turn that is T13's "- **Newsletter (T13):** …" bullet, after T1's Homepage and T13's Portal/Legal bullets) and before the heading `### Deliberately-empty Turkish fragments`:
 
 ```markdown
 - **Hire Workers (`sys.hire.*`, WP2b T2):** `whatsapp` (the design's literal "WhatsApp" CTA label — hero and sticky bar), `jump.label` (the ≤ 700 px jump nav's `aria-label`), `sc.titleTail` (the source-countries heading's Turkish noun — the runtime dictionary's `scTitleC`, which has no package id; EN is `''` on purpose and is read with `sys.raw`), `sc.mapTitle` (the SVG map's accessible name, "JobsAdmire" as the subject, W154), `form.dial` (the request form's dial-select label). The map's Türkiye label is the `countries` collection's `TR` row (data, W25/W60), not a key. Every other string on the page is a `hire.*` id through `makeTf`: the field labels are `hire.047`–`058` (W115), both submits `hire.063`, and the "When do you need them?" options read the shared `sys.form.options.startWhen.*` (W78). No `sys.seo.hire.*` — the page record carries `hire.264`/`hire.265`. No client module reads `sys.hire`, so `CLIENT_SYS` is unchanged (W148).
@@ -3158,6 +3161,7 @@ for (const locale of ['tr', 'en'] as const) {
     expect(body).not.toMatch(/\{[a-zA-Z]+\}/);
     expect(body).not.toContain('undefined');
     expect(body).not.toMatch(/\bhire\.\d{3}\b/); // a package id leaking as text
+    // static `metricValues` text — this page mounts no Stat count-up, so no emulateMedia (W178)
     await expect(page.getByTestId('hire-hero-pills')).toContainText('470+');
   });
 
@@ -3461,25 +3465,25 @@ Notes for the implementer:
 - Every `tel:`/`wa.me`/`mailto:` anchor on the page is a `ContactCta`/`ContactLink` with `placement="page_cta"` (W12/W32), the sticky bar's through the bar itself (W81). No `wa.me` href carries visitor data (W95): the page's own links carry package prefills (`hire.249`–`252`); the forms' fallback anchors are bare (W76).
 - No client module reads `sys.hire`: `CLIENT_SYS` (`src/i18n/client-messages.ts`) stays `consent, languageHint, errorTitle, errorRetry, form` (W148).
 
-`docs/SEO.md` — append one row to the per-page table T1 created (W98; `grep -n '^## Pages' docs/SEO.md` finds it — columns `Page | Route (tr · en) | Title source | Canonical | JSON-LD | LCP slot | Notes`), after the Homepage row:
+`docs/SEO.md` — append one row to the per-page table T1 created (W98; `grep -n '^## Pages' docs/SEO.md` finds it — columns `Page | Route (tr · en) | Title source | Canonical | JSON-LD | LCP slot | Notes`), after the table's LAST row (W98: rows in execution order — at T2's turn that is T13's `| Newsletter unsubscribe | …` row, after T1's Homepage row and T13's portal/legal/newsletter rows):
 
 ```markdown
 | Hire Workers (T2) | `/isci-talebi` · `/en/hire-workers` | page record `hire` → `hire.264` / `hire.265` (the package's own SEO strings; no `sys.seo.hire.*`, W23); OG `/og/{locale}/hire.png`, CDN-cached (W123) | `absoluteUrl(locale, '/hire-workers')`; hreflang tr / en / x-default | layout `Organization` + `WebSite`; `BreadcrumbList` (2: `hire.020` → `/`, `hire.002` → this page, W109); `FAQPage` (7 pairs `hire.289`–`302`, AEO only) — one `Breadcrumbs` and one `FaqBlock` on the page | **the h1** (`data-lcp-slot="h1"`) while the hero photo slot `hw-hero` is a named placeholder (§10 #4); setting `HERO_SRC` in `_lib/assets.ts` moves `data-lcp-slot="hw-hero"` + `preload` onto the image and off the h1 (D26) | two `hire` forms — the quick-quote (≥ 701 px) and `#request-form`, the header `DEFAULT_CTAS` target (W152/W158); consent checkbox on both (W79); pixel page (D27) |
 ```
 
-`docs/ANALYTICS.md` — under `### Page instrumentation (WP2b)` (T1's heading, W98), append after the Homepage bullet:
+`docs/ANALYTICS.md` — under `### Page instrumentation (WP2b)` (T1's heading, W98), append after the list's LAST bullet (W98: execution order — at T2's turn that is T13's "- **Newsletter confirm/unsubscribe (T13):** …" bullet, after T1's Homepage and T13's Portal entry/Legal pages bullets) and before the heading `## Conversion`:
 
 ```markdown
-- **Hire Workers (`/isci-talebi`, `/en/hire-workers`, T2):** `call_click` / `whatsapp_click` / `email_click` with `placement: 'page_cta'` from the hero Call (`inverse`) and WhatsApp (`success`) buttons, the quick-quote's ≤ 700 px "Ask on WhatsApp", the request section's phone and e-mail tiles and its "Send this request by email" link (subject only, W95), the FAQ ask card's WhatsApp and Call rows (`FaqBlock`), the portal block's "Book a demo" and the sticky bar's Call/WhatsApp (rendered through `ContactCta` by the bar itself, W81); `placement: 'form_fallback'` from the two `hire` forms' D11 panels (kernel); `generate_lead` and `conversion` for `form_key: 'hire'` from `ConversionPing` on `/tesekkurler` — the page fires none of them itself. Same-page anchors fire nothing: the industries "Request <sector> workers →" links (which pre-select the request form's sector key), the ≤ 700 px jump nav and "Request workers →", "Full request form ↓". No page event, no new parameter (W12/W26).
+- **Hire Workers (`/isci-talebi`, `/en/hire-workers`, T2):** `call_click` / `whatsapp_click` / `email_click` with `placement: 'page_cta'` from the hero Call (`inverse`) and WhatsApp (`success`) buttons, the quick-quote's ≤ 700 px "Ask on WhatsApp", the request section's phone and e-mail tiles and its "Send this request by email" link (subject only, W95), the FAQ ask card's WhatsApp and Call rows (`FaqBlock`), the portal block's "Book a demo" and the sticky bar's Call/WhatsApp (rendered through `ContactCta` by the bar itself, W81); `placement: 'form_fallback'` from the two `hire` forms' D11 panels (kernel); `conversion` for `form_key: 'hire'` from `ConversionPing` on `/tesekkurler` (`generate_lead` has no caller yet — T14 wires it beside `conversion` there) — the page fires none of them itself. Same-page anchors fire nothing: the industries "Request <sector> workers →" links (which pre-select the request form's sector key), the ≤ 700 px jump nav and "Request workers →", "Full request form ↓". No page event, no new parameter (W12/W26).
 ```
 
 `docs/PRD.md` — §2, the table row whose second cell is `Hire Workers`: replace its last cell (`Detailed employer request form (\`INQUIRY\`)`) with:
 
 ```markdown
-Hero quick-quote (≥ 701 px) + detailed request form (`#request-form`), both `INQUIRY` via `hire`: the quick-quote adds the door's required contact `name` (W3); both carry the consent checkbox (W79) and send `city` (catalog v1.1, W16); `sector` is the sector key and `startWhen` the shared key set (W77/W78); success → `/tesekkurler?form=hire` (D13), failure → the D11 fallback panel; the industries CTAs pre-select the request form's sector
+Hero quick-quote (≥ 701 px) + detailed request form (`#request-form`), both `INQUIRY` via `hire`: the quick-quote adds the door's required contact `name` (W3); both carry the consent checkbox (W79) and send `city` (catalog v1.1, W16 — required on the quick-quote, optional on the request form); `sector` is the sector key and `startWhen` the shared key set (W77/W78); success → `/tesekkurler?form=hire` (D13), failure → the D11 fallback panel; the industries CTAs pre-select the request form's sector
 ```
 
-and in the §11 sentence that begins "**Not yet built, by design (WP2 and later):**" (`grep -n 'Not yet built' docs/PRD.md`), edit the Hire-Workers clause in whatever wording T1/T13 left it (at WP2a it read "only the homepage and Hire Workers exist, both still spike-era placeholder content") so that Hire Workers is no longer counted as unbuilt or as a spike — e.g. "… Hire Workers is designed (WP2b T2) …" — and keep the page count in that sentence consistent (W45: edit in place, never re-add WP1 wording).
+and in the §11 sentence that begins "**Not yet built, by design (WP2 and later):**" (`grep -n 'Not yet built' docs/PRD.md`), replace exactly the clause "Hire Workers is still the spike placeholder until T2" — the wording T1 left inside its parenthesis "(the homepage is the first designed page — WP2b T1; Hire Workers is still the spike placeholder until T2)", which T1 hands to this task verbatim (T13 then decremented the count to "11 of the 14 core pages" for the portal entry and inserted "; the portal entry is built (WP2b T13)" after this clause) — with "Hire Workers is the second — WP2b T2". The sentence's count ("11 of the 14 core pages" after T13) stays as it is: the homepage and Hire Workers were already the two pages that existed (W45: edit in place, never re-add WP1 wording). If `grep -n 'still the spike placeholder until T2' docs/PRD.md` finds nothing, T1 drifted: stop and report rather than rewrite the sentence from scratch.
 
 - [ ] **Step 4: Verify**
 
@@ -3545,7 +3549,7 @@ grep -n 'missing id="request-form"' "$TMPDIR/hire-gate-launch.log" || echo 'no m
 ```
 Expected:
 - **Gate** (localhost wears the production face → `lighthouserc.local.json`, W135/W145): Playwright green under `mobile` and `desktop` — `e2e/pages/hire.spec.ts` 24 passed + 2 skipped (the language-switch and sticky-bar cases skip on `mobile` by design), and `routing`, `seo`, `a11y` (zero `wcag2a`/`wcag2aa`/`wcag22aa` violations on `/isci-talebi` and `/en/hire-workers` under both projects; `region` clean at 390/1000/1440), `width-sweep` (no horizontal overflow at 1440…390 incl. 1101/1100 and 901/900), `chrome` (the header CTA → `/isci-talebi#request-form`), `headers`, `thank-you` all green; the two token cases of `ops.spec.ts` skip without `REVALIDATE_SECRET` (as at WP2a). `lhci assert` passes on every indexable gate route; on `/isci-talebi` and `/en/hire-workers` (median of 3 DevTools-throttled runs): performance ≥ 0.95, accessibility 1, best-practices 1, SEO 1, `resource-summary:script:size` ≤ 204,800 B, LCP ≤ 2,500 ms, CLS ≤ 0.1.
-- **js-size** (W136 — the ledger's figure): both hire routes below the 194,560 B lazy line. Projection ≈ 183–190 KB: the WP2a close measured these routes at 176,132 B / 172,783 B as spikes; this page adds the forms kernel's client graph (`FormShell`, `Field`, `FallbackPanel`, `Turnstile` loader, `guardAction` — shared with T1's homepage form), `StickyCtaBar`, `PausableMarquee` and `SectorPrefillLink`; `Accordion` already ships on every route through the footer. The LCP column should read the h1 at ≈ 1.5–2.0 s. A route above 194,560 B → Cycle 8(b) before T3 starts (W13 amended).
+- **js-size** (W136 — the ledger's figure): both hire routes' LOCAL figures below the stop-and-report trigger **191,724 B** (W162: the controller's binding preview line is 194,560 B, and the preview's `npm run js-size` runs ≈ 2,836 B above this local build, 176,132 → 178,968 B at 02ace58). Projection ≈ 183–190 KB (local): the WP2a close measured these routes at 176,132 B / 172,783 B as spikes; this page adds the forms kernel's client graph (`FormShell`, `Field`, `FallbackPanel`, `Turnstile` loader, `guardAction` — shared with T1's homepage form), `StickyCtaBar`, `PausableMarquee` and `SectorPrefillLink`; `Accordion` already ships on every route through the footer. The LCP column should read the h1 at ≈ 1.5–2.0 s. **Stop rule:** a LOCAL figure ≥ 191,724 B on either route → finish Steps 4–5 (the server killed, the ledger row committed with its `LazyStickyBar:` cell reading `pending`), then STOP: report both figures and the route's client-manifest breakdown to the controller, and run Cycle 8(b) only on the controller's go-ahead, before T3 starts (W13 amended, W162).
 - **Pixel run 1** (W138/W159 — like for like, document-scroll-height check; `.pixel/report.json` keys `hire-tr`, `hire-en`): three match percentages per locale (the spike scored 82.15 / 84.04 / 85.03 % at 390 / 900 / 1440). There is no numeric pass mark: read the diff PNGs and file every visible delta as (a) a named D20 delta, (b) a design delta this task names (deltas 1–15, the brief deviation), (c) capture noise (marquee position, fixed bottom bar/FAB, height differences from the hidden logo band), or (d) a defect. Any (d) → Cycle 8(a).
 - **Launch anchor check** (W152/W158): the launch profile stays RED by design (unbuilt routes, other pages' anchors), but the grep prints `no missing #request-form anchor` — the anchor half's lines (`DEFAULT_CTAS.primary (/hire-workers#request-form): <locale> <path> → missing id="request-form" …`, `scripts/launch/dead-targets.ts`) no longer name `/isci-talebi` or `/en/hire-workers`.
 
@@ -3559,7 +3563,7 @@ Expected: `no stray processes` (kill any survivor by PID).
 
 `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — append the T2 row to the `## Ledger` table in T1's row format (W98), filled from this session:
 - route: `/isci-talebi` · `/en/hire-workers`
-- js-size (localhost, W136): `/isci-talebi` <n> B · `/en/hire-workers` <n> B (ceiling 204,800; lazy line 194,560; LazyStickyBar: no)
+- js-size (localhost, W136): `/isci-talebi` <n> B · `/en/hire-workers` <n> B (ceiling 204,800; local trigger 191,724, W162; binding preview line 194,560; LazyStickyBar: <no/pending>; binding preview: <added by the controller>)
 - Lighthouse (mobile, DevTools throttling, median of 3, localhost — W145): perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (the h1) · CLS <n>, per route
 - pixel (run 1 of 2 or 2 of 2): `pixel hire tr: 390 → NN.NN %, 900 → NN.NN %, 1440 → NN.NN %; run N of 2; deltas: (a) …; (b) …; (c) …; (d) accepted: …` and the same line for `en`
 - named deltas: the list at the top of this task (1–15) + the brief deviation (ProcessSteps `cards`)
@@ -3579,7 +3583,7 @@ git add docs/superpowers/plans/2026-09-20-wp2b-pages.md
 git commit -m "docs(hire): T2 ledger row — gate, js-size, Lighthouse medians, pixel run 1, launch anchor sweep
 
 Localhost proof session (W126/W145): one build, one gate, both hire routes under the
-194,560 B lazy line; #request-form present for DEFAULT_CTAS in both locales (W152/W158).
+191,724 B local lazy trigger (W162); #request-form present for DEFAULT_CTAS in both locales (W152/W158).
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 ```
@@ -3588,25 +3592,53 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 #### Cycle 8 — conditional: pixel run 2 (D27) and/or the lazy pass (W13 amended)
 
-Run this cycle only if Cycle 7 found (d) pixel defects or a hire route above 194,560 B; otherwise the task ends with Cycle 7 ("run 1 of 2" stands in the ledger). It is the task's only second build.
+Run this cycle only if Cycle 7 found (d) pixel defects (step (a) below) or a hire route's LOCAL `js-size` at or above **191,724 B** (step (b); W162: the local trigger — the preview's figure runs ≈ 2,836 B higher and the controller decides at 194,560 B there) — for (b) AND the controller, told of the crossing by Cycle 7's stop-and-report, has said to run it; otherwise the task ends with Cycle 7 ("run 1 of 2" stands in the ledger, `LazyStickyBar: no`). It is the task's only second build (W164). The lazy candidate is the sticky bar: it renders nothing until the visitor has scrolled 700 px, so `null` is its DOM-identical fallback (W132). Its observer uses the top-extended margin `'100000px 0px 200px 0px'` (W165, T3's pattern): the jump nav's section links, a reload at a hash and scroll restoration can jump past the wrapper, and the bar must load whenever the visitor is at or below the marker. The request form stays SSR'd and eager (W163).
 
 - [ ] **Step 1: Write the failing test**
 
 (a) Pixel defects: where a fix is structural (an element, an order, a class that hides or shows), pin it first with a failing assertion in `_sections/__tests__/sections.test.tsx` or `forms.test.tsx` (same helpers: `tokens(el)`, the real bundle); a pure spacing/size tweak needs no new test.
 
-(b) Lazy pass (only if js-size > 194,560 B on a hire route) — `src/app/[locale]/(site)/hire-workers/_components/__tests__/LazyStickyBar.test.tsx`:
+(b) Lazy pass (only if a hire route's LOCAL js-size is ≥ 191,724 B and the controller said to run it — W162) — `src/app/[locale]/(site)/hire-workers/_components/__tests__/LazyStickyBar.test.tsx`:
 
 ```tsx
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { render } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
+import { afterEach, describe, expect, it, vi } from 'vitest';
 import { LazyStickyBar } from '../LazyStickyBar';
+
+/** jsdom has no IntersectionObserver: this one only records the `rootMargin` it was built with
+ *  and never reports an intersection, so the bar stays at its null fallback. */
+const rootMargins: Array<string | undefined> = [];
+class RecordingObserver implements IntersectionObserver {
+  readonly root: Element | Document | null = null;
+  readonly rootMargin: string = '';
+  readonly thresholds: ReadonlyArray<number> = [];
+  constructor(...args: ConstructorParameters<typeof IntersectionObserver>) {
+    rootMargins.push(args[1]?.rootMargin);
+  }
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+  takeRecords(): IntersectionObserverEntry[] {
+    return [];
+  }
+}
+
+afterEach(() => {
+  vi.unstubAllGlobals();
+  rootMargins.length = 0;
+});
 
 describe('LazyStickyBar', () => {
   it('renders the DOM-identical fallback (nothing) until its wrapper nears the viewport (W132)', () => {
     const { container } = render(
-      <LazyStickyBar message="m" ctas={[{ label: 'x', href: '#request-form' }]} />,
+      <LazyStickyBar
+        message="m"
+        ctas={[{ label: 'x', href: '#request-form' }]}
+        hideNearId="request-form"
+        live
+      />,
     );
     expect(container.firstElementChild?.tagName).toBe('DIV'); // LazyIsland's wrapper
     expect(container.firstElementChild).toBeEmptyDOMElement();
@@ -3622,6 +3654,19 @@ describe('LazyStickyBar', () => {
     );
     expect(src).toContain("import('@/design/chrome/StickyCtaBar')");
   });
+
+  it('observes with the top-extended margin, so a jump past the wrapper still loads the bar (W165)', () => {
+    vi.stubGlobal('IntersectionObserver', RecordingObserver);
+    render(
+      <LazyStickyBar
+        message="m"
+        ctas={[{ label: 'x', href: '#request-form' }]}
+        hideNearId="request-form"
+        live
+      />,
+    );
+    expect(rootMargins).toEqual(['100000px 0px 200px 0px']);
+  });
 });
 ```
 
@@ -3630,7 +3675,7 @@ describe('LazyStickyBar', () => {
 ```bash
 NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1 hire-workers
 ```
-Expected: the new assertions fail (for (b): `../LazyStickyBar` cannot be resolved).
+Expected: the new assertions fail (for (b): `../LazyStickyBar` cannot be resolved; once the wrapper exists without the margin, the margin case reads `['200px']` — `LazyIsland`'s default).
 
 - [ ] **Step 3: Implement**
 
@@ -3651,11 +3696,18 @@ type Props = {
   live?: boolean;
 };
 
+/** The margin reaches 100,000 px ABOVE the viewport (W165, T3's pattern): the jump nav's section
+ *  links, a reload at a hash and scroll restoration can all jump past the wrapper, so it never
+ *  crosses the viewport and a plain 200 px margin would then never load the bar. With the top
+ *  margin "at or below this point" is what counts. */
+const STICKY_MARGIN = '100000px 0px 200px 0px';
+
 /** W13 amended lazy pass: the bar renders `null` until the visitor has scrolled past
  *  `showAfterPx`, so `null` is its DOM-identical fallback (W132 — `{ load, props, fallback,
- *  rootMargin? }`, no `ssr`). The page mounts this right below the hero, so the module loads
- *  (200 px ahead) before the 700 px threshold is reached. A server page cannot pass `load` (a
- *  function) to a client component, hence this one-line client wrapper. */
+ *  rootMargin? }`, no `ssr`). The page mounts this right after the jump nav, so the module
+ *  leaves the route's first-load graph and loads once the visitor is at or below the wrapper,
+ *  well before the 700 px threshold is reached. A server page cannot pass `load` (a function)
+ *  to a client component, hence this one-line client wrapper. */
 export function LazyStickyBar(props: Props) {
   // The explicit <Props>: inferring P through `.then` on a named export widens to `never`.
   return (
@@ -3665,12 +3717,13 @@ export function LazyStickyBar(props: Props) {
       }
       props={props}
       fallback={null}
+      rootMargin={STICKY_MARGIN}
     />
   );
 }
 ```
 
-and in `page.tsx` replace the import `import { StickyCtaBar, type StickyCta } from '@/design/chrome/StickyCtaBar';` with `import type { StickyCta } from '@/design/chrome/StickyCtaBar';` + `import { LazyStickyBar } from './_components/LazyStickyBar';`, and the JSX element `<StickyCtaBar … />` with `<LazyStickyBar … />` (same props).
+and in `page.tsx` replace the import `import { StickyCtaBar, type StickyCta } from '@/design/chrome/StickyCtaBar';` with `import type { StickyCta } from '@/design/chrome/StickyCtaBar';` + `import { LazyStickyBar } from './_components/LazyStickyBar';`, and the JSX element `<StickyCtaBar … />` with `<LazyStickyBar … />` (same props, same position — directly after `<JumpNav … />`).
 
 - [ ] **Step 4: Verify, then the re-proof session**
 
@@ -3680,7 +3733,7 @@ npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-sp
 git add "src/app/[locale]/(site)/hire-workers"
 git commit -m "fix(hire): pixel run 1 defects / lazy sticky bar — <one line each>
 
-<(a): the (d) items fixed; (b): StickyCtaBar behind LazyIsland below the 194,560 B line (W13 amended, W132)>
+<(a): the (d) items fixed; (b): StickyCtaBar behind LazyIsland under the 191,724 B local trigger, top-extended rootMargin (W13 amended, W132, W162, W165)>
 
 Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 rm -rf .next .lighthouseci-extra .pixel
@@ -3695,7 +3748,7 @@ npm run pixel -- --page=hire --locale=en --base=http://localhost:3000 --widths=3
 kill "$SERVER_PID"
 pgrep -fl 'next-server|next start|playwright|lhci|lighthouse|chrome-headless|Chrome for Testing' || echo 'no stray processes'
 ```
-Expected: the three specs green (the scoped re-run of the page contract, axe and the width sweep on the changed markup — the full gate already ran once, W126); both routes below 194,560 B in the W94 spot-check (if the lazy pass still leaves a route above it, stop and report the route's client-manifest breakdown to the controller — no further change without a ruling); pixel run 2 of 2 is the ledger's number, and any remaining (d) item is listed "accepted" with a one-line reason (a third run needs a controller ruling); `no stray processes`.
+Expected: the three specs green (the scoped re-run of the page contract, axe and the width sweep on the changed markup — the full gate already ran once, W126); both routes below 191,724 B on the local build in the W94 spot-check (W162; the sticky-bar case still passes — the wrapper sits after the jump nav and the top-extended margin (W165) loads the bar whenever the viewport is at or below it; if the lazy pass still leaves a route at or above 191,724 B, stop and report the route's client-manifest breakdown to the controller — no further change without a ruling; the binding preview decides at 194,560 B); pixel run 2 of 2 is the ledger's number, and any remaining (d) item is listed "accepted" with a one-line reason (a third run needs a controller ruling); `no stray processes`.
 
 - [ ] **Step 5: Commit**
 
@@ -3712,7 +3765,7 @@ Co-Authored-By: Claude Fable 5.1 <noreply@anthropic.com>"
 
 ---
 
-**Docs in this task:** `docs/CONTENT-MODEL.md` — the Hire Workers bullet in the per-page `sys.*` list under `### Adding copy (W9, W23, W54)` (Cycle 1, with the keys). `docs/SEO.md` — the Hire Workers row of T1's per-page table, naming the LCP element (the h1 while `hw-hero` is a placeholder) (Cycle 6). `docs/ANALYTICS.md` — the Hire Workers bullet under `### Page instrumentation (WP2b)` (Cycle 6; no new event or parameter). `docs/PRD.md` — §2 row 2's last cell and the §11 "Not yet built" Hire-Workers clause, edited in place (Cycle 6, W45). `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — the T2 `## Ledger` row (Cycle 7, updated in Cycle 8 if it runs). No `docs/ARCHITECTURE.md` or `docs/INTEGRATIONS.md` change: the forms flow and the I4 `hire` contract are unchanged (T14 records the instance map; the `city` field is WP2a Task 8's).
+**Docs in this task:** `docs/CONTENT-MODEL.md` — the Hire Workers bullet in the per-page `sys.*` list under `### Adding copy (W9, W23, W54)` (Cycle 1, with the keys). `docs/SEO.md` — the Hire Workers row of T1's per-page table, naming the LCP element (the h1 while `hw-hero` is a placeholder) (Cycle 6). `docs/ANALYTICS.md` — the Hire Workers bullet under `### Page instrumentation (WP2b)` (Cycle 6; no new event or parameter). `docs/PRD.md` — §2 row 2's last cell and, in the §11 "Not yet built" sentence, T1's clause "Hire Workers is still the spike placeholder until T2" → "Hire Workers is the second — WP2b T2", edited in place (Cycle 6, W45). `docs/superpowers/plans/2026-09-20-wp2b-pages.md` — the T2 `## Ledger` row (Cycle 7, updated in Cycle 8 if it runs). No `docs/ARCHITECTURE.md` or `docs/INTEGRATIONS.md` change: the forms flow and the I4 `hire` contract are unchanged (T14 records the instance map; the `city` field is WP2a Task 8's).
 
 **Sys keys added:** 5 keys, identical key set in `src/messages/tr.json` and `src/messages/en.json`, pinned by `_lib/__tests__/sys-keys.test.ts`:
 - `sys.hire.whatsapp` — TR "WhatsApp" · EN "WhatsApp"
@@ -3727,10 +3780,10 @@ No `sys.seo.hire.*` (the page record carries `hire.264`/`hire.265`); no `sys.hir
 
 **CLIENT_SYS additions:** none — no client module reads `sys.hire` (the page resolves every string on the server and passes it as a prop; `SectorPrefillLink` reads no copy), so `src/i18n/client-messages.ts` stays `consent, languageHint, errorTitle, errorRetry, form` and `client-messages.test.ts` needs no change (W148).
 
-**Foundation gaps:** none — every name this task consumes exists at `7bacd7e` and was checked in the code (not only in `A/produces-final.md`). One dependency to confirm, not a gap: the `city` wire name on `hire` is WP2a Task 8's catalog v1.1 field (`city?: string` ≤ 120, as `A/produces-final.md` § Task 8 spells it); Task 8 is being implemented now and its report confirms the wire name — until the Ops door runs v1.1, a stray `city` is dropped and reported in `dropped`, never an error, so the gate (door-less) is unaffected either way. Accepted page-local items (no foundation change): `ProcessSteps variant="cards"` instead of a horizontal timeline; `FaqBlock` shows the ask card's call row at every width (the design hides it ≤ 700 px); `FormShell`'s single `primary` submit face and consent-row position; `Field as="select"` ignoring `placeholder` (W111); the conditional `LazyStickyBar` wrapper (a server page cannot pass `LazyIsland`'s `load` function, so a one-line client wrapper is the pattern).
+**Foundation gaps:** none — every name this task consumes exists at `7bacd7e` and was checked in the code (not only in `A/produces-final.md`). The `city` wire name on `hire` is WP2a Task 8's catalog v1.1 field (`city?: string` ≤ 120), CONFIRMED by `A/produces-final.md` § "Task 8 — as built" (Operations `main` 47a2160, live since 2026-09-28): it rides inside `fields` as a string and the door stores it as its own line of the inquiry; the gate is door-less (W92) either way. Every field this task sends (`name, company, email, phone, city, sector, roleNeeded, headcount, startWhen, message`) is in the catalog v1.0 + v1.1; the page-local `dial` select never reaches the wire. Accepted page-local items (no foundation change): `ProcessSteps variant="cards"` instead of a horizontal timeline; `FaqBlock` shows the ask card's call row at every width (the design hides it ≤ 700 px); `FormShell`'s single `primary` submit face and consent-row position; `Field as="select"` ignoring `placeholder` (W111); the conditional `LazyStickyBar` wrapper (a server page cannot pass `LazyIsland`'s `load` function, so a one-line client wrapper is the pattern; it passes W165's top-extended `rootMargin`).
 
-**Ledger line** (T1's row format, W98 — fill from Cycle 7/8):
+**Ledger line** (T1's row format, W98 — the six columns `Task | Routes (tr · en) | JS (npm run js-size, W136) | Lighthouse (median of 3, W145) | Pixel (D27) / named deltas | Date`; the launch sweep, WP-C and follow-up notes ride in the pixel/deltas cell; fill from Cycle 7/8):
 
 ```markdown
-| T2 Hire Workers | `/isci-talebi` · `/en/hire-workers` | js-size (W136, localhost): `/isci-talebi` <n> B · `/en/hire-workers` <n> B — ceiling 204,800 · lazy line 194,560 · LazyStickyBar: <no/yes> | LH mobile, DevTools throttling, median of 3 (W145): perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n> (both routes) | pixel hire tr: 390 → <NN.NN> %, 900 → <NN.NN> %, 1440 → <NN.NN> %; en: 390 → <NN.NN> %, 900 → <NN.NN> %, 1440 → <NN.NN> %; run <N> of 2; deltas: (a) <…>; (b) deltas 1–15 + ProcessSteps cards; (c) <…>; (d) accepted: <… or none> | launch sweep: #request-form present tr+en (W152/W158) | WP-C: hire.142 "+", hire.201/203/215, unused hire.059–062/064/065/216–218 | follow-ups: /work-permit + /hiring-cost-calculator cross-links 404 until T4/T3; binding preview gate = controller run | <date> |
+| T2 Hire Workers | `/isci-talebi` · `/en/hire-workers` | js-size (W136, localhost): `/isci-talebi` <n> B · `/en/hire-workers` <n> B — ceiling 204,800 · local trigger 191,724 (W162) · binding preview line 194,560 · LazyStickyBar: <no/pending/yes — top-extended rootMargin, W165> · binding preview: <added by the controller> | LH mobile, DevTools throttling, median of 3 (W145): perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n> (both routes) | pixel hire tr: 390 → <NN.NN> %, 900 → <NN.NN> %, 1440 → <NN.NN> %; en: 390 → <NN.NN> %, 900 → <NN.NN> %, 1440 → <NN.NN> %; run <N> of 2; deltas: (a) <…>; (b) deltas 1–15 + ProcessSteps cards; (c) <…>; (d) accepted: <… or none>; launch sweep: #request-form present tr+en (W152/W158); WP-C: hire.142 "+", hire.201/203/215, unused hire.059–062/064/065/216–218; follow-ups: /work-permit + /hiring-cost-calculator cross-links 404 until T4/T3; binding preview gate = controller run | <date> |
 ```

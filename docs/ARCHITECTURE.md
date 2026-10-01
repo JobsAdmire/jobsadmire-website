@@ -133,7 +133,7 @@ Exact commands, from `package.json`:
 
 ## Deployment
 
-Deploys to **Vercel**, not the VPS (`vercel.json`: `framework: nextjs`, `buildCommand: "npm run verify && next build"`, `installCommand: npm ci`). A failing `verify` blocks the build outright. Two Vercel projects exist — the legacy `jobsadmirewebsite` (frozen, untouched) and `jobsadmire-web-v2` (this repo); `git.deploymentEnabled.main` is currently `false` in `vercel.json`, i.e. `main` is preview-only until the Phase A cutover flips it. Full cutover/rollback steps, per-environment values, and the retired-secrets log: `docs/DEPLOYMENT.md`.
+Deploys to **Vercel**, not the VPS (`vercel.json`: `framework: nextjs`, `buildCommand: "npm run verify && next build"`, `installCommand: npm ci`). A failing `verify` blocks the build outright. One Vercel project exists, `jobsadmirewebsite` (team "Tech Admire Apps"), git-linked to this repo with `main` as its Production Branch; its production deployment is still the frozen old site. Two guards keep `main` from deploying at all — `git.deploymentEnabled.main: false` in `vercel.json` and the project's Ignored Build Step — until the Phase A cutover removes both (no domain move; the spec's `jobsadmire-web-v2` was never created, W105). Full cutover/rollback steps, per-environment values, and the retired-secrets log: `docs/DEPLOYMENT.md`.
 
 ## Integrations
 
@@ -360,10 +360,12 @@ No `@sentry/*` dependency and no Sentry config exist in this repo as of WP1 — 
 
 ## Environments
 
-| Environment | Branch/trigger                | Domain                                   | Tokens                                     | Indexing                            |
-| ----------- | ----------------------------- | ---------------------------------------- | ------------------------------------------ | ----------------------------------- |
-| Production  | `main`, after Phase A cutover | jobsadmire.com                           | read + write (current class)               | indexed                             |
-| Preview     | every PR/branch               | `*.vercel.app`, `staging.jobsadmire.com` | preview/test classes only                  | `noindex`, Deployment Protection on |
-| Local       | `npm run dev`                 | localhost:3000                           | dev tokens against Operations on port 4001 | n/a                                 |
+| Environment | Branch/trigger                                                               | Domain                                   | Tokens                                                                              | Indexing                                          |
+| ----------- | ---------------------------------------------------------------------------- | ---------------------------------------- | ----------------------------------------------------------------------------------- | ------------------------------------------------- |
+| Production  | `main`, from the Phase A cutover (WP7a); before it the frozen old deployment | jobsadmire.com + www                     | read + write (current class)                                                        | indexed                                           |
+| Preview     | every other branch                                                           | `*.vercel.app`, `staging.jobsadmire.com` | door variables on the `staging` branch only (W92); every other preview is door-less | `noindex`, Vercel Authentication on every preview |
+| Local       | `npm run dev`                                                                | localhost:3000                           | dev tokens against Operations on port 4001                                          | n/a                                               |
+
+Production and Preview are the one Vercel project `jobsadmirewebsite` (`docs/DEPLOYMENT.md` § Vercel project); `main` deploys nothing until the cutover removes its two deploy guards (`docs/DEPLOYMENT.md` § Deploy discipline). The `staging` branch (fast-forwarded to `wp2/foundation` by the controller when a door test is due) is the only preview that reaches the Operations door (W92), so page e2e on every other preview stays deterministic and files no real leads.
 
 `staging.jobsadmire.com` is a **stable preview alias** — Turnstile is configured with a real widget for it (not the test-key pair used for local dev), so form testing on staging exercises the real captcha path.
