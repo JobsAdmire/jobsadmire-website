@@ -63,7 +63,9 @@ export function Industries({ bundle, tf }: { bundle: Bundle; tf: (id: string) =>
   return (
     <Section tone="light" id="industries" className="scroll-mt-20">
       <div className="container-site" data-testid="hire-industries">
-        <h2 className="m-0 mb-4 text-center text-h2">{tf('hire.074')}</h2>
+        <h2 className="m-0 mb-4 text-center text-h2 leading-[1.05] tracking-[-1.6px] xl:tracking-[-1.2px]">
+          {tf('hire.074')}
+        </h2>
         <p className="mx-auto mb-11 mt-0 max-w-[560px] text-center text-body-lg text-text-tertiary max-md:mb-6">
           {tf('hire.075')}
         </p>

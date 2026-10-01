@@ -61,7 +61,9 @@ export function RequestForm({
             <span aria-hidden="true" className="inline-block h-2 w-2 rounded-pill bg-success" />
             {tf('hire.199')}
           </p>
-          <h2 className="m-0 mb-4 text-h2">{tf('hire.200')}</h2>
+          <h2 className="m-0 mb-4 text-h2 leading-[1.05] tracking-[-1.6px] xl:tracking-[-1.2px] max-md:mb-2.5 max-md:text-[25px] max-md:leading-[1.13] max-md:tracking-[-0.5px]">
+            {tf('hire.200')}
+          </h2>
           <p className="m-0 mb-7 text-body-lg text-text-secondary">{tf('hire.201')}</p>
         </div>
         <div className="mb-8 overflow-hidden rounded-lg border border-border-1 bg-white shadow-card-hover lg:col-start-2 lg:row-span-2 lg:row-start-1 lg:mb-0 lg:self-start">

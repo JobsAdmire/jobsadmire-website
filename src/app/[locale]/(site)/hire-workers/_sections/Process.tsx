@@ -29,7 +29,9 @@ export function Process({
   return (
     <Section tone="pale" id="process" className="scroll-mt-20">
       <div className="container-site" data-testid="hire-process">
-        <h2 className="m-0 mb-4 text-center text-h2-process">
+        {/* this page's process h2 has the same size as its other h2s (clamp 28–42 px) — the
+            46 px `text-h2-process` token is the homepage's */}
+        <h2 className="m-0 mb-4 text-center text-h2 leading-[1.05] tracking-[-1.6px] xl:tracking-[-1.2px]">
           {ta}
           {sp(ta, tb)}
           <span className="text-blue-safe">{tb}</span>

@@ -149,6 +149,24 @@ describe('RequestForm', () => {
   });
 });
 
+describe('RequestForm h2 (Cycle 8(a))', () => {
+  it('carries the design tracking and leading, and the ≤ 700 px .ja-rf-copy size (25 px, −0.5 px, 1.13)', () => {
+    renderWithIntl(requestForm);
+    const h2 = screen.getByTestId('hire-request').querySelector('h2')!;
+    expect(tokens(h2)).toEqual(
+      expect.arrayContaining([
+        'text-h2',
+        'leading-[1.05]',
+        'tracking-[-1.6px]',
+        'xl:tracking-[-1.2px]',
+        'max-md:text-[25px]',
+        'max-md:leading-[1.13]',
+        'max-md:tracking-[-0.5px]',
+      ]),
+    );
+  });
+});
+
 describe('Hero', () => {
   it('names the h1 the LCP slot while hw-hero is a placeholder (D26); own crumbs (W109); metric pills (W1)', () => {
     const { container } = renderWithIntl(hero);

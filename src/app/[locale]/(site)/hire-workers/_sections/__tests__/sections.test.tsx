@@ -222,3 +222,63 @@ describe('Faq', () => {
     expect(faqNodes[0].mainEntity).toHaveLength(7);
   });
 });
+
+describe('pixel run 1 (d) items (Cycle 8(a), W187)', () => {
+  /** The design's h2 style on this page: clamp(28px, 3.2vw, 42px), letter-spacing -1.6px
+   *  (× 0.75 from 1101 px, D19), line-height 1.05 — `text-h2` alone inherits body leading 1.55. */
+  const DESIGN_H2 = ['text-h2', 'leading-[1.05]', 'tracking-[-1.6px]', 'xl:tracking-[-1.2px]'];
+
+  it('every page-owned section h2 carries the design tracking and leading; process uses the same size as the others', () => {
+    const sections = [
+      <Industries key="i" bundle={TR} tf={tfTr} />,
+      <SourceCountries
+        key="s"
+        bundle={TR}
+        tf={tfTr}
+        countries={metricValues(TR, 'tr').countries}
+        sys={scSys(tr)}
+      />,
+      <Comparison key="c" tf={tfTr} />,
+      <Process key="p" bundle={TR} locale="tr" tf={tfTr} />,
+      <PortalPreview key="pp" bundle={TR} locale="tr" tf={tfTr} />,
+    ];
+    for (const el of sections) {
+      const { container, unmount } = renderWithIntl(el);
+      const h2s = container.querySelectorAll('h2');
+      expect(h2s).toHaveLength(1);
+      expect(tokens(h2s[0])).toEqual(expect.arrayContaining(DESIGN_H2));
+      expect(tokens(h2s[0])).not.toContain('text-h2-process');
+      unmount();
+    }
+  });
+
+  it('portal ≤ 700 px: the design .ja-pd-copy sizes (h2 24 px, sub 14.5 px, checks 14 px, card text 12.5 px, proof 13 px)', () => {
+    renderWithIntl(<PortalPreview bundle={TR} locale="tr" tf={tfTr} />);
+    const region = screen.getByTestId('hire-portal');
+    expect(tokens(region.querySelector('h2')!)).toEqual(
+      expect.arrayContaining([
+        'max-md:text-[24px]',
+        'max-md:leading-[1.14]',
+        'max-md:tracking-[-0.5px]',
+      ]),
+    );
+    expect(tokens(screen.getByText(tfTr('hire.184')))).toContain('max-md:text-[14.5px]');
+    expect(tokens(screen.getByText(tfTr('hire.185')).closest('li')!)).toContain(
+      'max-md:text-[14px]',
+    );
+    expect(tokens(screen.getByText(tfTr('hire.188')))).toContain('max-md:text-[12.5px]');
+    expect(tokens(screen.getByText(tfTr('hire.191')).closest('p')!)).toContain(
+      'max-md:text-[13px]',
+    );
+  });
+
+  it('portal feature cards carry their design icons (star, phone) as decorative SVG', () => {
+    renderWithIntl(<PortalPreview bundle={TR} locale="tr" tf={tfTr} />);
+    for (const id of ['hire.187', 'hire.189']) {
+      const row = screen.getByText(tfTr(id)).parentElement!;
+      const svg = row.querySelector('svg');
+      expect(svg).not.toBeNull();
+      expect(svg).toHaveAttribute('aria-hidden', 'true');
+    }
+  });
+});

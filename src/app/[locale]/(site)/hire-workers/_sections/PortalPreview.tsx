@@ -5,7 +5,7 @@ import { Eyebrow } from '@/design/primitives/Eyebrow';
 import type { Locale } from '@/i18n/routing';
 import { waLink } from '@/lib/contact';
 import type { Bundle } from '../../../../../../contract/website-bundle.v1';
-import { CheckIcon } from '../_components/icons';
+import { CheckIcon, PhoneIcon, StarIcon } from '../_components/icons';
 import { sp } from '../_lib/fragments';
 
 const DOT = 'inline-block h-2.5 w-2.5 rounded-pill bg-border-2';
@@ -32,11 +32,18 @@ export function PortalPreview({
         >
           <div>
             <Eyebrow>{tf('hire.182')}</Eyebrow>
-            <h2 className="m-0 mb-4 mt-3 text-h2">{tf('hire.183')}</h2>
-            <p className="m-0 mb-5 text-body text-text-secondary">{tf('hire.184')}</p>
+            <h2 className="m-0 mb-4 mt-3 text-h2 leading-[1.05] tracking-[-1.6px] xl:tracking-[-1.2px] max-md:mb-2.5 max-md:text-[24px] max-md:leading-[1.14] max-md:tracking-[-0.5px]">
+              {tf('hire.183')}
+            </h2>
+            <p className="m-0 mb-5 text-body text-text-secondary max-md:mb-4 max-md:text-[14.5px] max-md:leading-[1.55]">
+              {tf('hire.184')}
+            </p>
             <ul className="m-0 mb-6 flex list-none flex-col gap-3 p-0">
               {(['hire.185', 'hire.186'] as const).map((id) => (
-                <li key={id} className="flex items-center gap-3 text-body text-ink">
+                <li
+                  key={id}
+                  className="flex items-center gap-3 text-body text-ink max-md:text-[14px] max-md:leading-[1.35]"
+                >
                   <span
                     aria-hidden="true"
                     className="flex h-[22px] w-[22px] flex-none items-center justify-center rounded-pill bg-success text-white"
@@ -50,20 +57,25 @@ export function PortalPreview({
             <div className="mb-7 grid gap-3.5 sm:grid-cols-2">
               {(
                 [
-                  ['hire.187', 'hire.188'],
-                  ['hire.189', 'hire.190'],
+                  ['hire.187', 'hire.188', StarIcon],
+                  ['hire.189', 'hire.190', PhoneIcon],
                 ] as const
-              ).map(([title, body]) => (
+              ).map(([title, body, Icon]) => (
                 <div
                   key={title}
                   className="rounded-sm border border-tint-border bg-pale-1 px-5 py-4"
                 >
-                  <p className="m-0 mb-2 text-body font-extrabold text-ink">{tf(title)}</p>
-                  <p className="m-0 text-body-sm text-text-secondary">{tf(body)}</p>
+                  <div className="mb-2 flex items-center gap-2.5">
+                    <Icon size={18} className="flex-none text-blue-safe" />
+                    <p className="m-0 text-body font-extrabold text-ink">{tf(title)}</p>
+                  </div>
+                  <p className="m-0 text-body-sm text-text-secondary max-md:text-[12.5px] max-md:leading-[1.5]">
+                    {tf(body)}
+                  </p>
                 </div>
               ))}
             </div>
-            <p className="m-0 mb-6 flex items-start gap-2.5 text-body text-text-secondary">
+            <p className="m-0 mb-6 flex items-start gap-2.5 text-body text-text-secondary max-md:text-[13px] max-md:leading-[1.45]">
               <CheckIcon size={17} className="mt-0.5 flex-none text-blue-safe" />
               <span>
                 <strong className="text-ink">{proofA}</strong>
