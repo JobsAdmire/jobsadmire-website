@@ -2,6 +2,7 @@ import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Header } from '../Header';
+import { BRAND } from '@/design/assets/brand';
 import { buttonClassName } from '@/design/primitives/Button';
 import { collisionsInTree } from '@/test/class-collisions';
 import { renderWithIntl } from '@/test/render';
@@ -190,6 +191,24 @@ describe('Header', () => {
     const row = screen.getByRole('banner').firstElementChild;
     expect(row).toHaveClass('chrome-row-nav');
     expect(row).not.toHaveClass('container-site');
+  });
+
+  // W183: the design's header shows the full logo (`logo4.png` = BRAND.logo, 742 × 146) at every
+  // width — `.ja-logo-mark` is `display:none` everywhere — at 30 px below 901 (its ≤ 900
+  // `.ja-nav img` rule; ≤ 460 too), the authored 34 px at 901–1100 and 34 × 0.75 from 1101 (D19).
+  it('renders the full wordmark at the design heights, never the mark alone (W183)', () => {
+    renderWithIntl(<Header locale="tr" bundle={bundle} />);
+    const banner = screen.getByRole('banner');
+    const logo = within(banner).getByRole('img', { name: 'JobsAdmire' });
+    expect(logo.closest('a')).toHaveAttribute('href', '/');
+    expect(decodeURIComponent(logo.getAttribute('src')!)).toContain(BRAND.logo.src);
+    // the intrinsic box is the 34 px size in the asset's own ratio: no CLS, a small srcset
+    expect(logo).toHaveAttribute('width', '173');
+    expect(logo).toHaveAttribute('height', '34');
+    expect(logo).toHaveClass('h-[30px]', 'lg:h-[34px]', 'xl:h-[25.5px]', 'w-auto');
+    // eager and preloaded, as the mark was (the logo is above the fold on every page)
+    expect(logo).not.toHaveAttribute('loading');
+    expect(banner.querySelector('img[src*="ja-mark"]')).toBeNull();
   });
 
   it('offers the other language with aria-current on the active one', () => {

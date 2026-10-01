@@ -2,6 +2,7 @@ import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { Footer } from '../Footer';
+import { BRAND } from '@/design/assets/brand';
 import { collisionsInTree } from '@/test/class-collisions';
 import { renderWithIntl } from '@/test/render';
 import trBundle from '@/content/local/bundle.tr.json';
@@ -217,6 +218,33 @@ describe('Footer', () => {
     const rows = [...screen.getByRole('contentinfo').children];
     expect(rows).toHaveLength(2);
     for (const row of rows) expect(row).toHaveClass('container-site');
+  });
+
+  // W183: the design's footer shows the full logo too, white through its own
+  // `filter: brightness(0) invert(1)` (opacity .95), 50 px tall — 37.5 px from 1101 (D19) —
+  // never the mark. Decorative: the header's logo already names the site.
+  it('renders the full wordmark in white at the design heights, never the mark (W183)', () => {
+    const { container } = renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+    const logo = container.querySelector('footer img')!;
+    expect(decodeURIComponent(logo.getAttribute('src')!)).toContain(BRAND.logo.src);
+    expect(logo).toHaveAttribute('alt', '');
+    expect(logo).toHaveAttribute('width', '254');
+    expect(logo).toHaveAttribute('height', '50');
+    expect(logo).toHaveClass('brightness-0', 'invert', 'opacity-95', 'h-[50px]', 'xl:h-[37.5px]');
+    expect(container.querySelector('footer img[src*="ja-mark"]')).toBeNull();
+  });
+
+  // W180 follow-through (D19): inside the 960 px box the design's footer still sets its five
+  // columns in one row from 1101 — its `minmax(200px, 1fr)` and `gap: 40px 36px` × 0.75; at 200 px
+  // the fifth column wrapped onto a second row.
+  it('scales the column grid from 1101 so the five columns fit the 960 px box (W180, D19)', () => {
+    const { container } = renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+    expect(container.querySelector('footer > div')).toHaveClass(
+      'lg:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]',
+      'xl:grid-cols-[repeat(auto-fit,minmax(150px,1fr))]',
+      'xl:gap-x-[27px]',
+      'xl:gap-y-[30px]',
+    );
   });
 
   it('shows the Android store link and no App Store link while storeLinks.ios is null', () => {

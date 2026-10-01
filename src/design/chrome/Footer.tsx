@@ -2,6 +2,7 @@ import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { ContactLink } from '@/analytics/ContactLink';
 import { makeT } from '@/content/pure';
+import { BRAND } from '@/design/assets/brand';
 // By module path, not the barrel (W147): a server component's barrel import makes every
 // 'use client' primitive the barrel re-exports a client reference of the route.
 import { Accordion } from '@/design/primitives/Accordion';
@@ -22,6 +23,13 @@ const LEGAL = [
   { href: '/terms', labelId: 'home.219' },
 ] as const;
 
+/** W183: the design's footer logo is the full wordmark (`BRAND.logo`), 50 px tall — 37.5 px from
+ *  1101 (D19) — turned white by its own `filter: brightness(0) invert(1)` at opacity .95 (no white
+ *  variant of the file exists yet — docs/ARCHITECTURE.md § Assets). 254 × 50 is the asset's own
+ *  742 × 146 ratio, so the box is reserved before the image lands (CLS). */
+const LOGO_H = 50;
+const LOGO_W = Math.round((BRAND.logo.width * LOGO_H) / BRAND.logo.height);
+const LOGO = 'mb-4 block h-[50px] w-auto brightness-0 invert opacity-95 xl:h-[37.5px]';
 const HEADING = 'm-0 mb-4 text-[14px] font-extrabold uppercase tracking-[0.6px] text-white/90';
 // W155: the base carries no colour, so the column links and the store badges each set their
 // own — a badge appended onto FLINK's `text-white/60` lost to it by Tailwind's alphabetical
@@ -130,11 +138,13 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
 
   return (
     <footer className="border-t-[3px] border-blue bg-navy text-body-sm">
-      <div className="container-site grid gap-10 pt-16 pb-12 lg:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
+      {/* W180 (D19): from 1101 the design's `minmax(200px, 1fr)` and `gap: 40px 36px` × 0.75, so
+          its five columns stay in one row of the 960 px box (the wordmark overhangs its 170 px
+          column into the gap exactly as the design's does). */}
+      <div className="container-site grid gap-10 pt-16 pb-12 lg:grid-cols-[repeat(auto-fit,minmax(200px,1fr))] xl:grid-cols-[repeat(auto-fit,minmax(150px,1fr))] xl:gap-x-[27px] xl:gap-y-[30px]">
         <div>
-          {/* 50 × 42 is the asset's own 336 × 285 ratio: a square box here reserves 7 px too
-              much and the whole footer jumps when the image lands (CLS). */}
-          <Image src="/brand/ja-mark.png" alt="" width={50} height={42} className="mb-4" />
+          {/* decorative: the header's logo already names the site */}
+          <Image src={BRAND.logo.src} alt="" width={LOGO_W} height={LOGO_H} className={LOGO} />
           <p className="m-0 mb-4 max-w-[330px] text-white/65">{t('home.188')}</p>
           <p className="m-0 mb-5 inline-flex items-center gap-2 rounded-pill border border-white/20 bg-white/5 px-4 py-1.5 font-bold text-sky">
             <span aria-hidden="true" className="h-2 w-2 rounded-pill bg-success" />

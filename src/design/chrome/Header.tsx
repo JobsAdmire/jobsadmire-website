@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { makeT } from '@/content/pure';
+import { BRAND } from '@/design/assets/brand';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../contract/website-bundle.v1';
@@ -15,6 +16,16 @@ import { NavLink } from './NavLink';
  *  `/partner-with-us` into the secondary CTA. All four stay in the hamburger, which reads its
  *  own `hamburger` nav group (T0b: desktopNav + the portal login). */
 const PROMOTED = new Set(['/blog', '/careers', '/verify', '/partner-with-us']);
+
+/** W183: the design's full wordmark (`logo4.png` = `BRAND.logo`) — never the mark alone. Its
+ *  intrinsic box is the 34 px size in the asset's own 742 × 146 ratio (173 × 34), so next/image
+ *  serves a 1x/2x srcset sized for the header, not for the 742 px file. */
+const LOGO_H = 34;
+const LOGO_W = Math.round((BRAND.logo.width * LOGO_H) / BRAND.logo.height);
+// The design's heights: 30 px below 901 (its ≤ 900 `.ja-nav img` rule; ≤ 460 too), the authored
+// 34 px at 901–1100, 34 × 0.75 from 1101 (D19). `max-w-full` + `object-contain` inside a
+// `min-w-0` link let a long page CTA squeeze the logo instead of overflowing a 390 px row.
+const LOGO = 'block h-[30px] w-auto max-w-full object-contain lg:h-[34px] xl:h-[25.5px]';
 
 // `text-nav` is `--fs-nav`: 12px between 901 and 1100, the 11px floor from 1101 (W11).
 const NAV_LINK =
@@ -34,9 +45,15 @@ export function Header({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
       {/* W180: the design's nav is a full-bleed row (padding only) — never the 960 px content
           box the sections share (`chrome-row-nav`, src/app/globals.css). */}
       <div className="chrome-row-nav flex items-center justify-between gap-5 py-3">
-        <Link href="/" prefetch={false} className="flex-none no-underline">
-          {/* 34 × 29 — the asset's own 336 × 285 ratio (see the footer's copy). */}
-          <Image src="/brand/ja-mark.png" alt="JobsAdmire" width={34} height={29} priority />
+        <Link href="/" prefetch={false} className="min-w-0 shrink no-underline">
+          <Image
+            src={BRAND.logo.src}
+            alt="JobsAdmire"
+            width={LOGO_W}
+            height={LOGO_H}
+            priority
+            className={LOGO}
+          />
         </Link>
         {/* W11 (closes R46): the row appears from the design's own 901 px. Between 901 and
             1100 the links are 12 px and may wrap onto a second line inside the nav — the

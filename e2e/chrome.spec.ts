@@ -98,6 +98,55 @@ test('the content container is 960 px from 1101 and the slim bar and header rows
   }
 });
 
+// W183: the header renders the design's full wordmark — 30 px tall below 901 (the design's ≤ 900
+// `.ja-nav img` rule), the authored 34 px at 901–1100, 34 × 0.75 = 25.5 px from 1101 (D19) — in
+// its own ratio (never squeezed on these routes), and the row still never overflows.
+test('the header wordmark renders at the design heights and nothing overflows (W183)', async ({
+  page,
+}) => {
+  const ratio = 742 / 146; // public/brand/logo.png
+  for (const route of ['/', '/en']) {
+    await page.goto(route);
+    for (const [width, height] of [
+      [390, 30],
+      [460, 30],
+      [901, 34],
+      [1000, 34],
+      [1100, 34],
+      [1101, 25.5],
+      [1440, 25.5],
+    ] as const) {
+      await page.setViewportSize({ width, height: 900 });
+      const logo = page.getByRole('banner').getByRole('img', { name: 'JobsAdmire' });
+      await expect(logo).toBeVisible();
+      const m = await logo.evaluate((img: HTMLImageElement) => {
+        const r = img.getBoundingClientRect();
+        return { w: r.width, h: r.height, src: decodeURIComponent(img.currentSrc) };
+      });
+      expect(m.src, `${route} ${width}px`).toContain('/brand/logo.png');
+      expect(m.h, `${route} ${width}px logo height`).toBeCloseTo(height, 0);
+      expect(m.w, `${route} ${width}px logo width`).toBeCloseTo(height * ratio, 0);
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      );
+      expect(overflow, `${route} ${width}px`).toBeLessThanOrEqual(0);
+    }
+  }
+});
+
+// W180 follow-through: the design's footer sets its five columns in one row of the 960 px box.
+test('the footer keeps its five columns in one row at 1440 (W180, D19)', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.goto('/');
+  const tops = await page.evaluate(() =>
+    [...document.querySelectorAll('footer > .container-site:first-child > *')]
+      .filter((el) => getComputedStyle(el).display !== 'none')
+      .map((el) => Math.round(el.getBoundingClientRect().top)),
+  );
+  expect(tops).toHaveLength(5);
+  expect(new Set(tops).size).toBe(1);
+});
+
 test('the header CTA follows the page (W17)', async ({ page }) => {
   await page.goto('/');
   // accessible name is "Talep" below xl (the tail span is display:none) and "Talep Oluştur" from xl
