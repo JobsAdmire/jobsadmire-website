@@ -64,7 +64,7 @@ Verify only (no edit)
 - `src/i18n/client-messages.ts` — `CLIENT_SYS` unchanged: no client module of this task reads `sys.*` (W148)
 
 Test
-- Vitest: the 14 test files above (Cycles 1–5), under the low-memory verify line
+- Vitest: the 15 test files above (Cycles 1–5), under the low-memory verify line
 - Playwright (Cycle 7, against `next start`): `e2e/pages/home.spec.ts` (new) plus the existing `routing`, `seo`, `a11y` (incl. the `region` sweep), `width-sweep`, `chrome`, `headers`, `smoke`, `thank-you`, `ops`, `redirects` specs, which already cover `/` and `/en`
 - `npm run gate` (Lighthouse on the four indexable gate routes), `npm run js-size`, `npm run pixel -- --page=home` (tr, en; 390/900/1440; two-iteration cap)
 
@@ -84,7 +84,7 @@ Consumes (exact names, read in the code at `7bacd7e`)
 - Routing: `routing`, `type Locale` (`@/i18n/routing`); `Link` (`@/i18n/navigation`, object hrefs `{ pathname, hash }`).
 - Test helpers: `renderWithIntl` (`@/test/render`, full `tr`/`en` messages), `testBundle` (`@/test/bundle`), `BundleSchema`/`type Bundle` (`contract/website-bundle.v1`).
 - Gate: `GATE_ROUTE_TABLE` (`e2e/routes.ts`), `npm run gate` (Playwright both projects — `mobile` = Pixel 7, 412 px, i.e. the ≤ 460 layout; `desktop` = 1440 — then Lighthouse `lighthouserc.local.json`, DevTools throttling, median of 3, W145), `npm run js-size` (W136), `npm run pixel -- --page=home --locale=tr|en --widths=390,900,1440` (W138/W159).
-- Operations catalog v1.0 + v1.1 (the four v1.1 fields as `A/produces-final.md` § Task 8 spells them): `hire` = `name*` ≤ 120, `company*` ≤ 200, `email*` ≤ 254, `phone*` ≤ 40 (≥ 8 digits), `sector` ≤ 120, `headcount` ≤ 10, `startWhen` ≤ 120, `city` ≤ 120 (v1.1); `callback` = `name*`, `phone*`, `email`, `preferredTime` ≤ 120, `topic` ≤ 200 (free text), `city` ≤ 120 (v1.1). This task sends `hire`: company, name, email, phone, headcount, sector, city, startWhen; `callback`: name, phone, topic, city.
+- Operations catalog v1.0 + v1.1 (the four v1.1 fields as `A/produces-final.md` § Task 8 spells them, CONFIRMED by § "Task 8 — as built", live on Operations `main` 47a2160): `hire` = `name*` ≤ 120, `company*` ≤ 200, `email*` ≤ 254, `phone*` ≤ 40 (≥ 8 digits), `sector` ≤ 120, `headcount` ≤ 10, `startWhen` ≤ 120, `city` ≤ 120 (v1.1); `callback` = `name*`, `phone*`, `email`, `preferredTime` ≤ 120, `topic` ≤ 200 (free text), `city` ≤ 120 (v1.1). This task sends `hire`: company, name, email, phone, headcount, sector, city, startWhen; `callback`: name, phone, topic, city.
 
 Produces (what later tasks rely on)
 - **The shared doc shapes (W98)** — later tasks append, never create a second: `docs/SEO.md` `## Pages` table with the columns `Page | Route (tr · en) | Title source | Canonical | JSON-LD | LCP slot | Notes`; `docs/ANALYTICS.md` `### Page instrumentation (WP2b)` (one bullet per page); `docs/CONTENT-MODEL.md` the per-page bullet list at the end of `### Adding copy (W9, W23, W54)`; the `## Ledger` table in `docs/superpowers/plans/2026-09-20-wp2b-pages.md` whose first data row starts `| T1 Homepage |` (T9 greps it) and whose row format T2–T15 copy; the PRD §11 clause "Hire Workers is still the spike placeholder until T2" (T2 rewrites exactly that clause).
@@ -107,7 +107,7 @@ Produces (what later tasks rely on)
 - **W17 / W121 / W152 / W158** — `id="proposal"` on the hero card; `CTA_BY_PATHNAME` untouched.
 - **W18** — not exercised: no `StickyCtaBar` on this page (delta 13).
 - **W19 / W20 / W21** — `(site)` group; `/` and `/en` are already gate routes and were never unbuilt.
-- **W55 / W61 / W129** — every placeholder named (`v4-hero`, `portal-shortlist`, `portal-mobile-app`, `rep-founder`, `blog-cover-<key>`); `ImageSlot` wrapped for size, never given box classes; `sizes` on every fluid slot; exactly one `data-lcp-slot` (the h1).
+- **W55 / W61 / W129** — every placeholder named (`v4-hero`, `portal-shortlist`, `portal-mobile-app`, `founder-photo`, `blog-cover-<key>`); `ImageSlot` wrapped for size, never given box classes; `sizes` on every fluid slot; exactly one `data-lcp-slot` (the h1).
 - **W71** — blocks resolve ids through `makeTf` (the page passes ids to `ClosingCtaBand`/`ProcessSteps`).
 - **W74 / W76 / W92** — door-less targets answer `unauthorized`; the e2e asserts the fallback panel's bare href and the click-time prefill.
 - **W79** — `consent: 'checkbox'` on both specs; `consentLinkHref` omitted (`/privacy`; it 404s until T13 lands next, W99).
@@ -128,7 +128,7 @@ Produces (what later tasks rely on)
 - **D13 / D17 / D18 / D19 / D20 / D26 / D27** — success navigates to `/tesekkurler?form=<key>`; dated labels from `RateConfig`; `formatTRY` at the edge; ×0.75 desktop lengths; contrast-safe faces; the named LCP slot; the pixel harness.
 
 **Execution notes that bind every cycle.**
-- Path quoting: every path containing `[locale]` or `(site)` is single-quoted in shell commands. Vitest filters by substring: `npx vitest run _home --maxWorkers=1` runs this task's tests.
+- Path quoting: every path containing `[locale]` or `(site)` is single-quoted in shell commands. Vitest filters by substring: `NODE_OPTIONS=--max-old-space-size=4096 npx vitest run _home --maxWorkers=1` runs this task's tests.
 - Sections are **synchronous** server components that read `sys.*` with `useTranslations('sys')` from `next-intl` (the pattern `src/design/chrome/Header.tsx` uses) and package ids with `makeTf` from `@/content/pure`; that is what lets the section tests render them with `renderWithIntl`. A section that returns early calls `useTranslations` **before** its first `return` (rules of hooks).
 - `LazyIsland`'s `load` is a function and cannot cross the server → client boundary, so each island has a `'use client'` binder module that owns `load` and passes `props` + `fallback` through; `fallback` is server JSX built from the directive-less components, DOM-identical to the island's first render.
 - The grid breakpoints are the foundation's: `xs` 461, `sm` 561, `md` 701, `lg` 901, `xl` 1101 (`src/app/globals.css`); `max-xs:` is the design's ≤ 460.
@@ -1137,7 +1137,7 @@ One row per page task (WP2b, W98). The columns are fixed; a later task appends i
 cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && npx prettier --write src/messages/tr.json src/messages/en.json docs/CONTENT-MODEL.md docs/SEO.md docs/ARCHITECTURE.md 'src/app/[locale]/(site)/page.tsx' 'src/app/[locale]/(site)/_home' && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run _home --maxWorkers=1
 ```
 
-Expected: `home-copy.test.ts` 24 + 5 + 2 + 2 + 1 cases green, `phase-a.test.ts` 4, `top.test.tsx` 8. Then the low-memory verify line:
+Expected: `home-copy.test.ts` 24 + 3 + 2 + 2 + 1 = 32 cases green, `phase-a.test.ts` 4, `top.test.tsx` 8. Then the low-memory verify line:
 
 ```bash
 cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1
@@ -3160,7 +3160,7 @@ export function CalculatorStrip({ locale, bundle }: SectionProps) {
 cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && npx prettier --write 'src/app/[locale]/(site)/page.tsx' 'src/app/[locale]/(site)/_home' && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run _home --maxWorkers=1
 ```
 
-Expected: `teaser.test.ts` 5, `WhatsAppComposeLink.test.tsx` 3, `CalculatorTeaser.test.tsx` 5, `calculator.test.tsx` 4 green; earlier files unchanged. Then the low-memory verify line → green, including `src/lib/calculator/__tests__/purity.test.ts` (no module under `src/` imports `copy-deltas.ts` — only this task's test files do, which the guard excludes), `client-messages.test.ts` (`CalculatorTeaser`, `CalculatorTeaserIsland`, `WhatsAppComposeLink` read no `sys.*`), `rsc-imports.test.ts` (`LazyIsland` by path, W134), `class-collisions.test.ts` (the chip colour sets, `buttonClassName('success','md')`, `<Button variant="nav|secondary">` without classes).
+Expected: `teaser.test.ts` 5, `WhatsAppComposeLink.test.tsx` 3, `CalculatorTeaser.test.tsx` 5, `calculator.test.tsx` 4 green; earlier files unchanged. Then the low-memory verify line (`npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1`) → green, including `src/lib/calculator/__tests__/purity.test.ts` (no module under `src/` imports `copy-deltas.ts` — only this task's test files do, which the guard excludes), `client-messages.test.ts` (`CalculatorTeaser`, `CalculatorTeaserIsland`, `WhatsAppComposeLink` read no `sys.*`), `rsc-imports.test.ts` (`LazyIsland` by path, W134), `class-collisions.test.ts` (the chip colour sets, `buttonClassName('success','md')`, `<Button variant="nav|secondary">` without classes).
 
 - [ ] **Step 5: Commit**
 
@@ -3928,7 +3928,7 @@ export function ProcessSection({ locale, bundle }: SectionProps) {
 cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && npx prettier --write 'src/app/[locale]/(site)/page.tsx' 'src/app/[locale]/(site)/_home' && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run _home --maxWorkers=1
 ```
 
-Expected: `season.test.ts` 9, `SeasonPlanner.test.tsx` 2, `process-season.test.tsx` 3 green (Prettier re-wraps `SEASON_ROWS` and the month arrays; the assertions are unchanged). Then the low-memory verify line → green (`rsc-imports.test.ts`: `SeasonGrid` is directive-less and uses no client-only React API; `SeasonPlanner`/`SeasonPlannerIsland` carry `'use client'` on their first line; `class-collisions.test.ts`: the row base + one colour branch).
+Expected: `season.test.ts` 7, `SeasonPlanner.test.tsx` 2, `process-season.test.tsx` 3 green (Prettier re-wraps `SEASON_ROWS` and the month arrays; the assertions are unchanged). Then the low-memory verify line (`npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1`) → green (`rsc-imports.test.ts`: `SeasonGrid` is directive-less and uses no client-only React API; `SeasonPlanner`/`SeasonPlannerIsland` carry `'use client'` on their first line; `class-collisions.test.ts`: the row base + one colour branch).
 
 - [ ] **Step 5: Commit**
 
@@ -4102,7 +4102,7 @@ describe('TeamSection (W6/W86)', () => {
     );
     const founder = screen.getByTestId('team-founder');
     expect(founder).toHaveTextContent('Ad Soyad');
-    expect(founder.querySelector('[data-placeholder="rep-founder"]')).not.toBeNull();
+    expect(founder.querySelector('[data-placeholder="founder-photo"]')).not.toBeNull();
   });
 });
 
@@ -4412,7 +4412,7 @@ export function TeamSection({ locale, bundle }: SectionProps) {
               {/* W129: the slot owns its box; this wrapper sizes it (104 px, 86 px at ≤ 460 px). */}
               <div className="relative w-[104px] shrink-0 overflow-hidden rounded-base border border-white/20 bg-white/10 max-xs:w-[86px]">
                 <ImageSlot
-                  slot="rep-founder"
+                  slot="founder-photo"
                   src={founder.photoSrc}
                   alt={founder.name}
                   width={104}
@@ -5063,7 +5063,7 @@ One bullet per page task (W98), in execution order: the events a page fires, whe
 cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && npx prettier --write docs/ANALYTICS.md 'src/app/[locale]/(site)/page.tsx' 'src/app/[locale]/(site)/_home' && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run _home --maxWorkers=1
 ```
 
-Expected: `guides.test.ts` 3, `lower.test.tsx` 11 green; all earlier `_home` files green. Then the low-memory verify line → green, in particular `class-collisions.test.ts` (`PILL` + `TELEGRAM`/`FRAUD`, the `CARD_TITLE` compositions, `<Button variant="nav|secondary|success|primary">` without classes), `rsc-imports.test.ts` and `client-imports.test.ts` (every block/primitive by path; no islands barrel), `voice.test.ts` (the partner prefill is first-person singular).
+Expected: `guides.test.ts` 3, `lower.test.tsx` 10 green; all earlier `_home` files green. Then the low-memory verify line (`npm run typecheck && npm run lint && npm run format && NODE_OPTIONS=--max-old-space-size=4096 npx vitest run --maxWorkers=1`) → green, in particular `class-collisions.test.ts` (`PILL` + `TELEGRAM`/`FRAUD`, the `CARD_TITLE` compositions, `<Button variant="nav|secondary|success|primary">` without classes), `rsc-imports.test.ts` and `client-imports.test.ts` (every block/primitive by path; no islands barrel), `voice.test.ts` (the partner prefill is first-person singular).
 
 - [ ] **Step 5: Commit**
 
@@ -5337,7 +5337,7 @@ Not run here: Playwright needs a production server, and the task gets exactly on
 
 - [ ] **Step 3: Implement — the WP2b ledger table**
 
-`docs/superpowers/plans/2026-09-20-wp2b-pages.md` is the WP2b plan the controller commits before T1 (the W57 pattern WP2a followed; W22 names it). Append this section at its end (W98 — this task creates the table and its row format; every later page task appends one row). If the file is not in the tree when this cycle runs, create it with the single line `# WP2b pages — ledger` followed by a blank line and the section; the controller folds the plan text in above it.
+`docs/superpowers/plans/2026-09-20-wp2b-pages.md` is the WP2b plan the controller committed before T1 (the W57 pattern WP2a followed; W22 names it); it is in the tree and has no `## Ledger` section yet — its last section is `## Task index`. Append this section at its end, after `## Task index` (W98 — this task creates the table and its row format; every later page task appends one row; never a second `## Ledger`).
 
 ```markdown
 ## Ledger
@@ -5387,7 +5387,7 @@ Expected: the build succeeds — this is the step that validates the RSC boundar
 Precondition (W92): the shell exports no `OPS_API_URL` / `OPS_WEBSITE_WRITE_TOKEN` and the worktree has no `.env.local` carrying them, so both hero forms answer `unauthorized` and no test lead reaches Operations (`env | grep -c '^OPS_'` prints `0`; never print the values).
 
 ```bash
-cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && (npm run start > "${TMPDIR:-/tmp}/t1-next-start.log" 2>&1 &) && until curl -sf -o /dev/null http://localhost:3000/; do sleep 1; done && E2E_BASE_URL=http://localhost:3000 npm run gate
+cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && (npm run start > "${TMPDIR:-/tmp}/t1-next-start.log" 2>&1 &) && curl -sf --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://localhost:3000/ && E2E_BASE_URL=http://localhost:3000 npm run gate
 ```
 
 Expected `gate: OK`:
@@ -5401,7 +5401,14 @@ Expected `gate: OK`:
 cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && npm run js-size
 ```
 
-Expected (W136, local figures from the gate's runs): `/` ≈ 186–190 KB and `/en` ≈ 183–187 KB — the 176,132 / 172,783 B baselines (6ef6989) plus the forms kernel's client set (`FormShell`, `Field`, `FormErrorsContext`, `Turnstile`, `FallbackPanel`, `guardAction`, `echo`, `errors` ≈ 7.5 KB gz — the hero card is above the fold, so it is eager), `HeroLeadForm` ≈ 1.2 KB, `Stat` (the hero `MetricStrip`) ≈ 0.7 KB, `LazyIsland` + `useInView` ≈ 1.2 KB, the two island binders ≈ 0.3 KB and ≈ 1 KB of per-chunk overhead. The teaser and planner chunks (≈ 2–3 KB each; no engine, no next-intl) load only when their section comes within 200 px of the viewport, which the audit's first viewport never reaches, so they are not counted. The binding preview figure runs ≈ 2.8 KB higher (178,968 B on `/` at `02ace58`): projected ≈ 189–193 KB, under the 194,560 B lazy line. `/isci-talebi` and `/en/hire-workers` do not move (nothing shared changed). If `/` or `/en` prints above 194,560 B, the lazy-loading pass comes before T13 starts (W13 amended): first replace the hero's `MetricStrip` count-up with a static figure list over `metricValues` (drops `Stat`, a named delta); if that is not enough, stop for a controller ruling (Foundation gaps (c)).
+Expected (W136, local figures from the gate's runs): `/` ≈ 186–190 KB and `/en` ≈ 183–187 KB — the 176,132 / 172,783 B baselines (6ef6989) plus the forms kernel's client set (`FormShell`, `Field`, `FormErrorsContext`, `Turnstile`, `FallbackPanel`, `guardAction`, `echo`, `errors` ≈ 7.5 KB gz — the hero card is above the fold, so it is eager), `HeroLeadForm` ≈ 1.2 KB, `Stat` (the hero `MetricStrip`) ≈ 0.7 KB, `LazyIsland` + `useInView` ≈ 1.2 KB, the two island binders ≈ 0.3 KB and ≈ 1 KB of per-chunk overhead. The teaser and planner chunks (≈ 2–3 KB each; no engine, no next-intl) load only when their section comes within 200 px of the viewport, which the audit's first viewport never reaches, so they are not counted. The binding preview figure runs ≈ 2.8 KB higher (178,968 B on `/` at `02ace58`): projected ≈ 189–193 KB, under the 194,560 B lazy line. `/isci-talebi` and `/en/hire-workers` do not move (nothing shared changed).
+
+**Lazy-line rule (W13 amended + W136 — apply it literally, never skip it).** The binding figure is the preview's, and the preview runs 2,836 B above the local run (176,132 → 178,968 B on `/` at `02ace58`), so the local trigger is 194,560 − 2,836 = **191,724 B**:
+1. Local `/` and `/en` both ≤ 191,724 B → no lazy pass; record the figures and go on to Step 4.
+2. Local `/` or `/en` > 191,724 B (and ≤ 204,800 B) → the lazy pass, in this task, before Step 4 and before T13 starts: replace the hero's `MetricStrip` (whose `Stat` is a `'use client'` count-up) with a directive-less static figure list over `metricValues(bundle, locale)` and the same label ids (`home.050`/`051`/`052` + unit `home.206`) — a named delta in the ledger row; re-run the low-memory verify line; commit `perf(home): static hero figures under the lazy line (W13 amended)`; stop the server, rebuild once with `NEXT_BUILD_CPUS=2 NODE_OPTIONS=--max-old-space-size=4096 npm run build`, start it with the `curl --retry-connrefused` wait from Step 2 (without the gate), and run the scoped re-proof — `E2E_BASE_URL=http://localhost:3000 npx playwright test e2e/pages/home.spec.ts e2e/a11y.spec.ts e2e/width-sweep.spec.ts`, then `E2E_BASE_URL=http://localhost:3000 npm run js-size -- --routes=/,/en` (W94: it collects the two routes itself) — never a second `npm run gate` (the full gate already ran once, W126); item 3 reads these figures.
+3. Still above 191,724 B after that pass, or above 204,800 B at any point (the gate's Lighthouse `resource-summary:script:size` assertion is then red) → **stop**: do not run Step 4, do not edit the forms kernel or any shared module, kill the server (Step 5) and report to the controller the `npm run js-size` table for all four routes plus the lazy pass already applied, for a ruling (Foundation gaps (c) — an interaction-loaded hero card is a ruling, not a page edit).
+4. After the push the controller's binding preview run decides: a preview figure above 194,560 B with a local one under 191,724 B means the offset grew — the lazy pass of item 2 becomes a follow-up commit of this task before T13 starts.
+The ledger row's JS cell records which branch applied.
 
 - [ ] **Step 4: Run the pixel harness (D27, at most two runs per locale)**
 
@@ -5409,7 +5416,7 @@ Expected (W136, local figures from the gate's runs): `/` ≈ 186–190 KB and `/
 cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-website-wp2 && npm run pixel -- --page=home --locale=tr --widths=390,900,1440 --base=http://localhost:3000 && npm run pixel -- --page=home --locale=en --widths=390,900,1440 --base=http://localhost:3000
 ```
 
-Expected: both runs exit 0 (the design page and the build both answer 2xx; the W159 height check passes) and write `.pixel/report.json` + the `home-<locale>-<width>*.png` diffs (the harness needs network: the design runtime loads from unpkg). Read the six diffs and classify every visible delta (the rule in `docs/superpowers/plans/2026-09-20-wp2-pixel-harness.md`): (a) D20 faces — `blue-safe`/`nav`/`inverse`/`success` CTAs, secondary greys on pale surfaces, the white-on-`blue-safe` shortlist badge; (b) the ruled deltas at the top of this task — the W3/W79/W115 card (labels, name, e-mail, consent, `lg` submit), the W6 empty pool and the hidden ticker/team/proof cell, the W58 support row, the W8 Android-only portal line, the fraud link, `ProcessSteps`/`FaqBlock`/`ClosingCtaBand` faces, no sticky bar; (c) capture noise — the `v4-hero`/portal placeholders against the design's image-slot captions, the chips' radio focus ring, the FAB/bottom bar in a full-page shot, the height difference from the hidden sections; (d) a defect — fix it, re-run the verify line, commit, and run the harness a second (last) time (the build must be rebuilt first: one more `npm run build`, then `npm run start`). The cap counts from this first like-for-like run (W138).
+Expected: both runs exit 0 (the design page and the build both answer 2xx; the W159 height check passes) and write `.pixel/report.json` + the `home-<locale>-<width>*.png` diffs (the harness needs network: the design runtime loads from unpkg). Read the six diffs and classify every visible delta (the rule in `docs/superpowers/plans/2026-09-20-wp2-pixel-harness.md`): (a) D20 faces — `blue-safe`/`nav`/`inverse`/`success` CTAs, secondary greys on pale surfaces, the white-on-`blue-safe` shortlist badge; (b) the ruled deltas at the top of this task — the W3/W79/W115 card (labels, name, e-mail, consent, `lg` submit), the W6 empty pool and the hidden ticker/team/proof cell, the W58 support row, the W8 Android-only portal line, the fraud link, `ProcessSteps`/`FaqBlock`/`ClosingCtaBand` faces, no sticky bar; (c) capture noise — the `v4-hero`/portal placeholders against the design's image-slot captions, the chips' radio focus ring, the FAB/bottom bar in a full-page shot, the height difference from the hidden sections; (d) a defect — fix it, re-run the verify line, commit, and run the harness a second (last) time. The second run needs a rebuild, one heavy job at a time: stop the server first (Step 5's kill line), then `NEXT_BUILD_CPUS=2 NODE_OPTIONS=--max-old-space-size=4096 npm run build`, then `(npm run start > "${TMPDIR:-/tmp}/t1-next-start.log" 2>&1 &) && curl -sf --retry 30 --retry-connrefused --retry-delay 1 -o /dev/null http://localhost:3000/` (never `sleep`), then the same scoped re-proof as the lazy-line rule's item 2 (`E2E_BASE_URL=http://localhost:3000 npx playwright test e2e/pages/home.spec.ts e2e/a11y.spec.ts e2e/width-sweep.spec.ts` and `E2E_BASE_URL=http://localhost:3000 npm run js-size -- --routes=/,/en`) before the second harness run, so the ledger row describes the build it scores — never a second `npm run gate` (W126). The cap counts from this first like-for-like run (W138).
 
 - [ ] **Step 5: Stop the server and check for strays**
 
@@ -5451,10 +5458,10 @@ Never push (the controller pushes, then runs the binding preview gate and adds i
 
 **CLIENT_SYS additions:** none. No `'use client'` module of this task calls `useTranslations`; `HeroLeadForm`, `CalculatorTeaser` and `SeasonPlanner` receive every string resolved on the server, and the forms kernel reads only `sys.form`, already listed (W148).
 
-**Foundation gaps:** none blocking. Notes: (a) the catalog v1.1 `city` on `hire` and `callback` is cited as `A/produces-final.md` § Task 8 spells it (optional, ≤ 120); Task 8 is being implemented now — the wire name is confirmed by the Task 8 report, and until Operations ships v1.1 the door drops `city` into `dropped` with a 200 (no error, no data loss beyond the city). (b) The final review's P-1 static per-locale `SourceMap` `<img>` has no build asset (`scripts/build-source-map.ts` emits only the TSX component); this task uses the rule's other branch, below-the-fold placement, and records the page weight — a static variant is a foundation change if the map's HTML + flight weight ever costs LCP/performance. (c) `LazyIsland` is viewport-only; there is no interaction-loaded wrapper, so the above-the-fold hero card keeps the forms kernel (≈ 7.5 KB gz) in the first-load graph — a problem only if the route crosses 194,560 B. (d) `StickyCtaBar`'s `hideNearId` cannot point at an above-the-fold anchor (`isBarVisible` hides the bar for good once the target is above the viewport) — one of the two reasons this page mounts no bar.
+**Foundation gaps:** none blocking. Notes: (a) the catalog v1.1 `city` on `hire` and `callback` (optional, ≤ 120) is CONFIRMED: Task 8 is live on Operations `main` 47a2160 (`A/produces-final.md` § "Task 8 — as built" — the wire names ride inside `fields` as strings); every field this task sends is in the catalog v1.0 + v1.1. (b) The final review's P-1 static per-locale `SourceMap` `<img>` has no build asset (`scripts/build-source-map.ts` emits only the TSX component); this task uses the rule's other branch, below-the-fold placement, and records the page weight — a static variant is a foundation change if the map's HTML + flight weight ever costs LCP/performance. (c) `LazyIsland` is viewport-only; there is no interaction-loaded wrapper, so the above-the-fold hero card keeps the forms kernel (≈ 7.5 KB gz) in the first-load graph — a problem only if the route crosses 194,560 B. (d) `StickyCtaBar`'s `hideNearId` cannot point at an above-the-fold anchor (`isBarVisible` hides the bar for good once the target is above the viewport) — one of the two reasons this page mounts no bar.
 
 **Ledger line** (append to the `## Ledger` table in `docs/superpowers/plans/2026-09-20-wp2b-pages.md`; fill every `<…>`):
 
 ```markdown
-| T1 Homepage | `/` · `/en` | js-size (local): `/` <n> B · `/en` <n> B (ceiling 204,800; lazy line 194,560; projected ≈ 189–193 KB on the preview); binding preview: <added by the controller> | LH mobile, median of 3, DevTools throttling (local rc = production): `/` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n>; `/en` perf <x.xx> · LCP <n> ms · CLS <n> | pixel home tr: 390 → <a> %, 900 → <b> %, 1440 → <c> %; pixel home en: 390 → <a> %, 900 → <b> %, 1440 → <c> %; run <1|2> of 2; deltas: (a) D20 faces (blue-safe/nav/inverse/success CTAs, secondary greys on pale, blue-safe shortlist badge); (b) W3/W79/W115 lead card (labels, name + e-mail, consent, lg submit), phone-only callback, W6 empty pool + hidden ticker/team/proof, W58 support row, W8 Android-only, fraud → /verify#report, ProcessSteps/FaqBlock/ClosingCtaBand faces, no sticky bar; (c) hero/portal placeholders, radio chips, FAB/bottom bar, hidden-section height; (d) accepted: <…> | <YYYY-MM-DD> |
+| T1 Homepage | `/` · `/en` | js-size (local): `/` <n> B · `/en` <n> B (ceiling 204,800; lazy line 194,560; local trigger 191,724; projected ≈ 189–193 KB on the preview); lazy-line rule: <branch 1 not triggered / branch 2 lazy pass applied (static hero figures) / branch 3 stopped for a ruling>; binding preview: <added by the controller> | LH mobile, median of 3, DevTools throttling (local rc = production): `/` perf <x.xx> · a11y 1.00 · BP 1.00 · SEO 1.00 · LCP <n> ms (h1) · CLS <n>; `/en` perf <x.xx> · LCP <n> ms · CLS <n> | pixel home tr: 390 → <a> %, 900 → <b> %, 1440 → <c> %; pixel home en: 390 → <a> %, 900 → <b> %, 1440 → <c> %; run <1 or 2> of 2; deltas: (a) D20 faces (blue-safe/nav/inverse/success CTAs, secondary greys on pale, blue-safe shortlist badge); (b) W3/W79/W115 lead card (labels, name + e-mail, consent, lg submit), phone-only callback, W6 empty pool + hidden ticker/team/proof, W58 support row, W8 Android-only, fraud → /verify#report, ProcessSteps/FaqBlock/ClosingCtaBand faces, no sticky bar; (c) hero/portal placeholders, radio chips, FAB/bottom bar, hidden-section height; (d) accepted: <…> | <YYYY-MM-DD> |
 ```
