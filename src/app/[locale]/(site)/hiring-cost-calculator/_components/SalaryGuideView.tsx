@@ -36,7 +36,7 @@ export function SalaryGuideView({
   return (
     <div data-testid="guide-view" data-live={live}>
       <div className="mb-[22px]">{filter}</div>
-      <div className="grid gap-[18px] sm:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-[18px] lg:grid-cols-3">
         {rows.map((r) => {
           const active = r.key === activeKey;
           return (

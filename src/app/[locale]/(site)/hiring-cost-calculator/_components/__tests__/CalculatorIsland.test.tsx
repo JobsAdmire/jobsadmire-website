@@ -114,6 +114,18 @@ describe('CalculatorIsland', () => {
     );
   });
 
+  it('on phones the salary row stays out of the advanced group and the breakdown toggle reveals the total (pixel run 1)', async () => {
+    mount();
+    const tokens = (id: string) =>
+      (screen.getByTestId(id).getAttribute('class') ?? '').split(/\s+/);
+    expect(tokens('calc-salary-row')).not.toContain('max-md:hidden');
+    expect(tokens('calc-out-head')).toContain('max-md:hidden');
+    expect(tokens('calc-total-card')).toContain('max-md:hidden');
+    await userEvent.click(screen.getByRole('button', { name: labels.brkShow }));
+    expect(tokens('calc-out-head')).not.toContain('max-md:hidden');
+    expect(tokens('calc-total-card')).not.toContain('max-md:hidden');
+  });
+
   it('the SGK tier is validated state: a chip sets it and the rate follows (W144)', async () => {
     mount();
     await userEvent.click(screen.getByRole('radio', { name: t('calc.466') }));

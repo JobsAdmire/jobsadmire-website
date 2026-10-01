@@ -10,9 +10,9 @@ import { Sentence } from './Sentence';
  * package's × 0.75 from 1101 px, D19; ≤ 700 px rules from lines 257–291). D20: blue text is
  * `blue-safe`, the `#94a3b8` kickers are `text-text-tertiary`. No directive.
  */
-export const CARD_GRID = 'grid md:grid-cols-[1fr_1.05fr]';
+export const CARD_GRID = 'grid lg:grid-cols-[1fr_1.05fr]';
 export const LEFT_COL =
-  'border-border-3 px-[15px] py-4 md:border-r md:px-[34px] md:py-[30px] xl:px-[25.5px] xl:py-[22.5px]';
+  'border-border-3 px-[15px] py-4 lg:border-r md:px-[34px] md:py-[30px] xl:px-[25.5px] xl:py-[22.5px]';
 export const RIGHT_COL =
   'flex flex-col bg-pale-2 px-[15px] py-4 md:px-[34px] md:py-[30px] xl:px-[25.5px] xl:py-[22.5px]';
 export const KICKER =
@@ -25,7 +25,8 @@ export const ROLE_BUTTON =
 export const COVER_BOX = 'flex flex-col gap-1 border-t border-border-3 pt-1';
 export const COVER_TITLE =
   'm-0 pt-3 text-eyebrow font-extrabold uppercase tracking-[1px] text-text-tertiary';
-export const TOGGLE_ROW = 'flex min-h-[44px] cursor-pointer items-center justify-between gap-3';
+export const TOGGLE_ROW =
+  'flex min-h-6 cursor-pointer items-center justify-between gap-3 max-md:min-h-[46px]';
 export const TOGGLE_TEXT = 'text-body-sm font-bold text-text-secondary';
 export const TOGGLE_NOTE = 'font-semibold text-text-tertiary';
 export const TIER_BOX = 'border-t border-border-3 pt-3';

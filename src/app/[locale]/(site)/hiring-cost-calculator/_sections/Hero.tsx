@@ -65,7 +65,7 @@ export function Hero({ ctx, children }: { ctx: CalcCtx; children: ReactNode }) {
           <h1
             data-testid="page-h1"
             data-lcp-slot="h1"
-            className="m-0 mb-4 text-h1 leading-[1.03] tracking-[-0.04em] text-white max-md:leading-[1.07]"
+            className="m-0 mb-4 text-[clamp(36px,4.2vw,54px)] leading-[1.03] tracking-[-0.04em] text-white max-md:leading-[1.07] max-md:tracking-[-1.1px] xl:text-[clamp(27px,3.15vw,40.5px)]"
           >
             <Sentence
               runs={[

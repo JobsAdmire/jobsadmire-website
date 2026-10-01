@@ -352,6 +352,42 @@ describe('the section bodies (real TR bundle; every island shows its server fall
   });
 });
 
+describe('pixel run 1 (d) fixes — Cycle 8(a)', () => {
+  it('the h1 is the design page’s own clamp (54 px, × 0.75 from 1101), never the homepage token', () => {
+    renderWithIntl(<Hero ctx={TR}>{null}</Hero>);
+    const h1 = tokens(screen.getByRole('heading', { level: 1 }));
+    expect(h1).toContain('text-[clamp(36px,4.2vw,54px)]');
+    expect(h1).toContain('xl:text-[clamp(27px,3.15vw,40.5px)]');
+    expect(h1).not.toContain('text-h1');
+  });
+
+  it('the card stacks up to 900 px, keeps the salary row on phones, and holds back the estimate head and total there', () => {
+    renderWithIntl(<CalculatorCard ctx={TR} />);
+    const grid = tokens(screen.getByTestId('calc-skeleton'));
+    expect(grid).toContain('lg:grid-cols-[1fr_1.05fr]');
+    expect(grid.some((c) => c.startsWith('md:grid-cols'))).toBe(false);
+    expect(tokens(screen.getByTestId('calc-salary-row'))).not.toContain('max-md:hidden');
+    expect(tokens(screen.getByTestId('calc-out-head'))).toContain('max-md:hidden');
+    expect(tokens(screen.getByTestId('calc-total-card'))).toContain('max-md:hidden');
+  });
+
+  it('every multi-column section grid starts at 901 px — the design collapses its grids at ≤ 900', () => {
+    const { container } = renderWithIntl(
+      <>
+        <Salaries ctx={TR} />
+        <Compare ctx={TR} />
+        <Quota ctx={TR} />
+        <Penalties ctx={TR} />
+        <Students ctx={TR} />
+      </>,
+    );
+    const early = [...container.querySelectorAll('[class]')]
+      .flatMap((el) => tokens(el))
+      .filter((c) => /^(sm|md):grid-cols-/.test(c));
+    expect(early).toEqual([]);
+  });
+});
+
 describe('page.tsx (static checks — the page itself is proven by the Cycle 7 build + gate)', () => {
   const source = () =>
     readFileSync(

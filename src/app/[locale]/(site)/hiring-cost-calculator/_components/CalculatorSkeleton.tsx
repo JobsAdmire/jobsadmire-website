@@ -117,7 +117,7 @@ export function CalculatorSkeleton({
             <RowHead label={labels.cContract} value={view.monthsNote} />
             <ChipsLook options={monthOptions(labels)} value={String(view.months)} />
           </div>
-          <div className="max-md:hidden">
+          <div data-testid="calc-salary-row">
             <SliderLook
               label={labels.cSalary}
               value={view.salaryLabel}

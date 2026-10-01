@@ -295,7 +295,7 @@ export function CalculatorIsland({
               options={monthOptions(labels)}
             />
           </div>
-          <div className={adv}>
+          <div data-testid="calc-salary-row">
             <RangeSlider
               id="calc-salary"
               label={labels.cSalary}

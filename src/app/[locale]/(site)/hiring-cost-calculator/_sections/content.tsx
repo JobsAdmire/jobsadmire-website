@@ -386,7 +386,7 @@ export function Compare({ ctx }: { ctx: CalcCtx }) {
           <p className="m-0 mb-3.5 text-[11.5px] font-extrabold uppercase tracking-[1px] text-white/80">
             {t('calc.236')}
           </p>
-          <div className="grid items-end gap-[18px] sm:grid-cols-3">
+          <div className="grid items-end gap-[18px] lg:grid-cols-3">
             <div>
               <p className={SPREAD_VALUE.once}>{formatTRY(oneOff, locale)}</p>
               <p className="m-0 mt-[3px] text-[13px] text-white/75">{t('calc.237')}</p>
@@ -481,7 +481,7 @@ function Exemptions({ ctx }: { ctx: CalcCtx }) {
       <p className="m-0 mb-4 text-body-sm leading-[1.6] text-text-tertiary max-md:mb-3 max-md:text-[13px]">
         {t(introId)}
       </p>
-      <ul className="m-0 grid list-none gap-x-[30px] gap-y-3 p-0 md:grid-cols-2">
+      <ul className="m-0 grid list-none gap-x-[30px] gap-y-3 p-0 lg:grid-cols-2">
         {rows.map(([titleId, bodyId, text]) => (
           <li key={titleId} className="flex items-start gap-[13px] border-b border-border-3 pb-3">
             <Tick />
@@ -905,7 +905,7 @@ export function Incentives({ ctx }: { ctx: CalcCtx }) {
               em="not-italic underline decoration-warning-border decoration-[3px] underline-offset-[3px]"
             />
           </h3>
-          <div className="grid gap-x-[34px] gap-y-[22px] md:grid-cols-2">
+          <div className="grid gap-x-[34px] gap-y-[22px] lg:grid-cols-2">
             {(
               [
                 ['calc.345', 'calc.346'],
@@ -999,7 +999,7 @@ export function Penalties({ ctx }: { ctx: CalcCtx }) {
           </p>
         </div>
       </div>
-      <div className="mx-auto grid max-w-[1080px] gap-5 max-md:hidden md:grid-cols-2 xl:max-w-[810px]">
+      <div className="mx-auto grid max-w-[1080px] gap-5 max-md:hidden lg:grid-cols-2 xl:max-w-[810px]">
         {/* calc.408 (the doubled fine) is the package's own string — the design typed it (line 1369) */}
         {fine('calc.111', 'calc.407', [t('calc.112'), b(t('calc.408')), t('calc.113')])}
         {fine('calc.114', 'calc.409', [t('calc.115'), b(t('calc.116')), t('calc.117')])}
@@ -1180,7 +1180,7 @@ export function Students({ ctx }: { ctx: CalcCtx }) {
         </ul>
       </div>
       <div className="max-md:hidden">
-        <div className="mb-5 grid gap-5 md:grid-cols-2">
+        <div className="mb-5 grid gap-5 lg:grid-cols-2">
           {/* the design types both subtitles (lines 1447, 1461); calc.263/271 are their ids */}
           <TierCard
             tone="amber"

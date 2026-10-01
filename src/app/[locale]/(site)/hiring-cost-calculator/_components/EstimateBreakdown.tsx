@@ -84,7 +84,13 @@ export function EstimateBreakdown({
   ].join(' ');
   return (
     <>
-      <div className="mb-[18px] flex items-baseline justify-between gap-3">
+      <div
+        data-testid="calc-out-head"
+        className={[
+          'mb-[18px] flex items-baseline justify-between gap-3',
+          breakdownOpen ? 'max-md:mt-3.5 max-md:mb-2.5' : 'max-md:hidden',
+        ].join(' ')}
+      >
         <span className="text-eyebrow font-extrabold uppercase tracking-[1px] text-text-tertiary">
           {labels.cEst}
         </span>
@@ -134,7 +140,13 @@ export function EstimateBreakdown({
           tone="ink"
         />
       </div>
-      <div className="mt-auto rounded-base bg-[linear-gradient(135deg,#1073a8_0%,#0b5d88_100%)] px-[22px] py-5 max-md:mt-1 max-md:px-[15px] max-md:py-4">
+      <div
+        data-testid="calc-total-card"
+        className={[
+          'mt-auto rounded-base bg-[linear-gradient(135deg,#1073a8_0%,#0b5d88_100%)] px-[22px] py-5 max-md:mt-1 max-md:px-[15px] max-md:py-4',
+          breakdownOpen ? '' : 'max-md:hidden',
+        ].join(' ')}
+      >
         <div className="mb-1 flex items-baseline justify-between gap-3">
           <span data-testid="calc-total-title" className="text-body-sm font-extrabold text-white">
             {view.totalTitle}
