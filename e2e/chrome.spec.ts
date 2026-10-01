@@ -125,7 +125,11 @@ test('the header wordmark renders at the design heights and nothing overflows (W
       });
       expect(m.src, `${route} ${width}px`).toContain('/brand/logo.png');
       expect(m.h, `${route} ${width}px logo height`).toBeCloseTo(height, 0);
-      expect(m.w, `${route} ${width}px logo width`).toBeCloseTo(height * ratio, 0);
+      // next/image serves a resized variant (256 or 384 px wide) whose rounded height moves the
+      // ratio by < 1 %, so the width can sit ~1 px off 742/146 — a squeezed logo loses tens of px
+      expect(Math.abs(m.w - height * ratio), `${route} ${width}px logo width`).toBeLessThanOrEqual(
+        2,
+      );
       const overflow = await page.evaluate(
         () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
       );
