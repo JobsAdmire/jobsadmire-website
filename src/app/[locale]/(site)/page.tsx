@@ -6,6 +6,7 @@ import { getBundle } from '@/content/adapter';
 import { routing } from '@/i18n/routing';
 import { buildMetadata } from '@/lib/seo/metadata';
 import { submitCallback, submitHire } from './_home/actions';
+import { CalculatorStrip } from './_home/sections/CalculatorStrip';
 import { ChoiceCards } from './_home/sections/ChoiceCards';
 import { Hero } from './_home/sections/Hero';
 import { HeroForm } from './_home/sections/HeroForm';
@@ -57,6 +58,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <LiveCaseBar {...section} />
       <ChoiceCards {...section} />
       <PoolSection {...section} />
+      <CalculatorStrip {...section} />
     </>
   );
 }
