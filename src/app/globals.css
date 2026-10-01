@@ -151,7 +151,7 @@ h4 {
   margin-inline: auto;
   padding-inline: var(--gutter);
 }
-/* The two chrome rows the design draws full-bleed — padding only, no max-width (W180): the slim
+/* The two chrome rows the design draws full-bleed — padding only, no max-width (W180 as amended by W184): the slim
    bar on the container's own gutter, the header row on the nav's (32 px authored, 24 from 1101).
    Their backgrounds and their content both span the viewport, as the design's do. */
 .chrome-row {

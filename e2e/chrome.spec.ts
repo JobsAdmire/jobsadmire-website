@@ -84,6 +84,7 @@ test('the content container is 960 px from 1101 and the slim bar and header rows
     [1101, 36, 24],
     [1100, 48, 32],
     [901, 48, 32],
+    [900, 20, 20],
     [390, 20, 20],
   ] as const) {
     await page.setViewportSize({ width, height: 900 });
@@ -110,6 +111,7 @@ test('the header wordmark renders at the design heights and nothing overflows (W
     for (const [width, height] of [
       [390, 30],
       [460, 30],
+      [900, 30],
       [901, 34],
       [1000, 34],
       [1100, 34],

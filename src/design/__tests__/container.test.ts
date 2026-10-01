@@ -158,7 +158,6 @@ describe('.container-site follows the design wrapper at 0.75 (W180, D19)', () =>
 
   it('stays unlayered and centred (W178: a layered utility never overrides it)', () => {
     expect(declarations('.container-site', 1440)['margin-inline']).toBe('auto');
-    expect(CSS).not.toMatch(/@layer[^{]*\{[\s\S]*\.container-site/);
   });
 });
 

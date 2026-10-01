@@ -230,7 +230,15 @@ describe('Footer', () => {
     expect(logo).toHaveAttribute('alt', '');
     expect(logo).toHaveAttribute('width', '254');
     expect(logo).toHaveAttribute('height', '50');
-    expect(logo).toHaveClass('brightness-0', 'invert', 'opacity-95', 'h-[50px]', 'xl:h-[37.5px]');
+    expect(logo).toHaveClass(
+      'brightness-0',
+      'invert',
+      'opacity-95',
+      'h-[50px]',
+      'xl:h-[37.5px]',
+      'object-contain',
+      'xl:max-w-none',
+    );
     expect(container.querySelector('footer img[src*="ja-mark"]')).toBeNull();
   });
 

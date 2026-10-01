@@ -51,7 +51,7 @@ export function Header({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
             alt="JobsAdmire"
             width={LOGO_W}
             height={LOGO_H}
-            priority
+            preload
             className={LOGO}
           />
         </Link>
