@@ -12,6 +12,8 @@ import { Hero } from './_home/sections/Hero';
 import { HeroForm } from './_home/sections/HeroForm';
 import { LiveCaseBar } from './_home/sections/LiveCaseBar';
 import { PoolSection } from './_home/sections/PoolSection';
+import { ProcessSection } from './_home/sections/ProcessSection';
+import { SeasonSection } from './_home/sections/SeasonSection';
 
 /** W150 (D17): the calculator teaser's dated badge and eyebrow switch off at
  *  `rateConfig.reviewDueAt`; the page is statically generated, so it re-renders daily. */
@@ -59,6 +61,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <ChoiceCards {...section} />
       <PoolSection {...section} />
       <CalculatorStrip {...section} />
+      <ProcessSection {...section} />
+      <SeasonSection {...section} />
     </>
   );
 }
