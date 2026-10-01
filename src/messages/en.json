@@ -68,6 +68,10 @@
       "calc": {
         "title": "Hiring cost calculator for foreign workers in Türkiye | JobsAdmire",
         "description": "Salary, SGK employer share, permit fees, flights and housing in one estimate. Check the 5:1 quota, run the pass check and ask for a written quote."
+      },
+      "wp": {
+        "title": "Work permit in Türkiye for foreign workers — rules, e-Muafiyet and process | JobsAdmire",
+        "description": "Turkish work permits under Law No. 6735: the standard permit or the e-Muafiyet exemption, the employer criteria, timelines, costs and documents — filed by JobsAdmire under its İŞKUR licence."
       }
     },
     "consent": {
@@ -170,6 +174,49 @@
         "attached": "The estimate above is sent with your request."
       },
       "summary": { "none": "none", "rates": "Rates version" }
+    },
+    "wp": {
+      "hero": {
+        "updated": "Updated {month} · Reviewed by the JobsAdmire permit team"
+      },
+      "wizard": {
+        "progress": "{current} / {total}",
+        "progressLabel": "Eligibility check progress",
+        "options": {
+          "yes": "Yes",
+          "no": "No",
+          "atLeast": "{ratio} or more",
+          "below": "Fewer than {ratio}",
+          "abroad": "Abroad"
+        },
+        "points": {
+          "ratio": "Fewer than {ratio} Turkish employees on SGK for each foreign worker: the standard permit's 1:{ratio} ratio applies to your workplace, and some sectors are exempt — JobsAdmire checks how it applies before anything is filed."
+        },
+        "prefill": {
+          "intro": "I did the eligibility check on your website and would like to discuss a work permit. My answers:",
+          "result": "Result: {title}"
+        }
+      },
+      "sample": {
+        "label": "Illustrative sample of a Turkish work permit card with fictional details",
+        "foreignerId": "99•• ••• ••44",
+        "validity": "15.08.2026 — 14.08.2027"
+      },
+      "documents": {
+        "count": "{n, plural, one {# document} other {# documents}}"
+      },
+      "faq": {
+        "exemptionAnswer": "e-Muafiyet is the Ministry's online work permit exemption system (emuafiyet.csgb.gov.tr). Foreigners whose work fits an Article 48 category — machinery installation and training, cross-border services, seasonal agriculture, scientific or sporting activities and others — can work without a full permit for a limited period, typically up to 3 months. Domestic applications must be filed within 30 days of entering Türkiye.",
+        "emailSubject": "Work permit question"
+      },
+      "whatsapp": {
+        "question": "I have a work permit question.",
+        "permitOnly": "I have my own worker — can you handle the work permit?",
+        "permitType": "which work permit type applies to my case?",
+        "exemption": "does my case qualify for a work permit exemption?",
+        "quote": "what would a work permit cost for my case?",
+        "renewal": "I need help renewing a work permit."
+      }
     },
     "form": {
       "labels": {

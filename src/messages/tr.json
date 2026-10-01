@@ -68,6 +68,10 @@
       "calc": {
         "title": "Yabancı işçi maliyet hesaplayıcı — Türkiye | JobsAdmire",
         "description": "Maaş, SGK işveren payı, izin harçları, uçak bileti ve konaklama tek tahminde. 5:1 kotanızı kontrol edin, geçer-mi testini yapın, yazılı teklif isteyin."
+      },
+      "wp": {
+        "title": "Yabancı işçiler için Türkiye çalışma izni — kurallar, e-Muafiyet ve süreç | JobsAdmire",
+        "description": "6735 sayılı Kanun kapsamında çalışma izni: standart izin ya da e-Muafiyet, işveren kriterleri, süreler, maliyetler ve belgeler — dosyayı JobsAdmire, İŞKUR lisansıyla yürütür."
       }
     },
     "consent": {
@@ -170,6 +174,49 @@
         "attached": "Yukarıdaki tahmin talebinizle birlikte gönderilir."
       },
       "summary": { "none": "yok", "rates": "Oran sürümü" }
+    },
+    "wp": {
+      "hero": {
+        "updated": "Güncelleme: {month} · JobsAdmire izin ekibi tarafından incelendi"
+      },
+      "wizard": {
+        "progress": "{current} / {total}",
+        "progressLabel": "Uygunluk kontrolünün ilerleyişi",
+        "options": {
+          "yes": "Evet",
+          "no": "Hayır",
+          "atLeast": "{ratio} veya daha fazla",
+          "below": "{ratio} kişiden az",
+          "abroad": "Yurt dışında"
+        },
+        "points": {
+          "ratio": "Her yabancı işçi için SGK'da {ratio} kişiden az Türk çalışan: standart izinde 1:{ratio} oranı iş yerinize uygulanır ve bazı sektörler muaftır — JobsAdmire, dosyalamadan önce oranın nasıl uygulandığını kontrol eder."
+        },
+        "prefill": {
+          "intro": "sitenizdeki uygunluk kontrolünü yaptım ve bir çalışma izni hakkında görüşmek istiyorum. Cevaplarım:",
+          "result": "Sonuç: {title}"
+        }
+      },
+      "sample": {
+        "label": "Kurgusal bilgilerle hazırlanmış temsili Türkiye çalışma izni kartı",
+        "foreignerId": "99•• ••• ••44",
+        "validity": "15.08.2026 — 14.08.2027"
+      },
+      "documents": {
+        "count": "{n} belge"
+      },
+      "faq": {
+        "exemptionAnswer": "e-Muafiyet, Bakanlığın çevrim içi çalışma izni muafiyet sistemidir (emuafiyet.csgb.gov.tr). İşi 48. madde kategorilerinden birine giren yabancılar — makine montajı ve eğitimi, sınır ötesi hizmetler, mevsimlik tarım, bilimsel veya sportif faaliyetler ve diğerleri — tam izin olmadan sınırlı bir süre, genellikle 3 aya kadar çalışabilir. Yurt içi başvurular Türkiye'ye girişten sonraki 30 gün içinde yapılmalıdır.",
+        "emailSubject": "Çalışma izni sorusu"
+      },
+      "whatsapp": {
+        "question": "çalışma izniyle ilgili bir sorum var.",
+        "permitOnly": "kendi işçim var — çalışma iznini siz yürütebilir misiniz?",
+        "permitType": "benim durumumda hangi çalışma izni türü geçerli?",
+        "exemption": "durumum çalışma izni muafiyetine giriyor mu?",
+        "quote": "benim durumumda çalışma izni ne kadar tutar?",
+        "renewal": "bir çalışma iznini yenilemek için yardıma ihtiyacım var."
+      }
     },
     "form": {
       "labels": {
