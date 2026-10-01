@@ -32,7 +32,11 @@
       "dismiss": "Dismiss"
     },
     "seo": {
-      "ogTagline": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits."
+      "ogTagline": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits.",
+      "home": {
+        "title": "Hire Skilled Workers from Abroad for Türkiye | JobsAdmire",
+        "description": "Skilled workers sourced abroad for employers in Türkiye — candidates vetted by JobsAdmire's own representatives, legal work permits and arrival, managed end to end. Get a free proposal."
+      }
     },
     "consent": {
       "title": "Cookies",
@@ -208,6 +212,46 @@
         "call": "Call",
         "email": "E-mail",
         "whatsappIntro": "Hello JobsAdmire, I could not send the form on your website. My details:"
+      }
+    },
+    "home": {
+      "form": {
+        "callbackSubmit": "Call me back →"
+      },
+      "whatsapp": {
+        "hire": "Hello JobsAdmire, I want to hire workers.",
+        "partner": "Hello JobsAdmire, I represent a recruitment agency / training institute abroad and would like to become a sourcing partner.",
+        "estimate": "Hello JobsAdmire, please check this estimate for me.\nRole level: {role}\nHeadcount: {headcount}\nMonthly payroll: {monthly}\nFirst-year one-off costs: {oneOff}"
+      },
+      "pool": {
+        "empty": {
+          "title": "Candidate profiles are coming soon",
+          "body": "Candidates are interviewed and document-checked in their own country by JobsAdmire representatives. Share your sector and headcount, and matching profiles come straight to you.",
+          "cta": "Request candidates →"
+        }
+      },
+      "calc": {
+        "eyebrowUndated": "Real cost",
+        "grossFloor": "Gross salary ({multiplier} legal floor)",
+        "supportSeparate": "Not included — shown on the full calculator",
+        "headcount": "{n, plural, one {# worker} other {# workers}}",
+        "monthlyPayroll": "monthly payroll"
+      },
+      "season": {
+        "agricultureSub": "Antalya, Mersin, Konya",
+        "range": "Peak {from}–{to}",
+        "also": " · also {from}–{to}",
+        "signBy": "To start in {start}, sign by {signBy}",
+        "noPeak": "No peak season — but permits still take {permitDays} days",
+        "gridLabel": "Seasonal demand by month",
+        "selectHint": "Select a row to see that season's plan"
+      },
+      "network": {
+        "mapTitle": "From the source countries to Türkiye",
+        "turkiye": "Türkiye"
+      },
+      "portal": {
+        "platforms": "Android"
       }
     }
   }

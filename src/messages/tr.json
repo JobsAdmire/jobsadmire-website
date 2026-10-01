@@ -32,7 +32,11 @@
       "dismiss": "Dismiss"
     },
     "seo": {
-      "ogTagline": "Türkiye'deki işverenler için lisanslı iş gücü temini — yurt dışından tedarik, kontrol ve çalışma izinleri."
+      "ogTagline": "Türkiye'deki işverenler için lisanslı iş gücü temini — yurt dışından tedarik, kontrol ve çalışma izinleri.",
+      "home": {
+        "title": "Yurt Dışından İşçi Temini ve Çalışma İzni | JobsAdmire",
+        "description": "Türkiye'deki işverenler için yurt dışından nitelikli işçi temini: JobsAdmire'ın kendi temsilcileriyle aday seçimi, yasal çalışma izni ve ilk iş gününe kadar tek elden süreç. Ücretsiz teklif alın."
+      }
     },
     "consent": {
       "title": "Çerezler",
@@ -208,6 +212,46 @@
         "call": "Arayın",
         "email": "E-posta gönderin",
         "whatsappIntro": "Merhaba JobsAdmire, web sitesindeki formu gönderemedim. Bilgilerim:"
+      }
+    },
+    "home": {
+      "form": {
+        "callbackSubmit": "Beni arayın →"
+      },
+      "whatsapp": {
+        "hire": "Merhaba JobsAdmire, işçi talebi oluşturmak istiyorum.",
+        "partner": "Merhaba JobsAdmire, yurt dışında bir işe alım acentesini / eğitim kurumunu temsil ediyorum ve tedarik ortağı olmak istiyorum.",
+        "estimate": "Merhaba JobsAdmire, bu hesabı benim için kontrol eder misiniz?\nPozisyon seviyesi: {role}\nİşçi sayısı: {headcount}\nAylık bordro: {monthly}\nİlk yıl tek seferlik maliyetler: {oneOff}"
+      },
+      "pool": {
+        "empty": {
+          "title": "Aday profilleri yakında burada",
+          "body": "Adaylar kendi ülkelerinde JobsAdmire temsilcileri tarafından görüşülür ve belgeleri doğrulanır. Sektörünüzü ve ihtiyacınızı yazın; uygun profiller doğrudan size iletilir.",
+          "cta": "Aday talep edin →"
+        }
+      },
+      "calc": {
+        "eyebrowUndated": "Gerçek maliyet",
+        "grossFloor": "Brüt maaş ({multiplier} yasal taban)",
+        "supportSeparate": "Dahil değil — tam hesaplamada ayrıca gösterilir",
+        "headcount": "{n, plural, other {# işçi}}",
+        "monthlyPayroll": "aylık bordro"
+      },
+      "season": {
+        "agricultureSub": "Antalya, Mersin, Konya",
+        "range": "Yoğun dönem {from}–{to}",
+        "also": " · ayrıca {from}–{to}",
+        "signBy": "{start} ayında başlamak için {signBy} ayına kadar imzalayın",
+        "noPeak": "Yoğun sezon yok — ancak izinler yine {permitDays} gün sürer",
+        "gridLabel": "Aylara göre sezonluk talep",
+        "selectHint": "Bir sezonun planını görmek için satırını seçin"
+      },
+      "network": {
+        "mapTitle": "Kaynak ülkelerden Türkiye'ye",
+        "turkiye": "Türkiye"
+      },
+      "portal": {
+        "platforms": "Android"
       }
     }
   }
