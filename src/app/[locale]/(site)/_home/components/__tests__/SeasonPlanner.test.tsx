@@ -67,4 +67,15 @@ describe('SeasonPlanner (the island)', () => {
     );
     expect(screen.getByText('Tourism note')).toBeInTheDocument();
   });
+
+  it('announces the selected row’s plan, never the "Now:" pill (polite live region)', () => {
+    vi.useFakeTimers({ toFake: ['Date'] });
+    vi.setSystemTime(new Date(2026, 8, 15, 12));
+    renderWithIntl(<SeasonPlanner {...props} />, { locale: 'en' });
+    expect(screen.getByTestId('season-headline').parentElement).toHaveAttribute(
+      'aria-live',
+      'polite',
+    );
+    expect(screen.getByText('Now: Sep 2026').closest('[aria-live]')).toBeNull();
+  });
 });

@@ -61,7 +61,7 @@ export function SeasonGrid({
     <div data-testid="season-planner" data-island={ready ? 'ready' : undefined}>
       <div className="mb-[26px] flex flex-wrap items-end justify-between gap-6">
         {heading}
-        <span aria-live="polite" className="inline-flex min-h-[38px] items-center">
+        <span className="inline-flex min-h-[38px] items-center">
           {nowLabel ? (
             <span className="inline-flex items-center gap-[9px] whitespace-nowrap rounded-pill border border-tint-border bg-tint px-4 py-[9px] text-[13px] font-extrabold text-blue-safe">
               <LiveDot />
@@ -165,7 +165,9 @@ export function SeasonGrid({
         </span>
       </div>
       <div className="flex flex-wrap items-center justify-between gap-[22px] rounded-lg bg-navy px-7 py-6 text-white max-xs:px-5">
-        <div className="min-w-0">
+        {/* The answer to a row press is announced (a polite live region); the "Now:" pill, which
+            appears with the island and changes with no visitor action, is not. */}
+        <div aria-live="polite" className="min-w-0">
           <p className="m-0 mb-2 text-[11.5px] font-extrabold uppercase tracking-[1.1px] text-sky">
             {active.name}
           </p>
