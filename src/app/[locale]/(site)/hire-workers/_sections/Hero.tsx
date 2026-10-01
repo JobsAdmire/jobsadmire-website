@@ -43,12 +43,17 @@ export function Hero({
   return (
     <section data-testid="hire-hero" className="relative overflow-hidden bg-navy text-white">
       {/* D26 + W129: the named hero slot. ImageSlot owns its box (full width at 9:4 —
-          HERO_SIZE), so the cover crop is this wrapper's job: height-led, at least full width,
-          centred, clipped by the section. With a photo (HERO_SRC) the image is the LCP element
-          (`data-lcp-slot="hw-hero"` + preload); without one it is a decorative named placeholder
-          and the h1 carries the LCP slot. */}
+          HERO_SIZE), so the cover crop is this wrapper's job, clipped by the section. W187: the
+          box never follows the text's height — when the Turkish web font arrives the h1 rewraps
+          and the hero grows, so a box sized (`h-full`) or centred from it moves and resizes
+          (CLS 0.137 on /isci-talebi). It is anchored top-left at a fixed height per breakpoint,
+          each above the tallest hero in its range (≈ 860 px phones, ≈ 1,330–1,500 px at
+          701–900 with the full quick-quote form, ≈ 750–1,000 px from 901); the photo, once the
+          stock pack lands (W174), is cropped from its left edge. With a photo (HERO_SRC) the
+          image is the LCP element (`data-lcp-slot="hw-hero"` + preload); without one it is a
+          decorative named placeholder and the h1 carries the LCP slot. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-1/2 top-1/2 aspect-[9/4] h-full min-w-full -translate-x-1/2 -translate-y-1/2">
+        <div className="absolute left-0 top-0 aspect-[9/4] h-[1200px] md:h-[1800px] lg:h-[1200px]">
           <ImageSlot
             slot="hw-hero"
             lcp={heroIsLcp}
