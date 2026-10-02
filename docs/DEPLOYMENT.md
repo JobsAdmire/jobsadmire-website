@@ -6,12 +6,12 @@ Full rationale: plan D24, WP0 item 7, WP7a. This doc is the operational referenc
 
 One Vercel project serves the site before and after the cutover: **`jobsadmirewebsite`** (`prj_Ze3FSd1XbvNbIe2OF2UQjRZ2ZAD6`, team "Tech Admire Apps"). The owner linked this repository to that existing project on 2026-09-20; the spec's second project `jobsadmire-web-v2` was never created and no domain ever moves (W105, W173).
 
-| Aspect                | State                                                                                                                                                                |
-| --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Domains               | `jobsadmire.com` + `www`, serving the project's production deployment                                                                                                |
-| Production deployment | The frozen old site, `dpl_hRVuY1faCQe8fQ44sqmw4t82Rs7A` (2026-02-17); its source repo is gone (the only copy is branch `main-backup` / tag `old-website-final`)      |
-| Git link              | This repo (`JobsAdmire/jobsadmire-website`), **Production Branch `main`**, held back by the two deploy guards (§ Deploy discipline) until the Phase A cutover        |
-| Previews              | Every other branch builds a preview behind Vercel Authentication (§ Deployment Protection); only the `staging` branch's preview carries the door variables (W92)     |
+| Aspect                | State                                                                                                                                                                                                                                    |
+| --------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Domains               | `jobsadmire.com` + `www`, serving the project's production deployment                                                                                                                                                                    |
+| Production deployment | The frozen old site, `dpl_hRVuY1faCQe8fQ44sqmw4t82Rs7A` (2026-02-17); its source repo is gone (the only copy is branch `main-backup` / tag `old-website-final`)                                                                          |
+| Git link              | This repo (`JobsAdmire/jobsadmire-website`), **Production Branch `main`**, held back by the two deploy guards (§ Deploy discipline) until the Phase A cutover                                                                            |
+| Previews              | Every other branch builds a preview behind Vercel Authentication (§ Deployment Protection); only the `staging` branch's preview carries the door variables (W92)                                                                         |
 | Plan                  | **Hobby** until the cutover: crons run daily at most, and Vercel Authentication is the only Deployment Protection setting. **Launch on Hobby — owner decision W201 (2026-10-02); Pro stays the recommendation and needs no code change** |
 
 The frozen production deployment is never redeployed, replaced or repointed before the cutover — its only job before Phase A is staying up.
