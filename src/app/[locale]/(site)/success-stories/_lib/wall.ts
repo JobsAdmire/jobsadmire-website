@@ -18,8 +18,9 @@ export type WallResultCopy = { showingAll: string; showingFiltered: string };
  * Pure `{token}` substitution — not ICU MessageFormat, because the templates travel as plain
  * strings rather than through next-intl's client runtime. Every count goes through `formatInt`
  * (D18). Turkish nouns do not inflect for plural, so `showingAll`'s "onay" never needs a second
- * form; the English reading is "Showing all approvals (n)" (W200 — the count sits in brackets, so n = 1 reads
- * precedent (design delta 10 — the card headcount's "1 work permits").
+ * form; the English reading is "Showing all approvals (n)" (W200 — the count sits in brackets,
+ * so n = 1 reads correctly); the card headcount's "1 work permits" stays the accepted design
+ * delta 10 until the v1.1 cards task resolves it through ICU (W200 A2).
  */
 export function wallResultLabels(
   templates: WallResultCopy,
