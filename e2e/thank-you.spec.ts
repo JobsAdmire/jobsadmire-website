@@ -7,26 +7,35 @@ const dataLayer = (page: import('@playwright/test').Page) =>
     () => (window as unknown as { dataLayer?: DataLayerEntry[] }).dataLayer ?? [],
   ) as Promise<DataLayerEntry[]>;
 
-const conversions = async (page: import('@playwright/test').Page, formKey: string) =>
-  (await dataLayer(page)).filter((e) => e.event === 'conversion' && e.form_key === formKey);
+const eventsFor = async (page: import('@playwright/test').Page, event: string, formKey: string) =>
+  (await dataLayer(page)).filter((e) => e.event === event && e.form_key === formKey);
+const conversions = (page: import('@playwright/test').Page, formKey: string) =>
+  eventsFor(page, 'conversion', formKey);
+const leads = (page: import('@playwright/test').Page, formKey: string) =>
+  eventsFor(page, 'generate_lead', formKey);
 
-test('the Turkish conversion page is noindex and fires the conversion once', async ({ page }) => {
+test('the Turkish conversion page is noindex and fires generate_lead + conversion once', async ({
+  page,
+}) => {
   const res = await page.goto('/tesekkurler?form=hire');
   expect(res?.status()).toBe(200);
   await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
   await expect(page.locator('h1')).toHaveCount(1);
 
   await expect.poll(async () => conversions(page, 'hire')).toHaveLength(1);
+  expect(await leads(page, 'hire')).toHaveLength(1);
   expect((await conversions(page, 'hire'))[0]).toMatchObject({
     page: '/tesekkurler',
     locale: 'tr',
   });
+  expect((await leads(page, 'hire'))[0]).toMatchObject({ page: '/tesekkurler', locale: 'tr' });
 
   // R37: a reload (or a back-forward restore) must not re-count the same lead — the
-  // per-session key survives the navigation, and the fresh dataLayer stays empty of it.
+  // per-session key survives the navigation, and the fresh dataLayer stays empty of both.
   await page.reload();
   await page.waitForTimeout(300);
   expect(await conversions(page, 'hire')).toHaveLength(0);
+  expect(await leads(page, 'hire')).toHaveLength(0);
 });
 
 test('the English conversion page answers under /en', async ({ page }) => {
@@ -40,6 +49,7 @@ test('an unknown form key renders the page without firing a conversion', async (
   await page.goto('/tesekkurler?form=profile_select');
   await expect(page.locator('h1')).toHaveCount(1);
   expect((await dataLayer(page)).filter((e) => e.event === 'conversion')).toHaveLength(0);
+  expect((await dataLayer(page)).filter((e) => e.event === 'generate_lead')).toHaveLength(0);
 });
 
 test('no container id means no consent sheet, but the denied defaults still ship', async ({
