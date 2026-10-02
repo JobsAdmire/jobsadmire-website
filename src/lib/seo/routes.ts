@@ -82,7 +82,6 @@ export function localeAlternates(href: Href): { languages: Record<string, string
 export const UNBUILT_PATHNAMES: ReadonlySet<keyof typeof pathnames> = new Set<
   keyof typeof pathnames
 >([
-  '/about',
   '/verify',
   '/careers',
   '/careers/[slug]',

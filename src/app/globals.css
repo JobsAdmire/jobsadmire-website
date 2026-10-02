@@ -274,3 +274,25 @@ h4 {
     stroke-dashoffset: 0;
   }
 }
+/* About hero corridor card: a dot travelling along each lane (the design's `ja-fly`, 6 s,
+   staggered 1.5 s). The global prefers-reduced-motion rule above stops it (D20): the design
+   gave this animation no override of its own. */
+@keyframes about-fly {
+  0% {
+    left: 0;
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    left: calc(100% - 8px);
+    opacity: 0;
+  }
+}
+.about-fly {
+  animation: about-fly 6s ease-in-out infinite;
+}
