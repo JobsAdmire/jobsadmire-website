@@ -65,7 +65,7 @@ The catalogue below is plan §4, with phase tags: **[A]** Phase A, **[B]** Phase
 
 ## I10 — Success stories (cards)
 
-**Direction:** Ops → Website. **Auth:** read token. **Phase:** B (cards only — no proof images until v1.1). **Shape:** part of the I1 bundle; `WebsiteCollection` item type `successStory`. **Failure/degraded:** 900 s time floor, last-good content on failure.
+**Direction:** Ops → Website. **Auth:** read token. **Phase:** B (cards only — no proof images until v1.1). **Shape:** part of the I1 bundle; `WebsiteCollection` item type `successStory`. Row shape = `StorySchema` in the Success Stories page's `_lib/stories.ts` (`docs/CONTENT-MODEL.md` § Collections); Phase A serves no rows (D23). **Failure/degraded:** 900 s time floor, last-good content on failure.
 
 ## I11 — Media
 
