@@ -118,10 +118,11 @@ describe('CareersHero (W1, W6, D26)', () => {
     expect(screen.getByRole('list', { name: t('jt.036') })).toHaveTextContent('Pakistan');
   });
 
-  // QA W220 CAR-01: ≤ 900 the design stacks the countries strip — label, one horizontally
-  // scrolling chip line (scrollbar hidden, bleeding into the 20 px gutters), the sentence — where
-  // the ported wrapping row squeezed the `flex-1` list into a one-chip column beside the label.
-  it('stacks the countries strip below lg with a single scrolling chip line (CAR-01)', () => {
+  // QA W220 CAR-01: ≤ 900 the design stacks the countries strip — label, chips, the sentence —
+  // where the ported wrapping row squeezed the `flex-1` list into a one-chip column beside the
+  // label. D20 delta: the chips wrap full-width instead of the design's hidden-scrollbar scroll
+  // line (document overflow + an axe contrast false positive in the first proof attempt).
+  it('stacks the countries strip below lg with the chips wrapping full-width (CAR-01, D20)', () => {
     renderWithIntl(
       <CareersHero t={t} locale="en" openingsCount={0} heroCards={[]} sourceCountries={SOURCE} />,
       { locale: 'en' },
@@ -129,21 +130,15 @@ describe('CareersHero (W1, W6, D26)', () => {
     const list = screen.getByRole('list', { name: t('jt.036') });
     const tokens = (el: Element) => (el.getAttribute('class') ?? '').split(/\s+/);
     expect(tokens(list)).toEqual(
-      expect.arrayContaining([
-        'max-lg:flex-none',
-        'max-lg:flex-nowrap',
-        'max-lg:overflow-x-auto',
-        'max-lg:-mx-5',
-        'max-lg:px-5',
-      ]),
+      expect.arrayContaining(['flex-wrap', 'max-lg:flex-none', 'max-lg:w-full']),
     );
+    // no scroll container, no gutter bleed: the width sweep and axe stay green
+    expect(tokens(list).some((c) => /overflow-x|-mx-|scrollbar/.test(c))).toBe(false);
     expect(tokens(list.parentElement!)).toEqual(
       expect.arrayContaining(['max-lg:flex-col', 'max-lg:items-stretch']),
     );
     for (const item of within(list).getAllByRole('listitem'))
-      expect(tokens(item)).toEqual(
-        expect.arrayContaining(['max-lg:flex-none', 'max-lg:whitespace-nowrap']),
-      );
+      expect(tokens(item)).toContain('max-lg:whitespace-nowrap');
   });
 
   it('with openings: the ICU count pill and the overseas roles, the third hidden up to 900 px (W10)', () => {
