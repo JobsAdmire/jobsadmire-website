@@ -61,6 +61,9 @@ export const GATE_ROUTE_TABLE: readonly GateRoute[] = [
   // it; Lighthouse and the sitemap never do. The TR index is the W6 empty state.
   { path: '/blog', indexable: false },
   { path: '/en/blog', indexable: false },
+  // T12 (B-14): the one written article (EN; TR has no body — W4). Pinned to the committed bundle
+  // by src/app/[locale]/(site)/blog/__tests__/gate-row.test.ts.
+  { path: '/en/blog/turkey-work-permit-process-employer-guide', indexable: false },
 ];
 
 export const GATE_ROUTES: readonly string[] = GATE_ROUTE_TABLE.map((r) => r.path);
