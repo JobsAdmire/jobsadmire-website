@@ -89,8 +89,10 @@ function sourcePathOf(referer: string | null): string | null {
 
 /** The visitor's own address: the first `x-forwarded-for` hop when it is a bare IP (the door
  *  validates with `isIP` and would otherwise fall back to Vercel's egress), else `x-real-ip`,
- *  else nothing. Never logged here — the door hashes it and this module never persists it. */
-function visitorOf(h: Awaited<ReturnType<typeof headers>>): PostFormVisitor {
+ *  else nothing. Never logged here — the door hashes it and this module never persists it.
+ *  Exported for the per-file upload actions (W101 — the Verify page's evidence island), which
+ *  are not `createFormAction`s but must hand the door the same visitor. */
+export function visitorOf(h: Awaited<ReturnType<typeof headers>>): PostFormVisitor {
   const forwarded = h.get('x-forwarded-for')?.split(',')[0]?.trim() ?? '';
   const real = h.get('x-real-ip')?.trim() ?? '';
   const ip = isIP(forwarded) ? forwarded : isIP(real) ? real : null;
