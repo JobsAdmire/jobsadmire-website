@@ -1,4 +1,4 @@
-import { ImageSlot } from '@/design/blocks/ImageSlot';
+import { ImageSlot, type CoverHeights } from '@/design/blocks/ImageSlot';
 import { StoreBadges } from '@/design/blocks/StoreBadges';
 import { CheckIcon } from '@/design/chrome/icons';
 import { Eyebrow } from '@/design/primitives/Eyebrow';
@@ -7,13 +7,19 @@ import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../../../../contract/website-bundle.v1';
 import { PORTAL_IDS, type Tf } from '../_lib/content';
 
+/** The laptop screen's fixed height per band (design ll. 380 / 999; ×0.75 from 1101, D19). */
+const LAPTOP_COVER: CoverHeights = { base: 240, md: 340, xl: 255 };
+
 /**
  * The partner-portal showcase. partner.159 is `{placed} placements` (W1); the store row is
  * `StoreBadges` with the Android link only (W8 — `ios` stays null; its micro-copy is hire.240,
  * never partner.162/163, W7). The laptop and phone shots are named placeholders until the owner
- * supplies them (W55) — never the LCP element; `ImageSlot` owns its box (W129), so the frames
- * size it: the laptop through its column, the phone through a 150 px wrapper hidden ≤ 700 px
- * by CSS (W10).
+ * supplies them (W55) — never the LCP element. The laptop slot runs the W189 cover mode at the
+ * design's fixed heights (240 px ≤ 700, the authored 340 px to 1100, 340 × 0.75 = 255 px from
+ * 1101 — Partner With Us ll. 380/999, D19), never a width-driven 720 × 340 ratio box: that box
+ * read ≈ 217 px in the 1440 column while the phone was 291 px, so the phone overshot the laptop
+ * and hid the address bar (QA W220 P-03). The phone is a 150 px wrapper, 112.5 px from 1101
+ * (`xl:` twin, W190 A1a / W194 A5), hidden ≤ 700 px by CSS (W10).
  */
 export function Portal({
   bundle,
@@ -79,9 +85,10 @@ export function Portal({
                 alt={tf(PORTAL_IDS.screenAlt)}
                 width={720}
                 height={340}
+                cover={LAPTOP_COVER}
               />
             </div>
-            <div className="absolute right-0 bottom-0 w-[150px] rounded-[24px] bg-[#0f2438] p-[7px] xl:p-[5.25px] shadow-[0_26px_56px_rgba(15,36,56,0.35)] xl:shadow-[0_19.5px_42px_rgba(15,36,56,0.35)] max-md:hidden">
+            <div className="absolute right-0 bottom-0 w-[150px] xl:w-[112.5px] rounded-[24px] bg-[#0f2438] p-[7px] xl:p-[5.25px] shadow-[0_26px_56px_rgba(15,36,56,0.35)] xl:shadow-[0_19.5px_42px_rgba(15,36,56,0.35)] max-md:hidden">
               <ImageSlot
                 slot="partner-portal-mobile"
                 alt={tf(PORTAL_IDS.mobileAlt)}

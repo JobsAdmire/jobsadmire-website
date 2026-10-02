@@ -35,10 +35,21 @@ const ACCENT: Record<TrackKey, { on: string; icon: string; cta: string }> = {
   },
 };
 const OFF = 'border-border-2 hover:border-tint-border';
+/** ≤ 700 the design's `.ja-track` is a compact ROW, not a stacked card (Partner With Us ll.
+ *  320–327, QA W220 P-04): `grid 40px 1fr 20px`, gaps 12 / 3, padding 13 × 14, radius 15, no
+ *  shadow; the icon spans both rows in column 1, the 16 px title and the clamped 12.5 px body
+ *  stack in column 2, and the CTA line becomes a chevron in column 3 — every row sits in an
+ *  explicit cell, since auto-placement would put the body beside the title. All `max-md:` twins
+ *  (1:1 values, D19); the pale chosen ground stays on `ACCENT.*.on`. */
 const CARD =
-  'flex h-full cursor-pointer flex-col rounded-lg border-[1.5px] bg-white p-7 shadow-[0_8px_24px_rgba(22,60,90,0.06)] xl:shadow-[0_6px_18px_rgba(22,60,90,0.06)] transition-[border-color,box-shadow] peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-blue-safe max-md:p-4';
+  'flex h-full cursor-pointer flex-col rounded-lg border-[1.5px] bg-white p-7 shadow-[0_8px_24px_rgba(22,60,90,0.06)] xl:shadow-[0_6px_18px_rgba(22,60,90,0.06)] transition-[border-color,box-shadow] peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-blue-safe max-md:grid max-md:grid-cols-[40px_1fr_20px] max-md:items-center max-md:gap-x-3 max-md:gap-y-[3px] max-md:px-3.5 max-md:py-[13px] max-md:rounded-[15px] max-md:shadow-none';
 const ICON_BOX =
-  'mb-4 flex h-12 w-12 shrink-0 items-center justify-center rounded-sm max-md:mb-3 max-md:h-10 max-md:w-10';
+  'mb-4 flex h-12 w-12 shrink-0 items-center justify-center rounded-sm max-md:mb-0 max-md:h-10 max-md:w-10 max-md:col-start-1 max-md:row-start-1 max-md:row-span-2 max-md:self-center max-md:rounded-[12px]';
+/** The design's phone chevron (`.ja-track > span:last-child::after`: "›", "⌄" on the chosen row)
+ *  as an SVG — U+2304 is outside Archivo's cmap and a bare `text-[24px]` would trip the desktop
+ *  twins scan — coloured by the track's CTA accent, shown ≤ 700 only (`md:hidden`, W119). */
+const CHEVRON =
+  'md:hidden max-md:col-start-3 max-md:row-start-1 max-md:row-span-2 max-md:justify-self-end';
 const WAYFINDER =
   'm-0 mb-3 flex items-center gap-2 text-body-sm font-extrabold uppercase tracking-[1.1px] xl:tracking-[0.825px] text-text-tertiary';
 
@@ -146,13 +157,13 @@ export function TrackChooser({
                   </span>
                   <span
                     id={`${id}-title`}
-                    className="block text-card-title font-extrabold text-ink"
+                    className="block text-card-title font-extrabold text-ink max-md:col-start-2 max-md:row-start-1 max-md:text-[16px] max-md:tracking-[-0.2px]"
                   >
                     {card.title}
                   </span>
                   <span
                     id={`${id}-body`}
-                    className="mt-2 block flex-1 text-body-sm text-text-secondary max-md:line-clamp-2"
+                    className="mt-2 block flex-1 text-body-sm text-text-secondary max-md:mt-0 max-md:col-start-2 max-md:row-start-2 max-md:text-[12.5px] max-md:leading-[1.4] max-md:line-clamp-2"
                   >
                     {card.body}
                   </span>
@@ -161,6 +172,23 @@ export function TrackChooser({
                     className={`mt-4 block text-body-sm font-extrabold max-md:hidden ${accent.cta}`}
                   >
                     {card.cta}
+                  </span>
+                  <span aria-hidden="true" className={`${CHEVRON} ${accent.cta}`}>
+                    <svg
+                      width="20"
+                      height="20"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="3"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      aria-hidden="true"
+                      focusable="false"
+                      className={on ? 'rotate-90' : undefined}
+                    >
+                      <path d="M9 6l6 6-6 6" />
+                    </svg>
                   </span>
                 </label>
               </div>

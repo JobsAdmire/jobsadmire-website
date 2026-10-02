@@ -83,6 +83,72 @@ describe('Tracks', () => {
     expect(screen.getByTestId('partner-form-hr')).toHaveAttribute('data-form-key', 'hire');
     expect(screen.queryByTestId('panel-sourcing')).toBeNull();
   });
+
+  // QA W220 P-04: ≤ 700 the design's `.ja-track` is a compact row — `grid 40px 1fr 20px`, the icon
+  // spanning both rows, the title over the clamped body, a "›" chevron at the right edge ("⌄" on
+  // the chosen row) — never a stacked card whose CTA line is hidden with nothing in its place.
+  it('lays the phone track cards out as the design’s compact row with a chevron (P-04)', () => {
+    renderWithIntl(
+      <Tracks
+        tf={tf}
+        panels={{
+          hr: <div data-testid="panel-hr" />,
+          sourcing: <div data-testid="panel-sourcing" />,
+          institute: <div data-testid="panel-institute" />,
+        }}
+      />,
+    );
+    const card = (key: string) => document.querySelector(`label[for="track-${key}"]`)!;
+    for (const key of ['hr', 'sourcing', 'institute']) {
+      const label = card(key);
+      expect(tokens(label)).toEqual(
+        expect.arrayContaining([
+          'flex',
+          'flex-col',
+          'max-md:grid',
+          'max-md:grid-cols-[40px_1fr_20px]',
+          'max-md:items-center',
+          'max-md:shadow-none',
+        ]),
+      );
+      expect(tokens(label)).not.toContain('max-md:p-4');
+      const [icon, title, body, cta, chevron] = [...label.children];
+      expect(tokens(icon)).toEqual(
+        expect.arrayContaining([
+          'max-md:col-start-1',
+          'max-md:row-start-1',
+          'max-md:row-span-2',
+          'max-md:mb-0',
+        ]),
+      );
+      expect(tokens(icon)).not.toContain('max-md:mb-3');
+      expect(tokens(title)).toEqual(
+        expect.arrayContaining(['max-md:col-start-2', 'max-md:row-start-1', 'max-md:text-[16px]']),
+      );
+      expect(tokens(body)).toEqual(
+        expect.arrayContaining([
+          'max-md:col-start-2',
+          'max-md:row-start-2',
+          'max-md:mt-0',
+          'max-md:line-clamp-2',
+        ]),
+      );
+      expect(tokens(cta)).toContain('max-md:hidden');
+      expect(chevron).toHaveAttribute('aria-hidden', 'true');
+      expect(tokens(chevron)).toEqual(
+        expect.arrayContaining([
+          'md:hidden',
+          'max-md:col-start-3',
+          'max-md:row-start-1',
+          'max-md:row-span-2',
+        ]),
+      );
+      expect(chevron.querySelector('svg')).not.toBeNull();
+    }
+    // the chosen row (HR by default) points its chevron down; the others point right
+    expect(card('hr').children[4].querySelector('svg')).toHaveClass('rotate-90');
+    expect(card('sourcing').children[4].querySelector('svg')).not.toHaveClass('rotate-90');
+  });
 });
 
 describe('TrackPanel', () => {

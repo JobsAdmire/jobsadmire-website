@@ -160,6 +160,35 @@ describe('Portal', () => {
     const phone = container.querySelector('[data-placeholder="partner-portal-mobile"]');
     expect(tokens(phone?.parentElement ?? null)).toContain('max-md:hidden');
   });
+
+  // QA W220 P-03: the phone wrapper carries its × 0.75 `xl:` twin (design 150 px → 112.5 px from
+  // 1101) and the laptop slot runs the W189 cover mode at the design's fixed heights (240 ≤ 700,
+  // the authored 340 to 1100, 255 from 1101) instead of a width-driven 720 × 340 ratio box, so the
+  // phone tucks into the laptop's lower-right corner and the address bar stays visible.
+  it('sizes the laptop by cover height and the phone with its xl twin (P-03)', () => {
+    const { container } = renderWithIntl(
+      <Portal bundle={TR} locale="tr" tf={tfTr} androidUrl={TR.settings.storeLinks.android} />,
+    );
+    const phone = container.querySelector('[data-placeholder="partner-portal-mobile"]');
+    expect(tokens(phone?.parentElement ?? null)).toEqual(
+      expect.arrayContaining(['w-[150px]', 'xl:w-[112.5px]']),
+    );
+    const laptop = container.querySelector<HTMLElement>(
+      '[data-placeholder="partner-portal-screen"]',
+    )!;
+    expect(laptop).toHaveClass(
+      'w-full',
+      'object-cover',
+      'h-(--cover-h)',
+      'md:h-(--cover-h-md)',
+      'xl:h-(--cover-h-xl)',
+    );
+    expect(laptop.style.aspectRatio).toBe('');
+    expect(laptop.style.getPropertyValue('--cover-h')).toBe('240px');
+    expect(laptop.style.getPropertyValue('--cover-h-md')).toBe('340px');
+    expect(laptop.style.getPropertyValue('--cover-h-lg')).toBe('340px');
+    expect(laptop.style.getPropertyValue('--cover-h-xl')).toBe('255px');
+  });
 });
 
 describe('Faq', () => {
