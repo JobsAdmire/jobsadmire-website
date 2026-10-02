@@ -24,7 +24,7 @@ describe('page <Link>s carry an explicit prefetch prop (W186/W195)', () => {
     const offenders: string[] = [];
     for (const file of walk(ROOT)) {
       const source = readFileSync(file, 'utf8');
-      for (const match of source.matchAll(/<Link\b([^>]*?)>/gs)) {
+      for (const match of source.matchAll(/<Link\b([^>]*?)>/g)) {
         if (!/\bprefetch\s*=/.test(match[1])) {
           const line = source.slice(0, match.index).split('\n').length;
           offenders.push(`${relative(process.cwd(), file)}:${line}`);
