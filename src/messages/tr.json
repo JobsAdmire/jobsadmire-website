@@ -76,6 +76,10 @@
       "about": {
         "title": "JobsAdmire Hakkında — İŞKUR lisanslı özel istihdam bürosu, Antalya",
         "description": "JobsAdmire, Antalya merkezli İŞKUR lisanslı özel istihdam bürosu: Türkiye genelindeki işverenlere nitelikli yabancı işçi ve eksiksiz çalışma izni süreci."
+      },
+      "contact": {
+        "title": "JobsAdmire İletişim — Türkiye’de Lisanslı İşe Alım Ajansı",
+        "description": "JobsAdmire Antalya merkez ofisini arayın ya da WhatsApp’tan yazın: işçi talebi, çalışma izni ve iş ortaklığı için tek numara, mesai saatlerinde gerçek bir kişi."
       }
     },
     "consent": {
@@ -261,6 +265,45 @@
       "whatsapp": {
         "demo": "Merhaba JobsAdmire, CRM portalınızın demosunu görmek istiyorum.",
         "consult": "Merhaba JobsAdmire, ücretsiz danışmanlık almak istiyorum."
+      }
+    },
+    "contact": {
+      "languages": {
+        "tr": "Türkçe",
+        "en": "English",
+        "fr": "Français",
+        "hi": "हिन्दी",
+        "ru": "Русский"
+      },
+      "channels": {
+        "whatsapp": "WhatsApp",
+        "open": "WhatsApp’ı açın →"
+      },
+      "status": {
+        "openNow": "Şu anda açık · yerel saat {time} · kapanış {close}",
+        "closedOpensAt": "Kapalı · açılış {open} · yerel saat {time}",
+        "closedOpensTomorrow": "Kapalı · yarın açılış {open}",
+        "closedOpensOn": "Kapalı · açılış {day} {open}",
+        "opensAt": "Açılış {open}",
+        "waWatched": "Şu anda takipte — mesai saatlerinde canlı temsilci yanıtlıyor",
+        "waOff": "Mesai dışı — yanıt bir sonraki iş günü sabahı gelir"
+      },
+      "visit": {
+        "submit": "Ziyaret saati talep edin"
+      },
+      "wa": {
+        "main": "Merhaba JobsAdmire, Türkiye’de işçi istihdamı hakkında bir sorum var.",
+        "jobseeker": "Merhaba JobsAdmire, adayım. Ülkem: ___ / Mesleğim: ___. Lütfen ülkemdeki doğrulanmış tedarik ortağınızın iletişim bilgisini gönderin.",
+        "visitSite": "Merhaba JobsAdmire, işçi sayısına karar vermeden önce işyerime bir saha ziyareti istiyorum."
+      },
+      "fallbackIntro": {
+        "contact": "Merhaba JobsAdmire, web sitenizdeki iletişim formu gönderilemedi. Talebim:",
+        "callback": "Merhaba JobsAdmire, geri arama formu gönderilemedi — lütfen beni geri arayın. Bilgilerim:",
+        "visit": "Merhaba JobsAdmire, ziyaret formu gönderilemedi — Antalya ofisini ziyaret etmek istiyorum. Bilgilerim:"
+      },
+      "faq": {
+        "a3": "Mesai saatlerinde ({hours}, Türkiye saati) en hızlı kanal WhatsApp’tır; e-postalar yaklaşık {replyHours} iş saati içinde yanıtlanır. Gece ya da hafta sonu gönderilen mesajlar bir sonraki iş günü sabahı ele alınır.",
+        "a5": "Evet, ancak JobsAdmire bireysel başvuruları doğrudan almaz: B2B bir ajanstır ve ülkenizdeki doğrulanmış tedarik ortakları aracılığıyla çalışır. Yukarıdan “İş arıyorum” seçeneğini seçip mesaj gönderin; JobsAdmire size doğrulanmış ortağın iletişim bilgisini iletir. JobsAdmire bir işçiden asla yerleştirme ücreti almaz — biri JobsAdmire adına sizden para isterse WhatsApp’tan bildirin."
       }
     },
     "form": {

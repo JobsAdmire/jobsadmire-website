@@ -76,6 +76,10 @@
       "about": {
         "title": "About JobsAdmire — İŞKUR-licensed employment agency, Antalya",
         "description": "JobsAdmire is an İŞKUR-licensed private employment agency in Antalya, Türkiye: skilled overseas workers for employers across Türkiye, every work permit handled."
+      },
+      "contact": {
+        "title": "Contact JobsAdmire — Licensed Recruitment Agency in Türkiye",
+        "description": "Call or WhatsApp the JobsAdmire head office in Antalya: one number for worker requests, permits and partnerships, answered by a real person in office hours."
       }
     },
     "consent": {
@@ -261,6 +265,45 @@
       "whatsapp": {
         "demo": "Hello JobsAdmire, I would like a demo of your CRM portal.",
         "consult": "Hello JobsAdmire, I would like a free consultation."
+      }
+    },
+    "contact": {
+      "languages": {
+        "tr": "Türkçe",
+        "en": "English",
+        "fr": "Français",
+        "hi": "हिन्दी",
+        "ru": "Русский"
+      },
+      "channels": {
+        "whatsapp": "WhatsApp",
+        "open": "Open WhatsApp →"
+      },
+      "status": {
+        "openNow": "Open now · {time} local · closes {close}",
+        "closedOpensAt": "Closed · opens {open} · {time} local",
+        "closedOpensTomorrow": "Closed · opens {open} tomorrow",
+        "closedOpensOn": "Closed · opens {day} {open}",
+        "opensAt": "Opens {open}",
+        "waWatched": "Watched now — a live agent replies in office hours",
+        "waOff": "Off hours — expect a reply the next business morning"
+      },
+      "visit": {
+        "submit": "Request a visit slot"
+      },
+      "wa": {
+        "main": "Hello JobsAdmire, I have a question about hiring workers in Türkiye.",
+        "jobseeker": "Hello JobsAdmire, I am a candidate. My country: ___ / My trade: ___. Please send me the contact of your verified sourcing partner in my country.",
+        "visitSite": "Hello JobsAdmire, I would like a site visit before deciding on worker numbers."
+      },
+      "fallbackIntro": {
+        "contact": "Hello JobsAdmire, the contact form on your website did not go through. My enquiry:",
+        "callback": "Hello JobsAdmire, the callback form did not go through — please call me back. My details:",
+        "visit": "Hello JobsAdmire, the visit booking form did not go through — I would like to visit the Antalya office. My details:"
+      },
+      "faq": {
+        "a3": "WhatsApp is the fastest channel in office hours ({hours}, Turkish time); e-mail is answered within about {replyHours} business hours. Messages sent at night or over the weekend are picked up the next business morning.",
+        "a5": "Yes, but JobsAdmire does not take individual applications directly: it is a B2B agency and works through verified sourcing partners in your country. Pick “I am looking for a job” above and send a message; JobsAdmire replies with the verified partner’s contact. JobsAdmire never charges a worker a placement fee — if anyone asks you for money in its name, report it on WhatsApp."
       }
     },
     "form": {
