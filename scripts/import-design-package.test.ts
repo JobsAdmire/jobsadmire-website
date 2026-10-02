@@ -52,18 +52,20 @@ describe('import-design-package — strings', () => {
 });
 
 describe('import-design-package — W7 overrides', () => {
-  it('applies the 30-id override table and logs every locale value it changed', () => {
+  it('applies the 64-id override table and logs every locale value it changed', () => {
     // 25 + calc.131 (T3 review A2, W190) + availworkers.025, verify.042/043/016 and calc.483
-    // (QA W220 W-01 / V-02 / V-03 / calc-01)
-    expect(Object.keys(overrides)).toHaveLength(30);
-    expect(report.overrides).toHaveLength(35);
+    // (QA W220 W-01 / V-02 / V-03 / calc-01) + the QA round-2 set (W221 E/A + conventions, W222 (4)):
+    // 34 ids / 49 values — hire.201/203/215/221, 17 wording fixes, the brand / UK-English /
+    // SEO-length conventions and the two capitalised leading tails
+    expect(Object.keys(overrides)).toHaveLength(64);
+    expect(report.overrides).toHaveLength(84);
     for (const row of report.overrides) expect(row.before).not.toBe(row.after);
   });
   it('fixes the three TR package defects', () => {
     expect(tr.strings['hire.043']).toBe('4 iş saati içinde geri dönüş');
     expect(en.strings['hire.043']).toBe('Reply in 4 working hours');
     // W220 W-01: the Turkish h1 is 024 + 025 — the locative joins the highlighted fragment
-    expect(tr.strings['availworkers.025']).toBe('Türkiye’de başlamaya hazır');
+    expect(tr.strings['availworkers.025']).toBe("Türkiye'de başlamaya hazır"); // straight ' (W221)
     expect(tr.strings['availworkers.026']).toBe('');
     expect(en.strings['availworkers.025']).toBe('ready to start');
     expect(tr.strings['blogarticle.033']).toBe('işveren');
@@ -127,9 +129,86 @@ describe('import-design-package — W7 overrides', () => {
   });
 });
 
+describe('import-design-package — QA round 2 overrides and house style (W221, W222)', () => {
+  const of = (locale: 'tr' | 'en') => (locale === 'tr' ? tr : en).strings;
+  it('HW-06: the Hire Workers copy describes the door flow, never a WhatsApp hand-off', () => {
+    for (const id of ['hire.201', 'hire.203', 'hire.215', 'hire.221']) {
+      expect(en.strings[id], id).not.toMatch(/WhatsApp/);
+      expect(tr.strings[id], id).not.toMatch(/WhatsApp/);
+    }
+    expect(en.strings['hire.215']).toBe('Takes 1 minute.');
+    expect(tr.strings['hire.203']).toBe('— talebiniz ekibimize ulaşır');
+    expect(catalogue['hire.201'].legal).toBe(true); // owner signs the words (WP-C)
+    expect(catalogue['hire.201'].edits).toEqual(['override']);
+  });
+  it('bucket A copy: the dative, the page name, the plural, the chain tail, the labels, the spellings', () => {
+    expect(tr.strings['calc.113']).toBe("'e çıkar.");
+    expect(tr.strings['wp.346']).toContain('İş Ortağı Olun sayfasında');
+    expect(tr.strings['wp.267']).toBe('2–6. haftalar');
+    expect(tr.strings['partner.048']).toMatch(/işverenler$/);
+    expect(tr.strings['partner.049']).toBe('sayfasından başlayabilir.');
+    expect(en.strings['partner.118']).not.toMatch(/monthly/);
+    expect(tr.strings['about.022']).toBe('Hakkında');
+    expect(tr.strings['contact.115']).toContain('onaylar.');
+    expect(en.strings['availworkers.144']).toBe('Which roles?');
+    expect(tr.strings['availworkers.152']).toBe('Hizmet verdiğiniz sektörler');
+    expect(tr.strings['availworkers.016']).toBe('Adayları gör');
+    for (const id of ['home.006', 'hire.007', 'calc.316'])
+      expect(tr.strings[id], id).toBe('Başarı Hikâyeleri');
+    expect(tr.strings['verify.089']).toBe(
+      'Bugün imzalamanız ya da ödeme yapmanız için baskı yapıyor.',
+    );
+    expect(tr.strings['jt.312']).toBe('pozisyonu (');
+    expect(tr.strings['home.219']).toBe('Kullanım Koşulları');
+    expect(tr.strings['home.228']).toMatch(/^İŞKUR İzin Belgesi No: 1730 · /);
+  });
+  it('house style: the brand is one word, UK English, the capitalised leading tails', () => {
+    for (const locale of ['tr', 'en'] as const) {
+      expect(of(locale)['partner.214']).toBe('© 2026 JobsAdmire');
+      expect(of(locale)['about.023']).toBe('JobsAdmire');
+    }
+    expect(en.strings['about.052']).toContain('licence');
+    expect(en.strings['about.080']).toContain('standardised');
+    // W222 (4): the TR tails open their CTA (tailFirst), so they are title-cased like verify.016
+    expect(tr.strings['wp.017']).toBe('İzin İçin');
+    expect(tr.strings['partner.018']).toBe('İş Ortaklığı İçin');
+    expect(tr.strings['wp.016']).toBe('Başvurun'); // the stand-alone short form at 901–1100
+  });
+  it('SEO lengths on the two trimmed pages: titles ≤ 66, descriptions ≤ 160 in both locales', () => {
+    for (const locale of ['tr', 'en'] as const) {
+      const s = of(locale);
+      for (const id of ['hire.264', 'partner.222']) {
+        expect(s[id].length, `${id} ${locale}`).toBeLessThanOrEqual(66);
+        expect(s[id], id).toMatch(/\| JobsAdmire$/);
+      }
+      for (const id of ['hire.265', 'partner.223'])
+        expect(s[id].length, `${id} ${locale}`).toBeLessThanOrEqual(160);
+      // the same claims survive the trim
+      expect(s['hire.265']).toMatch(/6–8/);
+      expect(s['hire.265']).toMatch(/1730/);
+      expect(s['hire.265']).toMatch(/24/);
+    }
+  });
+  it('the apostrophe rule: every TR value is straight, EN and the catalogue rev untouched', () => {
+    expect(report.apostrophe).toBe(90);
+    for (const [id, v] of Object.entries(tr.strings)) expect(v, id).not.toContain('’');
+    // EN keeps its three typographic apostrophes — the rule is Turkish copy only
+    expect(en.strings['verify.090']).toContain('’');
+    expect(catalogue['contact.027'].edits).toEqual(['apostrophe']);
+    expect(catalogue['contact.027'].packageRev).toBeUndefined(); // TR-only: the package rev stands
+    // an override written straight needs no normalisation (and pre-empts the Türkiye rule)
+    expect(catalogue['partner.222'].edits).toEqual(['override']);
+    expect(catalogue['availworkers.025'].edits).toEqual(['override']);
+    // the W87 literal is matched in the straight spelling after the rule
+    expect(placeholders.literals.countries).toContain("[12'den fazla] ülke");
+  });
+});
+
 describe('import-design-package — Türkiye rule (W7, README)', () => {
   it('normalises every EN "Turkey" and logs the count', () => {
-    expect(report.turkiye).toBe(93);
+    // 93 package values; the W221 overrides of hire.264/265 and partner.222 already say Türkiye,
+    // so the rule meets three fewer
+    expect(report.turkiye).toBe(90);
     for (const v of Object.values(en.strings)) expect(v).not.toMatch(/\bTURKEY\b|\bTurkey\b/);
     expect(en.strings['availworkers.026']).toBe('in Türkiye');
     expect(en.strings['about.091']).toBe('HEAD OFFICE · TÜRKİYE');
@@ -183,7 +262,7 @@ describe('import-design-package — metric placeholders (W1, D17)', () => {
   });
   it('re-authors the W87 spellings: 12+ countries → {countries}, one business day → {replySlaHours} working hours', () => {
     expect(placeholders.literals.countries).toEqual(
-      expect.arrayContaining(['[12+] countries', '[12’den fazla] ülke']),
+      expect.arrayContaining(['[12+] countries', "[12'den fazla] ülke"]),
     );
     expect(placeholders.literals.replySlaHours).toEqual(
       expect.arrayContaining(['[one business day]', '[bir iş günü]']),
@@ -203,7 +282,7 @@ describe('import-design-package — metric placeholders (W1, D17)', () => {
     const hits = (strings: Record<string, string>, re: RegExp) =>
       Object.keys(strings).filter((id) => re.test(strings[id]));
     expect(hits(en.strings, /12\+|one business day/i)).toEqual([]);
-    expect(hits(tr.strings, /12\+|12’den fazla|bir iş günü/i)).toEqual([]);
+    expect(hits(tr.strings, /12\+|12['’]den fazla|bir iş günü/i)).toEqual([]);
   });
   it('refuses a unit rewrite (`as`) without a pinned literal or without its {key} exactly once', () => {
     const file = (entry: Record<string, unknown>) =>

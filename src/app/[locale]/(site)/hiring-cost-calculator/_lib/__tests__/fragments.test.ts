@@ -23,7 +23,7 @@ describe('sp — the gap between two trimmed package fragments', () => {
   it('glues closing punctuation and apostrophe suffixes', () => {
     expect(sp('1', EN['calc.042'])).toBe(''); // "?"
     expect(sp(EN['calc.155'], EN['calc.156'])).toBe(''); // ", not per company …"
-    expect(sp(TR['calc.408'], TR['calc.113'])).toBe(''); // "'ye çıkar."
+    expect(sp(TR['calc.408'], TR['calc.113'])).toBe(''); // "'e çıkar." (QA W221 calc-02)
     expect(sp('64.988 ₺ / ay', TR['calc.039'])).toBe(''); // "."
   });
   it('glues the Turkish suffix fragments the package splits off a highlighted word', () => {
@@ -49,7 +49,7 @@ describe('joinText', () => {
       /it doubles to ₺205,008 per worker\.$/,
     );
     expect(joinText([TR['calc.112'], TR['calc.408'], TR['calc.113']])).toMatch(
-      /işçi başına ₺205\.008'ye çıkar\.$/,
+      /işçi başına ₺205\.008'e çıkar\.$/,
     );
     // The package's own TR pair glues to the design's rendered text, typo included (calc.130 ends
     // "fazlası", calc.131 starts "ıdır") — a WP-C copy item, never patched here.

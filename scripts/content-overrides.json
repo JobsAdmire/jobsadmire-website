@@ -4,8 +4,8 @@
     "reason": "W7 — the package TR carried the whole trust trio (hire.042–044) in this one id; beside hire.042/044 it duplicated two chips. Legal-flagged: EN verbatim, TR trimmed to the middle chip."
   },
   "availworkers.025": {
-    "tr": "Türkiye’de başlamaya hazır",
-    "reason": "W7 / QA W220 W-01 — natural Turkish order: the locative joins the highlighted fragment (the EN order 024 + 025 + 026 read 'Doğrulanmış işçiler, başlamaya hazır Türkiye'de'); the design's sky highlight stays on 'ready to start'."
+    "tr": "Türkiye'de başlamaya hazır",
+    "reason": "W7 / QA W220 W-01 — natural Turkish order: the locative joins the highlighted fragment (the EN order 024 + 025 + 026 read 'Doğrulanmış işçiler, başlamaya hazır Türkiye'de'); the design's sky highlight stays on 'ready to start'. Straight apostrophe (W221 house style)."
   },
   "availworkers.026": {
     "tr": "",
@@ -123,5 +123,156 @@
   "calc.483": {
     "tr": "Bordroda hayır. Brüt maaş ve SGK ödemeleri aynıdır, çünkü Türk iş hukuku iki işçiye de aynı şekilde davranır. Ek maliyet yalnızca bir kez ödenir: her izin dönemi için işçi başına yaklaşık ₺16.000 izin ve kart harcı, artı siz karşılıyorsanız seyahat. Birkaç yıllık bir sözleşmede aylık fark küçüktür.",
     "reason": "QA W220 calc-01 — the package's own typo in FAQ_TR faq2A ('aylk' → 'aylık'; EN reads 'the difference per month', the design's other 12 uses read 'aylık'). Legal-flagged: EN verbatim, TR spelling only (W190 A2 mechanism)."
+  },
+  "hire.201": {
+    "en": "Fill the form — your requirement goes straight to our team, and you get a written proposal within 24 hours.",
+    "tr": "Formu doldurun — talebiniz doğrudan ekibimize ulaşır ve 24 saat içinde yazılı teklif alırsınız.",
+    "reason": "QA W221 HW-06 — the package promised 'continue on WhatsApp'; the form posts to the Operations door and lands on /tesekkurler (PRD row 2, D13), WhatsApp is the failure fallback only. Legal-flagged (the 24-hour promise, baselined): the owner signs the final words (WP-C); the misleading hand-off does not ship meanwhile."
+  },
+  "hire.203": {
+    "en": "— your requirement reaches our team",
+    "tr": "— talebiniz ekibimize ulaşır",
+    "reason": "QA W221 HW-06 — step 1's tail after hire.202 'Submit the form' read 'it opens WhatsApp with your requirement pre-filled'; the form posts to the door. Owner signs (WP-C)."
+  },
+  "hire.215": {
+    "en": "Takes 1 minute.",
+    "tr": "1 dakika sürer.",
+    "reason": "QA W221 HW-06 — the form head's sub-line read 'continues on WhatsApp'. Owner signs (WP-C)."
+  },
+  "hire.221": {
+    "en": "Prefer email?",
+    "tr": "E-posta ile mi yazmak istersiniz?",
+    "reason": "QA W221 HW-06 — the footnote before the mailto link hire.222 ('Send this request by email') asked 'Don't use WhatsApp?'; the form never used WhatsApp. 'email' as hire.213/222 spell it. Owner signs (WP-C)."
+  },
+  "home.228": {
+    "tr": "İŞKUR İzin Belgesi No: 1730 · İş arayanlardan hiçbir ücret alınmaz (4904 sayılı kanun) · Vergi No: 48422122",
+    "reason": "QA W221 H-07 — the design's own HP_T tr.legal line; the package TR said 'Belge No.' while the licence chip hire.019 says 'İzin Belgesi No'. Legal-flagged: wording of the licence label only, the three figures untouched; EN already matches."
+  },
+  "calc.113": {
+    "tr": "'e çıkar.",
+    "reason": "QA W221 calc-02 — the dative suffix after calc.408 '₺205.008' (…bin sekiz) is -e, not -ye: '₺205.008'e çıkar.'"
+  },
+  "calc.213": {
+    "tr": "Nitelikli mesleklerde zor — kaynakçı, makine operatörü ve sezonluk işler aylarca boş kalabiliyor",
+    "reason": "QA W221 calc-07 — EN 'stay empty for months'; the package TR read 'aylık süreyle' (for a monthly period), a mistranslation."
+  },
+  "wp.346": {
+    "tr": "Evet — İK ajansı iş ortaklığımız tam olarak budur: müşteri sizde kalır, biz doğrulanmış işçi sağlar ve her izni kendi İŞKUR lisansımızla dosyalarız. İş birliğinin nasıl işlediğini İş Ortağı Olun sayfasında görebilir ya da bize WhatsApp'tan yazabilirsiniz.",
+    "reason": "QA W221 WP-03 — the FAQ answer named a 'Bizimle Çalışın' page; the Partner With Us page is 'İş Ortağı Olun' (home.008) everywhere else."
+  },
+  "wp.267": {
+    "tr": "2–6. haftalar",
+    "reason": "QA W221 WP-06 — the sibling timeline labels wp.269 '6–9. haftalar' and wp.276 '1–5. haftalar' use the plural; this one did not."
+  },
+  "partner.048": {
+    "tr": "Biz lisanslı bir işe alım ajansıyız — müşteri ilişkinizi asla devralmayız ve sizi atlayarak doğrudan sözleşme imzalamayız. Doğrudan işçi almak isteyen işverenler",
+    "reason": "QA W221 P-06 — Chain.tsx composes 048 + the İşçi Talebi link (partner.002) + 049; the package TR ended 048 with 'şu sayfadan başlayabilir:' so the link followed a full stop and 049 'sayfası.' dangled. EN verbatim."
+  },
+  "partner.049": {
+    "tr": "sayfasından başlayabilir.",
+    "reason": "QA W221 P-06 — the tail after the link: '…işverenler İşçi Talebi sayfasından başlayabilir.' (with partner.048)."
+  },
+  "partner.118": {
+    "en": "Which professions and how many candidates can you supply?",
+    "tr": "Hangi meslekleri ve kaç aday tedarik edebilirsiniz?",
+    "reason": "QA W221 P-07 — the sourcing form asks for a one-off capacity, not a monthly rate ('monthly' / 'aylık' dropped in both locales)."
+  },
+  "partner.222": {
+    "en": "Recruitment Agency Partnership in Türkiye | JobsAdmire",
+    "tr": "Türkiye'de İşe Alım Ajansı Ortaklığı | JobsAdmire",
+    "reason": "QA W221 P-08 / WP-C SEO lengths — the package title ran 98 (EN) / 104 (TR) characters with the three audiences listed; ≤ 66 keeps the page's subject and the brand, the audiences stay in the description partner.223 (124 / 125). Recorded for the owner's review (qa-sweep-2026-10-03.md § Owner items)."
+  },
+  "about.022": {
+    "tr": "Hakkında",
+    "reason": "QA W221 about-07 — Turkish puts the postposition after its noun: the h1 composes 'JobsAdmire Hakkında' (about.023 first in TR, about/page.tsx), not 'Hakkımızda Jobs Admire'."
+  },
+  "about.023": {
+    "en": "JobsAdmire",
+    "tr": "JobsAdmire",
+    "reason": "W221 house style — the brand is one word everywhere; the package h1 fragment read 'Jobs Admire'."
+  },
+  "contact.115": {
+    "tr": "Size uygun gün ve saati seçin. Destek ekibimiz randevunuzu bir saat içinde WhatsApp üzerinden onaylar. Kahve bizden.",
+    "reason": "QA W221 contact-04 — 'onaylasın' (let them confirm) was an optative where EN states a fact ('the support team confirms your slot'); declarative 'onaylar'."
+  },
+  "availworkers.144": {
+    "en": "Which roles?",
+    "tr": "Hangi pozisyonlar?",
+    "reason": "QA W221 W-05 (resolves W-04) — the trade field's label asked 'and how many workers?' while headcount is its own field beside it (RequestFormFields, T8 delta 4)."
+  },
+  "availworkers.145": {
+    "en": "Sector and target start date",
+    "tr": "Sektör ve hedef başlangıç tarihi",
+    "reason": "QA W221 W-05 — the message placeholder asked for the city, which is its own required field; the forms kernel already marks the field 'Optional' (sys.form.hints.optional), so the suffix goes too."
+  },
+  "availworkers.151": {
+    "en": "Which roles do your clients need?",
+    "tr": "Müşterileriniz hangi pozisyonlara ihtiyaç duyuyor?",
+    "reason": "QA W221 W-05 — the HR-agency form carries the same headcount field, so its trade label drops 'and what volume?' like availworkers.144."
+  },
+  "availworkers.152": {
+    "en": "Sectors you serve",
+    "tr": "Hizmet verdiğiniz sektörler",
+    "reason": "QA W221 W-05 — the HR-agency form carries the same city field, so its message placeholder drops 'and cities' like availworkers.145 (and the '(optional)' suffix the kernel prints itself)."
+  },
+  "availworkers.016": {
+    "en": "See candidates",
+    "tr": "Adayları gör",
+    "reason": "QA W221 W-08 — the header CTA was 'Bkz.' + the nav label home.003 'Adaylar' ('See' + 'Candidates'); the split read as a footnote abbreviation on phones. One label, no tail (src/design/chrome/ctas.ts)."
+  },
+  "home.006": {
+    "tr": "Başarı Hikâyeleri",
+    "reason": "QA W221 ST-1 — TDK spelling with the circumflex, as the other ten 'Hikâyeleri' ids in the package."
+  },
+  "hire.007": {
+    "tr": "Başarı Hikâyeleri",
+    "reason": "QA W221 ST-1 — TDK spelling with the circumflex (see home.006)."
+  },
+  "calc.316": {
+    "tr": "Başarı Hikâyeleri",
+    "reason": "QA W221 ST-1 — TDK spelling with the circumflex (see home.006)."
+  },
+  "verify.089": {
+    "tr": "Bugün imzalamanız ya da ödeme yapmanız için baskı yapıyor.",
+    "reason": "QA W221 V-04 — red flag 5's bold lead carried a second sentence that belongs to its body verify.090 ('Gerçek bir teklif… zarar görmez'), so the card read the thought twice. Legal-flagged: the duplicated sentence is dropped, nothing reworded; EN verbatim."
+  },
+  "jt.312": {
+    "tr": "pozisyonu (",
+    "reason": "QA W221 CAR-06 — the careers detail composes '<title> pozisyonu (<location>)'; the bare 'pozisyon (' lacked the possessive."
+  },
+  "home.219": {
+    "tr": "Kullanım Koşulları",
+    "reason": "QA W221 LEGAL-02 — the Terms page (sys.legal.terms.title) and its slug /kullanim-kosullari say 'Koşulları'; the footer link said 'Şartları'."
+  },
+  "partner.214": {
+    "en": "© 2026 JobsAdmire",
+    "tr": "© 2026 JobsAdmire",
+    "reason": "QA W221 H-04 / house style — the footer's © line (the chrome's canonical id); the brand is one word."
+  },
+  "about.052": {
+    "en": "İŞKUR licence granted — permit No. 1730",
+    "reason": "W221 house style — UK English ('licence', as sys.about.licence.*). Legal-flagged: spelling only, the figure untouched (W190 A2 mechanism)."
+  },
+  "about.080": {
+    "en": "Offer letters and candidate CVs generated automatically by the system — standardised, error-free, ready in seconds.",
+    "reason": "W221 house style — UK English ('standardised')."
+  },
+  "hire.264": {
+    "en": "Hire Verified Overseas Workers in Türkiye | JobsAdmire",
+    "tr": "Türkiye'de belgeli yabancı işçi istihdamı | JobsAdmire",
+    "reason": "WP-C SEO lengths (W221) — the <title> ran 71 (EN) / 69 (TR) characters; ≤ 66 drops the '| İŞKUR-Licensed' middle, which the description keeps. The package's own short pair hire.266 (the OG title) is exactly this text. Legal-flagged: the licence claim moves to the description, no figure changes. Recorded for the owner's review."
+  },
+  "hire.265": {
+    "en": "Hire skilled overseas workers in Türkiye in 6–8 weeks. İŞKUR permit No. 1730: permits filed, candidates vetted, no upfront fee. Written quote in 24 hours.",
+    "tr": "Yurt dışından Türkiye'ye nitelikli işçi, 6–8 haftada. İŞKUR izinli (No: 1730) — izinleri alırız, adayları doğrularız, peşin ücret yok. 24 saatte yazılı teklif.",
+    "reason": "WP-C SEO lengths (W221) — the meta description ran 199 (EN) / 242 (TR) characters; ≤ 160 with the same claims (6–8 weeks, the İŞKUR permit number, permits filed, candidates vetted, no upfront fee, the written 24-hour quote). Legal-flagged, baselined for firstDayWeeks/homepageReplyHours: the figures are unchanged. Recorded for the owner's review."
+  },
+  "wp.017": {
+    "tr": "İzin İçin",
+    "reason": "W222 (4) / QA WP-08 — the TR header CTA renders its tail before the verb (`tailFirst`, src/design/chrome/ctas.ts), so the tail opens the label and is title-cased like 'Sahtekârı Bildir': 'İzin İçin Başvurun'. The label wp.016 'Başvurun' stays capitalised because it stands alone at 901–1100. EN unchanged."
+  },
+  "partner.018": {
+    "tr": "İş Ortaklığı İçin",
+    "reason": "W222 (4) / QA P-10 — the TR header CTA renders its tail first ('İş Ortaklığı İçin Başvurun'); title-cased as the leading word, the label partner.017 stays 'Başvurun' for its stand-alone short form at 901–1100. EN unchanged."
   }
 }

@@ -2,7 +2,7 @@
  * The package ships the design's sentence fragments TRIMMED — its dictionary carried the spaces
  * (`p1B2: " per worker."`, `cQuotaQ1: "Can you hire "`), the bundle does not — so every place the
  * design glued two fragments needs its space back. Except where the right-hand fragment closes
- * the clause (punctuation), carries an apostrophe suffix (`'ye çıkar.`), or continues the word as
+ * the clause (punctuation), carries an apostrophe suffix (`'e çıkar.`), or continues the word as
  * a Turkish copula/participle suffix the package split off a highlighted word (`ıdır — …`,
  * `dır. …`, `mediği`). Pure; the `Sentence` component and the views join through it.
  */

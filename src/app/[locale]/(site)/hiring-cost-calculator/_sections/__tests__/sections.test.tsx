@@ -314,7 +314,7 @@ describe('the section bodies (real TR bundle; every island shows its server fall
 
   it('Penalties: calc.408 inside the fine sentence, the <br /> labels, the consequence cards at every width', () => {
     const { container } = renderWithIntl(<Penalties ctx={TR} />);
-    expect(container.textContent).toContain(`${TR.t('calc.408')}'ye çıkar.`);
+    expect(container.textContent).toContain(`${TR.t('calc.408')}'e çıkar.`);
     expect(container.querySelectorAll('dt br')).toHaveLength(2);
     const consequences = screen.getByTestId('calc-consequences');
     expect(tokens(consequences)).not.toContain('max-md:hidden');

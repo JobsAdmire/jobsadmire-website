@@ -39,7 +39,10 @@
   "sec": "Menü ve genel etiketler",
   "legal": false,
   "rev": "11w6kar",
-  "k": "navStories"
+  "k": "navStories",
+  "edits": [
+   "override"
+  ]
  },
  "home.007": {
   "page": "Homepage",
@@ -913,7 +916,10 @@
   "sec": "Ekip",
   "legal": false,
   "rev": "e7alb3",
-  "k": "teamSub"
+  "k": "teamSub",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "home.129": {
   "page": "Homepage",
@@ -1324,7 +1330,10 @@
   "sec": "Alt çağrı bölümü",
   "legal": true,
   "rev": "einoq2",
-  "k": "ctaBody"
+  "k": "ctaBody",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "home.186": {
   "page": "Homepage",
@@ -1574,7 +1583,10 @@
   "sec": "Alt bilgi (Footer)",
   "legal": false,
   "rev": "3rktfc",
-  "k": "terms"
+  "k": "terms",
+  "edits": [
+   "override"
+  ]
  },
  "home.220": {
   "page": "Homepage",
@@ -1637,7 +1649,10 @@
   "sec": "Sezon planlayıcı",
   "legal": true,
   "rev": "dgg8hy",
-  "k": "legal"
+  "k": "legal",
+  "edits": [
+   "override"
+  ]
  },
  "home.229": {
   "page": "Homepage",
@@ -1995,7 +2010,10 @@
   "sec": "Onay panosu",
   "legal": false,
   "rev": "nz3wds",
-  "k": "data"
+  "k": "data",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "home.279": {
   "page": "Homepage",
@@ -2237,7 +2255,10 @@
   "sec": "Menü ve genel etiketler",
   "legal": false,
   "rev": "11w6kar",
-  "k": "navStories"
+  "k": "navStories",
+  "edits": [
+   "override"
+  ]
  },
  "hire.008": {
   "page": "Hire Workers",
@@ -3617,8 +3638,12 @@
   "page": "Hire Workers",
   "sec": "Talep formu",
   "legal": true,
-  "rev": "1gk9m64",
-  "k": "rfSub"
+  "rev": "yg9l1r",
+  "k": "rfSub",
+  "edits": [
+   "override"
+  ],
+  "packageRev": "1gk9m64"
  },
  "hire.202": {
   "page": "Hire Workers",
@@ -3631,8 +3656,12 @@
   "page": "Hire Workers",
   "sec": "Talep formu",
   "legal": false,
-  "rev": "ru39dn",
-  "k": "rfS1s"
+  "rev": "1fd59q9",
+  "k": "rfS1s",
+  "edits": [
+   "override"
+  ],
+  "packageRev": "ru39dn"
  },
  "hire.204": {
   "page": "Hire Workers",
@@ -3715,8 +3744,12 @@
   "page": "Hire Workers",
   "sec": "Talep formu",
   "legal": false,
-  "rev": "qntf4z",
-  "k": "rfCardS"
+  "rev": "g0ol3w",
+  "k": "rfCardS",
+  "edits": [
+   "override"
+  ],
+  "packageRev": "qntf4z"
  },
  "hire.216": {
   "page": "Hire Workers",
@@ -3757,8 +3790,12 @@
   "page": "Hire Workers",
   "sec": "Talep formu",
   "legal": false,
-  "rev": "nvnugn",
-  "k": "rfAltQ"
+  "rev": "inj6o",
+  "k": "rfAltQ",
+  "edits": [
+   "override"
+  ],
+  "packageRev": "nvnugn"
  },
  "hire.222": {
   "page": "Hire Workers",
@@ -4072,10 +4109,10 @@
   "page": "Hire Workers",
   "sec": "Sayfa başlığı ve arama motoru metni",
   "legal": true,
-  "rev": "xvrsp7",
+  "rev": "1a0p5qf",
   "k": "seoTitle",
   "edits": [
-   "turkiye"
+   "override"
   ],
   "packageRev": "ob5pij"
  },
@@ -4083,10 +4120,10 @@
   "page": "Hire Workers",
   "sec": "Sayfa başlığı ve arama motoru metni",
   "legal": true,
-  "rev": "1omua07",
+  "rev": "649egf",
   "k": "seoDesc",
   "edits": [
-   "turkiye"
+   "override"
   ],
   "packageRev": "2fdk7b"
  },
@@ -5177,7 +5214,10 @@
   "sec": "Cezalar",
   "legal": false,
   "rev": "1toda62",
-  "k": "p1B2"
+  "k": "p1B2",
+  "edits": [
+   "override"
+  ]
  },
  "calc.114": {
   "page": "Hiring Cost Calculator",
@@ -5878,7 +5918,10 @@
   "sec": "Yerli vs yurt dışı",
   "legal": false,
   "rev": "r6jqw7",
-  "k": "cmR5a"
+  "k": "cmR5a",
+  "edits": [
+   "override"
+  ]
  },
  "calc.214": {
   "page": "Hiring Cost Calculator",
@@ -6607,7 +6650,10 @@
   "sec": "Menü ve genel etiketler",
   "legal": false,
   "rev": "11w6kar",
-  "k": "navStories"
+  "k": "navStories",
+  "edits": [
+   "override"
+  ]
  },
  "calc.317": {
   "page": "Hiring Cost Calculator",
@@ -8439,7 +8485,10 @@
   "page": "Partner With Us",
   "sec": "Menü ve genel etiketler",
   "legal": false,
-  "rev": "phyfrk"
+  "rev": "phyfrk",
+  "edits": [
+   "override"
+  ]
  },
  "partner.019": {
   "page": "Partner With Us",
@@ -8471,7 +8520,8 @@
   "legal": false,
   "rev": "1dnsqan",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "anbh4v"
  },
@@ -8521,7 +8571,10 @@
   "page": "Partner With Us",
   "sec": "Hero",
   "legal": false,
-  "rev": "r6ebyz"
+  "rev": "r6ebyz",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "partner.032": {
   "page": "Partner With Us",
@@ -8559,7 +8612,8 @@
   "legal": false,
   "rev": "4zhalu",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "13yfj4i"
  },
@@ -8569,7 +8623,8 @@
   "legal": false,
   "rev": "1v5e4j1",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "6pxyrx"
  },
@@ -8589,7 +8644,10 @@
   "page": "Partner With Us",
   "sec": "Ağımız — rakamlar",
   "legal": false,
-  "rev": "mrb292"
+  "rev": "mrb292",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "partner.042": {
   "page": "Partner With Us",
@@ -8631,13 +8689,19 @@
   "page": "Partner With Us",
   "sec": "Zincirdeki yeriniz",
   "legal": false,
-  "rev": "guw4mc"
+  "rev": "guw4mc",
+  "edits": [
+   "override"
+  ]
  },
  "partner.049": {
   "page": "Partner With Us",
   "sec": "Zincirdeki yeriniz",
   "legal": false,
-  "rev": "33qwuw"
+  "rev": "33qwuw",
+  "edits": [
+   "override"
+  ]
  },
  "partner.050": {
   "page": "Partner With Us",
@@ -8751,7 +8815,8 @@
   "legal": false,
   "rev": "1364y1s",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "7ik7q8"
  },
@@ -8815,6 +8880,7 @@
   "legal": false,
   "rev": "1muhrfa",
   "edits": [
+   "apostrophe",
    "placeholder"
   ],
   "packageRev": "17e4mxi"
@@ -8859,7 +8925,8 @@
   "legal": false,
   "rev": "7q7da7",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "17nwp0f"
  },
@@ -8907,7 +8974,10 @@
   "page": "Partner With Us",
   "sec": "İK ajansları için",
   "legal": true,
-  "rev": "1q85mx1"
+  "rev": "1q85mx1",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "partner.091": {
   "page": "Partner With Us",
@@ -8939,7 +9009,8 @@
   "legal": false,
   "rev": "1ifmk4h",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1gnrd8h"
  },
@@ -9079,7 +9150,11 @@
   "page": "Partner With Us",
   "sec": "Tedarik ortakları için",
   "legal": false,
-  "rev": "a5vcj1"
+  "rev": "tx8y20",
+  "edits": [
+   "override"
+  ],
+  "packageRev": "a5vcj1"
  },
  "partner.119": {
   "page": "Partner With Us",
@@ -9099,7 +9174,8 @@
   "legal": false,
   "rev": "10v9rbt",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "12u74wp"
  },
@@ -9309,7 +9385,10 @@
   "page": "Partner With Us",
   "sec": "Ortak portalı",
   "legal": false,
-  "rev": "3h4kj5"
+  "rev": "3h4kj5",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "partner.156": {
   "page": "Partner With Us",
@@ -9411,7 +9490,8 @@
   "legal": false,
   "rev": "1t5r60x",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1uilywx"
  },
@@ -9457,7 +9537,8 @@
   "legal": true,
   "rev": "1ubqzds",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1az9p6o"
  },
@@ -9549,7 +9630,8 @@
   "legal": true,
   "rev": "vayife",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1v5awlm"
  },
@@ -9647,7 +9729,10 @@
   "page": "Partner With Us",
   "sec": "Alt bilgi",
   "legal": false,
-  "rev": "1bo2cnd"
+  "rev": "1bo2cnd",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "partner.208": {
   "page": "Partner With Us",
@@ -9689,7 +9774,11 @@
   "page": "Partner With Us",
   "sec": "Alt bilgi",
   "legal": false,
-  "rev": "1f7jgq0"
+  "rev": "1oo91fs",
+  "edits": [
+   "override"
+  ],
+  "packageRev": "1f7jgq0"
  },
  "partner.215": {
   "page": "Partner With Us",
@@ -9737,9 +9826,9 @@
   "page": "Partner With Us",
   "sec": "SEO ve meta",
   "legal": false,
-  "rev": "jn8j9u",
+  "rev": "ib33fj",
   "edits": [
-   "turkiye"
+   "override"
   ],
   "packageRev": "1250w4y"
  },
@@ -9749,7 +9838,8 @@
   "legal": true,
   "rev": "1wuycza",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1fpb5p2"
  },
@@ -9853,7 +9943,10 @@
   "page": "Work Permit",
   "sec": "Menü ve genel etiketler",
   "legal": false,
-  "rev": "rnfavc"
+  "rev": "rnfavc",
+  "edits": [
+   "override"
+  ]
  },
  "wp.018": {
   "page": "Work Permit",
@@ -9969,7 +10062,10 @@
   "page": "Work Permit",
   "sec": "Üst bölüm (Hero)",
   "legal": false,
-  "rev": "r6ebyz"
+  "rev": "r6ebyz",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "wp.036": {
   "page": "Work Permit",
@@ -11409,7 +11505,10 @@
   "page": "Work Permit",
   "sec": "Zaman çizelgesi",
   "legal": false,
-  "rev": "esy5j1"
+  "rev": "esy5j1",
+  "edits": [
+   "override"
+  ]
  },
  "wp.268": {
   "page": "Work Permit",
@@ -11501,7 +11600,8 @@
   "legal": false,
   "rev": "yaafr9",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "tfur1h"
  },
@@ -11907,7 +12007,10 @@
   "page": "Work Permit",
   "sec": "SSS",
   "legal": true,
-  "rev": "w25o2f"
+  "rev": "w25o2f",
+  "edits": [
+   "override"
+  ]
  },
  "wp.347": {
   "page": "Work Permit",
@@ -12055,7 +12158,8 @@
   "legal": false,
   "rev": "vayife",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1v5awlm"
  },
@@ -12159,7 +12263,10 @@
   "page": "Work Permit",
   "sec": "Alt bilgi (Footer)",
   "legal": false,
-  "rev": "1bo2cnd"
+  "rev": "1bo2cnd",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "wp.387": {
   "page": "Work Permit",
@@ -12367,13 +12474,20 @@
   "page": "About Us",
   "sec": "Menü ve genel etiketler",
   "legal": false,
-  "rev": "3ebm88"
+  "rev": "3ebm88",
+  "edits": [
+   "override"
+  ]
  },
  "about.023": {
   "page": "About Us",
   "sec": "Menü ve genel etiketler",
   "legal": false,
-  "rev": "1dcqzgn"
+  "rev": "m8wyx3",
+  "edits": [
+   "override"
+  ],
+  "packageRev": "1dcqzgn"
  },
  "about.024": {
   "page": "About Us",
@@ -12543,7 +12657,8 @@
   "legal": false,
   "rev": "1al65p9",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "iqcau5"
  },
@@ -12563,7 +12678,11 @@
   "page": "About Us",
   "sec": "Yolculuğumuz",
   "legal": true,
-  "rev": "xdbnga"
+  "rev": "sky4bu",
+  "edits": [
+   "override"
+  ],
+  "packageRev": "xdbnga"
  },
  "about.053": {
   "page": "About Us",
@@ -12739,7 +12858,11 @@
   "page": "About Us",
   "sec": "Teknoloji ve portal",
   "legal": false,
-  "rev": "1253260"
+  "rev": "431z81",
+  "edits": [
+   "override"
+  ],
+  "packageRev": "1253260"
  },
  "about.081": {
   "page": "About Us",
@@ -12957,7 +13080,8 @@
   "legal": false,
   "rev": "vayife",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1v5awlm"
  },
@@ -13059,7 +13183,10 @@
   "page": "About Us",
   "sec": "Kapanış çağrısı",
   "legal": false,
-  "rev": "1bo2cnd"
+  "rev": "1bo2cnd",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "about.131": {
   "page": "About Us",
@@ -13692,7 +13819,10 @@
   "page": "Verify Representative",
   "sec": "Uyarı işaretleri",
   "legal": true,
-  "rev": "1kdids4"
+  "rev": "1kdids4",
+  "edits": [
+   "override"
+  ]
  },
  "verify.090": {
   "page": "Verify Representative",
@@ -13898,7 +14028,8 @@
   "legal": false,
   "rev": "vayife",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1v5awlm"
  },
@@ -14002,7 +14133,10 @@
   "page": "Verify Representative",
   "sec": "Kişi kaydı",
   "legal": false,
-  "rev": "1bo2cnd"
+  "rev": "1bo2cnd",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "verify.141": {
   "page": "Verify Representative",
@@ -14924,7 +15058,10 @@
   "page": "Join Our Team",
   "sec": "Üst bölüm (Hero)",
   "legal": false,
-  "rev": "6f5isf"
+  "rev": "6f5isf",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "jt.023": {
   "page": "Join Our Team",
@@ -15168,7 +15305,10 @@
   "page": "Join Our Team",
   "sec": "Çalışma şekilleri",
   "legal": false,
-  "rev": "o6zgqf"
+  "rev": "o6zgqf",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "jt.063": {
   "page": "Join Our Team",
@@ -15506,7 +15646,8 @@
   "legal": true,
   "rev": "vayife",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1v5awlm"
  },
@@ -15604,7 +15745,10 @@
   "page": "Join Our Team",
   "sec": "SSS",
   "legal": false,
-  "rev": "1bo2cnd"
+  "rev": "1bo2cnd",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "jt.135": {
   "page": "Join Our Team",
@@ -16300,7 +16444,10 @@
   "page": "Join Our Team",
   "sec": "Pozisyon açıklamaları",
   "legal": false,
-  "rev": "ck1hbr"
+  "rev": "ck1hbr",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "jt.249": {
   "page": "Join Our Team",
@@ -16684,7 +16831,10 @@
   "page": "Join Our Team",
   "sec": "Sistem mesajları",
   "legal": false,
-  "rev": "z66iqh"
+  "rev": "z66iqh",
+  "edits": [
+   "override"
+  ]
  },
  "jt.313": {
   "page": "Join Our Team",
@@ -16900,13 +17050,19 @@
   "page": "Contact Us",
   "sec": "Üst bölüm (Hero)",
   "legal": false,
-  "rev": "2cyw6t"
+  "rev": "2cyw6t",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "contact.028": {
   "page": "Contact Us",
   "sec": "Üst bölüm (Hero)",
   "legal": false,
-  "rev": "1xibi0d"
+  "rev": "1xibi0d",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "contact.029": {
   "page": "Contact Us",
@@ -17024,7 +17180,10 @@
   "page": "Contact Us",
   "sec": "Üst bölüm (Hero)",
   "legal": false,
-  "rev": "1nzjv17"
+  "rev": "1nzjv17",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "contact.048": {
   "page": "Contact Us",
@@ -17048,7 +17207,10 @@
   "page": "Contact Us",
   "sec": "Mesaj gönderme ve süreç",
   "legal": false,
-  "rev": "1q6aea"
+  "rev": "1q6aea",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "contact.052": {
   "page": "Contact Us",
@@ -17072,7 +17234,10 @@
   "page": "Contact Us",
   "sec": "Mesaj gönderme ve süreç",
   "legal": false,
-  "rev": "16eiiyq"
+  "rev": "16eiiyq",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "contact.056": {
   "page": "Contact Us",
@@ -17174,7 +17339,10 @@
   "page": "Contact Us",
   "sec": "Mesaj gönderme ve süreç",
   "legal": true,
-  "rev": "o7a2r6"
+  "rev": "o7a2r6",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "contact.073": {
   "page": "Contact Us",
@@ -17194,7 +17362,8 @@
   "legal": false,
   "rev": "1v4cxj7",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "163308z"
  },
@@ -17220,7 +17389,10 @@
   "page": "Contact Us",
   "sec": "Mesaj gönderme ve süreç",
   "legal": false,
-  "rev": "r1sfrh"
+  "rev": "r1sfrh",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "contact.080": {
   "page": "Contact Us",
@@ -17238,7 +17410,10 @@
   "page": "Contact Us",
   "sec": "Mesaj gönderme ve süreç",
   "legal": false,
-  "rev": "r0dkmp"
+  "rev": "r0dkmp",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "contact.083": {
   "page": "Contact Us",
@@ -17392,7 +17567,10 @@
   "page": "Contact Us",
   "sec": "Ofisler",
   "legal": false,
-  "rev": "2d4tnp"
+  "rev": "2d4tnp",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "contact.108": {
   "page": "Contact Us",
@@ -17418,7 +17596,8 @@
   "legal": false,
   "rev": "56af5t",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "163654x"
  },
@@ -17444,7 +17623,10 @@
   "page": "Contact Us",
   "sec": "Ofisler",
   "legal": false,
-  "rev": "d0dszt"
+  "rev": "d0dszt",
+  "edits": [
+   "override"
+  ]
  },
  "contact.116": {
   "page": "Contact Us",
@@ -17462,7 +17644,10 @@
   "page": "Contact Us",
   "sec": "Ofisler",
   "legal": false,
-  "rev": "ths911"
+  "rev": "ths911",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "contact.119": {
   "page": "Contact Us",
@@ -17512,7 +17697,8 @@
   "legal": true,
   "rev": "vayife",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1v5awlm"
  },
@@ -17596,7 +17782,10 @@
   "page": "Contact Us",
   "sec": "Alt bilgi (Footer)",
   "legal": false,
-  "rev": "1bo2cnd"
+  "rev": "1bo2cnd",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "contact.140": {
   "page": "Contact Us",
@@ -17686,7 +17875,10 @@
   "page": "Contact Us",
   "sec": "Form alanları ve sistem mesajları",
   "legal": false,
-  "rev": "66j7nw"
+  "rev": "66j7nw",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "contact.154": {
   "page": "Contact Us",
@@ -17778,7 +17970,8 @@
   "legal": false,
   "rev": "1ifmk4h",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1gnrd8h"
  },
@@ -17818,7 +18011,8 @@
   "legal": false,
   "rev": "s5dsok",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "bsqilw"
  },
@@ -17846,7 +18040,8 @@
   "legal": false,
   "rev": "ne0z25",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "xh2wwt"
  },
@@ -17992,7 +18187,8 @@
   "legal": false,
   "rev": "qgb6t7",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "13ng8r"
  },
@@ -18252,7 +18448,11 @@
   "page": "Available Workers",
   "sec": "Menü ve genel etiketler",
   "legal": false,
-  "rev": "376nh2"
+  "rev": "1g8d33k",
+  "edits": [
+   "override"
+  ],
+  "packageRev": "376nh2"
  },
  "availworkers.017": {
   "page": "Available Workers",
@@ -18344,7 +18544,10 @@
   "page": "Available Workers",
   "sec": "Üst bölüm (Hero)",
   "legal": true,
-  "rev": "1pwjjxm"
+  "rev": "1pwjjxm",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "availworkers.031": {
   "page": "Available Workers",
@@ -18402,7 +18605,10 @@
   "page": "Available Workers",
   "sec": "Üst bölüm (Hero)",
   "legal": false,
-  "rev": "14fbeqe"
+  "rev": "14fbeqe",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "availworkers.040": {
   "page": "Available Workers",
@@ -18414,7 +18620,10 @@
   "page": "Available Workers",
   "sec": "Üst bölüm (Hero)",
   "legal": false,
-  "rev": "1ayl6xg"
+  "rev": "1ayl6xg",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "availworkers.042": {
   "page": "Available Workers",
@@ -18452,7 +18661,8 @@
   "legal": false,
   "rev": "1ifmk4h",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1gnrd8h"
  },
@@ -18476,7 +18686,10 @@
   "page": "Available Workers",
   "sec": "Talep formu",
   "legal": false,
-  "rev": "r6ebyz"
+  "rev": "r6ebyz",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "availworkers.051": {
   "page": "Available Workers",
@@ -18494,7 +18707,10 @@
   "page": "Available Workers",
   "sec": "Aday havuzu",
   "legal": false,
-  "rev": "1mfygf"
+  "rev": "1mfygf",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "availworkers.054": {
   "page": "Available Workers",
@@ -18646,7 +18862,10 @@
   "page": "Available Workers",
   "sec": "“Doğrulanmış” ne demek",
   "legal": false,
-  "rev": "1y3ylc0"
+  "rev": "1y3ylc0",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "availworkers.078": {
   "page": "Available Workers",
@@ -18778,7 +18997,10 @@
   "page": "Available Workers",
   "sec": "Seçimden sonraki süreç",
   "legal": false,
-  "rev": "pwl1fe"
+  "rev": "pwl1fe",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "availworkers.100": {
   "page": "Available Workers",
@@ -18822,6 +19044,7 @@
   "legal": false,
   "rev": "n0fejl",
   "edits": [
+   "apostrophe",
    "placeholder"
   ],
   "packageRev": "1lj4lz0"
@@ -18836,7 +19059,10 @@
   "page": "Available Workers",
   "sec": "Kapanış çağrısı",
   "legal": false,
-  "rev": "q1a65t"
+  "rev": "q1a65t",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "availworkers.109": {
   "page": "Available Workers",
@@ -18862,7 +19088,8 @@
   "legal": true,
   "rev": "vayife",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1v5awlm"
  },
@@ -18954,7 +19181,10 @@
   "page": "Available Workers",
   "sec": "Alt bilgi (Footer)",
   "legal": false,
-  "rev": "1bo2cnd"
+  "rev": "1bo2cnd",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "availworkers.128": {
   "page": "Available Workers",
@@ -19052,6 +19282,7 @@
   "legal": false,
   "rev": "1r593kw",
   "edits": [
+   "apostrophe",
    "placeholder"
   ],
   "packageRev": "1e48g6l"
@@ -19066,13 +19297,21 @@
   "page": "Available Workers",
   "sec": "SSS",
   "legal": false,
-  "rev": "1h630l"
+  "rev": "1sq5fy8",
+  "edits": [
+   "override"
+  ],
+  "packageRev": "1h630l"
  },
  "availworkers.145": {
   "page": "Available Workers",
   "sec": "SSS",
   "legal": false,
-  "rev": "naskqb"
+  "rev": "asas7",
+  "edits": [
+   "override"
+  ],
+  "packageRev": "naskqb"
  },
  "availworkers.146": {
   "page": "Available Workers",
@@ -19108,13 +19347,21 @@
   "page": "Available Workers",
   "sec": "SSS",
   "legal": false,
-  "rev": "5rxbcv"
+  "rev": "1kd8cu2",
+  "edits": [
+   "override"
+  ],
+  "packageRev": "5rxbcv"
  },
  "availworkers.152": {
   "page": "Available Workers",
   "sec": "SSS",
   "legal": false,
-  "rev": "63sme3"
+  "rev": "1bz5d7i",
+  "edits": [
+   "override"
+  ],
+  "packageRev": "63sme3"
  },
  "availworkers.153": {
   "page": "Available Workers",
@@ -19480,7 +19727,10 @@
   "page": "Available Workers",
   "sec": "SSS",
   "legal": true,
-  "rev": "1eqz9nr"
+  "rev": "1eqz9nr",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "availworkers.214": {
   "page": "Available Workers",
@@ -19525,6 +19775,7 @@
   "rev": "xt3wyz",
   "edits": [
    "turkiye",
+   "apostrophe",
    "placeholder"
   ],
   "packageRev": "fbjzwf"
@@ -19859,7 +20110,8 @@
   "legal": false,
   "rev": "1455ks1",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "17eusb5"
  },
@@ -19885,7 +20137,10 @@
   "page": "Success Stories",
   "sec": "Üst bölüm (Hero)",
   "legal": false,
-  "rev": "1ghs7hk"
+  "rev": "1ghs7hk",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "success.030": {
   "page": "Success Stories",
@@ -19993,13 +20248,19 @@
   "page": "Success Stories",
   "sec": "Saklamadığımız sayılar",
   "legal": false,
-  "rev": "1wzzl3q"
+  "rev": "1wzzl3q",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "success.048": {
   "page": "Success Stories",
   "sec": "Saklamadığımız sayılar",
   "legal": false,
-  "rev": "q5ze8e"
+  "rev": "q5ze8e",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "success.049": {
   "page": "Success Stories",
@@ -20223,7 +20484,8 @@
   "legal": true,
   "rev": "vayife",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1v5awlm"
  },
@@ -20321,7 +20583,10 @@
   "page": "Success Stories",
   "sec": "Alt bilgi (Footer)",
   "legal": false,
-  "rev": "1bo2cnd"
+  "rev": "1bo2cnd",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "success.102": {
   "page": "Success Stories",
@@ -20555,7 +20820,10 @@
   "page": "Success Stories",
   "sec": "Onay kayıtları ve sistem mesajları",
   "legal": false,
-  "rev": "1n2m8pl"
+  "rev": "1n2m8pl",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "success.140": {
   "page": "Success Stories",
@@ -20579,7 +20847,10 @@
   "page": "Success Stories",
   "sec": "Onay kayıtları ve sistem mesajları",
   "legal": false,
-  "rev": "7c5vda"
+  "rev": "7c5vda",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "success.144": {
   "page": "Success Stories",
@@ -20921,7 +21192,8 @@
   "legal": true,
   "rev": "vayife",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1v5awlm"
  },
@@ -21019,7 +21291,10 @@
   "page": "Blog",
   "sec": "Alt bilgi (Footer)",
   "legal": false,
-  "rev": "1bo2cnd"
+  "rev": "1bo2cnd",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "blog.065": {
   "page": "Blog",
@@ -21389,7 +21664,8 @@
   "legal": false,
   "rev": "nrfab9",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "b6q32t"
  },
@@ -21429,7 +21705,8 @@
   "legal": false,
   "rev": "1xu5lag",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1ebceug"
  },
@@ -21554,7 +21831,10 @@
   "page": "Blog Article",
   "sec": "Yazı içeriği",
   "legal": true,
-  "rev": "1rwq1ns"
+  "rev": "1rwq1ns",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "blogarticle.052": {
   "page": "Blog Article",
@@ -21592,7 +21872,8 @@
   "legal": false,
   "rev": "ws3jma",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "djkwky"
  },
@@ -21654,7 +21935,10 @@
   "page": "Blog Article",
   "sec": "Yazı içeriği",
   "legal": false,
-  "rev": "rl9zot"
+  "rev": "rl9zot",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "blogarticle.068": {
   "page": "Blog Article",
@@ -21696,19 +21980,28 @@
   "page": "Blog Article",
   "sec": "Yazı içeriği",
   "legal": false,
-  "rev": "nelslt"
+  "rev": "nelslt",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "blogarticle.075": {
   "page": "Blog Article",
   "sec": "Yazı içeriği",
   "legal": false,
-  "rev": "1184qzz"
+  "rev": "1184qzz",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "blogarticle.076": {
   "page": "Blog Article",
   "sec": "Yazı içeriği",
   "legal": false,
-  "rev": "1mva7kh"
+  "rev": "1mva7kh",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "blogarticle.077": {
   "page": "Blog Article",
@@ -21762,7 +22055,10 @@
   "page": "Blog Article",
   "sec": "Yazar ve paylaşım",
   "legal": false,
-  "rev": "r6eb7f"
+  "rev": "r6eb7f",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "blogarticle.086": {
   "page": "Blog Article",
@@ -21840,7 +22136,8 @@
   "legal": true,
   "rev": "vayife",
   "edits": [
-   "turkiye"
+   "turkiye",
+   "apostrophe"
   ],
   "packageRev": "1v5awlm"
  },
@@ -21938,7 +22235,10 @@
   "page": "Blog Article",
   "sec": "Alt bilgi (Footer)",
   "legal": false,
-  "rev": "1bo2cnd"
+  "rev": "1bo2cnd",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "blogarticle.114": {
   "page": "Blog Article",
@@ -22452,7 +22752,10 @@
   "page": "CRM Login",
   "sec": "Portal açıklamaları",
   "legal": false,
-  "rev": "1o6w243"
+  "rev": "1o6w243",
+  "edits": [
+   "apostrophe"
+  ]
  },
  "crmlogin.052": {
   "page": "CRM Login",

@@ -44,7 +44,7 @@ type Row = {
 };
 type PageFile = { page: string; route: string; strings: Row[] };
 
-type Edit = 'override' | 'turkiye' | 'placeholder';
+type Edit = 'override' | 'turkiye' | 'apostrophe' | 'placeholder';
 export type CatalogueRow = {
   page: string;
   sec: string;
@@ -60,6 +60,8 @@ export type ImportReport = {
   turkiye: number;
   /** BLOG-01 (W220): blog rows' EN title/excerpt fields the Türkiye rule changed. */
   turkiyeBlog: number;
+  /** W221 house style: TR values whose typographic ’ became the straight '. */
+  apostrophe: number;
   placeholders: Array<{ id: string; key: MetricKey; en: string; tr: string }>;
   blog: { rows: number; trBodies: number; navVisible: boolean };
 };
@@ -747,6 +749,12 @@ function readMinutes(label: string): number {
 const turkiye = (s: string) =>
   s.replace(/\bTurkey\b/g, 'Türkiye').replace(/\bTURKEY\b/g, 'TÜRKİYE');
 
+/** W221 house style: Turkish copy uses the straight apostrophe. The package mixes ’ and ' (97 TR
+ *  values carried the typographic one), and `makeTf` fills `{placeholders}` with a plain replace,
+ *  so no ICU escape is involved. TR only — the three EN ’ (verify.090/098, contact.041) stay, and
+ *  the `sys.*` strings are next-intl's (its ICU parser reads ' as an escape beside `{`). */
+const straightApostrophe = (s: string) => s.replace(/’/g, "'");
+
 function buildBlog(
   strings: Record<Locale, Record<string, string>>,
   report: ImportReport,
@@ -859,6 +867,7 @@ export function buildBundles() {
     overrides: [],
     turkiye: 0,
     turkiyeBlog: 0,
+    apostrophe: 0,
     placeholders: [],
     blog: { rows: 0, trBodies: 0, navVisible: false },
   };
@@ -889,6 +898,18 @@ export function buildBundles() {
       strings.en[id] = after;
       report.turkiye++;
       markEdit(id, 'turkiye');
+    }
+  }
+  // 2b. W221 house style: TR copy uses the straight apostrophe (legal rows included — punctuation
+  // only; a TR-only edit, so the package `rev` is kept). Runs before step 3 so the metric
+  // literals in metric-placeholders.json are matched against the straight spelling.
+  for (const id of Object.keys(strings.tr)) {
+    const before = strings.tr[id];
+    const after = straightApostrophe(before);
+    if (after !== before) {
+      strings.tr[id] = after;
+      report.apostrophe++;
+      markEdit(id, 'apostrophe');
     }
   }
 
@@ -1068,6 +1089,7 @@ if (require.main === module) {
   console.log(
     `Türkiye rule — ${report.turkiye} EN values normalised (Turkey → Türkiye) + ${report.turkiyeBlog} blog title/excerpt fields`,
   );
+  console.log(`apostrophe rule — ${report.apostrophe} TR values normalised (’ → ')`);
   console.log(`metric placeholders — ${report.placeholders.length} replacements:`);
   console.table(report.placeholders);
   console.log(

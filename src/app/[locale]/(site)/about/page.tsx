@@ -298,7 +298,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
               <h2 className="m-0 mb-6 text-eyebrow font-extrabold tracking-[1.5px] xl:tracking-[1.125px] text-blue-safe uppercase">
                 {t('about.050')}
               </h2>
-              {/* W84: body is optional; the journey rows have none. about.052 is legal (verbatim);
+              {/* W84: body is optional; the journey rows have none. about.052 is legal (UK spelling only — W221 house style);
                   about.057 = "{placed} workers placed, {employers} clients" after the importer (W1). */}
               <Timeline
                 variant="vertical"
