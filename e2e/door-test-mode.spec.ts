@@ -227,7 +227,11 @@ test('replay: submitting the identical body twice inside one clock hour still su
   // generate_lead/conversion, which is the accepted skew docs/ANALYTICS.md now records (Cycle 1).
   // R37: the per-session key is set by the FIRST landing; the second landing must find it and push
   // nothing — so the dataLayer never holds more than one of each, however the navigation happened.
-  await page.waitForFunction(() => sessionStorage.getItem('ja_conv:callback:/tesekkurler') === '1');
+  await page.waitForFunction(
+    () => sessionStorage.getItem('ja_conv:callback:/tesekkurler') === '1',
+    undefined,
+    { timeout: 5_000 },
+  );
   expect((await eventsFor(page, 'generate_lead', row.doorKey)).length).toBeLessThanOrEqual(1);
   expect((await eventsFor(page, 'conversion', row.doorKey)).length).toBeLessThanOrEqual(1);
 });

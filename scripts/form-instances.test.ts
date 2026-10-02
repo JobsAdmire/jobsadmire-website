@@ -4,10 +4,19 @@ import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { FORM_KEYS } from '../src/analytics/forms';
 import { START_WHEN_KEYS } from '../src/forms/options';
+import { SECTOR_KEYS } from '../src/content/collections';
+import { HERO_SECTOR_KEYS } from '../src/app/[locale]/(site)/_home/lib/forms';
+import {
+  CALLBACK_DAYS,
+  CALLBACK_SLOT_KEYS,
+  VISIT_SLOTS,
+} from '../src/app/[locale]/(site)/contact/_lib/options';
+import { ROLE_KEYS } from '../src/app/[locale]/(site)/available-workers/_lib/options';
 import {
   FORM_INSTANCES,
   NON_DOOR_INSTANCES,
   requiredFieldNames,
+  type FormInstance,
 } from '../e2e/fixtures/form-instances';
 
 // Lives under scripts/ for the same reason as scripts/face.test.ts: Vitest never collects e2e/**
@@ -89,7 +98,8 @@ describe('FORM_INSTANCES — the 17-instance inventory pinned against the pages 
     const src = pageSources(join(__dirname, '..', 'src', 'app', '[locale]'));
     // A control's `name` is a literal (`name="roleNeeded"`) or a named constant whose value is a
     // string literal in the page's own `_lib` (`DECLARATION_FIELD = 'licenceDeclaration'`).
-    const hasName = (n: string) => src.includes(`name="${n}"`) || src.includes(`'${n}'`);
+    const hasName = (n: string) =>
+      src.includes(`name="${n}"`) || new RegExp(`(?<![=!])= '${n}'`).test(src);
     for (const row of FORM_INSTANCES)
       for (const f of row.fields)
         expect({ id: row.id, name: f.name, found: hasName(f.name) }).toEqual({
@@ -128,6 +138,40 @@ describe('FORM_INSTANCES — the 17-instance inventory pinned against the pages 
       const sw = row.fields.find((f) => f.name === 'startWhen');
       if (sw) expect(START_WHEN_KEYS as readonly string[]).toContain(sw.value);
     }
+  });
+
+  it('every select/radio value the inventory sends is a key of the option module its page validates against (W214 (3))', () => {
+    const keysFor = (row: FormInstance, name: string): readonly string[] | null => {
+      switch (name) {
+        case 'sector':
+          return row.testId === 'hire-form-full' ? SECTOR_KEYS : HERO_SECTOR_KEYS; // hire-spec.ts z.enum(SECTOR_KEYS) vs _home/lib/forms.ts sectorKey
+        case 'topic':
+          return HERO_SECTOR_KEYS; // callbackSchema: topic: sectorKey
+        case 'day':
+          return CALLBACK_DAYS;
+        case 'slot':
+          return CALLBACK_SLOT_KEYS;
+        case 'preferredTime':
+          return VISIT_SLOTS;
+        case 'iAm':
+          return ROLE_KEYS;
+        case 'startWhen':
+          return START_WHEN_KEYS;
+        default:
+          return null; // ISO country/dial codes come from country tables, not an option module
+      }
+    };
+    for (const row of FORM_INSTANCES)
+      for (const f of row.fields) {
+        const keys = f.kind === 'select' || f.kind === 'radio' ? keysFor(row, f.name) : null;
+        if (keys)
+          expect({ id: row.id, name: f.name, value: f.value, ok: keys.includes(f.value) }).toEqual({
+            id: row.id,
+            name: f.name,
+            value: f.value,
+            ok: true,
+          });
+      }
   });
 
   it('careers rows (16, 17) resolve their opening dynamically — no hardcoded slug baked into the fixture', () => {

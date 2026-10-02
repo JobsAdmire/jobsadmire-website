@@ -3,8 +3,8 @@
  * of what the BUILT pages under `src/app/[locale]/(site)/**` render, re-read directly from
  * their code on 2026-10-02 (W199: the code wins over any table — every `testId`, `idScope`,
  * DOM `name` and required flag below was checked against the page's FormShell, its zod schema
- * and its `toFields`; `scripts/form-instances.test.ts` pins the `testId`/`idScope` literals to
- * the page sources). Corrected along the way against ruling W105 (careers' own country, the
+ * and its `toFields`; `scripts/form-instances.test.ts` pins the `testId`/`idScope` literals, every
+ * field `name`, every `open`-selector token and every select/radio value to the page sources). Corrected along the way against ruling W105 (careers' own country, the
  * #pool/#pool-form anchor, the sourcing track's required licence, T8/T10's under-reported
  * required fields). `e2e/door-test-mode.spec.ts` (Cycle 5) iterates this; the Cycle 7 manual
  * table is filled by hand from the same 17 rows so the two never diverge. Not imported by

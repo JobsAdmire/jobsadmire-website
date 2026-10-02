@@ -1,6 +1,6 @@
 /**
  * `npm run door:smoke` — the headless, TEST-CLASS probe of the Operations door (T14; the
- * manual form of T15's synthetic lead). Refuses to run with a write token: a smoke that files
+ * manual form of T15's synthetic lead). Runs only on a `wst_` test-class token and refuses anything else (a write token included): a smoke that files
  * real inquiries is the incident it exists to prevent.
  *
  *   OPS_API_URL=https://operations.jobsadmire.com OPS_WEBSITE_TEST_TOKEN=wst_… npm run door:smoke [-- --careers] [--json]
