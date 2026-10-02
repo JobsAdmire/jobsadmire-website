@@ -1,4 +1,6 @@
 /** @vitest-environment node */
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
 import { PNG } from 'pngjs';
 import { describe, expect, it, vi } from 'vitest';
 import {
@@ -10,6 +12,7 @@ import {
   designClip,
   drawnInFamily,
   ensureFontDrawn,
+  fontRewriteWarning,
   forceFontDisplayBlock,
   gotoOk,
   PIXEL_PAGES,
@@ -280,6 +283,17 @@ describe('pixel harness web-font capture (W189)', () => {
       css: '.y{display:block}',
       replaced: 0,
     });
+  });
+
+  it('W190: names a capture that rewrote no font-display rule for stderr, and is silent otherwise', () => {
+    expect(fontRewriteWarning(0, 'home tr @1440')).toMatch(
+      /^pixel: warning — home tr @1440: no font-display:optional rule was rewritten/,
+    );
+    expect(fontRewriteWarning(2, 'home tr @1440')).toBeNull();
+    // the capture loop really prints it — on stderr, where a CI log keeps it apart from the scores
+    const source = readFileSync(join(process.cwd(), 'scripts', 'pixel-compare.ts'), 'utf8');
+    expect(source).toMatch(/const fontWarning = fontRewriteWarning\(rewritten,/);
+    expect(source).toMatch(/if \(fontWarning\) console\.warn\(fontWarning\);/);
   });
 
   it('decides "drawn in Archivo" only when Archivo carries every glyph of the node', () => {

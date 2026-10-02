@@ -21,4 +21,12 @@ describe('Archivo font loading (W188)', () => {
     expect(options).toMatch(/subsets:\s*\[\s*'latin',\s*'latin-ext',?\s*\]/);
     expect(options).not.toMatch(/preload:\s*false/);
   });
+
+  // W190 (optional hardening, final pass P2-6): the weight list is pinned. A weight the CSS asks
+  // for but the font does not load is synthesised from a neighbour by the browser, and the pixel
+  // harness's "drawn in Archivo" check reads the h1 (700) alone — it would never notice 500, 600
+  // or 800 going missing.
+  it("loads exactly the four weights the design uses — '500', '600', '700', '800'", () => {
+    expect(options).toMatch(/weight:\s*\[\s*'500',\s*'600',\s*'700',\s*'800',?\s*\]/);
+  });
 });

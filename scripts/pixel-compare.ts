@@ -256,6 +256,14 @@ export function forceFontDisplayBlock(css: string): { css: string; replaced: num
   return { css: out, replaced };
 }
 
+/** W190 (optional hardening): a capture that rewrote NO `font-display:optional` rule either drew
+ *  the whole view in the fallback face or never saw the web font's sheet at all — a score taken
+ *  that way is not comparable. One sentence for stderr; `null` once at least one rule was rewritten. */
+export function fontRewriteWarning(rewritten: number, label: string): string | null {
+  if (rewritten > 0) return null;
+  return `pixel: warning — ${label}: no font-display:optional rule was rewritten (W189/W190) — the built capture may have been drawn in the fallback face; check the stylesheet routing before scoring`;
+}
+
 /** The slice of Playwright's `APIResponse` the CSS rewrite reads (structural, for the tests). */
 export type FetchedLike = { text(): Promise<string> };
 /** The slice of Playwright's `Route` the CSS rewrite uses (structural, for the tests). */
@@ -532,6 +540,8 @@ async function main() {
       console.log(
         `pixel: ${page} ${locale} @${width} — font-display optional→block in ${rewritten} rule(s); h1 drawn in Archivo (${drawn} load) (W189)`,
       );
+      const fontWarning = fontRewriteWarning(rewritten, `${page} ${locale} @${width}`);
+      if (fontWarning) console.warn(fontWarning);
       await builtPage.waitForTimeout(300);
       const builtPng = PNG.sync.read(await builtPage.screenshot({ fullPage: true }));
       await builtContext.close();
