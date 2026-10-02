@@ -8,7 +8,9 @@ import type { WireEnvelope } from './wire';
 
 export type { PostFormOk, PostFormResult, PostFormVisitor } from './types';
 
-/** Test seams only — production callers pass nothing. */
+/** Test seams; form actions pass nothing. The one production caller that passes `env` is the
+ *  synthetic-lead cron (W172, `src/app/api/cron/synthetic-lead/run.ts`): it puts the
+ *  test-class token in the write-token slot. */
 export type PostFormDeps = { fetch?: typeof fetch; env?: NodeJS.ProcessEnv; timeoutMs?: number };
 
 /** W74 (amends W3): the call's deadline — longer than Ops' own 6 s wait on Cloudflare's
