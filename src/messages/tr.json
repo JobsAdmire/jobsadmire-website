@@ -88,6 +88,10 @@
       "stories": {
         "title": "Başarı Hikâyeleri — Türkiye'deki İşverenler İçin Çalışma İzni Onayları | JobsAdmire",
         "description": "JobsAdmire'ın Türkiye'deki işverenler için aldığı çalışma izni onayları sektör, kişi sayısı ve ay bilgisiyle yayınlanır; kişisel bilgiler çıkarılır."
+      },
+      "verify": {
+        "title": "JobsAdmire Temsilcisini Doğrulayın — Resmî Yetki Kontrolü",
+        "description": "Karşınızdaki kişi gerçekten JobsAdmire adına mı çalışıyor? Yalnızca kurucu imza atar ve JobsAdmire'da hiç kimse işçiden para almaz. JA- kimliğini sorgulayın ya da sahtekârı bildirin."
       }
     },
     "consent": {
@@ -362,6 +366,31 @@
         "card1Title": "Kaynakçı · Özbekistan → Ankara"
       }
     },
+    "verify": {
+      "hero": {
+        "lead": "JobsAdmire adına yalnızca kurucu imza atar. Ekipteki diğer herkes belge toplar, becerileri kontrol eder ve görüşme yapar — başka hiç kimse imza atmaz ve JobsAdmire'da hiç kimse bir işçiden para almaz. Bu sayfa, kiminle muhatap olduğunuzu doğrulamanıza yardımcı olur."
+      },
+      "lookup": {
+        "hint": "Kimliğin, adın, şehrin veya numaranın en az {min} karakterini yazın.",
+        "resultTitle": "Herkese açık kayıt defteri henüz yayımlanmadı",
+        "resultBody": "“{query}” şu anda çevrim içi doğrulanamıyor. JobsAdmire ofisini arayın ya da WhatsApp'tan yazın — JobsAdmire ekibi, bu kişinin JobsAdmire için çalışıp çalışmadığını teyit eder. O zamana kadar belge ya da para vermeyin.",
+        "whatsapp": "WhatsApp'tan sorun"
+      },
+      "empty": {
+        "title": "Kayıt defteri henüz herkese açık değil",
+        "body": "Her JobsAdmire temsilcisi bir JA- kimliği taşır. Fotoğrafların ve kayıtların yer aldığı herkese açık kayıt defteri, her kişinin onayıyla hazırlanıyor. Yayımlanana kadar bir adı ya da kimliği JobsAdmire ofisiyle telefonla veya WhatsApp üzerinden doğrulayın."
+      },
+      "faq": {
+        "whoSigns": "Yalnızca kurucu. Hiçbir temsilci, ofis çalışanı ya da iş ortağı ajans JobsAdmire adına hizmet sözleşmesi, işveren sözleşmesi veya işçi sözleşmesi imzalayamaz. Başka biri tarafından imzalanan hiçbir belge geçerli değildir."
+      },
+      "report": {
+        "submit": "Bildirimi gönder"
+      },
+      "record": {
+        "close": "Kaydı kapat",
+        "former": "Artık yetkili değil"
+      }
+    },
     "form": {
       "labels": {
         "name": "Ad Soyad",
@@ -510,6 +539,17 @@
         "call": "Arayın",
         "email": "E-posta gönderin",
         "whatsappIntro": "Merhaba JobsAdmire, web sitesindeki formu gönderemedim. Bilgilerim:"
+      },
+      "evidence": {
+        "uploading": "{name} yükleniyor…",
+        "attached": "{name} eklendi",
+        "remove": "{name} dosyasını kaldır",
+        "tooBig": "{name}, {maxMb} MB'tan büyük. Daha küçük bir dosya seçin.",
+        "badType": "{name} bir JPEG, PNG, WEBP veya PDF dosyası değil.",
+        "refused": "{name} kabul edilmedi. Türünü ve boyutunu kontrol edin.",
+        "failed": "{name} şu anda yüklenemedi. Bildirimi dosyasız gönderin ve dosyayı WhatsApp'tan iletin.",
+        "tooMany": "En fazla {max} dosya eklenebilir.",
+        "wait": "Bir dosya hâlâ yükleniyor. Yükleme bitince bildirimi gönderin."
       }
     },
     "home": {

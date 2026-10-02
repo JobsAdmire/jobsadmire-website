@@ -88,6 +88,10 @@
       "stories": {
         "title": "Success Stories — Work Permit Approvals for Employers in Türkiye | JobsAdmire",
         "description": "Work permit approvals JobsAdmire obtains for employers in Türkiye, published by sector, headcount and month with personal details removed."
+      },
+      "verify": {
+        "title": "Verify a JobsAdmire Representative — Official Authority Check",
+        "description": "Check whether someone really acts for JobsAdmire: only the founder signs, and nobody at JobsAdmire takes money from a worker. Check a JA- ID or report an impostor."
       }
     },
     "consent": {
@@ -362,6 +366,31 @@
         "card1Title": "Welder · Uzbekistan → Ankara"
       }
     },
+    "verify": {
+      "hero": {
+        "lead": "Only the founder signs for JobsAdmire. Everyone else on the team collects documents, checks skills and runs interviews — nobody else signs, and nobody at JobsAdmire takes money from a worker. This page helps you confirm who you are dealing with."
+      },
+      "lookup": {
+        "hint": "Type at least {min} characters of the ID, name, city or number.",
+        "resultTitle": "The public register is not published yet",
+        "resultBody": "“{query}” cannot be checked online yet. Call the JobsAdmire office or write on WhatsApp — the team confirms whether this person works for JobsAdmire. Until then, do not hand over documents or money.",
+        "whatsapp": "Ask on WhatsApp"
+      },
+      "empty": {
+        "title": "The register is not public yet",
+        "body": "Every JobsAdmire representative carries a JA- ID. The public register, with photos and records, is being prepared with each person's consent. Until it is published, confirm any name or ID with the JobsAdmire office by phone or WhatsApp."
+      },
+      "faq": {
+        "whoSigns": "Only the founder. No representative, office employee or partner agency can sign a service agreement, an employer contract or a worker contract for JobsAdmire. Any document signed by anyone else is not valid."
+      },
+      "report": {
+        "submit": "Send the report"
+      },
+      "record": {
+        "close": "Close the record",
+        "former": "No longer authorised"
+      }
+    },
     "form": {
       "labels": {
         "name": "Full name",
@@ -510,6 +539,17 @@
         "call": "Call",
         "email": "E-mail",
         "whatsappIntro": "Hello JobsAdmire, I could not send the form on your website. My details:"
+      },
+      "evidence": {
+        "uploading": "Uploading {name}…",
+        "attached": "{name} attached",
+        "remove": "Remove {name}",
+        "tooBig": "{name} is larger than {maxMb} MB. Choose a smaller file.",
+        "badType": "{name} is not a JPEG, PNG, WEBP or PDF file.",
+        "refused": "{name} was not accepted. Check its type and size.",
+        "failed": "{name} could not be uploaded right now. Send the report without it and share the file on WhatsApp.",
+        "tooMany": "Up to {max} files can be attached.",
+        "wait": "A file is still uploading. Send the report once it has finished."
       }
     },
     "home": {
