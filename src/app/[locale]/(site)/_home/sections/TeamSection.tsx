@@ -66,7 +66,7 @@ export function TeamSection({ locale, bundle }: SectionProps) {
                 />
               </div>
               <div className="relative min-w-0">
-                <span className="mb-2.5 inline-block rounded-pill bg-blue-safe px-[13px] py-1 text-[10.5px] font-extrabold uppercase tracking-[1px]">
+                <span className="mb-2.5 inline-block rounded-pill bg-blue-safe px-[13px] py-1 text-[10.5px] font-extrabold uppercase tracking-[1px] xl:text-[11px]">
                   {tf('home.129')}
                 </span>
                 <h3 className="m-0 text-[22px] tracking-[-0.7px] text-white xl:text-[16.5px]">

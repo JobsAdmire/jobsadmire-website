@@ -86,9 +86,11 @@ export function RowHead({
 
 /** The ≤ 700 px snapshot (design `.ja-cc-snap`): the live total and the quote button up top. */
 export function Snapshot({ view, labels }: { view: CardView; labels: CardLabels }) {
+  // `max-md:` on the label size: the snapshot is `md:hidden`, so 10.5 px is a phone size only —
+  // written as one, the W190 floor scan (src/test/type-floor.test.ts) reads no desktop size here.
   const cell = (label: string, value: string) => (
     <div className="rounded-[10px] border border-white/15 bg-white/10 px-2.5 py-2">
-      <p className="m-0 mb-0.5 text-[10.5px] font-extrabold uppercase tracking-[0.8px] text-white/80">
+      <p className="m-0 mb-0.5 font-extrabold uppercase tracking-[0.8px] text-white/80 max-md:text-[10.5px]">
         {label}
       </p>
       <p className="m-0 text-[15px] font-extrabold">{value}</p>

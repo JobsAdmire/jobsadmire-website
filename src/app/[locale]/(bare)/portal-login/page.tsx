@@ -146,7 +146,7 @@ function AppCard({
         />
       ) : null}
       <div className="min-w-0">
-        <p className="inline-flex items-center gap-2 text-[10.5px] font-extrabold uppercase tracking-[1.2px] text-sky">
+        <p className="inline-flex items-center gap-2 text-[10.5px] font-extrabold uppercase tracking-[1.2px] text-sky xl:text-[11px]">
           <span aria-hidden="true" className="block h-[7px] w-[7px] rounded-pill bg-success" />
           {t('crmlogin.011')}
         </p>
@@ -211,7 +211,7 @@ export default async function PortalLoginPage({ params }: { params: Promise<{ lo
           <span className="font-display text-[16px] font-extrabold tracking-[-0.3px]">
             JobsAdmire
           </span>
-          <span className="rounded-pill border border-white/15 bg-white/10 px-2.5 py-[3px] text-[10.5px] font-extrabold uppercase tracking-[1px] text-white/70">
+          <span className="rounded-pill border border-white/15 bg-white/10 px-2.5 py-[3px] text-[10.5px] font-extrabold uppercase tracking-[1px] text-white/70 xl:text-[11px]">
             {t('crmlogin.045')}
           </span>
         </div>

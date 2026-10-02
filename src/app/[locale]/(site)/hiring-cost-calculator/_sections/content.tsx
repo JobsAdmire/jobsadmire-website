@@ -736,19 +736,19 @@ const INC = {
   blue: {
     card: 'flex flex-col rounded-md border-[1.5px] border-tint-border bg-white px-6 py-[26px]',
     badge:
-      'mb-3.5 self-end rounded-pill border border-tint-border bg-tint px-2.5 py-[3px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] text-blue-safe',
+      'mb-3.5 self-end rounded-pill border border-tint-border bg-tint px-2.5 py-[3px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] text-blue-safe xl:text-[11px]',
     sub: 'm-0 mb-2 text-[13px] font-extrabold text-blue-safe',
   },
   green: {
     card: 'flex flex-col rounded-md border-[1.5px] border-success-border bg-white px-6 py-[26px]',
     badge:
-      'mb-3.5 self-end rounded-pill border border-success-border bg-success-surface px-2.5 py-[3px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] text-success-text',
+      'mb-3.5 self-end rounded-pill border border-success-border bg-success-surface px-2.5 py-[3px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] text-success-text xl:text-[11px]',
     sub: 'm-0 mb-2 text-[13px] font-extrabold text-success-text',
   },
   plain: {
     card: 'flex flex-col rounded-md border border-border-2 bg-white px-6 py-[26px]',
     badge:
-      'mb-3.5 self-end rounded-pill border border-border-2 bg-pale-1 px-2.5 py-[3px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] text-text-secondary',
+      'mb-3.5 self-end rounded-pill border border-border-2 bg-pale-1 px-2.5 py-[3px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] text-text-secondary xl:text-[11px]',
     sub: 'm-0 mb-2 text-[13px] font-extrabold text-[#253063]',
   },
 } as const;
