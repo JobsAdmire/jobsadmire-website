@@ -44,7 +44,9 @@ export function NumbersBox({
             <p className="m-0 mb-3 text-eyebrow font-extrabold uppercase tracking-[1.6px] text-sky">
               {t('success.046')}
             </p>
-            <h2 className="m-0 mb-3 text-h2 text-white">{t('success.047')}</h2>
+            <h2 className="m-0 mb-3 text-h2 text-white max-md:text-[24px] max-md:tracking-[-0.7px]">
+              {t('success.047')}
+            </h2>
             <p className="m-0 text-body text-white/75">{t('success.048')}</p>
           </div>
           <ul className="m-0 grid list-none gap-px overflow-hidden rounded-md border border-white/15 bg-white/15 p-0 sm:grid-cols-2 lg:grid-cols-4">

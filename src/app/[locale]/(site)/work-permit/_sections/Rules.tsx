@@ -18,7 +18,7 @@ export function Rules({ tf }: { tf: (id: string) => string }) {
         <div className="grid items-start gap-16 max-lg:gap-6 lg:grid-cols-[0.9fr_1.1fr]">
           <div className="min-w-0 lg:sticky lg:top-40">
             <Eyebrow>{tf('wp.187')}</Eyebrow>
-            <h2 className="m-0 mt-3.5 mb-3.5 text-h2 leading-[1.05] tracking-[-0.03em]">
+            <h2 className="m-0 mt-3.5 mb-3.5 text-h2 leading-[1.05] tracking-[-0.03em] max-md:text-[25px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
               {tf('wp.188')}
             </h2>
             <p className="m-0 mb-6.5 text-body text-text-secondary max-md:mb-4">

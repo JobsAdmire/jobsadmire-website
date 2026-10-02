@@ -15,7 +15,9 @@ export function Tracks({ tf, panels }: { tf: Tf; panels: Record<TrackKey, ReactN
   return (
     <Section tone="light" id="tracks" className="scroll-mt-20">
       <div className="container-site" data-testid="partner-tracks">
-        <h2 className="text-h2 m-0 mb-3 md:text-center">{tf(TRACKS_IDS.heading)}</h2>
+        <h2 className="text-h2 m-0 mb-3 md:text-center max-md:text-[25px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
+          {tf(TRACKS_IDS.heading)}
+        </h2>
         <p className="m-0 mb-8 text-body text-text-tertiary md:mx-auto md:mb-11 md:max-w-[560px] md:text-center">
           <span className="max-md:hidden">{tf(TRACKS_IDS.introDesk)}</span>
           <span className="md:hidden">{tf(TRACKS_IDS.introMob)}</span>

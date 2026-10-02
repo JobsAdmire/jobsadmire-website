@@ -34,7 +34,7 @@ export function AudienceRouter({ bundle, tf }: { bundle: Bundle; tf: (id: string
   return (
     <Section tone="light" className="border-b border-border-3 pt-14 pb-14 max-md:pt-8 max-md:pb-8">
       <div className="container-site" data-testid="wp-router">
-        <h2 className="m-0 mb-2 text-center text-h2 tracking-[-0.02em] max-md:text-left">
+        <h2 className="m-0 mb-2 text-center text-h2 tracking-[-0.02em] max-md:text-left max-md:text-[22px] max-md:tracking-[-0.4px]">
           {tf('wp.083')}
         </h2>
         <p className="m-0 mb-7 text-center text-body text-text-tertiary max-md:mb-4 max-md:text-left">

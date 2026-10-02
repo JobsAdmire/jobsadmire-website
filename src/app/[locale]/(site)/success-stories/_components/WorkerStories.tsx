@@ -37,7 +37,9 @@ export function WorkerStories({
           <div className="grid items-center gap-8 lg:grid-cols-[0.85fr_1.15fr]">
             <div>
               <Eyebrow>{t('success.070')}</Eyebrow>
-              <h2 className="m-0 mb-3 text-h2">{t('success.071')}</h2>
+              <h2 className="m-0 mb-3 text-h2 max-md:text-[23px] max-md:tracking-[-0.6px]">
+                {t('success.071')}
+              </h2>
               <p className="m-0 mb-4 text-body text-text-secondary">{t('success.072')}</p>
               <Link
                 href="/available-workers"

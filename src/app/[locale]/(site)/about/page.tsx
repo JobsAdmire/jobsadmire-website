@@ -145,7 +145,11 @@ export default async function About({ params }: { params: Promise<{ locale: stri
                 { name: t('about.008'), href: '/about' },
               ]}
             />
-            <h1 data-testid="page-h1" data-lcp-slot="h1" className="mt-4 mb-2 text-h1 leading-none">
+            <h1
+              data-testid="page-h1"
+              data-lcp-slot="h1"
+              className="mt-4 mb-2 text-h1 leading-none max-md:text-[36px] max-md:tracking-[-1.4px]"
+            >
               {t('about.022')} <span className="text-sky">{t('about.023')}</span>
             </h1>
             <p
@@ -237,7 +241,9 @@ export default async function About({ params }: { params: Promise<{ locale: stri
           </div>
           <div>
             <Eyebrow>{t('about.038')}</Eyebrow>
-            <h2 className="mt-2 mb-4 text-h2">{t('about.039')}</h2>
+            <h2 className="mt-2 mb-4 text-h2 max-md:text-[27px] max-md:leading-[1.12] max-md:tracking-[-0.9px]">
+              {t('about.039')}
+            </h2>
             {/* about.040 is legal-flagged: rendered verbatim ("13+ countries") for the WP-C review (W1). */}
             <p className="m-0 mb-7 text-body text-text-secondary">{t('about.040')}</p>
             <ol className="m-0 list-none p-0">
@@ -314,7 +320,9 @@ export default async function About({ params }: { params: Promise<{ locale: stri
       {/* ============ TECHNOLOGY (design 740–837) */}
       <Section tone="light" id="about-tech">
         <div data-testid="about-tech" className="container-site">
-          <h2 className="mt-0 mb-4 text-center text-h2">{t('about.064')}</h2>
+          <h2 className="mt-0 mb-4 text-center text-h2 max-md:text-[27px] max-md:leading-[1.12] max-md:tracking-[-0.9px]">
+            {t('about.064')}
+          </h2>
           <p className="mx-auto mt-0 mb-10 max-w-[560px] xl:max-w-[420px] text-center text-body-lg text-text-secondary">
             {t('about.065')}
           </p>
@@ -405,7 +413,9 @@ export default async function About({ params }: { params: Promise<{ locale: stri
       <Section tone="pale" id="about-offices">
         <div className="container-site">
           <div data-testid="about-offices">
-            <h2 className="m-0 mb-4 text-center text-h2">{t('about.089')}</h2>
+            <h2 className="m-0 mb-4 text-center text-h2 max-md:text-[27px] max-md:leading-[1.12] max-md:tracking-[-0.9px]">
+              {t('about.089')}
+            </h2>
             <p className="mx-auto mt-0 mb-10 max-w-[560px] xl:max-w-[420px] text-center text-body-lg text-text-secondary">
               {t('about.090')}
             </p>

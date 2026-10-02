@@ -31,7 +31,9 @@ export function RelatedArticles({
     <Section tone="light">
       <div className="container-site" data-testid="wp-related">
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
-          <h2 className="m-0 text-h2 tracking-[-0.02em]">{tf('wp.351')}</h2>
+          <h2 className="m-0 text-h2 tracking-[-0.02em] max-[601px]:text-[25px] max-[601px]:tracking-[-0.4px]">
+            {tf('wp.351')}
+          </h2>
           <Link
             prefetch={false}
             href="/blog"

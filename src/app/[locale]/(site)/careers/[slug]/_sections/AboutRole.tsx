@@ -30,7 +30,7 @@ export function AboutRole({
     <Section tone="light">
       <div className="container-site grid items-start gap-10 lg:grid-cols-[1.1fr_0.9fr]">
         <div className="min-w-0">
-          <h2 className="mb-4 text-h2 leading-[1.05] tracking-[-0.04em]">
+          <h2 className="mb-4 text-h2 leading-[1.05] tracking-[-0.04em] max-[601px]:text-[25px] max-[601px]:tracking-[-0.4px]">
             {sys('careers.detail.about')}
           </h2>
           {blocks.length > 0 && (

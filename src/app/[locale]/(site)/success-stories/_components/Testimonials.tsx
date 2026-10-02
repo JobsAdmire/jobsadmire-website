@@ -24,7 +24,9 @@ export function Testimonials({
     <Section tone="light" className="pt-0">
       <div className="container-site" data-testid="stories-testimonials">
         <Eyebrow>{t('success.058')}</Eyebrow>
-        <h2 className="m-0 mb-6 text-h2">{t('success.059')}</h2>
+        <h2 className="m-0 mb-6 text-h2 max-md:text-[24px] max-md:tracking-[-0.7px]">
+          {t('success.059')}
+        </h2>
         <ul className="m-0 grid list-none gap-4 p-0 md:grid-cols-3">
           {items.map((q) => (
             <li key={q.id} className="min-w-0">

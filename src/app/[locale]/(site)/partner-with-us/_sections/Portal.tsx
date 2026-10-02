@@ -35,7 +35,9 @@ export function Portal({
         >
           <div className="min-w-0">
             <Eyebrow>{tf(PORTAL_IDS.eyebrow)}</Eyebrow>
-            <h2 className="text-h2 m-0 mt-3 mb-3">{tf(PORTAL_IDS.heading)}</h2>
+            <h2 className="text-h2 m-0 mt-3 mb-3 max-md:text-[24px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
+              {tf(PORTAL_IDS.heading)}
+            </h2>
             <p className="m-0 mb-6 text-body text-text-secondary">{tf(PORTAL_IDS.lead)}</p>
             <ul className="m-0 mb-6 flex list-none flex-col gap-3 p-0">
               {PORTAL_IDS.features.map(([lead, tail]) => (

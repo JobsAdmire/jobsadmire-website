@@ -65,7 +65,9 @@ export function HiringSteps({ t, variant = 'full' }: { t: Tf; variant?: 'full' |
         data-testid="careers-process"
         className="rounded-lg border border-border-2 bg-white p-6 md:p-8"
       >
-        <h2 className="mb-6 text-h2 leading-[1.05] tracking-[-0.04em]">{t('jt.081')}</h2>
+        <h2 className="mb-6 text-h2 leading-[1.05] tracking-[-0.04em] max-md:text-[27px] max-md:leading-[1.12] max-md:tracking-[-0.9px]">
+          {t('jt.081')}
+        </h2>
         <StepList t={t} />
       </div>
     );
@@ -75,7 +77,9 @@ export function HiringSteps({ t, variant = 'full' }: { t: Tf; variant?: 'full' |
       <div data-testid="careers-process" className="container-site">
         <div className="mb-8 max-w-[660px]">
           <Eyebrow>{t('jt.080')}</Eyebrow>
-          <h2 className="mt-3 mb-3 text-h2 leading-[1.05] tracking-[-0.04em]">{t('jt.081')}</h2>
+          <h2 className="mt-3 mb-3 text-h2 leading-[1.05] tracking-[-0.04em] max-md:text-[27px] max-md:leading-[1.12] max-md:tracking-[-0.9px]">
+            {t('jt.081')}
+          </h2>
           <p className="text-body text-text-secondary">{t('jt.082')}</p>
         </div>
         <div className="rounded-lg border border-border-2 bg-white p-6 shadow-[0_10px_30px_rgba(22,60,90,0.06)] md:p-8">

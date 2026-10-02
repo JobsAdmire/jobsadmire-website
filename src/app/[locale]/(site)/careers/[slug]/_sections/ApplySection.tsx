@@ -94,7 +94,9 @@ export function ApplySection({
     <Section tone="pale" id="apply" className="scroll-mt-24 border-t border-border-3">
       <div className="container-site">
         <div data-testid="careers-detail-apply" className="max-w-[860px]">
-          <h2 className="mb-2 text-h2 leading-[1.05] tracking-[-0.04em]">{t('jt.052')}</h2>
+          <h2 className="mb-2 text-h2 leading-[1.05] tracking-[-0.04em] max-[601px]:text-[25px] max-[601px]:tracking-[-0.4px]">
+            {t('jt.052')}
+          </h2>
           <p className="mb-6 text-body text-text-secondary">{sys('careers.detail.applyLead')}</p>
           {byEmail ? (
             <EmailApply

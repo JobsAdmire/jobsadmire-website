@@ -133,7 +133,9 @@ export function Message({
             nothing focusable — its one card hides — so the focus order is unchanged. */}
         <div className="min-w-0 max-md:order-2 lg:sticky lg:top-24">
           <Eyebrow>{t('contact.050')}</Eyebrow>
-          <h2 className="m-0 mb-4 mt-3 text-h2">{t('contact.051')}</h2>
+          <h2 className="m-0 mb-4 mt-3 text-h2 max-md:text-[21px] max-md:leading-[1.13] max-md:tracking-[-0.6px]">
+            {t('contact.051')}
+          </h2>
           <p className="m-0 mb-6 text-body text-text-secondary">{t('contact.052')}</p>
           <ProcessSteps
             bundle={bundle}

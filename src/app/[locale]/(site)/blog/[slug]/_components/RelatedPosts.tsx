@@ -49,7 +49,9 @@ export function RelatedPosts({
       <div className="container-site" data-testid="article-related">
         {related.length > 0 ? (
           <>
-            <h2 className="text-h2 mt-0 mb-5">{t('blogarticle.081')}</h2>
+            <h2 className="text-h2 mt-0 mb-5 max-[601px]:text-[23px] max-[601px]:tracking-[-0.4px]">
+              {t('blogarticle.081')}
+            </h2>
             <ul className="m-0 grid list-none gap-6 p-0 md:grid-cols-3">
               {related.map((post, i) => (
                 <li key={post.key} className={i === 2 ? 'max-md:hidden' : undefined}>

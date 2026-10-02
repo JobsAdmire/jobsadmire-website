@@ -90,7 +90,7 @@ export function Hero({
             <h1
               data-testid="page-h1"
               data-lcp-slot="h1"
-              className="m-0 mb-4 text-h1 leading-[1.02] tracking-[-0.03em] text-white"
+              className="m-0 mb-4 text-h1 leading-[1.02] tracking-[-0.03em] text-white max-[601px]:text-[32px] max-[601px]:tracking-[-0.6px]"
             >
               {t('contact.025')} <span className="text-sky">{t('contact.026')}</span>
             </h1>

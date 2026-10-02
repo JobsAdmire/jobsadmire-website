@@ -48,7 +48,7 @@ export function DetailHero({
           <h1
             data-testid="page-h1"
             data-lcp-slot="h1"
-            className="mt-3 text-h1 leading-[1.05] tracking-[-0.03em] text-white break-words"
+            className="mt-3 text-h1 leading-[1.05] tracking-[-0.03em] text-white break-words max-[601px]:text-[32px] max-[601px]:tracking-[-0.6px]"
           >
             {opening.title}
           </h1>

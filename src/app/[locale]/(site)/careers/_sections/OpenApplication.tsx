@@ -34,7 +34,9 @@ export function OpenApplication({
       >
         <div>
           <Eyebrow>{t('jt.086')}</Eyebrow>
-          <h2 className="mt-3 mb-3 text-h2 leading-[1.05] tracking-[-0.04em]">{t('jt.087')}</h2>
+          <h2 className="mt-3 mb-3 text-h2 leading-[1.05] tracking-[-0.04em] max-md:text-[27px] max-md:leading-[1.12] max-md:tracking-[-0.9px]">
+            {t('jt.087')}
+          </h2>
           <p className="mb-6 text-body text-text-secondary">{t('jt.088')}</p>
           <ul className="flex flex-col gap-3">
             {WANTS.map(([title, body, tone]) => (

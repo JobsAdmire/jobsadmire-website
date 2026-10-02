@@ -16,7 +16,7 @@ export function Timeline({ tf }: { tf: (id: string) => string }) {
   return (
     <Section tone="pale" id="timeline" className="scroll-mt-24 lg:scroll-mt-32 xl:scroll-mt-40">
       <div className="container-site" data-testid="wp-timeline">
-        <h2 className="m-0 mb-3.5 text-center text-h2 leading-[1.05] tracking-[-0.03em] max-md:text-left">
+        <h2 className="m-0 mb-3.5 text-center text-h2 leading-[1.05] tracking-[-0.03em] max-md:text-left max-[601px]:text-[25px] max-[601px]:tracking-[-0.4px]">
           {tf('wp.259')}
         </h2>
         <p className="mx-auto mb-11 max-w-[560px] text-center text-body-lg text-text-secondary max-md:mb-5 max-md:text-left">

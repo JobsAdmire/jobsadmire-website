@@ -40,7 +40,9 @@ export function Report({
         <p className="m-0 text-eyebrow font-extrabold uppercase tracking-[1.6px] text-danger">
           {t('verify.077')}
         </p>
-        <h2 className="mt-3 mb-0 text-h2 leading-[1.06] tracking-[-0.04em]">{t('verify.078')}</h2>
+        <h2 className="mt-3 mb-0 text-h2 leading-[1.06] tracking-[-0.04em] max-md:text-[25px] max-md:leading-[1.13] max-md:tracking-[-0.6px]">
+          {t('verify.078')}
+        </h2>
         <p className="mt-3 mb-0 max-w-[680px] text-body-lg text-text-secondary">
           {tf('verify.079')}
         </p>

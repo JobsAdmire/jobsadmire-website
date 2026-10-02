@@ -119,7 +119,7 @@ export default async function SuccessStories({ params }: { params: Promise<{ loc
               <h1
                 data-testid="page-h1"
                 data-lcp-slot="h1"
-                className="m-0 mb-4 text-h1 leading-[1.02] tracking-[-0.03em] text-white"
+                className="m-0 mb-4 text-h1 leading-[1.02] tracking-[-0.03em] text-white max-md:text-[31px] max-md:leading-[1.05] max-md:tracking-[-1.1px]"
               >
                 {t('success.023')} <span className="text-sky">{t('success.024')}</span>
               </h1>
@@ -158,7 +158,9 @@ export default async function SuccessStories({ params }: { params: Promise<{ loc
           <div className="mb-6 flex flex-wrap items-end justify-between gap-6">
             <div className="max-w-[640px]">
               <Eyebrow>{t('success.035')}</Eyebrow>
-              <h2 className="m-0 mb-2 text-h2">{t('success.036')}</h2>
+              <h2 className="m-0 mb-2 text-h2 max-md:text-[25px] max-md:tracking-[-0.6px]">
+                {t('success.036')}
+              </h2>
               {/* Delta 7: success.037 (legal-flagged) describes the v1.1 redacted documents. */}
               <p className="m-0 text-body text-text-secondary">{sys('stories.wall.intro')}</p>
             </div>

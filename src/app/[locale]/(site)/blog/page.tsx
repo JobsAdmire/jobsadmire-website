@@ -120,7 +120,7 @@ export default async function BlogIndex({ params }: { params: Promise<{ locale: 
               <h1
                 data-testid="page-h1"
                 data-lcp-slot="h1"
-                className="text-h1 mt-4 mb-4 max-w-[760px] leading-[1.02]"
+                className="text-h1 mt-4 mb-4 max-w-[760px] leading-[1.02] max-md:text-[30px] max-md:leading-[1.08] max-md:tracking-[-1px]"
               >
                 {sys.rich('blog.hero.title', {
                   pre: t('blog.095'),

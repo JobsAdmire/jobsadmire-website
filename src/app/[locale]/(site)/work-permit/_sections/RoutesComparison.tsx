@@ -22,7 +22,7 @@ export function RoutesComparison({ tf }: { tf: (id: string) => string }) {
   return (
     <Section tone="light" id="routes" className="scroll-mt-24 lg:scroll-mt-32 xl:scroll-mt-40">
       <div className="container-site" data-testid="wp-routes">
-        <h2 className="m-0 mb-3.5 text-center text-h2 leading-[1.05] tracking-[-0.03em] max-md:text-left">
+        <h2 className="m-0 mb-3.5 text-center text-h2 leading-[1.05] tracking-[-0.03em] max-md:text-left max-md:text-[25px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
           {tf('wp.097')}
         </h2>
         <p className="mx-auto mb-11 max-w-[620px] text-center text-body-lg text-text-tertiary max-md:mb-5 max-md:text-left">

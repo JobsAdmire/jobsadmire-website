@@ -130,7 +130,7 @@ export function Hero({
             <h1
               data-testid="page-h1"
               data-lcp-slot="h1"
-              className="m-0 text-h1 leading-[1.02] tracking-[-0.04em] text-white"
+              className="m-0 text-h1 leading-[1.02] tracking-[-0.04em] text-white max-[601px]:text-[32px] max-[601px]:tracking-[-0.6px]"
             >
               {t('verify.023')} <span className="text-sky">{t('verify.024')}</span>
             </h1>

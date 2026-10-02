@@ -28,7 +28,9 @@ export function PermitCta({ bundle, tf }: { bundle: Bundle; tf: (id: string) => 
     >
       <div className="container-site">
         <div className="mx-auto max-w-[900px] text-center">
-          <h2 className="m-0 mb-3.5 text-h2 leading-[1.05] tracking-[-0.03em]">{tf('wp.359')}</h2>
+          <h2 className="m-0 mb-3.5 text-h2 leading-[1.05] tracking-[-0.03em] max-md:text-[25px] max-md:leading-[1.14] max-md:tracking-[-0.5px]">
+            {tf('wp.359')}
+          </h2>
           <p className="mx-auto mb-7 max-w-[620px] text-body-lg text-text-secondary max-md:mb-4">
             <span data-testid="wp-cta-desk" className="max-md:hidden">
               {tf('wp.360')}

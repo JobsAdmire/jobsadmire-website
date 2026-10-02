@@ -47,7 +47,7 @@ export function Structure({
       <div className="container-site" data-testid="verify-structure">
         <div className="mx-auto mb-10 max-w-[660px] text-center">
           <Eyebrow>{t('verify.053')}</Eyebrow>
-          <h2 className="mt-3 mb-0 text-h2 leading-[1.05] tracking-[-0.04em]">
+          <h2 className="mt-3 mb-0 text-h2 leading-[1.05] tracking-[-0.04em] max-md:text-[25px] max-md:leading-[1.13] max-md:tracking-[-0.6px]">
             {t('verify.054')}
             <br />
             {t('verify.055')}

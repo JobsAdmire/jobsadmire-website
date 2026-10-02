@@ -50,7 +50,9 @@ export function Offices({
               <p className="m-0 mb-4 inline-block rounded-pill border border-white/30 bg-white/15 px-4 py-1.5 text-eyebrow font-extrabold uppercase tracking-[1.8px]">
                 {t('contact.092')}
               </p>
-              <h2 className="m-0 mb-3.5 text-h2 text-white">{t('contact.093')}</h2>
+              <h2 className="m-0 mb-3.5 text-h2 text-white max-md:text-[25px] max-md:leading-[1.13] max-md:tracking-[-0.6px]">
+                {t('contact.093')}
+              </h2>
               <p className="m-0 text-body text-white/90">{t('contact.094')}</p>
             </div>
             <p className="m-0 inline-flex items-center gap-2 rounded-pill border border-white/30 bg-white/15 px-4 py-2 text-body-sm font-extrabold max-md:hidden">

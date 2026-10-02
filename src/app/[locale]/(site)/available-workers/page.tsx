@@ -142,7 +142,7 @@ export default async function AvailableWorkersPage({
             <h1
               data-testid="page-h1"
               data-lcp-slot={heroIsLcp ? undefined : 'h1'}
-              className="text-h1 m-0 mb-4 leading-[1.02] tracking-[-0.03em]"
+              className="text-h1 m-0 mb-4 leading-[1.02] tracking-[-0.03em] max-md:text-[31px] max-md:leading-[1.08] max-md:tracking-[-0.9px]"
             >
               {tf('availworkers.024')} <span className="text-sky">{tf('availworkers.025')}</span>{' '}
               {tf('availworkers.026')}
@@ -266,7 +266,7 @@ export default async function AvailableWorkersPage({
       <Section tone="light" id="pool" className="scroll-mt-20">
         <div data-testid="workers-pool" className="container-site">
           <div className="mb-6 max-w-[560px]">
-            <h2 className="text-h2 m-0 mb-3">
+            <h2 className="text-h2 m-0 mb-3 max-md:text-[25px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
               {cardsOn ? tf('availworkers.052') : sys('workers.pool.heading')}
             </h2>
             <p className="text-body m-0 text-text-secondary">
@@ -288,7 +288,9 @@ export default async function AvailableWorkersPage({
       {/* 9 — what "verified" means (design 777–827) */}
       <Section tone="pale">
         <div data-testid="workers-verified" className="container-site">
-          <h2 className="text-h2 m-0 mb-3 text-center">{tf('availworkers.072')}</h2>
+          <h2 className="text-h2 m-0 mb-3 text-center max-md:text-[25px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
+            {tf('availworkers.072')}
+          </h2>
           <p className="text-body mx-auto mt-0 mb-10 max-w-[580px] text-center text-text-secondary">
             {tf('availworkers.073')}
           </p>
@@ -315,7 +317,9 @@ export default async function AvailableWorkersPage({
         >
           <div className="min-w-0">
             <Eyebrow>{tf('availworkers.085')}</Eyebrow>
-            <h2 className="text-h2 mt-3 mb-3">{tf('availworkers.086')}</h2>
+            <h2 className="text-h2 mt-3 mb-3 max-md:text-[25px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
+              {tf('availworkers.086')}
+            </h2>
             <p className="text-body m-0 mb-6 text-text-secondary">{tf('availworkers.087')}</p>
             <div className="flex flex-wrap gap-3">
               <Button variant="secondary" href="/work-permit" prefetch={false}>

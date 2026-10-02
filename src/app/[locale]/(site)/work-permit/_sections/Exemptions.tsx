@@ -30,7 +30,9 @@ export function Exemptions({ bundle, tf }: { bundle: Bundle; tf: (id: string) =>
           <p className="m-0 mb-4 inline-block rounded-pill border border-[#ccd6ea] bg-[#edf1f9] px-4 py-1.5 text-eyebrow font-extrabold tracking-[1.5px] text-[#253063] uppercase">
             {tf('wp.100')}
           </p>
-          <h2 className="m-0 mb-3.5 text-h2 leading-[1.05] tracking-[-0.03em]">{tf('wp.212')}</h2>
+          <h2 className="m-0 mb-3.5 text-h2 leading-[1.05] tracking-[-0.03em] max-md:text-[25px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
+            {tf('wp.212')}
+          </h2>
           <p className="m-0 text-body-lg text-text-secondary">{tf('wp.213')}</p>
           <p className="m-0 mt-3 text-body-sm text-text-secondary">
             {a}

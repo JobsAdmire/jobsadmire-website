@@ -26,7 +26,7 @@ export function Process({ bundle, tf }: { bundle: Bundle; tf: (id: string) => st
   return (
     <Section tone="light">
       <div className="container-site" data-testid="wp-process">
-        <h2 className="m-0 mb-3.5 text-center text-h2 leading-[1.05] tracking-[-0.03em] max-md:text-left">
+        <h2 className="m-0 mb-3.5 text-center text-h2 leading-[1.05] tracking-[-0.03em] max-md:text-left max-[601px]:text-[25px] max-[601px]:tracking-[-0.4px]">
           {tf('wp.246')}
         </h2>
         <p className="mx-auto mb-11 max-w-[560px] text-center text-body-lg text-text-tertiary max-md:mb-5 max-md:text-left">

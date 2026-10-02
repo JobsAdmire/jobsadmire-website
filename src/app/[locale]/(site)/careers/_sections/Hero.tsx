@@ -79,7 +79,7 @@ export function CareersHero({
             <h1
               data-testid="page-h1"
               data-lcp-slot="h1"
-              className="text-h1 leading-[1.02] tracking-[-0.03em] text-white"
+              className="text-h1 leading-[1.02] tracking-[-0.03em] text-white max-md:text-[38px] max-md:tracking-[-1.5px]"
             >
               {t('jt.022')}
               <br />

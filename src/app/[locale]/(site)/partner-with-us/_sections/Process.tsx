@@ -17,7 +17,9 @@ export function Process({ bundle, locale, tf }: { bundle: Bundle; locale: Locale
   return (
     <Section tone="pale">
       <div className="container-site" data-testid="partner-process">
-        <h2 className="text-h2 m-0 mb-3 md:text-center">{tf(PROCESS_IDS.heading)}</h2>
+        <h2 className="text-h2 m-0 mb-3 md:text-center max-md:text-[25px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
+          {tf(PROCESS_IDS.heading)}
+        </h2>
         <p className="m-0 mb-8 text-body text-text-secondary md:mx-auto md:mb-11 md:max-w-[560px] md:text-center">
           {tf(PROCESS_IDS.intro)}
         </p>

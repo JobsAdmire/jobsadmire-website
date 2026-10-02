@@ -15,7 +15,9 @@ export function RolesSection({ t, cards }: { t: Tf; cards: RoleCard[] }) {
       <div data-testid="careers-roles" className="container-site">
         <div className="mb-6 max-w-[620px]">
           <Eyebrow>{t('jt.044')}</Eyebrow>
-          <h2 className="mt-3 mb-2 text-h2 leading-[1.05] tracking-[-0.04em]">{t('jt.045')}</h2>
+          <h2 className="mt-3 mb-2 text-h2 leading-[1.05] tracking-[-0.04em] max-md:text-[27px] max-md:leading-[1.12] max-md:tracking-[-0.9px]">
+            {t('jt.045')}
+          </h2>
           <p className="text-body text-text-secondary">{t('jt.046')}</p>
         </div>
         {cards.length === 0 ? (

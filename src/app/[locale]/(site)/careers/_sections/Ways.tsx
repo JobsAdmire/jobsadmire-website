@@ -46,7 +46,9 @@ export function WaysSection({ t }: { t: Tf }) {
       <div data-testid="careers-ways" className="container-site">
         <div className="mb-8 max-w-[680px]">
           <Eyebrow>{t('jt.057')}</Eyebrow>
-          <h2 className="mt-3 mb-3 text-h2 leading-[1.05] tracking-[-0.04em]">{t('jt.058')}</h2>
+          <h2 className="mt-3 mb-3 text-h2 leading-[1.05] tracking-[-0.04em] max-md:text-[27px] max-md:leading-[1.12] max-md:tracking-[-0.9px]">
+            {t('jt.058')}
+          </h2>
           <p className="text-body text-text-secondary">{t('jt.059')}</p>
         </div>
         <ul className="grid gap-4 md:grid-cols-3">
