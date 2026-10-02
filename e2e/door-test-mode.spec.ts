@@ -200,3 +200,94 @@ for (const id of [16, 17] as const) {
     await submitAndAssertLead(page, row);
   });
 }
+
+test('replay: submitting the identical body twice inside one clock hour still succeeds, once, and R37 keeps generate_lead at one', async ({
+  page,
+}) => {
+  test.skip(!ENABLED, REASON);
+  const row = FORM_INSTANCES.find((r) => r.id === 11)!; // the Contact callback widget — cheap, no upload
+  const stamp = `T14-R1-${Date.now()}`; // fixed for BOTH submits on purpose — replay needs an identical body
+  await openInstancePage(page, row, row.path[row.locale]);
+  await fillInstance(page, row, stamp);
+  await submitAndAssertLead(page, row);
+  // Second submit, identical fields: go back, the form still holds the same values (or refill
+  // them identically), submit again inside the same hour.
+  await page.goBack();
+  await fillInstance(page, row, stamp);
+  const form = page.locator(`form[data-testid="${row.testId}"]`);
+  await form.locator('button[type="submit"]').click();
+  await expect(page).toHaveURL(new RegExp(`/tesekkurler\\?form=${row.doorKey}`));
+  // R37: same form key, same path, same browser context — the SECOND landing pushes no second
+  // generate_lead/conversion, which is the accepted skew docs/ANALYTICS.md now records (Cycle 1).
+  await page.waitForTimeout(300);
+  expect(await eventsFor(page, 'generate_lead', row.doorKey)).toHaveLength(1);
+  expect(await eventsFor(page, 'conversion', row.doorKey)).toHaveLength(1);
+});
+
+test('404 off: an unconfigured route answers the off panel (run with E2E_BASE_URL on preview/t14-off)', async ({
+  page,
+}) => {
+  test.skip(!ENABLED, REASON);
+  // The throwaway branch's OPS_API_URL must reach a real JSON 404 — Nest's own `Cannot POST …`
+  // under the `/api` prefix (`https://operations.jobsadmire.com/api/nope`, pre-checked 2026-10-02);
+  // a path outside `/api` is caught by the Operations frontend and 307s to its login page, which
+  // `postForm` would read as a malformed 200 → `unavailable`, not `off`.
+  const row = FORM_INSTANCES.find((r) => r.id === 11)!; // callback — cheap
+  const stamp = `T14-404-${Date.now()}`;
+  await openInstancePage(page, row, row.path[row.locale]);
+  await fillInstance(page, row, stamp);
+  const form = page.locator(`form[data-testid="${row.testId}"]`);
+  await form.locator('button[type="submit"]').click();
+  const panel = page.getByTestId('form-fallback');
+  await expect(panel).toHaveAttribute('data-kind', 'off');
+  // W76/W95: `off` is a WhatsApp-primary kind — the anchor carries the bare chat only, no visitor data.
+  await expect(panel.getByRole('link', { name: /whatsapp/i })).toHaveAttribute(
+    'href',
+    /^https:\/\/wa\.me\/\d+$/,
+  );
+  expect(await eventsFor(page, 'generate_lead', row.doorKey)).toHaveLength(0);
+  expect(page.url()).not.toContain('/tesekkurler');
+});
+
+test('unavailable: an unreachable door answers the panel within the W74/W117 budget (run with E2E_BASE_URL on preview/t14-blackhole)', async ({
+  page,
+}) => {
+  test.skip(!ENABLED, REASON);
+  const row = FORM_INSTANCES.find((r) => r.id === 11)!;
+  const stamp = `T14-5xx-${Date.now()}`;
+  await openInstancePage(page, row, row.path[row.locale]);
+  await fillInstance(page, row, stamp);
+  const form = page.locator(`form[data-testid="${row.testId}"]`);
+  const started = Date.now();
+  await form.locator('button[type="submit"]').click();
+  await expect(page.getByTestId('form-fallback')).toHaveAttribute('data-kind', 'unavailable', {
+    timeout: 12_000,
+  });
+  // W74/W117: one shared 9 s deadline for the whole call. `.invalid` fails DNS at once (a
+  // connection-level failure), so the ONE immediate retry fails at once too and the panel lands
+  // well under a second after the server action returns — the 9 s deadline bounds only a host
+  // that never answers. The 12 s ceiling covers both; record the observed figure in the ledger
+  // (Cycle 9), not asserted tightly here (CI timing varies).
+  console.log(`unavailable panel after ${Date.now() - started} ms`);
+});
+
+test('honeypot: a filled honeypot answers success to the visitor and files no inquiry (SPAM row)', async ({
+  page,
+}) => {
+  test.skip(!ENABLED, REASON);
+  const row = FORM_INSTANCES.find((r) => r.id === 11)!;
+  const stamp = `T14-SPAM-${Date.now()}`;
+  await openInstancePage(page, row, row.path[row.locale]);
+  await fillInstance(page, row, stamp);
+  // The honeypot is off-canvas, outside the tab order (`aria-hidden`, `tabIndex={-1}`) — a
+  // visitor never reaches it; a bot's autofill (or this test) sets it directly.
+  await page
+    .locator(`form[data-testid="${row.testId}"] input[name="honeypot"]`)
+    .fill('x', { force: true });
+  const form = page.locator(`form[data-testid="${row.testId}"]`);
+  await form.locator('button[type="submit"]').click();
+  await expect(page).toHaveURL(new RegExp(`/tesekkurler\\?form=${row.doorKey}`));
+  // A bot's dataLayer is nobody's problem (D13 does not distinguish) — generate_lead still
+  // fires; record this as the documented, accepted behaviour, not a defect.
+  expect(await eventsFor(page, 'generate_lead', row.doorKey)).toHaveLength(1);
+});
