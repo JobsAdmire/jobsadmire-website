@@ -12,7 +12,7 @@ import { ImageSlot } from '@/design/blocks/ImageSlot';
 import { NewsletterBand } from '@/design/blocks/NewsletterBand';
 import { Section } from '@/design/primitives/Section';
 import type { Href } from '@/i18n/navigation';
-import { routing } from '@/i18n/routing';
+import { routing, type Locale } from '@/i18n/routing';
 import { waLink } from '@/lib/contact';
 import { formatDate } from '@/lib/format/date/formatDate';
 import { formatReadMinutes } from '@/lib/format/date/formatReadMinutes';
@@ -50,17 +50,25 @@ const BAND_ID = 'blog-cta';
 /** The page's own ids a body heading may never take (B-8). */
 const RESERVED_IDS = [FAQ_ID, 'faq-list', BAND_ID, 'main'];
 
-/** B-1: only the slugs written in that locale are prerendered (one EN, zero TR today). Any other
+/** B-1: only the slugs written in their locale are prerendered (one EN, zero TR today). Any other
  *  slug still renders on demand (`dynamicParams` stays true — an article Operations publishes in
- *  Phase B needs no redeploy) and answers 404 through `findWritten` (W151). */
-export async function generateStaticParams({ params }: { params: { locale: string } }) {
-  const { locale } = params;
-  if (!hasLocale(routing.locales, locale)) return [];
-  const bundle = await getBundle(locale);
-  return writtenPosts(getCollection(bundle, 'blog'), locale).flatMap((post) => {
-    const slug = post.slug[locale];
-    return slug ? [{ slug }] : [];
-  });
+ *  Phase B needs no redeploy) and answers 404 through `findWritten` (W151).
+ *  Bottom up (Next's "generate params from the bottom up"): complete `{ locale, slug }` pairs for
+ *  every locale. Next 16.3.5 still calls this once per parent `[locale]` and merges each item over
+ *  the parent, but a per-locale `[]` (TR today) would pass `{ locale: 'tr' }` through WITHOUT a
+ *  slug, and one incomplete combination stops Next prerendering ANY path of the route — the EN
+ *  article included (T12 proof; `static-params.test.ts` models the expansion). */
+export async function generateStaticParams(): Promise<{ locale: Locale; slug: string }[]> {
+  const perLocale = await Promise.all(
+    routing.locales.map(async (locale) => {
+      const bundle = await getBundle(locale);
+      return writtenPosts(getCollection(bundle, 'blog'), locale).flatMap((post) => {
+        const slug = post.slug[locale];
+        return slug ? [{ locale, slug }] : [];
+      });
+    }),
+  );
+  return perLocale.flat();
 }
 
 export async function generateMetadata({ params }: { params: Promise<Params> }): Promise<Metadata> {
