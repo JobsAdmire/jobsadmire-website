@@ -61,9 +61,15 @@ async function fillInstance(page: Page, row: FormInstance, stamp: string) {
 
 async function submitAndAssertLead(page: Page, row: FormInstance) {
   const form = page.locator(`form[data-testid="${row.testId}"]`);
+  const started = Date.now();
   await form.locator('button[type="submit"]').click();
   const thankYou = row.locale === 'tr' ? '/tesekkurler' : '/en/thank-you';
   await expect(page).toHaveURL(new RegExp(`${thankYou}\\?form=${row.doorKey}`));
+  // W201: Hobby caps a function at 10 s and the door deadline is 9 s — the submit → thank-you time
+  // is the measured action duration the ledger records (worst row of the run).
+  console.log(
+    `instance ${row.id} (${row.doorKey}): submit → thank-you in ${Date.now() - started} ms`,
+  );
   await expect.poll(async () => eventsFor(page, 'generate_lead', row.doorKey)).toHaveLength(1);
   await expect.poll(async () => eventsFor(page, 'conversion', row.doorKey)).toHaveLength(1);
 }
