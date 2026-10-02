@@ -147,6 +147,7 @@ describe('DetailHero and AboutRole', () => {
       { locale: 'en' },
     );
     expect(screen.getByTestId('page-h1')).toHaveTextContent('Country Representative — Uzbekistan');
+    expect(screen.getByTestId('page-h1')).toHaveClass('break-words'); // W205: long Operations titles wrap
     expect(container.querySelectorAll('[data-lcp-slot]')).toHaveLength(1);
     const trail = screen.getByRole('navigation', { name: en.sys.nav.breadcrumbs });
     expect(within(trail).getAllByRole('listitem')).toHaveLength(3);

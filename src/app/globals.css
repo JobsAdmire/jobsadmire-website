@@ -20,7 +20,7 @@
   --color-pale-2: #f7fbfe;
   --color-pale-3: #fbfdff;
   --color-text-secondary: #556377;
-  --color-text-tertiary: #64748b;
+  --color-text-tertiary: #5f6e86; /* W205: 4.88:1 on pale-1, 4.62 on tint — was #64748b (4.49 on pale-1, below AA) */
   --color-muted: #94a3b8;
   --color-border-1: #dbe8f2;
   --color-border-2: #e2ebf2;

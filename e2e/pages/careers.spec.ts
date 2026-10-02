@@ -332,4 +332,16 @@ test.describe('careers — a configured door, read only', () => {
       page.locator('[data-testid="careers-apply-form"], [data-testid="careers-email-apply"]'),
     ).toHaveCount(1);
   });
+  test('a detail page never scrolls sideways on narrow phones (the long-word title) — W205', async ({
+    page,
+  }) => {
+    for (const width of [390, 360, 320]) {
+      await page.setViewportSize({ width, height: 844 });
+      await page.goto(`/en/careers/${FIX.uz}`);
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth - document.documentElement.clientWidth,
+      );
+      expect(overflow, `${width}px`).toBe(0);
+    }
+  });
 });

@@ -11,7 +11,11 @@ import tr from './tr.json';
  */
 
 /** Keys written in the VISITOR's voice ("Hello JobsAdmire, I could not send…"), not the company's. */
-const VISITOR_VOICE = ['form.fallback.whatsappIntro', 'whatsapp.prefill'];
+const VISITOR_VOICE = [
+  'form.fallback.whatsappIntro',
+  'whatsapp.prefill',
+  'careers.detail.whatsappIntro', // the applicant's own words (T11 review M1)
+];
 
 const EN_FIRST_PERSON = new Set(['we', 'us', 'our', 'ours', 'ourselves']);
 const TR_PRONOUNS = new Set([

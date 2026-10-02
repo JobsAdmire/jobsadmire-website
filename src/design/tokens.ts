@@ -17,7 +17,7 @@ export const tokens = {
     pale3: '#fbfdff',
     white: '#ffffff',
     textSecondary: '#556377',
-    textTertiary: '#64748b',
+    textTertiary: '#5f6e86', // W205: contrast on the pale surfaces (was #64748b)
     muted: '#94a3b8',
     border1: '#dbe8f2',
     border2: '#e2ebf2',
