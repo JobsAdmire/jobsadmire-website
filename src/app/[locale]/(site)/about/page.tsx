@@ -3,13 +3,17 @@ import Image from 'next/image';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { notFound } from 'next/navigation';
+import { Fragment } from 'react';
 import { getBundle, makeTf, metricValues } from '@/content/adapter';
-import { getMetric } from '@/content/collections';
+import { getMetric, getOffice, type OfficeKey } from '@/content/collections';
 import { BRAND } from '@/design/assets/brand';
 import { Breadcrumbs } from '@/design/blocks/Breadcrumbs';
+import { ClosingCtaBand } from '@/design/blocks/ClosingCtaBand';
 import { ContactCta } from '@/design/blocks/ContactCta';
 import { ImageSlot } from '@/design/blocks/ImageSlot';
 import { MetricStrip } from '@/design/blocks/MetricStrip';
+import { NewsletterBand } from '@/design/blocks/NewsletterBand';
+import { OfficeCard } from '@/design/blocks/OfficeCard';
 import { StoreBadges } from '@/design/blocks/StoreBadges';
 import { buttonClassName } from '@/design/primitives/Button';
 import { Eyebrow } from '@/design/primitives/Eyebrow';
@@ -21,7 +25,9 @@ import { waLink } from '@/lib/contact';
 import { buildMetadata } from '@/lib/seo/metadata';
 import { CorridorCard } from './_components/CorridorCard';
 import { FounderBand } from './_components/FounderBand';
+import { LicenceBlock } from './_components/LicenceBlock';
 import { publishedFounder } from './founder';
+import { LICENCE_DOCS, licenceDocHref } from './licence';
 
 /** W82: the page's one cross-page hash target, as an object href so next-intl localises the
  *  pathname and keeps the hash (`/isci-talebi#request-form`, `/en/hire-workers#request-form`).
@@ -49,6 +55,25 @@ const FEATURES = [
   ['about.085', 'about.086'],
   ['about.087', 'about.088'],
 ] as const;
+
+/** The two offices in the design's order; every text field comes from the collection (W34). */
+const OFFICE_ORDER = ['antalya', 'karachi'] as const satisfies readonly OfficeKey[];
+
+/** The function chips per office (design 860–863 / 887–890). */
+const OFFICE_CHIPS = {
+  antalya: ['about.095', 'about.096', 'about.097'],
+  karachi: ['about.105', 'about.106', 'about.107'],
+} as const satisfies Record<OfficeKey, readonly string[]>;
+
+/** Design image-slot ids (design 847 / 874) — named placeholders until §10 row 3 (W55). */
+const OFFICE_PHOTO_SLOT = {
+  antalya: 'antalya-office',
+  karachi: 'karachi-office',
+} as const satisfies Record<OfficeKey, string>;
+
+/** W5/W97: the employer-updates subscription (about.141/145) stays hidden in Phase A;
+ *  NewsletterBand returns null and nothing wraps it. */
+const NEWSLETTER_ACTIVE = false;
 
 export async function generateMetadata({
   params,
@@ -84,6 +109,12 @@ export default async function About({ params }: { params: Promise<{ locale: stri
   const metrics = metricValues(bundle, locale);
   const countries = getMetric(bundle, 'countries');
   const founder = publishedFounder(bundle);
+  const offices = OFFICE_ORDER.map((key) => getOffice(bundle, key));
+  const licenceRows = LICENCE_DOCS.map((doc) => ({
+    slot: doc.slot,
+    title: doc.label.kind === 'sys' ? sys(`about.licence.docs.${doc.label.key}`) : t(doc.label.id),
+    href: licenceDocHref(doc),
+  }));
 
   return (
     <>
@@ -104,7 +135,8 @@ export default async function About({ params }: { params: Promise<{ locale: stri
         />
         <div className="container-site relative grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
           <div>
-            {/* W109: the page's own labels — about.021 "Home" / about.008 "About Us". */}
+            {/* W109: the page's own labels — about.021 "Home" / about.008 "About Us". One
+                Breadcrumbs mount for the whole page (the WP2a final review's §6 rule). */}
             <Breadcrumbs
               locale={locale}
               tone="dark"
@@ -225,7 +257,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
         </div>
       </Section>
 
-      {/* ============ FOUNDER + JOURNEY band (design 659–738). The founder figure joins in Cycle 3. */}
+      {/* ============ FOUNDER + JOURNEY band (design 659–738) */}
       <Section tone="pale" id="about-journey">
         <div className="container-site">
           <div
@@ -353,6 +385,95 @@ export default async function About({ params }: { params: Promise<{ locale: stri
           </ul>
         </div>
       </Section>
+
+      {/* ============ OFFICES + #lisans + GREEN CTA (design 839–918: one pale section, as designed).
+          W7/W34: the OfficeCard's own labelId (contact.099 "Head office" / contact.104 "Sourcing
+          office") replaces the design's about.091 / about.101 caps; its tel / WhatsApp / mail
+          rows are ContactLink office_card (W12) and show the collection's contacts (W6). */}
+      <Section tone="pale" id="about-offices">
+        <div className="container-site">
+          <div data-testid="about-offices">
+            <h2 className="m-0 mb-4 text-center text-h2">{t('about.089')}</h2>
+            <p className="mx-auto mt-0 mb-10 max-w-[560px] text-center text-body-lg text-text-secondary">
+              {t('about.090')}
+            </p>
+            <div className="grid gap-6 lg:grid-cols-[1fr_auto_1fr] lg:items-start">
+              {offices.map((office, i) => (
+                <Fragment key={office.key}>
+                  {i === 1 ? (
+                    <div
+                      aria-hidden="true"
+                      className="flex items-center gap-3 lg:flex-col lg:justify-center lg:self-stretch"
+                    >
+                      <span className="h-px flex-1 bg-tint-border lg:h-16 lg:w-px lg:flex-none" />
+                      <span className="rounded-pill border border-tint-border bg-white px-3 py-1 text-body-sm font-extrabold text-text-secondary uppercase">
+                        {t('about.100')}
+                      </span>
+                      <span className="h-px flex-1 bg-tint-border lg:h-16 lg:w-px lg:flex-none" />
+                    </div>
+                  ) : null}
+                  <div data-testid={`about-office-${office.key}`}>
+                    <ImageSlot
+                      slot={OFFICE_PHOTO_SLOT[office.key]}
+                      alt={sys('about.offices.photoAlt', { city: t(office.cityId) })}
+                      width={640}
+                      height={360}
+                      sizes="(min-width: 901px) 44vw, 100vw"
+                      className="mb-4 rounded-base"
+                    />
+                    <OfficeCard bundle={bundle} locale={locale} office={office}>
+                      <ul className="m-0 mt-4 flex list-none flex-wrap gap-2 p-0">
+                        {OFFICE_CHIPS[office.key].map((id) => (
+                          <li
+                            key={id}
+                            className="rounded-pill border border-border-2 bg-pale-1 px-3 py-1 text-body-sm font-extrabold text-text-secondary"
+                          >
+                            {t(id)}
+                          </li>
+                        ))}
+                      </ul>
+                    </OfficeCard>
+                  </div>
+                </Fragment>
+              ))}
+            </div>
+          </div>
+
+          {/* #lisans (D26) at the design's profile-strip position; about.108 is legal (verbatim). */}
+          <LicenceBlock
+            title={sys('about.licence.title')}
+            body={sys('about.licence.body')}
+            legal={t('about.108')}
+            openLabel={sys('about.licence.open')}
+            pendingLabel={sys('about.licence.pending')}
+            rows={licenceRows}
+          />
+
+          {/* Green band (design 907–918). W82: the primary is the object href to the Hire Workers
+              request form, with no variant override — ClosingCtaBand's own primary fallback is
+              'primary' on every tone (W127/W128; the draft's variant:'secondary' override put a
+              white/ink face meant for light surfaces on the green band instead). The WhatsApp
+              secondary carries a fixed sys prefill (W95) and takes the band's own green-tone
+              default face ('inverse-dark'). */}
+          <div data-testid="about-cta" className="mt-7">
+            <ClosingCtaBand
+              bundle={bundle}
+              locale={locale}
+              tone="green"
+              titleId="about.110"
+              bodyId="about.111"
+              primary={{ label: t('about.112'), href: REQUEST_FORM }}
+              secondary={{
+                label: t('about.030'),
+                href: waLink(settings.whatsappNumber, sys('about.whatsapp.consult')),
+                external: true,
+              }}
+            />
+          </div>
+        </div>
+      </Section>
+
+      <NewsletterBand bundle={bundle} locale={locale} active={NEWSLETTER_ACTIVE} />
     </>
   );
 }
