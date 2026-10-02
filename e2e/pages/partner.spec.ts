@@ -152,7 +152,8 @@ for (const locale of ['tr', 'en'] as const) {
     await expect(page.locator('[id="tracks"]')).toHaveCount(1);
     await expect(page.locator('[id="closing"]')).toHaveCount(1);
     // CTA_BY_PATHNAME['/partner-with-us'] → this page's #tracks (partner.017/018)
-    const cta = page.getByRole('banner').getByRole('link', { name: /^(Başvurun|Apply)/ });
+    // W222 (4): the TR CTA renders its tail first ("İş Ortaklığı İçin Başvurun"); EN stays "Apply to partner"
+    const cta = page.getByRole('banner').getByRole('link', { name: /\b(Başvurun|Apply)\b/ });
     await expect(cta).toHaveAttribute('href', `${ROUTES[locale]}#tracks`);
     await expect(page.getByTestId('partner-chain').getByRole('link')).toHaveAttribute(
       'href',

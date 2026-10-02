@@ -202,11 +202,16 @@ describe('SalaryGuideIsland (W2 floor, W59 tier)', () => {
   it('follows the calculator’s tier and filters by industry', async () => {
     mount();
     expect(screen.getAllByRole('article')).toHaveLength(12);
-    // QA W221 calc-03: the employer-cost figure never wraps inside its 390 px card
+    // QA W221 calc-03: the employer-cost figure never wraps inside the one-column card (≤ 900);
+    // from 901 the three-column grid is too narrow for an unconditional nowrap (it overflowed the
+    // document at exactly 901 px in the proof), so the rule is `max-lg:` only
     const guideLabels = pickLabels(t, GUIDE_IDS);
     const costs = screen.getAllByText(guideLabels.sEmpCost).map((l) => l.nextElementSibling!);
     expect(costs).toHaveLength(12);
-    for (const cost of costs) expect(cost).toHaveClass('whitespace-nowrap', 'text-blue-safe');
+    for (const cost of costs) {
+      expect(cost).toHaveClass('max-lg:whitespace-nowrap', 'text-blue-safe');
+      expect(cost).not.toHaveClass('whitespace-nowrap');
+    }
     const welder = () => screen.getAllByRole('article').find((a) => a.dataset.role === 'welder')!;
     expect(within(welder()).getByRole('button')).toHaveAttribute('aria-pressed', 'true');
     act(() => setEstimateInputs({ sgkTier: 'manufacturing' }));

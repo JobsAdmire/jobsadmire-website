@@ -91,8 +91,11 @@ export function SalaryGuideView({
                   <p className="m-0 text-[11px] xl:text-[11px] font-extrabold uppercase tracking-[0.7px] xl:tracking-[0.525px] text-text-tertiary">
                     {labels.sEmpCost}
                   </p>
-                  {/* QA W221 calc-03: the "₺58.835 – ₺83.125" range never wraps inside the card */}
-                  <p className="m-0 mt-0.5 text-body-sm font-extrabold whitespace-nowrap text-blue-safe">
+                  {/* QA W221 calc-03: the "₺58.835 – ₺83.125" range never wraps inside the
+                      one-column card (≤ 900); from 901 the grid is three narrow columns, where an
+                      unconditional nowrap overflowed the document by 42 px at exactly 901
+                      (width-sweep, proof attempt 1) — there the figure may wrap. */}
+                  <p className="m-0 mt-0.5 text-body-sm font-extrabold max-lg:whitespace-nowrap text-blue-safe">
                     {r.employer}
                   </p>
                 </div>

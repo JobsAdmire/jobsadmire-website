@@ -77,7 +77,8 @@ for (const locale of ['tr', 'en'] as const) {
       'permit-cta',
     ])
       await expect(page.locator(`[id="${anchor}"]`)).toHaveCount(1);
-    const cta = page.getByRole('banner').getByRole('link', { name: /^(Başvurun|Apply)/ });
+    // W222 (4): the TR CTA renders its tail first ("İzin İçin Başvurun"); EN stays "Apply for a permit"
+    const cta = page.getByRole('banner').getByRole('link', { name: /\b(Başvurun|Apply)\b/ });
     await expect(cta).toHaveAttribute('href', `${ROUTES[locale]}#permit-cta`);
   });
 
