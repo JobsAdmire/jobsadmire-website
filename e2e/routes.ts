@@ -51,6 +51,8 @@ export const GATE_ROUTE_TABLE: readonly GateRoute[] = [
   { path: '/en/about', indexable: true },
   { path: '/adaylar', indexable: true },
   { path: '/en/available-workers', indexable: true },
+  { path: '/basari-hikayeleri', indexable: true },
+  { path: '/en/success-stories', indexable: true },
 ];
 
 export const GATE_ROUTES: readonly string[] = GATE_ROUTE_TABLE.map((r) => r.path);
