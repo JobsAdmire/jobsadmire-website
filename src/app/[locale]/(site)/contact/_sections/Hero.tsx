@@ -3,7 +3,7 @@ import { ContactLink } from '@/analytics/ContactLink';
 import { getOffice } from '@/content/collections';
 import { makeTf } from '@/content/pure';
 import { Breadcrumbs } from '@/design/blocks/Breadcrumbs';
-import { ImageSlot } from '@/design/blocks/ImageSlot';
+import { ImageSlot, type CoverHeights } from '@/design/blocks/ImageSlot';
 import { CheckIcon, MailIcon, PhoneIcon, WhatsAppIcon } from '@/design/chrome/icons';
 import { Section } from '@/design/primitives/Section';
 import type { Locale } from '@/i18n/routing';
@@ -23,6 +23,13 @@ const CARD =
   'rounded-md bg-white text-ink no-underline transition-shadow hover:shadow-card-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky';
 const PHONE_CARD = `${CARD} flex min-w-0 flex-col items-start gap-2 border border-border-1 p-4 md:p-5`;
 const TILE = 'flex shrink-0 items-center justify-center';
+/** QA W220 contact-01 (W187 / W189 A5 / final pass A8): the hero art's fixed height per band,
+ *  each ≥ 10 % above the tallest hero in its range (W192 A5 / W198; measured in the fix round's
+ *  proof — the figures are in `.superpowers/sdd/wp2b/qa-fix-round-report.md`), carried by the
+ *  slot's own cover mode. The width-driven 1600 × 900 ratio box stopped at 219 / 506 px while the
+ *  hero ran to ≈ 1,090 / 1,325 px at 390 / 900, a visible seam through the h1. Oversize is
+ *  harmless: the `inset-0 overflow-hidden` wrapper clips it. */
+const HERO_COVER: CoverHeights = { base: 1500, md: 1800, lg: 1300 };
 
 /** The dark hero: live office pill, the h1 (the LCP element), the channel stack — WhatsApp, the
  *  two phone lines, e-mail — and the callback widget. Every door is a settings value. */
@@ -48,10 +55,21 @@ export function Hero({
   return (
     <Section tone="dark" className="relative overflow-hidden">
       {/* §10 #4/D26: the full-bleed photo slot is a named placeholder under the design's two
-          overlays, so the h1 stays the LCP element. ImageSlot owns its box — its wrapper sizes it
-          (W129). */}
+          overlays (`position:absolute; inset:0; width:100%; height:100%` — Contact Us l. 635), so
+          the h1 stays the LCP element. Cover mode at a fixed height per band, anchored top-left
+          (W187 / W189 A5 / final pass A8), so the placeholder spans the whole hero under the two
+          overlays — never a box sized from the text beside it. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <ImageSlot slot="contact-hero" alt="" width={1600} height={900} />
+        <div className="absolute left-0 top-0 w-full">
+          <ImageSlot
+            slot="contact-hero"
+            alt=""
+            width={1600}
+            height={900}
+            sizes="100vw"
+            cover={HERO_COVER}
+          />
+        </div>
       </div>
       <div
         aria-hidden="true"

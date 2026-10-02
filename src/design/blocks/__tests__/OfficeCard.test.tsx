@@ -76,7 +76,8 @@ describe('OfficeCard', () => {
     expect(screen.getByText(/Adnan Menderes Blv\. 7\/6/)).toBeInTheDocument();
     expect(screen.getByText(/Muratpaşa, Antalya/)).toBeInTheDocument();
     expect(screen.getByText('Pzt–Cum · 09:00–18:00 (TRT)')).toBeInTheDocument();
-    expect(screen.getByRole('link', { name: '+905011240340' })).toHaveAttribute(
+    // QA W220 about-02 / contact-02: the grouped official number (W208), the href E.164
+    expect(screen.getByRole('link', { name: '+90 501 124 03 40' })).toHaveAttribute(
       'href',
       'tel:+905011240340',
     );

@@ -42,6 +42,25 @@ describe('Hero', () => {
     expect(within(crumbs).getByText('Contact')).toHaveAttribute('aria-current', 'page');
   });
 
+  // QA W220 contact-01: the design's `image-slot#contact-hero` is `inset: 0; height: 100%` under
+  // the two overlays. A width-driven 16:9 box stopped at 219 / 506 px while the hero ran to
+  // ≈ 1,090 / 1,325 px (390 / 900) — a seam through the h1. Like hw-hero (W187, final pass A8):
+  // cover mode at a fixed height per band, anchored top-left, never sized from the text.
+  it('runs the contact-hero slot in cover mode over the whole hero, anchored top-left (contact-01)', () => {
+    renderWithIntl(<Hero bundle={en} locale="en" submitCallback={idle} />, { locale: 'en' });
+    const slot = document.querySelector<HTMLElement>('[data-placeholder="contact-hero"]')!;
+    const box = slot.parentElement!;
+    const tokens = (el: Element) => (el.getAttribute('class') ?? '').split(/\s+/);
+    expect(tokens(box)).toEqual(expect.arrayContaining(['absolute', 'left-0', 'top-0', 'w-full']));
+    expect(box).not.toHaveAttribute('style');
+    expect(slot).toHaveClass('w-full', 'object-cover', 'h-(--cover-h)', 'lg:h-(--cover-h-lg)');
+    expect(slot.style.aspectRatio).toBe('');
+    expect(slot.style.getPropertyValue('--cover-h')).toBe('1500px');
+    expect(slot.style.getPropertyValue('--cover-h-md')).toBe('1800px');
+    expect(slot.style.getPropertyValue('--cover-h-lg')).toBe('1300px');
+    expect(slot.style.getPropertyValue('--cover-h-xl')).toBe('1300px');
+  });
+
   it('the channel cards carry the settings doors: WhatsApp with the company prefill, both lines, the e-mail with the metric SLA', () => {
     const { container } = renderWithIntl(<Hero bundle={en} locale="en" submitCallback={idle} />, {
       locale: 'en',

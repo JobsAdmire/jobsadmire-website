@@ -318,7 +318,7 @@ It runs, in order and never concurrently:
 - **`Stepper`/`RadioChips` `stretch` keeps the 44 px chip target** where the design's ≤ 700 px headcount chips are 40 px (W190 A1c, final pass B4).
 - **`text-text-tertiary` is `#5f6e86`, not the design's `#64748b` (W205):** every tertiary grey reads one step darker so it clears AA on `pale-1`/tint (4.88:1 / 4.62:1).
 - **Seven 10.5 px literals read 11 px from 1101 (W212 (3), the W190 floor):** the Home team badge (`home.129`), the Calculator incentive badges (`INC.*.badge` × 3), the Portal-login status pill and licence chip (`crmlogin.011`/`.045`) — +0.5 px of type on each; the Calculator Snapshot label is a `max-md:` respelling with no visual change.
-- **Dormant cover-mode hero slots draw their placeholder over the whole box (final pass A8):** `v4-hero` and `hw-hero` run the slot's cover mode at a fixed height per band, so the gradient placeholder spans the viewport width under the navy overlays instead of a 16:9 / 9:4 strip — a faint tint difference until the photos ship (W174), when the box is exactly the photo's.
+- **Dormant cover-mode hero slots draw their placeholder over the whole box (final pass A8):** `v4-hero`, `hw-hero` and `contact-hero` (QA W220 contact-01) run the slot's cover mode at a fixed height per band, so the gradient placeholder spans the viewport width under the navy overlays instead of a 16:9 / 9:4 strip — a faint tint difference until the photos ship (W174), when the box is exactly the photo's.
 
 ## Design system
 

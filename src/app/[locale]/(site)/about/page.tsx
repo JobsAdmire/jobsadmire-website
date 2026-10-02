@@ -199,8 +199,12 @@ export default async function About({ params }: { params: Promise<{ locale: stri
               countriesLabel={countries.labelId ? t(countries.labelId) : ''}
             />
             {/* İŞKUR float (design .ja-iskur-float): the local mark (W14); decorative, since
-                about.035 names it. Both lines are legal-flagged and render verbatim. */}
-            <div className="mt-4 flex items-center gap-4 rounded-base border border-white/20 bg-white/10 px-4 py-3 lg:absolute lg:-bottom-6 lg:left-6 lg:mt-0 lg:bg-navy lg:shadow-hero-form">
+                about.035 names it. Both lines are legal-flagged and render verbatim. The design
+                hangs it `bottom: -44px` (About Us l. 606) — `lg:-bottom-11` = 44 px at the 16 px
+                root, 33 px from 1101 (a rem utility, so the × 0.75 D19 step is automatic); at
+                `-bottom-6` it rode ≈ 20 px too high and covered the corridor card's fourth lane
+                (QA W220 about-01). */}
+            <div className="mt-4 flex items-center gap-4 rounded-base border border-white/20 bg-white/10 px-4 py-3 lg:absolute lg:-bottom-11 lg:left-6 lg:mt-0 lg:bg-navy lg:shadow-hero-form">
               <Image
                 src={BRAND.iskur.src}
                 width={40}

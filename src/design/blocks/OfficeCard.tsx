@@ -6,6 +6,7 @@ import { makeTf } from '@/content/pure';
 import { ClockIcon, MailIcon, MapPinIcon, PhoneIcon, WhatsAppIcon } from '@/design/chrome/icons';
 import type { Locale } from '@/i18n/routing';
 import { mailLink, telLink, waLink } from '@/lib/contact';
+import { formatPhoneDisplay } from '@/lib/contact/partner-line';
 import type { Bundle } from '../../../contract/website-bundle.v1';
 
 const ROW =
@@ -67,9 +68,12 @@ export function OfficeCard({
           <ClockIcon className="text-blue-safe" />
           {t(office.hoursId)}
         </span>
+        {/* The visible number is grouped like every other line on the site ("+90 501 124 03 40",
+            W208 — the design's office card, Contact Us l. 975); the href stays E.164. A non-TR
+            number renders as stored (the helper's documented fallback). QA W220 about-02 / contact-02. */}
         <ContactLink href={telLink(office.phone)} placement="office_card" className={ROW}>
           <PhoneIcon className="text-blue-safe" />
-          {office.phone}
+          {formatPhoneDisplay(office.phone)}
         </ContactLink>
         <ContactLink
           href={waLink(office.whatsapp, sys('whatsapp.prefill'))}
