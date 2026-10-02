@@ -119,7 +119,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
   return (
     <>
       {/* ============ HERO (design 515–616). §10 row 4: no hero photo on this page ("gradients
-          elsewhere"), so the h1 is the LCP element (D26). The design's `about-hero` image-slot is
+          elsewhere"), so the h1 carries the LCP slot (D26); Chrome measures the hero sub about.025, painted in the same frame (W179). The design's `about-hero` image-slot is
           not rendered: the gradient IS the Phase A design, and a placeholder behind the h1 would
           compete with it. Section padding override: accepted page-local (reconcile-rulings.md
           "Section gradient tone/padding override (T4/T6)"; W119/W122/W155 — py-16 vs
@@ -148,7 +148,10 @@ export default async function About({ params }: { params: Promise<{ locale: stri
             <h1 data-testid="page-h1" data-lcp-slot="h1" className="mt-4 mb-2 text-h1 leading-none">
               {t('about.022')} <span className="text-sky">{t('about.023')}</span>
             </h1>
-            <p className="m-0 mb-4 text-body-lg font-extrabold tracking-[1.2px] text-white/70">
+            <p
+              className="m-0 mb-4 text-body-lg font-extrabold tracking-[1.2px] text-white/70"
+              lang="tr"
+            >
               {t('about.024')}
             </p>
             <p className="m-0 mb-7 max-w-[560px] text-body-lg text-white/80">{t('about.025')}</p>
@@ -284,7 +287,11 @@ export default async function About({ params }: { params: Promise<{ locale: stri
               />
               {/* The label says "Partner with us": that intent wins over the design's stale
                   jobsadmire.com/#request-form target. */}
-              <Link href="/partner-with-us" className={buttonClassName('primary', 'lg', 'mt-6')}>
+              <Link
+                prefetch={false}
+                href="/partner-with-us"
+                className={buttonClassName('primary', 'lg', 'mt-6')}
+              >
                 {t('about.058')}
               </Link>
             </div>

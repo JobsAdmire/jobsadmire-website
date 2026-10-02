@@ -115,6 +115,7 @@ export function WorkWithUs({ locale, bundle }: SectionProps) {
               {ROLE_ROWS.map(([roleId, metaId]) => (
                 <li key={roleId}>
                   <Link
+                    prefetch={false}
                     href="/careers"
                     className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 rounded-sm border border-[#e2edf5] bg-pale-1 px-4 py-[13px] no-underline transition-colors hover:border-tint-border hover:bg-tint"
                   >

@@ -42,7 +42,11 @@ export function PermitCta({ bundle, tf }: { bundle: Bundle; tf: (id: string) => 
             className="mb-4 flex flex-col gap-2.5 text-left md:hidden"
           >
             <li>
-              <Link href="/hire-workers" className={`${ROUTE} bg-blue-safe text-white`}>
+              <Link
+                prefetch={false}
+                href="/hire-workers"
+                className={`${ROUTE} bg-blue-safe text-white`}
+              >
                 <span
                   aria-hidden="true"
                   className="row-span-2 flex h-9.5 w-9.5 items-center justify-center rounded-xs bg-white/20"

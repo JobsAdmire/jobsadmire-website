@@ -27,6 +27,7 @@ export function ChoiceCards({ locale, bundle }: SectionProps) {
         <ArrowRightIcon className="shrink-0 text-sky" />
       </a>
       <Link
+        prefetch={false}
         href="/partner-with-us"
         className={`${CARD} border-[1.5px] border-border-1 bg-pale-1 text-ink active:bg-tint`}
       >
@@ -40,6 +41,7 @@ export function ChoiceCards({ locale, bundle }: SectionProps) {
         <ArrowRightIcon className="shrink-0 text-blue-safe" />
       </Link>
       <Link
+        prefetch={false}
         href="/verify"
         className={`${CARD} border-[1.5px] border-[#bfe8cf] bg-[#eafaf1] text-ink active:bg-[#dcf5e7]`}
       >

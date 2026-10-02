@@ -178,6 +178,7 @@ export function EligibilityWizard({ locale, whatsappNumber, questions, copy }: W
             <p className="m-0 mt-3 text-center text-body-sm text-text-tertiary">
               {copy.needWorkers}{' '}
               <Link
+                prefetch={false}
                 href="/hire-workers"
                 className="font-extrabold text-blue-safe no-underline hover:underline"
               >

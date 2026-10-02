@@ -26,6 +26,7 @@ export function LiveCaseBar({ locale, bundle }: SectionProps) {
         </span>
         <span className="min-w-0 text-body-sm font-bold">{first.data.title}</span>
         <Link
+          prefetch={false}
           href="/success-stories"
           className="ml-auto whitespace-nowrap text-[13px] font-extrabold text-sky no-underline max-xs:ml-0"
         >

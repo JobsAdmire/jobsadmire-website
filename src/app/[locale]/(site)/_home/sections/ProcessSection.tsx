@@ -49,6 +49,7 @@ export function ProcessSection({ locale, bundle }: SectionProps) {
           <div className="flex flex-wrap gap-2 max-xs:hidden">
             {SECTOR_CHIP_IDS.map((id) => (
               <Link
+                prefetch={false}
                 key={id}
                 href="/hire-workers"
                 className="rounded-pill border border-border-1 bg-pale-1 px-[15px] py-[7px] text-[13px] font-bold text-[#43536a] no-underline hover:border-blue"

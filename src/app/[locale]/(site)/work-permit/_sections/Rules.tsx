@@ -26,6 +26,7 @@ export function Rules({ tf }: { tf: (id: string) => string }) {
                 {intro}
                 {sp(intro, link)}
                 <Link
+                  prefetch={false}
                   href="/hire-workers"
                   className="font-extrabold text-blue-safe no-underline hover:underline"
                 >

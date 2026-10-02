@@ -33,6 +33,7 @@ export function RelatedArticles({
         <div className="mb-6 flex flex-wrap items-center justify-between gap-4">
           <h2 className="m-0 text-h2 tracking-[-0.02em]">{tf('wp.351')}</h2>
           <Link
+            prefetch={false}
             href="/blog"
             className="text-body-sm font-extrabold whitespace-nowrap text-blue-safe no-underline hover:underline"
           >

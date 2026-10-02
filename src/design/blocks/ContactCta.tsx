@@ -51,6 +51,7 @@ export function ContactCta({
     return (
       <Link
         href={href}
+        prefetch={prefetch}
         className={buttonClassName(variant, size, className)}
         aria-label={ariaLabel}
       >

@@ -34,9 +34,11 @@ export function CorridorCard({
     >
       <div className="mb-5 flex flex-wrap items-baseline justify-between gap-2">
         <h2 className="m-0 text-card-title">{t('about.032')}</h2>
-        <span className="text-body-sm font-extrabold text-blue-safe">
-          {countriesText} {countriesLabel}
-        </span>
+        {countriesText ? (
+          <span className="text-body-sm font-extrabold text-blue-safe">
+            {countriesText} {countriesLabel}
+          </span>
+        ) : null}
       </div>
       <div className="grid gap-4 sm:grid-cols-[1fr_auto] sm:items-center">
         <ul className="m-0 grid list-none gap-3 p-0">
@@ -47,9 +49,9 @@ export function CorridorCard({
                 {c.name}
               </span>
               <span aria-hidden="true" className="relative block h-0.5 rounded-pill bg-border-1">
-                <span
-                  className={`about-fly absolute top-1/2 h-2 w-2 -translate-y-1/2 rounded-pill bg-blue-safe ${DELAY[i] ?? ''}`}
-                />
+                <span className={`about-fly absolute inset-y-0 right-2 left-0 ${DELAY[i] ?? ''}`}>
+                  <span className="absolute top-1/2 left-0 h-2 w-2 -translate-y-1/2 rounded-pill bg-blue-safe" />
+                </span>
               </span>
             </li>
           ))}

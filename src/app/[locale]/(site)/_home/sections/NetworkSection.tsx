@@ -113,7 +113,11 @@ export function NetworkSection({ locale, bundle }: SectionProps) {
               <TelegramIcon size={17} />
               {tf('home.202')}
             </a>
-            <Link href={{ pathname: '/verify', hash: '#report' }} className={`${PILL} ${FRAUD}`}>
+            <Link
+              prefetch={false}
+              href={{ pathname: '/verify', hash: '#report' }}
+              className={`${PILL} ${FRAUD}`}
+            >
               {tf('home.126')}
             </Link>
           </div>

@@ -37,7 +37,11 @@ export function Chain({ tf }: { tf: Tf }) {
         <h2 className="text-h2 m-0 mb-3 md:text-center">{tf(CHAIN_IDS.heading)}</h2>
         <p className="m-0 mb-8 text-body text-text-tertiary md:mx-auto md:mb-11 md:max-w-[560px] md:text-center">
           {tf(CHAIN_IDS.introLead)}{' '}
-          <Link href="/hire-workers" className="font-bold text-blue-safe underline">
+          <Link
+            prefetch={false}
+            href="/hire-workers"
+            className="font-bold text-blue-safe underline"
+          >
             {tf(CHAIN_IDS.introLink)}
           </Link>{' '}
           {tf(CHAIN_IDS.introTail)}

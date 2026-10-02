@@ -103,6 +103,7 @@ function HeroStats({ locale, bundle }: SectionProps) {
         {hasRows(bundle, 'stories') ? (
           <div data-testid="hero-proof" className="flex flex-col max-xs:hidden">
             <Link
+              prefetch={false}
               href="/success-stories"
               className="text-body-sm font-extrabold text-sky no-underline hover:underline"
             >

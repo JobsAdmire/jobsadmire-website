@@ -59,6 +59,7 @@ export function GuidesSection({ locale, bundle }: SectionProps) {
                 />
               ))}
               <Link
+                prefetch={false}
                 href="/blog"
                 className="py-2 text-body-sm font-extrabold text-blue-safe no-underline hover:underline"
               >
