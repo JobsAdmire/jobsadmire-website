@@ -23,17 +23,25 @@ const SECONDARY = buttonClassName('secondary', 'md', 'max-xl:hidden whitespace-n
 function Primary({ cta }: { cta: ResolvedCta }) {
   return (
     <Link href={cta.href} prefetch={false} className={cta.variant === 'danger' ? DANGER : PRIMARY}>
-      {cta.label}
-      {/* the long form hides only where the design hides `.ja-cta-long`: its ≤ 1100 rule hides
-          it, its ≤ 900 rule shows it again (`display: inline`), so the tail reads below 901 and
-          from 1101 — final pass A4 (W210 b): the phone CTA shows "Request Workers" as the design's
-          does, wrapping inside its 185 px cap when the label is long. */}
-      {cta.tail && (
-        <>
-          {' '}
-          <span className="hidden max-lg:inline xl:inline">{cta.tail}</span>
-        </>
-      )}
+      {/* One class-less span for label + tail (QA W220 P-01): the `<a>` is `inline-flex`, so as two
+          direct children they were two flex items — the tail wrapped to three lines and
+          `items-center` parked the one-word label beside its middle line ("iş / Başvurun ortaklığı
+          / için"). Sharing one inline formatting context, a wrap inside the 185 px cap breaks
+          between words in order, as the design's single-run `.ja-nav-cta` does (W210 b); the
+          literal space is the design's one space, no `gap-2` beside it. */}
+      <span>
+        {cta.label}
+        {/* the long form hides only where the design hides `.ja-cta-long`: its ≤ 1100 rule hides
+            it, its ≤ 900 rule shows it again (`display: inline`), so the tail reads below 901 and
+            from 1101 — final pass A4 (W210 b): the phone CTA shows "Request Workers" as the
+            design's does, wrapping inside its 185 px cap when the label is long. */}
+        {cta.tail && (
+          <>
+            {' '}
+            <span className="hidden max-lg:inline xl:inline">{cta.tail}</span>
+          </>
+        )}
+      </span>
     </Link>
   );
 }

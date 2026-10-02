@@ -2,6 +2,7 @@ import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it } from 'vitest';
 import { Footer } from '../Footer';
+import { getOffice } from '@/content/collections';
 import { BRAND } from '@/design/assets/brand';
 import { collisionsInTree } from '@/test/class-collisions';
 import { renderWithIntl } from '@/test/render';
@@ -14,6 +15,7 @@ import { BundleSchema, type Bundle } from '../../../../contract/website-bundle.v
 // reads the 22 blog rows.
 const bundle: Bundle = BundleSchema.parse(trBundle);
 const t = (id: string) => bundle.strings[id] ?? '';
+const rx = (s: string) => new RegExp(s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'));
 type Entry = Record<string, unknown>;
 
 // Each column is rendered twice — once in the `lg+` grid, once in the mobile accordion — and
@@ -157,6 +159,34 @@ describe('Footer', () => {
     expect(within(footer).getByRole('heading', { name: t('home.196') })).toBeInTheDocument();
     expect(within(footer).getByRole('heading', { name: t('home.197') })).toBeInTheDocument();
     expect(within(footer).getAllByRole('link', { name: t('home.192') })).toHaveLength(2);
+  });
+
+  // QA W220 H-01: the design's footer prints each office's two address lines under its label
+  // (Homepage v4 ll. 1170/1176) — the offices row's own ids (contact.133/134, contact.105/103, W34),
+  // the same ones OfficeCard and the Organization JSON-LD read. Grid + collapsed accordion: two
+  // text nodes per line in the DOM.
+  it('prints both offices’ two address lines from the offices collection (H-01)', () => {
+    renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+    const footer = screen.getByRole('contentinfo');
+    for (const key of ['antalya', 'karachi'] as const) {
+      const row = getOffice(bundle, key);
+      // the span's own text nodes join across the `<br />`, so a regex, not an exact match
+      expect(within(footer).getAllByText(rx(t(row.addressId)))).toHaveLength(2);
+      expect(within(footer).getAllByText(rx(t(row.addressLine2Id)))).toHaveLength(2);
+      // the address sits between the office label and its hours, like the design's column
+      const label = within(footer).getByRole('heading', { name: t(row.footerLabelId) });
+      const address = label.nextElementSibling!;
+      expect(address).toHaveTextContent(t(row.addressId));
+      expect(address).toHaveTextContent(t(row.addressLine2Id));
+      expect(address).toHaveClass('text-white/60');
+    }
+  });
+
+  // QA W220 H-02: the design's dark switcher shell is `width: fit-content` (Homepage v4 l. 1126);
+  // without it the bordered pill fills the single-column footer below lg.
+  it('keeps the language switcher shell at its content width (H-02)', () => {
+    renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+    expect(screen.getByRole('group', { name: t('home.016') })).toHaveClass('flex', 'w-fit');
   });
 
   it('fires whatsapp_click / call_click with placement footer (W12)', async () => {

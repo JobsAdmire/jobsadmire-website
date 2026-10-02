@@ -1,6 +1,7 @@
 import Image from 'next/image';
 import { useTranslations } from 'next-intl';
 import { ContactLink } from '@/analytics/ContactLink';
+import { getOffice, type OfficeKey } from '@/content/collections';
 import { makeT } from '@/content/pure';
 import { BRAND } from '@/design/assets/brand';
 // By module path, not the barrel (W147): a server component's barrel import makes every
@@ -51,17 +52,28 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
   // chooser since W88) and `footerCompany`; `navGroup` drops /blog below the threshold (W4).
   const column = (items: ChromeNavItem[]) =>
     items.map((item) => <NavLink key={item.href} item={item} className={FLINK} />);
-  const office = (name: string, hours: string, map: string) => (
-    <span key={name} className="flex flex-col gap-1 border-t border-white/10 pt-2.5">
-      <h3 className={OFFICE_LABEL}>{name}</h3>
-      {/* /40 is 3.8:1 on navy — opening hours are information, not decoration (D20). */}
-      <span className="font-medium text-white/55">{hours}</span>
-      <a href={map} target="_blank" rel="noopener noreferrer" className={FLINK}>
-        <MapPinIcon size={13} />
-        {t('home.192')}
-      </a>
-    </span>
-  );
+  const office = (key: OfficeKey, name: string, hours: string, map: string) => {
+    const row = getOffice(bundle, key);
+    return (
+      <span key={name} className="flex flex-col gap-1 border-t border-white/10 pt-2.5">
+        <h3 className={OFFICE_LABEL}>{name}</h3>
+        {/* The design's two address lines (Homepage v4 ll. 1170/1176, rgba .6 = `white/60`, ≈ 6.5:1
+            on navy) — the offices row's own package ids (contact.133/134, contact.105/103), as
+            OfficeCard and the Organization JSON-LD read them (W34). QA W220 H-01. */}
+        <span className="font-medium leading-normal text-white/60">
+          {t(row.addressId)}
+          <br />
+          {t(row.addressLine2Id)}
+        </span>
+        {/* /40 is 3.8:1 on navy — opening hours are information, not decoration (D20). */}
+        <span className="font-medium text-white/55">{hours}</span>
+        <a href={map} target="_blank" rel="noopener noreferrer" className={FLINK}>
+          <MapPinIcon size={13} />
+          {t('home.192')}
+        </a>
+      </span>
+    );
+  };
   const storeLink = (item: ChromeNavItem) => <NavLink item={item} className={STORE} />;
 
   // One body per column, rendered twice: as a static grid column from `lg` up and inside the
@@ -102,8 +114,8 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
             <TelegramIcon />
             {t('home.202')}
           </a>
-          {office(t('home.196'), t('home.198'), settings.maps.antalya)}
-          {office(t('home.197'), t('home.199'), settings.maps.karachi)}
+          {office('antalya', t('home.196'), t('home.198'), settings.maps.antalya)}
+          {office('karachi', t('home.197'), t('home.199'), settings.maps.karachi)}
           <ContactLink
             href={waHref}
             placement="footer"

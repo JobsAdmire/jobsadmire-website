@@ -53,7 +53,11 @@ export function LanguageSwitcher({
 }) {
   const target = alternatePath(usePathname() ?? '/');
   return (
-    <div role="group" aria-label={label} className={`flex items-center ${SHELL[variant]}`}>
+    // `w-fit` is the design's own `width: fit-content` on the shell (Homepage v4 l. 1126): below
+    // lg the footer column is the full container width and a block-level flex shell would fill
+    // it (QA W220 H-02). Not `inline-flex`: inside the Header's `div.hidden.lg:block` that makes
+    // an inline-level box with line-box descent and nudges the row heights W210 pins.
+    <div role="group" aria-label={label} className={`flex w-fit items-center ${SHELL[variant]}`}>
       {locales.map((l) => (
         <LanguageLink
           key={l}
