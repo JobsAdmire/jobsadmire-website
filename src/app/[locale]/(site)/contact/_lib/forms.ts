@@ -47,7 +47,7 @@ export type ContactInput = z.infer<typeof contactSchema>;
 /** The door requires `message` (≤ 5000): the subject first (so it is never empty), then the
  *  partner licence and the reply channel as `key: value` lines — language-neutral, the Ops inbox is
  *  not visitor copy (W77) — then the free notes after a blank line. At the schema maxima:
- *  200 + 1 + 209 + 1 + 12 + 2 + 4000 < 5000. */
+ *  200 + 1 + 209 + 1 + 15 + 2 + 4000 < 5000. */
 export function composeContactMessage(p: ContactInput): string {
   const lines = [p.subject];
   if (p.topic === 'partner' && p.licence) lines.push(`licence: ${p.licence}`);
