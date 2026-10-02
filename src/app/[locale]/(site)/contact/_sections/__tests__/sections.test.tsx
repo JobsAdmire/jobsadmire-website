@@ -150,10 +150,11 @@ describe('Offices', () => {
     expect(
       within(cards[1]).getByRole('heading', { level: 3, name: 'Karachi' }),
     ).toBeInTheDocument();
-    expect(screen.getAllByTestId('live-status').map((p) => p.textContent)).toEqual([
-      'Open now · 10:32 local · closes 18:00',
-      'Open now · 12:32 local · closes 19:00',
-    ]);
+    expect(
+      screen
+        .getAllByTestId('live-status')
+        .map((p) => p.querySelector('[data-live-text]')?.textContent),
+    ).toEqual(['Open now · 10:32 local · closes 18:00', 'Open now · 12:32 local · closes 19:00']);
     expect(
       within(cards[1]).getByRole('link', { name: 'See who is available →' }),
     ).toBeInTheDocument();

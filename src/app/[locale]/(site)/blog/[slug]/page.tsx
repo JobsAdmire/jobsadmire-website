@@ -202,11 +202,11 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
         >
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -top-24 right-[6%] h-[340px] w-[340px] rounded-pill bg-[radial-gradient(circle,rgba(30,158,232,0.3),transparent_65%)]"
+            className="pointer-events-none absolute -top-24 right-[6%] h-[340px] w-[340px] xl:w-[255px] rounded-pill bg-[radial-gradient(circle,rgba(30,158,232,0.3),transparent_65%)]"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -bottom-36 -left-16 h-[320px] w-[320px] rounded-pill bg-[radial-gradient(circle,rgba(22,163,74,0.16),transparent_65%)]"
+            className="pointer-events-none absolute -bottom-36 -left-16 h-[320px] w-[320px] xl:w-[240px] rounded-pill bg-[radial-gradient(circle,rgba(22,163,74,0.16),transparent_65%)]"
           />
           <div className="container-site relative">
             <div className="mx-auto max-w-[980px] xl:max-w-[735px]">
@@ -220,13 +220,13 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
                 ]}
               />
               <p className="mt-5 mb-4 flex flex-wrap gap-2.5">
-                <span className="rounded-pill border border-sky/45 bg-blue/20 px-3.5 py-1 text-[12.5px] font-extrabold text-sky">
+                <span className="rounded-pill border border-sky/45 bg-blue/20 px-3.5 py-1 text-[12.5px] xl:text-[11px] font-extrabold text-sky">
                   {t(post.categoryLabelId)}
                 </span>
                 {isWritten(post, other) ? (
                   <span
                     data-testid="article-lang-note"
-                    className="rounded-pill border border-white/20 bg-white/10 px-3.5 py-1 text-[12.5px] font-bold text-white/75"
+                    className="rounded-pill border border-white/20 bg-white/10 px-3.5 py-1 text-[12.5px] xl:text-[11px] font-bold text-white/75"
                   >
                     {locale === 'tr' ? t('blogarticle.143') : sys('blog.article.langNote')}
                   </span>
@@ -245,7 +245,7 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
               <div className="flex items-center gap-3.5">
                 <span
                   aria-hidden="true"
-                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-pill bg-blue-safe text-[15px] font-extrabold text-white"
+                  className="flex h-11 w-11 shrink-0 items-center justify-center rounded-pill bg-blue-safe text-[15px] xl:text-[11.25px] font-extrabold text-white"
                 >
                   JA
                 </span>
@@ -258,17 +258,28 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
           </div>
         </Section>
 
-        {/* ---- Cover: overlaps the hero; a named placeholder, never the LCP slot (B-7, W103) ---- */}
+        {/* ---- Cover: overlaps the hero; a named placeholder, never the LCP slot (B-7, W103).
+             Final pass C1 (W206/W209, W189 A3): the slot's own cover mode gives the design's fixed
+             heights — 190 px ≤ 700, 430 px at 701–1100, 322.5 px from 1101 — independent of the
+             box's width (the ratio box read 154 / 290–377 / 323 px). ---- */}
         <div className="container-site relative z-[2] -mt-[92px] md:-mt-[150px] xl:-mt-[112.5px]">
           <div className="mx-auto max-w-[980px] overflow-hidden rounded-lg xl:max-w-[735px]">
-            <ImageSlot slot={`blog-cover-${post.key}`} alt="" width={980} height={430} />
+            <ImageSlot
+              slot={`blog-cover-${post.key}`}
+              alt=""
+              width={980}
+              height={430}
+              cover={{ base: 190, md: 430, xl: 322.5 }}
+            />
           </div>
         </div>
 
         {/* ---- Body + sidebar ---- */}
         <Section tone="light">
           <div className="container-site">
-            <div className="mx-auto grid max-w-[1180px] items-start gap-14 lg:grid-cols-[minmax(0,1fr)_300px] xl:max-w-[885px] xl:grid-cols-[minmax(0,1fr)_225px] xl:gap-[42px]">
+            {/* Final pass C2 (W206): stacked at 701–900 the design's body/sidebar gap is ≈ 30 px, not
+                the two-column 56 px — `max-lg:gap-8`. */}
+            <div className="mx-auto grid max-w-[1180px] items-start gap-14 max-lg:gap-8 lg:grid-cols-[minmax(0,1fr)_300px] xl:max-w-[885px] xl:grid-cols-[minmax(0,1fr)_225px] xl:gap-[42px]">
               <div className="min-w-0">
                 {/* ≤700 px: the TOC as a native disclosure — no JS (B-12) */}
                 <details
@@ -278,7 +289,7 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
                   <summary className="flex min-h-[54px] cursor-pointer list-none items-center justify-between gap-3 px-4 py-3.5 [&::-webkit-details-marker]:hidden">
                     <span className="flex min-w-0 flex-col gap-0.5">
                       <span className="font-extrabold text-ink">{tocLabel}</span>
-                      <span className="text-[12px] font-bold text-text-tertiary">
+                      <span className="text-[12px] xl:text-[11px] font-bold text-text-tertiary">
                         {`${sys('blog.article.sections', { n: toc.length })} · ${readTime}`}
                       </span>
                     </span>
@@ -305,7 +316,9 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
                 {/* The printable region (B-16): a print-only title/byline + the body */}
                 <div data-testid="article-body" className="print-isolate">
                   <div className="hidden print:block">
-                    <p className="mt-0 mb-2 text-[22px] font-extrabold text-ink">{title}</p>
+                    <p className="mt-0 mb-2 text-[22px] xl:text-[16.5px] font-extrabold text-ink">
+                      {title}
+                    </p>
                     <p className="text-body-sm mt-0 mb-6 text-text-tertiary">{`${author} · ${byline}`}</p>
                   </div>
                   <ArticleBody
@@ -343,7 +356,7 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
                 >
                   <span
                     aria-hidden="true"
-                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-pill bg-blue-safe text-[18px] font-extrabold text-white"
+                    className="flex h-14 w-14 shrink-0 items-center justify-center rounded-pill bg-blue-safe text-[18px] xl:text-[13.5px] font-extrabold text-white"
                   >
                     JA
                   </span>
@@ -351,7 +364,7 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
                     <p className="mt-0 mb-1 font-extrabold text-ink">{t('blogarticle.066')}</p>
                     <p className="text-body-sm m-0 text-text-secondary">{t('blogarticle.067')}</p>
                   </div>
-                  <p className="m-0 inline-flex items-center gap-2 rounded-pill border border-tint-border bg-white px-4 py-2 text-[13px] font-extrabold whitespace-nowrap text-blue-safe">
+                  <p className="m-0 inline-flex items-center gap-2 rounded-pill border border-tint-border bg-white px-4 py-2 text-[13px] xl:text-[11px] font-extrabold whitespace-nowrap text-blue-safe">
                     <span aria-hidden="true" className="h-2 w-2 rounded-pill bg-success" />
                     {t('blogarticle.068')}
                   </p>

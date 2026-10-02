@@ -64,3 +64,30 @@ export function liveStatusText(
     }
   }
 }
+
+/** Final pass D2 (W197 c): every line a pill can show — each state at a fixed `00:00` clock
+ *  (tabular digits make every time the same width) and, for the office variant, one closed line
+ *  per open weekday — so `LiveStatus` can reserve the box before the client clock arrives. Pure
+ *  and deterministic: the server and the client render the same reserve. */
+export function liveStatusLines(
+  spec: LiveStatusSpec,
+  hours: OfficeHours,
+  locale: string,
+): string[] {
+  const clock = '00:00';
+  const first = hours.days[0] ?? 1;
+  const states: OfficeStatus[] = [
+    { open: true, clock },
+    { open: false, clock, reason: 'beforeOpen', nextOpenDay: first, opensTomorrow: false },
+    { open: false, clock, reason: 'afterClose', nextOpenDay: first, opensTomorrow: true },
+    { open: false, clock, reason: 'closedDay', nextOpenDay: first, opensTomorrow: true },
+    ...hours.days.map((d): OfficeStatus => ({
+      open: false,
+      clock,
+      reason: 'afterClose',
+      nextOpenDay: d,
+      opensTomorrow: false,
+    })),
+  ];
+  return [...new Set(states.map((s) => liveStatusText(spec, s, hours, locale)))];
+}

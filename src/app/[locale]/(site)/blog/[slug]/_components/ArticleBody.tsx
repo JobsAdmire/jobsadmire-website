@@ -4,7 +4,7 @@ import type { Block, Inline } from '../_lib/markdown';
 /** The body's h2 face — the page's FAQ heading wears it too. `scroll-mt-24` keeps a TOC jump
  *  clear of the sticky header; `xl:` is the D19 ×0.75 step. */
 export const ARTICLE_H2 =
-  'mt-10 mb-4 scroll-mt-24 text-[26px] leading-tight font-extrabold tracking-[-0.4px] text-ink max-md:text-[22px] xl:text-[19.5px]';
+  'mt-10 mb-4 scroll-mt-24 text-[26px] leading-tight font-extrabold tracking-[-0.4px] xl:tracking-[-0.3px] text-ink max-md:text-[22px] xl:text-[19.5px]';
 
 /** A list whose every item is this short reads as a checklist — two columns from `sm` (the
  *  design's "Documents you'll need" grid); longer items (the rejection reasons) stay one column. */
@@ -47,7 +47,7 @@ function BlockView({ block, first, cta }: { block: Block; first: boolean; cta?: 
           data-testid="article-takeaways"
           className="my-6 rounded-base border border-tint-border bg-pale-1 px-7 py-6"
         >
-          <p className="text-eyebrow mt-0 mb-3 font-extrabold tracking-[1.2px] text-blue-safe uppercase">
+          <p className="text-eyebrow mt-0 mb-3 font-extrabold tracking-[1.2px] xl:tracking-[0.9px] text-blue-safe uppercase">
             {block.title}
           </p>
           <ul className="m-0 flex list-none flex-col gap-2 p-0 font-semibold text-ink">
@@ -129,7 +129,7 @@ function BlockView({ block, first, cta }: { block: Block; first: boolean; cta?: 
         >
           <span
             aria-hidden="true"
-            className="block text-[40px] leading-none font-extrabold text-blue-safe"
+            className="block text-[40px] xl:text-[30px] leading-none font-extrabold text-blue-safe"
           >
             “
           </span>

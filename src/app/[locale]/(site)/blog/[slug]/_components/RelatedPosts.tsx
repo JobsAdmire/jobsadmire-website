@@ -37,7 +37,7 @@ export function RelatedPosts({
     if (!href || !title) return <span aria-hidden="true" />;
     return (
       <Link href={href} prefetch={false} data-testid={testId} className={NEIGHBOUR}>
-        <span className="text-eyebrow font-extrabold tracking-[1px] text-text-tertiary uppercase">
+        <span className="text-eyebrow font-extrabold tracking-[1px] xl:tracking-[0.75px] text-text-tertiary uppercase">
           {t(labelId)}
         </span>
         <span className="text-body font-extrabold text-ink">{title}</span>

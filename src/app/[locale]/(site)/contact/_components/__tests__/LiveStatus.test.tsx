@@ -33,6 +33,51 @@ describe('LiveStatus', () => {
     expect(html).not.toContain('data-open');
   });
 
+  // Final pass D2 (W197 c): the pill reserves every line it can show — invisible, aria-hidden
+  // copies stacked in the live text's grid cell, tabular digits — so the hydration swap from the
+  // fallback to the live line (and each minute's tick) never moves the layout (CLS 0.0035
+  // measured, ≈ 0.03 possible on narrow Turkish weekends).
+  it('server render reserves every possible line invisibly in the live text’s cell (D2)', () => {
+    vi.setSystemTime(new Date('2026-09-23T07:32:00Z'));
+    const { container } = render(
+      <LiveStatus
+        variant="office"
+        hours={antalya}
+        locale="en"
+        fallback={FALLBACK}
+        labels={officeLabels}
+        suffix="Mon–Fri"
+      />,
+    );
+    const pill = screen.getByTestId('live-status');
+    expect(pill).toHaveClass('tabular-nums');
+    const live = pill.querySelector('[data-live-text]')!;
+    expect(live).toHaveTextContent('Open now · 10:32 local · closes 18:00 · Mon–Fri');
+    expect(live).toHaveClass('col-start-1', 'row-start-1');
+    expect(live.parentElement).toHaveClass('grid');
+    const reserve = [...container.querySelectorAll('span.invisible[aria-hidden="true"]')];
+    expect(reserve.map((s) => s.textContent)).toEqual(
+      expect.arrayContaining([
+        'Closed · opens 09:00 tomorrow · Mon–Fri',
+        'Closed · opens Monday 09:00 · Mon–Fri',
+        'Open now · 00:00 local · closes 18:00 · Mon–Fri',
+      ]),
+    );
+    for (const s of reserve) expect(s).toHaveClass('col-start-1', 'row-start-1');
+    // the server markup carries the same reserve (R18: the hydration tree matches)
+    const html = renderToStaticMarkup(
+      <LiveStatus
+        variant="office"
+        hours={antalya}
+        locale="en"
+        fallback={FALLBACK}
+        labels={officeLabels}
+      />,
+    );
+    expect(html).toContain('Closed · opens 09:00 tomorrow');
+    expect(html).toMatch(/data-live-text=""[^>]*>Mon–Fri · 09:00–18:00 \(TRT\)</);
+  });
+
   it('client render: the computed line and data-open="true" inside the hours', () => {
     vi.setSystemTime(new Date('2026-09-23T07:32:00Z')); // Wednesday 10:32 in Istanbul
     render(

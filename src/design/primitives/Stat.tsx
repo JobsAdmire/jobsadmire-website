@@ -12,6 +12,9 @@ const DURATION_MS = 900;
  * D20/R18: the final value ships in the server HTML and is the accessible name (a
  * visually-hidden span); the count-up animates a separate `aria-hidden` span only after
  * mount, only when motion is not reduced, and only once in view.
+ * Final pass D1 (W196 A2): the animated span and an invisible copy of the FINAL value share one
+ * grid cell, so the figure has its final width from the server render on — "0+" → "470+" no
+ * longer narrows and widens the cell while the count-up runs (CLS 0.0065 About / 0.0035 Home).
  */
 export function Stat({
   value,
@@ -75,29 +78,33 @@ export function Stat({
   const figureCls =
     tone === 'dark' ? 'text-stat font-extrabold text-white' : 'text-stat font-extrabold';
 
-  return (
-    <div ref={ref}>
-      <p className={figureCls}>
-        {text !== undefined ? (
+  if (text !== undefined) {
+    return (
+      <div ref={ref}>
+        <p className={figureCls}>
           <span>
             {prefix}
             {text}
             {suffix}
           </span>
-        ) : (
-          <>
-            <span aria-hidden="true">
-              {prefix}
-              {formatInt(animated ?? (value as number), locale)}
-              {suffix}
-            </span>
-            <span className="sr-only">
-              {prefix}
-              {formatInt(value as number, locale)}
-              {suffix}
-            </span>
-          </>
-        )}
+        </p>
+        <p className={labelCls}>{label}</p>
+      </div>
+    );
+  }
+  const final = `${prefix}${formatInt(value as number, locale)}${suffix}`;
+  return (
+    <div ref={ref}>
+      <p className={`${figureCls} grid`}>
+        <span aria-hidden="true" className="col-start-1 row-start-1">
+          {prefix}
+          {formatInt(animated ?? (value as number), locale)}
+          {suffix}
+        </span>
+        <span aria-hidden="true" className="invisible col-start-1 row-start-1">
+          {final}
+        </span>
+        <span className="sr-only">{final}</span>
       </p>
       <p className={labelCls}>{label}</p>
     </div>

@@ -1,5 +1,5 @@
 import { describe, expect, it } from 'vitest';
-import { fillTemplate, liveStatusText } from '../live-status-text';
+import { fillTemplate, liveStatusLines, liveStatusText } from '../live-status-text';
 import { officeStatus } from '../office-status';
 
 const antalya = { tz: 'Europe/Istanbul', days: [1, 2, 3, 4, 5], open: '09:00', close: '18:00' };
@@ -21,10 +21,11 @@ const whatsapp = {
   variant: 'whatsapp',
   labels: { watched: 'Watched now', off: 'Off hours' },
 } as const;
-const lines = {
+const lines_ = {
   variant: 'lines',
   labels: { open: 'Lines open now', closed: 'Lines closed' },
 } as const;
+const lines = lines_;
 const office = {
   variant: 'office',
   labels: {
@@ -88,5 +89,38 @@ describe('liveStatusText', () => {
     expect(liveStatusText(office, at('2026-09-26T07:00:00Z', karachi), karachi, 'en')).toBe(
       'Open now · 12:00 local · closes 19:00',
     );
+  });
+});
+
+// Final pass D2 (W197 c): every line a pill can ever show, so LiveStatus can reserve the box
+// before the client clock arrives. Pure and deterministic — the server and the client render the
+// same reserve; each state at a fixed `00:00` clock (tabular digits keep every time the same
+// width), plus one closed line per open weekday for the office variant.
+describe('liveStatusLines', () => {
+  it('lists each state once, deterministic and deduplicated', () => {
+    const lines = liveStatusLines(office, antalya, 'en');
+    expect(lines).toEqual(
+      expect.arrayContaining([
+        'Open now · 00:00 local · closes 18:00',
+        'Closed · opens 09:00 · 00:00 local',
+        'Closed · opens 09:00 tomorrow',
+        'Closed · opens Monday 09:00',
+        'Closed · opens Friday 09:00',
+      ]),
+    );
+    expect(new Set(lines).size).toBe(lines.length);
+    expect(liveStatusLines(office, antalya, 'en')).toEqual(lines);
+    expect(liveStatusLines(whatsapp, antalya, 'en')).toEqual(['Watched now', 'Off hours']);
+    expect(liveStatusLines(lines_, antalya, 'en')).toEqual(['Lines open now', 'Lines closed']);
+    expect(liveStatusLines(hero, antalya, 'en')).toEqual(
+      expect.arrayContaining([
+        'Office open now · 00:00 in Antalya',
+        'Opens 09:00 · 00:00 in Antalya',
+        'Closed for today · 00:00 in Antalya',
+        'Weekend · WhatsApp is still watched',
+      ]),
+    );
+    // Karachi opens Saturdays too: one more closed-day line
+    expect(liveStatusLines(office, karachi, 'en')).toContain('Closed · opens Saturday 10:00');
   });
 });

@@ -56,26 +56,30 @@ export default async function ThankYou({
   const formKey = asFormKey(Array.isArray(form) ? form[0] : form);
   return (
     <Section tone="light">
-      <div className="container-site max-w-[720px]">
-        <h1 className="text-h2" data-testid="page-h1" data-lcp-slot="h1">
-          {sys('thankYou.title')}
-        </h1>
-        <p className="text-body-lg text-text-secondary">{sys('thankYou.body')}</p>
-        {formKey && (
-          <p className="text-body text-text-secondary">{sys(`thankYou.forms.${formKey}`)}</p>
-        )}
-        <div className="mt-8 flex flex-wrap gap-3">
-          <Button prefetch={false} variant="primary" size="lg" href="/">
-            {sys('thankYou.home')}
-          </Button>
-          <Button
-            variant="secondary"
-            size="lg"
-            external
-            href={waLink(bundle.settings.whatsappNumber, sys('whatsapp.prefill'))}
-          >
-            {sys('thankYou.whatsapp')}
-          </Button>
+      {/* Final pass D3 (W178, T13): `.container-site` is unlayered, so a `max-w-*` utility on the
+          same element never applied — the 720 px reading column is an inner, centred wrapper. */}
+      <div className="container-site">
+        <div className="mx-auto max-w-[720px]">
+          <h1 className="text-h2" data-testid="page-h1" data-lcp-slot="h1">
+            {sys('thankYou.title')}
+          </h1>
+          <p className="text-body-lg text-text-secondary">{sys('thankYou.body')}</p>
+          {formKey && (
+            <p className="text-body text-text-secondary">{sys(`thankYou.forms.${formKey}`)}</p>
+          )}
+          <div className="mt-8 flex flex-wrap gap-3">
+            <Button prefetch={false} variant="primary" size="lg" href="/">
+              {sys('thankYou.home')}
+            </Button>
+            <Button
+              variant="secondary"
+              size="lg"
+              external
+              href={waLink(bundle.settings.whatsappNumber, sys('whatsapp.prefill'))}
+            >
+              {sys('thankYou.whatsapp')}
+            </Button>
+          </div>
         </div>
       </div>
       {/* Fires the conversion once, on arrival, for a known form key only (D13). */}
