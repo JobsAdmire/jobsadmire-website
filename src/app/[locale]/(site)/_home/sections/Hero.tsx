@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { makeTf } from '@/content/pure';
-import { ImageSlot } from '@/design/blocks/ImageSlot';
+import { ImageSlot, type CoverHeights } from '@/design/blocks/ImageSlot';
 import { MetricStrip } from '@/design/blocks/MetricStrip';
 import { Button, buttonClassName } from '@/design/primitives/Button';
 import { Link } from '@/i18n/navigation';
@@ -23,6 +23,14 @@ import type { SectionProps } from './types';
  *  every other section. */
 const HERO_BOX = 'mx-auto w-full px-5 xs:px-12 xl:max-w-[960px] xl:px-9';
 
+/** Final pass A8 (W189 A5, W210 c): the hero slot's cover-mode heights — fixed per band, ≥ 10 %
+ *  above the tallest hero measured in that band in both locales (1,109 / 1,653 / 1,455 / 970 /
+ *  811 px at ≤ 460 / 461–700 / 701–900 / 901–1100 / ≥ 1101), so the photo, once it ships
+ *  (W174), never follows the text's height (W187). Dormant while HERO_PHOTO is null: the named
+ *  placeholder sits behind the two overlays. Art-directed sources and a true `sizes` come with
+ *  the photo (W189 A5). */
+const HERO_COVER: CoverHeights = { base: 1250, xs: 1850, md: 1650, lg: 1100, xl: 900 };
+
 export function Hero({ locale, bundle, form }: SectionProps & { form: ReactNode }) {
   const tf = makeTf(bundle, locale);
   const photoIsLcp = HERO_PHOTO !== null;
@@ -31,7 +39,8 @@ export function Hero({ locale, bundle, form }: SectionProps & { form: ReactNode 
       data-testid="hero"
       className="relative flex min-h-[660px] flex-col justify-end overflow-hidden bg-[#0a1428] text-white max-xs:min-h-0 xl:min-h-[495px]"
     >
-      {/* W129: the slot owns its 16:9 box; this wrapper only pins it behind the hero. */}
+      {/* W129: the slot owns its box (cover mode, HERO_COVER); this wrapper only pins it behind
+          the hero and clips it to the hero's height. */}
       <div aria-hidden="true" className="absolute inset-0 overflow-hidden">
         <ImageSlot
           slot="v4-hero"
@@ -41,6 +50,7 @@ export function Hero({ locale, bundle, form }: SectionProps & { form: ReactNode 
           width={1600}
           height={900}
           sizes="100vw"
+          cover={HERO_COVER}
         />
       </div>
       <div

@@ -109,6 +109,62 @@ describe('ImageSlot (W27 / D26 markup contract)', () => {
     expect(boxPropertyClasses(box)).toEqual(['h-[80px]', 'object-contain']);
   });
 
+  // W189 A3/A5 (final pass A8): cover mode — a fixed-height box per breakpoint that the asset
+  // covers, for a hero/cover photo whose height must never follow the text beside it (W187). The
+  // heights travel as DATA (CSS variables from props) because Tailwind only generates classes it
+  // finds whole in the source; a missing step inherits the one below it, so every variable the
+  // class list reads is defined (an undefined `var()` would make `height` fall back to `auto`).
+  const COVER = [
+    'w-full',
+    'object-cover',
+    'h-(--cover-h)',
+    'xs:h-(--cover-h-xs)',
+    'sm:h-(--cover-h-sm)',
+    'md:h-(--cover-h-md)',
+    'lg:h-(--cover-h-lg)',
+    'xl:h-(--cover-h-xl)',
+  ];
+
+  it('cover mode: both branches get the fixed-height box from the heights, never the ratio box (A8)', () => {
+    const { container } = render(
+      <>
+        <ImageSlot
+          slot="blog-cover-x"
+          alt=""
+          width={980}
+          height={430}
+          cover={{ base: 190, md: 430, xl: 322.5 }}
+        />
+        <ImageSlot
+          slot="cover-photo"
+          src="/brand/ja-mark.png"
+          alt="Cover"
+          width={980}
+          height={430}
+          sizes="100vw"
+          cover={{ base: 190, md: 430, xl: 322.5 }}
+        />
+      </>,
+    );
+    const placeholder = container.querySelector<HTMLElement>('[data-placeholder="blog-cover-x"]')!;
+    const img = screen.getByRole('img', { name: 'Cover' });
+    for (const el of [placeholder, img]) {
+      expect(el).toHaveClass(...COVER);
+      expect(el).not.toHaveClass('h-auto');
+      expect(el.style.aspectRatio).toBe('');
+      expect(el.style.getPropertyValue('--cover-h')).toBe('190px');
+      expect(el.style.getPropertyValue('--cover-h-xs')).toBe('190px'); // inherits base
+      expect(el.style.getPropertyValue('--cover-h-sm')).toBe('190px');
+      expect(el.style.getPropertyValue('--cover-h-md')).toBe('430px');
+      expect(el.style.getPropertyValue('--cover-h-lg')).toBe('430px'); // inherits md
+      expect(el.style.getPropertyValue('--cover-h-xl')).toBe('322.5px');
+    }
+    // the intrinsic size still reaches next/image (srcset widths, no CLS on the asset itself)
+    expect(img).toHaveAttribute('width', '980');
+    expect(img).toHaveAttribute('height', '430');
+    expect(img).toHaveAttribute('sizes', '100vw');
+  });
+
   it('maps the frozen lcp/priority props to next/image `preload`, never the deprecated `priority` (M3)', () => {
     nextImage.calls.length = 0;
     render(

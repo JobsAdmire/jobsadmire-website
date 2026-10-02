@@ -46,6 +46,24 @@ describe('Hero (D26, W1, W6, W10, W17)', () => {
     expect(container.querySelector('.container-site')).toBeNull();
   });
 
+  // Final pass A8 (W189 A5, W210 c): the hero slot is wired in cover mode, dormant — a fixed
+  // height per band, ≥ 10 % above the tallest measured hero in that band (1,109 / 1,653 / 1,455 /
+  // 970 / 811 px at ≤ 460 / 461–700 / 701–900 / 901–1100 / ≥ 1101, both locales, final pass), so
+  // the photo, once it ships (W174), never follows the text's height (W187); its wrapper only pins
+  // it behind the hero.
+  it('wires v4-hero in cover mode with the measured per-band heights (A8)', () => {
+    const { container } = renderWithIntl(<Hero locale="tr" bundle={TR} form={FORM} />);
+    const slot = container.querySelector<HTMLElement>('[data-placeholder="v4-hero"]')!;
+    expect(slot).toHaveClass('w-full', 'object-cover', 'h-(--cover-h)', 'xl:h-(--cover-h-xl)');
+    expect(slot).not.toHaveClass('h-auto');
+    expect(slot.style.getPropertyValue('--cover-h')).toBe('1250px');
+    expect(slot.style.getPropertyValue('--cover-h-xs')).toBe('1850px');
+    expect(slot.style.getPropertyValue('--cover-h-md')).toBe('1650px');
+    expect(slot.style.getPropertyValue('--cover-h-lg')).toBe('1100px');
+    expect(slot.style.getPropertyValue('--cover-h-xl')).toBe('900px');
+    expect(slot.parentElement).toHaveClass('absolute', 'inset-0', 'overflow-hidden');
+  });
+
   it('reads the hero figures from the metrics collection and fills the reply-hours metric', () => {
     renderWithIntl(<Hero locale="en" bundle={EN} form={FORM} />, { locale: 'en' });
     expect(screen.getByText('workers placed')).toBeInTheDocument();

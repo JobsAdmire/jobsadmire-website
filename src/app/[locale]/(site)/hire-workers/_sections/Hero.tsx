@@ -1,6 +1,6 @@
 import { Breadcrumbs } from '@/design/blocks/Breadcrumbs';
 import { ContactCta } from '@/design/blocks/ContactCta';
-import { ImageSlot } from '@/design/blocks/ImageSlot';
+import { ImageSlot, type CoverHeights } from '@/design/blocks/ImageSlot';
 import type { Locale } from '@/i18n/routing';
 import { telLink, waLink } from '@/lib/contact';
 import type { Bundle } from '../../../../../../contract/website-bundle.v1';
@@ -10,6 +10,10 @@ import { sp } from '../_lib/fragments';
 import { QuickQuote } from './QuickQuote';
 
 const PILL = 'inline-flex gap-2 rounded-pill border border-white/20 bg-white/10 px-4 py-2';
+/** W187 / final pass A8 (W189 A5, W210 c): the hero art's fixed height per band — above the
+ *  tallest hero in its range (measured 1,040 / 1,368 / 1,018 px at ≤ 700 / 701–900 / ≥ 901 in
+ *  both locales) — now carried by the slot's own cover mode instead of a sized wrapper. */
+const HERO_COVER: CoverHeights = { base: 1200, md: 1800, lg: 1200 };
 
 export function Hero({
   bundle,
@@ -42,18 +46,17 @@ export function Hero({
   };
   return (
     <section data-testid="hire-hero" className="relative overflow-hidden bg-navy text-white">
-      {/* D26 + W129: the named hero slot. ImageSlot owns its box (full width at 9:4 —
-          HERO_SIZE), so the cover crop is this wrapper's job, clipped by the section. W187: the
-          box never follows the text's height — when the Turkish web font arrives the h1 rewraps
-          and the hero grows, so a box sized (`h-full`) or centred from it moves and resizes
-          (CLS 0.137 on /isci-talebi). It is anchored top-left at a fixed height per breakpoint,
-          each above the tallest hero in its range (≈ 860 px phones, ≈ 1,330–1,500 px at
-          701–900 with the full quick-quote form, ≈ 750–1,000 px from 901); the photo, once the
-          stock pack lands (W174), is cropped from its left edge. With a photo (HERO_SRC) the
-          image is the LCP element (`data-lcp-slot="hw-hero"` + preload); without one it is a
-          decorative named placeholder and the h1 carries the LCP slot. */}
+      {/* D26 + W129: the named hero slot, in cover mode (HERO_COVER). W187: the box never follows
+          the text's height — when the Turkish web font arrives the h1 rewraps and the hero grows,
+          so a box sized (`h-full`) or centred from it moves and resizes (CLS 0.137 on
+          /isci-talebi). The slot is anchored top-left at full width with a fixed height per
+          breakpoint, each above the tallest hero in its range; the photo, once the stock pack
+          lands (W174), covers that box (art-directed sources and a true `sizes` then, W189 A5).
+          With a photo (HERO_SRC) the image is the LCP element (`data-lcp-slot="hw-hero"` +
+          preload); without one it is a decorative named placeholder and the h1 carries the LCP
+          slot. */}
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute left-0 top-0 aspect-[9/4] h-[1200px] min-w-full md:h-[1800px] lg:h-[1200px]">
+        <div className="absolute left-0 top-0 w-full">
           <ImageSlot
             slot="hw-hero"
             lcp={heroIsLcp}
@@ -62,6 +65,7 @@ export function Hero({
             width={HERO_SIZE.width}
             height={HERO_SIZE.height}
             sizes="100vw"
+            cover={HERO_COVER}
           />
         </div>
       </div>

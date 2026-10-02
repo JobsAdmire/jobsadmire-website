@@ -200,20 +200,23 @@ describe('Hero', () => {
   it('anchors the decorative hw-hero box top-left at a fixed per-breakpoint size, never sized from the text (W187)', () => {
     // The h1 rewraps when the Turkish web font arrives; a box sized or centred from the hero's
     // height then moves and resizes with it (CLS 0.137 on /isci-talebi). Fixed heights, top-left.
+    // Final pass A8 (W189 A5, W210 c): the fixed heights now live in the slot's own cover mode
+    // (1,200 / 1,800 / 1,200 px — the measured hero maxima 1,040 / 1,368 / 1,018 px + ≥ 10 %);
+    // the wrapper only anchors it top-left at full width.
     renderWithIntl(hero);
-    const box = document.querySelector('[data-placeholder="hw-hero"]')!.parentElement!;
+    const slot = document.querySelector<HTMLElement>('[data-placeholder="hw-hero"]')!;
+    const box = slot.parentElement!;
     const t = tokens(box);
-    expect(t).toEqual(
-      expect.arrayContaining(['absolute', 'left-0', 'top-0', 'aspect-[9/4]', 'min-w-full']),
-    );
-    expect(t.filter((c) => /(^|:)h-\[\d+px\]$/.test(c))).toEqual([
-      'h-[1200px]',
-      'md:h-[1800px]',
-      'lg:h-[1200px]',
-    ]);
-    for (const c of t)
+    expect(t).toEqual(expect.arrayContaining(['absolute', 'left-0', 'top-0', 'w-full']));
+    expect(t.some((c) => /aspect-|(^|:)h-\[/.test(c))).toBe(false);
+    for (const c of [...t, ...tokens(slot)])
       expect(c).not.toMatch(/(^|:)(h-full|min-h-full|top-1\/2|left-1\/2|-?translate-[xy]-)/);
     expect(box).not.toHaveAttribute('style');
+    expect(slot).toHaveClass('w-full', 'object-cover', 'h-(--cover-h)', 'lg:h-(--cover-h-lg)');
+    expect(slot.style.getPropertyValue('--cover-h')).toBe('1200px');
+    expect(slot.style.getPropertyValue('--cover-h-md')).toBe('1800px');
+    expect(slot.style.getPropertyValue('--cover-h-lg')).toBe('1200px');
+    expect(slot.style.getPropertyValue('--cover-h-xl')).toBe('1200px');
   });
 });
 

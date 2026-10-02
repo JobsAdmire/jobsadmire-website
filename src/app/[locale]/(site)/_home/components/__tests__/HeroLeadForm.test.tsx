@@ -80,6 +80,14 @@ describe('HeroLeadForm', () => {
   it('is the #proposal anchor; below xs the form waits behind the two mode buttons (W10/W17)', () => {
     renderWithIntl(<HeroLeadForm {...props} />);
     expect(screen.getByTestId('hero-form')).toHaveAttribute('id', 'proposal');
+    // Final pass A5 (T1b M6, W206): the sticky header is 113 px tall at 901–1100 and 107 px up to
+    // 1199 (the nav wraps to two lines; one line from 1150 TR / 1200 EN), 71 px elsewhere — a
+    // `#proposal` jump keeps the card clear of it at every band.
+    expect(screen.getByTestId('hero-form')).toHaveClass(
+      'scroll-mt-[90px]',
+      'lg:scroll-mt-[125px]',
+      'min-[1200px]:scroll-mt-[90px]',
+    );
     // the design's card title inherits `line-height: normal`, not the site's 1.55 body leading
     expect(screen.getByRole('heading', { level: 2 })).toHaveClass('leading-[1.15]');
     expect(document.getElementById('hero-form-body')).toHaveClass('max-xs:hidden');

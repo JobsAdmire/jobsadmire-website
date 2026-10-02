@@ -88,7 +88,10 @@ export function HeroLeadForm({
     <div
       id="proposal"
       data-testid="hero-form"
-      className="scroll-mt-[90px] rounded-hero bg-white px-[30px] pb-6 pt-7 text-ink shadow-hero-form max-xs:mt-1.5 max-xs:rounded-lg max-xs:px-[18px] max-xs:py-5 xl:px-[22.5px] xl:pb-[18px] xl:pt-[21px]"
+      // Final pass A5 (T1b M6, W206): the sticky header is 113 px at 901–1100 and 107 px up to
+      // 1199 (its nav wraps to two lines; one line from 1150 TR / 1200 EN), 71 px elsewhere — the
+      // `#proposal` jump keeps this card below it at every band.
+      className="scroll-mt-[90px] rounded-hero bg-white px-[30px] pb-6 pt-7 text-ink shadow-hero-form max-xs:mt-1.5 max-xs:rounded-lg max-xs:px-[18px] max-xs:py-5 lg:scroll-mt-[125px] min-[1200px]:scroll-mt-[90px] xl:px-[22.5px] xl:pb-[18px] xl:pt-[21px]"
     >
       <div className="mb-1.5 flex items-center justify-between gap-3">
         <h2 className="m-0 text-[23px] leading-[1.15] tracking-[-0.8px] xl:text-[17.25px]">
