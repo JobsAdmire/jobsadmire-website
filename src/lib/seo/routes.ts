@@ -85,7 +85,6 @@ export const UNBUILT_PATHNAMES: ReadonlySet<keyof typeof pathnames> = new Set<
   '/verify',
   '/careers',
   '/careers/[slug]',
-  '/contact',
   '/available-workers',
   '/success-stories',
   '/blog',
