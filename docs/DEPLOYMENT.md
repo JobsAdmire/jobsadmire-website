@@ -20,7 +20,7 @@ The frozen production deployment is never redeployed, replaced or repointed befo
 
 The cutover (WP7a) is **not a domain move**: the domains already point at `jobsadmirewebsite`. It turns the same project's `main` into production by removing the two `main` deploy guards in the merge that goes live (W105):
 
-1. **Vercel Pro is active** (owner action, before anything else).
+1. **The plan is decided** — owner decision W201 (2026-10-02): launch on the existing free (Hobby) account; Pro remains the recommendation (Hobby's terms are for non-commercial projects; functions cap at 10 s; crons run daily), and upgrading later needs no code change.
 2. **Clear the Ignored Build Step** (Settings → Git; today `[ "$VERCEL_GIT_COMMIT_REF" = "main" ] && exit 0 || exit 1`) — harmless on its own while `main`'s `vercel.json` still carries the flag.
 3. **Merge `wp2/foundation` → `main` without the `vercel.json` guard** (delete the `git.deploymentEnabled` block, or set `main` to `true`) and push. That push is the first production build; Vercel promotes it onto `jobsadmire.com` + `www`. While either guard is still in place `main` builds nothing and the old site stays live.
 4. **Alias the old deployment as `legacy.jobsadmire.com`** (`noindex`, 90 days — below).

@@ -174,11 +174,11 @@ Next 16.3.5 App Router + React 19 + TS strict + Tailwind 4 + next-intl 4.14.5 (`
 
 ## 7. What the owner still owes (nothing else blocks the code)
 
-1. **Turnstile Site Key + Secret Key** for the jobsadmire.com widget (Cloudflare → Turnstile) → `NEXT_PUBLIC_TURNSTILE_SITE_KEY` on Vercel (production + `staging` preview), the H2/H4 proofs, then confirm two auto-reply e-mails arrived at admin@jobsadmire.com.
+1. ~~Turnstile Site Key + Secret Key~~ **DONE by the owner 2026-10-02 (W201):** the secret is in the Operations Integrations screen, the site key on the Vercel project — the controller verifies the variable's scope (`staging` + Production) before T14's real-widget run; still open from this item: the H2/H4 proofs and the two auto-reply e-mails at admin@jobsadmire.com (T14).
 2. Hero photography for Homepage + Hire Workers (or approval to use licensed stock); one founder/office photo; the four İŞKUR/ÖİB licence PDFs.
 3. Counsel texts (Privacy, Terms, cookie policy, KVKK notice) — Phase A can ship Privacy + Terms from the old site plus a minimal cookie notice.
 4. Headline metrics sign-off (auto-defaults already applied: 470+ placed, 22+ employers, 13 countries, 45 permit days, 6–8 weeks, 4 working hours / 24 h homepage) and the 2026 rate config (`reviewDueAt 2026-12-20`).
-5. Vercel Pro before the cutover; an external uptime monitor account; GSC/GA/Ads baseline exports for the redirect forecast; the "Website launch content" project in Ops Projects.
+5. ~~Vercel Pro before the cutover~~ **Owner decision 2026-10-02 (W201): launch on the existing free (Hobby) account** — the controller recommended Pro (Hobby's terms are non-commercial; 10 s functions; daily crons) and recorded the risk; an external uptime monitor account; GSC/GA/Ads baseline exports for the redirect forecast; the "Website launch content" project in Ops Projects.
 6. Optional clean-up: delete the four `preview/diag*` deployments in Vercel.
 
 ## 8. Standing rules for whoever continues
