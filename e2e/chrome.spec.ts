@@ -158,7 +158,9 @@ test('the footer keeps its five columns in one row at 1440 (W180, D19)', async (
 
 test('the header CTA follows the page (W17)', async ({ page }) => {
   await page.goto('/');
-  // accessible name is "Talep" below xl (the tail span is display:none) and "Talep Oluştur" from xl
+  // accessible name is "Talep Oluştur" below 901 and from 1101 (the design's `.ja-cta-long`
+  // shows at ≤ 900 and ≥ 1101 — final pass A4) and "Talep" at 901–1100 (the tail span is
+  // display:none there)
   await expect(page.getByRole('banner').getByRole('link', { name: /^Talep/ })).toHaveAttribute(
     'href',
     '/#proposal',

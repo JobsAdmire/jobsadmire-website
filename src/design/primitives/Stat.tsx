@@ -12,9 +12,11 @@ const DURATION_MS = 900;
  * D20/R18: the final value ships in the server HTML and is the accessible name (a
  * visually-hidden span); the count-up animates a separate `aria-hidden` span only after
  * mount, only when motion is not reduced, and only once in view.
- * Final pass D1 (W196 A2): the animated span and an invisible copy of the FINAL value share one
- * grid cell, so the figure has its final width from the server render on — "0+" → "470+" no
- * longer narrows and widens the cell while the count-up runs (CLS 0.0065 About / 0.0035 Home).
+ * Final pass D1 (W196 A2): the animated NUMBER and an invisible copy of the final number share
+ * one inline-grid cell, so the number's box has its final width from the server render on and the
+ * suffix after it never moves. Chrome scores a layout shift per text run, and the proof build
+ * showed the suffix (`+`, ` gün`) sliding right as "0" grew to "470" even with the whole figure's
+ * width reserved — the reserve has to sit on the number itself (CLS 0.0065 About / 0.0035 Home).
  */
 export function Stat({
   value,
@@ -92,19 +94,25 @@ export function Stat({
       </div>
     );
   }
-  const final = `${prefix}${formatInt(value as number, locale)}${suffix}`;
+  const number = formatInt(value as number, locale);
   return (
     <div ref={ref}>
-      <p className={`${figureCls} grid`}>
-        <span aria-hidden="true" className="col-start-1 row-start-1">
+      <p className={figureCls}>
+        <span aria-hidden="true">
           {prefix}
-          {formatInt(animated ?? (value as number), locale)}
+          <span data-count-up="" className="inline-grid tabular-nums">
+            <span className="col-start-1 row-start-1">
+              {formatInt(animated ?? (value as number), locale)}
+            </span>
+            <span className="invisible col-start-1 row-start-1">{number}</span>
+          </span>
           {suffix}
         </span>
-        <span aria-hidden="true" className="invisible col-start-1 row-start-1">
-          {final}
+        <span className="sr-only">
+          {prefix}
+          {number}
+          {suffix}
         </span>
-        <span className="sr-only">{final}</span>
       </p>
       <p className={labelCls}>{label}</p>
     </div>

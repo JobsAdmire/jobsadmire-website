@@ -240,6 +240,10 @@ describe('Header', () => {
       'max-xs:justify-end',
     );
     expect(collisionsInTree(banner)).toEqual([]);
+    // the tail reads below 901 and from 1101 — hidden only at 901–1100, as the design's
+    // `.ja-cta-long` rules do (its ≤ 1100 rule hides it, its ≤ 900 rule shows it again)
+    const tail = within(cta).getByText(t('home.015'));
+    expect(tail).toHaveClass('hidden', 'max-lg:inline', 'xl:inline');
   });
 
   it('offers the other language with aria-current on the active one', () => {

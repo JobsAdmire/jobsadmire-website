@@ -24,11 +24,14 @@ function Primary({ cta }: { cta: ResolvedCta }) {
   return (
     <Link href={cta.href} prefetch={false} className={cta.variant === 'danger' ? DANGER : PRIMARY}>
       {cta.label}
-      {/* the long form only from xl, like the design's `.ja-cta-long` */}
+      {/* the long form hides only where the design hides `.ja-cta-long`: its ≤ 1100 rule hides
+          it, its ≤ 900 rule shows it again (`display: inline`), so the tail reads below 901 and
+          from 1101 — final pass A4 (W210 b): the phone CTA shows "Request Workers" as the design's
+          does, wrapping inside its 185 px cap when the label is long. */}
       {cta.tail && (
         <>
           {' '}
-          <span className="hidden xl:inline">{cta.tail}</span>
+          <span className="hidden max-lg:inline xl:inline">{cta.tail}</span>
         </>
       )}
     </Link>
