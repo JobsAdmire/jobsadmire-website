@@ -5,6 +5,7 @@ import { PNG } from 'pngjs';
 import { describe, expect, it, vi } from 'vitest';
 import {
   builtCssRoute,
+  isDocumentPath,
   builtOriginRoute,
   captureContextOptions,
   checkZoomedHeight,
@@ -380,5 +381,46 @@ describe('pixel harness web-font capture (W189)', () => {
       fulfill,
     });
     expect(fetch).toHaveBeenCalledWith();
+  });
+});
+
+describe('pixel harness inline-CSS documents (W218)', () => {
+  it("routes the built origin's documents as well as its .css files, never its chunks, API or OG routes", () => {
+    const { url } = builtCssRoute('https://x-git-wp2.vercel.app', {});
+    for (const p of [
+      '/',
+      '/en',
+      '/en/hire-workers',
+      '/blog/turkey-work-permit-process-employer-guide',
+      '/_next/static/immutable/chunks/a.css',
+    ])
+      expect(url(new URL(`https://x-git-wp2.vercel.app${p}`))).toBe(true);
+    for (const p of [
+      '/_next/static/immutable/chunks/a.js',
+      '/api/site-health',
+      '/og/tr/home.png',
+      '/favicon.ico',
+      '/_next/image?url=x',
+    ])
+      expect(url(new URL(`https://x-git-wp2.vercel.app${p}`))).toBe(false);
+    expect(url(new URL('https://other.example/en'))).toBe(false);
+  });
+
+  it('isDocumentPath: no extension, no framework prefix', () => {
+    expect(isDocumentPath('/')).toBe(true);
+    expect(isDocumentPath('/tesekkurler')).toBe(true);
+    expect(isDocumentPath('/en/blog/a-slug-with-dashes')).toBe(true);
+    expect(isDocumentPath('/sitemap.xml')).toBe(false);
+    expect(isDocumentPath('/robots.txt')).toBe(false);
+    expect(isDocumentPath('/_next/static/x.css')).toBe(false);
+  });
+
+  it('rewrites font-display inside an HTML document the same way as in a sheet', () => {
+    const html =
+      '<html><head><style>@font-face{font-family:A;font-display:optional}</style></head><body>x</body></html>';
+    const { css, replaced } = forceFontDisplayBlock(html);
+    expect(replaced).toBe(1);
+    expect(css).toContain('font-display:block');
+    expect(css).toContain('<body>x</body>');
   });
 });

@@ -264,6 +264,12 @@ export function fontRewriteWarning(rewritten: number, label: string): string | n
   return `pixel: warning — ${label}: no font-display:optional rule was rewritten (W189/W190) — the built capture may have been drawn in the fallback face; check the stylesheet routing before scoring`;
 }
 
+/** W218: a built-origin path that serves an HTML document — no `/_next/`, `/api/`, `/og/` prefix
+ *  and no file extension on the last segment (`/`, `/en/hire-workers`, `/blog/<slug>`). */
+export function isDocumentPath(pathname: string): boolean {
+  return !/^\/(?:_next|api|og)\//.test(pathname) && !/\.[a-z0-9]{2,5}$/i.test(pathname);
+}
+
 /** The slice of Playwright's `APIResponse` the CSS rewrite reads (structural, for the tests). */
 export type FetchedLike = { text(): Promise<string> };
 /** The slice of Playwright's `Route` the CSS rewrite uses (structural, for the tests). */
@@ -273,8 +279,11 @@ export type CssRouteLike<R extends FetchedLike> = {
   fulfill(options: { response: R; body: string }): Promise<void>;
 };
 
-/** W189: the built context's stylesheet handler — the built origin's `.css` responses only (the
- *  design page has a context of its own and is never routed). It fetches the sheet itself, with
+/** W189/W218: the built context's stylesheet handler — the built origin's `.css` responses AND its
+ *  documents (W218 inlines every sheet into the HTML's <style> blocks, so the `font-display`
+ *  rules now travel inside the page itself; `/_next/*`, `/api/*`, `/og/*` and anything with a
+ *  file extension are never documents). The design page has a context of its own and is never
+ *  routed. It fetches the resource itself, with
  *  the W137 bypass header when one is set (Playwright runs the LAST registered matching route
  *  first, so this handler, registered after `builtOriginRoute`'s, must carry the header too),
  *  and fulfils it with `font-display:block`. */
@@ -288,12 +297,13 @@ export function builtCssRoute(
 } {
   const origin = new URL(base).origin;
   return {
-    url: (url) => url.origin === origin && url.pathname.endsWith('.css'),
+    url: (url) =>
+      url.origin === origin && (url.pathname.endsWith('.css') || isDocumentPath(url.pathname)),
     handler: async (route) => {
       const response = Object.keys(headers).length
         ? await route.fetch({ headers: { ...route.request().headers(), ...headers } })
         : await route.fetch();
-      const { css, replaced } = forceFontDisplayBlock(await response.text());
+      const { css, replaced } = forceFontDisplayBlock(await response.text()); // CSS or HTML (W218)
       onRewrite?.(replaced);
       await route.fulfill({ response, body: css });
     },

@@ -25,6 +25,13 @@ const nextConfig: NextConfig = {
     // caps Next's static-generation workers. Unset or invalid (the Vercel build never sets it)
     // keeps Next's own default worker count — Vercel is unaffected.
     cpus: Number.isInteger(buildCpus) && buildCpus > 0 ? buildCpus : undefined,
+    // W218: the stylesheets ride inside the document as <style> blocks instead of a render-blocking
+    // <link> round trip. The binding preview run read FCP = LCP = 2.4 s with 94 % of it render
+    // delay waiting for the 21 KB sheet (562 ms simulated + ~590 ms real latency per request,
+    // bandwidth shared with the fonts and chunks); the document grows ≈ 22 KB gz and first paint
+    // no longer waits for a second request. The pixel harness rewrites font-display in documents
+    // too (scripts/pixel-compare.ts, builtCssRoute).
+    inlineCss: true,
   },
   async redirects() {
     return (legacy as { from: string; to: string }[]).map((r) => ({
