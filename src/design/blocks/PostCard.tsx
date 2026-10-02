@@ -83,6 +83,7 @@ export function PostCard({
         </div>
         <Heading className="text-card-title m-0 mb-2">
           <Link
+            prefetch={false}
             href={{ pathname: '/blog/[slug]', params: { slug } }}
             className="text-ink no-underline hover:text-blue-safe focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
           >

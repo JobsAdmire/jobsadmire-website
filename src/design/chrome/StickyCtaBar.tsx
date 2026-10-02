@@ -118,6 +118,7 @@ export function StickyCtaBar({
               Button face, exactly as ContactCta already resolves for every other block. */}
           {ctas.map((cta, i) => (
             <ContactCta
+              prefetch={false}
               key={`${i}-${cta.label}`}
               placement="page_cta"
               variant={cta.variant ?? 'primary'}
