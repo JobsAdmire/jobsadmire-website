@@ -120,7 +120,7 @@ export function smokeFields(formKey: FormKey, stamp: string, extra: SmokeExtra =
         email: EMAIL,
         phone: PHONE,
         office: 'antalya',
-        preferredDate: '2026-10-01',
+        preferredDate: new Date(Date.now() + 86_400_000).toISOString().slice(0, 10),
         preferredTime: 'am',
         message: MESSAGE(stamp),
       };
