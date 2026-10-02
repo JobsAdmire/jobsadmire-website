@@ -33,7 +33,7 @@ vi.mock('@/content/adapter', async (importOriginal) => {
   };
 });
 
-import ThankYou from '../page';
+import ThankYou, { generateMetadata } from '../page';
 
 describe('Thank-you page — the 720 px column is an inner wrapper inside the container (D3)', () => {
   it('the container carries no max-width class; the h1 sits in a centred max-w-[720px] wrapper', async () => {
@@ -50,5 +50,26 @@ describe('Thank-you page — the 720 px column is an inner wrapper inside the co
     expect(column).not.toBe(container);
     expect(column).toHaveClass('mx-auto', 'max-w-[720px]');
     expect(container).toContainElement(column);
+  });
+
+  // QA W221 SYS-02: the global reset zeroes paragraph margins, so the lead and the per-form line
+  // sat flush under the h1 — the spacing is explicit (mt-3 / mt-2), as every other page's is.
+  it('spaces the lead and the per-form line below the h1 (SYS-02)', async () => {
+    const jsx = await ThankYou({
+      params: Promise.resolve({ locale: 'tr' }),
+      searchParams: Promise.resolve({ form: 'hire' }),
+    });
+    renderWithIntl(jsx, { locale: 'tr' });
+    expect(screen.getByText('thankYou.body')).toHaveClass('mt-3', 'text-body-lg');
+    expect(screen.getByText('thankYou.forms.hire')).toHaveClass('mt-2', 'text-body');
+  });
+
+  // QA W221 SYS-04 / SYS-N1: the <title> and the OG card read the page's own sys.seo pair (W23) —
+  // "Teşekkürler | JobsAdmire" — not the bare h1 word and the body sentence.
+  it('generateMetadata falls back to sys.seo.thankYou.* and stays noindex', async () => {
+    const meta = await generateMetadata({ params: Promise.resolve({ locale: 'tr' }) });
+    expect(meta.title).toBe('seo.thankYou.title');
+    expect(meta.description).toBe('seo.thankYou.description');
+    expect(meta.robots).toEqual({ index: false, follow: false });
   });
 });

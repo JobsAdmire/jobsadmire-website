@@ -166,7 +166,8 @@ export function Hero({
                 </li>
               ))}
             </ul>
-            <Button variant="inverse" size="lg" href="#structure" className="mt-6">
+            {/* QA W221 V-06: the design's ≤ 700 hero button is full-width (Verify l. 274) */}
+            <Button variant="inverse" size="lg" href="#structure" className="mt-6 max-md:w-full">
               {t('verify.030')}
             </Button>
           </div>

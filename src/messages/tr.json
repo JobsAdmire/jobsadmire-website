@@ -65,6 +65,10 @@
         "title": "Abonelikten çıkış | JobsAdmire",
         "description": "JobsAdmire bülten aboneliğinizi sonlandırın."
       },
+      "thankYou": {
+        "title": "Teşekkürler | JobsAdmire",
+        "description": "Talebiniz JobsAdmire'a ulaştı. JobsAdmire ekibi en kısa sürede sizinle iletişime geçecek."
+      },
       "calc": {
         "title": "Yabancı işçi maliyet hesaplayıcı — Türkiye | JobsAdmire",
         "description": "Maaş, SGK işveren payı, izin harçları, uçak bileti ve konaklama tek tahminde. 5:1 kotanızı kontrol edin, geçer-mi testini yapın, yazılı teklif isteyin."
@@ -396,6 +400,9 @@
         "qr": "İkisi de bu sayfayı açmalıdır. Herkese açık kayıt defteri yayımlanana kadar yukarıdaki sorgu kayıt gösteremez — kimliği JobsAdmire ofisiyle telefonla ya da WhatsApp üzerinden teyit edin. QR kodu başka bir yere giden bir kimlik kartı sahtedir.",
         "match": "Yaka kartındaki fotoğraf ve ad karşınızdaki kişiyle birebir uyuşmalı, ofis de kimliğin yetkili olduğunu teyit etmelidir. En küçük uyumsuzlukta ofisi arayın."
       },
+      "flags": {
+        "qr": "QR kodu bu sayfayı açmalıdır — başka hiçbir şey geçerli değildir. Herkese açık kayıt defteri yayımlanana kadar kimliği JobsAdmire ofisiyle telefonla ya da WhatsApp üzerinden teyit edin."
+      },
       "report": {
         "submit": "Bildirimi gönder"
       },
@@ -478,7 +485,8 @@
         "words": "İşverenler|Fabrikalar|Oteller|Çiftlikler|Müteahhitler"
       },
       "index": {
-        "latest": "Son yazılar"
+        "latest": "Son yazılar",
+        "guides": "rehber"
       },
       "empty": {
         "title": "Türkçe yazılar hazırlanıyor",
@@ -742,7 +750,7 @@
           },
           "cookies": {
             "title": "Çerezler ve çevrimiçi tanımlayıcılar",
-            "body": "JobsAdmire zorunlu çerezleri ve yalnızca izninizle ölçüm ve reklam çerezlerini kullanır. İzninizi istediğiniz zaman site alt bilgisindeki Çerez tercihleri düğmesiyle değiştirebilir veya geri çekebilirsiniz.\n\nÇerez Politikası; kategorileri, amaçları, sağlayıcıları ve saklama sürelerini listeler ve iznin nasıl geri çekileceğini Kişisel Verileri Koruma Kurulu'nun çerez rehberine uygun olarak açıklar."
+            "body": "JobsAdmire zorunlu çerezleri ve yalnızca izninizle ölçüm ve reklam çerezlerini kullanır. Site izninizi istediğinde, verdiğiniz izni istediğiniz zaman site alt bilgisindeki Çerez tercihleri düğmesiyle değiştirebilir veya geri çekebilirsiniz.\n\nÇerez Politikası; kategorileri, amaçları, sağlayıcıları ve saklama sürelerini listeler ve iznin nasıl geri çekileceğini Kişisel Verileri Koruma Kurulu'nun çerez rehberine uygun olarak açıklar."
           },
           "disclosures": {
             "title": "Üçüncü kişilere aktarım",
@@ -861,7 +869,7 @@
       },
       "kvkk": {
         "title": "KVKK Aydınlatma Metni",
-        "intro": "6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında, veri sorumlusu sıfatıyla JobsAdmire'ın kişisel verileri nasıl işlediğine ilişkin aydınlatma metni.",
+        "intro": "Bu sayfa, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında veri sorumlusu sıfatıyla JobsAdmire'ın kişisel verileri nasıl işlediğini açıklayan aydınlatma metnini içerir.",
         "updatedAt": "2026-09-29",
         "pendingTitle": "Aydınlatma metni hazırlanıyor",
         "pendingBody": "KVKK aydınlatma metni JobsAdmire'ın hukuk danışmanları tarafından hazırlanmaktadır. Yayımlanana kadar JobsAdmire'ın kişisel verileri nasıl işlediği Gizlilik Politikası'nda açıklanmıştır ve bu politika tüm hükümleriyle geçerlidir.",

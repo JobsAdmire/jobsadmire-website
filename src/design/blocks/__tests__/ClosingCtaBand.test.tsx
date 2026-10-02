@@ -46,6 +46,25 @@ describe('ClosingCtaBand', () => {
     expect(ticks.children).toHaveLength(2);
   });
 
+  // QA W221 W-03: the design's `.ja-close h2` is 25 px / 1.12 / −0.5 px at ≤ 700 on every page's
+  // closing band — the block's own `max-md:` face (W217), swept by phone-heading-rule.test.ts.
+  it('the h2 wears the design’s ≤ 700 face (W-03)', () => {
+    renderWithIntl(
+      <ClosingCtaBand
+        bundle={bundle}
+        locale="tr"
+        titleId="x.title"
+        primary={{ label: 'İşçi talep edin', href: '/hire-workers' }}
+      />,
+    );
+    expect(screen.getByRole('heading', { level: 2 })).toHaveClass(
+      'text-h2',
+      'max-md:text-[25px]',
+      'max-md:leading-[1.12]',
+      'max-md:tracking-[-0.5px]',
+    );
+  });
+
   it('renders without body, secondary, extras or ticks', () => {
     renderWithIntl(
       <ClosingCtaBand

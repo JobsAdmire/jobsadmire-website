@@ -40,6 +40,16 @@ describe('PermitTypes', () => {
     );
     expect(collisionsInTree(container)).toEqual([]);
   });
+
+  // QA W221 WP-05: wp.165 is the Turkish term the EN card glosses ("· Süreli" after "Fixed-term
+  // permit"); on the TR page the card title is already that word, so the gloss doubled it
+  // ("Süreli izin · Süreli") — EN only.
+  it('TR: the featured card carries no local-term gloss — the title is the Turkish term', () => {
+    renderWithIntl(<PermitTypes bundle={BUNDLES.tr} tf={tfTr} />, { locale: 'tr' });
+    const featured = screen.getByTestId('wp-types-featured');
+    expect(within(featured).getByRole('heading', { level: 3 })).toHaveTextContent(tfTr('wp.164'));
+    expect(featured.textContent).not.toContain(tfTr('wp.165'));
+  });
 });
 
 describe('Rules', () => {
@@ -139,7 +149,7 @@ describe('Costs', () => {
 
 describe('Documents', () => {
   it('#documents: two lists of six, each count computed from its list (D17)', () => {
-    const { container } = renderWithIntl(<Documents tf={tfTr} />);
+    const { container } = renderWithIntl(<Documents tf={tfTr} locale="tr" />);
     expect(container.querySelector('section#documents')).not.toBeNull();
     for (const key of ['employer', 'worker']) {
       const list = screen.getByTestId(`wp-docs-${key}`);
@@ -150,10 +160,22 @@ describe('Documents', () => {
   });
 
   it('EN pluralises the computed count — never wp.300’s typed "6 docs"', () => {
-    renderWithIntl(<Documents tf={tfEn} />, { locale: 'en' });
+    renderWithIntl(<Documents tf={tfEn} locale="en" />, { locale: 'en' });
     const worker = screen.getByTestId('wp-docs-worker');
     expect(worker).toHaveTextContent('6 documents');
     expect(worker.textContent).not.toContain(tfEn('wp.300'));
+  });
+
+  // QA W221 WP-04: the parenthetical notes (wp.302 "(vergi levhası)", 304, 308, 310) gloss the
+  // Turkish document names for English readers; on the TR page the item text IS that name, so
+  // the note doubled it ("Vergi levhası (vergi levhası)") — EN only.
+  it('renders the document-name glosses on the EN page only (WP-04)', () => {
+    const { unmount } = renderWithIntl(<Documents tf={tfEn} locale="en" />, { locale: 'en' });
+    expect(screen.getByTestId('wp-docs-employer').textContent).toContain(tfEn('wp.302'));
+    unmount();
+    renderWithIntl(<Documents tf={tfTr} locale="tr" />);
+    expect(screen.getByTestId('wp-docs-employer').textContent).not.toContain(tfTr('wp.302'));
+    expect(within(screen.getByTestId('wp-docs-employer')).getAllByRole('listitem')).toHaveLength(6);
   });
 });
 

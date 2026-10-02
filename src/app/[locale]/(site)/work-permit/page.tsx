@@ -104,7 +104,7 @@ export default async function WorkPermit({ params }: { params: Promise<{ locale:
       <Process bundle={bundle} tf={tf} />
       <Timeline tf={tf} />
       <Costs bundle={bundle} tf={tf} />
-      <Documents tf={tf} />
+      <Documents tf={tf} locale={locale} />
       <Renewal bundle={bundle} tf={tf} />
       <Faq bundle={bundle} locale={locale} tf={tf} />
       <RelatedArticles bundle={bundle} locale={locale} tf={tf} />

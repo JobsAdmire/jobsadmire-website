@@ -1,3 +1,4 @@
+import { useTranslations } from 'next-intl';
 import { makeT, makeTf } from '@/content/pure';
 import { ContactCta } from '@/design/blocks/ContactCta';
 import { Section } from '@/design/primitives/Section';
@@ -6,6 +7,7 @@ import { telLink, waLink } from '@/lib/contact';
 import type { Bundle } from '../../../../../../contract/website-bundle.v1';
 import { CrossIcon, WarningIcon } from '../_components/icons';
 import type { UploadEvidenceAction } from '../_lib/evidence';
+import type { Register } from '../_lib/register';
 import { FraudForm, type FraudAction } from './FraudForm';
 
 /** The five red flags as [bold lead, body] id pairs — all five at every width (V-3). */
@@ -16,29 +18,38 @@ const RED_FLAGS = [
   ['verify.087', 'verify.088'],
   ['verify.089', 'verify.090'],
 ] as const;
+/** Red flag 2's body promises "a record on this page" — the same lookup V-01's FAQ q3 and steps
+ *  2–3 promise; while `representatives` has no rows it reads `sys.verify.flags.qr` (W222 (2)). */
+const RECORD_PROMISE = 'verify.084';
 
 /** `#report` — the red flags and the report box (eyebrow, question, the fraud form, the WhatsApp
  *  and phone doors, the footnote). */
 export function Report({
   bundle,
   locale,
+  register,
   submitFraud,
   uploadEvidence,
 }: {
   bundle: Bundle;
   locale: Locale;
+  register: Register;
   submitFraud: FraudAction;
   uploadEvidence: UploadEvidenceAction;
 }) {
   const t = makeT(bundle);
   const tf = makeTf(bundle, locale);
+  const sys = useTranslations('sys');
   const { settings } = bundle;
+  const hasRows = register.active.length > 0;
   return (
     // `id="report"`: CTA_BY_PATHNAME['/verify'] (the header's red CTA) and the sticky bar land here.
     <Section tone="light" id="report" className="scroll-mt-24">
       <div className="container-site" data-testid="verify-report">
+        {/* QA W221 V-07: the design numbers its sections — verify.053 carries its own "01 · ",
+            the report eyebrow takes "02 · " in the markup (Verify l. 845). */}
         <p className="m-0 text-eyebrow font-extrabold uppercase tracking-[1.6px] text-danger">
-          {t('verify.077')}
+          02 · {t('verify.077')}
         </p>
         <h2 className="mt-3 mb-0 text-h2 leading-[1.06] tracking-[-0.04em] max-md:text-[25px] max-md:leading-[1.13] max-md:tracking-[-0.6px]">
           {t('verify.078')}
@@ -61,7 +72,8 @@ export function Report({
                 >
                   <CrossIcon className="mt-[5px] shrink-0 text-danger" />
                   <p className="m-0">
-                    <strong className="font-extrabold text-ink">{tf(lead)}</strong> {tf(body)}
+                    <strong className="font-extrabold text-ink">{tf(lead)}</strong>{' '}
+                    {body === RECORD_PROMISE && !hasRows ? sys('verify.flags.qr') : tf(body)}
                   </p>
                 </li>
               ))}

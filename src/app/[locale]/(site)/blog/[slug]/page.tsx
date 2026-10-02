@@ -298,7 +298,8 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
                     </span>
                   </summary>
                   <nav aria-label={tocLabel}>
-                    <ul className="m-0 flex list-none flex-col px-2.5 pt-0 pb-2.5">
+                    {/* QA W221 BLOG-08: `list-none` strips the list semantics in Safari — explicit role */}
+                    <ul role="list" className="m-0 flex list-none flex-col px-2.5 pt-0 pb-2.5">
                       {toc.map((h) => (
                         <li key={h.id} className="border-t border-border-3">
                           <a

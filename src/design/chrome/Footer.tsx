@@ -230,6 +230,10 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
                 />
               ))}
             </nav>
+            {/* QA W221 H-04: the design's legal row ends with `<span>© 2026 Jobs Admire</span>`
+              (Homepage v4 l. 1222) — partner.214 is the package's one © string (brand one word
+              since W221), the chrome's canonical id for it (R15). */}
+            <span className="text-white/50">{t('partner.214')}</span>
             {/* R36: consent is withdrawable, and this is where visitors look for it. R40 gates it
               exactly like the banner (R38): with no container id nothing ever asked for
               consent, so there is nothing to withdraw and the button would reopen nothing. */}

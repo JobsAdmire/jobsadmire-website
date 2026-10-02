@@ -73,7 +73,17 @@ describe('Tracks', () => {
     );
     const section = container.querySelector('section#tracks');
     expect(section).not.toBeNull();
-    expect(tokens(section)).toContain('scroll-mt-20');
+    // QA W221 P-05: the header is 79 px from 1101 and ≈ 114 px (slim bar + nav) at 901–1199, so a
+    // flat `scroll-mt-20` landed the anchor under the chrome from the hero / sticky bar — the
+    // same three bands the homepage lead form clears (HeroLeadForm, W152).
+    expect(tokens(section)).toEqual(
+      expect.arrayContaining([
+        'scroll-mt-[90px]',
+        'lg:scroll-mt-[125px]',
+        'min-[1200px]:scroll-mt-[90px]',
+      ]),
+    );
+    expect(tokens(section)).not.toContain('scroll-mt-20');
     expect(screen.getByRole('heading', { level: 2, name: tf('partner.061') })).toBeInTheDocument();
     const group = screen.getByRole('radiogroup', { name: tf('partner.064') });
     expect(within(group).getAllByRole('radio')).toHaveLength(3);

@@ -138,7 +138,12 @@ export default async function BlogIndex({ params }: { params: Promise<{ locale: 
                     <strong className="font-extrabold text-white">{t('blog.024')}</strong>
                   </span>
                 </li>
-                <li className="text-body flex items-start gap-2.5 font-semibold text-white/75">
+                {/* QA W221 BLOG-04: the phone strip below repeats the two-languages fact, so this
+                    tick hides ≤ 700 whenever the strip renders (a locale with no article has no
+                    strip, and keeps the tick). */}
+                <li
+                  className={`text-body flex items-start gap-2.5 font-semibold text-white/75${written.length > 0 ? ' max-md:hidden' : ''}`}
+                >
                   <CheckIcon size={16} className="mt-1 shrink-0 text-success" />
                   <span>
                     <strong className="font-extrabold text-white">{t('blog.025')}</strong>{' '}
@@ -157,7 +162,9 @@ export default async function BlogIndex({ params }: { params: Promise<{ locale: 
                     <strong className="font-extrabold text-white">
                       {formatInt(written.length, locale)}
                     </strong>{' '}
-                    {t('blog.091')}
+                    {/* QA W221 BLOG-02: "1 guide" / "n guides" (ICU plural; TR invariant) —
+                        blog.091 is the design's fixed plural "Guides" */}
+                    {sys('blog.index.guides', { n: written.length })}
                   </span>
                   <span aria-hidden="true">·</span>
                   <span>

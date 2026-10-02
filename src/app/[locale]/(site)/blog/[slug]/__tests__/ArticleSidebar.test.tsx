@@ -40,6 +40,9 @@ describe('the article sidebar island and its fallback (B-13, W132)', () => {
   it('server-renders the TOC landmark (first entry current), the remaining time, the share links and the print button', () => {
     const html = renderToStaticMarkup(<ArticleSidebarFallback {...PROPS} />);
     expect(html).toContain('<nav aria-label="In this article">');
+    // QA W221 BLOG-08: `list-none` strips the list semantics in Safari/VoiceOver — the TOC keeps
+    // them with an explicit role (island and fallback alike, W132)
+    expect(html).toContain('<ol role="list"');
     expect(html).toContain('href="#who-can-hire" aria-current="location"');
     expect(html).toContain('≈ 8 min left');
     expect(html).toContain('https://wa.me/?text=');

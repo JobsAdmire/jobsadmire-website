@@ -1,5 +1,6 @@
 import { useTranslations } from 'next-intl';
 import { Section } from '@/design/primitives/Section';
+import type { Locale } from '@/i18n/routing';
 import { BuildingIcon, CheckIcon, UsersIcon } from '../_components/icons';
 import { DOC_LISTS, type DocList } from '../_lib/tables';
 
@@ -18,8 +19,10 @@ const LOOK: Record<DocList['key'], { Icon: typeof BuildingIcon; badge: string; c
 
 /** "Documents you'll need" (#documents): the employer and worker checklists; each count badge is
  *  computed from its list (`sys.wp.documents.count`, ICU) — never `wp.300`'s typed "6 docs"
- *  (D17). The renewal banner continues this pale band. */
-export function Documents({ tf }: { tf: (id: string) => string }) {
+ *  (D17). The parenthetical notes (wp.302 "(vergi levhası)", 304, 308, 310) gloss the Turkish
+ *  document names for English readers; on the TR page the item text is that name, so the gloss
+ *  doubled it — EN only (QA W221 WP-04). The renewal banner continues this pale band. */
+export function Documents({ tf, locale }: { tf: (id: string) => string; locale: Locale }) {
   const sys = useTranslations('sys');
   return (
     <Section tone="pale" id="documents" className="scroll-mt-24 lg:scroll-mt-32 xl:scroll-mt-40">
@@ -59,7 +62,7 @@ export function Documents({ tf }: { tf: (id: string) => string }) {
                       <CheckIcon size={15} className="mt-0.5 flex-none text-success" />
                       <span>
                         {tf(item.id)}
-                        {item.noteId ? (
+                        {item.noteId && locale === 'en' ? (
                           <>
                             {' '}
                             <span className="text-text-tertiary">{tf(item.noteId)}</span>

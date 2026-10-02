@@ -42,8 +42,15 @@ export function MetricStrip({
         .filter(Boolean)
         .join(' ')}
     >
+      {/* QA W221 H-06 (= about-03): below lg the strip is a two-column grid, so a per-item
+          `px-4 first:pl-0 last:pr-0` indented the right column and every later row by 16 px on
+          phones; per column there (odd = left, flush; even = right, the 16 px gutter; no right
+          padding), per item in the lg row as the design's `.ja-stat + .ja-stat` border rhythm. */}
       {shown.map((m) => (
-        <li key={m.key} className="px-4 first:pl-0 last:pr-0">
+        <li
+          key={m.key}
+          className="max-lg:odd:pl-0 max-lg:even:pl-4 max-lg:pr-0 lg:px-4 lg:first:pl-0 lg:last:pr-0"
+        >
           <Stat
             value={m.value ?? undefined}
             text={m.text ?? undefined}

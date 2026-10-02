@@ -55,8 +55,10 @@ export function QuotaView({
     />
   );
   if (variant === 'mobile') {
+    // QA W221 calc-05: the answer follows the stepper — a polite, atomic live region, as the
+    // CalculatorIsland total is.
     return (
-      <div data-testid="quota-view-m" data-live={live}>
+      <div data-testid="quota-view-m" data-live={live} aria-live="polite" aria-atomic="true">
         <div className="mb-2.5 rounded-sm border border-border-1 bg-white p-3.5">
           <p className="m-0 mb-1 text-[11px] xl:text-[11px] font-extrabold uppercase tracking-[1.1px] xl:tracking-[0.825px] text-text-tertiary">
             {labels.qmS1}
@@ -110,7 +112,8 @@ export function QuotaView({
           {stepper}
           <span className="text-body-sm text-text-tertiary">{labels.qSameBranch}</span>
         </div>
-        <div className={box}>
+        {/* QA W221 calc-05: the whole verdict box re-announces when the stepper changes it */}
+        <div className={box} aria-live="polite" aria-atomic="true">
           <p className={title}>{view.title}</p>
           <p
             data-testid="quota-allowed"

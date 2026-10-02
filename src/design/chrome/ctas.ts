@@ -10,11 +10,14 @@ import type { Locale, pathnames } from '@/i18n/routing';
  *  get an entry: the prerendered TR HTML and the browser disagree on a dynamic route's
  *  internal key, so it falls back to `DEFAULT_CTAS` on both sides instead (W121). */
 export type CtaVariant = 'primary' | 'danger';
-/** `tailFirst`: the locales in which the tail renders BEFORE the label (QA W220 V-03). The
- *  package translates each split CTA so label + tail read in that language's order (home.014/015
- *  "Talep" + "Oluştur", contact.015/016 "Bir mesaj" + "gönderin"); verify.015/016 is the one pair
- *  left in English order ("Bildir" + "sahtekârı"), so in Turkish the object precedes the verb —
- *  the design's short form (the label alone at 901–1100) and the EN label are untouched. */
+/** `tailFirst`: the locales in which the tail renders BEFORE the label (QA W220 V-03, W222 (4)).
+ *  The package translates some split CTAs so label + tail read in that language's order
+ *  (home.014/015 "Talep" + "Oluştur", contact.015/016 "Bir mesaj" + "gönderin"); three pairs are
+ *  left in English order — verify.015/016 ("Bildir" + "sahtekârı"), wp.016/017 ("Başvurun" + "izin
+ *  için") and partner.017/018 ("Başvurun" + "iş ortaklığı için") — so in Turkish the object or the
+ *  postpositional phrase precedes the verb and the tail opens the label (the overrides capitalise
+ *  it: "Sahtekârı Bildir", "İzin İçin Başvurun", "İş Ortaklığı İçin Başvurun"). The design's short
+ *  form (the label alone at 901–1100) and the EN labels are untouched. */
 export type CtaLink = {
   labelId: string;
   tailId?: string;
@@ -53,18 +56,22 @@ export const CTA_BY_PATHNAME: Partial<Record<keyof typeof pathnames, PageCtas>> 
     secondary: HIRE,
   },
   '/partner-with-us': {
+    // "Apply" + "to partner"; TR "İş Ortaklığı İçin Başvurun" — the tail first (W222 (4), P-10)
     primary: {
       labelId: 'partner.017',
       tailId: 'partner.018',
       href: { pathname: '/partner-with-us', hash: '#tracks' },
+      tailFirst: ['tr'],
     },
     secondary: HIRE,
   },
   '/work-permit': {
+    // "Apply" + "for a permit"; TR "İzin İçin Başvurun" — the tail first (W222 (4), WP-08)
     primary: {
       labelId: 'wp.016',
       tailId: 'wp.017',
       href: { pathname: '/work-permit', hash: '#permit-cta' },
+      tailFirst: ['tr'],
     },
   },
   '/contact': {
@@ -88,10 +95,11 @@ export const CTA_BY_PATHNAME: Partial<Record<keyof typeof pathnames, PageCtas>> 
     secondary: HIRE,
   },
   '/available-workers': {
-    // "See" + "Candidates": the tail is the canonical nav label (home.003), not a page copy
+    // One label, no tail (QA W221 W-08): the design's "See" + "Candidates" split read as a footnote
+    // "Bkz." pill on Turkish phones once the tail hid; availworkers.016 is overridden to the whole
+    // phrase ("Adayları gör" / "See candidates") instead of borrowing the nav label home.003.
     primary: {
       labelId: 'availworkers.016',
-      tailId: 'home.003',
       href: { pathname: '/available-workers', hash: '#pool' },
     },
   },

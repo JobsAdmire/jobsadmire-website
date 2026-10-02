@@ -16,7 +16,10 @@ export function JumpNav({ tf }: { tf: (id: string) => string }) {
       className="z-30 border-b border-border-4 bg-white/95 backdrop-blur xl:sticky xl:top-[79px]"
     >
       <div className="container-site">
-        <div className="flex items-center gap-1.5 overflow-x-auto py-2.5 [scrollbar-width:none]">
+        {/* QA W221 WP-01: the design hides the row's scrollbar only ≤ 700 (`.ja-jump` phone rule);
+            from 701 the scrollbar is the one affordance that tells a mouse user the eight chips
+            scroll wherever they overflow (701–1100 in Turkish). */}
+        <div className="flex items-center gap-1.5 overflow-x-auto py-2.5 max-md:[scrollbar-width:none]">
           <span
             aria-hidden="true"
             className="mr-2 text-eyebrow font-extrabold tracking-[0.8px] whitespace-nowrap text-text-tertiary uppercase max-md:hidden"

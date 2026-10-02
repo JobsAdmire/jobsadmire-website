@@ -91,7 +91,8 @@ export function SalaryGuideView({
                   <p className="m-0 text-[11px] xl:text-[11px] font-extrabold uppercase tracking-[0.7px] xl:tracking-[0.525px] text-text-tertiary">
                     {labels.sEmpCost}
                   </p>
-                  <p className="m-0 mt-0.5 text-body-sm font-extrabold text-blue-safe">
+                  {/* QA W221 calc-03: the "₺58.835 – ₺83.125" range never wraps inside the card */}
+                  <p className="m-0 mt-0.5 text-body-sm font-extrabold whitespace-nowrap text-blue-safe">
                     {r.employer}
                   </p>
                 </div>

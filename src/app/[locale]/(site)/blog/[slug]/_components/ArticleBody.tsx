@@ -50,7 +50,9 @@ function BlockView({ block, first, cta }: { block: Block; first: boolean; cta?: 
           <p className="text-eyebrow mt-0 mb-3 font-extrabold tracking-[1.2px] xl:tracking-[0.9px] text-blue-safe uppercase">
             {block.title}
           </p>
-          <ul className="m-0 flex list-none flex-col gap-2 p-0 font-semibold text-ink">
+          {/* QA W221 BLOG-08: `list-none` strips the list semantics in Safari/VoiceOver — every
+              article list keeps them with an explicit role */}
+          <ul role="list" className="m-0 flex list-none flex-col gap-2 p-0 font-semibold text-ink">
             {block.items.map((item, j) => (
               <li key={j} className="flex gap-2.5">
                 <span aria-hidden="true" className="shrink-0 text-blue-safe">
@@ -83,6 +85,7 @@ function BlockView({ block, first, cta }: { block: Block; first: boolean; cta?: 
       const checklist = block.items.every((item) => plain(item).length <= CHECKLIST_MAX_CHARS);
       return (
         <ul
+          role="list"
           className={
             checklist
               ? 'mt-0 mb-5 grid list-none gap-x-6 gap-y-3 rounded-base border border-tint-border bg-white p-6 lg:grid-cols-2'
@@ -105,7 +108,7 @@ function BlockView({ block, first, cta }: { block: Block; first: boolean; cta?: 
     }
     case 'ol':
       return (
-        <ol className="mt-0 mb-5 flex list-none flex-col gap-3.5 p-0">
+        <ol role="list" className="mt-0 mb-5 flex list-none flex-col gap-3.5 p-0">
           {block.items.map((item, j) => (
             <li key={j} className="flex items-start gap-4">
               <span

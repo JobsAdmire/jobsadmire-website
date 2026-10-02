@@ -150,7 +150,17 @@ export default async function About({ params }: { params: Promise<{ locale: stri
               data-lcp-slot="h1"
               className="mt-4 mb-2 text-h1 leading-none max-md:text-[36px] max-md:tracking-[-1.4px]"
             >
-              {t('about.022')} <span className="text-sky">{t('about.023')}</span>
+              {/* QA W221 about-07: Turkish puts the postposition after its noun — "JobsAdmire
+                  Hakkında" (about.022 overridden to "Hakkında"); EN keeps "About JobsAdmire". */}
+              {locale === 'tr' ? (
+                <>
+                  <span className="text-sky">{t('about.023')}</span> {t('about.022')}
+                </>
+              ) : (
+                <>
+                  {t('about.022')} <span className="text-sky">{t('about.023')}</span>
+                </>
+              )}
             </h1>
             <p
               className="m-0 mb-4 text-body-lg font-extrabold tracking-[1.2px] xl:tracking-[0.9px] text-white/70"

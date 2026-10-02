@@ -44,6 +44,11 @@ const ROUTES: Record<string, { h2: number }> = {
   verify: { h2: 25 },
   'work-permit': { h2: 25 },
 };
+/** Shared blocks the rule-bearing pages mount whose headings the design sizes at ≤ 700 as well
+ *  (QA W221 W-03: `.ja-close h2` is 25 px on every page's closing band) — swept like a route. */
+const BLOCKS: readonly { path: string; h2: number }[] = [
+  { path: join(ROOT, 'src', 'design', 'blocks', 'ClosingCtaBand.tsx'), h2: 25 },
+];
 const H1_TWINS = ['max-[601px]:text-[32px]', 'max-[601px]:tracking-[-0.6px]'];
 const h2Twins = (px: number) => [`max-[601px]:text-[${px}px]`, 'max-[601px]:tracking-[-0.4px]'];
 
@@ -191,8 +196,14 @@ const tokens = (classList: string) => classList.split(' ');
 function sweep(): { failures: string[]; used: Set<number> } {
   const failures: string[] = [];
   const used = new Set<number>();
-  for (const [route, { h2 }] of Object.entries(ROUTES)) {
-    for (const path of modulesUnder(join(SITE, route))) {
+  const modules: { path: string; h2: number }[] = [
+    ...Object.entries(ROUTES).flatMap(([route, { h2 }]) =>
+      modulesUnder(join(SITE, route)).map((path) => ({ path, h2 })),
+    ),
+    ...BLOCKS,
+  ];
+  {
+    for (const { path, h2 } of modules) {
       const file = relative(ROOT, path);
       for (const h of headingsOf(path, readFileSync(path, 'utf8'))) {
         const where = `${file}:${h.line} <${h.tag} "${h.classList}">`;
@@ -249,7 +260,7 @@ describe('phone heading rule — the reader', () => {
   });
 });
 
-describe('phone heading rule — the twelve rule-bearing routes (W210 a, W216 (2))', () => {
+describe('phone heading rule — the twelve rule-bearing routes and the shared blocks (W210 a, W216 (2), W221 W-03)', () => {
   const { failures, used } = sweep();
 
   it('every h1/h2 wears one phone face: the ≤ 600 twins, or its own ≤ 700 design size, or a listed exemption', () => {

@@ -35,7 +35,8 @@ export function ArticleSidebarFallback({
           <p className="mb-2 text-eyebrow font-extrabold uppercase tracking-wide text-blue-safe">
             {tocLabel}
           </p>
-          <ol className="m-0 list-none p-0">
+          {/* QA W221 BLOG-08: explicit list role under `list-none` — identical in ScrollSpyToc (W132) */}
+          <ol role="list" className="m-0 list-none p-0">
             {headings.map((h, i) => (
               <li key={h.id}>
                 <a

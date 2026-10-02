@@ -51,6 +51,33 @@ describe('MetricStrip', () => {
     expect(screen.queryByText('işveren')).toBeNull();
   });
 
+  // QA W221 H-06 (= about-03): below lg the strip is a two-column grid, so `px-4 first:pl-0
+  // last:pr-0` indented the right column and the second row by 16 px on phones. Per column there:
+  // the odd items (left) start flush, the even ones keep the 16 px gutter, every item ends flush;
+  // the lg row keeps the design's per-item padding.
+  it('pads the phone grid per column and the lg row per item (H-06)', () => {
+    render(
+      <MetricStrip
+        bundle={bundle}
+        locale="tr"
+        metrics={['placed', 'employers', 'countries', 'firstDayWeeks', 'permitDays']}
+      />,
+    );
+    const items = screen.getAllByRole('listitem');
+    expect(items.length).toBeGreaterThan(1);
+    for (const li of items) {
+      expect(li).toHaveClass(
+        'max-lg:odd:pl-0',
+        'max-lg:even:pl-4',
+        'max-lg:pr-0',
+        'lg:px-4',
+        'lg:first:pl-0',
+        'lg:last:pr-0',
+      );
+      expect(li).not.toHaveClass('px-4', 'first:pl-0', 'last:pr-0');
+    }
+  });
+
   it('renders nothing when every requested metric is unsigned (the empty wall)', () => {
     const { container } = render(
       <MetricStrip bundle={bundle} locale="tr" metrics={['employers', 'permitDays']} />,

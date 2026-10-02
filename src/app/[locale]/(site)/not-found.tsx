@@ -14,12 +14,17 @@ export default async function LocaleNotFound() {
   const sys = await getTranslations('sys');
   return (
     <Section tone="light">
-      <div className="container-site max-w-[720px]">
-        <h1 className="text-h2">{sys('notFoundTitle')}</h1>
-        <p className="text-body-lg text-text-secondary">{sys('notFoundBody')}</p>
-        <Link prefetch={false} href="/" className={`mt-8 ${HOME_LINK}`}>
-          {sys('nav.home')}
-        </Link>
+      {/* Final pass D3 (W178) / QA W221 SYS-03: `.container-site` is unlayered, so a `max-w-*` on
+          the same element never applied — the 720 px reading column is an inner, centred wrapper
+          (the thank-you page's), and the body line carries its own `mt-3` over the reset. */}
+      <div className="container-site">
+        <div className="mx-auto max-w-[720px]">
+          <h1 className="text-h2">{sys('notFoundTitle')}</h1>
+          <p className="mt-3 text-body-lg text-text-secondary">{sys('notFoundBody')}</p>
+          <Link prefetch={false} href="/" className={`mt-8 ${HOME_LINK}`}>
+            {sys('nav.home')}
+          </Link>
+        </div>
       </div>
     </Section>
   );

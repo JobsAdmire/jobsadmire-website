@@ -23,13 +23,15 @@ export async function generateMetadata({
   const bundle = await getBundle(locale);
   const sys = await getTranslations({ locale, namespace: 'sys' });
   return {
+    // QA W221 SYS-04 / SYS-N1: the page's own sys.seo pair (W23) — "Teşekkürler | JobsAdmire" in
+    // the tab and on the OG card, not the bare h1 word; the h1 keeps thankYou.title.
     ...buildMetadata({
       locale,
       href: '/thank-you',
       bundle,
       pageKey: 'thankYou',
-      fallbackTitle: sys('thankYou.title'),
-      fallbackDescription: sys('thankYou.body'),
+      fallbackTitle: sys('seo.thankYou.title'),
+      fallbackDescription: sys('seo.thankYou.description'),
     }),
     // Never indexed, whatever a later page record says: this exists only as the conversion
     // target every form lands on (D13) — robots.ts and the sitemap agree.
@@ -63,9 +65,10 @@ export default async function ThankYou({
           <h1 className="text-h2" data-testid="page-h1" data-lcp-slot="h1">
             {sys('thankYou.title')}
           </h1>
-          <p className="text-body-lg text-text-secondary">{sys('thankYou.body')}</p>
+          {/* QA W221 SYS-02: the reset zeroes paragraph margins — explicit spacing under the h1 */}
+          <p className="mt-3 text-body-lg text-text-secondary">{sys('thankYou.body')}</p>
           {formKey && (
-            <p className="text-body text-text-secondary">{sys(`thankYou.forms.${formKey}`)}</p>
+            <p className="mt-2 text-body text-text-secondary">{sys(`thankYou.forms.${formKey}`)}</p>
           )}
           <div className="mt-8 flex flex-wrap gap-3">
             <Button prefetch={false} variant="primary" size="lg" href="/">

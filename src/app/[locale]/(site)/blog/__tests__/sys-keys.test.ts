@@ -9,6 +9,7 @@ const KEYS = [
   'blog.hero.title',
   'blog.hero.words',
   'blog.index.latest',
+  'blog.index.guides', // QA W221 BLOG-02: the phone strip's count noun, ICU plural in EN
   'blog.empty.title',
   'blog.empty.body',
   'blog.empty.cta',
@@ -81,6 +82,12 @@ describe('sys.blog.* and sys.seo.blog.* (T12)', () => {
       expect(read(m, 'blog.tools.results.one')).toMatch(/\{n\}/);
       expect(read(m, 'blog.tools.results.other')).toMatch(/\{n\}/);
     }
+    // BLOG-02: "1 guide" / "2 guides" in EN; Turkish nouns stay singular after a numeral, so the
+    // TR value is the invariant word (no ICU needed) — rendered as sys('blog.index.guides', { n })
+    expect(read(en, 'blog.index.guides')).toMatch(
+      /^\{n, plural, one \{guide\} other \{guides\}\}$/,
+    );
+    expect(read(tr, 'blog.index.guides')).not.toMatch(/[{}]/);
   });
 
   it('keeps the article title template out of sys.seo — the OG route reads sys.seo.<pageKey>.title with no arguments (B-15, W169)', () => {

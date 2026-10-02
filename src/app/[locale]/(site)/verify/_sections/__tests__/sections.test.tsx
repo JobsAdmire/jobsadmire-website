@@ -60,6 +60,8 @@ describe('Hero', () => {
         'href',
         '#structure',
       );
+      // QA W221 V-06: the design's ≤ 700 hero button is full-width (Verify l. 274)
+      expect(screen.getByRole('link', { name: s['verify.030'] })).toHaveClass('max-md:w-full');
       expect(container.querySelectorAll('#check')).toHaveLength(1);
       expect(screen.getAllByRole('heading', { level: 3 }).map((h) => h.textContent)).toEqual([
         s['verify.037'],
@@ -115,6 +117,9 @@ describe('Structure', () => {
     for (const id of ['verify-stats', 'verify-founder', 'verify-register', 'verify-former'])
       expect(screen.queryByTestId(id)).toBeNull();
     expect(container).not.toHaveTextContent(s['verify.056']);
+    // QA W221 V-06: the design's ≤ 700 `.ja-structure .ja-sec-head` is left-aligned (l. 293)
+    const head = screen.getByRole('heading', { level: 2 }).parentElement!;
+    expect(head).toHaveClass('text-center', 'max-md:text-left', 'max-md:mx-0', 'mx-auto');
     expect(container.querySelector('[data-placeholder]')).toBeNull();
     expect(screen.getByRole('link', { name: s['verify.076'] })).toHaveAttribute(
       'href',
@@ -165,6 +170,7 @@ describe('Report', () => {
       <Report
         bundle={bundle}
         locale="tr"
+        register={readRegister(bundle)}
         submitFraud={vi.fn(async () => IDLE_FORM_STATE)}
         uploadEvidence={vi.fn(async () => ({ ok: false, reason: 'door' }) as const)}
       />,
@@ -172,6 +178,9 @@ describe('Report', () => {
     );
     expect(container.querySelectorAll('#report')).toHaveLength(1);
     expect(container.querySelector('section#report')).not.toBeNull();
+    // QA W221 V-07: the design numbers the sections — "01 · Our people" is verify.053's own text,
+    // the report eyebrow carries its "02 · " in the markup (Verify l. 845)
+    expect(screen.getByText(`02 · ${s['verify.077']}`)).toBeInTheDocument();
     const flagsCard = screen.getByRole('heading', { name: s['verify.080'] }).parentElement;
     expect(flagsCard?.querySelectorAll('li')).toHaveLength(5);
 
@@ -218,6 +227,40 @@ describe('Report', () => {
     );
     expect(collisionsInTree(container)).toEqual([]);
   });
+
+  // W222 (2): red flag 2's body (verify.084, "The QR must open a record on this page — nothing
+  // else counts") promises the same record lookup as V-01's FAQ q3 and steps 2–3; over the Phase A
+  // empty register it reads `sys.verify.flags.qr` (the QR must open THIS PAGE; confirm the ID with
+  // the office) and the package body returns with the rows.
+  for (const locale of LOCALES) {
+    it(`${locale}: red flag 2 reads the Phase A body over the empty register, the package body with rows`, () => {
+      const bundle = localBundle(locale);
+      const s = bundle.strings;
+      const mount = (b: typeof bundle) =>
+        renderWithIntl(
+          <Report
+            bundle={b}
+            locale={locale}
+            register={readRegister(b)}
+            submitFraud={vi.fn(async () => IDLE_FORM_STATE)}
+            uploadEvidence={vi.fn(async () => ({ ok: false, reason: 'door' }) as const)}
+          />,
+          { locale },
+        );
+      const { unmount } = mount(bundle);
+      const flags = () =>
+        screen
+          .getByRole('heading', { name: s['verify.080'] })
+          .parentElement!.querySelectorAll('li');
+      expect(flags()[1]).toHaveTextContent(s['verify.083']!);
+      expect(flags()[1]).toHaveTextContent(SYS[locale].verify.flags.qr);
+      expect(flags()[1]).not.toHaveTextContent(s['verify.084']!);
+      unmount();
+      mount(localBundle(locale, { representatives: [FOUNDER_REP, OFFICE_REP] }));
+      expect(flags()[1]).toHaveTextContent(s['verify.084']!);
+      expect(flags()[1]).not.toHaveTextContent(SYS[locale].verify.flags.qr);
+    });
+  }
 });
 
 describe('Faq', () => {

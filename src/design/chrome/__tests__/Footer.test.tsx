@@ -113,6 +113,20 @@ describe('Footer', () => {
     expect(legal).toHaveClass('flex-wrap');
   });
 
+  // QA W221 H-04: the design's legal row ends with `<span>© 2026 Jobs Admire</span>` (Homepage v4
+  // l. 1222); the package carries the line as partner.214 (brand one word since W221) — the
+  // chrome's canonical id for it, beside the legal nav in the right-hand group.
+  it('prints the © line from partner.214 beside the legal links (H-04)', () => {
+    renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+    const legalRow = screen.getByRole('contentinfo').children[1] as HTMLElement;
+    const copyright = within(legalRow).getByText(t('partner.214'));
+    expect(copyright.tagName).toBe('SPAN');
+    expect(copyright).toHaveClass('text-white/50');
+    expect(copyright.parentElement).toContainElement(
+      screen.getByRole('navigation', { name: tr.sys.nav.legal }),
+    );
+  });
+
   it('offers the cookie-preferences door in the legal row once a container id exists (R36)', () => {
     const withGtm: Bundle = {
       ...bundle,

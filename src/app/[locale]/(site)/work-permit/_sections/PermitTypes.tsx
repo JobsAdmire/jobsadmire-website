@@ -36,8 +36,14 @@ export function PermitTypes({ bundle, tf }: { bundle: Bundle; tf: (id: string) =
             </p>
             <h3 className="m-0 mb-2.5 text-card-title">
               {name}
-              {sp(name, local)}
-              <span className="text-body font-bold text-text-tertiary">{local}</span>
+              {/* QA W221 WP-05: wp.165 ("· Süreli") glosses the Turkish term for English readers;
+                  on the TR page the title already is that word ("Süreli izin · Süreli") — EN only */}
+              {bundle.locale === 'en' ? (
+                <>
+                  {sp(name, local)}
+                  <span className="text-body font-bold text-text-tertiary">{local}</span>
+                </>
+              ) : null}
             </h3>
             <p className="m-0 mb-4.5 text-body text-text-secondary">{tf('wp.166')}</p>
             <ul className="flex flex-col gap-2.5">

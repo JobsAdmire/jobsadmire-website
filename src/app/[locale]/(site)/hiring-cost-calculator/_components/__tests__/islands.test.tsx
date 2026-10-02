@@ -111,6 +111,38 @@ describe('QuotaIsland (Gate 1)', () => {
   });
 });
 
+describe('QuotaIsland — live regions (QA W221 calc-05)', () => {
+  // The verdict box answers a stepper the visitor operates; CalculatorIsland already announces
+  // its total through `aria-live="polite"` (l. 385), so the quota answer and the pass verdict do
+  // the same — the whole box atomically, on both the desktop card and the phone block.
+  it('the desktop answer box and the phone block are polite, atomic live regions', () => {
+    const { unmount } = renderWithIntl(
+      <QuotaIsland
+        variant="desktop"
+        locale="tr"
+        quotaRatio={RATE.quotaRatio}
+        labels={quotaLabels}
+      />,
+    );
+    const box = screen.getByTestId('quota-allowed').parentElement!;
+    expect(box).toContainElement(screen.getByTestId('quota-msg'));
+    expect(box).toHaveAttribute('aria-live', 'polite');
+    expect(box).toHaveAttribute('aria-atomic', 'true');
+    unmount();
+    renderWithIntl(
+      <QuotaIsland
+        variant="mobile"
+        locale="tr"
+        quotaRatio={RATE.quotaRatio}
+        labels={quotaLabels}
+      />,
+    );
+    const phone = screen.getByTestId('quota-view-m');
+    expect(phone).toHaveAttribute('aria-live', 'polite');
+    expect(phone).toHaveAttribute('aria-atomic', 'true');
+  });
+});
+
 describe('PassCheckIsland', () => {
   const mount = () =>
     renderWithIntl(
@@ -126,6 +158,9 @@ describe('PassCheckIsland', () => {
   it('starts idle with the quota row answered from the store (calc.561 wording)', () => {
     mount();
     expect(screen.getByTestId('pass-verdict')).toHaveAttribute('data-tone', 'idle');
+    // QA W221 calc-05: the verdict changes with every answer — a polite, atomic live region
+    expect(screen.getByTestId('pass-verdict')).toHaveAttribute('aria-live', 'polite');
+    expect(screen.getByTestId('pass-verdict')).toHaveAttribute('aria-atomic', 'true');
     expect(screen.getByText(t('calc.561'))).toBeInTheDocument();
     expect(screen.getByText(t('calc.559'))).toBeInTheDocument();
   });
@@ -167,6 +202,11 @@ describe('SalaryGuideIsland (W2 floor, W59 tier)', () => {
   it('follows the calculator’s tier and filters by industry', async () => {
     mount();
     expect(screen.getAllByRole('article')).toHaveLength(12);
+    // QA W221 calc-03: the employer-cost figure never wraps inside its 390 px card
+    const guideLabels = pickLabels(t, GUIDE_IDS);
+    const costs = screen.getAllByText(guideLabels.sEmpCost).map((l) => l.nextElementSibling!);
+    expect(costs).toHaveLength(12);
+    for (const cost of costs) expect(cost).toHaveClass('whitespace-nowrap', 'text-blue-safe');
     const welder = () => screen.getAllByRole('article').find((a) => a.dataset.role === 'welder')!;
     expect(within(welder()).getByRole('button')).toHaveAttribute('aria-pressed', 'true');
     act(() => setEstimateInputs({ sgkTier: 'manufacturing' }));

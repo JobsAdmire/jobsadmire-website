@@ -103,7 +103,12 @@ export function ClosingCtaBand({
       />
       <div className="relative flex flex-wrap items-center justify-between gap-8">
         <div className="max-w-[600px]">
-          <h2 className="text-h2 m-0 mb-2 text-white">{t(titleId)}</h2>
+          {/* QA W221 W-03: the design's `.ja-close h2` ≤ 700 is 25 px / 1.12 / −0.5 px on every
+              page's closing band — the block's own phone face (W217; phone-heading-rule.test.ts
+              sweeps this module like a route). */}
+          <h2 className="text-h2 m-0 mb-2 text-white max-md:text-[25px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
+            {t(titleId)}
+          </h2>
           {bodyId && <p className={`text-body m-0 ${look.body}`}>{t(bodyId)}</p>}
           {ticks.length > 0 && (
             <ul

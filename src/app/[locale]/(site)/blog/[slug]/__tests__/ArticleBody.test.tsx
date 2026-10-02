@@ -35,10 +35,18 @@ describe('ArticleBody (B-8, B-11)', () => {
   });
 
   it('a list of short items is the two-column checklist; long items stay one column', () => {
-    render(<ArticleBody blocks={parseMarkdown(MD)} />);
+    const { container } = render(<ArticleBody blocks={parseMarkdown(MD)} />);
     const [, checklist, reasons] = screen.getAllByRole('list');
     expect(checklist.className).toContain('lg:grid-cols-2');
     expect(reasons.className).not.toContain('lg:grid-cols-2');
+    // QA W221 BLOG-08: `list-none` strips the list semantics in Safari/VoiceOver — every list
+    // (takeaways, checklist, reasons, steps) keeps them with an explicit role
+    const lists = container.querySelectorAll('ul, ol');
+    expect(lists.length).toBeGreaterThanOrEqual(4);
+    for (const list of lists) {
+      expect(list.className).toContain('list-none');
+      expect(list).toHaveAttribute('role', 'list');
+    }
   });
 
   it('two-up grids collapse at ≤ 900 px like the design, and the body h2 steps down at ≤ 700 px (D27 run 1)', () => {

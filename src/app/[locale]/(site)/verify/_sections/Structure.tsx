@@ -45,7 +45,8 @@ export function Structure({
   return (
     <Section tone="pale" id="structure" className="scroll-mt-24">
       <div className="container-site" data-testid="verify-structure">
-        <div className="mx-auto mb-10 max-w-[660px] text-center">
+        {/* QA W221 V-06: the design's ≤ 700 `.ja-structure .ja-sec-head` is left-aligned (l. 293) */}
+        <div className="mx-auto mb-10 max-w-[660px] text-center max-md:mx-0 max-md:text-left">
           <Eyebrow>{t('verify.053')}</Eyebrow>
           <h2 className="mt-3 mb-0 text-h2 leading-[1.05] tracking-[-0.04em] max-md:text-[25px] max-md:leading-[1.13] max-md:tracking-[-0.6px]">
             {t('verify.054')}

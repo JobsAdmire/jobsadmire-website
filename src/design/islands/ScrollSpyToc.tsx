@@ -79,7 +79,8 @@ export function ScrollSpyToc({
           {heading}
         </p>
       ) : null}
-      <ol className="m-0 list-none p-0">
+      {/* QA W221 BLOG-08: explicit list role under `list-none` — identical in the fallback (W132) */}
+      <ol role="list" className="m-0 list-none p-0">
         {headings.map((h) => {
           const current = h.id === active;
           return (

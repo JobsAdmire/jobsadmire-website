@@ -72,6 +72,7 @@ export default async function VerifyPage({ params }: { params: Promise<{ locale:
       <Report
         bundle={bundle}
         locale={locale}
+        register={register}
         submitFraud={submitFraud}
         uploadEvidence={uploadEvidence}
       />

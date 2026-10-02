@@ -101,6 +101,12 @@ describe('JumpNav', () => {
         .map((a) => a.getAttribute('href')),
     ).toEqual(JUMP_LINKS.map((j) => j.hash));
     expect(tokens(nav)).toEqual(expect.arrayContaining(['xl:sticky', 'xl:top-[79px]']));
+    // QA W221 WP-01: the design hides the chip row's scrollbar only ≤ 700 (its `.ja-jump` phone
+    // rule); from 701 a scrollbar stays visible wherever the eight chips overflow — the one
+    // affordance that tells a mouse user the row scrolls.
+    const scroller = within(nav).getAllByRole('link')[0]!.closest('.overflow-x-auto')!;
+    expect(tokens(scroller)).toContain('max-md:[scrollbar-width:none]');
+    expect(tokens(scroller)).not.toContain('[scrollbar-width:none]');
     expect(collisionsInTree(container)).toEqual([]);
   });
 });

@@ -69,21 +69,38 @@ describe('header CTA table (W17)', () => {
     });
   });
 
-  // QA W220 V-03: "Bildir" + "sahtekârı" is the EN order ("Report" + "an Impostor"); Turkish puts
-  // the object before the verb, so the verify CTA renders its tail first in TR only — the design's
-  // short form "Bildir" at 901–1100 and the EN label are untouched.
-  it('renders the verify tail before the label in Turkish only (tailFirst)', () => {
-    expect(ctasFor(resolveCtas(t, 'tr'), '/verify').primary.tailFirst).toBe(true);
-    expect(ctasFor(resolveCtas(t, 'en'), '/verify').primary.tailFirst).toBe(false);
+  // QA W220 V-03 / W222 (4): "Bildir" + "sahtekârı", "Başvurun" + "izin için" and "Başvurun" + "iş
+  // ortaklığı için" are the EN order ("Report" + "an Impostor", "Apply" + "for a permit", "Apply" +
+  // "to partner"); Turkish puts the object or the postpositional phrase before the verb, so those
+  // three CTAs render their tail first in TR only — the design's short form (the label alone at
+  // 901–1100) and the EN labels are untouched.
+  const TAIL_FIRST = ['/verify', '/work-permit', '/partner-with-us'] as const;
+  it('renders the TR tails that precede their verb before the label — verify, work-permit, partner (tailFirst)', () => {
+    for (const key of TAIL_FIRST) {
+      expect(ctasFor(resolveCtas(t, 'tr'), key).primary.tailFirst, key).toBe(true);
+      expect(ctasFor(resolveCtas(t, 'en'), key).primary.tailFirst, key).toBe(false);
+    }
     for (const locale of ['tr', 'en'] as const) {
       const resolved = resolveCtas(t, locale);
       expect(resolved.defaults.primary.tailFirst).toBe(false);
       for (const [key, page] of Object.entries(resolved.byPathname)) {
-        if (key === '/verify') continue;
+        if ((TAIL_FIRST as readonly string[]).includes(key)) continue;
         expect(page.primary.tailFirst, key).toBe(false);
         expect(page.secondary?.tailFirst ?? false, key).toBe(false);
       }
     }
+  });
+
+  // QA W221 W-08: "Bkz." + "Adaylar" split the pill mid-phrase on phones and read as a footnote
+  // ("See" + "Candidates" in EN); the CTA is one label (availworkers.016, overridden to "Adayları
+  // gör" / "See candidates") with no tail to hide or reorder.
+  it('the available-workers CTA is one label with no tail (W-08)', () => {
+    expect(ctasFor(table, '/available-workers').primary).toEqual({
+      label: '<availworkers.016>',
+      href: { pathname: '/available-workers', hash: '#pool' },
+      variant: 'primary',
+      tailFirst: false,
+    });
   });
 
   it('only keys of `pathnames`, and every label id exists in both catalogues', () => {

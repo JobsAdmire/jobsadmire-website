@@ -65,6 +65,10 @@
         "title": "Unsubscribe | JobsAdmire",
         "description": "Unsubscribe from the JobsAdmire newsletter."
       },
+      "thankYou": {
+        "title": "Thank you | JobsAdmire",
+        "description": "JobsAdmire has received your request. The JobsAdmire team will get back to you shortly."
+      },
       "calc": {
         "title": "Hiring cost calculator for foreign workers in Türkiye | JobsAdmire",
         "description": "Salary, SGK employer share, permit fees, flights and housing in one estimate. Check the 5:1 quota, run the pass check and ask for a written quote."
@@ -396,6 +400,9 @@
         "qr": "Both must open this page. Until the public register is published, the check above cannot show a record — confirm the ID with the JobsAdmire office by phone or WhatsApp. A badge whose QR goes anywhere else is fake.",
         "match": "The photo and name on the badge must match the person in front of you, and the office must confirm the ID as authorised. Any mismatch — call the office."
       },
+      "flags": {
+        "qr": "The QR must open this page — nothing else counts. Until the public register is published, confirm the ID with the JobsAdmire office by phone or WhatsApp."
+      },
       "report": {
         "submit": "Send the report"
       },
@@ -478,7 +485,8 @@
         "words": "employers|factories|hotels|farms|builders"
       },
       "index": {
-        "latest": "Latest articles"
+        "latest": "Latest articles",
+        "guides": "{n, plural, one {guide} other {guides}}"
       },
       "empty": {
         "title": "English articles are on the way",
@@ -742,7 +750,7 @@
           },
           "cookies": {
             "title": "Cookies and online identifiers",
-            "body": "JobsAdmire uses strictly necessary cookies and, only with your consent, analytics and advertising cookies. You can change or withdraw your consent at any time with the Cookie preferences button in the site footer.\n\nThe Cookie Policy lists the categories, purposes, providers and retention periods and explains how to withdraw consent, in line with the Personal Data Protection Board's cookie guidelines."
+            "body": "JobsAdmire uses strictly necessary cookies and, only with your consent, analytics and advertising cookies. When the website asks for your consent, you can change or withdraw it at any time with the Cookie preferences button in the site footer.\n\nThe Cookie Policy lists the categories, purposes, providers and retention periods and explains how to withdraw consent, in line with the Personal Data Protection Board's cookie guidelines."
           },
           "disclosures": {
             "title": "Disclosures to third parties",
@@ -758,7 +766,7 @@
           },
           "rights": {
             "title": "Your rights (KVKK Art. 11)",
-            "body": "You can apply to JobsAdmire to:\n\n- learn whether your personal data is processed\n- request information about that processing\n- learn the purposes of the processing and its recipients\n- request rectification\n- request deletion or anonymisation where the legal grounds apply\n- object to a result produced exclusively by automated processing\n- object to processing based on legitimate interests\n- claim compensation for unlawful processing\n\n**How to apply:** e-mail {email} with enough identity details to verify the request. JobsAdmire responds within 30 days, as the KVKK procedure requires. If you are not satisfied, you can complain to the Personal Data Protection Authority after first applying to the data controller."
+            "body": "You can apply to JobsAdmire to:\n\n- learn whether your personal data is processed\n- request information about that processing\n- learn the purposes of the processing and its recipients\n- request rectification\n- request deletion or anonymisation where the legal grounds apply\n- object to a result produced exclusively by automated processing\n- object to processing based on legitimate interests\n- claim compensation for unlawful processing\n\n**How to apply:** e-mail {email} with enough identity details to verify the request. JobsAdmire responds within 30 days, as the KVKK procedure requires. If you are not satisfied, you can complain to the Personal Data Protection Board after first applying to the data controller."
           },
           "security": {
             "title": "Security measures",
@@ -861,7 +869,7 @@
       },
       "kvkk": {
         "title": "KVKK Information Notice",
-        "intro": "The information notice under the Turkish Law on the Protection of Personal Data No. 6698 (KVKK) on how JobsAdmire, as data controller, processes personal data.",
+        "intro": "This page holds the information notice under the Turkish Law on the Protection of Personal Data No. 6698 (KVKK) on how JobsAdmire, as data controller, processes personal data.",
         "updatedAt": "2026-09-29",
         "pendingTitle": "The information notice is being prepared",
         "pendingBody": "The legal counsel of JobsAdmire is preparing the KVKK information notice. Until it is published, the Privacy Policy describes how JobsAdmire processes personal data and applies in full.",

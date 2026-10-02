@@ -17,6 +17,7 @@ export const VERIFY_SYS_KEYS = [
   'verify.faq.howToCheck',
   'verify.steps.qr',
   'verify.steps.match',
+  'verify.flags.qr', // W222 (2): red flag 2's body while the register is empty
   'verify.report.submit',
   'verify.record.close',
   'verify.record.former',

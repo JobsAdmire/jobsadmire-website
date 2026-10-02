@@ -255,22 +255,38 @@ describe('Header', () => {
   // context, so a wrap inside the 185 px cap breaks between words in order ("Başvurun iş /
   // ortaklığı için"), never as two flex items whose middle lines align ("iş / Başvurun ortaklığı /
   // için"). The design's `.ja-nav-cta` is one inline run (Partner With Us l. 458).
-  it('wraps label and tail in one span so a phone wrap keeps word order (P-01)', () => {
+  // W222 (4): in Turkish the partner and work-permit tails are postpositional phrases that precede
+  // their verb ("İş Ortaklığı İçin Başvurun", "İzin İçin Başvurun"), so both render tail-first in
+  // TR like the verify CTA (V-03); the one-span rule holds either way.
+  it('wraps label and tail in one span so a phone wrap keeps word order (P-01); the TR partner and work-permit tails lead (W222 (4))', () => {
     nav.pathname = '/ortak-olun';
-    renderWithIntl(<Header locale="tr" bundle={bundle} />);
+    const { unmount } = renderWithIntl(<Header locale="tr" bundle={bundle} />);
     const cta = within(screen.getByRole('banner')).getByRole('link', {
-      name: `${t('partner.017')} ${t('partner.018')}`,
+      name: `${t('partner.018')} ${t('partner.017')}`,
     });
     expect(cta.childNodes).toHaveLength(1);
     const run = cta.firstElementChild!;
     expect(run.tagName).toBe('SPAN');
     expect(run.getAttribute('class')).toBeNull();
-    expect(run).toHaveTextContent(`${t('partner.017')} ${t('partner.018')}`);
+    expect(run.textContent).toBe(`${t('partner.018')} ${t('partner.017')}`);
+    expect(run.firstElementChild).toHaveTextContent(t('partner.018'));
     expect(within(run as HTMLElement).getByText(t('partner.018'))).toHaveClass(
       'hidden',
       'max-lg:inline',
       'xl:inline',
     );
+    unmount();
+
+    nav.pathname = '/calisma-izni';
+    renderWithIntl(<Header locale="tr" bundle={bundle} />);
+    const permit = within(screen.getByRole('banner')).getByRole('link', {
+      name: `${t('wp.017')} ${t('wp.016')}`,
+    });
+    expect(permit).toHaveAttribute('href', '/calisma-izni#permit-cta');
+    const permitRun = permit.firstElementChild!;
+    expect(permitRun.firstElementChild).toHaveTextContent(t('wp.017'));
+    expect(permitRun.firstElementChild).toHaveClass('hidden', 'max-lg:inline', 'xl:inline');
+    expect(permitRun.textContent).toBe(`${t('wp.017')} ${t('wp.016')}`);
   });
 
   it('offers the other language with aria-current on the active one', () => {

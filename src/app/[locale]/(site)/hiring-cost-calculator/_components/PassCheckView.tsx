@@ -104,9 +104,12 @@ export function PassCheckView({
         </p>
       </div>
       <div className="flex flex-col gap-4 lg:sticky lg:top-5">
+        {/* QA W221 calc-05: the verdict changes with every answer — a polite, atomic live region */}
         <div
           data-testid="pass-verdict"
           data-tone={view.tone}
+          aria-live="polite"
+          aria-atomic="true"
           className={`rounded-lg border-[1.5px] px-[26px] xl:px-[19.5px] py-6 shadow-[0_14px_34px_rgba(22,60,90,0.08)] ${VERDICT[view.tone]}`}
         >
           <p
