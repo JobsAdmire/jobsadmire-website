@@ -127,6 +127,10 @@
 
 html {
   scroll-behavior: smooth;
+  /* D20 / WCAG 2.4.11 (T5): a page-mounted StickyCtaBar publishes its height as --sticky-cta-h
+     (0px while hidden and below lg); the browser then keeps a focused or scrolled-to control
+     above the bar instead of under it. Nothing moves on a page without a visible bar. */
+  scroll-padding-bottom: var(--sticky-cta-h, 0px);
   color: var(--color-ink);
   background: #fff;
   font-family: var(--font-body);
