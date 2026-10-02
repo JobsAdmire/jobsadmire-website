@@ -356,7 +356,7 @@
       "wall": {
         "intro": "Each published approval is a card: sector, headcount, approval month and city. Personal details and documents are never shown.",
         "legend": "Filter by sector",
-        "showingAll": "Showing all {count} approvals",
+        "showingAll": "Showing all approvals ({count})",
         "showingFiltered": "Showing {shown} of {total} approvals"
       },
       "empty": {

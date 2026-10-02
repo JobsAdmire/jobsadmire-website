@@ -31,7 +31,7 @@ const TR_TEMPLATES: WallResultCopy = {
   showingFiltered: '{total} onaydan {shown} tanesi gösteriliyor',
 };
 const EN_TEMPLATES: WallResultCopy = {
-  showingAll: 'Showing all {count} approvals',
+  showingAll: 'Showing all approvals ({count})',
   showingFiltered: 'Showing {shown} of {total} approvals',
 };
 const CARDS: StoryCardData[] = [
@@ -133,6 +133,6 @@ describe('ApprovalsWall (W6, W148)', () => {
 
   it('substitutes the EN templates verbatim when passed, with no i18n provider mounted', () => {
     wall(CARDS, 'en');
-    expect(screen.getByTestId('stories-result')).toHaveTextContent('Showing all 2 approvals');
+    expect(screen.getByTestId('stories-result')).toHaveTextContent('Showing all approvals (2)');
   });
 });
