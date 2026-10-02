@@ -220,6 +220,19 @@ describe('Footer', () => {
     for (const row of rows) expect(row).toHaveClass('container-site');
   });
 
+  // Final pass A6 (T1b M7): the design's legal-row divider spans the whole content box, gutters
+  // included — so the border sits on an inner div inside the container row, never on the
+  // container itself (whose padding would otherwise leave the line short of the gutters).
+  it('draws the legal-row divider on an inner div inside the container (A6)', () => {
+    renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+    const legalRow = screen.getByRole('contentinfo').children[1] as HTMLElement;
+    expect(legalRow).toHaveClass('container-site');
+    expect(legalRow).not.toHaveClass('border-t', 'py-5');
+    const inner = legalRow.firstElementChild as HTMLElement;
+    expect(inner).toHaveClass('border-t', 'border-white/15', 'py-5', 'flex');
+    expect(inner).toContainElement(screen.getByRole('navigation', { name: tr.sys.nav.legal }));
+  });
+
   // W183: the design's footer shows the full logo too, white through its own
   // `filter: brightness(0) invert(1)` (opacity .95), 50 px tall — 37.5 px from 1101 (D19) —
   // never the mark. Decorative: the header's logo already names the site.

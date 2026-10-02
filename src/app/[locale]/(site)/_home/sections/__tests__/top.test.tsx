@@ -25,6 +25,27 @@ describe('Hero (D26, W1, W6, W10, W17)', () => {
     expect(container.querySelector('#proposal')).not.toBeNull();
   });
 
+  // Final pass A1 (W184/W185 A1): the design's hero content sits inside its own padding — 20 px
+  // at ≤ 460, 48 px at 461–1100 — and in an 888 px box inside the 960 px wrapper from 1101, not in
+  // the section container's 20/48/36 px gutters. The grid and the stats row carry the same box.
+  it('the hero grid and the stats row use the hero gutters, never container-site (W185 A1)', () => {
+    const { container } = renderWithIntl(<Hero locale="tr" bundle={TR} form={FORM} />);
+    const grid = container.querySelector('#proposal')!.parentElement!.parentElement!;
+    const stats = screen.getByTestId('hero-stats');
+    for (const row of [grid, stats]) {
+      expect(row).toHaveClass(
+        'mx-auto',
+        'w-full',
+        'px-5',
+        'xs:px-12',
+        'xl:max-w-[960px]',
+        'xl:px-9',
+      );
+      expect(row).not.toHaveClass('container-site');
+    }
+    expect(container.querySelector('.container-site')).toBeNull();
+  });
+
   it('reads the hero figures from the metrics collection and fills the reply-hours metric', () => {
     renderWithIntl(<Hero locale="en" bundle={EN} form={FORM} />, { locale: 'en' });
     expect(screen.getByText('workers placed')).toBeInTheDocument();

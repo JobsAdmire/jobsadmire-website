@@ -18,6 +18,11 @@ import type { SectionProps } from './types';
  * `HERO_PHOTO` moves it onto the image. W10: the badge and the CTA row are hidden at ≤ 460 px by
  * class, exactly as the design's `.ja-hero-1` / `.ja-hero-cta-primary` rules do.
  */
+/** The hero's own content box (W185 A1): 20 px gutters ≤ 460, the design's 48 px from 461 to 1100,
+ *  and 888 px inside the 960 px wrapper from 1101 (36 px gutters) — `.container-site` stays on
+ *  every other section. */
+const HERO_BOX = 'mx-auto w-full px-5 xs:px-12 xl:max-w-[960px] xl:px-9';
+
 export function Hero({ locale, bundle, form }: SectionProps & { form: ReactNode }) {
   const tf = makeTf(bundle, locale);
   const photoIsLcp = HERO_PHOTO !== null;
@@ -46,7 +51,12 @@ export function Hero({ locale, bundle, form }: SectionProps & { form: ReactNode 
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(10,20,40,0.5)_0%,transparent_30%,rgba(10,20,40,0.75)_100%)]"
       />
-      <div className="container-site relative grid w-full items-center gap-[34px] pb-8 pt-10 xs:pb-11 xs:pt-[72px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 xl:gap-[42px] xl:pb-[33px] xl:pt-[54px]">
+      {/* Final pass A1 (W184/W185): the design's hero content keeps its own 48 px padding from
+          461 to 1100 (20 px ≤ 460) and an 888 px box inside the 960 px wrapper from 1101 — never
+          the section container's gutters. HERO_BOX is shared with the stats row below. */}
+      <div
+        className={`${HERO_BOX} relative grid items-center gap-[34px] pb-8 pt-10 xs:pb-11 xs:pt-[72px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 xl:gap-[42px] xl:pb-[33px] xl:pt-[54px]`}
+      >
         <div className="min-w-0">
           <p className="mb-[26px] inline-flex items-center gap-2.5 rounded-pill border border-white/30 px-[18px] py-2 text-[12.5px] font-bold uppercase tracking-[0.6px] max-xs:hidden xl:mb-5 xl:px-[13.5px] xl:py-1.5 xl:text-[11px]">
             <LiveDot />
@@ -91,7 +101,10 @@ function HeroStats({ locale, bundle }: SectionProps) {
   const tf = makeTf(bundle, locale);
   return (
     <div className="relative border-t border-white/15 bg-[rgba(10,20,40,0.35)] backdrop-blur-[6px]">
-      <div className="container-site flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 xl:py-4">
+      <div
+        data-testid="hero-stats"
+        className={`${HERO_BOX} flex flex-wrap items-center justify-between gap-x-6 gap-y-4 py-5 xl:py-4`}
+      >
         <div className="min-w-0 flex-1">
           <MetricStrip
             bundle={bundle}

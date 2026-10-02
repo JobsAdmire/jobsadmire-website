@@ -191,26 +191,30 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
         </div>
       </div>
 
-      <div className="container-site flex flex-wrap items-center justify-between gap-x-6 gap-y-1 border-t border-white/15 py-5">
-        <p className="m-0 text-white/50">{t('home.228')}</p>
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
-          {/* W11: Privacy/Terms in the legal row — both pages exist since T13
+      {/* Final pass A6 (T1b M7): the divider spans the content box, gutters included — on an
+          inner div, so the container's own padding never shortens the line. */}
+      <div className="container-site">
+        <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 border-t border-white/15 py-5">
+          <p className="m-0 text-white/50">{t('home.228')}</p>
+          <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
+            {/* W11: Privacy/Terms in the legal row — both pages exist since T13
               (`(minimal)/privacy`, `(minimal)/terms`). */}
-          <nav aria-label={sys('nav.legal')} className="flex items-center gap-x-4">
-            {LEGAL.map((l) => (
-              <NavLink
-                key={l.href}
-                item={{ href: l.href, label: t(l.labelId), external: false }}
-                className={FLINK}
-              />
-            ))}
-          </nav>
-          {/* R36: consent is withdrawable, and this is where visitors look for it. R40 gates it
+            <nav aria-label={sys('nav.legal')} className="flex items-center gap-x-4">
+              {LEGAL.map((l) => (
+                <NavLink
+                  key={l.href}
+                  item={{ href: l.href, label: t(l.labelId), external: false }}
+                  className={FLINK}
+                />
+              ))}
+            </nav>
+            {/* R36: consent is withdrawable, and this is where visitors look for it. R40 gates it
               exactly like the banner (R38): with no container id nothing ever asked for
               consent, so there is nothing to withdraw and the button would reopen nothing. */}
-          {settings.analytics.consentMode && Boolean(settings.analytics.gtmId) && (
-            <CookiePreferencesButton label={sys('consent.manage')} />
-          )}
+            {settings.analytics.consentMode && Boolean(settings.analytics.gtmId) && (
+              <CookiePreferencesButton label={sys('consent.manage')} />
+            )}
+          </div>
         </div>
       </div>
     </footer>
