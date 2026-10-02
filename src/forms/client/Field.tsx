@@ -88,6 +88,10 @@ export function Field({
   const hintText =
     hint ?? (sys.has(hintKey) ? sys(hintKey) : required ? undefined : sys('form.hints.optional'));
   const cls = [INPUT_CLASS, className].filter(Boolean).join(' ');
+  // W205 ⚠️3: a select locked on its one option (the careers form's residency country) offers
+  // nothing to choose, so the empty placeholder `<option>` is not rendered; a single option
+  // the visitor still has to pick keeps it.
+  const locked = options?.length === 1 && defaultValue === options[0].value;
   return (
     <FormField id={id} label={labelText} hint={hintText} error={error} required={required}>
       {(p) =>
@@ -117,7 +121,7 @@ export function Field({
             disabled={disabled}
             className={cls}
           >
-            <option value="">{sys('form.placeholders.select')}</option>
+            {locked ? null : <option value="">{sys('form.placeholders.select')}</option>}
             {(options ?? []).map((o) => (
               <option key={o.value} value={o.value}>
                 {o.label}

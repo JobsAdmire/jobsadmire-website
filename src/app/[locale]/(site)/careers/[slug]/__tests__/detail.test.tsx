@@ -80,7 +80,8 @@ describe('ApplySection', () => {
       OPENING.slug,
     );
     const country = form.querySelector<HTMLSelectElement>('select[name="country"]')!;
-    expect([...country.options].map((o) => o.value)).toEqual(['', 'UZ']);
+    // W205 ⚠️3: the locked residency select carries its one option alone — no empty placeholder
+    expect([...country.options].map((o) => o.value)).toEqual(['UZ']);
     expect(country.value).toBe('UZ');
     expect(
       screen.getByText(SYS.form.residency.replace('{country}', 'Uzbekistan')),

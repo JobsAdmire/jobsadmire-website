@@ -107,6 +107,33 @@ describe('Field', () => {
     ]);
   });
 
+  it('W205 ⚠️3: a locked single-option select renders no empty placeholder option; anything else keeps it', () => {
+    const uz = [{ value: 'UZ', label: 'Uzbekistan' }];
+    renderWithIntl(
+      <>
+        <Field name="country" as="select" options={uz} defaultValue="UZ" />
+        <Field name="dial" label="Dial" as="select" options={uz} />
+        <Field
+          name="iAm"
+          as="select"
+          options={[
+            { value: 'direct_employer', label: 'Employer' },
+            { value: 'hr_agency', label: 'HR agency' },
+          ]}
+        />
+      </>,
+    );
+    // the careers form's residency country: one option, preselected — nothing to choose
+    const locked = screen.getByLabelText(copy.labels.country) as HTMLSelectElement;
+    expect([...locked.options].map((o) => o.value)).toEqual(['UZ']);
+    expect(locked).toHaveValue('UZ');
+    // one option WITHOUT the matching defaultValue is not locked — the visitor still has to choose
+    const dial = screen.getByLabelText('Dial') as HTMLSelectElement;
+    expect([...dial.options].map((o) => o.value)).toEqual(['', 'UZ']);
+    const open = screen.getByLabelText(copy.labels.iAm) as HTMLSelectElement;
+    expect([...open.options].map((o) => o.value)).toEqual(['', 'direct_employer', 'hr_agency']);
+  });
+
   it('W193: a select keeps the echoed choice through the post-action re-render and form reset', async () => {
     // FormShell after a failed action: the context switches from the idle `values: {}` to the
     // action's echoed values (one re-render), then React 19 resets the <form>. An input follows
