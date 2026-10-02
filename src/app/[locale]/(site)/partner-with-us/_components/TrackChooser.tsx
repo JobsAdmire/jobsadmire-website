@@ -36,11 +36,11 @@ const ACCENT: Record<TrackKey, { on: string; icon: string; cta: string }> = {
 };
 const OFF = 'border-border-2 hover:border-tint-border';
 const CARD =
-  'flex h-full cursor-pointer flex-col rounded-lg border-[1.5px] bg-white p-7 shadow-[0_8px_24px_rgba(22,60,90,0.06)] transition-[border-color,box-shadow] peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-blue-safe max-md:p-4';
+  'flex h-full cursor-pointer flex-col rounded-lg border-[1.5px] bg-white p-7 shadow-[0_8px_24px_rgba(22,60,90,0.06)] xl:shadow-[0_6px_18px_rgba(22,60,90,0.06)] transition-[border-color,box-shadow] peer-focus-visible:outline-2 peer-focus-visible:outline-offset-2 peer-focus-visible:outline-blue-safe max-md:p-4';
 const ICON_BOX =
   'mb-4 flex h-12 w-12 shrink-0 items-center justify-center rounded-sm max-md:mb-3 max-md:h-10 max-md:w-10';
 const WAYFINDER =
-  'm-0 mb-3 flex items-center gap-2 text-body-sm font-extrabold uppercase tracking-[1.1px] text-text-tertiary';
+  'm-0 mb-3 flex items-center gap-2 text-body-sm font-extrabold uppercase tracking-[1.1px] xl:tracking-[0.825px] text-text-tertiary';
 
 function subscribeHash(onChange: () => void) {
   window.addEventListener('hashchange', onChange);
@@ -54,7 +54,7 @@ function Step({ n }: { n: number }) {
   return (
     <span
       aria-hidden="true"
-      className="inline-flex h-[21px] w-[21px] shrink-0 items-center justify-center rounded-pill bg-ink text-[11.5px] tracking-normal text-white"
+      className="inline-flex h-[21px] w-[21px] shrink-0 items-center justify-center rounded-pill bg-ink text-[11.5px] xl:text-[11px] tracking-normal text-white"
     >
       {n}
     </span>

@@ -41,6 +41,29 @@ const bundle = testBundle({
 const office = getOffice(bundle, 'antalya');
 
 describe('OfficeCard', () => {
+  // Final pass B3 (W196 A4): the card's shadow is the design's navy-band one by default (Contact)
+  // and, on a pale section (About), the design's own office-card shadow — an additive `surface`
+  // prop; both faces carry their × 0.75 xl twin (D19).
+  it('surface: the navy-band shadow by default, the pale-surface shadow on request, each with its xl twin (B3)', () => {
+    const { container, unmount } = renderWithIntl(
+      <OfficeCard bundle={bundle} locale="tr" office={office} />,
+    );
+    expect(container.querySelector('article')).toHaveClass(
+      'shadow-[0_26px_54px_rgba(10,16,40,0.4)]',
+      'xl:shadow-[0_19.5px_40.5px_rgba(10,16,40,0.4)]',
+    );
+    unmount();
+    const pale = renderWithIntl(
+      <OfficeCard bundle={bundle} locale="tr" office={office} surface="pale" />,
+    );
+    const card = pale.container.querySelector('article')!;
+    expect(card).toHaveClass(
+      'shadow-[0_10px_30px_rgba(22,60,90,0.08)]',
+      'xl:shadow-[0_7.5px_22.5px_rgba(22,60,90,0.08)]',
+    );
+    expect(card.className).not.toMatch(/rgba\(10,16,40/);
+  });
+
   it('renders city, kind, address, hours and the four contact doors', () => {
     renderWithIntl(
       <OfficeCard bundle={bundle} locale="tr" office={office}>

@@ -50,7 +50,7 @@ export function TrackPanel({
     >
       <div className="min-w-0">
         <p
-          className={`m-0 mb-3 text-eyebrow font-extrabold uppercase tracking-[1.6px] ${look.eyebrow}`}
+          className={`m-0 mb-3 text-eyebrow font-extrabold uppercase tracking-[1.6px] xl:tracking-[1.2px] ${look.eyebrow}`}
         >
           {tf(copy.eyebrow)}
         </p>
@@ -79,7 +79,7 @@ export function TrackPanel({
           ))}
         </ul>
         <div className={`rounded-base border bg-white px-6 py-5 ${look.edge}`}>
-          <p className="m-0 mb-3 text-eyebrow font-extrabold uppercase tracking-[1px] text-text-tertiary">
+          <p className="m-0 mb-3 text-eyebrow font-extrabold uppercase tracking-[1px] xl:tracking-[0.75px] text-text-tertiary">
             {tf(PANEL_SHARED.asksHeading)}
           </p>
           <ul className="m-0 flex list-none flex-col gap-2 p-0 text-body-sm text-text-secondary">

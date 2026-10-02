@@ -72,7 +72,7 @@ export function PassCheckView({
             >
               <span
                 aria-hidden="true"
-                className={`mt-0.5 grid h-[30px] w-[30px] place-items-center rounded-[9px] text-[14px] font-extrabold ${MARK[row.value ?? 'none']}`}
+                className={`mt-0.5 grid h-[30px] w-[30px] place-items-center rounded-[9px] text-[14px] xl:text-[11px] font-extrabold ${MARK[row.value ?? 'none']}`}
               >
                 {row.mark}
               </span>

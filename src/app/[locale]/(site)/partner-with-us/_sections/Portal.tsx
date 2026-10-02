@@ -60,7 +60,7 @@ export function Portal({
             <StoreBadges bundle={bundle} locale={locale} android={androidUrl} />
           </div>
           <div className="relative min-w-0 pb-6">
-            <div className="overflow-hidden rounded-base border border-tint-border bg-white shadow-[0_26px_60px_rgba(22,60,90,0.16)] md:mr-[70px]">
+            <div className="overflow-hidden rounded-base border border-tint-border bg-white shadow-[0_26px_60px_rgba(22,60,90,0.16)] xl:shadow-[0_19.5px_45px_rgba(22,60,90,0.16)] md:mr-[70px] xl:mr-[52.5px]">
               <div
                 aria-hidden="true"
                 className="flex items-center gap-1.5 border-b border-border-4 bg-[#f0f6fa] px-3.5 py-2.5"
@@ -68,7 +68,7 @@ export function Portal({
                 <span className="inline-block h-2.5 w-2.5 rounded-pill bg-[#e2e8ee]" />
                 <span className="inline-block h-2.5 w-2.5 rounded-pill bg-[#e2e8ee]" />
                 <span className="inline-block h-2.5 w-2.5 rounded-pill bg-[#e2e8ee]" />
-                <span className="ml-2 min-w-0 flex-1 truncate rounded-[6px] border border-border-4 bg-white px-2.5 py-1 text-[11.5px] text-text-tertiary">
+                <span className="ml-2 min-w-0 flex-1 truncate rounded-[6px] border border-border-4 bg-white px-2.5 py-1 text-[11.5px] xl:text-[11px] text-text-tertiary">
                   {tf(PORTAL_IDS.addressBar)}
                 </span>
               </div>
@@ -79,7 +79,7 @@ export function Portal({
                 height={340}
               />
             </div>
-            <div className="absolute right-0 bottom-0 w-[150px] rounded-[24px] bg-[#0f2438] p-[7px] shadow-[0_26px_56px_rgba(15,36,56,0.35)] max-md:hidden">
+            <div className="absolute right-0 bottom-0 w-[150px] rounded-[24px] bg-[#0f2438] p-[7px] xl:p-[5.25px] shadow-[0_26px_56px_rgba(15,36,56,0.35)] xl:shadow-[0_19.5px_42px_rgba(15,36,56,0.35)] max-md:hidden">
               <ImageSlot
                 slot="partner-portal-mobile"
                 alt={tf(PORTAL_IDS.mobileAlt)}

@@ -11,6 +11,14 @@ import type { Bundle } from '../../../contract/website-bundle.v1';
 const ROW =
   'inline-flex min-h-[44px] items-center gap-2 text-body-sm font-bold text-text-secondary no-underline hover:text-blue-safe focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
 
+/** Final pass B3 (W196 A4): the card's shadow per surface, each with its × 0.75 xl twin (D19) —
+ *  the design's navy-band card (Contact offices) and its pale-section card (About,
+ *  `0 10px 30px rgba(22,60,90,0.08)`); the dark shadow on a pale surface read as a smudge. */
+const SHADOW = {
+  dark: 'shadow-[0_26px_54px_rgba(10,16,40,0.4)] xl:shadow-[0_19.5px_40.5px_rgba(10,16,40,0.4)]',
+  pale: 'shadow-[0_10px_30px_rgba(22,60,90,0.08)] xl:shadow-[0_7.5px_22.5px_rgba(22,60,90,0.08)]',
+} as const;
+
 /** The white office card (Contact offices band, About): city, kind, address, hours, the
  *  contact doors and directions — every text field is the row's own package id (`labelId`,
  *  `addressId`/`addressLine2Id`, `hoursId`: contact.099/104, contact.133/134, contact.100/106
@@ -24,16 +32,19 @@ export function OfficeCard({
   locale,
   office,
   children,
+  surface = 'dark',
 }: {
   bundle: Bundle;
   locale: Locale;
   office: Office;
   children?: ReactNode;
+  /** The section behind the card: the navy band (default) or a pale surface (B3). */
+  surface?: keyof typeof SHADOW;
 }) {
   const t = makeTf(bundle, locale);
   const sys = useTranslations('sys');
   return (
-    <article className="flex flex-col rounded-lg bg-white p-7 shadow-[0_26px_54px_rgba(10,16,40,0.4)]">
+    <article className={`flex flex-col rounded-lg bg-white p-7 ${SHADOW[surface]}`}>
       <div className="mb-4">
         <h3 className="text-card-title m-0">{t(office.cityId)}</h3>
         <p

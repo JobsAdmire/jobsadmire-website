@@ -35,7 +35,7 @@ function FormCard({ track, tf, children }: { track: TrackKey; tf: Tf; children: 
   return (
     <div
       id={FORM_ANCHOR[track]}
-      className={`scroll-mt-24 overflow-hidden rounded-lg border bg-white shadow-[0_24px_60px_rgba(22,60,90,0.14)] ${EDGE[track]}`}
+      className={`scroll-mt-24 overflow-hidden rounded-lg border bg-white shadow-[0_24px_60px_rgba(22,60,90,0.14)] xl:shadow-[0_18px_45px_rgba(22,60,90,0.14)] ${EDGE[track]}`}
     >
       <div className={`px-5 py-5 lg:px-7 ${HEAD[track]}`}>
         <h3 className="m-0 text-card-title font-extrabold text-white">

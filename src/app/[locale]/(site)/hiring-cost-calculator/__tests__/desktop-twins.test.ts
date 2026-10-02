@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
+import { formatTwinFindings, twinFindings } from '@/test/px-twins';
 
 /**
  * Final pass B1 (W190 A1a, D19): the Cost Calculator's page-local px literals — paddings, gaps,
@@ -24,71 +25,6 @@ const FILES = [
   '_sections/content.tsx',
   '_sections/ui.tsx',
 ];
-const PREFIXES = [
-  'text',
-  'p',
-  'px',
-  'py',
-  'pt',
-  'pb',
-  'pl',
-  'pr',
-  'gap',
-  'gap-x',
-  'gap-y',
-  'm',
-  'mx',
-  'my',
-  'mt',
-  'mb',
-  'ml',
-  'mr',
-  'tracking',
-  'leading',
-];
-const ELIGIBLE = new RegExp(
-  `^-?(?:(?:xs|sm|md|lg):)?(${PREFIXES.join('|')})-\\[-?\\d+(?:\\.\\d+)?px\\](?:/\\S+)?$`,
-);
-const XL_TEXT = /^(?:[a-z0-9-]+:)*xl:text-\[(\d+(?:\.\d+)?)px\]/;
-
-type Finding = { file: string; line: number; token: string; why: string };
-
-export function twinFindings(file: string, source: string): Finding[] {
-  const findings: Finding[] = [];
-  const lineOf = (index: number) => source.slice(0, index).split('\n').length;
-  for (const m of source.matchAll(/(['"`])([^'"`\\]*)\1/g)) {
-    const body = m[2];
-    if (!body.includes('-[')) continue;
-    const tokens = body.split(/\s+/).filter(Boolean);
-    const xlPrefixes = new Set(
-      tokens
-        .map((t) => /^(?:[a-z0-9-]+:)*xl:-?([a-z-]+?)-\[/.exec(t)?.[1])
-        .filter((p): p is string => Boolean(p)),
-    );
-    for (const token of tokens) {
-      const xl = XL_TEXT.exec(token);
-      if (xl && Number(xl[1]) < 11)
-        findings.push({
-          file,
-          line: lineOf(m.index!),
-          token,
-          why: `${xl[1]}px is under the 11 px floor`,
-        });
-      if (/max-/.test(token) || /(^|:)(xl|2xl):/.test(token)) continue;
-      const e = ELIGIBLE.exec(token);
-      if (!e) continue;
-      if (!xlPrefixes.has(e[1]))
-        findings.push({
-          file,
-          line: lineOf(m.index!),
-          token,
-          why: `no xl:${e[1]}- twin in the same class string`,
-        });
-    }
-  }
-  return findings;
-}
-
 describe('Cost Calculator — every px literal has its × 0.75 xl twin, text at ≥ 11 px (B1, W190 A1a)', () => {
   it('the scanner reads twins per class string and the floor on xl text', () => {
     expect(
@@ -98,8 +34,8 @@ describe('Cost Calculator — every px literal has its × 0.75 xl twin, text at 
       [],
     );
     expect(twinFindings('f.tsx', `'gap-[9px] lg:gap-[12px]'`).map((f) => f.why)).toEqual([
-      'no xl:gap- twin in the same class string',
-      'no xl:gap- twin in the same class string',
+      'no xl:gap- twin in the same class list',
+      'no xl:gap- twin in the same class list',
     ]);
     expect(twinFindings('f.tsx', `'text-[13px] xl:text-[9.75px]'`).map((f) => f.why)).toEqual([
       '9.75px is under the 11 px floor',
@@ -111,9 +47,7 @@ describe('Cost Calculator — every px literal has its × 0.75 xl twin, text at 
 
   it('every route file is clean', () => {
     const failures = FILES.flatMap((f) =>
-      twinFindings(f, readFileSync(join(DIR, f), 'utf8')).map(
-        (x) => `${x.file}:${x.line}  ${x.token} — ${x.why}`,
-      ),
+      formatTwinFindings(twinFindings(f, readFileSync(join(DIR, f), 'utf8'))),
     );
     expect(failures, `${failures.length} findings\n${failures.slice(0, 40).join('\n')}`).toEqual(
       [],

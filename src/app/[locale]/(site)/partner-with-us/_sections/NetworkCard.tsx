@@ -23,7 +23,7 @@ export function NetworkCard({ tf, metrics }: { tf: Tf; metrics: Record<string, s
     >
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <h2 className="m-0 text-card-title font-extrabold">{tf(NETWORK_IDS.heading)}</h2>
-        <span className="inline-flex items-center gap-2 text-eyebrow font-extrabold uppercase tracking-[0.8px] text-success-text">
+        <span className="inline-flex items-center gap-2 text-eyebrow font-extrabold uppercase tracking-[0.8px] xl:tracking-[0.6px] text-success-text">
           <span aria-hidden="true" className="inline-block h-2 w-2 rounded-pill bg-success" />
           {tf(NETWORK_IDS.live)}
         </span>
@@ -36,7 +36,7 @@ export function NetworkCard({ tf, metrics }: { tf: Tf; metrics: Record<string, s
               className="flex flex-col gap-0.5 rounded-xs border border-border-4 bg-pale-3 px-3 py-3 md:flex-row md:items-baseline md:gap-4 md:rounded-none md:border-0 md:border-t md:bg-transparent md:px-0 md:py-4 md:last:border-b"
             >
               <span
-                className={`min-w-0 text-[23px] font-extrabold tracking-[-0.5px] md:min-w-[74px] md:text-stat ${FIGURE[row.metric]}`}
+                className={`min-w-0 text-[23px] xl:text-[17.25px] font-extrabold tracking-[-0.5px] xl:tracking-[-0.375px] md:min-w-[74px] md:text-stat ${FIGURE[row.metric]}`}
               >
                 {metrics[row.metric]}
               </span>

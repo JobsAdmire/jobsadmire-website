@@ -310,7 +310,7 @@ export function Compare({ ctx }: { ctx: CalcCtx }) {
               <td className="w-[150px] border-b border-border-3 bg-ink text-center align-middle xl:w-[112px]">
                 <span
                   aria-hidden="true"
-                  className="inline-grid h-12 w-12 place-items-center rounded-pill bg-white text-[14px] font-extrabold tracking-[0.5px] text-ink before:content-['VS'] xl:h-9 xl:w-9 xl:text-[11px]"
+                  className="inline-grid h-12 w-12 place-items-center rounded-pill bg-white text-[14px] font-extrabold tracking-[0.5px] xl:tracking-[0.375px] text-ink before:content-['VS'] xl:h-9 xl:w-9 xl:text-[11px]"
                 />
               </td>
               {/* D20: the design's #1899D5 → #1073a8 gradient starts at blue-safe for white text */}

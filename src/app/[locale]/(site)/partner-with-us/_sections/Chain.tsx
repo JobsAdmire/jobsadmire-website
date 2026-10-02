@@ -13,7 +13,7 @@ const NODE = {
     body: 'text-text-secondary',
   },
   core: {
-    box: 'bg-gradient-to-br from-blue-safe to-[#0b5c88] shadow-[0_18px_40px_rgba(24,153,213,0.28)]',
+    box: 'bg-gradient-to-br from-blue-safe to-[#0b5c88] shadow-[0_18px_40px_rgba(24,153,213,0.28)] xl:shadow-[0_13.5px_30px_rgba(24,153,213,0.28)]',
     eyebrow: 'text-white',
     title: 'text-white',
     body: 'text-white',
@@ -54,14 +54,14 @@ export function Chain({ tf }: { tf: Tf }) {
                 {i > 0 && (
                   <span
                     aria-hidden="true"
-                    className="text-center text-[24px] font-extrabold text-tint-border max-lg:hidden"
+                    className="text-center text-[24px] xl:text-[18px] font-extrabold text-tint-border max-lg:hidden"
                   >
                     →
                   </span>
                 )}
                 <div className={`rounded-md px-6 py-6 lg:text-center ${c.box}`}>
                   <p
-                    className={`m-0 mb-2 text-eyebrow font-extrabold uppercase tracking-[1.2px] ${c.eyebrow}`}
+                    className={`m-0 mb-2 text-eyebrow font-extrabold uppercase tracking-[1.2px] xl:tracking-[0.9px] ${c.eyebrow}`}
                   >
                     {tf(node.eyebrow)}
                   </p>

@@ -127,7 +127,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
       <Section
         tone="dark"
         id="about-hero"
-        className="relative overflow-hidden pt-8 pb-12 lg:pt-[70px] lg:pb-[88px]"
+        className="relative overflow-hidden pt-8 pb-12 lg:pt-[70px] xl:pt-[52.5px] lg:pb-[88px] xl:pb-[66px]"
       >
         <div
           aria-hidden="true"
@@ -149,12 +149,14 @@ export default async function About({ params }: { params: Promise<{ locale: stri
               {t('about.022')} <span className="text-sky">{t('about.023')}</span>
             </h1>
             <p
-              className="m-0 mb-4 text-body-lg font-extrabold tracking-[1.2px] text-white/70"
+              className="m-0 mb-4 text-body-lg font-extrabold tracking-[1.2px] xl:tracking-[0.9px] text-white/70"
               lang="tr"
             >
               {t('about.024')}
             </p>
-            <p className="m-0 mb-7 max-w-[560px] text-body-lg text-white/80">{t('about.025')}</p>
+            <p className="m-0 mb-7 max-w-[560px] xl:max-w-[420px] text-body-lg text-white/80">
+              {t('about.025')}
+            </p>
             {/* Hero pills (design 532–545): the figures and labels come from the metrics
                 collection (home.050 / hire.073 / home.051). The design's about.026–028 labels and
                 its typed "14+"/"12+" are not read (W1: one label per metric, site-wide). */}
@@ -266,12 +268,14 @@ export default async function About({ params }: { params: Promise<{ locale: stri
         <div className="container-site">
           <div
             className={
-              founder ? 'grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center' : 'max-w-[720px]'
+              founder
+                ? 'grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center'
+                : 'max-w-[720px] xl:max-w-[540px]'
             }
           >
             <FounderBand founder={founder} placedText={metrics.placed} t={t} />
             <div data-testid="about-journey">
-              <h2 className="m-0 mb-6 text-eyebrow font-extrabold tracking-[1.5px] text-blue-safe uppercase">
+              <h2 className="m-0 mb-6 text-eyebrow font-extrabold tracking-[1.5px] xl:tracking-[1.125px] text-blue-safe uppercase">
                 {t('about.050')}
               </h2>
               {/* W84: body is optional; the journey rows have none. about.052 is legal (verbatim);
@@ -311,7 +315,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
       <Section tone="light" id="about-tech">
         <div data-testid="about-tech" className="container-site">
           <h2 className="mt-0 mb-4 text-center text-h2">{t('about.064')}</h2>
-          <p className="mx-auto mt-0 mb-10 max-w-[560px] text-center text-body-lg text-text-secondary">
+          <p className="mx-auto mt-0 mb-10 max-w-[560px] xl:max-w-[420px] text-center text-body-lg text-text-secondary">
             {t('about.065')}
           </p>
           <div className="grid gap-10 rounded-hero border border-tint-border bg-linear-to-b from-pale-1 to-tint p-6 sm:p-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-center">
@@ -367,7 +371,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
               />
               {/* W129: ImageSlot owns its box (w-full h-auto object-cover on both branches) — a
                   narrower slot wraps it in a sized div instead of a w-* class on the slot itself. */}
-              <div className="w-[150px]">
+              <div className="w-[150px] xl:w-[112.5px]">
                 <ImageSlot
                   slot="app-screen"
                   alt={sys('about.tech.appAlt')}
@@ -402,7 +406,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
         <div className="container-site">
           <div data-testid="about-offices">
             <h2 className="m-0 mb-4 text-center text-h2">{t('about.089')}</h2>
-            <p className="mx-auto mt-0 mb-10 max-w-[560px] text-center text-body-lg text-text-secondary">
+            <p className="mx-auto mt-0 mb-10 max-w-[560px] xl:max-w-[420px] text-center text-body-lg text-text-secondary">
               {t('about.090')}
             </p>
             <div className="grid gap-6 lg:grid-cols-[1fr_auto_1fr] lg:items-start">
@@ -429,7 +433,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
                       sizes="(min-width: 901px) 44vw, 100vw"
                       className="mb-4 rounded-base"
                     />
-                    <OfficeCard bundle={bundle} locale={locale} office={office}>
+                    <OfficeCard bundle={bundle} locale={locale} office={office} surface="pale">
                       <ul className="m-0 mt-4 flex list-none flex-wrap gap-2 p-0">
                         {OFFICE_CHIPS[office.key].map((id) => (
                           <li
