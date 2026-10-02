@@ -120,18 +120,25 @@ export function CareersHero({
             }}
           />
         </div>
-        <div className="flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-white/15 py-6">
+        {/* ≤ 900 (`max-lg:` — lg is 901) the design stacks the strip (Join Our Team ll. 339–342):
+            label, then ONE scrollable chip line bleeding into the 20 px gutters with the scrollbar
+            hidden, then the sentence. As one wrapping row the `flex-1` list was squeezed between
+            label and sentence into a one-chip column (QA W220 CAR-01). */}
+        <div className="flex flex-wrap items-center gap-x-5 gap-y-3 border-t border-white/15 py-6 max-lg:flex-col max-lg:items-stretch max-lg:gap-y-2.5 max-lg:pt-3.5 max-lg:pb-[18px]">
           <p
             id="careers-countries-label"
             className="text-eyebrow font-extrabold uppercase tracking-[0.11em] text-[#a9b5d8]"
           >
             {t('jt.036')}
           </p>
-          <ul aria-labelledby="careers-countries-label" className="flex flex-1 flex-wrap gap-2">
+          <ul
+            aria-labelledby="careers-countries-label"
+            className="flex flex-1 flex-wrap gap-2 max-lg:-mx-5 max-lg:min-w-0 max-lg:flex-none max-lg:flex-nowrap max-lg:overflow-x-auto max-lg:px-5 max-lg:pb-0.5 max-lg:[scrollbar-width:none] max-lg:[&::-webkit-scrollbar]:hidden"
+          >
             {sourceCountries.map((c) => (
               <li
                 key={c.code}
-                className="inline-flex items-center gap-2 rounded-[9px] border border-white/20 bg-white/10 px-3 py-1.5 text-body-sm font-extrabold text-[#dbe3f5]"
+                className="inline-flex items-center gap-2 rounded-[9px] border border-white/20 bg-white/10 px-3 py-1.5 text-body-sm font-extrabold text-[#dbe3f5] max-lg:flex-none max-lg:whitespace-nowrap"
               >
                 {isFlagCode(c.code) && <Flag code={c.code} size={16} />}
                 {c.name}
