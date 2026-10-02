@@ -57,6 +57,10 @@ export const GATE_ROUTE_TABLE: readonly GateRoute[] = [
   { path: '/en/verify', indexable: true },
   { path: '/kariyer', indexable: true },
   { path: '/en/careers', indexable: true },
+  // T12: the blog index — noindex (W4): axe, the width sweep and the placeholder counter sweep
+  // it; Lighthouse and the sitemap never do. The TR index is the W6 empty state.
+  { path: '/blog', indexable: false },
+  { path: '/en/blog', indexable: false },
 ];
 
 export const GATE_ROUTES: readonly string[] = GATE_ROUTE_TABLE.map((r) => r.path);
