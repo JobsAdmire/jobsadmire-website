@@ -25,6 +25,30 @@ const items = [
 ];
 
 describe('FaqBlock', () => {
+  // Final pass A7 (W189 A6): the design's FAQ h2 is the section h2 face — letter-spacing -1.6 px
+  // (× 0.75 from 1101), line-height 1.05 — and its `.ja-faq-side h2` ≤ 700 rule sets 24 px /
+  // -0.5 px / 1.14 with a 10 px margin; that class rule beats the design's global ≤ 600 px h2 rule
+  // by specificity, so no `max-[601px]` twin here.
+  it('the side-column h2 carries the design face and its ≤ 700 px sizes (A7)', () => {
+    renderWithIntl(
+      <FaqBlock bundle={bundle} locale="tr" items={items} headingId="x.title" headingLevel={3} />,
+    );
+    const h2 = screen.getByRole('heading', { level: 2, name: 'İşverenlerin sorduğu sorular' });
+    expect(h2.className.split(/\s+/)).toEqual(
+      expect.arrayContaining([
+        'text-h2',
+        'leading-[1.05]',
+        'tracking-[-1.6px]',
+        'xl:tracking-[-1.2px]',
+        'max-md:text-[24px]',
+        'max-md:leading-[1.14]',
+        'max-md:tracking-[-0.5px]',
+        'max-md:mb-2.5',
+      ]),
+    );
+    expect(h2.className).not.toMatch(/max-\[601px\]:|max-sm:/);
+  });
+
   it('renders the side column, one accordion trigger per pair and a FAQPage node', () => {
     const { container } = renderWithIntl(
       <FaqBlock

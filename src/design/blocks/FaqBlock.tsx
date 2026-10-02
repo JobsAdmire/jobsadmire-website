@@ -76,7 +76,14 @@ export function FaqBlock({
       {hasSide && (
         <div className="lg:sticky lg:top-8 lg:self-start">
           {eyebrowId && <Eyebrow>{t(eyebrowId)}</Eyebrow>}
-          {headingId && <h2 className="text-h2 mt-3 mb-4">{t(headingId)}</h2>}
+          {/* Final pass A7 (W189 A6): the design's section-h2 face (−1.6 px, × 0.75 from 1101;
+              line-height 1.05) and its `.ja-faq-side h2` ≤ 700 px rule (24 px / −0.5 px / 1.14,
+              10 px below), which beats the design's global ≤ 600 px h2 rule by specificity. */}
+          {headingId && (
+            <h2 className="text-h2 mt-3 mb-4 leading-[1.05] tracking-[-1.6px] max-md:mb-2.5 max-md:text-[24px] max-md:leading-[1.14] max-md:tracking-[-0.5px] xl:tracking-[-1.2px]">
+              {t(headingId)}
+            </h2>
+          )}
           {bodyId && <p className="text-body m-0 text-text-secondary">{t(bodyId)}</p>}
           {askCard && (
             <div className="mt-6 rounded-base border border-border-1 bg-white p-6">

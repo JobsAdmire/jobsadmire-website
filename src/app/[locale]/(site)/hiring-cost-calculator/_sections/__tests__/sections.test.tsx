@@ -122,6 +122,18 @@ describe('Hero + CalculatorCard', () => {
     expect(jsonLd(container).filter((n) => n['@type'] === 'BreadcrumbList')).toHaveLength(1);
   });
 
+  // Final pass A7 (W189 A7, W190 A1b, W210 a): the design's global `@media (max-width: 600px)
+  // { h1 { font-size: 32px; letter-spacing: -0.6px } }` — no repo breakpoint, so `max-[601px]:`
+  // (never `max-sm:`); the ≤ 700 tracking/leading twins stay beside it (different variants).
+  it('the hero h1 carries the design ≤ 600 px rule as max-[601px] twins (A7)', () => {
+    renderWithIntl(<Hero ctx={TR}>{null}</Hero>);
+    const h1 = screen.getByRole('heading', { level: 1 });
+    expect(h1.className.split(/\s+/)).toEqual(
+      expect.arrayContaining(['max-[601px]:text-[32px]', 'max-[601px]:tracking-[-0.6px]']),
+    );
+    expect(h1.className).not.toMatch(/max-sm:/);
+  });
+
   it('shows the D17 badge from rateConfig until reviewDueAt, then hides it (W150)', () => {
     vi.useFakeTimers({ toFake: ['Date'] });
     vi.setSystemTime(new Date('2026-09-28T12:00:00Z'));

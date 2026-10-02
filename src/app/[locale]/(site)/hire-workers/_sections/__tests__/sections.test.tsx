@@ -252,6 +252,28 @@ describe('pixel run 1 (d) items (Cycle 8(a), W187)', () => {
     }
   });
 
+  // Final pass A7 (W189 A7, W190 A1b, W210 a): the design's global ≤ 600 px rule (`h2 { 25px;
+  // -0.4px }`) lands as `max-[601px]:` twins on the three centred section h2s whose own ≤ 700
+  // size the page never set; the portal/request/source h2s keep their class-specific ≤ 700 sizes
+  // (24/25 px), which in the design beat the global rule by specificity.
+  it('industries, compare and process h2s carry the design ≤ 600 px rule as max-[601px] twins (A7)', () => {
+    const SIX_HUNDRED = ['max-[601px]:text-[25px]', 'max-[601px]:tracking-[-0.4px]'];
+    const centred = [
+      <Industries key="i" bundle={TR} tf={tfTr} />,
+      <Comparison key="c" tf={tfTr} />,
+      <Process key="p" bundle={TR} locale="tr" tf={tfTr} />,
+    ];
+    for (const el of centred) {
+      const { container, unmount } = renderWithIntl(el);
+      const h2 = container.querySelector('h2')!;
+      expect(tokens(h2)).toEqual(expect.arrayContaining([...DESIGN_H2, ...SIX_HUNDRED]));
+      expect(h2.className).not.toMatch(/max-sm:/);
+      unmount();
+    }
+    const { container } = renderWithIntl(<PortalPreview bundle={TR} locale="tr" tf={tfTr} />);
+    expect(tokens(container.querySelector('h2')!)).not.toEqual(expect.arrayContaining(SIX_HUNDRED));
+  });
+
   it('portal ≤ 700 px: the design .ja-pd-copy sizes (h2 24 px, sub 14.5 px, checks 14 px, card text 12.5 px, proof 13 px)', () => {
     renderWithIntl(<PortalPreview bundle={TR} locale="tr" tf={tfTr} />);
     const region = screen.getByTestId('hire-portal');
