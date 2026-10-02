@@ -64,7 +64,7 @@ No migrations (no database). One-off setup: `npx playwright install chromium`. D
 - **New copy goes in the reserved `sys.*` range** (form labels/errors, consent banner, language hint, `/tesekkurler` chrome) — never repurpose a package id for different copy.
 - **`sys.*` goes through next-intl only** (`getTranslations('sys')` / `useTranslations('sys')`), never `t()`/`makeT`, which knows package ids only. Full key list: `docs/CONTENT-MODEL.md`.
 - **Shared chrome reads one canonical package id per string** (R15), not a per-page one — e.g. the verify-nav label is `home.011`, not a new `sys.nav.verify`. Full table: `docs/CONTENT-MODEL.md` § Chrome canonical ids.
-- **Six ids ship with a deliberately empty Turkish value** (`hire.141`, `calc.041`, `calc.154`, `calc.157`, `calc.367`, `jt.107`) — render them empty, never fall back to English.
+- **Seven ids ship with a deliberately empty Turkish value** (`hire.141`, `calc.041`, `calc.154`, `calc.157`, `calc.367`, `jt.107`, `availworkers.026`) — render them empty, never fall back to English.
 - **Numbers are data (D17).** A headline number is never typed into a page: read it with `getMetric` / `metricValues` (`src/content/collections.ts`, `src/content/pure.ts`).
 - **Every page lives in a route group (W19)** — `app/[locale]/(site)/` (default chrome), `(minimal)/` (no social rail/FAB: thank-you, legal, newsletter) or `(bare)/` (no chrome: portal entry); the group layout mounts the chrome, the locale layout keeps html/body/fonts/providers/`ClientIslands`. `docs/ARCHITECTURE.md` § Routing.
 - **Every page form goes through the forms kernel** (`src/forms/`, WP2a): a `'use server'` wrapper around `createFormAction(spec)`, rendered by `FormShell` with `Field`s — never a hand-rolled `fetch`.

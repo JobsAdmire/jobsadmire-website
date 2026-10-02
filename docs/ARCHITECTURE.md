@@ -198,7 +198,7 @@ Every bundle — from either adapter — validates against the Zod schema in `co
 
 **Bundle-loading failures are not yet reported anywhere but the health endpoint.** No Sentry integration exists in this repo as of WP1 (no `@sentry/*` dependency, no config file) — see the Sentry section below.
 
-`t(id)` honours the six deliberately-empty Turkish fragments (`docs/CONTENT-MODEL.md`) and must not substitute English for an intentionally empty `tr` value.
+`t(id)` honours the seven deliberately-empty Turkish fragments (`docs/CONTENT-MODEL.md`) and must not substitute English for an intentionally empty `tr` value.
 
 ### The frozen contract
 

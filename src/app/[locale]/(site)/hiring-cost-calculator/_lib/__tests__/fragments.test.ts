@@ -54,6 +54,8 @@ describe('joinText', () => {
     // The package's own TR pair glues to the design's rendered text, typo included (calc.130 ends
     // "fazlası", calc.131 starts "ıdır") — a WP-C copy item, never patched here.
     expect(joinText([TR['calc.130'], TR['calc.131']])).toMatch(/^üç katından fazlasıdır — /);
+    // calc.483 override (QA W220 calc-01): the package's "aylk" reads "aylık" in the FAQ answer
+    expect(TR['calc.483']).toMatch(/aylık fark küçüktür\.$/);
     expect(joinText([TR['calc.154'], TR['calc.155'], TR['calc.156']])).toMatch(
       /^İşyeri bazında sayılır, şirket bazında değil/,
     );

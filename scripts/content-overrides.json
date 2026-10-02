@@ -3,9 +3,13 @@
     "tr": "4 iş saati içinde geri dönüş",
     "reason": "W7 — the package TR carried the whole trust trio (hire.042–044) in this one id; beside hire.042/044 it duplicated two chips. Legal-flagged: EN verbatim, TR trimmed to the middle chip."
   },
+  "availworkers.025": {
+    "tr": "Türkiye’de başlamaya hazır",
+    "reason": "W7 / QA W220 W-01 — natural Turkish order: the locative joins the highlighted fragment (the EN order 024 + 025 + 026 read 'Doğrulanmış işçiler, başlamaya hazır Türkiye'de'); the design's sky highlight stays on 'ready to start'."
+  },
   "availworkers.026": {
-    "tr": "Türkiye'de",
-    "reason": "W7 — TR fragment read 'iş ortağı olun' (become a partner) for EN 'in Turkey'; the H1 is availworkers.025 + 026."
+    "tr": "",
+    "reason": "W7 / QA W220 W-01 — the package TR read 'iş ortağı olun' (become a partner) for EN 'in Türkiye'; the Turkish h1 is 024 + 025, so this is the seventh deliberately-empty TR fragment (like hire.141)."
   },
   "blogarticle.033": {
     "tr": "işveren",
@@ -103,5 +107,21 @@
   "calc.131": {
     "tr": "dır — izin ve uçak bileti birlikte yaklaşık ₺28.000 tutar.",
     "reason": "T3 review A2 (W190) — the package TR runs calc.130 'üç katından fazlası' into calc.131 'ıdır', printing 'fazlasııdır'; the design's own pBan1 reads 'fazlasıdır'. Legal-flagged pair: EN verbatim, TR drops the duplicated vowel only."
+  },
+  "verify.042": {
+    "tr": "İkisi de bir kayıt açmalıdır:",
+    "reason": "QA W220 V-02 — the package TR already carried 'bu sayfada' before the bold verify.043, so Hero STEPS[1] composed '…bu sayfada bir kayıt açmalıdır: bu sayfa.' (the design's ja-i18n.js swap shows the same garble). EN verbatim; verify.234 (legal) untouched."
+  },
+  "verify.043": {
+    "tr": "bu sayfada",
+    "reason": "QA W220 V-02 — the locative, so the colon fragment reads 'İkisi de bir kayıt açmalıdır: bu sayfada. QR kodu…'. WP-C may reword the package row; the override is the repo-side repair (as calc.131, W190 A2)."
+  },
+  "verify.016": {
+    "tr": "Sahtekârı",
+    "reason": "QA W220 V-03 — the TR header CTA renders the tail before the verb (object + verb, `tailFirst` in src/design/chrome/ctas.ts), so the tail opens the label and is capitalised: 'Sahtekârı Bildir'. EN unchanged."
+  },
+  "calc.483": {
+    "tr": "Bordroda hayır. Brüt maaş ve SGK ödemeleri aynıdır, çünkü Türk iş hukuku iki işçiye de aynı şekilde davranır. Ek maliyet yalnızca bir kez ödenir: her izin dönemi için işçi başına yaklaşık ₺16.000 izin ve kart harcı, artı siz karşılıyorsanız seyahat. Birkaç yıllık bir sözleşmede aylık fark küçüktür.",
+    "reason": "QA W220 calc-01 — the package's own typo in FAQ_TR faq2A ('aylk' → 'aylık'; EN reads 'the difference per month', the design's other 12 uses read 'aylık'). Legal-flagged: EN verbatim, TR spelling only (W190 A2 mechanism)."
   }
 }

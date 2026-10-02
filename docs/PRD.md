@@ -51,7 +51,7 @@ Form handler types (D11, backed by Operations `POST /api/website/v1/forms/:formK
 - **D16:** TR/EN slug table above; `pathnames` are static per locale in next-intl config.
 - **D18 — number/currency contract:** TR thousands `38.944 ₺` (period, symbol trailing), EN `₺38,944` (comma, symbol leading); percent TR `%21,75` (sign leads), EN `21.75%`. `formatTRY(n, locale)` is tested against the design's worked examples. The ~38 divergent TR strings already in the package are normalised via bulk APPROVE at import.
 - **Never translated:** `İŞKUR`, `law No. 4904`, `SGK`, `JobsAdmire`, `Partner Portal`, `ChatAdmire`, the `JA-` ID prefix, `Tax No`. App-store badge micro-copy ("GET IT ON", "DOWNLOAD ON THE") stays English. Both languages keep `Türkiye`, never "Turkey". The company refers to itself as "JobsAdmire", never "we" (formal register, Turkish "siz").
-- **Six deliberately-empty Turkish strings** — never fall back to English: `hire.141`, `calc.041`, `calc.154`, `calc.157`, `calc.367`, `jt.107`. See `docs/CONTENT-MODEL.md` for the rendering contract.
+- **Seven deliberately-empty Turkish strings** — never fall back to English: `hire.141`, `calc.041`, `calc.154`, `calc.157`, `calc.367`, `jt.107`, `availworkers.026` (W220 W-01). See `docs/CONTENT-MODEL.md` for the rendering contract.
 - **~160 strings identical in both languages** by design (brand names, the licence chip, Turkish addresses, academic tiers, the reproduced Turkish government permit document) — not untranslated rows, do not "fix."
 - French/Russian/Arabic: out of scope for this build (D22). Catalogues exist in the package for FR/RU but are not wired; Arabic was never built.
 

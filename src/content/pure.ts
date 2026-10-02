@@ -60,7 +60,7 @@ export function applyPublicSettings(bundle: Bundle, env: NodeJS.ProcessEnv): Bun
   };
 }
 
-/** Content strings by package id. Empty values are legitimate (six TR fragments) and returned as ''. */
+/** Content strings by package id. Empty values are legitimate (seven TR fragments) and returned as ''. */
 export function makeT(bundle: Bundle) {
   return (id: string): string => {
     const v = bundle.strings[id];

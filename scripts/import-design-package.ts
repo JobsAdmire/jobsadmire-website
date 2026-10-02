@@ -58,6 +58,8 @@ export type CatalogueRow = {
 export type ImportReport = {
   overrides: Array<{ id: string; locale: Locale; before: string; after: string; reason: string }>;
   turkiye: number;
+  /** BLOG-01 (W220): blog rows' EN title/excerpt fields the Türkiye rule changed. */
+  turkiyeBlog: number;
   placeholders: Array<{ id: string; key: MetricKey; en: string; tr: string }>;
   blog: { rows: number; trBodies: number; navVisible: boolean };
 };
@@ -574,7 +576,9 @@ const OverridesSchema = z.record(
   z
     .object({
       en: z.string().min(1).optional(),
-      tr: z.string().min(1).optional(),
+      // '' is allowed: a TR fragment whose words move into a neighbour (availworkers.026, W220
+      // W-01) joins the deliberately-empty set — `t()` renders it empty, never the English.
+      tr: z.string().optional(),
       reason: z.string().min(1),
     })
     .refine((o) => o.en !== undefined || o.tr !== undefined, { message: 'needs en or tr' }),
@@ -739,17 +743,32 @@ function readMinutes(label: string): number {
   return Number(m[1]);
 }
 
-function buildBlog(strings: Record<Locale, Record<string, string>>): BlogPost[] {
+/** W7 / README: EN copy says Türkiye, never Turkey — spelling only, legal rows included. */
+const turkiye = (s: string) =>
+  s.replace(/\bTurkey\b/g, 'Türkiye').replace(/\bTURKEY\b/g, 'TÜRKİYE');
+
+function buildBlog(
+  strings: Record<Locale, Record<string, string>>,
+  report: ImportReport,
+): BlogPost[] {
   const posts = loadBlogPosts();
   const rows = new Map<string, BlogPost>();
+  // BLOG-01 (W220): the title and excerpt come from blog-posts.js, not the string catalogue, so
+  // step 2 never saw them — the article's h1, <title>, OG, JSON-LD headline, crumb and share text
+  // read "Turkey" beside a body saying Türkiye. The slug stays as authored (a URL, not copy).
+  const en = (field: string) => {
+    const after = turkiye(field);
+    if (after !== field) report.turkiyeBlog++;
+    return after;
+  };
   for (const p of posts.filter((p) => p.lang === 'en')) {
     const category = BLOG_CATEGORY[p.cat];
     if (!category) throw new Error(`blog-posts.js: unknown category "${p.cat}"`);
     rows.set(p.slug, {
       key: p.slug,
       slug: { en: p.slug, tr: null },
-      title: { en: p.title, tr: null },
-      excerpt: { en: p.excerpt, tr: null },
+      title: { en: en(p.title), tr: null },
+      excerpt: { en: en(p.excerpt), tr: null },
       category,
       categoryLabelId: BLOG_CATEGORY_LABEL[category],
       author: 'JobsAdmire',
@@ -839,6 +858,7 @@ export function buildBundles() {
   const report: ImportReport = {
     overrides: [],
     turkiye: 0,
+    turkiyeBlog: 0,
     placeholders: [],
     blog: { rows: 0, trBodies: 0, navVisible: false },
   };
@@ -864,7 +884,7 @@ export function buildBundles() {
   // 2. W7 / README: EN copy says Türkiye, never Turkey (legal-flagged rows included — spelling only)
   for (const id of Object.keys(strings.en)) {
     const before = strings.en[id];
-    const after = before.replace(/\bTurkey\b/g, 'Türkiye').replace(/\bTURKEY\b/g, 'TÜRKİYE');
+    const after = turkiye(before);
     if (after !== before) {
       strings.en[id] = after;
       report.turkiye++;
@@ -930,7 +950,7 @@ export function buildBundles() {
     countryRows.map((c) => ({ code: c.code, name: c[locale], dial: c.dial }));
 
   // 6. collections
-  const blog = buildBlog(strings);
+  const blog = buildBlog(strings, report);
   const trBodies = blog.filter((p) => p.hasBody.tr).length;
   const navVisible = trBodies >= BLOG_NAV_THRESHOLD;
   report.blog = { rows: blog.length, trBodies, navVisible };
@@ -1045,7 +1065,9 @@ if (require.main === module) {
       reason: clip(o.reason, 60),
     })),
   );
-  console.log(`Türkiye rule — ${report.turkiye} EN values normalised (Turkey → Türkiye)`);
+  console.log(
+    `Türkiye rule — ${report.turkiye} EN values normalised (Turkey → Türkiye) + ${report.turkiyeBlog} blog title/excerpt fields`,
+  );
   console.log(`metric placeholders — ${report.placeholders.length} replacements:`);
   console.table(report.placeholders);
   console.log(

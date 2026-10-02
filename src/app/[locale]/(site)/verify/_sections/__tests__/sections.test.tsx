@@ -345,4 +345,22 @@ describe('Hero steps (QA W220 V-01)', () => {
     expect(steps[2]).toHaveTextContent(`${s['verify.045']} ${s['verify.046']} ${s['verify.047']}`);
     expect(steps[1]).not.toHaveTextContent(en.sys.verify.steps.qr);
   });
+
+  it('tr: the composed step 2 reads as one sentence after the verify.042/043 override (W220 V-02)', () => {
+    const bundle = localBundle('tr', { representatives: [FOUNDER_REP, OFFICE_REP] });
+    renderWithIntl(
+      <Hero
+        bundle={bundle}
+        locale="tr"
+        register={readRegister(bundle)}
+        founder={PUBLISHED_FOUNDER}
+        updatedLabel="Kayıt defteri son güncelleme: 29 Temmuz 2026"
+      />,
+      { locale: 'tr' },
+    );
+    const step2 = screen.getAllByRole('heading', { level: 3 })[1].parentElement!.parentElement!;
+    expect(step2.querySelector('p')?.textContent).toMatch(
+      /^İkisi de bir kayıt açmalıdır: bu sayfada\. QR kodu/,
+    );
+  });
 });

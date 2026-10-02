@@ -23,8 +23,17 @@ describe('import-design-package — strings', () => {
     expect(Object.keys(tr.strings).length).toBe(3505);
     expect(Object.keys(en.strings).sort()).toEqual(Object.keys(tr.strings).sort());
   });
-  it('keeps the six deliberately-empty Turkish fragments empty', () => {
-    for (const id of ['hire.141', 'calc.041', 'calc.154', 'calc.157', 'calc.367', 'jt.107']) {
+  it('keeps the seven deliberately-empty Turkish fragments empty', () => {
+    // availworkers.026 is the seventh (W220 W-01): the locative moved into availworkers.025
+    for (const id of [
+      'hire.141',
+      'calc.041',
+      'calc.154',
+      'calc.157',
+      'calc.367',
+      'jt.107',
+      'availworkers.026',
+    ]) {
       expect(tr.strings[id]).toBe('');
       expect(en.strings[id]).not.toBe('');
     }
@@ -43,17 +52,38 @@ describe('import-design-package — strings', () => {
 });
 
 describe('import-design-package — W7 overrides', () => {
-  it('applies the 25-id override table and logs every locale value it changed', () => {
-    expect(Object.keys(overrides)).toHaveLength(25); // + calc.131 (T3 review A2, W190)
-    expect(report.overrides).toHaveLength(30);
+  it('applies the 30-id override table and logs every locale value it changed', () => {
+    // 25 + calc.131 (T3 review A2, W190) + availworkers.025, verify.042/043/016 and calc.483
+    // (QA W220 W-01 / V-02 / V-03 / calc-01)
+    expect(Object.keys(overrides)).toHaveLength(30);
+    expect(report.overrides).toHaveLength(35);
     for (const row of report.overrides) expect(row.before).not.toBe(row.after);
   });
   it('fixes the three TR package defects', () => {
     expect(tr.strings['hire.043']).toBe('4 iş saati içinde geri dönüş');
     expect(en.strings['hire.043']).toBe('Reply in 4 working hours');
-    expect(tr.strings['availworkers.026']).toBe("Türkiye'de");
+    // W220 W-01: the Turkish h1 is 024 + 025 — the locative joins the highlighted fragment
+    expect(tr.strings['availworkers.025']).toBe('Türkiye’de başlamaya hazır');
+    expect(tr.strings['availworkers.026']).toBe('');
+    expect(en.strings['availworkers.025']).toBe('ready to start');
     expect(tr.strings['blogarticle.033']).toBe('işveren');
     expect(tr.strings['blogarticle.032']).toBe('Çalışma izni başvurusunu');
+  });
+  it('applies the QA W220 copy overrides — TR only, EN verbatim', () => {
+    // V-02: the step-2 composition reads "İkisi de bir kayıt açmalıdır: bu sayfada. QR kodu…"
+    expect(tr.strings['verify.042']).toBe('İkisi de bir kayıt açmalıdır:');
+    expect(tr.strings['verify.043']).toBe('bu sayfada');
+    expect(en.strings['verify.042']).toBe('Both must open a record on');
+    expect(en.strings['verify.043']).toBe('this page');
+    // V-03: the TR tail opens the label (tailFirst), so it is capitalised
+    expect(tr.strings['verify.016']).toBe('Sahtekârı');
+    expect(en.strings['verify.016']).toBe('an Impostor');
+    // calc-01: the package's own typo, spelling only on a legal-flagged row (W190 A2)
+    expect(tr.strings['calc.483']).toMatch(/aylık fark küçüktür\.$/);
+    expect(tr.strings['calc.483']).not.toContain('aylk');
+    expect(en.strings['calc.483']).toContain('the difference per month');
+    expect(catalogue['calc.483'].legal).toBe(true);
+    expect(catalogue['calc.483'].edits).toEqual(['override']);
   });
   it('keeps store-badge micro-copy English on the seven page files and the two chrome ids (W51)', () => {
     for (const id of [
@@ -104,6 +134,19 @@ describe('import-design-package — Türkiye rule (W7, README)', () => {
     expect(en.strings['availworkers.026']).toBe('in Türkiye');
     expect(en.strings['about.091']).toBe('HEAD OFFICE · TÜRKİYE');
     expect(en.strings['hire.265']).toContain('in Türkiye in 6–8 weeks');
+  });
+  it('reaches the blog rows’ EN title and excerpt from blog-posts.js (W220 BLOG-01)', () => {
+    expect(report.turkiyeBlog).toBe(11);
+    for (const bundle of [en, tr]) {
+      const rows = bundle.collections.blog as { title: { en: string }; excerpt: { en: string } }[];
+      expect(rows.length).toBeGreaterThan(0);
+      for (const row of rows)
+        expect(`${row.title.en} ${row.excerpt.en}`).not.toMatch(/\bTURKEY\b|\bTurkey\b/);
+    }
+    const guide = (en.collections.blog as { key: string; title: { en: string } }[]).find(
+      (p) => p.key === 'turkey-work-permit-process-employer-guide',
+    )!;
+    expect(guide.title.en).toMatch(/^Türkiye work permit process/);
   });
   it('leaves "Turkish" alone', () => {
     expect(Object.values(en.strings).filter((v) => /\bTurkish\b/.test(v)).length).toBe(88);
