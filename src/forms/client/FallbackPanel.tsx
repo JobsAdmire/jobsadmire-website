@@ -32,7 +32,11 @@ const WHATSAPP_PRIMARY = new Set<FormErrorResult['kind']>([
 
 /** The fields worth carrying into the WhatsApp message, in reading order. Anything else the
  *  page posted (consent, chips, hidden refs, object keys) stays out — the visitor is about to
- *  send this by hand. */
+ *  send this by hand. W167 (WP2b T14) appends the fraud report's `suspectName` and
+ *  `suspectContact` — without them a fallen-back report loses who was reported — and the
+ *  sourcing partner's `licence`. Every other omission (`trades`, `candidatesPerYear`, `day`,
+ *  `slot`, `reply`, `dial`, `portfolioUrl`) and printing option values as their raw keys are
+ *  accepted for Phase A; label mapping is a Phase B item. */
 const WHATSAPP_FIELDS = [
   'name',
   'reporterName',
@@ -54,6 +58,9 @@ const WHATSAPP_FIELDS = [
   'topic',
   'description',
   'message',
+  'suspectName',
+  'suspectContact',
+  'licence',
 ] as const;
 
 export function whatsappFallbackText(

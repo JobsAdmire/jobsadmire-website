@@ -132,6 +132,32 @@ describe('FallbackPanel', () => {
     ]);
   });
 
+  it('W167: a fraud report falls back with who was reported, under the real sys.form.labels', () => {
+    renderWithIntl(
+      <FallbackPanel
+        {...base}
+        formKey="fraud"
+        values={{
+          reporterName: 'Ayşe Yılmaz',
+          reporterEmail: 'ayse@example.com',
+          description: 'They asked for a visa fee up front.',
+          suspectName: 'Fake Agency Ltd',
+          suspectContact: '+92 300 000 00 00',
+        }}
+        result={{ kind: 'unavailable', cause: 'network' }}
+      />,
+    );
+    // W76 still holds: nothing typed sits in the DOM, the reported party included.
+    expect(document.body.innerHTML).not.toContain('Fake Agency');
+    const wa = screen.getByRole('link', { name: copy.whatsapp });
+    wa.dispatchEvent(new MouseEvent('click', { bubbles: true, cancelable: true }));
+    expect(open).toHaveBeenCalledTimes(1);
+    const [url] = open.mock.calls[0] as [string, string, string];
+    const text = decodeURIComponent(url.split('?text=')[1]);
+    expect(text).toContain(`${tr.sys.form.labels.suspectName}: Fake Agency Ltd`);
+    expect(text).toContain(`${tr.sys.form.labels.suspectContact}: +92 300 000 00 00`);
+  });
+
   it('renders its heading at headingLevel (default 3)', () => {
     const { unmount } = renderWithIntl(<FallbackPanel {...base} result={{ kind: 'off' }} />);
     expect(screen.getByRole('heading', { name: copy.off.title }).tagName).toBe('H3');
@@ -154,5 +180,34 @@ describe('whatsappFallbackText', () => {
       (k) => k.toUpperCase(),
     );
     expect(text).toBe('Intro:\nNAME: Ali\nCOMPANY: ACME\nMESSAGE: Hi');
+  });
+
+  it('W167: appends suspectName, suspectContact and licence after message, in that order', () => {
+    const text = whatsappFallbackText(
+      'Intro:',
+      {
+        licence: 'OEP-1234',
+        suspectContact: '+92 300 000 00 00',
+        suspectName: 'Fake Agency Ltd',
+        description: 'They asked for a visa fee up front.',
+        reporterName: 'Ayşe',
+        message: 'Hi',
+        // accepted Phase A omissions (W167) and never-carried keys stay out
+        trades: 'welding',
+        evidenceKeys: 'website-fraud/x.jpg',
+      },
+      (k) => k.toUpperCase(),
+    );
+    expect(text).toBe(
+      [
+        'Intro:',
+        'REPORTERNAME: Ayşe',
+        'DESCRIPTION: They asked for a visa fee up front.',
+        'MESSAGE: Hi',
+        'SUSPECTNAME: Fake Agency Ltd',
+        'SUSPECTCONTACT: +92 300 000 00 00',
+        'LICENCE: OEP-1234',
+      ].join('\n'),
+    );
   });
 });
