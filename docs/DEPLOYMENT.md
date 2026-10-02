@@ -12,7 +12,7 @@ One Vercel project serves the site before and after the cutover: **`jobsadmirewe
 | Production deployment | The frozen old site, `dpl_hRVuY1faCQe8fQ44sqmw4t82Rs7A` (2026-02-17); its source repo is gone (the only copy is branch `main-backup` / tag `old-website-final`)      |
 | Git link              | This repo (`JobsAdmire/jobsadmire-website`), **Production Branch `main`**, held back by the two deploy guards (§ Deploy discipline) until the Phase A cutover        |
 | Previews              | Every other branch builds a preview behind Vercel Authentication (§ Deployment Protection); only the `staging` branch's preview carries the door variables (W92)     |
-| Plan                  | **Hobby** until the cutover: crons run daily at most, and Vercel Authentication is the only Deployment Protection setting. **Vercel Pro must be active before WP7a** |
+| Plan                  | **Hobby** until the cutover: crons run daily at most, and Vercel Authentication is the only Deployment Protection setting. **Launch on Hobby — owner decision W201 (2026-10-02); Pro stays the recommendation and needs no code change** |
 
 The frozen production deployment is never redeployed, replaced or repointed before the cutover — its only job before Phase A is staying up.
 
