@@ -80,6 +80,10 @@
       "contact": {
         "title": "JobsAdmire İletişim — Türkiye’de Lisanslı İşe Alım Ajansı",
         "description": "JobsAdmire Antalya merkez ofisini arayın ya da WhatsApp’tan yazın: işçi talebi, çalışma izni ve iş ortaklığı için tek numara, mesai saatlerinde gerçek bir kişi."
+      },
+      "workers": {
+        "title": "Başlamaya hazır doğrulanmış işçiler | JobsAdmire",
+        "description": "Beceri testli, belgeleri kontrol edilmiş, izne hazır adaylar. Pozisyonlarınızı iletin; JobsAdmire her çalışma iznini İŞKUR lisansıyla sunar."
       }
     },
     "consent": {
@@ -304,6 +308,32 @@
       "faq": {
         "a3": "Mesai saatlerinde ({hours}, Türkiye saati) en hızlı kanal WhatsApp’tır; e-postalar yaklaşık {replyHours} iş saati içinde yanıtlanır. Gece ya da hafta sonu gönderilen mesajlar bir sonraki iş günü sabahı ele alınır.",
         "a5": "Evet, ancak JobsAdmire bireysel başvuruları doğrudan almaz: B2B bir ajanstır ve ülkenizdeki doğrulanmış tedarik ortakları aracılığıyla çalışır. Yukarıdan “İş arıyorum” seçeneğini seçip mesaj gönderin; JobsAdmire size doğrulanmış ortağın iletişim bilgisini iletir. JobsAdmire bir işçiden asla yerleştirme ücreti almaz — biri JobsAdmire adına sizden para isterse WhatsApp’tan bildirin."
+      }
+    },
+    "workers": {
+      "pool": {
+        "heading": "JobsAdmire aday havuzu",
+        "intro": "Havuzdaki her aday beceri testinden geçer, belgeleri kontrol edilir ve çalışma iznine hazırlanır. Profiller burada yayımlanana kadar ihtiyacınızı JobsAdmire’a iletin; eşleşen adaylar doğrudan size gönderilir."
+      },
+      "empty": {
+        "title": "Herkese açık profiller henüz yayımlanmadı",
+        "body": "Profiller, aday gizliliği (KVKK) ve iş ortaklarının onayı tamamlandığında bu sayfada görünecek. Talep formunu doldurun; JobsAdmire tam CV’leri, belgeleri ve video mülakatları doğrudan sizinle paylaşır.",
+        "cta": "Talep formuna gidin"
+      },
+      "sticky": {
+        "message": "İhtiyacınız olan pozisyonları JobsAdmire’a iletin — {hours} saat içinde tam CV ve video mülakat."
+      },
+      "form": {
+        "titles": {
+          "direct_employer": "Havuzdan aday talep edin"
+        }
+      },
+      "timeline": {
+        "days1to3": "1–3. gün",
+        "arrival": "{weeks}. hafta"
+      },
+      "ask": {
+        "emailSubject": "Mevcut adaylar hakkında soru"
       }
     },
     "form": {

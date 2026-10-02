@@ -80,6 +80,10 @@
       "contact": {
         "title": "Contact JobsAdmire — Licensed Recruitment Agency in Türkiye",
         "description": "Call or WhatsApp the JobsAdmire head office in Antalya: one number for worker requests, permits and partnerships, answered by a real person in office hours."
+      },
+      "workers": {
+        "title": "Verified workers ready to start in Türkiye | JobsAdmire",
+        "description": "Skill-tested, document-checked, permit-ready candidates for employers in Türkiye. Request the roles you need; JobsAdmire files every work permit."
       }
     },
     "consent": {
@@ -304,6 +308,32 @@
       "faq": {
         "a3": "WhatsApp is the fastest channel in office hours ({hours}, Turkish time); e-mail is answered within about {replyHours} business hours. Messages sent at night or over the weekend are picked up the next business morning.",
         "a5": "Yes, but JobsAdmire does not take individual applications directly: it is a B2B agency and works through verified sourcing partners in your country. Pick “I am looking for a job” above and send a message; JobsAdmire replies with the verified partner’s contact. JobsAdmire never charges a worker a placement fee — if anyone asks you for money in its name, report it on WhatsApp."
+      }
+    },
+    "workers": {
+      "pool": {
+        "heading": "The JobsAdmire candidate pool",
+        "intro": "Every candidate in the pool is skill-tested, document-checked and permit-ready. Until profiles are published here, tell JobsAdmire what you need and matching candidates are sent to you directly."
+      },
+      "empty": {
+        "title": "Public profiles are not published yet",
+        "body": "Profiles appear on this page once candidate privacy (KVKK) and partner consent are in place. Fill in the request form and JobsAdmire shares full CVs, documents and video interviews with you directly.",
+        "cta": "Go to the request form"
+      },
+      "sticky": {
+        "message": "Tell JobsAdmire the roles you need — full CV and video interview within {hours} hours."
+      },
+      "form": {
+        "titles": {
+          "direct_employer": "Request candidates from the pool"
+        }
+      },
+      "timeline": {
+        "days1to3": "Days 1–3",
+        "arrival": "Weeks {weeks}"
+      },
+      "ask": {
+        "emailSubject": "Question about available candidates"
       }
     },
     "form": {
