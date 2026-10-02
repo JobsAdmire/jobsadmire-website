@@ -26,8 +26,9 @@ const DOT = {
  *  state (D20). No live region: the text changes once a minute and would chatter.
  *  Final pass D2 (W197 c): the fallback is shorter than most live lines, so the swap at hydration
  *  (and a tick across a boundary) used to rewrap the pill (CLS 0.0035 measured; ≈ 0.03 possible on
- *  320–360 px Turkish weekends). Every line the pill can show is stacked invisibly in the live
- *  text's grid cell, with tabular digits, so the box has its final size from the server on. */
+ *  320–360 px Turkish weekends). Every line the pill can show — the pre-hydration `fallback`
+ *  included (W216 (4)) — is stacked invisibly in the live text's grid cell, with tabular digits, so
+ *  the box has its final size from the server on. */
 export function LiveStatus(props: LiveStatusProps) {
   const { hours, locale, fallback, suffix, className } = props;
   const tick = useMinuteTick();
@@ -35,7 +36,9 @@ export function LiveStatus(props: LiveStatusProps) {
   const withSuffix = (line: string) => [line, suffix].filter(Boolean).join(' · ');
   const text =
     status === null ? fallback : withSuffix(liveStatusText(props, status, hours, locale));
-  const reserve = liveStatusLines(props, hours, locale).map(withSuffix);
+  const reserve = [
+    ...new Set([fallback, ...liveStatusLines(props, hours, locale).map(withSuffix)]),
+  ];
   const state = status === null ? 'unknown' : status.open ? 'open' : 'closed';
   return (
     <span

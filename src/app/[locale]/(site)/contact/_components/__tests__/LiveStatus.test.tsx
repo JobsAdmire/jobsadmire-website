@@ -36,7 +36,8 @@ describe('LiveStatus', () => {
   // Final pass D2 (W197 c): the pill reserves every line it can show — invisible, aria-hidden
   // copies stacked in the live text's grid cell, tabular digits — so the hydration swap from the
   // fallback to the live line (and each minute's tick) never moves the layout (CLS 0.0035
-  // measured, ≈ 0.03 possible on narrow Turkish weekends).
+  // measured, ≈ 0.03 possible on narrow Turkish weekends). The fallback itself is in the reserve
+  // (W216 (4)): zero cost while it is the narrowest line, zero shift if a bundle makes it the widest.
   it('server render reserves every possible line invisibly in the live text’s cell (D2)', () => {
     vi.setSystemTime(new Date('2026-09-23T07:32:00Z'));
     const { container } = render(
@@ -58,6 +59,7 @@ describe('LiveStatus', () => {
     const reserve = [...container.querySelectorAll('span.invisible[aria-hidden="true"]')];
     expect(reserve.map((s) => s.textContent)).toEqual(
       expect.arrayContaining([
+        FALLBACK,
         'Closed · opens 09:00 tomorrow · Mon–Fri',
         'Closed · opens Monday 09:00 · Mon–Fri',
         'Open now · 00:00 local · closes 18:00 · Mon–Fri',
