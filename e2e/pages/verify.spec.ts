@@ -333,11 +333,40 @@ test('tr: contact clicks fire page_cta — the empty state’s call and the repo
   expect((await pushed(page, 'whatsapp_click')).map((e) => e.placement)).toEqual(['page_cta']);
 });
 
+/** W202: over the Phase A empty register the page mounts no StickyCtaBar at all — the page is
+ *  so short that `#report` is near before the 620 px threshold is passed. Mounted, the bar
+ *  publishes `--sticky-cta-h` inline on `<html>` even while hidden ('0px'), so an empty inline
+ *  value after hydration proves it is not there; the scroll positions include TR's former 22 px
+ *  window (621–642 px at 1440 × 900). */
+for (const locale of ['tr', 'en'] as const) {
+  test(`${locale}: no sticky bar on the empty register (W202)`, async ({ page }) => {
+    await page.goto(ROUTES[locale]);
+    test.skip(
+      (await page.getByTestId('verify-empty').count()) === 0,
+      'W202: register rows are published — the show-after-scroll case covers the bar',
+    );
+    // hydrated once the lookup answers
+    await page.getByTestId('verify-check').getByRole('textbox').fill('JA-REP-014');
+    await expect(page.getByTestId('verify-lookup-result')).toBeVisible();
+    for (const y of [0, 630, 700, 1200, 2400]) {
+      await page.evaluate((top) => window.scrollTo(0, top), y);
+      await expect(page.getByTestId('sticky-cta')).toHaveCount(0);
+    }
+    expect(
+      await page.evaluate(() => document.documentElement.style.getPropertyValue('--sticky-cta-h')),
+    ).toBe('');
+  });
+}
+
 test('en: the sticky bar appears after scrolling on desktop with its two in-page anchors (V-5)', async ({
   page,
 }) => {
   test.skip(isMobile(), 'the bar shows from 901 px; the chrome’s bottom bar owns phones');
   await page.goto(ROUTES.en);
+  test.skip(
+    (await page.getByTestId('verify-empty').count()) > 0,
+    'W202: the bar mounts with the v1.1 register',
+  );
   await expect(page.getByTestId('sticky-cta')).toHaveCount(0);
   await page.evaluate(() => window.scrollTo(0, 700));
   const bar = page.getByTestId('sticky-cta');

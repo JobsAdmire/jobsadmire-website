@@ -40,7 +40,7 @@ export async function generateMetadata({
 /** /temsilci-dogrulama · /en/verify — SSG (no dated rate badge, W150). The page never reads
  *  `searchParams` (V-1: the `?id=` deep link is read by the lookup island after hydration, so
  *  the route stays static). Phase A: the register is empty (D23 keeps the fixture out of
- *  production) and the founder row unpublished (W86). */
+ *  production), the founder row unpublished (W86) and no sticky bar (W202). */
 export default async function VerifyPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!hasLocale(routing.locales, locale)) notFound();
@@ -77,17 +77,22 @@ export default async function VerifyPage({ params }: { params: Promise<{ locale:
       />
       <Faq bundle={bundle} locale={locale} founder={founder} />
       {/* V-5: the design's sticky mini search bar (a second, unlabelled input) → two in-page
-          anchors, from lg; it steps aside once the report section is near. */}
-      <StickyCtaBar
-        message={t('verify.020')}
-        showAfterPx={620}
-        hideNearId="report"
-        live
-        ctas={[
-          { label: t('verify.067'), href: '#check', variant: 'inverse' },
-          { label: t('verify.015'), href: '#report', variant: 'danger' },
-        ]}
-      />
+          anchors, from lg; it steps aside once the report section is near. W202: only with
+          register rows (the same test Structure uses) — over the Phase A empty register the
+          page is so short that `#report` is near before the 620 px threshold is passed, so the
+          bar could never show; it mounts once the v1.1 register ships. */}
+      {register.active.length > 0 ? (
+        <StickyCtaBar
+          message={t('verify.020')}
+          showAfterPx={620}
+          hideNearId="report"
+          live
+          ctas={[
+            { label: t('verify.067'), href: '#check', variant: 'inverse' },
+            { label: t('verify.015'), href: '#report', variant: 'danger' },
+          ]}
+        />
+      ) : null}
     </>
   );
 }

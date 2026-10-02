@@ -87,6 +87,15 @@ describe('sys.verify / sys.seo.verify / sys.form.evidence (T10)', () => {
         expect(read(sys, key)).not.toMatch(/Haris|Jiva/);
   });
 
+  it('W202: the SEO description fits a search snippet (≤ 160 characters, full sentences)', () => {
+    for (const [locale, sys] of LOCALES) {
+      const description = read(sys, 'seo.verify.description') as string;
+      expect([...description].length, locale).toBeLessThanOrEqual(160);
+      expect(description, locale).toMatch(/[.!?]$/);
+      expect(description, locale).not.toMatch(/…|\.\.\./);
+    }
+  });
+
   it('W6: the lookup copy never gives the red verdict', () => {
     for (const [, sys] of LOCALES)
       expect(JSON.stringify(read(sys, 'verify.lookup'))).not.toMatch(
