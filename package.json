@@ -20,6 +20,7 @@
     "gate:launch": "bash scripts/gate.sh --profile=launch",
     "js-size": "node scripts/js-size.mjs",
     "pixel": "tsx scripts/pixel-compare.ts",
+    "sweep:legacy": "bash scripts/launch/legacy-sweep.sh",
     "content:import": "tsx scripts/import-design-package.ts",
     "redirects:build": "tsx scripts/build-redirects.ts",
     "assets:brand": "bash scripts/fetch-brand.sh",
