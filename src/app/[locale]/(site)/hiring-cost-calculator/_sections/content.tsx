@@ -646,7 +646,7 @@ export function Quota({ ctx }: { ctx: CalcCtx }) {
                   key={value}
                   className="rounded-xs border border-border-2 bg-white px-3.5 py-[13px] xl:py-[9.75px]"
                 >
-                  <span className="block text-[16.5px] font-extrabold tracking-[-0.3px] xl:tracking-[-0.225px] text-ink xl:text-[12.4px]">
+                  <span className="block text-[16.5px] font-extrabold tracking-[-0.3px] xl:tracking-[-0.225px] text-ink xl:text-[12.375px]">
                     {t(value)}
                   </span>
                   <span className="mt-[3px] xl:mt-[2.25px] block text-[12px] leading-[1.45] text-text-tertiary xl:text-[11px]">
