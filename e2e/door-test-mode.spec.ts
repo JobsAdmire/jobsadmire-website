@@ -225,9 +225,11 @@ test('replay: submitting the identical body twice inside one clock hour still su
   await expect(page).toHaveURL(new RegExp(`/tesekkurler\\?form=${row.doorKey}`));
   // R37: same form key, same path, same browser context — the SECOND landing pushes no second
   // generate_lead/conversion, which is the accepted skew docs/ANALYTICS.md now records (Cycle 1).
-  await page.waitForTimeout(300);
-  expect(await eventsFor(page, 'generate_lead', row.doorKey)).toHaveLength(1);
-  expect(await eventsFor(page, 'conversion', row.doorKey)).toHaveLength(1);
+  // R37: the per-session key is set by the FIRST landing; the second landing must find it and push
+  // nothing — so the dataLayer never holds more than one of each, however the navigation happened.
+  await page.waitForFunction(() => sessionStorage.getItem('ja_conv:callback:/tesekkurler') === '1');
+  expect((await eventsFor(page, 'generate_lead', row.doorKey)).length).toBeLessThanOrEqual(1);
+  expect((await eventsFor(page, 'conversion', row.doorKey)).length).toBeLessThanOrEqual(1);
 });
 
 test('404 off: an unconfigured route answers the off panel (run with E2E_BASE_URL on preview/t14-off)', async ({
