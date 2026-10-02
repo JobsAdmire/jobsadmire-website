@@ -15,6 +15,7 @@ const SITES = [
   'src/app/[locale]/(site)/partner-with-us/_lib/forms.ts',
   'src/app/[locale]/(site)/hiring-cost-calculator/_lib/quote.ts',
   'src/app/[locale]/(site)/verify/_lib/fraud.ts',
+  'src/app/[locale]/(site)/careers/[slug]/_lib/apply.ts',
 ];
 
 describe('phone regexes are anchored (W199)', () => {
