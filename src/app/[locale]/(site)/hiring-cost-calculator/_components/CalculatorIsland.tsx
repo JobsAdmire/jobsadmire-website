@@ -268,11 +268,13 @@ export function CalculatorIsland({
                 decrementLabel={sys('calc.a11y.decrease', { step: 1 })}
                 incrementLabel={sys('calc.a11y.increase', { step: 1 })}
                 className="[&>label]:sr-only"
+                stretch
               />
               <RadioChips
                 name="calc-headcount-preset"
                 legend={sys('calc.a11y.headcountPresets')}
                 legendHidden
+                stretch
                 value={presetValue(view.headcount)}
                 onChange={(v) => pickHeadcount(Number(v))}
                 options={HEADCOUNT_OPTIONS}

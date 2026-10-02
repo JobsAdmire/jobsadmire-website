@@ -108,8 +108,8 @@ export function CalculatorSkeleton({
           <div>
             <RowHead label={labels.cWorkers} value={view.headcountText} />
             <div className="flex flex-wrap items-end gap-2.5">
-              <StepperLook value={view.headcountText} />
-              <ChipsLook options={HEADCOUNT_OPTIONS} value={presetValue(view.headcount)} />
+              <StepperLook value={view.headcountText} stretch />
+              <ChipsLook options={HEADCOUNT_OPTIONS} value={presetValue(view.headcount)} stretch />
             </div>
             <QuotaHint view={view} labels={labels} />
           </div>

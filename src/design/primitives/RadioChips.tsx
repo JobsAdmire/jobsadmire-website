@@ -3,6 +3,15 @@ import { useId } from 'react';
 
 export type RadioChipOption = { value: string; label: string };
 
+/** Final pass B4 (W190 A1c): the ≤ 700 px twins `stretch` adds — the design's headcount
+ *  quick-pick chips (`.ja-cc-hchips`: `repeat(4, 1fr)`, 7 px gaps) as equal columns for however
+ *  many chips, each full-width and centred; the 44 px target stays (D20 over the design's 40). */
+export const CHIPS_STRETCH = {
+  row: 'max-md:grid max-md:grid-flow-col max-md:auto-cols-fr max-md:gap-[7px]',
+  label: 'max-md:flex',
+  chip: 'max-md:w-full max-md:justify-center max-md:px-2',
+} as const;
+
 /** Single-select chips (calculator role, blog category, form option sets). Native radios in a
  *  `role="radiogroup"` fieldset: arrow keys, focus and form submission under `name` come for
  *  free, and a FormShell form posts the chosen value like any other field. The chip face is
@@ -24,6 +33,7 @@ export function RadioChips({
   legend,
   legendHidden = false,
   className,
+  stretch = false,
 }: {
   name: string;
   options: RadioChipOption[];
@@ -32,6 +42,8 @@ export function RadioChips({
   legend: string;
   legendHidden?: boolean;
   className?: string;
+  /** ≤ 700 px: equal-column grid of full-width chips (B4, `CHIPS_STRETCH`). */
+  stretch?: boolean;
 }) {
   const base = useId();
   const legendId = `${base}-legend`;
@@ -51,12 +63,20 @@ export function RadioChips({
       >
         {legend}
       </legend>
-      <div className="flex flex-wrap gap-2">
+      <div
+        className={['flex flex-wrap gap-2', stretch && CHIPS_STRETCH.row].filter(Boolean).join(' ')}
+      >
         {options.map((o) => {
           const id = `${base}-${o.value}`;
           const checked = o.value === value;
           return (
-            <label key={o.value} htmlFor={id} className="relative inline-flex">
+            <label
+              key={o.value}
+              htmlFor={id}
+              className={['relative inline-flex', stretch && CHIPS_STRETCH.label]
+                .filter(Boolean)
+                .join(' ')}
+            >
               <input
                 id={id}
                 type="radio"
@@ -75,7 +95,10 @@ export function RadioChips({
                   checked
                     ? 'border-tint-border bg-tint text-blue-safe'
                     : 'border-border-1 bg-white text-text-secondary hover:bg-pale-1',
-                ].join(' ')}
+                  stretch && CHIPS_STRETCH.chip,
+                ]
+                  .filter(Boolean)
+                  .join(' ')}
               >
                 {o.label}
               </span>

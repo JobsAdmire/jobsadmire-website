@@ -9,15 +9,39 @@
 const STEP_BTN =
   'inline-flex min-h-[44px] min-w-[44px] items-center justify-center border border-border-1 bg-white text-body font-extrabold text-ink';
 
-export function StepperLook({ value }: { value: string }) {
+/** Final pass B4: the ≤ 700 px classes `Stepper stretch` / `RadioChips stretch` wear — copied, not
+ *  imported: those are `'use client'` modules, whose non-component exports reach a server module
+ *  only as client references. `Lookalikes.test.tsx` pins the two copies equal to the primitives. */
+const STEPPER_STRETCH = {
+  row: 'max-md:grid max-md:grid-cols-[50px_1fr_50px] max-md:gap-2',
+  button: 'max-md:h-[46px] max-md:w-full max-md:rounded-input',
+  input: 'max-md:w-full max-md:rounded-input max-md:border',
+} as const;
+const CHIPS_STRETCH = {
+  row: 'max-md:grid max-md:grid-flow-col max-md:auto-cols-fr max-md:gap-[7px]',
+  label: 'max-md:flex',
+  chip: 'max-md:w-full max-md:justify-center max-md:px-2',
+} as const;
+
+export function StepperLook({ value, stretch = false }: { value: string; stretch?: boolean }) {
+  const btn = [STEP_BTN, stretch && STEPPER_STRETCH.button].filter(Boolean).join(' ');
   return (
     <div aria-hidden="true" className="flex flex-col gap-1">
-      <div className="flex items-stretch">
-        <span className={`${STEP_BTN} rounded-l-input`}>−</span>
-        <span className="grid w-20 place-items-center border-y border-border-1 bg-white text-body font-extrabold tabular-nums">
+      <div
+        className={['flex items-stretch', stretch && STEPPER_STRETCH.row].filter(Boolean).join(' ')}
+      >
+        <span className={`${btn} rounded-l-input`}>−</span>
+        <span
+          className={[
+            'grid w-20 place-items-center border-y border-border-1 bg-white text-body font-extrabold tabular-nums',
+            stretch && STEPPER_STRETCH.input,
+          ]
+            .filter(Boolean)
+            .join(' ')}
+        >
           {value}
         </span>
-        <span className={`${STEP_BTN} rounded-r-input`}>+</span>
+        <span className={`${btn} rounded-r-input`}>+</span>
       </div>
     </div>
   );
@@ -31,14 +55,30 @@ const CHIP_OFF = 'border-border-1 bg-white text-text-secondary';
 export function ChipsLook({
   options,
   value,
+  stretch = false,
 }: {
   options: readonly { value: string; label: string }[];
   value: string | null;
+  stretch?: boolean;
 }) {
   return (
-    <div aria-hidden="true" className="flex flex-wrap gap-2">
+    <div
+      aria-hidden="true"
+      className={['flex flex-wrap gap-2', stretch && CHIPS_STRETCH.row].filter(Boolean).join(' ')}
+    >
       {options.map((o) => (
-        <span key={o.value} className={[CHIP, o.value === value ? CHIP_ON : CHIP_OFF].join(' ')}>
+        // the live chip is a <label><input/><span/></label>: the label's `max-md:flex` and the
+        // span's twins both sit on this one span, so the swap keeps the same box
+        <span
+          key={o.value}
+          className={[
+            CHIP,
+            o.value === value ? CHIP_ON : CHIP_OFF,
+            stretch && `${CHIPS_STRETCH.label} ${CHIPS_STRETCH.chip}`,
+          ]
+            .filter(Boolean)
+            .join(' ')}
+        >
           {o.label}
         </span>
       ))}

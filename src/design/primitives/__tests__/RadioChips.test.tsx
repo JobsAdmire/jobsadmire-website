@@ -35,6 +35,45 @@ function ActionHarness() {
 }
 
 describe('RadioChips', () => {
+  // Final pass B4 (W190 A1c): the design's headcount quick-pick chips at ≤ 700 px
+  // (`.ja-cc-hchips`: `grid-template-columns: repeat(4, 1fr)`, 7 px gaps) — equal columns for
+  // however many chips, each chip full-width and centred; the 44 px target stays (D20 over the
+  // design's 40). An additive `stretch` prop.
+  it('stretch: equal-column grid ≤ 700 px with full-width centred chips; nothing without it (B4)', () => {
+    const { container, unmount } = render(
+      <RadioChips
+        name="n"
+        legend="Headcount"
+        options={options}
+        value="general"
+        onChange={() => {}}
+        stretch
+      />,
+    );
+    const row = container.querySelector('[role="radiogroup"] > div')!;
+    expect(row).toHaveClass(
+      'flex',
+      'flex-wrap',
+      'gap-2',
+      'max-md:grid',
+      'max-md:grid-flow-col',
+      'max-md:auto-cols-fr',
+      'max-md:gap-[7px]',
+    );
+    for (const label of container.querySelectorAll('label'))
+      expect(label).toHaveClass('max-md:flex');
+    for (const chip of container.querySelectorAll('label > span'))
+      expect(chip).toHaveClass(
+        'min-h-[44px]',
+        'max-md:w-full',
+        'max-md:justify-center',
+        'max-md:px-2',
+      );
+    unmount();
+    const { container: plain } = render(<Harness />);
+    expect(plain.innerHTML).not.toMatch(/max-md:/);
+  });
+
   it('is a labelled radiogroup of native radios', async () => {
     render(<Harness />);
     const group = screen.getByRole('radiogroup', { name: 'Role' });

@@ -13,7 +13,18 @@ export type StepperProps = {
   incrementLabel: string;
   hint?: string;
   className?: string;
+  /** Final pass B4 (W190 A1c): the design's calculator headcount row at ≤ 700 px (`.ja-cc-head`)
+   *  — a 50 px / 1fr / 50 px grid with 8 px gaps, full-width 46 px buttons with their own radius,
+   *  a full-width input with its own border; above 700 the attached inline row stays. */
+  stretch?: boolean;
 };
+
+/** The ≤ 700 px twins `stretch` adds (different variants from the base row, W122). */
+export const STEPPER_STRETCH = {
+  row: 'max-md:grid max-md:grid-cols-[50px_1fr_50px] max-md:gap-2',
+  button: 'max-md:h-[46px] max-md:w-full max-md:rounded-input',
+  input: 'max-md:w-full max-md:rounded-input max-md:border',
+} as const;
 
 const clamp = (n: number, min: number, max: number) => Math.min(max, Math.max(min, n));
 
@@ -39,6 +50,7 @@ export function Stepper({
   incrementLabel,
   hint,
   className,
+  stretch = false,
 }: StepperProps) {
   const [draft, setDraft] = useState<string | null>(null);
   const hintId = hint ? `${id}-hint` : undefined;
@@ -79,7 +91,9 @@ export function Stepper({
       <label id={`${id}-label`} htmlFor={id} className="text-body-sm font-bold">
         {label}
       </label>
-      <div className="flex items-stretch">
+      <div
+        className={['flex items-stretch', stretch && STEPPER_STRETCH.row].filter(Boolean).join(' ')}
+      >
         <button
           type="button"
           aria-label={decrementLabel}
@@ -87,7 +101,9 @@ export function Stepper({
           onClick={() => {
             if (!atMin) stepBy(-step);
           }}
-          className={`${BTN} rounded-l-input`}
+          className={[BTN, 'rounded-l-input', stretch && STEPPER_STRETCH.button]
+            .filter(Boolean)
+            .join(' ')}
         >
           <span aria-hidden="true">−</span>
         </button>
@@ -103,7 +119,12 @@ export function Stepper({
           onChange={(e: ChangeEvent<HTMLInputElement>) => setDraft(e.target.value)}
           onBlur={commit}
           onKeyDown={onKeyDown}
-          className="w-20 border-y border-border-1 text-center text-body font-extrabold tabular-nums focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-blue-safe"
+          className={[
+            'w-20 border-y border-border-1 text-center text-body font-extrabold tabular-nums focus-visible:outline-2 focus-visible:-outline-offset-2 focus-visible:outline-blue-safe',
+            stretch && STEPPER_STRETCH.input,
+          ]
+            .filter(Boolean)
+            .join(' ')}
         />
         <button
           type="button"
@@ -112,7 +133,9 @@ export function Stepper({
           onClick={() => {
             if (!atMax) stepBy(step);
           }}
-          className={`${BTN} rounded-r-input`}
+          className={[BTN, 'rounded-r-input', stretch && STEPPER_STRETCH.button]
+            .filter(Boolean)
+            .join(' ')}
         >
           <span aria-hidden="true">+</span>
         </button>
