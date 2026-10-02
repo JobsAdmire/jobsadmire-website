@@ -84,6 +84,10 @@
       "workers": {
         "title": "Verified workers ready to start in Türkiye | JobsAdmire",
         "description": "Skill-tested, document-checked, permit-ready candidates for employers in Türkiye. Request the roles you need; JobsAdmire files every work permit."
+      },
+      "stories": {
+        "title": "Success Stories — Work Permit Approvals for Employers in Türkiye | JobsAdmire",
+        "description": "Work permit approvals JobsAdmire obtains for employers in Türkiye, published by sector, headcount and month with personal details removed."
       }
     },
     "consent": {
@@ -334,6 +338,28 @@
       },
       "ask": {
         "emailSubject": "Question about available candidates"
+      }
+    },
+    "stories": {
+      "hero": {
+        "bodyEmpty": "The work permit approvals JobsAdmire obtains for employers in Türkiye will be published here — the sector, the headcount and the month. Personal details are removed.",
+        "liveBadge": "{count, plural, one {# permit approved} other {# permits approved}}"
+      },
+      "wall": {
+        "intro": "Each published approval is a card: sector, headcount, approval month and city. Personal details and documents are never shown.",
+        "legend": "Filter by sector",
+        "showingAll": "Showing all {count} approvals",
+        "showingFiltered": "Showing {shown} of {total} approvals"
+      },
+      "empty": {
+        "title": "The first approvals are on their way",
+        "body": "Every published work permit approval will appear here — its sector, headcount and month. Ask for an example now, on WhatsApp.",
+        "cta": "Ask for an example on WhatsApp",
+        "prefill": "Hello JobsAdmire, could you show me an example of a work permit approval you obtained?"
+      },
+      "whatsappPrefill": "Hello JobsAdmire, I need workers for: ",
+      "workers": {
+        "card1Title": "Welder · Uzbekistan → Ankara"
       }
     },
     "form": {

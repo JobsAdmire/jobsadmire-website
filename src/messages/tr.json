@@ -84,6 +84,10 @@
       "workers": {
         "title": "Başlamaya hazır doğrulanmış işçiler | JobsAdmire",
         "description": "Beceri testli, belgeleri kontrol edilmiş, izne hazır adaylar. Pozisyonlarınızı iletin; JobsAdmire her çalışma iznini İŞKUR lisansıyla sunar."
+      },
+      "stories": {
+        "title": "Başarı Hikâyeleri — Türkiye'deki İşverenler İçin Çalışma İzni Onayları | JobsAdmire",
+        "description": "JobsAdmire'ın Türkiye'deki işverenler için aldığı çalışma izni onayları sektör, kişi sayısı ve ay bilgisiyle yayınlanır; kişisel bilgiler çıkarılır."
       }
     },
     "consent": {
@@ -334,6 +338,28 @@
       },
       "ask": {
         "emailSubject": "Mevcut adaylar hakkında soru"
+      }
+    },
+    "stories": {
+      "hero": {
+        "bodyEmpty": "JobsAdmire'ın Türkiye'deki işverenler için aldığı çalışma izni onayları burada yayınlanacak: sektör, kişi sayısı ve ay. Kişisel bilgiler çıkarılır.",
+        "liveBadge": "{count, plural, one {# izin onaylandı} other {# izin onaylandı}}"
+      },
+      "wall": {
+        "intro": "Yayınlanan her onay bir karttır: sektör, kişi sayısı, onay ayı ve şehir. Kişisel bilgiler ve belgeler gösterilmez.",
+        "legend": "Sektöre göre filtreleyin",
+        "showingAll": "Toplam {count} onay gösteriliyor",
+        "showingFiltered": "{total} onaydan {shown} tanesi gösteriliyor"
+      },
+      "empty": {
+        "title": "İlk onaylar yolda",
+        "body": "Yayınlanan her çalışma izni onayı burada sektörü, kişi sayısı ve ayıyla yer alacak. Şimdiden bir örnek görmek için JobsAdmire'a yazın.",
+        "cta": "WhatsApp'tan bir örnek isteyin",
+        "prefill": "Merhaba JobsAdmire, aldığınız çalışma izni onaylarından bir örneğini görebilir miyim?"
+      },
+      "whatsappPrefill": "Merhaba JobsAdmire, şu pozisyonlar için işçiye ihtiyacım var: ",
+      "workers": {
+        "card1Title": "Kaynakçı · Özbekistan → Ankara"
       }
     },
     "form": {
