@@ -5,7 +5,7 @@ import { CTA_BY_PATHNAME, DEFAULT_CTAS, ctasFor, resolveCtas } from '../ctas';
 import { pathnames } from '@/i18n/routing';
 
 const t = (id: string) => `<${id}>`;
-const table = resolveCtas(t);
+const table = resolveCtas(t, 'tr');
 
 // The catalogue via readFileSync (lint.test.ts's pattern) — not a module import (R56/D23).
 const strings = (locale: 'tr' | 'en') =>
@@ -31,8 +31,14 @@ describe('header CTA table (W17)', () => {
         tail: '<home.015>',
         href: { pathname: '/hire-workers', hash: '#request-form' },
         variant: 'primary',
+        tailFirst: false,
       },
-      secondary: { label: '<home.008>', href: '/partner-with-us', variant: 'primary' },
+      secondary: {
+        label: '<home.008>',
+        href: '/partner-with-us',
+        variant: 'primary',
+        tailFirst: false,
+      },
     });
   });
 
@@ -43,8 +49,14 @@ describe('header CTA table (W17)', () => {
         tail: '<contact.016>',
         href: { pathname: '/contact', hash: '#message' },
         variant: 'primary',
+        tailFirst: false,
       },
-      secondary: { label: '<home.002>', href: '/hire-workers', variant: 'primary' },
+      secondary: {
+        label: '<home.002>',
+        href: '/hire-workers',
+        variant: 'primary',
+        tailFirst: false,
+      },
     });
     expect(ctasFor(table, '/').primary.href).toEqual({ pathname: '/', hash: '#proposal' });
     expect(ctasFor(table, '/work-permit').secondary).toEqual(table.defaults.secondary);
@@ -53,7 +65,25 @@ describe('header CTA table (W17)', () => {
       label: '<calc.324>',
       href: { pathname: '/hiring-cost-calculator', hash: '#calculator' },
       variant: 'primary',
+      tailFirst: false,
     });
+  });
+
+  // QA W220 V-03: "Bildir" + "sahtekârı" is the EN order ("Report" + "an Impostor"); Turkish puts
+  // the object before the verb, so the verify CTA renders its tail first in TR only — the design's
+  // short form "Bildir" at 901–1100 and the EN label are untouched.
+  it('renders the verify tail before the label in Turkish only (tailFirst)', () => {
+    expect(ctasFor(resolveCtas(t, 'tr'), '/verify').primary.tailFirst).toBe(true);
+    expect(ctasFor(resolveCtas(t, 'en'), '/verify').primary.tailFirst).toBe(false);
+    for (const locale of ['tr', 'en'] as const) {
+      const resolved = resolveCtas(t, locale);
+      expect(resolved.defaults.primary.tailFirst).toBe(false);
+      for (const [key, page] of Object.entries(resolved.byPathname)) {
+        if (key === '/verify') continue;
+        expect(page.primary.tailFirst, key).toBe(false);
+        expect(page.secondary?.tailFirst ?? false, key).toBe(false);
+      }
+    }
   });
 
   it('only keys of `pathnames`, and every label id exists in both catalogues', () => {

@@ -1,5 +1,5 @@
 import type { Href } from '@/i18n/navigation';
-import type { pathnames } from '@/i18n/routing';
+import type { Locale, pathnames } from '@/i18n/routing';
 
 /** W17: pages cannot pass props to the group layouts, so the header's per-page CTAs come from
  *  this route-keyed table, read by `HeaderCtas` through next-intl's `usePathname()` (the
@@ -10,7 +10,18 @@ import type { pathnames } from '@/i18n/routing';
  *  get an entry: the prerendered TR HTML and the browser disagree on a dynamic route's
  *  internal key, so it falls back to `DEFAULT_CTAS` on both sides instead (W121). */
 export type CtaVariant = 'primary' | 'danger';
-export type CtaLink = { labelId: string; tailId?: string; href: Href; variant?: CtaVariant };
+/** `tailFirst`: the locales in which the tail renders BEFORE the label (QA W220 V-03). The
+ *  package translates each split CTA so label + tail read in that language's order (home.014/015
+ *  "Talep" + "Oluştur", contact.015/016 "Bir mesaj" + "gönderin"); verify.015/016 is the one pair
+ *  left in English order ("Bildir" + "sahtekârı"), so in Turkish the object precedes the verb —
+ *  the design's short form (the label alone at 901–1100) and the EN label are untouched. */
+export type CtaLink = {
+  labelId: string;
+  tailId?: string;
+  href: Href;
+  variant?: CtaVariant;
+  tailFirst?: readonly Locale[];
+};
 /** `secondary` left out → the default secondary; `null` → no secondary on that page. */
 export type PageCtas = { primary: CtaLink; secondary?: CtaLink | null };
 
@@ -65,12 +76,14 @@ export const CTA_BY_PATHNAME: Partial<Record<keyof typeof pathnames, PageCtas>> 
     secondary: HIRE,
   },
   '/verify': {
-    // the design's red "Report an Impostor" — the only danger-face CTA in the chrome
+    // the design's red "Report an Impostor" — the only danger-face CTA in the chrome; TR reads
+    // "Sahtekârı Bildir" (object + verb — the tail first, W220 V-03; the override capitalises it)
     primary: {
       labelId: 'verify.015',
       tailId: 'verify.016',
       href: { pathname: '/verify', hash: '#report' },
       variant: 'danger',
+      tailFirst: ['tr'],
     },
     secondary: HIRE,
   },
@@ -84,20 +97,29 @@ export const CTA_BY_PATHNAME: Partial<Record<keyof typeof pathnames, PageCtas>> 
   },
 };
 
-export type ResolvedCta = { label: string; tail?: string; href: Href; variant: CtaVariant };
+export type ResolvedCta = {
+  label: string;
+  tail?: string;
+  href: Href;
+  variant: CtaVariant;
+  /** Render the tail before the label in this locale (W220 V-03). */
+  tailFirst: boolean;
+};
 export type ResolvedPageCtas = { primary: ResolvedCta; secondary?: ResolvedCta };
 export type CtaTable = {
   defaults: ResolvedPageCtas;
   byPathname: Partial<Record<keyof typeof pathnames, ResolvedPageCtas>>;
 };
 
-/** Resolves every label once on the server (Header) so the client island receives strings. */
-export function resolveCtas(t: (id: string) => string): CtaTable {
+/** Resolves every label once on the server (Header) so the client island receives strings; the
+ *  locale decides each CTA's tail order (`tailFirst`). */
+export function resolveCtas(t: (id: string) => string, locale: Locale): CtaTable {
   const one = (c: CtaLink): ResolvedCta => ({
     label: t(c.labelId),
     ...(c.tailId ? { tail: t(c.tailId) } : {}),
     href: c.href,
     variant: c.variant ?? 'primary',
+    tailFirst: c.tailFirst?.includes(locale) ?? false,
   });
   const defaultSecondary = DEFAULT_CTAS.secondary ? one(DEFAULT_CTAS.secondary) : undefined;
   const page = (p: PageCtas): ResolvedPageCtas => ({

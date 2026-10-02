@@ -235,9 +235,10 @@ describe('Faq', () => {
   it('four pairs in the DOM and one FAQPage node (V-4); the "who signs" answer is name-less while the founder is unpublished (§10 row 3)', () => {
     const bundle = localBundle('en');
     const s = bundle.strings;
-    const { container } = renderWithIntl(<Faq bundle={bundle} locale="en" founder={null} />, {
-      locale: 'en',
-    });
+    const { container } = renderWithIntl(
+      <Faq bundle={bundle} locale="en" founder={null} register={readRegister(bundle)} />,
+      { locale: 'en' },
+    );
     expect(container.querySelectorAll('#faq')).toHaveLength(1);
     expect(screen.getByRole('heading', { level: 2 })).toHaveTextContent(s['verify.100']);
     for (const id of ['verify.101', 'verify.103', 'verify.105', 'verify.107'])
@@ -252,17 +253,96 @@ describe('Faq', () => {
     ]);
     expect(faq[0].mainEntity?.[1].acceptedAnswer.text).toBe(en.sys.verify.faq.whoSigns);
     expect(container).not.toHaveTextContent(s['verify.104']);
+    // QA W220 V-01: verify.106 promises "the page shows the person's official record"; over the
+    // Phase A empty register the lookup answers "not published yet", so q3 — DOM and the FAQPage
+    // node alike (V-4) — reads the Phase A answer until `representatives` has published rows.
+    expect(faq[0].mainEntity?.[2].acceptedAnswer.text).toBe(en.sys.verify.faq.howToCheck);
+    expect(container).not.toHaveTextContent(s['verify.106']);
     expect(collisionsInTree(container)).toEqual([]);
   });
 
   it('a published founder row answers with verify.104', () => {
     const bundle = localBundle('en');
     const { container } = renderWithIntl(
-      <Faq bundle={bundle} locale="en" founder={PUBLISHED_FOUNDER} />,
+      <Faq
+        bundle={bundle}
+        locale="en"
+        founder={PUBLISHED_FOUNDER}
+        register={readRegister(bundle)}
+      />,
       { locale: 'en' },
     );
     expect(faqNode(container)[0].mainEntity?.[1].acceptedAnswer.text).toBe(
       bundle.strings['verify.104'],
     );
+  });
+
+  it('published register rows bring the package answer verify.106 back (V-01)', () => {
+    const bundle = localBundle('en', { representatives: [FOUNDER_REP, OFFICE_REP] });
+    const { container } = renderWithIntl(
+      <Faq
+        bundle={bundle}
+        locale="en"
+        founder={PUBLISHED_FOUNDER}
+        register={readRegister(bundle)}
+      />,
+      { locale: 'en' },
+    );
+    expect(faqNode(container)[0].mainEntity?.[2].acceptedAnswer.text).toBe(
+      bundle.strings['verify.106'],
+    );
+    expect(container).not.toHaveTextContent(en.sys.verify.faq.howToCheck);
+  });
+});
+
+describe('Hero steps (QA W220 V-01)', () => {
+  for (const locale of LOCALES) {
+    it(`${locale}: over the empty register, steps 2–3 read the Phase A bodies, never the record promise`, () => {
+      const bundle = localBundle(locale);
+      const s = bundle.strings;
+      renderWithIntl(
+        <Hero
+          bundle={bundle}
+          locale={locale}
+          register={readRegister(bundle)}
+          founder={null}
+          updatedLabel={null}
+        />,
+        { locale },
+      );
+      const steps = screen
+        .getAllByRole('heading', { level: 3 })
+        .map((h) => h.parentElement!.parentElement!);
+      expect(steps).toHaveLength(3);
+      // step 1 (the badge rule) is the package's own composition at every register state
+      expect(steps[0]).toHaveTextContent(
+        `${s['verify.038']} ${s['verify.039']} ${s['verify.040']}`,
+      );
+      expect(steps[1]).toHaveTextContent(SYS[locale].verify.steps.qr);
+      expect(steps[1]).not.toHaveTextContent(s['verify.042']);
+      expect(steps[2]).toHaveTextContent(SYS[locale].verify.steps.match);
+      expect(steps[2]).not.toHaveTextContent(s['verify.047']);
+    });
+  }
+
+  it('published rows restore the package steps — lead, bold, tail (W23)', () => {
+    const bundle = localBundle('en', { representatives: [FOUNDER_REP, OFFICE_REP] });
+    const s = bundle.strings;
+    renderWithIntl(
+      <Hero
+        bundle={bundle}
+        locale="en"
+        register={readRegister(bundle)}
+        founder={PUBLISHED_FOUNDER}
+        updatedLabel="Register last updated: 29 July 2026"
+      />,
+      { locale: 'en' },
+    );
+    const steps = screen
+      .getAllByRole('heading', { level: 3 })
+      .map((h) => h.parentElement!.parentElement!);
+    expect(steps[1]).toHaveTextContent(`${s['verify.042']} ${s['verify.043']}${s['verify.234']}`);
+    expect(steps[2]).toHaveTextContent(`${s['verify.045']} ${s['verify.046']} ${s['verify.047']}`);
+    expect(steps[1]).not.toHaveTextContent(en.sys.verify.steps.qr);
   });
 });

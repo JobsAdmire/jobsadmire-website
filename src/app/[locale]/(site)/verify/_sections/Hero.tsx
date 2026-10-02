@@ -19,7 +19,12 @@ const TICKS = ['verify.027', 'verify.028', 'verify.029'] as const;
 /** The three "Verify in one minute" cards: the title and the body as the package's own fragments
  *  (plain lead, bold, plain tail — W23: composed only where the package splits the sentence).
  *  `glue` is '' where the tail brings its own punctuation (verify.234 starts with ". "). Step 2's
- *  badge is blue-safe, not the design's #1899d5 (white on it is 3.2:1 — D20). */
+ *  badge is blue-safe, not the design's #1899d5 (white on it is 3.2:1 — D20). `phaseA` (QA W220
+ *  V-01): steps 2 and 3 promise that the ID "must open a record on this page" and that a green
+ *  Authorised status must match — a lookup the Phase A register cannot show (`LookupCard` answers
+ *  `register_unavailable`); while `register.active` is empty each body is the whole `sys` string
+ *  named here (never a package lead with a sys tail, W23), and the package composition returns
+ *  with the published rows. */
 const STEPS = [
   {
     n: 1,
@@ -30,6 +35,7 @@ const STEPS = [
     glue: ' ',
     badge: 'bg-[#253063]',
     strong: 'text-white',
+    phaseA: null,
   },
   {
     n: 2,
@@ -40,6 +46,7 @@ const STEPS = [
     glue: '',
     badge: 'bg-blue-safe',
     strong: 'text-white',
+    phaseA: 'verify.steps.qr',
   },
   {
     n: 3,
@@ -50,6 +57,7 @@ const STEPS = [
     glue: ' ',
     badge: 'bg-success-text',
     strong: 'text-[#5ddfb0]',
+    phaseA: 'verify.steps.match',
   },
 ] as const;
 
@@ -199,9 +207,15 @@ export function Hero({
                 <h3 className="m-0 text-card-title text-white">{t(step.titleId)}</h3>
               </div>
               <p className="m-0 text-body-sm text-white/70">
-                {tf(step.lead)} <strong className={step.strong}>{t(step.bold)}</strong>
-                {step.glue}
-                {tf(step.tail)}
+                {step.phaseA && register.active.length === 0 ? (
+                  sys(step.phaseA)
+                ) : (
+                  <>
+                    {tf(step.lead)} <strong className={step.strong}>{t(step.bold)}</strong>
+                    {step.glue}
+                    {tf(step.tail)}
+                  </>
+                )}
               </p>
             </div>
           ))}

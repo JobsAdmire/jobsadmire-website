@@ -30,12 +30,19 @@ function Primary({ cta }: { cta: ResolvedCta }) {
           between words in order, as the design's single-run `.ja-nav-cta` does (W210 b); the
           literal space is the design's one space, no `gap-2` beside it. */}
       <span>
-        {cta.label}
         {/* the long form hides only where the design hides `.ja-cta-long`: its ≤ 1100 rule hides
             it, its ≤ 900 rule shows it again (`display: inline`), so the tail reads below 901 and
             from 1101 — final pass A4 (W210 b): the phone CTA shows "Request Workers" as the
-            design's does, wrapping inside its 185 px cap when the label is long. */}
-        {cta.tail && (
+            design's does, wrapping inside its 185 px cap when the label is long. `tailFirst`
+            (W220 V-03) puts the same span BEFORE the label where that locale's grammar needs it
+            (TR "Sahtekârı Bildir"); the hidden/inline rule is identical either way (W119/W122). */}
+        {cta.tail && cta.tailFirst && (
+          <>
+            <span className="hidden max-lg:inline xl:inline">{cta.tail}</span>{' '}
+          </>
+        )}
+        {cta.label}
+        {cta.tail && !cta.tailFirst && (
           <>
             {' '}
             <span className="hidden max-lg:inline xl:inline">{cta.tail}</span>

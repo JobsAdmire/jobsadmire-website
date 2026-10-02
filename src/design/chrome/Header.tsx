@@ -82,7 +82,7 @@ export function Header({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
           <div className="hidden lg:block">
             <LanguageSwitcher locale={locale} label={languageLabel} />
           </div>
-          <HeaderCtas table={resolveCtas(t)} />
+          <HeaderCtas table={resolveCtas(t, locale)} />
           <MobileNav
             items={hamburger}
             locale={locale}

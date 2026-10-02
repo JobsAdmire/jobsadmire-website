@@ -153,11 +153,16 @@ describe('Header', () => {
     nav.pathname = '/temsilci-dogrulama';
     renderWithIntl(<Header locale="tr" bundle={bundle} />);
     banner = screen.getByRole('banner');
+    // QA W220 V-03: Turkish object + verb — the tail precedes the label in TR ("Sahtekârı Bildir")
     const report = within(banner).getByRole('link', {
-      name: `${t('verify.015')} ${t('verify.016')}`,
+      name: `${t('verify.016')} ${t('verify.015')}`,
     });
     expect(report).toHaveAttribute('href', '/temsilci-dogrulama#report');
     expect(report.className).toContain('bg-danger');
+    const run = report.firstElementChild!;
+    expect(run.firstElementChild).toHaveTextContent(t('verify.016'));
+    expect(run.firstElementChild).toHaveClass('hidden', 'max-lg:inline', 'xl:inline');
+    expect(run.textContent).toBe(`${t('verify.016')} ${t('verify.015')}`);
   });
 
   // W122/W155: Tailwind orders rules by variant, property and name, never by class-string

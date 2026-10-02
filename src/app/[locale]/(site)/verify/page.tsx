@@ -75,7 +75,7 @@ export default async function VerifyPage({ params }: { params: Promise<{ locale:
         submitFraud={submitFraud}
         uploadEvidence={uploadEvidence}
       />
-      <Faq bundle={bundle} locale={locale} founder={founder} />
+      <Faq bundle={bundle} locale={locale} founder={founder} register={register} />
       {/* V-5: the design's sticky mini search bar (a second, unlabelled input) → two in-page
           anchors, from lg; it steps aside once the report section is near. W202: only with
           register rows (the same test Structure uses) — over the Phase A empty register the
