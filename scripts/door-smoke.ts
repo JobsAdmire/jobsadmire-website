@@ -40,9 +40,9 @@ async function main(): Promise<number> {
   if (!base) throw new Error('OPS_API_URL is required');
   if (!token || token.length < MIN_TOKEN)
     throw new Error('OPS_WEBSITE_TEST_TOKEN (wst_…) is required — never the write token');
-  if (token.startsWith('wsw_'))
+  if (!token.startsWith('wst_'))
     throw new Error(
-      'refusing to smoke with a write-class token (wsw_…): it would file real inquiries',
+      'OPS_WEBSITE_TEST_TOKEN must be the test-class token (wst_…, Ops → Integrations → rotate testToken) — a write token (wsw_…) would file real inquiries',
     );
   if (env('OPS_WEBSITE_WRITE_TOKEN') === token)
     throw new Error('OPS_WEBSITE_TEST_TOKEN equals OPS_WEBSITE_WRITE_TOKEN — refusing');
