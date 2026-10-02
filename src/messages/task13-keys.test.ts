@@ -30,6 +30,8 @@ const LEGAL_VALUES = {
  * `true` when the controller's brief states that confirmation; set `false` when it does not —
  * Cycle 4 Step 3's W175 fallback then removes the bullet in both locales and the test below
  * expects it gone (only `{email}` stays). Cycle 6 replaces this file: keep Cycle 4's value.
+ * W207 (owner, 2026-10-02): no privacy mailbox exists — info@jobsadmire.com is the only address,
+ * so this stays `false` for good.
  */
 const PRIVACY_MAILBOX_CONFIRMED = false;
 

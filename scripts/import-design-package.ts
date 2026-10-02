@@ -98,7 +98,7 @@ const SETTINGS = {
   siteUrl: 'https://www.jobsadmire.com',
   phone: '+905011240340',
   phoneDisplay: '+90 501 124 03 40',
-  partnershipsPhone: '+905533832549',
+  partnershipsPhone: null, // W208 (owner, 2026-10-02): one official number — the main line serves partners too
   email: 'info@jobsadmire.com',
   careersEmail: 'careers@jobsadmire.com',
   whatsappNumber: '905011240340',

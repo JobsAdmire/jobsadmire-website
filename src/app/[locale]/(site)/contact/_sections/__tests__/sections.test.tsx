@@ -54,9 +54,9 @@ describe('Hero', () => {
     expect(container.querySelector('a[href="tel:+905011240340"]')).toHaveTextContent(
       '+90 501 124 03 40',
     );
-    expect(container.querySelector('a[href="tel:+905533832549"]')).toHaveTextContent(
-      '+90 553 383 25 49',
-    );
+    // W208: the Agencies card is on the main line too (settings.partnershipsPhone is null)
+    expect(container.querySelectorAll('a[href="tel:+905011240340"]')).toHaveLength(2);
+    expect(container.querySelectorAll('a[href^="tel:"]')).toHaveLength(2);
     expect(container.querySelector('a[href="mailto:info@jobsadmire.com"]')).toHaveTextContent(
       'Reply within ~4 business hours',
     );

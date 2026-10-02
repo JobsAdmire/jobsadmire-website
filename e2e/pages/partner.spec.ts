@@ -5,9 +5,9 @@ const ROUTES = { tr: '/ortak-olun', en: '/en/partner-with-us' } as const;
 /** Canonicals, hreflang and og:image are built from SITE_URL, never the host this run hits. */
 const ORIGIN = 'https://www.jobsadmire.com';
 /** `bundle.settings` in the Phase A LOCAL bundle: the WhatsApp number is the main line's; every
- *  `tel:` on this page is the partner line (W176) — `settings.partnershipsPhone`. */
+ *  `tel:` on this page is the partner line (W176) — `settings.partnershipsPhone`, `null` since W208, so the main line. */
 const WA = 'https://wa.me/905011240340';
-const TEL = 'tel:+905533832549';
+const TEL = 'tel:+905011240340'; // W208: settings.partnershipsPhone is null → the main line (W176 fallback)
 const isMobile = () => test.info().project.name === 'mobile';
 
 /** W92: only `staging` and production carry the Operations door. Every other face — this task's

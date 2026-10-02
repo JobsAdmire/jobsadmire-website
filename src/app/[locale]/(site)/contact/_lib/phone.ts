@@ -1,5 +1,5 @@
 /** `settings.phoneDisplay` exists for the main line only; the partnerships line
- *  (`settings.partnershipsPhone`, E.164) gets the same "+90 553 383 25 49" grouping the design
+ *  (`settings.partnershipsPhone`, E.164) gets the same "+90 5xx xxx xx xx" grouping the design
  *  shows. Turkish numbers (+90 and ten digits) only — anything else renders as stored. */
 export function formatPhoneDisplay(e164: string): string {
   const m = /^\+90(\d{3})(\d{3})(\d{2})(\d{2})$/.exec(e164);
@@ -12,7 +12,7 @@ export type PartnerLine = { phone: string; phoneDisplay: string };
 /** W176: the partner line is `settings.partnershipsPhone`; while it is `null` the main line
  *  (E.164 and `settings.phoneDisplay`) is the fallback, so the card never disappears and the
  *  JSON-LD point never loses its number. The same rule as the Partner page's `partnerLineOf`
- *  (T5): both print "+90 553 383 25 49" for the same value. */
+ *  (T5): both print the same grouping for the same value. */
 export function partnerLineOf(settings: {
   phone: string;
   phoneDisplay: string;

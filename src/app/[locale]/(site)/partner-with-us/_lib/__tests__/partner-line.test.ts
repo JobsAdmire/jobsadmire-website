@@ -25,11 +25,13 @@ describe('partnerLineOf (W176)', () => {
     expect(partnerLineOf({ ...MAIN, partnershipsPhone: null })).toEqual(MAIN);
   });
 
-  it('reads the real LOCAL bundles: +905533832549 shown as +90 553 383 25 49, in both locales', () => {
+  it('reads the real LOCAL bundles: settings.partnershipsPhone is null (W208), so the main line serves, in both locales', () => {
     for (const locale of ['tr', 'en'] as const) {
-      expect(partnerLineOf(load(locale).settings)).toEqual({
-        phone: '+905533832549',
-        phoneDisplay: '+90 553 383 25 49',
+      const { settings } = load(locale);
+      expect(settings.partnershipsPhone).toBeNull();
+      expect(partnerLineOf(settings)).toEqual({
+        phone: '+905011240340',
+        phoneDisplay: '+90 501 124 03 40',
       });
     }
   });

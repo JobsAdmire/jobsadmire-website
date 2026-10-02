@@ -169,7 +169,7 @@ for (const locale of ['tr', 'en'] as const) {
     expect(contactPage.inLanguage).toBe(locale);
     expect(contactPage.mainEntity?.contactPoint?.map((p) => p.telephone)).toEqual([
       '+905011240340',
-      '+905533832549',
+      '+905011240340', // W208: the partnerships point carries the main line while settings.partnershipsPhone is null
     ]);
     const crumbs = of('BreadcrumbList')[0] as { itemListElement: { item: string }[] };
     expect(crumbs.itemListElement.map((i) => i.item)).toEqual([
