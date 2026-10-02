@@ -1,6 +1,7 @@
 import { z } from 'zod';
 import { FORM_KEYS } from '@/analytics/forms';
 import { FORM_FALLBACK_KINDS } from '@/forms/types';
+import { readCapped } from '@/lib/http/read-capped';
 import { recordFormBeacon } from './state';
 
 // The fallback panel's `navigator.sendBeacon` target (D11): a failed submission becomes
@@ -17,7 +18,8 @@ const NO_STORE = { 'Cache-Control': 'no-store' };
 // never gets buffered at all (the earlier version read the whole thing first and only then found
 // it malformed — a free way to inflate this route's own memory/CPU use). W158: a chunked request
 // declares no length, so the body is also read through a byte counter that gives up at the
-// 4,097th byte (`readCapped`) — the cap holds whatever the headers say.
+// 4,097th byte (`readCapped`, `src/lib/http/read-capped.ts` — shared with the unsubscribe route)
+// — the cap holds whatever the headers say.
 const MAX_BEACON_BYTES = 4096;
 
 const BeaconSchema = z
@@ -27,38 +29,6 @@ const BeaconSchema = z
     page: z.string().min(1).max(300),
   })
   .strict();
-
-/** The body as text, read chunk by chunk through a byte counter: `null` as soon as it runs past
- *  `limit` — the reader is cancelled at that chunk, so an oversized body is never buffered whole.
- *  A stream error reads as an empty body (→ 400), as `request.text()`'s rejection did. Decoded
- *  once at the end, so a multi-byte character split across chunks survives. */
-async function readCapped(request: Request, limit: number): Promise<string | null> {
-  if (!request.body) return '';
-  const reader = request.body.getReader();
-  const chunks: Uint8Array[] = [];
-  let size = 0;
-  try {
-    for (;;) {
-      const { done, value } = await reader.read();
-      if (done) break;
-      size += value.byteLength;
-      if (size > limit) {
-        await reader.cancel().catch(() => {});
-        return null;
-      }
-      chunks.push(value);
-    }
-  } catch {
-    return '';
-  }
-  const bytes = new Uint8Array(size);
-  let offset = 0;
-  for (const chunk of chunks) {
-    bytes.set(chunk, offset);
-    offset += chunk.byteLength;
-  }
-  return new TextDecoder().decode(bytes);
-}
 
 export async function POST(request: Request): Promise<Response> {
   const declaredLength = Number(request.headers.get('content-length'));

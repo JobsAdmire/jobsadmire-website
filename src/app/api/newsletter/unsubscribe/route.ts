@@ -1,3 +1,4 @@
+import { readCapped } from '@/lib/http/read-capped';
 import { isOneClickValue, isPlausibleToken } from '@/lib/newsletter/classify';
 import { forwardNewsletterToken } from '@/lib/newsletter/forward';
 
@@ -13,22 +14,38 @@ const HEADERS = { 'Cache-Control': 'private, no-store', 'Content-Type': 'applica
 const json = (body: unknown, status: number) =>
   new Response(JSON.stringify(body), { status, headers: HEADERS });
 
-async function isOneClick(request: Request): Promise<boolean> {
+// The one-click pair is a few bytes; the same 4 KB cap as /api/form-beacon (T13 review M4) holds
+// on the declared length AND, through `readCapped`, on a chunked body that declares none (W158).
+const MAX_BODY_BYTES = 4096;
+
+/** The capped body text parsed as the form it claims to be (`content-type` kept — urlencoded or
+ *  multipart, RFC 8058 §3.1): the pair's value, or `null` for anything that is not a form body
+ *  (JSON, text, empty). */
+async function oneClickValueOf(text: string, contentType: string | null) {
   try {
-    return isOneClickValue((await request.formData()).get('List-Unsubscribe'));
+    const form = await new Request('http://localhost/', {
+      method: 'POST',
+      headers: contentType ? { 'content-type': contentType } : undefined,
+      body: text,
+    }).formData();
+    return form.get('List-Unsubscribe');
   } catch {
-    return false; // not a form body (JSON, text, empty) — not RFC 8058
+    return null; // not a form body (JSON, text, empty) — not RFC 8058
   }
 }
 
 export async function POST(request: Request): Promise<Response> {
   const token = new URL(request.url).searchParams.get('token');
   if (!isPlausibleToken(token)) return json({ error: 'invalid' }, 400);
-  // The one-click pair is a few bytes; refuse a declared body over 4 KB before reading it
-  // (the form-beacon route's cap, T13 review M4).
+  // Refuse a declared body over the cap before reading a byte; count the bytes of one that
+  // declares nothing and give up at the 4,097th.
   const declared = Number(request.headers.get('content-length'));
-  if (Number.isFinite(declared) && declared > 4096) return json({ error: 'too-large' }, 413);
-  if (!(await isOneClick(request))) return json({ error: 'not-one-click' }, 400);
+  if (Number.isFinite(declared) && declared > MAX_BODY_BYTES)
+    return json({ error: 'too-large' }, 413);
+  const text = await readCapped(request, MAX_BODY_BYTES);
+  if (text === null) return json({ error: 'too-large' }, 413);
+  const value = await oneClickValueOf(text, request.headers.get('content-type'));
+  if (!isOneClickValue(value)) return json({ error: 'not-one-click' }, 400);
   const result = await forwardNewsletterToken('unsubscribe', token);
   switch (result.kind) {
     case 'ok':

@@ -77,6 +77,55 @@ describe('POST /api/newsletter/unsubscribe (RFC 8058, I12)', () => {
     expect(forward).not.toHaveBeenCalled();
   });
 
+  // Final pass P2-4 (W158 for this route): a chunked request declares no Content-Length, so the
+  // declared-length check above never sees it — the body is read through the shared `readCapped`
+  // byte counter and refused at the 4,097th byte, exactly as /api/form-beacon does.
+  const encode = (text: string) => new TextEncoder().encode(text);
+  function streamed(chunks: Uint8Array[]) {
+    let pulled = 0;
+    const body = new ReadableStream<Uint8Array>(
+      {
+        pull(controller) {
+          const chunk = chunks[pulled];
+          if (chunk === undefined) return controller.close();
+          pulled += 1;
+          controller.enqueue(chunk);
+        },
+      },
+      { highWaterMark: 0 },
+    );
+    const request = new Request(url(), {
+      method: 'POST',
+      headers: { 'content-type': 'application/x-www-form-urlencoded' },
+      body,
+      duplex: 'half',
+    } as RequestInit);
+    expect(request.headers.get('content-length')).toBeNull();
+    return request;
+  }
+  const oneClickPadded = (bytes: number) => {
+    const head = 'List-Unsubscribe=One-Click&pad=';
+    return encode(head + 'x'.repeat(bytes - head.length));
+  };
+
+  it('refuses a streamed body over 4 KB with 413 — no Content-Length to trust (W158), before any forward', async () => {
+    const over = oneClickPadded(4096 + 1);
+    expect(over.byteLength).toBe(4097);
+    const res = await POST(streamed([over.slice(0, 2000), over.slice(2000)]));
+    expect(res.status).toBe(413);
+    expect(await res.json()).toEqual({ error: 'too-large' });
+    expect(forward).not.toHaveBeenCalled();
+  });
+
+  it('reads a streamed one-click body of exactly 4 KB and forwards it', async () => {
+    forward.mockResolvedValue({ kind: 'ok', outcome: 'UNSUBSCRIBED' });
+    const at = oneClickPadded(4096);
+    expect(at.byteLength).toBe(4096);
+    const res = await POST(streamed([at.slice(0, 1000), at.slice(1000, 3000), at.slice(3000)]));
+    expect(res.status).toBe(200);
+    expect(forward).toHaveBeenCalledWith('unsubscribe', TOKEN);
+  });
+
   it('maps the forward results to the one-click answers', async () => {
     const cases: [NewsletterForwardResult, number, string][] = [
       [{ kind: 'invalid' }, 400, 'invalid'],
