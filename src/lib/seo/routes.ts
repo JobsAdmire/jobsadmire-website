@@ -81,7 +81,7 @@ export function localeAlternates(href: Href): { languages: Record<string, string
  */
 export const UNBUILT_PATHNAMES: ReadonlySet<keyof typeof pathnames> = new Set<
   keyof typeof pathnames
->(['/verify', '/careers', '/careers/[slug]', '/blog', '/blog/[slug]']);
+>(['/careers', '/careers/[slug]', '/blog', '/blog/[slug]']);
 
 /**
  * W37 — what `app/robots.ts` disallows for one locale: `noindexExternalPaths(locale)` minus
