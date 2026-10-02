@@ -64,6 +64,8 @@ export const GATE_ROUTE_TABLE: readonly GateRoute[] = [
   // T12 (B-14): the one written article (EN; TR has no body — W4). Pinned to the committed bundle
   // by src/app/[locale]/(site)/blog/__tests__/gate-row.test.ts.
   { path: '/en/blog/turkey-work-permit-process-employer-guide', indexable: false },
+  // T15 (W21): the EN twin of the WP2a conversion-page row — noindex, never audited by Lighthouse.
+  { path: '/en/thank-you?form=hire', indexable: false },
 ];
 
 export const GATE_ROUTES: readonly string[] = GATE_ROUTE_TABLE.map((r) => r.path);
