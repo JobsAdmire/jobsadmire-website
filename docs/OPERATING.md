@@ -59,11 +59,22 @@ Still to land, with the work package that brings them:
 
 ## External monitor and second human
 
-The external monitor pages the **owner's phone**. A **second human** (pending §10 item 10 — name + phone/email required before Gate A, no default) is a fallback recipient for every website event class in `docs/INTEGRATIONS.md` I13 — a single point of failure on alerting is explicitly called out in the plan's risk register ("Owner is the single point of everything").
+The external monitor pages the **owner's phone**. A **second human** (configured on the Operations Integrations screen — §10 item 10 closed; the recipient's contact details live only in the Operations notification seed, never in this repo or its docs) is a fallback recipient for every website event class in `docs/INTEGRATIONS.md` I13 — a single point of failure on alerting is explicitly called out in the plan's risk register ("Owner is the single point of everything").
+
+## Site-health drill (Gate A checklist item 7)
+
+Run once before Gate A, by the owner, with the external monitor armed: (1) point the monitor at
+a URL that fails — a preview with a misconfigured adapter, or the Operations door flipped off —
+and confirm the phone rings within the monitor's interval; (2) on Operations, flip a form off in
+the Integrations screen and confirm the second human also receives the
+`WEBSITE_FORMS_UNAVAILABLE` notification (T14 exercises the same delivery path in its own proof);
+(3) restore both and confirm the all-clear. Record the date, the interval and who was paged in
+the WP2b ledger. This section names the checks the drill rehearses; `/api/site-health`'s own
+contract (what each field means) is documented above, in § Site-health checks.
 
 ## Weekly five-minute owner check
 
-A short, recurring check the owner performs (not delegated) — the plan does not further specify the exact checklist beyond its existence; treat this as: today's digest arrived, `/api/site-health` is green, and the APPROVE queue (Phase B) isn't backing up.
+A short, recurring check the owner performs (not delegated) — the plan does not further specify the exact checklist beyond its existence; treat this as: today's digest arrived, `/api/site-health` is green, and the APPROVE queue (Phase B) isn't backing up. At Gate A, add a sixth check: `npm run sweep:legacy` against production is clean (a `FAIL` row is a redirect regression) — a one-minute run, worth doing after any change that touches `redirects/` or `next.config.ts`'s redirect list.
 
 ## Work-package sign-off
 
