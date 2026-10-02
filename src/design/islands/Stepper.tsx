@@ -19,8 +19,11 @@ export type StepperProps = {
   stretch?: boolean;
 };
 
-/** The ≤ 700 px twins `stretch` adds (different variants from the base row, W122). */
+/** The ≤ 700 px twins `stretch` adds (different variants from the base row, W122). `root` makes
+ *  the group span its container: as a flex item its `width: auto` would size the 50 / 1fr / 50 grid
+ *  to the input's intrinsic width (W216 (3)). */
 export const STEPPER_STRETCH = {
+  root: 'max-md:w-full',
   row: 'max-md:grid max-md:grid-cols-[50px_1fr_50px] max-md:gap-2',
   button: 'max-md:h-[46px] max-md:w-full max-md:rounded-input',
   input: 'max-md:w-full max-md:rounded-input max-md:border',
@@ -86,7 +89,9 @@ export function Stepper({
     <div
       role="group"
       aria-labelledby={`${id}-label`}
-      className={['flex flex-col gap-1', className].filter(Boolean).join(' ')}
+      className={['flex flex-col gap-1', stretch && STEPPER_STRETCH.root, className]
+        .filter(Boolean)
+        .join(' ')}
     >
       <label id={`${id}-label`} htmlFor={id} className="text-body-sm font-bold">
         {label}

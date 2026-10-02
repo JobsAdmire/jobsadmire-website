@@ -36,6 +36,7 @@ describe('Stepper', () => {
   // Final pass B4 (W190 A1c): the design's calculator headcount row at ≤ 700 px (`.ja-cc-head`):
   // a 50 px / 1fr / 50 px grid with 8 px gaps, full-width 46 px buttons with their own radius and
   // a full-width input with its own border — an additive `stretch` prop, never page selectors.
+  // W216 (3): the root spans its container too, or a flex parent would size the grid to the input.
   const STRETCH_ROW = ['max-md:grid', 'max-md:grid-cols-[50px_1fr_50px]', 'max-md:gap-2'];
   const STRETCH_BTN = ['max-md:h-[46px]', 'max-md:w-full', 'max-md:rounded-input'];
   const STRETCH_INPUT = ['max-md:w-full', 'max-md:rounded-input', 'max-md:border'];
@@ -44,12 +45,18 @@ describe('Stepper', () => {
     const { unmount } = render(<Controlled initial={5} spy={vi.fn()} stretch />);
     const input = screen.getByRole('spinbutton');
     expect(input.parentElement).toHaveClass('flex', 'items-stretch', ...STRETCH_ROW);
+    expect(input.closest('[role="group"]')).toHaveClass('flex', 'flex-col', 'max-md:w-full');
     for (const b of screen.getAllByRole('button')) expect(b).toHaveClass(...STRETCH_BTN);
     expect(input).toHaveClass('w-20', 'border-y', ...STRETCH_INPUT);
     unmount();
     render(<Controlled initial={5} spy={vi.fn()} />);
     const plain = screen.getByRole('spinbutton');
-    for (const el of [plain, plain.parentElement!, ...screen.getAllByRole('button')])
+    for (const el of [
+      plain,
+      plain.parentElement!,
+      plain.closest('[role="group"]')!,
+      ...screen.getAllByRole('button'),
+    ])
       expect(el.className).not.toMatch(/max-md:/);
   });
 

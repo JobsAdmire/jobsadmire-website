@@ -38,7 +38,8 @@ describe('RadioChips', () => {
   // Final pass B4 (W190 A1c): the design's headcount quick-pick chips at ≤ 700 px
   // (`.ja-cc-hchips`: `grid-template-columns: repeat(4, 1fr)`, 7 px gaps) — equal columns for
   // however many chips, each chip full-width and centred; the 44 px target stays (D20 over the
-  // design's 40). An additive `stretch` prop.
+  // design's 40). An additive `stretch` prop. W216 (3): the fieldset spans its container too, or a
+  // flex parent would size the grid to 4 × the widest chip.
   it('stretch: equal-column grid ≤ 700 px with full-width centred chips; nothing without it (B4)', () => {
     const { container, unmount } = render(
       <RadioChips
@@ -50,6 +51,7 @@ describe('RadioChips', () => {
         stretch
       />,
     );
+    expect(container.querySelector('fieldset')).toHaveClass('max-md:w-full');
     const row = container.querySelector('[role="radiogroup"] > div')!;
     expect(row).toHaveClass(
       'flex',

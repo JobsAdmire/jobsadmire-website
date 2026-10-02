@@ -5,8 +5,11 @@ export type RadioChipOption = { value: string; label: string };
 
 /** Final pass B4 (W190 A1c): the ≤ 700 px twins `stretch` adds — the design's headcount
  *  quick-pick chips (`.ja-cc-hchips`: `repeat(4, 1fr)`, 7 px gaps) as equal columns for however
- *  many chips, each full-width and centred; the 44 px target stays (D20 over the design's 40). */
+ *  many chips, each full-width and centred; the 44 px target stays (D20 over the design's 40).
+ *  `root` makes the fieldset span its container: as a flex item its `width: auto` would size the
+ *  grid to 4 × the widest chip (W216 (3)). */
 export const CHIPS_STRETCH = {
+  root: 'max-md:w-full',
   row: 'max-md:grid max-md:grid-flow-col max-md:auto-cols-fr max-md:gap-[7px]',
   label: 'max-md:flex',
   chip: 'max-md:w-full max-md:justify-center max-md:px-2',
@@ -51,7 +54,9 @@ export function RadioChips({
     <fieldset
       role="radiogroup"
       aria-labelledby={legendId}
-      className={['m-0 min-w-0 border-0 p-0', className].filter(Boolean).join(' ')}
+      className={['m-0 min-w-0 border-0 p-0', stretch && CHIPS_STRETCH.root, className]
+        .filter(Boolean)
+        .join(' ')}
     >
       <legend
         id={legendId}

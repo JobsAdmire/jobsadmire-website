@@ -13,11 +13,13 @@ const STEP_BTN =
  *  imported: those are `'use client'` modules, whose non-component exports reach a server module
  *  only as client references. `Lookalikes.test.tsx` pins the two copies equal to the primitives. */
 const STEPPER_STRETCH = {
+  root: 'max-md:w-full',
   row: 'max-md:grid max-md:grid-cols-[50px_1fr_50px] max-md:gap-2',
   button: 'max-md:h-[46px] max-md:w-full max-md:rounded-input',
   input: 'max-md:w-full max-md:rounded-input max-md:border',
 } as const;
 const CHIPS_STRETCH = {
+  root: 'max-md:w-full',
   row: 'max-md:grid max-md:grid-flow-col max-md:auto-cols-fr max-md:gap-[7px]',
   label: 'max-md:flex',
   chip: 'max-md:w-full max-md:justify-center max-md:px-2',
@@ -26,7 +28,10 @@ const CHIPS_STRETCH = {
 export function StepperLook({ value, stretch = false }: { value: string; stretch?: boolean }) {
   const btn = [STEP_BTN, stretch && STEPPER_STRETCH.button].filter(Boolean).join(' ');
   return (
-    <div aria-hidden="true" className="flex flex-col gap-1">
+    <div
+      aria-hidden="true"
+      className={['flex flex-col gap-1', stretch && STEPPER_STRETCH.root].filter(Boolean).join(' ')}
+    >
       <div
         className={['flex items-stretch', stretch && STEPPER_STRETCH.row].filter(Boolean).join(' ')}
       >
@@ -64,7 +69,13 @@ export function ChipsLook({
   return (
     <div
       aria-hidden="true"
-      className={['flex flex-wrap gap-2', stretch && CHIPS_STRETCH.row].filter(Boolean).join(' ')}
+      className={[
+        'flex flex-wrap gap-2',
+        // the live chips' root (fieldset) and row (div) are this one element: both token sets
+        stretch && `${CHIPS_STRETCH.root} ${CHIPS_STRETCH.row}`,
+      ]
+        .filter(Boolean)
+        .join(' ')}
     >
       {options.map((o) => (
         // the live chip is a <label><input/><span/></label>: the label's `max-md:flex` and the
