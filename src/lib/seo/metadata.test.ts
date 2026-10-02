@@ -58,15 +58,49 @@ describe('buildMetadata', () => {
     expect(md.robots).toMatchObject({ index: true, follow: true });
   });
 
+  // Final pass P2-8 (WP2a T4-4 P3): every generated-route image is a descriptor — url, the route's
+  // fixed 1200×630 canvas and the page title as alt — on openGraph AND twitter (Twitter does not
+  // inherit the OG images once a twitter block exists).
+  const generated = (locale: 'tr' | 'en', pageKey: string, alt: string) => ({
+    url: pageOgImageUrl(locale, pageKey),
+    width: 1200,
+    height: 630,
+    alt,
+  });
+
   it('points openGraph and twitter at the generated image when the record has no ogImage', () => {
     const md = buildMetadata({ ...base, pageKey: 'home' });
-    expect(md.openGraph?.images).toEqual([pageOgImageUrl('tr', 'home')]);
-    expect(md.openGraph?.images).toEqual(['https://www.jobsadmire.com/og/tr/home.png']);
-    expect(md.twitter?.images).toEqual([pageOgImageUrl('tr', 'home')]);
+    const title = t(bundle.pages.home.titleId);
+    expect(md.openGraph?.images).toEqual([generated('tr', 'home', title)]);
+    expect(md.openGraph?.images).toEqual([
+      { url: 'https://www.jobsadmire.com/og/tr/home.png', width: 1200, height: 630, alt: title },
+    ]);
+    expect(md.twitter?.images).toEqual([generated('tr', 'home', title)]);
     // no record at all → the generic site image, never a 404
     expect(buildMetadata({ ...base, pageKey: 'no-such-page' }).openGraph?.images).toEqual([
-      'https://www.jobsadmire.com/og/tr/site.png',
+      {
+        url: 'https://www.jobsadmire.com/og/tr/site.png',
+        width: 1200,
+        height: 630,
+        alt: 'JobsAdmire',
+      },
     ]);
+  });
+
+  it('a template page reusing its index image (W169) carries the same descriptor with its own title as alt', () => {
+    const md = buildMetadata({
+      ...base,
+      locale: 'en',
+      href: { pathname: '/blog/[slug]', params: { slug: 'work-permit-guide' } },
+      pageKey: 'blogArticle',
+      fallbackTitle: 'Work permit guide | JobsAdmire',
+      fallbackDescription: 'excerpt',
+      alternates: { en: '/en/blog/work-permit-guide' },
+      openGraph: { type: 'article', images: [pageOgImageUrl('en', 'blog')] },
+    });
+    const image = generated('en', 'blog', 'Work permit guide | JobsAdmire');
+    expect(md.openGraph?.images).toEqual([image]);
+    expect(md.twitter?.images).toEqual([image]);
   });
 
   it('lets a record ogImage win over the generated one, and an explicit override win over both', () => {
@@ -77,9 +111,12 @@ describe('buildMetadata', () => {
         home: { ...bundle.pages.home, ogImage: 'https://cdn.example/home.png' },
       },
     };
+    // a record ogImage or a foreign override is not the route's canvas: url and alt only — no
+    // width/height the metadata cannot vouch for
+    const title = t(bundle.pages.home.titleId);
     expect(
       buildMetadata({ ...base, bundle: withImage, pageKey: 'home' }).openGraph?.images,
-    ).toEqual(['https://cdn.example/home.png']);
+    ).toEqual([{ url: 'https://cdn.example/home.png', alt: title }]);
     expect(
       buildMetadata({
         ...base,
@@ -87,7 +124,7 @@ describe('buildMetadata', () => {
         pageKey: 'home',
         openGraph: { images: ['https://cdn.example/override.png'] },
       }).openGraph?.images,
-    ).toEqual(['https://cdn.example/override.png']);
+    ).toEqual([{ url: 'https://cdn.example/override.png', alt: title }]);
   });
 
   it('honours per-locale alternates for a per-locale-slug detail page (D16)', () => {

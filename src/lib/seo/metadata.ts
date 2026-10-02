@@ -24,6 +24,16 @@ export type MetadataOpenGraphOverride = {
   images?: string[];
 };
 
+/** The OG route's fixed canvas (`src/app/og/[locale]/[pageKey]/route.tsx`). */
+const OG_CANVAS = { width: 1200, height: 630 } as const;
+
+/** An `og:image`/`twitter:image` descriptor (WP2a T4-4 P3, final pass P2-8): the URL, the page
+ *  title as `alt`, and the canvas size only for the generated route's images — a record `ogImage`
+ *  or a foreign override has a size this module cannot vouch for, so it carries url and alt alone. */
+function ogImageDescriptor(url: string, alt: string) {
+  return url.startsWith(`${SITE_URL}/og/`) ? { url, ...OG_CANVAS, alt } : { url, alt };
+}
+
 function resolveAlternate(locale: Locale, target: AlternateTarget): string {
   if (typeof target !== 'string') return absoluteUrl(locale, target);
   return /^https?:\/\//.test(target) ? target : `${SITE_URL}${target}`;
@@ -70,9 +80,11 @@ export function buildMetadata(args: {
   const languages = args.alternates
     ? overrideAlternates(locale, href, args.alternates)
     : localeAlternates(href).languages;
-  // Explicit override → the record's own image → the generated route (docs/SEO.md § OG images).
-  const images =
-    args.openGraph?.images ?? (seo?.ogImage ? [seo.ogImage] : [pageOgImageUrl(locale, pageKey)]);
+  // Explicit override → the record's own image → the generated route (docs/SEO.md § OG images);
+  // each as a descriptor with the title as alt and, for the route's images, the 1200×630 canvas.
+  const images = (
+    args.openGraph?.images ?? (seo?.ogImage ? [seo.ogImage] : [pageOgImageUrl(locale, pageKey)])
+  ).map((url) => ogImageDescriptor(url, title));
   const og = {
     title,
     description,
