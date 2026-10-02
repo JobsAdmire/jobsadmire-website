@@ -186,7 +186,7 @@ export function jobPostingJsonLd(input: JobPostingJsonLdInput) {
       '@type': 'Place' as const,
       address: compact({
         '@type': 'PostalAddress' as const,
-        addressLocality: input.jobLocation.city,
+        addressLocality: input.jobLocation.city || undefined,
         addressCountry: input.jobLocation.country,
       }),
     },

@@ -1,9 +1,11 @@
 @import 'tailwindcss';
-/* Tailwind 4 scans every non-ignored text file for class candidates. The plans,
-   specs and the 2026-09-25 handoff material under docs/superpowers contain code
-   blocks whose stray "[…]" strings produced invalid declarations ("Missed
-   semicolon") and broke `next build`; nothing in there is real page CSS. */
-@source not '../../docs/superpowers';
+/* Tailwind 4 scans every non-ignored text file for class candidates. Code blocks in
+   docs/ (W213: a T14 doc token broke `next build` twice), the e2e specs, the scripts
+   and the design package's HTML are never page CSS — only src/ is. */
+@source not '../../docs';
+@source not '../../design-package';
+@source not '../../e2e';
+@source not '../../scripts';
 /* The class-collision guard's classifier (W155) lists utility keywords as data; it is a test
    helper, never page CSS, so nothing in src/test/ may generate a rule. */
 @source not '../test';

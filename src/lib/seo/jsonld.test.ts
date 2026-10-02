@@ -190,5 +190,9 @@ describe('jobPostingJsonLd', () => {
     });
     expect('addressLocality' in cityless.jobLocation.address).toBe(false);
     assertNoUndefined(cityless);
+    // W212 M1: an empty-string city is "no city" too — never `addressLocality: ''`
+    const emptyCity = jobPostingJsonLd({ ...input, jobLocation: { city: '', country: 'IN' } });
+    expect('addressLocality' in emptyCity.jobLocation.address).toBe(false);
+    assertNoUndefined(emptyCity);
   });
 });

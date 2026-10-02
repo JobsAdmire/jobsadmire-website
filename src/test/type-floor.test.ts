@@ -38,6 +38,8 @@ const MIN_WIDTH_RANK: Record<string, number> = { '': 0, xs: 1, sm: 2, md: 3, lg:
 const NOT_DESKTOP = /^(max-|2xl$)/;
 
 const SIZE_TOKEN = /^((?:[a-z0-9-]+(?:\[[^\]]*\])?:)*)text-\[(\d+(?:\.\d+)?)px\](?:\/\S+)?$/;
+/** The arbitrary-property spelling of the same thing (`[font-size:9px]`, W212 M4). */
+const PROP_TOKEN = /^((?:[a-z0-9-]+(?:\[[^\]]*\])?:)*)\[font-size:(\d+(?:\.\d+)?)px\]$/;
 
 export type FloorFinding = { line: number; classList: string; desktopPx: number };
 
@@ -46,7 +48,7 @@ export function desktopSizeOf(classList: string): number | null {
   let bestRank = -1;
   let best: number | null = null;
   for (const token of classList.split(/\s+/)) {
-    const m = SIZE_TOKEN.exec(token);
+    const m = SIZE_TOKEN.exec(token) ?? PROP_TOKEN.exec(token);
     if (!m) continue;
     const variants = m[1].split(':').filter(Boolean);
     if (variants.some((v) => NOT_DESKTOP.test(v))) continue;
@@ -136,6 +138,8 @@ describe('desktop type floor — the scanner (W190/W191)', () => {
     expect(desktopSizeOf('text-[13px] xl:text-[10px]')).toBe(10);
     expect(desktopSizeOf('m-0 text-[12px] font-bold lg:text-[11.5px]')).toBe(11.5);
     expect(desktopSizeOf('text-[12.5px]/[18px] tracking-[1px]')).toBe(12.5);
+    expect(desktopSizeOf('[font-size:9px] font-bold')).toBe(9);
+    expect(desktopSizeOf('text-[12px] xl:[font-size:10px]')).toBe(10);
     expect(desktopSizeOf('xl:text-[11px] text-[10.5px]')).toBe(11); // order in the string is irrelevant
     expect(desktopSizeOf('hover:text-[9px]')).toBe(9); // a state variant still reads at desktop
   });
