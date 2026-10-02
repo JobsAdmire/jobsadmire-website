@@ -56,6 +56,7 @@ const LEGAL_KEYS = [
   'legal.kvkk.pendingTitle',
   'legal.kvkk.pendingBody',
   'legal.kvkk.privacyLink',
+  'legal.privacy.cookiePolicyLink', // QA W221 LEGAL-04: the Privacy page's door to the Cookie Policy
   'legal.cookiePolicy.pendingTitle',
   'legal.cookiePolicy.pendingBody',
 ];

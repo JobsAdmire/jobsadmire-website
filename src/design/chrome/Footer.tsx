@@ -17,11 +17,17 @@ import { navGroup } from './nav';
 import { NavLink, type ChromeNavItem } from './NavLink';
 import { socialLinks } from './SocialRail';
 
-/** The legal row's two links (W11). The frozen contract has no `footerLegal` nav group, so
- *  this is the one route list still declared in the chrome — canonical ids per R15. */
+/** The legal row's four links (W11; QA W221 LEGAL-04). The frozen contract has no `footerLegal`
+ *  nav group, so this is the one route list still declared in the chrome — canonical ids per
+ *  R15 for the two the package names; the KVKK notice and the Cookie Policy have no package id
+ *  (T13 pages), so they read their own `sys.legal.*.title` — until this row linked them they were
+ *  orphan pages (indexable, in the sitemap, named by every consent checkbox, linked from nowhere
+ *  while the consent banner is unmounted). */
 const LEGAL = [
   { href: '/privacy', labelId: 'home.218' },
   { href: '/terms', labelId: 'home.219' },
+  { href: '/kvkk', sysLabelId: 'legal.kvkk.title' },
+  { href: '/cookie-policy', sysLabelId: 'legal.cookiePolicy.title' },
 ] as const;
 
 /** W183: the design's footer logo is the full wordmark (`BRAND.logo`), 50 px tall — 37.5 px from
@@ -209,13 +215,17 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
         <div className="flex flex-wrap items-center justify-between gap-x-6 gap-y-1 border-t border-white/15 py-5">
           <p className="m-0 text-white/50">{t('home.228')}</p>
           <div className="flex flex-wrap items-center gap-x-5 gap-y-1">
-            {/* W11: Privacy/Terms in the legal row — both pages exist since T13
-              (`(minimal)/privacy`, `(minimal)/terms`). */}
-            <nav aria-label={sys('nav.legal')} className="flex items-center gap-x-4">
+            {/* W11: Privacy/Terms in the legal row — all four legal pages exist since T13
+              (`(minimal)/privacy`, `/terms`, `/kvkk`, `/cookie-policy`); the row wraps (LEGAL-04). */}
+            <nav aria-label={sys('nav.legal')} className="flex flex-wrap items-center gap-x-4">
               {LEGAL.map((l) => (
                 <NavLink
                   key={l.href}
-                  item={{ href: l.href, label: t(l.labelId), external: false }}
+                  item={{
+                    href: l.href,
+                    label: 'labelId' in l ? t(l.labelId) : sys(l.sysLabelId),
+                    external: false,
+                  }}
                   className={FLINK}
                 />
               ))}

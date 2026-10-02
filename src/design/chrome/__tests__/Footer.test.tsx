@@ -85,7 +85,7 @@ describe('Footer', () => {
     expect(footer.querySelectorAll('a[href^="/blog/"]')).toHaveLength(0);
   });
 
-  it('carries the licence number and the Privacy/Terms links in the legal row (home.218/219)', () => {
+  it('carries the licence number and the four legal links in the legal row (home.218/219 + sys.legal.*.title, LEGAL-04)', () => {
     renderWithIntl(<Footer locale="tr" bundle={bundle} />);
     const footer = screen.getByRole('contentinfo');
     expect(footer).toHaveTextContent(bundle.settings.licence.permitNo);
@@ -99,6 +99,18 @@ describe('Footer', () => {
       'href',
       '/kullanim-kosullari',
     );
+    // QA W221 LEGAL-04: the KVKK notice and the Cookie Policy were orphan pages — the consent
+    // checkboxes name them and the sitemap lists them, but nothing linked them while the consent
+    // banner is unmounted (gtmId null). Their labels are the pages' own sys titles (no package id).
+    expect(within(legal).getByRole('link', { name: tr.sys.legal.kvkk.title })).toHaveAttribute(
+      'href',
+      '/kvkk',
+    );
+    expect(
+      within(legal).getByRole('link', { name: tr.sys.legal.cookiePolicy.title }),
+    ).toHaveAttribute('href', '/cerez-politikasi');
+    expect(within(legal).getAllByRole('link')).toHaveLength(4);
+    expect(legal).toHaveClass('flex-wrap');
   });
 
   it('offers the cookie-preferences door in the legal row once a container id exists (R36)', () => {
