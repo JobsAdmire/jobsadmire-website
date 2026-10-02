@@ -73,7 +73,10 @@ export const tokens = {
     /** … and the design's own ≤ 900 px 20 */
     gutterMobile: 20,
     /** the header row (the design's full-bleed `.ja-nav`, padding 32): 32 at 901–1100, 24 from
-     *  1101; below 901 it keeps `gutterMobile` */
+     *  1101; below 901 the design's own `.ja-nav` rules — 14 px to 900, 12 px at ≤ 460 (final
+     *  pass A2, W184) */
+    navGutterPhone: 12,
+    navGutterMobile: 14,
     navGutterTablet: 32,
     navGutterDesktop: 24,
     hitTarget: 44,

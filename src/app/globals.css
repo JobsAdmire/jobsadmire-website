@@ -91,10 +91,17 @@
   --fs-h2: clamp(28px, 3.2vw, 42px);
   --fs-h2-process: clamp(30px, 3.4vw, 46px);
   /* W180: the side padding of `.container-site` and the slim bar (the design's `.ja-sec` /
-     `.ja-slim`: 20 px from 900 down), the header row's (`.ja-nav`) and the content box's cap */
+     `.ja-slim`: 20 px from 900 down), the header row's (`.ja-nav`) and the content box's cap.
+     Final pass A2 (W184): the header row follows the design's own `.ja-nav` paddings below 901 —
+     12 px at ≤ 460, 14 px from 461 to 900 — never the sections' 20 px. */
   --gutter: 20px;
-  --gutter-nav: 20px;
+  --gutter-nav: 12px;
   --container-max: none;
+}
+@media (min-width: 461px) {
+  :root {
+    --gutter-nav: 14px;
+  }
 }
 /* W11: the header's desktop row is on from 901px (the design's own breakpoint); its links
    drop to 12px there so seven of them, the language pills and the primary CTA fit a 1100px

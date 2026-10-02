@@ -58,7 +58,8 @@ test('the desktop nav row appears from 901px, the hamburger below it, nothing ov
 
 // W180: the content container is the design's 1280/48 wrapper at 0.75 — a 960 px box with 36 px
 // gutters from 1101, the authored 48 px at 901–1100, 20 px below — while the slim bar and the
-// header row stay full-bleed (padding only), as the design draws them.
+// header row stay full-bleed (padding only), as the design draws them. Final pass A2 (W184): the
+// header row pads the design's own `.ja-nav` 14 px below 901 and 12 px at ≤ 460.
 test('the content container is 960 px from 1101 and the slim bar and header rows are full-bleed (W180)', async ({
   page,
 }) => {
@@ -84,8 +85,10 @@ test('the content container is 960 px from 1101 and the slim bar and header rows
     [1101, 36, 24],
     [1100, 48, 32],
     [901, 48, 32],
-    [900, 20, 20],
-    [390, 20, 20],
+    [900, 20, 14],
+    [461, 20, 14],
+    [460, 20, 12],
+    [390, 20, 12],
   ] as const) {
     await page.setViewportSize({ width, height: 900 });
     const m = await measure();

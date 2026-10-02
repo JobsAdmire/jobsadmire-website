@@ -23,9 +23,13 @@ const PROMOTED = new Set(['/blog', '/careers', '/verify', '/partner-with-us']);
 const LOGO_H = 34;
 const LOGO_W = Math.round((BRAND.logo.width * LOGO_H) / BRAND.logo.height);
 // The design's heights: 30 px below 901 (its ≤ 900 `.ja-nav img` rule; ≤ 460 too), the authored
-// 34 px at 901–1100, 34 × 0.75 from 1101 (D19). `max-w-full` + `object-contain` inside a
-// `min-w-0` link let a long page CTA squeeze the logo instead of overflowing a 390 px row.
-const LOGO = 'block h-[30px] w-auto max-w-full object-contain lg:h-[34px] xl:h-[25.5px]';
+// 34 px at 901–1100, 34 × 0.75 from 1101 (D19). Final pass A3/A4 (W184, W185 A2, W210 b): the box
+// ratio is pinned from the asset's own dimensions (`LOGO_RATIO`, so the width never settles by a
+// pixel when the file arrives) and the logo is FIXED — the link is `shrink-0`; below 461 a long
+// page CTA caps itself at 185 px and wraps its label (`HeaderCtas`), as the design's `.ja-nav-cta`
+// does, instead of squeezing the wordmark (82 % TR / 67 % EN on the calculator route at 390, T3).
+const LOGO = 'block h-[30px] w-auto object-contain lg:h-[34px] xl:h-[25.5px]';
+const LOGO_RATIO = { aspectRatio: `${BRAND.logo.width} / ${BRAND.logo.height}` };
 
 // `text-nav` is `--fs-nav`: 12px between 901 and 1100, the 11px floor from 1101 (W11).
 const NAV_LINK =
@@ -45,13 +49,14 @@ export function Header({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
       {/* W180: the design's nav is a full-bleed row (padding only) — never the 960 px content
           box the sections share (`chrome-row-nav`, src/app/globals.css). */}
       <div className="chrome-row-nav flex items-center justify-between gap-5 py-3 max-xs:gap-2.5">
-        <Link href="/" prefetch={false} className="min-w-0 shrink no-underline">
+        <Link href="/" prefetch={false} className="shrink-0 no-underline">
           <Image
             src={BRAND.logo.src}
             alt="JobsAdmire"
             width={LOGO_W}
             height={LOGO_H}
             preload
+            style={LOGO_RATIO}
             className={LOGO}
           />
         </Link>
@@ -70,7 +75,9 @@ export function Header({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
             <NavLink key={item.href} item={item} className={NAV_LINK} />
           ))}
         </nav>
-        <div className="flex flex-none items-center gap-2">
+        {/* ≤ 460 the design's `.ja-nav-actions` flexes to the row's end so the capped CTA can take
+            the width the fixed logo leaves (W210 b); from 461 the block keeps its own width. */}
+        <div className="flex flex-none items-center gap-2 max-xs:min-w-0 max-xs:flex-auto max-xs:justify-end">
           {/* the hamburger panel carries the same switcher below lg */}
           <div className="hidden lg:block">
             <LanguageSwitcher locale={locale} label={languageLabel} />

@@ -7,8 +7,13 @@ import { ctasFor, type CtaTable, type ResolvedCta } from './ctas';
 // nav CTA, W155) — never `primary` plus appended colour classes, which Tailwind resolves by
 // alphabetical order, not by position (W122: the blue hover never rendered). The danger face is
 // the red "Report an Impostor"; both keep Button's base/size/focus classes.
-const PRIMARY = buttonClassName('nav', 'md', 'whitespace-nowrap max-xs:px-2.5'); // ≤ 460: the design's tighter CTA (W190)
-const DANGER = buttonClassName('danger', 'md', 'whitespace-nowrap');
+/** ≤ 460 (the design's `.ja-nav-cta` rule, W190 A3 / W210 b): the CTA flexes into the width the
+ *  fixed wordmark leaves, caps at 185 px, pads 10 px and lets its label wrap — `max-xs:` twins of
+ *  different properties, so nothing collides with the base `whitespace-nowrap` (W122). */
+export const PHONE_CTA =
+  'whitespace-nowrap max-xs:max-w-[185px] max-xs:flex-auto max-xs:whitespace-normal max-xs:px-2.5';
+const PRIMARY = buttonClassName('nav', 'md', PHONE_CTA);
+const DANGER = buttonClassName('danger', 'md', PHONE_CTA);
 // `xl`-only, like the design's `.ja-nav-cta-secondary` (hidden ≤1100) — `max-xl:hidden` sorts
 // after `buttonClassName`'s base `inline-flex`, so the media variant wins the cascade; a bare
 // `hidden` (as WP1's <Button> used) loses to that same base class and never hides anything

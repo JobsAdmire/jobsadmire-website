@@ -2,6 +2,7 @@ import { screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 import { Header } from '../Header';
+import { PHONE_CTA } from '../HeaderCtas';
 import { BRAND } from '@/design/assets/brand';
 import { buttonClassName } from '@/design/primitives/Button';
 import { collisionsInTree } from '@/test/class-collisions';
@@ -174,7 +175,7 @@ describe('Header', () => {
     expect(cta).toHaveClass('bg-ink', 'text-white', 'hover:bg-blue-safe', 'whitespace-nowrap');
     expect(cta).not.toHaveClass('bg-blue-safe');
     expect(cta).not.toHaveClass('hover:bg-ink');
-    expect(cta.className).toBe(buttonClassName('nav', 'md', 'whitespace-nowrap max-xs:px-2.5')); // W190: ≤ 460 face
+    expect(cta.className).toBe(buttonClassName('nav', 'md', PHONE_CTA)); // W190/W210 b: ≤ 460 face
     unmount();
 
     // the danger face (the verify page's "Report an Impostor") stays collision-free too
@@ -209,6 +210,36 @@ describe('Header', () => {
     // eager and preloaded, as the mark was (the logo is above the fold on every page)
     expect(logo).not.toHaveAttribute('loading');
     expect(banner.querySelector('img[src*="ja-mark"]')).toBeNull();
+  });
+
+  // Final pass A3/A4 (W184, W185 A2, W190 A3, W210 b): the wordmark's box is pinned to the
+  // asset's own ratio (no 1 px width settle when the file arrives), and below 461 the design keeps
+  // the logo FIXED — the CTA takes the remaining width instead (≤ 185 px, its label wrapping) and
+  // the actions block flexes to the end — where the site used to shrink the logo (82 % TR / 67 %
+  // EN on the calculator route at 390, T3).
+  it('pins the logo ratio from BRAND.logo and keeps it fixed below 461 — the CTA caps and wraps (A3/A4)', () => {
+    renderWithIntl(<Header locale="tr" bundle={bundle} />);
+    const banner = screen.getByRole('banner');
+    const logo = within(banner).getByRole('img', { name: 'JobsAdmire' });
+    expect(logo.style.aspectRatio).toBe(`${BRAND.logo.width} / ${BRAND.logo.height}`);
+    expect(logo).not.toHaveClass('max-w-full');
+    const link = logo.closest('a')!;
+    expect(link).toHaveClass('shrink-0');
+    expect(link).not.toHaveClass('shrink', 'min-w-0');
+    const cta = within(banner).getByRole('link', { name: `${t('home.014')} ${t('home.015')}` });
+    expect(cta).toHaveClass(
+      'whitespace-nowrap',
+      'max-xs:whitespace-normal',
+      'max-xs:max-w-[185px]',
+      'max-xs:flex-auto',
+      'max-xs:px-2.5',
+    );
+    expect(cta.parentElement).toHaveClass(
+      'max-xs:min-w-0',
+      'max-xs:flex-auto',
+      'max-xs:justify-end',
+    );
+    expect(collisionsInTree(banner)).toEqual([]);
   });
 
   it('offers the other language with aria-current on the active one', () => {

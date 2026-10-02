@@ -171,15 +171,19 @@ describe('the full-bleed chrome rows (W180)', () => {
     },
   );
 
+  // Final pass A2 (W184): below 901 the design's `.ja-nav` pads 14 px (its ≤ 900 rule) and
+  // 12 px at ≤ 460 — never the sections' 20 px gutter.
   it.each([
-    [390, 20],
-    [900, 20],
+    [390, 12],
+    [460, 12],
+    [461, 14],
+    [900, 14],
     [901, 32],
     [1100, 32],
     [1101, 24],
     [1440, 24],
   ])(
-    '%ipx: the header row spans the viewport on %i px (the design nav: 32 × 0.75 from 1101)',
+    '%ipx: the header row spans the viewport on %i px (the design nav: 12 ≤ 460, 14 to 900, 32 to 1100, 32 × 0.75 from 1101)',
     (w, pad) => {
       const nav = box('.chrome-row-nav', w);
       expect(nav.maxWidth).toBeNull();
@@ -196,11 +200,14 @@ describe('tokens.layout mirrors the stylesheet (W180)', () => {
     expect(layout.gutterMobile).toBe(20);
     expect(layout.navGutterTablet).toBe(32);
     expect(layout.navGutterDesktop).toBe(32 * 0.75);
+    expect(layout.navGutterMobile).toBe(14);
+    expect(layout.navGutterPhone).toBe(12);
   });
 
   it('the header-row gutter tokens are the ones the stylesheet resolves', () => {
     expect(box('.chrome-row-nav', 1000).padding).toBe(layout.navGutterTablet);
     expect(box('.chrome-row-nav', 1440).padding).toBe(layout.navGutterDesktop);
-    expect(box('.chrome-row-nav', 390).padding).toBe(layout.gutterMobile);
+    expect(box('.chrome-row-nav', 700).padding).toBe(layout.navGutterMobile);
+    expect(box('.chrome-row-nav', 390).padding).toBe(layout.navGutterPhone);
   });
 });
