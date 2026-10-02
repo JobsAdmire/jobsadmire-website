@@ -24,7 +24,8 @@
     "redirects:build": "tsx scripts/build-redirects.ts",
     "assets:brand": "bash scripts/fetch-brand.sh",
     "assets:flags": "tsx scripts/build-flags.ts",
-    "assets:map": "tsx scripts/build-source-map.ts"
+    "assets:map": "tsx scripts/build-source-map.ts",
+    "door:smoke": "tsx scripts/door-smoke.ts"
   },
   "dependencies": {
     "@next/third-parties": "^16.3.5",
