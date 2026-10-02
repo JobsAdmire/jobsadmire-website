@@ -202,7 +202,12 @@ export function EligibilityWizard({ locale, whatsappNumber, questions, copy }: W
               <ul className="flex flex-col gap-2.5">
                 {current.options.map((o) => (
                   <li key={o.key}>
-                    <button type="button" className={OPTION} onClick={() => pick(o.key)}>
+                    <button
+                      type="button"
+                      className={OPTION}
+                      onClick={() => pick(o.key)}
+                      aria-current={answers[current.key] === o.key ? 'true' : undefined}
+                    >
                       <span>{o.label}</span>
                       {answers[current.key] === o.key ? (
                         <CheckIcon size={16} className="flex-none text-blue-safe" />

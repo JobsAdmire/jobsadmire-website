@@ -114,8 +114,10 @@ describe('EligibilityWizard — the #eligibility card', () => {
     expect(screen.getByRole('progressbar')).toHaveAttribute('aria-valuenow', '1');
     await userEvent.click(screen.getByRole('button', { name: props.copy.back }));
     expect(screen.getByText('Şirket?')).toHaveFocus();
-    // the earlier answer carries the decorative SVG check (never a text glyph, D20)
+    // the earlier answer carries the decorative SVG check (never a text glyph, D20) and is
+    // announced through aria-current (T4 review M3)
     expect(screen.getByRole('button', { name: 'Evet' }).querySelector('svg')).not.toBeNull();
+    expect(screen.getByRole('button', { name: 'Evet' })).toHaveAttribute('aria-current', 'true');
     expect(
       screen.getByRole('button', { name: 'Hayır / henüz değil' }).querySelector('svg'),
     ).toBeNull();
@@ -184,6 +186,7 @@ describe('EligibilityWizard — the #eligibility card', () => {
     expect(screen.getByRole('heading', { level: 3, name: 'Uygun' })).toBeInTheDocument();
     await userEvent.click(screen.getByRole('button', { name: props.copy.restart }));
     expect(screen.getByText('Şirket?')).toHaveFocus();
+    expect(screen.getByRole('button', { name: 'Evet' })).not.toHaveAttribute('aria-current');
     expect(screen.getByTestId('wp-eligibility-step')).toHaveTextContent('1 / 4');
     expect(screen.getByRole('button', { name: 'Evet' }).querySelector('svg')).toBeNull();
   });
