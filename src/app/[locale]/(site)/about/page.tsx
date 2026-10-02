@@ -20,6 +20,8 @@ import { routing } from '@/i18n/routing';
 import { waLink } from '@/lib/contact';
 import { buildMetadata } from '@/lib/seo/metadata';
 import { CorridorCard } from './_components/CorridorCard';
+import { FounderBand } from './_components/FounderBand';
+import { publishedFounder } from './founder';
 
 /** W82: the page's one cross-page hash target, as an object href so next-intl localises the
  *  pathname and keeps the hash (`/isci-talebi#request-form`, `/en/hire-workers#request-form`).
@@ -81,6 +83,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
   const t = makeTf(bundle, locale);
   const metrics = metricValues(bundle, locale);
   const countries = getMetric(bundle, 'countries');
+  const founder = publishedFounder(bundle);
 
   return (
     <>
@@ -225,7 +228,12 @@ export default async function About({ params }: { params: Promise<{ locale: stri
       {/* ============ FOUNDER + JOURNEY band (design 659–738). The founder figure joins in Cycle 3. */}
       <Section tone="pale" id="about-journey">
         <div className="container-site">
-          <div className="max-w-[720px]">
+          <div
+            className={
+              founder ? 'grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center' : 'max-w-[720px]'
+            }
+          >
+            <FounderBand founder={founder} placedText={metrics.placed} t={t} />
             <div data-testid="about-journey">
               <h2 className="m-0 mb-6 text-eyebrow font-extrabold tracking-[1.5px] text-blue-safe uppercase">
                 {t('about.050')}
