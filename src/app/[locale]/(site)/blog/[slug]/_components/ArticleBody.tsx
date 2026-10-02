@@ -4,7 +4,7 @@ import type { Block, Inline } from '../_lib/markdown';
 /** The body's h2 face — the page's FAQ heading wears it too. `scroll-mt-24` keeps a TOC jump
  *  clear of the sticky header; `xl:` is the D19 ×0.75 step. */
 export const ARTICLE_H2 =
-  'mt-10 mb-4 scroll-mt-24 text-[26px] leading-tight font-extrabold tracking-[-0.4px] text-ink xl:text-[19.5px]';
+  'mt-10 mb-4 scroll-mt-24 text-[26px] leading-tight font-extrabold tracking-[-0.4px] text-ink max-md:text-[22px] xl:text-[19.5px]';
 
 /** A list whose every item is this short reads as a checklist — two columns from `sm` (the
  *  design's "Documents you'll need" grid); longer items (the rejection reasons) stay one column. */
@@ -66,7 +66,7 @@ function BlockView({ block, first, cta }: { block: Block; first: boolean; cta?: 
       );
     case 'leads':
       return (
-        <div className="mb-5 grid gap-4 md:grid-cols-2">
+        <div className="mb-5 grid gap-4 lg:grid-cols-2">
           {block.items.map((item, j) => (
             <div key={j} className="rounded-sm border border-tint-border bg-pale-1 px-5 py-5">
               <p className="mt-0 mb-1.5 text-[22px] leading-tight font-extrabold text-blue-safe xl:text-[16.5px]">
@@ -85,7 +85,7 @@ function BlockView({ block, first, cta }: { block: Block; first: boolean; cta?: 
         <ul
           className={
             checklist
-              ? 'mt-0 mb-5 grid list-none gap-x-6 gap-y-3 rounded-base border border-tint-border bg-white p-6 sm:grid-cols-2'
+              ? 'mt-0 mb-5 grid list-none gap-x-6 gap-y-3 rounded-base border border-tint-border bg-white p-6 lg:grid-cols-2'
               : 'mt-0 mb-5 flex list-none flex-col gap-3 rounded-base border border-tint-border bg-white p-6'
           }
         >

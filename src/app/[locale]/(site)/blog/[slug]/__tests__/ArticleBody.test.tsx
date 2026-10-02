@@ -4,7 +4,7 @@ import type { BlogPost } from '@/content/collections';
 import { BLOCK_STRINGS, testBundle } from '@/test/bundle';
 import { collisionsInTree } from '@/test/class-collisions';
 import { renderWithIntl } from '@/test/render';
-import { ArticleBody } from '../_components/ArticleBody';
+import { ARTICLE_H2, ArticleBody } from '../_components/ArticleBody';
 import { RelatedPosts } from '../_components/RelatedPosts';
 import { parseMarkdown } from '../_lib/markdown';
 
@@ -37,8 +37,17 @@ describe('ArticleBody (B-8, B-11)', () => {
   it('a list of short items is the two-column checklist; long items stay one column', () => {
     render(<ArticleBody blocks={parseMarkdown(MD)} />);
     const [, checklist, reasons] = screen.getAllByRole('list');
-    expect(checklist.className).toContain('sm:grid-cols-2');
-    expect(reasons.className).not.toContain('sm:grid-cols-2');
+    expect(checklist.className).toContain('lg:grid-cols-2');
+    expect(reasons.className).not.toContain('lg:grid-cols-2');
+  });
+
+  it('two-up grids collapse at ≤ 900 px like the design, and the body h2 steps down at ≤ 700 px (D27 run 1)', () => {
+    const { container } = render(<ArticleBody blocks={parseMarkdown(MD)} />);
+    const leads = screen.getByText('Rule').closest('div')?.parentElement;
+    expect(leads?.className).toContain('lg:grid-cols-2');
+    expect(leads?.className).not.toContain('md:grid-cols-2');
+    expect(container.innerHTML).not.toContain('sm:grid-cols-2');
+    expect(ARTICLE_H2).toContain('max-md:text-[22px]');
   });
 
   it('puts the closing CTA inside the final quote box', () => {

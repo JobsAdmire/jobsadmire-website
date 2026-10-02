@@ -196,7 +196,10 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
         />
 
         {/* ---- Hero: crumbs (W109, B-9), pills, the h1 (the LCP element, B-7), byline ---- */}
-        <Section tone="dark" className="relative overflow-hidden pb-32 md:pb-44">
+        <Section
+          tone="dark"
+          className="relative overflow-hidden pt-[34px] pb-[118px] md:pt-[52px] md:pb-[200px] xl:pt-[39px] xl:pb-[150px]"
+        >
           <div
             aria-hidden="true"
             className="pointer-events-none absolute -top-24 right-[6%] h-[340px] w-[340px] rounded-pill bg-[radial-gradient(circle,rgba(30,158,232,0.3),transparent_65%)]"
@@ -206,7 +209,7 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
             className="pointer-events-none absolute -bottom-36 -left-16 h-[320px] w-[320px] rounded-pill bg-[radial-gradient(circle,rgba(22,163,74,0.16),transparent_65%)]"
           />
           <div className="container-site relative">
-            <div className="mx-auto max-w-[980px]">
+            <div className="mx-auto max-w-[980px] xl:max-w-[735px]">
               <Breadcrumbs
                 locale={locale}
                 tone="dark"
@@ -232,11 +235,11 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
               <h1
                 data-testid="page-h1"
                 data-lcp-slot="h1"
-                className="mt-0 mb-4 max-w-[880px] text-[27px] leading-[1.14] font-extrabold tracking-[-0.9px] md:text-[36px] lg:text-[44px] lg:leading-[1.1] xl:text-[33px]"
+                className="mt-0 mb-4 max-w-[880px] text-[27px] leading-[1.14] font-extrabold tracking-[-0.9px] md:text-[clamp(30px,3.6vw,44px)] md:leading-[1.1] md:tracking-[-1.4px] xl:mb-3 xl:max-w-[660px] xl:text-[clamp(22.5px,2.7vw,33px)] xl:tracking-[-1.05px]"
               >
                 {title}
               </h1>
-              <p className="text-body-lg mt-0 mb-6 max-w-[780px] font-semibold text-white/80">
+              <p className="text-body-lg mt-0 mb-6 max-w-[780px] font-semibold text-white/80 max-md:mb-5 max-md:text-[15.5px] xl:max-w-[585px]">
                 {excerpt}
               </p>
               <div className="flex items-center gap-3.5">
@@ -256,8 +259,8 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
         </Section>
 
         {/* ---- Cover: overlaps the hero; a named placeholder, never the LCP slot (B-7, W103) ---- */}
-        <div className="container-site relative z-[2] -mt-24 md:-mt-32">
-          <div className="mx-auto max-w-[980px] overflow-hidden rounded-lg">
+        <div className="container-site relative z-[2] -mt-[92px] md:-mt-[150px] xl:-mt-[112.5px]">
+          <div className="mx-auto max-w-[980px] overflow-hidden rounded-lg xl:max-w-[735px]">
             <ImageSlot slot={`blog-cover-${post.key}`} alt="" width={980} height={430} />
           </div>
         </div>
@@ -265,7 +268,7 @@ export default async function BlogArticle({ params }: { params: Promise<Params> 
         {/* ---- Body + sidebar ---- */}
         <Section tone="light">
           <div className="container-site">
-            <div className="mx-auto grid max-w-[1180px] items-start gap-14 lg:grid-cols-[minmax(0,1fr)_300px]">
+            <div className="mx-auto grid max-w-[1180px] items-start gap-14 lg:grid-cols-[minmax(0,1fr)_300px] xl:max-w-[885px] xl:grid-cols-[minmax(0,1fr)_225px] xl:gap-[42px]">
               <div className="min-w-0">
                 {/* ≤700 px: the TOC as a native disclosure — no JS (B-12) */}
                 <details
