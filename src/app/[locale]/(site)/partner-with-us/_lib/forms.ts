@@ -27,7 +27,7 @@ export const CAPS = {
 
 // The kernel's vocabulary (src/forms/errors.ts): `.min(1)` first, so an empty value reads
 // `required`, never `email`/`phone`/`invalid`; a FormErrorCode passed as `message` wins.
-const PHONE = /(\D*\d){8,}/;
+const PHONE = /^(?:\D*\d){8}/;
 const ISO2 = /^[A-Z]{2}$/;
 const required = (max: number) => z.string().trim().min(1).max(max);
 const optional = (max: number) => z.string().trim().max(max).optional();

@@ -89,4 +89,11 @@ describe('RadioChips', () => {
       'specialist',
     );
   });
+  it('keeps keyboard focus on the chosen radio — why W198 syncs defaultChecked instead of remounting', async () => {
+    render(<Harness />);
+    const skilled = screen.getByRole('radio', { name: 'Skilled' });
+    await userEvent.click(skilled);
+    expect(skilled).toBeChecked();
+    expect(skilled).toHaveFocus();
+  });
 });

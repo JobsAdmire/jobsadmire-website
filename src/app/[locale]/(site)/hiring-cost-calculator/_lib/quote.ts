@@ -14,7 +14,7 @@ import { ESTIMATE_FIELDS, parseEstimateFields, type EstimateInputs } from './est
 
 const hidden = z.string().max(40).optional();
 /** ≥ 8 digits — the door's phone rule, checked here so a short number is a field error, not a 400. */
-const PHONE = /(?:\D*\d){8}/;
+const PHONE = /^(?:\D*\d){8}/;
 
 /** The quote form. `.min(1)` before `.email()` so an empty e-mail reads `required` (kernel rule);
  *  the kernel trims every string before this parses; the `est_*` hidden inputs ride along and

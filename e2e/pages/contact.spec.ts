@@ -305,6 +305,8 @@ test('tr: the callback ends on the D11 panel without a door (W92)', async ({ pag
   await form.getByRole('button', { name: COPY.tr.callbackSubmit }).click();
   const panel = form.getByTestId('form-fallback');
   await expect(panel).toHaveAttribute('data-kind', 'unauthorized');
+  // W198: the chosen chip survives React 19's post-action form reset
+  await expect(form.locator('input[name="slot"][value="14-16"]')).toBeChecked();
   await expectBareWhatsAppFallback(page, panel, 'Mehmet Kaya');
 });
 
@@ -329,6 +331,8 @@ test('tr: book-a-visit — five ISO day chips from the Istanbul clock, five slot
   await form.getByRole('checkbox').check();
   await form.getByRole('button', { name: COPY.tr.visitSubmit }).click();
   await expect(form.getByTestId('form-fallback')).toHaveAttribute('data-kind', 'unauthorized');
+  // W198: the chosen slot chip survives the post-action form reset
+  await expect(form.locator('input[name="preferredTime"][value="11:00"]')).toBeChecked();
 });
 
 test('tr: contact clicks fire their placements — page_cta from the hero cards, office_card from the office rows (W12)', async ({

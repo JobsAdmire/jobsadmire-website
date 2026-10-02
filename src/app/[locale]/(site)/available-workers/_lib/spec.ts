@@ -6,7 +6,7 @@ import { composeWorkersMessage } from './message';
 import { FIELD_MAX, ROLE_KEYS } from './options';
 
 /** The door needs 8 digits in a phone; the kernel's `phone` code names the problem. */
-const PHONE = /(\D*\d){8,}/;
+const PHONE = /^(?:\D*\d){8}/;
 
 /** Field names are the catalog's (what each `Field name=…` posts). `.min(1)` comes first so an
  *  empty value reads `required`, not `email`/`phone` (`fieldErrorsFromIssues` takes the first

@@ -97,14 +97,14 @@ export function TeamSection({ locale, bundle }: SectionProps) {
           ))}
         </div>
         <div className="mt-6 flex flex-wrap gap-3 max-xs:flex-col">
-          <Button variant="nav" href="/verify">
+          <Button prefetch={false} variant="nav" href="/verify">
             <ShieldIcon size={15} />
             {tf('home.137')}
           </Button>
-          <Button variant="secondary" href="/about">
+          <Button prefetch={false} variant="secondary" href="/about">
             {tf('home.138')}
           </Button>
-          <Button variant="success" href="/careers">
+          <Button prefetch={false} variant="success" href="/careers">
             <LiveDot />
             {tf('home.139')}
           </Button>

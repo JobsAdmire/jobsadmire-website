@@ -16,7 +16,7 @@ const phoneOf = (max: number) =>
     .trim()
     .min(1)
     .max(max)
-    .regex(/(\D*\d){8,}/, { message: 'phone' });
+    .regex(/^(?:\D*\d){8}/, { message: 'phone' });
 const headcount = z
   .string()
   .trim()

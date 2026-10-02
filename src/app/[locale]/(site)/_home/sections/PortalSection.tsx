@@ -73,7 +73,7 @@ export function PortalSection({ locale, bundle }: SectionProps) {
             ))}
           </ul>
           <div className="flex flex-wrap items-center gap-2.5">
-            <Button variant="nav" href="/hire-workers">
+            <Button prefetch={false} variant="nav" href="/hire-workers">
               {tf('home.173')}
             </Button>
             <StoreBadges

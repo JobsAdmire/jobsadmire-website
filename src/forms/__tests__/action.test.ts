@@ -28,7 +28,7 @@ const { getLocale, headersStore, redirect, postForm } = mocks;
 const schema = z.object({
   name: z.string().min(1).max(120),
   email: z.string().min(1).email(),
-  phone: z.string().regex(/(\D*\d){8,}/, { message: 'phone' }),
+  phone: z.string().regex(/^(?:\D*\d){8}/, { message: 'phone' }),
   message: z.string().max(5000).optional(),
 });
 const action = createFormAction({
@@ -84,6 +84,15 @@ beforeEach(() => {
 afterEach(() => vi.restoreAllMocks());
 
 describe('createFormAction', () => {
+  it('cuts every string field to 10,001 characters before the schema runs, so a 4 MB value costs nothing (W199)', async () => {
+    const started = performance.now();
+    const state = await action(IDLE_FORM_STATE, formData({ ...valid, phone: 'x'.repeat(40_000) }));
+    expect(performance.now() - started).toBeLessThan(500);
+    expect(state).toMatchObject({ kind: 'invalid', errors: { phone: 'phone' } });
+    expect((state as { values: Record<string, string> }).values.phone).toHaveLength(10_001);
+    expect(postForm).not.toHaveBeenCalled();
+  });
+
   it('posts the envelope with locale, visitor and sourcePath, then redirects to /thank-you?form=<key>', async () => {
     postForm.mockResolvedValueOnce(ok);
     await expect(action(IDLE_FORM_STATE, formData(valid))).rejects.toMatchObject({

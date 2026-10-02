@@ -87,10 +87,10 @@ export function CalculatorStrip({ locale, bundle }: SectionProps) {
         ))}
       </ul>
       <div className="flex flex-wrap gap-3 max-xs:hidden">
-        <Button variant="nav" href="/hiring-cost-calculator">
+        <Button prefetch={false} variant="nav" href="/hiring-cost-calculator">
           {tf('home.076')}
         </Button>
-        <Button variant="secondary" href="/work-permit">
+        <Button prefetch={false} variant="secondary" href="/work-permit">
           {tf('home.077')}
         </Button>
       </div>
@@ -99,10 +99,10 @@ export function CalculatorStrip({ locale, bundle }: SectionProps) {
   // The phone-only pair inside the card (`.ja-calc-cta-mobile`).
   const ctas = (
     <>
-      <Button variant="nav" href="/hiring-cost-calculator">
+      <Button prefetch={false} variant="nav" href="/hiring-cost-calculator">
         {tf('home.076')}
       </Button>
-      <Button variant="secondary" href="/work-permit">
+      <Button prefetch={false} variant="secondary" href="/work-permit">
         {tf('home.077')}
       </Button>
     </>

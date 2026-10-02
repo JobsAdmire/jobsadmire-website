@@ -33,7 +33,7 @@ export function GuidesSection({ locale, bundle }: SectionProps) {
             <h2 className={`${H2} m-0 mt-3`}>{tf('home.175')}</h2>
           </div>
           <div className="max-xs:hidden">
-            <Button variant="nav" href="/blog">
+            <Button prefetch={false} variant="nav" href="/blog">
               {tf('home.176')}
             </Button>
           </div>
@@ -69,7 +69,7 @@ export function GuidesSection({ locale, bundle }: SectionProps) {
           ) : null}
         </div>
         <div className="mt-4 flex flex-col xs:hidden">
-          <Button variant="nav" href="/blog">
+          <Button prefetch={false} variant="nav" href="/blog">
             {tf('home.176')}
           </Button>
         </div>

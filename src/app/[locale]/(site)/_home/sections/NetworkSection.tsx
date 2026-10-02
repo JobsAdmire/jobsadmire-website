@@ -101,7 +101,7 @@ export function NetworkSection({ locale, bundle }: SectionProps) {
             ))}
           </ul>
           <div className="flex flex-wrap gap-3">
-            <Button variant="nav" href="/partner-with-us">
+            <Button prefetch={false} variant="nav" href="/partner-with-us">
               {tf('home.125')}
             </Button>
             <a

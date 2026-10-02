@@ -65,7 +65,7 @@ export default async function ThankYou({
           <p className="text-body text-text-secondary">{sys(`thankYou.forms.${formKey}`)}</p>
         )}
         <div className="mt-8 flex flex-wrap gap-3">
-          <Button variant="primary" size="lg" href="/">
+          <Button prefetch={false} variant="primary" size="lg" href="/">
             {sys('thankYou.home')}
           </Button>
           <Button

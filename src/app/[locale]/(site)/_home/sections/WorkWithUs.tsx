@@ -78,7 +78,7 @@ export function WorkWithUs({ locale, bundle }: SectionProps) {
               </ul>
             </div>
             <div className="relative mt-auto flex flex-wrap items-center gap-[11px]">
-              <Button variant="primary" href="/partner-with-us">
+              <Button prefetch={false} variant="primary" href="/partner-with-us">
                 {tf('home.149')}
               </Button>
               <ContactCta
@@ -130,10 +130,10 @@ export function WorkWithUs({ locale, bundle }: SectionProps) {
               ))}
             </ul>
             <div className="mt-auto flex flex-wrap gap-[11px]">
-              <Button variant="nav" href="/careers">
+              <Button prefetch={false} variant="nav" href="/careers">
                 {tf('home.160')}
               </Button>
-              <Button variant="secondary" href="/verify">
+              <Button prefetch={false} variant="secondary" href="/verify">
                 {tf('home.161')}
               </Button>
             </div>

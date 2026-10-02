@@ -45,7 +45,7 @@ const phone = z
   .trim()
   .min(1)
   .max(40)
-  .regex(/(\D*\d){8,}/, { message: 'phone' });
+  .regex(/^(?:\D*\d){8}/, { message: 'phone' });
 const city = z.string().trim().max(120).optional();
 
 /** Catalog `hire` (v1.0 + v1.1 `city`): the lengths are the door's own caps. */

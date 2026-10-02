@@ -71,7 +71,7 @@ export function Hero({ locale, bundle, form }: SectionProps & { form: ReactNode 
             <a href="#proposal" className={buttonClassName('primary', 'lg')}>
               {tf('home.022')}
             </a>
-            <Button variant="inverse" size="lg" href="/available-workers">
+            <Button prefetch={false} variant="inverse" size="lg" href="/available-workers">
               {tf('home.023')}
             </Button>
             <span className="ml-1.5 text-body-sm font-bold text-white/60">{tf('home.024')}</span>

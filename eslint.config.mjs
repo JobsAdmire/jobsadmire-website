@@ -52,6 +52,15 @@ const eslintConfig = defineConfig([
     'src/design/assets/*.generated.tsx',
     // Git-ignored SDD planning artefacts (briefs, ledgers, draft snippets) — not source
     '.superpowers/**',
+    // W199: ESLint 9 reads neither .gitignore nor .eslintignore — keep the gate's report folders
+    // (they hold bundled JS and, after preview runs, the bypass secret) out of the lint walk.
+    'playwright-report/**',
+    'test-results/**',
+    'coverage/**',
+    '.lighthouseci/**',
+    '.lighthouseci-extra/**',
+    'lighthouse-report/**',
+    '.pixel/**',
     // Default ignores of eslint-config-next:
     '.next/**',
     'out/**',

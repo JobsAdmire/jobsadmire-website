@@ -82,6 +82,7 @@ export function EmptyState({
         <ContactCta
           placement="page_cta"
           variant={tone === 'dark' ? 'inverse' : 'secondary'}
+          prefetch={false}
           href={cta.href}
           external={cta.external}
           className="mt-2"

@@ -55,8 +55,12 @@ export type FormSpec<S extends z.ZodTypeAny> = {
 
 /** A string entry trimmed — the door trims too, so a whitespace-only value must fail HERE as
  *  `required` rather than pass the schema and come back as a 400 `invalid` panel. */
+/** W199: a string field is cut to 10,001 characters BEFORE the page schema runs, so no regex
+ *  or length check ever walks a multi-megabyte value (the 4 MB action body) — every schema cap
+ *  is far below this, so an over-long field still fails its own `max` message. */
+const PRE_SCHEMA_CAP = 10_001;
 const trimmed = (v: FormDataEntryValue): FormDataEntryValue =>
-  typeof v === 'string' ? v.trim() : v;
+  typeof v === 'string' ? v.trim().slice(0, PRE_SCHEMA_CAP) : v;
 
 /** FormData → the object the page schema parses, string values trimmed. Repeated keys
  *  (checkbox groups, multi-file inputs) become arrays; single ones stay scalar (`File`

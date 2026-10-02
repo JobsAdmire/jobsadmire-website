@@ -20,7 +20,7 @@ export default async function KvkkPage({ params }: { params: LegalParams }) {
         title: sys('legal.kvkk.pendingTitle'),
         body: sys('legal.kvkk.pendingBody'),
         action: (
-          <Button variant="secondary" href="/privacy">
+          <Button prefetch={false} variant="secondary" href="/privacy">
             {sys('legal.kvkk.privacyLink')}
           </Button>
         ),

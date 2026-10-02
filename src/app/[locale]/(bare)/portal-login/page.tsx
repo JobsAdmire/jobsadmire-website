@@ -354,7 +354,7 @@ export default async function PortalLoginPage({ params }: { params: Promise<{ lo
               <ContactCta placement="page_cta" href={whatsappHref} external variant="secondary">
                 {t('crmlogin.058')}
               </ContactCta>
-              <Button variant="ghost" href="/contact">
+              <Button prefetch={false} variant="ghost" href="/contact">
                 {t('crmlogin.019')}
               </Button>
             </div>
