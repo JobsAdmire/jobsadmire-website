@@ -96,6 +96,10 @@
       "careers": {
         "title": "Careers at JobsAdmire — roles in Antalya and in the source countries",
         "description": "Work for JobsAdmire: overseas representatives in the source countries and the Antalya office team. Full-time, part-time or per project; every application gets an answer."
+      },
+      "blog": {
+        "title": "Blog & Guides — Work Permits and Hiring in Türkiye | JobsAdmire",
+        "description": "Hiring guides, work permit updates and workforce news for employers in Türkiye, written by the JobsAdmire permit and recruitment team."
       }
     },
     "consent": {
@@ -461,6 +465,44 @@
         "body": "This role asks for a portfolio. Send your PDF CV and your portfolio — a file or a link — to {email} with the subject below, or ask a question on WhatsApp first.",
         "subject": "Application: {title}",
         "email": "Write the e-mail"
+      }
+    },
+    "blog": {
+      "hero": {
+        "title": "{pre} <word></word>",
+        "words": "employers|factories|hotels|farms|builders"
+      },
+      "index": {
+        "latest": "Latest articles"
+      },
+      "empty": {
+        "title": "English articles are on the way",
+        "body": "The JobsAdmire permit and recruitment team is preparing its guides for employers. The first articles appear here as soon as they are published.",
+        "cta": "Browse the Turkish articles"
+      },
+      "tools": {
+        "search": "Search articles",
+        "results": {
+          "one": "{n} article",
+          "other": "{n} articles"
+        }
+      },
+      "article": {
+        "metaTitle": "{title} | JobsAdmire",
+        "langNote": "EN · Türkçe'de de var",
+        "sections": "{n, plural, one {# section} other {# sections}}",
+        "copyFailed": "The link could not be copied — copy it from the address bar instead.",
+        "print": "Print this article",
+        "backToTop": "Back to top"
+      },
+      "faq": {
+        "a1": "Approval takes about {permitDays} days on average, including the ministry's review, and the whole process up to the first working day usually takes {firstDayWeeks} weeks. A licensed agency checks the file first, so a missing document does not restart the clock.",
+        "q3": "Can I hire if I don't meet the {ratio}:1 employee ratio?"
+      },
+      "whatsapp": {
+        "article": "I read “{title}” on your blog and want to hire workers.",
+        "consult": "I want a free consultation.",
+        "permit": "I need help with work permits."
       }
     },
     "form": {

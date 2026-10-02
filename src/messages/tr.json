@@ -96,6 +96,10 @@
       "careers": {
         "title": "JobsAdmire'da kariyer — Antalya'da ve kaynak ülkelerde pozisyonlar",
         "description": "JobsAdmire'da çalışın: kaynak ülkelerde yurt dışı temsilcileri ve Antalya ofis ekibi. Tam zamanlı, yarı zamanlı ya da proje bazlı; her başvuru yanıt alır."
+      },
+      "blog": {
+        "title": "Blog ve Rehberler — Türkiye'de Çalışma İzni ve İşe Alım | JobsAdmire",
+        "description": "Türkiye'deki işverenler için işe alım rehberleri, çalışma izni güncellemeleri ve iş gücü haberleri; JobsAdmire izin ve işe alım ekibi tarafından hazırlanır."
       }
     },
     "consent": {
@@ -461,6 +465,44 @@
         "body": "Bu pozisyon portföy istiyor. PDF CV'nizi ve portföyünüzü (dosya ya da bağlantı) aşağıdaki konu satırıyla {email} adresine gönderin ya da önce WhatsApp'tan bir soru sorun.",
         "subject": "Başvuru: {title}",
         "email": "E-postayı yazın"
+      }
+    },
+    "blog": {
+      "hero": {
+        "title": "<word></word> {pre}",
+        "words": "İşverenler|Fabrikalar|Oteller|Çiftlikler|Müteahhitler"
+      },
+      "index": {
+        "latest": "Son yazılar"
+      },
+      "empty": {
+        "title": "Türkçe yazılar hazırlanıyor",
+        "body": "JobsAdmire izin ve işe alım ekibi işverenler için rehberlerini hazırlıyor. İlk yazılar yayımlandığında bu sayfada yer alacak.",
+        "cta": "İngilizce yazılara göz atın"
+      },
+      "tools": {
+        "search": "Yazılarda arayın",
+        "results": {
+          "one": "{n} yazı",
+          "other": "{n} yazı"
+        }
+      },
+      "article": {
+        "metaTitle": "{title} | JobsAdmire",
+        "langNote": "EN · Türkçe'de de var",
+        "sections": "{n, plural, one {# bölüm} other {# bölüm}}",
+        "copyFailed": "Bağlantı kopyalanamadı; adres çubuğundan kopyalayabilirsiniz.",
+        "print": "Bu yazıyı yazdırın",
+        "backToTop": "Başa dön"
+      },
+      "faq": {
+        "a1": "Onay, bakanlık incelemesi dahil ortalama {permitDays} gün sürer; ilk iş gününe kadar tüm süreç genellikle {firstDayWeeks} hafta alır. Lisanslı bir ajans dosyayı önceden kontrol ettiği için eksik bir belge süreyi baştan başlatmaz.",
+        "q3": "{ratio}:1 çalışan oranını sağlamıyorsam işe alım yapabilir miyim?"
+      },
+      "whatsapp": {
+        "article": "blogunuzdaki “{title}” yazısını okudum ve işçi talebinde bulunmak istiyorum.",
+        "consult": "ücretsiz danışmanlık almak istiyorum.",
+        "permit": "çalışma izinleri konusunda desteğe ihtiyacım var."
       }
     },
     "form": {
