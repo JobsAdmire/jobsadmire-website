@@ -6,7 +6,16 @@ export type RadioChipOption = { value: string; label: string };
 /** Single-select chips (calculator role, blog category, form option sets). Native radios in a
  *  `role="radiogroup"` fieldset: arrow keys, focus and form submission under `name` come for
  *  free, and a FormShell form posts the chosen value like any other field. The chip face is
- *  the `Chip` primitive's, driven by the radio's checked state. */
+ *  the `Chip` primitive's, driven by the radio's checked state.
+ *
+ *  W198: React 19 resets a `<form action={fn}>` after every action — FormShell's failed-submit
+ *  path included — and `form.reset()` restores each radio to its DEFAULT checkedness (the
+ *  `checked` attribute), which React writes only once, at mount, from the first `value`. A
+ *  controlled `checked` alone is not re-applied when `value` has not changed, so the chips
+ *  snapped back to the server default while the page's state kept the visitor's choice (and a
+ *  second submit posted the default). Each radio's `defaultChecked` therefore follows `value`
+ *  (a ref callback, set on every commit), so a reset lands on the chosen radio. A `key` remount
+ *  on `value` would do the same but drop keyboard focus on every arrow-key move. */
 export function RadioChips({
   name,
   options,
@@ -54,6 +63,9 @@ export function RadioChips({
                 name={name}
                 value={o.value}
                 checked={checked}
+                ref={(el) => {
+                  if (el) el.defaultChecked = checked;
+                }}
                 onChange={() => onChange(o.value)}
                 className="peer sr-only"
               />
