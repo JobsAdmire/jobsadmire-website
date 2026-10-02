@@ -14,6 +14,7 @@ import {
   employmentTypeOf,
   locationOf,
   summaryOf,
+  workModesOf,
 } from '@/lib/careers-pure';
 import { JsonLd } from '@/lib/seo/JsonLdScript';
 import { jobPostingJsonLd } from '@/lib/seo/jsonld';
@@ -36,6 +37,12 @@ export async function generateStaticParams() {
 }
 
 type Params = Promise<{ locale: string; slug: string }>;
+
+/** `workModesOf(opening)` is exactly `['REMOTE']` (W205 ⚠️2) — a hybrid or mixed list is not remote. */
+const isRemoteOnly = (o: Parameters<typeof workModesOf>[0]): boolean => {
+  const modes = workModesOf(o);
+  return modes.length === 1 && modes[0] === 'REMOTE';
+};
 
 export async function generateMetadata({ params }: { params: Params }): Promise<Metadata> {
   const { locale, slug } = await params;
@@ -116,10 +123,15 @@ export default async function CareerDetailPage({ params }: { params: Params }) {
           datePosted: opening.postedAt,
           employmentType: employmentTypeOf(opening),
           hiringOrganization: settings,
+          // W205 ⚠️2: the first city when the opening names one — a city-less opening carries the
+          // country alone, never its name as the locality.
           jobLocation: {
-            city: opening.cities[0] ?? opening.city ?? view.countryName,
+            city: opening.cities[0] ?? opening.city ?? undefined,
             country: opening.country,
           },
+          // W205 ⚠️2: REMOTE-only → TELECOMMUTE; a hybrid or mixed-mode opening keeps its office
+          // location alone. No applicant countries: the careers API carries none, so none is invented.
+          remote: isRemoteOnly(opening) ? true : undefined,
           baseSalary: baseSalaryOf(opening),
           identifier: opening.slug,
         })}

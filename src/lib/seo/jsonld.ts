@@ -142,8 +142,15 @@ export type JobPostingJsonLdInput = {
   validThrough?: string | Date;
   employmentType: 'FULL_TIME' | 'PART_TIME' | 'CONTRACTOR' | 'TEMPORARY' | 'INTERN' | 'OTHER';
   hiringOrganization: Settings;
-  /** `country` is ISO-2 upper-case (`TR`, `PK`, W40) — the value the careers catalog carries. */
-  jobLocation: { city: string; country: string };
+  /** `country` is ISO-2 upper-case (`TR`, `PK`, W40) — the value the careers catalog carries.
+   *  `city` only when the opening names one: a city-less opening emits no `addressLocality`,
+   *  never the country's name in its place (W205 ⚠️2). */
+  jobLocation: { city?: string; country: string };
+  /** W205 ⚠️2: a remote opening (the page passes it when `workModesOf(opening)` is exactly
+   *  `['REMOTE']`) → `jobLocationType: 'TELECOMMUTE'`, the office `jobLocation` kept beside it.
+   *  `applicantCountries` (country names) → `applicantLocationRequirements` only when the caller
+   *  really has them — never invented from the office country (the careers API carries none). */
+  remote?: true | { applicantCountries: readonly string[] };
   baseSalary?: {
     currency: string;
     value: number | { min: number; max: number };
@@ -156,6 +163,10 @@ export type JobPostingJsonLdInput = {
 export function jobPostingJsonLd(input: JobPostingJsonLdInput) {
   const s = input.hiringOrganization;
   const salary = input.baseSalary;
+  const remote = input.remote;
+  const applicantCountries = (remote && remote !== true ? remote.applicantCountries : []).map(
+    (name) => ({ '@type': 'Country' as const, name }),
+  );
   return compact({
     '@context': 'https://schema.org',
     '@type': 'JobPosting' as const,
@@ -173,12 +184,20 @@ export function jobPostingJsonLd(input: JobPostingJsonLdInput) {
     },
     jobLocation: {
       '@type': 'Place' as const,
-      address: {
+      address: compact({
         '@type': 'PostalAddress' as const,
         addressLocality: input.jobLocation.city,
         addressCountry: input.jobLocation.country,
-      },
+      }),
     },
+    jobLocationType: remote ? ('TELECOMMUTE' as const) : undefined,
+    // one node for one country (Google's own example), a list for several
+    applicantLocationRequirements:
+      applicantCountries.length === 0
+        ? undefined
+        : applicantCountries.length === 1
+          ? applicantCountries[0]
+          : applicantCountries,
     baseSalary: salary
       ? {
           '@type': 'MonetaryAmount' as const,

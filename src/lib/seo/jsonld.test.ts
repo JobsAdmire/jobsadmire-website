@@ -144,4 +144,51 @@ describe('jobPostingJsonLd', () => {
     expect('validThrough' in j).toBe(false);
     assertNoUndefined(j);
   });
+
+  // W205 ⚠️2 (final pass P2-1): a remote opening is TELECOMMUTE; applicantLocationRequirements
+  // only from countries the caller really has — never invented from the office country.
+  it('a remote opening carries jobLocationType TELECOMMUTE and no invented applicant countries', () => {
+    const j = jobPostingJsonLd({ ...input, remote: true });
+    expect(j.jobLocationType).toBe('TELECOMMUTE');
+    expect('applicantLocationRequirements' in j).toBe(false);
+    // the office location stays — Google reads it beside TELECOMMUTE
+    expect(j.jobLocation.address).toMatchObject({
+      addressLocality: 'Antalya',
+      addressCountry: 'TR',
+    });
+    assertNoUndefined(j);
+  });
+
+  it('names applicantLocationRequirements only when applicant countries are given — one node or a list', () => {
+    const one = jobPostingJsonLd({ ...input, remote: { applicantCountries: ['Uzbekistan'] } });
+    expect(one.jobLocationType).toBe('TELECOMMUTE');
+    expect(one.applicantLocationRequirements).toEqual({ '@type': 'Country', name: 'Uzbekistan' });
+    const two = jobPostingJsonLd({
+      ...input,
+      remote: { applicantCountries: ['Uzbekistan', 'Pakistan'] },
+    });
+    expect(two.applicantLocationRequirements).toEqual([
+      { '@type': 'Country', name: 'Uzbekistan' },
+      { '@type': 'Country', name: 'Pakistan' },
+    ]);
+    expect(
+      'applicantLocationRequirements' in
+        jobPostingJsonLd({ ...input, remote: { applicantCountries: [] } }),
+    ).toBe(false);
+    assertNoUndefined(one);
+    assertNoUndefined(two);
+  });
+
+  it('an on-site opening carries no jobLocationType; a city-less one no addressLocality (never the country name)', () => {
+    const onSite = jobPostingJsonLd(input);
+    expect('jobLocationType' in onSite).toBe(false);
+    expect('applicantLocationRequirements' in onSite).toBe(false);
+    const cityless = jobPostingJsonLd({ ...input, jobLocation: { country: 'IN' } });
+    expect(cityless.jobLocation.address).toEqual({
+      '@type': 'PostalAddress',
+      addressCountry: 'IN',
+    });
+    expect('addressLocality' in cityless.jobLocation.address).toBe(false);
+    assertNoUndefined(cityless);
+  });
 });
