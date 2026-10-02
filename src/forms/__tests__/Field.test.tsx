@@ -1,4 +1,5 @@
 import { screen } from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import { afterEach, describe, expect, it, vi } from 'vitest';
 import { Field } from '../client/Field';
 import { FormErrorsContext } from '../client/FormErrorsContext';
@@ -104,5 +105,31 @@ describe('Field', () => {
       'Employer',
       'HR agency',
     ]);
+  });
+
+  it('W193: a select keeps the echoed choice through the post-action re-render and form reset', async () => {
+    // FormShell after a failed action: the context switches from the idle `values: {}` to the
+    // action's echoed values (one re-render), then React 19 resets the <form>. An input follows
+    // its new defaultValue; a select applies defaultValue on mount only, so without a remount the
+    // reset put it back on the placeholder (T5's partner country select showed '' for 'PK').
+    const options = [
+      { value: 'PK', label: 'Pakistan' },
+      { value: 'NP', label: 'Nepal' },
+    ];
+    const ui = (values: Record<string, string>) => (
+      <FormErrorsContext.Provider value={{ errors: {}, values }}>
+        <form data-testid="shell">
+          <Field name="country" as="select" options={options} />
+          <Field name="city" />
+        </form>
+      </FormErrorsContext.Provider>
+    );
+    const { rerender } = renderWithIntl(ui({}));
+    await userEvent.selectOptions(screen.getByLabelText(copy.labels.country), 'PK');
+    await userEvent.type(screen.getByLabelText(copy.labels.city), 'Lahore');
+    rerender(ui({ country: 'PK', city: 'Lahore' }));
+    (screen.getByTestId('shell') as HTMLFormElement).reset();
+    expect(screen.getByLabelText(copy.labels.country)).toHaveValue('PK');
+    expect(screen.getByLabelText(copy.labels.city)).toHaveValue('Lahore');
   });
 });

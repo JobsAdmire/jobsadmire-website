@@ -106,6 +106,10 @@ export function Field({
           />
         ) : as === 'select' ? (
           <select
+            // W193: a select applies defaultValue on mount only, so it is keyed on the echoed
+            // value — the re-render after a failed action remounts it with the kept choice before
+            // React 19 resets the form (inputs/textareas follow a changed defaultValue themselves).
+            key={value ?? ''}
             {...p}
             name={name}
             defaultValue={value ?? ''}
