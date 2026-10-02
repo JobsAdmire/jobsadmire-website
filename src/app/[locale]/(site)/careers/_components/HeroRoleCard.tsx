@@ -53,7 +53,7 @@ export function HeroRoleCard({ cards, labels }: { cards: RoleCard[]; labels: Her
                 <span className="flex flex-wrap items-center gap-2">
                   <span className="text-body font-extrabold">{c.title}</span>
                   {c.isNew && (
-                    <span className="rounded-pill bg-success-surface px-2 py-0.5 text-[10.5px] font-extrabold uppercase tracking-[0.05em] text-success-text">
+                    <span className="rounded-pill bg-success-surface px-2 py-0.5 text-[11px] font-extrabold uppercase tracking-[0.05em] text-success-text">
                       {labels.newBadge}
                     </span>
                   )}

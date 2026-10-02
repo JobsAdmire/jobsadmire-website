@@ -37,7 +37,7 @@ function StepList({ t }: { t: Tf }) {
               <div className="mb-1 flex flex-wrap items-center gap-2">
                 <h3 className="text-body-lg tracking-[-0.01em]">{t(s.title)}</h3>
                 {s.ai && (
-                  <span className="rounded-pill border border-[#ccd5ea] bg-[#edf1f9] px-2.5 py-0.5 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-[#253063]">
+                  <span className="rounded-pill border border-[#ccd5ea] bg-[#edf1f9] px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-[0.08em] text-[#253063]">
                     {t('jt.083')}
                   </span>
                 )}

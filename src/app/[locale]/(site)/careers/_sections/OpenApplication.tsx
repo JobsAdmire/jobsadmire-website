@@ -67,7 +67,7 @@ export function OpenApplication({
         <div className="overflow-hidden rounded-lg border-[1.5px] border-tint-border bg-white shadow-[0_18px_44px_rgba(22,60,90,0.1)]">
           <div className="border-b border-border-2 bg-pale-1 px-6 py-4">
             <h3 className="text-body-lg text-ink">{t('jt.095')}</h3>
-            <p className="mt-0.5 text-body-sm text-text-tertiary">{t('jt.096')}</p>
+            <p className="mt-0.5 text-body-sm text-text-secondary">{t('jt.096')}</p>
           </div>
           <div className="flex flex-wrap gap-3 p-6">
             <ContactCta

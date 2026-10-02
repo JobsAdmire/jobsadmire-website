@@ -75,7 +75,7 @@ export function AboutRole({
                   key={label}
                   className="flex flex-col gap-0.5 border-b border-border-3 py-2 last:border-b-0"
                 >
-                  <dt className="text-eyebrow font-extrabold uppercase tracking-[0.08em] text-text-tertiary">
+                  <dt className="text-eyebrow font-extrabold uppercase tracking-[0.08em] text-text-secondary">
                     {label}
                   </dt>
                   <dd className="text-body-sm font-bold text-ink">{value}</dd>

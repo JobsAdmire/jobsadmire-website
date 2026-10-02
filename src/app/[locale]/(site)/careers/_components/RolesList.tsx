@@ -104,7 +104,7 @@ export function RolesList({ cards, copy }: { cards: RoleCard[]; copy: RolesListC
       <p
         role="status"
         aria-live="polite"
-        className="mb-4 text-body-sm font-extrabold text-text-tertiary"
+        className="mb-4 text-body-sm font-extrabold text-text-secondary"
       >
         {result}
       </p>
@@ -148,7 +148,7 @@ export function RolesList({ cards, copy }: { cards: RoleCard[]; copy: RolesListC
                         {c.title}
                       </Link>
                       {c.isNew && (
-                        <span className="rounded-pill bg-success-surface px-2 py-0.5 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-success-text">
+                        <span className="rounded-pill bg-success-surface px-2 py-0.5 text-[11px] font-extrabold uppercase tracking-[0.08em] text-success-text">
                           {copy.newBadge}
                         </span>
                       )}
