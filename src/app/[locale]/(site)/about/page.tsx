@@ -169,6 +169,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
               <Link
                 data-testid="about-hero-request"
                 href={REQUEST_FORM}
+                prefetch={false}
                 className={buttonClassName('primary', 'lg', 'w-full sm:w-auto')}
               >
                 {t('about.029')}
