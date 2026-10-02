@@ -18,6 +18,7 @@ import { Chain } from './_sections/Chain';
 import { CLOSING_ID, Closing } from './_sections/Closing';
 import { Faq } from './_sections/Faq';
 import { Hero } from './_sections/Hero';
+import { Logos } from './_sections/Logos';
 import {
   HrAgencyForm,
   InstituteForm,
@@ -81,10 +82,6 @@ export default async function PartnerWithUs({ params }: { params: Promise<{ loca
     getCollection(bundle, 'countries'),
     locale,
   );
-  // W193/W194 A2: the logo band's module — and with it the marquee's client chunk
-  // (`PausableMarquee`, 642 B gz) — is loaded only when consented logos exist. A top-level import
-  // would put that chunk in the route's client bundle even while `Logos` renders nothing (W6).
-  const Logos = PARTNER_LOGOS.length > 0 ? (await import('./_sections/Logos')).Logos : null;
   const panels: Record<TrackKey, ReactNode> = {
     hr: (
       <TrackPanel track="hr" tf={tf}>
@@ -111,7 +108,11 @@ export default async function PartnerWithUs({ params }: { params: Promise<{ loca
         metrics={metricValues(bundle, locale)}
         whatsappHref={whatsappHref}
       />
-      {Logos ? <Logos logos={PARTNER_LOGOS} /> : null}
+      {/* W6: the band renders only with consented logos. A plain import by W216 (1): P2-7's
+          server-side `await import()` moved no client bytes — Turbopack groups the `PausableMarquee`
+          client reference into the route's eager chunk either way (proof at 20ce926) — so it was
+          reverted; a client `next/dynamic` boundary is reserved for a partner route ≥ 192,000 B. */}
+      {PARTNER_LOGOS.length > 0 ? <Logos logos={PARTNER_LOGOS} /> : null}
       <Chain tf={tf} />
       <Tracks tf={tf} panels={panels} />
       <Process bundle={bundle} locale={locale} tf={tf} />

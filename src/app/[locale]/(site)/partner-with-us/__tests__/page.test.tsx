@@ -7,12 +7,12 @@ import type { Locale } from '@/i18n/routing';
 import { renderWithIntl } from '@/test/render';
 import { BundleSchema, type Bundle } from '../../../../../../contract/website-bundle.v1';
 
-// W193/W194 A2 (final pass P2-7): while the bundle carries no consented logos, the Partner page
-// must not ship the marquee's client chunk (`PausableMarquee`, 642 B gz). The page therefore has
-// no top-level import of `Logos`/`LogoMarquee`: the section module is loaded inside the
-// `logos.length > 0` branch. The page is rendered whole (the verify page test's pattern): the
-// LOCAL bundle from disk (never imported — D23), a request scope stubbed, the server actions out of
-// scope; what varies is the logo list the page reads.
+// W6 / W216 (1): the logo band renders only while the bundle carries consented logos — a plain
+// import behind a render guard (P2-7's server-side `await import()` moved no client bytes: Turbopack
+// groups the `PausableMarquee` client reference into the route's eager chunk either way, so it was
+// reverted). The page is rendered whole (the verify page test's pattern): the LOCAL bundle from
+// disk (never imported — D23), a request scope stubbed, the server actions out of scope; what
+// varies is the logo list the page reads.
 const state = vi.hoisted(() => ({ logos: [] as readonly Logo[] }));
 
 vi.mock('next-intl/server', () => ({
@@ -48,21 +48,11 @@ vi.mock('@/content/adapter', async (importOriginal) => {
 
 import PartnerWithUs from '../page';
 
-const PAGE = join(process.cwd(), 'src/app/[locale]/(site)/partner-with-us/page.tsx');
-
 beforeEach(() => {
   state.logos = [];
 });
 
-describe('Partner page — the logo band ships only with logos (W193/W194 A2)', () => {
-  it('the page module has no top-level import of Logos or LogoMarquee — the section is loaded in the branch', () => {
-    const source = readFileSync(PAGE, 'utf8');
-    const topLevelImports = source.match(/^import[\s\S]*?from\s+'[^']+';/gm) ?? [];
-    expect(topLevelImports.some((l) => /_sections\/Logos'/.test(l))).toBe(false);
-    expect(topLevelImports.some((l) => /blocks\/LogoMarquee'/.test(l))).toBe(false);
-    expect(source).toMatch(/await import\('\.\/_sections\/Logos'\)/);
-  });
-
+describe('Partner page — the logo band renders only with logos (W6, W216 (1))', () => {
   it('with an empty logo list (Phase A) the island is absent from the page', async () => {
     const jsx = await PartnerWithUs({ params: Promise.resolve({ locale: 'tr' }) });
     renderWithIntl(jsx, { locale: 'tr' });
@@ -70,7 +60,7 @@ describe('Partner page — the logo band ships only with logos (W193/W194 A2)', 
     expect(screen.queryByRole('img', { name: 'Acme Lojistik' })).toBeNull();
   });
 
-  it('with a consented logo the branch loads the section and the band renders', async () => {
+  it('with a consented logo the band renders', async () => {
     state.logos = [{ src: '/brand/logos/acme.svg', alt: 'Acme Lojistik', width: 160, height: 60 }];
     const jsx = await PartnerWithUs({ params: Promise.resolve({ locale: 'tr' }) });
     renderWithIntl(jsx, { locale: 'tr' });
