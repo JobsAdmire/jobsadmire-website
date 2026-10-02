@@ -23,7 +23,7 @@ function onDoorFace(): boolean {
 /** partner.038 / 040 / 068 — the card radios' accessible names (`aria-labelledby`). */
 const TRACK = {
   tr: {
-    hr: 'Türkiye’deki İK ajansları',
+    hr: "Türkiye'deki İK ajansları", // straight apostrophe since the importer's W221 rule
     sourcing: 'Yurt dışındaki tedarik ortakları',
     institute: 'Eğitim kurumları',
   },
@@ -307,7 +307,7 @@ test('tr: the HR-agency form (hire) ends on the D11 panel without a door (W92) �
   const form = page.getByTestId('partner-form-hr');
   await form.getByLabel(/^Ajans adı/).fill('Akdeniz İK A.Ş.');
   await form.getByLabel(/^İletişim kişisi/).fill('Ayşe Yılmaz');
-  await form.getByLabel(/^Türkiye’deki şehir/).fill('Antalya');
+  await form.getByLabel(/^Türkiye'deki şehir/).fill('Antalya');
   await form.getByLabel(/^Kurumsal e-posta/).fill('ayse@example.com');
   await form.getByLabel(/^Telefon \/ WhatsApp/).fill('+90 532 000 00 00');
   await form.getByRole('checkbox').check(); // W79: the consent tick
