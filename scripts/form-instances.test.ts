@@ -85,6 +85,44 @@ describe('FORM_INSTANCES — the 17-instance inventory pinned against the pages 
     }
   });
 
+  it('every field name the inventory fills, and every token in an `open` selector, exists in the BUILT pages (W199)', () => {
+    const src = pageSources(join(__dirname, '..', 'src', 'app', '[locale]'));
+    // A control's `name` is a literal (`name="roleNeeded"`) or a named constant whose value is a
+    // string literal in the page's own `_lib` (`DECLARATION_FIELD = 'licenceDeclaration'`).
+    const hasName = (n: string) => src.includes(`name="${n}"`) || src.includes(`'${n}'`);
+    for (const row of FORM_INSTANCES)
+      for (const f of row.fields)
+        expect({ id: row.id, name: f.name, found: hasName(f.name) }).toEqual({
+          id: row.id,
+          name: f.name,
+          found: true,
+        });
+    // `open` selectors name a testid, an input name or a label-for id (`track-<key>` is a template).
+    for (const row of FORM_INSTANCES) {
+      if (!row.open) continue;
+      for (const [, id] of row.open.matchAll(/data-testid="([^"]+)"/g))
+        expect({
+          id: row.id,
+          token: id,
+          found: src.includes(`data-testid="${id}"`) || src.includes(`testId="${id}"`),
+        }).toEqual({ id: row.id, token: id, found: true });
+      for (const [, n] of row.open.matchAll(/\[name="([^"]+)"\]/g))
+        expect({ id: row.id, token: n, found: src.includes(`name="${n}"`) }).toEqual({
+          id: row.id,
+          token: n,
+          found: true,
+        });
+      for (const [, forId] of row.open.matchAll(/\[for="([^"]+)"\]/g)) {
+        const prefix = forId.slice(0, forId.indexOf('-') + 1);
+        expect({
+          id: row.id,
+          token: forId,
+          found: src.includes(`id="${forId}"`) || src.includes(`\`${prefix}\${`),
+        }).toEqual({ id: row.id, token: forId, found: true });
+      }
+    }
+  });
+
   it('every `startWhen` field the inventory fills is one of the shared W78 keys, never an invented one', () => {
     for (const row of FORM_INSTANCES) {
       const sw = row.fields.find((f) => f.name === 'startWhen');
