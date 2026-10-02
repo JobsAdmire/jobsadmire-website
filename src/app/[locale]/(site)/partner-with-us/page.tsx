@@ -18,7 +18,6 @@ import { Chain } from './_sections/Chain';
 import { CLOSING_ID, Closing } from './_sections/Closing';
 import { Faq } from './_sections/Faq';
 import { Hero } from './_sections/Hero';
-import { Logos } from './_sections/Logos';
 import {
   HrAgencyForm,
   InstituteForm,
@@ -82,6 +81,10 @@ export default async function PartnerWithUs({ params }: { params: Promise<{ loca
     getCollection(bundle, 'countries'),
     locale,
   );
+  // W193/W194 A2: the logo band's module — and with it the marquee's client chunk
+  // (`PausableMarquee`, 642 B gz) — is loaded only when consented logos exist. A top-level import
+  // would put that chunk in the route's client bundle even while `Logos` renders nothing (W6).
+  const Logos = PARTNER_LOGOS.length > 0 ? (await import('./_sections/Logos')).Logos : null;
   const panels: Record<TrackKey, ReactNode> = {
     hr: (
       <TrackPanel track="hr" tf={tf}>
@@ -108,7 +111,7 @@ export default async function PartnerWithUs({ params }: { params: Promise<{ loca
         metrics={metricValues(bundle, locale)}
         whatsappHref={whatsappHref}
       />
-      <Logos logos={PARTNER_LOGOS} />
+      {Logos ? <Logos logos={PARTNER_LOGOS} /> : null}
       <Chain tf={tf} />
       <Tracks tf={tf} panels={panels} />
       <Process bundle={bundle} locale={locale} tf={tf} />
