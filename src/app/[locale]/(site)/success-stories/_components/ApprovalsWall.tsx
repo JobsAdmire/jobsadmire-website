@@ -79,6 +79,7 @@ export function ApprovalsWall({
         <>
           <p
             data-testid="stories-result"
+            aria-live="polite"
             className="m-0 mb-4 text-body-sm font-extrabold text-text-tertiary"
           >
             {wallResultLabels(resultTemplates, shown.length, stories.length, locale)}

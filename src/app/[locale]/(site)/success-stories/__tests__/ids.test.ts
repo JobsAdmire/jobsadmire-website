@@ -1,4 +1,5 @@
 import { describe, expect, it, vi } from 'vitest';
+import { collisionsInTree } from '@/test/class-collisions';
 import { renderWithIntl } from '@/test/render';
 
 // `getTranslations`/`setRequestLocale` need a request scope next-intl only establishes inside
@@ -65,5 +66,7 @@ describe('Success Stories — the page renders its own breadcrumb and anchor ids
     const placeholder = container.querySelector('[data-placeholder="ss-hero"]');
     expect(placeholder).toBeInTheDocument();
     expect(placeholder).not.toHaveAttribute('data-lcp-slot');
+    // W119/W122/W155: the real collision checker over the whole rendered page (T9 review M7)
+    expect(collisionsInTree(container)).toEqual([]);
   });
 });
