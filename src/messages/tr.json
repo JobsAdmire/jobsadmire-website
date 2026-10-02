@@ -92,6 +92,10 @@
       "verify": {
         "title": "JobsAdmire Temsilcisini Doğrulayın — Resmî Yetki Kontrolü",
         "description": "Karşınızdaki kişi JobsAdmire adına mı çalışıyor? Yalnızca kurucu imza atar ve kimse işçiden para almaz. JA- kimliğini sorgulayın ya da sahtekârı bildirin."
+      },
+      "careers": {
+        "title": "JobsAdmire'da kariyer — Antalya'da ve kaynak ülkelerde pozisyonlar",
+        "description": "JobsAdmire'da çalışın: kaynak ülkelerde yurt dışı temsilcileri ve Antalya ofis ekibi. Tam zamanlı, yarı zamanlı ya da proje bazlı; her başvuru yanıt alır."
       }
     },
     "consent": {
@@ -111,7 +115,7 @@
         "hire": "İşçi talebiniz alındı; JobsAdmire uygun adayları hazırlayıp size dönüş yapacak.",
         "contact": "Mesajınız alındı; JobsAdmire genellikle bir iş günü içinde yanıt verir.",
         "partner": "Ortaklık başvurunuz alındı; JobsAdmire iş geliştirme ekibi sizinle görüşecek.",
-        "careers": "Başvurunuz alındı; uygun bir pozisyon açıldığında JobsAdmire sizinle iletişime geçecek.",
+        "careers": "Başvurunuz alındı; JobsAdmire başvurunuzu e-postayla onaylar ve her başvuruya yanıt verir.",
         "newsletter": "Kaydınız alındı; onaylamak için e-posta kutunuzu kontrol edin.",
         "callback": "Geri arama talebiniz alındı; JobsAdmire ekibi en kısa sürede sizi arayacak.",
         "visit": "Ziyaret talebiniz alındı; uygun bir zaman için JobsAdmire sizinle iletişime geçecek.",
@@ -391,6 +395,74 @@
         "former": "Artık yetkili değil"
       }
     },
+    "careers": {
+      "hero": {
+        "hiringCount": "{count} açık pozisyon · Antalya ve yurt dışı",
+        "seeOpenings": "{count, plural, =0 {Açık pozisyonlara bakın} other {# açık pozisyonu görün}}"
+      },
+      "filters": {
+        "all": "Tümü"
+      },
+      "roles": {
+        "resultAll": "{count, plural, one {Tek açık pozisyon gösteriliyor} other {# açık pozisyonun tümü gösteriliyor}}",
+        "resultFiltered": "{total} eşleşen pozisyondan {shown} tanesi gösteriliyor",
+        "showMore": "Daha fazla pozisyon göster ({count})",
+        "posted": "Yayın tarihi: {date}"
+      },
+      "workMode": {
+        "REMOTE": "Uzaktan",
+        "HYBRID": "Hibrit",
+        "ON_SITE": "Yerinde"
+      },
+      "salary": {
+        "range": "{min} – {max}",
+        "from": "en az {amount}",
+        "upTo": "en fazla {amount}",
+        "per": {
+          "HOUR": "saatlik",
+          "DAY": "günlük",
+          "WEEK": "haftalık",
+          "MONTH": "aylık",
+          "YEAR": "yıllık"
+        }
+      },
+      "empty": {
+        "title": "Şu anda açık pozisyon yok",
+        "body": "Her pozisyon önce burada yayınlanır. Aşağıdan WhatsApp ya da e-posta ile açık başvuru gönderin; JobsAdmire iyi adayları kayıtta tutar ve bir pazar açıldığında size yazar."
+      },
+      "apply": {
+        "whatsapp": "WhatsApp'tan başvurun",
+        "emailSubject": "Açık başvuru"
+      },
+      "detail": {
+        "metaTitle": "{title} — JobsAdmire'da kariyer",
+        "metaDescription": "{title} ({location}). Pozisyonun ayrıntılarını okuyun ve PDF CV'nizle çevrimiçi başvurun; JobsAdmire her başvuruya yanıt verir.",
+        "about": "Pozisyon hakkında",
+        "back": "Tüm açık pozisyonlar",
+        "applyLead": "Birkaç dakika sürer; PDF CV'niz yeterli. JobsAdmire her başvuruya yanıt verir.",
+        "whatsappIntro": "Merhaba JobsAdmire, {title} pozisyonuna başvurmak istiyorum.",
+        "facts": {
+          "title": "Bir bakışta",
+          "location": "Konum",
+          "workMode": "Çalışma düzeni",
+          "languages": "Diller",
+          "salary": "Ücret",
+          "posted": "Yayın tarihi"
+        }
+      },
+      "form": {
+        "residency": "Bu pozisyon yalnızca {country} sakinlerine açıktır.",
+        "expectedSalaryHint": "Aylık, {currency} cinsinden, tam sayı olarak yazın. Pakistan'daki pozisyonlar için zorunludur.",
+        "closed": "Bu pozisyon artık başvuru kabul etmiyor. Açık pozisyonları kariyer sayfasında görebilirsiniz.",
+        "portfolioGate": "Bu pozisyon bir portföy belgesi istiyor; çevrimiçi form bunu henüz taşıyamıyor. Lütfen e-postayla başvurun."
+      },
+      "emailPanel": {
+        "title": "E-postayla başvurun",
+        "body": "Bu pozisyon portföy istiyor. PDF CV'nizi ve portföyünüzü (dosya ya da bağlantı) aşağıdaki konu satırıyla {email} adresine gönderin ya da önce WhatsApp'tan bir soru sorun.",
+        "subject": "Başvuru: {title}",
+        "email": "E-postayı yazın"
+      }
+    },
     "form": {
       "labels": {
         "name": "Ad Soyad",
@@ -480,7 +552,7 @@
         "evidence": "JPEG, PNG, WEBP veya PDF; dosya başına en fazla 3 MB, en çok üç dosya.",
         "optional": "İsteğe bağlı",
         "description": "En az 20 karakter.",
-        "portfolioUrl": "https:// ile başlayan bir bağlantı.",
+        "portfolioUrl": "Bir web adresi, ör. behance.net/adiniz.",
         "linkedinUrl": "İsteğe bağlı; https:// ile başlayan bir bağlantı.",
         "expectedSalary": "Aylık brüt, yalnızca rakam."
       },

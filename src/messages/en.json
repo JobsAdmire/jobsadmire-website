@@ -92,6 +92,10 @@
       "verify": {
         "title": "Verify a JobsAdmire Representative — Official Authority Check",
         "description": "Check if someone really acts for JobsAdmire: only the founder signs, and nobody at JobsAdmire takes money from a worker. Check a JA- ID or report an impostor."
+      },
+      "careers": {
+        "title": "Careers at JobsAdmire — roles in Antalya and in the source countries",
+        "description": "Work for JobsAdmire: overseas representatives in the source countries and the Antalya office team. Full-time, part-time or per project; every application gets an answer."
       }
     },
     "consent": {
@@ -111,7 +115,7 @@
         "hire": "Your worker request has been received; JobsAdmire will line up suitable candidates and come back to you.",
         "contact": "Your message has been received; JobsAdmire usually replies within one business day.",
         "partner": "Your partnership enquiry has been received; the JobsAdmire business development team will be in touch.",
-        "careers": "Your application has been received; JobsAdmire will contact you when a suitable role opens.",
+        "careers": "Your application has been received; JobsAdmire confirms it by e-mail and answers every application.",
         "newsletter": "You are on the list; check your inbox to confirm.",
         "callback": "Your callback request has been received; the JobsAdmire team will call you back shortly.",
         "visit": "Your visit request is noted; JobsAdmire will be in touch to agree a time.",
@@ -391,6 +395,74 @@
         "former": "No longer authorised"
       }
     },
+    "careers": {
+      "hero": {
+        "hiringCount": "{count, plural, one {# open role} other {# open roles}} · Antalya & overseas",
+        "seeOpenings": "{count, plural, =0 {See open roles} one {See # open role} other {See # open roles}}"
+      },
+      "filters": {
+        "all": "All"
+      },
+      "roles": {
+        "resultAll": "{count, plural, one {Showing the only open role} other {Showing all # open roles}}",
+        "resultFiltered": "Showing {shown} of {total} matching roles",
+        "showMore": "Show more roles ({count})",
+        "posted": "Posted {date}"
+      },
+      "workMode": {
+        "REMOTE": "Remote",
+        "HYBRID": "Hybrid",
+        "ON_SITE": "On site"
+      },
+      "salary": {
+        "range": "{min} – {max}",
+        "from": "from {amount}",
+        "upTo": "up to {amount}",
+        "per": {
+          "HOUR": "per hour",
+          "DAY": "per day",
+          "WEEK": "per week",
+          "MONTH": "per month",
+          "YEAR": "per year"
+        }
+      },
+      "empty": {
+        "title": "No open roles right now",
+        "body": "Every role is published here first. Send an open application by WhatsApp or e-mail below — JobsAdmire keeps good people on file and writes to you when a market opens."
+      },
+      "apply": {
+        "whatsapp": "Apply on WhatsApp",
+        "emailSubject": "Open application"
+      },
+      "detail": {
+        "metaTitle": "{title} — careers at JobsAdmire",
+        "metaDescription": "{title} ({location}). Read the role and apply online with your PDF CV — JobsAdmire answers every application.",
+        "about": "About the role",
+        "back": "All open roles",
+        "applyLead": "A few minutes and a PDF CV. JobsAdmire answers every application.",
+        "whatsappIntro": "Hello JobsAdmire, I would like to apply for the {title} role.",
+        "facts": {
+          "title": "At a glance",
+          "location": "Location",
+          "workMode": "Work mode",
+          "languages": "Languages",
+          "salary": "Pay",
+          "posted": "Posted"
+        }
+      },
+      "form": {
+        "residency": "This role is open to residents of {country} only.",
+        "expectedSalaryHint": "Monthly, in {currency}, whole numbers. Required for roles in Pakistan.",
+        "closed": "This role is no longer accepting applications. The open roles are listed on the careers page.",
+        "portfolioGate": "This role asks for a portfolio document, which the online form cannot carry yet. Please apply by e-mail."
+      },
+      "emailPanel": {
+        "title": "Apply by e-mail",
+        "body": "This role asks for a portfolio. Send your PDF CV and your portfolio — a file or a link — to {email} with the subject below, or ask a question on WhatsApp first.",
+        "subject": "Application: {title}",
+        "email": "Write the e-mail"
+      }
+    },
     "form": {
       "labels": {
         "name": "Full name",
@@ -480,7 +552,7 @@
         "evidence": "JPEG, PNG, WEBP or PDF; up to 3 MB each, three files at most.",
         "optional": "Optional",
         "description": "At least 20 characters.",
-        "portfolioUrl": "A link starting with https://.",
+        "portfolioUrl": "A web address, e.g. behance.net/yourname.",
         "linkedinUrl": "Optional; a link starting with https://.",
         "expectedSalary": "Monthly gross, digits only."
       },
