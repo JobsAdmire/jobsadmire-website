@@ -12,7 +12,7 @@ import { buildMetadata } from '@/lib/seo/metadata';
 import { SEO_IDS, STICKY_IDS } from './_lib/content';
 import { countryOptions } from './_lib/country-options';
 import { PARTNER_LOGOS } from './_lib/logos';
-import { partnerLineOf } from './_lib/partner-line';
+import { partnerLineOf } from '@/lib/contact/partner-line';
 import type { TrackKey } from './_lib/tracks';
 import { Chain } from './_sections/Chain';
 import { CLOSING_ID, Closing } from './_sections/Closing';

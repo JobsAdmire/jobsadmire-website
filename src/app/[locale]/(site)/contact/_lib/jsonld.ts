@@ -20,8 +20,8 @@ export type ContactPageJsonLdInput = {
   locale: Locale;
   siteUrl: string;
   phone: string;
-  /** the partner line — `partnerLineOf(settings).phone` (W176): `settings.partnershipsPhone`, the
-   *  main line while it is null */
+  /** the partner line — `partnerLineOf(settings).phone` (`@/lib/contact/partner-line`, W176/W208):
+   *  `settings.partnershipsPhone`, the main line while it is null (today) */
   partnerPhone: string;
   email: string;
   /** the Antalya `offices` row's hours — the lines' hours */

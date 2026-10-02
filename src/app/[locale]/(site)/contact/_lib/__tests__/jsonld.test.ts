@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { contactPageJsonLd } from '../jsonld';
-import { partnerLineOf } from '../phone';
+import { partnerLineOf } from '@/lib/contact/partner-line';
 
 const input = {
   name: 'Contact JobsAdmire',

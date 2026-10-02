@@ -2,7 +2,8 @@ import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { describe, expect, it } from 'vitest';
 import { BundleSchema } from '../../../../../../../contract/website-bundle.v1';
-import { displayPhone, partnerLineOf } from '../partner-line';
+// Final pass P2-3: the helper is shared with the Contact page — `src/lib/contact/partner-line.ts`.
+import { formatPhoneDisplay, partnerLineOf } from '@/lib/contact/partner-line';
 
 const load = (locale: 'tr' | 'en') =>
   BundleSchema.parse(
@@ -37,13 +38,13 @@ describe('partnerLineOf (W176)', () => {
   });
 });
 
-describe('displayPhone', () => {
+describe('formatPhoneDisplay', () => {
   it('groups a Turkish E.164 number as +90 5xx xxx xx xx — the grouping settings.phoneDisplay uses', () => {
-    expect(displayPhone('+905011240340')).toBe(MAIN.phoneDisplay);
+    expect(formatPhoneDisplay('+905011240340')).toBe(MAIN.phoneDisplay);
   });
 
   it('renders a number it cannot group exactly as stored', () => {
-    expect(displayPhone('+923001234567')).toBe('+923001234567');
-    expect(displayPhone('+90553')).toBe('+90553');
+    expect(formatPhoneDisplay('+923001234567')).toBe('+923001234567');
+    expect(formatPhoneDisplay('+90553')).toBe('+90553');
   });
 });

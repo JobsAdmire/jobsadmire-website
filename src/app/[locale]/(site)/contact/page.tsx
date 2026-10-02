@@ -10,7 +10,7 @@ import { buildMetadata } from '@/lib/seo/metadata';
 import { absoluteUrl } from '@/lib/seo/routes';
 import { submitCallback, submitContact, submitVisit } from './actions';
 import { contactPageJsonLd } from './_lib/jsonld';
-import { partnerLineOf } from './_lib/phone';
+import { partnerLineOf } from '@/lib/contact/partner-line';
 import { Faq } from './_sections/Faq';
 import { Hero } from './_sections/Hero';
 import { Message } from './_sections/Message';

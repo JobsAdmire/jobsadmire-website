@@ -15,7 +15,7 @@ import { LiveStatus } from '../_components/LiveStatus';
 import type { FormAction } from '../_components/types';
 import { formDoor } from '../_lib/door';
 import { LANGUAGE_CODES } from '../_lib/options';
-import { partnerLineOf } from '../_lib/phone';
+import { partnerLineOf } from '@/lib/contact/partner-line';
 
 /** The channel cards' shared frame: colourless and borderless, so each card adds its own border,
  *  layout and padding without a second utility for one property (W122). */
