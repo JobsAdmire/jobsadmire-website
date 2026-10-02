@@ -14,6 +14,8 @@
     "test:watch": "NODE_ENV=test vitest",
     "verify": "npm run typecheck && npm run lint && npm run format && npm run test",
     "e2e": "playwright test",
+    "careers:door": "node e2e/mocks/careers-door.mjs",
+    "e2e:careers": "E2E_CAREERS_MOCK=1 playwright test e2e/pages/careers.spec.ts",
     "gate": "bash scripts/gate.sh",
     "gate:launch": "bash scripts/gate.sh --profile=launch",
     "js-size": "node scripts/js-size.mjs",

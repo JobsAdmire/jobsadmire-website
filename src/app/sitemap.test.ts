@@ -34,7 +34,7 @@ describe('sitemap', () => {
     for (const url of urls) expect(url).not.toContain('[');
   });
 
-  it('is exactly (static keys − excluded) × locales while no detail source is registered', () => {
+  it('is exactly (static keys − excluded) × locales while the detail sources yield nothing (no door in the unit suite)', () => {
     const staticKeys = (Object.keys(pathnames) as (keyof typeof pathnames)[]).filter(
       (key) =>
         isStatic(key) &&

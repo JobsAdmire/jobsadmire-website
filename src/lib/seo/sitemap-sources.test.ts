@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest';
+import { careersSitemapSource } from '@/lib/careers-sitemap';
 import {
   DETAIL_SITEMAP_SOURCES,
   detailSitemapEntries,
@@ -6,8 +7,8 @@ import {
 } from './sitemap-sources';
 
 describe('DETAIL_SITEMAP_SOURCES (W31)', () => {
-  it('is empty and frozen in the foundation — the careers page task edits the literal to add the first source (W70)', () => {
-    expect(DETAIL_SITEMAP_SOURCES).toEqual([]);
+  it('is the frozen one-source literal — the careers openings source the careers page task registered (W31/W70)', () => {
+    expect(DETAIL_SITEMAP_SOURCES).toEqual([careersSitemapSource]);
     expect(Object.isFrozen(DETAIL_SITEMAP_SOURCES)).toBe(true);
   });
 
