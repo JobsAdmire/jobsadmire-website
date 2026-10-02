@@ -150,7 +150,7 @@ export function Salaries({ ctx }: { ctx: CalcCtx }) {
   ];
   return (
     <>
-      <ul className="m-0 mb-[22px] flex list-none flex-wrap items-center gap-[18px] p-0 text-[12.5px] font-bold text-text-secondary xl:text-[9.5px]">
+      <ul className="m-0 mb-[22px] flex list-none flex-wrap items-center gap-[18px] p-0 text-[12.5px] font-bold text-text-secondary xl:text-[11px]">
         <li className="inline-flex items-center gap-[7px]">
           <span
             aria-hidden="true"
@@ -304,7 +304,7 @@ export function Compare({ ctx }: { ctx: CalcCtx }) {
               <td className="w-[150px] border-b border-border-3 bg-ink text-center align-middle xl:w-[112px]">
                 <span
                   aria-hidden="true"
-                  className="inline-grid h-12 w-12 place-items-center rounded-pill bg-white text-[14px] font-extrabold tracking-[0.5px] text-ink before:content-['VS'] xl:h-9 xl:w-9 xl:text-[10.5px]"
+                  className="inline-grid h-12 w-12 place-items-center rounded-pill bg-white text-[14px] font-extrabold tracking-[0.5px] text-ink before:content-['VS'] xl:h-9 xl:w-9 xl:text-[11px]"
                 />
               </td>
               {/* D20: the design's #1899D5 → #1073a8 gradient starts at blue-safe for white text */}
@@ -332,7 +332,7 @@ export function Compare({ ctx }: { ctx: CalcCtx }) {
                 </td>
                 <th
                   scope="row"
-                  className="border-x border-border-3 bg-pale-2 px-2.5 text-center text-[11.5px] font-extrabold uppercase tracking-[0.8px] text-text-tertiary xl:text-[8.6px]"
+                  className="border-x border-border-3 bg-pale-2 px-2.5 text-center text-[11.5px] font-extrabold uppercase tracking-[0.8px] text-text-tertiary xl:text-[11px]"
                 >
                   {t(labelId)}
                 </th>
@@ -494,7 +494,7 @@ function Exemptions({ ctx }: { ctx: CalcCtx }) {
                   {text}
                 </span>
               </p>
-              <p className="m-0 text-[14px] leading-[1.6] text-text-secondary max-md:text-[13px] max-md:leading-[1.5] xl:text-[10.5px]">
+              <p className="m-0 text-[14px] leading-[1.6] text-text-secondary max-md:text-[13px] max-md:leading-[1.5] xl:text-[11px]">
                 {t(bodyId)}
               </p>
             </div>
@@ -612,7 +612,7 @@ export function Quota({ ctx }: { ctx: CalcCtx }) {
               ).map(([lead, strong, tail]) => (
                 <li key={strong} className="flex items-start gap-[11px]">
                   <Dot tone="blue" />
-                  <span className="text-[14px] leading-[1.6] text-text-secondary xl:text-[10.5px]">
+                  <span className="text-[14px] leading-[1.6] text-text-secondary xl:text-[11px]">
                     {/* calc.154/157 are deliberately empty in Turkish — Sentence drops them */}
                     <Sentence runs={[t(lead), b(t(strong)), t(tail)]} />
                   </span>
@@ -634,13 +634,13 @@ export function Quota({ ctx }: { ctx: CalcCtx }) {
                   <span className="block text-[16.5px] font-extrabold tracking-[-0.3px] text-ink xl:text-[12.4px]">
                     {t(value)}
                   </span>
-                  <span className="mt-[3px] block text-[12px] leading-[1.45] text-text-tertiary xl:text-[9px]">
+                  <span className="mt-[3px] block text-[12px] leading-[1.45] text-text-tertiary xl:text-[11px]">
                     {t(label)}
                   </span>
                 </li>
               ))}
             </ul>
-            <p className="m-0 mt-3 text-[12.5px] leading-[1.55] text-text-tertiary xl:text-[9.4px]">
+            <p className="m-0 mt-3 text-[12.5px] leading-[1.55] text-text-tertiary xl:text-[11px]">
               <Sentence
                 runs={[
                   t('calc.170'),
@@ -774,7 +774,7 @@ function IncentiveCard({
       <span className={c.badge}>{badge}</span>
       <h3 className="m-0 mb-1 text-[17px] font-extrabold text-ink xl:text-[12.75px]">{title}</h3>
       <p className={c.sub}>{sub}</p>
-      <p className="m-0 mb-3.5 text-[14px] leading-[1.6] text-text-secondary xl:text-[10.5px]">
+      <p className="m-0 mb-3.5 text-[14px] leading-[1.6] text-text-secondary xl:text-[11px]">
         {body}
       </p>
       <div className="mt-auto border-t border-border-3 pt-3.5 text-[13.5px] leading-[1.55] text-text-tertiary">
@@ -918,13 +918,13 @@ export function Incentives({ ctx }: { ctx: CalcCtx }) {
                 <p className="m-0 mb-[5px] text-[15px] font-extrabold text-ink xl:text-[11.25px]">
                   {t(title)}
                 </p>
-                <p className="m-0 text-[14px] leading-[1.6] text-text-secondary xl:text-[10.5px]">
+                <p className="m-0 text-[14px] leading-[1.6] text-text-secondary xl:text-[11px]">
                   {t(body)}
                 </p>
               </div>
             ))}
           </div>
-          <p className="m-0 mt-[18px] border-t border-border-3 pt-4 text-[14px] leading-[1.6] text-text-secondary xl:text-[10.5px]">
+          <p className="m-0 mt-[18px] border-t border-border-3 pt-4 text-[14px] leading-[1.6] text-text-secondary xl:text-[11px]">
             <Sentence runs={[b(t('calc.353')), t('calc.354')]} />
           </p>
         </div>
@@ -956,7 +956,7 @@ export function Penalties({ ctx }: { ctx: CalcCtx }) {
       <p className="m-0 mb-2 text-[34px] font-extrabold leading-none tracking-[-1px] text-ink xl:text-[25.5px]">
         {t(amount)}
       </p>
-      <p className="m-0 text-[14.5px] leading-[1.6] text-[#7a5210] xl:text-[10.9px]">
+      <p className="m-0 text-[14.5px] leading-[1.6] text-[#7a5210] xl:text-[11px]">
         <Sentence runs={body} />
       </p>
     </div>
@@ -1106,7 +1106,7 @@ function TierCard({
         {items.map((runs, i) => (
           <li key={i} className="flex items-start gap-2.5">
             <Dot tone={tone} />
-            <span className="text-[14.5px] leading-[1.55] text-text-secondary xl:text-[10.9px]">
+            <span className="text-[14.5px] leading-[1.55] text-text-secondary xl:text-[11px]">
               <Sentence runs={runs} />
             </span>
           </li>
@@ -1205,19 +1205,19 @@ export function Students({ ctx }: { ctx: CalcCtx }) {
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
           <div className="rounded-sm border border-border-2 bg-white px-5 py-[18px]">
-            <h3 className="m-0 mb-1 text-[14.5px] font-extrabold text-ink xl:text-[10.9px]">
+            <h3 className="m-0 mb-1 text-[14.5px] font-extrabold text-ink xl:text-[11px]">
               {t('calc.277')}
             </h3>
             <p className="m-0 text-body-sm leading-[1.6] text-text-secondary">{t('calc.278')}</p>
           </div>
           <div className="rounded-sm border border-border-2 bg-white px-5 py-[18px]">
-            <h3 className="m-0 mb-1 text-[14.5px] font-extrabold text-ink xl:text-[10.9px]">
+            <h3 className="m-0 mb-1 text-[14.5px] font-extrabold text-ink xl:text-[11px]">
               {t('calc.279')}
             </h3>
             <p className="m-0 text-body-sm leading-[1.6] text-text-secondary">{t('calc.280')}</p>
           </div>
           <div className="rounded-sm border border-warning-border bg-warning-surface px-5 py-[18px]">
-            <h3 className="m-0 mb-1 text-[14.5px] font-extrabold text-ink xl:text-[10.9px]">
+            <h3 className="m-0 mb-1 text-[14.5px] font-extrabold text-ink xl:text-[11px]">
               {t('calc.281')}
             </h3>
             <p className="m-0 text-body-sm leading-[1.6] text-[#7a5210]">{t('calc.282')}</p>

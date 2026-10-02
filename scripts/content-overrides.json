@@ -99,5 +99,9 @@
   "crmlogin.018": {
     "tr": "Get it on",
     "reason": "W7 / README — store-badge micro-copy stays English."
+  },
+  "calc.131": {
+    "tr": "dır — izin ve uçak bileti birlikte yaklaşık ₺28.000 tutar.",
+    "reason": "T3 review A2 (W190) — the package TR runs calc.130 'üç katından fazlası' into calc.131 'ıdır', printing 'fazlasııdır'; the design's own pBan1 reads 'fazlasıdır'. Legal-flagged pair: EN verbatim, TR drops the duplicated vowel only."
   }
 }

@@ -7,7 +7,7 @@ import { ctasFor, type CtaTable, type ResolvedCta } from './ctas';
 // nav CTA, W155) — never `primary` plus appended colour classes, which Tailwind resolves by
 // alphabetical order, not by position (W122: the blue hover never rendered). The danger face is
 // the red "Report an Impostor"; both keep Button's base/size/focus classes.
-const PRIMARY = buttonClassName('nav', 'md', 'whitespace-nowrap');
+const PRIMARY = buttonClassName('nav', 'md', 'whitespace-nowrap max-xs:px-2.5'); // ≤ 460: the design's tighter CTA (W190)
 const DANGER = buttonClassName('danger', 'md', 'whitespace-nowrap');
 // `xl`-only, like the design's `.ja-nav-cta-secondary` (hidden ≤1100) — `max-xl:hidden` sorts
 // after `buttonClassName`'s base `inline-flex`, so the media variant wins the cascade; a bare

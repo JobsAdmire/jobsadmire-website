@@ -44,7 +44,7 @@ export function Header({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
     <header className="sticky top-0 z-40 border-b border-border-3 bg-white">
       {/* W180: the design's nav is a full-bleed row (padding only) — never the 960 px content
           box the sections share (`chrome-row-nav`, src/app/globals.css). */}
-      <div className="chrome-row-nav flex items-center justify-between gap-5 py-3">
+      <div className="chrome-row-nav flex items-center justify-between gap-5 py-3 max-xs:gap-2.5">
         <Link href="/" prefetch={false} className="min-w-0 shrink no-underline">
           <Image
             src={BRAND.logo.src}

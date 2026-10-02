@@ -47,6 +47,7 @@ describe('toCalculatorFields — the catalog names, keys on the wire (W77), the 
         company: 'Demir Tekstil',
         country: 'tr',
         message: 'Antalya',
+        estimateSummary: 'FORGED ₺1',
       }),
       ctx,
     );
@@ -70,6 +71,8 @@ describe('toCalculatorFields — the catalog names, keys on the wire (W77), the 
     expect(fields.estimateSummary).toContain('<calc.016>: <calc.017>');
     expect(fields.estimateSummary).toContain('Oran sürümü: 2026-01');
     expect(fields.estimateSummary.length).toBeLessThanOrEqual(2000);
+    // a posted summary is never trusted — the server rebuilds it from the est_* inputs (W95/W144)
+    expect(fields.estimateSummary).not.toContain('FORGED');
   });
   it('recomputes from the est_* inputs — a client total is never forwarded', () => {
     const fields = toCalculatorFields(

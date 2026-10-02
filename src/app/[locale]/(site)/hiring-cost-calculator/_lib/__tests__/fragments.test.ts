@@ -27,7 +27,7 @@ describe('sp — the gap between two trimmed package fragments', () => {
     expect(sp('64.988 ₺ / ay', TR['calc.039'])).toBe(''); // "."
   });
   it('glues the Turkish suffix fragments the package splits off a highlighted word', () => {
-    expect(sp(TR['calc.130'], TR['calc.131'])).toBe(''); // "üç katından fazlası" + "ıdır — …"
+    expect(sp(TR['calc.130'], TR['calc.131'])).toBe(''); // "üç katından fazlası" + "dır — …" (calc.131 override, W190)
     expect(sp(TR['calc.244'], TR['calc.245'])).toBe(''); // "birebir aynı" + "dır. …"
     expect(sp(TR['calc.342'], TR['calc.343'])).toBe(''); // "Devletin öde" + "mediği"
     expect(sp(TR['calc.343'], TR['calc.344'])).toBe(' '); // "mediği" + "şeyler"
@@ -53,7 +53,7 @@ describe('joinText', () => {
     );
     // The package's own TR pair glues to the design's rendered text, typo included (calc.130 ends
     // "fazlası", calc.131 starts "ıdır") — a WP-C copy item, never patched here.
-    expect(joinText([TR['calc.130'], TR['calc.131']])).toMatch(/^üç katından fazlasııdır — /);
+    expect(joinText([TR['calc.130'], TR['calc.131']])).toMatch(/^üç katından fazlasıdır — /);
     expect(joinText([TR['calc.154'], TR['calc.155'], TR['calc.156']])).toMatch(
       /^İşyeri bazında sayılır, şirket bazında değil/,
     );

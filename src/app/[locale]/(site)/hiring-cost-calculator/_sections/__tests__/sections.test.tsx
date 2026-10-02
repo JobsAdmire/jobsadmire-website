@@ -379,6 +379,8 @@ describe('pixel run 1 (d) fixes — Cycle 8(a)', () => {
         <Quota ctx={TR} />
         <Penalties ctx={TR} />
         <Students ctx={TR} />
+        <Basis ctx={TR} />
+        <Incentives ctx={TR} />
       </>,
     );
     const early = [...container.querySelectorAll('[class]')]

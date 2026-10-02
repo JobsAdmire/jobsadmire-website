@@ -174,7 +174,7 @@ describe('Header', () => {
     expect(cta).toHaveClass('bg-ink', 'text-white', 'hover:bg-blue-safe', 'whitespace-nowrap');
     expect(cta).not.toHaveClass('bg-blue-safe');
     expect(cta).not.toHaveClass('hover:bg-ink');
-    expect(cta.className).toBe(buttonClassName('nav', 'md', 'whitespace-nowrap'));
+    expect(cta.className).toBe(buttonClassName('nav', 'md', 'whitespace-nowrap max-xs:px-2.5')); // W190: ≤ 460 face
     unmount();
 
     // the danger face (the verify page's "Report an Impostor") stays collision-free too

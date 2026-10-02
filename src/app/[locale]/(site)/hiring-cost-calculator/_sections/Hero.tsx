@@ -9,7 +9,7 @@ import { Sentence } from '../_components/Sentence';
 import type { CalcCtx } from './context';
 
 const BADGE =
-  'm-0 mb-4 inline-flex items-center gap-[9px] rounded-pill border border-[rgba(74,222,128,0.35)] bg-[rgba(74,222,128,0.12)] px-4 py-1.5 text-[12px] font-extrabold uppercase tracking-[1.2px] text-[#86efac] max-md:mb-3 max-md:px-3 max-md:py-[5px] max-md:text-[11px] max-md:tracking-[1px] xl:text-[9px]';
+  'm-0 mb-4 inline-flex items-center gap-[9px] rounded-pill border border-[rgba(74,222,128,0.35)] bg-[rgba(74,222,128,0.12)] px-4 py-1.5 text-[12px] font-extrabold uppercase tracking-[1.2px] text-[#86efac] max-md:mb-3 max-md:px-3 max-md:py-[5px] max-md:text-[11px] max-md:tracking-[1px] xl:text-[11px]';
 
 /**
  * Design 559–572: the navy hero — breadcrumbs (W109: this page's own calc.001 → `/`, calc.002 →
@@ -65,7 +65,7 @@ export function Hero({ ctx, children }: { ctx: CalcCtx; children: ReactNode }) {
           <h1
             data-testid="page-h1"
             data-lcp-slot="h1"
-            className="m-0 mb-4 text-[clamp(36px,4.2vw,54px)] leading-[1.03] tracking-[-0.04em] text-white max-md:leading-[1.07] max-md:tracking-[-1.1px] xl:text-[clamp(27px,3.15vw,40.5px)]"
+            className="m-0 mb-4 text-[clamp(36px,4.2vw,54px)] leading-[1.03] tracking-[-2.1px] text-white max-md:leading-[1.07] max-md:tracking-[-1.1px] xl:tracking-[-1.575px] xl:text-[clamp(27px,3.15vw,40.5px)]"
           >
             <Sentence
               runs={[
@@ -129,7 +129,7 @@ export function CalculatorCard({ ctx }: { ctx: CalcCtx }) {
           className="m-6"
         />
       )}
-      <p className="m-0 border-t border-border-4 bg-pale-1 px-[34px] py-[13px] text-[12.5px] leading-[1.5] text-text-secondary max-md:px-[15px] max-md:py-3 max-md:text-[11.5px] xl:px-[25.5px] xl:py-[10px] xl:text-[9.5px]">
+      <p className="m-0 border-t border-border-4 bg-pale-1 px-[34px] py-[13px] text-[12.5px] leading-[1.5] text-text-secondary max-md:px-[15px] max-md:py-3 max-md:text-[11.5px] xl:px-[25.5px] xl:py-[10px] xl:text-[11px]">
         {t('calc.040')}
       </p>
     </div>

@@ -43,9 +43,9 @@ describe('import-design-package — strings', () => {
 });
 
 describe('import-design-package — W7 overrides', () => {
-  it('applies the 24-id override table and logs every locale value it changed', () => {
-    expect(Object.keys(overrides)).toHaveLength(24);
-    expect(report.overrides).toHaveLength(29);
+  it('applies the 25-id override table and logs every locale value it changed', () => {
+    expect(Object.keys(overrides)).toHaveLength(25); // + calc.131 (T3 review A2, W190)
+    expect(report.overrides).toHaveLength(30);
     for (const row of report.overrides) expect(row.before).not.toBe(row.after);
   });
   it('fixes the three TR package defects', () => {
