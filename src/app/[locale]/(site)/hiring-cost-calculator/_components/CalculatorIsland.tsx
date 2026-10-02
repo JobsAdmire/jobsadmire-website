@@ -192,13 +192,13 @@ export function CalculatorIsland({
             >
               <span id="calc-role-m-value" className="flex min-w-0 flex-col gap-0.5">
                 <span className="truncate text-body font-extrabold text-ink">{view.roleLabel}</span>
-                <span className="text-[12px] font-bold text-text-tertiary">
+                <span className="text-[12px] xl:text-[11px] font-bold text-text-tertiary">
                   {view.industryLabel} · {view.roleRange}
                 </span>
               </span>
               <span
                 aria-hidden="true"
-                className="grid h-[30px] w-[30px] shrink-0 place-items-center rounded-input bg-tint text-[13px] font-extrabold text-blue-safe"
+                className="grid h-[30px] w-[30px] shrink-0 place-items-center rounded-input bg-tint text-[13px] xl:text-[11px] font-extrabold text-blue-safe"
               >
                 ▼
               </span>
@@ -234,7 +234,7 @@ export function CalculatorIsland({
                           setSheet(false);
                         }}
                         className={[
-                          'mb-1.5 flex min-h-[58px] w-full cursor-pointer items-center justify-between gap-3 rounded-xs border-[1.5px] px-[13px] py-2.5 text-left',
+                          'mb-1.5 flex min-h-[58px] w-full cursor-pointer items-center justify-between gap-3 rounded-xs border-[1.5px] px-[13px] xl:px-[9.75px] py-2.5 text-left',
                           r.key === view.roleKey
                             ? 'border-blue-safe bg-pale-3'
                             : 'border-border-3 bg-white',
@@ -373,7 +373,10 @@ export function CalculatorIsland({
           className={`${BRK_TOGGLE} md:hidden`}
         >
           <span>{breakdown ? labels.brkHide : labels.brkShow}</span>
-          <span aria-hidden="true" className="text-[12px] font-extrabold text-blue-safe">
+          <span
+            aria-hidden="true"
+            className="text-[12px] xl:text-[11px] font-extrabold text-blue-safe"
+          >
             {breakdown ? '−' : '+'}
           </span>
         </button>

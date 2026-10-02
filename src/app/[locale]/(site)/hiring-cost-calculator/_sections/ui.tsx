@@ -36,19 +36,19 @@ export function SectionHead({ title, sub, align = 'center', size = 'lg' }: Secti
 
 /** Small upper-case labels: white/pale-2/pale-3 cards, pale-1 cards, navy cards. */
 export const KICKER =
-  'm-0 mb-3 text-eyebrow font-extrabold uppercase tracking-[1px] text-text-tertiary';
+  'm-0 mb-3 text-eyebrow font-extrabold uppercase tracking-[1px] xl:tracking-[0.75px] text-text-tertiary';
 export const KICKER_SM =
-  'm-0 mb-2 text-[11px] font-extrabold uppercase tracking-[1.1px] text-text-tertiary';
+  'm-0 mb-2 text-[11px] xl:text-[11px] font-extrabold uppercase tracking-[1.1px] xl:tracking-[0.825px] text-text-tertiary';
 export const KICKER_SM_PALE =
-  'm-0 mb-2 text-[11px] font-extrabold uppercase tracking-[1.1px] text-text-secondary';
+  'm-0 mb-2 text-[11px] xl:text-[11px] font-extrabold uppercase tracking-[1.1px] xl:tracking-[0.825px] text-text-secondary';
 export const KICKER_DARK =
-  'm-0 mb-1.5 text-[11px] font-extrabold uppercase tracking-[1.1px] text-sky';
+  'm-0 mb-1.5 text-[11px] xl:text-[11px] font-extrabold uppercase tracking-[1.1px] xl:tracking-[0.825px] text-sky';
 
 const NOTE = {
   amber:
-    'm-0 rounded-sm border border-warning-border bg-warning-surface px-[22px] py-4 text-body-sm leading-[1.6] text-[#7a5210] max-md:px-3.5 max-md:py-[13px]',
+    'm-0 rounded-sm border border-warning-border bg-warning-surface px-[22px] xl:px-[16.5px] py-4 text-body-sm leading-[1.6] text-[#7a5210] max-md:px-3.5 max-md:py-[13px]',
   green:
-    'm-0 rounded-base border border-success-border bg-success-surface px-[26px] py-5 text-body leading-[1.65] text-[#14532d] max-md:px-3.5 max-md:py-[13px] max-md:text-body-sm',
+    'm-0 rounded-base border border-success-border bg-success-surface px-[26px] xl:px-[19.5px] py-5 text-body leading-[1.65] text-[#14532d] max-md:px-3.5 max-md:py-[13px] max-md:text-body-sm',
 } as const;
 
 /** The design's amber/green notes. `className` is for margins and visibility only (W122). */
@@ -65,9 +65,9 @@ export function Note({
 }
 
 const TICK =
-  'mt-px grid h-[22px] w-[22px] shrink-0 place-items-center rounded-[7px] border border-success-border bg-success-surface text-[12px] font-extrabold text-success-text';
+  'mt-px grid h-[22px] w-[22px] shrink-0 place-items-center rounded-[7px] border border-success-border bg-success-surface text-[12px] xl:text-[11px] font-extrabold text-success-text';
 const TICK_DARK =
-  'mt-px grid h-[22px] w-[22px] shrink-0 place-items-center rounded-[7px] border border-[rgba(93,223,176,0.4)] bg-[rgba(93,223,176,0.16)] text-[12px] font-extrabold text-[#5ddfb0]';
+  'mt-px grid h-[22px] w-[22px] shrink-0 place-items-center rounded-[7px] border border-[rgba(93,223,176,0.4)] bg-[rgba(93,223,176,0.16)] text-[12px] xl:text-[11px] font-extrabold text-[#5ddfb0]';
 
 /** The design's check square (decorative — the row's text carries the meaning). */
 export function Tick({ dark = false }: { dark?: boolean }) {
@@ -79,7 +79,7 @@ export function Tick({ dark = false }: { dark?: boolean }) {
 }
 
 const DOT = {
-  blue: 'mt-[7px] h-[7px] w-[7px] shrink-0 rounded-pill bg-blue',
+  blue: 'mt-[7px] xl:mt-[5.25px] h-[7px] w-[7px] shrink-0 rounded-pill bg-blue',
   amber: 'mt-2 h-1.5 w-1.5 shrink-0 rounded-pill bg-warning',
   green: 'mt-2 h-1.5 w-1.5 shrink-0 rounded-pill bg-success',
 } as const;

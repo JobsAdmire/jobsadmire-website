@@ -92,15 +92,15 @@ export function CalculatorSkeleton({
             />
             <div
               aria-hidden="true"
-              className="flex min-h-[56px] w-full items-center justify-between gap-3 rounded-xs border-[1.5px] border-border-1 bg-white px-3.5 py-[11px] md:hidden"
+              className="flex min-h-[56px] w-full items-center justify-between gap-3 rounded-xs border-[1.5px] border-border-1 bg-white px-3.5 py-[11px] xl:py-[8.25px] md:hidden"
             >
               <span className="flex min-w-0 flex-col gap-0.5">
                 <span className="truncate text-body font-extrabold text-ink">{view.roleLabel}</span>
-                <span className="text-[12px] font-bold text-text-tertiary">
+                <span className="text-[12px] xl:text-[11px] font-bold text-text-tertiary">
                   {view.industryLabel} · {view.roleRange}
                 </span>
               </span>
-              <span className="grid h-[30px] w-[30px] shrink-0 place-items-center rounded-input bg-tint text-[13px] font-extrabold text-blue-safe">
+              <span className="grid h-[30px] w-[30px] shrink-0 place-items-center rounded-input bg-tint text-[13px] xl:text-[11px] font-extrabold text-blue-safe">
                 ▼
               </span>
             </div>
@@ -154,7 +154,7 @@ export function CalculatorSkeleton({
       <div className={RIGHT_COL}>
         <div aria-hidden="true" className={`${BRK_TOGGLE} md:hidden`}>
           <span>{labels.brkShow}</span>
-          <span className="text-[12px] font-extrabold text-blue-safe">+</span>
+          <span className="text-[12px] xl:text-[11px] font-extrabold text-blue-safe">+</span>
         </div>
         <EstimateBreakdown view={view} labels={labels} />
       </div>

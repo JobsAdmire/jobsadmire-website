@@ -52,12 +52,12 @@ export function JumpChips({ ctx }: { ctx: CalcCtx }) {
       data-testid="calc-jump"
       className="container-site pt-4 md:hidden"
     >
-      <ul className="m-0 flex list-none gap-[7px] overflow-x-auto p-0 pb-0.5">
+      <ul className="m-0 flex list-none gap-[7px] xl:gap-[5.25px] overflow-x-auto p-0 pb-0.5">
         {JUMP.map(([href, id]) => (
           <li key={href} className="flex-none">
             <a
               href={href}
-              className="inline-flex min-h-10 items-center whitespace-nowrap rounded-pill border border-border-1 bg-pale-1 px-3.5 text-[13px] font-extrabold text-ink no-underline"
+              className="inline-flex min-h-10 items-center whitespace-nowrap rounded-pill border border-border-1 bg-pale-1 px-3.5 text-[13px] xl:text-[11px] font-extrabold text-ink no-underline"
             >
               {t(id)}
             </a>
@@ -71,9 +71,9 @@ export function JumpChips({ ctx }: { ctx: CalcCtx }) {
 /* ---------- #basis (765–808) ---------- */
 
 const BASIS_GRID =
-  'grid gap-[18px] lg:grid-cols-4 max-md:gap-0 max-md:overflow-hidden max-md:rounded-sm max-md:border max-md:border-border-1 max-md:bg-white';
+  'grid gap-[18px] xl:gap-[13.5px] lg:grid-cols-4 max-md:gap-0 max-md:overflow-hidden max-md:rounded-sm max-md:border max-md:border-border-1 max-md:bg-white';
 const BASIS_CARD =
-  'rounded-md border border-border-2 bg-white px-[22px] py-6 max-md:rounded-none max-md:border-0 max-md:border-t max-md:border-border-3 max-md:px-3.5 max-md:py-[13px] max-md:first:border-t-0';
+  'rounded-md border border-border-2 bg-white px-[22px] xl:px-[16.5px] py-6 max-md:rounded-none max-md:border-0 max-md:border-t max-md:border-border-3 max-md:px-3.5 max-md:py-[13px] max-md:first:border-t-0';
 
 export function Basis({ ctx }: { ctx: CalcCtx }) {
   const { t, locale, rateConfig } = ctx;
@@ -116,15 +116,15 @@ export function Basis({ ctx }: { ctx: CalcCtx }) {
           </div>
         ))}
       </div>
-      <Note tone="amber" className="mt-[22px]">
+      <Note tone="amber" className="mt-[22px] xl:mt-[16.5px]">
         <Sentence runs={[b(t('calc.087')), t('calc.088')]} />
       </Note>
       {/* D17: the "last updated" date is rateConfig.updatedAt, never typed (design line 2617) */}
       <p
         data-testid="calc-updated"
-        className="m-0 mt-[18px] flex flex-wrap items-center justify-center gap-2.5 text-body-sm text-text-tertiary max-md:justify-start"
+        className="m-0 mt-[18px] xl:mt-[13.5px] flex flex-wrap items-center justify-center gap-2.5 text-body-sm text-text-tertiary max-md:justify-start"
       >
-        <span className="inline-flex items-center rounded-pill border border-tint-border bg-white px-[15px] py-1.5 font-bold text-text-secondary">
+        <span className="inline-flex items-center rounded-pill border border-tint-border bg-white px-[15px] xl:px-[11.25px] py-1.5 font-bold text-text-secondary">
           <Sentence runs={[t('calc.089'), b(updatedAtLabel(rateConfig, locale))]} />
         </span>
         <span>{t('calc.090')}</span>
@@ -150,19 +150,19 @@ export function Salaries({ ctx }: { ctx: CalcCtx }) {
   ];
   return (
     <>
-      <ul className="m-0 mb-[22px] flex list-none flex-wrap items-center gap-[18px] p-0 text-[12.5px] font-bold text-text-secondary xl:text-[11px]">
-        <li className="inline-flex items-center gap-[7px]">
+      <ul className="m-0 mb-[22px] xl:mb-[16.5px] flex list-none flex-wrap items-center gap-[18px] xl:gap-[13.5px] p-0 text-[12.5px] font-bold text-text-secondary xl:text-[11px]">
+        <li className="inline-flex items-center gap-[7px] xl:gap-[5.25px]">
           <span
             aria-hidden="true"
             className="h-[7px] w-[22px] rounded-pill bg-[linear-gradient(90deg,#1899d5_0%,#5cc0ef_100%)]"
           />
           {t('calc.093')}
         </li>
-        <li className="inline-flex items-center gap-[7px]">
+        <li className="inline-flex items-center gap-[7px] xl:gap-[5.25px]">
           <span aria-hidden="true" className="h-[13px] w-0.5 bg-ink" />
           <Sentence runs={[t('calc.094'), formatTRY(rateConfig.legalMinGross, locale)]} />
         </li>
-        <li className="inline-flex items-center gap-[7px]">
+        <li className="inline-flex items-center gap-[7px] xl:gap-[5.25px]">
           <span
             aria-hidden="true"
             className="h-[9px] w-[9px] rounded-[3px] border border-success-border bg-success-surface"
@@ -201,7 +201,7 @@ export function Salaries({ ctx }: { ctx: CalcCtx }) {
           }
         />
       ) : null}
-      <p className="m-0 mt-5 rounded-sm border border-border-2 bg-white px-[22px] py-4 text-body-sm leading-[1.6] text-text-tertiary max-md:mt-2.5 max-md:px-3.5 max-md:py-[13px]">
+      <p className="m-0 mt-5 rounded-sm border border-border-2 bg-white px-[22px] xl:px-[16.5px] py-4 text-body-sm leading-[1.6] text-text-tertiary max-md:mt-2.5 max-md:px-3.5 max-md:py-[13px]">
         <Sentence runs={[b(t('calc.098')), t('calc.099')]} />
       </p>
     </>
@@ -210,18 +210,20 @@ export function Salaries({ ctx }: { ctx: CalcCtx }) {
 
 /* ---------- #compare (873–1022) ---------- */
 
-const CELL = 'px-7 py-[17px] text-[14.5px] leading-[1.6] text-text-secondary xl:text-[11px]';
-const LT_BOX = 'rounded-sm border border-border-2 bg-pale-2 px-5 py-[18px]';
+const CELL =
+  'px-7 py-[17px] xl:py-[12.75px] text-[14.5px] leading-[1.6] text-text-secondary xl:text-[11px]';
+const LT_BOX = 'rounded-sm border border-border-2 bg-pale-2 px-5 py-[18px] xl:py-[13.5px]';
 const LT_BODY = 'm-0 text-body-sm leading-[1.6] text-text-secondary';
 const LADDER = {
-  blue: 'rounded-[8px] bg-tint px-[9px] py-1.5 text-[12.5px] font-extrabold text-blue-safe',
+  blue: 'rounded-[8px] bg-tint px-[9px] xl:px-[6.75px] py-1.5 text-[12.5px] xl:text-[11px] font-extrabold text-blue-safe',
   green:
-    'rounded-[8px] bg-success-surface px-[9px] py-1.5 text-[12.5px] font-extrabold text-success-text',
+    'rounded-[8px] bg-success-surface px-[9px] xl:px-[6.75px] py-1.5 text-[12.5px] xl:text-[11px] font-extrabold text-success-text',
 } as const;
 const SPREAD_VALUE = {
-  once: 'm-0 text-[26px] font-extrabold tracking-[-0.6px] text-white xl:text-[19.5px]',
-  year: 'm-0 text-[26px] font-extrabold tracking-[-0.6px] text-sky xl:text-[19.5px]',
-  three: 'm-0 text-[26px] font-extrabold tracking-[-0.6px] text-[#6fe0a3] xl:text-[19.5px]',
+  once: 'm-0 text-[26px] font-extrabold tracking-[-0.6px] xl:tracking-[-0.45px] text-white xl:text-[19.5px]',
+  year: 'm-0 text-[26px] font-extrabold tracking-[-0.6px] xl:tracking-[-0.45px] text-sky xl:text-[19.5px]',
+  three:
+    'm-0 text-[26px] font-extrabold tracking-[-0.6px] xl:tracking-[-0.45px] text-[#6fe0a3] xl:text-[19.5px]',
 } as const;
 
 export function Compare({ ctx }: { ctx: CalcCtx }) {
@@ -249,35 +251,39 @@ export function Compare({ ctx }: { ctx: CalcCtx }) {
   return (
     <>
       <div data-testid="calc-compare-mobile" className="md:hidden">
-        <div className="mb-2.5 rounded-sm bg-navy p-[15px]">
+        <div className="mb-2.5 rounded-sm bg-navy p-[15px] xl:p-[11.25px]">
           <p className={KICKER_DARK}>{t('calc.242')}</p>
-          <p className="m-0 text-[15.5px] font-bold leading-[1.45] text-white">
+          <p className="m-0 text-[15.5px] xl:text-[11.625px] font-bold leading-[1.45] text-white">
             <Sentence
               runs={[t('calc.243'), b(t('calc.244')), t('calc.245')]}
               strong="font-extrabold text-sky"
             />
           </p>
         </div>
-        <div className="mb-2.5 rounded-sm border border-border-1 bg-white px-3.5 py-[13px]">
+        <div className="mb-2.5 rounded-sm border border-border-1 bg-white px-3.5 py-[13px] xl:py-[9.75px]">
           <p className={KICKER_SM}>{t('calc.246')}</p>
-          <p className="m-0 flex flex-wrap items-baseline gap-[9px]">
-            <span className="text-[19px] font-extrabold tracking-[-0.4px] text-ink">
+          <p className="m-0 flex flex-wrap items-baseline gap-[9px] xl:gap-[6.75px]">
+            <span className="text-[19px] xl:text-[14.25px] font-extrabold tracking-[-0.4px] xl:tracking-[-0.3px] text-ink">
               {t('calc.411')}
             </span>
-            <span className="text-[12.5px] font-bold text-text-tertiary">{t('calc.247')}</span>
+            <span className="text-[12.5px] xl:text-[11px] font-bold text-text-tertiary">
+              {t('calc.247')}
+            </span>
           </p>
-          <p className="m-0 mt-1.5 text-[13px] leading-[1.5] text-text-tertiary">{t('calc.248')}</p>
+          <p className="m-0 mt-1.5 text-[13px] xl:text-[11px] leading-[1.5] text-text-tertiary">
+            {t('calc.248')}
+          </p>
         </div>
-        <div className="rounded-sm border border-border-1 bg-white px-3.5 pt-[13px] pb-1">
+        <div className="rounded-sm border border-border-1 bg-white px-3.5 pt-[13px] xl:pt-[9.75px] pb-1">
           <p className={KICKER_SM}>{t('calc.249')}</p>
           <ul className="m-0 list-none p-0">
             {benefits.map(([strong, rest]) => (
               <li
                 key={strong}
-                className="grid grid-cols-[22px_1fr] items-start gap-x-2.5 border-t border-border-3 py-[11px]"
+                className="grid grid-cols-[22px_1fr] items-start gap-x-2.5 border-t border-border-3 py-[11px] xl:py-[8.25px]"
               >
                 <Tick />
-                <span className="min-w-0 text-[13.5px] leading-[1.5] text-text-secondary">
+                <span className="min-w-0 text-[13.5px] xl:text-[11px] leading-[1.5] text-text-secondary">
                   <Sentence runs={[b(t(strong)), t(rest)]} />
                 </span>
               </li>
@@ -292,9 +298,9 @@ export function Compare({ ctx }: { ctx: CalcCtx }) {
             <tr>
               <th
                 scope="col"
-                className="border-b border-border-3 bg-pale-1 px-7 py-[22px] align-top"
+                className="border-b border-border-3 bg-pale-1 px-7 py-[22px] xl:py-[16.5px] align-top"
               >
-                <span className="mb-[5px] block text-eyebrow font-extrabold uppercase tracking-[1.2px] text-text-secondary">
+                <span className="mb-[5px] xl:mb-[3.75px] block text-eyebrow font-extrabold uppercase tracking-[1.2px] xl:tracking-[0.9px] text-text-secondary">
                   {t('calc.191')}
                 </span>
                 <span className="block text-[20px] font-extrabold leading-[1.2] text-ink xl:text-[15px]">
@@ -310,9 +316,9 @@ export function Compare({ ctx }: { ctx: CalcCtx }) {
               {/* D20: the design's #1899D5 → #1073a8 gradient starts at blue-safe for white text */}
               <th
                 scope="col"
-                className="border-b border-border-3 bg-[linear-gradient(135deg,#1073a8_0%,#0b5d88_100%)] px-7 py-[22px] text-right align-top"
+                className="border-b border-border-3 bg-[linear-gradient(135deg,#1073a8_0%,#0b5d88_100%)] px-7 py-[22px] xl:py-[16.5px] text-right align-top"
               >
-                <span className="mb-[5px] block text-eyebrow font-extrabold uppercase tracking-[1.2px] text-white">
+                <span className="mb-[5px] xl:mb-[3.75px] block text-eyebrow font-extrabold uppercase tracking-[1.2px] xl:tracking-[0.9px] text-white">
                   {t('calc.193')}
                 </span>
                 <span className="block text-[20px] font-extrabold leading-[1.2] text-white xl:text-[15px]">
@@ -332,7 +338,7 @@ export function Compare({ ctx }: { ctx: CalcCtx }) {
                 </td>
                 <th
                   scope="row"
-                  className="border-x border-border-3 bg-pale-2 px-2.5 text-center text-[11.5px] font-extrabold uppercase tracking-[0.8px] text-text-tertiary xl:text-[11px]"
+                  className="border-x border-border-3 bg-pale-2 px-2.5 text-center text-[11.5px] font-extrabold uppercase tracking-[0.8px] xl:tracking-[0.6px] text-text-tertiary xl:text-[11px]"
                 >
                   {t(labelId)}
                 </th>
@@ -346,15 +352,15 @@ export function Compare({ ctx }: { ctx: CalcCtx }) {
       </div>
       <div
         data-testid="calc-longterm"
-        className="mx-auto mt-[26px] max-w-[1080px] rounded-xl border border-border-1 bg-white px-[34px] py-8 shadow-[0_18px_48px_rgba(22,60,90,0.10)] max-md:mt-3 max-md:rounded-sm max-md:p-[15px] max-md:shadow-none xl:max-w-[810px] xl:px-[25.5px] xl:py-6"
+        className="mx-auto mt-[26px] xl:mt-[19.5px] max-w-[1080px] rounded-xl border border-border-1 bg-white px-[34px] py-8 shadow-[0_18px_48px_rgba(22,60,90,0.10)] max-md:mt-3 max-md:rounded-sm max-md:p-[15px] max-md:shadow-none xl:max-w-[810px] xl:px-[25.5px] xl:py-6"
       >
-        <h3 className="m-0 mb-2 text-[22px] font-extrabold tracking-[-0.4px] text-ink max-md:text-[18px] xl:text-[16.5px]">
+        <h3 className="m-0 mb-2 text-[22px] font-extrabold tracking-[-0.4px] xl:tracking-[-0.3px] text-ink max-md:text-[18px] xl:text-[16.5px]">
           {t('calc.225')}
         </h3>
         <p className="m-0 mb-6 max-w-[780px] text-[15px] leading-[1.65] text-text-tertiary max-md:mb-3.5 max-md:text-[13.5px] max-md:leading-[1.55] xl:text-[11.25px]">
           {t('calc.226')}
         </p>
-        <div className="mb-[22px] grid gap-4 lg:grid-cols-3">
+        <div className="mb-[22px] xl:mb-[16.5px] grid gap-4 lg:grid-cols-3">
           <div className={LT_BOX}>
             <p className={KICKER_SM}>{t('calc.227')}</p>
             <p className="m-0 mb-2.5 flex flex-wrap items-center gap-1.5">
@@ -381,33 +387,39 @@ export function Compare({ ctx }: { ctx: CalcCtx }) {
         </div>
         <div
           data-testid="calc-spread"
-          className="rounded-base bg-[linear-gradient(135deg,#16202e_0%,#253063_100%)] px-[26px] py-6 text-white max-md:px-[15px] max-md:py-4"
+          className="rounded-base bg-[linear-gradient(135deg,#16202e_0%,#253063_100%)] px-[26px] xl:px-[19.5px] py-6 text-white max-md:px-[15px] max-md:py-4"
         >
-          <p className="m-0 mb-3.5 text-[11.5px] font-extrabold uppercase tracking-[1px] text-white/80">
+          <p className="m-0 mb-3.5 text-[11.5px] xl:text-[11px] font-extrabold uppercase tracking-[1px] xl:tracking-[0.75px] text-white/80">
             {t('calc.236')}
           </p>
-          <div className="grid items-end gap-[18px] lg:grid-cols-3">
+          <div className="grid items-end gap-[18px] xl:gap-[13.5px] lg:grid-cols-3">
             <div>
               <p className={SPREAD_VALUE.once}>{formatTRY(oneOff, locale)}</p>
-              <p className="m-0 mt-[3px] text-[13px] text-white/75">{t('calc.237')}</p>
+              <p className="m-0 mt-[3px] xl:mt-[2.25px] text-[13px] xl:text-[11px] text-white/75">
+                {t('calc.237')}
+              </p>
             </div>
             <div>
               <p className={SPREAD_VALUE.year}>{`${formatTRY(oneOff / 12, locale)} ${perMonth}`}</p>
-              <p className="m-0 mt-[3px] text-[13px] text-white/75">{t('calc.238')}</p>
+              <p className="m-0 mt-[3px] xl:mt-[2.25px] text-[13px] xl:text-[11px] text-white/75">
+                {t('calc.238')}
+              </p>
             </div>
             <div>
               <p
                 className={SPREAD_VALUE.three}
               >{`${formatTRY(oneOff / 36, locale)} ${perMonth}`}</p>
-              <p className="m-0 mt-[3px] text-[13px] text-white/75">{t('calc.239')}</p>
+              <p className="m-0 mt-[3px] xl:mt-[2.25px] text-[13px] xl:text-[11px] text-white/75">
+                {t('calc.239')}
+              </p>
             </div>
           </div>
-          <p className="m-0 mt-[18px] border-t border-white/15 pt-4 text-body-sm leading-[1.6] text-white/80">
+          <p className="m-0 mt-[18px] xl:mt-[13.5px] border-t border-white/15 pt-4 text-body-sm leading-[1.6] text-white/80">
             {t('calc.240')}
           </p>
         </div>
       </div>
-      <p className="mx-auto mt-[26px] mb-0 max-w-[680px] text-center text-body-sm leading-[1.6] text-text-tertiary max-md:hidden">
+      <p className="mx-auto mt-[26px] xl:mt-[19.5px] mb-0 max-w-[680px] text-center text-body-sm leading-[1.6] text-text-tertiary max-md:hidden">
         {t('calc.241')}
       </p>
     </>
@@ -481,16 +493,19 @@ function Exemptions({ ctx }: { ctx: CalcCtx }) {
       <p className="m-0 mb-4 text-body-sm leading-[1.6] text-text-tertiary max-md:mb-3 max-md:text-[13px]">
         {t(introId)}
       </p>
-      <ul className="m-0 grid list-none gap-x-[30px] gap-y-3 p-0 lg:grid-cols-2">
+      <ul className="m-0 grid list-none gap-x-[30px] xl:gap-x-[22.5px] gap-y-3 p-0 lg:grid-cols-2">
         {rows.map(([titleId, bodyId, text]) => (
-          <li key={titleId} className="flex items-start gap-[13px] border-b border-border-3 pb-3">
+          <li
+            key={titleId}
+            className="flex items-start gap-[13px] xl:gap-[9.75px] border-b border-border-3 pb-3"
+          >
             <Tick />
             <div className="min-w-0">
-              <p className="m-0 mb-[3px] flex flex-wrap items-center gap-2">
+              <p className="m-0 mb-[3px] xl:mb-[2.25px] flex flex-wrap items-center gap-2">
                 <span className="text-[15px] font-extrabold text-ink max-md:text-[14.5px] xl:text-[11.25px]">
                   {t(titleId)}
                 </span>
-                <span className="whitespace-nowrap rounded-pill border border-border-2 bg-pale-1 px-[9px] py-0.5 text-[11px] font-extrabold text-blue-safe">
+                <span className="whitespace-nowrap rounded-pill border border-border-2 bg-pale-1 px-[9px] xl:px-[6.75px] py-0.5 text-[11px] xl:text-[11px] font-extrabold text-blue-safe">
                   {text}
                 </span>
               </p>
@@ -508,10 +523,10 @@ function Exemptions({ ctx }: { ctx: CalcCtx }) {
       data-testid="calc-exemptions"
       className="mt-7 overflow-hidden rounded-lg border border-tint-border bg-white max-md:mt-2.5 max-md:rounded-sm"
     >
-      <p className="m-0 border-b border-border-3 bg-pale-2 px-[26px] py-4 text-eyebrow font-extrabold uppercase tracking-[1px] text-text-tertiary max-md:px-3.5 max-md:py-3">
+      <p className="m-0 border-b border-border-3 bg-pale-2 px-[26px] xl:px-[19.5px] py-4 text-eyebrow font-extrabold uppercase tracking-[1px] xl:tracking-[0.75px] text-text-tertiary max-md:px-3.5 max-md:py-3">
         {t('calc.172')}
       </p>
-      <div className="px-[26px] py-[22px] max-md:px-3.5 max-md:py-[15px]">
+      <div className="px-[26px] xl:px-[19.5px] py-[22px] xl:py-[16.5px] max-md:px-3.5 max-md:py-[15px]">
         <Tabs
           defaultId="sector"
           tabs={groups.map((g) => ({
@@ -557,33 +572,33 @@ export function Quota({ ctx }: { ctx: CalcCtx }) {
           labels={quota}
           fallback={fallback('mobile')}
         />
-        <div className="mb-2.5 rounded-sm border border-border-1 bg-pale-1 px-3.5 py-[13px]">
+        <div className="mb-2.5 rounded-sm border border-border-1 bg-pale-1 px-3.5 py-[13px] xl:py-[9.75px]">
           <p className={KICKER_SM_PALE}>{t('calc.178')}</p>
-          <p className="m-0 text-[13.5px] leading-[1.55] text-text-secondary">
+          <p className="m-0 text-[13.5px] xl:text-[11px] leading-[1.55] text-text-secondary">
             <Sentence runs={[b(t('calc.179')), t('calc.180')]} />
           </p>
         </div>
-        <div className="rounded-sm border border-border-1 bg-white px-3.5 py-[13px]">
+        <div className="rounded-sm border border-border-1 bg-white px-3.5 py-[13px] xl:py-[9.75px]">
           <p className={KICKER_SM}>{t('calc.181')}</p>
-          <p className="m-0 mb-2.5 text-[13.5px] leading-[1.55] text-text-secondary">
+          <p className="m-0 mb-2.5 text-[13.5px] xl:text-[11px] leading-[1.55] text-text-secondary">
             <Sentence runs={[t('calc.182'), b(t('calc.183')), t('calc.184')]} />
           </p>
-          <ul className="m-0 grid list-none grid-cols-3 gap-[7px] p-0">
+          <ul className="m-0 grid list-none grid-cols-3 gap-[7px] xl:gap-[5.25px] p-0">
             {CRITERIA.map(([, , value, label]) => (
               <li
                 key={value}
-                className="rounded-[11px] border border-border-3 bg-pale-3 px-[9px] py-2.5"
+                className="rounded-[11px] border border-border-3 bg-pale-3 px-[9px] xl:px-[6.75px] py-2.5"
               >
-                <span className="block text-[14px] font-extrabold tracking-[-0.3px] text-ink">
+                <span className="block text-[14px] xl:text-[11px] font-extrabold tracking-[-0.3px] xl:tracking-[-0.225px] text-ink">
                   {t(value)}
                 </span>
-                <span className="mt-0.5 block text-[11.5px] leading-[1.35] text-text-tertiary">
+                <span className="mt-0.5 block text-[11.5px] xl:text-[11px] leading-[1.35] text-text-tertiary">
                   {t(label)}
                 </span>
               </li>
             ))}
           </ul>
-          <p className="m-0 mt-2.5 text-[12.5px] leading-[1.5] text-text-tertiary">
+          <p className="m-0 mt-2.5 text-[12.5px] xl:text-[11px] leading-[1.5] text-text-tertiary">
             {t('calc.188')}
           </p>
         </div>
@@ -597,12 +612,12 @@ export function Quota({ ctx }: { ctx: CalcCtx }) {
           fallback={fallback('desktop')}
         />
         <div className="flex flex-col gap-5">
-          <div className="rounded-lg border border-tint-border bg-white px-[26px] py-6">
+          <div className="rounded-lg border border-tint-border bg-white px-[26px] xl:px-[19.5px] py-6">
             <p className={KICKER}>{t('calc.150')}</p>
-            <p className="m-0 mb-[18px] text-[15px] leading-[1.65] text-text-secondary xl:text-[11.25px]">
+            <p className="m-0 mb-[18px] xl:mb-[13.5px] text-[15px] leading-[1.65] text-text-secondary xl:text-[11.25px]">
               <Sentence runs={[t('calc.151'), b(t('calc.152')), t('calc.153')]} />
             </p>
-            <ul className="m-0 flex list-none flex-col gap-[11px] p-0">
+            <ul className="m-0 flex list-none flex-col gap-[11px] xl:gap-[8.25px] p-0">
               {(
                 [
                   ['calc.154', 'calc.155', 'calc.156'],
@@ -610,7 +625,7 @@ export function Quota({ ctx }: { ctx: CalcCtx }) {
                   ['calc.160', 'calc.161', 'calc.162'],
                 ] as const
               ).map(([lead, strong, tail]) => (
-                <li key={strong} className="flex items-start gap-[11px]">
+                <li key={strong} className="flex items-start gap-[11px] xl:gap-[8.25px]">
                   <Dot tone="blue" />
                   <span className="text-[14px] leading-[1.6] text-text-secondary xl:text-[11px]">
                     {/* calc.154/157 are deliberately empty in Turkish — Sentence drops them */}
@@ -620,7 +635,7 @@ export function Quota({ ctx }: { ctx: CalcCtx }) {
               ))}
             </ul>
           </div>
-          <div className="rounded-lg border border-tint-border bg-pale-2 px-[26px] py-6">
+          <div className="rounded-lg border border-tint-border bg-pale-2 px-[26px] xl:px-[19.5px] py-6">
             <p className={KICKER}>{t('calc.163')}</p>
             <p className="m-0 mb-4 text-[15px] leading-[1.65] text-text-secondary xl:text-[11.25px]">
               <Sentence runs={[t('calc.164'), b(t('calc.165')), t('calc.166')]} />
@@ -629,12 +644,12 @@ export function Quota({ ctx }: { ctx: CalcCtx }) {
               {CRITERIA.map(([value, label]) => (
                 <li
                   key={value}
-                  className="rounded-xs border border-border-2 bg-white px-3.5 py-[13px]"
+                  className="rounded-xs border border-border-2 bg-white px-3.5 py-[13px] xl:py-[9.75px]"
                 >
-                  <span className="block text-[16.5px] font-extrabold tracking-[-0.3px] text-ink xl:text-[12.4px]">
+                  <span className="block text-[16.5px] font-extrabold tracking-[-0.3px] xl:tracking-[-0.225px] text-ink xl:text-[12.4px]">
                     {t(value)}
                   </span>
-                  <span className="mt-[3px] block text-[12px] leading-[1.45] text-text-tertiary xl:text-[11px]">
+                  <span className="mt-[3px] xl:mt-[2.25px] block text-[12px] leading-[1.45] text-text-tertiary xl:text-[11px]">
                     {t(label)}
                   </span>
                 </li>
@@ -734,22 +749,22 @@ export function PassCheck({ ctx }: { ctx: CalcCtx }) {
 
 const INC = {
   blue: {
-    card: 'flex flex-col rounded-md border-[1.5px] border-tint-border bg-white px-6 py-[26px]',
+    card: 'flex flex-col rounded-md border-[1.5px] border-tint-border bg-white px-6 py-[26px] xl:py-[19.5px]',
     badge:
-      'mb-3.5 self-end rounded-pill border border-tint-border bg-tint px-2.5 py-[3px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] text-blue-safe xl:text-[11px]',
-    sub: 'm-0 mb-2 text-[13px] font-extrabold text-blue-safe',
+      'mb-3.5 self-end rounded-pill border border-tint-border bg-tint px-2.5 py-[3px] xl:py-[2.25px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] xl:tracking-[0.45px] text-blue-safe xl:text-[11px]',
+    sub: 'm-0 mb-2 text-[13px] xl:text-[11px] font-extrabold text-blue-safe',
   },
   green: {
-    card: 'flex flex-col rounded-md border-[1.5px] border-success-border bg-white px-6 py-[26px]',
+    card: 'flex flex-col rounded-md border-[1.5px] border-success-border bg-white px-6 py-[26px] xl:py-[19.5px]',
     badge:
-      'mb-3.5 self-end rounded-pill border border-success-border bg-success-surface px-2.5 py-[3px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] text-success-text xl:text-[11px]',
-    sub: 'm-0 mb-2 text-[13px] font-extrabold text-success-text',
+      'mb-3.5 self-end rounded-pill border border-success-border bg-success-surface px-2.5 py-[3px] xl:py-[2.25px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] xl:tracking-[0.45px] text-success-text xl:text-[11px]',
+    sub: 'm-0 mb-2 text-[13px] xl:text-[11px] font-extrabold text-success-text',
   },
   plain: {
-    card: 'flex flex-col rounded-md border border-border-2 bg-white px-6 py-[26px]',
+    card: 'flex flex-col rounded-md border border-border-2 bg-white px-6 py-[26px] xl:py-[19.5px]',
     badge:
-      'mb-3.5 self-end rounded-pill border border-border-2 bg-pale-1 px-2.5 py-[3px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] text-text-secondary xl:text-[11px]',
-    sub: 'm-0 mb-2 text-[13px] font-extrabold text-[#253063]',
+      'mb-3.5 self-end rounded-pill border border-border-2 bg-pale-1 px-2.5 py-[3px] xl:py-[2.25px] text-[10.5px] font-extrabold uppercase tracking-[0.6px] xl:tracking-[0.45px] text-text-secondary xl:text-[11px]',
+    sub: 'm-0 mb-2 text-[13px] xl:text-[11px] font-extrabold text-[#253063]',
   },
 } as const;
 
@@ -777,7 +792,7 @@ function IncentiveCard({
       <p className="m-0 mb-3.5 text-[14px] leading-[1.6] text-text-secondary xl:text-[11px]">
         {body}
       </p>
-      <div className="mt-auto border-t border-border-3 pt-3.5 text-[13.5px] leading-[1.55] text-text-tertiary">
+      <div className="mt-auto border-t border-border-3 pt-3.5 text-[13.5px] xl:text-[11px] leading-[1.55] text-text-tertiary">
         {foot}
       </div>
     </div>
@@ -797,12 +812,12 @@ export function Incentives({ ctx }: { ctx: CalcCtx }) {
   return (
     <>
       <div data-testid="calc-incentives-mobile" className="md:hidden">
-        <div className="mb-2.5 rounded-sm bg-navy p-[15px]">
+        <div className="mb-2.5 rounded-sm bg-navy p-[15px] xl:p-[11.25px]">
           <p className={KICKER_DARK}>{t('calc.357')}</p>
-          <ul className="m-0 flex list-none flex-col gap-[9px] p-0">
+          <ul className="m-0 flex list-none flex-col gap-[9px] xl:gap-[6.75px] p-0">
             <li className="flex items-start gap-2.5">
               <Tick dark />
-              <span className="min-w-0 text-[13.5px] leading-[1.5] text-white/85">
+              <span className="min-w-0 text-[13.5px] xl:text-[11px] leading-[1.5] text-white/85">
                 {/* the rate the calculator holds, live (LiveSgkRate reads the shared store) */}
                 <Sentence
                   runs={[
@@ -817,7 +832,7 @@ export function Incentives({ ctx }: { ctx: CalcCtx }) {
             </li>
             <li className="flex items-start gap-2.5">
               <Tick dark />
-              <span className="min-w-0 text-[13.5px] leading-[1.5] text-white/85">
+              <span className="min-w-0 text-[13.5px] xl:text-[11px] leading-[1.5] text-white/85">
                 <Sentence
                   runs={[b(t('calc.361')), t('calc.362')]}
                   strong="font-extrabold text-white"
@@ -826,17 +841,17 @@ export function Incentives({ ctx }: { ctx: CalcCtx }) {
             </li>
           </ul>
         </div>
-        <div className="mb-2.5 rounded-sm border border-border-1 bg-white px-3.5 py-[13px]">
+        <div className="mb-2.5 rounded-sm border border-border-1 bg-white px-3.5 py-[13px] xl:py-[9.75px]">
           <p className={KICKER_SM}>{t('calc.363')}</p>
-          <p className="m-0 text-[13.5px] leading-[1.55] text-text-secondary">
+          <p className="m-0 text-[13.5px] xl:text-[11px] leading-[1.55] text-text-secondary">
             <Sentence runs={[b(t('calc.364')), t('calc.365')]} />
           </p>
         </div>
-        <div className="rounded-sm border border-warning-border bg-warning-surface px-3.5 py-[13px]">
-          <p className="m-0 mb-[7px] text-[11px] font-extrabold uppercase tracking-[1.1px] text-warning-text">
+        <div className="rounded-sm border border-warning-border bg-warning-surface px-3.5 py-[13px] xl:py-[9.75px]">
+          <p className="m-0 mb-[7px] xl:mb-[5.25px] text-[11px] xl:text-[11px] font-extrabold uppercase tracking-[1.1px] xl:tracking-[0.825px] text-warning-text">
             {t('calc.366')}
           </p>
-          <p className="m-0 text-[13.5px] leading-[1.55] text-[#7a5210]">
+          <p className="m-0 text-[13.5px] xl:text-[11px] leading-[1.55] text-[#7a5210]">
             {/* calc.367 is deliberately empty in Turkish */}
             <Sentence runs={[t('calc.367'), b(t('calc.368')), t('calc.369')]} />
           </p>
@@ -897,7 +912,7 @@ export function Incentives({ ctx }: { ctx: CalcCtx }) {
             foot={t('calc.336')}
           />
         </div>
-        <div className="mb-5 rounded-md border border-border-2 bg-white px-7 py-[26px]">
+        <div className="mb-5 rounded-md border border-border-2 bg-white px-7 py-[26px] xl:py-[19.5px]">
           <h3 className="m-0 mb-4 text-[18px] font-extrabold text-ink xl:text-[13.5px]">
             {/* TR: "Devletin öde" + "mediği" + "şeyler" — the suffix stays glued (fragments.ts) */}
             <Sentence
@@ -905,7 +920,7 @@ export function Incentives({ ctx }: { ctx: CalcCtx }) {
               em="not-italic underline decoration-warning-border decoration-[3px] underline-offset-[3px]"
             />
           </h3>
-          <div className="grid gap-x-[34px] gap-y-[22px] lg:grid-cols-2">
+          <div className="grid gap-x-[34px] xl:gap-x-[25.5px] gap-y-[22px] xl:gap-y-[16.5px] lg:grid-cols-2">
             {(
               [
                 ['calc.345', 'calc.346'],
@@ -915,7 +930,7 @@ export function Incentives({ ctx }: { ctx: CalcCtx }) {
               ] as const
             ).map(([title, body]) => (
               <div key={title}>
-                <p className="m-0 mb-[5px] text-[15px] font-extrabold text-ink xl:text-[11.25px]">
+                <p className="m-0 mb-[5px] xl:mb-[3.75px] text-[15px] font-extrabold text-ink xl:text-[11.25px]">
                   {t(title)}
                 </p>
                 <p className="m-0 text-[14px] leading-[1.6] text-text-secondary xl:text-[11px]">
@@ -924,7 +939,7 @@ export function Incentives({ ctx }: { ctx: CalcCtx }) {
               </div>
             ))}
           </div>
-          <p className="m-0 mt-[18px] border-t border-border-3 pt-4 text-[14px] leading-[1.6] text-text-secondary xl:text-[11px]">
+          <p className="m-0 mt-[18px] xl:mt-[13.5px] border-t border-border-3 pt-4 text-[14px] leading-[1.6] text-text-secondary xl:text-[11px]">
             <Sentence runs={[b(t('calc.353')), t('calc.354')]} />
           </p>
         </div>
@@ -938,22 +953,22 @@ export function Incentives({ ctx }: { ctx: CalcCtx }) {
 
 /* ---------- #penalties (1340–1397) ---------- */
 
-const FINE_ROW = 'flex items-baseline justify-between gap-3 py-[11px]';
+const FINE_ROW = 'flex items-baseline justify-between gap-3 py-[11px] xl:py-[8.25px]';
 const FINE_CARD =
-  'rounded-md border-[1.5px] border-warning-border bg-warning-surface px-7 py-[26px]';
+  'rounded-md border-[1.5px] border-warning-border bg-warning-surface px-7 py-[26px] xl:py-[19.5px]';
 const CONSEQUENCES =
   'mx-auto mt-5 grid max-w-[1080px] list-none gap-4 p-0 lg:grid-cols-3 max-md:mt-0 max-md:gap-0 max-md:overflow-hidden max-md:rounded-sm max-md:border max-md:border-border-1 max-md:bg-white xl:max-w-[810px]';
 const CONSEQUENCE =
-  'rounded-sm border border-border-2 bg-white px-[22px] py-5 max-md:rounded-none max-md:border-0 max-md:border-t max-md:border-border-3 max-md:px-3.5 max-md:py-3 max-md:first:border-t-0';
+  'rounded-sm border border-border-2 bg-white px-[22px] xl:px-[16.5px] py-5 max-md:rounded-none max-md:border-0 max-md:border-t max-md:border-border-3 max-md:px-3.5 max-md:py-3 max-md:first:border-t-0';
 
 export function Penalties({ ctx }: { ctx: CalcCtx }) {
   const { t } = ctx;
   const fine = (kicker: string, amount: string, body: Run[]) => (
     <div className={FINE_CARD}>
-      <p className="m-0 mb-2.5 text-eyebrow font-extrabold uppercase tracking-[1px] text-warning-text">
+      <p className="m-0 mb-2.5 text-eyebrow font-extrabold uppercase tracking-[1px] xl:tracking-[0.75px] text-warning-text">
         {t(kicker)}
       </p>
-      <p className="m-0 mb-2 text-[34px] font-extrabold leading-none tracking-[-1px] text-ink xl:text-[25.5px]">
+      <p className="m-0 mb-2 text-[34px] font-extrabold leading-none tracking-[-1px] xl:tracking-[-0.75px] text-ink xl:text-[25.5px]">
         {t(amount)}
       </p>
       <p className="m-0 text-[14.5px] leading-[1.6] text-[#7a5210] xl:text-[11px]">
@@ -967,34 +982,34 @@ export function Penalties({ ctx }: { ctx: CalcCtx }) {
         <div className="mb-2.5 rounded-sm border-[1.5px] border-warning-border bg-warning-surface px-3.5 pt-1.5 pb-2">
           <dl className="m-0">
             <div className={FINE_ROW}>
-              <dt className="min-w-0 text-[13px] font-bold leading-[1.4] text-[#7a5210]">
+              <dt className="min-w-0 text-[13px] xl:text-[11px] font-bold leading-[1.4] text-[#7a5210]">
                 <Lines text={t('calc.124')} />
               </dt>
-              <dd className="m-0 flex-none text-[22px] font-extrabold tracking-[-0.6px] text-ink">
+              <dd className="m-0 flex-none text-[22px] xl:text-[16.5px] font-extrabold tracking-[-0.6px] xl:tracking-[-0.45px] text-ink">
                 {t('calc.407')}
               </dd>
             </div>
             <div className={`${FINE_ROW} border-t border-warning-border`}>
-              <dt className="min-w-0 text-[13px] font-bold leading-[1.4] text-[#7a5210]">
+              <dt className="min-w-0 text-[13px] xl:text-[11px] font-bold leading-[1.4] text-[#7a5210]">
                 <Lines text={t('calc.125')} />
               </dt>
-              <dd className="m-0 flex-none text-[22px] font-extrabold tracking-[-0.6px] text-ink">
+              <dd className="m-0 flex-none text-[22px] xl:text-[16.5px] font-extrabold tracking-[-0.6px] xl:tracking-[-0.45px] text-ink">
                 {t('calc.409')}
               </dd>
             </div>
           </dl>
-          <p className="m-0 border-t border-warning-border pt-[9px] pb-[3px] text-[12.5px] leading-[1.5] text-[#7a5210]">
+          <p className="m-0 border-t border-warning-border pt-[9px] xl:pt-[6.75px] pb-[3px] xl:pb-[2.25px] text-[12.5px] xl:text-[11px] leading-[1.5] text-[#7a5210]">
             <Sentence runs={[t('calc.126'), b(t('calc.127')), t('calc.128')]} />
           </p>
         </div>
-        <div className="mb-2.5 rounded-sm bg-navy p-[15px]">
-          <p className="m-0 text-[15.5px] font-bold leading-[1.45] text-white">
+        <div className="mb-2.5 rounded-sm bg-navy p-[15px] xl:p-[11.25px]">
+          <p className="m-0 text-[15.5px] xl:text-[11.625px] font-bold leading-[1.45] text-white">
             <Sentence
               runs={[t('calc.129'), b(t('calc.130')), t('calc.131')]}
               strong="font-extrabold text-sky"
             />
           </p>
-          <p className="m-0 mt-2.5 border-t border-white/15 pt-2.5 text-[13px] leading-[1.5] text-white/80">
+          <p className="m-0 mt-2.5 border-t border-white/15 pt-2.5 text-[13px] xl:text-[11px] leading-[1.5] text-white/80">
             <Sentence runs={[t('calc.132'), b(t('calc.133'))]} strong="font-extrabold text-white" />
           </p>
         </div>
@@ -1013,7 +1028,7 @@ export function Penalties({ ctx }: { ctx: CalcCtx }) {
           ] as const
         ).map(([title, body]) => (
           <li key={title} className={CONSEQUENCE}>
-            <h3 className="m-0 mb-[5px] text-[15px] font-extrabold text-ink max-md:mb-[3px] max-md:text-[14px] xl:text-[11.25px]">
+            <h3 className="m-0 mb-[5px] xl:mb-[3.75px] text-[15px] font-extrabold text-ink max-md:mb-[3px] max-md:text-[14px] xl:text-[11.25px]">
               {t(title)}
             </h3>
             <p className="m-0 text-body-sm leading-[1.6] text-text-secondary max-md:text-[12.5px] max-md:leading-[1.5]">
@@ -1024,7 +1039,7 @@ export function Penalties({ ctx }: { ctx: CalcCtx }) {
       </ul>
       <Note
         tone="green"
-        className="mx-auto mt-[22px] max-w-[1080px] max-md:hidden xl:max-w-[810px]"
+        className="mx-auto mt-[22px] xl:mt-[16.5px] max-w-[1080px] max-md:hidden xl:max-w-[810px]"
       >
         <Sentence runs={[t('calc.134'), b(t('calc.135')), t('calc.136'), b(t('calc.137'))]} />
       </Note>
@@ -1036,23 +1051,23 @@ export function Penalties({ ctx }: { ctx: CalcCtx }) {
 
 const STUDENT = {
   amber: {
-    card: 'mb-2 rounded-sm border border-border-1 bg-white px-3.5 py-[13px]',
-    cell: 'rounded-[11px] border border-warning-border bg-warning-surface px-2.5 py-[9px]',
-    value: 'block text-[14.5px] font-extrabold text-ink',
-    note: 'mt-0.5 block text-[11.5px] leading-[1.35] text-[#7a5210]',
+    card: 'mb-2 rounded-sm border border-border-1 bg-white px-3.5 py-[13px] xl:py-[9.75px]',
+    cell: 'rounded-[11px] border border-warning-border bg-warning-surface px-2.5 py-[9px] xl:py-[6.75px]',
+    value: 'block text-[14.5px] xl:text-[11px] font-extrabold text-ink',
+    note: 'mt-0.5 block text-[11.5px] xl:text-[11px] leading-[1.35] text-[#7a5210]',
   },
   green: {
-    card: 'mb-2.5 rounded-sm border-[1.5px] border-success-border bg-white px-3.5 py-[13px]',
-    cell: 'rounded-[11px] border border-success-border bg-success-surface px-2.5 py-[9px]',
-    value: 'block text-[14.5px] font-extrabold text-success-text',
-    note: 'mt-0.5 block text-[11.5px] leading-[1.35] text-[#14532d]',
+    card: 'mb-2.5 rounded-sm border-[1.5px] border-success-border bg-white px-3.5 py-[13px] xl:py-[9.75px]',
+    cell: 'rounded-[11px] border border-success-border bg-success-surface px-2.5 py-[9px] xl:py-[6.75px]',
+    value: 'block text-[14.5px] xl:text-[11px] font-extrabold text-success-text',
+    note: 'mt-0.5 block text-[11.5px] xl:text-[11px] leading-[1.35] text-[#14532d]',
   },
 } as const;
 const TIER = {
-  amber: 'rounded-md border border-border-2 bg-white px-7 py-[26px]',
-  green: 'rounded-md border-[1.5px] border-success-border bg-white px-7 py-[26px]',
+  amber: 'rounded-md border border-border-2 bg-white px-7 py-[26px] xl:py-[19.5px]',
+  green: 'rounded-md border-[1.5px] border-success-border bg-white px-7 py-[26px] xl:py-[19.5px]',
 } as const;
-const RULE_ROW = 'px-3.5 py-[11px] text-[13px] leading-[1.5]';
+const RULE_ROW = 'px-3.5 py-[11px] xl:py-[8.25px] text-[13px] xl:text-[11px] leading-[1.5]';
 
 function StudentPhoneCard({
   tone,
@@ -1071,10 +1086,14 @@ function StudentPhoneCard({
   return (
     <div className={s.card}>
       <p className="m-0 mb-2.5">
-        <span className="block text-[14.5px] font-extrabold leading-[1.2] text-ink">{title}</span>
-        <span className="block text-[11.5px] font-bold text-text-tertiary">{sub}</span>
+        <span className="block text-[14.5px] xl:text-[11px] font-extrabold leading-[1.2] text-ink">
+          {title}
+        </span>
+        <span className="block text-[11.5px] xl:text-[11px] font-bold text-text-tertiary">
+          {sub}
+        </span>
       </p>
-      <div className="grid grid-cols-2 gap-[7px]">
+      <div className="grid grid-cols-2 gap-[7px] xl:gap-[5.25px]">
         {cells.map(([value, label]) => (
           <p key={value} className={`m-0 ${s.cell}`}>
             <span className={s.value}>{value}</span>
@@ -1082,7 +1101,9 @@ function StudentPhoneCard({
           </p>
         ))}
       </div>
-      <p className="m-0 mt-[9px] text-[12.5px] leading-[1.5] text-text-tertiary">{note}</p>
+      <p className="m-0 mt-[9px] xl:mt-[6.75px] text-[12.5px] xl:text-[11px] leading-[1.5] text-text-tertiary">
+        {note}
+      </p>
     </div>
   );
 }
@@ -1101,7 +1122,7 @@ function TierCard({
   return (
     <div className={TIER[tone]}>
       <h3 className="m-0 text-[17.5px] font-extrabold text-ink xl:text-[13.1px]">{title}</h3>
-      <p className="m-0 mb-3.5 text-[13px] font-bold text-text-tertiary">{sub}</p>
+      <p className="m-0 mb-3.5 text-[13px] xl:text-[11px] font-bold text-text-tertiary">{sub}</p>
       <ul className="m-0 flex list-none flex-col gap-2.5 p-0">
         {items.map((runs, i) => (
           <li key={i} className="flex items-start gap-2.5">
@@ -1126,9 +1147,9 @@ export function Students({ ctx }: { ctx: CalcCtx }) {
   return (
     <>
       <div className="md:hidden">
-        <div className="mb-2.5 rounded-sm bg-navy p-[15px]">
+        <div className="mb-2.5 rounded-sm bg-navy p-[15px] xl:p-[11.25px]">
           <p className={KICKER_DARK}>{t('calc.285')}</p>
-          <p className="m-0 text-[15px] font-bold leading-[1.45] text-white">
+          <p className="m-0 text-[15px] xl:text-[11.25px] font-bold leading-[1.45] text-white">
             <Sentence
               runs={[t('calc.286'), b(t('calc.287')), t('calc.288')]}
               strong="font-extrabold text-sky"
@@ -1204,26 +1225,26 @@ export function Students({ ctx }: { ctx: CalcCtx }) {
           />
         </div>
         <div className="grid gap-4 lg:grid-cols-3">
-          <div className="rounded-sm border border-border-2 bg-white px-5 py-[18px]">
+          <div className="rounded-sm border border-border-2 bg-white px-5 py-[18px] xl:py-[13.5px]">
             <h3 className="m-0 mb-1 text-[14.5px] font-extrabold text-ink xl:text-[11px]">
               {t('calc.277')}
             </h3>
             <p className="m-0 text-body-sm leading-[1.6] text-text-secondary">{t('calc.278')}</p>
           </div>
-          <div className="rounded-sm border border-border-2 bg-white px-5 py-[18px]">
+          <div className="rounded-sm border border-border-2 bg-white px-5 py-[18px] xl:py-[13.5px]">
             <h3 className="m-0 mb-1 text-[14.5px] font-extrabold text-ink xl:text-[11px]">
               {t('calc.279')}
             </h3>
             <p className="m-0 text-body-sm leading-[1.6] text-text-secondary">{t('calc.280')}</p>
           </div>
-          <div className="rounded-sm border border-warning-border bg-warning-surface px-5 py-[18px]">
+          <div className="rounded-sm border border-warning-border bg-warning-surface px-5 py-[18px] xl:py-[13.5px]">
             <h3 className="m-0 mb-1 text-[14.5px] font-extrabold text-ink xl:text-[11px]">
               {t('calc.281')}
             </h3>
             <p className="m-0 text-body-sm leading-[1.6] text-[#7a5210]">{t('calc.282')}</p>
           </div>
         </div>
-        <p className="m-0 mt-5 rounded-sm border border-tint-border bg-white px-[22px] py-4 text-body-sm leading-[1.6] text-text-secondary">
+        <p className="m-0 mt-5 rounded-sm border border-tint-border bg-white px-[22px] xl:px-[16.5px] py-4 text-body-sm leading-[1.6] text-text-secondary">
           <Sentence runs={[b(t('calc.283')), t('calc.284')]} />
         </p>
       </div>

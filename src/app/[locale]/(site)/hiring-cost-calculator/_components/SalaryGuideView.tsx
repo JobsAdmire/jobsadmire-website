@@ -3,13 +3,13 @@ import type { GuideLabels } from '../_lib/ids';
 import type { GuideRow } from '../_lib/salary-guide';
 
 const TIER_SKILLED =
-  'shrink-0 whitespace-nowrap rounded-pill border border-success-border bg-success-surface px-2.5 py-1 text-[11px] font-extrabold text-success-text';
+  'shrink-0 whitespace-nowrap rounded-pill border border-success-border bg-success-surface px-2.5 py-1 text-[11px] xl:text-[11px] font-extrabold text-success-text';
 const TIER_STANDARD =
-  'shrink-0 whitespace-nowrap rounded-pill border border-border-1 bg-pale-1 px-2.5 py-1 text-[11px] font-extrabold text-text-secondary';
+  'shrink-0 whitespace-nowrap rounded-pill border border-border-1 bg-pale-1 px-2.5 py-1 text-[11px] xl:text-[11px] font-extrabold text-text-secondary';
 const USE_ON =
-  'min-h-[44px] shrink-0 cursor-pointer whitespace-nowrap rounded-[10px] border border-success-border bg-success-surface px-[13px] text-[12.5px] font-extrabold text-success-text';
+  'min-h-[44px] shrink-0 cursor-pointer whitespace-nowrap rounded-[10px] border border-success-border bg-success-surface px-[13px] xl:px-[9.75px] text-[12.5px] xl:text-[11px] font-extrabold text-success-text';
 const USE_OFF =
-  'min-h-[44px] shrink-0 cursor-pointer whitespace-nowrap rounded-[10px] border border-tint-border bg-pale-1 px-[13px] text-[12.5px] font-extrabold text-blue-safe';
+  'min-h-[44px] shrink-0 cursor-pointer whitespace-nowrap rounded-[10px] border border-tint-border bg-pale-1 px-[13px] xl:px-[9.75px] text-[12.5px] xl:text-[11px] font-extrabold text-blue-safe';
 
 /** The salary guide's cards (design 833–864). `filter` is the island's `RadioChips` or the
  *  fallback's `ChipsLook`; `onUse` exists only in the island (the server fallback renders the same
@@ -35,8 +35,8 @@ export function SalaryGuideView({
 }) {
   return (
     <div data-testid="guide-view" data-live={live}>
-      <div className="mb-[22px]">{filter}</div>
-      <div className="grid gap-[18px] lg:grid-cols-3">
+      <div className="mb-[22px] xl:mb-[16.5px]">{filter}</div>
+      <div className="grid gap-[18px] xl:gap-[13.5px] lg:grid-cols-3">
         {rows.map((r) => {
           const active = r.key === activeKey;
           return (
@@ -44,7 +44,7 @@ export function SalaryGuideView({
               key={r.key}
               data-role={r.key}
               className={[
-                'flex flex-col gap-[15px] rounded-base border-[1.5px] bg-white px-[22px] py-5 transition-shadow',
+                'flex flex-col gap-[15px] xl:gap-[11.25px] rounded-base border-[1.5px] bg-white px-[22px] xl:px-[16.5px] py-5 transition-shadow',
                 active
                   ? 'border-blue-safe shadow-[0_14px_34px_rgba(24,153,213,0.18)]'
                   : 'border-border-2 shadow-card',
@@ -60,11 +60,11 @@ export function SalaryGuideView({
                 <span className={r.skilled ? TIER_SKILLED : TIER_STANDARD}>{r.tier}</span>
               </div>
               <div>
-                <div className="mb-[9px] flex flex-wrap items-baseline gap-2">
-                  <span className="whitespace-nowrap text-[19px] font-extrabold tracking-[-0.4px] text-ink xl:text-[14.25px]">
+                <div className="mb-[9px] xl:mb-[6.75px] flex flex-wrap items-baseline gap-2">
+                  <span className="whitespace-nowrap text-[19px] font-extrabold tracking-[-0.4px] xl:tracking-[-0.3px] text-ink xl:text-[14.25px]">
                     {r.range}
                   </span>
-                  <span className="whitespace-nowrap text-[12px] font-bold text-text-tertiary">
+                  <span className="whitespace-nowrap text-[12px] xl:text-[11px] font-bold text-text-tertiary">
                     {labels.sGrossMo}
                   </span>
                 </div>
@@ -80,15 +80,15 @@ export function SalaryGuideView({
                 </div>
                 <div
                   aria-hidden="true"
-                  className="mt-[7px] flex justify-between text-[11.5px] font-bold text-text-tertiary"
+                  className="mt-[7px] xl:mt-[5.25px] flex justify-between text-[11.5px] xl:text-[11px] font-bold text-text-tertiary"
                 >
                   <span>{scaleMin}</span>
                   <span>{scaleMax}</span>
                 </div>
               </div>
-              <div className="flex items-center justify-between gap-2.5 border-t border-border-3 pt-[13px]">
+              <div className="flex items-center justify-between gap-2.5 border-t border-border-3 pt-[13px] xl:pt-[9.75px]">
                 <div>
-                  <p className="m-0 text-[11px] font-extrabold uppercase tracking-[0.7px] text-text-tertiary">
+                  <p className="m-0 text-[11px] xl:text-[11px] font-extrabold uppercase tracking-[0.7px] xl:tracking-[0.525px] text-text-tertiary">
                     {labels.sEmpCost}
                   </p>
                   <p className="m-0 mt-0.5 text-body-sm font-extrabold text-blue-safe">

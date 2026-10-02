@@ -16,15 +16,15 @@ export const LEFT_COL =
 export const RIGHT_COL =
   'flex flex-col bg-pale-2 px-[15px] py-4 md:px-[34px] md:py-[30px] xl:px-[25.5px] xl:py-[22.5px]';
 export const KICKER =
-  'm-0 mb-[18px] text-eyebrow font-extrabold uppercase tracking-[1px] text-text-tertiary';
-export const FIELD_LABEL = 'mb-[7px] block text-body-sm font-extrabold text-ink';
+  'm-0 mb-[18px] xl:mb-[13.5px] text-eyebrow font-extrabold uppercase tracking-[1px] xl:tracking-[0.75px] text-text-tertiary';
+export const FIELD_LABEL = 'mb-[7px] xl:mb-[5.25px] block text-body-sm font-extrabold text-ink';
 export const SELECT =
-  'min-h-[50px] w-full cursor-pointer rounded-input border-[1.5px] border-border-1 bg-white px-[15px] text-body font-bold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
+  'min-h-[50px] w-full cursor-pointer rounded-input border-[1.5px] border-border-1 bg-white px-[15px] xl:px-[11.25px] text-body font-bold text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
 export const ROLE_BUTTON =
-  'flex min-h-[56px] w-full cursor-pointer items-center justify-between gap-3 rounded-xs border-[1.5px] border-border-1 bg-white px-3.5 py-[11px] text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
+  'flex min-h-[56px] w-full cursor-pointer items-center justify-between gap-3 rounded-xs border-[1.5px] border-border-1 bg-white px-3.5 py-[11px] xl:py-[8.25px] text-left focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
 export const COVER_BOX = 'flex flex-col gap-1 border-t border-border-3 pt-1';
 export const COVER_TITLE =
-  'm-0 pt-3 text-eyebrow font-extrabold uppercase tracking-[1px] text-text-tertiary';
+  'm-0 pt-3 text-eyebrow font-extrabold uppercase tracking-[1px] xl:tracking-[0.75px] text-text-tertiary';
 export const TOGGLE_ROW =
   'flex min-h-6 cursor-pointer items-center justify-between gap-3 max-md:min-h-[46px]';
 export const TOGGLE_TEXT = 'text-body-sm font-bold text-text-secondary';
@@ -33,7 +33,7 @@ export const TIER_BOX = 'border-t border-border-3 pt-3';
 export const ADV_TOGGLE =
   'flex min-h-[46px] w-full cursor-pointer items-center justify-center gap-2 rounded-xs border-[1.5px] border-dashed border-tint-border bg-pale-1 p-3 text-body-sm font-extrabold text-blue-safe';
 export const BRK_TOGGLE =
-  'mb-3 flex min-h-[50px] w-full cursor-pointer items-center justify-between gap-2.5 rounded-xs border-[1.5px] border-tint-border bg-white px-[15px] py-[13px] text-left text-body-sm font-extrabold text-ink';
+  'mb-3 flex min-h-[50px] w-full cursor-pointer items-center justify-between gap-2.5 rounded-xs border-[1.5px] border-tint-border bg-white px-[15px] xl:px-[11.25px] py-[13px] xl:py-[9.75px] text-left text-body-sm font-extrabold text-ink';
 
 export const HEADCOUNT_OPTIONS = HEADCOUNT_PRESETS.map((n) => ({
   value: String(n),
@@ -73,7 +73,7 @@ export function RowHead({
       <span
         className={
           kicker
-            ? 'text-eyebrow font-extrabold uppercase tracking-[1px] text-text-tertiary'
+            ? 'text-eyebrow font-extrabold uppercase tracking-[1px] xl:tracking-[0.75px] text-text-tertiary'
             : 'text-body-sm font-extrabold text-ink'
         }
       >
@@ -90,21 +90,23 @@ export function Snapshot({ view, labels }: { view: CardView; labels: CardLabels 
   // written as one, the W190 floor scan (src/test/type-floor.test.ts) reads no desktop size here.
   const cell = (label: string, value: string) => (
     <div className="rounded-[10px] border border-white/15 bg-white/10 px-2.5 py-2">
-      <p className="m-0 mb-0.5 font-extrabold uppercase tracking-[0.8px] text-white/80 max-md:text-[10.5px]">
+      <p className="m-0 mb-0.5 font-extrabold uppercase tracking-[0.8px] xl:tracking-[0.6px] text-white/80 max-md:text-[10.5px]">
         {label}
       </p>
-      <p className="m-0 text-[15px] font-extrabold">{value}</p>
+      <p className="m-0 text-[15px] xl:text-[11.25px] font-extrabold">{value}</p>
     </div>
   );
   return (
-    <div className="mb-3.5 rounded-sm bg-[linear-gradient(135deg,#16202e_0%,#253063_100%)] px-[15px] py-3.5 text-white md:hidden">
+    <div className="mb-3.5 rounded-sm bg-[linear-gradient(135deg,#16202e_0%,#253063_100%)] px-[15px] xl:px-[11.25px] py-3.5 text-white md:hidden">
       <div className="flex items-baseline justify-between gap-2.5">
-        <span className="text-[11px] font-extrabold uppercase tracking-[1.1px] text-sky">
+        <span className="text-[11px] xl:text-[11px] font-extrabold uppercase tracking-[1.1px] xl:tracking-[0.825px] text-sky">
           {view.totalTitle}
         </span>
-        <span className="text-[11.5px] font-extrabold text-white/80">{view.headcountNote}</span>
+        <span className="text-[11.5px] xl:text-[11px] font-extrabold text-white/80">
+          {view.headcountNote}
+        </span>
       </div>
-      <p className="m-0 mt-1.5 mb-2.5 text-[29px] font-extrabold leading-[1.05] tracking-[-1.2px]">
+      <p className="m-0 mt-1.5 mb-2.5 text-[29px] xl:text-[21.75px] font-extrabold leading-[1.05] tracking-[-1.2px] xl:tracking-[-0.9px]">
         {view.f.contract.total}
       </p>
       <div className="grid grid-cols-2 gap-2">
@@ -128,7 +130,7 @@ export function QuotaHint({ view, labels }: { view: CardView; labels: CardLabels
   return (
     <a
       href="#quota"
-      className="mt-[11px] flex items-start gap-2.5 rounded-[11px] border border-border-2 bg-pale-2 px-3.5 py-[11px] text-body-sm text-text-secondary no-underline hover:border-tint-border hover:bg-tint"
+      className="mt-[11px] xl:mt-[8.25px] flex items-start gap-2.5 rounded-[11px] border border-border-2 bg-pale-2 px-3.5 py-[11px] xl:py-[8.25px] text-body-sm text-text-secondary no-underline hover:border-tint-border hover:bg-tint"
     >
       <span>
         <strong className="font-extrabold text-ink">
