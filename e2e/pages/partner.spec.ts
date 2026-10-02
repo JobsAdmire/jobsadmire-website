@@ -116,11 +116,20 @@ for (const locale of ['tr', 'en'] as const) {
     await expect(network.locator('li')).toHaveCount(2);
     await expect(network).toContainText('13');
     await expect(network).toContainText('470+');
+    // W176: every tel: the page renders (FAQ ask card, closing band) is the partner line (T5 review M6)
+    const tels = await page
+      .locator('#main a[href^="tel:"]')
+      .evaluateAll((els) => [...new Set(els.map((el) => el.getAttribute('href')))]);
+    expect(tels).toEqual([TEL]);
   });
 
   test(`${locale}: the designed sections in order, #tracks for the header CTA (W17/W152/W158), no logo band (W6)`, async ({
     page,
   }) => {
+    // W163: the CTA target and its default form are server HTML, never lazy (T5 review M7)
+    const html = await (await page.request.get(ROUTES[locale])).text();
+    expect(html).toContain('id="tracks"');
+    expect(html).toContain('data-testid="partner-form-hr"');
     await page.goto(ROUTES[locale]);
     const ids = [
       'partner-hero',

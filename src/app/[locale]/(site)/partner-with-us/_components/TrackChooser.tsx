@@ -62,12 +62,14 @@ function Step({ n }: { n: number }) {
 }
 
 /**
- * "Three ways to partner" (W96: a plain client component — above the fold, server-renders the
- * HR panel; its own gzipped chunk ≤ 6 KB): a radiogroup of card radios and, under
+ * "Three ways to partner" (W96: a plain client component that server-renders the HR panel;
+ * Turbopack groups it into the route's page chunk — 7,327 B gz with the forms kernel, the sticky
+ * bar and the marquee, accepted by W193/W194): a radiogroup of card radios and, under
  * `#track-detail`, exactly ONE of the three server-rendered panels (the design's `sc-if`). The
  * panel is keyed by track, so switching remounts the form — no typed value and no fallback
- * state crosses from one track's form to another's. State: the visitor's choice → a
- * `#track-<key>` deep link → the HR default. The fragment is read through
+ * state crosses from one track's form to another's. State: the visitor's choice → the last
+ * `#track-<key>` fragment seen (a later `#tracks`/`#apply-*` fragment keeps it, W194) → the HR
+ * default. The fragment is read through
  * `useSyncExternalStore` with a `null` server snapshot (R18), so the server and the hydrating
  * client both render the HR panel and no state is set in an effect. `partner_track_select`
  * fires for the two `partner` tracks only (W67: the enum is `sourcing | institute`); a choice
@@ -92,7 +94,13 @@ export function TrackChooser({
   const page = usePathname() ?? '/'; // next/navigation: the real URL (R35)
   const fromHash = useSyncExternalStore(subscribeHash, hashTrack, noHashOnServer);
   const [chosen, setChosen] = useState<TrackKey | null>(null);
-  const current = chosen ?? fromHash ?? DEFAULT_TRACK;
+  // The last `#track-<key>` fragment seen: a later non-track fragment (#tracks, #apply-*, #faq —
+  // the hero/sticky/closing CTAs and the panel's own jump link) must not drop a deep-linked
+  // visitor back to the HR panel and what they typed. Adjusted during render, never in an
+  // effect (R18); no event (W67). T5 review I1, W194.
+  const [linked, setLinked] = useState<TrackKey | null>(null);
+  if (fromHash !== null && fromHash !== linked) setLinked(fromHash);
+  const current = chosen ?? fromHash ?? linked ?? DEFAULT_TRACK;
 
   const choose = (key: TrackKey) => {
     setChosen(key);

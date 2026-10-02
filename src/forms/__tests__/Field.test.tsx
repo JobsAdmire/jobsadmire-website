@@ -120,16 +120,20 @@ describe('Field', () => {
       <FormErrorsContext.Provider value={{ errors: {}, values }}>
         <form data-testid="shell">
           <Field name="country" as="select" options={options} />
+          <Field name="dial" label="Dial" as="select" options={options} defaultValue="NP" />
           <Field name="city" />
         </form>
       </FormErrorsContext.Provider>
     );
     const { rerender } = renderWithIntl(ui({}));
     await userEvent.selectOptions(screen.getByLabelText(copy.labels.country), 'PK');
+    // a select that starts from a defaultValue (T2's dial) must keep the visitor's change too (M5)
+    await userEvent.selectOptions(screen.getByLabelText('Dial'), 'PK');
     await userEvent.type(screen.getByLabelText(copy.labels.city), 'Lahore');
-    rerender(ui({ country: 'PK', city: 'Lahore' }));
+    rerender(ui({ country: 'PK', dial: 'PK', city: 'Lahore' }));
     (screen.getByTestId('shell') as HTMLFormElement).reset();
     expect(screen.getByLabelText(copy.labels.country)).toHaveValue('PK');
+    expect(screen.getByLabelText('Dial')).toHaveValue('PK');
     expect(screen.getByLabelText(copy.labels.city)).toHaveValue('Lahore');
   });
 });

@@ -137,4 +137,14 @@ describe('TrackChooser (W26/W96)', () => {
     expect(legend?.className.split(/\s+/)).toContain('md:sr-only');
     expect(screen.getByText('Başvurunuz').className.split(/\s+/)).toContain('md:hidden');
   });
+  it('keeps a deep-linked track when a later fragment is not a track (#tracks CTAs, the #apply-* jump link) — T5 review I1, W194', () => {
+    window.history.replaceState(null, '', '/ortak-olun#track-sourcing');
+    renderWithIntl(<TrackChooser {...props} />);
+    act(() => {
+      window.history.replaceState(null, '', '/ortak-olun#apply-agent');
+      window.dispatchEvent(new Event('hashchange'));
+    });
+    expect(radio('Yurt dışındaki tedarik ortakları')).toBeChecked();
+    expect(screen.getByTestId('panel-sourcing')).toBeInTheDocument();
+  });
 });
