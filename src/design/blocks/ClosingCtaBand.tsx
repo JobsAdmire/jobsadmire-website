@@ -87,6 +87,7 @@ export function ClosingCtaBand({
       variant={c.variant ?? fallback}
       href={c.href}
       external={c.external}
+      prefetch={false}
     >
       {c.label}
     </ContactCta>

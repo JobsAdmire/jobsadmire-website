@@ -18,6 +18,8 @@ export type ContactCtaProps = {
   variant?: ButtonVariant;
   size?: 'md' | 'lg';
   external?: boolean;
+  /** W195: a page's cross-route CTA passes `false` — hover prefetch stays. */
+  prefetch?: boolean;
   className?: string;
   'aria-label'?: string;
   children: ReactNode;
@@ -40,6 +42,7 @@ export function ContactCta({
   variant = 'primary',
   size = 'md',
   external,
+  prefetch,
   className,
   'aria-label': ariaLabel,
   children,
@@ -63,6 +66,7 @@ export function ContactCta({
         size={size}
         href={href}
         external={external}
+        prefetch={prefetch}
         className={className}
         aria-label={ariaLabel}
       >
