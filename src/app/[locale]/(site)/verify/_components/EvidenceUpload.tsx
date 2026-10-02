@@ -87,7 +87,11 @@ export function EvidenceUpload({ upload }: { upload: UploadEvidenceAction }) {
     const room = Math.max(0, EVIDENCE_MAX_FILES - taken);
     setTooMany(fine.length > room);
     const refused = checked.flatMap((c) =>
-      c.check === 'tooBig' || c.check === 'badType' ? [next(c.file.name, c.check)] : [],
+      c.check === 'tooBig' || c.check === 'badType'
+        ? [next(c.file.name, c.check)]
+        : c.check === 'empty'
+          ? [next(c.file.name, 'refused')]
+          : [],
     );
     const queue = fine.slice(0, room).map((file) => ({ file, item: next(file.name, 'uploading') }));
     setItems((prev) => [...prev, ...refused, ...queue.map((q) => q.item)]);
@@ -106,7 +110,10 @@ export function EvidenceUpload({ upload }: { upload: UploadEvidenceAction }) {
     }
   };
 
-  const remove = (id: string) => setItems((prev) => prev.filter((i) => i.id !== id));
+  const remove = (id: string) => {
+    setTooMany(false); // M2: the "up to 3" notice ends when room is made
+    setItems((prev) => prev.filter((i) => i.id !== id));
+  };
   const kept = items.filter((i): i is Item & { key: string } => i.state === 'attached' && !!i.key);
 
   return (

@@ -150,7 +150,6 @@ export function LookupCard({
             if (e.key === 'Escape') clear();
           }}
           autoComplete="off"
-          autoCapitalize="characters"
           spellCheck={false}
           aria-describedby={hintId}
           className={INPUT}

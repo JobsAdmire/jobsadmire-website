@@ -57,11 +57,17 @@ describe('EvidenceUpload — one file per server-action call (W73/W101/W116)', (
 
   it('refuses an over-cap file and a declared non-evidence type in the browser — no call', () => {
     const { spy, pick, keys } = setup(async () => ({ ok: true, key: 'website-fraud/x.png' }));
-    pick([file('big.png', 'image/png', EVIDENCE_MAX_BYTES + 1), file('notes.txt', 'text/plain')]);
+    pick([
+      file('big.png', 'image/png', EVIDENCE_MAX_BYTES + 1),
+      file('notes.txt', 'text/plain'),
+      file('empty.png', 'image/png', 0),
+    ]);
     expect(
       screen.getByText('big.png is larger than 3 MB. Choose a smaller file.'),
     ).toBeInTheDocument();
     expect(screen.getByText('notes.txt is not a JPEG, PNG, WEBP or PDF file.')).toBeInTheDocument();
+    // M1 (W204): a 0-byte pick is listed as refused, never dropped silently
+    expect(screen.getByText(/empty\.png/)).toBeInTheDocument();
     expect(spy).not.toHaveBeenCalled();
     expect(keys()).toEqual([]);
   });
@@ -100,6 +106,9 @@ describe('EvidenceUpload — one file per server-action call (W73/W101/W116)', (
     await waitFor(() => expect(keys()).toHaveLength(3));
     expect(spy).toHaveBeenCalledTimes(3);
     expect(screen.queryByText(/4\.png/)).toBeNull();
+    // M2 (W204): removing a file ends the "up to 3" notice
+    fireEvent.click(screen.getAllByRole('button', { name: /1\.png/ })[0]);
+    expect(screen.queryByText('Up to 3 files can be attached.')).toBeNull();
   });
 
   it('removing an attached file drops its key', async () => {
