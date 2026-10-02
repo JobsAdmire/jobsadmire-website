@@ -231,6 +231,38 @@
         "emailSubject": "Partnership question"
       }
     },
+    "about": {
+      "who": {
+        "badgeYear": "2024",
+        "photoAlt": "The JobsAdmire team at the Antalya office"
+      },
+      "journey": {
+        "m3When": "2025"
+      },
+      "tech": {
+        "dashboardAlt": "The JobsAdmire portal dashboard",
+        "appAlt": "The JobsAdmire mobile app"
+      },
+      "offices": {
+        "photoAlt": "The {city} office"
+      },
+      "licence": {
+        "title": "Licence and documents",
+        "body": "The İŞKUR private employment agency permit and its supporting documents, as PDFs.",
+        "pending": "PDF being added",
+        "open": "Open PDF",
+        "docs": {
+          "iskurPermit": "İŞKUR private employment agency permit",
+          "iskurAnnex": "İŞKUR permit — annex",
+          "oibCertificate": "Private employment agency authorisation certificate",
+          "oibAnnex": "Authorisation certificate — annex"
+        }
+      },
+      "whatsapp": {
+        "demo": "Hello JobsAdmire, I would like a demo of your CRM portal.",
+        "consult": "Hello JobsAdmire, I would like a free consultation."
+      }
+    },
     "form": {
       "labels": {
         "name": "Full name",

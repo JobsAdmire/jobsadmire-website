@@ -231,6 +231,38 @@
         "emailSubject": "İş ortaklığı sorusu"
       }
     },
+    "about": {
+      "who": {
+        "badgeYear": "2024",
+        "photoAlt": "Antalya ofisindeki JobsAdmire ekibi"
+      },
+      "journey": {
+        "m3When": "2025"
+      },
+      "tech": {
+        "dashboardAlt": "JobsAdmire portal panosu",
+        "appAlt": "JobsAdmire mobil uygulaması"
+      },
+      "offices": {
+        "photoAlt": "{city} ofisi"
+      },
+      "licence": {
+        "title": "Lisans ve belgeler",
+        "body": "İŞKUR özel istihdam bürosu izin belgesi ve ekleri, PDF olarak.",
+        "pending": "PDF ekleniyor",
+        "open": "PDF'yi açın",
+        "docs": {
+          "iskurPermit": "İŞKUR özel istihdam bürosu izin belgesi",
+          "iskurAnnex": "İŞKUR izin belgesi — ek",
+          "oibCertificate": "Özel istihdam bürosu yetki belgesi",
+          "oibAnnex": "Yetki belgesi — ek"
+        }
+      },
+      "whatsapp": {
+        "demo": "Merhaba JobsAdmire, CRM portalınızın demosunu görmek istiyorum.",
+        "consult": "Merhaba JobsAdmire, ücretsiz danışmanlık almak istiyorum."
+      }
+    },
     "form": {
       "labels": {
         "name": "Ad Soyad",
