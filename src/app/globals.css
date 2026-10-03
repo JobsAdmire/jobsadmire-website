@@ -97,6 +97,12 @@
   --gutter: 20px;
   --gutter-nav: 12px;
   --container-max: none;
+  /* The content box from 1101 px (W180: the design's 1280 px wrapper × 0.75). A page that opts
+     into the wide layout (`data-layout="wide"`, owner trial 2026-10-03) raises it to 1240 px. */
+  --content-max: 960px;
+  /* The homepage hero's own box (final pass A1): 960 px with 27 px gutters from 1101 px. */
+  --hero-max: 960px;
+  --hero-pad: 2.25rem;
 }
 @media (min-width: 461px) {
   :root {
@@ -130,8 +136,16 @@
     /* W180: the design's 48 px / 32 px paddings and its 1280 px wrapper, × 0.75 */
     --gutter: 36px;
     --gutter-nav: 24px;
-    --container-max: calc(960px + 2 * var(--gutter));
+    --container-max: calc(var(--content-max) + 2 * var(--gutter));
   }
+}
+/* Owner trial (2026-10-03): the wider content box, homepage only while the owner reviews it. The
+   page renders a hidden `data-layout="wide"` marker; `:has()` lets the layout's footer follow. The
+   hero box joins the sections' width and gutters so every left edge lines up. */
+:root:has([data-layout='wide']) {
+  --content-max: 1240px;
+  --hero-max: var(--container-max);
+  --hero-pad: var(--gutter);
 }
 
 html {

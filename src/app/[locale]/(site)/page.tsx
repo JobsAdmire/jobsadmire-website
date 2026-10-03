@@ -60,6 +60,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const section = { locale, bundle };
   return (
     <>
+      {/* Owner trial: the wider content box (globals.css § data-layout). */}
+      <div data-layout="wide" hidden />
       <Hero
         {...section}
         form={<HeroForm {...section} actions={{ hire: submitHire, callback: submitCallback }} />}

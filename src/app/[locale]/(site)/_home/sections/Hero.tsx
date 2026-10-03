@@ -21,7 +21,7 @@ import type { SectionProps } from './types';
 /** The hero's own content box (W185 A1): 20 px gutters ≤ 460, the design's 48 px from 461 to 1100,
  *  and 888 px inside the 960 px wrapper from 1101 (36 px gutters) — `.container-site` stays on
  *  every other section. */
-const HERO_BOX = 'mx-auto w-full px-5 xs:px-12 xl:max-w-[960px] xl:px-9';
+const HERO_BOX = 'mx-auto w-full px-5 xs:px-12 xl:max-w-[var(--hero-max)] xl:px-[var(--hero-pad)]';
 
 /** Final pass A8 (W189 A5, W210 c): the hero slot's cover-mode heights — fixed per band, ≥ 10 %
  *  above the tallest hero measured in that band in both locales (1,109 / 1,653 / 1,455 / 970 /

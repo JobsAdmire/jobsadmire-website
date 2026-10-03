@@ -38,8 +38,8 @@ describe('Hero (D26, W1, W6, W10, W17)', () => {
         'w-full',
         'px-5',
         'xs:px-12',
-        'xl:max-w-[960px]',
-        'xl:px-9',
+        'xl:max-w-[var(--hero-max)]',
+        'xl:px-[var(--hero-pad)]',
       );
       expect(row).not.toHaveClass('container-site');
     }
