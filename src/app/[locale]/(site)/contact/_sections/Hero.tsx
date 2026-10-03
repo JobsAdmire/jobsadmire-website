@@ -126,7 +126,7 @@ export function Hero({
                 {t('contact.030')}
               </li>
             </ul>
-            <div className="mt-5 max-w-[520px] rounded-base border border-border-1 bg-white p-5 text-ink max-md:hidden">
+            <div className="mt-5 max-w-[520px] rounded-base border border-border-1 bg-white p-5 text-ink max-md:hidden xl:max-w-none">
               <p className="m-0 mb-3 text-eyebrow font-extrabold uppercase tracking-[1.4px] text-text-tertiary">
                 {t('contact.031')}
               </p>

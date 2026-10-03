@@ -6,6 +6,7 @@ import tr from '../../src/messages/tr.json';
 const LEAK = /\{[A-Za-z][A-Za-z0-9]*\}|\bundefined\b|MISSING_MESSAGE|\bsys\./;
 const LOGIN = 'https://portal.jobsadmire.com/auth/login';
 const FORGOT = 'https://portal.jobsadmire.com/auth/forgot-password';
+const APP_STORE = 'https://apps.apple.com/pk/app/jobsadmire-partners/id6803849247';
 
 const PAGES = [
   {
@@ -55,7 +56,8 @@ for (const p of PAGES) {
         'a[href*="operations.jobsadmire.com"], a[href*="chatadmire"], a[href*="crm.jobsadmire.com"]',
       ),
     ).toHaveCount(0);
-    await expect(page.locator('a[href*="apps.apple.com"]')).toHaveCount(0);
+    // W227: both stores — the App Store badge of the partner app sits beside Google Play.
+    expect(await page.locator(`a[href="${APP_STORE}"]`).count()).toBeGreaterThan(0);
     expect(await page.locator('a[href^="https://play.google.com/"]').count()).toBeGreaterThan(0);
     await expect(page.getByTestId('portal-help')).toBeVisible();
     // W76: every WhatsApp link carries only the static sys prefill.

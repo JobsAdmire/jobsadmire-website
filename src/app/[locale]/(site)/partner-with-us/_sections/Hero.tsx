@@ -45,7 +45,7 @@ export function Hero({
             <h1
               data-testid="page-h1"
               data-lcp-slot="h1"
-              className="text-h1 m-0 mb-4 leading-[1.02] tracking-[-0.03em] text-white max-md:text-[31px] max-md:leading-[1.07] max-md:tracking-[-1.1px]"
+              className="text-h1 m-0 mb-4 leading-[1.02] tracking-[-0.03em] text-white max-md:text-[31px] max-md:leading-[1.07] max-md:tracking-[-1.1px] xl:text-balance"
             >
               {tf(HERO_IDS.h1)}
             </h1>

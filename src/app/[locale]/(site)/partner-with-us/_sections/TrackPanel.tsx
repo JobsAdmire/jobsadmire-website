@@ -57,7 +57,7 @@ export function TrackPanel({
         <h2 className="text-h2 m-0 mb-3 max-md:text-[24px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
           {tf(copy.heading)}
         </h2>
-        <p className="m-0 mb-6 text-body text-text-secondary">{tf(copy.lead)}</p>
+        <p className="m-0 mb-6 text-body text-text-secondary xl:max-w-[560px]">{tf(copy.lead)}</p>
         <a
           href={`#${FORM_ANCHOR[track]}`}
           className={`mb-5 flex min-h-[46px] items-center justify-center rounded-xs border-[1.5px] border-dashed text-body font-extrabold no-underline md:hidden ${look.jump}`}

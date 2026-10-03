@@ -9,7 +9,7 @@ const HEAD = 'px-7 py-6 text-white max-lg:px-4 max-lg:py-4';
 const HEAD_PILL =
   'mt-2 inline-block rounded-pill border border-white/60 px-2.5 py-0.5 text-eyebrow font-extrabold tracking-[0.6px] uppercase';
 const CELL =
-  'min-w-0 px-7 py-4.5 text-body-sm leading-relaxed text-text-secondary max-lg:px-4 max-lg:py-3';
+  'min-w-0 px-7 py-4.5 text-body-sm leading-relaxed text-text-secondary max-lg:px-4 max-lg:py-3 xl:text-pretty';
 const CAPTION = 'mb-1 block text-eyebrow font-extrabold tracking-[0.7px] uppercase lg:sr-only';
 
 /** "Two legal routes" (#routes): the design's three-column table from 901 px; below it the two
@@ -90,7 +90,7 @@ export function RoutesComparison({ tf }: { tf: (id: string) => string }) {
         </div>
         <p className="mx-auto mt-6 mb-0 flex max-w-[1080px] items-start gap-3 rounded-sm border border-warning-border bg-warning-surface px-5.5 py-4 text-body-sm leading-relaxed text-warning-text max-md:mt-3.5 max-md:px-3.5 max-md:py-3">
           <InfoIcon size={18} className="mt-0.5 flex-none" />
-          <span>
+          <span className="xl:max-w-[820px]">
             <strong className="font-extrabold text-ink">{important}</strong>
             {sp(important, warning)}
             {warning}

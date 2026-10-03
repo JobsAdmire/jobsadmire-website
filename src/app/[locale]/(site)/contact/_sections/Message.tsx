@@ -22,7 +22,7 @@ function JobSeekerPanel({ t, href }: { t: T; href: string }) {
     <>
       <div className="mb-4 rounded-base border border-success-border bg-success-surface p-5">
         <h3 className="m-0 mb-1.5 text-card-title">{t('contact.075')}</h3>
-        <p className="m-0 text-body-sm text-text-secondary">
+        <p className="m-0 text-body-sm text-text-secondary xl:max-w-[560px]">
           <strong className="text-ink">{t('contact.076')}</strong> {t('contact.077')}{' '}
           <strong className="text-success-text">{t('contact.078')}</strong>
           {t('contact.079')}
@@ -133,7 +133,7 @@ export function Message({
             nothing focusable — its one card hides — so the focus order is unchanged. */}
         <div className="min-w-0 max-md:order-2 lg:sticky lg:top-24">
           <Eyebrow>{t('contact.050')}</Eyebrow>
-          <h2 className="m-0 mb-4 mt-3 text-h2 max-md:text-[21px] max-md:leading-[1.13] max-md:tracking-[-0.6px]">
+          <h2 className="m-0 mb-4 mt-3 text-h2 max-md:text-[21px] max-md:leading-[1.13] max-md:tracking-[-0.6px] xl:text-balance">
             {t('contact.051')}
           </h2>
           <p className="m-0 mb-6 text-body text-text-secondary">{t('contact.052')}</p>

@@ -61,7 +61,7 @@ export function RequestForm({
             <span aria-hidden="true" className="inline-block h-2 w-2 rounded-pill bg-success" />
             {tf('hire.199')}
           </p>
-          <h2 className="m-0 mb-4 text-h2 leading-[1.05] tracking-[-1.6px] xl:tracking-[-1.2px] max-md:mb-2.5 max-md:text-[25px] max-md:leading-[1.13] max-md:tracking-[-0.5px]">
+          <h2 className="m-0 mb-4 text-h2 leading-[1.05] tracking-[-1.6px] xl:tracking-[-1.2px] xl:text-balance max-md:mb-2.5 max-md:text-[25px] max-md:leading-[1.13] max-md:tracking-[-0.5px]">
             {tf('hire.200')}
           </h2>
           <p className="m-0 mb-7 text-body-lg text-text-secondary max-md:mb-[18px] max-md:text-[14.5px] max-md:leading-[1.55]">
@@ -173,7 +173,7 @@ export function RequestForm({
               <Field name="message" as="textarea" rows={3} maxLength={5000} />
             </FormShell>
             <p className="m-0 mt-2 text-center text-body-sm text-text-tertiary">{tf('hire.219')}</p>
-            <p className="m-0 mt-1 text-center text-body-sm leading-snug text-text-tertiary">
+            <p className="m-0 mt-1 text-center text-body-sm leading-snug text-text-tertiary xl:mx-auto xl:max-w-[460px]">
               {tf('hire.220')}
             </p>
             <p className="m-0 mt-3 text-center text-body-sm text-text-tertiary">

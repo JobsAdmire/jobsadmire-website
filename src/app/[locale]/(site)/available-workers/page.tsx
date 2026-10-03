@@ -144,8 +144,8 @@ export default async function AvailableWorkersPage({
               data-lcp-slot={heroIsLcp ? undefined : 'h1'}
               className="text-h1 m-0 mb-4 leading-[1.02] tracking-[-0.03em] max-md:text-[31px] max-md:leading-[1.08] max-md:tracking-[-0.9px]"
             >
-              {tf('availworkers.024')} <span className="text-sky">{tf('availworkers.025')}</span>{' '}
-              {tf('availworkers.026')}
+              {tf('availworkers.024')} <br className="hidden xl:inline" />
+              <span className="text-sky">{tf('availworkers.025')}</span> {tf('availworkers.026')}
             </h1>
             <p className="text-body-lg m-0 mb-6 max-w-[520px] text-white/80">
               {tf('availworkers.027')}
@@ -317,7 +317,7 @@ export default async function AvailableWorkersPage({
         >
           <div className="min-w-0">
             <Eyebrow>{tf('availworkers.085')}</Eyebrow>
-            <h2 className="text-h2 mt-3 mb-3 leading-[1.05] tracking-[-1.6px] xl:tracking-[-1.2px] max-md:text-[25px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
+            <h2 className="text-h2 mt-3 mb-3 leading-[1.05] tracking-[-1.6px] xl:tracking-[-1.2px] xl:text-balance max-md:text-[25px] max-md:leading-[1.12] max-md:tracking-[-0.5px]">
               {tf('availworkers.086')}
             </h2>
             <p className="text-body m-0 mb-6 text-text-secondary">{tf('availworkers.087')}</p>

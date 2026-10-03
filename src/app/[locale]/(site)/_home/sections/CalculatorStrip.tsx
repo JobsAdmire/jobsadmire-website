@@ -67,7 +67,7 @@ export function CalculatorStrip({ locale, bundle }: SectionProps) {
     <>
       <Eyebrow>{reviewDue ? sys('home.calc.eyebrowUndated') : tf('home.068')}</Eyebrow>
       <h2 className={`${H2} mb-4 mt-3.5`}>{tf('home.069')}</h2>
-      <p className={`${LEAD} mb-6 max-w-[520px] xl:max-w-[390px]`}>
+      <p className={`${LEAD} mb-6 max-w-[520px]`}>
         {tf('home.070')}
         <span className="max-xs:hidden"> {tf('home.071')}</span>
       </p>

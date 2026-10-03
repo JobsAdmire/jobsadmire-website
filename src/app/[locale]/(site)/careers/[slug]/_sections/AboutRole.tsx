@@ -4,8 +4,9 @@ import { Link } from '@/i18n/navigation';
 import { descriptionBlocks, type PublicOpening } from '@/lib/careers-pure';
 import type { OpeningView } from '../_lib/view';
 
-/** The opening's one description as paragraphs and lists (text only, never HTML) and the "At a
- *  glance" facts — rows with no value are left out. */
+/** The opening's one description as headings, paragraphs and lists (text only, never HTML —
+ *  Operations' rich-text form is converted by `descriptionBlocks`, W230) and the "At a glance"
+ *  facts — rows with no value are left out. */
 export function AboutRole({
   opening,
   view,
@@ -39,8 +40,21 @@ export function AboutRole({
               className="flex flex-col gap-4 text-body text-text-secondary"
             >
               {blocks.map((block, i) =>
-                block.type === 'p' ? (
-                  <p key={i}>{block.text}</p>
+                block.type === 'h' ? (
+                  <h3 key={i} className="mt-2 text-card-title text-ink">
+                    {block.text}
+                  </h3>
+                ) : block.type === 'p' ? (
+                  // a rich-text `<br>` arrives as a line break inside the paragraph (W230)
+                  <p key={i} className="whitespace-pre-line">
+                    {block.text}
+                  </p>
+                ) : block.type === 'ol' ? (
+                  <ol key={i} className="flex list-decimal flex-col gap-2 pl-5">
+                    {block.items.map((item, j) => (
+                      <li key={j}>{item}</li>
+                    ))}
+                  </ol>
                 ) : (
                   <ul key={i} className="flex list-disc flex-col gap-2 pl-5">
                     {block.items.map((item, j) => (

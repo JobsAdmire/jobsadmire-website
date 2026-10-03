@@ -18,9 +18,10 @@ import type { SectionProps } from './types';
  * `HERO_PHOTO` moves it onto the image. W10: the badge and the CTA row are hidden at ≤ 460 px by
  * class, exactly as the design's `.ja-hero-1` / `.ja-hero-cta-primary` rules do.
  */
-/** The hero's own content box (W185 A1): 20 px gutters ≤ 460, the design's 48 px from 461 to 1100,
- *  and 888 px inside the 960 px wrapper from 1101 (36 px gutters) — `.container-site` stays on
- *  every other section. */
+/** The hero's own content box (W185 A1): 20 px gutters ≤ 460 and the design's 48 px from 461 to
+ *  1100; from 1101 it is the sections' own box (`--container-max`, 36 px gutters, 1240 px since
+ *  W228), so the hero shares every section's left edge. `.container-site` stays on every other
+ *  section. */
 const HERO_BOX =
   'mx-auto w-full px-5 xs:px-12 xl:max-w-[var(--container-max)] xl:px-[var(--gutter)]';
 
@@ -63,8 +64,9 @@ export function Hero({ locale, bundle, form }: SectionProps & { form: ReactNode 
         className="pointer-events-none absolute inset-0 bg-[linear-gradient(180deg,rgba(10,20,40,0.5)_0%,transparent_30%,rgba(10,20,40,0.75)_100%)]"
       />
       {/* Final pass A1 (W184/W185): the design's hero content keeps its own 48 px padding from
-          461 to 1100 (20 px ≤ 460) and an 888 px box inside the 960 px wrapper from 1101 — never
-          the section container's gutters. HERO_BOX is shared with the stats row below. */}
+          461 to 1100 (20 px ≤ 460), never the section container's gutters; from 1101 it is the
+          sections' own 1240 px box (W228), on their left edge. HERO_BOX is shared with the stats
+          row below. */}
       <div
         className={`${HERO_BOX} relative grid items-center gap-[34px] pb-8 pt-10 xs:pb-11 xs:pt-[72px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 xl:gap-[42px] xl:pb-[33px] xl:pt-[54px]`}
       >

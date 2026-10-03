@@ -352,7 +352,9 @@ export default async function About({ params }: { params: Promise<{ locale: stri
                 {t('about.067')} <span className="text-blue-safe">{t('about.068')}</span>{' '}
                 {t('about.069')}
               </h3>
-              <p className="m-0 mb-6 text-body text-text-secondary">{t('about.070')}</p>
+              <p className="m-0 mb-6 text-body text-text-secondary xl:max-w-[540px]">
+                {t('about.070')}
+              </p>
               <ul className="m-0 mb-8 grid list-none gap-3 p-0">
                 {TECH_POINTS.map((id) => (
                   <li key={id} className="grid grid-cols-[1.5rem_1fr] gap-2 text-body-sm">

@@ -9,7 +9,7 @@ import { waPrefill } from '../_lib/prefill';
 import { ROUTER_CARDS, type RouterKey } from '../_lib/tables';
 
 const CARD =
-  'block h-full rounded-base border border-border-2 bg-white p-5 no-underline transition-shadow hover:shadow-card-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe max-md:rounded-sm max-md:p-3.5';
+  'block h-full rounded-base border border-border-2 bg-white p-5 no-underline transition-shadow hover:shadow-card-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe max-md:rounded-sm max-md:p-3.5 xl:flex xl:flex-col';
 // D20: the design's calculator orange (#d97706) is 3.2:1 on white — `warning-text` instead.
 const LOOK: Record<RouterKey, { Icon: typeof BuildingIcon; badge: string; cta: string }> = {
   hire: { Icon: BuildingIcon, badge: 'bg-tint text-blue-safe', cta: 'text-blue-safe' },
@@ -27,7 +27,9 @@ const LOOK: Record<RouterKey, { Icon: typeof BuildingIcon; badge: string; cta: s
 };
 
 /** "Which one are you?" — three internal routes and the permit-only WhatsApp door (the design's
- *  prefilled chat, `page_cta`). Two columns up to 900 px, four from 901 px (delta 15). */
+ *  prefilled chat, `page_cta`). Two columns up to 900 px, four from 901 px (delta 15). From 1101
+ *  each card is a flex column and its CTA takes the leftover space above it, so the four CTAs
+ *  line up on the cards' bottoms (W230). */
 export function AudienceRouter({ bundle, tf }: { bundle: Bundle; tf: (id: string) => string }) {
   const sys = useTranslations('sys');
   const permitOnly = waLink(bundle.settings.whatsappNumber, waPrefill(sys, 'permitOnly'));
@@ -54,10 +56,12 @@ export function AudienceRouter({ bundle, tf }: { bundle: Bundle; tf: (id: string
                 <span className="mb-1 block text-body font-extrabold text-ink">
                   {tf(c.titleId)}
                 </span>
-                <span className="block text-body-sm text-text-tertiary max-md:hidden">
+                <span className="block text-body-sm text-text-tertiary max-md:hidden xl:text-pretty">
                   {tf(c.bodyId)}
                 </span>
-                <span className={`mt-2.5 block text-body-sm font-extrabold ${look.cta}`}>
+                <span
+                  className={`mt-2.5 block text-body-sm font-extrabold xl:mt-auto xl:pt-2.5 ${look.cta}`}
+                >
                   {tf(c.ctaId)}
                 </span>
               </>

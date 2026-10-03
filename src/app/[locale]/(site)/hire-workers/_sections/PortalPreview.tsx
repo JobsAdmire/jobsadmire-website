@@ -32,7 +32,7 @@ export function PortalPreview({
         >
           <div>
             <Eyebrow>{tf('hire.182')}</Eyebrow>
-            <h2 className="m-0 mb-4 mt-3 text-h2 leading-[1.05] tracking-[-1.6px] xl:tracking-[-1.2px] max-md:mb-2.5 max-md:text-[24px] max-md:leading-[1.14] max-md:tracking-[-0.5px]">
+            <h2 className="m-0 mb-4 mt-3 text-h2 leading-[1.05] tracking-[-1.6px] xl:tracking-[-1.2px] xl:text-balance max-md:mb-2.5 max-md:text-[24px] max-md:leading-[1.14] max-md:tracking-[-0.5px]">
               {tf('hire.183')}
             </h2>
             <p className="m-0 mb-5 text-body text-text-secondary max-md:mb-4 max-md:text-[14.5px] max-md:leading-[1.55]">

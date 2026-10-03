@@ -78,7 +78,7 @@ export function PassCheckView({
               </span>
               <div>
                 <p className="m-0 mb-1 text-body font-extrabold text-ink">{row.title}</p>
-                <p className="m-0 mb-[11px] xl:mb-[8.25px] text-body-sm text-text-tertiary">
+                <p className="m-0 mb-[11px] xl:mb-[8.25px] text-body-sm text-text-tertiary xl:max-w-[520px]">
                   {row.body}
                 </p>
                 {row.key === 'quota' ? (

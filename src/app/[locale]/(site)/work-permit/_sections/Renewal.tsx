@@ -27,7 +27,7 @@ export function Renewal({ bundle, tf }: { bundle: Bundle; tf: (id: string) => st
             <h2 className="m-0 mb-2.5 text-[26px] leading-[1.2] tracking-[-0.01em] text-white max-md:text-[21px] xl:text-[19.5px]">
               {tf('wp.320')}
             </h2>
-            <p className="m-0 text-body text-white">
+            <p className="m-0 text-body text-white xl:max-w-[680px]">
               <span data-testid="wp-renewal-desk" className="max-md:hidden">
                 {a}
                 {sp(a, b)}

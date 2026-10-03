@@ -181,26 +181,178 @@ export function isNewOpening(postedAt: string, now: Date, days = NEW_WITHIN_DAYS
 const BULLET = /^\s*[-*•]\s+/;
 const unixLines = (text: string) => text.replace(/\r\n?/g, '\n');
 
-/** The first paragraph of the description, cut at a word boundary to `max` characters. */
+/** W230: Operations stores the description as rich-text HTML (its editor since 2026-06 — H2–H3,
+ *  bold/italic, lists, links; Operations PRD "Rich-text job content"); an older one is plain
+ *  text. One of these tags marks the HTML form. */
+const HTML_TAG = /<\/?(?:p|br|div|ul|ol|li|h[1-6]|strong|b|em|i|u|span|a|blockquote)\b[^>]*>/i;
+
+/** The first paragraph of the description, cut at a word boundary to `max` characters. In the
+ *  HTML form: the first block that is not a heading, its lines joined by " · ". */
 export function summaryOf(description: string | null, max = 160): string {
   if (!description) return '';
-  const first =
-    unixLines(description)
-      .split(/\n\s*\n/)
-      .map((p) => p.replace(BULLET, '').replace(/\s+/g, ' ').trim())
-      .find((p) => p.length > 0) ?? '';
+  let first: string;
+  if (HTML_TAG.test(description)) {
+    const blocks = htmlBlocks(description);
+    const block = blocks.find((b) => b.type !== 'h') ?? blocks[0];
+    first = !block
+      ? ''
+      : 'items' in block
+        ? block.items.join(' · ')
+        : block.text.split('\n').join(' · ');
+  } else {
+    first =
+      unixLines(description)
+        .split(/\n\s*\n/)
+        .map((p) => p.replace(BULLET, '').replace(/\s+/g, ' ').trim())
+        .find((p) => p.length > 0) ?? '';
+  }
   if (first.length <= max) return first;
   const cut = first.slice(0, max);
   const at = cut.lastIndexOf(' ');
-  return `${(at > max / 2 ? cut.slice(0, at) : cut).trimEnd()}…`;
+  return `${(at > max / 2 ? cut.slice(0, at) : cut).replace(/[\s·,;:–—-]+$/u, '')}…`;
 }
 
-export type DescriptionBlock = { type: 'p'; text: string } | { type: 'ul'; items: string[] };
+export type DescriptionBlock =
+  | { type: 'p'; text: string }
+  | { type: 'h'; text: string }
+  | { type: 'ul' | 'ol'; items: string[] };
 
-/** The opening's one description (Operations folded the requirements into it) as paragraphs and
- *  bullet lists — plain text rendered by React, never HTML. */
+/** Elements dropped with everything inside them. */
+const DROPPED = /<(script|style|template|noscript|iframe|object|svg|head)\b[\s\S]*?<\/\1\s*>/gi;
+const TAG = /<(\/?)([a-z][a-z0-9]*)\b[^>]*>/gi;
+const BLOCK_TAGS = new Set([
+  'p',
+  'div',
+  'section',
+  'article',
+  'header',
+  'footer',
+  'main',
+  'aside',
+  'blockquote',
+  'pre',
+  'figure',
+  'figcaption',
+  'table',
+  'tr',
+  'dl',
+  'dt',
+  'dd',
+  'hr',
+]);
+const ENTITIES: Record<string, string> = {
+  amp: '&',
+  lt: '<',
+  gt: '>',
+  quot: '"',
+  apos: "'",
+  nbsp: ' ',
+  lsquo: '‘',
+  rsquo: '’',
+  ldquo: '“',
+  rdquo: '”',
+  laquo: '«',
+  raquo: '»',
+  ndash: '–',
+  mdash: '—',
+  hellip: '…',
+  bull: '•',
+  middot: '·',
+  euro: '€',
+};
+const decodeEntities = (text: string) =>
+  text.replace(/&(#x[0-9a-f]+|#[0-9]+|[a-z]+);/gi, (entity, code: string) => {
+    if (code[0] !== '#') return ENTITIES[code.toLowerCase()] ?? entity;
+    const n = /^#x/i.test(code) ? parseInt(code.slice(2), 16) : Number(code.slice(1));
+    return n > 0 && n <= 0x10ffff ? String.fromCodePoint(n) : entity;
+  });
+
+/** W230: the rich-text description as text blocks — headings, paragraphs (a `<br>` keeps its
+ *  line) and lists. Tags only shape the blocks; the text is decoded and rendered by React, never
+ *  as markup, and script/style content is dropped. An `<li>` whose first child is a heading or a
+ *  second block gives those their own blocks (Operations' editor can wrap a whole posting in one
+ *  list item). */
+function htmlBlocks(html: string): DescriptionBlock[] {
+  const out: DescriptionBlock[] = [];
+  const lists: Array<'ul' | 'ol'> = [];
+  let kind: 'p' | 'h' | 'li' = 'p';
+  let liOpen = false; // inside an <li> whose own text has not been emitted yet
+  let buf = '';
+  const pushItem = (type: 'ul' | 'ol', item: string) => {
+    const last = out[out.length - 1];
+    if (last && last.type === type) last.items.push(item);
+    else out.push({ type, items: [item] });
+  };
+  const flush = () => {
+    const lines = buf
+      .split('\n')
+      .map((l) => l.replace(/\s+/g, ' ').trim())
+      .filter(Boolean);
+    buf = '';
+    if (!lines.length) return;
+    if (kind === 'h') {
+      out.push({ type: 'h', text: lines.join(' ') });
+    } else if (kind === 'li') {
+      pushItem(lists[lists.length - 1] ?? 'ul', lines.join(' ').replace(BULLET, ''));
+      liOpen = false;
+    } else {
+      // a typed "- " line inside a paragraph is a list item, as in the plain-text form
+      let para: string[] = [];
+      const endPara = () => {
+        if (para.length) out.push({ type: 'p', text: para.join('\n') });
+        para = [];
+      };
+      for (const line of lines) {
+        if (BULLET.test(line)) {
+          endPara();
+          pushItem('ul', line.replace(BULLET, ''));
+        } else para.push(line);
+      }
+      endPara();
+    }
+  };
+  const src = html.replace(/<!--[\s\S]*?-->/g, '').replace(DROPPED, '');
+  let at = 0;
+  for (const m of src.matchAll(TAG)) {
+    const index = m.index ?? at;
+    buf += decodeEntities(src.slice(at, index)).replace(/\s+/g, ' ');
+    at = index + m[0].length;
+    const closing = m[1] === '/';
+    const tag = m[2]!.toLowerCase();
+    if (tag === 'br') {
+      buf += '\n';
+    } else if (tag === 'li') {
+      flush();
+      kind = closing ? 'p' : 'li';
+      liOpen = !closing;
+    } else if (tag === 'ul' || tag === 'ol') {
+      flush();
+      if (closing) lists.pop();
+      else lists.push(tag);
+      kind = 'p';
+      liOpen = false;
+    } else if (/^h[1-6]$/.test(tag)) {
+      flush();
+      kind = closing ? 'p' : 'h';
+      if (closing) liOpen = false;
+    } else if (BLOCK_TAGS.has(tag)) {
+      flush();
+      kind = !closing && liOpen ? 'li' : 'p';
+    } else if ((tag === 'td' || tag === 'th') && !closing && buf.trim()) {
+      buf += ' · ';
+    }
+  }
+  buf += decodeEntities(src.slice(at)).replace(/\s+/g, ' ');
+  flush();
+  return out;
+}
+
+/** The opening's one description (Operations folded the requirements into it) as headings,
+ *  paragraphs and lists — text rendered by React, never HTML: the rich-text form through
+ *  `htmlBlocks` (W230), the plain-text form line by line. */
 export function descriptionBlocks(text: string | null): DescriptionBlock[] {
   if (!text) return [];
+  if (HTML_TAG.test(text)) return htmlBlocks(text);
   const out: DescriptionBlock[] = [];
   for (const line of unixLines(text).split('\n')) {
     const trimmed = line.trim();

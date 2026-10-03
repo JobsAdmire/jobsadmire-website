@@ -17,7 +17,8 @@ const SECTOR_CHIP_IDS = ['home.224', 'home.225', 'home.226', 'home.227'] as cons
 /** "How it works" (design lines 616–703): the sticky intro + effort box + sector chips on the
  *  left, the five steps as the shared `ProcessSteps` (`plain`) on the right. `when` labels are
  *  resolved here (home.107 carries `{homepageReplyHours}` → `makeTf`). The chips are hidden at
- *  ≤ 460 px (`.ja-tl-chips`, W10). */
+ *  ≤ 460 px (`.ja-tl-chips`, W10). From 1101 the intro column is 0.75fr, so the step pills stay
+ *  near their titles in the 1240 px box (W230). */
 export function ProcessSection({ locale, bundle }: SectionProps) {
   const tf = makeTf(bundle, locale);
   const steps: ProcessStep[] = STEPS.map((step) => ({
@@ -30,7 +31,7 @@ export function ProcessSection({ locale, bundle }: SectionProps) {
     <Section tone="light" id="process">
       <div
         data-testid="process"
-        className="container-site grid items-start gap-[34px] lg:grid-cols-[0.42fr_1fr] lg:gap-14 xl:gap-[42px]"
+        className="container-site grid items-start gap-[34px] lg:grid-cols-[0.42fr_1fr] lg:gap-14 xl:grid-cols-[0.75fr_1fr] xl:gap-[42px]"
       >
         <div className="min-w-0 lg:sticky lg:top-24 lg:self-start">
           <Eyebrow>{tf('home.091')}</Eyebrow>

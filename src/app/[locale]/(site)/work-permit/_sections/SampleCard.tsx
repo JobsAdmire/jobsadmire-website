@@ -38,7 +38,7 @@ export function SampleCard({ tf }: { tf: (id: string) => string }) {
           <span>{tf('wp.142')}</span>
         </p>
       </div>
-      <figure className="m-0 min-w-0">
+      <figure className="m-0 min-w-0 xl:w-full xl:max-w-[520px] xl:justify-self-end">
         <div className="rounded-lg border border-tint-border bg-white p-6.5 shadow-[0_24px_60px_rgba(22,60,90,0.14)] max-md:rounded-base max-md:p-3">
           <div
             role="img"

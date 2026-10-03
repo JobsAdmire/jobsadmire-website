@@ -48,7 +48,9 @@ export function NetworkCard({ tf, metrics }: { tf: Tf; metrics: Record<string, s
           ))}
         </ul>
       )}
-      <p className="m-0 mt-4 text-body-sm text-text-tertiary">{tf(NETWORK_IDS.footnote)}</p>
+      <p className="m-0 mt-4 text-body-sm text-text-tertiary xl:text-pretty">
+        {tf(NETWORK_IDS.footnote)}
+      </p>
     </div>
   );
 }

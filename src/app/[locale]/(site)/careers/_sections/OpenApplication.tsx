@@ -71,7 +71,7 @@ export function OpenApplication({
             <h3 className="text-body-lg text-ink">{t('jt.095')}</h3>
             <p className="mt-0.5 text-body-sm text-text-secondary">{t('jt.096')}</p>
           </div>
-          <div className="flex flex-wrap gap-3 p-6">
+          <div className="flex flex-wrap gap-3 p-6 xl:[&>*]:grow">
             <ContactCta
               placement="page_cta"
               href={waLink(settings.whatsappNumber, t('jt.286'))}

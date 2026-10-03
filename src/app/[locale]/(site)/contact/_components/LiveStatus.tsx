@@ -28,7 +28,9 @@ const DOT = {
  *  (and a tick across a boundary) used to rewrap the pill (CLS 0.0035 measured; ≈ 0.03 possible on
  *  320–360 px Turkish weekends). Every line the pill can show — the pre-hydration `fallback`
  *  included (W216 (4)) — is stacked invisibly in the live text's grid cell, with tabular digits, so
- *  the box has its final size from the server on. */
+ *  the box has its final size from the server on. That cell can be two lines tall under a one-line
+ *  status, so the dot is centred on the first line (`items-start`, half a line less half the dot
+ *  down), never on the cell (W230). */
 export function LiveStatus(props: LiveStatusProps) {
   const { hours, locale, fallback, suffix, className } = props;
   const tick = useMinuteTick();
@@ -45,13 +47,16 @@ export function LiveStatus(props: LiveStatusProps) {
       data-testid="live-status"
       data-variant={props.variant}
       data-open={status === null ? undefined : String(status.open)}
-      className={['inline-flex items-center gap-2 tabular-nums', className]
+      className={['inline-flex items-start gap-2 tabular-nums', className]
         .filter(Boolean)
         .join(' ')}
     >
       <span
         aria-hidden="true"
-        className={['inline-block h-2 w-2 shrink-0 rounded-full', DOT[state]].join(' ')}
+        className={[
+          'inline-block mt-[calc(0.5lh_-_0.25rem)] h-2 w-2 shrink-0 rounded-full',
+          DOT[state],
+        ].join(' ')}
       />
       <span className="grid">
         <span data-live-text="" className="col-start-1 row-start-1">

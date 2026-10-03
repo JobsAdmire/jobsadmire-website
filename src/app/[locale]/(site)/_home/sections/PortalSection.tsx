@@ -35,7 +35,9 @@ const TILES = [
  * ship (W55); the mock's status and shortlist labels (home.215/216) are decorative, inside an
  * `aria-hidden` illustration. `StoreBadges` shows both stores since the App Store link arrived
  * (W227) and the platform line reads "iOS & Android" as the design does
- * (`sys.home.portal.platforms`); the host is `settings.portal.host`.
+ * (`sys.home.portal.platforms`); the host is `settings.portal.host`. From 1101 the mock's stage is
+ * capped at 460 px and centred: in the 1240 px box the laptop grew inside the fixed 400 px stage
+ * and the status card sat on its base (W230).
  */
 export function PortalSection({ locale, bundle }: SectionProps) {
   const tf = makeTf(bundle, locale);
@@ -87,7 +89,7 @@ export function PortalSection({ locale, bundle }: SectionProps) {
           </div>
         </div>
         <div className="relative min-w-0 overflow-hidden rounded-[26px] bg-[linear-gradient(160deg,#16294f_0%,#0e1a37_60%,#0a1428_100%)] px-[30px] pb-[30px] pt-9 xl:rounded-[19.5px]">
-          <div aria-hidden="true" className="relative h-[400px]">
+          <div aria-hidden="true" className="relative h-[400px] xl:mx-auto xl:max-w-[460px]">
             <div className="absolute left-0 top-0 w-[82%]">
               <div className="rounded-b-md rounded-t-[14px] bg-[#0f2438] px-[9px] pb-3 pt-[9px] shadow-[0_26px_56px_rgba(3,10,26,0.55)]">
                 <div className="overflow-hidden rounded-lg bg-white">

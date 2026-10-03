@@ -175,4 +175,25 @@ describe('DetailHero and AboutRole', () => {
       '/en/careers',
     );
   });
+
+  it('a rich-text description renders as headings, lines and lists — never its tags (W230)', () => {
+    const rich = opening({
+      description:
+        '<h1>OFFICE ASSISTANT</h1><p><strong>Role:</strong> Office assistant<br><strong>Place:</strong> Antalya</p>' +
+        '<h2>Duties</h2><ul><li>Greet guests</li><li>Keep the calendar</li></ul><ol><li>Apply</li></ol>',
+    });
+    renderWithIntl(<AboutRole opening={rich} view={view(rich)} engagementLabel={t('jt.049')} />, {
+      locale: 'en',
+    });
+    const body = screen.getByTestId('careers-description');
+    expect(
+      within(body)
+        .getAllByRole('heading', { level: 3 })
+        .map((h) => h.textContent),
+    ).toEqual(['OFFICE ASSISTANT', 'Duties']);
+    expect(within(body).getByText(/Role: Office assistant/)).toHaveClass('whitespace-pre-line');
+    expect(within(body).getAllByRole('listitem')).toHaveLength(3);
+    expect(body.querySelector('ol')).toHaveTextContent('Apply');
+    expect(body.textContent).not.toMatch(/<\/?[a-z]/);
+  });
 });

@@ -73,7 +73,9 @@ export function Rules({ tf }: { tf: (id: string) => string }) {
                 </span>
                 <div className="min-w-0">
                   <h3 className="m-0 mb-1 text-body-lg font-extrabold">{tf(r.titleId)}</h3>
-                  <p className="m-0 text-body-sm text-text-secondary">{tf(r.bodyId)}</p>
+                  <p className="m-0 text-body-sm text-text-secondary xl:max-w-[500px]">
+                    {tf(r.bodyId)}
+                  </p>
                 </div>
               </li>
             ))}

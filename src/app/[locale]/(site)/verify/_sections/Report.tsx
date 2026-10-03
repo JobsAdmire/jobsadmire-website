@@ -71,7 +71,7 @@ export function Report({
                   className="flex items-start gap-3 border-t border-danger-surface py-3.5 text-body-sm text-text-secondary"
                 >
                   <CrossIcon className="mt-[5px] shrink-0 text-danger" />
-                  <p className="m-0">
+                  <p className="m-0 xl:max-w-[520px] xl:text-pretty">
                     <strong className="font-extrabold text-ink">{tf(lead)}</strong>{' '}
                     {body === RECORD_PROMISE && !hasRows ? sys('verify.flags.qr') : tf(body)}
                   </p>

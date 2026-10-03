@@ -185,7 +185,7 @@ export function WorkerNotice({ t }: { t: Tf }) {
             <path d="M12 16h.01" />
           </svg>
         </span>
-        <p className="min-w-0 flex-1 text-body-sm text-text-secondary">
+        <p className="min-w-0 flex-1 text-body-sm text-text-secondary xl:text-balance">
           <strong className="text-ink">{t('jt.038')}</strong> {t('jt.039')} <em>{t('jt.040')}</em>{' '}
           {t('jt.041')}{' '}
           <Link

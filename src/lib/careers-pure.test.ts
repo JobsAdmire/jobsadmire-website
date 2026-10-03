@@ -183,8 +183,58 @@ describe('the description', () => {
       { type: 'ul', items: ['A working network among agencies'] },
     ]);
     expect(descriptionBlocks('• a\n* b\r\n- c')).toEqual([{ type: 'ul', items: ['a', 'b', 'c'] }]);
-    expect(descriptionBlocks('<b>bold</b>')).toEqual([{ type: 'p', text: '<b>bold</b>' }]);
+    expect(descriptionBlocks('a < b, 3 > 2')).toEqual([{ type: 'p', text: 'a < b, 3 > 2' }]);
     expect(descriptionBlocks(null)).toEqual([]);
+  });
+});
+
+// W230: Operations' rich-text editor stores HTML; these are the live postings' shapes (2026-10-03).
+const RICH_TR =
+  '<ul><li><h1>BÜRO PERSONELİ İŞ İLANI</h1><p><strong>Meslek:</strong> Büro Personeli<br>' +
+  '<strong>Çalışma Yeri:</strong> Antalya / Türkiye</p><h2>İş Tanımı</h2>' +
+  '<p>Misafirleri karşılar&nbsp;ve yönlendirir.</p></li></ul>';
+const RICH_EN =
+  '<p><strong>Company Description</strong>: JobsAdmire is a recruitment agency.</p>\n\n' +
+  '<h3>What you will do</h3>\n<ul>\n<li><strong>Be the contact</strong> for partners.</li>\n' +
+  '<li>Explain the <b>process</b>.</li>\n</ul><ol><li><p>First</p></li><li><p>Second</p></li></ol>';
+
+describe('the rich-text description (W230)', () => {
+  it('descriptionBlocks: headings, paragraphs with their <br> lines, lists — the text, never a tag', () => {
+    expect(descriptionBlocks(RICH_TR)).toEqual([
+      { type: 'h', text: 'BÜRO PERSONELİ İŞ İLANI' },
+      { type: 'p', text: 'Meslek: Büro Personeli\nÇalışma Yeri: Antalya / Türkiye' },
+      { type: 'h', text: 'İş Tanımı' },
+      { type: 'p', text: 'Misafirleri karşılar ve yönlendirir.' },
+    ]);
+    expect(descriptionBlocks(RICH_EN)).toEqual([
+      { type: 'p', text: 'Company Description: JobsAdmire is a recruitment agency.' },
+      { type: 'h', text: 'What you will do' },
+      { type: 'ul', items: ['Be the contact for partners.', 'Explain the process.'] },
+      { type: 'ol', items: ['First', 'Second'] },
+    ]);
+  });
+
+  it('drops script and style content, decodes entities as text, keeps a typed "- " line a list item', () => {
+    expect(
+      descriptionBlocks(
+        '<p>a<script>alert(1)</script> b &lt;i&gt; c &amp; d&#39;s &#x2014; e</p><style>p{}</style>' +
+          '<p>Needs:<br>- Russian<br>- Uzbek</p><!-- note --><div><br></div>',
+      ),
+    ).toEqual([
+      { type: 'p', text: "a b <i> c & d's — e" },
+      { type: 'p', text: 'Needs:' },
+      { type: 'ul', items: ['Russian', 'Uzbek'] },
+    ]);
+  });
+
+  it('summaryOf: the first block that is not a heading, its lines joined by " · ", cut cleanly', () => {
+    expect(summaryOf(RICH_TR)).toBe('Meslek: Büro Personeli · Çalışma Yeri: Antalya / Türkiye');
+    expect(summaryOf(RICH_EN)).toBe('Company Description: JobsAdmire is a recruitment agency.');
+    expect(summaryOf('<ul><li>One</li><li>Two</li></ul>')).toBe('One · Two');
+    expect(summaryOf('<h2>Only a title</h2>')).toBe('Only a title');
+    const cut = summaryOf(RICH_TR, 30);
+    expect(cut).toBe('Meslek: Büro Personeli…');
+    expect(summaryOf('<p>' + 'word · '.repeat(30) + '</p>', 40)).not.toMatch(/·…$/);
   });
 });
 
