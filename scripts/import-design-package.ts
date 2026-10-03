@@ -106,17 +106,21 @@ const SETTINGS = {
   email: 'info@jobsadmire.com',
   careersEmail: 'careers@jobsadmire.com',
   whatsappNumber: '905011240340',
+  // W226 (owner, 2026-10-03): the company's channels are Facebook, Instagram, LinkedIn and
+  // WhatsApp only. `telegramUrl` and `social.tiktok` stay because the frozen contract requires
+  // them (`contract/website-bundle.v1.ts`), but nothing on the site renders either.
   telegramUrl: 'https://t.me/jobsadmire',
   social: {
-    instagram: 'https://instagram.com/jobsadmire',
+    instagram: 'https://www.instagram.com/jobsadmire/',
     tiktok: 'https://tiktok.com/@jobsadmire',
-    linkedin: 'https://linkedin.com/company/jobsadmire',
-    facebook: 'https://facebook.com/jobsadmire',
+    linkedin: 'https://www.linkedin.com/company/jobs-admire/',
+    facebook: 'https://www.facebook.com/people/Jobs-Admire/61565940122054/',
   },
   licence: { permitNo: '1730', lawRef: '4904', taxNo: '48422122' },
   storeLinks: {
     android: 'https://play.google.com/store/apps/details?id=com.jobsadmire.portal',
-    ios: null,
+    // W227 (owner, 2026-10-03): the JobsAdmire Partners app on the App Store (the owner's link).
+    ios: 'https://apps.apple.com/pk/app/jobsadmire-partners/id6803849247',
   },
   portal: {
     loginPath: '/auth/login',

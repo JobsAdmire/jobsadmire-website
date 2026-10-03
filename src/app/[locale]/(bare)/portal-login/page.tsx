@@ -11,6 +11,7 @@ import { StoreBadges } from '@/design/blocks/StoreBadges';
 import { LanguageSwitcher } from '@/design/chrome/LanguageSwitcher';
 import { Button, buttonClassName } from '@/design/primitives/Button';
 import { QrCode } from '@/design/QrCode';
+import { APP_LINK_PATH } from '@/lib/app-link';
 import { Link } from '@/i18n/navigation';
 import { routing, type Locale } from '@/i18n/routing';
 import { waLink } from '@/lib/contact';
@@ -118,20 +119,25 @@ function ChevronIcon() {
   );
 }
 
-/** The design's "Get the mobile app" card (partner portal only): the Play Store badge — Android
- *  only, W8 — and, on the wide brand panel, a local QR of the same link (W14). */
+/** The design's "Get the mobile app" card (partner portal only): both store badges (W227) and, on
+ *  the wide brand panel, a local QR (W14) of the `/app` link, which opens the right store on any
+ *  phone (src/lib/app-link.ts). */
 function AppCard({
   bundle,
   locale,
   t,
   android,
+  ios,
+  qrHref,
   qr,
   surface,
 }: {
   bundle: Bundle;
   locale: Locale;
   t: (id: string) => string;
-  android: string;
+  android: string | null;
+  ios: string | null;
+  qrHref: string;
   qr: boolean;
   surface: keyof typeof APP_SURFACE;
 }) {
@@ -139,7 +145,7 @@ function AppCard({
     <div className={APP_SURFACE[surface]}>
       {qr ? (
         <QrCode
-          text={android}
+          text={qrHref}
           label={t('crmlogin.030')}
           size={82}
           className="flex-none overflow-hidden rounded-xs"
@@ -163,8 +169,9 @@ function AppCard({
           ))}
         </ul>
         <div className="mt-3">
-          {/* W8/D22: Android only — no App Store badge and no crmlogin.063 ("iOS 15+"). */}
-          <StoreBadges bundle={bundle} locale={locale} android={android} ios={null} tone="light" />
+          {/* W227: both stores; crmlogin.063 ("iOS 15+ and Android 9+") stays unrendered — the App
+              Store lists iOS 15.1+ and the Android floor is unconfirmed. */}
+          <StoreBadges bundle={bundle} locale={locale} android={android} ios={ios} tone="light" />
         </div>
       </div>
     </div>
@@ -183,7 +190,9 @@ export default async function PortalLoginPage({ params }: { params: Promise<{ lo
   // W8/I15: the page only links out — the portal host's own login and forgot-password pages.
   const loginHref = `${settings.portal.host}${settings.portal.loginPath}`;
   const forgotHref = `${settings.portal.host}${settings.portal.forgotPath}`;
-  const android = settings.storeLinks.android;
+  const { android, ios } = settings.storeLinks;
+  // W227: the QR opens the right store on any phone (next.config.ts → src/lib/app-link.ts).
+  const appQr = `${settings.siteUrl}${APP_LINK_PATH}`;
   // W76/W95: a static prefill — nothing a visitor typed ever sits in a DOM href.
   const whatsappHref = waLink(settings.whatsappNumber, sys('whatsapp.prefill'));
 
@@ -260,9 +269,18 @@ export default async function PortalLoginPage({ params }: { params: Promise<{ lo
           </ContactCta>
         </div>
 
-        {android ? (
+        {android || ios ? (
           <div data-testid="portal-app-desktop" className="relative mt-5 max-lg:hidden">
-            <AppCard bundle={bundle} locale={locale} t={t} android={android} qr surface="panel" />
+            <AppCard
+              bundle={bundle}
+              locale={locale}
+              t={t}
+              android={android}
+              ios={ios}
+              qrHref={appQr}
+              qr
+              surface="panel"
+            />
           </div>
         ) : null}
 
@@ -325,7 +343,7 @@ export default async function PortalLoginPage({ params }: { params: Promise<{ lo
             <p className="mt-2 text-body-sm text-text-secondary">{tf('crmlogin.055')}</p>
           </div>
 
-          {android ? (
+          {android || ios ? (
             <details data-testid="portal-app-mobile" className="group mt-4 lg:hidden">
               <summary className="flex min-h-[50px] cursor-pointer list-none items-center gap-3 rounded-sm border-[1.5px] border-border-1 bg-pale-1 px-4 text-body-sm font-extrabold text-ink [&::-webkit-details-marker]:hidden">
                 <span className="min-w-0">{t('crmlogin.013')}</span>
@@ -337,6 +355,8 @@ export default async function PortalLoginPage({ params }: { params: Promise<{ lo
                   locale={locale}
                   t={t}
                   android={android}
+                  ios={ios}
+                  qrHref={appQr}
                   qr={false}
                   surface="card"
                 />

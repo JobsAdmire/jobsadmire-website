@@ -33,8 +33,9 @@ const TILES = [
  * (W10 — the section's phone-only lines never show, so home.170–172 are not rendered). The two
  * screens are the named placeholders `portal-shortlist` / `portal-mobile-app` until product shots
  * ship (W55); the mock's status and shortlist labels (home.215/216) are decorative, inside an
- * `aria-hidden` illustration. W8: `StoreBadges` gets `ios: null` (no App Store badge) and the
- * platform line reads "Android" (`sys.home.portal.platforms`); the host is `settings.portal.host`.
+ * `aria-hidden` illustration. `StoreBadges` shows both stores since the App Store link arrived
+ * (W227) and the platform line reads "iOS & Android" as the design does
+ * (`sys.home.portal.platforms`); the host is `settings.portal.host`.
  */
 export function PortalSection({ locale, bundle }: SectionProps) {
   const tf = makeTf(bundle, locale);

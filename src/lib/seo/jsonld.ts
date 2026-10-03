@@ -20,12 +20,11 @@ export function organizationJsonLd(s: Settings, o: { name: string; description: 
       },
       { '@type': 'PropertyValue', propertyID: 'Tax No', value: s.licence.taxNo },
     ],
+    // W226: the owner's channels only — Facebook, Instagram, LinkedIn, WhatsApp.
     sameAs: [
-      s.social.instagram,
-      s.social.tiktok,
-      s.social.linkedin,
       s.social.facebook,
-      s.telegramUrl,
+      s.social.instagram,
+      s.social.linkedin,
       `https://wa.me/${s.whatsappNumber}`,
     ],
     address: [

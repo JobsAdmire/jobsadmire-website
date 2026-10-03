@@ -3,7 +3,7 @@ import { getCollection } from '@/content/collections';
 import { makeTf, metricValues } from '@/content/pure';
 import { isFlagCode } from '@/design/assets/flag-codes';
 import { SourceMap, sourceMapLabels } from '@/design/assets/source-map';
-import { CheckIcon, TelegramIcon } from '@/design/chrome/icons';
+import { CheckIcon } from '@/design/chrome/icons';
 import { Flag } from '@/design/Flag';
 import { Button } from '@/design/primitives/Button';
 import { Eyebrow } from '@/design/primitives/Eyebrow';
@@ -17,7 +17,6 @@ import type { SectionProps } from './types';
 // not `Button` callers, and no caller class ever lands on a `Button` base (W122).
 const PILL =
   'inline-flex min-h-[44px] items-center justify-center gap-2 rounded-pill border-[1.5px] px-6 text-body-sm font-extrabold no-underline transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
-const TELEGRAM = 'border-[#b6e0f5] bg-[#e8f6fd] text-blue-safe hover:bg-[#d6eefb]';
 const FRAUD = 'border-danger-border bg-white text-danger hover:bg-danger-surface';
 
 /**
@@ -104,15 +103,6 @@ export function NetworkSection({ locale, bundle }: SectionProps) {
             <Button prefetch={false} variant="nav" href="/partner-with-us">
               {tf('home.125')}
             </Button>
-            <a
-              href={bundle.settings.telegramUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`${PILL} ${TELEGRAM}`}
-            >
-              <TelegramIcon size={17} />
-              {tf('home.202')}
-            </a>
             <Link
               prefetch={false}
               href={{ pathname: '/verify', hash: '#report' }}

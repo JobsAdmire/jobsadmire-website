@@ -26,16 +26,13 @@ describe('NetworkSection (W1/W10/W14)', () => {
     expect(within(network).getByText('13')).toBeInTheDocument(); // the `countries` metric
   });
 
-  it('"Report fraud" is the Verify page’s form; Telegram and the partner CTA are plain links', () => {
+  it('"Report fraud" is the Verify page’s form; the partner CTA is a plain link; no Telegram (W226)', () => {
     renderWithIntl(<NetworkSection locale="tr" bundle={TR} />);
     expect(screen.getByRole('link', { name: TR.strings['home.126'] })).toHaveAttribute(
       'href',
       '/temsilci-dogrulama#report',
     );
-    expect(screen.getByRole('link', { name: TR.strings['home.202'] })).toHaveAttribute(
-      'href',
-      TR.settings.telegramUrl,
-    );
+    expect(screen.queryByRole('link', { name: TR.strings['home.202'] })).toBeNull();
     expect(screen.getByRole('link', { name: TR.strings['home.125'] })).toHaveAttribute(
       'href',
       '/ortak-olun',
@@ -69,16 +66,19 @@ describe('TeamSection (W6/W86)', () => {
   });
 });
 
-describe('PortalSection (W8/W55)', () => {
-  it('Android badge only, the Android platform line, named screen placeholders, hidden ≤ 460 px', () => {
+describe('PortalSection (W8/W55/W227)', () => {
+  it('both store badges, the iOS & Android platform line, named screen placeholders, hidden ≤ 460 px', () => {
     renderWithIntl(<PortalSection locale="en" bundle={EN} />, { locale: 'en' });
     const portal = screen.getByTestId('portal');
     expect(within(portal).getByRole('link', { name: /Google Play/ })).toHaveAttribute(
       'href',
       EN.settings.storeLinks.android ?? '',
     );
-    expect(within(portal).queryByRole('link', { name: /App Store/ })).toBeNull();
-    expect(portal).toHaveTextContent('Android');
+    expect(within(portal).getByRole('link', { name: /App Store/ })).toHaveAttribute(
+      'href',
+      EN.settings.storeLinks.ios ?? '',
+    );
+    expect(portal).toHaveTextContent('iOS & Android');
     expect(portal.querySelector('[data-placeholder="portal-shortlist"]')).not.toBeNull();
     expect(portal.querySelector('[data-placeholder="portal-mobile-app"]')).not.toBeNull();
     expect(portal.closest('section')).toHaveClass('max-xs:hidden');
@@ -138,7 +138,7 @@ describe('FaqSection', () => {
 });
 
 describe('ContactStrip (ClosingCtaBand)', () => {
-  it('four doors: #proposal, WhatsApp and call (tracked page_cta), Telegram', () => {
+  it('three doors: #proposal, WhatsApp and call (tracked page_cta); no Telegram (W226)', () => {
     renderWithIntl(<ContactStrip locale="tr" bundle={TR} />);
     const band = screen.getByTestId('cta-band');
     expect(within(band).getByRole('heading', { level: 2 })).toHaveTextContent(
@@ -149,7 +149,8 @@ describe('ContactStrip (ClosingCtaBand)', () => {
       .map((a) => a.getAttribute('href'));
     expect(hrefs[0]).toBe('#proposal');
     expect(hrefs[1]).toMatch(/^https:\/\/wa\.me\/905011240340\?text=/);
-    expect(hrefs).toContain(TR.settings.telegramUrl);
+    expect(hrefs).toHaveLength(3);
+    expect(hrefs).not.toContain(TR.settings.telegramUrl);
     expect(hrefs).toContain(`tel:${TR.settings.phone}`);
   });
 });

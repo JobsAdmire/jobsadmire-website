@@ -27,6 +27,10 @@ record and the forecast.
 
 The old site served **517 legacy URLs** — 47 distinct route patterns × up to 11 locale prefixes each — discovered from the old-site inventory. `redirects/rules.json` does **not** list 517 rows: it lists **49**, one row per distinct old route pattern regardless of locale (24 `301`, 19 `410`, 6 `keep`), because the locale expansion is mechanical and belongs in code, not in a hand-maintained file. `scripts/build-redirects.ts` re-expands each of those 49 rows across the applicable locale variants — the bare old path (→ `/en/...`, unless it collides with a live new-site route, R33), `/tr/...` (→ the new Turkish root slug), and the nine dropped locale prefixes (→ `/en/...`) — which is how 49 rows become the actual generated table: **328 redirects** in `redirects/legacy.json` plus **19 `410` prefixes** in `redirects/gone.json` (not 517, because `keep` rows skip the unprefixed-English add when the old path is already live, and every `410` row collapses to one prefix regardless of how many locales served it).
 
+## The app link (W227)
+
+`/app` is not a legacy URL: it is the one download link for the JobsAdmire Partners app, printed in the portal-login QR code. Two temporary (307) rules from `src/lib/app-link.ts`, placed before the legacy map in `next.config.ts`'s `redirects()`, send a `User-Agent` matching `.*(iPhone|iPad|iPod).*` to the App Store and every other device to Google Play; both destinations are `settings.storeLinks` read from the LOCAL bundle when the config loads (Phase B: the same keys from Operations, at build). An iPad in desktop mode sends a Mac user agent and lands on Google Play, which shows the iOS link only on its own page; that edge case is accepted.
+
 ## Rules
 
 - **Disposition is GSC-joined, not guessed.** The 49 canonical old-route rules (covering the 517-URL legacy inventory above) are joined against the WP0 GSC export (16 months of clicks/impressions per URL, exported in WP0 item 0 — before the redirect map is decided, not after).

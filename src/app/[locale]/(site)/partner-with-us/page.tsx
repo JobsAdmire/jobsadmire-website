@@ -116,7 +116,13 @@ export default async function PartnerWithUs({ params }: { params: Promise<{ loca
       <Chain tf={tf} />
       <Tracks tf={tf} panels={panels} />
       <Process bundle={bundle} locale={locale} tf={tf} />
-      <Portal bundle={bundle} locale={locale} tf={tf} androidUrl={settings.storeLinks.android} />
+      <Portal
+        bundle={bundle}
+        locale={locale}
+        tf={tf}
+        androidUrl={settings.storeLinks.android}
+        iosUrl={settings.storeLinks.ios}
+      />
       <Faq
         bundle={bundle}
         locale={locale}

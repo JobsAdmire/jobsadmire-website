@@ -55,9 +55,9 @@ describe('contact placements (W12)', () => {
     ]);
   });
 
-  it('social rail: only the WhatsApp tile fires (social_rail); the other five stay plain anchors', async () => {
+  it('social rail: only the WhatsApp tile fires (social_rail); the other three stay plain anchors', async () => {
     renderWithIntl(<SocialRail bundle={bundle} />);
-    for (const name of ['Facebook', 'Instagram', 'WhatsApp', 'Telegram', 'TikTok', 'LinkedIn']) {
+    for (const name of ['Facebook', 'Instagram', 'WhatsApp', 'LinkedIn']) {
       const a = screen.getByRole('link', { name });
       expect(a).toHaveAttribute('target', '_blank');
       await click(a);

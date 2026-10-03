@@ -1,6 +1,8 @@
 import type { NextConfig } from 'next';
 import createNextIntlPlugin from 'next-intl/plugin';
 import legacy from './redirects/legacy.json';
+import localBundle from './src/content/local/bundle.tr.json';
+import { appLinkRedirects, type StoreLinks } from './src/lib/app-link';
 
 const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
@@ -34,11 +36,15 @@ const nextConfig: NextConfig = {
     inlineCss: true,
   },
   async redirects() {
-    return (legacy as { from: string; to: string }[]).map((r) => ({
-      source: r.from,
-      destination: r.to,
-      permanent: true,
-    }));
+    return [
+      // W227: `/app` — the App Store for Apple devices, Google Play for the rest (src/lib/app-link.ts).
+      ...appLinkRedirects((localBundle.settings as { storeLinks: StoreLinks }).storeLinks),
+      ...(legacy as { from: string; to: string }[]).map((r) => ({
+        source: r.from,
+        destination: r.to,
+        permanent: true,
+      })),
+    ];
   },
   // W155 part 2 (§8 I) + W157 + W160: of the four cheap security headers Gate A wants (a CSP with
   // nonces is a separate, later item), only `X-Content-Type-Options: nosniff` is set here, on

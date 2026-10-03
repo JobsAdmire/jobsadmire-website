@@ -34,8 +34,8 @@ function AppleIcon() {
 }
 
 /** App-store badges from `settings.storeLinks`: Google Play (hire.240) whenever the Android
- *  link exists; App Store (hire.241) only once `ios` is a URL — it is `null` today, so the
- *  badge is not rendered rather than pointing at a generic store page (W8). Labels are the
+ *  link exists; App Store (hire.241) whenever `ios` is a URL (set since W227; a `null` link
+ *  renders no badge rather than a generic store page, W8). Labels are the
  *  package's own, kept English on TR by the importer's override table (W7/W51). */
 export function StoreBadges({
   bundle,

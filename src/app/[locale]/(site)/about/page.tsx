@@ -369,7 +369,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
                 >
                   {t('about.076')}
                 </ContactCta>
-                {/* W8: the App Store badge renders only once settings.storeLinks.ios is a URL.
+                {/* W8/W227: both store badges — the App Store link is set since W227.
                     Default tone 'dark' = the design's dark badges on the light panel. */}
                 <StoreBadges
                   bundle={bundle}

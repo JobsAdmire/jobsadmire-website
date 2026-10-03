@@ -140,16 +140,25 @@ describe('Process', () => {
 });
 
 describe('Portal', () => {
-  it('shows the Android badge only (W8), the {placed} claim (W1) and two named screenshot placeholders (W55)', () => {
+  it('shows both store badges (W227), the {placed} claim (W1) and two named screenshot placeholders (W55)', () => {
     const { container } = renderWithIntl(
-      <Portal bundle={TR} locale="tr" tf={tfTr} androidUrl={TR.settings.storeLinks.android} />,
+      <Portal
+        bundle={TR}
+        locale="tr"
+        tf={tfTr}
+        androidUrl={TR.settings.storeLinks.android}
+        iosUrl={TR.settings.storeLinks.ios}
+      />,
     );
     const portal = screen.getByTestId('partner-portal');
     expect(within(portal).getByRole('link', { name: /Google Play/ })).toHaveAttribute(
       'href',
       TR.settings.storeLinks.android ?? '',
     );
-    expect(within(portal).queryByRole('link', { name: /App Store/ })).toBeNull();
+    expect(within(portal).getByRole('link', { name: /App Store/ })).toHaveAttribute(
+      'href',
+      TR.settings.storeLinks.ios ?? '',
+    );
     expect(portal).toHaveTextContent('470+ yerleştirme');
     expect(
       [...container.querySelectorAll('[data-placeholder]')].map((el) =>

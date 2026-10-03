@@ -11,7 +11,7 @@ import { mailLink, telLink, waLink } from '@/lib/contact';
 import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../contract/website-bundle.v1';
 import { CookiePreferencesButton } from './CookiePreferencesButton';
-import { MapPinIcon, TelegramIcon } from './icons';
+import { MapPinIcon } from './icons';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { navGroup } from './nav';
 import { NavLink, type ChromeNavItem } from './NavLink';
@@ -111,15 +111,6 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
           <ContactLink href={mailLink(settings.email)} placement="footer" className={FLINK}>
             {settings.email}
           </ContactLink>
-          <a
-            href={settings.telegramUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={FLINK}
-          >
-            <TelegramIcon />
-            {t('home.202')}
-          </a>
           {office('antalya', t('home.196'), t('home.198'), settings.maps.antalya)}
           {office('karachi', t('home.197'), t('home.199'), settings.maps.karachi)}
           <ContactLink

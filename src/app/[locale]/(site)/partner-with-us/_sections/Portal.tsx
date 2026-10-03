@@ -26,11 +26,14 @@ export function Portal({
   locale,
   tf,
   androidUrl,
+  iosUrl = null,
 }: {
   bundle: Bundle;
   locale: Locale;
   tf: Tf;
   androidUrl: string | null;
+  /** W227: the App Store link (the design shows both badges). */
+  iosUrl?: string | null;
 }) {
   return (
     <Section tone="light" className="pb-0">
@@ -65,7 +68,7 @@ export function Portal({
             <p className="m-0 mb-2.5 text-body-sm font-bold text-text-secondary">
               {tf(PORTAL_IDS.mobileLine)}
             </p>
-            <StoreBadges bundle={bundle} locale={locale} android={androidUrl} />
+            <StoreBadges bundle={bundle} locale={locale} android={androidUrl} ios={iosUrl} />
           </div>
           <div className="relative min-w-0 pb-6">
             <div className="overflow-hidden rounded-base border border-tint-border bg-white shadow-[0_26px_60px_rgba(22,60,90,0.16)] xl:shadow-[0_19.5px_45px_rgba(22,60,90,0.16)] md:mr-[70px] xl:mr-[52.5px]">

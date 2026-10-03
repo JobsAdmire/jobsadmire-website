@@ -192,7 +192,7 @@ describe('PortalPreview', () => {
       `${WA}?text=${encodeURIComponent(tfTr('hire.251'))}`,
     );
     expect(within(region).getByRole('link', { name: /Google Play/ })).toBeInTheDocument();
-    expect(within(region).queryByRole('link', { name: /App Store/ })).toBeNull(); // W8
+    expect(within(region).getByRole('link', { name: /App Store/ })).toBeInTheDocument(); // W227
     expect(region.textContent).not.toMatch(/✓/);
   });
 });

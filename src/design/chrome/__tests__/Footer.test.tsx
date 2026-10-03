@@ -157,18 +157,21 @@ describe('Footer', () => {
     const footer = screen.getByRole('contentinfo');
     const expected: Array<[string, string]> = [
       ['Instagram', bundle.settings.social.instagram],
-      ['TikTok', bundle.settings.social.tiktok],
       ['LinkedIn', bundle.settings.social.linkedin],
       ['Facebook', bundle.settings.social.facebook],
       [
         'WhatsApp',
         `https://wa.me/${bundle.settings.whatsappNumber}?text=Merhaba%20JobsAdmire%2C%20`,
       ],
-      ['Telegram', bundle.settings.telegramUrl],
     ];
     for (const [name, href] of expected) {
       expect(within(footer).getByRole('link', { name })).toHaveAttribute('href', href);
     }
+    // W226: the owner's channels only — no Telegram, no TikTok anywhere in the footer.
+    expect(footer.querySelector(`a[href="${bundle.settings.telegramUrl}"]`)).toBeNull();
+    expect(footer.querySelector(`a[href="${bundle.settings.social.tiktok}"]`)).toBeNull();
+    expect(within(footer).queryByRole('link', { name: 'Telegram' })).toBeNull();
+    expect(within(footer).queryByRole('link', { name: 'TikTok' })).toBeNull();
   });
 
   it('links the phone, e-mail and both offices', () => {
@@ -324,13 +327,15 @@ describe('Footer', () => {
     );
   });
 
-  it('shows the Android store link and no App Store link while storeLinks.ios is null', () => {
+  it('shows both store links (W227: the App Store link exists)', () => {
     renderWithIntl(<Footer locale="tr" bundle={bundle} />);
     const footer = screen.getByRole('contentinfo');
-    expect(bundle.settings.storeLinks.ios).toBeNull();
+    expect(bundle.settings.storeLinks.ios).not.toBeNull();
     for (const link of within(footer).getAllByRole('link', { name: t('hire.240') })) {
       expect(link).toHaveAttribute('href', bundle.settings.storeLinks.android);
     }
-    expect(within(footer).queryAllByRole('link', { name: t('hire.241') })).toHaveLength(0);
+    const ios = within(footer).getAllByRole('link', { name: t('hire.241') });
+    expect(ios.length).toBeGreaterThan(0);
+    for (const link of ios) expect(link).toHaveAttribute('href', bundle.settings.storeLinks.ios);
   });
 });

@@ -14,14 +14,17 @@ describe('SocialRail', () => {
   it.each([
     ['tr', 'Sosyal medya bağlantıları'],
     ['en', 'Social media links'],
-  ] as const)('%s: is a named complementary landmark around the six links (N8)', (locale, name) => {
-    renderWithIntl(<SocialRail bundle={bundle} />, { locale });
-    const aside = screen.getByRole('complementary', { name });
-    expect(aside.tagName).toBe('ASIDE');
-    expect(
-      within(aside)
-        .getAllByRole('link')
-        .map((a) => a.getAttribute('aria-label')),
-    ).toEqual(['Facebook', 'Instagram', 'WhatsApp', 'Telegram', 'TikTok', 'LinkedIn']);
-  });
+  ] as const)(
+    '%s: is a named complementary landmark around the four links (N8, W226)',
+    (locale, name) => {
+      renderWithIntl(<SocialRail bundle={bundle} />, { locale });
+      const aside = screen.getByRole('complementary', { name });
+      expect(aside.tagName).toBe('ASIDE');
+      expect(
+        within(aside)
+          .getAllByRole('link')
+          .map((a) => a.getAttribute('aria-label')),
+      ).toEqual(['Facebook', 'Instagram', 'WhatsApp', 'LinkedIn']);
+    },
+  );
 });

@@ -15,7 +15,13 @@ describe('jsonld', () => {
     });
     expect(o['@type']).toEqual(['Organization', 'EmploymentAgency']);
     expect(JSON.stringify(o)).toContain('1730');
-    expect(o.sameAs.length).toBe(6);
+    // W226: Facebook, Instagram, LinkedIn and WhatsApp — never Telegram or TikTok.
+    expect(o.sameAs).toEqual([
+      settings.social.facebook,
+      settings.social.instagram,
+      settings.social.linkedin,
+      `https://wa.me/${settings.whatsappNumber}`,
+    ]);
   });
   it('faq pairs become a FAQPage', () => {
     const f = faqJsonLd([{ q: 'Q?', a: 'A.' }]);

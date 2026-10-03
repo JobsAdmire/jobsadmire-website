@@ -3,18 +3,13 @@ import { useTranslations } from 'next-intl';
 import { ContactLink } from '@/analytics/ContactLink';
 import { waLink } from '@/lib/contact';
 import type { Bundle, Settings } from '../../../contract/website-bundle.v1';
-import {
-  FacebookIcon,
-  InstagramIcon,
-  LinkedInIcon,
-  TelegramIcon,
-  TikTokIcon,
-  WhatsAppIcon,
-} from './icons';
+import { FacebookIcon, InstagramIcon, LinkedInIcon, WhatsAppIcon } from './icons';
 
 export type SocialLink = { name: string; href: string; icon: ReactNode; hover: string };
 
-/** One list for the rail and the footer. The names are brands, not copy — no string ids. */
+/** One list for the rail and the footer. The names are brands, not copy — no string ids.
+ *  W226 (owner): Facebook, Instagram, WhatsApp and LinkedIn only — the design's Telegram and
+ *  TikTok tiles are gone (`settings.telegramUrl` / `social.tiktok` stay unused in the bundle). */
 export function socialLinks(settings: Settings, waPrefill: string): SocialLink[] {
   return [
     {
@@ -34,18 +29,6 @@ export function socialLinks(settings: Settings, waPrefill: string): SocialLink[]
       href: waLink(settings.whatsappNumber, waPrefill),
       icon: <WhatsAppIcon />,
       hover: 'hover:border-success hover:bg-success hover:text-white',
-    },
-    {
-      name: 'Telegram',
-      href: settings.telegramUrl,
-      icon: <TelegramIcon />,
-      hover: 'hover:border-blue hover:bg-blue hover:text-white',
-    },
-    {
-      name: 'TikTok',
-      href: settings.social.tiktok,
-      icon: <TikTokIcon />,
-      hover: 'hover:border-ink hover:bg-ink hover:text-white',
     },
     {
       name: 'LinkedIn',
