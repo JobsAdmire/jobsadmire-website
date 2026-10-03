@@ -5,10 +5,16 @@
     "notFoundBody": "Aradığınız sayfa taşınmış veya kaldırılmış olabilir.",
     "errorTitle": "Bir şeyler ters gitti",
     "errorRetry": "Tekrar dene",
-    "home": "Ana sayfa",
     "nav": {
       "main": "Ana menü",
-      "close": "Kapat"
+      "close": "Kapat",
+      "home": "Ana sayfa",
+      "legal": "Yasal",
+      "breadcrumbs": "Sayfa yolu",
+      "slimBar": "İletişim ve lisans şeridi",
+      "bottomBar": "Hızlı iletişim işlemleri",
+      "socialRail": "Sosyal medya bağlantıları",
+      "whatsappFab": "WhatsApp kısayolu"
     },
     "marquee": {
       "pause": "Duraklat",
@@ -17,14 +23,92 @@
     "whatsapp": {
       "prefill": "Merhaba JobsAdmire, "
     },
+    "blocks": {
+      "readMinutes": "{n, plural, one {# dk okuma} other {# dk okuma}}"
+    },
     "languageHint": {
       "body": "This page is also available in English.",
       "switch": "Switch to English",
       "dismiss": "Dismiss"
     },
+    "seo": {
+      "ogTagline": "Türkiye'deki işverenler için lisanslı iş gücü temini — yurt dışından tedarik, kontrol ve çalışma izinleri.",
+      "home": {
+        "title": "Yurt Dışından İşçi Temini ve Çalışma İzni | JobsAdmire",
+        "description": "Türkiye'deki işverenler için yurt dışından nitelikli işçi temini: JobsAdmire'ın kendi temsilcileriyle aday seçimi, yasal çalışma izni ve ilk iş gününe kadar tek elden süreç. Ücretsiz teklif alın."
+      },
+      "portal": {
+        "title": "İş Ortağı Portalı girişi | JobsAdmire",
+        "description": "JobsAdmire İş Ortağı Portalı'na giriş: sözleşmeler, adaylar ve izin durumu tek yerde."
+      },
+      "privacy": {
+        "title": "Gizlilik Politikası | JobsAdmire",
+        "description": "JobsAdmire'ın kişisel verileri KVKK kapsamında nasıl topladığını, kullandığını, sakladığını ve koruduğunu açıklayan politika."
+      },
+      "terms": {
+        "title": "Kullanım Koşulları | JobsAdmire",
+        "description": "jobsadmire.com ve JobsAdmire hizmetlerinin kullanımını düzenleyen koşullar (metin şimdilik İngilizcedir)."
+      },
+      "kvkk": {
+        "title": "KVKK Aydınlatma Metni | JobsAdmire",
+        "description": "6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında aydınlatma metni."
+      },
+      "cookiePolicy": {
+        "title": "Çerez Politikası | JobsAdmire",
+        "description": "jobsadmire.com'un kullandığı çerezler ve tercihlerinizi nasıl yönetebileceğiniz."
+      },
+      "newsletterConfirm": {
+        "title": "Abonelik onayı | JobsAdmire",
+        "description": "JobsAdmire bülten aboneliğinizi onaylayın."
+      },
+      "newsletterUnsubscribe": {
+        "title": "Abonelikten çıkış | JobsAdmire",
+        "description": "JobsAdmire bülten aboneliğinizi sonlandırın."
+      },
+      "thankYou": {
+        "title": "Teşekkürler | JobsAdmire",
+        "description": "Talebiniz JobsAdmire'a ulaştı. JobsAdmire ekibi en kısa sürede sizinle iletişime geçecek."
+      },
+      "calc": {
+        "title": "Yabancı işçi maliyet hesaplayıcı — Türkiye | JobsAdmire",
+        "description": "Maaş, SGK işveren payı, izin harçları, uçak bileti ve konaklama tek tahminde. 5:1 kotanızı kontrol edin, geçer-mi testini yapın, yazılı teklif isteyin."
+      },
+      "wp": {
+        "title": "Türkiye'de çalışma izni — kurallar, e-Muafiyet, süreç | JobsAdmire",
+        "description": "6735 sayılı Kanun kapsamında çalışma izni: standart izin ya da e-Muafiyet, işveren kriterleri, süreler, maliyetler ve belgeler — dosyayı JobsAdmire hazırlar."
+      },
+      "about": {
+        "title": "JobsAdmire Hakkında — İŞKUR lisanslı özel istihdam bürosu, Antalya",
+        "description": "JobsAdmire, Antalya merkezli İŞKUR lisanslı özel istihdam bürosu: Türkiye genelindeki işverenlere nitelikli yabancı işçi ve eksiksiz çalışma izni süreci."
+      },
+      "contact": {
+        "title": "JobsAdmire İletişim — Türkiye’de Lisanslı İşe Alım Ajansı",
+        "description": "JobsAdmire Antalya merkez ofisini arayın ya da WhatsApp’tan yazın: işçi talebi, çalışma izni ve iş ortaklığı için tek numara, mesai saatlerinde gerçek bir kişi."
+      },
+      "workers": {
+        "title": "Başlamaya hazır doğrulanmış işçiler | JobsAdmire",
+        "description": "Beceri testli, belgeleri kontrol edilmiş, izne hazır adaylar. Pozisyonlarınızı iletin; JobsAdmire her çalışma iznini İŞKUR lisansıyla sunar."
+      },
+      "stories": {
+        "title": "Başarı Hikâyeleri — Türkiye'deki İşverenler İçin Çalışma İzni Onayları | JobsAdmire",
+        "description": "JobsAdmire'ın Türkiye'deki işverenler için aldığı çalışma izni onayları sektör, kişi sayısı ve ay bilgisiyle yayınlanır; kişisel bilgiler çıkarılır."
+      },
+      "verify": {
+        "title": "JobsAdmire Temsilcisini Doğrulayın — Resmî Yetki Kontrolü",
+        "description": "Karşınızdaki kişi JobsAdmire adına mı çalışıyor? Yalnızca kurucu imza atar; JobsAdmire'da kimse işçiden para almaz. JA- kimliğini sorgulayın veya bildirin."
+      },
+      "careers": {
+        "title": "JobsAdmire'da kariyer — Antalya'da ve kaynak ülkelerde pozisyonlar",
+        "description": "JobsAdmire'da çalışın: kaynak ülkelerde yurt dışı temsilcileri ve Antalya ofis ekibi. Tam zamanlı, yarı zamanlı ya da proje bazlı; her başvuru yanıt alır."
+      },
+      "blog": {
+        "title": "Blog ve Rehberler — Türkiye'de Çalışma İzni ve İşe Alım | JobsAdmire",
+        "description": "Türkiye'deki işverenler için işe alım rehberleri, çalışma izni güncellemeleri ve iş gücü haberleri; JobsAdmire izin ve işe alım ekibi tarafından hazırlanır."
+      }
+    },
     "consent": {
       "title": "Çerezler",
-      "body": "Siteyi geliştirmek ve reklamlarımızın performansını ölçmek için çerez kullanıyoruz. Seçiminizi istediğiniz zaman değiştirebilirsiniz.",
+      "body": "JobsAdmire, siteyi geliştirmek ve reklam performansını ölçmek için çerez kullanır. Seçiminizi istediğiniz zaman değiştirebilirsiniz.",
       "accept": "Kabul et",
       "reject": "Reddet",
       "policy": "Çerez politikası",
@@ -32,20 +116,850 @@
     },
     "thankYou": {
       "title": "Teşekkürler",
-      "body": "Talebiniz bize ulaştı. Ekibimiz en kısa sürede sizinle iletişime geçecek.",
+      "body": "Talebiniz JobsAdmire'a ulaştı. JobsAdmire ekibi en kısa sürede sizinle iletişime geçecek.",
       "home": "Ana sayfaya dön",
       "whatsapp": "WhatsApp'tan yazın",
       "forms": {
-        "hire": "İşçi talebinizi aldık; uygun adayları hazırlayıp size döneceğiz.",
-        "contact": "Mesajınızı aldık; genellikle bir iş günü içinde yanıtlıyoruz.",
-        "partner": "Ortaklık başvurunuzu aldık; iş geliştirme ekibimiz sizinle görüşecek.",
-        "careers": "Başvurunuzu aldık; uygun bir pozisyon açıldığında sizinle iletişime geçeceğiz.",
-        "newsletter": "Kaydınızı aldık; onaylamak için e-posta kutunuzu kontrol edin.",
-        "callback": "Geri arama talebinizi aldık; ekibimiz en kısa sürede sizi arayacak.",
-        "visit": "Ziyaret talebinizi aldık; uygun bir zaman için sizinle iletişime geçeceğiz.",
-        "calculator": "Maliyet tahmininizi hazırlıyoruz; kısa süre içinde size ulaştıracağız.",
-        "fraud": "Bildiriminiz için teşekkürler; gelen her ihbarı inceliyoruz.",
-        "workers": "Aday talebinizi aldık; eşleşen profilleri size ileteceğiz."
+        "hire": "İşçi talebiniz alındı; JobsAdmire uygun adayları hazırlayıp size dönüş yapacak.",
+        "contact": "Mesajınız alındı; JobsAdmire genellikle bir iş günü içinde yanıt verir.",
+        "partner": "Ortaklık başvurunuz alındı; JobsAdmire iş geliştirme ekibi sizinle görüşecek.",
+        "careers": "Başvurunuz alındı; JobsAdmire başvurunuzu e-postayla onaylar ve her başvuruya yanıt verir.",
+        "newsletter": "Kaydınız alındı; onaylamak için e-posta kutunuzu kontrol edin.",
+        "callback": "Geri arama talebiniz alındı; JobsAdmire ekibi en kısa sürede sizi arayacak.",
+        "visit": "Ziyaret talebiniz alındı; uygun bir zaman için JobsAdmire sizinle iletişime geçecek.",
+        "calculator": "Maliyet tahmininiz hazırlanıyor; JobsAdmire kısa süre içinde size iletecek.",
+        "fraud": "Bildiriminiz için teşekkürler; JobsAdmire gelen her ihbarı inceler.",
+        "workers": "Aday talebiniz alındı; JobsAdmire eşleşen profilleri size iletecek."
+      }
+    },
+    "hire": {
+      "whatsapp": "WhatsApp",
+      "jump": {
+        "label": "Sayfa içi bölümler"
+      },
+      "sc": {
+        "titleTail": " belgeli işçiler",
+        "mapTitle": "Kaynak ülkeler haritası — JobsAdmire'ın Türkiye'deki işverenler için işçi temin ettiği ülkeler"
+      },
+      "form": {
+        "dial": "Ülke kodu"
+      }
+    },
+    "calc": {
+      "hero": { "badge": "{year} oranları · {month} güncellemesi" },
+      "skeleton": { "activate": "Tahmini düzenleyin" },
+      "empty": {
+        "title": "Hesaplayıcı güncelleniyor",
+        "body": "Güncel oranlar henüz yayınlanmadı — bunun yerine JobsAdmire'dan yazılı teklif isteyin."
+      },
+      "jump": { "label": "Sayfa içi bölümler" },
+      "a11y": {
+        "decrease": "{step} azalt",
+        "increase": "{step} artır",
+        "headcountPresets": "Hızlı seçim",
+        "industries": "Sektöre göre filtrele"
+      },
+      "card": {
+        "forWorkers": "{n} işçi için",
+        "nMonths": "{months} ay",
+        "seasonTotal": "{months} aylık sezon toplamı",
+        "threshold": "Bu iş için yasal asgari: {amount} brüt (asgari ücretin {multiplier} katı).",
+        "yearNote": "{months} aylık bordro + tek seferlik maliyetler{headcount, plural, =1 {} other { (# işçi için)}}"
+      },
+      "quota": {
+        "allowed": "{n} yabancı işçi",
+        "msgNo": "{staff} Türk çalışanla {ratio}:1 kuralına henüz ulaşmıyorsunuz. {need} kişi daha gerekiyor veya aşağıdaki muafiyetlerden biri.",
+        "msgMore": "Her yabancı işçi için {ratio} Türk çalışan sayılır. {m} Türk çalışan daha bir kontenjan açar.",
+        "vsOver": "Bu, kuralın izin verdiğinden {over} kişi fazla. {need} Türk çalışan daha veya bir muafiyet gerekir. Size hangisinin uyduğunu öğrenmek için rakamlarınızı JobsAdmire'a gönderin.",
+        "vizNone": "Henüz tam bir grup yok — {n} Türk çalışan daha ilk kontenjanı açar.",
+        "vizFull": "{staff} çalışan için {blocks} tam kontenjan bulunmaktadır. Her {ratio} çalışan, bir kontenjanı doldurur; sonraki {ratio} çalışan için yeni bir kontenjan açılır.",
+        "vizPart": "{blocks} tam grup artı {spare} artık çalışan — {need} kişi daha bir kontenjan daha açar.",
+        "vizCap": "{blocks} tam grup (ilk {cap} gösteriliyor) artı {spare} artık.{spare, plural, =0 {} other { {need} kişi daha bir kontenjan daha açar.}}"
+      },
+      "pass": {
+        "count": "{total} kontrolden {clear} tamam{unanswered, plural, =0 {} other { · # yanıtlanmadı}}",
+        "quotaOk": "Kota kontrolüne göre, {staff} Türk çalışan için {allowed} yabancı çalışan kontenjanı bulunmaktadır. Planlanan: {headcount} yabancı çalışan.",
+        "quotaNo": "Yukarıdaki kota kontrolünden dolduruldu: {headcount} yabancı işçi için SGK'lı {need} Türk çalışan gerekir, siz {staff} girdiniz.",
+        "quotaFix": "Oranda eksiksiniz — {headcount} işçi için {need} Türk çalışan gerekiyor. Ya sayıyı azaltın ya da sektörünüzün muaf olup olmadığını kontrol edin.",
+        "salary": "{role} için bu, aylık brüt {amount} demektir (asgari ücretin {multiplier} katı). Daha düşük beyan pazarlık değil rettir — bir kısmını elden ödemek ise ayrı bir suçtur.",
+        "salaryFix": "Bu meslek için beyan edilen maaşı en az brüt {amount} seviyesine çıkarın ya da ödemeye uyan bir meslek sınıfı seçin.",
+        "amberN": "Önce teyit edilmesi gereken {n} şey var",
+        "redN": "{n} engel — başvurmadan önce düzeltin",
+        "unanswered": "yanıtlanmadı"
+      },
+      "exemptions": {
+        "tenStaff": "10+ Türk çalışan",
+        "twentyStaff": "20+ Türk çalışan",
+        "upTo5": "5 işçiye kadar",
+        "full": "Tam muafiyet",
+        "timing": "Zamanlama muafiyeti",
+        "upTo3": "3 işçiye kadar",
+        "exceptional": "İstisnai izin"
+      },
+      "whatsapp": {
+        "generic": "Merhaba JobsAdmire, web sitenizdeki maliyet hesaplayıcıyı kullandım. Yazılı teklif rica ederim.",
+        "estimate": "Merhaba JobsAdmire, maliyet hesaplayıcıyı kullandım: {headcount} × {role}, brüt {salary}, {months} aylık sözleşme. Yazılı teklif rica ederim.",
+        "passCheck": "Merhaba JobsAdmire, maliyet hesaplayıcı sayfanızdaki geçer-mi testini yaptım.\n\nMeslek: {role} · {headcount} işçi\nİşyerindeki Türk çalışan sayısı: {staff}\n\n{summary}\n\nBunu benimle birlikte değerlendirebilir misiniz?"
+      },
+      "quote": {
+        "loading": "Teklif formu açılıyor…",
+        "attached": "Yukarıdaki tahmin talebinizle birlikte gönderilir."
+      },
+      "summary": { "none": "yok", "rates": "Oran sürümü" }
+    },
+    "wp": {
+      "hero": {
+        "updated": "Güncelleme: {month} · JobsAdmire izin ekibi tarafından incelendi"
+      },
+      "wizard": {
+        "progress": "{current} / {total}",
+        "progressLabel": "Uygunluk kontrolünün ilerleyişi",
+        "options": {
+          "yes": "Evet",
+          "no": "Hayır",
+          "atLeast": "{ratio} veya daha fazla",
+          "below": "{ratio} kişiden az",
+          "abroad": "Yurt dışında"
+        },
+        "points": {
+          "ratio": "Her yabancı işçi için SGK'da {ratio} kişiden az Türk çalışan: standart izinde 1:{ratio} oranı iş yerinize uygulanır ve bazı sektörler muaftır — JobsAdmire, dosyalamadan önce oranın nasıl uygulandığını kontrol eder."
+        },
+        "prefill": {
+          "intro": "sitenizdeki uygunluk kontrolünü yaptım ve bir çalışma izni hakkında görüşmek istiyorum. Cevaplarım:",
+          "result": "Sonuç: {title}"
+        }
+      },
+      "sample": {
+        "label": "Kurgusal bilgilerle hazırlanmış temsili Türkiye çalışma izni kartı",
+        "foreignerId": "99•• ••• ••44",
+        "validity": "15.08.2026 — 14.08.2027"
+      },
+      "documents": {
+        "count": "{n} belge"
+      },
+      "faq": {
+        "exemptionAnswer": "e-Muafiyet, Bakanlığın çevrim içi çalışma izni muafiyet sistemidir (emuafiyet.csgb.gov.tr). İşi 48. madde kategorilerinden birine giren yabancılar — makine montajı ve eğitimi, sınır ötesi hizmetler, mevsimlik tarım, bilimsel veya sportif faaliyetler ve diğerleri — tam izin olmadan sınırlı bir süre, genellikle 3 aya kadar çalışabilir. Yurt içi başvurular Türkiye'ye girişten sonraki 30 gün içinde yapılmalıdır.",
+        "emailSubject": "Çalışma izni sorusu"
+      },
+      "whatsapp": {
+        "question": "çalışma izniyle ilgili bir sorum var.",
+        "permitOnly": "kendi işçim var — çalışma iznini siz yürütebilir misiniz?",
+        "permitType": "benim durumumda hangi çalışma izni türü geçerli?",
+        "exemption": "durumum çalışma izni muafiyetine giriyor mu?",
+        "quote": "benim durumumda çalışma izni ne kadar tutar?",
+        "renewal": "bir çalışma iznini yenilemek için yardıma ihtiyacım var."
+      }
+    },
+    "partner": {
+      "whatsapp": {
+        "prefill": "Merhaba JobsAdmire, bir iş ortaklığı hakkında görüşmek istiyorum."
+      },
+      "faq": {
+        "whatsappText": "Merhaba JobsAdmire, iş ortaklığıyla ilgili bir sorum var.",
+        "emailSubject": "İş ortaklığı sorusu"
+      }
+    },
+    "about": {
+      "who": {
+        "badgeYear": "2024",
+        "photoAlt": "Antalya ofisindeki JobsAdmire ekibi"
+      },
+      "journey": {
+        "m3When": "2025"
+      },
+      "tech": {
+        "dashboardAlt": "JobsAdmire portal panosu",
+        "appAlt": "JobsAdmire mobil uygulaması"
+      },
+      "offices": {
+        "photoAlt": "{city} ofisi"
+      },
+      "licence": {
+        "title": "Lisans ve belgeler",
+        "body": "İŞKUR özel istihdam bürosu izin belgesi ve ekleri, PDF olarak.",
+        "pending": "PDF ekleniyor",
+        "open": "PDF'yi açın",
+        "docs": {
+          "iskurPermit": "İŞKUR özel istihdam bürosu izin belgesi",
+          "iskurAnnex": "İŞKUR izin belgesi — ek",
+          "oibCertificate": "Özel istihdam bürosu yetki belgesi",
+          "oibAnnex": "Yetki belgesi — ek"
+        }
+      },
+      "whatsapp": {
+        "demo": "Merhaba JobsAdmire, CRM portalınızın demosunu görmek istiyorum.",
+        "consult": "Merhaba JobsAdmire, ücretsiz danışmanlık almak istiyorum."
+      }
+    },
+    "contact": {
+      "languages": {
+        "tr": "Türkçe",
+        "en": "English",
+        "fr": "Français",
+        "hi": "हिन्दी",
+        "ru": "Русский"
+      },
+      "channels": {
+        "whatsapp": "WhatsApp",
+        "open": "WhatsApp’ı açın →"
+      },
+      "status": {
+        "openNow": "Şu anda açık · yerel saat {time} · kapanış {close}",
+        "closedOpensAt": "Kapalı · açılış {open} · yerel saat {time}",
+        "closedOpensTomorrow": "Kapalı · yarın açılış {open}",
+        "closedOpensOn": "Kapalı · açılış {day} {open}",
+        "opensAt": "Açılış {open}",
+        "waWatched": "Şu anda takipte — mesai saatlerinde canlı temsilci yanıtlıyor",
+        "waOff": "Mesai dışı — yanıt bir sonraki iş günü sabahı gelir"
+      },
+      "visit": {
+        "submit": "Ziyaret saati talep edin"
+      },
+      "wa": {
+        "main": "Merhaba JobsAdmire, Türkiye’de işçi istihdamı hakkında bir sorum var.",
+        "jobseeker": "Merhaba JobsAdmire, adayım. Ülkem: ___ / Mesleğim: ___. Lütfen ülkemdeki doğrulanmış tedarik ortağınızın iletişim bilgisini gönderin.",
+        "visitSite": "Merhaba JobsAdmire, işçi sayısına karar vermeden önce işyerime bir saha ziyareti istiyorum."
+      },
+      "fallbackIntro": {
+        "contact": "Merhaba JobsAdmire, web sitenizdeki iletişim formu gönderilemedi. Talebim:",
+        "callback": "Merhaba JobsAdmire, geri arama formu gönderilemedi — lütfen beni geri arayın. Bilgilerim:",
+        "visit": "Merhaba JobsAdmire, ziyaret formu gönderilemedi — Antalya ofisini ziyaret etmek istiyorum. Bilgilerim:"
+      },
+      "faq": {
+        "a3": "Mesai saatlerinde ({hours}, Türkiye saati) en hızlı kanal WhatsApp’tır; e-postalar yaklaşık {replyHours} iş saati içinde yanıtlanır. Gece ya da hafta sonu gönderilen mesajlar bir sonraki iş günü sabahı ele alınır.",
+        "a5": "Evet, ancak JobsAdmire bireysel başvuruları doğrudan almaz: B2B bir ajanstır ve ülkenizdeki doğrulanmış tedarik ortakları aracılığıyla çalışır. Yukarıdan “İş arıyorum” seçeneğini seçip mesaj gönderin; JobsAdmire size doğrulanmış ortağın iletişim bilgisini iletir. JobsAdmire bir işçiden asla yerleştirme ücreti almaz — biri JobsAdmire adına sizden para isterse WhatsApp’tan bildirin."
+      }
+    },
+    "workers": {
+      "pool": {
+        "heading": "JobsAdmire aday havuzu",
+        "intro": "Havuzdaki her aday beceri testinden geçer, belgeleri kontrol edilir ve çalışma iznine hazırlanır. Profiller burada yayımlanana kadar ihtiyacınızı JobsAdmire’a iletin; eşleşen adaylar doğrudan size gönderilir."
+      },
+      "empty": {
+        "title": "Herkese açık profiller henüz yayımlanmadı",
+        "body": "Profiller, aday gizliliği (KVKK) ve iş ortaklarının onayı tamamlandığında bu sayfada görünecek. Talep formunu doldurun; JobsAdmire tam CV’leri, belgeleri ve video mülakatları doğrudan sizinle paylaşır.",
+        "cta": "Talep formuna gidin"
+      },
+      "sticky": {
+        "message": "İhtiyacınız olan pozisyonları JobsAdmire’a iletin — {hours} saat içinde tam CV ve video mülakat."
+      },
+      "form": {
+        "titles": {
+          "direct_employer": "Havuzdan aday talep edin"
+        }
+      },
+      "timeline": {
+        "days1to3": "1–3. gün",
+        "arrival": "{weeks}. hafta"
+      },
+      "ask": {
+        "emailSubject": "Mevcut adaylar hakkında soru"
+      }
+    },
+    "stories": {
+      "hero": {
+        "bodyEmpty": "JobsAdmire'ın Türkiye'deki işverenler için aldığı çalışma izni onayları burada yayınlanacak: sektör, kişi sayısı ve ay. Kişisel bilgiler çıkarılır.",
+        "liveBadge": "{count, plural, one {# izin onaylandı} other {# izin onaylandı}}"
+      },
+      "wall": {
+        "intro": "Yayınlanan her onay bir karttır: sektör, kişi sayısı, onay ayı ve şehir. Kişisel bilgiler ve belgeler gösterilmez.",
+        "legend": "Sektöre göre filtreleyin",
+        "showingAll": "Toplam {count} onay gösteriliyor",
+        "showingFiltered": "{total} onaydan {shown} tanesi gösteriliyor"
+      },
+      "empty": {
+        "title": "İlk onaylar yolda",
+        "body": "Yayınlanan her çalışma izni onayı burada sektörü, kişi sayısı ve ayıyla yer alacak. Şimdiden bir örnek görmek için JobsAdmire'a WhatsApp'tan yazın.",
+        "cta": "WhatsApp'tan bir örnek isteyin",
+        "prefill": "Merhaba JobsAdmire, aldığınız çalışma izni onaylarından bir örneğini görebilir miyim?"
+      },
+      "whatsappPrefill": "Merhaba JobsAdmire, şu pozisyonlar için işçiye ihtiyacım var: ",
+      "workers": {
+        "card1Title": "Kaynakçı · Özbekistan → Ankara"
+      }
+    },
+    "verify": {
+      "hero": {
+        "lead": "JobsAdmire adına yalnızca kurucu imza atar. Ekipteki diğer herkes belge toplar, becerileri kontrol eder ve görüşme yapar — başka hiç kimse imza atmaz ve JobsAdmire'da hiç kimse bir işçiden para almaz. Bu sayfa, kiminle muhatap olduğunuzu doğrulamanıza yardımcı olur."
+      },
+      "lookup": {
+        "hint": "Kimliğin, adın, şehrin veya numaranın en az {min} karakterini yazın.",
+        "resultTitle": "Herkese açık kayıt defteri henüz yayımlanmadı",
+        "resultBody": "“{query}” şu anda çevrim içi doğrulanamıyor. JobsAdmire ofisini arayın ya da WhatsApp'tan yazın — JobsAdmire ekibi, bu kişinin JobsAdmire için çalışıp çalışmadığını teyit eder. O zamana kadar belge ya da para vermeyin.",
+        "whatsapp": "WhatsApp'tan sorun"
+      },
+      "empty": {
+        "title": "Kayıt defteri henüz herkese açık değil",
+        "body": "Her JobsAdmire temsilcisi bir JA- kimliği taşır. Fotoğrafların ve kayıtların yer aldığı herkese açık kayıt defteri, her kişinin onayıyla hazırlanıyor. Yayımlanana kadar bir adı ya da kimliği JobsAdmire ofisiyle telefonla veya WhatsApp üzerinden doğrulayın."
+      },
+      "faq": {
+        "whoSigns": "Yalnızca kurucu. Hiçbir temsilci, ofis çalışanı ya da iş ortağı ajans JobsAdmire adına hizmet sözleşmesi, işveren sözleşmesi veya işçi sözleşmesi imzalayamaz. Başka biri tarafından imzalanan hiçbir belge geçerli değildir.",
+        "howToCheck": "Yaka kartındaki JA- kimliğini isteyin. Herkese açık kayıt defteri yayımlanana kadar kimliği JobsAdmire ofisiyle telefonla veya WhatsApp üzerinden doğrulayın — yukarıdaki sorgu henüz kayıt gösteremez. Teyit gelmeden belge ya da para vermeyin."
+      },
+      "steps": {
+        "qr": "İkisi de bu sayfayı açmalıdır. Herkese açık kayıt defteri yayımlanana kadar yukarıdaki sorgu kayıt gösteremez — kimliği JobsAdmire ofisiyle telefonla ya da WhatsApp üzerinden teyit edin. QR kodu başka bir yere giden bir kimlik kartı sahtedir.",
+        "match": "Yaka kartındaki fotoğraf ve ad karşınızdaki kişiyle birebir uyuşmalı, ofis de kimliğin yetkili olduğunu teyit etmelidir. En küçük uyumsuzlukta ofisi arayın."
+      },
+      "flags": {
+        "qr": "QR kodu bu sayfayı açmalıdır — başka hiçbir şey geçerli değildir. Herkese açık kayıt defteri yayımlanana kadar kimliği JobsAdmire ofisiyle telefonla ya da WhatsApp üzerinden teyit edin."
+      },
+      "report": {
+        "submit": "Bildirimi gönder"
+      },
+      "record": {
+        "close": "Kaydı kapat",
+        "former": "Artık yetkili değil"
+      }
+    },
+    "careers": {
+      "hero": {
+        "hiringCount": "{count} açık pozisyon · Antalya ve yurt dışı",
+        "seeOpenings": "{count, plural, =0 {Açık pozisyonlara bakın} other {# açık pozisyonu görün}}"
+      },
+      "filters": {
+        "all": "Tümü"
+      },
+      "roles": {
+        "resultAll": "{count, plural, one {Tek açık pozisyon gösteriliyor} other {# açık pozisyonun tümü gösteriliyor}}",
+        "resultFiltered": "{total} eşleşen pozisyondan {shown} tanesi gösteriliyor",
+        "showMore": "Daha fazla pozisyon göster ({count})",
+        "posted": "Yayın tarihi: {date}"
+      },
+      "workMode": {
+        "REMOTE": "Uzaktan",
+        "HYBRID": "Hibrit",
+        "ON_SITE": "Yerinde"
+      },
+      "salary": {
+        "range": "{min} – {max}",
+        "from": "en az {amount}",
+        "upTo": "en fazla {amount}",
+        "per": {
+          "HOUR": "saatlik",
+          "DAY": "günlük",
+          "WEEK": "haftalık",
+          "MONTH": "aylık",
+          "YEAR": "yıllık"
+        }
+      },
+      "empty": {
+        "title": "Şu anda açık pozisyon yok",
+        "body": "Her pozisyon önce burada yayınlanır. Aşağıdan WhatsApp ya da e-posta ile açık başvuru gönderin; JobsAdmire iyi adayları kayıtta tutar ve bir pazar açıldığında size yazar."
+      },
+      "apply": {
+        "whatsapp": "WhatsApp'tan başvurun",
+        "emailSubject": "Açık başvuru"
+      },
+      "detail": {
+        "metaTitle": "{title} — JobsAdmire'da kariyer",
+        "metaDescription": "{title} ({location}). Pozisyonun ayrıntılarını okuyun ve PDF CV'nizle çevrimiçi başvurun; JobsAdmire her başvuruya yanıt verir.",
+        "about": "Pozisyon hakkında",
+        "back": "Tüm açık pozisyonlar",
+        "applyLead": "Birkaç dakika sürer; PDF CV'niz yeterli. JobsAdmire her başvuruya yanıt verir.",
+        "whatsappIntro": "Merhaba JobsAdmire, {title} pozisyonuna başvurmak istiyorum.",
+        "facts": {
+          "title": "Bir bakışta",
+          "location": "Konum",
+          "workMode": "Çalışma düzeni",
+          "languages": "Diller",
+          "salary": "Ücret",
+          "posted": "Yayın tarihi"
+        }
+      },
+      "form": {
+        "residency": "Bu pozisyon yalnızca {country} sakinlerine açıktır.",
+        "expectedSalaryHint": "Aylık, {currency} cinsinden, tam sayı olarak yazın. Pakistan'daki pozisyonlar için zorunludur.",
+        "closed": "Bu pozisyon artık başvuru kabul etmiyor. Açık pozisyonları kariyer sayfasında görebilirsiniz.",
+        "portfolioGate": "Bu pozisyon bir portföy belgesi istiyor; çevrimiçi form bunu henüz taşıyamıyor. Lütfen e-postayla başvurun."
+      },
+      "emailPanel": {
+        "title": "E-postayla başvurun",
+        "body": "Bu pozisyon portföy istiyor. PDF CV'nizi ve portföyünüzü (dosya ya da bağlantı) aşağıdaki konu satırıyla {email} adresine gönderin ya da önce WhatsApp'tan bir soru sorun.",
+        "subject": "Başvuru: {title}",
+        "email": "E-postayı yazın"
+      }
+    },
+    "blog": {
+      "hero": {
+        "title": "<word></word> {pre}",
+        "words": "İşverenler|Fabrikalar|Oteller|Çiftlikler|Müteahhitler"
+      },
+      "index": {
+        "latest": "Son yazılar",
+        "guides": "rehber"
+      },
+      "empty": {
+        "title": "Türkçe yazılar hazırlanıyor",
+        "body": "JobsAdmire izin ve işe alım ekibi işverenler için rehberlerini hazırlıyor. İlk yazılar yayımlandığında bu sayfada yer alacak.",
+        "cta": "İngilizce yazılara göz atın"
+      },
+      "tools": {
+        "search": "Yazılarda arayın",
+        "results": {
+          "one": "{n} yazı",
+          "other": "{n} yazı"
+        }
+      },
+      "article": {
+        "metaTitle": "{title} | JobsAdmire",
+        "langNote": "EN · Türkçe'de de var",
+        "sections": "{n, plural, one {# bölüm} other {# bölüm}}",
+        "copyFailed": "Bağlantı kopyalanamadı; adres çubuğundan kopyalayabilirsiniz.",
+        "print": "Bu yazıyı yazdırın",
+        "backToTop": "Başa dön"
+      },
+      "faq": {
+        "a1": "Onay, bakanlık incelemesi dahil ortalama {permitDays} gün sürer; ilk iş gününe kadar tüm süreç genellikle {firstDayWeeks} hafta alır. Lisanslı bir ajans dosyayı önceden kontrol ettiği için eksik bir belge süreyi baştan başlatmaz.",
+        "q3": "{ratio}:1 çalışan oranını sağlamıyorsam işe alım yapabilir miyim?"
+      },
+      "whatsapp": {
+        "article": "blogunuzdaki “{title}” yazısını okudum ve işçi talebinde bulunmak istiyorum.",
+        "consult": "ücretsiz danışmanlık almak istiyorum.",
+        "permit": "çalışma izinleri konusunda desteğe ihtiyacım var."
+      }
+    },
+    "form": {
+      "labels": {
+        "name": "Ad Soyad",
+        "email": "E-posta",
+        "phone": "Telefon",
+        "company": "Şirket",
+        "city": "Şehir",
+        "country": "Ülke",
+        "sector": "Sektör",
+        "headcount": "İşçi sayısı",
+        "startWhen": "Ne zaman başlamalı?",
+        "roleNeeded": "Aranan pozisyonlar",
+        "message": "Mesajınız",
+        "subject": "Konu",
+        "iAm": "Rolünüz",
+        "preferredTime": "Tercih ettiğiniz saat",
+        "cv": "Özgeçmiş (PDF)",
+        "consent": "Onay",
+        "reporterName": "Adınız",
+        "reporterEmail": "E-posta adresiniz",
+        "reporterPhone": "Telefon numaranız",
+        "suspectName": "Şüpheli kişi veya kurum",
+        "suspectContact": "Şüphelinin iletişim bilgisi",
+        "description": "Ne oldu?",
+        "evidence": "Kanıt dosyaları",
+        "office": "Ofis",
+        "preferredDate": "Tercih ettiğiniz tarih",
+        "trade": "Meslek",
+        "candidatesPerYear": "Yılda kaç aday?",
+        "trades": "Meslek alanları",
+        "licence": "Lisans / ruhsat",
+        "durationMonths": "Süre (ay)",
+        "track": "Ortaklık türü",
+        "topic": "Konu başlığı",
+        "portfolioUrl": "Portföy bağlantısı",
+        "expectedSalary": "Beklenen maaş",
+        "expectedSalaryCurrency": "Para birimi",
+        "currentSalary": "Mevcut maaş",
+        "currentSalaryCurrency": "Para birimi",
+        "coverLetter": "Ön yazı",
+        "linkedinUrl": "LinkedIn profili",
+        "language": "Diller",
+        "openingSlug": "İlan",
+        "estimateSummary": "Tahmin özeti"
+      },
+      "options": {
+        "startWhen": {
+          "asap": "Hemen",
+          "month1": "1 ay içinde",
+          "months1to3": "1–3 ay içinde",
+          "planning": "Planlama aşamasında"
+        }
+      },
+      "placeholders": {
+        "name": "Adınız ve soyadınız",
+        "email": "ad@sirket.com",
+        "phone": "+90 5xx xxx xx xx",
+        "company": "Şirket adı",
+        "city": "Örn. Antalya",
+        "headcount": "Örn. 10",
+        "roleNeeded": "Örn. kaynakçı, garson, şoför",
+        "message": "Kısaca ihtiyacınızı yazın",
+        "subject": "Mesajınızın konusu",
+        "select": "Seçiniz",
+        "description": "Kim, ne zaman, ne istedi? Elinizdeki her ayrıntı yardımcı olur.",
+        "trade": "Örn. CNC operatörü",
+        "trades": "Örn. kaynak, inşaat, otel servisi",
+        "licence": "Örn. ruhsat numarası ve veren kurum",
+        "candidatesPerYear": "Örn. 200",
+        "durationMonths": "Örn. 12",
+        "portfolioUrl": "https://",
+        "linkedinUrl": "https://linkedin.com/in/",
+        "expectedSalary": "Örn. 45000",
+        "coverLetter": "Neden bu pozisyon? Kısaca anlatın.",
+        "language": "Örn. Türkçe (ana dil), İngilizce (B2)",
+        "suspectName": "Kişi veya firma adı",
+        "suspectContact": "Telefon, e-posta veya profil bağlantısı",
+        "reporterName": "Adınız ve soyadınız",
+        "reporterEmail": "ad@ornek.com",
+        "reporterPhone": "+90 5xx xxx xx xx",
+        "preferredDate": "Örn. 14 Ekim",
+        "preferredTime": "Örn. 10:00–12:00"
+      },
+      "hints": {
+        "phone": "Ülke koduyla birlikte yazın.",
+        "cv": "Yalnızca PDF, en fazla 3 MB.",
+        "evidence": "JPEG, PNG, WEBP veya PDF; dosya başına en fazla 3 MB, en çok üç dosya.",
+        "optional": "İsteğe bağlı",
+        "description": "En az 20 karakter.",
+        "portfolioUrl": "Bir web adresi, ör. behance.net/adiniz.",
+        "linkedinUrl": "İsteğe bağlı; https:// ile başlayan bir bağlantı.",
+        "expectedSalary": "Aylık brüt, yalnızca rakam."
+      },
+      "errors": {
+        "required": "Bu alan zorunludur.",
+        "email": "Geçerli bir e-posta adresi girin.",
+        "phone": "Geçerli bir telefon numarası girin (en az 8 rakam).",
+        "min": "Girdiğiniz değer çok kısa.",
+        "max": "Girdiğiniz değer çok uzun.",
+        "url": "Geçerli bir bağlantı girin (https:// ile başlamalı).",
+        "file": "Dosya kabul edilmedi; türünü ve boyutunu kontrol edin.",
+        "consent": "Devam etmek için aydınlatma metnini onaylamanız gerekir.",
+        "captcha": "Güvenlik doğrulaması tamamlanamadı. Lütfen tekrar deneyin.",
+        "invalid": "Bu değer geçerli değil.",
+        "form": "Lütfen formdaki alanları kontrol edin."
+      },
+      "consent": {
+        "label": "Kişisel verilerimin <link>aydınlatma metni</link> kapsamında işlenmesini kabul ediyorum.",
+        "notice": "Formu göndererek kişisel verilerinizin <link>aydınlatma metni</link> kapsamında işlenmesini kabul etmiş olursunuz."
+      },
+      "submit": {
+        "default": "Gönder",
+        "sending": "Gönderiliyor…"
+      },
+      "honeypot": "Bu alanı boş bırakın",
+      "fallback": {
+        "captcha": {
+          "title": "Güvenlik doğrulaması tamamlanamadı",
+          "body": "Formu bir kez daha gönderebilir ya da yazdıklarınızı doğrudan WhatsApp'tan iletebilirsiniz."
+        },
+        "off": {
+          "title": "Bu form şu anda kapalı",
+          "body": "Talebinizi WhatsApp, telefon veya e-posta ile iletebilirsiniz; JobsAdmire en kısa sürede dönüş yapar."
+        },
+        "tripped": {
+          "title": "Form geçici olarak duraklatıldı",
+          "body": "Yoğun talep nedeniyle form kısa süreliğine kapalı. Yazdıklarınızı tek dokunuşla WhatsApp'tan gönderebilirsiniz."
+        },
+        "unauthorized": {
+          "title": "Form şu anda gönderim kabul edemiyor",
+          "body": "Formu gönderirken bir sorun oluştu. Bu arada JobsAdmire'a WhatsApp'tan veya telefonla ulaşabilirsiniz."
+        },
+        "unavailable": {
+          "title": "Talebiniz iletilemedi",
+          "body": "Bağlantı sorunu nedeniyle formunuz JobsAdmire'a ulaşmadı. Lütfen tekrar deneyin ya da yazdıklarınızı WhatsApp'tan gönderin."
+        },
+        "failed": {
+          "title": "Talebiniz işlenemedi",
+          "body": "Formunuz gönderilemedi. Aşağıdaki kanallardan JobsAdmire'a ulaşabilirsiniz."
+        },
+        "invalid": {
+          "title": "Form gönderilemedi",
+          "body": "Bazı alanlar kabul edilmedi. Lütfen girdiğiniz bilgileri kontrol edip tekrar deneyin ya da WhatsApp'tan yazın."
+        },
+        "whatsapp": "WhatsApp'tan gönderin",
+        "call": "Arayın",
+        "email": "E-posta gönderin",
+        "whatsappIntro": "Merhaba JobsAdmire, web sitesindeki formu gönderemedim. Bilgilerim:"
+      },
+      "evidence": {
+        "uploading": "{name} yükleniyor…",
+        "attached": "{name} eklendi",
+        "remove": "{name} dosyasını kaldır",
+        "tooBig": "{name}, {maxMb} MB'tan büyük. Daha küçük bir dosya seçin.",
+        "badType": "{name} bir JPEG, PNG, WEBP veya PDF dosyası değil.",
+        "refused": "{name} kabul edilmedi. Türünü ve boyutunu kontrol edin.",
+        "failed": "{name} şu anda yüklenemedi. Bildirimi dosyasız gönderin ve dosyayı WhatsApp'tan iletin.",
+        "tooMany": "En fazla {max} dosya eklenebilir.",
+        "wait": "Bir dosya hâlâ yükleniyor. Yükleme bitince bildirimi gönderin."
+      }
+    },
+    "home": {
+      "form": {
+        "callbackSubmit": "Beni arayın →"
+      },
+      "whatsapp": {
+        "hire": "Merhaba JobsAdmire, işçi talebi oluşturmak istiyorum.",
+        "partner": "Merhaba JobsAdmire, yurt dışında bir işe alım acentesini / eğitim kurumunu temsil ediyorum ve tedarik ortağı olmak istiyorum.",
+        "estimate": "Merhaba JobsAdmire, bu hesabı benim için kontrol eder misiniz?\nPozisyon seviyesi: {role}\nİşçi sayısı: {headcount}\nAylık bordro: {monthly}\nİlk yıl tek seferlik maliyetler: {oneOff}"
+      },
+      "pool": {
+        "empty": {
+          "title": "Aday profilleri yakında burada",
+          "body": "Adaylar kendi ülkelerinde JobsAdmire temsilcileri tarafından görüşülür ve belgeleri doğrulanır. Sektörünüzü ve ihtiyacınızı yazın; uygun profiller doğrudan size iletilir.",
+          "cta": "Aday talep edin →"
+        }
+      },
+      "calc": {
+        "eyebrowUndated": "Gerçek maliyet",
+        "grossFloor": "Brüt maaş ({multiplier} yasal taban)",
+        "supportSeparate": "Dahil değil — tam hesaplamada ayrıca gösterilir",
+        "headcount": "{n, plural, other {# işçi}}",
+        "monthlyPayroll": "aylık bordro"
+      },
+      "season": {
+        "agricultureSub": "Antalya, Mersin, Konya",
+        "range": "Yoğun dönem {from}–{to}",
+        "also": " · ayrıca {from}–{to}",
+        "signBy": "{start} ayında başlamak için {signBy} ayına kadar imzalayın",
+        "noPeak": "Yoğun sezon yok — ancak izinler yine {permitDays} gün sürer",
+        "gridLabel": "Aylara göre sezonluk talep",
+        "selectHint": "Bir sezonun planını görmek için satırını seçin"
+      },
+      "network": {
+        "mapTitle": "Kaynak ülkelerden Türkiye'ye",
+        "turkiye": "Türkiye"
+      },
+      "portal": {
+        "platforms": "Android"
+      }
+    },
+    "portal": {
+      "intro": "İş ortağı hesapları JobsAdmire İş Ortağı Portalı'nda oturum açar; aşağıdaki bağlantı portalın giriş sayfasını açar.",
+      "signIn": "İş Ortağı Portalı'na giriş yapın"
+    },
+    "legal": {
+      "updatedLabel": "Son güncelleme",
+      "contents": "İçindekiler",
+      "privacy": {
+        "title": "Gizlilik Politikası",
+        "cookiePolicyLink": "Çerez Politikası'nı okuyun",
+        "intro": "Bu Gizlilik Politikası, JobsAdmire'ın jobsadmire.com ve alt alan adlarında (portal.jobsadmire.com adresindeki İş Ortağı Portalı dâhil) ve iletişim kanallarında (e-posta, WhatsApp, telefon) kişisel verileri nasıl işlediğini açıklar. JobsAdmire kişisel verileri 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) ve İŞKUR düzenlemelerine uygun olarak korur.",
+        "updatedAt": "2026-09-29",
+        "sections": {
+          "dataController": {
+            "title": "Veri sorumlusu",
+            "body": "Veri sorumlusu Jobs Admire Özel İstihdam Bürosu Sanayi ve Ticaret Limited Şirketi'dir (\"JobsAdmire\").\n\n- **Adres:** bu web sitesinin alt bilgisinde ve İletişim sayfasında belirtildiği gibi\n- **E-posta:** {email}\n- **Telefon:** {phoneDisplay}\n- **Vergi No:** {taxNo}\n\nJobsAdmire, İŞKUR tarafından izin verilmiş bir özel istihdam bürosu olarak faaliyet gösterir (19.09.2024 tarihli ve {permitNo} sayılı İzin Belgesi). {lawRef} sayılı Kanun uyarınca iş arayanlardan herhangi bir ücret alınması yasaktır. Şikâyetler: İstanbul İŞKUR İl Müdürlüğü Kadıköy Hizmet Merkezi (tel. 0216 418 34 55)."
+          },
+          "scope": {
+            "title": "Kapsam",
+            "body": "Bu Politika, aşağıdaki durumlarda JobsAdmire'ın kişisel verileri nasıl işlediğini açıklar:\n\n- bu web sitesini ziyaret ettiğinizde\n- profil oluşturduğunuzda veya CV yüklediğinizde\n- iş başvurusu yaptığınızda\n- hizmet talep ettiğinizde (işe alım, İK, göç ve yerleşim)\n- iş duyurularına veya bültene abone olduğunuzda\n- JobsAdmire ile iş ortaklığı kurduğunuzda\n- İş Ortağı Portalı'nı ve destek kanallarını kullandığınızda"
+          },
+          "dataCategories": {
+            "title": "Kişisel veri kategorileri",
+            "body": "- **Kimlik ve iletişim:** ad soyad, e-posta, telefon, adres, uyruk\n- **Aday verileri:** özgeçmiş (CV), eğitim, iş geçmişi, beceriler, referanslar, mülakat notları, profil fotoğrafı, yüklenen belgeler (nitelik belgeleri, lisanslar)\n- **Göç ve yerleşim verileri:** pasaport ve kimlik bilgileri, medeni durum, seyahat geçmişi, ikamet ve çalışma izni bilgileri (yalnızca gerektiğinde)\n- **İşveren ve iş ortağı verileri (B2B):** şirket adı, unvan, iş iletişim bilgileri, pozisyon gereklilikleri, sözleşmeler\n- **İşlem verileri:** ücretli hizmet ayrıntıları ve faturalar (kart verileri JobsAdmire sunucularında hiçbir zaman saklanmaz)\n- **Kullanım ve cihaz verileri:** günlük kayıtları, IP adresi, tarayıcı bilgileri, görüntülenen sayfalar, çerezler\n- **Yazışmalar:** e-postalar, aramalar, WhatsApp ve sohbet mesajları, destek talepleri\n\n**Özel nitelikli kişisel veriler:** JobsAdmire sağlık veya biyometrik verileri kasıtlı olarak toplamaz. Bir pozisyon ya da hukuki süreç bu tür verileri gerektirirse JobsAdmire bunları yalnızca hukuka uygun ve gerekli olduğu ölçüde, KVKK'nın öngördüğü hâllerde açık rızanızla işler."
+          },
+          "purposes": {
+            "title": "Amaçlar ve hukuki sebepler (KVKK md. 5–6)",
+            "body": "JobsAdmire kişisel verileri aşağıdaki amaçlarla ve hukuki sebeplere dayanarak işler:\n\n- **Temel hizmetler (adaylar ve işverenler):** hesap oluşturma; adayların eşleştirilmesi ve yerleştirilmesi; başvuru, mülakat, teklif, sözleşme ve işe başlama süreçlerinin yönetimi — sözleşmenin ifası, meşru menfaat, hukuki yükümlülük\n- **Göç ve yerleşim desteği:** ikamet ve çalışma izinleri, vize davetiyeleri, belgeler — sözleşmenin ifası, hukuki yükümlülük, açık rıza (belirli belgeler için)\n- **İş ortağı ve işe alım uzmanı yönetimi (B2B):** kabul süreci, uyum, faturalama — sözleşme, hukuki yükümlülük, meşru menfaat\n- **İletişim ve bildirimler:** iş duyuruları, görüşme planlama, hizmet güncellemeleri — açık rıza (pazarlama), sözleşme veya meşru menfaat (hizmet mesajları)\n- **Güvenlik ve uyum:** denetim kayıtları, erişim kontrolleri, yetkili makamlara yanıt, İŞKUR gereklilikleri — hukuki yükümlülük, meşru menfaat\n- **Ölçüm ve site performansı:** toplu kullanım verileri, web sitesinin iyileştirilmesi — meşru menfaat, rıza (zorunlu olmayan çerezler için)"
+          },
+          "cookies": {
+            "title": "Çerezler ve çevrimiçi tanımlayıcılar",
+            "body": "JobsAdmire zorunlu çerezleri ve yalnızca izninizle ölçüm ve reklam çerezlerini kullanır. Site izninizi istediğinde, verdiğiniz izni istediğiniz zaman site alt bilgisindeki Çerez tercihleri düğmesiyle değiştirebilir veya geri çekebilirsiniz.\n\nÇerez Politikası; kategorileri, amaçları, sağlayıcıları ve saklama sürelerini listeler ve iznin nasıl geri çekileceğini Kişisel Verileri Koruma Kurulu'nun çerez rehberine uygun olarak açıklar."
+          },
+          "disclosures": {
+            "title": "Üçüncü kişilere aktarım",
+            "body": "JobsAdmire kişisel verileri aşağıdaki taraflara aktarabilir:\n\n- işe alım yapmak isteyen işverenler ve müşteriler (yalnızca ilgili aday verileri)\n- yerleştirmeye yardımcı olan yetkili iş ortakları ve işe alım uzmanları\n- hizmet sağlayıcılar ve veri işleyenler (barındırma, İş Ortağı Portalı ve başvuru takip araçları, iletişim, ödeme işlemleri, geçmiş kontrolleri)\n- mevzuatın gerektirdiği hâllerde kamu kurumları ve mahkemeler (İŞKUR, göç idaresi)\n\nTüm veri işleyenler KVKK gerekliliklerini karşılayan sözleşmeler kapsamında hareket eder."
+          },
+          "transfers": {
+            "title": "Yurt dışına aktarım (KVKK md. 9)",
+            "body": "Veriler Türkiye dışına aktarıldığında (örneğin bulut barındırma, uluslararası işverenler, küresel araçlar) JobsAdmire 2024 değişiklikleriyle izin verilen mekanizmalara dayanır:\n\n- yeterlilik kararı (varış ülkesi Kurul tarafından tanınmışsa)\n- Kuruma onaylatılan veya bildirilen standart sözleşmeler ya da yazılı taahhütler\n- bağlayıcı şirket kuralları\n- açık rıza (başka bir mekanizma uygulanamıyorsa, son çare olarak)\n\nJobsAdmire aktarım değerlendirmelerinin kaydını tutar."
+          },
+          "retention": {
+            "title": "Saklama süresi",
+            "body": "JobsAdmire kişisel verileri yalnızca yukarıdaki amaçların ve yasal zamanaşımı sürelerinin (örneğin iş, ticaret ve İŞKUR mevzuatı) gerektirdiği süre boyunca saklar. Artık gerekli olmayan veriler KVKK'ya uygun olarak silinir veya anonim hâle getirilir."
+          },
+          "rights": {
+            "title": "Haklarınız (KVKK md. 11)",
+            "body": "JobsAdmire'a başvurarak:\n\n- kişisel verilerinizin işlenip işlenmediğini öğrenebilir\n- işlenmişse buna ilişkin bilgi talep edebilir\n- işlenme amacını ve alıcıları öğrenebilir\n- düzeltilmesini isteyebilir\n- hukuki sebepleri ortadan kalktığında silinmesini veya anonim hâle getirilmesini isteyebilir\n- münhasıran otomatik sistemlerle işlenmesi sonucu aleyhinize bir sonucun ortaya çıkmasına itiraz edebilir\n- meşru menfaate dayalı işlemeye itiraz edebilir\n- hukuka aykırı işleme nedeniyle zararınızın giderilmesini talep edebilirsiniz.\n\n**Nasıl başvurulur:** Talebin doğrulanmasına yetecek kimlik bilgileriyle birlikte {email} adresine e-posta gönderin. JobsAdmire, KVKK'nın öngördüğü şekilde 30 gün içinde yanıt verir. Sonuçtan memnun kalmazsanız, önce veri sorumlusuna başvurduktan sonra Kişisel Verileri Koruma Kurulu'na şikâyette bulunabilirsiniz."
+          },
+          "security": {
+            "title": "Güvenlik önlemleri",
+            "body": "JobsAdmire idari, teknik ve fiziksel güvenlik tedbirleri uygular:\n\n- erişim kontrolü ve en az yetki ilkesi\n- aktarım sırasında ve depolamada şifreleme\n- ağ ve uygulama güvenliği\n- tedarikçi denetimi\n- personelin gizlilik yükümlülüğü\n- yedekleme ve iş sürekliliği\n- veri envanterinin düzenli olarak gözden geçirilmesi"
+          },
+          "verbis": {
+            "title": "VERBİS",
+            "body": "JobsAdmire, yasal eşikleri karşıladığı ölçüde VERBİS'e (Veri Sorumluları Sicil Bilgi Sistemi) kaydolur ve kayıtlarını güncel tutar. Kamuya açık VERBİS kayıtları Kurumun portalından sorgulanabilir."
+          },
+          "children": {
+            "title": "Çocuklara ait veriler",
+            "body": "JobsAdmire'ın hizmetleri yetişkinlere ve işverenlere yöneliktir. JobsAdmire çocuklardan bilerek veri toplamaz; uygun hukuki sebep ve rıza olmaksızın böyle bir işleme yapıldığını öğrenirse bu verileri siler."
+          },
+          "thirdParty": {
+            "title": "Üçüncü taraf bağlantıları ve sosyal kanallar",
+            "body": "Bu web sitesi harici hizmetlere (örneğin WhatsApp veya harita sağlayıcıları) bağlantı verebilir. Bu hizmetlerin gizlilik uygulamaları kendi politikalarına tabidir."
+          },
+          "changes": {
+            "title": "Değişiklikler",
+            "body": "JobsAdmire bu Politikayı hizmetlerindeki veya mevzuattaki değişiklikleri (gelecekteki Kurul kararları ve rehberleri dâhil) yansıtmak için güncelleyebilir. Yeni sürüm, güncellenmiş tarihiyle birlikte bu sayfada yayımlanır."
+          },
+          "contact": {
+            "title": "İletişim",
+            "body": "KVKK ile ilgili her türlü soru veya talep için:\n\n- **Veri koruma iletişim adresi:** {email}\n- **Telefon:** {phoneDisplay}\n- **Kayıtlı adres:** bu web sitesinin alt bilgisi ve İletişim sayfası"
+          }
+        }
+      },
+      "terms": {
+        "title": "Kullanım Koşulları",
+        "intro": "These Terms and Conditions (\"Terms\") govern access to and use of jobsadmire.com, its subdomains (including the Partner Portal at portal.jobsadmire.com), its mobile interfaces and all related services operated by Jobs Admire Özel İstihdam Bürosu Sanayi ve Ticaret Limited Şirketi (\"JobsAdmire\"). By using the website or the services, you (a \"User\", \"Candidate\", \"Employer\" or \"Partner\") agree to these Terms. If you do not agree, please stop using them.",
+        "updatedAt": "2026-09-29",
+        "englishOnlyNotice": "Kullanım Koşulları'nın Türkçe metni hukuk danışmanlarıyla birlikte hazırlanmaktadır. Yayımlanana kadar aşağıdaki İngilizce metin geçerlidir.",
+        "finalNote": "By accessing, browsing or using any service, communication channel or material JobsAdmire provides — including job search, recruitment, immigration services, career counselling and CV tools, whether through the website, the Partner Portal, e-mail, phone, WhatsApp or any other means — you acknowledge that you have read and understood these Terms and agree to be bound by them.",
+        "sections": {
+          "legalStatus": {
+            "title": "Data controller and legal status",
+            "body": "JobsAdmire operates as a private employment agency under İŞKUR Permit No. {permitNo} dated 19.09.2024, in accordance with Law No. {lawRef}. Under this law, no fee may be charged to job seekers for core recruitment services. Contact details and the complaints procedure are set out in the Privacy Policy."
+          },
+          "services": {
+            "title": "Services",
+            "body": "JobsAdmire provides job search, candidate placement and recruitment support for employers; immigration, work-permit and residence-permit facilitation where requested; career counselling, interview preparation and related advisory services; and online portal tools for candidates and employers. Some services are free (for example job applications); others (for example employer recruitment packages) may be fee-based."
+          },
+          "eligibility": {
+            "title": "Eligibility",
+            "body": "Candidates must be at least 18 years old or of legal working age in their jurisdiction. Employers and Partners must have the legal capacity to enter into binding contracts. By using the website you confirm that all the information you provide is accurate."
+          },
+          "accounts": {
+            "title": "User accounts",
+            "body": "You may be given an account to manage applications, candidates or job postings. You are responsible for keeping your login details secure. Any activity under your account is deemed to have been performed by you."
+          },
+          "candidateDuties": {
+            "title": "Candidate responsibilities",
+            "body": "Candidates provide true, current and complete information (CV, contact details, documents), do not submit false, misleading or defamatory material, and accept that hiring decisions rest solely with employers."
+          },
+          "employerDuties": {
+            "title": "Employer and partner responsibilities",
+            "body": "Employers and Partners use candidate data only for legitimate hiring purposes and in compliance with KVKK and all labour regulations, never charge candidates a recruitment fee, and sign a written service agreement with JobsAdmire where paid recruitment services are required."
+          },
+          "fees": {
+            "title": "Fees and payments",
+            "body": "Job seekers: no recruitment fee is ever charged for standard job placement. Employers and Partners: service packages are governed by separate commercial agreements or purchase orders that set out the scope, pricing and payment terms."
+          },
+          "ip": {
+            "title": "Intellectual property",
+            "body": "All content on the website (text, graphics, logos, trademarks, software) is owned by JobsAdmire or its licensors and protected by copyright and industrial property law. You may view or print content for personal use only; any reproduction or redistribution requires the prior written consent of JobsAdmire."
+          },
+          "acceptableUse": {
+            "title": "Acceptable use",
+            "body": "You agree not to break any applicable Turkish or international law; post or transmit harmful code, spam or abusive content; harvest, scrape or misuse other people's personal data; or interfere with or disrupt the security or functionality of the website. JobsAdmire may suspend or end access for a violation without prior notice."
+          },
+          "dataProtection": {
+            "title": "Data protection",
+            "body": "The Privacy Policy explains how personal data is processed. By using the services you acknowledge that your data may be processed and, where necessary, transferred in line with KVKK and the cross-border transfer rules."
+          },
+          "thirdParty": {
+            "title": "Third-party links and services",
+            "body": "The website may link to third-party websites or use third-party services (for example WhatsApp or map providers). JobsAdmire is not responsible for their content, policies or practices."
+          },
+          "availability": {
+            "title": "Service availability",
+            "body": "JobsAdmire aims for continuous service but does not guarantee uninterrupted or error-free operation, and may change or discontinue any service temporarily or permanently without liability."
+          },
+          "liability": {
+            "title": "Limitation of liability",
+            "body": "To the fullest extent permitted by law, JobsAdmire is not liable for employment outcomes, visa or permit decisions, or damage arising from the decisions of employers, nor for indirect, incidental or consequential damage arising from the use of the website. The total liability of JobsAdmire for any claim does not exceed the amount (if any) the user paid for the specific service that gave rise to the claim. Nothing in these Terms limits liability where Turkish law prohibits such a limitation (for example wilful misconduct or gross negligence)."
+          },
+          "indemnification": {
+            "title": "Indemnification",
+            "body": "You agree to indemnify JobsAdmire and hold it harmless against claims, damages or expenses arising from your breach of these Terms or from unlawful use of the services."
+          },
+          "law": {
+            "title": "Governing law and jurisdiction",
+            "body": "These Terms are governed by Turkish law. Disputes are resolved by the İstanbul (Anadolu) Courts and Enforcement Offices, unless consumer protection law requires a different forum."
+          },
+          "amendments": {
+            "title": "Amendments",
+            "body": "JobsAdmire may update these Terms to reflect legal or service changes. Updates are published with a revised last-updated date, and continued use after an update constitutes acceptance."
+          }
+        }
+      },
+      "kvkk": {
+        "title": "KVKK Aydınlatma Metni",
+        "intro": "Bu sayfa, 6698 sayılı Kişisel Verilerin Korunması Kanunu (KVKK) kapsamında veri sorumlusu sıfatıyla JobsAdmire'ın kişisel verileri nasıl işlediğini açıklayan aydınlatma metnini içerir.",
+        "updatedAt": "2026-09-29",
+        "pendingTitle": "Aydınlatma metni hazırlanıyor",
+        "pendingBody": "KVKK aydınlatma metni JobsAdmire'ın hukuk danışmanları tarafından hazırlanmaktadır. Yayımlanana kadar JobsAdmire'ın kişisel verileri nasıl işlediği Gizlilik Politikası'nda açıklanmıştır ve bu politika tüm hükümleriyle geçerlidir.",
+        "privacyLink": "Gizlilik Politikası'nı okuyun"
+      },
+      "cookiePolicy": {
+        "title": "Çerez Politikası",
+        "intro": "Bu sayfa, jobsadmire.com'un hangi çerezleri kullandığını ve tercihlerinizi nasıl yönetebileceğinizi açıklar.",
+        "updatedAt": "2026-09-29",
+        "pendingTitle": "Ayrıntılı çerez politikası hazırlanıyor",
+        "pendingBody": "Ayrıntılı çerez politikası JobsAdmire'ın hukuk danışmanları tarafından hazırlanmaktadır. Yayımlanana kadar bu özet ve Gizlilik Politikası geçerlidir.",
+        "sections": {
+          "essential": {
+            "title": "Zorunlu çerezler",
+            "body": "- **ja_locale** — dil tercihinizi en fazla bir yıl boyunca hatırlar\n- **ja_consent_v1** — çerez tercihinizi 180 gün boyunca hatırlar (tarayıcınızın yerel depolamasında da tutulur)\n- **ja-lang-hint** (yerel depolama) — dil önerisini kapattığınızı hatırlar\n\nBu kayıtlar sitenin sizin ayarladığınız biçimde çalışması için gereklidir ve izin gerektirmez."
+          },
+          "consent": {
+            "title": "İzninize bağlı çerezler",
+            "body": "Ölçüm ve reklam çerezleri (Google Tag Manager, Google Analytics 4, Google Ads) yalnızca çerez bildiriminde Kabul et seçeneğini seçmenizden sonra kullanılır. Siz seçim yapana kadar tüm ölçüm sinyalleri reddedilmiş olarak kalır (Google Consent Mode v2)."
+          },
+          "manage": {
+            "title": "Tercihlerinizi yönetme",
+            "body": "Site izninizi istediğinde, seçiminizi istediğiniz zaman alt bilgideki Çerez tercihleri düğmesiyle değiştirebilirsiniz. Çerezleri tarayıcı ayarlarınızdan da silebilirsiniz."
+          }
+        }
+      }
+    },
+    "newsletter": {
+      "backHome": "Ana sayfaya dön",
+      "noToken": {
+        "title": "Bağlantı eksik",
+        "body": "Bu sayfa yalnızca e-postadaki bağlantıyla çalışır ve bağlantının kodu eksik görünüyor. E-postadaki bağlantıyı yeniden açın ya da aşağıdan JobsAdmire'a ulaşın."
+      },
+      "unavailable": {
+        "title": "İsteğiniz şu anda tamamlanamadı",
+        "body": "Abonelik hizmeti yanıt vermedi. Lütfen birkaç dakika sonra yeniden deneyin ya da aşağıdan JobsAdmire'a ulaşın; ekip talebinizi elle işler."
+      },
+      "fallback": {
+        "lead": "JobsAdmire'a ulaşın",
+        "email": "JobsAdmire'a e-posta gönderin",
+        "whatsapp": "WhatsApp'tan yazın",
+        "subject": "Bülten aboneliği"
+      },
+      "confirm": {
+        "title": "Bülten aboneliğinizi onaylayın",
+        "body": "JobsAdmire bülten aboneliğinizi onaylamak için aşağıdaki düğmeye basın. Onay verilene kadar JobsAdmire bu adrese hiçbir e-posta göndermez.",
+        "button": "Aboneliği onayla",
+        "pending": "Onaylanıyor…",
+        "invalid": {
+          "title": "Bu onay bağlantısı geçerli değil",
+          "body": "Bağlantı tanınmadı. Yeni bir onay e-postası almak için lütfen bültene yeniden abone olun."
+        },
+        "expired": {
+          "title": "Bu onay bağlantısının süresi dolmuş",
+          "body": "Onay bağlantıları sınırlı bir süre için geçerlidir. Yeni bir bağlantı almak için lütfen bültene yeniden abone olun."
+        },
+        "outcome": {
+          "CONFIRMED": {
+            "title": "Aboneliğiniz onaylandı",
+            "body": "Teşekkürler. JobsAdmire'ın işe alım güncellemeleri artık e-posta kutunuza gelecek; her e-postada abonelikten çıkma bağlantısı bulunur."
+          },
+          "ALREADY_CONFIRMED": {
+            "title": "Bu abonelik zaten onaylanmış",
+            "body": "Bu adres daha önce onaylandı; yapmanız gereken başka bir şey yok."
+          }
+        }
+      },
+      "unsubscribe": {
+        "title": "Bülten aboneliğinden çıkın",
+        "body": "Aşağıdaki düğmeye bastığınızda JobsAdmire bu adrese bülten göndermeyi durdurur.",
+        "button": "Abonelikten çık",
+        "pending": "İşleniyor…",
+        "invalid": {
+          "title": "Bu abonelikten çıkma bağlantısı geçerli değil",
+          "body": "Bağlantı tanınmadı. JobsAdmire'a e-posta gönderin; ekip adresinizi listeden elle çıkarır."
+        },
+        "outcome": {
+          "UNSUBSCRIBED": {
+            "title": "Abonelikten çıktınız",
+            "body": "JobsAdmire bu adrese artık bülten göndermez. Dilediğiniz zaman yeniden abone olabilirsiniz."
+          },
+          "ALREADY_UNSUBSCRIBED": {
+            "title": "Zaten abonelikten çıkmıştınız",
+            "body": "Bu adres listeden daha önce çıkarıldı; yapmanız gereken başka bir şey yok."
+          },
+          "UNKNOWN": {
+            "title": "Bu bağlantıya ait abonelik bulunamadı",
+            "body": "Bülten listesinde bu bağlantıya ait bir abonelik yok; bu nedenle hiçbir e-posta gönderilmeyecek. E-postalar gelmeye devam ederse JobsAdmire'a yazın, ekip adresi listeden elle çıkarır."
+          }
+        }
       }
     }
   }

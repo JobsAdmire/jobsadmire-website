@@ -11,19 +11,25 @@ mode and is counted as neither pass nor failure. Nothing reports `ok` for a chec
 ran: a health endpoint that flatters itself is worse than none (D25). `ok` at the top level
 is "no check reported `fail`", and the response is **200** when true, **503** when not.
 
+The external monitor alerts on **2 consecutive failures at a 5-minute interval**: that
+threshold absorbs the ~60 s Ops deploy window, during which `opsPing` briefly fails and the
+endpoint answers `503` (W75).
+
 Shipped in WP1 (`src/app/api/site-health/checks.ts`):
 
-| Check            | Reason code        | Behaviour                                                                                                 |
-| ---------------- | ------------------ | --------------------------------------------------------------------------------------------------------- |
-| `bundleTr`       | `BUNDLE_TR`        | `getBundle('tr')` resolves                                                                                |
-| `bundleEn`       | `BUNDLE_EN`        | `getBundle('en')` resolves                                                                                |
-| `lastRevalidate` | `REVALIDATE_STALE` | `skip` in LOCAL (the bundle ships with the deploy); in OPS, `fail` when never recorded or older than 24 h |
-| `opsPing`        | `OPS_PING`         | `skip` until WP3a adds the real Operations ping                                                           |
+| Check            | Reason code        | Behaviour                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| ---------------- | ------------------ | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `bundleTr`       | `BUNDLE_TR`        | `getBundle('tr')` resolves                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `bundleEn`       | `BUNDLE_EN`        | `getBundle('en')` resolves                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |
+| `lastRevalidate` | `REVALIDATE_STALE` | `skip` in LOCAL (the bundle ships with the deploy); in OPS, `fail` when never recorded or older than 24 h                                                                                                                                                                                                                                                                                                                                                                                                                                 |
+| `opsPing`        | `OPS_PING`         | `GET /api/website/v1/ping` with the write token, 3 s timeout (`src/app/api/site-health/ops.ts`); `ok` on a 200 that is the ping JSON; `fail` on 404 (`off` — the door is live in production since 2026-09-24, so a dark door is an outage, W75), 401 (`unauthorized`) or 5xx/network/timeout/non-JSON 200 (`unreachable`, a non-200 body read and discarded); `skip` only when no `OPS_API_URL`/write token is configured (`unconfigured`). The raw state, latency and the door's `captcha`/`trippedForms` facts are on the body as `ops` |
 
 The response also carries `source` (`LOCAL`/`OPS`), `contractVersion`, `commit`
 (`VERCEL_GIT_COMMIT_SHA`) and `at`. **Bundle age is deliberately not derived from the
 bundle's own `generatedAt`** — in Phase A that is a fixed sentinel, so an age computed from
 it would be fiction.
+
+**`formBeacons`** (body field, not a check): the number of visitor fallback panels this instance has shown, from `POST /api/form-beacon` (D11 — each panel sends `{formKey, kind, page}` once). Best-effort per instance like `lastRevalidate`; each beacon is also a `[form-beacon]` line in the Vercel function log. A rising count with `ops.state: 'ok'` points at the client path (captcha, validation), a rising count with anything else at the door.
 
 **`lastRevalidate` is not yet trustworthy under `OPS` — WP5 blocker.** The timestamp it reads (`src/app/api/revalidate/state.ts`) is a module-level in-memory variable: best-effort on Vercel's serverless runtime, where a cold instance starts with it unset and a redeploy forgets it entirely. Once `CONTENT_SOURCE=OPS` is live, this check can `fail` on a perfectly healthy instance that simply hasn't personally handled a revalidate call yet — a false `503` from this endpoint, not a real staleness signal. WP5 replaces the module-level variable with a real store before that flip. A related caveat for the same work: even with a real store, `bundleTr`/`bundleEn` read through the same `next: { revalidate: 900 }` Next.js Data Cache the pages themselves use, so a passing bundle check up to 900 s after a failed Operations publish can still be looking at the last-good cached bundle rather than the current one. Full detail: `docs/ARCHITECTURE.md` § Operations surface.
 
@@ -39,7 +45,13 @@ Still to land, with the work package that brings them:
 
 ## Synthetic lead
 
-**Not yet built** — no cron config exists in `vercel.json` and no form handlers exist yet to exercise (`docs/ARCHITECTURE.md` § Forms flow). The design, for when WP3a/WP5 land it: a Vercel Cron job submits a real form, through the real form path, **every 30 minutes**, using the `isTest` token class (so it never shows up as a real lead in Operations' inbox or in `generate_lead` conversion counts). It pings an external heartbeat service on success. **A missed ping is the page** — the alarm is the monitor noticing silence, not the site self-reporting a failure it may be unable to self-report during an actual outage.
+**Built (T15, W172):** `GET /api/cron/synthetic-lead` (`src/app/api/cron/synthetic-lead/`) submits ONE test-class `hire` form through the real server-side form path: `postForm` (`src/forms/post.ts`) with the body `npm run door:smoke` uses (`smokeFields('hire', stamp)`, `scripts/door-smoke.lib.ts`). The stamp rides in `name`/`message`, so two runs never dedupe onto one row. It uses the `isTest` token class, so it never shows up as a real lead in Operations' inbox or in `generate_lead` conversion counts. Answers: **401** unless the request carries `Authorization: Bearer $CRON_SECRET` (Vercel Cron sends exactly that; an unset or short secret keeps the route shut); **503**, without a call, when `OPS_API_URL` or a `wst_…` `OPS_WEBSITE_TEST_TOKEN` is missing (it never falls back to the write token); **502** with the `postForm` kind when the door does not accept the lead; **500** when the door answers `isTest: false`; **200** `{ data: { status, isTest: true } }` on success. The whole call is bounded by `postForm`'s one 9 s deadline, shared by the attempt and its single connection-level retry (W74), so it stays under the Hobby plan's 10 s function cap (W201).
+
+**Schedule:** `vercel.json` `crons`, `0 6 * * *` (daily, 06:00 UTC) while the project is on Hobby, whose crons run at most once a day (a sub-daily expression fails the deployment there — W201; `run.test.ts` pins the daily expression). Change it to `*/30 * * * *` (the design's every 30 minutes), and that test with it, once Pro is on. Vercel runs crons only for the production deployment, so the schedule starts at the Phase A cutover; before it, the route is proven once by hand on `staging` (T15, controller step).
+
+**Heartbeat (not wired yet).** The design pings an external heartbeat service on success, and **a missed ping is the page**: the alarm is the monitor noticing silence, not the site self-reporting a failure it may be unable to report during an actual outage. No heartbeat URL exists yet (the external monitor is an owner set-up item; `docs/INTEGRATIONS.md` I19). Today the route only logs `[synthetic-lead] ok` with the door's status to the Vercel function log, and a failed run shows as a non-200 invocation in the project's Cron Jobs log. Adding the ping is a follow-up once the monitor issues a heartbeat URL.
+
+**Manual probe:** `npm run door:smoke` (`scripts/door-smoke.ts`, T14) posts one test-class body per form key to the real door (ping, ten keys, the deliberate replay, the deliberate 400, the unknown key) and prints the Markdown table the ledger keeps. It runs only on a test-class (`wst_…`) token and refuses anything else, a write token (`wsw_…`) included. Test-class rows appear in the Ops inbox under the _test_ filter (`isTest: true`), run their handler as a dry run and skip Turnstile when they carry no token (Ops X16). A green smoke or a green synthetic lead therefore proves the door up to the handler and nothing about the visitor's captcha path; `e2e/door-test-mode.spec.ts` and the owner-gated real run (T14) prove that.
 
 ## Daily digest
 
@@ -47,15 +59,26 @@ Still to land, with the work package that brings them:
 
 ## External monitor and second human
 
-The external monitor pages the **owner's phone**. A **second human** (pending §10 item 10 — name + phone/email required before Gate A, no default) is a fallback recipient for every website event class in `docs/INTEGRATIONS.md` I13 — a single point of failure on alerting is explicitly called out in the plan's risk register ("Owner is the single point of everything").
+The external monitor pages the **owner's phone**. A **second human** (configured on the Operations Integrations screen — §10 item 10 closed; the recipient's contact details live only in the Operations notification seed, never in this repo or its docs) is a fallback recipient for every website event class in `docs/INTEGRATIONS.md` I13 — a single point of failure on alerting is explicitly called out in the plan's risk register ("Owner is the single point of everything").
+
+## Site-health drill (Gate A checklist item 7)
+
+Run once before Gate A, by the owner, with the external monitor armed: (1) point the monitor at
+a URL that fails — a preview with a misconfigured adapter, or the Operations door flipped off —
+and confirm the phone rings within the monitor's interval; (2) on Operations, flip a form off in
+the Integrations screen and confirm the second human also receives the
+`WEBSITE_FORMS_UNAVAILABLE` notification (T14 exercises the same delivery path in its own proof);
+(3) restore both and confirm the all-clear. Record the date, the interval and who was paged in
+the WP2b ledger. This section names the checks the drill rehearses; `/api/site-health`'s own
+contract (what each field means) is documented above, in § Site-health checks.
 
 ## Weekly five-minute owner check
 
-A short, recurring check the owner performs (not delegated) — the plan does not further specify the exact checklist beyond its existence; treat this as: today's digest arrived, `/api/site-health` is green, and the APPROVE queue (Phase B) isn't backing up.
+A short, recurring check the owner performs (not delegated) — the plan does not further specify the exact checklist beyond its existence; treat this as: today's digest arrived, `/api/site-health` is green, and the APPROVE queue (Phase B) isn't backing up. At Gate A, add a sixth check: `npm run sweep:legacy` against production is clean (a `FAIL` row is a redirect regression) — a one-minute run, worth doing after any change that touches `redirects/` or `next.config.ts`'s redirect list.
 
 ## Work-package sign-off
 
-`npm run gate` against the **Vercel preview URL** for that work package is the binding run — D27, and `CLAUDE.md`'s task-completion checklist. A local `next start` run is for fast feedback only: `gate.sh` switches to `lighthouserc.local.json` there, which downgrades LCP to a warning because Lantern cannot measure it honestly over a localhost waterfall (R50). Every other budget — performance, accessibility, best-practices, SEO, the 180 KB script budget, CLS — is an error in both configs. Sign-off means a green preview run, not a green local one.
+`npm run gate` against the **Vercel preview URL** for that work package is the binding run — D27, and `CLAUDE.md`'s task-completion checklist. A local `next start` run is for fast feedback only. **LCP method (W145):** every Lighthouse config measures LCP and performance under DevTools throttling, three runs per path, asserting the median run — so LCP ≤ 2.5 s, performance ≥ 0.95, accessibility, best-practices, SEO, the 200 KB script ceiling (W13 amended) and CLS are errors locally and on the preview alike. R50's localhost LCP waiver is retired: it excused Lighthouse's simulated throttling (Lantern), which charged the whole initial waterfall to a text LCP element and read ~3 s on a page that paints in ~1.5 s. Sign-off means a green preview run, not a green local one; `npm run js-size` prints the per-route LCP and performance the ledger records, with a method line that must read `devtools throttling, median of 3`.
 
 ## Checkpoint cadence
 

@@ -6,36 +6,37 @@ Decisions below are cited as **D\<n\>**, rationale in `docs/superpowers/specs/20
 
 ## Where to look
 
-| Task / question | Doc & section |
-|---|---|
-| Pages, routes, slugs, forms per page, i18n rules | `docs/PRD.md` §2–3 |
-| SEO/GEO/AEO requirements | `docs/PRD.md` §4; `docs/SEO.md` |
-| Accessibility requirements | `docs/PRD.md` §5 |
-| Performance budget | `docs/PRD.md` §6; `docs/ARCHITECTURE.md` § Quality gate (D27) |
-| Analytics / consent requirements | `docs/PRD.md` §7; `docs/ANALYTICS.md` |
-| Legal pages | `docs/PRD.md` §8 |
-| Out of scope, owner-decided items, what WP1 shipped | `docs/PRD.md` §9–11 |
-| Stack, dependencies, repo layout, entry points | `docs/ARCHITECTURE.md` § Stack / § Repository layout / § Entry points and key modules |
-| Environment variables (full reference) | `docs/ARCHITECTURE.md` § Environment variables; `docs/DEPLOYMENT.md` § Environment variables |
-| Run locally; exact test/quality-gate commands | `docs/ARCHITECTURE.md` § Run locally / § Test / quality gates |
-| Routing, redirects, `src/proxy.ts` middleware | `docs/ARCHITECTURE.md` § Routing |
-| Content adapter (`LOCAL` vs `OPS`, fixture rule) | `docs/ARCHITECTURE.md` § Content adapter (D7, D23) |
-| ISR tags and freshness time floors | `docs/ARCHITECTURE.md` § Freshness (D8) |
-| Forms flow | `docs/ARCHITECTURE.md` § Forms flow (D11) |
-| Desktop-scale token port checklist (0.75 normalisation) | `docs/ARCHITECTURE.md` § D19 |
-| Quality gate composition and budgets | `docs/ARCHITECTURE.md` § Quality gate (D27) |
-| Design system, calculator engine, Operations surface | `docs/ARCHITECTURE.md` §§ Design system / Calculator engine / Operations surface |
-| Environments (local / preview / production) | `docs/ARCHITECTURE.md` § Environments; `docs/DEPLOYMENT.md` §§ Two Vercel projects / Phase A cutover |
-| Integration catalogue (I1–I20), token threat model | `docs/INTEGRATIONS.md` §§ Catalogue … Token threat model |
-| String catalogue, `sys.*`, bundle shape, blog model | `docs/CONTENT-MODEL.md` |
-| Redirect rules (D21), disposition table | `docs/redirects.md` |
-| Retention, DSAR/erasure, KVKK runbook, consent | `docs/PRIVACY.md` |
-| Site-health, synthetic lead, kill switches, owner checks | `docs/OPERATING.md` |
-| Retired secrets log; deploy discipline | `docs/DEPLOYMENT.md` §§ Retired secrets log / Deploy discipline |
-| Unbuilt / pending features | `docs/pending/README.md` |
-| Decision rationale (D\<n\>) and WP1 rulings (R\<n\>) | `docs/superpowers/specs/2026-09-18-website-programme-design.md`; `docs/superpowers/plans/2026-09-18-wp1-foundation-rulings.md` |
+| Task / question                                                  | Doc & section                                                                                                                                       |
+| ---------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Pages, routes, slugs, forms per page, i18n rules                 | `docs/PRD.md` §2–3                                                                                                                                  |
+| SEO/GEO/AEO requirements                                         | `docs/PRD.md` §4; `docs/SEO.md`                                                                                                                     |
+| Accessibility requirements                                       | `docs/PRD.md` §5                                                                                                                                    |
+| Performance budget                                               | `docs/PRD.md` §6; `docs/ARCHITECTURE.md` § Quality gate (D27)                                                                                       |
+| Analytics / consent requirements                                 | `docs/PRD.md` §7; `docs/ANALYTICS.md`                                                                                                               |
+| Legal pages                                                      | `docs/PRD.md` §8                                                                                                                                    |
+| Out of scope, owner-decided items, what WP1 shipped              | `docs/PRD.md` §9–11                                                                                                                                 |
+| Stack, dependencies, repo layout, entry points                   | `docs/ARCHITECTURE.md` § Stack / § Repository layout / § Entry points and key modules                                                               |
+| Environment variables (full reference)                           | `docs/ARCHITECTURE.md` § Environment variables; `docs/DEPLOYMENT.md` § Environment variables                                                        |
+| Run locally; exact test/quality-gate commands                    | `docs/ARCHITECTURE.md` § Run locally / § Test / quality gates                                                                                       |
+| Routing, redirects, `src/proxy.ts` middleware                    | `docs/ARCHITECTURE.md` § Routing                                                                                                                    |
+| Content adapter (`LOCAL` vs `OPS`, fixture rule)                 | `docs/ARCHITECTURE.md` § Content adapter (D7, D23)                                                                                                  |
+| ISR tags and freshness time floors                               | `docs/ARCHITECTURE.md` § Freshness (D8)                                                                                                             |
+| Forms flow                                                       | `docs/ARCHITECTURE.md` § Forms flow (D11)                                                                                                           |
+| Desktop-scale token port checklist (0.75 normalisation)          | `docs/ARCHITECTURE.md` § D19                                                                                                                        |
+| Quality gate composition and budgets                             | `docs/ARCHITECTURE.md` § Quality gate (D27)                                                                                                         |
+| Design system, calculator engine, Operations surface             | `docs/ARCHITECTURE.md` §§ Design system / Calculator engine / Operations surface                                                                    |
+| Environments (local / preview / production)                      | `docs/ARCHITECTURE.md` § Environments; `docs/DEPLOYMENT.md` §§ Vercel project / Phase A cutover                                                     |
+| Integration catalogue (I1–I20), token threat model               | `docs/INTEGRATIONS.md` §§ Catalogue … Token threat model                                                                                            |
+| String catalogue, `sys.*`, bundle shape, blog model              | `docs/CONTENT-MODEL.md`                                                                                                                             |
+| Redirect rules (D21), disposition table                          | `docs/redirects.md`                                                                                                                                 |
+| Retention, DSAR/erasure, KVKK runbook, consent                   | `docs/PRIVACY.md`                                                                                                                                   |
+| Site-health, synthetic lead, kill switches, owner checks         | `docs/OPERATING.md`                                                                                                                                 |
+| Retired secrets log; deploy discipline                           | `docs/DEPLOYMENT.md` §§ Retired secrets log / Deploy discipline                                                                                     |
+| Unbuilt / pending features                                       | `docs/pending/README.md`                                                                                                                            |
+| Decision rationale (D\<n\>) and WP1 rulings (R\<n\>)             | `docs/superpowers/specs/2026-09-18-website-programme-design.md`; `docs/superpowers/plans/2026-09-18-wp1-foundation-rulings.md`                      |
+| D27 pixel harness: two-iteration cap, delta taxonomy, ledger row | `docs/superpowers/plans/2026-09-20-wp2-pixel-harness.md` (`npm run pixel`)                                                                          |
 | Design source reference: pages, tokens, copy, CRM feed contracts | `design-package/README.md`, `design-package/docs/project-brief.md`, `design-package/docs/crm-feed.md`, `design-package/docs/translation-process.md` |
-| Programme status, branch, next steps | `docs/WEBSITE-HANDOFF.md` (living copy on branch `wp2/foundation`) |
+| Programme status, branch, next steps                             | `docs/WEBSITE-HANDOFF.md` (living copy on branch `wp2/foundation`)                                                                                  |
 
 ## Stack
 
@@ -55,7 +56,7 @@ npm run e2e                   # playwright test (no axe/Lighthouse)
 npm run gate                   # bash scripts/gate.sh — Playwright + axe + Lighthouse against a URL
 ```
 
-No migrations (no database). One-off setup: `npx playwright install chromium`. Default `.env.example` (`CONTENT_SOURCE=LOCAL`) needs nothing else running; forms and the `OPS` adapter need `jobsadmire-operations` on port 4001. Two generation scripts run by hand when their sources change, output committed: `npm run content:import` (design-package strings → `src/content/local/*.json`), `npm run redirects:build` (`redirects/rules.json` → `legacy.json`/`gone.json`).
+No migrations (no database). One-off setup: `npx playwright install chromium`. Default `.env.example` (`CONTENT_SOURCE=LOCAL`) needs nothing else running; forms and the `OPS` adapter need `jobsadmire-operations` on port 4001. Generation scripts run by hand when their sources change, output committed, none in the build: `npm run content:import` (design-package strings → `src/content/local/*.json`), `npm run redirects:build` (`redirects/rules.json` → `legacy.json`/`gone.json`), `npm run assets:map` (sourcing map → `src/design/assets/source-map.generated.tsx`), `npm run assets:flags` (`flag-icons` → `public/brand/flags.svg`); `npm run assets:brand` is the one-time fetch of `public/brand/logo.png`/`iskur.png` (`docs/ARCHITECTURE.md` § Assets).
 
 ## Conventions
 
@@ -63,12 +64,15 @@ No migrations (no database). One-off setup: `npx playwright install chromium`. D
 - **New copy goes in the reserved `sys.*` range** (form labels/errors, consent banner, language hint, `/tesekkurler` chrome) — never repurpose a package id for different copy.
 - **`sys.*` goes through next-intl only** (`getTranslations('sys')` / `useTranslations('sys')`), never `t()`/`makeT`, which knows package ids only. Full key list: `docs/CONTENT-MODEL.md`.
 - **Shared chrome reads one canonical package id per string** (R15), not a per-page one — e.g. the verify-nav label is `home.011`, not a new `sys.nav.verify`. Full table: `docs/CONTENT-MODEL.md` § Chrome canonical ids.
-- **Six ids ship with a deliberately empty Turkish value** (`hire.141`, `calc.041`, `calc.154`, `calc.157`, `calc.367`, `jt.107`) — render them empty, never fall back to English.
+- **Seven ids ship with a deliberately empty Turkish value** (`hire.141`, `calc.041`, `calc.154`, `calc.157`, `calc.367`, `jt.107`, `availworkers.026`) — render them empty, never fall back to English.
+- **Numbers are data (D17).** A headline number is never typed into a page: read it with `getMetric` / `metricValues` (`src/content/collections.ts`, `src/content/pure.ts`).
+- **Every page lives in a route group (W19)** — `app/[locale]/(site)/` (default chrome), `(minimal)/` (no social rail/FAB: thank-you, legal, newsletter) or `(bare)/` (no chrome: portal entry); the group layout mounts the chrome, the locale layout keeps html/body/fonts/providers/`ClientIslands`. `docs/ARCHITECTURE.md` § Routing.
+- **Every page form goes through the forms kernel** (`src/forms/`, WP2a): a `'use server'` wrapper around `createFormAction(spec)`, rendered by `FormShell` with `Field`s — never a hand-rolled `fetch`.
 - **`formatTRY(n, locale)` is a contract, not a formatter of convenience** — every computed figure on the page goes through it (D18); see `docs/ARCHITECTURE.md`.
-- **Accessibility wins over pixel fidelity where they conflict** (D20) — named deltas (contrast-safe blue, 1101px desktop breakpoint, fixed-sheet language hint) are accepted by the gate; don't "fix" them back toward the design.
+- **Accessibility wins over pixel fidelity where they conflict** (D20) — named deltas (contrast-safe blue, the header's desktop row from 901px with 12px links — W11, R46 closed — and the fixed-sheet language hint) are accepted by the gate; don't "fix" them back toward the design.
 - **Every form's success path navigates to `/tesekkurler?form=<key>`** (D13) — never an inline success state.
 - **No candidate identifiers in analytics** — every GTM/GA4 event has a parameter allowlist (D13).
-- **Content-route JS budget is 180 KB gzipped**, not 120 KB (R49 corrected the plan's figure).
+- **The content-route JS budget is 200 KB gzipped per gate route** (Ruling W13 amended, `docs/superpowers/plans/2026-09-20-wp2-rulings.md`; R49's 180 KB predated the form island and left ~11.8 KB over the WP1 shell — the framework floor alone is ~121 KB on this stack). Asserted by the gate as `resource-summary:script:size ≤ 204800`; a route above 194,560 B gets a `next/dynamic` lazy-loading pass before the next page starts; `npm run js-size` prints the per-route table after a gate run. Full breakdown: `docs/ARCHITECTURE.md` § Quality gate.
 - **`.superpowers/` (repo root) is git-ignored scratch**; `docs/superpowers/` is the tracked plans/specs path.
 
 ## Hard rules and gotchas
@@ -106,7 +110,7 @@ A task is not done until the docs match the code, in the same change set.
 4. Operations-contract change (forms, bundle shape, tokens): `docs/INTEGRATIONS.md` updated, `jobsadmire-operations/docs/PRD.md` §5.12/§7.10 checked for drift.
 5. Redirects change: `docs/redirects.md` and the Vitest no-chain test updated.
 
-This repo has no push-without-asking rule. Whether a push to `main` reaches production depends on the Vercel deploy guards (`docs/DEPLOYMENT.md` §§ Deploy discipline / Phase A cutover); the current state is recorded in the workspace `WORKSPACE-STATE.md`.
+**A push to `main` is a production deploy of jobsadmire.com** (since the Phase A cutover, 2026-10-03, W224): Vercel builds every `main` commit and promotes it onto `www.jobsadmire.com` + the apex within minutes, with no guard left in between. Push to `main` only verify-green work the task was asked to ship; everything else goes on a branch (an authentication-protected preview). Rollback is Vercel Instant Rollback (`docs/DEPLOYMENT.md` § Phase A cutover); the live state is recorded in the workspace `WORKSPACE-STATE.md`.
 
 ## Token discipline
 
@@ -119,4 +123,4 @@ This repo has no push-without-asking rule. Whether a push to `main` reaches prod
 
 ## Environments and deploy
 
-Local dev talks to `LOCAL` content by default, or `jobsadmire-operations` on port 4001 for the `OPS` adapter and forms. Production is `jobsadmire.com` on Vercel — two projects exist (`jobsadmirewebsite` legacy, `jobsadmire-web-v2` this repo); pushing here never touches the VPS. Full detail: `docs/DEPLOYMENT.md`.
+Local dev talks to `LOCAL` content by default, or `jobsadmire-operations` on port 4001 for the `OPS` adapter and forms. Production is `www.jobsadmire.com` (the apex redirects to it) on Vercel — one project, `jobsadmirewebsite`, serving this repo's `main` since the Phase A cutover of 2026-10-03 (W224; the two `main` deploy guards are gone, no domain moved; every other branch builds an authentication-protected preview); pushing here never touches the VPS. Full detail: `docs/DEPLOYMENT.md`.

@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react';
 import { useTranslations } from 'next-intl';
-import { SkipLink } from '@/design/primitives';
+// By module path, not the barrel (W147): a server component's barrel import makes every
+// 'use client' primitive the barrel re-exports a client reference of the route.
+import { SkipLink } from '@/design/primitives/SkipLink';
 import type { Locale } from '@/i18n/routing';
 import type { Bundle } from '../../../contract/website-bundle.v1';
 import { Footer } from './Footer';
@@ -28,14 +30,20 @@ export function SiteChrome({
     <>
       <SkipLink label={sys('skipToContent')} />
       <SlimBar bundle={bundle} />
-      <Header locale={locale} bundle={bundle} primaryCta={{ href: '/hire-workers' }} />
+      <Header locale={locale} bundle={bundle} />
       {variant === 'default' && (
         <>
           <SocialRail bundle={bundle} />
           <WhatsAppFab bundle={bundle} />
         </>
       )}
-      <main id="main">{children}</main>
+      {/* M3: a plain `id="main"` moves the skip link's scroll target but not sequential focus in
+          Chrome (`document.activeElement` stays `body`); `tabIndex={-1}` makes `<main>` a real
+          focus target for every browser, `focus:outline-none` keeps the (invisible, programmatic)
+          focus ring off a landmark nobody tabs to directly. */}
+      <main id="main" tabIndex={-1} className="focus:outline-none">
+        {children}
+      </main>
       <Footer locale={locale} bundle={bundle} />
       <MobileBottomBar bundle={bundle} />
       {/* R29: last in flow, so the fixed bar clears the footer's legal line, not the page. */}

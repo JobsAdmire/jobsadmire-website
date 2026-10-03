@@ -1,0 +1,88 @@
+import type { ReactNode } from 'react';
+import { ContactCta } from './ContactCta';
+
+export type EmptyStateCta = { label: string; href: string; external?: boolean };
+
+const TONE = {
+  light: {
+    box: 'border-border-1 bg-white',
+    title: 'text-ink',
+    body: 'text-text-secondary',
+    icon: 'bg-tint text-blue-safe',
+  },
+  pale: {
+    box: 'border-tint-border bg-pale-1',
+    title: 'text-ink',
+    body: 'text-text-secondary',
+    icon: 'bg-white text-blue-safe',
+  },
+  dark: {
+    box: 'border-white/15 bg-white/5',
+    title: 'text-white',
+    body: 'text-white/70',
+    icon: 'bg-white/10 text-sky',
+  },
+} as const;
+
+/** The designed empty state (W6, W27) that stands in for a section whose data is not signed
+ *  yet: the Success Stories wall, the Verify lookup's neutral answer, the Available Workers
+ *  strip, a founder/team row. Copy is the page's `sys.<page>.empty.*` (resolved by the page —
+ *  no id here, W9); the optional CTA goes through `ContactCta`, so a WhatsApp/phone door is
+ *  tracked as `page_cta`. `role="status"`: it is the answer to a state, not decoration. */
+export function EmptyState({
+  title,
+  body,
+  cta,
+  tone = 'light',
+  icon,
+  headingLevel = 3,
+  testId,
+  className,
+}: {
+  title: string;
+  body?: string;
+  cta?: EmptyStateCta;
+  tone?: keyof typeof TONE;
+  icon?: ReactNode;
+  headingLevel?: 2 | 3;
+  testId?: string;
+  className?: string;
+}) {
+  const c = TONE[tone];
+  const Heading = `h${headingLevel}` as 'h2' | 'h3';
+  return (
+    <div
+      role="status"
+      data-testid={testId}
+      className={[
+        'flex flex-col items-center gap-3 rounded-xl border border-dashed px-6 py-10 text-center',
+        c.box,
+        className,
+      ]
+        .filter(Boolean)
+        .join(' ')}
+    >
+      {icon && (
+        <span
+          aria-hidden="true"
+          className={`flex h-12 w-12 items-center justify-center rounded-pill ${c.icon}`}
+        >
+          {icon}
+        </span>
+      )}
+      <Heading className={`text-card-title m-0 ${c.title}`}>{title}</Heading>
+      {body && <p className={`text-body-sm m-0 max-w-[520px] ${c.body}`}>{body}</p>}
+      {cta && (
+        <ContactCta
+          placement="page_cta"
+          variant={tone === 'dark' ? 'inverse' : 'secondary'}
+          href={cta.href}
+          external={cta.external}
+          className="mt-2"
+        >
+          {cta.label}
+        </ContactCta>
+      )}
+    </div>
+  );
+}

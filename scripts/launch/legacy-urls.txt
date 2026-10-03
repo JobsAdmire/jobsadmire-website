@@ -1,0 +1,27 @@
+# Gate A legacy sweep (spec §5): 20 old URLs + 2 keep controls. Columns: path <TAB> expect <TAB> location
+# expect = 308 (single hop to `location`), 410 (gone prefix, redirects/gone.json via src/proxy.ts),
+# keep (live route, must answer 200 and never redirect). If a `to` here disagrees with the real
+# redirects/legacy.json row, legacy-sweep.test.ts below fails — fix THIS FILE to match the data,
+# the data is the source of truth, this list is a curated subset of the 328 rows.
+/contact-us	308	/en/contact
+/tr/contact-us	308	/iletisim
+/hire-workers-in-turkey	308	/en/hire-workers
+/tr/hire-workers-in-turkey	308	/isci-talebi
+/job-recruitment	308	/en/hire-workers
+/about	308	/en/about
+/tr/about	308	/hakkimizda
+/de/about	308	/en/about
+/work-permit	308	/en/work-permit
+/immigration/immigrate-to-turkey	308	/en/work-permit
+/certifications	308	/en/about#lisans
+/tr/certifications	308	/hakkimizda#lisans
+/home	308	/en
+/tr/home	308	/
+/privacy	308	/en/privacy
+/login-companies	308	/en/portal-login
+/partner/recruiter-agency	308	/en/partner-with-us
+/job-detail/123	410	
+/profile/xyz	410	
+/visa	410	
+/	keep	
+/blog	keep	

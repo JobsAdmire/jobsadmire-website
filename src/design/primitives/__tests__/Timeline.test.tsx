@@ -1,0 +1,33 @@
+import { render, screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { Timeline } from '../Timeline';
+
+const steps = [
+  { when: '01', title: 'First', body: 'a' },
+  { title: 'Second', body: 'b' },
+];
+
+describe('Timeline', () => {
+  it('defaults to the vertical rail with one h3 per step', () => {
+    render(<Timeline steps={steps} />);
+    const list = screen.getByRole('list');
+    expect(list).toHaveAttribute('data-variant', 'vertical');
+    expect(list).toHaveClass('border-l');
+    expect(screen.getAllByRole('heading', { level: 3 })).toHaveLength(2);
+  });
+
+  it('horizontal variant lays the steps out as a row grid from md up', () => {
+    render(<Timeline steps={steps} variant="horizontal" />);
+    const list = screen.getByRole('list');
+    expect(list).toHaveAttribute('data-variant', 'horizontal');
+    expect(list).toHaveClass('md:grid-flow-col');
+    expect(list).not.toHaveClass('border-l');
+    expect(screen.getByText('01')).toBeInTheDocument();
+  });
+
+  it('renders no body paragraph when a step has none (W84)', () => {
+    const { container } = render(<Timeline steps={[{ title: 'Only a title' }]} />);
+    expect(screen.getByRole('heading', { level: 3, name: 'Only a title' })).toBeInTheDocument();
+    expect(container.querySelectorAll('p')).toHaveLength(0);
+  });
+});

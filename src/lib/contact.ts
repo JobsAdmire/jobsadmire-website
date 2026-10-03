@@ -1,5 +1,6 @@
 /** Contact hrefs. WhatsApp is co-primary with the phone across the chrome, so the prefill
- *  text always comes from `sys.whatsapp.prefill` — never a hard-coded greeting. */
+ *  text always comes from `sys.whatsapp.prefill` — never a hard-coded greeting. The partner-line
+ *  rule (W176/W208) lives in `./contact/partner-line.ts`. */
 export const waLink = (number: string, text: string) =>
   `https://wa.me/${number}?text=${encodeURIComponent(text)}`;
 

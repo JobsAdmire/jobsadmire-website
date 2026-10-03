@@ -1,17 +1,34 @@
-export type TimelineStep = { when?: string; title: string; body: string };
+/** W84: `body` is optional — a step with only a title (no supporting line) renders no `<p>`. */
+export type TimelineStep = { when?: string; title: string; body?: string };
 
-export function Timeline({ steps }: { steps: TimelineStep[] }) {
+const LIST = {
+  vertical: 'm-0 list-none space-y-6 border-l border-border-1 pl-6',
+  // Stacked below md, one column per step from md up; each step carries its own top rule.
+  horizontal: 'm-0 grid list-none gap-6 p-0 md:grid-flow-col md:auto-cols-fr',
+} as const;
+
+const ITEM = { vertical: '', horizontal: 'border-t-2 border-tint-border pt-4' } as const;
+
+/** The plain timeline (About's journey, the calculator's route tabs). Numbered dots, `when`
+ *  pills and cards belong to `ProcessSteps` in `src/design/blocks`. */
+export function Timeline({
+  steps,
+  variant = 'vertical',
+}: {
+  steps: TimelineStep[];
+  variant?: 'vertical' | 'horizontal';
+}) {
   return (
-    <ol className="m-0 list-none space-y-6 border-l border-border-1 pl-6">
+    <ol data-variant={variant} className={LIST[variant]}>
       {steps.map((s, i) => (
-        <li key={`${i}-${s.title}`}>
+        <li key={`${i}-${s.title}`} className={ITEM[variant]}>
           {s.when ? (
             <p className="text-eyebrow font-extrabold uppercase tracking-[1.6px] text-blue-safe">
               {s.when}
             </p>
           ) : null}
           <h3 className="text-card-title">{s.title}</h3>
-          <p className="text-body-sm text-text-secondary">{s.body}</p>
+          {s.body ? <p className="text-body-sm text-text-secondary">{s.body}</p> : null}
         </li>
       ))}
     </ol>

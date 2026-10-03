@@ -1,0 +1,904 @@
+# Review package: 49fa3f4..78d8b42
+
+## Commits
+78d8b42 feat(analytics): consent mode v2 defaults, GTM-only loader, allow-listed track(), thank-you conversion page
+
+## Files changed
+ docs/ANALYTICS.md                                  | 31 +++++++--
+ e2e/thank-you.spec.ts                              | 61 +++++++++++++++++
+ package-lock.json                                  | 20 ++++++
+ package.json                                       |  1 +
+ src/analytics/ConversionPing.tsx                   | 22 ++++++
+ src/analytics/GtmLoader.tsx                        | 23 +++++++
+ src/analytics/consent.test.ts                      | 78 +++++++++++++++++++++
+ src/analytics/consent.ts                           | 53 ++++++++++++++
+ src/analytics/track.test.ts                        | 27 ++++++++
+ src/analytics/track.ts                             | 27 ++++++++
+ src/app/[locale]/layout.tsx                        |  8 +++
+ src/app/[locale]/thank-you/page.tsx                | 80 ++++++++++++++++++++++
+ src/design/chrome/ConsentBanner.tsx                | 55 +++++++++++++++
+ src/design/chrome/__tests__/ConsentBanner.test.tsx | 46 +++++++++++++
+ src/messages/en.json                               | 20 ++++++
+ src/messages/tr.json                               | 20 ++++++
+ src/test/storage.ts                                | 17 +++++
+ 17 files changed, 582 insertions(+), 7 deletions(-)
+
+## Diff
+diff --git a/docs/ANALYTICS.md b/docs/ANALYTICS.md
+index 76ab732..0cddeb8 100644
+--- a/docs/ANALYTICS.md
++++ b/docs/ANALYTICS.md
+@@ -2,45 +2,62 @@
+ 
+ Full context: plan D13. IDs and the GTM container inventory are config values, not secrets — but still centralised, not hard-typed per page.
+ 
+ ## Consent Mode v2 loading order
+ 
+ 1. Consent Mode default state fires **inline**, before any tag loads — `ad_storage`, `analytics_storage`, `ad_user_data`, `ad_personalization` all default to `denied` until the visitor interacts with the consent banner.
+ 2. `url_passthrough` and `ads_data_redaction` are enabled so Ads conversion measurement degrades gracefully under denial rather than breaking.
+ 3. GTM loads via `@next/third-parties`.
+ 4. **GA4 is loaded only through GTM** — never a direct `gtag.js`/`analytics.js` include anywhere in the codebase. This is a hard rule, not a preference: it's the only way the GTM container inventory (below) stays the single source of truth for what fires.
+ 
++### How that order is realised in code
++
++`src/analytics/GtmLoader.tsx` renders `CONSENT_DEFAULT_SCRIPT` (from `src/analytics/consent.ts`) through `next/script` at `strategy="beforeInteractive"`, then `GoogleTagManager` from `@next/third-parties/google`. It is mounted from `src/app/[locale]/layout.tsx` — the root layout, which is what makes `beforeInteractive` legal — and only when `settings.analytics.consentMode` is true. With `settings.analytics.gtmId === null` (the Phase A bundle) **only the defaults ship**: the container loads the moment the owner fills the id in the Integrations screen (Phase B), and the first tag it ever loads starts denied.
++
++### The consent banner
++
++`src/design/chrome/ConsentBanner.tsx` (client) is mounted from the same root layout, after `SiteChrome`. It reads the choice through `useSyncExternalStore` — never during render, never from an effect — so a returning visitor never sees it flash (R27). The choice is stored twice: `localStorage.ja_consent_v1` and a 180-day `ja_consent_v1` cookie (`SameSite=Lax`), the cookie being the fallback when storage is blocked. `writeConsent` pushes `consent_update` to the `dataLayer`, calls `gtag('consent','update',…)` when the default script is present, and dispatches the `ja:consent` window event the banner subscribes to.
++
+ ## IDs (config values — CMS-driven in Phase B, env/constants in Phase A)
+ 
+ | ID                       | Value            |
+ | ------------------------ | ---------------- |
+ | GA4 Measurement ID       | `G-77Y5KBV97L`   |
+ | GTM Container ID         | `GTM-N2CLWJWJ`   |
+ | Google Ads Conversion ID | `AW-17096273578` |
+ 
+ These are public identifiers (they ship in the page source by nature of how GTM/GA4/Ads work) — they are config values, not secrets, and belong in the Integrations screen (D12) in Phase B with a **test button** that fires a verifiable test event.
+ 
+ ## Event schema
+ 
+-| Event            | Fires on                                                                                | Parameter allowlist                                                        |
+-| ---------------- | --------------------------------------------------------------------------------------- | -------------------------------------------------------------------------- |
+-| `generate_lead`  | Every form's successful submission, once, on arrival at `/tesekkurler?form=<key>`       | `form_key`, `page_path`, `locale` — **no candidate reference of any kind** |
+-| `call_click`     | Phone number tap/click (header, footer, mobile bottom bar, page CTAs)                   | `page_path`, `locale`                                                      |
+-| `whatsapp_click` | WhatsApp CTA/FAB click (both the direct CTA and the visitor fallback panel's deep link) | `page_path`, `locale`, `context` (`primary` \| `fallback`)                 |
+-| `email_click`    | `mailto:` link click                                                                    | `page_path`, `locale`                                                      |
++The allowlist lives in one place — `ALLOWED_PARAMS` in `src/analytics/track.ts` — and `track(event, params)` **drops every parameter not listed for that event** before pushing to `window.dataLayer`. An unknown event name throws. This table is that constant, in prose; change one and change the other.
+ 
+-**Coverage:** all 14 pages instrumented — this is a Gate A checklist item, not optional per-page. **Parameter allowlist rule:** no event, on any page, ever carries a candidate name, phone number, email, free-text form content, or any other identifier a visitor typed into a form. This is enforced by keeping the event-firing code entirely separate from form payload data — the event only ever sees `formKey` and page context, never the submitted fields.
++| Event             | Fires on                                                                   | Parameter allowlist                   |
++| ----------------- | -------------------------------------------------------------------------- | ------------------------------------- |
++| `generate_lead`   | A form's successful submission                                             | `form_key`, `page`, `locale`          |
++| `conversion`      | Arrival at `/tesekkurler?form=<key>`, once per mount, known form keys only | `form_key`, `page`, `locale`          |
++| `call_click`      | Phone tap/click (header, footer, mobile bottom bar, page CTAs)             | `page`, `locale`, `placement`         |
++| `whatsapp_click`  | WhatsApp CTA/FAB click                                                     | `page`, `locale`, `placement`         |
++| `email_click`     | `mailto:` link click                                                       | `page`, `locale`, `placement`         |
++| `calculator_use`  | Hiring-cost calculator interaction                                         | `page`, `locale`, `role`, `headcount` |
++| `language_switch` | TR↔EN switch                                                               | `from`, `to`                          |
++
++`page` is next-intl's `usePathname()` — the **internal** pathname (`/thank-you`), identical in both locales, with `locale` carrying the language dimension; it is not the localized slug.
++
++**Coverage:** all 14 pages instrumented — this is a Gate A checklist item, not optional per-page. **Parameter allowlist rule:** no event, on any page, ever carries a candidate name, phone number, email, free-text form content, or any other identifier a visitor typed into a form. This is enforced in `track()` itself, not by caller discipline: the event only ever sees `form_key` and page context, never the submitted fields.
+ 
+ ## Conversion
+ 
+ Fires on `/tesekkurler?form=<key>` — the single navigation target every form's success path uses (D13, `docs/PRD.md` §2). This is why the inline-success-panel pattern from the design package was explicitly overridden: Ads conversion measurement needs a real navigation to attach to, and GA4/GTM event-only conversions on an SPA-style panel are the failure mode the plan calls out ("conversion orphaned" risk, plan §9).
+ 
++`src/app/[locale]/thank-you/page.tsx` whitelists `?form=` against the five known keys — `hire`, `contact`, `partner`, `careers`, `newsletter` — and renders a form-specific line for each. An unrecognised or missing key still renders the page, but **fires no conversion**: a stale or hand-typed link is not a lead. The event itself comes from `ConversionPing` (client, renders nothing), which fires once per mount behind a ref guard so React's dev double-invoke cannot double-count. The page is `noindex` regardless of any later page record, and is absent from both `robots.txt` and the sitemap.
++
+ ## Vercel Web Analytics as the consent-independent truth
+ 
+ GA4 numbers are consent-gated and will always undercount. **Vercel Web Analytics** (and Speed Insights) run independent of the consent banner and are the number used for the 12-week post-launch traffic watch (`docs/SEO.md`) and any GA4-vs-reality sanity check. **GA4 is never compared across the launch boundary** — old-site GA4 and new-site GA4 are different properties/configurations and a raw before/after comparison is not meaningful; use GSC clicks and Vercel Web Analytics for that comparison instead.
+ 
+ ## Weekly three-way reconciliation
+ 
+ Form submissions (Operations `WebsiteFormSubmission` count) vs. `generate_lead` events (GA4) vs. Ads conversions — run weekly during the 12-week watch. A mismatch in either direction is the fastest signal that either the conversion page isn't being reached (forms work, no `generate_lead`) or forms are silently failing while WhatsApp absorbs the traffic (`generate_lead` low, WhatsApp clicks high).
+ 
+ ## GTM container inventory (export in WP0)
+ 
+diff --git a/e2e/thank-you.spec.ts b/e2e/thank-you.spec.ts
+new file mode 100644
+index 0000000..d9e4050
+--- /dev/null
++++ b/e2e/thank-you.spec.ts
+@@ -0,0 +1,61 @@
++import { test, expect } from '@playwright/test';
++
++type DataLayerEntry = Record<string, unknown>;
++
++const dataLayer = (page: import('@playwright/test').Page) =>
++  page.evaluate(
++    () => (window as unknown as { dataLayer?: DataLayerEntry[] }).dataLayer ?? [],
++  ) as Promise<DataLayerEntry[]>;
++
++test('the Turkish conversion page is noindex and fires the conversion once', async ({ page }) => {
++  const res = await page.goto('/tesekkurler?form=hire');
++  expect(res?.status()).toBe(200);
++  await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
++  await expect(page.locator('h1')).toHaveCount(1);
++
++  await expect
++    .poll(async () =>
++      (await dataLayer(page)).filter((e) => e.event === 'conversion' && e.form_key === 'hire'),
++    )
++    .toHaveLength(1);
++});
++
++test('the English conversion page answers under /en', async ({ page }) => {
++  const res = await page.goto('/en/thank-you?form=contact');
++  expect(res?.status()).toBe(200);
++  await expect(page.locator('html')).toHaveAttribute('lang', 'en');
++  await expect(page.locator('h1')).toHaveCount(1);
++});
++
++test('an unknown form key renders the page without firing a conversion', async ({ page }) => {
++  await page.goto('/tesekkurler?form=profile_select');
++  await expect(page.locator('h1')).toHaveCount(1);
++  expect((await dataLayer(page)).filter((e) => e.event === 'conversion')).toHaveLength(0);
++});
++
++test('the consent sheet shows once and stores the choice', async ({ page }) => {
++  await page.goto('/');
++  const banner = page.getByTestId('consent-banner');
++  await expect(banner).toBeVisible();
++  await expect(banner).toHaveAttribute('role', 'region');
++
++  // Denied by default until the visitor chooses (D13): the inline script runs before any tag,
++  // so `gtag` exists and the very first dataLayer entries are the denied defaults.
++  const defaults = await page.evaluate(() => ({
++    gtag: typeof (window as unknown as { gtag?: unknown }).gtag,
++    first: Object.assign({}, (window as unknown as { dataLayer?: unknown[] }).dataLayer?.[0]),
++  }));
++  expect(defaults.gtag).toBe('function');
++  expect(defaults.first).toMatchObject({
++    0: 'consent',
++    1: 'default',
++    2: { ad_storage: 'denied', analytics_storage: 'denied' },
++  });
++
++  await banner.getByRole('button', { name: /kabul et/i }).click();
++  await expect(banner).toBeHidden();
++  expect(await page.evaluate(() => localStorage.getItem('ja_consent_v1'))).toBe('granted');
++
++  await page.reload();
++  await expect(page.getByTestId('consent-banner')).toHaveCount(0);
++});
+diff --git a/package-lock.json b/package-lock.json
+index 1403e21..c5d027c 100644
+--- a/package-lock.json
++++ b/package-lock.json
+@@ -1,20 +1,21 @@
+ {
+   "name": "jobsadmire-website",
+   "version": "0.1.0",
+   "lockfileVersion": 3,
+   "requires": true,
+   "packages": {
+     "": {
+       "name": "jobsadmire-website",
+       "version": "0.1.0",
+       "dependencies": {
++        "@next/third-parties": "^16.3.5",
+         "next": "16.3.5",
+         "next-intl": "^4.14.5",
+         "react": "19.2.8",
+         "react-dom": "19.2.8",
+         "zod": "^3.25.76"
+       },
+       "devDependencies": {
+         "@axe-core/playwright": "^4.13.0",
+         "@playwright/test": "^1.63.0",
+         "@tailwindcss/postcss": "^4",
+@@ -2086,20 +2087,33 @@
+       ],
+       "license": "MIT",
+       "optional": true,
+       "os": [
+         "win32"
+       ],
+       "engines": {
+         "node": ">= 10"
+       }
+     },
++    "node_modules/@next/third-parties": {
++      "version": "16.3.5",
++      "resolved": "https://registry.npmjs.org/@next/third-parties/-/third-parties-16.3.5.tgz",
++      "integrity": "sha512-ZQiUWEPKFD/c8z8DTMzUbYwOLv8/fzF9JDDCvYo19eBg2rKyMzOtpiDX1eqb8q6+vJWK/aW2m0REAM3cVKsWTA==",
++      "license": "MIT",
++      "dependencies": {
++        "third-party-capital": "1.0.20"
++      },
++      "peerDependencies": {
++        "next": "^13.0.0 || ^14.0.0 || ^15.0.0 || ^16.0.0-beta.0",
++        "react": "^18.2.0 || 19.0.0-rc-de68d2f4-20241204 || ^19.0.0"
++      }
++    },
+     "node_modules/@nodelib/fs.scandir": {
+       "version": "2.1.5",
+       "resolved": "https://registry.npmjs.org/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz",
+       "integrity": "sha512-vq24Bq3ym5HEQm2NKCr3yXDwjc7vTsEThRDnkp2DK9p1uqLR+DHurm/NOTo0KG7HYHU7eppKZj3MyqYuMBf62g==",
+       "dev": true,
+       "license": "MIT",
+       "dependencies": {
+         "@nodelib/fs.stat": "2.0.5",
+         "run-parallel": "^1.1.9"
+       },
+@@ -8965,20 +8979,26 @@
+       "dev": true,
+       "license": "MIT",
+       "engines": {
+         "node": ">=6"
+       },
+       "funding": {
+         "type": "opencollective",
+         "url": "https://opencollective.com/webpack"
+       }
+     },
++    "node_modules/third-party-capital": {
++      "version": "1.0.20",
++      "resolved": "https://registry.npmjs.org/third-party-capital/-/third-party-capital-1.0.20.tgz",
++      "integrity": "sha512-oB7yIimd8SuGptespDAZnNkzIz+NWaJCu2RMsbs4Wmp9zSDUM8Nhi3s2OOcqYuv3mN4hitXc8DVx+LyUmbUDiA==",
++      "license": "ISC"
++    },
+     "node_modules/tinybench": {
+       "version": "2.9.0",
+       "resolved": "https://registry.npmjs.org/tinybench/-/tinybench-2.9.0.tgz",
+       "integrity": "sha512-0+DUvqWMValLmha6lr4kD8iAMK1HzV0/aKnCtWb9v9641TnP/MFb7Pc2bxoxQjTXAErryXVgUOfv2YqNllqGeg==",
+       "dev": true,
+       "license": "MIT"
+     },
+     "node_modules/tinyexec": {
+       "version": "1.3.1",
+       "resolved": "https://registry.npmjs.org/tinyexec/-/tinyexec-1.3.1.tgz",
+diff --git a/package.json b/package.json
+index cfa3897..0b8eb98 100644
+--- a/package.json
++++ b/package.json
+@@ -12,20 +12,21 @@
+     "format:write": "prettier --write .",
+     "test": "vitest run",
+     "test:watch": "vitest",
+     "verify": "npm run typecheck && npm run lint && npm run format && npm run test",
+     "e2e": "playwright test",
+     "gate": "bash scripts/gate.sh",
+     "content:import": "tsx scripts/import-design-package.ts",
+     "redirects:build": "tsx scripts/build-redirects.ts"
+   },
+   "dependencies": {
++    "@next/third-parties": "^16.3.5",
+     "next": "16.3.5",
+     "next-intl": "^4.14.5",
+     "react": "19.2.8",
+     "react-dom": "19.2.8",
+     "zod": "^3.25.76"
+   },
+   "devDependencies": {
+     "@axe-core/playwright": "^4.13.0",
+     "@playwright/test": "^1.63.0",
+     "@tailwindcss/postcss": "^4",
+diff --git a/src/analytics/ConversionPing.tsx b/src/analytics/ConversionPing.tsx
+new file mode 100644
+index 0000000..13b1c8b
+--- /dev/null
++++ b/src/analytics/ConversionPing.tsx
+@@ -0,0 +1,22 @@
++'use client';
++import { useEffect, useRef } from 'react';
++import { usePathname } from '@/i18n/navigation';
++import { track } from './track';
++
++/** The conversion, fired once on arrival at `/tesekkurler?form=<key>` (D13) — the single
++ *  navigation every form's success path lands on. Renders nothing; carries only the form key,
++ *  the path and the locale, never anything the visitor typed. */
++export function ConversionPing({ formKey, locale }: { formKey: string; locale: string }) {
++  const pathname = usePathname() ?? '/';
++  const fired = useRef(false);
++  useEffect(() => {
++    // Once per mount: StrictMode invokes effects twice in dev, and a conversion counted twice
++    // is worse than one counted late.
++    if (fired.current) return;
++    fired.current = true;
++    track('conversion', { form_key: formKey, page: pathname, locale });
++    // Deliberately empty: this fires on arrival, not on any later prop change.
++    // eslint-disable-next-line react-hooks/exhaustive-deps
++  }, []);
++  return null;
++}
+diff --git a/src/analytics/GtmLoader.tsx b/src/analytics/GtmLoader.tsx
+new file mode 100644
+index 0000000..5a26240
+--- /dev/null
++++ b/src/analytics/GtmLoader.tsx
+@@ -0,0 +1,23 @@
++import Script from 'next/script';
++import { GoogleTagManager } from '@next/third-parties/google';
++import { CONSENT_DEFAULT_SCRIPT } from './consent';
++
++/** D13 loading order: the Consent Mode v2 defaults run inline, before any tag, then GTM —
++ *  and GA4/Ads only ever load *inside* the container, never directly from this codebase.
++ *  `beforeInteractive` is legal here because this renders from the root layout.
++ *  With no container id yet (Phase A) the defaults still ship, so the first tag that ever
++ *  loads — WP2's, or the owner's from the Integrations screen — starts denied. */
++export function GtmLoader({ gtmId }: { gtmId: string | null }) {
++  return (
++    <>
++      {/* The lint rule below predates the App Router: `beforeInteractive` is exactly right
++          here, and legal, because this renders from the root layout — which is the whole
++          point, the defaults must run before any tag. */}
++      {/* eslint-disable-next-line @next/next/no-before-interactive-script-outside-document */}
++      <Script id="consent-default" strategy="beforeInteractive">
++        {CONSENT_DEFAULT_SCRIPT}
++      </Script>
++      {gtmId ? <GoogleTagManager gtmId={gtmId} /> : null}
++    </>
++  );
++}
+diff --git a/src/analytics/consent.test.ts b/src/analytics/consent.test.ts
+new file mode 100644
+index 0000000..0f0c51e
+--- /dev/null
++++ b/src/analytics/consent.test.ts
+@@ -0,0 +1,78 @@
++import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
++import { memoryStorage } from '@/test/storage';
++import { CONSENT_EVENT, CONSENT_KEY, readConsent, writeConsent } from './consent';
++
++type TestWindow = Window & {
++  dataLayer?: Record<string, unknown>[];
++  gtag?: (...args: unknown[]) => void;
++};
++const w = window as TestWindow;
++
++beforeEach(() => {
++  vi.stubGlobal('localStorage', memoryStorage());
++  w.dataLayer = [];
++  delete w.gtag;
++  document.cookie = `${CONSENT_KEY}=; Max-Age=0; Path=/`;
++});
++
++afterEach(() => {
++  vi.unstubAllGlobals();
++  delete w.gtag;
++});
++
++describe('readConsent', () => {
++  it('is "unknown" before the visitor has chosen', () => {
++    expect(readConsent()).toBe('unknown');
++  });
++
++  it('reports the stored choice', () => {
++    localStorage.setItem(CONSENT_KEY, 'denied');
++    expect(readConsent()).toBe('denied');
++  });
++
++  it('falls back to the cookie when storage is blocked', () => {
++    document.cookie = `${CONSENT_KEY}=granted; Path=/`;
++    vi.stubGlobal('localStorage', {
++      getItem() {
++        throw new Error('private mode');
++      },
++    });
++    expect(readConsent()).toBe('granted');
++  });
++});
++
++describe('writeConsent', () => {
++  it('stores the choice, sets the cookie, signals the dataLayer and notifies subscribers', () => {
++    const listener = vi.fn();
++    window.addEventListener(CONSENT_EVENT, listener);
++    try {
++      writeConsent('granted');
++    } finally {
++      window.removeEventListener(CONSENT_EVENT, listener);
++    }
++
++    expect(localStorage.getItem(CONSENT_KEY)).toBe('granted');
++    expect(readConsent()).toBe('granted');
++    expect(document.cookie).toContain(`${CONSENT_KEY}=granted`);
++    expect(w.dataLayer).toEqual([{ event: 'consent_update' }]);
++    expect(listener).toHaveBeenCalledTimes(1);
++  });
++
++  it('does not throw when the consent-default script never ran (gtag undefined)', () => {
++    expect(w.gtag).toBeUndefined();
++    expect(() => writeConsent('denied')).not.toThrow();
++    expect(readConsent()).toBe('denied');
++  });
++
++  it('forwards the Consent Mode v2 update to gtag when it is defined', () => {
++    const gtag = vi.fn();
++    w.gtag = gtag;
++    writeConsent('granted');
++    expect(gtag).toHaveBeenCalledWith('consent', 'update', {
++      ad_storage: 'granted',
++      analytics_storage: 'granted',
++      ad_user_data: 'granted',
++      ad_personalization: 'granted',
++    });
++  });
++});
+diff --git a/src/analytics/consent.ts b/src/analytics/consent.ts
+new file mode 100644
+index 0000000..3a6c780
+--- /dev/null
++++ b/src/analytics/consent.ts
+@@ -0,0 +1,53 @@
++export type ConsentState = 'unknown' | 'granted' | 'denied';
++
++export const CONSENT_KEY = 'ja_consent_v1';
++/** Custom window event `writeConsent` dispatches after storing, so `ConsentBanner`'s
++ *  `useSyncExternalStore` subscription hears the choice without polling or an effect (R27). */
++export const CONSENT_EVENT = 'ja:consent';
++
++const MAX_AGE = 60 * 60 * 24 * 180;
++
++/** Inline in <head> before GTM: Consent Mode v2 defaults denied (D13). */
++export const CONSENT_DEFAULT_SCRIPT = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','url_passthrough',true);gtag('set','ads_data_redaction',true);`;
++
++/** The cookie is written alongside the localStorage entry, so a visitor whose storage is
++ *  blocked (private mode) still gets their choice remembered — without it the banner would
++ *  re-appear the instant they dismissed it, because the snapshot would read `unknown` again. */
++function readCookie(): ConsentState | null {
++  try {
++    const m = new RegExp(`(?:^|;\\s*)${CONSENT_KEY}=(granted|denied)`).exec(document.cookie);
++    return (m?.[1] as ConsentState | undefined) ?? null;
++  } catch {
++    return null;
++  }
++}
++
++export function readConsent(): ConsentState {
++  try {
++    const stored = localStorage.getItem(CONSENT_KEY);
++    if (stored === 'granted' || stored === 'denied') return stored;
++  } catch {
++    /* storage blocked (private mode): fall through to the cookie */
++  }
++  return readCookie() ?? 'unknown';
++}
++
++export function writeConsent(state: Exclude<ConsentState, 'unknown'>) {
++  try {
++    localStorage.setItem(CONSENT_KEY, state);
++  } catch {
++    /* private mode */
++  }
++  document.cookie = `${CONSENT_KEY}=${state}; Max-Age=${MAX_AGE}; Path=/; SameSite=Lax`;
++  const v = state === 'granted' ? 'granted' : 'denied';
++  (window.dataLayer ??= []).push({ event: 'consent_update' });
++  // `gtag` comes from the inline default script, which only renders when
++  // `settings.analytics.consentMode` is on — so it stays optional here, never assumed.
++  (window as unknown as { gtag?: (...a: unknown[]) => void }).gtag?.('consent', 'update', {
++    ad_storage: v,
++    analytics_storage: v,
++    ad_user_data: v,
++    ad_personalization: v,
++  });
++  window.dispatchEvent(new Event(CONSENT_EVENT));
++}
+diff --git a/src/analytics/track.test.ts b/src/analytics/track.test.ts
+new file mode 100644
+index 0000000..b52b815
+--- /dev/null
++++ b/src/analytics/track.test.ts
+@@ -0,0 +1,27 @@
++import { beforeEach, describe, expect, it } from 'vitest';
++import { track } from './track';
++
++describe('track (D13 parameter allowlist)', () => {
++  beforeEach(() => {
++    (window as unknown as { dataLayer: unknown[] }).dataLayer = [];
++  });
++  it('pushes allow-listed params only — never candidate refs', () => {
++    track('generate_lead', {
++      form_key: 'hire',
++      page: '/isci-talebi',
++      locale: 'tr',
++      profiles: 'JA-1042,JA-1058',
++      ref: 'JA-1042',
++    } as never);
++    const pushed = (window as unknown as { dataLayer: Record<string, unknown>[] }).dataLayer[0];
++    expect(pushed).toEqual({
++      event: 'generate_lead',
++      form_key: 'hire',
++      page: '/isci-talebi',
++      locale: 'tr',
++    });
++  });
++  it('rejects unknown events at the type level and at runtime', () => {
++    expect(() => track('profile_select' as never, {})).toThrow(/unknown analytics event/);
++  });
++});
+diff --git a/src/analytics/track.ts b/src/analytics/track.ts
+new file mode 100644
+index 0000000..ebb1614
+--- /dev/null
++++ b/src/analytics/track.ts
+@@ -0,0 +1,27 @@
++/** D13: every event carries an explicit parameter allowlist. Anything not listed here — a
++ *  candidate reference, a typed-in name, any free text from a form — is dropped before the
++ *  push, so no caller can leak an identifier into GTM by passing the wrong object. */
++export const ALLOWED_PARAMS = {
++  generate_lead: ['form_key', 'page', 'locale'],
++  conversion: ['form_key', 'page', 'locale'],
++  call_click: ['page', 'locale', 'placement'],
++  whatsapp_click: ['page', 'locale', 'placement'],
++  email_click: ['page', 'locale', 'placement'],
++  calculator_use: ['page', 'locale', 'role', 'headcount'],
++  language_switch: ['from', 'to'],
++} as const;
++export type EventName = keyof typeof ALLOWED_PARAMS;
++
++declare global {
++  interface Window {
++    dataLayer?: Record<string, unknown>[];
++  }
++}
++
++export function track(event: EventName, params: Partial<Record<string, string | number>>) {
++  const allowed = ALLOWED_PARAMS[event];
++  if (!allowed) throw new Error(`unknown analytics event: ${String(event)}`);
++  const clean: Record<string, unknown> = { event };
++  for (const k of allowed) if (params[k] !== undefined) clean[k] = params[k];
++  (window.dataLayer ??= []).push(clean);
++}
+diff --git a/src/app/[locale]/layout.tsx b/src/app/[locale]/layout.tsx
+index 8165f9c..c06f1fc 100644
+--- a/src/app/[locale]/layout.tsx
++++ b/src/app/[locale]/layout.tsx
+@@ -1,16 +1,18 @@
+ import type { Metadata } from 'next';
+ import { Archivo } from 'next/font/google';
+ import { NextIntlClientProvider, hasLocale } from 'next-intl';
+ import { setRequestLocale } from 'next-intl/server';
+ import { notFound } from 'next/navigation';
++import { GtmLoader } from '@/analytics/GtmLoader';
+ import { getBundle, makeT } from '@/content/adapter';
++import { ConsentBanner } from '@/design/chrome/ConsentBanner';
+ import { SiteChrome } from '@/design/chrome/SiteChrome';
+ import { routing } from '@/i18n/routing';
+ import { JsonLd } from '@/lib/seo/JsonLdScript';
+ import { organizationJsonLd, websiteJsonLd } from '@/lib/seo/jsonld';
+ import { SITE_URL } from '@/lib/seo/routes';
+ import '../globals.css';
+ 
+ const archivo = Archivo({
+   subsets: ['latin', 'latin-ext'],
+   weight: ['500', '600', '700', '800'],
+@@ -31,30 +33,36 @@ export default async function LocaleLayout({
+   params,
+ }: {
+   children: React.ReactNode;
+   params: Promise<{ locale: string }>;
+ }) {
+   const { locale } = await params;
+   if (!hasLocale(routing.locales, locale)) notFound();
+   setRequestLocale(locale);
+   const bundle = await getBundle(locale);
+   const t = makeT(bundle);
++  const { analytics } = bundle.settings;
+   return (
+     <html lang={locale} className={archivo.variable}>
+       <body>
++        {/* D13: consent defaults denied inline, before any tag; GA4/Ads load only inside the
++            container. Off entirely when the bundle turns consent mode off. */}
++        {analytics.consentMode && <GtmLoader gtmId={analytics.gtmId} />}
+         {/* Site-wide graph nodes (docs/SEO.md): Organization/EmploymentAgency on every page. */}
+         <JsonLd
+           data={organizationJsonLd(bundle.settings, {
+             name: 'JobsAdmire',
+             description: t('home.188'),
+           })}
+         />
+         <JsonLd data={websiteJsonLd(bundle.settings)} />
+         <NextIntlClientProvider>
+           <SiteChrome locale={locale} bundle={bundle}>
+             {children}
+           </SiteChrome>
++          {/* Mounted after the chrome so the sheet is last in the tab order, not first. */}
++          <ConsentBanner />
+         </NextIntlClientProvider>
+       </body>
+     </html>
+   );
+ }
+diff --git a/src/app/[locale]/thank-you/page.tsx b/src/app/[locale]/thank-you/page.tsx
+new file mode 100644
+index 0000000..fe5e4cb
+--- /dev/null
++++ b/src/app/[locale]/thank-you/page.tsx
+@@ -0,0 +1,80 @@
++import type { Metadata } from 'next';
++import { hasLocale } from 'next-intl';
++import { getTranslations, setRequestLocale } from 'next-intl/server';
++import { notFound } from 'next/navigation';
++import { ConversionPing } from '@/analytics/ConversionPing';
++import { getBundle } from '@/content/adapter';
++import { Button, Section } from '@/design/primitives';
++import { routing } from '@/i18n/routing';
++import { waLink } from '@/lib/contact';
++import { buildMetadata } from '@/lib/seo/metadata';
++
++/** The five keys D13 allows in `?form=`. Anything else — a stale link, a hand-typed URL —
++ *  gets the generic page and fires no conversion: an unrecognised key is not a lead. */
++const FORM_KEYS = ['hire', 'contact', 'partner', 'careers', 'newsletter'] as const;
++type FormKey = (typeof FORM_KEYS)[number];
++const asFormKey = (v: string | undefined): FormKey | null => FORM_KEYS.find((k) => k === v) ?? null;
++
++export async function generateMetadata({
++  params,
++}: {
++  params: Promise<{ locale: string }>;
++}): Promise<Metadata> {
++  const { locale } = await params;
++  if (!hasLocale(routing.locales, locale)) notFound();
++  const bundle = await getBundle(locale);
++  const sys = await getTranslations({ locale, namespace: 'sys' });
++  return {
++    ...buildMetadata({
++      locale,
++      href: '/thank-you',
++      bundle,
++      pageKey: 'thankYou',
++      fallbackTitle: sys('thankYou.title'),
++      fallbackDescription: sys('thankYou.body'),
++    }),
++    // Never indexed, whatever a later page record says: this exists only as the conversion
++    // target every form lands on (D13) — robots.ts and the sitemap agree.
++    robots: { index: false, follow: false },
++  };
++}
++
++export default async function ThankYou({
++  params,
++  searchParams,
++}: {
++  params: Promise<{ locale: string }>;
++  searchParams: Promise<{ form?: string }>;
++}) {
++  const [{ locale }, { form }] = await Promise.all([params, searchParams]);
++  if (!hasLocale(routing.locales, locale)) notFound();
++  setRequestLocale(locale);
++  const [bundle, sys] = await Promise.all([getBundle(locale), getTranslations('sys')]);
++  const formKey = asFormKey(form);
++  return (
++    <Section tone="light">
++      <div className="container-site max-w-[720px]">
++        <h1 className="text-h2">{sys('thankYou.title')}</h1>
++        <p className="text-body-lg text-text-secondary">{sys('thankYou.body')}</p>
++        {formKey && (
++          <p className="text-body text-text-secondary">{sys(`thankYou.forms.${formKey}`)}</p>
++        )}
++        <div className="mt-8 flex flex-wrap gap-3">
++          <Button variant="primary" size="lg" href="/">
++            {sys('thankYou.home')}
++          </Button>
++          <Button
++            variant="secondary"
++            size="lg"
++            external
++            href={waLink(bundle.settings.whatsappNumber, sys('whatsapp.prefill'))}
++          >
++            {sys('thankYou.whatsapp')}
++          </Button>
++        </div>
++      </div>
++      {/* Fires the conversion once, on arrival, for a known form key only (D13). */}
++      {formKey && <ConversionPing formKey={formKey} locale={locale} />}
++    </Section>
++  );
++}
+diff --git a/src/design/chrome/ConsentBanner.tsx b/src/design/chrome/ConsentBanner.tsx
+new file mode 100644
+index 0000000..537db50
+--- /dev/null
++++ b/src/design/chrome/ConsentBanner.tsx
+@@ -0,0 +1,55 @@
++'use client';
++import { useSyncExternalStore } from 'react';
++import { useTranslations } from 'next-intl';
++import { CONSENT_EVENT, readConsent, writeConsent, type ConsentState } from '@/analytics/consent';
++import { Button } from '@/design/primitives';
++import { Link } from '@/i18n/navigation';
++
++/** Distinct from `unknown` on purpose (R27): the server render and the hydrating client both
++ *  render nothing, so a returning visitor never sees the sheet flash before their stored
++ *  choice is read. Only the post-hydration `unknown` opens it. */
++type Snapshot = ConsentState | 'hydrating';
++
++const subscribe = (onStoreChange: () => void) => {
++  window.addEventListener(CONSENT_EVENT, onStoreChange);
++  return () => window.removeEventListener(CONSENT_EVENT, onStoreChange);
++};
++const getServerSnapshot = (): Snapshot => 'hydrating';
++
++/** The consent sheet. Storage is never touched during render and no effect sets state — the
++ *  choice is read through the store and `writeConsent` re-publishes it via `CONSENT_EVENT`. */
++export function ConsentBanner() {
++  const sys = useTranslations('sys');
++  const state = useSyncExternalStore<Snapshot>(subscribe, readConsent, getServerSnapshot);
++  if (state !== 'unknown') return null;
++  return (
++    <div
++      role="region"
++      aria-label={sys('consent.title')}
++      data-testid="consent-banner"
++      // z-60 clears the mobile bottom bar (z-50); the extra padding below `lg` keeps the
++      // sheet's own buttons clear of that bar, and of the phone's home indicator.
++      className="fixed inset-x-0 bottom-0 z-[60] border-t border-border-1 bg-white pt-4 pb-[calc(1rem+74px+env(safe-area-inset-bottom))] shadow-[0_-8px_28px_rgba(22,32,46,0.12)] lg:pb-[calc(1rem+env(safe-area-inset-bottom))]"
++    >
++      <div className="container-site flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between lg:gap-6">
++        <div>
++          <p className="m-0 font-extrabold">{sys('consent.title')}</p>
++          <p className="m-0 text-body-sm text-text-secondary">
++            {sys('consent.body')}{' '}
++            <Link href="/cookie-policy" className="font-bold text-blue-safe underline">
++              {sys('consent.policy')}
++            </Link>
++          </p>
++        </div>
++        <div className="flex shrink-0 flex-wrap gap-2.5">
++          <Button variant="secondary" onClick={() => writeConsent('denied')}>
++            {sys('consent.reject')}
++          </Button>
++          <Button variant="primary" onClick={() => writeConsent('granted')}>
++            {sys('consent.accept')}
++          </Button>
++        </div>
++      </div>
++    </div>
++  );
++}
+diff --git a/src/design/chrome/__tests__/ConsentBanner.test.tsx b/src/design/chrome/__tests__/ConsentBanner.test.tsx
+new file mode 100644
+index 0000000..2f56510
+--- /dev/null
++++ b/src/design/chrome/__tests__/ConsentBanner.test.tsx
+@@ -0,0 +1,46 @@
++import { screen, within } from '@testing-library/react';
++import userEvent from '@testing-library/user-event';
++import { beforeEach, describe, expect, it, vi } from 'vitest';
++import { ConsentBanner } from '../ConsentBanner';
++import { CONSENT_KEY } from '@/analytics/consent';
++import tr from '@/messages/tr.json';
++import { renderWithIntl } from '@/test/render';
++import { memoryStorage } from '@/test/storage';
++
++const copy = tr.sys.consent;
++
++beforeEach(() => {
++  vi.stubGlobal('localStorage', memoryStorage());
++  (window as Window & { dataLayer?: unknown[] }).dataLayer = [];
++  document.cookie = `${CONSENT_KEY}=; Max-Age=0; Path=/`;
++});
++
++describe('ConsentBanner', () => {
++  it('opens for a first-time visitor and closes once a choice is stored', async () => {
++    renderWithIntl(<ConsentBanner />);
++    const sheet = screen.getByRole('region', { name: copy.title });
++    expect(within(sheet).getByRole('link', { name: copy.policy })).toHaveAttribute(
++      'href',
++      '/cerez-politikasi',
++    );
++
++    await userEvent.click(within(sheet).getByRole('button', { name: copy.accept }));
++
++    // The store, not an effect, drives this: `writeConsent` dispatches and the sheet re-reads.
++    expect(screen.queryByRole('region', { name: copy.title })).toBeNull();
++    expect(localStorage.getItem(CONSENT_KEY)).toBe('granted');
++  });
++
++  it('records a refusal and stays closed', async () => {
++    renderWithIntl(<ConsentBanner />);
++    await userEvent.click(screen.getByRole('button', { name: copy.reject }));
++    expect(screen.queryByTestId('consent-banner')).toBeNull();
++    expect(localStorage.getItem(CONSENT_KEY)).toBe('denied');
++  });
++
++  it('never opens for a visitor who has already chosen', () => {
++    localStorage.setItem(CONSENT_KEY, 'denied');
++    renderWithIntl(<ConsentBanner />);
++    expect(screen.queryByTestId('consent-banner')).toBeNull();
++  });
++});
+diff --git a/src/messages/en.json b/src/messages/en.json
+index de12a18..f72dc34 100644
+--- a/src/messages/en.json
++++ b/src/messages/en.json
+@@ -15,13 +15,33 @@
+       "pause": "Pause",
+       "play": "Play"
+     },
+     "whatsapp": {
+       "prefill": "Hello JobsAdmire, "
+     },
+     "languageHint": {
+       "body": "This page is also available in English.",
+       "switch": "Switch to English",
+       "dismiss": "Dismiss"
++    },
++    "consent": {
++      "title": "Cookies",
++      "body": "We use cookies to improve the site and to measure how our ads perform. You can change your choice at any time.",
++      "accept": "Accept",
++      "reject": "Reject",
++      "policy": "Cookie policy"
++    },
++    "thankYou": {
++      "title": "Thank you",
++      "body": "We have your request. Our team will get back to you shortly.",
++      "home": "Back to home",
++      "whatsapp": "Message us on WhatsApp",
++      "forms": {
++        "hire": "We have your worker request; we will line up suitable candidates and come back to you.",
++        "contact": "We have your message and usually reply within one business day.",
++        "partner": "We have your partnership enquiry; our business development team will be in touch.",
++        "careers": "We have your application; we will contact you when a suitable role opens.",
++        "newsletter": "You are on the list; check your inbox to confirm."
++      }
+     }
+   }
+ }
+diff --git a/src/messages/tr.json b/src/messages/tr.json
+index bf07e82..2db3c63 100644
+--- a/src/messages/tr.json
++++ b/src/messages/tr.json
+@@ -15,13 +15,33 @@
+       "pause": "Duraklat",
+       "play": "Oynat"
+     },
+     "whatsapp": {
+       "prefill": "Merhaba JobsAdmire, "
+     },
+     "languageHint": {
+       "body": "This page is also available in English.",
+       "switch": "Switch to English",
+       "dismiss": "Dismiss"
++    },
++    "consent": {
++      "title": "Çerezler",
++      "body": "Siteyi geliştirmek ve reklamlarımızın performansını ölçmek için çerez kullanıyoruz. Seçiminizi istediğiniz zaman değiştirebilirsiniz.",
++      "accept": "Kabul et",
++      "reject": "Reddet",
++      "policy": "Çerez politikası"
++    },
++    "thankYou": {
++      "title": "Teşekkürler",
++      "body": "Talebiniz bize ulaştı. Ekibimiz en kısa sürede sizinle iletişime geçecek.",
++      "home": "Ana sayfaya dön",
++      "whatsapp": "WhatsApp'tan yazın",
++      "forms": {
++        "hire": "İşçi talebinizi aldık; uygun adayları hazırlayıp size döneceğiz.",
++        "contact": "Mesajınızı aldık; genellikle bir iş günü içinde yanıtlıyoruz.",
++        "partner": "Ortaklık başvurunuzu aldık; iş geliştirme ekibimiz sizinle görüşecek.",
++        "careers": "Başvurunuzu aldık; uygun bir pozisyon açıldığında sizinle iletişime geçeceğiz.",
++        "newsletter": "Kaydınızı aldık; onaylamak için e-posta kutunuzu kontrol edin."
++      }
+     }
+   }
+ }
+diff --git a/src/test/storage.ts b/src/test/storage.ts
+new file mode 100644
+index 0000000..85a6941
+--- /dev/null
++++ b/src/test/storage.ts
+@@ -0,0 +1,17 @@
++/** Node ≥23 defines a stub `localStorage` global, and vitest's jsdom environment therefore
++ *  leaves jsdom's real `Storage` uncopied — `localStorage.getItem` is not a function under the
++ *  Node this repo is run with. Tests that care about storage bring their own, so they assert
++ *  what our code does with the Storage API rather than what the host happens to provide. */
++export function memoryStorage(): Storage {
++  const map = new Map<string, string>();
++  return {
++    get length() {
++      return map.size;
++    },
++    clear: () => map.clear(),
++    getItem: (k: string) => map.get(k) ?? null,
++    key: (i: number) => [...map.keys()][i] ?? null,
++    removeItem: (k: string) => void map.delete(k),
++    setItem: (k: string, v: string) => void map.set(k, v),
++  };
++}

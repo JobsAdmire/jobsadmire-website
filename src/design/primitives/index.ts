@@ -1,12 +1,13 @@
 export { Accordion, type AccordionItem } from './Accordion';
-export { Button, type ButtonProps, type ButtonVariant } from './Button';
+export { Button, buttonClassName, type ButtonProps, type ButtonVariant } from './Button';
 export { Card } from './Card';
 export { Chip } from './Chip';
 export { Dialog } from './Dialog';
 export { Eyebrow } from './Eyebrow';
 export { FormField } from './FormField';
 export { PausableMarquee } from './PausableMarquee';
-export { Section } from './Section';
+export { RadioChips, type RadioChipOption } from './RadioChips';
+export { Section, type SectionTone } from './Section';
 export { SkipLink } from './SkipLink';
 export { Stat } from './Stat';
 export { Tabs, type TabItem } from './Tabs';

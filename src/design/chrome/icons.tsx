@@ -108,3 +108,43 @@ export function LinkedInIcon(props: IconProps) {
     </svg>
   );
 }
+
+export function CheckIcon(props: IconProps) {
+  return (
+    <svg
+      {...base({ size: 15, ...props })}
+      {...stroke}
+      strokeWidth={2.6}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
+      <path d="M20 6L9 17l-5-5" />
+    </svg>
+  );
+}
+
+export function ClockIcon(props: IconProps) {
+  return (
+    <svg {...base({ size: 15, ...props })} {...stroke} strokeLinecap="round">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3.5 2" />
+    </svg>
+  );
+}
+
+export function XIcon(props: IconProps) {
+  return (
+    <svg {...base({ size: 15, ...props })} fill="currentColor">
+      <path d="M18.9 1.2h3.4l-7.4 8.5 8.7 11.5h-6.8l-5.3-7-6.1 7H1.9l7.9-9.1L1.5 1.2h7l4.8 6.4 5.6-6.4zm-1.2 18h1.9L7.4 3.1H5.4l12.3 16.1z" />
+    </svg>
+  );
+}
+
+export function LinkIcon(props: IconProps) {
+  return (
+    <svg {...base(props)} {...stroke} strokeLinecap="round" strokeLinejoin="round">
+      <path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7" />
+      <path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7l1.7-1.7" />
+    </svg>
+  );
+}

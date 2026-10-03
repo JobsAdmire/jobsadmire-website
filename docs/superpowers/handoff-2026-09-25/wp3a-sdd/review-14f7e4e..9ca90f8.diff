@@ -1,0 +1,2923 @@
+# Review package: 14f7e4e..9ca90f8
+
+## Commits
+9ca90f8 fix(website): newsletter confirm mail is not re-sent inside a 15-minute cooldown (X12)
+9d94cdf feat(website): abuse auto-trip, lead-drought and 04:30 purge crons, ping reads the trip keys
+30156f2 feat(website): EN/TR autoresponders for the eight non-careers forms
+e4fc044 feat(website): notify service with once-per-window alarms and the second-human fan-out
+76c87f4 feat(website): WEBSITE_FORM_RECEIVED and WEBSITE_FORMS_UNAVAILABLE in the registry, seed and bell landing
+
+## Files changed
+ apps/backend/prisma/module-notification-seed.ts    |   6 +
+ .../templates/website-calculator-autoresponder.hbs |   5 +
+ .../website-calculator-autoresponder.tr.hbs        |   5 +
+ .../templates/website-callback-autoresponder.hbs   |   4 +
+ .../website-callback-autoresponder.tr.hbs          |   4 +
+ .../templates/website-contact-autoresponder.hbs    |   5 +
+ .../templates/website-contact-autoresponder.tr.hbs |   5 +
+ .../email/templates/website-forms-unavailable.hbs  |  13 ++
+ .../templates/website-forms-unavailable.tr.hbs     |  13 ++
+ .../templates/website-fraud-autoresponder.hbs      |   5 +
+ .../templates/website-fraud-autoresponder.tr.hbs   |   5 +
+ .../email/templates/website-hire-autoresponder.hbs |   6 +
+ .../templates/website-hire-autoresponder.tr.hbs    |   6 +
+ .../templates/website-partner-autoresponder.hbs    |   5 +
+ .../templates/website-partner-autoresponder.tr.hbs |   5 +
+ .../templates/website-visit-autoresponder.hbs      |   5 +
+ .../templates/website-visit-autoresponder.tr.hbs   |   5 +
+ .../templates/website-workers-autoresponder.hbs    |   5 +
+ .../templates/website-workers-autoresponder.tr.hbs |   5 +
+ .../src/modules/notifications/event-dispatcher.ts  |   6 +-
+ .../notifications/event-registry-coverage.spec.ts  |  22 +++
+ .../notifications/event-registry-website.spec.ts   | 139 ++++++++++++++
+ .../src/modules/notifications/event-registry.ts    | 212 ++++++++++++++++++++-
+ .../notifications/module-notification-seed.spec.ts |  65 ++++---
+ apps/backend/src/modules/upload/upload.service.ts  |  20 ++
+ .../modules/website/newsletter/newsletter-token.ts |   8 +
+ .../newsletter/website-newsletter.service.spec.ts  |  14 +-
+ .../newsletter/website-newsletter.service.ts       |  19 +-
+ .../modules/website/website-abuse.service.spec.ts  |  83 ++++++++
+ .../src/modules/website/website-abuse.service.ts   |  97 ++++++++--
+ .../modules/website/website-alarms.cron.spec.ts    |  94 +++++++++
+ .../src/modules/website/website-alarms.cron.ts     |  99 ++++++++++
+ .../modules/website/website-alarms.logic.spec.ts   |  60 ++++++
+ .../src/modules/website/website-alarms.logic.ts    | 104 ++++++++++
+ .../website/website-autoresponder.service.spec.ts  | 138 ++++++++++++++
+ .../website/website-autoresponder.service.ts       | 130 ++++++++++++-
+ .../modules/website/website-notify.service.spec.ts | 101 ++++++++++
+ .../src/modules/website/website-notify.service.ts  | 115 +++++++++--
+ .../modules/website/website-ping.service.spec.ts   |  15 +-
+ .../src/modules/website/website-ping.service.ts    |  13 +-
+ .../src/modules/website/website-purge.cron.spec.ts | 164 ++++++++++++++++
+ .../src/modules/website/website-purge.cron.ts      | 154 +++++++++++++++
+ apps/backend/src/modules/website/website.module.ts |   6 +
+ .../src/lib/notifications/entity-path.spec.ts      |  15 ++
+ apps/frontend/src/lib/notifications/entity-path.ts |   8 +
+ 45 files changed, 1933 insertions(+), 80 deletions(-)
+
+## Diff
+diff --git a/apps/backend/prisma/module-notification-seed.ts b/apps/backend/prisma/module-notification-seed.ts
+index 8233833..e3a25f7 100644
+--- a/apps/backend/prisma/module-notification-seed.ts
++++ b/apps/backend/prisma/module-notification-seed.ts
+@@ -65,20 +65,26 @@ export const MODULE_NOTIFICATION_SEED: ModuleNotificationSeedRow[] = [
+   { module: 'marketing', eventType: NotificationType.MARKETING_PLAN_COMMENT, inApp: true, email: false },
+   { module: 'marketing', eventType: NotificationType.MARKETING_TRANSLATION_REQUESTED, inApp: true, email: false },
+   { module: 'marketing', eventType: NotificationType.MARKETING_TASK_ASSIGNED, inApp: true, email: false },
+   // WP-B (2026-09-16) — the two return-to-draft notices. In-app, email off, like
+   // everything here but MARKETING_POST_FAILED. `module-notification-seed.spec.ts`
+   // asserts this table row-for-row against the event registry, so a definition
+   // added there without a line here is a failing test, not a silent gap in the
+   // owner's Settings → Notifications screen.
+   { module: 'marketing', eventType: NotificationType.MARKETING_PLAN_RETURNED_TO_DRAFT, inApp: true, email: false },
+   { module: 'marketing', eventType: NotificationType.MARKETING_POST_RETURNED_TO_DRAFT, inApp: true, email: false },
++  // Website intake door (WP3a, 2026-09-19; ruling P9). The received notice is
++  // bell-only like every marketing event; the outage/degradation notice EMAILS
++  // by default — it is the one thing the door can say when it is failing, and a
++  // bell nobody is looking at is exactly the silence D11 warns about.
++  { module: 'website', eventType: NotificationType.WEBSITE_FORM_RECEIVED, inApp: true, email: false },
++  { module: 'website', eventType: NotificationType.WEBSITE_FORMS_UNAVAILABLE, inApp: true, email: true },
+ ];
+ 
+ /**
+  * Create any missing catalogue row; never touch one that exists.
+  *
+  * Idempotent by construction: `update: {}` means a second run is a no-op, so an
+  * owner's edited body, subject and toggles survive every deploy for ever.
+  */
+ export async function seedModuleNotificationSettings(
+   prisma: ModuleNotificationSeedClient,
+diff --git a/apps/backend/src/modules/email/templates/website-calculator-autoresponder.hbs b/apps/backend/src/modules/email/templates/website-calculator-autoresponder.hbs
+new file mode 100644
+index 0000000..40f9877
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-calculator-autoresponder.hbs
+@@ -0,0 +1,5 @@
++<h2>Your cost estimate request</h2>
++<p>Hi{{#if name}} {{name}}{{/if}},</p>
++<p>Thank you for using the cost calculator. The figures on the website are indicative; a consultant will send you a written estimate for your exact roles, numbers and countries within one business day.</p>
++<a href="{{ctaUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Back to the calculator</a>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">If you did not send this request, you can ignore this e-mail.</p>
+diff --git a/apps/backend/src/modules/email/templates/website-calculator-autoresponder.tr.hbs b/apps/backend/src/modules/email/templates/website-calculator-autoresponder.tr.hbs
+new file mode 100644
+index 0000000..c22b9e3
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-calculator-autoresponder.tr.hbs
+@@ -0,0 +1,5 @@
++<h2>Maliyet tahmini talebiniz</h2>
++<p>Merhaba{{#if name}} {{name}}{{/if}},</p>
++<p>Maliyet hesaplayıcıyı kullandığınız için teşekkürler. Web sitesindeki rakamlar yol göstericidir; bir danışmanımız tam pozisyon, sayı ve ülkeleriniz için yazılı bir tahmini bir iş günü içinde size gönderecektir.</p>
++<a href="{{ctaUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Hesaplayıcıya dön</a>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">Bu talebi siz göndermediyseniz bu e-postayı dikkate almayabilirsiniz.</p>
+diff --git a/apps/backend/src/modules/email/templates/website-callback-autoresponder.hbs b/apps/backend/src/modules/email/templates/website-callback-autoresponder.hbs
+new file mode 100644
+index 0000000..89258ea
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-callback-autoresponder.hbs
+@@ -0,0 +1,4 @@
++<h2>We will call you back</h2>
++<p>Hi{{#if name}} {{name}}{{/if}},</p>
++<p>We have your callback request. A consultant will call the number you gave us during business hours (09:00–18:00 Türkiye time, Monday to Friday). If you prefer a specific time, reply to this e-mail and tell us.</p>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">If you did not ask for a call, you can ignore this e-mail.</p>
+diff --git a/apps/backend/src/modules/email/templates/website-callback-autoresponder.tr.hbs b/apps/backend/src/modules/email/templates/website-callback-autoresponder.tr.hbs
+new file mode 100644
+index 0000000..fe4e3ba
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-callback-autoresponder.tr.hbs
+@@ -0,0 +1,4 @@
++<h2>Sizi geri arayacağız</h2>
++<p>Merhaba{{#if name}} {{name}}{{/if}},</p>
++<p>Geri arama talebiniz bize ulaştı. Bir danışmanımız çalışma saatleri içinde (Pazartesi–Cuma 09:00–18:00, Türkiye saati) verdiğiniz numarayı arayacaktır. Belirli bir saat tercih ediyorsanız bu e-postayı yanıtlayarak bize bildirin.</p>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">Aranmayı siz talep etmediyseniz bu e-postayı dikkate almayabilirsiniz.</p>
+diff --git a/apps/backend/src/modules/email/templates/website-contact-autoresponder.hbs b/apps/backend/src/modules/email/templates/website-contact-autoresponder.hbs
+new file mode 100644
+index 0000000..98eff85
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-contact-autoresponder.hbs
+@@ -0,0 +1,5 @@
++<h2>Thanks for contacting JobsAdmire</h2>
++<p>Hi{{#if name}} {{name}}{{/if}},</p>
++<p>Your message has reached our team. We answer every message within one business day; if it is urgent, our WhatsApp line on the website is the fastest way to reach us.</p>
++<a href="{{ctaUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Visit jobsadmire.com</a>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">If you did not send this message, you can ignore this e-mail.</p>
+diff --git a/apps/backend/src/modules/email/templates/website-contact-autoresponder.tr.hbs b/apps/backend/src/modules/email/templates/website-contact-autoresponder.tr.hbs
+new file mode 100644
+index 0000000..1d511e8
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-contact-autoresponder.tr.hbs
+@@ -0,0 +1,5 @@
++<h2>JobsAdmire ile iletişime geçtiğiniz için teşekkürler</h2>
++<p>Merhaba{{#if name}} {{name}}{{/if}},</p>
++<p>Mesajınız ekibimize ulaştı. Her mesaja bir iş günü içinde yanıt veriyoruz; acilse web sitemizdeki WhatsApp hattı bize ulaşmanın en hızlı yoludur.</p>
++<a href="{{ctaUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">jobsadmire.com'u ziyaret edin</a>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">Bu mesajı siz göndermediyseniz bu e-postayı dikkate almayabilirsiniz.</p>
+diff --git a/apps/backend/src/modules/email/templates/website-forms-unavailable.hbs b/apps/backend/src/modules/email/templates/website-forms-unavailable.hbs
+new file mode 100644
+index 0000000..5844cf9
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-forms-unavailable.hbs
+@@ -0,0 +1,13 @@
++<h2>{{title}}</h2>
++<p>Hi,</p>
++<p>{{message}}</p>
++
++<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="warning-box" style="background-color:#fff7ed;border:1px solid #fed7aa;border-radius:6px;margin:16px 0;">
++  <tr>
++    <td style="padding:16px;font-size:14px;color:#111827;">
++      <strong>Reason:</strong> {{reason}}{{#if formKey}} &middot; <strong>Form:</strong> {{formKey}}{{/if}}{{#if detail}}<br/><span style="color:#6b7280;">{{detail}}</span>{{/if}}
++    </td>
++  </tr>
++</table>
++
++<a href="{{appUrl}}/admin/website/inbox" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Open the forms inbox</a>
+diff --git a/apps/backend/src/modules/email/templates/website-forms-unavailable.tr.hbs b/apps/backend/src/modules/email/templates/website-forms-unavailable.tr.hbs
+new file mode 100644
+index 0000000..59b81f8
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-forms-unavailable.tr.hbs
+@@ -0,0 +1,13 @@
++<h2>{{title}}</h2>
++<p>Merhaba,</p>
++<p>{{message}}</p>
++
++<table role="presentation" width="100%" cellpadding="0" cellspacing="0" class="warning-box" style="background-color:#fff7ed;border:1px solid #fed7aa;border-radius:6px;margin:16px 0;">
++  <tr>
++    <td style="padding:16px;font-size:14px;color:#111827;">
++      <strong>Sebep:</strong> {{reason}}{{#if formKey}} &middot; <strong>Form:</strong> {{formKey}}{{/if}}{{#if detail}}<br/><span style="color:#6b7280;">{{detail}}</span>{{/if}}
++    </td>
++  </tr>
++</table>
++
++<a href="{{appUrl}}/admin/website/inbox" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Form gelen kutusunu aç</a>
+diff --git a/apps/backend/src/modules/email/templates/website-fraud-autoresponder.hbs b/apps/backend/src/modules/email/templates/website-fraud-autoresponder.hbs
+new file mode 100644
+index 0000000..a63604e
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-fraud-autoresponder.hbs
+@@ -0,0 +1,5 @@
++<h2>We received your report</h2>
++<p>Hi{{#if name}} {{name}}{{/if}},</p>
++<p>Thank you for reporting this to us. JobsAdmire never asks candidates for money, and we take every report of someone using our name seriously. Our compliance team will review what you sent and may contact you for details. Please do not share this e-mail with the person you reported.</p>
++<a href="{{ctaUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">How to verify a JobsAdmire representative</a>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">If you did not send a report, you can ignore this e-mail.</p>
+diff --git a/apps/backend/src/modules/email/templates/website-fraud-autoresponder.tr.hbs b/apps/backend/src/modules/email/templates/website-fraud-autoresponder.tr.hbs
+new file mode 100644
+index 0000000..e6dfb9e
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-fraud-autoresponder.tr.hbs
+@@ -0,0 +1,5 @@
++<h2>Bildiriminizi aldık</h2>
++<p>Merhaba{{#if name}} {{name}}{{/if}},</p>
++<p>Bunu bize bildirdiğiniz için teşekkürler. JobsAdmire adaylardan asla para talep etmez ve adımızı kullanan herkesle ilgili her bildirimi ciddiye alırız. Uyum ekibimiz gönderdiklerinizi inceleyecek ve ayrıntılar için sizinle iletişime geçebilir. Lütfen bu e-postayı bildirdiğiniz kişiyle paylaşmayın.</p>
++<a href="{{ctaUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Bir JobsAdmire temsilcisi nasıl doğrulanır</a>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">Bir bildirim göndermediyseniz bu e-postayı dikkate almayabilirsiniz.</p>
+diff --git a/apps/backend/src/modules/email/templates/website-hire-autoresponder.hbs b/apps/backend/src/modules/email/templates/website-hire-autoresponder.hbs
+new file mode 100644
+index 0000000..c89a5d1
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-hire-autoresponder.hbs
+@@ -0,0 +1,6 @@
++<h2>We received your hiring request</h2>
++<p>Hi{{#if name}} {{name}}{{/if}},</p>
++<p>Thank you for telling us about the workers you need. A JobsAdmire consultant will review your request and contact you within one business day to confirm the roles, numbers and timing.</p>
++<p>In the meantime you can read how the sourcing and work-permit process works on our website.</p>
++<a href="{{ctaUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">How hiring works</a>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">If you did not send this request, you can ignore this e-mail.</p>
+diff --git a/apps/backend/src/modules/email/templates/website-hire-autoresponder.tr.hbs b/apps/backend/src/modules/email/templates/website-hire-autoresponder.tr.hbs
+new file mode 100644
+index 0000000..a9b6525
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-hire-autoresponder.tr.hbs
+@@ -0,0 +1,6 @@
++<h2>İşe alım talebinizi aldık</h2>
++<p>Merhaba{{#if name}} {{name}}{{/if}},</p>
++<p>İhtiyaç duyduğunuz çalışanlar hakkında bize bilgi verdiğiniz için teşekkürler. Bir JobsAdmire danışmanı talebinizi inceleyecek ve pozisyonları, sayıları ve zamanlamayı teyit etmek için bir iş günü içinde sizinle iletişime geçecektir.</p>
++<p>Bu sırada tedarik ve çalışma izni sürecinin nasıl işlediğini web sitemizden okuyabilirsiniz.</p>
++<a href="{{ctaUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Süreç nasıl işler</a>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">Bu talebi siz göndermediyseniz bu e-postayı dikkate almayabilirsiniz.</p>
+diff --git a/apps/backend/src/modules/email/templates/website-partner-autoresponder.hbs b/apps/backend/src/modules/email/templates/website-partner-autoresponder.hbs
+new file mode 100644
+index 0000000..b6ce615
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-partner-autoresponder.hbs
+@@ -0,0 +1,5 @@
++<h2>Your partnership application has arrived</h2>
++<p>Hi{{#if name}} {{name}}{{/if}},</p>
++<p>Thank you for applying to work with JobsAdmire as a sourcing or placement partner. Our partnerships team reviews every application personally and will get back to you within three business days with the next step.</p>
++<a href="{{ctaUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">About the partner programme</a>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">If you did not send this application, you can ignore this e-mail.</p>
+diff --git a/apps/backend/src/modules/email/templates/website-partner-autoresponder.tr.hbs b/apps/backend/src/modules/email/templates/website-partner-autoresponder.tr.hbs
+new file mode 100644
+index 0000000..1016bb3
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-partner-autoresponder.tr.hbs
+@@ -0,0 +1,5 @@
++<h2>Ortaklık başvurunuz bize ulaştı</h2>
++<p>Merhaba{{#if name}} {{name}}{{/if}},</p>
++<p>JobsAdmire ile tedarik veya yerleştirme ortağı olarak çalışmak için başvurduğunuz için teşekkürler. Ortaklık ekibimiz her başvuruyu bizzat inceler ve bir sonraki adım için üç iş günü içinde size dönüş yapar.</p>
++<a href="{{ctaUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Ortaklık programı hakkında</a>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">Bu başvuruyu siz göndermediyseniz bu e-postayı dikkate almayabilirsiniz.</p>
+diff --git a/apps/backend/src/modules/email/templates/website-visit-autoresponder.hbs b/apps/backend/src/modules/email/templates/website-visit-autoresponder.hbs
+new file mode 100644
+index 0000000..c8dd089
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-visit-autoresponder.hbs
+@@ -0,0 +1,5 @@
++<h2>Your office visit request</h2>
++<p>Hi{{#if name}} {{name}}{{/if}},</p>
++<p>Thank you for asking to visit us. We will confirm a date and time by e-mail or phone within one business day. Our offices and directions are on the website.</p>
++<a href="{{ctaUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Our offices</a>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">If you did not send this request, you can ignore this e-mail.</p>
+diff --git a/apps/backend/src/modules/email/templates/website-visit-autoresponder.tr.hbs b/apps/backend/src/modules/email/templates/website-visit-autoresponder.tr.hbs
+new file mode 100644
+index 0000000..b3f3401
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-visit-autoresponder.tr.hbs
+@@ -0,0 +1,5 @@
++<h2>Ofis ziyareti talebiniz</h2>
++<p>Merhaba{{#if name}} {{name}}{{/if}},</p>
++<p>Bizi ziyaret etmek istediğiniz için teşekkürler. Tarih ve saati bir iş günü içinde e-posta veya telefonla teyit edeceğiz. Ofislerimiz ve ulaşım bilgileri web sitemizde.</p>
++<a href="{{ctaUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Ofislerimiz</a>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">Bu talebi siz göndermediyseniz bu e-postayı dikkate almayabilirsiniz.</p>
+diff --git a/apps/backend/src/modules/email/templates/website-workers-autoresponder.hbs b/apps/backend/src/modules/email/templates/website-workers-autoresponder.hbs
+new file mode 100644
+index 0000000..9fdcdfa
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-workers-autoresponder.hbs
+@@ -0,0 +1,5 @@
++<h2>We received your request for available workers</h2>
++<p>Hi{{#if name}} {{name}}{{/if}},</p>
++<p>Thank you for your interest in our available candidates. A consultant will check the current pool against the roles you described and contact you within one business day.</p>
++<a href="{{ctaUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Available workers</a>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">If you did not send this request, you can ignore this e-mail.</p>
+diff --git a/apps/backend/src/modules/email/templates/website-workers-autoresponder.tr.hbs b/apps/backend/src/modules/email/templates/website-workers-autoresponder.tr.hbs
+new file mode 100644
+index 0000000..097823b
+--- /dev/null
++++ b/apps/backend/src/modules/email/templates/website-workers-autoresponder.tr.hbs
+@@ -0,0 +1,5 @@
++<h2>Mevcut çalışan talebinizi aldık</h2>
++<p>Merhaba{{#if name}} {{name}}{{/if}},</p>
++<p>Mevcut adaylarımıza gösterdiğiniz ilgi için teşekkürler. Bir danışmanımız güncel aday havuzunu tarif ettiğiniz pozisyonlarla karşılaştıracak ve bir iş günü içinde sizinle iletişime geçecektir.</p>
++<a href="{{ctaUrl}}" class="btn" style="display:inline-block;padding:12px 28px;margin:16px 0;background-color:#23285a;color:#ffffff;text-decoration:none;border-radius:6px;font-weight:600;font-size:14px;">Mevcut adaylar</a>
++<p style="margin-top:24px;color:#6b7280;font-size:13px;">Bu talebi siz göndermediyseniz bu e-postayı dikkate almayabilirsiniz.</p>
+diff --git a/apps/backend/src/modules/notifications/event-dispatcher.ts b/apps/backend/src/modules/notifications/event-dispatcher.ts
+index f2e5c6e..7da7a50 100644
+--- a/apps/backend/src/modules/notifications/event-dispatcher.ts
++++ b/apps/backend/src/modules/notifications/event-dispatcher.ts
+@@ -155,28 +155,30 @@ export class EventDispatcher {
+      * an active additional role, plus super-admins (matched by slug, because
+      * the CASL bypass leaves them with no `role_permissions` rows at all —
+      * a pure grant query drops the two people who most need these).
+      *
+      * The same query `NotificationsService.notifyModuleViewers` runs. It lives
+      * here too so an event can be resolved BY THE REGISTRY instead of by a
+      * caller reaching past it — which is what MARKETING_ACCOUNT_ISSUE did until
+      * this work package, and why it could not be switched off with the rest of
+      * the module's notifications.
+      */
+-    getModuleViewers: async (module: string) => {
++    getModuleViewers: async (module: string, opts?: { descendants?: string[] }) => {
+       const users = await this.prisma.user.findMany({
+         // `AND`, not a spread: the fragment owns an `OR` key, and assigning
+         // `where.OR` beside one is the 2026-08-10 collision (CLAUDE.md).
++        // `descendants` (WP3a): resource-key holders — the forms inbox's own
++        // audience holds `website.forms:VIEW`, never the module key.
+         where: {
+           isActive: true,
+           deletedAt: null,
+-          AND: [holdsModuleGrant(module, PermissionAction.VIEW)],
++          AND: [holdsModuleGrant(module, PermissionAction.VIEW, { descendants: opts?.descendants })],
+         },
+         select: { id: true },
+       });
+       return users.map((u) => u.id);
+     },
+   };
+ 
+   async dispatch(eventKey: EventKey | string, ctx: EventContext): Promise<void> {
+     const def: EventDefinition | undefined = EVENT_REGISTRY[eventKey];
+     if (!def) {
+diff --git a/apps/backend/src/modules/notifications/event-registry-coverage.spec.ts b/apps/backend/src/modules/notifications/event-registry-coverage.spec.ts
+index 40cd57c..88022bf 100644
+--- a/apps/backend/src/modules/notifications/event-registry-coverage.spec.ts
++++ b/apps/backend/src/modules/notifications/event-registry-coverage.spec.ts
+@@ -29,20 +29,42 @@ describe('EVENT_REGISTRY coverage', () => {
+       expect({ key, mailbox: def.mailbox }).toEqual({ key, mailbox: 'default' });
+     }
+   });
+ 
+   it('every whatsapp.campaign.* event points the bell at the campaign page', () => {
+     for (const [key, def] of Object.entries(EVENT_REGISTRY)) {
+       if (!key.startsWith('whatsapp.campaign.')) continue;
+       expect({ key, type: def.relatedEntityType }).toEqual({ key, type: 'whatsapp-campaign' });
+     }
+   });
++
++  /**
++   * WP3a — the website door's two enum members join the same rule: a declared
++   * type with no definition is a notification nobody receives, silently.
++   */
++  it('every WEBSITE_* NotificationType has at least one event definition', () => {
++    const uncovered = Object.values(NotificationType).filter((t) => t.startsWith('WEBSITE_') && !used.has(t));
++    expect(uncovered).toEqual([]);
++  });
++
++  it('every WEBSITE_* event is staff mail that lands on the forms inbox', () => {
++    const keys = Object.keys(EVENT_REGISTRY).filter((k) => k.startsWith('WEBSITE_'));
++    expect(keys.length).toBeGreaterThan(0);
++    for (const key of keys) {
++      const def = EVENT_REGISTRY[key];
++      expect({ key, mailbox: def.mailbox, entity: def.relatedEntityType }).toEqual({
++        key,
++        mailbox: 'default',
++        entity: 'website-submission',
++      });
++    }
++  });
+ });
+ 
+ /**
+  * The PUSH channel (WP7 R-P2).
+  *
+  * A browser push is the loudest thing this platform can do to a person: it
+  * survives a closed tab and rings a phone. The list below is therefore a
+  * CLOSED set, pinned here, so that adding `'PUSH'` to a seventh event is a
+  * failing test and a decision rather than a quiet commit.
+  */
+diff --git a/apps/backend/src/modules/notifications/event-registry-website.spec.ts b/apps/backend/src/modules/notifications/event-registry-website.spec.ts
+new file mode 100644
+index 0000000..c9bdf90
+--- /dev/null
++++ b/apps/backend/src/modules/notifications/event-registry-website.spec.ts
+@@ -0,0 +1,139 @@
++// apps/backend/src/modules/notifications/event-registry-website.spec.ts
++/**
++ * The website intake door's two events (WP3a, rulings P9/P10).
++ *
++ * WHAT IS PINNED AND WHY: both events are STAFF mail (mailbox 'default' — the
++ * registry default is the candidate chain), both land the bell on the forms
++ * inbox, the received notice reaches the inbox's own audience through the
++ * `website.forms` RESOURCE key (sales roles hold only that key, never the
++ * module key — P3/RC8), and the outage notice branches its words on `reason` so
++ * one enum value can carry five different alarms without five migrations.
++ */
++import { NotificationType } from '@prisma/client';
++import { WEBSITE_FORM_KEYS } from '@jobsadmire/constants';
++import { EVENT_REGISTRY, eventsForModule } from './event-registry';
++
++const helpers = () => ({
++  getSuperAdmins: jest.fn(async () => ['sa-1']),
++  getActiveStaff: jest.fn(async () => []),
++  getApprovers: jest.fn(async () => []),
++  getOfferLetterOwnerSigners: jest.fn(async () => []),
++  getWhatsappTemplateSubmitters: jest.fn(async () => []),
++  getModuleViewers: jest.fn(async () => ['viewer-1', 'sa-1']),
++});
++
++const received = () => EVENT_REGISTRY.WEBSITE_FORM_RECEIVED;
++const unavailable = () => EVENT_REGISTRY.WEBSITE_FORMS_UNAVAILABLE;
++
++describe('WEBSITE_FORM_RECEIVED', () => {
++  it('is a bell-only staff event filed under the website catalogue', () => {
++    expect(received().type).toBe(NotificationType.WEBSITE_FORM_RECEIVED);
++    expect(received().module).toBe('website');
++    expect(received().channels).toEqual(['IN_APP']);
++    expect(received().mailbox).toBe('default');
++    expect(received().relatedEntityType).toBe('website-submission');
++    expect(received().relatedEntityId?.({ submissionId: 's1' })).toBe('s1');
++  });
++
++  it('reaches the inbox audience through the website.forms RESOURCE key, plus the assignee', async () => {
++    const h = helpers();
++    const ids = await received().recipients({ assignedAgentId: 'agent-9' }, h);
++    expect(h.getModuleViewers).toHaveBeenCalledWith('website', { descendants: ['website.forms'] });
++    expect(ids).toEqual(['agent-9', 'viewer-1', 'sa-1']);
++    expect(await received().recipients({}, helpers())).toEqual(['viewer-1', 'sa-1']);
++  });
++
++  it('names the form and the person, and the inquiry number when there is one', () => {
++    const ctx = { formKey: 'hire', contactName: 'Ayşe Demir', inquiryNumber: 'INQ-2026-041', submissionId: 's1' };
++    expect(received().title(ctx)).toBe('New website hire workers request from Ayşe Demir');
++    expect(received().message(ctx)).toContain('INQ-2026-041');
++    expect(received().title({ formKey: 'nope' })).toBe('New website nope form');
++  });
++
++  it.each([...WEBSITE_FORM_KEYS])('has a human label for the %s form — never the bare key', (key) => {
++    expect(received().title({ formKey: key })).not.toContain(`${key} form`);
++  });
++
++  it('links the email to the submission row in the inbox', () => {
++    expect(received().emailLinkPath!({ submissionId: 's1' })).toBe('/admin/website/inbox?row=s1');
++    expect(received().emailLinkPath!({})).toBe('/admin/website/inbox');
++  });
++
++  it('exposes only documented, id-free placeholders to a custom body', () => {
++    const tpl = received().templateContext!(
++      { formKey: 'contact', contactName: 'Ali', inquiryNumber: 'INQ-2026-042', submissionId: 's1', email: 'a@b.c' },
++      { recipient: { firstName: 'H', fullName: 'H A', email: 'h@j.com' }, link: 'L', title: 'T', message: 'M' },
++    );
++    expect(tpl).toEqual({
++      form: { key: 'contact', label: 'Contact message' },
++      submission: { contactName: 'Ali', inquiryNumber: 'INQ-2026-042' },
++      recipient: { firstName: 'H', fullName: 'H A', email: 'h@j.com' },
++      link: 'L',
++    });
++    expect(JSON.stringify(received().sampleContext)).not.toMatch(/token|secret/i);
++  });
++});
++
++describe('WEBSITE_FORMS_UNAVAILABLE', () => {
++  it('is IN_APP + EMAIL to super-admins on the default mailbox with a shipped template', async () => {
++    expect(unavailable().channels).toEqual(['IN_APP', 'EMAIL']);
++    expect(unavailable().mailbox).toBe('default');
++    expect(unavailable().emailTemplate).toBe('website-forms-unavailable');
++    expect(await unavailable().recipients({}, helpers())).toEqual(['sa-1']);
++  });
++
++  it.each([
++    ['captchaDegraded', /captcha/i],
++    ['tripped', /paused/i],
++    ['untripped', /accepting again/i],
++    ['drought', /no website leads/i],
++    ['handlerFailed', /could not be filed/i],
++  ])('branches its title on reason=%s', (reason, re) => {
++    expect(unavailable().title({ reason, formKey: 'hire', count: 30, hours: 48 })).toMatch(re);
++    expect(unavailable().emailSubject!({ reason, formKey: 'hire' })).toMatch(/^\[Website\] /);
++  });
++
++  it('prints the burst count as a number', () => {
++    expect(unavailable().message({ reason: 'tripped', formKey: 'hire', count: 30 })).toContain('30 ');
++  });
++
++  /**
++   * X7 — the captcha service's four degraded reasons (`secretMissing`,
++   * `secretInvalid`, `httpError`, `unreachable`) each get human words; the
++   * enum value itself never reaches a super-admin's inbox unexplained.
++   */
++  it.each([
++    ['secretMissing', /no Turnstile secret/i],
++    ['secretInvalid', /rejected the Turnstile secret/i],
++    ['httpError', /answered with an error/i],
++    ['unreachable', /could not be reached/i],
++  ])('explains the captcha detail %s in words', (detail, re) => {
++    const msg = unavailable().message({ reason: 'captchaDegraded', detail });
++    expect(msg).toMatch(re);
++    expect(msg).not.toContain(`(${detail})`);
++  });
++
++  it('prints an unknown captcha detail verbatim rather than dropping it', () => {
++    expect(unavailable().message({ reason: 'captchaDegraded', detail: 'somethingNew' })).toContain('somethingNew');
++  });
++
++  it('lands on the inbox even without a submission', () => {
++    expect(unavailable().emailLinkPath!({})).toBe('/admin/website/inbox');
++  });
++});
++
++describe('the website catalogue', () => {
++  it('lists exactly the two WP3a events, each with the full catalogue fields', () => {
++    const defs = eventsForModule('website');
++    expect(defs.map((d) => d.key).sort()).toEqual(['WEBSITE_FORMS_UNAVAILABLE', 'WEBSITE_FORM_RECEIVED']);
++    for (const d of defs) {
++      expect(d.label).toBeTruthy();
++      expect(d.trigger).toBeTruthy();
++      expect(d.recipientsDescription).toBeTruthy();
++      expect(d.recipientsShort).toBeTruthy();
++      expect(d.placeholders).toEqual(expect.arrayContaining(['recipient.firstName', 'recipient.fullName', 'link']));
++      expect(d.sampleContext).toBeDefined();
++      expect(d.templateContext).toBeDefined();
++    }
++  });
++});
+diff --git a/apps/backend/src/modules/notifications/event-registry.ts b/apps/backend/src/modules/notifications/event-registry.ts
+index f13fc99..52fe3c4 100644
+--- a/apps/backend/src/modules/notifications/event-registry.ts
++++ b/apps/backend/src/modules/notifications/event-registry.ts
+@@ -57,21 +57,27 @@ export interface RecipientHelpers {
+    * P6 WP3 — everyone who can SEE a module: the holders of `<module>:VIEW`
+    * through a primary or an active additional role, plus super-admins (whose
+    * CASL bypass leaves them with no `role_permissions` rows at all).
+    *
+    * The same audience `NotificationsService.notifyModuleViewers` selects. It
+    * exists because MARKETING_ACCOUNT_ISSUE was the one marketing notification
+    * that bypassed the registry entirely — the health cron called
+    * `notifyModuleViewers` directly — which meant it could not be listed in the
+    * module's settings catalogue and could not be switched off with the rest.
+    */
+-  getModuleViewers(module: string): Promise<string[]>;
++  /**
++   * WP3a — `opts.descendants` widens the audience to holders of the named
++   * RESOURCE keys (the `holdsModuleGrant` option). Sales roles hold
++   * `website.forms:VIEW` and never the module key, so without it the forms
++   * inbox's own audience would resolve to super-admins alone — silently.
++   */
++  getModuleViewers(module: string, opts?: { descendants?: string[] }): Promise<string[]>;
+ }
+ 
+ export interface EventDefinition {
+   key: string;
+   type: NotificationType;
+   channels: EventChannel[];
+   recipients: (ctx: EventContext, helpers: RecipientHelpers) => Promise<string[]> | string[];
+   title: (ctx: EventContext) => string;
+   message: (ctx: EventContext) => string;
+   relatedEntityType?: string;
+@@ -2235,22 +2241,218 @@ const whatsappEvents: EventDefinition[] = [
+       }`.trim(),
+     message: (ctx) =>
+       asString(ctx.event) === 'inbound_stalled'
+         ? `No status webhook received for anything sent from this number in over ${Number(ctx.hoursSinceLastWebhook ?? 6)} hours. Confirm the WABA subscription and callback URL — WP6 made this the ONLY app on this number (R-M1), so silence here means nobody is receiving it, not "the other app has it".`
+         : `Meta reports quality ${asString(ctx.qualityRating, 'unknown')}${ctx.throughputLevel ? `, throughput ${asString(ctx.throughputLevel)}` : ''}. Check Settings → Numbers before sending anything in bulk.`,
+     relatedEntityType: 'whatsapp-number',
+     relatedEntityId: (ctx) => asString(ctx.phoneNumberId) || undefined,
+   },
+ ];
+ 
++// ── Website intake door (WP3a, 2026-09-19; rulings P9/P10) ─────────────────
++//
++// Two events, one module. WEBSITE_FORM_RECEIVED is the bell for a stored
++// submission; WEBSITE_FORMS_UNAVAILABLE is the ONE outage type, branched on
++// `ctx.reason`, because Postgres cannot drop an enum member and five alarms do
++// not deserve five permanent members. The EMITTER owns "once" (Redis SETNX in
++// `website-notify.service.ts`), exactly like `whatsapp.ai.budget_exhausted`;
++// nothing here throttles. The second human (WebsiteIntegrationConfig) is
++// mailed by the emitter directly — the dispatcher reaches User rows only.
++//
++// NO SUBMITTER PII IN THE BELL: a received notice fans out to every inbox
++// viewer, so it carries a name and a form label, never a phone or an e-mail.
++const WEBSITE_MODULE = 'website';
++const WEBSITE_COMMON_PLACEHOLDERS = ['recipient.firstName', 'recipient.fullName', 'link'];
++/** Must agree with the frontend resolver (`entity-path.ts`, P14: the inbox lives at /website/inbox). */
++const WEBSITE_INBOX_PATH = '/admin/website/inbox';
++
++/**
++ * Human label per public form key — the ten `WEBSITE_FORM_KEYS` of
++ * `@jobsadmire/constants` (pinned key-for-key by event-registry-website.spec.ts).
++ */
++const WEBSITE_FORM_LABELS: Record<string, string> = {
++  hire: 'Hire workers request',
++  contact: 'Contact message',
++  partner: 'Partner application',
++  workers: 'Available workers request',
++  careers: 'Careers application',
++  newsletter: 'Newsletter sign-up',
++  callback: 'Callback request',
++  visit: 'Office visit request',
++  calculator: 'Cost calculator quote',
++  fraud: 'Fraud report',
++};
++
++/**
++ * Human words for `WebsiteCaptchaDegradedReason` (website-captcha.service.ts;
++ * X7 added `secretInvalid`). The core passes the verdict's reason verbatim as
++ * `detail`; an enum value is not an explanation a super-admin can act on at
++ * 03:00, so each one is translated here and an unknown one is printed as-is
++ * rather than dropped.
++ */
++const WEBSITE_CAPTCHA_DETAIL_WORDS: Record<string, string> = {
++  secretMissing: 'no Turnstile secret is configured',
++  secretInvalid: 'Cloudflare rejected the Turnstile secret',
++  httpError: 'Cloudflare answered with an error',
++  unreachable: 'Cloudflare could not be reached',
++};
++
++function websiteFormLabel(ctx: EventContext): string {
++  const key = asString(ctx.formKey);
++  return WEBSITE_FORM_LABELS[key] ?? (key ? `${key} form` : 'website form');
++}
++
++function websiteSubmissionPath(ctx: EventContext): string {
++  const id = asString(ctx.submissionId);
++  return id ? `${WEBSITE_INBOX_PATH}?row=${id}` : WEBSITE_INBOX_PATH;
++}
++
++function websiteUnavailableTitle(ctx: EventContext): string {
++  const label = websiteFormLabel(ctx).toLowerCase();
++  switch (asString(ctx.reason)) {
++    case 'captchaDegraded':
++      return 'Website forms are running without captcha';
++    case 'tripped':
++      return `Website ${label} paused after a burst`;
++    case 'untripped':
++      return `Website ${label} is accepting again`;
++    case 'drought':
++      return `No website leads in ${Number(ctx.hours ?? 0)} hours`;
++    case 'handlerFailed':
++      return `Website ${label} could not be filed`;
++    default:
++      return 'Website forms need attention';
++  }
++}
++
++function websiteUnavailableMessage(ctx: EventContext): string {
++  const label = websiteFormLabel(ctx).toLowerCase();
++  const detail = asString(ctx.detail, 'no detail');
++  switch (asString(ctx.reason)) {
++    case 'captchaDegraded':
++      return `Turnstile could not verify submissions (${WEBSITE_CAPTCHA_DETAIL_WORDS[detail] ?? detail}). Forms are accepted behind the honeypot and dedupe only — check the Turnstile secret on Website → Integrations.`;
++    case 'tripped':
++      return `${Number(ctx.count ?? 0)} captcha-verified submissions to the ${label} inside one hour. It answers 429 with the WhatsApp fallback until the 60-minute window resets; review the burst in the inbox.`;
++    case 'untripped':
++      return `The abuse window on the ${label} expired and it is open again. Mark the burst as spam in the inbox if it was one.`;
++    case 'drought':
++      return `The last real submission arrived ${asString(ctx.lastSubmissionAt, 'never')}. Check the website, the write token and Turnstile on Website → Integrations — silence is the failure this alarm exists for.`;
++    case 'handlerFailed':
++      return `The submission is stored but its handler failed: ${detail}. Open the inbox and re-run it.`;
++    default:
++      return detail;
++  }
++}
++
++const SAMPLE_WEBSITE_RECIPIENT = { firstName: 'Haris', fullName: 'Haris Ali', email: 'you@jobsadmire.com' };
++const SAMPLE_WEBSITE_LINK = 'https://operations.jobsadmire.com/en/admin/website/inbox?row=sample';
++
++const websiteEvents: EventDefinition[] = [
++  {
++    key: 'WEBSITE_FORM_RECEIVED',
++    type: NotificationType.WEBSITE_FORM_RECEIVED,
++    module: WEBSITE_MODULE,
++    channels: ['IN_APP'],
++    mailbox: 'default',
++    // The inbox's own audience (`website.forms:VIEW` through the resource key —
++    // RC8 gives the three sales roles only that key), super-admins by the slug
++    // arm, and the salesperson the assignment engine put on the inquiry, who
++    // has to ring back.
++    recipients: async (ctx, helpers) => {
++      const viewers = await helpers.getModuleViewers(WEBSITE_MODULE, { descendants: ['website.forms'] });
++      const assignee = asString(ctx.assignedAgentId);
++      return assignee ? [assignee, ...viewers] : viewers;
++    },
++    title: (ctx) =>
++      `New website ${websiteFormLabel(ctx).toLowerCase()}${
++        ctx.contactName ? ` from ${asString(ctx.contactName)}` : ''
++      }`,
++    message: (ctx) =>
++      `${websiteFormLabel(ctx)} received from the website${
++        ctx.inquiryNumber ? ` and filed as ${asString(ctx.inquiryNumber)}` : ''
++      }. Open the inbox to read the submission.`,
++    relatedEntityType: 'website-submission',
++    relatedEntityId: (ctx) => asString(ctx.submissionId) || undefined,
++    label: 'Form received',
++    trigger: 'A visitor submits any form on jobsadmire.com and the door files it.',
++    recipientsDescription:
++      'Everyone who can view the website forms inbox, the assigned salesperson when the form became an inquiry, plus super-admins.',
++    recipientsShort: 'Inbox viewers',
++    placeholders: [
++      ...WEBSITE_COMMON_PLACEHOLDERS,
++      'form.key',
++      'form.label',
++      'submission.contactName',
++      'submission.inquiryNumber',
++    ],
++    sampleContext: {
++      form: { key: 'hire', label: 'Hire workers request' },
++      submission: { contactName: 'Ayşe Demir', inquiryNumber: 'INQ-2026-041' },
++      recipient: SAMPLE_WEBSITE_RECIPIENT,
++      link: SAMPLE_WEBSITE_LINK,
++    },
++    templateContext: (ctx, extra) => ({
++      form: { key: asString(ctx.formKey), label: websiteFormLabel(ctx) },
++      submission: {
++        contactName: asString(ctx.contactName, '(no name)'),
++        inquiryNumber: asString(ctx.inquiryNumber),
++      },
++      recipient: extra.recipient,
++      link: extra.link,
++    }),
++    emailLinkPath: websiteSubmissionPath,
++  },
++  {
++    key: 'WEBSITE_FORMS_UNAVAILABLE',
++    type: NotificationType.WEBSITE_FORMS_UNAVAILABLE,
++    module: WEBSITE_MODULE,
++    channels: ['IN_APP', 'EMAIL'],
++    mailbox: 'default',
++    // Super-admins, for the marketing/whatsapp reason: no `website:MANAGE_KEYS`
++    // grant is seeded to any role, so a grant query would address nobody.
++    recipients: async (_ctx, helpers) => helpers.getSuperAdmins(),
++    title: websiteUnavailableTitle,
++    message: websiteUnavailableMessage,
++    emailTemplate: 'website-forms-unavailable',
++    emailSubject: (ctx) => `[Website] ${websiteUnavailableTitle(ctx)}`,
++    relatedEntityType: 'website-submission',
++    relatedEntityId: (ctx) => asString(ctx.submissionId) || undefined,
++    label: 'Forms unavailable or degraded',
++    trigger:
++      'Captcha degrades, a form trips the abuse cap (and later recovers), no real lead arrives for two business days, or a stored submission cannot be filed.',
++    recipientsDescription:
++      'Super-admins, plus the second human named on Website → Integrations by direct e-mail.',
++    recipientsShort: 'Super-admins',
++    placeholders: [...WEBSITE_COMMON_PLACEHOLDERS, 'reason', 'form.key', 'form.label', 'detail'],
++    sampleContext: {
++      reason: 'tripped',
++      form: { key: 'hire', label: 'Hire workers request' },
++      detail: '30 captcha-verified submissions in one hour',
++      recipient: SAMPLE_WEBSITE_RECIPIENT,
++      link: 'https://operations.jobsadmire.com/en/admin/website/inbox',
++    },
++    templateContext: (ctx, extra) => ({
++      reason: asString(ctx.reason),
++      form: { key: asString(ctx.formKey), label: websiteFormLabel(ctx) },
++      detail: asString(ctx.detail),
++      recipient: extra.recipient,
++      link: extra.link,
++    }),
++    emailLinkPath: () => WEBSITE_INBOX_PATH,
++  },
++];
++
+ export const EVENT_REGISTRY: Record<string, EventDefinition> = Object.fromEntries(
+-  [...recruitmentEvents, ...projectEvents, ...marketingEvents, ...whatsappEvents].map((e) => [e.key, e]),
++  [...recruitmentEvents, ...projectEvents, ...marketingEvents, ...whatsappEvents, ...websiteEvents].map((e) => [
++    e.key,
++    e,
++  ]),
+ );
+ 
+ export type EventKey =
+   | 'HIRING_REQUEST_SUBMITTED'
+   | 'HIRING_REQUEST_ACKNOWLEDGED'
+   | 'HIRING_REQUEST_UNACKNOWLEDGED_SLA'
+   | 'HIRING_REQUEST_REVIEW_REQUESTED'
+   | 'HIRING_REQUEST_REVISIONS_REQUESTED'
+   | 'HIRING_REQUEST_APPROVED'
+   | 'HIRING_REQUEST_PUBLISHED'
+@@ -2337,21 +2539,25 @@ export type EventKey =
+   // migration — never `as any`, never a second migration.
+   | 'whatsapp.ai.budget_exhausted'
+   | 'whatsapp.ai.handoff'
+   | 'whatsapp.inquiry.captured'
+   // WhatsApp campaigns (WP5 T10). `pending_approval` rides the generic
+   // APPROVAL_REQUIRED type — no new NotificationType member for it. The other
+   // three close the WHATSAPP_* enum members the WP2a migration shipped unused.
+   | 'whatsapp.campaign.pending_approval'
+   | 'whatsapp.campaign.completed'
+   | 'whatsapp.campaign.paused'
+-  | 'whatsapp.number.alert';
++  | 'whatsapp.number.alert'
++  // Website intake door (WP3a). Both NotificationType members arrived with the
++  // 20260925120000_website_intake_door migration — never `as any`.
++  | 'WEBSITE_FORM_RECEIVED'
++  | 'WEBSITE_FORMS_UNAVAILABLE';
+ 
+ // Export the array shape too for tests that want to enumerate.
+ export { recruitmentEvents, marketingEvents };
+ 
+ /**
+  * Every event a module's `Settings → Notifications` screen lists, in catalogue
+  * order. An event qualifies by declaring `module` — which in practice means it
+  * also declares the rest of the catalogue fields, a pairing
+  * `event-registry.spec.ts` pins rather than trusts.
+  */
+diff --git a/apps/backend/src/modules/notifications/module-notification-seed.spec.ts b/apps/backend/src/modules/notifications/module-notification-seed.spec.ts
+index b0e61ff..3a53db6 100644
+--- a/apps/backend/src/modules/notifications/module-notification-seed.spec.ts
++++ b/apps/backend/src/modules/notifications/module-notification-seed.spec.ts
+@@ -97,43 +97,58 @@ describe('seedModuleNotificationSettings', () => {
+   });
+ 
+   it('only ever addresses a row by its event type', async () => {
+     const { client, rows } = fakeClient();
+     await seedModuleNotificationSettings(client);
+     for (const [key, row] of rows) expect(row.eventType).toBe(key);
+   });
+ });
+ 
+ describe('the seed table agrees with the event registry', () => {
+-  const defs = eventsForModule('marketing');
++  /**
++   * One block per module with a settings catalogue. `EMAIL_BY_DEFAULT` is the
++   * owner's decision per module: marketing (2026-09-12) emails only a failed
++   * publish; website (WP3a, P9) emails only the outage notice — the one thing
++   * the door can say when it is failing. Everything else is bell-only until the
++   * owner switches email on per event.
++   */
++  const MODULES = ['marketing', 'website'] as const;
++  const EMAIL_BY_DEFAULT: Record<(typeof MODULES)[number], NotificationType[]> = {
++    marketing: [NotificationType.MARKETING_POST_FAILED],
++    website: [NotificationType.WEBSITE_FORMS_UNAVAILABLE],
++  };
++  const rowsFor = (module: string) => MODULE_NOTIFICATION_SEED.filter((r) => r.module === module);
+ 
+-  it('seeds exactly the events the registry declares for marketing', () => {
+-    expect(MODULE_NOTIFICATION_SEED.map((r) => r.eventType).sort()).toEqual(
+-      defs.map((d) => d.type).sort(),
+-    );
++  it('files every row under a module that has a settings catalogue', () => {
++    expect(new Set(MODULE_NOTIFICATION_SEED.map((r) => r.module))).toEqual(new Set(MODULES));
+   });
+ 
+-  it('seeds every row with the channels its definition ships', () => {
+-    for (const row of MODULE_NOTIFICATION_SEED) {
+-      const def = defs.find((d) => d.type === row.eventType)!;
+-      expect({ eventType: row.eventType, inApp: row.inApp, email: row.email }).toEqual({
+-        eventType: row.eventType,
+-        inApp: def.channels.includes('IN_APP'),
+-        email: def.channels.includes('EMAIL'),
+-      });
+-    }
+-  });
++  describe.each(MODULES)('%s', (module) => {
++    const defs = eventsForModule(module);
++    const rows = rowsFor(module);
+ 
+-  it('emails exactly ONE marketing event by default — the owner switches the rest on per event', () => {
+-    expect(MODULE_NOTIFICATION_SEED.filter((r) => r.email).map((r) => r.eventType)).toEqual([
+-      NotificationType.MARKETING_POST_FAILED,
+-    ]);
+-  });
++    it('seeds exactly the events the registry declares', () => {
++      expect(rows.map((r) => r.eventType).sort()).toEqual(defs.map((d) => d.type).sort());
++    });
+ 
+-  it('leaves the bell ON everywhere — in-app is always available', () => {
+-    expect(MODULE_NOTIFICATION_SEED.every((r) => r.inApp)).toBe(true);
+-  });
++    it('seeds every row with the channels its definition ships', () => {
++      for (const row of rows) {
++        const def = defs.find((d) => d.type === row.eventType)!;
++        expect({ eventType: row.eventType, inApp: row.inApp, email: row.email }).toEqual({
++          eventType: row.eventType,
++          inApp: def.channels.includes('IN_APP'),
++          email: def.channels.includes('EMAIL'),
++        });
++      }
++    });
++
++    it('emails by default exactly the events the owner decided', () => {
++      expect(rows.filter((r) => r.email).map((r) => r.eventType).sort()).toEqual(
++        [...EMAIL_BY_DEFAULT[module]].sort(),
++      );
++    });
+ 
+-  it('files every row under the marketing module', () => {
+-    expect(MODULE_NOTIFICATION_SEED.every((r) => r.module === 'marketing')).toBe(true);
++    it('leaves the bell ON everywhere — in-app is always available', () => {
++      expect(rows.every((r) => r.inApp)).toBe(true);
++    });
+   });
+ });
+diff --git a/apps/backend/src/modules/upload/upload.service.ts b/apps/backend/src/modules/upload/upload.service.ts
+index c401381..14c0574 100644
+--- a/apps/backend/src/modules/upload/upload.service.ts
++++ b/apps/backend/src/modules/upload/upload.service.ts
+@@ -202,20 +202,40 @@ export class UploadService implements OnModuleInit {
+       await this.client.removeObject(this.bucket, key);
+       return true;
+     } catch (err) {
+       const code = (err as { code?: string })?.code;
+       if (code === 'NoSuchKey' || code === 'NotFound') return true;
+       console.warn(`[UploadService] Could not delete object ${key}:`, (err as Error)?.message);
+       return false;
+     }
+   }
+ 
++  /**
++   * Every object under `prefix` (recursive), with its last-modified time —
++   * the website purge's fraud-orphan sweep (WP3a Task 10) lists
++   * `website-fraud/` with it to find uploads no submission ever claimed. A
++   * listing is a read; the caller decides what, if anything, to delete.
++   * Rejects when MinIO is unreachable (the caller catches).
++   */
++  async listObjects(prefix: string): Promise<Array<{ key: string; lastModified: Date | null; size: number }>> {
++    const stream = this.client.listObjectsV2(this.bucket, prefix, true);
++    const out: Array<{ key: string; lastModified: Date | null; size: number }> = [];
++    return new Promise((resolve, reject) => {
++      stream.on('data', (obj: Minio.BucketItem) => {
++        if (!obj.name) return;
++        out.push({ key: obj.name, lastModified: obj.lastModified ?? null, size: obj.size ?? 0 });
++      });
++      stream.on('end', () => resolve(out));
++      stream.on('error', reject);
++    });
++  }
++
+   /** Download a file from MinIO and return it as a Buffer */
+   async getFileBuffer(key: string): Promise<Buffer> {
+     const stream = await this.client.getObject(this.bucket, key);
+     const chunks: Buffer[] = [];
+     return new Promise((resolve, reject) => {
+       stream.on('data', (chunk) => chunks.push(Buffer.from(chunk)));
+       stream.on('end', () => resolve(Buffer.concat(chunks)));
+       stream.on('error', reject);
+     });
+   }
+diff --git a/apps/backend/src/modules/website/newsletter/newsletter-token.ts b/apps/backend/src/modules/website/newsletter/newsletter-token.ts
+index 339e1e5..fa9b6a1 100644
+--- a/apps/backend/src/modules/website/newsletter/newsletter-token.ts
++++ b/apps/backend/src/modules/website/newsletter/newsletter-token.ts
+@@ -1,16 +1,24 @@
+ import { createHash, createHmac, randomBytes, timingSafeEqual } from 'crypto';
+ 
+ import type { WebsiteLocale } from '../dto/website-form-submit.dto';
+ 
+ /** Double opt-in window. */
+ export const NEWSLETTER_CONFIRM_TTL_MS = 48 * 60 * 60 * 1000;
++/**
++ * X12 — a PENDING address that asks again inside this window is told
++ * CONFIRMATION_SENT and gets no second mail: the first one is on its way, and
++ * a form that can be re-posted every second must not be a mail cannon aimed at
++ * someone else's inbox. Issue time is derived (`confirmExpiresAt − TTL`), no
++ * column.
++ */
++export const NEWSLETTER_RESEND_COOLDOWN_MS = 15 * 60 * 1000;
+ 
+ /**
+  * Website paths the mail links point at, PER LOCALE — a verbatim mirror of the
+  * website's `pathnames` table (`jobsadmire-website/src/i18n/routing.ts`, D16):
+  * TR is served at the root under its Turkish slug, EN under `/en` with the
+  * design slug. A TR link printed as `/newsletter/confirm` lands on the site's
+  * 404 catch-all, so the internal route key is never what a visitor sees.
+  * WP2 implements both pages; each forwards the token to Operations server-side.
+  */
+ export const NEWSLETTER_PATHS: Readonly<Record<'confirm' | 'unsubscribe', Readonly<Record<WebsiteLocale, string>>>> = {
+diff --git a/apps/backend/src/modules/website/newsletter/website-newsletter.service.spec.ts b/apps/backend/src/modules/website/newsletter/website-newsletter.service.spec.ts
+index 4ed9d13..d93534b 100644
+--- a/apps/backend/src/modules/website/newsletter/website-newsletter.service.spec.ts
++++ b/apps/backend/src/modules/website/newsletter/website-newsletter.service.spec.ts
+@@ -1,14 +1,14 @@
+ import { BadRequestException, GoneException } from '@nestjs/common';
+ import { WebsiteSubscriberStatus } from '@prisma/client';
+ 
+-import { hashToken, signUnsubscribeToken } from './newsletter-token';
++import { NEWSLETTER_CONFIRM_TTL_MS, hashToken, signUnsubscribeToken } from './newsletter-token';
+ import { WebsiteNewsletterService } from './website-newsletter.service';
+ 
+ type Row = {
+   id: string;
+   email: string;
+   locale: string | null;
+   status: WebsiteSubscriberStatus;
+   confirmTokenHash: string | null;
+   confirmExpiresAt: Date | null;
+   consentVersion?: string | null;
+@@ -114,20 +114,32 @@ describe('WebsiteNewsletterService.subscribe', () => {
+ 
+   it('a PENDING address that asks again gets a fresh token and a fresh mail (the first one may be lost)', async () => {
+     const { svc, store, notifications } = makeService([
+       { id: 'sub_9', email: 'a@b.io', locale: 'en', status: WebsiteSubscriberStatus.PENDING, confirmTokenHash: 'old', confirmExpiresAt: new Date(Date.now() + 1000) },
+     ]);
+     await expect(svc.subscribe({ ...SUB, email: 'a@b.io' })).resolves.toEqual({ subscriberId: 'sub_9', outcome: 'CONFIRMATION_SENT' });
+     expect(store[0].confirmTokenHash).not.toBe('old');
+     expect(notifications.queueEmail).toHaveBeenCalledTimes(1);
+   });
+ 
++  it('a PENDING address that asks again within 15 minutes is answered CONFIRMATION_SENT without a second mail (X12 cooldown)', async () => {
++    // Issue time is derived, not stored: confirmExpiresAt − NEWSLETTER_CONFIRM_TTL_MS.
++    const issuedFiveMinutesAgo = new Date(Date.now() - 5 * 60 * 1000 + NEWSLETTER_CONFIRM_TTL_MS);
++    const { svc, store, notifications, prisma } = makeService([
++      { id: 'sub_9', email: 'a@b.io', locale: 'en', status: WebsiteSubscriberStatus.PENDING, confirmTokenHash: 'recent', confirmExpiresAt: issuedFiveMinutesAgo },
++    ]);
++    await expect(svc.subscribe({ ...SUB, email: 'a@b.io' })).resolves.toEqual({ subscriberId: 'sub_9', outcome: 'CONFIRMATION_SENT' });
++    expect(store[0].confirmTokenHash).toBe('recent');
++    expect(prisma.websiteSubscriber.update).not.toHaveBeenCalled();
++    expect(notifications.queueEmail).not.toHaveBeenCalled();
++  });
++
+   it('a non-address is a 400 (a programming error — the catalog refuses it before the row)', async () => {
+     const { svc } = makeService();
+     await expect(svc.subscribe({ ...SUB, email: 'not-an-email' })).rejects.toBeInstanceOf(BadRequestException);
+   });
+ });
+ 
+ describe('WebsiteNewsletterService.confirm / unsubscribe', () => {
+   const TOKEN = 'tok-tok-tok-tok-tok-tok-tok-tok-';
+   const pending = (over: Partial<Row> = {}): Row => ({
+     id: 'sub_1',
+diff --git a/apps/backend/src/modules/website/newsletter/website-newsletter.service.ts b/apps/backend/src/modules/website/newsletter/website-newsletter.service.ts
+index 94aec84..0f98d51 100644
+--- a/apps/backend/src/modules/website/newsletter/website-newsletter.service.ts
++++ b/apps/backend/src/modules/website/newsletter/website-newsletter.service.ts
+@@ -11,20 +11,21 @@ import { isEmail } from 'class-validator';
+ 
+ import { PrismaService } from '../../../prisma/prisma.service';
+ import { hashIpOrNull, IP_HASH_DEV_SALT } from '../../../common/utils/ip-hash.util';
+ import { NotificationsService } from '../../notifications/notifications.service';
+ import type { WebsiteLocale } from '../dto/website-form-submit.dto';
+ import { websiteLocalePath, websiteSiteUrl } from '../website-site-url';
+ import {
+   NEWSLETTER_CONFIRM_TTL_MS,
+   NEWSLETTER_CONTACT_EMAIL,
+   NEWSLETTER_PATHS,
++  NEWSLETTER_RESEND_COOLDOWN_MS,
+   hashToken,
+   newConfirmToken,
+   signUnsubscribeToken,
+   verifyUnsubscribeToken,
+ } from './newsletter-token';
+ 
+ const SUBJECTS = {
+   confirm: {
+     en: 'Please confirm your JobsAdmire newsletter subscription',
+     tr: 'JobsAdmire bülten aboneliğinizi onaylayın',
+@@ -52,22 +53,25 @@ export type NewsletterUnsubscribeOutcome = 'UNSUBSCRIBED' | 'ALREADY_UNSUBSCRIBE
+  * Newsletter double opt-in (WP3a, P4 / D14). Public submitters have no User
+  * row, so every mail goes through `queueEmail` directly (never the
+  * dispatcher) from the DEFAULT mailbox, with an explicit locale (the
+  * careers-public autoresponder forgot it and ships EN only). Every mail
+  * carries RFC 8058 `List-Unsubscribe` + `List-Unsubscribe-Post`, and every
+  * link points at the WEBSITE (`WEBSITE_SITE_URL`, the site's own localised
+  * slug for the mail's locale), which forwards the token to this API
+  * server-side with the write token (I12).
+  *
+  * Controls against abuse of the confirm mail: a CONFIRMED address is never
+- * mailed again; identical payloads inside an hour collapse into one
+- * submission (core dedupe, P8); the per-form abuse trip (P10) caps the rest.
++ * mailed again; a PENDING one is not re-mailed inside
++ * `NEWSLETTER_RESEND_COOLDOWN_MS` (X12 — the issue time is derived from
++ * `confirmExpiresAt`, no schema change); identical payloads inside an hour
++ * collapse into one submission (core dedupe, P8); the per-form abuse trip
++ * (P10) caps the rest.
+  *
+  * Nothing here logs a token or a hash — only subscriber ids and locales.
+  */
+ @Injectable()
+ export class WebsiteNewsletterService {
+   private readonly logger = new Logger(WebsiteNewsletterService.name);
+ 
+   constructor(
+     private readonly prisma: PrismaService,
+     private readonly config: ConfigService,
+@@ -100,34 +104,45 @@ export class WebsiteNewsletterService {
+     return {
+       'List-Unsubscribe': `<${unsubscribeUrl}>, <mailto:${NEWSLETTER_CONTACT_EMAIL}?subject=unsubscribe>`,
+       'List-Unsubscribe-Post': 'List-Unsubscribe=One-Click',
+     };
+   }
+ 
+   private asLocale(value: string | null | undefined): WebsiteLocale {
+     return value === 'en' ? 'en' : 'tr';
+   }
+ 
++  /** X12: was the pending token issued inside the resend cooldown? (`confirmExpiresAt − TTL` is the issue time.) */
++  private confirmMailedRecently(confirmExpiresAt: Date | null): boolean {
++    if (!confirmExpiresAt) return false;
++    const issuedAt = confirmExpiresAt.getTime() - NEWSLETTER_CONFIRM_TTL_MS;
++    return Date.now() - issuedAt < NEWSLETTER_RESEND_COOLDOWN_MS;
++  }
++
+   // ─── subscribe (called by the NEWSLETTER handler) ─────────────────────
+ 
+   async subscribe(args: NewsletterSubscribeInput): Promise<{ subscriberId: string; outcome: NewsletterSubscribeOutcome }> {
+     const email = (args.email ?? '').trim().toLowerCase();
+     if (!email || email.length > 254 || !isEmail(email)) {
+       // The catalog refuses this before the submission row exists (RC4); reaching
+       // here is a programming error, not a visitor error.
+       throw new BadRequestException({ code: 'NEWSLETTER_INVALID_EMAIL', message: 'Please enter a valid e-mail address.' });
+     }
+ 
+     const existing = await this.prisma.websiteSubscriber.findUnique({ where: { email } });
+     if (existing?.status === WebsiteSubscriberStatus.CONFIRMED) {
+       return { subscriberId: existing.id, outcome: 'ALREADY_CONFIRMED' };
+     }
++    if (existing?.status === WebsiteSubscriberStatus.PENDING && this.confirmMailedRecently(existing.confirmExpiresAt)) {
++      // The first mail is still on its way; the visitor's answer is the same.
++      return { subscriberId: existing.id, outcome: 'CONFIRMATION_SENT' };
++    }
+ 
+     const token = newConfirmToken();
+     const salt = this.config.get<string>('IP_HASH_SALT', IP_HASH_DEV_SALT);
+     const data = {
+       status: WebsiteSubscriberStatus.PENDING,
+       locale: args.locale,
+       confirmTokenHash: hashToken(token),
+       confirmExpiresAt: new Date(Date.now() + NEWSLETTER_CONFIRM_TTL_MS),
+       confirmedAt: null,
+       unsubscribedAt: null,
+diff --git a/apps/backend/src/modules/website/website-abuse.service.spec.ts b/apps/backend/src/modules/website/website-abuse.service.spec.ts
+new file mode 100644
+index 0000000..5ae72b9
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-abuse.service.spec.ts
+@@ -0,0 +1,83 @@
++// apps/backend/src/modules/website/website-abuse.service.spec.ts
++/**
++ * The abuse auto-trip (P10; RC6: the ONE trip writer — ping and the door read
++ * its keys): captcha-verified counts per form in Redis, a 60-minute window,
++ * one SETNX that both trips the form and claims the trip notice. Redis down =
++ * fail OPEN (the door must never 429 because a cache died; the token, captcha
++ * and dedupe are the real gates).
++ */
++import { WebsiteAbuseService } from './website-abuse.service';
++import { WEBSITE_ABUSE_TRIP_THRESHOLD, WEBSITE_ABUSE_WINDOW_SEC } from './website-alarms.logic';
++
++function make(opts: { count?: number; setNx?: boolean; exists?: boolean; down?: boolean } = {}) {
++  const fail = async () => { throw new Error('redis down'); };
++  const redis = {
++    incr: jest.fn(opts.down ? fail : async (_k: string) => opts.count ?? 1),
++    expire: jest.fn(async (_k: string, _s: number) => undefined),
++    setNx: jest.fn(opts.down ? fail : async (_k: string, _v: string, _t: number) => opts.setNx ?? true),
++    set: jest.fn(async (_k: string, _v: string, _t?: number) => undefined),
++    exists: jest.fn(opts.down ? fail : async (_k: string) => opts.exists ?? false),
++    del: jest.fn(async (_k: string) => undefined),
++  };
++  const notify = { formsUnavailable: jest.fn(async (_i: Record<string, unknown>) => true) };
++  return { svc: new WebsiteAbuseService(redis as never, notify as never), redis, notify };
++}
++
++describe('WebsiteAbuseService.recordVerified', () => {
++  it('starts the 60-minute window on the first count', async () => {
++    const { svc, redis } = make({ count: 1 });
++    expect(await svc.recordVerified('hire')).toEqual({ count: 1, tripped: false, justTripped: false });
++    expect(redis.expire).toHaveBeenCalledWith('website:abuse:count:hire', WEBSITE_ABUSE_WINDOW_SEC);
++  });
++
++  it('does not restart the window on later counts', async () => {
++    const { svc, redis } = make({ count: 2 });
++    await svc.recordVerified('hire');
++    expect(redis.expire).not.toHaveBeenCalled();
++  });
++
++  it('trips at the threshold, announces it once, and notifies with the count', async () => {
++    const { svc, redis, notify } = make({ count: WEBSITE_ABUSE_TRIP_THRESHOLD });
++    expect(await svc.recordVerified('hire')).toEqual({ count: WEBSITE_ABUSE_TRIP_THRESHOLD, tripped: true, justTripped: true });
++    expect(redis.setNx).toHaveBeenCalledWith('website:abuse:tripped:hire', expect.any(String), WEBSITE_ABUSE_WINDOW_SEC);
++    expect(redis.set).toHaveBeenCalledWith('website:abuse:announced:hire', expect.any(String), expect.any(Number));
++    expect(notify.formsUnavailable).toHaveBeenCalledWith(expect.objectContaining({ reason: 'tripped', formKey: 'hire', count: WEBSITE_ABUSE_TRIP_THRESHOLD }));
++  });
++
++  it('says nothing when the form is already tripped', async () => {
++    const { svc, notify } = make({ count: WEBSITE_ABUSE_TRIP_THRESHOLD + 3, setNx: false });
++    expect(await svc.recordVerified('hire')).toEqual({ count: WEBSITE_ABUSE_TRIP_THRESHOLD + 3, tripped: true, justTripped: false });
++    expect(notify.formsUnavailable).not.toHaveBeenCalled();
++  });
++
++  it('fails open when Redis is down', async () => {
++    const { svc } = make({ down: true });
++    expect(await svc.recordVerified('hire')).toEqual({ count: 0, tripped: false, justTripped: false });
++  });
++
++  it('still reports the trip when the notify call rejects — the 429 switch is already set', async () => {
++    const { svc, notify } = make({ count: WEBSITE_ABUSE_TRIP_THRESHOLD });
++    notify.formsUnavailable.mockRejectedValueOnce(new Error('dispatcher down'));
++    expect(await svc.recordVerified('hire')).toEqual({ count: WEBSITE_ABUSE_TRIP_THRESHOLD, tripped: true, justTripped: true });
++  });
++});
++
++describe('WebsiteAbuseService.isTripped / trippedForms', () => {
++  it('reads the trip marker', async () => {
++    const { svc, redis } = make({ exists: true });
++    expect(await svc.isTripped('hire')).toBe(true);
++    expect(redis.exists).toHaveBeenCalledWith('website:abuse:tripped:hire');
++  });
++
++  it('never 429s because Redis is down', async () => {
++    const { svc } = make({ down: true });
++    expect(await svc.isTripped('hire')).toBe(false);
++    expect(await svc.trippedForms()).toEqual([]);
++  });
++
++  it('lists every tripped form for ping (P11) in WEBSITE_FORM_KEYS order', async () => {
++    const { svc, redis } = make();
++    redis.exists.mockImplementation(async (k: string) => k.endsWith(':hire') || k.endsWith(':fraud'));
++    expect(await svc.trippedForms()).toEqual(['hire', 'fraud']);
++  });
++});
+diff --git a/apps/backend/src/modules/website/website-abuse.service.ts b/apps/backend/src/modules/website/website-abuse.service.ts
+index 6dcaa10..65b89ed 100644
+--- a/apps/backend/src/modules/website/website-abuse.service.ts
++++ b/apps/backend/src/modules/website/website-abuse.service.ts
+@@ -1,28 +1,91 @@
+-import { Injectable } from '@nestjs/common';
++// apps/backend/src/modules/website/website-abuse.service.ts
++import { Injectable, Logger } from '@nestjs/common';
++import { WEBSITE_FORM_KEYS } from '@jobsadmire/constants';
++import { RedisService } from '../redis/redis.service';
++import {
++  shouldTrip,
++  websiteAbuseKeys,
++  WEBSITE_ABUSE_ANNOUNCED_TTL_SEC,
++  WEBSITE_ABUSE_WINDOW_SEC,
++} from './website-alarms.logic';
++import { WebsiteNotifyService } from './website-notify.service';
+ 
+ /**
+- * Abuse auto-trip for the public forms (P10, RC6). THIS COMMIT SHIPS THE CONTRACT ONLY:
+- * the door calls `isTripped` before persisting anything (→ 429 with the WhatsApp hint)
+- * and `recordVerified` after a new captcha-verified real row; Task 10 implements the
+- * Redis counters, the trip/untrip transitions and `trippedForms` for ping in this same
+- * file with its own spec, and injects this class into Task 4's WebsitePingService.
+- * Fail OPEN (a door that 429s because a cache died is the outage D11 is about): the
+- * shell answers "not tripped, not counted".
++ * Abuse auto-trip for the public forms (WP3a, P10; D11: "counts
++ * captcha-verified submissions only, resets after 60 min, notifies on
++ * trip/untrip"). RC6: this is the ONE trip writer — the door's 429 check and
++ * ping's `trippedForms` both read `websiteAbuseKeys().tripped`.
++ *
++ * THREE KEYS PER FORM, all in Redis because the counter is on the hot path of
++ * a public POST and a column write there would be the cost the rule exists to
++ * avoid (the `wa-ai.engine.ts` budget-notice argument):
++ *   count     — INCR, EXPIRE on the first hit → a rolling 60-minute window;
++ *   tripped   — SET NX EX 3600 when the count reaches the threshold. Winning
++ *               the SETNX IS the trip transition and IS the once-per-window
++ *               claim for the trip notice; its expiry IS the untrip;
++ *   announced — set beside the trip so `WebsiteAlarmsCron` can tell "this
++ *               form untripped and nobody said so" from "never tripped".
++ *
++ * FAIL OPEN. `RedisService` swallows its connect failure and rejects at call
++ * time; a door that 429s every visitor because a cache died is the outage D11
++ * is about. The token, captcha and dedupe are the gates; this is a cap.
+  */
+ @Injectable()
+ export class WebsiteAbuseService {
+-  /** Is this form answering 429 right now? */
+-  async isTripped(_formKey: string): Promise<boolean> {
+-    return false;
+-  }
++  private readonly logger = new Logger(WebsiteAbuseService.name);
++
++  constructor(
++    private readonly redis: RedisService,
++    private readonly notify: WebsiteNotifyService,
++  ) {}
+ 
+-  /** Count one captcha-VERIFIED, non-test submission. */
+-  async recordVerified(_formKey: string, _now: Date = new Date()): Promise<{ count: number; tripped: boolean; justTripped: boolean }> {
+-    return { count: 0, tripped: false, justTripped: false };
++  /** Is this form answering 429 right now? Never rejects (the core fails open too, but the contract is here). */
++  async isTripped(formKey: string): Promise<boolean> {
++    try {
++      return await this.redis.exists(websiteAbuseKeys(formKey).tripped);
++    } catch (err) {
++      this.logger.warn(`abuse marker unreadable for ${formKey} (${(err as Error)?.message}); treating as open`);
++      return false;
++    }
+   }
+ 
+-  /** Every tripped form, for `ping` (P11). */
++  /** Every tripped form, for `ping` (P11), in WEBSITE_FORM_KEYS order. */
+   async trippedForms(): Promise<string[]> {
+-    return [];
++    const out: string[] = [];
++    for (const key of WEBSITE_FORM_KEYS) {
++      if (await this.isTripped(key)) out.push(key);
++    }
++    return out;
++  }
++
++  /**
++   * Count one captcha-VERIFIED, non-test submission. Called by the door after
++   * captcha passed (not degraded) and after the row is written (RC21).
++   */
++  async recordVerified(formKey: string, now: Date = new Date()): Promise<{ count: number; tripped: boolean; justTripped: boolean }> {
++    const keys = websiteAbuseKeys(formKey);
++    let count = 0;
++    let justTripped = false;
++    try {
++      count = await this.redis.incr(keys.count);
++      if (count === 1) await this.redis.expire(keys.count, WEBSITE_ABUSE_WINDOW_SEC);
++      if (!shouldTrip(count)) return { count, tripped: false, justTripped: false };
++
++      justTripped = await this.redis.setNx(keys.tripped, now.toISOString(), WEBSITE_ABUSE_WINDOW_SEC);
++      if (justTripped) await this.redis.set(keys.announced, now.toISOString(), WEBSITE_ABUSE_ANNOUNCED_TTL_SEC);
++    } catch (err) {
++      this.logger.warn(`abuse counter unavailable for ${formKey} (${(err as Error)?.message}); not counting`);
++      return { count: 0, tripped: false, justTripped: false };
++    }
++    if (justTripped) {
++      // The 429 switch is already set; a notifier that rejects must not undo that answer.
++      this.logger.warn(`website form ${formKey} tripped after ${count} verified submissions in one hour`);
++      try {
++        await this.notify.formsUnavailable({ reason: 'tripped', formKey, count, now });
++      } catch (err) {
++        this.logger.warn(`trip notice for ${formKey} failed: ${(err as Error)?.message}`);
++      }
++    }
++    return { count, tripped: true, justTripped };
+   }
+ }
+diff --git a/apps/backend/src/modules/website/website-alarms.cron.spec.ts b/apps/backend/src/modules/website/website-alarms.cron.spec.ts
+new file mode 100644
+index 0000000..510bd52
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-alarms.cron.spec.ts
+@@ -0,0 +1,94 @@
++// apps/backend/src/modules/website/website-alarms.cron.spec.ts
++/**
++ * The five-minute alarm tick (P10): announces an UNTRIP once when a form's
++ * trip marker has expired but its "announced" marker is still there, and
++ * raises the lead-drought alarm during business hours. Reads the module flag
++ * per tick through Task 2's helper (P1, the `wa-campaign-runner` precedent).
++ */
++import { WebsiteAlarmsCron } from './website-alarms.cron';
++import { WEBSITE_MODULE_ENABLED_ENV } from './website-module-flag';
++
++function make(opts: { enabled?: boolean; tripped?: string[]; announced?: string[]; last?: Date | null } = {}) {
++  const tripped = new Set(opts.tripped ?? []);
++  const announced = new Set(opts.announced ?? []);
++  const redis = {
++    exists: jest.fn(async (k: string) => {
++      const form = k.split(':').pop()!;
++      return k.includes(':tripped:') ? tripped.has(form) : announced.has(form);
++    }),
++    del: jest.fn(async (k: string) => { announced.delete(k.split(':').pop()!); }),
++  };
++  const prisma = {
++    websiteFormSubmission: {
++      findFirst: jest.fn(async (_a: unknown) => (opts.last === undefined ? { createdAt: new Date() } : opts.last && { createdAt: opts.last })),
++    },
++  };
++  const notify = { formsUnavailable: jest.fn(async (_i: Record<string, unknown>) => true) };
++  const config = { get: jest.fn((k: string) => (k === WEBSITE_MODULE_ENABLED_ENV ? String(opts.enabled ?? true) : undefined)) };
++  return { cron: new WebsiteAlarmsCron(prisma as never, redis as never, notify as never, config as never), prisma, redis, notify, config };
++}
++
++const MON_10_IST = new Date('2026-09-21T07:00:00.000Z');
++const SAT_11_IST = new Date('2026-09-19T08:00:00.000Z');
++
++describe('WebsiteAlarmsCron', () => {
++  it('does nothing while the module flag is off', async () => {
++    const { cron, redis, prisma } = make({ enabled: false, announced: ['hire'] });
++    await cron.runTick(MON_10_IST);
++    expect(redis.exists).not.toHaveBeenCalled();
++    expect(prisma.websiteFormSubmission.findFirst).not.toHaveBeenCalled();
++  });
++
++  it('announces an untrip once — the trip marker is gone, the announced marker is not', async () => {
++    const { cron, notify, redis } = make({ announced: ['hire'] });
++    await cron.runTick(MON_10_IST);
++    expect(notify.formsUnavailable).toHaveBeenCalledWith(expect.objectContaining({ reason: 'untripped', formKey: 'hire' }));
++    expect(redis.del).toHaveBeenCalledWith('website:abuse:announced:hire');
++    notify.formsUnavailable.mockClear();
++    await cron.runTick(MON_10_IST);
++    expect(notify.formsUnavailable).not.toHaveBeenCalledWith(expect.objectContaining({ reason: 'untripped' }));
++  });
++
++  it('stays quiet about a form that is still tripped', async () => {
++    const { cron, notify } = make({ tripped: ['hire'], announced: ['hire'] });
++    await cron.runTick(MON_10_IST);
++    expect(notify.formsUnavailable).not.toHaveBeenCalledWith(expect.objectContaining({ reason: 'untripped' }));
++  });
++
++  it('raises the drought alarm in business hours when no real lead arrived for 48 h', async () => {
++    const { cron, notify, prisma } = make({ last: new Date('2026-09-18T07:00:00.000Z') });
++    await cron.runTick(MON_10_IST);
++    expect(prisma.websiteFormSubmission.findFirst).toHaveBeenCalledWith(
++      expect.objectContaining({ where: { isTest: false }, orderBy: { createdAt: 'desc' } }),
++    );
++    expect(notify.formsUnavailable).toHaveBeenCalledWith(
++      expect.objectContaining({ reason: 'drought', hours: 48, lastSubmissionAt: new Date('2026-09-18T07:00:00.000Z'), now: MON_10_IST }),
++    );
++  });
++
++  it('does not evaluate drought outside business hours', async () => {
++    const { cron, notify, prisma } = make({ last: null });
++    await cron.runTick(SAT_11_IST);
++    expect(prisma.websiteFormSubmission.findFirst).not.toHaveBeenCalled();
++    expect(notify.formsUnavailable).not.toHaveBeenCalled();
++  });
++
++  it('is not a drought when a lead arrived recently', async () => {
++    const { cron, notify } = make({ last: new Date('2026-09-21T06:00:00.000Z') });
++    await cron.runTick(MON_10_IST);
++    expect(notify.formsUnavailable).not.toHaveBeenCalled();
++  });
++
++  it('never lets Redis take the tick down', async () => {
++    const { cron, redis, notify } = make({ last: null });
++    redis.exists.mockRejectedValue(new Error('redis down'));
++    await expect(cron.runTick(MON_10_IST)).resolves.toBeUndefined();
++    expect(notify.formsUnavailable).toHaveBeenCalledWith(expect.objectContaining({ reason: 'drought' }));
++  });
++
++  it('never lets the database take the tick down either', async () => {
++    const { cron, prisma } = make({ last: null });
++    prisma.websiteFormSubmission.findFirst.mockRejectedValueOnce(new Error('db down'));
++    await expect(cron.runTick(MON_10_IST)).resolves.toBeUndefined();
++  });
++});
+diff --git a/apps/backend/src/modules/website/website-alarms.cron.ts b/apps/backend/src/modules/website/website-alarms.cron.ts
+new file mode 100644
+index 0000000..ee2468c
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-alarms.cron.ts
+@@ -0,0 +1,99 @@
++// apps/backend/src/modules/website/website-alarms.cron.ts
++import { Injectable, Logger } from '@nestjs/common';
++import { ConfigService } from '@nestjs/config';
++import { Cron } from '@nestjs/schedule';
++import { WEBSITE_FORM_KEYS } from '@jobsadmire/constants';
++import { PrismaService } from '../../prisma/prisma.service';
++import { RedisService } from '../redis/redis.service';
++import { websiteModuleEnabled } from './website-module-flag';
++import {
++  isLeadDrought,
++  isWithinWebsiteBusinessHours,
++  websiteAbuseKeys,
++  WEBSITE_DROUGHT_HOURS,
++} from './website-alarms.logic';
++import { WebsiteNotifyService } from './website-notify.service';
++
++/**
++ * Five-minute alarm tick for the website door (WP3a, P10).
++ *
++ * UNTRIP. A form's trip marker expires on its own (60 minutes); nothing fires
++ * on an expiry, so this tick is what turns "the marker is gone and the
++ * announced marker is not" into ONE `untripped` notice, deleting the announced
++ * marker as the claim. `WebsiteNotifyService` adds its own per-hour SETNX on
++ * top, so two containers racing a tick still say it once.
++ *
++ * DROUGHT. During business hours only: no real (`isTest: false`) submission
++ * for `WEBSITE_DROUGHT_HOURS` → `drought`, once per company day (the notify
++ * service cuts that key). "Never" counts as silence — a door that is on and
++ * has never heard a lead is exactly the failure D11 names.
++ *
++ * FLAG PER TICK (P1). `websiteModuleEnabled()` is a live `ConfigService.get`
++ * (Task 2's one reader of the variable), like the campaign runner's
++ * allowlist, so flipping the flag needs a container recreate and nothing
++ * else. Never throws; one bad arm must not stop the other.
++ */
++@Injectable()
++export class WebsiteAlarmsCron {
++  private readonly logger = new Logger(WebsiteAlarmsCron.name);
++  private running = false;
++
++  constructor(
++    private readonly prisma: PrismaService,
++    private readonly redis: RedisService,
++    private readonly notify: WebsiteNotifyService,
++    private readonly config: ConfigService,
++  ) {}
++
++  @Cron('0 */5 * * * *', { name: 'website-alarms' })
++  async tick(): Promise<void> {
++    if (this.running) return;
++    this.running = true;
++    try {
++      await this.runTick(new Date());
++    } catch (err) {
++      this.logger.warn(`website alarms tick failed: ${(err as Error)?.message}`);
++    } finally {
++      this.running = false;
++    }
++  }
++
++  async runTick(now: Date): Promise<void> {
++    if (!websiteModuleEnabled(this.config)) return;
++    await this.announceUntrips(now);
++    await this.checkDrought(now);
++  }
++
++  private async announceUntrips(now: Date): Promise<void> {
++    for (const formKey of WEBSITE_FORM_KEYS) {
++      try {
++        const keys = websiteAbuseKeys(formKey);
++        const tripped = await this.redis.exists(keys.tripped);
++        if (tripped) continue;
++        const announced = await this.redis.exists(keys.announced);
++        if (!announced) continue;
++        await this.redis.del(keys.announced);
++        await this.notify.formsUnavailable({ reason: 'untripped', formKey, now });
++        this.logger.log(`website form ${formKey} is accepting again`);
++      } catch (err) {
++        this.logger.warn(`untrip check failed for ${formKey}: ${(err as Error)?.message}`);
++      }
++    }
++  }
++
++  private async checkDrought(now: Date): Promise<void> {
++    if (!isWithinWebsiteBusinessHours(now)) return;
++    try {
++      const last = await this.prisma.websiteFormSubmission.findFirst({
++        where: { isTest: false },
++        orderBy: { createdAt: 'desc' },
++        select: { createdAt: true },
++      });
++      const lastSubmissionAt = last?.createdAt ?? null;
++      if (!isLeadDrought(lastSubmissionAt, now)) return;
++      await this.notify.formsUnavailable({ reason: 'drought', hours: WEBSITE_DROUGHT_HOURS, lastSubmissionAt, now });
++    } catch (err) {
++      this.logger.warn(`drought check failed: ${(err as Error)?.message}`);
++    }
++  }
++}
+diff --git a/apps/backend/src/modules/website/website-alarms.logic.spec.ts b/apps/backend/src/modules/website/website-alarms.logic.spec.ts
+new file mode 100644
+index 0000000..eded9f9
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-alarms.logic.spec.ts
+@@ -0,0 +1,60 @@
++// apps/backend/src/modules/website/website-alarms.logic.spec.ts
++import {
++  alarmOnceKey,
++  alarmOnceTtlSec,
++  isLeadDrought,
++  isWithinWebsiteBusinessHours,
++  shouldTrip,
++  WEBSITE_ABUSE_TRIP_THRESHOLD,
++  websiteAbuseKeys,
++} from './website-alarms.logic';
++
++describe('website abuse trip rule', () => {
++  it('trips at the threshold, not one before it', () => {
++    expect(shouldTrip(WEBSITE_ABUSE_TRIP_THRESHOLD - 1)).toBe(false);
++    expect(shouldTrip(WEBSITE_ABUSE_TRIP_THRESHOLD)).toBe(true);
++    expect(shouldTrip(WEBSITE_ABUSE_TRIP_THRESHOLD + 10)).toBe(true);
++  });
++
++  it('keys every form separately under the one RC6 key set', () => {
++    expect(websiteAbuseKeys('hire')).toEqual({
++      count: 'website:abuse:count:hire',
++      tripped: 'website:abuse:tripped:hire',
++      announced: 'website:abuse:announced:hire',
++    });
++  });
++});
++
++describe('website business hours (Europe/Istanbul, Mon–Fri 09:00–18:00)', () => {
++  it.each([
++    ['Mon 10:00 Istanbul (07:00Z)', '2026-09-21T07:00:00.000Z', true],
++    ['Mon 08:59 Istanbul (05:59Z)', '2026-09-21T05:59:00.000Z', false],
++    ['Mon 18:00 Istanbul (15:00Z) — exclusive end', '2026-09-21T15:00:00.000Z', false],
++    ['Sat 11:00 Istanbul', '2026-09-19T08:00:00.000Z', false],
++    ['Sun 22:30Z = Mon 01:30 Istanbul — day rolls with the zone', '2026-09-20T22:30:00.000Z', false],
++  ])('%s → %s', (_label, iso, expected) => {
++    expect(isWithinWebsiteBusinessHours(new Date(iso))).toBe(expected);
++  });
++});
++
++describe('lead drought', () => {
++  const now = new Date('2026-09-21T07:00:00.000Z');
++  it('is 48 hours of silence by default, and "never" counts as silence', () => {
++    expect(isLeadDrought(new Date('2026-09-19T07:00:00.001Z'), now)).toBe(false);
++    expect(isLeadDrought(new Date('2026-09-19T07:00:00.000Z'), now)).toBe(true);
++    expect(isLeadDrought(null, now)).toBe(true);
++  });
++});
++
++describe('once-per-window keys', () => {
++  const now = new Date('2026-09-21T22:30:00.000Z'); // Tue 01:30 Istanbul
++  it('cuts the drought key on the COMPANY day and gives it a day of life', () => {
++    expect(alarmOnceKey('drought', null, now)).toBe('website:alarm:drought:*:2026-09-22');
++    expect(alarmOnceTtlSec('drought')).toBe(86400);
++  });
++  it('keys the other reasons per form per rolling hour', () => {
++    expect(alarmOnceKey('tripped', 'hire', now)).toBe('website:alarm:tripped:hire');
++    expect(alarmOnceKey('captchaDegraded', undefined, now)).toBe('website:alarm:captchaDegraded:*');
++    expect(alarmOnceTtlSec('tripped')).toBe(3600);
++  });
++});
+diff --git a/apps/backend/src/modules/website/website-alarms.logic.ts b/apps/backend/src/modules/website/website-alarms.logic.ts
+new file mode 100644
+index 0000000..5c2a004
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-alarms.logic.ts
+@@ -0,0 +1,104 @@
++// apps/backend/src/modules/website/website-alarms.logic.ts
++/**
++ * The website door's alarm arithmetic (WP3a, rulings P10/P11; RC10: the
++ * thresholds live HERE, not in website.constants.ts) — pure, so the trip rule,
++ * the once-per-window keys and the business-hours clock can be pinned by a
++ * spec without Redis or a container clock.
++ *
++ * Every function takes `now`: containers run UTC and every answer here is
++ * zone-sensitive. `wallClockInZone` is COPIED from
++ * `whatsapp/logic/wa-business-hours.logic.ts` rather than imported — module
++ * isolation, the same reason that file copied it from call-center.
++ */
++
++/** Captcha-verified submissions per form inside one rolling hour before the form trips (P10). */
++export const WEBSITE_ABUSE_TRIP_THRESHOLD = 25;
++/** The counting window AND the trip duration — "resets after 60 min" (D11). */
++export const WEBSITE_ABUSE_WINDOW_SEC = 60 * 60;
++/** How long the "we announced a trip" marker outlives the trip, so the cron can announce the untrip. */
++export const WEBSITE_ABUSE_ANNOUNCED_TTL_SEC = 3 * 60 * 60;
++/** No real submission for this many wall-clock hours, checked during business hours, is a drought. */
++export const WEBSITE_DROUGHT_HOURS = 48;
++
++export type WebsiteUnavailableReason = 'captchaDegraded' | 'tripped' | 'untripped' | 'drought' | 'handlerFailed';
++
++export interface WebsiteBusinessHours {
++  tz: string;
++  /** 0 = Sunday … 6 = Saturday. */
++  weekdays: number[];
++  /** Inclusive, minutes from midnight in `tz`. */
++  startMin: number;
++  /** Exclusive, minutes from midnight in `tz`. */
++  endMin: number;
++}
++
++/** JobsAdmire is Istanbul-based; the drought alarm speaks only while someone is at a desk. */
++export const WEBSITE_BUSINESS_HOURS: WebsiteBusinessHours = Object.freeze({
++  tz: 'Europe/Istanbul',
++  weekdays: [1, 2, 3, 4, 5],
++  startMin: 9 * 60,
++  endMin: 18 * 60,
++});
++
++const WEEKDAY_INDEX: Readonly<Record<string, number>> = Object.freeze({
++  Sun: 0, Mon: 1, Tue: 2, Wed: 3, Thu: 4, Fri: 5, Sat: 6,
++});
++
++export function wallClockInZone(now: Date, tz: string): { minutesOfDay: number; weekday: number } {
++  const parts = new Intl.DateTimeFormat('en-US', {
++    timeZone: tz, hour: '2-digit', minute: '2-digit', hourCycle: 'h23', weekday: 'short',
++  }).formatToParts(now);
++  const get = (type: string) => parts.find((p) => p.type === type)?.value ?? '';
++  const hour = parseInt(get('hour'), 10) || 0;
++  const minute = parseInt(get('minute'), 10) || 0;
++  return { minutesOfDay: hour * 60 + minute, weekday: WEEKDAY_INDEX[get('weekday')] ?? 0 };
++}
++
++export function isWithinWebsiteBusinessHours(now: Date, hours: WebsiteBusinessHours = WEBSITE_BUSINESS_HOURS): boolean {
++  const { minutesOfDay, weekday } = wallClockInZone(now, hours.tz);
++  if (!hours.weekdays.includes(weekday)) return false;
++  return minutesOfDay >= hours.startMin && minutesOfDay < hours.endMin;
++}
++
++/** `YYYY-MM-DD` in the company zone — the drought alarm's once-per-day key. */
++export function websiteDayKey(now: Date, tz: string = WEBSITE_BUSINESS_HOURS.tz): string {
++  return new Intl.DateTimeFormat('en-CA', { timeZone: tz, year: 'numeric', month: '2-digit', day: '2-digit' }).format(now);
++}
++
++/** Redis keys for one form's abuse state (RC6 — the ONE key set; ping and the door read these). */
++export function websiteAbuseKeys(formKey: string) {
++  return {
++    count: `website:abuse:count:${formKey}`,
++    tripped: `website:abuse:tripped:${formKey}`,
++    announced: `website:abuse:announced:${formKey}`,
++  };
++}
++
++export function shouldTrip(count: number, threshold: number = WEBSITE_ABUSE_TRIP_THRESHOLD): boolean {
++  return count >= threshold;
++}
++
++/**
++ * The once-per-window key for an alarm. Drought is per COMPANY DAY (one bell a
++ * day while the silence lasts); everything else is per rolling hour per form.
++ * `*` stands in for "no particular form".
++ */
++export function alarmOnceKey(reason: WebsiteUnavailableReason, formKey: string | null | undefined, now: Date): string {
++  const form = formKey || '*';
++  return reason === 'drought'
++    ? `website:alarm:drought:${form}:${websiteDayKey(now)}`
++    : `website:alarm:${reason}:${form}`;
++}
++
++export function alarmOnceTtlSec(reason: WebsiteUnavailableReason): number {
++  return reason === 'drought' ? 24 * 60 * 60 : 60 * 60;
++}
++
++/**
++ * No real submission in `hours` wall-clock hours. `null` (never) IS a drought:
++ * a door that is on and has never heard a lead is the silence D11 describes.
++ */
++export function isLeadDrought(lastSubmissionAt: Date | null, now: Date, hours: number = WEBSITE_DROUGHT_HOURS): boolean {
++  if (!lastSubmissionAt) return true;
++  return now.getTime() - lastSubmissionAt.getTime() >= hours * 60 * 60 * 1000;
++}
+diff --git a/apps/backend/src/modules/website/website-autoresponder.service.spec.ts b/apps/backend/src/modules/website/website-autoresponder.service.spec.ts
+new file mode 100644
+index 0000000..d3f0d6a
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-autoresponder.service.spec.ts
+@@ -0,0 +1,138 @@
++// apps/backend/src/modules/website/website-autoresponder.service.spec.ts
++/**
++ * Autoresponders for the public forms (WP3a, P9; RC12: .hbs only, no per-form
++ * columns). Pinned: the eight non-careers, non-newsletter forms each SHIP an EN
++ * and a TR template on disk (a missing .hbs does not throw — `renderTemplate`
++ * warns and sends `<p>{{message}}</p>`, which looks like success), the locale
++ * is passed EXPLICITLY (careers-public's own autoresponder never passes one,
++ * so its .tr.hbs is dead), the mailbox is 'default', the CTA base comes from
++ * WEBSITE_SITE_URL through Task 9's `websiteSiteUrl` (RC11/RC28 — pinned in
++ * website-site-url.spec.ts, not here) and its PATH is the site's own slug for
++ * the mail's locale through `websiteLocalePath` (D16 — a TR link printed with
++ * the EN slug lands on the site's 404), and a test-token submission is never
++ * answered (P2).
++ */
++import { existsSync, readFileSync } from 'fs';
++import { join } from 'path';
++import {
++  WEBSITE_AUTORESPONDER_FORM_KEYS,
++  WEBSITE_AUTORESPONDER_PATHS,
++  WebsiteAutoresponderService,
++  websiteAutoresponderCtaUrl,
++  websiteAutoresponderSubject,
++  websiteAutoresponderTemplate,
++} from './website-autoresponder.service';
++
++const TEMPLATES_DIR = join(__dirname, '..', 'email', 'templates');
++
++function make(siteUrl: string | undefined = 'https://www.jobsadmire.com/') {
++  const notifications = { queueEmail: jest.fn(async (_o: Record<string, unknown>) => ({ queued: true })) };
++  const config = { get: jest.fn((k: string) => (k === 'WEBSITE_SITE_URL' ? siteUrl : undefined)) };
++  return { svc: new WebsiteAutoresponderService(notifications as never, config as never), notifications, config };
++}
++
++describe('website autoresponder templates', () => {
++  it('covers the eight non-careers, non-newsletter forms and nothing else', () => {
++    expect([...WEBSITE_AUTORESPONDER_FORM_KEYS].sort()).toEqual(
++      ['calculator', 'callback', 'contact', 'fraud', 'hire', 'partner', 'visit', 'workers'],
++    );
++    expect(websiteAutoresponderTemplate('careers')).toBeNull();
++    expect(websiteAutoresponderTemplate('newsletter')).toBeNull();
++    expect(websiteAutoresponderTemplate('hire')).toBe('website-hire-autoresponder');
++  });
++
++  it.each([...WEBSITE_AUTORESPONDER_FORM_KEYS])('%s ships an EN and a TR .hbs', (key) => {
++    const name = websiteAutoresponderTemplate(key)!;
++    expect(existsSync(join(TEMPLATES_DIR, `${name}.hbs`))).toBe(true);
++    expect(existsSync(join(TEMPLATES_DIR, `${name}.tr.hbs`))).toBe(true);
++  });
++
++  it.each([...WEBSITE_AUTORESPONDER_FORM_KEYS])('%s has a localised subject in both languages', (key) => {
++    expect(websiteAutoresponderSubject(key, 'en')).toBeTruthy();
++    expect(websiteAutoresponderSubject(key, 'tr')).toBeTruthy();
++    expect(websiteAutoresponderSubject(key, 'tr')).not.toBe(websiteAutoresponderSubject(key, 'en'));
++  });
++
++  /**
++   * The CTA is a `{{ctaUrl}}` the SERVICE computes from the locale-keyed slug
++   * table (a mirror of the website's `pathnames`, like NEWSLETTER_PATHS); no
++   * template hard-codes a slug, so the two locales cannot drift apart on disk.
++   */
++  it.each([...WEBSITE_AUTORESPONDER_FORM_KEYS])('%s never hard-codes a site path — the CTA is {{ctaUrl}}', (key) => {
++    const name = websiteAutoresponderTemplate(key)!;
++    for (const file of [`${name}.hbs`, `${name}.tr.hbs`]) {
++      const body = readFileSync(join(TEMPLATES_DIR, file), 'utf8');
++      const hasCta = key in WEBSITE_AUTORESPONDER_PATHS;
++      expect({ file, cta: body.includes('{{ctaUrl}}') }).toEqual({ file, cta: hasCta });
++      expect({ file, hardCoded: /\{\{siteUrl\}\}\/[a-z]/.test(body) }).toEqual({ file, hardCoded: false });
++    }
++  });
++
++  it('builds the CTA with the locale slug: TR at the root, EN under /en', () => {
++    const site = 'https://www.jobsadmire.com';
++    expect(websiteAutoresponderCtaUrl(site, 'hire', 'tr')).toBe('https://www.jobsadmire.com/isci-talebi');
++    expect(websiteAutoresponderCtaUrl(site, 'hire', 'en')).toBe('https://www.jobsadmire.com/en/hire-workers');
++    expect(websiteAutoresponderCtaUrl(site, 'contact', 'tr')).toBe('https://www.jobsadmire.com');
++    expect(websiteAutoresponderCtaUrl(site, 'contact', 'en')).toBe('https://www.jobsadmire.com/en');
++    expect(websiteAutoresponderCtaUrl(site, 'fraud', 'tr')).toBe('https://www.jobsadmire.com/temsilci-dogrulama');
++    expect(websiteAutoresponderCtaUrl(site, 'callback', 'en')).toBeNull();
++    expect(websiteAutoresponderCtaUrl(site, 'careers', 'en')).toBeNull();
++  });
++});
++
++describe('WebsiteAutoresponderService.send', () => {
++  it('queues a TR mail on the default mailbox with an explicit locale and the site URL', async () => {
++    const { svc, notifications } = make();
++    expect(await svc.send({ formKey: 'hire', locale: 'tr', to: 'ayse@example.com', name: 'Ayşe', isTest: false })).toBe(true);
++    expect(notifications.queueEmail).toHaveBeenCalledWith(
++      expect.objectContaining({
++        to: 'ayse@example.com',
++        template: 'website-hire-autoresponder',
++        locale: 'tr',
++        mailbox: 'default',
++        subject: websiteAutoresponderSubject('hire', 'tr'),
++        context: expect.objectContaining({
++          name: 'Ayşe',
++          locale: 'tr',
++          siteUrl: 'https://www.jobsadmire.com',
++          ctaUrl: 'https://www.jobsadmire.com/isci-talebi',
++        }),
++      }),
++    );
++    expect((notifications.queueEmail.mock.calls[0][0] as Record<string, unknown>).userId).toBeUndefined();
++  });
++
++  it('treats anything but tr as English, and falls back to the production site when WEBSITE_SITE_URL is unset', async () => {
++    const { svc, notifications } = make(undefined);
++    await svc.send({ formKey: 'contact', locale: 'de', to: 'a@b.c', name: null, isTest: false });
++    expect(notifications.queueEmail).toHaveBeenCalledWith(
++      expect.objectContaining({
++        locale: 'en',
++        context: expect.objectContaining({ siteUrl: 'https://www.jobsadmire.com', ctaUrl: 'https://www.jobsadmire.com/en' }),
++      }),
++    );
++  });
++
++  it('sends the callback mail with no CTA — there is no page to point at', async () => {
++    const { svc, notifications } = make();
++    await svc.send({ formKey: 'callback', locale: 'en', to: 'a@b.c', name: 'A', isTest: false });
++    expect((notifications.queueEmail.mock.calls[0][0] as { context: Record<string, unknown> }).context.ctaUrl).toBeNull();
++  });
++
++  it.each([
++    ['a test-token submission', { formKey: 'hire', to: 'a@b.c', isTest: true }],
++    ['a submission with no e-mail', { formKey: 'hire', to: null, isTest: false }],
++    ['a careers application (careers-public answers it)', { formKey: 'careers', to: 'a@b.c', isTest: false }],
++    ['a newsletter sign-up (the confirm mail is the answer)', { formKey: 'newsletter', to: 'a@b.c', isTest: false }],
++  ])('skips %s', async (_label, input) => {
++    const { svc, notifications } = make();
++    expect(await svc.send({ locale: 'en', name: null, ...input })).toBe(false);
++    expect(notifications.queueEmail).not.toHaveBeenCalled();
++  });
++
++  it('never throws — the row is already stored', async () => {
++    const { svc, notifications } = make();
++    notifications.queueEmail.mockRejectedValueOnce(new Error('queue down'));
++    expect(await svc.send({ formKey: 'visit', locale: 'en', to: 'a@b.c', name: 'A', isTest: false })).toBe(false);
++  });
++});
+diff --git a/apps/backend/src/modules/website/website-autoresponder.service.ts b/apps/backend/src/modules/website/website-autoresponder.service.ts
+index 8f829f1..940e230 100644
+--- a/apps/backend/src/modules/website/website-autoresponder.service.ts
++++ b/apps/backend/src/modules/website/website-autoresponder.service.ts
+@@ -1,19 +1,131 @@
++// apps/backend/src/modules/website/website-autoresponder.service.ts
+ import { Injectable, Logger } from '@nestjs/common';
++import { ConfigService } from '@nestjs/config';
++import { NotificationsService } from '../notifications/notifications.service';
++import type { WebsiteLocale } from './dto/website-form-submit.dto';
++import { websiteLocalePath, websiteSiteUrl } from './website-site-url';
+ 
+ /**
+- * Autoresponders for the public forms (P9). THIS COMMIT SHIPS THE CONTRACT ONLY: the
+- * forms core calls `send` after a successful non-dry-run handler unless the handler
+- * said `skipAutoresponder`; Task 10 implements the per-form EN/TR `.hbs` mail from the
+- * default mailbox in this same file with its own spec (careers and newsletter excluded —
+- * they mail their own). Never throws; returns whether a mail was queued.
++ * The forms that get a "we received it" mail from JobsAdmire (WP3a, P9).
++ *
++ * `careers` is answered by `CareersPublicService.apply` on the careers mailbox
++ * (P4) and `newsletter` by its own double-opt-in confirm mail — a second mail
++ * on either would be two answers to one click.
++ */
++export const WEBSITE_AUTORESPONDER_FORM_KEYS = [
++  'hire', 'contact', 'partner', 'workers', 'callback', 'visit', 'calculator', 'fraud',
++] as const;
++export type WebsiteAutoresponderFormKey = (typeof WEBSITE_AUTORESPONDER_FORM_KEYS)[number];
++
++/** Subjects are plain strings (`queueEmail` does not template them), so the caller localises. */
++const SUBJECTS: Record<WebsiteAutoresponderFormKey, { en: string; tr: string }> = {
++  hire: { en: 'We received your hiring request', tr: 'İşe alım talebinizi aldık' },
++  contact: { en: 'Thanks for contacting JobsAdmire', tr: 'JobsAdmire ile iletişime geçtiğiniz için teşekkürler' },
++  partner: { en: 'Your partnership application has arrived', tr: 'Ortaklık başvurunuz bize ulaştı' },
++  workers: { en: 'We received your request for available workers', tr: 'Mevcut çalışan talebinizi aldık' },
++  callback: { en: 'We will call you back', tr: 'Sizi geri arayacağız' },
++  visit: { en: 'Your office visit request', tr: 'Ofis ziyareti talebiniz' },
++  calculator: { en: 'Your cost estimate request', tr: 'Maliyet tahmini talebiniz' },
++  fraud: { en: 'We received your report', tr: 'Bildiriminizi aldık' },
++};
++
++/**
++ * Where each mail's CTA sends the visitor, PER LOCALE — a verbatim mirror of
++ * the website's `pathnames` table (`jobsadmire-website/src/i18n/routing.ts`,
++ * D16; `NEWSLETTER_PATHS` is the precedent): TR is served at the root under
++ * its Turkish slug, EN under `/en`. The templates print `{{ctaUrl}}` and never
++ * a slug, so the two locales cannot drift apart on disk. `callback` has no
++ * page to point at and no CTA.
++ */
++export const WEBSITE_AUTORESPONDER_PATHS: Readonly<Partial<Record<WebsiteAutoresponderFormKey, Readonly<Record<WebsiteLocale, string>>>>> = {
++  hire: { tr: '/isci-talebi', en: '/hire-workers' },
++  contact: { tr: '', en: '' },
++  partner: { tr: '/ortak-olun', en: '/partner-with-us' },
++  workers: { tr: '/adaylar', en: '/available-workers' },
++  visit: { tr: '/iletisim', en: '/contact' },
++  calculator: { tr: '/maliyet-hesaplayici', en: '/hiring-cost-calculator' },
++  fraud: { tr: '/temsilci-dogrulama', en: '/verify' },
++};
++
++function isAutoresponderKey(formKey: string): formKey is WebsiteAutoresponderFormKey {
++  return (WEBSITE_AUTORESPONDER_FORM_KEYS as readonly string[]).includes(formKey);
++}
++
++/** `website-<formKey>-autoresponder` (EN) with a `.tr.hbs` twin; null for forms answered elsewhere. */
++export function websiteAutoresponderTemplate(formKey: string): string | null {
++  return isAutoresponderKey(formKey) ? `website-${formKey}-autoresponder` : null;
++}
++
++export function websiteAutoresponderSubject(formKey: string, locale: 'en' | 'tr'): string {
++  if (!isAutoresponderKey(formKey)) return '';
++  return SUBJECTS[formKey][locale];
++}
++
++export function websiteLocale(locale: string | null | undefined): 'en' | 'tr' {
++  return locale === 'tr' ? 'tr' : 'en';
++}
++
++/** The absolute CTA for one form in one locale, or null when the form has no page to point at. */
++export function websiteAutoresponderCtaUrl(siteUrl: string, formKey: string, locale: WebsiteLocale): string | null {
++  if (!isAutoresponderKey(formKey)) return null;
++  const paths = WEBSITE_AUTORESPONDER_PATHS[formKey];
++  if (!paths) return null;
++  return websiteLocalePath(siteUrl, locale, paths[locale]);
++}
++
++/**
++ * Public submitters have no User row, so this goes through `queueEmail`
++ * directly (never the dispatcher, which resolves User ids) with NO `userId`
++ * — the processor then always sends. Locale is passed EXPLICITLY: the site is
++ * TR at the root and EN under /en, and careers-public's own autoresponder is
++ * EN-only precisely because it forgot to. The site base is Task 9's
++ * `websiteSiteUrl` (RC28) and the CTA path is the locale's own slug through
++ * `websiteLocalePath`. Transactional mail: no List-Unsubscribe headers.
++ *
++ * LOG HYGIENE: form keys only — never the address or the name.
+  */
+ @Injectable()
+ export class WebsiteAutoresponderService {
+   private readonly logger = new Logger(WebsiteAutoresponderService.name);
+ 
+-  async send(input: { formKey: string; locale?: string | null; to?: string | null; name?: string | null; isTest: boolean }): Promise<boolean> {
+-    if (input.isTest || !input.to) return false;
+-    this.logger.warn(`autoresponder for ${input.formKey} not sent: autoresponder service not wired yet (Task 10)`);
+-    return false;
++  constructor(
++    private readonly notifications: NotificationsService,
++    private readonly config: ConfigService,
++  ) {}
++
++  /** Returns whether a mail was queued. Never throws — the submission row is already committed. */
++  async send(input: {
++    formKey: string;
++    locale?: string | null;
++    to?: string | null;
++    name?: string | null;
++    isTest: boolean;
++  }): Promise<boolean> {
++    if (input.isTest) return false; // P2: the test token class is a dry run.
++    const to = input.to?.trim();
++    if (!to) return false;
++    const template = websiteAutoresponderTemplate(input.formKey);
++    if (!template) return false;
++    const locale = websiteLocale(input.locale);
++    const siteUrl = websiteSiteUrl(this.config);
++    try {
++      await this.notifications.queueEmail({
++        to,
++        subject: websiteAutoresponderSubject(input.formKey, locale),
++        template,
++        context: {
++          name: input.name?.trim() || '',
++          siteUrl,
++          ctaUrl: websiteAutoresponderCtaUrl(siteUrl, input.formKey, locale),
++          locale,
++        },
++        locale,
++        mailbox: 'default',
++      });
++      return true;
++    } catch (err) {
++      this.logger.warn(`website autoresponder (${input.formKey}) failed: ${(err as Error)?.message}`);
++      return false;
++    }
+   }
+ }
+diff --git a/apps/backend/src/modules/website/website-notify.service.spec.ts b/apps/backend/src/modules/website/website-notify.service.spec.ts
+new file mode 100644
+index 0000000..ca89925
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-notify.service.spec.ts
+@@ -0,0 +1,101 @@
++// apps/backend/src/modules/website/website-notify.service.spec.ts
++/**
++ * The one door between the website module and the notifications registry
++ * (the `WaNotifyService` shape; RC6: the ONLY emitter of website events).
++ * Three things are pinned: the second human is mailed DIRECTLY with the
++ * registry's own words (the dispatcher reaches User rows only — P9), an alarm
++ * fires once per window and the SETNX is the whole guarantee (P10), and
++ * nothing here ever throws into the public POST.
++ */
++import { WebsiteNotifyService } from './website-notify.service';
++
++function make(opts: { secondHuman?: { email: string; name: string } | null; setNx?: boolean | 'throw' } = {}) {
++  const events = { dispatch: jest.fn(async (_key: string, _ctx: Record<string, unknown>) => undefined) };
++  const notifications = { queueEmail: jest.fn(async (_o: Record<string, unknown>) => ({ queued: true })) };
++  const settings = { absoluteLink: jest.fn((p?: string) => (p ? `https://ops.test${p}` : undefined)) };
++  const websiteConfig = {
++    getOrCreate: jest.fn(async () => ({
++      secondHumanEmail: opts.secondHuman === null ? null : (opts.secondHuman?.email ?? 'second@jobsadmire.com'),
++      secondHumanName: opts.secondHuman === null ? null : (opts.secondHuman?.name ?? 'Second Human'),
++    })),
++  };
++  const redis = {
++    setNx: jest.fn(async (_k: string, _v: string, _ttl: number) => {
++      if (opts.setNx === 'throw') throw new Error('redis down');
++      return opts.setNx ?? true;
++    }),
++  };
++  const svc = new WebsiteNotifyService(events as never, notifications as never, settings as never, websiteConfig as never, redis as never);
++  return { svc, events, notifications, settings, websiteConfig, redis };
++}
++
++describe('WebsiteNotifyService.formReceived', () => {
++  it('dispatches the registry event and mails the second human the same words', async () => {
++    const { svc, events, notifications } = make();
++    await svc.formReceived({ submissionId: 's1', formKey: 'hire', contactName: 'Ayşe', inquiryNumber: 'INQ-2026-041', assignedAgentId: 'u1' });
++    expect(events.dispatch).toHaveBeenCalledWith('WEBSITE_FORM_RECEIVED', expect.objectContaining({ submissionId: 's1', formKey: 'hire', assignedAgentId: 'u1' }));
++    expect(notifications.queueEmail).toHaveBeenCalledTimes(1);
++    const job = notifications.queueEmail.mock.calls[0][0] as Record<string, unknown>;
++    expect(job.to).toBe('second@jobsadmire.com');
++    expect(job.mailbox).toBe('default');
++    expect(job.template).toBe('module-custom');
++    expect(job.subject).toBe('New website hire workers request from Ayşe');
++    const body = String((job.context as Record<string, unknown>).customBody);
++    // `defaultEmailBody` runs the href through Handlebars' escapeExpression, which
++    // encodes `=` as `&#x3D;` inside the attribute (every mail client decodes it;
++    // the marketing digests ship the same way) — assert the decoded link.
++    expect(body.replace(/&#x3D;/g, '=')).toContain('https://ops.test/admin/website/inbox?row=s1');
++    // The second human is greeted by the name on Website → Integrations.
++    expect(body).toContain('Hi Second Human,');
++    expect(job.userId).toBeUndefined();
++  });
++
++  it('sends nothing to a second human that is not configured', async () => {
++    const { svc, notifications } = make({ secondHuman: null });
++    await svc.formReceived({ submissionId: 's1', formKey: 'contact' });
++    expect(notifications.queueEmail).not.toHaveBeenCalled();
++  });
++
++  it('never throws — a dead dispatcher is a warning, not a 500 on the public POST', async () => {
++    const { svc, events } = make();
++    events.dispatch.mockRejectedValueOnce(new Error('boom'));
++    await expect(svc.formReceived({ submissionId: 's1', formKey: 'contact' })).resolves.toBeUndefined();
++  });
++
++  it('never throws when the second-human mail cannot be queued either', async () => {
++    const { svc, notifications, events } = make();
++    notifications.queueEmail.mockRejectedValueOnce(new Error('queue down'));
++    await expect(svc.formReceived({ submissionId: 's1', formKey: 'contact' })).resolves.toBeUndefined();
++    expect(events.dispatch).toHaveBeenCalledTimes(1);
++  });
++});
++
++describe('WebsiteNotifyService.formsUnavailable', () => {
++  it('fires once per window — the SETNX loser says nothing', async () => {
++    const { svc, events, redis, notifications } = make({ setNx: false });
++    expect(await svc.formsUnavailable({ reason: 'captchaDegraded', formKey: 'hire', detail: 'timeout' })).toBe(false);
++    expect(redis.setNx).toHaveBeenCalledWith('website:alarm:captchaDegraded:hire', expect.any(String), 3600);
++    expect(events.dispatch).not.toHaveBeenCalled();
++    expect(notifications.queueEmail).not.toHaveBeenCalled();
++  });
++
++  it('fires, dispatches and mails the second human when it wins the window', async () => {
++    const { svc, events, notifications } = make();
++    expect(await svc.formsUnavailable({ reason: 'tripped', formKey: 'hire', count: 30 })).toBe(true);
++    expect(events.dispatch).toHaveBeenCalledWith('WEBSITE_FORMS_UNAVAILABLE', expect.objectContaining({ reason: 'tripped', formKey: 'hire', count: 30 }));
++    const job = notifications.queueEmail.mock.calls[0][0] as Record<string, unknown>;
++    expect(job.subject).toBe('[Website] Website hire workers request paused after a burst');
++  });
++
++  it('keys the drought alarm by company day, not by the hour', async () => {
++    const { svc, redis } = make();
++    await svc.formsUnavailable({ reason: 'drought', hours: 48, lastSubmissionAt: null, now: new Date('2026-09-21T07:00:00.000Z') });
++    expect(redis.setNx).toHaveBeenCalledWith('website:alarm:drought:*:2026-09-21', expect.any(String), 86400);
++  });
++
++  it('fails OPEN when Redis is down — an alarm that cannot dedupe still alarms', async () => {
++    const { svc, events } = make({ setNx: 'throw' });
++    expect(await svc.formsUnavailable({ reason: 'handlerFailed', formKey: 'visit', submissionId: 's9', detail: 'x' })).toBe(true);
++    expect(events.dispatch).toHaveBeenCalledTimes(1);
++  });
++});
+diff --git a/apps/backend/src/modules/website/website-notify.service.ts b/apps/backend/src/modules/website/website-notify.service.ts
+index 12bb2f2..7d3b688 100644
+--- a/apps/backend/src/modules/website/website-notify.service.ts
++++ b/apps/backend/src/modules/website/website-notify.service.ts
+@@ -1,47 +1,138 @@
++// apps/backend/src/modules/website/website-notify.service.ts
+ import { Injectable, Logger } from '@nestjs/common';
++import { EventDispatcher } from '../notifications/event-dispatcher';
++import { EVENT_REGISTRY } from '../notifications/event-registry';
++import { NotificationSettingsService } from '../notifications/notification-settings.service';
++import { NotificationsService } from '../notifications/notifications.service';
++import { defaultEmailBody } from '../notifications/custom-template.logic';
++import { RedisService } from '../redis/redis.service';
++import { WebsiteIntegrationConfigService } from './website-integration-config.service';
++import { alarmOnceKey, alarmOnceTtlSec, WebsiteUnavailableReason } from './website-alarms.logic';
+ 
+-/** P9/P10 alarm reasons. Task 10 moves this type to `website-alarms.logic.ts` and imports it here. */
+-export type WebsiteUnavailableReason = 'captchaDegraded' | 'tripped' | 'untripped' | 'drought' | 'handlerFailed';
++export type { WebsiteUnavailableReason } from './website-alarms.logic';
+ 
+ export interface WebsiteFormReceivedInput {
+   submissionId: string;
+   formKey: string;
+   contactName?: string | null;
+   inquiryNumber?: string | null;
+   assignedAgentId?: string | null;
+ }
+ 
+ export interface WebsiteFormsUnavailableInput {
+   reason: WebsiteUnavailableReason;
+   formKey?: string | null;
+   submissionId?: string | null;
+   detail?: string | null;
+   count?: number;
+   hours?: number;
+   lastSubmissionAt?: Date | null;
+-  /** Injected by specs; the clock the once-per-day key is cut on. */
++  /** Injected by specs and the crons; the clock the once-per-day key is cut on. */
+   now?: Date;
+ }
+ 
+ /**
+- * The website module's ONE door to the notifications registry and to the second human
+- * (P9, RC6). THIS COMMIT SHIPS THE CONTRACT ONLY: the forms core (Task 6) is written and
+- * tested against these two methods, and Task 10 implements them (registry dispatch,
+- * SET NX EX once-per-window, the second-human `queueEmail`) in this same file with its
+- * own spec. Until then every call logs a WARN and does nothing — the row is already
+- * committed, so the lead is never lost, only unannounced. Both methods never throw.
++ * The one door between the website module and the notifications registry
++ * (WP3a; the `WaNotifyService` shape; RC6: nothing else in the module calls
++ * `EventDispatcher`). Dispatch, warn, never throw — every call here runs AFTER
++ * the submission row is committed, and nothing after the created row may
++ * throw (P8).
++ *
++ * THE SECOND HUMAN (P9, D25). `WebsiteIntegrationConfig.secondHumanEmail` is a
++ * fallback recipient for every website event, and is NOT a User: the
++ * dispatcher's EMAIL branch looks recipients up in `prisma.user`, so the only
++ * way to reach them is a direct `queueEmail` with no `userId` (the processor
++ * then skips the preference check and always sends). The words are the
++ * registry's own — `title(ctx)` / `message(ctx)` — laid out with
++ * `defaultEmailBody` in the `module-custom` layout, so the second human reads
++ * exactly what the bell says (greeted by `secondHumanName` when one is set).
++ * The link is the Operations inbox through `absoluteLink` / `APP_URL` (RC28) —
++ * this service never reads `WEBSITE_SITE_URL`.
++ *
++ * ONCE PER WINDOW (P10). The registry is throttle-free; the EMITTER owns
++ * "once" with `SET NX EX` — `whatsapp.ai.budget_exhausted`'s rule. A Redis
++ * outage fails OPEN here: an alarm that cannot dedupe is still an alarm.
++ *
++ * LOG HYGIENE: submission ids, form keys and reasons only — never a name, an
++ * address or a payload field.
+  */
+ @Injectable()
+ export class WebsiteNotifyService {
+   private readonly logger = new Logger(WebsiteNotifyService.name);
+ 
++  constructor(
++    private readonly events: EventDispatcher,
++    private readonly notifications: NotificationsService,
++    private readonly settings: NotificationSettingsService,
++    private readonly websiteConfig: WebsiteIntegrationConfigService,
++    private readonly redis: RedisService,
++  ) {}
++
+   async formReceived(input: WebsiteFormReceivedInput): Promise<void> {
+-    this.logger.warn(`WEBSITE_FORM_RECEIVED for ${input.formKey}/${input.submissionId} not delivered: notify service not wired yet (Task 10)`);
++    const ctx: Record<string, unknown> = {
++      submissionId: input.submissionId,
++      formKey: input.formKey,
++      contactName: input.contactName ?? undefined,
++      inquiryNumber: input.inquiryNumber ?? undefined,
++      assignedAgentId: input.assignedAgentId ?? undefined,
++    };
++    try {
++      await this.events.dispatch('WEBSITE_FORM_RECEIVED', ctx);
++    } catch (err) {
++      this.logger.warn(`WEBSITE_FORM_RECEIVED dispatch failed for ${input.submissionId}: ${(err as Error)?.message}`);
++    }
++    await this.secondHuman('WEBSITE_FORM_RECEIVED', ctx);
+   }
+ 
+   /** Returns whether the alarm fired (false = another emitter already spoke this window). */
+   async formsUnavailable(input: WebsiteFormsUnavailableInput): Promise<boolean> {
+-    this.logger.warn(`WEBSITE_FORMS_UNAVAILABLE(${input.reason}) for ${input.formKey ?? '*'} not delivered: notify service not wired yet (Task 10)`);
+-    return false;
++    const now = input.now ?? new Date();
++    const ctx: Record<string, unknown> = {
++      reason: input.reason,
++      formKey: input.formKey ?? undefined,
++      submissionId: input.submissionId ?? undefined,
++      detail: input.detail ?? undefined,
++      count: input.count,
++      hours: input.hours,
++      lastSubmissionAt: input.lastSubmissionAt ? input.lastSubmissionAt.toISOString() : undefined,
++    };
++    let won = true;
++    try {
++      won = await this.redis.setNx(alarmOnceKey(input.reason, input.formKey, now), now.toISOString(), alarmOnceTtlSec(input.reason));
++    } catch (err) {
++      this.logger.warn(`website alarm dedupe unavailable (${(err as Error)?.message}); firing ${input.reason} anyway`);
++    }
++    if (!won) return false;
++    try {
++      await this.events.dispatch('WEBSITE_FORMS_UNAVAILABLE', ctx);
++    } catch (err) {
++      this.logger.warn(`WEBSITE_FORMS_UNAVAILABLE(${input.reason}) dispatch failed: ${(err as Error)?.message}`);
++    }
++    await this.secondHuman('WEBSITE_FORMS_UNAVAILABLE', ctx);
++    return true;
++  }
++
++  private async secondHuman(key: 'WEBSITE_FORM_RECEIVED' | 'WEBSITE_FORMS_UNAVAILABLE', ctx: Record<string, unknown>): Promise<void> {
++    try {
++      const row = await this.websiteConfig.getOrCreate();
++      const to = row.secondHumanEmail?.trim();
++      if (!to) return;
++      const name = row.secondHumanName?.trim();
++      const def = EVENT_REGISTRY[key];
++      const title = def.title(ctx);
++      const message = def.message(ctx);
++      const link = this.settings.absoluteLink(def.emailLinkPath?.(ctx));
++      // `defaultEmailBody` escapes and paragraphises — a blank line is a new <p>.
++      const body = name ? `Hi ${name},\n\n${message}` : message;
++      await this.notifications.queueEmail({
++        to,
++        subject: def.emailSubject ? def.emailSubject(ctx) : title,
++        template: 'module-custom',
++        context: { title, message, customBody: defaultEmailBody(title, body, link), locale: 'en' },
++        mailbox: 'default',
++      });
++    } catch (err) {
++      this.logger.warn(`second-human mail for ${key} failed: ${(err as Error)?.message}`);
++    }
+   }
+ }
+diff --git a/apps/backend/src/modules/website/website-ping.service.spec.ts b/apps/backend/src/modules/website/website-ping.service.spec.ts
+index 573fdd4..f065f03 100644
+--- a/apps/backend/src/modules/website/website-ping.service.spec.ts
++++ b/apps/backend/src/modules/website/website-ping.service.spec.ts
+@@ -1,22 +1,21 @@
+ import { WebsitePingService } from './website-ping.service';
+ 
+ /**
+  * WP3a Task 4 (ruling P11 as amended by RC13) — the readiness facts the
+  * website's /api/site-health and the synthetic-lead heartbeat read, and what
+  * the WP3a gate checks before the flag flip (secondHumanConfigured).
+  *
+- * `trippedForms` is `[]` until Task 10 injects WebsiteAbuseService (RC6); the
+- * `build()` helper below is where that task adds its mock.
++ * `trippedForms` comes from WebsiteAbuseService (RC6), mocked in `build()`.
+  */
+ describe('WebsitePingService', () => {
+-  function build(over: { turnstile?: boolean; secondHuman?: boolean; last?: Date | null } = {}) {
++  function build(over: { turnstile?: boolean; secondHuman?: boolean; last?: Date | null; tripped?: string[] } = {}) {
+     const config = {
+       resolveSecrets: jest.fn(async () => ({
+         writeToken: 'w',
+         previousWriteToken: null,
+         previousWriteTokenExpiresAt: null,
+         testToken: 't',
+         turnstileSecret: over.turnstile ? 'secret' : null,
+         revalidateSecret: null,
+       })),
+       publicShape: jest.fn(async () => ({
+@@ -35,21 +34,23 @@ describe('WebsitePingService', () => {
+         updatedById: null,
+         createdAt: new Date('2026-09-19'),
+         updatedAt: new Date('2026-09-19'),
+       })),
+     };
+     const prisma = {
+       websiteFormSubmission: {
+         findFirst: jest.fn(async () => (over.last ? { createdAt: over.last } : null)),
+       },
+     };
+-    return { svc: new WebsitePingService(prisma as never, config as never), prisma, config };
++    // RC6/RC13: WebsiteAbuseService is the one trip writer; ping reads it.
++    const abuse = { trippedForms: jest.fn(async () => over.tripped ?? []) };
++    return { svc: new WebsitePingService(prisma as never, config as never, abuse as never), prisma, config, abuse };
+   }
+ 
+   it('returns the RC13 shape with the Phase-B facts null', async () => {
+     const last = new Date('2026-09-19T08:00:00.000Z');
+     const { svc, prisma } = build({ turnstile: true, secondHuman: true, last });
+     await expect(svc.ping('previous-write')).resolves.toEqual({
+       tokenClass: 'previous-write',
+       moduleEnabled: true,
+       captcha: 'configured',
+       secondHumanConfigured: true,
+@@ -81,11 +82,17 @@ describe('WebsitePingService', () => {
+     config.resolveSecrets.mockResolvedValueOnce({
+       writeToken: 'w',
+       previousWriteToken: null,
+       previousWriteTokenExpiresAt: null,
+       testToken: 't',
+       turnstileSecret: null,
+       revalidateSecret: null,
+     });
+     expect((await svc.ping('test')).captcha).toBe('missing');
+   });
++
++  it('lists the forms the abuse service says are tripped (P11)', async () => {
++    const { svc, abuse } = build({ tripped: ['hire', 'fraud'] });
++    await expect(svc.ping('write')).resolves.toMatchObject({ trippedForms: ['hire', 'fraud'] });
++    expect(abuse.trippedForms).toHaveBeenCalledTimes(1);
++  });
+ });
+diff --git a/apps/backend/src/modules/website/website-ping.service.ts b/apps/backend/src/modules/website/website-ping.service.ts
+index 1363c53..555fc7f 100644
+--- a/apps/backend/src/modules/website/website-ping.service.ts
++++ b/apps/backend/src/modules/website/website-ping.service.ts
+@@ -1,13 +1,14 @@
+ import { Injectable } from '@nestjs/common';
+ 
+ import { PrismaService } from '../../prisma/prisma.service';
++import { WebsiteAbuseService } from './website-abuse.service';
+ import { WebsiteIntegrationConfigService } from './website-integration-config.service';
+ import { WebsiteBearerClass } from './website.constants';
+ 
+ /**
+  * Ruling P11 as amended by RC13 — the WP3a shape. Phase-B facts are present and
+  * null so the website's reader never branches on absence.
+  */
+ export interface WebsitePingResult {
+   tokenClass: WebsiteBearerClass;
+   moduleEnabled: true;
+@@ -18,45 +19,47 @@ export interface WebsitePingResult {
+   lastSubmissionAt: string | null;
+   bucketPolicy: null;
+   lastCrmFeedAt: null;
+ }
+ 
+ /**
+  * Readiness facts for `GET /website/v1/ping` (D25: the website's /api/site-health
+  * and the synthetic-lead heartbeat both read this). It answers only behind
+  * WebsiteModuleEnabledGuard, so `moduleEnabled` is a literal true.
+  *
+- * `trippedForms` is `[]` in this commit: the abuse trip and its Redis keys are
+- * Task 10's `WebsiteAbuseService` (RC6), which that task injects here as the
+- * third constructor argument and reads through `abuse.trippedForms()`.
++ * `trippedForms` comes from `WebsiteAbuseService` (RC6: the one trip writer),
++ * which fails open — a Redis outage reads as "nothing tripped", never as a
++ * failed ping.
+  */
+ @Injectable()
+ export class WebsitePingService {
+   constructor(
+     private readonly prisma: PrismaService,
+     private readonly config: WebsiteIntegrationConfigService,
++    private readonly abuse: WebsiteAbuseService,
+   ) {}
+ 
+   async ping(tokenClass: WebsiteBearerClass): Promise<WebsitePingResult> {
+-    const [secrets, shape, last] = await Promise.all([
++    const [secrets, shape, last, trippedForms] = await Promise.all([
+       // Readiness = the secret DECRYPTS, not merely that a ciphertext is stored.
+       this.config.resolveSecrets(),
+       this.config.publicShape(),
+       // Real leads only — the heartbeat's isTest rows must not mask a drought.
+       this.prisma.websiteFormSubmission.findFirst({
+         where: { isTest: false },
+         orderBy: { createdAt: 'desc' },
+         select: { createdAt: true },
+       }),
++      this.abuse.trippedForms(),
+     ]);
+     return {
+       tokenClass,
+       moduleEnabled: true,
+       captcha: secrets.turnstileSecret ? 'configured' : 'missing',
+       secondHumanConfigured: Boolean(shape.secondHumanEmail),
+-      trippedForms: [],
++      trippedForms,
+       lastSubmissionAt: last ? last.createdAt.toISOString() : null,
+       bucketPolicy: null,
+       lastCrmFeedAt: null,
+     };
+   }
+ }
+diff --git a/apps/backend/src/modules/website/website-purge.cron.spec.ts b/apps/backend/src/modules/website/website-purge.cron.spec.ts
+new file mode 100644
+index 0000000..17ebbc2
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-purge.cron.spec.ts
+@@ -0,0 +1,164 @@
++// apps/backend/src/modules/website/website-purge.cron.spec.ts
++/**
++ * The 90-day purge (P10; RC5): rows whose `purgeAfter` has passed are deleted
++ * in batches; a FRAUD_REPORT row's private objects (payloadJson.fields.
++ * evidenceKeys, read through WebsiteFraudEvidenceService.evidenceKeysOf) go
++ * FIRST, and a row with ANY object that could not be removed is kept for the
++ * next night — a deleted pointer to a surviving object is an orphan nobody
++ * will ever sweep.
++ *
++ * The ORPHAN SWEEP (execution ruling): a visitor uploads evidence and never
++ * submits the form, so the object has no row and no purgeAfter. Every
++ * `website-fraud/` object older than 7 days that no submission's
++ * `payloadJson.fields.evidenceKeys` references is removed; counts only in the
++ * log.
++ */
++import { WebsitePurgeCron } from './website-purge.cron';
++import { WEBSITE_MODULE_ENABLED_ENV } from './website-module-flag';
++
++type Row = { id: string; payloadJson: unknown };
++type Obj = { key: string; lastModified: Date | null };
++
++function make(
++  opts: { enabled?: boolean; rows?: Row[]; gone?: (key: string) => boolean; objects?: Obj[]; referenced?: string[] } = {},
++) {
++  const rows = [...(opts.rows ?? [])];
++  const referenced = new Set(opts.referenced ?? []);
++  const prisma = {
++    websiteFormSubmission: {
++      findMany: jest.fn(async (_a: unknown) => rows.splice(0, 100)),
++      deleteMany: jest.fn(async (_a: unknown) => ({ count: 0 })),
++      count: jest.fn(async (args: { where: { payloadJson: { array_contains: string[] } } }) =>
++        referenced.has(args.where.payloadJson.array_contains[0]) ? 1 : 0,
++      ),
++    },
++  };
++  const upload = {
++    deleteFileChecked: jest.fn(async (key: string) => (opts.gone ? opts.gone(key) : true)),
++    listObjects: jest.fn(async (_prefix: string) => opts.objects ?? []),
++  };
++  const config = { get: jest.fn((k: string) => (k === WEBSITE_MODULE_ENABLED_ENV ? String(opts.enabled ?? true) : undefined)) };
++  return { cron: new WebsitePurgeCron(prisma as never, upload as never, config as never), prisma, upload };
++}
++
++const NOW = new Date('2026-12-20T04:30:00.000Z');
++const daysAgo = (n: number) => new Date(NOW.getTime() - n * 24 * 60 * 60 * 1000);
++const plain = (id: string): Row => ({ id, payloadJson: { fields: { name: 'A', email: 'a@b.c' } } });
++const fraud = (id: string, keys: string[]): Row => ({ id, payloadJson: { fields: { description: 'x', evidenceKeys: keys } } });
++
++describe('WebsitePurgeCron', () => {
++  it('skips the sweep while the module flag is off', async () => {
++    const { cron, prisma, upload } = make({ enabled: false, rows: [plain('s1')], objects: [{ key: 'website-fraud/x.jpg', lastModified: daysAgo(30) }] });
++    await cron.run(NOW);
++    expect(prisma.websiteFormSubmission.findMany).not.toHaveBeenCalled();
++    expect(upload.listObjects).not.toHaveBeenCalled();
++  });
++
++  it('selects only rows whose purgeAfter has passed, oldest first, in batches of 100, reading the payload', async () => {
++    const { cron, prisma } = make({ rows: [plain('s1')] });
++    await cron.run(NOW);
++    expect(prisma.websiteFormSubmission.findMany).toHaveBeenCalledWith({
++      where: { purgeAfter: { lte: NOW } },
++      select: { id: true, payloadJson: true },
++      orderBy: { purgeAfter: 'asc' },
++      take: 100,
++    });
++    expect(prisma.websiteFormSubmission.deleteMany).toHaveBeenCalledWith({ where: { id: { in: ['s1'] } } });
++  });
++
++  it('deletes every private object before the row that points at them', async () => {
++    const { cron, prisma, upload } = make({ rows: [fraud('s2', ['website-fraud/abc.jpg', 'website-fraud/def.pdf'])] });
++    await cron.run(NOW);
++    expect(upload.deleteFileChecked).toHaveBeenCalledWith('website-fraud/abc.jpg');
++    expect(upload.deleteFileChecked).toHaveBeenCalledWith('website-fraud/def.pdf');
++    expect(upload.deleteFileChecked.mock.invocationCallOrder[1]).toBeLessThan(prisma.websiteFormSubmission.deleteMany.mock.invocationCallOrder[0]);
++    expect(prisma.websiteFormSubmission.deleteMany).toHaveBeenCalledWith({ where: { id: { in: ['s2'] } } });
++  });
++
++  it('keeps a row with any object that could not be removed, so tomorrow retries it', async () => {
++    const { cron, prisma } = make({
++      rows: [fraud('s3', ['website-fraud/ok.jpg', 'website-fraud/stuck.jpg']), plain('s4')],
++      gone: (key) => !key.includes('stuck'),
++    });
++    await cron.run(NOW);
++    expect(prisma.websiteFormSubmission.deleteMany).toHaveBeenCalledWith({ where: { id: { in: ['s4'] } } });
++  });
++
++  it('ignores keys outside the website-fraud/ prefix — a hand-edited row cannot aim the purge at another bucket path', async () => {
++    const { cron, upload } = make({ rows: [fraud('s5', ['careers-cv/x.pdf'])] });
++    await cron.run(NOW);
++    expect(upload.deleteFileChecked).not.toHaveBeenCalled();
++  });
++
++  it('does nothing, quietly, when nothing is due', async () => {
++    const { cron, prisma } = make({ rows: [] });
++    await cron.run(NOW);
++    expect(prisma.websiteFormSubmission.deleteMany).not.toHaveBeenCalled();
++  });
++
++  it('never throws out of the tick', async () => {
++    const { cron, prisma } = make();
++    prisma.websiteFormSubmission.findMany.mockRejectedValueOnce(new Error('db down'));
++    await expect(cron.run(NOW)).resolves.toBeUndefined();
++  });
++});
++
++describe('WebsitePurgeCron — fraud-orphan sweep', () => {
++  it('removes website-fraud/ objects older than 7 days that no submission references, and nothing else', async () => {
++    const { cron, prisma, upload } = make({
++      objects: [
++        { key: 'website-fraud/orphan.jpg', lastModified: daysAgo(8) },
++        { key: 'website-fraud/fresh.jpg', lastModified: daysAgo(1) },
++        { key: 'website-fraud/live.pdf', lastModified: daysAgo(30) },
++        { key: 'website-fraud/undated.jpg', lastModified: null },
++      ],
++      referenced: ['website-fraud/live.pdf'],
++    });
++    await cron.run(NOW);
++    expect(upload.listObjects).toHaveBeenCalledWith('website-fraud/');
++    // The reference check is a JSON-path query on the stored payload envelope.
++    expect(prisma.websiteFormSubmission.count).toHaveBeenCalledWith({
++      where: { payloadJson: { path: ['fields', 'evidenceKeys'], array_contains: ['website-fraud/orphan.jpg'] } },
++    });
++    expect(prisma.websiteFormSubmission.count).toHaveBeenCalledWith({
++      where: { payloadJson: { path: ['fields', 'evidenceKeys'], array_contains: ['website-fraud/live.pdf'] } },
++    });
++    expect(prisma.websiteFormSubmission.count).toHaveBeenCalledTimes(2);
++    expect(upload.deleteFileChecked).toHaveBeenCalledTimes(1);
++    expect(upload.deleteFileChecked).toHaveBeenCalledWith('website-fraud/orphan.jpg');
++  });
++
++  it('exactly seven days old is not yet an orphan; a day more is', async () => {
++    const sevenDays = 7 * 24 * 60 * 60 * 1000;
++    const { cron, upload } = make({
++      objects: [
++        { key: 'website-fraud/edge.jpg', lastModified: new Date(NOW.getTime() - sevenDays) },
++        { key: 'website-fraud/over.jpg', lastModified: new Date(NOW.getTime() - sevenDays - 1) },
++      ],
++    });
++    await cron.run(NOW);
++    expect(upload.deleteFileChecked).toHaveBeenCalledTimes(1);
++    expect(upload.deleteFileChecked).toHaveBeenCalledWith('website-fraud/over.jpg');
++  });
++
++  it('never touches a listed key that is not under website-fraud/ — the listing is trusted only inside the prefix', async () => {
++    const { cron, upload } = make({ objects: [{ key: 'careers-cv/x.pdf', lastModified: daysAgo(30) }] });
++    await cron.run(NOW);
++    expect(upload.deleteFileChecked).not.toHaveBeenCalled();
++  });
++
++  it('runs AFTER the row purge and survives a listing failure', async () => {
++    const { cron, prisma, upload } = make({ rows: [plain('s1')] });
++    upload.listObjects.mockRejectedValueOnce(new Error('minio down'));
++    await expect(cron.run(NOW)).resolves.toBeUndefined();
++    expect(prisma.websiteFormSubmission.deleteMany).toHaveBeenCalledWith({ where: { id: { in: ['s1'] } } });
++    expect(prisma.websiteFormSubmission.deleteMany.mock.invocationCallOrder[0]).toBeLessThan(upload.listObjects.mock.invocationCallOrder[0]);
++  });
++
++  it('still sweeps orphans when the row purge itself failed', async () => {
++    const { cron, prisma, upload } = make({ objects: [{ key: 'website-fraud/orphan.jpg', lastModified: daysAgo(8) }] });
++    prisma.websiteFormSubmission.findMany.mockRejectedValueOnce(new Error('db down'));
++    await cron.run(NOW);
++    expect(upload.deleteFileChecked).toHaveBeenCalledWith('website-fraud/orphan.jpg');
++  });
++});
+diff --git a/apps/backend/src/modules/website/website-purge.cron.ts b/apps/backend/src/modules/website/website-purge.cron.ts
+new file mode 100644
+index 0000000..0ff16a7
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-purge.cron.ts
+@@ -0,0 +1,154 @@
++// apps/backend/src/modules/website/website-purge.cron.ts
++import { Injectable, Logger } from '@nestjs/common';
++import { ConfigService } from '@nestjs/config';
++import { Cron } from '@nestjs/schedule';
++import { PrismaService } from '../../prisma/prisma.service';
++import { UploadService } from '../upload/upload.service';
++import { FRAUD_EVIDENCE_KEY_PREFIX } from './fraud-evidence-file';
++import { WebsiteFraudEvidenceService } from './website-fraud-evidence.service';
++import { websiteModuleEnabled } from './website-module-flag';
++
++const BATCH_SIZE = 100;
++/** Ceiling per night, so a backlog is a few nights of work rather than one long transaction. */
++const MAX_BATCHES = 20;
++/**
++ * A `website-fraud/` object with no submission row is an upload the visitor
++ * never followed with a form (or a row the purge above already removed). It
++ * gets a week: long enough for the slowest form session and for a re-run of a
++ * FAILED fraud row, short enough that the private bucket never accumulates
++ * strangers' screenshots.
++ */
++export const WEBSITE_FRAUD_ORPHAN_AGE_MS = 7 * 24 * 60 * 60 * 1000;
++
++/**
++ * The website door's 90-day purge (WP3a, P10; D11: `purgeAfter` = 90 days
++ * after HANDLED, set by the core's `runHandler`). Daily at 04:30 UTC —
++ * deliberately not 03:00, which is `CareersRetentionCron`'s slot
++ * (`EVERY_DAY_AT_3AM`), so the two sweeps never share a minute of MinIO and
++ * Postgres.
++ *
++ * HARD DELETE of the submission row: `payloadJson` IS the personal data
++ * (names, phones, e-mails, a fraud report's evidence), and everything the
++ * business keeps — the Inquiry, the applicant, the subscriber — is its own
++ * row with its own retention. A FRAUD_REPORT row names up to three private
++ * objects under `website-fraud/` in `payloadJson.fields.evidenceKeys` (RC5;
++ * read through `WebsiteFraudEvidenceService.evidenceKeysOf`, which re-applies
++ * the prefix lock) that nothing else references, so the objects go FIRST with
++ * `deleteFileChecked`, and a row with ANY object that could not be removed is
++ * KEPT for the next night: deleting the pointer would leave an orphan no
++ * sweep can find.
++ *
++ * THE ORPHAN SWEEP runs second: every `website-fraud/` object older than
++ * `WEBSITE_FRAUD_ORPHAN_AGE_MS` that no submission's
++ * `payloadJson.fields.evidenceKeys` references (a JSON-path count per
++ * candidate — candidates are rare, the table is not scanned) is removed. The
++ * log carries counts only; an object key is a visitor's private file name.
++ *
++ * `WebsiteSubscriber` is not purged here: an UNSUBSCRIBED row is the proof we
++ * honoured the request, and a CONFIRMED one is live consent.
++ *
++ * Reads the module flag per tick (P1). Never throws; each arm has its own
++ * try/catch so a database outage does not stop the sweep, nor the reverse.
++ */
++@Injectable()
++export class WebsitePurgeCron {
++  private readonly logger = new Logger(WebsitePurgeCron.name);
++  private running = false;
++
++  constructor(
++    private readonly prisma: PrismaService,
++    private readonly upload: UploadService,
++    private readonly config: ConfigService,
++  ) {}
++
++  @Cron('0 30 4 * * *', { name: 'website-purge' })
++  async tick(): Promise<void> {
++    if (this.running) return;
++    this.running = true;
++    try {
++      await this.run(new Date());
++    } finally {
++      this.running = false;
++    }
++  }
++
++  async run(now: Date): Promise<void> {
++    if (!websiteModuleEnabled(this.config)) {
++      this.logger.log('website purge skipped — the website module is off');
++      return;
++    }
++    await this.purgeRows(now);
++    await this.sweepOrphans(now);
++  }
++
++  private async purgeRows(now: Date): Promise<void> {
++    let deleted = 0;
++    let kept = 0;
++    let objects = 0;
++    try {
++      for (let batch = 0; batch < MAX_BATCHES; batch += 1) {
++        const rows = await this.prisma.websiteFormSubmission.findMany({
++          where: { purgeAfter: { lte: now } },
++          select: { id: true, payloadJson: true },
++          orderBy: { purgeAfter: 'asc' },
++          take: BATCH_SIZE,
++        });
++        if (rows.length === 0) break;
++
++        const deletable: string[] = [];
++        for (const row of rows) {
++          const keys = WebsiteFraudEvidenceService.evidenceKeysOf(row.payloadJson);
++          let allGone = true;
++          for (const key of keys) {
++            const gone = await this.upload.deleteFileChecked(key);
++            if (gone) objects += 1;
++            else allGone = false;
++          }
++          if (allGone) deletable.push(row.id);
++          else kept += 1;
++        }
++        if (deletable.length) {
++          await this.prisma.websiteFormSubmission.deleteMany({ where: { id: { in: deletable } } });
++          deleted += deletable.length;
++        }
++        // Every row in this batch was kept: the next read returns the same rows.
++        if (deletable.length === 0 || rows.length < BATCH_SIZE) break;
++      }
++      if (deleted || kept) {
++        this.logger.log(`website purge — deleted ${deleted} submission(s) past purgeAfter, removed ${objects} object(s), kept ${kept} whose object could not be removed`);
++      }
++    } catch (err) {
++      this.logger.error(`website purge failed: ${(err as Error)?.message}`);
++    }
++  }
++
++  private async sweepOrphans(now: Date): Promise<void> {
++    let removed = 0;
++    let referenced = 0;
++    let stuck = 0;
++    try {
++      const cutoff = now.getTime() - WEBSITE_FRAUD_ORPHAN_AGE_MS;
++      const objects = await this.upload.listObjects(FRAUD_EVIDENCE_KEY_PREFIX);
++      for (const obj of objects) {
++        // The listing is trusted only inside the prefix, and an undated object
++        // cannot be judged old.
++        if (!obj.key.startsWith(FRAUD_EVIDENCE_KEY_PREFIX)) continue;
++        if (!obj.lastModified || obj.lastModified.getTime() >= cutoff) continue;
++        const refs = await this.prisma.websiteFormSubmission.count({
++          where: { payloadJson: { path: ['fields', 'evidenceKeys'], array_contains: [obj.key] } },
++        });
++        if (refs > 0) {
++          referenced += 1;
++          continue;
++        }
++        if (await this.upload.deleteFileChecked(obj.key)) removed += 1;
++        else stuck += 1;
++      }
++      if (removed || referenced || stuck) {
++        this.logger.log(`website fraud-orphan sweep — removed ${removed} object(s) older than 7 days with no submission, ${referenced} still referenced, ${stuck} could not be removed`);
++      }
++    } catch (err) {
++      this.logger.error(`website fraud-orphan sweep failed: ${(err as Error)?.message}`);
++    }
++  }
++}
+diff --git a/apps/backend/src/modules/website/website.module.ts b/apps/backend/src/modules/website/website.module.ts
+index 0fb3a32..0087066 100644
+--- a/apps/backend/src/modules/website/website.module.ts
++++ b/apps/backend/src/modules/website/website.module.ts
+@@ -25,20 +25,22 @@ import { CareersPublicModule } from '../careers-public/careers-public.module';
+ import { UploadModule } from '../upload/upload.module';
+ import { CareersApplyHandler } from './handlers/careers-apply.handler';
+ import { FraudReportHandler } from './handlers/fraud-report.handler';
+ import { WebsiteFraudEvidenceService } from './website-fraud-evidence.service';
+ import { WebsitePublicUploadsController } from './website-public-uploads.controller';
+ import { WebsiteFormsEvidenceController } from './website-forms-evidence.controller';
+ import { NotificationsModule } from '../notifications/notifications.module';
+ import { NewsletterHandler } from './handlers/newsletter.handler';
+ import { WebsiteNewsletterService } from './newsletter/website-newsletter.service';
+ import { WebsitePublicNewsletterController } from './newsletter/website-public-newsletter.controller';
++import { WebsiteAlarmsCron } from './website-alarms.cron';
++import { WebsitePurgeCron } from './website-purge.cron';
+ 
+ /**
+  * The Website module (WP3a, 2026-09-19 — PRD §5.12, §7.10).
+  *
+  * Serves jobsadmire.com: in WP3a the public INTAKE door (`/website/v1/*`, a
+  * Bearer-token machine surface the website calls server-side), the forms
+  * inbox and the integrations/token settings; in Phase B the CMS the site reads
+  * its content from (pages, strings, collections, blog, media, navigation).
+  *
+  * ALWAYS IMPORTED, WHATEVER `WEBSITE_MODULE_ENABLED` SAYS (ruling P1). The
+@@ -102,20 +104,24 @@ import { WebsitePublicNewsletterController } from './newsletter/website-public-n
+     WebsiteAutoresponderService,
+     WebsiteFormsService,
+     WebsiteInquiryHandler,
+     WebsiteFormsInboxService,
+     CareersApplyHandler,
+     FraudReportHandler,
+     WebsiteFraudEvidenceService,
+     // Task 9
+     WebsiteNewsletterService,
+     NewsletterHandler,
++    // Task 10: the two flag-gated crons (P1/P10). The notify / abuse /
++    // autoresponder providers above are Task 6's names with this task's bodies.
++    WebsiteAlarmsCron,
++    WebsitePurgeCron,
+   ],
+   exports: [WebsiteIntegrationConfigService],
+ })
+ export class WebsiteModule {
+   constructor(registry: PermissionRegistry) {
+     registry.register({
+       name: 'website',
+       label: 'Website',
+       description:
+         'The public website (jobsadmire.com): the forms it submits into Operations, the tokens and ' +
+diff --git a/apps/frontend/src/lib/notifications/entity-path.spec.ts b/apps/frontend/src/lib/notifications/entity-path.spec.ts
+index be413fc..1b5c790 100644
+--- a/apps/frontend/src/lib/notifications/entity-path.spec.ts
++++ b/apps/frontend/src/lib/notifications/entity-path.spec.ts
+@@ -201,20 +201,30 @@ describe('resolveNotificationHref — every marketing notification lands', () =>
+ 
+   it('honours the locale', () => {
+     expect(
+       resolveNotificationHref('tr', {
+         type: 'MARKETING_POST_FAILED',
+         relatedEntityType: 'SocialPost',
+         relatedEntityId: 'p1',
+       }),
+     ).toBe('/tr/admin/marketing/posts/p1?panel=errors');
+   });
++
++  it('opens the website inbox on the submission row — the inbox has no detail route in WP3a', () => {
++    expect(
++      resolveNotificationHref('tr', {
++        type: 'WEBSITE_FORM_RECEIVED',
++        relatedEntityType: 'website-submission',
++        relatedEntityId: 'sub1',
++      }),
++    ).toBe('/tr/admin/website/inbox?row=sub1');
++  });
+ });
+ 
+ describe('resolveNotificationHref — rows with no usable entity', () => {
+   /**
+    * Every type below was a DEAD CLICK before this module: the row carries no
+    * entity (or one nothing maps), so the old resolvers returned null and the
+    * click only marked it read.
+    */
+   const FALLBACKS: Array<[string, string]> = [
+     ['MARKETING_POST_FAILED', `${ROOT}/marketing/posts`],
+@@ -234,20 +244,23 @@ describe('resolveNotificationHref — rows with no usable entity', () => {
+     ['HRM_LEAVE_ACCRUED', `${ROOT}/my-hr`],
+     ['HRM_LATE_CHECKIN', `${ROOT}/my-hr`],
+     ['COMMUNICATION_LOGGED', `${ROOT}/communications`],
+     ['HIRING_REQUEST_APPROVED', `${ROOT}/internal-recruitment/requests`],
+     ['APPLICANT_RECEIVED', `${ROOT}/internal-recruitment/applicants`],
+     ['OFFER_ACCEPTED', `${ROOT}/internal-recruitment/offers`],
+     ['MARKET_RESEARCH_STALE', `${ROOT}/internal-recruitment/market-research`],
+     ['ISKUR_POSTING_FAILED', `${ROOT}/internal-recruitment/iskur-postings`],
+     ['WHATSAPP_CAMPAIGN_COMPLETED', `${ROOT}/whatsapp/campaigns`],
+     ['WHATSAPP_MESSAGE_RECEIVED', `${ROOT}/whatsapp`],
++    // Website intake door (WP3a) — both events land on the forms inbox.
++    ['WEBSITE_FORM_RECEIVED', `${ROOT}/website/inbox`],
++    ['WEBSITE_FORMS_UNAVAILABLE', `${ROOT}/website/inbox`],
+   ];
+ 
+   it.each(FALLBACKS)('%s falls back to %s', (type, expected) => {
+     expect(resolveNotificationHref(LOCALE, { type })).toBe(expected);
+   });
+ 
+   it('prefers the ENTITY over the type fallback whenever the row has one', () => {
+     // COMMUNICATION_LOGGED is filed against whatever record the comment was on.
+     expect(
+       resolveNotificationHref(LOCALE, {
+@@ -295,20 +308,22 @@ describe('getEntityPath', () => {
+     ['HrmOvertimeRequest', 'o1', `${ROOT}/hrm/overtime`],
+     ['HrmInternShift', 'is1', `${ROOT}/hrm/intern-shifts`],
+     ['HrmFreelancerWork', 'fw1', `${ROOT}/hrm/freelancer-work`],
+     ['HrmBankChangeRequest', 'b1', `${ROOT}/hrm/bank-changes`],
+     ['HrmPayslip', 'ps1', `${ROOT}/my-hr`],
+     ['HrmPayrollAdjustment', 'pa1', `${ROOT}/my-hr`],
+     ['HrmContractSignature', 'cs1', `${ROOT}/my-hr`],
+     ['whatsapp-conversation', 'c1', `${ROOT}/whatsapp?c=c1`],
+     ['whatsapp-campaign', 'wc1', `${ROOT}/whatsapp/campaigns/wc1`],
+     ['user', 'u1', `${ROOT}/users/u1`],
++    ['website-submission', 'sub1', `${ROOT}/website/inbox?row=sub1`],
++    ['WebsiteFormSubmission', 'sub1', `${ROOT}/website/inbox?row=sub1`],
+   ])('%s#%s → %s', (entityType, id, expected) => {
+     expect(getEntityPath(LOCALE, entityType, id)).toBe(expected);
+   });
+ 
+   it('is case-insensitive about the entity type — the backend spells them both ways', () => {
+     expect(getEntityPath(LOCALE, 'SOCIALPOST', 'p1')).toBe(getEntityPath(LOCALE, 'socialpost', 'p1'));
+   });
+ 
+   it('returns null for an entity this app has no screen for', () => {
+     expect(getEntityPath(LOCALE, 'placement', 'x1')).toBeNull();
+diff --git a/apps/frontend/src/lib/notifications/entity-path.ts b/apps/frontend/src/lib/notifications/entity-path.ts
+index 1410554..b7f1c1b 100644
+--- a/apps/frontend/src/lib/notifications/entity-path.ts
++++ b/apps/frontend/src/lib/notifications/entity-path.ts
+@@ -118,20 +118,26 @@ export function getEntityPath(
+   // Conversations open the inbox with the chat selected — the page reads `?c=`.
+   if (type === 'whatsapp-conversation' || type === 'waconversation')
+     return `${base}/whatsapp?c=${entityId}`;
+   if (type === 'whatsapp-template' || type === 'watemplate')
+     return `${base}/whatsapp/templates/${entityId}`;
+   if (type === 'whatsapp-campaign' || type === 'wacampaign')
+     return `${base}/whatsapp/campaigns/${entityId}`;
+   if (type === 'whatsapp-number' || type === 'waphonenumber')
+     return `${base}/whatsapp/settings/numbers`;
+ 
++  // ── Website ──────────────────────────────────────────────────────────────
++  // The forms inbox has no detail route in WP3a; `?row=` opens the submission's
++  // side panel. Mirrors `emailLinkPath` on the WEBSITE_* definitions.
++  if (type === 'website-submission' || type === 'websiteformsubmission')
++    return entityId ? `${base}/website/inbox?row=${entityId}` : `${base}/website/inbox`;
++
+   return null;
+ }
+ 
+ /**
+  * Query string a notification TYPE wants on top of its entity path.
+  *
+  * The entity says WHICH post; the type says which part of it the reader was
+  * summoned to. A submitted post should open on its review panel, a failed one on
+  * its per-platform errors, a comment on the thread it belongs to — landing all
+  * three on the same silent detail page is how "clickable" becomes "somewhere
+@@ -195,20 +201,22 @@ const TYPE_FALLBACKS: Array<[string, string]> = [
+   ['BUDGET_', '/projects'],
+   ['CAMPAIGN_', '/projects/campaigns'],
+   // A comment logged against a record. The entity it was filed on is the right
+   // landing whenever the row carries one; the log itself is the fallback.
+   ['COMMUNICATION_LOGGED', '/communications'],
+   // WhatsApp
+   ['WHATSAPP_CAMPAIGN_', '/whatsapp/campaigns'],
+   ['WHATSAPP_TEMPLATE_', '/whatsapp/templates'],
+   ['WHATSAPP_NUMBER_', '/whatsapp/settings/numbers'],
+   ['WHATSAPP_', '/whatsapp'],
++  // Website intake door (WP3a) — every website event belongs in the inbox.
++  ['WEBSITE_', '/website/inbox'],
+ ];
+ 
+ /**
+  * The href a notification click should go to, or null when the app genuinely has
+  * nowhere to send the reader (the click then only marks it as read).
+  *
+  * Entity first, type second: the entity is the specific thing that happened; the
+  * type only ever knows the neighbourhood.
+  */
+ export function resolveNotificationHref(

@@ -28,7 +28,7 @@ const eslintConfig = defineConfig([
       ],
     },
   },
-  // The only files that fail the rule and should: two component tests that render the chrome
+  // The only files that fail the rule and should: component tests that render the chrome
   // against the real generated TR bundle as a fixture. D23 governs how the *running site*
   // loads a bundle — `adapter.ts`'s own loader is a template-literal dynamic import the rule
   // cannot see, and the lint/contract tests read the JSON with `readFileSync`, so neither
@@ -37,6 +37,10 @@ const eslintConfig = defineConfig([
     files: [
       'src/design/chrome/__tests__/Footer.test.tsx',
       'src/design/chrome/__tests__/Header.test.tsx',
+      'src/design/chrome/__tests__/SlimBar.test.tsx',
+      'src/design/chrome/__tests__/visibility.test.tsx',
+      'src/design/chrome/__tests__/SiteChrome.test.tsx',
+      'src/design/chrome/__tests__/MobileBottomBar.test.tsx',
     ],
     rules: { 'no-restricted-imports': 'off' },
   },
@@ -44,6 +48,19 @@ const eslintConfig = defineConfig([
   globalIgnores([
     // Reference design runtime (not shipped, not linted)
     'design-package/**',
+    // Build-time generated assets (scripts/build-source-map.ts) — regenerated, never hand-edited
+    'src/design/assets/*.generated.tsx',
+    // Git-ignored SDD planning artefacts (briefs, ledgers, draft snippets) — not source
+    '.superpowers/**',
+    // W199: ESLint 9 reads neither .gitignore nor .eslintignore — keep the gate's report folders
+    // (they hold bundled JS and, after preview runs, the bypass secret) out of the lint walk.
+    'playwright-report/**',
+    'test-results/**',
+    'coverage/**',
+    '.lighthouseci/**',
+    '.lighthouseci-extra/**',
+    'lighthouse-report/**',
+    '.pixel/**',
     // Default ignores of eslint-config-next:
     '.next/**',
     'out/**',

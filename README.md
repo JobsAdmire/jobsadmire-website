@@ -20,14 +20,17 @@ Two one-off setup notes: `npx playwright install chromium` once per machine (the
 
 Local dev talks to the Operations backend on **port 4001** (`jobsadmire-operations` — see the workspace-root `CLAUDE.md`); run that stack alongside this one for anything past the `LOCAL` content adapter.
 
-### Content and redirects
+### Content, redirects and assets
 
 ```bash
 npm run content:import     # scripts/import-design-package.ts — rebuilds src/content/local/*.json from design-package/strings/*.json
 npm run redirects:build    # scripts/build-redirects.ts — rebuilds redirects/legacy.json + gone.json from redirects/rules.json (+ redirects/gsc-clicks.csv)
+npm run assets:map         # scripts/build-source-map.ts — rebuilds src/design/assets/source-map.generated.tsx (the sourcing map)
+npm run assets:flags       # scripts/build-flags.ts — rebuilds public/brand/flags.svg from the flag-icons devDependency
+npm run assets:brand       # scripts/fetch-brand.sh — the one-time fetch of public/brand/logo.png + iskur.png (committed)
 ```
 
-Neither runs automatically; re-run by hand whenever their source files change, and commit the regenerated output (both are checked in, both are Prettier-ignored — see `docs/CONTENT-MODEL.md` and `docs/redirects.md`).
+None of them runs automatically or in the build; re-run by hand whenever their sources change, and commit the regenerated output (all of it is checked in; the generated JSON and TSX are Prettier-ignored — see `docs/CONTENT-MODEL.md`, `docs/redirects.md` and `docs/ARCHITECTURE.md` § Assets).
 
 ### Running the gate
 
@@ -44,19 +47,23 @@ npm run build && (npm run start -- -p 3100 & echo $! > /tmp/next.pid) && sleep 4
 
 `REVALIDATE_SECRET` must be the same value the server under test was started with. It's optional: without it, `gate.sh` prints a warning and the two token-dependent cases in `e2e/ops.spec.ts` skip themselves (Ruling R43) rather than failing.
 
-**Localhost LCP is a warning, not an error.** Against `localhost`/`127.0.0.1`, `gate.sh` asserts with `lighthouserc.local.json` instead of `lighthouserc.json` — identical except Largest Contentful Paint is downgraded to `warn`. Every asset on localhost arrives inside ~60 ms, so Lighthouse's Lantern simulation charges the entire early payload to the paint and reports ~2.7 s on every path regardless of what's actually slow (the real, devtools-throttled figure is closer to 1.5 s). Every other budget — performance, accessibility, best-practices, SEO, the script-size budget, CLS — stays an error in both configs. A green local gate run is fast feedback, not sign-off; sign-off is the same run against a Vercel preview URL, where LCP is an error like everything else.
+**LCP is measured the same way everywhere (W145).** All three Lighthouse configs throttle through DevTools (`throttlingMethod: "devtools"`), run each path three times and assert the median run, so LCP ≤ 2.5 s and performance ≥ 0.95 are errors against localhost as well as a preview — R50's localhost LCP warning is retired (`lighthouserc.local.json` is now identical to `lighthouserc.json`). Lighthouse's default simulation (Lantern) charged the whole initial waterfall to a text LCP element with no resource of its own and read ~2.7–3.0 s on every path whatever the page did; the throttled paint it now measures is ~1.5 s locally. Expect ~15 s per run, three runs per path. A green local gate run is fast feedback, not sign-off; sign-off is the same run against a Vercel preview URL.
+
+**Three more gate commands.** `npm run gate:launch` runs the three Gate A checks first — `UNBUILT_PATHNAMES` empty (W20), the dead-target sweep (every internal href answers 200, every CTA anchor, `DEFAULT_CTAS` included, exists on the page its link points at — W152/W158) and the D26 placeholder counter with the content-readiness table — all three to completion, then stops non-zero if any is red; only when all three pass does it go on into the same run as `npm run gate` (`docs/ARCHITECTURE.md` § Quality gate item 6). It is expected to fail until the last page lands. `npm run js-size` re-prints the per-route script-size table from the last collected Lighthouse runs (`.lighthouseci/`); `E2E_BASE_URL=<url> npm run js-size -- --routes /a,/b` (or `--routes=/a,/b`) is the W94 spot-check for routes outside the gate list — it collects them with the Lighthouse config and bypass header the gate itself uses into `.lighthouseci-extra/` (git-ignored) and prints their sizes, never asserted. `npm run pixel -- --page=home` (also `hire`, `calc`, `blog-article`; `--locale=en`, `--base=<url>`) is the D27 pixel harness — it needs network and a running build, writes `.pixel/` (git-ignored), and is bounded by the two-iteration rule in `docs/superpowers/plans/2026-09-20-wp2-pixel-harness.md`.
 
 Other scripts: `npm run typecheck`, `npm run lint`, `npm run format` / `format:write`, `npm run test` / `test:watch`, `npm run e2e` (Playwright only, no Lighthouse/axe).
 
+- A local preview rehearsal (`NEXT_PUBLIC_SITE_FACE=preview` against `next start`) selects the preview Lighthouse config — the same DevTools-throttled assertions minus the two robots audits (W145) — and SEO must score 1. Real preview runs need `VERCEL_AUTOMATION_BYPASS_SECRET` exported (owner's ACCESS.md); afterwards `.lighthouseci/`, `lighthouse-report/` and (on a failing run) Playwright's `test-results/` traces all contain the secret — never share any of them (W137 amended).
+
 ## Environments
 
-| Environment | Vercel project      | Domain                                    | Notes                                                         |
-| ----------- | ------------------- | ----------------------------------------- | ------------------------------------------------------------- |
-| Production  | `jobsadmire-web-v2` | jobsadmire.com (after Phase A cutover)    | `main` branch; `npm run verify` gates every build             |
-| Preview     | `jobsadmire-web-v2` | `*.vercel.app` / `staging.jobsadmire.com` | Deployment Protection on; preview/test tokens only; `noindex` |
-| Local       | —                   | localhost:3000                            | Against the Operations stack on port 4001                     |
+| Environment | Vercel project      | Domain                                    | Notes                                                                       |
+| ----------- | ------------------- | ----------------------------------------- | --------------------------------------------------------------------------- |
+| Production  | `jobsadmirewebsite` | jobsadmire.com (after Phase A cutover)    | `main` branch; `npm run verify` gates every build                           |
+| Preview     | `jobsadmirewebsite` | `*.vercel.app` / `staging.jobsadmire.com` | Deployment Protection on; door variables on `staging` only (W92); `noindex` |
+| Local       | —                   | localhost:3000                            | Against the Operations stack on port 4001                                   |
 
-The pre-existing Vercel project `jobsadmirewebsite` still serves the old site and is left untouched until Phase A cutover — see `docs/DEPLOYMENT.md`.
+One Vercel project, `jobsadmirewebsite`, serves Production and Preview: its production deployment is still the frozen old site, and `main` deploys nothing until the Phase A cutover removes its two deploy guards (no domain move) — see `docs/DEPLOYMENT.md`.
 
 ## Where the docs are
 

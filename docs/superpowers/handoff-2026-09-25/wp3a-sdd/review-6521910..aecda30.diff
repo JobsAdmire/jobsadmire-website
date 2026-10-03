@@ -1,0 +1,322 @@
+# Review package: 6521910..aecda30
+
+## Commits
+aecda30 fix(website): in-flight guard makes re-run safe under concurrent clicks (X9); alarm/activity use errorLabel (X10)
+
+## Files changed
+ .../modules/website/website-forms.rerun.spec.ts    | 30 ++++++++
+ .../modules/website/website-forms.service.spec.ts  | 32 ++++++++-
+ .../src/modules/website/website-forms.service.ts   | 82 ++++++++++++++--------
+ 3 files changed, 114 insertions(+), 30 deletions(-)
+
+## Diff
+diff --git a/apps/backend/src/modules/website/website-forms.rerun.spec.ts b/apps/backend/src/modules/website/website-forms.rerun.spec.ts
+index 5eb43e4..99fd5d6 100644
+--- a/apps/backend/src/modules/website/website-forms.rerun.spec.ts
++++ b/apps/backend/src/modules/website/website-forms.rerun.spec.ts
+@@ -144,11 +144,41 @@ describe('WebsiteFormsService.rerun', () => {
+   it('a test row re-runs as a dry run (P2): the handler sees dryRun=true, nothing is notified or autoresponded, no entity is recorded', async () => {
+     const { svc, prisma, handler, notify, autoresponder } = make({ ...FAILED_ROW, isTest: true, tokenClass: WebsiteTokenClass.TEST });
+     const res = await svc.rerun('sub1', STAFF);
+     expect((handler.handle as jest.Mock).mock.calls[0][0].dryRun).toBe(true);
+     const data = prisma.websiteFormSubmission.update.mock.calls[0][0].data as Record<string, unknown>;
+     expect(data.createdEntityId).toBeNull();
+     expect(notify.formReceived).not.toHaveBeenCalled();
+     expect(autoresponder.send).not.toHaveBeenCalled();
+     expect(res.data.isTest).toBe(true);
+   });
++
++  it('X9: two concurrent re-runs of one row — the second is refused (409) before any read, the handler runs exactly once, and the guard clears afterwards', async () => {
++    const { svc, prisma, handler } = make();
++    let release!: () => void;
++    const gate = new Promise<void>((resolve) => { release = resolve; });
++    (handler.handle as jest.Mock).mockImplementationOnce(async () => {
++      await gate;
++      return { ok: true as const, createdEntityType: 'inquiry' as const, createdEntityId: 'inq1' };
++    });
++
++    const first = svc.rerun('sub1', STAFF);
++    const second = svc.rerun('sub1', STAFF); // fired while the first is in flight, NOT awaited first
++    await expect(second).rejects.toBeInstanceOf(ConflictException);
++    await expect(second).rejects.toMatchObject({ message: 'Re-run already in progress.' });
++    expect(prisma.websiteFormSubmission.findUnique).toHaveBeenCalledTimes(1); // the second never even read the row
++
++    release();
++    const res = await first;
++    expect(res.data.status).toBe(WebsiteSubmissionStatus.HANDLED);
++    expect(handler.handle).toHaveBeenCalledTimes(1);
++    expect(prisma.websiteFormSubmission.update).toHaveBeenCalledTimes(1);
++
++    // The guard is per in-flight call, not a latch: once the first settles, the next call
++    // reaches the ROW-STATE check (here: the row now reads HANDLED) — a different 409.
++    prisma.websiteFormSubmission.findUnique.mockResolvedValueOnce({ ...FAILED_ROW, status: WebsiteSubmissionStatus.HANDLED, createdEntityId: 'inq1' });
++    await expect(svc.rerun('sub1', STAFF)).rejects.toMatchObject({ message: 'Only failed submissions that created no record can be re-run.' });
++    // …and a refused call releases the guard too (the `finally`): the row mock reverts to FAILED/null, so this one runs.
++    await svc.rerun('sub1', STAFF);
++    expect(handler.handle).toHaveBeenCalledTimes(2);
++  });
+ });
+diff --git a/apps/backend/src/modules/website/website-forms.service.spec.ts b/apps/backend/src/modules/website/website-forms.service.spec.ts
+index 14dec1e..4edec4c 100644
+--- a/apps/backend/src/modules/website/website-forms.service.spec.ts
++++ b/apps/backend/src/modules/website/website-forms.service.spec.ts
+@@ -160,28 +160,58 @@ describe('WebsiteFormsService.submit', () => {
+     expect(res).toEqual({ data: { id: 'sub0', formKey: 'hire', status: 'HANDLED', isTest: false, replayed: true, captchaDegraded: false, error: null } });
+   });
+ 
+   it('a throwing handler → row FAILED with the error, attempt recorded, handlerFailed alarm, NO formReceived, NO autoresponder, HTTP 200', async () => {
+     const boom: WebsiteFormHandler = { kinds: [WebsiteFormKind.INQUIRY], handle: jest.fn(async () => { throw new Error('assignment engine down'); }) };
+     const { svc, prisma, notify, autoresponder, activity } = make({ handler: boom });
+     const res = await svc.submit('hire', DTO, CTX);
+     const upd = prisma.websiteFormSubmission.update.mock.calls[0][0] as { data: Record<string, unknown> };
+     expect(upd.data).toMatchObject({ status: WebsiteSubmissionStatus.FAILED, error: 'assignment engine down', handledAt: null, purgeAfter: null, createdEntityType: null, createdEntityId: null });
+     expect((upd.data.handlerResultJson as { attempts: Record<string, unknown>[] }).attempts[0]).toMatchObject({ ok: false, error: 'assignment engine down' });
+-    expect(notify.formsUnavailable).toHaveBeenCalledWith({ reason: 'handlerFailed', formKey: 'hire', submissionId: 'sub1', detail: 'assignment engine down' });
++    // X10: the alarm carries the thrown error's class + code, never its message.
++    expect(notify.formsUnavailable).toHaveBeenCalledWith({ reason: 'handlerFailed', formKey: 'hire', submissionId: 'sub1', detail: 'Error' });
+     expect(notify.formReceived).not.toHaveBeenCalled();
+     expect(autoresponder.send).not.toHaveBeenCalled();
+     expect(activity.log).toHaveBeenCalledWith(expect.objectContaining({ type: ActivityType.WEBSITE_SUBMISSION_FAILED }));
+     expect(res.data.status).toBe('FAILED');
+     expect(res.data.error).toBeNull(); // RC26: an infrastructure failure is never shown to the visitor
+   });
+ 
++  it('X10: a THROWN error leaves the process as class + code only — the row keeps the message (cut to 500) for staff; the alarm detail and the activity summary carry errorLabel', async () => {
++    const marker = 'leak@example.com';
++    // A Prisma validation error echoes the invocation args — the payload — in its message.
++    const message = `Invalid \`prisma.inquiry.create()\` invocation: email: "${marker}" ` + 'x'.repeat(2000);
++    const boom: WebsiteFormHandler = {
++      kinds: [WebsiteFormKind.INQUIRY],
++      handle: jest.fn(async () => { throw new Prisma.PrismaClientKnownRequestError(message, { code: 'P2009', clientVersion: 'test' }); }),
++    };
++    const { svc, prisma, notify, activity } = make({ handler: boom });
++    const res = await svc.submit('hire', DTO, CTX);
++
++    const upd = prisma.websiteFormSubmission.update.mock.calls[0][0] as { data: Record<string, unknown> };
++    expect(upd.data.status).toBe(WebsiteSubmissionStatus.FAILED);
++    expect(upd.data.error).toBe(message.slice(0, 500));
++    expect((upd.data.error as string).length).toBe(500);
++    expect(upd.data.error).toContain(marker); // staff-facing: the row already holds the payload
++
++    const alarm = (notify.formsUnavailable as jest.Mock).mock.calls[0][0] as { reason: string; detail: string };
++    expect(alarm).toMatchObject({ reason: 'handlerFailed', formKey: 'hire', submissionId: 'sub1', detail: 'PrismaClientKnownRequestError P2009' });
++    expect(alarm.detail).not.toContain(marker);
++
++    const failed = (activity.log as jest.Mock).mock.calls
++      .map((c) => c[0] as { type: ActivityType; summary: string })
++      .find((a) => a.type === ActivityType.WEBSITE_SUBMISSION_FAILED);
++    expect(failed?.summary).toContain('PrismaClientKnownRequestError P2009');
++    expect(failed?.summary).not.toContain(marker);
++    expect(res.data.error).toBeNull();
++  });
++
+   it('a handler answering { ok: false } is recorded the same way as a throw', async () => {
+     const soft: WebsiteFormHandler = { kinds: [WebsiteFormKind.INQUIRY], handle: jest.fn(async () => ({ ok: false as const, error: 'mailbox refused', detail: { code: 550 } })) };
+     const { svc, prisma, notify } = make({ handler: soft });
+     const res = await svc.submit('hire', DTO, CTX);
+     const upd = prisma.websiteFormSubmission.update.mock.calls[0][0] as { data: Record<string, unknown> };
+     expect(upd.data).toMatchObject({ status: WebsiteSubmissionStatus.FAILED, error: 'mailbox refused' });
+     expect((upd.data.handlerResultJson as { attempts: Record<string, unknown>[] }).attempts[0]).toMatchObject({ ok: false, error: 'mailbox refused', detail: { code: 550 } });
+     expect(notify.formsUnavailable).toHaveBeenCalledWith(expect.objectContaining({ reason: 'handlerFailed', detail: 'mailbox refused' }));
+     expect(res.data.status).toBe('FAILED');
+     expect(res.data.error).toBeNull();
+diff --git a/apps/backend/src/modules/website/website-forms.service.ts b/apps/backend/src/modules/website/website-forms.service.ts
+index 109ffd2..8b83a8b 100644
+--- a/apps/backend/src/modules/website/website-forms.service.ts
++++ b/apps/backend/src/modules/website/website-forms.service.ts
+@@ -152,20 +152,27 @@ function errorLabel(err: unknown): string {
+  * ── NOTHING AFTER STEP 4 MAY THROW ── (wa-ai-tools.service.ts:673). The row is the
+  * lead; every later step warns and carries on, so a website retry replays instead of
+  * filing twice. A FAILED handler is still HTTP 200: the row is durable and re-runnable
+  * from the inbox (Task 7), and the handlerFailed alarm has already gone out — unless the
+  * handler marked the failure `detail.visitorError` (RC26): then the row is FAILED with
+  * the message, no alarm fires, and the message is echoed in the response's `error`.
+  */
+ @Injectable()
+ export class WebsiteFormsService {
+   private readonly logger = new Logger(WebsiteFormsService.name);
++  /**
++   * X9: ids with a re-run in flight. Two concurrent clicks would both read FAILED/null,
++   * both pass the guard and both file the lead. The backend runs as ONE process (CLAUDE.md),
++   * so an in-process set closes it; a cross-process DB claim (`updateMany` conditioned on
++   * the status) is the documented follow-up (PRD §5.12, Task 12).
++   */
++  private readonly rerunInFlight = new Set<string>();
+ 
+   constructor(
+     private readonly prisma: PrismaService,
+     private readonly config: ConfigService,
+     private readonly captcha: WebsiteCaptchaService,
+     private readonly registry: WebsiteFormHandlerRegistry,
+     private readonly activity: ActivityLogger,
+     private readonly notify: WebsiteNotifyService,
+     private readonly abuse: WebsiteAbuseService,
+     private readonly autoresponder: WebsiteAutoresponderService,
+@@ -263,87 +270,104 @@ export class WebsiteFormsService {
+         });
+       } catch (err) {
+         this.logger.warn(`activity RECEIVED failed for ${row.id}: ${(err as Error)?.message}`);
+       }
+     }
+ 
+     const handled = await this.runHandler(row, form, normalized.fields, ctx, { dryRun: isTest, rerun: false, actorId: WEBSITE_SYSTEM_ACTOR.id });
+     return this.respond(handled, false);
+   }
+ 
+-  /**
+-   * Run the handler for a row and record the attempt. Shared by `submit` and the inbox
+-   * re-run (Task 7). Never throws. Post-steps (RC6): activity; on success
+-   * `notify.formReceived` once (unless the handler said skipNotification/alreadyReceived)
+-   * and the autoresponder (unless skipAutoresponder/alreadyReceived); on failure
+-   * `notify.formsUnavailable(handlerFailed)`. A dry run (test token) records the attempt
+-   * and nothing else (P2).
+-   */
+   /**
+    * Inbox re-run (ruling P8). Only a FAILED row that created nothing may run again — a
+    * FAILED row WITH an entity means the handler wrote and then stumbled, and running it
+    * again would file the lead twice. Test rows re-run as dry runs (ruling P2). The stored
+    * payload is re-normalised through the catalog (a whitelist tightened since the row was
+    * written is a 409 with the reasons, never a handler exception). Attempt N+1 is appended
+    * to handlerResultJson with `rerun: true` and the staff user as actor; the core's
+    * post-handler rules apply unchanged — notify + autorespond only on success, re-alarm on
+    * failure — and no captcha, trip check or abuse count runs (this is not a visit).
+    */
+   async rerun(id: string, actor: AuthenticatedUser): Promise<{ data: WebsiteInboxDetail }> {
+-    const row = await this.prisma.websiteFormSubmission.findUnique({ where: { id }, include: { form: true } });
+-    if (!row) throw new NotFoundException('Submission not found.');
+-    if (row.status !== WebsiteSubmissionStatus.FAILED || row.createdEntityId !== null) {
+-      throw new ConflictException('Only failed submissions that created no record can be re-run.');
+-    }
+-    const stored = (row.payloadJson ?? {}) as { fields?: unknown };
+-    const normalized = normalizeWebsiteFields(row.formKey, stored.fields ?? {});
+-    if (!normalized.ok) {
+-      throw new ConflictException({ message: 'Stored payload no longer passes the catalog', errors: normalized.errors });
++    // Synchronous, BEFORE the first await: the second of two concurrent calls is refused here.
++    if (this.rerunInFlight.has(id)) throw new ConflictException('Re-run already in progress.');
++    this.rerunInFlight.add(id);
++    try {
++      const row = await this.prisma.websiteFormSubmission.findUnique({ where: { id }, include: { form: true } });
++      if (!row) throw new NotFoundException('Submission not found.');
++      if (row.status !== WebsiteSubmissionStatus.FAILED || row.createdEntityId !== null) {
++        throw new ConflictException('Only failed submissions that created no record can be re-run.');
++      }
++      const stored = (row.payloadJson ?? {}) as { fields?: unknown };
++      const normalized = normalizeWebsiteFields(row.formKey, stored.fields ?? {});
++      if (!normalized.ok) {
++        throw new ConflictException({ message: 'Stored payload no longer passes the catalog', errors: normalized.errors });
++      }
++      const { form, ...bare } = row;
++      const updated = await this.runHandler(
++        bare,
++        form,
++        normalized.fields,
++        { visitorIp: null, userAgent: row.userAgent },
++        { dryRun: row.isTest, rerun: true, actorId: actor.userId },
++      );
++      return { data: toInboxDetail({ ...updated, form: { kind: form.kind } }) };
++    } finally {
++      this.rerunInFlight.delete(id);
+     }
+-    const { form, ...bare } = row;
+-    const updated = await this.runHandler(
+-      bare,
+-      form,
+-      normalized.fields,
+-      { visitorIp: null, userAgent: row.userAgent },
+-      { dryRun: row.isTest, rerun: true, actorId: actor.userId },
+-    );
+-    return { data: toInboxDetail({ ...updated, form: { kind: form.kind } }) };
+   }
+ 
++  /**
++   * Run the handler for a row and record the attempt. Shared by `submit` and the inbox
++   * re-run (Task 7). Never throws. Post-steps (RC6): activity; on success
++   * `notify.formReceived` once (unless the handler said skipNotification/alreadyReceived)
++   * and the autoresponder (unless skipAutoresponder/alreadyReceived); on failure
++   * `notify.formsUnavailable(handlerFailed)`. A dry run (test token) records the attempt
++   * and nothing else (P2).
++   */
+   protected async runHandler(
+     row: WebsiteFormSubmission,
+     form: Pick<WebsiteForm, 'kind'>,
+     fields: Record<string, WebsiteFieldValue>,
+     ctx: Pick<WebsiteSubmitContext, 'visitorIp' | 'userAgent'>,
+     opts: WebsiteRunHandlerOptions,
+   ): Promise<WebsiteFormSubmission> {
+     const handler = this.registry.get(form.kind);
+     let result: WebsiteFormHandlerResult;
++    // X10: what LEAVES the process on failure. A thrown error's message may echo the
++    // payload (a Prisma validation error prints its invocation args), so the row keeps it
++    // for staff — cut to 500, the row already holds the payload — while the handlerFailed
++    // alarm (e-mail, second human) and the activity summary carry `errorLabel(err)`: class
++    // + code only. A handler's own `{ ok: false, error }` string is authored by our code
++    // (or is the visitor-safe message of RC26) and travels as is.
++    let externalError = '';
+     if (!handler) {
+       result = { ok: false, error: `No handler registered for ${form.kind}` };
++      externalError = result.error;
+     } else {
+       try {
+         result = await handler.handle({
+           submissionId: row.id,
+           formKey: row.formKey,
+           kind: form.kind,
+           locale: row.locale === 'en' ? 'en' : 'tr',
+           dryRun: opts.dryRun,
+           fields,
+           consentVersion: row.consentVersion ?? '',
+           captchaDegraded: row.captchaDegraded,
+           visitorIp: ctx.visitorIp,
+           userAgent: ctx.userAgent,
+         });
++        if (!result.ok) externalError = result.error;
+       } catch (err) {
+-        result = { ok: false, error: (err as Error)?.message?.slice(0, 2000) || 'handler threw' };
++        result = { ok: false, error: (err as Error)?.message?.slice(0, 500) || 'handler threw' };
++        externalError = errorLabel(err);
+       }
+     }
+ 
+     const now = new Date();
+     const detail = result.detail;
+     // A dry run never points at a real record, whatever the handler said.
+     const createdEntityType = result.ok && !opts.dryRun ? result.createdEntityType ?? null : null;
+     const createdEntityId = result.ok && !opts.dryRun ? result.createdEntityId ?? null : null;
+     const attempt: WebsiteAttemptRecord = {
+       at: now.toISOString(),
+@@ -400,33 +424,33 @@ export class WebsiteFormsService {
+     // try/catch throughout (not `.catch()`): a synchronous throw from a collaborator must
+     // not escape the post-row block either.
+     try {
+       await this.activity.log({
+         type: result.ok ? ActivityType.WEBSITE_SUBMISSION_HANDLED : ActivityType.WEBSITE_SUBMISSION_FAILED,
+         actor: opts.actorId === WEBSITE_SYSTEM_ACTOR.id ? WEBSITE_SYSTEM_ACTOR : { id: opts.actorId, name: 'Inbox re-run', role: 'staff' },
+         subject: { type: 'website-submission', id: row.id },
+         ...(createdEntityType && createdEntityId ? { context: { type: createdEntityType, id: createdEntityId } } : {}),
+         summary: result.ok
+           ? `${opts.rerun ? 're-ran and ' : ''}filed the ${row.formKey} form${createdEntityType ? ` as ${createdEntityType} ${createdEntityId}` : ''}`
+-          : `${opts.rerun ? 're-run of ' : ''}the ${row.formKey} form handler failed: ${result.error}`,
++          : `${opts.rerun ? 're-run of ' : ''}the ${row.formKey} form handler failed: ${externalError}`,
+         // Whitelisted keys only: the timeline must never carry the visitor's e-mail or name.
+         details: { formKey: row.formKey, kind: form.kind, rerun: opts.rerun, ...activityDetailOf(detail) },
+         ipAddress: null,
+       });
+     } catch (err) {
+       this.logger.warn(`activity ${status} failed for ${row.id}: ${(err as Error)?.message}`);
+     }
+ 
+     if (!result.ok) {
+       if (visitorError) return updated; // RC26: the visitor's mistake is not an outage — no handlerFailed alarm.
+       try {
+-        await this.notify.formsUnavailable({ reason: 'handlerFailed', formKey: row.formKey, submissionId: row.id, detail: result.error });
++        await this.notify.formsUnavailable({ reason: 'handlerFailed', formKey: row.formKey, submissionId: row.id, detail: externalError });
+       } catch (err) {
+         this.logger.warn(`handlerFailed alarm failed for ${row.id}: ${(err as Error)?.message}`);
+       }
+       return updated;
+     }
+ 
+     // RC6: staff learn about the lead through WebsiteNotifyService only, once, on success
+     // (a FAILED row has just raised handlerFailed, which reaches the same people).
+     const alreadyReceived = detail?.alreadyReceived === true;
+     const contactName = detailString(detail, 'contactName') ?? fieldString(fields, 'name');

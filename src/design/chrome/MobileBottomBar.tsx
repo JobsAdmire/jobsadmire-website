@@ -1,5 +1,6 @@
-import { makeT } from '@/content/pure';
 import { useTranslations } from 'next-intl';
+import { ContactLink } from '@/analytics/ContactLink';
+import { makeT } from '@/content/pure';
 import { telLink, waLink } from '@/lib/contact';
 import type { Bundle } from '../../../contract/website-bundle.v1';
 import { PhoneIcon, WhatsAppIcon } from './icons';
@@ -17,16 +18,22 @@ export function MobileBottomBar({ bundle }: { bundle: Bundle }) {
   const sys = useTranslations('sys');
   const { settings } = bundle;
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 gap-2.5 border-t border-white/15 bg-navy/95 px-3.5 pt-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))] backdrop-blur lg:hidden">
-      <a
+    // M1: a fixed `div.bottom-0` of call/WhatsApp actions sat outside any landmark.
+    <nav
+      aria-label={sys('nav.bottomBar')}
+      className="fixed inset-x-0 bottom-0 z-50 grid grid-cols-2 gap-2.5 border-t border-white/15 bg-navy/95 px-3.5 pt-2.5 pb-[calc(0.625rem+env(safe-area-inset-bottom))] backdrop-blur lg:hidden"
+    >
+      <ContactLink
         href={telLink(settings.phone)}
+        placement="bottom_bar"
         className={`${ACTION} border-[1.5px] border-white/25 bg-white/10`}
       >
         <PhoneIcon />
         {t('hire.032')}
-      </a>
-      <a
+      </ContactLink>
+      <ContactLink
         href={waLink(settings.whatsappNumber, sys('whatsapp.prefill'))}
+        placement="bottom_bar"
         target="_blank"
         rel="noopener noreferrer"
         // `success` (#16a34a) is 3.3:1 under white — the darker green of the same family
@@ -35,7 +42,7 @@ export function MobileBottomBar({ bundle }: { bundle: Bundle }) {
       >
         <WhatsAppIcon size={18} />
         {t('home.221')}
-      </a>
-    </div>
+      </ContactLink>
+    </nav>
   );
 }

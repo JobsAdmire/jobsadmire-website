@@ -1,0 +1,1273 @@
+# Review package: 525c9c3..9f21487
+
+## Commits
+9f21487 docs(website): fix PRD §5.12 WEBSITE_FORM_RECEIVED recipients description
+1ddca58 docs(website): PRD §5.12 + §7.10 sanction the intake door; CLAUDE.md public-surface rule + export edge + RC16; DEPLOYMENT crons, runbook row, local prod-compose boot recipe; docs guard spec (P13)
+415a127 fix(website): integrations rotate/copy safety, read-only second-human for viewers, inbox detail error + gated re-run text
+
+## Files changed
+ .gitignore                                         |   4 +
+ CLAUDE.md                                          |  12 +-
+ .../src/modules/website/website-docs-guard.spec.ts | 202 +++++++++++++++++++++
+ .../src/app/[locale]/admin/website/inbox/page.tsx  |  41 ++++-
+ .../[locale]/admin/website/integrations/page.tsx   |  33 +++-
+ docs/DEPLOYMENT.md                                 |  87 +++++++++
+ docs/PRD.md                                        | 141 ++++++++++++--
+ 7 files changed, 488 insertions(+), 32 deletions(-)
+
+## Diff
+diff --git a/.gitignore b/.gitignore
+index a2ac182..d279b6c 100644
+--- a/.gitignore
++++ b/.gitignore
+@@ -8,20 +8,24 @@ coverage/
+ .turbo/
+ *.log
+ .DS_Store
+ test-results/
+ playwright-report/
+ *.tsbuildinfo
+ .vscode/
+ .idea/
+ apps/backend/.env
+ 
++# Local boot of docker-compose.vps.yml (docs/DEPLOYMENT.md "Booting the production compose file locally")
++docker-volumes/
++.env.local-prod
++
+ # Claude ↔ VPS SSH relay (runs on Faraz's Mac, never commit)
+ .claude-ssh-relay-ops.sh
+ .ssh-cmd
+ .ssh-result
+ .ssh-status
+ .ssh-patch
+ .ssh-patch-payload
+ 
+ # VPS deploy-state markers (written on the server during deploy — never commit)
+ .last-good-deploy
+diff --git a/CLAUDE.md b/CLAUDE.md
+index 329ab7a..fd243db 100644
+--- a/CLAUDE.md
++++ b/CLAUDE.md
+@@ -1,15 +1,15 @@
+ # JobsAdmire Operations
+ 
+ Internal operations platform for the JobsAdmire team at `operations.jobsadmire.com`. **This is not the CRM** — the cross-border recruitment brokerage (employer ↔ sourcing-partner workflow, partner data) lives in `portal.jobsadmire.com`, a separate codebase. The two apps share nothing at runtime except one outbound HTTP call (Sales lead WON → CRM `POST /api/partners`, see PRD §7.1).
+ 
+-Modules: Sales (+ Field Sales Campaigns), Projects & Tasks (incl. work projects), Internal Recruitment (the deepest — hiring requests → market research → openings → public careers site → applicants → AI screening "Admira" → human interviews → offer signing → onboarding with login provisioning), Market Research, HRM, Sales Training Academy, Marketing Studio, WhatsApp (native Meta Cloud API module), Call Center; supporting infrastructure (dashboard, notifications, communications, activities, settings, careers-public, email, uploads); integrations (CRM, Meta WhatsApp Cloud API, Zoom, Google Workspace, İŞKUR, ElevenLabs/OpenAI, Hipcall, Turnstile, Buffer/Meta Graph for marketing).
++Modules: Sales (+ Field Sales Campaigns), Projects & Tasks (incl. work projects), Internal Recruitment (the deepest — hiring requests → market research → openings → public careers site → applicants → AI screening "Admira" → human interviews → offer signing → onboarding with login provisioning), Market Research, HRM, Sales Training Academy, Marketing Studio, WhatsApp (native Meta Cloud API module), Call Center, Website (the jobsadmire.com intake door — public forms → inquiries/applicants/subscribers, a forms inbox and the integrations screen; the CMS half lands in Phase B); supporting infrastructure (dashboard, notifications, communications, activities, settings, careers-public, email, uploads); integrations (CRM, Meta WhatsApp Cloud API, Zoom, Google Workspace, İŞKUR, ElevenLabs/OpenAI, Hipcall, Turnstile, Buffer/Meta Graph for marketing).
+ 
+ ---
+ 
+ ## Documentation map — read BEFORE you touch code
+ 
+ **`docs/PRD.md` is the single source of truth** for every module's requirements, business logic, workflows, data model, integrations, and dated decisions — organized by module, each section ending in a **Decisions & gotchas** list. Before implementing or changing anything in a module, read that module's PRD section INCLUDING its gotchas; they encode incidents and prohibitions that are cheap to read and expensive to relearn.
+ 
+ | You are working on… | Read first |
+ |---|---|
+ | Anything (new session, unclear scope) | This file, then PRD §3 (system overview) + §4 (roles/permissions) |
+@@ -28,57 +28,57 @@ Modules: Sales (+ Field Sales Campaigns), Projects & Tasks (incl. work projects)
+ | Sales Training Academy — staff AI trainer "Admira", lessons/exams/role-plays, lockout gate, certificates, policy facts, curriculum pipeline | PRD §5.6a |
+ | WhatsApp — native module (inbox, numbers, templates, webhook, native sends, campaigns, automations, migrated history) | PRD §5.11 + §7.9 + `docs/whatsapp-module/DESIGN.md`. The WhatsCRM bridge (§7.2) was retired 2026-09-13 (WP6 cutover executed); its history lives in `docs/archive/WHATSAPP-INTEGRATION.md` — read it only for incident/history context, never as a live integration guide |
+ | Notifications, communications, settings, email, uploads, careers-public hardening | PRD §6 |
+ | Any third-party integration | PRD §7 |
+ | Roles, permissions, scopes, auth | PRD §4 (the model, as it is) + §4.8 (engine internals: the resolver, typed keys, caches, conformance, declared policies, the repo invariants) + §4.9 (route manifest + page guard) + `packages/permissions/src/` (`keys.catalog.ts`, `ROLE_PERMISSION_MATRIX`); scope internals: `docs/scope-enforcement-audit.md` (history — PRD §4.8 is current for how a grant is read) |
+ | Prisma schema, migrations, seed | PRD §8 |
+ | End-to-end workflow questions | PRD §9 |
+ | Deploy, VPS, env vars, Apache, backups, third-party credentials | `docs/DEPLOYMENT.md` (verified against the live server 2026-08-05) |
+ | Local dev setup | `docs/DEV_SETUP.md`, `README.md` |
+ | Historical specs / build prompts / QA reports | `docs/archive/` (superseded — never treat as current) |
+-| Public website (jobsadmire.com) + the future `website` CMS module + the 2026-09-18 deploy-pipeline change | `docs/DEPLOYMENT.md` → "§DEPLOY-SAFETY-2026-09-18" (migrate-before-start, poller lock/latch); PRD §5.12 + §7.10 (added with the module); programme plan `~/.claude/plans/hi-we-have-to-structured-acorn.md` |
++| Public website (jobsadmire.com), the `website` module (intake door live since WP3a, 2026-09-19; CMS from Phase B) + the 2026-09-18 deploy-pipeline change | PRD §5.12 (the module) + §7.10 (why a third public surface is sanctioned); `docs/DEPLOYMENT.md` → "§DEPLOY-SAFETY-2026-09-18", the `WEBSITE_MODULE_ENABLED` and `WEBSITE_SITE_URL` env rows, "Flipping `WEBSITE_MODULE_ENABLED` on the VPS", "Booting the production compose file locally"; programme plan `~/.claude/plans/hi-we-have-to-structured-acorn.md` |
+ | Open gaps & roadmap | PRD §12 |
+ 
+ Re-derive exact counts on demand rather than trusting any doc: `grep -c '^model ' apps/backend/prisma/schema.prisma`, `ls apps/backend/src/modules/`.
+ 
+ ---
+ 
+ ## Architecture at a glance
+ 
+ - **Monorepo** — Turborepo. Apps: `backend` (NestJS 10 + Prisma 5 + PostgreSQL 16 + Redis 7; Bull queues, crons, and Socket.io all in the ONE backend process), `frontend` (Next.js 14 App Router, `[locale]` segment, Tailwind + shadcn/ui, React Query + Zustand + RHF/Zod). Packages: `shared-types`, `validators`, `constants`, `permissions` (the shared permission resolver + the typed key catalog — run by the backend AND the browser since W2).
+-- **Single internal portal** at `apps/frontend/src/app/[locale]/admin/` — every authenticated user is staff; the only public surface is `/careers/*` + auth. Global chrome is the 3-column "Command" shell (`src/components/layout/command-*`), with all module nav declared as data in `src/config/modules.ts`.
++- **Single internal portal** at `apps/frontend/src/app/[locale]/admin/` — every authenticated user is staff; the public surfaces are `/careers/*`, auth, and the token-guarded machine doors — the İŞKUR/Indeed agent routes, the §7.8/§7.9 webhooks and, since WP3a, the website intake door `/api/website/v1/*` (PRD §7.10). Global chrome is the 3-column "Command" shell (`src/components/layout/command-*`), with all module nav declared as data in `src/config/modules.ts`.
+ - **Auth** — JWT access (15 min) + refresh (30 d, Redis, rolling); optional TOTP 2FA. `REFRESH_TTL_SECONDS` (`auth.service.ts`) and frontend `COOKIE_MAX_AGE` (`stores/auth.store.ts`) must stay in lockstep.
+ - **Permissions** — database-driven: 12 system roles × **85 grantable keys** (23 modules + 62 screen-level resources, all enforced) × 13 actions × 3 scopes, plus per-USER overrides; catalog served by `GET /api/permissions/catalog`. **One resolver answers everything** — `EffectivePermissionsService` — and the BROWSER runs that same resolver, from `@jobsadmire/permissions`, over the inputs `GET /permissions/me/effective` returns. Use `@RequirePermission('key','ACTION')` server-side and `<Can>`/`usePermissions()` client-side. CASL survives as a projection for nine service-layer call sites, not as the decision point. Super-admin bypasses via `can('manage','all')`. **No code decides access by comparing a role slug** — a repo invariant refuses a new one, and the few that remain are declared policies about whose ACCOUNT may be touched. The programme that built this ran W0–W4 on 2026-09-15; PRD §4 describes the result, §4.8 the engine internals, §4.9 the route manifest + page guard.
+ - **Storage** — MinIO in BOTH dev and prod (prod behind `files.operations.jobsadmire.com`). There is no S3.
+ - **i18n** — next-intl, English + Turkish.
+ - **Local dev** — Docker Compose (`npm run dev`), host ports 4xxx (CRM sibling owns 3xxx). Backend container self-runs `prisma generate / migrate deploy / db seed` on boot.
+ - **Deploy** — a VPS **cron poller** auto-deploys `main` within ~2 min of a push (GitHub Actions is billing-suspended org-wide). Details, env inventory, runbooks: `docs/DEPLOYMENT.md`.
+ 
+ ---
+ 
+ ## Development guidelines
+ 
+ ### Before writing code
+ 
+ 1. Read the PRD section(s) for every module you'll touch — including **Decisions & gotchas**. If your change spans modules (e.g. an IR feature that emails candidates and pings WhatsApp), read each involved section.
+-2. Check module dependencies before adding imports: the dependency direction is deliberate (e.g. `CareersPublicModule` imports IR/AI modules, never the reverse; `ProjectsModule` imports `SalesModule`, never the reverse). Don't create cycles.
++2. Check module dependencies before adding imports: the dependency direction is deliberate (e.g. `CareersPublicModule` imports IR/AI modules, never the reverse; `ProjectsModule` imports `SalesModule`, never the reverse). Don't create cycles. `CareersPublicModule` exports `CareersPublicService` for exactly one consumer, `WebsiteModule` (the website's careers form calls `apply()`); the edge is one-way — website → careers-public — and careers-public must never import website.
+ 3. Prefer extending existing patterns over inventing new ones — find the precedent (the PRD names them) and mirror it.
+ 
+ ### Conventions
+ 
+ **Backend (NestJS)**
+ - One module per domain under `apps/backend/src/modules/`. Look there before adding top-level folders.
+ - `@RequirePermission(key, action)` for authorization — **never a role-slug check**. `@CurrentUser()` shape: `{ userId, email, roleId, roleSlug }`. Inside a service the question goes to `EffectivePermissionsService.check(key, action)` (strict) or `checkAny(moduleKey, action)` (wide — "may they touch this module at all"); super-admin passes through the resolver's own bypass, so there is no identity branch to write. `test/permissions/repo-invariants.spec.ts` fails on `roleSlug === 'super-admin'` or `{ slug: 'super-admin' }` outside a named allowlist, and the allowlist entry is the ARGUMENT that your literal is a definition, a target/destination policy or a population query rather than a capability check.
+ - **A rule that genuinely is not a permission gets a `policies` descriptor**, on the module that owns it, citing the file that enforces it (author-only comments, membership, the offer signing chain, a second approver). The Roles screen renders them read-only under the module row so an operator stops hunting for a checkbox that does not exist.
+ - New permission modules register via `PermissionRegistry.register` in the module constructor; a new `PermissionAction` needs schema enum + `ACTION_MAP` + `AppAction` + (if new subject) `AppSubject` — all of them.
+ - **Every user-grant read goes through `EffectivePermissionsService`.** Do not add a second `prisma.rolePermission` query — that is the bug class W1 removed (four independent queries, one of them forgotten, and neither screen showing an error). `test/permissions/repo-invariants.spec.ts` enforces it with a short allowlist; if you believe you need an exception, the invariant spec is where you argue for it.
+-- **A permission KEY is `module` or `module.resource`** (one dot, `[a-z0-9-]` segments). `RolePermission.module` holds a key. All 23 modules declare resources and all are `resourcesEnforced: true`; a NEW module's resources stay `false` until its controllers actually carry them — flip the flag in the SAME change set that re-keys the routes, never before, or an operator unticks a resource and nothing happens.
++- **A permission KEY is `module` or `module.resource`** (one dot, `[a-z0-9-]` segments). `RolePermission.module` holds a key. All 23 modules declare resources and all are `resourcesEnforced: true`; a NEW module's resources stay `false` until its controllers actually carry them — flip the flag in the SAME change set that re-keys the routes, never before, or an operator unticks a resource and nothing happens. A module whose routes carry their keys from the first commit (the `website` module, WP3a 2026-09-19) registers `resourcesEnforced: true` immediately — there is never an un-keyed route for the flag to lie about, so the "stay `false` until the routes carry them" rule is satisfied on day one.
+ - **A new key goes in TWO places**: the module's `registry.register({ resources })` AND `PERMISSION_KEYS` in `packages/permissions/src/keys.catalog.ts` (sorted, plus its `PERMISSION_KEYS_HASH`). `PermissionConformanceService` fails the container at boot on any drift between them, because the browser types `<Can>`, the nav and the route manifest against that list.
+ - **Every route must say what it is: `@RequirePermission`, `@SelfService()` or `@Public()`.** An undecorated route **fails the container at boot** AND is refused at request time — `PERMISSIONS_STRICT` is `true` everywhere and gates neither of those, it only labels the conformance report. The census is at zero and "no decorator" must never go back to meaning two things. If a route is genuinely about the caller's own data, mark it `@SelfService()` and add it to the module descriptor's `selfServiceRoutes` so the Roles screen can explain it.
+ - **A role grant REMOVED from `ROLE_PERMISSION_MATRIX` needs a paired migration.** The seed is create-if-missing and never deletes, so deleting a line changes nothing on an existing database — and deleting the rows without also fixing the matrix is undone by the next deploy two minutes later (`20260924100000_purge_unregistered_grants` is the reference). Adding a grant needs `since: ROLE_DEFAULTS_VERSION + 1` and a bump of the constant. **Never map an `ACTIONS_*` constant over a list of modules**: that is what seeded 13 grants for actions nobody registers, invisible on every screen because both render from the registry.
+ - **A new workspace package needs a line in FOUR Dockerfiles** (both apps, both dev and prod) plus an explicit `RUN npm run build --workspace=` in each `.prod`. Miss it and the container boots with a seed that dies on MODULE_NOT_FOUND — visible only in production (`docs/DEPLOYMENT.md`).
+ - DTOs with `class-validator` (global `forbidNonWhitelisted` — clients sending removed fields 400). Share Zod schemas from `packages/validators` when the frontend uses the same shape.
+ - List endpoints: `page`, `limit`, `sortBy`, `sortOrder` + filters; responses `{ data, meta }`. Swagger decorators on every controller.
+ - Audit create/update/delete via `AuditInterceptor`; custom exceptions extend `HttpException`.
+ - Heavy work (email, notifications, scoring, bulk ops) goes through a Bull queue — never block the request.
+ - Outbound calls to other apps go through their client module (`CrmClient`, `WaGraphClient`, `ZoomMeetingsService`, `GoogleCalendarService`, `MetaGraphClient`, `BufferClient`, `HipcallClient`, `ElevenLabsConvaiClient`) — never `fetch()` an external app from feature code.
+ - Pure decision logic lives in `*.logic.ts` files with Jest specs (see `projects.logic.ts`, `interview-availability.logic.ts`, `password-reset.logic.ts` precedents).
+@@ -102,21 +102,21 @@ Re-derive exact counts on demand rather than trusting any doc: `grep -c '^model
+ **General**
+ - TypeScript strict everywhere; never add `any` to pass type-check.
+ - Code/comments/identifiers in English, even where the UI is Turkish.
+ - Country dimension is the ISO **code** everywhere (`PK`, `TR`); cities are names. Currency is ISO code.
+ 
+ ### Global gotchas (cross-cutting — module-specific ones live in the PRD sections)
+ 
+ - **`mailbox: 'careers'` on `queueEmail` is load-bearing.** The global SMTP is deliberately minimal in prod — a candidate email queued without it silently no-ops. Any candidate-facing email must carry it; staff/system mail uses the default mailbox (Gmail-as-info@ fallback).
+ - **Never render a user-facing time with bare `toLocaleString()`** — containers run UTC. Use `formatWhenForCountry()` / `formatWhen()` from `common/utils/datetime.util.ts` (and `hourCycle:'h12'`, never `hour12:true`).
+ - **PDFKit's built-in fonts are WinAnsi and silently garble Turkish** — any text run in a generated PDF must use the registered `PDF_FONT` Noto aliases; resolve bundled assets via `common/utils/assets.util.ts`, never hand-counted `../`.
+-- **No public endpoints outside `careers-public`** (auth is the one other sanctioned public surface). Don't sprinkle `@Public()` on feature modules.
++- **No public endpoints outside `careers-public`, auth, and the argued machine doors** — the token-guarded agent routes (İŞKUR/Indeed), the signed webhooks (PRD §7.8, §7.9) and the website intake door `website/v1` (`@Public()` + `WebsiteModuleEnabledGuard` + `WebsiteApiGuard`, PRD §7.10). Each of those was sanctioned BY NAME in the PRD in the same change set that added it; a new one needs the same written argument, its own module, and the careers-public hardening set (fail-closed token, captcha, IP hashing, dedupe, audit visibility). Don't sprinkle `@Public()` on feature modules.
+ - **The AI-interview recording pipeline is ADD-ONLY** — never introduce a delete of a stored recording object; the only sanctioned deleter is the retention sweep (dry-run unless `AI_RETENTION_PURGE_LIVE=true`).
+ - **`PERMISSION_SCOPE_ENFORCEMENT` is OFF in prod** (not to be confused with `PERMISSIONS_STRICT`, which is ON and gates nothing — it labels the conformance report; PRD §4.8) — scoped roles are protected only by `resolveEnforced()` call sites in **projects, sales + whatsapp**. Don't revert those to `resolve()`; a new scoped read path needs `resolveEnforced()` too. **Pass the key the ROUTE is gated on** (`sales.leads`, not `sales`) — the grant resolves at that key and falls back to the module row, and `repo-invariants.spec.ts` lists every call site with its key (PRD §4.8). **The flag is not the control that matters** (assessed 2026-08-10): it gates one method with zero callers and one used only where every grant is already scope `ALL`, so enabling it is a verified no-op. Fix call sites, not the flag.
+ - **Never assign to `where.OR` in a list query that spreads a scope fragment — append to `where.AND`.** The `ASSIGNED_TO_ME` bindings are `OR` **arrays**, so `where.OR = [...search terms]` overwrote the row-level restriction outright and a scoped user saw the entire table by typing one character into the search box. Found live in sales, HRM (passport/ID/bank) and IR on 2026-08-10. The city filter in the same function was already guarded against this collision — the scope fragment was the case nobody thought of.
+ - **A required placeholder/field must be able to arrive EMPTY.** Any gate stated over *rendered output* (the offer/contract completeness gate counts `[—]` glyphs) is structurally blind to a required value whose resolution chain ends in a non-empty literal — it prints a made-up answer instead of refusing. A blank salary rendered the advertised band floor (`PKR 60.00`), a blank job title rendered `'the role'`. The **type** is usually the root cause: `title: string` forces a fallback at the call site; `title?: string` lets the gate work.
+ - **Persist what a document PRINTED, not the form fields it was sent.** A value that falls back to a mutable settings row and is stored as `null` exists nowhere, so the next render re-derives it and two "identical" documents can silently disagree. Snapshot the resolved value.
+ - **Don't hard-code role slugs for authorization** — derive capability from a grant (`@RequirePermission`, `EffectivePermissionsService.check/checkAny`, `permissions.can(...)`, `can()` in the browser). `repo-invariants.spec.ts` fails on a new `roleSlug === 'super-admin'` / `{ slug: 'super-admin' }` outside its named allowlist. Every literal W4 removed was a capability the model could already express, written as an identity — so it had no cell on the Roles screen, could not be delegated, could not be revoked for one person, and was invisible to anyone auditing what a role can do (PRD §4.1).
+ - **Anything that reads the CLOCK during render breaks hydration.** Containers run UTC and the browser runs the viewer's timezone, so a server-rendered `new Date()` and the client's disagree — at 12:06 UTC the workspace dashboard said "Good afternoon" on the server and "Good evening" in Karachi, which React treats as corrupted markup (errors #418/#423/#425, ten per load, on the page every user lands on). Compute clock-dependent text **after mount** (`useState(null)` + `useEffect`) so the server emits a stable placeholder, and pass an explicit locale — `toLocaleDateString(undefined, …)` is a mismatch waiting to happen for the same reason.
+ - **A rejected list query renders as an empty dropdown, not an error.** Most paginated query DTOs cap `limit` at `@Max(100)`, and 24 frontend call sites asked for `limit: 200`. Validation failure is a **400**, so those "load everything for a picker" queries returned nothing at all — empty person pickers on 9 HRM screens, the user picker on sales assignment rules, campaign pickers in marketing. Every one looked like "no data" rather than "request refused", and it survived months because nobody reads the console on a page that merely looks empty. Use `MAX_PAGE_LIMIT` from `@/lib/constants` — but **check the DTO first**, because the cap is not universal (`hrm/departments` and the interview-question bank accept 200; `backfillContacts` declares `@Max(500)`).
+ - **Raw-SQL aggregates return `bigint`** — always `Number()` before JSON.
+ - **A free-form JSON array on a DTO does not survive the global ValidationPipe by itself.** `enableImplicitConversion` reflects `unknown[]` as `Array` and converts every element into an EMPTY ARRAY, so the service receives `[[], []]` while every service spec (which bypasses the pipe) stays green — WhatsApp campaigns could not be created over HTTP from the day the controller landed until the live loop tried it (2026-09-11). Hand the raw value through with `@Transform(({ obj }) => obj.<field>)` and add a spec that runs the DTO through `new ValidationPipe({...})` with `main.ts`'s exact options (`dto/wa-campaign.dto.spec.ts` is the precedent). Nested objects under a `Record<string, unknown>` field are fine; it is arrays that break.
+diff --git a/apps/backend/src/modules/website/website-docs-guard.spec.ts b/apps/backend/src/modules/website/website-docs-guard.spec.ts
+new file mode 100644
+index 0000000..9c6dd76
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-docs-guard.spec.ts
+@@ -0,0 +1,202 @@
++/**
++ * Source-reading guard for the website module's DOCS and the shared-constants
++ * mirror (WP3a, planning ruling P13: docs land in the same change set).
++ *
++ * What this pins, and why a test rather than a checklist:
++ *   1. `@Public()` outside careers-public is forbidden by CLAUDE.md, PRD §3, §6.5
++ *      and §10 — the website door is legal ONLY because PRD §7.10 argues it and
++ *      CLAUDE.md names it. If either sentence is ever "cleaned up", the next
++ *      reviewer reads modules/website/ as a violation.
++ *   2. PRD §5.1 used to say "There is no public ingestion endpoint". It is now false.
++ *   3. DEPLOYMENT.md must carry the WEBSITE_MODULE_ENABLED env row + flip recipe
++ *      (Task 2's strings, RC10), the WEBSITE_SITE_URL row (Task 9's, RC18), the
++ *      website crons, the runbook row and the local production-compose boot
++ *      recipe (plan D24) — the compose mappings themselves are pinned by
++ *      website-env.spec.ts / website-site-url.spec.ts, not here.
++ *   4. packages/constants mirrors the four Website enums (schema.prisma:12 rule:
++ *      "mirrored in packages/constants when the frontend imports them") — the
++ *      schema is the source of truth, so the mirror is DIFFED against it; and
++ *      the ten form keys are the website repo's FORM_KEYS (src/analytics/forms.ts
++ *      there — the repos share no package, so a copy is pinned here).
++ *   5. PRD §8 names the newest migration folder — read from the directory, never
++ *      a hard-coded name (RC10).
++ *   6. .gitignore covers the two files the local production boot creates.
++ */
++import { readFileSync, readdirSync } from 'fs';
++import { join } from 'path';
++import {
++  WEBSITE_FORM_KEYS,
++  WEBSITE_FORM_KIND_BY_KEY,
++  WebsiteFormKind,
++  WebsiteSubmissionStatus,
++  WebsiteSubscriberStatus,
++  WebsiteTokenClass,
++} from '@jobsadmire/constants';
++
++const here = __dirname;
++const repoRoot = join(here, '../../../../..');
++const readRoot = (p: string) => readFileSync(join(repoRoot, p), 'utf8');
++
++/** Members of `enum <name> { … }` in schema.prisma, comments stripped. */
++function prismaEnumMembers(schema: string, name: string): string[] {
++  const start = schema.indexOf(`enum ${name} {`);
++  if (start < 0) return [];
++  const body = schema.slice(start, schema.indexOf('\n}', start));
++  return body
++    .split('\n')
++    .slice(1)
++    .map((l) => l.replace(/\/\/.*$/, '').trim())
++    .filter(Boolean);
++}
++
++/** The website repo's `FORM_KEYS` (jobsadmire-website/src/analytics/forms.ts), copied verbatim. */
++const SITE_FORM_KEYS = ['hire', 'contact', 'partner', 'careers', 'newsletter', 'callback', 'visit', 'calculator', 'fraud', 'workers'];
++
++const PUBLIC_ROUTES = [
++  'GET /api/website/v1/ping',
++  'POST /api/website/v1/forms/:formKey',
++  'POST /api/website/v1/uploads/fraud-evidence',
++  'GET /api/website/v1/newsletter/confirm',
++  'GET /api/website/v1/newsletter/unsubscribe',
++  'POST /api/website/v1/newsletter/unsubscribe',
++];
++
++const MIRRORS: Array<[name: string, mirror: Record<string, string>]> = [
++  ['WebsiteFormKind', WebsiteFormKind],
++  ['WebsiteSubmissionStatus', WebsiteSubmissionStatus],
++  ['WebsiteSubscriberStatus', WebsiteSubscriberStatus],
++  ['WebsiteTokenClass', WebsiteTokenClass],
++];
++
++describe('website module — docs and constants guard (P13)', () => {
++  const prd = readRoot('docs/PRD.md');
++  const prdLines = prd.split('\n');
++  const claude = readRoot('CLAUDE.md');
++  const claudeLines = claude.split('\n');
++  const deployment = readRoot('docs/DEPLOYMENT.md');
++  const schema = readRoot('apps/backend/prisma/schema.prisma');
++
++  it('PRD carries §5.12 and §7.10, in the TOC and as headings', () => {
++    expect(prd).toContain('  - 5.12 Website (public-site intake door; CMS from Phase B)');
++    expect(prd).toContain('  - 7.10 The website intake door — the third sanctioned public surface');
++    expect(prd).toContain('### 5.12 Website (public-site intake door; CMS from Phase B)');
++    expect(prd).toContain('### 7.10 The website intake door — the third sanctioned public surface');
++  });
++
++  it('PRD §5.1 no longer claims there is no public ingestion endpoint — it names the door', () => {
++    expect(prd).not.toContain('There is **no public ingestion endpoint**');
++    expect(prd).toContain('**Public ingestion arrives through ONE door — the website intake module**');
++  });
++
++  it('every "public unauthenticated endpoints outside" sentence names the website door', () => {
++    // PRD §3 gotcha (:248), §5.4.3 careers-public paragraph (:1341) and §6.5 gotcha
++    // (:4321) — three lines; each used to say careers-public + auth were the ONLY
++    // sanctioned surfaces. (§5.4.3's `Don't add public endpoints outside` bullet at
++    // :1392 lacks the word "unauthenticated" and is deliberately not counted.)
++    const sentences = prdLines.filter((l) => /public unauthenticated endpoints outside/.test(l));
++    expect(sentences.length).toBeGreaterThanOrEqual(3);
++    for (const s of sentences) expect({ line: s.slice(0, 80), names: s.includes('website/v1') }).toEqual({ line: s.slice(0, 80), names: true });
++  });
++
++  it('CLAUDE.md: the public-surface rule names website/v1 + PRD §7.10; the portal line no longer calls careers + auth the only surface; the export edge is named', () => {
++    const rule = claudeLines.find((l) => l.startsWith('- **No public endpoints outside'));
++    expect(rule).toBeDefined();
++    expect(rule).toContain('website/v1');
++    expect(rule).toContain('PRD §7.10');
++    expect(claude).not.toContain('the only public surface is `/careers/*` + auth');
++    expect(claude).toContain('`CareersPublicModule` exports `CareersPublicService` for exactly one consumer, `WebsiteModule`');
++  });
++
++  it('CLAUDE.md records that a module keyed from birth registers resourcesEnforced immediately (RC16)', () => {
++    const keyRule = claudeLines.find((l) => l.startsWith('- **A permission KEY is')) ?? '';
++    expect(keyRule).toContain('registers `resourcesEnforced: true` immediately');
++  });
++
++  it('PRD §5.12 names the evidence read-back routes under the inbox family (RC23) and the search case rule (RC24)', () => {
++    expect(prd).toContain('GET /api/website/forms/submissions/:id/evidence/:index/view');
++    expect(prd).toContain('GET /api/website/forms/submissions/:id/evidence/:index/link');
++    expect(prd).toContain('case-insensitive for e-mail only');
++  });
++
++  it('the count lines Task 1 wrote still hold in CLAUDE.md and the PRD (RC10)', () => {
++    expect(claude).toContain('**85 grantable keys** (23 modules + 62 screen-level resources, all enforced)');
++    expect(claude).toContain('All 23 modules declare resources and all are');
++    expect(prd).toContain('**23 permission modules + 62 screen-level resources = 85 grantable keys**');
++    expect(prd).toContain('All 85 current keys have en + tr');
++  });
++
++  it('PRD §4.4: the three sales roles carry website.forms VIEW (RC8)', () => {
++    for (const role of ['sales-manager', 'sales-executive', 'sales-agent']) {
++      const row = prdLines.find((l) => l.startsWith(`| \`${role}\` |`)) ?? '';
++      expect({ role, found: row.length > 0 }).toEqual({ role, found: true });
++      expect({ role, mentions: /`website\.forms` VIEW/.test(row) }).toEqual({ role, mentions: true });
++    }
++  });
++
++  it('PRD §5.12 lists every public route RC3 sanctions and the ping fact RC13 added', () => {
++    for (const route of PUBLIC_ROUTES) expect({ route, documented: prd.includes(route) }).toEqual({ route, documented: true });
++    expect(prd).toContain('secondHumanConfigured');
++  });
++
++  it('PRD §6.2 lists the two website events and §12.2 records WP3a', () => {
++    expect(prd).toContain('Website (§5.12, 2026-09-19): `WEBSITE_FORM_RECEIVED`, `WEBSITE_FORMS_UNAVAILABLE`');
++    expect(prd).toContain('- **2026-09-19 — Website module, WP3a (intake door).**');
++  });
++
++  it('DEPLOYMENT.md: the flag row + flip recipe (Task 2), the WEBSITE_SITE_URL row, the crons, the runbook row and the local production-compose boot', () => {
++    expect(deployment).toContain('| Flags | `WEBSITE_MODULE_ENABLED`');
++    expect(deployment).toContain('### Flipping `WEBSITE_MODULE_ENABLED` on the VPS');
++    expect(deployment).toContain('docker compose -f docker-compose.vps.yml up -d backend');
++    expect(deployment).toContain('| Website | `WEBSITE_SITE_URL`');
++    expect(deployment).toContain('- **Website crons**');
++    expect(deployment).toContain('| **Website intake door (jobsadmire.com forms)** |');
++    expect(deployment).toContain('### Booting the production compose file locally (plan D24 — before every website-programme push)');
++    expect(deployment).toContain('--env-file .env.local-prod -f docker-compose.vps.yml');
++    // Task 2 owns the flip recipe; this task appends the boot recipe after it.
++    expect(deployment.indexOf('### Flipping `WEBSITE_MODULE_ENABLED` on the VPS')).toBeLessThan(
++      deployment.indexOf('### Booting the production compose file locally'),
++    );
++  });
++
++  it('.gitignore covers the two files the local production boot creates', () => {
++    const lines = readRoot('.gitignore').split('\n');
++    expect(lines).toContain('docker-volumes/');
++    expect(lines).toContain('.env.local-prod');
++  });
++
++  it('packages/constants mirrors the four Website enums exactly (schema.prisma is the truth)', () => {
++    for (const [name, mirror] of MIRRORS) {
++      const members = prismaEnumMembers(schema, name);
++      expect({ name, declared: members.length > 0 }).toEqual({ name, declared: true });
++      expect({ name, mirrored: Object.values(mirror).sort() }).toEqual({ name, mirrored: [...members].sort() });
++    }
++  });
++
++  it('the ten website form keys are the site\'s FORM_KEYS and map onto the seven handler kinds, one each', () => {
++    expect([...WEBSITE_FORM_KEYS].sort()).toEqual([...SITE_FORM_KEYS].sort());
++    expect(Object.keys(WEBSITE_FORM_KIND_BY_KEY).sort()).toEqual([...SITE_FORM_KEYS].sort());
++    expect(WEBSITE_FORM_KIND_BY_KEY).toEqual({
++      hire: WebsiteFormKind.INQUIRY,
++      contact: WebsiteFormKind.INQUIRY,
++      partner: WebsiteFormKind.INQUIRY,
++      workers: WebsiteFormKind.INQUIRY,
++      callback: WebsiteFormKind.CALLBACK,
++      visit: WebsiteFormKind.VISIT,
++      calculator: WebsiteFormKind.CALCULATOR_QUOTE,
++      careers: WebsiteFormKind.CAREERS_APPLY,
++      fraud: WebsiteFormKind.FRAUD_REPORT,
++      newsletter: WebsiteFormKind.NEWSLETTER,
++    });
++    expect(new Set(Object.values(WEBSITE_FORM_KIND_BY_KEY)).size).toBe(Object.values(WebsiteFormKind).length);
++  });
++
++  it('PRD §8 names the newest migration folder (read from the directory) and counts the four Website models', () => {
++    const dirs = readdirSync(join(repoRoot, 'apps/backend/prisma/migrations'))
++      .filter((d) => /^\d{14}_/.test(d))
++      .sort();
++    const latest = dirs[dirs.length - 1];
++    expect(latest).toBeDefined();
++    expect(prd).toContain(`Latest as of this revision: \`${latest}\``);
++    expect(prd).toMatch(/^- \*\*Website[^\n]*\(4, §5\.12/m);
++  });
++});
+diff --git a/apps/frontend/src/app/[locale]/admin/website/inbox/page.tsx b/apps/frontend/src/app/[locale]/admin/website/inbox/page.tsx
+index e3df8c1..2993fb0 100644
+--- a/apps/frontend/src/app/[locale]/admin/website/inbox/page.tsx
++++ b/apps/frontend/src/app/[locale]/admin/website/inbox/page.tsx
+@@ -404,21 +404,21 @@ export default function WebsiteInboxPage() {
+     const last = result.attempts?.[result.attempts.length - 1];
+     return last?.detail?.visitorError === true;
+   };
+   const attentionText = (row: WebsiteFormSubmission): string => {
+     if (row.status !== 'FAILED') {
+       return 'Accepted while captcha was degraded — verify the contact before acting on it.';
+     }
+     const reason = row.error ?? 'no error message recorded';
+     return isVisitorError(row)
+       ? `Refused for the visitor's own input (no alarm was raised): ${reason}`
+-      : `Handler failed — an infrastructure error, the alarm was raised: ${reason}`;
++      : `Handler failed — an infrastructure error (alarmed once per window): ${reason}`;
+   };
+ 
+   return (
+     <>
+       <PageGuide guideKey="admin_website_inbox" />
+       <div className="mb-3">
+         <WebsiteModuleFlagBanner />
+       </div>
+ 
+       <PageShell
+@@ -524,25 +524,35 @@ export default function WebsiteInboxPage() {
+                   Test
+                 </Badge>
+               )}
+             </span>
+           )
+         }
+         footer={
+           selected && (
+             <SidePanelFooter
+               left={
+-                websiteSubmissionCanRerun(selected)
+-                  ? 'The handler failed before creating anything — safe to re-run.'
+-                  : selected.status === 'FAILED'
+-                    ? 'Failed after filing an entity — fix it there; a re-run would duplicate it.'
+-                    : `Submission ${selected.id}`
++                websiteSubmissionCanRerun(selected) ? (
++                  // Item 4 (review): the sentence offers the button, so it wears the
++                  // button's gate — a VIEW-only reader sees the plain id instead.
++                  <Can
++                    module="website.forms"
++                    action="EDIT"
++                    fallback={<>Submission {selected.id}</>}
++                  >
++                    The handler failed before creating anything — safe to re-run.
++                  </Can>
++                ) : selected.status === 'FAILED' ? (
++                  'Failed after filing an entity — fix it there; a re-run would duplicate it.'
++                ) : (
++                  `Submission ${selected.id}`
++                )
+               }
+             >
+               <Button type="button" variant="ghost" size="sm" onClick={() => setRowId(null)}>
+                 Close
+               </Button>
+               {websiteSubmissionCanRerun(selected) && (
+                 <Can module="website.forms" action="EDIT">
+                   <Button
+                     size="sm"
+                     disabled={rerunMutation.isPending}
+@@ -683,21 +693,38 @@ export default function WebsiteInboxPage() {
+                     ))}
+                   </ul>
+                 )}
+               </section>
+             )}
+ 
+             <section>
+               <h3 className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
+                 Handler attempts
+               </h3>
+-              {selected.handlerResultJson === undefined ? (
++              {selected.handlerResultJson === undefined && detailQuery.isError ? (
++                // Item 5 (review): the list row stands in while the detail loads, so a
++                // failed detail fetch must say so here rather than read "Loading…" forever.
++                <p className="text-xs text-destructive">
++                  Couldn’t load the handler attempts
++                  {detailQuery.error instanceof Error && detailQuery.error.message
++                    ? ` — ${detailQuery.error.message}`
++                    : ''}
++                  .{' '}
++                  <button
++                    type="button"
++                    className="underline underline-offset-2 hover:text-destructive/80"
++                    onClick={() => void detailQuery.refetch()}
++                  >
++                    Try again
++                  </button>
++                </p>
++              ) : selected.handlerResultJson === undefined ? (
+                 <p className="text-xs text-muted-foreground">Loading…</p>
+               ) : !attempts || attempts.length === 0 ? (
+                 <p className="text-xs text-muted-foreground">No handler attempt recorded.</p>
+               ) : (
+                 <ol className="space-y-2">
+                   {attempts.map((a, i) => (
+                     <li key={`${a.at}-${i}`} className="rounded-md border p-2 text-xs">
+                       <div className="flex flex-wrap items-center gap-1.5">
+                         <StatusPill
+                           tone={a.ok ? 'success' : 'destructive'}
+diff --git a/apps/frontend/src/app/[locale]/admin/website/integrations/page.tsx b/apps/frontend/src/app/[locale]/admin/website/integrations/page.tsx
+index 505bc7d..0dcf1f7 100644
+--- a/apps/frontend/src/app/[locale]/admin/website/integrations/page.tsx
++++ b/apps/frontend/src/app/[locale]/admin/website/integrations/page.tsx
+@@ -28,23 +28,24 @@ import { toast } from 'sonner';
+ import { Button } from '@/components/ui/button';
+ import { Input } from '@/components/ui/input';
+ import { Label } from '@/components/ui/label';
+ import { PageShell } from '@/components/ui/page-shell';
+ import { PinButton } from '@/components/ui/pin-button';
+ import { StatusPill } from '@/components/ui/status-pill';
+ import { StateError } from '@/components/ui/state-error';
+ import { StateLoading } from '@/components/ui/state-loading';
+ import { useConfirm } from '@/components/ui/confirm-dialog';
+ import { Can } from '@/components/auth/can';
++import { usePermissions } from '@/hooks/use-permissions';
+ import { CommandCard } from '@/components/command';
+ import { PageGuide } from '@/components/shared/PageGuide';
+-import { formatDateTime } from '@/lib/utils';
++import { cn, formatDateTime } from '@/lib/utils';
+ import {
+   websiteIntegrationsApi,
+   type UpdateWebsiteIntegrationKeysInput,
+   type WebsiteConnectionTestResult,
+   type WebsiteRotatableSecret,
+   type WebsiteRotatedSecret,
+ } from '@/lib/api/website';
+ 
+ import { WebsiteModuleFlagBanner } from '../_flag-banner';
+ 
+@@ -71,20 +72,24 @@ const ROTATE_COPY: Record<WebsiteRotatableSecret, { title: string; description:
+     description:
+       'A new token is generated and shown once. The old test token stops working immediately — the synthetic-lead cron on Vercel must be updated.',
+     label: 'Test token',
+   },
+ };
+ 
+ export default function WebsiteIntegrationsPage() {
+   const qc = useQueryClient();
+   const confirm = useConfirm();
+   const { locale } = useParams() as { locale: string };
++  const { can } = usePermissions();
++  // Item 3 (review): a VIEW-only holder sees the stored recipient as read-only
++  // text fields, never a form whose Save button is missing.
++  const mayEditSettings = can('website.integrations', 'EDIT');
+ 
+   const configQuery = useQuery({
+     queryKey: ['website', 'integrations'],
+     queryFn: () => websiteIntegrationsApi.get(),
+   });
+   const config = configQuery.data?.data;
+   const invalidate = () => qc.invalidateQueries({ queryKey: ['website', 'integrations'] });
+ 
+   // ── Second human (non-secret, website.integrations EDIT) ───────────────────
+   const [secondHumanName, setSecondHumanName] = useState('');
+@@ -170,24 +175,30 @@ export default function WebsiteIntegrationsPage() {
+       title: `Remove the stored ${name}?`,
+       description: consequence,
+       confirmLabel: 'Remove',
+       destructive: true,
+     });
+     if (!ok) return;
+     // '' is the documented "clear it" signal; `undefined` would mean "leave it".
+     saveKeys.mutate({ [field]: '' } as UpdateWebsiteIntegrationKeysInput);
+   };
+ 
+-  const copyRevealed = () => {
++  // Item 2 (review): "Copied." only once the clipboard has actually taken it —
++  // a refused write (insecure origin, permission denied) is said out loud.
++  const copyRevealed = async () => {
+     if (!revealed) return;
+-    void navigator.clipboard?.writeText(revealed.secret);
+-    toast.success('Copied.');
++    try {
++      await navigator.clipboard.writeText(revealed.secret);
++      toast.success('Copied.');
++    } catch {
++      toast.error('Copy the token by hand — this browser refused clipboard access.');
++    }
+   };
+ 
+   return (
+     <>
+       <PageGuide guideKey="admin_website_integrations" />
+       <div className="mb-3">
+         <WebsiteModuleFlagBanner />
+       </div>
+ 
+       <PageShell
+@@ -254,30 +265,36 @@ export default function WebsiteIntegrationsPage() {
+                   door is flipped on (ping reports it as <code>secondHumanConfigured</code>).
+                 </p>
+                 <div className="grid gap-4 sm:grid-cols-2">
+                   <div className="space-y-1.5">
+                     <Label htmlFor="secondHumanName">Name</Label>
+                     <Input
+                       id="secondHumanName"
+                       value={secondHumanName}
+                       onChange={(e) => setSecondHumanName(e.target.value)}
+                       placeholder="e.g. Faraz"
++                      readOnly={!mayEditSettings}
++                      aria-readonly={!mayEditSettings}
++                      className={cn(!mayEditSettings && 'bg-muted text-muted-foreground')}
+                     />
+                   </div>
+                   <div className="space-y-1.5">
+                     <Label htmlFor="secondHumanEmail">Email</Label>
+                     <Input
+                       id="secondHumanEmail"
+                       type="email"
+                       value={secondHumanEmail}
+                       onChange={(e) => setSecondHumanEmail(e.target.value)}
+                       placeholder="name@example.com"
++                      readOnly={!mayEditSettings}
++                      aria-readonly={!mayEditSettings}
++                      className={cn(!mayEditSettings && 'bg-muted text-muted-foreground')}
+                     />
+                   </div>
+                 </div>
+                 <Can module="website.integrations" action="EDIT">
+                   <Button size="sm" disabled={saveSettings.isPending} onClick={() => saveSettings.mutate()}>
+                     {saveSettings.isPending ? 'Saving…' : 'Save recipient'}
+                   </Button>
+                 </Can>
+               </div>
+             </CommandCard>
+@@ -303,49 +320,51 @@ export default function WebsiteIntegrationsPage() {
+                     the write token on every form post; the synthetic-lead cron sends the test token
+                     (filed as Test, handler dry-run).
+                   </p>
+                   <div className="flex flex-wrap items-center gap-3">
+                     <span className="text-sm">
+                       Write token: <KeyChip name="Write" has={!!config?.hasWriteToken} />
+                     </span>
+                     <Button
+                       size="sm"
+                       variant="outline"
+-                      disabled={rotate.isPending}
++                      // Item 1 (review): a second rotate must not replace an uncopied
++                      // secret — the display-once box has to be acknowledged first.
++                      disabled={rotate.isPending || revealed !== null}
+                       onClick={() => void onRotate('writeToken')}
+                     >
+                       {config?.hasWriteToken ? 'Rotate' : 'Generate'}
+                     </Button>
+                   </div>
+                   <div className="flex flex-wrap items-center gap-3">
+                     <span className="text-sm">
+                       Test token: <KeyChip name="Test" has={!!config?.hasTestToken} />
+                     </span>
+                     <Button
+                       size="sm"
+                       variant="outline"
+-                      disabled={rotate.isPending}
++                      disabled={rotate.isPending || revealed !== null}
+                       onClick={() => void onRotate('testToken')}
+                     >
+                       {config?.hasTestToken ? 'Rotate' : 'Generate'}
+                     </Button>
+                   </div>
+                   {revealed && (
+                     <div className="rounded-lg border border-amber-300 bg-amber-50 p-3 dark:bg-amber-950/20">
+                       <p className="text-sm font-medium text-amber-800 dark:text-amber-200">
+                         New {ROTATE_COPY[revealed.name].label} — copy it now, it is shown only once:
+                       </p>
+                       <div className="mt-2 flex items-center gap-2">
+                         <code className="flex-1 break-all rounded bg-background px-2 py-1 text-xs">
+                           {revealed.secret}
+                         </code>
+-                        <Button size="sm" variant="ghost" onClick={copyRevealed} aria-label="Copy token">
++                        <Button size="sm" variant="ghost" onClick={() => void copyRevealed()} aria-label="Copy token">
+                           <Copy className="h-4 w-4" />
+                         </Button>
+                         <Button
+                           size="sm"
+                           variant="outline"
+                           onClick={() => {
+                             // Shown once: drop it from the screen AND the mutation cache.
+                             setRevealed(null);
+                             rotate.reset();
+                           }}
+diff --git a/docs/DEPLOYMENT.md b/docs/DEPLOYMENT.md
+index 57f3068..1f2fa0b 100644
+--- a/docs/DEPLOYMENT.md
++++ b/docs/DEPLOYMENT.md
+@@ -36,20 +36,21 @@ files.operations.jobsadmire.com
+   → /etc/apache2/sites-enabled/files-operations-jobsadmire-com.conf
+   → proxies to MinIO at 127.0.0.1:4900 (own Let's Encrypt cert)
+ ```
+ 
+ The backend process also runs `@nestjs/schedule` crons in-process — including **`wa-housekeeping`** (every 15 min): auto-resolves idle WhatsApp conversations per their team's `autoResolveAfterDays`, un-snoozes due ones, purges `wa_webhook_events` + orphan `wa_message_status_events` older than 30 days, and (WP4 Half B) purges `wa_ai_tool_calls`, `wa_ai_runs` and `wa_automation_runs` older than 24 months. The purge is a PII retention promise (raw Meta bodies carry phone numbers) — if it is disabled, the real-number parallel run must not start. No env var; the team settings are the only knobs.
+ 
+ - **`wa-sla`** (every minute, in the backend process): flags first-response breaches and escalates them to team managers (in-app + email). Business-hours aware per team; nothing to configure but the team's SLA minutes and business hours on `/admin/whatsapp/settings/teams`. If the backend is down for an hour, the tick simply re-derives everything from the database on the next run — nothing is carried between ticks.
+ - **`wa-template-sync`** (daily 03:00, in the backend process): pulls every ACTIVE WhatsApp account's templates from Meta. Webhooks keep the registry fresh in real time; this catches what they cannot — an event missed while the app was down, and a template created or edited directly in Meta's Business Manager. Stateless, per-account try/catch, no env var. A quiet log line means nothing drifted.
+ - **`wa-media`** (Bull queue, backend process): retries inbound WhatsApp media downloads up to 5 times with exponential backoff, then marks the row FAILED so the thread says the attachment is unavailable. Visible in the admin queue monitor (`GET /api/admin/queues`, super-admin only) beside `wa-inbound` and `wa-outbound`. No env var. A backlog here means Meta or MinIO is unreachable — the messages themselves are unaffected.
+ - **`careers-retention`** (daily 03:00 UTC) also anonymises the `wa_*` rows of contacts linked only to the applicants it anonymises, and DELETES their WhatsApp media objects from MinIO. It is the only sanctioned deleter of those objects; a restore from backup is the only way back.
++- **Website crons** (since WP3a, in the backend process; each one begins its tick with `websiteModuleEnabled(config)` and does nothing while `WEBSITE_MODULE_ENABLED` is not `true`): **`website-alarms`** (every 5 min) announces a form's untrip once its 60-minute abuse window has expired and raises `WEBSITE_FORMS_UNAVAILABLE(reason: drought)` — once per company day, only inside Europe/Istanbul business hours — when no real (non-test) submission arrived for 48 hours; **`website-purge`** (daily **04:30**, container clock — 03:00 is `careers-retention`'s slot) deletes `website_form_submissions` rows past `purgeAfter` (90 days after HANDLED) including the `website-fraud/` MinIO objects they name — the two new PII tables are outside `careers-retention`, so their purge lives here. No env var beyond the flag; the numbers (trip threshold 25, window 3600 s, drought 48 h, business hours) are constants in `modules/website/website-alarms.logic.ts`, code not config, and the once-per-window markers are Redis keys (`website:alarm:*`, `website:abuse:*`) that expire on their own.
+ 
+ **A new workspace package must be added to FOUR Dockerfiles, by hand (2026-09-15).** `packages/permissions` (the shared permission resolver, read by both the backend and the frontend) needed a `COPY packages/<name>/package.json` line in `apps/backend/Dockerfile`, in BOTH stages of `apps/backend/Dockerfile.prod`, and the same in the two frontend Dockerfiles — plus an explicit `RUN npm run build --workspace=packages/<name>` in each `.prod` file, which lists its package builds one per line rather than globbing. Miss the build line and the container starts but the seed dies on `MODULE_NOT_FOUND`, because `prisma/role-defaults.ts` re-exports the package and the seed resolves it through `main: ./dist/index.js`. The dev Dockerfiles glob (`npx turbo run build --filter='./packages/*'`) and so only need the manifest COPY. **This failure is invisible until a production deploy**, which is why it is written down here rather than left to be rediscovered.
+ 
+ **Storage is MinIO in production** (not S3). `MINIO_PUBLIC_ENDPOINT=files.operations.jobsadmire.com` is the public URL the backend signs/serves against. The `AWS_*` variables present in `.env` are **dead legacy** — nothing in the backend reads them (`upload.service.ts` uses only `MINIO_*`).
+ 
+ ## VPS layout
+ 
+ ```
+ /var/www/html/jobsadmire-operations/        # main code checkout (root-deployed)
+   ├── apps/ packages/ scripts/
+@@ -222,20 +223,105 @@ ssh jobsadmire_portal "cd /var/www/html/jobsadmire-operations && \
+   docker compose -f docker-compose.vps.yml up -d backend && \
+   sleep 20 && docker exec jobsadmire_ops_backend printenv WEBSITE_MODULE_ENABLED && \
+   curl -s -o /dev/null -w 'health %{http_code}\n' http://localhost:4001/api/health && \
+   curl -s -o /dev/null -w 'ping-no-token %{http_code}\n' http://localhost:4001/api/website/v1/ping"
+ ```
+ 
+ Expected: the `.env` line, `true` from `printenv`, `health 200`, `ping-no-token 401` — the door is on and fails closed without a token (`WebsiteApiGuard`); while the flag is `false` the same call is `404`. `GET /api/website/status` (signed in) now answers `{ data: { enabled: true } }` and the Integrations banner disappears. Then prove the door: `GET /api/website/v1/ping` with each token class answers `{ tokenClass, moduleEnabled: true, captcha: 'configured', secondHumanConfigured: true, trippedForms: [], … }` (`secondHumanConfigured` must be `true` — step 2 above is what makes it so), and one live autoresponder is received — the WP3a gate record holds the evidence.
+ 
+ **Shutting the door** (an incident, or a rollback of the website's WP2 wiring): set `false` and run the same `up -d backend` — every `/api/website/v1/*` route answers 404 again, the website crons go quiet at the top of their next tick, the admin inbox and the Integrations page keep working, and nothing already stored is touched. If the line is missing from `.env` the compose default (`false`) applies; every deploy does `docker compose up -d`, which re-reads `.env`, so the value persists across deploys — it does not survive `.env` being recreated from `.env.production.example`, which ships the line as `false`.
+ 
++### Booting the production compose file locally (plan D24 — before every website-programme push)
++
++`docker-compose.vps.yml` is booted on the Mac exactly as the VPS boots it, so a boot-time throw (a permission-catalog drift, an undecorated route, a DI edge that does not resolve, a config assertion, a migration that disagrees with `schema.prisma`) is found here and not at deploy step [6], where it takes production down and the poller latches the SHA. ONE Docker stack at a time and nothing else building (the Mac has hung twice under parallel builds): stop the dev stack first, and do not run jest while the images build. Run it from the checkout you are about to push; the WP3a gate record (Task 13 §B) pastes every line marked `→` below.
++
++```bash
++cd /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-operations-website   # the checkout you are about to push
++
++# 0. the dev stack uses the SAME container names — take it down (its named volumes survive)
++docker compose -p jobsadmire-operations -f /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-operations/docker-compose.yml down
++docker ps --format '{{.Names}}' | grep jobsadmire_ops_ && echo 'STOP: dev containers still present' || echo 'ok: no ops containers'
++
++# 1. throwaway production-shaped env (git-ignored; never reuse real secrets here).
++#    Every `${VAR:?…}` the VPS compose requires is set; everything else takes the compose default.
++cat > .env.local-prod <<EOF
++NODE_ENV=production
++APP_URL=http://localhost:4001
++FRONTEND_URL=http://localhost:4000
++POSTGRES_USER=jobsadmire_ops
++POSTGRES_PASSWORD=localprod
++POSTGRES_DB=jobsadmire_operations
++REDIS_PASSWORD=localprod
++JWT_ACCESS_SECRET=$(openssl rand -hex 32)
++JWT_REFRESH_SECRET=$(openssl rand -hex 32)
++ENCRYPTION_KEY=$(openssl rand -hex 16)
++OTP_SALT=$(openssl rand -base64 32 | tr -d '/+=' | head -c 40)
++IP_HASH_SALT=$(openssl rand -base64 32 | tr -d '/+=' | head -c 40)
++MINIO_ACCESS_KEY=jobsadmire-ops-admin
++MINIO_SECRET_KEY=localprod-minio-secret
++MINIO_BUCKET_NAME=jobsadmire-ops
++NEXT_PUBLIC_API_URL=http://localhost:4001/api
++NEXT_PUBLIC_WS_URL=ws://localhost:4001
++WEBSITE_MODULE_ENABLED=false
++WEBSITE_SITE_URL=https://www.jobsadmire.com
++EOF
++
++# 2. build both production images (10–15 min; nothing else running)
++docker compose --env-file .env.local-prod -f docker-compose.vps.yml build backend frontend
++
++# 3. infra first, then the deploy's own migrate-before-start order (deploy-vps.sh steps [3] and [5])
++docker compose --env-file .env.local-prod -f docker-compose.vps.yml up -d --wait postgres redis minio
++docker compose --env-file .env.local-prod -f docker-compose.vps.yml run --rm --no-deps -T backend \
++  npx prisma migrate deploy --schema=apps/backend/prisma/schema.prisma
++#    → every migration applies on the empty database, 20260925120000_website_intake_door last
++
++# 4. the drift gate (step [5b]) — on a FRESH database this must be exactly clean (exit 0, "No difference detected")
++docker compose --env-file .env.local-prod -f docker-compose.vps.yml run --rm --no-deps -T backend npx prisma migrate diff \
++  --from-schema-datasource apps/backend/prisma/schema.prisma \
++  --to-schema-datamodel apps/backend/prisma/schema.prisma --exit-code; echo "drift exit=$?"
++#    → drift exit=0
++
++# 5. the app (step [6]), the conformance line, the health check
++docker compose --env-file .env.local-prod -f docker-compose.vps.yml up -d backend
++sleep 40
++docker logs jobsadmire_ops_backend 2>&1 | grep -E 'Permission conformance|Nest application successfully started|Error:'
++#    → "Permission conformance: N decorated, N public, N self-service, 0 undecorated (PERMISSIONS_STRICT=true)"
++#      then "Nest application successfully started"; ANY "Permission conformance failed" or "Error:" line = do not push
++curl -s -o /dev/null -w 'health %{http_code}\n' http://localhost:4001/api/health        # → health 200
++curl -s http://localhost:4001/api/health; echo                                            # → {"status":"ok",...}
++docker inspect -f 'restarts={{.RestartCount}} {{.State.Status}}' jobsadmire_ops_backend   # → restarts=0 running
++
++# 6. the seed, exactly as deploy step [6b] runs it, then the frontend
++docker compose --env-file .env.local-prod -f docker-compose.vps.yml exec -T -e FORCE_SEED_PROD=yes -w /app/apps/backend backend npx prisma db seed
++#    → finishes without a stack trace (MODULE_NOT_FOUND here = a workspace package missing from Dockerfile.prod)
++docker compose --env-file .env.local-prod -f docker-compose.vps.yml up -d frontend
++sleep 30; curl -s -o /dev/null -w 'frontend %{http_code}\n' http://localhost:4000/en/auth/login   # → frontend 200
++
++# 7. both flag states — the guard, not the import, is what changes
++curl -s -o /dev/null -w 'ping flag=false %{http_code}\n' http://localhost:4001/api/website/v1/ping   # → 404
++sed -i '' 's/^WEBSITE_MODULE_ENABLED=.*/WEBSITE_MODULE_ENABLED=true/' .env.local-prod
++docker compose --env-file .env.local-prod -f docker-compose.vps.yml up -d backend
++sleep 40
++docker logs jobsadmire_ops_backend 2>&1 | grep -c 'Permission conformance:'              # → 1 (the recreated container's line)
++curl -s -o /dev/null -w 'health %{http_code}\n' http://localhost:4001/api/health        # → health 200
++curl -s -o /dev/null -w 'ping flag=true %{http_code}\n' http://localhost:4001/api/website/v1/ping    # → 401 (on, fails closed with no token)
++docker inspect -f 'restarts={{.RestartCount}}' jobsadmire_ops_backend                    # → restarts=0
++
++# 8. tear down; the bind-mounted data dirs are throwaway
++docker compose --env-file .env.local-prod -f docker-compose.vps.yml down
++rm -rf docker-volumes || docker run --rm -v "$PWD/docker-volumes:/v" alpine sh -c 'rm -rf /v/postgres /v/redis /v/minio'
++rm -f .env.local-prod
++git status --short          # → empty (docker-volumes/ and .env.local-prod are git-ignored anyway)
++```
++
++How to read the result: the push is allowed only when step 4 exits 0, step 5 prints the conformance line with `0 undecorated` and health is 200, step 6's seed finishes without a thrown error, and step 7 shows 404 → 401 with `restarts=0` in both states. A `Permission conformance failed (N problem(s))` line names every drifted key or undecorated route; a Nest `Error:` naming a provider is a DI edge a module forgot to import — fix, rebuild, repeat. The prod database ALSO carries a pre-existing, unrelated drift (the incident snapshot tables, the orphan `LanguagePreference` type); step 4 is clean here precisely because the database is fresh, which is why this local run — not the VPS gate — is the proof that `schema.prisma` and the migration agree. Restart the dev stack afterwards with `docker compose -p jobsadmire-operations -f /Users/agentfaraz/projects/admiregroup/jobsadmire/jobsadmire-operations/docker-compose.yml up -d` — but not while a push is being verified.
++
+ ### Verifying a deploy landed
+ 
+ **Never verify via prod `git rev-parse HEAD`** — the poller pulls first and builds after, so HEAD matches your commit for minutes while the old container still serves. Verify against an artifact of the new build instead:
+ 
+ ```bash
+ ssh jobsadmire_portal "tail -20 /var/www/html/jobsadmire-operations/deploy.log"
+ ssh jobsadmire_portal "docker inspect -f '{{.State.StartedAt}}' jobsadmire_ops_backend"
+ curl -fsS https://operations.jobsadmire.com/api/health
+ # …or the changed behaviour itself in the live UI
+ ```
+@@ -404,20 +490,21 @@ Everything external the app depends on, and where its credentials live:
+ | **Zoom** | `.env`: `ZOOM_*` quad | "JobsAdmire Operations" S2S OAuth app in the company Zoom marketplace. Scopes incl. `meeting:read:list_meetings:admin` (granted 2026-08-03 — feeds availability). Account is the **Basic plan → 40-min cap**. The two "JobsAdmire CRM" apps in the same marketplace belong to the other application — never touch them. |
+ | **Google Workspace (DWD)** | Database via `GoogleWorkspaceConfigService` (Settings UI) — *not* `.env` | Service account `jobsadmire-ops-careers@jobsadmire-operations.iam.gserviceaccount.com`. The code requests four DWD scopes (`gmail.send`, `calendar.events`, `meetings.space.readonly`, `meetings.space.created`); the Admin Console grant list is a superset also carrying `drive.readonly` and the Mailbox-leftover `gmail.readonly` — read the exact list in the Admin Console, not from docs. `careers@` must be a registered **send-as** alias under info@'s Gmail or Google silently rewrites the From. Meet/Calendar/Drive APIs enabled in the `jobsadmire-operations` GCP project. The Vertex/Gemini summary pipeline was **deleted** (2026-07-16) and deliberately not restored — ignore any old Vertex setup notes. |
+ | **ElevenLabs / OpenAI** | `.env` keys as fallback; UI-saved keys (AES-256-GCM in DB) win | Super-admin-only (`ai-interviewer:MANAGE_KEYS` seeded to no role). ElevenLabs ConvAI agent id is cached on the config row. |
+ | **Marketing Studio (Meta + Buffer)** | Database: `marketing_studio_config` via Marketing → Settings → Integrations (`marketing:MANAGE_KEYS`, seeded to no role — super-admin only) | Meta app id/secret + Meta system-user token (Graph API `v21.0`, direct publish to Facebook/Instagram) and a Buffer access token (GraphQL bridge for LinkedIn, until the LinkedIn Community Management API app is approved) — all AES-256-GCM under `ENCRYPTION_KEY`, write-only, no reveal route, **no env fallback at all** (unlike `ai-interviewer`). `/marketing/config` redirects to the Integrations tab; the routes underneath are unchanged. The module's other settings (review-task board, default language, sibling-translation offset, overdue floor, company timezone) also live in this same table via Settings → General — nothing about P6 added an environment variable. The AI provider registry (`MarketingProviderConfig`) that used to live beside these fields was dropped 2026-09-12 with the rest of the module's AI (P6 WP1); marketing reads no `OPENAI_API_KEY`/`GEMINI_API_KEY`/`ANTHROPIC_API_KEY` and never did read the last two — see the AI env-var note below. |
+ | **İŞKUR agent** | `.env`: `ISKUR_AGENT_TOKEN`; İŞKUR portal creds encrypted in DB (write-only, no reveal endpoint) | The Chrome MV3 extension (`tools/iskur-agent/`) on a company machine polls `/api/iskur/agent/*` with the bearer token. Server-side automation is retired — don't rebuild it. |
+ | **Indeed import agent** | `.env`: `INDEED_AGENT_TOKEN` (40+ random chars) | The Chrome MV3 extension (`tools/indeed-agent/`) walks the employer console in the operator's own logged-in session and POSTs candidates + CVs to `/api/internal-recruitment/agent/indeed/import`. Extension storage holds the secret, so no CORS widening is needed — an env-gated CORS window was tried and reverted 2026-08-17. Dry-run defaults ON. |
+ | ~~**WhatsCRM**~~ | — (retired) | **WP6 T14 removed the bridge.** The recruitment notifications are delivered by the native WhatsApp module; `docs/archive/WHATSAPP-INTEGRATION.md` and the sibling repo's `INTEGRATION-OPERATIONS-WHATSAPP.md` are history for the contract that used to run here. The two `.env` values are deleted in the post-merge step below. |
+ | **WhatsApp (native)** | DB: WhatsApp → Settings → Numbers (MANAGE_KEYS) | System-user token + app secret encrypted; webhook URL `/api/whatsapp/webhook` + verify token shown on that page; subscribe the app from the same page |
+ | **OpenAI (WhatsApp assistant)** | DB: WhatsApp → Settings → AI assistant (MANAGE_KEYS) | Per-number key, AES-256-GCM under `ENCRYPTION_KEY`, write-only, no reveal route and no env fallback. The assistant is OFF until somebody with `whatsapp-automations:APPROVE` turns it on, and a fresh row is in test mode answering only the owner's number |
+ | **Cloudflare Turnstile** | `.env`: both keys, together-or-neither | Deploy preflight enforces the pairing. |
++| **Website intake door (jobsadmire.com forms)** | Database: Website → Integrations (`/admin/website/integrations`; the page needs `website.integrations` VIEW/EDIT, every secret route needs `website:MANAGE_KEYS` — seeded to no role, super-admin only) | Write token + test token (server-generated on Rotate — `POST /api/website/integrations/rotate/:name` — shown ONCE, previous write token honoured for 24 h after a rotate so the Vercel redeploy never races it), the website's own Turnstile secret (one Cloudflare widget listing `jobsadmire.com` and `staging.jobsadmire.com`; NOT `TURNSTILE_SECRET_KEY`, which the deploy preflight pairs with the careers widget), the second-human alert recipient (required — `ping.secondHumanConfigured` must be `true` before the flip; no default). All AES-256-GCM under `ENCRYPTION_KEY`, no reveal route, no env fallback; the Test button probes the stored Turnstile secret. The door itself is dark until `WEBSITE_MODULE_ENABLED=true` (row above); `WEBSITE_SITE_URL` gives the mails their links. Hand the write token to the website's Vercel project as `OPS_WEBSITE_WRITE_TOKEN`, the test token to the external monitor's synthetic-lead job. |
+ 
+ <!-- WP6 T14 — post-merge step, bridge removal. Delete this block once it has been run. -->
+ **Post-merge (WP6 T14 — the bridge-removal deploy): delete the WhatsCRM block from the VPS `.env`.**
+ **DONE 2026-09-13 21:35 PKT** — the live `.env` carried the two `WHATSCRM_*` lines without the
+ banner comment, so the range pattern below never opened (the fallback in this section was used:
+ exact-line delete of `^WHATSCRM_API_KEY=` and `^WHATSCRM_BASE_URL=`; `.env.bak-20260913` kept,
+ mode 600). The same night the owner dropped the 30-day window ("no one is using WhatsCRM") and
+ Phase J of the runbook ran: final DB + media dumps under `/root/whatsapp-backups/final-archive-20260913/`,
+ `docker compose down` (volumes kept), and `https://whatsapp.jobsadmire.com` now serves a static
+ retired page (vhost backups `.bak-20260913` beside the confs).
+diff --git a/docs/PRD.md b/docs/PRD.md
+index 62b4791..47853c3 100644
+--- a/docs/PRD.md
++++ b/docs/PRD.md
+@@ -46,37 +46,39 @@
+   - 5.2 Field Sales Campaigns (Sales ↔ Projects bridge)
+   - 5.3 Projects & Tasks
+   - 5.4 Internal Recruitment
+     - 5.4.8a Per-hire employment type and work pattern (2026-08-24)
+     - 5.4.8b Daily hours, and reaching the day split (2026-08-25)
+   - 5.5 HRM
+   - 5.6a Sales Training Academy (staff)
+   - 5.7 Marketing Studio (module slug `marketing`)
+   - 5.10 Call Center (AI + human telephony)
+   - 5.11 WhatsApp (native Meta Cloud API module)
++  - 5.12 Website (public-site intake door; CMS from Phase B)
+ - 6. Supporting Infrastructure
+   - 6.1 Communications & Activity Stream
+   - 6.2 Notifications
+   - 6.4 Settings & reference data
+   - 6.5 Careers-public hardening
+   - 6.6 File storage & uploads
+   - 6.7 Email infrastructure
+ - 7. Third-Party Integrations
+   - 7.1 JobsAdmire CRM
+   - 7.2 WhatsApp bridge (WhatsCRM) — RETIRED 2026-09-13
+   - 7.3 Zoom
+   - 7.4 Google Workspace (Gmail, Calendar, Meet, Drive)
+   - 7.5 İŞKUR (summary → §5.4.4)
+   - 7.6 AI providers (ElevenLabs, OpenAI)
+   - 7.7 Cloudflare Turnstile
+   - 7.8 Hipcall + ElevenLabs telephony (Call Center)
+   - 7.9 Meta WhatsApp Cloud API (native module)
++  - 7.10 The website intake door — the third sanctioned public surface
+ - 8. Data Model Overview
+   - Models by domain
+   - Removed domains
+   - Enum notes
+   - Schema conventions
+   - Encryption at rest — the actual pattern
+   - Migration & seed discipline
+ - 9. End-to-End Workflows
+   - Sales lead → CRM partner
+   - Internal hiring: request → research → JD → opening → posting → apply → AI screen → interviews → offer → sign → convert → login
+@@ -238,21 +240,21 @@ Production is a single VPS (Apache vhosts + Docker Compose). Operations auto-dep
+ - **The prod build needs `NODE_OPTIONS=--max-old-space-size=4096` in `Dockerfile.prod` (2026-08-03)** — `nest build` outgrew Node 20's in-container heap. Don't drop the flag.
+ - **`prisma/seed.ts` must never import from `apps/backend/src/` (2026-08-04)** — the prod image ships only `dist/`, `dist-scripts/`, `node_modules/`, `package.json`, `prisma/`; a `../src/...` import dies at deploy time and fails the whole seed. Shared seed logic goes in a workspace package. Related: the seed entry-point is `node prisma/seed-runner.js` (programmatic ts-node with explicit `module: commonjs` — the prod image ships no tsconfig), and the prod seed step passes `FORCE_SEED_PROD=yes`; any new seed-execution path must too.
+ - **Frontend middleware gates `/admin` on the refresh token, not the access token** — an expired 15-min access token with a valid refresh token must pass (the client re-mints via the single-flight `refreshAccessToken()` in `lib/api/client.ts`). Reverting to access-token gating reintroduces every-15-minutes auto-logouts. **Keep token refresh single-flight** — the backend rotates the refresh token (overwrites Redis, rejects the old one), so two concurrent refreshes log the user out.
+ - **Keep `REFRESH_TTL_SECONDS` (`auth.service.ts`), the refresh JWT `expiresIn`, and `COOKIE_MAX_AGE` (`stores/auth.store.ts`) in lockstep** — one source of truth for the 30-day window.
+ - **MinIO buckets are private — never hand the browser a raw MinIO URL** (it 403s; the dev host `minio:9000` isn't even reachable from the browser). Stored files stream through authenticated endpoints; small always-rendered images (avatars, company logo) are data URLs on the DB column.
+ - **FilterBar: keep the `manuallyAdded` state in `filter-bar.tsx` (2026-07-16 fix)** — without it, unpinned select filters can never be added (the menu seeded `''`, which the activity check treated as unset). Don't remove it.
+ - **Don't render a module's sub-rail inside page content.** The global Command shell owns the sub-rail column; modules declare nav as data in `src/config/modules.ts` and keep `layout.tsx` a pass-through. The retired `admin-sidebar.tsx`/`portal-header.tsx`/`module-shell.tsx` are superseded by `command-*`.
+ - **Heading color (2026-06-07):** the global `h1–h4` rule in `globals.css` must NOT force `text-foreground` — headings inherit color (dark on the light body, white on dark surfaces like `DetailHero`). Forcing it renders every navy detail-hero title dark-on-dark.
+ - **Don't send emails synchronously in a request handler** (Bull queue always), and remember `mailbox: 'careers'` on every candidate email — the global SMTP is unset in prod, so a plain `queueEmail` silently no-ops.
+ - **Don't `fetch()` external apps from feature code.** The CRM goes through `CrmClient`; WhatsApp goes through `WaGraphClient`. Both clients own timeouts, auth, idempotency, and error mapping.
+-- **Don't add public unauthenticated endpoints outside `careers-public`** (auth's login/refresh/reset routes are the one other sanctioned public surface). Public traffic is concentrated there for rate-limiting, captcha, IP hashing, and audit visibility.
++- **Don't add public unauthenticated endpoints outside `careers-public`, auth, and the argued machine doors** (the İŞKUR/Indeed agent routes, the §7.8/§7.9 webhooks, and the website intake door `website/v1` — §7.10). Public traffic is concentrated in those few places for token/captcha checks, IP hashing, dedupe and audit visibility; a new surface is sanctioned by name in the PRD in the same change set, never sprinkled.
+ - **Don't suggest SSH deploy keys** — org policy disables them; the VPS pulls over an HTTPS PAT (rotation in `docs/DEPLOYMENT.md`).
+ - **Don't touch `portal.jobsadmire.com`** — the CRM is a separate app and repo; this app is `github.com/JobsAdmire/jobsadmire-operations`.
+ - **Push policy (relaxed 2026-06-01):** the owner treats this app as staging — commit with a descriptive message and push to `main` without an approval step; a push auto-deploys within ~2 min. Still glance at the diff before risky migration/config/env changes. (Supersedes the 2026-05-28 "explicit approval" policy; will tighten again at go-live.)
+ 
+ ---
+ 
+ ## 4. Users, Roles & Permissions
+ 
+ Every authenticated user holds exactly one PRIMARY role plus any number of additional ones, and every one of them is internal JobsAdmire staff — the app has no external-user role at all since `investor` retired with the Investments module on 2026-09-14 (§8 "Removed domains"). There is no partner scoping, no employer/sourcing portal, no data-isolation firewall.
+ 
+@@ -470,21 +472,21 @@ Before W1 the question "what may this user do" was answered by **four independen
+ |---|---|---|
+ | `permissions:{roleId}` | one role's grant rows + slug + `isActive` | role permission edit, reset-defaults, `isActive` flip |
+ | `perm-effective:{userId}:{sha1(sorted roleIds)}` | the resolver's inputs for one user | `invalidateUser` (overrides, additional-role edit, primary-role change) and `invalidateRole` (every holder) |
+ | `perm-effective-key:{userId}` | a pointer to the key above | same as above — it exists so invalidation is a `DEL` and never a `SCAN` over a live Redis |
+ | `user-roles:{userId}` | `{ primary, extra }` role ids | additional-role edit, primary-role change, `invalidateHoldersOf` on an `isActive` flip |
+ 
+ The role-id hash is **in** the effective key, not beside it, so a role change landing between two requests cannot be served from a set built for the old role list. TTL is `min(300, seconds to the nearest override expiry)` — otherwise a one-hour revocation could outlive itself by five minutes, long enough for the operator to conclude it did not work. `invalidateRole` busts the role's grants **and** every holder's set, primary and additional: busting only the first is the same failure the W0 `isActive` fix had to close in two caches rather than one.
+ 
+ **`permissions.changed`** is emitted over the notifications socket (`NotificationsGateway.sendToUser`) on role permission edits and resets (every holder), `isActive` flips, additional-role edits, primary-role changes, override writes and the nightly expiry sweep. The caches are the FLOOR of propagation, not the ceiling: a holder's BROWSER has its own copy of `/permissions/me` driving `<Can>` and the nav, and nothing refetches it — so without the emit, an operator who revoked a grant watched the user keep the menu item until they reloaded, and the 403 when they clicked it was the first sign anything had happened. `PermissionChangeNotifier` resolves the gateway through `ModuleRef` at call time (PermissionsModule is @Global and owns `PermissionRegistry`, which NotificationsModule injects — importing Notifications from Permissions would be a real module cycle) and swallows every failure: a permission change is a database fact, the socket is a courtesy, and a down socket server must never roll back a role edit.
+ 
+-**Boot-time conformance.** `PermissionConformanceService` enumerates every controller handler at startup and **fails the container** on a decorator naming an unregistered key, an action the key does not support, or no annotation at all. The first two used to surface as a 403 someone eventually reported — `communications:DELETE` was a real, seeded, ENFORCED grant the registry did not advertise, so it had no column in the roles matrix and nobody could revoke it (registered in the same change set that added this check). It also counts the four rungs and serves them at **`GET /permissions/conformance`** (`roles:VIEW`): at W1, **decorated 840 · public 50 · self-service 3 · undecorated 79**; **from the end of W3, decorated 841 · public 58 · self-service 73 · undecorated 0**, and the census is now a FLOOR as well as a ceiling.
++**Boot-time conformance.** `PermissionConformanceService` enumerates every controller handler at startup and **fails the container** on a decorator naming an unregistered key, an action the key does not support, or no annotation at all. The first two used to surface as a 403 someone eventually reported — `communications:DELETE` was a real, seeded, ENFORCED grant the registry did not advertise, so it had no column in the roles matrix and nobody could revoke it (registered in the same change set that added this check). It also counts the four rungs and serves them at **`GET /permissions/conformance`** (`roles:VIEW`): at W1, **decorated 840 · public 50 · self-service 3 · undecorated 79**; **from the end of W3, decorated 841 · public 58 · self-service 73 · undecorated 0**, and the census is now a FLOOR as well as a ceiling. **WP3a (2026-09-19) added the website module's routes** — the three public `website/v1` controllers count under `public` (class-level `@Public()` behind two guards), `GET /website/status` under `self-service`, the inbox, evidence and Integrations routes under `decorated`; read the live numbers from the boot log line `Permission conformance: …` or `GET /permissions/conformance`, not from this paragraph.
+ 
+ **An undecorated route is a BOOT ERROR, regardless of `PERMISSIONS_STRICT`, and W4 made it a request-time refusal too.** The census reached zero when the last 66 routes took `@SelfService()` and `GET /admin/queues` took `settings.queues:VIEW`, so "no decorator" is not a migration backlog — it is a route whose author did not say what it is. The guard's warn-and-allow branch (and the warn-once Set that kept a hot undecorated endpoint from drowning the log) was DELETED in W4: it could not execute in a container that had started, which made it dead code that read like a rollout switch — the worst combination, because the next person would trust it. `repo-invariants.spec.ts` is the same answer minutes earlier and NAMES the route. (Its source-scan twin also gained a fix in W3: a class decorator sitting ABOVE `@Controller` — `@Public()` on the İŞKUR and Indeed agent controllers — used to be dropped, so eight token-guarded machine routes were reported as ungated. The boot scan never saw that, because it reads metadata rather than line order.)
+ 
+ **Typed keys — one vocabulary, asserted at boot (W2).** `packages/permissions/src/keys.catalog.ts` exports `PERMISSION_KEYS` (every grantable key, sorted — 23 modules + 62 resources = **85** since the website module (WP3a, 2026-09-19; 75 at the end of W3) — Marketing 9, Website 9, Projects 8, Sales 6, HRM 6, IR 5, WhatsApp 4, Call Center 4, Settings 4, Admira 3, Market Research 2, Academy 2) and the `PermissionKey` union both halves type against. `keys.ts` is the GRAMMAR (what shape a key may take, and it must keep parsing whatever the database hands it); this is the VOCABULARY (which keys exist), and a typo cannot join it. The frontend types `<Can module>`, `SubRailItem.permission.module`, `ModuleEntry.permission.module` and the route manifest as `PermissionKey`, so `module="marketting"` is a **compile** error where it used to render nothing and look exactly like a missing grant. `PermissionConformanceService` diffs `registry.keys()` against the list at boot and **fails the container** on drift in either direction, naming the missing and the extra keys; `repo-invariants.spec.ts` is the CI-cheap twin. `PERMISSION_KEYS_HASH` is **checked in rather than computed** — the package ships to the browser bundle, where `require('crypto')` is a polyfill nobody asked for — so `GET /permissions/catalog` takes the digest, the invariant spec asserts the constant still matches, and `permissionsApi.getCatalog()` warns once in the console when a tab's bundle is behind the server's.
+ 
+ **The BROWSER runs the resolver (W2).** `usePermissions()` fetches `GET /permissions/me/effective` — the resolver's INPUTS, not its answers — and resolves them with `resolveEffective` from `@jobsadmire/permissions`, the same function the guard runs. It used to read the flat `/permissions/me` list and answer with `.some()`, which has nowhere to put PRECEDENCE: a resource carve-out and a per-user DENY override are both statements about the ladder, so the screen would have gone on drawing a button the server had already decided to refuse. Shipping resolved cells instead would have meant a second implementation of the ladder in the API, which is the drift W1 spent itself removing. The hook returns `{ can, canAny, scopeOf, isLoading, isSuperAdmin, effective }`, and the three `roleSlug === 'super-admin'` compares it carried are **gone** — the flag comes off the wire through the resolver's own bypass branch. No `transpilePackages` was needed: the tsconfig path resolves the package exactly as `@jobsadmire/constants` already does (verified with a real `next build`).
+ 
+ **The browser's copy is a CACHE, and `PermissionsRefreshBridge` invalidates it.** Mounted once in `admin/layout.tsx` inside `SocketProvider`; it subscribes to `permissions.changed` and watches a `tokenVersion` counter the auth store bumps on every `setTokens` (a refreshed access token carries a freshly compiled claim set, so it is the one moment a change lands even when the socket is down). The third path is the admin screens, which invalidate `['permissions','me']` after saving role permissions, a reset, additional roles, a primary-role change or an override — a courtesy for the operator's OWN tab, which is the one the socket cannot reach because it is the tab that made the change.
+ 
+ **`PERMISSIONS_STRICT` is ON, and it now GATES NOTHING (W4, 2026-09-15).** `'true'` in `docker-compose.yml`, and mapped in `docker-compose.vps.yml` as `${PERMISSIONS_STRICT:-true}` — that compose passes env by an EXPLICIT list, so a line in the production `.env` reached nothing at all until this wave. What it does today is DECLARE the mode: it is logged at boot in both directions and returned as `strict` by `GET /permissions/conformance`. What it does NOT do is gate anything — an undecorated route fails boot (W3) and is refused by `PermissionsGuard` (W4) whatever its value. **Setting it `false` is therefore not a break-glass that re-opens a route**; the remedy for a route that forgot its decorator is to add the decorator, and the container will not start until you do. Note the asymmetry with `PERMISSION_SCOPE_ENFORCEMENT`, which is ON unless it literally reads `'false'`: this one is read as `=== 'true'`, so a typo leaves the report saying "not strict" rather than silently loosening anything.
+@@ -536,25 +538,25 @@ The platform's functional surface is organized as one NestJS module per domain u
+ ### 5.1 Sales
+ 
+ The sales pipeline from initial inquiry through to closed deal. When a lead is marked WON, the lead is converted to a partner — but the partner record is created in the CRM (`portal.jobsadmire.com`) via the cross-app HTTP integration (§7.1), not stored locally. Operations never holds partner data.
+ 
+ **Entities** (Prisma): `Inquiry`, `AssignmentRule`, `Lead`, `LeadBranch`, `LeadScoringRule`, `SalesCommunication`, `SalesMeeting`, `MeetingPreparation`, `MarketingMaterialRequest`, `TravelRequest`, `BudgetRequest`, `FundTransfer`, `TravelChecklist`, `MeetingReport`, `SalesExpense`, `Proposal`, `ProposalNegotiation`.
+ 
+ **Module root & nav (since 2026-09-14).** The module **root `/admin/sales` is the sales dashboard** (KPI cards, inquiry-source + pipeline charts, upcoming meetings, budget summary — house pattern, matching projects/marketing/internal-recruitment/call-center); the old `/admin/sales/dashboard` route now just redirects there for bookmarks. The sub-rail's Pipeline group therefore points "Dashboard" at the module root (`exact: true`, so it doesn't stay highlighted on every sub-page); the Operations group gained **Follow-ups** (`/admin/sales/follow-ups` — the overdue/today/upcoming follow-up queue) and **Assignment Rules** (`/admin/sales/assignment-rules` — CRUD for the `AssignmentRule` rows described above), both of which existed as working pages with no nav entry before this.
+ 
+ #### Inquiry capture & auto-assignment
+ 
+-There is **no public ingestion endpoint** — inquiries are created by authenticated staff via `POST /sales/inquiries` (`sales:CREATE`); the inbound channel is recorded, not integrated, as the `InquirySource` enum: `WEBSITE_FORM | WHATSAPP_CRM | TURKEY_CALL_CENTER | INTERNATIONAL_CALL_CRM | EMAIL | REFERRAL | EXPO_MEETING | AI_CALLING_CAMPAIGN | MANUAL_ENTRY`. Auto-assignment runs **once at create** via `AssignmentEngineService`: `CHANNEL_ASSIGNED` rules are evaluated first, then `RULE_BASED`, else the inquiry stays `MANUAL`/unassigned. Rule condition keys are `source` / `country` / `language` / `classification` combined with AND logic (an `industry` condition mentioned in an old method doc-comment is not implemented); since 2026-08-20 each key's value may be a single string or an **array** (OR within the key — arrays are what make country-based sales-team routing a rule edit instead of a code change), `CreateInquiryDto` accepts an optional `classification` (persisted and fed to the engine), and the current sales structure is expressed as rules, not code: employer-side classifications (`DIRECT_EMPLOYER`, `HR_AGENCY`) → the Turkey salesperson, `SOURCING_PARTNER`/`JOB_SEEKER` → the Pakistan-team admin, plus a low-priority `TURKEY_CALL_CENTER` catch-all — future country teams get higher-priority rules with `country` arrays. Active `AssignmentRule` rows are Redis-cached for 5 minutes. Rules are admin-CRUD'd via the assignment-rule endpoints.
++**Public ingestion arrives through ONE door — the website intake module** (`POST /api/website/v1/forms/:formKey`, §5.12, WP3a 2026-09-19): its INQUIRY, CALLBACK, VISIT and CALCULATOR_QUOTE handlers call `InquiryService.create` with the synthetic `system:website` actor, `InquirySource.WEBSITE_FORM`, the `contactName` column (added with the module) and a `messagePreview` tagged with the form key (classification set only where the form implies one). Staff create inquiries via `POST /sales/inquiries` (`sales:CREATE`); the inbound channel is recorded, not integrated, as the `InquirySource` enum: `WEBSITE_FORM | WHATSAPP_CRM | TURKEY_CALL_CENTER | INTERNATIONAL_CALL_CRM | EMAIL | REFERRAL | EXPO_MEETING | AI_CALLING_CAMPAIGN | MANUAL_ENTRY`. Auto-assignment runs **once at create** via `AssignmentEngineService`: `CHANNEL_ASSIGNED` rules are evaluated first, then `RULE_BASED`, else the inquiry stays `MANUAL`/unassigned. Rule condition keys are `source` / `country` / `language` / `classification` combined with AND logic (an `industry` condition mentioned in an old method doc-comment is not implemented); since 2026-08-20 each key's value may be a single string or an **array** (OR within the key — arrays are what make country-based sales-team routing a rule edit instead of a code change), `CreateInquiryDto` accepts an optional `classification` (persisted and fed to the engine), and the current sales structure is expressed as rules, not code: employer-side classifications (`DIRECT_EMPLOYER`, `HR_AGENCY`) → the Turkey salesperson, `SOURCING_PARTNER`/`JOB_SEEKER` → the Pakistan-team admin, plus a low-priority `TURKEY_CALL_CENTER` catch-all — future country teams get higher-priority rules with `country` arrays. Active `AssignmentRule` rows are Redis-cached for 5 minutes. Rules are admin-CRUD'd via the assignment-rule endpoints.
+ 
+ #### Inquiry → lead conversion
+ 
+-Conversion requires a business **classification** (`DIRECT_EMPLOYER | HR_AGENCY | SOURCING_PARTNER`); `classify()` can classify-and-convert in one step via `convertToLead: true`. `convertToLeadInternal` (`inquiry.service.ts`) copies **only `companyName` ('Unknown' fallback), `country`, and `classification`** onto the new `Lead`; the inquiry's `phoneNumber` and `email` are selected into the helper's type but **never written to the lead — contact details are silently dropped on conversion** (known behavior; re-enter them on the lead). Lead owner = `inquiry.assignedAgentId`, falling back to the converting user; the inquiry gets `convertedLeadId` + status `CONVERTED_TO_LEAD`.
++Conversion requires a business **classification** (`DIRECT_EMPLOYER | HR_AGENCY | SOURCING_PARTNER`); `classify()` can classify-and-convert in one step via `convertToLead: true`. `convertToLeadInternal` (`inquiry.service.ts`) copies **only `companyName` ('Unknown' fallback), `country`, and `classification`** onto the new `Lead` — plus, since WP3a (2026-09-19), `contactName` → `Lead.contactPerson`; the inquiry's `phoneNumber` and `email` are selected into the helper's type but **never written to the lead — contact details are silently dropped on conversion** (known behavior; re-enter them on the lead). Lead owner = `inquiry.assignedAgentId`, falling back to the converting user; the inquiry gets `convertedLeadId` + status `CONVERTED_TO_LEAD`.
+ 
+ #### Lead & inquiry numbering
+ 
+ Human-facing sequence numbers are `LEAD-YYYY-NNN`, `INQ-YYYY-NNN`, `MTG-YYYY-NNN`, `PROP-YYYY-NNN` and `TRV-YYYY-NNN` (zero-padded to 3, growing past 999). All five generators call the shared pure helper **`nextSequenceNumber` (`sales-number.logic.ts` + spec, 2026-08-05)**, which computes the **numeric max** of existing sequence suffixes — never `orderBy <number> desc`, because lexicographic ordering ranks `LEAD-2026-999` above `LEAD-2026-1000` and would re-issue #1000 forever (P2002 unique-constraint failure) once the sequence passes 999. `scripts/import-iskur-leads.ts` mirrors the numeric-max approach. History: `InquiryService` (and the meeting/proposal/travel services) carried stale lexicographic generators until 2026-08-05 (the audit flagged the inquiry copy as a live time bomb with ~820 İŞKUR leads in the table); all were replaced with the shared helper — don't reintroduce a local generator.
+ 
+ #### Lead pipeline
+ 
+ `Lead.pipelineStatus` flows `NEW_LEAD → CONTACTED → INTERESTED → MEETING_SCHEDULED → PROPOSAL_NEEDED → PROPOSAL_SENT → NEGOTIATION → WON | LOST`. Exact semantics (transition map `PIPELINE_TRANSITIONS` in `lead.service.ts`, validated by the static `LeadService.isValidTransition`):
+ 
+ - Transitions are **strictly single-step forward**; a same-status write is a valid no-op.
+@@ -682,20 +684,22 @@ navigates, and a button whose page would refuse the person is a red 403 already
+ - **Don't store partner records locally.** Partner data lives in the CRM. WON conversion calls `CrmClient.createPartner()` — don't add a `Partner` model to this schema, and don't `fetch()` the CRM directly from feature code (the client handles timeouts, idempotency keys, error mapping, token plumbing).
+ - **Country dimension is the CODE everywhere, not the name (2026-07-02 for Sales).** `Lead.country` and `Inquiry.country` store `Country.code` (migration `20260702120000_lead_hr_agency_fields` converted legacy names); forms submit codes via the shared selects; cities are **names**. **`LeadScoringRule` rows matching on `country` must use codes** — a legacy `country=Turkey` rule silently stops matching; since `recalculateAll` went with the rule CRUD on 2026-09-14 a fixed rule only reaches a lead the next time that lead is written.
+ - **Sequence numbers go through the shared `nextSequenceNumber` helper (`sales-number.logic.ts`) — never a local `orderBy <number> desc`** (lexicographic ordering re-issues #1000 forever once the sequence passes 999; the InquiryService duplicates that carried this bug were removed 2026-08-05).
+ - **Conversion is `sales:APPROVE`-gated since 2026-08-05** (per-record scoped). Before that it was `sales:EDIT` despite the seed comment claiming otherwise — the enforcement now matches the documented intent; don't loosen it back to EDIT.
+ - **`LeadBranch` writes are replace-all** — a `branches` array on the create/update DTO replaces the whole set; omit the key to leave branches untouched.
+ - **`customFields` is deliberately schema-less** — free-form JSON KV, no admin form-builder; don't build one.
+ - **Sales read paths use `resolveEnforced()`, not `resolve()`** — the app-wide `PERMISSION_SCOPE_ENFORCEMENT` flag is OFF in prod and plain `resolve()` returns `{}` for everyone, re-opening the scoped-role lead leak. When the org flips the flag app-wide (a separate QA-heavy rollout, `docs/scope-enforcement-audit.md`), the two behave identically and `resolveEnforced()` calls can revert.
+ - **Write paths are per-record scoped (2026-08-05):** `LeadService.update` (EDIT), `remove` (DELETE) and `convertToPartner` (APPROVE) thread the caller and merge the resolved scope fragment exactly like `findOne` — keep any new lead write path on the same pattern.
+ - **Inquiry conversion carries contact details (fixed 2026-08-05)** — `phoneNumber`/`email` now land on `Lead.phone`/`Lead.email` alongside companyName/country/classification (they used to be silently dropped).
+ - Contact/discussion history reuses the shared `CommunicationsLog` timeline (threaded replies, `parentId: null` top-level filter) — not a sales-local model.
++- **Website inquiries come through `InquiryService.create` only (WP3a, 2026-09-19).** The `system:website` actor holds no grants and would be refused by every `LeadService`/`MeetingService` write path, so the website handlers never call those; `InquiryService.create` consults no permission and is the whole contract. A retry from the website must never file a second inquiry — the intake service writes its submission row first and replays the prior result on the dedupe key (§5.12).
++- **`Inquiry.contactName` is new and optional (WP3a).** The list/detail render it beside `companyName` with a header fallback and search ORs on it; conversion carries it to `Lead.contactPerson`. Keep the search terms in `where.OR` — the inquiry list spreads no scope fragment — but the moment `resolveEnforced` is wired into `findAll`, move them under `where.AND` (the 2026-08-10 lesson).
+ 
+ **Permissions**: `sales:{VIEW,CREATE,EDIT,DELETE,APPROVE}` (APPROVE gates conversion; ASSIGN deregistered 2026-08-05) and `travel-expenses:{VIEW,CREATE,EDIT,DELETE,APPROVE}` (scope bindings unwired).
+ 
+ ### 5.2 Field Sales Campaigns (Sales ↔ Projects bridge)
+ 
+ Shipped 2026-07-08. Wires Sales, Projects/Tasks, and the physical-meeting journey into one **field-sales workflow** for canvassing lead lists (built for the ~820 İŞKUR Turkish HR-agency leads, generalizes to any country). A **campaign is a `Project` with `isCampaign=true`** plus a lead **roster**; the campaign linkage lives entirely in the projects domain (`campaign.service.ts` / `campaign.controller.ts` in `apps/backend/src/modules/projects/`) — the Sales `Lead` carries **no campaign workflow columns**, a deliberate lesson from the retired Expansion module (which put `linkedProjectId`/verification columns on `Lead` and had to be torn out). Only schema back-relations on `Lead`/`User` exist (plumbing, allowed). Migrations `20260708120000_campaign_enums` + `20260708121000_campaign_tables` (additive).
+ 
+ **Who.** A country **sales manager** (holds `projects` full at ALL scope) runs campaigns; **city sales agents** use the **`sales-agent`** SYSTEM role (campaign-assigned leads + own tasks only); **admin/super-admin** approve plans and see everything. Precision: `POST /campaigns` is gated only on `projects:CREATE`, which `sales-agent` also holds (it needs CREATE for journey sub-records) — so **an agent CAN technically create a campaign**; it's harmless because creation is owner-scoped and the roster is sales-scoped to leads they already see, and an agent can't reach a manager's campaign detail (`ProjectService.findOne` 404s a non-owned project).
+ 
+ **Flow.**
+@@ -1331,21 +1335,21 @@ never EDIT, so an HR user who may create and edit records cannot change the form
+ **Indeed candidate intake — agent-driven bulk import (2026-08-17; supersedes the manual path below).** Indeed still has **no public employer API** (partner API gated) and bulk **Export candidates** is disabled on our account ("available for customers who meet minimum annual spend requirements"), so a backlog can only be read from the employer console UI. The import runs as a **controlled Chrome extension** — `tools/indeed-agent`, sibling of `tools/iskur-agent` — which walks the console's own *next candidate* control in the operator's logged-in `careers@jobsadmire.com` session at jittered human pace (1.4–2.8 s), reads the **rendered** detail (never Indeed's private API), lifts the original CV out of the page's in-memory `blob:` and POSTs batches of 5 to `POST /api/internal-recruitment/agent/indeed/import` (`@Public()` + `IndeedAgentGuard`, shared secret `INDEED_AGENT_TOKEN`, timing-safe, **fails closed** when unset/<20 chars). The identical `IndeedImportService` also backs the permission-guarded `POST /internal-recruitment/applicants/import/indeed` (`internal-recruitment:CREATE`) — **one service, two front doors**, so dedupe can't drift between them. Both take `dryRun` which **defaults to TRUE** (`BackfillContactsDto` precedent). Per candidate the service: resolves the email (real address found in the CV wins, Indeed relay is the fallback, **never invented** — origin reported per row), normalises the phone through the SAME `normalizePhone` the WhatsApp sender uses, stores the **original CV PDF** under `careers-cv/` with an `ApplicantDocument(CV)` row so AI CV-fit scoring and contact backfill read imported rows unchanged, mints a `trackingToken`, and creates the applicant `source: INDEED`, `sourceDetail: "Imported from Indeed <date> (application id <indeedId>)"`, `isPublicApplication: false`. It **sends nothing** — no candidate confirmation, no owner notification, no AI invite; screening stays the deliberate `bulk-auto-screen` step (§5.4.6). Indeed-side statuses are never written (Indeed itself flips New→Reviewing when a candidate is opened — its behaviour, not ours). Why an extension and not a page script: the CVs are far too large to hand-carry, so the browser itself must POST, and a script injected into `indeed.com` would park a credential inside a **third-party page** for the whole import; extension storage is unreadable by any page and extensions are exempt from CORS, so the backend needs no CORS widening (an env-gated `INDEED_IMPORT_ORIGIN` CORS window was built and then **reverted** on the same day for exactly this reason).
+ 
+ **Indeed dedupe — four keys, strongest first (2026-08-17).** `indeed-import.logic.ts` (+ 17 specs) checks **Indeed application id → email → E.164 phone → name**, scoped to the opening (matching the public pipeline's `(email, openingId)` rule — the same person applying to two roles is two legitimate applications). Phone is load-bearing, not a nicety: Indeed now masks candidate addresses behind per-application `@indeedemail.com` relays, so the 66 rows imported before the change hold real Gmail addresses that **no longer match anything Indeed reports** — email alone silently stops identifying a human. Name is the advisory last resort because relays rotate per application, so a re-applying candidate can arrive with a fresh relay AND no phone. In-batch identities are claimed **before the first `await`**, so two applications from the same person inside one batch collide with each other rather than both landing. This is why re-running the agent is always safe.
+ 
+ *(Superseded manual path, kept for context — 2026-07-16.)* Previously an operator downloaded each CV by hand and replayed the **public apply pipeline** (`POST /api/careers/upload-cv`, then `POST /api/careers/openings/:slug/apply`). That path is unusable at backlog scale and must not be revived for it: public apply **requires an `expectedSalary` for PK openings** and Indeed exposes none (every row would carry an invented number — see the "required field must be able to arrive EMPTY" gotcha), it **emails a confirmation to every candidate**, it enforces residency == opening country, and it is captcha-gated and throttled to 10/min. Note also that the silent admin `POST /internal-recruitment/applicants` path has **no duplicate detection whatsoever** — pointing an import at it would create hundreds of visible duplicates, which is precisely the gap `IndeedImportService` fills.
+ 
+ **Opening-page applicant worklist.** The opening detail page hosts the full applicant management table (`openings/_opening-applicants.tsx`) — paginated/searchable/sortable, bulk stage/reject/AI-invite, permanent delete. Documented with the applicant pipeline (§5.4.5).
+ 
+ ##### The public careers site (`careers-public`)
+ 
+-The only **unauthenticated** module in the platform: public careers pages at `operations.jobsadmire.com/[locale]/careers` and the public application API at `/api/careers/*`. Kept as one dedicated module (`apps/backend/src/modules/careers-public/`, `apps/frontend/src/app/[locale]/careers/`) so the `@Public()` surface is small, explicit, and hardened in one place — rate limiting, captcha, IP hashing, audit visibility. **Don't add public unauthenticated endpoints outside this module** (auth's password-reset routes are the only other sanctioned public surface).
++The only **unauthenticated** module in the platform: public careers pages at `operations.jobsadmire.com/[locale]/careers` and the public application API at `/api/careers/*`. Kept as one dedicated module (`apps/backend/src/modules/careers-public/`, `apps/frontend/src/app/[locale]/careers/`) so the `@Public()` surface is small, explicit, and hardened in one place — rate limiting, captcha, IP hashing, audit visibility. **Don't add public unauthenticated endpoints outside this module** except the surfaces the PRD sanctions by name — auth, the agent/webhook doors, and the website intake door `website/v1` (§7.10), which reaches this module only through its exported `CareersPublicService.apply` for the site's careers form.
+ 
+ **Endpoints** (all `@Public()`; per-route `@Throttle` limits are declared — 10 req/min/IP on `apply`/`upload-cv`/`upload-portfolio` — but currently **INERT** until `RATE_LIMITING_ENABLED=true`; §6.5 is the authoritative endpoint/hardening spec — this subsection covers the opening-facing behaviour):
+ - `GET /api/careers/openings` — lists openings where `isPubliclyListed = true` and `status = OPEN`. Trimmed shape (no internal fields; no `requirements` since the JD collapse; carries the `cities`/`employmentArrangements`/`workModes` arrays alongside the single mirrors; carries `portfolioRequired`). Pagination (`page`, `limit` ≤ 50) + filters: `country` (exact code), `employmentArrangement` (`EmploymentType.code`), `workMode` — the arrangement/work-mode filters match ANY of an opening's multi-select values — **plus a `search` param** (case-insensitive `positionTitle` contains). **Salary privacy:** when `salaryVisible = false`, `shapePublicOpening` **strips** `salaryMin`/`salaryMax`/`salaryCurrency`/`salaryPayType`/`salaryPeriod` **at the API** (never CSS hiding) and the page renders **nothing** — no salary chip/row at all (the "salary will be discussed during the interview" placeholder was removed 2026-07-17 at Faraz's request: `_labels.ts salary()` returns `''` and the `careers.salary.negotiable` i18n keys were deleted — don't re-add a placeholder). Visible salaries render with pay type + rate ("$4,000 – $6,000 per month" / "aylık").
+ - `GET /api/careers/openings/:slug` — fetch by `publicSlug` (same shape/stripping).
+ - `POST /api/careers/upload-cv` — **multipart upload through the backend** (`FileInterceptor('file')`), NOT a presigned-URL flow: the file is validated (**PDF only**, ≤ 5 MB, both server-enforced) and stored via `UploadService.uploadFile` under the private `careers-cv/` prefix; the response returns `{ url, key, fileName }` of the already-stored object. **The CV upload is PDF-ONLY (2026-07-30, owner decision)** — `CV_MIME_TYPES` is `['application/pdf']`; DOC/DOCX were dropped because the AI CV-fit screen parses PDF text only (a Word CV scores "unscorable" and never auto-invites) and Word docs are macro-capable. Three layers, all needed: the form's `accept="application/pdf,.pdf"` + a client-side pre-check (friendly message — `accept` is only a hint and drag-drop bypasses it), this endpoint's MIME gate (the REAL gate), and a **lenient** `.doc/.docx` check on `dto.cvUrl` in `apply()` for a cvUrl pointed at some other upload — deliberately lenient: it rejects only a positively-identified Word extension and ignores anything it can't classify, so an unexpected storage-URL shape can never start 400-ing legitimate applications; **don't "tighten" it into a strict key regex**. Legacy `careers-cv/*.docx` rows predate this and still download fine.
+ - `POST /api/careers/upload-portfolio` (2026-07-16) — uploads ONE portfolio document per call (**wider type list than the CV — PDF/JPG/PNG/WEBP/DOC/DOCX, don't collapse the two lists**; ≤ 10 MB, multer-level cap + MIME allow-list) to the private `careers-portfolio/` prefix; returns `{key, fileName, mimeType, sizeBytes}` — no raw URL (the bucket is private).
+ - `POST /api/careers/openings/:slug/apply` — creates the `InternalApplicant`. Details below.
+ - `GET|POST /api/careers/sign/:token` (+ `/request-otp`, `/contract.pdf`) — **the HRM employment-contract signing surface (2026-08-28)**, for a person hired OUTSIDE Internal Recruitment who therefore has no applicant record and usually no login. The token addresses ONE CONTRACT rather than one applicant, so it grants exactly the right to read and sign that document, and cancelling the request burns it (a fresh 192-bit token is written over it, and the old link 404s). Throttles mirror the candidate contract-signing routes: 3 OTP requests / 15 min, 10 sign attempts / 15 min, 20 PDF reads / min. Business logic lives in `hrm/hrm-contract-signing.service.ts`; only the routes live here, because the rule is that no public endpoint lives outside this module. An unknown token is **404, never 403** — a different status confirms which ids exist.
+ - `GET /api/careers/status/:token` — read-only candidate status via the one-way `trackingToken` minted at apply time (`randomBytes(24).base64url`). Redacted view (no internal HR notes, no internal stage names — only candidate-facing labels). Tokens have a **12-month TTL** from `createdAt`; past TTL the endpoint returns "Application no longer available."
+ 
+@@ -4154,20 +4158,100 @@ available)` (T17b) selects `tr` when the applicant's language/country says so an
+   app, run both in parallel, unsubscribe the first) was corrected before implementation once
+   the existing app's webhook subscription was confirmed already pointed at Operations — see
+   `DESIGN.md` D8's own correction note.
+ - **Conversation retention has no age purge, by owner decision, not by omission.** `wa_*`
+   history is retained indefinitely and scrubbed only per subject (the careers-retention arm);
+   per-contact GDPR/KVKK export and delete is a future package, not part of this module today.
+   See `DESIGN.md` D9 and `docs/whatsapp-module/WP6-DEFERRED.md`.
+ 
+ ---
+ 
++### 5.12 Website (public-site intake door; CMS from Phase B)
++
++The `website` module is the Operations half of the jobsadmire.com rebuild (programme plan `~/.claude/plans/hi-we-have-to-structured-acorn.md`, approved 2026-09-18). **WP3a (this revision, 2026-09-19) ships the minimal intake door**: the marketing site — Next.js on Vercel, server-side only — posts every visitor form to Operations, which files it, notifies the right people, autoresponds, and keeps a forms inbox. The CMS half (pages, strings, collections, blog, media, navigation, settings, publish/revalidate) is Phase B (WP3c onward); its permission keys are registered now so the catalog, the hash and the role matrix change once.
++
++**Boundaries.** The website talks ONLY to Operations, server-side, with Bearer tokens (no browser → Ops calls; CORS stays the single `FRONTEND_URL` origin with `credentials: true`; Apache untouched — `/api` already proxies to 4001). Nothing on the VPS depends on the website being up. Operations proxies the CRM (Phase B stats) through `CrmClient`; the website never sees the CRM.
++
++**The flag — `WEBSITE_MODULE_ENABLED` (P1).** ONE always-imported `WebsiteModule`; its permission descriptor is registered unconditionally in the module constructor (a conditional import would leave `PERMISSION_KEYS` naming keys no module registers and fail the container at boot — the outage shape §DEPLOY-SAFETY-2026-09-18 exists to prevent). The flag is read PER REQUEST by `WebsiteModuleEnabledGuard` (`guards/website-module-enabled.guard.ts`, through the one helper `websiteModuleEnabled(config)` in `website-module-flag.ts` — the only production file that names the variable, pinned by `website-env.spec.ts`), applied FIRST on every public `website/v1` controller → a bare **404 when off**; the website crons call the same helper per tick; `GET /api/website/status` (`@SelfService()`) reports `{ data: { enabled } }` so the admin screens can show a "public intake disabled" banner while tokens are provisioned. Compose defaults: dev `true`, VPS `false`; the VPS value is flipped ON after the WP3a gate (before the website's WP2 wires its forms), not at Phase B. The admin screens, the descriptor and the nav entry exist regardless of the flag.
++
++**The public door — three controllers, six routes, nothing else (P4, P5 as amended by RC3, P11).** Each carries class-level `@Public()` + `@UseGuards(WebsiteModuleEnabledGuard, WebsiteApiGuard)` under `website/v1`; `test/permissions/website-conformance.spec.ts` and `website-door-conformance.spec.ts` scan them with the real scanner.
++
++| Route | Controller | Token | Purpose |
++|---|---|---|---|
++| `GET /api/website/v1/ping` | `WebsitePublicController` | any class | readiness facts for the website's `/api/site-health` and the external monitor: `{ tokenClass, moduleEnabled: true, captcha: 'configured'\|'missing', secondHumanConfigured: boolean, trippedForms: string[], lastSubmissionAt: string\|null, bucketPolicy: null, lastCrmFeedAt: null }` — the two Phase-B facts are `null` until they exist; `tokenClass` is the matched class verbatim (`write` / `test` / `previous-write`); the gate reads `secondHumanConfigured === true` before the flip |
++| `POST /api/website/v1/forms/:formKey` | `WebsitePublicController` | write or test | the intake: whitelist → trip check → honeypot → captcha → dedupe → submission row → handler |
++| `POST /api/website/v1/uploads/fraud-evidence` | `WebsitePublicUploadsController` | write or test | the ONE upload route on the door: multipart, magic-byte sniff (JPEG/PNG/WEBP/PDF), ≤ 3 files, private objects under `website-fraud/`, returns the keys the fraud form then submits as `evidenceKeys`; a test-class call sniffs and answers without storing |
++| `GET /api/website/v1/newsletter/confirm` | `WebsitePublicNewsletterController` | write | double opt-in confirm (`?token=`, stateless HMAC) |
++| `GET /api/website/v1/newsletter/unsubscribe`, `POST /api/website/v1/newsletter/unsubscribe` | `WebsitePublicNewsletterController` | write | unsubscribe by link, and the RFC 8058 one-click POST a mail client sends |
++
++CV upload for the careers form reuses the EXISTING public `POST /api/careers/upload-cv` (PDF-only, ≤ 5 MB), called server-side by the website; the careers form then carries `fields.cvKey` (P5).
++
++**Wire contract (WP2 wires to this).** `Authorization: Bearer <write|test token>`; optional `X-Website-Visitor-Ip` and `X-Website-Visitor-Ua` (trusted only because the route is token-guarded — the website is the only caller); body `WebsiteFormSubmitDto` = `{ locale: 'tr' | 'en', consentVersion: string, captchaToken?: string, honeypot?: string, sourcePath?: string, fields: Record<string, string | string[]> }` through the global `ValidationPipe` (`whitelist` + `forbidNonWhitelisted`), then the per-form catalog (`website-form-catalog.ts`) whitelists, normalises and validates `fields` BEFORE any row is written — unknown keys are dropped, a bad field is a 400 with the reasons. Answers: **200** `{ data: { id, formKey, status, isTest, replayed, captchaDegraded, error } }` (a `status: 'FAILED'` is still 200 — the row is durable and re-runnable from the inbox; `error` is `null` unless the handler marked the failure as the VISITOR's own — RC26 — in which case it is the visitor-safe message the site shows, e.g. a closed opening or a residency rule from careers `apply()`); 400 invalid fields; 401 no/invalid token; 403 captcha failed; 404 unknown/inactive form or module off; 429 tripped form (`{ message, fallback: 'whatsapp' }`).
++
++**Token classes (`WebsiteApiGuard`, P7, RC2).** Three classes, all server-held in `WebsiteIntegrationConfig` (AES-256-GCM `*Enc` columns under `ENCRYPTION_KEY`; write-only; `has*` flags in every API shape; per-secret `try/catch` decrypt so one undecryptable value can never 500 the whole door — the WhatsApp webhook-guard lesson; 60 s in-process cache): the **write** token (real submissions), the **test** token (synthetic traffic), and the **previous write** token (kept 24 h after a rotate so a Vercel redeploy never races the cutover — D6 "current + previous"). Guard order write → test → previous-write, `timingSafeEqual` on equal lengths, fail closed while nothing is configured (401), the matched class stamped verbatim on `req.websiteTokenClass` (`'write' | 'test' | 'previous-write'`, local type `WebsiteBearerClass`) and mapped onto the row's `tokenClass` enum (`WRITE | TEST | PREVIOUS_WRITE`) by the core. Tokens are server-generated on rotate (`wsw_`/`wst_` prefix + 48 hex), shown once, never revealed again. The D12 "rotate only after a live proof against the site's `/api/site-health`" gate is deferred to WP3c — WP3a ships rotate-with-previous-window.
++
++**Test class = the door, not the side effects (P2).** A submission carrying the test token goes through full validation, captcha, dedupe and the submission row (`isTest = true`), and the handler runs with `dryRun: true`: no Inquiry, no applicant, no subscriber, no notification, no autoresponder. The external monitor's synthetic lead (every 30 min, D25) therefore measures the whole path up to the handler without filing 48 inquiries a day into Sales.
++
++**Forms and handlers (P4, RC4).** The website's ten form keys (`FORM_KEYS` in its `src/analytics/forms.ts`; `WEBSITE_FORM_KEYS` / `WEBSITE_FORM_KIND_BY_KEY` in `@jobsadmire/constants` here — the ONE list the catalog, the seed, the inbox filter and the frontend import) map onto seven handler kinds. `WebsiteForm` rows: seeded by `prisma/website-form-seed.ts` (ten rows, called from `seed.ts`, `update: {}` so an operator's `isActive` survives deploys) AND lazily created from the catalog by the intake service when missing (`ensureFormRow`), so a fresh database never 404s a real form. One handler contract: `WebsiteFormHandler { kinds: readonly WebsiteFormKind[]; handle(input): Promise<WebsiteFormHandlerResult> }`, input `{ submissionId, formKey, kind, locale, dryRun, fields, consentVersion, captchaDegraded, visitorIp, userAgent }`, result `{ ok: true; createdEntityType?; createdEntityId?; detail? } | { ok: false; error; detail? }`; handlers self-register on a `WebsiteFormHandlerRegistry`; visitor-facing validation lives in the catalog, so a handler never throws for a visitor error — only an infrastructure failure, which becomes a FAILED row and is still HTTP 200. `detail` carries what the core needs afterwards: `alreadyReceived`, `skipNotification`, `skipAutoresponder`, `inquiryNumber`, `assignedAgentId`, `contactName`, `email`, and — on `{ ok: false }` — `visitorError: true` (RC26: a downstream service refused the visitor's own input; the row is FAILED with `error`, `handlerResultJson.visitorError = true`, no alarm rings, and the door echoes the message).
++
++| formKey | Handler | What it files |
++|---|---|---|
++| `hire`, `contact`, `partner`, `workers` | `INQUIRY` | `InquiryService.create` (§5.1): `system:website` actor, `InquirySource.WEBSITE_FORM`, `contactName`, ISO country code, E.164 phone, `messagePreview` tagged with the form key; classification only where the form implies one |
++| `callback` | `CALLBACK` | an Inquiry, classification unset |
++| `visit` | `VISIT` | an Inquiry, classification unset |
++| `calculator` | `CALCULATOR_QUOTE` | an Inquiry, classification unset, the quote inputs in `messagePreview` |
++| `careers` | `CAREERS_APPLY` | the exported `CareersPublicService.apply` (§6.5 rules apply unchanged — residency, PK salary, PDF CV via `fields.cvKey`; a duplicate is reported as `alreadyReceived`, no second notice; `apply()`'s own 4xx comes back as a FAILED row with `visitorError` — RC26); `skipNotification: true` + `skipAutoresponder: true` (RC25 — careers-public already fires `APPLICANT_RECEIVED` to the hiring owner and the careers-mailbox confirmation to the candidate, so neither `WEBSITE_FORM_RECEIVED` nor the second-human mail is raised for a careers application) |
++| `fraud` | `FRAUD_REPORT` | the submission row + up to three private objects under `website-fraud/` named in `fields.evidenceKeys` (key-only persistence in `payloadJson`; read back through `GET /api/website/forms/submissions/:id/evidence/:index/view` (streamed inline, `nosniff` + strict CSP) or `GET /api/website/forms/submissions/:id/evidence/:index/link` (15-min presign) on `website.forms` VIEW — the inbox family, RC23 — never a raw object URL, the five-times-hit private-bucket lesson) |
++| `newsletter` | `NEWSLETTER` | `WebsiteSubscriber` double opt-in (stateless HMAC confirm/unsubscribe tokens, the routes above, RFC 8058 `List-Unsubscribe` + `List-Unsubscribe-Post` headers threaded through `queueEmail`'s new optional `headers`); **`WebsiteForm.isActive = false` for `newsletter` until counsel clears it (D14)** — the website shows the form, Operations answers 404 for an inactive key |
++
++**Captcha (`WebsiteCaptchaService`, P6 / D11, RC7) — a sibling of `CaptchaService`, not a change to it.** The Turnstile secret comes from the Integrations row (one widget lists both `jobsadmire.com` and `staging.jobsadmire.com`, so one secret), never from `TURNSTILE_SECRET_KEY` (that variable is paired with the careers widget key by the deploy preflight). `verify()` returns `{ outcome: 'passed' | 'failed' | 'degraded', reason?, codes? }`. **`failed`** is a 403. **`degraded`** — secret missing, Cloudflare unreachable/timeout — ACCEPTS the submission flagged `captchaDegraded = true` behind honeypot + dedupe + the abuse cap, and raises `WEBSITE_FORMS_UNAVAILABLE(reason: captchaDegraded)` once per window. Silence, not abuse, is the failure mode a lead door must fear.
++
++**Idempotency (P8).** The submission row is written FIRST under `@@unique([formKey, requestHash, hourBucket])`; a P2002 replays the prior result with `replayed: true` (the website retries on any non-2xx, and every deploy is a 30–60 s 502 window). Then the handler; then — the `wa-ai-tools` rule — **nothing after the created row may throw**: notification, autoresponder and inbox update each sit in their own try/warn. `handlerResultJson = { attempts: [...] }` records every attempt; **re-run from the inbox is allowed only when `status = FAILED && createdEntityId IS NULL`** (409 otherwise), so a handler that filed an Inquiry and then failed to notify can never file a second one. "Needs attention" = `FAILED` or `captchaDegraded`.
++
++**Notifications (P9, RC6).** Two events, `module: 'website'`, `mailbox: 'default'`, `relatedEntityType: 'website-submission'`, in the catalogue so Settings → Notifications lists them: `WEBSITE_FORM_RECEIVED` (`channels: ['IN_APP']` — bell only by seed; recipients: everyone holding `website.forms:VIEW` (the three sales roles, RC8) plus super-admins (slug-matched — the CASL bypass leaves them no grant row), PLUS the assigned agent when the form became an inquiry — additive, not a fallback chain; `emailLinkPath` → `/admin/website/inbox?row=<submissionId>`) and `WEBSITE_FORMS_UNAVAILABLE` (super-admins; ctx `reason ∈ captchaDegraded | tripped | untripped | drought | handlerFailed`). Every website event goes through ONE service, `WebsiteNotifyService` — the core never dispatches directly — which also mails the **second human** (`WebsiteIntegrationConfig.secondHumanEmail/Name`, owner input, no default) with `queueEmail({ mailbox: 'default' })` on EVERY website event the module raises — every `WEBSITE_FORMS_UNAVAILABLE` and every `WEBSITE_FORM_RECEIVED`; the one form that raises neither is `careers`, whose handler sets `skipNotification: true` because careers-public already announces the application (RC25) — because the dispatcher can only reach `User` rows and every alarm must leave the system that fails (D25); its links go to the Operations inbox through `absoluteLink` (`APP_URL`), never through `WEBSITE_SITE_URL` (RC28); `ping.secondHumanConfigured` says whether it is set. The emitter owns "once per window" via Redis `SETNX` (`website:alarm:<reason>:<form|*>` hourly, the drought key per company day); the registry is throttle-free. Autoresponders to the visitor are `.hbs` + `.tr.hbs` pairs per form (`WebsiteAutoresponderService`, `locale` passed explicitly, `mailbox: 'default'` — goes out as `JobsAdmire <info@jobsadmire.com>` by Gmail impersonation; any prettier alias must first be a Gmail "Send mail as" identity; the CTA links to `WEBSITE_SITE_URL`); CAREERS_APPLY keeps the careers-mailbox confirmation `apply()` already sends, and NEWSLETTER's confirm mail IS its response.
++
++**Alarms and retention (P10, RC6).** `WebsiteAbuseService` counts CAPTCHA-VERIFIED submissions per form in a 60-minute Redis window (`website:abuse:count:<form>`) and trips at `WEBSITE_ABUSE_TRIP_THRESHOLD = 25` (`website:abuse:tripped:<form>`, announced once via `website:abuse:announced:<form>`); a tripped form answers 429 with the WhatsApp-fallback hint; `ping.trippedForms` reads the same keys. The `website-alarms` cron (every 5 min) announces untrips and raises `WEBSITE_FORMS_UNAVAILABLE(reason: drought)` when no real (non-test) submission arrived for `WEBSITE_DROUGHT_HOURS = 48`, checked only inside `WEBSITE_BUSINESS_HOURS` (Europe/Istanbul, Mon–Fri 09:00–18:00), once per company day. The `website-purge` cron at **04:30** (container clock; 03:00 is `careers-retention`'s slot) deletes rows past `purgeAfter` (90 days after HANDLED) including every `website-fraud/` object named in `payloadJson.fields.evidenceKeys` (`deleteFileChecked`; the row survives while any object does) — the two new PII tables are outside the hand-maintained careers retention sweep, so their purge ships with them. Every threshold is a constant in `website-alarms.logic.ts`, code not config. `IP_HASH_SALT` hashes every visitor IP before storage (`hashIp`, `common/utils/ip-hash.util.ts`); the raw address is never persisted.
++
++**Screens (P14).** Module entry `website` with a sub-rail: **Inbox** (`/admin/website/inbox` — `website.forms:VIEW`; FilterBar + DataTable + detail SidePanel with payload, handler result, a fraud row's evidence — **View** bearer-fetches the streamed route into a new tab, **Copy link** copies the presigned URL (RC27) — and re-run (`website.forms:EDIT`); search matches the submission id, the created entity id and the visitor's name / company / e-mail / phone (+ the fraud `reporter*` fields) inside `payloadJson`, and is **case-insensitive for e-mail only** — Prisma's JSON filter has no `mode`, so name/company/phone match exact case in WP3a (RC24; an ILIKE follow-up is on the list); needs-attention / test filters; `?row=<id>` opens a submission from a bell link; CSV export on the dedicated `GET /api/website/forms/submissions/export` — `website.forms:EXPORT` + `@AuditEntity`) and **Integrations** (`/admin/website/integrations` — `website.integrations:VIEW/EDIT` for the page and the non-secret fields; every secret write/rotate/test route is `website:MANAGE_KEYS`, seeded to no role, rendered inside `<Can module="website" action="MANAGE_KEYS">`; `has*` chips, write-only inputs, rotate = display-once + copy (`POST /api/website/integrations/rotate/:name` → `{ name, secret, previousExpiresAt }`), a Test button (`POST /api/website/integrations/test` → `{ ok, error }`, persisting `lastTestedAt/lastTestOk/lastTestError`), the second-human fields (`PATCH /api/website/integrations`), and the flag-off banner from `/website/status`). The path segment is `inbox`, not `forms` — `forms` already breadcrumbs as "Form Builder". The backend inbox family is `GET /api/website/forms/submissions` (search, `formKey`, `status`, `needsAttention`, `isTest`, `from`/`to`, paging `{ data, meta }`), `GET …/submissions/:id`, `POST …/submissions/:id/rerun`, `GET …/submissions/export`.
++
++**Permission keys (P3, RC8).** Ten keys, all registered in `website.module.ts`, `caslSubject: 'Website'` in `AppSubject`, `resourcesEnforced: true`, scope ALL; the descriptor literal is the source and this table copies it:
++
++| Key | Kind | Actions | What it gates |
++|---|---|---|---|
++| `website` | module | VIEW, CREATE, EDIT, DELETE, EXPORT, APPROVE, MANAGE_KEYS | module nav; `MANAGE_KEYS` = every secret route on Integrations |
++| `website.forms` | screen | VIEW, EDIT, EXPORT | the inbox (EDIT = re-run, EXPORT = the CSV route); evidence read-back is VIEW |
++| `website.integrations` | screen | VIEW, EDIT | the Integrations page and its non-secret fields |
++| `website.settings` | screen (Phase B) | VIEW, EDIT | per-form switches + notification toggles; no routes in WP3a |
++| `website.pages`, `.strings`, `.collections`, `.blog`, `.media`, `.navigation` | screen (Phase B) | VIEW, CREATE, EDIT, DELETE, APPROVE | the CMS editors; no routes until WP3c |
++
++Role defaults (`since: 3`, `ROLE_DEFAULTS_VERSION = 3`, explicit rows — `website` is NOT in `MODULE_OPS`): `admin` a module row with everything but APPROVE and MANAGE_KEYS; `marketing-manager` VIEW/CREATE/EDIT on the six content screens; `sales-manager`, `sales-executive` and `sales-agent` `website.forms` VIEW at ALL (the resource supports no other scope, so an executive or agent sees the whole inbox — the lead itself stays ASSIGNED_TO_ME through `sales`); APPROVE and MANAGE_KEYS to no role (super-admin via the bypass). Labels `permissions.keys.website__*` in en + tr for all ten. §4.4 carries the rows.
++
++**Data (P12, RC12).** `WebsiteIntegrationConfig` (singleton), `WebsiteForm` (`formKey @unique`, `kind`, `label`, `isActive` — no autoresponder columns: the templates are `.hbs`), `WebsiteFormSubmission`, `WebsiteSubscriber` (confirm-token HASH + expiry; unsubscribe is a stateless HMAC, no column), `Inquiry.contactName`, `NotificationType.WEBSITE_FORM_RECEIVED/WEBSITE_FORMS_UNAVAILABLE`, `ActivityType.WEBSITE_SUBMISSION_RECEIVED/_HANDLED/_FAILED` — one purely additive migration, **`20260925120000_website_intake_door`** (`IF NOT EXISTS` guards, `ADD VALUE IF NOT EXISTS`, no row consumes a new enum value in the same migration; the seed writes those rows at deploy step [6b]), shipped in its own commit and pushed alone before the code (§11, `docs/DEPLOYMENT.md`). Four `Website*` enums mirrored in `packages/constants` (§8).
++
++**Env (RC11).** Two variables, both mapped in both compose files (a `.env` line reaches nothing otherwise — the WA_CAMPAIGN_ALLOWLIST/VAPID lesson, each pinned by a text-reading spec): `WEBSITE_MODULE_ENABLED` (above) and `WEBSITE_SITE_URL` (the public site's base URL for every link Operations writes into a VISITOR mail — newsletter confirm/unsubscribe, autoresponder CTA — read through `websiteSiteUrl(config)`; VPS compose default and `.env` value `https://www.jobsadmire.com`, dev `http://localhost:3000`; the staff-facing notify links use `APP_URL` instead — RC28; WP3c's revalidate service reads the same variable; the variable, both `.env` examples and its DEPLOYMENT.md row arrived with the newsletter task, RC18). Tokens, the Turnstile secret and the second human live in the database via the Integrations screen. `WEBSITE_PUBLIC_BUCKET` and `WEBSITE_REDIS_DB` are Phase B.
++
++**Decisions & gotchas**
++
++- **The descriptor is registered unconditionally; only REQUESTS are flag-gated (P1, 2026-09-19).** A `WEBSITE_MODULE_ENABLED`-conditional import in `app.module.ts` throws `PERMISSION_KEYS lists 10 key(s) no module registers` at boot, AFTER deploy step [6] has replaced the containers — a production outage latched by the poller, not a rollback. Never gate the module import; gate the guard.
++- **The test token never reaches a side effect (P2).** A synthetic lead that files a real Inquiry rings a salesperson 48 times a day and poisons the Sales dashboard. `dryRun` short-circuits inside the handler, never earlier — the door up to that point IS what the heartbeat measures.
++- **The website's Turnstile secret is a DB column, never `TURNSTILE_SECRET_KEY` (P6).** That env name is paired with `NEXT_PUBLIC_TURNSTILE_SITE_KEY` by `deploy-vps.sh`'s preflight; reusing it would make every deploy fail the moment the careers widget key is absent.
++- **Invalid captcha is 403; missing captcha infrastructure is accept + flag + alarm (D11).** The careers `CaptchaService` does the opposite in both directions (silent pass on an unset secret, fail closed on a timeout) and is left untouched — two surfaces, two documented postures.
++- **Submission row first, handler second, nothing may throw after the created row (P8).** Any exception after `inquiries.create` turns the website's retry into a second inquiry. Re-run only on `FAILED && createdEntityId IS NULL`. Visitor-facing validation belongs in the catalog BEFORE the row; a handler that throws a 4xx after the row exists is a bug.
++- **One alarm pair (RC6).** `WebsiteNotifyService` is the only emitter of website events and the only path to the second human; `WebsiteAbuseService` is the only writer and reader of the trip keys (`website:abuse:*`). A second counter or a second key prefix means a tripped form that never 429s and never shows in `ping` — the exact drift the consistency check caught before this shipped.
++- **Never add `website` to `MODULE_OPS` or map an `ACTIONS_*` constant over it** — the phantom-grant bug (`20260924100000`). Explicit rows, `since: 3`, version 3.
++- **A public submitter has no `User` row** — autoresponders go through `queueEmail` directly with an explicit `locale`; routing them through `EventDispatcher` resolves zero recipients and silently skips. Never put tokens, secrets or ids into a dispatch `ctx` — a shipped `.hbs` receives the raw ctx.
++- **`WebsiteForm.isActive = false` for `newsletter` until counsel clears it (D14).** Built, tested, dark. WP3a has no route or screen for the switch (`website.settings` registers no routes yet): flip it by SQL on the VPS — `docker exec jobsadmire_ops_postgres psql -U jobsadmire_ops -d jobsadmire_operations -c "update website_forms set \"isActive\" = true where \"formKey\" = 'newsletter'"` — and the seed's `update: {}` keeps the value across deploys (RC12).
++- **The rotate-with-live-proof gate (D12) is WP3c's.** WP3a's rotate keeps the previous write token for 24 h — that window is the only thing between a token rotation and a dark form during a Vercel redeploy; don't shorten it.
++- **Every deploy is a 30–60 s 502 on `/api/website/*`.** The website retries; `WEBSITE_FORMS_UNAVAILABLE` must not fire on a deploy blip (the drought window is hours, the captcha-degraded alarm is once per window).
++
++---
++
+ ## 6. Supporting Infrastructure
+ 
+ ### 6.1 Communications & Activity Stream
+ 
+ **Communications** is the internal activity log used polymorphically across all ops modules. A sales agent logs a phone call against a lead; an HR admin logs a 1-on-1 against a person; a marketing manager logs a meeting against a campaign; a field agent logs a canvassing call against a project task — all in one `CommunicationsLog` table keyed by `(relatedEntityType, relatedEntityId)`. Includes follow-up reminders with assignment.
+ 
+ **Threaded replies (P3, 2026-05-30).** Any message can be replied to (`parentId` self-FK, `onDelete: Cascade`). `CommunicationsService.findAll` returns only top-level messages (`where.parentId = null`) with their `replies` nested (ordered asc) — keep that `parentId: null` filter or replies also surface as duplicate top-level entries everywhere the timeline is embedded. Replies collapse to ONE level: a reply-to-a-reply re-parents onto the root (`parent.parentId ?? parent.id`) and inherits the parent's `relatedEntityType/Id`. Posting a reply pings the parent author in addition to the entity parties. UI: `CommunicationsTimeline.tsx` renders nested replies + an inline composer (`parentId` on the create payload); its action buttons (Log / Reply / Resolve / Delete) are `<Can>`-gated (`communications` CREATE/EDIT/DELETE) so a VIEW-only role gets a clean read-only timeline.
+ 
+ **Follow-up resolution (2026-06-07, Projects & Tasks).** `CommunicationsLog` carries `followUpResolvedAt`/`followUpResolvedById`; `PATCH /communications/:id/resolve-follow-up` clears an open follow-up. This is load-bearing for the physical-meeting completion gate in Projects (§5.3): a physical-meeting task cannot reach COMPLETED with open follow-ups, so any field role needs `communications:EDIT` to resolve one. `GET /communications/overdue-followups` (top-5 overdue follow-ups + a total, unscoped) was **removed 2026-09-14** (cleanup WP6c — no page ever read it; the five `['overdue-followups']` cache invalidations left behind in the communications page and `CommunicationsTimeline` went with it). Restore from `pre-cleanup-2026-09-14` if an overdue widget is built.
+ 
+@@ -4215,55 +4299,55 @@ In-app + email + browser push notifications, scoped to internal users. Bull queu
+   channels: ['IN_APP', 'EMAIL'],
+   recipients: (ctx) => [ctx.assignedHrId],
+   title: (ctx) => `New hiring request: ${ctx.title}`,
+   message: (ctx) => `${ctx.creatorName} asked you to fill: ${ctx.title}. Due ${ctx.dueDate}.`,
+   relatedEntityType: 'hiring-request',
+   relatedEntityId: (ctx) => ctx.requestId,
+   emailTemplate: 'hiring-request-submitted',
+ }
+ ```
+ 
+-Mechanically the dispatcher calls the **batch** variants — `NotificationsService.createMany()` for IN_APP and `queueBulkEmail()` for EMAIL — both Bull-queued. Every EMAIL-channel dispatcher event currently sends with a blanket `mailbox: 'careers'` (a code comment marks this for a per-event `def.mailbox` once non-IR modules adopt the EMAIL channel). Adding a new event = one registry row.
++Mechanically the dispatcher calls the **batch** variants — `NotificationsService.createMany()` for IN_APP and `queueBulkEmail()` for EMAIL — both Bull-queued. The mailbox is per event — `def.mailbox ?? 'careers'` — so every staff event outside IR declares `mailbox: 'default'` explicitly (marketing, whatsapp and website all do; a website event that forgot it would go out through the careers@ Gmail chain). Adding a new event = one registry row.
+ 
+-**Registry inventory (verified 2026-08-05 — 41 keys).** IR request lifecycle: `HIRING_REQUEST_SUBMITTED / ACKNOWLEDGED / UNACKNOWLEDGED_SLA / REVIEW_REQUESTED / REVISIONS_REQUESTED / APPROVED / PUBLISHED / STALE_SLA`. Applicant/interview: `APPLICANT_RECEIVED`, `APPLICANT_FINALIZED`, `HIRE_APPROVED`, `CANDIDATE_HIRED`, `INTERVIEW_SCHEDULED`, `INTERVIEW_RESCHEDULED`, `INTERVIEW_REMINDER`, `APPLICANT_REJECTED`, `APPLICANT_ANOTHER_ROUND`, `CANDIDATE_WITHDREW`, `AI_INTERVIEW_SCORED`, `AI_BULK_INVITES_COMPLETED`. Offers: `OFFER_EXTENDED`, `OFFER_ACCEPTED`, `OFFER_DECLINED`, `OFFER_PENDING_OWNER_SIGNATURE`, `OFFER_OWNER_SIGNED`, `OFFER_OWNER_RESCINDED`, `OFFER_EXPIRED`, `OFFER_EXPIRING_SOON`. Cross-module: `COMMUNICATION_LOGGED`, `MARKET_RESEARCH_STALE`, `ISKUR_POSTING_FAILED`. Projects/campaigns: `TASK_ASSIGNED`, `MEETING_UPCOMING`, `TRAVEL_APPROVAL_REQUESTED`, `EXPENSE_APPROVAL_REQUESTED`, `BUDGET_INCREASE_REQUESTED`, `BUDGET_THRESHOLD_REACHED`, `APPROVAL_DECIDED`, `CAMPAIGN_LEAD_ASSIGNED`, `CAMPAIGN_APPROVAL_REQUESTED`, `CAMPAIGN_APPROVAL_DECIDED`. Re-derive the authoritative list from `event-registry.ts`, not from this paragraph.
++**Registry inventory (verified 2026-08-05 — 41 keys).** IR request lifecycle: `HIRING_REQUEST_SUBMITTED / ACKNOWLEDGED / UNACKNOWLEDGED_SLA / REVIEW_REQUESTED / REVISIONS_REQUESTED / APPROVED / PUBLISHED / STALE_SLA`. Applicant/interview: `APPLICANT_RECEIVED`, `APPLICANT_FINALIZED`, `HIRE_APPROVED`, `CANDIDATE_HIRED`, `INTERVIEW_SCHEDULED`, `INTERVIEW_RESCHEDULED`, `INTERVIEW_REMINDER`, `APPLICANT_REJECTED`, `APPLICANT_ANOTHER_ROUND`, `CANDIDATE_WITHDREW`, `AI_INTERVIEW_SCORED`, `AI_BULK_INVITES_COMPLETED`. Offers: `OFFER_EXTENDED`, `OFFER_ACCEPTED`, `OFFER_DECLINED`, `OFFER_PENDING_OWNER_SIGNATURE`, `OFFER_OWNER_SIGNED`, `OFFER_OWNER_RESCINDED`, `OFFER_EXPIRED`, `OFFER_EXPIRING_SOON`. Cross-module: `COMMUNICATION_LOGGED`, `MARKET_RESEARCH_STALE`, `ISKUR_POSTING_FAILED`. Projects/campaigns: `TASK_ASSIGNED`, `MEETING_UPCOMING`, `TRAVEL_APPROVAL_REQUESTED`, `EXPENSE_APPROVAL_REQUESTED`, `BUDGET_INCREASE_REQUESTED`, `BUDGET_THRESHOLD_REACHED`, `APPROVAL_DECIDED`, `CAMPAIGN_LEAD_ASSIGNED`, `CAMPAIGN_APPROVAL_REQUESTED`, `CAMPAIGN_APPROVAL_DECIDED`. Website (§5.12, 2026-09-19): `WEBSITE_FORM_RECEIVED`, `WEBSITE_FORMS_UNAVAILABLE`. Re-derive the authoritative list from `event-registry.ts`, not from this paragraph.
+ 
+ Channel/recipient corrections vs. earlier PRD revisions (verified in the registry): `OFFER_ACCEPTED` / `OFFER_DECLINED` / `OFFER_EXPIRED` are **IN_APP-only** internally (no `emailTemplate`; the candidate-facing offer emails go out separately through the offer-letter pipeline), and each includes the request `creatorId` among recipients. `OFFER_EXTENDED`'s internal recipients are `extendedById` + approvers — not the broader creator/assignedHr/hiringOwner set older revisions claimed.
+ 
+ **Recipient helpers.** `getApprovers()` is **permission-driven since 2026-08-05**: super-admin OR any role holding an allowed `internal-recruitment:APPROVE` row in `role_permissions` — mirroring `getOfferLetterOwnerSigners()` (super-admin OR `offer-letters:SIGN_AS_OWNER`). Granting APPROVE to a custom role now flows to approver notifications automatically (the old hard-coded `['super-admin','admin']` slug list resolved the same people but silently excluded custom roles). `getActiveStaff()` returns all active users.
+ 
+ **`NotificationType` reuse pattern.** New events deliberately reuse existing `NotificationType` values (most commonly `STAGE_UPDATED`) instead of minting enum values, avoiding a Postgres enum migration per feature: `APPLICANT_ANOTHER_ROUND`, `MARKET_RESEARCH_STALE`, `AI_INTERVIEW_SCORED`, `AI_BULK_INVITES_COMPLETED`, `OFFER_EXPIRING_SOON`, İŞKUR renewal notices all reuse `STAGE_UPDATED`; `CAMPAIGN_LEAD_ASSIGNED` → `TASK_ASSIGNED`, `CAMPAIGN_APPROVAL_DECIDED` → `APPROVAL_DECIDED`. Only genuinely new domains add values (Projects added 7, `CAMPAIGN_APPROVAL_REQUESTED` is additive). CRM-era enum values are left in place pending a verified-zero-rows cleanup.
+ 
+ **Per-event notification SETTINGS (2026-09-13, Marketing Studio P6 WP3).** `ModuleNotificationSetting` (table `module_notification_settings`, migration `20260918101000_module_notification_settings`) holds one optional OVERRIDE row per event: `inApp`, `email`, and an editable `emailSubjectEn/Tr` + `emailBodyEn/Tr`. **An ABSENT row means "use the registry's own channels"**, so the table can be empty and nothing changes — and deleting a row restores the shipped behaviour rather than silencing an event. `NotificationSettingsService` (`notifications/notification-settings.service.ts`) owns `resolve(eventType)` (cached in-memory, invalidated on write, 60s TTL for writes another process made; a read failure degrades to "no override" and never blocks a dispatch), `listForModule(module)` (registry defaults merged with stored rows), `update()` and `sendTest()`. `EventDispatcher.dispatch()` consults it: `inApp: false` skips the bell, `email: true` sends, and a stored body is rendered through `custom-template.logic.ts` into the `module-custom.hbs` / `.tr.hbs` layout. When email is switched on for an event that ships no `.hbs`, a body is GENERATED from the same title/message/link the bell carries — without that, "email on" would queue a job with no template and send nothing, which looks exactly like success.
+ 
+ **Browser push (WP7).** The dispatcher's `PUSH` channel, declared in the registry's types since the fork but never wired to anything, is now real and completely generic: `EventDispatcher.dispatch()` pushes to every one of the recipient's active `PushSubscription` rows (`{ id, userId, endpoint UNIQUE, p256dh, auth, userAgent, createdAt, lastUsedAt, failedAt, failureCount }` — one row per BROWSER, not per user) via `PushService.sendToUser()` whenever an event's `channels` array includes `'PUSH'` — nothing module-specific lives in the dispatcher; WhatsApp (PRD §5.11) is simply the first module whose events opt in. Delivery is genuine Web Push (RFC 8291/8292) through the `web-push` package — the ONE new npm dependency this added, pinned exact — signed with a VAPID key pair read from `VAPID_PUBLIC_KEY`/`VAPID_PRIVATE_KEY`/`VAPID_SUBJECT` (`docs/DEPLOYMENT.md`); push is silently skipped (logged once, never a crash) in any environment where those keys are unset. A subscription the push service reports gone (404/410) is deleted on the spot; five consecutive OTHER failures disable it (`failedAt` set) rather than retrying forever, and a nightly `push-prune-failed` cron clears disabled rows. **Two independent axes gate a push, the same shape the other two channels already use:** the PER-USER axis is whether this particular browser is subscribed at all (a "Browser notifications" toggle the user switches on once per browser — no subscription, no push, regardless of anything else); the PER-MODULE axis is `ModuleNotificationSetting.push` (an admin-editable boolean beside the existing `inApp`/`email`, additive migration, defaulted `true` so nothing already using PUSH goes silent the day the column appears — the same "absent row = registry default" rule the other two channels already follow). **Presence skips a redundant push**: an event can declare a room resolver (`EventDefinition.pushPresenceRoom`) and the dispatcher checks `NotificationsGateway.hasSocketInRoom()` before pushing — WhatsApp's `message.received` is the one shipped example (PRD §5.11); the check fails OPEN (pushes anyway) if it cannot be answered. **A Service Worker cannot read this app's auth cookie** (JWT auth is header-only, and a worker has no `document`) — every authenticated push-related call (subscribe, unsubscribe) is made from page-context JS with the existing bearer-token API client, never from inside `apps/frontend/public/sw.js` itself; the worker's own `push`/`notificationclick` handlers need no auth at all, because the payload carries everything needed to render and a click just focuses or opens the target URL. **Installability, not the push mechanism itself, is what gates a phone:** Web Push on iOS Safari is delivered only to a site the user has added to their Home Screen as a standalone app (`manifest.webmanifest` + the Apple meta tags); a plain Safari tab never receives it — documented, not built around. Each send happens INLINE inside `dispatch()` — one HTTPS round trip per subscription, bounded by a five-second timeout so a slow or hanging push endpoint cannot stall the request that raised the event — and the whole PUSH branch is wrapped so a failure inside it (a bad payload, a dead endpoint, the timeout itself) never takes IN_APP or EMAIL delivery down with it, nor the business action that triggered the dispatch: push is a best-effort courtesy channel, not a dependency of anything else in the call.
+ 
+ **Editable email bodies are an ALLOWLIST, not a template language.** Each catalogue event declares `placeholders: string[]`; a body may name those and nothing else (the PATCH route 400s with the unknown names listed and the allowed ones beside them). The stored source is HTML-escaped BEFORE it is compiled and every substituted value is escaped on its way in, so neither an author nor a post title can inject markup; blank lines become paragraphs; block helpers, partials and the triple-stache raw form are rejected. Values are read through the allowlist rather than off the dispatch context, so a body cannot print an internal id that merely happens to be there.
+ 
+-**The event catalogue is the registry.** A definition that carries `module`, `label`, `trigger`, `recipientsDescription`, `placeholders`, `sampleContext`, `templateContext` and `emailLinkPath` is listed in that module's `Settings → Notifications` screen — there is no second catalogue. Today only `marketing` declares them (14 events); adding a module means adding those fields to its definitions, a controller mounting `NotificationSettingsService`, and a seed block. `prisma/module-notification-seed.ts` ensures the rows create-only (`update: {}`), so an owner's toggles and edited copy survive every deploy; `module-notification-seed.spec.ts` pins it against the registry, because `seed.ts` may not import from `src/`.
++**The event catalogue is the registry.** A definition that carries `module`, `label`, `trigger`, `recipientsDescription`, `placeholders`, `sampleContext`, `templateContext` and `emailLinkPath` is listed in that module's `Settings → Notifications` screen — there is no second catalogue. `marketing` (14 events) and `website` (2 events, §5.12) declare them; adding a module means adding those fields to its definitions, a controller mounting `NotificationSettingsService`, and a seed block. `prisma/module-notification-seed.ts` ensures the rows create-only (`update: {}`), so an owner's toggles and edited copy survive every deploy; `module-notification-seed.spec.ts` pins it against the registry, because `seed.ts` may not import from `src/`.
+ 
+ **Every notification must be clickable (owner requirement, 2026-09-12).** The landing contract lives in ONE place on each side: `apps/frontend/src/lib/notifications/entity-path.ts` (`getEntityPath` + `resolveNotificationHref`) for the UI, and `emailLinkPath` on each marketing `EventDefinition` for email. `resolveNotificationHref` prefers the row's entity, adds the query string the notification TYPE calls for (`MARKETING_POST_SUBMITTED` → `?view=review`, `POST_FAILED` → `?panel=errors`, `POST_COMMENT`/`PLAN_COMMENT` → `?tab=discussion`, `PLAN_SUBMITTED` → `?tab=approvals`) and falls back on the type prefix when a row carries no usable entity. The dispatcher also falls back to `ctx.relatedEntityType` where a definition declares none — `COMMUNICATION_LOGGED` had been storing an entity id with no type, which the bell cannot turn into a link. Types still deliberately unmapped: subject-less broadcasts (`GENERAL`) and the CRM-era enum values nothing in Operations raises.
+ 
+ **Notification endpoints are auth-only — don't permission-gate them (2026-06-08).** `GET /notifications`, `PATCH :id/read`, `PATCH mark-all-read`, `DELETE :id` carry **no** `@RequirePermission`; the service scopes every query to `recipientUserId = currentUser.userId`. They used to carry `@RequirePermission('notifications', …)`, which 403'd any custom role lacking the (otherwise-vestigial) `notifications` grant and made the bell poll-spam 403s. Keep them auth-only — a per-user resource needs authentication, not a module grant.
+ 
+ **Per-user notification preferences are a CRM-era relic.** Both Bull processors filter deliveries through `isNotificationEnabled(User.notificationPreferences)` and `UsersService` exposes get/update methods — but every preference key maps only CRM-era `NotificationType`s (`JOB_APPROVED`, `COMMISSION_INVOICED`, …), so all ops-era types fall through to "no config → allow". The system is live code that currently filters nothing the platform sends, and the preferences UI page never existed (the email-footer link to it was removed — see §6.7). **This relic gained a third `push` arm in WP7, and it is NOT the same axis as `PushSubscription`.** A `PushSubscription` row is not a `notificationPreferences` JSON key, and subscribing is an explicit action with its own UI (the "Browser notifications" toggle) — that part is a genuinely separate, real axis. But every push send DOES route through this same relic's `isNotificationEnabled()` as a second gate (`notification-preferences.config.ts`): for WhatsApp events specifically that gate is an always-allow today, because no `WHATSAPP_*` type is listed in `NOTIFICATION_PREFERENCE_CONFIGS` — so it filters nothing WhatsApp currently sends, exactly like its `email`/`inApp` siblings already didn't. Unsubscribing the browser remains the one effective per-user off-switch for WhatsApp push (`docs/whatsapp-module/WP7-DEFERRED.md` R-P16).
+ 
+ **Candidate-facing emails** are sent directly via `NotificationsService.queueEmail()` (not through the dispatcher) because the candidate has no `User` row. All include the candidate's tracking URL. Emails are best-effort — a failure logs a warning but never blocks the underlying business action.
+ 
+ **Bull queue inventory (verified 2026-08-05).** `email` (processors `send`, `send-bulk`), `notification` (`create`, `create-many`), `whatsapp-notify` (`deliver`, concurrency 1, `attempts: 1` — no auto-retry, a rule inherited from the retired WhatsCRM contract — §7.2), `ai-interview-scoring` (`score`), and `ai-interview-bulk` (`bulk-invite`, concurrency 1). The dead CRM-era `invoice` queue was deleted 2026-08-05; `mailbox-sync` went with the Mailbox removal (2026-08-04). `GET /admin/queues` (`queues.controller.ts`) is a super-admin-only stats endpoint using a hardcoded `isSuperAdmin()` check (not `@RequirePermission`) and reports only `email`/`notification` — the three newer queues are invisible to it. `iskur-bot` registers/injects the shared `notification` queue directly rather than going through `EventDispatcher`. Queue workers run **inside the same backend NestJS process** — there is no separate worker container; Redis is the broker.
+ 
+ **Cron inventory (verified 2026-08-05 — 19 registered `@Cron` jobs).** `careers-retention` (daily 03:00 — 24-month anonymization + document purge), AI-interviewer hourly sweep (invite expiry + T-24h reminder), `remuxSweep` (every 10 min), AI `retentionSweep` (daily 04:00, dry-run unless `AI_RETENTION_PURGE_LIVE=true`), `iskur-applicant-sync` (~6 h), `iskur-listing-expiry` (hourly), `project-meeting-reminder` (every 30 min), `market-research-expiry` (hourly), `interview-reminder` (every 30 min: interviewer ping in the T-75min window + candidate email in the 22–26h window), `interview-media` (every 30 min — restored Google Meet recording retrieval), `hiring-request-sla` (hourly), `offer-letter-expiry` (hourly — T-24h reminder pass then the expiry flip), plus 7 HRM crons (late-checkin 10:30 Mon–Fri, pay-period-rollover 02:00, payroll-reminder 08:00, probation-review 06:30, approval-reminder 11:00, leave-accrual 06:00, contract-renewal 06:00). Both `interview-reminder` passes exclude `cancelledAt`-set interviews (fixed 2026-08-05 — a cancelled-but-future interview could previously still trigger reminders).
+ 
+ **Decisions & gotchas**
+ - **Don't permission-gate the notification endpoints (2026-06-08)** — they scope to `recipientUserId` in the service and need only authentication; re-adding a module gate 403s custom roles and spams the bell poller.
+ - `getApprovers()` resolves by `internal-recruitment:APPROVE` grant + super-admin (permission-driven since 2026-08-05) — keep any new recipient helper permission-driven too, never a role-slug list.
+ - Reuse an existing `NotificationType` (usually `STAGE_UPDATED`) for new events unless the domain is genuinely new — avoids an enum migration per feature.
+-- The dispatcher's EMAIL channel sends everything `mailbox: 'careers'` today; make it per-event `def.mailbox` before a non-IR module adopts EMAIL.
++- The dispatcher's EMAIL channel is per-event `def.mailbox ?? 'careers'`; a non-IR event MUST declare `mailbox: 'default'` (pinned per module by `event-registry-coverage.spec.ts` — whatsapp and website included).
+ - Heavy work (email, notifications, exports) goes through a Bull queue — never block the request handler.
+ - The notification-preferences filter is a CRM-era relic: live code, zero current effect (it maps only CRM-era NotificationTypes, and no prefs page exists). Don't build on it; retire or rebuild deliberately. (Its sibling relic, the `invoice` queue, was deleted 2026-08-05.)
+ - **A deploy kills in-flight Bull batch jobs** (`attempts: 1` + `removeOnFail: true` on the bulk AI jobs) — never start a long batch right before pushing; re-run the (idempotent) backfill after deploying (2026-07-31, observed).
+ - **An ABSENT `ModuleNotificationSetting` row means the registry's channels, never "off"** (2026-09-13). Resolving a missing row to `{inApp:false, email:false}`, or seeding rows from the schema defaults instead of from each event's own channels, silences events on the deploy that creates the table. The first write of a row carries the registry defaults for the field the owner did NOT touch, for the same reason.
+ - **Switching a channel on must actually send something.** An event with no `.hbs` and no stored body gets a generated one; never queue an email job without a template (it is a silent no-op that logs success).
+ - **A stored email body may only name the event's declared placeholders** — validate on write and 400 with the unknown names. An unknown placeholder renders as a blank in a real email, which reads to the recipient as a broken feature rather than a typo.
+ - **There is exactly ONE notification link resolver per side** (`lib/notifications/entity-path.ts`; `emailLinkPath` in the registry). The two frontend copies that preceded it disagreed for months, and each carried a comment asking the next person to keep them in step. Add a mapping there, not in a page.
+ - **`seed.ts` cannot import the event registry** (the prod image ships no `src/`), so the catalogue defaults are duplicated in `prisma/module-notification-seed.ts` and kept honest by `module-notification-seed.spec.ts`. Change one, change both — the spec will say so.
+ - **Push failing OPEN on a presence-check throw is deliberate, the opposite of the pacing/budget gates elsewhere in this codebase.** A push that duplicates an already-seen in-app notification is a minor annoyance; a push silently dropped because a Socket.IO room lookup errored is a missed alert. Don't "fix" this to fail closed.
+ - **`web-push` is the one exception to "no new npm dependencies" this repo otherwise holds everywhere (WP7, R-P1)** — scoped to this one feature on purpose; do not treat it as licence to add a second package for something adjacent.
+@@ -4287,21 +4371,21 @@ Reference and configuration data consumed by every other module: countries, citi
+ **Decisions & gotchas**
+ - Country dimension is the **CODE** everywhere (`PK`, `TR`), cities are **names** — forms must submit `country.code`; the JD form regressed this once and every submit falsely threw `MARKET_RESEARCH_REQUIRED` (fixed `629eeac`, 2026-06-04).
+ - `EmploymentType.code` and `Language.code` are immutable after creation; system rows can be deactivated, never deleted.
+ - `Language.name` is the English display name and an İŞKUR mapping key — don't localize it in the table.
+ - Company Profile is not `@Public()`; its logo is a data URL, not a MinIO URL (private bucket 403s).
+ - The benefits **read** gate is `internal-recruitment:VIEW` by design — don't "fix" it to `settings:VIEW` (it would break the Extend Offer picker for recruiters), and don't relax the full IR email config GET to pre-fill recruiter UIs (it exposes SMTP host/user).
+ - Currency validates against `CURRENCY_CODES` (`packages/constants/currencies.ts`); project/company `country` validates against the `Country` table (2026-06-15).
+ 
+ ### 6.5 Careers-public hardening
+ 
+-`apps/backend/src/modules/careers-public/` is the **only feature module with unauthenticated endpoints** (the sanctioned exceptions outside it are the İŞKUR agent routes — `@Public()` + `IskurAgentGuard` constant-time token check — and the auth module's login/refresh/password-reset routes). Public traffic is concentrated here for rate-limiting, captcha verification, IP hashing, and audit visibility. **Don't sprinkle `@Public()` across feature modules** — any future public surface (partner-inquiry form, referral link) follows the patterns here or gets its own sibling module with the same hardening.
++`apps/backend/src/modules/careers-public/` is the **only feature module with unauthenticated endpoints** (the sanctioned exceptions outside it are the İŞKUR/Indeed agent routes — `@Public()` + a constant-time token guard — the auth module's login/refresh/password-reset routes, the §7.8/§7.9 webhooks, and since WP3a the website intake door `website/v1`, §7.10 — the "own sibling module with the same hardening" this paragraph asked for). Public traffic is concentrated here for rate-limiting, captcha verification, IP hashing, and audit visibility. **Don't sprinkle `@Public()` across feature modules** — any future public surface (partner-inquiry form, referral link) follows the patterns here or gets its own sibling module with the same hardening.
+ 
+ **Endpoints** (all `@Public()`):
+ - `GET /api/careers/openings` — openings where `isPubliclyListed = true` and `status = OPEN`, in the trimmed public shape (`shapePublicOpening`): no internal fields, no `requirements` (folded into the JD 2026-07-16), the `cities`/`employmentArrangements`/`workModes` arrays alongside the single first-item mirrors (2026-07-17). **Salary privacy:** `salaryVisible = false` **strips** `salaryMin/salaryMax/salaryCurrency/salaryPayType/salaryPeriod` at the API (never CSS hiding), and the page shows nothing — the "discussed during the interview" placeholder was removed at Faraz's request (2026-07-17); don't re-add one. `payCurrency` is deliberately exposed even when salary is hidden (the expected-salary field quotes in it; a currency alone reveals no amounts — don't strip it as a "privacy fix"). Filters: country, employment arrangement, work mode (arrangement/work-mode match ANY of the multi-select values via `{ has: v }`).
+ - `GET /api/careers/openings/:slug` — by `publicSlug`, same shape/stripping.
+ - `POST /api/careers/upload-cv` — a **direct multipart upload through the backend** (`FileInterceptor('file')` → MIME/size gates in-process → `UploadService.uploadFile` → MinIO), returning `{url, key, fileName}`. **No presigned upload URL is issued** (earlier PRD revisions were wrong). **PDF only** (2026-07-30, owner decision) and ≤ 5 MB, server-enforced: DOC/DOCX were dropped because the AI CV-fit screen parses PDF text only (a Word CV scores "unscorable" and never auto-invites) and Word files are macro-capable. Three layers, all needed: the form's `accept` + client pre-check (a hint only — drag-drop bypasses it), the `upload-cv` MIME gate (the real gate), and a **deliberately lenient** `.doc/.docx` check on `dto.cvUrl` in `apply()` — it rejects only a positively-identified Word extension and ignores anything unclassifiable, so an unexpected storage-URL shape can never 400 legitimate applications; don't "tighten" it into a strict key regex.
+ - `POST /api/careers/upload-portfolio` (2026-07-16) — one portfolio document per call (PDF/JPG/PNG/WEBP/DOC/DOCX, ≤ 10 MB multer cap), same direct-upload mechanism, into the private `careers-portfolio/` prefix; returns `{key, fileName, mimeType, sizeBytes}` — no raw URL (the bucket is private). **Don't collapse the portfolio type list into the CV's PDF-only list.**
+ - `POST /api/careers/openings/:slug/apply` — creates the `InternalApplicant`. `phone` REQUIRED (2026-07-16); `country` must be a valid Country **code** (400 otherwise); `city` is a datalist combobox (curated suggestions, free text always works — reference data is incomplete outside Turkey; don't regress to a closed select); optional `language` from the public settings endpoint. **Residency restriction (owner rule 2026-07-24):** an opening is open only to residents of its own country (400 `This role is open only to applicants residing in <country>.`); the form locks the country field and pre-sets + locks the phone dial code (`DIAL_CODES` in `careers/_format.ts`), combining to E.164 on submit. **Expected salary is REQUIRED for Pakistan openings** (owner rule 2026-07-23, `opening.country === 'PK'`); otherwise optional, quoted in the opening's pay currency (the opening's currency always wins server-side; the candidate's pick only fills a currency-less opening). **Portfolio documents:** up to 5 entries whose keys must match `^careers-portfolio/…` (regex + service re-check — key forgery into other folders is rejected); `Opening.portfolioRequired = true` enforces ≥ 1 (400). Applicant + `ApplicantDocument` rows (CV row minted via `keyFromUrl(cvUrl)`) are created in a `$transaction`. Captcha (Turnstile, §7.7) is verified server-side. IP is hashed (sha256 with `IP_HASH_SALT`) before storage; raw IP is never persisted (GDPR). The applicant always mints a `trackingToken` (`randomBytes(24).base64url`). The AI auto-invite hook fires **after** the apply response, fire-and-forget (§5.4 AI Interviewer).
+ - `GET /api/careers/status/:token` — redacted candidate status via the one-way `trackingToken` (coarse `journey` phases + `stageLabel` only — internal stage names stay redacted; forward-looking cards are stage-gated defensively). Token TTL 12 months from `createdAt` (365d; past TTL → Gone "Application no longer available"). The status page also hosts interview-slot confirm, offer OTP + signature sign, AI-interview entry, and self-withdrawal (`stage: REJECTED` + `rejectionReason: WITHDREW` — a display-layer mapping, **not** a WITHDRAWN stage enum).
+ 
+ **Rate limiting: the truth (verified 2026-08-05).** Per-route `@Throttle()` values are declared throughout the controller — 10/min on `apply`/`upload-cv`/`upload-portfolio`, 30/min on `status`, 5/min on OTP routes, 3/15min on the strictest, 20/min elsewhere — **but they ship INERT**: the global `RateLimitGuard` (`common/guards/rate-limit.guard.ts`) skips every request unless env `RATE_LIMITING_ENABLED === 'true'`, and that variable is declared in **no compose file and no doc**. The guard exists because the bare `@Throttle` decorators were decorative (no global `ThrottlerGuard` was registered) and because `req.ip` behind Apache is always the loopback — the guard tracks per-IP via `x-forwarded-for`. Flipping the flag on requires re-deriving per-route limits first (the guard's docstring). Until then, captcha + duplicate detection + the 50 MB Apache body cap are the effective public-abuse controls.
+@@ -4311,21 +4395,21 @@ Reference and configuration data consumed by every other module: countries, citi
+ - Email confirmation to the candidate on apply (with tracking link).
+ - GDPR retention cron (`careers-retention.cron.ts`, daily 03:00): anonymizes never-converted public-application rows older than 24 months, purges their `ApplicantDocument` rows, best-effort deletes the MinIO objects, and nulls the applicant `city`.
+ - Admin-side documents viewer: `GET /internal-recruitment/applicants/:id/documents` + `…/:docId/view` streams **inline only for pdf/jpeg/png/webp** with `nosniff` + `Content-Security-Policy: default-src 'none'` + `private no-store`; doc/docx are macro-capable → octet-stream attachment + sandbox CSP, never inline. Ownership check (foreign docId → 404) + a `careers-portfolio/`/`careers-cv/` key-prefix allow-list. The frontend `DocumentViewerDialog` blob-fetches with the page bearer (raw MinIO URLs 401/403).
+ - CV file scanning (clamav or equivalent) remains a Phase-2 item; MIME + extension enforcement only today.
+ 
+ **Frontend routes**: `/[locale]/careers` (list), `/[locale]/careers/[slug]`, `/[slug]/apply`, `/[slug]/thank-you`, `/careers/status/[token]`, `/careers/ai-interview/[token]`. The frontend middleware whitelists `/careers/*` as public. The public careers tree has **no global sonner `<Toaster>`** — pages needing toasts mount their own.
+ 
+ **Permissions**: none (public). The module reads `InternalJobOpening` and writes `InternalApplicant` through dedicated service methods that bypass `ScopeFilterService` (there is no authenticated user); creation sets `isPublicApplication = true`.
+ 
+ **Decisions & gotchas**
+-- **Don't add public unauthenticated endpoints outside this module** (auth's login/refresh/password-reset routes are the other sanctioned public surface — someone who can't log in can't authenticate to ask for a reset).
++- **Don't add public unauthenticated endpoints outside this module** without the §7.10 treatment: a named PRD argument, its own module, a fail-closed token guard, captcha, IP hashing, dedupe and audit visibility (the website door `website/v1` is the worked example; auth's login/refresh/password-reset routes remain the other sanctioned surface — someone who can't log in can't authenticate to ask for a reset).
+ - Rate limiting is OFF until `RATE_LIMITING_ENABLED=true` is set AND per-route limits are re-derived — don't describe the `@Throttle` values as active protection.
+ - `upload-cv` is PDF-only; portfolio keeps the wider list — two lists, on purpose (2026-07-30).
+ - Salary stripping happens at the API; hidden salary renders NOTHING; `payCurrency` stays exposed (2026-07-17).
+ - Never serve candidate-supplied HTML inline as `text/html` (stored XSS); doc/docx never render inline; İŞKUR CV HTML is octet-stream/attachment only (§5.4.4).
+ - The lenient `cvUrl` Word-extension check must stay lenient; the portfolio key regex + prefix allow-list must stay strict.
+ - Raw OTPs are never stored — `sha256(OTP_SALT + otp)`, compared via `timingSafeCompareHex` (`candidate-otp.ts`), never `===`. The env var is `IP_HASH_SALT`, **not** `IP_SALT` — misnaming it silently falls back to `'dev-default-salt'` and makes audit IP hashes predictable.
+ - "Withdrawn" is `REJECTED + rejectionReason: WITHDREW` — don't add a WITHDRAWN stage enum (2026-07-16).
+ 
+ ### 6.6 File storage & uploads
+ 
+@@ -4570,20 +4654,52 @@ imported `WaMessage` by `wamid`, never written back to `whatsapp_notifications`
+ Final imported volume: 413 conversations / 2,748 messages / 555 contacts. See §7.2 for the
+ retirement summary and `docs/whatsapp-module/CUTOVER-RUNBOOK.md` for the full execution record.
+ 
+ **Decisions & gotchas**
+ - Errors are classified by a frozen catalogue (`wa-graph-errors.logic.ts`): 131047 → template required, 131049 → wait 24 h, 131050 → opt-out (never retry), 131026 → unreachable, 132015/132016 → template paused/disabled, 190/368/131031/131042 → critical, 131058 → Hello World / test-number restriction (non-retriable).
+ - Templates are POSITIONAL or NAMED; the component builder fails closed on any missing variable (the 2026-08-10 example-link incident).
+ - Portfolio limits: 2 numbers until business-verified (then 20); messaging tier is portfolio-wide, quality/throughput per number.
+ 
+ ---
+ 
++### 7.10 The website intake door — the third sanctioned public surface
++
++`apps/backend/src/modules/website/website-public.controller.ts`, `website-public-uploads.controller.ts` and `newsletter/website-public-newsletter.controller.ts` carry a class-level `@Public()`. This section is the argument that makes that legal under the rule stated in §3, §6.5, §10 and `CLAUDE.md` ("no public endpoints outside `careers-public`"), the same way §7.8 argued the call-center webhooks/tools and §7.9 the WhatsApp webhook.
++
++**Why a door at all.** The marketing site (Vercel) has no database and buffers nothing (D11: leads are never held on Vercel). Every visitor form must land in Operations synchronously or be lost; the only alternative to a public route is a public queue, which is the same surface with a worse audit trail.
++
++**Why here and not in `careers-public`.** The careers module's routes are UNAUTHENTICATED (a candidate has no credential); the website door is a MACHINE route — every caller presents a server-held Bearer token, and an unauthenticated call is a 401 before any body is parsed. Those are different threat models with different controls, and §6.5 already said a future public surface "gets its own sibling module with the same hardening". `careers-public` is touched in exactly one way: it EXPORTS `CareersPublicService` so the website's careers form reaches `apply()` (a one-way edge, website → careers-public).
++
++**The hardening set, item by item (the §6.5 list, applied):**
++
++| §6.5 control | Website door |
++|---|---|
++| Public surface small and explicit | six routes on three controllers, one module: `GET /api/website/v1/ping`, `POST /api/website/v1/forms/:formKey`, `POST /api/website/v1/uploads/fraud-evidence`, `GET /api/website/v1/newsletter/confirm`, `GET /api/website/v1/newsletter/unsubscribe`, `POST /api/website/v1/newsletter/unsubscribe`; CV upload reuses the existing public `careers/upload-cv` (P5) |
++| Authentication | `WebsiteApiGuard` — write / test / previous-write classes, DB-held encrypted, `timingSafeEqual`, fail-closed while unconfigured (P7) — the `IskurAgentGuard`/`CallAgentToolGuard` shape |
++| Kill switch | `WebsiteModuleEnabledGuard` first in the chain — bare 404 when `WEBSITE_MODULE_ENABLED` is not `'true'` (P1); the compose default on the VPS is `false` |
++| Captcha | `WebsiteCaptchaService` (P6) — invalid token 403; infrastructure failure accepts flagged + alarmed (D11) |
++| Rate limiting | `@Throttle` is inert platform-wide (§6.5); the REAL controls are the hour-bucket dedupe (`@@unique([formKey, requestHash, hourBucket])`), the honeypot, the token classes and the per-form abuse auto-trip on captcha-verified counts (P10) |
++| IP hashing | `sha256(IP_HASH_SALT + ':' + ip)` on the submission row; the raw address is never stored |
++| Audit visibility | every call writes a `WebsiteFormSubmission` row before any side effect; handlers log `ActivityLogger` entries with the `system:website` actor; the forms inbox (`website.forms`) is the operator's view, including the fraud evidence read-back under `GET /api/website/forms/submissions/:id/evidence/:index/view|link`; secret writes/rotates/tests on the Integrations screen carry `@AuditEntity` under `website:MANAGE_KEYS`; the CSV export is its own audited route |
++| Body size | JSON forms sit under the global 1 MB parser; fraud evidence is multipart on its own route with a magic-byte sniff, ≤ 3 files, and lands under the private `website-fraud/` prefix (RC3) |
++| Retention | `purgeAfter` (90 days post-HANDLED) + the 04:30 purge cron including MinIO objects (P10) |
++
++**What it must never become.** No browser ever calls this door (CORS stays a single origin, `credentials: true`); no other feature module may mount a route under `website/v1`; no route here may populate `request.user` with the synthetic actor (`AuditLog.performedById` is a `Restrict` FK to `User`); and a new public surface anywhere else gets its own §7.x paragraph, not a footnote here.
++
++**Decisions & gotchas**
++- **Three sanctioned machine doors now exist — agents (§5.4.4/§5.4.5), webhooks (§7.8/§7.9), website (§7.10) — each argued by name.** The rule in §3/§6.5/§10 is unchanged in spirit: public traffic lives where it is hardened and written down.
++- **The door is dark by default on the VPS** (`WEBSITE_MODULE_ENABLED=false` → 404); `docs/DEPLOYMENT.md` has the flip recipe and the reason it needs `up -d backend`, not a `.env` edit alone.
++- **`ping` is the website's liveness fact, not a health endpoint** — it requires a token so it cannot be used to enumerate the module from outside; `/api/health` remains the deploy check.
++- **The fraud-evidence upload is the one upload route the door will ever have (RC3).** Anything else the site must store goes through an existing public route (CV → `careers/upload-cv`) or waits for Phase B's media pipeline.
++
++---
++
+ ## 8. Data Model Overview
+ 
+ The full schema lives in `apps/backend/prisma/schema.prisma` — **9,173 lines, 193 models, 168 enums as of 2026-09-19**. Counts drift; re-derive on demand:
+ 
+ ```bash
+ grep -c '^model ' apps/backend/prisma/schema.prisma   # models (193)
+ grep -c '^enum '  apps/backend/prisma/schema.prisma   # enums  (168)
+ ls apps/backend/prisma/migrations | wc -l              # migration dirs (168 + migration_lock.toml)
+ ls apps/backend/src/modules/                           # backend modules (32)
+ ```
+@@ -4774,21 +4890,21 @@ Throughout: an hourly **SLA cron** emits `HIRING_REQUEST_UNACKNOWLEDGED_SLA` and
+ - Offer signing: signature PNGs in MinIO (never raw canvas data in Postgres), `OfferLetterSignatureAudit` rows carry the post-sign **PDF SHA-256** — the tamper-evidence anchor. Credential reveals (recruitment platforms) audit user + IP + revealed fields.
+ - No raw OTPs anywhere: `sha256(OTP_SALT + otp)`, timing-safe hex compare (`careers-public/candidate-otp.ts`); reuse those helpers for any OTP-shaped flow.
+ 
+ ### Background work & realtime
+ 
+ - **Five Bull queues**: `email`, `notification`, `whatsapp-notify` (concurrency 1), `ai-interview-scoring`, `ai-interview-bulk` (concurrency 1). (The CRM-era `invoice` relic was deleted 2026-08-05.) Queue workers and the Socket.io gateway run **inside the single `backend` process** — there is no separate worker service. Never send email synchronously in a request handler.
+ - A backend restart (i.e. any deploy) kills in-flight single-job batches (`ai-interview-bulk` holds its whole list in one job, `attempts: 1`) — batches are resumable by re-POSTing; don't start a long batch right before pushing (2026-07-31).
+ 
+ ### Public surface hardening
+ 
+-- All public unauthenticated traffic is concentrated in `careers-public` (rate limits, Turnstile captcha, IP hashing, audit visibility) — plus the sanctioned `auth` reset routes and the token-guarded İŞKUR agent routes (`IskurAgentGuard`, constant-time `ISKUR_AGENT_TOKEN` check, fail-closed when unset/weak). Don't sprinkle `@Public()` across feature modules.
++- All public unauthenticated traffic is concentrated in `careers-public` (rate limits, Turnstile captcha, IP hashing, audit visibility) — plus the sanctioned `auth` reset routes, the token-guarded agent routes (`IskurAgentGuard`, constant-time, fail-closed), the signed webhooks (§7.8, §7.9) and the website intake door `website/v1` (token-guarded, flag-gated, captcha + dedupe + IP hashing — §7.10). Don't sprinkle `@Public()` across feature modules.
+ - Captcha verifies Cloudflare Turnstile against `TURNSTILE_SECRET_KEY`; when unset the backend logs a one-time WARN and skips verification — an operator env prerequisite for public marketing traffic.
+ - IP hashing uses `IP_HASH_SALT` (the exact env name — `IP_SALT` silently falls back to `dev-default-salt`). Both `OTP_SALT` and `IP_HASH_SALT` must be 40-char random strings.
+ - Body-size posture: a small global JSON parser with a **path-scoped 15 MB** parser for İŞKUR agent applicant pushes only; the Apache vhost caps bodies at 50 MB with a **scoped 200 MB carve-out** for the AI-interview audio route only.
+ 
+ ### File storage & content-type discipline
+ 
+ - MinIO in both dev and prod (**private buckets** — see §6.6; there is no S3) — raw object URLs 403. Every stored-file view goes through an authenticated streaming endpoint with the hardened header set: inline only for pdf/jpeg/png/webp/av media (+ `nosniff` + `CSP default-src 'none'`); macro-capable formats (doc/docx) are octet-stream attachment + sandbox CSP; attacker-controlled HTML (İŞKUR CVs) is stored as `application/octet-stream` and served download-only — never inline `text/html` (stored XSS).
+ - Upload discipline: MIME allow-lists + multer size caps per surface (public CV is **PDF-only**; portfolio keeps the wider set — don't collapse the two); key-prefix allow-lists so a forged key can't point a viewer at another object class; upload-new → persist → delete-old ordering with orphan cleanup.
+ - The AI-interview recording pipeline is **add-only** — no automatic deletes; the only sanctioned delete paths are the owner-approved retention sweep (dry-run unless `AI_RETENTION_PURGE_LIVE=true`, via `deleteFileChecked`) and the permanent applicant delete.
+ - Avatars and the company logo are small data URLs on the row, not MinIO objects (private buckets don't render in `<img>`).
+@@ -4886,20 +5002,21 @@ This section is the **historical record plus the honest open backlog**. Numbers
+   - **WP1 — Reports module deleted**: `overview` → `GET /api/dashboard/overview`, the six project reports → `/api/projects/reports/*` on `projects:VIEW`, IR/sales/HRM/training analytics dropped by owner decision; migration `20260921100000_remove_reports_module`.
+   - **WP2 — JobsAdmire Copilot module deleted**: backend module, `/admin/copilot` page, API client, nav entry, permission slug `copilot`, and its three tables — `copilot_conversations`/`copilot_issues`/`copilot_memories`; `sales_training_proposed_changes` kept but dormant, no current writer; the `proposalsPending` overview KPI and its "Needs your attention" / quick-action links were removed from the Training Academy dashboard; migration `20260921101000_remove_copilot`.
+   - **WP3 — Investments & Cap Table module deleted**: backend module `investments/`, the 11 `/admin/investments` pages, its API client, the nav entry and its i18n label, the permission slug `investments`, the `investor` SYSTEM role and the two demo logins that held it, plus the nine tables, nine enums, 13 `ActivityType` and 4 `NotificationType` values — the migration **recreates both shared enums**, Postgres cannot drop a value in place. Prod held the seeded demo set only: 7 investors, 3 rounds, 7 holdings, 3 dividends, 17 payments, 8 `investments` activity rows; a table-level dump preceded the deploy. The `investor`-role exclusions in the Projects staff pickers went with the role. Code archived on branch `archive/investments-module`; migration `20260921102000_remove_investments`.
+   - **WP4 — legacy applicant Training/Certification LMS deleted**: backend module `training/` — 24 files, 39 routes — the 11 legacy `/admin/training/*` pages, `lib/api/training.ts`, the two nav/quick-action entries, the permission slug `training` and its `admin` + `training-coordinator` grants, `packages/constants` `training.enums.ts` + `packages/validators` `training.schemas.ts` (both consumer-free), plus 8 tables, 8 enums and the five legacy `InternalApplicantStage` values — the migration **recreates `InternalApplicantStage`**, Postgres cannot drop a value in place, recasting `internal_applicants.stage` around its default. The IR entry point `POST /internal-recruitment/applicants/:id/select` and `selectForTraining()` are gone, and the five stage values were swept out of the display layers that mapped them (careers-public status page + journey stepper, the WhatsApp AI applicant-status projection, the applicant list / talent-pool tone maps, the applicant detail page's "Legacy training track" badge, the three terminal-stage sets that included `ACTIVE`, and the `stageOption` i18n entries). `internal_applicants.deploymentStatus` / `certificateId` / `liveApprovalId` dropped, along with the HRM person-detail leak that selected the first two. Prod held **0 rows in all 8 tables and 0 applicants on any legacy stage**; verified end-to-end against a throwaway database (full history applied, one fixture row per table, migration applied and re-applied, `prisma migrate diff` reporting zero training-related drift). The `training-coordinator` ROLE and the `training@jobsadmire.com` demo login are KEPT. The **Sales Training Academy (`sales-training`, §5.6a) is untouched** — it only ever shared the `/admin/training` URL folder and the `SalesTraining*` model prefix. Migration `20260921103000_remove_legacy_training`.
+   - **WP5 — sales module root now renders the dashboard; follow-ups + assignment-rules gained nav items**: `/admin/sales` replaced the generic `WorkspaceHome` hub with the real dashboard content moved in from `/admin/sales/dashboard`, which now just redirects; the sub-rail's "Dashboard" item points at the module root with `exact: true`; the previously nav-less `/admin/sales/follow-ups` and `/admin/sales/assignment-rules` pages joined the Operations sub-rail group.
+   - **WP6a — 11 uncalled backend routes removed (call-center ×4, hrm ×4, IR ×3) + impersonate; dead `GOOGLE_OAUTH_*` env unwired**: call-center: `config/hipcall/numbers`, `config/hipcall/extensions`, `calls/click-to-call`, `agents/:id/editor-link`; hrm: `attendance/summary/:personId/:year/:month`, `intern-shifts/summary/:personId/:year/:month`, `overtime/:id/reprice`, `persons/:id/documents/:docId/download-link`; IR: `openings/:openingId/public-listing`, `openings/:openingId/regenerate-slug`, `source-effectiveness` — each with the service method(s), DTOs and API-client functions that only it used. `POST /auth/impersonate/:userId` + `POST /auth/stop-impersonation` went with the whole impersonation UI surface (§4.7); the `isImpersonating` JWT claims and the guards reading them are KEPT. Kept by ruling: `GET /whatsapp/settings/verification/staleness` (operator curl in the cutover runbook), `POST /whatsapp/settings/ai/assistants/:id/simulate` (deferred WP4 B5 "Try it" panel), every `careers-public` and `@Public` webhook/agent route. `ActivityType.OPENING_PUBLIC_LISTING_TOGGLED` is left in the enum unused — dropping it needs an enum-rebuild migration (§12.3). No schema change, no migration.
+   - **WP6b — dead frontend client code removed (CRM-era settings clients, ~150 unused API functions, 9 never-imported components/hooks); WhatsApp campaign detail gained its Edit link**: `src/lib/api/settings.ts` lost the whole `contractTypesApi`/`documentTypesApi`/`termsTemplatesApi`/`interviewChecklistsApi` objects — CRM-era leftovers with no backend route — plus a duplicate `offerLetterTemplatesApi` that shadowed the real client in `offer-letter-templates.ts`; `ContractStatusGate.tsx` — a CRM partner-contract gate never imported here — and 8 other never-imported components/hooks were deleted; roughly 150 unused functions were trimmed one by one from the API clients, verified with a multi-line-aware search after the flat per-line audit missed several genuinely-live call sites written as `obj\n.method()` chains (`careersApi.listOpenings/getOpening`, `publicSettingsApi.*`, `authApi.validateResetToken`, `pushSubscriptionsApi.getVapidPublicKey`, `recruitmentPlatformsApi.refreshTotp` — all kept). The campaign detail page (`admin/whatsapp/campaigns/[id]/page.tsx`) gained an **Edit** header button, gated on `whatsapp:MANAGE_CAMPAIGNS` and shown only when `waCampaignActions(status).edit` is true (DRAFT / PENDING_APPROVAL, mirroring the wizard's own R-D10 `waCampaignAffordance`) — the edit wizard page existed since WP5 but nothing linked to it.
+   - **WP6c — 20 further backend routes with no remaining caller removed (sales ×8, hrm ×7, activities, auth, call-center, communications, projects)**: after WP6b took the dead API clients out, a re-audit of all 1009 routes found 20 with no frontend call, no client function, no Chrome-extension call, no e2e spec, no backend link builder and no runbook mention. **sales**: the whole `sales/scoring-rules` CRUD (`GET`, `POST`, `POST recalculate`, `PATCH :id`, `DELETE :id` — controller file deleted and unregistered from `sales.module.ts`, `dto/scoring-rule.dto.ts` gone, `LeadScoringRuleService` reduced to the `evaluateScore()` read side `LeadService` uses; the `LeadScoringRule` table and its seed rows stay, §5.1), `GET expenses/by-travel/:travelId`, `PATCH meetings/:meetingId/materials/:requestId`, `PATCH travel/:travelId/fund-transfer/:transferId`. **hrm**: `POST freelancer-work/:id/submit`, `POST intern-shifts/:id/submit` (the `me/:id/submit` self-service twins are the only submit door now — the `submit()` SERVICE methods are KEPT, `submitMine()` delegates to them), `GET leave-requests/balances/:personId` (KEEP `getBalances()` — `getMyBalances()` delegates), `POST leave-requests/:id/cancel` (KEEP `cancel()` — `cancelMine()` delegates, so the untaken-remainder refund rule of §5.5 is still live on the self-service route; what is gone is the admin-cancels-someone-else's door), `GET {onboarding,offboarding}-checklists/by-person/:personId`, `PATCH offboarding-checklists/:id/items` (the onboarding `:id/items` twin is live and stays). **one each**: `GET activities/by-actor` (+ `listByActor`), `POST auth/change-password` (+ `AuthService.changePassword` and `auth/dto/change-password.dto.ts` — password changes run through the `users:EDIT`-gated `POST /users/:id/change-password` and the `@Public` forgot/reset-password email flow; nothing called the self-service current-password-proof door, and the profile page has never offered one), `PATCH call-center/calls/:id/link` (+ `relink` + `LinkCallDto`), `GET communications/overdue-followups` (+ the five dangling `['overdue-followups']` cache invalidations in the frontend), `GET project-leads/:id/calls` (+ `listCalls`). Exclusive service methods and DTOs went with each route; every shared helper another caller still uses was kept and is named above. No spec case targeted any of the 20. No schema change, no migration, no Prisma-enum change.
+   - **WP7 — documentation**: PRD/CLAUDE.md/README describe the app as it is after the cleanup above; §3/§4/§8/§12 counts re-derived and corrected (22 permission modules, 13 `PermissionAction` values, 12 SYSTEM roles incl. `team-member`, 188 models grouped and fully accounted); the WhatsCRM bridge tombstoned at §7.2 (retired 2026-09-13, WP6 T14, merge `9552a3b`); superseded WhatsApp-module and Marketing-Studio build plans archived under `docs/archive/`.
+   - HRM module root now renders the HRM dashboard (2026-09-15), same pattern as Sales.
++- **2026-09-19 — Website module, WP3a (intake door).** The 23rd permission module (`website`, ten keys, `ROLE_DEFAULTS_VERSION` 3), the token-guarded public door `website/v1` (§7.10 — six routes on three controllers), seven form handlers on one contract, `Inquiry.contactName`, two notification events + the second-human fallback, autoresponders EN/TR, abuse trip / lead drought / purge crons, the Forms inbox and the Integrations screen, `WEBSITE_MODULE_ENABLED` (VPS default `false`, flipped after the gate) and `WEBSITE_SITE_URL`. Migration `20260925120000_website_intake_door`, pushed alone first (§11). The CMS half is Phase B (§5.12).
+ 
+ ### 12.3 Open items & roadmap (honest, as of 2026-09-15)
+ 
+ **Security / compliance**
+ 
+ - **HRM PII encryption** — `HrmPerson.passportNumber` + banking fields are plaintext today (§10). Ship application-layer encryption (existing `encryption.util` pattern) + a backfill migration.
+ - **`PERMISSION_SCOPE_ENFORCEMENT` app-wide rollout** — the flag is off in prod; scoped roles ride `resolveEnforced()`. Flipping it is a separate QA-heavy rollout per `docs/scope-enforcement-audit.md`; afterwards the `resolveEnforced()` calls can revert to `resolve()`.
+ - **AI retention arming** — the retention sweep runs dry-run; `AI_RETENTION_PURGE_LIVE=true` gets set on the VPS only after Faraz reviews a dry-run report.
+ - **CV virus scanning** — public uploads enforce MIME + size only; add clamav (or similar) before high-traffic promotion.
+ - **Operator env checks** — confirm `TURNSTILE_SECRET_KEY` (unset = captcha bypassed with a WARN) and `CRM_API_SERVICE_TOKEN` (unset = lead conversion 503s) are provisioned in prod.

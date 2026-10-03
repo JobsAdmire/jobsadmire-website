@@ -2,43 +2,124 @@
 # Quality gate — runs OUTSIDE the Vercel build (no Chrome there): Playwright + axe + Lighthouse
 # against a URL. D27: once per work package, against a preview (or a local production build).
 # Usage: E2E_BASE_URL=https://<preview-or-local> npm run gate
+#        E2E_BASE_URL=… npm run gate:launch        (= bash scripts/gate.sh --profile=launch)
 #
 # Export REVALIDATE_SECRET (the same value the server under test was started with) for full
 # ops coverage: without it the two token-dependent cases in e2e/ops.spec.ts skip themselves (R43).
+# W137: export VERCEL_AUTOMATION_BYPASS_SECRET to reach a Vercel-protected preview. The header is
+# built in one place (e2e/helpers/bypass.ts) and only when the secret is non-blank; Playwright
+# (playwright.config.ts) and the `lhci collect` calls below send it as x-vercel-protection-bypass.
+# Bash 3.2 (macOS /bin/bash) is enough: no mapfile, no associative arrays.
 set -euo pipefail
+
+PROFILE=default
+for arg in "$@"; do
+  case "$arg" in
+    --profile=launch) PROFILE=launch ;;
+    --profile=default) PROFILE=default ;;
+    *)
+      echo "gate: unknown argument '$arg' (accepted: --profile=launch)" >&2
+      exit 2
+      ;;
+  esac
+done
+
 : "${E2E_BASE_URL:?set E2E_BASE_URL to the preview or local URL}"
 # A trailing slash would double up in every "${E2E_BASE_URL}${path}" below.
 E2E_BASE_URL="${E2E_BASE_URL%/}"
 export E2E_BASE_URL
-echo "gate → $E2E_BASE_URL"
+echo "gate → $E2E_BASE_URL (profile: $PROFILE)"
 if [ -z "${REVALIDATE_SECRET:-}" ]; then
   echo "gate: warning — REVALIDATE_SECRET unset; the two token-dependent ops cases will skip (R43)"
 fi
 
+# W135/W137: the Lighthouse config for this target, chosen BEFORE collecting. `skipAudits`
+# (lighthouserc.preview.json) is a collect-time setting — `lhci assert` only reads the stored
+# runs — so the file goes to every `lhci collect` as well as to `assert`. The choice is
+# lighthouseConfigFor in e2e/helpers/face.ts, the one site-face helper (loaded through tsx):
+#   preview face (*.vercel.app, staging.jobsadmire.com, NEXT_PUBLIC_SITE_FACE ≠ production) →
+#     lighthouserc.preview.json: its robots.txt is `Disallow: /`, which fails is-crawlable;
+#   localhost → lighthouserc.local.json: identical to lighthouserc.json since W145 retired R50's
+#     localhost LCP waiver (it excused Lantern's simulation, which no config uses any more);
+#   anything else (production, after WP7a) → lighthouserc.json.
+# W145: all three measure under DevTools throttling (`throttlingMethod: devtools`), three runs per
+# path, and assert the median run — LCP ≤ 2,500 ms and performance ≥ 0.95 are errors everywhere.
+LHCI_CONFIG="$(node -e 'const { lighthouseConfigFor } = require("tsx/cjs/api").require("./e2e/helpers/face.ts", __filename); process.stdout.write(lighthouseConfigFor(process.env.E2E_BASE_URL));')"
+# W137: the bypass header as JSON (JSON.stringify, so any secret stays valid JSON), only when the
+# secret is non-blank — an unset secret sends no header at all. `lhci collect` hands Lighthouse
+# nothing but its `settings`, so the header goes in as `--settings.extraHeaders=<JSON>`; lhci has
+# no extra-headers option of its own and silently drops one (it never reached Lighthouse before
+# the Task 7 fix round — proven against a local preview stand-in).
+LH_EXTRA_HEADERS="$(node -e 'const { protectionBypassHeaders } = require("tsx/cjs/api").require("./e2e/helpers/bypass.ts", __filename); const h = protectionBypassHeaders(); if (Object.keys(h).length) process.stdout.write(JSON.stringify(h));')"
+echo "gate: lighthouse config $LHCI_CONFIG"
+if [ -z "$LH_EXTRA_HEADERS" ] && [ "$LHCI_CONFIG" = lighthouserc.preview.json ]; then
+  echo "gate: warning — VERCEL_AUTOMATION_BYPASS_SECRET unset; a protected preview will refuse Playwright/Lighthouse (W137)"
+fi
+
+if [ "$PROFILE" = launch ]; then
+  # The launch profile's three Gate A checks run BEFORE Playwright, each to completion whatever
+  # the others return (N6 — `set -e` used to end the run at the first red one, so the D26 table
+  # never printed while W20 was red): W20 (UNBUILT_PATHNAMES empty), the W152/W158 dead-target
+  # sweep (every internal href 200, every CTA anchor rendered on the page its link points at) and
+  # the D26 content-readiness table. All three need only the server already up at E2E_BASE_URL.
+  # Any red one fails the profile right here, without starting the (much longer) Playwright +
+  # Lighthouse run — `npm run gate` covers those, and Gate A needs both green anyway.
+  LAUNCH_FAILED=""
+  echo "gate: launch — W20: UNBUILT_PATHNAMES is empty"
+  npx vitest run --config vitest.launch.config.mts scripts/launch/unbuilt-routes.launch-check.ts ||
+    LAUNCH_FAILED="$LAUNCH_FAILED W20"
+  echo "gate: launch — W152/W158: dead targets (internal hrefs, CTA anchors)"
+  npx vitest run --config vitest.launch.config.mts scripts/launch/dead-targets.launch-check.ts ||
+    LAUNCH_FAILED="$LAUNCH_FAILED dead-targets"
+  # D26/W55: placeholder counter + LCP-slot rule over every gate route; the table is the
+  # content-readiness card and lands in lighthouse-report/content-readiness.json.
+  echo "gate: launch — D26: content readiness"
+  npx tsx scripts/placeholder-count.ts || LAUNCH_FAILED="$LAUNCH_FAILED content-readiness"
+  if [ -n "$LAUNCH_FAILED" ]; then
+    echo "gate: launch — FAILED:$LAUNCH_FAILED (Playwright and Lighthouse not run: npm run gate)" >&2
+    exit 1
+  fi
+  echo "gate: launch — W20, dead targets and content readiness pass"
+fi
+
 npx playwright test
 
-# Lighthouse runs the indexable paths only; this list mirrors e2e/routes.ts minus the noindex
-# conversion page (nobody lands on /tesekkurler cold). Keep the two in sync by hand until WP2
-# exports the route list as JSON.
+# W21: ONE route list. Lighthouse audits the indexable routes only (nobody lands on the noindex
+# conversion page cold); e2e/routes.ts is the source and scripts/gate-routes.mjs prints it —
+# there is no second copy of the paths to keep in sync any more.
+LH_PATHS="$(node scripts/gate-routes.mjs)"
+if [ -z "$LH_PATHS" ]; then
+  echo "gate: scripts/gate-routes.mjs printed no indexable routes" >&2
+  exit 1
+fi
 rm -rf .lighthouseci
-for path in / /en /isci-talebi /en/hire-workers; do
+
+# `read` line by line, never an unquoted `for path in $LH_PATHS`: a `?` in a path is a glob
+# character to the shell.
+while IFS= read -r path; do
+  [ -z "$path" ] && continue
   # --additive: `lhci collect` wipes .lighthouseci on every run otherwise, and `lhci assert`
-  # would then only ever see the last path of the loop. The mobile emulation comes from
-  # lighthouserc.json (`formFactor: mobile`, Lighthouse's own default): there is no "mobile"
-  # preset — `--preset` only accepts perf|experimental|desktop and rejects anything else.
-  npx lhci collect --additive --url="${E2E_BASE_URL}${path}" >/dev/null
-done
+  # would then only ever see the last path of the loop. The mobile emulation comes from the
+  # config (`formFactor: mobile` in all three files, Lighthouse's own default): there is no
+  # "mobile" preset — `--preset` only accepts perf|experimental|desktop and rejects the rest.
+  # So do the three DevTools-throttled runs per path (W145): each takes the real throttled time.
+  # --config: the file chosen above (W137); the bypass header only when there is one.
+  echo "gate: lighthouse ${path}"
+  npx lhci collect --additive --config="$LHCI_CONFIG" \
+    ${LH_EXTRA_HEADERS:+--settings.extraHeaders="$LH_EXTRA_HEADERS"} \
+    --url="${E2E_BASE_URL}${path}" >/dev/null
+done <<< "$LH_PATHS"
 # Before assert, so the reports survive a failing budget — that is when they are read (R48).
 npx lhci upload --target=filesystem --outputDir=./lighthouse-report >/dev/null
 
-# R50: against localhost, Lantern charges the whole sub-60 ms waterfall to the LCP graph and
-# reports ~2.7 s whatever the page — so LCP is a warning there and an error everywhere else.
-# The binding run is the one against the preview URL. Only `assert` changes; collect/upload do not.
-if [[ "$E2E_BASE_URL" =~ ^https?://(localhost|127\.0\.0\.1)(:|/|$) ]]; then
-  LHCI_CONFIG=lighthouserc.local.json
-else
-  LHCI_CONFIG=lighthouserc.json
-fi
+# The same file the runs were collected with (W137), asserting the median of the three runs
+# (W145). The binding run for sign-off is the one against the Vercel preview; a localhost run is
+# fast feedback.
 echo "gate: asserting with $LHCI_CONFIG"
 npx lhci assert --config="$LHCI_CONFIG"
+
+# W13 (amended): the per-route script sizes the ledger records. Informational — the assert
+# above is what fails a route over 204,800 B; this flags the 194,560 B lazy-loading line.
+node scripts/js-size.mjs || true
+
 echo "gate: OK"

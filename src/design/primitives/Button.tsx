@@ -1,7 +1,8 @@
 import type { HTMLAttributes, ReactNode } from 'react';
 import { Link, type Href } from '@/i18n/navigation';
 
-export type ButtonVariant = 'primary' | 'secondary' | 'ghost' | 'danger';
+export type ButtonVariant =
+  'primary' | 'secondary' | 'ghost' | 'danger' | 'inverse' | 'success' | 'inverse-dark' | 'nav';
 
 const VARIANT: Record<ButtonVariant, string> = {
   // D20: white on the raw brand blue (#1899d5) is 3.2:1 — enough for large text, not for
@@ -11,6 +12,19 @@ const VARIANT: Record<ButtonVariant, string> = {
   secondary: 'border border-border-1 bg-white text-ink hover:border-tint-border hover:bg-pale-1',
   ghost: 'text-blue-safe hover:bg-tint',
   danger: 'bg-danger text-white hover:opacity-90',
+  // The design's translucent white outline on navy/gradient bands (ClosingCtaBand's
+  // WhatsApp/Telegram/call buttons): white text on navy is 15:1, the face only frames it.
+  inverse: 'border border-white/30 bg-white/10 text-white hover:bg-white/20',
+  // W127: the design's green WhatsApp outline (FaqBlock's ask card). A variant, never caller
+  // colour classes: Tailwind orders rules by name, not by class-string position (W122).
+  success: 'border border-success-border bg-white text-success-text hover:bg-success-surface',
+  // W128(b): the green band's face (ClosingCtaBand tone="green", #12813c). White on the
+  // darkened surface is ≈5.6:1; `inverse`'s white/10 lightens it to 4.13:1 (a D20 delta).
+  'inverse-dark': 'border border-white/40 bg-black/15 text-white hover:bg-black/25',
+  // W155: the design's nav CTA — ink at rest, blue on hover, in the contrast-safe blue every CTA
+  // face uses (a D20 delta entry). The header used to append `bg-ink hover:bg-blue-safe` to
+  // `primary`, whose own `hover:bg-ink` won by Tailwind's alphabetical order (W122).
+  nav: 'bg-ink text-white hover:bg-blue-safe',
 };
 
 const SIZE = {
@@ -21,6 +35,17 @@ const SIZE = {
 // 44 px minimum target and a visible focus ring on every branch (D20).
 const BASE =
   'inline-flex items-center justify-center gap-2 rounded-pill text-center font-extrabold no-underline transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe disabled:cursor-not-allowed disabled:opacity-60';
+
+/** The exact class string `<Button>` renders, for the one caller that cannot go through it:
+ *  a next-intl `Link` with an *object* href (`{ pathname, hash }`), which `Button`'s
+ *  string-only `href` (R17) cannot carry. Same face, same focus ring, same hit target. */
+export function buttonClassName(
+  variant: ButtonVariant,
+  size: 'md' | 'lg' = 'md',
+  className?: string,
+): string {
+  return [BASE, VARIANT[variant], SIZE[size], className].filter(Boolean).join(' ');
+}
 
 export type ButtonProps = {
   variant: ButtonVariant;
@@ -47,7 +72,7 @@ export function Button({
   children,
   ...rest
 }: ButtonProps) {
-  const cls = [BASE, VARIANT[variant], SIZE[size], className].filter(Boolean).join(' ');
+  const cls = buttonClassName(variant, size, className);
   // A disabled CTA must never navigate, whatever its href says.
   if (disabled || !href) {
     return (

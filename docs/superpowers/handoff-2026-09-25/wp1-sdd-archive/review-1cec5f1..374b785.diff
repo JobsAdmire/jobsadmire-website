@@ -1,0 +1,824 @@
+# Review package: 1cec5f1..374b785
+
+## Commits
+374b785 fix(chrome): spacer after footer, external-aware nav links, footer accordions on mobile, main landmark in SiteChrome
+
+## Files changed
+ src/app/[locale]/hire-workers/page.tsx      |   6 +-
+ src/app/[locale]/page.tsx                   |   4 +-
+ src/design/chrome/Footer.tsx                | 220 +++++++++++++++-------------
+ src/design/chrome/Header.tsx                |  12 +-
+ src/design/chrome/MobileNav.tsx             |  35 +----
+ src/design/chrome/NavLink.tsx               |  44 ++++++
+ src/design/chrome/SiteChrome.tsx            |   7 +-
+ src/design/chrome/__tests__/Footer.test.tsx |  75 ++++++++--
+ src/design/chrome/__tests__/Header.test.tsx |  41 +++++-
+ 9 files changed, 281 insertions(+), 163 deletions(-)
+
+## Diff
+diff --git a/src/app/[locale]/hire-workers/page.tsx b/src/app/[locale]/hire-workers/page.tsx
+index acb8180..256d0bd 100644
+--- a/src/app/[locale]/hire-workers/page.tsx
++++ b/src/app/[locale]/hire-workers/page.tsx
+@@ -1,11 +1,7 @@
+ import { setRequestLocale } from 'next-intl/server';
+ 
+ export default async function HireWorkers({ params }: { params: Promise<{ locale: string }> }) {
+   const { locale } = await params;
+   setRequestLocale(locale);
+-  return (
+-    <main id="main">
+-      <h1 data-testid="hire-h1">{locale}</h1>
+-    </main>
+-  );
++  return <h1 data-testid="hire-h1">{locale}</h1>;
+ }
+diff --git a/src/app/[locale]/page.tsx b/src/app/[locale]/page.tsx
+index e93ed52..2e37d2f 100644
+--- a/src/app/[locale]/page.tsx
++++ b/src/app/[locale]/page.tsx
+@@ -1,13 +1,13 @@
+ import { setRequestLocale } from 'next-intl/server';
+ import { Link } from '@/i18n/navigation';
+ 
+ export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+   const { locale } = await params;
+   setRequestLocale(locale);
+   return (
+-    <main id="main">
++    <>
+       <h1 data-testid="home-h1">{locale === 'tr' ? 'Ana sayfa' : 'Home'}</h1>
+       <Link href="/hire-workers">hire</Link>
+-    </main>
++    </>
+   );
+ }
+diff --git a/src/design/chrome/Footer.tsx b/src/design/chrome/Footer.tsx
+index 5b90998..2ed4f2d 100644
+--- a/src/design/chrome/Footer.tsx
++++ b/src/design/chrome/Footer.tsx
+@@ -1,65 +1,154 @@
+ import Image from 'next/image';
+ import { useTranslations } from 'next-intl';
+ import { makeT } from '@/content/pure';
+-import { Link, type Href } from '@/i18n/navigation';
++import { Accordion } from '@/design/primitives';
+ import { mailLink, telLink, waLink } from '@/lib/contact';
+ import type { Locale } from '@/i18n/routing';
+ import type { Bundle } from '../../../contract/website-bundle.v1';
+ import { MapPinIcon, TelegramIcon } from './icons';
+ import { LanguageSwitcher } from './LanguageSwitcher';
++import { NavLink, type ChromeNavItem } from './NavLink';
+ import { socialLinks } from './SocialRail';
+ 
+ const EMPLOYERS = [
+   '/hire-workers',
+   '/available-workers',
+   '/hiring-cost-calculator',
+   '/work-permit',
+   '/verify',
+ ];
+ const COMPANY = ['/about', '/success-stories', '/blog', '/partner-with-us', '/careers', '/contact'];
+ 
+ const HEADING = 'm-0 mb-4 text-[14px] font-extrabold uppercase tracking-[0.6px] text-white/90';
+ const FLINK =
+   'inline-flex min-h-[34px] items-center gap-2 text-white/60 no-underline hover:text-sky focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky';
+-const OFFICE_LABEL =
+-  'm-0 text-[11.5px] font-extrabold uppercase tracking-[1px] text-sky font-[inherit]';
++const OFFICE_LABEL = 'm-0 text-[11.5px] font-extrabold uppercase tracking-[1px] text-sky';
++const STORE = `${FLINK} rounded-md border border-white/20 bg-white/5 px-4 text-white`;
+ 
+ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
+   const t = makeT(bundle);
+   const sys = useTranslations('sys');
+   const { settings } = bundle;
+-  const labels = new Map(bundle.nav.map((n) => [n.href, t(n.labelId)]));
++  const labels = new Map(
++    bundle.nav.map((n) => [n.href, { label: t(n.labelId), external: n.external }]),
++  );
++  const waHref = waLink(settings.whatsappNumber, sys('whatsapp.prefill'));
++
+   const column = (hrefs: string[]) =>
+     hrefs
+       .filter((href) => labels.has(href))
+       .map((href) => (
+-        <Link key={href} href={href as Href} className={FLINK}>
+-          {labels.get(href)}
+-        </Link>
++        <NavLink
++          key={href}
++          item={{ href, label: labels.get(href)!.label, external: labels.get(href)!.external }}
++          className={FLINK}
++        />
+       ));
+-  const offices = [
+-    { name: t('home.196'), hours: t('home.198'), map: settings.maps.antalya },
+-    { name: t('home.197'), hours: t('home.199'), map: settings.maps.karachi },
++  const office = (name: string, hours: string, map: string) => (
++    <span key={name} className="flex flex-col gap-1 border-t border-white/10 pt-2.5">
++      <h3 className={OFFICE_LABEL}>{name}</h3>
++      <span className="font-medium text-white/40">{hours}</span>
++      <a href={map} target="_blank" rel="noopener noreferrer" className={FLINK}>
++        <MapPinIcon size={13} />
++        {t('home.192')}
++      </a>
++    </span>
++  );
++  const externalLink = (item: ChromeNavItem, className = FLINK) => (
++    <NavLink item={item} className={className} />
++  );
++
++  // One body per column, rendered twice: as a static grid column from `lg` up and inside the
++  // mobile accordion below it. The hidden copy is `display:none`, so it is out of the
++  // accessibility tree and no media query has to be measured at runtime.
++  const columns = [
++    {
++      id: 'employers',
++      heading: t('home.189'),
++      body: (
++        <div className="flex flex-col gap-1">
++          {column(EMPLOYERS)}
++          {externalLink({
++            href: `${settings.portal.host}${settings.portal.loginPath}`,
++            label: t('home.012'),
++            external: true,
++          })}
++        </div>
++      ),
++    },
++    {
++      id: 'company',
++      heading: t('home.190'),
++      body: <div className="flex flex-col gap-1">{column(COMPANY)}</div>,
++    },
++    {
++      id: 'contact',
++      heading: t('home.191'),
++      body: (
++        <div className="flex flex-col gap-1">
++          <a href={telLink(settings.phone)} className={FLINK}>
++            {settings.phoneDisplay}
++          </a>
++          <a href={mailLink(settings.email)} className={FLINK}>
++            {settings.email}
++          </a>
++          <a
++            href={settings.telegramUrl}
++            target="_blank"
++            rel="noopener noreferrer"
++            className={FLINK}
++          >
++            <TelegramIcon />
++            {t('home.202')}
++          </a>
++          {office(t('home.196'), t('home.198'), settings.maps.antalya)}
++          {office(t('home.197'), t('home.199'), settings.maps.karachi)}
++          <a
++            href={waHref}
++            target="_blank"
++            rel="noopener noreferrer"
++            className="mt-3 inline-flex min-h-[44px] items-center justify-center rounded-md bg-blue px-5 font-extrabold text-white no-underline hover:bg-blue-safe focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky"
++          >
++            {t('home.193')}
++          </a>
++        </div>
++      ),
++    },
++    {
++      id: 'app',
++      heading: t('home.194'),
++      body: (
++        <>
++          <p className="m-0 mb-3.5 text-white/55">{t('home.195')}</p>
++          <div className="flex flex-col items-start gap-2">
++            {settings.storeLinks.android &&
++              externalLink(
++                { href: settings.storeLinks.android, label: t('hire.240'), external: true },
++                STORE,
++              )}
++            {settings.storeLinks.ios &&
++              externalLink(
++                { href: settings.storeLinks.ios, label: t('hire.241'), external: true },
++                STORE,
++              )}
++          </div>
++        </>
++      ),
++    },
+   ];
+ 
+   return (
+     <footer className="border-t-[3px] border-blue bg-navy text-body-sm">
+-      <div className="container-site grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-10 pt-16 pb-12">
++      <div className="container-site grid gap-10 pt-16 pb-12 lg:grid-cols-[repeat(auto-fit,minmax(200px,1fr))]">
+         <div>
+-          <Image
+-            src="/brand/ja-mark.png"
+-            alt="JobsAdmire"
+-            width={50}
+-            height={50}
+-            className="mb-4"
+-          />
++          <Image src="/brand/ja-mark.png" alt="" width={50} height={50} className="mb-4" />
+           <p className="m-0 mb-4 max-w-[330px] text-white/65">{t('home.188')}</p>
+           <p className="m-0 mb-5 inline-flex items-center gap-2 rounded-pill border border-white/20 bg-white/5 px-4 py-1.5 font-bold text-sky">
+             <span aria-hidden="true" className="h-2 w-2 rounded-pill bg-success" />
+             {t('hire.019')}
+           </p>
+           <div className="mb-4">
+             <LanguageSwitcher locale={locale} label={t('home.016')} variant="dark" />
+           </div>
+           <div className="flex flex-wrap gap-2.5">
+             {socialLinks(settings, sys('whatsapp.prefill')).map((s) => (
+@@ -70,106 +159,31 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
+                 rel="noopener noreferrer"
+                 aria-label={s.name}
+                 className={`flex h-11 w-11 items-center justify-center rounded-pill border border-white/20 bg-white/5 text-white transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky ${s.hover}`}
+               >
+                 {s.icon}
+               </a>
+             ))}
+           </div>
+         </div>
+ 
+-        <div>
+-          <h2 className={HEADING}>{t('home.189')}</h2>
+-          <div className="flex flex-col gap-1">
+-            {column(EMPLOYERS)}
+-            <a
+-              href={`${settings.portal.host}${settings.portal.loginPath}`}
+-              target="_blank"
+-              rel="noopener noreferrer"
+-              className={FLINK}
+-            >
+-              {t('home.012')}
+-            </a>
++        {columns.map((c) => (
++          <div key={c.id} className="hidden lg:block">
++            <h2 className={HEADING}>{c.heading}</h2>
++            {c.body}
+           </div>
+-        </div>
++        ))}
+ 
+-        <div>
+-          <h2 className={HEADING}>{t('home.190')}</h2>
+-          <div className="flex flex-col gap-1">{column(COMPANY)}</div>
+-        </div>
+-
+-        <div>
+-          <h2 className={HEADING}>{t('home.191')}</h2>
+-          <div className="flex flex-col gap-1">
+-            <a href={telLink(settings.phone)} className={FLINK}>
+-              {settings.phoneDisplay}
+-            </a>
+-            <a href={mailLink(settings.email)} className={FLINK}>
+-              {settings.email}
+-            </a>
+-            <a
+-              href={settings.telegramUrl}
+-              target="_blank"
+-              rel="noopener noreferrer"
+-              className={FLINK}
+-            >
+-              <TelegramIcon />
+-              {t('home.202')}
+-            </a>
+-            {offices.map((office) => (
+-              <span
+-                key={office.name}
+-                className="flex flex-col gap-1 border-t border-white/10 pt-2.5"
+-              >
+-                <h3 className={OFFICE_LABEL}>{office.name}</h3>
+-                <span className="font-medium text-white/40">{office.hours}</span>
+-                <a href={office.map} target="_blank" rel="noopener noreferrer" className={FLINK}>
+-                  <MapPinIcon size={13} />
+-                  {t('home.192')}
+-                </a>
+-              </span>
+-            ))}
+-            <a
+-              href={waLink(settings.whatsappNumber, sys('whatsapp.prefill'))}
+-              target="_blank"
+-              rel="noopener noreferrer"
+-              className="mt-3 inline-flex min-h-[44px] items-center justify-center rounded-md bg-blue px-5 font-extrabold text-white no-underline hover:bg-blue-safe focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky"
+-            >
+-              {t('home.193')}
+-            </a>
+-          </div>
+-        </div>
+-
+-        <div>
+-          <h2 className={HEADING}>{t('home.194')}</h2>
+-          <p className="m-0 mb-3.5 text-white/55">{t('home.195')}</p>
+-          <div className="flex flex-col items-start gap-2">
+-            {settings.storeLinks.android && (
+-              <a
+-                href={settings.storeLinks.android}
+-                target="_blank"
+-                rel="noopener noreferrer"
+-                className={`${FLINK} rounded-md border border-white/20 bg-white/5 px-4 text-white`}
+-              >
+-                {t('hire.240')}
+-              </a>
+-            )}
+-            {settings.storeLinks.ios && (
+-              <a
+-                href={settings.storeLinks.ios}
+-                target="_blank"
+-                rel="noopener noreferrer"
+-                className={`${FLINK} rounded-md border border-white/20 bg-white/5 px-4 text-white`}
+-              >
+-                {t('hire.241')}
+-              </a>
+-            )}
+-          </div>
++        <div className="text-white/80 lg:hidden">
++          <Accordion
++            singleOpen={false}
++            items={columns.map((c) => ({ id: c.id, title: c.heading, body: c.body }))}
++          />
+         </div>
+       </div>
+ 
+       <div className="container-site border-t border-white/15 py-5">
+         <p className="m-0 text-white/50">{t('home.228')}</p>
+       </div>
+     </footer>
+   );
+ }
+diff --git a/src/design/chrome/Header.tsx b/src/design/chrome/Header.tsx
+index 1ac7cd8..e710fcf 100644
+--- a/src/design/chrome/Header.tsx
++++ b/src/design/chrome/Header.tsx
+@@ -1,19 +1,20 @@
+ import Image from 'next/image';
+ import { useTranslations } from 'next-intl';
+ import { makeT } from '@/content/pure';
+ import { Button } from '@/design/primitives';
+-import { Link, type Href } from '@/i18n/navigation';
++import { Link } from '@/i18n/navigation';
+ import type { Locale } from '@/i18n/routing';
+ import type { Bundle } from '../../../contract/website-bundle.v1';
+ import { LanguageSwitcher } from './LanguageSwitcher';
+-import { MobileNav, type MobileNavItem } from './MobileNav';
++import { MobileNav } from './MobileNav';
++import { NavLink, type ChromeNavItem } from './NavLink';
+ 
+ export type ChromeCta = { href: string; external?: boolean };
+ 
+ /** The design promotes these out of the desktop row — three into the slim bar and
+  *  `/partner-with-us` into the secondary CTA. All four stay in the hamburger panel. */
+ const PROMOTED = new Set(['/blog', '/careers', '/verify', '/partner-with-us']);
+ const SECONDARY_CTA = '/partner-with-us';
+ 
+ const NAV_LINK =
+   'inline-flex min-h-[44px] items-center whitespace-nowrap text-body-sm font-semibold text-ink no-underline hover:text-blue-safe focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
+@@ -24,48 +25,47 @@ export function Header({
+   primaryCta,
+ }: {
+   locale: Locale;
+   bundle: Bundle;
+   primaryCta: ChromeCta;
+ }) {
+   const t = makeT(bundle);
+   // `useTranslations` resolves against the request config on the server and against the
+   // provider in tests, so `sys.*` needs no prop drilling here.
+   const sys = useTranslations('sys');
+-  const items: MobileNavItem[] = bundle.nav
++  const items: ChromeNavItem[] = bundle.nav
+     .filter((n) => n.group === 'desktopNav')
+     .sort((a, b) => a.order - b.order)
+     .map((n) => ({ href: n.href, label: t(n.labelId), external: n.external }));
+   const secondary = items.find((i) => i.href === SECONDARY_CTA);
+   const languageLabel = t('home.016');
+ 
+   return (
+     <header className="sticky top-0 z-40 border-b border-border-3 bg-white">
+       <div className="container-site flex items-center justify-between gap-5 py-3">
+         <Link href="/" className="flex-none no-underline">
+           <Image src="/brand/ja-mark.png" alt="JobsAdmire" width={34} height={34} priority />
+         </Link>
+         <nav aria-label={sys('nav.main')} className="hidden items-center gap-4 lg:flex">
+           {items
+             .filter((i) => !PROMOTED.has(i.href))
+             .map((item) => (
+-              <Link key={item.href} href={item.href as Href} className={NAV_LINK}>
+-                {item.label}
+-              </Link>
++              <NavLink key={item.href} item={item} className={NAV_LINK} />
+             ))}
+         </nav>
+         <div className="flex flex-none items-center gap-2">
+           <LanguageSwitcher locale={locale} label={languageLabel} />
+           {secondary && (
+             <Button
+               variant="secondary"
+               href={secondary.href}
++              external={secondary.external}
+               className="hidden whitespace-nowrap xl:inline-flex"
+             >
+               {secondary.label}
+             </Button>
+           )}
+           <Button
+             variant="primary"
+             href={primaryCta.href}
+             external={primaryCta.external}
+             className="whitespace-nowrap bg-ink hover:bg-blue"
+diff --git a/src/design/chrome/MobileNav.tsx b/src/design/chrome/MobileNav.tsx
+index f7f7a23..464b8c1 100644
+--- a/src/design/chrome/MobileNav.tsx
++++ b/src/design/chrome/MobileNav.tsx
+@@ -1,32 +1,30 @@
+ 'use client';
+ import { useId, useState } from 'react';
+-import { Link, type Href } from '@/i18n/navigation';
+ import type { Locale } from '@/i18n/routing';
+ import { CloseIcon, MenuIcon } from './icons';
+ import { LanguageSwitcher } from './LanguageSwitcher';
+-
+-export type MobileNavItem = { href: string; label: string; external: boolean };
++import { NavLink, type ChromeNavItem } from './NavLink';
+ 
+ const ROW =
+   'flex min-h-[46px] items-center border-b border-border-3 text-[15px] font-bold text-ink no-underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe';
+ 
+ /** The hamburger and its panel. Only translated strings and plain data cross from the
+  *  server here (D6) — no bundle, no `t`. */
+ export function MobileNav({
+   items,
+   locale,
+   menuLabel,
+   closeLabel,
+   languageLabel,
+ }: {
+-  items: MobileNavItem[];
++  items: ChromeNavItem[];
+   locale: Locale;
+   menuLabel: string;
+   closeLabel: string;
+   languageLabel: string;
+ }) {
+   const [open, setOpen] = useState(false);
+   const panelId = useId();
+   return (
+     <div className="lg:hidden">
+       <button
+@@ -35,47 +33,28 @@ export function MobileNav({
+         aria-controls={panelId}
+         aria-label={open ? closeLabel : menuLabel}
+         onClick={() => setOpen((o) => !o)}
+         className="inline-flex h-[46px] w-[46px] items-center justify-center rounded-sm border-[1.5px] border-border-1 bg-pale-1 text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
+       >
+         {open ? <CloseIcon /> : <MenuIcon />}
+       </button>
+       <div
+         id={panelId}
+         hidden={!open}
+-        className="absolute inset-x-0 top-full border-t border-border-3 bg-white shadow-card-hover"
++        // eleven 46 px rows plus the language row outgrow a landscape phone
++        className="absolute inset-x-0 top-full max-h-[80dvh] overflow-y-auto border-t border-border-3 bg-white shadow-card-hover"
+       >
+         <div className="container-site flex items-center gap-3 border-b border-border-3 py-3">
+           <span className="text-eyebrow font-extrabold uppercase tracking-[1.1px] text-muted">
+             {languageLabel}
+           </span>
+           <LanguageSwitcher locale={locale} label={languageLabel} variant="block" />
+         </div>
+         <nav aria-label={menuLabel} className="container-site flex flex-col pb-4">
+-          {items.map((item) =>
+-            item.external ? (
+-              <a
+-                key={item.href}
+-                href={item.href}
+-                target="_blank"
+-                rel="noopener noreferrer"
+-                className={ROW}
+-                onClick={() => setOpen(false)}
+-              >
+-                {item.label}
+-              </a>
+-            ) : (
+-              <Link
+-                key={item.href}
+-                href={item.href as Href}
+-                className={ROW}
+-                onClick={() => setOpen(false)}
+-              >
+-                {item.label}
+-              </Link>
+-            ),
+-          )}
++          {items.map((item) => (
++            <NavLink key={item.href} item={item} className={ROW} onClick={() => setOpen(false)} />
++          ))}
+         </nav>
+       </div>
+     </div>
+   );
+ }
+diff --git a/src/design/chrome/NavLink.tsx b/src/design/chrome/NavLink.tsx
+new file mode 100644
+index 0000000..8706dc0
+--- /dev/null
++++ b/src/design/chrome/NavLink.tsx
+@@ -0,0 +1,44 @@
++import type { MouseEventHandler } from 'react';
++import { Link, type Href } from '@/i18n/navigation';
++
++export type ChromeNavItem = { href: string; label: string; external: boolean };
++
++/** One branch for every chrome nav row (desktop, hamburger, footer columns), so an
++ *  `external: true` bundle entry can never render as an internal `Link` in one placement
++ *  and an anchor in another. Mirrors `Button`'s branching, including the R22 tail: a
++ *  `tel:`/`mailto:` href stays a same-tab anchor. */
++export function NavLink({
++  item,
++  className,
++  onClick,
++}: {
++  item: ChromeNavItem;
++  className?: string;
++  onClick?: MouseEventHandler<HTMLAnchorElement>;
++}) {
++  if (item.external) {
++    return (
++      <a
++        href={item.href}
++        target="_blank"
++        rel="noopener noreferrer"
++        className={className}
++        onClick={onClick}
++      >
++        {item.label}
++      </a>
++    );
++  }
++  if (item.href.startsWith('/')) {
++    return (
++      <Link href={item.href as Href} className={className} onClick={onClick}>
++        {item.label}
++      </Link>
++    );
++  }
++  return (
++    <a href={item.href} className={className} onClick={onClick}>
++      {item.label}
++    </a>
++  );
++}
+diff --git a/src/design/chrome/SiteChrome.tsx b/src/design/chrome/SiteChrome.tsx
+index 1f8d7c4..ab2ff20 100644
+--- a/src/design/chrome/SiteChrome.tsx
++++ b/src/design/chrome/SiteChrome.tsx
+@@ -30,17 +30,18 @@ export function SiteChrome({
+       <SkipLink label={sys('skipToContent')} />
+       <SlimBar bundle={bundle} />
+       <Header locale={locale} bundle={bundle} primaryCta={{ href: '/hire-workers' }} />
+       <LanguageHint locale={locale} />
+       {variant === 'default' && (
+         <>
+           <SocialRail bundle={bundle} />
+           <WhatsAppFab bundle={bundle} />
+         </>
+       )}
+-      {children}
+-      <MobileBottomBarSpacer />
+-      <MobileBottomBar bundle={bundle} />
++      <main id="main">{children}</main>
+       <Footer locale={locale} bundle={bundle} />
++      <MobileBottomBar bundle={bundle} />
++      {/* R29: last in flow, so the fixed bar clears the footer's legal line, not the page. */}
++      <MobileBottomBarSpacer />
+     </>
+   );
+ }
+diff --git a/src/design/chrome/__tests__/Footer.test.tsx b/src/design/chrome/__tests__/Footer.test.tsx
+index dc5ade3..951925e 100644
+--- a/src/design/chrome/__tests__/Footer.test.tsx
++++ b/src/design/chrome/__tests__/Footer.test.tsx
+@@ -1,30 +1,61 @@
+ import { screen, within } from '@testing-library/react';
++import userEvent from '@testing-library/user-event';
+ import { describe, expect, it } from 'vitest';
+ import { Footer } from '../Footer';
+ import { renderWithIntl } from '@/test/render';
+ import trBundle from '@/content/local/bundle.tr.json';
+ import fixture from '../../../../contract/website-bundle.v1.fixture.json';
+ import { BundleSchema } from '../../../../contract/website-bundle.v1';
+ 
+ const bundle = BundleSchema.parse({ ...fixture, strings: trBundle.strings });
+ 
+ const t = (id: string) => trBundle.strings[id as keyof typeof trBundle.strings];
+ 
++// Each column is rendered twice — once in the `lg+` grid, once in the mobile accordion — and
++// jsdom applies no CSS, so both copies are in the tree. Only the accordion's own headers are
++// exposed while it is collapsed: its panels carry `hidden`, which role queries skip.
++const COLUMNS = ['home.189', 'home.190', 'home.191', 'home.194'];
++
+ describe('Footer', () => {
+-  it('renders the four column headings', () => {
++  it('renders the four column headings in both the grid and the accordion', () => {
+     renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+-    for (const id of ['home.189', 'home.190', 'home.191', 'home.194']) {
+-      expect(screen.getByRole('heading', { name: t(id) })).toBeInTheDocument();
++    for (const id of COLUMNS) {
++      expect(screen.getAllByRole('heading', { name: t(id) })).toHaveLength(2);
+     }
+   });
+ 
++  it('collapses the columns into real accordion buttons for mobile', async () => {
++    renderWithIntl(<Footer locale="tr" bundle={bundle} />);
++    const first = screen.getByRole('button', { name: t('home.189') });
++    expect(first).toHaveAttribute('aria-expanded', 'false');
++    const panel = document.getElementById(first.getAttribute('aria-controls')!)!;
++    expect(panel).not.toBeVisible();
++
++    await userEvent.click(first);
++    expect(screen.getByRole('button', { name: t('home.189') })).toHaveAttribute(
++      'aria-expanded',
++      'true',
++    );
++    expect(panel).toBeVisible();
++    expect(within(panel).getByRole('link', { name: t('home.002') })).toHaveAttribute(
++      'href',
++      '/isci-talebi',
++    );
++    // several columns open at once: a footer is a directory, not a wizard
++    await userEvent.click(screen.getByRole('button', { name: t('home.190') }));
++    expect(screen.getByRole('button', { name: t('home.189') })).toHaveAttribute(
++      'aria-expanded',
++      'true',
++    );
++  });
++
+   it('carries the licence number in the legal line', () => {
+     renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+     expect(screen.getByRole('contentinfo')).toHaveTextContent(bundle.settings.licence.permitNo);
+     expect(screen.getByText(t('home.228'))).toBeInTheDocument();
+   });
+ 
+   it('gives every social and contact link an accessible name', () => {
+     renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+     const footer = screen.getByRole('contentinfo');
+     const expected: Array<[string, string]> = [
+@@ -39,33 +70,47 @@ describe('Footer', () => {
+       ['Telegram', bundle.settings.telegramUrl],
+     ];
+     for (const [name, href] of expected) {
+       expect(within(footer).getByRole('link', { name })).toHaveAttribute('href', href);
+     }
+   });
+ 
+   it('links the phone, e-mail and both offices', () => {
+     renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+     const footer = screen.getByRole('contentinfo');
+-    expect(
+-      within(footer).getByRole('link', { name: bundle.settings.phoneDisplay }),
+-    ).toHaveAttribute('href', `tel:${bundle.settings.phone}`);
+-    expect(within(footer).getByRole('link', { name: bundle.settings.email })).toHaveAttribute(
+-      'href',
+-      `mailto:${bundle.settings.email}`,
+-    );
++    for (const phone of within(footer).getAllByRole('link', {
++      name: bundle.settings.phoneDisplay,
++    })) {
++      expect(phone).toHaveAttribute('href', `tel:${bundle.settings.phone}`);
++    }
++    for (const mail of within(footer).getAllByRole('link', { name: bundle.settings.email })) {
++      expect(mail).toHaveAttribute('href', `mailto:${bundle.settings.email}`);
++    }
+     expect(within(footer).getByRole('heading', { name: t('home.196') })).toBeInTheDocument();
+     expect(within(footer).getByRole('heading', { name: t('home.197') })).toBeInTheDocument();
+     expect(within(footer).getAllByRole('link', { name: t('home.192') })).toHaveLength(2);
+   });
+ 
++  it('opens the portal login in a new tab from the employers column', () => {
++    renderWithIntl(<Footer locale="tr" bundle={bundle} />);
++    for (const link of within(screen.getByRole('contentinfo')).getAllByRole('link', {
++      name: t('home.012'),
++    })) {
++      expect(link).toHaveAttribute(
++        'href',
++        `${bundle.settings.portal.host}${bundle.settings.portal.loginPath}`,
++      );
++      expect(link).toHaveAttribute('target', '_blank');
++      expect(link).toHaveAttribute('rel', 'noopener noreferrer');
++    }
++  });
++
+   it('shows the Android store link and no App Store link while storeLinks.ios is null', () => {
+     renderWithIntl(<Footer locale="tr" bundle={bundle} />);
+     const footer = screen.getByRole('contentinfo');
+     expect(bundle.settings.storeLinks.ios).toBeNull();
+-    expect(within(footer).getByRole('link', { name: t('hire.240') })).toHaveAttribute(
+-      'href',
+-      bundle.settings.storeLinks.android,
+-    );
+-    expect(within(footer).queryByRole('link', { name: t('hire.241') })).toBeNull();
++    for (const link of within(footer).getAllByRole('link', { name: t('hire.240') })) {
++      expect(link).toHaveAttribute('href', bundle.settings.storeLinks.android);
++    }
++    expect(within(footer).queryAllByRole('link', { name: t('hire.241') })).toHaveLength(0);
+   });
+ });
+diff --git a/src/design/chrome/__tests__/Header.test.tsx b/src/design/chrome/__tests__/Header.test.tsx
+index 3a4a095..86d2f82 100644
+--- a/src/design/chrome/__tests__/Header.test.tsx
++++ b/src/design/chrome/__tests__/Header.test.tsx
+@@ -7,20 +7,39 @@ import trBundle from '@/content/local/bundle.tr.json';
+ import fixture from '../../../../contract/website-bundle.v1.fixture.json';
+ import { BundleSchema } from '../../../../contract/website-bundle.v1';
+ 
+ // R13: a parsed bundle, never a cast. The golden fixture carries 20 ids while chrome reads
+ // the whole chrome catalogue, so the strings come from the real TR bundle — its `nav` and
+ // `settings` are byte-identical to the fixture's.
+ const bundle = BundleSchema.parse({ ...fixture, strings: trBundle.strings });
+ 
+ const t = (id: string) => trBundle.strings[id as keyof typeof trBundle.strings];
+ 
++const desktopNav = bundle.nav.filter((n) => n.group === 'desktopNav');
++
++/** The importer fills no external entry today; the chrome still has to honour one. */
++const withExternalItem = BundleSchema.parse({
++  ...fixture,
++  strings: trBundle.strings,
++  nav: [
++    ...fixture.nav,
++    {
++      group: 'desktopNav',
++      order: 11,
++      labelId: 'home.012',
++      href: 'https://portal.jobsadmire.com/auth/login',
++      external: true,
++      visibleOn: ['desktop', 'mobile'],
++    },
++  ],
++});
++
+ describe('Header', () => {
+   it('renders the desktop nav from bundle.nav with localized hrefs', () => {
+     renderWithIntl(<Header locale="tr" bundle={bundle} primaryCta={{ href: '/hire-workers' }} />);
+     const nav = screen.getByRole('navigation', { name: 'Ana menü' });
+     expect(within(nav).getAllByRole('link').length).toBeGreaterThanOrEqual(7);
+     expect(within(nav).getByRole('link', { name: t('home.002') })).toHaveAttribute(
+       'href',
+       '/isci-talebi',
+     );
+     expect(within(nav).getByRole('link', { name: t('home.005') })).toHaveAttribute(
+@@ -37,33 +56,53 @@ describe('Header', () => {
+     expect(document.getElementById(panelId)).not.toBeVisible();
+     expect(screen.queryByRole('navigation', { name: t('hire.239') })).toBeNull();
+ 
+     await userEvent.click(toggle);
+     const opened = screen.getByRole('button', { name: 'Kapat' });
+     expect(opened).toHaveAttribute('aria-expanded', 'true');
+     const panel = document.getElementById(panelId)!;
+     expect(panel).toBeVisible();
+     // the panel keeps every nav item, including the four the desktop row promotes elsewhere
+     const menu = within(panel).getByRole('navigation', { name: t('hire.239') });
+-    expect(within(menu).getAllByRole('link')).toHaveLength(bundle.nav.length);
++    expect(within(menu).getAllByRole('link')).toHaveLength(desktopNav.length);
+     expect(within(menu).getByRole('link', { name: t('home.011') })).toHaveAttribute(
+       'href',
+       '/temsilci-dogrulama',
+     );
+ 
+     await userEvent.click(opened);
+     expect(screen.getByRole('button', { name: t('hire.239') })).toHaveAttribute(
+       'aria-expanded',
+       'false',
+     );
+   });
+ 
++  it('renders an external nav entry as a new-tab anchor in both rows', async () => {
++    renderWithIntl(
++      <Header locale="tr" bundle={withExternalItem} primaryCta={{ href: '/hire-workers' }} />,
++    );
++    const inRow = within(screen.getByRole('navigation', { name: 'Ana menü' })).getByRole('link', {
++      name: t('home.012'),
++    });
++    expect(inRow).toHaveAttribute('href', 'https://portal.jobsadmire.com/auth/login');
++    expect(inRow).toHaveAttribute('target', '_blank');
++    expect(inRow).toHaveAttribute('rel', 'noopener noreferrer');
++
++    await userEvent.click(screen.getByRole('button', { name: t('hire.239') }));
++    const inPanel = within(screen.getByRole('navigation', { name: t('hire.239') })).getByRole(
++      'link',
++      { name: t('home.012') },
++    );
++    expect(inPanel).toHaveAttribute('target', '_blank');
++    expect(inPanel).toHaveAttribute('rel', 'noopener noreferrer');
++  });
++
+   it('renders the split primary CTA and the partner secondary CTA', () => {
+     renderWithIntl(<Header locale="tr" bundle={bundle} primaryCta={{ href: '/hire-workers' }} />);
+     const banner = screen.getByRole('banner');
+     expect(
+       within(banner).getByRole('link', { name: `${t('home.014')} ${t('home.015')}` }),
+     ).toHaveAttribute('href', '/isci-talebi');
+     expect(within(banner).getByRole('link', { name: t('home.008') })).toHaveAttribute(
+       'href',
+       '/ortak-olun',
+     );

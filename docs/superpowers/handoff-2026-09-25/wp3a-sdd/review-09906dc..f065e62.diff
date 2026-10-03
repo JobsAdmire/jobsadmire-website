@@ -1,0 +1,2355 @@
+# Review package: 09906dc..f065e62
+
+## Commits
+f065e62 feat(website): frontend module — nav entry, route manifest, forms inbox and integrations screens (WP3a)
+
+## Files changed
+ .../[locale]/admin/sales/inquiries/[id]/page.tsx   |   2 +-
+ .../app/[locale]/admin/website/_flag-banner.tsx    |  36 +
+ .../src/app/[locale]/admin/website/inbox/page.tsx  | 742 +++++++++++++++++++++
+ .../[locale]/admin/website/integrations/page.tsx   | 497 ++++++++++++++
+ .../src/app/[locale]/admin/website/page.tsx        |  13 +
+ .../src/components/auth/not-authorized.spec.tsx    |   3 +-
+ apps/frontend/src/config/modules.ts                |  49 ++
+ apps/frontend/src/config/route-permissions.spec.ts |  11 +
+ apps/frontend/src/config/route-permissions.ts      |  11 +
+ apps/frontend/src/config/website-nav.spec.ts       |  64 ++
+ apps/frontend/src/lib/api/website.spec.ts          | 159 +++++
+ apps/frontend/src/lib/api/website.ts               | 333 +++++++++
+ .../frontend/src/lib/breadcrumbs-from-path.spec.ts |   2 +
+ apps/frontend/src/lib/breadcrumbs-from-path.ts     |   4 +
+ apps/frontend/src/messages/en.json                 |  20 +
+ apps/frontend/src/messages/tr.json                 |  20 +
+ 16 files changed, 1964 insertions(+), 2 deletions(-)
+
+## Diff
+diff --git a/apps/frontend/src/app/[locale]/admin/sales/inquiries/[id]/page.tsx b/apps/frontend/src/app/[locale]/admin/sales/inquiries/[id]/page.tsx
+index a2a50c3..6e52a3c 100644
+--- a/apps/frontend/src/app/[locale]/admin/sales/inquiries/[id]/page.tsx
++++ b/apps/frontend/src/app/[locale]/admin/sales/inquiries/[id]/page.tsx
+@@ -224,21 +224,21 @@ export default function InquiryDetailPage() {
+               <span className="text-xs font-medium text-muted-foreground uppercase tracking-wider">Converted Lead</span>
+               <Button variant="link" className="ml-1 p-0 h-auto" onClick={() => router.push(`/${locale}/admin/sales/leads/${inquiry.convertedLeadId}`)}>
+                 {inquiry.convertedLead.leadNumber}
+               </Button>
+             </div>
+           )}
+         </div>
+         {inquiry.messagePreview && (
+           <div className="mt-4 rounded-md bg-muted p-3">
+             <p className="text-sm text-muted-foreground font-medium mb-1">Message Preview</p>
+-            <p className="text-sm">{inquiry.messagePreview}</p>
++            <p className="text-sm whitespace-pre-line">{inquiry.messagePreview}</p>
+           </div>
+         )}
+         {inquiry.notes && (
+           <div className="mt-2 text-sm">
+             <span className="text-muted-foreground">Notes:</span>
+             {/* pre-wrap: AI call transcripts land here as multi-line "Agent:/Caller:" blocks */}
+             <div className="mt-1 whitespace-pre-wrap rounded-md bg-muted/50 p-3">{inquiry.notes}</div>
+           </div>
+         )}
+       </div>
+diff --git a/apps/frontend/src/app/[locale]/admin/website/_flag-banner.tsx b/apps/frontend/src/app/[locale]/admin/website/_flag-banner.tsx
+new file mode 100644
+index 0000000..d6894b6
+--- /dev/null
++++ b/apps/frontend/src/app/[locale]/admin/website/_flag-banner.tsx
+@@ -0,0 +1,36 @@
++'use client';
++
++import { useQuery } from '@tanstack/react-query';
++import { PowerOff } from 'lucide-react';
++
++import { websiteStatusApi } from '@/lib/api/website';
++
++/**
++ * "Public intake is OFF" banner (P14). The frontend has no build-time flag —
++ * NEXT_PUBLIC_* is inlined at image build — so the screens read
++ * `GET /website/status` (Task 1, @SelfService) at runtime (P1). Hidden while
++ * loading and on ANY failure: the banner is advice, never something worth
++ * breaking a screen over.
++ */
++export function WebsiteModuleFlagBanner() {
++  const status = useQuery({
++    queryKey: ['website', 'status'],
++    queryFn: () => websiteStatusApi.get(),
++    staleTime: 60_000,
++    retry: false,
++  });
++  if (!status.data || status.data.data.enabled) return null;
++  return (
++    <div
++      role="status"
++      className="flex items-start gap-2 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:bg-amber-950/20 dark:text-amber-200"
++    >
++      <PowerOff className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
++      <p>
++        The public intake door is <strong>off</strong> (<code>WEBSITE_MODULE_ENABLED=false</code> on
++        the server). jobsadmire.com forms get a 404 until it is flipped on; tokens and secrets set
++        here are kept and used the moment it is.
++      </p>
++    </div>
++  );
++}
+diff --git a/apps/frontend/src/app/[locale]/admin/website/inbox/page.tsx b/apps/frontend/src/app/[locale]/admin/website/inbox/page.tsx
+new file mode 100644
+index 0000000..e3df8c1
+--- /dev/null
++++ b/apps/frontend/src/app/[locale]/admin/website/inbox/page.tsx
+@@ -0,0 +1,742 @@
++'use client';
++
++/**
++ * Website → Forms inbox (WP3a, P14).
++ *
++ * The Sales Inquiries list skeleton: useQuery keyed by page + search + filters,
++ * PageShell + FilterBar + DataTable + TablePagination, `<Can>`-gated actions.
++ * The row detail is a read-only SidePanel (payload, handler attempts, re-run),
++ * deep-linkable through `?row=<id>` so a WEBSITE_FORM_RECEIVED notification
++ * (Task 10's `getEntityPath` → `/website/inbox?row=<id>`) lands on the exact
++ * submission.
++ *
++ * Needs attention = FAILED or captchaDegraded (P8). Re-run is offered only for
++ * a FAILED row whose handler created nothing (P8) — the button is hidden
++ * otherwise rather than disabled, because "why can't I re-run a handled row"
++ * has an answer ("it already filed the lead") and the footer says it.
++ *
++ * Export goes through the DEDICATED, audited export route on `website.forms
++ * EXPORT` (P3), not the list route — `ExportCsvButton.fetchPage` walks it.
++ */
++
++import { useCallback, useMemo, useState } from 'react';
++import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
++import { useParams, usePathname, useRouter, useSearchParams } from 'next/navigation';
++import { AlertTriangle, Copy, ExternalLink, RefreshCw, RotateCcw } from 'lucide-react';
++import type { ColumnDef } from '@tanstack/react-table';
++import { toast } from 'sonner';
++
++import { Badge } from '@/components/ui/badge';
++import { Button } from '@/components/ui/button';
++import { PageShell } from '@/components/ui/page-shell';
++import { DataTable } from '@/components/ui/data-table';
++import { FilterBar, type FilterDef, type FilterValue } from '@/components/ui/filter-bar';
++import { SidePanel, SidePanelFooter } from '@/components/ui/side-panel';
++import { StatusPill } from '@/components/ui/status-pill';
++import { StateEmpty } from '@/components/ui/state-empty';
++import { StateError } from '@/components/ui/state-error';
++import { StateLoading } from '@/components/ui/state-loading';
++import { PinButton } from '@/components/ui/pin-button';
++import { useConfirm } from '@/components/ui/confirm-dialog';
++import { useCommandRegistry } from '@/components/ui/command-palette';
++import { ExportCsvButton } from '@/components/command';
++import { PageGuide } from '@/components/shared/PageGuide';
++import { TablePagination } from '@/components/shared/TablePagination';
++import { Can } from '@/components/auth/can';
++import { formatDateTime } from '@/lib/utils';
++import type { CsvColumn } from '@/lib/csv';
++import { getAccessTokenFromCookie } from '@/stores/auth.store';
++import {
++  WEBSITE_FORM_KEYS,
++  WEBSITE_FORM_KEY_LABELS,
++  WEBSITE_FORM_KIND_LABELS,
++  WEBSITE_SUBMISSION_STATUSES,
++  WEBSITE_SUBMISSION_STATUS_LABELS,
++  WEBSITE_SUBMISSION_STATUS_TONES,
++  websiteEvidenceKeysOf,
++  websiteEvidenceViewUrl,
++  websiteFormsApi,
++  websitePayloadSummary,
++  websiteSubmissionCanRerun,
++  websiteSubmissionNeedsAttention,
++  type WebsiteFormSubmission,
++  type WebsiteSubmissionStatusValue,
++  type WebsiteSubmissionsQuery,
++} from '@/lib/api/website';
++
++import { WebsiteModuleFlagBanner } from '../_flag-banner';
++
++const PAGE_SIZE = 20;
++
++function formKeyLabel(key: string): string {
++  return (WEBSITE_FORM_KEY_LABELS as Record<string, string>)[key] ?? key;
++}
++
++function captchaLabel(row: WebsiteFormSubmission): string {
++  if (row.captchaDegraded) return 'degraded';
++  if (row.captchaPassed === null) return '';
++  return row.captchaPassed ? 'passed' : 'failed';
++}
++
++/** Everything the CSV carries — flattened, never the raw payload blob. */
++const CSV_COLUMNS: CsvColumn<WebsiteFormSubmission>[] = [
++  { header: 'Received at', value: (r) => r.createdAt },
++  { header: 'Form', value: (r) => r.formKey },
++  { header: 'Kind', value: (r) => r.formKind },
++  { header: 'Status', value: (r) => r.status },
++  { header: 'Needs attention', value: (r) => (websiteSubmissionNeedsAttention(r) ? 'yes' : 'no') },
++  { header: 'Test', value: (r) => (r.isTest ? 'yes' : 'no') },
++  { header: 'Name', value: (r) => websitePayloadSummary(r.payloadJson).name },
++  { header: 'Email', value: (r) => websitePayloadSummary(r.payloadJson).email },
++  { header: 'Phone', value: (r) => websitePayloadSummary(r.payloadJson).phone },
++  { header: 'Locale', value: (r) => r.locale },
++  { header: 'Captcha', value: (r) => captchaLabel(r) },
++  { header: 'Filed as', value: (r) => r.createdEntityType },
++  { header: 'Filed id', value: (r) => r.createdEntityId },
++  { header: 'Error', value: (r) => r.error },
++  { header: 'Handled at', value: (r) => r.handledAt },
++  { header: 'Submission id', value: (r) => r.id },
++];
++
++function fieldText(v: string | string[]): string {
++  return Array.isArray(v) ? v.join(', ') : v;
++}
++
++/**
++ * RC27 — open one fraud-evidence object inline. The view route is auth-gated
++ * (a raw `<a href>` would 401), so the bytes are bearer-fetched into a blob.
++ *
++ * The tab is opened SYNCHRONOUSLY on the click and navigated once the bytes
++ * are in (the `hrm/persons/[id]` precedent): a tab opened after the `await`
++ * is a pop-up to Chrome, and `noopener` in the feature string makes
++ * `window.open` return null even when the tab DID open — so the opener is
++ * severed on the handle instead, and a null handle (a real pop-up block)
++ * falls back to a plain `noopener` open. The object URL is revoked after the
++ * tab has had time to take it (the DocumentViewerDialog lifecycle).
++ */
++function openEvidenceTab(): Window | null {
++  const tab = window.open('about:blank', '_blank');
++  if (tab) tab.opener = null;
++  return tab;
++}
++
++async function loadEvidenceInto(
++  tab: Window | null,
++  submissionId: string,
++  index: number,
++): Promise<void> {
++  const token = getAccessTokenFromCookie();
++  let res: Response;
++  try {
++    res = await fetch(websiteEvidenceViewUrl(submissionId, index), {
++      headers: token ? { Authorization: `Bearer ${token}` } : undefined,
++      credentials: 'include',
++    });
++  } catch (e) {
++    tab?.close();
++    throw e;
++  }
++  if (!res.ok) {
++    tab?.close();
++    throw new Error(`Could not load the evidence (${res.status}).`);
++  }
++  const objectUrl = URL.createObjectURL(await res.blob());
++  if (tab) tab.location.href = objectUrl;
++  else window.open(objectUrl, '_blank', 'noopener');
++  window.setTimeout(() => URL.revokeObjectURL(objectUrl), 60_000);
++}
++
++export default function WebsiteInboxPage() {
++  const router = useRouter();
++  const pathname = usePathname();
++  const searchParams = useSearchParams();
++  const { locale } = useParams() as { locale: string };
++  const queryClient = useQueryClient();
++  const confirm = useConfirm();
++
++  const [page, setPage] = useState(1);
++  const [searchValue, setSearchValue] = useState('');
++  const [filterValues, setFilterValues] = useState<Record<string, FilterValue>>({});
++
++  const search = searchValue.trim() || undefined;
++  const statusFilter = (filterValues.status as string | undefined) || undefined;
++  const formKeyFilter = (filterValues.formKey as string | undefined) || undefined;
++  const attentionFilter = (filterValues.needsAttention as string | undefined) || undefined;
++  const testFilter = (filterValues.isTest as string | undefined) || undefined;
++  const dateFilter = (filterValues.date as { from?: string; to?: string } | undefined) ?? undefined;
++
++  // The wire contract (Task 7's DTO): `needsAttention` is OMITTED unless 'true',
++  // `isTest` travels as the strings 'true' | 'false', dates as ISO (the
++  // date-range picker emits YYYY-MM-DD, which the backend reads as a whole day).
++  const query: WebsiteSubmissionsQuery = {
++    search,
++    status: statusFilter as WebsiteSubmissionStatusValue | undefined,
++    formKey: formKeyFilter,
++    needsAttention: attentionFilter === 'true' ? 'true' : undefined,
++    isTest: testFilter === 'true' || testFilter === 'false' ? testFilter : undefined,
++    from: dateFilter?.from || undefined,
++    to: dateFilter?.to || undefined,
++  };
++
++  const listQuery = useQuery({
++    queryKey: ['website', 'forms', 'list', page, query],
++    queryFn: () => websiteFormsApi.list({ ...query, page, limit: PAGE_SIZE }),
++  });
++  const rows: WebsiteFormSubmission[] = listQuery.data?.data ?? [];
++  const meta = {
++    total: listQuery.data?.meta?.total ?? 0,
++    totalPages: listQuery.data?.meta?.totalPages ?? 1,
++  };
++
++  // ── Detail panel, deep-linked through ?row=<id> ─────────────────────────────
++  const rowId = searchParams.get('row');
++  const setRowId = useCallback(
++    (id: string | null) => {
++      const params = new URLSearchParams(searchParams.toString());
++      if (id) params.set('row', id);
++      else params.delete('row');
++      const qs = params.toString();
++      router.replace(qs ? `${pathname}?${qs}` : pathname, { scroll: false });
++    },
++    [pathname, router, searchParams],
++  );
++
++  const detailQuery = useQuery({
++    queryKey: ['website', 'forms', 'submission', rowId],
++    queryFn: () => websiteFormsApi.get(rowId as string),
++    enabled: Boolean(rowId),
++  });
++  const detail = detailQuery.data?.data;
++
++  const invalidate = () => queryClient.invalidateQueries({ queryKey: ['website', 'forms'] });
++
++  const rerunMutation = useMutation({
++    mutationFn: (id: string) => websiteFormsApi.rerun(id),
++    onSuccess: (res) => {
++      invalidate();
++      toast.success(
++        res.data.status === 'HANDLED'
++          ? 'Handler re-run succeeded — the submission is filed.'
++          : `Handler re-run finished with status ${res.data.status}.`,
++      );
++    },
++    onError: (e: unknown) => toast.error(e instanceof Error ? e.message : 'Re-run failed'),
++  });
++
++  const onRerun = async (row: WebsiteFormSubmission) => {
++    const ok = await confirm({
++      title: 'Re-run the handler for this submission?',
++      description:
++        'The submission is filed again exactly as the visitor sent it. Offered only because the first attempt created nothing, so nothing can be duplicated.',
++      confirmLabel: 'Re-run',
++    });
++    if (ok) rerunMutation.mutate(row.id);
++  };
++
++  // ── Columns ─────────────────────────────────────────────────────────────────
++  const columns = useMemo<ColumnDef<WebsiteFormSubmission, unknown>[]>(
++    () => [
++      {
++        accessorKey: 'createdAt',
++        header: 'Received',
++        cell: ({ row }) => (
++          <span className="whitespace-nowrap text-xs text-muted-foreground">
++            {formatDateTime(row.original.createdAt)}
++          </span>
++        ),
++        size: 140,
++      },
++      {
++        accessorKey: 'formKey',
++        header: 'Form',
++        cell: ({ row }) => (
++          <span className="flex flex-wrap items-center gap-1.5">
++            <Badge variant="secondary" className="text-[10px]">
++              {formKeyLabel(row.original.formKey)}
++            </Badge>
++            {row.original.isTest && (
++              <Badge variant="outline" className="text-[10px]">
++                Test
++              </Badge>
++            )}
++          </span>
++        ),
++      },
++      {
++        id: 'contact',
++        header: 'Contact',
++        enableSorting: false,
++        cell: ({ row }) => {
++          const s = websitePayloadSummary(row.original.payloadJson);
++          return (
++            <div className="min-w-0">
++              <div className="truncate text-sm">{s.name ?? '—'}</div>
++              <div className="truncate text-xs text-muted-foreground">
++                {[s.email, s.phone].filter(Boolean).join(' · ') || '—'}
++              </div>
++            </div>
++          );
++        },
++      },
++      {
++        accessorKey: 'status',
++        header: 'Status',
++        cell: ({ row }) => (
++          <span className="flex flex-wrap items-center gap-1.5">
++            <StatusPill
++              tone={WEBSITE_SUBMISSION_STATUS_TONES[row.original.status]}
++              label={WEBSITE_SUBMISSION_STATUS_LABELS[row.original.status]}
++              size="xs"
++            />
++            {websiteSubmissionNeedsAttention(row.original) && (
++              <StatusPill tone="warning" icon={AlertTriangle} label="Needs attention" size="xs" />
++            )}
++          </span>
++        ),
++      },
++      {
++        id: 'filedAs',
++        header: 'Filed as',
++        enableSorting: false,
++        cell: ({ row }) =>
++          row.original.createdEntityType ? (
++            <span className="text-xs">
++              {row.original.createdEntityType}
++              <span className="ml-1 font-mono text-[10px] text-muted-foreground">
++                {row.original.createdEntityId}
++              </span>
++            </span>
++          ) : (
++            <span className="text-xs text-muted-foreground">—</span>
++          ),
++      },
++    ],
++    [],
++  );
++
++  // ── Filters ─────────────────────────────────────────────────────────────────
++  const filterDefs: FilterDef[] = useMemo(
++    () => [
++      {
++        id: 'status',
++        label: 'Status',
++        type: 'status',
++        pinned: true,
++        options: WEBSITE_SUBMISSION_STATUSES.map((s) => ({
++          value: s,
++          label: WEBSITE_SUBMISSION_STATUS_LABELS[s],
++        })),
++      },
++      {
++        id: 'needsAttention',
++        label: 'Needs attention',
++        type: 'select',
++        pinned: true,
++        options: [{ value: 'true', label: 'Failed or captcha-degraded only' }],
++      },
++      {
++        id: 'formKey',
++        label: 'Form',
++        type: 'select',
++        options: WEBSITE_FORM_KEYS.map((k) => ({ value: k, label: WEBSITE_FORM_KEY_LABELS[k] })),
++      },
++      {
++        id: 'isTest',
++        label: 'Test rows',
++        type: 'select',
++        options: [
++          { value: 'false', label: 'Real only' },
++          { value: 'true', label: 'Test only' },
++        ],
++      },
++      { id: 'date', label: 'Received', type: 'date-range' },
++    ],
++    [],
++  );
++
++  useCommandRegistry([
++    {
++      id: 'website-forms.refresh',
++      section: 'actions',
++      label: 'Refresh website inbox',
++      icon: RefreshCw,
++      onSelect: invalidate,
++    },
++  ]);
++
++  const selected = detail ?? rows.find((r) => r.id === rowId);
++  const attempts = selected?.handlerResultJson?.attempts ?? null;
++  const evidenceKeys =
++    selected?.formKind === 'FRAUD_REPORT' ? websiteEvidenceKeysOf(selected.payloadJson) : [];
++
++  // RC27: view = bearer blob-fetch of the streamed route; link = the presigned URL to the clipboard.
++  const onViewEvidence = async (index: number) => {
++    if (!selected) return;
++    // Synchronous, inside the click: keeps the user gesture so it is not a pop-up.
++    const tab = openEvidenceTab();
++    try {
++      await loadEvidenceInto(tab, selected.id, index);
++    } catch (e) {
++      toast.error(e instanceof Error ? e.message : 'Could not open the evidence');
++    }
++  };
++  const onCopyEvidenceLink = async (index: number) => {
++    if (!selected) return;
++    try {
++      const { data } = await websiteFormsApi.evidenceLink(selected.id, index);
++      await navigator.clipboard.writeText(data.url);
++      toast.success(`Link for ${data.fileName} copied — valid for 15 minutes.`);
++    } catch (e) {
++      toast.error(e instanceof Error ? e.message : 'Could not create the link');
++    }
++  };
++
++  // RC26: a FAILED row is either the visitor's own mistake (the handler said so,
++  // no alarm rang) or an infrastructure failure (the alarm did ring). The banner
++  // must say which, because the fix is different — reply to the visitor vs.
++  // repair the service and re-run. The core stamps `handlerResultJson.visitorError`
++  // while the LAST attempt was the visitor's, and the attempt itself carries
++  // `detail.visitorError` — either spelling is honoured.
++  const isVisitorError = (row: WebsiteFormSubmission): boolean => {
++    const result = row.handlerResultJson;
++    if (!result) return false;
++    if (result.visitorError === true) return true;
++    const last = result.attempts?.[result.attempts.length - 1];
++    return last?.detail?.visitorError === true;
++  };
++  const attentionText = (row: WebsiteFormSubmission): string => {
++    if (row.status !== 'FAILED') {
++      return 'Accepted while captcha was degraded — verify the contact before acting on it.';
++    }
++    const reason = row.error ?? 'no error message recorded';
++    return isVisitorError(row)
++      ? `Refused for the visitor's own input (no alarm was raised): ${reason}`
++      : `Handler failed — an infrastructure error, the alarm was raised: ${reason}`;
++  };
++
++  return (
++    <>
++      <PageGuide guideKey="admin_website_inbox" />
++      <div className="mb-3">
++        <WebsiteModuleFlagBanner />
++      </div>
++
++      <PageShell
++        title="Forms inbox"
++        subtitle="Every jobsadmire.com submission, and what the handler did with it."
++        actions={
++          <>
++            <PinButton
++              id="website.inbox"
++              label="Website — Forms inbox"
++              href={`/${locale}/admin/website/inbox`}
++              module="website"
++            />
++            <Can module="website.forms" action="EXPORT">
++              <ExportCsvButton
++                filename="website-form-submissions"
++                columns={CSV_COLUMNS}
++                fetchPage={(p) => websiteFormsApi.export({ ...query, page: p, limit: 100 })}
++              />
++            </Can>
++          </>
++        }
++        filters={
++          <FilterBar
++            filters={filterDefs}
++            values={filterValues}
++            onChange={(id, v) => {
++              setFilterValues((s) => ({ ...s, [id]: v }));
++              setPage(1);
++            }}
++            onReset={() => {
++              setFilterValues({});
++              setSearchValue('');
++              setPage(1);
++            }}
++            showSearch
++            searchValue={searchValue}
++            onSearchChange={(v) => {
++              setSearchValue(v);
++              setPage(1);
++            }}
++            searchPlaceholder="Name, company, email, phone… (e-mail case-insensitive; the rest exact case)"
++          />
++        }
++      >
++        {listQuery.isError ? (
++          <StateError
++            error={listQuery.error instanceof Error ? listQuery.error : 'Could not load the inbox.'}
++            title="Couldn’t load the inbox"
++            onRetry={() => void listQuery.refetch()}
++          />
++        ) : (
++          <div className="space-y-2">
++            <DataTable
++              columns={columns}
++              data={rows}
++              rowKey={(row) => row.id}
++              loading={listQuery.isLoading}
++              onRowClick={(row) => setRowId(row.id)}
++              emptyState={
++                <StateEmpty
++                  title="No submissions match your filters"
++                  description="Website forms land here the moment the public intake door receives them."
++                />
++              }
++            />
++            {rows.length > 0 && (
++              <TablePagination
++                page={page}
++                totalPages={meta.totalPages}
++                total={meta.total}
++                limit={PAGE_SIZE}
++                onPageChange={setPage}
++              />
++            )}
++          </div>
++        )}
++      </PageShell>
++
++      <SidePanel
++        open={Boolean(rowId)}
++        onOpenChange={(open) => {
++          if (!open) setRowId(null);
++        }}
++        title={selected ? formKeyLabel(selected.formKey) : 'Submission'}
++        subtitle={
++          selected
++            ? `${WEBSITE_FORM_KIND_LABELS[selected.formKind]} · ${formatDateTime(selected.createdAt)}`
++            : undefined
++        }
++        width="wide"
++        ariaDescription="Website form submission detail"
++        headerActions={
++          selected && (
++            <span className="flex flex-wrap items-center gap-1.5">
++              <StatusPill
++                tone={WEBSITE_SUBMISSION_STATUS_TONES[selected.status]}
++                label={WEBSITE_SUBMISSION_STATUS_LABELS[selected.status]}
++                size="xs"
++              />
++              {selected.isTest && (
++                <Badge variant="outline" className="text-[10px]">
++                  Test
++                </Badge>
++              )}
++            </span>
++          )
++        }
++        footer={
++          selected && (
++            <SidePanelFooter
++              left={
++                websiteSubmissionCanRerun(selected)
++                  ? 'The handler failed before creating anything — safe to re-run.'
++                  : selected.status === 'FAILED'
++                    ? 'Failed after filing an entity — fix it there; a re-run would duplicate it.'
++                    : `Submission ${selected.id}`
++              }
++            >
++              <Button type="button" variant="ghost" size="sm" onClick={() => setRowId(null)}>
++                Close
++              </Button>
++              {websiteSubmissionCanRerun(selected) && (
++                <Can module="website.forms" action="EDIT">
++                  <Button
++                    size="sm"
++                    disabled={rerunMutation.isPending}
++                    onClick={() => void onRerun(selected)}
++                  >
++                    <RotateCcw className="mr-1.5 h-3.5 w-3.5" />
++                    {rerunMutation.isPending ? 'Re-running…' : 'Re-run handler'}
++                  </Button>
++                </Can>
++              )}
++            </SidePanelFooter>
++          )
++        }
++      >
++        {detailQuery.isLoading && !selected ? (
++          <StateLoading />
++        ) : detailQuery.isError && !selected ? (
++          <StateError
++            error={
++              detailQuery.error instanceof Error ? detailQuery.error : 'Could not load the submission.'
++            }
++            title="Couldn’t load the submission"
++            onRetry={() => void detailQuery.refetch()}
++            size="compact"
++          />
++        ) : selected ? (
++          <div className="space-y-5">
++            {websiteSubmissionNeedsAttention(selected) && (
++              <div className="flex items-start gap-2 rounded-lg border border-amber-300 bg-amber-50 px-3 py-2 text-sm text-amber-900 dark:bg-amber-950/20 dark:text-amber-200">
++                <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
++                <p>{attentionText(selected)}</p>
++              </div>
++            )}
++
++            <dl className="grid grid-cols-2 gap-x-4 gap-y-2 text-sm">
++              <dt className="text-muted-foreground">Form key</dt>
++              <dd className="font-mono text-xs">{selected.formKey}</dd>
++              <dt className="text-muted-foreground">Locale</dt>
++              <dd>{selected.locale ?? '—'}</dd>
++              <dt className="text-muted-foreground">Token class</dt>
++              <dd className="font-mono text-xs">{selected.tokenClass ?? '—'}</dd>
++              <dt className="text-muted-foreground">Captcha</dt>
++              <dd>
++                {selected.captchaDegraded
++                  ? 'Degraded (not verified)'
++                  : selected.captchaPassed === null
++                    ? '—'
++                    : selected.captchaPassed
++                      ? 'Passed'
++                      : 'Failed'}
++              </dd>
++              <dt className="text-muted-foreground">Consent version</dt>
++              <dd>{selected.consentVersion ?? '—'}</dd>
++              <dt className="text-muted-foreground">Source path</dt>
++              <dd className="truncate font-mono text-xs">{selected.payloadJson?.sourcePath ?? '—'}</dd>
++              <dt className="text-muted-foreground">Filed as</dt>
++              <dd>
++                {selected.createdEntityType ? (
++                  <>
++                    {selected.createdEntityType}{' '}
++                    <span className="font-mono text-xs text-muted-foreground">
++                      {selected.createdEntityId}
++                    </span>
++                  </>
++                ) : (
++                  '—'
++                )}
++              </dd>
++              <dt className="text-muted-foreground">Handled at</dt>
++              <dd>{formatDateTime(selected.handledAt)}</dd>
++              <dt className="text-muted-foreground">Purge after</dt>
++              <dd>{formatDateTime(selected.purgeAfter)}</dd>
++              {selected.userAgent !== undefined && (
++                <>
++                  <dt className="text-muted-foreground">User agent</dt>
++                  <dd className="truncate text-xs" title={selected.userAgent ?? ''}>
++                    {selected.userAgent ?? '—'}
++                  </dd>
++                </>
++              )}
++            </dl>
++
++            <section>
++              <h3 className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
++                Payload
++              </h3>
++              {selected.payloadJson?.fields && Object.keys(selected.payloadJson.fields).length > 0 ? (
++                <dl className="grid grid-cols-[minmax(0,1fr)_minmax(0,2fr)] gap-x-4 gap-y-1 rounded-md border bg-muted/40 p-3 text-xs">
++                  {Object.entries(selected.payloadJson.fields).map(([k, v]) => (
++                    <div key={k} className="contents">
++                      <dt className="truncate font-mono text-muted-foreground">{k}</dt>
++                      <dd className="whitespace-pre-wrap break-words">{fieldText(v)}</dd>
++                    </div>
++                  ))}
++                </dl>
++              ) : (
++                <p className="text-xs text-muted-foreground">No fields stored.</p>
++              )}
++            </section>
++
++            {selected.formKind === 'FRAUD_REPORT' && (
++              <section>
++                <h3 className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
++                  Evidence
++                </h3>
++                {evidenceKeys.length === 0 ? (
++                  <p className="text-xs text-muted-foreground">No evidence files were attached.</p>
++                ) : (
++                  <ul className="space-y-1.5">
++                    {evidenceKeys.map((key, i) => (
++                      <li
++                        key={key}
++                        className="flex items-center gap-2 rounded-md border px-2 py-1.5 text-xs"
++                      >
++                        <span className="min-w-0 flex-1 truncate font-mono" title={key}>
++                          {key.slice('website-fraud/'.length)}
++                        </span>
++                        {/* RC27: `view` streams inline (nosniff + CSP), `link` copies the 15-min presigned URL. */}
++                        <Button
++                          type="button"
++                          size="sm"
++                          variant="outline"
++                          onClick={() => void onViewEvidence(i)}
++                        >
++                          <ExternalLink className="mr-1 h-3.5 w-3.5" />
++                          View
++                        </Button>
++                        <Button
++                          type="button"
++                          size="sm"
++                          variant="ghost"
++                          onClick={() => void onCopyEvidenceLink(i)}
++                        >
++                          <Copy className="mr-1 h-3.5 w-3.5" />
++                          Copy link
++                        </Button>
++                      </li>
++                    ))}
++                  </ul>
++                )}
++              </section>
++            )}
++
++            <section>
++              <h3 className="mb-1.5 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
++                Handler attempts
++              </h3>
++              {selected.handlerResultJson === undefined ? (
++                <p className="text-xs text-muted-foreground">Loading…</p>
++              ) : !attempts || attempts.length === 0 ? (
++                <p className="text-xs text-muted-foreground">No handler attempt recorded.</p>
++              ) : (
++                <ol className="space-y-2">
++                  {attempts.map((a, i) => (
++                    <li key={`${a.at}-${i}`} className="rounded-md border p-2 text-xs">
++                      <div className="flex flex-wrap items-center gap-1.5">
++                        <StatusPill
++                          tone={a.ok ? 'success' : 'destructive'}
++                          label={a.ok ? 'OK' : 'Failed'}
++                          size="xs"
++                        />
++                        <span className="text-muted-foreground">{formatDateTime(a.at)}</span>
++                        <span className="text-muted-foreground">· {a.actor}</span>
++                        {a.rerun && (
++                          <Badge variant="outline" className="text-[10px]">
++                            re-run
++                          </Badge>
++                        )}
++                        {a.dryRun && (
++                          <Badge variant="outline" className="text-[10px]">
++                            dry run
++                          </Badge>
++                        )}
++                      </div>
++                      {a.error && <p className="mt-1 text-destructive">{a.error}</p>}
++                      {a.createdEntityType && (
++                        <p className="mt-1">
++                          Created {a.createdEntityType}{' '}
++                          <span className="font-mono text-muted-foreground">{a.createdEntityId}</span>
++                        </p>
++                      )}
++                      {a.detail && Object.keys(a.detail).length > 0 && (
++                        <pre className="mt-1 max-h-40 overflow-auto rounded bg-muted/40 p-2">
++                          {JSON.stringify(a.detail, null, 2)}
++                        </pre>
++                      )}
++                    </li>
++                  ))}
++                </ol>
++              )}
++            </section>
++          </div>
++        ) : null}
++      </SidePanel>
++    </>
++  );
++}
+diff --git a/apps/frontend/src/app/[locale]/admin/website/integrations/page.tsx b/apps/frontend/src/app/[locale]/admin/website/integrations/page.tsx
+new file mode 100644
+index 0000000..505bc7d
+--- /dev/null
++++ b/apps/frontend/src/app/[locale]/admin/website/integrations/page.tsx
+@@ -0,0 +1,497 @@
++'use client';
++
++/**
++ * Website → Integrations (WP3a, P14 / D12 minimal cut).
++ *
++ * PAGE gate: `website.integrations:VIEW` (the manifest line). Inside it:
++ *   · second-human recipient  — `website.integrations:EDIT` (P9);
++ *   · tokens / Turnstile / revalidate secret / test — `website:MANAGE_KEYS`,
++ *     seeded to NO role, super-admin via the CASL bypass (P3; marketing and
++ *     call-center precedent). The MANAGE_KEYS block renders its own friendly
++ *     refusal rather than a blank, for anyone who holds VIEW only.
++ *
++ * Secrets are write-only (P7): the server returns `has*` booleans, never a
++ * value; inputs are never pre-filled; an empty box means "leave stored";
++ * clearing is an explicit `''` after `useConfirm`. Rotate is server-generated
++ * and shown ONCE with a Copy button (call-center config precedent); the
++ * previous write token stays valid for 24 h so Vercel can be updated inside
++ * that window. The D12 live-proof rotation gate is WP3c's (P7). Routes and
++ * shapes are Task 4's as fixed by RC9.
++ */
++
++import { useEffect, useState } from 'react';
++import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
++import { useParams } from 'next/navigation';
++import { Copy, KeyRound, PlugZap, RefreshCw, UserRound } from 'lucide-react';
++import { toast } from 'sonner';
++
++import { Button } from '@/components/ui/button';
++import { Input } from '@/components/ui/input';
++import { Label } from '@/components/ui/label';
++import { PageShell } from '@/components/ui/page-shell';
++import { PinButton } from '@/components/ui/pin-button';
++import { StatusPill } from '@/components/ui/status-pill';
++import { StateError } from '@/components/ui/state-error';
++import { StateLoading } from '@/components/ui/state-loading';
++import { useConfirm } from '@/components/ui/confirm-dialog';
++import { Can } from '@/components/auth/can';
++import { CommandCard } from '@/components/command';
++import { PageGuide } from '@/components/shared/PageGuide';
++import { formatDateTime } from '@/lib/utils';
++import {
++  websiteIntegrationsApi,
++  type UpdateWebsiteIntegrationKeysInput,
++  type WebsiteConnectionTestResult,
++  type WebsiteRotatableSecret,
++  type WebsiteRotatedSecret,
++} from '@/lib/api/website';
++
++import { WebsiteModuleFlagBanner } from '../_flag-banner';
++
++/** One stored-secret chip, self-labelling so every card reads the same. */
++function KeyChip({ name, has, note }: { name: string; has: boolean; note?: string }) {
++  return (
++    <StatusPill
++      tone={has ? 'success' : 'warning'}
++      size="xs"
++      label={`${name} · ${has ? (note ?? 'Stored') : 'Not set'}`}
++    />
++  );
++}
++
++const ROTATE_COPY: Record<WebsiteRotatableSecret, { title: string; description: string; label: string }> = {
++  writeToken: {
++    title: 'Rotate the write token?',
++    description:
++      'A new token is generated and shown once. The current token keeps working for 24 hours so Vercel can be updated inside that window; after that only the new one is accepted.',
++    label: 'Write token',
++  },
++  testToken: {
++    title: 'Rotate the test token?',
++    description:
++      'A new token is generated and shown once. The old test token stops working immediately — the synthetic-lead cron on Vercel must be updated.',
++    label: 'Test token',
++  },
++};
++
++export default function WebsiteIntegrationsPage() {
++  const qc = useQueryClient();
++  const confirm = useConfirm();
++  const { locale } = useParams() as { locale: string };
++
++  const configQuery = useQuery({
++    queryKey: ['website', 'integrations'],
++    queryFn: () => websiteIntegrationsApi.get(),
++  });
++  const config = configQuery.data?.data;
++  const invalidate = () => qc.invalidateQueries({ queryKey: ['website', 'integrations'] });
++
++  // ── Second human (non-secret, website.integrations EDIT) ───────────────────
++  const [secondHumanName, setSecondHumanName] = useState('');
++  const [secondHumanEmail, setSecondHumanEmail] = useState('');
++  // Keyed on the two SERVER values, not the config object: every rotate/test
++  // refetch changes `updatedAt`/`lastTestedAt`, and re-syncing on the object
++  // would wipe a name typed but not yet saved.
++  const loaded = config !== undefined;
++  const storedName = config?.secondHumanName ?? null;
++  const storedEmail = config?.secondHumanEmail ?? null;
++  useEffect(() => {
++    if (!loaded) return;
++    setSecondHumanName(storedName ?? '');
++    setSecondHumanEmail(storedEmail ?? '');
++  }, [loaded, storedName, storedEmail]);
++
++  const saveSettings = useMutation({
++    mutationFn: () =>
++      websiteIntegrationsApi.update({
++        secondHumanName: secondHumanName.trim() || null,
++        secondHumanEmail: secondHumanEmail.trim() || null,
++      }),
++    onSuccess: () => {
++      invalidate();
++      toast.success('Second-human recipient saved.');
++    },
++    onError: (e: unknown) => toast.error(e instanceof Error ? e.message : 'Could not save.'),
++  });
++
++  // ── Secrets (website MANAGE_KEYS) ──────────────────────────────────────────
++  const [turnstileSecret, setTurnstileSecret] = useState('');
++  const [revalidateSecret, setRevalidateSecret] = useState('');
++  const [revealed, setRevealed] = useState<WebsiteRotatedSecret | null>(null);
++  const [test, setTest] = useState<WebsiteConnectionTestResult | null>(null);
++
++  const saveKeys = useMutation({
++    mutationFn: (input: UpdateWebsiteIntegrationKeysInput) => websiteIntegrationsApi.updateKeys(input),
++    onSuccess: () => {
++      invalidate();
++      setTurnstileSecret('');
++      setRevalidateSecret('');
++      toast.success('Saved.');
++    },
++    onError: (e: unknown) => toast.error(e instanceof Error ? e.message : 'Could not save the secret.'),
++  });
++
++  const rotate = useMutation({
++    mutationFn: (name: WebsiteRotatableSecret) => websiteIntegrationsApi.rotateSecret(name),
++    onSuccess: (r) => {
++      invalidate();
++      setRevealed(r.data);
++    },
++    onError: (e: unknown) => toast.error(e instanceof Error ? e.message : 'Could not rotate.'),
++  });
++
++  const testConnection = useMutation({
++    mutationFn: () => websiteIntegrationsApi.testConnection(),
++    onSuccess: (r) => {
++      invalidate();
++      setTest(r.data);
++      if (r.data.ok) toast.success('Turnstile secret accepted by Cloudflare.');
++      else toast.error(r.data.error ?? 'Turnstile test failed.');
++    },
++    onError: (e: unknown) => {
++      const error = e instanceof Error ? e.message : 'Turnstile test failed';
++      setTest({ ok: false, error });
++      toast.error(error);
++    },
++  });
++
++  const onRotate = async (name: WebsiteRotatableSecret) => {
++    const copy = ROTATE_COPY[name];
++    const ok = await confirm({ title: copy.title, description: copy.description, confirmLabel: 'Rotate' });
++    if (ok) rotate.mutate(name);
++  };
++
++  const clearSecret = async (
++    field: keyof UpdateWebsiteIntegrationKeysInput,
++    name: string,
++    consequence: string,
++  ) => {
++    const ok = await confirm({
++      title: `Remove the stored ${name}?`,
++      description: consequence,
++      confirmLabel: 'Remove',
++      destructive: true,
++    });
++    if (!ok) return;
++    // '' is the documented "clear it" signal; `undefined` would mean "leave it".
++    saveKeys.mutate({ [field]: '' } as UpdateWebsiteIntegrationKeysInput);
++  };
++
++  const copyRevealed = () => {
++    if (!revealed) return;
++    void navigator.clipboard?.writeText(revealed.secret);
++    toast.success('Copied.');
++  };
++
++  return (
++    <>
++      <PageGuide guideKey="admin_website_integrations" />
++      <div className="mb-3">
++        <WebsiteModuleFlagBanner />
++      </div>
++
++      <PageShell
++        title="Integrations"
++        subtitle="What jobsadmire.com presents to Operations, and who is told when it goes quiet."
++        actions={
++          <PinButton
++            id="website.integrations"
++            label="Website — Integrations"
++            href={`/${locale}/admin/website/integrations`}
++            module="website"
++          />
++        }
++      >
++        {configQuery.isLoading ? (
++          <StateLoading />
++        ) : configQuery.isError ? (
++          <StateError
++            error={
++              configQuery.error instanceof Error
++                ? configQuery.error
++                : 'Could not load the website configuration.'
++            }
++            title="Couldn’t load the configuration"
++            onRetry={() => void configQuery.refetch()}
++          />
++        ) : (
++          <div className="space-y-4">
++            {/* ── Status ────────────────────────────────────────────────── */}
++            <CommandCard title="Public door credentials" icon={<KeyRound />}>
++              <div className="flex flex-wrap items-center gap-1.5">
++                <KeyChip name="Write token" has={!!config?.hasWriteToken} />
++                <KeyChip
++                  name="Previous write token"
++                  has={!!config?.hasPreviousWriteToken}
++                  note={
++                    config?.previousWriteTokenExpiresAt
++                      ? `valid until ${formatDateTime(config.previousWriteTokenExpiresAt)}`
++                      : undefined
++                  }
++                />
++                <KeyChip name="Test token" has={!!config?.hasTestToken} />
++                <KeyChip name="Turnstile secret" has={!!config?.hasTurnstileSecret} />
++                <KeyChip name="Revalidate secret" has={!!config?.hasRevalidateSecret} />
++              </div>
++              <p className="mt-3 text-xs text-muted-foreground">
++                Last Turnstile test:{' '}
++                {config?.lastTestedAt
++                  ? `${formatDateTime(config.lastTestedAt)} — ${
++                      config.lastTestOk
++                        ? 'OK'
++                        : `failed${config.lastTestError ? `: ${config.lastTestError}` : ''}`
++                    }`
++                  : 'never'}
++              </p>
++            </CommandCard>
++
++            {/* ── Second human (P9) ─────────────────────────────────────── */}
++            <CommandCard title="Second human" icon={<UserRound />}>
++              <div className="space-y-4">
++                <p className="text-xs text-muted-foreground">
++                  A fallback recipient mailed directly on every website event — form received, forms
++                  unavailable — even when nobody in Operations holds the grant. Required before the
++                  door is flipped on (ping reports it as <code>secondHumanConfigured</code>).
++                </p>
++                <div className="grid gap-4 sm:grid-cols-2">
++                  <div className="space-y-1.5">
++                    <Label htmlFor="secondHumanName">Name</Label>
++                    <Input
++                      id="secondHumanName"
++                      value={secondHumanName}
++                      onChange={(e) => setSecondHumanName(e.target.value)}
++                      placeholder="e.g. Faraz"
++                    />
++                  </div>
++                  <div className="space-y-1.5">
++                    <Label htmlFor="secondHumanEmail">Email</Label>
++                    <Input
++                      id="secondHumanEmail"
++                      type="email"
++                      value={secondHumanEmail}
++                      onChange={(e) => setSecondHumanEmail(e.target.value)}
++                      placeholder="name@example.com"
++                    />
++                  </div>
++                </div>
++                <Can module="website.integrations" action="EDIT">
++                  <Button size="sm" disabled={saveSettings.isPending} onClick={() => saveSettings.mutate()}>
++                    {saveSettings.isPending ? 'Saving…' : 'Save recipient'}
++                  </Button>
++                </Can>
++              </div>
++            </CommandCard>
++
++            {/* ── MANAGE_KEYS block ─────────────────────────────────────── */}
++            <Can
++              module="website"
++              action="MANAGE_KEYS"
++              fallback={
++                <CommandCard title="Super-admin only" icon={<KeyRound />}>
++                  <p className="text-sm text-muted-foreground">
++                    Website tokens and secrets are managed by super-admins. Ask Faraz if a token
++                    needs rotating or the Turnstile secret needs replacing.
++                  </p>
++                </CommandCard>
++              }
++            >
++              {/* Tokens */}
++              <CommandCard title="Bearer tokens" icon={<RefreshCw />}>
++                <div className="space-y-4">
++                  <p className="text-xs text-muted-foreground">
++                    Server-generated; shown once at rotate time and never again. The website sends
++                    the write token on every form post; the synthetic-lead cron sends the test token
++                    (filed as Test, handler dry-run).
++                  </p>
++                  <div className="flex flex-wrap items-center gap-3">
++                    <span className="text-sm">
++                      Write token: <KeyChip name="Write" has={!!config?.hasWriteToken} />
++                    </span>
++                    <Button
++                      size="sm"
++                      variant="outline"
++                      disabled={rotate.isPending}
++                      onClick={() => void onRotate('writeToken')}
++                    >
++                      {config?.hasWriteToken ? 'Rotate' : 'Generate'}
++                    </Button>
++                  </div>
++                  <div className="flex flex-wrap items-center gap-3">
++                    <span className="text-sm">
++                      Test token: <KeyChip name="Test" has={!!config?.hasTestToken} />
++                    </span>
++                    <Button
++                      size="sm"
++                      variant="outline"
++                      disabled={rotate.isPending}
++                      onClick={() => void onRotate('testToken')}
++                    >
++                      {config?.hasTestToken ? 'Rotate' : 'Generate'}
++                    </Button>
++                  </div>
++                  {revealed && (
++                    <div className="rounded-lg border border-amber-300 bg-amber-50 p-3 dark:bg-amber-950/20">
++                      <p className="text-sm font-medium text-amber-800 dark:text-amber-200">
++                        New {ROTATE_COPY[revealed.name].label} — copy it now, it is shown only once:
++                      </p>
++                      <div className="mt-2 flex items-center gap-2">
++                        <code className="flex-1 break-all rounded bg-background px-2 py-1 text-xs">
++                          {revealed.secret}
++                        </code>
++                        <Button size="sm" variant="ghost" onClick={copyRevealed} aria-label="Copy token">
++                          <Copy className="h-4 w-4" />
++                        </Button>
++                        <Button
++                          size="sm"
++                          variant="outline"
++                          onClick={() => {
++                            // Shown once: drop it from the screen AND the mutation cache.
++                            setRevealed(null);
++                            rotate.reset();
++                          }}
++                        >
++                          I’ve saved it
++                        </Button>
++                      </div>
++                      {revealed.previousExpiresAt && (
++                        <p className="mt-2 text-xs text-amber-800 dark:text-amber-200">
++                          The previous write token keeps working until{' '}
++                          {formatDateTime(revealed.previousExpiresAt)}.
++                        </p>
++                      )}
++                    </div>
++                  )}
++                </div>
++              </CommandCard>
++
++              {/* Turnstile */}
++              <CommandCard
++                title="Cloudflare Turnstile"
++                icon={<PlugZap />}
++                headerRight={<KeyChip name="Secret" has={!!config?.hasTurnstileSecret} />}
++              >
++                <div className="space-y-4">
++                  <p className="text-xs text-muted-foreground">
++                    One widget lists both jobsadmire.com and staging.jobsadmire.com, so one secret
++                    serves both (P6). The site key is public and lives on Vercel.
++                  </p>
++                  <div className="space-y-1.5">
++                    <Label htmlFor="turnstileSecret">Secret key</Label>
++                    <Input
++                      id="turnstileSecret"
++                      type="password"
++                      autoComplete="new-password"
++                      value={turnstileSecret}
++                      onChange={(e) => setTurnstileSecret(e.target.value)}
++                      placeholder="Paste a new secret to replace"
++                    />
++                    <p className="text-xs text-muted-foreground">
++                      Write-only — a stored secret is never displayed.
++                    </p>
++                  </div>
++                  <div className="flex flex-wrap items-center gap-2">
++                    <Button
++                      size="sm"
++                      disabled={saveKeys.isPending || !turnstileSecret.trim()}
++                      onClick={() => saveKeys.mutate({ turnstileSecret: turnstileSecret.trim() })}
++                    >
++                      Save secret
++                    </Button>
++                    <Button
++                      size="sm"
++                      variant="outline"
++                      disabled={testConnection.isPending || !config?.hasTurnstileSecret}
++                      onClick={() => testConnection.mutate()}
++                    >
++                      {testConnection.isPending ? 'Testing…' : 'Test'}
++                    </Button>
++                    {test && (
++                      <span className="flex items-center gap-2">
++                        <StatusPill
++                          tone={test.ok ? 'success' : 'destructive'}
++                          size="xs"
++                          label={test.ok ? 'OK' : 'Failed'}
++                        />
++                        <span className="text-xs text-muted-foreground">
++                          {test.ok ? 'Cloudflare accepted the stored secret.' : test.error ?? 'Unknown error'}
++                        </span>
++                      </span>
++                    )}
++                    {config?.hasTurnstileSecret && (
++                      <Button
++                        size="sm"
++                        variant="outline"
++                        className="ml-auto border-destructive/40 text-destructive hover:bg-destructive/10 hover:text-destructive"
++                        disabled={saveKeys.isPending}
++                        onClick={() =>
++                          void clearSecret(
++                            'turnstileSecret',
++                            'Turnstile secret',
++                            'Every website form is then accepted in DEGRADED mode (honeypot + dedupe only) and each hour raises a WEBSITE_FORMS_UNAVAILABLE alert until a secret is stored again.',
++                          )
++                        }
++                      >
++                        Remove stored secret
++                      </Button>
++                    )}
++                  </div>
++                </div>
++              </CommandCard>
++
++              {/* Revalidate secret */}
++              <CommandCard
++                title="Revalidate secret"
++                icon={<KeyRound />}
++                headerRight={<KeyChip name="Secret" has={!!config?.hasRevalidateSecret} />}
++              >
++                <div className="space-y-4">
++                  <p className="text-xs text-muted-foreground">
++                    Presented by Operations to the website’s revalidate endpoint (Phase B). Stored now
++                    so the flip needs no second visit; nothing in WP3a calls it yet.
++                  </p>
++                  <div className="space-y-1.5">
++                    <Label htmlFor="revalidateSecret">Secret</Label>
++                    <Input
++                      id="revalidateSecret"
++                      type="password"
++                      autoComplete="new-password"
++                      value={revalidateSecret}
++                      onChange={(e) => setRevalidateSecret(e.target.value)}
++                      placeholder="Paste a new secret to replace"
++                    />
++                  </div>
++                  <div className="flex flex-wrap items-center gap-2">
++                    <Button
++                      size="sm"
++                      disabled={saveKeys.isPending || !revalidateSecret.trim()}
++                      onClick={() => saveKeys.mutate({ revalidateSecret: revalidateSecret.trim() })}
++                    >
++                      Save secret
++                    </Button>
++                    {config?.hasRevalidateSecret && (
++                      <Button
++                        size="sm"
++                        variant="outline"
++                        className="ml-auto border-destructive/40 text-destructive hover:bg-destructive/10 hover:text-destructive"
++                        disabled={saveKeys.isPending}
++                        onClick={() =>
++                          void clearSecret(
++                            'revalidateSecret',
++                            'revalidate secret',
++                            'Phase B revalidation calls will be refused by the website until a new secret is stored on both sides.',
++                          )
++                        }
++                      >
++                        Remove stored secret
++                      </Button>
++                    )}
++                  </div>
++                </div>
++              </CommandCard>
++            </Can>
++          </div>
++        )}
++      </PageShell>
++    </>
++  );
++}
+diff --git a/apps/frontend/src/app/[locale]/admin/website/page.tsx b/apps/frontend/src/app/[locale]/admin/website/page.tsx
+new file mode 100644
+index 0000000..569f5d8
+--- /dev/null
++++ b/apps/frontend/src/app/[locale]/admin/website/page.tsx
+@@ -0,0 +1,13 @@
++import { redirect } from 'next/navigation';
++
++/**
++ * The `website` module root (WP3a). The icon rail navigates to the module
++ * root (`moduleHref`), and the module has no dashboard until Phase B — so the
++ * root is the inbox. The permission gate lives on the destination; this file
++ * decides nothing, and its manifest line declares the inbox's key
++ * (route-permissions.ts, the Marketing redirect precedent —
++ * `marketing/tools/page.tsx`).
++ */
++export default function WebsiteRootRedirect({ params }: { params: { locale: string } }) {
++  redirect(`/${params.locale}/admin/website/inbox`);
++}
+diff --git a/apps/frontend/src/components/auth/not-authorized.spec.tsx b/apps/frontend/src/components/auth/not-authorized.spec.tsx
+index 27c83f4..03a89ef 100644
+--- a/apps/frontend/src/components/auth/not-authorized.spec.tsx
++++ b/apps/frontend/src/components/auth/not-authorized.spec.tsx
+@@ -75,13 +75,14 @@ describe('NotAuthorized', () => {
+       en: PERMISSION_KEYS.filter((k) => !(id(k) in en.permissions.keys)),
+       tr: PERMISSION_KEYS.filter((k) => !(id(k) in tr.permissions.keys)),
+     };
+     expect(missing).toEqual({ en: [], tr: [] });
+   });
+ 
+   it('has a label for every ACTION, in both languages', () => {
+     expect(Object.keys(tr.permissions.actions).sort()).toEqual(
+       Object.keys(en.permissions.actions).sort(),
+     );
+-    expect(Object.keys(en.permissions.actions)).toHaveLength(13);
++    // 15 since 1aa470a added WITHDRAW + UNAPPROVE (Marketing Studio, 2026-09-16) — PRD §4.1.
++    expect(Object.keys(en.permissions.actions)).toHaveLength(15);
+   });
+ });
+diff --git a/apps/frontend/src/config/modules.ts b/apps/frontend/src/config/modules.ts
+index c40a5eb..88e0a34 100644
+--- a/apps/frontend/src/config/modules.ts
++++ b/apps/frontend/src/config/modules.ts
+@@ -7,20 +7,21 @@ import {
+   BrainCircuit,
+   Briefcase,
+   Building,
+   CalendarCheck,
+   CalendarClock,
+   CalendarRange,
+   ClipboardList,
+   DollarSign,
+   FileText,
+   FolderOpen,
++  Globe,
+   GraduationCap,
+   Home,
+   Inbox,
+   KeyRound,
+   Landmark,
+   LayoutDashboard,
+   ListChecks,
+   Mail,
+   MapPin,
+   Megaphone,
+@@ -755,20 +756,68 @@ export const MODULES: ModuleEntry[] = [
+           {
+             label: 'Tools',
+             href: `${base}/settings/tools`,
+             icon: SettingsIcon,
+             permission: { module: 'marketing.settings', action: 'VIEW' },
+           },
+         ],
+       },
+     ],
+   },
++  {
++    // Public website (WP3a, 2026-09-19 — PRD §5.12). The permission descriptor
++    // registers whether or not WEBSITE_MODULE_ENABLED is on (P1), so the nav
++    // follows GRANTS only — the two screens read `GET /website/status` and
++    // show a banner while the public door is off. Only the WP3a leaves exist;
++    // the CMS leaves (pages, strings, media, navigation, …) arrive with Phase B,
++    // as does a module dashboard — until then the module ROOT redirects to the
++    // inbox and declares the inbox's key (route-permissions.ts), so a holder of
++    // a CMS-only key who clicks the rail icon is refused in words there.
++    slug: 'website',
++    labelKey: 'website',
++    icon: Globe,
++    permission: { module: 'website', action: 'VIEW' },
++    railTitle: 'Website',
++    railSubtitle: 'jobsadmire.com intake & setup',
++    subRail: (base) => [
++      {
++        heading: 'Inbox',
++        items: [
++          // The path segment is `inbox`, not `forms`: the `forms` crumb already
++          // means Market Research's Form Builder (P14).
++          {
++            label: 'Forms',
++            labelKey: 'websiteInbox',
++            href: `${base}/inbox`,
++            icon: Inbox,
++            permission: { module: 'website.forms', action: 'VIEW' },
++          },
++        ],
++      },
++      {
++        heading: 'Setup',
++        items: [
++          // The PAGE is `website.integrations:VIEW` (P3); every secret write,
++          // rotate and test inside it is `website:MANAGE_KEYS`, which the page
++          // gates itself. This leaf must stay identical to the manifest line
++          // (`website-nav.spec.ts` pins it).
++          {
++            label: 'Integrations',
++            labelKey: 'websiteIntegrations',
++            href: `${base}/integrations`,
++            icon: KeyRound,
++            permission: { module: 'website.integrations', action: 'VIEW' },
++          },
++        ],
++      },
++    ],
++  },
+   {
+     // "My HR" — the EMPLOYEE self-service surface (check in / check out,
+     // request leave, own payslips). Deliberately permissionless, like
+     // `dashboard` and `my-training`: every endpoint the page calls is
+     // auth-only and scoped to the caller's own HrmPerson by JWT userId
+     // (PRD §5.5 — "Keep `GET /hrm/persons/me` auth-only … a module-permission
+     // gate would break self-service for staff without an `hrm` grant").
+     //
+     // Until 2026-08-19 the ONLY link to this page sat in the `hrm` sub-rail
+     // below, behind `hrm:VIEW` — a grant no ordinary role holds. It is also
+diff --git a/apps/frontend/src/config/route-permissions.spec.ts b/apps/frontend/src/config/route-permissions.spec.ts
+index 53c29da..f46fd50 100644
+--- a/apps/frontend/src/config/route-permissions.spec.ts
++++ b/apps/frontend/src/config/route-permissions.spec.ts
+@@ -128,20 +128,31 @@ describe('resolveRoutePermission', () => {
+       pattern: '/admin/marketing/posts/new',
+       key: 'marketing.posts',
+       action: 'CREATE',
+     });
+     expect(resolveRoutePermission('/en/admin/marketing/posts/abc123')).toEqual({
+       pattern: '/admin/marketing/posts/[id]',
+       key: 'marketing.posts',
+     });
+   });
+ 
++  it('maps the website inbox to website.forms and its root redirect to the same key (WP3a)', () => {
++    expect(resolveRoutePermission('/en/admin/website/inbox')).toEqual({
++      pattern: '/admin/website/inbox',
++      key: 'website.forms',
++    });
++    expect(resolveRoutePermission('/en/admin/website')).toEqual({
++      pattern: '/admin/website',
++      key: 'website.forms',
++    });
++  });
++
+   it('treats a trailing /** as covering the bare path too', () => {
+     expect(resolveRoutePermission('/en/admin/my-training')).toBe('self-service');
+     expect(resolveRoutePermission('/en/admin/my-training/lesson/abc')).toBe('self-service');
+     expect(resolveRoutePermission('/en/admin/my-hr')).toBe('self-service');
+   });
+ 
+   it('keeps the settings INDEX self-service and its children gated', () => {
+     // The index page is the only door to the caller's own notification
+     // preferences, push toggle and 2FA — none of which is settings work at all.
+     // Its children carry the SCREEN keys W3 gave them.
+diff --git a/apps/frontend/src/config/route-permissions.ts b/apps/frontend/src/config/route-permissions.ts
+index e71c946..07b5202 100644
+--- a/apps/frontend/src/config/route-permissions.ts
++++ b/apps/frontend/src/config/route-permissions.ts
+@@ -110,20 +110,31 @@ export const ROUTE_PERMISSIONS: RoutePermission[] = [
+   { pattern: '/admin/sales/follow-ups', key: 'sales.follow-ups' },
+   { pattern: '/admin/sales/assignment-rules', key: 'sales.assignment-rules' },
+   // Travel & Budget and Expenses live under the Sales path and belong to the
+   // `travel-expenses` MODULE — every route behind either is gated there
+   // (`travel.controller.ts`, `expense.controller.ts`). Mapping them to `sales`
+   // would hand a `sales-executive` a page whose every request 403s.
+   { pattern: '/admin/sales/travel', key: 'travel-expenses' },
+   { pattern: '/admin/sales/travel/[id]', key: 'travel-expenses' },
+   { pattern: '/admin/sales/expenses', key: 'travel-expenses' },
+ 
++  // ── Website (WP3a, 2026-09-19) — screen-level keys from day one ──────────
++  // The module root redirects to the inbox and declares the inbox's key (the
++  // Marketing redirect precedent above). The Integrations PAGE is
++  // `website.integrations:VIEW` (P3); the secret writes, rotate and test it
++  // contains are `website:MANAGE_KEYS` and the page gates those controls
++  // itself, so a `website.integrations` holder can still set the second-human
++  // recipient without being shown a token box that would 403.
++  { pattern: '/admin/website', key: 'website.forms' },
++  { pattern: '/admin/website/inbox', key: 'website.forms' },
++  { pattern: '/admin/website/integrations', key: 'website.integrations' },
++
+   // ── HRM — screen-level keys (W3) ─────────────────────────────────────────
+   // The module ROOT is the HRM dashboard, and `/hrm/dashboard` redirects to it
+   // and declares the SAME key. `/hrm/me` is the employee's own record and stays
+   // SELF-SERVICE — see that list.
+   { pattern: '/admin/hrm', key: 'hrm' },
+   { pattern: '/admin/hrm/dashboard', key: 'hrm' },
+   { pattern: '/admin/hrm/persons', key: 'hrm.people' },
+   { pattern: '/admin/hrm/persons/[id]', key: 'hrm.people' },
+   { pattern: '/admin/hrm/departments', key: 'hrm.people' },
+   { pattern: '/admin/hrm/documents', key: 'hrm.people' },
+diff --git a/apps/frontend/src/config/website-nav.spec.ts b/apps/frontend/src/config/website-nav.spec.ts
+new file mode 100644
+index 0000000..f6194bd
+--- /dev/null
++++ b/apps/frontend/src/config/website-nav.spec.ts
+@@ -0,0 +1,64 @@
++/**
++ * The `website` nav entry and the route manifest cannot drift (WP3a, P14).
++ *
++ * The sub-rail gate is STRICT `can()` and the page gate is the manifest line:
++ * a leaf whose permission differs from its page's line is either an invisible
++ * link to a reachable page or a visible link that lands on NotAuthorized
++ * (`SubRailItem.permission` docstring in modules.ts vs `PageGuard`). This pins
++ * the two together for the one module whose screens ship behind a backend
++ * flag, where nobody will click through for a while.
++ */
++import { describe, expect, it } from '@jest/globals';
++
++import { MODULES, getSubRailGroups } from './modules';
++import { ROUTE_PERMISSIONS, resolveRoutePermission } from './route-permissions';
++
++describe('the website module entry', () => {
++  const entry = MODULES.find((m) => m.slug === 'website');
++
++  it('exists, is gated on the module key at VIEW, and sits between marketing and my-hr', () => {
++    expect(entry).toBeDefined();
++    expect(entry?.permission).toEqual({ module: 'website', action: 'VIEW' });
++    expect(entry?.footer).toBeUndefined();
++    const slugs = MODULES.map((m) => m.slug);
++    expect(slugs.indexOf('website')).toBe(slugs.indexOf('marketing') + 1);
++    expect(slugs.indexOf('my-hr')).toBe(slugs.indexOf('website') + 1);
++  });
++
++  it('offers exactly the two WP3a leaves, on the `inbox` segment (never `forms`)', () => {
++    const items = getSubRailGroups('website', 'en').flatMap((g) => g.items);
++    expect(items.map((i) => i.href)).toEqual([
++      '/en/admin/website/inbox',
++      '/en/admin/website/integrations',
++    ]);
++    expect(items.map((i) => i.labelKey)).toEqual(['websiteInbox', 'websiteIntegrations']);
++  });
++
++  it('every leaf carries the SAME key and action as its manifest line', () => {
++    const items = getSubRailGroups('website', 'en').flatMap((g) => g.items);
++    for (const item of items) {
++      const resolved = resolveRoutePermission(item.href);
++      expect(resolved).not.toBeNull();
++      expect(resolved).not.toBe('self-service');
++      if (resolved && resolved !== 'self-service') {
++        expect(item.permission).toEqual({ module: resolved.key, action: resolved.action ?? 'VIEW' });
++      }
++    }
++  });
++
++  it('the module root redirects to the inbox and declares the inbox key', () => {
++    // The Marketing redirect precedent (route-permissions.ts, "A REDIRECT page
++    // declares its TARGET's key"): the visitor is refused here, not there.
++    expect(ROUTE_PERMISSIONS.find((r) => r.pattern === '/admin/website')).toEqual({
++      pattern: '/admin/website',
++      key: 'website.forms',
++    });
++  });
++
++  it('the integrations page is the SCREEN key at VIEW — secrets are gated inside it (P3)', () => {
++    expect(resolveRoutePermission('/tr/admin/website/integrations')).toEqual({
++      pattern: '/admin/website/integrations',
++      key: 'website.integrations',
++    });
++  });
++});
+diff --git a/apps/frontend/src/lib/api/website.spec.ts b/apps/frontend/src/lib/api/website.spec.ts
+new file mode 100644
+index 0000000..d9a1bec
+--- /dev/null
++++ b/apps/frontend/src/lib/api/website.spec.ts
+@@ -0,0 +1,159 @@
++/**
++ * The website client's pure halves (WP3a): the presentation maps must cover
++ * every value the shared enums can produce (the ten form keys, the seven
++ * handler kinds, the four statuses — all from `@jobsadmire/constants`, RC1),
++ * the needs-attention and re-run predicates (P8), and the payload summariser
++ * the inbox's Contact column and CSV export flatten with (RC5 field names).
++ *
++ * `whatsapp-campaigns.spec.ts` precedent: pure functions only, no network.
++ */
++import { describe, expect, it } from '@jest/globals';
++import { WEBSITE_FORM_KEYS, WebsiteFormKind, WebsiteSubmissionStatus } from '@jobsadmire/constants';
++
++import {
++  WEBSITE_FORM_KEY_LABELS,
++  WEBSITE_FORM_KIND_LABELS,
++  WEBSITE_SUBMISSION_STATUSES,
++  WEBSITE_SUBMISSION_STATUS_LABELS,
++  WEBSITE_SUBMISSION_STATUS_TONES,
++  websiteEvidenceKeysOf,
++  websiteEvidenceViewUrl,
++  websitePayloadSummary,
++  websiteSubmissionCanRerun,
++  websiteSubmissionNeedsAttention,
++  type WebsiteFormSubmission,
++} from './website';
++
++function row(over: Partial<WebsiteFormSubmission> = {}): WebsiteFormSubmission {
++  return {
++    id: 'cmwebsite000000000000001',
++    formKey: 'hire',
++    formKind: 'INQUIRY',
++    status: 'HANDLED',
++    isTest: false,
++    tokenClass: 'WRITE',
++    locale: 'tr',
++    consentVersion: 'privacy-2026-09',
++    captchaPassed: true,
++    captchaDegraded: false,
++    createdEntityType: 'inquiry',
++    createdEntityId: 'cminq0000000000000000001',
++    error: null,
++    handledAt: '2026-09-19T08:00:00.000Z',
++    purgeAfter: '2026-12-18T08:00:00.000Z',
++    payloadJson: {
++      fields: { name: 'Ayşe Yılmaz', email: 'ayse@example.com', phone: '+905551112233' },
++      sourcePath: '/tr/isci-bul',
++    },
++    createdAt: '2026-09-19T08:00:00.000Z',
++    updatedAt: '2026-09-19T08:00:00.000Z',
++    ...over,
++  };
++}
++
++describe('the presentation maps cover the shared vocabulary (RC1: @jobsadmire/constants is the source)', () => {
++  it('labels every one of the ten website form keys', () => {
++    expect(Object.keys(WEBSITE_FORM_KEY_LABELS).sort()).toEqual([...WEBSITE_FORM_KEYS].sort());
++  });
++
++  it('labels every handler kind', () => {
++    expect(Object.keys(WEBSITE_FORM_KIND_LABELS).sort()).toEqual(Object.values(WebsiteFormKind).sort());
++  });
++
++  it('lists, labels and tones every submission status — a missing tone renders an untoned chip', () => {
++    const fromEnum = Object.values(WebsiteSubmissionStatus).sort();
++    expect([...WEBSITE_SUBMISSION_STATUSES].sort()).toEqual(fromEnum);
++    expect(Object.keys(WEBSITE_SUBMISSION_STATUS_LABELS).sort()).toEqual(fromEnum);
++    expect(Object.keys(WEBSITE_SUBMISSION_STATUS_TONES).sort()).toEqual(fromEnum);
++    for (const s of WEBSITE_SUBMISSION_STATUSES) {
++      expect(typeof WEBSITE_SUBMISSION_STATUS_TONES[s]).toBe('string');
++    }
++  });
++});
++
++describe('websiteSubmissionNeedsAttention (P8: FAILED or captchaDegraded)', () => {
++  it('is true for FAILED', () => {
++    expect(websiteSubmissionNeedsAttention(row({ status: 'FAILED' }))).toBe(true);
++  });
++  it('is true for a handled row that was accepted with a degraded captcha', () => {
++    expect(websiteSubmissionNeedsAttention(row({ captchaDegraded: true, captchaPassed: null }))).toBe(true);
++  });
++  it('is false for a clean HANDLED / RECEIVED / SPAM row', () => {
++    expect(websiteSubmissionNeedsAttention(row())).toBe(false);
++    expect(websiteSubmissionNeedsAttention(row({ status: 'RECEIVED' }))).toBe(false);
++    expect(websiteSubmissionNeedsAttention(row({ status: 'SPAM' }))).toBe(false);
++  });
++});
++
++describe('websiteSubmissionCanRerun (P8: FAILED && createdEntityId IS NULL)', () => {
++  it('offers re-run only when the handler failed before creating anything', () => {
++    expect(
++      websiteSubmissionCanRerun(row({ status: 'FAILED', createdEntityId: null, createdEntityType: null })),
++    ).toBe(true);
++  });
++  it('refuses a FAILED row that already created an entity — a re-run would file it twice', () => {
++    expect(websiteSubmissionCanRerun(row({ status: 'FAILED' }))).toBe(false);
++  });
++  it('refuses every non-FAILED status', () => {
++    for (const status of ['RECEIVED', 'HANDLED', 'SPAM'] as const) {
++      expect(websiteSubmissionCanRerun(row({ status, createdEntityId: null }))).toBe(false);
++    }
++  });
++});
++
++describe('websitePayloadSummary', () => {
++  it('reads name / email / phone under the common field names', () => {
++    expect(websitePayloadSummary(row().payloadJson)).toEqual({
++      name: 'Ayşe Yılmaz',
++      email: 'ayse@example.com',
++      phone: '+905551112233',
++    });
++  });
++  it('composes a name from firstName + lastName and accepts phoneNumber / contactName', () => {
++    expect(
++      websitePayloadSummary({
++        fields: { firstName: 'Ali', lastName: 'Veli', phoneNumber: '+90 555', contactName: 'ignored' },
++      }),
++    ).toEqual({ name: 'Ali Veli', email: null, phone: '+90 555' });
++    expect(websitePayloadSummary({ fields: { contactName: 'Mehmet' } }).name).toBe('Mehmet');
++  });
++  it('reads the fraud report\'s reporter* fields (RC5)', () => {
++    expect(
++      websitePayloadSummary({
++        fields: {
++          reporterName: 'Zeynep',
++          reporterEmail: 'z@example.com',
++          reporterPhone: '+905550000000',
++          evidenceKeys: ['website-fraud/a.pdf'],
++        },
++      }),
++    ).toEqual({ name: 'Zeynep', email: 'z@example.com', phone: '+905550000000' });
++  });
++  it('websiteEvidenceKeysOf reads a fraud row\'s evidenceKeys, prefix-locked, and is empty otherwise (RC27)', () => {
++    expect(
++      websiteEvidenceKeysOf({ fields: { description: 'x', evidenceKeys: ['website-fraud/a.pdf', 'careers-cv/x.pdf', 'website-fraud/b.png'] } }),
++    ).toEqual(['website-fraud/a.pdf', 'website-fraud/b.png']);
++    expect(websiteEvidenceKeysOf({ fields: { evidenceKeys: 'website-fraud/one.pdf' } })).toEqual([]);
++    expect(websiteEvidenceKeysOf({ fields: { name: 'A' } })).toEqual([]);
++    expect(websiteEvidenceKeysOf(null)).toEqual([]);
++  });
++
++  it('websiteEvidenceViewUrl targets the inbox evidence family (RC23)', () => {
++    expect(websiteEvidenceViewUrl('sub1', 0)).toMatch(/\/website\/forms\/submissions\/sub1\/evidence\/0\/view$/);
++  });
++
++  it('ignores array-valued and blank fields, and never throws on a missing payload', () => {
++    expect(websitePayloadSummary({ fields: { name: ['a', 'b'], email: '   ' } })).toEqual({
++      name: null,
++      email: null,
++      phone: null,
++    });
++    expect(websitePayloadSummary(null)).toEqual({ name: null, email: null, phone: null });
++    expect(websitePayloadSummary(undefined)).toEqual({ name: null, email: null, phone: null });
++    expect(websitePayloadSummary({} as WebsiteFormSubmission['payloadJson'])).toEqual({
++      name: null,
++      email: null,
++      phone: null,
++    });
++  });
++});
+diff --git a/apps/frontend/src/lib/api/website.ts b/apps/frontend/src/lib/api/website.ts
+new file mode 100644
+index 0000000..ea2ba34
+--- /dev/null
++++ b/apps/frontend/src/lib/api/website.ts
+@@ -0,0 +1,333 @@
++import {
++  WEBSITE_FORM_KEYS,
++  WebsiteFormKind,
++  WebsiteSubmissionStatus,
++  WebsiteTokenClass,
++  type WebsiteFormKey,
++} from '@jobsadmire/constants';
++
++import { apiClient } from './client';
++
++/**
++ * Website module client (WP3a, 2026-09-19): the Forms inbox and the
++ * Integrations screen. Everything else in the module (pages, strings, media,
++ * navigation, publishing) is Phase B and has no client yet.
++ *
++ * The vocabulary — form keys, handler kinds, statuses, token classes — is
++ * IMPORTED from `@jobsadmire/constants` (RC1: one source for the backend, the
++ * seed and this file); nothing below re-declares a list the schema owns. What
++ * lives here is presentation (labels, pill tones) and the two inbox predicates.
++ *
++ * Secrets never cross this boundary: the config shape carries `has<Name>`
++ * booleans (P7), the only route that returns a token is `rotateSecret`, which
++ * returns the NEW value exactly once, and there is no reveal route.
++ */
++
++// ─── Vocabulary (string enums are opaque to TS: `E.A` is not comparable to
++// `'A'`, and wire JSON carries plain strings — so the UI works in the
++// template-literal unions and derives its lists from the enums at runtime) ──
++
++export type WebsiteFormKindValue = `${WebsiteFormKind}`;
++export type WebsiteSubmissionStatusValue = `${WebsiteSubmissionStatus}`;
++export type WebsiteTokenClassValue = `${WebsiteTokenClass}`;
++
++export const WEBSITE_SUBMISSION_STATUSES: WebsiteSubmissionStatusValue[] = Object.values(
++  WebsiteSubmissionStatus,
++).map((s) => s as string as WebsiteSubmissionStatusValue);
++
++// ─── Presentation ────────────────────────────────────────────────────────────
++
++/** Keyed by the website's `FORM_KEYS` (Task 3 mirrors them in @jobsadmire/constants). */
++export const WEBSITE_FORM_KEY_LABELS: Record<WebsiteFormKey, string> = {
++  hire: 'Hire workers',
++  contact: 'Contact',
++  partner: 'Partner with us',
++  workers: 'Available workers',
++  callback: 'Callback request',
++  visit: 'Office visit',
++  calculator: 'Cost calculator quote',
++  careers: 'Careers application',
++  fraud: 'Fraud report',
++  newsletter: 'Newsletter',
++};
++
++export const WEBSITE_FORM_KIND_LABELS: Record<WebsiteFormKindValue, string> = {
++  INQUIRY: 'Inquiry',
++  CAREERS_APPLY: 'Careers application',
++  NEWSLETTER: 'Newsletter',
++  FRAUD_REPORT: 'Fraud report',
++  CALLBACK: 'Callback',
++  VISIT: 'Visit',
++  CALCULATOR_QUOTE: 'Calculator quote',
++};
++
++export const WEBSITE_SUBMISSION_STATUS_LABELS: Record<WebsiteSubmissionStatusValue, string> = {
++  RECEIVED: 'Received',
++  HANDLED: 'Handled',
++  FAILED: 'Failed',
++  SPAM: 'Spam',
++};
++
++/** `StatusTone` values from `components/ui/status-pill` — spelled out so this
++ *  file stays free of component imports (`whatsapp-campaigns.ts` precedent). */
++export const WEBSITE_SUBMISSION_STATUS_TONES: Record<
++  WebsiteSubmissionStatusValue,
++  'success' | 'warning' | 'destructive' | 'info' | 'neutral' | 'in-progress'
++> = {
++  RECEIVED: 'in-progress',
++  HANDLED: 'success',
++  FAILED: 'destructive',
++  SPAM: 'neutral',
++};
++
++/** Re-exported for the inbox filter so the page imports one module for the vocabulary. */
++export { WEBSITE_FORM_KEYS };
++export type { WebsiteFormKey };
++
++// ─── Submissions ─────────────────────────────────────────────────────────────
++
++/** What Task 6 stores in `payloadJson`: the catalog-whitelisted fields as the
++ *  visitor sent them (strings, or a key array for fraud `evidenceKeys` — RC5). */
++export interface WebsiteStoredPayload {
++  fields: Record<string, string | string[]>;
++  sourcePath?: string;
++}
++
++/** One element of `handlerResultJson.attempts` (P8: per attempt). */
++export interface WebsiteAttemptRecord {
++  at: string;
++  ok: boolean;
++  dryRun: boolean;
++  rerun: boolean;
++  actor: string;
++  error?: string;
++  createdEntityType?: string;
++  createdEntityId?: string;
++  detail?: Record<string, unknown>;
++}
++
++export interface WebsiteHandlerResult {
++  attempts: WebsiteAttemptRecord[];
++  /** RC26: present while the LAST attempt was the visitor's own mistake (no alarm rang). */
++  visitorError?: true;
++}
++
++/**
++ * Task 7's `WebsiteInboxRow` (the list) — the detail (`WebsiteInboxDetail`) adds
++ * the four optional fields at the bottom. Never the Prisma row: no `formId`, no
++ * request/IP hashes.
++ */
++export interface WebsiteFormSubmission {
++  id: string;
++  formKey: string;
++  /** The joined `WebsiteForm.kind` (Task 7 adds it to every row). */
++  formKind: WebsiteFormKindValue;
++  status: WebsiteSubmissionStatusValue;
++  /** Filed with the test token class — handler ran DRY (P2). */
++  isTest: boolean;
++  locale: string | null;
++  consentVersion: string | null;
++  /** null = Turnstile not checked (secret missing / unreachable), else the verdict. */
++  captchaPassed: boolean | null;
++  /** Accepted while captcha was degraded (D11) — part of "needs attention" (P8). */
++  captchaDegraded: boolean;
++  /** 'inquiry' | 'applicant' | 'subscriber' | 'fraud-object' … + id, FK-less. */
++  createdEntityType: string | null;
++  createdEntityId: string | null;
++  error: string | null;
++  handledAt: string | null;
++  purgeAfter: string | null;
++  payloadJson: WebsiteStoredPayload | null;
++  createdAt: string;
++  /** Which Bearer class the door matched (RC2). Detail route only. */
++  tokenClass?: WebsiteTokenClassValue;
++  /** Detail route only. */
++  handlerResultJson?: WebsiteHandlerResult | null;
++  /** Detail route only. */
++  userAgent?: string | null;
++  /** Detail route only. */
++  updatedAt?: string;
++}
++
++export interface WebsiteSubmissionsQuery {
++  page?: number;
++  limit?: number;
++  /** Submission id, created entity id, or name / company / email / phone / reporter* inside
++   *  `payloadJson.fields` (RC24: e-mail case-insensitive, the rest case-sensitive in WP3a). */
++  search?: string;
++  formKey?: string;
++  status?: WebsiteSubmissionStatusValue;
++  /** 'true' → FAILED or captchaDegraded only (P8). */
++  needsAttention?: 'true';
++  /** 'true' → test-token rows only; 'false' → real only; omitted → both. */
++  isTest?: 'true' | 'false';
++  /** ISO date (inclusive) bounds on createdAt. */
++  from?: string;
++  to?: string;
++}
++
++/** P8: needs-attention = FAILED or accepted with a degraded captcha. */
++export function websiteSubmissionNeedsAttention(row: WebsiteFormSubmission): boolean {
++  return row.status === 'FAILED' || row.captchaDegraded === true;
++}
++
++/** P8: re-run only when the handler failed BEFORE creating anything. */
++export function websiteSubmissionCanRerun(row: WebsiteFormSubmission): boolean {
++  return row.status === 'FAILED' && row.createdEntityId == null;
++}
++
++export interface WebsitePayloadSummary {
++  name: string | null;
++  email: string | null;
++  phone: string | null;
++}
++
++const str = (v: unknown): string | null => (typeof v === 'string' && v.trim() ? v.trim() : null);
++
++/**
++ * Best-effort contact triple from a stored payload. Field names are per form
++ * (the catalog in Task 6 / RC5 fixes them), so this reads the spellings the
++ * ten forms use and returns null rather than guessing further. Array-valued
++ * fields (fraud `evidenceKeys`) are never a name.
++ */
++export function websitePayloadSummary(
++  payload: WebsiteStoredPayload | null | undefined,
++): WebsitePayloadSummary {
++  const f = payload && typeof payload === 'object' ? payload.fields : undefined;
++  if (!f || typeof f !== 'object') return { name: null, email: null, phone: null };
++  const composed = [str(f.firstName), str(f.lastName)].filter(Boolean).join(' ');
++  const name =
++    str(f.name) ?? str(f.fullName) ?? (composed || null) ?? str(f.contactName) ?? str(f.reporterName);
++  const email = str(f.email) ?? str(f.reporterEmail);
++  const phone = str(f.phone) ?? str(f.phoneNumber) ?? str(f.reporterPhone) ?? str(f.whatsapp);
++  return { name, email, phone };
++}
++
++// ─── Fraud evidence (RC23 / RC27) ────────────────────────────────────────────
++
++const EVIDENCE_KEY_RE = /^website-fraud\/[A-Za-z0-9._-]+$/;
++
++/** The `website-fraud/` keys a FRAUD_REPORT row names, in order (the `:index` the routes take). */
++export function websiteEvidenceKeysOf(payload: WebsiteStoredPayload | null | undefined): string[] {
++  const raw = payload && typeof payload === 'object' ? payload.fields?.evidenceKeys : undefined;
++  if (!Array.isArray(raw)) return [];
++  return raw.filter((k): k is string => typeof k === 'string' && EVIDENCE_KEY_RE.test(k));
++}
++
++/** Bearer-fetched inline stream (the `applicantDocumentViewUrl` precedent — a raw link would 401). */
++export function websiteEvidenceViewUrl(submissionId: string, index: number): string {
++  const apiBase = process.env.NEXT_PUBLIC_API_URL ?? 'http://localhost:4001/api';
++  return `${apiBase}/website/forms/submissions/${encodeURIComponent(submissionId)}/evidence/${index}/view`;
++}
++
++export interface WebsiteEvidenceLink {
++  /** 15-minute presigned URL — the only link that works against the private prod bucket. */
++  url: string;
++  fileName: string;
++}
++
++// ─── Integrations config ─────────────────────────────────────────────────────
++
++/** `GET /website/integrations` — Task 4's `WebsiteIntegrationPublicShape`,
++ *  every secret reduced to a `has*` flag (P7); dates arrive as ISO strings. */
++export interface WebsiteIntegrationConfig {
++  id: string;
++  hasWriteToken: boolean;
++  hasPreviousWriteToken: boolean;
++  /** When the previous write token stops being accepted (24 h after rotate). */
++  previousWriteTokenExpiresAt: string | null;
++  hasTestToken: boolean;
++  hasTurnstileSecret: boolean;
++  hasRevalidateSecret: boolean;
++  /** Fallback recipient for every website event (P9). */
++  secondHumanEmail: string | null;
++  secondHumanName: string | null;
++  lastTestedAt: string | null;
++  lastTestOk: boolean | null;
++  lastTestError: string | null;
++  updatedById: string | null;
++  createdAt: string;
++  updatedAt: string;
++}
++
++/** `undefined` = leave stored, `null` / `''` = clear (RC9). */
++export interface UpdateWebsiteIntegrationSettingsInput {
++  secondHumanEmail?: string | null;
++  secondHumanName?: string | null;
++}
++
++/** Write-only: `undefined` = leave stored, `''` = clear (P7). */
++export interface UpdateWebsiteIntegrationKeysInput {
++  turnstileSecret?: string;
++  revalidateSecret?: string;
++}
++
++export type WebsiteRotatableSecret = 'writeToken' | 'testToken';
++
++export interface WebsiteRotatedSecret {
++  name: WebsiteRotatableSecret;
++  /** Returned ONCE. */
++  secret: string;
++  /** For `writeToken`: when the previous token stops working; null for testToken. */
++  previousExpiresAt: string | null;
++}
++
++/** RC9: `{ ok, error }` — `error` is null when the probe passed. */
++export interface WebsiteConnectionTestResult {
++  ok: boolean;
++  error: string | null;
++}
++
++// ─── Helpers ─────────────────────────────────────────────────────────────────
++
++const toQuery = (params: Record<string, unknown>) =>
++  Object.entries(params)
++    .filter(([, v]) => v !== undefined && v !== null && v !== '')
++    .map(([k, v]) => `${k}=${encodeURIComponent(String(v))}`)
++    .join('&');
++
++// ─── Clients ─────────────────────────────────────────────────────────────────
++
++export const websiteStatusApi = {
++  /** `@SelfService` (Task 1) — `{ enabled }` mirrors WEBSITE_MODULE_ENABLED (P1). */
++  get: () => apiClient.get<{ enabled: boolean }>('/website/status'),
++};
++
++export const websiteFormsApi = {
++  // website.forms VIEW
++  list: (query: WebsiteSubmissionsQuery = {}) =>
++    apiClient.get<WebsiteFormSubmission[]>(
++      `/website/forms/submissions?${toQuery(query as Record<string, unknown>)}`,
++    ),
++  // website.forms VIEW
++  get: (id: string) => apiClient.get<WebsiteFormSubmission>(`/website/forms/submissions/${id}`),
++  // website.forms EXPORT — the DEDICATED, audited export route (P3). Same
++  // paged `{ data, meta }` shape so `ExportCsvButton.fetchPage` can walk it.
++  export: (query: WebsiteSubmissionsQuery = {}) =>
++    apiClient.get<WebsiteFormSubmission[]>(
++      `/website/forms/submissions/export?${toQuery(query as Record<string, unknown>)}`,
++    ),
++  // website.forms EDIT — 409 unless FAILED && createdEntityId IS NULL (P8).
++  rerun: (id: string) =>
++    apiClient.post<WebsiteFormSubmission>(`/website/forms/submissions/${id}/rerun`),
++  // website.forms VIEW — presigned download link for one fraud-evidence object (RC23).
++  evidenceLink: (id: string, index: number) =>
++    apiClient.get<WebsiteEvidenceLink>(`/website/forms/submissions/${id}/evidence/${index}/link`),
++};
++
++export const websiteIntegrationsApi = {
++  // website.integrations VIEW
++  get: () => apiClient.get<WebsiteIntegrationConfig>('/website/integrations'),
++  // website.integrations EDIT — non-secret fields only
++  update: (body: UpdateWebsiteIntegrationSettingsInput) =>
++    apiClient.patch<WebsiteIntegrationConfig>('/website/integrations', body),
++  // website MANAGE_KEYS
++  updateKeys: (body: UpdateWebsiteIntegrationKeysInput) =>
++    apiClient.patch<WebsiteIntegrationConfig>('/website/integrations/keys', body),
++  // website MANAGE_KEYS — server-generated, returned once (RC9 path)
++  rotateSecret: (name: WebsiteRotatableSecret) =>
++    apiClient.post<WebsiteRotatedSecret>(`/website/integrations/rotate/${name}`),
++  // website MANAGE_KEYS — probes the stored Turnstile secret, persists lastTested* (RC9 path)
++  testConnection: () =>
++    apiClient.post<WebsiteConnectionTestResult>('/website/integrations/test'),
++};
+diff --git a/apps/frontend/src/lib/breadcrumbs-from-path.spec.ts b/apps/frontend/src/lib/breadcrumbs-from-path.spec.ts
+index 64823be..df9d4e3 100644
+--- a/apps/frontend/src/lib/breadcrumbs-from-path.spec.ts
++++ b/apps/frontend/src/lib/breadcrumbs-from-path.spec.ts
+@@ -40,20 +40,22 @@ describe('breadcrumbsFromPath', () => {
+     const paths = [
+       '/en/admin/roles',
+       '/en/admin/roles/cm123abcdefghijklmnop',
+       '/en/admin/users',
+       '/en/admin/marketing/library',
+       '/en/admin/marketing/settings/general',
+       '/en/admin/internal-recruitment/offers/pending-signature',
+       '/en/admin/hrm/payroll-runs/cm123abcdefghijklmnop',
+       '/en/admin/sales/travel',
+       '/en/admin/settings/countries',
++      '/en/admin/website/inbox',
++      '/en/admin/website/integrations',
+     ];
+     const keys = new Set(
+       paths.flatMap((p) => breadcrumbsFromPath(p, 'en').map((c) => c.labelKey)),
+     );
+ 
+     const lookup = (messages: typeof en, key: string): unknown =>
+       key.split('.').reduce<unknown>(
+         (node, part) =>
+           node && typeof node === 'object' ? (node as Record<string, unknown>)[part] : undefined,
+         messages.nav.breadcrumbs,
+diff --git a/apps/frontend/src/lib/breadcrumbs-from-path.ts b/apps/frontend/src/lib/breadcrumbs-from-path.ts
+index faf02e8..526563f 100644
+--- a/apps/frontend/src/lib/breadcrumbs-from-path.ts
++++ b/apps/frontend/src/lib/breadcrumbs-from-path.ts
+@@ -152,20 +152,24 @@ const SEGMENT_LABELS: Record<string, string> = {
+   tasks: 'Tasks',
+   'assignment-rules': 'Assignment Rules',
+   'follow-ups': 'Follow-ups',
+   'bank-changes': 'Bank Changes',
+   pay: 'Pay',
+   'staff-progress': 'Staff Progress',
+   'policy-facts': 'Policy Facts',
+   'ai-engine': 'AI Engine',
+   assignments: 'Assignments',
+   lessons: 'Lessons',
++  // Website module (WP3a). `inbox` rather than `forms` — `forms` above is the
++  // Market Research Form Builder.
++  website: 'Website',
++  inbox: 'Inbox',
+ };
+ 
+ const UUID_RE = /^[cm][a-z0-9]{20,}$|^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/;
+ 
+ /**
+  * Path segments that group routes but have no page of their own, keyed by the
+  * full accumulated path so a common word like `settings` stays clickable
+  * where it IS a real page.
+  *
+  * The builder otherwise assumes every intermediate segment is navigable, which
+diff --git a/apps/frontend/src/messages/en.json b/apps/frontend/src/messages/en.json
+index 386bbd7..47d9ccc 100644
+--- a/apps/frontend/src/messages/en.json
++++ b/apps/frontend/src/messages/en.json
+@@ -855,20 +855,22 @@
+       "tasks": "Tasks",
+       "assignment-rules": "Assignment Rules",
+       "follow-ups": "Follow-ups",
+       "bank-changes": "Bank Changes",
+       "pay": "Pay",
+       "staff-progress": "Staff Progress",
+       "policy-facts": "Policy Facts",
+       "ai-engine": "AI Engine",
+       "assignments": "Assignments",
+       "lessons": "Lessons",
++      "website": "Website",
++      "inbox": "Inbox",
+       "root": {
+         "marketing": "Dashboard"
+       }
+     }
+   },
+   "common": {
+     "loading": "Loading...",
+     "error": "An error occurred",
+     "save": "Save",
+     "cancel": "Cancel",
+@@ -1304,20 +1306,23 @@
+       "marketingMyWork": "My work",
+       "campaigns": "Campaigns",
+       "contentPipeline": "Content Pipeline",
+       "calendar": "Calendar",
+       "budgets": "Budgets",
+       "paidCampaigns": "Paid Campaigns",
+       "assetLibrary": "Asset Library",
+       "influencers": "Influencers",
+       "tools": "Tools & Subs",
+       "marketingDashboard": "Marketing Dashboard",
++      "website": "Website",
++      "websiteInbox": "Forms inbox",
++      "websiteIntegrations": "Integrations",
+       "hrm": "HRM",
+       "myHr": "My HR",
+       "people": "People",
+       "departments": "Departments",
+       "attendance": "Attendance",
+       "leaveRequests": "Leave Requests",
+       "freelancerWork": "Freelancer Work",
+       "internShifts": "Intern Shifts",
+       "onboardingTemplates": "Onboarding Templates",
+       "onboarding": "Onboarding",
+@@ -1747,20 +1752,35 @@
+         "title": "Notifications",
+         "description": "Stay updated on job assignments, candidate approvals, interview schedules, and stage updates.",
+         "tip1": "Click a notification to navigate to the related item"
+       },
+       "settings": {
+         "title": "Account Settings",
+         "description": "Manage your account preferences and security settings.",
+         "tip1": "Enable two-factor authentication for extra security"
+       }
+     },
++    "admin_website_inbox": {
++      "title": "Website forms inbox",
++      "description": "Every submission from jobsadmire.com lands here first, then a handler files it (an Inquiry, a careers application, a subscriber, a fraud report). Rows that failed or arrived while captcha was degraded need attention.",
++      "tip1": "Use the Needs attention filter for failed handlers and captcha-degraded rows — those are the leads nobody else will see",
++      "tip2": "Re-run is offered only for a failed submission that created nothing yet; a re-run never files the same lead twice",
++      "tip3": "Test-token submissions (the website's synthetic lead) are marked Test and hidden by the Real only filter",
++      "tip4": "Export CSV walks the current filters through the audited export route"
++    },
++    "admin_website_integrations": {
++      "title": "Website integrations",
++      "description": "Tokens the website presents to Operations, the Turnstile secret it is verified with, the revalidate secret, and the second human who receives every website alert.",
++      "tip1": "Rotating the write token keeps the previous one valid for 24 hours — update Vercel inside that window",
++      "tip2": "Secrets are write-only: a stored value is never shown back; a new one is shown once at rotate time",
++      "tip3": "The banner at the top means WEBSITE_MODULE_ENABLED is off on the server — tokens can be prepared now and the door flipped on later"
++    },
+     "admin_sales_inquiries": {
+       "title": "Sales Inquiries",
+       "description": "Manage incoming sales inquiries from all channels. Classify inquiries and convert qualified ones to leads.",
+       "tip1": "Use the Classify action to categorize each inquiry (Direct Employer, HR Agency, Sourcing Partner, Job Seeker, Spam)",
+       "tip2": "Qualified inquiries (Direct Employer, HR Agency, Sourcing Partner) can be converted to Leads",
+       "tip3": "The Assignment Engine auto-assigns inquiries to agents based on configured rules",
+       "tip4": "Filter by source to focus on specific channels (WhatsApp, Call Center, Email, etc.)"
+     },
+     "admin_sales_inquiry_detail": {
+       "title": "Inquiry Detail",
+diff --git a/apps/frontend/src/messages/tr.json b/apps/frontend/src/messages/tr.json
+index cb96e91..7f62044 100644
+--- a/apps/frontend/src/messages/tr.json
++++ b/apps/frontend/src/messages/tr.json
+@@ -855,20 +855,22 @@
+       "tasks": "Görevler",
+       "assignment-rules": "Atama Kuralları",
+       "follow-ups": "Takipler",
+       "bank-changes": "Banka Değişiklikleri",
+       "pay": "Ödeme",
+       "staff-progress": "Personel İlerlemesi",
+       "policy-facts": "Politika Bilgileri",
+       "ai-engine": "Yapay Zekâ Motoru",
+       "assignments": "Atamalar",
+       "lessons": "Dersler",
++      "website": "Web Sitesi",
++      "inbox": "Gelen Kutusu",
+       "root": {
+         "marketing": "Panel"
+       }
+     }
+   },
+   "common": {
+     "loading": "Yükleniyor...",
+     "error": "Bir hata oluştu",
+     "save": "Kaydet",
+     "cancel": "İptal",
+@@ -1304,20 +1306,23 @@
+       "marketingMyWork": "İşlerim",
+       "campaigns": "Kampanyalar",
+       "contentPipeline": "İçerik Hattı",
+       "calendar": "Takvim",
+       "budgets": "Bütçeler",
+       "paidCampaigns": "Ücretli Kampanyalar",
+       "assetLibrary": "Varlık Kütüphanesi",
+       "influencers": "Influencer'lar",
+       "tools": "Araçlar & Abonelikler",
+       "marketingDashboard": "Pazarlama Paneli",
++      "website": "Web Sitesi",
++      "websiteInbox": "Form gelen kutusu",
++      "websiteIntegrations": "Entegrasyonlar",
+       "hrm": "İKY",
+       "myHr": "İK Bilgilerim",
+       "people": "Kişiler",
+       "departments": "Departmanlar",
+       "attendance": "Devam",
+       "leaveRequests": "İzin Talepleri",
+       "freelancerWork": "Serbest Çalışan İşleri",
+       "internShifts": "Stajyer Vardiyaları",
+       "onboardingTemplates": "İşe Alım Şablonları",
+       "onboarding": "İşe Alım",
+@@ -1747,20 +1752,35 @@
+         "title": "Bildirimler",
+         "description": "İş atamaları, aday onayları ve aşama güncellemeleri hakkında güncel kalın.",
+         "tip1": "İlgili öğeye gitmek için bir bildirime tıklayın"
+       },
+       "settings": {
+         "title": "Hesap Ayarları",
+         "description": "Hesap tercihlerinizi ve güvenlik ayarlarınızı yönetin.",
+         "tip1": "Ekstra güvenlik için iki faktörlü kimlik doğrulamayı etkinleştirin"
+       }
+     },
++    "admin_website_inbox": {
++      "title": "Web sitesi form gelen kutusu",
++      "description": "jobsadmire.com üzerinden gelen her gönderim önce buraya düşer, ardından bir işleyici onu kaydeder (Sorgu, kariyer başvurusu, abone, dolandırıcılık bildirimi). Başarısız olan veya captcha devre dışıyken gelen satırlar ilgi ister.",
++      "tip1": "Başarısız işleyiciler ve captcha'sız satırlar için İlgi gerekiyor filtresini kullanın — bu adayları başka kimse görmez",
++      "tip2": "Yeniden çalıştır yalnızca henüz hiçbir kayıt oluşturmamış başarısız gönderimler için sunulur; aynı aday iki kez kaydedilmez",
++      "tip3": "Test belirteciyle gelen gönderimler (web sitesinin yapay adayı) Test olarak işaretlenir ve Yalnızca gerçek filtresiyle gizlenir",
++      "tip4": "CSV dışa aktarma mevcut filtreleri denetlenen dışa aktarma rotası üzerinden yürütür"
++    },
++    "admin_website_integrations": {
++      "title": "Web sitesi entegrasyonları",
++      "description": "Web sitesinin Operations'a sunduğu belirteçler, doğrulandığı Turnstile gizli anahtarı, yeniden doğrulama anahtarı ve her web sitesi uyarısını alan ikinci kişi.",
++      "tip1": "Yazma belirtecini döndürmek öncekini 24 saat geçerli tutar — Vercel'i bu süre içinde güncelleyin",
++      "tip2": "Gizli değerler yalnızca yazılır: saklanan bir değer asla geri gösterilmez; yeni değer döndürme anında bir kez gösterilir",
++      "tip3": "Üstteki uyarı sunucuda WEBSITE_MODULE_ENABLED kapalı demektir — belirteçler şimdi hazırlanabilir, kapı daha sonra açılır"
++    },
+     "admin_sales_inquiries": {
+       "title": "Satış Sorguları",
+       "description": "Tüm kanallardan gelen satış sorgularını yönetin.",
+       "tip1": "Her sorguyu sınıflandırmak için Sınıflandır eylemini kullanın",
+       "tip2": "Nitelikli sorgular Lead'e dönüştürülebilir",
+       "tip3": "Atama Motoru yapılandırılmış kurallara göre sorguları otomatik olarak temsilcilere atar",
+       "tip4": "Belirli kanalara odaklanmak için kaynağa göre filtreleyin (WhatsApp, Çağrı Merkezi, E-posta vb.)"
+     },
+     "admin_sales_inquiry_detail": {
+       "title": "Sorgu Detayı",

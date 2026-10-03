@@ -36,4 +36,10 @@ describe('design tokens', () => {
   it('breakpoints are the design breakpoints unscaled', () => {
     expect(tokens.breakpoint).toEqual({ xs: 461, sm: 561, md: 701, lg: 901, xl: 1101 });
   });
+  it('the header row swaps at lg (W11, closes R46) and the social rail at xl', () => {
+    expect(tokens.layout.headerRowFrom).toBe(tokens.breakpoint.lg);
+    expect(tokens.layout.socialRailFrom).toBe(tokens.breakpoint.xl);
+    // nav links: authored 13.5 → 12 between 901 and 1100 → the 11 px floor from 1101
+    expect(tokens.type.nav).toEqual({ mobile: 13.5, tablet: 12, desktop: 11 });
+  });
 });

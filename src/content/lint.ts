@@ -36,13 +36,45 @@ export function findLeadingLiraViolations(tr: Record<string, string>): string[] 
     .map(([id]) => id);
 }
 
-/** D17: a metric value typed into copy must be a placeholder like {placed}. */
+export type MetricLiterals = Record<string, readonly string[]>;
+
+const escapeRegExp = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+
+/**
+ * A metric literal is the exact spelling a metric takes in copy, with the value span the
+ * importer swaps for `{key}` marked in square brackets: `"[22+] clients"`, `"within [24] hours"`,
+ * `"[13'ten fazla] ülke"` — unit-bound where the bare number would be ambiguous. No brackets
+ * means the whole literal is the value (`"470+"`). `text` is the spelling the lint matches.
+ */
+export function parseMetricLiteral(literal: string): {
+  text: string;
+  pre: string;
+  span: string;
+  post: string;
+} {
+  const m = literal.match(/^([^[\]]*)\[([^[\]]+)\]([^[\]]*)$/);
+  if (m) return { text: `${m[1]}${m[2]}${m[3]}`, pre: m[1], span: m[2], post: m[3] };
+  if (/[[\]]/.test(literal))
+    throw new Error(`metric literal "${literal}": one [value] span, nothing else`);
+  return { text: literal, pre: '', span: literal, post: '' };
+}
+
+/**
+ * D17: a metric value typed into copy must be a `{placeholder}`. `literals` come from
+ * `scripts/metric-placeholders.json` § literals (markers ignored here); `baseline` is
+ * `scripts/metric-lint-baseline.json` (legal-flagged strings kept verbatim, with a reason).
+ * Case-insensitive so "Within 24h" and "within 24h" are the same literal.
+ */
 export function findHardTypedMetrics(
   strings: Record<string, string>,
-  metrics: Record<string, number>,
+  literals: MetricLiterals,
+  baseline: Record<string, string> = {},
 ): string[] {
-  const values = new Set(Object.values(metrics).map(String));
+  const patterns = Object.values(literals)
+    .flat()
+    .map((l) => new RegExp(escapeRegExp(parseMetricLiteral(l).text), 'i'));
   return Object.entries(strings)
-    .filter(([, v]) => numericTokens(v).some((t) => values.has(t)))
-    .map(([id]) => id);
+    .filter(([id, v]) => !(id in baseline) && patterns.some((re) => re.test(v)))
+    .map(([id]) => id)
+    .sort();
 }

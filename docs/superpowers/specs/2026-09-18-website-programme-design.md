@@ -175,6 +175,8 @@ Move `jobsadmire.com` + `www` to `jobsadmire-web-v2` (rollback = move them back 
 
 ### Phase B — the CMS takes over (target: approval + 9 weeks)
 
+> **Owner decision 2026-10-02 (ruling W215): the language editor ships first.** WP3c is cut to the strings model and the strings bundle endpoint, WP4 to the side-by-side strings editor with review and publish, and the `sys.*` copy-pack import moves forward from WP6 so every text on the site is editable per language before collections, pages, blog, media and navigation follow. The packages below keep their content; their order is re-planned against W215 when Phase B starts.
+
 **WP3c — CMS backend (Opus · ~6 days · migration in its own commit; WP3b/CRM work never in parallel)**
 Remaining Prisma models; bundle service (single-flight, own Redis DB, ETag, cap); string import + CSV + bulk APPROVE; publish logic + serial revalidation + read-back + alerts; public-read switch; `WebsitePublicStorageService` (D10, chrome kind only in v1); pool stats snapshot via `CrmClient` (if the CRM stats endpoints ship; else static metrics); seed; `WEBSITE_REDIS_DB`, `WEBSITE_PUBLIC_BUCKET`, `WEBSITE_SITE_URL` rows + rendered-config assertion; VPS bucket + Apache headers; PRD/DEPLOYMENT/`docs/website/DESIGN.md`; CLAUDE.md doc-map row and amended public-surface rule. **Gate:** WP3a gate items + bucket refuses listing/SVG + documents-bucket key still 403 anonymously + `evicted_keys` still 0 + queue failures at baseline.
 

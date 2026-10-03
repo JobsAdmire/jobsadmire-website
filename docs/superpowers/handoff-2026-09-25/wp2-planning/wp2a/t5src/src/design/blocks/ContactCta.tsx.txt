@@ -1,0 +1,63 @@
+import type { ReactNode } from 'react';
+import { ContactLink } from '@/analytics/ContactLink';
+import { contactKindOf } from '@/analytics/useContactClick';
+import { Button, buttonClassName, type ButtonVariant } from '@/design/primitives';
+
+/** The two page-level placements W12 allows next to the chrome's own. */
+export type PageContactPlacement = 'page_cta' | 'office_card';
+
+export type ContactCtaProps = {
+  placement: PageContactPlacement;
+  href: string;
+  variant?: ButtonVariant;
+  size?: 'md' | 'lg';
+  external?: boolean;
+  className?: string;
+  'aria-label'?: string;
+  children: ReactNode;
+};
+
+/** A CTA in the `Button` face that fires the contact event when its href is a contact href.
+ *  `tel:` / `mailto:` / `wa.me` (T0c's `contactKindOf`) render through T0c's `ContactLink` —
+ *  the one anchor every contact link on the site goes through (`useContactClick(placement)`:
+ *  `whatsapp_click`/`call_click`/`email_click`, `page` from `next/navigation`, R35) — wearing
+ *  `buttonClassName(variant, size)`; any other href is an ordinary `Button` link. No `'use
+ *  client'` here: `ContactLink` is the client piece, so every block around it stays a server
+ *  component (W13). */
+export function ContactCta({
+  placement,
+  href,
+  variant = 'primary',
+  size = 'md',
+  external,
+  className,
+  'aria-label': ariaLabel,
+  children,
+}: ContactCtaProps) {
+  const kind = contactKindOf(href);
+  if (!kind) {
+    return (
+      <Button
+        variant={variant}
+        size={size}
+        href={href}
+        external={external}
+        className={className}
+        aria-label={ariaLabel}
+      >
+        {children}
+      </Button>
+    );
+  }
+  return (
+    <ContactLink
+      href={href}
+      placement={placement}
+      className={buttonClassName(variant, size, className)}
+      aria-label={ariaLabel}
+      {...(external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+    >
+      {children}
+    </ContactLink>
+  );
+}

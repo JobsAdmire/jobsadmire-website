@@ -1,4 +1,14 @@
 @import 'tailwindcss';
+/* Tailwind 4 scans every non-ignored text file for class candidates. Code blocks in
+   docs/ (W213: a T14 doc token broke `next build` twice), the e2e specs, the scripts
+   and the design package's HTML are never page CSS — only src/ is. */
+@source not '../../docs';
+@source not '../../design-package';
+@source not '../../e2e';
+@source not '../../scripts';
+/* The class-collision guard's classifier (W155) lists utility keywords as data; it is a test
+   helper, never page CSS, so nothing in src/test/ may generate a rule. */
+@source not '../test';
 
 @theme {
   --color-ink: #16202e;
@@ -12,7 +22,7 @@
   --color-pale-2: #f7fbfe;
   --color-pale-3: #fbfdff;
   --color-text-secondary: #556377;
-  --color-text-tertiary: #64748b;
+  --color-text-tertiary: #5f6e86; /* W205: 4.88:1 on pale-1, 4.62 on tint — was #64748b (4.49 on pale-1, below AA) */
   --color-muted: #94a3b8;
   --color-border-1: #dbe8f2;
   --color-border-2: #e2ebf2;
@@ -62,6 +72,7 @@
   --text-card-title: var(--fs-card-title);
   --text-stat: var(--fs-stat);
   --text-eyebrow: var(--fs-eyebrow);
+  --text-nav: var(--fs-nav);
   --text-h1: var(--fs-h1);
   --text-h2: var(--fs-h2);
   --text-h2-process: var(--fs-h2-process);
@@ -75,10 +86,34 @@
   --fs-card-title: 18.5px;
   --fs-stat: 34px;
   --fs-eyebrow: 12px;
+  --fs-nav: 13.5px;
   --fs-h1: clamp(40px, 4.6vw, 66px);
   --fs-h2: clamp(28px, 3.2vw, 42px);
   --fs-h2-process: clamp(30px, 3.4vw, 46px);
+  /* W180: the side padding of `.container-site` and the slim bar (the design's `.ja-sec` /
+     `.ja-slim`: 20 px from 900 down), the header row's (`.ja-nav`) and the content box's cap.
+     Final pass A2 (W184): the header row follows the design's own `.ja-nav` paddings below 901 —
+     12 px at ≤ 460, 14 px from 461 to 900 — never the sections' 20 px. */
   --gutter: 20px;
+  --gutter-nav: 12px;
+  --container-max: none;
+}
+@media (min-width: 461px) {
+  :root {
+    --gutter-nav: 14px;
+  }
+}
+/* W11: the header's desktop row is on from 901px (the design's own breakpoint); its links
+   drop to 12px there so seven of them, the language pills and the primary CTA fit a 1100px
+   viewport without the design's zoom hack — a named delta (docs/ARCHITECTURE.md § Quality
+   gate). Not a D19 scale step: the gutters below are the design's authored 901–1100 values
+   (sections and slim bar 48 px, the nav row 32 px — W180), never scaled. */
+@media (min-width: 901px) {
+  :root {
+    --fs-nav: 12px;
+    --gutter: 48px;
+    --gutter-nav: 32px;
+  }
 }
 @media (min-width: 1101px) {
   :root {
@@ -88,15 +123,23 @@
     --fs-card-title: 13.88px;
     --fs-stat: 25.5px;
     --fs-eyebrow: 11px;
+    --fs-nav: 11px;
     --fs-h1: clamp(30px, 3.45vw, 49.5px);
     --fs-h2: clamp(21px, 2.4vw, 31.5px);
     --fs-h2-process: clamp(22.5px, 2.55vw, 34.5px);
-    --gutter: 48px;
+    /* W180: the design's 48 px / 32 px paddings and its 1280 px wrapper, × 0.75 */
+    --gutter: 36px;
+    --gutter-nav: 24px;
+    --container-max: calc(960px + 2 * var(--gutter));
   }
 }
 
 html {
   scroll-behavior: smooth;
+  /* D20 / WCAG 2.4.11 (T5): a page-mounted StickyCtaBar publishes its height as --sticky-cta-h
+     (0px while hidden and below lg); the browser then keeps a focused or scrolled-to control
+     above the bar instead of under it. Nothing moves on a page without a visible bar. */
+  scroll-padding-bottom: var(--sticky-cta-h, 0px);
   color: var(--color-ink);
   background: #fff;
   font-family: var(--font-body);
@@ -112,10 +155,23 @@ h4 {
   font-family: var(--font-display);
   font-weight: 800;
 }
+/* W180 (D19): every design section wraps its content in `max-width:1280px` with 48 px of
+   padding outside it, authored under `zoom: .75` from 1101 px — a 960 px content box with 36 px
+   gutters there; the authored 48 px between 901 and 1100 (where 1280 never binds), 20 px from
+   900 down. Unlayered on purpose: a layered utility (`max-w-[720px]`) never overrides it (W178). */
 .container-site {
-  max-width: 1280px;
+  max-width: var(--container-max);
   margin-inline: auto;
   padding-inline: var(--gutter);
+}
+/* The two chrome rows the design draws full-bleed — padding only, no max-width (W180 as amended by W184): the slim
+   bar on the container's own gutter, the header row on the nav's (32 px authored, 24 from 1101).
+   Their backgrounds and their content both span the viewport, as the design's do. */
+.chrome-row {
+  padding-inline: var(--gutter);
+}
+.chrome-row-nav {
+  padding-inline: var(--gutter-nav);
 }
 
 /* Every animation must stop under reduced motion (README: not optional polish). */
@@ -152,4 +208,100 @@ h4 {
   .marquee-toggle {
     display: none;
   }
+}
+
+/* PrintButton (src/design/islands/PrintButton.tsx): while `body.print-isolating` is set, only
+   the page's `.print-isolate` region prints — the design's own #calculator print rule, made
+   opt-in per page. `.print-hidden` keeps controls (Print, WhatsApp buttons) off paper. */
+@media print {
+  body.print-isolating * {
+    visibility: hidden;
+  }
+  body.print-isolating .print-isolate,
+  body.print-isolating .print-isolate * {
+    visibility: visible;
+  }
+  body.print-isolating .print-isolate {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .print-hidden {
+    display: none !important;
+  }
+}
+
+/* SourceMap (src/design/assets/source-map.generated.tsx): arcs dash in once, source dots pulse.
+   `pathLength="1"` on every arc normalises the dash, so no path length is measured at runtime.
+   Reduced motion: the global rule above collapses both to a single 0.01 ms run, and the block at
+   the end of this section drops the staggered inline delays — arcs render drawn at once, the
+   pulse ring rests at its resting radius. */
+@keyframes source-map-dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+@keyframes source-map-pulse {
+  from {
+    transform: scale(1);
+    opacity: 0.75;
+  }
+  to {
+    transform: scale(3.3);
+    opacity: 0;
+  }
+}
+.source-map__arc {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: source-map-dash 0.9s cubic-bezier(0.33, 1, 0.68, 1) forwards;
+}
+.source-map__pulse {
+  transform-box: fill-box;
+  transform-origin: center;
+  animation: source-map-pulse 1.9s cubic-bezier(0.33, 1, 0.68, 1) infinite;
+}
+@media print {
+  .source-map__arc {
+    animation: none;
+    stroke-dashoffset: 0;
+  }
+  .source-map__pulse {
+    display: none;
+  }
+}
+/* The generated SVG staggers each arc and pulse with an inline `animationDelay`, which the global
+   reduced-motion rule does not reach: without this the arcs stay undrawn and pop in one by one
+   for ~1.5 s. `!important` is what beats an inline style. */
+@media (prefers-reduced-motion: reduce) {
+  .source-map__arc,
+  .source-map__pulse {
+    animation-delay: 0s !important;
+  }
+  .source-map__arc {
+    stroke-dashoffset: 0;
+  }
+}
+/* About hero corridor card: a dot travelling along each lane (the design's `ja-fly`, 6 s,
+   staggered 1.5 s). The global prefers-reduced-motion rule above stops it (D20): the design
+   gave this animation no override of its own. */
+@keyframes about-fly {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+.about-fly {
+  animation: about-fly 6s ease-in-out infinite;
 }

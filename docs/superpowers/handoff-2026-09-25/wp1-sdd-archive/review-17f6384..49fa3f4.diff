@@ -1,0 +1,344 @@
+# Review package: 17f6384..49fa3f4
+
+## Commits
+49fa3f4 fix(redirects): unprefixed English keep routes redirect to /en, live-route guard, redirects doc synced
+
+## Files changed
+ docs/redirects.md           | 22 ++++++++++++++++++++--
+ e2e/redirects.spec.ts       | 16 ++++++++++++++++
+ redirects/legacy.json       | 24 ++++++++++++++++++++++++
+ redirects/redirects.test.ts | 41 ++++++++++++++++++++++++++++++++++-------
+ scripts/build-redirects.ts  | 16 ++++++++++++++--
+ 5 files changed, 108 insertions(+), 11 deletions(-)
+
+## Diff
+diff --git a/docs/redirects.md b/docs/redirects.md
+index 1ee61f3..d2eb718 100644
+--- a/docs/redirects.md
++++ b/docs/redirects.md
+@@ -1,23 +1,41 @@
+ # Redirects — JobsAdmire Website
+ 
+-Full rationale: plan D21. Rules live in code at `next.config.ts` (Vitest-checked for no chains); this doc is the policy record and the forecast.
++Full rationale: plan D21. Rules are decided as data, not written by hand into `next.config.ts`:
++
++1. `redirects/rules.json` — hand-maintained. One row per old route: the old path, an _internal_
++   pathname key from `src/i18n/routing.ts`'s `pathnames` table, and a `keep` / `301` / `410`
++   disposition.
++2. `scripts/build-redirects.ts` (`npm run redirects:build`) — expands each row over every locale
++   prefix the old site served, joins in `redirects/gsc-clicks.csv` (WP0's GSC export; header-only
++   until that lands) to promote a clicked `410` to a `301` via its `RESCUE` map, and writes two
++   generated files.
++3. `redirects/legacy.json` — the expanded 308 redirects, consumed by `next.config.ts`'s
++   `redirects()`. `redirects/gone.json` — the 410 prefixes, consumed by `src/proxy.ts` before it
++   hands off to next-intl.
++
++`redirects/redirects.test.ts` proves the generated table never chains, never redirects a route
++the new site already serves live (a next.config redirect applies to all traffic, so this would
++clobber it — e.g. the shared `/` and `/blog` keep rows), and never sends a redirect's destination
++into a `410` prefix. This doc is the policy record and the forecast.
+ 
+ ## Rules
+ 
+ - **Disposition is GSC-joined, not guessed.** The 517 legacy URL rules identified from the old site are joined against the WP0 GSC export (16 months of clicks/impressions per URL, exported in WP0 item 0 — before the redirect map is decided, not after).
+ - **Any URL with a click in that 16-month window gets a 301 to the nearest relevant live page.** "Nearest relevant" is a human judgment call per URL — there's no mechanical mapping from old URL structure to new.
+ - **Zero-click URLs get `410` (Gone)**, not a redirect to the homepage or any other catch-all. A 410 tells crawlers the page is intentionally removed, which de-indexes faster and cleaner than a soft redirect to an unrelated page.
+ - **Unbounded legacy spaces are `410` outright, not individually mapped:** `/blog/*`, `/job-detail/*`, `/profile/*`. These are old-site patterns with unbounded cardinality (every old blog post, every old job listing, every old candidate profile) — mapping them one-by-one isn't tractable and most have no meaningful "nearest" equivalent on the new 14-page site.
+ - **Dropped locales → `/en/...` equivalents.** The old site served 11 locales; this build serves 2 (D1, D22). Locale prefixes being dropped: `fr`, `de`, `ar`, `ru`, `fa`, `id`, `fil`, `tk`, `tg` — every URL under one of these prefixes redirects to its `/en/...` equivalent (English is the fallback for a dropped locale, not Turkish, since a visitor who explicitly chose e.g. `/de/...` was not choosing Turkish).
+ - **Old `/tr/...` → root Turkish slugs.** The old site prefixed Turkish; this site puts it at the root (D1), so every `/tr/...` URL redirects to the unprefixed equivalent.
+-- **Single hop, permanent, no chains.** Every rule in `next.config.ts` is checked by a Vitest test that resolves the full rule table and fails if any URL requires more than one hop to reach its final destination.
++- **Old unprefixed = English.** The old site's default locale was unprefixed English, and several `keep`-disposition new-site slugs differ between TR and EN (e.g. `/about` is now `/hakkimizda` in Turkish) — so the bare old path redirects to its `/en/...` equivalent instead of colliding with the new Turkish-rooted route or 404ing.
++- **Never redirect a route the new site already serves live.** `/` and `/blog` are shared verbatim between the old and new site; a `next.config` redirect fires for all traffic regardless of locale, so redirecting either would clobber the live route. The generator computes the new site's full set of live external paths from `pathnames` and skips the unprefixed-English add whenever an old path matches one.
++- **Single hop, permanent, no chains, never into a 410.** Every rule in the generated `redirects/legacy.json` is checked by `redirects/redirects.test.ts`, which resolves the full rule table and fails if any URL requires more than one hop, targets a live route, or lands on a `410` prefix.
+ - **Named legacy-to-new mappings already decided:**
+   - `/certifications` → `/hakkimizda#lisans` (the licence PDFs live there now, About Us page, D26 Minimum Launchable Content)
+   - `/contact-us` → `/iletisim`
+   - `/hire-workers-in-turkey` → `/isci-talebi` (TR) / `/en/hire-workers` (EN)
+ 
+ ## Disposition table
+ 
+ _Placeholder — to be filled from the WP0 GSC export joined against the 517-rule legacy inventory. Each row: old URL → GSC clicks (16 mo) → disposition (301 target / 410) → rationale._
+ 
+ | Old URL                         | GSC clicks (16 mo) | Disposition | Target | Rationale |
+diff --git a/e2e/redirects.spec.ts b/e2e/redirects.spec.ts
+index b723279..4c0b5bd 100644
+--- a/e2e/redirects.spec.ts
++++ b/e2e/redirects.spec.ts
+@@ -48,11 +48,27 @@ test.describe('legacy redirects (D21)', () => {
+     const res = await request.get('/blog/anything', { maxRedirects: 0 });
+     expect(res.status()).toBe(410);
+   });
+ 
+   test('/certifications redirects to the licence anchor on About', async ({ request }) => {
+     const res = await request.get('/certifications', { maxRedirects: 0 });
+     expect(res.status()).toBe(308);
+     // Assert exactly what legacy.json says for this rule (#lisans anchor on the EN About page).
+     expect(target(res.headers()['location'], true)).toBe('/en/about#lisans');
+   });
++
++  test('old unprefixed English /about redirects to /en/about (R33)', async ({ request }) => {
++    const res = await request.get('/about', { maxRedirects: 0 });
++    expect(res.status()).toBe(308);
++    expect(target(res.headers()['location'])).toBe('/en/about');
++  });
++
++  test('/blog is a live keep route, never redirected (R33)', async ({ request }) => {
++    // /blog is a 'keep' row and a live path (the root pathnames entry), so R33's live-route
++    // guard must never turn it into a redirect. Its page isn't built in this WP1 slice yet
++    // (only `/[locale]` and `/[locale]/hire-workers` exist), so it 404s rather than 200ing today
++    // — assert "not a redirect" so this doesn't need touching again once the page ships.
++    const res = await request.get('/blog', { maxRedirects: 0 });
++    expect(res.status()).not.toBe(308);
++    expect(res.status()).not.toBe(307);
++  });
+ });
+diff --git a/redirects/legacy.json b/redirects/legacy.json
+index c9d4f8f..8d7b5a4 100644
+--- a/redirects/legacy.json
++++ b/redirects/legacy.json
+@@ -118,20 +118,26 @@
+   "to": "/en",
+   "status": 308,
+   "source": "tk"
+  },
+  {
+   "from": "/tg/home",
+   "to": "/en",
+   "status": 308,
+   "source": "tg"
+  },
++ {
++  "from": "/about",
++  "to": "/en/about",
++  "status": 308,
++  "source": "en"
++ },
+  {
+   "from": "/tr/about",
+   "to": "/hakkimizda",
+   "status": 308,
+   "source": "tr"
+  },
+  {
+   "from": "/fr/about",
+   "to": "/en/about",
+   "status": 308,
+@@ -244,20 +250,26 @@
+   "to": "/en/contact",
+   "status": 308,
+   "source": "tk"
+  },
+  {
+   "from": "/tg/contact-us",
+   "to": "/en/contact",
+   "status": 308,
+   "source": "tg"
+  },
++ {
++  "from": "/work-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "en"
++ },
+  {
+   "from": "/tr/work-permit",
+   "to": "/calisma-izni",
+   "status": 308,
+   "source": "tr"
+  },
+  {
+   "from": "/fr/work-permit",
+   "to": "/en/work-permit",
+   "status": 308,
+@@ -628,20 +640,26 @@
+   "to": "/en/thank-you",
+   "status": 308,
+   "source": "tk"
+  },
+  {
+   "from": "/tg/thankyou",
+   "to": "/en/thank-you",
+   "status": 308,
+   "source": "tg"
+  },
++ {
++  "from": "/privacy",
++  "to": "/en/privacy",
++  "status": 308,
++  "source": "en"
++ },
+  {
+   "from": "/tr/privacy",
+   "to": "/gizlilik",
+   "status": 308,
+   "source": "tr"
+  },
+  {
+   "from": "/fr/privacy",
+   "to": "/en/privacy",
+   "status": 308,
+@@ -688,20 +706,26 @@
+   "to": "/en/privacy",
+   "status": 308,
+   "source": "tk"
+  },
+  {
+   "from": "/tg/privacy",
+   "to": "/en/privacy",
+   "status": 308,
+   "source": "tg"
+  },
++ {
++  "from": "/terms",
++  "to": "/en/terms",
++  "status": 308,
++  "source": "en"
++ },
+  {
+   "from": "/tr/terms",
+   "to": "/kullanim-kosullari",
+   "status": 308,
+   "source": "tr"
+  },
+  {
+   "from": "/fr/terms",
+   "to": "/en/terms",
+   "status": 308,
+diff --git a/redirects/redirects.test.ts b/redirects/redirects.test.ts
+index a3d56a4..163e125 100644
+--- a/redirects/redirects.test.ts
++++ b/redirects/redirects.test.ts
+@@ -1,37 +1,64 @@
+ import { describe, expect, it } from 'vitest';
+-import { buildRedirects, type Rule } from '../scripts/build-redirects';
++import { buildRedirects, LIVE, type Rule } from '../scripts/build-redirects';
+ import rules from './rules.json';
+ 
+ const { redirects, gone } = buildRedirects(rules as Rule[], []);
+ const froms = new Set(redirects.map((r) => r.from));
++const isGone = (path: string) =>
++  gone.some((p) => path === p || path.startsWith(p.endsWith('/') ? p : `${p}/`));
+ 
+ describe('legacy redirects (D21)', () => {
+   it('expands every rule over the 10 dropped locale prefixes + unprefixed en + /tr', () => {
+-    // 50 rules in rules.json: 6 'keep' rows produce entries only for the 9 dropped locales +
+-    // /tr (10 adds each); 24 '301' rows also add an unprefixed /en entry (11 adds each); 20
+-    // '410' rows become gone prefixes instead of redirects.
++    // 50 rules in rules.json: every non-410 rule adds /tr + the 9 dropped locales (10 adds
++    // each), plus an unprefixed /en add unless the old path is itself a live route on the new
++    // site (R33) — only the shared '/' and '/blog' keep rows are guarded, so 4 of the 6 'keep'
++    // rows and all 24 '301' rows get that 11th add. 20 '410' rows become gone prefixes instead.
+     expect(redirects.length + gone.length).toBeGreaterThan(250);
+-    // Pinned to the generator's actual first-run output (`npm run redirects:build`). These
+-    // numbers change only when redirects/rules.json changes.
+-    expect(redirects.length).toBe(324);
++    // Pinned to the generator's actual output (`npm run redirects:build`). These numbers change
++    // only when redirects/rules.json (or the pathnames table it targets) changes.
++    expect(redirects.length).toBe(328);
+     expect(gone.length).toBe(20);
+   });
+   it('never chains: no destination is another rule source', () => {
+     for (const r of redirects) expect(froms.has(r.to), `${r.from} → ${r.to} chains`).toBe(false);
+   });
++  it('never redirects a live route', () => {
++    // A next.config redirect applies to all traffic, so a legacy rule must never fire on a path
++    // the new site already serves (R33) — e.g. the shared '/' and '/blog' keep rows.
++    for (const r of redirects) {
++      expect(LIVE.has(r.from), `${r.from} is a live route and must not redirect`).toBe(false);
++    }
++  });
++  it('old unprefixed English keep routes land on /en', () => {
++    // The old site was English-unprefixed; these 'keep' rows now have different TR slugs
++    // (/hakkimizda, /calisma-izni, /gizlilik, /kullanim-kosullari), so the bare old path must
++    // redirect to the new /en equivalent instead of 404ing (R33).
++    expect(redirects.find((r) => r.from === '/about')?.to).toBe('/en/about');
++    expect(redirects.find((r) => r.from === '/work-permit')?.to).toBe('/en/work-permit');
++    expect(redirects.find((r) => r.from === '/privacy')?.to).toBe('/en/privacy');
++    expect(redirects.find((r) => r.from === '/terms')?.to).toBe('/en/terms');
++  });
+   it('old /tr/* goes to the unprefixed Turkish slug, everything else to /en', () => {
+     expect(redirects.find((r) => r.from === '/tr/hire-workers-in-turkey')?.to).toBe('/isci-talebi');
+     expect(redirects.find((r) => r.from === '/hire-workers-in-turkey')?.to).toBe(
+       '/en/hire-workers',
+     );
+     expect(redirects.find((r) => r.from === '/de/contact-us')?.to).toBe('/en/contact');
+   });
+   it('a clicked 410 route is promoted to a 301 (GSC join)', () => {
+     const { redirects: r2 } = buildRedirects(rules as Rule[], [{ url: '/visa', clicks: 12 }]);
+     expect(r2.find((r) => r.from === '/visa')?.to).toBe('/en/work-permit');
+   });
+   it('unbounded spaces are 410 prefixes', () => {
+     expect(gone).toContain('/blog/');
+     expect(gone).toContain('/job-detail/');
+   });
++  it('no destination is swallowed by a 410 prefix', () => {
++    // Same prefix semantics as src/proxy.ts's GONE check; the hash (if any) is client-only and
++    // never sent to the server, so it's stripped before checking.
++    for (const r of redirects) {
++      const pathname = r.to.split('#')[0];
++      expect(isGone(pathname), `${r.from} → ${r.to} lands on a 410 prefix`).toBe(false);
++    }
++  });
+ });
+diff --git a/scripts/build-redirects.ts b/scripts/build-redirects.ts
+index 4717a31..3fb7811 100644
+--- a/scripts/build-redirects.ts
++++ b/scripts/build-redirects.ts
+@@ -16,20 +16,32 @@ const RESCUE: Record<string, string> = {
+ };
+ 
+ function external(locale: 'tr' | 'en', internal: string): string {
+   const [path, hash] = internal.split('#');
+   const p = pathnames[path as keyof typeof pathnames];
+   const ext = typeof p === 'string' ? p : p[locale];
+   const withPrefix = locale === 'en' ? `/en${ext === '/' ? '' : ext}` : ext;
+   return `${withPrefix || '/'}${hash ? `#${hash}` : ''}`;
+ }
+ 
++/**
++ * Every external path the new site already serves (TR at the root, EN under /en) — R33. A
++ * next.config redirect applies to all traffic, so a legacy rule whose old unprefixed `from`
++ * happens to already be a live route on the new site (e.g. the shared '/' and '/blog' keep
++ * rows) must never get the unprefixed-English add below, or it would clobber that live route.
++ */
++export const LIVE = new Set(
++  Object.values(pathnames).flatMap((p) =>
++    typeof p === 'string' ? [p, `/en${p === '/' ? '' : p}`] : [p.tr, `/en${p.en}`],
++  ),
++);
++
+ export function buildRedirects(rules: Rule[], clicks: Click[]) {
+   const clicked = new Map(clicks.map((c) => [c.url, c.clicks]));
+   const redirects: { from: string; to: string; status: 308; source: string }[] = [];
+   const gone: string[] = [];
+   const add = (from: string, to: string, source: string) => {
+     if (from !== to) redirects.push({ from, to, status: 308, source });
+   };
+   for (const rule of rules) {
+     const wildcard = rule.from.endsWith('/*');
+     const base = wildcard ? rule.from.slice(0, -1) : rule.from;
+@@ -37,22 +49,22 @@ export function buildRedirects(rules: Rule[], clicks: Click[]) {
+     let to = rule.to;
+     if (disposition === '410' && (clicked.get(rule.from) ?? 0) > 0 && RESCUE[rule.from]) {
+       disposition = '301';
+       to = RESCUE[rule.from];
+     }
+     if (disposition === '410') {
+       gone.push(wildcard ? base : rule.from);
+       continue;
+     }
+     const target = to ?? rule.from;
+-    // old unprefixed = English
+-    if (disposition === '301') add(rule.from, external('en', target), 'en');
++    // old unprefixed = English, unless the old path is itself a live route on the new site
++    if (!LIVE.has(rule.from)) add(rule.from, external('en', target), 'en');
+     // old /tr → Turkish root slug; dropped locales → English
+     add(`/tr${rule.from === '/' ? '' : rule.from}`, external('tr', target), 'tr');
+     for (const l of DROPPED)
+       add(`/${l}${rule.from === '/' ? '' : rule.from}`, external('en', target), l);
+   }
+   return { redirects, gone: Array.from(new Set(gone)) };
+ }
+ 
+ if (require.main === module) {
+   const rules = JSON.parse(

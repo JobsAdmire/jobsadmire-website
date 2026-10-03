@@ -1,0 +1,8 @@
+describe('LanguageHint stacking (W18)', () => {
+  it('offsets the sheet above a mounted StickyCtaBar', () => {
+    // Eligible for the same reasons as the cases above: jsdom's navigator.languages is
+    // ['en-US', 'en'] and the storage read falls into its catch, so "not dismissed".
+    renderWithIntl(<LanguageHint locale="tr" />);
+    expect(screen.getByRole('region').className).toContain('var(--sticky-cta-h,0px)');
+  });
+});

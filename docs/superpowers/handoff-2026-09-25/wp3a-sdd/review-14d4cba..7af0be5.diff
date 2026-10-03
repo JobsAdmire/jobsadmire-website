@@ -1,0 +1,751 @@
+# Review package: 14d4cba..7af0be5
+
+## Commits
+7af0be5 fix(website): forms core hardening — escaped spec bytes, operator captcha codes degrade (X7), honeypot-safe dedupe (X8), fail-open trip check, log hygiene
+
+## Files changed
+ .../website/website-captcha.service.spec.ts        |  20 +++
+ .../src/modules/website/website-captcha.service.ts |  36 +++++-
+ .../modules/website/website-form-catalog.spec.ts   | Bin 7265 -> 7612 bytes
+ .../src/modules/website/website-form-catalog.ts    |   3 +-
+ .../modules/website/website-forms.logic.spec.ts    |  25 ++--
+ .../src/modules/website/website-forms.logic.ts     |  17 ++-
+ .../modules/website/website-forms.service.spec.ts  | 102 +++++++++++++++-
+ .../src/modules/website/website-forms.service.ts   | 135 ++++++++++++++++-----
+ 8 files changed, 290 insertions(+), 48 deletions(-)
+
+## Diff
+diff --git a/apps/backend/src/modules/website/website-captcha.service.spec.ts b/apps/backend/src/modules/website/website-captcha.service.spec.ts
+index 4898592..8141269 100644
+--- a/apps/backend/src/modules/website/website-captcha.service.spec.ts
++++ b/apps/backend/src/modules/website/website-captcha.service.spec.ts
+@@ -47,20 +47,40 @@ describe('WebsiteCaptchaService', () => {
+     expect(init.method).toBe('POST');
+     expect(String(init.body)).toBe('secret=turnstile-secret&response=tok&remoteip=203.0.113.9');
+     expect(config.resolveSecrets).toHaveBeenCalledTimes(1);
+   });
+ 
+   it('success:false → failed with Cloudflare error codes', async () => {
+     const { svc } = make('s', jest.fn(async () => ({ ok: true, status: 200, json: async () => ({ success: false, 'error-codes': ['timeout-or-duplicate'] }) })));
+     await expect(svc.verify('tok', null)).resolves.toEqual({ outcome: 'failed', codes: ['timeout-or-duplicate'] });
+   });
+ 
++  it('X7: a secret Cloudflare rejects (invalid-input-secret / missing-input-secret) → degraded(secretInvalid), never a 403 for the visitor', async () => {
++    const a = make('mis-pasted', jest.fn(async () => ({ ok: true, status: 200, json: async () => ({ success: false, 'error-codes': ['invalid-input-secret'] }) })));
++    await expect(a.svc.verify('tok', null)).resolves.toEqual({ outcome: 'degraded', reason: 'secretInvalid' });
++    const b = make('mis-pasted', jest.fn(async () => ({ ok: true, status: 200, json: async () => ({ success: false, 'error-codes': ['missing-input-secret', 'invalid-input-response'] }) })));
++    await expect(b.svc.verify('tok', null)).resolves.toEqual({ outcome: 'degraded', reason: 'secretInvalid' });
++  });
++
++  it('X7: internal-error / bad-request in error-codes → degraded(httpError); visitor codes and unknown codes stay failed', async () => {
++    const a = make('s', jest.fn(async () => ({ ok: true, status: 200, json: async () => ({ success: false, 'error-codes': ['internal-error'] }) })));
++    await expect(a.svc.verify('tok', null)).resolves.toEqual({ outcome: 'degraded', reason: 'httpError' });
++    const b = make('s', jest.fn(async () => ({ ok: true, status: 200, json: async () => ({ success: false, 'error-codes': ['bad-request'] }) })));
++    await expect(b.svc.verify('tok', null)).resolves.toEqual({ outcome: 'degraded', reason: 'httpError' });
++    for (const code of ['invalid-input-response', 'timeout-or-duplicate', 'missing-input-response', 'something-new']) {
++      const c = make('s', jest.fn(async () => ({ ok: true, status: 200, json: async () => ({ success: false, 'error-codes': [code] }) })));
++      await expect(c.svc.verify('tok', null)).resolves.toEqual({ outcome: 'failed', codes: [code] });
++    }
++    const none = make('s', jest.fn(async () => ({ ok: true, status: 200, json: async () => ({ success: false }) })));
++    await expect(none.svc.verify('tok', null)).resolves.toEqual({ outcome: 'failed', codes: [] });
++  });
++
+   it('HTTP 5xx → degraded(httpError); a thrown fetch (timeout, DNS) → degraded(unreachable)', async () => {
+     const a = make('s', jest.fn(async () => ({ ok: false, status: 503, json: async () => ({}) })));
+     await expect(a.svc.verify('tok', null)).resolves.toEqual({ outcome: 'degraded', reason: 'httpError' });
+     const b = make('s', jest.fn(async () => { throw new Error('fetch failed'); }));
+     await expect(b.svc.verify('tok', null)).resolves.toEqual({ outcome: 'degraded', reason: 'unreachable' });
+   });
+ 
+   it('a secret resolver that throws (ENCRYPTION_KEY unset → 503 inside resolveSecrets) degrades instead of 500-ing the door', async () => {
+     const config = { resolveSecrets: jest.fn(async () => { throw new Error('ENCRYPTION_KEY is not configured.'); }) };
+     const svc = new WebsiteCaptchaService(config as never);
+diff --git a/apps/backend/src/modules/website/website-captcha.service.ts b/apps/backend/src/modules/website/website-captcha.service.ts
+index 2684298..e9d759f 100644
+--- a/apps/backend/src/modules/website/website-captcha.service.ts
++++ b/apps/backend/src/modules/website/website-captcha.service.ts
+@@ -1,33 +1,51 @@
+ import { Injectable, Logger } from '@nestjs/common';
+ import { WebsiteIntegrationConfigService } from './website-integration-config.service';
+ 
++/** Why the door accepted without a verified widget (RC7; Task 10 puts it in the alarm's `detail`). */
++export type WebsiteCaptchaDegradedReason = 'secretMissing' | 'secretInvalid' | 'httpError' | 'unreachable';
++
+ export type WebsiteCaptchaVerdict =
+   | { outcome: 'passed' }
+   | { outcome: 'failed'; codes: string[] }
+-  | { outcome: 'degraded'; reason: 'secretMissing' | 'httpError' | 'unreachable' };
++  | { outcome: 'degraded'; reason: WebsiteCaptchaDegradedReason };
+ 
+ const SITEVERIFY = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
+ /** Under the website server action's own budget; careers-public uses 10 s. */
+ const VERIFY_TIMEOUT_MS = 6_000;
+ 
++/**
++ * X7: Cloudflare's `error-codes` that are OUR fault, not the visitor's. A rejected or
++ * missing secret means the operator mis-pasted it on the Integrations screen; an
++ * `internal-error` / `bad-request` is Cloudflare or our request. Either must raise the
++ * captchaDegraded alarm and let the lead through — never silently 403 every visitor
++ * until someone notices the inbox went quiet.
++ */
++const SECRET_CODES = new Set(['invalid-input-secret', 'missing-input-secret']);
++const SERVICE_CODES = new Set(['internal-error', 'bad-request']);
++
+ /**
+  * Turnstile for the marketing site (P6) — a SIBLING of careers-public's CaptchaService,
+  * not a change to it: that one reads an env secret and fails CLOSED on a Cloudflare
+  * outage, which is right for a job application and wrong for a lead door (D11: auth
+  * failures fail closed, captcha INFRASTRUCTURE failures degrade). The secret is the one
+  * on WebsiteIntegrationConfig, read through Task 4's cached, per-secret-try/catch
+  * `resolveSecrets()` (one Cloudflare widget lists both hostnames — P6).
+  *
+  *   passed   → the visitor solved the widget
+- *   failed   → Cloudflare said no, or a secret is set and no token came → 403 upstream
+- *   degraded → no usable secret, HTTP error, timeout → accepted upstream with
++ *   failed   → Cloudflare rejected the VISITOR's token (`invalid-input-response`,
++ *              `timeout-or-duplicate`, `missing-input-response`, anything unknown), or a
++ *              secret is set and no token came → 403 upstream
++ *   degraded → no usable secret (`secretMissing`), a secret Cloudflare rejects
++ *              (`secretInvalid` — X7: a mis-pasted secret must raise the alarm, never
++ *              silently 403 every lead), HTTP error / `internal-error` / `bad-request`
++ *              (`httpError`), timeout or DNS (`unreachable`) → accepted upstream with
+  *              captchaDegraded=true and a once-per-window WEBSITE_FORMS_UNAVAILABLE
+  *
+  * Never returns a bare `true`; the caller must look at the verdict (RC7).
+  */
+ @Injectable()
+ export class WebsiteCaptchaService {
+   private readonly logger = new Logger(WebsiteCaptchaService.name);
+ 
+   constructor(private readonly config: WebsiteIntegrationConfigService) {}
+ 
+@@ -57,17 +75,27 @@ export class WebsiteCaptchaService {
+         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+         body: params.toString(),
+         signal: AbortSignal.timeout(VERIFY_TIMEOUT_MS),
+       });
+       if (!res.ok) {
+         this.logger.warn(`Turnstile siteverify HTTP ${res.status} — degrading`);
+         return { outcome: 'degraded', reason: 'httpError' };
+       }
+       const body = (await res.json()) as { success?: boolean; 'error-codes'?: string[] };
+       if (body.success === true) return { outcome: 'passed' };
+-      return { outcome: 'failed', codes: body['error-codes'] ?? [] };
++      const codes = body['error-codes'] ?? [];
++      // X7: classify by whose fault it is before calling it the visitor's.
++      if (codes.some((c) => SECRET_CODES.has(c))) {
++        this.logger.warn(`Turnstile rejected the stored secret (${codes.join(', ')}) — degrading`);
++        return { outcome: 'degraded', reason: 'secretInvalid' };
++      }
++      if (codes.some((c) => SERVICE_CODES.has(c))) {
++        this.logger.warn(`Turnstile siteverify answered ${codes.join(', ')} — degrading`);
++        return { outcome: 'degraded', reason: 'httpError' };
++      }
++      return { outcome: 'failed', codes };
+     } catch (err) {
+       this.logger.warn(`Turnstile siteverify unreachable — degrading: ${(err as Error).message}`);
+       return { outcome: 'degraded', reason: 'unreachable' };
+     }
+   }
+ }
+diff --git a/apps/backend/src/modules/website/website-form-catalog.spec.ts b/apps/backend/src/modules/website/website-form-catalog.spec.ts
+index c1c0323..c2e428a 100644
+Binary files a/apps/backend/src/modules/website/website-form-catalog.spec.ts and b/apps/backend/src/modules/website/website-form-catalog.spec.ts differ
+diff --git a/apps/backend/src/modules/website/website-form-catalog.ts b/apps/backend/src/modules/website/website-form-catalog.ts
+index eed3ef1..5467cd0 100644
+--- a/apps/backend/src/modules/website/website-form-catalog.ts
++++ b/apps/backend/src/modules/website/website-form-catalog.ts
+@@ -229,13 +229,14 @@ export function normalizeWebsiteFields(formKey: string, raw: unknown): Normalize
+       case 'key':
+       case 'text':
+       default:
+         if (f.pattern && !f.pattern.test(s)) errors.push(`${key} has an unexpected format`);
+         break;
+     }
+     fields[key] = s;
+   }
+ 
+   if (errors.length) return { ok: false, errors };
+-  const dropped = Object.keys(input).filter((k) => !(k in spec.fields));
++  // Own keys only: `in` would also see `constructor` / `toString` up the prototype chain.
++  const dropped = Object.keys(input).filter((k) => !Object.hasOwn(spec.fields, k));
+   return { ok: true, fields, dropped };
+ }
+diff --git a/apps/backend/src/modules/website/website-forms.logic.spec.ts b/apps/backend/src/modules/website/website-forms.logic.spec.ts
+index 74b96f7..26de965 100644
+--- a/apps/backend/src/modules/website/website-forms.logic.spec.ts
++++ b/apps/backend/src/modules/website/website-forms.logic.spec.ts
+@@ -1,31 +1,33 @@
+ // apps/backend/src/modules/website/website-forms.logic.spec.ts
+ /** WP3a — pure pieces of the intake door: the dedupe key, the hour bucket, the purge date and
+  *  the trusted-visitor-IP pick. */
+ import { Prisma } from '@prisma/client';
+ import {
+   hourBucketFor, isUniqueViolation, purgeAfterFor, requestHashFor, visitorIpFromHeaders, visitorUserAgentFromHeaders,
+ } from './website-forms.logic';
+ 
+ describe('website-forms.logic', () => {
+-  it('requestHashFor is key-order independent, and changes with formKey, locale, isTest or any field', () => {
+-    const a = requestHashFor({ formKey: 'hire', isTest: false, locale: 'tr', fields: { name: 'A', email: 'a@b.co' } });
+-    const b = requestHashFor({ formKey: 'hire', isTest: false, locale: 'tr', fields: { email: 'a@b.co', name: 'A' } });
++  it('requestHashFor is key-order independent, and changes with formKey, locale, isTest, honeypot (X8) or any field', () => {
++    const a = requestHashFor({ formKey: 'hire', isTest: false, honeypot: false, locale: 'tr', fields: { name: 'A', email: 'a@b.co' } });
++    const b = requestHashFor({ formKey: 'hire', isTest: false, honeypot: false, locale: 'tr', fields: { email: 'a@b.co', name: 'A' } });
+     expect(a).toBe(b);
+     expect(a).toMatch(/^[0-9a-f]{64}$/);
+-    expect(requestHashFor({ formKey: 'contact', isTest: false, locale: 'tr', fields: { name: 'A', email: 'a@b.co' } })).not.toBe(a);
+-    expect(requestHashFor({ formKey: 'hire', isTest: true, locale: 'tr', fields: { name: 'A', email: 'a@b.co' } })).not.toBe(a);
+-    expect(requestHashFor({ formKey: 'hire', isTest: false, locale: 'en', fields: { name: 'A', email: 'a@b.co' } })).not.toBe(a);
+-    expect(requestHashFor({ formKey: 'hire', isTest: false, locale: 'tr', fields: { name: 'A', email: 'a@b.co', phone: '1' } })).not.toBe(a);
++    expect(requestHashFor({ formKey: 'contact', isTest: false, honeypot: false, locale: 'tr', fields: { name: 'A', email: 'a@b.co' } })).not.toBe(a);
++    expect(requestHashFor({ formKey: 'hire', isTest: true, honeypot: false, locale: 'tr', fields: { name: 'A', email: 'a@b.co' } })).not.toBe(a);
++    expect(requestHashFor({ formKey: 'hire', isTest: false, honeypot: false, locale: 'en', fields: { name: 'A', email: 'a@b.co' } })).not.toBe(a);
++    // X8: an autofilled honeypot (SPAM row) must never occupy the unique key the honest resubmission needs.
++    expect(requestHashFor({ formKey: 'hire', isTest: false, honeypot: true, locale: 'tr', fields: { name: 'A', email: 'a@b.co' } })).not.toBe(a);
++    expect(requestHashFor({ formKey: 'hire', isTest: false, honeypot: false, locale: 'tr', fields: { name: 'A', email: 'a@b.co', phone: '1' } })).not.toBe(a);
+     // A list value participates in order (evidence keys are already de-duplicated by the catalog).
+-    const withList = requestHashFor({ formKey: 'fraud', isTest: false, locale: 'tr', fields: { description: 'x', evidenceKeys: ['website-fraud/a', 'website-fraud/b'] } });
+-    expect(requestHashFor({ formKey: 'fraud', isTest: false, locale: 'tr', fields: { description: 'x', evidenceKeys: ['website-fraud/b', 'website-fraud/a'] } })).not.toBe(withList);
++    const withList = requestHashFor({ formKey: 'fraud', isTest: false, honeypot: false, locale: 'tr', fields: { description: 'x', evidenceKeys: ['website-fraud/a', 'website-fraud/b'] } });
++    expect(requestHashFor({ formKey: 'fraud', isTest: false, honeypot: false, locale: 'tr', fields: { description: 'x', evidenceKeys: ['website-fraud/b', 'website-fraud/a'] } })).not.toBe(withList);
+   });
+ 
+   it('hourBucketFor floors to epoch hours; purgeAfterFor is 90 days later', () => {
+     const t = new Date('2026-09-19T10:59:59.000Z');
+     expect(hourBucketFor(t)).toBe(Math.floor(t.getTime() / 3_600_000));
+     expect(hourBucketFor(new Date('2026-09-19T11:00:00.000Z'))).toBe(hourBucketFor(t) + 1);
+     expect(purgeAfterFor(t).toISOString()).toBe('2026-12-18T10:59:59.000Z');
+   });
+ 
+   it('isUniqueViolation recognises P2002 and nothing else', () => {
+@@ -43,12 +45,17 @@ describe('website-forms.logic', () => {
+     expect(visitorIpFromHeaders({ 'x-forwarded-for': ['198.51.100.2'] }, '127.0.0.1')).toBe('198.51.100.2');
+     expect(visitorIpFromHeaders({}, '127.0.0.1')).toBe('127.0.0.1');
+     expect(visitorIpFromHeaders({}, null)).toBeNull();
+   });
+ 
+   it('visitor UA: the forwarded header wins, else the request UA, sliced to 500', () => {
+     expect(visitorUserAgentFromHeaders({ 'x-website-visitor-ua': 'Safari', 'user-agent': 'node-fetch' })).toBe('Safari');
+     expect(visitorUserAgentFromHeaders({ 'user-agent': 'node-fetch' })).toBe('node-fetch');
+     expect(visitorUserAgentFromHeaders({ 'user-agent': 'x'.repeat(600) })).toHaveLength(500);
+     expect(visitorUserAgentFromHeaders({})).toBeNull();
++    // A real UA has commas; it is the header as sent, trimmed, never split.
++    const chrome = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/129.0 Safari/537.36';
++    expect(visitorUserAgentFromHeaders({ 'x-website-visitor-ua': `  ${chrome}  ` })).toBe(chrome);
++    expect(visitorUserAgentFromHeaders({ 'user-agent': [chrome, 'second'] })).toBe(chrome);
++    expect(visitorUserAgentFromHeaders({ 'x-website-visitor-ua': '   ', 'user-agent': 'node-fetch' })).toBe('node-fetch');
+   });
+ });
+diff --git a/apps/backend/src/modules/website/website-forms.logic.ts b/apps/backend/src/modules/website/website-forms.logic.ts
+index 6d8dd7b..49c3ac3 100644
+--- a/apps/backend/src/modules/website/website-forms.logic.ts
++++ b/apps/backend/src/modules/website/website-forms.logic.ts
+@@ -2,34 +2,38 @@ import { createHash } from 'crypto';
+ import { isIP } from 'net';
+ import { Prisma } from '@prisma/client';
+ import type { WebsiteFieldValue } from './website-form-catalog';
+ 
+ export const WEBSITE_PURGE_DAYS = 90;
+ const HOUR_MS = 3_600_000;
+ 
+ export interface RequestHashInput {
+   formKey: string;
+   isTest: boolean;
++  /** X8: a filled honeypot hashes apart from the same text sent honestly. */
++  honeypot: boolean;
+   locale: string;
+   fields: Record<string, WebsiteFieldValue>;
+ }
+ 
+ /**
+  * sha256 of the canonical (key-sorted) payload. With `hourBucket` it is the row's unique
+  * key (P8, D11): the same payload inside one hour is ONE row and a replay of the first
+  * answer. `isTest` is part of the hash so a heartbeat can never mask a real lead with
+- * the same text.
++ * the same text; `honeypot` is part of it (ruling X8) so a browser autofill that tripped
++ * the hidden input — filed SPAM — can never shadow the visitor's real resubmission of
++ * the same text inside the hour.
+  */
+ export function requestHashFor(input: RequestHashInput): string {
+   const fields = Object.fromEntries(Object.entries(input.fields).sort(([a], [b]) => (a < b ? -1 : a > b ? 1 : 0)));
+   return createHash('sha256')
+-    .update(JSON.stringify({ formKey: input.formKey, isTest: input.isTest, locale: input.locale, fields }))
++    .update(JSON.stringify({ formKey: input.formKey, isTest: input.isTest, honeypot: input.honeypot, locale: input.locale, fields }))
+     .digest('hex');
+ }
+ 
+ export function hourBucketFor(now: Date): number {
+   return Math.floor(now.getTime() / HOUR_MS);
+ }
+ 
+ /** P10: 90 days after HANDLED (also stamped on SPAM rows at creation). */
+ export function purgeAfterFor(from: Date): Date {
+   return new Date(from.getTime() + WEBSITE_PURGE_DAYS * 24 * HOUR_MS);
+@@ -56,14 +60,21 @@ function first(h: string | string[] | undefined): string | null {
+  * mirror careers-public.controller.ts:426-436.
+  */
+ export function visitorIpFromHeaders(headers: HeaderBag, socketAddress: string | null | undefined): string | null {
+   const forwarded = first(headers['x-website-visitor-ip']);
+   if (forwarded && isIP(forwarded) !== 0) return forwarded;
+   const xff = first(headers['x-forwarded-for']);
+   if (xff) return xff;
+   return socketAddress ?? null;
+ }
+ 
++/** The header as sent — no comma split, which would cut a real UA at "(KHTML, like Gecko)". */
++function raw(h: string | string[] | undefined): string | null {
++  const v = Array.isArray(h) ? h[0] : h;
++  const trimmed = typeof v === 'string' ? v.trim() : '';
++  return trimmed.length ? trimmed : null;
++}
++
+ export function visitorUserAgentFromHeaders(headers: HeaderBag): string | null {
+-  const ua = first(headers['x-website-visitor-ua']) ?? first(headers['user-agent']);
++  const ua = raw(headers['x-website-visitor-ua']) ?? raw(headers['user-agent']);
+   return ua ? ua.slice(0, 500) : null;
+ }
+diff --git a/apps/backend/src/modules/website/website-forms.service.spec.ts b/apps/backend/src/modules/website/website-forms.service.spec.ts
+index 75af8f7..14dec1e 100644
+--- a/apps/backend/src/modules/website/website-forms.service.spec.ts
++++ b/apps/backend/src/modules/website/website-forms.service.spec.ts
+@@ -1,20 +1,20 @@
+ // apps/backend/src/modules/website/website-forms.service.spec.ts
+ /**
+  * WP3a P8 — the intake door's ordering is the whole point: form → trip → whitelist →
+  * honeypot → captcha → the submission ROW (dedupe by unique key, P2002 replays the prior
+  * answer) → the handler → post-steps that may warn but never throw. A row written before
+  * the handler is what makes a website retry safe; a throw after it is what would file a
+  * lead twice. RC6: every alarm/notification goes through WebsiteNotifyService,
+  * WebsiteAbuseService owns the trip, WebsiteAutoresponderService the visitor mail.
+  */
+-import { BadRequestException, ForbiddenException, HttpException, NotFoundException } from '@nestjs/common';
++import { BadRequestException, ForbiddenException, HttpException, Logger, NotFoundException } from '@nestjs/common';
+ import { ActivityType, Prisma, WebsiteFormKind, WebsiteSubmissionStatus, WebsiteTokenClass } from '@prisma/client';
+ import { WebsiteFormsService, WEBSITE_SYSTEM_ACTOR } from './website-forms.service';
+ import { WebsiteFormHandlerRegistry, WebsiteFormHandler, WebsiteFormHandlerInput } from './website-form-handler';
+ 
+ type Args = Record<string, unknown>;
+ 
+ interface MakeOver {
+   verdict?: { outcome: 'passed' } | { outcome: 'failed'; codes: string[] } | { outcome: 'degraded'; reason: 'secretMissing' | 'httpError' | 'unreachable' };
+   formRow?: { id: string; formKey: string; kind: WebsiteFormKind; isActive: boolean } | null;
+   tripped?: boolean;
+@@ -303,19 +303,119 @@ describe('WebsiteFormsService.submit', () => {
+     expect((badErr as BadRequestException).getResponse()).toMatchObject({ message: 'Invalid form fields', errors: expect.arrayContaining(['name is required', 'email must be an e-mail address']) });
+     expect(bad.prisma.websiteFormSubmission.create).not.toHaveBeenCalled();
+   });
+ 
+   it('a form row missing from the DB is created from the catalog (newsletter inactive by default) — the seed is a convenience, not a dependency', async () => {
+     const { svc, prisma } = make({ formRow: null });
+     await expect(svc.submit('newsletter', { ...DTO, fields: { email: 'a@b.co' } }, CTX)).rejects.toBeInstanceOf(NotFoundException);
+     expect(prisma.websiteForm.create).toHaveBeenCalledWith({ data: { formKey: 'newsletter', kind: WebsiteFormKind.NEWSLETTER, label: 'Newsletter sign-up', isActive: false } });
+   });
+ 
++  it('X8: an autofilled honeypot (SPAM) and the visitor\'s honest resubmission of the same text inside the hour are TWO rows — the second is handled', async () => {
++    const { svc, prisma, handler } = make();
++    // Simulate the @@unique([formKey, requestHash, hourBucket]) constraint on the double.
++    const seen = new Map<string, Record<string, unknown>>();
++    let n = 0;
++    prisma.websiteFormSubmission.create.mockImplementation(async (a: Record<string, unknown>) => {
++      const d = a.data as { formKey: string; requestHash: string; hourBucket: number };
++      const key = `${d.formKey}|${d.requestHash}|${d.hourBucket}`;
++      if (seen.has(key)) throw new Prisma.PrismaClientKnownRequestError('dup', { code: 'P2002', clientVersion: 'test' });
++      const row = { id: `sub${++n}`, handlerResultJson: null, createdEntityType: null, createdEntityId: null, purgeAfter: null, ...(a.data as object) };
++      seen.set(key, row);
++      return row;
++    });
++    prisma.websiteFormSubmission.findUnique.mockImplementation(async (a: Record<string, unknown>) => {
++      const w = (a.where as { formKey_requestHash_hourBucket: { formKey: string; requestHash: string; hourBucket: number } }).formKey_requestHash_hourBucket;
++      return seen.get(`${w.formKey}|${w.requestHash}|${w.hourBucket}`) ?? null;
++    });
++    prisma.websiteFormSubmission.update.mockImplementation(async (a: Record<string, unknown>) => {
++      const id = (a.where as { id: string }).id;
++      const row = [...seen.values()].find((r) => r.id === id)!;
++      Object.assign(row, a.data as object);
++      return { ...row };
++    });
++
++    const spam = await svc.submit('hire', { ...DTO, honeypot: 'http://autofill' }, CTX);
++    const real = await svc.submit('hire', DTO, CTX);
++    expect(spam.data).toMatchObject({ id: 'sub1', status: 'SPAM', replayed: false });
++    expect(real.data).toMatchObject({ id: 'sub2', status: 'HANDLED', replayed: false });
++    expect(prisma.websiteFormSubmission.create).toHaveBeenCalledTimes(2);
++    const [a, b] = prisma.websiteFormSubmission.create.mock.calls.map((c) => (c[0].data as { requestHash: string }).requestHash);
++    expect(a).not.toBe(b);
++    expect(handler.handle).toHaveBeenCalledTimes(1);
++    // And the honest text resent again IS a replay of the handled row, not of the SPAM one.
++    const again = await svc.submit('hire', DTO, CTX);
++    expect(again.data).toMatchObject({ id: 'sub2', status: 'HANDLED', replayed: true });
++  });
++
++  it('the trip check fails OPEN: a rejecting abuse.isTripped lets the submission through (no 429, row written)', async () => {
++    const { svc, prisma, abuse } = make();
++    abuse.isTripped.mockRejectedValueOnce(new Error('redis down') as never);
++    const res = await svc.submit('hire', DTO, CTX);
++    expect(res.data.status).toBe('HANDLED');
++    expect(prisma.websiteFormSubmission.create).toHaveBeenCalledTimes(1);
++  });
++
++  it('a collaborator that throws SYNCHRONOUSLY after the row (not a rejected promise) is contained too', async () => {
++    const { svc, notify, autoresponder, abuse, activity } = make();
++    abuse.recordVerified.mockImplementationOnce((() => { throw new Error('sync redis'); }) as never);
++    activity.log.mockImplementation((() => { throw new Error('sync activity'); }) as never);
++    notify.formReceived.mockImplementationOnce((() => { throw new Error('sync bull'); }) as never);
++    autoresponder.send.mockImplementationOnce((() => { throw new Error('sync smtp'); }) as never);
++    const res = await svc.submit('hire', DTO, CTX);
++    expect(res.data.status).toBe('HANDLED');
++  });
++
++  it('ActivityEvent.details carries only whitelisted handler detail keys — never the visitor\'s e-mail, name or free text', async () => {
++    const chatty: WebsiteFormHandler = {
++      kinds: [WebsiteFormKind.INQUIRY],
++      handle: jest.fn(async () => ({
++        ok: true as const, createdEntityType: 'inquiry' as const, createdEntityId: 'inq1',
++        detail: { inquiryNumber: 'INQ-2026-002', assignedAgentId: 'u9', alreadyReceived: false, contactName: 'Ayşe Yılmaz', email: 'a@b.co', note: 'called twice, angry' },
++      })),
++    };
++    const { svc, activity, notify } = make({ handler: chatty });
++    await svc.submit('hire', DTO, CTX);
++    const handled = (activity.log as jest.Mock).mock.calls.map((c) => c[0] as { type: ActivityType; details?: Record<string, unknown> }).find((c) => c.type === ActivityType.WEBSITE_SUBMISSION_HANDLED)!;
++    expect(handled.details).toEqual({ formKey: 'hire', kind: WebsiteFormKind.INQUIRY, rerun: false, inquiryNumber: 'INQ-2026-002', assignedAgentId: 'u9', alreadyReceived: false });
++    expect(JSON.stringify(handled.details)).not.toMatch(/a@b\.co|Ayşe|angry/);
++    // The notification still gets the name (it is the staff-facing alert, not the timeline).
++    expect(notify.formReceived).toHaveBeenCalledWith(expect.objectContaining({ contactName: 'Ayşe Yılmaz', inquiryNumber: 'INQ-2026-002' }));
++  });
++
++  it('log hygiene: a failed outcome UPDATE logs the error class and code, never its message; dropped-field debug shows ≤ 10 names cut to 40 chars', async () => {
++    const warn = jest.spyOn(Logger.prototype, 'warn').mockImplementation(() => undefined);
++    const debug = jest.spyOn(Logger.prototype, 'debug').mockImplementation(() => undefined);
++    try {
++      const { svc, prisma } = make();
++      const validation = Object.assign(new Error('Invalid `prisma.websiteFormSubmission.update()` invocation: detail: { email: "a@b.co" } SECRET-DETAIL'), { code: 'P2009' });
++      prisma.websiteFormSubmission.update.mockRejectedValueOnce(validation as never);
++      const junk = Object.fromEntries(Array.from({ length: 14 }, (_, i) => [`junk_${'k'.repeat(60)}_${i}`, 'v']));
++      const res = await svc.submit('hire', { ...DTO, fields: { ...DTO.fields, ...junk } }, CTX);
++      expect(res.data.status).toBe('HANDLED');
++
++      const updateWarn = warn.mock.calls.map((c) => String(c[0])).find((m) => m.includes('outcome update failed'))!;
++      expect(updateWarn).toContain('Error P2009');
++      expect(updateWarn).not.toContain('SECRET-DETAIL');
++      expect(updateWarn).not.toContain('a@b.co');
++
++      const dropLine = debug.mock.calls.map((c) => String(c[0])).find((m) => m.includes('dropped unknown fields'))!;
++      expect(dropLine).toContain('(+4 more)');
++      const names = dropLine.replace(/^.*dropped unknown fields /, '').replace(/ \(\+\d+ more\)$/, '').split(', ');
++      expect(names).toHaveLength(10);
++      for (const nm of names) expect(nm.length).toBeLessThanOrEqual(40);
++      expect(dropLine).not.toContain('k'.repeat(41));
++    } finally {
++      warn.mockRestore();
++      debug.mockRestore();
++    }
++  });
++
+   it('the registry refuses two handlers for one kind', () => {
+     const r = new WebsiteFormHandlerRegistry();
+     const h: WebsiteFormHandler = { kinds: [WebsiteFormKind.VISIT], handle: async () => ({ ok: true }) };
+     r.register(h);
+     expect(() => r.register(h)).toThrow(/VISIT/);
+     expect(r.get(WebsiteFormKind.VISIT)).toBe(h);
+     expect(r.get(WebsiteFormKind.FRAUD_REPORT)).toBeNull();
+   });
+ });
+diff --git a/apps/backend/src/modules/website/website-forms.service.ts b/apps/backend/src/modules/website/website-forms.service.ts
+index 98af2a8..a2932f8 100644
+--- a/apps/backend/src/modules/website/website-forms.service.ts
++++ b/apps/backend/src/modules/website/website-forms.service.ts
+@@ -90,20 +90,58 @@ function visitorErrorOf(json: Prisma.JsonValue | null): boolean {
+ function detailString(detail: Record<string, unknown> | undefined, key: string): string | null {
+   const v = detail?.[key];
+   return typeof v === 'string' && v.trim() ? v.trim() : null;
+ }
+ 
+ function fieldString(fields: Record<string, WebsiteFieldValue>, key: string): string | null {
+   const v = fields[key];
+   return typeof v === 'string' && v ? v : null;
+ }
+ 
++/**
++ * The handler `detail` keys that may be copied into `ActivityEvent.details` (the timeline
++ * is read by every staff member with the subject's screen). Identifiers and flags only —
++ * never `email`, `contactName` or any free text the handler chose to record.
++ */
++const ACTIVITY_DETAIL_KEYS = [
++  'inquiryNumber',
++  'assignedAgentId',
++  'alreadyReceived',
++  'skipNotification',
++  'skipAutoresponder',
++  'visitorError',
++  'createdEntityType',
++  'createdEntityId',
++] as const;
++
++function activityDetailOf(detail: Record<string, unknown> | undefined): Record<string, unknown> {
++  const out: Record<string, unknown> = {};
++  if (!detail) return out;
++  for (const key of ACTIVITY_DETAIL_KEYS) {
++    if (Object.hasOwn(detail, key)) out[key] = detail[key];
++  }
++  return out;
++}
++
++/** Log hygiene: field NAMES only, at most ten, each cut to 40 chars — a payload key is visitor input too. */
++function droppedForLog(dropped: string[]): string {
++  const shown = dropped.slice(0, 10).map((k) => k.slice(0, 40));
++  return dropped.length > 10 ? `${shown.join(', ')} (+${dropped.length - 10} more)` : shown.join(', ');
++}
++
++/** Log hygiene: a Prisma validation error echoes the invocation args (handler `detail` included) in its message — name and code only. */
++function errorLabel(err: unknown): string {
++  const name = (err as { constructor?: { name?: string } })?.constructor?.name ?? typeof err;
++  const code = (err as { code?: unknown })?.code;
++  return typeof code === 'string' || typeof code === 'number' ? `${name} ${code}` : name;
++}
++
+ /**
+  * The intake door (P8, D11). Order is the contract:
+  *
+  *   1. form (404) → abuse trip (429, P10) → field whitelist (400) — nothing persisted
+  *   2. honeypot → SPAM row, answer like a success, stop
+  *   3. captcha (P6): failed → 403 (no row); degraded → carry on flagged
+  *   4. the SUBMISSION ROW, first. Unique (formKey, requestHash, hourBucket); P2002
+  *      replays the prior row's answer and runs nothing else.
+  *   5. the handler, then the row update with the attempt, then activity, notify (RC6),
+  *      the autoresponder.
+@@ -129,96 +167,107 @@ export class WebsiteFormsService {
+     private readonly abuse: WebsiteAbuseService,
+     private readonly autoresponder: WebsiteAutoresponderService,
+   ) {}
+ 
+   async submit(formKey: string, dto: WebsiteFormSubmitDto, ctx: WebsiteSubmitContext): Promise<WebsiteSubmitResponse> {
+     // 1. Nothing persisted in this block.
+     const spec = websiteFormSpec(formKey);
+     if (!spec) throw new NotFoundException('Unknown form.');
+     const form = await this.ensureFormRow(formKey, spec);
+     if (!form.isActive) throw new NotFoundException('This form is not accepting submissions.');
+-    if (await this.abuse.isTripped(formKey)) {
++    if (await this.isTripped(formKey)) {
+       // I20: the website's visitor panel reads `fallback` and shows the WhatsApp line.
+       throw new HttpException(
+         {
+           statusCode: HttpStatus.TOO_MANY_REQUESTS,
+           message: 'This form is paused for a short while. Please reach us on WhatsApp.',
+           reason: 'tripped',
+           fallback: 'whatsapp',
+         },
+         HttpStatus.TOO_MANY_REQUESTS,
+       );
+     }
+     const normalized = normalizeWebsiteFields(formKey, dto.fields);
+     if (!normalized.ok) throw new BadRequestException({ message: 'Invalid form fields', errors: normalized.errors });
+-    if (normalized.dropped.length) this.logger.debug(`${formKey}: dropped unknown fields ${normalized.dropped.join(', ')}`);
++    if (normalized.dropped.length) this.logger.debug(`${formKey}: dropped unknown fields ${droppedForLog(normalized.dropped)}`);
+ 
+     const isTest = ctx.tokenClass === 'test';
++    // X8: honeypot-ness is part of the dedupe key, so an autofilled hidden input (a SPAM
++    // row) never occupies the unique slot the visitor's honest resubmission needs.
++    const honeypot = Boolean(dto.honeypot && dto.honeypot.trim().length > 0);
+     const now = new Date();
+     const salt = this.config.get<string>('IP_HASH_SALT', IP_HASH_DEV_SALT);
+     const payload: WebsiteStoredPayload = { fields: normalized.fields, ...(dto.sourcePath ? { sourcePath: dto.sourcePath } : {}) };
+     const base = {
+       formId: form.id,
+       formKey,
+-      requestHash: requestHashFor({ formKey, isTest, locale: dto.locale, fields: normalized.fields }),
++      requestHash: requestHashFor({ formKey, isTest, honeypot, locale: dto.locale, fields: normalized.fields }),
+       hourBucket: hourBucketFor(now),
+       isTest,
+       tokenClass: PRISMA_TOKEN_CLASS_BY_BEARER[ctx.tokenClass],
+       locale: dto.locale,
+       consentVersion: dto.consentVersion,
+       payloadJson: payload as Prisma.InputJsonValue,
+       ipAddressHash: hashIpOrNull(ctx.visitorIp, salt),
+       userAgent: ctx.userAgent?.slice(0, 500) ?? null,
+     };
+ 
+     // 2. Honeypot: a bot filled the hidden input. Filed as SPAM (the inbox filter can see
+     //    it), no Cloudflare call, no handler, no alarm, and the same answer shape.
+-    if (dto.honeypot && dto.honeypot.trim().length > 0) {
++    if (honeypot) {
+       const spam = await this.createOrReplay({
+         ...base, status: WebsiteSubmissionStatus.SPAM, captchaPassed: null, captchaDegraded: false, purgeAfter: purgeAfterFor(now),
+       });
+       return this.respond(spam.row, spam.replayed);
+     }
+ 
+     // 3. Captcha (P6): failed is the visitor's problem; degraded is ours.
+     const verdict = await this.captcha.verify(dto.captchaToken, ctx.visitorIp);
+     if (verdict.outcome === 'failed') throw new ForbiddenException('Captcha verification failed. Please retry.');
+     const captchaDegraded = verdict.outcome === 'degraded';
+ 
+     // 4. The row, first.
+     const { row, replayed } = await this.createOrReplay({
+       ...base, status: WebsiteSubmissionStatus.RECEIVED, captchaPassed: captchaDegraded ? null : true, captchaDegraded, purgeAfter: null,
+     });
+     if (replayed) return this.respond(row, true);
+ 
+     // ── NOTHING PAST THIS POINT MAY THROW ──────────────────────────────────────────
++    // try/catch, not `.catch()`: a collaborator that throws synchronously (a non-async
++    // body, a getter) would escape a promise-chain catch and 500 a committed row.
+     if (verdict.outcome === 'degraded') {
+-      await this.notify
+-        .formsUnavailable({ reason: 'captchaDegraded', formKey, submissionId: row.id, detail: verdict.reason })
+-        .catch((err: Error) => this.logger.warn(`captchaDegraded alarm failed for ${row.id}: ${err.message}`));
++      try {
++        await this.notify.formsUnavailable({ reason: 'captchaDegraded', formKey, submissionId: row.id, detail: verdict.reason });
++      } catch (err) {
++        this.logger.warn(`captchaDegraded alarm failed for ${row.id}: ${(err as Error)?.message}`);
++      }
+     } else if (!isTest) {
+       // P10: only captcha-VERIFIED real leads count toward the trip; a replay never counts twice.
+-      await this.abuse
+-        .recordVerified(formKey)
+-        .catch((err: Error) => this.logger.warn(`verified counter failed for ${formKey}: ${err.message}`));
++      try {
++        await this.abuse.recordVerified(formKey);
++      } catch (err) {
++        this.logger.warn(`verified counter failed for ${formKey}: ${(err as Error)?.message}`);
++      }
+     }
+     if (!isTest) {
+-      await this.activity
+-        .log({
++      try {
++        await this.activity.log({
+           type: ActivityType.WEBSITE_SUBMISSION_RECEIVED,
+           actor: WEBSITE_SYSTEM_ACTOR,
+           subject: { type: 'website-submission', id: row.id },
+           summary: `received a ${spec.label} form from the website (${dto.locale})${captchaDegraded ? ' — captcha degraded' : ''}`,
+           details: { formKey, kind: form.kind, captchaDegraded, tokenClass: ctx.tokenClass },
+           ipAddress: null, // ActivityEvent stores raw addresses; the hash is on the row.
+-        })
+-        .catch((err: Error) => this.logger.warn(`activity RECEIVED failed for ${row.id}: ${err.message}`));
++        });
++      } catch (err) {
++        this.logger.warn(`activity RECEIVED failed for ${row.id}: ${(err as Error)?.message}`);
++      }
+     }
+ 
+     const handled = await this.runHandler(row, form, normalized.fields, ctx, { dryRun: isTest, rerun: false, actorId: WEBSITE_SYSTEM_ACTOR.id });
+     return this.respond(handled, false);
+   }
+ 
+   /**
+    * Run the handler for a row and record the attempt. Shared by `submit` and the inbox
+    * re-run (Task 7). Never throws. Post-steps (RC6): activity; on success
+    * `notify.formReceived` once (unless the handler said skipNotification/alreadyReceived)
+@@ -300,71 +349,97 @@ export class WebsiteFormsService {
+             handledAt: result.ok ? now : null,
+             createdEntityType: createdEntityType ?? row.createdEntityType,
+             createdEntityId: createdEntityId ?? row.createdEntityId,
+             error: result.ok ? null : result.error,
+             handlerResultJson: resultJson as unknown as Prisma.InputJsonValue,
+             purgeAfter: result.ok ? purgeAfterFor(now) : row.purgeAfter,
+           },
+         })),
+       };
+     } catch (err) {
+-      this.logger.warn(`submission ${row.id}: outcome update failed (${status}): ${(err as Error).message}`);
++      // Name + code only: a Prisma validation message echoes the invocation args, `detail` included.
++      this.logger.warn(`submission ${row.id}: outcome update failed (${status}): ${errorLabel(err)}`);
+     }
+ 
+     if (opts.dryRun) return updated;
+ 
+-    await this.activity
+-      .log({
++    // try/catch throughout (not `.catch()`): a synchronous throw from a collaborator must
++    // not escape the post-row block either.
++    try {
++      await this.activity.log({
+         type: result.ok ? ActivityType.WEBSITE_SUBMISSION_HANDLED : ActivityType.WEBSITE_SUBMISSION_FAILED,
+         actor: opts.actorId === WEBSITE_SYSTEM_ACTOR.id ? WEBSITE_SYSTEM_ACTOR : { id: opts.actorId, name: 'Inbox re-run', role: 'staff' },
+         subject: { type: 'website-submission', id: row.id },
+         ...(createdEntityType && createdEntityId ? { context: { type: createdEntityType, id: createdEntityId } } : {}),
+         summary: result.ok
+           ? `${opts.rerun ? 're-ran and ' : ''}filed the ${row.formKey} form${createdEntityType ? ` as ${createdEntityType} ${createdEntityId}` : ''}`
+           : `${opts.rerun ? 're-run of ' : ''}the ${row.formKey} form handler failed: ${result.error}`,
+-        details: { formKey: row.formKey, kind: form.kind, rerun: opts.rerun, ...(detail ?? {}) },
++        // Whitelisted keys only: the timeline must never carry the visitor's e-mail or name.
++        details: { formKey: row.formKey, kind: form.kind, rerun: opts.rerun, ...activityDetailOf(detail) },
+         ipAddress: null,
+-      })
+-      .catch((err: Error) => this.logger.warn(`activity ${status} failed for ${row.id}: ${err.message}`));
++      });
++    } catch (err) {
++      this.logger.warn(`activity ${status} failed for ${row.id}: ${(err as Error)?.message}`);
++    }
+ 
+     if (!result.ok) {
+       if (visitorError) return updated; // RC26: the visitor's mistake is not an outage — no handlerFailed alarm.
+-      await this.notify
+-        .formsUnavailable({ reason: 'handlerFailed', formKey: row.formKey, submissionId: row.id, detail: result.error })
+-        .catch((err: Error) => this.logger.warn(`handlerFailed alarm failed for ${row.id}: ${err.message}`));
++      try {
++        await this.notify.formsUnavailable({ reason: 'handlerFailed', formKey: row.formKey, submissionId: row.id, detail: result.error });
++      } catch (err) {
++        this.logger.warn(`handlerFailed alarm failed for ${row.id}: ${(err as Error)?.message}`);
++      }
+       return updated;
+     }
+ 
+     // RC6: staff learn about the lead through WebsiteNotifyService only, once, on success
+     // (a FAILED row has just raised handlerFailed, which reaches the same people).
+     const alreadyReceived = detail?.alreadyReceived === true;
+     const contactName = detailString(detail, 'contactName') ?? fieldString(fields, 'name');
+     const email = detailString(detail, 'email') ?? fieldString(fields, 'email');
+     if (!alreadyReceived && detail?.skipNotification !== true) {
+-      await this.notify
+-        .formReceived({
++      try {
++        await this.notify.formReceived({
+           submissionId: row.id,
+           formKey: row.formKey,
+           contactName,
+           inquiryNumber: detailString(detail, 'inquiryNumber'),
+           assignedAgentId: detailString(detail, 'assignedAgentId'),
+-        })
+-        .catch((err: Error) => this.logger.warn(`formReceived failed for ${row.id}: ${err.message}`));
++        });
++      } catch (err) {
++        this.logger.warn(`formReceived failed for ${row.id}: ${(err as Error)?.message}`);
++      }
+     }
+     if (!alreadyReceived && detail?.skipAutoresponder !== true) {
+-      await this.autoresponder
+-        .send({ formKey: row.formKey, locale: row.locale, to: email, name: contactName, isTest: false })
+-        .catch((err: Error) => this.logger.warn(`autoresponder failed for ${row.id}: ${err.message}`));
++      try {
++        await this.autoresponder.send({ formKey: row.formKey, locale: row.locale, to: email, name: contactName, isTest: false });
++      } catch (err) {
++        this.logger.warn(`autoresponder failed for ${row.id}: ${(err as Error)?.message}`);
++      }
+     }
+     return updated;
+   }
+ 
++  /**
++   * P10 trip check, FAIL OPEN: the question is asked before anything is persisted, and a
++   * door that answers 429 because Redis died is exactly the outage D11 is about — so a
++   * rejecting OR synchronously throwing abuse service reads as "not tripped".
++   */
++  private async isTripped(formKey: string): Promise<boolean> {
++    try {
++      return await this.abuse.isTripped(formKey);
++    } catch (err) {
++      this.logger.warn(`trip check failed for ${formKey} — treating as not tripped: ${(err as Error)?.message}`);
++      return false;
++    }
++  }
++
+   private async createOrReplay(data: Prisma.WebsiteFormSubmissionUncheckedCreateInput): Promise<{ row: WebsiteFormSubmission; replayed: boolean }> {
+     try {
+       return { row: await this.prisma.websiteFormSubmission.create({ data }), replayed: false };
+     } catch (err) {
+       if (!isUniqueViolation(err)) throw err;
+       const prior = await this.prisma.websiteFormSubmission.findUnique({
+         where: { formKey_requestHash_hourBucket: { formKey: data.formKey, requestHash: data.requestHash, hourBucket: data.hourBucket } },
+       });
+       if (!prior) throw err;
+       return { row: prior, replayed: true };

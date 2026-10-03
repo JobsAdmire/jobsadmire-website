@@ -1,0 +1,963 @@
+# Review package: b3c3f3b..aa7f13f
+
+## Commits
+aa7f13f feat(website): WP3a Prisma subset — intake-door tables, Inquiry.contactName, WEBSITE_* events, constants mirror
+
+## Files changed
+ .../migration.sql                                  | 213 ++++++++++++++++++++
+ apps/backend/prisma/schema.prisma                  | 210 ++++++++++++++++++++
+ .../src/modules/website/website-schema.spec.ts     | 221 +++++++++++++++++++++
+ docs/PRD.md                                        |  18 +-
+ packages/constants/src/enums/website.enums.ts      |  86 ++++++++
+ packages/constants/src/index.ts                    |   1 +
+ 6 files changed, 741 insertions(+), 8 deletions(-)
+
+## Diff
+diff --git a/apps/backend/prisma/migrations/20260925120000_website_intake_door/migration.sql b/apps/backend/prisma/migrations/20260925120000_website_intake_door/migration.sql
+new file mode 100644
+index 0000000..b7a5699
+--- /dev/null
++++ b/apps/backend/prisma/migrations/20260925120000_website_intake_door/migration.sql
+@@ -0,0 +1,213 @@
++-- Website programme WP3a — the public intake door's tables (written 2026-09-19).
++--
++-- Sorts after 20260925110000_platform_post_override_index, which is what a
++-- fresh database replays in folder order (the folder names run ahead of the
++-- calendar; a 20260919… name would land BEFORE migrations production has
++-- already applied).
++--
++-- FULLY ADDITIVE, and shipped in its OWN commit, pushed and verified alone
++-- before any code that selects these columns (rulings P12 / spec D24). Four
++-- new enums, two NotificationType values, three ActivityType values, one
++-- nullable column on `inquiries`, four new tables with their indexes and one
++-- foreign key. Nothing is dropped, nothing is rewritten, nothing is inserted.
++--
++-- Every statement is guarded (`IF NOT EXISTS`, pg_type / pg_constraint
++-- checks) so a database that already carries part of this from a local
++-- `prisma db push` replays it as a no-op instead of failing the deploy.
++-- `ADD VALUE IF NOT EXISTS` is not consumed anywhere in this file: Postgres
++-- refuses to USE a freshly added enum value inside the transaction that
++-- added it.
++--
++-- Ordering is the house order: enum values are added first, then the new
++-- enum types, then the new column, then the new tables with their indexes,
++-- and the foreign key constraint last.
++
++-- ---------------------------------------------------------------------------
++-- 1. Enum values on existing types (never cast in code — declared here first)
++-- ---------------------------------------------------------------------------
++
++-- AlterEnum
++ALTER TYPE "NotificationType" ADD VALUE IF NOT EXISTS 'WEBSITE_FORM_RECEIVED';
++ALTER TYPE "NotificationType" ADD VALUE IF NOT EXISTS 'WEBSITE_FORMS_UNAVAILABLE';
++
++-- AlterEnum
++ALTER TYPE "ActivityType" ADD VALUE IF NOT EXISTS 'WEBSITE_SUBMISSION_RECEIVED';
++ALTER TYPE "ActivityType" ADD VALUE IF NOT EXISTS 'WEBSITE_SUBMISSION_HANDLED';
++ALTER TYPE "ActivityType" ADD VALUE IF NOT EXISTS 'WEBSITE_SUBMISSION_FAILED';
++
++-- ---------------------------------------------------------------------------
++-- 2. New enum types
++-- ---------------------------------------------------------------------------
++
++DO $$
++BEGIN
++  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'WebsiteFormKind') THEN
++    CREATE TYPE "WebsiteFormKind" AS ENUM ('INQUIRY', 'CAREERS_APPLY', 'NEWSLETTER', 'FRAUD_REPORT', 'CALLBACK', 'VISIT', 'CALCULATOR_QUOTE');
++  END IF;
++END
++$$;
++
++DO $$
++BEGIN
++  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'WebsiteSubmissionStatus') THEN
++    CREATE TYPE "WebsiteSubmissionStatus" AS ENUM ('RECEIVED', 'HANDLED', 'FAILED', 'SPAM');
++  END IF;
++END
++$$;
++
++DO $$
++BEGIN
++  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'WebsiteSubscriberStatus') THEN
++    CREATE TYPE "WebsiteSubscriberStatus" AS ENUM ('PENDING', 'CONFIRMED', 'UNSUBSCRIBED');
++  END IF;
++END
++$$;
++
++DO $$
++BEGIN
++  IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = 'WebsiteTokenClass') THEN
++    CREATE TYPE "WebsiteTokenClass" AS ENUM ('WRITE', 'TEST', 'PREVIOUS_WRITE');
++  END IF;
++END
++$$;
++
++-- ---------------------------------------------------------------------------
++-- 3. inquiries.contactName — the person's name as typed on the website form
++-- ---------------------------------------------------------------------------
++--
++-- Nullable: every existing door (WhatsApp AI, call centre, manual entry) keeps
++-- writing exactly what it wrote yesterday.
++
++ALTER TABLE "inquiries" ADD COLUMN IF NOT EXISTS "contactName" TEXT;
++
++-- ---------------------------------------------------------------------------
++-- 4. website_integration_config — the singleton, secrets encrypted
++-- ---------------------------------------------------------------------------
++
++CREATE TABLE IF NOT EXISTS "website_integration_config" (
++    "id" TEXT NOT NULL,
++    "writeTokenEnc" TEXT,
++    "previousWriteTokenEnc" TEXT,
++    "previousWriteTokenExpiresAt" TIMESTAMP(3),
++    "testTokenEnc" TEXT,
++    "turnstileSecretEnc" TEXT,
++    "revalidateSecretEnc" TEXT,
++    "secondHumanEmail" TEXT,
++    "secondHumanName" TEXT,
++    "lastTestedAt" TIMESTAMP(3),
++    "lastTestOk" BOOLEAN,
++    "lastTestError" TEXT,
++    "updatedById" TEXT,
++    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
++    "updatedAt" TIMESTAMP(3) NOT NULL,
++
++    CONSTRAINT "website_integration_config_pkey" PRIMARY KEY ("id")
++);
++
++-- ---------------------------------------------------------------------------
++-- 5. website_forms — one row per public form key (seeded by prisma/seed.ts;
++--    `isActive` is flipped by SQL only in WP3a)
++-- ---------------------------------------------------------------------------
++
++CREATE TABLE IF NOT EXISTS "website_forms" (
++    "id" TEXT NOT NULL,
++    "formKey" TEXT NOT NULL,
++    "kind" "WebsiteFormKind" NOT NULL,
++    "label" TEXT NOT NULL,
++    "isActive" BOOLEAN NOT NULL DEFAULT true,
++    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
++    "updatedAt" TIMESTAMP(3) NOT NULL,
++
++    CONSTRAINT "website_forms_pkey" PRIMARY KEY ("id")
++);
++
++CREATE UNIQUE INDEX IF NOT EXISTS "website_forms_formKey_key" ON "website_forms"("formKey");
++
++-- ---------------------------------------------------------------------------
++-- 6. website_form_submissions — one row per submission, written before the
++--    handler; (formKey, requestHash, hourBucket) is the dedupe key
++-- ---------------------------------------------------------------------------
++
++CREATE TABLE IF NOT EXISTS "website_form_submissions" (
++    "id" TEXT NOT NULL,
++    "formId" TEXT NOT NULL,
++    "formKey" TEXT NOT NULL,
++    "requestHash" VARCHAR(64) NOT NULL,
++    "hourBucket" INTEGER NOT NULL,
++    "status" "WebsiteSubmissionStatus" NOT NULL DEFAULT 'RECEIVED',
++    "isTest" BOOLEAN NOT NULL DEFAULT false,
++    "tokenClass" "WebsiteTokenClass" NOT NULL DEFAULT 'WRITE',
++    "locale" TEXT,
++    "payloadJson" JSONB NOT NULL,
++    "consentVersion" TEXT,
++    "ipAddressHash" VARCHAR(64),
++    "userAgent" TEXT,
++    "captchaPassed" BOOLEAN,
++    "captchaDegraded" BOOLEAN NOT NULL DEFAULT false,
++    "handlerResultJson" JSONB,
++    "createdEntityType" TEXT,
++    "createdEntityId" TEXT,
++    "error" TEXT,
++    "handledAt" TIMESTAMP(3),
++    "purgeAfter" TIMESTAMP(3),
++    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
++    "updatedAt" TIMESTAMP(3) NOT NULL,
++
++    CONSTRAINT "website_form_submissions_pkey" PRIMARY KEY ("id")
++);
++
++-- The dedupe key: the same canonical payload on the same form inside one hour
++-- is ONE row; a retry gets the prior result replayed (P2002 -> replay).
++CREATE UNIQUE INDEX IF NOT EXISTS "website_form_submissions_formKey_requestHash_hourBucket_key" ON "website_form_submissions"("formKey", "requestHash", "hourBucket");
++
++CREATE INDEX IF NOT EXISTS "website_form_submissions_formId_createdAt_idx" ON "website_form_submissions"("formId", "createdAt");
++
++CREATE INDEX IF NOT EXISTS "website_form_submissions_status_createdAt_idx" ON "website_form_submissions"("status", "createdAt");
++
++-- `ping.lastSubmissionAt` and the lead-drought cron read the newest NON-test
++-- row; without this the synthetic lead every 30 minutes would mask a drought.
++CREATE INDEX IF NOT EXISTS "website_form_submissions_isTest_createdAt_idx" ON "website_form_submissions"("isTest", "createdAt");
++
++-- The 04:30 purge cron's only predicate.
++CREATE INDEX IF NOT EXISTS "website_form_submissions_purgeAfter_idx" ON "website_form_submissions"("purgeAfter");
++
++-- RESTRICT, never CASCADE: a form row cannot be deleted while it has history.
++DO $$
++BEGIN
++  IF NOT EXISTS (
++    SELECT 1 FROM pg_constraint WHERE conname = 'website_form_submissions_formId_fkey'
++  ) THEN
++    ALTER TABLE "website_form_submissions"
++      ADD CONSTRAINT "website_form_submissions_formId_fkey"
++      FOREIGN KEY ("formId") REFERENCES "website_forms"("id") ON DELETE RESTRICT ON UPDATE CASCADE;
++  END IF;
++END
++$$;
++
++-- ---------------------------------------------------------------------------
++-- 7. website_subscribers — newsletter double opt-in, confirm-token HASH only
++--    (the one-click unsubscribe is a stateless HMAC; no column for it)
++-- ---------------------------------------------------------------------------
++
++CREATE TABLE IF NOT EXISTS "website_subscribers" (
++    "id" TEXT NOT NULL,
++    "email" TEXT NOT NULL,
++    "locale" TEXT,
++    "status" "WebsiteSubscriberStatus" NOT NULL DEFAULT 'PENDING',
++    "confirmTokenHash" VARCHAR(64),
++    "confirmExpiresAt" TIMESTAMP(3),
++    "confirmedAt" TIMESTAMP(3),
++    "unsubscribedAt" TIMESTAMP(3),
++    "consentVersion" TEXT,
++    "ipAddressHash" VARCHAR(64),
++    "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
++    "updatedAt" TIMESTAMP(3) NOT NULL,
++
++    CONSTRAINT "website_subscribers_pkey" PRIMARY KEY ("id")
++);
++
++CREATE UNIQUE INDEX IF NOT EXISTS "website_subscribers_email_key" ON "website_subscribers"("email");
++
++CREATE INDEX IF NOT EXISTS "website_subscribers_status_idx" ON "website_subscribers"("status");
++
++CREATE INDEX IF NOT EXISTS "website_subscribers_confirmTokenHash_idx" ON "website_subscribers"("confirmTokenHash");
+diff --git a/apps/backend/prisma/schema.prisma b/apps/backend/prisma/schema.prisma
+index 0f322bd..69d8607 100644
+--- a/apps/backend/prisma/schema.prisma
++++ b/apps/backend/prisma/schema.prisma
+@@ -275,20 +275,28 @@ enum NotificationType {
+   WHATSAPP_CAMPAIGN_COMPLETED
+   WHATSAPP_CAMPAIGN_PAUSED
+   WHATSAPP_TEMPLATE_STATUS_CHANGED
+   WHATSAPP_NUMBER_ALERT
+   // WhatsApp AI assistant (WP4 Half B, 2026-09-10). Declared with the models they
+   // belong to, for the same reason as the eight above: a value the runtime casts
+   // but the database does not carry throws at INSERT.
+   WHATSAPP_AI_HANDOFF
+   WHATSAPP_AI_BUDGET_EXHAUSTED
+   WHATSAPP_INQUIRY_CAPTURED
++  // Website intake door (WP3a, 2026-09-19). Declared with the tables they
++  // belong to: a value the runtime casts but the database does not carry
++  // throws at INSERT. FORM_RECEIVED goes to the sales viewers of
++  // `website.forms` (super-admins when nobody holds it); FORMS_UNAVAILABLE
++  // carries a `reason` (captchaDegraded | tripped | untripped | drought |
++  // handlerFailed). Both are mirrored to the second human on the config row.
++  WEBSITE_FORM_RECEIVED
++  WEBSITE_FORMS_UNAVAILABLE
+ }
+ 
+ enum AuditAction {
+   CREATE
+   UPDATE
+   DELETE
+   VIEW
+   EXPORT
+   LOGIN
+   LOGOUT
+@@ -436,20 +444,26 @@ enum ActivityType {
+   /// a single decision in the timeline.
+   TASK_LABELS_CHANGED
+   // ── Call Center (telephony: Hipcall PBX + ElevenLabs AI) ──
+   CALL_PLACED
+   CALL_RECEIVED
+   CALL_MISSED
+   CALL_AI_LEAD_CAPTURED
+   CALL_CALLBACK_BOOKED
+   CALL_CAMPAIGN_STARTED
+   CALL_CAMPAIGN_COMPLETED
++  // ── Website intake door (WP3a) ──
++  /// Real members, never casts (the HRM lesson above): ActivityLogger.log()
++  /// swallows the INSERT throw and the timeline silently goes empty.
++  WEBSITE_SUBMISSION_RECEIVED
++  WEBSITE_SUBMISSION_HANDLED
++  WEBSITE_SUBMISSION_FAILED
+ }
+ 
+ model ActivityEvent {
+   id           String       @id @default(cuid())
+   activityType ActivityType
+ 
+   // Actor — null for system-driven events (cron, public candidate route).
+   actorId   String?
+   actor     User?   @relation("ActivityActor", fields: [actorId], references: [id], onDelete: SetNull)
+   /// Display name at the time of the event (snapshot — survives rename/delete).
+@@ -478,20 +492,66 @@ model ActivityEvent {
+   ipAddress String?
+   createdAt DateTime @default(now())
+ 
+   @@index([contextType, contextId, createdAt])
+   @@index([subjectType, subjectId, createdAt])
+   @@index([actorId, createdAt])
+   @@index([activityType])
+   @@map("activity_events")
+ }
+ 
++// === Website (public intake door, WP3a 2026-09-19) enums ===
++// Mirrored in packages/constants/src/enums/website.enums.ts — the inbox filters,
++// the Integrations screen and the form catalog type against the mirror.
++// Postgres cannot drop an enum member in place (PRD §8), so every member below
++// is permanent.
++
++/// What a public form's handler DOES with a submission. One kind per form row;
++/// the ten website form keys collapse onto seven kinds (hire/contact/partner/
++/// workers → INQUIRY). The key → kind map is WEBSITE_FORM_KIND_BY_KEY in
++/// packages/constants.
++enum WebsiteFormKind {
++  INQUIRY
++  CAREERS_APPLY
++  NEWSLETTER
++  FRAUD_REPORT
++  CALLBACK
++  VISIT
++  CALCULATOR_QUOTE
++}
++
++/// RECEIVED = row written, handler not yet run (or running); HANDLED = handler
++/// filed its entity (or dry-ran for a test token); FAILED = handler threw and
++/// the inbox may re-run it while `createdEntityId` is still null; SPAM = a
++/// human marked it.
++enum WebsiteSubmissionStatus {
++  RECEIVED
++  HANDLED
++  FAILED
++  SPAM
++}
++
++enum WebsiteSubscriberStatus {
++  PENDING
++  CONFIRMED
++  UNSUBSCRIBED
++}
++
++/// Which Bearer the marketing site presented (guard order write → test →
++/// previous-write; the guard stamps the lower-case class, the forms core maps
++/// it here on create). TEST submissions are `isTest` and dry-run the handler.
++enum WebsiteTokenClass {
++  WRITE
++  TEST
++  PREVIOUS_WRITE
++}
++
+ // === Sales Pipeline enums ===
+ 
+ enum InquirySource {
+   WEBSITE_FORM
+   WHATSAPP_CRM
+   TURKEY_CALL_CENTER
+   INTERNATIONAL_CALL_CRM
+   EMAIL
+   REFERRAL
+   EXPO_MEETING
+@@ -1716,20 +1776,24 @@ enum ReportFrequency {
+ /// Incoming inquiry from any channel (website, WhatsApp, call center, etc.).
+ model Inquiry {
+   id              String                 @id @default(cuid())
+   /// Auto-generated: INQ-YYYY-NNN
+   inquiryNumber   String                 @unique
+   source          InquirySource
+   date            DateTime
+   phoneNumber     String?
+   email           String?
+   companyName     String?
++  /// Person's name as typed on the public website form (WP3a, 2026-09-19).
++  /// Nullable so every existing door (WhatsApp AI, call centre, manual entry)
++  /// is untouched; conversion copies it to `Lead.contactPerson`.
++  contactName     String?
+   country         String?
+   language        String?
+   /// Full message or conversation preview.
+   messagePreview  String?                @db.Text
+   assignedAgentId String?
+   assignedAgent   User?                  @relation("InquiryAssignedAgent", fields: [assignedAgentId], references: [id], onDelete: SetNull)
+   assignedTeam    String?
+   classification  InquiryClassification?
+   status          InquiryStatus          @default(NEW)
+   notes           String?                @db.Text
+@@ -8954,10 +9018,156 @@ model WaCampaignRecipient {
+ 
+   messages WaMessage[]
+ 
+   @@unique([campaignId, contactId])
+   @@index([campaignId, status])
+   /// "Has a campaign messaged this person in the last N days?" — the exclusion
+   /// C11 names, as one indexed read instead of a scan of wa_messages.
+   @@index([contactId, sentAt])
+   @@map("wa_campaign_recipients")
+ }
++
++// ============================================================
++// WEBSITE — public intake door (WP3a, 2026-09-19). PRD §5.12 / §7.10.
++// Phase B (CMS) models arrive in WP3c; nothing here depends on them.
++// ============================================================
++
++/// Singleton (the CallCenterConfig precedent: `findFirst` → `create({ data: {} })`,
++/// DB-only, ENCRYPTION_KEY the only env dependency). `*Enc` = AES-256-GCM
++/// iv:authTag:ciphertext hex via common/utils/encryption.util.ts; write-only,
++/// stripped from every GET — the service's `publicShape()` returns has* flags.
++model WebsiteIntegrationConfig {
++  id                          String    @id @default(cuid())
++  /// Bearer the marketing site presents on POST /website/v1/forms/:formKey.
++  writeTokenEnc               String?
++  /// Kept for one rotation window so a Vercel deploy still carrying the old
++  /// token keeps writing; the guard drops it once `previousWriteTokenExpiresAt`
++  /// has passed (the WaBusinessAccount previousAppSecret precedent).
++  previousWriteTokenEnc       String?
++  previousWriteTokenExpiresAt DateTime?
++  /// Second token class: a submission carrying it is `isTest` — validated,
++  /// captcha-checked, deduped and filed, but the handler DRY-RUNS.
++  testTokenEnc                String?
++  /// One Cloudflare Turnstile secret for both hostnames.
++  turnstileSecretEnc          String?
++  /// Presented by Operations to the website's revalidate route (Phase B); the
++  /// column ships now so the rotate/has* shape is complete from day one.
++  revalidateSecretEnc         String?
++  /// Fallback human mailed directly (default mailbox) on EVERY website event —
++  /// required by D25, no default, set on the Integrations screen.
++  secondHumanEmail            String?
++  secondHumanName             String?
++  /// Result of the last "test" button run (GoogleWorkspaceConfig precedent).
++  lastTestedAt                DateTime?
++  lastTestOk                  Boolean?
++  lastTestError               String?   @db.Text
++  /// Soft reference (no FK) — who last saved; survives user deletion.
++  updatedById                 String?
++  createdAt                   DateTime  @default(now())
++  updatedAt                   DateTime  @updatedAt
++
++  @@map("website_integration_config")
++}
++
++/// One row per public form key (`hire`, `contact`, `partner`, `careers`,
++/// `newsletter`, `callback`, `visit`, `calculator`, `fraud`, `workers`). The
++/// handler is chosen by `kind`; `isActive=false` makes the door answer 404 for
++/// that key (the newsletter ships inactive until counsel clears it — D14; in
++/// WP3a the flag is flipped by SQL only, there is no route for it). No
++/// autoresponder columns: the autoresponders are `.hbs` templates per form
++/// and language (P9), not rows.
++model WebsiteForm {
++  id        String          @id @default(cuid())
++  /// URL segment on the public door: POST /website/v1/forms/:formKey.
++  formKey   String          @unique
++  kind      WebsiteFormKind
++  label     String
++  isActive  Boolean         @default(true)
++  createdAt DateTime        @default(now())
++  updatedAt DateTime        @updatedAt
++
++  submissions WebsiteFormSubmission[]
++
++  @@map("website_forms")
++}
++
++/// The record of ONE public submission. Written FIRST (before the handler), so
++/// a retry hits the dedupe key and replays the prior result instead of filing
++/// twice; after the handler nothing may throw. Holds PII (`payloadJson`) —
++/// the purge cron deletes rows past `purgeAfter` (90 days after HANDLED).
++model WebsiteFormSubmission {
++  id                String                  @id @default(cuid())
++  formId            String
++  form              WebsiteForm             @relation(fields: [formId], references: [id], onDelete: Restrict)
++  /// Denormalised so the dedupe key stays stable if the form row is ever re-keyed.
++  formKey           String
++  /// sha256 of the canonical payload; with `hourBucket`, the same payload inside
++  /// one hour is ONE row (the WaAiToolCall `requestHash` precedent).
++  requestHash       String                  @db.VarChar(64)
++  /// floor(receivedAt / 1h) in epoch hours.
++  hourBucket        Int
++  status            WebsiteSubmissionStatus @default(RECEIVED)
++  /// True when the TEST token class was presented: filed, never handled for real.
++  isTest            Boolean                 @default(false)
++  /// The Bearer class the guard matched, mapped from its lower-case stamp
++  /// (`write` → WRITE, `test` → TEST, `previous-write` → PREVIOUS_WRITE).
++  tokenClass        WebsiteTokenClass       @default(WRITE)
++  /// Website locale of the page that posted (`tr` | `en`).
++  locale            String?
++  payloadJson       Json
++  /// The privacy/consent text version the visitor accepted (D11).
++  consentVersion    String?
++  /// sha256(IP_HASH_SALT + ':' + ip) — never the address itself.
++  ipAddressHash     String?                 @db.VarChar(64)
++  userAgent         String?
++  /// null = Turnstile not checked (secret missing / unreachable); true/false = verdict.
++  captchaPassed     Boolean?
++  /// Accepted WITHOUT a captcha verdict because the captcha infrastructure was
++  /// down (D11). Needs-attention in the inbox; counted by no abuse trip.
++  captchaDegraded   Boolean                 @default(false)
++  /// The handler's result per attempt (`{ attempts: [...] }`; re-runs append).
++  handlerResultJson Json?
++  /// Where the handler filed it — 'inquiry' | 'applicant' | 'subscriber' |
++  /// 'object' + id (FK-less, resolved at read time).
++  createdEntityType String?
++  createdEntityId   String?
++  error             String?                 @db.Text
++  handledAt         DateTime?
++  /// Set when HANDLED (+90 days); the 04:30 purge cron deletes the row and any
++  /// `website-fraud/` object its payload names.
++  purgeAfter        DateTime?
++  createdAt         DateTime                @default(now())
++  updatedAt         DateTime                @updatedAt
++
++  @@unique([formKey, requestHash, hourBucket])
++  @@index([formId, createdAt])
++  @@index([status, createdAt])
++  @@index([isTest, createdAt])
++  @@index([purgeAfter])
++  @@map("website_form_submissions")
++}
++
++/// Newsletter double opt-in (P4). Only the sha256 of the confirm token is
++/// stored (the OTP-hash precedent); the plain token travels once, in the
++/// confirm mail. The one-click unsubscribe link (RFC 8058) is a stateless
++/// HMAC over the subscriber id, so there is NO unsubscribe-token column.
++model WebsiteSubscriber {
++  id               String                  @id @default(cuid())
++  email            String                  @unique
++  locale           String?
++  status           WebsiteSubscriberStatus @default(PENDING)
++  /// sha256 of the confirm token — never the token itself.
++  confirmTokenHash String?                 @db.VarChar(64)
++  confirmExpiresAt DateTime?
++  confirmedAt      DateTime?
++  unsubscribedAt   DateTime?
++  /// The consent text version accepted at sign-up.
++  consentVersion   String?
++  /// sha256(IP_HASH_SALT + ':' + ip) at sign-up — consent evidence, never the address.
++  ipAddressHash    String?                 @db.VarChar(64)
++  createdAt        DateTime                @default(now())
++  updatedAt        DateTime                @updatedAt
++
++  @@index([status])
++  @@index([confirmTokenHash])
++  @@map("website_subscribers")
++}
+diff --git a/apps/backend/src/modules/website/website-schema.spec.ts b/apps/backend/src/modules/website/website-schema.spec.ts
+new file mode 100644
+index 0000000..90003e0
+--- /dev/null
++++ b/apps/backend/src/modules/website/website-schema.spec.ts
+@@ -0,0 +1,221 @@
++/**
++ * Source-reading schema guard for the WP3a website intake-door migration.
++ *
++ * Three things only a spec notices: (1) an enum value the runtime casts but
++ * the database does not carry throws at INSERT — and ActivityLogger swallows
++ * it; (2) a migration that is not guarded fails a prod deploy that already
++ * saw a `db push`-ed column; (3) a folder named with today's date sorts BEFORE
++ * migrations already applied in production (the calendar is behind the folder
++ * names). The migration is shipped and pushed ALONE (rulings P12), so this
++ * file is also the only test that runs against that commit.
++ *
++ * The constants are imported, not grepped: the four enums must mirror the
++ * schema member for member (P13) and the form-key map is the ONE source every
++ * later task and the frontend read (RC1).
++ */
++import { readFileSync, readdirSync } from 'fs';
++import { join } from 'path';
++import {
++  isWebsiteFormKey,
++  WEBSITE_FORM_KEYS,
++  WEBSITE_FORM_KIND_BY_KEY,
++  WebsiteFormKind,
++  WebsiteSubmissionStatus,
++  WebsiteSubscriberStatus,
++  WebsiteTokenClass,
++} from '@jobsadmire/constants';
++
++const PRISMA_DIR = join(__dirname, '../../../prisma');
++const CONSTANTS_INDEX = join(__dirname, '../../../../../packages/constants/src/index.ts');
++const MIGRATION = '20260925120000_website_intake_door';
++const NEWEST_BEFORE = '20260925110000_platform_post_override_index';
++
++const schema = readFileSync(join(PRISMA_DIR, 'schema.prisma'), 'utf8');
++
++function migrationDir(): string {
++  const dir = readdirSync(join(PRISMA_DIR, 'migrations')).find((f) => f.includes('website_intake_door'));
++  if (!dir) throw new Error('migration containing "website_intake_door" not found');
++  return dir;
++}
++const sql = () => readFileSync(join(PRISMA_DIR, 'migrations', migrationDir(), 'migration.sql'), 'utf8');
++
++/** Members of `enum <name> { … }` in schema.prisma, comments stripped. */
++function schemaEnumMembers(name: string): string[] {
++  const start = schema.indexOf(`enum ${name} {`);
++  if (start < 0) throw new Error(`enum ${name} not in schema.prisma`);
++  const body = schema.slice(start, schema.indexOf('\n}', start));
++  return body
++    .split('\n')
++    .slice(1)
++    .map((l) => l.replace(/\/\/.*$/, '').trim())
++    .filter(Boolean);
++}
++
++/** The block of `model <name> { … }` in schema.prisma. */
++function modelBlock(name: string): string {
++  const start = schema.indexOf(`model ${name} {`);
++  if (start < 0) throw new Error(`model ${name} not in schema.prisma`);
++  return schema.slice(start, schema.indexOf('\n}', start));
++}
++
++const hasColumn = (block: string, col: string) => new RegExp(`^\\s{2}${col}\\s`, 'm').test(block);
++
++/** The four mirrored enums: the constants object IS the expected member list. */
++const MIRRORED: Record<string, Record<string, string>> = {
++  WebsiteFormKind,
++  WebsiteSubmissionStatus,
++  WebsiteSubscriberStatus,
++  WebsiteTokenClass,
++};
++
++const SUBMISSION_COLUMNS = [
++  'formId', 'formKey', 'requestHash', 'hourBucket', 'status', 'isTest', 'tokenClass', 'locale',
++  'payloadJson', 'consentVersion', 'ipAddressHash', 'userAgent', 'captchaPassed', 'captchaDegraded',
++  'handlerResultJson', 'createdEntityType', 'createdEntityId', 'error', 'handledAt', 'purgeAfter',
++  'createdAt', 'updatedAt',
++];
++
++const CONFIG_SECRETS = ['writeTokenEnc', 'previousWriteTokenEnc', 'testTokenEnc', 'turnstileSecretEnc', 'revalidateSecretEnc'];
++
++describe('WP3a website intake-door schema', () => {
++  it('is named 20260925120000_website_intake_door and sorts after the newest migration that preceded it', () => {
++    expect(migrationDir()).toBe(MIGRATION);
++    expect(MIGRATION.slice(0, 14) > NEWEST_BEFORE.slice(0, 14)).toBe(true);
++    expect(readdirSync(join(PRISMA_DIR, 'migrations'))).toContain(NEWEST_BEFORE);
++  });
++
++  it('declares the four website models with their snake_case table maps', () => {
++    for (const [model, table] of [
++      ['WebsiteIntegrationConfig', 'website_integration_config'],
++      ['WebsiteForm', 'website_forms'],
++      ['WebsiteFormSubmission', 'website_form_submissions'],
++      ['WebsiteSubscriber', 'website_subscribers'],
++    ] as const) {
++      expect(modelBlock(model)).toContain(`@@map("${table}")`);
++      expect(sql()).toContain(`CREATE TABLE IF NOT EXISTS "${table}"`);
++    }
++  });
++
++  it('declares the four website enums, mirrored member for member in @jobsadmire/constants and guarded in the SQL', () => {
++    for (const [name, mirror] of Object.entries(MIRRORED)) {
++      const members = Object.values(mirror);
++      for (const [key, value] of Object.entries(mirror)) expect({ name, key }).toEqual({ name, key: value });
++      expect({ name, members: schemaEnumMembers(name) }).toEqual({ name, members });
++      expect(sql()).toContain(`IF NOT EXISTS (SELECT 1 FROM pg_type WHERE typname = '${name}')`);
++      expect(sql()).toContain(`CREATE TYPE "${name}" AS ENUM (${members.map((m) => `'${m}'`).join(', ')})`);
++    }
++  });
++
++  it('adds the two WEBSITE_* NotificationType members — declared, never cast', () => {
++    for (const member of ['WEBSITE_FORM_RECEIVED', 'WEBSITE_FORMS_UNAVAILABLE']) {
++      expect(schemaEnumMembers('NotificationType')).toContain(member);
++      expect(sql()).toContain(`ALTER TYPE "NotificationType" ADD VALUE IF NOT EXISTS '${member}';`);
++    }
++  });
++
++  it('adds the three WEBSITE_SUBMISSION_* ActivityType members — ActivityLogger swallows an INSERT throw', () => {
++    for (const member of ['WEBSITE_SUBMISSION_RECEIVED', 'WEBSITE_SUBMISSION_HANDLED', 'WEBSITE_SUBMISSION_FAILED']) {
++      expect(schemaEnumMembers('ActivityType')).toContain(member);
++      expect(sql()).toContain(`ALTER TYPE "ActivityType" ADD VALUE IF NOT EXISTS '${member}';`);
++    }
++  });
++
++  it('never consumes a freshly added enum value in the same migration (Postgres refuses it in one transaction)', () => {
++    expect(sql()).not.toMatch(/\bINSERT\b/i);
++    expect(sql()).not.toMatch(/\bUPDATE\s+"/i);
++  });
++
++  it('gives Inquiry a nullable contactName, guarded', () => {
++    expect(modelBlock('Inquiry')).toMatch(/^\s{2}contactName\s+String\?/m);
++    expect(sql()).toContain('ALTER TABLE "inquiries" ADD COLUMN IF NOT EXISTS "contactName" TEXT;');
++  });
++
++  it('keys submission dedupe on (formKey, requestHash, hourBucket) — one row per payload per hour', () => {
++    expect(modelBlock('WebsiteFormSubmission')).toContain('@@unique([formKey, requestHash, hourBucket])');
++    expect(sql()).toContain(
++      'CREATE UNIQUE INDEX IF NOT EXISTS "website_form_submissions_formKey_requestHash_hourBucket_key" ON "website_form_submissions"("formKey", "requestHash", "hourBucket");',
++    );
++  });
++
++  it('carries every submission column the rulings name, with tokenClass defaulting to WRITE', () => {
++    const block = modelBlock('WebsiteFormSubmission');
++    for (const col of SUBMISSION_COLUMNS) expect({ col, present: hasColumn(block, col) }).toEqual({ col, present: true });
++    expect(block).toMatch(/^\s{2}requestHash\s+String\s+@db\.VarChar\(64\)/m);
++    expect(block).toMatch(/^\s{2}ipAddressHash\s+String\?\s+@db\.VarChar\(64\)/m);
++    expect(block).toMatch(/^\s{2}captchaDegraded\s+Boolean\s+@default\(false\)/m);
++    expect(block).toMatch(/^\s{2}isTest\s+Boolean\s+@default\(false\)/m);
++    expect(block).toMatch(/^\s{2}tokenClass\s+WebsiteTokenClass\s+@default\(WRITE\)/m);
++    expect(sql()).toContain(`"tokenClass" "WebsiteTokenClass" NOT NULL DEFAULT 'WRITE'`);
++    expect(block).toMatch(/form\s+WebsiteForm\s+@relation\(fields: \[formId\], references: \[id\], onDelete: Restrict\)/);
++    expect(block).toContain('@@index([purgeAfter])');
++    expect(block).toContain('@@index([isTest, createdAt])');
++  });
++
++  it('keeps WebsiteForm to key/kind/label/isActive — autoresponders are .hbs templates, not columns', () => {
++    const block = modelBlock('WebsiteForm');
++    expect(block).toMatch(/^\s{2}formKey\s+String\s+@unique/m);
++    expect(block).toMatch(/^\s{2}kind\s+WebsiteFormKind\s*$/m);
++    expect(block).toMatch(/^\s{2}isActive\s+Boolean\s+@default\(true\)/m);
++    expect(block).not.toMatch(/autoresponder/i);
++    expect(sql()).not.toMatch(/autoresponder/i);
++  });
++
++  it('stores every integration secret encrypted, nullable and write-only, with the previous-token window', () => {
++    const block = modelBlock('WebsiteIntegrationConfig');
++    for (const col of CONFIG_SECRETS) expect(block).toMatch(new RegExp(`^\\s{2}${col}\\s+String\\?\\s*$`, 'm'));
++    expect(block).toMatch(/^\s{2}previousWriteTokenExpiresAt\s+DateTime\?/m);
++    for (const col of ['secondHumanEmail', 'secondHumanName', 'lastTestedAt', 'lastTestOk', 'lastTestError', 'updatedById']) {
++      expect({ col, present: hasColumn(block, col) }).toEqual({ col, present: true });
++    }
++    // No plaintext token column, ever.
++    expect(block).not.toMatch(/^\s{2}(writeToken|testToken|turnstileSecret|revalidateSecret)\s/m);
++  });
++
++  it('gives WebsiteSubscriber a hashed double-opt-in token with expiry, the two consent timestamps and NO unsubscribe-token column', () => {
++    const block = modelBlock('WebsiteSubscriber');
++    expect(block).toMatch(/^\s{2}email\s+String\s+@unique/m);
++    expect(block).toMatch(/^\s{2}confirmTokenHash\s+String\?\s+@db\.VarChar\(64\)/m);
++    for (const col of ['confirmExpiresAt', 'confirmedAt', 'unsubscribedAt', 'consentVersion', 'ipAddressHash']) {
++      expect({ col, present: hasColumn(block, col) }).toEqual({ col, present: true });
++    }
++    expect(block).not.toMatch(/^\s{2}confirmToken\s/m);
++    // RC12: the one-click unsubscribe is a stateless HMAC — nothing to store.
++    expect(block).not.toMatch(/unsubscribeTokenHash/);
++    expect(sql()).not.toMatch(/unsubscribeTokenHash/);
++  });
++
++  it('is additive only and every DDL statement is guarded, so a db-pushed dev database replays it as a no-op', () => {
++    const src = sql();
++    expect(src).not.toMatch(/\bDROP\s+(TABLE|COLUMN|CONSTRAINT|TYPE|INDEX)\b/i);
++    for (const m of src.matchAll(/CREATE (UNIQUE )?INDEX (?!IF NOT EXISTS)/g)) expect(m[0]).toBe('guarded');
++    for (const m of src.matchAll(/CREATE TABLE (?!IF NOT EXISTS)/g)) expect(m[0]).toBe('guarded');
++    for (const m of src.matchAll(/ADD COLUMN (?!IF NOT EXISTS)/g)) expect(m[0]).toBe('guarded');
++    for (const m of src.matchAll(/ADD VALUE (?!IF NOT EXISTS)/g)) expect(m[0]).toBe('guarded');
++    expect(src).toContain(`WHERE conname = 'website_form_submissions_formId_fkey'`);
++  });
++
++  it('exports the ten website form keys, in the website repo order, mapped onto the seven handler kinds', () => {
++    expect([...WEBSITE_FORM_KEYS]).toEqual([
++      'hire', 'contact', 'partner', 'careers', 'newsletter', 'callback', 'visit', 'calculator', 'fraud', 'workers',
++    ]);
++    expect(WEBSITE_FORM_KIND_BY_KEY).toEqual({
++      hire: WebsiteFormKind.INQUIRY,
++      contact: WebsiteFormKind.INQUIRY,
++      partner: WebsiteFormKind.INQUIRY,
++      workers: WebsiteFormKind.INQUIRY,
++      callback: WebsiteFormKind.CALLBACK,
++      visit: WebsiteFormKind.VISIT,
++      calculator: WebsiteFormKind.CALCULATOR_QUOTE,
++      careers: WebsiteFormKind.CAREERS_APPLY,
++      fraud: WebsiteFormKind.FRAUD_REPORT,
++      newsletter: WebsiteFormKind.NEWSLETTER,
++    });
++    // Every handler kind has at least one key; no key points at a kind the schema lacks.
++    expect(new Set(Object.values(WEBSITE_FORM_KIND_BY_KEY))).toEqual(new Set(Object.values(WebsiteFormKind)));
++    expect(isWebsiteFormKey('hire')).toBe(true);
++    expect(isWebsiteFormKey('HIRE')).toBe(false);
++    expect(isWebsiteFormKey('nope')).toBe(false);
++    expect(isWebsiteFormKey(undefined)).toBe(false);
++    expect(readFileSync(CONSTANTS_INDEX, 'utf8')).toContain(`export * from './enums/website.enums';`);
++  });
++});
+diff --git a/docs/PRD.md b/docs/PRD.md
+index c8048f2..62b4791 100644
+--- a/docs/PRD.md
++++ b/docs/PRD.md
+@@ -4572,66 +4572,68 @@ retirement summary and `docs/whatsapp-module/CUTOVER-RUNBOOK.md` for the full ex
+ 
+ **Decisions & gotchas**
+ - Errors are classified by a frozen catalogue (`wa-graph-errors.logic.ts`): 131047 → template required, 131049 → wait 24 h, 131050 → opt-out (never retry), 131026 → unreachable, 132015/132016 → template paused/disabled, 190/368/131031/131042 → critical, 131058 → Hello World / test-number restriction (non-retriable).
+ - Templates are POSITIONAL or NAMED; the component builder fails closed on any missing variable (the 2026-08-10 example-link incident).
+ - Portfolio limits: 2 numbers until business-verified (then 20); messaging tier is portfolio-wide, quality/throughput per number.
+ 
+ ---
+ 
+ ## 8. Data Model Overview
+ 
+-The full schema lives in `apps/backend/prisma/schema.prisma` — **8,870 lines, 188 models, 164 enums as of 2026-09-15**. Counts drift; re-derive on demand:
++The full schema lives in `apps/backend/prisma/schema.prisma` — **9,173 lines, 193 models, 168 enums as of 2026-09-19**. Counts drift; re-derive on demand:
+ 
+ ```bash
+-grep -c '^model ' apps/backend/prisma/schema.prisma   # models (188)
+-grep -c '^enum '  apps/backend/prisma/schema.prisma   # enums  (164)
+-ls apps/backend/prisma/migrations | wc -l              # migration dirs (162 + migration_lock.toml)
+-ls apps/backend/src/modules/                           # backend modules (31)
++grep -c '^model ' apps/backend/prisma/schema.prisma   # models (193)
++grep -c '^enum '  apps/backend/prisma/schema.prisma   # enums  (168)
++ls apps/backend/prisma/migrations | wc -l              # migration dirs (168 + migration_lock.toml)
++ls apps/backend/src/modules/                           # backend modules (32)
+ ```
+ 
+-Migration baseline: `20260524200422_ops_init/` — a single squashed init from the fork of the CRM clone. Latest as of this revision: `20260921103000_remove_legacy_training`.
++Migration baseline: `20260524200422_ops_init/` — a single squashed init from the fork of the CRM clone. Latest as of this revision: `20260925120000_website_intake_door` (folder names run ahead of the calendar — a new migration must sort AFTER this one, not after today's date).
+ 
+ ### Models by domain
+ 
+-Re-derived from `grep '^model ' apps/backend/prisma/schema.prisma` (2026-09-15) and grouped by domain. Every one of the 188 models is accounted for below (5+6+9+17+22+16+5+6+3+27+16+35+7+14 = 188).
++Re-derived from `grep '^model ' apps/backend/prisma/schema.prisma` (2026-09-19) and grouped by domain. Every one of the 193 models is accounted for below (6+6+9+17+22+16+5+6+3+27+16+35+7+14+4 = 193).
+ 
+-- **Auth / users / permissions** (5): `User`, `Role`, `RolePermission`, `UserAdditionalRole` (multi-role, shipped 2026-08-20 — §4.4), `GoogleOAuthConnection`. `GoogleOAuthConnection` is **dormant** — the per-user Google OAuth path is dead; the live Calendar/Meet/Drive/Gmail integration authenticates as the org service account with domain-wide delegation via `GoogleWorkspaceConfigService` (`modules/integrations/`). The model + the per-user `google/auth` endpoints are unused and safe to delete in a later cleanup.
++- **Auth / users / permissions** (6): `User`, `Role`, `RolePermission`, `UserAdditionalRole` (multi-role, shipped 2026-08-20 — §4.4), `UserPermissionOverride` (per-user allow/block overrides, §4.4), `GoogleOAuthConnection`. `GoogleOAuthConnection` is **dormant** — the per-user Google OAuth path is dead; the live Calendar/Meet/Drive/Gmail integration authenticates as the org service account with domain-wide delegation via `GoogleWorkspaceConfigService` (`modules/integrations/`). The model + the per-user `google/auth` endpoints are unused and safe to delete in a later cleanup.
+ - **Cross-cutting infrastructure** (6): `AuditLog` (every create/update/delete via `AuditInterceptor`), `ActivityEvent` (per-entity activity timelines), `Notification`, `ModuleNotificationSetting`, `PushSubscription` (browser push, §6.2), `CommunicationsLog` (threaded via self-FK `parentId`; replies collapse to one level).
+ - **Settings & reference** (9): `Country`, `City`, `Industry`, `EmploymentType` (admin-managed table that replaced the dropped `EmploymentArrangement` enum — see below), `Language` (45 seeded rows; `name` is the English display name and the exact string stored on `requiredLanguages[]` / `Applicant.language`), `GoogleWorkspaceConfig`, `IrEmailConfig` (careers mail transport singleton; SMTP password AES-encrypted, write-only), `CompanyProfile` (letterhead singleton — legal identity, tax/ÖİB numbers, logo as a data URL on the row), `BenefitDefinition` (bilingual benefits catalogue snapshotted onto offers).
+ - **Sales** (17): `Inquiry`, `AssignmentRule`, `Lead`, `LeadBranch` (İŞKUR-lead branch rows, replace-all semantics), `LeadScoringRule`, `SalesCommunication`, `SalesMeeting`, `MeetingPreparation`, `MarketingMaterialRequest`, `TravelRequest`, `BudgetRequest`, `FundTransfer`, `TravelChecklist`, `MeetingReport`, `SalesExpense`, `Proposal`, `ProposalNegotiation`. `Lead.country` / `Inquiry.country` store the country **code**; `Lead.registryNumber` (İŞKUR ÖİB no) is the idempotency key of `scripts/import-iskur-leads.ts`; `Lead.customFields` is a free-form JSON KV (deliberately no form-builder). `Lead.convertedPartnerId` is a plain string, not a Prisma FK — the partner record lives in the CRM.
+ - **Projects & Tasks** (22, incl. field-sales campaigns and Work Management): `Project`, `ProjectColumn`, `ProjectMember`, `TaskComment`, `TaskChecklistItem`, `ProjectLabel`, `TaskLabel` (the Work Management WP1a–WP4 additions — board columns, membership, discussion, checklists, labels), `Task`, `TaskLink` (the first cross-module join row — see the gotcha below), `TaskTimeEntry`, `TaskAttachment`, `ProjectMeeting`, `TravelRecord`, `ProjectExpense`, `GiftDelivery`, `ProjectCompany`, `ProjectContact`, `BudgetIncreaseRequest`, `ProjectClosureRequest`, `ProjectLead` (campaign roster join — the Sales↔Projects bridge), `ProjectLeadCallLog` (append-only call history), `CampaignApprovalRequest`. Campaign linkage lives here, never as workflow columns on `Lead` (the retired Expansion module's mistake).
+ - **Internal Recruitment core** (16): `InternalHiringRequest`, `InternalJobOpening`, `ExternalJobPosting`, `InternalApplicant`, `ApplicantDocument`, `TalentPoolOutreach`, `InternalInterview`, `InternalInterviewParticipant` (panel snapshot; `userId` is a plain string, no FK, so it survives user deletion), `InterviewQuestion` (shared bank, soft-deleted), `InternalInterviewQuestion` (per-interview snapshot; `questionId` is `SetNull`, never cascade), `InterviewSlotProposal`, `InterviewSlotOption`, `OfferLetter`, `OfferLetterSignatureAudit`, `OfferLetterTemplate`, `RecruitmentPlatformAccount` (credential vault — `password`/`totpSecret` AES-encrypted, revealed only via audited endpoints).
+ - **Market Research** (5): `MarketResearch` (keyed country code + city + employment-type code; one canonical non-deleted/non-archived record per key), `MarketResearchVersion` (snapshots; `snapshotById` plain string, no FK), `MarketResearchSalaryBand`, `MarketResearchSection`, `MarketResearchFieldDefinition` (admin form-builder schema; soft-deleted fields keep stored value keys intact).
+ - **İŞKUR** (6): `IskurEmployerProfile` (singleton; credentials AES-encrypted, write-only, automation-only — **no reveal endpoint exists, deliberately**), `IskurOccupation` (~7.9k agent-synced portal entries — never hand-seeded), `IskurDistrict` (~970 agent-synced ilçe rows), `IskurJobPosting` (unique per opening — renewal reuses the same row), `IskurPostingAttempt`, `IskurApplicant` (`@@unique([postingId, iskurUid])`; CV HTML + PDF object keys).
+ - **AI Interviewer** (3): `AiInterviewerConfig` (provider keys encrypted write-only; kill-switch, auto-invite toggle + CV-score bar, retention months), `AiInterviewGuideline` (per `InternalHiringCategory`), `AiInterview` (question plan, transcript, scorecard, resume state, media object keys).
+ - **WhatsApp** (27): the legacy `WhatsappNotification` (kept, one row per bridge-era send attempt — `kind`/`entityType`/`status` are **Strings by design**; `applicantId` is deliberately FK-less, which is why the permanent applicant delete removes these rows explicitly) plus the 26 native `wa_*` tables (§5.11, native module, WP1–WP6): `WaBusinessAccount`, `WaPhoneNumber`, `WaTeam`, `WaTeamMember`, `WaRoutingRule`, `WaTemplate`, `WaTemplateEdit`, `WaContact`, `WaContactLink`, `WaConsentEvent`, `WaConversation`, `WaLabel`, `WaConversationLabel`, `WaConversationNote`, `WaQuickReply`, `WaMessage`, `WaMedia`, `WaMessageStatusEvent`, `WaWebhookEvent`, `WaAutomation`, `WaAutomationRun`, `WaAiAssistant`, `WaAiRun`, `WaAiToolCall`, `WaCampaign`, `WaCampaignRecipient`.
+ - **Marketing Studio** (16, rebuilt 2026-08-31 → 2026-09-12, P0–P6 — the seven legacy AI-era models below were dropped, verified empty before the drop): `MarketingCampaign`, `MarketingTool` (both retained from the pre-rebuild schema), `MarketingStudioConfig`, `SocialAccount`, `SocialPost`, `PlatformPost`, `MediaFolder`, `MarketingMediaAsset`, `PostFeedback`, `MarketingPlan`, `MarketingPlanItem`, `PlanComment`, `PostComment`, `PlanFeedback`, `PostMetricSnapshot`, `AccountMetricSnapshot`. (Removed: `MarketingContent`, `ContentApproval`, `MarketingBudget`, `PaidCampaign`, `MarketingInfluencer`, `InfluencerCollaboration`, `MarketingAsset` — no longer in the schema.)
+ - **HRM** (35): `HrmDepartment`, `HrmPerson`, `HrmEmploymentContract`, `HrmPaymentStructureTemplate`, `HrmLeavePolicy`, `HrmHoliday`, `HrmExchangeRate`, `HrmAttendanceRecord`, `HrmAttendanceSession`, `HrmLeaveRequest`, `HrmLeaveBalance`, `HrmFreelancerWork`, `HrmInternShift`, `HrmOvertimeRequest`, `HrmBankChangeRequest`, `HrmPayPeriodSchedule`, `HrmPayPeriod`, `HrmPayrollRun`, `HrmPayslip`, `HrmPayslipTemplate`, `HrmPayrollAdjustment`, `HrmAdvance`, `HrmPayment`, `HrmOnboardingTemplate`, `HrmOnboardingChecklist`, `HrmOffboardingTemplate`, `HrmOffboardingChecklist`, `HrmDocument`, `HrmContractSignature`, `HrmContractSignatureAudit` (offline-hire e-signature, §5.5), `HrmAsset`, `HrmAccess`, `HrmPerformanceNote`, `HrmWarning`, `HrmContractRenewal`. Behavioral detail in §5.5. `HrmPerson.userId` is `@unique` (one login per employee).
+ - **Call Center** (7, §5.10/§7.8): `CallCenterConfig`, `VoiceAgent`, `CallCenterAgentMapping`, `CallRecord`, `CallCampaign`, `CallCampaignContact`, `CallAgentToolInvocation`.
+ - **Sales Training Academy** (14, §5.6a): `SalesTrainingConfig`, `SalesTrainingPhase`, `SalesTrainingLesson`, `SalesTrainingAssignment`, `SalesTrainingPhaseProgress`, `SalesTrainingLessonSession`, `SalesTrainingExam`, `SalesTrainingExamSection`, `SalesTrainingQuestion`, `SalesTrainingExamAttempt`, `SalesTrainingVoiceSession`, `SalesTrainingPolicyFact`, `SalesTrainingProposedChange` (the only writer, the Copilot module, was removed 2026-09-14 — the table is kept, dormant), `SalesTrainingCertificate`.
++- **Website — public intake door** (4, §5.12/§7.10, WP3a 2026-09-19): `WebsiteIntegrationConfig` (singleton; write/previous-write/test/Turnstile/revalidate secrets as `*Enc` write-only columns surfaced as `has*` flags, `previousWriteTokenExpiresAt` rotation window, second-human fallback recipient, `lastTested*` triple), `WebsiteForm` (one row per public form key, seeded from `WEBSITE_FORM_KEYS`; `kind` picks the handler; `isActive=false` = 404 for that key, flipped by SQL only in WP3a; no autoresponder columns — autoresponders are `.hbs` per form and language), `WebsiteFormSubmission` (written BEFORE the handler; dedupe `@@unique([formKey, requestHash, hourBucket])`; `isTest` + `tokenClass @default(WRITE)`, `captchaPassed`/`captchaDegraded`, `handlerResultJson` per attempt, FK-less `createdEntityType/Id`, `purgeAfter` — PII, purged 90 days after HANDLED; FK to `WebsiteForm` is RESTRICT), `WebsiteSubscriber` (double opt-in; confirm token stored as a sha256 HASH only; the RFC 8058 one-click unsubscribe is a stateless HMAC, so no unsubscribe-token column). `Inquiry.contactName` was added with them. Phase B CMS models follow in WP3c.
+ 
+ ### Removed domains
+ 
+ - **Expansion** — removed 2026-06-07 (migration `20260607120000_remove_expansion`): `ExpansionProject` / `ExpansionActivity` + six enums dropped; the Sales `Lead` was decoupled (`sourceType`/`linkedProject`/`expansionStatus`/verification columns removed). Replaced by Projects & Tasks (§5.3). Don't reintroduce an `expansion` module/slug/grant or the partner-lead-sourcing funnel on `Lead`.
+ - **Mailbox** — removed 2026-08-04 (migration `20260804190000_remove_mailbox`): 11 `Mailbox*` models, 8 enums, 3 `MAILBOX_*` NotificationType values dropped (the migration **recreates `NotificationType`** because Postgres cannot drop an enum value in place). Gmail remains the company's email archive. Don't rebuild it (owner decision 2026-08-04 — this "Removed domains" entry is the tombstone). The `mailbox: 'careers'` parameter on `EmailService.sendEmail` is a **different, load-bearing thing** — the sender selector, not the deleted module.
+ - **Per-request research** (`HiringRequestResearch` / `HiringRequestCountryResearch`) — dropped 2026-06-03, replaced by the centralized Market Research module.
+ - **Reports** (2026-09-14, migration `20260921100000_remove_reports_module`): cross-module analytics module removed; overview re-homed to `GET /api/dashboard/overview`, project reports to `/api/projects/reports/*`, IR analytics dropped; restore point tag `pre-cleanup-2026-09-14`.
+ - **Copilot** (2026-09-14, migration `20260921101000_remove_copilot`): owner AI assistant removed with its three tables (`copilot_conversations`/`copilot_issues`/`copilot_memories`); `sales_training_proposed_changes` kept but dormant (no writer); restore point tag `pre-cleanup-2026-09-14`.
+ - **Legacy applicant Training/Certification LMS** (2026-09-14, migration `20260921103000_remove_legacy_training`): 8 models (`TrainingProgram`/`TrainingModule`/`TrainingProgress`/`QuizQuestion`/`QuizAttempt`/`QuizAnswer`/`Certificate`/`LiveApproval`), 8 enums, slug `training`, the `SELECT_FOR_TRAINING` IR entry point (`POST /internal-recruitment/applicants/:id/select`) and the five legacy `InternalApplicantStage` values removed; the Sales Training Academy (`sales-training`, §5.6a) is unaffected — it shares only the `/admin/training` URL folder and the `SalesTraining*` prefix; restore tag `pre-cleanup-2026-09-14`.
+ - **Investments & Cap Table** (2026-09-14, migration `20260921102000_remove_investments`): demo investor-relations module removed (9 models, 9 enums, 13 `ActivityType` + 4 `NotificationType` values, slug `investments`, role `investor`, demo logins). Archived on branch `archive/investments-module` (tag `pre-cleanup-2026-09-14`) — restore with `git checkout archive/investments-module -- apps/backend/src/modules/investments apps/frontend/src/app/[locale]/admin/investments apps/frontend/src/lib/api/investments.ts`, re-add the schema block + enum values and write a new forward migration.
+ 
+ ### Enum notes
+ 
+ - **`EmploymentArrangement` no longer exists** (dropped 2026-05-30, migration `20260530140000_employment_type_reference`). `InternalHiringRequest` / `InternalJobOpening` / `OfferLetterTemplate` `.employmentArrangement` are `String` columns holding an `EmploymentType.code`. The 5 built-ins (PERMANENT, CONTRACT, FREELANCER, PART_TIME, INTERNSHIP) are `isSystem: true` — relabel/deactivate OK, delete blocked; codes are immutable after creation.
+ - **`PermissionAction`** carries eight post-fork additions beyond the base VIEW/CREATE/EDIT/DELETE/EXPORT/APPROVE/ASSIGN: `CREATE_REQUEST` (raise a hiring request), `REVEAL_CREDENTIALS` (audited credential decrypt, recruitment-platforms), `SIGN_AS_OWNER` (offer owner-signature), `SUBMIT` (İŞKUR — fire a draft at the government portal), `MANAGE_KEYS` (AI-interviewer/call-center/sales-training/whatsapp provider keys; seeded to **no** role — super-admin-only via CASL bypass), `MANAGE_CAMPAIGNS` (call-center/whatsapp bulk-outbound campaigns; also seeded to no role), `WITHDRAW` and `UNAPPROVE` (marketing — the two revocations of 2026-09-16, §5.7: `admin` holds both, `marketing-manager` holds `WITHDRAW`, migration `20260925100000_marketing_withdraw_unapprove`). Adding a CASL-mapped action requires ALL of: the schema enum value, `ACTION_MAP` + `AppAction` in `casl-ability.factory.ts`, and (usually) seed-matrix rows — not just the DB enum.
+ - **`PermissionScope`** is `ALL | ASSIGNED_TO_ME | IN_MY_DEPARTMENT`. (The fork-era `OWN_COMPANY` / `ASSIGNED_ONLY` values were removed; any doc citing them is stale.)
+ - **`InternalApplicantStage`'s legacy training-track debt is PAID (2026-09-14).** The five values (`SELECTED_FOR_TRAINING`, `IN_TRAINING`, `TRAINING_COMPLETE`, `DEPLOYMENT_READY`, `ACTIVE`) were dropped with the applicant Training LMS in migration `20260921103000_remove_legacy_training` — prod held 0 applicants on any of them, and removing the module removed the only way to reach them. The enum is now exactly the 10-stage hire ladder plus `REJECTED` / `ON_HOLD`; the migration recreated the type (Postgres cannot drop an enum value in place), recast the ONE dependent column (`internal_applicants.stage`, dropping and restoring its `'APPLIED'` default around the cast), and adopted schema.prisma's order — which moves `HIRED` to last, making the applicant list's cosmetic `sortBy=stage` more correct, not less. `NotificationType` still carries CRM-era values; that half of the §12.3 item remains open. There is **no `WITHDRAWN` stage** — withdrawal is `REJECTED` + `rejectionReason: WITHDREW`, mapped at the display layer only.
++- **`WEBSITE_*` values** (2026-09-19, migration `20260925120000_website_intake_door`): `NotificationType.WEBSITE_FORM_RECEIVED` / `WEBSITE_FORMS_UNAVAILABLE` and `ActivityType.WEBSITE_SUBMISSION_RECEIVED` / `_HANDLED` / `_FAILED` were added via `ADD VALUE IF NOT EXISTS` in the migration commit that ships alone, one deploy before any code reads them; the four `Website*` enums (`WebsiteFormKind`, `WebsiteSubmissionStatus`, `WebsiteSubscriberStatus`, `WebsiteTokenClass`) are mirrored in `packages/constants/src/enums/website.enums.ts` next to `WEBSITE_FORM_KEYS` / `WEBSITE_FORM_KIND_BY_KEY`, the one source of the ten form keys.
+ 
+ ### Schema conventions
+ 
+ - Singular `PascalCase` models, `camelCase` fields, `SCREAMING_SNAKE` enum values.
+ - `createdAt` / `updatedAt` on every model; soft-delete via `deletedAt` where appropriate (leads, bank questions, market-research records…). The permanent applicant delete (2026-07-31) is the ONE sanctioned hard-delete in IR.
+ - Enums live in the schema and are mirrored in `packages/constants` when the frontend imports them.
+ - The country dimension is the **code** everywhere (`PK`, `TR`), cities are **names** — across IR, Market Research, Sales, Projects, İŞKUR gating.
+ - Money is grouped **by currency** in every cross-record aggregate (projects reports, campaign ROI) — never summed across currencies.
+ - Snapshot-style plain-string user references (no FK) are used where history must survive user deletion (`InternalInterviewParticipant.userId`, `MarketResearchVersion.snapshotById`, `WhatsappNotification.applicantId`). Any new FK-less `applicantId` column must be handled explicitly by the applicant hard-delete — grep before assuming the cascade is complete.
+ 
+diff --git a/packages/constants/src/enums/website.enums.ts b/packages/constants/src/enums/website.enums.ts
+new file mode 100644
+index 0000000..ab08672
+--- /dev/null
++++ b/packages/constants/src/enums/website.enums.ts
+@@ -0,0 +1,86 @@
++/**
++ * Website module (public intake door, PRD §5.12) — mirrors of the four
++ * `Website*` enums in `apps/backend/prisma/schema.prisma` plus the form-key →
++ * handler map that the intake service, the `WebsiteForm` seed, the inbox
++ * filter and the website's contract all share (WP3a, 2026-09-19).
++ *
++ * House rule: the DATABASE is the source of truth; this file is the copy the
++ * browser can read. `apps/backend/src/modules/website/website-schema.spec.ts`
++ * pins the enums member for member and the key list against the schema.
++ */
++
++/** Which handler a public form key dispatches to (P4). */
++export enum WebsiteFormKind {
++  INQUIRY = 'INQUIRY',
++  CAREERS_APPLY = 'CAREERS_APPLY',
++  NEWSLETTER = 'NEWSLETTER',
++  FRAUD_REPORT = 'FRAUD_REPORT',
++  CALLBACK = 'CALLBACK',
++  VISIT = 'VISIT',
++  CALCULATOR_QUOTE = 'CALCULATOR_QUOTE',
++}
++
++/** Lifecycle of one `WebsiteFormSubmission` row (P8): written FIRST, then handled. */
++export enum WebsiteSubmissionStatus {
++  RECEIVED = 'RECEIVED',
++  HANDLED = 'HANDLED',
++  FAILED = 'FAILED',
++  SPAM = 'SPAM',
++}
++
++/** Double opt-in state of a newsletter subscriber (P4, D14). */
++export enum WebsiteSubscriberStatus {
++  PENDING = 'PENDING',
++  CONFIRMED = 'CONFIRMED',
++  UNSUBSCRIBED = 'UNSUBSCRIBED',
++}
++
++/**
++ * The Bearer class a submission was accepted under (P7). The guard stamps the
++ * lower-case wire form (`write` | `test` | `previous-write`); the forms core
++ * maps it to this enum when it writes the row.
++ */
++export enum WebsiteTokenClass {
++  WRITE = 'WRITE',
++  TEST = 'TEST',
++  PREVIOUS_WRITE = 'PREVIOUS_WRITE',
++}
++
++/**
++ * The ten public form keys — the URL segment of `POST /api/website/v1/forms/:formKey`.
++ * Mirrors `FORM_KEYS` in jobsadmire-website `src/analytics/forms.ts`, in that
++ * order (the repos share no package; a key added on either side without the
++ * other is a 404 at the door, which is the failure the schema spec pins).
++ */
++export const WEBSITE_FORM_KEYS = [
++  'hire',
++  'contact',
++  'partner',
++  'careers',
++  'newsletter',
++  'callback',
++  'visit',
++  'calculator',
++  'fraud',
++  'workers',
++] as const;
++export type WebsiteFormKey = (typeof WEBSITE_FORM_KEYS)[number];
++
++/** Form key → handler kind. Four keys share the INQUIRY handler (each tags `messagePreview` with its own key). */
++export const WEBSITE_FORM_KIND_BY_KEY: Record<WebsiteFormKey, WebsiteFormKind> = {
++  hire: WebsiteFormKind.INQUIRY,
++  contact: WebsiteFormKind.INQUIRY,
++  partner: WebsiteFormKind.INQUIRY,
++  workers: WebsiteFormKind.INQUIRY,
++  callback: WebsiteFormKind.CALLBACK,
++  visit: WebsiteFormKind.VISIT,
++  calculator: WebsiteFormKind.CALCULATOR_QUOTE,
++  careers: WebsiteFormKind.CAREERS_APPLY,
++  fraud: WebsiteFormKind.FRAUD_REPORT,
++  newsletter: WebsiteFormKind.NEWSLETTER,
++};
++
++/** Type guard for a path/query value; case-sensitive, like the door. */
++export function isWebsiteFormKey(v: string | undefined): v is WebsiteFormKey {
++  return v !== undefined && (WEBSITE_FORM_KEYS as readonly string[]).includes(v);
++}
+diff --git a/packages/constants/src/index.ts b/packages/constants/src/index.ts
+index 1bce98f..83ebabd 100644
+--- a/packages/constants/src/index.ts
++++ b/packages/constants/src/index.ts
+@@ -1,14 +1,15 @@
+ export * from './enums/user.enums';
+ export * from './enums/permission.enums';
+ export * from './enums/sales-pipeline.enums';
+ export * from './enums/internal-recruitment.enums';
+ export * from './enums/sales-training.enums';
+ export * from './enums/marketing.enums';
+ export * from './enums/projects.enums';
++export * from './enums/website.enums';
+ export * from './languages';
+ export * from './currencies';
+ export * from './iskur';
+ export * from './offer-template-clause';
+ export * from './document-language';
+ export * from './placeholder-catalog';
+ export * from './work-pattern';

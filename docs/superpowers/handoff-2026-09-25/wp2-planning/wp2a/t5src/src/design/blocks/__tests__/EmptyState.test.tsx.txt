@@ -1,0 +1,43 @@
+import { screen } from '@testing-library/react';
+import { describe, expect, it } from 'vitest';
+import { EmptyState } from '../EmptyState';
+import { renderWithIntl } from '@/test/render';
+
+describe('EmptyState (W6)', () => {
+  it('is a status region with the title, body and a tracked contact CTA', () => {
+    renderWithIntl(
+      <EmptyState
+        title="Kayıt henüz yayında değil"
+        body="Ofisi arayarak doğrulayın."
+        cta={{ label: "WhatsApp'tan sorun", href: 'https://wa.me/905011240340', external: true }}
+        testId="verify-empty"
+      />,
+    );
+    const box = screen.getByRole('status');
+    expect(box).toHaveAttribute('data-testid', 'verify-empty');
+    expect(
+      screen.getByRole('heading', { level: 3, name: 'Kayıt henüz yayında değil' }),
+    ).toBeInTheDocument();
+    expect(screen.getByText('Ofisi arayarak doğrulayın.')).toBeInTheDocument();
+    const cta = screen.getByRole('link', { name: "WhatsApp'tan sorun" });
+    expect(cta).toHaveAttribute('target', '_blank');
+    expect(cta).toHaveClass('bg-white'); // secondary face on a light box
+  });
+
+  it('renders title-only on a dark surface with an inverse CTA and an h2 when asked', () => {
+    renderWithIntl(
+      <EmptyState
+        title="İlk onaylar yolda"
+        tone="dark"
+        headingLevel={2}
+        cta={{ label: 'İşçi talep edin', href: '/hire-workers' }}
+      />,
+    );
+    expect(screen.getByRole('heading', { level: 2 })).toHaveClass('text-white');
+    expect(screen.getByRole('link', { name: 'İşçi talep edin' })).toHaveAttribute(
+      'href',
+      '/isci-talebi',
+    );
+    expect(screen.getByRole('link', { name: 'İşçi talep edin' })).toHaveClass('text-white');
+  });
+});

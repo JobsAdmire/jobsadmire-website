@@ -1,0 +1,2349 @@
+# Review package: bb2bc94..17f6384
+
+## Commits
+17f6384 feat(redirects): data-driven legacy redirect map (GSC-joinable), single-hop 308s in next.config, 410 prefixes in proxy
+
+## Files changed
+ .prettierignore             |    2 +
+ e2e/redirects.spec.ts       |   58 ++
+ next.config.ts              |    8 +
+ package.json                |    3 +-
+ redirects/gone.json         |   22 +
+ redirects/gsc-clicks.csv    |    1 +
+ redirects/legacy.json       | 1946 +++++++++++++++++++++++++++++++++++++++++++
+ redirects/redirects.test.ts |   37 +
+ redirects/rules.json        |   52 ++
+ scripts/build-redirects.ts  |   77 ++
+ src/proxy.ts                |    7 +
+ 11 files changed, 2212 insertions(+), 1 deletion(-)
+
+## Diff
+diff --git a/.prettierignore b/.prettierignore
+index 37a9fdd..221a0a6 100644
+--- a/.prettierignore
++++ b/.prettierignore
+@@ -1,8 +1,10 @@
+ design-package
+ node_modules
+ .next
+ coverage
+ playwright-report
+ test-results
+ src/content/local
+ src/content/lint-baseline.json
++redirects/legacy.json
++redirects/gone.json
+diff --git a/e2e/redirects.spec.ts b/e2e/redirects.spec.ts
+new file mode 100644
+index 0000000..b723279
+--- /dev/null
++++ b/e2e/redirects.spec.ts
+@@ -0,0 +1,58 @@
++import { test, expect } from '@playwright/test';
++
++// Next may emit `location` as an absolute URL; resolve against the base and compare pathnames
++// (and hash, where the redirect targets an anchor) rather than comparing raw header strings.
++const base = process.env.E2E_BASE_URL ?? 'http://localhost:3000';
++const target = (location: string | undefined | null, withHash = false) => {
++  const u = new URL(location ?? '', base);
++  return withHash ? `${u.pathname}${u.hash}` : u.pathname;
++};
++
++test.describe('legacy redirects (D21)', () => {
++  test('/contact-us redirects to /en/contact', async ({ request }) => {
++    const res = await request.get('/contact-us', { maxRedirects: 0 });
++    expect(res.status()).toBe(308);
++    expect(target(res.headers()['location'])).toBe('/en/contact');
++  });
++
++  test('old /tr/* goes to the unprefixed Turkish slug', async ({ request }) => {
++    const res = await request.get('/tr/hire-workers-in-turkey', { maxRedirects: 0 });
++    expect(res.status()).toBe(308);
++    expect(target(res.headers()['location'])).toBe('/isci-talebi');
++  });
++
++  test('a dropped locale prefix goes to the /en equivalent', async ({ request }) => {
++    const res = await request.get('/de/about', { maxRedirects: 0 });
++    expect(res.status()).toBe(308);
++    expect(target(res.headers()['location'])).toBe('/en/about');
++  });
++
++  test('/home redirects to /en (301 row whose target is /)', async ({ request }) => {
++    const res = await request.get('/home', { maxRedirects: 0 });
++    expect(res.status()).toBe(308);
++    expect(target(res.headers()['location'])).toBe('/en');
++  });
++
++  test('/tr/home redirects to / (301 row whose target is /)', async ({ request }) => {
++    const res = await request.get('/tr/home', { maxRedirects: 0 });
++    expect(res.status()).toBe(308);
++    expect(target(res.headers()['location'])).toBe('/');
++  });
++
++  test('/job-detail/123 is gone (unbounded legacy space)', async ({ request }) => {
++    const res = await request.get('/job-detail/123', { maxRedirects: 0 });
++    expect(res.status()).toBe(410);
++  });
++
++  test('/blog/anything is gone (unbounded legacy space)', async ({ request }) => {
++    const res = await request.get('/blog/anything', { maxRedirects: 0 });
++    expect(res.status()).toBe(410);
++  });
++
++  test('/certifications redirects to the licence anchor on About', async ({ request }) => {
++    const res = await request.get('/certifications', { maxRedirects: 0 });
++    expect(res.status()).toBe(308);
++    // Assert exactly what legacy.json says for this rule (#lisans anchor on the EN About page).
++    expect(target(res.headers()['location'], true)).toBe('/en/about#lisans');
++  });
++});
+diff --git a/next.config.ts b/next.config.ts
+index 795fa8c..8d9a411 100644
+--- a/next.config.ts
++++ b/next.config.ts
+@@ -1,11 +1,19 @@
+ import type { NextConfig } from 'next';
+ import createNextIntlPlugin from 'next-intl/plugin';
++import legacy from './redirects/legacy.json';
+ 
+ const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
+ 
+ const nextConfig: NextConfig = {
+   reactStrictMode: true,
+   poweredByHeader: false,
++  async redirects() {
++    return (legacy as { from: string; to: string }[]).map((r) => ({
++      source: r.from,
++      destination: r.to,
++      permanent: true,
++    }));
++  },
+ };
+ 
+ export default withNextIntl(nextConfig);
+diff --git a/package.json b/package.json
+index ae573c6..cfa3897 100644
+--- a/package.json
++++ b/package.json
+@@ -8,21 +8,22 @@
+     "start": "next start",
+     "lint": "eslint .",
+     "typecheck": "tsc --noEmit",
+     "format": "prettier --check .",
+     "format:write": "prettier --write .",
+     "test": "vitest run",
+     "test:watch": "vitest",
+     "verify": "npm run typecheck && npm run lint && npm run format && npm run test",
+     "e2e": "playwright test",
+     "gate": "bash scripts/gate.sh",
+-    "content:import": "tsx scripts/import-design-package.ts"
++    "content:import": "tsx scripts/import-design-package.ts",
++    "redirects:build": "tsx scripts/build-redirects.ts"
+   },
+   "dependencies": {
+     "next": "16.3.5",
+     "next-intl": "^4.14.5",
+     "react": "19.2.8",
+     "react-dom": "19.2.8",
+     "zod": "^3.25.76"
+   },
+   "devDependencies": {
+     "@axe-core/playwright": "^4.13.0",
+diff --git a/redirects/gone.json b/redirects/gone.json
+new file mode 100644
+index 0000000..9740c86
+--- /dev/null
++++ b/redirects/gone.json
+@@ -0,0 +1,22 @@
++[
++ "/blog/",
++ "/job-detail/",
++ "/profile/",
++ "/services/career-counselling",
++ "/services/career-councelling",
++ "/services/interview-coaching-service",
++ "/services/remote-work-opportunity",
++ "/services/resume-service",
++ "/services/skill-development-training",
++ "/immigration/immigrate-to-usa",
++ "/immigration/immigrate-to-uk",
++ "/immigration/immigrate-to-canada",
++ "/immigration/immigrate-to-australia",
++ "/immigration/kazakhstan-residence-permit",
++ "/visa",
++ "/visa-e-invitations",
++ "/visa-e-invitation",
++ "/apply-online",
++ "/resume-generator",
++ "/templates"
++]
+\ No newline at end of file
+diff --git a/redirects/gsc-clicks.csv b/redirects/gsc-clicks.csv
+new file mode 100644
+index 0000000..64af45d
+--- /dev/null
++++ b/redirects/gsc-clicks.csv
+@@ -0,0 +1 @@
++url,clicks
+diff --git a/redirects/legacy.json b/redirects/legacy.json
+new file mode 100644
+index 0000000..c9d4f8f
+--- /dev/null
++++ b/redirects/legacy.json
+@@ -0,0 +1,1946 @@
++[
++ {
++  "from": "/tr",
++  "to": "/",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr",
++  "to": "/en",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de",
++  "to": "/en",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar",
++  "to": "/en",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru",
++  "to": "/en",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa",
++  "to": "/en",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id",
++  "to": "/en",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil",
++  "to": "/en",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk",
++  "to": "/en",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg",
++  "to": "/en",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/home",
++  "to": "/en",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/home",
++  "to": "/",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/home",
++  "to": "/en",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/home",
++  "to": "/en",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/home",
++  "to": "/en",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/home",
++  "to": "/en",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/home",
++  "to": "/en",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/home",
++  "to": "/en",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/home",
++  "to": "/en",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/home",
++  "to": "/en",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/home",
++  "to": "/en",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/tr/about",
++  "to": "/hakkimizda",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/about",
++  "to": "/en/about",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/about",
++  "to": "/en/about",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/about",
++  "to": "/en/about",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/about",
++  "to": "/en/about",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/about",
++  "to": "/en/about",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/about",
++  "to": "/en/about",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/about",
++  "to": "/en/about",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/about",
++  "to": "/en/about",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/about",
++  "to": "/en/about",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/contact-us",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/contact-us",
++  "to": "/iletisim",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/contact-us",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/contact-us",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/contact-us",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/contact-us",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/contact-us",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/contact-us",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/contact-us",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/contact-us",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/contact-us",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/tr/work-permit",
++  "to": "/calisma-izni",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/work-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/work-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/work-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/work-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/work-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/work-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/work-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/work-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/work-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/hire-workers-in-turkey",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/hire-workers-in-turkey",
++  "to": "/isci-talebi",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/hire-workers-in-turkey",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/hire-workers-in-turkey",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/hire-workers-in-turkey",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/hire-workers-in-turkey",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/hire-workers-in-turkey",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/hire-workers-in-turkey",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/hire-workers-in-turkey",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/hire-workers-in-turkey",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/hire-workers-in-turkey",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/job-recruitment",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/job-recruitment",
++  "to": "/isci-talebi",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/job-recruitment",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/job-recruitment",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/job-recruitment",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/job-recruitment",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/job-recruitment",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/job-recruitment",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/job-recruitment",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/job-recruitment",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/job-recruitment",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/tr/blog",
++  "to": "/blog",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/blog",
++  "to": "/en/blog",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/blog",
++  "to": "/en/blog",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/blog",
++  "to": "/en/blog",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/blog",
++  "to": "/en/blog",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/blog",
++  "to": "/en/blog",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/blog",
++  "to": "/en/blog",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/blog",
++  "to": "/en/blog",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/blog",
++  "to": "/en/blog",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/blog",
++  "to": "/en/blog",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/certifications",
++  "to": "/en/about#lisans",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/certifications",
++  "to": "/hakkimizda#lisans",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/certifications",
++  "to": "/en/about#lisans",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/certifications",
++  "to": "/en/about#lisans",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/certifications",
++  "to": "/en/about#lisans",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/certifications",
++  "to": "/en/about#lisans",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/certifications",
++  "to": "/en/about#lisans",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/certifications",
++  "to": "/en/about#lisans",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/certifications",
++  "to": "/en/about#lisans",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/certifications",
++  "to": "/en/about#lisans",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/certifications",
++  "to": "/en/about#lisans",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/thankyou",
++  "to": "/en/thank-you",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/thankyou",
++  "to": "/tesekkurler",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/thankyou",
++  "to": "/en/thank-you",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/thankyou",
++  "to": "/en/thank-you",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/thankyou",
++  "to": "/en/thank-you",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/thankyou",
++  "to": "/en/thank-you",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/thankyou",
++  "to": "/en/thank-you",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/thankyou",
++  "to": "/en/thank-you",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/thankyou",
++  "to": "/en/thank-you",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/thankyou",
++  "to": "/en/thank-you",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/thankyou",
++  "to": "/en/thank-you",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/tr/privacy",
++  "to": "/gizlilik",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/privacy",
++  "to": "/en/privacy",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/privacy",
++  "to": "/en/privacy",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/privacy",
++  "to": "/en/privacy",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/privacy",
++  "to": "/en/privacy",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/privacy",
++  "to": "/en/privacy",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/privacy",
++  "to": "/en/privacy",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/privacy",
++  "to": "/en/privacy",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/privacy",
++  "to": "/en/privacy",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/privacy",
++  "to": "/en/privacy",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/tr/terms",
++  "to": "/kullanim-kosullari",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/terms",
++  "to": "/en/terms",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/terms",
++  "to": "/en/terms",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/terms",
++  "to": "/en/terms",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/terms",
++  "to": "/en/terms",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/terms",
++  "to": "/en/terms",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/terms",
++  "to": "/en/terms",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/terms",
++  "to": "/en/terms",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/terms",
++  "to": "/en/terms",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/terms",
++  "to": "/en/terms",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/job",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/job",
++  "to": "/adaylar",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/job",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/job",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/job",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/job",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/job",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/job",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/job",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/job",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/job",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/services",
++  "to": "/en",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/services",
++  "to": "/",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/services",
++  "to": "/en",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/services",
++  "to": "/en",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/services",
++  "to": "/en",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/services",
++  "to": "/en",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/services",
++  "to": "/en",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/services",
++  "to": "/en",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/services",
++  "to": "/en",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/services",
++  "to": "/en",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/services",
++  "to": "/en",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/services/human-resource",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/services/human-resource",
++  "to": "/isci-talebi",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/services/human-resource",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/services/human-resource",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/services/human-resource",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/services/human-resource",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/services/human-resource",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/services/human-resource",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/services/human-resource",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/services/human-resource",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/services/human-resource",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/services/talent-acquisition-process",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/services/talent-acquisition-process",
++  "to": "/isci-talebi",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/services/talent-acquisition-process",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/services/talent-acquisition-process",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/services/talent-acquisition-process",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/services/talent-acquisition-process",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/services/talent-acquisition-process",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/services/talent-acquisition-process",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/services/talent-acquisition-process",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/services/talent-acquisition-process",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/services/talent-acquisition-process",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/services/global-job-placement",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/services/global-job-placement",
++  "to": "/isci-talebi",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/services/global-job-placement",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/services/global-job-placement",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/services/global-job-placement",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/services/global-job-placement",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/services/global-job-placement",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/services/global-job-placement",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/services/global-job-placement",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/services/global-job-placement",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/services/global-job-placement",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/services/immigration",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/services/immigration",
++  "to": "/calisma-izni",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/services/immigration",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/services/immigration",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/services/immigration",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/services/immigration",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/services/immigration",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/services/immigration",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/services/immigration",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/services/immigration",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/services/immigration",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/services/visa",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/services/visa",
++  "to": "/calisma-izni",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/services/visa",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/services/visa",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/services/visa",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/services/visa",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/services/visa",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/services/visa",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/services/visa",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/services/visa",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/services/visa",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/immigration/immigrate-to-turkey",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/immigration/immigrate-to-turkey",
++  "to": "/calisma-izni",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/immigration/immigrate-to-turkey",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/immigration/immigrate-to-turkey",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/immigration/immigrate-to-turkey",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/immigration/immigrate-to-turkey",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/immigration/immigrate-to-turkey",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/immigration/immigrate-to-turkey",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/immigration/immigrate-to-turkey",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/immigration/immigrate-to-turkey",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/immigration/immigrate-to-turkey",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/immigration/turkey-residence-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/immigration/turkey-residence-permit",
++  "to": "/calisma-izni",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/immigration/turkey-residence-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/immigration/turkey-residence-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/immigration/turkey-residence-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/immigration/turkey-residence-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/immigration/turkey-residence-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/immigration/turkey-residence-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/immigration/turkey-residence-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/immigration/turkey-residence-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/immigration/turkey-residence-permit",
++  "to": "/en/work-permit",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/turkey-citizenship",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/turkey-citizenship",
++  "to": "/iletisim",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/turkey-citizenship",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/turkey-citizenship",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/turkey-citizenship",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/turkey-citizenship",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/turkey-citizenship",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/turkey-citizenship",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/turkey-citizenship",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/turkey-citizenship",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/turkey-citizenship",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/partner/recruiter-agency",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/partner/recruiter-agency",
++  "to": "/ortak-olun",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/partner/recruiter-agency",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/partner/recruiter-agency",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/partner/recruiter-agency",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/partner/recruiter-agency",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/partner/recruiter-agency",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/partner/recruiter-agency",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/partner/recruiter-agency",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/partner/recruiter-agency",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/partner/recruiter-agency",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/partner/job-provider",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/partner/job-provider",
++  "to": "/ortak-olun",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/partner/job-provider",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/partner/job-provider",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/partner/job-provider",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/partner/job-provider",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/partner/job-provider",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/partner/job-provider",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/partner/job-provider",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/partner/job-provider",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/partner/job-provider",
++  "to": "/en/partner-with-us",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/partner/register-as-candidate",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/partner/register-as-candidate",
++  "to": "/adaylar",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/partner/register-as-candidate",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/partner/register-as-candidate",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/partner/register-as-candidate",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/partner/register-as-candidate",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/partner/register-as-candidate",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/partner/register-as-candidate",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/partner/register-as-candidate",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/partner/register-as-candidate",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/partner/register-as-candidate",
++  "to": "/en/available-workers",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/register-as-candidate",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/register-as-candidate",
++  "to": "/iletisim",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/register-as-candidate",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/register-as-candidate",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/register-as-candidate",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/register-as-candidate",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/register-as-candidate",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/register-as-candidate",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/register-as-candidate",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/register-as-candidate",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/register-as-candidate",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/register-as-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/register-as-company",
++  "to": "/isci-talebi",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/register-as-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/register-as-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/register-as-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/register-as-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/register-as-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/register-as-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/register-as-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/register-as-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/register-as-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/register-your-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/register-your-company",
++  "to": "/isci-talebi",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/register-your-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/register-your-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/register-your-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/register-your-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/register-your-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/register-your-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/register-your-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/register-your-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/register-your-company",
++  "to": "/en/hire-workers",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/candidate-apply",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/candidate-apply",
++  "to": "/iletisim",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/candidate-apply",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/candidate-apply",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/candidate-apply",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/candidate-apply",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/candidate-apply",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/candidate-apply",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/candidate-apply",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/candidate-apply",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/candidate-apply",
++  "to": "/en/contact",
++  "status": 308,
++  "source": "tg"
++ },
++ {
++  "from": "/login-companies",
++  "to": "/en/portal-login",
++  "status": 308,
++  "source": "en"
++ },
++ {
++  "from": "/tr/login-companies",
++  "to": "/portal-girisi",
++  "status": 308,
++  "source": "tr"
++ },
++ {
++  "from": "/fr/login-companies",
++  "to": "/en/portal-login",
++  "status": 308,
++  "source": "fr"
++ },
++ {
++  "from": "/de/login-companies",
++  "to": "/en/portal-login",
++  "status": 308,
++  "source": "de"
++ },
++ {
++  "from": "/ar/login-companies",
++  "to": "/en/portal-login",
++  "status": 308,
++  "source": "ar"
++ },
++ {
++  "from": "/ru/login-companies",
++  "to": "/en/portal-login",
++  "status": 308,
++  "source": "ru"
++ },
++ {
++  "from": "/fa/login-companies",
++  "to": "/en/portal-login",
++  "status": 308,
++  "source": "fa"
++ },
++ {
++  "from": "/id/login-companies",
++  "to": "/en/portal-login",
++  "status": 308,
++  "source": "id"
++ },
++ {
++  "from": "/fil/login-companies",
++  "to": "/en/portal-login",
++  "status": 308,
++  "source": "fil"
++ },
++ {
++  "from": "/tk/login-companies",
++  "to": "/en/portal-login",
++  "status": 308,
++  "source": "tk"
++ },
++ {
++  "from": "/tg/login-companies",
++  "to": "/en/portal-login",
++  "status": 308,
++  "source": "tg"
++ }
++]
+\ No newline at end of file
+diff --git a/redirects/redirects.test.ts b/redirects/redirects.test.ts
+new file mode 100644
+index 0000000..a3d56a4
+--- /dev/null
++++ b/redirects/redirects.test.ts
+@@ -0,0 +1,37 @@
++import { describe, expect, it } from 'vitest';
++import { buildRedirects, type Rule } from '../scripts/build-redirects';
++import rules from './rules.json';
++
++const { redirects, gone } = buildRedirects(rules as Rule[], []);
++const froms = new Set(redirects.map((r) => r.from));
++
++describe('legacy redirects (D21)', () => {
++  it('expands every rule over the 10 dropped locale prefixes + unprefixed en + /tr', () => {
++    // 50 rules in rules.json: 6 'keep' rows produce entries only for the 9 dropped locales +
++    // /tr (10 adds each); 24 '301' rows also add an unprefixed /en entry (11 adds each); 20
++    // '410' rows become gone prefixes instead of redirects.
++    expect(redirects.length + gone.length).toBeGreaterThan(250);
++    // Pinned to the generator's actual first-run output (`npm run redirects:build`). These
++    // numbers change only when redirects/rules.json changes.
++    expect(redirects.length).toBe(324);
++    expect(gone.length).toBe(20);
++  });
++  it('never chains: no destination is another rule source', () => {
++    for (const r of redirects) expect(froms.has(r.to), `${r.from} → ${r.to} chains`).toBe(false);
++  });
++  it('old /tr/* goes to the unprefixed Turkish slug, everything else to /en', () => {
++    expect(redirects.find((r) => r.from === '/tr/hire-workers-in-turkey')?.to).toBe('/isci-talebi');
++    expect(redirects.find((r) => r.from === '/hire-workers-in-turkey')?.to).toBe(
++      '/en/hire-workers',
++    );
++    expect(redirects.find((r) => r.from === '/de/contact-us')?.to).toBe('/en/contact');
++  });
++  it('a clicked 410 route is promoted to a 301 (GSC join)', () => {
++    const { redirects: r2 } = buildRedirects(rules as Rule[], [{ url: '/visa', clicks: 12 }]);
++    expect(r2.find((r) => r.from === '/visa')?.to).toBe('/en/work-permit');
++  });
++  it('unbounded spaces are 410 prefixes', () => {
++    expect(gone).toContain('/blog/');
++    expect(gone).toContain('/job-detail/');
++  });
++});
+diff --git a/redirects/rules.json b/redirects/rules.json
+new file mode 100644
+index 0000000..dc1f996
+--- /dev/null
++++ b/redirects/rules.json
+@@ -0,0 +1,52 @@
++[
++  { "from": "/", "to": "/", "disposition": "keep" },
++  { "from": "/home", "to": "/", "disposition": "301" },
++  { "from": "/about", "to": "/about", "disposition": "keep" },
++  { "from": "/contact-us", "to": "/contact", "disposition": "301" },
++  { "from": "/work-permit", "to": "/work-permit", "disposition": "keep" },
++  { "from": "/hire-workers-in-turkey", "to": "/hire-workers", "disposition": "301" },
++  { "from": "/job-recruitment", "to": "/hire-workers", "disposition": "301" },
++  { "from": "/blog", "to": "/blog", "disposition": "keep" },
++  { "from": "/blog/*", "to": null, "disposition": "410" },
++  { "from": "/certifications", "to": "/about#lisans", "disposition": "301" },
++  { "from": "/thankyou", "to": "/thank-you", "disposition": "301" },
++  { "from": "/privacy", "to": "/privacy", "disposition": "keep" },
++  { "from": "/terms", "to": "/terms", "disposition": "keep" },
++  { "from": "/job", "to": "/available-workers", "disposition": "301" },
++  { "from": "/job-detail/*", "to": null, "disposition": "410" },
++  { "from": "/profile/*", "to": null, "disposition": "410" },
++  { "from": "/services", "to": "/", "disposition": "301" },
++  { "from": "/services/human-resource", "to": "/hire-workers", "disposition": "301" },
++  { "from": "/services/talent-acquisition-process", "to": "/hire-workers", "disposition": "301" },
++  { "from": "/services/global-job-placement", "to": "/hire-workers", "disposition": "301" },
++  { "from": "/services/immigration", "to": "/work-permit", "disposition": "301" },
++  { "from": "/services/visa", "to": "/work-permit", "disposition": "301" },
++  { "from": "/services/career-counselling", "to": null, "disposition": "410" },
++  { "from": "/services/career-councelling", "to": null, "disposition": "410" },
++  { "from": "/services/interview-coaching-service", "to": null, "disposition": "410" },
++  { "from": "/services/remote-work-opportunity", "to": null, "disposition": "410" },
++  { "from": "/services/resume-service", "to": null, "disposition": "410" },
++  { "from": "/services/skill-development-training", "to": null, "disposition": "410" },
++  { "from": "/immigration/immigrate-to-usa", "to": null, "disposition": "410" },
++  { "from": "/immigration/immigrate-to-uk", "to": null, "disposition": "410" },
++  { "from": "/immigration/immigrate-to-canada", "to": null, "disposition": "410" },
++  { "from": "/immigration/immigrate-to-australia", "to": null, "disposition": "410" },
++  { "from": "/immigration/immigrate-to-turkey", "to": "/work-permit", "disposition": "301" },
++  { "from": "/immigration/turkey-residence-permit", "to": "/work-permit", "disposition": "301" },
++  { "from": "/immigration/kazakhstan-residence-permit", "to": null, "disposition": "410" },
++  { "from": "/turkey-citizenship", "to": "/contact", "disposition": "301" },
++  { "from": "/visa", "to": null, "disposition": "410" },
++  { "from": "/visa-e-invitations", "to": null, "disposition": "410" },
++  { "from": "/visa-e-invitation", "to": null, "disposition": "410" },
++  { "from": "/apply-online", "to": null, "disposition": "410" },
++  { "from": "/partner/recruiter-agency", "to": "/partner-with-us", "disposition": "301" },
++  { "from": "/partner/job-provider", "to": "/partner-with-us", "disposition": "301" },
++  { "from": "/partner/register-as-candidate", "to": "/available-workers", "disposition": "301" },
++  { "from": "/register-as-candidate", "to": "/contact", "disposition": "301" },
++  { "from": "/register-as-company", "to": "/hire-workers", "disposition": "301" },
++  { "from": "/register-your-company", "to": "/hire-workers", "disposition": "301" },
++  { "from": "/candidate-apply", "to": "/contact", "disposition": "301" },
++  { "from": "/login-companies", "to": "/portal-login", "disposition": "301" },
++  { "from": "/resume-generator", "to": null, "disposition": "410" },
++  { "from": "/templates", "to": null, "disposition": "410" }
++]
+diff --git a/scripts/build-redirects.ts b/scripts/build-redirects.ts
+new file mode 100644
+index 0000000..4717a31
+--- /dev/null
++++ b/scripts/build-redirects.ts
+@@ -0,0 +1,77 @@
++import { readFileSync, writeFileSync } from 'node:fs';
++import { join } from 'node:path';
++import { pathnames } from '../src/i18n/routing';
++
++export type Rule = { from: string; to: string | null; disposition: 'keep' | '301' | '410' };
++export type Click = { url: string; clicks: number };
++const DROPPED = ['fr', 'de', 'ar', 'ru', 'fa', 'id', 'fil', 'tk', 'tg'];
++/** where a clicked-but-410 route lands (nearest relevant page) */
++const RESCUE: Record<string, string> = {
++  '/visa': '/work-permit',
++  '/visa-e-invitations': '/work-permit',
++  '/visa-e-invitation': '/work-permit',
++  '/resume-generator': '/careers',
++  '/templates': '/careers',
++  '/apply-online': '/contact',
++};
++
++function external(locale: 'tr' | 'en', internal: string): string {
++  const [path, hash] = internal.split('#');
++  const p = pathnames[path as keyof typeof pathnames];
++  const ext = typeof p === 'string' ? p : p[locale];
++  const withPrefix = locale === 'en' ? `/en${ext === '/' ? '' : ext}` : ext;
++  return `${withPrefix || '/'}${hash ? `#${hash}` : ''}`;
++}
++
++export function buildRedirects(rules: Rule[], clicks: Click[]) {
++  const clicked = new Map(clicks.map((c) => [c.url, c.clicks]));
++  const redirects: { from: string; to: string; status: 308; source: string }[] = [];
++  const gone: string[] = [];
++  const add = (from: string, to: string, source: string) => {
++    if (from !== to) redirects.push({ from, to, status: 308, source });
++  };
++  for (const rule of rules) {
++    const wildcard = rule.from.endsWith('/*');
++    const base = wildcard ? rule.from.slice(0, -1) : rule.from;
++    let disposition = rule.disposition;
++    let to = rule.to;
++    if (disposition === '410' && (clicked.get(rule.from) ?? 0) > 0 && RESCUE[rule.from]) {
++      disposition = '301';
++      to = RESCUE[rule.from];
++    }
++    if (disposition === '410') {
++      gone.push(wildcard ? base : rule.from);
++      continue;
++    }
++    const target = to ?? rule.from;
++    // old unprefixed = English
++    if (disposition === '301') add(rule.from, external('en', target), 'en');
++    // old /tr → Turkish root slug; dropped locales → English
++    add(`/tr${rule.from === '/' ? '' : rule.from}`, external('tr', target), 'tr');
++    for (const l of DROPPED)
++      add(`/${l}${rule.from === '/' ? '' : rule.from}`, external('en', target), l);
++  }
++  return { redirects, gone: Array.from(new Set(gone)) };
++}
++
++if (require.main === module) {
++  const rules = JSON.parse(
++    readFileSync(join(__dirname, '../redirects/rules.json'), 'utf8'),
++  ) as Rule[];
++  const csv = readFileSync(join(__dirname, '../redirects/gsc-clicks.csv'), 'utf8')
++    .trim()
++    .split('\n')
++    .slice(1)
++    .filter(Boolean);
++  const clicks = csv.map((line) => {
++    const [url, c] = line.split(',');
++    return { url: url.trim(), clicks: Number(c) };
++  });
++  const out = buildRedirects(rules, clicks);
++  writeFileSync(
++    join(__dirname, '../redirects/legacy.json'),
++    JSON.stringify(out.redirects, null, 1),
++  );
++  writeFileSync(join(__dirname, '../redirects/gone.json'), JSON.stringify(out.gone, null, 1));
++  console.log(`${out.redirects.length} redirects, ${out.gone.length} gone prefixes`);
++}
+diff --git a/src/proxy.ts b/src/proxy.ts
+index c6d372f..5115123 100644
+--- a/src/proxy.ts
++++ b/src/proxy.ts
+@@ -1,13 +1,20 @@
+ import createMiddleware from 'next-intl/middleware';
++import { NextResponse } from 'next/server';
+ import { routing } from './i18n/routing';
++import gone from '../redirects/gone.json';
+ 
+ const intl = createMiddleware(routing);
++const GONE = gone as string[];
+ 
+ export default function proxy(request: Parameters<typeof intl>[0]) {
++  const { pathname } = request.nextUrl;
++  if (GONE.some((p) => pathname === p || pathname.startsWith(p.endsWith('/') ? p : `${p}/`))) {
++    return new NextResponse(null, { status: 410 });
++  }
+   return intl(request);
+ }
+ 
+ export const config = {
+   // never intercept API routes, Next internals, Vercel internals, or files with an extension
+   matcher: ['/((?!api|_next|_vercel|.*\\..*).*)'],
+ };

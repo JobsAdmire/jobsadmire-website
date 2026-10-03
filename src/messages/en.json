@@ -5,10 +5,16 @@
     "notFoundBody": "The page you are looking for may have moved or been removed.",
     "errorTitle": "Something went wrong",
     "errorRetry": "Try again",
-    "home": "Home",
     "nav": {
       "main": "Main menu",
-      "close": "Close"
+      "close": "Close",
+      "home": "Home",
+      "legal": "Legal",
+      "breadcrumbs": "Breadcrumb",
+      "slimBar": "Contact and licence bar",
+      "bottomBar": "Quick contact actions",
+      "socialRail": "Social media links",
+      "whatsappFab": "WhatsApp shortcut"
     },
     "marquee": {
       "pause": "Pause",
@@ -17,14 +23,92 @@
     "whatsapp": {
       "prefill": "Hello JobsAdmire, "
     },
+    "blocks": {
+      "readMinutes": "{n, plural, one {# min read} other {# min read}}"
+    },
     "languageHint": {
       "body": "This page is also available in English.",
       "switch": "Switch to English",
       "dismiss": "Dismiss"
     },
+    "seo": {
+      "ogTagline": "Licensed workforce recruitment for employers in Türkiye — overseas sourcing, vetting and work permits.",
+      "home": {
+        "title": "Hire Skilled Workers from Abroad for Türkiye | JobsAdmire",
+        "description": "Skilled workers sourced abroad for employers in Türkiye — candidates vetted by JobsAdmire's own representatives, legal work permits and arrival, managed end to end. Get a free proposal."
+      },
+      "portal": {
+        "title": "Partner Portal sign-in | JobsAdmire",
+        "description": "Sign in to the JobsAdmire Partner Portal: agreements, candidates and permit status in one place."
+      },
+      "privacy": {
+        "title": "Privacy Policy | JobsAdmire",
+        "description": "How JobsAdmire collects, uses, stores and protects personal data under the Turkish data protection law (KVKK)."
+      },
+      "terms": {
+        "title": "Terms and Conditions | JobsAdmire",
+        "description": "The terms that govern the use of jobsadmire.com and the services of JobsAdmire."
+      },
+      "kvkk": {
+        "title": "KVKK Information Notice | JobsAdmire",
+        "description": "The information notice under the Turkish Law on the Protection of Personal Data No. 6698 (KVKK)."
+      },
+      "cookiePolicy": {
+        "title": "Cookie Policy | JobsAdmire",
+        "description": "The cookies jobsadmire.com uses and how to manage your preferences."
+      },
+      "newsletterConfirm": {
+        "title": "Confirm your subscription | JobsAdmire",
+        "description": "Confirm your subscription to the JobsAdmire newsletter."
+      },
+      "newsletterUnsubscribe": {
+        "title": "Unsubscribe | JobsAdmire",
+        "description": "Unsubscribe from the JobsAdmire newsletter."
+      },
+      "thankYou": {
+        "title": "Thank you | JobsAdmire",
+        "description": "JobsAdmire has received your request. The JobsAdmire team will get back to you shortly."
+      },
+      "calc": {
+        "title": "Hiring cost calculator for foreign workers in Türkiye | JobsAdmire",
+        "description": "Salary, SGK employer share, permit fees, flights and housing in one estimate. Check the 5:1 quota, run the pass check and ask for a written quote."
+      },
+      "wp": {
+        "title": "Work permits in Türkiye — rules, e-Muafiyet, process | JobsAdmire",
+        "description": "Work permits in Türkiye under Law No. 6735: standard permit or e-Muafiyet exemption, employer criteria, timelines, costs and documents — filed by JobsAdmire."
+      },
+      "about": {
+        "title": "About JobsAdmire — İŞKUR-licensed employment agency, Antalya",
+        "description": "JobsAdmire is an İŞKUR-licensed private employment agency in Antalya, Türkiye: skilled overseas workers for employers across Türkiye, every work permit handled."
+      },
+      "contact": {
+        "title": "Contact JobsAdmire — Licensed Recruitment Agency in Türkiye",
+        "description": "Call or WhatsApp the JobsAdmire head office in Antalya: one number for worker requests, permits and partnerships, answered by a real person in office hours."
+      },
+      "workers": {
+        "title": "Verified workers ready to start in Türkiye | JobsAdmire",
+        "description": "Skill-tested, document-checked, permit-ready candidates for employers in Türkiye. Request the roles you need; JobsAdmire files every work permit."
+      },
+      "stories": {
+        "title": "Success Stories — Work Permit Approvals for Employers in Türkiye | JobsAdmire",
+        "description": "Work permit approvals JobsAdmire obtains for employers in Türkiye, published by sector, headcount and month with personal details removed."
+      },
+      "verify": {
+        "title": "Verify a JobsAdmire Representative — Official Authority Check",
+        "description": "Check if someone really acts for JobsAdmire: only the founder signs, and nobody at JobsAdmire takes money from a worker. Check a JA- ID or report an impostor."
+      },
+      "careers": {
+        "title": "Careers at JobsAdmire — roles in Antalya and in the source countries",
+        "description": "Work for JobsAdmire: overseas representatives in the source countries or the Antalya office. Full-time, part-time or per project; every application is answered."
+      },
+      "blog": {
+        "title": "Blog & Guides — Work Permits and Hiring in Türkiye | JobsAdmire",
+        "description": "Hiring guides, work permit updates and workforce news for employers in Türkiye, written by the JobsAdmire permit and recruitment team."
+      }
+    },
     "consent": {
       "title": "Cookies",
-      "body": "We use cookies to improve the site and to measure how our ads perform. You can change your choice at any time.",
+      "body": "JobsAdmire uses cookies to improve the site and to measure how its ads perform. You can change your choice at any time.",
       "accept": "Accept",
       "reject": "Reject",
       "policy": "Cookie policy",
@@ -32,20 +116,850 @@
     },
     "thankYou": {
       "title": "Thank you",
-      "body": "We have your request. Our team will get back to you shortly.",
+      "body": "JobsAdmire has received your request. The JobsAdmire team will get back to you shortly.",
       "home": "Back to home",
-      "whatsapp": "Message us on WhatsApp",
+      "whatsapp": "Message JobsAdmire on WhatsApp",
       "forms": {
-        "hire": "We have your worker request; we will line up suitable candidates and come back to you.",
-        "contact": "We have your message and usually reply within one business day.",
-        "partner": "We have your partnership enquiry; our business development team will be in touch.",
-        "careers": "We have your application; we will contact you when a suitable role opens.",
+        "hire": "Your worker request has been received; JobsAdmire will line up suitable candidates and come back to you.",
+        "contact": "Your message has been received; JobsAdmire usually replies within one business day.",
+        "partner": "Your partnership enquiry has been received; the JobsAdmire business development team will be in touch.",
+        "careers": "Your application has been received; JobsAdmire confirms it by e-mail and answers every application.",
         "newsletter": "You are on the list; check your inbox to confirm.",
-        "callback": "We have your callback request; our team will call you back shortly.",
-        "visit": "Your visit request is noted; we will be in touch to agree a time.",
-        "calculator": "Your cost estimate is on its way; we will send it over shortly.",
-        "fraud": "Thank you for the report; we investigate every one.",
-        "workers": "We have your request for candidates; we will send you matching profiles."
+        "callback": "Your callback request has been received; the JobsAdmire team will call you back shortly.",
+        "visit": "Your visit request is noted; JobsAdmire will be in touch to agree a time.",
+        "calculator": "Your cost estimate is on its way; JobsAdmire will send it over shortly.",
+        "fraud": "Thank you for the report; JobsAdmire investigates every one.",
+        "workers": "Your request for candidates has been received; JobsAdmire will send you matching profiles."
+      }
+    },
+    "hire": {
+      "whatsapp": "WhatsApp",
+      "jump": {
+        "label": "On this page"
+      },
+      "sc": {
+        "titleTail": "",
+        "mapTitle": "Source countries map — the countries JobsAdmire sources workers from for employers in Türkiye"
+      },
+      "form": {
+        "dial": "Country code"
+      }
+    },
+    "calc": {
+      "hero": { "badge": "{year} rates · Updated {month}" },
+      "skeleton": { "activate": "Adjust the estimate" },
+      "empty": {
+        "title": "The calculator is being updated",
+        "body": "The current rates are not published yet — ask JobsAdmire for a written quote instead."
+      },
+      "jump": { "label": "On this page" },
+      "a11y": {
+        "decrease": "Decrease by {step}",
+        "increase": "Increase by {step}",
+        "headcountPresets": "Quick pick",
+        "industries": "Filter by industry"
+      },
+      "card": {
+        "forWorkers": "for {n} workers",
+        "nMonths": "{months} months",
+        "seasonTotal": "{months}-month season total",
+        "threshold": "Legal minimum for this job: {amount} gross ({multiplier}× the minimum wage).",
+        "yearNote": "{months} months of payroll + one-off costs{headcount, plural, =1 {} other { for # workers}}"
+      },
+      "quota": {
+        "allowed": "{n, plural, one {# foreign worker} other {# foreign workers}}",
+        "msgNo": "With {staff, plural, one {# Turkish employee} other {# Turkish employees}} you do not reach the {ratio}:1 rule yet. You need {need} more, or one of the exemptions below.",
+        "msgMore": "Counted as {ratio} Turkish employees for each foreign worker. {m, plural, one {# more Turkish employee} other {# more Turkish employees}} would give you one more place.",
+        "vsOver": "That is {over} more than the rule allows. You would need {need} more Turkish employees, or an exemption. Send your numbers to JobsAdmire to find out which one fits you.",
+        "vizNone": "Not one complete block yet — {n} more Turkish employees unlock the first place.",
+        "vizFull": "{staff} employees make exactly {blocks, plural, one {# complete block} other {# complete blocks}} — no spare capacity, {ratio} more unlock the next place.",
+        "vizPart": "{blocks, plural, one {# complete block} other {# complete blocks}} plus {spare, plural, one {# spare employee} other {# spare employees}} — {need} more unlock one further place.",
+        "vizCap": "{blocks} complete blocks (first {cap} shown) plus {spare} spare.{spare, plural, =0 {} other { {need} more unlock one further place.}}"
+      },
+      "pass": {
+        "count": "{clear} of {total} checks clear{unanswered, plural, =0 {} other { · # unanswered}}",
+        "quotaOk": "Answered from your quota check above: {staff} Turkish employees allow {allowed}, and you planned {headcount}.",
+        "quotaNo": "Answered from your quota check above: {headcount} foreign workers need {need} Turkish employees on SGK, and you entered {staff}.",
+        "quotaFix": "You are short on the ratio — {need} Turkish employees are needed for {headcount}. Either reduce the headcount, or check whether your sector is exempt.",
+        "salary": "{role}: {amount} gross per month ({multiplier}× the minimum wage). Declaring less is a refusal, not a negotiation — and paying part of it in cash is a separate offence.",
+        "salaryFix": "Raise the declared salary to at least {amount} gross for this role, or pick a role class that matches the pay.",
+        "amberN": "{n} things to confirm first",
+        "redN": "{n} blockers — fix them before filing",
+        "unanswered": "unanswered"
+      },
+      "exemptions": {
+        "tenStaff": "10+ Turkish staff",
+        "twentyStaff": "20+ Turkish staff",
+        "upTo5": "Up to 5 workers",
+        "full": "Full exemption",
+        "timing": "Timing exemption",
+        "upTo3": "Up to 3 workers",
+        "exceptional": "Exceptional permit"
+      },
+      "whatsapp": {
+        "generic": "Hello JobsAdmire, I used the hiring cost calculator on your website. Please send me a written quote.",
+        "estimate": "Hello JobsAdmire, I used the cost calculator: {headcount} × {role} at {salary} gross, {months}-month contract. Please send a written quote.",
+        "passCheck": "Hello JobsAdmire, I ran the pass check on your cost calculator page.\n\nRole: {role} · {headcount, plural, one {# worker} other {# workers}}\nTurkish employees at the workplace: {staff}\n\n{summary}\n\nCan you review this with me?"
+      },
+      "quote": {
+        "loading": "Opening the quote form…",
+        "attached": "The estimate above is sent with your request."
+      },
+      "summary": { "none": "none", "rates": "Rates version" }
+    },
+    "wp": {
+      "hero": {
+        "updated": "Updated {month} · Reviewed by the JobsAdmire permit team"
+      },
+      "wizard": {
+        "progress": "{current} / {total}",
+        "progressLabel": "Eligibility check progress",
+        "options": {
+          "yes": "Yes",
+          "no": "No",
+          "atLeast": "{ratio} or more",
+          "below": "Fewer than {ratio}",
+          "abroad": "Abroad"
+        },
+        "points": {
+          "ratio": "Fewer than {ratio} Turkish employees on SGK for each foreign worker: the standard permit's 1:{ratio} ratio applies to your workplace, and some sectors are exempt — JobsAdmire checks how it applies before anything is filed."
+        },
+        "prefill": {
+          "intro": "I did the eligibility check on your website and would like to discuss a work permit. My answers:",
+          "result": "Result: {title}"
+        }
+      },
+      "sample": {
+        "label": "Illustrative sample of a Turkish work permit card with fictional details",
+        "foreignerId": "99•• ••• ••44",
+        "validity": "15.08.2026 — 14.08.2027"
+      },
+      "documents": {
+        "count": "{n, plural, one {# document} other {# documents}}"
+      },
+      "faq": {
+        "exemptionAnswer": "e-Muafiyet is the Ministry's online work permit exemption system (emuafiyet.csgb.gov.tr). Foreigners whose work fits an Article 48 category — machinery installation and training, cross-border services, seasonal agriculture, scientific or sporting activities and others — can work without a full permit for a limited period, typically up to 3 months. Domestic applications must be filed within 30 days of entering Türkiye.",
+        "emailSubject": "Work permit question"
+      },
+      "whatsapp": {
+        "question": "I have a work permit question.",
+        "permitOnly": "I have my own worker — can you handle the work permit?",
+        "permitType": "which work permit type applies to my case?",
+        "exemption": "does my case qualify for a work permit exemption?",
+        "quote": "what would a work permit cost for my case?",
+        "renewal": "I need help renewing a work permit."
+      }
+    },
+    "partner": {
+      "whatsapp": {
+        "prefill": "Hello JobsAdmire, I would like to discuss a partnership."
+      },
+      "faq": {
+        "whatsappText": "Hello JobsAdmire, I have a partnership question.",
+        "emailSubject": "Partnership question"
+      }
+    },
+    "about": {
+      "who": {
+        "badgeYear": "2024",
+        "photoAlt": "The JobsAdmire team at the Antalya office"
+      },
+      "journey": {
+        "m3When": "2025"
+      },
+      "tech": {
+        "dashboardAlt": "The JobsAdmire portal dashboard",
+        "appAlt": "The JobsAdmire mobile app"
+      },
+      "offices": {
+        "photoAlt": "The {city} office"
+      },
+      "licence": {
+        "title": "Licence and documents",
+        "body": "The İŞKUR private employment agency permit and its supporting documents, as PDFs.",
+        "pending": "PDF being added",
+        "open": "Open PDF",
+        "docs": {
+          "iskurPermit": "İŞKUR private employment agency permit",
+          "iskurAnnex": "İŞKUR permit — annex",
+          "oibCertificate": "Private employment agency authorisation certificate",
+          "oibAnnex": "Authorisation certificate — annex"
+        }
+      },
+      "whatsapp": {
+        "demo": "Hello JobsAdmire, I would like a demo of your CRM portal.",
+        "consult": "Hello JobsAdmire, I would like a free consultation."
+      }
+    },
+    "contact": {
+      "languages": {
+        "tr": "Türkçe",
+        "en": "English",
+        "fr": "Français",
+        "hi": "हिन्दी",
+        "ru": "Русский"
+      },
+      "channels": {
+        "whatsapp": "WhatsApp",
+        "open": "Open WhatsApp →"
+      },
+      "status": {
+        "openNow": "Open now · {time} local · closes {close}",
+        "closedOpensAt": "Closed · opens {open} · {time} local",
+        "closedOpensTomorrow": "Closed · opens {open} tomorrow",
+        "closedOpensOn": "Closed · opens {day} {open}",
+        "opensAt": "Opens {open}",
+        "waWatched": "Watched now — a live agent replies in office hours",
+        "waOff": "Off hours — expect a reply the next business morning"
+      },
+      "visit": {
+        "submit": "Request a visit slot"
+      },
+      "wa": {
+        "main": "Hello JobsAdmire, I have a question about hiring workers in Türkiye.",
+        "jobseeker": "Hello JobsAdmire, I am a candidate. My country: ___ / My trade: ___. Please send me the contact details of your verified sourcing partner in my country.",
+        "visitSite": "Hello JobsAdmire, I would like a site visit before deciding on worker numbers."
+      },
+      "fallbackIntro": {
+        "contact": "Hello JobsAdmire, the contact form on your website did not go through. My enquiry:",
+        "callback": "Hello JobsAdmire, the callback form did not go through — please call me back. My details:",
+        "visit": "Hello JobsAdmire, the visit booking form did not go through — I would like to visit the Antalya office. My details:"
+      },
+      "faq": {
+        "a3": "WhatsApp is the fastest channel in office hours ({hours}, Turkish time); e-mail is answered within about {replyHours} business hours. Messages sent at night or over the weekend are picked up the next business morning.",
+        "a5": "Yes, but JobsAdmire does not take individual applications directly: it is a B2B agency and works through verified sourcing partners in your country. Pick “I am looking for a job” above and send a message; JobsAdmire replies with the verified partner’s contact details. JobsAdmire never charges a worker a placement fee — if anyone asks you for money in its name, report it on WhatsApp."
+      }
+    },
+    "workers": {
+      "pool": {
+        "heading": "The JobsAdmire candidate pool",
+        "intro": "Every candidate in the pool is skill-tested, document-checked and permit-ready. Until profiles are published here, tell JobsAdmire what you need and matching candidates are sent to you directly."
+      },
+      "empty": {
+        "title": "Public profiles are not published yet",
+        "body": "Profiles appear on this page once candidate privacy (KVKK) and partner consent are in place. Fill in the request form and JobsAdmire shares full CVs, documents and video interviews with you directly.",
+        "cta": "Go to the request form"
+      },
+      "sticky": {
+        "message": "Tell JobsAdmire the roles you need — full CV and video interview within {hours} hours."
+      },
+      "form": {
+        "titles": {
+          "direct_employer": "Request candidates from the pool"
+        }
+      },
+      "timeline": {
+        "days1to3": "Days 1–3",
+        "arrival": "Weeks {weeks}"
+      },
+      "ask": {
+        "emailSubject": "Question about available candidates"
+      }
+    },
+    "stories": {
+      "hero": {
+        "bodyEmpty": "The work permit approvals JobsAdmire obtains for employers in Türkiye will be published here — the sector, the headcount and the month. Personal details are removed.",
+        "liveBadge": "{count, plural, one {# permit approved} other {# permits approved}}"
+      },
+      "wall": {
+        "intro": "Each published approval is a card: sector, headcount, approval month and city. Personal details and documents are never shown.",
+        "legend": "Filter by sector",
+        "showingAll": "Showing all approvals ({count})",
+        "showingFiltered": "Showing {shown} of {total} approvals"
+      },
+      "empty": {
+        "title": "The first approvals are on their way",
+        "body": "Every published work permit approval will appear here — its sector, headcount and month. Ask for an example now, on WhatsApp.",
+        "cta": "Ask for an example on WhatsApp",
+        "prefill": "Hello JobsAdmire, could you show me an example of a work permit approval you obtained?"
+      },
+      "whatsappPrefill": "Hello JobsAdmire, I need workers for: ",
+      "workers": {
+        "card1Title": "Welder · Uzbekistan → Ankara"
+      }
+    },
+    "verify": {
+      "hero": {
+        "lead": "Only the founder signs for JobsAdmire. Everyone else on the team collects documents, checks skills and runs interviews — nobody else signs, and nobody at JobsAdmire takes money from a worker. This page helps you confirm who you are dealing with."
+      },
+      "lookup": {
+        "hint": "Type at least {min} characters of the ID, name, city or number.",
+        "resultTitle": "The public register is not published yet",
+        "resultBody": "“{query}” cannot be checked online yet. Call the JobsAdmire office or write on WhatsApp — the team confirms whether this person works for JobsAdmire. Until then, do not hand over documents or money.",
+        "whatsapp": "Ask on WhatsApp"
+      },
+      "empty": {
+        "title": "The register is not public yet",
+        "body": "Every JobsAdmire representative carries a JA- ID. The public register, with photos and records, is being prepared with each person's consent. Until it is published, confirm any name or ID with the JobsAdmire office by phone or WhatsApp."
+      },
+      "faq": {
+        "whoSigns": "Only the founder. No representative, office employee or partner agency can sign a service agreement, an employer contract or a worker contract for JobsAdmire. Any document signed by anyone else is not valid.",
+        "howToCheck": "Ask for the JA- ID printed on their badge. Until the public register is published, confirm it with the JobsAdmire office by phone or WhatsApp — the check above cannot show a record yet. Do not hand over documents or money before that."
+      },
+      "steps": {
+        "qr": "Both must open this page. Until the public register is published, the check above cannot show a record — confirm the ID with the JobsAdmire office by phone or WhatsApp. A badge whose QR goes anywhere else is fake.",
+        "match": "The photo and name on the badge must match the person in front of you, and the office must confirm the ID as authorised. Any mismatch — call the office."
+      },
+      "flags": {
+        "qr": "The QR must open this page — nothing else counts. Until the public register is published, confirm the ID with the JobsAdmire office by phone or WhatsApp."
+      },
+      "report": {
+        "submit": "Send the report"
+      },
+      "record": {
+        "close": "Close the record",
+        "former": "No longer authorised"
+      }
+    },
+    "careers": {
+      "hero": {
+        "hiringCount": "{count, plural, one {# open role} other {# open roles}} · Antalya & overseas",
+        "seeOpenings": "{count, plural, =0 {See open roles} one {See # open role} other {See # open roles}}"
+      },
+      "filters": {
+        "all": "All"
+      },
+      "roles": {
+        "resultAll": "{count, plural, one {Showing the only open role} other {Showing all # open roles}}",
+        "resultFiltered": "Showing {shown} of {total} matching roles",
+        "showMore": "Show more roles ({count})",
+        "posted": "Posted {date}"
+      },
+      "workMode": {
+        "REMOTE": "Remote",
+        "HYBRID": "Hybrid",
+        "ON_SITE": "On site"
+      },
+      "salary": {
+        "range": "{min} – {max}",
+        "from": "from {amount}",
+        "upTo": "up to {amount}",
+        "per": {
+          "HOUR": "per hour",
+          "DAY": "per day",
+          "WEEK": "per week",
+          "MONTH": "per month",
+          "YEAR": "per year"
+        }
+      },
+      "empty": {
+        "title": "No open roles right now",
+        "body": "Every role is published here first. Send an open application by WhatsApp or e-mail below — JobsAdmire keeps good people on file and writes to you when a market opens."
+      },
+      "apply": {
+        "whatsapp": "Apply on WhatsApp",
+        "emailSubject": "Open application"
+      },
+      "detail": {
+        "metaTitle": "{title} — careers at JobsAdmire",
+        "metaDescription": "{title} ({location}). Read the role and apply online with your PDF CV — JobsAdmire answers every application.",
+        "about": "About the role",
+        "back": "All open roles",
+        "applyLead": "A few minutes and a PDF CV. JobsAdmire answers every application.",
+        "whatsappIntro": "Hello JobsAdmire, I would like to apply for the {title} role.",
+        "facts": {
+          "title": "At a glance",
+          "location": "Location",
+          "workMode": "Work mode",
+          "languages": "Languages",
+          "salary": "Pay",
+          "posted": "Posted"
+        }
+      },
+      "form": {
+        "residency": "This role is open to residents of {country} only.",
+        "expectedSalaryHint": "Monthly, in {currency}, whole numbers. Required for roles in Pakistan.",
+        "closed": "This role is no longer accepting applications. The open roles are listed on the careers page.",
+        "portfolioGate": "This role asks for a portfolio document, which the online form cannot carry yet. Please apply by e-mail."
+      },
+      "emailPanel": {
+        "title": "Apply by e-mail",
+        "body": "This role asks for a portfolio. Send your PDF CV and your portfolio — a file or a link — to {email} with the subject below, or ask a question on WhatsApp first.",
+        "subject": "Application: {title}",
+        "email": "Write the e-mail"
+      }
+    },
+    "blog": {
+      "hero": {
+        "title": "{pre} <word></word>",
+        "words": "employers|factories|hotels|farms|builders"
+      },
+      "index": {
+        "latest": "Latest articles",
+        "guides": "{n, plural, one {guide} other {guides}}"
+      },
+      "empty": {
+        "title": "English articles are on the way",
+        "body": "The JobsAdmire permit and recruitment team is preparing its guides for employers. The first articles appear here as soon as they are published.",
+        "cta": "Browse the Turkish articles"
+      },
+      "tools": {
+        "search": "Search articles",
+        "results": {
+          "one": "{n} article",
+          "other": "{n} articles"
+        }
+      },
+      "article": {
+        "metaTitle": "{title} | JobsAdmire",
+        "langNote": "EN · Türkçe'de de var",
+        "sections": "{n, plural, one {# section} other {# sections}}",
+        "copyFailed": "The link could not be copied — copy it from the address bar instead.",
+        "print": "Print this article",
+        "backToTop": "Back to top"
+      },
+      "faq": {
+        "a1": "Approval takes about {permitDays} days on average, including the ministry's review, and the whole process up to the first working day usually takes {firstDayWeeks} weeks. A licensed agency checks the file first, so a missing document does not restart the clock.",
+        "q3": "Can I hire if I don't meet the {ratio}:1 employee ratio?"
+      },
+      "whatsapp": {
+        "article": "I read “{title}” on your blog and want to hire workers.",
+        "consult": "I want a free consultation.",
+        "permit": "I need help with work permits."
+      }
+    },
+    "form": {
+      "labels": {
+        "name": "Full name",
+        "email": "E-mail",
+        "phone": "Phone",
+        "company": "Company",
+        "city": "City",
+        "country": "Country",
+        "sector": "Sector",
+        "headcount": "Number of workers",
+        "startWhen": "When do you need them?",
+        "roleNeeded": "Roles needed",
+        "message": "Message",
+        "subject": "Subject",
+        "iAm": "I am",
+        "preferredTime": "Preferred time",
+        "cv": "CV (PDF)",
+        "consent": "Consent",
+        "reporterName": "Your name",
+        "reporterEmail": "Your e-mail",
+        "reporterPhone": "Your phone",
+        "suspectName": "Person or company reported",
+        "suspectContact": "Their contact details",
+        "description": "What happened?",
+        "evidence": "Evidence files",
+        "office": "Office",
+        "preferredDate": "Preferred date",
+        "trade": "Trade",
+        "candidatesPerYear": "Candidates per year",
+        "trades": "Trades covered",
+        "licence": "Licence / registration",
+        "durationMonths": "Duration (months)",
+        "track": "Partnership type",
+        "topic": "Topic",
+        "portfolioUrl": "Portfolio link",
+        "expectedSalary": "Expected salary",
+        "expectedSalaryCurrency": "Currency",
+        "currentSalary": "Current salary",
+        "currentSalaryCurrency": "Currency",
+        "coverLetter": "Cover letter",
+        "linkedinUrl": "LinkedIn profile",
+        "language": "Languages",
+        "openingSlug": "Opening",
+        "estimateSummary": "Estimate summary"
+      },
+      "options": {
+        "startWhen": {
+          "asap": "As soon as possible",
+          "month1": "Within 1 month",
+          "months1to3": "In 1–3 months",
+          "planning": "Still planning"
+        }
+      },
+      "placeholders": {
+        "name": "Your full name",
+        "email": "name@company.com",
+        "phone": "+90 5xx xxx xx xx",
+        "company": "Company name",
+        "city": "e.g. Antalya",
+        "headcount": "e.g. 10",
+        "roleNeeded": "e.g. welder, waiter, driver",
+        "message": "Briefly describe what you need",
+        "subject": "What is your message about?",
+        "select": "Select",
+        "description": "Who, when, what did they ask for? Every detail helps.",
+        "trade": "e.g. CNC operator",
+        "trades": "e.g. welding, construction, hotel service",
+        "licence": "e.g. licence number and issuing body",
+        "candidatesPerYear": "e.g. 200",
+        "durationMonths": "e.g. 12",
+        "portfolioUrl": "https://",
+        "linkedinUrl": "https://linkedin.com/in/",
+        "expectedSalary": "e.g. 45000",
+        "coverLetter": "Why this role? A few lines are enough.",
+        "language": "e.g. Urdu (native), English (B2)",
+        "suspectName": "Person or company name",
+        "suspectContact": "Phone, e-mail or profile link",
+        "reporterName": "Your full name",
+        "reporterEmail": "name@example.com",
+        "reporterPhone": "+90 5xx xxx xx xx",
+        "preferredDate": "e.g. 14 October",
+        "preferredTime": "e.g. 10:00–12:00"
+      },
+      "hints": {
+        "phone": "Include the country code.",
+        "cv": "PDF only, up to 3 MB.",
+        "evidence": "JPEG, PNG, WEBP or PDF; up to 3 MB each, three files at most.",
+        "optional": "Optional",
+        "description": "At least 20 characters.",
+        "portfolioUrl": "A web address, e.g. behance.net/yourname.",
+        "linkedinUrl": "Optional; a link starting with https://.",
+        "expectedSalary": "Monthly gross, digits only."
+      },
+      "errors": {
+        "required": "This field is required.",
+        "email": "Enter a valid e-mail address.",
+        "phone": "Enter a valid phone number (at least 8 digits).",
+        "min": "The value you entered is too short.",
+        "max": "The value you entered is too long.",
+        "url": "Enter a valid link (starting with https://).",
+        "file": "The file was not accepted; check its type and size.",
+        "consent": "You need to accept the privacy notice to continue.",
+        "captcha": "The security check could not be completed. Please try again.",
+        "invalid": "This value is not valid.",
+        "form": "Please check the highlighted fields."
+      },
+      "consent": {
+        "label": "I agree to the processing of my personal data as described in the <link>privacy notice</link>.",
+        "notice": "By sending this form you agree to the processing of your personal data as described in the <link>privacy notice</link>."
+      },
+      "submit": {
+        "default": "Send",
+        "sending": "Sending…"
+      },
+      "honeypot": "Leave this field empty",
+      "fallback": {
+        "captcha": {
+          "title": "The security check did not go through",
+          "body": "You can send the form once more, or send what you typed directly on WhatsApp."
+        },
+        "off": {
+          "title": "This form is currently closed",
+          "body": "You can send your request on WhatsApp, by phone or by e-mail; JobsAdmire will get back to you as soon as possible."
+        },
+        "tripped": {
+          "title": "The form is paused for a short while",
+          "body": "The form is paused briefly because of heavy demand. You can send what you typed on WhatsApp in one tap."
+        },
+        "unauthorized": {
+          "title": "The form cannot accept submissions right now",
+          "body": "Something went wrong while sending the form. In the meantime, you can reach JobsAdmire on WhatsApp or by phone."
+        },
+        "unavailable": {
+          "title": "Your request could not be sent",
+          "body": "A connection problem stopped your form from reaching JobsAdmire. Please try again, or send what you typed on WhatsApp."
+        },
+        "failed": {
+          "title": "Your request could not be processed",
+          "body": "Your form could not be sent. You can reach JobsAdmire through the channels below."
+        },
+        "invalid": {
+          "title": "The form could not be sent",
+          "body": "Some of the fields were not accepted. Please check what you entered and try again, or send a message on WhatsApp."
+        },
+        "whatsapp": "Send on WhatsApp",
+        "call": "Call",
+        "email": "E-mail",
+        "whatsappIntro": "Hello JobsAdmire, I could not send the form on your website. My details:"
+      },
+      "evidence": {
+        "uploading": "Uploading {name}…",
+        "attached": "{name} attached",
+        "remove": "Remove {name}",
+        "tooBig": "{name} is larger than {maxMb} MB. Choose a smaller file.",
+        "badType": "{name} is not a JPEG, PNG, WEBP or PDF file.",
+        "refused": "{name} was not accepted. Check its type and size.",
+        "failed": "{name} could not be uploaded right now. Send the report without it and share the file on WhatsApp.",
+        "tooMany": "Up to {max} files can be attached.",
+        "wait": "A file is still uploading. Send the report once it has finished."
+      }
+    },
+    "home": {
+      "form": {
+        "callbackSubmit": "Call me back →"
+      },
+      "whatsapp": {
+        "hire": "Hello JobsAdmire, I want to hire workers.",
+        "partner": "Hello JobsAdmire, I represent a recruitment agency / training institute abroad and would like to become a sourcing partner.",
+        "estimate": "Hello JobsAdmire, please check this estimate for me.\nRole level: {role}\nHeadcount: {headcount}\nMonthly payroll: {monthly}\nFirst-year one-off costs: {oneOff}"
+      },
+      "pool": {
+        "empty": {
+          "title": "Candidate profiles are coming soon",
+          "body": "Candidates are interviewed and document-checked in their own country by JobsAdmire representatives. Share your sector and headcount, and matching profiles come straight to you.",
+          "cta": "Request candidates →"
+        }
+      },
+      "calc": {
+        "eyebrowUndated": "Real cost",
+        "grossFloor": "Gross salary ({multiplier} legal floor)",
+        "supportSeparate": "Not included — shown on the full calculator",
+        "headcount": "{n, plural, one {# worker} other {# workers}}",
+        "monthlyPayroll": "monthly payroll"
+      },
+      "season": {
+        "agricultureSub": "Antalya, Mersin, Konya",
+        "range": "Peak {from}–{to}",
+        "also": " · also {from}–{to}",
+        "signBy": "To start in {start}, sign by {signBy}",
+        "noPeak": "No peak season — but permits still take {permitDays} days",
+        "gridLabel": "Seasonal demand by month",
+        "selectHint": "Select a row to see that season's plan"
+      },
+      "network": {
+        "mapTitle": "From the source countries to Türkiye",
+        "turkiye": "Türkiye"
+      },
+      "portal": {
+        "platforms": "Android"
+      }
+    },
+    "portal": {
+      "intro": "Partner accounts sign in on the JobsAdmire Partner Portal — the link below opens its login page.",
+      "signIn": "Sign in to the Partner Portal"
+    },
+    "legal": {
+      "updatedLabel": "Last updated",
+      "contents": "Contents",
+      "privacy": {
+        "title": "Privacy Policy",
+        "cookiePolicyLink": "Read the Cookie Policy",
+        "intro": "This Privacy Policy explains how JobsAdmire processes personal data on jobsadmire.com and its subdomains (including the Partner Portal at portal.jobsadmire.com) and through its communication channels (e-mail, WhatsApp, phone). JobsAdmire protects personal data in line with the Turkish Law on the Protection of Personal Data No. 6698 (KVKK) and the İŞKUR regulations.",
+        "updatedAt": "2026-09-29",
+        "sections": {
+          "dataController": {
+            "title": "Data controller",
+            "body": "The data controller is Jobs Admire Özel İstihdam Bürosu Sanayi ve Ticaret Limited Şirketi (\"JobsAdmire\").\n\n- **Address:** as listed in the footer of this website and on the Contact page\n- **E-mail:** {email}\n- **Phone:** {phoneDisplay}\n- **Tax No:** {taxNo}\n\nJobsAdmire operates as a private employment agency licensed by İŞKUR (Permit No. {permitNo}, dated 19.09.2024). Under Law No. {lawRef}, charging job seekers any fee is prohibited. Complaints: İstanbul İŞKUR Provincial Directorate, Kadıköy Service Centre (tel. 0216 418 34 55)."
+          },
+          "scope": {
+            "title": "Scope",
+            "body": "This Policy explains how JobsAdmire processes personal data when you:\n\n- browse this website\n- create a profile or upload a CV\n- apply for jobs\n- request services (recruitment, HR, immigration)\n- subscribe to job alerts or the newsletter\n- become a JobsAdmire partner\n- use the Partner Portal and the support channels"
+          },
+          "dataCategories": {
+            "title": "Categories of personal data",
+            "body": "- **Identification and contact:** name, e-mail, phone, address, nationality\n- **Candidate data:** CV, education, work history, skills, references, interview notes, profile photo, uploaded documents (qualifications, licences)\n- **Immigration and relocation data:** passport and ID details, civil status, travel history, residence and work-permit information (only where needed)\n- **Employer and partner data (B2B):** company name, job title, work contact details, role requirements, contracts\n- **Transaction data:** details of paid services and invoices (card data is never stored on JobsAdmire's servers)\n- **Usage and device data:** logs, IP address, browser details, pages viewed, cookies\n- **Communications:** e-mails, calls, WhatsApp and chat messages, support requests\n\n**Special categories:** JobsAdmire does not intentionally collect health or biometric data. If a role or a legal process requires such data, JobsAdmire processes it only where lawful and necessary, and with your explicit consent where KVKK requires it."
+          },
+          "purposes": {
+            "title": "Purposes and legal bases (KVKK Arts. 5–6)",
+            "body": "JobsAdmire processes personal data for the following purposes and on the following legal bases:\n\n- **Core services (candidates and employers):** creating accounts, matching and placing candidates, managing applications, interviews, offers, contracts and onboarding — performance of a contract, legitimate interests, legal obligation\n- **Immigration and relocation support:** residence and work permits, visa invitations, documentation — performance of a contract, legal obligation, explicit consent (for certain documents)\n- **Partner and recruiter management (B2B):** onboarding, compliance, invoicing — contract, legal obligation, legitimate interests\n- **Communications and alerts:** job alerts, consultation scheduling, service updates — explicit consent (marketing), contract or legitimate interests (service messages)\n- **Security and compliance:** audit logs, access controls, responses to authorities, İŞKUR requirements — legal obligation, legitimate interests\n- **Analytics and site performance:** aggregated usage, improving the website — legitimate interests, consent (for non-essential cookies)"
+          },
+          "cookies": {
+            "title": "Cookies and online identifiers",
+            "body": "JobsAdmire uses strictly necessary cookies and, only with your consent, analytics and advertising cookies. When the website asks for your consent, you can change or withdraw it at any time with the Cookie preferences button in the site footer.\n\nThe Cookie Policy lists the categories, purposes, providers and retention periods and explains how to withdraw consent, in line with the Personal Data Protection Board's cookie guidelines."
+          },
+          "disclosures": {
+            "title": "Disclosures to third parties",
+            "body": "JobsAdmire may disclose personal data to:\n\n- employers and clients seeking to hire (only the relevant candidate data)\n- authorised partners and recruiters assisting with placement\n- service providers and processors (hosting, the Partner Portal and applicant-tracking tools, communications, payment processing, background checks)\n- public authorities and courts where the law requires it (İŞKUR, immigration authorities)\n\nEvery processor acts under a contract that meets KVKK requirements."
+          },
+          "transfers": {
+            "title": "Cross-border transfers (KVKK Art. 9)",
+            "body": "Where data is transferred outside Türkiye (for example cloud hosting, international employers, global tools), JobsAdmire relies on the mechanisms permitted under the 2024 amendments:\n\n- an adequacy decision (where the Board recognises the destination)\n- standard contracts or written undertakings approved by or notified to the Authority\n- binding corporate rules\n- explicit consent (as a last resort, where no other mechanism applies)\n\nJobsAdmire keeps a record of its transfer assessments."
+          },
+          "retention": {
+            "title": "Retention",
+            "body": "JobsAdmire keeps personal data only as long as the purposes above and the statutory limitation periods require (for example labour, commercial and İŞKUR rules). When data is no longer needed, it is deleted or anonymised in line with KVKK."
+          },
+          "rights": {
+            "title": "Your rights (KVKK Art. 11)",
+            "body": "You can apply to JobsAdmire to:\n\n- learn whether your personal data is processed\n- request information about that processing\n- learn the purposes of the processing and its recipients\n- request rectification\n- request deletion or anonymisation where the legal grounds apply\n- object to a result produced exclusively by automated processing\n- object to processing based on legitimate interests\n- claim compensation for unlawful processing\n\n**How to apply:** e-mail {email} with enough identity details to verify the request. JobsAdmire responds within 30 days, as the KVKK procedure requires. If you are not satisfied, you can complain to the Personal Data Protection Board after first applying to the data controller."
+          },
+          "security": {
+            "title": "Security measures",
+            "body": "JobsAdmire applies administrative, technical and physical safeguards:\n\n- access control and least privilege\n- encryption in transit and at rest\n- network and application security\n- supplier due diligence\n- staff confidentiality\n- backups and business continuity\n- regular review of the data inventory"
+          },
+          "verbis": {
+            "title": "VERBİS",
+            "body": "Where JobsAdmire meets the legal thresholds, it registers with VERBİS (the Data Controllers' Registry) and keeps its records up to date. Public VERBİS entries can be checked on the Authority's portal."
+          },
+          "children": {
+            "title": "Children's data",
+            "body": "The services of JobsAdmire are aimed at adults and employers. JobsAdmire does not knowingly collect data from children; if it learns of such processing without an appropriate legal basis and consent, it deletes the data."
+          },
+          "thirdParty": {
+            "title": "Third-party links and social channels",
+            "body": "This website may link to external services (for example WhatsApp or map providers). Their privacy practices are governed by their own policies."
+          },
+          "changes": {
+            "title": "Changes",
+            "body": "JobsAdmire may update this Policy to reflect changes in its services or in the law (including future Board decisions or guidance). The new version is published on this page with an updated date."
+          },
+          "contact": {
+            "title": "Contact",
+            "body": "For any KVKK question or request:\n\n- **Data protection contact:** {email}\n- **Phone:** {phoneDisplay}\n- **Registered address:** see the footer of this website and the Contact page"
+          }
+        }
+      },
+      "terms": {
+        "title": "Terms and Conditions",
+        "intro": "These Terms and Conditions (\"Terms\") govern access to and use of jobsadmire.com, its subdomains (including the Partner Portal at portal.jobsadmire.com), its mobile interfaces and all related services operated by Jobs Admire Özel İstihdam Bürosu Sanayi ve Ticaret Limited Şirketi (\"JobsAdmire\"). By using the website or the services, you (a \"User\", \"Candidate\", \"Employer\" or \"Partner\") agree to these Terms. If you do not agree, please stop using them.",
+        "updatedAt": "2026-09-29",
+        "englishOnlyNotice": "The Turkish text of these Terms is being prepared with legal counsel. Until it is published, the English text below applies.",
+        "finalNote": "By accessing, browsing or using any service, communication channel or material JobsAdmire provides — including job search, recruitment, immigration services, career counselling and CV tools, whether through the website, the Partner Portal, e-mail, phone, WhatsApp or any other means — you acknowledge that you have read and understood these Terms and agree to be bound by them.",
+        "sections": {
+          "legalStatus": {
+            "title": "Data controller and legal status",
+            "body": "JobsAdmire operates as a private employment agency under İŞKUR Permit No. {permitNo} dated 19.09.2024, in accordance with Law No. {lawRef}. Under this law, no fee may be charged to job seekers for core recruitment services. Contact details and the complaints procedure are set out in the Privacy Policy."
+          },
+          "services": {
+            "title": "Services",
+            "body": "JobsAdmire provides job search, candidate placement and recruitment support for employers; immigration, work-permit and residence-permit facilitation where requested; career counselling, interview preparation and related advisory services; and online portal tools for candidates and employers. Some services are free (for example job applications); others (for example employer recruitment packages) may be fee-based."
+          },
+          "eligibility": {
+            "title": "Eligibility",
+            "body": "Candidates must be at least 18 years old or of legal working age in their jurisdiction. Employers and Partners must have the legal capacity to enter into binding contracts. By using the website you confirm that all the information you provide is accurate."
+          },
+          "accounts": {
+            "title": "User accounts",
+            "body": "You may be given an account to manage applications, candidates or job postings. You are responsible for keeping your login details secure. Any activity under your account is deemed to have been performed by you."
+          },
+          "candidateDuties": {
+            "title": "Candidate responsibilities",
+            "body": "Candidates provide true, current and complete information (CV, contact details, documents), do not submit false, misleading or defamatory material, and accept that hiring decisions rest solely with employers."
+          },
+          "employerDuties": {
+            "title": "Employer and partner responsibilities",
+            "body": "Employers and Partners use candidate data only for legitimate hiring purposes and in compliance with KVKK and all labour regulations, never charge candidates a recruitment fee, and sign a written service agreement with JobsAdmire where paid recruitment services are required."
+          },
+          "fees": {
+            "title": "Fees and payments",
+            "body": "Job seekers: no recruitment fee is ever charged for standard job placement. Employers and Partners: service packages are governed by separate commercial agreements or purchase orders that set out the scope, pricing and payment terms."
+          },
+          "ip": {
+            "title": "Intellectual property",
+            "body": "All content on the website (text, graphics, logos, trademarks, software) is owned by JobsAdmire or its licensors and protected by copyright and industrial property law. You may view or print content for personal use only; any reproduction or redistribution requires the prior written consent of JobsAdmire."
+          },
+          "acceptableUse": {
+            "title": "Acceptable use",
+            "body": "You agree not to break any applicable Turkish or international law; post or transmit harmful code, spam or abusive content; harvest, scrape or misuse other people's personal data; or interfere with or disrupt the security or functionality of the website. JobsAdmire may suspend or end access for a violation without prior notice."
+          },
+          "dataProtection": {
+            "title": "Data protection",
+            "body": "The Privacy Policy explains how personal data is processed. By using the services you acknowledge that your data may be processed and, where necessary, transferred in line with KVKK and the cross-border transfer rules."
+          },
+          "thirdParty": {
+            "title": "Third-party links and services",
+            "body": "The website may link to third-party websites or use third-party services (for example WhatsApp or map providers). JobsAdmire is not responsible for their content, policies or practices."
+          },
+          "availability": {
+            "title": "Service availability",
+            "body": "JobsAdmire aims for continuous service but does not guarantee uninterrupted or error-free operation, and may change or discontinue any service temporarily or permanently without liability."
+          },
+          "liability": {
+            "title": "Limitation of liability",
+            "body": "To the fullest extent permitted by law, JobsAdmire is not liable for employment outcomes, visa or permit decisions, or damage arising from the decisions of employers, nor for indirect, incidental or consequential damage arising from the use of the website. The total liability of JobsAdmire for any claim does not exceed the amount (if any) the user paid for the specific service that gave rise to the claim. Nothing in these Terms limits liability where Turkish law prohibits such a limitation (for example wilful misconduct or gross negligence)."
+          },
+          "indemnification": {
+            "title": "Indemnification",
+            "body": "You agree to indemnify JobsAdmire and hold it harmless against claims, damages or expenses arising from your breach of these Terms or from unlawful use of the services."
+          },
+          "law": {
+            "title": "Governing law and jurisdiction",
+            "body": "These Terms are governed by Turkish law. Disputes are resolved by the İstanbul (Anadolu) Courts and Enforcement Offices, unless consumer protection law requires a different forum."
+          },
+          "amendments": {
+            "title": "Amendments",
+            "body": "JobsAdmire may update these Terms to reflect legal or service changes. Updates are published with a revised last-updated date, and continued use after an update constitutes acceptance."
+          }
+        }
+      },
+      "kvkk": {
+        "title": "KVKK Information Notice",
+        "intro": "This page holds the information notice under the Turkish Law on the Protection of Personal Data No. 6698 (KVKK) on how JobsAdmire, as data controller, processes personal data.",
+        "updatedAt": "2026-09-29",
+        "pendingTitle": "The information notice is being prepared",
+        "pendingBody": "The legal counsel of JobsAdmire is preparing the KVKK information notice. Until it is published, the Privacy Policy describes how JobsAdmire processes personal data and applies in full.",
+        "privacyLink": "Read the Privacy Policy"
+      },
+      "cookiePolicy": {
+        "title": "Cookie Policy",
+        "intro": "This page explains which cookies jobsadmire.com uses and how you can manage your preferences.",
+        "updatedAt": "2026-09-29",
+        "pendingTitle": "The full cookie policy is being prepared",
+        "pendingBody": "The legal counsel of JobsAdmire is preparing the detailed cookie policy. Until it is published, this summary and the Privacy Policy apply.",
+        "sections": {
+          "essential": {
+            "title": "Strictly necessary cookies",
+            "body": "- **ja_locale** — remembers your language choice for up to one year\n- **ja_consent_v1** — remembers your cookie choice for 180 days (also kept in the local storage of your browser)\n- **ja-lang-hint** (local storage) — remembers that you closed the language suggestion\n\nThese are needed for the website to work the way you set it and do not require consent."
+          },
+          "consent": {
+            "title": "Cookies that need your consent",
+            "body": "Analytics and advertising cookies (Google Tag Manager, Google Analytics 4, Google Ads) are set only after you choose Accept in the cookie notice. Until you choose, every measurement signal stays denied (Google Consent Mode v2)."
+          },
+          "manage": {
+            "title": "Managing your preferences",
+            "body": "When the website asks for your consent, you can change your choice at any time with the Cookie preferences button in the footer. You can also delete cookies in your browser settings."
+          }
+        }
+      }
+    },
+    "newsletter": {
+      "backHome": "Back to home",
+      "noToken": {
+        "title": "This link is incomplete",
+        "body": "This page works only with the link from the e-mail, and that link is missing its code. Open the link in the e-mail again, or contact JobsAdmire below."
+      },
+      "unavailable": {
+        "title": "The request could not be completed right now",
+        "body": "The subscription service did not answer. Please try again in a few minutes, or contact JobsAdmire below and the team handles it by hand."
+      },
+      "fallback": {
+        "lead": "Contact JobsAdmire",
+        "email": "E-mail JobsAdmire",
+        "whatsapp": "Message on WhatsApp",
+        "subject": "Newsletter subscription"
+      },
+      "confirm": {
+        "title": "Confirm your newsletter subscription",
+        "body": "Press the button below to confirm your subscription to the JobsAdmire newsletter. Until you confirm, JobsAdmire sends nothing to this address.",
+        "button": "Confirm subscription",
+        "pending": "Confirming…",
+        "invalid": {
+          "title": "This confirmation link is not valid",
+          "body": "The link was not recognised. Please subscribe again to receive a new confirmation e-mail."
+        },
+        "expired": {
+          "title": "This confirmation link has expired",
+          "body": "Confirmation links are valid for a limited time. Please subscribe again to receive a new one."
+        },
+        "outcome": {
+          "CONFIRMED": {
+            "title": "Your subscription is confirmed",
+            "body": "Thank you. Hiring updates from JobsAdmire will now reach your inbox, and every issue carries an unsubscribe link."
+          },
+          "ALREADY_CONFIRMED": {
+            "title": "This subscription was already confirmed",
+            "body": "This address was confirmed earlier — there is nothing more to do."
+          }
+        }
+      },
+      "unsubscribe": {
+        "title": "Unsubscribe from the newsletter",
+        "body": "Press the button below and JobsAdmire stops sending the newsletter to this address.",
+        "button": "Unsubscribe",
+        "pending": "Unsubscribing…",
+        "invalid": {
+          "title": "This unsubscribe link is not valid",
+          "body": "The link was not recognised. E-mail JobsAdmire and the team removes the address from the list by hand."
+        },
+        "outcome": {
+          "UNSUBSCRIBED": {
+            "title": "You are unsubscribed",
+            "body": "JobsAdmire will not send the newsletter to this address again. You can subscribe again at any time."
+          },
+          "ALREADY_UNSUBSCRIBED": {
+            "title": "You were already unsubscribed",
+            "body": "This address was removed from the list earlier — there is nothing more to do."
+          },
+          "UNKNOWN": {
+            "title": "No subscription found for this link",
+            "body": "The newsletter list has no subscription for this link, so nothing will be sent. If e-mails keep arriving, write to JobsAdmire and the team removes the address by hand."
+          }
+        }
       }
     }
   }

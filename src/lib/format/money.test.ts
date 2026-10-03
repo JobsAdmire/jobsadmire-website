@@ -1,4 +1,4 @@
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 import { formatInt, formatPercent, formatTRY } from './money';
 
 describe('formatTRY', () => {
@@ -33,5 +33,35 @@ describe('formatInt', () => {
   it('groups thousands per locale', () => {
     expect(formatInt(1240, 'tr')).toBe('1.240');
     expect(formatInt(1240, 'en')).toBe('1,240');
+  });
+});
+
+// M16 (Task 9 P2): a fresh Intl.NumberFormat per call measured ≈366µs vs ≈6µs cached — worth
+// caching since the T3 slider reformats on every drag frame.
+describe('formatterFor cache (M16)', () => {
+  it('builds one Intl.NumberFormat per (locale, digits), reusing it on every later call', () => {
+    const Real = Intl.NumberFormat;
+    const spy = vi.spyOn(Intl, 'NumberFormat').mockImplementation(function (
+      ...args: ConstructorParameters<typeof Intl.NumberFormat>
+    ) {
+      return new Real(...args);
+    } as typeof Intl.NumberFormat);
+    try {
+      // Digit counts nothing else in this file (or the calculator) uses, so these keys are cold
+      // regardless of what any earlier test already warmed in the shared module-level cache.
+      formatPercent(1, 'tr', 9);
+      expect(spy).toHaveBeenCalledTimes(1);
+      formatPercent(2, 'tr', 9); // same (locale, digits) — reused, not rebuilt
+      formatPercent(3, 'tr', 9);
+      expect(spy).toHaveBeenCalledTimes(1);
+      formatPercent(4, 'en', 9); // different locale — one new formatter
+      expect(spy).toHaveBeenCalledTimes(2);
+      formatPercent(5, 'tr', 8); // different digit count — one new formatter
+      expect(spy).toHaveBeenCalledTimes(3);
+      formatPercent(6, 'tr', 8); // reused again
+      expect(spy).toHaveBeenCalledTimes(3);
+    } finally {
+      spy.mockRestore();
+    }
   });
 });
