@@ -161,7 +161,8 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
           <p className="m-0 mb-4 max-w-[330px] text-white/65">{t('home.188')}</p>
           <p className="m-0 mb-5 inline-flex items-center gap-2 rounded-pill border border-white/20 bg-white/5 px-4 py-1.5 font-bold text-sky xl:text-balance">
             <span aria-hidden="true" className="h-2 w-2 rounded-pill bg-success" />
-            {t('hire.019')}
+            {/* W230: a no-break space keeps the "·" at the end of line 1 when the chip wraps */}
+            {t('hire.019').replace(' · ', ' · ')}
           </p>
           <div className="mb-4">
             <LanguageSwitcher locale={locale} label={t('home.016')} variant="dark" />
