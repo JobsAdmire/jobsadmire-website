@@ -64,8 +64,9 @@ export const tokens = {
   },
   /** W180 (D19): `.container-site` and the full-bleed chrome rows (`src/app/globals.css`). */
   layout: {
-    /** the content box from 1101 px: the design's `max-width:1280px` wrapper × 0.75 */
-    maxWidth: 960,
+    /** the content box from 1101 px: 1240 px since the owner widened it (W228; the design's own
+     *  `max-width:1280px` wrapper × 0.75 was 960 px) */
+    maxWidth: 1240,
     /** container/slim-bar side padding: the design's 48 × 0.75 from 1101 … */
     gutterDesktop: 36,
     /** … the authored 48 between 901 and 1100 (no zoom there) … */

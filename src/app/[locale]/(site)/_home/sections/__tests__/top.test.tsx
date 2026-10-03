@@ -26,7 +26,7 @@ describe('Hero (D26, W1, W6, W10, W17)', () => {
   });
 
   // Final pass A1 (W184/W185 A1): the design's hero content sits inside its own padding — 20 px
-  // at ≤ 460, 48 px at 461–1100 — and in an 888 px box inside the 960 px wrapper from 1101, not in
+  // at ≤ 460, 48 px at 461–1100 — and in the sections' own box from 1101 (W228: 1240 px with 36 px gutters), not in
   // the section container's 20/48/36 px gutters. The grid and the stats row carry the same box.
   it('the hero grid and the stats row use the hero gutters, never container-site (W185 A1)', () => {
     const { container } = renderWithIntl(<Hero locale="tr" bundle={TR} form={FORM} />);
@@ -38,8 +38,8 @@ describe('Hero (D26, W1, W6, W10, W17)', () => {
         'w-full',
         'px-5',
         'xs:px-12',
-        'xl:max-w-[var(--hero-max)]',
-        'xl:px-[var(--hero-pad)]',
+        'xl:max-w-[var(--container-max)]',
+        'xl:px-[var(--gutter)]',
       );
       expect(row).not.toHaveClass('container-site');
     }

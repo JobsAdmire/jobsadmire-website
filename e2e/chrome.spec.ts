@@ -56,11 +56,11 @@ test('the desktop nav row appears from 901px, the hamburger below it, nothing ov
   }
 });
 
-// W180: the content container is the design's 1280/48 wrapper at 0.75 — a 960 px box with 36 px
-// gutters from 1101, the authored 48 px at 901–1100, 20 px below — while the slim bar and the
+// W180, widened by W228 (owner): the content container is 1240 px with 36 px gutters from 1101 (the
+// design's 1280/48 wrapper at 0.75 was 960 px), the authored 48 px at 901–1100, 20 px below — while the slim bar and the
 // header row stay full-bleed (padding only), as the design draws them. Final pass A2 (W184): the
 // header row pads the design's own `.ja-nav` 14 px below 901 and 12 px at ≤ 460.
-test('the content container is 960 px from 1101 and the slim bar and header rows are full-bleed (W180)', async ({
+test('the content container is 1240 px from 1101 and the slim bar and header rows are full-bleed (W180, W228)', async ({
   page,
 }) => {
   await page.goto('/');
@@ -81,7 +81,9 @@ test('the content container is 960 px from 1101 and the slim bar and header rows
       };
     });
   for (const [width, gutter, headerPad] of [
+    [1920, 36, 24],
     [1440, 36, 24],
+    [1280, 36, 24],
     [1101, 36, 24],
     [1100, 48, 32],
     [901, 48, 32],
@@ -92,7 +94,8 @@ test('the content container is 960 px from 1101 and the slim bar and header rows
   ] as const) {
     await page.setViewportSize({ width, height: 900 });
     const m = await measure();
-    const content = width >= 1101 ? 960 : m.viewport - 2 * gutter;
+    const content =
+      width >= 1101 ? Math.min(1240, m.viewport - 2 * gutter) : m.viewport - 2 * gutter;
     expect(m.gutter, `${width}px container gutter`).toBe(gutter);
     expect(m.content, `${width}px content box`).toBe(content);
     expect(m.headerWidth, `${width}px header row`).toBe(m.viewport);
@@ -143,7 +146,7 @@ test('the header wordmark renders at the design heights and nothing overflows (W
   }
 });
 
-// W180 follow-through: the design's footer sets its five columns in one row of the 960 px box.
+// W180 follow-through: the design's footer sets its five columns in one row of the content box.
 test('the footer keeps its five columns in one row at 1440 (W180, D19)', async ({ page }) => {
   await page.setViewportSize({ width: 1440, height: 900 });
   await page.goto('/');

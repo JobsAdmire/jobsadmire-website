@@ -148,11 +148,20 @@ describe('.container-site follows the design wrapper at 0.75 (W180, D19)', () =>
     expect(b.content).toBe(w - 2 * layout.gutterTablet);
   });
 
-  it.each([1101, 1280, 1440, 1920])('%ipx: a 960 px content box with 36 px gutters', (w) => {
+  // W228 (owner, 2026-10-03): 1240 px from 1101 — the box fills the viewport inside its 36 px
+  // gutters until 1312 px, then stays 1240 px and centres.
+  it.each([1101, 1280])('%ipx: the box fills the viewport inside the 36 px gutters (W228)', (w) => {
+    const b = box('.container-site', w);
+    expect(b.padding).toBe(layout.gutterDesktop);
+    expect(b.content).toBe(w - 2 * layout.gutterDesktop);
+    expect(b.left).toBe(layout.gutterDesktop);
+  });
+
+  it.each([1312, 1440, 1920])('%ipx: a 1240 px content box with 36 px gutters (W228)', (w) => {
     const b = box('.container-site', w);
     expect(b.padding).toBe(layout.gutterDesktop);
     expect(b.content).toBe(layout.maxWidth);
-    // centred: at 1440 the content starts (1440 − 960) / 2 = 240 px in, as the design's does
+    // centred: at 1440 the content starts (1440 − 1240) / 2 = 100 px in
     expect(b.left).toBe((w - layout.maxWidth) / 2);
   });
 
@@ -193,8 +202,9 @@ describe('the full-bleed chrome rows (W180)', () => {
 });
 
 describe('tokens.layout mirrors the stylesheet (W180)', () => {
-  it('the content box and the gutters are the authored values × 0.75 from 1101', () => {
-    expect(layout.maxWidth).toBe(1280 * 0.75);
+  it('the gutters are the authored values × 0.75 from 1101; the content box is 1240 px (W228)', () => {
+    expect(layout.maxWidth).toBe(1240); // the design's 1280 × 0.75 = 960 until W228
+    expect(box('.container-site', 1920).content).toBe(layout.maxWidth);
     expect(layout.gutterDesktop).toBe(48 * 0.75);
     expect(layout.gutterTablet).toBe(48);
     expect(layout.gutterMobile).toBe(20);
