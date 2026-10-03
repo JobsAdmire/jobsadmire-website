@@ -298,7 +298,12 @@ test('tr: the callback ends on the D11 panel without a door (W92)', async ({ pag
   await page.goto(ROUTES.tr);
   await page.getByRole('button', { name: COPY.tr.callbackToggle }).click();
   const form = page.getByTestId('contact-callback-form');
-  await form.locator('input[name="slot"][value="14-16"]').check({ force: true }); // chips are sr-only radios
+  // The visible chip (its label), never a forced click on the 1 px sr-only radio: since the QA
+  // fixes the phone layout scrolls that radio under the fixed bottom bar on the preview, where the
+  // forced click lands on the bar (W225; a visitor taps the chip). Playwright's actionability
+  // retries the label click until nothing covers it.
+  await form.locator('label[for$="-14-16"]').click();
+  await expect(form.locator('input[name="slot"][value="14-16"]')).toBeChecked();
   await form.getByRole('textbox', { name: COPY.tr.name }).fill('Mehmet Kaya');
   await form.getByRole('textbox', { name: COPY.tr.phone }).fill('+90 532 000 00 00');
   await form.getByRole('checkbox').check();

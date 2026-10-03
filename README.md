@@ -59,11 +59,11 @@ Other scripts: `npm run typecheck`, `npm run lint`, `npm run format` / `format:w
 
 | Environment | Vercel project      | Domain                                    | Notes                                                                       |
 | ----------- | ------------------- | ----------------------------------------- | --------------------------------------------------------------------------- |
-| Production  | `jobsadmirewebsite` | jobsadmire.com (after Phase A cutover)    | `main` branch; `npm run verify` gates every build                           |
+| Production  | `jobsadmirewebsite` | www.jobsadmire.com (apex redirects)       | `main` branch; `npm run verify` gates every build                           |
 | Preview     | `jobsadmirewebsite` | `*.vercel.app` / `staging.jobsadmire.com` | Deployment Protection on; door variables on `staging` only (W92); `noindex` |
 | Local       | —                   | localhost:3000                            | Against the Operations stack on port 4001                                   |
 
-One Vercel project, `jobsadmirewebsite`, serves Production and Preview: its production deployment is still the frozen old site, and `main` deploys nothing until the Phase A cutover removes its two deploy guards (no domain move) — see `docs/DEPLOYMENT.md`.
+One Vercel project, `jobsadmirewebsite`, serves Production and Preview: since the Phase A cutover (2026-10-03) every push to `main` is a production deploy of `www.jobsadmire.com` (no domain moved; the frozen old site is the Instant Rollback target) — see `docs/DEPLOYMENT.md`.
 
 ## Where the docs are
 

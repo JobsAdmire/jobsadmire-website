@@ -30,6 +30,12 @@ import { DetailHero } from './_sections/DetailHero';
 // The openings floor (docs/ARCHITECTURE.md § Freshness) — a literal, read statically by Next.
 export const revalidate = 300;
 
+/** W225: this page's server action uploads a file first (up to `UPLOAD_TIMEOUT_MS`, 15 s) and then
+ *  posts the form (up to `ATTEMPT_TIMEOUT_MS`, 9 s) — past the 10 s default of a Vercel Hobby function
+ *  without Fluid compute, which would kill a slow upload mid-way and lose the lead. 60 s is the Hobby
+ *  ceiling either way. */
+export const maxDuration = 60;
+
 /** Every current opening, prerendered in both locales (the Operations slug is the same in both);
  *  a later one renders on demand (`dynamicParams`), an unknown one 404s. Without a door: `[]`. */
 export async function generateStaticParams() {

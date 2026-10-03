@@ -11,8 +11,14 @@ const MAX_AGE = 60 * 60 * 24 * 180;
 const COOKIE = (value: string, maxAge: number) =>
   `${CONSENT_KEY}=${value}; Max-Age=${maxAge}; Path=/; SameSite=Lax; Secure`;
 
-/** Inline in <head> before GTM: Consent Mode v2 defaults denied (D13). */
-export const CONSENT_DEFAULT_SCRIPT = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','url_passthrough',true);gtag('set','ads_data_redaction',true);`;
+/** Inline in <head> before GTM: Consent Mode v2 defaults denied (D13), then a stored "granted"
+ *  choice from an earlier page view is re-applied as an update before any tag runs (W225 — the
+ *  cutover pre-flight found that a returning visitor who had accepted was measured as denied on
+ *  every later page load, because only the banner's click ever sent the update). It reads the
+ *  same records as `readConsent` — localStorage first, then the cookie — and a stored "denied"
+ *  or no choice leaves the defaults alone. Everything after the defaults sits in a try, so a
+ *  blocked storage or cookie read can never stop the defaults or GTM. */
+export const CONSENT_DEFAULT_SCRIPT = `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)};gtag('consent','default',{ad_storage:'denied',analytics_storage:'denied',ad_user_data:'denied',ad_personalization:'denied',functionality_storage:'granted',security_storage:'granted',wait_for_update:500});gtag('set','url_passthrough',true);gtag('set','ads_data_redaction',true);try{var c=null;try{c=localStorage.getItem('${CONSENT_KEY}')}catch(e){}if(c!=='granted'&&c!=='denied'){c=null;var p=document.cookie.split(';');for(var i=0;i<p.length;i++){var q=p[i].trim();if(q==='${CONSENT_KEY}=granted'||q==='${CONSENT_KEY}=denied'){c=q.slice(${CONSENT_KEY.length + 1})}}}if(c==='granted'){gtag('consent','update',{ad_storage:'granted',analytics_storage:'granted',ad_user_data:'granted',ad_personalization:'granted'})}}catch(e){}`;
 
 /** The cookie is written alongside the localStorage entry, so a visitor whose storage is
  *  blocked (private mode) still gets their choice remembered — without it the banner would
