@@ -99,7 +99,7 @@ export function CalculatorCard({ ctx }: { ctx: CalcCtx }) {
   return (
     <div
       id="calculator"
-      className="print-isolate mx-auto max-w-[1080px] scroll-mt-5 overflow-hidden rounded-xl border border-tint-border bg-white shadow-[0_24px_60px_rgba(22,60,90,0.14)] max-md:rounded-base max-md:shadow-[0_16px_38px_rgba(3,10,26,0.4)] xl:max-w-[810px]"
+      className="print-isolate mx-auto max-w-[1080px] scroll-mt-5 overflow-hidden rounded-xl border border-tint-border bg-white shadow-[0_24px_60px_rgba(22,60,90,0.14)] max-md:rounded-base max-md:shadow-[0_16px_38px_rgba(3,10,26,0.4)] xl:max-w-[1040px]"
     >
       {defaultView ? (
         <CalculatorLoader

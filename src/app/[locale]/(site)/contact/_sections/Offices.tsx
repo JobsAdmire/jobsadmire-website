@@ -114,7 +114,7 @@ export function Offices({
             </span>
             <div className="min-w-0 flex-1 basis-[280px]">
               <h3 className="m-0 mb-1 text-body text-white">{t('contact.110')}</h3>
-              <p className="m-0 text-body-sm text-white/85">{t('contact.111')}</p>
+              <p className="m-0 text-body-sm text-white/85 xl:max-w-[640px]">{t('contact.111')}</p>
             </div>
             <ContactCta
               placement="page_cta"

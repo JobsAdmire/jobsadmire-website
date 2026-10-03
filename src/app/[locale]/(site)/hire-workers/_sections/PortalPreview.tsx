@@ -92,7 +92,7 @@ export function PortalPreview({
               {tf('hire.193')}
             </ContactCta>
           </div>
-          <div className="relative md:order-first md:min-h-[440px]">
+          <div className="relative md:order-first md:min-h-[440px] xl:mx-auto xl:w-full xl:max-w-[413px]">
             <div className="overflow-hidden rounded-sm border border-tint-border bg-white shadow-card-hover md:absolute md:left-0 md:top-0 md:w-[80%]">
               <div className="flex items-center gap-1.5 border-b border-border-4 bg-pale-2 px-3.5 py-2.5">
                 <span aria-hidden="true" className={DOT} />

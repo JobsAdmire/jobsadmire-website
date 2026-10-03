@@ -126,7 +126,8 @@ export function FaqBlock({
           items={items.map((it) => ({
             id: it.id,
             title: it.q,
-            body: <p className="m-0">{it.a}</p>,
+            // W229: the answer keeps a ~95-character measure beside the ask card in the wider box.
+            body: <p className={hasSide ? 'm-0 xl:max-w-[560px]' : 'm-0'}>{it.a}</p>,
           }))}
           singleOpen={singleOpen}
           defaultOpenId={openFirst ? items[0]?.id : undefined}

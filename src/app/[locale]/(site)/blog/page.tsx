@@ -207,7 +207,7 @@ export default async function BlogIndex({ params }: { params: Promise<{ locale: 
                   />
                 </div>
               ) : null}
-              <div data-testid="blog-featured" className="mb-10 lg:max-w-[860px]">
+              <div data-testid="blog-featured" className="mb-10 lg:max-w-[860px] xl:max-w-none">
                 <PostCard
                   bundle={bundle}
                   locale={locale}

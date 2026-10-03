@@ -25,6 +25,23 @@ describe('Timeline', () => {
     expect(screen.getByText('01')).toBeInTheDocument();
   });
 
+  it('rail-to-row keeps the rail below 1101 px and runs one top-ruled column per step from 1101 (W229)', () => {
+    render(<Timeline steps={steps} variant="rail-to-row" />);
+    const list = screen.getByRole('list');
+    expect(list).toHaveAttribute('data-variant', 'rail-to-row');
+    expect(list).toHaveClass(
+      'border-l',
+      'pl-6',
+      'xl:grid',
+      'xl:grid-flow-col',
+      'xl:border-l-0',
+      'xl:pl-0',
+    );
+    for (const item of screen.getAllByRole('listitem')) {
+      expect(item).toHaveClass('xl:border-t-2', 'xl:border-tint-border', 'xl:pt-4');
+    }
+  });
+
   it('renders no body paragraph when a step has none (W84)', () => {
     const { container } = render(<Timeline steps={[{ title: 'Only a title' }]} />);
     expect(screen.getByRole('heading', { level: 3, name: 'Only a title' })).toBeInTheDocument();

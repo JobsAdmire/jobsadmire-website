@@ -103,7 +103,8 @@ export function LegalDocument({
           lose to its `--container-max` (W178/W180) — the reading measure sits on an inner
           wrapper. */}
       <div className="container-site">
-        <div className="max-w-[760px]">
+        {/* W229: the 760 px reading column centres in the wider box from 1101 px. */}
+        <div className="max-w-[760px] xl:mx-auto">
           <Breadcrumbs
             locale={locale}
             items={[

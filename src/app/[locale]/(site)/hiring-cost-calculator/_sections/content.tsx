@@ -292,7 +292,7 @@ export function Compare({ ctx }: { ctx: CalcCtx }) {
         </div>
       </div>
       {/* delta 9: a real table — the row label in the middle column, the "VS" badge in the header */}
-      <div className="mx-auto max-w-[1080px] overflow-hidden rounded-xl border border-border-1 bg-white shadow-[0_18px_48px_rgba(22,60,90,0.10)] max-md:hidden xl:max-w-[810px]">
+      <div className="mx-auto max-w-[1080px] overflow-hidden rounded-xl border border-border-1 bg-white shadow-[0_18px_48px_rgba(22,60,90,0.10)] max-md:hidden xl:max-w-[1040px]">
         <table className="w-full border-collapse text-left">
           <thead>
             <tr>
@@ -352,7 +352,7 @@ export function Compare({ ctx }: { ctx: CalcCtx }) {
       </div>
       <div
         data-testid="calc-longterm"
-        className="mx-auto mt-[26px] xl:mt-[19.5px] max-w-[1080px] rounded-xl border border-border-1 bg-white px-[34px] py-8 shadow-[0_18px_48px_rgba(22,60,90,0.10)] max-md:mt-3 max-md:rounded-sm max-md:p-[15px] max-md:shadow-none xl:max-w-[810px] xl:px-[25.5px] xl:py-6"
+        className="mx-auto mt-[26px] xl:mt-[19.5px] max-w-[1080px] rounded-xl border border-border-1 bg-white px-[34px] py-8 shadow-[0_18px_48px_rgba(22,60,90,0.10)] max-md:mt-3 max-md:rounded-sm max-md:p-[15px] max-md:shadow-none xl:max-w-[1040px] xl:px-[25.5px] xl:py-6"
       >
         <h3 className="m-0 mb-2 text-[22px] font-extrabold tracking-[-0.4px] xl:tracking-[-0.3px] text-ink max-md:text-[18px] xl:text-[16.5px]">
           {t('calc.225')}
@@ -957,7 +957,7 @@ const FINE_ROW = 'flex items-baseline justify-between gap-3 py-[11px] xl:py-[8.2
 const FINE_CARD =
   'rounded-md border-[1.5px] border-warning-border bg-warning-surface px-7 py-[26px] xl:py-[19.5px]';
 const CONSEQUENCES =
-  'mx-auto mt-5 grid max-w-[1080px] list-none gap-4 p-0 lg:grid-cols-3 max-md:mt-0 max-md:gap-0 max-md:overflow-hidden max-md:rounded-sm max-md:border max-md:border-border-1 max-md:bg-white xl:max-w-[810px]';
+  'mx-auto mt-5 grid max-w-[1080px] list-none gap-4 p-0 lg:grid-cols-3 max-md:mt-0 max-md:gap-0 max-md:overflow-hidden max-md:rounded-sm max-md:border max-md:border-border-1 max-md:bg-white xl:max-w-[1040px]';
 const CONSEQUENCE =
   'rounded-sm border border-border-2 bg-white px-[22px] xl:px-[16.5px] py-5 max-md:rounded-none max-md:border-0 max-md:border-t max-md:border-border-3 max-md:px-3.5 max-md:py-3 max-md:first:border-t-0';
 
@@ -1014,7 +1014,7 @@ export function Penalties({ ctx }: { ctx: CalcCtx }) {
           </p>
         </div>
       </div>
-      <div className="mx-auto grid max-w-[1080px] gap-5 max-md:hidden lg:grid-cols-2 xl:max-w-[810px]">
+      <div className="mx-auto grid max-w-[1080px] gap-5 max-md:hidden lg:grid-cols-2 xl:max-w-[1040px]">
         {/* calc.408 (the doubled fine) is the package's own string — the design typed it (line 1369) */}
         {fine('calc.111', 'calc.407', [t('calc.112'), b(t('calc.408')), t('calc.113')])}
         {fine('calc.114', 'calc.409', [t('calc.115'), b(t('calc.116')), t('calc.117')])}
@@ -1039,7 +1039,7 @@ export function Penalties({ ctx }: { ctx: CalcCtx }) {
       </ul>
       <Note
         tone="green"
-        className="mx-auto mt-[22px] xl:mt-[16.5px] max-w-[1080px] max-md:hidden xl:max-w-[810px]"
+        className="mx-auto mt-[22px] xl:mt-[16.5px] max-w-[1080px] max-md:hidden xl:max-w-[1040px]"
       >
         <Sentence runs={[t('calc.134'), b(t('calc.135')), t('calc.136'), b(t('calc.137'))]} />
       </Note>

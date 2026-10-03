@@ -134,7 +134,9 @@
     /* W180: the design's 48 px / 32 px paddings and its 1280 px wrapper, × 0.75 */
     --gutter: 36px;
     --gutter-nav: 24px;
-    --container-max: calc(var(--content-max) + 2 * var(--gutter));
+    /* W229: never closer than 33 px to the viewport edge, so the content (gutter included, 69 px)
+       clears the fixed social rail (12–45 px) as it did before the widening; 1240 px from 1378 px. */
+    --container-max: min(calc(var(--content-max) + 2 * var(--gutter)), calc(100% - 66px));
   }
 }
 

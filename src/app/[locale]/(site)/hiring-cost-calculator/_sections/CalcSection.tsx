@@ -10,7 +10,7 @@ const PAD = {
   section: 'scroll-mt-5 max-md:py-2 md:py-20 xl:py-[60px]',
 } as const;
 // `.container-site` is unlayered CSS, so a utility cannot narrow it: a narrow body nests.
-const NARROW = 'mx-auto max-w-[1080px] xl:max-w-[810px]';
+const NARROW = 'mx-auto max-w-[1080px] xl:max-w-[1040px]';
 
 /**
  * One designed content section (`.ja-cs`): the section id is the anchor the jump chips, the

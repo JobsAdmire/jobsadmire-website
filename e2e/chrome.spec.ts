@@ -95,7 +95,7 @@ test('the content container is 1240 px from 1101 and the slim bar and header row
     await page.setViewportSize({ width, height: 900 });
     const m = await measure();
     const content =
-      width >= 1101 ? Math.min(1240, m.viewport - 2 * gutter) : m.viewport - 2 * gutter;
+      width >= 1101 ? Math.min(1240, m.viewport - 66 - 2 * gutter) : m.viewport - 2 * gutter;
     expect(m.gutter, `${width}px container gutter`).toBe(gutter);
     expect(m.content, `${width}px content box`).toBe(content);
     expect(m.headerWidth, `${width}px header row`).toBe(m.viewport);

@@ -64,8 +64,10 @@ function declarations(selector: string, width: number): Record<string, string> {
   return decl;
 }
 
-/** A length in px: `var(--x)` resolved against `:root` at `width`, then `calc()` arithmetic
- *  (+ − × ÷, parentheses) over px numbers. `none`/absent → `null`. */
+/** A length in px: `var(--x)` resolved against `:root` at `width`, then `min()`/`max()` over
+ *  `calc()` arithmetic (+ − × ÷, parentheses) on px numbers, `%` taken of `width` (every row this
+ *  test measures is a direct child of a full-width parent — W228's rail clearance uses it).
+ *  `none`/absent → `null`. */
 function px(value: string | undefined, width: number): number | null {
   if (value === undefined || value === 'none') return null;
   const root = declarations(':root', width);
@@ -77,7 +79,34 @@ function px(value: string | undefined, width: number): number | null {
     });
   }
   if (v === 'none') return null;
-  const src = v.replace(/^calc/, '').replace(/px/g, '');
+  const fn = /^(min|max)\((.*)\)$/.exec(v.trim());
+  if (fn) {
+    const args: string[] = [];
+    let depth = 0;
+    let start = 0;
+    const inner = fn[2]!;
+    for (let k = 0; k < inner.length; k++) {
+      if (inner[k] === '(') depth++;
+      else if (inner[k] === ')') depth--;
+      else if (inner[k] === ',' && depth === 0) {
+        args.push(inner.slice(start, k));
+        start = k + 1;
+      }
+    }
+    args.push(inner.slice(start));
+    const values = args.map((a) => arith(a, width, value));
+    return fn[1] === 'min' ? Math.min(...values) : Math.max(...values);
+  }
+  return arith(v, width, value);
+}
+
+/** `calc()` arithmetic over px numbers and `%` of `width`. */
+function arith(expr: string, width: number, original: string): number {
+  const src = expr
+    .trim()
+    .replace(/calc\(/g, '(')
+    .replace(/(\d+(?:\.\d+)?)%/g, (_, n: string) => String((width * Number(n)) / 100))
+    .replace(/px/g, '');
   let pos = 0;
   const skip = () => {
     while (src[pos] === ' ') pos++;
@@ -92,7 +121,7 @@ function px(value: string | undefined, width: number): number | null {
       return r;
     }
     const m = /^-?\d+(\.\d+)?/.exec(src.slice(pos));
-    if (!m) throw new Error(`cannot read "${value}" (${src}) at ${width}px`);
+    if (!m) throw new Error(`cannot read "${original}" (${src}) at ${width}px`);
     pos += m[0].length;
     return Number(m[0]);
   };
@@ -148,16 +177,18 @@ describe('.container-site follows the design wrapper at 0.75 (W180, D19)', () =>
     expect(b.content).toBe(w - 2 * layout.gutterTablet);
   });
 
-  // W228 (owner, 2026-10-03): 1240 px from 1101 — the box fills the viewport inside its 36 px
-  // gutters until 1312 px, then stays 1240 px and centres.
-  it.each([1101, 1280])('%ipx: the box fills the viewport inside the 36 px gutters (W228)', (w) => {
+  // W228 (owner, 2026-10-03): 1240 px from 1101, centred. W229 (width QA): below 1378 px the box
+  // keeps 33 px of margin per side so the content edge (69 px) clears the fixed social rail
+  // (12–45 px) by the 24 px it had before the widening.
+  it.each([1101, 1280])('%ipx: the box keeps 33 px of margin for the social rail (W228)', (w) => {
     const b = box('.container-site', w);
     expect(b.padding).toBe(layout.gutterDesktop);
-    expect(b.content).toBe(w - 2 * layout.gutterDesktop);
-    expect(b.left).toBe(layout.gutterDesktop);
+    expect(b.maxWidth).toBe(w - 66);
+    expect(b.content).toBe(w - 66 - 2 * layout.gutterDesktop);
+    expect(b.left).toBe(33 + layout.gutterDesktop);
   });
 
-  it.each([1312, 1440, 1920])('%ipx: a 1240 px content box with 36 px gutters (W228)', (w) => {
+  it.each([1378, 1440, 1920])('%ipx: a 1240 px content box with 36 px gutters (W228)', (w) => {
     const b = box('.container-site', w);
     expect(b.padding).toBe(layout.gutterDesktop);
     expect(b.content).toBe(layout.maxWidth);

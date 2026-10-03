@@ -259,7 +259,9 @@ export default async function About({ params }: { params: Promise<{ locale: stri
               {t('about.039')}
             </h2>
             {/* about.040 is legal-flagged: rendered verbatim ("13+ countries") for the WP-C review (W1). */}
-            <p className="m-0 mb-7 text-body text-text-secondary">{t('about.040')}</p>
+            <p className="m-0 mb-7 text-body text-text-secondary xl:max-w-[520px]">
+              {t('about.040')}
+            </p>
             <ol className="m-0 list-none p-0">
               {WHO_ROWS.map(([titleId, bodyId], i) => (
                 <li
@@ -274,7 +276,9 @@ export default async function About({ params }: { params: Promise<{ locale: stri
                   </span>
                   <div>
                     <h3 className="m-0 mb-1 text-card-title">{t(titleId)}</h3>
-                    <p className="m-0 text-body-sm text-text-secondary">{t(bodyId)}</p>
+                    <p className="m-0 text-body-sm text-text-secondary xl:max-w-[480px]">
+                      {t(bodyId)}
+                    </p>
                   </div>
                 </li>
               ))}
@@ -290,7 +294,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
             className={
               founder
                 ? 'grid gap-12 lg:grid-cols-[1.1fr_0.9fr] lg:items-center'
-                : 'max-w-[720px] xl:max-w-[540px]'
+                : 'max-w-[720px] xl:max-w-[none]'
             }
           >
             <FounderBand founder={founder} placedText={metrics.placed} t={t} />
@@ -301,7 +305,7 @@ export default async function About({ params }: { params: Promise<{ locale: stri
               {/* W84: body is optional; the journey rows have none. about.052 is legal (UK spelling only — W221 house style);
                   about.057 = "{placed} workers placed, {employers} clients" after the importer (W1). */}
               <Timeline
-                variant="vertical"
+                variant={founder ? 'vertical' : 'rail-to-row'}
                 steps={[
                   { when: t('about.051'), title: t('about.052') },
                   { when: t('about.053'), title: t('about.054') },

@@ -69,7 +69,17 @@ export function PostCard({
         row ? 'flex gap-4 p-4' : 'flex flex-col overflow-hidden',
       ].join(' ')}
     >
-      {row ? <div className="w-[104px] shrink-0">{cover}</div> : cover}
+      {row ? (
+        <div className="w-[104px] shrink-0">{cover}</div>
+      ) : variant === 'featured' ? (
+        // W229: in the wider box the featured cover keeps its old ~272 px height — the wrapper
+        // crops the centred band of the slot (W129: callers size the slot by wrapping it).
+        <div className="xl:flex xl:max-h-[272px] xl:items-center xl:overflow-hidden xl:rounded-xs">
+          {cover}
+        </div>
+      ) : (
+        cover
+      )}
       <div className={row ? 'flex min-w-0 flex-1 flex-col' : 'flex flex-1 flex-col p-6'}>
         <div className="mb-3 flex flex-wrap gap-2">
           {variant === 'featured' && (
@@ -90,7 +100,13 @@ export function PostCard({
             {title}
           </Link>
         </Heading>
-        {!row && excerpt && <p className="text-body-sm m-0 mb-4 text-text-tertiary">{excerpt}</p>}
+        {!row && excerpt && (
+          <p
+            className={`text-body-sm m-0 mb-4 text-text-tertiary${variant === 'featured' ? ' xl:max-w-[560px]' : ''}`}
+          >
+            {excerpt}
+          </p>
+        )}
         <div className="mt-auto flex flex-wrap items-center justify-between gap-2 text-eyebrow font-bold text-text-tertiary">
           <span>{meta}</span>
           {post.hasBody[other] && !row && (

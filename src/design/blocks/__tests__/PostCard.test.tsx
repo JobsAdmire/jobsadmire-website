@@ -90,6 +90,26 @@ describe('PostCard', () => {
     expect(document.querySelector('[data-placeholder]')).toBeNull();
   });
 
+  it('featured: the cover sits in a 272 px crop wrapper and the excerpt keeps a measure from 1101 (W229)', () => {
+    const { container } = renderWithIntl(
+      <PostCard bundle={bundle} locale="tr" post={post} variant="featured" headingLevel={2} />,
+      { locale: 'tr' },
+    );
+    const crop = container.querySelector('[class*="xl:max-h-[272px]"]');
+    expect(crop).not.toBeNull();
+    expect(crop).toHaveClass('xl:overflow-hidden', 'xl:items-center');
+    expect(screen.getByText('Adım adım.')).toHaveClass('xl:max-w-[560px]');
+  });
+
+  it('card and row variants get no crop wrapper and no excerpt cap', () => {
+    const { container } = renderWithIntl(
+      <PostCard bundle={bundle} locale="tr" post={post} variant="card" />,
+      { locale: 'tr' },
+    );
+    expect(container.querySelector('[class*="xl:max-h-[272px]"]')).toBeNull();
+    expect(screen.getByText('Adım adım.')).not.toHaveClass('xl:max-w-[560px]');
+  });
+
   it('renders nothing for a locale the post is not written in (W33)', () => {
     const { container } = renderWithIntl(
       <PostCard

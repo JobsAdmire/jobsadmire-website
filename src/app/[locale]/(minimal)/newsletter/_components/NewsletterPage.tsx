@@ -56,7 +56,7 @@ export async function NewsletterPage({
     <Section tone="light">
       {/* `.container-site` is unlayered CSS; the measure sits on an inner wrapper. */}
       <div className="container-site">
-        <div className="max-w-[720px]">
+        <div className="max-w-[720px] xl:mx-auto">
           <h1 data-testid="page-h1" data-lcp-slot="h1" className="text-h2">
             {sys(`newsletter.${kind}.title`)}
           </h1>
