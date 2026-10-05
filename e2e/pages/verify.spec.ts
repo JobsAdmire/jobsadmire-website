@@ -1,6 +1,7 @@
 import { readFileSync } from 'node:fs';
 import { join } from 'node:path';
 import AxeBuilder from '@axe-core/playwright';
+import { settleMotion } from '../helpers/motion';
 import { test, expect, type Locator, type Page } from '@playwright/test';
 
 const ROUTES = { tr: '/temsilci-dogrulama', en: '/en/verify' } as const;
@@ -386,6 +387,7 @@ test('en: axe stays clean with the lookup answer and an evidence refusal shown (
     .getByLabel(SYS.en.form.labels.evidence, { exact: true })
     .setInputFiles({ name: 'notes.txt', mimeType: 'text/plain', buffer: Buffer.from('x') });
   await expect(page.getByTestId('fraud-evidence')).toContainText('notes.txt');
+  await settleMotion(page); // end states, never a mid-fade colour (motion.css)
   const results = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
     .analyze();

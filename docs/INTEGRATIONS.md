@@ -106,7 +106,7 @@ The catalogue below is plan §4, with phase tags: **[A]** Phase A, **[B]** Phase
 
 ## I15 — Portal links
 
-**Direction:** Website → portal.jobsadmire.com. **Auth:** none — a plain link out from the `/portal-girisi` chooser page (T13); the hamburger, slim-bar and footer portal rows point at that page internally (`/portal-login`, W88), never at the portal host. No API traffic at all. **Failure/degraded:** n/a — it's a hyperlink.
+**Direction:** Website → portal.jobsadmire.com. **Auth:** none — a plain external link: since 2026-10-05 the hamburger, slim-bar and footer "CRM Girişi" rows point straight at `https://portal.jobsadmire.com/auth/login` (built from `settings.portal`) and open it in a new tab; the `/portal-login` chooser page (T13, W88) is retired and its old URLs 308 there (`docs/redirects.md`). No API traffic at all. **Failure/degraded:** n/a — it's a hyperlink.
 
 ## I16 — Analytics/Ads/consent
 

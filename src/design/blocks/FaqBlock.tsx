@@ -53,6 +53,8 @@ export function FaqBlock({
   openFirst = false,
   headingLevel = 3,
   footer,
+  reveal = false,
+  panelClassName,
 }: {
   bundle: Bundle;
   locale: Locale;
@@ -69,13 +71,24 @@ export function FaqBlock({
   headingLevel?: 2 | 3 | 4;
   /** Page-specific line under the list (the Homepage's `faqFoot` + WhatsApp link). */
   footer?: ReactNode;
+  /** Contact: the side column and the list each rise into view, the list 120 ms later (the
+   *  design's `.ja-reveal` on both columns, src/design/motion/motion.css). */
+  reveal?: boolean;
+  /** The accordion panels' open animation (`ja-panel` / `ja-panel-soft`). */
+  panelClassName?: string;
 }) {
   const t = makeTf(bundle, locale);
   const hasSide = Boolean(eyebrowId || headingId || bodyId || askCard);
   return (
     <div id={id} className={hasSide ? 'grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-16' : ''}>
       {hasSide && (
-        <div className="lg:sticky lg:top-(--sticky-top) lg:self-start">
+        <div
+          className={
+            reveal
+              ? 'ja-reveal lg:sticky lg:top-(--sticky-top) lg:self-start'
+              : 'lg:sticky lg:top-(--sticky-top) lg:self-start'
+          }
+        >
           {eyebrowId && <Eyebrow>{t(eyebrowId)}</Eyebrow>}
           {/* Final pass A7 (W189 A6): the design's section-h2 face (−1.6 px, × 0.75 from 1101;
               line-height 1.05) and its `.ja-faq-side h2` ≤ 700 px rule (24 px / −0.5 px / 1.14,
@@ -124,7 +137,10 @@ export function FaqBlock({
           )}
         </div>
       )}
-      <div>
+      <div
+        className={reveal ? 'ja-reveal' : undefined}
+        style={reveal ? { transitionDelay: '0.12s' } : undefined}
+      >
         <Accordion
           items={items.map((it) => ({
             id: it.id,
@@ -135,6 +151,7 @@ export function FaqBlock({
           singleOpen={singleOpen}
           defaultOpenId={openFirst ? items[0]?.id : undefined}
           headingLevel={headingLevel}
+          panelClassName={panelClassName}
         />
         {footer}
       </div>

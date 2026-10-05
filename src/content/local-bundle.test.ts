@@ -86,9 +86,9 @@ describe('generated LOCAL bundles through the typed accessors', () => {
     expect(guide.body.en).toMatch(/^Türkiye's factories/);
     expect(guide.body.tr).toBeNull();
   });
-  it('keeps /blog out of nav below the threshold (W4) and carries every page record', () => {
-    expect(blogNavVisible(tr)).toBe(false);
-    expect(tr.nav.some((n) => n.href === '/blog')).toBe(false);
+  it('keeps /blog in nav whatever the threshold (owner 2026-10-05) and carries every page record', () => {
+    expect(blogNavVisible(tr)).toBe(false); // the threshold now gates only the home guides / related articles
+    expect(tr.nav.filter((n) => n.href === '/blog')).toHaveLength(4);
     for (const key of PAGE_KEYS) expect(getPageSeo(tr, key), key).toBeDefined();
   });
   // W124: blogArticle/careersDetail are one record per TEMPLATE, not per article/opening —

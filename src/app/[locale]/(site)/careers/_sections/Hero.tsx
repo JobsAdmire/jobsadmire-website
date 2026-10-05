@@ -66,13 +66,17 @@ export function CareersHero({
           ]}
         />
         <div className="grid items-center gap-8 pt-6 pb-10 lg:grid-cols-[1.06fr_0.94fr] lg:gap-14">
-          <div className="min-w-0">
+          {/* the design's `.ja-up`: the copy column rises in */}
+          <div className="ja-up min-w-0">
             {openingsCount > 0 && (
               <p
                 data-testid="careers-hiring-count"
                 className="mb-5 inline-flex items-center gap-2 rounded-pill border border-[#4ade80]/40 bg-[#16a34a]/15 px-4 py-1.5 text-body-sm font-extrabold text-[#86efac]"
               >
-                <span aria-hidden="true" className="h-2 w-2 rounded-pill bg-[#4ade80]" />
+                <span
+                  aria-hidden="true"
+                  className="ja-live ja-live-soft h-2 w-2 rounded-pill bg-[#4ade80]"
+                />
                 {sys('careers.hero.hiringCount', { count: openingsCount })}
               </p>
             )}

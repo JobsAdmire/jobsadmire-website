@@ -50,7 +50,7 @@ export function SeasonSection({ locale, bundle }: SectionProps) {
     </div>
   );
   return (
-    <Section tone="light" id="season">
+    <Section tone="light" id="season" className="ja-reveal">
       <div className="container-site">
         <SeasonPlannerIsland
           fallback={

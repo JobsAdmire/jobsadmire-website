@@ -24,7 +24,8 @@
       "prefill": "Merhaba JobsAdmire, "
     },
     "blocks": {
-      "readMinutes": "{n, plural, one {# dk okuma} other {# dk okuma}}"
+      "readMinutes": "{n, plural, one {# dk okuma} other {# dk okuma}}",
+      "imagePlaceholder": "Görsel eklenecek"
     },
     "languageHint": {
       "body": "This page is also available in English.",
@@ -36,10 +37,6 @@
       "home": {
         "title": "Yurt Dışından İşçi Temini ve Çalışma İzni | JobsAdmire",
         "description": "Türkiye'deki işverenler için yurt dışından nitelikli işçi temini: JobsAdmire'ın kendi temsilcileriyle aday seçimi, yasal çalışma izni ve ilk iş gününe kadar tek elden süreç. Ücretsiz teklif alın."
-      },
-      "portal": {
-        "title": "İş Ortağı Portalı girişi | JobsAdmire",
-        "description": "JobsAdmire İş Ortağı Portalı'na giriş: sözleşmeler, adaylar ve izin durumu tek yerde."
       },
       "privacy": {
         "title": "Gizlilik Politikası | JobsAdmire",
@@ -146,13 +143,19 @@
       }
     },
     "calc": {
-      "hero": { "badge": "{year} oranları · {month} güncellemesi" },
-      "skeleton": { "activate": "Tahmini düzenleyin" },
+      "hero": {
+        "badge": "{year} oranları · {month} güncellemesi"
+      },
+      "skeleton": {
+        "activate": "Tahmini düzenleyin"
+      },
       "empty": {
         "title": "Hesaplayıcı güncelleniyor",
         "body": "Güncel oranlar henüz yayınlanmadı — bunun yerine JobsAdmire'dan yazılı teklif isteyin."
       },
-      "jump": { "label": "Sayfa içi bölümler" },
+      "jump": {
+        "label": "Sayfa içi bölümler"
+      },
       "a11y": {
         "decrease": "{step} azalt",
         "increase": "{step} artır",
@@ -205,7 +208,10 @@
         "loading": "Teklif formu açılıyor…",
         "attached": "Yukarıdaki tahmin talebinizle birlikte gönderilir."
       },
-      "summary": { "none": "yok", "rates": "Oran sürümü" }
+      "summary": {
+        "none": "yok",
+        "rates": "Oran sürümü"
+      }
     },
     "wp": {
       "hero": {
@@ -718,10 +724,6 @@
       "portal": {
         "platforms": "iOS ve Android"
       }
-    },
-    "portal": {
-      "intro": "İş ortağı hesapları JobsAdmire İş Ortağı Portalı'nda oturum açar; aşağıdaki bağlantı portalın giriş sayfasını açar.",
-      "signIn": "İş Ortağı Portalı'na giriş yapın"
     },
     "legal": {
       "updatedLabel": "Son güncelleme",

@@ -11,7 +11,7 @@ import type { RoleCard, Tf } from '../_lib/roles';
 export function RolesSection({ t, cards }: { t: Tf; cards: RoleCard[] }) {
   const sys = useTranslations('sys');
   return (
-    <Section tone="pale" id="roles" className="scroll-mt-24 border-t border-border-3">
+    <Section tone="pale" id="roles" className="ja-reveal scroll-mt-24 border-t border-border-3">
       <div data-testid="careers-roles" className="container-site">
         <div className="mb-6 max-w-[620px]">
           <Eyebrow>{t('jt.044')}</Eyebrow>

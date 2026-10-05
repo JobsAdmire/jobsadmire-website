@@ -34,7 +34,7 @@ export function NetworkSection({ locale, bundle }: SectionProps) {
   const countries = getCollection(bundle, 'sourceCountries');
   const count = metricValues(bundle, locale).countries ?? String(countries.length);
   return (
-    <Section tone="light" id="network">
+    <Section tone="light" id="network" className="ja-reveal">
       <div
         data-testid="network"
         className="container-site grid items-center gap-[34px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-[60px] xl:gap-[45px]"
@@ -53,7 +53,7 @@ export function NetworkSection({ locale, bundle }: SectionProps) {
           <div className="relative mb-[22px] overflow-hidden rounded-xl bg-navy px-5 pb-5 pt-[22px] text-white xs:hidden">
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -right-[90px] -top-[110px] h-[280px] w-[280px] rounded-pill bg-[radial-gradient(circle,rgba(24,153,213,0.28),transparent_65%)]"
+              className="ja-glow pointer-events-none absolute -right-[90px] -top-[110px] h-[280px] w-[280px] rounded-pill bg-[radial-gradient(circle,rgba(24,153,213,0.28),transparent_65%)]"
             />
             <p className="relative m-0 mb-4 flex items-baseline gap-2.5">
               <span className="font-display text-[34px] font-extrabold leading-none tracking-[-1.4px]">

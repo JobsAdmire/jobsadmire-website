@@ -16,8 +16,9 @@ const STEP_ICON: Record<StepIcon, typeof DocIcon> = {
 };
 
 /** "How we get a permit approved": four steps (the last with the "SGK day one" badge) on a
- *  static connector rail from 901 px — the design's IntersectionObserver reveal is not ported
- *  (no island, reduced-motion parity, W13) — and the permit-only banner with its WhatsApp door.
+ *  connector rail from 901 px — the design's reveal through the site-wide observer: once in view
+ *  (`.ja-reveal-group`) the rail draws (`.ja-journey-line`) and the cards rise (`.ja-step`,
+ *  src/design/motion/motion.css) — and the permit-only banner with its WhatsApp door.
  *  `ProcessSteps` has no badge slot and no horizontal variant, so this grid is page-local. */
 export function Process({ bundle, tf }: { bundle: Bundle; tf: (id: string) => string }) {
   const sys = useTranslations('sys');
@@ -32,10 +33,10 @@ export function Process({ bundle, tf }: { bundle: Bundle; tf: (id: string) => st
         <p className="mx-auto mb-11 max-w-[560px] text-center text-body-lg text-text-tertiary max-md:mb-5 max-md:text-left">
           {tf('wp.247')}
         </p>
-        <div className="relative">
+        <div className="ja-reveal-group relative">
           <span
             aria-hidden="true"
-            className="absolute top-[43px] right-10 left-10 h-[3px] rounded-pill bg-gradient-to-r from-blue via-blue-safe to-success max-lg:hidden"
+            className="ja-journey-line absolute top-[43px] right-10 left-10 h-[3px] rounded-pill bg-gradient-to-r from-blue via-blue-safe to-success max-lg:hidden"
           />
           <ol className="relative grid gap-6 max-md:gap-2.5 md:grid-cols-2 lg:grid-cols-4">
             {PROCESS_STEPS.map((step, i) => {
@@ -44,7 +45,7 @@ export function Process({ bundle, tf }: { bundle: Bundle; tf: (id: string) => st
               return (
                 <li
                   key={step.titleId}
-                  className={`min-w-0 rounded-md border bg-white px-6 py-6.5 max-md:px-3.5 max-md:py-3.5 ${isLast ? 'border-success-border' : 'border-border-2'}`}
+                  className={`ja-step min-w-0 rounded-md border bg-white px-6 py-6.5 max-md:px-3.5 max-md:py-3.5 ${isLast ? 'border-success-border' : 'border-border-2'}`}
                 >
                   <div className="mb-4 flex items-center justify-between max-md:mb-2">
                     {/* D20: solid blue-safe / success-text dots — white on the design's

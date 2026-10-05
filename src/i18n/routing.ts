@@ -19,7 +19,6 @@ export const pathnames = {
   '/success-stories': { tr: '/basari-hikayeleri', en: '/success-stories' },
   '/blog': '/blog',
   '/blog/[slug]': '/blog/[slug]',
-  '/portal-login': { tr: '/portal-girisi', en: '/portal-login' },
   '/privacy': { tr: '/gizlilik', en: '/privacy' },
   '/terms': { tr: '/kullanim-kosullari', en: '/terms' },
   '/kvkk': '/kvkk',

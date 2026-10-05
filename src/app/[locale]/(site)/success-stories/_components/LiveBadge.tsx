@@ -13,7 +13,7 @@ export function LiveBadge({ stories }: { stories: Story[] }) {
       data-testid="stories-live"
       className="m-0 mb-5 inline-flex items-center gap-2 rounded-pill border border-success/40 bg-success/10 px-4 py-1.5 text-body-sm font-extrabold text-success-surface"
     >
-      <span aria-hidden="true" className="h-2 w-2 rounded-pill bg-success" />
+      <span aria-hidden="true" className="ja-live h-2 w-2 rounded-pill bg-success" />
       {sys('stories.hero.liveBadge', { count })}
     </p>
   );

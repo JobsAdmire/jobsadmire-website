@@ -144,9 +144,11 @@ const SETTINGS = {
 // ---------------------------------------------------------------------------------------------
 
 type NavRow = { href: string; labelId: string; external?: boolean; blog?: boolean };
-/** W88: the portal row is internal — `/portal-login` (`/portal-girisi`) is the chooser page (W8)
- *  that links out to `settings.portal.host`; no nav group links the portal host itself. */
-const PORTAL_ROW: NavRow = { href: '/portal-login', labelId: 'home.012' };
+/** W88 superseded (owner, 2026-10-05): the portal row is an external link to the partner portal's
+ *  login, opened in a new tab — the `/portal-login` chooser page is retired (old URLs 308 there,
+ *  `redirects/rules.json`). Built from `SETTINGS.portal` so the host lives in one place. */
+const PORTAL_LOGIN_URL = `${SETTINGS.portal.host}${SETTINGS.portal.loginPath}`;
+const PORTAL_ROW: NavRow = { href: PORTAL_LOGIN_URL, labelId: 'home.012', external: true };
 // desktop nav in README order; labels are the Homepage nav ids (home.001..011)
 const DESKTOP: NavRow[] = [
   { href: '/hire-workers', labelId: 'home.002' },
@@ -200,7 +202,7 @@ const NAV_GROUPS: Record<NavItem['group'], NavRow[]> = {
   socialRail: [],
 };
 
-export function buildNav(blogVisible: boolean): NavItem[] {
+export function buildNav(blogVisible: boolean = true): NavItem[] {
   const out: NavItem[] = [];
   for (const [group, rows] of Object.entries(NAV_GROUPS) as [NavItem['group'], NavRow[]][])
     rows
@@ -541,14 +543,13 @@ const PAGE_TABLE: Record<
     robots: 'index',
     jsonLd: ['breadcrumb', 'jobPosting'],
   },
-  blog: { titleId: '', descriptionId: '', robots: 'noindex', jsonLd: ['breadcrumb'] },
+  blog: { titleId: '', descriptionId: '', robots: 'index', jsonLd: ['breadcrumb'] }, // owner 2026-10-05: always in nav, indexable (articles stay noindex)
   blogArticle: {
     titleId: '',
     descriptionId: '',
     robots: 'noindex',
     jsonLd: ['breadcrumb', 'article', 'faq'],
   },
-  portal: { titleId: '', descriptionId: '', robots: 'noindex', jsonLd: [] },
   privacy: { titleId: '', descriptionId: '', robots: 'index', jsonLd: ['breadcrumb'] },
   terms: { titleId: '', descriptionId: '', robots: 'index', jsonLd: ['breadcrumb'] },
   kvkk: { titleId: '', descriptionId: '', robots: 'index', jsonLd: ['breadcrumb'] },
@@ -1050,7 +1051,7 @@ export function buildBundles() {
       if (id && !(id in catalogue)) throw new Error(`pages.${key}: ${id} is not a catalogue id`);
     pages[key] = { ...p, ogImage: null, canonical: null };
   }
-  const nav = buildNav(navVisible);
+  const nav = buildNav(true); // owner 2026-10-05: /blog is always in the nav
   for (const n of nav)
     if (!(n.labelId in catalogue))
       throw new Error(`nav ${n.href}: ${n.labelId} is not a catalogue id`);
@@ -1097,7 +1098,7 @@ if (require.main === module) {
   console.log(`metric placeholders — ${report.placeholders.length} replacements:`);
   console.table(report.placeholders);
   console.log(
-    `blog — ${report.blog.rows} articles, ${report.blog.trBodies} Turkish bodies (threshold ${BLOG_NAV_THRESHOLD}) → /blog ${report.blog.navVisible ? 'in' : 'out of'} nav (W4)`,
+    `blog — ${report.blog.rows} articles, ${report.blog.trBodies} Turkish bodies (threshold ${BLOG_NAV_THRESHOLD}) → /blog always in nav (owner 2026-10-05; threshold still gates the home guides + related articles)`,
   );
   console.log(
     `wrote ${Object.keys(tr.strings).length} strings, ${tr.nav.length} nav items, ${Object.keys(tr.pages).length} page records, ${Object.keys(tr.collections).length} collections per locale`,

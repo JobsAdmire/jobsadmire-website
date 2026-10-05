@@ -2,6 +2,7 @@
 import dynamic from 'next/dynamic';
 import { usePathname } from 'next/navigation';
 import { useCallback, useEffect, useSyncExternalStore } from 'react';
+import { RevealObserver } from '@/design/motion/RevealObserver';
 import { keepScrollAcrossZoom } from '@/design/zoom';
 import type { Locale } from '@/i18n/routing';
 import { hintEligibleHere } from './hint-eligibility';
@@ -53,6 +54,10 @@ export function ClientIslands({ consent, locale }: { consent: boolean; locale: L
   );
   return (
     <>
+      {/* The design's scroll reveal (src/design/motion): tiny and needed on every page, so it is
+          part of this boundary rather than a lazy chunk — a deferred one would hold the first
+          sections back for another round trip. */}
+      <RevealObserver />
       {hint && <LanguageHint locale={locale} />}
       {consent && <ConsentBanner />}
     </>

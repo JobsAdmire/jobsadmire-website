@@ -261,7 +261,7 @@ describe('blog nav threshold (W4)', () => {
 
 describe('page keys', () => {
   it('maps every page key to an internal pathname and reads the record', () => {
-    expect(PAGE_KEYS).toHaveLength(22);
+    expect(PAGE_KEYS).toHaveLength(21);
     for (const key of PAGE_KEYS) expect(PAGE_PATHNAME[key]).toMatch(/^\//);
     expect(PAGE_PATHNAME.blogArticle).toBe('/blog/[slug]');
     expect(PAGE_PATHNAME.careersDetail).toBe('/careers/[slug]');

@@ -23,9 +23,6 @@ export const GATE_ROUTE_TABLE: readonly GateRoute[] = [
   { path: '/en/contact', indexable: true },
   // The conversion page (D13): nobody lands on it cold, so Lighthouse never audits it.
   { path: '/tesekkurler?form=hire', indexable: false },
-  // T13 — the portal door: noindex (W8), swept by axe/width/placeholder/headers, never Lighthouse.
-  { path: '/portal-girisi', indexable: false },
-  { path: '/en/portal-login', indexable: false },
   // T13 — the four legal pages: indexable, so Lighthouse audits all eight (W145 budgets apply).
   { path: '/gizlilik', indexable: true },
   { path: '/en/privacy', indexable: true },

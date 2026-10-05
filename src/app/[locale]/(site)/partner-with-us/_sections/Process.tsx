@@ -31,6 +31,7 @@ export function Process({ bundle, locale, tf }: { bundle: Bundle; locale: Locale
             variant="cards"
             id="how-it-starts"
             headingLevel={3}
+            motion="steps"
           />
         </div>
       </div>

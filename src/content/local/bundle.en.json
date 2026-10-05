@@ -3579,6 +3579,17 @@
   {
    "group": "desktopNav",
    "order": 6,
+   "labelId": "home.010",
+   "href": "/blog",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "desktopNav",
+   "order": 7,
    "labelId": "home.011",
    "href": "/verify",
    "external": false,
@@ -3589,7 +3600,7 @@
   },
   {
    "group": "desktopNav",
-   "order": 7,
+   "order": 8,
    "labelId": "home.008",
    "href": "/partner-with-us",
    "external": false,
@@ -3600,7 +3611,7 @@
   },
   {
    "group": "desktopNav",
-   "order": 8,
+   "order": 9,
    "labelId": "home.009",
    "href": "/careers",
    "external": false,
@@ -3611,7 +3622,7 @@
   },
   {
    "group": "desktopNav",
-   "order": 9,
+   "order": 10,
    "labelId": "home.007",
    "href": "/contact",
    "external": false,
@@ -3689,6 +3700,17 @@
   {
    "group": "hamburger",
    "order": 6,
+   "labelId": "home.010",
+   "href": "/blog",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "hamburger",
+   "order": 7,
    "labelId": "home.011",
    "href": "/verify",
    "external": false,
@@ -3699,7 +3721,7 @@
   },
   {
    "group": "hamburger",
-   "order": 7,
+   "order": 8,
    "labelId": "home.008",
    "href": "/partner-with-us",
    "external": false,
@@ -3710,7 +3732,7 @@
   },
   {
    "group": "hamburger",
-   "order": 8,
+   "order": 9,
    "labelId": "home.009",
    "href": "/careers",
    "external": false,
@@ -3721,7 +3743,7 @@
   },
   {
    "group": "hamburger",
-   "order": 9,
+   "order": 10,
    "labelId": "home.007",
    "href": "/contact",
    "external": false,
@@ -3732,10 +3754,10 @@
   },
   {
    "group": "hamburger",
-   "order": 10,
+   "order": 11,
    "labelId": "home.012",
-   "href": "/portal-login",
-   "external": false,
+   "href": "https://portal.jobsadmire.com/auth/login",
+   "external": true,
    "visibleOn": [
     "desktop",
     "mobile"
@@ -3744,6 +3766,17 @@
   {
    "group": "slimBarRight",
    "order": 0,
+   "labelId": "home.013",
+   "href": "/blog",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "slimBarRight",
+   "order": 1,
    "labelId": "home.009",
    "href": "/careers",
    "external": false,
@@ -3754,7 +3787,7 @@
   },
   {
    "group": "slimBarRight",
-   "order": 1,
+   "order": 2,
    "labelId": "home.011",
    "href": "/verify",
    "external": false,
@@ -3765,10 +3798,10 @@
   },
   {
    "group": "slimBarRight",
-   "order": 2,
+   "order": 3,
    "labelId": "home.012",
-   "href": "/portal-login",
-   "external": false,
+   "href": "https://portal.jobsadmire.com/auth/login",
+   "external": true,
    "visibleOn": [
     "desktop",
     "mobile"
@@ -3833,8 +3866,8 @@
    "group": "footerEmployers",
    "order": 5,
    "labelId": "home.012",
-   "href": "/portal-login",
-   "external": false,
+   "href": "https://portal.jobsadmire.com/auth/login",
+   "external": true,
    "visibleOn": [
     "desktop",
     "mobile"
@@ -3865,6 +3898,17 @@
   {
    "group": "footerCompany",
    "order": 2,
+   "labelId": "home.013",
+   "href": "/blog",
+   "external": false,
+   "visibleOn": [
+    "desktop",
+    "mobile"
+   ]
+  },
+  {
+   "group": "footerCompany",
+   "order": 3,
    "labelId": "home.008",
    "href": "/partner-with-us",
    "external": false,
@@ -3875,7 +3919,7 @@
   },
   {
    "group": "footerCompany",
-   "order": 3,
+   "order": 4,
    "labelId": "home.009",
    "href": "/careers",
    "external": false,
@@ -3886,7 +3930,7 @@
   },
   {
    "group": "footerCompany",
-   "order": 4,
+   "order": 5,
    "labelId": "home.007",
    "href": "/contact",
    "external": false,
@@ -4075,7 +4119,7 @@
    "descriptionId": "",
    "ogImage": null,
    "canonical": null,
-   "robots": "noindex",
+   "robots": "index",
    "jsonLd": [
     "breadcrumb"
    ]
@@ -4091,14 +4135,6 @@
     "article",
     "faq"
    ]
-  },
-  "portal": {
-   "titleId": "",
-   "descriptionId": "",
-   "ogImage": null,
-   "canonical": null,
-   "robots": "noindex",
-   "jsonLd": []
   },
   "privacy": {
    "titleId": "",

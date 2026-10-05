@@ -212,9 +212,9 @@ test('the W155 colours render at 1440: header CTA ink, blue-safe on hover; slim-
   await expect(cta).toHaveCSS('background-color', 'rgb(22, 32, 46)'); // ink
   await cta.hover();
   await expect(cta).toHaveCSS('background-color', 'rgb(16, 115, 168)'); // blue-safe
-  // The slim bar's two pills — /verify (accent) and the portal chooser — found by href inside the
+  // The slim bar's two pills — /verify (accent) and the external CRM login — found by href inside the
   // bar's own root, never by copy.
-  for (const href of ['/temsilci-dogrulama', '/portal-girisi']) {
+  for (const href of ['/temsilci-dogrulama', 'https://portal.jobsadmire.com/auth/login']) {
     await expect(page.locator(`div[role="region"].bg-navy a[href="${href}"]`)).toHaveCSS(
       'color',
       'rgb(127, 208, 245)', // sky

@@ -128,9 +128,13 @@ export function Hero({
           ]}
         />
         <div className="mt-8 grid items-center gap-10 lg:grid-cols-[1.05fr_0.95fr] lg:gap-14">
-          <div className="min-w-0">
+          {/* the design's `.ja-up`: the copy column rises in */}
+          <div className="ja-up min-w-0">
             <p className="mt-0 mb-5 inline-flex items-center gap-2 rounded-pill border border-white/20 bg-white/[0.07] px-4 py-2 text-body-sm font-bold text-white">
-              <span aria-hidden="true" className="size-2 shrink-0 rounded-pill bg-success" />
+              <span
+                aria-hidden="true"
+                className="ja-live size-2 shrink-0 rounded-pill bg-success"
+              />
               {/* W10: the desktop/mobile variants are CSS-gated, never conditionally rendered. */}
               <span className="max-md:hidden">{t('verify.001')}</span>
               <span className="md:hidden">{t('verify.022')}</span>

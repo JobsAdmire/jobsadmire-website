@@ -278,15 +278,12 @@ describe('phone heading rule — the twelve rule-bearing routes and the shared b
   });
 });
 
-describe('the Homepage and the portal login keep the clamp on phones (W216 (2))', () => {
-  it('no heading or module under _home/** or (bare)/portal-login/** spells a ≤ 600 twin', () => {
-    const dirs = [
-      join(SITE, '_home'),
-      join(ROOT, 'src', 'app', '[locale]', '(bare)', 'portal-login'),
-    ];
+describe('the Homepage keeps the clamp on phones (W216 (2))', () => {
+  it('no heading or module under _home/** spells a ≤ 600 twin', () => {
+    const dirs = [join(SITE, '_home')];
     const modules = dirs.flatMap(modulesUnder);
     const headings = modules.flatMap((p) => headingsOf(p, readFileSync(p, 'utf8')));
-    expect(headings.length).toBeGreaterThan(10); // the Homepage's h1 and section h2s, the login's h1/h2
+    expect(headings.length).toBeGreaterThan(10); // the Homepage's h1 and section h2s
     for (const h of headings) expect(h.classList).not.toMatch(/max-\[601px\]:|max-sm:/);
     const offenders = modules
       .filter((p) => /max-\[601px\]:/.test(readFileSync(p, 'utf8')))

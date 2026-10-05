@@ -22,7 +22,7 @@ export function HeroRoleCard({ cards, labels }: { cards: RoleCard[]; labels: Her
     <section
       data-testid="careers-hero-roles"
       aria-labelledby="careers-hero-roles-title"
-      className="overflow-hidden rounded-lg border border-[#d3e6f2] bg-white text-ink shadow-[0_30px_70px_rgba(6,12,36,0.42)]"
+      className="ja-card-in overflow-hidden rounded-lg border border-[#d3e6f2] bg-white text-ink shadow-[0_30px_70px_rgba(6,12,36,0.42)]"
     >
       <div className="flex flex-wrap items-center justify-between gap-3 bg-blue-safe px-6 py-5 text-white">
         <div>
@@ -32,7 +32,10 @@ export function HeroRoleCard({ cards, labels }: { cards: RoleCard[]; labels: Her
           <p className="mt-1 text-body-sm text-white">{labels.lead}</p>
         </div>
         <span className="inline-flex items-center gap-2 rounded-pill border border-white/40 bg-black/15 px-3 py-1 text-[11.5px] font-extrabold uppercase tracking-[0.05em] text-white">
-          <span aria-hidden="true" className="h-2 w-2 rounded-pill bg-[#86efac]" />
+          <span
+            aria-hidden="true"
+            className="ja-live ja-live-soft h-2 w-2 rounded-pill bg-[#86efac]"
+          />
           {labels.live}
         </span>
       </div>

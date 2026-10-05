@@ -87,7 +87,7 @@ export default function RecordDialog({
     [labels.desk, record.desk ?? '—'],
   ];
   return (
-    <Dialog open={open} onClose={onClose} titleId={titleId}>
+    <Dialog open={open} onClose={onClose} titleId={titleId} className="ja-card-in">
       <div
         className={`-mx-6 -mt-6 mb-4 flex items-center justify-between px-6 py-3 text-white ${HEAD[record.status]}`}
       >

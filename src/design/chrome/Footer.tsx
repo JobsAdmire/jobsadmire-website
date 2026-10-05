@@ -60,8 +60,8 @@ export function Footer({ locale, bundle }: { locale: Locale; bundle: Bundle }) {
   const { settings } = bundle;
   const waHref = waLink(settings.whatsappNumber, sys('whatsapp.prefill'));
 
-  // T0b fills `footerEmployers` (incl. the portal login row, W36 — the internal /portal-login
-  // chooser since W88) and `footerCompany`; `navGroup` drops /blog below the threshold (W4).
+  // T0b fills `footerEmployers` (incl. the portal login row, W36 — an external link to the
+  // partner portal since 2026-10-05) and `footerCompany` (/blog always listed).
   const column = (items: ChromeNavItem[]) =>
     items.map((item) => <NavLink key={item.href} item={item} className={FLINK} />);
   const office = (key: OfficeKey, name: string, hours: string, map: string) => {

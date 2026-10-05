@@ -31,27 +31,34 @@ export type StaticPathname = Exclude<keyof typeof pathnames, `${string}[${string
  */
 export const NOINDEX_PATHNAMES = [
   '/thank-you',
-  '/portal-login',
   '/newsletter/confirm',
   '/newsletter/unsubscribe',
-  '/blog',
   '/blog/[slug]',
 ] as const satisfies readonly (keyof typeof pathnames)[];
+
+/** One noindex key as its robots path. A dynamic key becomes its parent's prefix WITH a trailing
+ *  slash (`/blog/[slug]` → `/blog/`, `/en/blog/`): the articles stay disallowed while the index
+ *  page `/blog` (owner 2026-10-05: always in the nav, listed and indexable) is not. */
+function robotsPath(locale: Locale, href: keyof typeof pathnames): string {
+  if (!href.includes('[')) return getPathname({ locale, href: href as StaticPathname });
+  const parent = getPathname({
+    locale,
+    href: href.slice(0, href.lastIndexOf('/')) as StaticPathname,
+  });
+  return `${parent}/`;
+}
 
 export function isNoindexPathname(href: keyof typeof pathnames): boolean {
   return (NOINDEX_PATHNAMES as readonly string[]).includes(href);
 }
 
 /** The noindex set as localized external paths for robots.txt, deduped: a dynamic key is
- *  covered by its parent's prefix (`/blog/[slug]` → `/blog`), since robots matching is by
+ *  covered by its parent's prefix (`/blog/[slug]` → `/blog/`), since robots matching is by
  *  prefix and a template can never be a real path. */
 export function noindexExternalPaths(locale: Locale): string[] {
   const out = new Set<string>();
   for (const href of NOINDEX_PATHNAMES) {
-    const key = (
-      href.includes('[') ? href.slice(0, href.lastIndexOf('/')) : href
-    ) as StaticPathname;
-    out.add(getPathname({ locale, href: key }));
+    out.add(robotsPath(locale, href));
   }
   return [...out];
 }
@@ -99,10 +106,7 @@ export function robotsDisallowPaths(
   const out = new Set<string>();
   for (const href of NOINDEX_PATHNAMES) {
     if (unbuilt.has(href)) continue;
-    const key = (
-      href.includes('[') ? href.slice(0, href.lastIndexOf('/')) : href
-    ) as StaticPathname;
-    out.add(getPathname({ locale, href: key }));
+    out.add(robotsPath(locale, href));
   }
   return [...out];
 }
@@ -110,7 +114,7 @@ export function robotsDisallowPaths(
 /**
  * The page keys the OG image route renders (one cached PNG per key × locale): every
  * `PAGE_KEYS` entry the importer writes into `bundle.pages` (`src/content/collections.ts`,
- * 22 keys) plus `site`, the generic wordmark image an unknown key falls back to, so a page
+ * 21 keys) plus `site`, the generic wordmark image an unknown key falls back to, so a page
  * whose record is not filled yet never 404s its image. `routes.test.ts` asserts the two lists
  * agree — a new page key is added to both in the same commit.
  */
@@ -130,7 +134,6 @@ export const OG_PAGE_KEYS: ReadonlySet<string> = new Set([
   'careersDetail',
   'blog',
   'blogArticle',
-  'portal',
   'privacy',
   'terms',
   'kvkk',

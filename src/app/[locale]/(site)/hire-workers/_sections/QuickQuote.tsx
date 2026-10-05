@@ -33,9 +33,10 @@ export function QuickQuote({
   return (
     <div
       data-testid="hire-quick-card"
-      className="overflow-hidden rounded-hero border border-white/10 bg-white text-ink shadow-hero-form max-md:rounded-lg"
+      className="ja-quote-card overflow-hidden rounded-hero border border-white/10 bg-white text-ink shadow-hero-form max-md:rounded-lg"
     >
-      <div className="bg-blue-safe px-7 py-5 text-white max-md:px-5 max-md:py-4">
+      {/* `.ja-quote-head`: a sheen sweeps across the header (src/design/motion/motion.css) */}
+      <div className="ja-quote-head bg-blue-safe px-7 py-5 text-white max-md:px-5 max-md:py-4">
         <h2 className="m-0 mb-1 text-card-title">{tf('hire.037')}</h2>
         <p className="m-0 text-body-sm text-white">
           <span className="max-md:hidden">{tf('hire.038')}</span>

@@ -116,7 +116,7 @@ export function LookupCard({
     <div
       id="check"
       data-testid="verify-check"
-      className="scroll-mt-24 overflow-hidden rounded-lg bg-white text-ink shadow-hero-form"
+      className="ja-card-in scroll-mt-24 overflow-hidden rounded-lg bg-white text-ink shadow-hero-form"
     >
       <div
         aria-hidden="true"
@@ -129,7 +129,7 @@ export function LookupCard({
             data-testid="verify-live-pill"
             className="mt-2 mb-0 inline-flex items-center gap-2 rounded-pill border border-success-border bg-success-surface px-3 py-1 text-body-sm font-bold text-success-text"
           >
-            <span aria-hidden="true" className="size-2 rounded-pill bg-success" />
+            <span aria-hidden="true" className="ja-live size-2 rounded-pill bg-success" />
             {livePill}
           </p>
         ) : null}
@@ -178,7 +178,7 @@ export function LookupCard({
           <div
             data-testid="verify-lookup-result"
             data-outcome={OUTCOME}
-            className="mt-5 rounded-base border border-warning-border bg-warning-surface p-5"
+            className="ja-card-in mt-5 rounded-base border border-warning-border bg-warning-surface p-5"
           >
             <p className="m-0 text-body-lg font-extrabold">{labels.resultTitle}</p>
             <p className="mt-2 mb-0 text-body-sm text-text-secondary">

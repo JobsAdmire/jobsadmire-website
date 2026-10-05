@@ -29,7 +29,7 @@ export function ProcessSection({ locale, bundle }: SectionProps) {
     when: tf(step.whenId),
   }));
   return (
-    <Section tone="light" id="process">
+    <Section tone="light" id="process" className="ja-reveal">
       <div
         data-testid="process"
         className="container-site grid items-start gap-[34px] lg:grid-cols-[0.42fr_1fr] lg:gap-14 xl:grid-cols-[0.75fr_1fr] xl:gap-[42px]"
@@ -67,6 +67,7 @@ export function ProcessSection({ locale, bundle }: SectionProps) {
           steps={steps}
           variant="plain"
           headingLevel={3}
+          motion="stagger"
         />
       </div>
     </Section>

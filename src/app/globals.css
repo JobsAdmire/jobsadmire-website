@@ -1,4 +1,6 @@
 @import 'tailwindcss';
+/* The design's motion vocabulary (reveal, entrances, loops), one file for every page. */
+@import '../design/motion/motion.css';
 /* Tailwind 4 scans every non-ignored text file for class candidates. Code blocks in
    docs/ (W213: a T14 doc token broke `next build` twice), the e2e specs, the scripts
    and the design package's HTML are never page CSS — only src/ is. */

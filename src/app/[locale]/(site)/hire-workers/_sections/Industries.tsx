@@ -27,7 +27,10 @@ export function Industries({ bundle, tf }: { bundle: Bundle; tf: (id: string) =>
             ) : null}
             <ul className="m-0 flex list-none flex-wrap gap-2 p-0">
               {row.visibleRoleIds.map((id) => (
-                <li key={id} className={`${CHIP} border-border-2 bg-pale-1 text-text-secondary`}>
+                <li
+                  key={id}
+                  className={`ja-pop ${CHIP} border-border-2 bg-pale-1 text-text-secondary`}
+                >
                   {tf(id)}
                 </li>
               ))}
@@ -70,7 +73,8 @@ export function Industries({ bundle, tf }: { bundle: Bundle; tf: (id: string) =>
           {tf('hire.075')}
         </p>
         <div className="rounded-lg border border-tint-border bg-white px-5 max-md:px-3.5">
-          <Accordion items={items} singleOpen headingLevel={3} />
+          {/* `ja-panel`: an opened row drops in and its role chips pop one by one (`.ja-pop`) */}
+          <Accordion items={items} singleOpen headingLevel={3} panelClassName="ja-panel" />
         </div>
         <p className="m-0 mt-7 text-center text-body text-text-tertiary">
           {tf('hire.138')}{' '}

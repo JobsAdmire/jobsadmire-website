@@ -19,21 +19,23 @@ beforeEach(() => {
 });
 
 describe('SlimBar', () => {
-  it('renders the slimBarRight group with localized hrefs, the verify accent and ONE portal pill (W36, W88), never /blog', () => {
+  it('renders the slimBarRight group with localized hrefs, the verify accent, /blog and ONE external portal pill (W36)', () => {
     const { container } = renderWithIntl(<SlimBar bundle={bundle} />);
     expect(screen.getByRole('link', { name: t('home.009') })).toHaveAttribute('href', '/kariyer');
     const verify = screen.getByRole('link', { name: t('home.011') });
     expect(verify).toHaveAttribute('href', '/temsilci-dogrulama');
     expect(verify.className).toContain('rounded-pill');
-    expect(container.querySelector('a[href="/blog"]')).toBeNull();
+    expect(container.querySelectorAll('a[href="/blog"]')).toHaveLength(1);
     // the portal login is the group's own row — one anchor, not a group row plus a hard-coded
-    // copy (W36) — and internal: the chooser page links out to the portal host (W88)
+    // copy (W36) — and external since 2026-10-05: the partner portal login, new tab
+    const login = `${bundle.settings.portal.host}${bundle.settings.portal.loginPath}`;
     const portal = screen.getByRole('link', { name: t('home.012') });
-    expect(portal).toHaveAttribute('href', '/portal-girisi');
-    expect(portal).not.toHaveAttribute('target');
+    expect(portal).toHaveAttribute('href', login);
+    expect(portal).toHaveAttribute('target', '_blank');
+    expect(portal).toHaveAttribute('rel', 'noopener noreferrer');
     expect(portal.className).toContain('rounded-pill');
-    expect(container.querySelectorAll('a[href="/portal-girisi"]')).toHaveLength(1);
-    expect(container.querySelector(`a[href^="${bundle.settings.portal.host}"]`)).toBeNull();
+    expect(container.querySelectorAll(`a[href="${login}"]`)).toHaveLength(1);
+    expect(container.querySelector('a[href="/portal-girisi"]')).toBeNull();
   });
 
   // W122/W155: PILL used to append `text-sky` onto LINK's `text-white/70`; Tailwind's

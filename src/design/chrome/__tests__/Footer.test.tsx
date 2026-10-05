@@ -61,7 +61,7 @@ describe('Footer', () => {
     );
   });
 
-  it('fills the two link columns from the footerEmployers/footerCompany groups, never /blog (W4)', async () => {
+  it('fills the two link columns from the footerEmployers/footerCompany groups, /blog included (owner 2026-10-05)', async () => {
     renderWithIntl(<Footer locale="tr" bundle={bundle} />);
     const footer = screen.getByRole('contentinfo');
     const rows = (group: Bundle['nav'][number]['group']) =>
@@ -81,7 +81,8 @@ describe('Footer', () => {
     // … and two once the company panel is open (grid + accordion copy of the same body)
     await userEvent.click(screen.getByRole('button', { name: t('home.190') }));
     expect(within(footer).getAllByRole('link', { name: t('home.001') })).toHaveLength(2);
-    expect(footer.querySelectorAll('a[href="/blog"]')).toHaveLength(0);
+    // /blog is always in the Company column (grid + accordion copy); no article rows
+    expect(footer.querySelectorAll('a[href="/blog"]')).toHaveLength(2);
     expect(footer.querySelectorAll('a[href^="/blog/"]')).toHaveLength(0);
   });
 
@@ -239,17 +240,18 @@ describe('Footer', () => {
     ]);
   });
 
-  it('links the portal chooser page from the employers column — the group row, once (W36, W88)', () => {
+  it('links the partner portal login from the employers column — the group row, once (W36)', () => {
     renderWithIntl(<Footer locale="tr" bundle={bundle} />);
     const footer = screen.getByRole('contentinfo');
     const links = within(footer).getAllByRole('link', { name: t('home.012') });
     expect(links).toHaveLength(1);
-    // W88: an internal row — /portal-girisi is the chooser that links out to the portal host
-    expect(links[0]).toHaveAttribute('href', '/portal-girisi');
-    expect(links[0]).not.toHaveAttribute('target');
+    // external since 2026-10-05: the portal login in a new tab (the chooser page is retired)
+    const login = `${bundle.settings.portal.host}${bundle.settings.portal.loginPath}`;
+    expect(links[0]).toHaveAttribute('href', login);
+    expect(links[0]).toHaveAttribute('target', '_blank');
+    expect(links[0]).toHaveAttribute('rel', 'noopener noreferrer');
     // grid + collapsed accordion: two anchors in the DOM, still no hard-coded third
-    expect(footer.querySelectorAll('a[href="/portal-girisi"]')).toHaveLength(2);
-    expect(footer.querySelector(`a[href^="${bundle.settings.portal.host}"]`)).toBeNull();
+    expect(footer.querySelectorAll(`a[href="${login}"]`)).toHaveLength(2);
   });
 
   // W122/W155: STORE used to append `text-white` onto FLINK's `text-white/60`; Tailwind's

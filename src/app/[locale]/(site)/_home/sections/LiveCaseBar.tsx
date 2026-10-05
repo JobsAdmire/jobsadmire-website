@@ -24,7 +24,8 @@ export function LiveCaseBar({ locale, bundle }: SectionProps) {
           <LiveDot />
           {tf('home.201')}
         </span>
-        <span className="min-w-0 text-body-sm font-bold">{first.data.title}</span>
+        {/* the design's `.ja-tick`: the case line ticks in */}
+        <span className="ja-tick min-w-0 text-body-sm font-bold">{first.data.title}</span>
         <Link
           prefetch={false}
           href="/success-stories"

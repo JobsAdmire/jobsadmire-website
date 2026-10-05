@@ -46,7 +46,7 @@ export function CallbackWidget({
   return (
     <div
       data-testid="contact-callback"
-      className="rounded-md border border-border-1 bg-white p-5 text-ink"
+      className="ja-card-in rounded-md border border-border-1 bg-white p-5 text-ink"
     >
       <button
         type="button"
@@ -74,7 +74,7 @@ export function CallbackWidget({
           }
         />
       </button>
-      <div id={panelId} hidden={!open} className="mt-4 border-t border-border-3 pt-4">
+      <div id={panelId} hidden={!open} className="ja-panel-soft mt-4 border-t border-border-3 pt-4">
         {open ? (
           <FormShell
             action={action}

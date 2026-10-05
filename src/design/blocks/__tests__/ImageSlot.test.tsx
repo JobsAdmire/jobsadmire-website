@@ -1,6 +1,7 @@
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import type { ComponentProps } from 'react';
 import { describe, expect, it, vi } from 'vitest';
+import { renderWithIntl as render } from '@/test/render';
 import { ImageSlot } from '../ImageSlot';
 
 // A pass-through spy: every test still renders the real next/image; this one records the
@@ -24,6 +25,38 @@ describe('ImageSlot (W27 / D26 markup contract)', () => {
     expect(box).toHaveAttribute('data-placeholder', 'hw-hero');
     expect(box).not.toHaveAttribute('data-lcp-slot');
     expect(box.style.aspectRatio).toBe('640 / 400');
+  });
+
+  it('shows a labelled, inert placeholder: dashed frame, icon, "image to be added" and the slot id (owner 2026-10-05)', () => {
+    const { container } = render(
+      <ImageSlot slot="hw-hero" alt="Workers on site" width={640} height={400} />,
+    );
+    const box = container.querySelector<HTMLElement>('[data-placeholder="hw-hero"]')!;
+    const frame = box.querySelector<HTMLElement>('[data-placeholder-frame]')!;
+    expect(frame).toHaveAttribute('aria-hidden', 'true');
+    expect(frame).toHaveClass('pointer-events-none', 'border-dashed');
+    expect(frame.querySelector('svg')).not.toBeNull();
+    expect(frame).toHaveTextContent('Görsel eklenecek');
+    expect(frame).toHaveTextContent('hw-hero');
+    // the box's own a11y is unchanged: one labelled img, the frame adds no accessible content
+    expect(screen.getAllByRole('img')).toHaveLength(1);
+    expect(box).toHaveAttribute('aria-label', 'Workers on site');
+  });
+
+  it('labels the placeholder in English under /en', () => {
+    const { container } = render(<ImageSlot slot="a-slot" alt="" width={4} height={3} />, {
+      locale: 'en',
+    });
+    expect(container.querySelector('[data-placeholder-frame]')).toHaveTextContent(
+      'Image to be added',
+    );
+  });
+
+  it('never renders the frame for a real image', () => {
+    const { container } = render(
+      <ImageSlot slot="real" src="/brand/ja-mark.png" alt="JobsAdmire" width={88} height={88} />,
+    );
+    expect(container.querySelector('[data-placeholder-frame]')).toBeNull();
   });
 
   it('marks the LCP slot on the placeholder too, so the launch gate can refuse it', () => {

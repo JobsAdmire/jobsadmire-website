@@ -1,5 +1,6 @@
 import type { CSSProperties } from 'react';
 import Image from 'next/image';
+import { useTranslations } from 'next-intl';
 import { liquidSizes } from '@/design/zoom';
 
 /** Cover-mode heights in px per min-width step (`xs` 461, `sm` 561, `md` 701, `lg` 901, `xl`
@@ -68,8 +69,8 @@ function coverVars(c: CoverHeights): CSSProperties {
   } as CSSProperties;
 }
 
-/** One image slot (W27): `next/image` when the asset exists, else the gradient placeholder
- *  named `data-placeholder="<slot>"` — never an unnamed one (W55) — so the launch profile's
+/** One image slot (W27): `next/image` when the asset exists, else the labelled placeholder
+ *  (dashed frame, image icon, "image to be added" and the slot id) named `data-placeholder="<slot>"` — never an unnamed one (W55) — so the launch profile's
  *  counter (`scripts/placeholder-count.ts`, D26) reports the slot by id and refuses a page
  *  whose LCP slot is still a placeholder. Both branches carry the same box — `BOX` plus
  *  `aspect-ratio: width / height` — so the placeholder reserves exactly the box the photo will
@@ -115,7 +116,49 @@ export function ImageSlot({
       data-placeholder={slot}
       data-lcp-slot={lcpSlot}
       style={style}
-      className={[box, 'bg-gradient-to-br from-tint to-sky', className].filter(Boolean).join(' ')}
-    />
+      className={[box, 'relative overflow-hidden bg-gradient-to-br from-tint to-sky', className]
+        .filter(Boolean)
+        .join(' ')}
+    >
+      <PlaceholderFrame slot={slot} />
+    </div>
+  );
+}
+
+/** Owner 2026-10-05: a missing image is never a bare gradient or a hidden section — the frame
+ *  says "an image goes here" and names the slot, so the owner can see every spot that still needs
+ *  a photo. Purely visual: `aria-hidden` (the box keeps its own `role="img"`/label), no pointer
+ *  events, colours that read on the tint→sky gradient and under the design's navy overlays. */
+function PlaceholderFrame({ slot }: { slot: string }) {
+  const sys = useTranslations('sys');
+  return (
+    <span
+      aria-hidden="true"
+      data-placeholder-frame=""
+      className="pointer-events-none absolute inset-1.5 flex min-w-0 flex-col items-center justify-center gap-1 overflow-hidden rounded-[inherit] border-2 border-dashed border-navy/40 p-1 text-center text-navy/70"
+    >
+      <svg
+        viewBox="0 0 24 24"
+        width="28"
+        height="28"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.6"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        className="shrink-0"
+        focusable="false"
+      >
+        <rect x="3" y="5" width="18" height="14" rx="2.5" />
+        <circle cx="8.5" cy="10" r="1.6" />
+        <path d="M21 16l-5-5-8 8" />
+      </svg>
+      <span className="block max-w-full truncate text-body-sm font-semibold leading-tight">
+        {sys('blocks.imagePlaceholder')}
+      </span>
+      <span className="block max-w-full truncate font-mono text-body-sm leading-tight text-navy/60">
+        {slot}
+      </span>
+    </span>
   );
 }

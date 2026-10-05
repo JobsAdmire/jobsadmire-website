@@ -12,6 +12,7 @@ export function Dialog({
   titleId,
   children,
   variant = 'center',
+  className,
 }: {
   open: boolean;
   onClose: () => void;
@@ -19,6 +20,8 @@ export function Dialog({
   children: ReactNode;
   /** `sheet` docks the panel to the bottom edge (BottomSheet); `center` is the modal. */
   variant?: 'center' | 'sheet';
+  /** Extra classes on the panel — e.g. the design's card entrance (`ja-card-in`). */
+  className?: string;
 }) {
   const ref = useRef<HTMLDivElement>(null);
   // The trap is keyed on `open` alone: an inline `onClose={() => setOpen(false)}` changes
@@ -82,11 +85,14 @@ export function Dialog({
         aria-modal="true"
         aria-labelledby={titleId}
         tabIndex={-1}
-        className={
+        className={[
           variant === 'sheet'
             ? 'max-h-[85%] w-full max-w-lg overflow-auto rounded-t-hero bg-white p-6 pb-[calc(1.5rem+env(safe-area-inset-bottom))] shadow-hero-form'
-            : 'max-h-[90%] w-full max-w-lg overflow-auto rounded-xl bg-white p-6 shadow-hero-form'
-        }
+            : 'max-h-[90%] w-full max-w-lg overflow-auto rounded-xl bg-white p-6 shadow-hero-form',
+          className,
+        ]
+          .filter(Boolean)
+          .join(' ')}
       >
         {children}
       </div>

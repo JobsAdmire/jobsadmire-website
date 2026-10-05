@@ -133,7 +133,7 @@ export function Message({
             nothing focusable — its one card hides — so the focus order is unchanged. Not sticky
             (W231): the column is taller than the CSS viewport the liquid desktop's zoom leaves,
             stuck it travelled only ≈ 160 px, and a scroll box would clip its cards' shadows. */}
-        <div className="min-w-0 max-md:order-2">
+        <div className="ja-reveal min-w-0 max-md:order-2">
           <Eyebrow>{t('contact.050')}</Eyebrow>
           <h2 className="m-0 mb-4 mt-3 text-h2 max-md:text-[21px] max-md:leading-[1.13] max-md:tracking-[-0.6px] xl:text-balance">
             {t('contact.051')}
@@ -179,7 +179,10 @@ export function Message({
             </div>
           </div>
         </div>
-        <div className="min-w-0 overflow-hidden rounded-xl border border-border-1 bg-white shadow-[0_24px_60px_rgba(22,60,90,0.12)] max-md:order-1">
+        <div
+          className="ja-reveal min-w-0 overflow-hidden rounded-xl border border-border-1 bg-white shadow-[0_24px_60px_rgba(22,60,90,0.12)] max-md:order-1"
+          style={{ transitionDelay: '0.12s' }}
+        >
           <ContactEnquiry
             {...formDoor(bundle, locale)}
             action={submitContact}

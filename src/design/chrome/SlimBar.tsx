@@ -8,10 +8,10 @@ import { navGroup } from './nav';
 import { NavLink } from './NavLink';
 
 /** The accented pills in the right-hand group. Keyed by route, not by position, so the
- *  importer's order cannot move the accent: /verify wears the success accent, the portal
- *  chooser row (W88: internal `/portal-login`) the portal pill, as any external row would. */
+ *  importer's order cannot move the accent: /verify wears the success accent, the CRM login
+ *  row (external since 2026-10-05, opens the partner portal in a new tab) the portal pill —
+ *  every external row does. */
 const ACCENT: ReadonlySet<string> = new Set(['/verify']);
-const PORTAL: ReadonlySet<string> = new Set(['/portal-login']);
 
 // 26 px, not the chrome's usual 44: these are inline utility links in a 33 px bar, which
 // WCAG 2.5.8 exempts — forcing 44 px here would half again the height of every page's top
@@ -39,7 +39,7 @@ export function SlimBar({ bundle }: { bundle: Bundle }) {
       <div className="chrome-row flex flex-wrap items-center justify-between gap-x-5 py-1.5">
         <span className="flex flex-wrap items-center gap-x-5 font-semibold">
           <span className="inline-flex items-center gap-2">
-            <span aria-hidden="true" className="h-2 w-2 rounded-pill bg-success" />
+            <span aria-hidden="true" className="ja-live h-2 w-2 rounded-pill bg-success" />
             {/* the long licence line only fits from the desktop nav up */}
             <span className="hidden lg:inline">{t('hire.019')}</span>
             <span className="lg:hidden">{t('calc.419')}</span>
@@ -63,15 +63,14 @@ export function SlimBar({ bundle }: { bundle: Bundle }) {
         </span>
         <span className="hidden flex-wrap items-center gap-x-5 font-semibold lg:flex">
           {/* T0b fills `slimBarRight`: /careers, /verify and the portal login row (W36 —
-              nothing is hard-coded here; W88 — the row is the internal /portal-login chooser,
-              which links out to the portal host); `navGroup` drops /blog below the threshold
-              (W4). The portal row wears the portal pill, /verify the accent. */}
+              nothing is hard-coded here; the row is the external portal login link, new tab);
+              /blog is always listed. The portal row wears the portal pill, /verify the accent. */}
           {navGroup(bundle, 'slimBarRight', t).map((item) => (
             <NavLink
               key={item.href}
               item={item}
               className={
-                item.external || PORTAL.has(item.href)
+                item.external
                   ? `${PILL} border border-white/20 bg-white/10`
                   : ACCENT.has(item.href)
                     ? `${PILL} border border-success/40 bg-success/15`

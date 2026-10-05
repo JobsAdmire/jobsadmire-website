@@ -109,7 +109,7 @@ export function EligibilityWizard({ locale, whatsappNumber, questions, copy }: W
       id="eligibility"
       data-testid="wp-eligibility"
       data-island={ready ? 'ready' : undefined}
-      className="w-full scroll-mt-24 overflow-hidden rounded-lg border border-tint-border bg-white text-ink shadow-[0_24px_60px_rgba(22,60,90,0.14)] max-md:rounded-md lg:scroll-mt-32 xl:scroll-mt-40"
+      className="ja-card-in w-full scroll-mt-24 overflow-hidden rounded-lg border border-tint-border bg-white text-ink shadow-[0_24px_60px_rgba(22,60,90,0.14)] max-md:rounded-md lg:scroll-mt-32 xl:scroll-mt-40"
     >
       {/* D20: `blue-safe`, not the design's #1899d5 → #1073a8 gradient (white on #1899d5 is 3.2:1). */}
       <div className="bg-blue-safe px-8 pt-6 pb-5 text-white max-md:px-4 max-md:pt-4 max-md:pb-4">
@@ -135,11 +135,11 @@ export function EligibilityWizard({ locale, whatsappNumber, questions, copy }: W
       </div>
       <div className="px-8 py-7 max-md:px-4 max-md:py-5">
         {complete && outcome ? (
-          <div data-testid="wp-eligibility-result">
+          <div data-testid="wp-eligibility-result" className="ja-panel">
             <div className="mb-3.5 flex items-center gap-2.5">
               <span
                 aria-hidden="true"
-                className={`flex h-9 w-9 flex-none items-center justify-center rounded-pill text-white ${outcome.verdict === 'eligible' ? 'bg-success-text' : 'bg-warning-text'}`}
+                className={`ja-res-icon flex h-9 w-9 flex-none items-center justify-center rounded-pill text-white ${outcome.verdict === 'eligible' ? 'bg-success-text' : 'bg-warning-text'}`}
               >
                 {outcome.verdict === 'eligible' ? <CheckIcon size={16} /> : <AlertIcon size={16} />}
               </span>
@@ -153,7 +153,10 @@ export function EligibilityWizard({ locale, whatsappNumber, questions, copy }: W
             </div>
             <ul className="mb-5 flex flex-col gap-2.5">
               {outcome.points.map((p) => (
-                <li key={p} className="flex items-start gap-2.5 text-body-sm text-text-secondary">
+                <li
+                  key={p}
+                  className="ja-res-pt flex items-start gap-2.5 text-body-sm text-text-secondary"
+                >
                   <span
                     aria-hidden="true"
                     className="mt-2 h-1.5 w-1.5 flex-none rounded-pill bg-blue-safe"
@@ -169,7 +172,7 @@ export function EligibilityWizard({ locale, whatsappNumber, questions, copy }: W
               size="lg"
               href={`https://wa.me/${whatsappNumber}`}
               external
-              className="w-full"
+              className="ja-res-cta w-full"
               onClick={openWhatsApp}
               onAuxClick={countMiddleClick}
             >
@@ -191,7 +194,7 @@ export function EligibilityWizard({ locale, whatsappNumber, questions, copy }: W
           </div>
         ) : (
           <>
-            <div role="group" aria-labelledby="wp-elig-q">
+            <div role="group" aria-labelledby="wp-elig-q" className="ja-panel">
               <p
                 id="wp-elig-q"
                 ref={promptRef}

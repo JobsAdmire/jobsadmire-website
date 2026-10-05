@@ -2,7 +2,15 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { join } from 'node:path';
 import { pathnames } from '../src/i18n/routing';
 
-export type Rule = { from: string; to: string | null; disposition: 'keep' | '301' | '410' };
+/** `to` is an internal `pathnames` key (optionally `#hash`), or an absolute `https://` URL for a
+ *  page the site no longer has (the retired portal login, owner 2026-10-05). `exact: true` emits
+ *  only `from` → `to`, with no unprefixed-English / `/tr` / dropped-locale expansion. */
+export type Rule = {
+  from: string;
+  to: string | null;
+  disposition: 'keep' | '301' | '410';
+  exact?: boolean;
+};
 export type Click = { url: string; clicks: number };
 const DROPPED = ['fr', 'de', 'ar', 'ru', 'fa', 'id', 'fil', 'tk', 'tg'];
 /**
@@ -34,6 +42,7 @@ const RESCUE: Record<string, string> = {
 };
 
 export function external(locale: 'tr' | 'en', internal: string): string {
+  if (/^https?:\/\//.test(internal)) return internal;
   const [path, hash] = internal.split('#');
   const p = pathnames[path as keyof typeof pathnames];
   const ext = typeof p === 'string' ? p : p[locale];
@@ -79,6 +88,10 @@ export function buildRedirects(rules: Rule[], clicks: Click[]) {
       continue;
     }
     const target = to ?? rule.from;
+    if (rule.exact) {
+      add(rule.from, external('en', target), 'en');
+      continue;
+    }
     // A promoted wildcard keeps matching the whole space it rescued, in next.config's own
     // source syntax (`/job-detail/:rest*`) — a bare `*` is not a path-to-regexp token.
     const from = wildcard ? `${base}:rest*` : rule.from;

@@ -46,7 +46,7 @@ export function TrackPanel({
   return (
     <div
       data-testid={`partner-panel-${track}`}
-      className={`grid gap-6 rounded-hero border p-5 md:gap-8 md:p-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-14 lg:p-12 ${look.panel}`}
+      className={`ja-panel grid gap-6 rounded-hero border p-5 md:gap-8 md:p-10 lg:grid-cols-[1.05fr_0.95fr] lg:items-start lg:gap-14 lg:p-12 ${look.panel}`}
     >
       <div className="min-w-0">
         <p

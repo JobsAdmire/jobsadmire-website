@@ -132,7 +132,8 @@ export default async function SuccessStories({ params }: { params: Promise<{ loc
               heroStats ? 'grid items-center gap-10 lg:grid-cols-[1.08fr_0.92fr]' : 'max-w-[720px]'
             }
           >
-            <div>
+            {/* the design's `.ja-up`: the copy column rises in */}
+            <div className="ja-up">
               <LiveBadge stories={stories} />
               <h1
                 data-testid="page-h1"
@@ -226,7 +227,7 @@ export default async function SuccessStories({ params }: { params: Promise<{ loc
       />
 
       {/* ---- Closing CTA (#talk) ---- */}
-      <Section tone="band" id="talk" className="scroll-mt-24">
+      <Section tone="band" id="talk" className="ja-reveal scroll-mt-24">
         <div className="container-site" data-testid="stories-closing">
           <ClosingCtaBand
             bundle={bundle}

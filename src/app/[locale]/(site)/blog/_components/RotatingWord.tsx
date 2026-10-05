@@ -64,7 +64,10 @@ export function RotatingWord({
             key={word}
             data-current={i === current ? '' : undefined}
             className={
-              i === current ? 'col-start-1 row-start-1' : 'invisible col-start-1 row-start-1'
+              // `ja-wordin`: the design's rise-in, replayed each time a word becomes current
+              i === current
+                ? 'ja-wordin col-start-1 row-start-1'
+                : 'invisible col-start-1 row-start-1'
             }
           >
             {word}

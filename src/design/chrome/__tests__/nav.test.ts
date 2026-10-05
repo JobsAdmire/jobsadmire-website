@@ -1,9 +1,6 @@
 import { describe, expect, it } from 'vitest';
-import { BLOG_NAV_THRESHOLD, blogNavVisible, navGroup } from '../nav';
-import {
-  BLOG_NAV_THRESHOLD as CANONICAL_THRESHOLD,
-  blogNavVisible as canonicalBlogNavVisible,
-} from '@/content/collections';
+import { navGroup } from '../nav';
+import { BLOG_NAV_THRESHOLD, blogNavVisible } from '@/content/collections';
 import fixture from '../../../../contract/website-bundle.v1.fixture.json';
 import { BundleSchema, type Bundle } from '../../../../contract/website-bundle.v1';
 
@@ -44,14 +41,15 @@ const item = (
   visibleOn: ['desktop', 'mobile'],
 });
 
+const PORTAL = 'https://portal.jobsadmire.com/auth/login';
 const STORE = 'https://play.google.com/store/apps/details?id=com.jobsadmire.portal';
 
 describe('nav groups (W4, W11)', () => {
   it('reads one group, sorted by order, with labels resolved through t() and external passed through', () => {
     const b = bundleWith([
       item('footerEmployers', 3, STORE, 'hire.240'),
-      // W88: the portal row is internal — the chooser page links out, the chrome never does
-      item('footerEmployers', 2, '/portal-login', 'home.012'),
+      // the portal login row is external (owner 2026-10-05)
+      item('footerEmployers', 2, PORTAL, 'home.012'),
       item('footerEmployers', 0, '/hire-workers', 'home.002'),
       item('footerEmployers', 1, '/verify', 'home.011'),
       item('desktopNav', 0, '/hire-workers', 'home.002'),
@@ -59,27 +57,27 @@ describe('nav groups (W4, W11)', () => {
     expect(navGroup(b, 'footerEmployers', t)).toEqual([
       { href: '/hire-workers', label: '<home.002>', external: false },
       { href: '/verify', label: '<home.011>', external: false },
-      { href: '/portal-login', label: '<home.012>', external: false },
+      { href: PORTAL, label: '<home.012>', external: true },
       { href: STORE, label: '<hire.240>', external: true },
     ]);
     expect(navGroup(b, 'footerCompany', t)).toEqual([]);
   });
 
-  it('hides /blog and /blog/[slug] from every group while under the Turkish-body threshold', () => {
+  it('never drops /blog from a nav group, whatever the Turkish-body count (owner 2026-10-05)', () => {
     const b = bundleWith(
       [
         item('slimBarRight', 0, '/blog', 'home.013'),
         item('slimBarRight', 1, '/careers', 'home.009'),
-        item('hamburger', 0, '/blog/[slug]'),
+        item('hamburger', 0, '/blog'),
       ],
       trBodies(BLOG_NAV_THRESHOLD - 1),
     );
-    expect(blogNavVisible(b)).toBe(false);
-    expect(navGroup(b, 'slimBarRight', t).map((i) => i.href)).toEqual(['/careers']);
-    expect(navGroup(b, 'hamburger', t)).toEqual([]);
+    expect(blogNavVisible(b)).toBe(false); // the threshold still gates the home guides / related articles
+    expect(navGroup(b, 'slimBarRight', t).map((i) => i.href)).toEqual(['/blog', '/careers']);
+    expect(navGroup(b, 'hamburger', t).map((i) => i.href)).toEqual(['/blog']);
   });
 
-  it('shows the blog once the threshold is met, counting Turkish bodies only', () => {
+  it('counts Turkish bodies only for the threshold helper', () => {
     const under = bundleWith(
       [item('footerCompany', 0, '/blog', 'home.013')],
       [...trBodies(BLOG_NAV_THRESHOLD - 1), enOnly(0), enOnly(1)],
@@ -93,10 +91,8 @@ describe('nav groups (W4, W11)', () => {
     expect(navGroup(at, 'footerCompany', t).map((i) => i.href)).toEqual(['/blog']);
   });
 
-  it('treats a missing blog collection as zero bodies and is the one W4 source (W35)', () => {
+  it('treats a missing blog collection as zero bodies and is a W4 helper', () => {
     expect(blogNavVisible(bundleWith([]))).toBe(false);
     expect(BLOG_NAV_THRESHOLD).toBe(6);
-    expect(BLOG_NAV_THRESHOLD).toBe(CANONICAL_THRESHOLD);
-    expect(blogNavVisible).toBe(canonicalBlogNavVisible);
   });
 });

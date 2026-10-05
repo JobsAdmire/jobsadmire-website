@@ -17,7 +17,8 @@ import type { SectionProps } from './types';
  * D26: `HERO_PHOTO` (licensed stock since W233) puts the page's one `data-lcp-slot` on the image;
  * without it `v4-hero` is a placeholder and the h1 carries it. W10: the badge and the CTA row are
  * hidden at ≤ 460 px by class, exactly as the design's `.ja-hero-1` / `.ja-hero-cta-primary`
- * rules do.
+ * rules do. Motion: the design's three entrance beats — `.ja-hero-1` badge, `.ja-hero-2` h1 and
+ * sub, `.ja-hero-3` CTAs and the lead card (src/design/motion/motion.css).
  */
 /** The hero's own content box (W185 A1): 20 px gutters ≤ 460 and the design's 48 px from 461 to
  *  1100; from 1101 it is the sections' own box (`--container-max`, 36 px gutters, 1240 px since
@@ -72,14 +73,14 @@ export function Hero({ locale, bundle, form }: SectionProps & { form: ReactNode 
         className={`${HERO_BOX} relative grid items-center gap-[34px] pb-8 pt-10 xs:pb-11 xs:pt-[72px] lg:grid-cols-[1.05fr_0.95fr] lg:gap-14 xl:gap-[42px] xl:pb-[33px] xl:pt-[54px]`}
       >
         <div className="min-w-0">
-          <p className="mb-[26px] inline-flex items-center gap-2.5 rounded-pill border border-white/30 px-[18px] py-2 text-[12.5px] font-bold uppercase tracking-[0.6px] max-xs:hidden xl:mb-5 xl:px-[13.5px] xl:py-1.5 xl:text-[11px]">
+          <p className="ja-hero-1 mb-[26px] inline-flex items-center gap-2.5 rounded-pill border border-white/30 px-[18px] py-2 text-[12.5px] font-bold uppercase tracking-[0.6px] max-xs:hidden xl:mb-5 xl:px-[13.5px] xl:py-1.5 xl:text-[11px]">
             <LiveDot />
             {tf('home.017')}
           </p>
           <h1
             data-testid="page-h1"
             data-lcp-slot={photoIsLcp ? undefined : 'h1'}
-            className="m-0 mb-5 max-w-[620px] text-h1 leading-none tracking-[-2.4px] text-white text-pretty max-xs:leading-[1.06] max-xs:tracking-[-1.2px] xl:mb-[15px] xl:max-w-[465px] xl:tracking-[-1.8px]"
+            className="ja-hero-2 m-0 mb-5 max-w-[620px] text-h1 leading-none tracking-[-2.4px] text-white text-pretty max-xs:leading-[1.06] max-xs:tracking-[-1.2px] xl:mb-[15px] xl:max-w-[465px] xl:tracking-[-1.8px]"
           >
             {tf('home.018')}
             <br />
@@ -87,10 +88,10 @@ export function Hero({ locale, bundle, form }: SectionProps & { form: ReactNode 
             <br />
             <span className="text-[#4fc1f0]">{tf('home.020')}</span>
           </h1>
-          <p className="m-0 mb-7 max-w-[520px] text-body-lg text-white/78 max-xs:text-body xl:mb-[21px] xl:max-w-[390px]">
+          <p className="ja-hero-2 m-0 mb-7 max-w-[520px] text-body-lg text-white/78 max-xs:text-body xl:mb-[21px] xl:max-w-[390px]">
             {tf('home.021')}
           </p>
-          <div className="flex flex-wrap items-center gap-3 max-xs:hidden">
+          <div className="ja-hero-3 flex flex-wrap items-center gap-3 max-xs:hidden">
             {/* R22: an in-page anchor stays a plain <a>, never the typed Link. */}
             <a href="#proposal" className={buttonClassName('primary', 'lg')}>
               {tf('home.022')}
@@ -101,7 +102,7 @@ export function Hero({ locale, bundle, form }: SectionProps & { form: ReactNode 
             <span className="ml-1.5 text-body-sm font-bold text-white/60">{tf('home.024')}</span>
           </div>
         </div>
-        <div className="min-w-0">{form}</div>
+        <div className="ja-hero-3 min-w-0">{form}</div>
       </div>
       <HeroStats locale={locale} bundle={bundle} />
     </section>

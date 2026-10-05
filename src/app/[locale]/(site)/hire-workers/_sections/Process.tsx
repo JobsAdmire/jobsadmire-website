@@ -73,6 +73,7 @@ export function Process({
             steps={steps}
             variant="cards"
             headingLevel={3}
+            motion="timeline"
           />
         </div>
       </div>

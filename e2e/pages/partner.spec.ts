@@ -1,4 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
+import { settleMotion } from '../helpers/motion';
 import { test, expect, type Locator, type Page } from '@playwright/test';
 
 const ROUTES = { tr: '/ortak-olun', en: '/en/partner-with-us' } as const;
@@ -222,6 +223,7 @@ test('the sourcing and institute panels pass axe (the route sweep only sees the 
   for (const key of ['sourcing', 'institute'] as const) {
     await page.locator(`label[for="track-${key}"]`).click();
     await expect(page.getByTestId(`partner-form-${key}`)).toBeVisible();
+    await settleMotion(page); // end states, never a mid-fade colour (motion.css)
     const results = await new AxeBuilder({ page })
       .include('[data-testid="partner-tracks"]')
       .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])

@@ -100,7 +100,7 @@ export default async function CareersPage({ params }: { params: Promise<{ locale
       <WaysSection t={t} />
       <HiringSteps t={t} />
       <OpenApplication t={t} settings={settings} />
-      <Section tone="pale" className="border-t border-border-3">
+      <Section tone="pale" className="ja-reveal border-t border-border-3">
         <div data-testid="careers-faq" className="container-site">
           <FaqBlock
             bundle={bundle}
@@ -109,6 +109,7 @@ export default async function CareersPage({ params }: { params: Promise<{ locale
             eyebrowId="jt.111"
             headingId="jt.112"
             openFirst
+            panelClassName="ja-panel-soft"
             items={FAQ.map(([q, a]) => ({ id: q, q: t(q), a: t(a) }))}
             footer={
               // W102: the careers mailbox from settings, never the literal jt.114.

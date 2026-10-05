@@ -34,6 +34,7 @@ export function Faq({
           locale={locale}
           id="faq-list"
           items={items}
+          panelClassName="ja-panel"
           eyebrowId="wp.064"
           headingId="wp.328"
           bodyId="wp.329"

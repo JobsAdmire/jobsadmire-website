@@ -1,7 +1,12 @@
 import { act, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-import { isBarVisible, STICKY_CTA_HEIGHT_VAR, StickyCtaBar } from '../StickyCtaBar';
+import {
+  isBarVisible,
+  STICKY_CTA_HEIGHT_VAR,
+  STICKY_CTA_SLIDE_MS,
+  StickyCtaBar,
+} from '../StickyCtaBar';
 import { renderWithIntl } from '@/test/render';
 
 type Entry = Record<string, unknown>;
@@ -99,6 +104,37 @@ describe('StickyCtaBar', () => {
     renderWithIntl(<StickyCtaBar message="m" ctas={ctas} live />);
     setScroll(800);
     expect(document.querySelector('[data-live-dot]')).not.toBeNull();
+  });
+
+  // The design's slide (`.ja-sticky` → `.ja-sticky-on`, motion.css): mounted below the viewport,
+  // up two frames later; on hide it slides back down, inert and aria-hidden, then unmounts.
+  it('slides up after mounting and slides back down before it unmounts', () => {
+    vi.useFakeTimers();
+    try {
+      renderWithIntl(<StickyCtaBar message="m" ctas={ctas} live />);
+      setScroll(800);
+      const bar = screen.getByTestId('sticky-cta');
+      expect(bar).toHaveClass('ja-sticky');
+      expect(bar).not.toHaveClass('ja-sticky-on');
+      act(() => {
+        vi.advanceTimersByTime(50);
+      });
+      expect(bar).toHaveClass('ja-sticky-on');
+      expect(bar).not.toHaveAttribute('aria-hidden');
+      expect(document.querySelector('[data-live-dot]')).toHaveClass('ja-live');
+      setScroll(100);
+      expect(screen.getByTestId('sticky-cta')).toBe(bar);
+      expect(bar).not.toHaveClass('ja-sticky-on');
+      expect(bar).toHaveAttribute('aria-hidden', 'true');
+      expect(bar).toHaveAttribute('inert');
+      expect(readVar()).toBe('0px');
+      act(() => {
+        vi.advanceTimersByTime(STICKY_CTA_SLIDE_MS);
+      });
+      expect(screen.queryByTestId('sticky-cta')).toBeNull();
+    } finally {
+      vi.useRealTimers();
+    }
   });
 
   it('carries data-testid="sticky-cta" on its wrapper', () => {

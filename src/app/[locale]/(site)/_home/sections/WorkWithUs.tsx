@@ -32,7 +32,7 @@ export function WorkWithUs({ locale, bundle }: SectionProps) {
   const tf = makeTf(bundle, locale);
   const sys = useTranslations('sys');
   return (
-    <Section tone="light" id="work-with-us" className="max-xs:hidden">
+    <Section tone="light" id="work-with-us" className="ja-reveal max-xs:hidden">
       <div data-testid="work-with-us" className="container-site">
         <div className={SECTION_HEAD}>
           <div className="min-w-0">
@@ -47,7 +47,7 @@ export function WorkWithUs({ locale, bundle }: SectionProps) {
           <article className="relative flex flex-col overflow-hidden rounded-[26px] bg-navy px-[38px] py-9 text-white xl:rounded-[19.5px] xl:px-[28.5px] xl:py-[27px]">
             <div
               aria-hidden="true"
-              className="pointer-events-none absolute -right-[130px] -top-[150px] h-[420px] w-[420px] rounded-pill bg-[radial-gradient(circle,rgba(24,153,213,0.24),transparent_65%)]"
+              className="ja-glow pointer-events-none absolute -right-[130px] -top-[150px] h-[420px] w-[420px] rounded-pill bg-[radial-gradient(circle,rgba(24,153,213,0.24),transparent_65%)]"
             />
             <div className="relative">
               <p className="m-0 mb-[18px] flex items-center gap-3">
@@ -65,7 +65,7 @@ export function WorkWithUs({ locale, bundle }: SectionProps) {
               <p className="m-0 mb-[22px] text-[15px] font-semibold leading-[1.62] text-white/70 xl:text-body">
                 {tf('home.145')}
               </p>
-              <ul className="m-0 mb-[26px] flex list-none flex-col gap-[11px] p-0">
+              <ul className="ja-stagger m-0 mb-[26px] flex list-none flex-col gap-[11px] p-0">
                 {AGENCY_POINTS.map((id) => (
                   <li
                     key={id}
@@ -111,7 +111,7 @@ export function WorkWithUs({ locale, bundle }: SectionProps) {
             <p className="m-0 mb-[22px] text-[15px] font-semibold leading-[1.62] text-text-secondary xl:text-body">
               {tf('home.153')}
             </p>
-            <ul className="m-0 mb-6 flex list-none flex-col gap-2.5 p-0">
+            <ul className="ja-stagger m-0 mb-6 flex list-none flex-col gap-2.5 p-0">
               {ROLE_ROWS.map(([roleId, metaId]) => (
                 <li key={roleId}>
                   <Link

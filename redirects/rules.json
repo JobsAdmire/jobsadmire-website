@@ -45,7 +45,28 @@
   { "from": "/register-as-company", "to": "/hire-workers", "disposition": "301" },
   { "from": "/register-your-company", "to": "/hire-workers", "disposition": "301" },
   { "from": "/candidate-apply", "to": "/contact", "disposition": "301" },
-  { "from": "/login-companies", "to": "/portal-login", "disposition": "301" },
+  {
+    "from": "/login-companies",
+    "to": "https://portal.jobsadmire.com/auth/login",
+    "disposition": "301"
+  },
+  {
+    "from": "/portal-login",
+    "to": "https://portal.jobsadmire.com/auth/login",
+    "disposition": "301"
+  },
+  {
+    "from": "/portal-girisi",
+    "to": "https://portal.jobsadmire.com/auth/login",
+    "disposition": "301",
+    "exact": true
+  },
+  {
+    "from": "/en/portal-login",
+    "to": "https://portal.jobsadmire.com/auth/login",
+    "disposition": "301",
+    "exact": true
+  },
   { "from": "/resume-generator", "to": null, "disposition": "410" },
   { "from": "/templates", "to": null, "disposition": "410" }
 ]

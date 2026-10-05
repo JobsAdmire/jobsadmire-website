@@ -35,8 +35,6 @@ const LEGAL_VALUES = {
  */
 const PRIVACY_MAILBOX_CONFIRMED = false;
 
-const PORTAL_KEYS = ['seo.portal.title', 'seo.portal.description', 'portal.intro', 'portal.signIn'];
-
 const LEGAL_KEYS = [
   'legal.updatedLabel',
   'legal.contents',
@@ -102,7 +100,7 @@ describe('T13 sys keys (W9/W23)', () => {
   for (const locale of ['tr', 'en'] as const) {
     it(`${locale}: every portal, legal and newsletter key is a non-empty, fully formatted string`, () => {
       const t = translator(locale);
-      for (const key of [...PORTAL_KEYS, ...LEGAL_KEYS, ...NEWSLETTER_KEYS]) {
+      for (const key of [...LEGAL_KEYS, ...NEWSLETTER_KEYS]) {
         const value = t(key, LEGAL_VALUES);
         expect(value.trim().length, key).toBeGreaterThan(0);
         expect(value, key).not.toMatch(/[{}]/);

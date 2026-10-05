@@ -25,7 +25,7 @@ export function GuidesSection({ locale, bundle }: SectionProps) {
   const tf = makeTf(bundle, locale);
   const [featured, ...rest] = posts;
   return (
-    <Section tone="light" id="guides">
+    <Section tone="light" id="guides" className="ja-reveal">
       <div data-testid="guides" className="container-site">
         <div className={SECTION_HEAD}>
           <div className="min-w-0">

@@ -44,7 +44,7 @@ export function Report({
   const hasRows = register.active.length > 0;
   return (
     // `id="report"`: CTA_BY_PATHNAME['/verify'] (the header's red CTA) and the sticky bar land here.
-    <Section tone="light" id="report" className="scroll-mt-24">
+    <Section tone="light" id="report" className="ja-reveal scroll-mt-24">
       <div className="container-site" data-testid="verify-report">
         {/* QA W221 V-07: the design numbers its sections — verify.053 carries its own "01 · ",
             the report eyebrow takes "02 · " in the markup (Verify l. 845). */}

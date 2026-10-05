@@ -47,7 +47,7 @@ export function Structure({
     <Section tone="pale" id="structure" className="scroll-mt-24">
       <div className="container-site" data-testid="verify-structure">
         {/* QA W221 V-06: the design's ≤ 700 `.ja-structure .ja-sec-head` is left-aligned (l. 293) */}
-        <div className="mx-auto mb-10 max-w-[660px] text-center max-md:mx-0 max-md:text-left">
+        <div className="ja-reveal mx-auto mb-10 max-w-[660px] text-center max-md:mx-0 max-md:text-left">
           <Eyebrow>{t('verify.053')}</Eyebrow>
           <h2 className="mt-3 mb-0 text-h2 leading-[1.05] tracking-[-0.04em] max-md:text-[25px] max-md:leading-[1.13] max-md:tracking-[-0.6px]">
             {t('verify.054')}
@@ -77,7 +77,7 @@ export function Structure({
         )}
         {register.former.length > 0 ? <FormerStrip former={register.former} t={t} /> : null}
 
-        <div className="mt-6 flex flex-wrap items-center justify-between gap-5 rounded-md border border-border-1 bg-gradient-to-b from-pale-1 to-tint p-6">
+        <div className="ja-reveal mt-6 flex flex-wrap items-center justify-between gap-5 rounded-md border border-border-1 bg-gradient-to-b from-pale-1 to-tint p-6">
           <p className="m-0 max-w-[760px] text-body-sm font-bold text-text-secondary">
             <strong className="font-extrabold text-ink">{t('verify.074')}</strong>{' '}
             {tf('verify.075')}
@@ -112,7 +112,7 @@ function StatsStrip({
   return (
     <div
       data-testid="verify-stats"
-      className="mb-5 flex flex-wrap items-center gap-9 rounded-base border border-border-1 bg-white px-6 py-4 shadow-card"
+      className="ja-reveal mb-5 flex flex-wrap items-center gap-9 rounded-base border border-border-1 bg-white px-6 py-4 shadow-card"
     >
       {figures.map(([value, label]) => (
         <p key={label} className="m-0 flex items-baseline gap-2.5">
@@ -144,7 +144,7 @@ function FounderStrip({
   return (
     <article
       data-testid="verify-founder"
-      className="mb-6 flex flex-wrap items-center gap-6 rounded-lg border border-border-1 bg-white p-6 shadow-card-hover"
+      className="ja-reveal mb-6 flex flex-wrap items-center gap-6 rounded-lg border border-border-1 bg-white p-6 shadow-card-hover"
     >
       {/* W129: the slot owns its box; the wrapper sizes and rounds it. */}
       <div className="w-[84px] shrink-0 overflow-hidden rounded-pill ring-4 ring-tint">
@@ -169,7 +169,7 @@ function FounderStrip({
           <p className="mt-2 mb-0 flex flex-wrap items-center gap-2.5">
             {record.validUntil === null ? (
               <span className="inline-flex items-center gap-2 rounded-pill border border-success-border bg-success-surface px-3 py-1 text-body-sm font-extrabold text-success-text">
-                <span aria-hidden="true" className="size-2 rounded-pill bg-success" />
+                <span aria-hidden="true" className="ja-live size-2 rounded-pill bg-success" />
                 {t('verify.061')}
               </span>
             ) : null}

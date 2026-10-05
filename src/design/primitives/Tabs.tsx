@@ -7,12 +7,16 @@ export function Tabs({
   tabs,
   defaultId,
   onChange,
+  panelClassName,
 }: {
   tabs: TabItem[];
   defaultId: string;
   /** Fired after every selection change (click, arrows, Home/End) with the new tab id —
    *  for a page island that mirrors the tab in its own state (route tabs, calculator modes). */
   onChange?: (id: string) => void;
+  /** Extra classes on every panel — the design's open animation (`ja-panel` / `ja-panel-soft`,
+   *  src/design/motion/motion.css), which replays each time a panel leaves `hidden`. */
+  panelClassName?: string;
 }) {
   const base = useId();
   const listRef = useRef<HTMLDivElement>(null);
@@ -75,7 +79,7 @@ export function Tabs({
           aria-labelledby={`${base}-${t.id}-tab`}
           hidden={t.id !== active}
           tabIndex={0}
-          className="pt-6"
+          className={['pt-6', panelClassName].filter(Boolean).join(' ')}
         >
           {t.panel}
         </div>

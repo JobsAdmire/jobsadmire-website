@@ -59,8 +59,10 @@ test('the sitemap lists every indexable gate route and omits the noindex ones', 
   expect(xml).not.toContain('/tesekkurler');
   expect(xml).not.toContain('/thank-you');
   expect(xml).not.toContain('[slug]');
-  // W4: /blog and /blog/[slug] are noindex and out of the sitemap below the 6-TR-bodies threshold.
-  expect(xml).not.toMatch(/<loc>[^<]*\/blog(\/|<)/);
+  // Owner 2026-10-05: the blog index is always in the nav, listed in the sitemap and indexable;
+  // the articles stay noindex (and out of the sitemap) until the 6-TR-bodies threshold.
+  expect(xml).toContain(`<loc>${ORIGIN}/blog</loc>`);
+  expect(xml).not.toMatch(/<loc>[^<]*\/blog\/[^<]/);
 });
 
 test('every sitemap URL answers 200 — no unbuilt route is advertised (W20)', async ({
@@ -100,15 +102,17 @@ test("robots.txt matches this run's face and points at the sitemap in production
   expect(body).toContain('Disallow: /tesekkurler');
   // T13 (W20/W37, W104): a built noindex route is disallowed in both locales, by itself.
   for (const path of [
-    '/portal-girisi',
-    '/en/portal-login',
     '/abone-onay',
     '/en/newsletter/confirm',
     '/abonelikten-cik',
     '/en/newsletter/unsubscribe',
   ])
     expect(body).toContain(`Disallow: ${path}`);
-  // W20/W37: an unbuilt noindex route (/blog today) is never named — nothing is asserted about it.
+  // The blog index is indexable; only its articles' prefix is disallowed.
+  expect(body).not.toMatch(/^Disallow: \/blog$/m);
+  expect(body).toContain('Disallow: /blog/');
+  // The retired portal login chooser is no longer a page, so robots never names it.
+  expect(body).not.toContain('portal-girisi');
   expect(body).not.toContain('[slug]');
 });
 

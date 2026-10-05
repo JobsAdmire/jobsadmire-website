@@ -26,7 +26,7 @@ function StepList({ t }: { t: Tf }) {
       />
       <ol className="relative flex flex-col">
         {STEPS.map((s, i) => (
-          <li key={s.title} className="grid grid-cols-[54px_1fr] gap-5 pb-6">
+          <li key={s.title} className="ja-jt-step grid grid-cols-[54px_1fr] gap-5 pb-6">
             <span
               aria-hidden="true"
               className={`flex h-[54px] w-[54px] items-center justify-center rounded-[17px] text-body-lg font-extrabold text-white ${s.badge}`}
@@ -73,7 +73,7 @@ export function HiringSteps({ t, variant = 'full' }: { t: Tf; variant?: 'full' |
     );
   }
   return (
-    <Section tone="pale" className="border-t border-border-3">
+    <Section tone="pale" className="ja-reveal border-t border-border-3">
       <div data-testid="careers-process" className="container-site">
         <div className="mb-8 max-w-[660px]">
           <Eyebrow>{t('jt.080')}</Eyebrow>
@@ -85,7 +85,10 @@ export function HiringSteps({ t, variant = 'full' }: { t: Tf; variant?: 'full' |
         <div className="rounded-lg border border-border-2 bg-white p-6 shadow-[0_10px_30px_rgba(22,60,90,0.06)] md:p-8">
           <StepList t={t} />
           <p className="mt-2 flex items-center gap-3 border-t border-border-3 pt-5 text-body-sm font-bold text-text-secondary">
-            <span aria-hidden="true" className="h-2 w-2 flex-none rounded-pill bg-success" />
+            <span
+              aria-hidden="true"
+              className="ja-live ja-live-soft h-2 w-2 flex-none rounded-pill bg-success"
+            />
             {t('jt.084')}
           </p>
         </div>

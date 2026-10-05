@@ -31,7 +31,7 @@ export function FaqSection({ locale, bundle }: SectionProps) {
   const sys = useTranslations('sys');
   const items: FaqItem[] = PAIRS.map(([q, a]) => ({ id: q, q: tf(q), a: tf(a) }));
   return (
-    <Section tone="light">
+    <Section tone="light" className="ja-reveal">
       <div className="container-site">
         <div data-testid="faq" className="mx-auto max-w-[880px] xl:max-w-[660px]">
           <Eyebrow>{tf('home.180')}</Eyebrow>

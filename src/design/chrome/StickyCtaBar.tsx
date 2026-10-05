@@ -1,5 +1,5 @@
 'use client';
-import { useCallback, useEffect, useRef, useSyncExternalStore } from 'react';
+import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from 'react';
 import { ContactCta } from '@/design/blocks/ContactCta';
 import type { ButtonVariant } from '@/design/primitives/Button';
 import type { Href } from '@/i18n/navigation';
@@ -43,6 +43,10 @@ function subscribeToViewport(onChange: () => void) {
 }
 const onServer = () => false;
 
+/** The design's slide (`.ja-sticky`, `transform .35s`, src/design/motion/motion.css): how long
+ *  the bar stays mounted while it slides back below the viewport. */
+export const STICKY_CTA_SLIDE_MS = 350;
+
 /** Mounted by pages, never by the layout: it repeats that page's own offer once the visitor
  *  has scrolled past it. Below `lg` the mobile bottom bar already occupies this space. */
 export function StickyCtaBar({
@@ -78,6 +82,33 @@ export function StickyCtaBar({
   );
   const ref = useRef<HTMLDivElement>(null);
 
+  // The design's slide: the bar mounts below the viewport (`.ja-sticky`) and slides up a frame
+  // later (`.ja-sticky-on`); on hide it slides back down — inert and hidden from assistive tech
+  // at once — and unmounts once it is out. `on` and `leaving` are adjusted during render when
+  // `visible` flips (React's "state from the previous render" pattern), the frame and the
+  // timer below only ever set them from callbacks.
+  const [shownFor, setShownFor] = useState(visible);
+  const [on, setOn] = useState(false);
+  const [leaving, setLeaving] = useState(false);
+  if (shownFor !== visible) {
+    setShownFor(visible);
+    setOn(false);
+    setLeaving(!visible);
+  }
+  useEffect(() => {
+    if (visible) {
+      // Two frames: the first paints the bar below the viewport, so the second has a start
+      // for the transition.
+      let frame = requestAnimationFrame(() => {
+        frame = requestAnimationFrame(() => setOn(true));
+      });
+      return () => cancelAnimationFrame(frame);
+    }
+    if (!leaving) return;
+    const timer = setTimeout(() => setLeaving(false), STICKY_CTA_SLIDE_MS);
+    return () => clearTimeout(timer);
+  }, [visible, leaving]);
+
   useEffect(() => {
     const root = document.documentElement;
     const node = ref.current;
@@ -96,12 +127,14 @@ export function StickyCtaBar({
     };
   }, [visible]);
 
-  if (!visible) return null;
+  if (!visible && !leaving) return null;
   return (
     <div
       ref={ref}
       data-testid="sticky-cta"
-      className="fixed inset-x-0 bottom-0 z-50 hidden border-t border-white/15 bg-navy/95 backdrop-blur lg:block"
+      inert={!visible}
+      aria-hidden={visible ? undefined : true}
+      className={`ja-sticky fixed inset-x-0 bottom-0 z-50 hidden border-t border-white/15 bg-navy/95 backdrop-blur lg:block${visible && on ? ' ja-sticky-on' : ''}`}
     >
       <div className="container-site flex flex-wrap items-center justify-between gap-4 py-3">
         <p className="m-0 flex items-center gap-2 font-bold text-white">
@@ -109,7 +142,7 @@ export function StickyCtaBar({
             <span
               data-live-dot=""
               aria-hidden="true"
-              className="inline-block h-2 w-2 rounded-pill bg-success"
+              className="ja-live inline-block h-2 w-2 rounded-pill bg-success"
             />
           )}
           {message}

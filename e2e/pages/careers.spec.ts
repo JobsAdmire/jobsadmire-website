@@ -1,4 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
+import { settleMotion } from '../helpers/motion';
 import { expect, test, type Page } from '@playwright/test';
 import en from '../../src/messages/en.json';
 import tr from '../../src/messages/tr.json';
@@ -213,6 +214,7 @@ test.describe('careers — the fixture door (E2E_CAREERS_MOCK=1)', () => {
       `${ORIGIN}/og/tr/careers.png`,
     );
     await expectNoLeaks(page);
+    await settleMotion(page); // end states, never a mid-fade colour (motion.css)
     const axe = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
       .analyze();

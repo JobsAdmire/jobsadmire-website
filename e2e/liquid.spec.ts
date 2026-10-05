@@ -42,20 +42,6 @@ test.describe('the liquid desktop (W231)', () => {
     }
   });
 
-  test('a viewport-height shell stays one screen tall under the zoom (portal entry)', async ({
-    page,
-  }) => {
-    // 2880 × 1800 is the 1440 × 900 page at zoom 2, where the shell's content fits one screen
-    await page.setViewportSize({ width: 2880, height: 1800 });
-    await page.goto('/portal-girisi');
-    const { shell, viewport } = await page.evaluate(() => ({
-      shell: document.querySelector('[data-testid="portal-shell"]')!.getBoundingClientRect().height,
-      viewport: innerHeight,
-    }));
-    // one screen tall — before W231's fix `min-h-screen` made it the zoom × one screen
-    expect(Math.abs(shell - viewport)).toBeLessThanOrEqual(2);
-  });
-
   test('a resize that changes the zoom keeps the reader in place', async ({ page }) => {
     await page.setViewportSize({ width: 2560, height: 1440 });
     await page.goto('/isci-talebi');

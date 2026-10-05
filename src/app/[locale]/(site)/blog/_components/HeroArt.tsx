@@ -9,7 +9,8 @@ import type { Bundle } from '../../../../../../contract/website-bundle.v1';
  * from the featured row (category label, title, author · read time — the design's blog.027/028
  * hard-type "— 2026" and "8 min read", D17/B-3) and the EN·TR pill as authored (blog.032). The
  * "Most read" card (blog.030/031) has no data source in Phase A (B-2). Decorative: the same
- * article is the featured card below, so it is `aria-hidden`; static — no float animation.
+ * article is the featured card below, so it is `aria-hidden`. Both float as the design's do
+ * (`.ja-float-1` / `.ja-float-3`, src/design/motion/motion.css; still under reduced motion).
  * Renders nothing without a featured article (the TR index in Phase A).
  */
 export function HeroArt({
@@ -30,7 +31,7 @@ export function HeroArt({
       data-testid="blog-hero-art"
       className="relative min-h-[240px] max-md:hidden"
     >
-      <div className="absolute top-4 left-[4%] w-[250px] rounded-base border border-white/10 bg-white px-4.5 py-4 shadow-hero-form">
+      <div className="ja-float-1 absolute top-4 left-[4%] w-[250px] rounded-base border border-white/10 bg-white px-4.5 py-4 shadow-hero-form">
         <span className="inline-block rounded-pill bg-tint px-2.5 py-0.5 text-[11px] font-extrabold text-blue-safe">
           {t(featured.categoryLabelId)}
         </span>
@@ -40,7 +41,7 @@ export function HeroArt({
           {featured.author} · {formatReadMinutes(featured.readMinutes, locale)}
         </p>
       </div>
-      <p className="absolute bottom-1.5 left-[12%] m-0 inline-flex items-center gap-2 rounded-pill border border-white/25 bg-white/10 px-4 py-2 text-[12.5px] font-extrabold text-white">
+      <p className="ja-float-3 absolute bottom-1.5 left-[12%] m-0 inline-flex items-center gap-2 rounded-pill border border-white/25 bg-white/10 px-4 py-2 text-[12.5px] font-extrabold text-white">
         <span className="text-sky">EN</span>
         <span className="text-white/40">·</span>
         <span className="text-sky">TR</span>

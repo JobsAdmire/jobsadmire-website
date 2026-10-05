@@ -8,7 +8,6 @@ import {
   OG_PAGE_KEYS,
   pageOgImageUrl,
   robotsDisallowPaths,
-  UNBUILT_PATHNAMES,
 } from './routes';
 
 describe('seo routes', () => {
@@ -32,23 +31,22 @@ describe('seo routes', () => {
       'https://www.jobsadmire.com/blog/isgucu',
     );
   });
-  it('keeps the blog index and articles out of the index until the Turkish threshold (W4)', () => {
-    expect(NOINDEX_PATHNAMES).toContain('/blog');
+  it('indexes the blog index (owner 2026-10-05) and keeps articles out of the index', () => {
+    expect(NOINDEX_PATHNAMES).not.toContain('/blog');
     expect(NOINDEX_PATHNAMES).toContain('/blog/[slug]');
-    // robots form: localized, deduped — the dynamic key adds nothing beyond its parent prefix
+    // robots form: localized, deduped — the dynamic key becomes its parent prefix with a
+    // trailing slash, so /blog itself is not disallowed
     expect(noindexExternalPaths('tr')).toEqual([
       '/tesekkurler',
-      '/portal-girisi',
       '/abone-onay',
       '/abonelikten-cik',
-      '/blog',
+      '/blog/',
     ]);
     expect(noindexExternalPaths('en')).toEqual([
       '/en/thank-you',
-      '/en/portal-login',
       '/en/newsletter/confirm',
       '/en/newsletter/unsubscribe',
-      '/en/blog',
+      '/en/blog/',
     ]);
   });
 });
@@ -58,18 +56,17 @@ describe('robotsDisallowPaths (W20/W37)', () => {
     // Guarded on the set itself so these cannot rot as page tasks delete their keys.
     const d = robotsDisallowPaths('tr');
     expect(d).toContain('/tesekkurler');
-    if (UNBUILT_PATHNAMES.has('/portal-login')) expect(d).not.toContain('/portal-girisi');
-    if (UNBUILT_PATHNAMES.has('/blog')) expect(d).not.toContain('/blog');
     for (const path of d) expect(noindexExternalPaths('tr')).toContain(path);
   });
-  it('names the blog and the portal door once their pages exist (UNBUILT empty)', () => {
+  it('names the blog articles once their page exists (UNBUILT empty)', () => {
     expect(robotsDisallowPaths('tr', new Set())).toEqual(noindexExternalPaths('tr'));
     expect(robotsDisallowPaths('en', new Set())).toEqual(noindexExternalPaths('en'));
-    expect(robotsDisallowPaths('en', new Set())).toContain('/en/blog');
+    expect(robotsDisallowPaths('en', new Set())).toContain('/en/blog/');
   });
   it('subtracts per key, before the parent-prefix fold', () => {
-    // /blog index built, articles not yet: the /blog prefix rule stays (it is a real path).
-    expect(robotsDisallowPaths('tr', new Set(['/blog/[slug]']))).toContain('/blog');
+    // the articles' prefix rule is dropped only when the key itself is unbuilt
+    expect(robotsDisallowPaths('tr', new Set(['/blog/[slug]']))).not.toContain('/blog/');
+    expect(robotsDisallowPaths('tr', new Set())).toContain('/blog/');
     // Everything unbuilt: nothing to name.
     expect(robotsDisallowPaths('tr', new Set(NOINDEX_PATHNAMES))).toEqual([]);
   });

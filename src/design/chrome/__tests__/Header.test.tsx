@@ -25,14 +25,15 @@ vi.mock('next/navigation', async (importOriginal) => ({
 const bundle: Bundle = BundleSchema.parse(trBundle);
 const t = (id: string) => bundle.strings[id] ?? '';
 
-// what the hamburger must list: its own group (T0b: desktopNav + the portal login), minus the
-// blog while under the threshold (W4)
-const hamburger = bundle.nav.filter((n) => n.group === 'hamburger' && !n.href.startsWith('/blog'));
+// what the hamburger must list: its own group (T0b: desktopNav + the portal login) — /blog
+// included, always (owner 2026-10-05)
+const hamburger = bundle.nav.filter((n) => n.group === 'hamburger');
 
-/** No group carries an external row since W88 (the portal login is the internal
- *  /portal-login chooser), but the desktop row and the panel still have to honour one — an
- *  OPS bundle may send it. The store link stands in, added to both lists. */
+/** The desktop row and the panel have to honour an external row — the portal login is one since
+ *  2026-10-05 (checked in the portal test below); the store link stands in here, added to both
+ *  lists. */
 const STORE = bundle.settings.storeLinks.android!;
+const PORTAL_LOGIN = `${bundle.settings.portal.host}${bundle.settings.portal.loginPath}`;
 const externalRow = (group: 'desktopNav' | 'hamburger'): Bundle['nav'][number] => ({
   group,
   order: 99,
@@ -51,7 +52,7 @@ beforeEach(() => {
 });
 
 describe('Header', () => {
-  it('renders the desktop nav from the desktopNav group with localized hrefs, never /blog', () => {
+  it('renders the desktop nav from the desktopNav group with localized hrefs, /blog promoted out of the row (slim bar + panel carry it)', () => {
     renderWithIntl(<Header locale="tr" bundle={bundle} />);
     const row = screen.getByRole('navigation', { name: 'Ana menü' });
     expect(within(row).getAllByRole('link').length).toBeGreaterThanOrEqual(7);
@@ -89,7 +90,7 @@ describe('Header', () => {
       'href',
       '/temsilci-dogrulama',
     );
-    expect(menu.querySelector('a[href="/blog"]')).toBeNull();
+    expect(menu.querySelector('a[href="/blog"]')).not.toBeNull();
 
     await userEvent.click(opened);
     expect(screen.getByRole('button', { name: t('hire.239') })).toHaveAttribute(
@@ -113,11 +114,12 @@ describe('Header', () => {
     expect(inPanel).toHaveAttribute('href', STORE);
     expect(inPanel).toHaveAttribute('target', '_blank');
     expect(inPanel).toHaveAttribute('rel', 'noopener noreferrer');
-    // T0b's own portal row — exactly one in the panel (W36), internal since W88: the chooser
-    // page links out to the portal host, the chrome never does
+    // T0b's own portal row — exactly one in the panel (W36), external since 2026-10-05: the
+    // partner portal's login in a new tab (the /portal-login chooser page is retired)
     const portal = menu.getByRole('link', { name: t('home.012') });
-    expect(portal).toHaveAttribute('href', '/portal-girisi');
-    expect(portal).not.toHaveAttribute('target');
+    expect(portal).toHaveAttribute('href', PORTAL_LOGIN);
+    expect(portal).toHaveAttribute('target', '_blank');
+    expect(portal).toHaveAttribute('rel', 'noopener noreferrer');
   });
 
   it('renders the default split primary CTA and the partner secondary CTA off the table', () => {

@@ -75,7 +75,7 @@ export function Hero({ ctx, children }: { ctx: CalcCtx; children: ReactNode }) {
             <p data-testid="calc-badge" className={BADGE}>
               <span
                 aria-hidden="true"
-                className="inline-block h-[9px] w-[9px] rounded-pill bg-success"
+                className="ja-live inline-block h-[9px] w-[9px] rounded-pill bg-success"
               />
               {badge}
             </p>
@@ -117,7 +117,7 @@ export function CalculatorCard({ ctx }: { ctx: CalcCtx }) {
   return (
     <div
       id="calculator"
-      className="print-isolate mx-auto max-w-[1080px] scroll-mt-[90px] lg:scroll-mt-[125px] min-[1200px]:scroll-mt-[90px] overflow-hidden rounded-xl border border-tint-border bg-white shadow-[0_24px_60px_rgba(22,60,90,0.14)] max-md:rounded-base max-md:shadow-[0_16px_38px_rgba(3,10,26,0.4)] xl:max-w-[1040px]"
+      className="ja-card-in print-isolate mx-auto max-w-[1080px] scroll-mt-[90px] lg:scroll-mt-[125px] min-[1200px]:scroll-mt-[90px] overflow-hidden rounded-xl border border-tint-border bg-white shadow-[0_24px_60px_rgba(22,60,90,0.14)] max-md:rounded-base max-md:shadow-[0_16px_38px_rgba(3,10,26,0.4)] xl:max-w-[1040px]"
     >
       {defaultView ? (
         <CalculatorLoader

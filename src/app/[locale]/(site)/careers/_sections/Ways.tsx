@@ -42,7 +42,7 @@ const BADGE = {
  *  `jt.079` is the package's own link fragment, underlined inside the sentence. */
 export function WaysSection({ t }: { t: Tf }) {
   return (
-    <Section tone="light" className="border-t border-border-3">
+    <Section tone="light" className="ja-reveal border-t border-border-3">
       <div data-testid="careers-ways" className="container-site">
         <div className="mb-8 max-w-[680px]">
           <Eyebrow>{t('jt.057')}</Eyebrow>
@@ -51,7 +51,8 @@ export function WaysSection({ t }: { t: Tf }) {
           </h2>
           <p className="text-body text-text-secondary">{t('jt.059')}</p>
         </div>
-        <ul className="grid gap-4 md:grid-cols-3">
+        {/* `.ja-jt-ways`: ≤ 900 px the three cards rise in one after the other */}
+        <ul className="ja-jt-ways grid gap-4 md:grid-cols-3">
           {WAYS.map((w) => {
             const tone = w.dark ? 'dark' : 'light';
             return (

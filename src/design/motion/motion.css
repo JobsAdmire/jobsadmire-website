@@ -1,0 +1,838 @@
+/* The design package's motion vocabulary (design/*.dc.html), written once for every page.
+   Every class keeps the design's own name, timing and easing; a page opts in by putting the class
+   on the element the design animates. Only `opacity` and `transform` ever move (CLS stays 0), and
+   nothing ever moves under `prefers-reduced-motion: reduce` (the block at the end, D20).
+
+   Scroll reveal: `src/design/motion/RevealObserver.tsx` adds `.ja-reveal-on` to every
+   `.ja-reveal` and `.ja-reveal-group` once it enters the viewport (the design's own
+   IntersectionObserver: rootMargin 0 0 -12% 0, threshold .06, everything after 6 s). Content is
+   never hidden for good: without scripting it never hides (`@media (scripting: none)`), with
+   reduced motion it never hides, in print it never hides, and if the island never runs the
+   `jaRevealSafety` backstop shows it 6.5 s after it rendered.
+
+   No animation here keeps a fill once it has played (see the backstop below): a filling
+   `transform` animation would turn its element into the containing block of `position: fixed`
+   descendants such as the Dialog overlay. */
+
+:root {
+  /* The design's two easings: the long ease-out of every entrance, and the springy overshoot of
+     chips, number badges and the work-permit result icon. */
+  --ja-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --ja-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ---------- Scroll reveal (Home, Contact, Join Our Team, Success Stories, Verify) ---------- */
+
+.ja-reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.75s var(--ja-ease),
+    transform 0.75s var(--ja-ease);
+}
+/* `none`, not the design's translateY(0): a transform that stays on would make the section the
+   containing block of every `position: fixed` descendant (sheets, dialogs) for good. */
+.ja-reveal-on {
+  opacity: 1;
+  transform: none;
+}
+/* The backstop: whatever is still waiting 6.5 s after it rendered is shown, even if the observer
+   never runs — at once, like the observer's own 6 s fallback (`.ja-reveal-instant`, below): what
+   a fallback reaches is off-screen, and a fade would only open a window of part-transparent text
+   for an audit's contrast check to land in. It only ever raises opacity, and only while
+   unrevealed (`:not(.ja-reveal-on)`): an animation in effect acts as `will-change` on what it
+   animates, so a fill left on a revealed section would make it a stacking context for good and
+   trap the z-index of its dialogs. For the same reason every entrance below fills `backwards`,
+   never `both`: once it has played the element is back on its own styles — a `transform` fill
+   would make it the containing block of every `position: fixed` descendant (dialogs, sheets). */
+@keyframes jaRevealSafety {
+  to {
+    opacity: 1;
+  }
+}
+.ja-reveal:not(.ja-reveal-on),
+.ja-reveal:not(.ja-reveal-on) .ja-stagger > *,
+.ja-reveal-group:not(.ja-reveal-on) .ja-stagger > *,
+.ja-reveal-group:not(.ja-reveal-on) .ja-step,
+.ja-reveal-group:not(.ja-reveal-on) .ja-tl-row,
+.ja-reveal-group:not(.ja-reveal-on) .ja-net-row {
+  animation: jaRevealSafety 0s 6.5s forwards;
+}
+@media (max-width: 900px) {
+  .ja-reveal:not(.ja-reveal-on) .ja-jt-ways > *,
+  .ja-reveal:not(.ja-reveal-on) .ja-jt-step {
+    animation: jaRevealSafety 0s 6.5s forwards;
+  }
+}
+
+/* Children of a `.ja-stagger` list tick in one after the other once their section is revealed.
+   Hidden only inside a reveal container, so a stray `.ja-stagger` can never hide its items. */
+.ja-reveal .ja-stagger > *,
+.ja-reveal-group .ja-stagger > * {
+  opacity: 0;
+}
+.ja-reveal-on .ja-stagger > * {
+  opacity: 1;
+  animation: jaTickIn 0.5s var(--ja-ease) backwards;
+}
+.ja-reveal-on .ja-stagger > :nth-child(1) {
+  animation-delay: 0.18s;
+}
+.ja-reveal-on .ja-stagger > :nth-child(2) {
+  animation-delay: 0.3s;
+}
+.ja-reveal-on .ja-stagger > :nth-child(3) {
+  animation-delay: 0.42s;
+}
+.ja-reveal-on .ja-stagger > :nth-child(4) {
+  animation-delay: 0.54s;
+}
+.ja-reveal-on .ja-stagger > :nth-child(5) {
+  animation-delay: 0.66s;
+}
+@keyframes jaTickIn {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* A connector line that grows down from its top once its section is revealed (Home process). */
+.ja-reveal .ja-grow {
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 1.1s var(--ja-ease) 0.35s;
+}
+.ja-reveal-on .ja-grow {
+  transform: none;
+}
+
+/* `.ja-reveal-group`: a trigger only — observed like `.ja-reveal`, it never moves itself; its
+   descendants below animate (the design's `#ja-steps` / `.ja-tl-on` / `#ja-net-stats` observers). */
+
+/* The process cards and the journey line (Available Workers, Partner With Us, Work Permit). */
+.ja-reveal-group .ja-step {
+  opacity: 0;
+  transform: translateY(20px);
+  transition:
+    opacity 0.55s var(--ja-ease),
+    transform 0.55s var(--ja-ease),
+    box-shadow 0.25s ease;
+}
+.ja-reveal-on .ja-step {
+  opacity: 1;
+  transform: none;
+}
+/* A revealed card lifts under the pointer (the design drops the lift at ≤ 700 px). */
+@media (min-width: 701px) {
+  .ja-reveal-on .ja-step:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 40px rgba(22, 60, 90, 0.12);
+  }
+}
+.ja-reveal-group .ja-journey-line {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 1.1s var(--ja-ease);
+}
+.ja-reveal-on .ja-journey-line {
+  transform: none;
+}
+
+/* The process timeline (Hire Workers): the spine draws down, the rows rise one by one. */
+.ja-reveal-group .ja-tl-line {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.4s var(--ja-ease) 0.1s;
+}
+.ja-reveal-on .ja-tl-line {
+  transform: none;
+}
+.ja-reveal-group .ja-tl-row {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 0.55s ease,
+    transform 0.55s var(--ja-ease);
+}
+.ja-reveal-on .ja-tl-row {
+  opacity: 1;
+  transform: none;
+}
+.ja-reveal-on .ja-tl-row:nth-child(2) {
+  transition-delay: 0.12s;
+}
+.ja-reveal-on .ja-tl-row:nth-child(3) {
+  transition-delay: 0.24s;
+}
+.ja-reveal-on .ja-tl-row:nth-child(4) {
+  transition-delay: 0.36s;
+}
+.ja-reveal-on .ja-tl-row:nth-child(5) {
+  transition-delay: 0.48s;
+}
+.ja-reveal-on .ja-tl-row:nth-child(6) {
+  transition-delay: 0.6s;
+}
+
+/* `ProcessSteps` draws its rail as its list's ::before; the rail draws exactly as the design's
+   own line does on that page: `.ja-grow` (Home), `.ja-tl-line` (Hire Workers) and
+   `.ja-journey-line` (Available Workers, Partner With Us — down the site's vertical rail). */
+.ja-reveal .ja-grow-rail::before {
+  transform: scaleY(0);
+  transform-origin: top center;
+  transition: transform 1.1s var(--ja-ease) 0.35s;
+}
+.ja-reveal-group.ja-tl-rail::before {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.4s var(--ja-ease) 0.1s;
+}
+.ja-reveal-group.ja-journey-rail::before {
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 1.1s var(--ja-ease);
+}
+.ja-reveal-on .ja-grow-rail::before,
+.ja-reveal-on.ja-tl-rail::before,
+.ja-reveal-on.ja-journey-rail::before {
+  transform: none;
+}
+
+/* The network card's rows slide in from the right, 140 ms apart (Partner With Us hero). */
+.ja-reveal-group .ja-net-row {
+  opacity: 0;
+}
+.ja-reveal-on .ja-net-row {
+  opacity: 1;
+  animation: jaRowIn 0.55s var(--ja-ease) backwards;
+}
+.ja-reveal-on .ja-net-row:nth-child(2) {
+  animation-delay: 0.14s;
+}
+.ja-reveal-on .ja-net-row:nth-child(3) {
+  animation-delay: 0.28s;
+}
+.ja-reveal-on .ja-net-row:nth-child(4) {
+  animation-delay: 0.42s;
+}
+.ja-reveal-on .ja-net-row:nth-child(5) {
+  animation-delay: 0.56s;
+}
+@keyframes jaRowIn {
+  from {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* Join Our Team on phones and tablets (≤ 900 px): the three ways and the hiring steps rise in one
+   after the other once their section is revealed. */
+@media (max-width: 900px) {
+  .ja-reveal .ja-jt-ways > *,
+  .ja-reveal .ja-jt-step {
+    opacity: 0;
+  }
+  .ja-reveal-on .ja-jt-ways > * {
+    opacity: 1;
+    animation: jaHeroIn 0.55s var(--ja-ease) backwards;
+  }
+  .ja-reveal-on .ja-jt-ways > :nth-child(1) {
+    animation-delay: 0.05s;
+  }
+  .ja-reveal-on .ja-jt-ways > :nth-child(2) {
+    animation-delay: 0.2s;
+  }
+  .ja-reveal-on .ja-jt-ways > :nth-child(3) {
+    animation-delay: 0.35s;
+  }
+  .ja-reveal-on .ja-jt-step {
+    opacity: 1;
+    animation: jaHeroIn 0.5s var(--ja-ease) backwards;
+  }
+  .ja-reveal-on .ja-jt-step:nth-child(2) {
+    animation-delay: 0.04s;
+  }
+  .ja-reveal-on .ja-jt-step:nth-child(3) {
+    animation-delay: 0.1s;
+  }
+  .ja-reveal-on .ja-jt-step:nth-child(4) {
+    animation-delay: 0.16s;
+  }
+  .ja-reveal-on .ja-jt-step:nth-child(5) {
+    animation-delay: 0.22s;
+  }
+  .ja-reveal-on .ja-jt-step:nth-child(6) {
+    animation-delay: 0.28s;
+  }
+  .ja-reveal-on .ja-jt-step:nth-child(7) {
+    animation-delay: 0.34s;
+  }
+  .ja-reveal-on .ja-jt-step:nth-child(8) {
+    animation-delay: 0.4s;
+  }
+}
+
+/* The paper plane flies onto the office card once it is revealed (Contact). */
+.ja-reveal-on .ja-plane svg {
+  animation: jaFly 1.15s var(--ja-ease) 0.4s backwards;
+}
+@keyframes jaFly {
+  0% {
+    transform: translateY(-54px) scale(0.8);
+    opacity: 0;
+  }
+  35% {
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* ---------- Entrances (on first render, no observer) ---------- */
+
+/* The cinematic hero's three beats (Home). */
+.ja-hero-1 {
+  animation: jaHeroIn 0.8s var(--ja-ease) 0.1s backwards;
+}
+.ja-hero-2 {
+  animation: jaHeroIn 0.8s var(--ja-ease) 0.25s backwards;
+}
+.ja-hero-3 {
+  animation: jaHeroIn 0.8s var(--ja-ease) 0.4s backwards;
+}
+@keyframes jaHeroIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* A hero's copy column (Contact, Join Our Team, Success Stories, Verify). */
+.ja-up {
+  animation: jaFadeUp 0.5s var(--ja-ease) backwards;
+}
+@keyframes jaFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* A hero's card (calculator, eligibility check, lookup, forms, contact cards). */
+.ja-card-in {
+  animation: jaCardIn 0.6s var(--ja-ease) backwards;
+}
+/* The Hire Workers quote card: the same entrance, a beat longer. */
+.ja-quote-card {
+  animation: jaCardIn 0.65s var(--ja-ease) backwards;
+}
+@keyframes jaCardIn {
+  from {
+    opacity: 0;
+    transform: translateY(26px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* A panel that opens (accordion bodies, tab panels, track details): it drops in each time it is
+   shown, because an element leaving `display: none` restarts its animation. `-soft` is the shorter
+   drop of Contact, the calculator, Join Our Team, Success Stories and Verify. */
+.ja-panel {
+  animation: jaPanelIn 0.42s var(--ja-ease);
+}
+.ja-panel-soft {
+  animation: jaPanelInSoft 0.36s var(--ja-ease);
+}
+@keyframes jaPanelIn {
+  from {
+    opacity: 0;
+    transform: translateY(-14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes jaPanelInSoft {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* A line that changes (the home live-case bar) ticks in. */
+.ja-tick {
+  animation: jaTick 0.45s var(--ja-ease) backwards;
+}
+@keyframes jaTick {
+  from {
+    opacity: 0;
+    transform: translateY(9px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* The sector chips of an opened industry row pop in one after the other (Hire Workers). */
+.ja-panel .ja-pop {
+  animation: jaChipIn 0.35s var(--ja-spring) backwards;
+}
+.ja-panel .ja-pop:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.ja-panel .ja-pop:nth-child(2) {
+  animation-delay: 0.17s;
+}
+.ja-panel .ja-pop:nth-child(3) {
+  animation-delay: 0.24s;
+}
+.ja-panel .ja-pop:nth-child(4) {
+  animation-delay: 0.31s;
+}
+@keyframes jaChipIn {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* A chip added to a basket pops in (Available Workers). */
+.ja-basket-chip {
+  animation: jaChipPop 0.38s var(--ja-ease) backwards;
+}
+@keyframes jaChipPop {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  65% {
+    transform: scale(1.12);
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+
+/* The work-permit eligibility result: the verdict icon pops, the points rise one by one, the
+   call to action last. */
+.ja-res-icon {
+  animation: jaPop 0.45s var(--ja-ease) backwards;
+}
+.ja-res-pt {
+  animation: jaResIn 0.45s var(--ja-ease) backwards;
+}
+.ja-res-pt:nth-child(1) {
+  animation-delay: 0.15s;
+}
+.ja-res-pt:nth-child(2) {
+  animation-delay: 0.27s;
+}
+.ja-res-pt:nth-child(3) {
+  animation-delay: 0.39s;
+}
+.ja-res-pt:nth-child(4) {
+  animation-delay: 0.51s;
+}
+.ja-res-pt:nth-child(5) {
+  animation-delay: 0.63s;
+}
+.ja-res-pt:nth-child(6) {
+  animation-delay: 0.75s;
+}
+.ja-res-cta {
+  animation: jaResIn 0.45s var(--ja-ease) 0.55s backwards;
+}
+@keyframes jaPop {
+  0% {
+    transform: scale(0.3);
+    opacity: 0;
+  }
+  65% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: none;
+    opacity: 1;
+  }
+}
+@keyframes jaResIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* The WhatsApp button pops in after the page has settled. */
+.ja-wa-fab {
+  animation: jaFabPop 0.4s var(--ja-ease) 0.8s backwards;
+}
+@keyframes jaFabPop {
+  from {
+    opacity: 0;
+    transform: scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* The page's sticky call-to-action bar slides up from below the viewport (StickyCtaBar). */
+.ja-sticky {
+  transform: translateY(110%);
+  transition: transform 0.35s var(--ja-ease);
+}
+.ja-sticky-on {
+  transform: none;
+}
+
+/* ---------- Loops ---------- */
+
+/* The green "live" dot: a ring breathes out of it. `-soft` is the smaller ring of Home, About and
+   Join Our Team, `-wide` the larger one of Hire Workers. */
+.ja-live {
+  animation: jaPulse 2s ease-out infinite;
+}
+.ja-live-soft {
+  animation-name: jaPulseSoft;
+}
+.ja-live-wide {
+  animation-name: jaPulseWide;
+}
+@keyframes jaPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.45);
+  }
+  70% {
+    box-shadow: 0 0 0 8px rgba(22, 163, 74, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0);
+  }
+}
+@keyframes jaPulseSoft {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 0 5px rgba(22, 163, 74, 0);
+  }
+}
+@keyframes jaPulseWide {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(22, 163, 74, 0.34);
+  }
+  50% {
+    box-shadow: 0 0 0 12px rgba(22, 163, 74, 0);
+  }
+}
+
+/* The Hire Workers quote button rings four times, then rests; it lifts on hover. */
+.ja-quote-btn {
+  animation: jaPulseWide 2.6s ease-out 1.4s 4;
+  transition:
+    transform 0.2s ease,
+    background-color 0.2s ease;
+}
+.ja-quote-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* A sheen sweeps across the quote card's blue header (Hire Workers). */
+.ja-quote-head {
+  position: relative;
+  overflow: hidden;
+}
+.ja-quote-head::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 42%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.26) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  pointer-events: none;
+  animation: jaShine 4.6s ease-in-out 1.1s infinite;
+}
+@keyframes jaShine {
+  0% {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  55%,
+  100% {
+    transform: translateX(320%) skewX(-18deg);
+  }
+}
+
+/* A decorative glow drifts behind a dark card (Home network, team, portal, work with us). */
+.ja-glow {
+  animation: jaGlow 11s ease-in-out infinite;
+}
+@keyframes jaGlow {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+    opacity: 0.85;
+  }
+  50% {
+    transform: translate(-26px, 22px) scale(1.12);
+    opacity: 1;
+  }
+}
+
+/* The blog hero's floating cards. */
+.ja-float-1 {
+  animation: jaFloat1 6s ease-in-out infinite;
+}
+.ja-float-2 {
+  animation: jaFloat2 7.5s ease-in-out 0.9s infinite;
+}
+.ja-float-3 {
+  animation: jaFloat3 6.5s ease-in-out 1.6s infinite;
+}
+@keyframes jaFloat1 {
+  0%,
+  100% {
+    transform: rotate(-4deg) translateY(0);
+  }
+  50% {
+    transform: rotate(-4deg) translateY(-12px);
+  }
+}
+@keyframes jaFloat2 {
+  0%,
+  100% {
+    transform: rotate(3deg) translateY(0);
+  }
+  50% {
+    transform: rotate(3deg) translateY(-9px);
+  }
+}
+@keyframes jaFloat3 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-14px);
+  }
+}
+
+/* The blog hero's rotating word rises in each time it changes. */
+.ja-wordin {
+  animation: jaWordIn 0.45s ease;
+}
+@keyframes jaWordIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* ---------- Hover ---------- */
+
+/* An industry row's number bounces when the row is hovered (Hire Workers). */
+.ja-row:hover .ja-num {
+  animation: jaNumBounce 0.45s var(--ja-spring);
+}
+@keyframes jaNumBounce {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.18) rotate(-4deg);
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+/* The observer's 6 s fallback (RevealObserver): what it reaches has not scrolled in, so it is
+   shown at once — `.ja-reveal-instant` (kept) drops the entrance animations, `.ja-reveal-jump`
+   (two frames only, so hover lifts ease again afterwards) drops the transitions. */
+.ja-reveal-instant .ja-stagger > *,
+.ja-reveal-instant .ja-plane svg,
+.ja-reveal-instant .ja-jt-ways > *,
+.ja-reveal-instant .ja-jt-step,
+.ja-reveal-instant .ja-net-row {
+  animation: none;
+}
+.ja-reveal-jump,
+.ja-reveal-jump *,
+.ja-reveal-jump::before,
+.ja-reveal-jump *::before {
+  transition: none !important;
+}
+
+/* ---------- Content is never left hidden ---------- */
+
+/* Without scripting the observer never runs: nothing waits to be revealed. */
+@media (scripting: none) {
+  .ja-reveal,
+  .ja-reveal .ja-jt-ways > *,
+  .ja-reveal .ja-jt-step,
+  .ja-reveal .ja-stagger > *,
+  .ja-reveal-group .ja-stagger > *,
+  .ja-reveal-group .ja-step,
+  .ja-reveal-group .ja-tl-row,
+  .ja-reveal-group .ja-net-row {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .ja-reveal .ja-grow,
+  .ja-reveal-group .ja-journey-line,
+  .ja-reveal-group .ja-tl-line,
+  .ja-reveal .ja-grow-rail::before,
+  .ja-reveal-group.ja-tl-rail::before,
+  .ja-reveal-group.ja-journey-rail::before {
+    transform: none;
+  }
+}
+
+/* Paper gets the end state, never a section still waiting below the fold. */
+@media print {
+  .ja-reveal,
+  .ja-reveal .ja-jt-ways > *,
+  .ja-reveal .ja-jt-step,
+  .ja-reveal .ja-stagger > *,
+  .ja-reveal-group .ja-stagger > *,
+  .ja-reveal-group .ja-step,
+  .ja-reveal-group .ja-tl-row,
+  .ja-reveal-group .ja-net-row,
+  .ja-hero-1,
+  .ja-hero-2,
+  .ja-hero-3,
+  .ja-up,
+  .ja-card-in,
+  .ja-quote-card,
+  .ja-wa-fab {
+    opacity: 1 !important;
+    transform: none !important;
+    animation: none !important;
+  }
+  .ja-reveal .ja-grow,
+  .ja-reveal-group .ja-journey-line,
+  .ja-reveal-group .ja-tl-line,
+  .ja-reveal .ja-grow-rail::before,
+  .ja-reveal-group.ja-tl-rail::before,
+  .ja-reveal-group.ja-journey-rail::before {
+    transform: none !important;
+  }
+}
+
+/* D20: under reduced motion every element is at its end state at once and nothing loops. The
+   global rule in globals.css shortens what is left; these rules make sure nothing waits on an
+   observer, a delay or a `backwards` fill. */
+@media (prefers-reduced-motion: reduce) {
+  .ja-reveal,
+  .ja-reveal .ja-jt-ways > *,
+  .ja-reveal-on .ja-jt-ways > *,
+  .ja-reveal .ja-jt-step,
+  .ja-reveal-on .ja-jt-step,
+  .ja-reveal .ja-stagger > *,
+  .ja-reveal-group .ja-stagger > *,
+  .ja-reveal-on .ja-stagger > *,
+  .ja-reveal-group .ja-step,
+  .ja-reveal-group .ja-tl-row,
+  .ja-reveal-group .ja-net-row,
+  .ja-reveal-on .ja-net-row {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    animation: none;
+  }
+  .ja-reveal .ja-grow,
+  .ja-reveal-group .ja-journey-line,
+  .ja-reveal-group .ja-tl-line,
+  .ja-reveal .ja-grow-rail::before,
+  .ja-reveal-group.ja-tl-rail::before,
+  .ja-reveal-group.ja-journey-rail::before {
+    transform: none;
+    transition: none;
+  }
+  .ja-reveal-on .ja-plane svg,
+  .ja-hero-1,
+  .ja-hero-2,
+  .ja-hero-3,
+  .ja-up,
+  .ja-card-in,
+  .ja-quote-card,
+  .ja-panel,
+  .ja-panel-soft,
+  .ja-panel .ja-pop,
+  .ja-tick,
+  .ja-basket-chip,
+  .ja-res-icon,
+  .ja-res-pt,
+  .ja-res-cta,
+  .ja-wa-fab,
+  .ja-live,
+  .ja-quote-btn,
+  .ja-quote-head::after,
+  .ja-glow,
+  .ja-float-1,
+  .ja-float-2,
+  .ja-float-3,
+  .ja-wordin,
+  .ja-row:hover .ja-num {
+    animation: none;
+  }
+  .ja-sticky {
+    transition: none;
+  }
+  .ja-quote-btn:hover,
+  .ja-reveal-on .ja-step:hover {
+    transform: none;
+  }
+}

@@ -46,7 +46,7 @@ export function PortalSection({ locale, bundle }: SectionProps) {
   const s = bundle.settings;
   const host = new URL(s.portal.host).host;
   return (
-    <Section tone="light" id="portal" className="max-xs:hidden">
+    <Section tone="light" id="portal" className="ja-reveal max-xs:hidden">
       <div
         data-testid="portal"
         className="container-site grid items-center gap-[34px] lg:grid-cols-[0.95fr_1.05fr] lg:gap-14 xl:gap-[42px]"
@@ -55,7 +55,7 @@ export function PortalSection({ locale, bundle }: SectionProps) {
           <Eyebrow>{tf('home.162')}</Eyebrow>
           <h2 className={`${H2} mb-4 mt-3.5`}>{tf('home.163')}</h2>
           <p className={`${LEAD} m-0 mb-[22px]`}>{tf('home.164')}</p>
-          <ul className="m-0 mb-[26px] grid list-none gap-3 p-0 sm:grid-cols-2">
+          <ul className="ja-stagger m-0 mb-[26px] grid list-none gap-3 p-0 sm:grid-cols-2">
             {TILES.map(({ titleId, bodyId, Icon, tint }) => (
               <li
                 key={titleId}

@@ -454,7 +454,7 @@ describe('import-design-package — collections', () => {
       readMinutes: 8,
       slug: { tr: 'yabanci-isciler-calisma-izni-rehberi' },
     });
-    expect(report.blog).toEqual({ rows: 22, trBodies: 0, navVisible: false });
+    expect(report.blog).toEqual({ rows: 22, trBodies: 0, navVisible: false }); // the threshold flag is report-only now
   });
   it('carries the one written article as Markdown composed from the Blog Article package ids (W28)', () => {
     type Row = {
@@ -509,10 +509,11 @@ describe('import-design-package — collections', () => {
 });
 
 describe('import-design-package — nav and pages', () => {
-  it('gates /blog behind the threshold (W4), fills five groups and carries the portal row only in the groups (W36)', () => {
+  it('always lists /blog (owner 2026-10-05), fills five groups and carries the portal row only in the groups (W36)', () => {
     const hrefs = (group: string) => tr.nav.filter((n) => n.group === group).map((n) => n.href);
-    // W88: the portal row is the internal chooser page (W8), which links out to the portal host
-    const portal = '/portal-login';
+    // owner 2026-10-05: the portal row is the external partner-portal login (new tab); the
+    // /portal-login chooser page is retired
+    const portal = 'https://portal.jobsadmire.com/auth/login';
     expect(hrefs('desktopNav')).toEqual([
       '/hire-workers',
       '/available-workers',
@@ -520,13 +521,14 @@ describe('import-design-package — nav and pages', () => {
       '/hiring-cost-calculator',
       '/about',
       '/success-stories',
+      '/blog',
       '/verify',
       '/partner-with-us',
       '/careers',
       '/contact',
     ]);
     expect(hrefs('hamburger')).toEqual([...hrefs('desktopNav'), portal]);
-    expect(hrefs('slimBarRight')).toEqual(['/careers', '/verify', portal]);
+    expect(hrefs('slimBarRight')).toEqual(['/blog', '/careers', '/verify', portal]);
     expect(hrefs('footerEmployers')).toEqual([
       '/hire-workers',
       '/available-workers',
@@ -538,26 +540,26 @@ describe('import-design-package — nav and pages', () => {
     expect(hrefs('footerCompany')).toEqual([
       '/about',
       '/success-stories',
+      '/blog',
       '/partner-with-us',
       '/careers',
       '/contact',
     ]);
     for (const g of ['slimBarLeft', 'footerContact', 'mobileBottomBar', 'socialRail'])
       expect(hrefs(g)).toEqual([]);
-    expect(tr.nav).toHaveLength(35);
+    expect(tr.nav).toHaveLength(39);
     expect(tr.nav.find((n) => n.href === '/verify')?.labelId).toBe('home.011');
     expect(tr.strings['home.011']).toBe('Temsilci Doğrulama');
     expect(
       tr.nav.filter((n) => n.href === portal).map((n) => [n.group, n.labelId, n.external]),
     ).toEqual([
-      ['hamburger', 'home.012', false],
-      ['slimBarRight', 'home.012', false],
-      ['footerEmployers', 'home.012', false],
+      ['hamburger', 'home.012', true],
+      ['slimBarRight', 'home.012', true],
+      ['footerEmployers', 'home.012', true],
     ]);
-    // W88: no group carries an external row — the portal host is only ever linked from the
-    // chooser page, never from the chrome
-    expect(tr.nav.filter((n) => n.external)).toEqual([]);
-    expect(en.nav.filter((n) => n.external)).toEqual([]);
+    // the portal login rows are the only external rows, in both locales
+    expect(tr.nav.filter((n) => n.external)).toHaveLength(3);
+    expect(en.nav.filter((n) => n.external)).toHaveLength(3);
     for (const group of new Set(tr.nav.map((n) => n.group))) {
       const rows = tr.nav.filter((n) => n.group === group);
       expect(
@@ -566,8 +568,8 @@ describe('import-design-package — nav and pages', () => {
       ).toEqual(rows.map((_, i) => i));
     }
   });
-  it('adds /blog to four groups once the threshold is met', () => {
-    const visible = buildNav(true);
+  it('puts /blog in four groups (always — the threshold no longer gates the nav)', () => {
+    const visible = buildNav();
     expect(visible).toHaveLength(39);
     const groups = visible.filter((n) => n.href === '/blog').map((n) => [n.group, n.labelId]);
     expect(groups).toEqual([
@@ -601,14 +603,8 @@ describe('import-design-package — nav and pages', () => {
       canonical: null,
       jsonLd: ['organization', 'website', 'faq'],
     });
-    for (const key of [
-      'blog',
-      'blogArticle',
-      'portal',
-      'thankYou',
-      'newsletterConfirm',
-      'newsletterUnsubscribe',
-    ])
+    expect(tr.pages.blog.robots).toBe('index'); // owner 2026-10-05
+    for (const key of ['blogArticle', 'thankYou', 'newsletterConfirm', 'newsletterUnsubscribe'])
       expect(tr.pages[key].robots, key).toBe('noindex');
     expect(tr.pages.careersDetail.jsonLd).toEqual(['breadcrumb', 'jobPosting']);
     expect(tr.pages.blogArticle.jsonLd).toEqual(['breadcrumb', 'article', 'faq']);

@@ -23,17 +23,28 @@ into a `410` prefix, and — the invariant the old `/blog/*` row broke (R53) —
 `pathnames` route, dynamic ones included, **inside** a `410` prefix. This doc is the policy
 record and the forecast.
 
-## Two numbers, not one: 517 legacy URLs vs. the 49-row `rules.json`
+## Two numbers, not one: 517 legacy URLs vs. the 52-row `rules.json`
 
-The old site served **517 legacy URLs** — 47 distinct route patterns × up to 11 locale prefixes each — discovered from the old-site inventory. `redirects/rules.json` does **not** list 517 rows: it lists **49**, one row per distinct old route pattern regardless of locale (24 `301`, 19 `410`, 6 `keep`), because the locale expansion is mechanical and belongs in code, not in a hand-maintained file. `scripts/build-redirects.ts` re-expands each of those 49 rows across the applicable locale variants — the bare old path (→ `/en/...`, unless it collides with a live new-site route, R33), `/tr/...` (→ the new Turkish root slug), and the nine dropped locale prefixes (→ `/en/...`) — which is how 49 rows become the actual generated table: **328 redirects** in `redirects/legacy.json` plus **19 `410` prefixes** in `redirects/gone.json` (not 517, because `keep` rows skip the unprefixed-English add when the old path is already live, and every `410` row collapses to one prefix regardless of how many locales served it).
+The old site served **517 legacy URLs** — 47 distinct route patterns × up to 11 locale prefixes each — discovered from the old-site inventory. `redirects/rules.json` does **not** list 517 rows: it lists **52**, one row per distinct old route pattern regardless of locale (27 `301` — three of them the retired portal login, below — 19 `410`, 6 `keep`), because the locale expansion is mechanical and belongs in code, not in a hand-maintained file. `scripts/build-redirects.ts` re-expands each of those 52 rows across the applicable locale variants — the bare old path (→ `/en/...`, unless it collides with a live new-site route, R33), `/tr/...` (→ the new Turkish root slug), and the nine dropped locale prefixes (→ `/en/...`) — which is how 52 rows become the actual generated table: **341 redirects** in `redirects/legacy.json` plus **19 `410` prefixes** in `redirects/gone.json` (not 517, because `keep` rows skip the unprefixed-English add when the old path is already live, and every `410` row collapses to one prefix regardless of how many locales served it).
 
 ## The app link (W227)
 
-`/app` is not a legacy URL: it is the one download link for the JobsAdmire Partners app, printed in the portal-login QR code. Two temporary (307) rules from `src/lib/app-link.ts`, placed before the legacy map in `next.config.ts`'s `redirects()`, send a `User-Agent` matching `.*(iPhone|iPad|iPod).*` to the App Store and every other device to Google Play; both destinations are `settings.storeLinks` read from the LOCAL bundle when the config loads (Phase B: the same keys from Operations, at build). An iPad in desktop mode sends a Mac user agent and lands on Google Play, which shows the iOS link only on its own page; that edge case is accepted.
+`/app` is not a legacy URL: it is the one download link for the JobsAdmire Partners app, printed in the app's QR code (the old portal-login page that showed it is retired, below). Two temporary (307) rules from `src/lib/app-link.ts`, placed before the legacy map in `next.config.ts`'s `redirects()`, send a `User-Agent` matching `.*(iPhone|iPad|iPod).*` to the App Store and every other device to Google Play; both destinations are `settings.storeLinks` read from the LOCAL bundle when the config loads (Phase B: the same keys from Operations, at build). An iPad in desktop mode sends a Mac user agent and lands on Google Play, which shows the iOS link only on its own page; that edge case is accepted.
+
+## The retired portal login page (2026-10-05)
+
+Owner: "we don't need the CRM login page; we have portal.jobsadmire.com". The `(bare)` `/portal-login` page and its `pathnames` entry are deleted, and the chrome's "CRM Girişi" / "CRM Login" rows are external links (new tab) built by the importer from `settings.portal` (`SETTINGS.portal.host + loginPath`). Three single-hop 308s send the old URLs to `https://portal.jobsadmire.com/auth/login` — they are rows in `redirects/rules.json`, the first of which has an **absolute `https://` URL as its `to`** (`scripts/build-redirects.ts` passes such a target through untouched) and the other two carry `"exact": true` (emitted as written, no locale expansion):
+
+- `/portal-login` → expands like any legacy row: `/portal-login`, `/tr/portal-login` and the nine dropped-locale prefixes (11 rules);
+- `/portal-girisi` (exact) — the old Turkish slug;
+- `/en/portal-login` (exact) — the old English URL;
+- `/login-companies` (the old-site row, previously `→ /portal-login`) now goes straight to the portal too, so it never chains through the retired path.
+
+`redirects/redirects.test.ts` pins all four and the no-chain / not-a-live-route invariants; `e2e/pages/portal.spec.ts` asserts the 308s and the external, `target=_blank` chrome link.
 
 ## Rules
 
-- **Disposition is GSC-joined, not guessed.** The 49 canonical old-route rules (covering the 517-URL legacy inventory above) are joined against the WP0 GSC export (16 months of clicks/impressions per URL, exported in WP0 item 0 — before the redirect map is decided, not after).
+- **Disposition is GSC-joined, not guessed.** The 52 old-route rules (covering the 517-URL legacy inventory above) are joined against the WP0 GSC export (16 months of clicks/impressions per URL, exported in WP0 item 0 — before the redirect map is decided, not after).
 - **Any URL with a click in that 16-month window gets a 301 to the nearest relevant live page.** "Nearest relevant" is a human judgment call per URL — there's no mechanical mapping from old URL structure to new.
 - **Zero-click URLs get `410` (Gone)**, not a redirect to the homepage or any other catch-all. A 410 tells crawlers the page is intentionally removed, which de-indexes faster and cleaner than a soft redirect to an unrelated page.
 - **Unbounded legacy spaces are `410` outright, not individually mapped:** `/job-detail/*` and `/profile/*`. These are old-site patterns with unbounded cardinality (every old job listing, every old candidate profile) — mapping them one-by-one isn't tractable and neither has a meaningful "nearest" equivalent on the new 14-page site.

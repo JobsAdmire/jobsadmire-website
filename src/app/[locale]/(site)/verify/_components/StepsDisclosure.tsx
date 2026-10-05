@@ -12,7 +12,7 @@ export function StepsDisclosure({ heading, children }: { heading: string; childr
   const [open, setOpen] = useState(false);
   const panelId = useId();
   return (
-    <div className="mt-11 border-t border-white/15 pt-8">
+    <div className="ja-reveal mt-11 border-t border-white/15 pt-8">
       <h2 className="m-0 flex items-center gap-2.5 text-eyebrow font-extrabold uppercase tracking-[1.4px] text-sky">
         <span aria-hidden="true" className="size-2 shrink-0 rounded-pill bg-blue" />
         <span className="max-md:hidden">{heading}</span>

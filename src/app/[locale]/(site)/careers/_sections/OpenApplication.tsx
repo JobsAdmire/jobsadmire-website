@@ -27,7 +27,7 @@ export function OpenApplication({
 }) {
   const sys = useTranslations('sys');
   return (
-    <Section tone="light" id="apply" className="scroll-mt-24 border-t border-border-3">
+    <Section tone="light" id="apply" className="ja-reveal scroll-mt-24 border-t border-border-3">
       <div
         data-testid="careers-apply"
         className="container-site grid items-start gap-10 lg:grid-cols-[0.95fr_1.05fr]"

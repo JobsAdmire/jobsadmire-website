@@ -22,7 +22,7 @@ export function WhatsAppFab({ bundle }: { bundle: Bundle }) {
         target="_blank"
         rel="noopener noreferrer"
         aria-label={t('home.221')}
-        className="fixed bottom-[calc(18px+var(--sticky-cta-h,0px))] right-[18px] z-40 flex h-14 w-14 items-center justify-center rounded-pill bg-success-text text-white shadow-[0_12px_30px_rgba(18,129,60,0.45)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
+        className="ja-wa-fab fixed bottom-[calc(18px+var(--sticky-cta-h,0px))] right-[18px] z-40 flex h-14 w-14 items-center justify-center rounded-pill bg-success-text text-white shadow-[0_12px_30px_rgba(18,129,60,0.45)] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe"
       >
         <WhatsAppIcon size={27} />
       </ContactLink>

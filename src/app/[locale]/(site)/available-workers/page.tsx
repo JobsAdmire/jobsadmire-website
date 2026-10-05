@@ -137,7 +137,7 @@ export default async function AvailableWorkersPage({
                 data-testid="pool-live"
                 className="mb-4 inline-flex items-center gap-2 rounded-pill border border-success/35 bg-success/10 px-4 py-1.5 text-eyebrow font-extrabold uppercase tracking-[1.2px] text-success-surface"
               >
-                <span aria-hidden="true" className="h-2 w-2 rounded-pill bg-success" />
+                <span aria-hidden="true" className="ja-live h-2 w-2 rounded-pill bg-success" />
                 {tf('availworkers.023')}
               </p>
             ) : null}
@@ -168,7 +168,7 @@ export default async function AvailableWorkersPage({
 
           <div
             id="pool-form"
-            className="scroll-mt-20 overflow-hidden rounded-hero border border-white/10 bg-white text-ink shadow-hero-form"
+            className="ja-card-in scroll-mt-20 overflow-hidden rounded-hero border border-white/10 bg-white text-ink shadow-hero-form"
           >
             {/* W79: checkbox consent, the site-wide /privacy link (no consentLinkHref). */}
             <FormShell
@@ -302,6 +302,7 @@ export default async function AvailableWorkersPage({
               bundle={bundle}
               locale={locale}
               variant="cards"
+              motion="steps"
               steps={verifiedSteps(tf)}
             />
           </div>
@@ -361,6 +362,7 @@ export default async function AvailableWorkersPage({
             bodyId="availworkers.102"
             items={workersFaqItems(bundle, locale, cardsOn)}
             openFirst
+            panelClassName="ja-panel"
             askCard={{
               titleId: 'availworkers.103',
               bodyId: 'availworkers.104',

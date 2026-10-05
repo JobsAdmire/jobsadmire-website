@@ -128,7 +128,7 @@ export function EstimateBreakdown({
         {view.seasonal ? (
           <p
             data-testid="calc-seasonal"
-            className="m-0 mt-2 rounded-[10px] border border-warning-border bg-warning-surface px-[13px] py-2.5 text-body-sm text-warning-text"
+            className="ja-panel-soft m-0 mt-2 rounded-[10px] border border-warning-border bg-warning-surface px-[13px] py-2.5 text-body-sm text-warning-text"
           >
             <Sentence runs={[labels.sea1, view.perMonthPerWorker, labels.sea2]} />
           </p>

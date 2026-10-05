@@ -44,7 +44,7 @@ export function Offices({
   return (
     <Section tone="pale">
       <div data-testid="contact-offices" className="container-site">
-        <div className="relative overflow-hidden rounded-hero bg-gradient-to-br from-[#2c3a75] via-[#253063] to-[#16204a] p-6 md:p-12">
+        <div className="ja-reveal relative overflow-hidden rounded-hero bg-gradient-to-br from-[#2c3a75] via-[#253063] to-[#16204a] p-6 md:p-12">
           <div className="mb-8 flex flex-wrap items-end justify-between gap-6 text-white">
             <div className="max-w-[560px]">
               <p className="m-0 mb-4 inline-block rounded-pill border border-white/30 bg-white/15 px-4 py-1.5 text-eyebrow font-extrabold uppercase tracking-[1.8px]">
@@ -80,7 +80,8 @@ export function Offices({
               className="flex flex-col items-center justify-center text-white max-lg:hidden"
             >
               <span className={DASH} />
-              <span className="my-2.5 flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-dashed border-white/45 bg-white/10">
+              {/* `.ja-plane`: the plane flies in once the card is revealed */}
+              <span className="ja-plane my-2.5 flex h-11 w-11 items-center justify-center rounded-full border-[1.5px] border-dashed border-white/45 bg-white/10">
                 <PlaneIcon size={19} />
               </span>
               <span className={DASH} />
@@ -126,7 +127,7 @@ export function Offices({
             </ContactCta>
           </div>
         </div>
-        <div className="mt-5">
+        <div className="ja-reveal mt-5" style={{ transitionDelay: '0.1s' }}>
           <VisitBooking
             {...formDoor(bundle, locale)}
             action={submitVisit}

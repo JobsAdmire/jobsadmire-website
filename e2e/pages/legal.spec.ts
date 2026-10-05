@@ -127,10 +127,10 @@ test('the cookie notice names the cookies the site sets', async ({ page }) => {
   for (const name of ['ja_locale', 'ja_consent_v1']) await expect(essential).toContainText(name);
 });
 
-test('the chrome legal and portal links resolve (W152)', async ({ page, request }) => {
+test('the chrome legal links resolve (W152)', async ({ page, request }) => {
   const HOMES = [
-    ['/', ['/gizlilik', '/kullanim-kosullari', '/portal-girisi']],
-    ['/en', ['/en/privacy', '/en/terms', '/en/portal-login']],
+    ['/', ['/gizlilik', '/kullanim-kosullari']],
+    ['/en', ['/en/privacy', '/en/terms']],
   ] as const;
   for (const [home, hrefs] of HOMES) {
     await page.goto(home);

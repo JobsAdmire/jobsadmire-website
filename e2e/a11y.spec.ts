@@ -1,5 +1,6 @@
 import { test, expect } from '@playwright/test';
 import AxeBuilder from '@axe-core/playwright';
+import { settleMotion } from './helpers/motion';
 import { GATE_ROUTES } from './routes';
 
 // D20: an axe violation is fixed in the component, never by narrowing the sweep. Runs under
@@ -8,6 +9,7 @@ import { GATE_ROUTES } from './routes';
 for (const route of GATE_ROUTES) {
   test(`axe: ${route}`, async ({ page }) => {
     await page.goto(route);
+    await settleMotion(page); // end states, never a mid-fade colour (motion.css)
     const results = await new AxeBuilder({ page })
       .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
       .analyze();
@@ -36,6 +38,7 @@ for (const route of GATE_ROUTES) {
     for (const width of REGION_WIDTHS) {
       await page.setViewportSize({ width, height: 900 });
       await page.goto(route);
+      await settleMotion(page); // end states, never a mid-fade colour (motion.css)
       const results = await new AxeBuilder({ page }).withRules(['region']).analyze();
       expect(
         results.violations.flatMap((v) => v.nodes.map((n) => n.target.join(' '))),

@@ -1903,68 +1903,146 @@
  },
  {
   "from": "/login-companies",
-  "to": "/en/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
   "status": 308,
   "source": "en"
  },
  {
   "from": "/tr/login-companies",
-  "to": "/portal-girisi",
+  "to": "https://portal.jobsadmire.com/auth/login",
   "status": 308,
   "source": "tr"
  },
  {
   "from": "/fr/login-companies",
-  "to": "/en/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
   "status": 308,
   "source": "fr"
  },
  {
   "from": "/de/login-companies",
-  "to": "/en/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
   "status": 308,
   "source": "de"
  },
  {
   "from": "/ar/login-companies",
-  "to": "/en/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
   "status": 308,
   "source": "ar"
  },
  {
   "from": "/ru/login-companies",
-  "to": "/en/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
   "status": 308,
   "source": "ru"
  },
  {
   "from": "/fa/login-companies",
-  "to": "/en/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
   "status": 308,
   "source": "fa"
  },
  {
   "from": "/id/login-companies",
-  "to": "/en/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
   "status": 308,
   "source": "id"
  },
  {
   "from": "/fil/login-companies",
-  "to": "/en/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
   "status": 308,
   "source": "fil"
  },
  {
   "from": "/tk/login-companies",
-  "to": "/en/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
   "status": 308,
   "source": "tk"
  },
  {
   "from": "/tg/login-companies",
-  "to": "/en/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
   "status": 308,
   "source": "tg"
+ },
+ {
+  "from": "/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
+  "status": 308,
+  "source": "en"
+ },
+ {
+  "from": "/tr/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
+  "status": 308,
+  "source": "tr"
+ },
+ {
+  "from": "/fr/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
+  "status": 308,
+  "source": "fr"
+ },
+ {
+  "from": "/de/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
+  "status": 308,
+  "source": "de"
+ },
+ {
+  "from": "/ar/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
+  "status": 308,
+  "source": "ar"
+ },
+ {
+  "from": "/ru/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
+  "status": 308,
+  "source": "ru"
+ },
+ {
+  "from": "/fa/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
+  "status": 308,
+  "source": "fa"
+ },
+ {
+  "from": "/id/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
+  "status": 308,
+  "source": "id"
+ },
+ {
+  "from": "/fil/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
+  "status": 308,
+  "source": "fil"
+ },
+ {
+  "from": "/tk/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
+  "status": 308,
+  "source": "tk"
+ },
+ {
+  "from": "/tg/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
+  "status": 308,
+  "source": "tg"
+ },
+ {
+  "from": "/portal-girisi",
+  "to": "https://portal.jobsadmire.com/auth/login",
+  "status": 308,
+  "source": "en"
+ },
+ {
+  "from": "/en/portal-login",
+  "to": "https://portal.jobsadmire.com/auth/login",
+  "status": 308,
+  "source": "en"
  }
 ]

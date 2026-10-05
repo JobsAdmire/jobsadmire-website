@@ -18,9 +18,10 @@ import { LANGUAGE_CODES } from '../_lib/options';
 import { partnerLineOf } from '@/lib/contact/partner-line';
 
 /** The channel cards' shared frame: colourless and borderless, so each card adds its own border,
- *  layout and padding without a second utility for one property (W122). */
+ *  layout and padding without a second utility for one property (W122). `ja-card-in`: the
+ *  design's card entrance (src/design/motion/motion.css). */
 const CARD =
-  'rounded-md bg-white text-ink no-underline transition-shadow hover:shadow-card-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky';
+  'ja-card-in rounded-md bg-white text-ink no-underline transition-shadow hover:shadow-card-hover focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky';
 const PHONE_CARD = `${CARD} flex min-w-0 flex-col items-start gap-2 border border-border-1 p-4 md:p-5`;
 const TILE = 'flex shrink-0 items-center justify-center';
 /** QA W220 contact-01 (W187 / W189 A5 / final pass A8): the hero art's fixed height per band,
@@ -93,7 +94,8 @@ export function Hero({
           ]}
         />
         <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1.02fr_0.98fr] lg:gap-13">
-          <div className="min-w-0">
+          {/* the design's `.ja-up`: the copy column rises in */}
+          <div className="ja-up min-w-0">
             <LiveStatus
               variant="hero"
               hours={antalya.hours}

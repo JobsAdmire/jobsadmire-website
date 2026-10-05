@@ -8,6 +8,7 @@ export function Accordion({
   singleOpen = true,
   defaultOpenId,
   headingLevel = 3,
+  panelClassName,
 }: {
   items: AccordionItem[];
   singleOpen?: boolean;
@@ -16,6 +17,9 @@ export function Accordion({
    *  surrounding document outline: a panel that stands in for an `h2` column (the footer on
    *  mobile) must not drop to `h3`, or the visible heading order skips a level. */
   headingLevel?: 2 | 3 | 4;
+  /** Extra classes on every panel — the design's open animation (`ja-panel` / `ja-panel-soft`,
+   *  src/design/motion/motion.css), which replays each time a panel leaves `hidden`. */
+  panelClassName?: string;
 }) {
   const Heading = `h${headingLevel}` as 'h2' | 'h3' | 'h4';
   const base = useId();
@@ -70,7 +74,7 @@ export function Accordion({
               role="region"
               aria-labelledby={btnId}
               hidden={!isOpen}
-              className="pb-4 text-text-secondary"
+              className={['pb-4 text-text-secondary', panelClassName].filter(Boolean).join(' ')}
             >
               {it.body}
             </div>

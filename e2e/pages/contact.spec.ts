@@ -1,4 +1,5 @@
 import AxeBuilder from '@axe-core/playwright';
+import { settleMotion } from '../helpers/motion';
 import { test, expect, type Locator, type Page } from '@playwright/test';
 import { expectHeroPhoto } from '../helpers/hero-photo';
 
@@ -372,6 +373,7 @@ test('en: axe stays clean with the callback open and the job-seeker panel shown 
     .locator('label', { has: page.getByRole('radio', { name: COPY.en.jobTopic }) })
     .click();
   await expect(page.getByTestId('contact-jobseeker')).toBeVisible();
+  await settleMotion(page); // end states, never a mid-fade colour (motion.css)
   const results = await new AxeBuilder({ page })
     .withTags(['wcag2a', 'wcag2aa', 'wcag22aa'])
     .analyze();

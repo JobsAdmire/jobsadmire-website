@@ -18,7 +18,7 @@ export type LiveStatusProps = LiveStatusSpec & {
 
 const DOT = {
   unknown: 'bg-muted',
-  open: 'bg-success motion-safe:animate-pulse',
+  open: 'bg-success ja-live',
   closed: 'bg-warning',
 } as const;
 

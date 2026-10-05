@@ -37,6 +37,8 @@ export function Faq({ bundle, locale }: { bundle: Bundle; locale: Locale }) {
           bodyId="contact.121"
           openFirst
           headingLevel={3}
+          reveal
+          panelClassName="ja-panel-soft"
           askCard={{
             titleId: 'contact.122',
             bodyId: 'contact.123',

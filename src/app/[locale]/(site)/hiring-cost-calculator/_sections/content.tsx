@@ -529,6 +529,7 @@ function Exemptions({ ctx }: { ctx: CalcCtx }) {
       <div className="px-[26px] xl:px-[19.5px] py-[22px] xl:py-[16.5px] max-md:px-3.5 max-md:py-[15px]">
         <Tabs
           defaultId="sector"
+          panelClassName="ja-panel-soft"
           tabs={groups.map((g) => ({
             id: g.id,
             label: t(g.tabId),
@@ -1270,6 +1271,7 @@ export function Faq({ ctx }: { ctx: CalcCtx }) {
       locale={locale}
       id="calc-faq"
       items={items}
+      panelClassName="ja-panel-soft"
       eyebrowId="calc.405"
       headingId="calc.383"
       bodyId="calc.384"

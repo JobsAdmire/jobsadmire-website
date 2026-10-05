@@ -18,7 +18,7 @@ export function ContactStrip({ locale, bundle }: SectionProps) {
   const sys = useTranslations('sys');
   const s = bundle.settings;
   return (
-    <Section tone="band">
+    <Section tone="band" className="ja-reveal">
       <div data-testid="cta-band" className="container-site">
         <ClosingCtaBand
           bundle={bundle}

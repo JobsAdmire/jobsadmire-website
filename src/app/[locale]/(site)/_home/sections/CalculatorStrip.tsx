@@ -75,6 +75,9 @@ export function CalculatorStrip({ locale, bundle }: SectionProps) {
   );
   const leftBottom = (
     <>
+      {/* No `.ja-stagger` here (the design's `.ja-calc-notes` ticks in): this list renders inside
+          the LazyIsland, whose swap from the server fallback remounts it — the ticks would play
+          twice. */}
       <ul className="m-0 mb-[26px] flex list-none flex-col gap-[9px] p-0 max-xs:hidden">
         {(['home.074', 'home.075'] as const).map((id) => (
           <li
@@ -153,7 +156,7 @@ export function CalculatorStrip({ locale, bundle }: SectionProps) {
     />
   );
   return (
-    <Section tone="pale" id="cost" className="border-y border-border-2">
+    <Section tone="pale" id="cost" className="ja-reveal border-y border-border-2">
       <div className="container-site">
         <CalculatorTeaserIsland
           fallback={fallback}

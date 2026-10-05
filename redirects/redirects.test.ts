@@ -17,8 +17,16 @@ describe('legacy redirects (D21)', () => {
     expect(redirects.length + gone.length).toBeGreaterThan(250);
     // Pinned to the generator's actual output (`npm run redirects:build`). These numbers change
     // only when redirects/rules.json (or the pathnames table it targets) changes.
-    expect(redirects.length).toBe(328);
+    expect(redirects.length).toBe(341);
     expect(gone.length).toBe(19);
+  });
+  it('the retired portal login chooser redirects in one hop to the portal (owner 2026-10-05)', () => {
+    const LOGIN = 'https://portal.jobsadmire.com/auth/login';
+    for (const from of ['/portal-login', '/en/portal-login', '/portal-girisi', '/login-companies'])
+      expect(redirects.find((r) => r.from === from)?.to, from).toBe(LOGIN);
+    // the page and its pathnames entry are gone, so none of these is a live route
+    for (const from of ['/portal-login', '/en/portal-login', '/portal-girisi'])
+      expect(LIVE.has(from), from).toBe(false);
   });
   it('never chains: no destination is another rule source', () => {
     for (const r of redirects) expect(froms.has(r.to), `${r.from} → ${r.to} chains`).toBe(false);

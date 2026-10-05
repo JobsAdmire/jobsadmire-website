@@ -24,7 +24,8 @@
       "prefill": "Hello JobsAdmire, "
     },
     "blocks": {
-      "readMinutes": "{n, plural, one {# min read} other {# min read}}"
+      "readMinutes": "{n, plural, one {# min read} other {# min read}}",
+      "imagePlaceholder": "Image to be added"
     },
     "languageHint": {
       "body": "This page is also available in English.",
@@ -36,10 +37,6 @@
       "home": {
         "title": "Hire Skilled Workers from Abroad for Türkiye | JobsAdmire",
         "description": "Skilled workers sourced abroad for employers in Türkiye — candidates vetted by JobsAdmire's own representatives, legal work permits and arrival, managed end to end. Get a free proposal."
-      },
-      "portal": {
-        "title": "Partner Portal sign-in | JobsAdmire",
-        "description": "Sign in to the JobsAdmire Partner Portal: agreements, candidates and permit status in one place."
       },
       "privacy": {
         "title": "Privacy Policy | JobsAdmire",
@@ -146,13 +143,19 @@
       }
     },
     "calc": {
-      "hero": { "badge": "{year} rates · Updated {month}" },
-      "skeleton": { "activate": "Adjust the estimate" },
+      "hero": {
+        "badge": "{year} rates · Updated {month}"
+      },
+      "skeleton": {
+        "activate": "Adjust the estimate"
+      },
       "empty": {
         "title": "The calculator is being updated",
         "body": "The current rates are not published yet — ask JobsAdmire for a written quote instead."
       },
-      "jump": { "label": "On this page" },
+      "jump": {
+        "label": "On this page"
+      },
       "a11y": {
         "decrease": "Decrease by {step}",
         "increase": "Increase by {step}",
@@ -205,7 +208,10 @@
         "loading": "Opening the quote form…",
         "attached": "The estimate above is sent with your request."
       },
-      "summary": { "none": "none", "rates": "Rates version" }
+      "summary": {
+        "none": "none",
+        "rates": "Rates version"
+      }
     },
     "wp": {
       "hero": {
@@ -718,10 +724,6 @@
       "portal": {
         "platforms": "iOS & Android"
       }
-    },
-    "portal": {
-      "intro": "Partner accounts sign in on the JobsAdmire Partner Portal — the link below opens its login page.",
-      "signIn": "Sign in to the Partner Portal"
     },
     "legal": {
       "updatedLabel": "Last updated",
