@@ -11,8 +11,10 @@ export type Logo = { src: string; alt: string; width: number; height: number };
  *  `public/brand/logos/` (W14); `alt` is the company name. Until consented logos exist
  *  (§10 row 11 is v1.1; W6) a page may pass `slots` — the design's labelled placeholder slots
  *  ("Müşteri logosu N" hire `logoSlots` ll. 1923–1926, "Partner logo N" partner D1390–1393):
- *  dashed 220 × 88 frames, greyscale at .62 that colour in under the pointer (`ja-hover-logo`) —
- *  shown with the page's `SampleTag`. `stat` is the design's figure column left of the track
+ *  dashed 220 × 88 frames in the contrast-safe tertiary grey (D20: #5f6e86, 4.88:1 on pale-1) —
+ *  shown with the page's `SampleTag`. The design's greyscale-at-.62 treatment that colours in
+ *  under the pointer (`ja-hover-logo`) is for real logo images only: on a placeholder's label the
+ *  .62 opacity drops the text to 2.4:1 (axe color-contrast). `stat` is the design's figure column left of the track
  *  ("22+" / "25+ …", with its right divider). Nothing renders with neither logos nor slots. */
 export function LogoMarquee({
   logos,
@@ -40,7 +42,7 @@ export function LogoMarquee({
           ? logos.map((logo, i) => (
               <span
                 key={`${i}-${logo.src}`}
-                className="flex h-[66px] w-[165px] items-center justify-center"
+                className="ja-hover-logo flex h-[66px] w-[165px] items-center justify-center"
               >
                 <Image
                   src={logo.src}
@@ -55,7 +57,7 @@ export function LogoMarquee({
               <span
                 key={`${i}-${label}`}
                 data-placeholder={`logo-${i + 1}`}
-                className="ja-hover-logo mr-4 flex h-[88px] w-[220px] items-center justify-center rounded-sm border-[1.5px] border-dashed border-tint-border bg-pale-1 px-3 text-center text-[12.5px] font-bold text-text-tertiary max-md:h-[72px] max-md:w-[180px] xl:h-[66px] xl:w-[165px] xl:text-[11px]"
+                className="mr-4 flex h-[88px] w-[220px] items-center justify-center rounded-sm border-[1.5px] border-dashed border-tint-border bg-pale-1 px-3 text-center text-[12.5px] font-bold text-text-tertiary max-md:h-[72px] max-md:w-[180px] xl:h-[66px] xl:w-[165px] xl:text-[11px]"
               >
                 {label}
               </span>

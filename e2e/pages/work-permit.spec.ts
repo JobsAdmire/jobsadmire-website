@@ -147,6 +147,9 @@ for (const locale of ['tr', 'en'] as const) {
   test(`${locale}: both routes and both timeline cards side by side on desktop; ≤ 700 px two accessible tab switchers show one at a time`, async ({
     page,
   }) => {
+    // explicit widths on both sides, so the mobile project (Pixel 7, 412 px — where the tabs are
+    // rightly on) checks the desktop half at a desktop width too
+    await page.setViewportSize({ width: 1440, height: 900 });
     await page.goto(ROUTES[locale]);
     await expect(page.getByRole('tab')).toHaveCount(0); // hidden ≥ 701 px
     for (const id of [

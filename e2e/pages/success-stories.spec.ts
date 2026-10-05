@@ -177,7 +177,9 @@ for (const r of ROUTES) {
         await expect(slider).toBeVisible();
         await expect(slider).toContainText(pkg['success.144']);
         await expect(slider.getByRole('article')).toHaveCount(3);
-        const items = page.getByTestId('stories-grid').getByRole('listitem');
+        // by element, not role: getByRole skips hidden nodes, so a role query's nth(0) would be
+        // the first VISIBLE card (card 4), never the phone-hidden card 1
+        const items = page.getByTestId('stories-grid').locator(':scope > li');
         await expect(items.nth(0)).toBeHidden();
         await expect(items.nth(3)).toBeVisible();
         await expect(items.nth(7)).toBeHidden();
@@ -195,7 +197,13 @@ for (const r of ROUTES) {
       // The native radio is sr-only under its chip face, so click the chip (the <label>).
       await wall.locator('label').nth(1).click();
       await expect(wall.getByRole('radio').nth(1)).toBeChecked();
-      await expect(page.getByTestId('stories-grid').getByRole('article')).toHaveCount(2);
+      if (testInfo.project.name === 'desktop') {
+        await expect(page.getByTestId('stories-grid').getByRole('article')).toHaveCount(2);
+      } else {
+        // ≤ 3 cards on a phone: the slider holds them all and the compact list is empty (hidden)
+        await expect(page.getByTestId('stories-slider').getByRole('article')).toHaveCount(2);
+        await expect(page.getByTestId('stories-grid')).toBeHidden();
+      }
       await expect(page.getByTestId('stories-none-in-sector')).toHaveCount(0);
       // The design's "live from CRM" wording never reaches the page body.
       const main = await page.locator('main').innerText();

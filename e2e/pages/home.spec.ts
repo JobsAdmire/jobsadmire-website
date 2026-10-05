@@ -247,14 +247,23 @@ test('the sample case bar rotates and pauses; the pool track pauses (D20 / WCAG 
 }) => {
   await page.goto('/');
   const line = page.getByTestId('case-line');
-  const first = await line.innerText();
+  // textContent on both sides: toHaveText compares textContent, while innerText puts a newline
+  // between the line's flex items — an innerText snapshot never equals (and always "differs from")
+  // the live line, which hid both the rotation and the pause from this test.
+  const first = (await line.textContent()) ?? '';
+  expect(first.length).toBeGreaterThan(0);
   await expect(line).not.toHaveText(first, { timeout: 7000 });
   await page.getByTestId('case-toggle').click();
-  const held = await line.innerText();
-  await page.waitForTimeout(5000);
+  await expect(page.getByTestId('case-toggle')).toHaveAttribute('aria-label', 'Oynat'); // paused
+  const held = (await line.textContent()) ?? '';
+  // leave the row (pointer and focus): only the toggle may hold the line now, not the hover/focus hold
+  await page.mouse.move(0, 0);
+  await page.getByTestId('case-toggle').blur();
+  await page.waitForTimeout(5000); // > one 4.5 s rotation step
   await expect(line).toHaveText(held);
   const track = page.getByTestId('pool-track');
-  await track.scrollIntoViewIfNeeded();
+  // scroll by the (static) toggle: the running track is never "stable", so an actionability
+  // scroll on the track itself waits forever
   await page.getByTestId('pool-toggle').click();
   await expect(track).toHaveCSS('animation-play-state', 'paused');
 });

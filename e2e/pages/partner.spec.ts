@@ -352,7 +352,7 @@ test('en: the institute form (partner) ends on the D11 panel without a door (W92
   expect(new URL(page.url()).pathname).toBe(ROUTES.en);
 });
 
-test('tr: the hero WhatsApp (static prefill, W95) and the FAQ ask card e-mail row (W83) fire their events with page_cta (W12)', async ({
+test('tr: the hero WhatsApp (static prefill, W95) and — from 701 px — the FAQ ask card e-mail row (W83) fire their events with page_cta (W12)', async ({
   page,
 }) => {
   await page.goto(ROUTES.tr);
@@ -368,10 +368,15 @@ test('tr: the hero WhatsApp (static prefill, W95) and the FAQ ask card e-mail ro
     .getByTestId('partner-faq')
     .locator('a[href^="mailto:info@jobsadmire.com?subject="]');
   await expect(mail).toHaveCount(1);
-  await mail.click();
   expect(await pushed(page, 'whatsapp_click')).toEqual([
     { event: 'whatsapp_click', page: ROUTES.tr, locale: 'tr', placement: 'page_cta' },
   ]);
+  if ((page.viewportSize()?.width ?? 1440) <= 700) {
+    // the FAQ ask card is `mobileAsk="hidden"` on phones by design: rendered, never shown
+    await expect(mail).toBeHidden();
+    return;
+  }
+  await mail.click();
   expect(await pushed(page, 'email_click')).toEqual([
     { event: 'email_click', page: ROUTES.tr, locale: 'tr', placement: 'page_cta' },
   ]);

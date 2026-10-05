@@ -25,7 +25,9 @@ async function jsonLd(page: Page): Promise<Record<string, unknown>[]> {
 }
 
 test.describe('/en/blog — the index from every bundle row (owner 2026-10-05)', () => {
-  test('hero with the cadence pill, featured + most read, the grid; noindex', async ({ page }) => {
+  test('hero with the cadence pill, featured + most read, the grid; indexable (owner 2026-10-05)', async ({
+    page,
+  }) => {
     const res = await page.goto('/en/blog');
     expect(res?.status()).toBe(200);
     await expectOneCleanH1(page);
@@ -59,7 +61,9 @@ test.describe('/en/blog — the index from every bundle row (owner 2026-10-05)',
     await expect(page.getByTestId('blog-empty')).toHaveCount(0);
     // the newsletter band with its own form (owner, 2026-10-05)
     await expect(page.locator('#newsletter input[type="email"]')).toHaveCount(1);
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
+    // Owner 2026-10-05: the index is always in the nav, in the sitemap and indexable; only the
+    // articles stay noindex (docs/PRD.md §4, docs/SEO.md)
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'index, follow');
     await expect(page.locator('link[rel="canonical"]')).toHaveAttribute(
       'href',
       `${ORIGIN}/en/blog`,
@@ -173,7 +177,8 @@ test.describe('/blog — the TR index: the four Turkish rows, none written yet',
     await expect(page.getByTestId('blog-load-more')).toHaveCount(0);
     await expect(page.getByTestId('blog-empty')).toHaveCount(0);
     await expect(page.getByTestId('blog-tools-status')).toHaveText('4 yazı');
-    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', /noindex/);
+    // indexable like the EN index (owner 2026-10-05) — only the articles are noindex
+    await expect(page.locator('meta[name="robots"]')).toHaveAttribute('content', 'index, follow');
   });
 
   test('desktop: the EN/TR pair takes the reader to the English index', async ({
@@ -266,15 +271,20 @@ test.describe(`${EN_ARTICLE} — the one written article`, () => {
     await expect(body.getByTestId('article-takeaways')).toContainText('Key takeaways');
     await expect(body.locator('ol > li')).toHaveCount(5);
     await expect(body.locator('blockquote')).toHaveCount(1);
-    await expect(
-      body
-        .getByTestId('article-quote')
-        .getByRole('link', { name: 'Talk to a permit specialist →' }),
-    ).toHaveAttribute(
-      'href',
-      'https://wa.me/905011240340?text=Hello%20JobsAdmire%2C%20I%20need%20help%20with%20work%20permits.',
-    );
-    await expect(page.locator('#faq')).toHaveText('Frequently asked questions');
+    const permitWa =
+      'https://wa.me/905011240340?text=Hello%20JobsAdmire%2C%20I%20need%20help%20with%20work%20permits.';
+    const quote = body.getByTestId('article-quote');
+    if ((page.viewportSize()?.width ?? 1440) <= 700) {
+      // design review: the pull-quote button is hidden on phones only — still rendered, hidden
+      await expect(quote.locator(`a[href="${permitWa}"]`)).toBeAttached();
+      await expect(quote.locator(`a[href="${permitWa}"]`)).toBeHidden();
+    } else {
+      await expect(
+        quote.getByRole('link', { name: 'Talk to a permit specialist →' }),
+      ).toHaveAttribute('href', permitWa);
+    }
+    // the heading's name — its "+"/"−" tile is decorative (aria-hidden, phones only)
+    await expect(page.locator('#faq')).toHaveAccessibleName('Frequently asked questions');
     // ≤ 700 px every h2 section — the FAQ included — is collapsed behind its heading (M1)
     const faqHead = page.locator('#faq button');
     if (await faqHead.isVisible()) await faqHead.click();
@@ -413,18 +423,23 @@ test.describe('B-1: a slug without a body in the locale answers 404', () => {
   }
 });
 
-test('robots.txt disallows both blog indexes on the production face; the sitemap lists no blog URL (W4/W20/W37, W135)', async ({
+test('robots.txt disallows the blog articles but not the indexes on the production face; the sitemap lists both indexes and no article (owner 2026-10-05; W20/W37, W135)', async ({
   request,
   baseURL,
 }) => {
   const robots = await (await request.get('/robots.txt')).text();
   if (expectedRobots(baseURL ?? 'http://localhost:3000') === 'production') {
-    expect(robots).toMatch(/^Disallow: \/blog$/m);
-    expect(robots).toMatch(/^Disallow: \/en\/blog$/m);
+    // the articles' prefix (trailing slash) is disallowed; the index pages themselves are not
+    expect(robots).toMatch(/^Disallow: \/blog\/$/m);
+    expect(robots).toMatch(/^Disallow: \/en\/blog\/$/m);
+    expect(robots).not.toMatch(/^Disallow: \/blog$/m);
+    expect(robots).not.toMatch(/^Disallow: \/en\/blog$/m);
   } else {
     // W91/W104: a preview face is `Disallow: /` — e2e/seo.spec.ts asserts that body strictly.
     expect(robots).toMatch(/^Disallow: \/$/m);
   }
   const xml = await (await request.get('/sitemap.xml')).text();
-  expect(xml).not.toMatch(/<loc>[^<]*\/blog(\/|<)/);
+  expect(xml).toContain(`<loc>${ORIGIN}/blog</loc>`);
+  expect(xml).toContain(`<loc>${ORIGIN}/en/blog</loc>`);
+  expect(xml).not.toMatch(/<loc>[^<]*\/blog\/[^<]/);
 });

@@ -20,6 +20,8 @@ describe('LogoMarquee', () => {
     );
     // the inert duplicate track is aria-hidden, so only the first copy is exposed
     expect(screen.getAllByRole('img')).toHaveLength(2);
+    // the greyscale/opacity hover treatment belongs to real logo images (D20)
+    expect(screen.getAllByRole('img')[0].parentElement).toHaveClass('ja-hover-logo');
     expect(screen.getByRole('button', { name: 'Duraklat' })).toBeInTheDocument();
   });
 
@@ -30,6 +32,8 @@ describe('LogoMarquee', () => {
     expect(screen.getByText('22+')).toBeInTheDocument();
     const slot = container.querySelector('[data-placeholder="logo-1"]');
     expect(slot).toHaveTextContent('Müşteri logosu 1');
-    expect(slot).toHaveClass('ja-hover-logo', 'border-dashed');
+    expect(slot).toHaveClass('border-dashed', 'text-text-tertiary');
+    // never the .62 greyscale treatment on placeholder text: it drops the label to 2.4:1 (D20)
+    expect(slot).not.toHaveClass('ja-hover-logo');
   });
 });
