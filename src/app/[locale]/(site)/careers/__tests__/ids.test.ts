@@ -29,9 +29,11 @@ const range = (from: number, to: number) =>
 /** Never rendered: the chrome copies (R15), the TR-hard-typed count, the duties/wants headings
  *  (the open panel heads its lists with the description's own lead-ins), the literal mailbox
  *  (W102), the category label, the nine fixture roles (D23), the country chips (D17) and the
- *  composed counts. The speculative form (`jt.097`–`110`, `jt.284`/`285`, its message
- *  `jt.313`–`321`), the role toggle (`jt.309`/`310`) and the two Operations links (`jt.047`,
- *  `jt.085`) render since the parity pass (owner, 2026-10-05). */
+ *  composed counts. The role toggle (`jt.309`/`310`) and the two Operations links (`jt.047`,
+ *  `jt.085`) render since the parity pass (owner, 2026-10-05); the speculative form it added
+ *  (`jt.097`/`098`/`101`/`102`/`105`–`110`, `jt.284`/`285`, its WhatsApp message `jt.313`–`321`)
+ *  went with W245 — the open application opens the Operations careers page (`jt.047`) and keeps
+ *  only "Email CV instead" (`jt.104`); `jt.099`/`100` stay as the roles' engagement words. */
 const NEVER = new Set([
   ...range(1, 4),
   ...range(6, 20),
@@ -46,11 +48,19 @@ const NEVER = new Set([
   ...range(289, 305),
   'jt.307',
   'jt.308',
+  'jt.097',
+  'jt.098',
+  'jt.101',
+  'jt.102',
+  ...range(105, 110),
+  'jt.284',
+  'jt.285',
+  ...range(313, 321),
 ]);
 
 describe('the package ids both careers routes read (W9/W23)', () => {
-  it('reads 148 ids, every one present in both committed bundles', () => {
-    expect(READ.size).toBe(148);
+  it('reads 127 ids, every one present in both committed bundles', () => {
+    expect(READ.size).toBe(127);
     for (const locale of ['tr', 'en'] as const) {
       const strings = bundleStrings(locale);
       expect(
@@ -60,7 +70,7 @@ describe('the package ids both careers routes read (W9/W23)', () => {
     }
   });
 
-  it('never reads the fixture roles, the duties/wants headings, the composed counts or the chrome copies', () => {
+  it('never reads the fixture roles, the duties/wants headings, the composed counts, the retired form or the chrome copies', () => {
     expect([...READ].filter((id) => NEVER.has(id)).sort()).toEqual([]);
   });
 });

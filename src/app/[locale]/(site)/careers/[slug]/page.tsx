@@ -155,7 +155,7 @@ export default async function CareerDetailPage({ params }: { params: Params }) {
       <Section tone="light">
         <div className="container-site">
           <div className="max-w-[860px]">
-            <HiringSteps t={t} variant="compact" />
+            <HiringSteps t={t} locale={locale} variant="compact" />
           </div>
         </div>
       </Section>

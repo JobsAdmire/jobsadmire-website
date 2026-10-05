@@ -116,6 +116,9 @@ export const RateConfigSchema = z.object({
   flightTRY: z.number().nonnegative(),
   housingMonthlyTRY: z.number().nonnegative(),
   quotaRatio: z.number().int().positive(),
+  /** W244: the administrative fine floor per unauthorised worker — the Work Permit hero's fourth
+   *  chip renders it as `formatTRY(n) + '+'` beside `wp.052` (D17/D18). */
+  illegalEmploymentFine: z.number().positive(),
 });
 
 export const CalculatorRoleSchema = z.object({

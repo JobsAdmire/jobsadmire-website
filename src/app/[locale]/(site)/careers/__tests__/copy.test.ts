@@ -9,9 +9,9 @@ const leaves = (o: unknown, prefix = ''): [string, string][] =>
       )
     : [[prefix, String(o)]];
 
-/** Every `sys.*` key this task adds (W9/W23): the careers namespace and the SEO fallbacks — the
- *  open-application placeholders (`careers.apply.form.*`) since the parity pass, which retired
- *  the WhatsApp-only button's `careers.apply.whatsapp`. */
+/** Every `sys.*` key this task adds (W9/W23): the careers namespace and the SEO fallbacks. The
+ *  parity pass retired the WhatsApp-only button's `careers.apply.whatsapp`; W245 (the open
+ *  application opens the Operations careers page) retired the form's `careers.apply.form.*`. */
 const EXPECTED = [
   'seo.careers.title',
   'seo.careers.description',
@@ -36,12 +36,6 @@ const EXPECTED = [
   'careers.empty.title',
   'careers.empty.body',
   'careers.apply.emailSubject',
-  'careers.apply.form.name',
-  'careers.apply.form.country',
-  'careers.apply.form.email',
-  'careers.apply.form.phone',
-  'careers.apply.form.role',
-  'careers.apply.form.about',
   'careers.detail.metaTitle',
   'careers.detail.metaDescription',
   'careers.detail.about',
@@ -72,7 +66,7 @@ const careersKeys = (sys: unknown) =>
 
 describe('sys.careers.* and sys.seo.careers* (W9/W23)', () => {
   it('both locales carry exactly this key set, and no value is empty', () => {
-    expect(EXPECTED).toHaveLength(49);
+    expect(EXPECTED).toHaveLength(43);
     for (const [locale, sys] of Object.entries(LOCALES)) {
       const keys = careersKeys(sys);
       expect([...keys.keys()].sort(), locale).toEqual([...EXPECTED].sort());

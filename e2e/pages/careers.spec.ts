@@ -7,6 +7,8 @@ import tr from '../../src/messages/tr.json';
 // Canonicals, hreflang and og:image are built from SITE_URL — the production origin, whatever
 // host the run hits.
 const ORIGIN = 'https://www.jobsadmire.com';
+/** The Operations careers portal — `/tr/` or `/en/` by the page's locale (W245). */
+const OPS = 'https://operations.jobsadmire.com';
 /**
  * `E2E_CAREERS_MOCK=1` means the server under test was BUILT and STARTED with
  * `OPS_API_URL=http://127.0.0.1:8481` while the fixture door ran (`npm run careers:door`,
@@ -86,63 +88,32 @@ for (const r of INDEX) {
       }
     });
 
-    test('parity S7.1: the open application is a form that posts nothing — submit opens WhatsApp in a new tab', async ({
+    test('W245: the open application opens the Operations careers page in the page locale, in a new tab — no form', async ({
       page,
     }) => {
       await page.goto(r.path);
       const apply = page.getByTestId('careers-apply');
-      const form = apply.getByTestId('careers-open-application');
-      await expect(form).toBeVisible();
-      // nothing typed ever sits in a DOM href (W76/W95); the e-mail door stays
+      await expect(apply.locator('form, input, textarea, select')).toHaveCount(0);
       await expect(apply.locator('a[href^="https://wa.me/"]')).toHaveCount(0);
+      const portal = apply.getByTestId('careers-apply-portal');
+      await expect(portal).toBeVisible();
+      await expect(portal).toHaveAttribute('href', `${OPS}/${r.locale}/careers`);
+      await expect(portal).toHaveAttribute('target', '_blank');
+      await expect(portal).toHaveAttribute('rel', 'noopener');
+      // the e-mail door stays
       await expect(apply.locator('a[href^="mailto:careers@jobsadmire.com"]')).toHaveCount(1);
-      const f = r.sys.careers.apply.form;
-      await form.getByPlaceholder(f.name).fill('Ada Lovelace');
-      await form.getByPlaceholder(f.country).fill('Tashkent');
-      await form.getByPlaceholder(f.email).fill('ada@example.com');
-      await form.getByPlaceholder(f.phone).fill('+998900000000');
-      await form.locator('select[name="engagement"]').selectOption('partTime');
-      await form.locator('input[name="consent"]').check();
-      const posts: string[] = [];
-      // no server action, no door call: nothing posted to the site itself (Vercel's own
-      // insights beacons aside) or to Operations
-      page.on('request', (req) => {
-        const url = new URL(req.url());
-        if (req.method() !== 'POST' || url.pathname.startsWith('/_vercel/')) return;
-        if (url.origin === new URL(page.url()).origin || url.host.includes('jobsadmire.com'))
-          posts.push(req.url());
-      });
-      // the work-permit pattern: record the composed URL instead of leaving for wa.me
-      await page.evaluate(() => {
-        const w = window as unknown as { __opened: string[] };
-        w.__opened = [];
-        window.open = ((url?: string | URL) => {
-          w.__opened.push(String(url));
-          return null;
-        }) as typeof window.open;
-      });
-      await form.locator('button[type="submit"]').click();
-      const opened = await page.evaluate(
-        () => (window as unknown as { __opened: string[] }).__opened,
-      );
-      expect(opened).toHaveLength(1);
-      expect(opened[0].startsWith('https://wa.me/905011240340?text=')).toBe(true);
-      const text = decodeURIComponent(opened[0].split('?text=')[1]);
-      expect(text.split('\n')).toHaveLength(9); // intro + eight "label value" lines
-      expect(text).toContain('Ada Lovelace');
-      await expect(apply.getByTestId('careers-open-application-sent')).toBeVisible();
-      expect(posts).toEqual([]);
     });
 
-    test('Operations is reached only through the two owner-approved links, each in a new tab', async ({
+    test('Operations is reached only through the owner-approved careers and status pages, in the page locale, each in a new tab', async ({
       page,
     }) => {
       await page.goto(r.path);
       const ops = page.locator('a[href*="operations.jobsadmire.com"]');
       const hrefs = await ops.evaluateAll((els) => els.map((el) => el.getAttribute('href')));
+      expect(hrefs).toHaveLength(3); // roles pill, open application, status button
       expect([...new Set(hrefs)].sort()).toEqual([
-        'https://operations.jobsadmire.com/en/careers',
-        'https://operations.jobsadmire.com/en/careers/status',
+        `${OPS}/${r.locale}/careers`,
+        `${OPS}/${r.locale}/careers/status`,
       ]);
       for (const i of hrefs.keys()) {
         await expect(ops.nth(i)).toHaveAttribute('target', '_blank');

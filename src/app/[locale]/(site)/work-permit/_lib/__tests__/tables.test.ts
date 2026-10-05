@@ -34,7 +34,6 @@ describe('the page-id tables (docs/CONTENT-MODEL.md § Collections, W23)', () =>
   it('never reference the ids this page deliberately leaves unread', () => {
     const unread = [
       'wp.022', // dated badge → sys.wp.hero.updated (D17)
-      'wp.052', // the dropped fine chip (delta 2)
       'wp.066', // W2 — the wizard makes no timing claim
       'wp.261', // tab labels — the timeline cards stack (D20)
       'wp.262',
@@ -48,7 +47,15 @@ describe('the page-id tables (docs/CONTENT-MODEL.md § Collections, W23)', () =>
 
   it('keep the design counts and orders', () => {
     expect(tables.HERO_BENEFITS.flat()).toEqual(range(28, 33));
-    expect(tables.HERO_CHIPS.flatMap((c) => [c.strongId, c.restId])).toEqual(range(46, 51));
+    expect(
+      tables.HERO_CHIPS.flatMap((c) => ('strongId' in c ? [c.strongId, c.restId] : [c.restId])),
+    ).toEqual([...range(46, 51), 'wp.052']);
+    // W244: the fine chip's lead is the rateConfig figure, never a typed id
+    expect(tables.HERO_CHIPS[3]).toEqual({
+      icon: 'alert',
+      figure: 'illegalEmploymentFine',
+      restId: 'wp.052',
+    });
     expect(tables.JUMP_LINKS.map((j) => j.hash)).toEqual([
       '#eligibility',
       '#routes',

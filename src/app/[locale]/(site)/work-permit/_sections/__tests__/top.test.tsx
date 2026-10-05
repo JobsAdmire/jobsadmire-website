@@ -57,16 +57,33 @@ describe('Hero', () => {
     expect(collisionsInTree(container)).toEqual([]);
   });
 
-  it('carries this page’s own crumbs (W109), the D17 badge, the metric benefit and three chips — no fine chip', () => {
+  it('carries this page’s own crumbs (W109), the D17 badge, the metric benefit and the four chips', () => {
     const { container } = renderHero('tr', BADGE_TR);
     const nav = screen.getByRole('navigation', { name: tr.sys.nav.breadcrumbs });
     expect(within(nav).getByRole('link', { name: tfTr('wp.021') })).toHaveAttribute('href', '/');
     expect(within(nav).getByText(tfTr('wp.011'))).toHaveAttribute('aria-current', 'page');
     expect(screen.getByTestId('wp-updated')).toHaveTextContent(BADGE_TR);
     expect(screen.getByText('470+ izin dosyalandı')).toBeInTheDocument(); // wp.030 {placed} (W1)
-    expect(screen.getByTestId('wp-chips').querySelectorAll('li')).toHaveLength(3);
-    expect(container.textContent).not.toContain(tfTr('wp.052')); // delta 2
+    expect(screen.getByTestId('wp-chips').querySelectorAll('li')).toHaveLength(4);
     expect(container.textContent).not.toContain(tfTr('wp.022')); // D17
+  });
+
+  it('W244: the fourth chip is the rateConfig fine through formatTRY + "+", beside wp.052, with the amber mark', () => {
+    for (const [locale, figure] of [
+      ['tr', '100.000 ₺+'],
+      ['en', '₺100,000+'],
+    ] as const) {
+      const { unmount } = renderHero(locale, null);
+      const chips = screen.getByTestId('wp-chips');
+      expect(tokens(chips)).toEqual(expect.arrayContaining(['grid-cols-2', 'lg:grid-cols-4']));
+      const fine = chips.querySelectorAll('li')[3]!;
+      expect(fine.querySelector('strong')!.textContent).toBe(figure);
+      expect(fine.textContent).toBe(`${figure} ${tfFor(locale)('wp.052')}`);
+      const icon = fine.querySelector('svg')!;
+      expect(icon).toHaveAttribute('aria-hidden', 'true');
+      expect(icon).toHaveClass('text-warning-text');
+      unmount();
+    }
   });
 
   it('renders no badge once the review is due (heroBadge → null)', () => {

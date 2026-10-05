@@ -3,8 +3,8 @@ import { useId } from 'react';
 
 export type ChoiceOption = { value: string; label: string };
 
-/** Class slots per use: the filter bar's "Where" track, its "Engagement" grid, the form's kind
- *  chips — each lays the same chips out differently below 901 px (design ll. 352–362, 456–458). */
+/** Class slots per use: the filter bar's "Where" track and its "Engagement" grid — each lays
+ *  the same chips out differently below 901 px (design ll. 352–362). */
 export type ChoiceChipsLook = {
   group?: string;
   label?: string;
@@ -16,7 +16,7 @@ export type ChoiceChipsLook = {
 /**
  * The design's solid chips (`chip()`, Join Our Team l. 1264): white with a 1.5 px #d3e6f2 edge,
  * the checked one solid blue with white text — the contrast-safe blue (D20). A page-local cousin
- * of `RadioChips` (parity S4.2/M7/S7.1): this page labels each group with a small grey caps
+ * of `RadioChips` (parity S4.2/M7): this page labels each group with a small grey caps
  * label beside its chips (`#94a3b8` in the design — the contrast-safe tertiary grey here, D20)
  * and needs the ≤ 700 px segmented track and 2 × 2 grid, which `RadioChips` does not lay out.
  * Native radios in a `role="radiogroup"` named by the label (visually hidden where the design

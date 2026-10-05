@@ -40,6 +40,28 @@ for (const locale of ['tr', 'en'] as const) {
     expect(body).toContain('470+'); // wp.030 {placed} (W1) — static text, no Stat count-up on this page (W178)
   });
 
+  test(`${locale}: the hero's four stat chips — the fine from rateConfig through formatTRY (W244); one row on desktop, 2 × 2 on phones`, async ({
+    page,
+  }) => {
+    await page.goto(ROUTES[locale]);
+    const chips = page.getByTestId('wp-chips').locator('li');
+    await expect(chips).toHaveCount(4);
+    await expect(chips.nth(3)).toHaveText(
+      locale === 'tr' ? '100.000 ₺+ izinsiz çalıştırma cezası' : '₺100,000+ fine without a permit',
+    );
+    await expect(chips.nth(3).locator('svg')).toBeVisible();
+    const ys = await chips.evaluateAll((els) =>
+      els.map((el) => Math.round(el.getBoundingClientRect().top)),
+    );
+    if (isMobile()) {
+      expect(ys[0]).toBe(ys[1]);
+      expect(ys[2]).toBe(ys[3]);
+      expect(ys[2]).toBeGreaterThan(ys[0]);
+    } else {
+      expect(new Set(ys).size).toBe(1);
+    }
+  });
+
   test(`${locale}: the designed sections in order, each anchor once, the header CTA's #permit-cta (W17/W152/W158)`, async ({
     page,
   }) => {

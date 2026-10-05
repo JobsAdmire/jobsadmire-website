@@ -59,10 +59,7 @@ describe('careers faces — the 11 px floor and contrast on the pale surface', (
   // text-secondary (#556377) is 5.76:1 there.
   it('the open-application card lead sits on pale-1 in text-secondary', () => {
     renderWithIntl(
-      <OpenApplication
-        t={t}
-        settings={{ whatsappNumber: '905011240340', careersEmail: 'careers@jobsadmire.com' }}
-      />,
+      <OpenApplication t={t} locale="en" settings={{ careersEmail: 'careers@jobsadmire.com' }} />,
       { locale: 'en' },
     );
     const lead = screen.getByText(t('jt.096'));
@@ -71,7 +68,9 @@ describe('careers faces — the 11 px floor and contrast on the pale surface', (
   });
 
   it('the roles result line sits on the pale section in text-secondary', () => {
-    renderWithIntl(<RolesSection t={t} cards={roleCards([OPENING], ctx)} />, { locale: 'en' });
+    renderWithIntl(<RolesSection t={t} locale="en" cards={roleCards([OPENING], ctx)} />, {
+      locale: 'en',
+    });
     const status = within(screen.getByTestId('careers-roles-list')).getByRole('status');
     expect(status).toHaveClass('text-text-secondary');
     expect(status).not.toHaveClass('text-text-tertiary');

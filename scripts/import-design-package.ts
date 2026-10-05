@@ -252,6 +252,8 @@ const RATE_CONFIG: RateConfig = {
   flightTRY: 12000,
   housingMonthlyTRY: 5000,
   quotaRatio: 5,
+  // W244: the Work Permit hero's fourth chip ("₺100,000+ fine without a permit", design l. 752)
+  illegalEmploymentFine: 100000,
 };
 
 type Industry = NonNullable<CalculatorRole['industry']>;

@@ -457,15 +457,7 @@
         "body": "Her pozisyon önce burada yayınlanır. Aşağıdan WhatsApp ya da e-posta ile açık başvuru gönderin; JobsAdmire iyi adayları kayıtta tutar ve bir pazar açıldığında size yazar."
       },
       "apply": {
-        "emailSubject": "Açık başvuru",
-        "form": {
-          "name": "Ad soyad",
-          "country": "Ülke / şehir",
-          "email": "E-posta",
-          "phone": "WhatsApp numarası",
-          "role": "Düşündüğünüz pozisyon (isteğe bağlı)",
-          "about": "JobsAdmire'a ne katarsınız? Diller, ağınız, deneyiminiz — birkaç satır yeterli."
-        }
+        "emailSubject": "Açık başvuru"
       },
       "detail": {
         "metaTitle": "{title} — JobsAdmire'da kariyer",

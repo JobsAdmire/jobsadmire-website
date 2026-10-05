@@ -18,15 +18,22 @@ export const HERO_BENEFITS: readonly (readonly [string, string])[] = [
   ['wp.032', 'wp.033'],
 ];
 
-export type ChipIcon = 'clock' | 'doc' | 'users';
-/** Hero stat chips. The design's fourth ("₺100,000+ fine without a permit") has no figure id
- *  and `RateConfig` carries no fine — dropped (named delta 2; `wp.052` is unread). The third
- *  (`wp.050` + `wp.051`, "1 : 5 ratio — checked from month 7") renders as authored: W2 makes
- *  the timing counsel's question and keeps the claim out of the wizard only. */
-export const HERO_CHIPS: readonly { icon: ChipIcon; strongId: string; restId: string }[] = [
+export type ChipIcon = 'clock' | 'doc' | 'users' | 'alert';
+/** A chip's bold lead: a package id, or a `RateConfig` figure (D17) the hero renders through
+ *  `formatTRY` + "+" (D18). */
+export type HeroChip =
+  | { icon: ChipIcon; strongId: string; restId: string }
+  | { icon: ChipIcon; figure: 'illegalEmploymentFine'; restId: string };
+/** Hero stat chips, the design's four (W244 closes named delta 2). The third (`wp.050` +
+ *  `wp.051`, "1 : 5 ratio — checked from month 7") renders as authored: W2 makes the timing
+ *  counsel's question and keeps the claim out of the wizard only. The fourth's figure is
+ *  `rateConfig.illegalEmploymentFine` ("100.000 ₺+" / "₺100,000+"), never typed; its words are
+ *  `wp.052`. */
+export const HERO_CHIPS: readonly HeroChip[] = [
   { icon: 'clock', strongId: 'wp.046', restId: 'wp.047' },
   { icon: 'doc', strongId: 'wp.048', restId: 'wp.049' },
   { icon: 'users', strongId: 'wp.050', restId: 'wp.051' },
+  { icon: 'alert', figure: 'illegalEmploymentFine', restId: 'wp.052' },
 ];
 
 /** The jump nav — every hash is an id this page renders (the page e2e checks each once). */

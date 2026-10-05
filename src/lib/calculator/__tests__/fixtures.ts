@@ -17,6 +17,7 @@ export const RATE: RateConfig = {
   flightTRY: 12000,
   housingMonthlyTRY: 5000,
   quotaRatio: 5,
+  illegalEmploymentFine: 100000,
 };
 
 type Industry = NonNullable<CalculatorRole['industry']>;

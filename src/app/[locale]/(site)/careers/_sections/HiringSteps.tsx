@@ -1,7 +1,8 @@
 import { ArrowRightIcon } from '@/design/chrome/icons';
 import { Eyebrow } from '@/design/primitives/Eyebrow';
 import { Section } from '@/design/primitives/Section';
-import { OPS_CAREERS_STATUS } from '../_lib/links';
+import type { Locale } from '@/i18n/routing';
+import { opsCareersStatus } from '../_lib/links';
 import type { Tf } from '../_lib/roles';
 
 /** The seven steps (design `steps[]`): title / body / when, the "Admira AI" badge on steps 3–4.
@@ -69,8 +70,16 @@ function StepList({ t }: { t: Tf }) {
 /** The hiring process (design `.ja-jt-process`) — `full` on the index; `compact` on the detail
  *  page (the steps under their own h2, no section header). On the index the footer row ends in
  *  the navy "Check your application status" (`jt.085`, parity S6.1): the Operations status page
- *  in a new tab, restored by the owner — full width below 701 px. */
-export function HiringSteps({ t, variant = 'full' }: { t: Tf; variant?: 'full' | 'compact' }) {
+ *  in a new tab, in the page's locale (W245), restored by the owner — full width below 701 px. */
+export function HiringSteps({
+  t,
+  locale,
+  variant = 'full',
+}: {
+  t: Tf;
+  locale: Locale;
+  variant?: 'full' | 'compact';
+}) {
   if (variant === 'compact') {
     return (
       <div
@@ -108,7 +117,7 @@ export function HiringSteps({ t, variant = 'full' }: { t: Tf; variant?: 'full' |
                 face — `Button` has no indigo variant (shared request) */}
             <a
               data-testid="careers-status"
-              href={OPS_CAREERS_STATUS}
+              href={opsCareersStatus(locale)}
               target="_blank"
               rel="noopener"
               className="ja-hover-lift inline-flex min-h-[44px] items-center justify-center gap-2 rounded-[11px] bg-indigo px-[22px] text-[14.5px] font-extrabold text-white no-underline hover:bg-[#16204a] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-safe xl:text-[11px] max-lg:min-h-[50px] max-lg:rounded-xs max-md:w-full"

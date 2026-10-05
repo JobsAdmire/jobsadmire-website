@@ -3,16 +3,17 @@ import { EmptyState } from '@/design/blocks/EmptyState';
 import { buttonClassName } from '@/design/primitives/Button';
 import { Eyebrow } from '@/design/primitives/Eyebrow';
 import { Section } from '@/design/primitives/Section';
+import type { Locale } from '@/i18n/routing';
 import { ExternalIcon } from '../_components/icons';
 import { RolesList } from '../_components/RolesList';
-import { OPS_CAREERS_PORTAL } from '../_lib/links';
+import { opsCareersPortal } from '../_lib/links';
 import type { RoleCard, Tf } from '../_lib/roles';
 
 /** `#roles` (design `.ja-jt-roles`, #f4f9fc → white): the header with the "Open application
- *  portal" pill (`jt.047`) on its right — the Operations careers portal in a new tab, restored
- *  by the owner (parity S4.1) — then the live list or, with nothing open, the designed empty
+ *  portal" pill (`jt.047`) on its right — the Operations careers portal in a new tab, in the
+ *  page's locale, restored by the owner (parity S4.1, W245) — then the live list or, with nothing open, the designed empty
  *  state pointing at the open application (W6). */
-export function RolesSection({ t, cards }: { t: Tf; cards: RoleCard[] }) {
+export function RolesSection({ t, locale, cards }: { t: Tf; locale: Locale; cards: RoleCard[] }) {
   const sys = useTranslations('sys');
   return (
     <Section
@@ -31,7 +32,7 @@ export function RolesSection({ t, cards }: { t: Tf; cards: RoleCard[] }) {
           </div>
           <a
             data-testid="careers-portal"
-            href={OPS_CAREERS_PORTAL}
+            href={opsCareersPortal(locale)}
             target="_blank"
             rel="noopener"
             className={buttonClassName('primary', 'lg', 'whitespace-nowrap max-md:w-full')}

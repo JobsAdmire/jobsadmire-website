@@ -18,8 +18,6 @@ Nothing listed here is built. Current behaviour: `docs/PRD.md` and `docs/ARCHITE
 Raised by the design-parity pass (`docs/PRD.md` § 10, rulings W234–W243). None is built.
 
 - **Shared-block backlog** from the page passes: `ImageSlot` caption/tone prop; `Tabs` tablist-only / shared panel; `FaqBlock` ask tone; `OfficeCard` variants (contact, about); `Button` indigo; `ClosingCtaBand` note as ReactNode and a phone pill; `PausableMarquee` pause-on-hover and an external toggle; `StickyCtaBar` from 701 px and a top variant; `Dialog` width; `ja-dash`/`ja-spin` into `motion.css`; shared category colours; `PostCard` fold-back; `LazyIsland` `className`; `MobileBottomBar` per-route prefill. (`blog/_lib/category.ts` currently duplicates `[slug]/_lib/category.ts`.)
-- **`rateConfig` penalty figure** (e.g. `illegalEmploymentFine` 100000, via the importer) so the Work Permit hero can show its 4th chip; until then `HERO_CHIPS` stays 3 (a named delta).
-- **Careers open application → Operations key:** the form is client-only and builds a WhatsApp message (exception to D13); an Operations form key would make it a real applicant row.
 - **JS size per route not re-measured** (Available Workers pool explorer, Blog tools island, About lanes, newsletter form): run `npm run gate` / `js-size` on the next gate and lazy-load anything above 194,560 B.
 - **Real data replacing samples:** the signed metrics/approvals/testimonials/pool/logo feeds, the `representatives` register, the company-profile PDF and licence PDFs, office / portal-screenshot / About-hero images; remove each page-local sample (and its `SampleTag`) when its real source lands.
 - **Owner switches in Operations:** Website → Integrations → Forms → newsletter ON; "Website leads" default owner (`defaultLeadOwnerId`).

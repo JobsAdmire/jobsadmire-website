@@ -97,10 +97,10 @@ export default async function CareersPage({ params }: { params: Promise<{ locale
         sourceCountries={getCollection(bundle, 'sourceCountries')}
       />
       <WorkerNotice t={t} />
-      <RolesSection t={t} cards={cards} />
+      <RolesSection t={t} locale={locale} cards={cards} />
       <WaysSection t={t} />
-      <HiringSteps t={t} />
-      <OpenApplication t={t} settings={settings} />
+      <HiringSteps t={t} locale={locale} />
+      <OpenApplication t={t} locale={locale} settings={settings} />
       {/* Parity S8.1/S8.2: the eyebrow + h2 centred over one 900 px column of white cards with a
           grey chevron (design `.ja-jt-faq`), the mail line centred under them. */}
       <Section tone="pale" className="ja-reveal border-t border-border-3">

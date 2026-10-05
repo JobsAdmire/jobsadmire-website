@@ -1,13 +1,15 @@
 import { useTranslations } from 'next-intl';
+import { getRateConfig } from '@/content/collections';
 import { Breadcrumbs } from '@/design/blocks/Breadcrumbs';
 import { ContactCta } from '@/design/blocks/ContactCta';
 import { ImageSlot } from '@/design/blocks/ImageSlot';
 import { Button } from '@/design/primitives/Button';
 import type { Locale } from '@/i18n/routing';
 import { waLink } from '@/lib/contact';
+import { formatTRY } from '@/lib/format/money';
 import type { Bundle } from '../../../../../../contract/website-bundle.v1';
 import { EligibilityWizard } from '../_components/EligibilityWizard';
-import { CheckIcon, ClockIcon, DocIcon, UsersIcon } from '../_components/icons';
+import { AlertIcon, CheckIcon, ClockIcon, DocIcon, UsersIcon } from '../_components/icons';
 import { HERO_SIZE, HERO_SRC } from '../_lib/assets';
 import type { WizardProps } from '../_lib/eligibility';
 import { sp } from '../_lib/fragments';
@@ -18,12 +20,15 @@ const CHIP: Record<ChipIcon, { Icon: typeof ClockIcon; tone: string }> = {
   clock: { Icon: ClockIcon, tone: 'text-blue-safe' },
   doc: { Icon: DocIcon, tone: 'text-success-text' },
   users: { Icon: UsersIcon, tone: 'text-[#253063]' },
+  // D20: the design's #d97706 is 3.2:1 on white — `warning-text`, as the router's calculator card
+  alert: { Icon: AlertIcon, tone: 'text-warning-text' },
 };
 
 /** The navy hero: crumbs + the D17 badge, the h1 (the LCP element while `wp-hero` is a
  *  placeholder, D26), the W10 intro and legal variants, three benefits, the CTA row (hidden
  *  ≤ 700 px as designed — the chrome's mobile bottom bar carries Call/WhatsApp there), the
- *  eligibility wizard as the right column, and the stat chips (delta 2: three, not four). */
+ *  eligibility wizard as the right column, and the design's four stat chips — the fine's figure
+ *  from `rateConfig` through `formatTRY` (W244, D17/D18). 2 × 2 below 901 px, one row from 901. */
 export function Hero({
   bundle,
   locale,
@@ -41,6 +46,7 @@ export function Hero({
   const sys = useTranslations('sys');
   const s = bundle.settings;
   const heroIsLcp = HERO_SRC !== null;
+  const rateConfig = getRateConfig(bundle);
   const [h1a, h1b] = [tf('wp.023'), tf('wp.024')];
   const [mobA, mobB] = [tf('wp.026'), tf('wp.027')];
   return (
@@ -165,14 +171,16 @@ export function Hero({
         </div>
         <ul
           data-testid="wp-chips"
-          className="mt-9 grid grid-cols-2 gap-3.5 max-md:mt-5 max-md:gap-2 lg:grid-cols-3"
+          className="mt-9 grid grid-cols-2 gap-3.5 max-md:mt-5 max-md:gap-2 lg:grid-cols-4"
         >
           {HERO_CHIPS.map((c) => {
             const { Icon, tone } = CHIP[c.icon];
-            const [a, b] = [tf(c.strongId), tf(c.restId)];
+            const a =
+              'figure' in c ? `${formatTRY(rateConfig[c.figure], locale)}+` : tf(c.strongId);
+            const b = tf(c.restId);
             return (
               <li
-                key={c.strongId}
+                key={c.restId}
                 className="flex items-center gap-3 rounded-sm border border-tint-border bg-white px-4 py-3 text-body-sm text-text-secondary max-md:gap-2.5 max-md:px-3 max-md:py-2.5"
               >
                 <Icon size={18} className={`flex-none ${tone}`} />
